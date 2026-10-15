@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "observedUtc": "2026-10-15T20:00:56.508186+00:00",
+  "checks": {
+    "v1-source-preservation.json:files": {
+      "files": 368,
+      "mismatches": []
+    },
+    "v3-identities.json:files": {
+      "files": 376,
+      "mismatches": []
+    },
+    "v1-identities.json:installation": {
+      "files": 15,
+      "mismatches": []
+    },
+    "v2-identities.json:installation": {
+      "files": 15,
+      "mismatches": []
+    },
+    "v3-identities.json:installation": {
+      "files": 15,
+      "mismatches": []
+    },
+    "interruptedEvidence": {
+      "files": 9,
+      "mismatches": []
+    },
+    "protocolIdentities": {
+      "files": 3,
+      "mismatches": []
+    },
+    "confirmation-w1-protocol-v2.json:frozenFiles": {
+      "files": 90,
+      "mismatches": []
+    },
+    "confirmation-w4-protocol-v2.json:frozenFiles": {
+      "files": 94,
+      "mismatches": []
+    },
+    "development-v3-protocol.json:frozenFiles": {
+      "files": 44,
+      "mismatches": []
+    },
+    "phase1Archives": {
+      "files": 2,
+      "mismatches": []
+    },
+    "confirmation-w1-v2:completedGamesAndRunReceipts": {
+      "files": 4,
+      "mismatches": []
+    },
+    "confirmation-w4-v2:completedGamesAndRunReceipts": {
+      "files": 4,
+      "mismatches": []
+    },
+    "noFinalFourWorkerAssessment": true
+  },
+  "applicationRuntimeRetest": "Not rerun for documentation-only technical closeout; exact current source/build manifest matches prior 807 passed/11 existing skipped broad suite.",
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 35
+  },
+  "rootJournalExists": false,
+  "baseHead": "5f5f639caa7672072c812e90d228e51e8f445863",
+  "ownerDecision": "Close technically as DEFERRED",
+  "disposition": "DEFERRED without futility adoption; no successor",
+  "deferredActions": {
+    "interruptedStudyAutomaticResume": false,
+    "sessionStudyPreparedOrLaunched": false,
+    "contrast3Spent": false,
+    "macAccess": "owner-deferred"
+  },
+  "versionFinalization": {
+    "status": "non-blocking initialization warning",
+    "detail": "Local begin full-tree capture stopped at verified owned PID before any operation/reservation or version write. No token returned; no finish or replacement bump. Subsequent local status idle, no active/unfinished operation or blocker. The helper did not itself return a terminal warning receipt.",
+    "stopObservedUtc": "2026-10-15T20:03:34.9211085Z",
+    "verifiedBump": false,
+    "finalBuild": 35
+  },
+  "processObservation": {
+    "observedUtc": "2026-10-15T20:05:30.9028106Z",
+    "relatedProcesses": [],
+    "scope": "Read-only process command-line inspection for Java, Python and Fastchess using SR021, the frozen SR024 production install or the confirmation runner; no related experiment observed. Historical original-tree shutdown evidence remains separate."
+  },
+  "documentValidation": {
+    "observedUtc": "2026-10-15T20:07:38.260630+00:00",
+    "masters": {
+      "source/CHESS_SEARCH_CONTRACT.md": {
+        "revision": "P2-R037",
+        "sha256": "54da3a9684d8a576b9c83015e65b8fb254da5de6355f80719f998c9d9ccbfd48"
+      },
+      "source/CHESS_SEARCH_RESEARCH_FRONTIER.md": {
+        "revision": "P2-F041",
+        "sha256": "3be737d3c08faa360fd48a977f55361e62bac63b5fa3cc1916c62a8c43240428"
+      }
+    },
+    "noActiveFrontierRow": true,
+    "revisionEntriesUnique": true,
+    "localMarkdownLinksExist": true,
+    "scopedWhitespaceCheck": "passed",
+    "trackedChanges": "Only both masters and the existing SR021 report; one new compact closeout validation receipt. No application, runner, frozen protocol or previous assessment edits.",
+    "rawPathsIgnoreChecked": 488,
+    "rawTracked": false,
+    "frozenProtocolOpeningFixturesHashVerified": 16,
+    "ignoredRawRetention": "All checked raw paths exist locally and are ignored; no raw data staged or removed. Frozen opening inputs retain their existing narrow exceptions.",
+    "checkCorrection": "Initial raw-file classification also matched 16 intentional frozen protocol opening input PGNs; their existing narrow exceptions and protocol hashes were verified before excluding those inputs. No ignore rule or evidence file changed."
+  }
+}

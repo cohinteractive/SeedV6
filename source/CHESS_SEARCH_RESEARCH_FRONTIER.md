@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F040**
+Internal frontier revision: **P2-F041**
 
-Status: **SR-021 Futility-Pruning Family is ACTIVE. SR-024 IMPLEMENTED owner acceptance and BOTH P2-R028/P2-F032 Project Source synchronizations are confirmed by the launch. No successor is authorized.**
+Status: **SR-021 Futility-Pruning Family is technically DEFERRED without adoption by owner resource decision. No ACTIVE feature or authorized successor. GPT/owner technical reconciliation and BOTH current Project Source synchronizations remain pending. The SR-024 predecessor handback remains confirmed.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -775,7 +775,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-006 | Aspiration windows | REJECTED | Scoped six-formulation investigation found no credible strength-supported adoption over cumulative SR-001+SR-029. Independent ALPHA16: 809/453/786 over 1,024 pairs, +3.90 Elo, adjusted interval [-12.30,+20.12]; both required/wider sensitivities include zero. Retain full-window production, research controls, negative/cost evidence, uncertainty and owner/GPT handback above; no universal inferiority claim. |
 | SR-007 | Internal iterative search: IID and IIR | DEFERRED | Seven formulations and 416 development games; IID_WIDE fresh 256-game confirmation closed for futility, later IIR_ALL/IID_SHALLOW/IID_NEAR follow-ups inconclusive. No adoption; EFFORT unchanged. Modest gains/targeted eligibility remain unresolved; report quantifies further evidence value and fresh resumption conditions. Owner/GPT acceptance and BOTH P2-R022/P2-F026 mirror synchronization were confirmed by the SR-036 launch; closed evidence remains separate. |
 | SR-020 | Razoring | PENDING | Reduced/qsearch horizons, evaluator evidence, nominal resources and SR-018/019 composition. |
-| SR-021 | Futility-pruning family | ACTIVE | No adoption. SHALLOW1 closed for computational futility; SHALLOW4 owner-interrupted,512-pair adjusted interval still inconclusive. Larger DEEP screens +9.503 native/-5.429 four-worker, both exploratory intervals cross zero. All research processes stopped. Mac access owner-deferred; specific resource choice pending between technical deferral and a new prospectively sessioned independent study. No automatic resume or successor. |
+| SR-021 | Futility-pruning family | DEFERRED | Technical closeout by explicit owner resource choice; no adoption. SHALLOW1 closed for computational futility; SHALLOW4 owner-interrupted after two inconclusive scheduled looks, with partial final-stage games preserved as raw evidence. Larger DEEP screens also inconclusive; useful four-worker/small-gain hypotheses remain. New session study unlaunched, Mac access deferred, no automatic resume. Renewed authority and acceptable controlled prospective evidence are required for further investigation. GPT/owner reconciliation and BOTH current mirrors remain pending; no successor. |
 | SR-022 | Late-move / move-count pruning | IMPLEMENTED | Confirmed protected D1/D2 WINDOW omission over single-worker Pair-2 SR-001+SR-029: 876/485/687 in 1,024 fresh pairs, +32.15 Elo, adjusted normal lower +16.09 and required 2.5-SE lower +15.38; Hoeffding includes zero. Production/default and explicit-off bridges pass. Preserve omission/proof/history protections, adverse alternatives, complete cost limits and scoped controls; owner/GPT acceptance and predecessor both-mirror synchronization confirmed by SR-023 launch. |
 | SR-023 | History-based pruning | DEFERRED | Six formulations and 448 development games; unchanged REPLACE independent 2,048-game confirmation 810/460/778, +5.43 Elo with adjusted interval [-10.56,+21.44], wider and Hoeffding intervals also include zero. No production adoption; possible small benefit unresolved. Preserve frozen evidence, WINDOW baseline and history/proof protections; fresh justified independent design and GPT/owner selection required for resumption, with no post-hoc extension. |
 | SR-024 | SEE-based move pruning | IMPLEMENTED | QXRAY adopted for Pair-2 EFFORT1/ROOT_REUSE2..16 after independent +24.128/+26.061 Elo confirmations with positive adjusted primary intervals; all-worker integration validated. Approximate inference and resource limits are documented; owner/GPT acceptance and BOTH P2-R028/P2-F032 mirror synchronization are confirmed by the SR-021 launch. See the unchanged SR-024 report and closeout below. |
@@ -916,6 +916,58 @@ experiment is not an escalation condition. No extra orchestration ledger or
 governance document is needed.
 
 ## Maintenance and initialization state
+
+### SR-021 technical closeout: DEFERRED - 2026-10-16 local
+
+The owner resolves the pending resource choice: "Close technically as DEFERRED."
+SR-021 is technically DEFERRED without futility adoption; no feature is ACTIVE
+and no successor is selected or authorized. The six-session, approximately
+15.3-hour new SHALLOW4 proposal remains unlaunched and unfrozen; contrast3 is
+unspent. Mac access remains owner-deferred. This is the current state; earlier
+ACTIVE/running/pending entries below are historical checkpoints, not instructions
+to continue. Their original experimental conclusions are preserved.
+
+Substantial investigation covered LEAF, SHALLOW, PREFIX, DEEP, D2 and CHILD.
+SHALLOW has useful shallow work savings but no established strength gain.
+Its independent native EFFORT confirmation CLOSED for the original computational
+futility rule at 512 pairs: -0.679 Elo, adjusted interval [-25.162,+23.799].
+The ROOT_REUSE four-worker confirmation is OWNER-INTERRUPTED, not statistically
+completed: its 128/512-pair assessments retain +43.658 [-8.068,+97.400] and
++19.700 [-7.490,+47.134], both originally CONTINUE. No required 2,048-pair final
+look occurred. All 165 surviving final-stage normal games (82 complete pairs
+and one color) remain raw evidence, outside completed confirmatory inference.
+The exact experiment process tree was stopped and shutdown verified. No
+automatic resumption, pooling, narrower post-hoc adjustment or inferiority/
+declining-trend/positive-criterion claim follows.
+
+The bounded larger DEEP screens remain exploratory: native +9.503
+[-28.387,+47.620] and four-worker -5.429 [-57.929,+46.823], both 95% intervals
+including zero. LEAF/PREFIX/D2 have weak development support; CHILD has adverse
+whole-request cost and move-choice evidence despite its local leaf predicate.
+The report preserves tactical witnesses, capped replays, corrected prototype
+cancellation handling, failed attempts and all-worker qualification. Research
+policies remain explicit and default OFF; accepted QXRAY, quiet LMR, WINDOW,
+EFFORT1/ROOT_REUSE2..16, HCE and independent references remain available.
+
+DEFERRED reflects unresolved four-worker/small-gain hypotheses and the owner's
+choice about primary-PC opportunity cost, not family rejection or a minimum
+Elo threshold. The SR-021 constraint remains roughly 4-6 acceptable hours of
+continuous disruptive primary-PC research, not another roughly 12 hours and
+not a universal total-compute ceiling. Further investigation needs renewed
+authorization and a worthwhile hypothesis with a suitable host or prospectively
+scheduled complete-pair sessions, validated infrastructure and a new controlled
+design with fresh inputs and correct family spending. Existing closed or
+interrupted studies must not be extended automatically. Mac feasibility is
+static only; no SSH, configuration, transfer or execution was performed.
+
+The [final report](../docs/research/search/SR021_FUTILITY_PHASE2_2026-10-15.md)
+and closeout-validation-v1.json identify evidence, source/binary/model identities,
+validation and remaining uncertainty. This technical disposition is not GPT/owner
+acceptance, Project Source synchronization or release/deployment. Human actions
+required after this prompt: GPT/owner technical reconciliation, then owner
+replacement and explicit confirmation of BOTH current Project Source mirrors
+from P2-R037/P2-F041; these block subsequent programme planning/launch from the
+mirrors. The already-completed SR-024 predecessor handback is not reopened.
 
 ### SR-021 bounded continuation and resource decision - 2026-10-16 local
 
@@ -1384,3 +1436,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-F038 | Record the512-pair four-worker independent result and original-rule final-stage continuation, audited CPU/game evidence and prospective resource bounds; preserve native closure, queued DEEP investigation and no adoption or successor. |
 | P2-F039 | Record owner-directed SHALLOW4 interruption, preserved completed and partial evidence, verified process shutdown and SR-021 primary-PC resource constraint; continue bounded research and limited Mac feasibility without resumption, pooling, adoption or successor. |
 | P2-F040 | Record completed bounded DEEP development and additional correctness/worker evidence, preserved interruption and source identities, owner-deferred Mac access and the specific remaining resource choice; retain ACTIVE without adoption, automatic resumption or successor. |
+| P2-F041 | Close SR-021 technically as DEFERRED by explicit owner resource choice after substantial six-formulation investigation; preserve native protocol futility, distinct owner-interrupted four-worker evidence, bounded DEEP uncertainty, unchanged production, no automatic resumption/Mac work/successor, and BOTH-mirror GPT/owner handback. |

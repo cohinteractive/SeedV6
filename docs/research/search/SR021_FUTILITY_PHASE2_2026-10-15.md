@@ -1,8 +1,10 @@
 # SR-021 Futility-Pruning Family â€” Phase 2
 
-Status: **ACTIVE; bootstrap verified, no futility adoption.** Only SR-021 is
-authorized. Repository masters govern; external GPT/owner acceptance and later
-Project Source synchronization are separate from technical completion.
+Status: **Technically DEFERRED without adoption by explicit owner resource
+decision; no ACTIVE feature or successor.** See the final technical-closeout
+section below. Repository masters P2-R037/P2-F041 govern; GPT/owner technical
+reconciliation and BOTH current Project Source synchronizations remain pending.
+Earlier active/running statements are historical checkpoints.
 
 ## Verified starting conditions
 
@@ -860,3 +862,160 @@ paths pass exact Git-ignore checks. Build remains35 with the original nonblockin
 initialization warning; no bump, replacement finalization or root journal creation.
 No Mac execution, new independent strength confirmation or production integration
 was performed. continuation-validation-v1.json records these actual checks.
+
+## Technical closeout: DEFERRED - 2026-10-16 local
+
+The owner answers the concrete remaining resource choice: **"Close technically
+as DEFERRED."** This closes the SR-021 technical work unit without production
+adoption. No feature remains ACTIVE and no successor is authorized. Earlier
+ACTIVE/running/pending statements in this chronological report are historical.
+The owner resource decision is recorded here without changing frozen protocols,
+assessments, raw evidence or their original conclusions. The unlaunched proposal
+in remaining-resource-decision-v1.json is retained as a historical alternative:
+its six sessions, approximately 15.3 hours, were not prepared, frozen or run;
+independent contrast 3 remains unspent. Mac access remains explicitly deferred.
+
+The evidence supports deferral rather than adoption or family rejection.
+Substantial development, independent confirmation, distinct mechanisms and a
+larger bounded follow-up did not establish a gain. A useful SHALLOW four-worker
+effect and smaller effects remain unresolved. Primary-PC development time has
+real opportunity cost; no assumption that Elo must decline or that a candidate
+needing more than six total hours should be rejected is made.
+
+| Formulation | Mechanism and useful finding | Technical outcome |
+| --- | --- | --- |
+| LEAF | Guarded D1 parent-static omission, exploratory raw margin 50; modest D6 cost reduction. Native 32-pair screen -5.43 Elo, normal 95% [-84.22,+72.80]. | Weak development support; no adoption or inferiority claim. |
+| SHALLOW | D1/D2 margins 50/100, protected original scout/window/history/proof boundaries; strongest combined development and shallow work savings. | Native independent study closed for computational futility; four-worker study owner-interrupted and inconclusive. |
+| PREFIX | SHALLOW with first three actually searched quiets protected. Four-worker 32-pair screen +5.43 [-74.36,+85.81]. | Weak incremental evidence; not an established improvement over SHALLOW. |
+| DEEP | D3 only, margin 200 and first three searched quiets protected; distinct horizon hypothesis. | Larger fixed 128/64-pair native/four-worker screens inconclusive; modest native work savings, no independent confirmation performed. |
+| D2 | D2-only margin 100 avoids D1 work; native/four-worker 32-pair screens -21.74 [-100.48,+54.79] and -5.43 [-87.37,+75.90]. | Some cost savings but weak strength support; retains the adverse SHALLOW opening 04 choice. |
+| CHILD | D1 negative child-static bound with zero margin, prepared evaluator transition reused and cancellation checkpoint corrected. | Local predicate does not make the selective tree exact; adverse complete-request economics/choice evidence. Set aside without a clock tournament. |
+
+All margins are experimental Pair-2 score units, not empirically calibrated
+centipawns. OFF is the accepted production selection. Retained experimental
+implementations, instrumentation, controls and tests are not production adoption.
+
+| Independent SHALLOW evidence | Resource condition | Result and frozen stopping status |
+| --- | --- | --- |
+| confirmation-w1-protocol-v2.json, contrast 1 | Native EFFORT, 1 worker/engine, 4 concurrent games, 10+0.1 | 512 pairs / 1,024 normal games, W/D/L 400/222/402, -0.679 Elo, adjusted [-25.162,+23.799]; CLOSED computational futility, plug-in power 0.000651 <0.10. Neither inferiority nor equivalence. |
+| confirmation-w4-protocol-v2.json, contrast 2, first look | ROOT_REUSE, 4 workers/engine, 2 concurrent games, 10+0.1 | 128 pairs / 256 normal games, +43.658 Elo, adjusted [-8.068,+97.400]; original CONTINUE. |
+| Same contrast 2, second look | Same frozen resource condition | Cumulative 512 pairs / 1,024 normal games, W/D/L 454/174/396, +19.700 Elo, adjusted [-7.490,+47.134]; original CONTINUE. No positive criterion met. |
+| Same contrast 2, final stage | Owner stopped identified process tree at 2026-10-15T16:28:37.9413388Z; shutdown verified 16:28:51.6053008Z | OWNER-INTERRUPTED for resource allocation. 165 surviving normal games, 82 full pairs plus one color, retained as raw evidence. No assessment3 or completed 2,048-pair final look. |
+
+The original three-look family-adjusted paired-normal inference and required
+2.5-SE check remain unchanged. Adjusted bounded-pair Hoeffding sensitivities
+also span zero (native 512 [-51.897,+50.510], four-worker 512 [-34.388,+74.767]).
+Normal inference is approximate and conditional on the frozen pair model;
+opening-source, finite-horizon and host limits remain. Do not narrow intervals
+after interruption, reuse contrast 2 spending, pool worker conditions/development/
+partial games, or extend the closed native study. The Windows executor's original
+failure receipt after forced process termination remains intact; the separate
+research classification is owner-interrupted. No unfinished/unflushed game is
+claimed completed, and no partial WDL/Elo is used for a decision.
+
+The final bounded DEEP development at 5+0.05 used 128 fresh native pairs with two
+concurrent games and 64 disjoint four-worker pairs with one concurrent game:
++9.503 Elo 95% [-28.387,+47.620] and -5.429 [-57.929,+46.823]. All 384 games
+passed audits. These exploratory intervals and the earlier 32-pair results stay
+separate. Across all completed development batches and scheduled assessments,
+2,880 normal games were audited in distinct comparisons; this is an inventory,
+not a pooled statistical sample. The 165 interrupted-stage games are additional
+raw evidence only.
+
+Clean fixed-depth economics explain why SHALLOW remained worth investigating:
+native/four-worker D6 elapsed ratios 0.912/0.927 and admitted-node ratios
+0.893/0.866; equal 100k elapsed ratios 1.023/1.062 show that node reduction is
+not free per-node work. D2 D6 elapsed 0.947/0.861 also did not establish strength.
+CHILD D6 elapsed 1.155/1.074, admitted nodes 1.393/1.271 and evaluator calls
+1.486/1.349 undermine its cheap-leaf premise; faster equal-admission work is
+not a useful-horizon gain. DEEP D6 elapsed 0.950/0.990 is modest. Whole-match
+candidate/baseline CPU ratios are 1.001139 for native SHALLOW and 0.995568 at the
+four-worker 512-pair look; clock conditions and full match throughput matter.
+DEEP follow-up ran 60.14 minutes total with ratios 0.998071/1.002515. Snapshot
+CPU 22%/16% and about 17.8GiB free show reduced load, not proven desktop
+responsiveness. Nonexclusive host load, short-request JIT/allocation noise and
+multiworker scheduling constrain causal timing interpretations.
+
+Correctness work preserved the evidence/proof boundary: omitted moves do not
+fabricate searched ordinals, history, PVs or nominal TT proof. The CHILD admission
+gap was corrected before its retained v3 qualification, with a regression test.
+Independent witnesses retain adverse SHALLOW/D2 choice c2c3(0) versus a2a3(2)
+and CHILD b3c2(-64) versus baseline f1e1(-56), alongside favorable/unchanged
+cases. Local qleaf validity does not establish whole-tree equivalence. The CHILD
+root replay capped at 20M and one later DEEP omission replay capped at 1M have no
+value conclusion. Sampled ordinary-proof checks found no contamination; this remains finite evidence.
+
+Validation already run on the preserved source includes the 818-test broad
+Search/rules/UCI/SEE suite: 807 passed, 11 existing disabled, 0 failures/errors;
+19 latest focused tests; and the seven-policy integrity suite with 1,449
+observations, 9,636,205 evaluator-parity checks and 645 ordinary-proof replays.
+Those totals span all policies, not CHILD alone. Fresh SHALLOW/D2/CHILD omission
+replays completed 3,056/1,520/1,536 with zero above-alpha values; the later DEEP
+qualification completed 1,519 of 1,520 with zero above-alpha results and the
+explicit cap. Real-model harnesses cover 1..16 workers, deeper 4/16 cumulative
+execution, private ownership/reuse/drain and legal publication, with 44 real UCI
+worker/lifecycle requests for each qualified SHALLOW/D2/CHILD/DEEP execution.
+OFF bridges preserve deterministic accepted controls. Nine synthetic frozen
+confirmation-rule tests passed. Earlier invalid harness attempts, mistaken
+class-list assertions and the superseded unstarted protocols remain recorded,
+not selectively erased or counted as valid results.
+
+Current closeout validation is read-only identity/evidence/process and document
+verification, recorded in closeout-validation-v1.json. It rechecks 368 preserved
+v1 source entries, 376 current v3 source/build entries, all three frozen
+installations, frozen protocol inputs, completed confirmation PGNs/receipts,
+interrupted evidence and both Phase1 archives. No engine code changed for this
+closeout; the broad runtime suite was not repeated. No new strength tournament,
+GUI/full-application deployment QA, training, live Mac checks or platform
+certification was performed. These omissions do not establish runtime results.
+
+Reproducibility uses the accepted SR024 source
+35294146bb7e44975b516005b2cc196439666e09 and frozen baseline app.jar
+2341955302900ae1a15879d0cff6b14a3744498db0dd862b8cd2aabe7482ed0f.
+Frozen v1/v2/v3 JARs are respectively
+c2a5a379e0e5e8a3d0590a7322d449c1c0e6db7003b0fcc56744336fc46c3836,
+fdd4f7d65f86a12c92b132f99e7cede1128eb7bdd7a0254b9dafb4c61ab8275e,
+729a393bcf0704e73f8ff94da92e95a63b49c8c0c45cdc504c6dd13cac33d467.
+The v1/v2/v3 identity and source-preservation manifests retain exact source
+bytes and build/install dependencies. Protocol hashes and full evaluator store,
+generation 32 checkpoint and network SHA are specified above and rechecked via
+frozen files. Java 21 / Windows Ryzen 5500, paired opening/color identities, clocks,
+worker counts, concurrency, memory settings and all original exclusions remain
+in immutable configurations. The latest closeout starts from clean
+5f5f639caa7672072c812e90d228e51e8f445863; prior feature commits and failures are
+preserved. Raw PGNs/logs/large outputs remain local-only at the manifest paths;
+Git contains summaries, protocols, receipts and intended frozen input fixtures.
+A fresh checkout must verify local raw availability before attempting analysis.
+
+Resumption conditions are explicit: renewed SR-021 authority, a worthwhile
+unresolved hypothesis and an acceptable execution arrangement, with qualified
+candidate/baseline identities, fresh paired inputs and a prospective statistical
+design preserving family spending and comparable resources. The original
+interrupted stage must not automatically resume. Predetermined complete-pair
+sessions require a validated scoped adapter, identical restart/warmup handling
+and no extra interim hypothesis looks; merely labelling back-to-back work as
+sessions does not satisfy the owner constraint. The 2020 M1/8GB Mac is a plausible
+independent host, with actual sustained throughput, thermals, memory/Java/native
+compatibility, sleep and reliability still unverified. No SSH setup, transfer,
+BotLi interruption or infrastructure programme is required now. No new Search
+feature has been selected or started.
+
+The active masters are now P2-R037/P2-F041, from feature launch P2-R028/P2-F032
+and this closeout's P2-R036/P2-F040. This is a technical disposition, not external
+GPT/owner acceptance, mirror synchronization, release or deployment. Human
+actions required after this prompt: GPT/owner technical reconciliation, then
+owner replacement and explicit synchronization confirmation of BOTH
+source/CHESS_SEARCH_CONTRACT.md (P2-R037) and
+source/CHESS_SEARCH_RESEARCH_FRONTIER.md (P2-F041). These block subsequent
+programme planning/launch from the mirrors; the completed SR024 predecessor
+acceptance/synchronization is not requested again. No manual evidence cleanup,
+Mac access or version repair is required by this technical disposition.
+
+Closeout version bookkeeping: the new local begin was attempted with verified
+shared bindings, then its prolonged full-tree capture was stopped at the exact
+owned process before any token/reservation/version write. Subsequent status is
+idle with no active/unfinished operation or blocker. This is a non-blocking
+initialization warning under the SeedV6 override, not a successful finalization
+or a helper-generated terminal warning receipt. Build 35 is unchanged; no
+verified bump, finish, replacement bump or manual repair is claimed. The absent
+root journal was not created.
