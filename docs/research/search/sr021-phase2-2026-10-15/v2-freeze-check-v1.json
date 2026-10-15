@@ -1,0 +1,6 @@
+{
+  "status": "source_and_installation_copied_class_expectation_check_failed",
+  "sourceArchive": "app/build/sr021-p2-v2-source",
+  "installation": "app/build/sr021-p2-v2",
+  "reason": "The initial expected changed class list assumed a synthetic enum switch class. Actual differences are FutilityPolicy.class and FutilityPolicy$Diagnostics.class. The source/install snapshots are complete and preserved. Inspect disassembly/debug attribution after clean-cost run before accepting manifest; no code/runtime failure is inferred from a mistaken class-list expectation."
+}

@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "totals": {
+    "tests": 18,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": 2,
+  "raw": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\child-focused-v1.log",
+  "xml": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\child-focused-v1-xml",
+  "shellNote": "PowerShell wrapper returned1 after compile warnings; Gradle explicitly BUILD SUCCESSFUL and all XML passed. No test failure."
+}

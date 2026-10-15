@@ -1,0 +1,85 @@
+{
+    "startedUtc":  "2026-10-15T10:12:55Z",
+    "completedUtc":  "2026-10-15T10:13:10Z",
+    "elapsedSeconds":  15.094368,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  22496,
+                          "averageLogicalCpus":  0.5083,
+                          "workingSetBytes":  227667968
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  22072,
+                          "averageLogicalCpus":  0.5083,
+                          "workingSetBytes":  228552704
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  20936,
+                          "averageLogicalCpus":  0.5031,
+                          "workingSetBytes":  227446784
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  8528,
+                          "averageLogicalCpus":  0.5031,
+                          "workingSetBytes":  235753472
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  23192,
+                          "averageLogicalCpus":  0.4979,
+                          "workingSetBytes":  230395904
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  22208,
+                          "averageLogicalCpus":  0.4979,
+                          "workingSetBytes":  228122624
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  32600,
+                          "averageLogicalCpus":  0.4958,
+                          "workingSetBytes":  227389440
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  26224,
+                          "averageLogicalCpus":  0.4927,
+                          "workingSetBytes":  228818944
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  30976,
+                          "averageLogicalCpus":  0.0145,
+                          "workingSetBytes":  96043008
+                      },
+                      {
+                          "name":  "bash",
+                          "pid":  10508,
+                          "averageLogicalCpus":  0.0093,
+                          "workingSetBytes":  9474048
+                      }
+                  ],
+    "unreadableBefore":  159,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  19731168
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  34
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

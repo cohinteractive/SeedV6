@@ -1,0 +1,14 @@
+{
+  "status": "closed",
+  "protocol": "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w1-protocol-v2.json",
+  "protocolSha256": "c5064e8fc5374ce923bc622f1ef4e94d35bffe3b3bcb2a662964206cab7bac62",
+  "runs": [
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w1-v2\\stage1",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w1-v2\\stage2"
+  ],
+  "assessments": [
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w1-v2\\assessment1.json",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w1-v2\\assessment2.json"
+  ],
+  "decision": "futility"
+}

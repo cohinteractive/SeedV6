@@ -27,6 +27,13 @@ class FutilityPruningTest {
                     assertTrue(Arrays.stream(ExhaustiveOracle.legalMoves(b)).anyMatch(x->x==m));
                     assertTrue(Long.bitCount(b[0]|b[1]|b[2])>6);assertTrue(a>=0&&z<=ExactSearch.MAX_STATIC_SCORE);
                     assertTrue(e+policy.margin(depth)<=a);
+                    if(policy==FutilityPolicy.CHILD && omissions<=64) {
+                        var fresh=ExactEvaluator.from(EVAL);fresh.initialize(c);
+                        assertEquals(-fresh.evaluate(c,0),e);
+                        var leaf=ExactSearch.quiescenceResearch(ExactEvaluator.from(EVAL))
+                                .search(c,GameHistory.initial(c),0,()->false);
+                        assertTrue(leaf.completed());assertTrue(-leaf.score()<=a);
+                    }
                     assertTrue(Board.halfMoveClock((int)c[Board.STATUS])+depth-1<100);
                 }
             };
@@ -62,6 +69,23 @@ class FutilityPruningTest {
         var b=Board.fromFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 8 5");
         var h=GameHistory.builder(b).appendPosition(b).appendPosition(b).snapshot();
         for(var p:FutilityPolicy.values())assertEquals(0,engine(p,null,null).search(b,h,5,()->false).score());
+    }
+    @Test void childStaticNeverEvaluatesAfterCancelledPreparation() {
+        var sink=new FutilityPolicy.Diagnostics();var cancelled=new boolean[1];
+        var delegate=ExactEvaluator.from(EVAL);
+        var guarded=new ExactEvaluator(){
+            public void initialize(long[] b){delegate.initialize(b);}
+            public void child(long[] b,long[] c,int p){
+                if(sink.candidates>0){cancelled[0]=true;return;}
+                delegate.child(b,c,p);
+            }
+            public int evaluate(long[] b,int p){assertFalse(cancelled[0]);return delegate.evaluate(b,p);}
+        };
+        var search=ExactSearch.iterationReuseResearch(guarded,new TTable(1),IterationReuse.EFFORT,true,null)
+                .withSeeResearch(SeePolicy.QXRAY,null).withFutilityResearch(FutilityPolicy.CHILD,sink);
+        var board=Board.fromFen(MIDDLE);
+        var result=search.search(board,GameHistory.initial(board),6,()->cancelled[0]);
+        assertTrue(cancelled[0]);assertTrue(sink.candidates>0);assertFalse(result.completed());
     }
     @Test void interruptionAndRequestReuseDoNotLeakFutilityState() {
         var b=Board.fromFen(MIDDLE);var h=GameHistory.initial(b);

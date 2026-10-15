@@ -1,6 +1,6 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R030**
+Internal revision: **P2-R032**
 
 Status: **SR-021 Futility-Pruning Family is ACTIVE. SR-024 IMPLEMENTED owner acceptance and BOTH P2-R028/P2-F032 Project Source synchronizations are confirmed by the launch. No successor is authorized.**
 
@@ -1014,6 +1014,62 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
+### SR-021 follow-up mechanisms and four-worker confirmation - 2026-10-16 local
+
+SR-021 remains ACTIVE; production is unchanged cumulative QXRAY. Completed
+D2one/four development is -21.74/-5.43 Elo and DEEPone +32.67, each only32 pairs
+with broad intervals crossing zero. These do not establish variant strength.
+A distinct CHILD D1 child-static formulation has a restricted stand-pat rationale
+but retains selective ancestry and truthful omitted ordinals. Its corrected
+prototype passed real-model evaluator/proof/replay/all-worker checks. Whole-D6
+wall is1.155/1.074 ofOFF at1/4 and an independent opening10 replay finds an
+adverse8 raw-unit choice. Higher admitted-node NPS counts cheap static probes,
+not demonstrated useful search progress. CHILD is set aside without clock
+confirmation; all attempts, including a corrected cancellation gap and one
+capped root replay, are preserved in the [SR-021 report](../docs/research/search/SR021_FUTILITY_PHASE2_2026-10-15.md).
+
+The original frozen SHALLOW4 v2 contrast2 remains unchanged and is the next
+independent investment after checkpoint validation:128/512/2048 fresh paired
+openings,10+0.1, two simultaneous four-worker games, original adjusted rules and
+futility stopping. Its distinct worker information value survives SHALLOW1's
+closed computational futility. Do not rerun/extend the closed native study,
+retune the frozen finalist, pool exploration, or infer strength across workers.
+DEEPone remains an unresolved, lower-opportunity development hypothesis for a
+subsequent evidence/value decision. No successor, adoption or external acceptance.
+
+### SR-021 first closed confirmation and distinct follow-up - 2026-10-16 local
+
+SR-021 remains ACTIVE and production remains unchanged cumulative QXRAY.
+The one-worker SHALLOW v2 independent protocol is CLOSED for its original
+computational-futility rule at512 fresh pairs/1,024 normal games:400/222/402,
+-0.679 Elo, adjusted paired-normal[-25.162,+23.799], required2.5-SE
+[-23.875,+22.512], bounded sensitivity[-51.897,+50.510]. CPU ratio1.001139.
+This establishes neither gain nor inferiority/equivalence. Do not extend the
+protocol, reuse its unplayed reservation or pool exploratory results into it.
+The separately frozen SHALLOW4 v2 protocol remains unlaunched at this checkpoint.
+
+Independent nominal-D6 replay found an adverse opening04 choice: SHALLOW's
+c2c3 scores0, while the baseline a2a3 scores2. These uncalibrated score units
+are finite-horizon evidence, not demonstrated game loss or false TT proof.
+At opening05, both choose e1g1 and SHALLOW16 matches the reference rather than
+baseline14. Preserve both findings and conditional-sampling limitations.
+
+Distinct D2 research retains the existing depth2 margin100 and protections,
+removes depth1 omission, and leaves SHALLOW v1 binary/protocol unchanged. It
+passes focused, evaluator/proof, independent omission, all-worker and UCI checks;
+clean costs justify proportionate fresh exploratory clock screens at1/4. It
+still exhibits the opening04 adverse choice. A separate DEEP1 screen tests
+lower-opportunity depth3 work. No margin sweep, retuned frozen finalist or
+production adoption is implied. All five formulations and raw positive,
+negative, inconclusive and failed evidence remain in the
+[SR-021 report](../docs/research/search/SR021_FUTILITY_PHASE2_2026-10-15.md).
+The new D2 prototype is frozen as `app/build/sr021-p2-v2`, app.jar
+`fdd4f7d65f86a12c92b132f99e7cede1128eb7bdd7a0254b9dafb4c61ab8275e`.
+Future confirmation requires fresh evidence and the remaining family-error
+allocation; SHALLOW4 retains its originally assigned contrast2. No successor
+is selected, and no owner/GPT acceptance or Project Source synchronization is
+claimed by this active research checkpoint.
+
 ### SR-021 frozen finalist and prospective confirmation - 2026-10-15 local
 
 SR-021 remains ACTIVE; production is unchanged QXRAY/EFFORT1/ROOT_REUSE2..16.
@@ -1051,7 +1107,7 @@ outcome is claimed at this checkpoint. Do not retune or extend after a stopping
 decision. No successor is selected, and owner acceptance/mirror handback remains
 reserved for the eventual SR-021 technical disposition.
 
-### SR-021 activation ? 2026-10-15 local
+### SR-021 activation - 2026-10-15 local
 
 The owner confirms SR-024 IMPLEMENTED acceptance, GPT reconciliation without
 remediation and synchronization of BOTH P2-R028/P2-F032 Project Source mirrors.
@@ -1315,3 +1371,5 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-R028 | Close SR-024 as technically IMPLEMENTED: adopt frozen QXRAY across Pair-2 EFFORT1/ROOT_REUSE2..16 after independent positive confirmations; record tactical/proof boundaries, CPU/statistical/host limits, unchanged hot classes, all-worker and consumer validation, preserved controls and explicit owner/GPT both-mirror handback; select no successor. |
 | P2-R029 | Confirm SR-024 owner acceptance and BOTH predecessor mirrors; activate only SR-021 over verified cumulative QXRAY production, preserving evaluator/reference/worker boundaries and recording bootstrap challenges and durable research continuation. |
 | P2-R030 | Record SR-021 unchanged SHALLOW finalist, four-formulation development, conditional correctness/proof and all-worker validation, fresh source/exclusions and prospectively staged1/4 confirmation with preserved unstarted superseded protocols; retain ACTIVE and unchanged production without successor activation. |
+| P2-R031 | Record closed512-pair SHALLOW1 confirmation futility without inferiority/adoption, independent adverse/favorable root witnesses, distinct validated D2 follow-up and prospective development while preserving frozen SHALLOW4 contrast2, original protocols and all-worker/proof boundaries; retain ACTIVE with no successor. |
+| P2-R032 | Record completed D2/DEEP development, corrected child-static leaf evidence and adverse economics/decision findings, then justify the unchanged independent SHALLOW4 contrast while preserving closed native futility, all attempts and unchanged production; retain only SR-021 ACTIVE. |

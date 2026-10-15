@@ -1,0 +1,39 @@
+{
+  "purpose": "Exploratory follow-up after closed SHALLOW1 computational futility; no adoption inference",
+  "openings": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-d2-openings.pgn",
+  "openingSha256": "99402e44cfa9536b6eb7d1b0c1f4a1d7969159883e47f437d14c9cc12e9ab6a4",
+  "pairs": 32,
+  "tc": "5+0.05",
+  "seed": 2026101601,
+  "runner": "tools/sr021-match.py",
+  "invocation": "Call the existing run(SimpleNamespace(**arguments)) entrypoint, as the confirmation executor does. Frozen runner remains unmodified; its older CLI choices do not enumerate the newly introduced D2 enum. Actual binary policy identity is required by the unchanged preflight.",
+  "contrasts": [
+    {
+      "policy": "d2",
+      "workers": 1,
+      "concurrency": 4,
+      "candidate": "app/build/sr021-p2-v2"
+    },
+    {
+      "policy": "d2",
+      "workers": 4,
+      "concurrency": 2,
+      "candidate": "app/build/sr021-p2-v2"
+    },
+    {
+      "policy": "deep",
+      "workers": 1,
+      "concurrency": 4,
+      "candidate": "app/build/sr021-p2-v1"
+    }
+  ],
+  "comparator": "app/build/sr024-production-v1",
+  "comparatorPolicy": "off means actual accepted QXRAY",
+  "candidateManifests": {
+    "v1-identities.json": "48a65e02951a6664af2b9d67a26956bbd5f90868a0d1d182817ea4e42fd096c4",
+    "v2-identities.json": "c19d15c95a7c066e5309e71049adfd198e22736bc37513ce958b63f72efe10f4"
+  },
+  "hypotheses": "D2 may improve work per parent-evaluation and avoid compounding D1 with QXRAY while retaining shallow opportunity; the known opening04 adverse choice persists. DEEP is a materially distinct, lower-opportunity selective depth with more conditional headroom risk but little measured equal-node overhead. These are not tuned numeric margins.",
+  "stopping": "Complete every launched fixed32-pair contrast or classify invalid. Preserve all normal, adverse, failed and inconclusive results. No exploratory pooling with confirmation or claim from small point estimates.",
+  "limits": "Fresh partition0 book differs from original development source. No independent confirmation of these policies. Source/host/clock/evaluator limits remain; new confirmation requires fresh protocol and later family contrast indices. Heavy QA/book parsing is complete before matches."
+}

@@ -1,0 +1,79 @@
+{
+  "source": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\cost-v1.jsonl",
+  "sha256": "84b192555f7aab590fc0168ee427a666b52dac5e4420625e21a023a70a10bcfb",
+  "results": [
+    {
+      "workers": 1,
+      "policy": "leaf",
+      "rows": 26,
+      "eligibleQuietVisits": 555921,
+      "lazyParentEvaluations": 29306,
+      "omittedQuietMoves": 507468,
+      "omittedPerEligibleVisit": 0.9128419325767511
+    },
+    {
+      "workers": 1,
+      "policy": "shallow",
+      "rows": 26,
+      "eligibleQuietVisits": 707879,
+      "lazyParentEvaluations": 41527,
+      "omittedQuietMoves": 629948,
+      "omittedPerEligibleVisit": 0.8899091511402373
+    },
+    {
+      "workers": 1,
+      "policy": "prefix",
+      "rows": 26,
+      "eligibleQuietVisits": 595703,
+      "lazyParentEvaluations": 29929,
+      "omittedQuietMoves": 559828,
+      "omittedPerEligibleVisit": 0.9397770365433782
+    },
+    {
+      "workers": 1,
+      "policy": "deep",
+      "rows": 26,
+      "eligibleQuietVisits": 23891,
+      "lazyParentEvaluations": 856,
+      "omittedQuietMoves": 10531,
+      "omittedPerEligibleVisit": 0.44079360428613285
+    },
+    {
+      "workers": 4,
+      "policy": "leaf",
+      "rows": 26,
+      "eligibleQuietVisits": 676773,
+      "lazyParentEvaluations": 35707,
+      "omittedQuietMoves": 614884,
+      "omittedPerEligibleVisit": 0.9085527939205612
+    },
+    {
+      "workers": 4,
+      "policy": "shallow",
+      "rows": 26,
+      "eligibleQuietVisits": 772911,
+      "lazyParentEvaluations": 45773,
+      "omittedQuietMoves": 684499,
+      "omittedPerEligibleVisit": 0.8856116680963267
+    },
+    {
+      "workers": 4,
+      "policy": "prefix",
+      "rows": 26,
+      "eligibleQuietVisits": 654171,
+      "lazyParentEvaluations": 33946,
+      "omittedQuietMoves": 611177,
+      "omittedPerEligibleVisit": 0.9342771232598205
+    },
+    {
+      "workers": 4,
+      "policy": "deep",
+      "rows": 26,
+      "eligibleQuietVisits": 25850,
+      "lazyParentEvaluations": 911,
+      "omittedQuietMoves": 11208,
+      "omittedPerEligibleVisit": 0.43357833655705996
+    }
+  ],
+  "limits": "Observed per-request counter deltas exclude warmup. Initial instrumented run overlapped opening preparation, so no clean elapsed/CPU conclusions derive from it. Conditional repeat-corpus counts are neither population pruning safety nor strength evidence. Four-worker counts depend on scheduling."
+}

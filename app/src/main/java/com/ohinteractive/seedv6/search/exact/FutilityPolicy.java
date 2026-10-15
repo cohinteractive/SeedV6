@@ -3,18 +3,19 @@ package com.ohinteractive.seedv6.search.exact;
 /** SR-021 research only; OFF preserves accepted cumulative QXRAY production.
  * Margins are exploratory Pair-2 headroom, never score bounds or calibrated cp. */
 public enum FutilityPolicy {
-    OFF, LEAF, SHALLOW, PREFIX, DEEP;
+    OFF, LEAF, SHALLOW, PREFIX, DEEP, D2, CHILD;
 
     boolean considers(int depth,int searchedQuiets) {
         return switch(this) {
-            case LEAF -> depth == 1;
+            case LEAF, CHILD -> depth == 1;
             case SHALLOW -> depth >= 1 && depth <= 2;
             case PREFIX -> depth >= 1 && depth <= 2 && searchedQuiets >= 3;
             case DEEP -> depth == 3 && searchedQuiets >= 3;
+            case D2 -> depth == 2;
             default -> false;
         };
     }
-    int margin(int depth) {return depth == 1 ? 50 : depth == 2 ? 100 : 200;}
+    int margin(int depth) {return this == CHILD ? 0 : depth == 1 ? 50 : depth == 2 ? 100 : 200;}
 
     /** Worker-private optional counters/callbacks; no production observer allocation. */
     public static class Diagnostics {

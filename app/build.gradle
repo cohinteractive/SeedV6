@@ -738,3 +738,14 @@ tasks.register('sr021Workers', JavaExec) {
     jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=6'
     if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
 }
+
+tasks.register('sr021Decisions', JavaExec) {
+    group = 'verification'
+    description = 'Independent replay of observed futility root-decision differences.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr021Decisions'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}

@@ -350,3 +350,209 @@ Next execution is one-worker v2 via the unchanged staged runner; it evaluates
 only completed prospective looks and stops without post-hoc extension. Four-
 worker confirmation remains frozen and unlaunched until that result informs
 continued investment. No runtime code changes or strength claim at this checkpoint.
+
+The one-worker v2 confirmation has launched after clean checkpoint commit
+`0c0f2fc`; its durable execution receipt is `confirmation-w1-v2/execution.json`.
+No heavy tests, builds, book parsing or Git maintenance run during clock play.
+Use completed-look assessments only; preserve any failed/invalid attempt and
+never resume into an existing output directory. Four-worker v2 is unlaunched.
+
+Conditional integration constraint: if independent evidence supports adoption,
+explicit futilityOFF must retain the accepted QXRAY cumulative comparator,
+while explicit SEEOFF retains the older pre-SR024 control. An absent futility
+property and an explicitOFF property must therefore remain distinguishable in
+production/service/warmup/identity routing. The current research-only defaultOFF
+implementation has not yet needed that distinction. Preserve all historical
+research/reference/HCE paths; do not flip production before strength support.
+
+Completed-cost analysis separates main/qsearch/evaluator work in
+`clean-cost-work-and-decisions-v1.json`. SHALLOW D6 qnodes are.887/.863 and
+evaluator calls.906/.878 ofOFF at1/4. At100k, evaluation calls rise about1.5%
+in both domains, confirming added parent-evaluation overhead. Native D6 has
+only two distinct score differences: opening04 changes bestmove and-1->0,
+opening05 keeps its bestmove and14->16, reproduced in both rotated rounds.
+Both are selective trees; neither is an exact oracle. A targeted independent
+SR001A root/child replay harness is prepared for these complete-history cases,
+to run after clock confirmation before any adoption. This does not retune the
+frozen finalist. Four-worker and timed differences also include scheduling and
+completed-depth variation; they are not automatically classified as errors.
+
+## First independent prospective look
+
+One-worker v2 completed128 fresh pairs/256 normal games: W/D/L[103, 61, 92],
++14.938 Elo, adjusted paired-normal[-32.864,+63.316], required2.5-SE
+[-30.344,+60.736], adjusted Hoeffding[-88.616,+121.300]. The original rule
+returnsCONTINUE (plug-in maximum-look conditional power.754). This is not a
+positive boundary or adoption evidence. The unchanged runner has started the
+second stage toward512 cumulative pairs; no retuning, post-hoc extension or
+exploratory pooling is allowed. First-stage CPU ratio1.002359,
+match wall1796.39s. Independent full-history PGN/pair/process/input audits pass.
+Execution/assessment receipts remain in confirmation-w1-v2/. Four-worker v2
+remains unlaunched. The deferred diagnostic root replay is still required
+before any adoption; it must wait until clock execution is complete.
+
+Matched full-budget horizon analysis excludes cheap draw/sparse early finishes:
+at100k, SHALLOW gains one reported ply in6/40 native and3/40 four-worker
+requests, with the rest tied. At100ms, native is38ties/1gain/1loss; four-worker
+is34ties/5gains/1loss. Reported nominal depth is not equivalent effective
+horizon or strength. Raw aborted counters distinguish native unfinished depth
+calls from parallel unfinished root jobs, excluding completed jobs inside an
+incomplete cohort; they must not be compared as total waste across worker
+counts. Whole-request accounting still includes every admitted node. These
+qualifications and all policy totals are in clean-cost-work-and-decisions-v1.json.
+
+## Closed one-worker SHALLOW confirmation
+
+The original v2 confirmation is CLOSED for computational futility at512 fresh
+pairs/1,024 normal games. Cumulative W/D/L[400, 222, 402], -0.679 Elo, adjusted
+paired-normal[-25.162,+23.799], required2.5-SE[-23.875,+22.512], adjusted
+Hoeffding[-51.897,+50.510]. Original-rule plug-in maximum-look power.000651
+is below.10. This is neither inferiority nor equivalence; modest gains remain
+possible. The2,048-pair maximum is not run, and the frozen protocol and unused
+reservation remain closed and unchanged. CPU ratio1.001139, total measured
+match wall7204.36s. Both stages pass complete-history PGN, process, normal-ending,
+accounting and frozen-input checks; the native executor exits0.
+
+No production adoption. SR-021 continues: perform the queued independent
+root-decision replay while clock work is idle, then assess the separate frozen
+four-worker contrast and credible narrower mechanisms. LEAF1/PREFIX4 small
+near-neutral screens and SHALLOW1 futility do not reject the entire family.
+Do not retune or extend SHALLOW v1 confirmation; any new formulation is distinct,
+with fresh development/confirmation and later family-error allocation as needed.
+
+## Independent adverse witness and narrower follow-up
+
+All five independent SR001A root/child replays completed, with legal PVs,
+full real history, no selectivity and consistent real-ply score normalization.
+At opening04 the nominalD6 best score is2: baseline a2a3 independently scores2,
+whereas SHALLOW c2c3 scores0. This is an adverse selective choice change of
+two uncalibrated score units, not false proof or demonstrated game loss.
+The baseline selective root had reported-1, so both cumulative trees differ
+from the nominal reference. At opening05 both choose e1g1; the reference is16,
+matching SHALLOW16 rather than baseline14. Preserve both directions and the
+finite-horizon limit in decisions-v1-summary.json.
+
+Next distinct hypothesis D2 restricts futility to depth2 with the existing
+empirically motivated margin100 and all existing protections. It does not change
+the closed SHALLOW v1 protocol or binary. LEAF1 near-neutral development, added
+parent-evaluation cost and possible compounded QXRAY/D1 horizon effects make
+removingD1 a credible mechanism, rather than tuning another numeric margin.
+D2 must earn its own correctness, cost and clock evidence. DEEP1 also remains
+a distinct lower-opportunity candidate for proportionate development. Before
+launching the separately frozen SHALLOW4 confirmation, validate these new
+mechanics while the host is idle; never overlap heavy QA with clock play.
+
+D2 passes18 focused tests,8,031,569 evaluator parity checks,542 sampled
+ordinary proofs,1,520 independent omission replays and real-model1..16/deeper
+4/16 execution, plus44 UCI lifecycle/availability requests. A fresh18-position
+OFF bridge and20 preserved-policy preflight requests also pass. The new v2
+app.jar is `fdd4f7d65f86a12c92b132f99e7cede1128eb7bdd7a0254b9dafb4c61ab8275e`.
+Only FutilityPolicy implementation and Diagnostics debug line numbers differ
+from v1; javap confirms Diagnostics instructions are identical. An initial
+wrong expected changed-class list is preserved in v2-freeze-check-v1.json;
+snapshots were neither rebuilt nor overwritten to make that check pass.
+
+Clean rotated936-row costs put D2 elapsed ratios at.947/.861 forD6 and
+.986/1.019 for100k at1/4. Corresponding evaluator-call ratios are.954/.845
+and1.009/1.009. SHALLOWv2 comparison is.927/.889 D6 and.998/1.019 at100k.
+Short-request/JIT/scheduler limits remain; no Elo is inferred. D2 still chooses
+the adverse c2c3(0) rather than independently better a2a3(2) in opening04;
+it is a cost/horizon hypothesis, not a repair proven by that witness.
+
+The prospective development-protocol-v2.json fixes fresh partition0 openings
+for D2 at1/4 and a lower-opportunity DEEP1 screen, each32 pairs at5+0.05.
+No original runner or frozen confirmation input changes; D2 uses the existing
+programmatic runner entrypoint with full unchanged identity/audit checks.
+The SHALLOW4 v2 independent protocol remains frozen and unlaunched while this
+proportionate follow-up provides evidence for subsequent investment.
+
+## Child-static leaf hypothesis
+
+A distinct CHILD formulation uses negative child static atD1 with zero margin,
+retaining every existing protection and conservative selective dependency.
+Nonchecked qsearch stands pat at or above its static value; required draws
+and stalemate return0, which cannot improve nonnegative parent alpha. This
+justifies the restricted leaf predicate, not whole-tree equivalence or nominal
+proof. Omission still changes actual searched ordinals and later history/LMR/LMP
+choices. Existing observation reservoirs have41 searchedD1 improvers and all
+childHeadroom<0; atD2+ counterexamples exist. Exact counts and source hashes
+are in child-leaf-hypothesis-v1.json. This is not score calibration.
+
+A research-only prototype will charge child preparation/evaluation and reuse
+only the prepared transition on retained moves; qsearch can evaluate again.
+No new qsearch cache or independent qsearch redesign. Full-request economics,
+real-model parity, independent replays and clock evidence decide its value.
+Frozen v1/v2 binaries and all existing protocols remain unchanged.
+
+Follow-up development completed192 normal audited games: D2one[25,10,29],
+-21.74 Elo95%[-100.48,+54.79]; D2four[24,15,25],-5.43[-87.37,+75.90];
+DEEPone[27,16,21],+32.67[-36.68,+104.75]. CPU ratios1.0070/1.0243/1.0077.
+These are exploratory uncertain results, not gains or definitive rejection.
+All details and bounded sensitivities are in development-v2-summary.json.
+
+CHILD first focused/integrity/audit/worker checks passed, retained asv1.
+Subsequent source review found that a refused prepared-child budget admission
+could leave evaluator state unprepared before the new immediate evaluation.
+The prototype now checks cancellation immediately after preparation, before
+evaluation, with an explicit refused-preparation regression. This is a resolved
+prototype correctness gap, not evidence from a failed tournament. Revalidate
+asv2 before using performance or clock results. Prepared transitions remain
+charged under the existing adapter convention, including omitted child probes;
+they are distinct from recursive ExactSearch entered-node counters.
+
+## CHILD result and next independent investment
+
+Corrected CHILD passes19 focused tests,9,636,205 fresh/rolling evaluation
+comparisons,645 sampled independent ordinary TT proofs,1,536 omission replays
+and real-model all-worker/deeper4/16 execution. No sampled omitted leaf exceeds
+alpha. Its corrected runtime is frozen in v3-identities.json, app.jar
+`729a393bcf0704e73f8ff94da92e95a63b49c8c0c45cdc504c6dd13cac33d467`.
+Only ExactSearch/FutilityPolicy instructions change versusv2; nested Aborted
+instructions remain identical despite debug metadata. The mistaken initial
+changed-class expectation is preserved; no frozen artifact was overwritten.
+
+The clean624-request rotated comparison contradicts the cheap-leaf premise:
+D6 wall ratios1.155/1.074, admitted nodes1.393/1.271 and evaluator calls
+1.486/1.349 at1/4. Equal100k elapsed.830/.816 is misleading as an efficiency
+claim: prepared static probes are cheaper than completed qsearch but still
+consume existing adapter admissions, and many more are admitted after omissions
+change searched prefixes. Timed main-node work is.953/.974 ofOFF. No useful
+horizon/strength gain follows from larger reported NPS. Short CPU/JIT noise
+remains; no fixed-clock CHILD experiment is justified by these economics and
+adverse decision evidence. This formulation is set aside, not the whole family.
+
+Independent replay of all five distinct nativeD6 differences completes11/12
+queries. Opening02 root reaches the20M cap, so it has no root-oracle conclusion;
+its unchanged d1d2 child scores10. Opening10 changes from f1e1(-56) to b3c2(-64),
+an adverse8 raw-unit choice. CHILD restores opening04 a2a3(2), where SHALLOW/D2
+choose c2c3(0), but reports3 rather than exact2. Twofold moves both score6 versus
+root best7. Opening14 keeps a2a4(2) even though independent root best is11;
+CHILD reported11 and baseline8. These selective score/choice differences show
+that a locally valid qleaf predicate does not make the surrounding selective
+tree exact. No ordinary proof was contaminated. Full histories, finite horizons,
+cap and all favorable/adverse directions remain in child-decisions-v1-summary.json.
+
+The separately frozen SHALLOW4 v2 contrast remains a justified next investment.
+Four-worker ROOT_REUSE has different scheduling and prior development[35,5,24]
+(+60.31, exploratory95%[-16.14,+143.14]), with measured D6 work savings. Native
+SHALLOW1 futility is not evidence of four-worker inferiority. The original
+128/512/2048-pair rules, contrastIndex2 and fresh reserved openings remain
+unchanged. At the predeclared maximum, forecast power is about90% for20Elo,
+about21% for10Elo, with roughly15.5h upper projected total wall; the first look
+costs about1h and can stop early for the original negative/futility criteria.
+The decision can resolve a distinct worker benefit or remove the strongest
+remaining four-worker candidate; no strength transfer to1orother counts follows.
+Validate and checkpoint current research before launching that frozen contrast.
+No heavy work will overlap clock play. DEEP1's small positive exploratory result
+remains unresolved and receives a later value decision, not a gain claim.
+
+Checkpoint validation passes818 broad Search/rules/UCI/SEE tests (807passed,
+11existing disabled),18 deterministic OFF comparisons to accepted production,
+20 preserved-policy preflight requests and44 real CHILD UCI worker/lifecycle
+requests. The first UCI launch used system Python without chess and failed
+before engine/output creation; the retained log distinguishes this setup failure
+from the successful established-venv run. v3-uci-summary.json records both.
+The CHILD worker transcripts were inadvertently generated outside raw/. A narrow
+ignore entry preserves these completed logs at their recorded child-uci/*.txt
+paths without staging bulk output; future such transcripts use raw/. All frozen
+and negative evidence is preserved, with compact manifests/summaries in Git.

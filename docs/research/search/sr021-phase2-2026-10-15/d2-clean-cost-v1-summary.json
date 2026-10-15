@@ -1,0 +1,589 @@
+{
+  "status": "passed",
+  "raw": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\d2-clean-cost-v1.jsonl",
+  "sha256": "c22b337f4def8e3078960131684a107aef93d4414242636bc4e3c7e0192e65b1",
+  "completion": {
+    "status": "passed",
+    "observations": 936,
+    "jvm": "21+35-2513"
+  },
+  "comparisons": [
+    {
+      "workers": 1,
+      "policy": "shallow",
+      "budget": "depth6",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "candidate": 2671773800,
+          "baseline": 2883255200,
+          "ratio": 0.9266518621036389
+        },
+        "cpuNanos": {
+          "candidate": 2937500000,
+          "baseline": 3375000000,
+          "ratio": 0.8703703703703703
+        },
+        "allocatedBytes": {
+          "candidate": 4023544,
+          "baseline": 4536320,
+          "ratio": 0.8869621190744921
+        },
+        "gcCollections": {
+          "candidate": 0,
+          "baseline": 0,
+          "ratio": null
+        },
+        "compilationMillis": {
+          "candidate": 130,
+          "baseline": 316,
+          "ratio": 0.41139240506329117
+        },
+        "mainNodes": {
+          "candidate": 551984,
+          "baseline": 590034,
+          "ratio": 0.9355121908229017
+        },
+        "qNodes": {
+          "candidate": 3666582,
+          "baseline": 4132818,
+          "ratio": 0.8871869024960692
+        },
+        "evaluationCalls": {
+          "candidate": 3279778,
+          "baseline": 3621742,
+          "ratio": 0.9055802428775986
+        }
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "shallow",
+      "budget": "nodes100000",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "candidate": 2592327400,
+          "baseline": 2596368400,
+          "ratio": 0.9984435952925632
+        },
+        "cpuNanos": {
+          "candidate": 2687500000,
+          "baseline": 3078125000,
+          "ratio": 0.8730964467005076
+        },
+        "allocatedBytes": {
+          "candidate": 9795680,
+          "baseline": 9704728,
+          "ratio": 1.0093719267557009
+        },
+        "gcCollections": {
+          "candidate": 0,
+          "baseline": 0,
+          "ratio": null
+        },
+        "compilationMillis": {
+          "candidate": 75,
+          "baseline": 827,
+          "ratio": 0.09068923821039904
+        },
+        "mainNodes": {
+          "candidate": 952648,
+          "baseline": 919672,
+          "ratio": 1.0358562617976843
+        },
+        "qNodes": {
+          "candidate": 3350984,
+          "baseline": 3383960,
+          "ratio": 0.9902552039622218
+        },
+        "evaluationCalls": {
+          "candidate": 3108450,
+          "baseline": 3061070,
+          "ratio": 1.015478247802239
+        }
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "shallow",
+      "budget": "time100",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "candidate": 4109743700,
+          "baseline": 4115590200,
+          "ratio": 0.9985794261051549
+        },
+        "cpuNanos": {
+          "candidate": 4453125000,
+          "baseline": 4296875000,
+          "ratio": 1.0363636363636364
+        },
+        "allocatedBytes": {
+          "candidate": 10067544,
+          "baseline": 10022832,
+          "ratio": 1.0044610146114392
+        },
+        "gcCollections": {
+          "candidate": 0,
+          "baseline": 0,
+          "ratio": null
+        },
+        "compilationMillis": {
+          "candidate": 364,
+          "baseline": 328,
+          "ratio": 1.1097560975609757
+        },
+        "mainNodes": {
+          "candidate": 1454238,
+          "baseline": 1446875,
+          "ratio": 1.005088898488121
+        },
+        "qNodes": {
+          "candidate": 5606811,
+          "baseline": 5862864,
+          "ratio": 0.9563262937704167
+        },
+        "evaluationCalls": {
+          "candidate": 5171518,
+          "baseline": 5290945,
+          "ratio": 0.9774280397925135
+        }
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "d2",
+      "budget": "depth6",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "candidate": 2729847200,
+          "baseline": 2883255200,
+          "ratio": 0.9467934714901407
+        },
+        "cpuNanos": {
+          "candidate": 2828125000,
+          "baseline": 3375000000,
+          "ratio": 0.8379629629629629
+        },
+        "allocatedBytes": {
+          "candidate": 4022720,
+          "baseline": 4536320,
+          "ratio": 0.8867804740406321
+        },
+        "gcCollections": {
+          "candidate": 0,
+          "baseline": 0,
+          "ratio": null
+        },
+        "compilationMillis": {
+          "candidate": 61,
+          "baseline": 316,
+          "ratio": 0.1930379746835443
+        },
+        "mainNodes": {
+          "candidate": 558154,
+          "baseline": 590034,
+          "ratio": 0.9459692153333537
+        },
+        "qNodes": {
+          "candidate": 3909104,
+          "baseline": 4132818,
+          "ratio": 0.9458688962349661
+        },
+        "evaluationCalls": {
+          "candidate": 3453666,
+          "baseline": 3621742,
+          "ratio": 0.9535924977538434
+        }
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "d2",
+      "budget": "nodes100000",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "candidate": 2559126400,
+          "baseline": 2596368400,
+          "ratio": 0.9856561187541799
+        },
+        "cpuNanos": {
+          "candidate": 2953125000,
+          "baseline": 3078125000,
+          "ratio": 0.9593908629441624
+        },
+        "allocatedBytes": {
+          "candidate": 9766608,
+          "baseline": 9704728,
+          "ratio": 1.006376273502977
+        },
+        "gcCollections": {
+          "candidate": 1,
+          "baseline": 0,
+          "ratio": null
+        },
+        "compilationMillis": {
+          "candidate": 155,
+          "baseline": 827,
+          "ratio": 0.18742442563482467
+        },
+        "mainNodes": {
+          "candidate": 916608,
+          "baseline": 919672,
+          "ratio": 0.9966683774215155
+        },
+        "qNodes": {
+          "candidate": 3387024,
+          "baseline": 3383960,
+          "ratio": 1.0009054480549415
+        },
+        "evaluationCalls": {
+          "candidate": 3089242,
+          "baseline": 3061070,
+          "ratio": 1.0092033177941047
+        }
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "d2",
+      "budget": "time100",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "candidate": 4100735000,
+          "baseline": 4115590200,
+          "ratio": 0.9963905055464463
+        },
+        "cpuNanos": {
+          "candidate": 4468750000,
+          "baseline": 4296875000,
+          "ratio": 1.04
+        },
+        "allocatedBytes": {
+          "candidate": 10037368,
+          "baseline": 10022832,
+          "ratio": 1.0014502887008383
+        },
+        "gcCollections": {
+          "candidate": 0,
+          "baseline": 0,
+          "ratio": null
+        },
+        "compilationMillis": {
+          "candidate": 508,
+          "baseline": 328,
+          "ratio": 1.548780487804878
+        },
+        "mainNodes": {
+          "candidate": 1431721,
+          "baseline": 1446875,
+          "ratio": 0.989526393088553
+        },
+        "qNodes": {
+          "candidate": 5797878,
+          "baseline": 5862864,
+          "ratio": 0.9889156562389986
+        },
+        "evaluationCalls": {
+          "candidate": 5269306,
+          "baseline": 5290945,
+          "ratio": 0.9959101823965284
+        }
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "shallow",
+      "budget": "depth6",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "candidate": 1827093400,
+          "baseline": 2056347300,
+          "ratio": 0.8885140170631682
+        },
+        "cpuNanos": {
+          "candidate": 4390625000,
+          "baseline": 5343750000,
+          "ratio": 0.8216374269005848
+        },
+        "allocatedBytes": {
+          "candidate": 48379792,
+          "baseline": 48411224,
+          "ratio": 0.9993507290788599
+        },
+        "gcCollections": {
+          "candidate": 0,
+          "baseline": 0,
+          "ratio": null
+        },
+        "compilationMillis": {
+          "candidate": 185,
+          "baseline": 115,
+          "ratio": 1.608695652173913
+        },
+        "mainNodes": {
+          "candidate": 632638,
+          "baseline": 691345,
+          "ratio": 0.9150829180799745
+        },
+        "qNodes": {
+          "candidate": 4299315,
+          "baseline": 5094689,
+          "ratio": 0.84388173645143
+        },
+        "evaluationCalls": {
+          "candidate": 3832551,
+          "baseline": 4444137,
+          "ratio": 0.8623836303876321
+        }
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "shallow",
+      "budget": "nodes100000",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "candidate": 2012930100,
+          "baseline": 1976040000,
+          "ratio": 1.0186687010384405
+        },
+        "cpuNanos": {
+          "candidate": 4515625000,
+          "baseline": 4218750000,
+          "ratio": 1.0703703703703704
+        },
+        "allocatedBytes": {
+          "candidate": 128407296,
+          "baseline": 128321128,
+          "ratio": 1.0006715028253181
+        },
+        "gcCollections": {
+          "candidate": 0,
+          "baseline": 6,
+          "ratio": 0.0
+        },
+        "compilationMillis": {
+          "candidate": 262,
+          "baseline": 233,
+          "ratio": 1.1244635193133048
+        },
+        "mainNodes": {
+          "candidate": 1005621,
+          "baseline": 969728,
+          "ratio": 1.0370134718189017
+        },
+        "qNodes": {
+          "candidate": 3384878,
+          "baseline": 3387398,
+          "ratio": 0.9992560661605161
+        },
+        "evaluationCalls": {
+          "candidate": 3140650,
+          "baseline": 3071077,
+          "ratio": 1.022654267541973
+        }
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "shallow",
+      "budget": "time100",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "candidate": 4112311200,
+          "baseline": 4151227700,
+          "ratio": 0.9906253034493868
+        },
+        "cpuNanos": {
+          "candidate": 8078125000,
+          "baseline": 8578125000,
+          "ratio": 0.941712204007286
+        },
+        "allocatedBytes": {
+          "candidate": 136977160,
+          "baseline": 136197040,
+          "ratio": 1.0057278777864775
+        },
+        "gcCollections": {
+          "candidate": 1,
+          "baseline": 1,
+          "ratio": 1.0
+        },
+        "compilationMillis": {
+          "candidate": 424,
+          "baseline": 1013,
+          "ratio": 0.4185587364264561
+        },
+        "mainNodes": {
+          "candidate": 1986817,
+          "baseline": 2020296,
+          "ratio": 0.9834286658984625
+        },
+        "qNodes": {
+          "candidate": 7935733,
+          "baseline": 8310496,
+          "ratio": 0.954904857664332
+        },
+        "evaluationCalls": {
+          "candidate": 7307912,
+          "baseline": 7505853,
+          "ratio": 0.9736284470266071
+        }
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "d2",
+      "budget": "depth6",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "candidate": 1771007500,
+          "baseline": 2056347300,
+          "ratio": 0.8612394900413952
+        },
+        "cpuNanos": {
+          "candidate": 4171875000,
+          "baseline": 5343750000,
+          "ratio": 0.7807017543859649
+        },
+        "allocatedBytes": {
+          "candidate": 48447552,
+          "baseline": 48411224,
+          "ratio": 1.0007504044929747
+        },
+        "gcCollections": {
+          "candidate": 0,
+          "baseline": 0,
+          "ratio": null
+        },
+        "compilationMillis": {
+          "candidate": 42,
+          "baseline": 115,
+          "ratio": 0.3652173913043478
+        },
+        "mainNodes": {
+          "candidate": 599813,
+          "baseline": 691345,
+          "ratio": 0.8676030057351973
+        },
+        "qNodes": {
+          "candidate": 4256602,
+          "baseline": 5094689,
+          "ratio": 0.835497907723121
+        },
+        "evaluationCalls": {
+          "candidate": 3756716,
+          "baseline": 4444137,
+          "ratio": 0.8453195749815994
+        }
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "d2",
+      "budget": "nodes100000",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "candidate": 2014244400,
+          "baseline": 1976040000,
+          "ratio": 1.0193338191534584
+        },
+        "cpuNanos": {
+          "candidate": 4015625000,
+          "baseline": 4218750000,
+          "ratio": 0.9518518518518518
+        },
+        "allocatedBytes": {
+          "candidate": 129000792,
+          "baseline": 128321128,
+          "ratio": 1.0052965868566865
+        },
+        "gcCollections": {
+          "candidate": 0,
+          "baseline": 6,
+          "ratio": 0.0
+        },
+        "compilationMillis": {
+          "candidate": 1386,
+          "baseline": 233,
+          "ratio": 5.948497854077253
+        },
+        "mainNodes": {
+          "candidate": 962169,
+          "baseline": 969728,
+          "ratio": 0.992205030689018
+        },
+        "qNodes": {
+          "candidate": 3394707,
+          "baseline": 3387398,
+          "ratio": 1.0021577033463442
+        },
+        "evaluationCalls": {
+          "candidate": 3099279,
+          "baseline": 3071077,
+          "ratio": 1.0091830976559688
+        }
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "d2",
+      "budget": "time100",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "candidate": 4121738400,
+          "baseline": 4151227700,
+          "ratio": 0.9928962460912467
+        },
+        "cpuNanos": {
+          "candidate": 8671875000,
+          "baseline": 8578125000,
+          "ratio": 1.010928961748634
+        },
+        "allocatedBytes": {
+          "candidate": 137179680,
+          "baseline": 136197040,
+          "ratio": 1.0072148410861206
+        },
+        "gcCollections": {
+          "candidate": 0,
+          "baseline": 1,
+          "ratio": 0.0
+        },
+        "compilationMillis": {
+          "candidate": 625,
+          "baseline": 1013,
+          "ratio": 0.6169792694965449
+        },
+        "mainNodes": {
+          "candidate": 1990795,
+          "baseline": 2020296,
+          "ratio": 0.9853976842997264
+        },
+        "qNodes": {
+          "candidate": 8281272,
+          "baseline": 8310496,
+          "ratio": 0.9964834830556444
+        },
+        "evaluationCalls": {
+          "candidate": 7518859,
+          "baseline": 7505853,
+          "ratio": 1.0017327810709855
+        }
+      }
+    }
+  ],
+  "limits": "Two rotated rounds; no simultaneous heavy diagnostics, builds or book parsing. Static source/metadata reads only. Short-request CPU/JIT/scheduling variation and cheap early completion remain; no strength inference. Compared current v2 policies; frozen v1 strength stays separate."
+}

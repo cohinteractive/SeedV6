@@ -1,0 +1,2073 @@
+{
+  "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\clean-cost-v1.jsonl",
+  "sha256": "b586c2c8faa28b917572fbd9355c135b8dd86357a9c0894f4306215bbe9d0e14",
+  "totals": [
+    {
+      "workers": 1,
+      "policy": "leaf",
+      "budget": "depth6",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 590982,
+          "baseline": 590034,
+          "ratio": 1.0016066870722704
+        },
+        "qNodes": {
+          "candidate": 3955718,
+          "baseline": 4132818,
+          "ratio": 0.9571478831151045
+        },
+        "evaluationCalls": {
+          "candidate": 3502398,
+          "baseline": 3621742,
+          "ratio": 0.9670479012585657
+        }
+      },
+      "changedRootMove": 0,
+      "changedScore": 0
+    },
+    {
+      "workers": 1,
+      "policy": "leaf",
+      "budget": "nodes100000",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 954716,
+          "baseline": 919672,
+          "ratio": 1.0381048895693248
+        },
+        "qNodes": {
+          "candidate": 3348916,
+          "baseline": 3383960,
+          "ratio": 0.9896440856274897
+        },
+        "evaluationCalls": {
+          "candidate": 3077830,
+          "baseline": 3061070,
+          "ratio": 1.0054752096489137
+        }
+      },
+      "changedRootMove": 0,
+      "changedScore": 2
+    },
+    {
+      "workers": 1,
+      "policy": "leaf",
+      "budget": "time100",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 1362825,
+          "baseline": 1366909,
+          "ratio": 0.9970122370984462
+        },
+        "qNodes": {
+          "candidate": 5241307,
+          "baseline": 5442398,
+          "ratio": 0.9630510300790203
+        },
+        "evaluationCalls": {
+          "candidate": 4799182,
+          "baseline": 4912722,
+          "ratio": 0.9768885762312625
+        }
+      },
+      "changedRootMove": 2,
+      "changedScore": 2
+    },
+    {
+      "workers": 1,
+      "policy": "shallow",
+      "budget": "depth6",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 551984,
+          "baseline": 590034,
+          "ratio": 0.9355121908229017
+        },
+        "qNodes": {
+          "candidate": 3666582,
+          "baseline": 4132818,
+          "ratio": 0.8871869024960692
+        },
+        "evaluationCalls": {
+          "candidate": 3279778,
+          "baseline": 3621742,
+          "ratio": 0.9055802428775986
+        }
+      },
+      "changedRootMove": 2,
+      "changedScore": 4
+    },
+    {
+      "workers": 1,
+      "policy": "shallow",
+      "budget": "nodes100000",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 952648,
+          "baseline": 919672,
+          "ratio": 1.0358562617976843
+        },
+        "qNodes": {
+          "candidate": 3350984,
+          "baseline": 3383960,
+          "ratio": 0.9902552039622218
+        },
+        "evaluationCalls": {
+          "candidate": 3108450,
+          "baseline": 3061070,
+          "ratio": 1.015478247802239
+        }
+      },
+      "changedRootMove": 0,
+      "changedScore": 8
+    },
+    {
+      "workers": 1,
+      "policy": "shallow",
+      "budget": "time100",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 1353218,
+          "baseline": 1366909,
+          "ratio": 0.9899839711348744
+        },
+        "qNodes": {
+          "candidate": 5227868,
+          "baseline": 5442398,
+          "ratio": 0.9605817141634992
+        },
+        "evaluationCalls": {
+          "candidate": 4823973,
+          "baseline": 4912722,
+          "ratio": 0.981934862180274
+        }
+      },
+      "changedRootMove": 2,
+      "changedScore": 4
+    },
+    {
+      "workers": 1,
+      "policy": "prefix",
+      "budget": "depth6",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 557372,
+          "baseline": 590034,
+          "ratio": 0.9446438679804893
+        },
+        "qNodes": {
+          "candidate": 3851526,
+          "baseline": 4132818,
+          "ratio": 0.9319369979515187
+        },
+        "evaluationCalls": {
+          "candidate": 3426604,
+          "baseline": 3621742,
+          "ratio": 0.9461204028337745
+        }
+      },
+      "changedRootMove": 4,
+      "changedScore": 6
+    },
+    {
+      "workers": 1,
+      "policy": "prefix",
+      "budget": "nodes100000",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 933756,
+          "baseline": 919672,
+          "ratio": 1.0153141554815195
+        },
+        "qNodes": {
+          "candidate": 3369876,
+          "baseline": 3383960,
+          "ratio": 0.9958380122696486
+        },
+        "evaluationCalls": {
+          "candidate": 3110250,
+          "baseline": 3061070,
+          "ratio": 1.0160662774781368
+        }
+      },
+      "changedRootMove": 0,
+      "changedScore": 8
+    },
+    {
+      "workers": 1,
+      "policy": "prefix",
+      "budget": "time100",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 1356545,
+          "baseline": 1366909,
+          "ratio": 0.9924179297963508
+        },
+        "qNodes": {
+          "candidate": 5367107,
+          "baseline": 5442398,
+          "ratio": 0.986165840866471
+        },
+        "evaluationCalls": {
+          "candidate": 4924325,
+          "baseline": 4912722,
+          "ratio": 1.002361827109289
+        }
+      },
+      "changedRootMove": 1,
+      "changedScore": 3
+    },
+    {
+      "workers": 1,
+      "policy": "deep",
+      "budget": "depth6",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 568072,
+          "baseline": 590034,
+          "ratio": 0.9627784161590688
+        },
+        "qNodes": {
+          "candidate": 4033692,
+          "baseline": 4132818,
+          "ratio": 0.9760149128270347
+        },
+        "evaluationCalls": {
+          "candidate": 3533992,
+          "baseline": 3621742,
+          "ratio": 0.9757713277201965
+        }
+      },
+      "changedRootMove": 0,
+      "changedScore": 0
+    },
+    {
+      "workers": 1,
+      "policy": "deep",
+      "budget": "nodes100000",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 920376,
+          "baseline": 919672,
+          "ratio": 1.0007654903052392
+        },
+        "qNodes": {
+          "candidate": 3383256,
+          "baseline": 3383960,
+          "ratio": 0.9997919597158359
+        },
+        "evaluationCalls": {
+          "candidate": 3062086,
+          "baseline": 3061070,
+          "ratio": 1.000331910083729
+        }
+      },
+      "changedRootMove": 0,
+      "changedScore": 2
+    },
+    {
+      "workers": 1,
+      "policy": "deep",
+      "budget": "time100",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 1344875,
+          "baseline": 1366909,
+          "ratio": 0.9838804192524886
+        },
+        "qNodes": {
+          "candidate": 5394653,
+          "baseline": 5442398,
+          "ratio": 0.9912272127102796
+        },
+        "evaluationCalls": {
+          "candidate": 4876577,
+          "baseline": 4912722,
+          "ratio": 0.9926425716741146
+        }
+      },
+      "changedRootMove": 2,
+      "changedScore": 3
+    },
+    {
+      "workers": 4,
+      "policy": "leaf",
+      "budget": "depth6",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 661390,
+          "baseline": 671563,
+          "ratio": 0.9848517562760307
+        },
+        "qNodes": {
+          "candidate": 4463696,
+          "baseline": 4691273,
+          "ratio": 0.9514892865966231
+        },
+        "evaluationCalls": {
+          "candidate": 3950944,
+          "baseline": 4117575,
+          "ratio": 0.959531763234428
+        }
+      },
+      "changedRootMove": 4,
+      "changedScore": 5
+    },
+    {
+      "workers": 4,
+      "policy": "leaf",
+      "budget": "nodes100000",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 1004119,
+          "baseline": 969993,
+          "ratio": 1.0351816971875054
+        },
+        "qNodes": {
+          "candidate": 3350267,
+          "baseline": 3383821,
+          "ratio": 0.9900839908493978
+        },
+        "evaluationCalls": {
+          "candidate": 3084793,
+          "baseline": 3069295,
+          "ratio": 1.005049368014479
+        }
+      },
+      "changedRootMove": 3,
+      "changedScore": 7
+    },
+    {
+      "workers": 4,
+      "policy": "leaf",
+      "budget": "time100",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 1994007,
+          "baseline": 2023808,
+          "ratio": 0.9852747889127822
+        },
+        "qNodes": {
+          "candidate": 7873559,
+          "baseline": 8193131,
+          "ratio": 0.9609951311653628
+        },
+        "evaluationCalls": {
+          "candidate": 7197748,
+          "baseline": 7405420,
+          "ratio": 0.9719567559976342
+        }
+      },
+      "changedRootMove": 4,
+      "changedScore": 6
+    },
+    {
+      "workers": 4,
+      "policy": "shallow",
+      "budget": "depth6",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 593966,
+          "baseline": 671563,
+          "ratio": 0.884453133957648
+        },
+        "qNodes": {
+          "candidate": 4048094,
+          "baseline": 4691273,
+          "ratio": 0.8628988336428087
+        },
+        "evaluationCalls": {
+          "candidate": 3613173,
+          "baseline": 4117575,
+          "ratio": 0.8775002276825559
+        }
+      },
+      "changedRootMove": 8,
+      "changedScore": 10
+    },
+    {
+      "workers": 4,
+      "policy": "shallow",
+      "budget": "nodes100000",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 995565,
+          "baseline": 969993,
+          "ratio": 1.0263630768469463
+        },
+        "qNodes": {
+          "candidate": 3357378,
+          "baseline": 3383821,
+          "ratio": 0.992185461346803
+        },
+        "evaluationCalls": {
+          "candidate": 3116337,
+          "baseline": 3069295,
+          "ratio": 1.015326646672933
+        }
+      },
+      "changedRootMove": 4,
+      "changedScore": 10
+    },
+    {
+      "workers": 4,
+      "policy": "shallow",
+      "budget": "time100",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 1925016,
+          "baseline": 2023808,
+          "ratio": 0.9511850926570109
+        },
+        "qNodes": {
+          "candidate": 7588000,
+          "baseline": 8193131,
+          "ratio": 0.9261416667205736
+        },
+        "evaluationCalls": {
+          "candidate": 6991697,
+          "baseline": 7405420,
+          "ratio": 0.9441324057244559
+        }
+      },
+      "changedRootMove": 8,
+      "changedScore": 11
+    },
+    {
+      "workers": 4,
+      "policy": "prefix",
+      "budget": "depth6",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 633088,
+          "baseline": 671563,
+          "ratio": 0.9427082790445572
+        },
+        "qNodes": {
+          "candidate": 4383766,
+          "baseline": 4691273,
+          "ratio": 0.9344512672786256
+        },
+        "evaluationCalls": {
+          "candidate": 3890472,
+          "baseline": 4117575,
+          "ratio": 0.9448454490810732
+        }
+      },
+      "changedRootMove": 6,
+      "changedScore": 11
+    },
+    {
+      "workers": 4,
+      "policy": "prefix",
+      "budget": "nodes100000",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 981855,
+          "baseline": 969993,
+          "ratio": 1.0122289542295666
+        },
+        "qNodes": {
+          "candidate": 3408292,
+          "baseline": 3383821,
+          "ratio": 1.007231765510055
+        },
+        "evaluationCalls": {
+          "candidate": 3142253,
+          "baseline": 3069295,
+          "ratio": 1.023770279494151
+        }
+      },
+      "changedRootMove": 4,
+      "changedScore": 10
+    },
+    {
+      "workers": 4,
+      "policy": "prefix",
+      "budget": "time100",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 1965084,
+          "baseline": 2023808,
+          "ratio": 0.9709834134463349
+        },
+        "qNodes": {
+          "candidate": 7975448,
+          "baseline": 8193131,
+          "ratio": 0.973431036315665
+        },
+        "evaluationCalls": {
+          "candidate": 7305516,
+          "baseline": 7405420,
+          "ratio": 0.9865093404560443
+        }
+      },
+      "changedRootMove": 9,
+      "changedScore": 12
+    },
+    {
+      "workers": 4,
+      "policy": "deep",
+      "budget": "depth6",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 672313,
+          "baseline": 671563,
+          "ratio": 1.0011167976794433
+        },
+        "qNodes": {
+          "candidate": 4794258,
+          "baseline": 4691273,
+          "ratio": 1.0219524636489925
+        },
+        "evaluationCalls": {
+          "candidate": 4195354,
+          "baseline": 4117575,
+          "ratio": 1.0188895162808207
+        }
+      },
+      "changedRootMove": 5,
+      "changedScore": 5
+    },
+    {
+      "workers": 4,
+      "policy": "deep",
+      "budget": "nodes100000",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 968026,
+          "baseline": 969993,
+          "ratio": 0.9979721503144868
+        },
+        "qNodes": {
+          "candidate": 3387207,
+          "baseline": 3383821,
+          "ratio": 1.0010006439465917
+        },
+        "evaluationCalls": {
+          "candidate": 3073315,
+          "baseline": 3069295,
+          "ratio": 1.0013097470265973
+        }
+      },
+      "changedRootMove": 4,
+      "changedScore": 7
+    },
+    {
+      "workers": 4,
+      "policy": "deep",
+      "budget": "time100",
+      "rows": 52,
+      "metrics": {
+        "mainNodes": {
+          "candidate": 1964767,
+          "baseline": 2023808,
+          "ratio": 0.97082677803428
+        },
+        "qNodes": {
+          "candidate": 8034375,
+          "baseline": 8193131,
+          "ratio": 0.980623280648143
+        },
+        "evaluationCalls": {
+          "candidate": 7257012,
+          "baseline": 7405420,
+          "ratio": 0.9799595431454259
+        }
+      },
+      "changedRootMove": 7,
+      "changedScore": 6
+    }
+  ],
+  "nativeShallowDepth6Differences": [
+    {
+      "id": "opening-04",
+      "round": 0,
+      "candidate": {
+        "bestMove": 394378,
+        "hasMove": true,
+        "score": 0,
+        "depth": 6,
+        "nodes": 177925,
+        "legalRootMoves": 37,
+        "completed": true,
+        "principalVariation": [
+          394378,
+          658171,
+          131843,
+          853933,
+          394825,
+          789090
+        ],
+        "diagnostics": {
+          "enabled": true,
+          "worker": {
+            "nodes": {
+              "mainNodes": 24491,
+              "qNodes": 153434,
+              "maximumAbsolutePly": 18,
+              "maximumQply": 13,
+              "evaluationCalls": 132883
+            },
+            "transpositionTable": {
+              "probes": 0,
+              "keyMatches": 0,
+              "insufficientDepthMatches": 0,
+              "exactCutoffs": 0,
+              "lowerBoundCutoffs": 0,
+              "upperBoundCutoffs": 0,
+              "hashMovesAvailable": 0,
+              "stores": 0
+            },
+            "moveOrder": {
+              "legalMovesSearched": 0,
+              "betaCutoffs": 0,
+              "firstMoveBetaCutoffs": 0,
+              "cutoffRankSum": 0,
+              "maximumCutoffRank": 0,
+              "cutoffRank1": 0,
+              "cutoffRank2": 0,
+              "cutoffRank3": 0,
+              "cutoffRank4": 0,
+              "cutoffRank5To8": 0,
+              "cutoffRank9Plus": 0,
+              "hashMoveCutoffs": 0,
+              "tacticalCutoffs": 0,
+              "quietCutoffs": 0,
+              "killerCutoffs": 0,
+              "historyCutoffs": 0
+            },
+            "qsearch": {
+              "checkedQNodes": 0,
+              "standPatCutoffs": 0,
+              "tacticalMovesSearched": 0,
+              "evasionMovesSearched": 0,
+              "softDepthLimitEncounters": 0,
+              "qmateTerminals": 0
+            },
+            "selective": {
+              "mateDistanceCutoffs": 0,
+              "razorAttempts": 0,
+              "razorQsearchProbes": 0,
+              "razorAcceptedResults": 0,
+              "futilityEligibleNodes": 0,
+              "futilityQuietMovesPruned": 0
+            }
+          },
+          "iteration": {
+            "completedIterations": 6,
+            "aspirationAttempts": 0,
+            "failLowResearches": 0,
+            "failHighResearches": 0,
+            "fullWindowFallbacks": 0,
+            "deepestCompletedDepth": 6
+          }
+        },
+        "selective": true
+      },
+      "baseline": {
+        "bestMove": 394248,
+        "hasMove": true,
+        "score": -1,
+        "depth": 6,
+        "nodes": 171521,
+        "legalRootMoves": 37,
+        "completed": true,
+        "principalVariation": [
+          394248,
+          919600,
+          394378,
+          658043,
+          131715,
+          724797
+        ],
+        "diagnostics": {
+          "enabled": true,
+          "worker": {
+            "nodes": {
+              "mainNodes": 23285,
+              "qNodes": 148236,
+              "maximumAbsolutePly": 18,
+              "maximumQply": 13,
+              "evaluationCalls": 124601
+            },
+            "transpositionTable": {
+              "probes": 0,
+              "keyMatches": 0,
+              "insufficientDepthMatches": 0,
+              "exactCutoffs": 0,
+              "lowerBoundCutoffs": 0,
+              "upperBoundCutoffs": 0,
+              "hashMovesAvailable": 0,
+              "stores": 0
+            },
+            "moveOrder": {
+              "legalMovesSearched": 0,
+              "betaCutoffs": 0,
+              "firstMoveBetaCutoffs": 0,
+              "cutoffRankSum": 0,
+              "maximumCutoffRank": 0,
+              "cutoffRank1": 0,
+              "cutoffRank2": 0,
+              "cutoffRank3": 0,
+              "cutoffRank4": 0,
+              "cutoffRank5To8": 0,
+              "cutoffRank9Plus": 0,
+              "hashMoveCutoffs": 0,
+              "tacticalCutoffs": 0,
+              "quietCutoffs": 0,
+              "killerCutoffs": 0,
+              "historyCutoffs": 0
+            },
+            "qsearch": {
+              "checkedQNodes": 0,
+              "standPatCutoffs": 0,
+              "tacticalMovesSearched": 0,
+              "evasionMovesSearched": 0,
+              "softDepthLimitEncounters": 0,
+              "qmateTerminals": 0
+            },
+            "selective": {
+              "mateDistanceCutoffs": 0,
+              "razorAttempts": 0,
+              "razorQsearchProbes": 0,
+              "razorAcceptedResults": 0,
+              "futilityEligibleNodes": 0,
+              "futilityQuietMovesPruned": 0
+            }
+          },
+          "iteration": {
+            "completedIterations": 6,
+            "aspirationAttempts": 0,
+            "failLowResearches": 0,
+            "failHighResearches": 0,
+            "fullWindowFallbacks": 0,
+            "deepestCompletedDepth": 6
+          }
+        },
+        "selective": true
+      }
+    },
+    {
+      "id": "opening-05",
+      "round": 0,
+      "candidate": {
+        "bestMove": 65924,
+        "hasMove": true,
+        "score": 16,
+        "depth": 6,
+        "nodes": 74197,
+        "legalRootMoves": 42,
+        "completed": true,
+        "principalVariation": [
+          65924,
+          593852,
+          394378,
+          789626,
+          196869,
+          657659
+        ],
+        "diagnostics": {
+          "enabled": true,
+          "worker": {
+            "nodes": {
+              "mainNodes": 14567,
+              "qNodes": 59630,
+              "maximumAbsolutePly": 16,
+              "maximumQply": 10,
+              "evaluationCalls": 56384
+            },
+            "transpositionTable": {
+              "probes": 0,
+              "keyMatches": 0,
+              "insufficientDepthMatches": 0,
+              "exactCutoffs": 0,
+              "lowerBoundCutoffs": 0,
+              "upperBoundCutoffs": 0,
+              "hashMovesAvailable": 0,
+              "stores": 0
+            },
+            "moveOrder": {
+              "legalMovesSearched": 0,
+              "betaCutoffs": 0,
+              "firstMoveBetaCutoffs": 0,
+              "cutoffRankSum": 0,
+              "maximumCutoffRank": 0,
+              "cutoffRank1": 0,
+              "cutoffRank2": 0,
+              "cutoffRank3": 0,
+              "cutoffRank4": 0,
+              "cutoffRank5To8": 0,
+              "cutoffRank9Plus": 0,
+              "hashMoveCutoffs": 0,
+              "tacticalCutoffs": 0,
+              "quietCutoffs": 0,
+              "killerCutoffs": 0,
+              "historyCutoffs": 0
+            },
+            "qsearch": {
+              "checkedQNodes": 0,
+              "standPatCutoffs": 0,
+              "tacticalMovesSearched": 0,
+              "evasionMovesSearched": 0,
+              "softDepthLimitEncounters": 0,
+              "qmateTerminals": 0
+            },
+            "selective": {
+              "mateDistanceCutoffs": 0,
+              "razorAttempts": 0,
+              "razorQsearchProbes": 0,
+              "razorAcceptedResults": 0,
+              "futilityEligibleNodes": 0,
+              "futilityQuietMovesPruned": 0
+            }
+          },
+          "iteration": {
+            "completedIterations": 6,
+            "aspirationAttempts": 0,
+            "failLowResearches": 0,
+            "failHighResearches": 0,
+            "fullWindowFallbacks": 0,
+            "deepestCompletedDepth": 6
+          }
+        },
+        "selective": true
+      },
+      "baseline": {
+        "bestMove": 65924,
+        "hasMove": true,
+        "score": 14,
+        "depth": 6,
+        "nodes": 99255,
+        "legalRootMoves": 42,
+        "completed": true,
+        "principalVariation": [
+          65924,
+          789626,
+          264020,
+          593852,
+          394378,
+          919730
+        ],
+        "diagnostics": {
+          "enabled": true,
+          "worker": {
+            "nodes": {
+              "mainNodes": 18027,
+              "qNodes": 81228,
+              "maximumAbsolutePly": 18,
+              "maximumQply": 12,
+              "evaluationCalls": 73211
+            },
+            "transpositionTable": {
+              "probes": 0,
+              "keyMatches": 0,
+              "insufficientDepthMatches": 0,
+              "exactCutoffs": 0,
+              "lowerBoundCutoffs": 0,
+              "upperBoundCutoffs": 0,
+              "hashMovesAvailable": 0,
+              "stores": 0
+            },
+            "moveOrder": {
+              "legalMovesSearched": 0,
+              "betaCutoffs": 0,
+              "firstMoveBetaCutoffs": 0,
+              "cutoffRankSum": 0,
+              "maximumCutoffRank": 0,
+              "cutoffRank1": 0,
+              "cutoffRank2": 0,
+              "cutoffRank3": 0,
+              "cutoffRank4": 0,
+              "cutoffRank5To8": 0,
+              "cutoffRank9Plus": 0,
+              "hashMoveCutoffs": 0,
+              "tacticalCutoffs": 0,
+              "quietCutoffs": 0,
+              "killerCutoffs": 0,
+              "historyCutoffs": 0
+            },
+            "qsearch": {
+              "checkedQNodes": 0,
+              "standPatCutoffs": 0,
+              "tacticalMovesSearched": 0,
+              "evasionMovesSearched": 0,
+              "softDepthLimitEncounters": 0,
+              "qmateTerminals": 0
+            },
+            "selective": {
+              "mateDistanceCutoffs": 0,
+              "razorAttempts": 0,
+              "razorQsearchProbes": 0,
+              "razorAcceptedResults": 0,
+              "futilityEligibleNodes": 0,
+              "futilityQuietMovesPruned": 0
+            }
+          },
+          "iteration": {
+            "completedIterations": 6,
+            "aspirationAttempts": 0,
+            "failLowResearches": 0,
+            "failHighResearches": 0,
+            "fullWindowFallbacks": 0,
+            "deepestCompletedDepth": 6
+          }
+        },
+        "selective": true
+      }
+    },
+    {
+      "id": "opening-04",
+      "round": 1,
+      "candidate": {
+        "bestMove": 394378,
+        "hasMove": true,
+        "score": 0,
+        "depth": 6,
+        "nodes": 177925,
+        "legalRootMoves": 37,
+        "completed": true,
+        "principalVariation": [
+          394378,
+          658171,
+          131843,
+          853933,
+          394825,
+          789090
+        ],
+        "diagnostics": {
+          "enabled": true,
+          "worker": {
+            "nodes": {
+              "mainNodes": 24491,
+              "qNodes": 153434,
+              "maximumAbsolutePly": 18,
+              "maximumQply": 13,
+              "evaluationCalls": 132883
+            },
+            "transpositionTable": {
+              "probes": 0,
+              "keyMatches": 0,
+              "insufficientDepthMatches": 0,
+              "exactCutoffs": 0,
+              "lowerBoundCutoffs": 0,
+              "upperBoundCutoffs": 0,
+              "hashMovesAvailable": 0,
+              "stores": 0
+            },
+            "moveOrder": {
+              "legalMovesSearched": 0,
+              "betaCutoffs": 0,
+              "firstMoveBetaCutoffs": 0,
+              "cutoffRankSum": 0,
+              "maximumCutoffRank": 0,
+              "cutoffRank1": 0,
+              "cutoffRank2": 0,
+              "cutoffRank3": 0,
+              "cutoffRank4": 0,
+              "cutoffRank5To8": 0,
+              "cutoffRank9Plus": 0,
+              "hashMoveCutoffs": 0,
+              "tacticalCutoffs": 0,
+              "quietCutoffs": 0,
+              "killerCutoffs": 0,
+              "historyCutoffs": 0
+            },
+            "qsearch": {
+              "checkedQNodes": 0,
+              "standPatCutoffs": 0,
+              "tacticalMovesSearched": 0,
+              "evasionMovesSearched": 0,
+              "softDepthLimitEncounters": 0,
+              "qmateTerminals": 0
+            },
+            "selective": {
+              "mateDistanceCutoffs": 0,
+              "razorAttempts": 0,
+              "razorQsearchProbes": 0,
+              "razorAcceptedResults": 0,
+              "futilityEligibleNodes": 0,
+              "futilityQuietMovesPruned": 0
+            }
+          },
+          "iteration": {
+            "completedIterations": 6,
+            "aspirationAttempts": 0,
+            "failLowResearches": 0,
+            "failHighResearches": 0,
+            "fullWindowFallbacks": 0,
+            "deepestCompletedDepth": 6
+          }
+        },
+        "selective": true
+      },
+      "baseline": {
+        "bestMove": 394248,
+        "hasMove": true,
+        "score": -1,
+        "depth": 6,
+        "nodes": 171521,
+        "legalRootMoves": 37,
+        "completed": true,
+        "principalVariation": [
+          394248,
+          919600,
+          394378,
+          658043,
+          131715,
+          724797
+        ],
+        "diagnostics": {
+          "enabled": true,
+          "worker": {
+            "nodes": {
+              "mainNodes": 23285,
+              "qNodes": 148236,
+              "maximumAbsolutePly": 18,
+              "maximumQply": 13,
+              "evaluationCalls": 124601
+            },
+            "transpositionTable": {
+              "probes": 0,
+              "keyMatches": 0,
+              "insufficientDepthMatches": 0,
+              "exactCutoffs": 0,
+              "lowerBoundCutoffs": 0,
+              "upperBoundCutoffs": 0,
+              "hashMovesAvailable": 0,
+              "stores": 0
+            },
+            "moveOrder": {
+              "legalMovesSearched": 0,
+              "betaCutoffs": 0,
+              "firstMoveBetaCutoffs": 0,
+              "cutoffRankSum": 0,
+              "maximumCutoffRank": 0,
+              "cutoffRank1": 0,
+              "cutoffRank2": 0,
+              "cutoffRank3": 0,
+              "cutoffRank4": 0,
+              "cutoffRank5To8": 0,
+              "cutoffRank9Plus": 0,
+              "hashMoveCutoffs": 0,
+              "tacticalCutoffs": 0,
+              "quietCutoffs": 0,
+              "killerCutoffs": 0,
+              "historyCutoffs": 0
+            },
+            "qsearch": {
+              "checkedQNodes": 0,
+              "standPatCutoffs": 0,
+              "tacticalMovesSearched": 0,
+              "evasionMovesSearched": 0,
+              "softDepthLimitEncounters": 0,
+              "qmateTerminals": 0
+            },
+            "selective": {
+              "mateDistanceCutoffs": 0,
+              "razorAttempts": 0,
+              "razorQsearchProbes": 0,
+              "razorAcceptedResults": 0,
+              "futilityEligibleNodes": 0,
+              "futilityQuietMovesPruned": 0
+            }
+          },
+          "iteration": {
+            "completedIterations": 6,
+            "aspirationAttempts": 0,
+            "failLowResearches": 0,
+            "failHighResearches": 0,
+            "fullWindowFallbacks": 0,
+            "deepestCompletedDepth": 6
+          }
+        },
+        "selective": true
+      }
+    },
+    {
+      "id": "opening-05",
+      "round": 1,
+      "candidate": {
+        "bestMove": 65924,
+        "hasMove": true,
+        "score": 16,
+        "depth": 6,
+        "nodes": 74197,
+        "legalRootMoves": 42,
+        "completed": true,
+        "principalVariation": [
+          65924,
+          593852,
+          394378,
+          789626,
+          196869,
+          657659
+        ],
+        "diagnostics": {
+          "enabled": true,
+          "worker": {
+            "nodes": {
+              "mainNodes": 14567,
+              "qNodes": 59630,
+              "maximumAbsolutePly": 16,
+              "maximumQply": 10,
+              "evaluationCalls": 56384
+            },
+            "transpositionTable": {
+              "probes": 0,
+              "keyMatches": 0,
+              "insufficientDepthMatches": 0,
+              "exactCutoffs": 0,
+              "lowerBoundCutoffs": 0,
+              "upperBoundCutoffs": 0,
+              "hashMovesAvailable": 0,
+              "stores": 0
+            },
+            "moveOrder": {
+              "legalMovesSearched": 0,
+              "betaCutoffs": 0,
+              "firstMoveBetaCutoffs": 0,
+              "cutoffRankSum": 0,
+              "maximumCutoffRank": 0,
+              "cutoffRank1": 0,
+              "cutoffRank2": 0,
+              "cutoffRank3": 0,
+              "cutoffRank4": 0,
+              "cutoffRank5To8": 0,
+              "cutoffRank9Plus": 0,
+              "hashMoveCutoffs": 0,
+              "tacticalCutoffs": 0,
+              "quietCutoffs": 0,
+              "killerCutoffs": 0,
+              "historyCutoffs": 0
+            },
+            "qsearch": {
+              "checkedQNodes": 0,
+              "standPatCutoffs": 0,
+              "tacticalMovesSearched": 0,
+              "evasionMovesSearched": 0,
+              "softDepthLimitEncounters": 0,
+              "qmateTerminals": 0
+            },
+            "selective": {
+              "mateDistanceCutoffs": 0,
+              "razorAttempts": 0,
+              "razorQsearchProbes": 0,
+              "razorAcceptedResults": 0,
+              "futilityEligibleNodes": 0,
+              "futilityQuietMovesPruned": 0
+            }
+          },
+          "iteration": {
+            "completedIterations": 6,
+            "aspirationAttempts": 0,
+            "failLowResearches": 0,
+            "failHighResearches": 0,
+            "fullWindowFallbacks": 0,
+            "deepestCompletedDepth": 6
+          }
+        },
+        "selective": true
+      },
+      "baseline": {
+        "bestMove": 65924,
+        "hasMove": true,
+        "score": 14,
+        "depth": 6,
+        "nodes": 99255,
+        "legalRootMoves": 42,
+        "completed": true,
+        "principalVariation": [
+          65924,
+          789626,
+          264020,
+          593852,
+          394378,
+          919730
+        ],
+        "diagnostics": {
+          "enabled": true,
+          "worker": {
+            "nodes": {
+              "mainNodes": 18027,
+              "qNodes": 81228,
+              "maximumAbsolutePly": 18,
+              "maximumQply": 12,
+              "evaluationCalls": 73211
+            },
+            "transpositionTable": {
+              "probes": 0,
+              "keyMatches": 0,
+              "insufficientDepthMatches": 0,
+              "exactCutoffs": 0,
+              "lowerBoundCutoffs": 0,
+              "upperBoundCutoffs": 0,
+              "hashMovesAvailable": 0,
+              "stores": 0
+            },
+            "moveOrder": {
+              "legalMovesSearched": 0,
+              "betaCutoffs": 0,
+              "firstMoveBetaCutoffs": 0,
+              "cutoffRankSum": 0,
+              "maximumCutoffRank": 0,
+              "cutoffRank1": 0,
+              "cutoffRank2": 0,
+              "cutoffRank3": 0,
+              "cutoffRank4": 0,
+              "cutoffRank5To8": 0,
+              "cutoffRank9Plus": 0,
+              "hashMoveCutoffs": 0,
+              "tacticalCutoffs": 0,
+              "quietCutoffs": 0,
+              "killerCutoffs": 0,
+              "historyCutoffs": 0
+            },
+            "qsearch": {
+              "checkedQNodes": 0,
+              "standPatCutoffs": 0,
+              "tacticalMovesSearched": 0,
+              "evasionMovesSearched": 0,
+              "softDepthLimitEncounters": 0,
+              "qmateTerminals": 0
+            },
+            "selective": {
+              "mateDistanceCutoffs": 0,
+              "razorAttempts": 0,
+              "razorQsearchProbes": 0,
+              "razorAcceptedResults": 0,
+              "futilityEligibleNodes": 0,
+              "futilityQuietMovesPruned": 0
+            }
+          },
+          "iteration": {
+            "completedIterations": 6,
+            "aspirationAttempts": 0,
+            "failLowResearches": 0,
+            "failHighResearches": 0,
+            "fullWindowFallbacks": 0,
+            "deepestCompletedDepth": 6
+          }
+        },
+        "selective": true
+      }
+    }
+  ],
+  "limits": "Both compared trees are selective cumulative production controls, not nominal exact oracles. Four-worker trees depend on scheduling; fixed-node/time searches can finish different depths. Root differences are not themselves tactical errors or proof failures. Counts include terminal/early-completed requests.",
+  "horizonAndAbortedWork": [
+    {
+      "workers": 1,
+      "policy": "leaf",
+      "budget": "depth6",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 52
+      },
+      "candidate": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 4546700,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "baseline": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 4722852,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "matchedBudgetHorizon": {
+        "rows": 52,
+        "depthChangeCounts": {
+          "0": 52
+        },
+        "candidateMeanReportedDepth": 6.0,
+        "baselineMeanReportedDepth": 6.0
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "leaf",
+      "budget": "nodes100000",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 50,
+        "1": 2
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.23076923076923,
+        "wholeRequestNodes": 4303632,
+        "abortedFraction": 0.44010454425471324,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1894048
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.192307692307693,
+        "wholeRequestNodes": 4303632,
+        "abortedFraction": 0.4488892172936719,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1931854
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "0": 38,
+          "1": 2
+        },
+        "candidateMeanReportedDepth": 5.8,
+        "baselineMeanReportedDepth": 5.75
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "leaf",
+      "budget": "time100",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "-1": 1,
+        "0": 50,
+        "1": 1
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.596153846153847,
+        "wholeRequestNodes": 6604132,
+        "abortedFraction": 0.37475038354775464,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 2474901
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.596153846153847,
+        "wholeRequestNodes": 6809307,
+        "abortedFraction": 0.36179056106590585,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 2463543
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "0": 38,
+          "1": 1,
+          "-1": 1
+        },
+        "candidateMeanReportedDepth": 6.275,
+        "baselineMeanReportedDepth": 6.275
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "shallow",
+      "budget": "depth6",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 52
+      },
+      "candidate": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 4218566,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "baseline": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 4722852,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "matchedBudgetHorizon": {
+        "rows": 52,
+        "depthChangeCounts": {
+          "0": 52
+        },
+        "candidateMeanReportedDepth": 6.0,
+        "baselineMeanReportedDepth": 6.0
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "shallow",
+      "budget": "nodes100000",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 46,
+        "1": 6
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.307692307692307,
+        "wholeRequestNodes": 4303632,
+        "abortedFraction": 0.4375508872505828,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1883058
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.192307692307693,
+        "wholeRequestNodes": 4303632,
+        "abortedFraction": 0.4488892172936719,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1931854
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "0": 34,
+          "1": 6
+        },
+        "candidateMeanReportedDepth": 5.9,
+        "baselineMeanReportedDepth": 5.75
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "shallow",
+      "budget": "time100",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "-1": 1,
+        "0": 50,
+        "1": 1
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.596153846153847,
+        "wholeRequestNodes": 6581086,
+        "abortedFraction": 0.42226024701698167,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 2778931
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.596153846153847,
+        "wholeRequestNodes": 6809307,
+        "abortedFraction": 0.36179056106590585,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 2463543
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "0": 38,
+          "1": 1,
+          "-1": 1
+        },
+        "candidateMeanReportedDepth": 6.275,
+        "baselineMeanReportedDepth": 6.275
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "prefix",
+      "budget": "depth6",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 52
+      },
+      "candidate": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 4408898,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "baseline": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 4722852,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "matchedBudgetHorizon": {
+        "rows": 52,
+        "depthChangeCounts": {
+          "0": 52
+        },
+        "candidateMeanReportedDepth": 6.0,
+        "baselineMeanReportedDepth": 6.0
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "prefix",
+      "budget": "nodes100000",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 46,
+        "1": 6
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.307692307692307,
+        "wholeRequestNodes": 4303632,
+        "abortedFraction": 0.4181788777479115,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1799688
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.192307692307693,
+        "wholeRequestNodes": 4303632,
+        "abortedFraction": 0.4488892172936719,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1931854
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "0": 34,
+          "1": 6
+        },
+        "candidateMeanReportedDepth": 5.9,
+        "baselineMeanReportedDepth": 5.75
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "prefix",
+      "budget": "time100",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 51,
+        "1": 1
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.615384615384617,
+        "wholeRequestNodes": 6723652,
+        "abortedFraction": 0.3898887092907247,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 2621476
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.596153846153847,
+        "wholeRequestNodes": 6809307,
+        "abortedFraction": 0.36179056106590585,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 2463543
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "0": 39,
+          "1": 1
+        },
+        "candidateMeanReportedDepth": 6.3,
+        "baselineMeanReportedDepth": 6.275
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "deep",
+      "budget": "depth6",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 52
+      },
+      "candidate": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 4601764,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "baseline": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 4722852,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "matchedBudgetHorizon": {
+        "rows": 52,
+        "depthChangeCounts": {
+          "0": 52
+        },
+        "candidateMeanReportedDepth": 6.0,
+        "baselineMeanReportedDepth": 6.0
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "deep",
+      "budget": "nodes100000",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 50,
+        "1": 2
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.23076923076923,
+        "wholeRequestNodes": 4303632,
+        "abortedFraction": 0.4303857764790298,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1852222
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.192307692307693,
+        "wholeRequestNodes": 4303632,
+        "abortedFraction": 0.4488892172936719,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1931854
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "0": 38,
+          "1": 2
+        },
+        "candidateMeanReportedDepth": 5.8,
+        "baselineMeanReportedDepth": 5.75
+      }
+    },
+    {
+      "workers": 1,
+      "policy": "deep",
+      "budget": "time100",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "-1": 2,
+        "0": 49,
+        "1": 1
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.576923076923077,
+        "wholeRequestNodes": 6739528,
+        "abortedFraction": 0.3948101410069073,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 2660834
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.596153846153847,
+        "wholeRequestNodes": 6809307,
+        "abortedFraction": 0.36179056106590585,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 2463543
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "0": 37,
+          "1": 1,
+          "-1": 2
+        },
+        "candidateMeanReportedDepth": 6.25,
+        "baselineMeanReportedDepth": 6.275
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "leaf",
+      "budget": "depth6",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 52
+      },
+      "candidate": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 5125086,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "baseline": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 5362836,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "matchedBudgetHorizon": {
+        "rows": 52,
+        "depthChangeCounts": {
+          "0": 52
+        },
+        "candidateMeanReportedDepth": 6.0,
+        "baselineMeanReportedDepth": 6.0
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "leaf",
+      "budget": "nodes100000",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "-1": 1,
+        "0": 48,
+        "1": 3
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.326923076923077,
+        "wholeRequestNodes": 4354386,
+        "abortedFraction": 0.16188596968665617,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 704914
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.28846153846154,
+        "wholeRequestNodes": 4353814,
+        "abortedFraction": 0.1799826542888603,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 783611
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "0": 36,
+          "1": 3,
+          "-1": 1
+        },
+        "candidateMeanReportedDepth": 5.925,
+        "baselineMeanReportedDepth": 5.875
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "leaf",
+      "budget": "time100",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "-1": 1,
+        "0": 49,
+        "1": 2
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.903846153846153,
+        "wholeRequestNodes": 9867566,
+        "abortedFraction": 0.14475332620019973,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1428363
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.884615384615383,
+        "wholeRequestNodes": 10216939,
+        "abortedFraction": 0.13921194988048768,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1422320
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "1": 2,
+          "0": 37,
+          "-1": 1
+        },
+        "candidateMeanReportedDepth": 6.675,
+        "baselineMeanReportedDepth": 6.65
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "shallow",
+      "budget": "depth6",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 52
+      },
+      "candidate": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 4642060,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "baseline": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 5362836,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "matchedBudgetHorizon": {
+        "rows": 52,
+        "depthChangeCounts": {
+          "0": 52
+        },
+        "candidateMeanReportedDepth": 6.0,
+        "baselineMeanReportedDepth": 6.0
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "shallow",
+      "budget": "nodes100000",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 49,
+        "1": 3
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.346153846153847,
+        "wholeRequestNodes": 4352943,
+        "abortedFraction": 0.17807745242701317,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 775161
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.28846153846154,
+        "wholeRequestNodes": 4353814,
+        "abortedFraction": 0.1799826542888603,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 783611
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "0": 37,
+          "1": 3
+        },
+        "candidateMeanReportedDepth": 5.95,
+        "baselineMeanReportedDepth": 5.875
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "shallow",
+      "budget": "time100",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "-1": 1,
+        "0": 46,
+        "1": 5
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.96153846153846,
+        "wholeRequestNodes": 9513016,
+        "abortedFraction": 0.1486378242189438,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1413994
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.884615384615383,
+        "wholeRequestNodes": 10216939,
+        "abortedFraction": 0.13921194988048768,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1422320
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "1": 5,
+          "0": 34,
+          "-1": 1
+        },
+        "candidateMeanReportedDepth": 6.75,
+        "baselineMeanReportedDepth": 6.65
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "prefix",
+      "budget": "depth6",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 52
+      },
+      "candidate": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 5016854,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "baseline": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 5362836,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "matchedBudgetHorizon": {
+        "rows": 52,
+        "depthChangeCounts": {
+          "0": 52
+        },
+        "candidateMeanReportedDepth": 6.0,
+        "baselineMeanReportedDepth": 6.0
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "prefix",
+      "budget": "nodes100000",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "-20": 1,
+        "0": 48,
+        "1": 3
+      },
+      "candidate": {
+        "meanCompletedDepth": 18.96153846153846,
+        "wholeRequestNodes": 4390147,
+        "abortedFraction": 0.17736763712012377,
+        "incompleteIterations": 41,
+        "abortedNativeCallOrParallelJobNodes": 778670
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.28846153846154,
+        "wholeRequestNodes": 4353814,
+        "abortedFraction": 0.1799826542888603,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 783611
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "0": 37,
+          "1": 3
+        },
+        "candidateMeanReportedDepth": 5.95,
+        "baselineMeanReportedDepth": 5.875
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "prefix",
+      "budget": "time100",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 48,
+        "1": 4
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.96153846153846,
+        "wholeRequestNodes": 9940532,
+        "abortedFraction": 0.13039543557628505,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1296200
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.884615384615383,
+        "wholeRequestNodes": 10216939,
+        "abortedFraction": 0.13921194988048768,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1422320
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "1": 4,
+          "0": 36
+        },
+        "candidateMeanReportedDepth": 6.75,
+        "baselineMeanReportedDepth": 6.65
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "deep",
+      "budget": "depth6",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 52
+      },
+      "candidate": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 5466571,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "baseline": {
+        "meanCompletedDepth": 6.0,
+        "wholeRequestNodes": 5362836,
+        "abortedFraction": 0.0,
+        "incompleteIterations": 0,
+        "abortedNativeCallOrParallelJobNodes": 0
+      },
+      "matchedBudgetHorizon": {
+        "rows": 52,
+        "depthChangeCounts": {
+          "0": 52
+        },
+        "candidateMeanReportedDepth": 6.0,
+        "baselineMeanReportedDepth": 6.0
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "deep",
+      "budget": "nodes100000",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 51,
+        "1": 1
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.307692307692307,
+        "wholeRequestNodes": 4355233,
+        "abortedFraction": 0.18506059262500996,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 805982
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.28846153846154,
+        "wholeRequestNodes": 4353814,
+        "abortedFraction": 0.1799826542888603,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 783611
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "0": 39,
+          "1": 1
+        },
+        "candidateMeanReportedDepth": 5.9,
+        "baselineMeanReportedDepth": 5.875
+      }
+    },
+    {
+      "workers": 4,
+      "policy": "deep",
+      "budget": "time100",
+      "nonterminalPairs": 52,
+      "depthChangeCounts": {
+        "0": 48,
+        "1": 4
+      },
+      "candidate": {
+        "meanCompletedDepth": 19.96153846153846,
+        "wholeRequestNodes": 9999142,
+        "abortedFraction": 0.14397025264767718,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1439579
+      },
+      "baseline": {
+        "meanCompletedDepth": 19.884615384615383,
+        "wholeRequestNodes": 10216939,
+        "abortedFraction": 0.13921194988048768,
+        "incompleteIterations": 40,
+        "abortedNativeCallOrParallelJobNodes": 1422320
+      },
+      "matchedBudgetHorizon": {
+        "rows": 40,
+        "depthChangeCounts": {
+          "1": 4,
+          "0": 36
+        },
+        "candidateMeanReportedDepth": 6.75,
+        "baselineMeanReportedDepth": 6.65
+      }
+    }
+  ],
+  "horizonLimits": "Nominal completed depth is not equivalent effective horizon after selectivity. Whole-corpus means include cheap draw/sparse roots reaching64; matchedBudgetHorizon excludes early completion for node/time budgets. AbortedNativeCallOrParallelJobNodes means native incomplete-depth-call work or parallel aborted root-job work, excluding completed root jobs within an incomplete cohort; it is not comparable total waste across worker counts. All admitted work remains in whole-request nodes. These reused26-root observations are not strength evidence."
+}

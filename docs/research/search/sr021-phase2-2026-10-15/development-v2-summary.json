@@ -1,0 +1,186 @@
+{
+  "status": "passed",
+  "contrasts": [
+    {
+      "run": "development-v2-d2-w1",
+      "runSha256": "b8fc9fc646fb150bacf6bf21b60ffac62830246c528f276b0513c8bebab4a5e2",
+      "wdl": [
+        25,
+        10,
+        29
+      ],
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          6,
+          5,
+          12,
+          5,
+          4
+        ],
+        "score": 0.46875,
+        "logisticElo": -21.74306492903708,
+        "pairedHoeffding95Score": [
+          0.22866930217001982,
+          0.7088306978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -211.21309982380384,
+          154.55877278910938
+        ],
+        "pairScoreStandardError": 0.055845318485744116,
+        "pairedNormal95Score": [
+          0.35929518706277264,
+          0.5782048129372274
+        ],
+        "pairedNormal95Elo": [
+          -100.48263469812994,
+          54.792033006861566
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "normalGames": {
+        "normal": 64
+      },
+      "wallSeconds": 225.2869720000017,
+      "cpu": {
+        "baseline": 455.9375,
+        "candidate": 459.140625
+      },
+      "candidateToBaselineCpu": 1.0070253598355037,
+      "wholeRequest": {
+        "baseline": {
+          "requests": 3998,
+          "nodes": 617080252,
+          "elapsedNanos": 425936993800
+        },
+        "candidate": {
+          "requests": 3993,
+          "nodes": 600183210,
+          "elapsedNanos": 424513539800
+        }
+      }
+    },
+    {
+      "run": "development-v2-d2-w4",
+      "runSha256": "f19ef12e4aa403e363ad92f08a5c2f5719ba1f4ade8e27713a0a73dc150fa042",
+      "wdl": [
+        24,
+        15,
+        25
+      ],
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          6,
+          6,
+          7,
+          9,
+          4
+        ],
+        "score": 0.4921875,
+        "logisticElo": -5.429122875709548,
+        "pairedHoeffding95Score": [
+          0.2521068021700198,
+          0.7322681978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -188.90200784811387,
+          174.78808477127686
+        ],
+        "pairScoreStandardError": 0.058849408647712716,
+        "pairedNormal95Score": [
+          0.3768447785390031,
+          0.6075302214609969
+        ],
+        "pairedNormal95Elo": [
+          -87.37349447036053,
+          75.90466657020491
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "normalGames": {
+        "normal": 64
+      },
+      "wallSeconds": 492.47743179999816,
+      "cpu": {
+        "baseline": 845.171875,
+        "candidate": 865.75
+      },
+      "candidateToBaselineCpu": 1.0243478582388936,
+      "wholeRequest": {
+        "baseline": {
+          "requests": 4986,
+          "nodes": 1134354415,
+          "elapsedNanos": 485570510400
+        },
+        "candidate": {
+          "requests": 4988,
+          "nodes": 1112892088,
+          "elapsedNanos": 486906662300
+        }
+      }
+    },
+    {
+      "run": "development-v2-deep-w1",
+      "runSha256": "746ed280bd8842caeaa91610739c2f62bd4ba320f5bdc269e3a225f3d866e1c5",
+      "wdl": [
+        27,
+        16,
+        21
+      ],
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          3,
+          5,
+          11,
+          9,
+          4
+        ],
+        "score": 0.546875,
+        "logisticElo": 32.668018580527814,
+        "pairedHoeffding95Score": [
+          0.3067943021700198,
+          0.7869556978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -141.60593367474047,
+          226.99214423872155
+        ],
+        "pairScoreStandardError": 0.05074731341212446,
+        "pairedNormal95Score": [
+          0.44741209340006965,
+          0.6463379065999304
+        ],
+        "pairedNormal95Elo": [
+          -36.67746295372335,
+          104.74844560389205
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "normalGames": {
+        "normal": 64
+      },
+      "wallSeconds": 231.30079639999894,
+      "cpu": {
+        "baseline": 463.9375,
+        "candidate": 467.53125
+      },
+      "candidateToBaselineCpu": 1.0077461942610804,
+      "wholeRequest": {
+        "baseline": {
+          "requests": 4209,
+          "nodes": 627011763,
+          "elapsedNanos": 433027805400
+        },
+        "candidate": {
+          "requests": 4212,
+          "nodes": 626939450,
+          "elapsedNanos": 434602718600
+        }
+      }
+    }
+  ],
+  "conclusion": "All192 games normal and audited. Exploratory only; neither D2 nor DEEP independently confirmed. Small sample and different book distribution prevent superiority/inferiority claims or pooling with closed SHALLOW confirmation."
+}

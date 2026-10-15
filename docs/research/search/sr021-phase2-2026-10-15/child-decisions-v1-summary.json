@@ -1,0 +1,104 @@
+{
+  "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\child-decisions-v1.jsonl",
+  "sha256": "3ce3295a852c0314506659743f661a9d8cca8c61af36450b82ce23676c12bcab",
+  "sourceSha256": "090cbcafd2aaa9f784c7d012114e2607a69716bc180bd2d41d8adc36e864173e",
+  "replays": [
+    {
+      "kind": "root",
+      "id": "opening-02",
+      "move": null,
+      "completed": false,
+      "score": -2147483648,
+      "nodes": 20000000
+    },
+    {
+      "kind": "root_move",
+      "id": "opening-02",
+      "move": "d1d2",
+      "completed": true,
+      "score": 10,
+      "nodes": 2185481
+    },
+    {
+      "kind": "root",
+      "id": "opening-04",
+      "move": null,
+      "completed": true,
+      "score": 2,
+      "nodes": 9116446
+    },
+    {
+      "kind": "root_move",
+      "id": "opening-04",
+      "move": "a2a3",
+      "completed": true,
+      "score": 2,
+      "nodes": 1300160
+    },
+    {
+      "kind": "root",
+      "id": "opening-10",
+      "move": null,
+      "completed": true,
+      "score": -56,
+      "nodes": 14232725
+    },
+    {
+      "kind": "root_move",
+      "id": "opening-10",
+      "move": "f1e1",
+      "completed": true,
+      "score": -56,
+      "nodes": 1840863
+    },
+    {
+      "kind": "root_move",
+      "id": "opening-10",
+      "move": "b3c2",
+      "completed": true,
+      "score": -64,
+      "nodes": 1131949
+    },
+    {
+      "kind": "root",
+      "id": "opening-14",
+      "move": null,
+      "completed": true,
+      "score": 11,
+      "nodes": 17966717
+    },
+    {
+      "kind": "root_move",
+      "id": "opening-14",
+      "move": "a2a4",
+      "completed": true,
+      "score": 2,
+      "nodes": 2265937
+    },
+    {
+      "kind": "root",
+      "id": "twofold",
+      "move": null,
+      "completed": true,
+      "score": 7,
+      "nodes": 1011517
+    },
+    {
+      "kind": "root_move",
+      "id": "twofold",
+      "move": "b1c3",
+      "completed": true,
+      "score": 6,
+      "nodes": 170111
+    },
+    {
+      "kind": "root_move",
+      "id": "twofold",
+      "move": "e2e3",
+      "completed": true,
+      "score": 6,
+      "nodes": 238234
+    }
+  ],
+  "limits": "Independent unpruned SR001A D6 root/D5 children with full history;20M node cap per replay. Incomplete results carry no oracle claim; exact nominal result is still finite horizon, not game outcome."
+}

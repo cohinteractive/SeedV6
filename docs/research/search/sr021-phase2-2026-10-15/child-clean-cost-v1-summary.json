@@ -1,0 +1,452 @@
+{
+  "status": "passed",
+  "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\child-clean-cost-v1.jsonl",
+  "sha256": "a212923fa6bfb21dcd585cb3cffbb470cbc421d6e8936116fd8856a5af83e291",
+  "completion": {
+    "observations": 624,
+    "status": "passed",
+    "jvm": "21+35-2513"
+  },
+  "comparisons": [
+    {
+      "workers": 1,
+      "budget": "depth6",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "baseline": 3037224500,
+          "candidate": 3506875900,
+          "ratio": 1.154631769893862
+        },
+        "cpuNanos": {
+          "baseline": 3671875000,
+          "candidate": 3578125000,
+          "ratio": 0.9744680851063829
+        },
+        "allocatedBytes": {
+          "baseline": 4547520,
+          "candidate": 4032016,
+          "ratio": 0.886640630497502
+        },
+        "gcCollections": {
+          "baseline": 0,
+          "candidate": 0,
+          "ratio": null
+        },
+        "compilationMillis": {
+          "baseline": 571,
+          "candidate": 43,
+          "ratio": 0.07530647985989491
+        },
+        "nodes": {
+          "baseline": 4722852,
+          "candidate": 6577614,
+          "ratio": 1.3927207543238704
+        },
+        "mainNodes": {
+          "baseline": 590034,
+          "candidate": 586596,
+          "ratio": 0.9941732171366395
+        },
+        "qNodes": {
+          "baseline": 4132818,
+          "candidate": 5991018,
+          "ratio": 1.4496205736618453
+        },
+        "evaluationCalls": {
+          "baseline": 3621742,
+          "candidate": 5383120,
+          "ratio": 1.48633447661374
+        }
+      },
+      "nativeDepth6DecisionDifferences": [
+        {
+          "id": "opening-02",
+          "round": 0,
+          "baseline": {
+            "score": 7,
+            "bestMove": 131779
+          },
+          "candidate": {
+            "score": 11,
+            "bestMove": 131779
+          }
+        },
+        {
+          "id": "opening-04",
+          "round": 0,
+          "baseline": {
+            "score": -1,
+            "bestMove": 394248
+          },
+          "candidate": {
+            "score": 3,
+            "bestMove": 394248
+          }
+        },
+        {
+          "id": "opening-10",
+          "round": 0,
+          "baseline": {
+            "score": -55,
+            "bestMove": 196869
+          },
+          "candidate": {
+            "score": -64,
+            "bestMove": 262801
+          }
+        },
+        {
+          "id": "opening-14",
+          "round": 0,
+          "baseline": {
+            "score": 8,
+            "bestMove": 394760
+          },
+          "candidate": {
+            "score": 11,
+            "bestMove": 394760
+          }
+        },
+        {
+          "id": "twofold",
+          "round": 0,
+          "baseline": {
+            "score": 6,
+            "bestMove": 328833
+          },
+          "candidate": {
+            "score": 6,
+            "bestMove": 394508
+          }
+        },
+        {
+          "id": "opening-02",
+          "round": 1,
+          "baseline": {
+            "score": 7,
+            "bestMove": 131779
+          },
+          "candidate": {
+            "score": 11,
+            "bestMove": 131779
+          }
+        },
+        {
+          "id": "opening-04",
+          "round": 1,
+          "baseline": {
+            "score": -1,
+            "bestMove": 394248
+          },
+          "candidate": {
+            "score": 3,
+            "bestMove": 394248
+          }
+        },
+        {
+          "id": "opening-10",
+          "round": 1,
+          "baseline": {
+            "score": -55,
+            "bestMove": 196869
+          },
+          "candidate": {
+            "score": -64,
+            "bestMove": 262801
+          }
+        },
+        {
+          "id": "opening-14",
+          "round": 1,
+          "baseline": {
+            "score": 8,
+            "bestMove": 394760
+          },
+          "candidate": {
+            "score": 11,
+            "bestMove": 394760
+          }
+        },
+        {
+          "id": "twofold",
+          "round": 1,
+          "baseline": {
+            "score": 6,
+            "bestMove": 328833
+          },
+          "candidate": {
+            "score": 6,
+            "bestMove": 394508
+          }
+        }
+      ]
+    },
+    {
+      "workers": 1,
+      "budget": "nodes100000",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "baseline": 2662025300,
+          "candidate": 2210592700,
+          "ratio": 0.8304176147386728
+        },
+        "cpuNanos": {
+          "baseline": 3453125000,
+          "candidate": 2468750000,
+          "ratio": 0.7149321266968326
+        },
+        "allocatedBytes": {
+          "baseline": 9723448,
+          "candidate": 9685152,
+          "ratio": 0.9960614794258168
+        },
+        "gcCollections": {
+          "baseline": 0,
+          "candidate": 0,
+          "ratio": null
+        },
+        "compilationMillis": {
+          "baseline": 905,
+          "candidate": 232,
+          "ratio": 0.256353591160221
+        },
+        "nodes": {
+          "baseline": 4303632,
+          "candidate": 4303632,
+          "ratio": 1.0
+        },
+        "mainNodes": {
+          "baseline": 919672,
+          "candidate": 792190,
+          "ratio": 0.8613831887890465
+        },
+        "qNodes": {
+          "baseline": 3383960,
+          "candidate": 3511442,
+          "ratio": 1.037672431116207
+        },
+        "evaluationCalls": {
+          "baseline": 3061070,
+          "candidate": 3251706,
+          "ratio": 1.062277569608013
+        }
+      },
+      "nativeDepth6DecisionDifferences": []
+    },
+    {
+      "workers": 1,
+      "budget": "time100",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "baseline": 4109026900,
+          "candidate": 4121320400,
+          "ratio": 1.0029918275784468
+        },
+        "cpuNanos": {
+          "baseline": 4687500000,
+          "candidate": 4359375000,
+          "ratio": 0.93
+        },
+        "allocatedBytes": {
+          "baseline": 10019224,
+          "candidate": 10016480,
+          "ratio": 0.9997261264944272
+        },
+        "gcCollections": {
+          "baseline": 0,
+          "candidate": 1,
+          "ratio": null
+        },
+        "compilationMillis": {
+          "baseline": 1186,
+          "candidate": 318,
+          "ratio": 0.26812816188870153
+        },
+        "nodes": {
+          "baseline": 6921560,
+          "candidate": 8034983,
+          "ratio": 1.1608630135403002
+        },
+        "mainNodes": {
+          "baseline": 1378475,
+          "candidate": 1313380,
+          "ratio": 0.9527775258891166
+        },
+        "qNodes": {
+          "baseline": 5543085,
+          "candidate": 6721603,
+          "ratio": 1.2126104867596292
+        },
+        "evaluationCalls": {
+          "baseline": 5003415,
+          "candidate": 6239520,
+          "ratio": 1.2470522633041632
+        }
+      },
+      "nativeDepth6DecisionDifferences": []
+    },
+    {
+      "workers": 4,
+      "budget": "depth6",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "baseline": 2065974700,
+          "candidate": 2219451700,
+          "ratio": 1.0742879377951724
+        },
+        "cpuNanos": {
+          "baseline": 5109375000,
+          "candidate": 5640625000,
+          "ratio": 1.1039755351681957
+        },
+        "allocatedBytes": {
+          "baseline": 48417432,
+          "candidate": 48311008,
+          "ratio": 0.9978019486865805
+        },
+        "gcCollections": {
+          "baseline": 0,
+          "candidate": 1,
+          "ratio": null
+        },
+        "compilationMillis": {
+          "baseline": 258,
+          "candidate": 324,
+          "ratio": 1.255813953488372
+        },
+        "nodes": {
+          "baseline": 5776869,
+          "candidate": 7343731,
+          "ratio": 1.2712303152451614
+        },
+        "mainNodes": {
+          "baseline": 682625,
+          "candidate": 671165,
+          "ratio": 0.9832118659586156
+        },
+        "qNodes": {
+          "baseline": 5094244,
+          "candidate": 6672566,
+          "ratio": 1.309824578485051
+        },
+        "evaluationCalls": {
+          "baseline": 4450700,
+          "candidate": 6002712,
+          "ratio": 1.3487118880176152
+        }
+      },
+      "nativeDepth6DecisionDifferences": []
+    },
+    {
+      "workers": 4,
+      "budget": "nodes100000",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "baseline": 2052620700,
+          "candidate": 1674449000,
+          "ratio": 0.8157615286643071
+        },
+        "cpuNanos": {
+          "baseline": 4500000000,
+          "candidate": 3171875000,
+          "ratio": 0.7048611111111112
+        },
+        "allocatedBytes": {
+          "baseline": 124062464,
+          "candidate": 126350760,
+          "ratio": 1.018444708626777
+        },
+        "gcCollections": {
+          "baseline": 2,
+          "candidate": 3,
+          "ratio": 1.5
+        },
+        "compilationMillis": {
+          "baseline": 237,
+          "candidate": 424,
+          "ratio": 1.7890295358649788
+        },
+        "nodes": {
+          "baseline": 4427944,
+          "candidate": 4355075,
+          "ratio": 0.9835433781457037
+        },
+        "mainNodes": {
+          "baseline": 979750,
+          "candidate": 843078,
+          "ratio": 0.8605031895891809
+        },
+        "qNodes": {
+          "baseline": 3448194,
+          "candidate": 3511997,
+          "ratio": 1.018503309268562
+        },
+        "evaluationCalls": {
+          "baseline": 3121067,
+          "candidate": 3257018,
+          "ratio": 1.0435591417934955
+        }
+      },
+      "nativeDepth6DecisionDifferences": []
+    },
+    {
+      "workers": 4,
+      "budget": "time100",
+      "rows": 52,
+      "metrics": {
+        "elapsedNanos": {
+          "baseline": 4137890700,
+          "candidate": 4127173600,
+          "ratio": 0.9974100089207286
+        },
+        "cpuNanos": {
+          "baseline": 8937500000,
+          "candidate": 8250000000,
+          "ratio": 0.9230769230769231
+        },
+        "allocatedBytes": {
+          "baseline": 136213992,
+          "candidate": 134990304,
+          "ratio": 0.9910164295016036
+        },
+        "gcCollections": {
+          "baseline": 1,
+          "candidate": 3,
+          "ratio": 3.0
+        },
+        "compilationMillis": {
+          "baseline": 832,
+          "candidate": 477,
+          "ratio": 0.5733173076923077
+        },
+        "nodes": {
+          "baseline": 9960330,
+          "candidate": 11908101,
+          "ratio": 1.1955528581884336
+        },
+        "mainNodes": {
+          "baseline": 1949607,
+          "candidate": 1899042,
+          "ratio": 0.9740640036684316
+        },
+        "qNodes": {
+          "baseline": 8010723,
+          "candidate": 10009059,
+          "ratio": 1.2494576332248661
+        },
+        "evaluationCalls": {
+          "baseline": 7233865,
+          "candidate": 9265659,
+          "ratio": 1.280872534945012
+        }
+      },
+      "nativeDepth6DecisionDifferences": []
+    }
+  ],
+  "limits": "Rotated short requests; noisy quantized CPU and JIT/GC variation. Cheap terminals may reach64 and are not equivalent horizon gain. Prepared child static probes are charged under existing adapter admission convention even when recursion is omitted. Only final corrected CHILD source used. Not strength."
+}

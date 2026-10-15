@@ -82,3 +82,6 @@ desktop.ini
 # For future bulk output with other names/formats, use an experiment's raw/
 # subdirectory. Keep reports, manifests, configs and fixtures outside raw/.
 /docs/research/**/raw/
+
+# Preserve already recorded SR-021 CHILD UCI raw transcripts at their evidence paths.
+/docs/research/search/sr021-phase2-2026-10-15/child-uci/*.txt

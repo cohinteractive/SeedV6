@@ -1,0 +1,66 @@
+{
+  "source": "child-clean-cost-v1-summary.json",
+  "nativeDepth6Differences": [
+    {
+      "id": "opening-02",
+      "round": 1,
+      "baseline": {
+        "score": 7,
+        "bestMove": 131779
+      },
+      "candidate": {
+        "score": 11,
+        "bestMove": 131779
+      }
+    },
+    {
+      "id": "opening-04",
+      "round": 1,
+      "baseline": {
+        "score": -1,
+        "bestMove": 394248
+      },
+      "candidate": {
+        "score": 3,
+        "bestMove": 394248
+      }
+    },
+    {
+      "id": "opening-10",
+      "round": 1,
+      "baseline": {
+        "score": -55,
+        "bestMove": 196869
+      },
+      "candidate": {
+        "score": -64,
+        "bestMove": 262801
+      }
+    },
+    {
+      "id": "opening-14",
+      "round": 1,
+      "baseline": {
+        "score": 8,
+        "bestMove": 394760
+      },
+      "candidate": {
+        "score": 11,
+        "bestMove": 394760
+      }
+    },
+    {
+      "id": "twofold",
+      "round": 1,
+      "baseline": {
+        "score": 6,
+        "bestMove": 328833
+      },
+      "candidate": {
+        "score": 6,
+        "bestMove": 394508
+      }
+    }
+  ],
+  "selection": "Every distinct native D6 score or bestmove difference across both completed clean rounds, with complete corpus history; no outcome filtering."
+}

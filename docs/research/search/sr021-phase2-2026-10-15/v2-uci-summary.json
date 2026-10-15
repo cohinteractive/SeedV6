@@ -1,0 +1,20 @@
+{
+  "bridge-v2": {
+    "status": "passed",
+    "raw": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\bridge-v2\\verification.json",
+    "sha256": "e36de2c228b659f66db0fc144644f27bebbe01a16d13ccc47af949a7778dc2a2",
+    "inputsStable": true,
+    "requests": null,
+    "parityComparisons": 18,
+    "preflights": 10
+  },
+  "d2-workers-uci-v1": {
+    "status": "passed",
+    "raw": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\d2-workers-uci-v1\\verification.json",
+    "sha256": "51c5da0f02f6f13f82d49dbf9c16db93da593f1a0e139c4e4d696699d211ffc2",
+    "inputsStable": true,
+    "requests": 44,
+    "parityComparisons": 0,
+    "preflights": 16
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\decisions-v1.jsonl",
+  "sha256": "fc9970696f079a7e9f15781ec00ea6176f5afb59c0bb9336db8defe95b194701",
+  "sourceSha256": "4332ff14eddabd3fcda0e62f7fc247e2e7809b9b235020081a7de63e4f9d4e02",
+  "replays": [
+    {
+      "kind": "root",
+      "id": "opening-04",
+      "move": null,
+      "score": 2,
+      "nodes": 9116446
+    },
+    {
+      "kind": "root_move",
+      "id": "opening-04",
+      "move": "a2a3",
+      "score": 2,
+      "nodes": 1300160
+    },
+    {
+      "kind": "root_move",
+      "id": "opening-04",
+      "move": "c2c3",
+      "score": 0,
+      "nodes": 544470
+    },
+    {
+      "kind": "root",
+      "id": "opening-05",
+      "move": null,
+      "score": 16,
+      "nodes": 5840016
+    },
+    {
+      "kind": "root_move",
+      "id": "opening-05",
+      "move": "e1g1",
+      "score": 16,
+      "nodes": 581227
+    }
+  ],
+  "limits": "Independent fixed-D6 SR001A root and full-history child replays for the two distinct observed native diagnostic differences. Finite-horizon conditional evidence, not game outcome proof or population safety."
+}

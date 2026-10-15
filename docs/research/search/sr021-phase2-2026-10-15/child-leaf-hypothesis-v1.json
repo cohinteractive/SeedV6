@@ -1,0 +1,80 @@
+{
+  "observations": [
+    {
+      "workers": 1,
+      "depth": 1,
+      "observedImprovers": 8,
+      "maxChildHeadroom": -2,
+      "maxParentHeadroom": -6,
+      "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\headroom-w1-v2.jsonl",
+      "sha256": "c3d25f0fd28ea9b13ccf16c8f71802f2544f668e9af1702f76de103bd95f939f"
+    },
+    {
+      "workers": 1,
+      "depth": 2,
+      "observedImprovers": 19,
+      "maxChildHeadroom": 23,
+      "maxParentHeadroom": 5,
+      "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\headroom-w1-v2.jsonl",
+      "sha256": "c3d25f0fd28ea9b13ccf16c8f71802f2544f668e9af1702f76de103bd95f939f"
+    },
+    {
+      "workers": 1,
+      "depth": 3,
+      "observedImprovers": 13,
+      "maxChildHeadroom": 153,
+      "maxParentHeadroom": 149,
+      "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\headroom-w1-v2.jsonl",
+      "sha256": "c3d25f0fd28ea9b13ccf16c8f71802f2544f668e9af1702f76de103bd95f939f"
+    },
+    {
+      "workers": 1,
+      "depth": 4,
+      "observedImprovers": 10,
+      "maxChildHeadroom": 21,
+      "maxParentHeadroom": -1,
+      "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\headroom-w1-v2.jsonl",
+      "sha256": "c3d25f0fd28ea9b13ccf16c8f71802f2544f668e9af1702f76de103bd95f939f"
+    },
+    {
+      "workers": 4,
+      "depth": 1,
+      "observedImprovers": 33,
+      "maxChildHeadroom": -1,
+      "maxParentHeadroom": -6,
+      "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\headroom-w4-v1.jsonl",
+      "sha256": "e8aee47a4bd85fdef2ea96b48b31f7788ab7f8909543ceaedc3df489b5542c9a"
+    },
+    {
+      "workers": 4,
+      "depth": 2,
+      "observedImprovers": 72,
+      "maxChildHeadroom": 34,
+      "maxParentHeadroom": 12,
+      "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\headroom-w4-v1.jsonl",
+      "sha256": "e8aee47a4bd85fdef2ea96b48b31f7788ab7f8909543ceaedc3df489b5542c9a"
+    },
+    {
+      "workers": 4,
+      "depth": 3,
+      "observedImprovers": 40,
+      "maxChildHeadroom": 30,
+      "maxParentHeadroom": 12,
+      "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\headroom-w4-v1.jsonl",
+      "sha256": "e8aee47a4bd85fdef2ea96b48b31f7788ab7f8909543ceaedc3df489b5542c9a"
+    },
+    {
+      "workers": 4,
+      "depth": 4,
+      "observedImprovers": 23,
+      "maxChildHeadroom": 22,
+      "maxParentHeadroom": 3,
+      "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\headroom-w4-v1.jsonl",
+      "sha256": "e8aee47a4bd85fdef2ea96b48b31f7788ab7f8909543ceaedc3df489b5542c9a"
+    }
+  ],
+  "hypothesis": "At D1 only, nonchecked child qsearch has stand-pat floor unless required draw/stalemate returns zero. Nonnegative parent alpha makes those draws fail low too. Negative child static <= parent alpha can identify a qsearch immediate cutoff. This is restricted leaf semantics, not nominal chess proof or a global Search equivalence claim. Existing selective propagation and omission ordinals remain.",
+  "policy": "CHILD: D1, zero margin on negative child static, all existing protections. Actual child transition/evaluation charged; retained child reuses transition, qsearch may evaluate again. No qsearch cache/redesign or production enablement.",
+  "motivation": "Current observed D1 improvers all have negative childHeadroom, unlike D2+. Child signal could avoid conditional parent-estimate risk but adds per-candidate evaluation. Measure full-request cost and ordering/strength effects before selection.",
+  "limits": "Outcome-blind reservoirs on existing diagnostic corpus, conditional searched subset; neither calibration nor independent strength. No proof discharge; no inference beyond D1."
+}

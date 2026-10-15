@@ -1,0 +1,9 @@
+{
+  "status": "initial assertion failed",
+  "reason": "Expected only two functional classes; nested Aborted class also changed debug line numbers. Read-only javap -p -c confirms identical instructions. Existing snapshots retained without replacement. Earlier wrong install source path did not create a snapshot.",
+  "actualChangedClasses": [
+    "com/ohinteractive/seedv6/search/exact/ExactSearch$Aborted.class",
+    "com/ohinteractive/seedv6/search/exact/ExactSearch.class",
+    "com/ohinteractive/seedv6/search/exact/FutilityPolicy.class"
+  ]
+}

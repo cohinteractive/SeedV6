@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "totals": {
+    "tests": 19,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": 2,
+  "raw": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\child-focused-v2.log",
+  "xml": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\child-focused-v2-xml"
+}

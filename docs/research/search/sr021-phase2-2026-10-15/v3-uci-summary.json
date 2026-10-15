@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "bridge": {
+    "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\v3-uci\\verification.json",
+    "sha256": "e7ae236e2e10556611130ec245b3079d0776bae8a5c5b872fb20044e42ba0e2d",
+    "deterministicOffComparisons": 18,
+    "preflights": 10,
+    "preflightRequests": 20
+  },
+  "child": {
+    "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\child-uci\\verification.json",
+    "sha256": "1b391cde0f5bf456952e5dbf87d8b7762ad9ada4c370c7232f8c3dedb74339cf",
+    "requests": 44,
+    "workers": "1..16 plus1->4->16->1 transitions",
+    "nodeTimeStopReset": true
+  },
+  "failedStartup": "raw/v3-uci.log retains system-Python missing-chess import failure before output creation or engine launch. Repeated with established app/build/search-baseline/venv/Scripts/python.exe; no runner modified."
+}

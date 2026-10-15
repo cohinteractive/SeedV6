@@ -1220,6 +1220,7 @@ public final class ExactSearch {
                 i--;
                 continue;
             }
+            boolean futilityChildPrepared = false;
             if(futilityPolicy != FutilityPolicy.OFF && futilityPolicy.considers(depth, searchedQuiets)
                     && ply > 0 && i > 0 && !checked && !nullProbeActive && !nullVerification
                     && (scout || originalBeta == originalAlpha + 1) && alpha >= 0 && beta <= MAX_STATIC_SCORE
@@ -1228,12 +1229,26 @@ public final class ExactSearch {
                     && Board.halfMoveClock((int) child[Board.STATUS]) + depth - 1 < DrawAdjudicator.FIFTY_MOVE_HALFMOVES
                     && checkers(child, (int) child[Board.STATUS]) == 0) {
                 if(futilityDiagnostics != null) futilityDiagnostics.candidates++;
-                if(!futilityEvaluated) {
-                    futilityEval = evaluator.evaluate(board, ply);
-                    futilityEvaluated = true;
+                int estimate;
+                if(futilityPolicy == FutilityPolicy.CHILD) {
+                    // D1 only: inspect the child stand-pat value before qsearch setup.
+                    // This remains an omission with selective ancestors and no child PV.
+                    evaluator.child(board, child, ply, 0);
+                    checkpoint(); // Refused budget admission may leave child state unprepared.
+                    futilityChildPrepared = true;
+                    estimate = -evaluator.evaluate(child, ply + 1);
+                    if(estimate < -MAX_STATIC_SCORE || estimate > MAX_STATIC_SCORE)
+                        throw new IllegalArgumentException("Static score enters the reserved mate band: " + estimate);
                     if(futilityDiagnostics != null) futilityDiagnostics.evaluations++;
+                } else {
+                    if(!futilityEvaluated) {
+                        futilityEval = evaluator.evaluate(board, ply);
+                        futilityEvaluated = true;
+                        if(futilityDiagnostics != null) futilityDiagnostics.evaluations++;
+                    }
+                    estimate = futilityEval;
                 }
-                if(futilityEval + futilityPolicy.margin(depth) <= alpha) {
+                if(estimate + futilityPolicy.margin(depth) <= alpha) {
                     selectiveEpoch++;
                     // Omission predicts only alpha; it supplies no child score or PV.
                     // A required draw cannot improve nonnegative alpha. Legal existence
@@ -1242,7 +1257,7 @@ public final class ExactSearch {
                     if(futilityDiagnostics != null) {
                         futilityDiagnostics.omissions++;
                         futilityDiagnostics.byDepth[depth]++;
-                        futilityDiagnostics.omitted(board, child, move, ply, depth, i, searchedQuiets, alpha, beta, futilityEval);
+                        futilityDiagnostics.omitted(board, child, move, ply, depth, i, searchedQuiets, alpha, beta, estimate);
                     }
                     legalMoves[i] = legalMoves[--count];
                     selectionKeys[keyBase + i] = selectionKeys[keyBase + count];
@@ -1294,7 +1309,7 @@ public final class ExactSearch {
                 }
             }
             int childDepth = depth - 1 + extension;
-            evaluator.child(board, child, ply, quiescence && childDepth == 0 ? 0 : -1);
+            if(!futilityChildPrepared) evaluator.child(board, child, ply, quiescence && childDepth == 0 ? 0 : -1);
             // Count once per begun child, after any deferral, never on a re-search.
             // A quiet hash/eldest child counts too. Existing ordering is unchanged.
             if(lmrPolicy == LMR_QUIET && !CaptureHistory.isTactical(move, Board.enPassantSquare(status)))
