@@ -1,0 +1,79 @@
+{
+    "startedUtc":  "2026-10-15T15:34:51Z",
+    "completedUtc":  "2026-10-15T15:35:06Z",
+    "elapsedSeconds":  15.0404662,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  9028,
+                          "averageLogicalCpus":  1.015,
+                          "workingSetBytes":  337469440
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  13456,
+                          "averageLogicalCpus":  0.883,
+                          "workingSetBytes":  336568320
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  6052,
+                          "averageLogicalCpus":  0.7719,
+                          "workingSetBytes":  339488768
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  32492,
+                          "averageLogicalCpus":  0.7168,
+                          "workingSetBytes":  344473600
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  5236,
+                          "averageLogicalCpus":  0.0384,
+                          "workingSetBytes":  512716800
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  11332,
+                          "averageLogicalCpus":  0.0073,
+                          "workingSetBytes":  283570176
+                      },
+                      {
+                          "name":  "bash",
+                          "pid":  10508,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  9617408
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  9360,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  92278784
+                      },
+                      {
+                          "name":  "AcPowerNotification",
+                          "pid":  13288,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  19984384
+                      }
+                  ],
+    "unreadableBefore":  160,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  21516344
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  29
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

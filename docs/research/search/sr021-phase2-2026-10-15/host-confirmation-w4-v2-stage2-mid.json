@@ -1,0 +1,67 @@
+{
+    "startedUtc":  "2026-10-15T13:33:13Z",
+    "completedUtc":  "2026-10-15T13:33:28Z",
+    "elapsedSeconds":  15.0354447,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  32492,
+                          "averageLogicalCpus":  0.8958,
+                          "workingSetBytes":  335224832
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  6052,
+                          "averageLogicalCpus":  0.8563,
+                          "workingSetBytes":  331489280
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  9028,
+                          "averageLogicalCpus":  0.8418,
+                          "workingSetBytes":  333148160
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  13456,
+                          "averageLogicalCpus":  0.7815,
+                          "workingSetBytes":  332599296
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  30052,
+                          "averageLogicalCpus":  0.0073,
+                          "workingSetBytes":  92336128
+                      },
+                      {
+                          "name":  "fastchess",
+                          "pid":  29492,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  13152256
+                      },
+                      {
+                          "name":  "OpenConsole",
+                          "pid":  31704,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  10584064
+                      }
+                  ],
+    "unreadableBefore":  161,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  20378440
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  35
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

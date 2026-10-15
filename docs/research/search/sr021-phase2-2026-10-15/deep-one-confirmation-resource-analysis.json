@@ -1,0 +1,54 @@
+{
+  "status": "prospective resource analysis, not a confirmation launch",
+  "candidate": "DEEP v1, one-worker native EFFORT",
+  "developmentRun": "development-v2-deep-w1/run.json",
+  "developmentElo": 32.668018580527814,
+  "developmentVariance": 0.08240927419354839,
+  "proposedContrastIndex": 3,
+  "familyAlpha": 0.05,
+  "contrastAlpha": 0.00625,
+  "proposedLooks": [
+    128,
+    512,
+    2048
+  ],
+  "twoSidedLookZ": 3.0780880728421613,
+  "forecast": [
+    {
+      "pairs": 128,
+      "expectedWallSeconds": 1850.4063711999916,
+      "nullEloHalfWidth": 54.71905143434688,
+      "approximatePositiveBoundaryPower": {
+        "5": 0.0025988168174844173,
+        "10": 0.006018198765034066,
+        "20": 0.025887432505822483,
+        "32.668": 0.10921761215193948
+      }
+    },
+    {
+      "pairs": 512,
+      "expectedWallSeconds": 7401.625484799966,
+      "nullEloHalfWidth": 27.190913934996985,
+      "approximatePositiveBoundaryPower": {
+        "5": 0.006020200821848842,
+        "10": 0.02594394011879042,
+        "20": 0.20842054483018613,
+        "32.668": 0.7312799952797457
+      }
+    },
+    {
+      "pairs": 2048,
+      "expectedWallSeconds": 29606.501939199865,
+      "nullEloHalfWidth": 13.574671104160513,
+      "approximatePositiveBoundaryPower": {
+        "5": 0.025958100711279686,
+        "10": 0.20895931211737717,
+        "20": 0.9270629448813419,
+        "32.668": 0.9999918912023491
+      }
+    }
+  ],
+  "rationale": "Only remaining distinct parent-depth hypothesis with positive exploratory native point estimate and modest measured D6 savings after D2/LEAF weak screens and CHILD adverse economics. A frozen fresh confirmation can resolve meaningful native benefit with original-style computational-futility stopping, without retuning SHALLOW or pooling evidence. Expected early stopping limits cost under null; maximum can test a20Elo gain with useful power. This is not a minimum gain requirement.",
+  "limits": "Powers approximate using noisy32-pair development variance, unchanged true effect and normal model; prospective multiple testing/spending and independent inputs still required. Small gains remain hard to resolve and may support value-based deferral, never universal rejection. First complete the running SHALLOW4 experiment without heavy concurrent preparation.",
+  "powerQualification": "Per-look fixed-effect boundary power, not overall sequential power: earlier futility/negative stopping can reduce it. Approximate planning calculation only."
+}

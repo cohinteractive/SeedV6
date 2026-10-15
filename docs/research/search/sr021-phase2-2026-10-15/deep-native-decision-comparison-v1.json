@@ -1,0 +1,7 @@
+{
+  "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\clean-cost-v1.jsonl",
+  "sha256": "b586c2c8faa28b917572fbd9355c135b8dd86357a9c0894f4306215bbe9d0e14",
+  "matchedRequests": 52,
+  "nativeDepth6Differences": [],
+  "limits": "Only completed native D6 diagnostic roots and both rotations; no reference/equivalence or clock-strength claim. Time/node budgets and parallel scheduling can differ."
+}

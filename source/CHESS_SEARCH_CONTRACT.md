@@ -1,6 +1,6 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R032**
+Internal revision: **P2-R034**
 
 Status: **SR-021 Futility-Pruning Family is ACTIVE. SR-024 IMPLEMENTED owner acceptance and BOTH P2-R028/P2-F032 Project Source synchronizations are confirmed by the launch. No successor is authorized.**
 
@@ -1014,6 +1014,39 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
+### SR-021 four-worker second look and final frozen stage - 2026-10-16 local
+
+SHALLOW4 v2 reaches512 independent fresh pairs/1,024 normal games,
+W/D/L[454,174,396],+19.700 Elo, adjusted paired-normal[-7.490,+47.134],
+required2.5-SE[-4.026,+43.611], bounded[-34.388,+74.767]. Original decision
+CONTINUE, plug-in conditional power.93117. This is neither a positive boundary
+nor a probability of benefit. All completed-stage audits pass; cumulative CPU
+ratio.995568. The unchanged executor starts the final1,536-pair stage toward
+the predeclared2,048-pair maximum. Do not retune, add looks or extend after closure.
+
+Current throughput forecasts roughly11.5h more wall, within the original
+resource envelope and24h stage watchdog. Heavy QA/build/book work remains idle.
+Native SHALLOW1 stays closed for futility. Larger DEEP exploration/value review
+is queued after this run; no contrast3 launch, production adoption or successor.
+SR-021 remains ACTIVE. Evidence and runtime continuation are in the
+[SR-021 report](../docs/research/search/SR021_FUTILITY_PHASE2_2026-10-15.md).
+
+### SR-021 four-worker first independent look - 2026-10-16 local
+
+The frozen SHALLOW4 v2 contrast2 completes128 fresh pairs/256 normal games,
+W/D/L[124,40,92],+43.658 Elo with adjusted paired-normal[-8.068,+97.400],
+required2.5-SE[-1.502,+90.344] and adjusted bounded[-65.236,+162.174].
+Original decisionCONTINUE: the unchanged runner advances toward512 cumulative
+pairs. This is not a positive boundary, adoption or demonstrated worker effect.
+CPU ratio1.002848 and complete game/process/input audits pass. Preserve native
+SHALLOW1's separate closed futility, all frozen protocols and current evidence.
+
+After this contrast closes, reassess DEEP through proportionate larger clock
+exploration before any separate fresh contrast3 confirmation. Existing resource
+forecasts are per-look approximations, not overall sequential power or a minimum
+acceptable gain. SR-021 alone remains ACTIVE, production unchanged, no successor.
+See the [SR-021 report](../docs/research/search/SR021_FUTILITY_PHASE2_2026-10-15.md).
+
 ### SR-021 follow-up mechanisms and four-worker confirmation - 2026-10-16 local
 
 SR-021 remains ACTIVE; production is unchanged cumulative QXRAY. Completed
@@ -1373,3 +1406,5 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-R030 | Record SR-021 unchanged SHALLOW finalist, four-formulation development, conditional correctness/proof and all-worker validation, fresh source/exclusions and prospectively staged1/4 confirmation with preserved unstarted superseded protocols; retain ACTIVE and unchanged production without successor activation. |
 | P2-R031 | Record closed512-pair SHALLOW1 confirmation futility without inferiority/adoption, independent adverse/favorable root witnesses, distinct validated D2 follow-up and prospective development while preserving frozen SHALLOW4 contrast2, original protocols and all-worker/proof boundaries; retain ACTIVE with no successor. |
 | P2-R032 | Record completed D2/DEEP development, corrected child-static leaf evidence and adverse economics/decision findings, then justify the unchanged independent SHALLOW4 contrast while preserving closed native futility, all attempts and unchanged production; retain only SR-021 ACTIVE. |
+| P2-R033 | Record four-worker SHALLOW first independent look and original-rule continuation without adoption, validated process/clock evidence, and subsequent DEEP exploration/value decision while preserving native closure, all frozen inputs and SR-021-only scope. |
+| P2-R034 | Record the512-pair four-worker independent result and original-rule final-stage continuation, audited CPU/game evidence and prospective resource bounds; preserve native closure, queued DEEP investigation and no adoption or successor. |

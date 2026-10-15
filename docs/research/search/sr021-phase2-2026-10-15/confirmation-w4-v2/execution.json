@@ -1,0 +1,14 @@
+{
+  "status": "running",
+  "protocol": "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-protocol-v2.json",
+  "protocolSha256": "089d64b8888ae9cc8edddbbe769d63c9841293578e3fc8bffeb7b8e9c584587f",
+  "runs": [
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\stage1",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\stage2"
+  ],
+  "assessments": [
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\assessment1.json",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\assessment2.json"
+  ],
+  "decision": "continue"
+}

@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F036**
+Internal frontier revision: **P2-F038**
 
 Status: **SR-021 Futility-Pruning Family is ACTIVE. SR-024 IMPLEMENTED owner acceptance and BOTH P2-R028/P2-F032 Project Source synchronizations are confirmed by the launch. No successor is authorized.**
 
@@ -775,7 +775,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-006 | Aspiration windows | REJECTED | Scoped six-formulation investigation found no credible strength-supported adoption over cumulative SR-001+SR-029. Independent ALPHA16: 809/453/786 over 1,024 pairs, +3.90 Elo, adjusted interval [-12.30,+20.12]; both required/wider sensitivities include zero. Retain full-window production, research controls, negative/cost evidence, uncertainty and owner/GPT handback above; no universal inferiority claim. |
 | SR-007 | Internal iterative search: IID and IIR | DEFERRED | Seven formulations and 416 development games; IID_WIDE fresh 256-game confirmation closed for futility, later IIR_ALL/IID_SHALLOW/IID_NEAR follow-ups inconclusive. No adoption; EFFORT unchanged. Modest gains/targeted eligibility remain unresolved; report quantifies further evidence value and fresh resumption conditions. Owner/GPT acceptance and BOTH P2-R022/P2-F026 mirror synchronization were confirmed by the SR-036 launch; closed evidence remains separate. |
 | SR-020 | Razoring | PENDING | Reduced/qsearch horizons, evaluator evidence, nominal resources and SR-018/019 composition. |
-| SR-021 | Futility-pruning family | ACTIVE | Native SHALLOW confirmation closed for computational futility, no adoption. D2/DEEP exploratory results uncertain; child-static leaf set aside after adverse cost/choice evidence. Next is unchanged fresh SHALLOW4 contrast2 after checkpoint QA, with original rules and no cross-worker inference. See current checkpoint/report; no successor. |
+| SR-021 | Futility-pruning family | ACTIVE | SHALLOW1 closed for computational futility; no adoption. SHALLOW4 at512 independent pairs +19.700 Elo, adjusted[-7.490,+47.134], original-rule CONTINUE to the final2048-pair look. Preserve frozen limits; larger DEEP exploration follows closure. CHILD set aside after adverse cost/choice evidence. No successor. |
 | SR-022 | Late-move / move-count pruning | IMPLEMENTED | Confirmed protected D1/D2 WINDOW omission over single-worker Pair-2 SR-001+SR-029: 876/485/687 in 1,024 fresh pairs, +32.15 Elo, adjusted normal lower +16.09 and required 2.5-SE lower +15.38; Hoeffding includes zero. Production/default and explicit-off bridges pass. Preserve omission/proof/history protections, adverse alternatives, complete cost limits and scoped controls; owner/GPT acceptance and predecessor both-mirror synchronization confirmed by SR-023 launch. |
 | SR-023 | History-based pruning | DEFERRED | Six formulations and 448 development games; unchanged REPLACE independent 2,048-game confirmation 810/460/778, +5.43 Elo with adjusted interval [-10.56,+21.44], wider and Hoeffding intervals also include zero. No production adoption; possible small benefit unresolved. Preserve frozen evidence, WINDOW baseline and history/proof protections; fresh justified independent design and GPT/owner selection required for resumption, with no post-hoc extension. |
 | SR-024 | SEE-based move pruning | IMPLEMENTED | QXRAY adopted for Pair-2 EFFORT1/ROOT_REUSE2..16 after independent +24.128/+26.061 Elo confirmations with positive adjusted primary intervals; all-worker integration validated. Approximate inference and resource limits are documented; owner/GPT acceptance and BOTH P2-R028/P2-F032 mirror synchronization are confirmed by the SR-021 launch. See the unchanged SR-024 report and closeout below. |
@@ -916,6 +916,39 @@ experiment is not an escalation condition. No extra orchestration ledger or
 governance document is needed.
 
 ## Maintenance and initialization state
+
+### SR-021 four-worker second look and final frozen stage - 2026-10-16 local
+
+SHALLOW4 v2 reaches512 independent fresh pairs/1,024 normal games,
+W/D/L[454,174,396],+19.700 Elo, adjusted paired-normal[-7.490,+47.134],
+required2.5-SE[-4.026,+43.611], bounded[-34.388,+74.767]. Original decision
+CONTINUE, plug-in conditional power.93117. This is neither a positive boundary
+nor a probability of benefit. All completed-stage audits pass; cumulative CPU
+ratio.995568. The unchanged executor starts the final1,536-pair stage toward
+the predeclared2,048-pair maximum. Do not retune, add looks or extend after closure.
+
+Current throughput forecasts roughly11.5h more wall, within the original
+resource envelope and24h stage watchdog. Heavy QA/build/book work remains idle.
+Native SHALLOW1 stays closed for futility. Larger DEEP exploration/value review
+is queued after this run; no contrast3 launch, production adoption or successor.
+SR-021 remains ACTIVE. Evidence and runtime continuation are in the
+[SR-021 report](../docs/research/search/SR021_FUTILITY_PHASE2_2026-10-15.md).
+
+### SR-021 four-worker first independent look - 2026-10-16 local
+
+The frozen SHALLOW4 v2 contrast2 completes128 fresh pairs/256 normal games,
+W/D/L[124,40,92],+43.658 Elo with adjusted paired-normal[-8.068,+97.400],
+required2.5-SE[-1.502,+90.344] and adjusted bounded[-65.236,+162.174].
+Original decisionCONTINUE: the unchanged runner advances toward512 cumulative
+pairs. This is not a positive boundary, adoption or demonstrated worker effect.
+CPU ratio1.002848 and complete game/process/input audits pass. Preserve native
+SHALLOW1's separate closed futility, all frozen protocols and current evidence.
+
+After this contrast closes, reassess DEEP through proportionate larger clock
+exploration before any separate fresh contrast3 confirmation. Existing resource
+forecasts are per-look approximations, not overall sequential power or a minimum
+acceptable gain. SR-021 alone remains ACTIVE, production unchanged, no successor.
+See the [SR-021 report](../docs/research/search/SR021_FUTILITY_PHASE2_2026-10-15.md).
 
 ### SR-021 follow-up mechanisms and four-worker confirmation - 2026-10-16 local
 
@@ -1280,3 +1313,5 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-F034 | Record SR-021 unchanged SHALLOW finalist, four-formulation development, conditional correctness/proof and all-worker validation, fresh source/exclusions and prospectively staged1/4 confirmation with preserved unstarted superseded protocols; retain ACTIVE and unchanged production without successor activation. |
 | P2-F035 | Record closed512-pair SHALLOW1 confirmation futility without inferiority/adoption, independent adverse/favorable root witnesses, distinct validated D2 follow-up and prospective development while preserving frozen SHALLOW4 contrast2, original protocols and all-worker/proof boundaries; retain ACTIVE with no successor. |
 | P2-F036 | Record completed D2/DEEP development, corrected child-static leaf evidence and adverse economics/decision findings, then justify the unchanged independent SHALLOW4 contrast while preserving closed native futility, all attempts and unchanged production; retain only SR-021 ACTIVE. |
+| P2-F037 | Record four-worker SHALLOW first independent look and original-rule continuation without adoption, validated process/clock evidence, and subsequent DEEP exploration/value decision while preserving native closure, all frozen inputs and SR-021-only scope. |
+| P2-F038 | Record the512-pair four-worker independent result and original-rule final-stage continuation, audited CPU/game evidence and prospective resource bounds; preserve native closure, queued DEEP investigation and no adoption or successor. |

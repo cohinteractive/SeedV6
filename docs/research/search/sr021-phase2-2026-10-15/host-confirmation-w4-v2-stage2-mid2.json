@@ -1,0 +1,91 @@
+{
+    "startedUtc":  "2026-10-15T14:33:58Z",
+    "completedUtc":  "2026-10-15T14:34:13Z",
+    "elapsedSeconds":  15.040092999999999,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  32492,
+                          "averageLogicalCpus":  0.9018,
+                          "workingSetBytes":  344334336
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  9028,
+                          "averageLogicalCpus":  0.8706,
+                          "workingSetBytes":  333508608
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  13456,
+                          "averageLogicalCpus":  0.8675,
+                          "workingSetBytes":  333287424
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  6052,
+                          "averageLogicalCpus":  0.7625,
+                          "workingSetBytes":  331759616
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  35608,
+                          "averageLogicalCpus":  0.0997,
+                          "workingSetBytes":  275714048
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  26540,
+                          "averageLogicalCpus":  0.0457,
+                          "workingSetBytes":  326664192
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  35616,
+                          "averageLogicalCpus":  0.0249,
+                          "workingSetBytes":  312930304
+                      },
+                      {
+                          "name":  "RustDesk",
+                          "pid":  30512,
+                          "averageLogicalCpus":  0.0177,
+                          "workingSetBytes":  196988928
+                      },
+                      {
+                          "name":  "fastchess",
+                          "pid":  29492,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  14036992
+                      },
+                      {
+                          "name":  "bash",
+                          "pid":  10508,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  9617408
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  30992,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  92680192
+                      }
+                  ],
+    "unreadableBefore":  161,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  19018280
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  33
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

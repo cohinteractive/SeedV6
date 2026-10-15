@@ -556,3 +556,65 @@ The CHILD worker transcripts were inadvertently generated outside raw/. A narrow
 ignore entry preserves these completed logs at their recorded child-uci/*.txt
 paths without staging bulk output; future such transcripts use raw/. All frozen
 and negative evidence is preserved, with compact manifests/summaries in Git.
+
+SHALLOW4 v2 has launched after clean checkpoint74770d5. Its executor receipt
+is confirmation-w4-v2/execution.json; use only completed prospective looks.
+Source/binary/model/protocol are frozen, and no heavy QA/build/maintenance runs
+during play. Initial host resource evidence is host-confirmation-w4-v2-start.json.
+No completed outcome or adoption claim exists at launch.
+
+## First four-worker independent look
+
+SHALLOW4 v2 completes128 fresh pairs/256 normal games: W/D/L[124,40,92],
++43.658 Elo. Adjusted paired-normal[-8.068,+97.400], required2.5-SE
+[-1.502,+90.344], adjusted Hoeffding[-65.236,+162.174]. None meets the
+prospective positive boundary. Original-rule decisionCONTINUE, plug-in maximum
+conditional power effectively1; the unchanged runner starts the384-pair second
+stage toward512 cumulative pairs. No post-hoc extension or retuning occurs.
+
+First-stage measured wall3481.01s; baseline/candidate CPU5864.344/5881.047s,
+ratio1.002848. All256 games, histories, engine processes, identities and normal
+terminations pass the original audits. First/mid host samples show about19.2GiB
+free and zero paging; the host remains a nonexclusive desktop. Whole-game node
+sums are recorded, but diverging game positions prevent treating those totals
+as matched-position efficiency. The full assessment and execution receipts are
+in confirmation-w4-v2/. Default native production remains unchanged, and this
+point estimate is neither a gain nor proof of a worker interaction.
+
+After this frozen confirmation closes, use a larger prospective exploratory
+DEEP screen to assess whether its32-pair native signal and modest2.6% D6 node
+saving warrant expensive independent investment. The existing prospective
+resource analysis is a proposal, not a launched/frozen confirmation or spent
+contrast3. Its quoted powers concern individual fixed looks; earlier futility
+stopping can reduce overall procedure power. Preserve the remaining small-gain
+uncertainty and avoid an arbitrary experimental quota. No heavy work during play.
+
+Counting qualification: evaluator-parity/proof totals in the D2 and CHILD
+checkpoints cover their complete six-policy and seven-policy integrity suites,
+respectively, including controls; they are not counts exclusive to the new
+policy. The new-policy omission replay and worker-specific runs are separate.
+
+## Second four-worker independent look and final frozen stage
+
+SHALLOW4 v2 reaches512 cumulative fresh pairs/1,024 normal games: W/D/L
+[454,174,396],+19.700 Elo. Adjusted paired-normal[-7.490,+47.134], required
+2.5-SE[-4.026,+43.611], adjusted Hoeffding[-34.388,+74.767]. Original-rule
+decisionCONTINUE, plug-in conditional power.93117. This is not a positive
+boundary; conditional power is an estimated planning quantity, not posterior
+probability that the mechanism is beneficial. No native/all-worker gain is inferred.
+
+Both completed stages pass all frozen-input, complete-history, process and
+normal-ending audits. Cumulative baseline/candidate CPU23374.063/23270.469s,
+ratio.995568; measured wall13808.72s. The384-pair stage alone takes10327.71s.
+The unchanged executor has launched the final1,536-pair stage toward the
+original2,048-pair maximum, with the original24h watchdog. Current throughput
+projects about41311s (11.5h) more wall, within the prospective resource envelope.
+This is the scheduled final look, not a post-hoc extension. No further look is
+permitted after the original maximum or a stopping decision. Preserve every game.
+
+Low-frequency host snapshots through15:35UTC show no paging and18-20GiB free;
+these samples do not exclude unobserved background transients. No heavy tests,
+builds or book parsing overlap clock play. Native SHALLOW1 remains CLOSED for
+computational futility at512 pairs. The larger DEEP exploratory screen remains
+queued after this frozen run closes; proposed contrast3 has not been launched,
+spent or used to reinterpret SHALLOW. No production adoption or successor.
