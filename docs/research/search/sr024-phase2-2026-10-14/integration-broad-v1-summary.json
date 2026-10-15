@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "suites": 109,
+  "tests": 811,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 11,
+  "passed": 800,
+  "disabled": [
+    "com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest.terminalHistoryAndMatePlyRemainAuthoritative()",
+    "com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest.completeCorpusKeepsScorePvTreeAndRecordsOnlyEligibleMoves()",
+    "com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest.oracleEvidenceIsCompleteAndDoesNotChangeEnumeration()",
+    "com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest.cancellationDoesNotPublishIncompleteMoveOrNodeEvidence()",
+    "com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest.standPatMaterialEpNegativeSeeAndBoundsAreObservedWithoutPruning()",
+    "com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest.immediateAdjudicationExcludedInsteadOfInventingChildStatic()",
+    "com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest.narrowWindowsReuseExistingCutoffAndPreserveFailSoftWitnesses()",
+    "com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest.corpusIdentityNaturalEvaluationBoundAndRepeatability()",
+    "com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest.cancellationLeavesUnresolvedChildWithoutStaticObservation()",
+    "com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest.oracleStaticObserverPreservesEnumerationAndBoundsExactContinuation()",
+    "com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest.historyAndActualPathMateDistanceRemainIdentical()"
+  ]
+}

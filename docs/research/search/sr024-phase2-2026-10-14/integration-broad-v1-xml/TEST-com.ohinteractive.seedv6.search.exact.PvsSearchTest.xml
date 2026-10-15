@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.PvsSearchTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-15T04:41:48" hostname="DESKTOP-TQLS4KP" time="0.949">
+  <properties/>
+  <testcase name="cancellationDuringScoutOrResearchCannotPublishRootEvidence()" classname="com.ohinteractive.seedv6.search.exact.PvsSearchTest" time="0.006"/>
+  <testcase name="completedQuietCutoffLearnsOnceAndIndependentInvocationsResetHistory()" classname="com.ohinteractive.seedv6.search.exact.PvsSearchTest" time="0.002"/>
+  <testcase name="firstFullLaterFailLowEqualityAtAlphaAndMultipleImprovements()" classname="com.ohinteractive.seedv6.search.exact.PvsSearchTest" time="0.005"/>
+  <testcase name="terminalDrawCancellationHistoryAndEvaluatorSlotsRemainReusable()" classname="com.ohinteractive.seedv6.search.exact.PvsSearchTest" time="0.054"/>
+  <testcase name="firstSearchedMoveIsTheLegalHashAcrossTacticalAndQuietClasses()" classname="com.ohinteractive.seedv6.search.exact.PvsSearchTest" time="0.167"/>
+  <testcase name="scoutBetaEqualityAndFailSoftOvershootNeverResearch()" classname="com.ohinteractive.seedv6.search.exact.PvsSearchTest" time="0.003"/>
+  <testcase name="currentDepthGenerationCutoffOnlyTtAndNoLeafParticipationRemainIntact()" classname="com.ohinteractive.seedv6.search.exact.PvsSearchTest" time="0.006"/>
+  <testcase name="referencePreservesRecordedDepthFiveResultsAndPvsMatchesExactLines()" classname="com.ohinteractive.seedv6.search.exact.PvsSearchTest" time="0.557"/>
+  <testcase name="abortedInteriorScoutAndResearchNeverStoreCompletedEvidence()" classname="com.ohinteractive.seedv6.search.exact.PvsSearchTest" time="0.003"/>
+  <testcase name="scoutTtBoundsAreNotExactAndWiderResearchRevisitsTheSameChild()" classname="com.ohinteractive.seedv6.search.exact.PvsSearchTest" time="0.006"/>
+  <testcase name="exhaustiveValuesSpecialMovesTerminalLeavesAndDeterministicTies()" classname="com.ohinteractive.seedv6.search.exact.PvsSearchTest" time="0.105"/>
+  <testcase name="integerExtremesNarrowWindowsAndMateBandsPreserveBounds()" classname="com.ohinteractive.seedv6.search.exact.PvsSearchTest" time="0.031"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1156,3 +1156,51 @@ explicit UCI policy resolution for warm-up, services and identity reporting.
 Verify the integrated hot search classes against frozen v4, actual production
 worker execution, private state, budgets, draining, reset and consumer paths
 before technical closeout. No successor feature is selected.
+
+### Production integration and functional validation — 2026-10-15 local
+
+The complete one-worker evidence is committed at `f1fb522` before integration.
+Normal Pair-2 `ProductionSearch.create` now selects QXRAY with native EFFORT1
+and ROOT_REUSE2..16. `createSeeControl` retains the complete prior cumulative
+composition. UCI distinguishes absent SEE configuration from explicit OFF;
+normal identity reports `leaves=see_selective mode=production see=qxray`, while
+explicit OFF reports the unpruned control and explicit candidates remain research.
+Warm-up and service paths preserve explicit historical concurrency controls at
+one worker as well as multiple workers. The new managed SEE-off service retains
+the same optional book/tablebase facilities as production; existing research
+services keep their search-only behavior. Other evaluators, static/unpruned
+controls and the independent reference remain unchanged.
+
+Focused integration passes **33 tests**. A new observation-only test inspects
+the actual factory before attaching diagnostics, verifies cumulative policies
+and distinct private history at every count 1..16, observes owner/helper SEE,
+checks budgets/draining/reuse and native fresh-owner parity. Its recorded output
+shows QXRAY omissions in every worker at every count; deeper 4/16-worker runs
+also execute SEE, LMR and LMP in every worker. Existing Pair-2 managed play,
+self-play and validation tests now check the adopted composition while preserving
+the prior EFFORT control test. UCI tests cover normal/research/OFF identities and
+the retained book path.
+
+The initial focused shell capture terminated on an ordinary Java incubator
+warning; it supplied no captured test verdict. Direct native output capture
+resolved this tooling issue. The first captured suite then exposed an invalid
+new test assumption that `newGame` eagerly zeros history. Existing history is
+cleared at the next search's first invocation. The test now verifies observable
+fresh-owner parity after reset/cancellation instead; no hot-path engine change
+was required. Failed logs/XML and the passing retry are retained separately.
+
+The broad Search/rules/UCI/SEE regression passes **811 total tests: 800 passed,
+11 existing disabled, zero failures/errors, 109 suites** in 2m23s. Disabled
+tests are the five QuiescenceDeltaEvidenceTest and six
+QuiescencePostMoveEvidenceTest methods already excluded before integration.
+See `integration-broad-v1-summary.json`, XML and raw log. Unrelated training,
+GUI/mobile and unusually expensive full-application suites are deliberately not
+run because this change affects Search composition and UCI routing only.
+
+Initial built-class comparison finds **709/714 class files byte-identical** to
+the confirmed v4 candidate. Differences are ProductionSearch, UciEvaluation and
+the SearchLifecycleService class family (including two nested classes whose
+source line positions shifted). ExactSearch, ParallelSearch, ExactSearchAdapter,
+SeePolicy, TT and evaluator class bytes remain unchanged. The final frozen
+installation, source binding, runtime dependency check and real-model UCI
+integration verification remain to be completed before technical closeout.

@@ -4,7 +4,7 @@ import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.util.Pext;
 import com.ohinteractive.seedv6.core.util.Piece;
 
-/** Explicit SR-024 experiments over cumulative Search; OFF preserves production. */
+/** SEE policies over cumulative Search; Pair-2 production uses QXRAY, OFF is a control. */
 public enum SeePolicy {
     OFF,
     /** Omit negative nonchecking captures in qsearch; retain promotions and EP. */

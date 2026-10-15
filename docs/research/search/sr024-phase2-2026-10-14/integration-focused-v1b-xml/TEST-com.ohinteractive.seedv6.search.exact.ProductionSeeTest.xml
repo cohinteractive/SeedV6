@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.ProductionSeeTest" tests="3" skipped="0" failures="1" errors="0" timestamp="2026-10-15T04:38:49" hostname="DESKTOP-TQLS4KP" time="1.532">
+  <properties/>
+  <testcase name="deeperFourAndSixteenWorkerProductionExecuteSeeLmrAndLmpInEveryWorker()" classname="com.ohinteractive.seedv6.search.exact.ProductionSeeTest" time="1.295"/>
+  <testcase name="everySupportedProductionWorkerKeepsCumulativePoliciesAndPrivateState()" classname="com.ohinteractive.seedv6.search.exact.ProductionSeeTest" time="0.19">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;true&gt; but was: &lt;false&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at app//org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at app//org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at app//org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at app//com.ohinteractive.seedv6.search.exact.ProductionSeeTest.everySupportedProductionWorkerKeepsCumulativePoliciesAndPrivateState(ProductionSeeTest.java:57)
+	at java.base@21/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="explicitOffRetainsPriorCompositionAndOtherEvaluatorsStayOff()" classname="com.ohinteractive.seedv6.search.exact.ProductionSeeTest" time="0.045"/>
+  <system-out><![CDATA[SR024 deeper workers=4 SEE=[127298, 65429, 72115, 58864] LMR=[20854, 8864, 8141, 7950] LMP=[264046, 130264, 125617, 125762]
+SR024 deeper workers=16 SEE=[80227, 17164, 22483, 20800, 16597, 20279, 16978, 16370, 16717, 15451, 22476, 17448, 7987, 7999, 8123, 10322] LMR=[15167, 2354, 2722, 2598, 2412, 2398, 2782, 2260, 2373, 2447, 2844, 1735, 1113, 1093, 849, 847] LMP=[180679, 34939, 40384, 40431, 31253, 33732, 40009, 29251, 33383, 33812, 43884, 32305, 19613, 20371, 17134, 19508]
+SR024 production workers=1 qOmitted=[44214]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

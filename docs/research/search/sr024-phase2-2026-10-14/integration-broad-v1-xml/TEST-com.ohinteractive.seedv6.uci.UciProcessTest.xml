@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.uci.UciProcessTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-10-15T04:42:51" hostname="DESKTOP-TQLS4KP" time="6.632">
+  <properties/>
+  <testcase name="goInfiniteKeepsInputResponsiveAndStopPublishesExactlyOnce()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.417"/>
+  <testcase name="invalidGoFormsAreQuietAndDoNotBreakLaterCommands()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.357"/>
+  <testcase name="sequentialAsynchronousDepthSearchPreservesPositionAndExactChessSemantics()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.406"/>
+  <testcase name="quitAndEofDuringSearchAreBoundedAndSuppressBestmove()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.673"/>
+  <testcase name="threadsOptionRunsDepthTimeClockStopReplacementAndQuitProtocolSafely()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.412"/>
+  <testcase name="actualMainExitsCleanlyOnEofWithoutQuit()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.336"/>
+  <testcase name="bundledBookBypassesSearchAndOwnBookSurvivesWorkerChanges()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.423"/>
+  <testcase name="processReportsWinningAndLosingMateAsMateWithExactDistance()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.4"/>
+  <testcase name="diagnosticsEnabledProcessEmitsOnlyNormalProtocolSafeSearchLines()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.404"/>
+  <testcase name="positionReplacementSuppressesActiveOldPositionResult()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.364"/>
+  <testcase name="terminalRootsCompleteImmediatelyUnderInfiniteAndTimedSearch()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.357"/>
+  <testcase name="newGameInvalidatesActiveSearchAndResetsPositionHistory()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.358"/>
+  <testcase name="actualMainProvidesHandshakeReadinessAndCleanQuitWithoutStartupNoise()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.328"/>
+  <testcase name="nodesMovetimeAndClockGoCommandsAllTerminateWithLegalMoves()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.655"/>
+  <testcase name="malformedPositionDoesNotReplacePreviouslyAcceptedProcessState()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.391"/>
+  <testcase name="backToBackGoReplacesAndSuppressesOldGeneration()" classname="com.ohinteractive.seedv6.uci.UciProcessTest" time="0.344"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

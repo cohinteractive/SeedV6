@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UciEvaluationTest {
     @TempDir Path root;
 
-    @Test void seeControlsRequireUnconfoundedPair2AndDefaultOff() {
+    @Test void seeResearchControlsRequireUnconfoundedPair2AndLeaveHceUnchanged() {
         assertEquals(com.ohinteractive.seedv6.search.exact.SeePolicy.OFF,UciEvaluation.load(new Properties()).seePolicy());
         for(var policy:com.ohinteractive.seedv6.search.exact.SeePolicy.values()) {
             if(policy==com.ohinteractive.seedv6.search.exact.SeePolicy.OFF)continue;
@@ -233,6 +233,21 @@ class UciEvaluationTest {
         assertTrue(loaded.identity(2).contains("reuse=effort "));
         assertTrue(loaded.identity(2).contains("concurrency=root_reuse rootHistory=seeded_private"));
         assertFalse(loaded.identity(2).contains("experimental=true"));
+        assertTrue(loaded.identity(1).contains("see=qxray"));
+        assertTrue(loaded.identity(16).contains("leaves=see_selective mode=production"));
+        props.setProperty(UciEvaluation.PREFIX + "seeResearch", "off");
+        var seeOff = UciEvaluation.load(props);
+        assertTrue(seeOff.seeExplicit());
+        for(int workers : new int[] {1, 4, 16}) {
+            assertTrue(seeOff.identity(workers).contains("leaves=unpruned mode=control"));
+            assertTrue(seeOff.identity(workers).contains("see=off"));
+            assertFalse(seeOff.identity(workers).contains("experimental=true"));
+        }
+        props.setProperty(UciEvaluation.PREFIX + "seeResearch", "qxray");
+        var explicitSee = UciEvaluation.load(props);
+        assertTrue(explicitSee.identity(4).contains("leaves=see_selective mode=research"));
+        assertTrue(explicitSee.identity(4).contains("experimental=true"));
+        props.remove(UciEvaluation.PREFIX + "seeResearch");
         props.setProperty(UciEvaluation.PREFIX + "reuseResearch", "off");
         var reuseOff = UciEvaluation.load(props);
         assertTrue(reuseOff.identity(1).contains("reuse=off "));
@@ -250,11 +265,11 @@ class UciEvaluationTest {
         assertTrue(pruningOff.identity(1).contains("leaves=unpruned mode=control"));
         assertFalse(pruningOff.identity(1).contains("experimental=true"));
         props.remove(UciEvaluation.PREFIX + "lmpResearch");
-        assertTrue(loaded.identity(1).contains("leaves=unpruned mode=production"));
+        assertTrue(loaded.identity(1).contains("leaves=see_selective mode=production"));
         assertTrue(loaded.identity(1).contains("lmr=quiet "));
         assertTrue(loaded.identity(1).contains("nominalLmrProof=off"));
         assertFalse(loaded.identity(1).contains("experimental=true"));
-        assertTrue(loaded.identity(2).contains("leaves=unpruned mode=production"));
+        assertTrue(loaded.identity(2).contains("leaves=see_selective mode=production"));
         assertTrue(loaded.identity(2).contains("lmr=quiet "));
         assertTrue(loaded.identity(2).contains("nominalLmrProof=off"));
         assertTrue(loaded.identity(2).contains("nominalQProof=off"));
@@ -276,7 +291,7 @@ class UciEvaluationTest {
             assertTrue(selected.identity(2).contains("lmr=off "));
             assertTrue(selected.identity(2).contains("reuse=off "));
         }
-        for(var selected : new UciEvaluation[] {loaded, control, off, pruningOff, reuseOff})
+        for(var selected : new UciEvaluation[] {loaded, seeOff, control, off, pruningOff, reuseOff})
         for(int workers : new int[] {1, 2}) try(var service = selected.service(workers)) {
             var board = Board.startingPosition();
             var book = new java.util.concurrent.CompletableFuture<com.ohinteractive.seedv6.search.manage.ManagedSearchResult>();
@@ -291,7 +306,7 @@ class UciEvaluationTest {
             var result = searched.get(5, java.util.concurrent.TimeUnit.SECONDS);
             assertEquals(com.ohinteractive.seedv6.search.common.SearchTermination.COMPLETED, result.termination());
             assertNull(result.failure());
-            assertEquals(selected == loaded || workers == 1 && selected != control,
+            assertEquals(selected == loaded || selected == seeOff || workers == 1 && selected != control,
                     result.lastCompletedResult().selective());
         }
         props.remove(UciEvaluation.PREFIX + "qsearchResearch");

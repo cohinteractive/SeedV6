@@ -22,8 +22,8 @@ import com.ohinteractive.seedv6.search.tt.TTable;
 /**
  * Worker-confined production boundary for one fixed-depth Search invocation.
  * The calibrated HCE default composes SR-018 and SR-019; neural and explicitly supplied
- * evaluator constructors retain static leaves. The explicit unpruned qsearch
- * plus quiet LMR and protected narrow-window LMP is selected by single-worker Pair-2 production.
+ * evaluator constructors retain static leaves. Single-worker Pair-2 production selects
+ * QXRAY qsearch, native EFFORT, quiet LMR and protected narrow-window LMP at its factory.
  * The recursive algorithm uses the same
  * evaluator interface, without evaluator-type tests in its hot path.
  * Owns evaluator and Search TTable state, reusing both across iterations and

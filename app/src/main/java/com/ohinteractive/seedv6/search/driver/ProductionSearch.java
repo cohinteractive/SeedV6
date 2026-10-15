@@ -6,10 +6,22 @@ import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.search.exact.IterationReuse;
 import com.ohinteractive.seedv6.search.exact.ConcurrencyPolicy;
+import com.ohinteractive.seedv6.search.exact.SeePolicy;
 
 /** Canonical search construction: the total worker limit includes the calling owner. */
 public final class ProductionSearch {
     public static SingleDepthSearch create(int workers, SearchEvaluation evaluation) {
+        validate(workers, evaluation);
+        if (evaluation.isBrnPair2())
+            return workers == 1
+                    ? ExactSearchAdapter.seeResearch(evaluation, SeePolicy.QXRAY, null)
+                    : new ParallelSearch(workers, evaluation, ConcurrencyPolicy.ROOT_REUSE)
+                            .withSeeResearch(SeePolicy.QXRAY, null);
+        return createStaticControl(workers, evaluation);
+    }
+
+    /** Accepted pre-SR-024 cumulative control: native EFFORT or ROOT_REUSE, SEE off. */
+    public static SingleDepthSearch createSeeControl(int workers, SearchEvaluation evaluation) {
         validate(workers, evaluation);
         if (evaluation.isBrnPair2())
             return workers == 1

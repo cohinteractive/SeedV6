@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" tests="21" skipped="0" failures="0" errors="0" timestamp="2026-10-15T04:42:46" hostname="DESKTOP-TQLS4KP" time="0.037">
+  <properties/>
+  <testcase name="startingPositionDepthTwoCountsEveryEnteredChild()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.001"/>
+  <testcase name="nonTerminalRootRuleDrawReturnsLegalMoveWithoutTraversal()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.0"/>
+  <testcase name="searchRequestDefensivelySnapshotsFirstSixBoardLongs()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.0"/>
+  <testcase name="rootCheckmateHasExplicitNoMoveResult()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.0"/>
+  <testcase name="mateAndStalemateTakePrecedenceAtFiftyMoveThreshold()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.001"/>
+  <testcase name="searchRequestAllowsWs10DepthZeroAndRejectsNegativeDepth()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.0"/>
+  <testcase name="returnedBestMoveBelongsToAuthoritativeLegalRootSet()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.0"/>
+  <testcase name="formalRepetitionIsAdjudicatedInsideFullWidthTraversal()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.001"/>
+  <testcase name="searchRequestSnapshotsMatchingHistoryAndRejectsMismatchedRoot()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.0"/>
+  <testcase name="rootStalemateHasExplicitNoMoveResult()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.0"/>
+  <testcase name="forcedMateAtPlyTwoUsesRootRelativeMateDistance()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.001"/>
+  <testcase name="startingPositionDepthThreeCountsEveryEnteredChild()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.008"/>
+  <testcase name="searchRequestValidatesRequiredInputsAndLeavesUpperBoundToSearch()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.001"/>
+  <testcase name="finishedObserverReceivesReturnedImmutableResultInstance()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.009"/>
+  <testcase name="observerExceptionPropagatesAndSearchInstanceRemainsReusable()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.009"/>
+  <testcase name="flatSearchMatchesIndependentRecursiveOracle()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.002"/>
+  <testcase name="startingPositionDepthOneContract()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.0"/>
+  <testcase name="searchResultEnforcesStructuralInvariantsButAllowsIncompleteResults()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.001"/>
+  <testcase name="searchPreservesCallerBoardAndIsSequentiallyDeterministic()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.002"/>
+  <testcase name="repetitionQualifiedCheckmateRemainsCheckmate()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.0"/>
+  <testcase name="mateInOneUsesRootRelativeMateDistance()" classname="com.ohinteractive.seedv6.search.flat.FlatNegamaxTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
