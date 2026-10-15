@@ -192,3 +192,161 @@ Current live experiment: `development-v1-shallow-w1/`, fixed32 pairs under the
 prospective development protocol, candidate SHALLOW versus frozen accepted QXRAY.
 Its `run.json`, raw PGN and runner output preserve process/configuration/outcomes;
 completion and statistical inference are not assumed from launch.
+
+## First completed clock screen and independent audit
+
+SHALLOW1 development completed32 pairs/64 normal games:35/14/15 W/D/L,
++112.33 exploratory Elo, paired-normal95%[+39.10,+196.90], bounded95%
+[-58.81,+374.73]. Candidate/baseline lifetime CPU1.004858. The tiny selected
+screen does not establish a gain; it justifies further worker/alternative and
+fresh validation. Match wall236.63s; all input/PGN/pair/history/accounting checks
+pass. First root research checkpoint is commit `ca8fce6`; no adoption is implied.
+Git automatic packing began42s after this completed run receipt and finished
+before the next clock match. It is not a measured-game contention event.
+
+Corrected `omission-audit-v2` completed the same1,682 replays with the actual
+independent ordered-alpha-beta SR-001A branch, and again found no sampled
+alpha improvement. Both audit attempts remain separate. A fresh96-root corpus
+uses reproducibly seeded legal walks from development prefixes, preserving
+complete history; its manifest states correlation and selection limits. A fresh
+SHALLOW audit precedes the four-worker clock screen. Existing source archive
+matches every frozen main-source entry; its later-added build task is explicitly
+not the original build.gradle byte identity. Actual match tool bytes are bound
+by each run receipt, independently of the earlier prototype source manifest.
+
+The fresh96-root SHALLOW audit completed3,056 additional independent/unpruned
+and QXRAY full-window replays with no sampled alpha improvement and no incomplete
+replay (`fresh-omission-audit-v1-summary.json`). These are correlated conditional
+samples, not a safety guarantee. The next live fixed batch is
+`development-v1-shallow-w4/`:32 pairs at four workers/two concurrent games,
+unchanged frozen policies/model/clock/openings, separate worker-domain inference.
+
+## Prospective confirmation readiness
+
+All prior partition-one selection receipts reserve16,037 distinct position keys,
+including unused frozen stages. The original34,700-opening source has limited
+fresh confirmation capacity. Closed protocols and their reservations remain
+unchanged. Before choosing stages, inspect exact remaining capacity and a fresh
+full-history source; this is an in-scope evidence prerequisite, not a new feature.
+The author-maintained [Stockfish books collection](https://github.com/official-stockfish/books)
+includes `bjbraams_chessdb_198350_lines.pgn` (published198,350 prefixes,1..16plies).
+Pinned repository commit is `65815ccdbc7727cd4f6aee252ba8f67fb740e92f`.
+A prospective converter retains only legal standard-start16-ply nonterminal
+prefixes, with no evaluator/outcome filter, and counts structural exclusions.
+The established final-position hash partition, deduplication, complete-history
+pairing and exclusion audit then apply unchanged. This source is being evaluated
+for adequacy, not silently substituted in the running development batch.
+
+Using the first32-pair development variance.08367 only as a forecast, a positive
+20-Elo effect has approximate70.6%/96.9% fixed-look power at1,024/2,048 pairs
+with three-look adjusted z=2.64;10Elo remains much harder to resolve. These are
+plug-in approximations with winner-selection and distribution uncertainty, not
+observed confirmation or guaranteed stopping behavior. Final stage allocation
+will account for the four-worker screen, fresh-source availability and measured
+valid-game throughput before any confirmatory outcomes exist.
+
+## Worker screen and state-integrity checkpoint
+
+SHALLOW4 completed32 pairs/64 normal games:35/5/24 W/D/L,+60.31 Elo,
+paired-normal95%[-16.14,+143.14], bounded95%[-110.71,+270.59].
+Candidate lifetime CPU ratio1.029392; all frozen-input and complete-history
+PGN/accounting audits pass. Together with SHALLOW1 this supports further
+investment, not adoption. The policies remain frozen and defaultOFF.
+
+The real-model integrity harness passes1,035 observations,6,726,334 rolling
+versus fresh evaluator checks and457 independent ordinary TT-proof replays
+across all five policies at workers1/4. It exercises reset/reuse, helper drain,
+private evaluator ownership, legal PVs and root isolation. Actual omissions
+are separately counted in integrity-v2-summary.json. A first invocation failed
+before capture because of an incorrect relative output path; its log remains.
+The corrected Java run and Gradle report success; the host wrapper exit1 came
+from redirected JVM warning stderr. These instrumented runs are not timing data.
+
+Next comparative development: LEAF1 tests whether restricting toD1 loses useful
+D2 opportunity; PREFIX4 tests whether protecting the first three quiets offers
+a worthwhile alternative under ROOT_REUSE. DEEP remains lower priority given
+weaker clean economics and the adverse conditionalD3 witness. No exhaustive
+parameter grid or mandatory count is imposed.
+
+The pinned Bjbraams source download has SHA256
+`7b3ede8b13736df09c7c8560a16dd0068c7247cf8cbdec4052073329fff3fb0e`.
+Structural conversion admitted40,462 of198,350 prefixes and excluded157,888
+short prefixes; none were nonstandard/terminal. Legal16 output SHA256
+`eaf3c706dc6038d18a05c8608417a5ee2e3e43438487d73bbf2c7191183db42f`.
+Source archive/download and converter manifests retain exact local paths and
+identities. All source data remains local under app/build. Final confirmation
+capacity is still subject to existing endpoint deduplication/partition/exclusion.
+The unchanged staged-confirmation tooling passes all9 synthetic rule/runner
+tests. New fixed-model all-worker coverage is prepared but not run during
+the current LEAF1 then PREFIX4 clock screens.
+
+LEAF1 completed32 pairs/64 normal games:24/15/25 W/D/L,-5.43 Elo,
+paired-normal95%[-84.22,+72.80], CPU ratio1.000069. This weak screen
+and smaller work savings give SHALLOW priority; they do not prove LEAF
+inferior or establish the pairwise difference between the variants.
+The four-worker PREFIX contrast remains running to completion.
+
+Confirmation exclusion review also reserves42 partition-one root endpoints
+from both diagnostic corpora in diagnostic-exclusions.selection.json, including
+legal-walk descendants. These are explicit exclusion reservations, not sampled
+game evidence. Root-disjoint openings do not imply disjoint future search trees.
+The forecast file gives per-domain approximate adjusted precision and power:
+at2,048 pairs the nominal20-Elo fixed-look power is96.9%/89.7%, while10Elo
+remains35%/21%. Extrapolated10+0.1 maximum wall is8.4/15.5hours; early looks
+can stop far sooner. These selected-variance and doubled-clock forecasts may
+shift with the new source and are not confidence claims or a minimum gain.
+
+## Unchanged SHALLOW finalist
+
+PREFIX4 completed32 pairs/64 normal games:30/5/29 W/D/L,+5.43 Elo,
+paired-normal95%[-74.36,+85.81], CPU ratio1.038435. All four completed
+development contrasts comprise256 normal games with stable inputs. SHALLOW
+has the best combined shallow opportunity, clean depth economics and promising
+two-worker-domain development; the small screens do not prove superiority.
+LEAF/PREFIX remain credible narrower controls, while DEEP is lower priority
+from weak incremental economics and the observed conditionalD3 resource risk.
+
+`finalist-v1.json` freezes the unchanged SHALLOW policy and binary for independent
+confirmation at1/4, with no adoption or retuning. Every archived runtime source
+hash matches its original manifest; current Java/resources are logically identical
+modulo repaired line endings. The archive build-task timing limitation remains
+explicit. Broad regression and fixed-model1..16 worker/lifecycle checks precede
+launch. New-source opening selections must be root-disjoint from all earlier
+reserved confirmation and diagnostic endpoints. The published uncompressed
+opening-source SHA384 matches the upstream books.json value exactly.
+
+Real-model frozen-binary UCI validation passes44 requests across all16 worker
+settings plus1->4->16->1 lifecycle transitions, legalPV, budget/time/stop and
+newgame/reuse (`workers-uci-v1-summary.json`). The first fresh-source selection
+found19,203 available partition-one positions after all exclusions, enough for
+independent2,048-pair reservations per worker domain. Confirmation1 is frozen
+at128/512/2,048 prospective pairs,10+0.1, family contrast1; confirmation4 is
+prepared separately with contrast2 and excludes the entire first reservation.
+The narrow reviewed .gitignore exception retains only their frozen input PGNs
+(including unused reserved stages); actual tournament PGNs remain local ignored
+output. Sampling/preparation is completed before clock matches begin.
+
+Preconfirmation broad regression passes806/817 tests in110 suites, with11
+existing disabled and no failures/errors. The fixed-model worker harness passes
+18 main requests plus18 reset/reuse requests. Every count1..16 executes actual
+futility in owner/helpers; deeper4/16 execute futility,QXRAY,LMR andWINDOW in
+every worker. All legalPV, actual-node accounting and draining checks pass.
+
+Protocol readiness caught a prospective operational defect before any games:
+the inherited preparer hard-codes an8hour stage watchdog, shorter than the
+projected11.6hour largest four-worker stage. Both unstarted v1 protocols and
+all their reserved inputs are retained, superseded before execution. A scoped
+copy adds an explicit24hour watchdog and freezes fresh v2 reservations. No
+confirmation outcome exists and family indices1/2 remain unspent. No shared
+frozen tool or completed protocol is modified. The watchdog is failure detection,
+not a strength stopping rule or authority to retune/extend a completed study.
+
+Both replacement v2 protocols are now ready, with every frozen input digest
+verified and2,048 mutually disjoint reserved pairs each. One-worker protocol
+SHA256 `c5064e8fc5374ce923bc622f1ef4e94d35bffe3b3bcb2a662964206cab7bac62`;
+four-worker `089d64b8888ae9cc8edddbbe769d63c9841293578e3fc8bffeb7b8e9c584587f`.
+Current masters advance toP2-R030/P2-F034 for the frozen-finalist checkpoint.
+Next execution is one-worker v2 via the unchanged staged runner; it evaluates
+only completed prospective looks and stops without post-hoc extension. Four-
+worker confirmation remains frozen and unlaunched until that result informs
+continued investment. No runtime code changes or strength claim at this checkpoint.

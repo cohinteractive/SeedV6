@@ -375,5 +375,6 @@
     "app/build.gradle",
     "app/src/main/java/com/ohinteractive/seedv6/uci/UciEvaluation.java",
     "app/src/test/java/com/ohinteractive/seedv6/uci/UciEvaluationTest.java"
-  ]
+  ],
+  "scopeClarification": "Every app/src/main entry matches the original v1-identities manifest. The archived build.gradle was copied later with an added audit task and is not the earlier build.gradle identity; neither that task nor match-script line-ending repair changes the frozen runtime. Match run.json binds actual executed runner/script bytes independently."
 }

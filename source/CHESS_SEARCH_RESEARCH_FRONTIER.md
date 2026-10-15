@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F033**
+Internal frontier revision: **P2-F034**
 
 Status: **SR-021 Futility-Pruning Family is ACTIVE. SR-024 IMPLEMENTED owner acceptance and BOTH P2-R028/P2-F032 Project Source synchronizations are confirmed by the launch. No successor is authorized.**
 
@@ -775,7 +775,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-006 | Aspiration windows | REJECTED | Scoped six-formulation investigation found no credible strength-supported adoption over cumulative SR-001+SR-029. Independent ALPHA16: 809/453/786 over 1,024 pairs, +3.90 Elo, adjusted interval [-12.30,+20.12]; both required/wider sensitivities include zero. Retain full-window production, research controls, negative/cost evidence, uncertainty and owner/GPT handback above; no universal inferiority claim. |
 | SR-007 | Internal iterative search: IID and IIR | DEFERRED | Seven formulations and 416 development games; IID_WIDE fresh 256-game confirmation closed for futility, later IIR_ALL/IID_SHALLOW/IID_NEAR follow-ups inconclusive. No adoption; EFFORT unchanged. Modest gains/targeted eligibility remain unresolved; report quantifies further evidence value and fresh resumption conditions. Owner/GPT acceptance and BOTH P2-R022/P2-F026 mirror synchronization were confirmed by the SR-036 launch; closed evidence remains separate. |
 | SR-020 | Razoring | PENDING | Reduced/qsearch horizons, evaluator evidence, nominal resources and SR-018/019 composition. |
-| SR-021 | Futility-pruning family | ACTIVE | Owner-selected investigation over verified QXRAY/EFFORT1/ROOT_REUSE2..16 production; evaluate incremental headroom, tactical resources, cost and strength while preserving proof, references and all-worker compatibility. See SR-021 activation/report. |
+| SR-021 | Futility-pruning family | ACTIVE | Unchanged SHALLOW finalist selected after four formulations, conditional tactical/proof checks, clean costs and256 development games; fresh1/4-worker staged confirmation is prospective, no gain/adoption claimed. Broad806 tests, fixed-model1..16 availability and deeper4/16 cumulative execution pass. See current checkpoint/report; no successor. |
 | SR-022 | Late-move / move-count pruning | IMPLEMENTED | Confirmed protected D1/D2 WINDOW omission over single-worker Pair-2 SR-001+SR-029: 876/485/687 in 1,024 fresh pairs, +32.15 Elo, adjusted normal lower +16.09 and required 2.5-SE lower +15.38; Hoeffding includes zero. Production/default and explicit-off bridges pass. Preserve omission/proof/history protections, adverse alternatives, complete cost limits and scoped controls; owner/GPT acceptance and predecessor both-mirror synchronization confirmed by SR-023 launch. |
 | SR-023 | History-based pruning | DEFERRED | Six formulations and 448 development games; unchanged REPLACE independent 2,048-game confirmation 810/460/778, +5.43 Elo with adjusted interval [-10.56,+21.44], wider and Hoeffding intervals also include zero. No production adoption; possible small benefit unresolved. Preserve frozen evidence, WINDOW baseline and history/proof protections; fresh justified independent design and GPT/owner selection required for resumption, with no post-hoc extension. |
 | SR-024 | SEE-based move pruning | IMPLEMENTED | QXRAY adopted for Pair-2 EFFORT1/ROOT_REUSE2..16 after independent +24.128/+26.061 Elo confirmations with positive adjusted primary intervals; all-worker integration validated. Approximate inference and resource limits are documented; owner/GPT acceptance and BOTH P2-R028/P2-F032 mirror synchronization are confirmed by the SR-021 launch. See the unchanged SR-024 report and closeout below. |
@@ -916,6 +916,43 @@ experiment is not an escalation condition. No extra orchestration ledger or
 governance document is needed.
 
 ## Maintenance and initialization state
+
+### SR-021 frozen finalist and prospective confirmation - 2026-10-15 local
+
+SR-021 remains ACTIVE; production is unchanged QXRAY/EFFORT1/ROOT_REUSE2..16.
+The [SR-021 report](../docs/research/search/SR021_FUTILITY_PHASE2_2026-10-15.md)
+and `sr021-phase2-2026-10-15/` evidence preserve the challenged static-headroom
+study, LEAF/SHALLOW/PREFIX/DEEP formulations, independent omission replays,
+clean whole-request costs and four completed development contrasts (256 normal
+games). SHALLOW development is promising at1/4; LEAF1 and PREFIX4 are near
+neutral with wide intervals. These screens establish neither gain nor variant
+superiority. No production policy or binding proof requirement has changed.
+
+Unchanged SHALLOW is frozen in `finalist-v1.json`: protected interior D1/D2 quiet
+omission, empirical margins50/100, lazy parent evaluation and conservative
+selective dependency. No omitted move supplies a child score, PV, searched
+ordinal or history update. First/hash/PV moves, checked/checking/tactical/castling,
+sparse-material, mate-band and rule-boundary protections remain. The frozen
+candidate app.jar is `c2a5a379e0e5e8a3d0590a7322d449c1c0e6db7003b0fcc56744336fc46c3836`.
+
+Independent SR-001A/QXRAY omission replays and rolling/fresh evaluator/ordinary
+proof checks passed within their explicitly conditional samples. Broad regression
+passes806 tests with11 existing disabled; frozen-model UCI/lifecycle coverage
+passes44 requests across1..16, and deeper4/16 exercise futility,QXRAY,LMR,WINDOW
+in every worker. Functional availability does not infer all-worker playing strength.
+
+Separate fresh, root-disjoint1/4-worker confirmations are prospectively staged
+at128/512/2,048 pairs and10+0.1, with family contrasts1/2, adjusted approximate
+paired-normal inference, required2.5-SE and bounded sensitivities, and fixed
+positive/negative/computational-futility/inconclusive rules. The legal full-history
+Bjbraams source changes the development distribution; source identities,
+exclusions, precision/resource forecasts and limits are durable. Unstarted v1
+protocols had an inadequate inherited operational watchdog; preserve them and
+all reserved inputs, and use only replacement `confirmation-w1-protocol-v2.json`
+and `confirmation-w4-protocol-v2.json` with24hour stage watchdogs. No confirmation
+outcome is claimed at this checkpoint. Do not retune or extend after a stopping
+decision. No successor is selected, and owner acceptance/mirror handback remains
+reserved for the eventual SR-021 technical disposition.
 
 ### SR-021 activation ? 2026-10-15 local
 
@@ -1184,3 +1221,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-F031 | Confirm owner-accepted SR-036 IMPLEMENTED and BOTH predecessor mirrors; verify cumulative production/model/archive identities and activate only SR-024, recording challenged SEE hypotheses, all-worker compatibility, proof boundaries and durable research continuation. |
 | P2-F032 | Close SR-024 as technically IMPLEMENTED: adopt frozen QXRAY across Pair-2 EFFORT1/ROOT_REUSE2..16 after independent positive confirmations; record tactical/proof boundaries, CPU/statistical/host limits, unchanged hot classes, all-worker and consumer validation, preserved controls and explicit owner/GPT both-mirror handback; select no successor. |
 | P2-F033 | Confirm SR-024 owner acceptance and BOTH predecessor mirrors; activate only SR-021 over verified cumulative QXRAY production, preserving evaluator/reference/worker boundaries and recording bootstrap challenges and durable research continuation. |
+| P2-F034 | Record SR-021 unchanged SHALLOW finalist, four-formulation development, conditional correctness/proof and all-worker validation, fresh source/exclusions and prospectively staged1/4 confirmation with preserved unstarted superseded protocols; retain ACTIVE and unchanged production without successor activation. |

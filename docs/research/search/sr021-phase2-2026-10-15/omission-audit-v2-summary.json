@@ -1,0 +1,12 @@
+{
+  "completion": {
+    "completedReplays": 1682,
+    "samples": 841,
+    "status": "passed",
+    "roots": 104
+  },
+  "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\omission-audit-v2.jsonl",
+  "sha256": "cc87d59d6707fb5daa446bfc33c302713710261aaaf4109632722dcfce357981",
+  "aboveAlpha": 0,
+  "reference": "qxray=false uses independent ordered-alpha-beta SR001A; qxray=true uses TT-off PVS QXRAY. Full history and real-ply mate normalization. No calibrated error rate."
+}

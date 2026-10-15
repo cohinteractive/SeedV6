@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "raw": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\integrity-v2.jsonl",
+  "summary": {
+    "status": "passed",
+    "storeAttempts": {
+      "OFF": 629,
+      "LEAF": 637,
+      "SHALLOW": 659,
+      "PREFIX": 649,
+      "DEEP": 642
+    },
+    "evaluatorChecks": 6726334,
+    "independentProofChecks": 457,
+    "observations": 1035
+  },
+  "observedOmissions": {
+    "OFF": {
+      "1": 0,
+      "4": 0
+    },
+    "LEAF": {
+      "1": 70005,
+      "4": 199648
+    },
+    "SHALLOW": {
+      "1": 93107,
+      "4": 242213
+    },
+    "PREFIX": {
+      "1": 78676,
+      "4": 213423
+    },
+    "DEEP": {
+      "1": 2685,
+      "4": 5659
+    }
+  },
+  "notes": [
+    "First v1 invocation failed before output due to relative-path error; v2 corrected paths, unchanged harness.",
+    "Gradle reports BUILD SUCCESSFUL; PowerShell host returned1 because JVM incubator warning was redirected. Java outcome and final assertion receipt both passed.",
+    "Instrumented correctness only; fresh-book preparation overlapped and these are not timing observations."
+  ]
+}

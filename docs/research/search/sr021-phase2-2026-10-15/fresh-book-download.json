@@ -1,0 +1,12 @@
+{
+  "url": "https://raw.githubusercontent.com/official-stockfish/books/65815ccdbc7727cd4f6aee252ba8f67fb740e92f/bjbraams_chessdb_198350_lines.pgn.zip",
+  "repositoryCommit": "65815ccdbc7727cd4f6aee252ba8f67fb740e92f",
+  "archive": "app\\build\\search-baseline\\tools\\openings\\sr021-bjbraams\\bjbraams_chessdb_198350_lines.pgn.zip",
+  "archiveSha256": "14d9bc9fce1fd96b58d2814fe7ab5b0967109c8411570a0d114558e13ad28fce",
+  "source": "app\\build\\search-baseline\\tools\\openings\\sr021-bjbraams\\bjbraams_chessdb_198350_lines.pgn",
+  "sourceSha256": "7b3ede8b13736df09c7c8560a16dd0068c7247cf8cbdec4052073329fff3fb0e",
+  "sourceBytes": 16415163,
+  "publishedSourceSha384": "wU418kvxond2TCIPX9SPOPxtgowC3tA4Hi/y6zf+Injy4icrH24rzorG9Be6Usl4",
+  "publishedDigestMatchedUncompressedSource": true,
+  "metadataUrl": "https://github.com/official-stockfish/books/blob/65815ccdbc7727cd4f6aee252ba8f67fb740e92f/books.json"
+}

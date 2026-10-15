@@ -1,0 +1,26 @@
+{
+  "selectedUtc": "2026-10-15T08:59:25.745484+00:00",
+  "policy": "SHALLOW",
+  "workers": "Uniform policy at1..16; strength confirmation separately at1and4",
+  "margins": {
+    "1": 50,
+    "2": 100
+  },
+  "depths": [
+    1,
+    2
+  ],
+  "prototypeManifest": "docs\\research\\search\\sr021-phase2-2026-10-15\\v1-identities.json",
+  "prototypeManifestSha256": "48a65e02951a6664af2b9d67a26956bbd5f90868a0d1d182817ea4e42fd096c4",
+  "sourceArchive": "app\\build\\sr021-p2-v1-source",
+  "sourcePreservationManifest": "docs\\research\\search\\sr021-phase2-2026-10-15\\v1-source-preservation.json",
+  "sourcePreservationManifestSha256": "7d18d0341205adad4c633fe25947b760b52d2178c29c6befe09ba4a8d88f47ee",
+  "sourceLogicalEquivalenceVerified": true,
+  "implementationCommit": "ca8fce6935614fd6d43ac701d9f0ee5f059b12fa",
+  "candidate": "app/build/sr021-p2-v1",
+  "candidateJarSha256": "c2a5a379e0e5e8a3d0590a7322d449c1c0e6db7003b0fcc56744336fc46c3836",
+  "comparator": "app/build/sr024-production-v1",
+  "comparatorJarSha256": "2341955302900ae1a15879d0cff6b14a3744498db0dd862b8cd2aabe7482ed0f",
+  "selectionReason": "Best combined shallow opportunity, clean depth-cost savings, sampled correctness and promising two-domain development. LEAF1 and PREFIX4 small screens are near neutral; DEEP has weaker economics and a known conditionalD3 resource risk. Screen differences do not prove variant superiority. No retuning after independent confirmation.",
+  "productionAdopted": false
+}

@@ -1,0 +1,8 @@
+{
+  "source": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-openings.pgn",
+  "sourceSha256": "a0278b4017b73cfd6a1e44db8cd73fa84c8b6284098a798c4ec11a39d2a16c8b",
+  "seed": 21101532,
+  "roots": 96,
+  "selection": "Uniform choice among sorted legal moves, up to24 extra plies, retain8/16/24; terminate on game-over. Full real prefix retained. Correlated development-only roots, not confirmation.",
+  "outputSha256": "3c27aaaea29e10c5641a678b230d20a25e68e6a99e24eb6999b082e0477ec592"
+}

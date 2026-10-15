@@ -1,0 +1,16 @@
+{
+  "source": "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\openings\\sr021-bjbraams\\bjbraams_chessdb_198350_lines.pgn",
+  "sourceSha256": "7b3ede8b13736df09c7c8560a16dd0068c7247cf8cbdec4052073329fff3fb0e",
+  "output": "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\openings\\sr021-bjbraams\\legal16-v1.pgn",
+  "outputSha256": "eaf3c706dc6038d18a05c8608417a5ee2e3e43438487d73bbf2c7191183db42f",
+  "toolSha256": "a033c333923939d0c87b4dd5555a53fbe6c64b3e226b58279e308a0f60ebeedd",
+  "counts": {
+    "total": 198350,
+    "admitted": 40462,
+    "wrongLength": 157888,
+    "nonstandardRoot": 0,
+    "terminal": 0
+  },
+  "rule": "Keep exactly16 legal plies from standard startpos and nonterminal endpoint, preserving every real move. No evaluator/score/outcome selection. Deduplication, partition, exclusions and seed sampling occur separately.",
+  "limits": "Opening-source distribution differs from8moves_v3; full-history validity does not establish training-source independence or universal strength."
+}

@@ -1,0 +1,83 @@
+{
+  "forecasts": [
+    {
+      "workers": 1,
+      "pairs": 128,
+      "pairVariance": 0.08366935483870969,
+      "criticalZ": 2.638257273476751,
+      "normalPowerByElo": {
+        "10": 0.01896869751791863,
+        "20": 0.0650465583200095,
+        "40": 0.3458223743855209
+      },
+      "projectedWallHours10p1": 0.5258369171111392,
+      "approximateAdjustedEloRadiusAtNull": 46.870508300358274
+    },
+    {
+      "workers": 1,
+      "pairs": 512,
+      "pairVariance": 0.08366935483870969,
+      "criticalZ": 2.638257273476751,
+      "normalPowerByElo": {
+        "10": 0.06516476068028065,
+        "20": 0.348559547761885,
+        "40": 0.9674819046005263
+      },
+      "projectedWallHours10p1": 2.103347668444557,
+      "approximateAdjustedEloRadiusAtNull": 23.435254150179137
+    },
+    {
+      "workers": 1,
+      "pairs": 2048,
+      "pairVariance": 0.08366935483870969,
+      "criticalZ": 2.638257273476751,
+      "normalPowerByElo": {
+        "10": 0.3492484889084746,
+        "20": 0.9685453965551699,
+        "40": 0.9999999998760422
+      },
+      "projectedWallHours10p1": 8.413390673778228,
+      "approximateAdjustedEloRadiusAtNull": 11.717627075089569
+    },
+    {
+      "workers": 4,
+      "pairs": 128,
+      "pairVariance": 0.09923135080645161,
+      "criticalZ": 2.8652602385321333,
+      "normalPowerByElo": {
+        "10": 0.00942361337223252,
+        "20": 0.03342563340082516,
+        "40": 0.20986469572650668
+      },
+      "projectedWallHours10p1": 0.9682220664444483,
+      "approximateAdjustedEloRadiusAtNull": 55.43548275217257
+    },
+    {
+      "workers": 4,
+      "pairs": 512,
+      "pairVariance": 0.09923135080645161,
+      "criticalZ": 2.8652602385321333,
+      "normalPowerByElo": {
+        "10": 0.03348929224208752,
+        "20": 0.21183075726007705,
+        "40": 0.8946200435565587
+      },
+      "projectedWallHours10p1": 3.872888265777793,
+      "approximateAdjustedEloRadiusAtNull": 27.717741376086284
+    },
+    {
+      "workers": 4,
+      "pairs": 2048,
+      "pairVariance": 0.09923135080645161,
+      "criticalZ": 2.8652602385321333,
+      "normalPowerByElo": {
+        "10": 0.212326403323571,
+        "20": 0.8970804864088415,
+        "40": 0.9999999602406792
+      },
+      "projectedWallHours10p1": 15.491553063111173,
+      "approximateAdjustedEloRadiusAtNull": 13.858870688043142
+    }
+  ],
+  "limits": "Illustrative fixed-look power, not sequential power. Development-selected means are not adopted as true effects. Variance, doubled-clock throughput and source distribution may shift. Maximum is an information-value choice, not a gain floor. Planned stages are not frozen until the protocol is written."
+}

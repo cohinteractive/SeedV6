@@ -1,0 +1,12 @@
+{
+  "completion": {
+    "completedReplays": 3056,
+    "roots": 96,
+    "status": "passed",
+    "samples": 1528
+  },
+  "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\fresh-omission-audit-v1.jsonl",
+  "sha256": "e8913d60a58eef5be6601942bb074ece9337ee3edc00ea5df4c3719ddb9a5211",
+  "aboveAlpha": 0,
+  "reference": "Independent ordered-alpha-beta SR001A and TT-off PVS QXRAY, full real histories, real-ply mate correction. Outcome-blind eight samples per root/depth. Conditional correlated data, not calibrated error rates."
+}

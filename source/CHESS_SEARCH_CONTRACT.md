@@ -1,6 +1,6 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R029**
+Internal revision: **P2-R030**
 
 Status: **SR-021 Futility-Pruning Family is ACTIVE. SR-024 IMPLEMENTED owner acceptance and BOTH P2-R028/P2-F032 Project Source synchronizations are confirmed by the launch. No successor is authorized.**
 
@@ -1014,6 +1014,43 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
+### SR-021 frozen finalist and prospective confirmation - 2026-10-15 local
+
+SR-021 remains ACTIVE; production is unchanged QXRAY/EFFORT1/ROOT_REUSE2..16.
+The [SR-021 report](../docs/research/search/SR021_FUTILITY_PHASE2_2026-10-15.md)
+and `sr021-phase2-2026-10-15/` evidence preserve the challenged static-headroom
+study, LEAF/SHALLOW/PREFIX/DEEP formulations, independent omission replays,
+clean whole-request costs and four completed development contrasts (256 normal
+games). SHALLOW development is promising at1/4; LEAF1 and PREFIX4 are near
+neutral with wide intervals. These screens establish neither gain nor variant
+superiority. No production policy or binding proof requirement has changed.
+
+Unchanged SHALLOW is frozen in `finalist-v1.json`: protected interior D1/D2 quiet
+omission, empirical margins50/100, lazy parent evaluation and conservative
+selective dependency. No omitted move supplies a child score, PV, searched
+ordinal or history update. First/hash/PV moves, checked/checking/tactical/castling,
+sparse-material, mate-band and rule-boundary protections remain. The frozen
+candidate app.jar is `c2a5a379e0e5e8a3d0590a7322d449c1c0e6db7003b0fcc56744336fc46c3836`.
+
+Independent SR-001A/QXRAY omission replays and rolling/fresh evaluator/ordinary
+proof checks passed within their explicitly conditional samples. Broad regression
+passes806 tests with11 existing disabled; frozen-model UCI/lifecycle coverage
+passes44 requests across1..16, and deeper4/16 exercise futility,QXRAY,LMR,WINDOW
+in every worker. Functional availability does not infer all-worker playing strength.
+
+Separate fresh, root-disjoint1/4-worker confirmations are prospectively staged
+at128/512/2,048 pairs and10+0.1, with family contrasts1/2, adjusted approximate
+paired-normal inference, required2.5-SE and bounded sensitivities, and fixed
+positive/negative/computational-futility/inconclusive rules. The legal full-history
+Bjbraams source changes the development distribution; source identities,
+exclusions, precision/resource forecasts and limits are durable. Unstarted v1
+protocols had an inadequate inherited operational watchdog; preserve them and
+all reserved inputs, and use only replacement `confirmation-w1-protocol-v2.json`
+and `confirmation-w4-protocol-v2.json` with24hour stage watchdogs. No confirmation
+outcome is claimed at this checkpoint. Do not retune or extend after a stopping
+decision. No successor is selected, and owner acceptance/mirror handback remains
+reserved for the eventual SR-021 technical disposition.
+
 ### SR-021 activation ? 2026-10-15 local
 
 The owner confirms SR-024 IMPLEMENTED acceptance, GPT reconciliation without
@@ -1277,3 +1314,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-R027 | Confirm owner-accepted SR-036 IMPLEMENTED and BOTH predecessor mirrors; verify cumulative production/model/archive identities and activate only SR-024, recording challenged SEE hypotheses, all-worker compatibility, proof boundaries and durable research continuation. |
 | P2-R028 | Close SR-024 as technically IMPLEMENTED: adopt frozen QXRAY across Pair-2 EFFORT1/ROOT_REUSE2..16 after independent positive confirmations; record tactical/proof boundaries, CPU/statistical/host limits, unchanged hot classes, all-worker and consumer validation, preserved controls and explicit owner/GPT both-mirror handback; select no successor. |
 | P2-R029 | Confirm SR-024 owner acceptance and BOTH predecessor mirrors; activate only SR-021 over verified cumulative QXRAY production, preserving evaluator/reference/worker boundaries and recording bootstrap challenges and durable research continuation. |
+| P2-R030 | Record SR-021 unchanged SHALLOW finalist, four-formulation development, conditional correctness/proof and all-worker validation, fresh source/exclusions and prospectively staged1/4 confirmation with preserved unstarted superseded protocols; retain ACTIVE and unchanged production without successor activation. |
