@@ -9,4 +9,5 @@
 
 # Binary files should be left untouched
 *.jar           binary
+/build-assets/production/bre-pair2-g32.brn-pair2 binary
 

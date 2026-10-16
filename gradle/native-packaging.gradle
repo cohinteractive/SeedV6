@@ -11,7 +11,9 @@ abstract class NativePackaging extends DefaultTask {
     @Input abstract Property<String> getPythonCommand()
     @Input abstract Property<String> getModelPath()
     @Internal abstract DirectoryProperty getRepositoryDirectory()
-    @Internal abstract DirectoryProperty getJdkHome()
+    @Input abstract Property<String> getJdkPath()
+    @Input abstract Property<String> getGradleJdkPath()
+    @Input abstract Property<String> getJdkInstallationPaths()
     @Internal abstract DirectoryProperty getCompilerHome()
     @Internal abstract RegularFileProperty getContextFile()
     @Classpath abstract ConfigurableFileCollection getRuntimeJars()
@@ -22,7 +24,8 @@ abstract class NativePackaging extends DefaultTask {
             new File(repositoryDirectory.get().asFile, 'tools/native_packaging.py').absolutePath,
             action.get(), '--platform', platformName.get(), '--context', contextFile.get().asFile.absolutePath]
         if (action.get() == 'prepare') {
-            command += ['--jdk', jdkHome.get().asFile.absolutePath, '--model', modelPath.get(),
+            command += ['--jdk', jdkPath.get(), '--gradle-jdk', gradleJdkPath.get(),
+                        '--jdk-installation-paths', jdkInstallationPaths.get(), '--model', modelPath.get(),
                         '--candidate', candidateId.get()]
         } else if (action.get() == 'package') {
             command += ['--application', applicationId.get(), '--compiler-jdk', compilerHome.get().asFile.absolutePath]
@@ -39,22 +42,27 @@ def python = providers.gradleProperty('packagingPython').orElse(
         System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows') ? 'python' : 'python3')
 def model = providers.gradleProperty('productionModel').orElse(
         providers.environmentVariable('SEEDV6_PRODUCTION_MODEL')).orElse(
-        rootProject.file('build-assets/production/network.brn-pair2').absolutePath)
+        rootProject.file('build-assets/production/bre-pair2-g32.brn-pair2').absolutePath)
 
-// Private, worktree-local native tools; do not change Gradle's daemon/compiler JDK.
+// Optional machine-specific native tools; do not change Gradle's daemon/compiler JDK.
 // Provider-backed reads invalidate the configuration cache when this file changes.
 def localPackaging = new Properties()
 localPackaging.load(new StringReader(providers.fileContents(
         rootProject.layout.projectDirectory.file('build-assets/packaging.properties')).asText.orElse('').get()))
-def windowsJdk = providers.gradleProperty('windowsPackagingJdk').orElse(
-        localPackaging.getProperty('windowsPackagingJdk', System.getProperty('java.home')))
-
 ['Windows': 'windows', 'Mac': 'macos'].each { suffix, platform ->
+    def jdkKey = platform == 'windows' ? 'windowsPackagingJdk' : 'macPackagingJdk'
+    // All explicit Gradle selections precede local file settings. Empty means
+    // discover at task execution, so newly installed JDKs work with cache replay.
+    def packagingJdk = providers.gradleProperty(jdkKey).orElse(providers.gradleProperty('packagingJdk')).orElse(
+            localPackaging.getProperty(jdkKey, localPackaging.getProperty('packagingJdk', '')))
+    def configuredJdk = packagingJdk.get()
     def context = rootProject.layout.buildDirectory.file("packaging/context-${platform}.json")
     def common = { NativePackaging t ->
         t.platformName = platform
         t.repositoryDirectory = rootProject.layout.projectDirectory
-        t.jdkHome = platform == 'windows' ? rootProject.file(windowsJdk.get()) : new File(System.getProperty('java.home'))
+        t.jdkPath = configuredJdk ? rootProject.file(configuredJdk).absolutePath : ''
+        t.gradleJdkPath = System.getProperty('java.home')
+        t.jdkInstallationPaths = providers.gradleProperty('org.gradle.java.installations.paths').orElse('')
         t.pythonCommand = python
         t.modelPath = model
         t.candidateId = providers.gradleProperty('candidateId').orElse('auto')
@@ -67,7 +75,7 @@ def windowsJdk = providers.gradleProperty('windowsPackagingJdk').orElse(
         common(it)
         action = 'prepare'
         group = 'distribution'
-        description = "Validates ${platform} host, JDK and private model before native build tasks."
+        description = "Discovers compatible installed ${platform} JDK tools and validates the production model."
     }
     // A wrong-platform request fails before Java/native compilation, not after it.
     allprojects { owner ->

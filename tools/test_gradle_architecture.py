@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -69,14 +70,15 @@ class GradleArchitectureTest(unittest.TestCase):
         self.append('engine-core/build.gradle', "dependencies { testImplementation project(':engine-training') }")
         self.gradle(':engine-core:compileJava', failure='Forbidden project dependency: :engine-core -> :engine-training')
 
-    def test_windows_packaging_jdk_is_local_and_cache_tracked(self):
+    def test_packaging_selection_is_portable_and_cache_tracked(self):
         self.append('build.gradle', """
 tasks.register('packagingSelection') {
-    inputs.property('windows', tasks.named('prepareWindowsPackaging').get().jdkHome.map { it.asFile.path })
-    inputs.property('mac', tasks.named('prepareMacPackaging').get().jdkHome.map { it.asFile.path })
+    inputs.property('windows', tasks.named('prepareWindowsPackaging').get().jdkPath)
+    inputs.property('mac', tasks.named('prepareMacPackaging').get().jdkPath)
+    inputs.property('model', tasks.named('prepareWindowsPackaging').get().modelPath)
     inputs.property('daemon', System.getProperty('java.home'))
     doLast {
-        ['windows', 'mac', 'daemon'].each { key -> println key + '=' + inputs.properties[key] }
+        ['windows', 'mac', 'model', 'daemon'].each { key -> println key + '=' + inputs.properties[key] }
     }
 }
 """)
@@ -84,18 +86,24 @@ tasks.register('packagingSelection') {
         def selection(*arguments):
             output = self.gradle('packagingSelection', *arguments)
             values = dict(line.split('=', 1) for line in output.splitlines()
-                          if line.startswith(('windows=', 'mac=', 'daemon=')))
-            self.assertEqual(values['daemon'], values['mac'])
+                          if line.startswith(('windows=', 'mac=', 'model=', 'daemon=')))
             return values, output
 
-        baseline, _ = selection()
-        self.assertEqual(baseline['daemon'], baseline['windows'])
+        with patch.dict(os.environ, {'SEEDV6_PRODUCTION_MODEL': ''}):
+            # Gradle environment providers preserve an explicitly empty value;
+            # ordinary default validation below therefore uses an absent variable.
+            os.environ.pop('SEEDV6_PRODUCTION_MODEL')
+            baseline, _ = selection()
+        self.assertEqual('', baseline['windows'])
+        self.assertEqual('', baseline['mac'])
+        self.assertEqual(self.fixture / 'build-assets/production/bre-pair2-g32.brn-pair2', Path(baseline['model']))
         local = self.fixture / 'build-assets/packaging.properties'
         local.parent.mkdir()
         first = self.fixture / 'packaging JDK one'
-        local.write_text('windowsPackagingJdk=' + first.as_posix() + '\n')
+        local.write_text('windowsPackagingJdk=' + first.as_posix() + '\nmacPackagingJdk=' + first.as_posix() + '\n')
         values, _ = selection()
         self.assertEqual(first, Path(values['windows']))
+        self.assertEqual(first, Path(values['mac']))
         self.assertEqual(baseline['daemon'], values['daemon'])
         _, cached = selection()
         self.assertIn('Reusing configuration cache.', cached)
@@ -106,6 +114,17 @@ tasks.register('packagingSelection') {
         explicit = self.fixture / 'explicit JDK'
         values, _ = selection('-PwindowsPackagingJdk=' + str(explicit))
         self.assertEqual(explicit, Path(values['windows']))
+        values, _ = selection('-PpackagingJdk=' + str(explicit))
+        self.assertEqual(explicit, Path(values['windows']))
+        self.assertEqual(explicit, Path(values['mac']))
+        values, _ = selection('-PpackagingJdk=' + str(explicit), '-PmacPackagingJdk=' + str(first))
+        self.assertEqual(explicit, Path(values['windows']))
+        self.assertEqual(first, Path(values['mac']))
+        with patch.dict(os.environ, {'SEEDV6_PRODUCTION_MODEL': 'environment-model'}):
+            values, _ = selection()
+            self.assertEqual('environment-model', values['model'])
+            values, _ = selection('-PproductionModel=explicit-model')
+            self.assertEqual('explicit-model', values['model'])
         local.unlink()
         values, _ = selection()
         self.assertEqual(baseline, values)

@@ -33,16 +33,18 @@ for launch instructions, compatibility profiles and the remaining acceptance gat
 On other platforms use `./gradlew` and the generated `seedv6` launcher.
 
 The standalone production UCI application uses the pinned generation-32 BRE-Pair 2
-model and only `engine-core`. Model bytes are not included in this migration:
+model and only `engine-core`. Ordinary Git clones include the approved model at
+`build-assets/production/bre-pair2-g32.brn-pair2`, with its identity manifest.
+For a Java-only development distribution:
 
 ```powershell
 $env:GRADLE_USER_HOME = "$PWD/build/migration/gradle-user-home"
 .\gradlew.bat :app-uci:installDist
-.\app-uci\build\install\seedv6-uci\bin\seedv6-uci.bat --model "C:\path\to\baseline.brn-pair2"
+.\app-uci\build\install\seedv6-uci\bin\seedv6-uci.bat --model "$PWD/build-assets/production/bre-pair2-g32.brn-pair2"
 ```
 
-Use an existing verified local model, or place it at `models/baseline.brn-pair2`
-inside that Java distribution. Missing or different model bytes fail explicitly.
+Native packaging automatically stages that model at `models/baseline.brn-pair2`
+inside each application. Missing or different model bytes fail explicitly.
 The legacy `seedv6` launcher retains its HCE evaluator. Both UCI launchers default
 to book disabled; `setoption name UseBook value true` (or the `OwnBook` alias)
 enables the shared bundled repertoire. No external book path is needed. See the
@@ -143,7 +145,18 @@ from the runtime pair tables; production/default evaluation remains unchanged.
 
 Unified Windows and macOS packaging builds both GUI and UCI with `packageWindows`
 and `packageMac`, or independent `:app-gui:` / `:app-uci:` module tasks. These are
-local integrity-checked candidates, not official releases. Supply the private
-approved model explicitly; see [WU7 packaging](docs/unified-architecture/WU7-PACKAGING.md)
-for JDK requirements, commands, output paths and outstanding native/human gates. Bundled Fathom sources retain their
+local integrity-checked candidates, not official releases. With Python 3.11+,
+Git and a complete installed Java 21 JDK (21.0.6 or newer), a fresh clone needs no
+model transfer or local configuration file:
+
+```sh
+./gradlew packageWindows  # Windows Git Bash; PowerShell: .\gradlew.bat packageWindows
+./gradlew packageMac      # Native macOS arm64 host
+```
+
+Packaging discovers installed native JDK tools independently of Gradle's daemon
+and Java compiler toolchain. Neither JDKs nor models are downloaded by packaging.
+See [packaging instructions](docs/unified-architecture/WU7-PACKAGING.md)
+for optional overrides, individual application tasks, validation and outstanding
+native/human gates. Bundled Fathom sources retain their
 [upstream license](engine-core/src/main/native/syzygy/fathom/LICENSE) and provenance.

@@ -20,6 +20,8 @@ import sys
 import uuid
 import zipfile
 
+import packaging_jdk
+
 ROOT = Path(__file__).resolve().parents[1]
 APPS = {'gui': ('SeedV6-GUI', 'com.ohinteractive.seedv6.gui.SwingLauncher'),
         'uci': ('SeedV6-UCI', 'com.ohinteractive.seedv6.uci.UciMain')}
@@ -78,7 +80,7 @@ def contained(path, parent):
     return path
 
 
-def host_check(target, jdk):
+def host_check(target, jdk=None):
     actual = 'windows' if sys.platform == 'win32' else 'macos' if sys.platform == 'darwin' else sys.platform
     require(actual == target, f'Native {target} packaging requires a {target} host; current host is {actual}.')
     arch = platform.machine().lower()
@@ -89,23 +91,27 @@ def host_check(target, jdk):
     expected = 'x64' if target == 'windows' else 'arm64'
     aliases = {'amd64': 'x64', 'x86_64': 'x64', 'aarch64': 'arm64', 'arm64': 'arm64'}
     require(aliases.get(arch) == expected, f'Only native {target} {expected} packaging is supported; got {arch}.')
-    identity = properties((jdk / 'release').read_text())
-    require(re.match(r'"21(?:\.|"|\+)', identity.get('JAVA_VERSION', '')), 'Packaging requires Java 21.')
-    if target == 'windows':
-        numbers = [int(n) for n in re.match(r'"([0-9.]+)', identity['JAVA_VERSION'])[1].split('.')]
-        require(tuple((numbers + [0, 0])[:3]) >= (21, 0, 6),
-                'Windows packaging requires JDK 21.0.6 or later 21.x with jpackage child-process cleanup; Java 21 GA fails termination tests.')
-    require(aliases.get(identity.get('OS_ARCH', '').strip('"')) == expected, 'JDK architecture does not match target.')
-    require(identity.get('OS_NAME') == ('"Windows"' if target == 'windows' else '"Darwin"'), 'JDK OS does not match target.')
-    for tool in ('java', 'javac', 'jpackage', 'jlink', 'jdeps'):
-        require((jdk / 'bin' / (tool + ('.exe' if target == 'windows' else ''))).is_file(), f'Missing JDK tool: {tool}')
-    if target == 'macos':
-        for library in (jdk / 'lib').rglob('*.dylib'):
-            for line in run(['/usr/bin/otool', '-L', library]).splitlines()[2:]:
-                dep = line.strip().split(' (compatibility version')[0]
-                require(not dep.startswith('/') or dep.startswith(('/usr/lib/', '/System/Library/')),
-                        f'JDK requires external library {dep}; use a self-contained arm64 JDK 21.')
-    return identity
+    return packaging_jdk.validate(jdk, target) if jdk is not None else None
+
+
+def production_manifest():
+    # This is an asset description, not another model selector/registry. The
+    # compiled engine-core loader independently pins and decodes the payload.
+    manifest = json.loads((ROOT / 'build-assets/production/manifest.json').read_text())
+    require(manifest['format'] == 1, 'Unsupported production asset manifest.')
+    return manifest
+
+
+def verify_model(model):
+    expected = production_manifest()['identity']
+    require(model.is_file(), 'Required production model is missing: ' + str(model)
+            + '. Restore tracked build-assets/production assets with Git, or supply -PproductionModel '
+            + '/ SEEDV6_PRODUCTION_MODEL; no asset is downloaded or substituted.')
+    require(model.stat().st_size == int(expected['model.bytes']), 'Incompatible production model length: ' + str(model))
+    actual = sha(model)
+    require(actual == expected['model.sha256'], 'Corrupt or different production model: ' + str(model)
+            + '; expected SHA-256 ' + expected['model.sha256'] + ', got ' + actual)
+    return actual
 
 
 def destination(target, application, candidate):
@@ -115,13 +121,12 @@ def destination(target, application, candidate):
 
 
 def prepare(a):
-    jdk = Path(a.jdk).resolve()
-    identity = host_check(a.platform, jdk)
+    host_check(a.platform)
+    jdk, identity = packaging_jdk.select(a.platform, a.jdk, a.gradle_jdk, a.jdk_installation_paths)
+    print('Packaging JDK (' + ('explicit' if a.jdk else 'discovered') + '): ' + str(jdk)
+          + '; Java ' + identity['JAVA_VERSION'] + '; Gradle JDK: ' + a.gradle_jdk, flush=True)
     model = Path(a.model).resolve()
-    require(model.is_file(), 'Required private production model is missing: ' + str(model)
-            + '. Supply -PproductionModel or SEEDV6_PRODUCTION_MODEL; no asset is downloaded or substituted.')
-    # The runtime loader is authoritative; this early size check bounds accidental bulk input.
-    require(model.stat().st_size < 2_000_000, 'Unexpected production model size.')
+    model_sha = verify_model(model)
     candidate = a.candidate
     if candidate == 'auto':
         candidate = 'candidate-' + datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S') + '-' + uuid.uuid4().hex[:8]
@@ -130,7 +135,7 @@ def prepare(a):
     context.parent.mkdir(parents=True, exist_ok=True)
     write_json(context, {'candidate': candidate, 'platform': a.platform,
                         'architecture': 'x64' if a.platform == 'windows' else 'arm64',
-                        'jdk': str(jdk), 'jdkIdentity': identity, 'model': str(model), 'modelSha256': sha(model),
+                        'jdk': str(jdk), 'jdkIdentity': identity, 'model': str(model), 'modelSha256': model_sha,
                         'source': source_state(), 'version': json.loads((ROOT / 'VERSION_STATE.txt').read_text(encoding='utf-8-sig')),
                         'versionSha256': sha(ROOT / 'VERSION_STATE.txt')})
     print('Native preflight passed: ' + candidate)
@@ -200,6 +205,8 @@ def build_image(context, application, stage, jars):
     require(sha(model) == context['modelSha256'], 'Model changed since preflight.')
     identity = model_probe(context, stage, list(input_dir.glob('*.jar')), model)
     require(identity['model.sha256'] == sha(model), 'Model differs from canonical engine-core identity.')
+    require(all(identity.get(key) == value for key, value in production_manifest()['identity'].items()),
+            'Production asset manifest differs from authoritative engine-core model identity.')
     require(identity['version'] == '.'.join(str(context['version'][n]) for n in ('major', 'minor', 'patch'))
             and identity['build'] == str(context['version']['build']), 'Embedded application version differs from authority.')
     # Keep stamps in a separate tiny resource JAR; never rewrite shared engine-core.jar.
@@ -246,7 +253,7 @@ def build_image(context, application, stage, jars):
     require(launcher.is_file() and (runtime / 'legal/java.base/LICENSE').is_file(), 'Incomplete launcher/runtime/license.')
     # Every third-party JAR remains intact, including its bundled licenses/native payloads.
     (image / 'CANDIDATE.txt').write_text('SeedV6 local packaging candidate. Not an official release.\n'
-        'Private model input: publication requires owner approval.\n'
+        'Approved production model included; candidate publication is a separate owner action.\n'
         'GUI interactive acceptance and external-client acceptance remain separate gates.\n', encoding='utf-8')
     return image, identity
 
@@ -430,7 +437,9 @@ def main():
     parser.add_argument('action', choices=('prepare', 'package', 'compare'))
     parser.add_argument('--platform', choices=('windows', 'macos'), required=True)
     parser.add_argument('--context', required=True)
-    parser.add_argument('--jdk'); parser.add_argument('--model'); parser.add_argument('--candidate', default='auto')
+    parser.add_argument('--jdk', default=''); parser.add_argument('--gradle-jdk', default='')
+    parser.add_argument('--jdk-installation-paths', default='')
+    parser.add_argument('--model'); parser.add_argument('--candidate', default='auto')
     parser.add_argument('--compiler-jdk')
     parser.add_argument('--application', choices=APPS); parser.add_argument('--jar', action='append', default=[])
     args = parser.parse_args()

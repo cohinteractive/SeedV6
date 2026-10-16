@@ -27,7 +27,9 @@ for current training ownership and dependency declarations. Java 21's applicatio
 include its runtime dependencies, including `app-gui.jar`, `app-uci.jar`,
 `engine-core.jar` and `engine-training.jar`. The separate `:app-uci:installDist`
 contains only UCI and core JARs, with a Java launcher and an explicitly supplied,
-checksum-pinned production model. Unified native candidates are documented in WU7 below.
+checksum-pinned production model. Native packages automatically stage the tracked
+`build-assets/production/bre-pair2-g32.brn-pair2`; the Java-only development launcher
+can select that same file with `--model`. Unified native candidates are documented in WU7 below.
 Training owns the unchanged Gson/SQLite/Zstandard dependencies, optional trainer-only
 BRN-3 vector kernels and binpack notice. Core owns the opening
 book and optional Syzygy native sources/resources/license. Shared headless ApplicationVersion and its generated identity resource now belong

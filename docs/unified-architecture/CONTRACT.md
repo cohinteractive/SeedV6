@@ -44,7 +44,7 @@ The boundary guard must reject arbitrary root configurations and production root
 
 ## Scope, authority and modification boundaries
 
-Implementation belongs in `C:/projects/seed/java/seedv6-unified`, branch
+Historical migration admission: implementation belonged in `C:/projects/seed/java/seedv6-unified`, branch
 `migration/unified-architecture`, starting at the verified revision in BASELINE.
 The original SeedV6 checkout, its current branch and research are preserved.
 The UCI Edition checkout is read-only, including its unresolved merge, index,
@@ -77,6 +77,20 @@ JDK through ignored worktree-local configuration; daemon/compiler selection,
 global Java/Gradle settings and other projects remain unchanged. Other migration
 builds retain the isolation convention above. This amendment authorizes no Mac
 acceptance, remote model restoration, release or subsequent work unit.
+
+Owner-scoped portable build/assets amendment, 17 October 2026: the unified
+repository is now independent on `main` (verified starting HEAD `11060c8`), with
+no configured remotes. The owner authorizes tracking the approved generation-32
+payload in ordinary Git, portable installed-JDK discovery on Windows/macOS,
+optional ignored local settings, clean-checkout validation and an attributable
+commit. Ordinary packaging commands on both platforms may use the normal Gradle
+user home; global Java/Gradle settings remain untouched. This supersedes the
+historical branch, private-model and required-local-setup restrictions for this
+bounded unit. Application sources, search/evaluator semantics, version 0.0.0
+build 35, previous artifacts and historical repositories remain unchanged.
+No automatic JDK download, push, release, native Mac acceptance or WU8 admission
+is authorized. [WU7 packaging](WU7-PACKAGING.md) contains the current instructions;
+earlier private-input records remain historical evidence.
 
 ## Production selection and invariants
 

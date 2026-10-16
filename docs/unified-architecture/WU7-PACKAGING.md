@@ -1,53 +1,27 @@
 # WU7 unified native application packaging
 
 16 October 2026 (Pacific/Auckland). The owner accepts WU0-WU6, including WU6
-`328531f672260cf4fd5e49b26724fee7329bb0d8`. WU7 belongs only to the migration
-worktree/branch. The owner additionally permits `C:/Temp/SeedV6 WU7 validation`
+`328531f672260cf4fd5e49b26724fee7329bb0d8`. Initial WU7 work belonged to the migration
+worktree/branch; the portable follow-up below uses the independent unified `main`.
+The owner additionally permitted `C:/Temp/SeedV6 WU7 validation`
 for disposable outside-repository tests. No graphical launcher is executed by
 Codex. Native Mac execution, interactive GUI and external-client acceptance
 remain open; implementation/commit is not full cross-platform acceptance.
 
-## Build commands and private model input
+## Current portable build commands and tracked production input
 
-Use Gradle 8.11.1, Python 3.11+ and a native Java 21 JDK containing jpackage,
-jlink, javac and jdeps. Windows requires **21.0.6 or later 21.x** because Java
-21 GA's native launcher fails forced subprocess termination. Initial WU7 validation
-used the already-installed Oracle **21.0.7+8-LTS-245**, without changing system Java.
-This is a packaging correctness requirement, not a dependency/library upgrade.
-The observed failure matches the older launcher implementation; OpenJDK's
-[21.0.6 launcher](https://github.com/openjdk/jdk21u/blob/jdk-21.0.6%2B7/src/jdk.jpackage/windows/native/applauncher/WinLauncher.cpp)
-uses a Windows Job Object to terminate its child when the parent exits.
+17 October 2026: these instructions supersede the private setup used during WU7.
+A fresh ordinary Git clone contains the wrapper, project configuration, approved
+model and identity manifest. No Git LFS, historical checkout, manual model copy,
+environment setup or ignored configuration file is required. Standard development
+tools are Git, Python 3.11+, a shell and a complete installed native **Java 21 JDK,
+21.0.6 or newer**. Gradle 8.11.1 is supplied by the wrapper; normal Gradle/dependency
+downloads may require network access. JDKs and models are never downloaded by
+the build. Java 21 GA, older patches, other Java majors, early-access JDKs, missing
+native tools/JMODs and incompatible OS/architectures are rejected for packaging.
+Windows supports x64; macOS supports arm64 with self-contained dylib dependencies.
 
-### Windows: one-time private setup, ordinary wrapper commands
-
-17 October 2026 local-build follow-up: create ignored
-`build-assets/packaging.properties` with an installed native x64 JDK path, using
-forward slashes (or escaped backslashes) in Java properties syntax:
-
-```properties
-windowsPackagingJdk=C:/java/jdk-21-packaging
-```
-
-Windows native tools select `-PwindowsPackagingJdk` first, then this local
-property, then the Gradle daemon's Java home when neither is configured. An
-explicit invalid selection fails; it never falls back to another JDK. The
-existing Java 21 / minimum 21.0.6 / host / architecture / tool checks remain.
-The local file is a tracked configuration-cache input, including its creation,
-change and deletion. It is ignored by Git and is not a shipped application input.
-
-This selects jpackage, jlink, jdeps and the packaging probes independently of
-Gradle's daemon and normal Java compiler toolchain. It does not override
-`org.gradle.java.home`, change JAVA_HOME/PATH, or edit global Gradle properties.
-A project `gradle.properties` entry would not override the user's global Java
-home. The local follow-up was validated with the global daemon JDK still at
-`C:/java/jdk-21` (Java 21 GA), and native tools/runtime at
-`C:/java/jdk-21-packaging` (Temurin 21.0.12.1).
-
-Restore the approved model once to ignored
-`build-assets/production/network.brn-pair2`, checking the SHA-256 below both at
-the local source and after copying. Keep the source unchanged. No remote fetch
-or alternate evaluator is available. This checkout's private JDK setting and
-approved local model are already configured. Then run either shell command:
+### Build both applications
 
 ```powershell
 .\gradlew.bat packageWindows
@@ -57,39 +31,90 @@ approved local model are already configured. Then run either shell command:
 ./gradlew packageWindows
 ```
 
-Both commands build GUI and UCI candidates. Module tasks
-`:app-gui:packageWindows` and `:app-uci:packageWindows` remain available.
-The owner's local-build amendment permits these ordinary Windows invocations
-to use the unchanged default Gradle user home. Other migration builds retain
-their isolated-user-home convention in [CONTRACT](CONTRACT.md).
-
-### Mac and shared input conventions
-
-Mac packaging is unchanged. A Mac checkout can keep its session setup in ignored
-`build-assets/macos-env.sh`, then source it before using the existing tasks:
+On native macOS arm64:
 
 ```sh
-# Contents of build-assets/macos-env.sh (local paths only):
-export GRADLE_USER_HOME="$PWD/build/migration/gradle-user-home"
-export JAVA_HOME='/path/to/self-contained-arm64-jdk-21/Contents/Home'
-# Restore the approved model to build-assets/production/network.brn-pair2 once.
-```
-
-```sh
-. ./build-assets/macos-env.sh
 ./gradlew packageMac
-./gradlew :app-gui:packageMac
-./gradlew :app-uci:packageMac
 ```
 
-These exports affect only that shell session; no global configuration is edited.
-On either platform model selection remains `-PproductionModel` first, then
-`SEEDV6_PRODUCTION_MODEL`, then `build-assets/production/network.brn-pair2`.
-Explicit missing, corrupt or incompatible models fail even when the default
-local file is valid. The canonical runtime loader still checks the approved
-checksum, schema/layout, CRC and finite values; no validation is bypassed.
-`-PpackagingPython=/path/to/python3` overrides the interpreter. Inputs must be
-explicitly restored by the owner; the build never downloads or substitutes models.
+For one application, use `:app-gui:packageWindows`, `:app-uci:packageWindows`,
+`:app-gui:packageMac` or `:app-uci:packageMac`. Root tasks build both independently
+and compare their complete engine/model identity. These remain local candidates.
+
+### Installed JDK selection
+
+Selection order is the platform Gradle property (`-PwindowsPackagingJdk` or
+`-PmacPackagingJdk`), then generic `-PpackagingJdk`, then the corresponding platform
+setting in optional `build-assets/packaging.properties`, then its generic
+`packagingJdk` setting. Without a selection, discovery chooses the newest compatible
+installed Java 21 patch (deterministic path ordering breaks ties). Explicit invalid
+selections fail rather than falling back. Paths can contain spaces; quote the
+entire `-Pname=value` argument. Mac overrides accept a `.jdk` bundle or its
+`Contents/Home` directory.
+
+Discovery examines the Gradle daemon home, JAVA_HOME/JDK_HOME, PATH Java,
+`org.gradle.java.installations.paths`, user `.jdks` and existing Gradle `jdks`
+caches. Windows additionally searches the system drive's `java` directory,
+standard Program Files vendor directories (Java, Eclipse Adoptium, Microsoft,
+Amazon Corretto, BellSoft, Zulu, Semeru), and JavaSoft JDK registry entries.
+Mac uses `/usr/libexec/java_home -V`, system/user `Library/Java/JavaVirtualMachines`,
+Homebrew's `openjdk@21` locations, SDKMAN's installed Java candidates and `/opt/java`.
+Discovery runs on every preflight, even on configuration-cache replay; installing
+a suitable JDK does not require deleting Gradle caches.
+
+The wrapper still needs an installed Java that can launch Gradle. Gradle's Java
+21 compiler toolchain remains independently selected and may use Java 21 GA.
+All jpackage/jlink/jdeps, package probes and bundled runtimes use the validated
+packaging JDK. The diagnostic prints both homes. A newer packaging JDK does not
+change `org.gradle.java.home`; user-level Gradle properties take precedence over
+project `gradle.properties` for that setting. No JAVA_HOME, PATH or global Gradle
+settings are changed. See Gradle's [property precedence](https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_configuration_properties)
+and [installed toolchains](https://docs.gradle.org/current/userguide/toolchains.html).
+Automatic toolchain download is disabled and no resolver
+is registered; unusual compiler installations can use Gradle's explicit
+`-Porg.gradle.java.installations.paths` setting.
+
+The local properties file is **optional** and ignored. Its only supported settings
+are `packagingJdk`, `windowsPackagingJdk` and `macPackagingJdk`. Set the relevant
+key to your installed JDK home using forward slashes or escaped backslashes in
+Java properties syntax. Never commit machine-specific paths. Missing files mean
+automatic discovery; creation, edits and deletion invalidate configuration-cache
+inputs. All explicit command-line JDK properties precede local settings.
+`-PpackagingPython=<python-executable>` selects a nonstandard Python installation.
+
+### Production model identity and staging
+
+The only tracked payload is `build-assets/production/bre-pair2-g32.brn-pair2`
+(795,032 bytes). Adjacent `manifest.json` describes generation 32, lineage,
+checkpoint, schema version 1, BRN_PAIR2 evaluator and unchanged quarter-residual
+calibration. SHA-256:
+
+```text
+5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7
+```
+
+The manifest documents the existing `engine-core` ProductionModel authority;
+it is not a second model registry. Preflight checks existence, exact size and
+checksum. The Java build probe independently uses that authoritative loader to
+verify its pinned checksum, format/schema/layout, CRC and finite values, and
+compares all manifest identity fields against the compiled core. A manifest
+change cannot silently authorize a different evaluator or payload.
+
+Model selection on both platforms is `-PproductionModel`, then
+`SEEDV6_PRODUCTION_MODEL`, then the tracked canonical file. An explicit missing,
+corrupt or incompatible selection fails even if the tracked default is valid.
+The old ignored `build-assets/production/network.brn-pair2` works only when
+explicitly selected. Both applications receive the exact verified bytes at their
+existing `models/baseline.brn-pair2` runtime location; image, ZIP and independently
+extracted ZIP checks verify the model and same shared engine-core JAR. GUI model
+preferences are preserved; bundling this asset does not force every GUI session
+to use it. Search, model serialization and evaluator mathematics are unchanged.
+
+Only the payload and manifest are unignored under `build-assets/production`.
+Local settings, other build assets, generated packages, caches and raw research
+outputs remain excluded. No training checkpoints, optimizer state, corpora or
+datasets are added. Existing research retention rules remain unchanged.
+
 Do not build or package concurrently with another build/test in the same checkout.
 Packaging freezes source identities and refuses source drift. Separate platform
 builds must use the same coordinated source revision, version, model and core inputs.
@@ -107,11 +132,11 @@ lineage `235d0688-e060-44e3-8f1e-119c39bc8017`. The exact bounded bytes undergo
 SHA-256 and existing BrnPair2Codec schema/layout/CRC/finite-value validation. No
 codec, calibration, search, training algorithm or model format changes.
 
-The source repository is public. Model bytes are **not committed or published**.
-The historical UE path is never hard-coded as a build default; its verified bytes
-may be copied to the ignored local input by an authorized operator. Fresh
-checkouts lack the model and private JDK configuration. An authorized, validated asset-restoration/publication
-mechanism remains a release gate; clean-clone reproducibility is not claimed.
+The owner authorizes ordinary Git tracking of this approved payload in the unified
+repository. Future clones obtain the exact bytes through Git; no historical UE
+path is a build input. Pushing to a public remote would expose those bytes, but
+this work does not push or publish. The earlier private-input restrictions below
+describe historical WU7 runs and are superseded by the current portable setup.
 
 ## Candidate layout and production composition
 
@@ -267,7 +292,7 @@ finalization are recorded in the evidence JSON. Same-token `no_bump` finalizatio
 completed without warnings or blockers; VERSION_STATE bytes remain unchanged at
 0.0.0 build 35. No root journal exists and none was created.
 
-## Local Windows configuration follow-up: 17 October 2026
+## Historical local Windows configuration follow-up: 17 October 2026
 
 The owner identifies `592c6c93e4be355f02f09bd77149647463deb709` as the last accepted
 packaging commit and authorizes this bounded local-build improvement, without a
@@ -342,8 +367,149 @@ No full application regression suite, Mac-native execution, graphical walkthroug
 external-client acceptance, remote model restoration or research campaign was
 performed in this follow-up. Existing acceptance gates below remain unchanged.
 Human actions required for the configured local Windows commands: **None**.
-Fresh checkouts still need an installed suitable JDK, Python and a one-time
-verified local model/configuration setup as described above.
+At that point fresh checkouts needed an installed suitable JDK, Python and a
+one-time verified local model/configuration setup. The portable follow-up removes
+the model/configuration setup requirement; it preserves these run records.
+
+## Portable build and tracked-asset validation: 17 October 2026
+
+This work starts from clean independent unified `main` at
+`11060c8df2e5fc4dcc7356f52e9ea4a6e18439f2`; no remotes are configured. The owner's
+current request authorizes the model commit, portable configuration and headless
+validation, with no version increment or push. The historical source payload was
+verified before and after copying; ordinary Git stores exactly one production
+model, with binary attributes preventing text conversion. No application source,
+test, search/evaluator/training algorithm, serialized format or opening-book
+behavior is changed. All 400 application source/test files retain their original
+hashes. Historical repositories are read-only throughout.
+
+Windows native tools automatically select installed Temurin **21.0.12.1** while
+the daemon and compiler remain on **Java 21 GA**. No ignored local configuration
+or legacy model file exists. Model inputs, manifests and generated ZIP/image
+inventories pass the independent decoder/checksum/evaluator checks above.
+
+| Executed validation | Exact result |
+| --- | --- |
+| Git Bash `./gradlew packageWindows` | PASS, 53 seconds; GUI/UCI `candidate-20261016T231443-0adaa26c` |
+| PowerShell `.\gradlew.bat packageWindows` | PASS, 35 seconds; cache reused; GUI/UCI `candidate-20261016T231550-d382f23c` |
+| `python -B tools/test_packaging_jdk.py -v` | 10 tests PASS; both platform version/architecture/tool checks, automatic newest-patch discovery, explicit valid/invalid selection, no-compatible-JDK diagnostic, Mac discovery and external-dylib rejection |
+| `python -B tools/test_native_packaging.py -v` | 11 tests PASS; integrity, archive/extraction, model/manifest failures, occupied output, failed native assembly and Mac construction |
+| `python -B tools/test_gradle_architecture.py -v` | 15 unchanged fixtures PASS; new selection fixture initially failed and was corrected, then passed separately as described below |
+| `python -B tools/test_gradle_architecture.py GradleArchitectureTest.test_packaging_selection_is_portable_and_cache_tracked -v` | PASS, 10 actual Gradle invocations: default, local file creation/change/deletion, cache reuse, generic/platform explicit precedence, both platforms, environment/property model precedence and unchanged daemon |
+| Explicit valid packaging JDK; explicit model with invalid environment model | PASS; independent UCI candidate `portable-explicit-uci` |
+| Environment-selected approved model | PASS; independent GUI candidate `portable-env-gui` |
+| Explicit Java 21 GA; missing explicit/environment model; corrupt and truncated model | Expected exit 1, clear diagnostics, no verified final candidate |
+| `packageMac --dry-run`; `packageMac` on Windows | Dry-run PASS; native invocation expected exit 1 before compilation, requiring macOS |
+| Reuse first candidate ID, then repeat with cached configuration | Expected exit 1 twice; all 503 files in the original candidate pair unchanged |
+
+The initial selection-fixture failure exposed a provider closure that captured a
+Gradle script object. Resolving the optional path during configuration removes
+that configuration-cache incompatibility without caching JDK discovery. The
+corrected selection fixture passes, as do subsequent native explicit builds and
+both clean-checkout commands. No fixture assertion was weakened.
+
+The disposable ordinary Git clone at `build/clone qa` contains only committed
+source/assets from validation snapshot `2ecabe850b8cf15292b1a21452707ad387e7edb0`,
+tree `5f72d2e0473c8900b31431598c7d904d74b2973d`. This unreferenced snapshot of the
+reviewed index enables validation before the final attributable commit. All
+implementation/assets/tests match the final change; subsequent edits only complete
+documentation. Both its index object and checked-out model hash match the required
+SHA-256. No model transfer, local configuration file, custom environment variables
+or historical repository is used by either packaging command.
+
+| Clean-clone command | Result and candidate ID |
+| --- | --- |
+| Git Bash `./gradlew packageWindows` | PASS, exit 0, 65.875 seconds; `candidate-20261016T232149-ebbd83f9` |
+| PowerShell `.\gradlew.bat packageWindows` | PASS, exit 0, 32.007 seconds; `candidate-20261016T232252-4f5f0ae5` |
+
+Both builds produce GUI and UCI images/ZIPs with core SHA-256
+`a71d549d7fbad0c9430648142f04c040bc5a2773e52b9e196952db4e16d522f9`
+and the approved model. Their manifests record a clean snapshot revision;
+Git status is empty before and after. The working checkout's core hash is
+`d5ca36f380744ecac09f05774b5d9aae460b401c459d7ae6f9d8ca64df9fb4df`;
+comparison of every JAR entry shows only the embedded sourceRevision metadata
+differs. Model identity, accepted cumulative SR-024 composition and all core inputs
+match; application version stays **0.0.0 build 35**.
+
+Each UCI image and independently extracted ZIP passes **63 searches**, workers
+1/4/16, UseBook/OwnBook aliases and fallbacks, protocol/depth/clocks/stop/quit/EOF,
+forced termination and missing/corrupt/incompatible model checks. Bundled runtime
+verification uses empty PATH, no JAVA_HOME/JDK_HOME, unrelated working directories
+and paths with spaces. GUI verification loads resources, JNA, Zstandard and SQLite
+headlessly; no graphical launcher or real external client is opened.
+
+The first disposable clone was nested too deeply under the evidence directory:
+Windows Java rejected the extracted runtime path with `PATH_MAX`/JVM-load errors.
+Both attempts remain `FAILED_UNVERIFIED` with no final candidates. Repeating from
+the shorter `build/clone qa` directory passes. This is an existing native Windows
+path-length constraint; use a reasonably short checkout path. No completed output
+was overwritten or deleted to obtain a passing result.
+
+The affected headless regression selection ran with the repository-local Gradle
+user home and the command below (PowerShell continuation shown):
+
+```powershell
+.\gradlew.bat --no-daemon --max-workers=2 --console=plain -Pheadless --continue `
+  :engine-core:test :app-gui:test :app-uci:test `
+  :app:test --tests '*BrnPair2*' --tests '*CheckpointStoreTest' `
+  --tests '*GenerationRestartTest' --tests '*ApplicationVersionTest' `
+  integrationTest --tests 'com.ohinteractive.seedv6.gui.*' `
+  --tests 'com.ohinteractive.seedv6.uci.*' --tests '*ProductionSearchTest'
+```
+
+Result: **exit 1, 7m28s; 434 cases: 388 passed, 18 inherited failures, 28 skips**.
+Core (61), GUI module (22) and UCI module (13) tests all pass. The selected legacy
+tests have 9 passes and the 9 known GenerationRestart failures. Root integration
+has 283 passes, the 9 known GUI failures and 28 existing headless skips. Every
+failure's class, test name and message exactly matches `wu7-evidence.json`; no
+test was suppressed or assertion changed. The previously recorded
+`TablebasePresentationTest.engineCardLabelsOutcomeWithoutEvaluationUnitsOrASearchedPv`
+failure was outside this selection and remains open. All 19 inherited migration
+failures therefore retain their acceptance gates. This is not a passing full-suite
+claim; broad unrelated training/research campaigns, optional Syzygy builds,
+native Mac and interactive/client acceptance were not rerun.
+
+Full command logs, selection failures, candidate receipts, clean-clone identities,
+preservation hashes and regression results remain local under
+`build/migration/portable-build/`; final candidates remain in their documented
+output directories and the disposable clone. The earlier deep-clone failure is
+retained in `clean-checkout.json` and `clean-git-bash.log`; passing clean evidence
+is in `clean-short-checkout.json` and `clean-short-*.log`. These raw outputs stay
+ignored and are not available in a fresh clone. No generated artifacts, private
+settings, JDK installation, experimental checkpoint or training data is committed.
+Before/after checks preserve global Gradle property bytes, process/user/system
+Java/PATH settings, both JDK release files and the historical model. VERSION_STATE
+remains byte-identical (SHA-256
+`92a26d4e187edc6c47ed88100d355f77b4597d98524d21d005a3c164986b4bca`).
+No root journal existed and none was created. The task's attributable Git commit
+contains these records, the single approved payload/manifest and portable build
+tooling/tests; it is not final owner acceptance or publication.
+After validation, the two disposable clones' Git metadata is preserved under
+`.git/portable-build-validation/`; their source/output directories remain intact.
+This removes the unsupported nested layout without discarding validation evidence
+or changing its active operation. Clean status above describes the verified clones
+before this reversible metadata relocation.
+
+**Version-finalization blocker:** local `begin` created token
+`ebe0487f7c214b398fc2625a8ac053fa`. The requested same-token `finish --decision
+no_bump` rejected nested validation repositories before any version write. Even
+after their metadata relocation and a successful read-only full-tree scan,
+`reconcile_pending` rejects the retained `integrity_failure` before retrying capture.
+Status reports phase `active`, mutation `not_attempted`; no successful finish or
+terminal warning is claimed. The documented `reconcile-legacy` route accepts a
+different historical post-write failure, so it was not misapplied. Operation,
+reservation, baseline and failure evidence remain intact. This is a blocking
+limitation for later version-finalizer operations and work requiring finalized
+version provenance; it does not change the independently verified version bytes
+or invalidate the completed packaging tests. The build/asset commit proceeds
+without a version increment, release or finalized-version claim. A separately
+authorized supported reconciliation is required before another finalizer begin;
+no helper, shared registry or reservation was edited to bypass the failure.
+
+Native macOS discovery/packaging is prepared and portable fixtures pass, but no
+native Mac execution is claimed. Mac arm64 builds, GUI walkthroughs and real-client
+acceptance remain separate gates, as do the inherited migration failures below.
+No WU8 cutover, official release, model publication/push or version bump occurs.
 
 ## Acceptance boundary and continuation
 

@@ -9,8 +9,13 @@
 /dist/windows/
 /dist/mac/
 /releases/candidates/
-# Explicit, private checksum-verified model input; never published by packaging.
-/build-assets/
+# Only the approved production payload and its identity manifest are versioned.
+# Local JDK settings, legacy model inputs and other build assets remain ignored.
+/build-assets/*
+!/build-assets/production/
+/build-assets/production/*
+!/build-assets/production/bre-pair2-g32.brn-pair2
+!/build-assets/production/manifest.json
 
 # Local archives and historical snapshots
 /archive/

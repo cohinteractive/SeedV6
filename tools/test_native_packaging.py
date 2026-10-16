@@ -122,12 +122,35 @@ class PackagingSafety(unittest.TestCase):
             runtime = Path(command[-1]); (runtime / 'legal/java.base').mkdir(parents=True)
             (runtime / 'legal/java.base/LICENSE').write_text('fixture-only')
             return ''
-        with patch.object(p, 'model_probe', return_value=identity), patch.object(p, 'run', side_effect=native):
+        with patch.object(p, 'model_probe', return_value=identity), patch.object(p, 'run', side_effect=native), \
+             patch.object(p, 'production_manifest', return_value={'identity': {'model.sha256': p.sha(model)}}):
             image, _ = p.build_image(context, 'uci', stage, jars)
         self.assertEqual(p.launcher_text(), (image / 'SeedV6-UCI').read_text())
         self.assertEqual('java.base', commands[1][commands[1].index('--add-modules') + 1])
         self.assertEqual({'engine-core.jar', 'app-uci.jar'}, {f.name for f in (image / 'app').glob('*.jar')})
         self.assertEqual(p.sha(model), p.sha(image / 'models/baseline.brn-pair2'))
+
+    def test_tracked_model_and_negative_inputs(self):
+        model = p.ROOT / 'build-assets/production' / p.production_manifest()['payload']
+        self.assertEqual('5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7', p.verify_model(model))
+        missing = self.work / 'missing.brn-pair2'
+        with self.assertRaisesRegex(RuntimeError, 'Required production model is missing'):
+            p.verify_model(missing)
+        missing.write_bytes(b'truncated')
+        with self.assertRaisesRegex(RuntimeError, 'Incompatible production model length'):
+            p.verify_model(missing)
+        data = bytearray(model.read_bytes()); data[120] ^= 1
+        missing.write_bytes(data)
+        with self.assertRaisesRegex(RuntimeError, 'expected SHA-256'):
+            p.verify_model(missing)
+
+    def test_manifest_cannot_change_engine_identity(self):
+        model = p.ROOT / 'build-assets/production' / p.production_manifest()['payload']
+        context = {'platform': 'windows', 'model': str(model), 'modelSha256': p.sha(model)}
+        identity = dict(p.production_manifest()['identity'], **{'model.evaluator': 'OTHER'})
+        with patch.object(p, 'model_probe', return_value=identity):
+            with self.assertRaisesRegex(RuntimeError, 'authoritative engine-core model identity'):
+                p.build_image(context, 'uci', self.work, [])
 
 
 if __name__ == '__main__':

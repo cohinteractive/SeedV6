@@ -1,0 +1,18 @@
+{
+  "format": 1,
+  "payload": "bre-pair2-g32.brn-pair2",
+  "role": "Accepted generation-32 production runtime model for GUI and standalone UCI packaging",
+  "authority": "engine-core/src/main/java/com/ohinteractive/seedv6/core/brnpair2/ProductionModel.java",
+  "provenance": "Copied byte-for-byte from the historical UCI Edition models/baseline.brn-pair2; full payload SHA-256 verified. Owner authorized ordinary Git tracking on 17 October 2026.",
+  "identity": {
+    "model.sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "model.bytes": "795032",
+    "model.lineage": "235d0688-e060-44e3-8f1e-119c39bc8017",
+    "model.checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+    "model.schema": "seedv6.brn.pair2",
+    "model.schemaVersion": "1",
+    "model.evaluator": "BRN_PAIR2",
+    "model.calibration": "BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1",
+    "engine.acceptedSource": "35294146bb7e44975b516005b2cc196439666e09"
+  }
+}

@@ -8,10 +8,11 @@ Updated 17 October 2026 (Pacific/Auckland). Governing [CONTRACT](CONTRACT.md),
 
 **WU0-WU6 are accepted by GPT. The owner identifies WU7 commit
 `592c6c93e4be355f02f09bd77149647463deb709` as the last accepted packaging commit.
-Its bounded local Windows configuration follow-up is implemented and validated;
-full cross-platform acceptance is not complete.** This follow-up authorizes no
+Its local Windows follow-up was followed by the owner's portable-build and tracked
+production-assets work unit on independent unified `main` at `11060c8`.
+Full cross-platform acceptance is not complete.** This unit authorizes no
 version bump, Mac acceptance or subsequent work unit. [WU7 packaging](WU7-PACKAGING.md) records commands,
-private model inputs, provenance and native/human gates. No desktop interaction
+tracked production inputs, provenance and native/human gates. No desktop interaction
 is authorized. Mac-native execution, human GUI/client acceptance and the 19
 inherited failures remain open; WU8 does not advance automatically.
 
@@ -20,9 +21,10 @@ restructuring existing SeedV6 into engine-core, engine-training, app-gui, app-uc
 and research, with shared Gradle build logic and one production engine. No new
 repository/history replacement or independently maintained engine copies.
 
-Migration worktree: `C:/projects/seed/java/seedv6-unified`.
-Branch: `migration/unified-architecture`.
-Starting revision: `24720213e12d99a581a713c74f901f89899bf2b4`.
+Current repository: `C:/projects/seed/java/seedv6-unified`, independent branch `main`;
+portable-build starting revision `11060c8df2e5fc4dcc7356f52e9ea4a6e18439f2`,
+clean worktree and no remotes configured. Historical migration used branch
+`migration/unified-architecture`, starting at `24720213e12d99a581a713c74f901f89899bf2b4`.
 Accepted production search: `35294146bb7e44975b516005b2cc196439666e09`, with
 SR-024 acceptance evidenced in BASELINE. Build remains `0.0.0`, build **35**.
 The branch starts at later main to preserve other capabilities/evidence; SR-021
@@ -404,20 +406,75 @@ boundary; private model/configuration and generated candidates remain ignored.
 No application sources, Mac packaging or subsequent migration work changed.
 No push, publication or release is authorized/performed. This checkout needs no
 further human setup for either ordinary Windows command; new checkouts require
-the documented one-time private JDK/model setup.
+the then-documented one-time private JDK/model setup. This historical requirement
+is superseded by the portable-build follow-up below.
+
+## Portable build configuration and tracked production assets
+
+17 October 2026: the owner authorizes this bounded follow-up on the independent
+unified repository's `main`, starting clean at `11060c8`; no remotes are configured.
+The approved generation-32 model is now an ordinary Git asset at
+`build-assets/production/bre-pair2-g32.brn-pair2`, alongside its identity manifest.
+Its 795,032 exact original bytes match SHA-256
+`5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7`.
+The existing core loader remains authoritative; the manifest adds no registry or
+alternate evaluator. Both packaging platforms default to this tracked asset,
+after explicit Gradle/environment selectors, with all checksum/schema/evaluator
+and image/archive validation retained.
+
+Installed native Java 21 tools (minimum 21.0.6) are discovered independently of
+Gradle's daemon/compiler. Optional generic/platform overrides are supported through
+Gradle properties or ignored `build-assets/packaging.properties`; explicit command
+properties precede local settings. No JDK download resolver remains. Missing local
+settings no longer require setup. No global Java/Gradle settings, application
+sources, model formats, algorithms, versions or historical repositories change.
+
+Both ordinary Windows commands pass without extra arguments. A disposable clean
+Git clone also passes both, restores the model only through Git and keeps empty
+Git status. Every GUI/UCI pair contains identical core/model bytes. Image and
+extracted-ZIP tests verify bundled runtime operation, GUI JNI/resources headlessly,
+and 63 UCI searches per execution including opening-book aliases and cancellation.
+Ten JDK fixtures, eleven packaging safety tests and all sixteen architecture
+fixtures pass after correcting an initially detected configuration-cache closure.
+An overlong nested validation path initially failed Windows runtime loading;
+its unverified attempts are preserved, and the shorter clone path passes.
+
+Selected regressions: 434 cases, 388 passed, 18 exactly inherited failures, 28
+skipped; zero new failures. One additional historical TablebasePresentation
+failure was outside the selection and remains open. All 400 application source/
+test files retain their original hashes. Version stays 0.0.0 build 35 with identical
+authority bytes; no journal, release or push. See the
+[portable packaging validation](WU7-PACKAGING.md#portable-build-and-tracked-asset-validation-17-october-2026)
+for exact commands, snapshot/candidate identities, local evidence paths and limits.
+The commit containing this entry is the work-unit handback, pending GPT/user
+reconciliation. Native Mac, GUI/client and inherited-failure gates remain open;
+this does not admit WU8.
+
+Version finalization remains blocked independently of packaging: the same-token
+`no_bump` attempt retained an integrity failure from the task's nested validation
+clones. Their metadata is now preserved under `.git/portable-build-validation`,
+with source/output evidence intact, but the helper rejects the stored error before
+retrying. The original active reservation remains, mutation `not_attempted`; no
+successful finish or terminal-warning cleanup is claimed. The detailed WU7 record
+identifies the token and unsupported recovery case. Version bytes are independently
+unchanged; committing this validated build/assets unit does not certify finalizer
+completion. No shared tooling, registry or retained reservation was bypassed.
 
 ## Next admission and human actions
 
-Recommend GPT/user reconciliation of this WU7 follow-up, then separately admitted Mac-native
+Recommend GPT/user reconciliation of this portable-build follow-up, then separately admitted Mac-native
 packaging validation and user GUI/client acceptance against exact candidates.
 Separate inherited-failure remediation remains necessary at its existing gates.
 
 Human actions required after this prompt:
 
 - **Immediate implementation blocker: None.** Available WU7 checks are complete.
+- **Blocking later version operations:** authorize supported reconciliation of
+  the retained nested-validation integrity failure before another finalizer begin
+  or work requiring finalized version provenance. Ordinary packaging remains usable.
 - **Blocking dependent migration:** GPT/user reconciliation before further work;
   WU8 cutover requires native Mac, GUI/client and inherited-failure gates passed or
   explicitly reconciled by the authorized owner.
-- **Deferred; blocking public release:** authorize and validate model restoration/
-  publication, select the first unified release identity, and decide Mac signing/
+- **Deferred; blocking public release:** select the first unified release identity,
+  separately authorize publication/push, and decide Mac signing/
   notarization policy. No current local candidate implies those decisions.

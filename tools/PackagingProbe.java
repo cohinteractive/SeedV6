@@ -16,6 +16,7 @@ public final class PackagingProbe {
         System.out.println("model.bytes=" + BrnPair2Codec.MODEL_BYTES);
         System.out.println("model.schema=seedv6.brn.pair2");
         System.out.println("model.schemaVersion=" + BrnPair2Codec.VERSION);
+        System.out.println("model.evaluator=BRN_PAIR2");
         System.out.println("model.calibration=" + BrnPair2Model.CALIBRATION_ID);
         System.out.println("engine.acceptedSource=" + ProductionModel.ENGINE_SOURCE);
         System.out.println("version=" + version.version());
