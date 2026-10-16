@@ -69,6 +69,47 @@ class GradleArchitectureTest(unittest.TestCase):
         self.append('engine-core/build.gradle', "dependencies { testImplementation project(':engine-training') }")
         self.gradle(':engine-core:compileJava', failure='Forbidden project dependency: :engine-core -> :engine-training')
 
+    def test_windows_packaging_jdk_is_local_and_cache_tracked(self):
+        self.append('build.gradle', """
+tasks.register('packagingSelection') {
+    inputs.property('windows', tasks.named('prepareWindowsPackaging').get().jdkHome.map { it.asFile.path })
+    inputs.property('mac', tasks.named('prepareMacPackaging').get().jdkHome.map { it.asFile.path })
+    inputs.property('daemon', System.getProperty('java.home'))
+    doLast {
+        ['windows', 'mac', 'daemon'].each { key -> println key + '=' + inputs.properties[key] }
+    }
+}
+""")
+
+        def selection(*arguments):
+            output = self.gradle('packagingSelection', *arguments)
+            values = dict(line.split('=', 1) for line in output.splitlines()
+                          if line.startswith(('windows=', 'mac=', 'daemon=')))
+            self.assertEqual(values['daemon'], values['mac'])
+            return values, output
+
+        baseline, _ = selection()
+        self.assertEqual(baseline['daemon'], baseline['windows'])
+        local = self.fixture / 'build-assets/packaging.properties'
+        local.parent.mkdir()
+        first = self.fixture / 'packaging JDK one'
+        local.write_text('windowsPackagingJdk=' + first.as_posix() + '\n')
+        values, _ = selection()
+        self.assertEqual(first, Path(values['windows']))
+        self.assertEqual(baseline['daemon'], values['daemon'])
+        _, cached = selection()
+        self.assertIn('Reusing configuration cache.', cached)
+        second = self.fixture / 'packaging JDK two'
+        local.write_text('windowsPackagingJdk=' + second.as_posix() + '\n')
+        values, _ = selection()
+        self.assertEqual(second, Path(values['windows']))
+        explicit = self.fixture / 'explicit JDK'
+        values, _ = selection('-PwindowsPackagingJdk=' + str(explicit))
+        self.assertEqual(explicit, Path(values['windows']))
+        local.unlink()
+        values, _ = selection()
+        self.assertEqual(baseline, values)
+
     def test_uci_cannot_depend_on_training_or_gui(self):
         path = self.fixture / 'app-uci/build.gradle'
         original = path.read_text()

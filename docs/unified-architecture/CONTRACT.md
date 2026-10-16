@@ -68,6 +68,16 @@ external training libraries as a setup ritual. Raw new research output follows
 the existing ignored `raw/` convention. No large archives/corpora/build trees are
 copied for this foundation.
 
+Owner-scoped WU7 local Windows build amendment, 17 October 2026: ordinary
+`./gradlew packageWindows` / `.\gradlew.bat packageWindows` may use the existing
+default Gradle user home and its unchanged global properties. This narrowly
+supersedes the isolated-user-home requirement for these packaging invocations
+and their configuration validation. Windows native tools may select a separate
+JDK through ignored worktree-local configuration; daemon/compiler selection,
+global Java/Gradle settings and other projects remain unchanged. Other migration
+builds retain the isolation convention above. This amendment authorizes no Mac
+acceptance, remote model restoration, release or subsequent work unit.
+
 ## Production selection and invariants
 
 The accepted search source is SeedV6

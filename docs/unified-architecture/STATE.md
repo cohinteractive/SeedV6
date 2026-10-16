@@ -1,16 +1,16 @@
 # Unified architecture migration state
 
-Updated 16 October 2026 (Pacific/Auckland). Governing [CONTRACT](CONTRACT.md),
+Updated 17 October 2026 (Pacific/Auckland). Governing [CONTRACT](CONTRACT.md),
 [BASELINE / preservation](BASELINE.md), [ACCEPTANCE matrix](ACCEPTANCE.md),
 [foundation evidence](foundation-evidence.json).
 
 ## Current boundary
 
-**WU0-WU6 are accepted by GPT. WU7 packaging implementation and available Windows/
-portable validation are complete, pending GPT/user reconciliation; full cross-platform
-acceptance is not complete.** The owner WU7 launch
-accepts `328531f672260cf4fd5e49b26724fee7329bb0d8` and authorizes native candidate
-packaging with no version bump. [WU7 packaging](WU7-PACKAGING.md) records commands,
+**WU0-WU6 are accepted by GPT. The owner identifies WU7 commit
+`592c6c93e4be355f02f09bd77149647463deb709` as the last accepted packaging commit.
+Its bounded local Windows configuration follow-up is implemented and validated;
+full cross-platform acceptance is not complete.** This follow-up authorizes no
+version bump, Mac acceptance or subsequent work unit. [WU7 packaging](WU7-PACKAGING.md) records commands,
 private model inputs, provenance and native/human gates. No desktop interaction
 is authorized. Mac-native execution, human GUI/client acceptance and the 19
 inherited failures remain open; WU8 does not advance automatically.
@@ -40,7 +40,7 @@ research seams are present but not accepted for production.
 | WU4 GUI | ACCEPTED by GPT (structural scope) | 75 GUI sources / 35 resources in app-gui; scoped non-interactive checks complete; 19 inherited failures retained; Windows/macOS human G2-G5 deferred to WU7. |
 | WU5 UCI | ACCEPTED by GPT | Standalone core-only Java UCI, explicit legacy profile, 159 standalone requests and shared production/model parity; native/client gates remain WU7. |
 | WU6 Research | ACCEPTED by GPT | [WU6 record](WU6-RESEARCH.md), [evidence](wu6-evidence.json); research owns tools/references, production activation/classpaths isolated, compiled core seams disclosed. |
-| WU7 Packaging | Implementation and available validation COMPLETE; GPT/user reconciliation pending | [Implementation](WU7-PACKAGING.md), [evidence](wu7-evidence.json); native Mac/human gates open; WU8 remains gated. |
+| WU7 Packaging | `592c6c9` accepted packaging implementation; local Windows configuration follow-up COMPLETE, pending reconciliation | [Implementation and follow-up evidence](WU7-PACKAGING.md), [original evidence](wu7-evidence.json); native Mac/human gates open; WU8 remains gated. |
 | WU8 Cutover | NOT STARTED | Applicable matrix passed/scoped, rollback demonstrated and explicit owner decision. |
 
 ## WU0 evidence and validation
@@ -377,9 +377,38 @@ completed without warnings or blockers and version bytes were independently
 verified unchanged. The root journal is absent and was not created. No WU8 work
 is admitted.
 
+## WU7 local Windows configuration follow-up
+
+17 October 2026: ordinary Git Bash `./gradlew packageWindows` and PowerShell
+`.\gradlew.bat packageWindows` both pass from this worktree without environment
+overrides or extra arguments. Ignored `build-assets/packaging.properties` selects
+Windows native tools at `C:/java/jdk-21-packaging` (Temurin 21.0.12.1); global
+Gradle remains on `C:/java/jdk-21`, and compiler/Mac selection is unchanged.
+The approved historical payload was hash-verified before/after copying to ignored
+`build-assets/production/network.brn-pair2`. Explicit property/environment model
+overrides and all checksum/schema/native-runtime checks remain intact.
+
+Both ordinary invocations create new GUI/UCI candidates with identical shared
+core/model bytes. Nine safety tests and six Gradle selection/cache fixture
+invocations pass; invalid JDK/model and occupied destinations fail as intended.
+All 6,117 pre-existing output files and global Java/Gradle settings remain
+unchanged. [WU7 follow-up evidence](WU7-PACKAGING.md#local-windows-configuration-follow-up-17-october-2026)
+records exact candidate identities, local evidence paths and limits.
+
+Version remains 0.0.0 build 35 with independently unchanged bytes. Non-blocking
+bookkeeping limitation: the local `begin` capture was stopped before operation
+creation after approximately five minutes; status is idle with no pending work.
+No verified finalization is claimed, no bump/finish was attempted, and no journal
+was created. The commit containing this entry is the tracked tooling/docs
+boundary; private model/configuration and generated candidates remain ignored.
+No application sources, Mac packaging or subsequent migration work changed.
+No push, publication or release is authorized/performed. This checkout needs no
+further human setup for either ordinary Windows command; new checkouts require
+the documented one-time private JDK/model setup.
+
 ## Next admission and human actions
 
-Recommend GPT/user reconciliation of WU7 implementation and evidence, then Mac-native
+Recommend GPT/user reconciliation of this WU7 follow-up, then separately admitted Mac-native
 packaging validation and user GUI/client acceptance against exact candidates.
 Separate inherited-failure remediation remains necessary at its existing gates.
 

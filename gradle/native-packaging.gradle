@@ -41,12 +41,20 @@ def model = providers.gradleProperty('productionModel').orElse(
         providers.environmentVariable('SEEDV6_PRODUCTION_MODEL')).orElse(
         rootProject.file('build-assets/production/network.brn-pair2').absolutePath)
 
+// Private, worktree-local native tools; do not change Gradle's daemon/compiler JDK.
+// Provider-backed reads invalidate the configuration cache when this file changes.
+def localPackaging = new Properties()
+localPackaging.load(new StringReader(providers.fileContents(
+        rootProject.layout.projectDirectory.file('build-assets/packaging.properties')).asText.orElse('').get()))
+def windowsJdk = providers.gradleProperty('windowsPackagingJdk').orElse(
+        localPackaging.getProperty('windowsPackagingJdk', System.getProperty('java.home')))
+
 ['Windows': 'windows', 'Mac': 'macos'].each { suffix, platform ->
     def context = rootProject.layout.buildDirectory.file("packaging/context-${platform}.json")
     def common = { NativePackaging t ->
         t.platformName = platform
         t.repositoryDirectory = rootProject.layout.projectDirectory
-        t.jdkHome = new File(System.getProperty('java.home'))
+        t.jdkHome = platform == 'windows' ? rootProject.file(windowsJdk.get()) : new File(System.getProperty('java.home'))
         t.pythonCommand = python
         t.modelPath = model
         t.candidateId = providers.gradleProperty('candidateId').orElse('auto')
