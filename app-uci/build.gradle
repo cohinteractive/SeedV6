@@ -1,0 +1,10 @@
+plugins {
+    id 'java'
+}
+apply from: rootProject.file('gradle/java-conventions.gradle')
+
+// The standalone entry point is introduced with its protocol tests in WU5.
+description = 'Headless UCI application owner; implementation starts in WU5.'
+dependencies {
+    implementation project(':engine-core')
+}

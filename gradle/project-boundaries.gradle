@@ -1,0 +1,114 @@
+import org.gradle.api.artifacts.ProjectDependency
+
+// Explicit temporary exception: the legacy application may consume extracted
+// core/training, but no target module may consume the legacy application.
+// Remove :app from this map at the accepted WU8 cutover, not before parity.
+def allowed = [
+    ':': [],
+    ':engine-core': [],
+    ':engine-training': [':engine-core'],
+    ':app-gui': [':engine-core', ':engine-training'],
+    ':app-uci': [':engine-core'],
+    ':research': [':engine-core', ':engine-training'],
+    ':app': [':engine-core', ':engine-training']
+]
+
+abstract class VerifyProjectBoundaries extends DefaultTask {
+    @Input abstract MapProperty<String, List> getGraph()
+    @Input abstract MapProperty<String, List> getAllowedGraph()
+    @Input abstract MapProperty<String, List> getSourceRoots()
+
+    static void validateGraph(Map<String, List> graph, Map<String, List> allowed) {
+        if (graph.keySet() != allowed.keySet()) {
+            throw new GradleException("Unexpected project identities: ${graph.keySet()}; expected ${allowed.keySet()}")
+        }
+        Set<String> done = [] as Set
+        List<String> visiting = []
+        Closure visit
+        visit = { String path ->
+            if (visiting.contains(path)) {
+                throw new GradleException("Circular project dependency: ${(visiting + path).join(' -> ')}")
+            }
+            if (!done.contains(path)) {
+                visiting.add(path)
+                graph[path].each { String target ->
+                    if (!graph.containsKey(target)) throw new GradleException("Unknown project dependency: $path -> $target")
+                    visit(target)
+                }
+                visiting.remove(visiting.size() - 1)
+                done.add(path)
+            }
+        }
+        graph.keySet().each { visit(it) }
+        graph.each { path, targets ->
+            targets.each { target ->
+                if (!allowed[path].contains(target)) {
+                    throw new GradleException("Forbidden project dependency: $path -> $target")
+                }
+            }
+        }
+    }
+
+    static void validateSources(Map<String, List> roots) {
+        def owners = []
+        roots.each { owner, paths -> paths.each { path -> owners.add([owner, new File(path).toPath()]) } }
+        owners.eachWithIndex { left, index ->
+            owners.drop(index + 1).each { right ->
+                if (left[0] != right[0] && (left[1].startsWith(right[1]) || right[1].startsWith(left[1]))) {
+                    throw new GradleException("Overlapping Java source ownership: ${left[0]} (${left[1]}) and ${right[0]} (${right[1]})")
+                }
+            }
+        }
+    }
+
+    @TaskAction void verify() {
+        validateGraph(graph.get(), allowedGraph.get())
+        validateSources(sourceRoots.get())
+        graph.get().each { path, targets -> logger.lifecycle("$path -> ${targets ?: '(none)'}") }
+        logger.lifecycle('Project boundaries verified; :app is transitional, target source extraction is incomplete.')
+    }
+}
+
+def boundaryCheck = tasks.register('verifyProjectBoundaries', VerifyProjectBoundaries) {
+    group = 'verification'
+    description = 'Checks all project dependency configurations, cycles and Java source ownership, including transitional :app.'
+    allowedGraph.set(allowed)
+}
+
+allprojects { p ->
+    // Observe additions as well as the configured snapshot, including test-only,
+    // custom and lazily declared dependencies. Never resolve external artifacts.
+    p.configurations.configureEach { configuration ->
+        configuration.dependencies.withType(ProjectDependency).all { dependency ->
+            String target = dependency.path
+            if (!(allowed[p.path] ?: []).contains(target)) {
+                throw new GradleException("Forbidden project dependency: ${p.path} -> $target (${configuration.name})")
+            }
+        }
+    }
+    p.plugins.withId('java') {
+        p.tasks.withType(JavaCompile).configureEach { dependsOn boundaryCheck }
+        p.tasks.named('check') { dependsOn boundaryCheck }
+    }
+}
+
+// Store only ordinary values in the task: configuration-cache reuse must not
+// serialize Project/Configuration/SourceSet objects into its execution action.
+gradle.projectsEvaluated {
+    def configuredGraph = [:]
+    def roots = [:]
+    allprojects.sort { it.path }.each { p ->
+        configuredGraph[p.path] = p.configurations.collectMany { configuration ->
+            configuration.allDependencies.withType(ProjectDependency).collect { it.path }
+        }.unique().sort()
+        p.extensions.findByName('sourceSets')?.each { sourceSet ->
+            roots["${p.path}/${sourceSet.name}".toString()] = sourceSet.java.srcDirs.collect { it.canonicalPath }.sort()
+        }
+    }
+    VerifyProjectBoundaries.validateGraph(configuredGraph, allowed)
+    VerifyProjectBoundaries.validateSources(roots)
+    boundaryCheck.configure {
+        graph.set(configuredGraph)
+        sourceRoots.set(roots)
+    }
+}

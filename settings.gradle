@@ -11,4 +11,7 @@ plugins {
 }
 
 rootProject.name = 'seedv6'
+// Final owners. Source extraction is staged; :app remains the sole application
+// implementation until parity and the WU8 cutover gate permit its removal.
+include('engine-core', 'engine-training', 'app-gui', 'app-uci', 'research')
 include('app')

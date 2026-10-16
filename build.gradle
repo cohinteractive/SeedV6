@@ -1,3 +1,16 @@
+plugins {
+    id 'base'
+}
+
+apply from: rootProject.file('gradle/project-boundaries.gradle')
+
+tasks.named('check') {
+    dependsOn subprojects.collect { "${it.path}:check" }
+}
+tasks.named('assemble') {
+    dependsOn subprojects.collect { "${it.path}:assemble" }
+}
+
 // Root-level packaging entry points, discoverable with ./gradlew tasks.
 apply from: rootProject.file('gradle/package-mac.gradle')
 

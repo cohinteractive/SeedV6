@@ -17,8 +17,10 @@ Start with the [architecture and source boundaries](docs/architecture.md) and
 
 The [unified architecture migration contract](docs/unified-architecture/CONTRACT.md)
 and [migration state](docs/unified-architecture/STATE.md) govern the staged move to
-one shared engine, training, GUI, UCI and research build. The current application
-layout remains unchanged during the foundation work unit.
+one shared engine, training, GUI, UCI and research build. The five target Gradle
+projects now exist alongside temporary `:app`, which still owns all current Java
+implementation and launchers. See the [WU1 build transition](docs/unified-architecture/WU1-GRADLE.md)
+for dependency checks, isolated validation and the later extraction gates.
 
 ```powershell
 .\gradlew.bat :app:installDist

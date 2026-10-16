@@ -1,0 +1,11 @@
+plugins {
+    id 'java'
+}
+apply from: rootProject.file('gradle/java-conventions.gradle')
+
+// No invented main class or launcher. :app remains runnable through extraction.
+description = 'Desktop application owner; implementation remains in :app until WU4.'
+dependencies {
+    implementation project(':engine-core')
+    implementation project(':engine-training')
+}

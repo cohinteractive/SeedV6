@@ -1,0 +1,400 @@
+{
+  "observedUtc": "2026-10-16T02:54:41.789317+00:00",
+  "workUnit": "WU1 - Gradle multi-project foundation",
+  "status": "COMPLETE; scoped validation complete, GPT/user acceptance pending",
+  "ownerGateDecision": {
+    "quote": "Yes\u2014commit WU1 and document all 19 inherited failures for separate remediation.",
+    "scope": "WU1 commit authorized; no source remediation, later runtime acceptance waiver, or WU2 admission."
+  },
+  "worktree": "C:\\projects\\seed\\java\\seedv6-unified",
+  "branch": "migration/unified-architecture",
+  "baselineCommit": "81e868a72b942202e1ced89fe30a5a13e3af155f",
+  "baselineClean": true,
+  "projects": {
+    ":engine-core": [],
+    ":engine-training": [
+      ":engine-core"
+    ],
+    ":app-gui": [
+      ":engine-core",
+      ":engine-training"
+    ],
+    ":app-uci": [
+      ":engine-core"
+    ],
+    ":research": [
+      ":engine-core",
+      ":engine-training"
+    ],
+    ":app": []
+  },
+  "legacyPolicy": ":app alone currently owns implementation. It may consume extracted core/training; no target may consume :app. Removal is gated by WU8 parity/cutover.",
+  "runtimeSeparationComplete": false,
+  "buildEnvironment": {
+    "java": "21",
+    "wrapper": "8.11.1",
+    "gradleUserHome": "build/migration/gradle-user-home",
+    "maxWorkers": 2,
+    "singleUseDaemons": true,
+    "temporaryFiles": "build/migration/wu1/test-tmp",
+    "gitCeiling": "migration worktree root"
+  },
+  "validation": {
+    "artifactReview": {
+      "scopeFiles": 17,
+      "localDocumentationLinks": 52,
+      "inheritedMissingLinks": [
+        {
+          "file": "docs/architecture.md",
+          "target": "../archive/search-programme/README.md"
+        }
+      ],
+      "preservation": "PASS",
+      "evidenceConsistency": "PASS",
+      "diffCheck": "PASS"
+    },
+    "baselineFocused": {
+      "counts": {
+        "tests": 59,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "failures": [],
+      "localXmlDirectory": "build/migration/wu1/baseline-test-results"
+    },
+    "foundationRegression": {
+      "counts": {
+        "tests": 1017,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 11
+      },
+      "failures": [],
+      "localXmlDirectory": "app/build/test-results/test"
+    },
+    "boundaryFixtures": {
+      "tests": 9,
+      "passed": 9,
+      "seconds": 102.355,
+      "command": "python -B tools/test_gradle_architecture.py",
+      "log": "build/migration/wu1/boundary-tests.txt"
+    },
+    "legacyConfiguredModel": {
+      "equal": true,
+      "taskCount": 97,
+      "comparedFields": [
+        "tasks",
+        "dependencies",
+        "sourceSets",
+        "toolchain",
+        "compilerArgs",
+        "mainClass",
+        "buildDirectory"
+      ],
+      "baseline": "build/migration/wu1/baseline-model.json",
+      "current": "build/migration/wu1/foundation-model.json"
+    },
+    "compiledOutputs": {
+      "main": {
+        "currentCount": 716,
+        "baselineCount": 716,
+        "equal": true,
+        "differences": []
+      },
+      "verification": {
+        "currentCount": 311,
+        "baselineCount": 311,
+        "equal": true,
+        "differences": []
+      },
+      "test": {
+        "currentCount": 922,
+        "baselineCount": 922,
+        "equal": true,
+        "differences": []
+      },
+      "applicationJarEntries": {
+        "currentCount": 756,
+        "baselineCount": 756,
+        "equal": true,
+        "differences": []
+      },
+      "versionSha256": "92a26d4e187edc6c47ed88100d355f77b4597d98524d21d005a3c164986b4bca"
+    },
+    "actualTargetClasses": "PASS; all five target compileJava tasks NO-SOURCE; no runtime extraction claimed",
+    "configurationCache": "PASS in fixture and actual worktree; actual repeat reused configuration cache",
+    "packagingConfiguration": "PASS packageWindows packageMac --dry-run; no native task executed",
+    "expandedCheck": {
+      "result": "FAILED / intentionally interrupted after 19 observed test failures",
+      "command": "gradlew --no-daemon --max-workers=2 -I build/migration/wu1/inspect.gradle check :app:verificationClasses -Pheadless",
+      "duration": "12m39s",
+      "log": "build/migration/wu1/foundation-check.txt",
+      "aggregateCountsAvailable": false,
+      "note": "Only the verified WU1 test worker was stopped. XML in expanded-test-results is stale from the earlier 59-case run, not evidence for this interrupted run. Console failures and separate baseline replays are authoritative for observed failures."
+    },
+    "baselineGuiReproduction": {
+      "counts": {
+        "tests": 10,
+        "failures": 10,
+        "errors": 0,
+        "skipped": 0
+      },
+      "failures": [
+        {
+          "class": "com.ohinteractive.seedv6.gui.Brn1TrainingGuiTest",
+          "test": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.gui.Brn2SupervisionGuiTest",
+          "test": "freshControlsDefaultWdlExposePercentComplementAndFollowEveryLifecycleLock()",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.gui.Brn2TrainingGuiTest",
+          "test": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest",
+          "test": "[1] BRN-0",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest",
+          "test": "[2] BRN-1",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.gui.BrnCaptureGuiTest",
+          "test": "brnDefaultRoundTripAndLifecycleLocksWithNnuePanelUnchanged()",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.gui.BrnPair2GuiTest",
+          "test": "capabilitiesAndRecipeEditorsAppearInExistingTrainingPanel()",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.getSelectedItem()\" because \"selector\" is null"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.gui.BrnTrainingGuiTest",
+          "test": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.gui.TablebasePresentationTest",
+          "test": "engineCardLabelsOutcomeWithoutEvaluationUnitsOrASearchedPv()",
+          "message": "org.opentest4j.AssertionFailedError: White wins ==> expected: <true> but was: <false>"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.gui.WorkflowRefinementGuiTest",
+          "test": "compactDashboardShowsBothGraphsAtOrdinaryViewportAndRendersAt150Percent()",
+          "message": "org.opentest4j.AssertionFailedError: Graphs bottom=719 viewport=649 ==> expected: <true> but was: <false>"
+        }
+      ],
+      "localXmlDirectory": "build/migration/wu1/baseline-gui-test-results"
+    },
+    "baselineRestartReproduction": {
+      "counts": {
+        "tests": 9,
+        "failures": 9,
+        "errors": 0,
+        "skipped": 0
+      },
+      "failures": [
+        {
+          "class": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "test": "[1] PLAN",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "test": "[2] DATA",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "test": "[3] ATTEMPT",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "test": "[4] CANDIDATE",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "test": "[5] CORPUS_RECEIPT",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "test": "[6] LATEST",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "test": "[7] SOURCE",
+          "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "test": "[8] REPLACEMENT",
+          "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>"
+        },
+        {
+          "class": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "test": "[9] RECEIPT",
+          "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>"
+        }
+      ],
+      "localXmlDirectory": "build/migration/wu1/baseline-app-output/test-results/test"
+    },
+    "baselineReplayMethod": "Exported WU0 settings/root/app build scripts from immutable Git objects; selected alternate settings with relocated catalog and distinct project cache/build output. Used unchanged current Java source, whose compiled bytes match. No root build files or sources were temporarily replaced."
+  },
+  "preservation": {
+    "beforeUtc": "2026-10-16T02:18:59.539783+00:00",
+    "afterUtc": "2026-10-16T02:51:50.081097+00:00",
+    "repositories": {
+      "original": {
+        "root": "C:\\projects\\seed\\java\\seedv6",
+        "head": "24720213e12d99a581a713c74f901f89899bf2b4",
+        "branch": "main",
+        "comparisons": {
+          "head": true,
+          "branch": true,
+          "status": true,
+          "tracked": true,
+          "artifacts": true,
+          "metadata": true,
+          "inventory": true
+        },
+        "trackedFiles": 3597,
+        "protectedArtifacts": 1098,
+        "inventoryFiles": 44076,
+        "trackedMapSha256": "841853b783dff8997829ce5d7f5f3c305c646ecce6f8761944274f30a08a6d0d",
+        "protectedArtifactMapSha256": "166d7debd803638511f9f9aeda68f582267dfe02939e98a0e7e417a7e7436967",
+        "sizeMtimeMapSha256": "0a45781880e8596baf25b7d85edcf4e43276a561f550c5075bfa14de6b762046",
+        "metadataSha256": {
+          "HEAD": "28d25bf82af4c0e2b72f50959b2beb859e3e60b9630a5e8c603dad4ddb2b6e80",
+          "index": "40fcc56f3ab725374145ede17c0fd9423e7da6e07980343ed31fa50f69a78428",
+          "ORIG_HEAD": "99d2643141858ecfff416aedf07a297b69b94cfafcfc46755fba770e4b5e88bd"
+        }
+      },
+      "uci": {
+        "root": "C:\\projects\\seed\\java\\seedv6-ue",
+        "head": "c6bdd5249992d88cd35ed07b164cbb090afaa06e",
+        "branch": "main",
+        "comparisons": {
+          "head": true,
+          "branch": true,
+          "status": true,
+          "tracked": true,
+          "artifacts": true,
+          "metadata": true,
+          "inventory": true
+        },
+        "trackedFiles": 110,
+        "protectedArtifacts": 590,
+        "inventoryFiles": 2706,
+        "trackedMapSha256": "20e6d9647b5b7efc31becd273c60c37feeb1fabd429246ee9857c8d7409d5ec1",
+        "protectedArtifactMapSha256": "13e368bb3444a44222edfe286f86f2d27d8ec78d8ac54fbf954b11250fe9c95a",
+        "sizeMtimeMapSha256": "79ae4e9fdd122380c2cb383db62cc2f6a4448d60c45417e6c13fb17e732da652",
+        "metadataSha256": {
+          "HEAD": "28d25bf82af4c0e2b72f50959b2beb859e3e60b9630a5e8c603dad4ddb2b6e80",
+          "index": "c8536f02180fa7677723c0e742bb59c5890c233fb950922c8d5b6434e5aba1ab",
+          "MERGE_HEAD": "ed40f4d60fd29754b6667d70f1067552ed1f04f2b7e5038a91ec361cfe8bc1ae",
+          "MERGE_MODE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "MERGE_MSG": "7ad0e8e71d8cb57ddb86356990266d46339c063ad63443baa9ac3876b540ae6b",
+          "AUTO_MERGE": "e32a4685866b5cd36eaee6d82ee3c70298ac3dded59d19519292bb1cc9b25408",
+          "ORIG_HEAD": "b791a9a74a278eb3e684afd75800b4cb905344c4f727ab839902ca2fff95e294"
+        }
+      }
+    },
+    "frozenSr024FilesMatchingWu0": 15,
+    "scope": "All original tracked/protected bytes and listed Git metadata compared; remaining original files checked by size/mtime, not full hashing. No external workload stopped or reconfigured."
+  },
+  "sourcePreservation": {
+    "allAppSourceFilesUnchanged": true,
+    "files": 966,
+    "mapSha256": "8f233f5d6f0a4d9ca1bb02ce7a847bb1b124f8057175dd66c5ba581fee626d00",
+    "acceptedBaselineUnchanged": "WU0 accepted SR-024 versus later main/SR-021 differences remain unchanged; no new engine adoption"
+  },
+  "version": {
+    "value": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 35
+    },
+    "sha256": "92a26d4e187edc6c47ed88100d355f77b4597d98524d21d005a3c164986b4bca",
+    "beginToken": "43045c25824846d28384c4b412f1bdac",
+    "decision": "no_bump",
+    "finishStatus": "no_bump",
+    "terminalReceipt": {
+      "status": "no_bump",
+      "token": "43045c25824846d28384c4b412f1bdac",
+      "decision": "no_bump",
+      "verified_bump": false,
+      "before": {
+        "build": 35,
+        "major": 0,
+        "minor": 0,
+        "patch": 0
+      },
+      "after": null,
+      "warnings": [],
+      "blockers": [],
+      "receiptSha256": "58ad1cc74ead28b29bd3e68d2953c026a77448bf51bc2c4b632b71103b9efb2d"
+    },
+    "idleReceipt": {
+      "status": "idle",
+      "token": null,
+      "decision": null,
+      "verified_bump": false,
+      "before": null,
+      "after": null,
+      "warnings": [],
+      "blockers": [],
+      "active": null,
+      "unfinished": [],
+      "receiptSha256": "b7637d28b0b027aab8f902dd17b10bc74a2182b0b9e56770ff7bf4a581f637c3"
+    },
+    "journalPresent": false
+  },
+  "skipped": [
+    "Completion of expanded whole-suite run after failures; no global excludes or suppressed failures introduced.",
+    "Explicit slow-nnue/fullCheck suite and expensive training/strength campaigns.",
+    "Native Windows/macOS packaging, GUI walkthrough, real UCI clients, optional Syzygy native compilation.",
+    "External model/corpus traversal and fresh historical Mac artifact certification."
+  ],
+  "humanActions": [
+    {
+      "blocking": true,
+      "action": "GPT/user acceptance of WU1.",
+      "blocks": "WU2 admission."
+    },
+    {
+      "blocking": false,
+      "action": "Authorize separate remediation of the 19 inherited GUI/checkpoint failures before dependent runtime acceptance.",
+      "blocks": "No WU1 work; later GUI/training runtime gates remain open."
+    }
+  ],
+  "commitReference": "The commit introducing this record; actual identifier reported at handback.",
+  "pushOrDeployment": false,
+  "localEvidenceNote": "Raw local outputs remain ignored under build/migration. They are not present in a fresh checkout; tracked boundary tests and commands support reproduction.",
+  "localTranscripts": {
+    "baseline-discovery.txt": "d4b013f8f8f7ecbf3ea1a050400d465dd5faeaa32068e1395196ef908fd91bfe",
+    "baseline-tests-r5.txt": "218de7083a530f2fbfcc5d2748021bb8971b2e90bc7f32487b8088dc1632cfab",
+    "foundation-discovery.txt": "0bad59dd81c037f58bb08c636733be889ecdcbf0c8bd92866f3ba16665a38c8e",
+    "foundation-model.txt": "241e366a98a00669da3e26823c01f435d0d61c98c166890445211745f0106685",
+    "boundary-tests.txt": "a3c491732ba7699f9748629eada725ced115a360a434218bf0df5ccceb4a691b",
+    "targets-and-cache-first.txt": "cc68f92ee4ff28b0119fa483b6f55057656d4f5cb15b94b05ccd6b22c14d33e6",
+    "targets-and-cache-second.txt": "567b675276cdac1cdbb26a771624d49c83a5e270b05b868e2c2a2b08a3385b63",
+    "packaging-dry-run.txt": "fbf3a75dead79408bf158afa751c28ffa754ef23b64a2d26be9701981701e4eb",
+    "foundation-check.txt": "be3ad626f2e726babbd1fd9039719df6b0f2a3f72ece1d2903e3e25f88c3f3e0",
+    "baseline-gui-reproduction-r3.txt": "020c067800f1754032246951ff3f2e8ba97f1d85dadc7f13df38778b1b92c946",
+    "baseline-restart-reproduction.txt": "836778ceaee0881ac350e167e60d19942171b3a174aaac5f9387006e439a3cd4",
+    "foundation-regression.txt": "80b92fd11645e9e278f0b10086b8c6a12634fe2edac787836e2b76cb6619d161"
+  }
+}

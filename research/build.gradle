@@ -1,0 +1,10 @@
+plugins {
+    id 'java-library'
+}
+apply from: rootProject.file('gradle/java-conventions.gradle')
+
+description = 'Research and independent verification owner; existing tasks remain in :app until WU6.'
+dependencies {
+    implementation project(':engine-core')
+    implementation project(':engine-training')
+}

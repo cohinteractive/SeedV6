@@ -2,7 +2,12 @@
 
 ## Application and build
 
-The root Gradle project includes `app`. Java 21's application plugin launches
+The root Gradle project includes the five target owners `engine-core`,
+`engine-training`, `app-gui`, `app-uci` and `research`, plus temporary `app`.
+The target projects are empty scaffolds; all current implementation remains in
+`app`. Shared Java/JUnit conventions and enforced project dependency/source-root
+boundaries live in `gradle/`. See [the WU1 transition](unified-architecture/WU1-GRADLE.md)
+for the actual graph and the legacy removal gate. Java 21's application plugin launches
 [`Main`](../app/src/main/java/com/ohinteractive/seedv6/Main.java), selecting desktop
 `SwingLauncher` for `gui` and `UciEngine` otherwise. Application JARs, `installDist`,
 and native Windows/macOS packaging contain only `sourceSets.main.output` and its

@@ -1,0 +1,6 @@
+plugins {
+    id 'java-library'
+}
+apply from: rootProject.file('gradle/java-conventions.gradle')
+
+description = 'Production engine owner; source extraction starts in WU2.'

@@ -11,6 +11,14 @@ alone is sufficient. Preserve or deliberately remap their Gradle task/source-set
 ownership. Record skips and absent payloads; a skipped required check is pending.
 Native/human evidence identifies OS, architecture, runtime, package and scenario.
 
+WU1 execution evidence is in [WU1-GRADLE](WU1-GRADLE.md) and
+[wu1-evidence.json](wu1-evidence.json). Project/build-boundary and selected
+regression checks pass. The owner explicitly authorized the WU1 commit with all
+19 inherited GUI/checkpoint failures, reproduced with WU0, deferred for separate
+remediation. The expanded full suite remains failed/incomplete. WU1 awaits GPT/user
+acceptance; this scoped commit decision does not accept any runtime migration or
+waive later GUI/training acceptance requirements.
+
 | ID / stage | Preserved capability and acceptance condition | Automated validation / existing reference | Later native, client or human acceptance |
 | --- | --- | --- | --- |
 | G0 / WU0 | Independent worktree; unchanged originals and existing releases; correct production/research distinction; complete contract/state/gates; no runtime/build/model publication change | Git/worktree/ancestry checks; tracked-file and protected-artifact hashes; metadata inventory; frozen installation/model/fixture verification; documentation links and scope diff | GPT/user reconciliation of the foundation before WU1. No runtime acceptance implied. |

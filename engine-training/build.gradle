@@ -1,0 +1,9 @@
+plugins {
+    id 'java-library'
+}
+apply from: rootProject.file('gradle/java-conventions.gradle')
+
+description = 'Training services owner; source extraction starts in WU3.'
+dependencies {
+    implementation project(':engine-core')
+}
