@@ -3,4 +3,11 @@ plugins {
 }
 apply from: rootProject.file('gradle/java-conventions.gradle')
 
-description = 'Production engine owner; source extraction starts in WU2.'
+description = 'Shared production board, rules, search, evaluation and runtime model inference.'
+
+apply from: rootProject.file('gradle/syzygy.gradle')
+
+tasks.withType(Test).configureEach {
+    if (project.hasProperty('headless')) systemProperty 'java.awt.headless', 'true'
+    maxHeapSize = '2g'
+}

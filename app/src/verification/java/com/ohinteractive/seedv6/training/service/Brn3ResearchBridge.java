@@ -21,7 +21,7 @@ public final class Brn3ResearchBridge {
         var trainer=Brn3Trainer.restore(research.weights,research.first,research.second,research.updates,new BrnAdamConfig(((Number)metadata.get("rate")).doubleValue()));
         Files.createDirectories(out);
         try(var stream=new BufferedOutputStream(Files.newOutputStream(out.resolve("network.brn3")))){Brn3Codec.writeModel(trainer.snapshot(),stream);}
-        try(var stream=new BufferedOutputStream(Files.newOutputStream(out.resolve("training.brn3")))){Brn3Codec.writeTraining(trainer,stream);}
+        try(var stream=new BufferedOutputStream(Files.newOutputStream(out.resolve("training.brn3")))){Brn3TrainingCodec.writeTraining(trainer,stream);}
         var report=new LinkedHashMap<String,Object>();report.put("sourceResearchStateSha256",BrnResearchComparison.digest(run.resolve("selected.state")));
         report.put("modelSha256",BrnResearchComparison.digest(out.resolve("network.brn3")));report.put("trainingSha256",BrnResearchComparison.digest(out.resolve("training.brn3")));
         report.put("optimizerStep",trainer.step());report.put("configuration",trainer.config());report.put("normalTrainingRequiresThisExport",false);

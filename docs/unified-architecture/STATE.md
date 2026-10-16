@@ -6,13 +6,14 @@ Updated 16 October 2026 (Pacific/Auckland). Governing [CONTRACT](CONTRACT.md),
 
 ## Current boundary
 
-**WU0 is accepted by GPT, as confirmed in the owner's WU1 launch. WU1 implementation
-and scoped validation are complete, with all 19 inherited failures explicitly
-deferred by the owner for the WU1 commit. WU1 awaits GPT/user acceptance;
-no WU2 implementation is admitted.**
-The WU1 baseline is the clean accepted commit
-`81e868a72b942202e1ced89fe30a5a13e3af155f`. See the
-[WU1 build transition](WU1-GRADLE.md) and [WU1 evidence](wu1-evidence.json).
+**WU0 and WU1 are accepted by GPT, as confirmed in the owner's WU2 launch.
+WU2 implementation and scoped validation are complete; GPT/user reconciliation
+is pending. No WU3 work is admitted.**
+The WU2 starting point is the clean accepted WU1 commit
+`bd864a9f1231e6c73997b9302a411449bc2a5a21`. See
+[WU2 core extraction](WU2-CORE.md) and [WU2 evidence](wu2-evidence.json).
+The earlier [WU1 record](WU1-GRADLE.md) and [evidence](wu1-evidence.json) remain
+historical accounts of that unit's handback.
 
 Architectural discovery on 16 October 2026 is complete. The owner accepted
 restructuring existing SeedV6 into engine-core, engine-training, app-gui, app-uci
@@ -33,8 +34,8 @@ research seams are present but not accepted for production.
 | --- | --- | --- |
 | Discovery | COMPLETE; five-project decision accepted by owner | Owner's WU0 launch, independently verified repository/source/artifact identities in BASELINE. |
 | WU0 Foundation | ACCEPTED by GPT | Owner's WU1 launch confirms acceptance of `81e868a72b942202e1ced89fe30a5a13e3af155f`; G0 evidence below is retained. |
-| WU1 Gradle foundation | COMPLETE; GPT/USER ACCEPTANCE PENDING | Five target descriptors plus authorized temporary `:app`, shared conventions and enforced graph/source ownership. Build-boundary and selected regression checks pass; all 19 WU0 failures are owner-deferred for this commit. [WU1 record](WU1-GRADLE.md); no runtime migration or WU2 admission. |
-| WU2 Core | NOT STARTED | WU1 gate; reconcile accepted source versus main research seams, E1-E6/R1/R3. |
+| WU1 Gradle foundation | ACCEPTED by GPT | Owner WU2 launch accepts `bd864a9f1231e6c73997b9302a411449bc2a5a21`; all 19 inherited failures remain explicitly deferred. |
+| WU2 Core | COMPLETE; GPT/USER ACCEPTANCE PENDING | One runtime owner, inference/training split and accepted-source bridge; [WU2 record](WU2-CORE.md). |
 | WU3 Training | NOT STARTED | Shared core interfaces; exact checkpoint/optimizer/workspace compatibility, T1-T4. |
 | WU4 GUI | NOT STARTED | Core/training validated; G2-G5 automated/native evidence. |
 | WU5 UCI | NOT STARTED | Core validated; adapt immutable UE boundary behavior, U1-U4/E5/E6. |
@@ -154,12 +155,48 @@ and no finalizer is run there. No shared registry/helper was modified.
   operation. No journal exists, no production package is built, no
   public model bytes are copied and no historical checkout is written.
 
+## WU2 evidence and validation
+
+- Core is the sole runtime owner: 108 Java sources, two runtime resources and nine
+  optional native/provider/provenance files. App has an explicit core dependency;
+  all remaining target projects stay scaffolds. All 50 search source files are
+  byte-identical to WU1. Inference geometry/weights and five runtime codecs are
+  independent of trainers/stores; persisted formats and training semantics stay intact.
+- Frozen accepted-primary JAR and immutable UE probe both match the relocated
+  core on all 203 source vectors/17 fields. Real-model UCI passes 10 exact
+  comparisons and 66 requests across 1..16 workers and lifecycle transitions.
+  Seven model/optimizer families match frozen bytes; real generation-32 model
+  recompilation and a private one-batch optimizer continuation match exactly.
+- Final engine/search/UCI/version run: 989 cases, 978 passed, 11 existing skips;
+  core 61/61 and focused retests 24/24 pass. Reconciled selected coverage is 1,278
+  distinct cases: 1,241 passed, 19 inherited failures, 18 existing skips. The 19
+  failure names/messages exactly match WU1. All new layout/classpath test failures
+  are resolved; no suppression or unrelated remediation. See WU2 evidence for
+  initial failed runs and actual commands. Full unfiltered/slow suites were not run.
+- Nine dependency-boundary fixtures, actual target compilation, configuration-cache
+  reuse, installDist and packaging dry-runs pass. Core resolves only java.base.
+  The optional Windows JNI provider compiles and loads from the core JAR alone.
+  Native GUI/macOS/client and final distribution acceptance remain later gates.
+- Distribution class ownership is unique. All 220 GUI classes and CheckpointStore
+  remain byte-identical to WU1. Both historical repositories' tracked/protected
+  bytes, recorded Git metadata and full size/mtime inventories match before/after.
+  Frozen inputs remain unchanged; no public model bytes, push or release.
+- SR-021 remains deferred and production-disabled. Embedded research seams and
+  remaining verification ownership are explicitly deferred to WU6; complete
+  experimental isolation is not claimed. [WU2](WU2-CORE.md) records the split,
+  [evidence](wu2-evidence.json) records reproducible inputs, checks and limitations.
+- Version remains 0.0.0 build 35. Local finalizer token
+  `0374b98ef93d43d8a5d92003a4b09292` completed `no_bump`, without warnings/blockers;
+  version bytes are identical and subsequent status is idle. No journal exists or
+  was created. The attributable WU2 commit is the commit introducing this record;
+  no push, deployment or WU3 implementation follows.
+
 ## Outstanding decisions and limitations
 
 | Item | Effect on next work |
 | --- | --- |
-| WU1 GPT/user acceptance | Blocking WU2 admission. Implementation and scoped validation are complete; the owner authorized the WU1 commit with all 19 inherited failures deferred. WU0 remains accepted. |
-| Inherited GUI/checkpoint failures | Non-blocking for WU1 under the explicit owner decision; separate remediation remains outstanding. Reconcile them before claiming the dependent GUI/training runtime acceptance gates. |
+| WU2 GPT/user acceptance | Blocking WU3 admission after WU2 implementation/validation handback. WU0 and WU1 are accepted. |
+| Inherited GUI/checkpoint failures | All 19 remain owner-deferred for WU2 only while demonstrably inherited and unchanged. Separate remediation remains required before their dependent GUI/training runtime acceptance gates. |
 | Public model bytes | Deferred, non-blocking for WU1. Explicit owner authorization required before newly committing/publishing payload; use verified external local input in the meantime. |
 | Mac signing/notarization | Deferred to public distribution policy; no blocker to foundation/scaffold or local unsigned QA. |
 | Intel Mac support | Deferred target decision; do not claim support from arm64 evidence. |
@@ -171,31 +208,27 @@ and no finalizer is run there. No shared registry/helper was modified.
 | Missing historical BRN research payloads | Prior owner deletion documented; no reconstruction or fresh verification claimed. Check inputs before any dependent research. |
 | SR-021 closeout/mirrors | Separate research handback pending; no adoption/resumption. Accepted SR-024 baseline remains established. |
 
-No unresolved architectural choice currently prevents the Gradle scaffold.
-The exact training/inference package split and research seam mechanics are future
-evidence-based implementation tasks, not a request to change the five owners.
+WU2 resolves the runtime inference/training dependency split within the approved
+five-owner architecture. Full research-seam isolation remains a WU6 responsibility;
+the extraction preserves disabled behavior without claiming that later gate.
 The WU0 ignored Gradle mtime observations qualify that earlier preservation claim;
 WU1's before/after inventories match. Neither authorizes interference with
 unrelated IDE/Gradle processes.
 
 ## Next independently reviewable unit
 
-After explicit GPT/user acceptance of WU1, admit
-**WU2 - Shared production core**. Re-read governance and migration evidence,
-inspect intervening changes and version state, and retain isolated build outputs.
-Account explicitly for accepted SR-024 versus main's SR-021 research seams before
-moving any implementation. Transfer board/rules/search/evaluation/inference/runtime
-ownership once, preserving independent references and test/verification coverage.
-Validate E1-E6/R1-R3; do not treat empty target compilation as runtime separation.
-The local-only evidence and external inputs must be checked before dependent QA.
-GUI/training source and packaging task migrations remain their later units.
+After GPT/user reconciliation of WU2, admit **WU3 - Training ownership**.
+Move trainers, optimizer codecs, checkpoint/corpus/self-play/validation services
+into engine-training while preserving exact continuation, identities and workspace
+contracts. Retain the 19 inherited GUI/checkpoint failures as explicit separate
+remediation obligations; their deferral does not satisfy the later runtime gates.
+WU3 is not started by this turn. WU6 owns the remaining disabled research seams;
+model publication and final packaging remain separately gated.
 
 Human actions required after this prompt:
 
-- **Blocking for WU2:** GPT/user must accept WU1 before admitting source extraction.
-  The WU1 commit is already authorized with the 19 inherited failures deferred.
-  No WU2 work begins in this turn.
-- **Non-blocking for WU1:** authorize separate remediation of the documented
-  inherited GUI/checkpoint failures before their dependent runtime acceptance.
-- **Non-blocking now:** resolve the deferred owner decisions at the specific
-  publication/platform/release dependency above; no immediate action is needed.
+- **Blocking for WU3:** GPT/user must reconcile and accept WU2 before the next unit.
+- **Non-blocking for WU2:** authorize separate remediation of the 19 inherited
+  failures before their dependent GUI/training runtime acceptance gates.
+- **Non-blocking now:** deferred public-model/platform/release decisions remain
+  due only at their stated downstream boundaries.

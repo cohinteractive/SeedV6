@@ -90,7 +90,7 @@ class Brn2CanonicalSymmetryTest {
             var board = Board.fromFen(p.fen()); double target = (n++ % 3) - 1;
             assertEquals(original.train(board, target), reversed.train(ColorReversal.transform(board), target));
         }
-        assertArrayEquals(Brn2Codec.encodeTraining(original), Brn2Codec.encodeTraining(reversed));
+        assertArrayEquals(Brn2TrainingCodec.encodeTraining(original), Brn2TrainingCodec.encodeTraining(reversed));
         for (var p : Brn2DiagnosticCorpus.POSITIONS) {
             var board = Board.fromFen(p.fen());
             assertEquals(original.predict(board), original.predict(ColorReversal.transform(board)));

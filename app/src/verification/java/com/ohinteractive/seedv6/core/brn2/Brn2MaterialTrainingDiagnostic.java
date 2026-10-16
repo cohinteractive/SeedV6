@@ -40,7 +40,7 @@ public final class Brn2MaterialTrainingDiagnostic {
     static void modelStats(String label, Brn2Model m) {
         double[] a=m.copyWeights();out("model",label,m.materialPrior(),stats(a,OUTPUT_WEIGHT_OFFSET,OUTPUT_BIAS),"bias="+a[OUTPUT_BIAS],"upstream="+stats(a,0,OUTPUT_WEIGHT_OFFSET));
     }
-    static Brn2Trainer loadTrainer(Path cp) throws IOException { try(var in=new BufferedInputStream(Files.newInputStream(cp.resolve("training.state")))){return Brn2Codec.readTraining(in);} }
+    static Brn2Trainer loadTrainer(Path cp) throws IOException { try(var in=new BufferedInputStream(Files.newInputStream(cp.resolve("training.state")))){return Brn2TrainingCodec.readTraining(in);} }
     static Brn2Model loadModel(Path cp) throws IOException { try(var in=new BufferedInputStream(Files.newInputStream(cp.resolve("network.brn2")))){return Brn2Codec.readModel(in);} }
     static void inspect(Path root) throws Exception {
         String best=CheckpointInspection.reference(root,"best"),latest=CheckpointInspection.reference(root,"latest-training");
@@ -209,10 +209,10 @@ public final class Brn2MaterialTrainingDiagnostic {
         }
         out("boundaries",count,"mismatches="+mismatch,"max_raw_delta="+maxRaw,"mode="+trainer.materialPrior());
         if(mismatch!=0 || maxRaw>1e-13)throw new AssertionError("Inference boundary mismatch");
-        var resumed=Brn2Codec.decodeTraining(Brn2Codec.encodeTraining(trainer));int[] order=order(samples.size(),-6540313355536843707L);
+        var resumed=Brn2TrainingCodec.decodeTraining(Brn2TrainingCodec.encodeTraining(trainer));int[] order=order(samples.size(),-6540313355536843707L);
         for(int i=0;i<10;i++){var s=samples.get(order[i]);trainer.train(s.board(),s.target());resumed.train(s.board(),s.target());}
-        out("continuation","identical_bytes="+Arrays.equals(Brn2Codec.encodeTraining(trainer),Brn2Codec.encodeTraining(resumed)),"mode="+resumed.materialPrior(),"step="+resumed.optimizer().step());
-        if(!Arrays.equals(Brn2Codec.encodeTraining(trainer),Brn2Codec.encodeTraining(resumed)))throw new AssertionError("Continuation mismatch");
+        out("continuation","identical_bytes="+Arrays.equals(Brn2TrainingCodec.encodeTraining(trainer),Brn2TrainingCodec.encodeTraining(resumed)),"mode="+resumed.materialPrior(),"step="+resumed.optimizer().step());
+        if(!Arrays.equals(Brn2TrainingCodec.encodeTraining(trainer),Brn2TrainingCodec.encodeTraining(resumed)))throw new AssertionError("Continuation mismatch");
         gradientChecks(order);
     }
     static Object field(Object o,String name) throws Exception {var f=o.getClass().getDeclaredField(name);f.setAccessible(true);return f.get(o);}

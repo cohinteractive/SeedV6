@@ -1,5 +1,7 @@
 package com.ohinteractive.seedv6.training.checkpoint;
 
+import com.ohinteractive.seedv6.core.brn.BrnTrainingCodec;
+
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
@@ -30,7 +32,7 @@ class Brn1CheckpointTest {
         }
         byte[] bytes = Files.readAllBytes(root.resolve("checkpoints").resolve(id).resolve("training.state"));
         assertThrows(IOException.class, () -> new CheckpointStore(root, TrainingArchitecture.BRN1));
-        assertThrows(IOException.class, () -> Brn1Codec.decodeTraining(bytes));
+        assertThrows(IOException.class, () -> Brn1TrainingCodec.decodeTraining(bytes));
         try (var store = new CheckpointStore(root, TrainingArchitecture.BRN)) {
             assertArrayEquals(bytes, store.resumeState(id).encode());
             assertThrows(IOException.class, () -> store.publish(new NetworkTrainingState.Brn1(new Brn1Trainer(.001)),
@@ -44,7 +46,7 @@ class Brn1CheckpointTest {
         }
         assertThrows(IOException.class, () -> new CheckpointStore(newRoot, TrainingArchitecture.BRN));
         byte[] newBytes = Files.readAllBytes(newRoot.resolve("checkpoints").resolve(newId).resolve("training.state"));
-        assertThrows(IOException.class, () -> com.ohinteractive.seedv6.core.brn.BrnCodec.decodeTraining(newBytes));
+        assertThrows(IOException.class, () -> com.ohinteractive.seedv6.core.brn.BrnTrainingCodec.decodeTraining(newBytes));
         byte[] oldModel = com.ohinteractive.seedv6.core.brn.BrnCodec.encodeModel(old.trainer().snapshot());
         assertThrows(IOException.class, () -> Brn1Codec.decodeModel(oldModel));
         byte[] newModel = Brn1Codec.encodeModel(new Brn1Model());

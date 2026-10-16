@@ -1422,4 +1422,4 @@ Performance results in this README are observations from the stated development 
 No reuse or redistribution rights should be assumed unless and until an explicit project license is added.
 
 The vendored Fathom source has its own MIT license in
-`app/src/main/native/syzygy/fathom/LICENSE`; that license applies to those files.
+`engine-core/src/main/native/syzygy/fathom/LICENSE`; that license applies to those files.

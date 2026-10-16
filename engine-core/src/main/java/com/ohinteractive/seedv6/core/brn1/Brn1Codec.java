@@ -1,6 +1,5 @@
 package com.ohinteractive.seedv6.core.brn1;
 
-import com.ohinteractive.seedv6.core.brn.BrnAdamConfig;
 import com.ohinteractive.seedv6.core.brn.BrnFeatureSchema;
 
 import java.io.ByteArrayInputStream;
@@ -43,35 +42,9 @@ public final class Brn1Codec {
     }
 
     /** Single-owner optimizer boundary only; does not publish files or close the stream. */
-    public static void writeTraining(Brn1Trainer trainer, OutputStream output) throws IOException {
-        Writer writer = new Writer(output, TRAINING_MAGIC);
-        writer.data.writeLong(trainer.optimizer().step());
-        BrnAdamConfig config = trainer.config();
-        writer.data.writeDouble(config.learningRate());
-        writer.data.writeDouble(config.beta1());
-        writer.data.writeDouble(config.beta2());
-        writer.data.writeDouble(config.epsilon());
-        writer.parameters(trainer.weights);
-        writer.parameters(trainer.optimizer().first);
-        writer.parameters(trainer.optimizer().second);
-        writer.finish();
-    }
 
-    public static Brn1Trainer readTraining(InputStream input) throws IOException {
-        Reader reader = new Reader(input, TRAINING_MAGIC);
-        try {
-            long step = reader.data.readLong();
-            BrnAdamConfig config = new BrnAdamConfig(reader.data.readDouble(), reader.data.readDouble(),
-                    reader.data.readDouble(), reader.data.readDouble());
-            double[] weights = reader.parameters();
-            double[] first = reader.parameters();
-            double[] second = reader.parameters();
-            reader.finish();
-            return new Brn1Trainer(weights, config, new Brn1AdamState(step, first, second));
-        } catch (IllegalArgumentException invalid) {
-            throw new IOException("Invalid BRN-1 training state.", invalid);
-        }
-    }
+
+
 
     public static byte[] encodeModel(Brn1Model model) throws IOException {
         ByteArrayOutputStream output = new ByteArrayOutputStream(MODEL_BYTES);
@@ -83,17 +56,11 @@ public final class Brn1Codec {
         return readModel(new ByteArrayInputStream(bytes));
     }
 
-    public static byte[] encodeTraining(Brn1Trainer trainer) throws IOException {
-        ByteArrayOutputStream output = new ByteArrayOutputStream(TRAINING_BYTES);
-        writeTraining(trainer, output);
-        return output.toByteArray();
-    }
 
-    public static Brn1Trainer decodeTraining(byte[] bytes) throws IOException {
-        return readTraining(new ByteArrayInputStream(bytes));
-    }
 
-    private static final class Writer {
+
+
+    static final class Writer {
         final OutputStream output;
         final CRC32 crc = new CRC32();
         final DataOutputStream data;
@@ -121,7 +88,7 @@ public final class Brn1Codec {
         }
     }
 
-    private static final class Reader {
+    static final class Reader {
         final InputStream input;
         final CRC32 crc = new CRC32();
         final DataInputStream data;

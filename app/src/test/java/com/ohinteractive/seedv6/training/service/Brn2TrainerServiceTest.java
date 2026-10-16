@@ -85,7 +85,7 @@ class Brn2TrainerServiceTest {
             var refs = store.recover(); var best = refs.best().orElseThrow(); var latest = refs.latestTraining().orElseThrow();
             assertEquals(0, best.manifest().generation()); assertEquals(0, best.manifest().optimizerStep());
             assertEquals(TrainingArchitecture.BRN2, latest.manifest().architecture());
-            assertArrayEquals(Brn2Codec.encodeTraining(new Brn2Trainer(.001)), state(root, best.manifest().id()));
+            assertArrayEquals(Brn2TrainingCodec.encodeTraining(new Brn2Trainer(.001)), state(root, best.manifest().id()));
             assertEquals(4, store.resumeState(latest.manifest().id()).step());
             assertNotEquals(best.manifest().networkSha256(), latest.manifest().networkSha256());
             assertInstanceOf(NetworkModel.Brn2.class, latest.model());
@@ -232,7 +232,7 @@ class Brn2TrainerServiceTest {
             owned.set(service); stopped = finish(service);
         }
         assertEquals(1, stopped.optimizerStep()); assertEquals("", stopped.candidateId());
-        assertArrayEquals(Brn2Codec.encodeTraining(new Brn2Trainer(.001)), state(split, stopped.latestTrainingId()));
+        assertArrayEquals(Brn2TrainingCodec.encodeTraining(new Brn2Trainer(.001)), state(split, stopped.latestTrainingId()));
         TrainerSnapshot resumed;
         try (var service = TrainerService.resume(config(split, 1))) { resumed = finish(service); }
         assertEquals(expected.latestTrainingId(), resumed.latestTrainingId());

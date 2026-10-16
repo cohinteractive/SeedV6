@@ -62,7 +62,7 @@ public final class BrnArchitectureControls {
         }
         void save(Path out,String prefix)throws IOException {
             try(var stream=new BufferedOutputStream(Files.newOutputStream(out.resolve(prefix+".state")))) {
-                if(brn!=null)Brn3Codec.writeTraining(brn,stream);
+                if(brn!=null)Brn3TrainingCodec.writeTraining(brn,stream);
                 else if(strict!=null)strict.write(stream);
                 else if(kind==Kind.NNUE_MATERIAL_V2)TrainingStateCodec.writeMaterial(nnue,stream);
                 else TrainingStateCodec.write(nnue,stream);
@@ -77,7 +77,7 @@ public final class BrnArchitectureControls {
         static Control load(Kind kind,Path state)throws IOException {
             var c=new Control(kind,0);
             try(var in=new BufferedInputStream(Files.newInputStream(state))) {
-                if(c.brn!=null)c.brn=Brn3Codec.readTraining(in);
+                if(c.brn!=null)c.brn=Brn3TrainingCodec.readTraining(in);
                 else if(c.strict!=null)c.strict=NnueMaterialResidualTrainer.read(in);
                 else c.nnue=kind==Kind.NNUE_MATERIAL_V2?TrainingStateCodec.readMaterial(in):TrainingStateCodec.read(in);
             }

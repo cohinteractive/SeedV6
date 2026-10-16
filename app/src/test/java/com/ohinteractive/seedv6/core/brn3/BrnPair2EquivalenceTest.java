@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /** Uses the unchanged d23a05f research implementation as an independent integration oracle. */
 class BrnPair2EquivalenceTest {
     static BrnPair2Model compile(BrnTupleTrainer.Model original) {
-        return new BrnPair2Model(new BrnPair2Trainer.Model(2,original.weights));
+        return new BrnPair2Model(new BrnPair2Weights(2,original.weights));
     }
     static byte[] modelBytes(BrnPair2Model model)throws Exception {
         var bytes=new ByteArrayOutputStream();BrnPair2Codec.writeModel(model,bytes);return bytes.toByteArray();
@@ -34,7 +34,7 @@ class BrnPair2EquivalenceTest {
         assertEquals(reference.step(),in.readLong());assertEquals(reference.rate(),in.readDouble());
         for(var array:new double[][]{reference.weights,reference.first,reference.second})
             for(double value:array)assertEquals(Double.doubleToRawLongBits(value),Double.doubleToRawLongBits(in.readDouble()));
-        var resumed=BrnPair2Codec.readTraining(new ByteArrayInputStream(saved));
+        var resumed=BrnPair2TrainingCodec.readTraining(new ByteArrayInputStream(saved));
         for(int step=0;step<8;step++) {
             supported.trainBatch(boards,targets,boards.length);resumed.trainBatch(boards,targets,boards.length);
             reference.trainBatch(boards,targets,boards.length);
@@ -42,7 +42,7 @@ class BrnPair2EquivalenceTest {
         assertArrayEquals(new NetworkTrainingState.BrnPair2(supported).encode(),new NetworkTrainingState.BrnPair2(resumed).encode());
         assertArrayEquals(modelBytes(compile(reference.snapshot())),modelBytes(new BrnPair2Model(supported.snapshot())));
         long before=resumed.step();resumed.setLearningRate(.005);assertEquals(before,resumed.step());
-        assertEquals(.005,BrnPair2Codec.readTraining(new ByteArrayInputStream(new NetworkTrainingState.BrnPair2(resumed).encode())).rate());
+        assertEquals(.005,BrnPair2TrainingCodec.readTraining(new ByteArrayInputStream(new NetworkTrainingState.BrnPair2(resumed).encode())).rate());
     }
     @Test void legalSpecialUndoStmInformationAndSearchMatchCompiledC02()throws Exception {
         var source=BrnTupleCompiledTest.randomTrainer().snapshot();var model=compile(source);
@@ -104,7 +104,7 @@ class BrnPair2EquivalenceTest {
         var model=compile(BrnTupleCompiledTest.randomTrainer().snapshot());byte[] bytes=modelBytes(model);
         assertEquals(BrnPair2Codec.MODEL_BYTES,bytes.length);
         assertArrayEquals(bytes,modelBytes(BrnPair2Codec.readModel(new ByteArrayInputStream(bytes))));
-        assertThrows(IOException.class,()->BrnPair2Codec.readTraining(new ByteArrayInputStream(bytes)));
+        assertThrows(IOException.class,()->BrnPair2TrainingCodec.readTraining(new ByteArrayInputStream(bytes)));
         for(var family:TrainingArchitecture.values())if(family!=TrainingArchitecture.BRN_PAIR2)
             assertThrows(IOException.class,()->NetworkModel.read(family,new ByteArrayInputStream(bytes)),family.name());
         var original=new ByteArrayOutputStream();BrnTupleCompiledTest.randomTrainer().snapshot().write(original);
@@ -117,6 +117,6 @@ class BrnPair2EquivalenceTest {
         }
         bytes[100]^=1;assertThrows(IOException.class,()->BrnPair2Codec.readModel(new ByteArrayInputStream(bytes)));
         assertThrows(IOException.class,()->BrnPair2Codec.readModel(new ByteArrayInputStream(new byte[100])));
-        assertThrows(IllegalArgumentException.class,()->new BrnPair2Trainer.Model(3,new float[1]));
+        assertThrows(IllegalArgumentException.class,()->new BrnPair2Weights(3,new float[1]));
     }
 }

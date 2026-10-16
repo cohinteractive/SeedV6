@@ -27,7 +27,7 @@ class Brn3SearchCalibrationTest {
         assertThrows(IllegalArgumentException.class,()->SearchEvaluation.brn3Research(model,-.1));
     }
     @Test void freshMaterialAndLegacyPayloadInferenceRemainReproducible() throws Exception {
-        var trainer=new Brn3Trainer(71);var restored=Brn3Codec.decodeTraining(Brn3Codec.encodeTraining(trainer));
+        var trainer=new Brn3Trainer(71);var restored=Brn3TrainingCodec.decodeTraining(Brn3TrainingCodec.encodeTraining(trainer));
         var board=Board.fromFen("4k3/8/8/8/8/8/PNBRQ3/4K3 w - - 0 1");
         var model=restored.snapshot();
         assertEquals(2150,SearchEvaluation.brn3(model).newState(4).evaluate(board,0));

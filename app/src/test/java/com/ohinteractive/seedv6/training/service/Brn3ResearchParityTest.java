@@ -20,8 +20,8 @@ class Brn3ResearchParityTest {
             research.trainBatch(examples,order,0,3,.003,true,0);production.trainBatch(boards,targets,3);
         }
         compare(research,production);
-        var bytes=Brn3Codec.encodeTraining(production);assertEquals(Brn3Codec.TRAINING_BYTES,bytes.length);
-        var restored=Brn3Codec.decodeTraining(bytes);assertEquals(production.config(),restored.config());
+        var bytes=Brn3TrainingCodec.encodeTraining(production);assertEquals(Brn3Codec.TRAINING_BYTES,bytes.length);
+        var restored=Brn3TrainingCodec.decodeTraining(bytes);assertEquals(production.config(),restored.config());
         research.trainBatch(examples,order,0,3,.003,true,0);restored.trainBatch(boards,targets,3);compare(research,restored);
         var oracle=research.foldedInference();var workspace=restored.snapshot().newWorkspace();var rng=new Random(1487);
         var board=Board.startingPosition();
@@ -41,7 +41,7 @@ class Brn3ResearchParityTest {
             var moves=new long[512];int count=BrnResearchDiagnostics.legal(board,moves);
             board=count==0||ply%150==149?Board.startingPosition():BrnResearchDiagnostics.child(board,moves[rng.nextInt(count)]);
         }
-        bytes[bytes.length/2]^=1;assertThrows(java.io.IOException.class,()->Brn3Codec.decodeTraining(bytes));
+        bytes[bytes.length/2]^=1;assertThrows(java.io.IOException.class,()->Brn3TrainingCodec.decodeTraining(bytes));
     }
     static void compare(AbsoluteRelationCandidate expected,Brn3Trainer actual) {
         assertEquals(expected.weights.length,Brn3Layout.TRAINING_PARAMETERS);assertEquals(expected.updates,actual.step());

@@ -40,10 +40,10 @@ class Brn2SupervisionAblationTest {
         double[] values = samples.stream().mapToDouble(s -> Brn2SupervisionAblation.teacherValue(teacher, s)).toArray();
         for (double weight : new double[]{0, .25, .5, .75, 1}) {
             var arm = Brn2SupervisionAblation.Arm.weighted(weight);
-            byte[] latest = Brn2Codec.encodeTraining(new Brn2Trainer(.001));
-            var oracle = Brn2Codec.decodeTraining(latest);
+            byte[] latest = Brn2TrainingCodec.encodeTraining(new Brn2Trainer(.001));
+            var oracle = Brn2TrainingCodec.decodeTraining(latest);
             for (long seed : new long[]{123, -234}) {
-                var actual = Brn2Codec.decodeTraining(latest);
+                var actual = Brn2TrainingCodec.decodeTraining(latest);
                 int[] order = {0, 1, 2, 3, 4, 5};
                 var random = new SplittableRandom(seed);
                 for (int i = order.length - 1; i > 0; i--) {
@@ -58,8 +58,8 @@ class Brn2SupervisionAblationTest {
                 java.util.function.ToDoubleFunction<Sample> target = s -> arm.target(s.target(), Brn2SupervisionAblation.teacherValue(teacher, s));
                 Brn2SelfPlayTraining.trainSamples(actual, samples, new SelfPlayTraining.Config(1, 1, true, seed),
                         new SelfPlayControl(), p -> {}, target).orElseThrow();
-                latest = Brn2Codec.encodeTraining(actual);
-                assertArrayEquals(Brn2Codec.encodeTraining(oracle), latest);
+                latest = Brn2TrainingCodec.encodeTraining(actual);
+                assertArrayEquals(Brn2TrainingCodec.encodeTraining(oracle), latest);
                 var comparison = HeldOutLoss.compare(b -> .5, b -> 0, samples, target);
                 double candidate = 0, incumbent = 0;
                 for (double value : values) {
@@ -71,7 +71,7 @@ class Brn2SupervisionAblationTest {
                 assertEquals(candidate < incumbent ? PromotionPolicy.Decision.PROMOTE : PromotionPolicy.Decision.RETAIN_INCUMBENT,
                         comparison.decision());
             }
-            assertEquals(12, Brn2Codec.decodeTraining(latest).optimizer().step());
+            assertEquals(12, Brn2TrainingCodec.decodeTraining(latest).optimizer().step());
         }
     }
     @Test void shuffledDefaultAndExplicitWdlMatchIndependentOnlineOrderAndOptimizerBytes() throws Exception {
@@ -88,8 +88,8 @@ class Brn2SupervisionAblationTest {
         var a = Brn2SelfPlayTraining.trainSamples(normal, samples, config, new SelfPlayControl(), p -> {}).orElseThrow();
         var b = Brn2SelfPlayTraining.trainSamples(explicit, samples, config, new SelfPlayControl(), p -> {}, Sample::target).orElseThrow();
         assertEquals(a, b);
-        assertArrayEquals(Brn2Codec.encodeTraining(expected), Brn2Codec.encodeTraining(normal));
-        assertArrayEquals(Brn2Codec.encodeTraining(normal), Brn2Codec.encodeTraining(explicit));
+        assertArrayEquals(Brn2TrainingCodec.encodeTraining(expected), Brn2TrainingCodec.encodeTraining(normal));
+        assertArrayEquals(Brn2TrainingCodec.encodeTraining(normal), Brn2TrainingCodec.encodeTraining(explicit));
     }
     @Test void denseTargetsUseExistingGradientAndAreFrozenBeforeUpdates() throws Exception {
         var samples = samples(); var expected = new Brn2Trainer(.001); var actual = new Brn2Trainer(.001);
@@ -98,7 +98,7 @@ class Brn2SupervisionAblationTest {
         var stats = Brn2SelfPlayTraining.trainSamples(actual, samples, new SelfPlayTraining.Config(1, 1, false, 0),
                 new SelfPlayControl(), p -> assertEquals(samples.size(), calls[0]), s -> targets[calls[0]++]).orElseThrow();
         assertEquals(6, calls[0]); assertEquals(6, stats.optimizerUpdates());
-        assertArrayEquals(Brn2Codec.encodeTraining(expected), Brn2Codec.encodeTraining(actual));
+        assertArrayEquals(Brn2TrainingCodec.encodeTraining(expected), Brn2TrainingCodec.encodeTraining(actual));
         assertTrue(samples.stream().allMatch(s -> s.target() == 1));
     }
     @Test void invalidTargetsFailBeforeAnyUpdate() {

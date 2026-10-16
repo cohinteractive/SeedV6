@@ -55,7 +55,7 @@ class Brn1TrainerServiceTest {
             var refs = store.recover(); var best = refs.best().orElseThrow(); var latest = refs.latestTraining().orElseThrow();
             assertEquals(0, best.manifest().generation()); assertEquals(0, best.manifest().optimizerStep());
             assertEquals(TrainingArchitecture.BRN1, latest.manifest().architecture());
-            assertArrayEquals(Brn1Codec.encodeTraining(new Brn1Trainer(.001)), state(root, best.manifest().id()));
+            assertArrayEquals(Brn1TrainingCodec.encodeTraining(new Brn1Trainer(.001)), state(root, best.manifest().id()));
             assertEquals(4, store.resumeState(latest.manifest().id()).step());
             assertNotEquals(best.manifest().networkSha256(), latest.manifest().networkSha256());
             assertInstanceOf(NetworkModel.Brn1.class, latest.model());

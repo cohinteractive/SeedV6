@@ -1,5 +1,9 @@
 package com.ohinteractive.seedv6.training.checkpoint;
 
+import com.ohinteractive.seedv6.core.brn1.Brn1TrainingCodec;
+
+import com.ohinteractive.seedv6.core.brn.BrnTrainingCodec;
+
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
@@ -61,7 +65,7 @@ class Brn2CheckpointTest {
     @Test void checksumValidSameWeightsWithDifferentPriorModesCannotMasqueradeAsOneCheckpoint() throws Exception {
         double[] weights = new double[Brn2Model.PARAMETER_COUNT];
         byte[] network = Brn2Codec.encodeModel(new Brn2Model(weights, Brn2MaterialPrior.BASIC_V1));
-        byte[] training = Brn2Codec.encodeTraining(new Brn2Trainer(new Brn2Model(weights),
+        byte[] training = Brn2TrainingCodec.encodeTraining(new Brn2Trainer(new Brn2Model(weights),
                 new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(.001)));
         var manifest = CheckpointManifest.create(new CheckpointManifest.Metadata(0, 1, ""), 0,
                 SmallRecord.hash(network), SmallRecord.hash(training), TrainingArchitecture.BRN2);
@@ -139,15 +143,15 @@ class Brn2CheckpointTest {
         byte[] best = Files.readAllBytes(root.resolve("refs/best"));
         byte[] latest = Files.readAllBytes(root.resolve("refs/latest-training"));
         assertThrows(IOException.class, () -> new CheckpointStore(root, TrainingArchitecture.BRN2));
-        assertThrows(IOException.class, () -> Brn2Codec.decodeTraining(before));
+        assertThrows(IOException.class, () -> Brn2TrainingCodec.decodeTraining(before));
         assertThrows(IOException.class, () -> Brn2Codec.decodeModel(com.ohinteractive.seedv6.core.brn1.Brn1Codec.encodeModel(old.trainer().snapshot())));
         try (var store = new CheckpointStore(root, TrainingArchitecture.BRN1)) {
             assertArrayEquals(before, store.resumeState(id).encode());
             assertThrows(IOException.class, () -> store.publish(new NetworkTrainingState.Brn2(new Brn2Trainer(.001)),
                     new CheckpointManifest.Metadata(1, 1, id)));
         }
-        byte[] newTraining = Brn2Codec.encodeTraining(new Brn2Trainer(.001));
-        assertThrows(IOException.class, () -> com.ohinteractive.seedv6.core.brn1.Brn1Codec.decodeTraining(newTraining));
+        byte[] newTraining = Brn2TrainingCodec.encodeTraining(new Brn2Trainer(.001));
+        assertThrows(IOException.class, () -> com.ohinteractive.seedv6.core.brn1.Brn1TrainingCodec.decodeTraining(newTraining));
         byte[] newModel = Brn2Codec.encodeModel(new Brn2Model());
         assertThrows(IOException.class, () -> com.ohinteractive.seedv6.core.brn1.Brn1Codec.decodeModel(newModel));
         assertArrayEquals(before, Files.readAllBytes(root.resolve("checkpoints").resolve(id).resolve("training.state")));
@@ -171,7 +175,7 @@ class Brn2CheckpointTest {
         }
         byte[] bytes = Files.readAllBytes(root.resolve("checkpoints").resolve(id).resolve("training.state"));
         assertThrows(IOException.class, () -> new CheckpointStore(root, TrainingArchitecture.BRN2));
-        assertThrows(IOException.class, () -> Brn2Codec.decodeTraining(bytes));
+        assertThrows(IOException.class, () -> Brn2TrainingCodec.decodeTraining(bytes));
         try (var store = new CheckpointStore(root, TrainingArchitecture.BRN)) {
             assertArrayEquals(bytes, store.resumeState(id).encode());
             assertThrows(IOException.class, () -> store.publish(new NetworkTrainingState.Brn2(new Brn2Trainer(.001)),
@@ -185,7 +189,7 @@ class Brn2CheckpointTest {
         }
         assertThrows(IOException.class, () -> new CheckpointStore(newRoot, TrainingArchitecture.BRN));
         byte[] newBytes = Files.readAllBytes(newRoot.resolve("checkpoints").resolve(newId).resolve("training.state"));
-        assertThrows(IOException.class, () -> com.ohinteractive.seedv6.core.brn.BrnCodec.decodeTraining(newBytes));
+        assertThrows(IOException.class, () -> com.ohinteractive.seedv6.core.brn.BrnTrainingCodec.decodeTraining(newBytes));
         byte[] oldModel = com.ohinteractive.seedv6.core.brn.BrnCodec.encodeModel(old.trainer().snapshot());
         assertThrows(IOException.class, () -> Brn2Codec.decodeModel(oldModel));
         byte[] newModel = Brn2Codec.encodeModel(new Brn2Model());

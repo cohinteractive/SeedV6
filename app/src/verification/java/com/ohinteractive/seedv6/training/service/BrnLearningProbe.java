@@ -214,7 +214,7 @@ public final class BrnLearningProbe {
     }
     static void continuation(Path state,Path dataset,Path out) throws Exception {
         if(Files.exists(out))throw new IOException("New continuation output required");
-        Brn3Trainer trainer;try(var in=new BufferedInputStream(Files.newInputStream(state))){trainer=Brn3Codec.readTraining(in);}
+        Brn3Trainer trainer;try(var in=new BufferedInputStream(Files.newInputStream(state))){trainer=Brn3TrainingCodec.readTraining(in);}
         var data=BrnResearchData.read(dataset,false);int count=131072;
         if(data.training().size()!=2*count)throw new IOException("Expected two disjoint131072-position slices");
         var report=new LinkedHashMap<String,Object>();report.put("initialTrainingSha256",BrnResearchComparison.digest(state));report.put("initialStep",trainer.step());
@@ -235,7 +235,7 @@ public final class BrnLearningProbe {
             }
             Path dest=out.resolve("g"+generation);Files.createDirectories(dest);
             try(var stream=new BufferedOutputStream(Files.newOutputStream(dest.resolve("network.brn3")))){Brn3Codec.writeModel(trainer.snapshot(),stream);}
-            try(var stream=new BufferedOutputStream(Files.newOutputStream(dest.resolve("training.state")))){Brn3Codec.writeTraining(trainer,stream);}
+            try(var stream=new BufferedOutputStream(Files.newOutputStream(dest.resolve("training.state")))){Brn3TrainingCodec.writeTraining(trainer,stream);}
             var model=trainer.snapshot();var full=evaluator(model,1);var quarter=evaluator(model,.25);
             var row=new LinkedHashMap<String,Object>();row.put("generation",generation);row.put("stepBefore",stepBefore);row.put("stepAfter",trainer.step());row.put("exposure",8L*count);
             row.put("seconds",(System.nanoTime()-start)/1e9);row.put("modelSha256",BrnResearchComparison.digest(dest.resolve("network.brn3")));row.put("trainingSha256",BrnResearchComparison.digest(dest.resolve("training.state")));
@@ -243,7 +243,7 @@ public final class BrnLearningProbe {
             row.put("quarterValidation",BrnResearchMain.metrics(data.validation(),e->quarter.applyAsDouble(e.board()),true));events.add(row);
             DataFiles.write(out.resolve("continuation.json"),report);
             // Explicit codec resume between the two prospective endpoints, preserving all moments.
-            try(var in=new BufferedInputStream(Files.newInputStream(dest.resolve("training.state")))){trainer=Brn3Codec.readTraining(in);}
+            try(var in=new BufferedInputStream(Files.newInputStream(dest.resolve("training.state")))){trainer=Brn3TrainingCodec.readTraining(in);}
         }
     }
     static void qsearch(Path modelPath,Path dataPath,Path out,int count,int first,long millis) throws Exception {
@@ -266,7 +266,7 @@ public final class BrnLearningProbe {
     static void mechanism(Path modelPath,Path trainingPath,Path dataPath,Path matchPath,Path out) throws Exception {
         if(Files.exists(out))throw new IOException("Use a new output directory");
         var model=model(modelPath);Brn3Trainer trainer;
-        try(var in=new BufferedInputStream(Files.newInputStream(trainingPath))){trainer=Brn3Codec.readTraining(in);}
+        try(var in=new BufferedInputStream(Files.newInputStream(trainingPath))){trainer=Brn3TrainingCodec.readTraining(in);}
         var evaluate=evaluator(model,1);var data=BrnResearchData.read(dataPath,false);
         var report=new LinkedHashMap<String,Object>();
         report.put("modelSha256",BrnResearchComparison.digest(modelPath));report.put("trainingSha256",BrnResearchComparison.digest(trainingPath));

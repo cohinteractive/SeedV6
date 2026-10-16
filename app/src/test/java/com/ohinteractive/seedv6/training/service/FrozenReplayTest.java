@@ -113,7 +113,7 @@ class FrozenReplayTest {
             assertEquals(TrainingSource.FROZEN_REPLAY,plan.source());assertEquals("",plan.teacherId());assertEquals("",plan.teacherStore());
             assertEquals(BrnSupervision.WDL,row.bootstrap().supervision());assertNull(row.bootstrap().teacherLoss());
             Brn2SelfPlayTraining.trainSamples(oracle,replay.data(g).partition().training(),controls().training(g),new SelfPlayControl(),p->{});
-            assertArrayEquals(Brn2Codec.encodeTraining(oracle),Files.readAllBytes(root.resolve("checkpoints").resolve(row.candidate()).resolve("training.state")));
+            assertArrayEquals(Brn2TrainingCodec.encodeTraining(oracle),Files.readAllBytes(root.resolve("checkpoints").resolve(row.candidate()).resolve("training.state")));
             assertEquals(HeldOutLoss.compare(cp.model(),CheckpointStore.readSnapshot(root,row.incumbent()).model(),data.partition().heldOut()),row.bootstrap().comparison());
         }
         try(var service=TrainerService.frozenReplay(root,replay,2)){assertEquals(0,finish(service).totals().completedGenerations());}

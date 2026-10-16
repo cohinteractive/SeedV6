@@ -72,7 +72,7 @@ public final class Brn2SupervisionAblation {
         require(hash(initialTraining).equals(G0_TRAINING_HASH), "g0 changed during load");
         byte[] initialModel = Brn2Codec.encodeModel(((NetworkModel.Brn2) initial.model()).model());
         require(hash(initialModel).equals(G0_MODEL_HASH), "g0 model serialization differs");
-        var seed = Brn2Codec.decodeTraining(initialTraining);
+        var seed = Brn2TrainingCodec.decodeTraining(initialTraining);
         require(seed.config().learningRate() == .001 && seed.config().beta1() == .9 && seed.config().beta2() == .999
                 && seed.config().epsilon() == 1e-8, "Wrong Adam configuration");
         require(Arrays.equals(initialModel, Brn2Codec.encodeModel(seed.snapshot())), "g0 optimizer/model mismatch");
@@ -165,14 +165,14 @@ public final class Brn2SupervisionAblation {
         for (int generation = 1; generation <= 128; generation++) {
             Batch batch = batches.get(generation - 1);
             // Like the service, restore the last Candidate, including Adam, even after non-promotion.
-            var trainer = Brn2Codec.decodeTraining(latest);
+            var trainer = Brn2TrainingCodec.decodeTraining(latest);
             ToDoubleFunction<Sample> target = arm == Arm.WDL ? Sample::target
                     : sample -> arm.target(sample.target(), teacherValue(nnue, sample));
             var stats = Brn2SelfPlayTraining.trainSamples(trainer, batch.data().partition().training(),
                     trainingConfig(batch.plan().settings()), new SelfPlayControl(), ignored -> {}, target).orElseThrow();
             var candidate = new NetworkModel.Brn2(trainer.snapshot());
             byte[] modelBytes = Brn2Codec.encodeModel(candidate.model());
-            latest = Brn2Codec.encodeTraining(trainer);
+            latest = Brn2TrainingCodec.encodeTraining(trainer);
             String modelHash = hash(modelBytes), trainingHash = hash(latest);
             var comparison = HeldOutLoss.compare(candidate, bestModel, batch.data().partition().heldOut(), target);
             boolean promoted = comparison.decision() == PromotionPolicy.Decision.PROMOTE;
@@ -198,7 +198,7 @@ public final class Brn2SupervisionAblation {
         }
         Path latestPath = Files.createDirectory(armPath.resolve("latest-training-g128"));
         Files.write(latestPath.resolve("training.state"), latest, StandardOpenOption.CREATE_NEW);
-        Files.write(latestPath.resolve("network.brn2"), Brn2Codec.encodeModel(Brn2Codec.decodeTraining(latest).snapshot()), StandardOpenOption.CREATE_NEW);
+        Files.write(latestPath.resolve("network.brn2"), Brn2Codec.encodeModel(Brn2TrainingCodec.decodeTraining(latest).snapshot()), StandardOpenOption.CREATE_NEW);
         Files.writeString(armPath.resolve("best.txt"), "boundary-128/network.brn2\nBest generation " + best.generation() + "\n", StandardOpenOption.CREATE_NEW);
         var losses = pooledLosses(bestModel.model(), arm, batches, nnue);
         write(out, "type", "final", "arm", arm, "teacherWeight", arm.teacherWeight(), "bestGeneration", best.generation(), "promotions", promotions,

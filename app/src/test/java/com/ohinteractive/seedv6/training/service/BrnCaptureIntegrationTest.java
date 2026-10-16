@@ -142,8 +142,8 @@ class BrnCaptureIntegrationTest {
             var ordinary=(NetworkTrainingState.Brn2)store.resumeState(plan.parentId());
             var pinnedTeacher=new NnueEvaluator(plan.loadTeacher(continuous.checkpointRoot()).model().nnue());
             Brn2SelfPlayTraining.trainSamples(ordinary.trainer(),data.partition().training(),continuous.training(1),new SelfPlayControl(),p->{},BrnSupervision.blended(.5).targets(pinnedTeacher));
-            assertFalse(Arrays.equals(Brn2Codec.encodeTraining(ordinary.trainer()),
-                    Brn2Codec.encodeTraining(((NetworkTrainingState.Brn2)restored).trainer())),"Fixture must execute an auxiliary update");
+            assertFalse(Arrays.equals(Brn2TrainingCodec.encodeTraining(ordinary.trainer()),
+                    Brn2TrainingCodec.encodeTraining(((NetworkTrainingState.Brn2)restored).trainer())),"Fixture must execute an auxiliary update");
 
             var evaluator=saved.model().evaluation(NnueScoreMapping.V1);
             long[] board=Board.fromFen(FEN);var state=evaluator.newState(4);state.initialize(board,0);state.evaluate(board,0);

@@ -66,7 +66,7 @@ class BrnCaptureTrainingTest {
         var actual = BrnCaptureTraining.trainSamples(b, samples(), cfg, cb, p -> {}, TrajectorySampler.Sample::target,
                 BrnCaptureConsistency.OFF, board -> { throw new AssertionError("Disabled teacher/capture work"); }, 99);
         assertEquals(expected, actual); assertEquals(ca.trainingCursor(), cb.trainingCursor());
-        assertArrayEquals(Brn2Codec.encodeTraining(a), Brn2Codec.encodeTraining(b));
+        assertArrayEquals(Brn2TrainingCodec.encodeTraining(a), Brn2TrainingCodec.encodeTraining(b));
     }
     @Test void enabledMatchesManualFormulaNoChildBaseTargetAndResumesExactlyWithImmutableTeacher() throws Exception {
         var network = NnueNetwork.initialized(17); byte[] teacherBefore = NnueNetworkCodec.encode(network);
@@ -89,13 +89,13 @@ class BrnCaptureTrainingTest {
                 : manual.trainCapture(data.get(i).board(),targets[i],rows[i].child(),rows[i].targetDelta(),2).base();
         assertEquals(baseSum/data.size(),expected.meanTrainingLoss());
         assertEquals(data.size(),manual.optimizer().step());
-        assertArrayEquals(Brn2Codec.encodeTraining(a),Brn2Codec.encodeTraining(manual));
+        assertArrayEquals(Brn2TrainingCodec.encodeTraining(a),Brn2TrainingCodec.encodeTraining(manual));
         BrnCaptureTraining.trainSamples(b,data,cfg,partialControl,p->{if(p.samplesTrained()==7)partialControl.cancel();},null,lambda,value,101);
-        b=Brn2Codec.decodeTraining(Brn2Codec.encodeTraining(b));
+        b=Brn2TrainingCodec.decodeTraining(Brn2TrainingCodec.encodeTraining(b));
         var resumedControl=new SelfPlayControl();resumedControl.trainingCursor(partialControl.trainingCursor());
         var resumed=BrnCaptureTraining.trainSamples(b,data,cfg,resumedControl,p->{},null,lambda,value,101).orElseThrow();
         assertEquals(expected,resumed); assertEquals(control.trainingCursor(),resumedControl.trainingCursor());
-        assertArrayEquals(Brn2Codec.encodeTraining(a),Brn2Codec.encodeTraining(b));
+        assertArrayEquals(Brn2TrainingCodec.encodeTraining(a),Brn2TrainingCodec.encodeTraining(b));
         assertArrayEquals(teacherBefore,NnueNetworkCodec.encode(network));
     }
 }

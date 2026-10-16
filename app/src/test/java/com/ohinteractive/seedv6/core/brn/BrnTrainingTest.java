@@ -70,32 +70,32 @@ class BrnTrainingTest {
     void invalidSamplesAndLateNumericalFailureAreAtomicAndRecoverable() throws Exception {
         BrnTrainer trainer = new BrnTrainer(0.01);
         trainer.train(PAWNS, 0.5);
-        byte[] baseline = BrnCodec.encodeTraining(trainer);
+        byte[] baseline = BrnTrainingCodec.encodeTraining(trainer);
         for (double bad : new double[] {-1.01, 1.01, Double.NaN, Double.POSITIVE_INFINITY}) {
             assertThrows(IllegalArgumentException.class, () -> trainer.train(PAWNS, bad));
         }
         assertThrows(NullPointerException.class, () -> trainer.train(null, 0));
         assertThrows(IllegalArgumentException.class, () -> trainer.train(new long[4], 0));
-        assertArrayEquals(baseline, BrnCodec.encodeTraining(trainer));
+        assertArrayEquals(baseline, BrnTrainingCodec.encodeTraining(trainer));
 
         double[] weights = new double[PARAMETER_COUNT];
         int relation = relationIndex(6, 8, 6, 9);
         weights[0] = Double.MAX_VALUE;
         weights[relation] = -Double.MAX_VALUE / 2; // Finite z=0, but relation gradient has multiplicity 2.
         BrnTrainer extreme = new BrnTrainer(new BrnModel(weights), new BrnAdamConfig(Double.MAX_VALUE, 0, 0, 1));
-        byte[] extremeBefore = BrnCodec.encodeTraining(extreme);
+        byte[] extremeBefore = BrnTrainingCodec.encodeTraining(extreme);
         assertEquals(0, extreme.predict(PAWNS));
         assertThrows(ArithmeticException.class, () -> extreme.train(PAWNS, -1));
-        assertArrayEquals(extremeBefore, BrnCodec.encodeTraining(extreme));
+        assertArrayEquals(extremeBefore, BrnTrainingCodec.encodeTraining(extreme));
         assertDoesNotThrow(() -> extreme.train(PAWNS, 0)); // Failed scratch does not poison retry.
 
         weights[0] = Double.MAX_VALUE;
         weights[nodeIndex(6, 8)] = Double.MAX_VALUE;
         weights[relation] = 0;
         BrnTrainer overflowing = new BrnTrainer(new BrnModel(weights), new BrnAdamConfig(0.01));
-        byte[] overflowBefore = BrnCodec.encodeTraining(overflowing);
+        byte[] overflowBefore = BrnTrainingCodec.encodeTraining(overflowing);
         assertThrows(ArithmeticException.class, () -> overflowing.train(PAWNS, 0));
-        assertArrayEquals(overflowBefore, BrnCodec.encodeTraining(overflowing));
+        assertArrayEquals(overflowBefore, BrnTrainingCodec.encodeTraining(overflowing));
     }
 
     @Test
@@ -160,7 +160,7 @@ class BrnTrainingTest {
         double after = meanLoss(trainer, boards, targets);
         assertTrue(after < before / 100);
         for (int i = 0; i < boards.length; i++) assertEquals(targets[i], trainer.predict(boards[i]), 0.05);
-        assertArrayEquals(BrnCodec.encodeTraining(trainer), BrnCodec.encodeTraining(identical));
+        assertArrayEquals(BrnTrainingCodec.encodeTraining(trainer), BrnTrainingCodec.encodeTraining(identical));
         double[] ablated = trainer.snapshot().copyWeights();
         Arrays.fill(ablated, RELATION_OFFSET, STATUS_OFFSET, 0);
         BrnTrainer nodeOnly = new BrnTrainer(new BrnModel(ablated), new BrnAdamConfig(0.01));

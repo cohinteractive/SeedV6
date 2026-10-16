@@ -15,9 +15,13 @@ WU1 execution evidence is in [WU1-GRADLE](WU1-GRADLE.md) and
 [wu1-evidence.json](wu1-evidence.json). Project/build-boundary and selected
 regression checks pass. The owner explicitly authorized the WU1 commit with all
 19 inherited GUI/checkpoint failures, reproduced with WU0, deferred for separate
-remediation. The expanded full suite remains failed/incomplete. WU1 awaits GPT/user
-acceptance; this scoped commit decision does not accept any runtime migration or
-waive later GUI/training acceptance requirements.
+remediation. The expanded full suite remains failed/incomplete. WU1 was subsequently accepted by GPT, as confirmed in the owner WU2 launch.
+WU2 execution is recorded in [WU2-CORE](WU2-CORE.md) and
+[wu2-evidence.json](wu2-evidence.json). The owner preserves the deferral of the 19
+failures only while demonstrably inherited and unchanged; later GUI/training
+acceptance requirements remain open. WU2 is subject to GPT/user reconciliation.
+R3 production routing/dependency checks do not claim WU6 completion: disabled
+research seams remain explicitly accounted for in WU2.
 
 | ID / stage | Preserved capability and acceptance condition | Automated validation / existing reference | Later native, client or human acceptance |
 | --- | --- | --- | --- |

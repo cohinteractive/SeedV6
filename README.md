@@ -18,9 +18,10 @@ Start with the [architecture and source boundaries](docs/architecture.md) and
 The [unified architecture migration contract](docs/unified-architecture/CONTRACT.md)
 and [migration state](docs/unified-architecture/STATE.md) govern the staged move to
 one shared engine, training, GUI, UCI and research build. The five target Gradle
-projects now exist alongside temporary `:app`, which still owns all current Java
-implementation and launchers. See the [WU1 build transition](docs/unified-architecture/WU1-GRADLE.md)
-for dependency checks, isolated validation and the later extraction gates.
+projects exist alongside temporary `:app`. `engine-core` now owns the shared runtime
+engine; `app` consumes it and retains GUI, UCI, training and verification entry points.
+See the [WU2 core extraction](docs/unified-architecture/WU2-CORE.md) for ownership,
+compatibility evidence and the remaining migration gates.
 
 ```powershell
 .\gradlew.bat :app:installDist
@@ -42,7 +43,9 @@ Legacy import/validation command-line tools remain available for existing artifa
 Lichess training does not require conversion into a second dataset. BINP preparation
 preserves the original BINP chunks and never modifies the downloaded archives.
 
-- `app/src/main`: current application code and shipped resources.
+- `engine-core/src/main`: shared runtime engine, model inference, opening book and optional native tablebase provider.
+- `engine-core/src/test`: independent runtime unit and inference-boundary tests.
+- `app/src/main`: legacy GUI/UCI, training, checkpoint selection and application resources.
 - `app/src/verification`: active developer tools, comparisons and reference implementations.
 - `app/src/test`: tests, independent oracles and test-only research harnesses.
 - `source`: active Phase 2 Search Contract and Research Frontier.
@@ -52,7 +55,7 @@ preserves the original BINP chunks and never modifies the downloaded archives.
 Routine headless checks exclude the explicitly expensive NNUE suite:
 
 ```powershell
-.\gradlew.bat :app:test -Pheadless
+.\gradlew.bat :engine-core:test :app:test -Pheadless
 ```
 
 Developer tasks such as `:app:exactSearch`, `:app:searchBenchmark`,
@@ -114,4 +117,4 @@ from the runtime pair tables; production/default evaluation remains unchanged.
 
 Windows and macOS packaging remain available through `packageWindows` and
 `packageMac`; see the operating guide. Bundled Fathom sources retain their
-[upstream license](app/src/main/native/syzygy/fathom/LICENSE) and provenance.
+[upstream license](engine-core/src/main/native/syzygy/fathom/LICENSE) and provenance.

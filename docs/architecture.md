@@ -4,15 +4,16 @@
 
 The root Gradle project includes the five target owners `engine-core`,
 `engine-training`, `app-gui`, `app-uci` and `research`, plus temporary `app`.
-The target projects are empty scaffolds; all current implementation remains in
-`app`. Shared Java/JUnit conventions and enforced project dependency/source-root
+`engine-core` owns the runtime implementation and has no project dependency.
+Legacy `app` consumes core through an explicit Gradle dependency and retains GUI,
+UCI, training and research consumers. The other four target projects remain scaffolds. Shared Java/JUnit conventions and enforced project dependency/source-root
 boundaries live in `gradle/`. See [the WU1 transition](unified-architecture/WU1-GRADLE.md)
 for the actual graph and the legacy removal gate. Java 21's application plugin launches
 [`Main`](../app/src/main/java/com/ohinteractive/seedv6/Main.java), selecting desktop
-`SwingLauncher` for `gui` and `UciEngine` otherwise. Application JARs, `installDist`,
-and native Windows/macOS packaging contain only `sourceSets.main.output` and its
-runtime dependencies. Generated version and native Syzygy resources remain main
-resources. The native Fathom license/provenance stays beside the vendored sources.
+`SwingLauncher` for `gui` and `UciEngine` otherwise. The application JAR contains legacy main output; `installDist` and native packaging
+include its runtime dependencies, including `engine-core.jar`. Core owns the opening
+book and optional Syzygy native sources/resources/license. Application version
+resources remain in app. The legacy `:app:compileSyzygy` task delegates to core.
 
 `main` has no dependency on `verification` or `test`. The custom `verification`
 source set depends on main; test depends on both. JavaExec developer tasks use
@@ -22,10 +23,10 @@ was found that selects an additional production search.
 
 ## Production search
 
-[`SearchDriver`](../app/src/main/java/com/ohinteractive/seedv6/search/driver/SearchDriver.java)
+[`SearchDriver`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/SearchDriver.java)
 performs full-window completed iterations over
-[`ExactSearchAdapter`](../app/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java)
-and [`ExactSearch`](../app/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java).
+[`ExactSearchAdapter`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java)
+and [`ExactSearch`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java).
 This is the sole production algorithm lineage, confirmed from construction sites
 and retained by the Phase 2 [contract](../source/CHESS_SEARCH_CONTRACT.md) and
 [frontier](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md).
@@ -38,7 +39,7 @@ score-provenance contracts remain in force. `ExactSearch` retains explicit resea
 factory seams for active tests; they are not application selection switches.
 Its existing name identifies the independent exact baseline and was retained.
 
-[`ParallelSearch`](../app/src/main/java/com/ohinteractive/seedv6/search/exact/ParallelSearch.java)
+[`ParallelSearch`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ParallelSearch.java)
 is the current same-depth cooperative coordinator, using private worker state and
 shared coherent table evidence. Managed Threads=1 uses `ExactSearchAdapter`;
 Threads>1 uses this coordinator. It does not select the legacy root-split search.
@@ -98,7 +99,7 @@ promotion, score calibration, evaluator or training mathematics is changed.
 
 ## Transposition table
 
-[`TTable`](../app/src/main/java/com/ohinteractive/seedv6/search/tt/TTable.java) is the
+[`TTable`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/tt/TTable.java) is the
 accepted and used production table. Adapters own it, requests share one generation
 across iterations, and `ParallelSearch` shares it within its drained worker cohort.
 `TranspositionScores` remains production score-domain support. The older
@@ -155,7 +156,8 @@ reports and their CSV/GZIP/ZIP evidence; `docs/research/brn/` holds BRN reports.
 remains at its established root paths. Root README is the repository entry point.
 
 Use `:app:verificationClasses` before direct Java developer commands. Their
-classpath needs main and verification classes/resources plus application dependencies.
+classpath needs app main and verification classes/resources plus runtime dependencies,
+including the core JAR. Gradle JavaExec tasks already provide that classpath.
 Existing JavaExec task names retain their arguments. The former shipped diagnostic
 commands now run through `:app:developerTools -PtoolArgs="brn-diagnostic ..."` or
 `-PtoolArgs="frozen-wdl ..."`; normal GUI/UCI packaging remains independent.
@@ -164,3 +166,16 @@ The search contract/frontier identify manually refreshed ChatGPT Project Source
 mirrors. Their active repository master locations are `source/`; the owner must
 refresh both mirrors and confirm synchronization before the next GPT-led Phase 2
 research planning session. Initialization does not modify the external mirrors.
+
+## WU2 inference boundary
+
+Core owns the immutable Pair-2 geometry and `BrnPair2Weights` compilation input,
+all runtime model codecs and inference kernels. Optimizers, `*TrainingCodec`,
+the unchanged trainer-only BRN-3 vector helper and checkpoint-store resolution remain in app.
+Shared binary header helpers stay package-local in the runtime codecs; Java package
+names are preserved across modules. No model/optimizer schema changes or model
+registry are introduced. See [WU2](unified-architecture/WU2-CORE.md).
+
+Disabled research seams inside ExactSearch/ParallelSearch and explicit UCI research
+properties remain pending WU6 isolation. SR-021 is not enabled by production routing;
+this extraction does not claim complete experimental-code separation.

@@ -59,20 +59,20 @@ class Brn1CodecTest {
         Brn1Trainer uninterrupted = new Brn1Trainer(new Brn1Model(initialWeights()), hp);
         for (int step = 0; step < 47; step++) uninterrupted.train(BOARDS[step % BOARDS.length], target(step));
         Path file = temporary.resolve("training.brn");
-        try (var output = Files.newOutputStream(file)) { Brn1Codec.writeTraining(uninterrupted, output); }
+        try (var output = Files.newOutputStream(file)) { Brn1TrainingCodec.writeTraining(uninterrupted, output); }
         assertEquals(20141664, Files.size(file));
         assertEquals(Brn1Codec.TRAINING_BYTES, Files.size(file));
         Brn1Trainer restored;
-        try (var input = Files.newInputStream(file)) { restored = Brn1Codec.readTraining(input); }
+        try (var input = Files.newInputStream(file)) { restored = Brn1TrainingCodec.readTraining(input); }
         assertEquals(hp, restored.config());
         assertEquals(47, restored.optimizer().step());
-        assertArrayEquals(Brn1Codec.encodeTraining(uninterrupted), Brn1Codec.encodeTraining(restored));
+        assertArrayEquals(Brn1TrainingCodec.encodeTraining(uninterrupted), Brn1TrainingCodec.encodeTraining(restored));
         for (int step = 47; step < 57; step++) {
             long[] board = BOARDS[step % BOARDS.length];
             assertEquals(uninterrupted.predict(board), restored.predict(board));
             assertEquals(uninterrupted.train(board, target(step)), restored.train(board, target(step)));
             // Entire payload comparison includes every weight, both moments, config and global clock.
-            assertArrayEquals(Brn1Codec.encodeTraining(uninterrupted), Brn1Codec.encodeTraining(restored));
+            assertArrayEquals(Brn1TrainingCodec.encodeTraining(uninterrupted), Brn1TrainingCodec.encodeTraining(restored));
         }
         for (long[] board : BOARDS) {
             Brn1Model restoredInference = Brn1Codec.decodeModel(Brn1Codec.encodeModel(restored.snapshot()));
@@ -83,13 +83,13 @@ class Brn1CodecTest {
     @Test
     void freshStateIsExactlyResumableAndModelPayloadCannotMasqueradeAsTraining() throws Exception {
         Brn1Trainer original = new Brn1Trainer(0.01);
-        Brn1Trainer restored = Brn1Codec.decodeTraining(Brn1Codec.encodeTraining(original));
+        Brn1Trainer restored = Brn1TrainingCodec.decodeTraining(Brn1TrainingCodec.encodeTraining(original));
         assertEquals(0, restored.optimizer().step());
         original.train(BOARDS[0], -0.5);
         restored.train(BOARDS[0], -0.5);
-        assertArrayEquals(Brn1Codec.encodeTraining(original), Brn1Codec.encodeTraining(restored));
-        assertThrows(IOException.class, () -> Brn1Codec.decodeTraining(Brn1Codec.encodeModel(original.snapshot())));
-        assertThrows(IOException.class, () -> Brn1Codec.decodeModel(Brn1Codec.encodeTraining(original)));
+        assertArrayEquals(Brn1TrainingCodec.encodeTraining(original), Brn1TrainingCodec.encodeTraining(restored));
+        assertThrows(IOException.class, () -> Brn1TrainingCodec.decodeTraining(Brn1Codec.encodeModel(original.snapshot())));
+        assertThrows(IOException.class, () -> Brn1Codec.decodeModel(Brn1TrainingCodec.encodeTraining(original)));
         byte[] nnueHeader = ByteBuffer.allocate(20).putLong(0x53364e4e55453031L).array();
         assertThrows(IOException.class, () -> Brn1Codec.decodeModel(nnueHeader));
     }
@@ -97,7 +97,7 @@ class Brn1CodecTest {
     @Test
     void corruptTruncatedTrailingAndUnsupportedFramesAreRejected() throws Exception {
         byte[] model = Brn1Codec.encodeModel(new Brn1Model(initialWeights()));
-        byte[] training = Brn1Codec.encodeTraining(new Brn1Trainer(0.01));
+        byte[] training = Brn1TrainingCodec.encodeTraining(new Brn1Trainer(0.01));
         for (byte[] bytes : new byte[][] {model, training}) {
             for (int length : new int[] {0, 7, 19, 20, bytes.length / 2, bytes.length - 1}) {
                 assertRejected(Arrays.copyOf(bytes, length), bytes == training);
@@ -128,7 +128,7 @@ class Brn1CodecTest {
         }
         Brn1Trainer trainer = new Brn1Trainer(0.01);
         trainer.train(BOARDS[1], 0.5);
-        byte[] training = Brn1Codec.encodeTraining(trainer);
+        byte[] training = Brn1TrainingCodec.encodeTraining(trainer);
         int weightsOffset = Brn1Codec.HEADER_BYTES + 40;
         int firstOffset = weightsOffset + 8 * PARAMETER_COUNT;
         int secondOffset = firstOffset + 8 * PARAMETER_COUNT;
@@ -167,10 +167,10 @@ class Brn1CodecTest {
         Output modelOutput = new Output(), trainingOutput = new Output();
         Brn1Trainer trainer = new Brn1Trainer(0.01);
         Brn1Codec.writeModel(trainer.snapshot(), modelOutput);
-        Brn1Codec.writeTraining(trainer, trainingOutput);
+        Brn1TrainingCodec.writeTraining(trainer, trainingOutput);
         Input modelInput = new Input(modelOutput.toByteArray()), trainingInput = new Input(trainingOutput.toByteArray());
         Brn1Codec.readModel(modelInput);
-        Brn1Codec.readTraining(trainingInput);
+        Brn1TrainingCodec.readTraining(trainingInput);
         assertFalse(modelOutput.closed || trainingOutput.closed || modelInput.closed || trainingInput.closed);
     }
 
@@ -181,7 +181,7 @@ class Brn1CodecTest {
     }
     private static double target(int step) { return (step % 9 - 4) / 5.0; }
     private static void assertRejected(byte[] bytes, boolean training) {
-        if (training) assertThrows(IOException.class, () -> Brn1Codec.decodeTraining(bytes));
+        if (training) assertThrows(IOException.class, () -> Brn1TrainingCodec.decodeTraining(bytes));
         else assertThrows(IOException.class, () -> Brn1Codec.decodeModel(bytes));
     }
     private static void checksum(byte[] bytes) {

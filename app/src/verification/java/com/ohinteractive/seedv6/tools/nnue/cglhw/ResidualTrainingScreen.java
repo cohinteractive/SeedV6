@@ -149,7 +149,7 @@ public final class ResidualTrainingScreen {
                 }
                 Path n=root.resolve(seed+".nnue-residual-state"),b=root.resolve(seed+".brn3-state");
                 try(var out=new BufferedOutputStream(Files.newOutputStream(n,StandardOpenOption.CREATE_NEW))){nnue.write(out);}
-                try(var out=new BufferedOutputStream(Files.newOutputStream(b,StandardOpenOption.CREATE_NEW))){Brn3Codec.writeTraining(brn,out);}
+                try(var out=new BufferedOutputStream(Files.newOutputStream(b,StandardOpenOption.CREATE_NEW))){Brn3TrainingCodec.writeTraining(brn,out);}
                 write(log,Map.of("type","checkpoint","seed",seed,"nnueState",n.toString(),"brn3State",b.toString(),"nnueSha256",hash(n),"brn3Sha256",hash(b)));
                 var candidate=new HalfKpResidualModel(nnue.snapshot());var reference=brn.snapshot();
                 var openings=new ValidationConfig(pairs,OPENING_SEED,6,10,depth,1,NnueScoreMapping.V1,cap);var start=Board.startingPosition();

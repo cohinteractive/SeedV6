@@ -30,7 +30,7 @@ class Brn1TrainingTargetsTest {
         var stats = Brn1SelfPlayTraining.trainSamples(actual, samples, new SelfPlayTraining.Config(1, 1, false, 0),
                 new SelfPlayControl(), ignored -> {}).orElseThrow();
         assertEquals(4, stats.samplesTrained()); assertEquals(4, stats.optimizerUpdates());
-        assertArrayEquals(Brn1Codec.encodeTraining(expected), Brn1Codec.encodeTraining(actual));
+        assertArrayEquals(Brn1TrainingCodec.encodeTraining(expected), Brn1TrainingCodec.encodeTraining(actual));
         assertNotEquals(0, actual.snapshot().weight(Brn1Model.OUTPUT_BIAS));
     }
 
@@ -40,11 +40,11 @@ class Brn1TrainingTargetsTest {
         var result = Brn1SelfPlayTraining.trainSamples(trainer, samples, new SelfPlayTraining.Config(1, 1, false, 0),
                 control, progress -> control.cancel()).orElseThrow();
         assertTrue(result.cancelled()); assertEquals(1, trainer.optimizer().step());
-        var restored = Brn1Codec.decodeTraining(Brn1Codec.encodeTraining(trainer));
+        var restored = Brn1TrainingCodec.decodeTraining(Brn1TrainingCodec.encodeTraining(trainer));
         for (var sample : samples.subList(1, samples.size())) {
             trainer.train(sample.board(), sample.target()); restored.train(sample.board(), sample.target());
         }
-        assertArrayEquals(Brn1Codec.encodeTraining(trainer), Brn1Codec.encodeTraining(restored));
+        assertArrayEquals(Brn1TrainingCodec.encodeTraining(trainer), Brn1TrainingCodec.encodeTraining(restored));
         assertTrue(Brn1SelfPlayTraining.trainSamples(restored, List.of(), new SelfPlayTraining.Config(1, 1, true, 2),
                 new SelfPlayControl(), ignored -> {}).isEmpty());
     }

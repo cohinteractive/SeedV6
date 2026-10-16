@@ -75,11 +75,11 @@ class Brn2CaptureGradientTest {
             double target = (i % 3 - 1) * .5;
             assertEquals(ordinary.train(parent, target), integrated.trainCapture(parent, target, null, Double.NaN, 0).base());
         }
-        assertArrayEquals(Brn2Codec.encodeTraining(ordinary), Brn2Codec.encodeTraining(integrated));
+        assertArrayEquals(Brn2TrainingCodec.encodeTraining(ordinary), Brn2TrainingCodec.encodeTraining(integrated));
     }
     @Test void nonfiniteCandidateDoesNotPartiallyPublishWeightsOrOptimizer() throws Exception {
-        var trainer = new Brn2Trainer(.001); byte[] before = Brn2Codec.encodeTraining(trainer);
+        var trainer = new Brn2Trainer(.001); byte[] before = Brn2TrainingCodec.encodeTraining(trainer);
         assertThrows(ArithmeticException.class, () -> trainer.trainCapture(parent, .2, child(), 1, Double.MAX_VALUE));
-        assertArrayEquals(before, Brn2Codec.encodeTraining(trainer));
+        assertArrayEquals(before, Brn2TrainingCodec.encodeTraining(trainer));
     }
 }

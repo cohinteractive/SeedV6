@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Timeout;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model;
 import com.ohinteractive.seedv6.core.brnpair2.BrnPair2Trainer;
+import com.ohinteractive.seedv6.core.brnpair2.BrnPair2Weights;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.common.*;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
@@ -84,7 +85,7 @@ class ProductionQuiescenceTest {
         var weights=new float[new BrnPair2Trainer(.01).snapshot().parameters()];
         var random=new java.util.Random(5005);
         for(int i=0;i<weights.length-1;i++)weights[i]=(random.nextFloat()-.5f)*.25f;
-        var evaluation=SearchEvaluation.brnPair2(new BrnPair2Model(new BrnPair2Trainer.Model(2,weights)));
+        var evaluation=SearchEvaluation.brnPair2(new BrnPair2Model(new BrnPair2Weights(2,weights)));
         var board=Board.startingPosition();
         var diagnostics=new IterationReuse.Diagnostics();SearchDriverOutcome expected;
         try(var confirmed=new SearchDriver(ExactSearchAdapter.iterationReuseResearch(evaluation,IterationReuse.EFFORT,diagnostics));

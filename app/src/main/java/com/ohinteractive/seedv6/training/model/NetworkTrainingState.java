@@ -63,7 +63,7 @@ public sealed interface NetworkTrainingState {
             var c = trainer.config();
             return new AdamHyperparameters(c.learningRate(), c.beta1(), c.beta2(), c.epsilon());
         }
-        public void write(OutputStream out) throws IOException { BrnCodec.writeTraining(trainer, out); }
+        public void write(OutputStream out) throws IOException { BrnTrainingCodec.writeTraining(trainer, out); }
     }
 
     record Brn1(Brn1Trainer trainer) implements NetworkTrainingState {
@@ -74,7 +74,7 @@ public sealed interface NetworkTrainingState {
             var c = trainer.config();
             return new AdamHyperparameters(c.learningRate(), c.beta1(), c.beta2(), c.epsilon());
         }
-        public void write(OutputStream out) throws IOException { Brn1Codec.writeTraining(trainer, out); }
+        public void write(OutputStream out) throws IOException { Brn1TrainingCodec.writeTraining(trainer, out); }
     }
 
     record Brn2(Brn2Trainer trainer) implements NetworkTrainingState {
@@ -85,7 +85,7 @@ public sealed interface NetworkTrainingState {
             var c = trainer.config();
             return new AdamHyperparameters(c.learningRate(), c.beta1(), c.beta2(), c.epsilon());
         }
-        public void write(OutputStream out) throws IOException { Brn2Codec.writeTraining(trainer, out); }
+        public void write(OutputStream out) throws IOException { Brn2TrainingCodec.writeTraining(trainer, out); }
     }
 
     record Brn3(Brn3Trainer trainer) implements NetworkTrainingState {
@@ -93,14 +93,14 @@ public sealed interface NetworkTrainingState {
         public NetworkModel snapshot(){return new NetworkModel.Brn3(trainer.snapshot());}
         public long step(){return trainer.step();}
         public AdamHyperparameters hyperparameters(){var c=trainer.config();return new AdamHyperparameters(c.learningRate(),c.beta1(),c.beta2(),c.epsilon());}
-        public void write(OutputStream out)throws IOException{Brn3Codec.writeTraining(trainer,out);}
+        public void write(OutputStream out)throws IOException{Brn3TrainingCodec.writeTraining(trainer,out);}
     }
     record BrnPair2(BrnPair2Trainer trainer) implements NetworkTrainingState {
         public BrnPair2 { Objects.requireNonNull(trainer); }
         public NetworkModel snapshot(){return new NetworkModel.BrnPair2(new BrnPair2Model(trainer.snapshot()));}
         public long step(){return trainer.step();}
         public AdamHyperparameters hyperparameters(){return new AdamHyperparameters(trainer.rate(),.9,.999,1e-8);}
-        public void write(OutputStream out)throws IOException{BrnPair2Codec.writeTraining(trainer,out);}
+        public void write(OutputStream out)throws IOException{BrnPair2TrainingCodec.writeTraining(trainer,out);}
     }
     default TrainingArchitecture architecture() {
         return switch (this) {
@@ -117,10 +117,10 @@ public sealed interface NetworkTrainingState {
         return switch (this) {
             case Nnue n -> TrainingStateCodec.encode(n.trainer());
             case NnueMaterial n -> TrainingStateCodec.encodeMaterial(n.trainer());
-            case Brn b -> BrnCodec.encodeTraining(b.trainer());
-            case Brn1 b -> Brn1Codec.encodeTraining(b.trainer());
-            case Brn2 b -> Brn2Codec.encodeTraining(b.trainer());
-            case Brn3 b -> Brn3Codec.encodeTraining(b.trainer());
+            case Brn b -> BrnTrainingCodec.encodeTraining(b.trainer());
+            case Brn1 b -> Brn1TrainingCodec.encodeTraining(b.trainer());
+            case Brn2 b -> Brn2TrainingCodec.encodeTraining(b.trainer());
+            case Brn3 b -> Brn3TrainingCodec.encodeTraining(b.trainer());
             case BrnPair2 b -> { var out=new ByteArrayOutputStream(); b.write(out); yield out.toByteArray(); }
         };
     }
@@ -128,11 +128,11 @@ public sealed interface NetworkTrainingState {
         return switch (architecture) {
             case NNUE -> new Nnue(TrainingStateCodec.read(input));
             case NNUE_MATERIAL -> new NnueMaterial(TrainingStateCodec.readMaterial(input));
-            case BRN -> new Brn(BrnCodec.readTraining(input));
-            case BRN1 -> new Brn1(Brn1Codec.readTraining(input));
-            case BRN2 -> new Brn2(Brn2Codec.readTraining(input));
-            case BRN3 -> new Brn3(Brn3Codec.readTraining(input));
-            case BRN_PAIR2 -> new BrnPair2(BrnPair2Codec.readTraining(input));
+            case BRN -> new Brn(BrnTrainingCodec.readTraining(input));
+            case BRN1 -> new Brn1(Brn1TrainingCodec.readTraining(input));
+            case BRN2 -> new Brn2(Brn2TrainingCodec.readTraining(input));
+            case BRN3 -> new Brn3(Brn3TrainingCodec.readTraining(input));
+            case BRN_PAIR2 -> new BrnPair2(BrnPair2TrainingCodec.readTraining(input));
         };
     }
 }

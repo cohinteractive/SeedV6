@@ -15,14 +15,14 @@ public final class BrnPair2Model {
     public double weight(int index){return weights[index];}
     public double bias(){return bias;}
 
-    public BrnPair2Model(BrnPair2Trainer.Model source) {
+    public BrnPair2Model(BrnPair2Weights source) {
         this(Objects.requireNonNull(source),source.weights[source.weights.length-1]);
     }
-    BrnPair2Model(BrnPair2Trainer.Model source,double bias) {
+    BrnPair2Model(BrnPair2Weights source,double bias) {
         if(source!=null&&source.order!=2)throw new IllegalArgumentException("C02 requires an order2 model");
         var keys=new TreeSet<Integer>();
-        for(int perspective=0;perspective<2;perspective++)for(int[] cells:BrnPair2Trainer.CELLS) {
-            int a=cells[0]^(perspective*56),b=cells[1]^(perspective*56);
+        for(int perspective=0;perspective<2;perspective++)for(int t=0;t<BrnPair2Geometry.TEMPLATES;t++) {
+            int a=BrnPair2Geometry.cell(t,0)^(perspective*56),b=BrnPair2Geometry.cell(t,1)^(perspective*56);
             keys.add(Math.min(a,b)*64+Math.max(a,b));
         }
         firstSquare=new int[keys.size()];secondSquare=new int[keys.size()];
@@ -32,10 +32,10 @@ public final class BrnPair2Model {
         weights=new double[keys.size()*169*2];this.bias=bias;
         for(int stm=0;source!=null&&stm<2;stm++)for(int role=0;role<2;role++) {
             int perspective=stm^role;
-            for(int t=0;t<BrnPair2Trainer.TEMPLATES;t++) {
-                int a=BrnPair2Trainer.CELLS[t][0]^(perspective*56),b=BrnPair2Trainer.CELLS[t][1]^(perspective*56);
+            for(int t=0;t<BrnPair2Geometry.TEMPLATES;t++) {
+                int a=BrnPair2Geometry.cell(t,0)^(perspective*56),b=BrnPair2Geometry.cell(t,1)^(perspective*56);
                 int pair=indices.get(Math.min(a,b)*64+Math.max(a,b));
-                int sourceBase=(role*BrnPair2Trainer.TEMPLATES+t)*169;
+                int sourceBase=(role*BrnPair2Geometry.TEMPLATES+t)*169;
                 for(int low=0;low<13;low++)for(int high=0;high<13;high++) {
                     int x=a<b?low:high,y=a<b?high:low;
                     if(perspective==1){x=oppositeCategory(x);y=oppositeCategory(y);}
@@ -75,7 +75,7 @@ public final class BrnPair2Model {
             if((code&7)==0)code=0;
             if(old!=0)whiteMaterial-=(old&8)==0?BrnPair2Features.pieceMaterial(old):-BrnPair2Features.pieceMaterial(old);
             if(code!=0)whiteMaterial+=(code&8)==0?BrnPair2Features.pieceMaterial(code):-BrnPair2Features.pieceMaterial(code);
-            oldCodes[square]=code;codes[square]=BrnPair2Trainer.category(code,0);
+            oldCodes[square]=code;codes[square]=BrnPair2Geometry.category(code,0);
         }
         private int address(int pair){return (pair*169+codes[firstSquare[pair]]+13*codes[secondSquare[pair]])*2;}
         public double evaluatePawns(long[] board) {
@@ -100,7 +100,7 @@ public final class BrnPair2Model {
                 }
             }
             initialized=true;System.arraycopy(board,0,previous,0,4);int stm=Board.player((int)board[4]);
-            double value=(stm==0?whiteMaterial:-whiteMaterial)+bias+BrnPair2Trainer.NORM*(stm==0?whiteSum:blackSum);
+            double value=(stm==0?whiteMaterial:-whiteMaterial)+bias+BrnPair2Geometry.NORM*(stm==0?whiteSum:blackSum);
             if(!Double.isFinite(value))throw new ArithmeticException("Nonfinite compiled tuple inference");
             return value;
         }

@@ -200,16 +200,16 @@ class Brn2CoreTest {
     }
 
     @Test void invalidInputsAndNonfiniteCandidatesNeverPartiallyPublish() throws Exception {
-        var t = new Brn2Trainer(.001); byte[] before = Brn2Codec.encodeTraining(t);
+        var t = new Brn2Trainer(.001); byte[] before = Brn2TrainingCodec.encodeTraining(t);
         for (double bad : new double[] {Double.NaN, Double.POSITIVE_INFINITY, -1.1, 1.1})
             assertThrows(IllegalArgumentException.class, () -> t.train(Board.startingPosition(), bad));
         assertThrows(IllegalArgumentException.class, () -> t.train(new long[4], 1));
-        assertArrayEquals(before, Brn2Codec.encodeTraining(t));
+        assertArrayEquals(before, Brn2TrainingCodec.encodeTraining(t));
         double[] w = new double[PARAMETER_COUNT]; w[BOARD_BIAS_OFFSET] = 1e200;
         var overflow = new Brn2Trainer(new Brn2Model(w), new BrnAdamConfig(.001));
-        byte[] prior = Brn2Codec.encodeTraining(overflow);
+        byte[] prior = Brn2TrainingCodec.encodeTraining(overflow);
         assertThrows(ArithmeticException.class, () -> overflow.train(new long[5], 1));
-        assertArrayEquals(prior, Brn2Codec.encodeTraining(overflow));
+        assertArrayEquals(prior, Brn2TrainingCodec.encodeTraining(overflow));
     }
 
     @Test void learnsSyntheticConvergingRelationsAcrossTranslatedLocalMotifs() {

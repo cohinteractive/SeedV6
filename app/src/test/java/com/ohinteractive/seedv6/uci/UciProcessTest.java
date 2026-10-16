@@ -423,19 +423,15 @@ class UciProcessTest {
                 System.getProperty("java.home"), "bin",
                 System.getProperty("os.name").toLowerCase().contains("win") ? "java.exe" : "java"
             );
-            final Path mainClasses = Path.of(
-                Main.class.getProtectionDomain().getCodeSource().getLocation().toURI()
-            );
             final List<String> command = new ArrayList<>();
             command.add(java.toString());
             // Propagate opt-in headless verification without JAVA_TOOL_OPTIONS startup noise.
             if (Boolean.getBoolean("java.awt.headless")) command.add("-Djava.awt.headless=true");
             if(diagnostics) command.add("-Dseedv6.searchDiagnostics=true");
             command.add("-cp");
-            // Gradle keeps application resources separate from compiled classes.
-            Path resources = Path.of(Main.class.getResource("/com/ohinteractive/seedv6/book/opening-book.txt").toURI());
-            for (int i = 0; i < 5; i++) resources = resources.getParent();
-            command.add(mainClasses + System.getProperty("path.separator") + resources);
+            // test depends on installDist. Launch the complete production classpath,
+            // including core's JAR resources, without verification/test classes.
+            command.add(Path.of("build/install/seedv6/lib").toAbsolutePath() + "/*");
             command.add(Main.class.getName());
             return new EngineSession(new ProcessBuilder(command).start());
         }

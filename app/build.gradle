@@ -14,6 +14,7 @@ apply from: rootProject.file('gradle/application-version.gradle')
 apply from: rootProject.file('gradle/java-conventions.gradle')
 
 dependencies {
+    implementation project(':engine-core')
     testImplementation gradleTestKit()
     // Independent JSON parser for diagnostic report contract tests.
     testImplementation 'com.google.code.gson:gson:2.11.0'
@@ -78,7 +79,12 @@ configurations {
     verificationRuntimeOnly.extendsFrom runtimeOnly
 }
 
-apply from: rootProject.file('gradle/syzygy.gradle')
+// Preserve the legacy task entry point; native engine code and resources have one owner.
+tasks.register('compileSyzygy') {
+    group = 'build'
+    description = 'Builds the shared engine optional Syzygy JNI provider.'
+    dependsOn ':engine-core:compileSyzygy'
+}
 
 tasks.named('startScripts') {
     doLast {

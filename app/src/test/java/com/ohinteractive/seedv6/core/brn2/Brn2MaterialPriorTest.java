@@ -116,16 +116,16 @@ class Brn2MaterialPriorTest {
         var trainer = new Brn2Trainer(.001);
         for (boolean trained : new boolean[]{false, true}) {
             if (trained) { trainer.train(board(CASES[6]), -.4); trainer.train(board(CASES[3]), .3); }
-            byte[] modelBytes = Brn2Codec.encodeModel(trainer.snapshot()), trainingBytes = Brn2Codec.encodeTraining(trainer);
+            byte[] modelBytes = Brn2Codec.encodeModel(trainer.snapshot()), trainingBytes = Brn2TrainingCodec.encodeTraining(trainer);
             assertEquals(2, ByteBuffer.wrap(modelBytes).getInt(8));
             assertEquals(2, ByteBuffer.wrap(trainingBytes).getInt(8));
             assertEquals(Brn2Codec.MODEL_BYTES, modelBytes.length);
             assertEquals(Brn2Codec.TRAINING_BYTES, trainingBytes.length);
-            var model = Brn2Codec.decodeModel(modelBytes); var restored = Brn2Codec.decodeTraining(trainingBytes);
+            var model = Brn2Codec.decodeModel(modelBytes); var restored = Brn2TrainingCodec.decodeTraining(trainingBytes);
             assertEquals(Brn2MaterialPrior.BASIC_V1, model.materialPrior());
             assertEquals(Brn2MaterialPrior.BASIC_V1, restored.materialPrior());
             assertArrayEquals(modelBytes, Brn2Codec.encodeModel(model));
-            assertArrayEquals(trainingBytes, Brn2Codec.encodeTraining(restored));
+            assertArrayEquals(trainingBytes, Brn2TrainingCodec.encodeTraining(restored));
             for (var c : CASES) {
                 assertEquals(trainer.predict(board(c)), restored.predict(board(c)));
                 assertEquals(trainer.predict(board(c)), model.evaluate(board(c), new Brn2Workspace()));
@@ -133,30 +133,30 @@ class Brn2MaterialPriorTest {
                 if (!trained) assertEquals(c.score(), score(model, board(c), true));
             }
             assertEquals(trainer.train(board(CASES[4]), .1), restored.train(board(CASES[4]), .1));
-            assertArrayEquals(Brn2Codec.encodeTraining(trainer), Brn2Codec.encodeTraining(restored));
+            assertArrayEquals(Brn2TrainingCodec.encodeTraining(trainer), Brn2TrainingCodec.encodeTraining(restored));
         }
     }
 
     @Test void formatOneMissingPriorStateKeepsLegacyPredictionsWeightsMomentsAndBytes() throws Exception {
         var trainer = new Brn2Trainer(.001);
         byte[] legacyModel = legacy(Brn2Codec.encodeModel(trainer.snapshot()));
-        byte[] legacyTraining = legacy(Brn2Codec.encodeTraining(trainer));
-        var model = Brn2Codec.decodeModel(legacyModel); var restored = Brn2Codec.decodeTraining(legacyTraining);
+        byte[] legacyTraining = legacy(Brn2TrainingCodec.encodeTraining(trainer));
+        var model = Brn2Codec.decodeModel(legacyModel); var restored = Brn2TrainingCodec.decodeTraining(legacyTraining);
         assertEquals(Brn2MaterialPrior.NONE, model.materialPrior());
         assertEquals(Brn2MaterialPrior.NONE, restored.materialPrior());
         assertArrayEquals(legacyModel, Brn2Codec.encodeModel(model));
-        assertArrayEquals(legacyTraining, Brn2Codec.encodeTraining(restored));
+        assertArrayEquals(legacyTraining, Brn2TrainingCodec.encodeTraining(restored));
         assertEquals(0, score(model, board(CASES[6]), true));
         assertEquals(0, restored.predict(board(CASES[6])));
         // Historical nonzero heads must also remain material-independent and train in the original domain.
         double[] weights = model.copyWeights(); weights[OUTPUT_BIAS] = .2;
         var original = new Brn2Trainer(new Brn2Model(weights), new BrnAdamConfig(.001));
-        restored = Brn2Codec.decodeTraining(Brn2Codec.encodeTraining(original));
+        restored = Brn2TrainingCodec.decodeTraining(Brn2TrainingCodec.encodeTraining(original));
         assertEquals(StrictMath.tanh(.2), restored.predict(board(CASES[6])));
         assertEquals(StrictMath.tanh(.2), restored.predict(board(CASES[0])));
         assertEquals(original.train(board(CASES[6]), -.3), restored.train(board(CASES[6]), -.3));
-        assertArrayEquals(Brn2Codec.encodeTraining(original), Brn2Codec.encodeTraining(restored));
-        assertEquals(1, ByteBuffer.wrap(Brn2Codec.encodeTraining(restored)).getInt(8));
+        assertArrayEquals(Brn2TrainingCodec.encodeTraining(original), Brn2TrainingCodec.encodeTraining(restored));
+        assertEquals(1, ByteBuffer.wrap(Brn2TrainingCodec.encodeTraining(restored)).getInt(8));
     }
 
     private static byte[] legacy(byte[] bytes) {

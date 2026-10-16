@@ -22,7 +22,7 @@ class GradleArchitectureTest(unittest.TestCase):
         self.fixture = Path(tempfile.mkdtemp(prefix=self._testMethodName + '-', dir=OUTPUT))
         for name in ('settings.gradle', 'build.gradle', 'gradle.properties',
                      'gradle/java-conventions.gradle', 'gradle/project-boundaries.gradle',
-                     'gradle/libs.versions.toml', 'gradle/package-mac.gradle',
+                     'gradle/libs.versions.toml', 'gradle/package-mac.gradle', 'gradle/syzygy.gradle',
                      *(module + '/build.gradle' for module in MODULES)):
             target = self.fixture / name
             target.parent.mkdir(parents=True, exist_ok=True)

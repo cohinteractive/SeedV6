@@ -134,16 +134,16 @@ class Brn1CoreTest {
     }
 
     @Test void invalidInputAndOverflowNeverPartiallyPublishAnOptimizerStep() throws Exception {
-        var trainer = new Brn1Trainer(.001); byte[] before = Brn1Codec.encodeTraining(trainer);
+        var trainer = new Brn1Trainer(.001); byte[] before = Brn1TrainingCodec.encodeTraining(trainer);
         for (double bad : new double[] {Double.NaN, 1.1, -1.1})
             assertThrows(IllegalArgumentException.class, () -> trainer.train(Board.startingPosition(), bad));
         assertThrows(IllegalArgumentException.class, () -> trainer.train(new long[4], 1));
-        assertArrayEquals(before, Brn1Codec.encodeTraining(trainer));
+        assertArrayEquals(before, Brn1TrainingCodec.encodeTraining(trainer));
         double[] w = new double[PARAMETER_COUNT]; w[HIDDEN_BIAS_OFFSET] = 1e200;
         var overflow = new Brn1Trainer(new Brn1Model(w), new BrnAdamConfig(.001));
-        byte[] prior = Brn1Codec.encodeTraining(overflow);
+        byte[] prior = Brn1TrainingCodec.encodeTraining(overflow);
         assertThrows(ArithmeticException.class, () -> overflow.train(new long[5], 1));
-        assertArrayEquals(prior, Brn1Codec.encodeTraining(overflow));
+        assertArrayEquals(prior, Brn1TrainingCodec.encodeTraining(overflow));
     }
 
     @Test void learnsBoardStatusXorWhichAdditiveBrn0CannotClassify() {
