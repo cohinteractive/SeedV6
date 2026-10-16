@@ -15,6 +15,11 @@ including HCE vs HCE, without training. See the [Arena guide](docs/learning-aren
 Start with the [architecture and source boundaries](docs/architecture.md) and
 [operating guide](docs/guide.md).
 
+The [unified architecture migration contract](docs/unified-architecture/CONTRACT.md)
+and [migration state](docs/unified-architecture/STATE.md) govern the staged move to
+one shared engine, training, GUI, UCI and research build. The current application
+layout remains unchanged during the foundation work unit.
+
 ```powershell
 .\gradlew.bat :app:installDist
 .\app\build\install\seedv6\bin\seedv6.bat gui

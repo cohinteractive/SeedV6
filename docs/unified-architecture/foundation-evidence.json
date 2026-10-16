@@ -1,0 +1,340 @@
+{
+  "observedUtc": "2026-10-16T00:33:23.757844+00:00",
+  "scope": "WU0 identity, preservation and documentation validation; no application runtime acceptance",
+  "sourceRevision": "24720213e12d99a581a713c74f901f89899bf2b4",
+  "worktree": "C:\\projects\\seed\\java\\seedv6-unified",
+  "branch": "migration/unified-architecture",
+  "preservation": {
+    "primary": {
+      "root": "C:\\projects\\seed\\java\\seedv6",
+      "trackedAndProtectedArtifactsUnchanged": true,
+      "wholeWorkingFileInventoryUnchanged": false,
+      "observedIgnoredEnvironmentalChanges": {
+        ".gradle/8.11.1/checksums/checksums.lock": {
+          "beforeSizeMtimeNs": [
+            17,
+            1792109578664621200
+          ],
+          "afterSizeMtimeNs": [
+            17,
+            1792110164150623000
+          ],
+          "classification": "Ignored Gradle cache/report modification time changed; unchanged size. Authorship unverified and not attributed to WU0; no Gradle/build command run by this task."
+        },
+        ".gradle/8.11.1/fileChanges/last-build.bin": {
+          "beforeSizeMtimeNs": [
+            1,
+            1792109578655623400
+          ],
+          "afterSizeMtimeNs": [
+            1,
+            1792110164138103600
+          ],
+          "classification": "Ignored Gradle cache/report modification time changed; unchanged size. Authorship unverified and not attributed to WU0; no Gradle/build command run by this task."
+        },
+        ".gradle/8.11.1/fileHashes/fileHashes.lock": {
+          "beforeSizeMtimeNs": [
+            17,
+            1792109578664621200
+          ],
+          "afterSizeMtimeNs": [
+            17,
+            1792110164149622600
+          ],
+          "classification": "Ignored Gradle cache/report modification time changed; unchanged size. Authorship unverified and not attributed to WU0; no Gradle/build command run by this task."
+        },
+        ".gradle/buildOutputCleanup/buildOutputCleanup.lock": {
+          "beforeSizeMtimeNs": [
+            17,
+            1792109578659620600
+          ],
+          "afterSizeMtimeNs": [
+            17,
+            1792110164143106300
+          ],
+          "classification": "Ignored Gradle cache/report modification time changed; unchanged size. Authorship unverified and not attributed to WU0; no Gradle/build command run by this task."
+        },
+        "build/reports/problems/problems-report.html": {
+          "beforeSizeMtimeNs": [
+            125448,
+            1792109578636623200
+          ],
+          "afterSizeMtimeNs": [
+            125448,
+            1792110164114363900
+          ],
+          "classification": "Ignored Gradle cache/report modification time changed; unchanged size. Authorship unverified and not attributed to WU0; no Gradle/build command run by this task."
+        }
+      },
+      "head": "24720213e12d99a581a713c74f901f89899bf2b4",
+      "branch": "main",
+      "status": "# branch.oid 24720213e12d99a581a713c74f901f89899bf2b4\n# branch.head main\n# branch.upstream origin/main\n# branch.ab +0 -0",
+      "unmerged": "",
+      "metadataSha256": {
+        "HEAD": "28d25bf82af4c0e2b72f50959b2beb859e3e60b9630a5e8c603dad4ddb2b6e80",
+        "index": "40fcc56f3ab725374145ede17c0fd9423e7da6e07980343ed31fa50f69a78428",
+        "ORIG_HEAD": "99d2643141858ecfff416aedf07a297b69b94cfafcfc46755fba770e4b5e88bd"
+      },
+      "trackedFileCount": 3597,
+      "trackedPathHashMapSha256": "841853b783dff8997829ce5d7f5f3c305c646ecce6f8761944274f30a08a6d0d",
+      "workingFileCount": 44076,
+      "beforeWorkingPathSizeMtimeMapSha256": "de24efe5c938ff295a5caa05b20babbc3f090c3236cf844e845272db7d00c85b",
+      "afterWorkingPathSizeMtimeMapSha256": "0a45781880e8596baf25b7d85edcf4e43276a561f550c5075bfa14de6b762046",
+      "protectedArtifactCount": 1098,
+      "protectedArtifactMapSha256": "62bf2bdffc142d1f987cdd4373a3af8a64ad9e13a144440623e3cd4d13f380bf",
+      "protectedArtifactRoots": [
+        "app/build/sr024-production-v1",
+        "dist"
+      ],
+      "scopeNote": "Tracked files and all protected artifact bytes hashed; other ignored files checked by presence/size/mtime, not full content hashing. Git metadata checked only for listed keys; new branch/worktree/finalizer metadata in primary are intentional."
+    },
+    "uci": {
+      "root": "C:\\projects\\seed\\java\\seedv6-ue",
+      "trackedAndProtectedArtifactsUnchanged": true,
+      "wholeWorkingFileInventoryUnchanged": true,
+      "observedIgnoredEnvironmentalChanges": {},
+      "head": "c6bdd5249992d88cd35ed07b164cbb090afaa06e",
+      "branch": "main",
+      "status": "# branch.oid c6bdd5249992d88cd35ed07b164cbb090afaa06e\n# branch.head main\n# branch.upstream origin/main\n# branch.ab +1 -2\n1 M. N... 100644 100644 100644 13878d832f43f271542245dcc3a4f6d5e993aeff 94bc8f350aae8f5ddb22ca633f22e3a44777e09f .gitattributes\n1 M. N... 100644 100644 100644 6ec5ce2d8ce5070d4849b2b7ce35625987edf165 8e342e47a8c3d432cfdfcaafe54356849cdcee28 src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java\n1 M. N... 100644 100644 100644 671cf4bda19b1be5e4ef0710ada0073081c791bf 67437845acd389ca6b6ea1ccd73977e95c01b8ec src/main/java/com/ohinteractive/seedv6/search/driver/ProductionSearch.java\n1 M. N... 100644 100644 100644 f9dc20c97764bdd9c170aaa8c0acc05d140ef8ad ef46a1806977c9a74f292bf300f7110b3ab85d91 src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java\n1 A. N... 000000 100644 100644 0000000000000000000000000000000000000000 00c419a61f5756a5d47fc65621b2f6afeac8de08 src/main/java/com/ohinteractive/seedv6/search/exact/Qxray.java\n1 M. N... 100644 100644 100644 6f5904269a3730e735bfa70befff0689b28232df 0a1ef00434ca2826fcaf2babcf4a992f31405698 src/main/java/com/ohinteractive/seedv6/search/exact/RootParallelSearch.java\n1 M. N... 100644 100644 100644 f590193c82d2aeffdc7c73f8399784bb7075ec00 59862d0f994d07fefa39d906e659f03a14425966 src/test/java/com/ohinteractive/seedv6/search/exact/Sr005Test.java\n1 A. N... 000000 100644 100644 0000000000000000000000000000000000000000 5a2b417145135ede294c9b3ee078b1118ece802d src/test/java/com/ohinteractive/seedv6/search/exact/Sr024Test.java\n1 M. N... 100644 100644 100644 d5472ac65ef67327e3328a13966d4130aeb44078 6680b0f2874e28942fe1f4344f8927cecaa7dc3b src/test/java/com/ohinteractive/seedv6/uci/EngineTest.java\n1 A. N... 000000 100644 100644 0000000000000000000000000000000000000000 e9ca3ed12fc79ed2ad653557a270bba1174a1760 src/test/resources/sr024-tactical.tsv\n1 A. N... 000000 100644 100644 0000000000000000000000000000000000000000 a866238d16a106cac621afc9c4b37c6f8e538d5a src/test/resources/sr024-vectors.tsv\n1 A. N... 000000 100644 100644 0000000000000000000000000000000000000000 28eeabc78af2a46e2a7046d1b309924b289be524 tools/Sr024SourceProbe.java\n1 M. N... 100644 100644 100644 e80b4b56024aa66b3b531cc1a1d7289f620c5a04 06046824ab7fe5c657ddbaeae6a9e6db62b49d51 tools/test_uci.py\nu UU N... 100644 100644 100644 100644 7df885fc7c565b569b47c7054124ac72c1622196 9edacc194c59787963e6cd16765152d20f3a1e1c 42c2e547f84a4f8b4133d717039d1eb902c6cf58 README.md\nu UU N... 100644 100644 100644 100644 835ec303942f30e5a3085ad6f8389941ae10e74e c8939347f8843ac44bb8df26936b92533a3acb82 4ce4356053b0c7416484a0f24a07e7f94b28aeca RELEASES.md\nu UU N... 100644 100644 100644 100644 15f54721ea6ad58049a0a99a6019f01f4a51cf55 136ba1b8d622447fa3533b5ee32aa2792b4aadd3 8813bb882c7698d0d6c982b7a8d0badb07a3b8d9 release.properties",
+      "unmerged": "100644 7df885fc7c565b569b47c7054124ac72c1622196 1\tREADME.md\n100644 9edacc194c59787963e6cd16765152d20f3a1e1c 2\tREADME.md\n100644 42c2e547f84a4f8b4133d717039d1eb902c6cf58 3\tREADME.md\n100644 835ec303942f30e5a3085ad6f8389941ae10e74e 1\tRELEASES.md\n100644 c8939347f8843ac44bb8df26936b92533a3acb82 2\tRELEASES.md\n100644 4ce4356053b0c7416484a0f24a07e7f94b28aeca 3\tRELEASES.md\n100644 15f54721ea6ad58049a0a99a6019f01f4a51cf55 1\trelease.properties\n100644 136ba1b8d622447fa3533b5ee32aa2792b4aadd3 2\trelease.properties\n100644 8813bb882c7698d0d6c982b7a8d0badb07a3b8d9 3\trelease.properties",
+      "metadataSha256": {
+        "HEAD": "28d25bf82af4c0e2b72f50959b2beb859e3e60b9630a5e8c603dad4ddb2b6e80",
+        "index": "c8536f02180fa7677723c0e742bb59c5890c233fb950922c8d5b6434e5aba1ab",
+        "MERGE_HEAD": "ed40f4d60fd29754b6667d70f1067552ed1f04f2b7e5038a91ec361cfe8bc1ae",
+        "MERGE_MODE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "MERGE_MSG": "7ad0e8e71d8cb57ddb86356990266d46339c063ad63443baa9ac3876b540ae6b",
+        "AUTO_MERGE": "e32a4685866b5cd36eaee6d82ee3c70298ac3dded59d19519292bb1cc9b25408",
+        "ORIG_HEAD": "b791a9a74a278eb3e684afd75800b4cb905344c4f727ab839902ca2fff95e294"
+      },
+      "trackedFileCount": 110,
+      "trackedPathHashMapSha256": "20e6d9647b5b7efc31becd273c60c37feeb1fabd429246ee9857c8d7409d5ec1",
+      "workingFileCount": 2706,
+      "beforeWorkingPathSizeMtimeMapSha256": "79ae4e9fdd122380c2cb383db62cc2f6a4448d60c45417e6c13fb17e732da652",
+      "afterWorkingPathSizeMtimeMapSha256": "79ae4e9fdd122380c2cb383db62cc2f6a4448d60c45417e6c13fb17e732da652",
+      "protectedArtifactCount": 590,
+      "protectedArtifactMapSha256": "0121850ddcab9d12b66097d73275db94866488e1f56b1c3aa4f8366b6d15aa8d",
+      "protectedArtifactRoots": [
+        "releases",
+        "dist"
+      ],
+      "scopeNote": "Tracked files and all protected artifact bytes hashed; other ignored files checked by presence/size/mtime, not full content hashing. Git metadata checked only for listed keys; new branch/worktree/finalizer metadata in primary are intentional."
+    }
+  },
+  "production": {
+    "acceptedRevision": "35294146bb7e44975b516005b2cc196439666e09",
+    "closeoutRevision": "aff8d744f115a73978fe469d3d02de2d436513f6",
+    "manifestPath": "docs/research/search/sr024-phase2-2026-10-14/production-v1-identities.json",
+    "manifestSha256": "79d2262a51f95b89684dfc8868e45c65ee4024cdfa8c4a269d55bb18afccef70",
+    "acceptedManifestEntries": 377,
+    "gitBlobCheckoutCrLfConversion": [
+      "gradlew.bat"
+    ],
+    "currentExistingManifestDifferences": [
+      "app/build.gradle",
+      "app/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java",
+      "app/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java",
+      "app/src/main/java/com/ohinteractive/seedv6/search/exact/ParallelSearch.java",
+      "app/src/main/java/com/ohinteractive/seedv6/uci/UciEvaluation.java"
+    ],
+    "newMainResearchFile": "app/src/main/java/com/ohinteractive/seedv6/search/exact/FutilityPolicy.java",
+    "frozenInstallationSha256": {
+      "app/build/sr024-production-v1/bin/seedv6": "1d26c39fef6662da990598fbc0eb21d211a92f09ad18b1b886b03579eb992c0c",
+      "app/build/sr024-production-v1/bin/seedv6.bat": "782b1bf174164a43f71b81ca28488359e1e1a91386a65274910b64ec9c43b8e4",
+      "app/build/sr024-production-v1/lib/app.jar": "2341955302900ae1a15879d0cff6b14a3744498db0dd862b8cd2aabe7482ed0f",
+      "app/build/sr024-production-v1/lib/checker-qual-3.42.0.jar": "ccaedd33af0b7894d9f2f3b644f4d19e43928e32902e61ac4d10777830f5aac7",
+      "app/build/sr024-production-v1/lib/error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "app/build/sr024-production-v1/lib/failureaccess-1.0.2.jar": "8a8f81cf9b359e3f6dfa691a1e776985c061ef2f223c9b2c80753e1b458e8064",
+      "app/build/sr024-production-v1/lib/flatlaf-3.7.jar": "1dc4f08cc0e01122f5bc6cebe1dcf253872c1fe8126208f43dab314d7deb0da2",
+      "app/build/sr024-production-v1/lib/gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "app/build/sr024-production-v1/lib/guava-33.2.1-jre.jar": "452b2d9787b7d366fa8cf5ed9a1c40404542d05effa7a598da03bbbbb76d9f31",
+      "app/build/sr024-production-v1/lib/jna-5.17.0.jar": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0",
+      "app/build/sr024-production-v1/lib/jna-platform-5.17.0.jar": "b7e3d46c87bad2eb409b0e704916bcd81206168e357312dfddd0e253679cd9e0",
+      "app/build/sr024-production-v1/lib/jsr305-3.0.2.jar": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+      "app/build/sr024-production-v1/lib/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
+      "app/build/sr024-production-v1/lib/sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "app/build/sr024-production-v1/lib/zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+    }
+  },
+  "model": {
+    "checkpointPath": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+    "files": {
+      "network.brn-pair2": {
+        "bytes": 795032,
+        "sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+      },
+      "training.state": {
+        "bytes": 2731424,
+        "sha256": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5"
+      },
+      "manifest.bin": {
+        "bytes": 449,
+        "sha256": "a51513ddb6e23a8537cc38b8aeb7676af5723c3e3b6bb8151f265bb87ae83891"
+      },
+      "training-metadata.bin": {
+        "bytes": 191,
+        "sha256": "135fb61ed736f313158e5514f2a16a81eda6526c4f034d2232ff26f8ee4176e7"
+      }
+    },
+    "uciRuntimeCopyPath": "C:\\projects\\seed\\java\\seedv6-ue\\models\\baseline.brn-pair2",
+    "uciRuntimeCopySha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "publicationAuthorized": false,
+    "bytesCopiedOrCommitted": false,
+    "scopeNote": "Hash verification only; no runtime loader, promotion-chain or trainer-recompile execution."
+  },
+  "phase1ArchiveSha256": {
+    "docs/search-phase1/CHESS_SEARCH_CONTRACT.md": "9f820c2e9efd366b179902d3fc14bdd8f88e6ae793356aded6b6119f73e8401b",
+    "docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md": "ead3743400b1dc513e02ad1c776b39db1486e8800c947cece9e20ba199e8fc1a"
+  },
+  "uciReferenceFixtures": {
+    "revision": "58511f45bf1bf0a45ca25f31da402a9e0ba56c50",
+    "files": {
+      "src/test/resources/phase2-tactical.fen": {
+        "bytes": 1157,
+        "sha256": "418e004216dd131c22db986ffce00110de94d775818d72587ca75b2e30656ec3"
+      },
+      "src/test/resources/phase2-vectors.tsv": {
+        "bytes": 6167,
+        "sha256": "d9e76d16461a603d00ae9667e8df1421dcbc055832d426230360c14f7860350b"
+      },
+      "src/test/resources/positions.fen": {
+        "bytes": 850,
+        "sha256": "934dd9a8cb68f6a523304a2fb99ae1425b74a7404a3c1c357d94a015539bd529"
+      },
+      "src/test/resources/source-vectors.tsv": {
+        "bytes": 1704,
+        "sha256": "fd24c0af68ac2ef2c26b77a4b81a57ba6a9a36a34118dc6672c7633aa261f2c9"
+      },
+      "src/test/resources/sr005-corpus.tsv": {
+        "bytes": 2874,
+        "sha256": "cb4b9e92e328426d6f3ebc5d0c590fdd4cff2421c1dda9f75d0e30cee4f54c08"
+      },
+      "src/test/resources/sr005-vectors.tsv": {
+        "bytes": 14585,
+        "sha256": "03646dd29e4287bd6cc7d473befcf50fedce1664ac36041ebe67adeb6256d70e"
+      },
+      "src/test/resources/sr022-corpus.tsv": {
+        "bytes": 2729,
+        "sha256": "51f418d4034b7bca18e6d426270ae469f2c802fb3869b423dd22b0e7f941f51b"
+      },
+      "src/test/resources/sr022-vectors.tsv": {
+        "bytes": 13912,
+        "sha256": "d9743d86005045ddced3e4336e77bb8e013f06e76e0db149cefb5d928d407407"
+      },
+      "src/test/resources/sr024-tactical.tsv": {
+        "bytes": 1805,
+        "sha256": "bb839d60e62dc2f72d69ad45a421905fdb59f61676e70c937c8861a70320524e"
+      },
+      "src/test/resources/sr024-vectors.tsv": {
+        "bytes": 30850,
+        "sha256": "0a10bc7de11506fca7945e236caa8badffab4abbcee975fd1b72583e47dfa3e7"
+      },
+      "src/test/resources/sr036-vectors.tsv": {
+        "bytes": 12792,
+        "sha256": "4010154d0825d305a42e69b3772fa3f5e6327cb50aa5f2d86cf150dbf310f61b"
+      }
+    }
+  },
+  "windowsV6": {
+    "path": "C:\\projects\\seed\\java\\seedv6-ue\\releases\\SeedV6-UE-v6-windows-x64.zip",
+    "bytes": 15830176,
+    "sha256": "dd4dfd81cdbec3e87590f53bb97005f7970a182899b2b61673db238d3b9aa3b8",
+    "zipCrcPass": true,
+    "entries": 99,
+    "jarBytes": 202534,
+    "jarSha256": "f073f8fd85dd6b9628f981ea6525b865696a12394c97b1ee53def3bde464a212",
+    "manifestSha256": "a070622611b0034ff1581288409c6f6e53bada94d253f3b9aeec0e621b814357",
+    "uciRevision": "c6bdd5249992d88cd35ed07b164cbb090afaa06e",
+    "upstreamRevision": "b73a646d4232058f1b927beac52418839cd64520",
+    "features": "SR-001,SR-029,SR-022,SR-005,SR-036",
+    "builtUtc": "2026-10-15T20:51:29Z",
+    "releaseProperties": "# Authoritative UCI release identity. Build/rebuild/test commands never increment it.\nrelease.version=6\nrelease.features=SR-001,SR-029,SR-022,SR-005,SR-036\nrelease.sourceRevision=b73a646d4232058f1b927beac52418839cd64520\nrelease.ueBaselineRevision=36c8f97\n",
+    "historicalUnpackedImagePresent": false,
+    "runtimeExecuted": false
+  },
+  "macV6ReportedOnly": {
+    "recordRevision": "58511f45bf1bf0a45ca25f31da402a9e0ba56c50",
+    "recordPath": "RELEASES.md",
+    "integrationRevision": "87b8b5b50acf3d2fe19793bfb0e8b24a45be114b",
+    "jarSha256": "4379603882b01eeae601fd6d5726f2abfb90ba5f2298647e17a42c603bdac83f",
+    "zipSha256": "72e4f297a6ccff6e99cd19323076c24155e8c8f336f75afa36cc9b08a4956625",
+    "zipBytes": 17909742,
+    "binaryInspected": false,
+    "macUncommittedWorkInspected": false
+  },
+  "remoteVerification": {
+    "primary": {
+      "url": "https://github.com/cohinteractive/SeedV6.git",
+      "main": "24720213e12d99a581a713c74f901f89899bf2b4",
+      "method": "git ls-remote, no fetch/push"
+    },
+    "uci": {
+      "url": "https://github.com/cohinteractive/seedv6-ue.git",
+      "main": "58511f45bf1bf0a45ca25f31da402a9e0ba56c50",
+      "method": "git ls-remote, no fetch/push"
+    }
+  },
+  "ancestryChecksPassed": [
+    {
+      "root": "C:\\projects\\seed\\java\\seedv6",
+      "ancestor": "35294146bb7e44975b516005b2cc196439666e09",
+      "descendant": "24720213e12d99a581a713c74f901f89899bf2b4"
+    },
+    {
+      "root": "C:\\projects\\seed\\java\\seedv6",
+      "ancestor": "aff8d744f115a73978fe469d3d02de2d436513f6",
+      "descendant": "24720213e12d99a581a713c74f901f89899bf2b4"
+    },
+    {
+      "root": "C:\\projects\\seed\\java\\seedv6-ue",
+      "ancestor": "87b8b5b50acf3d2fe19793bfb0e8b24a45be114b",
+      "descendant": "58511f45bf1bf0a45ca25f31da402a9e0ba56c50"
+    }
+  ],
+  "version": {
+    "value": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 35
+    },
+    "sha256": "92a26d4e187edc6c47ed88100d355f77b4597d98524d21d005a3c164986b4bca",
+    "bytesUnchanged": true,
+    "migrationBeginToken": "5ba25c5420b34a449d542858003329c3",
+    "decision": "no_bump",
+    "finishReceipt": "resolved migration Git metadata/codex-versioning/operations/5ba25c5420b34a449d542858003329c3",
+    "originalBeginWarning": "Owned stalled pre-reservation capture stopped under local non-critical override; status idle, no active/unfinished operation."
+  },
+  "externalAvailability": {
+    "E:/SeedV6-Corpus/incoming/lichess/lichess_db_eval.jsonl.zst": true,
+    "E:/SeedV6-Corpus/incoming/bt4-t80": true,
+    "C:/projects/seed/java/seedv6/app/build/research": true
+  },
+  "externalAvailabilityNote": "Existence checks only; no corpus content/whole-library scan or reconstruction of previously deleted research evidence.",
+  "expectedChangedFiles": [
+    "README.md",
+    "docs/unified-architecture/CONTRACT.md",
+    "docs/unified-architecture/BASELINE.md",
+    "docs/unified-architecture/ACCEPTANCE.md",
+    "docs/unified-architecture/STATE.md",
+    "docs/unified-architecture/foundation-evidence.json"
+  ],
+  "noApplicationOrGradleChanges": true,
+  "applicationRuntimeTestsRun": false,
+  "pushOrPublicationPerformed": false,
+  "limitations": [
+    "Native Windows/macOS GUI, UCI clients and application tests not run in documentation-only WU0.",
+    "Original checkout has five observed ignored Gradle cache/report mtime changes during WU0, unchanged sizes and unknown authorship; whole-working-tree immutability is not claimed.",
+    "Mac binary and Mac-only uncommitted work not inspected.",
+    "Historical Windows unpacked v6 image absent; existing ZIP verified by hashes/metadata/CRC, not executed.",
+    "Ignored research files outside protected artifact roots checked by size/mtime, not byte hashes.",
+    "Future stages require explicit acceptance evidence; historical counts are not new test results."
+  ],
+  "documentationValidation": {
+    "localLinksChecked": 26,
+    "stageIdsChecked": 9,
+    "matrixRowsChecked": 28,
+    "fiveTargetProjectsPresent": true,
+    "gitDiffCheckPass": true,
+    "stagedWhitespaceValidation": "Passed after correcting new evidence JSON line endings to LF; no pre-existing file normalized."
+  }
+}
