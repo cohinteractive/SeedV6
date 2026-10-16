@@ -87,7 +87,9 @@ def main(a):
         try:
             engine.send('uci'); handshake = engine.until('uciok')
             assert any('sha256='+SHA in line and 'mode=production' in line for line in handshake)
-            assert not any('OwnBook' in line or 'Ponder' in line for line in handshake)
+            for option in ('UseBook', 'OwnBook'):
+                assert f'option name {option} type check default false' in handshake
+            assert not any('Ponder' in line for line in handshake)
             # Small requests across every supported worker count; legal move and every PV verified independently.
             for workers in range(1, 17):
                 engine.send(f'setoption name Threads value {workers}\nsetoption name Hash value 8')

@@ -121,6 +121,73 @@ class Engine:
             self.process.kill(); self.process.wait(timeout=5)
 
 
+def verify_uci_book(engine, workers=1):
+    """Real protocol checks shared by Java-distribution and native-package validation."""
+    start = {f'{f}2{f}{r}' for f in 'abcdefgh' for r in '34'} | {'b1a3', 'b1c3', 'g1f3', 'g1h3'}
+    black = {f'{f}7{f}{r}' for f in 'abcdefgh' for r in '65'} | {'b8a6', 'b8c6', 'g8f6', 'g8h6'}
+    opening = {'c2c4', 'd2d4', 'e2e4', 'g1f3'}
+    searches = 0
+
+    def search(position='startpos', choices=start, book=False, go='depth 2'):
+        nonlocal searches
+        engine.send('position ' + position + '\ngo ' + go)
+        lines = engine.until('bestmove ')
+        check(lines[-1] in {'bestmove ' + move for move in choices}, 'Unexpected/illegal book-test move: ' + repr(lines))
+        check(all(line.startswith('info ') for line in lines[:-1]), 'Non-UCI search output: ' + repr(lines))
+        check(('info string opening book' in lines) == book, 'Wrong book/search route: ' + repr(lines))
+        if book:
+            check(not any(line.startswith('info depth ') for line in lines), 'Book invented a searched score/depth')
+            check(any('request nodes=0 ' in line and 'termination=BOOK' in line for line in lines),
+                  'Book hit started ordinary search')
+        else:
+            check(any(line.startswith('info depth ') for line in lines), 'Book miss/disable did not search')
+        # A stop after completion must not republish a book result; readiness fences output.
+        engine.send('stop\nisready')
+        check(engine.until('readyok') == ['readyok'], 'Duplicate bestmove or late search output')
+        searches += 1
+
+    search()  # Default is off.
+    engine.send('setoption name UseBook value true')
+    search(choices=opening, book=True, go='wtime 5000 btime 5000 winc 20 binc 20')
+    engine.send('setoption name OwnBook value false')
+    search()
+    engine.send('setoption name OwnBook value true')
+    search(choices=opening, book=True)
+    engine.send('setoption name UseBook value false')
+    search()
+    engine.send('  setoption   name   uSeBoOk   value   TRUE  ')
+    # Both aliases share state, survive service replacement and new games, and reject bad values.
+    engine.send(f'setoption name Threads value {2 if workers == 1 else 1}\nsetoption name Hash value 9')
+    engine.send('setoption name OwnBook value invalid\nucinewgame')
+    search(choices=opening, book=True)
+    engine.send(f'setoption name Threads value {workers}\nsetoption name Hash value 8\nsetoption name Clear Hash')
+    # Clear Hash/Threads announce identity; drain it before the next search.
+    engine.send('isready')
+    check(all(line.startswith('info string ') or line == 'readyok' for line in engine.until('readyok')),
+          'Unexpected option output')
+    search('startpos moves e2e4', black, True)
+    search('startpos moves a2a3', black)
+    search('fen 4k3/8/8/8/8/8/4P3/4K3 w - - 0 1',
+           {'e1d1', 'e1f1', 'e1d2', 'e1f2', 'e2e3', 'e2e4'})
+    search('fen r1b1k2r/pp1pppbp/2n2np1/q7/2BNP3/2N1B3/PPP2PPP/R2QK2R w KQkq - 0 1', {'e1g1'}, True)
+    search('fen r1b1k2r/1pq1bppp/p1nppn2/8/3NPP2/2N1B3/PPP1B1PP/R2Q1R1K b kq - 0 1', {'e8g8'}, True)
+    search('fen 7k/P7/8/8/8/8/8/7K w - - 0 1',
+           {'h1g1', 'h1g2', 'h1h2', 'a7a8q', 'a7a8r', 'a7a8b', 'a7a8n'})
+    # History and rule draws must bypass even a covered position.
+    search('startpos moves g1f3 g8f6 f3g1 f6g8 g1f3 g8f6 f3g1 f6g8')
+    search('fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 100 80')
+    engine.send('position startpos\ngo infinite')
+    analysis = engine.until('info depth 2 ')
+    check(not any(line.startswith('bestmove ') or line == 'info string opening book' for line in analysis),
+          'Infinite analysis returned a book move')
+    engine.send('stop')
+    check(engine.until('bestmove ')[-1] in {'bestmove ' + move for move in start}, 'Illegal stopped analysis move')
+    searches += 1
+    engine.send('setoption name OwnBook value FALSE\nucinewgame')
+    search()
+    return searches
+
+
 def verify_uci(launcher, stage, env, model):
     cwd = stage / 'unrelated client working directory'; cwd.mkdir(exist_ok=True)
     legal_start = {f'{file}2{file}{rank}' for file in 'abcdefgh' for rank in '34'} | {'b1a3', 'b1c3', 'g1f3', 'g1h3'}
@@ -132,6 +199,8 @@ def verify_uci(launcher, stage, env, model):
             check(any(line.startswith('id name SeedV6 UCI ') for line in handshake), 'Wrong UCI identity')
             for option in ('Threads', 'Hash', 'Clear Hash'):
                 check(any('option name ' + option + ' ' in line for line in handshake), 'Missing option ' + option)
+            for option in ('UseBook', 'OwnBook'):
+                check(f'option name {option} type check default false' in handshake, 'Missing book alias ' + option)
             engine.send(f'setoption name Threads value {workers}\nsetoption name Hash value 8\nsetoption name Clear Hash\nisready')
             engine.until('readyok')
             engine.send('uci'); identity = '\n'.join(engine.until('uciok'))
@@ -149,8 +218,9 @@ def verify_uci(launcher, stage, env, model):
             engine.send('position startpos moves e2e4 e7e5 g1f3\ngo depth 2')
             check(engine.until('bestmove ')[-1].split()[1] != '0000', 'Position move setup failed')
             searches += 1
+            searches += verify_uci_book(engine, workers)
             engine.close()
-            checks.append(f'Threads={workers}: handshake/ready/hash/clear/depth/timed/clocks/stop/position/quit')
+            checks.append(f'Threads={workers}: handshake/ready/hash/clear/depth/timed/clocks/stop/position/quit/book aliases and fallback')
             transcripts.append({'workers': workers, 'sent': engine.sent, 'stdout': engine.lines, 'stderr': engine.errors})
         finally:
             engine.kill()

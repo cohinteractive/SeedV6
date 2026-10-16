@@ -197,14 +197,46 @@ verification and all feature research belong to subsequent authorized work.
 
 SeedV6 already contains a working UCI engine path.
 
-Normal Play and UCI use the bundled opening repertoire before search. A book hit
-returns a weighted legal move with no searched score or depth; misses search as
-usual. UCI `setoption name OwnBook value false` disables it (default `true`), and
-`go infinite` always searches. Training, validation and data generation remain
-book-free. The portable source is `app/src/main/resources/com/ohinteractive/seedv6/book/opening-book.txt`:
+Normal Play uses the bundled opening repertoire before search. Standalone and
+legacy UCI advertise `UseBook` and `OwnBook` as check options, both defaulting to
+`false`. They are aliases for one setting: the last valid value supplied through
+either name wins. For BotLi, configure `UseBook: true`; other clients can use
+`OwnBook: true`. A book hit returns a weighted legal move with no searched score
+or depth; misses search as usual. `go infinite` always searches. New games and
+Threads/Hash changes preserve the option. Disable it for search benchmarks.
+Training, validation and data generation remain book-free. The portable source is
+`engine-core/src/main/resources/com/ohinteractive/seedv6/book/opening-book.txt`:
 four FEN fields, legal en passant identity, and UCI moves with positive weights.
 Its header records historical provenance and the rank-support weighting rule.
 Seed validates the complete graph once and derives its own runtime keys/moves.
+
+The resource is embedded at `com/ohinteractive/seedv6/book/opening-book.txt` in
+`engine-core.jar`, included by the standalone Java and native distributions.
+No external book file, working-directory path, GUI preferences or initialization
+is needed. The standalone profile diagnoses a missing/invalid resource once on
+stderr and continues with search. The existing standard-chess repertoire and
+selection weights are unchanged; no Chess960/variant support is added.
+
+On macOS, build `:app-uci:packageMac` on the supported arm64 host with the pinned
+model input described in [packaging](unified-architecture/WU7-PACKAGING.md).
+Keep the complete `SeedV6-UCI` image, including both JARs, its runtime and
+`models/baseline.brn-pair2`; point BotLi at its `SeedV6-UCI` executable launcher.
+Preserve executable permissions when extracting. Replacing only the launcher
+does not update engine code or book resources. The model is still a required,
+separately validated private input; optional-book fallback does not relax it.
+
+Focused real-process verification (all paths below are local to Unified):
+
+```text
+gradlew.bat :app-uci:installDist :app-uci:test :engine-core:test -Pheadless
+python -B tools/test_uci_book.py --java <jdk-21>/bin/java --install app-uci/build/install/seedv6-uci --model build-assets/production/network.brn-pair2 --out build/uci-book-check
+```
+
+Use a fresh output directory for each run. Native packaging also exercises both
+aliases, book hits/misses, castling, disabled search, new games and search lifecycle
+through the packaged executable. Core book tests cover all promotion encodings
+and every stored weight. Native macOS execution and live BotLi acceptance must be
+verified on that host; a Windows result does not establish them.
 
 The engine supports legal position reconstruction from both starting positions and FEN positions. Supplied UCI moves are resolved against the engine's generated legal move set before being applied.
 

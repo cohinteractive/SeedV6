@@ -101,6 +101,12 @@ public final class SearchLifecycleService implements AutoCloseable {
         this(timeSource, searchFactory, tablebase, Book.EMPTY, new SplittableRandom());
     }
 
+    /** Explicit application composition; search-only constructors keep their book-free contract. */
+    public SearchLifecycleService(TimeSource timeSource, Supplier<? extends SingleDepthSearch> searchFactory,
+            RootTablebase tablebase, Book book) {
+        this(timeSource, searchFactory, tablebase, book, new SplittableRandom());
+    }
+
     SearchLifecycleService(TimeSource timeSource, Supplier<? extends SingleDepthSearch> searchFactory,
             RootTablebase tablebase, Book book, RandomGenerator random) {
         this.book = Objects.requireNonNull(book, "book");

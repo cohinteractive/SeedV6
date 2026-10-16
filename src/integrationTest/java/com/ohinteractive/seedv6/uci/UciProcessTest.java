@@ -34,6 +34,7 @@ class UciProcessTest {
     @Test
     void bundledBookBypassesSearchAndOwnBookSurvivesWorkerChanges() throws Exception {
         try (EngineSession engine = EngineSession.launch()) {
+            engine.send("setoption name UseBook value true");
             engine.send("go depth 2");
             SearchOutput hit = engine.readSearchOutput();
             assertLegalBestMove(Board.startingPosition(), hit);
@@ -101,7 +102,8 @@ class UciProcessTest {
             assertEquals("id name SeedV6", engine.readLine());
             assertEquals("id author Charles Clark", engine.readLine());
             assertEquals("option name Threads type spin default 1 min 1 max 16", engine.readLine());
-            assertEquals("option name OwnBook type check default true", engine.readLine());
+            assertEquals("option name UseBook type check default false", engine.readLine());
+            assertEquals("option name OwnBook type check default false", engine.readLine());
             assertEquals("uciok", engine.readLine());
             engine.send("isready");
             assertEquals("readyok", engine.readLine());
@@ -109,7 +111,7 @@ class UciProcessTest {
             engine.awaitExit();
             assertEquals(0, engine.exitCode());
             assertEquals("", engine.stderr());
-            assertEquals(6, engine.lines().size());
+            assertEquals(7, engine.lines().size());
         }
     }
 
@@ -120,13 +122,14 @@ class UciProcessTest {
             assertEquals("id name SeedV6", engine.readLine());
             assertEquals("id author Charles Clark", engine.readLine());
             assertEquals("option name Threads type spin default 1 min 1 max 16", engine.readLine());
-            assertEquals("option name OwnBook type check default true", engine.readLine());
+            assertEquals("option name UseBook type check default false", engine.readLine());
+            assertEquals("option name OwnBook type check default false", engine.readLine());
             assertEquals("uciok", engine.readLine());
             engine.eof();
             engine.awaitExit();
             assertEquals(0, engine.exitCode());
             assertEquals("", engine.stderr());
-            assertEquals(5, engine.lines().size());
+            assertEquals(6, engine.lines().size());
         }
     }
 

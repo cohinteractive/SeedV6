@@ -43,7 +43,10 @@ $env:GRADLE_USER_HOME = "$PWD/build/migration/gradle-user-home"
 
 Use an existing verified local model, or place it at `models/baseline.brn-pair2`
 inside that Java distribution. Missing or different model bytes fail explicitly.
-The legacy `seedv6` launcher retains its HCE/book defaults.
+The legacy `seedv6` launcher retains its HCE evaluator. Both UCI launchers default
+to book disabled; `setoption name UseBook value true` (or the `OwnBook` alias)
+enables the shared bundled repertoire. No external book path is needed. See the
+[UCI guide](docs/guide.md#uci-and-search-lifecycle) for BotLi and packaging details.
 
 Use **Network Training > Data & exposure > Add from library** to register original
 Lichess JSONL/PZstandard sources, existing Seed data directories or Stockfish

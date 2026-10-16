@@ -45,7 +45,8 @@ class UciWindowsLauncherTest {
             assertEquals(List.of(
                 "id name SeedV6", "id author Charles Clark",
                 "option name Threads type spin default 1 min 1 max 16",
-                "option name OwnBook type check default true", "uciok", "readyok"
+                "option name UseBook type check default false",
+                "option name OwnBook type check default false", "uciok", "readyok"
             ), stdout);
             assertEquals("", stderr);
         } finally {

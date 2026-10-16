@@ -24,7 +24,6 @@ public final class UciEngine implements AutoCloseable {
         reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(input), StandardCharsets.UTF_8));
         uciOutput = new UciOutput(output, error);
         this.configuration = Objects.requireNonNull(configuration);
-        ownBook = !configuration.standalone();
         searches = configuration.service(rootWorkers, hashMiB);
         searches.setBookEnabled(ownBook);
         diagnosticsEnabled = Boolean.getBoolean("seedv6.searchDiagnostics");
@@ -51,7 +50,9 @@ public final class UciEngine implements AutoCloseable {
                 if (configuration.standalone()) {
                     uciOutput.line("option name Hash type spin default 64 min 1 max 1024");
                     uciOutput.line("option name Clear Hash type button");
-                } else uciOutput.line("option name OwnBook type check default true");
+                }
+                uciOutput.line("option name UseBook type check default false");
+                uciOutput.line("option name OwnBook type check default false");
                 identify();
                 uciOutput.line("uciok");
             } else if (tokens.length == 1 && tokens[0].equals("isready")) {
@@ -129,9 +130,10 @@ public final class UciEngine implements AutoCloseable {
     // Never hold publicationLock while entering core: callbacks hold core's generation gate.
     private synchronized void setOption(String[] tokens) {
         if (closed) return;
-        if (!configuration.standalone() && tokens.length == 5 && tokens[1].equals("name")
-                && tokens[2].equals("OwnBook") && tokens[3].equals("value")
-                && (tokens[4].equals("true") || tokens[4].equals("false"))) {
+        if (tokens.length == 5 && tokens[1].equalsIgnoreCase("name")
+                && (tokens[2].equalsIgnoreCase("UseBook") || tokens[2].equalsIgnoreCase("OwnBook"))
+                && tokens[3].equalsIgnoreCase("value")
+                && (tokens[4].equalsIgnoreCase("true") || tokens[4].equalsIgnoreCase("false"))) {
             ownBook = Boolean.parseBoolean(tokens[4]);
             searches.setBookEnabled(ownBook);
             return;
