@@ -8,6 +8,9 @@
 # Independent native application snapshots (not removed by Gradle clean)
 /dist/windows/
 /dist/mac/
+/releases/candidates/
+# Explicit, private checksum-verified model input; never published by packaging.
+/build-assets/
 
 # Local archives and historical snapshots
 /archive/

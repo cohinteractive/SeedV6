@@ -1168,8 +1168,8 @@ jpackage's default `1.0`. The initial `0.0.0`, build `0` was explicitly selected
 by the user; it is a new counter, not a recovered historical number.
 
 The existing shared Codex completion workflow applies through root-file presence.
-Use the maintained `C:/projects/codebase-entropy-control/scripts/codex-versioning/finalizer.py`
-with `--repo <repository-root> begin` before implementation, retaining its token.
+Use the repository adapter `python -B tools/seed_version_finalizer.py --repo . begin`
+under AGENTS.md before implementation, retaining an active token. WU7 is explicitly no-bump.
 After implementation and required validation, use the same token with
 `finish <token> --decision bump` for qualifying built/shipped application changes,
 or `--decision no_bump` for non-qualifying work. The existing semantic distinction
@@ -1213,16 +1213,32 @@ Focused headless checks: `gradlew :app:test -Pheadless --tests '*ApplicationVers
 finalizer's disposable-repository regression suite covers build-only, no-bump and
 exactly-once completion semantics; do not mutation-test version bumps in this checkout.
 
-### Standalone Windows and macOS NNUE application
+### Unified Windows and macOS applications
+
+Root `packageWindows` and `packageMac` now build **both** independent applications,
+using `:app-gui:packageWindows` / `:app-uci:packageWindows` (or `packageMac`) for
+single-application builds. Set a worktree-local GRADLE_USER_HOME and an explicit
+private approved model input. Windows needs a native JDK 21.0.6+; Mac needs a
+self-contained arm64 JDK 21. No version is incremented and no release is published.
+See [WU7 packaging](unified-architecture/WU7-PACKAGING.md) for exact commands,
+candidate/archive layouts, model checks, provenance, verification and remaining
+Mac-native, GUI/client, publication and release gates.
+
+The following retained legacy workflows use `packageLegacyWindows` and
+`packageLegacyMac`. They remain until WU8 and have not gained the unified
+candidate verification guarantees. The timestamp-in-core description above
+applies to these legacy snapshots; unified candidates use a separate resource JAR.
+
+### Legacy standalone Windows and macOS NNUE application
 
 Run the matching native command on each platform:
 
 ```bash
 # Windows:
-./gradlew packageWindows
+./gradlew packageLegacyWindows
 
 # macOS:
-./gradlew packageMac
+./gradlew packageLegacyMac
 ```
 
 On macOS, set `JAVA_HOME` to a self-contained macOS JDK 21 or newer containing
@@ -1260,17 +1276,17 @@ From the repository root, build a snapshot of the current working tree using a
 Windows JDK 21 or newer with `jpackage` (`JAVA_HOME`):
 
 ```bash
-./gradlew packageWindows
+./gradlew packageLegacyWindows
 ```
 
-In PowerShell, use `.\gradlew.bat packageWindows`. This is the root task
-`:packageWindows`; it runs `:app:installDist`, then packages its output without
+In PowerShell, use `.\gradlew.bat packageLegacyWindows`. This is the root task
+`:packageLegacyWindows`; it runs `:app:installDist`, then packages its output without
 running tests. All paths are anchored to the repository root. Discover it under
 Distribution tasks or inspect its help:
 
 ```bash
 ./gradlew tasks
-./gradlew help --task packageWindows
+./gradlew help --task packageLegacyWindows
 ```
 
 Allow any other Gradle build/test run in this checkout to finish before packaging;

@@ -175,6 +175,18 @@ Every accepted unit records actual tests, limits, files/commit, Git/version stat
 remaining decisions and next gate in STATE. Contract amendments are explicit;
 ordinary findings and measurements go in STATE/BASELINE or linked evidence.
 
+## WU7 owner-scoped packaging acceptance
+
+The WU7 launch accepts WU0-WU6 and authorizes unified packaging implementation,
+available Windows/headless validation and an attributable commit with version
+**0.0.0 build 35 unchanged**. No official engine release, publication or model
+asset commit is authorized. Local candidate packaging may use verified private
+inputs. Native macOS arm64 implementation is required; its native execution and
+both platforms' user GUI/client checks remain open before full cross-platform
+acceptance/cutover. No GUI window or Computer Use is authorized for Codex.
+This bounded implementation handback does not waive P2 or advance WU8.
+[WU7](WU7-PACKAGING.md) documents new root/module tasks and preserved legacy tasks.
+
 ## Human decisions, stopping and rollback
 
 Stop affected work for contradictory identities/acceptance authority, unexplained

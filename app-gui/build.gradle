@@ -12,7 +12,7 @@ dependencies {
 }
 
 // Keep the established unqualified `run --args=gui` route in :app. Native
-// distribution assembly stays there until WU7; this route needs no legacy app.
+// legacy distribution assembly stays there until WU8; this route needs no legacy app.
 tasks.register('runGui', JavaExec) {
     group = 'application'
     description = 'Launches the desktop directly from app-gui and its shared services.'

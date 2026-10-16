@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [string] $JdkHome = $env:JAVA_HOME,
-    # Internal entry from :packageWindows after its Gradle dependencies complete.
+    # Internal entry from :packageLegacyWindows after its Gradle dependencies complete.
     [switch] $FromGradle
 )
 
@@ -32,7 +32,7 @@ if (-not (Test-Path -LiteralPath $icon -PathType Leaf)) {
 Push-Location $repo
 try {
     if (-not $FromGradle) {
-        # Direct script usage retains the same build-only behavior as :packageWindows.
+        # Direct script usage retains the same build-only behavior as :packageLegacyWindows.
         # No clean: preserve existing outputs and all current working-tree sources.
         & .\gradlew.bat :app:installDist
         if ($LASTEXITCODE -ne 0) { throw 'Gradle distribution build failed.' }
@@ -73,7 +73,7 @@ try {
         $writer = [System.IO.StreamWriter]::new($desktopEntry.Open(), [System.Text.UTF8Encoding]::new($false))
         try {
             $builtAt = [DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ss'Z'")
-            $writer.Write("builtAt=$builtAt`n")
+            $writer.Write("builtAt=$builtAt`nplatform=Windows / $env:PROCESSOR_ARCHITECTURE`n")
         } finally { $writer.Dispose() }
     } finally { $archive.Dispose() }
     # jpackage copies all runtime JARs and links a private runtime. The existing

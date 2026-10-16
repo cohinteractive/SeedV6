@@ -1,0 +1,1155 @@
+{
+  "workUnit": "WU7",
+  "date": "2026-10-16",
+  "timezone": "Pacific/Auckland",
+  "status": "implementation and available native Windows/portable validation complete; GPT/user reconciliation pending; native Mac and human acceptance outstanding",
+  "acceptedWu6": "328531f672260cf4fd5e49b26724fee7329bb0d8",
+  "branch": "migration/unified-architecture",
+  "startingTree": "clean",
+  "scope": "unified migration worktree; owner additionally authorized C:/Temp/SeedV6 WU7 validation for external relocation tests",
+  "engine": {
+    "coreContent": {
+      "nativeEntries": {},
+      "portableEntriesSha256": "739ad28fd607d54aa5d32e23b8021da5edc05f2a7190e5e4a9cb48239630adf4"
+    },
+    "coreJarSha256": "adaf356401bc31b61b8b3a28e77a65aed6fcd17b85488afa40a8bf4e3696b886",
+    "model": {
+      "build": "35",
+      "engine.acceptedSource": "35294146bb7e44975b516005b2cc196439666e09",
+      "model.bytes": "795032",
+      "model.calibration": "BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1",
+      "model.checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "model.lineage": "235d0688-e060-44e3-8f1e-119c39bc8017",
+      "model.schema": "seedv6.brn.pair2",
+      "model.schemaVersion": "1",
+      "model.sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "version": "0.0.0"
+    },
+    "productionSearch": {
+      "accepted": "SR-001/SR-029/SR-022/SR-005/SR-036/SR-024",
+      "lmp": "window",
+      "lmr": "quiet",
+      "multiworker": "root_reuse (2..16)",
+      "oneWorker": "effort",
+      "see": "qxray",
+      "sr021": "deferred; disabled"
+    }
+  },
+  "artifacts": {
+    "gui": {
+      "directory": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\wu7-windows-final",
+      "image": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\wu7-windows-final\\SeedV6-GUI",
+      "launcher": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\wu7-windows-final\\SeedV6-GUI\\SeedV6-GUI.exe",
+      "archive": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\wu7-windows-final\\SeedV6-GUI-windows-x64.zip",
+      "archiveBytes": 81608063,
+      "archiveSha256": "e8fe79077cc365d8fd309e180bd2e338bba03c4f5de0f40ad51e90abb069e2af",
+      "manifestSha256": "61d4970b0cc69f8103797fde8ac3bf4e2ec227d9d7b582f70f11686301d0fd37",
+      "files": 328,
+      "sourceRevision": "328531f672260cf4fd5e49b26724fee7329bb0d8",
+      "sourceStatus": [
+        "M .gitignore",
+        " M README.md",
+        " M app-gui/build.gradle",
+        " M app-uci/src/main/java/com/ohinteractive/seedv6/uci/ProductionModel.java",
+        " M app/src/test/java/com/ohinteractive/seedv6/ApplicationVersionTest.java",
+        " M build.gradle",
+        " M docs/architecture.md",
+        " M docs/guide.md",
+        " M docs/unified-architecture/ACCEPTANCE.md",
+        " M docs/unified-architecture/CONTRACT.md",
+        " M docs/unified-architecture/STATE.md",
+        " M engine-core/src/main/java/com/ohinteractive/seedv6/ApplicationVersion.java",
+        " M gradle/application-version.gradle",
+        " M gradle/java-conventions.gradle",
+        " M gradle/package-mac.gradle",
+        " M tools/package-windows.ps1",
+        " M tools/test_gradle_architecture.py",
+        "?? docs/unified-architecture/WU7-PACKAGING.md",
+        "?? engine-core/src/main/java/com/ohinteractive/seedv6/core/brnpair2/ProductionModel.java",
+        "?? gradle/native-packaging.gradle",
+        "?? tools/PackagingProbe.java",
+        "?? tools/native_package_checks.py",
+        "?? tools/native_packaging.py",
+        "?? tools/test_native_packaging.py",
+        "?? tools/verify-native-candidate.py"
+      ],
+      "sourceManifestSha256": "8f9b60cc941650e91176724e69a379c2470bee2b0bf2867e8303dca93398c4ef",
+      "coreJarSha256": "adaf356401bc31b61b8b3a28e77a65aed6fcd17b85488afa40a8bf4e3696b886",
+      "modelSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "compilerJdk": {
+        "IMPLEMENTOR": "\"Oracle Corporation\"",
+        "JAVA_RUNTIME_VERSION": "\"21.0.7+8-LTS-245\"",
+        "JAVA_VERSION": "\"21.0.7\"",
+        "JAVA_VERSION_DATE": "\"2025-04-15\"",
+        "LIBC": "\"default\"",
+        "MODULES": "\"java.base java.compiler java.datatransfer java.xml java.prefs java.desktop java.instrument java.logging java.management java.security.sasl java.naming java.rmi java.management.rmi java.net.http java.scripting java.security.jgss java.transaction.xa java.sql java.sql.rowset java.xml.crypto java.se java.smartcardio jdk.accessibility jdk.internal.jvmstat jdk.attach jdk.charsets jdk.internal.opt jdk.zipfs jdk.compiler jdk.crypto.ec jdk.crypto.cryptoki jdk.crypto.mscapi jdk.dynalink jdk.internal.ed jdk.editpad jdk.hotspot.agent jdk.httpserver jdk.incubator.vector jdk.internal.le jdk.internal.vm.ci jdk.internal.vm.compiler jdk.internal.vm.compiler.management jdk.jartool jdk.javadoc jdk.jcmd jdk.management jdk.management.agent jdk.jconsole jdk.jdeps jdk.jdwp.agent jdk.jdi jdk.jfr jdk.jlink jdk.jpackage jdk.jshell jdk.jsobject jdk.jstatd jdk.localedata jdk.management.jfr jdk.naming.dns jdk.naming.rmi jdk.net jdk.nio.mapmode jdk.random jdk.sctp jdk.security.auth jdk.security.jgss jdk.unsupported jdk.unsupported.desktop jdk.xml.dom\"",
+        "OS_ARCH": "\"x86_64\"",
+        "OS_NAME": "\"Windows\"",
+        "SOURCE": "\".:git:872b0d18bd55 open:git:aa412476d5d7\""
+      },
+      "runtimeJdk": {
+        "IMPLEMENTOR": "\"Oracle Corporation\"",
+        "JAVA_RUNTIME_VERSION": "\"21.0.7+8-LTS-245\"",
+        "JAVA_VERSION": "\"21.0.7\"",
+        "JAVA_VERSION_DATE": "\"2025-04-15\"",
+        "LIBC": "\"default\"",
+        "MODULES": "\"java.base java.compiler java.datatransfer java.xml java.prefs java.desktop java.instrument java.logging java.management java.security.sasl java.naming java.rmi java.management.rmi java.net.http java.scripting java.security.jgss java.transaction.xa java.sql java.sql.rowset java.xml.crypto java.se java.smartcardio jdk.accessibility jdk.internal.jvmstat jdk.attach jdk.charsets jdk.internal.opt jdk.zipfs jdk.compiler jdk.crypto.ec jdk.crypto.cryptoki jdk.crypto.mscapi jdk.dynalink jdk.internal.ed jdk.editpad jdk.hotspot.agent jdk.httpserver jdk.incubator.vector jdk.internal.le jdk.internal.vm.ci jdk.internal.vm.compiler jdk.internal.vm.compiler.management jdk.jartool jdk.javadoc jdk.jcmd jdk.management jdk.management.agent jdk.jconsole jdk.jdeps jdk.jdwp.agent jdk.jdi jdk.jfr jdk.jlink jdk.jpackage jdk.jshell jdk.jsobject jdk.jstatd jdk.localedata jdk.management.jfr jdk.naming.dns jdk.naming.rmi jdk.net jdk.nio.mapmode jdk.random jdk.sctp jdk.security.auth jdk.security.jgss jdk.unsupported jdk.unsupported.desktop jdk.xml.dom\"",
+        "OS_ARCH": "\"x86_64\"",
+        "OS_NAME": "\"Windows\"",
+        "SOURCE": "\".:git:872b0d18bd55 open:git:aa412476d5d7\""
+      },
+      "verification": {
+        "interactiveGui": "NOT RUN; owner gate",
+        "modules": [
+          "java.base@21.0.7",
+          "java.compiler@21.0.7",
+          "java.datatransfer@21.0.7",
+          "java.desktop@21.0.7",
+          "java.instrument@21.0.7",
+          "java.logging@21.0.7",
+          "java.management@21.0.7",
+          "java.management.rmi@21.0.7",
+          "java.naming@21.0.7",
+          "java.net.http@21.0.7",
+          "java.prefs@21.0.7",
+          "java.rmi@21.0.7",
+          "java.scripting@21.0.7",
+          "java.security.jgss@21.0.7",
+          "java.security.sasl@21.0.7",
+          "java.smartcardio@21.0.7",
+          "java.sql@21.0.7",
+          "java.sql.rowset@21.0.7",
+          "java.transaction.xa@21.0.7",
+          "java.xml@21.0.7",
+          "java.xml.crypto@21.0.7",
+          "jdk.accessibility@21.0.7",
+          "jdk.attach@21.0.7",
+          "jdk.charsets@21.0.7",
+          "jdk.compiler@21.0.7",
+          "jdk.crypto.cryptoki@21.0.7",
+          "jdk.crypto.ec@21.0.7",
+          "jdk.crypto.mscapi@21.0.7",
+          "jdk.dynalink@21.0.7",
+          "jdk.editpad@21.0.7",
+          "jdk.httpserver@21.0.7",
+          "jdk.incubator.vector@21.0.7",
+          "jdk.internal.ed@21.0.7",
+          "jdk.internal.jvmstat@21.0.7",
+          "jdk.internal.le@21.0.7",
+          "jdk.internal.opt@21.0.7",
+          "jdk.jartool@21.0.7",
+          "jdk.javadoc@21.0.7",
+          "jdk.jconsole@21.0.7",
+          "jdk.jdeps@21.0.7",
+          "jdk.jdi@21.0.7",
+          "jdk.jdwp.agent@21.0.7",
+          "jdk.jfr@21.0.7",
+          "jdk.jlink@21.0.7",
+          "jdk.jpackage@21.0.7",
+          "jdk.jshell@21.0.7",
+          "jdk.jsobject@21.0.7",
+          "jdk.jstatd@21.0.7",
+          "jdk.localedata@21.0.7",
+          "jdk.management@21.0.7",
+          "jdk.management.agent@21.0.7",
+          "jdk.management.jfr@21.0.7",
+          "jdk.naming.dns@21.0.7",
+          "jdk.naming.rmi@21.0.7",
+          "jdk.net@21.0.7",
+          "jdk.nio.mapmode@21.0.7",
+          "jdk.random@21.0.7",
+          "jdk.sctp@21.0.7",
+          "jdk.security.auth@21.0.7",
+          "jdk.security.jgss@21.0.7",
+          "jdk.unsupported@21.0.7",
+          "jdk.unsupported.desktop@21.0.7",
+          "jdk.xml.dom@21.0.7",
+          "jdk.zipfs@21.0.7"
+        ],
+        "optionalSyzygy": "not-bundled",
+        "status": "headless-resources-jni-passed"
+      },
+      "externalRelocation": {
+        "path": "C:\\Temp\\SeedV6 WU7 validation\\gui-final\\verification.json",
+        "sha256": "8e3f1e792fbbd5bc18b395bde5d3b1e82a3a4998fb76bb84133dfd0b7b07d7c0",
+        "status": "passed",
+        "copies": {
+          "copied": {
+            "interactiveGui": "NOT RUN; owner gate",
+            "modules": [
+              "java.base@21.0.7",
+              "java.compiler@21.0.7",
+              "java.datatransfer@21.0.7",
+              "java.desktop@21.0.7",
+              "java.instrument@21.0.7",
+              "java.logging@21.0.7",
+              "java.management@21.0.7",
+              "java.management.rmi@21.0.7",
+              "java.naming@21.0.7",
+              "java.net.http@21.0.7",
+              "java.prefs@21.0.7",
+              "java.rmi@21.0.7",
+              "java.scripting@21.0.7",
+              "java.security.jgss@21.0.7",
+              "java.security.sasl@21.0.7",
+              "java.smartcardio@21.0.7",
+              "java.sql@21.0.7",
+              "java.sql.rowset@21.0.7",
+              "java.transaction.xa@21.0.7",
+              "java.xml@21.0.7",
+              "java.xml.crypto@21.0.7",
+              "jdk.accessibility@21.0.7",
+              "jdk.attach@21.0.7",
+              "jdk.charsets@21.0.7",
+              "jdk.compiler@21.0.7",
+              "jdk.crypto.cryptoki@21.0.7",
+              "jdk.crypto.ec@21.0.7",
+              "jdk.crypto.mscapi@21.0.7",
+              "jdk.dynalink@21.0.7",
+              "jdk.editpad@21.0.7",
+              "jdk.httpserver@21.0.7",
+              "jdk.incubator.vector@21.0.7",
+              "jdk.internal.ed@21.0.7",
+              "jdk.internal.jvmstat@21.0.7",
+              "jdk.internal.le@21.0.7",
+              "jdk.internal.opt@21.0.7",
+              "jdk.jartool@21.0.7",
+              "jdk.javadoc@21.0.7",
+              "jdk.jconsole@21.0.7",
+              "jdk.jdeps@21.0.7",
+              "jdk.jdi@21.0.7",
+              "jdk.jdwp.agent@21.0.7",
+              "jdk.jfr@21.0.7",
+              "jdk.jlink@21.0.7",
+              "jdk.jpackage@21.0.7",
+              "jdk.jshell@21.0.7",
+              "jdk.jsobject@21.0.7",
+              "jdk.jstatd@21.0.7",
+              "jdk.localedata@21.0.7",
+              "jdk.management@21.0.7",
+              "jdk.management.agent@21.0.7",
+              "jdk.management.jfr@21.0.7",
+              "jdk.naming.dns@21.0.7",
+              "jdk.naming.rmi@21.0.7",
+              "jdk.net@21.0.7",
+              "jdk.nio.mapmode@21.0.7",
+              "jdk.random@21.0.7",
+              "jdk.sctp@21.0.7",
+              "jdk.security.auth@21.0.7",
+              "jdk.security.jgss@21.0.7",
+              "jdk.unsupported@21.0.7",
+              "jdk.unsupported.desktop@21.0.7",
+              "jdk.xml.dom@21.0.7",
+              "jdk.zipfs@21.0.7"
+            ],
+            "optionalSyzygy": "not-bundled",
+            "status": "headless-resources-jni-passed"
+          },
+          "extracted": {
+            "interactiveGui": "NOT RUN; owner gate",
+            "modules": [
+              "java.base@21.0.7",
+              "java.compiler@21.0.7",
+              "java.datatransfer@21.0.7",
+              "java.desktop@21.0.7",
+              "java.instrument@21.0.7",
+              "java.logging@21.0.7",
+              "java.management@21.0.7",
+              "java.management.rmi@21.0.7",
+              "java.naming@21.0.7",
+              "java.net.http@21.0.7",
+              "java.prefs@21.0.7",
+              "java.rmi@21.0.7",
+              "java.scripting@21.0.7",
+              "java.security.jgss@21.0.7",
+              "java.security.sasl@21.0.7",
+              "java.smartcardio@21.0.7",
+              "java.sql@21.0.7",
+              "java.sql.rowset@21.0.7",
+              "java.transaction.xa@21.0.7",
+              "java.xml@21.0.7",
+              "java.xml.crypto@21.0.7",
+              "jdk.accessibility@21.0.7",
+              "jdk.attach@21.0.7",
+              "jdk.charsets@21.0.7",
+              "jdk.compiler@21.0.7",
+              "jdk.crypto.cryptoki@21.0.7",
+              "jdk.crypto.ec@21.0.7",
+              "jdk.crypto.mscapi@21.0.7",
+              "jdk.dynalink@21.0.7",
+              "jdk.editpad@21.0.7",
+              "jdk.httpserver@21.0.7",
+              "jdk.incubator.vector@21.0.7",
+              "jdk.internal.ed@21.0.7",
+              "jdk.internal.jvmstat@21.0.7",
+              "jdk.internal.le@21.0.7",
+              "jdk.internal.opt@21.0.7",
+              "jdk.jartool@21.0.7",
+              "jdk.javadoc@21.0.7",
+              "jdk.jconsole@21.0.7",
+              "jdk.jdeps@21.0.7",
+              "jdk.jdi@21.0.7",
+              "jdk.jdwp.agent@21.0.7",
+              "jdk.jfr@21.0.7",
+              "jdk.jlink@21.0.7",
+              "jdk.jpackage@21.0.7",
+              "jdk.jshell@21.0.7",
+              "jdk.jsobject@21.0.7",
+              "jdk.jstatd@21.0.7",
+              "jdk.localedata@21.0.7",
+              "jdk.management@21.0.7",
+              "jdk.management.agent@21.0.7",
+              "jdk.management.jfr@21.0.7",
+              "jdk.naming.dns@21.0.7",
+              "jdk.naming.rmi@21.0.7",
+              "jdk.net@21.0.7",
+              "jdk.nio.mapmode@21.0.7",
+              "jdk.random@21.0.7",
+              "jdk.sctp@21.0.7",
+              "jdk.security.auth@21.0.7",
+              "jdk.security.jgss@21.0.7",
+              "jdk.unsupported@21.0.7",
+              "jdk.unsupported.desktop@21.0.7",
+              "jdk.xml.dom@21.0.7",
+              "jdk.zipfs@21.0.7"
+            ],
+            "optionalSyzygy": "not-bundled",
+            "status": "headless-resources-jni-passed"
+          }
+        }
+      }
+    },
+    "uci": {
+      "directory": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\wu7-windows-final",
+      "image": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\wu7-windows-final\\SeedV6-UCI",
+      "launcher": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\wu7-windows-final\\SeedV6-UCI\\SeedV6-UCI.exe",
+      "archive": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\wu7-windows-final\\SeedV6-UCI-windows-x64.zip",
+      "archiveBytes": 16031254,
+      "archiveSha256": "fc07b8bb70e0d584a5b7d54e50a3953656e028365f11074a8a4ea82ee86a6306",
+      "manifestSha256": "f371179ddc83777266037b557e843f6746ca7d2f36934f53e91376d1d4e2ff85",
+      "files": 98,
+      "sourceRevision": "328531f672260cf4fd5e49b26724fee7329bb0d8",
+      "sourceStatus": [
+        "M .gitignore",
+        " M README.md",
+        " M app-gui/build.gradle",
+        " M app-uci/src/main/java/com/ohinteractive/seedv6/uci/ProductionModel.java",
+        " M app/src/test/java/com/ohinteractive/seedv6/ApplicationVersionTest.java",
+        " M build.gradle",
+        " M docs/architecture.md",
+        " M docs/guide.md",
+        " M docs/unified-architecture/ACCEPTANCE.md",
+        " M docs/unified-architecture/CONTRACT.md",
+        " M docs/unified-architecture/STATE.md",
+        " M engine-core/src/main/java/com/ohinteractive/seedv6/ApplicationVersion.java",
+        " M gradle/application-version.gradle",
+        " M gradle/java-conventions.gradle",
+        " M gradle/package-mac.gradle",
+        " M tools/package-windows.ps1",
+        " M tools/test_gradle_architecture.py",
+        "?? docs/unified-architecture/WU7-PACKAGING.md",
+        "?? engine-core/src/main/java/com/ohinteractive/seedv6/core/brnpair2/ProductionModel.java",
+        "?? gradle/native-packaging.gradle",
+        "?? tools/PackagingProbe.java",
+        "?? tools/native_package_checks.py",
+        "?? tools/native_packaging.py",
+        "?? tools/test_native_packaging.py",
+        "?? tools/verify-native-candidate.py"
+      ],
+      "sourceManifestSha256": "8f9b60cc941650e91176724e69a379c2470bee2b0bf2867e8303dca93398c4ef",
+      "coreJarSha256": "adaf356401bc31b61b8b3a28e77a65aed6fcd17b85488afa40a8bf4e3696b886",
+      "modelSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "compilerJdk": {
+        "IMPLEMENTOR": "\"Oracle Corporation\"",
+        "JAVA_RUNTIME_VERSION": "\"21.0.7+8-LTS-245\"",
+        "JAVA_VERSION": "\"21.0.7\"",
+        "JAVA_VERSION_DATE": "\"2025-04-15\"",
+        "LIBC": "\"default\"",
+        "MODULES": "\"java.base java.compiler java.datatransfer java.xml java.prefs java.desktop java.instrument java.logging java.management java.security.sasl java.naming java.rmi java.management.rmi java.net.http java.scripting java.security.jgss java.transaction.xa java.sql java.sql.rowset java.xml.crypto java.se java.smartcardio jdk.accessibility jdk.internal.jvmstat jdk.attach jdk.charsets jdk.internal.opt jdk.zipfs jdk.compiler jdk.crypto.ec jdk.crypto.cryptoki jdk.crypto.mscapi jdk.dynalink jdk.internal.ed jdk.editpad jdk.hotspot.agent jdk.httpserver jdk.incubator.vector jdk.internal.le jdk.internal.vm.ci jdk.internal.vm.compiler jdk.internal.vm.compiler.management jdk.jartool jdk.javadoc jdk.jcmd jdk.management jdk.management.agent jdk.jconsole jdk.jdeps jdk.jdwp.agent jdk.jdi jdk.jfr jdk.jlink jdk.jpackage jdk.jshell jdk.jsobject jdk.jstatd jdk.localedata jdk.management.jfr jdk.naming.dns jdk.naming.rmi jdk.net jdk.nio.mapmode jdk.random jdk.sctp jdk.security.auth jdk.security.jgss jdk.unsupported jdk.unsupported.desktop jdk.xml.dom\"",
+        "OS_ARCH": "\"x86_64\"",
+        "OS_NAME": "\"Windows\"",
+        "SOURCE": "\".:git:872b0d18bd55 open:git:aa412476d5d7\""
+      },
+      "runtimeJdk": {
+        "IMPLEMENTOR": "\"Oracle Corporation\"",
+        "JAVA_RUNTIME_VERSION": "\"21.0.7+8-LTS-245\"",
+        "JAVA_VERSION": "\"21.0.7\"",
+        "JAVA_VERSION_DATE": "\"2025-04-15\"",
+        "LIBC": "\"default\"",
+        "MODULES": "\"java.base java.compiler java.datatransfer java.xml java.prefs java.desktop java.instrument java.logging java.management java.security.sasl java.naming java.rmi java.management.rmi java.net.http java.scripting java.security.jgss java.transaction.xa java.sql java.sql.rowset java.xml.crypto java.se java.smartcardio jdk.accessibility jdk.internal.jvmstat jdk.attach jdk.charsets jdk.internal.opt jdk.zipfs jdk.compiler jdk.crypto.ec jdk.crypto.cryptoki jdk.crypto.mscapi jdk.dynalink jdk.internal.ed jdk.editpad jdk.hotspot.agent jdk.httpserver jdk.incubator.vector jdk.internal.le jdk.internal.vm.ci jdk.internal.vm.compiler jdk.internal.vm.compiler.management jdk.jartool jdk.javadoc jdk.jcmd jdk.management jdk.management.agent jdk.jconsole jdk.jdeps jdk.jdwp.agent jdk.jdi jdk.jfr jdk.jlink jdk.jpackage jdk.jshell jdk.jsobject jdk.jstatd jdk.localedata jdk.management.jfr jdk.naming.dns jdk.naming.rmi jdk.net jdk.nio.mapmode jdk.random jdk.sctp jdk.security.auth jdk.security.jgss jdk.unsupported jdk.unsupported.desktop jdk.xml.dom\"",
+        "OS_ARCH": "\"x86_64\"",
+        "OS_NAME": "\"Windows\"",
+        "SOURCE": "\".:git:872b0d18bd55 open:git:aa412476d5d7\""
+      },
+      "verification": {
+        "checks": [
+          "Threads=1: handshake/ready/hash/clear/depth/timed/clocks/stop/position/quit",
+          "Threads=4: handshake/ready/hash/clear/depth/timed/clocks/stop/position/quit",
+          "Threads=16: handshake/ready/hash/clear/depth/timed/clocks/stop/position/quit",
+          "EOF during active multiworker search exits and closes pipes",
+          "terminate during active multiworker search exits and closes pipes",
+          "Missing/corrupt/incompatible model fails nonzero on stderr without protocol/fallback"
+        ],
+        "externalJava": "PATH empty; JAVA_HOME/JDK_HOME removed",
+        "guiTraining": "absent; java.base-only runtime",
+        "searches": 15,
+        "status": "passed"
+      },
+      "externalRelocation": {
+        "path": "C:\\Temp\\SeedV6 WU7 validation\\uci-final\\verification.json",
+        "sha256": "5f74f693be8e0a1b72c445d33abbab272cc7320fc15b30a596a03ece8f666e8a",
+        "status": "passed",
+        "copies": {
+          "copied": {
+            "checks": [
+              "Threads=1: handshake/ready/hash/clear/depth/timed/clocks/stop/position/quit",
+              "Threads=4: handshake/ready/hash/clear/depth/timed/clocks/stop/position/quit",
+              "Threads=16: handshake/ready/hash/clear/depth/timed/clocks/stop/position/quit",
+              "EOF during active multiworker search exits and closes pipes",
+              "terminate during active multiworker search exits and closes pipes",
+              "Missing/corrupt/incompatible model fails nonzero on stderr without protocol/fallback"
+            ],
+            "externalJava": "PATH empty; JAVA_HOME/JDK_HOME removed",
+            "guiTraining": "absent; java.base-only runtime",
+            "searches": 15,
+            "status": "passed"
+          },
+          "extracted": {
+            "checks": [
+              "Threads=1: handshake/ready/hash/clear/depth/timed/clocks/stop/position/quit",
+              "Threads=4: handshake/ready/hash/clear/depth/timed/clocks/stop/position/quit",
+              "Threads=16: handshake/ready/hash/clear/depth/timed/clocks/stop/position/quit",
+              "EOF during active multiworker search exits and closes pipes",
+              "terminate during active multiworker search exits and closes pipes",
+              "Missing/corrupt/incompatible model fails nonzero on stderr without protocol/fallback"
+            ],
+            "externalJava": "PATH empty; JAVA_HOME/JDK_HOME removed",
+            "guiTraining": "absent; java.base-only runtime",
+            "searches": 15,
+            "status": "passed"
+          }
+        }
+      }
+    }
+  },
+  "regression": {
+    "totals": {
+      "tests": 1829,
+      "passed": 1771,
+      "failed": 19,
+      "skipped": 39
+    },
+    "newFailures": [],
+    "inheritedFailures": [
+      {
+        "classname": "com.ohinteractive.seedv6.gui.TablebasePresentationTest",
+        "name": "engineCardLabelsOutcomeWithoutEvaluationUnitsOrASearchedPv()",
+        "status": "failed",
+        "message": "org.opentest4j.AssertionFailedError: White wins ==> expected: <true> but was: <false>"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "name": "[1] PLAN",
+        "status": "failed",
+        "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "name": "[2] DATA",
+        "status": "failed",
+        "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "name": "[3] ATTEMPT",
+        "status": "failed",
+        "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "name": "[4] CANDIDATE",
+        "status": "failed",
+        "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "name": "[5] CORPUS_RECEIPT",
+        "status": "failed",
+        "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "name": "[6] LATEST",
+        "status": "failed",
+        "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "name": "[7] SOURCE",
+        "status": "failed",
+        "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "name": "[8] REPLACEMENT",
+        "status": "failed",
+        "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "name": "[9] RECEIPT",
+        "status": "failed",
+        "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.gui.Brn1TrainingGuiTest",
+        "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+        "status": "failed",
+        "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.gui.Brn2SupervisionGuiTest",
+        "name": "freshControlsDefaultWdlExposePercentComplementAndFollowEveryLifecycleLock()",
+        "status": "failed",
+        "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.gui.Brn2TrainingGuiTest",
+        "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+        "status": "failed",
+        "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest",
+        "name": "[1] BRN-0",
+        "status": "failed",
+        "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest",
+        "name": "[2] BRN-1",
+        "status": "failed",
+        "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.gui.BrnCaptureGuiTest",
+        "name": "brnDefaultRoundTripAndLifecycleLocksWithNnuePanelUnchanged()",
+        "status": "failed",
+        "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.gui.BrnPair2GuiTest",
+        "name": "capabilitiesAndRecipeEditorsAppearInExistingTrainingPanel()",
+        "status": "failed",
+        "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.getSelectedItem()\" because \"selector\" is null"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.gui.BrnTrainingGuiTest",
+        "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+        "status": "failed",
+        "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null"
+      },
+      {
+        "classname": "com.ohinteractive.seedv6.gui.WorkflowRefinementGuiTest",
+        "name": "compactDashboardShowsBothGraphsAtOrdinaryViewportAndRendersAt150Percent()",
+        "status": "failed",
+        "message": "org.opentest4j.AssertionFailedError: Graphs bottom=719 viewport=649 ==> expected: <true> but was: <false>"
+      }
+    ],
+    "earlierTransientTimeoutReproduced": false
+  },
+  "classPreservation": {
+    "engine-core.jar": {
+      "unchanged": 173,
+      "changed": [
+        "com/ohinteractive/seedv6/ApplicationVersion.class"
+      ],
+      "added": [
+        "com/ohinteractive/seedv6/core/brnpair2/ProductionModel.class"
+      ],
+      "removed": []
+    },
+    "engine-training.jar": {
+      "unchanged": 317,
+      "changed": [],
+      "added": [],
+      "removed": []
+    },
+    "app-gui.jar": {
+      "unchanged": 220,
+      "changed": [],
+      "added": [],
+      "removed": []
+    },
+    "app-uci.jar": {
+      "unchanged": 13,
+      "changed": [
+        "com/ohinteractive/seedv6/uci/ProductionModel.class"
+      ],
+      "added": [],
+      "removed": []
+    }
+  },
+  "coreBridge": {
+    "path": "build/migration/wu7/core-bridge",
+    "status": "passed",
+    "vectors": 203,
+    "exactFields": 17
+  },
+  "trainingBridge": {
+    "path": "build/migration/wu7/training-bridge",
+    "status": "passed",
+    "familyContinuations": 7,
+    "historicalModelRecompile": "exact"
+  },
+  "legacyUci": {
+    "path": "build/migration/wu7/legacy-uci-bridge",
+    "status": "passed",
+    "requests": 66,
+    "exactComparisons": 10
+  },
+  "standaloneUci": {
+    "path": "build/migration/wu7/standalone-uci-current",
+    "status": "passed",
+    "searches": 159,
+    "workers": "1..16",
+    "coreJarSha256": "adaf356401bc31b61b8b3a28e77a65aed6fcd17b85488afa40a8bf4e3696b886"
+  },
+  "nativeUciHistorical": {
+    "path": "build/migration/wu7/native-final",
+    "status": "passed",
+    "searches": 128,
+    "ueFixtureRevision": "58511f45bf1bf0a45ca25f31da402a9e0ba56c50",
+    "fixtureSha256": "0a10bc7de11506fca7945e236caa8badffab4abbcee975fd1b72583e47dfa3e7",
+    "externalJava": "PATH empty and JAVA_HOME/JDK_HOME unset"
+  },
+  "defaultModelFailure": {
+    "defaultMissing": {
+      "exit": 1,
+      "stderr": "SeedV6 UCI startup/runtime error: Required BRE-Pair 2 model missing: C:\\Temp\\SeedV6 WU7 validation\\uci-04\\archive extracted with spaces\\SeedV6-UCI\\models\\baseline.brn-pair2; supply --model <file>; expected SHA-256 5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7\n",
+      "stdout": ""
+    },
+    "status": "passed"
+  },
+  "nativeComparison": {
+    "optionalNative": {
+      "portableEntriesIdentical": true,
+      "defaultCore": "adaf356401bc31b61b8b3a28e77a65aed6fcd17b85488afa40a8bf4e3696b886",
+      "nativeCore": "707986ff4723ac19080563209fecdd2e4fac832f1ecb1db52145fd76cb78498c",
+      "nativeEntries": {
+        "META-INF/licenses/Fathom.txt": "c8038055839bd02f995cd7d1bba19657720097f5604411a7977ebcb5b4a37759",
+        "native/seedv6_syzygy.dll": "07d727a89d6bca923361aa7a576e62f60c4da0a897a8c7d96e45b38cf126fece"
+      },
+      "guiNativeLoad": "loaded"
+    },
+    "macDependencyPayloads": {
+      "com/formdev/flatlaf/natives/libflatlaf-macos-arm64.dylib": {
+        "jar": "flatlaf-3.7.jar",
+        "sha256": "d0b51c35610ad7d48ea5cc63d2bbe260504720e0af31a8038f9f9e74aae5176e",
+        "MachOArchitecture": "arm64",
+        "runtimeExecuted": false
+      },
+      "com/sun/jna/darwin-aarch64/libjnidispatch.jnilib": {
+        "jar": "jna-5.17.0.jar",
+        "sha256": "70c9af22ba3ce12128881b4654422ce69a6f96fc238333731cf718601b536245",
+        "MachOArchitecture": "arm64",
+        "runtimeExecuted": false
+      },
+      "org/sqlite/native/Mac/aarch64/libsqlitejdbc.dylib": {
+        "jar": "sqlite-jdbc-3.53.4.0.jar",
+        "sha256": "3cd1bbc5a9d639919a9772678dfd4192f73c3ac5a31c9213ee87e13ebaa49a74",
+        "MachOArchitecture": "arm64",
+        "runtimeExecuted": false
+      },
+      "darwin/aarch64/libzstd-jni-1.5.7-20.dylib": {
+        "jar": "zstd-jni-1.5.7-20.jar",
+        "sha256": "498a70afdbe5698e28d4b7c03206d28c037c6a94f36c755d4537ec9c93bdfd4f",
+        "MachOArchitecture": "arm64",
+        "runtimeExecuted": false
+      }
+    }
+  },
+  "commands": [
+    {
+      "name": "current-installs",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+        "--no-daemon",
+        "--max-workers=2",
+        "--console=plain",
+        "--warning-mode",
+        "fail",
+        ":app:installDist",
+        ":app-uci:installDist",
+        ":research:installResearch",
+        "installResearchWorkspace"
+      ],
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 10.71
+    },
+    {
+      "name": "architecture-fixtures",
+      "command": [
+        "C:\\Program Files\\Python313\\python.exe",
+        "-B",
+        "tools/test_gradle_architecture.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 189.767
+    },
+    {
+      "name": "portable-packaging-tests",
+      "command": [
+        "C:\\Program Files\\Python313\\python.exe",
+        "-B",
+        "tools/test_native_packaging.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 0.304
+    },
+    {
+      "name": "mac-config-dry-run",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+        "--no-daemon",
+        "--max-workers=2",
+        "--console=plain",
+        "--warning-mode",
+        "fail",
+        "packageMac",
+        "-PproductionModel=C:/projects/seed/java/seedv6-ue/models/baseline.brn-pair2",
+        "--dry-run"
+      ],
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 8.724
+    },
+    {
+      "name": "mac-wrong-platform",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+        "--no-daemon",
+        "--max-workers=2",
+        "--console=plain",
+        "--warning-mode",
+        "fail",
+        "packageMac",
+        "-PproductionModel=C:/projects/seed/java/seedv6-ue/models/baseline.brn-pair2"
+      ],
+      "exitCode": 1,
+      "expected": 1,
+      "seconds": 5.627
+    },
+    {
+      "name": "missing-model",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+        "--no-daemon",
+        "--max-workers=2",
+        "--console=plain",
+        "--warning-mode",
+        "fail",
+        ":app-uci:packageWindows",
+        "-PproductionModel=build/migration/wu7/nonexistent-model"
+      ],
+      "exitCode": 1,
+      "expected": 1,
+      "seconds": 9.167
+    },
+    {
+      "name": "corrupt-model",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+        "--no-daemon",
+        "--max-workers=2",
+        "--console=plain",
+        "--warning-mode",
+        "fail",
+        ":app-uci:packageWindows",
+        "-PcandidateId=wu7-corrupt-model",
+        "-PproductionModel=build/migration/wu7/wrong-model.brn-pair2"
+      ],
+      "exitCode": 1,
+      "expected": 1,
+      "seconds": 14.061
+    },
+    {
+      "name": "independent-gui-native",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+        "--no-daemon",
+        "--max-workers=2",
+        "--console=plain",
+        "--warning-mode",
+        "fail",
+        ":app-gui:packageWindows",
+        "-PwithSyzygy",
+        "-PcandidateId=wu7-native-independent",
+        "-PproductionModel=C:/projects/seed/java/seedv6-ue/models/baseline.brn-pair2"
+      ],
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 34.424
+    },
+    {
+      "name": "independent-uci-native",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+        "--no-daemon",
+        "--max-workers=2",
+        "--console=plain",
+        "--warning-mode",
+        "fail",
+        ":app-uci:packageWindows",
+        "-PwithSyzygy",
+        "-PcandidateId=wu7-native-independent",
+        "-PproductionModel=C:/projects/seed/java/seedv6-ue/models/baseline.brn-pair2"
+      ],
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 25.885
+    },
+    {
+      "name": "native-common-identity",
+      "command": [
+        "C:\\Program Files\\Python313\\python.exe",
+        "-B",
+        "tools/native_packaging.py",
+        "compare",
+        "--platform",
+        "windows",
+        "--context",
+        "build/packaging/context-windows.json"
+      ],
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 2.511
+    },
+    {
+      "name": "final-candidates",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+        "--no-daemon",
+        "--max-workers=2",
+        "--console=plain",
+        "--warning-mode",
+        "fail",
+        "packageWindows",
+        "-PcandidateId=wu7-windows-final",
+        "-PproductionModel=C:/projects/seed/java/seedv6-ue/models/baseline.brn-pair2"
+      ],
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 34.612
+    },
+    {
+      "name": "occupied-final",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+        "--no-daemon",
+        "--max-workers=2",
+        "--console=plain",
+        "--warning-mode",
+        "fail",
+        "packageWindows",
+        "-PcandidateId=wu7-windows-final",
+        "-PproductionModel=C:/projects/seed/java/seedv6-ue/models/baseline.brn-pair2"
+      ],
+      "exitCode": 1,
+      "expected": 1,
+      "seconds": 8.347
+    },
+    {
+      "name": "occupied-cache-replay",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+        "--no-daemon",
+        "--max-workers=2",
+        "--console=plain",
+        "--warning-mode",
+        "fail",
+        "packageWindows",
+        "-PcandidateId=wu7-windows-final",
+        "-PproductionModel=C:/projects/seed/java/seedv6-ue/models/baseline.brn-pair2"
+      ],
+      "exitCode": 1,
+      "expected": 1,
+      "seconds": 8.325
+    },
+    {
+      "name": "research-tasks",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+        "--no-daemon",
+        "--max-workers=2",
+        "--console=plain",
+        "--warning-mode",
+        "fail",
+        ":research:exactSearch",
+        ":research:evaluatorBenchmark",
+        ":app:exactSearch",
+        "-PsearchArgs=--depth=2 --warmups=0 --repetitions=1 --position=all --tt=off",
+        "-PbenchmarkArgs=--warmups=0 --repetitions=1 --evaluations=1"
+      ],
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 9.827
+    },
+    {
+      "name": "legacy-packaging-dry-run",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+        "--no-daemon",
+        "--max-workers=2",
+        "--console=plain",
+        "--warning-mode",
+        "fail",
+        "packageLegacyWindows",
+        "packageLegacyMac",
+        "--dry-run"
+      ],
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 10.196
+    },
+    {
+      "name": "finalizer-tests",
+      "command": [
+        "C:\\Program Files\\Python313\\python.exe",
+        "-B",
+        "tools/test_seed_version_finalizer.py"
+      ],
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 89.033
+    }
+  ],
+  "regressionCommand": {
+    "command": [
+      "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+      "--no-daemon",
+      "--max-workers=1",
+      "--console=plain",
+      "-I",
+      "build/migration/wu7/isolated.gradle",
+      "-Pheadless",
+      "--continue",
+      ":engine-core:test",
+      ":engine-training:test",
+      ":app-gui:test",
+      ":app-uci:test",
+      ":app:test",
+      ":research:test",
+      "integrationTest",
+      "--tests",
+      "com.ohinteractive.seedv6.gui.*",
+      "--tests",
+      "com.ohinteractive.seedv6.uci.*",
+      "--tests",
+      "*ProductionSearchTest",
+      "--tests",
+      "*TrainingSessionTest",
+      "--tests",
+      "*BrnPair2CorpusTrainingTest",
+      "--tests",
+      "*CheckpointRetentionTest",
+      "--tests",
+      "*AvailableCheckpointsTest"
+    ],
+    "exitCode": 1,
+    "seconds": 1134.606
+  },
+  "safety": {
+    "packagingUnitTests": 9,
+    "architectureFixtures": 15,
+    "finalizerDisposableTests": 15,
+    "wrongPlatformRejectedBeforeCompilation": true,
+    "missingModelRejectedBeforeCompilation": true,
+    "corruptModelRejectedBeforeNativeAssembly": true,
+    "occupiedDestinationRejected": true,
+    "configurationCacheReplayRejectedOccupiedDestination": true,
+    "failedAttemptsOnlyInStaging": true,
+    "freshCoreCompilationSameJarSha256": true,
+    "noGuiLauncherExecuted": true,
+    "noClientsOrGamesLaunched": true
+  },
+  "preservation": {
+    "original": {
+      "unchanged": true,
+      "comparison": {
+        "root": true,
+        "head": true,
+        "branch": true,
+        "status": true,
+        "tracked": true,
+        "artifacts": true,
+        "metadata": true,
+        "inventory": true
+      },
+      "trackedFiles": 3597,
+      "protectedArtifacts": 1098
+    },
+    "uci": {
+      "unchanged": true,
+      "comparison": {
+        "root": true,
+        "head": true,
+        "branch": true,
+        "status": true,
+        "tracked": true,
+        "artifacts": true,
+        "metadata": true,
+        "inventory": true
+      },
+      "trackedFiles": 110,
+      "protectedArtifacts": 590
+    }
+  },
+  "version": {
+    "before": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 35
+    },
+    "after": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 35
+    },
+    "sha256": "92a26d4e187edc6c47ed88100d355f77b4597d98524d21d005a3c164986b4bca",
+    "bytesUnchanged": true,
+    "decision": "no_bump",
+    "authority": "Owner WU7 explicitly forbids release/application/build increment",
+    "token": "af2ee72cf31d40b58a3449fa19ee9152",
+    "finalization": "completed no_bump; no warnings or blockers; version bytes independently verified unchanged",
+    "journalExists": false,
+    "receiptPath": "build/migration/wu7/finalization.json",
+    "receiptSha256": "52ad2c0ae96f657fca4b4145945324ef818db7b181c5db42202083fa9383ffe8",
+    "receipt": {
+      "status": "no_bump",
+      "token": "af2ee72cf31d40b58a3449fa19ee9152",
+      "decision": "no_bump",
+      "before": {
+        "build": 35,
+        "major": 0,
+        "minor": 0,
+        "patch": 0
+      },
+      "verified_bump": false,
+      "warnings": [],
+      "blockers": []
+    }
+  },
+  "mac": {
+    "implementation": "root and independent module tasks; native arm64 only; GUI jpackage and UCI jlink/exec launcher",
+    "nativeExecution": "NOT RUN: Windows host",
+    "portableTests": "Mac launcher/layout/template/icon/jlink configuration tested; four real dependency payloads have Mach-O arm64 headers",
+    "crossPlatformCoreHashComparison": "NOT RUN: no Mac core/package produced; --peer fails on differences and records actual identities",
+    "signingNotarization": "owner decision pending before public distribution"
+  },
+  "assetBoundary": {
+    "localModel": "C:/projects/seed/java/seedv6-ue/models/baseline.brn-pair2",
+    "restoration": "explicit verified private file via -PproductionModel, SEEDV6_PRODUCTION_MODEL or ignored build-assets/production/network.brn-pair2",
+    "modelBytesCommitted": false,
+    "publicationAuthorized": false,
+    "cleanCloneReproducibility": "not certified; approved model restoration/publication gate remains"
+  },
+  "adverseAttempts": [
+    {
+      "path": "build/migration/wu7/package-01.log",
+      "issues": [
+        "GUI allowlist missed existing error_prone_annotations dependency",
+        "JDK 21 GA launcher termination retained child pipes"
+      ],
+      "remediation": "correct closure; native JDK 21.0.7 runtime and >=21.0.6 preflight requirement; no test relaxed"
+    },
+    {
+      "path": "build/migration/wu7/package-02.log",
+      "issue": "Temurin installation directory was incomplete",
+      "remediation": "use verified existing Oracle 21.0.7"
+    },
+    {
+      "path": "build/migration/wu7/package-03.log",
+      "issue": "ZIP extraction lost Windows launcher read-only mode",
+      "remediation": "restore archived modes before integrity validation"
+    },
+    {
+      "path": "build/migration/wu7/native-full.log",
+      "issue": "new historical protocol harness lacked TSV fixture",
+      "remediation": "extract immutable hashed TSV, preserve assertions, rerun successfully"
+    },
+    {
+      "path": "build/migration/wu7/standalone-uci",
+      "issue": "preliminary suite used pre-existing installDist",
+      "remediation": "rerun 159 searches after current-installs; assert actual current core hash in standalone-uci-current"
+    }
+  ],
+  "limitations": [
+    "19 inherited failures remain open and unsuppressed",
+    "39 existing skips; unselected root training suites and opt-in slow-NNUE tests not rerun",
+    "WU6 transient concurrent timeout did not recur; exact cause remains unknown",
+    "Native GUI windows and Arena/BotLi/live-game acceptance not performed",
+    "Native Mac execution, permissions/relocation/signals and paired platform provenance remain required",
+    "Optional Syzygy embeds platform native bytes in core; default versus native differences investigated and portable entries verified identical",
+    "Candidate source was dirty at the accepted WU6 HEAD; manifests bind exact inputs. A later coordinated clean Windows/Mac build must use the same revision",
+    "Existing docs/guide.md BRN-2 package-info link predates WU7 and still points at the old owner; new WU7 links are checked"
+  ],
+  "rawEvidence": "build/migration/wu7 plus ignored candidate directories and explicitly authorized C:/Temp/SeedV6 WU7 validation",
+  "humanActions": [
+    {
+      "kind": "immediate implementation blocker",
+      "action": "None"
+    },
+    {
+      "kind": "blocking dependent migration",
+      "action": "GPT/user reconciliation of WU7 before further work; native Mac and human GUI/client acceptance plus inherited-failure reconciliation before full acceptance/cutover"
+    },
+    {
+      "kind": "deferred public-release gate",
+      "action": "Authorize/validate model restoration/publication, choose first unified release identity, decide signing/notarization"
+    }
+  ],
+  "git": {
+    "commitBoundary": "Attributable WU7 implementation, validation tools and migration records; commit introducing this evidence",
+    "modelsOrPackagesStaged": false,
+    "pushPublishDeploy": false,
+    "WU8Started": false
+  },
+  "finalReview": {
+    "artifacts": [
+      {
+        "application": "gui",
+        "archiveBytes": 81608063,
+        "archiveSha256": "e8fe79077cc365d8fd309e180bd2e338bba03c4f5de0f40ad51e90abb069e2af"
+      },
+      {
+        "application": "uci",
+        "archiveBytes": 16031254,
+        "archiveSha256": "fc07b8bb70e0d584a5b7d54e50a3953656e028365f11074a8a4ea82ee86a6306"
+      }
+    ],
+    "changedAfterPackaging": [
+      "docs/unified-architecture/ACCEPTANCE.md",
+      "docs/unified-architecture/STATE.md",
+      "docs/unified-architecture/WU7-PACKAGING.md"
+    ],
+    "changedAfterPackagingScope": "documentation only; all packaged implementation sources unchanged",
+    "checkedLocalLinks": 97,
+    "inheritedMissingLinks": [
+      [
+        "docs/guide.md",
+        "../app/src/main/java/com/ohinteractive/seedv6/core/brn2/package-info.java"
+      ]
+    ],
+    "pythonAst": "4 passed",
+    "status": "passed",
+    "versionUnchanged": true
+  }
+}

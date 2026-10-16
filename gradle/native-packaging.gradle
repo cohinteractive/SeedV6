@@ -1,0 +1,94 @@
+import org.gradle.process.ExecOperations
+import javax.inject.Inject
+
+// One convention, two application owners. Python uses only its standard library;
+// native assembly remains JDK jpackage/jlink. No root runtime configuration.
+abstract class NativePackaging extends DefaultTask {
+    @Input abstract Property<String> getAction()
+    @Input abstract Property<String> getPlatformName()
+    @Input abstract Property<String> getApplicationId()
+    @Input abstract Property<String> getCandidateId()
+    @Input abstract Property<String> getPythonCommand()
+    @Input abstract Property<String> getModelPath()
+    @Internal abstract DirectoryProperty getRepositoryDirectory()
+    @Internal abstract DirectoryProperty getJdkHome()
+    @Internal abstract DirectoryProperty getCompilerHome()
+    @Internal abstract RegularFileProperty getContextFile()
+    @Classpath abstract ConfigurableFileCollection getRuntimeJars()
+    @Inject abstract ExecOperations getExecOperations()
+
+    @TaskAction void executePackaging() {
+        def command = [pythonCommand.get(), '-B',
+            new File(repositoryDirectory.get().asFile, 'tools/native_packaging.py').absolutePath,
+            action.get(), '--platform', platformName.get(), '--context', contextFile.get().asFile.absolutePath]
+        if (action.get() == 'prepare') {
+            command += ['--jdk', jdkHome.get().asFile.absolutePath, '--model', modelPath.get(),
+                        '--candidate', candidateId.get()]
+        } else if (action.get() == 'package') {
+            command += ['--application', applicationId.get(), '--compiler-jdk', compilerHome.get().asFile.absolutePath]
+            runtimeJars.files.sort { it.name }.each { command += ['--jar', it.absolutePath] }
+        }
+        execOperations.exec {
+            workingDir repositoryDirectory.get().asFile
+            commandLine command
+        }
+    }
+}
+
+def python = providers.gradleProperty('packagingPython').orElse(
+        System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows') ? 'python' : 'python3')
+def model = providers.gradleProperty('productionModel').orElse(
+        providers.environmentVariable('SEEDV6_PRODUCTION_MODEL')).orElse(
+        rootProject.file('build-assets/production/network.brn-pair2').absolutePath)
+
+['Windows': 'windows', 'Mac': 'macos'].each { suffix, platform ->
+    def context = rootProject.layout.buildDirectory.file("packaging/context-${platform}.json")
+    def common = { NativePackaging t ->
+        t.platformName = platform
+        t.repositoryDirectory = rootProject.layout.projectDirectory
+        t.jdkHome = new File(System.getProperty('java.home'))
+        t.pythonCommand = python
+        t.modelPath = model
+        t.candidateId = providers.gradleProperty('candidateId').orElse('auto')
+        t.applicationId = ''
+        t.contextFile = context
+        // Always perform a fresh native build/verification; never reuse a success marker.
+        t.outputs.upToDateWhen { false }
+    }
+    def preflight = tasks.register("prepare${suffix}Packaging", NativePackaging) {
+        common(it)
+        action = 'prepare'
+        group = 'distribution'
+        description = "Validates ${platform} host, JDK and private model before native build tasks."
+    }
+    // A wrong-platform request fails before Java/native compilation, not after it.
+    allprojects { owner ->
+        owner.tasks.configureEach { task ->
+            if (task.name in ['compileJava', 'processResources', 'jar', 'compileSyzygy', 'generateApplicationVersion'])
+                task.mustRunAfter(preflight)
+        }
+    }
+    ['gui', 'uci'].each { app ->
+        project(":app-${app}") { owner ->
+            plugins.withId('java') {
+                tasks.register("package${suffix}", NativePackaging) {
+                    common(it)
+                    action = 'package'
+                    applicationId = app
+                    compilerHome = javaToolchains.compilerFor(java.toolchain).map { it.metadata.installationPath }
+                    group = 'distribution'
+                    description = "Builds and headlessly verifies the independent ${platform} ${app} candidate and ZIP."
+                    dependsOn preflight, tasks.named('jar')
+                    runtimeJars.from(tasks.named('jar'), configurations.runtimeClasspath)
+                }
+            }
+        }
+    }
+    tasks.register("package${suffix}", NativePackaging) {
+        common(it)
+        action = 'compare'
+        group = 'distribution'
+        description = "Builds BOTH native ${platform} candidates and verifies their common engine identity."
+        dependsOn ":app-gui:package${suffix}", ":app-uci:package${suffix}"
+    }
+}

@@ -12,10 +12,10 @@ tasks.named('assemble') {
     dependsOn subprojects.collect { "${it.path}:assemble" }
 }
 
-// Root-level packaging entry points, discoverable with ./gradlew tasks.
+// Retained legacy snapshots; unified candidates are independent of :app.
 apply from: rootProject.file('gradle/package-mac.gradle')
 
-tasks.register('packageWindows', Exec) {
+tasks.register('packageLegacyWindows', Exec) {
     group = 'distribution'
     description = 'Builds a standalone Windows GUI executable with a bundled Java runtime, without running tests.'
 
@@ -25,3 +25,5 @@ tasks.register('packageWindows', Exec) {
             rootProject.file('tools/package-windows.ps1').absolutePath, '-FromGradle'
     // No declared outputs: each invocation creates a new timestamped snapshot.
 }
+
+apply from: rootProject.file('gradle/native-packaging.gradle')

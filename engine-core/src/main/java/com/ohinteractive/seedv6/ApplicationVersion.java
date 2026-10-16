@@ -28,7 +28,8 @@ public record ApplicationVersion(BigInteger major, BigInteger minor, BigInteger 
         return new ApplicationVersion(number(version, "major"), number(version, "minor"),
                 number(version, "patch"), number(version, "build"),
                 required(version, "versionUpdated"), required(version, "sourceRevision"),
-                builtAt == null ? "Development run" : builtAt, required(version, "platform"));
+                builtAt == null ? "Development run" : builtAt,
+                desktop.getProperty("platform", required(version, "platform")));
     }
 
     public String version() { return major + "." + minor + "." + patch; }

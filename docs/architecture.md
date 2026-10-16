@@ -23,11 +23,11 @@ boundaries live in `gradle/`. See [the WU1 transition](unified-architecture/WU1-
 for the foundation and legacy removal gate, and [WU3](unified-architecture/WU3-TRAINING.md)
 for current training ownership and dependency declarations. Java 21's application plugin launches
 [`Main`](../app/src/main/java/com/ohinteractive/seedv6/Main.java), selecting desktop
-`SwingLauncher` for `gui` and `UciEngine` otherwise. The application JAR contains legacy main output; `installDist` and native packaging
+`SwingLauncher` for `gui` and `UciEngine` otherwise. The application JAR contains legacy main output; legacy `installDist` and `packageLegacyWindows`/`packageLegacyMac`
 include its runtime dependencies, including `app-gui.jar`, `app-uci.jar`,
 `engine-core.jar` and `engine-training.jar`. The separate `:app-uci:installDist`
 contains only UCI and core JARs, with a Java launcher and an explicitly supplied,
-checksum-pinned production model. Native distributions remain WU7.
+checksum-pinned production model. Unified native candidates are documented in WU7 below.
 Training owns the unchanged Gson/SQLite/Zstandard dependencies, optional trainer-only
 BRN-3 vector kernels and binpack notice. Core owns the opening
 book and optional Syzygy native sources/resources/license. Shared headless ApplicationVersion and its generated identity resource now belong
@@ -205,3 +205,14 @@ Production configurations never select SR-021; research properties are rejected 
 production UCI and are not read by core/GUI. Research activation is confined to the
 explicit research launcher. This is activation/classpath isolation, not complete
 experimental-class exclusion from core. SR-021 remains deferred without adoption.
+
+## Unified native packaging (WU7)
+
+Root `packageWindows` / `packageMac` coordinate app-gui and app-uci directly;
+module tasks package either independently. Shared Gradle conventions and native
+jpackage/jlink tooling live under gradle/tools, with no extra runtime project.
+Both candidates consume the same engine-core artifact and canonical core model
+validator. Neither candidate contains legacy app or research; UCI also excludes
+training and desktop libraries. Platform stamps stay outside the deterministic
+core JAR. [WU7 packaging](unified-architecture/WU7-PACKAGING.md) documents private
+asset restoration, provenance, legacy task aliases and unresolved acceptance gates.

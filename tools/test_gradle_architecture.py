@@ -23,7 +23,8 @@ class GradleArchitectureTest(unittest.TestCase):
         for name in ('settings.gradle', 'build.gradle', 'gradle.properties',
                      'gradle/java-conventions.gradle', 'gradle/project-boundaries.gradle',
                      'gradle/application-version.gradle', 'VERSION_STATE.txt',
-                     'gradle/libs.versions.toml', 'gradle/integration.gradle', 'gradle/research-launcher.properties', 'gradle/package-mac.gradle', 'gradle/syzygy.gradle',
+                     'gradle/libs.versions.toml', 'gradle/integration.gradle', 'gradle/research-launcher.properties',
+                     'gradle/package-mac.gradle', 'gradle/native-packaging.gradle', 'gradle/syzygy.gradle',
                      *(module + '/build.gradle' for module in MODULES)):
             target = self.fixture / name
             target.parent.mkdir(parents=True, exist_ok=True)

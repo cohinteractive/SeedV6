@@ -55,7 +55,7 @@ abstract class GenerateApplicationVersion extends DefaultTask {
         metadata.versionUpdated = revision == null ? 'Unknown (Git history unavailable)' :
                 versionStatus ? 'Uncommitted version state (date unavailable)' :
                 date ?: 'Unknown (no version history)'
-        metadata.platform = System.getProperty('os.name') + ' / ' + System.getProperty('os.arch')
+        metadata.platform = 'Portable Java 21 (runtime platform reported separately)'
         File target = new File(outputDirectory.get().asFile, 'com/ohinteractive/seedv6/application-version.properties')
         String content = metadata.collect { key, value ->
             key + '=' + value.replace('\\', '\\\\').replace('\n', '\\n').replace('\r', '\\r')

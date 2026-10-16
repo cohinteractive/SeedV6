@@ -138,6 +138,9 @@ training, exact resume, generations/Best, Play, Arena and model-selected search
 benchmarks. It preserves C02 compilation and keeps full training state separate
 from the runtime pair tables; production/default evaluation remains unchanged.
 
-Windows and macOS packaging remain available through `packageWindows` and
-`packageMac`; see the operating guide. Bundled Fathom sources retain their
+Unified Windows and macOS packaging builds both GUI and UCI with `packageWindows`
+and `packageMac`, or independent `:app-gui:` / `:app-uci:` module tasks. These are
+local integrity-checked candidates, not official releases. Supply the private
+approved model explicitly; see [WU7 packaging](docs/unified-architecture/WU7-PACKAGING.md)
+for JDK requirements, commands, output paths and outstanding native/human gates. Bundled Fathom sources retain their
 [upstream license](engine-core/src/main/native/syzygy/fathom/LICENSE) and provenance.

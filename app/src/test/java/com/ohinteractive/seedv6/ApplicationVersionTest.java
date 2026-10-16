@@ -44,6 +44,9 @@ class ApplicationVersionTest {
                 Platform: Test OS / test-arch""", info.aboutText());
         var desktop = new Properties(); desktop.setProperty("builtAt", "2026-09-26T10:00:00Z");
         assertEquals("2026-09-26T10:00:00Z", ApplicationVersion.from(version(), desktop).desktopBuild());
+        desktop.setProperty("platform", "macos / arm64");
+        assertEquals("macos / arm64", ApplicationVersion.from(version(), desktop).platform());
+        assertEquals("Test OS / test-arch", ApplicationVersion.from(version(), new Properties()).platform());
     }
 
     @Test void invalidEmbeddedNumbersFailClearly() {

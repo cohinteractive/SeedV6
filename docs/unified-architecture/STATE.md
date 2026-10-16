@@ -6,12 +6,14 @@ Updated 16 October 2026 (Pacific/Auckland). Governing [CONTRACT](CONTRACT.md),
 
 ## Current boundary
 
-**WU0-WU5 are accepted by GPT. WU6 implementation and headless validation are complete; GPT/user reconciliation is pending.**
-The owner WU6 launch accepts `3301d457d6f6eb3dad9bc4c0f2c7659c1fa7fcaf` and
-subsequently approves root test/research composition only to preserve mixed
-independent comparisons and research UCI launch without forbidden module edges.
-No desktop interaction is authorized. WU7 remains blocked on WU6 reconciliation;
-existing native GUI/client gates and 19 inherited failures remain open.
+**WU0-WU6 are accepted by GPT. WU7 packaging implementation and available Windows/
+portable validation are complete, pending GPT/user reconciliation; full cross-platform
+acceptance is not complete.** The owner WU7 launch
+accepts `328531f672260cf4fd5e49b26724fee7329bb0d8` and authorizes native candidate
+packaging with no version bump. [WU7 packaging](WU7-PACKAGING.md) records commands,
+private model inputs, provenance and native/human gates. No desktop interaction
+is authorized. Mac-native execution, human GUI/client acceptance and the 19
+inherited failures remain open; WU8 does not advance automatically.
 
 Architectural discovery on 16 October 2026 is complete. The owner accepted
 restructuring existing SeedV6 into engine-core, engine-training, app-gui, app-uci
@@ -37,8 +39,8 @@ research seams are present but not accepted for production.
 | WU3 Training | ACCEPTED by GPT | Owner WU4 launch accepts `ff7291aae877244843e99afa3c47120642f25bc5`; 19 inherited failures remain open at dependent runtime gates. |
 | WU4 GUI | ACCEPTED by GPT (structural scope) | 75 GUI sources / 35 resources in app-gui; scoped non-interactive checks complete; 19 inherited failures retained; Windows/macOS human G2-G5 deferred to WU7. |
 | WU5 UCI | ACCEPTED by GPT | Standalone core-only Java UCI, explicit legacy profile, 159 standalone requests and shared production/model parity; native/client gates remain WU7. |
-| WU6 Research | COMPLETE; pending GPT/user reconciliation | [WU6 record](WU6-RESEARCH.md), [evidence](wu6-evidence.json); research owns tools/references, production activation/classpaths isolated, compiled core seams disclosed. |
-| WU7 Packaging | NOT STARTED | Core/apps/training/research gates; P1-P5 plus native/client acceptance. |
+| WU6 Research | ACCEPTED by GPT | [WU6 record](WU6-RESEARCH.md), [evidence](wu6-evidence.json); research owns tools/references, production activation/classpaths isolated, compiled core seams disclosed. |
+| WU7 Packaging | Implementation and available validation COMPLETE; GPT/user reconciliation pending | [Implementation](WU7-PACKAGING.md), [evidence](wu7-evidence.json); native Mac/human gates open; WU8 remains gated. |
 | WU8 Cutover | NOT STARTED | Applicable matrix passed/scoped, rollback demonstrated and explicit owner decision. |
 
 ## WU0 evidence and validation
@@ -342,17 +344,51 @@ unrelated IDE/Gradle processes.
   native release or push. WU6 completes the research responsibilities retained at WU5;
   app still owns legacy launch/checkpoint composition and compatibility/build tasks.
 
+## WU7 implementation and available validation
+
+The owner's WU7 launch accepts WU6 and admits unified native packaging with no
+version increment. [WU7 packaging](WU7-PACKAGING.md) describes root/module native
+tasks, legacy aliases, private model inputs, candidate conventions and integrity
+checks. Windows GUI/UCI candidates package successfully; actual native UCI and
+headless GUI/JNI relocation checks pass, including external disposable paths with
+spaces and empty PATH. [Exact evidence](wu7-evidence.json) records the final
+`wu7-windows-final` GUI/UCI candidates, source inputs, artifact hashes and commands.
+Both default packages contain core SHA-256
+`adaf356401bc31b61b8b3a28e77a65aed6fcd17b85488afa40a8bf4e3696b886`
+and the approved generation-32 model. A fresh core rebuild reproduces the hash.
+
+Selected regression results: 1,829 JUnit cases, 1,771 pass, 19 exact inherited
+failures and 39 existing skips; 203 frozen vectors match all 17 fields; seven
+optimizer families continue exactly; 66 legacy requests, 159 current standalone
+searches and 128 historical-protocol searches through the relocated native UCI
+executable pass. Nine packaging safety/configuration tests, fifteen architecture
+fixtures and fifteen disposable finalizer tests pass. Independent optional-Syzygy
+GUI/UCI packaging passes; its core differs only by the native library and license.
+All historical tracked/protected hashes, Git/merge metadata and working-file
+size/mtime inventories remain unchanged. Failed attempts stay unverified; occupied
+destinations are protected. No new packaging regression remains.
+
+Native macOS arm64 tasks are implemented; Windows cannot certify their execution.
+Both platforms' interactive GUI and external-client gates remain unperformed.
+The 19 inherited failures remain open and unsuppressed; the earlier transient
+concurrent timeout is not claimed fixed. No model bytes or official release are
+published. Version remains 0.0.0 build 35; same-token no-bump finalization
+completed without warnings or blockers and version bytes were independently
+verified unchanged. The root journal is absent and was not created. No WU8 work
+is admitted.
+
 ## Next admission and human actions
 
-Recommend WU7 packaging only after GPT/user reconciliation of the WU6 commit and
-evidence. WU7 retains P1-P5, native GUI/client checks, relocatable runtime/model
-composition and release/platform decisions. WU8 retains app retirement and explicit
-production cutover. No WU7 implementation has begun.
+Recommend GPT/user reconciliation of WU7 implementation and evidence, then Mac-native
+packaging validation and user GUI/client acceptance against exact candidates.
+Separate inherited-failure remediation remains necessary at its existing gates.
 
 Human actions required after this prompt:
 
-- **Immediate blocker to WU6 implementation/commit: None.**
-- **Blocking WU7 admission:** GPT/user reconciliation of WU6 commit and evidence.
-- **Deferred; blocking dependent runtime/WU7/cutover gates:** separate reconciliation/
-  remediation of the 19 inherited failures, user Windows/macOS GUI/client walkthroughs,
-  and model-publication/platform/release decisions at their actual dependencies.
+- **Immediate implementation blocker: None.** Available WU7 checks are complete.
+- **Blocking dependent migration:** GPT/user reconciliation before further work;
+  WU8 cutover requires native Mac, GUI/client and inherited-failure gates passed or
+  explicitly reconciled by the authorized owner.
+- **Deferred; blocking public release:** authorize and validate model restoration/
+  publication, select the first unified release identity, and decide Mac signing/
+  notarization policy. No current local candidate implies those decisions.

@@ -86,7 +86,7 @@ abstract class PackageMac extends DefaultTask {
         FileSystems.newFileSystem(applicationJar.toPath(), [:]).withCloseable { archive ->
             String builtAt = Instant.now().truncatedTo(ChronoUnit.SECONDS).toString()
             Files.writeString(archive.getPath('/com/ohinteractive/seedv6/desktop-build.properties'),
-                    "builtAt=$builtAt\n")
+                    "builtAt=$builtAt\nplatform=macos / ${System.getProperty('os.arch')}\n")
         }
 
         // Reuse the JDK's own template, overriding only the displayed application version.
@@ -138,7 +138,7 @@ abstract class PackageMac extends DefaultTask {
     }
 }
 
-tasks.register('packageMac', PackageMac) {
+tasks.register('packageLegacyMac', PackageMac) {
     group = 'distribution'
     description = 'Builds a standalone macOS .app with a bundled Java runtime, without running tests.'
     dependsOn ':app:installDist'

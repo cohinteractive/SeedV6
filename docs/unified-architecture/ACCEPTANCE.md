@@ -1,6 +1,6 @@
 # Migration acceptance matrix
 
-Revision 4 (WU6 admission and scoped root integration composition), 16 October 2026. Apply with [CONTRACT](CONTRACT.md), immutable
+Revision 5 (WU7 implementation evidence and native acceptance boundary), 16 October 2026. Apply with [CONTRACT](CONTRACT.md), immutable
 [BASELINE](BASELINE.md) and dynamic [STATE](STATE.md). WU0 defines these gates;
 it does not claim to have run application, client or platform acceptance.
 
@@ -79,7 +79,28 @@ Core experimental class seams remain compiled and unchanged: this is activation 
 research-classpath isolation, not complete experimental binary exclusion. No SR-021
 adoption or Search Contract closure is implied. The inherited 19 failures, existing
 skips and native GUI/client gates remain open. See [WU6](WU6-RESEARCH.md) and
-[wu6-evidence.json](wu6-evidence.json). WU7 has not started.
+[wu6-evidence.json](wu6-evidence.json). The owner WU7 launch subsequently confirms
+GPT acceptance of WU6 commit `328531f672260cf4fd5e49b26724fee7329bb0d8`.
+
+WU7 authorizes packaging implementation/commit after satisfactory Windows and
+headless checks. Native Mac evidence is unavailable on Windows and remains a
+blocking P2/full cross-platform acceptance dependency. Both platforms' interactive
+G2-G5 walkthroughs are user-performed later; Codex must not open GUI windows.
+P1/P3 automatic evidence is native UCI execution plus GUI runtime/resource/JNI
+verification, with explicit limits. [WU7 packaging](WU7-PACKAGING.md) records the
+workflow. No official release/version increment, model publication, signing
+policy or WU8 admission is inferred from candidate creation or commit.
+
+WU7 implementation and available Windows/portable checks are complete, pending
+GPT/user reconciliation; [wu7-evidence.json](wu7-evidence.json) binds the exact
+`wu7-windows-final` artifacts and results. Windows P1/P3 automated image/archive,
+relocation, native UCI and headless GUI/JNI checks pass. P4 verifies identical
+actual GUI/UCI core/model bytes and no version change; P5 preservation and occupied
+destination checks pass. Mac configuration, arm64 JNI payload inspection and
+wrong-host rejection pass, but **P2 native execution and cross-platform core
+comparison remain unperformed**. G2-G5 interactive, U4 external-client, inherited
+failure and final cutover requirements stay open. No matrix gate is closed by
+compilation, static inspection or the implementation commit alone.
 
 | ID / stage | Preserved capability and acceptance condition | Automated validation / existing reference | Later native, client or human acceptance |
 | --- | --- | --- | --- |
