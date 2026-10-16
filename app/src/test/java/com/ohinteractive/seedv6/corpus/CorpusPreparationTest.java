@@ -224,7 +224,8 @@ class CorpusPreparationTest {
 
     private static Process probe(Path root, Path view, String mode) throws Exception {
         var entries = new LinkedHashSet<String>();
-        for (Class<?> cls : List.of(PreparationProbe.class, CorpusView.class, org.sqlite.JDBC.class, com.google.gson.Gson.class))
+        for (Class<?> cls : List.of(PreparationProbe.class, CorpusView.class,
+                com.ohinteractive.seedv6.core.Board.class, org.sqlite.JDBC.class, com.google.gson.Gson.class))
             entries.add(Path.of(cls.getProtectionDomain().getCodeSource().getLocation().toURI()).toString());
         return new ProcessBuilder(Path.of(System.getProperty("java.home"), "bin", "java").toString(), "-cp",
                 String.join(File.pathSeparator, entries), PreparationProbe.class.getName(), root.toString(), view.toString(), mode)

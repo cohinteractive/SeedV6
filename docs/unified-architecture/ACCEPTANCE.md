@@ -19,9 +19,21 @@ remediation. The expanded full suite remains failed/incomplete. WU1 was subseque
 WU2 execution is recorded in [WU2-CORE](WU2-CORE.md) and
 [wu2-evidence.json](wu2-evidence.json). The owner preserves the deferral of the 19
 failures only while demonstrably inherited and unchanged; later GUI/training
-acceptance requirements remain open. WU2 is subject to GPT/user reconciliation.
+acceptance requirements remain open. The owner's WU3 launch confirms GPT
+acceptance of WU2 commit `09076c1d06ac8b532e065f4750bd0d8b206fe7db`.
 R3 production routing/dependency checks do not claim WU6 completion: disabled
 research seams remain explicitly accounted for in WU2.
+
+WU3 execution is recorded in [WU3-TRAINING](WU3-TRAINING.md) and
+[wu3-evidence.json](wu3-evidence.json). T1-T4 structural evidence includes cloned
+historical checkpoint reconstruction, exact seven-family persisted optimizer
+continuation, cursor/lineage/catalog identities, supported service/corpus tests and
+the unchanged engine/model bridges. The nine inherited interrupted-archive restart
+failures and ten GUI failures remain open; positive normal continuation does not
+certify their failing paths. The owner's WU3 launch allows this bounded structural
+gate when independent evidence is sufficient, with separate remediation before
+dependent runtime acceptance. GPT/user reconciliation is still required before
+WU4, and native Swing/platform/client gates are not claimed here.
 
 | ID / stage | Preserved capability and acceptance condition | Automated validation / existing reference | Later native, client or human acceptance |
 | --- | --- | --- | --- |

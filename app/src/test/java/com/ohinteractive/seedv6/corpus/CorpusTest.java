@@ -215,7 +215,8 @@ class CorpusTest {
     }
     private static String crashClasspath() throws Exception {
         LinkedHashSet<String> entries = new LinkedHashSet<>();
-        for (Class<?> cls : List.of(CrashWriter.class, CorpusWriter.class, org.sqlite.JDBC.class,
+        for (Class<?> cls : List.of(CrashWriter.class, CorpusWriter.class,
+                com.ohinteractive.seedv6.core.Board.class, org.sqlite.JDBC.class,
                 com.google.gson.Gson.class)) entries.add(Path.of(cls.getProtectionDomain().getCodeSource().getLocation().toURI()).toString());
         return String.join(File.pathSeparator, entries);
     }

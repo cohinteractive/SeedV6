@@ -15,6 +15,7 @@ apply from: rootProject.file('gradle/java-conventions.gradle')
 
 dependencies {
     implementation project(':engine-core')
+    implementation project(':engine-training')
     testImplementation gradleTestKit()
     // Independent JSON parser for diagnostic report contract tests.
     testImplementation 'com.google.code.gson:gson:2.11.0'
@@ -25,10 +26,10 @@ dependencies {
     implementation 'com.formdev:flatlaf:3.7'
     // Windows Common Item Dialog COM bindings; JNA's platform natives travel in its JAR.
     implementation 'net.java.dev.jna:jna-platform:5.17.0'
-    // External corpus decoding and bounded-memory exact on-disk identity index.
-    implementation 'com.google.code.gson:gson:2.11.0'
-    implementation 'com.github.luben:zstd-jni:1.5.7-20'
-    implementation 'org.xerial:sqlite-jdbc:3.53.4.0'
+    // Remaining independent research and integration tests use these APIs directly.
+    // Production corpus/runtime dependencies are owned by engine-training.
+    testImplementation 'com.github.luben:zstd-jni:1.5.7-20'
+    testImplementation 'org.xerial:sqlite-jdbc:3.53.4.0'
 }
 
 application {
@@ -39,9 +40,6 @@ application {
 
 // BRN-3 uses lane-wise binary64 kernels; direct launches without the optional
 // module retain its scalar implementation. No other architecture selects them.
-tasks.named('compileJava') {
-    options.compilerArgs += ['--add-modules', 'jdk.incubator.vector']
-}
 tasks.withType(JavaExec).configureEach {
     jvmArgs '--add-modules=jdk.incubator.vector'
 }
@@ -77,6 +75,9 @@ sourceSets {
 configurations {
     verificationImplementation.extendsFrom implementation
     verificationRuntimeOnly.extendsFrom runtimeOnly
+}
+dependencies {
+    verificationImplementation 'com.google.code.gson:gson:2.11.0'
 }
 
 // Preserve the legacy task entry point; native engine code and resources have one owner.

@@ -5,13 +5,18 @@
 The root Gradle project includes the five target owners `engine-core`,
 `engine-training`, `app-gui`, `app-uci` and `research`, plus temporary `app`.
 `engine-core` owns the runtime implementation and has no project dependency.
-Legacy `app` consumes core through an explicit Gradle dependency and retains GUI,
-UCI, training and research consumers. The other four target projects remain scaffolds. Shared Java/JUnit conventions and enforced project dependency/source-root
+`engine-training` owns trainers, optimizer/checkpoint continuation, model workspace,
+corpus, self-play and validation services, and exposes core through its API dependency.
+Legacy `app` explicitly consumes core and training and retains GUI, UCI and
+research consumers. The other three target projects remain scaffolds. Shared Java/JUnit conventions and enforced project dependency/source-root
 boundaries live in `gradle/`. See [the WU1 transition](unified-architecture/WU1-GRADLE.md)
-for the actual graph and the legacy removal gate. Java 21's application plugin launches
+for the foundation and legacy removal gate, and [WU3](unified-architecture/WU3-TRAINING.md)
+for current training ownership and dependency declarations. Java 21's application plugin launches
 [`Main`](../app/src/main/java/com/ohinteractive/seedv6/Main.java), selecting desktop
 `SwingLauncher` for `gui` and `UciEngine` otherwise. The application JAR contains legacy main output; `installDist` and native packaging
-include its runtime dependencies, including `engine-core.jar`. Core owns the opening
+include its runtime dependencies, including `engine-core.jar` and `engine-training.jar`.
+Training owns the unchanged Gson/SQLite/Zstandard dependencies, optional trainer-only
+BRN-3 vector kernels and binpack notice. Core owns the opening
 book and optional Syzygy native sources/resources/license. Application version
 resources remain in app. The legacy `:app:compileSyzygy` task delegates to core.
 
@@ -157,7 +162,7 @@ remains at its established root paths. Root README is the repository entry point
 
 Use `:app:verificationClasses` before direct Java developer commands. Their
 classpath needs app main and verification classes/resources plus runtime dependencies,
-including the core JAR. Gradle JavaExec tasks already provide that classpath.
+including the core and training JARs. Gradle JavaExec tasks already provide that classpath.
 Existing JavaExec task names retain their arguments. The former shipped diagnostic
 commands now run through `:app:developerTools -PtoolArgs="brn-diagnostic ..."` or
 `-PtoolArgs="frozen-wdl ..."`; normal GUI/UCI packaging remains independent.
@@ -167,14 +172,16 @@ mirrors. Their active repository master locations are `source/`; the owner must
 refresh both mirrors and confirm synchronization before the next GPT-led Phase 2
 research planning session. Initialization does not modify the external mirrors.
 
-## WU2 inference boundary
+## Inference/training boundary
 
 Core owns the immutable Pair-2 geometry and `BrnPair2Weights` compilation input,
 all runtime model codecs and inference kernels. Optimizers, `*TrainingCodec`,
-the unchanged trainer-only BRN-3 vector helper and checkpoint-store resolution remain in app.
+the unchanged trainer-only BRN-3 vector helper and checkpoint-store resolution
+belong to engine-training after WU3.
 Shared binary header helpers stay package-local in the runtime codecs; Java package
 names are preserved across modules. No model/optimizer schema changes or model
-registry are introduced. See [WU2](unified-architecture/WU2-CORE.md).
+registry are introduced. See [WU2](unified-architecture/WU2-CORE.md) and
+[WU3](unified-architecture/WU3-TRAINING.md).
 
 Disabled research seams inside ExactSearch/ParallelSearch and explicit UCI research
 properties remain pending WU6 isolation. SR-021 is not enabled by production routing;

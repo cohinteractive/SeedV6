@@ -16,8 +16,9 @@ class ProductionSearchBoundaryTest {
     @Test void productionCannotReferToVerificationClasses() throws Exception {
         Path main = Path.of("src/main/java/com/ohinteractive/seedv6");
         Path core = Path.of("../engine-core/src/main/java/com/ohinteractive/seedv6");
+        Path training = Path.of("../engine-training/src/main/java/com/ohinteractive/seedv6");
         var forbidden = Pattern.compile("com\\.ohinteractive\\.seedv6\\.(?:tools\\.|search\\.(?:alphabeta|flat|iterative|quiescence|order)\\.|search\\.tt\\.TranspositionTable\\b|search\\.common\\.WindowedSearch\\b|search\\.diagnostics\\.(?:SearchDiagnostics|QsearchDecisionTrace)\\b|core\\.(?:BoardMoveType|GenMoveType|GenRewrite)\\b)");
-        for (Path owner : List.of(main, core)) try(var files = Files.walk(owner)) {
+        for (Path owner : List.of(main, core, training)) try(var files = Files.walk(owner)) {
             for(Path file : files.filter(p -> p.toString().endsWith(".java")).toList()) {
                 assertFalse(forbidden.matcher(Files.readString(file)).find(), "Verification dependency in " + file);
             }
@@ -26,6 +27,13 @@ class ProductionSearchBoundaryTest {
         assertTrue(Files.isRegularFile(core.resolve("search/tt/TTable.java")));
         assertFalse(Files.exists(main.resolve("search/exact/ExactSearch.java")));
         assertFalse(Files.exists(main.resolve("search/tt/TTable.java")));
+        assertTrue(Files.isRegularFile(training.resolve("training/checkpoint/CheckpointStore.java")));
+        assertFalse(Files.exists(main.resolve("training/checkpoint/CheckpointStore.java")));
+        var applicationDependency = Pattern.compile("(?:com\\.ohinteractive\\.seedv6\\.(?:gui|uci)\\.|javax\\.swing\\.|java\\.awt\\.)");
+        try (var files = Files.walk(training)) {
+            for (Path file : files.filter(p -> p.toString().endsWith(".java")).toList())
+                assertFalse(applicationDependency.matcher(Files.readString(file)).find(), "Application dependency in " + file);
+        }
     }
 
     @Test void applicationJarContainsOnlyProductionClassesAndResources() throws Exception {
@@ -36,7 +44,9 @@ class ProductionSearchBoundaryTest {
         Set<String> classes = new HashSet<>();
         Path core = Path.of("build/install/seedv6/lib/engine-core.jar");
         assertTrue(Files.isRegularFile(core), "Distribution must include its engine dependency");
-        for (Path owner : List.of(jar, core)) try(var archive = new JarFile(owner.toFile())) {
+        Path training = Path.of("build/install/seedv6/lib/engine-training.jar");
+        assertTrue(Files.isRegularFile(training), "Distribution must include its training dependency");
+        for (Path owner : List.of(jar, core, training)) try(var archive = new JarFile(owner.toFile())) {
             var names = archive.stream().map(e -> e.getName()).toList();
             for (String name : names) if (name.endsWith(".class"))
                 assertTrue(classes.add(name), "Duplicate production class " + name);
@@ -51,7 +61,8 @@ class ProductionSearchBoundaryTest {
                 assertNotNull(archive.getJarEntry(base + "Main.class"));
                 assertNotNull(archive.getJarEntry(base + "gui/pieces/original/wk.png"));
                 assertNull(archive.getJarEntry(base + "search/exact/ExactSearch.class"));
-            } else {
+                assertNull(archive.getJarEntry(base + "training/checkpoint/CheckpointStore.class"));
+            } else if (owner.equals(core)) {
                 assertNotNull(archive.getJarEntry(base + "search/exact/ExactSearch.class"));
                 assertNotNull(archive.getJarEntry(base + "search/tt/TTable.class"));
                 assertNotNull(archive.getJarEntry(base + "book/opening-book.txt"));
@@ -62,6 +73,13 @@ class ProductionSearchBoundaryTest {
                     assertFalse(name.matches(".*(?:Trainer|TrainingCodec|Adam[^/]*)\\$?.*\\.class"),
                             "Training implementation in core: " + name);
                 }
+            } else {
+                assertNotNull(archive.getJarEntry(base + "training/checkpoint/CheckpointStore.class"));
+                assertNotNull(archive.getJarEntry(base + "core/brnpair2/BrnPair2Trainer.class"));
+                assertNotNull(archive.getJarEntry(base + "training/data/binpack-NOTICE.txt"));
+                for (String name : names)
+                    assertFalse(name.startsWith(base + "gui/") || name.startsWith(base + "uci/")
+                            || name.startsWith(base + "search/"), "Non-training package " + name);
             }
         }
     }

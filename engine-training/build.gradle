@@ -3,7 +3,22 @@ plugins {
 }
 apply from: rootProject.file('gradle/java-conventions.gradle')
 
-description = 'Training services owner; source extraction starts in WU3.'
+description = 'Training, optimizer continuation, model workspace, corpus and validation services.'
 dependencies {
-    implementation project(':engine-core')
+    // Public trainer/service APIs expose core boards, models and search controls.
+    api project(':engine-core')
+    implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'com.github.luben:zstd-jni:1.5.7-20'
+    implementation 'org.xerial:sqlite-jdbc:3.53.4.0'
+}
+
+// Trainer-only BRN-3 kernels retain the existing optional scalar fallback.
+tasks.named('compileJava') {
+    options.compilerArgs += ['--add-modules', 'jdk.incubator.vector']
+}
+tasks.withType(Test).configureEach {
+    jvmArgs '--add-modules=jdk.incubator.vector'
+    if (project.hasProperty('brnScalar')) systemProperty 'seedv6.brn3.scalar', 'true'
+    if (project.hasProperty('headless')) systemProperty 'java.awt.headless', 'true'
+    maxHeapSize = '2g'
 }

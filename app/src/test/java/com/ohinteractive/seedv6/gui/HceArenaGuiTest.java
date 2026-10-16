@@ -48,7 +48,9 @@ class HceArenaGuiTest {
                 named(panel, "arenaFen", JTextField.class).setText(SHORT_GAME);
                 named(panel, "arenaCreate", JButton.class).doClick();
             });
-            until(() -> edt(() -> { panel.poll(); return named(panel, "arenaStatus", JLabel.class).getText().contains("COMPLETE"); }));
+            // ROUND_COMPLETE is an intermediate phase; wait for persisted completion and worker release.
+            until(() -> edt(() -> { panel.poll(); return named(panel, "arenaStatus", JLabel.class).getText().contains(" | COMPLETE | ")
+                    && named(panel, "arenaStart", JButton.class).isEnabled(); }));
             Path root = folders.arenaCampaign(); assertNotNull(root);
             var state = LearningArenaState.read(root); assertTrue(state.config().matchOnly());
             assertNull(state.config().source()); assertEquals(orientation != 1, state.config().a().isHandcrafted()); assertEquals(orientation != 2, state.config().b().isHandcrafted());
@@ -60,7 +62,8 @@ class HceArenaGuiTest {
                 assertTrue(named(panel, "arenaHistoryView", ArenaHistoryView.class).detailsText(0).contains("no checkpoint or training"));
                 panel.openCampaign(root);
             });
-            until(() -> edt(() -> { panel.poll(); return named(panel, "arenaStatus", JLabel.class).getText().contains("COMPLETE"); }));
+            until(() -> edt(() -> { panel.poll(); return named(panel, "arenaStatus", JLabel.class).getText().contains(" | COMPLETE | ")
+                    && named(panel, "arenaStart", JButton.class).isEnabled(); }));
             edt(() -> {
                 assertEquals(Mode.MATCH_ONLY, named(panel, "arenaMode", JComboBox.class).getSelectedItem());
                 assertFalse(named(panel, "arenaMode", JComboBox.class).isEnabled());

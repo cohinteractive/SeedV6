@@ -49,7 +49,8 @@ class SequentialTrainingTest {
         assertFalse(Files.exists(root.resolve("corpus-training/records.idx"))); assertFalse(Files.exists(root.resolve("corpus-training/view.json")));
     }
     @Test void relativeWeightsDriveActualAcceptedTrainingRangesAndDoNotChangeLibraryWeights() throws Exception {
-        Path a = file("stockfish", 100), b = file("lichess", 100), root = temporary.resolve("weighted");
+        // Distinct contents keep source identities independent of filesystem timestamp resolution.
+        Path a = file("stockfish", 100), b = file("lichess", 101), root = temporary.resolve("weighted");
         var cfg = config(root, TrainingArchitecture.BRN2, 8, 1, a, b);
         var first = DataSource.register("Stockfish", a, 3); var second = DataSource.register("Lichess", b, 1);
         new DataSources(1, List.of(first, second), false).save(DataSources.directory(root));
