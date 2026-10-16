@@ -45,7 +45,10 @@ preserves the original BINP chunks and never modifies the downloaded archives.
 
 - `engine-core/src/main`: shared runtime engine, model inference, opening book and optional native tablebase provider.
 - `engine-core/src/test`: independent runtime unit and inference-boundary tests.
-- `app/src/main`: legacy GUI/UCI, training, checkpoint selection and application resources.
+- `engine-training/src/main`: shared trainers, model workspace, checkpoint continuation, corpus and campaign services.
+- `app-gui/src/main`: desktop Play, Network Training, Arena, preferences and GUI resources
+  (WU4 structural migration complete; [native user acceptance deferred to WU7](docs/unified-architecture/WU4-GUI.md)).
+- `app/src/main`: legacy UCI and compatibility Main; remaining research/integration composition.
 - `app/src/verification`: active developer tools, comparisons and reference implementations.
 - `app/src/test`: tests, independent oracles and test-only research harnesses.
 - `source`: active Phase 2 Search Contract and Research Frontier.

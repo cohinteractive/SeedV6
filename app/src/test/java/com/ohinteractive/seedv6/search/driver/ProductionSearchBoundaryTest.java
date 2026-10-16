@@ -17,8 +17,9 @@ class ProductionSearchBoundaryTest {
         Path main = Path.of("src/main/java/com/ohinteractive/seedv6");
         Path core = Path.of("../engine-core/src/main/java/com/ohinteractive/seedv6");
         Path training = Path.of("../engine-training/src/main/java/com/ohinteractive/seedv6");
+        Path gui = Path.of("../app-gui/src/main/java/com/ohinteractive/seedv6");
         var forbidden = Pattern.compile("com\\.ohinteractive\\.seedv6\\.(?:tools\\.|search\\.(?:alphabeta|flat|iterative|quiescence|order)\\.|search\\.tt\\.TranspositionTable\\b|search\\.common\\.WindowedSearch\\b|search\\.diagnostics\\.(?:SearchDiagnostics|QsearchDecisionTrace)\\b|core\\.(?:BoardMoveType|GenMoveType|GenRewrite)\\b)");
-        for (Path owner : List.of(main, core, training)) try(var files = Files.walk(owner)) {
+        for (Path owner : List.of(main, core, training, gui)) try(var files = Files.walk(owner)) {
             for(Path file : files.filter(p -> p.toString().endsWith(".java")).toList()) {
                 assertFalse(forbidden.matcher(Files.readString(file)).find(), "Verification dependency in " + file);
             }
@@ -29,6 +30,15 @@ class ProductionSearchBoundaryTest {
         assertFalse(Files.exists(main.resolve("search/tt/TTable.java")));
         assertTrue(Files.isRegularFile(training.resolve("training/checkpoint/CheckpointStore.java")));
         assertFalse(Files.exists(main.resolve("training/checkpoint/CheckpointStore.java")));
+        assertTrue(Files.isRegularFile(gui.resolve("gui/SwingLauncher.java")));
+        try (var files = Files.walk(main)) {
+            assertTrue(files.noneMatch(p -> p.toString().endsWith(".java") && p.startsWith(main.resolve("gui"))));
+        }
+        try (var files = Files.walk(gui)) {
+            var legacy = Pattern.compile("com\\.ohinteractive\\.seedv6\\.(?:uci\\.|Main\\b)");
+            for (Path file : files.filter(p -> p.toString().endsWith(".java")).toList())
+                assertFalse(legacy.matcher(Files.readString(file)).find(), "Legacy application dependency in " + file);
+        }
         var applicationDependency = Pattern.compile("(?:com\\.ohinteractive\\.seedv6\\.(?:gui|uci)\\.|javax\\.swing\\.|java\\.awt\\.)");
         try (var files = Files.walk(training)) {
             for (Path file : files.filter(p -> p.toString().endsWith(".java")).toList())
@@ -46,8 +56,11 @@ class ProductionSearchBoundaryTest {
         assertTrue(Files.isRegularFile(core), "Distribution must include its engine dependency");
         Path training = Path.of("build/install/seedv6/lib/engine-training.jar");
         assertTrue(Files.isRegularFile(training), "Distribution must include its training dependency");
-        for (Path owner : List.of(jar, core, training)) try(var archive = new JarFile(owner.toFile())) {
-            var names = archive.stream().map(e -> e.getName()).toList();
+        Path gui = Path.of("build/install/seedv6/lib/app-gui.jar");
+        assertTrue(Files.isRegularFile(gui), "Distribution must include its desktop dependency");
+        for (Path owner : List.of(jar, core, training, gui)) try(var archive = new JarFile(owner.toFile())) {
+            // Empty source directories can survive relocation; ownership concerns payload files.
+            var names = archive.stream().filter(e -> !e.isDirectory()).map(e -> e.getName()).toList();
             for (String name : names) if (name.endsWith(".class"))
                 assertTrue(classes.add(name), "Duplicate production class " + name);
             String base = "com/ohinteractive/seedv6/";
@@ -59,7 +72,7 @@ class ProductionSearchBoundaryTest {
                 assertTrue(names.stream().noneMatch(n -> n.startsWith(base + type)), "Packaged verification class " + type);
             if (owner.equals(jar)) {
                 assertNotNull(archive.getJarEntry(base + "Main.class"));
-                assertNotNull(archive.getJarEntry(base + "gui/pieces/original/wk.png"));
+                assertTrue(names.stream().noneMatch(n -> n.startsWith(base + "gui/")));
                 assertNull(archive.getJarEntry(base + "search/exact/ExactSearch.class"));
                 assertNull(archive.getJarEntry(base + "training/checkpoint/CheckpointStore.class"));
             } else if (owner.equals(core)) {
@@ -73,13 +86,19 @@ class ProductionSearchBoundaryTest {
                     assertFalse(name.matches(".*(?:Trainer|TrainingCodec|Adam[^/]*)\\$?.*\\.class"),
                             "Training implementation in core: " + name);
                 }
-            } else {
+            } else if (owner.equals(training)) {
                 assertNotNull(archive.getJarEntry(base + "training/checkpoint/CheckpointStore.class"));
                 assertNotNull(archive.getJarEntry(base + "core/brnpair2/BrnPair2Trainer.class"));
                 assertNotNull(archive.getJarEntry(base + "training/data/binpack-NOTICE.txt"));
                 for (String name : names)
                     assertFalse(name.startsWith(base + "gui/") || name.startsWith(base + "uci/")
                             || name.startsWith(base + "search/"), "Non-training package " + name);
+            } else {
+                assertNotNull(archive.getJarEntry(base + "gui/SwingLauncher.class"));
+                assertNotNull(archive.getJarEntry(base + "gui/pieces/original/wk.png"));
+                assertNotNull(archive.getJarEntry(base + "gui/FlatDarkLaf.properties"));
+                for (String name : names) if (name.endsWith(".class"))
+                    assertTrue(name.startsWith(base + "gui/"), "Non-GUI implementation " + name);
             }
         }
     }

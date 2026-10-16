@@ -1,6 +1,6 @@
 # Migration acceptance matrix
 
-Revision 1, 16 October 2026. Apply with [CONTRACT](CONTRACT.md), immutable
+Revision 2 (owner-authorized WU4 acceptance boundary), 16 October 2026. Apply with [CONTRACT](CONTRACT.md), immutable
 [BASELINE](BASELINE.md) and dynamic [STATE](STATE.md). WU0 defines these gates;
 it does not claim to have run application, client or platform acceptance.
 
@@ -32,8 +32,22 @@ the unchanged engine/model bridges. The nine inherited interrupted-archive resta
 failures and ten GUI failures remain open; positive normal continuation does not
 certify their failing paths. The owner's WU3 launch allows this bounded structural
 gate when independent evidence is sufficient, with separate remediation before
-dependent runtime acceptance. GPT/user reconciliation is still required before
-WU4, and native Swing/platform/client gates are not claimed here.
+dependent runtime acceptance. The owner subsequently confirmed WU3 acceptance in the WU4 launch; native
+Swing/platform/client gates are not certified by those WU3 results.
+
+WU4 owner clarification, 16 October 2026: WU3 is accepted. On resuming WU4,
+the owner explicitly authorized structural completion and commit with sufficient
+automated, non-interactive validation. Both Windows and macOS native G2-G5
+walkthroughs are deferred to later user-performed acceptance under WU7 P1-P3.
+They remain blocking for full GUI runtime acceptance and final production cutover,
+not WU4 structural acceptance. This supersedes the earlier Mac-only deferral and
+Windows walkthrough prerequisite. No other gate is waived. [WU4-GUI](WU4-GUI.md)
+and [wu4-evidence.json](wu4-evidence.json) distinguish automated results, inherited
+failures, the earlier limited Windows startup observation and unperformed scenarios.
+No desktop interaction was performed during this resume. Scoped structural
+validation is complete: 1,541 selected JUnit cases reconcile to 1,483 passed,
+19 inherited failures and 39 skips; eleven boundary fixtures pass. Full GUI
+runtime acceptance remains open and GPT/user reconciliation is pending.
 
 | ID / stage | Preserved capability and acceptance condition | Automated validation / existing reference | Later native, client or human acceptance |
 | --- | --- | --- | --- |
@@ -45,10 +59,10 @@ WU4, and native Swing/platform/client gates are not claimed here.
 | E4 / WU2 | TT depth/generation/provenance, selective dependencies, mate score normalization and legal PV | `TTableTest`, `TranspositionScoresTest`, `TranspositionTableConcurrencyTest`, TT-off/exhaustive oracles, full/narrow-window sequences, terminal/draw/mate witnesses | None beyond automated evidence; selective predictions must not become ordinary nominal proof. |
 | E5 / WU2, WU5 | Time management, complete-request node limits, cancellation and lifecycle ownership | `TimeManagerTest`, `SearchLifecycleServiceTest`, fake clocks and process tests: depth/movetime/clocks/increments/nodes, interrupted first iteration, reset/reuse, stop/quit/EOF, helper drain and failure recovery | Client interruption/responsiveness under U4; native timing sanity on each release platform. |
 | E6 / WU2, WU5 | One-worker EFFORT and 2..16 ROOT_REUSE, worker-private state and coherent TT | Factory/policy checks across 1..16; actual work in helpers at representative 4/16 counts; legal bestmove/PV, budget accounting, transitions 1/4/1/6/2/16/1, cancellation/failure/reuse | No exact arbitrary parallel node/PV requirement. Portable thread setting behavior checked in GUI/native scenarios. |
-| G2 / WU4 | Play: Human vs Engine, independently selected Engine vs Engine, legal moves, restart, side swap, live board and shutdown | `ChessFrameSmokeTest`, model-selection and controller/lifecycle tests, tiny model fixtures and EDT checks | Native Swing walkthrough on Windows/macOS, including both side bindings, exact snapshots, resize/scaling and close during search. |
-| G3 / WU4 | Network Training: lineage/recipe/source/exposure/run controls and resumable stop | Training GUI and service tests, start/pause/resume/stop-after-generation, data picker worker cleanup and progress; no user-store writes in tests | Native start/stop/resume with disposable store and supported prepared data; readable progress/layout, storage chooser and errors. |
-| G4 / WU4 | Arena: learning campaigns and match-only; Setup/Live/History, identities, W/D/L and unscored states | `ArenaSemanticsTest`, `ArenaHistoryViewTest`, `LearningArenaTest`, `MatchOnlyArenaTest`, recipe/configuration compatibility, same frozen tranches and independent participants | Native campaign and match-only walkthrough, exact generation choices, live board/progress, results/history and reopening a saved campaign. |
-| G5 / WU4 | Evaluator selection, existing settings and persistence; common model library | `ModelLibraryTest`, checkpoint/selection tests, legacy/new preference round trips, Max thread setting, Best/latest/explicit generation separation, side swap preserves whole binding | Existing settings import/reopen using safe copied fixtures; Windows/macOS native file/folder pickers and no unexpected user-store relocation. |
+| G2 / WU4 structural, WU7 native | Play: Human vs Engine, independently selected Engine vs Engine, legal moves, restart, side swap, live board and shutdown | `ChessFrameSmokeTest`, model-selection and controller/lifecycle tests, tiny model fixtures and EDT checks | Native Swing walkthrough on Windows/macOS, including both side bindings, exact snapshots, resize/scaling and close during search. |
+| G3 / WU4 structural, WU7 native | Network Training: lineage/recipe/source/exposure/run controls and resumable stop | Training GUI and service tests, start/pause/resume/stop-after-generation, data picker worker cleanup and progress; no user-store writes in tests | Native start/stop/resume with disposable store and supported prepared data; readable progress/layout, storage chooser and errors. |
+| G4 / WU4 structural, WU7 native | Arena: learning campaigns and match-only; Setup/Live/History, identities, W/D/L and unscored states | `ArenaSemanticsTest`, `ArenaHistoryViewTest`, `LearningArenaTest`, `MatchOnlyArenaTest`, recipe/configuration compatibility, same frozen tranches and independent participants | Native campaign and match-only walkthrough, exact generation choices, live board/progress, results/history and reopening a saved campaign. |
+| G5 / WU4 structural, WU7 native | Evaluator selection, existing settings and persistence; common model library | `ModelLibraryTest`, checkpoint/selection tests, legacy/new preference round trips, Max thread setting, Best/latest/explicit generation separation, side swap preserves whole binding | Existing settings import/reopen using safe copied fixtures; Windows/macOS native file/folder pickers and no unexpected user-store relocation. |
 | T1 / WU3 | Serialization/schema compatibility and exact model identities for supported families | `NnueCodecTest`, BRN codec/checkpoint suites, malformed/CRC/hash/family failures, Pair-2 saved-trainer recompilation and exact runtime tables | Real historical checkpoint load is required before declaring historical format compatibility; pin inputs and keep originals read-only. |
 | T2 / WU3 | Optimizer state and exact continuation, including partial generations | Adam tests, `PartialGenerationStoreTest`, `GenerationRestartTest`, `CheckpointStoreTest`; uninterrupted versus resumed weights/moments/step, shuffle position, reserved ranges and cancellation boundary | Bounded disposable-store restart workflow; runtime-only model import must never imply resumable optimizer state. |
 | T3 / WU3 | Lineage UUID, architecture/generation, Best/latest, promotions and history | Model library/retention/available-checkpoint tests; receipts, pointers, source ledger/cursors, annotations, legacy campaign fingerprints; missing provenance remains unknown | Review any storage-format change before using real stores. Additive migration only unless separately authorized. |
@@ -76,6 +90,7 @@ the existing evaluator contract or be justified before accepting a difference.
 Historical reports of 800 broad tests, 188 real-model UCI requests, UE vector
 counts and platform package tests are provenance, not WU0 execution results.
 The preserved capabilities are accepted only when the relevant new-stage checks
-run against the migrated source/artifacts. Automated checks cannot substitute for
-required native Swing, Mac or real-client acceptance. No browser verification is
+run against the migrated source/artifacts. Automated checks support the owner-scoped WU4 structural gate; they do not
+establish full native Swing, Mac or real-client acceptance. Deferred G2-G5 evidence
+must identify the exact WU7 candidate/package hashes before those gates close. No browser verification is
 needed for WU0; if later required, use only the repository-mandated Playwright MCP.

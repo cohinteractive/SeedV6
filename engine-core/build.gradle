@@ -2,6 +2,8 @@ plugins {
     id 'java-library'
 }
 apply from: rootProject.file('gradle/java-conventions.gradle')
+// Headless runtime identity is shared by GUI About and UCI diagnostics.
+apply from: rootProject.file('gradle/application-version.gradle')
 
 description = 'Shared production board, rules, search, evaluation and runtime model inference.'
 

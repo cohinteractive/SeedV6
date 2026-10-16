@@ -11,7 +11,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "crowned_seed_emblem.png"
-PNG_DIRECTORY = ROOT / "app/src/main/resources/com/ohinteractive/seedv6/gui/icons"
+PNG_DIRECTORY = ROOT / "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/icons"
 ICO_PATH = ROOT / "tools/icons/seedv6.ico"
 SIZES = (16, 20, 24, 32, 40, 48, 64, 96, 128, 256)
 

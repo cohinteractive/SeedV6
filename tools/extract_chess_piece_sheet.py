@@ -15,7 +15,7 @@ from PIL import Image
 SOURCE = Path(__file__).resolve().parents[1] / "chess-pieces-01.png"
 OUTPUT = (
     Path(__file__).resolve().parents[1]
-    / "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original"
+    / "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original"
 )
 FILES = ("k", "q", "r", "b", "n", "p")
 X_EDGES = (0, 310, 543, 777, 1000, 1219, 1491)

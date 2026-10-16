@@ -22,6 +22,7 @@ class GradleArchitectureTest(unittest.TestCase):
         self.fixture = Path(tempfile.mkdtemp(prefix=self._testMethodName + '-', dir=OUTPUT))
         for name in ('settings.gradle', 'build.gradle', 'gradle.properties',
                      'gradle/java-conventions.gradle', 'gradle/project-boundaries.gradle',
+                     'gradle/application-version.gradle', 'VERSION_STATE.txt',
                      'gradle/libs.versions.toml', 'gradle/package-mac.gradle', 'gradle/syzygy.gradle',
                      *(module + '/build.gradle' for module in MODULES)):
             target = self.fixture / name
@@ -98,6 +99,21 @@ dependencies {
 """)
         output = self.gradle('verifyProjectBoundaries', ':app:classes')
         self.assertIn(':app -> [:engine-core, :engine-training]', output)
+
+    def test_legacy_can_delegate_to_gui_but_training_cannot(self):
+        self.append('app/build.gradle', "dependencies { implementation project(':app-gui') }")
+        self.gradle('verifyProjectBoundaries', ':app:classes')
+        self.append('engine-training/build.gradle', "dependencies { implementation project(':app-gui') }")
+        self.gradle('help', failure='Forbidden project dependency: :engine-training -> :app-gui')
+
+    def test_gui_cannot_consume_uci_or_research(self):
+        path = self.fixture / 'app-gui/build.gradle'
+        original = path.read_text()
+        for target in ('app-uci', 'research'):
+            with self.subTest(target=target):
+                path.write_text(original)
+                self.append('app-gui/build.gradle', f"dependencies {{ implementation project(':{target}') }}")
+                self.gradle('help', failure=f'Forbidden project dependency: :app-gui -> :{target}')
 
     def test_cycles_are_rejected(self):
         # training -> core already exists; adding the reverse creates a cycle.

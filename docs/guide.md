@@ -1242,7 +1242,7 @@ creation without Apple credentials.
 The canonical application artwork is repository-root `crowned_seed_emblem.png`.
 Regenerate the checked-in runtime PNGs and Windows ICO with
 `python tools/generate-app-icons.py` (requires Pillow). The PNGs in
-`app/src/main/resources/com/ohinteractive/seedv6/gui/icons/` and
+`app-gui/src/main/resources/com/ohinteractive/seedv6/gui/icons/` and
 `tools/icons/seedv6.ico` contain 16, 20, 24, 32, 40, 48, 64, 96, 128 and 256 pixel
 representations of the complete artwork. Runtime window icons, application
 identity, engine badges, Training header and About use these PNG resources.

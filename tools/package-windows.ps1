@@ -58,7 +58,7 @@ try {
     # Windows PowerShell needs the archive types loaded before resolving ZipArchiveMode.
     Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
     $archive = [System.IO.Compression.ZipFile]::Open(
-        (Join-Path $inputDirectory 'app.jar'), [System.IO.Compression.ZipArchiveMode]::Update)
+        (Join-Path $inputDirectory 'engine-core.jar'), [System.IO.Compression.ZipArchiveMode]::Update)
     try {
         $versionEntry = $archive.GetEntry('com/ohinteractive/seedv6/application-version.properties')
         if ($null -eq $versionEntry) { throw 'Application JAR has no embedded version identity.' }

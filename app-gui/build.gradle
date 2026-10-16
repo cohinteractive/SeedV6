@@ -3,9 +3,25 @@ plugins {
 }
 apply from: rootProject.file('gradle/java-conventions.gradle')
 
-// No invented main class or launcher. :app remains runnable through extraction.
-description = 'Desktop application owner; implementation remains in :app until WU4.'
+description = 'SeedV6 desktop Play, Network Training, Arena, preferences and Swing launcher.'
 dependencies {
     implementation project(':engine-core')
     implementation project(':engine-training')
+    implementation 'com.formdev:flatlaf:3.7'
+    implementation 'net.java.dev.jna:jna-platform:5.17.0'
+}
+
+// Keep the established unqualified `run --args=gui` route in :app. Native
+// distribution assembly stays there until WU7; this route needs no legacy app.
+tasks.register('runGui', JavaExec) {
+    group = 'application'
+    description = 'Launches the desktop directly from app-gui and its shared services.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.gui.SwingLauncher'
+    jvmArgs '--add-modules=jdk.incubator.vector'
+}
+
+tasks.withType(Test).configureEach {
+    if (project.hasProperty('headless')) systemProperty 'java.awt.headless', 'true'
+    maxHeapSize = '2g'
 }

@@ -66,7 +66,7 @@ abstract class PackageMac extends DefaultTask {
         }
 
         // Read the same embedded identity as Windows; never write VERSION_STATE.txt.
-        File applicationJar = new File(input, 'app.jar')
+        File applicationJar = new File(input, 'engine-core.jar')
         Properties metadata = new Properties()
         new ZipFile(applicationJar).withCloseable { archive ->
             def entry = archive.getEntry('com/ohinteractive/seedv6/application-version.properties')

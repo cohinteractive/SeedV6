@@ -7,18 +7,23 @@ The root Gradle project includes the five target owners `engine-core`,
 `engine-core` owns the runtime implementation and has no project dependency.
 `engine-training` owns trainers, optimizer/checkpoint continuation, model workspace,
 corpus, self-play and validation services, and exposes core through its API dependency.
-Legacy `app` explicitly consumes core and training and retains GUI, UCI and
-research consumers. The other three target projects remain scaffolds. Shared Java/JUnit conventions and enforced project dependency/source-root
+The WU4 extraction places desktop presentation, controllers, preferences and
+resources in `app-gui`, which consumes core/training. Legacy `app` consumes all
+three and retains UCI, research integration and unchanged Main delegation. `app-uci`
+and `research` remain scaffolds. WU4 structural validation is complete under the
+owner-authorized non-interactive boundary; native user acceptance remains deferred
+to WU7. See [the WU4 record](unified-architecture/WU4-GUI.md). Shared Java/JUnit conventions and enforced project dependency/source-root
 boundaries live in `gradle/`. See [the WU1 transition](unified-architecture/WU1-GRADLE.md)
 for the foundation and legacy removal gate, and [WU3](unified-architecture/WU3-TRAINING.md)
 for current training ownership and dependency declarations. Java 21's application plugin launches
 [`Main`](../app/src/main/java/com/ohinteractive/seedv6/Main.java), selecting desktop
 `SwingLauncher` for `gui` and `UciEngine` otherwise. The application JAR contains legacy main output; `installDist` and native packaging
-include its runtime dependencies, including `engine-core.jar` and `engine-training.jar`.
+include its runtime dependencies, including `app-gui.jar`, `engine-core.jar` and `engine-training.jar`.
 Training owns the unchanged Gson/SQLite/Zstandard dependencies, optional trainer-only
 BRN-3 vector kernels and binpack notice. Core owns the opening
-book and optional Syzygy native sources/resources/license. Application version
-resources remain in app. The legacy `:app:compileSyzygy` task delegates to core.
+book and optional Syzygy native sources/resources/license. Shared headless ApplicationVersion and its generated identity resource now belong
+to core; GUI About and legacy UCI consume that one owner. Desktop FlatLaf/JNA and
+all runtime GUI artwork belong to app-gui. The legacy `:app:compileSyzygy` task delegates to core.
 
 `main` has no dependency on `verification` or `test`. The custom `verification`
 source set depends on main; test depends on both. JavaExec developer tasks use

@@ -1,0 +1,3487 @@
+{
+  "observedUtc": "2026-10-16T06:27:30.575234+00:00",
+  "workUnit": "WU4",
+  "status": "WU4 structural implementation and scoped non-interactive validation complete; GPT/user reconciliation pending; full native GUI runtime acceptance deferred",
+  "worktree": "C:/projects/seed/java/seedv6-unified",
+  "branch": "migration/unified-architecture",
+  "baselineCommit": "ff7291aae877244843e99afa3c47120642f25bc5",
+  "baselineClean": true,
+  "sourceOwnership": {
+    "guiSources": 75,
+    "guiResources": 35,
+    "relocations": [
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/ApplicationIcons.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/ApplicationIcons.java",
+        "sha256": "4a755c014fed12d0131459a7cc441d96f3f124931465e91079868476fb0d7bd5"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/ApplicationMenu.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/ApplicationMenu.java",
+        "sha256": "c1328557dfc031ab9b98c2a793ac7da835d846ca7e7dd812c20d68607f377654"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/ArenaHistoryView.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/ArenaHistoryView.java",
+        "sha256": "cb43f509771ea208415d833c342147947bc5aa38bcdec7731e30f79c206c29bb"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/ArenaLiveView.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/ArenaLiveView.java",
+        "sha256": "226033afa0e6442e1d752e6c29539006dd6f7c62b2425687b5b69b666a520783"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/ArenaMatchSummary.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/ArenaMatchSummary.java",
+        "sha256": "1b01367beed80f028cb0d8303f1b067a74e7c43d0dda731293787036f00d7d3e"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/ArenaRoundSummary.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/ArenaRoundSummary.java",
+        "sha256": "2ebeac1bd7532992500a9ed8725518358f4bbb617a7518673d6e8c530c4f51ec"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/ArenaScoreChart.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/ArenaScoreChart.java",
+        "sha256": "768dac046b041e71727b03d5e6bb95300e9ac81e53ffb5e0ce55bb4c402fd403"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/ArenaTrainingSummary.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/ArenaTrainingSummary.java",
+        "sha256": "acc259bd9df05d483eb9a5414c99b99d77e894f892b72a763616d82e40b3f2b0"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/BestLineageField.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/BestLineageField.java",
+        "sha256": "730e61465b010d4a19bee2649f94a5986302051703a41365bb2fb1ca5afc49a8"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/BoardMaterial.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/BoardMaterial.java",
+        "sha256": "fb5130fdea5ef41c18df639345f452e132f5ee81f85f239ac3aa65abad30fba9"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/BoardPanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/BoardPanel.java",
+        "sha256": "30a64190925a3709115b531f786ea844558f363f7c210431bf5d23a070caa88e"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/BrePair2ConfigurationPanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/BrePair2ConfigurationPanel.java",
+        "sha256": "eb70a3dea219b2f3a7d05e2c619ce0e75fd60d401bf5069183655cf650cf7ca7"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/Brn1ConfigurationPanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/Brn1ConfigurationPanel.java",
+        "sha256": "0d8cc3943ba5008f5248240c4796bf7f57db00f276d73e44a0076ebd1f91b219"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/Brn2ConfigurationPanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/Brn2ConfigurationPanel.java",
+        "sha256": "0a990876abc0d93c1d095c2994d4eb1b5e863c55d9a74e57e75a9bf0cff4b1f9"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/Brn3ConfigurationPanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/Brn3ConfigurationPanel.java",
+        "sha256": "fc8c0fb364a76017dc41776f8c4bed369579e6501244bcb509c90ad71e5bdecc"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/BrnConfigurationPanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/BrnConfigurationPanel.java",
+        "sha256": "5432b0db66f18850a00941a30b0fb4c23eb70ad945b5095aa513e06f00cd1254"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/BrnTrainingSourcePanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/BrnTrainingSourcePanel.java",
+        "sha256": "743baca5eeb1982eedc42e5760577bbd827fcb74a3af6b91546e4bfdd4e4aadb"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/CampaignDivider.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/CampaignDivider.java",
+        "sha256": "e8b632dbe3a7e8d6f6e29243275984c05e8b8ed5bcceebf3602f48fdf337929a"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/ChessFrame.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/ChessFrame.java",
+        "sha256": "6e269a1b89684a2f582a195e1ef404c885e357c6c069a8a3911ab2ffcb5d0ee9"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/CorpusImportController.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/CorpusImportController.java",
+        "sha256": "d8fa744494063482d41696b98bbe29a3be0f0bd67b6a10f5ccb6ff4306ffeab2"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/CorpusImportPanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/CorpusImportPanel.java",
+        "sha256": "cf2113044a8a55ed8d245612736825faee8ada7252b5a5d8b2d3bc9723b1c162"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/EngineCard.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/EngineCard.java",
+        "sha256": "25218a3cef0fe0b0a0cf4a664da3f22486faa0b650a295680127a098d4039192"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/EngineSearchAdapter.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/EngineSearchAdapter.java",
+        "sha256": "a70db08a31d0b8872487d4d3cd6f6665d11c0b0f7d08ddccf07ffbe09f05f468"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/FilePickers.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/FilePickers.java",
+        "sha256": "1e45dbb196333d8e729f9d5708654ee7f382cc46d3eee2b65c7d37c048c1ab5d"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/GameController.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/GameController.java",
+        "sha256": "9970d10108cf6a55479c984c2ba8ef6966647b302d26066a9df057847f04fc68"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/GameSession.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/GameSession.java",
+        "sha256": "736873c13c5101ffaf9177f3abc812c5d629c5ae846191656186b5002eb47e90"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/GenerationDetailsPanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/GenerationDetailsPanel.java",
+        "sha256": "8f0f47be7c325eb04cab0d49afbb444a1f6fc1b90be8edbf6f75444a46bc047a"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/HistoryChart.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/HistoryChart.java",
+        "sha256": "6995204dad6b3fdd6860445cf4fe11c7f9f8452d61f29aa2a6f29f66117b7921"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/LearningArenaController.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/LearningArenaController.java",
+        "sha256": "1b3a6e65ce3568aa73a93077fa30584940312e5d4512a7321fb3e3d71fb0ac15"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/LearningArenaPanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/LearningArenaPanel.java",
+        "sha256": "eb853cddce1acdd056c37290758a86ae7f3364fb8f1ea663b8feba3dfbac0a45"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/LineageConfiguration.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/LineageConfiguration.java",
+        "sha256": "28a2cb34429f685d9dfc3f303e0ab2aba1fab201a663c086b4089ff7ab691664"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/LineageSummary.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/LineageSummary.java",
+        "sha256": "85168b9b4be812eae98ed0290da05f60500c1cd3e6cc25b0cfd10d7b248d625d"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/MacFilePicker.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/MacFilePicker.java",
+        "sha256": "cf9b3632458897b6f7b64bc95ac6d8d232a859b3153076a8651ecc179c59e63e"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/MatchPresentation.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/MatchPresentation.java",
+        "sha256": "b8624142a75dc85e343190eb3a46e3eda8ce1d4d75fc356b39e3520928872735"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/MatchView.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/MatchView.java",
+        "sha256": "fcbc6a4484bf0c4ac4cd48c57aa2cc9c85d3acc0081bfddedcdc9366885337bd"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/ModelChoice.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/ModelChoice.java",
+        "sha256": "7055fa85640631b6b56d28a396718765f89e01b997e058a38c8f527f4cbf8851"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/ModelSelectionPanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/ModelSelectionPanel.java",
+        "sha256": "e09e82e27d2ccb8e66c1e622771593599ac939037f883891f612eaa617b611b7"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/MoveScoresheet.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/MoveScoresheet.java",
+        "sha256": "d84c01f63cb67b7a75bd27b9937199936c674615bc5055b7b53fbef4ee04ab7b"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/NetworkArchitecture.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/NetworkArchitecture.java",
+        "sha256": "b5653fc545e2d5108a0bb1bcddba5abe7a7eee0f1323e423ec8ce834b0cf51cf"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/NnueConfigurationPanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/NnueConfigurationPanel.java",
+        "sha256": "41d9ddfc22d672ebd1aa7d75878248465be1ac82d9669fd903ac49a225df9879"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/PickerLocations.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/PickerLocations.java",
+        "sha256": "dea878fd700519805426b6edbb31ba26313ce5d626bc33232ace1212c116d4c0"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/PieceRenderer.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/PieceRenderer.java",
+        "sha256": "044d6fab7ab1ea085418437df8f2429c1a09ee230c8339003abbdc15683a8403"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/PlayEnginePanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/PlayEnginePanel.java",
+        "sha256": "3e1cadb83fae226fdfa4229387a41e620d4cd957dee16028503a164c09f5a89d"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/PlayEvaluator.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/PlayEvaluator.java",
+        "sha256": "ae0eb5e85a96be0f90452ae52bf85d822fdb6e6da1345bef46a8f41834d18769"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/PlayParticipants.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/PlayParticipants.java",
+        "sha256": "5c5dc2047c95d2d39dc1271dcf9f66dab0fce25127813897d418015c8b7a57b4"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/PlayScore.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/PlayScore.java",
+        "sha256": "ddfd31cbd42192d889e74030fbd7a59951c7c0e636d1e5c3cda3d1116829fcae"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/PositionStatus.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/PositionStatus.java",
+        "sha256": "13fb134923f38c36ca2c8617527a6af9d34b8ca43a986103609c602af6e8bc0e"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/PromotionThresholdSegments.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/PromotionThresholdSegments.java",
+        "sha256": "df817e61a4ec130381778db70256d01afdc72043810837f22558d57f59965e04"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/RecipeLearningRatePanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/RecipeLearningRatePanel.java",
+        "sha256": "7842fdeada38c5ead2dc51c0e3bcc81b1c829a7719b6bdeddee500bedb1fbc1e"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/ScrollPreservingText.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/ScrollPreservingText.java",
+        "sha256": "5b1039589807e9b9e4c365356d4456cd053f14060dca2b723af78b461c7b2aba"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/SeedTheme.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/SeedTheme.java",
+        "sha256": "44a8dcee64327e8bfc1e7a1ad26dc7ea8581dd6fb64522c75632c46a93edcf3b"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/SquareMapper.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/SquareMapper.java",
+        "sha256": "cf4ed4d244a51a505458232924c16f0b66c52ab4b1b7740558f1a149310230fe"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/SwingFilePicker.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/SwingFilePicker.java",
+        "sha256": "2105f7b4504d8f7b65eee284cba84646d0d831385c3201c35d7203aa8465c2ba"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/SwingLauncher.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/SwingLauncher.java",
+        "sha256": "bee5dcc8a836c47be968d83f235776ffb53263f22e764f446d8c60b293c151b5"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/ThreadSelection.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/ThreadSelection.java",
+        "sha256": "8861f1639ae7c6bf88176d2a32ab32d1ab9c4be55c590e98e947d23d3c70e7dc"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingBoard.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingBoard.java",
+        "sha256": "2973377001f5458a49ec3726104a16a75b7ced0b0bf68e871310260f25fbebb2"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingComparison.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingComparison.java",
+        "sha256": "d70ffdb9a513a656fe981d4e3856f702194762a910aa4832819cc954c1ab94d3"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingController.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingController.java",
+        "sha256": "35144caabb60c045aab748db739c05c014d466052e18dd6d19edeb3f085c80a0"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingDashboard.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingDashboard.java",
+        "sha256": "3afd8a789ad5f664aad517ffb900ad9f1a1eb57c4ca71fda4828b4400f35b1e8"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingDashboardModel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingDashboardModel.java",
+        "sha256": "9c590d593cf9a6efb704deb11e64003269ceac6cea111f61767a85ef0874ecbd"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingDataSelector.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingDataSelector.java",
+        "sha256": "1d665d91b61351de8e7ac4773dffab5bd402c0359bd76e2a1609b2c28a44651c"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingDataSourcesPanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingDataSourcesPanel.java",
+        "sha256": "ad5a4aebc843ac9ae55d89cf38820add26790029f19771404a865d6a11915c1b"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingFolders.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingFolders.java",
+        "sha256": "d842dd5b35daee832c60c12a29c890eccb81c89b6e6d1e423b53596eeb59b9d4"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingHistory.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingHistory.java",
+        "sha256": "e2ee8c9e7ee18dc27fe4bb2c95e9a20c8445dddcd1ac1e65b94a00e3875356f5"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingLineages.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingLineages.java",
+        "sha256": "a29d7b00ee6f91693a167bc809cd738601a46ad111e98dfabf34630ea78d50ad"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingLoss.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingLoss.java",
+        "sha256": "17ed16fe376ab75eec8d6442fb843d4d5944fee7d8131bb0f5791126cf6837aa"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingPanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingPanel.java",
+        "sha256": "5edd04fd90f2993c6cbe4f2f6d3f895717df91ab8bf1918f1a0e0cc456ae1aa7"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingProgress.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingProgress.java",
+        "sha256": "90b00ca9d979293060bd86787b8ced211d220be9a42d541f29a2071cf0a52d9b"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingProgressView.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingProgressView.java",
+        "sha256": "53111ce3930c8855e971670e41e4c00cda687aa7b6141558f618cdd1a11ece73"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingRecipePanel.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingRecipePanel.java",
+        "sha256": "54190cfd01155278875120641abce294b1879b9e33796f5c214461be5804aa5e"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingSettings.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/TrainingSettings.java",
+        "sha256": "a308d758297703807e5425a6dc192b33b15aacd45a2f9b7b54640bcb04401d5f"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/ValidationWinMetric.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/ValidationWinMetric.java",
+        "sha256": "1a5767f603edb3404647e0f147fe3dbad5a0a7454c54b27e82fd12995e749bd0"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/WindowsFilePicker.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/WindowsFilePicker.java",
+        "sha256": "d83c14c41eee34c5288ed7c3b324d8d8f119d6ddea3dee1122bcffd9dbe5e92b"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/WorkspaceActivity.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/WorkspaceActivity.java",
+        "sha256": "f68e0f741069bab3424e9febd6b46944b0beacbd2be0fd6d92f359def512f4a9"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/gui/WorkspaceActivityTabs.java",
+        "to": "app-gui/src/main/java/com/ohinteractive/seedv6/gui/WorkspaceActivityTabs.java",
+        "sha256": "1603b87726ec7c94fc7548e8e1fdd85c6226406ccba9136f922dd420d4998ecb"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/FlatDarkLaf.properties",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/FlatDarkLaf.properties",
+        "sha256": "eebc4d04d0e2e2aeb08f9ce651b2ca058f21dddb2f0318ff69956b636bb6fffe"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-128.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-128.png",
+        "sha256": "b187da684fcf5ee2f462b687c8dee6ad0c359cc584f2cf39a016fa0b7dddb590"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-16.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-16.png",
+        "sha256": "084e74370e56a2d08adc704c4bf5b10267a891426499c559d05258396d480428"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-20.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-20.png",
+        "sha256": "81cf8e32310f4a0c3b0a352a2d13f825092c8c7068af3069d4640362e29abbcb"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-24.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-24.png",
+        "sha256": "085476c3a3b9efc5a0ec8335732e5d82a87df37f4c70a835bab4d061a70cfee0"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-256.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-256.png",
+        "sha256": "c542bf7c3cfe16bfd5d35706e4eac61d8bece055e88e6f84992d332d62748268"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-32.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-32.png",
+        "sha256": "de52de5407083e3aafc1117c3fb01563d8e6192325d8fe05cf0435b77b902482"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-40.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-40.png",
+        "sha256": "cc07490dcc75ae240008f4d941954f6b8e61b5c5e7a8dbbd3af868fc66dcf701"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-48.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-48.png",
+        "sha256": "b987bb21091e6bc9df6c182c042548ba74b5ea48b6f5c038717b094d59b11d43"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-64.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-64.png",
+        "sha256": "fc465ec41dcd9a0df423c26412eda72a20b7187c301fc53244cea7e6722b2e73"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-96.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/icons/seedv6-96.png",
+        "sha256": "909bf5482a8da60fafd6fa7d3412ffe0d4ef6aea72ecf4bb5d9444a91d3d459f"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/bb.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/bb.png",
+        "sha256": "9cd978c3fe87fe942556956fd2bd4258e1ba12b2fc3e93a11a1dd80e429f3dc3"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/bk.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/bk.png",
+        "sha256": "933be82b3556ea4f7707d344acfb754dbeec6c0c3b122087a7404811fc70a378"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/bn.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/bn.png",
+        "sha256": "4a155e092dced645625ecd6041ea099200ff93587650aa5c0f0328195048493f"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/bp.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/bp.png",
+        "sha256": "dbfd907163b61e22a3c6ed12623f8ca77515dc02b5aa5ebae28f4a770f55e1bb"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/bq.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/bq.png",
+        "sha256": "ee6e33623ec9a94d24a6125e29af517b4481c8880566d38b606c3b02828f392e"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/br.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/br.png",
+        "sha256": "b6c7525771d3e9f74741d7343c33c297074ee98435e627ac64cbbbf8f25bb0e3"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/wb.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/wb.png",
+        "sha256": "6bd6811779a757c7b699e857e1963e6f1d527dfb10903974a60fcaa504437104"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/wk.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/wk.png",
+        "sha256": "3dcd08af72df3e7fc7db35b2f98fd527ecdb3035b151727f339647f7a3582744"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/wn.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/wn.png",
+        "sha256": "062d27b9d6957b748876a2a19dab1877f27c58aefe8f5972fc5dc2843f13d5bb"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/wp.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/wp.png",
+        "sha256": "c5d47c16dd4ccdb0d2ab03cbb474ce59db21726f998435d3786ec232494d4e11"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/wq.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/wq.png",
+        "sha256": "84dd7de4ead07c3ea40cb902abf6bce20e7a6f79a9804bf6cb45d9a61b2f722b"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/wr.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/legacy/wr.png",
+        "sha256": "5e3b7095be395ca61c5a3b538335c4aa8f18d899dca2517efe50b3d48140c484"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/bb.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/bb.png",
+        "sha256": "82c505c3951f90f24effcd217bc5534702209a41de55365e79b92b6093c19bc9"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/bk.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/bk.png",
+        "sha256": "7b59ed93d131f05ee92291df60ee148e40f8765097769bdbb352b6fc814d0bfd"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/bn.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/bn.png",
+        "sha256": "30ab87331c9d44d15cb8463271189be27e1053dd094e7be4faeb81c9d9df004d"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/bp.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/bp.png",
+        "sha256": "5756dbdc53212e0b886090ea1cf9ed73e72f64a249d4290336c53ad6d673b275"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/bq.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/bq.png",
+        "sha256": "bb76133170143525a92b349096ba6f3cae1b13abcac900f8d0f59cacc6b3ea0c"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/br.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/br.png",
+        "sha256": "989a9c16844c1b2028243089619e5b5d9ce8e7cecb2a7b4df723ba405b00ca35"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/wb.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/wb.png",
+        "sha256": "b2f34b52344106636d516ce396d06cef63bb2f26e6fd24b5e86dd9a89a0f2e34"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/wk.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/wk.png",
+        "sha256": "48f0dffb504606dc53fdb479d0df83a7518ba06380353477dd1dd97dad99831a"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/wn.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/wn.png",
+        "sha256": "4265fe36f607e9eb523d5e7617fcdb3be8f87131b98e5ef281b6319a03fdafc0"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/wp.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/wp.png",
+        "sha256": "9becfa3c0d69a07e3e787e65a34069bb8001cafdb8db614a52dbe863c5a10294"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/wq.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/wq.png",
+        "sha256": "ba255611638f7e91d229ea2bdd92f4e8cee681521270aa3cc58042a478ad48b5"
+      },
+      {
+        "from": "app/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/wr.png",
+        "to": "app-gui/src/main/resources/com/ohinteractive/seedv6/gui/pieces/original/wr.png",
+        "sha256": "a6d97844faf2e41e536c8511edea419b2e1e3ad096e986e5587b24437858893e"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/ApplicationVersion.java",
+        "to": "engine-core/src/main/java/com/ohinteractive/seedv6/ApplicationVersion.java",
+        "sha256": "95f5c29b25f8afe9f2e07432d88d8c66a16c49aae76eba27846ae040e174e268"
+      }
+    ],
+    "movedTests": [
+      {
+        "from": "app/src/test/java/com/ohinteractive/seedv6/gui/GameSessionTest.java",
+        "to": "app-gui/src/test/java/com/ohinteractive/seedv6/gui/GameSessionTest.java",
+        "sha256": "9210d52a909ba35d435fedbdee89c91b2b2f8b3901fada151c86e3ee13abf265"
+      },
+      {
+        "from": "app/src/test/java/com/ohinteractive/seedv6/gui/SquareMapperTest.java",
+        "to": "app-gui/src/test/java/com/ohinteractive/seedv6/gui/SquareMapperTest.java",
+        "sha256": "1f03571edd62b59df6bb8ae638119d918333d657bbefff314ec41868460f26d6"
+      },
+      {
+        "from": "app/src/test/java/com/ohinteractive/seedv6/gui/PieceRendererTest.java",
+        "to": "app-gui/src/test/java/com/ohinteractive/seedv6/gui/PieceRendererTest.java",
+        "sha256": "5b5ca2e8c32bf50cebc5fd36001ee40bb6e78cdd950cdfd5288aab5a0edb0abf"
+      },
+      {
+        "from": "app/src/test/java/com/ohinteractive/seedv6/gui/ApplicationMenuTest.java",
+        "to": "app-gui/src/test/java/com/ohinteractive/seedv6/gui/ApplicationMenuTest.java",
+        "sha256": "77420ae33ec15ec46b2103a5bb8199f6fb40b4906eaa575c08fd961bd22bdbc5"
+      }
+    ],
+    "all374ExistingProductionInputsBytePreserved": true,
+    "sharedRuntimeIdentity": "Unchanged ApplicationVersion moves to core; single generated version resource in core",
+    "finalSourceCounts": {
+      "app": 9,
+      "app-gui": 75,
+      "engine-core": 109,
+      "engine-training": 134
+    },
+    "resourceTools": {
+      "syntaxValid": [
+        "tools/generate-app-icons.py",
+        "tools/extract_chess_piece_sheet.py"
+      ],
+      "outputDirectoriesExist": true,
+      "assetsRegenerated": false,
+      "unrelatedOldSourcePathReferencesDeferredToWU6": [
+        "tools/analyze-search-delta.py",
+        "tools/brn-architecture.py"
+      ],
+      "note": "Inherited engine/training path consumers; unchanged by WU4. brn-throughput immutable git-show path is historical by design."
+    },
+    "runtimeLibraries": "FlatLaf 3.7, JNA platform 5.17.0 owned by app-gui; versions and third-party JAR bytes unchanged"
+  },
+  "projectDependencies": {
+    "engine-core": [],
+    "engine-training": [
+      "engine-core"
+    ],
+    "app-gui": [
+      "engine-core",
+      "engine-training"
+    ],
+    "app-uci": [
+      "engine-core"
+    ],
+    "research": [
+      "engine-core",
+      "engine-training"
+    ],
+    "app": [
+      "engine-core",
+      "engine-training",
+      "app-gui"
+    ]
+  },
+  "artifactAudit": {
+    "sourceInputsCompared": 374,
+    "sourceInputsEqual": true,
+    "relocations": 111,
+    "relocationsEqual": true,
+    "beforeClassCount": 722,
+    "afterClassCount": 722,
+    "classPayloadsEqual": true,
+    "duplicates": [],
+    "classesByOwner": {
+      "app-gui.jar": 220,
+      "app.jar": 11,
+      "engine-core.jar": 174,
+      "engine-training.jar": 317
+    },
+    "resourcePathsEqual": true,
+    "changedResources": [
+      "com/ohinteractive/seedv6/application-version.properties"
+    ],
+    "thirdPartyJarBytesUnchanged": true,
+    "beforeJars": {
+      "app.jar": "fd3eba3e7ad593069eab9f4a4b6ec09c79b5622bb3d92ac3f89bc89c399367df",
+      "checker-qual-3.42.0.jar": "ccaedd33af0b7894d9f2f3b644f4d19e43928e32902e61ac4d10777830f5aac7",
+      "engine-core.jar": "a59c010a83fc4550218291f336b36f22f53d0b7204d608715e12e200a4d79793",
+      "engine-training.jar": "ec22d68252cce3b537964413218d0828ba3ff76eb4bb76185c63daa744407d43",
+      "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "failureaccess-1.0.2.jar": "8a8f81cf9b359e3f6dfa691a1e776985c061ef2f223c9b2c80753e1b458e8064",
+      "flatlaf-3.7.jar": "1dc4f08cc0e01122f5bc6cebe1dcf253872c1fe8126208f43dab314d7deb0da2",
+      "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "guava-33.2.1-jre.jar": "452b2d9787b7d366fa8cf5ed9a1c40404542d05effa7a598da03bbbbb76d9f31",
+      "jna-5.17.0.jar": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0",
+      "jna-platform-5.17.0.jar": "b7e3d46c87bad2eb409b0e704916bcd81206168e357312dfddd0e253679cd9e0",
+      "jsr305-3.0.2.jar": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+      "listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
+      "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+    },
+    "afterJars": {
+      "app-gui.jar": "cab9b75574fb12166f757c92dfc6ec21830c1bf501986b9d1b0dbfe4c84702a0",
+      "app.jar": "b3bc62528179c75d4e50db88c9c1bf2d097c5b8ff9c2f9d0cb85883b1e52e761",
+      "checker-qual-3.42.0.jar": "ccaedd33af0b7894d9f2f3b644f4d19e43928e32902e61ac4d10777830f5aac7",
+      "engine-core.jar": "c27c972f4bd0a12c1c926c3650f183ad4e6b19fd6fecc36b93eee19c49836883",
+      "engine-training.jar": "64df1bff48da31c9aa951bb66c44c71a79afe660355d74b0fd624b83a2e1e37d",
+      "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "failureaccess-1.0.2.jar": "8a8f81cf9b359e3f6dfa691a1e776985c061ef2f223c9b2c80753e1b458e8064",
+      "flatlaf-3.7.jar": "1dc4f08cc0e01122f5bc6cebe1dcf253872c1fe8126208f43dab314d7deb0da2",
+      "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "guava-33.2.1-jre.jar": "452b2d9787b7d366fa8cf5ed9a1c40404542d05effa7a598da03bbbbb76d9f31",
+      "jna-5.17.0.jar": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0",
+      "jna-platform-5.17.0.jar": "b7e3d46c87bad2eb409b0e704916bcd81206168e357312dfddd0e253679cd9e0",
+      "jsr305-3.0.2.jar": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+      "listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
+      "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+    },
+    "sourcesByOwner": {
+      "app": 9,
+      "app-gui": 75,
+      "engine-core": 109,
+      "engine-training": 134
+    }
+  },
+  "validation": {
+    "baselineGui": {
+      "counts": {
+        "passed": 305,
+        "failed": 10,
+        "skipped": 28,
+        "tests": 343
+      },
+      "failures": [
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn1TrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "seconds": 0.44,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/baseline-gui-results/TEST-com.ohinteractive.seedv6.gui.Brn1TrainingGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn2SupervisionGuiTest",
+          "name": "freshControlsDefaultWdlExposePercentComplementAndFollowEveryLifecycleLock()",
+          "seconds": 0.192,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/baseline-gui-results/TEST-com.ohinteractive.seedv6.gui.Brn2SupervisionGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn2TrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "seconds": 0.113,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/baseline-gui-results/TEST-com.ohinteractive.seedv6.gui.Brn2TrainingGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest",
+          "name": "[1] BRN-0",
+          "seconds": 0.095,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/baseline-gui-results/TEST-com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest",
+          "name": "[2] BRN-1",
+          "seconds": 0.084,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/baseline-gui-results/TEST-com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnCaptureGuiTest",
+          "name": "brnDefaultRoundTripAndLifecycleLocksWithNnuePanelUnchanged()",
+          "seconds": 0.104,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/baseline-gui-results/TEST-com.ohinteractive.seedv6.gui.BrnCaptureGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnPair2GuiTest",
+          "name": "capabilitiesAndRecipeEditorsAppearInExistingTrainingPanel()",
+          "seconds": 0.063,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.getSelectedItem()\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/baseline-gui-results/TEST-com.ohinteractive.seedv6.gui.BrnPair2GuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnTrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "seconds": 0.051,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/baseline-gui-results/TEST-com.ohinteractive.seedv6.gui.BrnTrainingGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.TablebasePresentationTest",
+          "name": "engineCardLabelsOutcomeWithoutEvaluationUnitsOrASearchedPv()",
+          "seconds": 0.009,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: White wins ==> expected: <true> but was: <false>",
+          "evidence": "build/migration/wu4/baseline-gui-results/TEST-com.ohinteractive.seedv6.gui.TablebasePresentationTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.WorkflowRefinementGuiTest",
+          "name": "compactDashboardShowsBothGraphsAtOrdinaryViewportAndRendersAt150Percent()",
+          "seconds": 0.035,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Graphs bottom=719 viewport=649 ==> expected: <true> but was: <false>",
+          "evidence": "build/migration/wu4/baseline-gui-results/TEST-com.ohinteractive.seedv6.gui.WorkflowRefinementGuiTest.xml"
+        }
+      ]
+    },
+    "independentModules": {
+      "engine-core": {
+        "tests": 61,
+        "passed": 61,
+        "failed": 0,
+        "skipped": 0
+      },
+      "engine-training": {
+        "tests": 11,
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0
+      },
+      "app-gui": {
+        "tests": 22,
+        "passed": 22,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    "tenInheritedGuiNamesAndMessagesMatchWu3": true,
+    "additionalObservedFailures": [
+      {
+        "classname": "com.ohinteractive.seedv6.gui.LearningArenaGuiTest",
+        "name": "controllerRunsOffEdtAndReopensDurableResults()",
+        "seconds": 32.767,
+        "status": "failed",
+        "message": "org.opentest4j.AssertionFailedError: Timed out waiting for GUI/lifecycle condition ==> expected: <true> but was: <false>",
+        "evidence": "build/migration/wu4/migrated-gui-results/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml"
+      }
+    ],
+    "additionalFailureDisposition": "Initial Arena timeout retained; paired unchanged WU3/WU4 tests and broad migrated replay pass. Exact transient cause unknown; evidence supports no WU4 regression. Not counted among inherited 19.",
+    "structural": {
+      "freshModuleCompilationAndTests": true,
+      "guiIndependentOfLegacyApp": true,
+      "freshLegacyAssemblyAndTestVerificationCompilation": true,
+      "actualBoundaryVerification": true,
+      "boundaryFixtures": {
+        "tests": 11,
+        "passed": 11,
+        "failed": 0
+      },
+      "configurationCache": "stored and reused",
+      "packaging": "Windows and macOS task configuration/dry-runs pass --warning-mode fail; no native package built",
+      "jdkPackagingResolver": "actual JDK 21 LauncherData resolves relocated classes without windows",
+      "coreJdeps": "java.base",
+      "slowSuites": "Existing slow-nnue exclusions unchanged; full unfiltered suite not run"
+    },
+    "initialHarnessFailure": "First baseline attempt could not load JUnit engine after premature classpath replacement; fixed isolated test harness via testRuntimeOnly, production unchanged; raw output retained",
+    "nativeWindows": {
+      "runtime": "Windows amd64, C:/java/jdk-21, Java 21",
+      "classPathExcludesLegacyApp": true,
+      "observed": "SwingLauncher opens Play; board, pieces, icons and theme visibly rendered. First pawn-selection click issued; second move-input action stopped by physical Escape. No successful move or engine response claim.",
+      "interrupted": true,
+      "remaining": [
+        "Play functional interactions and engine response",
+        "Training start/stop/resume/progress",
+        "Arena learning and match-only live/history/reopen",
+        "Preferences and native chooser/reopen",
+        "Resize/scaling and cooperative shutdown"
+      ],
+      "isolatedFixture": "build/migration/wu4/native workspace",
+      "preferences": "build/migration/wu4/native-preferences.properties",
+      "processAtLaunch": 23284,
+      "windowMayRemainOpen": true,
+      "historicalOnly": true,
+      "resumeInteractionPerformed": false,
+      "acceptance": "Deferred user-performed WU7 G2-G5/P1-P3; startup observations do not establish functional acceptance"
+    },
+    "nativeMac": {
+      "performed": false,
+      "acceptance": "Deferred user-performed WU7 G2-G5/P1-P3; required before platform/full GUI runtime acceptance and final cutover"
+    },
+    "notRun": [
+      "No resumed desktop interaction, window launch/focus, GUI automation or screenshots",
+      "Native Windows/macOS G2-G5 walkthroughs; earlier interrupted Windows startup is historical only",
+      "Full unfiltered / slow-NNUE suites, large campaigns and extended tournaments",
+      "Native production package creation, real external clients, final cutover"
+    ],
+    "inheritedCheckpointFailuresRemainOpen": 9,
+    "migratedGuiInitial": {
+      "counts": {
+        "passed": 283,
+        "failed": 11,
+        "skipped": 28,
+        "tests": 322
+      },
+      "failures": [
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn1TrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "seconds": 0.456,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/migrated-gui-results/TEST-com.ohinteractive.seedv6.gui.Brn1TrainingGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn2SupervisionGuiTest",
+          "name": "freshControlsDefaultWdlExposePercentComplementAndFollowEveryLifecycleLock()",
+          "seconds": 0.142,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/migrated-gui-results/TEST-com.ohinteractive.seedv6.gui.Brn2SupervisionGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn2TrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "seconds": 0.077,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/migrated-gui-results/TEST-com.ohinteractive.seedv6.gui.Brn2TrainingGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest",
+          "name": "[1] BRN-0",
+          "seconds": 0.096,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/migrated-gui-results/TEST-com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest",
+          "name": "[2] BRN-1",
+          "seconds": 0.081,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/migrated-gui-results/TEST-com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnCaptureGuiTest",
+          "name": "brnDefaultRoundTripAndLifecycleLocksWithNnuePanelUnchanged()",
+          "seconds": 0.1,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/migrated-gui-results/TEST-com.ohinteractive.seedv6.gui.BrnCaptureGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnPair2GuiTest",
+          "name": "capabilitiesAndRecipeEditorsAppearInExistingTrainingPanel()",
+          "seconds": 0.066,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.getSelectedItem()\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/migrated-gui-results/TEST-com.ohinteractive.seedv6.gui.BrnPair2GuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnTrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "seconds": 0.073,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/migrated-gui-results/TEST-com.ohinteractive.seedv6.gui.BrnTrainingGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.LearningArenaGuiTest",
+          "name": "controllerRunsOffEdtAndReopensDurableResults()",
+          "seconds": 32.767,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Timed out waiting for GUI/lifecycle condition ==> expected: <true> but was: <false>",
+          "evidence": "build/migration/wu4/migrated-gui-results/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.TablebasePresentationTest",
+          "name": "engineCardLabelsOutcomeWithoutEvaluationUnitsOrASearchedPv()",
+          "seconds": 0.148,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: White wins ==> expected: <true> but was: <false>",
+          "evidence": "build/migration/wu4/migrated-gui-results/TEST-com.ohinteractive.seedv6.gui.TablebasePresentationTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.WorkflowRefinementGuiTest",
+          "name": "compactDashboardShowsBothGraphsAtOrdinaryViewportAndRendersAt150Percent()",
+          "seconds": 0.189,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Graphs bottom=719 viewport=649 ==> expected: <true> but was: <false>",
+          "evidence": "build/migration/wu4/migrated-gui-results/TEST-com.ohinteractive.seedv6.gui.WorkflowRefinementGuiTest.xml"
+        }
+      ]
+    },
+    "migratedGui": {
+      "counts": {
+        "passed": 284,
+        "failed": 10,
+        "skipped": 28,
+        "tests": 322
+      },
+      "failures": [
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn1TrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "seconds": 0.463,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.Brn1TrainingGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn2SupervisionGuiTest",
+          "name": "freshControlsDefaultWdlExposePercentComplementAndFollowEveryLifecycleLock()",
+          "seconds": 0.149,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.Brn2SupervisionGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn2TrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "seconds": 0.079,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.Brn2TrainingGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest",
+          "name": "[1] BRN-0",
+          "seconds": 0.108,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest",
+          "name": "[2] BRN-1",
+          "seconds": 0.079,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnCaptureGuiTest",
+          "name": "brnDefaultRoundTripAndLifecycleLocksWithNnuePanelUnchanged()",
+          "seconds": 0.143,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnCaptureGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnPair2GuiTest",
+          "name": "capabilitiesAndRecipeEditorsAppearInExistingTrainingPanel()",
+          "seconds": 0.072,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.getSelectedItem()\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnPair2GuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnTrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "seconds": 0.062,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnTrainingGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.TablebasePresentationTest",
+          "name": "engineCardLabelsOutcomeWithoutEvaluationUnitsOrASearchedPv()",
+          "seconds": 0.012,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: White wins ==> expected: <true> but was: <false>",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TablebasePresentationTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.WorkflowRefinementGuiTest",
+          "name": "compactDashboardShowsBothGraphsAtOrdinaryViewportAndRendersAt150Percent()",
+          "seconds": 0.177,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Graphs bottom=719 viewport=649 ==> expected: <true> but was: <false>",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.WorkflowRefinementGuiTest.xml"
+        }
+      ],
+      "summary": "build/migration/wu4/resume/gui-replay-summary.json",
+      "summarySha256": "0f825dedc643531da901e452b26efe8fd4ec8afbe56747ea3a15ae59f597c385"
+    },
+    "freshIndependentModules": {
+      "engine-core": {
+        "counts": {
+          "passed": 61,
+          "failed": 0,
+          "skipped": 0,
+          "tests": 61
+        },
+        "failures": [],
+        "summary": "build/migration/wu4/resume/engine-core-summary.json",
+        "summarySha256": "e2edc3e79f6e0a0a6be997f929da52298bf40ce538f9a93805c5926c378399ac"
+      },
+      "engine-training": {
+        "counts": {
+          "passed": 11,
+          "failed": 0,
+          "skipped": 0,
+          "tests": 11
+        },
+        "failures": [],
+        "summary": "build/migration/wu4/resume/engine-training-summary.json",
+        "summarySha256": "ac50ebf046d050a763a52eaa8b770e09441c8363bd9e36aef2e8608dc66be9e1"
+      },
+      "app-gui": {
+        "counts": {
+          "passed": 22,
+          "failed": 0,
+          "skipped": 0,
+          "tests": 22
+        },
+        "failures": [],
+        "summary": "build/migration/wu4/resume/app-gui-summary.json",
+        "summarySha256": "f07397d750b08b21c401d95be56772e42eae684072ed832fbbf6f9c9aabfff48"
+      }
+    },
+    "arenaResolution": {
+      "status": "not reproduced; no WU4 regression evidenced",
+      "originalCause": "Exact transient timing cause was not captured; do not classify as one of the 19 inherited defects.",
+      "productionPayloadsEqual": true,
+      "unalteredTestAndTimeout": true,
+      "tenInheritedNamesAndMessagesMatch": true,
+      "runs": [
+        {
+          "evidence": "build/migration/wu4/baseline-gui-results/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml",
+          "seconds": 8.877,
+          "passed": true
+        },
+        {
+          "evidence": "build/migration/wu4/migrated-gui-results/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml",
+          "seconds": 32.767,
+          "passed": false
+        },
+        {
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml",
+          "seconds": 9.509,
+          "passed": true
+        },
+        {
+          "evidence": "build/migration/wu4/resume/retest-arena-Baseline1/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml",
+          "seconds": 9.32,
+          "passed": true
+        },
+        {
+          "evidence": "build/migration/wu4/resume/retest-arena-Current1/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml",
+          "seconds": 9.381,
+          "passed": true
+        },
+        {
+          "evidence": "build/migration/wu4/resume/retest-arena-Current2/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml",
+          "seconds": 9.342,
+          "passed": true
+        },
+        {
+          "evidence": "build/migration/wu4/resume/retest-arena-Baseline2/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml",
+          "seconds": 9.264,
+          "passed": true
+        }
+      ],
+      "comparisonHarnessInitialError": "Current tasks initially omitted distribution because install/app was used instead of install/seedv6; JUnit discovery failed before cases. Corrected path, preserved initial XML and log.",
+      "conclusion": "Unchanged test and 722 byte-identical production payloads; paired WU3/WU4 runs pass with near-identical timing, and full migrated replay passes Arena with only the ten matched inherited failures. Sufficient non-interactive evidence for scoped WU4; original failed run retained."
+    },
+    "additionalObservedFailuresRemainUnresolved": false,
+    "engineSearchUciVersionInitial": {
+      "counts": {
+        "passed": 975,
+        "failed": 1,
+        "skipped": 11,
+        "tests": 987
+      },
+      "failures": [
+        {
+          "classname": "com.ohinteractive.seedv6.search.driver.ProductionSearchBoundaryTest",
+          "name": "applicationJarContainsOnlyProductionClassesAndResources()",
+          "seconds": 0.01,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: expected: <true> but was: <false>",
+          "evidence": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.driver.ProductionSearchBoundaryTest.xml"
+        }
+      ],
+      "summary": "build/migration/wu4/resume/engine-search-uci-summary.json",
+      "summarySha256": "834435a677c8f7d98232aa5e587e08be9e717fa5297aa6e7e2861c085ce09d65"
+    },
+    "boundaryRetest": {
+      "counts": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "tests": 2
+      },
+      "failures": [],
+      "summary": "build/migration/wu4/resume/boundary-retest-summary.json",
+      "summarySha256": "893792ad41cf591cdd24b53686cc5f3db29a2505c5b4fb7a34e595e5ffc16f32"
+    },
+    "engineSearchUciVersionReconciled": {
+      "counts": {
+        "passed": 976,
+        "failed": 0,
+        "skipped": 11,
+        "tests": 987
+      },
+      "failures": [],
+      "summary": "build/migration/wu4/resume/engine-reconciled-summary.json",
+      "summarySha256": "0436b2ceebd737abc960f402b67a2f3aa4c5e3b99df65a18e9ff6ad0d444c9c2"
+    },
+    "boundaryTestRemediation": {
+      "cause": "New archive assertion rejected five empty gui directory entries, not payload files",
+      "fix": "Ignore directory entries; still reject any GUI payload in legacy app",
+      "testCases": 2,
+      "passed": 2,
+      "productionCodeChanged": false,
+      "evidence": "build/migration/wu4/resume/boundary-empty-directories.json"
+    },
+    "trainingPreservationTests": {
+      "counts": {
+        "passed": 129,
+        "failed": 9,
+        "skipped": 0,
+        "tests": 138
+      },
+      "failures": [
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[1] PLAN",
+          "seconds": 0.456,
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[2] DATA",
+          "seconds": 0.295,
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[3] ATTEMPT",
+          "seconds": 0.348,
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[4] CANDIDATE",
+          "seconds": 0.29,
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[5] CORPUS_RECEIPT",
+          "seconds": 0.29,
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[6] LATEST",
+          "seconds": 0.299,
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[7] SOURCE",
+          "seconds": 0.267,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[8] REPLACEMENT",
+          "seconds": 0.262,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[9] RECEIPT",
+          "seconds": 0.268,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        }
+      ],
+      "summary": "build/migration/wu4/resume/training-tests-summary.json",
+      "summarySha256": "bc7740d749ca595f6bcd1f8a15a5eeadf6cb498b5e4a698771c1b59c1e164360"
+    },
+    "nineCheckpointFailureNamesAndMessagesMatchWu3": true,
+    "reconciledSelectedCases": {
+      "counts": {
+        "passed": 1483,
+        "failed": 19,
+        "skipped": 39,
+        "tests": 1541
+      },
+      "failures": [
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn1TrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "seconds": 0.463,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.Brn1TrainingGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn2SupervisionGuiTest",
+          "name": "freshControlsDefaultWdlExposePercentComplementAndFollowEveryLifecycleLock()",
+          "seconds": 0.149,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.Brn2SupervisionGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn2TrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "seconds": 0.079,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.Brn2TrainingGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest",
+          "name": "[1] BRN-0",
+          "seconds": 0.108,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest",
+          "name": "[2] BRN-1",
+          "seconds": 0.079,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnCaptureGuiTest",
+          "name": "brnDefaultRoundTripAndLifecycleLocksWithNnuePanelUnchanged()",
+          "seconds": 0.143,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnCaptureGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnPair2GuiTest",
+          "name": "capabilitiesAndRecipeEditorsAppearInExistingTrainingPanel()",
+          "seconds": 0.072,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.getSelectedItem()\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnPair2GuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnTrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "seconds": 0.062,
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnTrainingGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.TablebasePresentationTest",
+          "name": "engineCardLabelsOutcomeWithoutEvaluationUnitsOrASearchedPv()",
+          "seconds": 0.012,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: White wins ==> expected: <true> but was: <false>",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TablebasePresentationTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.WorkflowRefinementGuiTest",
+          "name": "compactDashboardShowsBothGraphsAtOrdinaryViewportAndRendersAt150Percent()",
+          "seconds": 0.177,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Graphs bottom=719 viewport=649 ==> expected: <true> but was: <false>",
+          "evidence": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.WorkflowRefinementGuiTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[1] PLAN",
+          "seconds": 0.456,
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[2] DATA",
+          "seconds": 0.295,
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[3] ATTEMPT",
+          "seconds": 0.348,
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[4] CANDIDATE",
+          "seconds": 0.29,
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[5] CORPUS_RECEIPT",
+          "seconds": 0.29,
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[6] LATEST",
+          "seconds": 0.299,
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[7] SOURCE",
+          "seconds": 0.267,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[8] REPLACEMENT",
+          "seconds": 0.262,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[9] RECEIPT",
+          "seconds": 0.268,
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>",
+          "evidence": "C:/projects/seed/java/seedv6-unified/build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml"
+        }
+      ],
+      "summary": "build/migration/wu4/resume/reconciled-selected-summary.json",
+      "summarySha256": "f663812d24365e938c9a59bb16d8faf7b3180e1c07a7f60597b51ae7fd6bf79c"
+    },
+    "trainingBridge": {
+      "status": "passed",
+      "inputs": {
+        "network.brn-pair2": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "training.state": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+        "manifest.bin": "a51513ddb6e23a8537cc38b8aeb7676af5723c3e3b6bb8151f265bb87ae83891",
+        "training-metadata.bin": "135fb61ed736f313158e5514f2a16a81eda6526c4f034d2232ff26f8ee4176e7"
+      },
+      "commands": [
+        [
+          "C:\\java\\jdk-21\\bin\\javac.exe",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\app.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\checker-qual-3.42.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\engine-core.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\engine-training.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\error_prone_annotations-2.27.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\failureaccess-1.0.2.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\flatlaf-3.7.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\gson-2.11.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\guava-33.2.1-jre.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\jna-5.17.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\jna-platform-5.17.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\jsr305-3.0.2.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\sqlite-jdbc-3.53.4.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\zstd-jni-1.5.7-20.jar",
+          "-d",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\classes",
+          "C:\\projects\\seed\\java\\seedv6-unified\\tools\\UnifiedModelCompatibilityProbe.java",
+          "C:\\projects\\seed\\java\\seedv6-unified\\tools\\UnifiedTrainingCompatibilityProbe.java"
+        ],
+        [
+          "C:\\java\\jdk-21\\bin\\java.exe",
+          "-Xmx1200m",
+          "-XX:ActiveProcessorCount=2",
+          "--add-modules=jdk.incubator.vector",
+          "-Djava.io.tmpdir=C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\tmp",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\classes;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\app.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\checker-qual-3.42.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\engine-core.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\engine-training.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\error_prone_annotations-2.27.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\failureaccess-1.0.2.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\flatlaf-3.7.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\gson-2.11.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\guava-33.2.1-jre.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\jna-5.17.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\jna-platform-5.17.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\jsr305-3.0.2.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\sqlite-jdbc-3.53.4.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\zstd-jni-1.5.7-20.jar",
+          "UnifiedModelCompatibilityProbe",
+          "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304"
+        ],
+        [
+          "C:\\java\\jdk-21\\bin\\java.exe",
+          "-Xmx1200m",
+          "-XX:ActiveProcessorCount=2",
+          "--add-modules=jdk.incubator.vector",
+          "-Djava.io.tmpdir=C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\tmp",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\classes;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\app.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\checker-qual-3.42.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\engine-core.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\engine-training.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\error_prone_annotations-2.27.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\failureaccess-1.0.2.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\flatlaf-3.7.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\gson-2.11.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\guava-33.2.1-jre.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\jna-5.17.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\jna-platform-5.17.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\jsr305-3.0.2.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\sqlite-jdbc-3.53.4.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist\\lib\\zstd-jni-1.5.7-20.jar",
+          "UnifiedTrainingCompatibilityProbe",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\baseline-stores",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\historical-store\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304"
+        ],
+        [
+          "C:\\java\\jdk-21\\bin\\java.exe",
+          "-Xmx1200m",
+          "-XX:ActiveProcessorCount=2",
+          "--add-modules=jdk.incubator.vector",
+          "-Djava.io.tmpdir=C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\tmp",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\classes;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\engine-core.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\engine-training.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\gson-2.11.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\zstd-jni-1.5.7-20.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\sqlite-jdbc-3.53.4.0.jar",
+          "UnifiedModelCompatibilityProbe",
+          "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304"
+        ],
+        [
+          "C:\\java\\jdk-21\\bin\\java.exe",
+          "-Xmx1200m",
+          "-XX:ActiveProcessorCount=2",
+          "--add-modules=jdk.incubator.vector",
+          "-Djava.io.tmpdir=C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\tmp",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\classes;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\engine-core.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\engine-training.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\gson-2.11.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\zstd-jni-1.5.7-20.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\sqlite-jdbc-3.53.4.0.jar",
+          "UnifiedTrainingCompatibilityProbe",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\training-stores",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\historical-store\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304"
+        ]
+      ],
+      "baselineJars": {
+        "app.jar": "fd3eba3e7ad593069eab9f4a4b6ec09c79b5622bb3d92ac3f89bc89c399367df",
+        "checker-qual-3.42.0.jar": "ccaedd33af0b7894d9f2f3b644f4d19e43928e32902e61ac4d10777830f5aac7",
+        "engine-core.jar": "a59c010a83fc4550218291f336b36f22f53d0b7204d608715e12e200a4d79793",
+        "engine-training.jar": "ec22d68252cce3b537964413218d0828ba3ff76eb4bb76185c63daa744407d43",
+        "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+        "failureaccess-1.0.2.jar": "8a8f81cf9b359e3f6dfa691a1e776985c061ef2f223c9b2c80753e1b458e8064",
+        "flatlaf-3.7.jar": "1dc4f08cc0e01122f5bc6cebe1dcf253872c1fe8126208f43dab314d7deb0da2",
+        "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+        "guava-33.2.1-jre.jar": "452b2d9787b7d366fa8cf5ed9a1c40404542d05effa7a598da03bbbbb76d9f31",
+        "jna-5.17.0.jar": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0",
+        "jna-platform-5.17.0.jar": "b7e3d46c87bad2eb409b0e704916bcd81206168e357312dfddd0e253679cd9e0",
+        "jsr305-3.0.2.jar": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+        "listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
+        "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+        "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+      },
+      "trainingOnlyJars": {
+        "engine-core.jar": "c27c972f4bd0a12c1c926c3650f183ad4e6b19fd6fecc36b93eee19c49836883",
+        "engine-training.jar": "64df1bff48da31c9aa951bb66c44c71a79afe660355d74b0fd624b83a2e1e37d",
+        "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+        "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+        "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb"
+      },
+      "historicalLineageSha256": "07eb70ce15652dbd8c96b5e62a0c2f9f32e673aeef330897c8a9776e9013cad1",
+      "model": {
+        "exact": true,
+        "rows": [
+          "PINNED\t1753088\tf8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5\t5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+          "CONTINUED\t1753089\t3aaf29b3e6eb4272ea986d341357cbda17dfd2aeb646676a016272d85c58d1e1\tab767174ca48d17e92d0b2e7ba23e113bf41e398cb8f5329880c6bb657254cae",
+          "NNUE\t9c7e98e6122b6dc608745b00328afa216b2f2313fd1725884e0a6ab63c3952f7\te819d5e612f7a881ec1238d244cb9d9b1f02e237a6c2f45d6e638d612f21cc1b",
+          "NNUE_MATERIAL\t220d2649365241759fdc3e92e9a894d0b899138bd1c9d5f5f561f4fa96fdd6a6\te0556c7cb3a0f16d6101396b268c6d6740589ed1db4577f854158b46522013f0",
+          "BRN\tee0d39db05d9da0d827d0d338858aff7fdac9ba6f55018a0cca9e88ff89d3c1d\t6d5070e90fc75eef31e23eca122d2c442c25f3e5a7019ab96bcc71417d665b92",
+          "BRN1\t5a40fcc2b9c73d10515f23b7d5f123bf933ffeba2efd33cff2a911fbf4152d7e\tfe1e70619a53351f0f0fe82062589c5de3af205baebaed26c4838f54a5e6e739",
+          "BRN2\t5a6b409eaa5cc063dcaf29bdf01fb0db2b3049d1861af12ef0ea73b603b47d10\t24e4c86c548a78830ac339ebf97e9d62dad298a6b84145cea3c2f419ce4f1c59",
+          "BRN3\t4e587c2d7f2528f467b050b85e10656f00da66c5ca34bc7da24863bdc938fc02\tc037c965df3ff5ee8413d3468c43f80803d7c29848da8acfddc6426807625ef9",
+          "BRN_PAIR2\tf0eca7495b73dc33a8edb1b90a6ae1791e2c59d4954074ed6485f6b718a425eb\t189989020bf622cb900984e804b61a2efd06e58b672c8cb561df50bd5c96af58"
+        ],
+        "sha256": "b25f1a6562e5fa459fd49d4623756c534513baf41f25e026eed36489f01e1393"
+      },
+      "continuation": {
+        "exact": true,
+        "rows": [
+          "HISTORICAL\tg000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\t235d0688-e060-44e3-8f1e-119c39bc8017\t5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7\tf8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+          "NNUE\tg000000-s000000000-74a12fcd05e6102381f21fb589f3050c455ad990d73ec6956b357b71148a44b6\tg000001-s000000006-9e9cdcc4c427e4ebfbbf196bfd4b84ef00dcb668e1d7f486aa2873167d6cec9e\tad2dea03d7315da15414486e2aef058d8c68f592d12ac9acf1f6c5f7e0f06deb\tfd0a3b584af8300c2ea2e5c084e22c22334635f104c04444f3552772139b6166\t6\tTrainingCursor[samples=3, updates=2, initialStep=0, initialLoss=0.33335563308011545, lossSum=1.001228480128394]",
+          "NNUE_MATERIAL\tg000000-s000000000-7c92295de4dddadaac9f93721206c36b515ab32416859cc03333088a1b99e998\tg000001-s000000006-610d25379d17256d38c8be9a633333ac7e640ed82fea0c656fb83543063c3d20\td7bf9a4086f65fb00785c3c926b21dbebba86d596535816a25c6434b667b277f\tb036c2750b3153e630874d1df94c3265400ad7759b11781a53a3f8d9b361eb60\t6\tTrainingCursor[samples=3, updates=2, initialStep=0, initialLoss=0.5988658533168274, lossSum=1.5777957415443296]",
+          "BRN\tg000000-s000000000-2a741808da8b1522ad739072c123beea5b8fd9910b37ecca9898c2f8a43663b0\tg000001-s000000003-e70e187dce871559b711641dae7e3554817f0e6b4225e76ea0d202e7671983d9\td21555d108b1f168a28af3717635b3db06d836d69962cf380a2b99cefbbaf500\t521965afd128042f44cbdecf3d75132aebd607d98c585bf3da49237adc98f048\t3\tTrainingCursor[samples=2, updates=2, initialStep=0, initialLoss=0.3333333333333333, lossSum=0.5000319986340762]",
+          "BRN1\tg000000-s000000000-3220dbef42f0e7d0551ff6dc6b6e4a48c91e16fc0d91e12ac3615032b5c99ecd\tg000001-s000000003-cd8ac9d55e81714604d3f09fdb945a6508f32fd68c548c9889c59125c692beeb\t01276f44561c0c79626736522beea506b82c6dd12a053558eb5817321090cb5d\tac7e9c7f25b3857cf8468b33179ef2a21a52b938222e4d0dd7a6ccc422b11c59\t3\tTrainingCursor[samples=2, updates=2, initialStep=0, initialLoss=0.3700735405999902, lossSum=0.5999484158622576]",
+          "BRN2\tg000000-s000000000-9ea054112f1cdceca4e465bccf773602f572e3ddd22282372741025a037b8598\tg000001-s000000003-799b9013e692e378f507f5af175edc67b6b1fe297df3ec471333fe50b494bce2\t5066c72dc8b824db5ca98bc9717cbda31a9bbdf13aa509eecbf7227fd7cd883a\t4d41898e4f4f4b4e00a2efc4d3a3afc5674a0a6f5b0b72cf8da7944f2148cfbc\t3\tTrainingCursor[samples=2, updates=2, initialStep=0, initialLoss=0.332311193013656, lossSum=0.5000097169868037]",
+          "BRN3\tg000000-s000000000-9a27f33a537a0d644be3291c77fc7e7d697164627002c1ae4077605de2ed7c70\tg000001-s000000006-0177e6675c4f27c61ec278e04f663ba75aa6fd055b6e355541c9e985e9adcc0d\t7a998ffe38e7213cf8526d658ee72c8f5454893a7432b14ba854baedef76f00d\tb526bc0d25878f750f481995c26b8e19461f6cf3c7acd23676c713fa0aa2a9c3\t6\tTrainingCursor[samples=3, updates=2, initialStep=0, initialLoss=0.25, lossSum=0.75]",
+          "BRN_PAIR2\tg000000-s000000000-8463d0d43fa2e8ea1e6cf92c661f492ae1ec7332fd52df69baba366096da32db\tg000001-s000000006-5f48df2da17aec96928c65a167f6dee639279a797fd50f51076541109b73b570\te95bbad4b4e3e5a29c5de39ef55c66b1b29681a76f4121546f7f0504e6ebd185\tac341c21ba3b4d3eeb2ffd6f7062c3b844af987826fd4c0d525e0298b5d90aa6\t6\tTrainingCursor[samples=3, updates=2, initialStep=0, initialLoss=0.25, lossSum=1.7713145825586183]"
+        ],
+        "sha256": "05efa99bb109094863e123071b01bb8ffcef352e17d484280e8d6c483eb8a609"
+      },
+      "historicalInputsUnchanged": true,
+      "historicalRecompileExact": true,
+      "familyDiskContinuations": 7,
+      "appAbsentFromMigratedClasspath": true
+    },
+    "acceptedSourceBridge": {
+      "status": "passed",
+      "ueRevision": "58511f45bf1bf0a45ca25f31da402a9e0ba56c50",
+      "modelSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "acceptedJarSha256": "2341955302900ae1a15879d0cff6b14a3744498db0dd862b8cd2aabe7482ed0f",
+      "coreJarSha256": "c27c972f4bd0a12c1c926c3650f183ad4e6b19fd6fecc36b93eee19c49836883",
+      "commands": [
+        [
+          "C:\\java\\jdk-21\\bin\\javac.exe",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\engine-core.jar",
+          "-d",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\source-bridge\\classes",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\source-bridge\\Sr024SourceProbe.java"
+        ],
+        [
+          "C:\\java\\jdk-21\\bin\\java.exe",
+          "-Xms256m",
+          "-Xmx512m",
+          "-XX:ActiveProcessorCount=1",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\source-bridge\\classes;C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-production-v1\\lib\\*",
+          "Sr024SourceProbe",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\historical-store\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\network.brn-pair2",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\source-bridge\\positions.fen",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\source-bridge\\sr005-corpus.tsv",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\source-bridge\\sr024-tactical.tsv",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\source-bridge\\accepted.tsv"
+        ],
+        [
+          "C:\\java\\jdk-21\\bin\\java.exe",
+          "-Xms256m",
+          "-Xmx512m",
+          "-XX:ActiveProcessorCount=1",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\source-bridge\\classes;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\engine-core.jar",
+          "Sr024SourceProbe",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\historical-store\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\network.brn-pair2",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\source-bridge\\positions.fen",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\source-bridge\\sr005-corpus.tsv",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\source-bridge\\sr024-tactical.tsv",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\source-bridge\\core.tsv"
+        ]
+      ],
+      "fixtures": {
+        "tools/Sr024SourceProbe.java": "4d4d8248375dc9443721ce92d5b1d1ff520c00fb610fc157f06b212bf38e718d",
+        "src/test/resources/positions.fen": "934dd9a8cb68f6a523304a2fb99ae1425b74a7404a3c1c357d94a015539bd529",
+        "src/test/resources/sr005-corpus.tsv": "cb4b9e92e328426d6f3ebc5d0c590fdd4cff2421c1dda9f75d0e30cee4f54c08",
+        "src/test/resources/sr024-tactical.tsv": "bb839d60e62dc2f72d69ad45a421905fdb59f61676e70c937c8861a70320524e",
+        "src/test/resources/sr024-vectors.tsv": "0a10bc7de11506fca7945e236caa8badffab4abbcee975fd1b72583e47dfa3e7"
+      },
+      "vectors": 203,
+      "exactFields": "all 17 TSV fields",
+      "acceptedAndCoreMatchFrozenVectors": true,
+      "inputsUnchanged": true
+    },
+    "uciProcessBridge": {
+      "status": "passed",
+      "arguments": {
+        "java": "C:/java/jdk-21/bin/java.exe",
+        "store": "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\historical-store",
+        "accepted": "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-production-v1",
+        "current": "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6",
+        "out": "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\uci-bridge"
+      },
+      "exactComparisons": 10,
+      "requests": 66,
+      "workerConfigurations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "transitionWorkers": [
+        1,
+        4,
+        1,
+        6,
+        2,
+        16,
+        1
+      ],
+      "result": "build/migration/wu4/resume/uci-bridge/result.json"
+    },
+    "entrypoints": [
+      {
+        "label": "package-probe-compile",
+        "command": [
+          "C:\\java\\jdk-21\\bin\\javac.exe",
+          "-d",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\PackagingClasspathProbe.java"
+        ],
+        "exitCode": 0,
+        "output": ""
+      },
+      {
+        "label": "package-classpath",
+        "command": [
+          "C:\\java\\jdk-21\\bin\\java.exe",
+          "-Djava.awt.headless=true",
+          "--add-modules=jdk.jpackage",
+          "--add-opens=jdk.jpackage/jdk.jpackage.internal=ALL-UNNAMED",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume",
+          "PackagingClasspathProbe",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib"
+        ],
+        "exitCode": 0,
+        "output": "PASS: JDK jpackage resolves desktop/shared/legacy classes; no window created; [app-gui.jar, checker-qual-3.42.0.jar, engine-core.jar, engine-training.jar, error_prone_annotations-2.27.0.jar, failureaccess-1.0.2.jar, flatlaf-3.7.jar, gson-2.11.0.jar, guava-33.2.1-jre.jar, jna-5.17.0.jar, jna-platform-5.17.0.jar, jsr305-3.0.2.jar, listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar, sqlite-jdbc-3.53.4.0.jar, zstd-jni-1.5.7-20.jar]\n"
+      },
+      {
+        "label": "direct-gui",
+        "command": [
+          "C:\\java\\jdk-21\\bin\\java.exe",
+          "-Djava.awt.headless=true",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\app-gui.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\checker-qual-3.42.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\engine-core.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\engine-training.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\error_prone_annotations-2.27.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\failureaccess-1.0.2.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\flatlaf-3.7.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\gson-2.11.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\guava-33.2.1-jre.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\jna-5.17.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\jna-platform-5.17.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\jsr305-3.0.2.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\sqlite-jdbc-3.53.4.0.jar;C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\zstd-jni-1.5.7-20.jar",
+          "com.ohinteractive.seedv6.gui.SwingLauncher"
+        ],
+        "exitCode": 1,
+        "output": "Exception in thread \"main\" java.lang.IllegalStateException: SeedV6 Swing requires a graphical desktop.\n\tat com.ohinteractive.seedv6.gui.SwingLauncher.launch(SwingLauncher.java:12)\n\tat com.ohinteractive.seedv6.gui.SwingLauncher.main(SwingLauncher.java:18)\n"
+      },
+      {
+        "label": "legacy-gui",
+        "command": [
+          "C:\\java\\jdk-21\\bin\\java.exe",
+          "-Djava.awt.headless=true",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\*",
+          "com.ohinteractive.seedv6.Main",
+          "gui"
+        ],
+        "exitCode": 1,
+        "output": "Exception in thread \"main\" java.lang.IllegalStateException: SeedV6 Swing requires a graphical desktop.\n\tat com.ohinteractive.seedv6.gui.SwingLauncher.launch(SwingLauncher.java:12)\n\tat com.ohinteractive.seedv6.Main.main(Main.java:12)\n"
+      },
+      {
+        "label": "legacy-uci",
+        "command": [
+          "C:\\java\\jdk-21\\bin\\java.exe",
+          "-Djava.awt.headless=true",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\*",
+          "com.ohinteractive.seedv6.Main"
+        ],
+        "exitCode": 0,
+        "output": "id name SeedV6\nid author Charles Clark\noption name Threads type spin default 1 min 1 max 16\noption name OwnBook type check default true\nuciok\nreadyok\n"
+      },
+      {
+        "label": "core-jdeps",
+        "command": [
+          "C:\\java\\jdk-21\\bin\\jdeps.exe",
+          "--multi-release",
+          "21",
+          "--print-module-deps",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\engine-core.jar"
+        ],
+        "exitCode": 0,
+        "output": "java.base\n"
+      }
+    ],
+    "commands": [
+      {
+        "name": "fresh-assembly",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "--project-cache-dir",
+          "build/migration/wu4/resume/module-project-cache",
+          "--no-configuration-cache",
+          "--warning-mode",
+          "fail",
+          "-I",
+          "build/migration/wu4/resume/isolated.gradle",
+          "-I",
+          "build/migration/wu4/resume/inspect.gradle",
+          ":app:installDist",
+          ":app:assemble",
+          ":app:verificationClasses",
+          ":app:compileTestJava",
+          "-Pheadless"
+        ],
+        "exitCode": 0,
+        "seconds": 40.098
+      },
+      {
+        "name": "gui-replay",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "-I",
+          "build/migration/wu4/resume/inspect.gradle",
+          ":app:test",
+          "-Pheadless",
+          "--tests",
+          "com.ohinteractive.seedv6.gui.*"
+        ],
+        "exitCode": 1,
+        "seconds": 319.282
+      },
+      {
+        "name": "engine-search-uci",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "-I",
+          "build/migration/wu4/resume/inspect.gradle",
+          ":app:test",
+          "-Pheadless",
+          "--tests",
+          "com.ohinteractive.seedv6.core.*",
+          "--tests",
+          "com.ohinteractive.seedv6.search.*",
+          "--tests",
+          "com.ohinteractive.seedv6.uci.*",
+          "--tests",
+          "*Version*Test"
+        ],
+        "exitCode": 1,
+        "seconds": 231.562
+      },
+      {
+        "name": "boundary-retest",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "-I",
+          "build/migration/wu4/resume/inspect.gradle",
+          ":app:test",
+          "-Pheadless",
+          "--tests",
+          "com.ohinteractive.seedv6.search.driver.ProductionSearchBoundaryTest"
+        ],
+        "exitCode": 0,
+        "seconds": 13.217
+      },
+      {
+        "name": "cache-first",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "--warning-mode",
+          "fail",
+          "verifyProjectBoundaries",
+          ":engine-core:classes",
+          ":engine-training:classes",
+          ":app-gui:classes",
+          ":app-uci:classes",
+          ":research:classes",
+          ":app:installDist"
+        ],
+        "exitCode": 0,
+        "seconds": 13.427
+      },
+      {
+        "name": "cache-replay",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "--warning-mode",
+          "fail",
+          "verifyProjectBoundaries",
+          ":engine-core:classes",
+          ":engine-training:classes",
+          ":app-gui:classes",
+          ":app-uci:classes",
+          ":research:classes",
+          ":app:installDist"
+        ],
+        "exitCode": 0,
+        "seconds": 5.915
+      },
+      {
+        "name": "packaging-dry-run",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "--warning-mode",
+          "fail",
+          "packageWindows",
+          "packageMac",
+          "--dry-run"
+        ],
+        "exitCode": 0,
+        "seconds": 8.73
+      },
+      {
+        "label": "training-bridge",
+        "command": [
+          "C:\\Program Files\\Python313\\python.exe",
+          "-B",
+          "tools/verify-unified-training.py",
+          "--baseline",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\wu3-dist",
+          "--current",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6",
+          "--checkpoint",
+          "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+          "--jdk",
+          "C:/java/jdk-21",
+          "--out",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge"
+        ],
+        "exitCode": 0,
+        "seconds": 65.248
+      },
+      {
+        "label": "source-bridge",
+        "command": [
+          "C:\\Program Files\\Python313\\python.exe",
+          "-B",
+          "tools/verify-unified-core.py",
+          "--ue-repo",
+          "C:/projects/seed/java/seedv6-ue",
+          "--accepted-install",
+          "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-production-v1",
+          "--model",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\historical-store\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\network.brn-pair2",
+          "--core",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6\\lib\\engine-core.jar",
+          "--jdk",
+          "C:/java/jdk-21",
+          "--out",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\source-bridge"
+        ],
+        "exitCode": 0,
+        "seconds": 8.101
+      },
+      {
+        "label": "uci-bridge",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu2\\python\\Scripts\\python.exe",
+          "-B",
+          "tools/verify-unified-uci.py",
+          "--java",
+          "C:/java/jdk-21/bin/java.exe",
+          "--store",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\training-bridge\\historical-store",
+          "--accepted",
+          "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-production-v1",
+          "--current",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\module-build\\app\\install\\seedv6",
+          "--out",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu4\\resume\\uci-bridge"
+        ],
+        "exitCode": 0,
+        "seconds": 7.004
+      },
+      {
+        "label": "training-tests",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "-I",
+          "build/migration/wu4/resume/inspect.gradle",
+          ":app:test",
+          "-Pheadless",
+          "--tests",
+          "com.ohinteractive.seedv6.training.checkpoint.*",
+          "--tests",
+          "com.ohinteractive.seedv6.training.service.LearningArenaTest",
+          "--tests",
+          "com.ohinteractive.seedv6.training.service.MatchOnlyArenaTest",
+          "--tests",
+          "com.ohinteractive.seedv6.training.service.ArenaRecipeConfigurationTest",
+          "--tests",
+          "com.ohinteractive.seedv6.training.service.ArenaOptimizationProgressTest",
+          "--tests",
+          "com.ohinteractive.seedv6.training.service.TrainingRunControlTest",
+          "--tests",
+          "com.ohinteractive.seedv6.training.service.TrainerValidationProgressTest",
+          "--tests",
+          "com.ohinteractive.seedv6.training.service.TrainingRecipeTest",
+          "--tests",
+          "com.ohinteractive.seedv6.training.service.LineageProvenanceTest"
+        ],
+        "exitCode": 1,
+        "seconds": 585.831
+      },
+      {
+        "label": "boundary-fixtures",
+        "command": [
+          "C:\\Program Files\\Python313\\python.exe",
+          "-B",
+          "tools/test_gradle_architecture.py",
+          "-v"
+        ],
+        "exitCode": 0,
+        "seconds": 176.251
+      }
+    ],
+    "fullSuitePassClaimed": false
+  },
+  "preservation": {
+    "original": {
+      "head": true,
+      "branch": true,
+      "status": true,
+      "tracked": true,
+      "artifacts": true,
+      "metadata": true,
+      "inventory": true
+    },
+    "uci": {
+      "head": true,
+      "branch": true,
+      "status": true,
+      "tracked": true,
+      "artifacts": true,
+      "metadata": true,
+      "inventory": true
+    },
+    "historicalRepositoriesUnchanged": true
+  },
+  "version": {
+    "identity": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 35
+    },
+    "beginToken": "01331a8acf8d4d629cf4d91552982566",
+    "decision": "no_bump",
+    "reason": "Explicit owner WU4 structural migration identity preservation",
+    "rootJournal": "absent; not created",
+    "bytesUnchanged": true,
+    "finish": {
+      "status": "no_bump",
+      "token": "01331a8acf8d4d629cf4d91552982566",
+      "decision": "no_bump",
+      "before": {
+        "build": 35,
+        "major": 0,
+        "minor": 0,
+        "patch": 0
+      },
+      "after": null,
+      "verified_bump": false,
+      "blockers": [],
+      "warnings": []
+    },
+    "finalStatus": {
+      "active": null,
+      "after": null,
+      "applicable": true,
+      "before": null,
+      "blockers": [],
+      "changed_paths": [],
+      "changes": [],
+      "decision": null,
+      "recovered": [],
+      "replayed": false,
+      "state_location": "C:\\projects\\seed\\java\\seedv6\\.git\\worktrees\\seedv6-unified\\codex-versioning",
+      "status": "idle",
+      "token": null,
+      "unfinished": [],
+      "verified_bump": false,
+      "warnings": []
+    }
+  },
+  "storage": {
+    "rawRoot": "build/migration/wu4/",
+    "ignored": true,
+    "publicModelBytesAdded": false,
+    "freshCheckoutNote": "Raw WU4 evidence/disposable state/baseline distribution are local only; restore explicit inputs before replay"
+  },
+  "git": {
+    "baselineCommit": "ff7291aae877244843e99afa3c47120642f25bc5",
+    "completionCommit": "The attributable commit introducing this record; obtain exact ID from Git log/final handback",
+    "composition": "Prior WU4 extraction plus resumed validation, boundary-test/resource-tool remediation and durable records; no unrelated changes",
+    "pushOrRelease": false
+  },
+  "next": "Stop for GPT/user reconciliation before WU5; WU6 research paths, WU7 native/platform/client gates, WU8 legacy removal remain separate",
+  "humanActions": [
+    {
+      "blocking": "Immediate WU4 structural completion",
+      "action": "None; live GUI validation is not a prerequisite under the explicit owner decision"
+    },
+    {
+      "blocking": "WU5 admission",
+      "action": "GPT/user reconciliation of WU4 evidence and commit"
+    },
+    {
+      "blocking": "Deferred full GUI runtime acceptance / WU7 platforms / production cutover",
+      "action": "User-performed Windows/macOS G2-G5 walkthroughs against identified candidates and resolution/reconciliation of inherited failures at their dependent runtime gates"
+    }
+  ],
+  "localEvidence": [
+    {
+      "path": "build/migration/wu4/baseline-gui.txt",
+      "sha256": "cc51ced00531beda62795adc273bea3ddc559f7b25e4e5a6286e3f7e696bec26"
+    },
+    {
+      "path": "build/migration/wu4/baseline-gui-retry.txt",
+      "sha256": "26a0179807facf2e9e9bb6c0db90b5442144fb70298325c9531698ce85687227"
+    },
+    {
+      "path": "build/migration/wu4/structural-first.txt",
+      "sha256": "32f44fe3b1ba4db17a7731f770e86027b87786cdf65c00ca7544db6e28db6510"
+    },
+    {
+      "path": "build/migration/wu4/migrated-gui-headless.txt",
+      "sha256": "2254b9be02b9095e49ae22fbaa4737e0dd97358a3eda4e2cf07d796fb7fe6f2a"
+    },
+    {
+      "path": "build/migration/wu4/prepare-native.txt",
+      "sha256": "aa279d97f1f0a2c371bd4266c4f74ccf75aef275273ed6e1f767e908793899b8"
+    },
+    {
+      "path": "build/migration/wu4/native-gui-stderr.txt",
+      "sha256": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+    },
+    {
+      "path": "build/migration/wu4/baseline-gui-summary.json",
+      "sha256": "35e96693778dbe6e32d58243ff7cd42b1d409c7832ae91bcb21a16358acbcf42"
+    },
+    {
+      "path": "build/migration/wu4/migrated-gui-summary.json",
+      "sha256": "1b8e3628ecce1e8e9f2261edc5e27c4194ea4ed8af9564c2f98e7a11d7f72e58"
+    },
+    {
+      "path": "build/migration/wu4/before.json",
+      "sha256": "979c25fb63d3b465034f4a80ff0a0f8cfb30e1eb20abc0e8e7ff5f68a8b2c249"
+    },
+    {
+      "path": "build/migration/wu4/after.json",
+      "sha256": "79669b9a35fa08e1806456fae15e353c38c81f9c505d8bdd5fa181dbaa55c521"
+    },
+    {
+      "path": "build/migration/wu4/artifact-audit.json",
+      "sha256": "0dfdd9ad4cb1d4d2c45e212d2c9bf7c5371a4031409f27046add564daf526d93"
+    },
+    {
+      "path": "build/migration/wu4/preservation-result.json",
+      "sha256": "b9d0e16f8489602f8fae9eeb5462b8665da7b3c9bb4c09f496f0ae333e534069"
+    },
+    {
+      "path": "build/migration/wu4/version-finish.json",
+      "sha256": "5606b9ee64f7f82d58529ed8ff134abe4ce6944ad8113ee018282e73f516ded8"
+    },
+    {
+      "path": "build/migration/wu4/version-status.json",
+      "sha256": "b7637d28b0b027aab8f902dd17b10bc74a2182b0b9e56770ff7bf4a581f637c3"
+    },
+    {
+      "path": "build/migration/wu4/resume/after.json",
+      "sha256": "9dbc9a8e30c489f10eba4f490b497acb6a42044dea96631a978a0e55d982d021"
+    },
+    {
+      "path": "build/migration/wu4/resume/app-gui-summary.json",
+      "sha256": "f07397d750b08b21c401d95be56772e42eae684072ed832fbbf6f9c9aabfff48"
+    },
+    {
+      "path": "build/migration/wu4/resume/arena-Baseline1/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml",
+      "sha256": "7957d0908e394da88473c92d7d6fa955e1982ae5fe2486ccb12ef6c5360296ac"
+    },
+    {
+      "path": "build/migration/wu4/resume/arena-Baseline2/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml",
+      "sha256": "03a7b29bed268607ee07de47dbb03d3f32ed3461d68bfaddfe841365a932c788"
+    },
+    {
+      "path": "build/migration/wu4/resume/arena-comparison-retry.txt",
+      "sha256": "9598ffce6f1c25c5d5ddb8caa03a884a14a9718007af5394e51f3a8d399fb271"
+    },
+    {
+      "path": "build/migration/wu4/resume/arena-comparison.txt",
+      "sha256": "2d7304bc07f38766cfe87555dcadc76c5a3a35eda47c320f18193ddb75e00943"
+    },
+    {
+      "path": "build/migration/wu4/resume/arena-Current1/TEST-Gradle#20Test#20Executor#202.xml",
+      "sha256": "9e1add15180d5d690f36665e65d77b89a2e8e0d1e4d5b450f9bf28fd9c114795"
+    },
+    {
+      "path": "build/migration/wu4/resume/arena-Current2/TEST-Gradle#20Test#20Executor#203.xml",
+      "sha256": "a2420ecd50755f4124d51b60a5fc4eaae195ef287de9da07fe90872555cbf9aa"
+    },
+    {
+      "path": "build/migration/wu4/resume/arena-initial.gradle",
+      "sha256": "2edfd3b26aa7db750eb58c721331367fbdc2b31b3cd7ccf247e03fce3bda2a38"
+    },
+    {
+      "path": "build/migration/wu4/resume/arena-resolution.json",
+      "sha256": "e4d60e131015739ec9b539385b0ca69f5a21231cf0277db8ae2b8ffb888f37a5"
+    },
+    {
+      "path": "build/migration/wu4/resume/arena.gradle",
+      "sha256": "fc646fe901a66b2f121d9d329e9efddee46ce02ae5e87265c337217f12387f4e"
+    },
+    {
+      "path": "build/migration/wu4/resume/artifact-audit.json",
+      "sha256": "a72ee7ee9226ef4e79c36b2100ec36d964dbb059ae124e9c361b528d16cf0a8a"
+    },
+    {
+      "path": "build/migration/wu4/resume/before-final-ACCEPTANCE.md",
+      "sha256": "14340964ce09e0f352a70a0e84dc504d08b64812096087ee04d9767600b13682"
+    },
+    {
+      "path": "build/migration/wu4/resume/before-final-STATE.md",
+      "sha256": "3d02b11a779f58a43f3d0be153b6098a859b86e1ce5d8b54d7a16462d6d6ed7d"
+    },
+    {
+      "path": "build/migration/wu4/resume/before.json",
+      "sha256": "f9b7d76d643c54a25506803a3da34eb2c3889c50bc9e794ecda3af22af244e99"
+    },
+    {
+      "path": "build/migration/wu4/resume/boundary-empty-directories.json",
+      "sha256": "d6d057db79b817f231c724b2e7883ea5fa1cfbe4cadad750071246bb46852324"
+    },
+    {
+      "path": "build/migration/wu4/resume/boundary-fixtures.txt",
+      "sha256": "5ae7092e1bcfb6bb538af513fb77cda40707ecefd7b9a88b64aef63639448340"
+    },
+    {
+      "path": "build/migration/wu4/resume/boundary-retest-results/TEST-com.ohinteractive.seedv6.search.driver.ProductionSearchBoundaryTest.xml",
+      "sha256": "a8cbcccca5651ecd592669b07b4061433a74e3d1013bd217d635b724c122eefc"
+    },
+    {
+      "path": "build/migration/wu4/resume/boundary-retest-summary.json",
+      "sha256": "893792ad41cf591cdd24b53686cc5f3db29a2505c5b4fb7a34e595e5ffc16f32"
+    },
+    {
+      "path": "build/migration/wu4/resume/boundary-retest.txt",
+      "sha256": "ab34f5f12621013d0adc875795afaf5bebfdbf7c1a02f1c41d42f231be0ad6f9"
+    },
+    {
+      "path": "build/migration/wu4/resume/cache-first.txt",
+      "sha256": "79d33190b19c16dc2bf224f703d495762d8a1f06ced17a965ae199b258001a05"
+    },
+    {
+      "path": "build/migration/wu4/resume/cache-replay.txt",
+      "sha256": "ed4e1dbe899c5c69b31b7170d0d249146145f5de942dca3df170f46c739ba9f7"
+    },
+    {
+      "path": "build/migration/wu4/resume/continue-validation.py",
+      "sha256": "0505629ab9e8ddf20ce15cac7579e83b1f61eba3e34909af383988fdd793cc63"
+    },
+    {
+      "path": "build/migration/wu4/resume/core-jdeps.txt",
+      "sha256": "8fa1cf738e9b5f90a56fa5a0e386b2f642c086c86d2c2731a0c208c46ceecf2f"
+    },
+    {
+      "path": "build/migration/wu4/resume/direct-gui.txt",
+      "sha256": "9f615d6a11a13a8b5203988ff04ab31d158b9e297cd3fe46cfd06498e877d519"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-core-summary.json",
+      "sha256": "e2edc3e79f6e0a0a6be997f929da52298bf40ce538f9a93805c5926c378399ac"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-reconciled-summary.json",
+      "sha256": "0436b2ceebd737abc960f402b67a2f3aa4c5e3b99df65a18e9ff6ad0d444c9c2"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.ApplicationVersionTest.xml",
+      "sha256": "28bc6f3216afc8b8f5b9642fc0db1389de2d26a6386ca20ea6c464fb6af9cbed"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.BoardRuleStateTest.xml",
+      "sha256": "070189c3fb7d68fd6690134c380de7af84065485cdbc4a22a835dd2c73d82e1e"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.BoardTest.xml",
+      "sha256": "780bc6b72c5b7667c2ee9cb34f268043de6f11b54296cc9646d63d9641f7e4cc"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn.BrnCodecTest.xml",
+      "sha256": "8d0833c5a86cd7c80579301c59ffbd04149f99181a5f228932f0db6157d71e3e"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn.BrnFeatureTest.xml",
+      "sha256": "ef9d8c0d1a96be965ee1df4e5d1fa4637a0a7aad090dc96a8620bb09af0e1ffb"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn.BrnModelTest.xml",
+      "sha256": "f61406d43676caac7d72f08538661445b53bca6ad579e02d9a3e1116bfce2506"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn.BrnTrainingTest.xml",
+      "sha256": "40dc2779294b666dd2b1fb068aeffc2cbfffd16698807511e2f07257473429fd"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn1.Brn1CodecTest.xml",
+      "sha256": "5f36b8962491a27fde756f4d7bcf8d8c436a6f5f8453c2ebf3b99938c4332541"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn1.Brn1CoreTest.xml",
+      "sha256": "dea2a8f85fdca827dd3bd19204c07e829a662b6dc0388a27661b8b4236713c47"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn2.Brn2AccumulatorTest.xml",
+      "sha256": "74220593cf8785ba7a277ebe18706adb9247236a4d33472268d5c75b8ab88692"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn2.Brn2CaptureGradientTest.xml",
+      "sha256": "418ced07298f91ab4ce3d873c2a3efb314314c75e1a2f16c0ff04e6f4b158ee0"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn2.Brn2CodecTest.xml",
+      "sha256": "e9e16134bc51a8362db10ed620ba0b0a2e268787f4c709b988b5eba57e85c682"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn2.Brn2CoreTest.xml",
+      "sha256": "a0c24a6f20281fa359a0dc083d70b18056f62d0ead0364daf8a265efd1cc7986"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn2.Brn2FeaturesTest.xml",
+      "sha256": "44ae7abcd53662f61baed1c1959dcacafe6d530e7fd1181496bb44450dc0bec5"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn2.Brn2MaterialPriorTest.xml",
+      "sha256": "acd8741fc76be80ad72d5ff397bf2f9999b74a7825b328269765ea5d66a66e26"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn3.BrnContextTrainerTest.xml",
+      "sha256": "8bd8639cb0ae5877384d3bd8c93b9fcfe7702d6ae8b28b8dba240cb29a56170f"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn3.BrnCubicTrainerTest.xml",
+      "sha256": "68ea20a9619cba003c590e3163385558a43c9529e901d48441dd9b94b7a03485"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn3.BrnEnergyTrainerTest.xml",
+      "sha256": "565d4b3c75e619534331bef87494e7615fb39ec2f7d30840d092e971f49083b0"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn3.BrnLogicTrainerTest.xml",
+      "sha256": "5597b8d9e2844dee7e883d15bb31d46544b35cbe638ee2f197e993e30dd00189"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn3.BrnPair2EquivalenceTest.xml",
+      "sha256": "ff84ee1141a094217c5afe4422c2efc699fdae677732afed91eb40cc662c9cd9"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn3.BrnSplineTrainerTest.xml",
+      "sha256": "0eda64a13d6d42572dce32342f9de953e0b3e39a7e216eb19b8200866821efa5"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn3.BrnTupleCompiledTest.xml",
+      "sha256": "a59f5ee275865876e1b25eff75c0514d48233f786da2f42f689011162ae2b8a7"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.brn3.BrnTupleTrainerTest.xml",
+      "sha256": "dd481316c6c25f792a57f16bf3b7af8967b38348afc6838250afadaa28d0e070"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.EvalDonorComparisonTest.xml",
+      "sha256": "9ec08a1d9e932a996204f86894f98bb97dba5553ec00aa11a596efb4fe84484b"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.EvalTest.xml",
+      "sha256": "d0ebf4278927a93055e90f352f9c1185c6f953869a57cdda5f46c0c634078623"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.EvalTuningTest.xml",
+      "sha256": "bd34f914e2275f02872f8fe368d2801a9463e82fb10c3610ca1fe423a5eae62e"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.EvaluationFoundationTest.xml",
+      "sha256": "7c01073700812fcfa4912c282a44ed5a1461c6d0875c44f10484ac11c697086d"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.LegalMoveExistenceTest.xml",
+      "sha256": "7e8c3e0c1dba34bcaab1e7dc911a44ee09693def0afc18dea9feb23b1ed90b6d"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.MaterialFactReuseTest.xml",
+      "sha256": "45c102cf67b79a40c2d4ebcba770c5d01a5dfdcf46c3863c8703e9e80122cc49"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.move.LegalMoveResolverTest.xml",
+      "sha256": "6893db06cb7bdda7df966ba3f08fafbde0bed03a51c8595960d9ae854b23515a"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.MoveTypeExperimentTest.xml",
+      "sha256": "95722e34491eb28b69ea80fee16d3316359c0aa81d5ff9a9cf5512e259e9a5cf"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.nnue.NnueAccumulatorTest.xml",
+      "sha256": "6219be17bb0ebbcd94e0f1d9b4be0642cd26fc302300e5ee74a4df212ac70c45"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.nnue.NnueEvaluatorTest.xml",
+      "sha256": "8acccdf2c642522279151a90cf97d281eac1e3e24e1d874c7148d051d24e86db"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.nnue.NnueExactInferenceTest.xml",
+      "sha256": "2ca013d7c3330f5a24256ead1f4a59b8eaf3787b9c14dccbe619bad6501a2610"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.nnue.NnueFeatureSchemaTest.xml",
+      "sha256": "2ced6e9446c8cfbad4378ad3566cb5efb29e175ccc06710fe13d865cfc8437ca"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.nnue.NnueNetworkTest.xml",
+      "sha256": "1a0b5e26513cce1423450bdac31072fbed797b1d8cb2719f6e25a5a8f07a012e"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.PawnMaskPrecomputationTest.xml",
+      "sha256": "71ede9a09adb3d14d38bfac880c2e0024421fa2147ab47b1f0f3a084a616533b"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.SeeGeneratedLegalTest.xml",
+      "sha256": "a1d7e1518ca4947703c4dc5b539f87d558a683f8f9dd93306c181753c2f66498"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.SeeQuietTest.xml",
+      "sha256": "8af13e978c05e7b31014933cccc892c3ebac710a1c1e7e93208804c9d8b49a34"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.SeeTest.xml",
+      "sha256": "6d24bd66843593c7291990459957f25a303187caf6cf658bb70e879d3bd2561a"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.core.SeeThresholdTest.xml",
+      "sha256": "51b744cde3fb4e5e6f825f06f1fb1fdb954d2ba9cd822bdfe8c032e894845dd3"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.alphabeta.AlphaBetaControlAndHeuristicsTest.xml",
+      "sha256": "f58bce4420052a3063155f662a4e67d84e8af557d38da32be1b54a6876e9cf06"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.alphabeta.AlphaBetaCorpusTest.xml",
+      "sha256": "7acaa4ab1e759e29512fd4443a8be7941bdae039a5b29d9a695152946f05e307"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPrincipalVariationTest.xml",
+      "sha256": "2a3457d0f75a6a4e0de650e0616fe1858b4cf2eb74020903ee1ecf13f618c487"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearchTest.xml",
+      "sha256": "fdac01f0d0a6c4e4d947884e12d7f0bda170924da127e0cd00dbca5a72c2741b"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.alphabeta.AlphaBetaTtAndDrawTest.xml",
+      "sha256": "68dccf654f19be7c80c85126d72abd347e48a08a9b10a9b511a4575f1b96d4da"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest.xml",
+      "sha256": "5abed7b3926165c1a176a7274d04ecd8478df857c1b5871c0941cb9fb1e301ff"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.alphabeta.SearchDiagnosticsTest.xml",
+      "sha256": "d0d981f2da42e6eae2cbd02197463b00c615816da8d66239921f1b9dff5212ec"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchTest.xml",
+      "sha256": "ba5910ea578ba42f78cd9956b58f22b59ca11e56f131a03d652c76814c7a8b44"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.common.SearchControlTest.xml",
+      "sha256": "209cc5ca9995c0cd41cd4af6dba6e9d38bfc1f2d6cf9c25c9dc9bc1b93c0b8d9"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshotTest.xml",
+      "sha256": "24979c0555951bd7992f128990defcf15bb890a417bfcd5e55874166262deee2"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.driver.AspirationSearchTest.xml",
+      "sha256": "8558c9e294040f02504e4176b2a64d8f91e9fa4c3358280b8667feaa828c10c8"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.driver.LmpAccountingTest.xml",
+      "sha256": "cb3ce5978cadd848e84265bdec2f2520263cbef5c34d8d8955deaa1a16ec4254"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.driver.LmrAccountingTest.xml",
+      "sha256": "305786173a3ca5b03d18b0db87e57d9a01e208e2b2122e89c94cb92f1d12eb16"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest.xml",
+      "sha256": "d6370c847e912a28ef0bfb6aea2f89e88796830ac9b1d3523b55c651c78227e9"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.driver.ProductionSearchBoundaryTest.xml",
+      "sha256": "c2d85eb9db54036a8d8b2f3043982e4022cf204000f07b904ef8e67da73be06d"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.driver.ProductionSearchIntegrationTest.xml",
+      "sha256": "c4d389e02c13a44e7309a23ef81ed5b11ca4a17142c42b0413285ea3ef044b63"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.driver.ProductionSearchTest.xml",
+      "sha256": "5a8791a51a5e2d936bf34b061dfe9bf2ad81a1bc77c58aff395b4ad47c2804fb"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.driver.QuiescenceDriverTest.xml",
+      "sha256": "d9712ed0e3fe0542c6787b9d1b931e57cb0b13366159ed57e4a2dccb1151c064"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.driver.SearchDriverTest.xml",
+      "sha256": "16b2062b1978bd9b31cec1e94f439803e09746bb5d6b96184bf094be6f09cfc5"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.driver.SearchDriverTTableTest.xml",
+      "sha256": "6cef0f6007bbd101d7f8345c9c3067e9ea8541488ffda492978eec765e28d97b"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.evaluation.Brn1SearchIntegrationTest.xml",
+      "sha256": "711f9671fa0be8e566844cab4ab8d32fe7a2994cf443e08f18be73aa7c961f49"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.evaluation.Brn2SearchIntegrationTest.xml",
+      "sha256": "bfc9ace798f718b34c5fc12b42e24e8e9607bfe0aa2b39942c2cae4b66665d43"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.evaluation.Brn3SearchCalibrationTest.xml",
+      "sha256": "ec713fc4e2e3265083fc8997795d1e90bf9f8d141dcc6e203d76f7e24aa2b4af"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.evaluation.BrnSearchIntegrationTest.xml",
+      "sha256": "d76f1668fc3244d6bfa31860e08661eb2fa5bfb1aa8b55b3f5d9aefe02c27916"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest.xml",
+      "sha256": "50740fcb67a02277a71d53fe5441fb9068bd30a4c19c3abd135debec988b05d3"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.evaluation.NnueScoreMappingTest.xml",
+      "sha256": "42d15628d007ca5e03f997411610e83c4be2a5f0fe66d282ed8f41a868caa3bd"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest.xml",
+      "sha256": "40cdda3aa7292993426eae8b75e0075a8f86d05f662a68f2a308bba8a0850356"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.AspirationResearchTest.xml",
+      "sha256": "670a66c597b6f6e4d2c0c4c7e42a5b10603326ab8ef8516d360d9659852935a1"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.CaptureHistoryTest.xml",
+      "sha256": "c55d277094dbb74bc698dc20316732a02656adaeaf957fd1c8d4852cfd0e8931"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.CheckExtensionTest.xml",
+      "sha256": "dac39b5d1d0cc932319c8a972fbf19b2194caec07845cb1f9110fe91da6e93ac"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest.xml",
+      "sha256": "6be0d035806f8327e41b71e1281b879e5b9b528bf829ef72e66fcd8f5bd68f70"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.ContinuationHistoryTest.xml",
+      "sha256": "24be943adc29c6975ce6c8f7d51016ad203114db1f617522b7aafc62639a2cca"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.CountermovesTest.xml",
+      "sha256": "acfdb3faafdb3628bbf0e857b181319c14b042c324dbe20f60e9142f026ec731"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.ExactSearchMechanicsTest.xml",
+      "sha256": "6e4c6aa4bb0356861729c35ed073336f18f806fe9f16660814b9623bb7b4f2af"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest.xml",
+      "sha256": "d61798f1f920f5f7190ae3e830df8d7bcda2beb3256980c8819e171010ab5c70"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.ExactSearchTest.xml",
+      "sha256": "fa1e8a4e89315153d31632bb8fbb735d02b14670fdbc1d6c893f0ac16d62e551"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.ExactSearchTTableTest.xml",
+      "sha256": "770bfec2f23709886a93b1edb04059aaf7bcb6eed82d2229b6d537b9471da35d"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.FlatExactSearchTest.xml",
+      "sha256": "dea30524cbf179de3c1918255eae94b6d4fe4a9210f8ab8496e93622b88366d4"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.FutilityPruningTest.xml",
+      "sha256": "65ddae63d709082decebcffd24c462142063e9ab3e1c8b28a86717407bb9cf3f"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.HistoryPruningTest.xml",
+      "sha256": "5e72d9265928c6bd0f607ec46ae7162cbe123ee6bf1b340a7c17be4447c15c4f"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.InternalSearchTest.xml",
+      "sha256": "07fc3e48ba85a856ba541a0e941a04d96f947257ad8b5b724334d97bcb1c7b63"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.IterationReuseTest.xml",
+      "sha256": "f8a6e41994b495ce58f0ae0da3c6b6063a83427958896f86000cd1ea58f40096"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.KillerMovesTest.xml",
+      "sha256": "8c221389bcab2f5b8019ac1240c57783a82f914e7d2e1ba63c81d07d4dc5e809"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.LateMovePruningTest.xml",
+      "sha256": "77e7b5fbad4722f7215b151f8abad8e742dae1f125482ad76c565b621bea428e"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.LateMoveReductionTest.xml",
+      "sha256": "26f670c047573c6ea78bdf709fcd6ed3dddc2e606de0739a3231c8fdb167a2c7"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.MateDistancePruningTest.xml",
+      "sha256": "210cdafed28803ff93bd28ca93b679ca2dc2e22f3d63de54bf0160df23799188"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.MtdResearchTest.xml",
+      "sha256": "0607bde1ade4254d332fa4a858104ad4084e059a26af86adebcb3ee116b90f5d"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.NullMovePruningTest.xml",
+      "sha256": "de216fa38d0ca7514a68151efc7776851eec2fd36c7465d38df4e84586e11a6b"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.PairNullMoveTest.xml",
+      "sha256": "82cff4637007de27a23dbf75c1c19e2a5abfce7d6d41476082fb921db5d74118"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.ParallelSearchTest.xml",
+      "sha256": "bdae8ad6043cfca0066558c3158265d6148e3d59a0d97daf55131e971c25202a"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.Phase2QuiescenceTest.xml",
+      "sha256": "4fe4d827ada32b77a37c93debe6151bca3c01d2874549670a72a53c6000e5ec6"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.ProductionSeeTest.xml",
+      "sha256": "f3c4269cfe3c43f2c2d16ac960ecd7795f26d283837e32b814ac923565f6a7cf"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.PvsSearchTest.xml",
+      "sha256": "29a48f9f3eef7cf2fafe5c1ef928a3f717545b2b501d7a14242d946eac174c4c"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.QuiescenceCheckLimitResearchTest.xml",
+      "sha256": "43b83b963e81fce8f61f3ee535ab4165f3d7b54c533c0dddd19df41d20491d89"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest.xml",
+      "sha256": "3f53066781ba7db6c85cf08573e08c5fee642b356b371fe3a25afab00b671e3f"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.QuiescenceDepthResearchTest.xml",
+      "sha256": "37c40aa5eb83dad236773d45df0cc9db7cd2e1f9f1014b57912705b64d2f2685"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.QuiescenceForcingResearchTest.xml",
+      "sha256": "4334aee61442ce602c88ad5698f33b32e929d506ad2f1eb55e3f8906e3cd9725"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest.xml",
+      "sha256": "85c0863a8ee5f83622ae32180ee80efaca596ebf8a9f299ae180ee8b8cd62f15"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest.xml",
+      "sha256": "727887064f2bfa73de172df4666b3a9d3eb398e723a93684523399bf7e08b28d"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest.xml",
+      "sha256": "46e3656064c00b0791ab2b5697a4b0706be8ece97ca71b4db2861804c7ae891b"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.QuiescenceSeeResearchTest.xml",
+      "sha256": "b067d3e6d458f5b0863c377f2c48a95366277d55ee060e4ed8995798af0cb55e"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest.xml",
+      "sha256": "5a08fbdf95e49f11fea2d8a17fd7f2066e710c3a03a9c117ea7c0193643ab0f4"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.QuietHistoryTest.xml",
+      "sha256": "2d32da16add5ad37ada264722654ac400958773c564a6311952bf0a561106c6b"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest.xml",
+      "sha256": "ae3bbb06a570172338a91cb7acf36ca1f8cdeee4bc634e64b8368ecb4841274c"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.SearchThreadTelemetryTest.xml",
+      "sha256": "636d4833fc45e7e03065d3eb254c0a8b8b27c9ea3bb42096f2b9f016efa31e58"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.SeeClearanceTest.xml",
+      "sha256": "5751fdf1449dc00c0e74ee2a89fa2ded99a39fa2ed66a9faa0dabc7c5cdc6e5d"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.SeePruningTest.xml",
+      "sha256": "7135aac1929987426de8fdd454c064ef38236bd03a044b6374c67050271a90c0"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.SortTest.xml",
+      "sha256": "fa7c31308cabbfb1c10c23ba300f550fcad0b3e273d8b3de6b5ab087ec167165"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.Sr006OracleTest.xml",
+      "sha256": "e8241aecc1ff4741fc58cd9d951223536a07dbecdf3bd3a7b28e507f3e579916"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.StagedGenerationTest.xml",
+      "sha256": "feb7988889a0ca183eedc37d003442d2b59469ec628a7d569896abff9f548614"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.StagedSearchTest.xml",
+      "sha256": "7f67d1b17463d39dfea186d55e25ec00854e03f735031ef5ee01bb41b8c9313f"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.exact.StaticNullPruningTest.xml",
+      "sha256": "ff765bb2bbbd0295613a36686cd4312e5def0b6b27a359aeee7e2fb84440ab36"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.flat.FlatNegamaxControlTest.xml",
+      "sha256": "fbde765db0a31f324eeabe34048a95f64f34707c2f8fc351196340d2045fbfaf"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.flat.FlatNegamaxTest.xml",
+      "sha256": "0b809ba8d6b6300eb18255d2072a0d1e2b5555811eea4b81d4f000389dc7ca03"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearchTest.xml",
+      "sha256": "ad2e402faa74c22324dcb00cac40460df7aacaee11b3a338a6cd60caa8598058"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.iterative.IterativeDiagnosticsTest.xml",
+      "sha256": "3232ca53580cd262ab98102f752e60daa8c301087810fc9ca9c8df84ae9771ab"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.manage.ConcurrentSearchOwnershipTest.xml",
+      "sha256": "ac11fb5eb1f32a08090c1914e9360c135931e5a4d4b3970fd8d8b79ab0e733a1"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.manage.OpeningBookIntegrationTest.xml",
+      "sha256": "7991aae631bf614f88bdad53a3096595131650801d2620c46a9771a94ec70c3b"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.manage.SearchLifecycleServiceTest.xml",
+      "sha256": "4ddae0afa135930cad126a701e762adda6655e9aaae353b5d7179672becce602"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.manage.SearchThreadGenerationTest.xml",
+      "sha256": "1cb4fe6ce80f98f48b82d2f22a14782d2eb0edf6192c130d98d4e78c4eddf47e"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.order.MoveOrderingTest.xml",
+      "sha256": "db76d7c3609cc141d7bc38b22ab10c3f88abce929ed5b8699505032c84b6b9d4"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.order.OrderedExactSearchTest.xml",
+      "sha256": "5acf2cce87b81484a2929e931a9eece81ecefd9e34fb85ee360a441ee9967266"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.order.StagedMovePickerTest.xml",
+      "sha256": "8225ccd59f6fda6d66f3d94356b09f0982d80dd18d73feee3d3b8bdd4db70afd"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.quiescence.NnueQuiescenceTest.xml",
+      "sha256": "b52ff2656c3dbdc5ce3acf461530a9faa06b50bd3b7eb7d2a86c43c141d7171f"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.quiescence.QuiescenceControlTest.xml",
+      "sha256": "6afb793141c87ba001f8d10bdaeb96ddb4fa22b4421b5140a71dfb544a8f6cf6"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.quiescence.QuiescenceCorpusTest.xml",
+      "sha256": "84527c5c3082a3c8b68cba2708ff944c91c3ef4b20625d92f59db6a2fb9da553"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.quiescence.QuiescenceDiagnosticsTest.xml",
+      "sha256": "360b9d1a817a2a31db28dcd8e0a0ede0fd1a3f9f2e78633393d11ee0264d2bca"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest.xml",
+      "sha256": "253c7b95e0c5d895020735814c7700faba5ae2dc4259c6938a1138625e100552"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.tablebase.SyzygyRootTest.xml",
+      "sha256": "35577820455fa5623f5e4aba0f55380858799dcec2f2631b6f7e660ca8d832c5"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.tablebase.TablebaseLifecycleTest.xml",
+      "sha256": "2afff30040d00fe0d02b49766d498630ea2b43ba281159f686c4639547794022"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.tt.TranspositionTableConcurrencyTest.xml",
+      "sha256": "e9aab0b9dada1fa244084a45e8b5957c4db2502ac7efa45df786589f7428d523"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.tt.TranspositionTableTest.xml",
+      "sha256": "dadb0d477ab38191cb233da1efff26586e880be0b43dce9552e9a43bfe1213fa"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.search.tt.TtExactSearchTest.xml",
+      "sha256": "7610a87b137b2621db1d360f32f9d430c2c1eb863b8342328596723fa1fefc02"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.uci.GoCommandParserTest.xml",
+      "sha256": "80740b896ceacb601461109ac147aeecaa24efde92c90ae937142c6f8cb638e0"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.uci.UciEvaluationTest.xml",
+      "sha256": "444f07f96b8b20fc664720d842d75f64590597688c6853845216cbe36dd9e5e3"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.uci.UciMoveParserTest.xml",
+      "sha256": "c64b377597f0efc4560478c8d1112873bd621af421ae078ae73ad77f44cb22b4"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.uci.UciProcessTest.xml",
+      "sha256": "475a72213b6b87125140ff1d46bd1626a5abd6c3774b5ee5b63cdf54b5198764"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.uci.UciReportingTest.xml",
+      "sha256": "ce69e3848c082c9db30d0c26798492f57ee55607bba7c8102761a45ffb6f6478"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.uci.UciSessionTest.xml",
+      "sha256": "080a4c7cbc56c1e0945e45b396263e3e95a49c519f9f117329b10f1d4d142d8a"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.uci.UciWindowsLauncherTest.xml",
+      "sha256": "dd30a2ab8335f8d9718444894b725fb50f5309fe3789026bbe92879eb067892d"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-results/TEST-com.ohinteractive.seedv6.VersionResourceBuildTest.xml",
+      "sha256": "764a71d268e3690a2968da7fd7451780f7b662b6a6f43a7c84aaf281b95be868"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci-summary.json",
+      "sha256": "834435a677c8f7d98232aa5e587e08be9e717fa5297aa6e7e2861c085ce09d65"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-search-uci.txt",
+      "sha256": "afac64048ed1f151b742a9ab2c57d0f350a6cf30b39b492b15a4ce49eff55268"
+    },
+    {
+      "path": "build/migration/wu4/resume/engine-training-summary.json",
+      "sha256": "ac50ebf046d050a763a52eaa8b770e09441c8363bd9e36aef2e8608dc66be9e1"
+    },
+    {
+      "path": "build/migration/wu4/resume/entrypoints.json",
+      "sha256": "cd6efafbc389729b9f2a2460dd287d678d5164363126e95f7aa4956275a93835"
+    },
+    {
+      "path": "build/migration/wu4/resume/fresh-assembly.txt",
+      "sha256": "5405b8431c52946146264853f5bf43697cc6336f76d7870f370bb6618d53d71d"
+    },
+    {
+      "path": "build/migration/wu4/resume/fresh-modules.txt",
+      "sha256": "2f1fa8a795bf1dff3761bc14974064dc0aa0dd94a56af13077e1e2f6000e8cf5"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.ArenaHistoryViewTest.xml",
+      "sha256": "27d0822c472109036cf7bbc270652417e2bc05c75416a6a07dbcc133ebaf772d"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.ArenaMatchPresentationTest.xml",
+      "sha256": "bf63300448a077501c096ef444eac8e8207a9edc3fb63b25dd1516d4ad3b5f57"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.ArenaSemanticsTest.xml",
+      "sha256": "a82db48c8087d192fdb17c9c4cb5eeb821568ac6e9d58033559ae38149f42fc9"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BestNnuePlayTest.xml",
+      "sha256": "88d4ada0c71c403e5ccc26b12e57f79e48649063e87b16b8a2839501d1cf724d"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.Brn1TrainingGuiTest.xml",
+      "sha256": "fa99cedac1f4bbd6fa46c592d566239538cd6c9b07cb570c120f9aa965cafe4d"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.Brn2SupervisionGuiTest.xml",
+      "sha256": "a91d5fdaef61ed4c478154e9fd0a259820cc52029c68c1369631081285a44231"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.Brn2TrainingGuiTest.xml",
+      "sha256": "5e89764671f2186b2f5952b42ea4fe8d7c83b230252890ca7ca35920985ac29d"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.Brn3GuiTest.xml",
+      "sha256": "d1b3b69f0737f2c8e5e343fb720f67724ec8d545212253daf488d0cb3d94692c"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest.xml",
+      "sha256": "dc55879de63d45127757eaec4dadcafd1ce986e85ff9abb45095972bfb67bc69"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnCaptureGuiTest.xml",
+      "sha256": "343dd4268ca182af7a7d6affc5c55c4435f921a0dffccf972e1b3d7a0d4ce022"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnHandcraftedGuiTest.xml",
+      "sha256": "e5ede95ba780d2f9ba696ae3c1c6d50fbb925563fe648cd232e0f96ff7ac0faa"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnPair2GuiTest.xml",
+      "sha256": "42935141119e63fc5a7e01ac7361687b585a52ca669938e414aa4febb088ae27"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnRunSeedsGuiTest.xml",
+      "sha256": "2fa77f817940a5cf6b57a768cd43d108c3e5979cb2b7cae98c17cddb6445138e"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnStoreRemediationTest.xml",
+      "sha256": "d99f17ff2d43793190a7917ace995c656bfbc7c093cba053f8c97c0673ebebf8"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.BrnTrainingGuiTest.xml",
+      "sha256": "7d8c0d4daa8ea86761d0cb3f8cc3961e32034f8671c64757a670b59c6632fba2"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.Bt4TrainingDataPanelTest.xml",
+      "sha256": "6fc4d0f5f9ebe4685790f3d327681de994f0e995c75cd3f80f7a5ff22eadc345"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.ChessFrameSmokeTest.xml",
+      "sha256": "a3075ad0651278abfaede504bace5bbc7ee7e923dffe8ddc48319acc10899589"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.ConcurrentPlayTrainingTest.xml",
+      "sha256": "1ce14f7c664bdb8b039366fca7e9614d076cff2ebf362caa441bd2f818ba939f"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.CorpusImportGuiTest.xml",
+      "sha256": "b96fcb7009e3b4ab2ec6b23fbf98c43eda5b5eff5c87056a33a7f097357e4dd6"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.CorpusImportLayoutTest.xml",
+      "sha256": "5905076d6a880ec89cbbc6bd41e025ac5ab55a7ac64fbcf73ab1c954f37bea25"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.EngineSearchAdapterTest.xml",
+      "sha256": "82a7db3a4e2aaaaf4961ede26f2378de852006c4305c25760f739416bff0457f"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.FilePickersTest.xml",
+      "sha256": "fbaf6d0b9e8b5a659e9e0c0441b8c91fe71d0cc2301e315911307f92a5c2a9bf"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.GameControllerLifecycleIntegrationTest.xml",
+      "sha256": "cf52613cda69bae44db13abc609d964fdd54fb872a9789ed3964d24e92578c0d"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.GameControllerTest.xml",
+      "sha256": "2b2575f8946bc0c9163c460e874c6ce16a2859437ff5c29cb9378cb52cf9bde3"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.HceArenaGuiTest.xml",
+      "sha256": "e84d1ea9cccc83f9d7a66206255d93cb7932d77b085b637ec56753fbfe35f24f"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.HceParticipantsTest.xml",
+      "sha256": "465bf5a59b8ee4bd9d1c97dc3c3f7092731adeb61ac553aa2db2e21a7f6b77bf"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.HumanEngineSelectionSmokeTest.xml",
+      "sha256": "6aa5107ed6834bca2ba2443671010e291ba56cad59ab6e0d847de2e8cd6d663d"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.HumanEngineSelectionTest.xml",
+      "sha256": "e19d4dbca7a81b88661674091b0d33d596fc7b4f15c81481097faddd2c9456ec"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml",
+      "sha256": "6c91e906b864a3f076744f029a1baa6d6a912661ff2213e64d7c192a63f6751c"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.LearningArenaLifecycleTest.xml",
+      "sha256": "d1708c561c0145fced593323a521da4ca5a7fe713f7791e8e605c40c8d8ae5fb"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.LineageRedesignTest.xml",
+      "sha256": "9b8e53a3f262f1129659681d62033c9d125ea2ae56b8a97992c651387afc0028"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.LineageRevisionTest.xml",
+      "sha256": "672864bddeb2629afcbe2580b2a27c6c59f9b88add81d0bbbfafee1042fa17fd"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.ModelSelectionPanelTest.xml",
+      "sha256": "0721693eb399263f6b63891cb386f4203ef397c86c06158d9293844aaa560442"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.NetworkArchitectureTest.xml",
+      "sha256": "c10ca6dc54c274b85d9c44b8794ef793aa387b31f5d5787200c80b177d65d5a2"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.PerSideNnuePlayTest.xml",
+      "sha256": "636c99be6d1ab0a560a483ec37781b1cbc15076f51c67033b6a13394badf13eb"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.PlayPresentationTest.xml",
+      "sha256": "b7bbff9c0fe9c699fb02fc82d51c2dd4c8e772200a2dbbed3dc5708d2f97b161"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.PlayStoreWorkflowTest.xml",
+      "sha256": "8a3b0f368afe03dfda393ee530edd55231756e4507c97cc885653b1deb4aedd8"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.PlayWorkspaceSmokeTest.xml",
+      "sha256": "f6ba8f933498fbac393f4c2f9321e6c0bf3311090b508d72e6955943a7ffcc18"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.RecipeSettingsTest.xml",
+      "sha256": "29cb3a0c1bb9382e0e9c61b2697f810498887781f53cf6538e644ae3682f29cc"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.ScrollPreservingTextTest.xml",
+      "sha256": "66c35838a738b026386bd6c6c37ea25346126559b7dda6d832f7cf6264ccfb1c"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TablebasePresentationTest.xml",
+      "sha256": "b1e96072e5de1d766ad5dbdc9ba8243deedd37045a96c7dc330fc39ccdc99709"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.ThreadAndTerminationTest.xml",
+      "sha256": "8e80da9e100c65f6b1c3f6c075119c70da38a22a4fc8226ed482ec8d1de23440"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingBoardPresentationTest.xml",
+      "sha256": "0e2f18f921e80e42ac183ab47cd5b00cdc8225537dfc33d1e9f0e20cb009b61a"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingControllerTest.xml",
+      "sha256": "7d4115256268567a2a04260097b64f3e95fcfe3f8371cfcbc195c290be476f09"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingDashboardRedesignTest.xml",
+      "sha256": "2a064317945eb0c4cf5228f20cdec394722e956c3d7bb4919e17cd52b5168245"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingDashboardRefinementTest.xml",
+      "sha256": "4b89df2989666987fd7f003e136376708a8f85ab385f299ba50a5b10bc5c46e5"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingDashboardTest.xml",
+      "sha256": "3fdae954292e561a5c2d92521d2a053afa6056347007e88940ff02938eff7018"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingDataGuiTest.xml",
+      "sha256": "466b1297c65276d0190f58de3e04385a45d743f4f2e519eae3f47fb2c03b3786"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingDataLayoutTest.xml",
+      "sha256": "43dc368ff0c7d5b7164520f8f6c2573977eb349665081c512ffeaa7364bc1340"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingDataSelectorTest.xml",
+      "sha256": "63803da31a67de80477dd5e4a2e70dfa35e2ac8237cb3157c64209ddd086a75e"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingFoldersTest.xml",
+      "sha256": "5d2cbf2da5c9caf6bf84eef9a9bb199f0d2be85778a0c8a504da7aba677aa2cf"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingHistorySmokeTest.xml",
+      "sha256": "d6dbfb79c18b3f73e43ae3d116293269f9332770fcc9d7a5a6598de884044aa1"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingLineagesTest.xml",
+      "sha256": "878d9087e84ab04f560f2d02721cdf2a32290723b49dc3e3d510164cefa08885"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingLossPresentationTest.xml",
+      "sha256": "6d33b9ece1a2ce7a48bf15c0b3bdd890786b0bff930afe117328d9221629c43a"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingProgressViewTest.xml",
+      "sha256": "cc710998c7484434b8f1bbeeaaea3be13f205ce186fa89f3b98aa13406162056"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingRunPresentationTest.xml",
+      "sha256": "42638cc4f718eeebc8135ce84bbf4ba699fc7dfbc7f7a03899bb4a4b242c770e"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingSearchThreadsTest.xml",
+      "sha256": "e3efbfb1ef64569c5a6acc45edc1f544379afb7264ea6e38c89b38a807170bff"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest.xml",
+      "sha256": "134e0bb351d2b414aef8a11d8465f88d73286874155963ed8d6f4138995d7d3a"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingStoreRecognitionTest.xml",
+      "sha256": "35b9354b2600ba3401f8afcf4ab843522f8f5ba1f2800cb9e86a43c05f458e8b"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingValidationGamesTest.xml",
+      "sha256": "47d787231f025238a9b66a9c66222bc90fe2612d3c8154dbf9d458d32f712dde"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.xml",
+      "sha256": "97c1e8ebb3f6cefb9f25cc696a41343b2a7eab620b1fe5902ecb57c1e9ed0891"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.UiObservabilityTest.xml",
+      "sha256": "7ed1606ecfc0fbaf81e732b5df6a7ab7ae0f1a98076a7ab83a6689ef52490ae5"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.ValidationPresentationTest.xml",
+      "sha256": "29274c0474b4ccdeac57a2c504e45115c34731e02e45c1c7253c223e1928beb1"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.WindowsFilePickerTest.xml",
+      "sha256": "be806abfb2155cead1778ae289289f808d3211dfa3264583e75f081298256e1f"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-results/TEST-com.ohinteractive.seedv6.gui.WorkflowRefinementGuiTest.xml",
+      "sha256": "c73b365433186324a836369e414a30aeb002db621cbe5d4d73642c0126ed266b"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-summary.json",
+      "sha256": "0f825dedc643531da901e452b26efe8fd4ec8afbe56747ea3a15ae59f597c385"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay-threads.txt",
+      "sha256": "e8738c4067a664414f504f783768f2d69cdd8fc9abce257fc9172ec5357d12d3"
+    },
+    {
+      "path": "build/migration/wu4/resume/gui-replay.txt",
+      "sha256": "cca511b35f75df89b6b9db93863fc4d6583278245580b7bba88ddea19446788c"
+    },
+    {
+      "path": "build/migration/wu4/resume/inspect.gradle",
+      "sha256": "7dea8572cb7d0eaf6d4ec97803cfd2a471f5d90ad18a83ae565e44a9a1f3a15b"
+    },
+    {
+      "path": "build/migration/wu4/resume/interrupted-wu4-evidence.json",
+      "sha256": "00713185013e70983190bcbd294c3e96f6a644746157ac064b0f5a74d8b98443"
+    },
+    {
+      "path": "build/migration/wu4/resume/interrupted-WU4-GUI.md",
+      "sha256": "9770f086b06668f3943d6cd238a8ad9ae5ed5163faf180cbfabeeeaaa2acf483"
+    },
+    {
+      "path": "build/migration/wu4/resume/isolated.gradle",
+      "sha256": "f23b05d31072697b18f2b80e29918b4a6cd59b98749739d322c23879c5a51b1e"
+    },
+    {
+      "path": "build/migration/wu4/resume/legacy-gui.txt",
+      "sha256": "59930a6e2b41e859327c1b88daf1ed437dcb8ecf65d83fc718eda0c2b11bb685"
+    },
+    {
+      "path": "build/migration/wu4/resume/legacy-uci.txt",
+      "sha256": "4407cf1703e4707b6b3e297f5c500d70694cce111299af51fde0348029538a92"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/app-gui/test-results/test/TEST-com.ohinteractive.seedv6.gui.ApplicationMenuTest.xml",
+      "sha256": "dacea60c131d301c3db2658681b74677d2428ec768c573429b9ad5ec8629732d"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/app-gui/test-results/test/TEST-com.ohinteractive.seedv6.gui.DesktopOwnershipTest.xml",
+      "sha256": "6b7dda9a7af99b96693d10d3ee999d3479ca6b17cc837af0c7c029a7a4921488"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/app-gui/test-results/test/TEST-com.ohinteractive.seedv6.gui.GameSessionTest.xml",
+      "sha256": "c711a03e4254c15d51dc45f3418f34b085a2b9197aa412079c31347203703e35"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/app-gui/test-results/test/TEST-com.ohinteractive.seedv6.gui.PieceRendererTest.xml",
+      "sha256": "86d401f3140137114517f47a42d341934f63ce590db2b8b3c27f7aab1f33d3f0"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/app-gui/test-results/test/TEST-com.ohinteractive.seedv6.gui.SquareMapperTest.xml",
+      "sha256": "524389adcaa47bff903a6749ebc49827f12b5043f6446a2bfeab5ec9cc012049"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-core/test-results/test/TEST-com.ohinteractive.seedv6.book.BookTest.xml",
+      "sha256": "20be11c8486efe4592dc5648cad9162ce8c28751894782851f5945617c0be37e"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-core/test-results/test/TEST-com.ohinteractive.seedv6.core.brnpair2.BrnPair2RuntimeBoundaryTest.xml",
+      "sha256": "a1351d74dfef8ad2bf247dae626a76b7655e852ea32f82b71e6d26dab4e6974a"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-core/test-results/test/TEST-com.ohinteractive.seedv6.core.util.FenTest.xml",
+      "sha256": "26e120ea7923454c2a5b019c4d852c91180e337b081d9726200f78e7aa38b4cf"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-core/test-results/test/TEST-com.ohinteractive.seedv6.core.util.PextTest.xml",
+      "sha256": "7fd90ea068a14d70af683d8e0efd68a30a4aea37f446edbacf92f905ba071f33"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-core/test-results/test/TEST-com.ohinteractive.seedv6.rules.DrawAdjudicatorTest.xml",
+      "sha256": "7a5bba95d747f6af6fbac0fe9248e5a6e672e7820e165a70c2e659ebc282b345"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-core/test-results/test/TEST-com.ohinteractive.seedv6.rules.GameHistoryTest.xml",
+      "sha256": "59698ec7ced2c891653dda8da56f42a6eb437e5c007f747e4571d615e75a46a1"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-core/test-results/test/TEST-com.ohinteractive.seedv6.rules.PositionIdentityTest.xml",
+      "sha256": "7a2901fc1a171a479e85a41a60988fa4ab3499bbf93d0ff1828ee4af8f1e10ed"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-core/test-results/test/TEST-com.ohinteractive.seedv6.search.manage.TimeManagerTest.xml",
+      "sha256": "4e0e7b0462ce847c06abe3422461298843bd93fe9e27fe2fabb363e745a149f1"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-core/test-results/test/TEST-com.ohinteractive.seedv6.search.tablebase.SyzygyResourcesTest.xml",
+      "sha256": "25efc3c52093480ec1c5fb95ca8d8a6075d43a08e14703c4e1be183913f9a4a4"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-core/test-results/test/TEST-com.ohinteractive.seedv6.search.tt.TranspositionScoresTest.xml",
+      "sha256": "c8e33ad89e7738616d9f36d22257f73bc0518892191be09f8bade3026e818aa3"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-core/test-results/test/TEST-com.ohinteractive.seedv6.search.tt.TTableTest.xml",
+      "sha256": "d749fa6ff35fcbe5e38433eb8939bf8419e8979f87655dca727e7fa94fc8e4a5"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-training/test-results/test/TEST-com.ohinteractive.seedv6.core.brn3.Brn3VectorKernelsTest.xml",
+      "sha256": "9983a9c28b13235b21b90179ee23dfe9c1589cc6901b8c6106c958cf1355c346"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-training/test-results/test/TEST-com.ohinteractive.seedv6.training.checkpoint.PartialGenerationStoreTest.xml",
+      "sha256": "cf90d619f7fce6668be971cb441abda9e533786bdb8da856bb2d37e31c7ebd2f"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-training/test-results/test/TEST-com.ohinteractive.seedv6.training.selfplay.BrnPair2LossTest.xml",
+      "sha256": "3c45986e5794a84daaa177e76b8ac013bc2e7833d485bc544c09d05785ea56a7"
+    },
+    {
+      "path": "build/migration/wu4/resume/module-build/engine-training/test-results/test/TEST-com.ohinteractive.seedv6.training.validation.PromotionPolicyTest.xml",
+      "sha256": "0ae89a01a8c880d59f3a37fa1577a3921ec2da52ae7ed7728179d55fae09e0f4"
+    },
+    {
+      "path": "build/migration/wu4/resume/package-classpath.txt",
+      "sha256": "f1fc2732f4b214c59be6b020425606dde9c4259c68d61311c5500f23552632e4"
+    },
+    {
+      "path": "build/migration/wu4/resume/package-probe-compile.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/migration/wu4/resume/packaging-dry-run.txt",
+      "sha256": "66c8811f86963e305a25e212a657f01c9a566e8031990b4852f9bb183f33b6e8"
+    },
+    {
+      "path": "build/migration/wu4/resume/PackagingClasspathProbe.java",
+      "sha256": "bb48176e016862498874e647db2f6b0f5227c1ba1aa05d152d618ab2b01291ba"
+    },
+    {
+      "path": "build/migration/wu4/resume/preservation-checks.py",
+      "sha256": "bfe799e87ef1f1340077aa24d412b15ae23e32b8be90bd17998ad1e7a9f41b74"
+    },
+    {
+      "path": "build/migration/wu4/resume/preservation-commands.json",
+      "sha256": "838b7e7b040d5efa8f709f17e0beaa72ef2207617c2b87acce7c1a9e148e6f58"
+    },
+    {
+      "path": "build/migration/wu4/resume/preservation-result.json",
+      "sha256": "016caacdba910b10de11c7d06aa158ccdb5869e48c306860fe0c7c33aac17680"
+    },
+    {
+      "path": "build/migration/wu4/resume/preservation.py",
+      "sha256": "25fe4709e50bbab296a3c2338fe28753af7d368af16f587699f7a56924991375"
+    },
+    {
+      "path": "build/migration/wu4/resume/reconcile.py",
+      "sha256": "fa6b7b21fb64b1f14eaa26566a82e1180b4dc12e69ae8b2c1dfd5717b8272e95"
+    },
+    {
+      "path": "build/migration/wu4/resume/reconciled-selected-summary.json",
+      "sha256": "f663812d24365e938c9a59bb16d8faf7b3180e1c07a7f60597b51ae7fd6bf79c"
+    },
+    {
+      "path": "build/migration/wu4/resume/resource-tools.json",
+      "sha256": "42ffd591a33d0b4643f29fa0ac0cd5d8d96a38a28142fd0de47f12b7e4e7bd32"
+    },
+    {
+      "path": "build/migration/wu4/resume/retest-arena-Baseline1/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml",
+      "sha256": "bb9cb60773202fd40fce5df40d9aa3501d6f53c68b75ebba0fbfa786a0435cf3"
+    },
+    {
+      "path": "build/migration/wu4/resume/retest-arena-Baseline2/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml",
+      "sha256": "b8d36e84798746f533731ccb0bb3ab03f3b7adfbb19d68626126e212f34ccf00"
+    },
+    {
+      "path": "build/migration/wu4/resume/retest-arena-Current1/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml",
+      "sha256": "47b96c4351a48a6f7253788cd47407a4f98526fe3ab0639c1abd6555ed4f6a81"
+    },
+    {
+      "path": "build/migration/wu4/resume/retest-arena-Current2/TEST-com.ohinteractive.seedv6.gui.LearningArenaGuiTest.xml",
+      "sha256": "f2f9eb4ee89d43a0e5654560ac0fcf6ba00c60a5fc610ba74015bbe317237392"
+    },
+    {
+      "path": "build/migration/wu4/resume/source-bridge/result.json",
+      "sha256": "47cbe4a6a1c56c2aa33bfa7b7745d3c6c12e6fb585602e322f593c116f0383df"
+    },
+    {
+      "path": "build/migration/wu4/resume/source-bridge.txt",
+      "sha256": "b403c45e356d37fa4c3bf9f252b2dc0b1b81b99c0d1373c98241ac37053454aa"
+    },
+    {
+      "path": "build/migration/wu4/resume/start-state.json",
+      "sha256": "c8bb4e39b347a2bbd0e0b8648f0e27953c671aae1bc9bea2afa342836c7b804b"
+    },
+    {
+      "path": "build/migration/wu4/resume/test-table.md",
+      "sha256": "2dda2c365568682eb25d4d897a1564e5714df9fb3832fb77df9dc190b33ee56f"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-bridge/result.json",
+      "sha256": "2aff767a31bfadd57bcfe7ed679811e2cdcaf187ddb05d4c7409b240f6c88a1d"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-bridge.txt",
+      "sha256": "8842c0bf200f09fe144aed4b82e38ada226fd7a9a5b83989fc11300916ffebf2"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.AvailableCheckpointsTest.xml",
+      "sha256": "77bbdb91b8c97b85e1ae5f6422eaa3b76b0787f7d7a2171887d87277ea85c068"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.Brn1CheckpointTest.xml",
+      "sha256": "18390330e21f37538e2c279707ef632c1e803250bc4557a06ea8f3ba4b1a13ee"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.Brn2CheckpointTest.xml",
+      "sha256": "4b0434d5c32daf96a0f3c974bf6319bcf2a9561e5930877489edc2b64e4ed461"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.BrnCheckpointTest.xml",
+      "sha256": "c51f397405889faa6ec6f52d6dc91b4c7ef24d0834e0a1a796ff56bed75c535c"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.BrnSupervisionPersistenceTest.xml",
+      "sha256": "a481f184ddc97250121c037f19bc77d70666f4b304dd8b53af8abe24d19d8d0a"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.CheckpointRetentionTest.xml",
+      "sha256": "3b5c842f5c0687195925ca1a1265ab48aa53e9bdd4701a301024331ecf0201c4"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.CheckpointStoreTest.xml",
+      "sha256": "0d47ab79173f4d95c700e6ecd654d860bd900387a65b19fff9f4282fe1cf3edb"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml",
+      "sha256": "ce49b2f3b94c6a4955eb5a9f2ed199800e66eac9cfdc377c99f3317820f06903"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRetentionTest.xml",
+      "sha256": "be7fe2aca83639ca175899b2514a32428384ff868b2b2e37961a649a62e115a8"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.ModelLibraryTest.xml",
+      "sha256": "9a8c52a33a1cd5b94e75799bd4b7afb3de164c541c890d99424d6abb497fb96a"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.PayloadAccessTest.xml",
+      "sha256": "1b8862a6501e5c98279e5f2b018645f8525437d64f3877daf9d1229c37edc683"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.checkpoint.TimedValidationRecordTest.xml",
+      "sha256": "b7ea79ae0c3f16566291e47b2c70cb1b6730d7cb056692bf5d52e7b7965d9cc2"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.service.ArenaOptimizationProgressTest.xml",
+      "sha256": "a5e1ec7eac1c8fb115e08d33c1e1cddb84370a627baef758ab7410cd51e0f2f6"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.service.ArenaRecipeConfigurationTest.xml",
+      "sha256": "aa9252d323e20e75c910863795fa53b1d7326fed1c1ecaaa015728a8ece2c7c7"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.service.LearningArenaTest.xml",
+      "sha256": "768012f8b1cb2d8f036a03f74c5d4902851007ca5cc32e66d2475fe0801259b6"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.service.LineageProvenanceTest.xml",
+      "sha256": "7adbfd669f6acf5a73e83d7062c63a737488bf479f37672ff7a3689ed880e8b4"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.service.MatchOnlyArenaTest.xml",
+      "sha256": "3bc17d2afe5e783056aaf1c78b081b924cd07d60386d022aa8f0842453ae6856"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.service.TrainingRecipeTest.xml",
+      "sha256": "15d5391c24192af4de832214402d42fcb78f13b911b3b9ebc9c3274715d54624"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-results/TEST-com.ohinteractive.seedv6.training.service.TrainingRunControlTest.xml",
+      "sha256": "d741c77f869d2c29c91f439b1272d8182f5f6e2901fbd0f2b44e70c275f16808"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests-summary.json",
+      "sha256": "bc7740d749ca595f6bcd1f8a15a5eeadf6cb498b5e4a698771c1b59c1e164360"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-tests.txt",
+      "sha256": "0f3b68e353c0fa8592973b49feccba5ee57a010a48364326e5ce16f58f0f5307"
+    },
+    {
+      "path": "build/migration/wu4/resume/training-threads.txt",
+      "sha256": "7b86a692f234b4464bd26badb771aa60f77cf62d027e8c4e8d073e311de970c5"
+    },
+    {
+      "path": "build/migration/wu4/resume/uci-bridge/result.json",
+      "sha256": "9bf7a10fb3db67399af2375e1ffc46d28b85f13482ab97228f33dea0106fe053"
+    },
+    {
+      "path": "build/migration/wu4/resume/uci-bridge.txt",
+      "sha256": "6210ff99da6b05084f050d427313c5e3df09dcd39764bdd776669d42fbef75fc"
+    },
+    {
+      "path": "build/migration/wu4/resume/update-other-records.py",
+      "sha256": "b065abceba46b114e44b81ec71aaa500a26c297cdd9ba0e02b66c89546b1cfcd"
+    },
+    {
+      "path": "build/migration/wu4/resume/update-records.py",
+      "sha256": "ec32901327508ffd2dd0d50809708dbd14caee61298dacf71d0e67dd8a69b868"
+    },
+    {
+      "path": "build/migration/wu4/resume/validate.py",
+      "sha256": "d8a27fbb08b33ef079cca1bd56d2d0c5ae0aaf236c91ba5f78fe055704ad2420"
+    },
+    {
+      "path": "build/migration/wu4/resume/validation-commands.json",
+      "sha256": "82254e931497e1ca48fd1ea56663c2c913c113b5e7b736dd7a4cccdb13c11a9b"
+    },
+    {
+      "path": "build/migration/wu4/resume/version-finish.json",
+      "sha256": "cab489efbe684664780a551a6394034223c53c2480978e12cd13bfd3e648a391"
+    },
+    {
+      "path": "build/migration/wu4/resume/version-status.json",
+      "sha256": "b7637d28b0b027aab8f902dd17b10bc74a2182b0b9e56770ff7bf4a581f637c3"
+    }
+  ],
+  "ownerAcceptanceClarification": {
+    "date": "2026-10-16",
+    "authority": "Explicit user resume instruction in the existing WU4 conversation",
+    "scope": "WU4 may complete and commit using sufficient automated non-interactive evidence; no desktop interaction",
+    "deferred": "User-performed Windows and macOS G2-G5, coordinated with WU7 P1-P3, required before full GUI runtime acceptance and final cutover",
+    "unrelatedGatesWaived": false
+  },
+  "preservationResume": {
+    "original": {
+      "head": true,
+      "branch": true,
+      "status": true,
+      "tracked": true,
+      "artifacts": true,
+      "metadata": true,
+      "inventory": true,
+      "unchangedAcrossResumeBoundary": true
+    },
+    "uci": {
+      "head": true,
+      "branch": true,
+      "status": true,
+      "tracked": true,
+      "artifacts": true,
+      "metadata": true,
+      "inventory": true,
+      "unchangedAcrossResumeBoundary": true
+    },
+    "historicalRepositoriesUnchanged": true
+  },
+  "previousRootVersion": {
+    "identity": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 35
+    },
+    "beginToken": "d69d2be2e2ec4522bc0d0a340ab4d19b",
+    "decision": "no_bump",
+    "rootJournal": "absent; not created",
+    "bytesUnchanged": true,
+    "finish": {
+      "status": "no_bump",
+      "token": "d69d2be2e2ec4522bc0d0a340ab4d19b",
+      "decision": "no_bump",
+      "before": {
+        "build": 35,
+        "major": 0,
+        "minor": 0,
+        "patch": 0
+      },
+      "after": null,
+      "verified_bump": false,
+      "blockers": [],
+      "warnings": []
+    },
+    "finalStatus": {
+      "status": "idle",
+      "active": null,
+      "unfinished": [],
+      "blockers": [],
+      "warnings": []
+    }
+  },
+  "remainingRisks": [
+    "19 inherited GUI/checkpoint failures remain open; positive evidence does not certify their failing paths",
+    "Native GUI runtime acceptance is deferred; no unperformed interaction is marked passed",
+    "Original Arena transient timing cause was not captured; unmodified paired/full replays and payload equality support scoped completion",
+    "Inherited research path/provenance assumptions in analyze-search-delta.py and brn-architecture.py require WU6 review; unchanged here"
+  ]
+}

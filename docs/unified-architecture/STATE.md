@@ -6,14 +6,19 @@ Updated 16 October 2026 (Pacific/Auckland). Governing [CONTRACT](CONTRACT.md),
 
 ## Current boundary
 
-**WU0, WU1 and WU2 are accepted by GPT, as confirmed in the owner's WU3 launch.
-WU3 training extraction and scoped structural validation are complete; GPT/user
-reconciliation is pending. No WU4 work is admitted.** The WU3 starting point is the clean accepted WU2 commit
-`09076c1d06ac8b532e065f4750bd0d8b206fe7db`. See
-[WU3 training extraction](WU3-TRAINING.md), [WU2 core extraction](WU2-CORE.md)
-and [WU2 evidence](wu2-evidence.json).
-The earlier [WU1 record](WU1-GRADLE.md) and [evidence](wu1-evidence.json) remain
-historical accounts of that unit's handback.
+**WU0-WU3 are accepted by GPT. WU4 structural implementation and required
+non-interactive validation are complete; GPT/user reconciliation is pending.
+Full GUI runtime acceptance is deferred, not claimed. Stop before WU5.**
+The owner explicitly authorizes WU4 completion/commit without desktop interaction.
+Windows and macOS G2-G5 walkthroughs move to later user-performed WU7 P1-P3
+acceptance and remain required before full GUI runtime acceptance/final cutover.
+This supersedes the earlier Windows prerequisite and Mac-only deferral; unrelated
+correctness and regression gates are unchanged. See [WU4-GUI](WU4-GUI.md),
+[wu4-evidence.json](wu4-evidence.json) and [ACCEPTANCE](ACCEPTANCE.md).
+
+WU4 starts at accepted `ff7291aae877244843e99afa3c47120642f25bc5`; its attributable
+commit is the commit introducing the WU4 completion record. Earlier handback
+statuses remain historical and do not override later owner acceptance.
 
 Architectural discovery on 16 October 2026 is complete. The owner accepted
 restructuring existing SeedV6 into engine-core, engine-training, app-gui, app-uci
@@ -36,8 +41,8 @@ research seams are present but not accepted for production.
 | WU0 Foundation | ACCEPTED by GPT | Owner's WU1 launch confirms acceptance of `81e868a72b942202e1ced89fe30a5a13e3af155f`; G0 evidence below is retained. |
 | WU1 Gradle foundation | ACCEPTED by GPT | Owner WU2 launch accepts `bd864a9f1231e6c73997b9302a411449bc2a5a21`; all 19 inherited failures remain explicitly deferred. |
 | WU2 Core | ACCEPTED by GPT | Owner WU3 launch accepts `09076c1d06ac8b532e065f4750bd0d8b206fe7db`; [WU2 record](WU2-CORE.md). |
-| WU3 Training | IMPLEMENTED / scoped validation complete; reconciliation pending | T1-T4 structural evidence in [WU3 record](WU3-TRAINING.md) and [evidence](wu3-evidence.json); 19 inherited failures remain open at dependent runtime gates. |
-| WU4 GUI | NOT STARTED | Core/training validated; G2-G5 automated/native evidence. |
+| WU3 Training | ACCEPTED by GPT | Owner WU4 launch accepts `ff7291aae877244843e99afa3c47120642f25bc5`; 19 inherited failures remain open at dependent runtime gates. |
+| WU4 GUI | STRUCTURAL COMPLETE; GPT/user reconciliation pending | 75 GUI sources / 35 resources in app-gui; scoped non-interactive checks complete; 19 inherited failures retained; Windows/macOS human G2-G5 deferred to WU7. |
 | WU5 UCI | NOT STARTED | Core validated; adapt immutable UE boundary behavior, U1-U4/E5/E6. |
 | WU6 Research | NOT STARTED | Ownership settled with references protected throughout; R1-R3 and task/path mapping. |
 | WU7 Packaging | NOT STARTED | Core/apps/training/research gates; P1-P5 plus native/client acceptance. |
@@ -232,7 +237,7 @@ and no finalizer is run there. No shared registry/helper was modified.
 
 | Item | Effect on next work |
 | --- | --- |
-| WU3 GPT/user acceptance | Blocking WU4 admission after WU3 implementation/validation handback. WU0, WU1 and WU2 are accepted. |
+| WU4 validation/reconciliation | Structural checks complete under the explicit owner decision; GPT/user reconciliation before WU5. Native Windows/macOS acceptance remains a later WU7/full-runtime/cutover gate. |
 | Inherited GUI/checkpoint failures | All 19 remain unchanged. The WU3 owner permits structural acceptance with sufficient independent positive continuity evidence; this does not waive the failing crash-recovery or GUI paths. Separate remediation remains required before their dependent runtime acceptance gates. |
 | Public model bytes | Deferred, non-blocking for WU1. Explicit owner authorization required before newly committing/publishing payload; use verified external local input in the meantime. |
 | Mac signing/notarization | Deferred to public distribution policy; no blocker to foundation/scaffold or local unsigned QA. |
@@ -252,22 +257,57 @@ The WU0 ignored Gradle mtime observations qualify that earlier preservation clai
 WU1's before/after inventories match. Neither authorizes interference with
 unrelated IDE/Gradle processes.
 
-## Next independently reviewable unit
+## WU4 evidence and validation
 
-After GPT/user reconciliation of WU3, admit **WU4 - GUI ownership**.
-Move existing presentation, preferences, controllers and application composition
-into app-gui using the accepted core/training owners. Preserve Play, Training,
-Arena and settings workflows, with G2-G5 automated and native Swing acceptance.
-Retain the 19 inherited GUI/checkpoint failures as explicit separate remediation
-obligations; their deferral does not satisfy the dependent runtime gates.
-WU4 is not started by this turn. WU5 owns standalone UCI; WU6 owns remaining
-research/verification infrastructure. Model publication and final packaging remain
-separately gated.
+- App-gui solely owns all 75 GUI Java sources, 35 runtime resources and desktop
+  launcher. Package names/bytes are retained. ApplicationVersion and its generated
+  resource have one shared owner in core. Final source counts: core 109, training
+  134, GUI 75, legacy app 9. Core and training implementations remain single-owner.
+- App temporarily consumes app-gui in addition to core/training; targets never
+  depend on app. Main GUI delegation and UCI remain unchanged. FlatLaf/JNA runtime
+  ownership moves to GUI without upgrades; existing package tasks retain launch
+  configuration and read/stamp the core identity resource.
+- Fresh core/training/GUI tests pass 61/11/22. Final retained-app GUI replay is
+  322 cases: 284 pass, ten inherited failures, 28 skipped. Reconciled engine/search/
+  UCI/version is 987: 976 pass, 11 skips. Checkpoint/service selection is 138:
+  129 pass and nine inherited failures. Reconciled selected JUnit coverage is
+  1,541 cases: 1,483 pass, 19 inherited failures, 39 skips. Full suite pass is not claimed.
+- The additional Arena timeout does not recur: unchanged WU3/WU4 paired replays
+  pass twice each in 9.26-9.38 seconds; full GUI replay passes it in 9.509 seconds.
+  Original timeout evidence remains; exact transient cause is unknown. No timeout
+  relaxation or production fix was needed. A new archive-boundary assertion was
+  corrected to distinguish empty directories from payload; its two cases pass.
+- Seven-family persisted continuation, pinned checkpoint identity/reconstruction,
+  203 exact SR-024 vectors and 66 UCI requests pass. All 374 original production
+  inputs and 722 class payloads match WU3, with no duplicates. SR-021 remains deferred.
+- Eleven expanded boundary fixtures, actual dependency verification, fresh assembly,
+  configuration-cache reuse, packaging dry-runs and headless entry-point/classpath
+  probes pass. No resumed desktop interaction or native production package was made.
+- Both historical repositories' tracked/protected bytes, Git state/metadata and
+  full size/mtime inventories match before/after, including across the resume
+  boundary. Version remains 0.0.0 build 35; local no-bump finalization and exact
+  receipts are in WU4 evidence. No journal existed or was created; no push/deploy.
+- Native Windows startup from the interrupted earlier root remains historical
+  evidence only. Move input/engine response, Training/Arena native workflows,
+  preferences/pickers, scaling and cooperative window shutdown require later user
+  validation against identified WU7 candidates. The 19 failing paths remain open
+  at their own dependent runtime gates and were not suppressed.
+- WU6 must review inherited research-tool source/provenance paths in
+  `tools/analyze-search-delta.py` and `tools/brn-architecture.py`; no research
+  execution, ownership migration or historical-result rewrite occurs in WU4.
+
+## Next admission and human actions
+
+Recommend WU5 standalone UCI after GPT/user reconciliation of this WU4 commit and
+evidence. WU6 retains research separation; WU7 retains native platform/package/client
+acceptance plus the explicitly deferred G2-G5 walkthroughs; WU8 retains legacy-app
+removal, rollback and explicit production cutover. No next unit has begun.
 
 Human actions required after this prompt:
 
-- **Blocking for WU4:** GPT/user must reconcile and accept WU3 before the next unit.
-- **Non-blocking for WU3; blocking dependent runtime acceptance:** authorize and
-  complete separate remediation of the 19 inherited GUI/checkpoint failures.
-- **Non-blocking now:** deferred public-model/platform/release decisions remain
-  due only at their stated downstream boundaries.
+- **Immediate blocker to WU4 structural completion: None.** No live GUI walkthrough
+  is required for the owner-scoped WU4 structural gate.
+- **Blocking WU5 admission:** GPT/user reconciliation of WU4 evidence and commit.
+- **Deferred; blocking full GUI runtime / WU7 platform acceptance and cutover:**
+  user-performed Windows/macOS G2-G5 walkthroughs and separate reconciliation/
+  remediation of inherited GUI/checkpoint failures at their dependent runtime gates.

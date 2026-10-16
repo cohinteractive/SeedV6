@@ -10,22 +10,22 @@ plugins {
     id 'application'
 }
 
-apply from: rootProject.file('gradle/application-version.gradle')
 apply from: rootProject.file('gradle/java-conventions.gradle')
 
 dependencies {
     implementation project(':engine-core')
     implementation project(':engine-training')
+    // Transitional composition only: Main delegates desktop startup to its owner.
+    implementation project(':app-gui')
     testImplementation gradleTestKit()
     // Independent JSON parser for diagnostic report contract tests.
     testImplementation 'com.google.code.gson:gson:2.11.0'
 
     // This dependency is used by the application.
     implementation libs.guava
-    // Desktop presentation only; UCI and engine code do not initialize Swing.
-    implementation 'com.formdev:flatlaf:3.7'
-    // Windows Common Item Dialog COM bindings; JNA's platform natives travel in its JAR.
-    implementation 'net.java.dev.jna:jna-platform:5.17.0'
+    // Mixed integration tests remain here; desktop runtime libraries belong to app-gui.
+    testImplementation 'com.formdev:flatlaf:3.7'
+    testImplementation 'net.java.dev.jna:jna-platform:5.17.0'
     // Remaining independent research and integration tests use these APIs directly.
     // Production corpus/runtime dependencies are owned by engine-training.
     testImplementation 'com.github.luben:zstd-jni:1.5.7-20'
@@ -36,6 +36,11 @@ application {
     // Define the main class for the application.
     mainClass = 'com.ohinteractive.seedv6.Main'
     applicationName = 'seedv6'
+}
+
+// Retain the historical task name; the shared identity has one resource owner.
+tasks.register('generateApplicationVersion') {
+    dependsOn ':engine-core:generateApplicationVersion'
 }
 
 // BRN-3 uses lane-wise binary64 kernels; direct launches without the optional
