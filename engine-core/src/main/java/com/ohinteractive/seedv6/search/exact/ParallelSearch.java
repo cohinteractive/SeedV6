@@ -103,7 +103,8 @@ public final class ParallelSearch implements SingleDepthSearch {
         this(threads, definition, new TTable(), policy);
     }
 
-    ParallelSearch(int threads, SearchEvaluation definition, TTable table, ConcurrencyPolicy policy) {
+    /** The supplied table is exclusively owned by this coordinator and shared by its private workers. */
+    public ParallelSearch(int threads, SearchEvaluation definition, TTable table, ConcurrencyPolicy policy) {
         this(threads, definition, table, policy, null);
     }
 

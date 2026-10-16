@@ -1,10 +1,43 @@
 plugins {
     id 'java'
+    id 'distribution'
 }
 apply from: rootProject.file('gradle/java-conventions.gradle')
 
-// The standalone entry point is introduced with its protocol tests in WU5.
-description = 'Headless UCI application owner; implementation starts in WU5.'
+description = 'Standalone headless UCI application using the authoritative engine-core.'
 dependencies {
     implementation project(':engine-core')
+}
+
+// A uniquely named task preserves the established unqualified legacy `run --args=gui` route.
+tasks.register('runUci', JavaExec) {
+    group = 'application'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.uci.UciMain'
+    jvmArgs '-Djava.awt.headless=true', '-Xmx768m'
+    standardInput = System.in
+}
+tasks.register('startScripts', CreateStartScripts) {
+    applicationName = 'seedv6-uci'
+    mainClass = 'com.ohinteractive.seedv6.uci.UciMain'
+    defaultJvmOpts = ['-Djava.awt.headless=true', '-Xmx768m']
+    outputDir = layout.buildDirectory.dir('scripts').get().asFile
+    classpath = files(tasks.named('jar'), configurations.runtimeClasspath)
+    doLast {
+        windowsScript.text = windowsScript.text.replace('@if "%DEBUG%"=="" @echo off', '@echo off')
+    }
+}
+distributions {
+    main {
+        distributionBaseName = 'seedv6-uci'
+        contents {
+            into('lib') { from tasks.named('jar'); from configurations.runtimeClasspath }
+            into('bin') { from tasks.named('startScripts'); filePermissions { unix('rwxr-xr-x') } }
+        }
+    }
+}
+tasks.named('assemble') { dependsOn tasks.named('distZip'), tasks.named('distTar') }
+tasks.withType(Test).configureEach {
+    systemProperty 'java.awt.headless', 'true'
+    maxHeapSize = '768m'
 }

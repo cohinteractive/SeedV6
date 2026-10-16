@@ -1,0 +1,998 @@
+{
+  "observedUtc": "2026-10-16T07:12:11.706288+00:00",
+  "workUnit": "WU5",
+  "status": "Implementation, required headless validation and no-bump finalization complete; GPT/user reconciliation of attributable WU5 commit pending before WU6",
+  "worktree": "C:/projects/seed/java/seedv6-unified",
+  "branch": "migration/unified-architecture",
+  "baselineCommit": "b412e34f35d5c1baccfe218f17d4c5a80a37a25c",
+  "baselineClean": true,
+  "sourceOwnership": {
+    "status": "passed",
+    "sourcesByOwner": {
+      "app": 2,
+      "app-gui": 75,
+      "app-uci": 11,
+      "engine-core": 109,
+      "engine-training": 134
+    },
+    "classesByOwner": {
+      "app-gui.jar": 220,
+      "app-uci.jar": 14,
+      "app.jar": 2,
+      "engine-core.jar": 174,
+      "engine-training.jar": 317
+    },
+    "duplicateSources": false,
+    "duplicateClasses": false,
+    "unchangedOriginalInputs": 362,
+    "changedExistingInputs": [
+      "engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java",
+      "engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/ProductionSearch.java",
+      "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ParallelSearch.java",
+      "app/src/main/java/com/ohinteractive/seedv6/Main.java",
+      "app/src/main/java/com/ohinteractive/seedv6/uci/UciEvaluation.java"
+    ],
+    "relocations": [
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/uci/GoCommandParser.java",
+        "to": "app-uci/src/main/java/com/ohinteractive/seedv6/uci/GoCommandParser.java",
+        "beforeSha256": "2169603a31fd31f13cdee5d3f27b6e9b24ba8e85cd0ddf0d86659d90b46a8a99",
+        "afterSha256": "2169603a31fd31f13cdee5d3f27b6e9b24ba8e85cd0ddf0d86659d90b46a8a99"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/uci/UciEngine.java",
+        "to": "app-uci/src/main/java/com/ohinteractive/seedv6/uci/UciEngine.java",
+        "beforeSha256": "dac42e4bd98fce332a1a5dae9bc6e5f1a97c054917a66cfba6070446ebc9b274",
+        "afterSha256": "1e5a5976d8d65aa8916e750133e0679bb4dad729403e99e38e32f323b6289d12"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/uci/UciInfoFormatter.java",
+        "to": "app-uci/src/main/java/com/ohinteractive/seedv6/uci/UciInfoFormatter.java",
+        "beforeSha256": "81b039eee931e8f2e86f22209e0c89be9e8d51b8afef64f799a08d666595c6f2",
+        "afterSha256": "81b039eee931e8f2e86f22209e0c89be9e8d51b8afef64f799a08d666595c6f2"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/uci/UciMoveParser.java",
+        "to": "app-uci/src/main/java/com/ohinteractive/seedv6/uci/UciMoveParser.java",
+        "beforeSha256": "6e2324aa3f7a536b344777a05b9b923d9ffeef56dd11576f6b3c7321017a5e7f",
+        "afterSha256": "6e2324aa3f7a536b344777a05b9b923d9ffeef56dd11576f6b3c7321017a5e7f"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/uci/UciOutput.java",
+        "to": "app-uci/src/main/java/com/ohinteractive/seedv6/uci/UciOutput.java",
+        "beforeSha256": "8e731935bea1a56d6923843d88416ba6ae9d4b2c92722a10010e06c122b2cdbb",
+        "afterSha256": "8e731935bea1a56d6923843d88416ba6ae9d4b2c92722a10010e06c122b2cdbb"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/uci/UciScore.java",
+        "to": "app-uci/src/main/java/com/ohinteractive/seedv6/uci/UciScore.java",
+        "beforeSha256": "b957c85153803f86200c35f241706a34483609f930c82aba2fccd458d02fdfd1",
+        "afterSha256": "b957c85153803f86200c35f241706a34483609f930c82aba2fccd458d02fdfd1"
+      },
+      {
+        "from": "app/src/main/java/com/ohinteractive/seedv6/uci/UciSession.java",
+        "to": "app-uci/src/main/java/com/ohinteractive/seedv6/uci/UciSession.java",
+        "beforeSha256": "bfeaf41b16188e1c4376135473b8681d9e88dea6335d49c7bbfbed5014085dad",
+        "afterSha256": "f323ed6ee8c8428eedbc0cdd042e8a24ddd5abf456883364890a2a1b034e17f1"
+      }
+    ],
+    "changedClasses": [
+      "com/ohinteractive/seedv6/Main.class",
+      "com/ohinteractive/seedv6/uci/UciEngine$1.class",
+      "com/ohinteractive/seedv6/uci/UciEngine.class",
+      "com/ohinteractive/seedv6/uci/UciEvaluation.class",
+      "com/ohinteractive/seedv6/uci/UciSession$PositionState.class",
+      "com/ohinteractive/seedv6/uci/UciSession.class",
+      "com/ohinteractive/seedv6/search/driver/ExactSearchAdapter$1.class",
+      "com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.class",
+      "com/ohinteractive/seedv6/search/driver/ProductionSearch.class",
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker$1.class",
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker.class",
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch$WorkerWork.class",
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch.class"
+    ],
+    "addedClasses": [
+      "com/ohinteractive/seedv6/uci/ProductionModel.class",
+      "com/ohinteractive/seedv6/uci/ProductionUciConfiguration.class",
+      "com/ohinteractive/seedv6/uci/UciConfiguration.class",
+      "com/ohinteractive/seedv6/uci/UciEngine$Publication.class",
+      "com/ohinteractive/seedv6/uci/UciMain.class"
+    ],
+    "removedClasses": [],
+    "guiTrainingClassesByteIdentical": true,
+    "coreJarIdenticalAcrossDistributions": true,
+    "standaloneJars": {
+      "app-uci.jar": "8496069e12fe27de0d5aaddf8ce8b68717b1f328cab656dcdd66113d060f3856",
+      "engine-core.jar": "f8774ce56d3e29bb4cddbfb2bc550132581787b0ebebc5728863e8624b7171e0"
+    },
+    "jdepsCommand": [
+      "C:\\java\\jdk-21\\bin\\jdeps.exe",
+      "--multi-release",
+      "21",
+      "--print-module-deps",
+      "--class-path",
+      "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\engine-core.jar",
+      "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\app-uci.jar"
+    ],
+    "jdeps": "java.base"
+  },
+  "dependencyGraph": {
+    "engine-core": [],
+    "engine-training": [
+      "engine-core"
+    ],
+    "app-gui": [
+      "engine-core",
+      "engine-training"
+    ],
+    "app-uci": [
+      "engine-core"
+    ],
+    "research": [
+      "engine-core",
+      "engine-training"
+    ],
+    "app": [
+      "engine-core",
+      "engine-training",
+      "app-gui",
+      "app-uci"
+    ]
+  },
+  "standaloneEntryPoint": "com.ohinteractive.seedv6.uci.UciMain",
+  "standaloneDistribution": "app-uci/build/install/seedv6-uci",
+  "runtimeClasspath": {
+    "project": ":app-uci",
+    "runtimeClasspath": [
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\fresh-02\\engine-core\\libs\\engine-core.jar"
+    ],
+    "main": [
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\fresh-02\\app-uci\\classes\\java\\main",
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\fresh-02\\app-uci\\resources\\main"
+    ]
+  },
+  "ueProvenance": {
+    "integration": "87b8b5b50acf3d2fe19793bfb0e8b24a45be114b",
+    "releaseRecord": "58511f45bf1bf0a45ca25f31da402a9e0ba56c50",
+    "betweenCommits": [
+      "RELEASES.md"
+    ],
+    "reused": [
+      "UciSession structural FEN validation",
+      "bounded same-byte model checksum/decode",
+      "legal fallback without invented scores or PV",
+      "Hash/Threads allocation failure retention",
+      "terminal infinite ownership until stop",
+      "UE tools/test_uci.py assertions"
+    ],
+    "excluded": [
+      "separate board/search/evaluator/TT/lifecycle implementation",
+      "UE release counter and native packaging",
+      "model bytes"
+    ],
+    "harnessAdaptation": "Only name/version and diagnostic prefixes in immutable UE exchange; assertions retained. New assertions add all-worker legal-PV/budgets, Hash OOM/minimum/non-power-of-two, model failures, game termination and relocation."
+  },
+  "model": {
+    "lineage": "235d0688-e060-44e3-8f1e-119c39bc8017",
+    "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+    "generation": 32,
+    "bytes": 795032,
+    "sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "mapping": "BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1",
+    "input": "C:/projects/seed/java/seedv6-ue/models/baseline.brn-pair2",
+    "published": false,
+    "productionSource": "35294146bb7e44975b516005b2cc196439666e09"
+  },
+  "profiles": {
+    "standalone": "Pinned Pair-2; production QXRAY/quiet LMR/WINDOW/EFFORT1/ROOT_REUSE2..16; Threads=1, Hash=64, Clear Hash; book/tablebase off; legal fallback and deferred infinite bestmove; stderr rejection; no training store/research selection",
+    "legacy": "Main delegates to one UciEngine using existing UciEvaluation in app; HCE and OwnBook=true defaults, checkpoint/warmup/control properties, quiet rejection, sentinel/terminal publication behavior retained; GUI Main dispatch unchanged"
+  },
+  "junitSelections": {
+    "modules-engine-core": {
+      "tests": 61,
+      "passed": 61,
+      "failed": 0,
+      "skipped": 0,
+      "failures": []
+    },
+    "modules-engine-training": {
+      "tests": 11,
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "failures": []
+    },
+    "modules-app-gui": {
+      "tests": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "failures": []
+    },
+    "modules-app-uci": {
+      "tests": 13,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "failures": []
+    },
+    "engine-search-uci-app": {
+      "tests": 979,
+      "passed": 968,
+      "failed": 0,
+      "skipped": 11,
+      "failures": []
+    },
+    "checkpoint-app": {
+      "tests": 64,
+      "passed": 55,
+      "failed": 9,
+      "skipped": 0,
+      "failures": [
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[1] PLAN",
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[2] DATA",
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[3] ATTEMPT",
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[4] CANDIDATE",
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[5] CORPUS_RECEIPT",
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[6] LATEST",
+          "status": "failed",
+          "message": "java.lang.NullPointerException: Cannot invoke \"com.ohinteractive.seedv6.training.model.TrainingArchitecture.corpusOnly()\" because \"this.expectedArchitecture\" is null"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[7] SOURCE",
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[8] REPLACEMENT",
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+          "name": "[9] RECEIPT",
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.io.IOException> but was: <java.lang.NullPointerException>"
+        }
+      ]
+    },
+    "gui-app": {
+      "tests": 322,
+      "passed": 284,
+      "failed": 10,
+      "skipped": 28,
+      "failures": [
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn1TrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn2SupervisionGuiTest",
+          "name": "freshControlsDefaultWdlExposePercentComplementAndFollowEveryLifecycleLock()",
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.Brn2TrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest",
+          "name": "[1] BRN-0",
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnBootstrapGuiTest",
+          "name": "[2] BRN-1",
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnCaptureGuiTest",
+          "name": "brnDefaultRoundTripAndLifecycleLocksWithNnuePanelUnchanged()",
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because the return value of \"com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named(java.awt.Container, String, java.lang.Class)\" is null"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnPair2GuiTest",
+          "name": "capabilitiesAndRecipeEditorsAppearInExistingTrainingPanel()",
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.getSelectedItem()\" because \"selector\" is null"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.BrnTrainingGuiTest",
+          "name": "cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks()",
+          "status": "failed",
+          "message": "java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke \"javax.swing.JComboBox.setSelectedItem(Object)\" because \"selector\" is null"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.TablebasePresentationTest",
+          "name": "engineCardLabelsOutcomeWithoutEvaluationUnitsOrASearchedPv()",
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: White wins ==> expected: <true> but was: <false>"
+        },
+        {
+          "classname": "com.ohinteractive.seedv6.gui.WorkflowRefinementGuiTest",
+          "name": "compactDashboardShowsBothGraphsAtOrdinaryViewportAndRendersAt150Percent()",
+          "status": "failed",
+          "message": "org.opentest4j.AssertionFailedError: Graphs bottom=719 viewport=649 ==> expected: <true> but was: <false>"
+        }
+      ]
+    }
+  },
+  "junitReconciled": {
+    "tests": 1472,
+    "passed": 1414,
+    "failed": 19,
+    "skipped": 39
+  },
+  "inheritedFailuresMatchWu4Exactly": true,
+  "wu5IntroducedFailures": [],
+  "standaloneProcess": {
+    "status": "passed",
+    "searches": 159,
+    "checks": [
+      "Unweakened historical SR-024 UCI exchange: vectors, clocks, reset, stop, EOF, invalid input",
+      "All workers 1..16: accepted identity, exact request budget, independently legal bestmove/PV",
+      "Hash=1024 allocation failure retains Hash=64 and successful search under -Xmx192m",
+      "Hash minimum, non-power-of-two request and restored default with Clear Hash",
+      "Zero-budget honesty, strict FEN atomicity, winning/losing mate distances",
+      "Relocated standard Java launcher, spaces, unrelated cwd, DEBUG=1, adjacent verified model",
+      {
+        "modelFailure": "missing",
+        "exitCode": 1,
+        "stderr": "SeedV6 UCI startup/runtime error: Required BRE-Pair 2 model missing: C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\standalone-process-02\\missing; supply --model <file>; expected SHA-256 5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+      },
+      {
+        "modelFailure": "corrupt.brn-pair2",
+        "exitCode": 1,
+        "stderr": "SeedV6 UCI startup/runtime error: Corrupt or different BRE-Pair 2 model: C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\standalone-process-02\\corrupt.brn-pair2; expected SHA-256 5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7, got 9099ffbdae301e10fed1a271c7d3d934f304eb2df5498689f01e1af499f67a3a"
+      },
+      {
+        "modelFailure": "truncated.brn-pair2",
+        "exitCode": 1,
+        "stderr": "SeedV6 UCI startup/runtime error: Incompatible BRE-Pair 2 model length: C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\standalone-process-02\\truncated.brn-pair2"
+      },
+      "Missing default model fails without HCE fallback",
+      "Standalone rejects legacy/research selection properties before startup"
+    ],
+    "fixtures": {
+      "tools/test_uci.py": "8bbb8d5d818ebfc8aa72382d470515c54db4f8f92be35f819b230bb10000ebb1",
+      "src/test/resources/sr024-vectors.tsv": "0a10bc7de11506fca7945e236caa8badffab4abbcee975fd1b72583e47dfa3e7"
+    },
+    "runtimeJars": {
+      "app-uci.jar": "8496069e12fe27de0d5aaddf8ce8b68717b1f328cab656dcdd66113d060f3856",
+      "engine-core.jar": "f8774ce56d3e29bb4cddbfb2bc550132581787b0ebebc5728863e8624b7171e0"
+    },
+    "onlyJavaBaseAvailable": true,
+    "result": "build/migration/wu5/standalone-process-02/result.json",
+    "modelUnchanged": true
+  },
+  "productionParity": {
+    "status": "passed",
+    "ueRevision": "58511f45bf1bf0a45ca25f31da402a9e0ba56c50",
+    "modelSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "acceptedJarSha256": "2341955302900ae1a15879d0cff6b14a3744498db0dd862b8cd2aabe7482ed0f",
+    "coreJarSha256": "f8774ce56d3e29bb4cddbfb2bc550132581787b0ebebc5728863e8624b7171e0",
+    "commands": [
+      [
+        "C:\\java\\jdk-21\\bin\\javac.exe",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\engine-core\\build\\libs\\engine-core.jar",
+        "-d",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\source-bridge\\classes",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\source-bridge\\Sr024SourceProbe.java"
+      ],
+      [
+        "C:\\java\\jdk-21\\bin\\java.exe",
+        "-Xms256m",
+        "-Xmx512m",
+        "-XX:ActiveProcessorCount=1",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\source-bridge\\classes;C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-production-v1\\lib\\*",
+        "Sr024SourceProbe",
+        "C:\\projects\\seed\\java\\seedv6-ue\\models\\baseline.brn-pair2",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\source-bridge\\positions.fen",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\source-bridge\\sr005-corpus.tsv",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\source-bridge\\sr024-tactical.tsv",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\source-bridge\\accepted.tsv"
+      ],
+      [
+        "C:\\java\\jdk-21\\bin\\java.exe",
+        "-Xms256m",
+        "-Xmx512m",
+        "-XX:ActiveProcessorCount=1",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\source-bridge\\classes;C:\\projects\\seed\\java\\seedv6-unified\\engine-core\\build\\libs\\engine-core.jar",
+        "Sr024SourceProbe",
+        "C:\\projects\\seed\\java\\seedv6-ue\\models\\baseline.brn-pair2",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\source-bridge\\positions.fen",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\source-bridge\\sr005-corpus.tsv",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\source-bridge\\sr024-tactical.tsv",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\source-bridge\\core.tsv"
+      ]
+    ],
+    "fixtures": {
+      "tools/Sr024SourceProbe.java": "4d4d8248375dc9443721ce92d5b1d1ff520c00fb610fc157f06b212bf38e718d",
+      "src/test/resources/positions.fen": "934dd9a8cb68f6a523304a2fb99ae1425b74a7404a3c1c357d94a015539bd529",
+      "src/test/resources/sr005-corpus.tsv": "cb4b9e92e328426d6f3ebc5d0c590fdd4cff2421c1dda9f75d0e30cee4f54c08",
+      "src/test/resources/sr024-tactical.tsv": "bb839d60e62dc2f72d69ad45a421905fdb59f61676e70c937c8861a70320524e",
+      "src/test/resources/sr024-vectors.tsv": "0a10bc7de11506fca7945e236caa8badffab4abbcee975fd1b72583e47dfa3e7"
+    },
+    "vectors": 203,
+    "exactFields": "all 17 TSV fields",
+    "acceptedAndCoreMatchFrozenVectors": true,
+    "inputsUnchanged": true
+  },
+  "legacyProcess": {
+    "status": "passed",
+    "arguments": {
+      "java": "C:/java/jdk-21/bin/java.exe",
+      "store": "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\training-bridge\\historical-store",
+      "accepted": "C:/projects/seed/java/seedv6/app/build/sr024-production-v1",
+      "current": "C:\\projects\\seed\\java\\seedv6-unified\\app\\build\\install\\seedv6",
+      "out": "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\legacy-uci-bridge"
+    },
+    "exactComparisons": 10,
+    "requests": 66
+  },
+  "trainingPreservation": {
+    "status": "passed",
+    "inputs": {
+      "network.brn-pair2": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "training.state": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+      "manifest.bin": "a51513ddb6e23a8537cc38b8aeb7676af5723c3e3b6bb8151f265bb87ae83891",
+      "training-metadata.bin": "135fb61ed736f313158e5514f2a16a81eda6526c4f034d2232ff26f8ee4176e7"
+    },
+    "familyDiskContinuations": 7,
+    "historicalInputsUnchanged": true,
+    "historicalRecompileExact": true,
+    "appAbsentFromMigratedClasspath": true,
+    "model": {
+      "exact": true,
+      "rows": [
+        "PINNED\t1753088\tf8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5\t5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "CONTINUED\t1753089\t3aaf29b3e6eb4272ea986d341357cbda17dfd2aeb646676a016272d85c58d1e1\tab767174ca48d17e92d0b2e7ba23e113bf41e398cb8f5329880c6bb657254cae",
+        "NNUE\t9c7e98e6122b6dc608745b00328afa216b2f2313fd1725884e0a6ab63c3952f7\te819d5e612f7a881ec1238d244cb9d9b1f02e237a6c2f45d6e638d612f21cc1b",
+        "NNUE_MATERIAL\t220d2649365241759fdc3e92e9a894d0b899138bd1c9d5f5f561f4fa96fdd6a6\te0556c7cb3a0f16d6101396b268c6d6740589ed1db4577f854158b46522013f0",
+        "BRN\tee0d39db05d9da0d827d0d338858aff7fdac9ba6f55018a0cca9e88ff89d3c1d\t6d5070e90fc75eef31e23eca122d2c442c25f3e5a7019ab96bcc71417d665b92",
+        "BRN1\t5a40fcc2b9c73d10515f23b7d5f123bf933ffeba2efd33cff2a911fbf4152d7e\tfe1e70619a53351f0f0fe82062589c5de3af205baebaed26c4838f54a5e6e739",
+        "BRN2\t5a6b409eaa5cc063dcaf29bdf01fb0db2b3049d1861af12ef0ea73b603b47d10\t24e4c86c548a78830ac339ebf97e9d62dad298a6b84145cea3c2f419ce4f1c59",
+        "BRN3\t4e587c2d7f2528f467b050b85e10656f00da66c5ca34bc7da24863bdc938fc02\tc037c965df3ff5ee8413d3468c43f80803d7c29848da8acfddc6426807625ef9",
+        "BRN_PAIR2\tf0eca7495b73dc33a8edb1b90a6ae1791e2c59d4954074ed6485f6b718a425eb\t189989020bf622cb900984e804b61a2efd06e58b672c8cb561df50bd5c96af58"
+      ],
+      "sha256": "b25f1a6562e5fa459fd49d4623756c534513baf41f25e026eed36489f01e1393"
+    },
+    "continuation": {
+      "exact": true,
+      "rows": [
+        "HISTORICAL\tg000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\t235d0688-e060-44e3-8f1e-119c39bc8017\t5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7\tf8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+        "NNUE\tg000000-s000000000-74a12fcd05e6102381f21fb589f3050c455ad990d73ec6956b357b71148a44b6\tg000001-s000000006-9e9cdcc4c427e4ebfbbf196bfd4b84ef00dcb668e1d7f486aa2873167d6cec9e\tad2dea03d7315da15414486e2aef058d8c68f592d12ac9acf1f6c5f7e0f06deb\tfd0a3b584af8300c2ea2e5c084e22c22334635f104c04444f3552772139b6166\t6\tTrainingCursor[samples=3, updates=2, initialStep=0, initialLoss=0.33335563308011545, lossSum=1.001228480128394]",
+        "NNUE_MATERIAL\tg000000-s000000000-7c92295de4dddadaac9f93721206c36b515ab32416859cc03333088a1b99e998\tg000001-s000000006-610d25379d17256d38c8be9a633333ac7e640ed82fea0c656fb83543063c3d20\td7bf9a4086f65fb00785c3c926b21dbebba86d596535816a25c6434b667b277f\tb036c2750b3153e630874d1df94c3265400ad7759b11781a53a3f8d9b361eb60\t6\tTrainingCursor[samples=3, updates=2, initialStep=0, initialLoss=0.5988658533168274, lossSum=1.5777957415443296]",
+        "BRN\tg000000-s000000000-2a741808da8b1522ad739072c123beea5b8fd9910b37ecca9898c2f8a43663b0\tg000001-s000000003-e70e187dce871559b711641dae7e3554817f0e6b4225e76ea0d202e7671983d9\td21555d108b1f168a28af3717635b3db06d836d69962cf380a2b99cefbbaf500\t521965afd128042f44cbdecf3d75132aebd607d98c585bf3da49237adc98f048\t3\tTrainingCursor[samples=2, updates=2, initialStep=0, initialLoss=0.3333333333333333, lossSum=0.5000319986340762]",
+        "BRN1\tg000000-s000000000-3220dbef42f0e7d0551ff6dc6b6e4a48c91e16fc0d91e12ac3615032b5c99ecd\tg000001-s000000003-cd8ac9d55e81714604d3f09fdb945a6508f32fd68c548c9889c59125c692beeb\t01276f44561c0c79626736522beea506b82c6dd12a053558eb5817321090cb5d\tac7e9c7f25b3857cf8468b33179ef2a21a52b938222e4d0dd7a6ccc422b11c59\t3\tTrainingCursor[samples=2, updates=2, initialStep=0, initialLoss=0.3700735405999902, lossSum=0.5999484158622576]",
+        "BRN2\tg000000-s000000000-9ea054112f1cdceca4e465bccf773602f572e3ddd22282372741025a037b8598\tg000001-s000000003-799b9013e692e378f507f5af175edc67b6b1fe297df3ec471333fe50b494bce2\t5066c72dc8b824db5ca98bc9717cbda31a9bbdf13aa509eecbf7227fd7cd883a\t4d41898e4f4f4b4e00a2efc4d3a3afc5674a0a6f5b0b72cf8da7944f2148cfbc\t3\tTrainingCursor[samples=2, updates=2, initialStep=0, initialLoss=0.332311193013656, lossSum=0.5000097169868037]",
+        "BRN3\tg000000-s000000000-9a27f33a537a0d644be3291c77fc7e7d697164627002c1ae4077605de2ed7c70\tg000001-s000000006-0177e6675c4f27c61ec278e04f663ba75aa6fd055b6e355541c9e985e9adcc0d\t7a998ffe38e7213cf8526d658ee72c8f5454893a7432b14ba854baedef76f00d\tb526bc0d25878f750f481995c26b8e19461f6cf3c7acd23676c713fa0aa2a9c3\t6\tTrainingCursor[samples=3, updates=2, initialStep=0, initialLoss=0.25, lossSum=0.75]",
+        "BRN_PAIR2\tg000000-s000000000-8463d0d43fa2e8ea1e6cf92c661f492ae1ec7332fd52df69baba366096da32db\tg000001-s000000006-5f48df2da17aec96928c65a167f6dee639279a797fd50f51076541109b73b570\te95bbad4b4e3e5a29c5de39ef55c66b1b29681a76f4121546f7f0504e6ebd185\tac341c21ba3b4d3eeb2ffd6f7062c3b844af987826fd4c0d525e0298b5d90aa6\t6\tTrainingCursor[samples=3, updates=2, initialStep=0, initialLoss=0.25, lossSum=1.7713145825586183]"
+      ],
+      "sha256": "05efa99bb109094863e123071b01bb8ffcef352e17d484280e8d6c483eb8a609"
+    }
+  },
+  "gradle": {
+    "commands": [
+      {
+        "name": "modules",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "-I",
+          "build/migration/wu5/isolated.gradle",
+          "-Pheadless",
+          ":app-uci:test",
+          ":engine-core:test",
+          ":engine-training:test",
+          ":app-gui:test"
+        ],
+        "exitCode": 0,
+        "seconds": 10.776
+      },
+      {
+        "name": "engine-search-uci",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "-I",
+          "build/migration/wu5/isolated.gradle",
+          "-Pheadless",
+          ":app:test",
+          "--tests",
+          "com.ohinteractive.seedv6.core.*",
+          "--tests",
+          "com.ohinteractive.seedv6.search.*",
+          "--tests",
+          "com.ohinteractive.seedv6.uci.*",
+          "--tests",
+          "*Version*Test"
+        ],
+        "exitCode": 0,
+        "seconds": 215.762
+      },
+      {
+        "name": "checkpoint",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "-I",
+          "build/migration/wu5/isolated.gradle",
+          "-Pheadless",
+          ":app:test",
+          "--tests",
+          "com.ohinteractive.seedv6.training.checkpoint.*"
+        ],
+        "exitCode": 1,
+        "seconds": 132.986
+      },
+      {
+        "name": "gui",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "-I",
+          "build/migration/wu5/isolated.gradle",
+          "-Pheadless",
+          ":app:test",
+          "--tests",
+          "com.ohinteractive.seedv6.gui.*"
+        ],
+        "exitCode": 1,
+        "seconds": 332.986
+      },
+      {
+        "name": "assembly-cache-first",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "--warning-mode",
+          "fail",
+          "verifyProjectBoundaries",
+          ":app-uci:classes",
+          ":app-uci:installDist",
+          ":app-uci:assemble",
+          ":app:installDist",
+          ":app:assemble",
+          ":app:verificationClasses"
+        ],
+        "exitCode": 0,
+        "seconds": 10.542
+      },
+      {
+        "name": "assembly-cache-replay",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "--warning-mode",
+          "fail",
+          "verifyProjectBoundaries",
+          ":app-uci:classes",
+          ":app-uci:installDist",
+          ":app-uci:assemble",
+          ":app:installDist",
+          ":app:assemble",
+          ":app:verificationClasses"
+        ],
+        "exitCode": 0,
+        "seconds": 6.185
+      },
+      {
+        "name": "packaging-dry-run",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "--warning-mode",
+          "fail",
+          "packageWindows",
+          "packageMac",
+          "--dry-run"
+        ],
+        "exitCode": 0,
+        "seconds": 8.693
+      },
+      {
+        "name": "launch-task-dry-run",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "--warning-mode",
+          "fail",
+          ":app-uci:runUci",
+          "--dry-run"
+        ],
+        "exitCode": 0,
+        "seconds": 8.603
+      },
+      {
+        "name": "legacy-launch-task-dry-run",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+          "--no-daemon",
+          "--max-workers=2",
+          "--console=plain",
+          "--warning-mode",
+          "fail",
+          "run",
+          "--args=gui",
+          "--dry-run"
+        ],
+        "exitCode": 0,
+        "seconds": 8.981
+      }
+    ],
+    "extraCommands": [
+      {
+        "name": "training-bridge",
+        "command": [
+          "C:\\Program Files\\Python313\\python.exe",
+          "-B",
+          "tools/verify-unified-training.py",
+          "--baseline",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\wu4-dist",
+          "--current",
+          "C:\\projects\\seed\\java\\seedv6-unified\\app\\build\\install\\seedv6",
+          "--checkpoint",
+          "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017/checkpoints/g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+          "--jdk",
+          "C:/java/jdk-21",
+          "--out",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\training-bridge"
+        ],
+        "exitCode": 0,
+        "seconds": 67.406
+      },
+      {
+        "name": "legacy-uci-bridge",
+        "command": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu2\\python\\Scripts\\python.exe",
+          "-B",
+          "tools/verify-unified-uci.py",
+          "--java",
+          "C:/java/jdk-21/bin/java.exe",
+          "--store",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\training-bridge\\historical-store",
+          "--accepted",
+          "C:/projects/seed/java/seedv6/app/build/sr024-production-v1",
+          "--current",
+          "C:\\projects\\seed\\java\\seedv6-unified\\app\\build\\install\\seedv6",
+          "--out",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\legacy-uci-bridge"
+        ],
+        "exitCode": 0,
+        "seconds": 6.176
+      },
+      {
+        "name": "boundary-fixtures",
+        "command": [
+          "C:\\Program Files\\Python313\\python.exe",
+          "-B",
+          "tools/test_gradle_architecture.py",
+          "-v"
+        ],
+        "exitCode": 0,
+        "seconds": 163.131
+      },
+      {
+        "name": "artifact-audit",
+        "command": [
+          "C:\\Program Files\\Python313\\python.exe",
+          "-B",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\wu5\\audit-artifacts.py"
+        ],
+        "exitCode": 0,
+        "seconds": 1.297
+      }
+    ],
+    "boundaryFixtures": {
+      "tests": 12,
+      "passed": 12
+    },
+    "actualRunUci": {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\gradlew.bat",
+        "--no-daemon",
+        "--max-workers=2",
+        "--console=plain",
+        "--warning-mode",
+        "fail",
+        ":app-uci:runUci",
+        "--args=--model C:/projects/seed/java/seedv6-ue/models/baseline.brn-pair2"
+      ],
+      "exitCode": 0,
+      "seconds": 11.518022599979304,
+      "handshake": true,
+      "ready": true
+    },
+    "freshStandalone": {
+      "compile": true,
+      "tests": 13,
+      "passed": 13,
+      "runtimeDependencies": [
+        "engine-core"
+      ],
+      "output": "build/migration/wu5/fresh-02",
+      "command": [
+        "gradlew.bat",
+        "--no-daemon",
+        "--max-workers=2",
+        "--project-cache-dir",
+        "build/migration/wu5/fresh-project-cache-02",
+        "--no-configuration-cache",
+        "--warning-mode",
+        "fail",
+        "-I",
+        "build/migration/wu5/fresh-uci-02.gradle",
+        "-I",
+        "build/migration/wu5/runtime-classpath.gradle",
+        ":app-uci:compileJava",
+        ":app-uci:test",
+        ":app-uci:installDist",
+        ":app-uci:recordUciRuntimeClasspath"
+      ]
+    }
+  },
+  "validationHarnessCorrections": [
+    "Initial system Python lacked python-chess; used the existing migration-local virtualenv. No application execution occurred in that failed invocation.",
+    "Initial fresh-build inspection resolved another project configuration from the wrong context and failed --warning-mode fail after compilation/tests. Replaced it with an owner task and passed a fresh build; no warning suppression."
+  ],
+  "preservation": {
+    "original": {
+      "unchanged": true,
+      "differences": {},
+      "tracked": 3597,
+      "protectedArtifacts": 1098,
+      "inventoryEntries": 44076
+    },
+    "uci": {
+      "unchanged": true,
+      "differences": {},
+      "tracked": 110,
+      "protectedArtifacts": 590,
+      "inventoryEntries": 2706
+    }
+  },
+  "version": {
+    "before": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 35
+    },
+    "after": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 35
+    },
+    "versionBytesUnchanged": true,
+    "decision": "no_bump",
+    "authority": "Owner WU5 structural migration explicitly prohibits release/build increments",
+    "token": "9eff0f2e573d472ba2539057875dbdd6",
+    "finalization": "no_bump",
+    "journalExists": false,
+    "receipt": {
+      "after": null,
+      "before": {
+        "build": 35,
+        "major": 0,
+        "minor": 0,
+        "patch": 0
+      },
+      "blockers": [],
+      "decision": "no_bump",
+      "status": "no_bump",
+      "token": "9eff0f2e573d472ba2539057875dbdd6",
+      "verified_bump": false,
+      "warnings": []
+    },
+    "finalStatus": {
+      "active": null,
+      "after": null,
+      "applicable": true,
+      "before": null,
+      "blockers": [],
+      "changed_paths": [],
+      "changes": [],
+      "decision": null,
+      "recovered": [],
+      "replayed": false,
+      "state_location": "C:\\projects\\seed\\java\\seedv6\\.git\\worktrees\\seedv6-unified\\codex-versioning",
+      "status": "idle",
+      "token": null,
+      "unfinished": [],
+      "verified_bump": false,
+      "warnings": []
+    }
+  },
+  "deferred": [
+    "WU6 research extraction and task/path mapping, including legacy UciEvaluation research controls",
+    "WU7 native Windows/macOS executable/runtime packaging and platform signal acceptance",
+    "Real Arena/BotLi client and live-game acceptance",
+    "WU4 Windows/macOS user GUI walkthroughs",
+    "Separate remediation of inherited 10 GUI/9 checkpoint failures before dependent runtime acceptance",
+    "Public model authorization, release naming/signing/platform decisions",
+    "WU8 transitional app removal and explicit cutover"
+  ],
+  "humanActions": [
+    {
+      "action": "GPT/user reconciliation of WU5 commit and evidence",
+      "blocking": "WU6 admission"
+    },
+    {
+      "action": "Separate reconciliation/remediation of inherited failures and user native GUI/client walkthroughs",
+      "blocking": "Deferred dependent runtime/WU7/cutover gates"
+    }
+  ],
+  "git": {
+    "commit": "The commit introducing this record",
+    "push": false,
+    "deployment": false,
+    "finalState": "Attributable WU5 commit introducing this record; post-commit porcelain check recorded locally in build/migration/wu5/final-git-state.json"
+  },
+  "rawEvidence": {
+    "build/migration/wu5/before.json": {
+      "bytes": 7929692,
+      "sha256": "91e0e3d8266de0613bb381f827d25450c7a23e1da42adce7659009c23a60c182"
+    },
+    "build/migration/wu5/after.json": {
+      "bytes": 7929692,
+      "sha256": "f4f004106f595710c1389d1d02e087e7f3bbfa232db8149c8b36dfb65810ddad"
+    },
+    "build/migration/wu5/artifact-audit.json": {
+      "bytes": 5344,
+      "sha256": "fa531ddb72d2ffbe7486c721a7f8fa6e8cee0de840ed0147574b976638994629"
+    },
+    "build/migration/wu5/validation-commands.json": {
+      "bytes": 3872,
+      "sha256": "3cf1cc2354150b04dba9beb1803855598465139e1a3d98cff5a4e39e12c86dfa"
+    },
+    "build/migration/wu5/extra-commands.json": {
+      "bytes": 2018,
+      "sha256": "7addb50d470afd5773cc9d335b68883972f75bc06a995e92fdcb2ac0d103e83a"
+    },
+    "build/migration/wu5/source-bridge/result.json": {
+      "bytes": 3159,
+      "sha256": "d4a8a2de1f51dfc6e3d8e53c27cbe06ec5d92d500c0f4a05a1d85876af88fc74"
+    },
+    "build/migration/wu5/standalone-process-01/result.json": {
+      "bytes": 112413,
+      "sha256": "7db16ffe50137f1a0eb7ed56b27ef91a6f4eb1a1f57b5969fdf7f934099c0d80"
+    },
+    "build/migration/wu5/standalone-process-02/result.json": {
+      "bytes": 115496,
+      "sha256": "cbe93f959b5a612055fcfe3ed01a5566c0dc5587b6c88148d87d254acf2159ef"
+    },
+    "build/migration/wu5/legacy-uci-bridge/result.json": {
+      "bytes": 36901,
+      "sha256": "47955380bb0bc76f75c6102109fc3588363c68c82ce0f92c65d920147bf8d640"
+    },
+    "build/migration/wu5/training-bridge/result.json": {
+      "bytes": 16686,
+      "sha256": "5016c592a37fc1c334ffbdee99c0652c95bbdcdb05c2af37f038c38c5394bfa1"
+    },
+    "build/migration/wu5/runtime-classpath-verified.json": {
+      "bytes": 429,
+      "sha256": "f7eec0c8433815ff2061247070596dd600f1524901a646e899738e2e92b58411"
+    },
+    "build/migration/wu5/gradle-uci-launch.txt": {
+      "bytes": 3776,
+      "sha256": "2132dd0b441e1710a57921a63134c4582a9cdefed20959cbc00ad929df7eb44b"
+    },
+    "build/migration/wu5/fresh-standalone.txt": {
+      "bytes": 4930,
+      "sha256": "b95412294776f8dd39bc898fc2a73138b1ec4156d181d43eecd2abf9fe6d1e11"
+    },
+    "build/migration/wu5/fresh-standalone-02.txt": {
+      "bytes": 3165,
+      "sha256": "801b75b740c1755a757c46d9f089e59291ebc785827a854771503cec62b7221e"
+    },
+    "build/migration/wu5/boundary-fixtures.txt": {
+      "bytes": 1658,
+      "sha256": "89b0c75ed763ecea6fc21343166e7b305b65050088935092dc97cbc065273c44"
+    },
+    "build/migration/wu5/assembly-cache-replay.txt": {
+      "bytes": 3932,
+      "sha256": "afd651f9ec9081e1891874a20017722d22945c98a5ab1d4c9b0fb8b72a401c4d"
+    },
+    "build/migration/wu5/packaging-dry-run.txt": {
+      "bytes": 2924,
+      "sha256": "e49dbcd289b96869d0a96a6de6e74a823e9479c489973a2edecb82147b2e754f"
+    },
+    "build/migration/wu5/version-before.bin": {
+      "bytes": 60,
+      "sha256": "92a26d4e187edc6c47ed88100d355f77b4597d98524d21d005a3c164986b4bca"
+    },
+    "build/migration/wu5/isolated.gradle": {
+      "bytes": 1096,
+      "sha256": "ababaa67fa93de0243695eca6ac4259b15c8ab861e7e260995a057e366e47a36"
+    },
+    "build/migration/wu5/audit-artifacts.py": {
+      "bytes": 2924,
+      "sha256": "ceb7938a2860b3875910cfca045ad7b1c271583f8491a4e0116b7e0069587665"
+    },
+    "build/migration/wu5/validate.py": {
+      "bytes": 2280,
+      "sha256": "443ac015ac2c997d3a0155b12841f9b5d4e382c8efcc93b85699d837a8387cb8"
+    },
+    "build/migration/wu5/extra-validation.py": {
+      "bytes": 1660,
+      "sha256": "b7fb0736dda22ad508fcad46a28ea81262e586a58b651ec89c6b52d97dc271e5"
+    },
+    "build/migration/wu5/version-finish.json": {
+      "bytes": 2394345,
+      "sha256": "47f199d06eab2e64045c11e427d808768ef2410c3105985c7f1aaf13d33c57a9"
+    },
+    "build/migration/wu5/version-status.json": {
+      "bytes": 370,
+      "sha256": "b352c744c9b2c42bf22cf84d8e6cb68b909310279b8db56434b2ee5b9f048da2"
+    }
+  },
+  "documentationValidation": {
+    "existingLocalLinksChecked": 65,
+    "newBrokenLinks": [],
+    "inheritedUnavailableLinks": [
+      [
+        "docs/architecture.md",
+        "../archive/search-programme/README.md"
+      ]
+    ],
+    "sourceCanonUnchanged": true
+  }
+}

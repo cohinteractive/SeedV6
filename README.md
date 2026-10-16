@@ -18,10 +18,10 @@ Start with the [architecture and source boundaries](docs/architecture.md) and
 The [unified architecture migration contract](docs/unified-architecture/CONTRACT.md)
 and [migration state](docs/unified-architecture/STATE.md) govern the staged move to
 one shared engine, training, GUI, UCI and research build. The five target Gradle
-projects exist alongside temporary `:app`. `engine-core` now owns the shared runtime
-engine; `app` consumes it and retains GUI, UCI, training and verification entry points.
-See the [WU2 core extraction](docs/unified-architecture/WU2-CORE.md) for ownership,
-compatibility evidence and the remaining migration gates.
+projects exist alongside temporary `:app`. Core, training, desktop and standalone
+UCI have separate owners. `app` retains compatibility launchers, checkpoint/research
+configuration and verification entry points. See [WU5 standalone UCI](docs/unified-architecture/WU5-UCI.md)
+for launch instructions, compatibility profiles and the remaining acceptance gates.
 
 ```powershell
 .\gradlew.bat :app:installDist
@@ -30,6 +30,19 @@ compatibility evidence and the remaining migration gates.
 ```
 
 On other platforms use `./gradlew` and the generated `seedv6` launcher.
+
+The standalone production UCI application uses the pinned generation-32 BRE-Pair 2
+model and only `engine-core`. Model bytes are not included in this migration:
+
+```powershell
+$env:GRADLE_USER_HOME = "$PWD/build/migration/gradle-user-home"
+.\gradlew.bat :app-uci:installDist
+.\app-uci\build\install\seedv6-uci\bin\seedv6-uci.bat --model "C:\path\to\baseline.brn-pair2"
+```
+
+Use an existing verified local model, or place it at `models/baseline.brn-pair2`
+inside that Java distribution. Missing or different model bytes fail explicitly.
+The legacy `seedv6` launcher retains its HCE/book defaults.
 
 Use **Network Training > Data & exposure > Add from library** to register original
 Lichess JSONL/PZstandard sources, existing Seed data directories or Stockfish
@@ -48,7 +61,8 @@ preserves the original BINP chunks and never modifies the downloaded archives.
 - `engine-training/src/main`: shared trainers, model workspace, checkpoint continuation, corpus and campaign services.
 - `app-gui/src/main`: desktop Play, Network Training, Arena, preferences and GUI resources
   (WU4 structural migration complete; [native user acceptance deferred to WU7](docs/unified-architecture/WU4-GUI.md)).
-- `app/src/main`: legacy UCI and compatibility Main; remaining research/integration composition.
+- `app-uci/src/main`: standalone UCI entry point, one protocol/session implementation, pinned model selection.
+- `app/src/main`: compatibility Main and legacy checkpoint/research UCI configuration; no second protocol stack.
 - `app/src/verification`: active developer tools, comparisons and reference implementations.
 - `app/src/test`: tests, independent oracles and test-only research harnesses.
 - `source`: active Phase 2 Search Contract and Research Frontier.

@@ -18,8 +18,9 @@ class ProductionSearchBoundaryTest {
         Path core = Path.of("../engine-core/src/main/java/com/ohinteractive/seedv6");
         Path training = Path.of("../engine-training/src/main/java/com/ohinteractive/seedv6");
         Path gui = Path.of("../app-gui/src/main/java/com/ohinteractive/seedv6");
+        Path uci = Path.of("../app-uci/src/main/java/com/ohinteractive/seedv6");
         var forbidden = Pattern.compile("com\\.ohinteractive\\.seedv6\\.(?:tools\\.|search\\.(?:alphabeta|flat|iterative|quiescence|order)\\.|search\\.tt\\.TranspositionTable\\b|search\\.common\\.WindowedSearch\\b|search\\.diagnostics\\.(?:SearchDiagnostics|QsearchDecisionTrace)\\b|core\\.(?:BoardMoveType|GenMoveType|GenRewrite)\\b)");
-        for (Path owner : List.of(main, core, training, gui)) try(var files = Files.walk(owner)) {
+        for (Path owner : List.of(main, core, training, gui, uci)) try(var files = Files.walk(owner)) {
             for(Path file : files.filter(p -> p.toString().endsWith(".java")).toList()) {
                 assertFalse(forbidden.matcher(Files.readString(file)).find(), "Verification dependency in " + file);
             }
@@ -38,6 +39,13 @@ class ProductionSearchBoundaryTest {
             var legacy = Pattern.compile("com\\.ohinteractive\\.seedv6\\.(?:uci\\.|Main\\b)");
             for (Path file : files.filter(p -> p.toString().endsWith(".java")).toList())
                 assertFalse(legacy.matcher(Files.readString(file)).find(), "Legacy application dependency in " + file);
+        }
+        assertFalse(Files.exists(main.resolve("uci/UciEngine.java")));
+        assertTrue(Files.isRegularFile(uci.resolve("uci/UciEngine.java")));
+        try (var files = Files.walk(uci)) {
+            var forbiddenUci = Pattern.compile("(?:com\\.ohinteractive\\.seedv6\\.(?:gui|training|tools)\\.|javax\\.swing\\.|java\\.awt\\.)");
+            for (Path file : files.filter(p -> p.toString().endsWith(".java")).toList())
+                assertFalse(forbiddenUci.matcher(Files.readString(file)).find(), "Non-headless dependency " + file);
         }
         var applicationDependency = Pattern.compile("(?:com\\.ohinteractive\\.seedv6\\.(?:gui|uci)\\.|javax\\.swing\\.|java\\.awt\\.)");
         try (var files = Files.walk(training)) {
@@ -58,7 +66,9 @@ class ProductionSearchBoundaryTest {
         assertTrue(Files.isRegularFile(training), "Distribution must include its training dependency");
         Path gui = Path.of("build/install/seedv6/lib/app-gui.jar");
         assertTrue(Files.isRegularFile(gui), "Distribution must include its desktop dependency");
-        for (Path owner : List.of(jar, core, training, gui)) try(var archive = new JarFile(owner.toFile())) {
+        Path uci = Path.of("build/install/seedv6/lib/app-uci.jar");
+        assertTrue(Files.isRegularFile(uci));
+        for (Path owner : List.of(jar, core, training, gui, uci)) try(var archive = new JarFile(owner.toFile())) {
             // Empty source directories can survive relocation; ownership concerns payload files.
             var names = archive.stream().filter(e -> !e.isDirectory()).map(e -> e.getName()).toList();
             for (String name : names) if (name.endsWith(".class"))
@@ -72,6 +82,7 @@ class ProductionSearchBoundaryTest {
                 assertTrue(names.stream().noneMatch(n -> n.startsWith(base + type)), "Packaged verification class " + type);
             if (owner.equals(jar)) {
                 assertNotNull(archive.getJarEntry(base + "Main.class"));
+                assertNull(archive.getJarEntry(base + "uci/UciEngine.class"));
                 assertTrue(names.stream().noneMatch(n -> n.startsWith(base + "gui/")));
                 assertNull(archive.getJarEntry(base + "search/exact/ExactSearch.class"));
                 assertNull(archive.getJarEntry(base + "training/checkpoint/CheckpointStore.class"));
@@ -93,6 +104,12 @@ class ProductionSearchBoundaryTest {
                 for (String name : names)
                     assertFalse(name.startsWith(base + "gui/") || name.startsWith(base + "uci/")
                             || name.startsWith(base + "search/"), "Non-training package " + name);
+            } else if (owner.equals(uci)) {
+                assertNotNull(archive.getJarEntry(base + "uci/UciMain.class"));
+                assertNotNull(archive.getJarEntry(base + "uci/UciEngine.class"));
+                assertNull(archive.getJarEntry(base + "uci/UciEvaluation.class"));
+                for (String name : names) if (name.endsWith(".class"))
+                    assertTrue(name.startsWith(base + "uci/"), "Non-UCI implementation " + name);
             } else {
                 assertNotNull(archive.getJarEntry(base + "gui/SwingLauncher.class"));
                 assertNotNull(archive.getJarEntry(base + "gui/pieces/original/wk.png"));

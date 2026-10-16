@@ -6,19 +6,13 @@ Updated 16 October 2026 (Pacific/Auckland). Governing [CONTRACT](CONTRACT.md),
 
 ## Current boundary
 
-**WU0-WU3 are accepted by GPT. WU4 structural implementation and required
-non-interactive validation are complete; GPT/user reconciliation is pending.
-Full GUI runtime acceptance is deferred, not claimed. Stop before WU5.**
-The owner explicitly authorizes WU4 completion/commit without desktop interaction.
-Windows and macOS G2-G5 walkthroughs move to later user-performed WU7 P1-P3
-acceptance and remain required before full GUI runtime acceptance/final cutover.
-This supersedes the earlier Windows prerequisite and Mac-only deferral; unrelated
-correctness and regression gates are unchanged. See [WU4-GUI](WU4-GUI.md),
-[wu4-evidence.json](wu4-evidence.json) and [ACCEPTANCE](ACCEPTANCE.md).
-
-WU4 starts at accepted `ff7291aae877244843e99afa3c47120642f25bc5`; its attributable
-commit is the commit introducing the WU4 completion record. Earlier handback
-statuses remain historical and do not override later owner acceptance.
+**WU0-WU4 are accepted by GPT. WU5 standalone Java UCI implementation and required
+headless validation and no-bump finalization are complete; GPT/user reconciliation
+of the attributable WU5 commit is pending. Stop before WU6.** The WU5 prerequisite is accepted
+WU4 commit `b412e34f35d5c1baccfe218f17d4c5a80a37a25c`. No Computer Use, desktop
+interaction or Swing windows were used. See [WU5-UCI](WU5-UCI.md) and
+[wu5-evidence.json](wu5-evidence.json). Native/client/runtime cutover acceptance,
+WU4 user walkthroughs and the 19 inherited failures retain their dependent gates.
 
 Architectural discovery on 16 October 2026 is complete. The owner accepted
 restructuring existing SeedV6 into engine-core, engine-training, app-gui, app-uci
@@ -42,8 +36,8 @@ research seams are present but not accepted for production.
 | WU1 Gradle foundation | ACCEPTED by GPT | Owner WU2 launch accepts `bd864a9f1231e6c73997b9302a411449bc2a5a21`; all 19 inherited failures remain explicitly deferred. |
 | WU2 Core | ACCEPTED by GPT | Owner WU3 launch accepts `09076c1d06ac8b532e065f4750bd0d8b206fe7db`; [WU2 record](WU2-CORE.md). |
 | WU3 Training | ACCEPTED by GPT | Owner WU4 launch accepts `ff7291aae877244843e99afa3c47120642f25bc5`; 19 inherited failures remain open at dependent runtime gates. |
-| WU4 GUI | STRUCTURAL COMPLETE; GPT/user reconciliation pending | 75 GUI sources / 35 resources in app-gui; scoped non-interactive checks complete; 19 inherited failures retained; Windows/macOS human G2-G5 deferred to WU7. |
-| WU5 UCI | NOT STARTED | Core validated; adapt immutable UE boundary behavior, U1-U4/E5/E6. |
+| WU4 GUI | ACCEPTED by GPT (structural scope) | 75 GUI sources / 35 resources in app-gui; scoped non-interactive checks complete; 19 inherited failures retained; Windows/macOS human G2-G5 deferred to WU7. |
+| WU5 UCI | COMPLETE; GPT/user reconciliation pending | Standalone core-only Java UCI, explicit legacy profile, 159 standalone requests and shared production/model parity; native/client gates remain WU7. |
 | WU6 Research | NOT STARTED | Ownership settled with references protected throughout; R1-R3 and task/path mapping. |
 | WU7 Packaging | NOT STARTED | Core/apps/training/research gates; P1-P5 plus native/client acceptance. |
 | WU8 Cutover | NOT STARTED | Applicable matrix passed/scoped, rollback demonstrated and explicit owner decision. |
@@ -296,18 +290,42 @@ unrelated IDE/Gradle processes.
   `tools/analyze-search-delta.py` and `tools/brn-architecture.py`; no research
   execution, ownership migration or historical-result rewrite occurs in WU4.
 
+## WU5 evidence and validation
+
+- app-uci owns the single UCI protocol stack and headless UciMain; only engine-core
+  is on its runtime classpath. Legacy Main injects its existing UciEvaluation profile;
+  HCE/book defaults, checkpoint/research properties and GUI dispatch remain intact.
+- Standalone selects only the verified pinned generation-32 Pair-2 runtime payload,
+  canonical SR-024 construction, Threads/Hash/Clear Hash, legal fallback and infinite
+  publication ownership. No second engine, evaluator registry or model is packaged.
+- Selected JUnit: 1,472 cases, 1,414 pass, 19 exact inherited failures, 39 skips.
+  Thirteen standalone tests pass in a fresh build. Twelve boundary fixtures pass.
+  No WU5-introduced correctness regression remains; the full suite is not green.
+- Headless process checks: 159 standalone searches, 66 legacy production requests,
+  ten exact legacy comparisons, all worker counts 1..16, relocated Java launcher,
+  bounded quit/EOF, OOM retention and explicit invalid-model failures. Direct Java
+  tests restrict available modules to java.base. No actual Arena/BotLi session occurs.
+- All 203 SR-024 vectors match 17 fields; seven-family disk continuation and historical
+  checkpoint reconstruction match WU4. GUI/training class payloads are byte-identical.
+- Independent compilation, effective runtime classpath, distribution assembly,
+  configuration-cache reuse and native packaging dry-runs pass. Historical tracked/
+  protected bytes, Git/merge metadata and full size/mtime inventories are unchanged.
+  Version remains 0.0.0 build 35; no-bump finalization completed without warnings.
+  Model bytes and native releases are not published.
+- WU6 must separate remaining legacy UciEvaluation research configuration, core
+  disabled research seams, verification/oracle/test ownership and inherited tool paths.
+  app retains Main compatibility and checkpoint/research composition until WU8.
+
 ## Next admission and human actions
 
-Recommend WU5 standalone UCI after GPT/user reconciliation of this WU4 commit and
-evidence. WU6 retains research separation; WU7 retains native platform/package/client
-acceptance plus the explicitly deferred G2-G5 walkthroughs; WU8 retains legacy-app
-removal, rollback and explicit production cutover. No next unit has begun.
+Recommend WU6 research separation only after GPT/user reconciliation of WU5. WU7
+retains native packaging, real clients and deferred GUI acceptance; WU8 retains
+legacy removal, rollback and explicit production cutover. No WU6 work has begun.
 
 Human actions required after this prompt:
 
-- **Immediate blocker to WU4 structural completion: None.** No live GUI walkthrough
-  is required for the owner-scoped WU4 structural gate.
-- **Blocking WU5 admission:** GPT/user reconciliation of WU4 evidence and commit.
-- **Deferred; blocking full GUI runtime / WU7 platform acceptance and cutover:**
-  user-performed Windows/macOS G2-G5 walkthroughs and separate reconciliation/
-  remediation of inherited GUI/checkpoint failures at their dependent runtime gates.
+- **Immediate blocker to WU5 implementation/commit: None.**
+- **Blocking WU6 admission:** GPT/user reconciliation of WU5 commit and evidence.
+- **Deferred; blocking dependent runtime/WU7/cutover gates:** separate reconciliation/
+  remediation of the 19 inherited failures, user Windows/macOS GUI/client walkthroughs,
+  and model-publication/platform/release decisions at their actual dependencies.

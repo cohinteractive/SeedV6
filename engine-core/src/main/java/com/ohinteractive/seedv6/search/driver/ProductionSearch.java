@@ -7,17 +7,26 @@ import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.search.exact.IterationReuse;
 import com.ohinteractive.seedv6.search.exact.ConcurrencyPolicy;
 import com.ohinteractive.seedv6.search.exact.SeePolicy;
+import com.ohinteractive.seedv6.search.tt.TTable;
 
 /** Canonical search construction: the total worker limit includes the calling owner. */
 public final class ProductionSearch {
     public static SingleDepthSearch create(int workers, SearchEvaluation evaluation) {
+        return create(workers, evaluation, 64);
+    }
+
+    /** Same production policies with an explicitly bounded application Hash setting. */
+    public static SingleDepthSearch create(int workers, SearchEvaluation evaluation, int hashMiB) {
         validate(workers, evaluation);
+        if (hashMiB < 1 || hashMiB > 1024) throw new IllegalArgumentException("Hash must be 1..1024 MiB");
+        var table = new TTable(hashMiB);
         if (evaluation.isBrnPair2())
             return workers == 1
-                    ? ExactSearchAdapter.seeResearch(evaluation, SeePolicy.QXRAY, null)
-                    : new ParallelSearch(workers, evaluation, ConcurrencyPolicy.ROOT_REUSE)
+                    ? ExactSearchAdapter.seeResearch(evaluation, SeePolicy.QXRAY, null, table)
+                    : new ParallelSearch(workers, evaluation, table, ConcurrencyPolicy.ROOT_REUSE)
                             .withSeeResearch(SeePolicy.QXRAY, null);
-        return createStaticControl(workers, evaluation);
+        return workers == 1 ? new ExactSearchAdapter(evaluation, table)
+                : new ParallelSearch(workers, evaluation, table, ConcurrencyPolicy.OFF);
     }
 
     /** Accepted pre-SR-024 cumulative control: native EFFORT or ROOT_REUSE, SEE off. */

@@ -40,6 +40,7 @@ final class UciSession {
             throw new IllegalArgumentException("Unsupported position source.");
         }
 
+        validate(initial);
         int moveIndex = movesMarker;
         if(moveIndex < tokens.length) {
             if(!tokens[moveIndex].equals("moves")) {
@@ -84,6 +85,38 @@ final class UciSession {
     }
 
     private final LegalMoveResolver resolver = new LegalMoveResolver();
+
+    /** Reject structurally unsafe FENs before they reach the optimized generator. */
+    private static void validate(long[] board) {
+        long kings = board[0] & ~board[1] & ~board[2];
+        if (Long.bitCount(kings & ~board[3]) != 1 || Long.bitCount(kings & board[3]) != 1)
+            throw new IllegalArgumentException("FEN requires exactly one king per side");
+        long pawns = ~board[0] & board[1] & board[2];
+        if ((pawns & 0xff000000000000ffL) != 0)
+            throw new IllegalArgumentException("FEN has an unpromoted pawn on a back rank");
+        int status = (int)board[Board.STATUS], side = Board.player(status);
+        if (Board.isPlayerInCheck(board[0], board[1], board[2], board[3], side ^ 1))
+            throw new IllegalArgumentException("FEN leaves the side that just moved in check");
+        for (int color = 0; color < 2; color++) {
+            int back = color * 56, owner = color * 8;
+            if ((Board.kingSide(status, color) || Board.queenSide(status, color))
+                    && square(board, back + 4) != (owner | 1))
+                throw new IllegalArgumentException("FEN castling right has no king on its home square");
+            if (Board.kingSide(status, color) && square(board, back + 7) != (owner | 3)
+                    || Board.queenSide(status, color) && square(board, back) != (owner | 3))
+                throw new IllegalArgumentException("FEN castling right has no matching rook");
+        }
+        int ep = Board.enPassantSquare(status);
+        if (ep >= 0 && (square(board, ep) != 0
+                || square(board, ep + (side == 0 ? -8 : 8)) != (((side ^ 1) * 8) | 6)
+                || square(board, ep + (side == 0 ? 8 : -8)) != 0))
+            throw new IllegalArgumentException("FEN en passant target has no matching double pawn move");
+    }
+
+    private static int square(long[] board, int square) {
+        int piece = Board.getSquare(board[0], board[1], board[2], board[3], square);
+        return (piece & 7) == 0 ? 0 : piece;
+    }
     private long[] board;
     private GameHistory history;
 

@@ -104,7 +104,12 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
 
     public static ExactSearchAdapter iterationReuseResearch(SearchEvaluation evaluation, int policy,
             IterationReuse.Diagnostics diagnostics) {
-        return new ExactSearchAdapter(ExactEvaluator.from(evaluation), new TTable(), false,
+        return iterationReuseResearch(evaluation, policy, diagnostics, new TTable());
+    }
+
+    private static ExactSearchAdapter iterationReuseResearch(SearchEvaluation evaluation, int policy,
+            IterationReuse.Diagnostics diagnostics, TTable table) {
+        return new ExactSearchAdapter(ExactEvaluator.from(evaluation), table, false,
                 ExactSearch.QSEARCH_BASELINE, ExactSearch.LMR_QUIET, null, ExactSearch.LMP_WINDOW, null,
                 ExactSearch.CHECK_OFF, null, policy, diagnostics);
     }
@@ -120,7 +125,13 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
     /** SR-024 experiments preserve native EFFORT and all cumulative recursive policies. */
     public static ExactSearchAdapter seeResearch(SearchEvaluation evaluation, SeePolicy policy,
             SeePolicy.Diagnostics diagnostics) {
-        var adapter = iterationReuseResearch(evaluation, IterationReuse.EFFORT, null);
+        return seeResearch(evaluation, policy, diagnostics, new TTable());
+    }
+
+    /** The table is exclusively owned by this search; policy and evaluator arithmetic are unchanged. */
+    public static ExactSearchAdapter seeResearch(SearchEvaluation evaluation, SeePolicy policy,
+            SeePolicy.Diagnostics diagnostics, TTable table) {
+        var adapter = iterationReuseResearch(evaluation, IterationReuse.EFFORT, null, table);
         adapter.exact.withSeeResearch(policy, diagnostics);
         return adapter;
     }

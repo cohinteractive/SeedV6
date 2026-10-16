@@ -28,7 +28,7 @@ import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 
 /** Explicit, immutable process configuration. No preferences, promotion, or fallback. */
-record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy, String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy, NullMovePolicy nullPolicy, InternalSearchPolicy internalPolicy, ConcurrencyPolicy concurrencyPolicy, SeePolicy seePolicy, boolean seeExplicit, FutilityPolicy futilityPolicy) {
+public record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy, String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy, NullMovePolicy nullPolicy, InternalSearchPolicy internalPolicy, ConcurrencyPolicy concurrencyPolicy, SeePolicy seePolicy, boolean seeExplicit, FutilityPolicy futilityPolicy) implements UciConfiguration {
     UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy,
             String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy,
             NullMovePolicy nullPolicy, InternalSearchPolicy internalPolicy, ConcurrencyPolicy concurrencyPolicy,
@@ -77,6 +77,12 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
     UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy, String aspirationPolicy) {
         this(evaluation, identity, qpolicy, lmrPolicy, aspirationPolicy, LMP_PRODUCTION);
     }
+    @Override public SearchLifecycleService service(int workers, int hashMiB) {
+        if (hashMiB != 64) throw new IllegalArgumentException("Legacy profile uses Hash=64");
+        return service(workers);
+    }
+    @Override public boolean acceptsWorkers(int workers) { return qpolicy < 0 || workers == 1; }
+
     static final String PREFIX = "seedv6.uci.";
     static final int PRODUCTION = -1;
     static final int STATIC_CONTROL = -2;
@@ -84,7 +90,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
     static final int LMP_PRODUCTION = -1;
     static final int REUSE_PRODUCTION = -1;
 
-    static UciEvaluation load(Properties properties) {
+    public static UciEvaluation load(Properties properties) {
         String store = properties.getProperty(PREFIX + "pair2Store", "");
         String checkpoint = properties.getProperty(PREFIX + "checkpoint", "");
         String hash = properties.getProperty(PREFIX + "networkSha256", "");
@@ -197,7 +203,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
         }
     }
 
-    SearchLifecycleService service(int workers) {
+    public SearchLifecycleService service(int workers) {
         if(futilityPolicy != FutilityPolicy.OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
                 () -> futilitySearch(evaluation, workers, futilityPolicy));
         if(seePolicy != SeePolicy.OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
@@ -281,7 +287,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
     }
 
     /** Report the actual composition, including after a drained Threads reconfiguration. */
-    String identity(int workers) {
+    public String identity(int workers) {
         if(identity.isEmpty()) return identity;
         if(futilityPolicy != FutilityPolicy.OFF) return identity + " internal=off reuse=effort check=off"
                 + " lmp=window aspiration=off lmr=quiet workers=" + workers

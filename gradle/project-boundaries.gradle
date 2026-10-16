@@ -1,7 +1,7 @@
 import org.gradle.api.artifacts.ProjectDependency
 
 // Explicit temporary exception: the legacy application may consume extracted
-// core/training and delegate desktop launch to app-gui. No target may consume app.
+// core/training and delegate desktop/UCI launch to their application owners. No target may consume app.
 // Remove :app from this map at the accepted WU8 cutover, not before parity.
 def allowed = [
     ':': [],
@@ -10,7 +10,7 @@ def allowed = [
     ':app-gui': [':engine-core', ':engine-training'],
     ':app-uci': [':engine-core'],
     ':research': [':engine-core', ':engine-training'],
-    ':app': [':engine-core', ':engine-training', ':app-gui']
+    ':app': [':engine-core', ':engine-training', ':app-gui', ':app-uci']
 ]
 
 abstract class VerifyProjectBoundaries extends DefaultTask {

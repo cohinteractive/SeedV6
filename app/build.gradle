@@ -17,6 +17,7 @@ dependencies {
     implementation project(':engine-training')
     // Transitional composition only: Main delegates desktop startup to its owner.
     implementation project(':app-gui')
+    implementation project(':app-uci')
     testImplementation gradleTestKit()
     // Independent JSON parser for diagnostic report contract tests.
     testImplementation 'com.google.code.gson:gson:2.11.0'

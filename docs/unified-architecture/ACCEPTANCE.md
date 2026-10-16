@@ -1,6 +1,6 @@
 # Migration acceptance matrix
 
-Revision 2 (owner-authorized WU4 acceptance boundary), 16 October 2026. Apply with [CONTRACT](CONTRACT.md), immutable
+Revision 3 (WU5 admission and application boundary), 16 October 2026. Apply with [CONTRACT](CONTRACT.md), immutable
 [BASELINE](BASELINE.md) and dynamic [STATE](STATE.md). WU0 defines these gates;
 it does not claim to have run application, client or platform acceptance.
 
@@ -48,6 +48,20 @@ No desktop interaction was performed during this resume. Scoped structural
 validation is complete: 1,541 selected JUnit cases reconcile to 1,483 passed,
 19 inherited failures and 39 skips; eleven boundary fixtures pass. Full GUI
 runtime acceptance remains open and GPT/user reconciliation is pending.
+
+The owner's WU5 launch confirms GPT acceptance of WU4 commit
+`b412e34f35d5c1baccfe218f17d4c5a80a37a25c`. Earlier WU4 pending statements are
+historical. WU5 establishes standalone Java UCI with core-only runtime dependencies
+and explicit legacy compatibility composition; see [WU5-UCI](WU5-UCI.md).
+Its required evidence is headless: no Computer Use or Swing windows. Native
+Windows/macOS executables/runtime bundles, real Arena/BotLi clients, live games
+and native signal behavior remain WU7 acceptance dependencies. WU5 headless evidence is complete:
+1,472 selected JUnit cases (1,414 pass, 19 exact inherited failures, 39 skips),
+159 standalone UCI searches, 66 legacy production requests, 203 exact SR-024 vectors,
+seven-family persisted continuation and twelve Gradle boundary fixtures. See
+[wu5-evidence.json](wu5-evidence.json). No new UCI/core regression remains; full-suite
+or native/client acceptance is not inferred. WU4's native G2-G5
+walkthrough deferral and the 19 inherited failures retain their existing gates.
 
 | ID / stage | Preserved capability and acceptance condition | Automated validation / existing reference | Later native, client or human acceptance |
 | --- | --- | --- | --- |

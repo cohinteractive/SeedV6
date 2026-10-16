@@ -71,7 +71,7 @@ class GradleArchitectureTest(unittest.TestCase):
     def test_uci_cannot_depend_on_training_or_gui(self):
         path = self.fixture / 'app-uci/build.gradle'
         original = path.read_text()
-        for target in ('engine-training', 'app-gui'):
+        for target in ('engine-training', 'app-gui', 'research', 'app'):
             with self.subTest(target=target):
                 path.write_text(original)
                 self.append('app-uci/build.gradle', f"dependencies {{ runtimeOnly project(':{target}') }}")
@@ -105,6 +105,12 @@ dependencies {
         self.gradle('verifyProjectBoundaries', ':app:classes')
         self.append('engine-training/build.gradle', "dependencies { implementation project(':app-gui') }")
         self.gradle('help', failure='Forbidden project dependency: :engine-training -> :app-gui')
+
+    def test_legacy_can_delegate_to_uci(self):
+        self.append('app/build.gradle', "dependencies { implementation project(':app-uci') }")
+        output = self.gradle('verifyProjectBoundaries', ':app:classes')
+        self.assertIn(':app -> [:app-uci]', output)
+        self.assertIn(':app-uci -> [:engine-core]', output)
 
     def test_gui_cannot_consume_uci_or_research(self):
         path = self.fixture / 'app-gui/build.gradle'

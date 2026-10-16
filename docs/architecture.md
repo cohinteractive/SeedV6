@@ -8,9 +8,12 @@ The root Gradle project includes the five target owners `engine-core`,
 `engine-training` owns trainers, optimizer/checkpoint continuation, model workspace,
 corpus, self-play and validation services, and exposes core through its API dependency.
 The WU4 extraction places desktop presentation, controllers, preferences and
-resources in `app-gui`, which consumes core/training. Legacy `app` consumes all
-three and retains UCI, research integration and unchanged Main delegation. `app-uci`
-and `research` remain scaffolds. WU4 structural validation is complete under the
+resources in `app-gui`, which consumes core/training. WU5 places the single UCI
+protocol/session and standalone `UciMain` in `app-uci`, depending only on core.
+Legacy `app` consumes all four owners and retains checkpoint/research UCI
+configuration and Main delegation; `research` remains a scaffold. See
+[WU5](unified-architecture/WU5-UCI.md) for the two explicit application profiles.
+WU4 structural validation is complete under the
 owner-authorized non-interactive boundary; native user acceptance remains deferred
 to WU7. See [the WU4 record](unified-architecture/WU4-GUI.md). Shared Java/JUnit conventions and enforced project dependency/source-root
 boundaries live in `gradle/`. See [the WU1 transition](unified-architecture/WU1-GRADLE.md)
@@ -18,7 +21,10 @@ for the foundation and legacy removal gate, and [WU3](unified-architecture/WU3-T
 for current training ownership and dependency declarations. Java 21's application plugin launches
 [`Main`](../app/src/main/java/com/ohinteractive/seedv6/Main.java), selecting desktop
 `SwingLauncher` for `gui` and `UciEngine` otherwise. The application JAR contains legacy main output; `installDist` and native packaging
-include its runtime dependencies, including `app-gui.jar`, `engine-core.jar` and `engine-training.jar`.
+include its runtime dependencies, including `app-gui.jar`, `app-uci.jar`,
+`engine-core.jar` and `engine-training.jar`. The separate `:app-uci:installDist`
+contains only UCI and core JARs, with a Java launcher and an explicitly supplied,
+checksum-pinned production model. Native distributions remain WU7.
 Training owns the unchanged Gson/SQLite/Zstandard dependencies, optional trainer-only
 BRN-3 vector kernels and binpack notice. Core owns the opening
 book and optional Syzygy native sources/resources/license. Shared headless ApplicationVersion and its generated identity resource now belong
@@ -60,7 +66,7 @@ are preserved.
 | Consumer | Confirmed construction path |
 | --- | --- |
 | Play | `SwingLauncher -> ChessFrame -> GameController -> EngineSearchAdapter -> SearchLifecycleService -> SearchDriver -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
-| UCI | `Main -> UciEngine -> SearchLifecycleService -> SearchDriver -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
+| Standalone / legacy UCI | `UciMain / Main -> UciEngine -> SearchLifecycleService -> SearchDriver -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
 | Network Training | `TrainingController -> TrainerService -> Operations.generate -> SelfPlayBatch -> SelfPlayRunner -> SearchDriver -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
 | Candidate validation | `TrainerService -> Operations.validate -> ValidationArena -> SearchDriver -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
 | Developer strength arena | `ResearchTool -> StrengthArena -> SearchDriver -> ExactSearchAdapter -> ExactSearch` |
