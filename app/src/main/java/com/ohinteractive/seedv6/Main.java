@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import com.ohinteractive.seedv6.gui.SwingLauncher;
 import com.ohinteractive.seedv6.uci.UciEngine;
-import com.ohinteractive.seedv6.uci.UciEvaluation;
+import com.ohinteractive.seedv6.uci.LegacyUciEvaluation;
 
 public class Main {
 
@@ -14,7 +14,7 @@ public class Main {
             return;
         }
         try {
-            new UciEngine(System.in, System.out, System.err, UciEvaluation.load(System.getProperties())).run();
+            new UciEngine(System.in, System.out, System.err, LegacyUciEvaluation.load(System.getProperties())).run();
         } catch(IOException exception) {
             System.err.println("SeedV6 UCI input failed: " + exception.getMessage());
         }

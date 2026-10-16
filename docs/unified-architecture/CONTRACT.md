@@ -30,6 +30,18 @@ Compile each production implementation once: no copied engine trees, duplicate
 search/evaluator implementations, or independently maintained GUI/UCI forks.
 Independent research oracles remain distinct and cannot be loaded as production.
 
+## WU6 root verification composition amendment
+
+Owner decision during WU6, 16 October 2026: "Approve root test/research composition only."
+The root may own `integrationTest` and `researchLauncher` source sets and their
+explicit project dependencies. This preserves mixed GUI/UCI comparisons against
+independent research oracles and a small adapter for the historical research UCI
+configuration. It is not another runtime project: no root main source set/runtime
+JAR, no production distribution inclusion and no production-to-research edge.
+Research remains limited to core/training. Only root integration configurations
+may consume all existing owners; researchLauncher may consume core/research/UCI.
+The boundary guard must reject arbitrary root configurations and production roots.
+
 ## Scope, authority and modification boundaries
 
 Implementation belongs in `C:/projects/seed/java/seedv6-unified`, branch

@@ -1,4 +1,5 @@
 """Bounded local BRN architecture experiment runner; preserves exact commands and failures."""
+from research_paths import runtime_paths, source_files, compiled_files
 import argparse
 import hashlib
 import json
@@ -27,8 +28,7 @@ def main():
     if args.receipt.exists():
         parser.error('Use a fresh receipt')
     args.receipt.parent.mkdir(parents=True, exist_ok=True)
-    cp = os.pathsep.join(['app/build/classes/java/verification', 'app/build/classes/java/main',
-                         'app/build/resources/main', 'app/build/install/seedv6/lib/*'])
+    cp = os.pathsep.join(runtime_paths())
     classes = {'prepare': 'BrnResearchMain', 'energy': 'BrnEnergyExperiment', 'tuple': 'BrnTupleExperiment',
                'tuple-compile': 'BrnTupleCompilation', 'tuple-paired': 'BrnTuplePairedRuntime',
                'qsearch': 'BrnArchitectureQsearch',
@@ -48,17 +48,16 @@ def main():
     if args.mode in ['measure', 'transitions', 'tuple-paired']:
         command.insert(1, '-Xbatch')
     git = ['git', '-c', 'safe.directory=' + Path.cwd().as_posix()]
-    sources = [p for root in ['app/src/main/java', 'app/src/verification/java']
-               for p in Path(root).rglob('*.java')]
-    compiled = [p for root in ['app/build/classes/java/main', 'app/build/classes/java/verification']
-                for p in Path(root).rglob('*.class')]
+    sources = source_files()
+    compiled = compiled_files()
     receipt = {'schema': 'brn-architecture-execution-v1', 'command': command,
                'head': subprocess.check_output(git + ['rev-parse', 'HEAD'], text=True).strip(),
                'gitStatus': subprocess.check_output(git + ['status', '--porcelain=v1'], text=True),
                'sourceSha256': {p.as_posix(): digest(p) for p in sources},
                'compiledSha256': {p.as_posix(): digest(p) for p in compiled},
                'runnerSha256': {p.as_posix(): digest(p) for p in
-                                [Path(__file__), Path(__file__).with_name('brn_process_resource.py')]},
+                                [Path(__file__), Path(__file__).with_name('brn_process_resource.py'),
+                                 Path(__file__).with_name('research_paths.py')]},
                'java': subprocess.run(['java', '-version'], capture_output=True, text=True).stderr,
                'platform': platform.platform(), 'timeoutSeconds': args.timeout,
                'startedUtc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),

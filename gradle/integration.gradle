@@ -1,0 +1,65 @@
+// Owner-approved WU6 composition: no main source set, root runtime JAR or
+// production -> research dependency. Research itself consumes only core/training.
+apply plugin: 'java-base'
+repositories { mavenCentral() }
+java { toolchain { languageVersion = JavaLanguageVersion.of(21) } }
+sourceSets {
+    researchLauncher
+    integrationTest
+}
+dependencies {
+    researchLauncherImplementation project(':engine-core')
+    researchLauncherImplementation project(':research')
+    researchLauncherImplementation project(':app-uci')
+    integrationTestImplementation project(':engine-core')
+    integrationTestImplementation project(':engine-training')
+    integrationTestImplementation project(':app-gui')
+    integrationTestImplementation project(':app-uci')
+    integrationTestImplementation project(':research')
+    integrationTestImplementation project(':app')
+    integrationTestImplementation libs.junit.jupiter
+    integrationTestRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    integrationTestImplementation 'com.google.code.gson:gson:2.11.0'
+    integrationTestImplementation 'com.github.luben:zstd-jni:1.5.7-20'
+    integrationTestImplementation 'org.xerial:sqlite-jdbc:3.53.4.0'
+    integrationTestImplementation 'com.formdev:flatlaf:3.7'
+    integrationTestImplementation 'net.java.dev.jna:jna-platform:5.17.0'
+}
+def configureIntegration = { Test task ->
+    task.testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    task.classpath = sourceSets.integrationTest.runtimeClasspath
+    task.javaLauncher = javaToolchains.launcherFor(java.toolchain)
+    task.workingDir = file('app') // preserve existing test path/resource conventions
+    task.jvmArgs '--add-modules=jdk.incubator.vector'
+    task.systemProperty 'java.awt.headless', 'true'
+    if (project.hasProperty('brnScalar')) task.systemProperty 'seedv6.brn3.scalar', 'true'
+    task.maxHeapSize = '2g'
+    task.dependsOn ':app:installDist'
+    task.systemProperty 'seedv6.windowsLauncher', file('app/build/install/seedv6/bin/seedv6.bat').absolutePath
+}
+tasks.register('integrationTest', Test) {
+    configureIntegration(delegate)
+    useJUnitPlatform { excludeTags 'slow-nnue' }
+}
+tasks.register('integrationSlowTest', Test) {
+    configureIntegration(delegate)
+    useJUnitPlatform { includeTags 'slow-nnue' }
+}
+tasks.named('check') { dependsOn tasks.named('integrationTest') }
+tasks.register('researchUci', JavaExec) {
+    group = 'verification'
+    classpath = sourceSets.researchLauncher.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.integration.ResearchUciMain'
+    systemProperties System.properties.findAll { key, value -> key.toString().startsWith('seedv6.uci.') }
+    standardInput = System.in
+    jvmArgs '-Djava.awt.headless=true', '-Xmx768m'
+}
+// Explicit research workspace, not an application distribution. Adapter classes
+// stay in classes/, never a root runtime JAR or a production packaging input.
+tasks.register('installResearchWorkspace', Sync) {
+    group = 'verification'
+    into layout.buildDirectory.dir('research/runtime')
+    into('classes') { from sourceSets.researchLauncher.output }
+    into('lib') { from configurations.researchLauncherRuntimeClasspath }
+    from rootProject.file('gradle/research-launcher.properties')
+}

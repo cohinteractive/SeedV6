@@ -3,6 +3,7 @@ plugins {
 }
 
 apply from: rootProject.file('gradle/project-boundaries.gradle')
+apply from: rootProject.file('gradle/integration.gradle')
 
 tasks.named('check') {
     dependsOn subprojects.collect { "${it.path}:check" }

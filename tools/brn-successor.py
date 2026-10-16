@@ -1,4 +1,5 @@
-"""Bounded isolated BRN successor measurements; compile verification classes first."""
+"""Bounded isolated BRN successor measurements; build :research:installResearch first."""
+from research_paths import runtime_paths
 import argparse
 import hashlib
 import json
@@ -49,8 +50,7 @@ def main():
         p.error('--navigation and --raw-start only apply to prepare')
     if a.resume and a.mode != 'control':
         p.error('--resume only applies to control mode')
-    cp = ['app/build/classes/java/verification', 'app/build/classes/java/main',
-          'app/build/resources/main', 'app/build/install/seedv6/lib/*']
+    cp = runtime_paths()
     if a.mode in ('baseline', 'baseline-context'):
         name = ('com/ohinteractive/seedv6/core/brn3/Brn3Workspace.java' if a.mode == 'baseline'
                 else 'com/ohinteractive/seedv6/training/service/BrnSuccessorInference.java')
@@ -103,10 +103,10 @@ def main():
                         str(a.millis), str(a.first), str(a.opening_seed), str(a.gain), str(a.opponent_gain)]
     if a.mode == 'control':
         cmd[1:1] = ['--add-modules=jdk.incubator.vector']
-    compiled = list(Path('app/build/classes/java/verification/com/ohinteractive/seedv6/training/service').glob('BrnSuccessor*.class'))
+    compiled = list(Path('research/build/classes/java/main/com/ohinteractive/seedv6/training/service').glob('BrnSuccessor*.class'))
     if a.mode == 'prepare':
-        compiled.extend(Path('app/build/classes/java/verification/com/ohinteractive/seedv6/training/service').glob('BrnResearch*.class'))
-    workspace = Path('app/build/classes/java/main/com/ohinteractive/seedv6/core/brn3/Brn3Workspace.class')
+        compiled.extend(Path('research/build/classes/java/main/com/ohinteractive/seedv6/training/service').glob('BrnResearch*.class'))
+    workspace = Path('engine-core/build/classes/java/main/com/ohinteractive/seedv6/core/brn3/Brn3Workspace.class')
     if a.overlay:
         compiled.extend(a.overlay.rglob('*.class'))
         replacement = a.overlay / 'com/ohinteractive/seedv6/core/brn3/Brn3Workspace.class'

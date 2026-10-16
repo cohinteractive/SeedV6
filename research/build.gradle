@@ -1,10 +1,621 @@
-plugins {
-    id 'java-library'
-}
+plugins { id 'java-library' }
 apply from: rootProject.file('gradle/java-conventions.gradle')
 
-description = 'Research and independent verification owner; existing tasks remain in :app until WU6.'
+description = 'Independent references, research implementations, empirical runners and diagnostic resources.'
 dependencies {
     implementation project(':engine-core')
     implementation project(':engine-training')
+    implementation 'com.google.code.gson:gson:2.11.0'
+}
+tasks.withType(JavaExec).configureEach {
+    workingDir rootProject.projectDir
+    jvmArgs '--add-modules=jdk.incubator.vector', '-Djava.awt.headless=true'
+}
+tasks.withType(Test).configureEach {
+    jvmArgs '--add-modules=jdk.incubator.vector'
+    systemProperty 'java.awt.headless', 'true'
+    maxHeapSize = '2g'
+    if (project.hasProperty('brnScalar')) systemProperty 'seedv6.brn3.scalar', 'true'
+}
+tasks.named('test') { useJUnitPlatform { excludeTags 'slow-nnue' } }
+tasks.register('nnueSlowTest', Test) {
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    useJUnitPlatform { includeTags 'slow-nnue' }
+}
+// Research-only runtime export for Python launchers; no app/GUI/UCI artifacts.
+tasks.register('installResearch', Sync) {
+    into layout.buildDirectory.dir('install/research')
+    into('lib') { from tasks.named('jar'); from configurations.runtimeClasspath }
+}
+
+tasks.register('brnDiagnostic', JavaExec) {
+    group = 'verification'
+    description = 'Isolated cross-host BRN replay and production training diagnostics (no GUI).'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.search.BrnDiagnostic'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx1024m'
+    if (project.hasProperty('diagnosticArgs')) args project.property('diagnosticArgs').toString().trim().split(/\s+/)
+    // Paths and FENs with spaces remain one argument.
+    if (project.hasProperty('diagnosticFen')) args "--fen=${project.property('diagnosticFen')}"
+    if (project.hasProperty('diagnosticFenFile')) args "--fen-file=${project.property('diagnosticFenFile')}"
+    if (project.hasProperty('diagnosticModel')) args "--model=${project.property('diagnosticModel')}"
+    if (project.hasProperty('diagnosticOutput')) args "--output=${project.property('diagnosticOutput')}"
+    if (project.hasProperty('diagnosticStartFen')) args "--starting-fen=${project.property('diagnosticStartFen')}"
+}
+
+tasks.register('brnCorpusTrain', JavaExec) {
+    group = 'verification'
+    description = 'Bounded isolated BRN-2 corpus training through the production headless service.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.training.service.BrnCorpusMain'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xmx1024m'
+    if (project.hasProperty('corpusTrainingArgs')) args project.property('corpusTrainingArgs').toString().trim().split(/\s+/)
+    if (project.hasProperty('corpusRoot')) args "--corpus=${project.property('corpusRoot')}"
+    if (project.hasProperty('corpusTrainingOutput')) args "--output=${project.property('corpusTrainingOutput')}"
+}
+
+tasks.register('nnueCorpusTrain', JavaExec) {
+    group = 'verification'
+    description = 'Bounded isolated NNUE corpus optimization through the production headless service.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.training.service.NnueCorpusMain'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xmx1536m'
+    if (project.hasProperty('corpusTrainingArgs')) args project.property('corpusTrainingArgs').toString().trim().split(/\s+/)
+    if (project.hasProperty('corpusRoot')) args "--corpus=${project.property('corpusRoot')}"
+    if (project.hasProperty('corpusTrainingOutput')) args "--output=${project.property('corpusTrainingOutput')}"
+}
+
+
+tasks.register('developerTools', JavaExec) {
+    group = 'verification'
+    description = 'Runs non-shipped diagnostic commands: brn-diagnostic or frozen-wdl.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.ToolMain'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true'
+    if (project.hasProperty('toolArgs')) args project.property('toolArgs').toString().trim().split(/\s+/)
+}
+
+
+tasks.register('searchBenchmark', JavaExec) {
+    group = 'verification'
+    description = 'Runs the deterministic single-thread WS12 search benchmark.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.search.SearchBenchmark'
+    if(project.hasProperty('benchmarkArgs')) {
+        args project.property('benchmarkArgs').toString().trim().split(/\s+/)
+    }
+}
+
+// SR-006B/C is an explicitly invoked empirical experiment, never a routine test.
+tasks.register('aspirationResearch', JavaExec) {
+    group = 'verification'
+    description = 'Runs test-only ASP-628 and ADAPT-172/628 against production CONTROL.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.AspirationResearch'
+    workingDir rootProject.projectDir
+    jvmArgs '-Xms512m', '-Xmx2g', '-Xbatch', '-Djava.awt.headless=true'
+    if(project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+// SR-004 is test-only and opt-in; it never enters application distributions.
+tasks.register('mtdResearch', JavaExec) {
+    group = 'verification'
+    description = 'Runs bounded SR-004 zero-window convergence research.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.MtdResearch'
+    workingDir rootProject.projectDir
+    jvmArgs '-Xms512m', '-Xmx2g', '-Xbatch', '-Djava.awt.headless=true'
+    if(project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('exactSearch', JavaExec) {
+    group = 'verification'
+    description = 'Runs the R002 recursive exact fixed-depth HCE Search harness (no GUI).'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.search.ExactSearchHarness'
+    jvmArgs '-Xms256m', '-Xmx256m', '-Xbatch'
+    if(project.hasProperty('searchArgs')) {
+        args project.property('searchArgs').toString().trim().split(/\s+/)
+    }
+    // A FEN contains spaces and must arrive as one argument.
+    if(project.hasProperty('searchFen')) args "--fen=${project.property('searchFen')}"
+    if(project.hasProperty('searchModelStore')) args "--model-store=${project.property('searchModelStore')}"
+    if(project.hasProperty('searchCheckpoint')) args "--checkpoint=${project.property('searchCheckpoint')}"
+}
+
+// SR-001 Phase 2: explicit real-checkpoint, exhaustive-oracle comparison.
+tasks.register('sr001Pair2Probe', JavaExec) {
+    group = 'verification'
+    description = 'Compares research qsearch against independent frozen Pair-2 oracle trees.'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr001Pair2Probe'
+    workingDir rootProject.projectDir
+    jvmArgs '-Xms256m', '-Xmx1024m', '-XX:ActiveProcessorCount=1', '-Djava.awt.headless=true'
+    if (project.hasProperty('sr001Store')) args project.property('sr001Store')
+    if (project.hasProperty('sr001Output')) args project.property('sr001Output')
+}
+
+tasks.register('sr030Integrity', JavaExec) {
+    group = 'verification'
+    description = 'Real-model cold workspace, transition and LMR/LMP interaction audit.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr030Integrity'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr030Witness', JavaExec) {
+    group = 'verification'
+    description = 'Full-history historical check-extension root decisions and deeper references.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr030Witness'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr030Study', JavaExec) {
+    group = 'verification'
+    description = 'Frozen-model check-extension horizon, work and node-budget diagnostics.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr030Study'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr030Cost', JavaExec) {
+    group = 'verification'
+    description = 'Clean rotated check-extension request costs and allocation.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr030Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr023Replay', JavaExec) {
+    group = 'verification'
+    description = 'Outcome-blind frozen-model history strata and independent nominal replays.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr023Replay'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr023Cost', JavaExec) {
+    group = 'verification'
+    description = 'Clean rotated whole-request omission cost, allocation and fixed-budget comparisons.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr023Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr022Cost', JavaExec) {
+    group = 'verification'
+    description = 'Clean rotated whole-request omission cost, allocation and fixed-budget comparisons.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr022Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr022Study', JavaExec) {
+    group = 'verification'
+    description = 'Explicit frozen-checkpoint LMP diagnostics, not a routine test.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr022Study'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr023Witness', JavaExec) {
+    group = 'verification'
+    description = 'Local LMP captures and complete-history nominal qsearch replays.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr023Witness'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr022Witness', JavaExec) {
+    group = 'verification'
+    description = 'Local LMP captures and complete-history nominal qsearch replays.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr022Witness'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr022Replay', JavaExec) {
+    group = 'verification'
+    description = 'Outcome-blind LMP captures and complete-history nominal qsearch replays.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr022Replay'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr006Study', JavaExec) {
+    group = 'verification'
+    description = 'Explicit frozen-checkpoint LMR diagnostics, not a routine test.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr006Study'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr006Cost', JavaExec) {
+    group = 'verification'
+    description = 'Clean rotated whole-request aspiration cost, allocation and fixed-budget comparisons.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr006Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr006ModelOracle', JavaExec) {
+    group = 'verification'
+    description = 'Frozen Pair-2 aspiration comparisons with independent TT-off unpruned qsearch.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr006ModelOracle'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr029Study', JavaExec) {
+    group = 'verification'
+    description = 'Explicit frozen-checkpoint LMR diagnostics, not a routine test.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr029Study'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr029Replay', JavaExec) {
+    group = 'verification'
+    description = 'Outcome-blind LMR captures and complete-history nominal qsearch replays.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr029Replay'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr029Cost', JavaExec) {
+    group = 'verification'
+    description = 'Warmed LMR request cost without reduction observers; explicit research only.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr029Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('evaluatorBenchmark', JavaExec) {
+    group = 'verification'
+    description = 'Runs the OPT5 evaluator-only benchmark over prebuilt corpus boards.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.eval.EvaluatorBenchmark'
+    jvmArgs '-Xms512m', '-Xmx512m', '-XX:+AlwaysPreTouch', '-Xbatch'
+    if(project.hasProperty('benchmarkArgs')) {
+        args project.property('benchmarkArgs').toString().trim().split(/\s+/)
+    }
+}
+
+tasks.register('nnuePerformanceBenchmark', JavaExec) {
+    group = 'verification'
+    description = 'Warmed Workstream I inference, transition and fixed-depth search measurements.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.nnue.NnuePerformanceBenchmark'
+    workingDir rootProject.projectDir
+    jvmArgs '-Xms512m', '-Xmx512m', '-XX:+AlwaysPreTouch', '-Xbatch'
+    if(project.hasProperty('benchmarkArgs')) {
+        args project.property('benchmarkArgs').toString().trim().split(/\s+/)
+    }
+}
+
+tasks.register('nnueResearch', JavaExec) {
+    group = 'verification'
+    description = 'Explicit-path bounded strength, health, progression, campaign and endurance research.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.nnue.research.ResearchTool'
+    workingDir rootProject.projectDir
+    jvmArgs '-Xms256m', '-Xmx1536m'
+    if (project.hasProperty('researchArgs')) {
+        args project.property('researchArgs').toString().trim().split(/\s+/)
+    }
+}
+
+tasks.register('nnueBootstrapAudit', JavaExec) {
+    group = 'verification'
+    description = 'Fresh-model CGLHW initialization, topology, cost and paired-match audit.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.nnue.cglhw.BootstrapAudit'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx1536m', '-Xbatch'
+    if (project.hasProperty('auditOutput')) args project.property('auditOutput')
+    if (project.hasProperty('auditArgs')) args project.property('auditArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('nnueArchitectureScreen', JavaExec) {
+    group = 'verification'
+    description = 'Explicit-path CGLHW architecture diagnostics and multi-seed paired screens.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.nnue.cglhw.ArchitectureScreen'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx1536m', '-Xbatch'
+    if (project.hasProperty('auditOutput')) args project.property('auditOutput')
+    if (project.hasProperty('auditArgs')) args project.property('auditArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('nnueResidualTrainingScreen', JavaExec) {
+    group = 'verification'
+    description = 'Frozen equal-data bootstrap-parity residual training and paired matches.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.nnue.cglhw.ResidualTrainingScreen'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx1536m', '-Xbatch'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('learningArenaNnueAudit', JavaExec) {
+    group = 'verification'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.training.service.LearningArenaNnueAudit'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xmx1536m'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('learningArenaMaterialSmoke', JavaExec) {
+    group = 'verification'
+    description = 'Isolated eight-game production Arena smoke for the explicit NNUE material identity.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.training.service.LearningArenaMaterialSmoke'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xmx1536m'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('brnRemediationBenchmark', JavaExec) {
+    group = 'verification'
+    description = 'Bounded depth-4 neural search and warmed evaluator comparison (no timing assertions).'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.search.BrnRemediationBenchmark'
+    jvmArgs '-Xms512m', '-Xmx512m', '-XX:+AlwaysPreTouch', '-Xbatch'
+    if (project.hasProperty('benchmarkArgs')) {
+        args project.property('benchmarkArgs').toString().trim().split(/\s+/)
+    }
+}
+
+tasks.register('brnBootstrapSmoke', JavaExec) {
+    group = 'verification'
+    description = 'Two bounded NNUE-driven bootstrap generations per BRN family, with separate phase timings.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.search.BrnBootstrapSmoke'
+    workingDir rootProject.projectDir
+    jvmArgs '-Xms512m', '-Xmx1024m'
+    if (project.hasProperty('bootstrapSmokeRoot')) args project.property('bootstrapSmokeRoot')
+    if (project.hasProperty('bootstrapGenerator')) args project.property('bootstrapGenerator')
+}
+
+tasks.register('brn2Diagnostics', JavaExec) {
+    group = 'verification'
+    description = 'Deterministic BRN-2 score, local volatility and bounded search diagnostics (JSON Lines).'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.search.Brn2Diagnostics'
+    workingDir rootProject.projectDir
+    jvmArgs '-Xms256m', '-Xmx1024m'
+    // Paths stay single arguments, including spaces. General numeric flags follow tool convention.
+    if (project.hasProperty('brn2Checkpoint')) args "--brn2=${project.property('brn2Checkpoint')}"
+    if (project.hasProperty('nnueCheckpoint')) args "--nnue=${project.property('nnueCheckpoint')}"
+    if (project.hasProperty('diagnosticOutput')) args "--output=${project.property('diagnosticOutput')}"
+    if (project.hasProperty('diagnosticArgs')) args project.property('diagnosticArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr005Study', JavaExec) {
+    group = 'verification'
+    description = 'Frozen-model iteration reuse, ordering and node-budget diagnostics.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr005Study'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr005Cost', JavaExec) {
+    group = 'verification'
+    description = 'Clean rotated iteration-reuse request costs and allocation.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr005Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr018Study', JavaExec) {
+    group = 'verification'
+    description = 'Frozen-model null-move pruning, ordering and node-budget diagnostics.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr018Study'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr018Cost', JavaExec) {
+    group = 'verification'
+    description = 'Clean rotated null-move request costs and allocation.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr018Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr018Audit', JavaExec) {
+    group = 'verification'
+    description = 'Conditional full-history null cutoff audit.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr018Audit'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr018Witness', JavaExec) {
+    group = 'verification'
+    description = 'Full-window replay of adverse null cutoff witnesses.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr018WitnessReplay'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr036Cost', JavaExec) {
+    group = 'verification'
+    description = 'Frozen-model SR-036 complete-request and worker economics.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr036Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=6'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr021Study', JavaExec) {
+    group = 'verification'
+    description = 'Outcome-blind futility headroom on cumulative QXRAY production.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr021Study'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=6'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr036Integrity', JavaExec) {
+    group = 'verification'
+    description = 'Frozen-model SR-036 evaluator isolation and ordinary proof audit.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr036Integrity'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=6'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+// SR-007 opt-in research; not part of routine test execution.
+['Study', 'Cost', 'Integrity', 'HorizonAudit'].each { kind ->
+    tasks.register("sr007${kind}", JavaExec) {
+        group = 'verification'
+        description = "Frozen-model internal iterative search ${kind.toLowerCase()}."
+        dependsOn classes
+        classpath = sourceSets.main.runtimeClasspath
+        mainClass = "com.ohinteractive.seedv6.search.exact.Sr007${kind}"
+        workingDir rootProject.projectDir
+        jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+        if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+    }
+}
+
+ tasks.register('sr021Cost', JavaExec) {
+    group = 'verification'
+    description = 'Rotated cumulative futility whole-request economics.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr021Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=6'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr021Audit', JavaExec) {
+    group = 'verification'
+    description = 'Full-history independent futility omission audit.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr021Audit'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr021Integrity', JavaExec) {
+    group = 'verification'
+    description = 'Futility evaluator isolation and independent ordinary proof checks.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr021Integrity'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=6'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr021Workers', JavaExec) {
+    group = 'verification'
+    description = 'Fixed-model cumulative futility execution at all supported workers.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr021Workers'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=6'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr021Decisions', JavaExec) {
+    group = 'verification'
+    description = 'Independent replay of observed futility root-decision differences.'
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr021Decisions'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
 }

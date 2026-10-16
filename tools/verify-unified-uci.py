@@ -2,11 +2,21 @@
 import argparse
 import importlib.util
 import json
+import zipfile
+import re
 from pathlib import Path
 
 spec = importlib.util.spec_from_file_location('sr024_integration', Path(__file__).with_name('verify-sr024-integration.py'))
 v = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(v)
+
+
+def production_command(a, install, workers):
+    cmd = v.command(a, install, 'production', workers)
+    with zipfile.ZipFile(Path(install)/'lib/app.jar') as jar:
+        if 'com/ohinteractive/seedv6/uci/LegacyUciEvaluation.class' in jar.namelist():
+            cmd = [x for x in cmd if not re.match(r'-Dseedv6\.uci\.[^=]*Research=', x)]
+    return cmd
 
 
 def main(a):
@@ -24,7 +34,7 @@ def main(a):
         count = json.loads(openings.with_suffix('.selection.json').read_text())['count']
         prefixes = [[]] + v.b.opening_prefixes(openings, count)[:8]
         for label, install in [('accepted', a.accepted), ('current', a.current)]:
-            active.append(v.start(v.command(a, install, 'production', 1), out/(label+'.txt')))
+            active.append(v.start(production_command(a, install, 1), out/(label+'.txt')))
             v.identify(active[-1], 1, 'production')
         for prefix in prefixes:
             for go in ('go depth 5', 'go nodes 100000'):
@@ -34,7 +44,7 @@ def main(a):
                 report['parity'].append({'prefix': prefix, 'go': go, 'results': results})
         for e in active: e.close()
         active = []
-        e = v.start(v.command(a, a.current, 'production', 1), out/'workers.txt')
+        e = v.start(production_command(a, a.current, 1), out/'workers.txt')
         active.append(e)
         for workers in range(1, 17):
             identity = v.identify(e, workers, 'production')

@@ -23,7 +23,7 @@ class GradleArchitectureTest(unittest.TestCase):
         for name in ('settings.gradle', 'build.gradle', 'gradle.properties',
                      'gradle/java-conventions.gradle', 'gradle/project-boundaries.gradle',
                      'gradle/application-version.gradle', 'VERSION_STATE.txt',
-                     'gradle/libs.versions.toml', 'gradle/package-mac.gradle', 'gradle/syzygy.gradle',
+                     'gradle/libs.versions.toml', 'gradle/integration.gradle', 'gradle/research-launcher.properties', 'gradle/package-mac.gradle', 'gradle/syzygy.gradle',
                      *(module + '/build.gradle' for module in MODULES)):
             target = self.fixture / name
             target.parent.mkdir(parents=True, exist_ok=True)
@@ -120,6 +120,23 @@ dependencies {
                 path.write_text(original)
                 self.append('app-gui/build.gradle', f"dependencies {{ implementation project(':{target}') }}")
                 self.gradle('help', failure=f'Forbidden project dependency: :app-gui -> :{target}')
+
+    def test_research_cannot_depend_on_applications(self):
+        path = self.fixture / 'research/build.gradle'
+        original = path.read_text()
+        for target in ('app', 'app-gui', 'app-uci'):
+            with self.subTest(target=target):
+                path.write_text(original)
+                self.append('research/build.gradle', f"dependencies {{ testImplementation project(':{target}') }}")
+                self.gradle('help', failure=f'Forbidden project dependency: :research -> :{target}')
+
+    def test_root_composition_cannot_become_production(self):
+        self.append('build.gradle', "sourceSets { main }")
+        self.gradle('help', failure='Root source sets are verification/research composition only')
+
+    def test_root_custom_configuration_cannot_bypass_scope(self):
+        self.append('build.gradle', "configurations { shipped }; dependencies { shipped project(':research') }")
+        self.gradle('help', failure='Forbidden root composition dependency: shipped')
 
     def test_cycles_are_rejected(self):
         # training -> core already exists; adding the reverse creates a cycle.

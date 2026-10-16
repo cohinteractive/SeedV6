@@ -60,6 +60,15 @@ class ProductionSearchBoundaryTest {
         Set<String> packages = Set.of("tools/", "search/alphabeta/", "search/flat/", "search/iterative/",
                 "search/quiescence/", "search/order/");
         Set<String> classes = new HashSet<>();
+        Set<String> researchClasses = new HashSet<>();
+        Path research = Path.of("../research/src/main/java");
+        try (var files = Files.walk(research)) {
+            files.filter(p -> p.toString().endsWith(".java")).forEach(p -> researchClasses.add(
+                    research.relativize(p).toString().replace('\\', '/').replace(".java", ".class")));
+        }
+        try (var libraries = Files.list(Path.of("build/install/seedv6/lib"))) {
+            assertTrue(libraries.noneMatch(p -> p.getFileName().toString().contains("research")));
+        }
         Path core = Path.of("build/install/seedv6/lib/engine-core.jar");
         assertTrue(Files.isRegularFile(core), "Distribution must include its engine dependency");
         Path training = Path.of("build/install/seedv6/lib/engine-training.jar");
@@ -73,6 +82,10 @@ class ProductionSearchBoundaryTest {
             var names = archive.stream().filter(e -> !e.isDirectory()).map(e -> e.getName()).toList();
             for (String name : names) if (name.endsWith(".class"))
                 assertTrue(classes.add(name), "Duplicate production class " + name);
+            for (String name : names) {
+                assertFalse(researchClasses.contains(name), "Research class on production classpath: " + name);
+                assertFalse(name.startsWith("com/ohinteractive/seedv6/integration/"));
+            }
             String base = "com/ohinteractive/seedv6/";
             for(String pkg : packages)
                 assertTrue(names.stream().noneMatch(n -> n.startsWith(base + pkg)), "Packaged verification directory " + pkg);

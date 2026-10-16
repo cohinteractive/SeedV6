@@ -19,8 +19,9 @@ The [unified architecture migration contract](docs/unified-architecture/CONTRACT
 and [migration state](docs/unified-architecture/STATE.md) govern the staged move to
 one shared engine, training, GUI, UCI and research build. The five target Gradle
 projects exist alongside temporary `:app`. Core, training, desktop and standalone
-UCI have separate owners. `app` retains compatibility launchers, checkpoint/research
-configuration and verification entry points. See [WU5 standalone UCI](docs/unified-architecture/WU5-UCI.md)
+UCI have separate owners. `research` owns experiments, independent references and
+diagnostics. `app` retains compatibility launchers and production-only checkpoint
+configuration; root verification composition preserves mixed integration tests. See [WU5 standalone UCI](docs/unified-architecture/WU5-UCI.md)
 for launch instructions, compatibility profiles and the remaining acceptance gates.
 
 ```powershell
@@ -62,9 +63,12 @@ preserves the original BINP chunks and never modifies the downloaded archives.
 - `app-gui/src/main`: desktop Play, Network Training, Arena, preferences and GUI resources
   (WU4 structural migration complete; [native user acceptance deferred to WU7](docs/unified-architecture/WU4-GUI.md)).
 - `app-uci/src/main`: standalone UCI entry point, one protocol/session implementation, pinned model selection.
-- `app/src/main`: compatibility Main and legacy checkpoint/research UCI configuration; no second protocol stack.
-- `app/src/verification`: active developer tools, comparisons and reference implementations.
-- `app/src/test`: tests, independent oracles and test-only research harnesses.
+- `app/src/main`: compatibility Main and accepted-only legacy checkpoint UCI configuration; no second protocol stack.
+- `research/src/main`: research tools, independent references, empirical runners and the frozen evaluation corpus.
+- `research/src/test`: independent comparisons and research verification.
+- `src/integrationTest`: mixed application/training tests requiring research references.
+- `src/researchLauncher`: small explicit research-UCI adapter; excluded from production.
+- `app/src/test`: remaining production/legacy integration checks.
 - `source`: active Phase 2 Search Contract and Research Frontier.
 - `docs`: architecture, operation, frozen Phase 1 search canon, historical reports and evidence.
 - `archive`: historical instrumentation, excluded from every source set.
@@ -72,12 +76,14 @@ preserves the original BINP chunks and never modifies the downloaded archives.
 Routine headless checks exclude the explicitly expensive NNUE suite:
 
 ```powershell
-.\gradlew.bat :engine-core:test :app:test -Pheadless
+.\gradlew.bat check -Pheadless --continue
 ```
 
 Developer tasks such as `:app:exactSearch`, `:app:searchBenchmark`,
 `:app:brnDiagnostic`, `:app:brn2Diagnostics` and `:app:nnueResearch` use the
-verification classpath. These facilities are excluded from the application JAR.
+research runtime classpath via compatibility delegation. New commands should use
+`:research:` instead of `:app:`. These facilities are excluded from production
+JARs/distributions. See [WU6 research launch and preservation](docs/unified-architecture/WU6-RESEARCH.md).
 The diagnostic command dispatcher is now `:app:developerTools`:
 
 ```powershell

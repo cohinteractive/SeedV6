@@ -6,13 +6,12 @@ Updated 16 October 2026 (Pacific/Auckland). Governing [CONTRACT](CONTRACT.md),
 
 ## Current boundary
 
-**WU0-WU4 are accepted by GPT. WU5 standalone Java UCI implementation and required
-headless validation and no-bump finalization are complete; GPT/user reconciliation
-of the attributable WU5 commit is pending. Stop before WU6.** The WU5 prerequisite is accepted
-WU4 commit `b412e34f35d5c1baccfe218f17d4c5a80a37a25c`. No Computer Use, desktop
-interaction or Swing windows were used. See [WU5-UCI](WU5-UCI.md) and
-[wu5-evidence.json](wu5-evidence.json). Native/client/runtime cutover acceptance,
-WU4 user walkthroughs and the 19 inherited failures retain their dependent gates.
+**WU0-WU5 are accepted by GPT. WU6 implementation and headless validation are complete; GPT/user reconciliation is pending.**
+The owner WU6 launch accepts `3301d457d6f6eb3dad9bc4c0f2c7659c1fa7fcaf` and
+subsequently approves root test/research composition only to preserve mixed
+independent comparisons and research UCI launch without forbidden module edges.
+No desktop interaction is authorized. WU7 remains blocked on WU6 reconciliation;
+existing native GUI/client gates and 19 inherited failures remain open.
 
 Architectural discovery on 16 October 2026 is complete. The owner accepted
 restructuring existing SeedV6 into engine-core, engine-training, app-gui, app-uci
@@ -37,8 +36,8 @@ research seams are present but not accepted for production.
 | WU2 Core | ACCEPTED by GPT | Owner WU3 launch accepts `09076c1d06ac8b532e065f4750bd0d8b206fe7db`; [WU2 record](WU2-CORE.md). |
 | WU3 Training | ACCEPTED by GPT | Owner WU4 launch accepts `ff7291aae877244843e99afa3c47120642f25bc5`; 19 inherited failures remain open at dependent runtime gates. |
 | WU4 GUI | ACCEPTED by GPT (structural scope) | 75 GUI sources / 35 resources in app-gui; scoped non-interactive checks complete; 19 inherited failures retained; Windows/macOS human G2-G5 deferred to WU7. |
-| WU5 UCI | COMPLETE; GPT/user reconciliation pending | Standalone core-only Java UCI, explicit legacy profile, 159 standalone requests and shared production/model parity; native/client gates remain WU7. |
-| WU6 Research | NOT STARTED | Ownership settled with references protected throughout; R1-R3 and task/path mapping. |
+| WU5 UCI | ACCEPTED by GPT | Standalone core-only Java UCI, explicit legacy profile, 159 standalone requests and shared production/model parity; native/client gates remain WU7. |
+| WU6 Research | COMPLETE; pending GPT/user reconciliation | [WU6 record](WU6-RESEARCH.md), [evidence](wu6-evidence.json); research owns tools/references, production activation/classpaths isolated, compiled core seams disclosed. |
 | WU7 Packaging | NOT STARTED | Core/apps/training/research gates; P1-P5 plus native/client acceptance. |
 | WU8 Cutover | NOT STARTED | Applicable matrix passed/scoped, rollback demonstrated and explicit owner decision. |
 
@@ -316,16 +315,44 @@ unrelated IDE/Gradle processes.
   disabled research seams, verification/oracle/test ownership and inherited tool paths.
   app retains Main compatibility and checkpoint/research composition until WU8.
 
+## WU6 evidence and validation
+
+- Research owns 212 main Java sources, 145 test sources and the frozen OPT5 corpus.
+  Root owns 131 mixed integration sources and three unchanged binpack fixtures;
+  a small root research-UCI adapter is the approved composition exception.
+- Research depends only on core/training. The other module dependency directions
+  are unchanged; root has no production source set or runtime JAR. Fifty-five
+  research tasks retain their arguments, with app task aliases and documented paths.
+- Production legacy UCI uses accepted-only configuration and rejects ambient research
+  selectors. GUI and standalone UCI remain independent of research. SR-021 remains
+  deferred; core experimental classes/factories persist unchanged, with no claim of
+  complete binary exclusion. Research can deliberately reproduce supported controls.
+- Reconciled JUnit: 2,146 cases: 2,085 pass, 19 exact inherited failures and 42 existing skips; remaining failures/messages and failing source
+  bytes match WU5. The initial broad run had one additional 90-second TrainingSession
+  timeout; two unchanged serialized WU5/WU6 replay pairs pass. Original failure and
+  paired-contention failures remain retained; the exact transient cause is unknown. Fifteen architecture fixtures and three path/launch tests pass.
+- 203 exact SR-024 vectors, 66 legacy and 159 standalone UCI requests, seven-family
+  disk continuation and pinned model reconstruction pass. Four exact historical
+  research comparisons, ten research requests, 22 selector-rejection subprocesses,
+  frozen corpus execution and compatibility task parity pass.
+- All production class payloads in core/training/GUI/UCI match WU5. Classpaths and
+  ZIP/TAR contents exclude research. Assembly, cache reuse and packaging dry-runs
+  pass. Historical repositories, model bytes and research canon/evidence are unchanged.
+- Version remains 0.0.0 build 35 with owner-authorized no-bump finalization; no journal,
+  native release or push. WU6 completes the research responsibilities retained at WU5;
+  app still owns legacy launch/checkpoint composition and compatibility/build tasks.
+
 ## Next admission and human actions
 
-Recommend WU6 research separation only after GPT/user reconciliation of WU5. WU7
-retains native packaging, real clients and deferred GUI acceptance; WU8 retains
-legacy removal, rollback and explicit production cutover. No WU6 work has begun.
+Recommend WU7 packaging only after GPT/user reconciliation of the WU6 commit and
+evidence. WU7 retains P1-P5, native GUI/client checks, relocatable runtime/model
+composition and release/platform decisions. WU8 retains app retirement and explicit
+production cutover. No WU7 implementation has begun.
 
 Human actions required after this prompt:
 
-- **Immediate blocker to WU5 implementation/commit: None.**
-- **Blocking WU6 admission:** GPT/user reconciliation of WU5 commit and evidence.
+- **Immediate blocker to WU6 implementation/commit: None.**
+- **Blocking WU7 admission:** GPT/user reconciliation of WU6 commit and evidence.
 - **Deferred; blocking dependent runtime/WU7/cutover gates:** separate reconciliation/
   remediation of the 19 inherited failures, user Windows/macOS GUI/client walkthroughs,
   and model-publication/platform/release decisions at their actual dependencies.

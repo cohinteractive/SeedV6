@@ -1,6 +1,6 @@
 # Migration acceptance matrix
 
-Revision 3 (WU5 admission and application boundary), 16 October 2026. Apply with [CONTRACT](CONTRACT.md), immutable
+Revision 4 (WU6 admission and scoped root integration composition), 16 October 2026. Apply with [CONTRACT](CONTRACT.md), immutable
 [BASELINE](BASELINE.md) and dynamic [STATE](STATE.md). WU0 defines these gates;
 it does not claim to have run application, client or platform acceptance.
 
@@ -62,6 +62,24 @@ seven-family persisted continuation and twelve Gradle boundary fixtures. See
 [wu5-evidence.json](wu5-evidence.json). No new UCI/core regression remains; full-suite
 or native/client acceptance is not inferred. WU4's native G2-G5
 walkthrough deferral and the 19 inherited failures retain their existing gates.
+
+The WU6 launch confirms acceptance of WU5 commit
+`3301d457d6f6eb3dad9bc4c0f2c7659c1fa7fcaf`. The owner subsequently authorizes
+root test/research composition only, as specified in CONTRACT. R1-R3 now also
+require proof that root integration/launch outputs never enter production
+classpath/distributions, and that research has only core/training dependencies.
+Independent references and existing mixed comparisons must survive this boundary.
+
+WU6 implementation and required headless R1-R3 evidence are complete, pending GPT/user
+reconciliation: 2,146 cases: 2,085 pass, 19 exact inherited failures and 42 existing skips; 15 architecture fixtures; three
+Python launch/path checks; frozen research runners and historical research UCI parity;
+203 exact production vectors; 66 legacy and 159 standalone UCI requests; seven-family
+checkpoint continuation; runtime/archive exclusion and production selector rejection.
+Core experimental class seams remain compiled and unchanged: this is activation and
+research-classpath isolation, not complete experimental binary exclusion. No SR-021
+adoption or Search Contract closure is implied. The inherited 19 failures, existing
+skips and native GUI/client gates remain open. See [WU6](WU6-RESEARCH.md) and
+[wu6-evidence.json](wu6-evidence.json). WU7 has not started.
 
 | ID / stage | Preserved capability and acceptance condition | Automated validation / existing reference | Later native, client or human acceptance |
 | --- | --- | --- | --- |

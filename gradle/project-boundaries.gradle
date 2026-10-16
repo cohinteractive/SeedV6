@@ -4,7 +4,7 @@ import org.gradle.api.artifacts.ProjectDependency
 // core/training and delegate desktop/UCI launch to their application owners. No target may consume app.
 // Remove :app from this map at the accepted WU8 cutover, not before parity.
 def allowed = [
-    ':': [],
+    ':': [':engine-core', ':engine-training', ':app-gui', ':app-uci', ':research', ':app'],
     ':engine-core': [],
     ':engine-training': [':engine-core'],
     ':app-gui': [':engine-core', ':engine-training'],
@@ -65,7 +65,7 @@ abstract class VerifyProjectBoundaries extends DefaultTask {
         validateGraph(graph.get(), allowedGraph.get())
         validateSources(sourceRoots.get())
         graph.get().each { path, targets -> logger.lifecycle("$path -> ${targets ?: '(none)'}") }
-        logger.lifecycle('Project boundaries verified; :app is transitional, target source extraction is incomplete.')
+        logger.lifecycle('Project boundaries verified; :app is transitional, root composition is verification/research only.')
     }
 }
 
@@ -81,11 +81,16 @@ allprojects { p ->
     p.configurations.configureEach { configuration ->
         configuration.dependencies.withType(ProjectDependency).all { dependency ->
             String target = dependency.path
+            if (p.path == ':' && !(configuration.name.startsWith('integrationTest')
+                    || (configuration.name.startsWith('researchLauncher')
+                        && target in [':engine-core', ':research', ':app-uci'])))
+                throw new GradleException("Forbidden root composition dependency: ${configuration.name} -> $target")
             if (!(allowed[p.path] ?: []).contains(target)) {
                 throw new GradleException("Forbidden project dependency: ${p.path} -> $target (${configuration.name})")
             }
         }
     }
+    p.tasks.withType(JavaCompile).configureEach { dependsOn boundaryCheck }
     p.plugins.withId('java') {
         p.tasks.withType(JavaCompile).configureEach { dependsOn boundaryCheck }
         p.tasks.named('check') { dependsOn boundaryCheck }
@@ -95,6 +100,9 @@ allprojects { p ->
 // Store only ordinary values in the task: configuration-cache reuse must not
 // serialize Project/Configuration/SourceSet objects into its execution action.
 gradle.projectsEvaluated {
+    def rootSets = rootProject.extensions.findByName('sourceSets')
+    if (rootSets && rootSets.names.any { !(it in ['integrationTest', 'researchLauncher']) })
+        throw new GradleException('Root source sets are verification/research composition only; no production owner')
     def configuredGraph = [:]
     def roots = [:]
     allprojects.sort { it.path }.each { p ->

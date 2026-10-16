@@ -1,10 +1,11 @@
 """Run the offline replay and established diagnostics with hard subprocess bounds.
 
-Build :app:classes first. All four paths are explicit. Existing outputs are rejected.
+Build :research:installResearch first. All four paths are explicit. Existing outputs are rejected.
 Snapshots go outside the source stores; measurements follow the app/build convention.
 No GUI, store writer, recovery, self-play or production reference update is invoked.
 Explicit --teacher-weights reuses verified accepted evidence and runs only the requested new arms.
 """
+from research_paths import runtime_paths
 from pathlib import Path
 import argparse
 import hashlib
@@ -88,7 +89,7 @@ def main():
     before = {name: fingerprint(path) for name, path in inputs.items()}
     (measurements / 'inputs-before.json').write_text(json.dumps(before, indent=2), encoding='utf-8')
     receipts = []
-    classpath = os.pathsep.join(['app/build/classes/java/main', 'app/build/classes/java/verification', 'app/build/resources/verification', 'app/build/resources/main', 'app/build/install/seedv6/lib/*'])
+    classpath = os.pathsep.join(runtime_paths())
     java = ['java', '-Xms256m', '-Xmx1536m', '-cp', classpath]
 
     def run(name, arguments, timeout):

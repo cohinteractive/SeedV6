@@ -101,7 +101,7 @@ for r in rows:
 write("WITNESSES",sorted(witnesses.values(),key=lambda r:-r["alpha_gap"]))
 
 # Decode the immutable HCE material blob exactly as EvalTuning does; no score conversion.
-s=(ROOT/'app/src/main/java/com/ohinteractive/seedv6/core/EvalTuning.java').read_text()
+s=(ROOT/'engine-core/src/main/java/com/ohinteractive/seedv6/core/EvalTuning.java').read_text()
 v=struct.unpack('>125H',gzip.decompress(base64.b64decode(re.search(r'MATERIAL_DATA\s*=\s*"([^"]+)',s)[1])))
 domains=[]
 for i,(piece,exchange) in enumerate(zip(("queen","rook","bishop","knight","pawn"),(975,500,330,320,100))):

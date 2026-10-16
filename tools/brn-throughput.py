@@ -1,8 +1,9 @@
-"""Bounded, synchronous BRN throughput runner. Run after Gradle compilation.
+"""Bounded, synchronous BRN throughput runner. Run after :research:installResearch.
 
 Example: python tools/brn-throughput.py train DATA NEW_OUTPUT --positions 65536
 No subprocess survives the five-minute timeout. Do not run benchmarks concurrently.
 """
+from research_paths import runtime_paths
 import argparse
 import collections
 import json
@@ -39,7 +40,7 @@ def main():
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(content)
             sources.append(str(path))
-        subprocess.run(["javac", "-cp", os.pathsep.join(["app/build/classes/java/main", "app/build/install/seedv6/lib/*"]),
+        subprocess.run(["javac", "-cp", os.pathsep.join(runtime_paths()),
                         "-d", str(args.output / "classes"), *sources], check=True, timeout=60)
         (args.output / "revision.txt").write_text(str(args.input) + "\n", encoding="utf-8")
         return
@@ -58,8 +59,7 @@ def main():
         args.output.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
         print(json.dumps(summary, indent=2))
         return
-    paths = ["app/build/classes/java/verification", "app/build/classes/java/main",
-             "app/build/resources/main", "app/build/install/seedv6/lib/*"]
+    paths = runtime_paths()
     if args.overlay:
         paths.insert(0, str(args.overlay))
     command = ["java", "--add-modules=jdk.incubator.vector", "-Xms512m", "-Xmx2g"]

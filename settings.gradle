@@ -11,7 +11,7 @@ plugins {
 }
 
 rootProject.name = 'seedv6'
-// Final owners. :app retains UCI/research composition and compatibility launch
+// Final owners. :app retains production checkpoint composition and compatibility launch
 // until parity and the WU8 cutover gate permit its removal.
 include('engine-core', 'engine-training', 'app-gui', 'app-uci', 'research')
 include('app')

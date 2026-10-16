@@ -10,8 +10,11 @@ corpus, self-play and validation services, and exposes core through its API depe
 The WU4 extraction places desktop presentation, controllers, preferences and
 resources in `app-gui`, which consumes core/training. WU5 places the single UCI
 protocol/session and standalone `UciMain` in `app-uci`, depending only on core.
-Legacy `app` consumes all four owners and retains checkpoint/research UCI
-configuration and Main delegation; `research` remains a scaffold. See
+Legacy `app` consumes all four production owners and retains accepted-only
+checkpoint configuration and Main delegation. `research` owns independent
+references, empirical runners, diagnostics and research configuration. Root-only
+integration/research-launch source sets provide the owner-approved mixed
+composition without a root runtime JAR or production dependency on research. See
 [WU5](unified-architecture/WU5-UCI.md) for the two explicit application profiles.
 WU4 structural validation is complete under the
 owner-authorized non-interactive boundary; native user acceptance remains deferred
@@ -31,11 +34,10 @@ book and optional Syzygy native sources/resources/license. Shared headless Appli
 to core; GUI About and legacy UCI consume that one owner. Desktop FlatLaf/JNA and
 all runtime GUI artwork belong to app-gui. The legacy `:app:compileSyzygy` task delegates to core.
 
-`main` has no dependency on `verification` or `test`. The custom `verification`
-source set depends on main; test depends on both. JavaExec developer tasks use
-verification's runtime classpath. No source set includes `archive/` or `docs/`.
-No reflection, ServiceLoader, resource class-name registry or packaging include
-was found that selects an additional production search.
+Production main/test classpaths have no research dependency. Research consumes
+core/training; root integration tests may compose all owners. A root research UCI
+adapter composes research/core/UCI only and is never packaged as production.
+No source set includes archive/docs. See [WU6](unified-architecture/WU6-RESEARCH.md).
 
 ## Production search
 
@@ -144,7 +146,7 @@ The following former main-source facilities are active verification:
   evaluation corpus resource. Their package placement preserves access to training
   test seams; their source set establishes the non-production boundary.
 
-These live in `app/src/verification/java` and `resources`. Existing tests and
+These live in `research/src/main/java` and `resources`. Existing tests and
 explicit Gradle tools still use them. Legacy policy/aspiration hints moved out of
 `SearchEvaluation` and `SingleDepthSearch`; only verification consumes that policy.
 Capture training's unchanged tactical classification now lives in `MoveTactics`,
@@ -157,7 +159,9 @@ states the historical comparison boundary.
 
 The empty `GenRewrite` stub and one-off `codex-process-test.txt` were deleted.
 Historical instrumentation scripts whose source anchors no longer match live
-`ExactSearch` moved to [the archive](../archive/search-programme/README.md).
+`ExactSearch` remain in the original checkout's ignored archive. The migration
+worktree does not contain that local directory; see [historical reproduction
+availability](unified-architecture/WU6-RESEARCH.md).
 No historical Java was classified as archive: retained alternatives have active
 oracle/test/comparison consumers and therefore belong in verification.
 
@@ -171,12 +175,14 @@ reports and their CSV/GZIP/ZIP evidence; `docs/research/brn/` holds BRN reports.
 `docs/images/` contains Play/Training references. Build-required source artwork
 remains at its established root paths. Root README is the repository entry point.
 
-Use `:app:verificationClasses` before direct Java developer commands. Their
-classpath needs app main and verification classes/resources plus runtime dependencies,
-including the core and training JARs. Gradle JavaExec tasks already provide that classpath.
-Existing JavaExec task names retain their arguments. The former shipped diagnostic
-commands now run through `:app:developerTools -PtoolArgs="brn-diagnostic ..."` or
-`-PtoolArgs="frozen-wdl ..."`; normal GUI/UCI packaging remains independent.
+Use `:research:installResearch` for direct Java tools; its lib directory includes
+research, core, training and required libraries. Existing `:app:` research task
+names delegate to `:research:` tasks with their existing arguments. The old
+`:app:verificationClasses` name delegates to research classes, but the old output
+paths are replaced explicitly. `installResearchWorkspace` additionally prepares
+the separate research UCI adapter. Production Main rejects all `seedv6.uci.*Research`
+selectors, including explicit historical control defaults. Historical frozen
+installations retain their original command conventions; they are not rewritten.
 
 The search contract/frontier identify manually refreshed ChatGPT Project Source
 mirrors. Their active repository master locations are `source/`; the owner must
@@ -194,6 +200,8 @@ names are preserved across modules. No model/optimizer schema changes or model
 registry are introduced. See [WU2](unified-architecture/WU2-CORE.md) and
 [WU3](unified-architecture/WU3-TRAINING.md).
 
-Disabled research seams inside ExactSearch/ParallelSearch and explicit UCI research
-properties remain pending WU6 isolation. SR-021 is not enabled by production routing;
-this extraction does not claim complete experimental-code separation.
+Experimental policies/factories remain compiled inside ExactSearch/ParallelSearch.
+Production configurations never select SR-021; research properties are rejected by
+production UCI and are not read by core/GUI. Research activation is confined to the
+explicit research launcher. This is activation/classpath isolation, not complete
+experimental-class exclusion from core. SR-021 remains deferred without adoption.

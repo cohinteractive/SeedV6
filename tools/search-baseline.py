@@ -39,6 +39,10 @@ def save(path, value):
 
 
 def command(java, installation, store, qpolicy='static', lmr='off', aspiration='off', lmp='off', check='off', reuse='off', nmp='off', internal='off'):
+    installation = Path(installation).resolve()
+    research = (installation / 'research-launcher.properties').is_file()
+    classpath = os.pathsep.join([str(installation / 'classes'), str(installation / 'lib' / '*')]) if research else str(installation / 'lib' / '*')
+    main_class = 'com.ohinteractive.seedv6.integration.ResearchUciMain' if research else 'com.ohinteractive.seedv6.Main'
     return [str(Path(java).resolve()), '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1',
             '-Djava.awt.headless=true', '-Dseedv6.syzygy.config=', '-Dseedv6.syzygy.path=',
             '-Dseedv6.uci.pair2Store=' + str(Path(store).resolve()),
@@ -52,7 +56,7 @@ def command(java, installation, store, qpolicy='static', lmr='off', aspiration='
             *(['-Dseedv6.uci.reuseResearch=' + reuse] if reuse != 'default' else []),
             *(['-Dseedv6.uci.nmpResearch=' + nmp] if nmp != 'off' else []),
             *(['-Dseedv6.uci.internalResearch=' + internal] if internal != 'off' else []),
-            '-cp', str(Path(installation).resolve() / 'lib' / '*'), 'com.ohinteractive.seedv6.Main']
+            '-cp', classpath, main_class]
 
 
 def clean_environment():

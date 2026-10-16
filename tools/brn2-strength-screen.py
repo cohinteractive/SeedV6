@@ -1,8 +1,9 @@
 """Pinned BRN supervision strength screen; smoke gate, read-only stores, hard watchdog.
 
-Build and targeted-test the Java tool first. Run smoke with a NEW app/build output,
+Build :research:installResearch and targeted-test the Java tool first. Run smoke with a NEW app/build output,
 then screen with the same output. No checkpoint is written or promoted.
 """
+from research_paths import runtime_paths
 from pathlib import Path
 import argparse
 import collections
@@ -95,7 +96,7 @@ def inputs(networks):
 def run(stage, output, timeout):
     target = output / f'{stage}.jsonl'
     check(not target.exists(), f'Output already exists: {target}')
-    cp = os.pathsep.join(str(ROOT / p) for p in ('app/build/classes/java/main', 'app/build/classes/java/verification', 'app/build/resources/verification', 'app/build/resources/main', 'app/build/install/seedv6/lib/*'))
+    cp = os.pathsep.join(runtime_paths())
     command = ['java', '-Xms256m', '-Xmx1536m', '-cp', cp,
                'com.ohinteractive.seedv6.tools.search.Brn2StrengthScreen', stage, str(output / 'config.properties'), str(target)]
     receipt = dict(command=command, watchdogSeconds=timeout, stalledOutputSeconds=120, startedUtc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()))
