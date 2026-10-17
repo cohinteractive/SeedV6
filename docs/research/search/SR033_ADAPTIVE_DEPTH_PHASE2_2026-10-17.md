@@ -67,7 +67,7 @@ proof rules and evaluator scales do not transfer to SeedV6. No implementation
 or calibrated constants are copied. Required nominal verification and
 original-window PVS confirmation remain binding here.
 
-## Current investigation and resume point
+## Initial investigation plan (historical activation checkpoint)
 
 First measure actual reduced/verified observations in accepted cumulative Search
 at one and four workers, including conditional frequencies, repeated move/context
@@ -204,3 +204,93 @@ legal/result/accounting/resource integrity, then assess mechanisms and credible
 alternatives. Do not infer adoption from exploratory scores. Fresh independent
 confirmation remains mandatory for a selected finalist. No SR-021 continuation,
 next feature, mirror refresh or owner acceptance is claimed.
+
+
+## Completed development and frozen confirmation
+
+All four predeclared 32-pair stages completed with normal legal endings,
+whole-request telemetry, frozen-input verification, paired-color completeness,
+owned-process exit zero and full-stage export audits. No partial block exists.
+The interruption occurred after launch; on resume all four stages were complete
+and no owned match process remained. First strength assessment used complete
+stages only. `development-results-v1.json` records identities and full statistics.
+
+| Policy/domain | Candidate W-D-L | Score | Elo estimate | Paired normal 95% Elo | Match pairs/hour |
+|---|---:|---:|---:|---:|---:|
+| MOVE / native1 | 31-13-20 | 58.59% | +60.3 | -11.4 to +137.5 | 236.8 |
+| MOVE / ROOT_REUSE4 | 28-7-29 | 49.22% | -5.4 | -74.0 to +62.7 | 130.3 |
+| CAUTION / native1 | 29-6-29 | 50.00% | 0.0 | -85.4 to +85.4 | 244.8 |
+| CAUTION / ROOT_REUSE4 | 31-15-18 | 60.16% | +71.6 | +2.4 to +146.9 | 137.2 |
+
+These are exploratory, selected and imprecise estimates. The conservative
+bounded-pair intervals all include equality. CAUTION4's unadjusted normal
+interval does not establish gain after selection. No cross-worker pooling or
+claim of inferiority for the unselected domains is justified. Those domains are
+not automatically continued. The two distinct mechanisms remain credible enough
+for fresh independent confirmation: MOVE1 and CAUTION4, unchanged candidate v1.
+
+Total match wall time was 2,680.9 seconds (44.7 minutes), plus 20.8 seconds of
+runner overhead and session preparation/audit. CPU candidate/baseline ratios
+were .999 MOVE1, .990 MOVE4, 1.001 CAUTION1, 1.036 CAUTION4. CPU reflects process
+lifetime including warmup, not equal-tree efficiency. JVM GC pauses were small
+in aggregate (candidate totals 327/123/264/138ms respectively; maximum 22.1ms),
+but short-clock scheduling sensitivity remains. A five-second native host sample
+observed about four logical CPUs in the eight match JVMs, roughly 220-223MB RSS
+each, 12GB free RAM and zero instantaneous paging. This sample cannot certify
+all-session exclusive host availability. Both sides retain identical 256/512MiB
+heap, native APC1/SerialGC or four-worker APC6/G1, model, TT and clock settings.
+The initial summary parser expected absent JVM log tags and reported zero GC;
+it was corrected against actual completed Pause lines before protocol freezing.
+
+The existing SR-024 decision rule is reused unchanged and hash-bound through
+`tools/sr033-confirmation.py`. Four new continuation tests and four existing
+statistical-rule tests pass. Fresh partition-1 openings exclude comparable
+historical selections and development; the three older receipts lacking position
+keys remain explicitly disclosed. The same new 512-opening permutation is used
+across separate worker domains, never pooled. Prospective cumulative looks are
+128 and 512 pairs, with fresh JVMs every 16-pair operational block. All input,
+model, JDK, Python/chess and tool identities are frozen by the existing validated
+session procedure. No operational block is a statistical look.
+
+MOVE1 is contrast 1 (family allocation .025, .0125 per look); CAUTION4 is contrast
+2 (.0125, .00625 per look). Approximate paired-normal inference requires at least
+20 pair scores on each side of half, the allocated interval and 2.5-SE agreement;
+otherwise bounded inference applies. Adjusted Hoeffding sensitivity is reported.
+A normal-eligible plug-in conditional power below .10 stops for computational
+futility, not inferiority/equivalence or proof of no small benefit. A closed stage
+cannot be extended. Development is never pooled into confirmation.
+
+`confirmation-economics-v1.json` records the variance-based forecast. At 512 pairs,
+null normal Elo half-width is about 23-24; approximate power ignoring early
+futility is 76-79% for +30 Elo, 90-91% for +35, but only 6-8% for +10. These are
+forecasts using noisy development variances, not acceptance thresholds or claims
+of power for tiny effects. A 128-pair first look has useful value for screening
+whether the large exploratory effects persist. Both maxima cost about 5.9h match
+time, roughly 6h with measured block overhead, about 7.5h with 25% slowdown.
+This is proportionate independent evidence for the present promising mechanisms;
+a future small-gain campaign would require a different prospective economics
+case and cannot extend these closed protocols retrospectively.
+
+Current resume: complete broader Search/rules/UCI regression validation, then
+execute the frozen MOVE1 and CAUTION4 protocols in an immediate bounded window
+of at most eight hours. There is no scheduled future/overnight start and no
+assumption about owner sleep hours. Preserve safe block pauses and abnormal
+block stop conditions. `tools/sr033-confirmation.py run --protocol PATH
+--stop-before UTC` runs and assesses only permitted full stages; its durable
+execution/assessment records live under `raw/confirm-*-v1-assessments/`. If a
+protocol stops, do not extend it. Assess each worker independently and then
+choose justified adoption/non-adoption or further useful SR-033 work. No next
+feature is selected. Project Source refresh and owner acceptance are not claimed.
+
+
+Broader pre-confirmation validation completed: engine-core 61/61, standalone UCI
+13/13 and research Search/UCI 599 executed/599 passed, with 11 conditionally
+skipped historical SR-001H/I instrumentation tests (`sr001h.instrumented` and
+`sr001i.instrumented` flags not enabled). The suites cover rules, TT, independent
+references, PVS, selective policies, cancellation, managed lifecycle and
+production integration. A subsequent unfiltered core/UCI invocation was
+UP-TO-DATE; it does not add independent executions. Gradle reports BUILD
+SUCCESSFUL; PowerShell's first redirected invocation returned 1 because the
+JDK incubator warning became a NativeCommandError record, while Gradle and all
+XML results report success. Full logs and XML are preserved. Unrelated training,
+GUI, full-application and deployment suites are deliberately not run.

@@ -1,0 +1,17 @@
+{
+  "startedUtc": "2026-10-17T08:15:09.817621+00:00",
+  "stopBeforeUtc": "2026-10-17T16:15:09.817621+00:00",
+  "purpose": "Immediate bounded confirmation; no scheduled future start",
+  "order": [
+    "move-w1",
+    "caution-w4"
+  ],
+  "maxHours": 8,
+  "expectedMaximumMatchHours": 5.9,
+  "slowdown25PercentHours": 7.4,
+  "blockingWindowReservationSeconds": 2400,
+  "protocols": {
+    "move-w1": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr033-phase2-2026-10-17\\confirmation-v1\\move-w1-protocol.json",
+    "caution-w4": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr033-phase2-2026-10-17\\confirmation-v1\\caution-w4-protocol.json"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "design": "Prospective confirmation forecast, no confirmatory outcomes observed.",
+  "domains": {
+    "move-w1": {
+      "varianceFromDevelopment": 0.08713457661290322,
+      "criticalSigma": 2.5,
+      "nullAdjustedEloHalfWidthApprox": 22.694553481074124,
+      "maximumPairs": 512,
+      "unconditionalApproxPowerIgnoringEarlyFutility": {
+        "5": 0.025679854343684694,
+        "10": 0.08118388059473602,
+        "20": 0.38356561860123695,
+        "30": 0.7885082977393404,
+        "35": 0.9111747647033881,
+        "40": 0.9708353912228516,
+        "60": 0.9999748135010951
+      },
+      "observedPairsPerHour": 236.84662063880623
+    },
+    "caution-w4": {
+      "varianceFromDevelopment": 0.080078125,
+      "criticalSigma": 2.734368786533176,
+      "nullAdjustedEloHalfWidthApprox": 23.799173211922348,
+      "maximumPairs": 512,
+      "unconditionalApproxPowerIgnoringEarlyFutility": {
+        "5": 0.01542341159522187,
+        "10": 0.056601906964370174,
+        "20": 0.3316193918170347,
+        "30": 0.7609213808265207,
+        "35": 0.899660593164787,
+        "40": 0.9677223161601773,
+        "60": 0.999979536938119
+      },
+      "observedPairsPerHour": 137.186413600526
+    }
+  }
+}

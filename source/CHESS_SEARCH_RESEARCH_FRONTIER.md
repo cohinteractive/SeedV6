@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F044**
+Internal frontier revision: **P2-F045**
 
 Status: **SR-033 Adaptive/Hindsight Depth Feedback is ACTIVE under the owner-authorized feature workstream. Tournament maintenance is GPT/owner accepted and BOTH predecessor P2-R038/P2-F042 Project Source mirrors are confirmed synchronized. SR-021 remains owner-accepted DEFERRED without adoption. Accepted cumulative production is unchanged.**
 
@@ -920,6 +920,19 @@ governance document is needed.
 
 ## Maintenance and initialization state
 
+### SR-033 development complete; independent confirmation frozen - 2026-10-17 local
+
+SR-033 remains ACTIVE with production unchanged. Four fixed 32-pair development
+contrasts completed and passed full legal, paired, lifecycle and resource audits.
+MOVE1 (58.6%) and CAUTION4 (60.2%) are selected only as exploratory finalists;
+MOVE4/CAUTION1 were near equality. No gain or cross-worker conclusion is accepted.
+The [feature research record](../docs/research/search/SR033_ADAPTIVE_DEPTH_PHASE2_2026-10-17.md)
+records uncertainty, GC/CPU/throughput, alternative-mechanism implications and
+fresh separate 128/512-pair confirmation protocols with allocated error, futility,
+complete-pair operational blocks and bounded execution economics. Preserve all
+closed development evidence and use the durable protocol resume point. Neither
+SR-021 nor any successor is activated; version provenance remains separate.
+
 ### SR-033 validated first feedback mechanisms ? 2026-10-17 local
 
 SR-033 remains ACTIVE; accepted production is unchanged. The
@@ -1511,3 +1524,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-F042 | Record owner-accepted SR-021 DEFERRED and unified repository authority; link tournament execution maintenance, measured concurrency/forecasting and bounded pair-block continuation with failure/statistical safeguards; preserve all feature IDs/dispositions and require BOTH final mirrors plus owner/GPT handback without selecting a successor. |
 | P2-F043 | Activate only owner-selected SR-033 after verified clean cumulative baseline and confirmed maintenance acceptance/BOTH predecessor mirror synchronization; record fixed evaluator, censored-outcome challenge, worker scope, separate deferred version provenance and durable research resume point. |
 | P2-F044 | Record SR-033 outcome observations, two explicit feedback controls, correctness/proof and all-worker validation, mixed diagnostic economics and frozen independent-worker development contrasts; retain ACTIVE and unchanged production. |
+| P2-F045 | Record completed SR-033 development, exploratory worker-specific finalists, measured session economics and frozen fresh independent 128/512-pair confirmation; retain ACTIVE and unchanged production. |

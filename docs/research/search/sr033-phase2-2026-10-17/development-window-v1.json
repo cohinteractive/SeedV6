@@ -1,0 +1,13 @@
+{
+    "maxExpectedMinutes":  80,
+    "startedUtc":  "2026-10-17T04:50:32Z",
+    "purpose":  "Immediate bounded exploratory execution; no overnight scheduling",
+    "stopBeforeUtc":  "2026-10-17T06:50:32Z",
+    "order":  [
+                  "move-w1",
+                  "move-w4",
+                  "caution-w1",
+                  "caution-w4"
+              ],
+    "timezone":  "Pacific/Auckland"
+}

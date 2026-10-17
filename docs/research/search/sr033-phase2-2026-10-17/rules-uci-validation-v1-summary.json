@@ -1,0 +1,73 @@
+{
+  "engine-core": {
+    "tests": 61,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": 11
+  },
+  "app-uci": {
+    "tests": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": 3
+  },
+  "broadResearchSkipped": [
+    {
+      "suite": "TEST-com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest.xml",
+      "test": "terminalHistoryAndMatePlyRemainAuthoritative()",
+      "message": null
+    },
+    {
+      "suite": "TEST-com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest.xml",
+      "test": "completeCorpusKeepsScorePvTreeAndRecordsOnlyEligibleMoves()",
+      "message": null
+    },
+    {
+      "suite": "TEST-com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest.xml",
+      "test": "oracleEvidenceIsCompleteAndDoesNotChangeEnumeration()",
+      "message": null
+    },
+    {
+      "suite": "TEST-com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest.xml",
+      "test": "cancellationDoesNotPublishIncompleteMoveOrNodeEvidence()",
+      "message": null
+    },
+    {
+      "suite": "TEST-com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest.xml",
+      "test": "standPatMaterialEpNegativeSeeAndBoundsAreObservedWithoutPruning()",
+      "message": null
+    },
+    {
+      "suite": "TEST-com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest.xml",
+      "test": "immediateAdjudicationExcludedInsteadOfInventingChildStatic()",
+      "message": null
+    },
+    {
+      "suite": "TEST-com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest.xml",
+      "test": "narrowWindowsReuseExistingCutoffAndPreserveFailSoftWitnesses()",
+      "message": null
+    },
+    {
+      "suite": "TEST-com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest.xml",
+      "test": "corpusIdentityNaturalEvaluationBoundAndRepeatability()",
+      "message": null
+    },
+    {
+      "suite": "TEST-com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest.xml",
+      "test": "cancellationLeavesUnresolvedChildWithoutStaticObservation()",
+      "message": null
+    },
+    {
+      "suite": "TEST-com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest.xml",
+      "test": "oracleStaticObserverPreservesEnumerationAndBoundsExactContinuation()",
+      "message": null
+    },
+    {
+      "suite": "TEST-com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest.xml",
+      "test": "historyAndActualPathMateDistanceRemainIdentical()",
+      "message": null
+    }
+  ]
+}

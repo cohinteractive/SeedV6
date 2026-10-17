@@ -1,0 +1,330 @@
+{
+  "assessment": "All four fixed full exploratory stages complete before first strength assessment; no confirmation inference.",
+  "stages": {
+    "move-w1": {
+      "wdl": [
+        31,
+        13,
+        20
+      ],
+      "terminations": {
+        "normal": 64
+      },
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          1,
+          7,
+          12,
+          4,
+          8
+        ],
+        "score": 0.5859375,
+        "logisticElo": 60.31415751636439,
+        "pairedHoeffding95Score": [
+          0.3458568021700198,
+          0.8260181978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -110.71060323018725,
+          270.5943160621586
+        ],
+        "pairScoreStandardError": 0.052181946295181685,
+        "pairedNormal95Score": [
+          0.48366276461824065,
+          0.6882122353817594
+        ],
+        "pairedNormal95Elo": [
+          -11.356316446718372,
+          137.5453284570118
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "wholeRequestResources": {
+        "baseline": {
+          "requests": 4319,
+          "nodes": 1247034280,
+          "elapsedNanos": 915111116400
+        },
+        "candidate": {
+          "requests": 4325,
+          "nodes": 1253333626,
+          "elapsedNanos": 915726535500
+        }
+      },
+      "evidence": "docs\\research\\search\\sr033-phase2-2026-10-17\\raw\\screen-move-w1-v1",
+      "export": "docs\\research\\search\\sr033-phase2-2026-10-17\\raw\\screen-move-w1-v1-export",
+      "planSha256": "1c3d85408b336b9d15e3c2338fd2ab91df7048e81903f0c07ec5995a989d1cc7",
+      "gamesSha256": "ba8395a18695664affce557e314df33af98ddcb6a5ebdc6f143ee860fc1017bd",
+      "status": {
+        "completePairs": 32,
+        "totalPairs": 32,
+        "status": "complete",
+        "statisticsAssessed": false
+      },
+      "matchWallSeconds": 486.3907269999909,
+      "runnerWallSeconds": 492.6118131999974,
+      "pairsPerMatchHour": 236.84662063880623,
+      "cpuSeconds": {
+        "baseline": 952.125,
+        "candidate": 951.28125
+      },
+      "gc": {
+        "baseline": {
+          "pauseCount": 32,
+          "pauseMilliseconds": 356.012,
+          "maxPauseMilliseconds": 26.699
+        },
+        "candidate": {
+          "pauseCount": 25,
+          "pauseMilliseconds": 326.92699999999996,
+          "maxPauseMilliseconds": 22.087
+        }
+      }
+    },
+    "move-w4": {
+      "wdl": [
+        28,
+        7,
+        29
+      ],
+      "terminations": {
+        "normal": 64
+      },
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          5,
+          2,
+          17,
+          5,
+          3
+        ],
+        "score": 0.4921875,
+        "logisticElo": -5.429122875709548,
+        "pairedHoeffding95Score": [
+          0.2521068021700198,
+          0.7322681978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -188.90200784811387,
+          174.78808477127686
+        ],
+        "pairScoreStandardError": 0.049549857538205413,
+        "pairedNormal95Score": [
+          0.3950715637860269,
+          0.5893034362139731
+        ],
+        "pairedNormal95Elo": [
+          -74.01129147376341,
+          62.72716169885396
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "wholeRequestResources": {
+        "baseline": {
+          "requests": 3999,
+          "nodes": 1821090095,
+          "elapsedNanos": 867047048900
+        },
+        "candidate": {
+          "requests": 3996,
+          "nodes": 1804022029,
+          "elapsedNanos": 869079776900
+        }
+      },
+      "evidence": "docs\\research\\search\\sr033-phase2-2026-10-17\\raw\\screen-move-w4-v1",
+      "export": "docs\\research\\search\\sr033-phase2-2026-10-17\\raw\\screen-move-w4-v1-export",
+      "planSha256": "86225a852b04b6f04786cf0cd9c79a4374dba8cdc3882f24be05c67e57e55e29",
+      "gamesSha256": "a424b9c32cc9c5ad2f6b4435a81c6856cb10f333fd1b970a29ac20c30b6640eb",
+      "status": {
+        "completePairs": 32,
+        "totalPairs": 32,
+        "status": "complete",
+        "statisticsAssessed": false
+      },
+      "matchWallSeconds": 884.1054567999963,
+      "runnerWallSeconds": 888.8876980999776,
+      "pairsPerMatchHour": 130.3011977971093,
+      "cpuSeconds": {
+        "baseline": 1469.953125,
+        "candidate": 1454.9375
+      },
+      "gc": {
+        "baseline": {
+          "pauseCount": 98,
+          "pauseMilliseconds": 163.416,
+          "maxPauseMilliseconds": 4.495
+        },
+        "candidate": {
+          "pauseCount": 92,
+          "pauseMilliseconds": 122.816,
+          "maxPauseMilliseconds": 5.094
+        }
+      }
+    },
+    "caution-w1": {
+      "wdl": [
+        29,
+        6,
+        29
+      ],
+      "terminations": {
+        "normal": 64
+      },
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          7,
+          2,
+          14,
+          2,
+          7
+        ],
+        "score": 0.5,
+        "logisticElo": 0.0,
+        "pairedHoeffding95Score": [
+          0.2599193021700198,
+          0.7400806978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -181.77621804089128,
+          181.77621804089128
+        ],
+        "pairScoreStandardError": 0.06148367210474559,
+        "pairedNormal95Score": [
+          0.3794942170374287,
+          0.6205057829625713
+        ],
+        "pairedNormal95Elo": [
+          -85.41626845300783,
+          85.41626845300783
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "wholeRequestResources": {
+        "baseline": {
+          "requests": 4230,
+          "nodes": 1084769249,
+          "elapsedNanos": 893791030700
+        },
+        "candidate": {
+          "requests": 4230,
+          "nodes": 1086405121,
+          "elapsedNanos": 894878220800
+        }
+      },
+      "evidence": "docs\\research\\search\\sr033-phase2-2026-10-17\\raw\\screen-caution-w1-v1",
+      "export": "docs\\research\\search\\sr033-phase2-2026-10-17\\raw\\screen-caution-w1-v1-export",
+      "planSha256": "66d38e7208cafa0077b39d546669ee6b9a1e035c6f3bee09e9a45b5ccb6a32fb",
+      "gamesSha256": "5c429c885dc440f606c87ff1cbe1a90e9768843b5ee4b34db657f6a5d5ad96f8",
+      "status": {
+        "completePairs": 32,
+        "totalPairs": 32,
+        "status": "complete",
+        "statisticsAssessed": false
+      },
+      "matchWallSeconds": 470.63679879999836,
+      "runnerWallSeconds": 475.94950449996395,
+      "pairsPerMatchHour": 244.77473987102175,
+      "cpuSeconds": {
+        "baseline": 917.8125,
+        "candidate": 918.3125
+      },
+      "gc": {
+        "baseline": {
+          "pauseCount": 30,
+          "pauseMilliseconds": 278.827,
+          "maxPauseMilliseconds": 16.54
+        },
+        "candidate": {
+          "pauseCount": 24,
+          "pauseMilliseconds": 264.065,
+          "maxPauseMilliseconds": 12.858
+        }
+      }
+    },
+    "caution-w4": {
+      "wdl": [
+        31,
+        15,
+        18
+      ],
+      "terminations": {
+        "normal": 64
+      },
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          1,
+          6,
+          11,
+          7,
+          7
+        ],
+        "score": 0.6015625,
+        "logisticElo": 71.5682196298182,
+        "pairedHoeffding95Score": [
+          0.3614818021700198,
+          0.8416431978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -98.83473616723967,
+          290.1965178798178
+        ],
+        "pairScoreStandardError": 0.05002440810494413,
+        "pairedNormal95Score": [
+          0.503516461766376,
+          0.699608538233624
+        ],
+        "pairedNormal95Elo": [
+          2.443528193343522,
+          146.8670067375037
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "wholeRequestResources": {
+        "baseline": {
+          "requests": 3658,
+          "nodes": 1713468467,
+          "elapsedNanos": 812514100100
+        },
+        "candidate": {
+          "requests": 3667,
+          "nodes": 1766930973,
+          "elapsedNanos": 815269253900
+        }
+      },
+      "evidence": "docs\\research\\search\\sr033-phase2-2026-10-17\\raw\\screen-caution-w4-v1",
+      "export": "docs\\research\\search\\sr033-phase2-2026-10-17\\raw\\screen-caution-w4-v1-export",
+      "planSha256": "87fecc0aee08102e5ea0ba0b3e37fc990c0e758d1ad6b1bf394ee9d4113bc7b0",
+      "gamesSha256": "c5a6f374586f1ab7df61e3ba549071ed53194b8fb1157fb9835ed6c1ce04164f",
+      "status": {
+        "completePairs": 32,
+        "totalPairs": 32,
+        "status": "complete",
+        "statisticsAssessed": false
+      },
+      "matchWallSeconds": 839.7333014000324,
+      "runnerWallSeconds": 844.2220074000361,
+      "pairsPerMatchHour": 137.186413600526,
+      "cpuSeconds": {
+        "baseline": 1370.765625,
+        "candidate": 1420.203125
+      },
+      "gc": {
+        "baseline": {
+          "pauseCount": 82,
+          "pauseMilliseconds": 143.32,
+          "maxPauseMilliseconds": 6.808
+        },
+        "candidate": {
+          "pauseCount": 96,
+          "pauseMilliseconds": 137.749,
+          "maxPauseMilliseconds": 5.81
+        }
+      }
+    }
+  },
+  "gcParsing": "Completed Pause lines ending in ms, without requiring omitted JVM log tag decoration; includes warmup and match process lifetime."
+}

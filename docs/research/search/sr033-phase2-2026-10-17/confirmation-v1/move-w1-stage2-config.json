@@ -1,0 +1,24 @@
+{
+  "adapter": "sr033-match.py",
+  "purpose": "confirmatory",
+  "blockPairs": 16,
+  "blockLimitSeconds": 2400,
+  "assessmentPlan": "Only cumulative 128/512 paired looks, existing adjusted paired-normal and 2.5-SE rule, prospectively allocated family alpha and conditional-power futility; no operational block looks.",
+  "arguments": {
+    "java": "C:/java/jdk-21/bin/java.exe",
+    "runner": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\tools\\fastchess.exe",
+    "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\build\\sr033\\candidate-v1",
+    "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\build\\sr033\\candidate-v1",
+    "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+    "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr033-phase2-2026-10-17\\confirmation-v1\\stage2-openings.pgn",
+    "baseline_policy": "off",
+    "candidate_policy": "move",
+    "baseline_workers": 1,
+    "candidate_workers": 1,
+    "concurrency": 4,
+    "pairs": 384,
+    "tc": "10+0.1",
+    "seed": 330117
+  },
+  "assessmentProtocol": "move-w1-protocol.json"
+}

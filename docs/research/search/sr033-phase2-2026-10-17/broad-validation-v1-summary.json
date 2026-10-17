@@ -1,0 +1,23 @@
+{
+  "engine-core": {
+    "tests": 61,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": 11
+  },
+  "app-uci": {
+    "tests": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": 3
+  },
+  "research": {
+    "tests": 610,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 11,
+    "suites": 70
+  }
+}
