@@ -354,7 +354,7 @@ def opening_prefixes(openings, pairs):
     return prefixes
 
 
-def analyze(pgn, openings, pairs, require_accounting=False, unordered=False):
+def analyze(pgn, openings, pairs, require_accounting=False, unordered=False, statistics_enabled=True):
     prefixes = opening_prefixes(openings, pairs)
     games = []
     with Path(pgn).open(encoding='utf-8') as stream:
@@ -411,7 +411,7 @@ def analyze(pgn, openings, pairs, require_accounting=False, unordered=False):
                 raise ValueError('Unexpected Search termination: ' + telemetry[3])
         records.append({'headers': dict(game.headers), 'plies': len(moves), 'candidateScore': scores[-1]})
     return {'wdl': [scores.count(x) for x in (1, .5, 0)], 'terminations': dict(terminations),
-            'statistics': paired_statistics([scores[i]+scores[i+1] for i in range(0, len(scores), 2)]),
+            'statistics': paired_statistics([scores[i]+scores[i+1] for i in range(0, len(scores), 2)]) if statistics_enabled else None,
             'wholeRequestResources': resources, 'games': records}
 
 
@@ -429,8 +429,12 @@ def failure_probes(cmd):
 
 
 def installation_hashes(path):
-    files = sorted((Path(path).resolve() / 'lib').glob('*.jar'))
+    path = Path(path).resolve()
+    files = sorted((path / 'lib').glob('*.jar'))
     if not files: raise ValueError('No installed JARs: ' + str(path))
+    if (path / 'research-launcher.properties').is_file():
+        files += [path / 'research-launcher.properties']
+        files += sorted(p for p in (path / 'classes').rglob('*') if p.is_file())
     return {str(file): digest(file) for file in files}
 
 

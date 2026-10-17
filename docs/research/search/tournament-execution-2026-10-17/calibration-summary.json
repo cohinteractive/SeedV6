@@ -1,0 +1,856 @@
+{
+  "classification": "Operational/exploratory A/A; no independent strength evidence",
+  "sameFrozenSchedule": true,
+  "studies": [
+    {
+      "study": "w4-c2",
+      "workers": 4,
+      "concurrency": 2,
+      "timeControl": "10+0.1",
+      "games": 24,
+      "pairs": 12,
+      "matchSeconds": 363.32141299999785,
+      "runnerSeconds": 367.0476503999962,
+      "sessionSeconds": 371.73544159997255,
+      "gamesPerMatchHour": 237.80596713687368,
+      "pairsPerMatchHour": 118.90298356843684,
+      "gamesPerSessionHour": 232.4233590107228,
+      "pairsPerSessionHour": 116.2116795053614,
+      "blockGamesPerHourRange": [
+        231.57715074954905,
+        244.3791229105693
+      ],
+      "cpuSeconds": {
+        "baseline": 636.796875,
+        "candidate": 609.703125
+      },
+      "averageEngineLogicalCpus": 3.430846505047605,
+      "candidateToBaselineCpu": 0.9574530732425469,
+      "minimumSampledFreeMemoryGiB": 10.48055648803711,
+      "sampledSystemCpuPercent": [
+        37,
+        35
+      ],
+      "pagingSamples": [
+        {
+          "PagesInputPersec": 0,
+          "PagesOutputPersec": 0,
+          "PageReadsPersec": 0,
+          "PageWritesPersec": 0
+        },
+        {
+          "PagesInputPersec": 0,
+          "PagesOutputPersec": 0,
+          "PageReadsPersec": 0,
+          "PageWritesPersec": 0
+        }
+      ],
+      "planSha256": "0dc5a36d1eee255fbf9c9ffe09468addc060d2f8e1c1ce370d634c4cc8e6c67e",
+      "blocks": [
+        {
+          "pairs": 6,
+          "games": 12,
+          "pairIds": [
+            "bd0d5d4383581d93051a6f39ff28780352e417f23c83eccd2dfc0c960062945c",
+            "e439ee27ad910f3e0fdb4ce6d61c693ba111671de34d41ac7046861549a268bd",
+            "039346b8c6dd278a6719cf10b08aa66e50a55653f4696e9372bf5504c75a086e",
+            "512135e156017237ab7623ae98d1761d4f730baacba041150cb186e3db17743d",
+            "30785076a948469c9a76b25e0d7dc6323ce3405b7f2fcd2d7c2f97b9b56fb3af",
+            "dfb815e42e1f0f73ce3b4d2134423a42e342376d380c19b7f09c11a697d04eb1"
+          ],
+          "matchWallSeconds": 176.7745111999975,
+          "runnerWallSeconds": 178.6536058000056,
+          "cpuSeconds": {
+            "baseline": 312.21875,
+            "candidate": 302.859375
+          },
+          "statisticsAssessed": false,
+          "gamesPerMatchHour": 244.3791229105693,
+          "gcPauseCount": 47,
+          "gcPauseMilliseconds": 82.519,
+          "maxGcPauseMilliseconds": 4.226,
+          "preflightAndAuditSeconds": 1.8790946000081021,
+          "wholeRequestResources": {
+            "baseline": {
+              "requests": 814,
+              "nodes": 382772743,
+              "elapsedNanos": 170299829800
+            },
+            "candidate": {
+              "requests": 814,
+              "nodes": 371233042,
+              "elapsedNanos": 168999443400
+            }
+          },
+          "processCpuSeconds": [
+            {
+              "actor": "candidate",
+              "cpuSeconds": 148.578125
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 156.625
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 155.59375
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 154.28125
+            }
+          ],
+          "receiptSha256": "7c2f9b206eb511c640ae7254f27b460faf2c8c59cb9eecc1c62a130373a0c6c5"
+        },
+        {
+          "pairs": 6,
+          "games": 12,
+          "pairIds": [
+            "eeefc44fe27a8917c32155a2e01e5af5aae2d20fddb3b26c5a6489f64bc4eb36",
+            "33a2a1cb81ad25002deb7f784acee7940e684feeb65a245bc259810e6b1e5375",
+            "b0f162436a9f0e178f6366fe8fbe2ac728ceb4770662e65e0cfae3cc5c237d1a",
+            "b96db6a7b33a787e5044e93a4f400650ee30dd4527413b569e25565dd64405c2",
+            "a0a21e3091226afd3fec067c5c69f55d682c54e649adbb536e03694f42b2df04",
+            "41d3e2d872193cdd0b1bc59b47a93941922e235be4e10e0fbbc49b84044bba6c"
+          ],
+          "matchWallSeconds": 186.54690180000034,
+          "runnerWallSeconds": 188.3940445999906,
+          "cpuSeconds": {
+            "baseline": 324.578125,
+            "candidate": 306.84375
+          },
+          "statisticsAssessed": false,
+          "gamesPerMatchHour": 231.57715074954905,
+          "gcPauseCount": 50,
+          "gcPauseMilliseconds": 78.969,
+          "maxGcPauseMilliseconds": 4.075,
+          "preflightAndAuditSeconds": 1.8471427999902517,
+          "wholeRequestResources": {
+            "baseline": {
+              "requests": 880,
+              "nodes": 535866166,
+              "elapsedNanos": 175898348300
+            },
+            "candidate": {
+              "requests": 876,
+              "nodes": 500398255,
+              "elapsedNanos": 175405617200
+            }
+          },
+          "processCpuSeconds": [
+            {
+              "actor": "baseline",
+              "cpuSeconds": 154.28125
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 160.859375
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 145.984375
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 170.296875
+            }
+          ],
+          "receiptSha256": "e80fce1d0b955e1a1a2a1a30220c5e070190fdd1a902fba5f96d96a2f54be0fc"
+        }
+      ]
+    },
+    {
+      "study": "w4-c1",
+      "workers": 4,
+      "concurrency": 1,
+      "timeControl": "10+0.1",
+      "games": 24,
+      "pairs": 12,
+      "matchSeconds": 635.02262470001,
+      "runnerSeconds": 638.8021714000206,
+      "sessionSeconds": 643.4587921999919,
+      "gamesPerMatchHour": 136.05814444928805,
+      "pairsPerMatchHour": 68.02907222464403,
+      "gamesPerSessionHour": 134.27433278920248,
+      "pairsPerSessionHour": 67.13716639460124,
+      "blockGamesPerHourRange": [
+        134.82868393548173,
+        137.310233435271
+      ],
+      "cpuSeconds": {
+        "baseline": 578.234375,
+        "candidate": 554.890625
+      },
+      "averageEngineLogicalCpus": 1.7843852422349482,
+      "candidateToBaselineCpu": 0.9596292593293161,
+      "minimumSampledFreeMemoryGiB": 10.948780059814453,
+      "sampledSystemCpuPercent": [
+        32,
+        26
+      ],
+      "pagingSamples": [
+        {
+          "PagesInputPersec": 4423,
+          "PagesOutputPersec": 0,
+          "PageReadsPersec": 4423,
+          "PageWritesPersec": 0
+        },
+        {
+          "PagesInputPersec": 0,
+          "PagesOutputPersec": 0,
+          "PageReadsPersec": 0,
+          "PageWritesPersec": 0
+        }
+      ],
+      "planSha256": "11b0aa583d5c8e2dbc183c031da3611aaf62826a13037f7fd6f801b48b8c2b2c",
+      "blocks": [
+        {
+          "pairs": 6,
+          "games": 12,
+          "pairIds": [
+            "bd0d5d4383581d93051a6f39ff28780352e417f23c83eccd2dfc0c960062945c",
+            "e439ee27ad910f3e0fdb4ce6d61c693ba111671de34d41ac7046861549a268bd",
+            "039346b8c6dd278a6719cf10b08aa66e50a55653f4696e9372bf5504c75a086e",
+            "512135e156017237ab7623ae98d1761d4f730baacba041150cb186e3db17743d",
+            "30785076a948469c9a76b25e0d7dc6323ce3405b7f2fcd2d7c2f97b9b56fb3af",
+            "dfb815e42e1f0f73ce3b4d2134423a42e342376d380c19b7f09c11a697d04eb1"
+          ],
+          "matchWallSeconds": 314.61602620000485,
+          "runnerWallSeconds": 316.5084710000083,
+          "cpuSeconds": {
+            "baseline": 288.21875,
+            "candidate": 268.3125
+          },
+          "statisticsAssessed": false,
+          "gamesPerMatchHour": 137.310233435271,
+          "gcPauseCount": 38,
+          "gcPauseMilliseconds": 55.061,
+          "maxGcPauseMilliseconds": 4.01,
+          "preflightAndAuditSeconds": 1.8924448000034317,
+          "wholeRequestResources": {
+            "baseline": {
+              "requests": 687,
+              "nodes": 389238318,
+              "elapsedNanos": 156209858600
+            },
+            "candidate": {
+              "requests": 686,
+              "nodes": 369238098,
+              "elapsedNanos": 155215787900
+            }
+          },
+          "processCpuSeconds": [
+            {
+              "actor": "baseline",
+              "cpuSeconds": 288.21875
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 268.3125
+            }
+          ],
+          "receiptSha256": "dd7618d9d5a0fed7f8f52fc0dcc56e09eab61e2bf0af8d374cc3c1fc7992124a"
+        },
+        {
+          "pairs": 6,
+          "games": 12,
+          "pairIds": [
+            "eeefc44fe27a8917c32155a2e01e5af5aae2d20fddb3b26c5a6489f64bc4eb36",
+            "33a2a1cb81ad25002deb7f784acee7940e684feeb65a245bc259810e6b1e5375",
+            "b0f162436a9f0e178f6366fe8fbe2ac728ceb4770662e65e0cfae3cc5c237d1a",
+            "b96db6a7b33a787e5044e93a4f400650ee30dd4527413b569e25565dd64405c2",
+            "a0a21e3091226afd3fec067c5c69f55d682c54e649adbb536e03694f42b2df04",
+            "41d3e2d872193cdd0b1bc59b47a93941922e235be4e10e0fbbc49b84044bba6c"
+          ],
+          "matchWallSeconds": 320.4065985000052,
+          "runnerWallSeconds": 322.2937004000123,
+          "cpuSeconds": {
+            "baseline": 290.015625,
+            "candidate": 286.578125
+          },
+          "statisticsAssessed": false,
+          "gamesPerMatchHour": 134.82868393548173,
+          "gcPauseCount": 42,
+          "gcPauseMilliseconds": 69.075,
+          "maxGcPauseMilliseconds": 4.545,
+          "preflightAndAuditSeconds": 1.88710190000711,
+          "wholeRequestResources": {
+            "baseline": {
+              "requests": 716,
+              "nodes": 459329308,
+              "elapsedNanos": 158907633700
+            },
+            "candidate": {
+              "requests": 716,
+              "nodes": 449149452,
+              "elapsedNanos": 158248935000
+            }
+          },
+          "processCpuSeconds": [
+            {
+              "actor": "baseline",
+              "cpuSeconds": 290.015625
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 286.578125
+            }
+          ],
+          "receiptSha256": "57a5ddfdebd1a2442db90b0edb95637f66864ba2915285672b3e96ade579228d"
+        }
+      ]
+    },
+    {
+      "study": "w4-c3",
+      "workers": 4,
+      "concurrency": 3,
+      "timeControl": "10+0.1",
+      "games": 24,
+      "pairs": 12,
+      "matchSeconds": 270.86812709996593,
+      "runnerSeconds": 274.72911759998533,
+      "sessionSeconds": 279.4891190000053,
+      "gamesPerMatchHour": 318.97440619919604,
+      "pairsPerMatchHour": 159.48720309959802,
+      "gamesPerSessionHour": 309.1354694205407,
+      "pairsPerSessionHour": 154.56773471027034,
+      "blockGamesPerHourRange": [
+        317.6052724787095,
+        320.35539515641767
+      ],
+      "cpuSeconds": {
+        "baseline": 649.484375,
+        "candidate": 649.859375
+      },
+      "averageEngineLogicalCpus": 4.796960660936188,
+      "candidateToBaselineCpu": 1.0005773810955807,
+      "minimumSampledFreeMemoryGiB": 9.931289672851562,
+      "sampledSystemCpuPercent": [
+        52,
+        43
+      ],
+      "pagingSamples": [
+        {
+          "PagesInputPersec": 63,
+          "PagesOutputPersec": 0,
+          "PageReadsPersec": 3,
+          "PageWritesPersec": 0
+        },
+        {
+          "PagesInputPersec": 63,
+          "PagesOutputPersec": 0,
+          "PageReadsPersec": 3,
+          "PageWritesPersec": 0
+        }
+      ],
+      "planSha256": "3781e8e634dfd61fef81fd0bf9ec9cbfb30d173f85747668875bf2e28ca2e4a9",
+      "blocks": [
+        {
+          "pairs": 6,
+          "games": 12,
+          "pairIds": [
+            "bd0d5d4383581d93051a6f39ff28780352e417f23c83eccd2dfc0c960062945c",
+            "e439ee27ad910f3e0fdb4ce6d61c693ba111671de34d41ac7046861549a268bd",
+            "039346b8c6dd278a6719cf10b08aa66e50a55653f4696e9372bf5504c75a086e",
+            "512135e156017237ab7623ae98d1761d4f730baacba041150cb186e3db17743d",
+            "30785076a948469c9a76b25e0d7dc6323ce3405b7f2fcd2d7c2f97b9b56fb3af",
+            "dfb815e42e1f0f73ce3b4d2134423a42e342376d380c19b7f09c11a697d04eb1"
+          ],
+          "matchWallSeconds": 136.01789309998276,
+          "runnerWallSeconds": 137.9690963999892,
+          "cpuSeconds": {
+            "baseline": 320.796875,
+            "candidate": 317.265625
+          },
+          "statisticsAssessed": false,
+          "gamesPerMatchHour": 317.6052724787095,
+          "gcPauseCount": 68,
+          "gcPauseMilliseconds": 135.602,
+          "maxGcPauseMilliseconds": 9.514,
+          "preflightAndAuditSeconds": 1.9512033000064548,
+          "wholeRequestResources": {
+            "baseline": {
+              "requests": 792,
+              "nodes": 375379196,
+              "elapsedNanos": 170235114300
+            },
+            "candidate": {
+              "requests": 793,
+              "nodes": 369716757,
+              "elapsedNanos": 170251846200
+            }
+          },
+          "processCpuSeconds": [
+            {
+              "actor": "candidate",
+              "cpuSeconds": 123.40625
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 103.4375
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 97.953125
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 99.890625
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 93.96875
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 119.40625
+            }
+          ],
+          "receiptSha256": "460784ba885759e152b50e247f87815a051d6090299bfa28a8ce092945b6b5e0"
+        },
+        {
+          "pairs": 6,
+          "games": 12,
+          "pairIds": [
+            "eeefc44fe27a8917c32155a2e01e5af5aae2d20fddb3b26c5a6489f64bc4eb36",
+            "33a2a1cb81ad25002deb7f784acee7940e684feeb65a245bc259810e6b1e5375",
+            "b0f162436a9f0e178f6366fe8fbe2ac728ceb4770662e65e0cfae3cc5c237d1a",
+            "b96db6a7b33a787e5044e93a4f400650ee30dd4527413b569e25565dd64405c2",
+            "a0a21e3091226afd3fec067c5c69f55d682c54e649adbb536e03694f42b2df04",
+            "41d3e2d872193cdd0b1bc59b47a93941922e235be4e10e0fbbc49b84044bba6c"
+          ],
+          "matchWallSeconds": 134.85023399998317,
+          "runnerWallSeconds": 136.76002119999612,
+          "cpuSeconds": {
+            "baseline": 328.6875,
+            "candidate": 332.59375
+          },
+          "statisticsAssessed": false,
+          "gamesPerMatchHour": 320.35539515641767,
+          "gcPauseCount": 70,
+          "gcPauseMilliseconds": 128.879,
+          "maxGcPauseMilliseconds": 11.627,
+          "preflightAndAuditSeconds": 1.9097872000129428,
+          "wholeRequestResources": {
+            "baseline": {
+              "requests": 896,
+              "nodes": 399895201,
+              "elapsedNanos": 181033024200
+            },
+            "candidate": {
+              "requests": 897,
+              "nodes": 408321451,
+              "elapsedNanos": 181410462900
+            }
+          },
+          "processCpuSeconds": [
+            {
+              "actor": "candidate",
+              "cpuSeconds": 103.109375
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 124.875
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 104.25
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 113.4375
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 116.046875
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 99.5625
+            }
+          ],
+          "receiptSha256": "91a53a42142c21f141d670e3f37b6aacc2e8d5d26b9b9bb5a5d2248b2d849ae5"
+        }
+      ]
+    },
+    {
+      "study": "w1-c4",
+      "workers": 1,
+      "concurrency": 4,
+      "timeControl": "10+0.1",
+      "games": 24,
+      "pairs": 12,
+      "matchSeconds": 192.103829700005,
+      "runnerSeconds": 196.0963144999987,
+      "sessionSeconds": 200.70863880001707,
+      "gamesPerMatchHour": 449.75678066868727,
+      "pairsPerMatchHour": 224.87839033434364,
+      "gamesPerSessionHour": 430.47474446821195,
+      "pairsPerSessionHour": 215.23737223410598,
+      "blockGamesPerHourRange": [
+        431.3090566929912,
+        469.85308974022473
+      ],
+      "cpuSeconds": {
+        "baseline": 366.109375,
+        "candidate": 365.109375
+      },
+      "averageEngineLogicalCpus": 3.806372580608584,
+      "candidateToBaselineCpu": 0.9972685758183603,
+      "minimumSampledFreeMemoryGiB": 10.840251922607422,
+      "sampledSystemCpuPercent": [
+        42,
+        46
+      ],
+      "pagingSamples": [
+        {
+          "PagesInputPersec": 3,
+          "PagesOutputPersec": 0,
+          "PageReadsPersec": 3,
+          "PageWritesPersec": 0
+        },
+        {
+          "PagesInputPersec": 63,
+          "PagesOutputPersec": 0,
+          "PageReadsPersec": 3,
+          "PageWritesPersec": 0
+        }
+      ],
+      "planSha256": "0b72ff2202d40f30192ab7df5aa9b4baaa0367c8c202ed1cafe5f3a666b444e0",
+      "blocks": [
+        {
+          "pairs": 6,
+          "games": 12,
+          "pairIds": [
+            "bd0d5d4383581d93051a6f39ff28780352e417f23c83eccd2dfc0c960062945c",
+            "e439ee27ad910f3e0fdb4ce6d61c693ba111671de34d41ac7046861549a268bd",
+            "039346b8c6dd278a6719cf10b08aa66e50a55653f4696e9372bf5504c75a086e",
+            "512135e156017237ab7623ae98d1761d4f730baacba041150cb186e3db17743d",
+            "30785076a948469c9a76b25e0d7dc6323ce3405b7f2fcd2d7c2f97b9b56fb3af",
+            "dfb815e42e1f0f73ce3b4d2134423a42e342376d380c19b7f09c11a697d04eb1"
+          ],
+          "matchWallSeconds": 100.16019680001773,
+          "runnerWallSeconds": 102.13708129999577,
+          "cpuSeconds": {
+            "baseline": 187.640625,
+            "candidate": 187.140625
+          },
+          "statisticsAssessed": false,
+          "gamesPerMatchHour": 431.3090566929912,
+          "gcPauseCount": 24,
+          "gcPauseMilliseconds": 213.921,
+          "maxGcPauseMilliseconds": 13.753,
+          "preflightAndAuditSeconds": 1.9768844999780413,
+          "wholeRequestResources": {
+            "baseline": {
+              "requests": 784,
+              "nodes": 301539932,
+              "elapsedNanos": 167597354300
+            },
+            "candidate": {
+              "requests": 783,
+              "nodes": 299002882,
+              "elapsedNanos": 166673744000
+            }
+          },
+          "processCpuSeconds": [
+            {
+              "actor": "baseline",
+              "cpuSeconds": 52.984375
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 39.28125
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 52.578125
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 42.734375
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 38.828125
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 53.0
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 52.359375
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 43.015625
+            }
+          ],
+          "receiptSha256": "e01e09130eaaa5e9d6b68d301ec4fafe1043ba901ee182ac7d656b79701de541"
+        },
+        {
+          "pairs": 6,
+          "games": 12,
+          "pairIds": [
+            "eeefc44fe27a8917c32155a2e01e5af5aae2d20fddb3b26c5a6489f64bc4eb36",
+            "33a2a1cb81ad25002deb7f784acee7940e684feeb65a245bc259810e6b1e5375",
+            "b0f162436a9f0e178f6366fe8fbe2ac728ceb4770662e65e0cfae3cc5c237d1a",
+            "b96db6a7b33a787e5044e93a4f400650ee30dd4527413b569e25565dd64405c2",
+            "a0a21e3091226afd3fec067c5c69f55d682c54e649adbb536e03694f42b2df04",
+            "41d3e2d872193cdd0b1bc59b47a93941922e235be4e10e0fbbc49b84044bba6c"
+          ],
+          "matchWallSeconds": 91.94363289998728,
+          "runnerWallSeconds": 93.95923320000293,
+          "cpuSeconds": {
+            "baseline": 178.46875,
+            "candidate": 177.96875
+          },
+          "statisticsAssessed": false,
+          "gamesPerMatchHour": 469.85308974022473,
+          "gcPauseCount": 24,
+          "gcPauseMilliseconds": 221.008,
+          "maxGcPauseMilliseconds": 15.422,
+          "preflightAndAuditSeconds": 2.015600300015649,
+          "wholeRequestResources": {
+            "baseline": {
+              "requests": 738,
+              "nodes": 287199789,
+              "elapsedNanos": 157461542400
+            },
+            "candidate": {
+              "requests": 736,
+              "nodes": 284661930,
+              "elapsedNanos": 156990973200
+            }
+          },
+          "processCpuSeconds": [
+            {
+              "actor": "baseline",
+              "cpuSeconds": 49.140625
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 40.875
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 40.140625
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 46.296875
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 46.90625
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 50.046875
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 41.265625
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 41.765625
+            }
+          ],
+          "receiptSha256": "f289a0b45cafdc14251385bce36855e0df44fca20ad0f644a358c0ac8391ca97"
+        }
+      ]
+    },
+    {
+      "study": "w4-c4-final",
+      "workers": 4,
+      "concurrency": 4,
+      "timeControl": "10+0.1",
+      "games": 24,
+      "pairs": 12,
+      "matchSeconds": 190.3565990999923,
+      "runnerSeconds": 194.0799696999893,
+      "sessionSeconds": 198.91713070002152,
+      "gamesPerMatchHour": 453.88497382544114,
+      "pairsPerMatchHour": 226.94248691272057,
+      "gamesPerSessionHour": 434.3517307732343,
+      "pairsPerSessionHour": 217.17586538661715,
+      "blockGamesPerHourRange": [
+        444.185278785549,
+        464.0177515147313
+      ],
+      "cpuSeconds": {
+        "baseline": 639.375,
+        "candidate": 656.328125
+      },
+      "averageEngineLogicalCpus": 6.8067150344463805,
+      "candidateToBaselineCpu": 1.0265151515151516,
+      "minimumSampledFreeMemoryGiB": 10.21328353881836,
+      "sampledSystemCpuPercent": [
+        65,
+        67
+      ],
+      "pagingSamples": [
+        {
+          "PagesInputPersec": 0,
+          "PagesOutputPersec": 0,
+          "PageReadsPersec": 0,
+          "PageWritesPersec": 0
+        },
+        {
+          "PagesInputPersec": 0,
+          "PagesOutputPersec": 0,
+          "PageReadsPersec": 0,
+          "PageWritesPersec": 0
+        }
+      ],
+      "planSha256": "c0dae1ac48fe80779b49d9017b2101630aa39fde120efcc4eaaac18cf4db3067",
+      "blocks": [
+        {
+          "pairs": 6,
+          "games": 12,
+          "pairIds": [
+            "bd0d5d4383581d93051a6f39ff28780352e417f23c83eccd2dfc0c960062945c",
+            "e439ee27ad910f3e0fdb4ce6d61c693ba111671de34d41ac7046861549a268bd",
+            "039346b8c6dd278a6719cf10b08aa66e50a55653f4696e9372bf5504c75a086e",
+            "512135e156017237ab7623ae98d1761d4f730baacba041150cb186e3db17743d",
+            "30785076a948469c9a76b25e0d7dc6323ce3405b7f2fcd2d7c2f97b9b56fb3af",
+            "dfb815e42e1f0f73ce3b4d2134423a42e342376d380c19b7f09c11a697d04eb1"
+          ],
+          "matchWallSeconds": 97.25671260000672,
+          "runnerWallSeconds": 99.1417012999882,
+          "cpuSeconds": {
+            "baseline": 316.625,
+            "candidate": 326.03125
+          },
+          "statisticsAssessed": false,
+          "gamesPerMatchHour": 444.185278785549,
+          "gcPauseCount": 85,
+          "gcPauseMilliseconds": 184.061,
+          "maxGcPauseMilliseconds": 29.281,
+          "preflightAndAuditSeconds": 1.8849886999814771,
+          "wholeRequestResources": {
+            "baseline": {
+              "requests": 780,
+              "nodes": 382367289,
+              "elapsedNanos": 167318823700
+            },
+            "candidate": {
+              "requests": 779,
+              "nodes": 396537862,
+              "elapsedNanos": 166850466100
+            }
+          },
+          "processCpuSeconds": [
+            {
+              "actor": "baseline",
+              "cpuSeconds": 79.328125
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 62.515625
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 85.375
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 87.21875
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 84.75
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 88.796875
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 65.328125
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 89.34375
+            }
+          ],
+          "receiptSha256": "fb12994f16dc7ac2c0f8b76f4baee0307faf8e860814dc9282257fe3cc9bb11e"
+        },
+        {
+          "pairs": 6,
+          "games": 12,
+          "pairIds": [
+            "eeefc44fe27a8917c32155a2e01e5af5aae2d20fddb3b26c5a6489f64bc4eb36",
+            "33a2a1cb81ad25002deb7f784acee7940e684feeb65a245bc259810e6b1e5375",
+            "b0f162436a9f0e178f6366fe8fbe2ac728ceb4770662e65e0cfae3cc5c237d1a",
+            "b96db6a7b33a787e5044e93a4f400650ee30dd4527413b569e25565dd64405c2",
+            "a0a21e3091226afd3fec067c5c69f55d682c54e649adbb536e03694f42b2df04",
+            "41d3e2d872193cdd0b1bc59b47a93941922e235be4e10e0fbbc49b84044bba6c"
+          ],
+          "matchWallSeconds": 93.09988649998559,
+          "runnerWallSeconds": 94.9382684000011,
+          "cpuSeconds": {
+            "baseline": 322.75,
+            "candidate": 330.296875
+          },
+          "statisticsAssessed": false,
+          "gamesPerMatchHour": 464.0177515147313,
+          "gcPauseCount": 73,
+          "gcPauseMilliseconds": 161.203,
+          "maxGcPauseMilliseconds": 14.442,
+          "preflightAndAuditSeconds": 1.83838190001552,
+          "wholeRequestResources": {
+            "baseline": {
+              "requests": 818,
+              "nodes": 396828788,
+              "elapsedNanos": 171248557400
+            },
+            "candidate": {
+              "requests": 821,
+              "nodes": 415175253,
+              "elapsedNanos": 171625680200
+            }
+          },
+          "processCpuSeconds": [
+            {
+              "actor": "candidate",
+              "cpuSeconds": 77.90625
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 79.515625
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 80.3125
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 86.015625
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 76.75
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 87.28125
+            },
+            {
+              "actor": "baseline",
+              "cpuSeconds": 75.640625
+            },
+            {
+              "actor": "candidate",
+              "cpuSeconds": 89.625
+            }
+          ],
+          "receiptSha256": "7c7351261b256d8ffc04fee641fa462f3be3d68d17f3c9609b75996430541240"
+        }
+      ]
+    }
+  ],
+  "limits": "Two six-pair strata per setting, same 12 development openings, fixed order, not random population confidence bounds. Startup and drain effects matter. Host sampling is sparse; native CPU is full engine lifetime. No inference of candidate/comparator immunity to contention."
+}

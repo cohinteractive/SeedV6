@@ -1,0 +1,22 @@
+{
+  "purpose": "operational",
+  "assessmentPlan": "Prospective operational extension justified by first fixed stratum: C3 317.6 vs C2 244.4 valid games/hour (~30% gain), after C1/C2/C3 planned sequence. Same 12 openings/two six-pair blocks at 10+0.1. Test whether further concurrency adds practical value; no strength assessment or score-based selection.",
+  "blockPairs": 6,
+  "blockLimitSeconds": 900,
+  "arguments": {
+    "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime",
+    "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime",
+    "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+    "runner": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\tools\\fastchess.exe",
+    "java": "C:/java/jdk-21/bin/java.exe",
+    "baseline_policy": "off",
+    "candidate_policy": "off",
+    "baseline_workers": 4,
+    "candidate_workers": 4,
+    "concurrency": 4,
+    "tc": "10+0.1",
+    "seed": 20261017,
+    "pairs": 12,
+    "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\calibration-openings.pgn"
+  }
+}

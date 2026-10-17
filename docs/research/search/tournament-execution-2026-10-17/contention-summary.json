@@ -1,0 +1,35 @@
+{
+  "classification": "Fixed-node diagnostic only; no strength equivalence inference",
+  "rows": [
+    {
+      "concurrentSearches": 2,
+      "offLatencyRatio": 1.0895360217094305,
+      "qxrayLatencyRatio": 1.0694809268068544,
+      "relativeQxrayToOffSlowdown": 0.9815929950887621,
+      "offGroupSpeedup": 1.7738710306850272,
+      "qxrayGroupSpeedup": 1.812691944958185,
+      "requests": 256,
+      "resultPath": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\contention-c2\\result.json"
+    },
+    {
+      "concurrentSearches": 3,
+      "offLatencyRatio": 1.134512566506857,
+      "qxrayLatencyRatio": 1.2153186586180864,
+      "relativeQxrayToOffSlowdown": 1.071225383038312,
+      "offGroupSpeedup": 2.484020079556606,
+      "qxrayGroupSpeedup": 2.326986076175625,
+      "requests": 384,
+      "resultPath": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\contention-c3\\result.json"
+    },
+    {
+      "concurrentSearches": 4,
+      "offLatencyRatio": 1.2967507680157704,
+      "qxrayLatencyRatio": 1.386795731907573,
+      "relativeQxrayToOffSlowdown": 1.0694389130993809,
+      "offGroupSpeedup": 2.8692794504644565,
+      "qxrayGroupSpeedup": 2.656757338699626,
+      "requests": 512,
+      "resultPath": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\contention-c4\\result.json"
+    }
+  ]
+}

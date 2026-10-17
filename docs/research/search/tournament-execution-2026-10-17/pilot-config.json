@@ -1,0 +1,22 @@
+{
+  "purpose": "operational",
+  "assessmentPlan": "Infrastructure calibration only. No strength decision. Fixed 12 opening pairs; two 6-pair blocks, separate invocation per block.",
+  "blockPairs": 6,
+  "blockLimitSeconds": 600,
+  "arguments": {
+    "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime",
+    "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime",
+    "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+    "runner": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\tools\\fastchess.exe",
+    "java": "C:/java/jdk-21/bin/java.exe",
+    "baseline_policy": "off",
+    "candidate_policy": "off",
+    "baseline_workers": 4,
+    "candidate_workers": 4,
+    "concurrency": 2,
+    "tc": "10+0.1",
+    "seed": 20261017,
+    "pairs": 12,
+    "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\calibration-openings.pgn"
+  }
+}

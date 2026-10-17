@@ -27,6 +27,8 @@ def command(args, side):
     cmd[4:4] = ['-Dseedv6.uci.futilityResearch=' + policy,
                 '-Dseedv6.uci.warmupWorkers=' + str(workers),
                 '-Dseedv6.research.actor=' + side]
+    if getattr(args, 'operational', False):
+        cmd[4:4] = ['-Xlog:gc*:file=gc-%p.log:time,uptime']
     return cmd
 
 
@@ -94,7 +96,9 @@ def run(args):
                 '-rounds', str(args.pairs), '-repeat', '-concurrency', str(args.concurrency), '-srand', str(args.seed),
                 '-openings', 'file=' + str(Path(args.openings).resolve()), 'format=pgn', 'order=sequential',
                 '-pgnout', 'file=' + str(out / 'games.pgn'), 'nodes=true', 'nps=true', 'pv=true', 'timeleft=true', 'latency=true',
-                'match_line=^info string request ', '-report', 'penta=true', '-ratinginterval', '2',
+                'match_line=^info string request ', '-report',
+                'penta=false' if getattr(args, 'operational', False) else 'penta=true',
+                '-ratinginterval', '0' if getattr(args, 'operational', False) else '2',
                 '-autosaveinterval', '0', '-strict']
         report['runnerCommand'] = cmd; b.save(out / 'run.json', report)
         match_started = time.monotonic()
@@ -113,7 +117,9 @@ def run(args):
                 cohort.close()
         report['matchWallSeconds'] = time.monotonic() - match_started
         report['runnerExitCode'] = code
-        report['results'] = b.analyze(out / 'games.pgn', args.openings, args.pairs, require_accounting=True, unordered=args.concurrency > 1)
+        report['results'] = b.analyze(out / 'games.pgn', args.openings, args.pairs, require_accounting=True,
+                                    unordered=args.concurrency > 1,
+                                    statistics_enabled=not getattr(args, 'operational', False))
         assert code == 0 and report['results']['terminations'] == {'normal': args.pairs * 2}
         assert all(b.digest(p) == digest for p, digest in frozen.items()), 'Frozen inputs changed'
         report.update(status='passed', inputsStable=True)

@@ -1,0 +1,46 @@
+{
+  "commit": "f618e34540f94f4719ad3817950618dabe441318",
+  "classification": "Static implementation inspection; native resume not runtime qualified",
+  "sources": [
+    {
+      "path": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\fastchess-source\\tournament.cpp",
+      "url": "https://github.com/Disservin/fastchess/blob/f618e34540f94f4719ad3817950618dabe441318/app/src/matchmaking/tournament/base/tournament.cpp",
+      "sha256": "e049ce98afc9c4ea1d4cd6869842801dc7e23ce167da22951a5b6db265b4fadc"
+    },
+    {
+      "path": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\fastchess-source\\tournament.hpp",
+      "url": "https://github.com/Disservin/fastchess/blob/f618e34540f94f4719ad3817950618dabe441318/app/src/matchmaking/tournament/base/tournament.hpp",
+      "sha256": "acb89789ddeb695c82126ad6a754def4afb1fd126914e39a04ac414ee8ea0fd9"
+    },
+    {
+      "path": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\fastchess-source\\config.hpp",
+      "url": "https://github.com/Disservin/fastchess/blob/f618e34540f94f4719ad3817950618dabe441318/app/src/core/config/config.hpp",
+      "sha256": "bfab818b136e0e33d2748d4616461585b272f1f0d2a21f4c1c8be08eb9958596"
+    },
+    {
+      "path": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\fastchess-source\\tournament_manager.cpp",
+      "url": "https://github.com/Disservin/fastchess/blob/f618e34540f94f4719ad3817950618dabe441318/app/src/matchmaking/tournament/tournament_manager.cpp",
+      "sha256": "582eaf0f583c634ceb7147191ef2d578d3be5f2069ee7e799c0725d10db6483c"
+    },
+    {
+      "path": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\fastchess-source\\scheduler.hpp",
+      "url": "https://github.com/Disservin/fastchess/blob/f618e34540f94f4719ad3817950618dabe441318/app/src/matchmaking/tournament/roundrobin/scheduler.hpp",
+      "sha256": "aec467b3f99b235c4883cf26c1bd94c69a6c810e7ed0fb50df893bfbae6679fe"
+    },
+    {
+      "path": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\fastchess-source\\roundrobin.cpp",
+      "url": "https://github.com/Disservin/fastchess/blob/f618e34540f94f4719ad3817950618dabe441318/app/src/matchmaking/tournament/roundrobin/roundrobin.cpp",
+      "sha256": "c2773cf5470b6d482737baf35a468bbdcac8ccc842a3a69c4e5ec040c8f010e9"
+    },
+    {
+      "path": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\fastchess-source\\base_scheduler.hpp",
+      "url": "https://github.com/Disservin/fastchess/blob/f618e34540f94f4719ad3817950618dabe441318/app/src/matchmaking/tournament/schedule/base_scheduler.hpp",
+      "sha256": "b843ec9842aa90b61544e94f7af0d698255f9f376a06f0830c6fb5902231b263"
+    },
+    {
+      "path": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\fastchess-source\\stats.hpp",
+      "url": "https://github.com/Disservin/fastchess/blob/f618e34540f94f4719ad3817950618dabe441318/app/src/matchmaking/stats.hpp",
+      "sha256": "7a6b845637ef50e7a5e4bbf01ed13b81453e46f3b4035544d7796b4fbfc26289"
+    }
+  ]
+}

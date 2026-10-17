@@ -1,0 +1,44 @@
+{
+  "purpose": "Operational C4 diagnostic justified prospectively by C3 throughput",
+  "sessions": [
+    {
+      "index": 0,
+      "study": "w4-c4-final",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c4-final\\inputs\\tools\\tournament-session.py",
+        "run",
+        "--plan",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c4-final\\plan.json",
+        "--max-blocks",
+        "1",
+        "--stop-before",
+        "2026-10-17T03:20:15.701164+00:00"
+      ],
+      "exitCode": 0,
+      "sessionWallSeconds": 101.5064736000204,
+      "hostSampleExitCode": 0
+    },
+    {
+      "index": 1,
+      "study": "w4-c4-final",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c4-final\\inputs\\tools\\tournament-session.py",
+        "run",
+        "--plan",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c4-final\\plan.json",
+        "--max-blocks",
+        "1",
+        "--stop-before",
+        "2026-10-17T03:21:57.208960+00:00"
+      ],
+      "exitCode": 0,
+      "sessionWallSeconds": 97.41065710000112,
+      "hostSampleExitCode": 0
+    }
+  ],
+  "status": "passed"
+}

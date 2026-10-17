@@ -1,10 +1,13 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F041**
+Internal frontier revision: **P2-F042**
 
-Status: **SR-021 Futility-Pruning Family is technically DEFERRED without adoption by owner resource decision. No ACTIVE feature or authorized successor. GPT/owner technical reconciliation and BOTH current Project Source synchronizations remain pending. The SR-024 predecessor handback remains confirmed.**
+Status: **SR-021 Futility-Pruning Family is owner-accepted DEFERRED without adoption. Tournament execution maintenance is technically complete; GPT/owner maintenance reconciliation and BOTH final Project Source synchronizations remain pending. No ACTIVE feature or authorized successor. The SR-024 predecessor handback remains confirmed.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
+
+Current authoritative development repository: `C:/projects/seed/java/seedv6-unified`.
+Old repository paths in frozen experimental records describe historical provenance.
 
 ## Authority and historical coverage
 
@@ -917,6 +920,42 @@ governance document is needed.
 
 ## Maintenance and initialization state
 
+### Owner acceptance and tournament maintenance — 2026-10-17 local
+
+The owner accepts SR-021 as **DEFERRED without adoption** after GPT closeout
+reconciliation. Its six formulations, negative/inconclusive conclusions and
+interrupted SHALLOW4 evidence remain unchanged; automatic continuation is closed.
+No feature status or stable ID changes, no successor is selected, and no Mac
+work is admitted. Earlier pending-acceptance wording below is historical.
+
+The separately authorized [tournament execution maintenance](../docs/research/search/TOURNAMENT_EXECUTION_2026-10-17.md)
+uses the unified repository masters before final mirror refresh. Its measured
+valid-pair throughput, forecasts and validated bounded pair-block sessions inform
+future feature planning under the Contract's existing efficiency policy. Preserve
+the one-worker/four-worker distinction; freezes and execution windows are
+prospective, pauses are not statistical looks, and partial/abnormal blocks may
+not be automatically replayed. Detailed calibration and limitations live in that
+evidence record rather than a duplicate programme methodology.
+
+Maintenance is technically complete: 120 operational calibration games, a real
+two-session complete-stage audit/export, and deliberate partial-pair interruption
+with owned shutdown and rejected replay/export. The matched four-game pilot is
+1.91× faster in match time (1.87× including session overhead) than two games,
+but fixed-node controls show policy-dependent contention. Keep four-worker
+concurrency 2 as the conservative confirmation domain and one-worker concurrency
+4 unchanged. Four-game throughput is a prospectively justified fresh-domain
+option, not evidence of strength neutrality or authority to alter frozen studies.
+Partial/abnormal blocks remain a manual-investigation boundary, not a qualified
+native Fastchess partial-pair resume capability. Future features can reuse the
+calibration, forecasts and bounded-session method with those explicit limits.
+
+Maintenance closeout still requires GPT/owner reconciliation. The owner then
+replaces BOTH Project Source mirrors from final **P2-R038/P2-F042** and confirms
+synchronization before subsequent planning/launch. Intermediate P2-R037/P2-F041
+replacement is superseded; SR-024 acceptance and earlier synchronized mirrors
+remain satisfied. The owner separately updates external Project Instructions to
+the unified root. Codex neither performs nor claims these external actions.
+
 ### SR-021 technical closeout: DEFERRED - 2026-10-16 local
 
 The owner resolves the pending resource choice: "Close technically as DEFERRED."
@@ -1437,3 +1476,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-F039 | Record owner-directed SHALLOW4 interruption, preserved completed and partial evidence, verified process shutdown and SR-021 primary-PC resource constraint; continue bounded research and limited Mac feasibility without resumption, pooling, adoption or successor. |
 | P2-F040 | Record completed bounded DEEP development and additional correctness/worker evidence, preserved interruption and source identities, owner-deferred Mac access and the specific remaining resource choice; retain ACTIVE without adoption, automatic resumption or successor. |
 | P2-F041 | Close SR-021 technically as DEFERRED by explicit owner resource choice after substantial six-formulation investigation; preserve native protocol futility, distinct owner-interrupted four-worker evidence, bounded DEEP uncertainty, unchanged production, no automatic resumption/Mac work/successor, and BOTH-mirror GPT/owner handback. |
+| P2-F042 | Record owner-accepted SR-021 DEFERRED and unified repository authority; link tournament execution maintenance, measured concurrency/forecasting and bounded pair-block continuation with failure/statistical safeguards; preserve all feature IDs/dispositions and require BOTH final mirrors plus owner/GPT handback without selecting a successor. |

@@ -1,0 +1,137 @@
+"""Windows ownership boundary for the existing match adapter and all descendants.
+
+Create the child suspended, assign it to a non-inheritable kill-on-close Job,
+then resume its initial thread and release the stdin gate. Suspension also binds
+children created by Windows Python virtual-environment launchers. A killed parent,
+watchdog or exception therefore closes only this owned tree, even if Fastchess
+exits before its engines. No image-name kill or recycled-PID attachment is used.
+"""
+import ctypes as c
+from ctypes import wintypes as w
+import subprocess
+import time
+
+
+class BasicLimits(c.Structure):
+    _fields_ = [('processTime', c.c_int64), ('jobTime', c.c_int64),
+                ('flags', w.DWORD), ('minWorkingSet', c.c_size_t),
+                ('maxWorkingSet', c.c_size_t), ('activeLimit', w.DWORD),
+                ('affinity', c.c_size_t), ('priority', w.DWORD), ('scheduling', w.DWORD)]
+
+
+class Io(c.Structure):
+    _fields_ = [(name, c.c_uint64) for name in ('readOps', 'writeOps', 'otherOps',
+                                              'readBytes', 'writeBytes', 'otherBytes')]
+
+
+class Limits(c.Structure):
+    _fields_ = [('basic', BasicLimits), ('io', Io), ('processMemory', c.c_size_t),
+                ('jobMemory', c.c_size_t), ('peakProcessMemory', c.c_size_t),
+                ('peakJobMemory', c.c_size_t)]
+
+
+class Accounting(c.Structure):
+    _fields_ = [(name, c.c_int64) for name in ('user', 'kernel', 'periodUser', 'periodKernel')] + [
+        (name, w.DWORD) for name in ('pageFaults', 'totalProcesses', 'activeProcesses', 'terminatedProcesses')]
+
+
+class ThreadEntry(c.Structure):
+    _fields_ = [('size', w.DWORD), ('usage', w.DWORD), ('threadId', w.DWORD),
+                ('processId', w.DWORD), ('basePriority', w.LONG),
+                ('deltaPriority', w.LONG), ('flags', w.DWORD)]
+
+
+class OwnedJob:
+    def __init__(self):
+        self.k = c.WinDLL('kernel32', use_last_error=True)
+        signatures = {
+            'CreateJobObjectW': ([c.c_void_p, w.LPCWSTR], w.HANDLE),
+            'SetInformationJobObject': ([w.HANDLE, c.c_int, c.c_void_p, w.DWORD], w.BOOL),
+            'QueryInformationJobObject': ([w.HANDLE, c.c_int, c.c_void_p, w.DWORD, c.c_void_p], w.BOOL),
+            'AssignProcessToJobObject': ([w.HANDLE, w.HANDLE], w.BOOL),
+            'CloseHandle': ([w.HANDLE], w.BOOL),
+            'CreateToolhelp32Snapshot': ([w.DWORD, w.DWORD], w.HANDLE),
+            'Thread32First': ([w.HANDLE, c.POINTER(ThreadEntry)], w.BOOL),
+            'Thread32Next': ([w.HANDLE, c.POINTER(ThreadEntry)], w.BOOL),
+            'OpenThread': ([w.DWORD, w.BOOL, w.DWORD], w.HANDLE),
+            'ResumeThread': ([w.HANDLE], w.DWORD),
+        }
+        for name, (args, result) in signatures.items():
+            getattr(self.k, name).argtypes = args
+            getattr(self.k, name).restype = result
+        self.handle = self.k.CreateJobObjectW(None, None)
+        if not self.handle:
+            raise c.WinError(c.get_last_error())
+        limits = Limits(); limits.basic.flags = 0x2000  # JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE
+        if not self.k.SetInformationJobObject(self.handle, 9, c.byref(limits), c.sizeof(limits)):
+            self.close()
+            raise c.WinError(c.get_last_error())
+
+    def assign(self, process):
+        if not self.k.AssignProcessToJobObject(self.handle, int(process._handle)):
+            raise c.WinError(c.get_last_error())
+
+    def accounting(self):
+        value = Accounting()
+        if not self.k.QueryInformationJobObject(self.handle, 1, c.byref(value), c.sizeof(value), None):
+            raise c.WinError(c.get_last_error())
+        return value
+
+    def resume_initial_thread(self, process):
+        # Popen closes the primary thread handle. Enumerate the single thread of
+        # this still-suspended, retained process; no user code/venv child has run.
+        snapshot = self.k.CreateToolhelp32Snapshot(0x4, 0)  # TH32CS_SNAPTHREAD
+        if snapshot == c.c_void_p(-1).value:
+            raise c.WinError(c.get_last_error())
+        found = []
+        try:
+            entry = ThreadEntry(); entry.size = c.sizeof(entry)
+            more = self.k.Thread32First(snapshot, c.byref(entry))
+            while more:
+                if entry.processId == process.pid:
+                    found.append(entry.threadId)
+                more = self.k.Thread32Next(snapshot, c.byref(entry))
+        finally:
+            self.k.CloseHandle(snapshot)
+        if len(found) != 1:
+            raise RuntimeError('Suspended worker did not have exactly one initial thread')
+        handle = self.k.OpenThread(0x0002, False, found[0])  # THREAD_SUSPEND_RESUME
+        if not handle:
+            raise c.WinError(c.get_last_error())
+        try:
+            if self.k.ResumeThread(handle) != 1:
+                raise RuntimeError('Unexpected initial thread suspend count')
+        finally:
+            self.k.CloseHandle(handle)
+
+    def close(self):
+        if self.handle:
+            self.k.CloseHandle(self.handle)
+            self.handle = None
+
+
+def run_owned(command, log, timeout, cwd, env):
+    job = OwnedJob(); process = None
+    started = time.monotonic()
+    try:
+        process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=log,
+                                   stderr=subprocess.STDOUT, cwd=cwd, env=env,
+                                   creationflags=0x00000004)  # CREATE_SUSPENDED
+        job.assign(process)
+        job.resume_initial_thread(process)
+        process.stdin.write(b'GO\n'); process.stdin.close()
+        code = process.wait(timeout=timeout)
+        # A successful adapter must have drained every engine before publication.
+        accounting = job.accounting()
+        if accounting.activeProcesses:
+            raise RuntimeError('Worker exited with owned descendants still running')
+        return {'exitCode': code, 'wallSeconds': time.monotonic() - started,
+                'ownedProcessesRemaining': 0,
+                'totalOwnedProcesses': accounting.totalProcesses,
+                'totalOwnedCpuSeconds': (accounting.user + accounting.kernel) / 10_000_000}
+    finally:
+        job.close()
+        if process is not None and process.poll() is None:
+            # Assignment failure leaves only the gated child; it cannot have engines.
+            process.kill()
+            process.wait(timeout=10)

@@ -1,0 +1,9 @@
+{
+  "sourceHistoricalReadOnly": "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\fastchess\\fastchess-windows-x86-64\\fastchess.exe",
+  "destination": "build\\research\\tools\\fastchess.exe",
+  "sha256": "c6d7e4458a58025983c81bf38c524cb213e6f27559657dcfd72543392a431a71",
+  "matchesSource": true,
+  "version": "fastchess alpha 1.8.2 compiled for windows-latest 20260726-f618e34 (CI)",
+  "matchesHistoricalFrozenRunner": true,
+  "sourceStillUnchanged": true
+}

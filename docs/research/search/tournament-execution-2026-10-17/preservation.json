@@ -1,0 +1,50 @@
+{
+  "startingHead": "18ddd6ece499ab4304a65aeed774992b60196bac",
+  "protectedFileCount": 2719,
+  "fullBaselineLocalPath": "docs/research/search/tournament-execution-2026-10-17/raw/preservation-before.json",
+  "priorVersionOperation": {
+    "active.json": "ab82c8b671c564d3245582db77750a7c2b6b6f7d4c95e9bc3142e5a0cf700dde",
+    "operations\\ebe0487f7c214b398fc2625a8ac053fa\\baseline.json": "d295906e131fa2c4c9b04532fa8f996dd70501c0b4f5d0db73ec71ed8a5ca4a5",
+    "operations\\ebe0487f7c214b398fc2625a8ac053fa\\state.json": "f34cd8ba09a6abf0642fab88d1f5d78b337452a90a21b540eeef94f01c3b6d2c"
+  },
+  "versionStatus": "DEFERRED_FINALIZATION",
+  "maintenanceScope": "Research tooling only; no application impact or version bump.",
+  "initialJournalPresent": false,
+  "versionInitialSha256": "92a26d4e187edc6c47ed88100d355f77b4597d98524d21d005a3c164986b4bca",
+  "beginResult": {
+    "status": "blocked",
+    "token": null,
+    "blockers": [
+      "IntegrityFailure: Nested repositories are unsupported."
+    ]
+  },
+  "featureDispositionVerification": {
+    "CHESS_SEARCH_CONTRACT.md": {
+      "featureRowsUnchanged": true,
+      "featureRows": 0
+    },
+    "CHESS_SEARCH_RESEARCH_FRONTIER.md": {
+      "featureRowsUnchanged": true,
+      "featureRows": 48
+    }
+  },
+  "phase1Archives": {
+    "docs\\search-phase1\\CHESS_SEARCH_CONTRACT.md": "9f820c2e9efd366b179902d3fc14bdd8f88e6ae793356aded6b6119f73e8401b",
+    "docs\\search-phase1\\CHESS_SEARCH_RESEARCH_FRONTIER.md": "ead3743400b1dc513e02ad1c776b39db1486e8800c947cece9e20ba199e8fc1a"
+  },
+  "authoritativeRoot": "C:/projects/seed/java/seedv6-unified",
+  "branch": "main",
+  "historicalCloseoutIsAncestor": true,
+  "finalProtectedFilesChanged": [],
+  "priorVersionEvidenceUnchanged": true,
+  "versionFinalSha256": "92a26d4e187edc6c47ed88100d355f77b4597d98524d21d005a3c164986b4bca",
+  "rootJournalAbsent": true,
+  "observedUtc": "2026-10-17T03:14:45.266824+00:00",
+  "generatedWorktreeAreas": [
+    "build/research/",
+    "build/maintenance-gradle-home/",
+    "Gradle module build outputs and project .gradle caches",
+    "docs/research/search/tournament-execution-2026-10-17/raw/"
+  ],
+  "generatedStateLimitation": "Gradle/IDE caches can have concurrent writers; no full-tree finalizer attribution or historical-operation ownership is inferred."
+}

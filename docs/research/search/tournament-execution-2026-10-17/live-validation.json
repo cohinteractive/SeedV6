@@ -1,0 +1,111 @@
+{
+  "startedUtc": "2026-10-17T03:04:48.159842+00:00",
+  "status": "passed",
+  "checks": [
+    {
+      "label": "final-first",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "label": "incomplete-export",
+      "exitCode": 1,
+      "expectedSuccess": false
+    },
+    {
+      "label": "final-pause",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "label": "pause-respected",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "label": "final-resume",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "label": "final-status",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "label": "final-export",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "label": "interrupted-status",
+      "exitCode": 1,
+      "expectedSuccess": false
+    },
+    {
+      "label": "interrupted-resume",
+      "exitCode": 1,
+      "expectedSuccess": false
+    },
+    {
+      "label": "interrupted-export",
+      "exitCode": 1,
+      "expectedSuccess": false
+    }
+  ],
+  "completedStudy": {
+    "planSha256": "9c6c3a32b359dc8343c7a9009abb2627ef5acee23d6cf7c95bfe6b9f9f52aea0",
+    "pairs": 4,
+    "games": 8,
+    "gameIdentityAudit": "All four unique frozen openings occur once per color; existing independent legal/result/request auditor passed.",
+    "exportSha256": "34ab3e6b5f9608666fbaf9b4e66e5f243e66b2d2e3ccc8128584d6fea1924943"
+  },
+  "interruption": {
+    "ownedEngineCount": 4,
+    "allOwnedEnginesExited": true,
+    "unrelatedProcessSurvived": true,
+    "engineLifetimes": [
+      {
+        "creationTicks": 134366800405648549,
+        "createdUtc": "2026-10-17T03:07:20.564856+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-17T03:07:54.367277+00:00",
+        "kernelCpuSeconds": 0.90625,
+        "userCpuSeconds": 34.359375,
+        "totalCpuSeconds": 35.265625
+      },
+      {
+        "creationTicks": 134366800405648628,
+        "createdUtc": "2026-10-17T03:07:20.564863+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-17T03:07:54.367802+00:00",
+        "kernelCpuSeconds": 0.78125,
+        "userCpuSeconds": 33.453125,
+        "totalCpuSeconds": 34.234375
+      },
+      {
+        "creationTicks": 134366800412369484,
+        "createdUtc": "2026-10-17T03:07:21.236948+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-17T03:07:54.367792+00:00",
+        "kernelCpuSeconds": 0.875,
+        "userCpuSeconds": 32.59375,
+        "totalCpuSeconds": 33.46875
+      },
+      {
+        "creationTicks": 134366800414192157,
+        "createdUtc": "2026-10-17T03:07:21.419216+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-17T03:07:54.368021+00:00",
+        "kernelCpuSeconds": 0.546875,
+        "userCpuSeconds": 31.484375,
+        "totalCpuSeconds": 32.03125
+      }
+    ],
+    "partialPgnBytes": 33668,
+    "evidencePreserved": true,
+    "automaticReplayRejected": true,
+    "exportRejected": true
+  },
+  "endedUtc": "2026-10-17T03:07:56.533862+00:00"
+}

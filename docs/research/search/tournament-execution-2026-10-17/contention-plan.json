@@ -1,0 +1,12 @@
+{
+  "classification": "Operational diagnostics, no strength inference or new feature experiment",
+  "controls": "Same current research installation, accepted QXRAY and retained SEE OFF; four Search workers each",
+  "design": "Existing sr024-worker-concurrency-cost.py: eight development roots, four rotated serial/concurrent repetitions, 300000 nodes per request, three one-million-node warmups per process",
+  "concurrencies": [
+    2,
+    3,
+    4
+  ],
+  "reasonForFour": "First C4 clock block yielded 444.2 games/hour versus approximately 319 at C3, making asymmetric contention at four games materially relevant. Planned before examining fixed-node diagnostic results.",
+  "limitations": "Homogeneous control groups, not mixed-policy clock games; limited roots and one host. Relative slowdown is a diagnostic, not proof of absent strength bias."
+}

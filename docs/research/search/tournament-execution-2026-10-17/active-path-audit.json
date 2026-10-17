@@ -1,0 +1,7 @@
+{
+  "scope": "Tracked tools/, source/ and current top-level operational guides; literal old repository roots in either separator convention. Historical research/migration evidence excluded from replacement.",
+  "oldRootMatches": [],
+  "researchWorkspace": "build/research/runtime",
+  "fastchess": "build/research/tools/fastchess.exe",
+  "python": "build/research/venv/Scripts/python.exe"
+}

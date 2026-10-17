@@ -1,0 +1,626 @@
+{
+  "schema": 1,
+  "repositoryStartingHead": "18ddd6ece499ab4304a65aeed774992b60196bac",
+  "treeSha256Algorithm": "SHA256 of UTF-8 JSON mapping relative paths to file SHA256; keys sorted, separators comma/colon, no whitespace. Full maps remain in each immutable local plan.",
+  "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+  "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+  "openingSource": "docs/research/search/sr024-phase2-2026-10-14/development-openings.pgn",
+  "openingSourceSha256": "9e83f0e64df7eb319d630d2c092932d72b771150cecdd1852aab5507fcb6d9fa",
+  "openingSelection": "First twelve original development openings in file order; final/fault validation uses the first four. Operational reuse, not independent confirmation.",
+  "studies": [
+    {
+      "study": "final-session",
+      "execution": "started",
+      "planPath": "docs/research/search/tournament-execution-2026-10-17/raw/final-session/plan.json",
+      "planSha256": "9c6c3a32b359dc8343c7a9009abb2627ef5acee23d6cf7c95bfe6b9f9f52aea0",
+      "host": {
+        "host": "DESKTOP-TQLS4KP",
+        "platform": "Windows-11-10.0.26300-SP0",
+        "logicalCpus": 12,
+        "python": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
+        "pythonExecutable": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "chessPackage": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Lib\\site-packages\\chess"
+      },
+      "purpose": "operational",
+      "arguments": {
+        "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\final-session\\inputs\\baseline",
+        "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\final-session\\inputs\\candidate",
+        "store": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+        "runner": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\final-session\\inputs\\fastchess.exe",
+        "java": "C:\\java\\jdk-21\\bin\\java.exe",
+        "baseline_policy": "off",
+        "candidate_policy": "off",
+        "baseline_workers": 4,
+        "candidate_workers": 4,
+        "concurrency": 2,
+        "tc": "10+0.1",
+        "seed": 20261017,
+        "operational": true,
+        "timeout": 360
+      },
+      "pairs": 4,
+      "blocks": 2,
+      "blockPairCounts": [
+        2,
+        2
+      ],
+      "openingScheduleSha256": "da3af18982fb46cfe13a562427e12b53cab2c682e0738434f36b6867d1bc7ba9",
+      "toolSha256": {
+        "search-baseline.py": "f67b5c8ad6a88b5d94667b2ee8f12d1b454a0340592f781b70c139f491602678",
+        "sr021-match.py": "a3531da81fab4059958197a3e6687a470707bb47bbf4103f5647c4d3e7601240",
+        "sr024-process-cost.py": "c36a1b5f58cf511e5f78b89ae9a54751e95be5adede2e25f254cd62250c81830",
+        "sr036-process-cost.py": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+        "tournament-process.py": "d52f10d46a81ff3bac9b064ca98576d41bc5010a47f6e27aaa42d36114073e9f",
+        "tournament-session.py": "39b6ff5c81a5f6b096b6903c0a2c9b928f02ae8f6cf641fc4b04ec1372bb84bc"
+      },
+      "frozenTrees": [
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\final-session\\inputs",
+          "files": 32,
+          "treeSha256": "7e09b5a78e575c4c7a6b59c13d7b24f9b41d002394ac15fc26bbd9edf501ab16"
+        },
+        {
+          "path": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+          "files": 4,
+          "treeSha256": "e32ef56c6e449d76260483b1437699005a9f75a9bbb4bb2342af9d0ecefbfaf4"
+        },
+        {
+          "path": "C:\\java\\jdk-21",
+          "files": 484,
+          "treeSha256": "5663e2e767c76a0a30d599c32a2b3498e465490af10ba63eecbfb728d9411b57"
+        },
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Lib\\site-packages\\chess",
+          "files": 17,
+          "treeSha256": "75c54e3ddce7d531c4fc41f40a68f5fb102fdf8f46bd92f6040962ad40a03de1"
+        }
+      ],
+      "pythonExecutable": {
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe": "819c07dbf55c179f77a71d6f041c74c57b18d86f637f5f5e76ea882a50c9ed8b"
+      }
+    },
+    {
+      "study": "interruption",
+      "execution": "started",
+      "planPath": "docs/research/search/tournament-execution-2026-10-17/raw/interruption/plan.json",
+      "planSha256": "6a0aa9756bab7ebe58db5d4d07818b4e98d28c929c473f0a51703d9456ab9f3d",
+      "host": {
+        "host": "DESKTOP-TQLS4KP",
+        "platform": "Windows-11-10.0.26300-SP0",
+        "logicalCpus": 12,
+        "python": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
+        "pythonExecutable": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "chessPackage": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Lib\\site-packages\\chess"
+      },
+      "purpose": "operational",
+      "arguments": {
+        "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\interruption\\inputs\\baseline",
+        "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\interruption\\inputs\\candidate",
+        "store": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+        "runner": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\interruption\\inputs\\fastchess.exe",
+        "java": "C:\\java\\jdk-21\\bin\\java.exe",
+        "baseline_policy": "off",
+        "candidate_policy": "off",
+        "baseline_workers": 4,
+        "candidate_workers": 4,
+        "concurrency": 2,
+        "tc": "10+0.1",
+        "seed": 20261017,
+        "operational": true,
+        "timeout": 360
+      },
+      "pairs": 4,
+      "blocks": 1,
+      "blockPairCounts": [
+        4
+      ],
+      "openingScheduleSha256": "da3af18982fb46cfe13a562427e12b53cab2c682e0738434f36b6867d1bc7ba9",
+      "toolSha256": {
+        "search-baseline.py": "f67b5c8ad6a88b5d94667b2ee8f12d1b454a0340592f781b70c139f491602678",
+        "sr021-match.py": "a3531da81fab4059958197a3e6687a470707bb47bbf4103f5647c4d3e7601240",
+        "sr024-process-cost.py": "c36a1b5f58cf511e5f78b89ae9a54751e95be5adede2e25f254cd62250c81830",
+        "sr036-process-cost.py": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+        "tournament-process.py": "d52f10d46a81ff3bac9b064ca98576d41bc5010a47f6e27aaa42d36114073e9f",
+        "tournament-session.py": "39b6ff5c81a5f6b096b6903c0a2c9b928f02ae8f6cf641fc4b04ec1372bb84bc"
+      },
+      "frozenTrees": [
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\interruption\\inputs",
+          "files": 31,
+          "treeSha256": "876cc52849851d79f6543bdc431ae02681f506a73647f8f8d69b720dfa38c523"
+        },
+        {
+          "path": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+          "files": 4,
+          "treeSha256": "e32ef56c6e449d76260483b1437699005a9f75a9bbb4bb2342af9d0ecefbfaf4"
+        },
+        {
+          "path": "C:\\java\\jdk-21",
+          "files": 484,
+          "treeSha256": "5663e2e767c76a0a30d599c32a2b3498e465490af10ba63eecbfb728d9411b57"
+        },
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Lib\\site-packages\\chess",
+          "files": 17,
+          "treeSha256": "75c54e3ddce7d531c4fc41f40a68f5fb102fdf8f46bd92f6040962ad40a03de1"
+        }
+      ],
+      "pythonExecutable": {
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe": "819c07dbf55c179f77a71d6f041c74c57b18d86f637f5f5e76ea882a50c9ed8b"
+      }
+    },
+    {
+      "study": "pilot",
+      "execution": "unlaunched preparation; excluded from all measurements",
+      "planPath": "docs/research/search/tournament-execution-2026-10-17/raw/pilot/plan.json",
+      "planSha256": "6aadda971e5ca8dd9bc68a7e8ce59bcfdb0ee05ca712265388f1a6e2abc4d4a3",
+      "host": {
+        "host": "DESKTOP-TQLS4KP",
+        "platform": "Windows-11-10.0.26300-SP0",
+        "logicalCpus": 12,
+        "python": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]"
+      },
+      "purpose": "operational",
+      "arguments": {
+        "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\pilot\\inputs\\baseline",
+        "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\pilot\\inputs\\candidate",
+        "store": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+        "runner": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\pilot\\inputs\\fastchess.exe",
+        "java": "C:\\java\\jdk-21\\bin\\java.exe",
+        "baseline_policy": "off",
+        "candidate_policy": "off",
+        "baseline_workers": 4,
+        "candidate_workers": 4,
+        "concurrency": 2,
+        "tc": "10+0.1",
+        "seed": 20261017,
+        "operational": true,
+        "timeout": 360
+      },
+      "pairs": 12,
+      "blocks": 2,
+      "blockPairCounts": [
+        6,
+        6
+      ],
+      "openingScheduleSha256": "a1f805384152a853193789458707baf2707b30f959841e37ef79affb6943184e",
+      "toolSha256": {},
+      "frozenTrees": [
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\pilot\\inputs",
+          "files": 32,
+          "treeSha256": "e7aa72a1e1760bc4afcb403298c40e47baf1da3332e4cf73756e691e6c42ebfa"
+        },
+        {
+          "path": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+          "files": 4,
+          "treeSha256": "e32ef56c6e449d76260483b1437699005a9f75a9bbb4bb2342af9d0ecefbfaf4"
+        },
+        {
+          "path": "C:\\java\\jdk-21",
+          "files": 484,
+          "treeSha256": "5663e2e767c76a0a30d599c32a2b3498e465490af10ba63eecbfb728d9411b57"
+        },
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Lib\\site-packages\\chess",
+          "files": 9,
+          "treeSha256": "06a54fad90c92ac31e0b01b62a0843a031bc47592ae9b00117d220d3bb2f28ad"
+        }
+      ],
+      "pythonExecutable": {
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe": "819c07dbf55c179f77a71d6f041c74c57b18d86f637f5f5e76ea882a50c9ed8b"
+      }
+    },
+    {
+      "study": "w1-c4",
+      "execution": "started",
+      "planPath": "docs/research/search/tournament-execution-2026-10-17/raw/w1-c4/plan.json",
+      "planSha256": "0b72ff2202d40f30192ab7df5aa9b4baaa0367c8c202ed1cafe5f3a666b444e0",
+      "host": {
+        "host": "DESKTOP-TQLS4KP",
+        "platform": "Windows-11-10.0.26300-SP0",
+        "logicalCpus": 12,
+        "python": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]"
+      },
+      "purpose": "operational",
+      "arguments": {
+        "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w1-c4\\inputs\\baseline",
+        "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w1-c4\\inputs\\candidate",
+        "store": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+        "runner": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w1-c4\\inputs\\fastchess.exe",
+        "java": "C:\\java\\jdk-21\\bin\\java.exe",
+        "baseline_policy": "off",
+        "candidate_policy": "off",
+        "baseline_workers": 1,
+        "candidate_workers": 1,
+        "concurrency": 4,
+        "tc": "10+0.1",
+        "seed": 20261017,
+        "operational": true,
+        "timeout": 660
+      },
+      "pairs": 12,
+      "blocks": 2,
+      "blockPairCounts": [
+        6,
+        6
+      ],
+      "openingScheduleSha256": "a1f805384152a853193789458707baf2707b30f959841e37ef79affb6943184e",
+      "toolSha256": {
+        "search-baseline.py": "3dfc915ac62dc0021f19206efa77b143713425da4fe6e5c67f43a1f59af3a7c5",
+        "sr021-match.py": "a3531da81fab4059958197a3e6687a470707bb47bbf4103f5647c4d3e7601240",
+        "sr024-process-cost.py": "c36a1b5f58cf511e5f78b89ae9a54751e95be5adede2e25f254cd62250c81830",
+        "sr036-process-cost.py": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+        "tournament-process.py": "7ac69a2ea4d31aff56ed1970e5d1400bbad48e0273eaa4ea8a16634f72d99f68",
+        "tournament-session.py": "f5d252a317852349a80f149203f399a00a28864e86210e80ed8b8ca7dec48ea7"
+      },
+      "frozenTrees": [
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w1-c4\\inputs",
+          "files": 32,
+          "treeSha256": "f97f4e1674ffd613ad0bc75f6388ea523817262b9fa2c020c8c4317b8b67f473"
+        },
+        {
+          "path": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+          "files": 4,
+          "treeSha256": "e32ef56c6e449d76260483b1437699005a9f75a9bbb4bb2342af9d0ecefbfaf4"
+        },
+        {
+          "path": "C:\\java\\jdk-21",
+          "files": 484,
+          "treeSha256": "5663e2e767c76a0a30d599c32a2b3498e465490af10ba63eecbfb728d9411b57"
+        },
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Lib\\site-packages\\chess",
+          "files": 9,
+          "treeSha256": "06a54fad90c92ac31e0b01b62a0843a031bc47592ae9b00117d220d3bb2f28ad"
+        }
+      ],
+      "pythonExecutable": {
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe": "819c07dbf55c179f77a71d6f041c74c57b18d86f637f5f5e76ea882a50c9ed8b"
+      }
+    },
+    {
+      "study": "w4-c1",
+      "execution": "started",
+      "planPath": "docs/research/search/tournament-execution-2026-10-17/raw/w4-c1/plan.json",
+      "planSha256": "11b0aa583d5c8e2dbc183c031da3611aaf62826a13037f7fd6f801b48b8c2b2c",
+      "host": {
+        "host": "DESKTOP-TQLS4KP",
+        "platform": "Windows-11-10.0.26300-SP0",
+        "logicalCpus": 12,
+        "python": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]"
+      },
+      "purpose": "operational",
+      "arguments": {
+        "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c1\\inputs\\baseline",
+        "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c1\\inputs\\candidate",
+        "store": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+        "runner": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c1\\inputs\\fastchess.exe",
+        "java": "C:\\java\\jdk-21\\bin\\java.exe",
+        "baseline_policy": "off",
+        "candidate_policy": "off",
+        "baseline_workers": 4,
+        "candidate_workers": 4,
+        "concurrency": 1,
+        "tc": "10+0.1",
+        "seed": 20261017,
+        "operational": true,
+        "timeout": 660
+      },
+      "pairs": 12,
+      "blocks": 2,
+      "blockPairCounts": [
+        6,
+        6
+      ],
+      "openingScheduleSha256": "a1f805384152a853193789458707baf2707b30f959841e37ef79affb6943184e",
+      "toolSha256": {
+        "search-baseline.py": "3dfc915ac62dc0021f19206efa77b143713425da4fe6e5c67f43a1f59af3a7c5",
+        "sr021-match.py": "a3531da81fab4059958197a3e6687a470707bb47bbf4103f5647c4d3e7601240",
+        "sr024-process-cost.py": "c36a1b5f58cf511e5f78b89ae9a54751e95be5adede2e25f254cd62250c81830",
+        "sr036-process-cost.py": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+        "tournament-process.py": "7ac69a2ea4d31aff56ed1970e5d1400bbad48e0273eaa4ea8a16634f72d99f68",
+        "tournament-session.py": "f5d252a317852349a80f149203f399a00a28864e86210e80ed8b8ca7dec48ea7"
+      },
+      "frozenTrees": [
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c1\\inputs",
+          "files": 32,
+          "treeSha256": "f97f4e1674ffd613ad0bc75f6388ea523817262b9fa2c020c8c4317b8b67f473"
+        },
+        {
+          "path": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+          "files": 4,
+          "treeSha256": "e32ef56c6e449d76260483b1437699005a9f75a9bbb4bb2342af9d0ecefbfaf4"
+        },
+        {
+          "path": "C:\\java\\jdk-21",
+          "files": 484,
+          "treeSha256": "5663e2e767c76a0a30d599c32a2b3498e465490af10ba63eecbfb728d9411b57"
+        },
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Lib\\site-packages\\chess",
+          "files": 9,
+          "treeSha256": "06a54fad90c92ac31e0b01b62a0843a031bc47592ae9b00117d220d3bb2f28ad"
+        }
+      ],
+      "pythonExecutable": {
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe": "819c07dbf55c179f77a71d6f041c74c57b18d86f637f5f5e76ea882a50c9ed8b"
+      }
+    },
+    {
+      "study": "w4-c2",
+      "execution": "started",
+      "planPath": "docs/research/search/tournament-execution-2026-10-17/raw/w4-c2/plan.json",
+      "planSha256": "0dc5a36d1eee255fbf9c9ffe09468addc060d2f8e1c1ce370d634c4cc8e6c67e",
+      "host": {
+        "host": "DESKTOP-TQLS4KP",
+        "platform": "Windows-11-10.0.26300-SP0",
+        "logicalCpus": 12,
+        "python": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]"
+      },
+      "purpose": "operational",
+      "arguments": {
+        "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c2\\inputs\\baseline",
+        "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c2\\inputs\\candidate",
+        "store": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+        "runner": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c2\\inputs\\fastchess.exe",
+        "java": "C:\\java\\jdk-21\\bin\\java.exe",
+        "baseline_policy": "off",
+        "candidate_policy": "off",
+        "baseline_workers": 4,
+        "candidate_workers": 4,
+        "concurrency": 2,
+        "tc": "10+0.1",
+        "seed": 20261017,
+        "operational": true,
+        "timeout": 660
+      },
+      "pairs": 12,
+      "blocks": 2,
+      "blockPairCounts": [
+        6,
+        6
+      ],
+      "openingScheduleSha256": "a1f805384152a853193789458707baf2707b30f959841e37ef79affb6943184e",
+      "toolSha256": {
+        "search-baseline.py": "3dfc915ac62dc0021f19206efa77b143713425da4fe6e5c67f43a1f59af3a7c5",
+        "sr021-match.py": "a3531da81fab4059958197a3e6687a470707bb47bbf4103f5647c4d3e7601240",
+        "sr024-process-cost.py": "c36a1b5f58cf511e5f78b89ae9a54751e95be5adede2e25f254cd62250c81830",
+        "sr036-process-cost.py": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+        "tournament-process.py": "7ac69a2ea4d31aff56ed1970e5d1400bbad48e0273eaa4ea8a16634f72d99f68",
+        "tournament-session.py": "f5d252a317852349a80f149203f399a00a28864e86210e80ed8b8ca7dec48ea7"
+      },
+      "frozenTrees": [
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c2\\inputs",
+          "files": 32,
+          "treeSha256": "f97f4e1674ffd613ad0bc75f6388ea523817262b9fa2c020c8c4317b8b67f473"
+        },
+        {
+          "path": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+          "files": 4,
+          "treeSha256": "e32ef56c6e449d76260483b1437699005a9f75a9bbb4bb2342af9d0ecefbfaf4"
+        },
+        {
+          "path": "C:\\java\\jdk-21",
+          "files": 484,
+          "treeSha256": "5663e2e767c76a0a30d599c32a2b3498e465490af10ba63eecbfb728d9411b57"
+        },
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Lib\\site-packages\\chess",
+          "files": 9,
+          "treeSha256": "06a54fad90c92ac31e0b01b62a0843a031bc47592ae9b00117d220d3bb2f28ad"
+        }
+      ],
+      "pythonExecutable": {
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe": "819c07dbf55c179f77a71d6f041c74c57b18d86f637f5f5e76ea882a50c9ed8b"
+      }
+    },
+    {
+      "study": "w4-c3",
+      "execution": "started",
+      "planPath": "docs/research/search/tournament-execution-2026-10-17/raw/w4-c3/plan.json",
+      "planSha256": "3781e8e634dfd61fef81fd0bf9ec9cbfb30d173f85747668875bf2e28ca2e4a9",
+      "host": {
+        "host": "DESKTOP-TQLS4KP",
+        "platform": "Windows-11-10.0.26300-SP0",
+        "logicalCpus": 12,
+        "python": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]"
+      },
+      "purpose": "operational",
+      "arguments": {
+        "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c3\\inputs\\baseline",
+        "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c3\\inputs\\candidate",
+        "store": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+        "runner": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c3\\inputs\\fastchess.exe",
+        "java": "C:\\java\\jdk-21\\bin\\java.exe",
+        "baseline_policy": "off",
+        "candidate_policy": "off",
+        "baseline_workers": 4,
+        "candidate_workers": 4,
+        "concurrency": 3,
+        "tc": "10+0.1",
+        "seed": 20261017,
+        "operational": true,
+        "timeout": 660
+      },
+      "pairs": 12,
+      "blocks": 2,
+      "blockPairCounts": [
+        6,
+        6
+      ],
+      "openingScheduleSha256": "a1f805384152a853193789458707baf2707b30f959841e37ef79affb6943184e",
+      "toolSha256": {
+        "search-baseline.py": "3dfc915ac62dc0021f19206efa77b143713425da4fe6e5c67f43a1f59af3a7c5",
+        "sr021-match.py": "a3531da81fab4059958197a3e6687a470707bb47bbf4103f5647c4d3e7601240",
+        "sr024-process-cost.py": "c36a1b5f58cf511e5f78b89ae9a54751e95be5adede2e25f254cd62250c81830",
+        "sr036-process-cost.py": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+        "tournament-process.py": "7ac69a2ea4d31aff56ed1970e5d1400bbad48e0273eaa4ea8a16634f72d99f68",
+        "tournament-session.py": "f5d252a317852349a80f149203f399a00a28864e86210e80ed8b8ca7dec48ea7"
+      },
+      "frozenTrees": [
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c3\\inputs",
+          "files": 32,
+          "treeSha256": "f97f4e1674ffd613ad0bc75f6388ea523817262b9fa2c020c8c4317b8b67f473"
+        },
+        {
+          "path": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+          "files": 4,
+          "treeSha256": "e32ef56c6e449d76260483b1437699005a9f75a9bbb4bb2342af9d0ecefbfaf4"
+        },
+        {
+          "path": "C:\\java\\jdk-21",
+          "files": 484,
+          "treeSha256": "5663e2e767c76a0a30d599c32a2b3498e465490af10ba63eecbfb728d9411b57"
+        },
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Lib\\site-packages\\chess",
+          "files": 9,
+          "treeSha256": "06a54fad90c92ac31e0b01b62a0843a031bc47592ae9b00117d220d3bb2f28ad"
+        }
+      ],
+      "pythonExecutable": {
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe": "819c07dbf55c179f77a71d6f041c74c57b18d86f637f5f5e76ea882a50c9ed8b"
+      }
+    },
+    {
+      "study": "w4-c4",
+      "execution": "unlaunched preparation; excluded from all measurements",
+      "planPath": "docs/research/search/tournament-execution-2026-10-17/raw/w4-c4/plan.json",
+      "planSha256": "779d9fbff1af3b415a823ead07733c8639555a7015f2b56e046f84049847291b",
+      "host": {
+        "host": "DESKTOP-TQLS4KP",
+        "platform": "Windows-11-10.0.26300-SP0",
+        "logicalCpus": 12,
+        "python": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
+        "pythonExecutable": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "chessPackage": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Lib\\site-packages\\chess"
+      },
+      "purpose": "operational",
+      "arguments": {
+        "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c4\\inputs\\baseline",
+        "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c4\\inputs\\candidate",
+        "store": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+        "runner": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c4\\inputs\\fastchess.exe",
+        "java": "C:\\java\\jdk-21\\bin\\java.exe",
+        "baseline_policy": "off",
+        "candidate_policy": "off",
+        "baseline_workers": 4,
+        "candidate_workers": 4,
+        "concurrency": 4,
+        "tc": "10+0.1",
+        "seed": 20261017,
+        "operational": true,
+        "timeout": 660
+      },
+      "pairs": 12,
+      "blocks": 2,
+      "blockPairCounts": [
+        6,
+        6
+      ],
+      "openingScheduleSha256": "a1f805384152a853193789458707baf2707b30f959841e37ef79affb6943184e",
+      "toolSha256": {},
+      "frozenTrees": [
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c4\\inputs",
+          "files": 32,
+          "treeSha256": "a52926fb863a4975364e6430fa04f779a1a6150a73990f2557d5f99b0ccf7198"
+        },
+        {
+          "path": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+          "files": 4,
+          "treeSha256": "e32ef56c6e449d76260483b1437699005a9f75a9bbb4bb2342af9d0ecefbfaf4"
+        },
+        {
+          "path": "C:\\java\\jdk-21",
+          "files": 484,
+          "treeSha256": "5663e2e767c76a0a30d599c32a2b3498e465490af10ba63eecbfb728d9411b57"
+        },
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Lib\\site-packages\\chess",
+          "files": 17,
+          "treeSha256": "75c54e3ddce7d531c4fc41f40a68f5fb102fdf8f46bd92f6040962ad40a03de1"
+        }
+      ],
+      "pythonExecutable": {
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe": "819c07dbf55c179f77a71d6f041c74c57b18d86f637f5f5e76ea882a50c9ed8b"
+      }
+    },
+    {
+      "study": "w4-c4-final",
+      "execution": "started",
+      "planPath": "docs/research/search/tournament-execution-2026-10-17/raw/w4-c4-final/plan.json",
+      "planSha256": "c0dae1ac48fe80779b49d9017b2101630aa39fde120efcc4eaaac18cf4db3067",
+      "host": {
+        "host": "DESKTOP-TQLS4KP",
+        "platform": "Windows-11-10.0.26300-SP0",
+        "logicalCpus": 12,
+        "python": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
+        "pythonExecutable": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "chessPackage": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Lib\\site-packages\\chess"
+      },
+      "purpose": "operational",
+      "arguments": {
+        "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c4-final\\inputs\\baseline",
+        "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c4-final\\inputs\\candidate",
+        "store": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+        "runner": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c4-final\\inputs\\fastchess.exe",
+        "java": "C:\\java\\jdk-21\\bin\\java.exe",
+        "baseline_policy": "off",
+        "candidate_policy": "off",
+        "baseline_workers": 4,
+        "candidate_workers": 4,
+        "concurrency": 4,
+        "tc": "10+0.1",
+        "seed": 20261017,
+        "operational": true,
+        "timeout": 660
+      },
+      "pairs": 12,
+      "blocks": 2,
+      "blockPairCounts": [
+        6,
+        6
+      ],
+      "openingScheduleSha256": "a1f805384152a853193789458707baf2707b30f959841e37ef79affb6943184e",
+      "toolSha256": {
+        "search-baseline.py": "f67b5c8ad6a88b5d94667b2ee8f12d1b454a0340592f781b70c139f491602678",
+        "sr021-match.py": "a3531da81fab4059958197a3e6687a470707bb47bbf4103f5647c4d3e7601240",
+        "sr024-process-cost.py": "c36a1b5f58cf511e5f78b89ae9a54751e95be5adede2e25f254cd62250c81830",
+        "sr036-process-cost.py": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+        "tournament-process.py": "e53908080e011364fc21222042927ec5a43956c638138d3ea3a5cfc070de9f84",
+        "tournament-session.py": "39b6ff5c81a5f6b096b6903c0a2c9b928f02ae8f6cf641fc4b04ec1372bb84bc"
+      },
+      "frozenTrees": [
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c4-final\\inputs",
+          "files": 32,
+          "treeSha256": "517df797611222df171a5e7e8522c8e2e01a2e5d75d042bf93c30717fcd9274d"
+        },
+        {
+          "path": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+          "files": 4,
+          "treeSha256": "e32ef56c6e449d76260483b1437699005a9f75a9bbb4bb2342af9d0ecefbfaf4"
+        },
+        {
+          "path": "C:\\java\\jdk-21",
+          "files": 484,
+          "treeSha256": "5663e2e767c76a0a30d599c32a2b3498e465490af10ba63eecbfb728d9411b57"
+        },
+        {
+          "path": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Lib\\site-packages\\chess",
+          "files": 17,
+          "treeSha256": "75c54e3ddce7d531c4fc41f40a68f5fb102fdf8f46bd92f6040962ad40a03de1"
+        }
+      ],
+      "pythonExecutable": {
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe": "819c07dbf55c179f77a71d6f041c74c57b18d86f637f5f5e76ea882a50c9ed8b"
+      }
+    }
+  ]
+}

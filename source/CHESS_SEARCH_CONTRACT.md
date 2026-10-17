@@ -1,10 +1,13 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R037**
+Internal revision: **P2-R038**
 
-Status: **SR-021 Futility-Pruning Family is technically DEFERRED without adoption by owner resource decision. No ACTIVE feature or authorized successor. GPT/owner technical reconciliation and BOTH current Project Source synchronizations remain pending. The SR-024 predecessor handback remains confirmed.**
+Status: **SR-021 Futility-Pruning Family is owner-accepted DEFERRED without adoption. Tournament execution maintenance is technically complete; GPT/owner maintenance reconciliation and BOTH final Project Source synchronizations remain pending. No ACTIVE feature or authorized successor. The SR-024 predecessor handback remains confirmed.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
+
+Current authoritative development repository: `C:/projects/seed/java/seedv6-unified`.
+Old repository paths in frozen experimental records describe historical provenance.
 
 ## Authority and the frozen Phase 1 record
 
@@ -801,8 +804,12 @@ candidate-versus-baseline strength unaffected; investigate plausible asymmetric
 resource effects with relevant comparisons or diagnostics and retain the
 limitations.
 
-Four simultaneous independent games were previously measured as suitable on the
-Windows research host. Reuse that calibration when the host, workload, time
+Four simultaneous independent games were previously measured as suitable for
+one-worker engines on the Windows research host; the established four-worker
+domain uses two games. With pondering disabled, ordinarily only the side to move
+searches: do not budget every engine as continuously using all configured workers.
+Measure actual whole-tournament CPU, memory, contention and valid complete-pair
+throughput, including startup/warm-up, draining and audit costs. Reuse calibration when the host, workload, time
 controls and resource conditions remain sufficiently comparable. Four is not a
 universal fixed requirement: four, six, eight or another defensible count may be
 appropriate for actual hardware, workload and observed valid comparison throughput.
@@ -815,6 +822,48 @@ Search configuration, opening/color pairing, seeds and other frozen parameters
 under [comparability and evidence](#comparability-and-evidence). Record actual
 game concurrency, per-engine Search workers, relevant resource conditions and
 material limitations with the experimental evidence.
+
+### Duration forecasts and operational sessions
+
+Before a substantial tournament, record total games/pairs, the applicable measured
+rate and its source/domain, per-stage wall-time forecasts and uncertainty,
+prospective assessment looks/precision/decision value, execution windows or session
+count, and failure/recovery exposure. Use valid completed games and complete pairs
+per hour, not aggregate NPS or maximum logical-thread occupancy. Separate match
+time from total runner/session time and account for both in scheduling.
+
+Owner workstation availability is a legitimate research cost. Current Windows
+preferences allow roughly 4–6 disruptive daytime hours or 6–8 overnight hours;
+a continuous disruptive 12-hour run needs a suitable alternative or explicit
+approval. These are planning preferences, not universal computation ceilings or
+statistical stopping rules. A worthwhile larger sample may span several suitably
+scheduled sessions. Configure actual timezone-aware windows; never invent sleep
+hours or launch an unauthorized study from a generic schedule.
+
+Freeze binaries, evaluator/checkpoint, worker policies, clocks, game concurrency,
+opening identities/color reversal and relevant resource conditions before play.
+Operational session boundaries are not statistical looks. Do not inspect interim
+strength to decide continuation, change samples, or selectively replay/exclude
+games. Preserve prospective look/multiplicity/futility rules across sessions.
+Keep statistical stages distinct from smaller execution blocks. If JVM restarts
+are used, define their block boundaries prospectively and apply them regardless
+of whether a run actually pauses, so session timing cannot change that condition.
+
+Use only demonstrated continuation capabilities: exclusive process ownership,
+durable input identities and progress, full game/pair audit, exactly-once completed
+records, bounded shutdown and explicit failure classification. Prefer clean
+complete-pair/block stops. Preserve incomplete and adverse records; if partial
+recovery cannot be audited without duplication/loss/selective replacement, block
+automatic replay and report the limitation. A saved Fastchess config alone is not
+proof of SeedV6 resume integrity. The [maintenance evidence and procedure](../docs/research/search/TOURNAMENT_EXECUTION_2026-10-17.md)
+documents the available Windows pair-block method and its limitations.
+
+Reuse suitable measured calibration; remeasure proportionately after material
+worker/hardware/JVM/evaluator/clock/resource changes. Shorter clocks such as
+5+0.05 are a distinct measurement domain, not an automatic substitute for 10+0.1.
+Changing the programme's confirmation-clock standard requires appropriate
+evidence and owner authority. Do not shrink an inferentially justified sample
+solely to fit one night when validated multi-session execution is available.
 
 ### Long-running experiment monitoring and reporting
 
@@ -1013,6 +1062,26 @@ uses repository masters during the selected feature; Phase 1 archives require
 no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
+
+### Owner acceptance and tournament maintenance — 2026-10-17 local
+
+The owner confirms SR-021 closeout acceptance as DEFERRED without adoption.
+This supersedes the pending-reconciliation language in the historical closeout
+entry below; its technical conclusions and frozen experiments are unchanged.
+No Search feature is ACTIVE or selected. Maintenance is separately authorized
+before final mirror replacement, using the masters in seedv6-unified. The
+[maintenance record](../docs/research/search/TOURNAMENT_EXECUTION_2026-10-17.md)
+records tooling, calibration, validation, operating procedure and limitations.
+The completed maintenance demonstrates bounded complete-pair-block continuation,
+full-stage export and fail-closed interrupted-pair handling. Four concurrent
+four-worker games show useful operational throughput, but policy-dependent
+contention prevents claiming equivalence to the established two-game confirmation
+domain. Retain that conservative setting and native one-worker concurrency 4;
+higher-throughput fresh domains need prospective comparison-specific justification.
+After maintenance reconciliation the owner replaces BOTH final P2-R038/P2-F042
+Project Source mirrors before subsequent feature planning/launch. No intermediate
+P2-R037/P2-F041 refresh is required. SR-024 acceptance and predecessor mirror
+gates remain satisfied; Mac work and SHALLOW4 automatic continuation remain closed.
 
 ### SR-021 technical closeout: DEFERRED - 2026-10-16 local
 
@@ -1530,3 +1599,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-R035 | Record owner-directed SHALLOW4 interruption, preserved completed and partial evidence, verified process shutdown and SR-021 primary-PC resource constraint; continue bounded research and limited Mac feasibility without resumption, pooling, adoption or successor. |
 | P2-R036 | Record completed bounded DEEP development and additional correctness/worker evidence, preserved interruption and source identities, owner-deferred Mac access and the specific remaining resource choice; retain ACTIVE without adoption, automatic resumption or successor. |
 | P2-R037 | Close SR-021 technically as DEFERRED by explicit owner resource choice after substantial six-formulation investigation; preserve native protocol futility, distinct owner-interrupted four-worker evidence, bounded DEEP uncertainty, unchanged production, no automatic resumption/Mac work/successor, and BOTH-mirror GPT/owner handback. |
+| P2-R038 | Record owner-accepted SR-021 DEFERRED and unified repository authority; refine measured worker/game concurrency, whole-session forecasts, workstation cost and integrity-preserving pair-block sessions with operational/statistical separation; link bounded maintenance evidence, preserve historical conclusions and require BOTH final mirrors without successor activation. |

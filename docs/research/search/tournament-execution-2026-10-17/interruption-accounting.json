@@ -1,0 +1,15 @@
+{
+  "games": 1,
+  "completePairs": 0,
+  "partialPairs": 1,
+  "records": [
+    {
+      "pair": 0,
+      "white": "baseline",
+      "hasCompletedResult": true,
+      "termination": "normal",
+      "parseErrors": 0
+    }
+  ],
+  "classification": "Preserved fault-injection output only; not a completed scheduled stage or strength evidence"
+}

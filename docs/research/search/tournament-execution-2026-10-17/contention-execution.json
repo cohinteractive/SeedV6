@@ -1,0 +1,74 @@
+[
+  {
+    "command": [
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\projects\\seed\\java\\seedv6-unified\\tools\\sr024-worker-concurrency-cost.py",
+      "--baseline",
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime",
+      "--candidate",
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime",
+      "--store",
+      "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "--openings",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\calibration-openings.pgn",
+      "--out",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\contention-c2",
+      "--runner-directory",
+      "C:\\projects\\seed\\java\\seedv6-unified\\tools",
+      "--concurrency",
+      "2"
+    ],
+    "exitCode": 0,
+    "wallSeconds": 30.530404899996938
+  },
+  {
+    "command": [
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\projects\\seed\\java\\seedv6-unified\\tools\\sr024-worker-concurrency-cost.py",
+      "--baseline",
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime",
+      "--candidate",
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime",
+      "--store",
+      "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "--openings",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\calibration-openings.pgn",
+      "--out",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\contention-c3",
+      "--runner-directory",
+      "C:\\projects\\seed\\java\\seedv6-unified\\tools",
+      "--concurrency",
+      "3"
+    ],
+    "exitCode": 0,
+    "wallSeconds": 42.854797099978896
+  },
+  {
+    "command": [
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\projects\\seed\\java\\seedv6-unified\\tools\\sr024-worker-concurrency-cost.py",
+      "--baseline",
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime",
+      "--candidate",
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime",
+      "--store",
+      "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "--openings",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\calibration-openings.pgn",
+      "--out",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\contention-c4",
+      "--runner-directory",
+      "C:\\projects\\seed\\java\\seedv6-unified\\tools",
+      "--concurrency",
+      "4"
+    ],
+    "exitCode": 0,
+    "wallSeconds": 54.6609552000009,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 10,
+    "totalOwnedCpuSeconds": 165.203125
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "rateBasis": "historical-four-worker-C2",
+    "pairs": 1536,
+    "games": 3072,
+    "gamesPerHour": 262.34422729549055,
+    "pairsPerHour": 131.17211364774528,
+    "expectedPlayHours": 11.709805973888889,
+    "planningPlayHours": 14.637257467361112,
+    "slowdownAllowance": 1.25,
+    "sessionHours": 6.5,
+    "reserveHoursEachSession": 0.3,
+    "expectedSessions": 2,
+    "planningSessions": 3,
+    "limits": "Scenario allowance, not a statistical confidence interval. Include block startup/audit cost in measured rate; window reserves must cover the frozen block watchdog. No sample-size or stopping decision."
+  },
+  {
+    "rateBasis": "measured-four-worker-C4-whole-session",
+    "pairs": 1536,
+    "games": 3072,
+    "gamesPerHour": 434.3517307732343,
+    "pairsPerHour": 217.17586538661715,
+    "expectedPlayHours": 7.072609091556321,
+    "planningPlayHours": 8.8407613644454,
+    "slowdownAllowance": 1.25,
+    "sessionHours": 6.5,
+    "reserveHoursEachSession": 0.3,
+    "expectedSessions": 2,
+    "planningSessions": 2,
+    "limits": "Scenario allowance, not a statistical confidence interval. Include block startup/audit cost in measured rate; window reserves must cover the frozen block watchdog. No sample-size or stopping decision."
+  },
+  {
+    "rateBasis": "conservative-fresh-four-worker-C4-plan",
+    "pairs": 1536,
+    "games": 3072,
+    "gamesPerHour": 400,
+    "pairsPerHour": 200.0,
+    "expectedPlayHours": 7.68,
+    "planningPlayHours": 9.6,
+    "slowdownAllowance": 1.25,
+    "sessionHours": 6.5,
+    "reserveHoursEachSession": 0.3,
+    "expectedSessions": 2,
+    "planningSessions": 2,
+    "limits": "Scenario allowance, not a statistical confidence interval. Include block startup/audit cost in measured rate; window reserves must cover the frozen block watchdog. No sample-size or stopping decision."
+  }
+]

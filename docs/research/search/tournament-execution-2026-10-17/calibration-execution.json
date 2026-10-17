@@ -1,0 +1,171 @@
+{
+  "purpose": "Operational throughput/integrity only; no strength inference",
+  "startedUtc": "2026-10-17T02:35:17.940951+00:00",
+  "order": [
+    "w4-c2",
+    "w4-c1",
+    "w4-c3",
+    "w4-c3",
+    "w4-c1",
+    "w4-c2",
+    "w1-c4",
+    "w1-c4"
+  ],
+  "driverSha256": "e5b8b4aa1a5f093df6de9185b824e42baa84ca98f1a8b2861fb17d700421f507",
+  "sessions": [
+    {
+      "index": 0,
+      "study": "w4-c2",
+      "exitCode": 0,
+      "sessionWallSeconds": 180.98789389999,
+      "hostSampleExitCode": 0,
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c2\\inputs\\tools\\tournament-session.py",
+        "run",
+        "--plan",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c2\\plan.json",
+        "--max-blocks",
+        "1",
+        "--stop-before",
+        "2026-10-17T02:55:17.942705+00:00"
+      ]
+    },
+    {
+      "index": 1,
+      "study": "w4-c1",
+      "exitCode": 0,
+      "sessionWallSeconds": 318.7948832999973,
+      "hostSampleExitCode": 0,
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c1\\inputs\\tools\\tournament-session.py",
+        "run",
+        "--plan",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c1\\plan.json",
+        "--max-blocks",
+        "1",
+        "--stop-before",
+        "2026-10-17T02:58:18.932007+00:00"
+      ]
+    },
+    {
+      "index": 2,
+      "study": "w4-c3",
+      "exitCode": 0,
+      "sessionWallSeconds": 140.2654182999977,
+      "hostSampleExitCode": 0,
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c3\\inputs\\tools\\tournament-session.py",
+        "run",
+        "--plan",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c3\\plan.json",
+        "--max-blocks",
+        "1",
+        "--stop-before",
+        "2026-10-17T03:03:37.728260+00:00"
+      ]
+    },
+    {
+      "index": 3,
+      "study": "w4-c3",
+      "exitCode": 0,
+      "sessionWallSeconds": 139.2237007000076,
+      "hostSampleExitCode": 0,
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c3\\inputs\\tools\\tournament-session.py",
+        "run",
+        "--plan",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c3\\plan.json",
+        "--max-blocks",
+        "1",
+        "--stop-before",
+        "2026-10-17T03:05:57.995036+00:00"
+      ]
+    },
+    {
+      "index": 4,
+      "study": "w4-c1",
+      "exitCode": 0,
+      "sessionWallSeconds": 324.66390889999457,
+      "hostSampleExitCode": 0,
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c1\\inputs\\tools\\tournament-session.py",
+        "run",
+        "--plan",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c1\\plan.json",
+        "--max-blocks",
+        "1",
+        "--stop-before",
+        "2026-10-17T03:08:17.220127+00:00"
+      ]
+    },
+    {
+      "index": 5,
+      "study": "w4-c2",
+      "exitCode": 0,
+      "sessionWallSeconds": 190.74754769998253,
+      "hostSampleExitCode": 0,
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c2\\inputs\\tools\\tournament-session.py",
+        "run",
+        "--plan",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w4-c2\\plan.json",
+        "--max-blocks",
+        "1",
+        "--stop-before",
+        "2026-10-17T03:13:41.885212+00:00"
+      ]
+    },
+    {
+      "index": 6,
+      "study": "w1-c4",
+      "exitCode": 0,
+      "sessionWallSeconds": 104.39706360001583,
+      "hostSampleExitCode": 0,
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w1-c4\\inputs\\tools\\tournament-session.py",
+        "run",
+        "--plan",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w1-c4\\plan.json",
+        "--max-blocks",
+        "1",
+        "--stop-before",
+        "2026-10-17T03:16:52.633855+00:00"
+      ]
+    },
+    {
+      "index": 7,
+      "study": "w1-c4",
+      "exitCode": 0,
+      "sessionWallSeconds": 96.31157520000124,
+      "hostSampleExitCode": 0,
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w1-c4\\inputs\\tools\\tournament-session.py",
+        "run",
+        "--plan",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\tournament-execution-2026-10-17\\raw\\w1-c4\\plan.json",
+        "--max-blocks",
+        "1",
+        "--stop-before",
+        "2026-10-17T03:18:37.032022+00:00"
+      ]
+    }
+  ],
+  "status": "passed",
+  "endedUtc": "2026-10-17T03:00:13.344092+00:00"
+}

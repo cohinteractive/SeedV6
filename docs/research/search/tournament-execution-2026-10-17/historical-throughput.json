@@ -1,0 +1,89 @@
+{
+  "verification": "Recomputed from locally available original passed run reports, not a fresh PGN/runtime recertification; original paths/hashes unchanged.",
+  "studies": [
+    {
+      "study": "confirmation-qxray4",
+      "stages": [
+        {
+          "path": "docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray4\\stage1\\run.json",
+          "sha256": "3d49c48ee8ac54d42f0d5e322b8a10a7596b239642ce8a9ca94d89493292329c",
+          "pairs": 160,
+          "matchWallSeconds": 4338.6894113,
+          "runnerWallSeconds": 4341.983606000001,
+          "workers": 4,
+          "concurrency": 2,
+          "timeControl": "10+0.1",
+          "normalGames": 320,
+          "rawPgnPresentHere": false
+        },
+        {
+          "path": "docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray4\\stage2\\run.json",
+          "sha256": "5967ad18e67305dc3194a6b8922d0863c03dface5edd8fea7642e5c291929329",
+          "pairs": 192,
+          "matchWallSeconds": 5322.140729800001,
+          "runnerWallSeconds": 5325.670207699999,
+          "workers": 4,
+          "concurrency": 2,
+          "timeControl": "10+0.1",
+          "normalGames": 384,
+          "rawPgnPresentHere": false
+        },
+        {
+          "path": "docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray4\\stage3\\run.json",
+          "sha256": "e2086303ab392a6d8863da3c3f7e207000e75674f34603795f50215f6559b70c",
+          "pairs": 416,
+          "matchWallSeconds": 11416.820611900002,
+          "runnerWallSeconds": 11423.5997288,
+          "workers": 4,
+          "concurrency": 2,
+          "timeControl": "10+0.1",
+          "normalGames": 832,
+          "rawPgnPresentHere": false
+        }
+      ],
+      "pairs": 768,
+      "games": 1536,
+      "matchHours": 5.854902986944445,
+      "runnerHours": 5.858681539583333,
+      "gamesPerMatchHour": 262.34422729549055,
+      "pairsPerMatchHour": 131.17211364774528,
+      "gamesPerRunnerHour": 262.17502856610975
+    },
+    {
+      "study": "confirmation-qxray1-postupdate",
+      "stages": [
+        {
+          "path": "docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1-postupdate\\stage1\\run.json",
+          "sha256": "e180b033323a813f9616e7ec0d6f5ae602c6451d94d21e5f92cc6884807817a4",
+          "pairs": 512,
+          "matchWallSeconds": 7397.870252299999,
+          "runnerWallSeconds": 7405.3718888,
+          "workers": 1,
+          "concurrency": 4,
+          "timeControl": "10+0.1",
+          "normalGames": 1024,
+          "rawPgnPresentHere": false
+        },
+        {
+          "path": "docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1-postupdate\\stage2\\run.json",
+          "sha256": "2e8fd0f998fc573a50d41b1598d9dddffc6851c4ff0589339c4bbfcf9bbf628f",
+          "pairs": 1536,
+          "matchWallSeconds": 21783.1841451,
+          "runnerWallSeconds": 21803.244962699995,
+          "workers": 1,
+          "concurrency": 4,
+          "timeControl": "10+0.1",
+          "normalGames": 3072,
+          "rawPgnPresentHere": false
+        }
+      ],
+      "pairs": 2048,
+      "games": 4096,
+      "matchHours": 8.105848443722222,
+      "runnerHours": 8.113504680972222,
+      "gamesPerMatchHour": 505.3141603174496,
+      "pairsPerMatchHour": 252.6570801587248,
+      "gamesPerRunnerHour": 504.83732505953105
+    }
+  ]
+}

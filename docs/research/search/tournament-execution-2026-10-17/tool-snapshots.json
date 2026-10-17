@@ -1,0 +1,63 @@
+{
+  "purpose": "Reproducibility inputs, not additional active runners. Reconstruct from tools/ in the same Git tree as this manifest, replacing listed files with byte-identical archived sources. Original complete input bundles remain at recorded ignored local paths.",
+  "studies": [
+    {
+      "study": "final-session",
+      "planSha256": "9c6c3a32b359dc8343c7a9009abb2627ef5acee23d6cf7c95bfe6b9f9f52aea0",
+      "olderToolSnapshots": {
+        "tournament-session.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/tournament-session-39b6ff5c81a5.py.txt"
+      }
+    },
+    {
+      "study": "interruption",
+      "planSha256": "6a0aa9756bab7ebe58db5d4d07818b4e98d28c929c473f0a51703d9456ab9f3d",
+      "olderToolSnapshots": {
+        "tournament-session.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/tournament-session-39b6ff5c81a5.py.txt"
+      }
+    },
+    {
+      "study": "w1-c4",
+      "planSha256": "0b72ff2202d40f30192ab7df5aa9b4baaa0367c8c202ed1cafe5f3a666b444e0",
+      "olderToolSnapshots": {
+        "search-baseline.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/search-baseline-3dfc915ac62d.py.txt",
+        "tournament-process.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/tournament-process-7ac69a2ea4d3.py.txt",
+        "tournament-session.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/tournament-session-f5d252a31785.py.txt"
+      }
+    },
+    {
+      "study": "w4-c1",
+      "planSha256": "11b0aa583d5c8e2dbc183c031da3611aaf62826a13037f7fd6f801b48b8c2b2c",
+      "olderToolSnapshots": {
+        "search-baseline.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/search-baseline-3dfc915ac62d.py.txt",
+        "tournament-process.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/tournament-process-7ac69a2ea4d3.py.txt",
+        "tournament-session.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/tournament-session-f5d252a31785.py.txt"
+      }
+    },
+    {
+      "study": "w4-c2",
+      "planSha256": "0dc5a36d1eee255fbf9c9ffe09468addc060d2f8e1c1ce370d634c4cc8e6c67e",
+      "olderToolSnapshots": {
+        "search-baseline.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/search-baseline-3dfc915ac62d.py.txt",
+        "tournament-process.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/tournament-process-7ac69a2ea4d3.py.txt",
+        "tournament-session.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/tournament-session-f5d252a31785.py.txt"
+      }
+    },
+    {
+      "study": "w4-c3",
+      "planSha256": "3781e8e634dfd61fef81fd0bf9ec9cbfb30d173f85747668875bf2e28ca2e4a9",
+      "olderToolSnapshots": {
+        "search-baseline.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/search-baseline-3dfc915ac62d.py.txt",
+        "tournament-process.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/tournament-process-7ac69a2ea4d3.py.txt",
+        "tournament-session.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/tournament-session-f5d252a31785.py.txt"
+      }
+    },
+    {
+      "study": "w4-c4-final",
+      "planSha256": "c0dae1ac48fe80779b49d9017b2101630aa39fde120efcc4eaaac18cf4db3067",
+      "olderToolSnapshots": {
+        "tournament-process.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/tournament-process-e53908080e01.py.txt",
+        "tournament-session.py": "docs/research/search/tournament-execution-2026-10-17/tool-snapshots/tournament-session-39b6ff5c81a5.py.txt"
+      }
+    }
+  ]
+}

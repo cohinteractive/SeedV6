@@ -1,0 +1,93 @@
+"""Windows ownership boundary for the existing match adapter and all descendants.
+
+The child waits on stdin before importing/launching research code. Assign it to
+a non-inheritable kill-on-close Job before releasing that gate. A killed parent,
+watchdog or exception therefore closes only this owned tree, even if Fastchess
+exits before its engines. No image-name kill or recycled-PID attachment is used.
+"""
+import ctypes as c
+from ctypes import wintypes as w
+import subprocess
+import time
+
+
+class BasicLimits(c.Structure):
+    _fields_ = [('processTime', c.c_int64), ('jobTime', c.c_int64),
+                ('flags', w.DWORD), ('minWorkingSet', c.c_size_t),
+                ('maxWorkingSet', c.c_size_t), ('activeLimit', w.DWORD),
+                ('affinity', c.c_size_t), ('priority', w.DWORD), ('scheduling', w.DWORD)]
+
+
+class Io(c.Structure):
+    _fields_ = [(name, c.c_uint64) for name in ('readOps', 'writeOps', 'otherOps',
+                                              'readBytes', 'writeBytes', 'otherBytes')]
+
+
+class Limits(c.Structure):
+    _fields_ = [('basic', BasicLimits), ('io', Io), ('processMemory', c.c_size_t),
+                ('jobMemory', c.c_size_t), ('peakProcessMemory', c.c_size_t),
+                ('peakJobMemory', c.c_size_t)]
+
+
+class Accounting(c.Structure):
+    _fields_ = [(name, c.c_int64) for name in ('user', 'kernel', 'periodUser', 'periodKernel')] + [
+        (name, w.DWORD) for name in ('pageFaults', 'totalProcesses', 'activeProcesses', 'terminatedProcesses')]
+
+
+class OwnedJob:
+    def __init__(self):
+        self.k = c.WinDLL('kernel32', use_last_error=True)
+        signatures = {
+            'CreateJobObjectW': ([c.c_void_p, w.LPCWSTR], w.HANDLE),
+            'SetInformationJobObject': ([w.HANDLE, c.c_int, c.c_void_p, w.DWORD], w.BOOL),
+            'QueryInformationJobObject': ([w.HANDLE, c.c_int, c.c_void_p, w.DWORD, c.c_void_p], w.BOOL),
+            'AssignProcessToJobObject': ([w.HANDLE, w.HANDLE], w.BOOL),
+            'CloseHandle': ([w.HANDLE], w.BOOL),
+        }
+        for name, (args, result) in signatures.items():
+            getattr(self.k, name).argtypes = args
+            getattr(self.k, name).restype = result
+        self.handle = self.k.CreateJobObjectW(None, None)
+        if not self.handle:
+            raise c.WinError(c.get_last_error())
+        limits = Limits(); limits.basic.flags = 0x2000  # JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE
+        if not self.k.SetInformationJobObject(self.handle, 9, c.byref(limits), c.sizeof(limits)):
+            self.close()
+            raise c.WinError(c.get_last_error())
+
+    def assign(self, process):
+        if not self.k.AssignProcessToJobObject(self.handle, int(process._handle)):
+            raise c.WinError(c.get_last_error())
+
+    def active(self):
+        value = Accounting()
+        if not self.k.QueryInformationJobObject(self.handle, 1, c.byref(value), c.sizeof(value), None):
+            raise c.WinError(c.get_last_error())
+        return value.activeProcesses
+
+    def close(self):
+        if self.handle:
+            self.k.CloseHandle(self.handle)
+            self.handle = None
+
+
+def run_owned(command, log, timeout, cwd, env):
+    job = OwnedJob(); process = None
+    started = time.monotonic()
+    try:
+        process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=log,
+                                   stderr=subprocess.STDOUT, cwd=cwd, env=env)
+        job.assign(process)
+        process.stdin.write(b'GO\n'); process.stdin.close()
+        code = process.wait(timeout=timeout)
+        # A successful adapter must have drained every engine before publication.
+        if job.active():
+            raise RuntimeError('Worker exited with owned descendants still running')
+        return {'exitCode': code, 'wallSeconds': time.monotonic() - started,
+                'ownedProcessesRemaining': 0}
+    finally:
+        job.close()
+        if process is not None and process.poll() is None:
+            # Assignment failure leaves only the gated child; it cannot have engines.
+            process.kill()
+            process.wait(timeout=10)

@@ -1,0 +1,73 @@
+[
+  {
+    "command": [
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+      "-B",
+      "tools/test_tournament_session.py",
+      "-v"
+    ],
+    "exitCode": 0,
+    "wallSeconds": 2.502546200004872,
+    "output": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\tests-test_tournament_session.py-final.txt",
+    "finalTests": 21,
+    "supersededBy": "post_review_session_tests"
+  },
+  {
+    "command": [
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+      "-B",
+      "tools/test_search_baseline.py",
+      "-v"
+    ],
+    "exitCode": 0,
+    "wallSeconds": 0.5920199000102002,
+    "output": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\tests-test_search_baseline.py.txt"
+  },
+  {
+    "command": [
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+      "-B",
+      "tools/test_sr024_confirmation.py",
+      "-v"
+    ],
+    "exitCode": 0,
+    "wallSeconds": 0.27762409998103976,
+    "output": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\tests-test_sr024_confirmation.py.txt"
+  },
+  {
+    "command": [
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+      "-B",
+      "tools/test_sr024_confirmation_runner.py",
+      "-v"
+    ],
+    "exitCode": 0,
+    "wallSeconds": 0.31967359999543987,
+    "output": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\tests-test_sr024_confirmation_runner.py.txt"
+  },
+  {
+    "command": [
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+      "-B",
+      "tools/test_research_paths.py",
+      "-v"
+    ],
+    "exitCode": 0,
+    "wallSeconds": 0.3271156999981031,
+    "output": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\tests-test_research_paths.py.txt"
+  },
+  {
+    "id": "post_review_session_tests",
+    "command": [
+      "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+      "-B",
+      "tools/test_tournament_session.py",
+      "-v"
+    ],
+    "exitCode": 0,
+    "wallSeconds": 2.5527589000121225,
+    "output": "docs\\research\\search\\tournament-execution-2026-10-17\\raw\\tests-test_tournament_session.py-window-review.txt",
+    "finalTests": 22,
+    "reason": "Post-preflight window and pause admission regression, plus existing session/process suite"
+  }
+]
