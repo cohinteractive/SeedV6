@@ -1,0 +1,64 @@
+{
+  "status": "passed",
+  "observedUtc": "2026-10-17T13:03:50.952269+00:00",
+  "technicalDisposition": "DEFERRED without adoption",
+  "finalRevisions": {
+    "contract": "P2-R044",
+    "frontier": "P2-F048"
+  },
+  "candidateFilesReconciled": 661,
+  "candidateDifferences": [
+    {
+      "path": "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\uci\\UciEvaluation.java",
+      "kind": "proven line-ending conversion",
+      "currentSha256": "afb66fc155d97a41664fc16d48afd14f3f7b98a1fa7a834cc35ca60dcdd854ee"
+    }
+  ],
+  "frontierRows": 48,
+  "changedFrontierIds": [
+    "SR-033"
+  ],
+  "productionPolicy": "Unchanged cumulative QXRAY/EFFORT1/ROOT_REUSE2..16; feedback research-only/default OFF.",
+  "artifactHashes": {
+    "docs/research/search/SR033_ADAPTIVE_DEPTH_PHASE2_2026-10-17.md": "342560abf319feefbea6a1be8771b109962ce530eff088bcd4dc4bd3f2f08731",
+    "source/CHESS_SEARCH_CONTRACT.md": "bff6e76bb12653afb4512d5195bcda585ecd8999101e1186e78b602b7040179a",
+    "source/CHESS_SEARCH_RESEARCH_FRONTIER.md": "fa5d00914c3255bfb2389aa89c60af781e55dbecfa5384f587d92ff977aafe47",
+    "docs/research/search/sr033-phase2-2026-10-17/confirmation-results-v1.json": "ff2eba8eac499e683b30010e78c6a4d8df3345b27e3097f238b5339016ee98ac",
+    "docs/research/search/sr033-phase2-2026-10-17/closeout-economics-v1.json": "6648f7f038124aa39c698c58d77e6bdeb9b89e84d8bbfd4876b96422a3846123",
+    "docs/research/search/sr033-phase2-2026-10-17/off-cost-v1-summary.json": "415223e65650fc72aa99b0fce065034bb8f226d0009a69e9ff0622d01f776eaf",
+    "docs/research/search/sr033-phase2-2026-10-17/final-bridge-v1-summary.json": "2571928c17207a3479dc14b8676072267fe8fa890eb1e8761a78566a5786cbf6",
+    "docs/research/search/sr033-phase2-2026-10-17/final-production-identities-v1.json": "11b117d1ecf5bcdb2e4ec996a5f6e5d3a6aa3d9f2dfae678b946028803931acb",
+    "docs/research/search/sr033-phase2-2026-10-17/candidate-source-reconciliation-v1.json": "24a227426bc52fcde3a1d83f9f50550612ddf40fc44ab9b61b5b6f5e9c996fb4",
+    "docs/research/search/sr033-phase2-2026-10-17/broad-validation-v1-summary.json": "318d8a4b699f3a45cab85c13ae2700e0024e129bab79175c2fde004f5fad4f1c",
+    "docs/research/search/sr033-phase2-2026-10-17/rules-uci-validation-v1-summary.json": "ea048969f54acc09803c9a6e2f9340a49831d9ca30a557d88831f865bcff40d6",
+    "docs/research/search/sr033-phase2-2026-10-17/study-summary-v1.json": "8fb022a613d7747c3a84c8269b556afb54d50eaf8e0c3f4059e4406d28117d91",
+    "docs/research/search/sr033-phase2-2026-10-17/clean-cost-v1-summary.json": "2b44ecd1a1d8c2708752ab1c953bd80cd6543e31777568a9de8079d68b786092"
+  },
+  "rawEvidencePresentAndIgnored": {
+    "docs/research/search/sr033-phase2-2026-10-17/raw/confirm-move-w1-v1-assessments/assessment-1.json": "a165e599e8f6e572aa6b7b73df74f147a0d2b6ec367f2719a61ce65c55451d2e",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/confirm-caution-w4-v1-assessments/assessment-1.json": "047b25649e149aaedb87c8f683f434f8e08ee6bb4e1c7a1be78b47edcec3df75",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/confirm-caution-w4-v1-assessments/assessment-2.json": "2721702f42413a654137061f26453ebc546decc52aefdfbd4a90e156853f27ce",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/confirm-move-w1-v1-stage1-export/games.pgn": "117dd480fa091fafd400d68b9592476be9425a1471c2c81c483c0806952aebbc",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/confirm-caution-w4-v1-stage1-export/games.pgn": "74636d37b4653a2f5f86c7538d68235241d3c5a5eaac9b95966acfa957ea62cd",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/confirm-caution-w4-v1-stage2-export/games.pgn": "d3d55bdbb19302759e9f69a372b9965eaa33596c53b7fe8947c182c036e5be70",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/off-cost-v1/result.json": "dfad8258d54d5556fed0fdf70729074658037b52657f33e896bae6272db16d13",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/off-cost-v2-reversed/result.json": "a7c725c33c44683900a0571aebfe61668c02e9f8252a8836020adab9782b32a1",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/final-bridge-v1/bridge.json": "d37780995b449de305fb8cbbb63688fad4626f5eeb7815032361b8a39c8cf958",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/final-production-build-v1.log": "359e57598907cefdc93819a91d4f91c6093406f56123d2aff46439735f89f146"
+  },
+  "hostSamples": {
+    "docs/research/search/sr033-phase2-2026-10-17/raw/confirmation-four-host-v1.json": "3f400387a81c23fa9d3b64c7b7c983a6101927983e1dc7e190cb060e6aa2a719",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/confirmation-four-host-v2.json": "6f10f9cc3e835bf0fb612aaf192a33b8608c3732602759c8312693709e5594b0",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/confirmation-four-host-v3.json": "90e8ef13d4e8b7ca036e749174e6f5441d6ee63d9c83657a573a8df40f4224aa",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/confirmation-four-host-v4.json": "b58eb8a0f7975e61daa40e1f4833b7aa8efa0199e9fc201b30425405b074beac",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/confirmation-four-host-v5.json": "a34f8e487a205c0060903f84cf0cad4b9109e0b5c34eeb1c6fd4e4f69cb72c74",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/confirmation-native-host-v1.json": "9689d41dc762321428123d02da6079abd3347facb83ec33acab7c7019b409260",
+    "docs/research/search/sr033-phase2-2026-10-17/raw/confirmation-native-host-v2.json": "fe1817857d50de425832e8f05d750636cd3916d69d1d5b615d714ef22b6ad920"
+  },
+  "confirmationGameJvmExitsZero": 192,
+  "ownedProcessesAfterExperiments": "No matching task java/python/fastchess process observed after match closure and after final bridge; read-only Win32_Process inspection.",
+  "versionFinalization": "Independent research completed under existing DEFERRED_FINALIZATION; build 35 unchanged, no new token or verified bump.",
+  "journalPresent": false,
+  "manualCleanupRequired": false,
+  "limits": "Technical work-unit closeout only. GPT/owner acceptance and BOTH external Project Source replacement/synchronization pending. Raw evidence is local-only; no release/deployment/finalized-version claim."
+}

@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "runs": [
+    {
+      "raw": "docs\\research\\search\\sr033-phase2-2026-10-17\\raw\\off-cost-v1\\result.json",
+      "sha256": "dfad8258d54d5556fed0fdf70729074658037b52657f33e896bae6272db16d13",
+      "reversedProcessLaunchOrder": false,
+      "pairedRequests": 32,
+      "newBinaryElapsedNanos": 9420489400,
+      "oldBinaryElapsedNanos": 9232237800,
+      "newToOldAggregate": 1.0203906792782136,
+      "newToOldPairedMedian": 1.0076531744450599,
+      "byRepeat": {
+        "0": 1.035939146097373,
+        "1": 0.9982451460075619,
+        "2": 1.0052647930751566,
+        "3": 1.0170003473560607
+      }
+    },
+    {
+      "raw": "docs\\research\\search\\sr033-phase2-2026-10-17\\raw\\off-cost-v2-reversed\\result.json",
+      "sha256": "a7c725c33c44683900a0571aebfe61668c02e9f8252a8836020adab9782b32a1",
+      "reversedProcessLaunchOrder": true,
+      "pairedRequests": 32,
+      "newBinaryElapsedNanos": 9336776900,
+      "oldBinaryElapsedNanos": 9254936000,
+      "newToOldAggregate": 1.008842946077639,
+      "newToOldPairedMedian": 0.9951628186044579,
+      "byRepeat": {
+        "0": 0.9942403203579664,
+        "1": 0.9948795602234292,
+        "2": 1.003036417767151,
+        "3": 0.9846035553078808
+      }
+    }
+  ],
+  "aggregateNewToOld": 1.0146097236344476,
+  "limits": "64 paired native requests after warmup, rotated per-request order and reversed process-launch order. Exact nodes/score/PV parity. Small timing differences remain uncertain; not equivalence, a strength result or direct four-worker throughput measurement."
+}

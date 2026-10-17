@@ -1,8 +1,17 @@
 # SR-033 Adaptive/Hindsight Depth Feedback — Phase 2
 
-Status: **ACTIVE**, authorized 17 October 2026 (Pacific/Auckland). Production
+Status: **DEFERRED without adoption**, technically closed 18 October 2026
+(Pacific/Auckland). Authorized 17 October 2026. Production policy
 remains accepted cumulative QXRAY/EFFORT1/ROOT_REUSE2..16. This research record
 supports the active Contract and Frontier; it creates no independent authority.
+
+Both frozen independent confirmations are CLOSED: MOVE/native1 for prospective
+computational futility at 128 pairs; CAUTION/ROOT_REUSE4 inconclusive at 512.
+Neither establishes a strength gain. Retained feedback controls default OFF,
+small-gain and context-conditioned hypotheses remain unresolved, and no feature
+is ACTIVE or successor selected. The final closeout below supersedes historical
+resume instructions. GPT/owner acceptance and BOTH P2-R044/P2-F048 mirror
+replacement/synchronization remain external handback actions.
 
 ## Verified baseline and predecessor completion
 
@@ -394,3 +403,215 @@ outcomes have not been inspected. Continue waiting for the planned full assessme
 within the original stop-before 2026-10-17T16:15:09.817621Z. MOVE remains closed.
 Current runtime identity, configuration, fixed generation32 and production remain
 unchanged; do not run benchmarks or builds until the clock processes drain.
+
+
+## Whole-request and probe-cost interpretation
+
+All 21 observation roots completed their requested depth seven in each worker
+domain: 4,379,062 admitted whole-request nodes at one worker and 5,097,589 at
+four. The following inclusive callback counters measure work inside reduced,
+nominal-verification and full-research invocations. Nested callbacks overlap;
+these columns must not be summed or divided into an exclusive accounting budget.
+They describe accepted production's observed allocation, not candidate strength.
+
+| Workers | Reduced nodes / qnodes | Nominal verification nodes / qnodes | Full re-search nodes / qnodes |
+|---|---:|---:|---:|
+| 1 | 2,304,510 / 1,931,008 | 311,850 / 259,684 | 74,035 / 65,376 |
+| 4 | 2,694,431 / 2,264,533 | 477,828 / 405,974 | 91,711 / 81,681 |
+
+Clean fixed-D6 request allocation, expressed as the sum of per-root medians,
+was about 1.73MB per native configuration and 22.34-22.36MB per four-worker
+configuration across the 21 roots. These are whole-request allocations from
+existing search/coordinator/result machinery, not allocations per feedback node.
+Owner construction and MOVE's persistent primitive table allocation are outside
+the request timer. The corresponding median-summary GC collection count is zero;
+this does not imply every raw request was GC-free. JIT compilation persisted:
+four-worker D6 compilation summaries were 6ms OFF, 3ms MOVE and 24ms CAUTION.
+The short requests, process CPU counter granularity, scheduling and differing
+search trees limit small timing comparisons. Separately aggregated medians of
+nodes/main/qnodes are not guaranteed to add exactly in parallel runs.
+
+The clock actors use identical within-domain JVM settings and bounded fresh-JVM
+blocks. Their process CPU includes warmup and lifetime overhead, whereas UCI
+elapsed telemetry covers complete search requests, including aborted iterations.
+Neither is an exclusive accounting of useful nominal work. Frozen OFF versus
+accepted-binary timing and final standalone verification remain pending until
+the confirmation processes drain.
+
+
+## Final independent evidence and technical disposition - 2026-10-18 local
+
+SR-033 is technically **DEFERRED without adoption**. This closes the authorized
+feature work unit, not its scientific possibility or GPT/owner acceptance. Both
+materially distinct mechanisms were studied in both primary worker domains,
+with observation, independent finite-horizon witnesses, cost diagnostics, broad
+correctness/compatibility validation, four completed development contrasts and
+two fresh independent confirmations. Total clock evidence is 256 development
+games plus 1,280 independent-confirmation games (1,536 games / 768 color pairs).
+Development is never pooled into confirmation, and worker domains remain separate.
+
+| Final confirmation | Fresh pairs | Candidate W/D/L | Elo estimate | Allocated paired-normal interval | Required 2.5-SE interval | Adjusted bounded interval | Original-rule closure |
+|---|---:|---:|---:|---:|---:|---:|---|
+| MOVE / native1 | 128 | 101/53/102 | -1.357 | [-49.700,+46.932] | [-49.745,+46.977] | [-102.031,+99.083] | Computational futility |
+| CAUTION / ROOT_REUSE4 | 512 | 401/204/419 | -6.108 | [-33.177,+20.887] | [-30.845,+18.568] | [-58.816,+46.318] | Maximum reached, inconclusive |
+
+CAUTION's final pentanomial is [93,74,181,86,78], pair variance .1031515640,
+SE .0141939388, with 167 below-half and 164 above-half pairs. Its first 128-pair
++28.565 CONTINUE assessment remains immutable historical evidence; the cumulative
+512-pair result supersedes it for the final decision. The final assessment hash is
+`2721702f42413a654137061f26453ebc546decc52aefdfbd4a90e156853f27ce`.
+Both normal and conservative intervals include equality. There is no established
+benefit, inferiority, equivalence, absence of small gains or universal family
+rejection. No post-hoc stage comparison, retuning, additional look or extension
+is used. MOVE's unused maximum-stage inputs remain frozen and unplayed.
+
+Full-stage legal endings, original opening/history identities, paired colors,
+whole-request telemetry, frozen model/runtime/tool inputs and owned process
+receipts pass. All 192 confirmation match JVMs exited zero; final process
+inspection found no remaining task engine, Fastchess or confirmation executor.
+Both frozen protocol bindings verify after closure. `confirmation-results-v1.json`
+contains cumulative and per-stage results, immutable receipt hashes and resources.
+All successful, failed-fixture, negative, inconclusive and frozen raw evidence
+remains local under `sr033-phase2-2026-10-17/raw/` or the recorded frozen build
+locations; Git does not contain this bulk evidence. Check local availability
+before attempting fresh-checkout analysis. No partial confirmation block remains.
+
+Actual match time was 1,900.5s native and 14,400.8s four-worker; runner totals
+including preflight/startup/drain were 1,918.4s and 14,472.5s. Confirmation ran
+from the original immediate 08:15 UTC window to observed closure by 12:52 UTC,
+about 4h37 including preparation and full audits, within the eight-hour limit.
+No future overnight start, extra window or higher-concurrency domain was assumed.
+Both contrasts used 10+0.1, concurrency 4 native / 2 four-worker, 16-pair JVM
+blocks, identical within-domain 256/512MiB heaps, APC1/SerialGC native and APC6/G1
+four-worker, requested 64MiB TT, three depth-four warmups, and fixed Pair-2 G32.
+No book, tablebase, pondering or result adjudication substitutes for legal endings.
+
+CPU seconds baseline/candidate were 3,708.14/3,702.91 native and
+23,582.25/23,614.50 four-worker (ratios .9986 and 1.0014). Candidate GC pauses
+totaled 991.6ms native and 2,142.6ms four-worker, with maxima 16.6ms/15.992ms.
+The five four-worker host snapshots include roughly 3.3-3.8 logical CPUs in the
+four game JVMs, about 327-333MB per JVM in later samples, ample free RAM and zero
+observed endpoint paging. Earlier shared-desktop activity is preserved; these
+samples do not certify exclusive or constant conditions for the entire run.
+CPU is lifetime work, not useful-search efficiency. Short clock, one Windows/
+Java21 host, one evaluator and approximate paired-normal inference limit transfer.
+
+### Why defer, and what could justify reconsideration
+
+MOVE has sparse incremental eligibility beyond existing ordering/history;
+CAUTION's sibling extrapolation spends more four-worker fixed-depth work without
+confirmed clock compensation. The exploratory favorable rankings did not become
+positive independent conclusions. Near-equality development in MOVE4/CAUTION1
+supplies no independent adoption evidence either. Context-specific memory,
+selectively obtaining uncensored labels and other well-founded allocation rules
+remain credible research questions, but no observed discriminating signal here
+selects a new formulation worth an arbitrary parameter sweep. The earlier
+alternatives analysis remains part of the disposition, not a claim they were
+experimentally exhausted. Required nominal verification is never a tuning knob.
+
+`closeout-economics-v1.json` estimates a hypothetical fresh single-look contrast3
+at unspent family alpha .00625, using measured independent pair variances and
+completed-run throughput. For roughly 90% normal-approximation power at a true
++10 Elo, the native/four-worker forecasts are 7,632/8,048 fresh pairs and
+31.8/63.2 runner hours; at +20 Elo they are 1,920/2,016 pairs and 8.0/15.8 hours.
+A 25% slowdown raises those costs to 39.7/79.0 and 10.0/19.8 hours, before extra
+preparation/full-audit overhead. At a true +5 the costs rise to about 127/252
+hours. Another 512-pair study has only about 4-5% power for +10 and 24-26% for
++20 under that illustrative allocation. These are uncertain plug-in forecasts,
+not minimum acceptable gains, a new protocol or an assertion of actual benefit.
+Contrast3 is unspent; no further experiment is launched.
+
+The current near-equality independent estimates, sparse/context-biased labels
+and CAUTION cost do not justify that additional precision cost on this shared
+workstation. This is an evidence/value judgment after substantial investigation,
+not rejection from exhausting a chosen budget. Small gains could matter, but
+absence of evidence does not make them established. DEFERRED is therefore more
+accurate than REJECTED, ACCEPTED or IMPLEMENTED.
+
+Fresh reconsideration requires GPT/owner selection and a specific new reason:
+measured incremental predictive information beyond accepted history/EFFORT;
+a context/lifetime formulation with a discriminating correctness and cost
+witness; a changed accepted baseline that materially changes the premise; or a
+justified small-gain precision case with suitable, actually arranged execution
+windows. Preserve both closed protocols. Any later strength study needs fresh
+inputs, prospective multiplicity/stopping/resource rules and independent worker
+analysis; never extend or pool these confirmations. No successor or earlier
+research subject is activated by this closeout.
+
+### Final production preservation and validation
+
+Accepted production policy stays QXRAY, protected quiet LMR, WINDOW, EFFORT1 and
+ROOT_REUSE2..16, default one worker, with SR-033 OFF. HCE, other evaluators,
+independent exact/unpruned references and historical research controls remain.
+The retained primitive feedback controls are explicit research options; code
+hooks remain in engine-core, so policy preservation does not mean identical
+application bytes or proven zero execution overhead.
+
+The warmed OFF comparison now passes 64 paired 500k-node native requests with
+exact score/PV/node equality against the frozen accepted binary. Per-request
+order is rotated, and the second run reverses JVM launch order. New/old elapsed
+ratios are 1.0204 and 1.0088 in aggregate, paired medians 1.0077 and .9952; combined
+aggregate ratio is about 1.0146. This short descriptive evidence leaves small
+inactive-hook overhead uncertain. It does not establish timing equivalence,
+strength, cross-platform neutrality or direct four-worker raw throughput.
+The mixed per-repeat medians and small absolute differences do not justify
+further repetitive microbenchmarking or speculative hot-path restructuring.
+See `off-cost-v1-summary.json`, including both preserved raw runs.
+
+Offline `:app-uci:installDist -Pheadless` succeeds. The new actual standalone is
+frozen at `build/sr033/final-production-off`; its 177 engine-core and 15 UCI class
+files are byte-identical to candidate v1. Only the generated application-version
+resource differs; no production policy was adopted. The final executable passes
+18 native score/PV/node triplets against frozen baseline and research OFF, plus
+actual production requests/identities at every worker count 1..16.
+`final-production-identities-v1.json` and `final-bridge-v1-summary.json` bind final
+JAR/model/build-log identities and all-worker results. Source implementation is
+537b247; source equivalence, including the sole UciEvaluation line-ending change,
+is recorded independently. Both frozen Phase 1 archive hashes remain unchanged.
+
+Earlier validation remains applicable to those identical class bytes: 599
+executed research Search/UCI tests, 61 engine-core and 13 standalone UCI tests
+passed, with 11 historical opt-in SR-001H/I instrumentation tests skipped. The
+29 focused tests are included in the broader coverage, not additional unique
+tests. Session/continuation/statistical-rule tooling passed 23+4+4 tests. Real-model
+integrity passed 504 searches, 2,986,687 rolling/fresh evaluation comparisons and
+157 independent TT proof checks; all 144 conditional unpruned replays completed.
+OFF/MOVE/CAUTION lifecycle checks each passed 44 requests, and both mechanisms
+passed all-worker private-state/deep-helper execution/drain checks. No ordinary
+TT proof is fabricated or selective dependency discharged by feedback verification.
+Changed root decisions remain mixed finite-horizon witnesses, not tactical safety
+or strength guarantees. No tested application class changed after broad tests, so those suites were
+not rerun solely for packaging metadata. Unrelated training, GUI/full-application,
+browser, cross-platform, deployment and longer-clock strength suites were not run.
+
+### Handback and durable next action
+
+CANON_UPDATED: P2-R038 -> P2-R044 (final update P2-R043 -> P2-R044).
+
+FRONTIER_UPDATED: P2-F042 -> P2-F048 (final update P2-F047 -> P2-F048).
+
+PROJECT_SOURCE_REFRESH_REQUIRED: YES.
+
+The work unit is technically complete; GPT/owner reconciliation decides acceptance
+or requested remediation. The next action is handback, not another experiment.
+Research controls, frozen runtimes and raw evidence are intentional retained
+artifacts; no manual cleanup is required. No push, release, deployment, external
+mirror update or final owner acceptance has been performed or claimed.
+
+Build remains 35. The intact prior version integrity/reservation blocker remains
+DEFERRED_FINALIZATION; no new operation token, historical-token finish, manual
+repair, successful finalization or verified bump is claimed. Independent research
+and validation were authorized separately. Root CODEXLOG_CURRENT.md is absent
+and was not created. This limitation blocks only operations requiring authoritative
+finalized version/provenance, not this independently evidenced research closeout.
+
+Human actions required after this prompt:
+
+- **Blocking subsequent programme planning/launch:** GPT/owner reconciliation and
+  acceptance of SR-033 DEFERRED or specified remediation; then owner replacement
+  of BOTH Project Source mirrors from Contract **P2-R044** and Frontier **P2-F048**,
+  followed by explicit synchronization confirmation. Starting P2-R038/P2-F042
+  predecessor acceptance/synchronization was already complete and is not reopened.
+- **Blocking only future operations requiring finalized version/provenance:**
+  separately authorize supported reconciliation of the inherited finalizer state
+  if such operations are needed. No version repair is required to use this report.

@@ -1,0 +1,47 @@
+{
+  "status": "runtime_verified",
+  "sourceHeadAtBuild": "67af7118d584264a208ed37776d64e1b39d02c28",
+  "implementationCommit": "537b24705410d9339a268230b3f39de0e0c580fd",
+  "sourceEquivalence": "candidate-source-reconciliation-v1.json",
+  "buildLog": "raw/final-production-build-v1.log",
+  "buildLogSha256": "359e57598907cefdc93819a91d4f91c6093406f56123d2aff46439735f89f146",
+  "installation": "build/sr033/final-production-off",
+  "files": {
+    "build/sr033/final-production-off/bin/seedv6-uci": "5901ecc6aa948e76f70b60244c48bded25ab305d123c1f40f435bfeb0ec5d666",
+    "build/sr033/final-production-off/bin/seedv6-uci.bat": "b8f946335447ab8364155e96eb889f9436ee7b49f819b7127f04f6ac4bb67856",
+    "build/sr033/final-production-off/lib/app-uci.jar": "19d343d25abbd85a3977f9e654cf1b89d90dd11f76046d289c18fc6cb55650f2",
+    "build/sr033/final-production-off/lib/engine-core.jar": "8eb4268a05ad9f5991ccff59fc6619a5a45a242df7495316a493ff1e1a92b0e0"
+  },
+  "modelSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+  "phase1Archives": {
+    "docs/search-phase1/CHESS_SEARCH_CONTRACT.md": "9f820c2e9efd366b179902d3fc14bdd8f88e6ae793356aded6b6119f73e8401b",
+    "docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md": "ead3743400b1dc513e02ad1c776b39db1486e8800c947cece9e20ba199e8fc1a"
+  },
+  "versionState": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 35
+  },
+  "versionFinalization": "DEFERRED_FINALIZATION; no new token, finish or verified bump; prior integrity reservation preserved. Source/binary research evidence is independent of finalized version provenance.",
+  "journalPresent": false,
+  "buildDirtyScope": "Only attributable research prose and compact evidence updates were uncommitted during the build; no main source change after the frozen candidate except the recorded UciEvaluation line-ending conversion.",
+  "frozenCandidateClassEquivalence": [
+    {
+      "jar": "engine-core.jar",
+      "identicalClasses": 177,
+      "changedNonClassEntries": [
+        "com/ohinteractive/seedv6/application-version.properties"
+      ],
+      "addedEntries": [],
+      "removedEntries": []
+    },
+    {
+      "jar": "app-uci.jar",
+      "identicalClasses": 15,
+      "changedNonClassEntries": [],
+      "addedEntries": [],
+      "removedEntries": []
+    }
+  ]
+}

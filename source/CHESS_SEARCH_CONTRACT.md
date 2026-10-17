@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R043**
+Internal revision: **P2-R044**
 
-Status: **SR-033 Adaptive/Hindsight Depth Feedback is ACTIVE under the owner-authorized feature workstream. Tournament maintenance is GPT/owner accepted and BOTH predecessor P2-R038/P2-F042 Project Source mirrors are confirmed synchronized. SR-021 remains owner-accepted DEFERRED without adoption. Accepted cumulative production is unchanged.**
+Status: **SR-033 Adaptive/Hindsight Depth Feedback is technically DEFERRED without adoption. Both independent confirmations are CLOSED; accepted cumulative production policy is unchanged and feedback remains research-only/default OFF. No feature is ACTIVE or successor selected. GPT/owner reconciliation and BOTH final P2-R044/P2-F048 Project Source mirror replacements/synchronization remain pending. Predecessor acceptance and synchronization stay complete.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -1063,6 +1063,55 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
+### SR-033 technical closeout: DEFERRED - 2026-10-18 local
+
+SR-033 is technically DEFERRED without adoption after two distinct feedback
+mechanisms, both primary worker domains, independent tactical/proof/cost work,
+256 development games and 1,280 fresh confirmation games. MOVE/native1 CLOSED
+for prospective computational futility at 128 pairs: -1.357 Elo, adjusted normal
+[-49.700,+46.932]. CAUTION/ROOT_REUSE4 CLOSED inconclusive at its frozen 512-pair
+maximum: 401/204/419, -6.108 Elo, adjusted normal [-33.177,+20.887], required
+2.5-SE [-30.845,+18.568], adjusted bounded [-58.816,+46.318]. The historical
+128-pair CONTINUE result is preserved; neither closed protocol may be extended.
+No positive gain, inferiority, equivalence or absence of small gains is established.
+
+The [final research record](../docs/research/search/SR033_ADAPTIVE_DEPTH_PHASE2_2026-10-17.md)
+and tracked summaries bind source/binary/model/protocol identities, normal legal
+endings, whole-request resources and all 192 confirmation actor exits. The bounded
+confirmation used 10+0.1, concurrency 4 native / 2 four-worker, and about 4h37
+including preparation/audit. No operational block became an extra statistical look.
+MOVE's labels are sparse and context-conditioned; CAUTION adds four-worker
+fixed-depth work without confirmed clock compensation. Alternatives and small-gain
+hypotheses remain open. A hypothetical fresh +20-Elo/90%-power contrast forecasts
+about 8h native / 16h four-worker before slowdown; +10 costs about 32h / 63h.
+Current evidence does not justify that precision cost. These are value forecasts,
+not gain thresholds, launched protocols or proof that the family cannot help.
+
+Production policy remains cumulative QXRAY, quiet LMR, WINDOW, EFFORT1 and
+ROOT_REUSE2..16, default one worker; MOVE/CAUTION remain explicit/default OFF.
+Actual final standalone and frozen OFF parity pass, as do all production workers
+1..16, private feedback/deep helper/lifecycle checks, independent references and
+broad Search/rules/UCI tests. Final core/UCI class bytes equal the frozen candidate;
+small OFF timing overhead remains uncertain and documented. Preserve HCE, other
+evaluators, original-window PVS, mandatory nominal verification, real history/ply,
+conservative selective TT proof and all existing controls. No binding rule changes.
+
+Reconsider only after GPT/owner selection and new discriminating mechanism or
+baseline evidence, or a justified small-gain study with actually arranged resource
+windows, fresh inputs and prospective family/stopping rules. Do not reopen these
+closed studies, resume SR-021 or select a successor. Earlier ACTIVE/resume entries
+below are historical checkpoints. This closeout is not GPT/owner acceptance.
+
+Human actions required after this prompt: **blocking subsequent planning/launch**,
+GPT/owner reconciliation/acceptance or remediation, then owner replacement of
+BOTH final Contract **P2-R044** and Frontier **P2-F048** Project Source mirrors
+and explicit synchronization confirmation. Starting P2-R038/P2-F042 predecessor
+gates are complete. No manual cleanup is needed; local ignored raw/frozen evidence
+is intentionally preserved. Build35 and the inherited DEFERRED_FINALIZATION state
+remain unchanged; separately authorized reconciliation is needed only for future
+operations requiring finalized version/provenance. No push, deployment or external
+mirror update occurred. No feature is ACTIVE and no successor is selected.
+
 ### SR-033 four-worker confirmation continues to frozen maximum - 2026-10-18 local
 
 SR-033 remains ACTIVE. CAUTION/ROOT_REUSE4's fresh 128-pair first look is
@@ -1673,3 +1722,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-R041 | Record completed SR-033 development, exploratory worker-specific finalists, measured session economics and frozen fresh independent 128/512-pair confirmation; retain ACTIVE and unchanged production. |
 | P2-R042 | Record native MOVE confirmation closed for prospective computational futility and separate frozen four-worker CAUTION confirmation underway; preserve uncertainty and unchanged production. |
 | P2-R043 | Record the completed four-worker CAUTION first look and prospective continuation to 512 pairs; keep native MOVE closed, SR-033 ACTIVE and production unchanged. |
+| P2-R044 | Close SR-033 technically as DEFERRED without adoption after native computational-futility and four-worker maximum inconclusive confirmations; preserve controls, all-worker/proof validation, measured costs and small-gain uncertainty, quantify fresh-study economics, and hand back BOTH final mirrors with no successor. |

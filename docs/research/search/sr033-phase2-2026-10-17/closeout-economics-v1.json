@@ -1,0 +1,78 @@
+{
+  "status": "unlaunched_economics_only",
+  "basis": "Current independent pair variances and full completed-run throughput. A hypothetical fresh single-look next contrast uses unspent family index 3; this is not a protocol, allocation, extension or launch. No minimum acceptable gain.",
+  "nextHypotheticalContrastIndex": 3,
+  "alpha": 0.00625,
+  "targetPower": 0.9,
+  "domains": {
+    "move-w1": {
+      "pairVariance": 0.09792922613188976,
+      "pairsPerRunnerHour": 240.20606605329218,
+      "forecasts": [
+        {
+          "trueGainElo": 5,
+          "approxPairsFor90PercentPower": 30512,
+          "hoursAtObservedRunnerThroughput": 127.02426920904904,
+          "hoursWith25PercentSlowdown": 158.7803365113113,
+          "powerAtFresh512Pairs": 0.013410405666633762
+        },
+        {
+          "trueGainElo": 10,
+          "approxPairsFor90PercentPower": 7632,
+          "hoursAtObservedRunnerThroughput": 31.772719671062607,
+          "hoursWith25PercentSlowdown": 39.71589958882826,
+          "powerAtFresh512Pairs": 0.04512520152397892
+        },
+        {
+          "trueGainElo": 20,
+          "approxPairsFor90PercentPower": 1920,
+          "hoursAtObservedRunnerThroughput": 7.9931370241666935,
+          "hoursWith25PercentSlowdown": 9.991421280208368,
+          "powerAtFresh512Pairs": 0.25607002824041714
+        },
+        {
+          "trueGainElo": 30,
+          "approxPairsFor90PercentPower": 864,
+          "hoursAtObservedRunnerThroughput": 3.596911660875012,
+          "hoursWith25PercentSlowdown": 4.496139576093765,
+          "powerAtFresh512Pairs": 0.6478896310618774
+        }
+      ]
+    },
+    "caution-w4": {
+      "pairVariance": 0.10315156402886497,
+      "pairsPerRunnerHour": 127.35849303473553,
+      "forecasts": [
+        {
+          "trueGainElo": 5,
+          "approxPairsFor90PercentPower": 32144,
+          "hoursAtObservedRunnerThroughput": 252.3899210336377,
+          "hoursWith25PercentSlowdown": 315.48740129204714,
+          "powerAtFresh512Pairs": 0.012958389366196421
+        },
+        {
+          "trueGainElo": 10,
+          "approxPairsFor90PercentPower": 8048,
+          "hoursAtObservedRunnerThroughput": 63.19170247880526,
+          "hoursWith25PercentSlowdown": 78.98962809850657,
+          "powerAtFresh512Pairs": 0.04264772316400933
+        },
+        {
+          "trueGainElo": 20,
+          "approxPairsFor90PercentPower": 2016,
+          "hoursAtObservedRunnerThroughput": 15.829333026499926,
+          "hoursWith25PercentSlowdown": 19.78666628312491,
+          "powerAtFresh512Pairs": 0.23921915042522646
+        },
+        {
+          "trueGainElo": 30,
+          "approxPairsFor90PercentPower": 912,
+          "hoursAtObservedRunnerThroughput": 7.1608887500833,
+          "hoursWith25PercentSlowdown": 8.951110937604126,
+          "powerAtFresh512Pairs": 0.6178267040214933
+        }
+      ]
+    }
+  },
+  "limits": "Plug-in normal approximations, uncertain effect/variance/throughput, independent pairs assumption; ignores optional early futility and additional preparation/full-audit time. Future multi-look or multiple-domain designs need their own allocation and forecast. Closed data cannot be extended or pooled into fresh confirmation."
+}
