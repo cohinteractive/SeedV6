@@ -1,0 +1,15 @@
+{
+  "manifest": "candidate-v1-identities.json",
+  "sourceCodeCommit": "537b24705410d9339a268230b3f39de0e0c580fd",
+  "checkedFiles": 661,
+  "missing": [],
+  "differences": [
+    {
+      "path": "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\uci\\UciEvaluation.java",
+      "frozenSha256": "5f28e9e44ebea592fa9adf4e2fe535c725156ec330089fd3993c7346ceccd4b6",
+      "currentSha256": "afb66fc155d97a41664fc16d48afd14f3f7b98a1fa7a834cc35ca60dcdd854ee",
+      "currentConvertedToCrlfMatchesFrozen": true
+    }
+  ],
+  "limits": "Frozen original manifest is unchanged. Source equivalence here is byte identity or explicitly proven line-ending conversion, not a new finalized build identity."
+}

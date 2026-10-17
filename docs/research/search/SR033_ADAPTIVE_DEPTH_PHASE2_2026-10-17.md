@@ -294,3 +294,65 @@ SUCCESSFUL; PowerShell's first redirected invocation returned 1 because the
 JDK incubator warning became a NativeCommandError record, while Gradle and all
 XML results report success. Full logs and XML are preserved. Unrelated training,
 GUI, full-application and deployment suites are deliberately not run.
+
+
+## Mechanism scope and alternatives assessed before confirmation results
+
+The observed diagnostic run (separate from clean timing) shows that relief usually
+turns a one-ply reduction into a nominal scout; deeper reductions remain reduced.
+Actual adjustment density is much smaller than the earlier "ever confirmed"
+recurrence count, because MOVE uses the latest completed nominal outcome and
+also requires current LMR eligibility. The clean-cost ratios below are sums of
+per-root medians, not paired game measurements or exclusive work attribution.
+
+| Policy/workers | Adjusted/eligible D6 | Reduction bypasses | Main-node ratio | Q-node ratio | Evaluation ratio | CPU ratio |
+|---|---:|---:|---:|---:|---:|---:|
+| MOVE/1 | 190/66046 (0.29%) | 188 | 0.991 | 0.979 | 0.979 | 0.914 |
+| MOVE/4 | 161/69617 (0.23%) | 157 | 0.985 | 0.987 | 0.987 | 1.034 |
+| CAUTION/1 | 8016/66983 (11.97%) | 7843 | 1.038 | 0.999 | 1.001 | 0.957 |
+| CAUTION/4 | 10055/72350 (13.90%) | 9762 | 1.136 | 1.130 | 1.130 | 1.264 |
+
+Observed nominal outcomes remain selective and threshold-conditioned; a MOVE
+success is not a general statement that a move is good in another position.
+The compact piece/side/from/to key can generalize across incompatible contexts;
+adding position/depth/history context would reduce already sparse recurrence.
+Longer-lived cross-request memory introduces additional stale-context and
+lifecycle questions. Neither is selected merely to increase adjustment counts.
+CAUTION is based on actual reduction/nominal disagreement, but extrapolates that
+instability to siblings; it is a hypothesis about allocation, not a proof that
+siblings were undersearched. Four-worker cost is therefore a real trade-off for
+clock confirmation, not grounds to infer strength either way.
+
+Aggressive extra reduction after a nominal failure would extrapolate one
+threshold-conditioned result to other contexts and compound fail-low censorship.
+Current LMR already allocates less depth to later eligible quiets; no evidence
+yet identifies an incremental informative negative signal that justifies a new
+aggressive consumer. Shortening required nominal verification is incompatible
+with this Contract and is not an available tuning option. Static-evaluation
+movement from external engines is predictive rather than observed hindsight,
+with unvalidated score scale/TT assumptions here. Blind copying or threshold
+sweeps are not justified. Additional verification of censored fail-lows could
+collect missing labels but imposes work over the overwhelmingly largest group;
+the conditional witness sample is too selected to establish its expected value.
+Historical extra +1/+2 extension experiments provide mixed root-decision and
+cost evidence, not a present Pair-2 rejection or a reason to reopen an independent
+extension programme. The present two feedback consumers instead directly exploit
+the accepted LMR producer while keeping verification and proof semantics intact.
+
+These alternatives are explicitly considered, not claimed experimentally
+exhausted. Further refinement must follow a specific discriminating observation
+or a supported strength/cost signal, rather than post-hoc retuning to the 32-pair
+winners. The two frozen confirmations resolve whether those signals replicate.
+
+Candidate provenance is reconciled in `candidate-source-reconciliation-v1.json`:
+661 recorded files remain present; all match except UciEvaluation.java, whose
+sole difference is proven CRLF-to-LF conversion (conversion reproduces the exact
+frozen hash). No semantic source change occurred after candidate freezing. The
+original manifest is preserved; source implementation commit is 537b247. This
+is independent experimental provenance, not authoritative finalized build state.
+
+After all clock work is drained, run `tools/sr033-off-cost.py` against the frozen
+baseline-runtime and candidate-v1 with development-openings.pgn, then build and
+verify the resulting actual standalone production executable if closing without
+policy adoption. This checks retained OFF hooks and final packaging; do not
+launch a timing benchmark or build concurrently with the clock studies.
