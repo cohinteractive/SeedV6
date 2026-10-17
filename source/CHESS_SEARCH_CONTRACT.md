@@ -1,6 +1,6 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R042**
+Internal revision: **P2-R043**
 
 Status: **SR-033 Adaptive/Hindsight Depth Feedback is ACTIVE under the owner-authorized feature workstream. Tournament maintenance is GPT/owner accepted and BOTH predecessor P2-R038/P2-F042 Project Source mirrors are confirmed synchronized. SR-021 remains owner-accepted DEFERRED without adoption. Accepted cumulative production is unchanged.**
 
@@ -1063,6 +1063,17 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
+### SR-033 four-worker confirmation continues to frozen maximum - 2026-10-18 local
+
+SR-033 remains ACTIVE. CAUTION/ROOT_REUSE4's fresh 128-pair first look is
++28.565 Elo, adjusted paired-normal [-21.727,+80.089], with a prospective
+CONTINUE decision. The original executor is playing the frozen second stage
+for 512 cumulative pairs; no intermediate operational outcomes are inspected.
+The completed first-stage audit exactly reproduces the stored assessment.
+MOVE/native1 remains CLOSED for computational futility. Production is unchanged.
+Use the [research record](../docs/research/search/SR033_ADAPTIVE_DEPTH_PHASE2_2026-10-17.md)
+and frozen protocol receipts to continue only SR-033; no successor is selected.
+
 ### SR-033 native confirmation closed; four-worker confirmation active - 2026-10-17 local
 
 SR-033 remains ACTIVE with production unchanged. MOVE/native1's fresh 128-pair
@@ -1661,3 +1672,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-R040 | Record SR-033 outcome observations, two explicit feedback controls, correctness/proof and all-worker validation, mixed diagnostic economics and frozen independent-worker development contrasts; retain ACTIVE and unchanged production. |
 | P2-R041 | Record completed SR-033 development, exploratory worker-specific finalists, measured session economics and frozen fresh independent 128/512-pair confirmation; retain ACTIVE and unchanged production. |
 | P2-R042 | Record native MOVE confirmation closed for prospective computational futility and separate frozen four-worker CAUTION confirmation underway; preserve uncertainty and unchanged production. |
+| P2-R043 | Record the completed four-worker CAUTION first look and prospective continuation to 512 pairs; keep native MOVE closed, SR-033 ACTIVE and production unchanged. |

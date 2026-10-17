@@ -376,3 +376,21 @@ and resource summaries. CAUTION/ROOT_REUSE4 is now executing independently under
 its already-frozen protocol. No stage outcomes from it have been assessed yet.
 The next useful action is its completed-stage assessment, followed by a new
 feature-level decision; the first stopped formulation alone does not close SR-033.
+
+
+## Four-worker first look and final-stage continuation
+
+The original bounded execution continued while the conversation was interrupted.
+On resume (18 October local), frozen CAUTION/ROOT_REUSE4 had completed its first
+128-pair look: W/D/L 114/49/93, score 54.1016%, +28.565 Elo, adjusted paired-normal
+[-21.727,+80.089], required 2.5-SE [-17.411,+75.567], adjusted Hoeffding
+[-77.044,+139.909]. Pentanomial [16,14,51,27,20], 30 below-half and 47 above-half
+pairs. Plug-in conditional power .665605 requires CONTINUE. The existing executor
+therefore entered the prospectively frozen 384-pair second stage, for 512 total.
+No extra look, rule change, opening replacement or candidate retuning occurred.
+The first-stage independent audit was repeated and exactly matched its immutable
+assessment. The final-stage owned process tree remains active; its intermediate
+outcomes have not been inspected. Continue waiting for the planned full assessment
+within the original stop-before 2026-10-17T16:15:09.817621Z. MOVE remains closed.
+Current runtime identity, configuration, fixed generation32 and production remain
+unchanged; do not run benchmarks or builds until the clock processes drain.

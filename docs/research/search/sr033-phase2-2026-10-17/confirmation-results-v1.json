@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-10-17T08:49:49.649336+00:00",
+  "updatedUtc": "2026-10-17T11:13:01.013785+00:00",
   "domains": {
     "move-w1": {
       "status": "closed",
@@ -242,9 +242,245 @@
       }
     },
     "caution-w4": {
-      "status": "running",
-      "protocol": "docs\\research\\search\\sr033-phase2-2026-10-17\\confirmation-v1\\caution-w4-protocol.json",
-      "noInterimAssessment": true
+      "status": "running_final_stage",
+      "completedLookPairs": 128,
+      "assessment": "docs\\research\\search\\sr033-phase2-2026-10-17\\raw\\confirm-caution-w4-v1-assessments\\assessment-1.json",
+      "assessmentSha256": "047b25649e149aaedb87c8f683f434f8e08ee6bb4e1c7a1be78b47edcec3df75",
+      "result": {
+        "status": "passed",
+        "protocolSha256": "87ccefa19a5aa305d194557212c1ba227e4840bf6885bc32a341ccf4aa00bcf7",
+        "records": [
+          {
+            "export": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr033-phase2-2026-10-17\\raw\\confirm-caution-w4-v1-stage1-export",
+            "completeSha256": "2c8a729b818706a3a6630bf58beae97085da5a0657864d56457b06f44d425eec",
+            "wdl": [
+              114,
+              49,
+              93
+            ],
+            "wholeRequestResources": {
+              "baseline": {
+                "requests": 16576,
+                "nodes": 6843128483,
+                "elapsedNanos": 3533057305800
+              },
+              "candidate": {
+                "requests": 16584,
+                "nodes": 6945078847,
+                "elapsedNanos": 3536029339600
+              }
+            }
+          }
+        ],
+        "looks": [
+          {
+            "pairs": 128,
+            "score": 0.541015625,
+            "logisticElo": 28.564762717084918,
+            "pentanomial": [
+              16,
+              14,
+              51,
+              27,
+              20
+            ],
+            "pairSampleVariance": 0.08934777928149606,
+            "pairScoreStandardError": 0.026420248402251784,
+            "normalEligible": true,
+            "pairsBelowHalf": 30,
+            "pairsAboveHalf": 47,
+            "minimumPairsEachSideForNormal": 20,
+            "familyAlpha": 0.05,
+            "candidateIndex": 2,
+            "confirmationAlpha": 0.0125,
+            "plannedLooks": [
+              128,
+              512
+            ],
+            "perLookAlpha": 0.00625,
+            "normalCriticalValue": 2.734368786533176,
+            "primaryAdjustedScore": [
+              0.4687729224364297,
+              0.6132583275635703
+            ],
+            "primaryAdjustedElo": [
+              -21.72707437148309,
+              80.08899332908994
+            ],
+            "required2p5SeScore": [
+              0.4749650039943705,
+              0.6070662460056294
+            ],
+            "required2p5SeElo": [
+              -17.41065626007467,
+              75.56669943093223
+            ],
+            "adjustedHoeffdingScore": [
+              0.390907317802099,
+              0.691123932197901
+            ],
+            "adjustedHoeffdingElo": [
+              -77.04383251314252,
+              139.90866886364483
+            ],
+            "decision": "continue",
+            "plugInConditionalPowerAtMaximum": 0.6656051966608203,
+            "futilityPowerThreshold": 0.1,
+            "method": "Prospectively specified cumulative looks per fresh confirmation; family alpha .05 spent as .05/2^candidateIndex, then Bonferroni across looks; paired-normal intervals and required 2.5-SE sensitivity. Approximate inference; adjusted bounded-pair Hoeffding sensitivity. Degenerate or sparse two-sided outcomes use only the bounded interval. No exploratory pooling. Before the maximum look, normal-eligible plug-in conditional power below .10 stops for computational futility, not inferiority or a minimum Elo threshold."
+          }
+        ],
+        "pairTotals": [
+          1.0,
+          1.5,
+          2,
+          1.5,
+          0,
+          2,
+          0,
+          2,
+          2,
+          1,
+          0,
+          2,
+          0.5,
+          1.5,
+          0.5,
+          1,
+          1.5,
+          0.5,
+          1.5,
+          2,
+          1,
+          1.5,
+          1,
+          0,
+          1.5,
+          1,
+          0,
+          1,
+          0,
+          1.5,
+          0.5,
+          1,
+          1,
+          0,
+          2,
+          1.5,
+          1,
+          0,
+          2,
+          1.5,
+          1,
+          0.5,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          0,
+          1.5,
+          1.5,
+          2,
+          1.5,
+          1.5,
+          0.5,
+          0.5,
+          1.5,
+          2,
+          1,
+          1.5,
+          2,
+          1,
+          1,
+          1.5,
+          0,
+          1,
+          0,
+          1,
+          2,
+          0,
+          1,
+          1.5,
+          1,
+          1.5,
+          1,
+          1,
+          2,
+          0,
+          1,
+          1.0,
+          1,
+          1.5,
+          1,
+          1.5,
+          1,
+          1,
+          1.5,
+          1,
+          1,
+          2,
+          0.5,
+          2,
+          1,
+          1.0,
+          0.5,
+          0.5,
+          1,
+          1,
+          0.5,
+          1,
+          0.5,
+          1,
+          2,
+          1.5,
+          1,
+          1,
+          1,
+          0,
+          2,
+          2,
+          1,
+          1.5,
+          0,
+          1,
+          1,
+          1.0,
+          1.5,
+          0.5,
+          1.5,
+          0.5,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1.5,
+          2
+        ],
+        "finalDecision": "continue"
+      },
+      "matchWallSeconds": 3611.365195900027,
+      "runnerWallSeconds": 3631.3881855999934,
+      "cpuSeconds": {
+        "baseline": 5747.25,
+        "candidate": 5840.90625
+      },
+      "gamesSha256": "74636d37b4653a2f5f86c7538d68235241d3c5a5eaac9b95966acfa957ea62cd",
+      "planSha256": "2b5192c49507b05ea0420e101dac07023c218fade4759a2d8c2c74fb7b58c454",
+      "gc": {
+        "baseline": {
+          "pauseCount": 345,
+          "pauseMilliseconds": 681.9699999999998,
+          "maxPauseMilliseconds": 9.281
+        },
+        "candidate": {
+          "pauseCount": 369,
+          "pauseMilliseconds": 554.109,
+          "maxPauseMilliseconds": 15.992
+        }
+      }
     }
   }
 }
