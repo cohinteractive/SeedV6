@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R044**
+Internal revision: **P2-R046**
 
-Status: **SR-033 Adaptive/Hindsight Depth Feedback is technically DEFERRED without adoption. Both independent confirmations are CLOSED; accepted cumulative production policy is unchanged and feedback remains research-only/default OFF. No feature is ACTIVE or successor selected. GPT/owner reconciliation and BOTH final P2-R044/P2-F048 Project Source mirror replacements/synchronization remain pending. Predecessor acceptance and synchronization stay complete.**
+Status: **SR-032 Other Tactical/Forced-Line Extensions is the sole owner-selected ACTIVE feature. SR-033 is owner-accepted DEFERRED without adoption and BOTH starting P2-R044/P2-F048 Project Source mirrors are confirmed synchronized. Accepted cumulative production is unchanged; research proceeds under separately evidenced DEFERRED_FINALIZATION.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -1063,6 +1063,31 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
+### SR-032 validated candidates and development — 2026-10-18 local
+
+SR-032 remains ACTIVE. The [research record](../docs/research/search/SR032_TACTICAL_EXTENSIONS_PHASE2_2026-10-18.md)
+binds observation parity, three explicit default-OFF single-credit boundary
+formulations (ordinary recapture, promotion, factual unchecked unique move),
+independent horizons/proof checks, native/four-worker costs, all-worker lifecycle
+and private-state validation, and six prospective 32-pair development contrasts.
+Unused-credit TT proof is excluded; real ply, actual work, required PVS retries
+and surviving selective dependencies remain distinct. Recapture's extra cost
+and mixed deeper decisions do not establish benefit. Production is unchanged;
+no strength confirmation or adoption exists. Separate inherited training work,
+closed predecessor protocols and deferred version provenance remain preserved.
+
+### SR-032 activation — 2026-10-18 local
+
+Only SR-032 is ACTIVE after verified starting HEAD `5f992de`, P2-R044/P2-F048,
+fixed evaluator/archive/runtime identities and all-worker production bridge.
+The owner confirms SR-033 acceptance as DEFERRED and BOTH starting mirrors
+synchronized; earlier pending handback prose is superseded. Closed SR-021,
+SR-030 and SR-033 protocols are not resumed. The [SR-032 research record](../docs/research/search/SR032_TACTICAL_EXTENSIONS_PHASE2_2026-10-18.md)
+records inherited training changes, comparator, qsearch-overlap challenge,
+observation-first next work, resource boundaries and separate deferred version
+provenance. No mechanism or strength gain is adopted.
+
+
 ### SR-033 technical closeout: DEFERRED - 2026-10-18 local
 
 SR-033 is technically DEFERRED without adoption after two distinct feedback
@@ -1723,3 +1748,5 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-R042 | Record native MOVE confirmation closed for prospective computational futility and separate frozen four-worker CAUTION confirmation underway; preserve uncertainty and unchanged production. |
 | P2-R043 | Record the completed four-worker CAUTION first look and prospective continuation to 512 pairs; keep native MOVE closed, SR-033 ACTIVE and production unchanged. |
 | P2-R044 | Close SR-033 technically as DEFERRED without adoption after native computational-futility and four-worker maximum inconclusive confirmations; preserve controls, all-worker/proof validation, measured costs and small-gain uncertainty, quantify fresh-study economics, and hand back BOTH final mirrors with no successor. |
+| P2-R045 | Activate only owner-selected SR-032 after verified cumulative runtime/model/archive baseline and confirmed SR-033 acceptance/BOTH starting mirror synchronization; record inherited-work isolation, qsearch-overlap challenge and durable research continuation. |
+| P2-R046 | Record validated default-OFF SR-032 boundary controls, credit/proof/worker invariants, mixed diagnostic decisions and costs, and prospective bounded development comparisons; preserve ACTIVE and unchanged production. |

@@ -25,7 +25,7 @@ FILES = ('tournament-session.py', 'tournament-process.py', 'sr021-match.py',
 
 def adapter_name(record):
     name = record.get('adapter', 'sr021-match.py')
-    require(name in ('sr021-match.py', 'sr033-match.py'), 'Unsupported match adapter')
+    require(name in ('sr021-match.py', 'sr033-match.py', 'sr032-match.py'), 'Unsupported match adapter')
     return name
 
 

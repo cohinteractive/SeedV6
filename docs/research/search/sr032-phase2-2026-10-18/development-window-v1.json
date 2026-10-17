@@ -1,0 +1,17 @@
+{
+  "stopBefore": "2026-10-18T17:30:00+13:00",
+  "scope": "SR-032 development and separately frozen subsequent work fitting this bounded daytime window only",
+  "estimatedDevelopmentMatchMinutes": 74,
+  "planningDevelopmentMatchMinutes": 93,
+  "overhead": "additional startup/preflight/JVM restart/audit/drain; approximately 10 minutes; block watchdog 40 minutes",
+  "order": [
+    "recapture-w1",
+    "promotion-w1",
+    "unique-w1",
+    "recapture-w4",
+    "promotion-w4",
+    "unique-w4"
+  ],
+  "statistics": "Only complete fixed 32-pair stages assessed; no interim operational looks; independent future confirmation required",
+  "monitoring": "Frozen executor owns process failure/stall watchdog, complete-block receipts and fail-closed partial evidence; completion-driven orchestration; no other CPU campaigns during matches"
+}

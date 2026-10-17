@@ -98,6 +98,16 @@ public final class ParallelSearch implements SingleDepthSearch {
         return this;
     }
 
+    public ParallelSearch withTacticalExtension(TacticalExtension extension,
+            java.util.function.IntFunction<TacticalExtensionDiagnostics> diagnostics) {
+        ensureIdle();
+        if(requestActive || policy != ConcurrencyPolicy.ROOT_REUSE)
+            throw new IllegalStateException("Tactical extensions require idle ROOT_REUSE");
+        for(var worker:workers)worker.search.withTacticalExtension(extension,
+                diagnostics==null?null:diagnostics.apply(worker.index));
+        return this;
+    }
+
     public ParallelSearch(int threads) { this(threads, SearchEvaluation.handcrafted()); }
 
     public ParallelSearch(int threads, SearchEvaluation definition) {

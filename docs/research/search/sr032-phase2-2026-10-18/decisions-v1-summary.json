@@ -1,0 +1,280 @@
+{
+  "source": "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\decisions-v1.jsonl",
+  "sha256": "7cd409149a019be588d025095d03c0abafc20ad10cc26ec47a1d104c4a5af4bf",
+  "results": [
+    {
+      "nodes": 14208,
+      "elapsedNanos": 79969500,
+      "completed": true,
+      "rootScore": -3,
+      "move": "b1d2",
+      "root": "opening-02",
+      "choices": {
+        "off:1": 328385,
+        "promotion:1": 328385,
+        "recapture:1": 328833,
+        "unique:1": 328385
+      },
+      "depth": 5
+    },
+    {
+      "nodes": 145792,
+      "elapsedNanos": 125677300,
+      "completed": true,
+      "rootScore": 8,
+      "move": "b1d2",
+      "root": "opening-02",
+      "choices": {
+        "off:1": 328385,
+        "promotion:1": 328385,
+        "recapture:1": 328833,
+        "unique:1": 328385
+      },
+      "depth": 6
+    },
+    {
+      "nodes": 705683,
+      "elapsedNanos": 360006300,
+      "completed": true,
+      "rootScore": 2,
+      "move": "b1d2",
+      "root": "opening-02",
+      "choices": {
+        "off:1": 328385,
+        "promotion:1": 328385,
+        "recapture:1": 328833,
+        "unique:1": 328385
+      },
+      "depth": 7
+    },
+    {
+      "nodes": 16029,
+      "elapsedNanos": 7852900,
+      "completed": true,
+      "rootScore": -2,
+      "move": "b1c3",
+      "root": "opening-02",
+      "choices": {
+        "off:1": 328385,
+        "promotion:1": 328385,
+        "recapture:1": 328833,
+        "unique:1": 328385
+      },
+      "depth": 5
+    },
+    {
+      "nodes": 168375,
+      "elapsedNanos": 80009900,
+      "completed": true,
+      "rootScore": 9,
+      "move": "b1c3",
+      "root": "opening-02",
+      "choices": {
+        "off:1": 328385,
+        "promotion:1": 328385,
+        "recapture:1": 328833,
+        "unique:1": 328385
+      },
+      "depth": 6
+    },
+    {
+      "nodes": 549618,
+      "elapsedNanos": 251543100,
+      "completed": true,
+      "rootScore": 0,
+      "move": "b1c3",
+      "root": "opening-02",
+      "choices": {
+        "off:1": 328385,
+        "promotion:1": 328385,
+        "recapture:1": 328833,
+        "unique:1": 328385
+      },
+      "depth": 7
+    },
+    {
+      "nodes": 35740,
+      "elapsedNanos": 17798900,
+      "completed": true,
+      "rootScore": 13,
+      "move": "e1g1",
+      "root": "opening-04",
+      "choices": {
+        "off:1": 263426,
+        "promotion:1": 263426,
+        "recapture:1": 65924,
+        "unique:1": 263426
+      },
+      "depth": 5
+    },
+    {
+      "nodes": 103578,
+      "elapsedNanos": 47788500,
+      "completed": true,
+      "rootScore": 13,
+      "move": "e1g1",
+      "root": "opening-04",
+      "choices": {
+        "off:1": 263426,
+        "promotion:1": 263426,
+        "recapture:1": 65924,
+        "unique:1": 263426
+      },
+      "depth": 6
+    },
+    {
+      "nodes": 881098,
+      "elapsedNanos": 394891700,
+      "completed": true,
+      "rootScore": 12,
+      "move": "e1g1",
+      "root": "opening-04",
+      "choices": {
+        "off:1": 263426,
+        "promotion:1": 263426,
+        "recapture:1": 65924,
+        "unique:1": 263426
+      },
+      "depth": 7
+    },
+    {
+      "nodes": 31906,
+      "elapsedNanos": 14337700,
+      "completed": true,
+      "rootScore": 13,
+      "move": "c1e3",
+      "root": "opening-04",
+      "choices": {
+        "off:1": 263426,
+        "promotion:1": 263426,
+        "recapture:1": 65924,
+        "unique:1": 263426
+      },
+      "depth": 5
+    },
+    {
+      "nodes": 138483,
+      "elapsedNanos": 59321700,
+      "completed": true,
+      "rootScore": 11,
+      "move": "c1e3",
+      "root": "opening-04",
+      "choices": {
+        "off:1": 263426,
+        "promotion:1": 263426,
+        "recapture:1": 65924,
+        "unique:1": 263426
+      },
+      "depth": 6
+    },
+    {
+      "nodes": 1062774,
+      "elapsedNanos": 457345900,
+      "completed": true,
+      "rootScore": 14,
+      "move": "c1e3",
+      "root": "opening-04",
+      "choices": {
+        "off:1": 263426,
+        "promotion:1": 263426,
+        "recapture:1": 65924,
+        "unique:1": 263426
+      },
+      "depth": 7
+    },
+    {
+      "nodes": 13026,
+      "elapsedNanos": 5648100,
+      "completed": true,
+      "rootScore": 1,
+      "move": "b2b3",
+      "root": "opening-06",
+      "choices": {
+        "off:1": 15075546,
+        "promotion:1": 15075546,
+        "recapture:1": 394313,
+        "unique:1": 15075546
+      },
+      "depth": 5
+    },
+    {
+      "nodes": 63985,
+      "elapsedNanos": 25574200,
+      "completed": true,
+      "rootScore": 3,
+      "move": "b2b3",
+      "root": "opening-06",
+      "choices": {
+        "off:1": 15075546,
+        "promotion:1": 15075546,
+        "recapture:1": 394313,
+        "unique:1": 15075546
+      },
+      "depth": 6
+    },
+    {
+      "nodes": 411760,
+      "elapsedNanos": 174722900,
+      "completed": true,
+      "rootScore": 2,
+      "move": "b2b3",
+      "root": "opening-06",
+      "choices": {
+        "off:1": 15075546,
+        "promotion:1": 15075546,
+        "recapture:1": 394313,
+        "unique:1": 15075546
+      },
+      "depth": 7
+    },
+    {
+      "nodes": 20744,
+      "elapsedNanos": 9428400,
+      "completed": true,
+      "rootScore": -6,
+      "move": "c4d5",
+      "root": "opening-06",
+      "choices": {
+        "off:1": 15075546,
+        "promotion:1": 15075546,
+        "recapture:1": 394313,
+        "unique:1": 15075546
+      },
+      "depth": 5
+    },
+    {
+      "nodes": 161413,
+      "elapsedNanos": 68264900,
+      "completed": true,
+      "rootScore": 4,
+      "move": "c4d5",
+      "root": "opening-06",
+      "choices": {
+        "off:1": 15075546,
+        "promotion:1": 15075546,
+        "recapture:1": 394313,
+        "unique:1": 15075546
+      },
+      "depth": 6
+    },
+    {
+      "nodes": 678953,
+      "elapsedNanos": 321060400,
+      "completed": true,
+      "rootScore": -7,
+      "move": "c4d5",
+      "root": "opening-06",
+      "choices": {
+        "off:1": 15075546,
+        "promotion:1": 15075546,
+        "recapture:1": 394313,
+        "unique:1": 15075546
+      },
+      "depth": 7
+    },
+    {
+      "status": "passed",
+      "comparisons": 18
+    }
+  ]
+}

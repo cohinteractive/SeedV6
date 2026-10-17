@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "tests": [
+    "TacticalExtensionTest",
+    "CheckExtensionTest",
+    "DepthFeedbackTest",
+    "SeePruningTest",
+    "IterationReuseTest",
+    "ConcurrencyExtensionTest"
+  ],
+  "log": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\focused-v3.log",
+  "source": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\TacticalExtensionTest.java": "5427ba4eb1d6db9340dac4518879da9950e4717037274543224f21d18dced50c",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\CheckExtensionTest.java": "94a4a9ae7f976d55fb5c6aab83ce631ffbfe06ca780a3cbe1892ea8877968d7d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\DepthFeedbackTest.java": "c0a34dcbfa2ff505b613bb663d651fb90c4796fa366d8fad80de2f4f3d4ca42d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\SeePruningTest.java": "e72431d5038584ff36342b8186870026a25079edabd331611cf7ca87e8e22803",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\IterationReuseTest.java": "916adfb411a84181b17b97556ab1828369796cd9a86a65127664b014722fea8b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ConcurrencyExtensionTest.java": "d699218297fafb023f414cb0a1b267ab0619b1f774dcfdfee3208de12975f720"
+  },
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\build\\sr032\\candidate-v2"
+}

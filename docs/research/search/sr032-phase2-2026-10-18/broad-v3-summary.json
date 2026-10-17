@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "tests": [
+    "ExactSearchTest",
+    "ExactSearchTTableTest",
+    "ExactSearchMechanicsTest",
+    "ProductionSearchIntegrationTest",
+    "Phase2QuiescenceTest",
+    "TacticalExtensionTest"
+  ],
+  "log": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\broad-v3.log",
+  "source": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ExactSearchTest.java": "dfcced104f201ed738b1aa64a77bb94cd0e33004dd748e4992c18f9dca06a0c7",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ExactSearchTTableTest.java": "0c1a5bdecef7910468ee7123af1d6f02729e8e42788fab275627e0f195438b7a",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ExactSearchMechanicsTest.java": "63a2ec561337dd91049c3ebedf9c024a68dbbbf84022a634e4b66a2cdff66f2e",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\driver\\ProductionSearchIntegrationTest.java": "87f7351a615ab6f1a6ab76bf70c1b5008081c6b3b4b7f6ae8e4d201cc8b47b5c",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\Phase2QuiescenceTest.java": "8bf8bd901c650966b40553069be13275293c3991269eec092f02a040a5a32ddb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\TacticalExtensionTest.java": "5427ba4eb1d6db9340dac4518879da9950e4717037274543224f21d18dced50c"
+  },
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\build\\sr032\\candidate-v3"
+}

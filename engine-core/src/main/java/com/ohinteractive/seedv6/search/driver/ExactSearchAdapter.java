@@ -153,6 +153,15 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
         return adapter;
     }
 
+    public static ExactSearchAdapter tacticalExtensionResearch(SearchEvaluation evaluation,
+            com.ohinteractive.seedv6.search.exact.TacticalExtension policy,
+            com.ohinteractive.seedv6.search.exact.TacticalExtensionDiagnostics diagnostics) {
+        if(!evaluation.isBrnPair2())throw new IllegalArgumentException("Tactical extensions require Pair-2");
+        var adapter=seeResearch(evaluation,SeePolicy.QXRAY,null);
+        adapter.exact.withTacticalExtension(policy,diagnostics);
+        return adapter;
+    }
+
     public static ExactSearchAdapter internalSearchResearch(SearchEvaluation evaluation, InternalSearchPolicy policy,
             InternalSearchPolicy.Diagnostics diagnostics) {
         if(!evaluation.isBrnPair2()) throw new IllegalArgumentException("Internal research requires Pair-2");

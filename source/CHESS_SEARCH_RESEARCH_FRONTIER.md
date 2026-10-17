@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F048**
+Internal frontier revision: **P2-F050**
 
-Status: **SR-033 Adaptive/Hindsight Depth Feedback is technically DEFERRED without adoption. Both independent confirmations are CLOSED; accepted cumulative production policy is unchanged and feedback remains research-only/default OFF. No feature is ACTIVE or successor selected. GPT/owner reconciliation and BOTH final P2-R044/P2-F048 Project Source mirror replacements/synchronization remain pending. Predecessor acceptance and synchronization stay complete.**
+Status: **SR-032 Other Tactical/Forced-Line Extensions is the sole owner-selected ACTIVE feature. SR-033 is owner-accepted DEFERRED without adoption and BOTH starting P2-R044/P2-F048 Project Source mirrors are confirmed synchronized. Accepted cumulative production is unchanged; research proceeds under separately evidenced DEFERRED_FINALIZATION.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -789,7 +789,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-029 | Late-move reductions and re-search | IMPLEMENTED | Confirmed quiet-class-protected scaled LMR over accepted single-worker Pair-2 SR-001. Independent 231/119/162 over 256 pairs, +47.11 Elo, primary approximate 95% lower bound +21.06 and required 2.0-SE lower bound +20.53; Hoeffding sensitivity includes zero. Integrated/bridged with conservative proof suppression, preserved off/static controls and actual-domain accounting. Full alternatives, limits, future implications and owner/GPT mirror handback above. |
 | SR-030 | Check extensions | DEFERRED | Six formulations, 704 development games and two independent 2,048-game confirmations: FORCED -5.09 Elo, adjusted [-21.56,+11.36]; BOUNDARY +9.67, [-6.61,+26.00], all prescribed intervals cross zero. No adoption; plausible modest low-cost BOUNDARY benefit remains unresolved. Preserve unchanged WINDOW production and all controls; both confirmations are closed. Fresh justified evidence with suitable precision, opening coverage, error accounting and GPT/owner selection is required for resumption. |
 | SR-031 | Singular-extension family | PENDING | TT anchors, exclusion-domain proof, policy identity, extension alternatives and probe cost. |
-| SR-032 | Other tactical/forced-line extensions | PENDING | Forced replies, recapture/promotion/threat/history families, caps/fractional depth and complete root decisions. |
+| SR-032 | Other tactical/forced-line extensions | ACTIVE | Sole owner-selected feature; investigate incremental tactical/forced continuation coverage over cumulative QXRAY/EFFORT1/ROOT_REUSE2..16. Preserve closed neighboring protocols and separate inherited work; see SR-032 activation/research record. |
 | SR-033 | Adaptive/hindsight depth feedback | DEFERRED | Two distinct feedback mechanisms, all-worker semantic validation, 256 development and 1,280 fresh confirmation games; MOVE1 closed for futility and CAUTION4 closed inconclusive. No adoption; cumulative QXRAY/EFFORT1/ROOT_REUSE2..16 preserved. Small-gain/context hypotheses remain; fresh justified evidence and suitable resources require renewed GPT/owner selection. See final SR-033 closeout and both-mirror handback. |
 
 ## Unresolved Phase 1 subjects and accepted evidence
@@ -919,6 +919,28 @@ experiment is not an escalation condition. No extra orchestration ledger or
 governance document is needed.
 
 ## Maintenance and initialization state
+
+### SR-032 validated candidates and development — 2026-10-18 local
+
+SR-032 remains the sole ACTIVE feature. The [research record](../docs/research/search/SR032_TACTICAL_EXTENSIONS_PHASE2_2026-10-18.md)
+preserves measured opportunities, three default-OFF single-credit boundary
+formulations, independent proof/horizon and workers 1..16 validation, mixed
+native decisions, clean native/four-worker costs and six frozen 32-pair screens.
+No production adoption or strength claim follows. Continue only SR-032 through
+the recorded bounded session and complete-pair-block protocol; fresh independent
+confirmation remains necessary for any strength-supported adoption.
+
+### SR-032 activation — 2026-10-18 local
+
+Only SR-032 is ACTIVE after verified starting HEAD `5f992de`, P2-R044/P2-F048,
+fixed evaluator/archive/runtime identities and all-worker production bridge.
+The owner confirms SR-033 acceptance as DEFERRED and BOTH starting mirrors
+synchronized; earlier pending handback prose is superseded. Closed SR-021,
+SR-030 and SR-033 protocols are not resumed. The [SR-032 research record](../docs/research/search/SR032_TACTICAL_EXTENSIONS_PHASE2_2026-10-18.md)
+records inherited training changes, comparator, qsearch-overlap challenge,
+observation-first next work, resource boundaries and separate deferred version
+provenance. No mechanism or strength gain is adopted.
+
 
 ### SR-033 technical closeout: DEFERRED - 2026-10-18 local
 
@@ -1599,3 +1621,5 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-F046 | Record native MOVE confirmation closed for prospective computational futility and separate frozen four-worker CAUTION confirmation underway; preserve uncertainty and unchanged production. |
 | P2-F047 | Record the completed four-worker CAUTION first look and prospective continuation to 512 pairs; keep native MOVE closed, SR-033 ACTIVE and production unchanged. |
 | P2-F048 | Close SR-033 technically as DEFERRED without adoption after native computational-futility and four-worker maximum inconclusive confirmations; preserve controls, all-worker/proof validation, measured costs and small-gain uncertainty, quantify fresh-study economics, and hand back BOTH final mirrors with no successor. |
+| P2-F049 | Activate only owner-selected SR-032 after verified cumulative runtime/model/archive baseline and confirmed SR-033 acceptance/BOTH starting mirror synchronization; record inherited-work isolation, qsearch-overlap challenge and durable research continuation. |
+| P2-F050 | Record validated default-OFF SR-032 boundary controls, all-worker/proof evidence, diagnostic economics and prospective bounded development; retain sole ACTIVE feature and unchanged production. |

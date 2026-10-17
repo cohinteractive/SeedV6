@@ -1,0 +1,80 @@
+{
+  "native": {
+    "receipt": {
+      "workers": 1,
+      "roots": 21,
+      "status": "passed",
+      "depth": 7
+    },
+    "counts": {
+      "d1/checkedUnique": 1217,
+      "d1/edges": 1638503,
+      "d1/recapture": 142931,
+      "d1/uncheckedRecapture": 132519,
+      "d2/checkedUnique": 209,
+      "d2/edges": 373270,
+      "d2/recapture": 25128,
+      "d2/uncheckedRecapture": 23281,
+      "d3/checkedUnique": 81,
+      "d3/edges": 259112,
+      "d3/recapture": 9180,
+      "d3/uncheckedRecapture": 8739,
+      "quietBoundary": 377966,
+      "d1/promotion": 3139,
+      "d2/promotion": 224,
+      "d1/uncheckedUnique": 174,
+      "d3/promotion": 35,
+      "quietBoundaryUnique": 940,
+      "d2/uncheckedUnique": 68,
+      "d3/uncheckedUnique": 4
+    },
+    "samples": {
+      "recapture": 54,
+      "promotion": 15,
+      "quietBoundaryUnique": 12,
+      "unique": 7
+    },
+    "path": "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\study-native-v2.jsonl",
+    "sha256": "2e8321848489208074911775a7d5484d1055f71461261952c5e0b35fbae54653",
+    "nativeParity": 21
+  },
+  "rootreuse": {
+    "receipt": {
+      "roots": 21,
+      "status": "passed",
+      "depth": 7,
+      "workers": 4
+    },
+    "counts": {
+      "d1/checkedUnique": 1285,
+      "d1/edges": 1837695,
+      "d1/recapture": 163938,
+      "d1/uncheckedRecapture": 152644,
+      "d2/checkedUnique": 222,
+      "d2/edges": 422899,
+      "d2/recapture": 29118,
+      "d2/uncheckedRecapture": 27105,
+      "d3/edges": 288867,
+      "d3/recapture": 10676,
+      "d3/uncheckedRecapture": 10121,
+      "quietBoundary": 414156,
+      "d1/promotion": 2611,
+      "d3/checkedUnique": 86,
+      "d2/promotion": 268,
+      "d3/promotion": 39,
+      "quietBoundaryUnique": 825,
+      "d1/uncheckedUnique": 233,
+      "d2/uncheckedUnique": 62,
+      "d3/uncheckedUnique": 5
+    },
+    "samples": {
+      "recapture": 216,
+      "promotion": 39,
+      "quietBoundaryUnique": 29,
+      "unique": 21
+    },
+    "path": "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\study-rootreuse-v2.jsonl",
+    "sha256": "e6994fcf9b46b380df274ced779cb112f6d62f5fd3771552cd6c5d42dee66dfd",
+    "nativeParity": 0
+  }
+}

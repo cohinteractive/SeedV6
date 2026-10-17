@@ -1,0 +1,23 @@
+{
+  "adapter": "sr032-match.py",
+  "purpose": "exploratory",
+  "blockPairs": 16,
+  "blockLimitSeconds": 2400,
+  "assessmentPlan": "Fixed 32 paired openings per contrast. Complete both operational blocks before assessment. Six contrasts complete except integrity failure; no optional extension, cross-worker inference or pooling into confirmation. Frozen formulations and later independent confirmation required.",
+  "arguments": {
+    "java": "C:/java/jdk-21/bin/java.exe",
+    "runner": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\tools\\fastchess.exe",
+    "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\build\\sr032\\candidate-v3",
+    "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\build\\sr032\\candidate-v3",
+    "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+    "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr032-phase2-2026-10-18\\development-openings.pgn",
+    "baseline_policy": "off",
+    "candidate_policy": "promotion",
+    "baseline_workers": 4,
+    "candidate_workers": 4,
+    "concurrency": 2,
+    "pairs": 32,
+    "tc": "10+0.1",
+    "seed": 320018
+  }
+}

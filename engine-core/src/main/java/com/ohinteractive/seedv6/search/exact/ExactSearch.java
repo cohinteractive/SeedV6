@@ -225,13 +225,31 @@ public final class ExactSearch {
     private DepthFeedback depthFeedback = DepthFeedback.OFF;
     private DepthFeedback.Diagnostics feedbackDiagnostics;
     private byte[] feedbackMoves;
+    private TacticalExtensionDiagnostics tacticalDiagnostics;
+    private TacticalExtension tacticalExtension = TacticalExtension.OFF;
+    private int[] tacticalCreditsUsed;
+
+    /** Explicit, idle cumulative SR-032 composition; controls never alter exact/reference constructors. */
+    public ExactSearch withTacticalExtension(TacticalExtension policy,TacticalExtensionDiagnostics diagnostics) {
+        if(active || requestActive || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
+                || lmrPolicy != LMR_QUIET || iterationReuse == null || nullMovePruning || reverseFutility
+                || pairNull != NullMovePolicy.OFF || checkPolicy != CHECK_OFF
+                || futilityPolicy != FutilityPolicy.OFF || internalPolicy != InternalSearchPolicy.OFF
+                || depthFeedback != DepthFeedback.OFF)
+            throw new IllegalStateException("Tactical extensions require idle cumulative QXRAY Search");
+        tacticalExtension=Objects.requireNonNull(policy,"policy");
+        tacticalDiagnostics=diagnostics;
+        tacticalCreditsUsed=policy==TacticalExtension.OFF?null:new int[MAX_DEPTH+1];
+        return this;
+    }
 
     /** Explicit SR-033 experiment over unchanged cumulative production policies. */
     public ExactSearch withDepthFeedback(DepthFeedback policy, DepthFeedback.Diagnostics diagnostics) {
         if(active || requestActive || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
                 || lmrPolicy != LMR_QUIET || iterationReuse == null || nullMovePruning || reverseFutility
                 || pairNull != NullMovePolicy.OFF || checkPolicy != CHECK_OFF
-                || futilityPolicy != FutilityPolicy.OFF || internalPolicy != InternalSearchPolicy.OFF)
+                || futilityPolicy != FutilityPolicy.OFF || internalPolicy != InternalSearchPolicy.OFF
+                || tacticalExtension != TacticalExtension.OFF)
             throw new IllegalStateException("Depth feedback requires idle cumulative QXRAY Search");
         depthFeedback = Objects.requireNonNull(policy, "policy");
         feedbackDiagnostics = diagnostics;
@@ -245,7 +263,8 @@ public final class ExactSearch {
     public ExactSearch withFutilityResearch(FutilityPolicy policy, FutilityPolicy.Diagnostics diagnostics) {
         if(active || requestActive || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
                 || lmrPolicy != LMR_QUIET || iterationReuse == null || nullMovePruning || reverseFutility
-                || pairNull != NullMovePolicy.OFF || checkPolicy != CHECK_OFF || depthFeedback != DepthFeedback.OFF)
+                || pairNull != NullMovePolicy.OFF || checkPolicy != CHECK_OFF || depthFeedback != DepthFeedback.OFF
+                || tacticalExtension != TacticalExtension.OFF)
             throw new IllegalStateException("Futility research requires idle cumulative QXRAY Search");
         futilityPolicy = Objects.requireNonNull(policy, "policy");
         futilityDiagnostics = diagnostics;
@@ -254,7 +273,8 @@ public final class ExactSearch {
 
     /** Configure an idle cumulative research owner; never changes the independent reference. */
     public ExactSearch withSeeResearch(SeePolicy policy, SeePolicy.Diagnostics diagnostics) {
-        if((futilityPolicy != FutilityPolicy.OFF || depthFeedback != DepthFeedback.OFF) && policy != SeePolicy.QXRAY)
+        if((futilityPolicy != FutilityPolicy.OFF || depthFeedback != DepthFeedback.OFF
+                || tacticalExtension != TacticalExtension.OFF) && policy != SeePolicy.QXRAY)
             throw new IllegalStateException("Futility research must retain QXRAY");
         if(active || requestActive || !nominalQsearch || qsearchPruning != QSEARCH_BASELINE
                 || qtable != null || quietChecks || qdepthLimit != Integer.MAX_VALUE
@@ -716,6 +736,7 @@ public final class ExactSearch {
         maximumQply = 0;
         maximumExtensionPlies = 0;
         if(checkCreditsUsed != null) checkCreditsUsed[0] = 0;
+        if(tacticalCreditsUsed != null) tacticalCreditsUsed[0] = 0;
         if(checkDiagnostics != null) checkDiagnostics.reset();
         if(lmrDiagnostics != null) lmrDiagnostics.reset();
         if(lmpDiagnostics != null) lmpDiagnostics.reset();
@@ -786,6 +807,8 @@ public final class ExactSearch {
         nodes++;
         if(checkCreditsUsed != null)
             maximumExtensionPlies = Math.max(maximumExtensionPlies, extensionPlies(checkCreditsUsed[ply]));
+        if(tacticalCreditsUsed != null)
+            maximumExtensionPlies = Math.max(maximumExtensionPlies,tacticalCreditsUsed[ply]);
         pvLength[ply] = 0;
         long[] board = boards[ply];
         int status = (int) board[Board.STATUS];
@@ -827,6 +850,9 @@ public final class ExactSearch {
             if(!containsMove(legalMoves,count,restrictedRootMove)) throw new IllegalArgumentException("Illegal restricted root move");
             legalMoves[0]=restrictedRootMove; count=1;
         }
+        // Capture factual uniqueness before any omission mutates the move list.
+        // A partial tactical list or restricted root never establishes uniqueness.
+        final boolean tacticalUnique = !quietPending && count==1 && (ply!=0 || restrictedRootMove==0);
         // R007: the current static boundary resolves before any Search TT evidence.
         if(depth <= 0) {
             int score = evaluator.evaluate(board, ply);
@@ -856,6 +882,7 @@ public final class ExactSearch {
                 }
                 long data = entry.data;
                 if((checkCreditsUsed == null || checkCreditsUsed[ply] == checkCreditLimit())
+                        && (tacticalCreditsUsed == null || tacticalCreditsUsed[ply] == 1)
                         && (data & 255) == depth && ((data >>> 10) & 255) == generation) {
                     ttApplicable = true;
                     int score = TranspositionScores.fromTableScore((int) (data >> 32), ply);
@@ -1313,6 +1340,9 @@ public final class ExactSearch {
                 }
             }
             int capturedAlpha = alpha;
+            if(tacticalDiagnostics != null)
+                tacticalDiagnostics.edge(board, child, move, previousMove, ply, depth,
+                        checked, !quietPending && (ply != 0 || restrictedRootMove == 0), count);
             long rootNodesBefore = ply == 0 && iterationReuse != null ? nodes - observationNodes : 0;
             if(iterationReuse != null && !nullProbeActive) iterationReuse.descend(ply, move);
             // One path-local decision per admitted legal edge; all PVS retries reuse it.
@@ -1331,6 +1361,20 @@ public final class ExactSearch {
                         checkDiagnostics.extended(board, child, move, ply, depth, extensionPlies(next), i + 1, checked, count);
                     }
                 }
+            }
+            if(tacticalCreditsUsed != null) {
+                int used=tacticalCreditsUsed[ply];
+                if(used==0 && depth==1 && !checked
+                        && tacticalExtension.eligible(move,previousMove,
+                                tacticalUnique,tacticalUnique?1:0)
+                        && checkers(child,(int)child[Board.STATUS])==0) {
+                    extension=1;used=1;selectiveEpoch++;
+                    if(tacticalDiagnostics!=null) {
+                        tacticalDiagnostics.extensions++;
+                        tacticalDiagnostics.extended(board,child,move,ply,depth,used);
+                    }
+                }
+                tacticalCreditsUsed[ply+1]=used;
             }
             int childDepth = depth - 1 + extension;
             if(!futilityChildPrepared) evaluator.child(board, child, ply, quiescence && childDepth == 0 ? 0 : -1);
@@ -1353,6 +1397,7 @@ public final class ExactSearch {
                     fullSearch = false;
                     if(iterationReuse != null && iterationReuse.diagnostics != null) iterationReuse.diagnostics.scouts++;
                     if(extension != 0 && checkDiagnostics != null) checkDiagnostics.scouts++;
+                    if(extension != 0 && tacticalDiagnostics != null) tacticalDiagnostics.scouts++;
                     int reduction = lmrReduction(depth, ply, i + 1, searchedQuiets, scout, checked, move,
                             hashMove, status, child, alpha, beta);
                     int baseReduction = reduction;
@@ -1416,6 +1461,7 @@ public final class ExactSearch {
                         fullSearch = true;
                         if(iterationReuse != null && iterationReuse.diagnostics != null) iterationReuse.diagnostics.researches++;
                         if(extension != 0 && checkDiagnostics != null) checkDiagnostics.fullResearches++;
+                        if(extension != 0 && tacticalDiagnostics != null) tacticalDiagnostics.fullResearches++;
                         long before = nodes, qbefore = qnodes;
                         score = -negamax(childDepth, ply + 1, -beta, -alpha, move, false);
                         if(reduction > 0 && lmrDiagnostics != null) {
@@ -1614,6 +1660,8 @@ public final class ExactSearch {
             }
         }
         if(DrawAdjudicator.adjudicateNonTerminal(board, history) != DrawAdjudicator.RuleDraw.NONE) return 0;
+        if(tacticalDiagnostics != null && !checked && count == 0)
+            tacticalDiagnostics.quietBoundary(board, ply, qply);
         if(quietCheckCounters != null && !checked) {
             // Diagnostic run only: count existence even when stand-pat/tacticals will cut.
             // Its extra make/check work is intentionally excluded from clean timing runs.
@@ -1854,7 +1902,8 @@ public final class ExactSearch {
         // A prediction anywhere in the searched subtree taints this result.
         // Suppress ancestor writes too, including otherwise EXACT outcomes.
         // Unaffected subtrees remain eligible for normal exact TT reuse.
-        if(table != null && !nullProbeActive && entryEpoch == selectiveEpoch) {
+        if(table != null && !nullProbeActive && entryEpoch == selectiveEpoch
+                && (tacticalCreditsUsed == null || tacticalCreditsUsed[ply] == 1)) {
             checkpoint(); // Includes cancellation raised by the final evaluated child.
             // R004 has eight depth bits; depth 256 must never alias depth zero.
             if(ply != 0) store(key, depth, ply, alpha, beta, score, move);

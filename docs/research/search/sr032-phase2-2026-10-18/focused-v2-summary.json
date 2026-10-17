@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "tests": [
+    "TacticalExtensionTest",
+    "CheckExtensionTest",
+    "DepthFeedbackTest",
+    "SeePruningTest"
+  ],
+  "log": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\focused-v2.log",
+  "source": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\TacticalExtensionTest.java": "f63505cdd656b554c8289dfbd6371827dc5b42666d5ca826a9f7461aadff392f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\CheckExtensionTest.java": "94a4a9ae7f976d55fb5c6aab83ce631ffbfe06ca780a3cbe1892ea8877968d7d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\DepthFeedbackTest.java": "c0a34dcbfa2ff505b613bb663d651fb90c4796fa366d8fad80de2f4f3d4ca42d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\SeePruningTest.java": "e72431d5038584ff36342b8186870026a25079edabd331611cf7ca87e8e22803"
+  },
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\build\\sr032\\candidate-v1"
+}

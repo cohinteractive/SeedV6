@@ -20,6 +20,7 @@ class SessionTests(unittest.TestCase):
     def test_adapter_is_explicit_bounded_and_legacy_default_preserved(self):
         self.assertEqual('sr021-match.py', s.adapter_name({}))
         self.assertEqual('sr033-match.py', s.adapter_name({'adapter':'sr033-match.py'}))
+        self.assertEqual('sr032-match.py', s.adapter_name({'adapter':'sr032-match.py'}))
         with self.assertRaisesRegex(ValueError, 'Unsupported'):
             s.adapter_name({'adapter':'../sr033-match.py'})
 
