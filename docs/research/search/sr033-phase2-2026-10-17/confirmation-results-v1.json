@@ -1,0 +1,250 @@
+{
+  "updatedUtc": "2026-10-17T08:49:49.649336+00:00",
+  "domains": {
+    "move-w1": {
+      "status": "closed",
+      "assessment": "docs\\research\\search\\sr033-phase2-2026-10-17\\raw\\confirm-move-w1-v1-assessments\\assessment-1.json",
+      "assessmentSha256": "a165e599e8f6e572aa6b7b73df74f147a0d2b6ec367f2719a61ce65c55451d2e",
+      "result": {
+        "status": "passed",
+        "protocolSha256": "d03517065609d26082c224fa340afda8a25f542c5f890e439ba2420870436fd2",
+        "records": [
+          {
+            "export": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr033-phase2-2026-10-17\\raw\\confirm-move-w1-v1-stage1-export",
+            "completeSha256": "c8d55263248abf61744ac6b00a8a1e7aa339c32ef00b1016c21e8795c1ed0e7c",
+            "wdl": [
+              101,
+              53,
+              102
+            ],
+            "wholeRequestResources": {
+              "baseline": {
+                "requests": 16586,
+                "nodes": 4757847916,
+                "elapsedNanos": 3535504562900
+              },
+              "candidate": {
+                "requests": 16590,
+                "nodes": 4773533235,
+                "elapsedNanos": 3537546293500
+              }
+            }
+          }
+        ],
+        "looks": [
+          {
+            "pairs": 128,
+            "score": 0.498046875,
+            "logisticElo": -1.3571771589357418,
+            "pentanomial": [
+              20,
+              21,
+              46,
+              22,
+              19
+            ],
+            "pairSampleVariance": 0.09792922613188976,
+            "pairScoreStandardError": 0.027659936354868728,
+            "normalEligible": true,
+            "pairsBelowHalf": 41,
+            "pairsAboveHalf": 41,
+            "minimumPairsEachSideForNormal": 20,
+            "familyAlpha": 0.05,
+            "candidateIndex": 1,
+            "confirmationAlpha": 0.025,
+            "plannedLooks": [
+              128,
+              512
+            ],
+            "perLookAlpha": 0.0125,
+            "normalCriticalValue": 2.4977054744123737,
+            "primaryAdjustedScore": [
+              0.42896050054454654,
+              0.5671332494554535
+            ],
+            "primaryAdjustedElo": [
+              -49.69953860930744,
+              46.93235261852672
+            ],
+            "required2p5SeScore": [
+              0.4288970341128282,
+              0.5671967158871718
+            ],
+            "required2p5SeElo": [
+              -49.74454901496432,
+              46.97726401784458
+            ],
+            "adjustedHoeffdingScore": [
+              0.3572459598191776,
+              0.6388477901808224
+            ],
+            "adjustedHoeffdingElo": [
+              -102.0309956933531,
+              99.08284812411404
+            ],
+            "decision": "futility",
+            "plugInConditionalPowerAtMaximum": 0.0011448816984840349,
+            "futilityPowerThreshold": 0.1,
+            "method": "Prospectively specified cumulative looks per fresh confirmation; family alpha .05 spent as .05/2^candidateIndex, then Bonferroni across looks; paired-normal intervals and required 2.5-SE sensitivity. Approximate inference; adjusted bounded-pair Hoeffding sensitivity. Degenerate or sparse two-sided outcomes use only the bounded interval. No exploratory pooling. Before the maximum look, normal-eligible plug-in conditional power below .10 stops for computational futility, not inferiority or a minimum Elo threshold."
+          }
+        ],
+        "pairTotals": [
+          0.5,
+          1,
+          1.5,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1.5,
+          1,
+          0,
+          0,
+          1.5,
+          1,
+          1,
+          1.0,
+          1,
+          0.5,
+          2,
+          2,
+          1.5,
+          0.5,
+          0.5,
+          0,
+          1.5,
+          0,
+          0,
+          2,
+          2,
+          0.5,
+          1,
+          0.5,
+          0.5,
+          2,
+          0,
+          1,
+          2,
+          1,
+          1,
+          0.5,
+          2,
+          2,
+          0.5,
+          1.5,
+          1,
+          1.0,
+          1,
+          2,
+          2,
+          0,
+          0,
+          1,
+          2,
+          1,
+          0.5,
+          1,
+          1.5,
+          0.5,
+          1,
+          1,
+          1.5,
+          2,
+          1,
+          2,
+          1,
+          1.0,
+          0,
+          1,
+          1,
+          2,
+          1,
+          0.5,
+          1,
+          1.5,
+          2,
+          1,
+          1,
+          2,
+          0,
+          1.5,
+          0.5,
+          0,
+          0,
+          1,
+          0.5,
+          1,
+          1.5,
+          1.5,
+          0,
+          1,
+          0.5,
+          1,
+          0.5,
+          1.5,
+          1,
+          1.5,
+          2,
+          1,
+          0,
+          0.5,
+          0,
+          1,
+          1.5,
+          1.5,
+          1.5,
+          0.5,
+          1,
+          0,
+          1.5,
+          1.5,
+          0.5,
+          0.5,
+          2,
+          0.5,
+          1,
+          2,
+          1,
+          1.5,
+          1.0,
+          1.5,
+          1,
+          1,
+          0,
+          1.5,
+          1.0,
+          0,
+          1
+        ],
+        "finalDecision": "futility"
+      },
+      "matchWallSeconds": 1900.4794055999955,
+      "runnerWallSeconds": 1918.3528858000063,
+      "cpuSeconds": {
+        "baseline": 3708.140625,
+        "candidate": 3702.90625
+      },
+      "gamesSha256": "117dd480fa091fafd400d68b9592476be9425a1471c2c81c483c0806952aebbc",
+      "planSha256": "69d5c89674ecd99807349861b96add9ede15ef6d00a0141ea3f6e9d66dae376e",
+      "gc": {
+        "baseline": {
+          "pauseCount": 122,
+          "pauseMilliseconds": 1068.226,
+          "maxPauseMilliseconds": 19.072
+        },
+        "candidate": {
+          "pauseCount": 97,
+          "pauseMilliseconds": 991.5720000000002,
+          "maxPauseMilliseconds": 16.6
+        }
+      }
+    },
+    "caution-w4": {
+      "status": "running",
+      "protocol": "docs\\research\\search\\sr033-phase2-2026-10-17\\confirmation-v1\\caution-w4-protocol.json",
+      "noInterimAssessment": true
+    }
+  }
+}

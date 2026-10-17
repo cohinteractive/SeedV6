@@ -356,3 +356,23 @@ baseline-runtime and candidate-v1 with development-openings.pgn, then build and
 verify the resulting actual standalone production executable if closing without
 policy adoption. This checks retained OFF hooks and final packaging; do not
 launch a timing benchmark or build concurrently with the clock studies.
+
+
+## First independent confirmation decision
+
+MOVE/native1 completed its frozen 128-pair first look and CLOSED for the
+prospective computational-futility rule. Score 49.8047%, point Elo -1.357;
+adjusted normal interval [-49.700,+46.932], required 2.5-SE interval
+[-49.745,+46.977], conservative adjusted bounded interval [-102.031,+99.083].
+Pentanomial [20,21,46,22,19]; both normal-eligibility sides have 41 pairs.
+Plug-in conditional power at the frozen 512 maximum is .001145, below .10.
+The exploratory +60.3 estimate does not replicate. This is not inferiority,
+equivalence or evidence excluding small gains. The maximum-stage opening inputs
+remain frozen but unplayed; this closed protocol must never be extended.
+
+The full legal/color/history/accounting/model/input/process audit passed.
+`confirmation-results-v1.json` binds the immutable assessment, export, raw stage
+and resource summaries. CAUTION/ROOT_REUSE4 is now executing independently under
+its already-frozen protocol. No stage outcomes from it have been assessed yet.
+The next useful action is its completed-stage assessment, followed by a new
+feature-level decision; the first stopped formulation alone does not close SR-033.

@@ -1,6 +1,6 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R041**
+Internal revision: **P2-R042**
 
 Status: **SR-033 Adaptive/Hindsight Depth Feedback is ACTIVE under the owner-authorized feature workstream. Tournament maintenance is GPT/owner accepted and BOTH predecessor P2-R038/P2-F042 Project Source mirrors are confirmed synchronized. SR-021 remains owner-accepted DEFERRED without adoption. Accepted cumulative production is unchanged.**
 
@@ -1063,6 +1063,17 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
+### SR-033 native confirmation closed; four-worker confirmation active - 2026-10-17 local
+
+SR-033 remains ACTIVE with production unchanged. MOVE/native1's fresh 128-pair
+confirmation closed at its prospective computational-futility boundary:
+-1.357 Elo, adjusted normal [-49.700,+46.932]. The earlier positive development
+estimate did not replicate; inferiority/equivalence and absence of small gains
+are not established. Preserve the closed protocol; do not play its maximum stage.
+CAUTION/ROOT_REUSE4 is executing its separate frozen confirmation. See the
+[research record](../docs/research/search/SR033_ADAPTIVE_DEPTH_PHASE2_2026-10-17.md)
+and immutable assessments for the current resume point. No successor is selected.
+
 ### SR-033 development complete; independent confirmation frozen - 2026-10-17 local
 
 SR-033 remains ACTIVE with production unchanged. Four fixed 32-pair development
@@ -1649,3 +1660,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-R039 | Activate only owner-selected SR-033 after verified clean cumulative baseline and confirmed maintenance acceptance/BOTH predecessor mirror synchronization; record fixed evaluator, censored-outcome challenge, worker scope, separate deferred version provenance and durable research resume point. |
 | P2-R040 | Record SR-033 outcome observations, two explicit feedback controls, correctness/proof and all-worker validation, mixed diagnostic economics and frozen independent-worker development contrasts; retain ACTIVE and unchanged production. |
 | P2-R041 | Record completed SR-033 development, exploratory worker-specific finalists, measured session economics and frozen fresh independent 128/512-pair confirmation; retain ACTIVE and unchanged production. |
+| P2-R042 | Record native MOVE confirmation closed for prospective computational futility and separate frozen four-worker CAUTION confirmation underway; preserve uncertainty and unchanged production. |
