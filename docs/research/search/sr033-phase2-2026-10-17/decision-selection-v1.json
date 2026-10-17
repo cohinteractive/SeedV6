@@ -1,0 +1,342 @@
+{
+  "nativeDifferences": [
+    {
+      "id": "opening-02",
+      "policy": "move",
+      "workers": 1,
+      "baseline": {
+        "bestMove": 328385,
+        "hasMove": true,
+        "score": 7,
+        "depth": 6,
+        "nodes": 132305,
+        "legalRootMoves": 34,
+        "completed": true,
+        "principalVariation": [
+          328385,
+          659131,
+          329429,
+          787941,
+          12846542,
+          4851194
+        ],
+        "diagnostics": {
+          "enabled": true,
+          "worker": {
+            "nodes": {
+              "mainNodes": 19913,
+              "qNodes": 112392,
+              "maximumAbsolutePly": 22,
+              "maximumQply": 16,
+              "evaluationCalls": 107739
+            },
+            "transpositionTable": {
+              "probes": 0,
+              "keyMatches": 0,
+              "insufficientDepthMatches": 0,
+              "exactCutoffs": 0,
+              "lowerBoundCutoffs": 0,
+              "upperBoundCutoffs": 0,
+              "hashMovesAvailable": 0,
+              "stores": 0
+            },
+            "moveOrder": {
+              "legalMovesSearched": 0,
+              "betaCutoffs": 0,
+              "firstMoveBetaCutoffs": 0,
+              "cutoffRankSum": 0,
+              "maximumCutoffRank": 0,
+              "cutoffRank1": 0,
+              "cutoffRank2": 0,
+              "cutoffRank3": 0,
+              "cutoffRank4": 0,
+              "cutoffRank5To8": 0,
+              "cutoffRank9Plus": 0,
+              "hashMoveCutoffs": 0,
+              "tacticalCutoffs": 0,
+              "quietCutoffs": 0,
+              "killerCutoffs": 0,
+              "historyCutoffs": 0
+            },
+            "qsearch": {
+              "checkedQNodes": 0,
+              "standPatCutoffs": 0,
+              "tacticalMovesSearched": 0,
+              "evasionMovesSearched": 0,
+              "softDepthLimitEncounters": 0,
+              "qmateTerminals": 0
+            },
+            "selective": {
+              "mateDistanceCutoffs": 0,
+              "razorAttempts": 0,
+              "razorQsearchProbes": 0,
+              "razorAcceptedResults": 0,
+              "futilityEligibleNodes": 0,
+              "futilityQuietMovesPruned": 0
+            }
+          },
+          "iteration": {
+            "completedIterations": 6,
+            "aspirationAttempts": 0,
+            "failLowResearches": 0,
+            "failHighResearches": 0,
+            "fullWindowFallbacks": 0,
+            "deepestCompletedDepth": 6
+          }
+        },
+        "selective": true
+      },
+      "candidate": {
+        "bestMove": 329685,
+        "hasMove": true,
+        "score": 5,
+        "depth": 6,
+        "nodes": 101659,
+        "legalRootMoves": 34,
+        "completed": true,
+        "principalVariation": [
+          329685,
+          789285,
+          328833,
+          855289,
+          15075546,
+          7145709
+        ],
+        "diagnostics": {
+          "enabled": true,
+          "worker": {
+            "nodes": {
+              "mainNodes": 16938,
+              "qNodes": 84721,
+              "maximumAbsolutePly": 24,
+              "maximumQply": 18,
+              "evaluationCalls": 82550
+            },
+            "transpositionTable": {
+              "probes": 0,
+              "keyMatches": 0,
+              "insufficientDepthMatches": 0,
+              "exactCutoffs": 0,
+              "lowerBoundCutoffs": 0,
+              "upperBoundCutoffs": 0,
+              "hashMovesAvailable": 0,
+              "stores": 0
+            },
+            "moveOrder": {
+              "legalMovesSearched": 0,
+              "betaCutoffs": 0,
+              "firstMoveBetaCutoffs": 0,
+              "cutoffRankSum": 0,
+              "maximumCutoffRank": 0,
+              "cutoffRank1": 0,
+              "cutoffRank2": 0,
+              "cutoffRank3": 0,
+              "cutoffRank4": 0,
+              "cutoffRank5To8": 0,
+              "cutoffRank9Plus": 0,
+              "hashMoveCutoffs": 0,
+              "tacticalCutoffs": 0,
+              "quietCutoffs": 0,
+              "killerCutoffs": 0,
+              "historyCutoffs": 0
+            },
+            "qsearch": {
+              "checkedQNodes": 0,
+              "standPatCutoffs": 0,
+              "tacticalMovesSearched": 0,
+              "evasionMovesSearched": 0,
+              "softDepthLimitEncounters": 0,
+              "qmateTerminals": 0
+            },
+            "selective": {
+              "mateDistanceCutoffs": 0,
+              "razorAttempts": 0,
+              "razorQsearchProbes": 0,
+              "razorAcceptedResults": 0,
+              "futilityEligibleNodes": 0,
+              "futilityQuietMovesPruned": 0
+            }
+          },
+          "iteration": {
+            "completedIterations": 6,
+            "aspirationAttempts": 0,
+            "failLowResearches": 0,
+            "failHighResearches": 0,
+            "fullWindowFallbacks": 0,
+            "deepestCompletedDepth": 6
+          }
+        },
+        "selective": true
+      }
+    },
+    {
+      "id": "opening-04",
+      "policy": "move",
+      "workers": 1,
+      "baseline": {
+        "bestMove": 263426,
+        "hasMove": true,
+        "score": 12,
+        "depth": 6,
+        "nodes": 114870,
+        "legalRootMoves": 40,
+        "completed": true,
+        "principalVariation": [
+          263426,
+          724664,
+          132163,
+          658043,
+          10619473,
+          3017328
+        ],
+        "diagnostics": {
+          "enabled": true,
+          "worker": {
+            "nodes": {
+              "mainNodes": 20496,
+              "qNodes": 94374,
+              "maximumAbsolutePly": 21,
+              "maximumQply": 16,
+              "evaluationCalls": 91079
+            },
+            "transpositionTable": {
+              "probes": 0,
+              "keyMatches": 0,
+              "insufficientDepthMatches": 0,
+              "exactCutoffs": 0,
+              "lowerBoundCutoffs": 0,
+              "upperBoundCutoffs": 0,
+              "hashMovesAvailable": 0,
+              "stores": 0
+            },
+            "moveOrder": {
+              "legalMovesSearched": 0,
+              "betaCutoffs": 0,
+              "firstMoveBetaCutoffs": 0,
+              "cutoffRankSum": 0,
+              "maximumCutoffRank": 0,
+              "cutoffRank1": 0,
+              "cutoffRank2": 0,
+              "cutoffRank3": 0,
+              "cutoffRank4": 0,
+              "cutoffRank5To8": 0,
+              "cutoffRank9Plus": 0,
+              "hashMoveCutoffs": 0,
+              "tacticalCutoffs": 0,
+              "quietCutoffs": 0,
+              "killerCutoffs": 0,
+              "historyCutoffs": 0
+            },
+            "qsearch": {
+              "checkedQNodes": 0,
+              "standPatCutoffs": 0,
+              "tacticalMovesSearched": 0,
+              "evasionMovesSearched": 0,
+              "softDepthLimitEncounters": 0,
+              "qmateTerminals": 0
+            },
+            "selective": {
+              "mateDistanceCutoffs": 0,
+              "razorAttempts": 0,
+              "razorQsearchProbes": 0,
+              "razorAcceptedResults": 0,
+              "futilityEligibleNodes": 0,
+              "futilityQuietMovesPruned": 0
+            }
+          },
+          "iteration": {
+            "completedIterations": 6,
+            "aspirationAttempts": 0,
+            "failLowResearches": 0,
+            "failHighResearches": 0,
+            "fullWindowFallbacks": 0,
+            "deepestCompletedDepth": 6
+          }
+        },
+        "selective": true
+      },
+      "candidate": {
+        "bestMove": 65924,
+        "hasMove": true,
+        "score": 11,
+        "depth": 6,
+        "nodes": 115769,
+        "legalRootMoves": 40,
+        "completed": true,
+        "principalVariation": [
+          65924,
+          593852,
+          263426,
+          658043,
+          131715,
+          657001
+        ],
+        "diagnostics": {
+          "enabled": true,
+          "worker": {
+            "nodes": {
+              "mainNodes": 21253,
+              "qNodes": 94516,
+              "maximumAbsolutePly": 21,
+              "maximumQply": 16,
+              "evaluationCalls": 91182
+            },
+            "transpositionTable": {
+              "probes": 0,
+              "keyMatches": 0,
+              "insufficientDepthMatches": 0,
+              "exactCutoffs": 0,
+              "lowerBoundCutoffs": 0,
+              "upperBoundCutoffs": 0,
+              "hashMovesAvailable": 0,
+              "stores": 0
+            },
+            "moveOrder": {
+              "legalMovesSearched": 0,
+              "betaCutoffs": 0,
+              "firstMoveBetaCutoffs": 0,
+              "cutoffRankSum": 0,
+              "maximumCutoffRank": 0,
+              "cutoffRank1": 0,
+              "cutoffRank2": 0,
+              "cutoffRank3": 0,
+              "cutoffRank4": 0,
+              "cutoffRank5To8": 0,
+              "cutoffRank9Plus": 0,
+              "hashMoveCutoffs": 0,
+              "tacticalCutoffs": 0,
+              "quietCutoffs": 0,
+              "killerCutoffs": 0,
+              "historyCutoffs": 0
+            },
+            "qsearch": {
+              "checkedQNodes": 0,
+              "standPatCutoffs": 0,
+              "tacticalMovesSearched": 0,
+              "evasionMovesSearched": 0,
+              "softDepthLimitEncounters": 0,
+              "qmateTerminals": 0
+            },
+            "selective": {
+              "mateDistanceCutoffs": 0,
+              "razorAttempts": 0,
+              "razorQsearchProbes": 0,
+              "razorAcceptedResults": 0,
+              "futilityEligibleNodes": 0,
+              "futilityQuietMovesPruned": 0
+            }
+          },
+          "iteration": {
+            "completedIterations": 6,
+            "aspirationAttempts": 0,
+            "failLowResearches": 0,
+            "failHighResearches": 0,
+            "fullWindowFallbacks": 0,
+            "deepestCompletedDepth": 6
+          }
+        },
+        "selective": true
+      }
+    }
+  ]
+}

@@ -87,6 +87,17 @@ public final class ParallelSearch implements SingleDepthSearch {
         return this;
     }
 
+    /** Each worker learns privately over its own request; no shared table or copy. */
+    public ParallelSearch withDepthFeedback(DepthFeedback feedback,
+            java.util.function.IntFunction<DepthFeedback.Diagnostics> diagnostics) {
+        ensureIdle();
+        if(requestActive || policy != ConcurrencyPolicy.ROOT_REUSE)
+            throw new IllegalStateException("Depth feedback requires idle ROOT_REUSE");
+        for(var worker : workers) worker.search.withDepthFeedback(feedback,
+                diagnostics == null ? null : diagnostics.apply(worker.index));
+        return this;
+    }
+
     public ParallelSearch(int threads) { this(threads, SearchEvaluation.handcrafted()); }
 
     public ParallelSearch(int threads, SearchEvaluation definition) {

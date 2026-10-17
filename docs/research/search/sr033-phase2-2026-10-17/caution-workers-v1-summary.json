@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "arguments": {
+    "candidate": "build/sr033/candidate-v1",
+    "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+    "policy": "caution",
+    "out": "docs/research/search/sr033-phase2-2026-10-17/raw/caution-workers-v1",
+    "java": "C:/java/jdk-21/bin/java.exe"
+  },
+  "requests": 44,
+  "inputsStable": true
+}

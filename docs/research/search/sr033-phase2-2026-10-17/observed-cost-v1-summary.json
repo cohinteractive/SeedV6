@@ -1,0 +1,134 @@
+{
+  "off:1:depth6": {
+    "requests": 21,
+    "nodes": 1519501,
+    "elapsed": 1.1976777,
+    "adjusted": 0,
+    "verified": 0,
+    "confirmed": 0,
+    "refuted": 0,
+    "bypassed": 0,
+    "eligible": 0
+  },
+  "off:1:nodes100000": {
+    "requests": 21,
+    "nodes": 1920770,
+    "elapsed": 1.3058490000000003,
+    "adjusted": 0,
+    "verified": 0,
+    "confirmed": 0,
+    "refuted": 0,
+    "bypassed": 0,
+    "eligible": 0
+  },
+  "move:1:depth6": {
+    "requests": 21,
+    "nodes": 1490332,
+    "elapsed": 1.0218075999999998,
+    "adjusted": 190,
+    "verified": 2564,
+    "confirmed": 254,
+    "refuted": 2310,
+    "bypassed": 188,
+    "eligible": 66046
+  },
+  "move:1:nodes100000": {
+    "requests": 21,
+    "nodes": 1916627,
+    "elapsed": 1.2872199999999998,
+    "adjusted": 269,
+    "verified": 4479,
+    "confirmed": 350,
+    "refuted": 4129,
+    "bypassed": 265,
+    "eligible": 91575
+  },
+  "caution:1:depth6": {
+    "requests": 21,
+    "nodes": 1527406,
+    "elapsed": 1.0963854,
+    "adjusted": 8016,
+    "verified": 8517,
+    "confirmed": 249,
+    "refuted": 8268,
+    "bypassed": 7843,
+    "eligible": 66983
+  },
+  "caution:1:nodes100000": {
+    "requests": 21,
+    "nodes": 1921851,
+    "elapsed": 1.3642893,
+    "adjusted": 13263,
+    "verified": 14084,
+    "confirmed": 366,
+    "refuted": 13718,
+    "bypassed": 12999,
+    "eligible": 88269
+  },
+  "off:4:depth6": {
+    "requests": 21,
+    "nodes": 1518241,
+    "elapsed": 0.6312352999999998,
+    "adjusted": 0,
+    "verified": 0,
+    "confirmed": 0,
+    "refuted": 0,
+    "bypassed": 0,
+    "eligible": 0
+  },
+  "off:4:nodes100000": {
+    "requests": 21,
+    "nodes": 1925163,
+    "elapsed": 0.9547199,
+    "adjusted": 0,
+    "verified": 0,
+    "confirmed": 0,
+    "refuted": 0,
+    "bypassed": 0,
+    "eligible": 0
+  },
+  "move:4:depth6": {
+    "requests": 21,
+    "nodes": 1568309,
+    "elapsed": 0.6308938,
+    "adjusted": 161,
+    "verified": 3083,
+    "confirmed": 296,
+    "refuted": 2787,
+    "bypassed": 157,
+    "eligible": 69617
+  },
+  "move:4:nodes100000": {
+    "requests": 21,
+    "nodes": 1920814,
+    "elapsed": 0.9764239000000001,
+    "adjusted": 248,
+    "verified": 3911,
+    "confirmed": 381,
+    "refuted": 3530,
+    "bypassed": 243,
+    "eligible": 90508
+  },
+  "caution:4:depth6": {
+    "requests": 21,
+    "nodes": 1711028,
+    "elapsed": 0.7372317,
+    "adjusted": 10055,
+    "verified": 10581,
+    "confirmed": 313,
+    "refuted": 10268,
+    "bypassed": 9762,
+    "eligible": 72350
+  },
+  "caution:4:nodes100000": {
+    "requests": 21,
+    "nodes": 1929856,
+    "elapsed": 0.9707748,
+    "adjusted": 12448,
+    "verified": 13291,
+    "confirmed": 384,
+    "refuted": 12907,
+    "bypassed": 12211,
+    "eligible": 87179
+  }
+}

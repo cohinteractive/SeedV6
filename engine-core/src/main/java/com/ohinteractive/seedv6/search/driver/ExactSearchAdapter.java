@@ -144,6 +144,15 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
         return adapter;
     }
 
+    public static ExactSearchAdapter depthFeedbackResearch(SearchEvaluation evaluation,
+            com.ohinteractive.seedv6.search.exact.DepthFeedback policy,
+            com.ohinteractive.seedv6.search.exact.DepthFeedback.Diagnostics diagnostics) {
+        if(!evaluation.isBrnPair2()) throw new IllegalArgumentException("Depth feedback requires Pair-2");
+        var adapter = seeResearch(evaluation, SeePolicy.QXRAY, null);
+        adapter.exact.withDepthFeedback(policy, diagnostics);
+        return adapter;
+    }
+
     public static ExactSearchAdapter internalSearchResearch(SearchEvaluation evaluation, InternalSearchPolicy policy,
             InternalSearchPolicy.Diagnostics diagnostics) {
         if(!evaluation.isBrnPair2()) throw new IllegalArgumentException("Internal research requires Pair-2");

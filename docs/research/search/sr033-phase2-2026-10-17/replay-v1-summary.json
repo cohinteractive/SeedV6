@@ -1,0 +1,17 @@
+{
+  "receipt": {
+    "status": "passed",
+    "completedReferences": 144,
+    "attemptedReferences": 144,
+    "samples": 72
+  },
+  "conditionalCounts": {
+    "censored_fail_low": 36,
+    "verified_trigger": 36,
+    "verified_trigger_nominal_raise": 17,
+    "verified_trigger_horizon_flip": 13,
+    "censored_fail_low_nominal_raise": 1,
+    "censored_fail_low_horizon_flip": 1
+  },
+  "limits": "Stratified diagnostic sample, correlated within roots; oracle has unpruned qsearch/no LMR/WINDOW, so differences include cumulative selectivity as well as horizon. Not population error estimates."
+}

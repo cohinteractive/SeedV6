@@ -23,6 +23,12 @@ FILES = ('tournament-session.py', 'tournament-process.py', 'sr021-match.py',
          'search-baseline.py', 'sr024-process-cost.py', 'sr036-process-cost.py')
 
 
+def adapter_name(record):
+    name = record.get('adapter', 'sr021-match.py')
+    require(name in ('sr021-match.py', 'sr033-match.py'), 'Unsupported match adapter')
+    return name
+
+
 def require(condition, message):
     if not condition:
         raise ValueError(message)
@@ -103,7 +109,7 @@ def prepare(config_path, output):
             'Block needs at least concurrency opening pairs')
     require(type(limit) is int and limit > 240, 'Allow preflight plus a bounded match')
     require(config.get('assessmentPlan'), 'Prospective assessment plan required')
-    require(config.get('purpose') in ('operational', 'confirmatory'), 'Explicit evidence purpose required')
+    require(config.get('purpose') in ('operational', 'exploratory', 'confirmatory'), 'Explicit evidence purpose required')
     protocol = None
     if config['purpose'] == 'confirmatory':
         require(config.get('assessmentProtocol'), 'Confirmatory stages require a separate prospective protocol file')
@@ -111,7 +117,8 @@ def prepare(config_path, output):
         require(protocol.is_file(), 'Missing prospective statistical protocol')
     out = Path(output).resolve()
     require(not out.exists(), 'Never replace an existing study')
-    runner = module('match', Path(__file__).with_name('sr021-match.py'))
+    adapter = adapter_name(config)
+    runner = module('match', Path(__file__).with_name(adapter))
     # Validate the entire schedule before creating the study.
     pairs = args.pop('pairs')
     prefixes = runner.b.opening_prefixes(args['openings'], pairs)
@@ -130,7 +137,7 @@ def prepare(config_path, output):
     if protocol is not None:
         shutil.copy2(protocol, payload/'assessment-protocol.txt')
     tool_dir = payload / 'tools'; tool_dir.mkdir()
-    for name in FILES:
+    for name in dict.fromkeys((*FILES, adapter)):
         shutil.copy2(Path(__file__).with_name(name), tool_dir / name)
     for side in ('baseline', 'candidate'):
         source = Path(args[side]); require((source/'lib').is_dir(), 'Missing installation')
@@ -155,7 +162,7 @@ def prepare(config_path, output):
     java_home = Path(args['java']).parent.parent
     chess_package = Path(runner.b.chess.__file__).parent
     require(runner.b.chess.__version__ == '1.11.2', 'Validated chess auditor version required')
-    plan = {'schema': 1, 'createdUtc': stamp(), 'purpose': config['purpose'],
+    plan = {'schema': 1, 'createdUtc': stamp(), 'purpose': config['purpose'], 'adapter': adapter,
             'assessmentPlan': config['assessmentPlan'], 'host': host(), 'pairs': pairs,
             'arguments': args, 'blocks': blocks, 'blockLimitSeconds': limit,
             'failurePolicy': 'Preserve and block any partial/abnormal block. Never automatic replay or replacement.',
@@ -183,7 +190,7 @@ def verify(plan_path):
 
 
 def audit_block(plan, block, folder):
-    runner = module('audit_match', Path(plan['arguments']['runner']).parent/'tools/sr021-match.py')
+    runner = module('audit_match', Path(plan['arguments']['runner']).parent/'tools'/adapter_name(plan))
     record = read(folder/'run.json')
     expected = dict(plan['arguments'], pairs=block['pairs'], openings=block['openings'], out=str(folder))
     require(record['status'] == 'passed' and record['arguments'] == expected and
@@ -302,7 +309,7 @@ def worker(plan_path, index):
     require(sys.stdin.buffer.readline() == b'GO\n', 'Missing owned-process gate')
     plan_path = Path(plan_path).resolve(); plan = verify(plan_path)
     block = plan['blocks'][index]
-    runner = module('match', plan_path.parent/'inputs/tools/sr021-match.py')
+    runner = module('match', plan_path.parent/'inputs/tools'/adapter_name(plan))
     runner.run(SimpleNamespace(**dict(plan['arguments'], pairs=block['pairs'],
                openings=block['openings'], out=str(plan_path.parent/f'block-{index:04d}'))))
 

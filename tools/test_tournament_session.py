@@ -17,6 +17,12 @@ p = s.module('processes', Path(__file__).with_name('tournament-process.py'))
 
 
 class SessionTests(unittest.TestCase):
+    def test_adapter_is_explicit_bounded_and_legacy_default_preserved(self):
+        self.assertEqual('sr021-match.py', s.adapter_name({}))
+        self.assertEqual('sr033-match.py', s.adapter_name({'adapter':'sr033-match.py'}))
+        with self.assertRaisesRegex(ValueError, 'Unsupported'):
+            s.adapter_name({'adapter':'../sr033-match.py'})
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(prefix='seed-session-')
         self.addCleanup(self.tmp.cleanup); self.root = Path(self.tmp.name).resolve()

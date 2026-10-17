@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F042**
+Internal frontier revision: **P2-F044**
 
-Status: **SR-021 Futility-Pruning Family is owner-accepted DEFERRED without adoption. Tournament execution maintenance is technically complete; GPT/owner maintenance reconciliation and BOTH final Project Source synchronizations remain pending. No ACTIVE feature or authorized successor. The SR-024 predecessor handback remains confirmed.**
+Status: **SR-033 Adaptive/Hindsight Depth Feedback is ACTIVE under the owner-authorized feature workstream. Tournament maintenance is GPT/owner accepted and BOTH predecessor P2-R038/P2-F042 Project Source mirrors are confirmed synchronized. SR-021 remains owner-accepted DEFERRED without adoption. Accepted cumulative production is unchanged.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -790,7 +790,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-030 | Check extensions | DEFERRED | Six formulations, 704 development games and two independent 2,048-game confirmations: FORCED -5.09 Elo, adjusted [-21.56,+11.36]; BOUNDARY +9.67, [-6.61,+26.00], all prescribed intervals cross zero. No adoption; plausible modest low-cost BOUNDARY benefit remains unresolved. Preserve unchanged WINDOW production and all controls; both confirmations are closed. Fresh justified evidence with suitable precision, opening coverage, error accounting and GPT/owner selection is required for resumption. |
 | SR-031 | Singular-extension family | PENDING | TT anchors, exclusion-domain proof, policy identity, extension alternatives and probe cost. |
 | SR-032 | Other tactical/forced-line extensions | PENDING | Forced replies, recapture/promotion/threat/history families, caps/fractional depth and complete root decisions. |
-| SR-033 | Adaptive/hindsight depth feedback | PENDING | Confirmed outcomes and static/context evidence; reduction-conditioned variants need a justified reduction producer. |
+| SR-033 | Adaptive/hindsight depth feedback | ACTIVE | Owner-selected; accepted SR-029 supplies reduction producer. Investigate censored reduced/verified outcomes against cumulative QXRAY/EFFORT1 and ROOT_REUSE4; preserve workers 1..16. See SR-033 activation and research record. |
 
 ## Unresolved Phase 1 subjects and accepted evidence
 
@@ -919,6 +919,38 @@ experiment is not an escalation condition. No extra orchestration ledger or
 governance document is needed.
 
 ## Maintenance and initialization state
+
+### SR-033 validated first feedback mechanisms ? 2026-10-17 local
+
+SR-033 remains ACTIVE; accepted production is unchanged. The
+[feature research record](../docs/research/search/SR033_ADAPTIVE_DEPTH_PHASE2_2026-10-17.md)
+records reduction-outcome censorship, sparse repeated-success opportunities,
+explicit MOVE request-private and CAUTION node-local research controls, preserved
+nominal verification/PVS/proof boundaries, independent tactical witnesses and
+whole-request economics. Actual standalone production/frozen OFF parity, all
+1..16 UCI worker settings and deeper real-model helper execution pass. Initial
+coverage/harness failures remain classified and preserved. Four prospectively
+fixed exploratory clock contrasts are frozen at one/four workers, concurrency
+4/2 and 10+0.1; no strength result or adoption is established. Continue within
+SR-033 according to the durable resume point; version finalization stays separate.
+
+### SR-033 activation ? 2026-10-17 local
+
+The owner confirms tournament-maintenance GPT reconciliation, owner acceptance
+and BOTH P2-R038/P2-F042 Project Source replacements/synchronizations complete.
+Historical pending statements below are superseded; no predecessor gate remains.
+Clean HEAD `54de53e979bde0483bc5729ef5d41845aa2b4375` and the starting revisions
+are verified. Only SR-033 Adaptive/Hindsight Depth Feedback is selected/ACTIVE;
+SR-021 remains DEFERRED and its interrupted SHALLOW4 study is not resumed.
+
+The [SR-033 research record](../docs/research/search/SR033_ADAPTIVE_DEPTH_PHASE2_2026-10-17.md)
+records fixed generation-32 model identity, source inspection, available Phase 1
+evidence, the censored-outcome challenge and current resume point. Accepted
+SR-029 supplies the reduction-conditioned prerequisite. Research compares actual
+cumulative QXRAY/EFFORT at one worker and ROOT_REUSE at four, preserving supported
+workers 1..16, independent references and all binding proof/lifecycle requirements.
+No feedback mechanism is adopted. Existing version DEFERRED_FINALIZATION is
+preserved separately and does not block authorized independent research.
 
 ### Owner acceptance and tournament maintenance — 2026-10-17 local
 
@@ -1477,3 +1509,5 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-F040 | Record completed bounded DEEP development and additional correctness/worker evidence, preserved interruption and source identities, owner-deferred Mac access and the specific remaining resource choice; retain ACTIVE without adoption, automatic resumption or successor. |
 | P2-F041 | Close SR-021 technically as DEFERRED by explicit owner resource choice after substantial six-formulation investigation; preserve native protocol futility, distinct owner-interrupted four-worker evidence, bounded DEEP uncertainty, unchanged production, no automatic resumption/Mac work/successor, and BOTH-mirror GPT/owner handback. |
 | P2-F042 | Record owner-accepted SR-021 DEFERRED and unified repository authority; link tournament execution maintenance, measured concurrency/forecasting and bounded pair-block continuation with failure/statistical safeguards; preserve all feature IDs/dispositions and require BOTH final mirrors plus owner/GPT handback without selecting a successor. |
+| P2-F043 | Activate only owner-selected SR-033 after verified clean cumulative baseline and confirmed maintenance acceptance/BOTH predecessor mirror synchronization; record fixed evaluator, censored-outcome challenge, worker scope, separate deferred version provenance and durable research resume point. |
+| P2-F044 | Record SR-033 outcome observations, two explicit feedback controls, correctness/proof and all-worker validation, mixed diagnostic economics and frozen independent-worker development contrasts; retain ACTIVE and unchanged production. |

@@ -1,0 +1,23 @@
+{
+  "adapter": "sr033-match.py",
+  "purpose": "exploratory",
+  "blockPairs": 16,
+  "blockLimitSeconds": 2400,
+  "assessmentPlan": "Fixed 32 opening pairs, complete both operational blocks before any strength assessment; no interim adaptation or pooling across workers. Candidate selection is exploratory only; fresh confirmation is mandatory for adoption. All four predeclared comparisons complete except integrity failure.",
+  "arguments": {
+    "java": "C:/java/jdk-21/bin/java.exe",
+    "runner": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\tools\\fastchess.exe",
+    "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\build\\sr033\\candidate-v1",
+    "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\build\\sr033\\candidate-v1",
+    "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+    "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr033-phase2-2026-10-17\\development-openings.pgn",
+    "baseline_policy": "off",
+    "candidate_policy": "move",
+    "baseline_workers": 4,
+    "candidate_workers": 4,
+    "concurrency": 2,
+    "pairs": 32,
+    "tc": "10+0.1",
+    "seed": 330017
+  }
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.DepthFeedbackTest",
+    "tests": "5",
+    "skipped": "0",
+    "failures": "1",
+    "errors": "0",
+    "timestamp": "2026-10-17T04:36:25",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "9.727"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.IterationReuseTest",
+    "tests": "11",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-17T04:36:35",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.431"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.LateMoveReductionTest",
+    "tests": "7",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-17T04:36:35",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.505"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.SeePruningTest",
+    "tests": "6",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-17T04:36:36",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "3.025"
+  }
+]

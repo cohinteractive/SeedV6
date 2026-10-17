@@ -1,0 +1,480 @@
+[
+  {
+    "observedBaseline": {
+      "bestMove": 328385,
+      "hasMove": true,
+      "score": 7,
+      "depth": 6,
+      "nodes": 132305,
+      "legalRootMoves": 34,
+      "completed": true,
+      "principalVariation": [
+        328385,
+        659131,
+        329429,
+        787941,
+        12846542,
+        4851194
+      ],
+      "diagnostics": {
+        "enabled": true,
+        "worker": {
+          "nodes": {
+            "mainNodes": 19913,
+            "qNodes": 112392,
+            "maximumAbsolutePly": 22,
+            "maximumQply": 16,
+            "evaluationCalls": 107739
+          },
+          "transpositionTable": {
+            "probes": 0,
+            "keyMatches": 0,
+            "insufficientDepthMatches": 0,
+            "exactCutoffs": 0,
+            "lowerBoundCutoffs": 0,
+            "upperBoundCutoffs": 0,
+            "hashMovesAvailable": 0,
+            "stores": 0
+          },
+          "moveOrder": {
+            "legalMovesSearched": 0,
+            "betaCutoffs": 0,
+            "firstMoveBetaCutoffs": 0,
+            "cutoffRankSum": 0,
+            "maximumCutoffRank": 0,
+            "cutoffRank1": 0,
+            "cutoffRank2": 0,
+            "cutoffRank3": 0,
+            "cutoffRank4": 0,
+            "cutoffRank5To8": 0,
+            "cutoffRank9Plus": 0,
+            "hashMoveCutoffs": 0,
+            "tacticalCutoffs": 0,
+            "quietCutoffs": 0,
+            "killerCutoffs": 0,
+            "historyCutoffs": 0
+          },
+          "qsearch": {
+            "checkedQNodes": 0,
+            "standPatCutoffs": 0,
+            "tacticalMovesSearched": 0,
+            "evasionMovesSearched": 0,
+            "softDepthLimitEncounters": 0,
+            "qmateTerminals": 0
+          },
+          "selective": {
+            "mateDistanceCutoffs": 0,
+            "razorAttempts": 0,
+            "razorQsearchProbes": 0,
+            "razorAcceptedResults": 0,
+            "futilityEligibleNodes": 0,
+            "futilityQuietMovesPruned": 0
+          }
+        },
+        "iteration": {
+          "completedIterations": 6,
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0,
+          "deepestCompletedDepth": 6
+        }
+      },
+      "selective": true
+    },
+    "result": {
+      "requestedDepth": 6,
+      "completed": true,
+      "bestMove": 328833,
+      "score": 9,
+      "principalVariation": [
+        328833,
+        659131,
+        196869,
+        724797,
+        15075546,
+        7211242
+      ],
+      "nodes": 6389825,
+      "elapsedNanos": 3285830800,
+      "qnodes": 6142666,
+      "maximumQply": 27,
+      "selective": false,
+      "maximumExtensionPlies": 0
+    },
+    "observedCandidate": {
+      "bestMove": 329685,
+      "hasMove": true,
+      "score": 5,
+      "depth": 6,
+      "nodes": 101659,
+      "legalRootMoves": 34,
+      "completed": true,
+      "principalVariation": [
+        329685,
+        789285,
+        328833,
+        855289,
+        15075546,
+        7145709
+      ],
+      "diagnostics": {
+        "enabled": true,
+        "worker": {
+          "nodes": {
+            "mainNodes": 16938,
+            "qNodes": 84721,
+            "maximumAbsolutePly": 24,
+            "maximumQply": 18,
+            "evaluationCalls": 82550
+          },
+          "transpositionTable": {
+            "probes": 0,
+            "keyMatches": 0,
+            "insufficientDepthMatches": 0,
+            "exactCutoffs": 0,
+            "lowerBoundCutoffs": 0,
+            "upperBoundCutoffs": 0,
+            "hashMovesAvailable": 0,
+            "stores": 0
+          },
+          "moveOrder": {
+            "legalMovesSearched": 0,
+            "betaCutoffs": 0,
+            "firstMoveBetaCutoffs": 0,
+            "cutoffRankSum": 0,
+            "maximumCutoffRank": 0,
+            "cutoffRank1": 0,
+            "cutoffRank2": 0,
+            "cutoffRank3": 0,
+            "cutoffRank4": 0,
+            "cutoffRank5To8": 0,
+            "cutoffRank9Plus": 0,
+            "hashMoveCutoffs": 0,
+            "tacticalCutoffs": 0,
+            "quietCutoffs": 0,
+            "killerCutoffs": 0,
+            "historyCutoffs": 0
+          },
+          "qsearch": {
+            "checkedQNodes": 0,
+            "standPatCutoffs": 0,
+            "tacticalMovesSearched": 0,
+            "evasionMovesSearched": 0,
+            "softDepthLimitEncounters": 0,
+            "qmateTerminals": 0
+          },
+          "selective": {
+            "mateDistanceCutoffs": 0,
+            "razorAttempts": 0,
+            "razorQsearchProbes": 0,
+            "razorAcceptedResults": 0,
+            "futilityEligibleNodes": 0,
+            "futilityQuietMovesPruned": 0
+          }
+        },
+        "iteration": {
+          "completedIterations": 6,
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0,
+          "deepestCompletedDepth": 6
+        }
+      },
+      "selective": true
+    },
+    "reference": "independent_SR001A_unpruned",
+    "kind": "root",
+    "id": "opening-02"
+  },
+  {
+    "kind": "root_move",
+    "id": "opening-02",
+    "move": "b1d2",
+    "reference": {
+      "requestedDepth": 5,
+      "completed": true,
+      "bestMove": 659131,
+      "score": -8,
+      "principalVariation": [
+        659131,
+        196736,
+        7210659,
+        14878338,
+        855289
+      ],
+      "nodes": 875497,
+      "elapsedNanos": 537798700,
+      "qnodes": 839582,
+      "maximumQply": 27,
+      "selective": false,
+      "maximumExtensionPlies": 0
+    },
+    "parentScore": 8
+  },
+  {
+    "kind": "root_move",
+    "id": "opening-02",
+    "move": "f3h4",
+    "reference": {
+      "requestedDepth": 5,
+      "completed": true,
+      "bestMove": 789285,
+      "score": -5,
+      "principalVariation": [
+        789285,
+        328833,
+        855289,
+        15075546,
+        7145709
+      ],
+      "nodes": 792891,
+      "elapsedNanos": 410796300,
+      "qnodes": 774794,
+      "maximumQply": 26,
+      "selective": false,
+      "maximumExtensionPlies": 0
+    },
+    "parentScore": 5
+  },
+  {
+    "observedBaseline": {
+      "bestMove": 263426,
+      "hasMove": true,
+      "score": 12,
+      "depth": 6,
+      "nodes": 114870,
+      "legalRootMoves": 40,
+      "completed": true,
+      "principalVariation": [
+        263426,
+        724664,
+        132163,
+        658043,
+        10619473,
+        3017328
+      ],
+      "diagnostics": {
+        "enabled": true,
+        "worker": {
+          "nodes": {
+            "mainNodes": 20496,
+            "qNodes": 94374,
+            "maximumAbsolutePly": 21,
+            "maximumQply": 16,
+            "evaluationCalls": 91079
+          },
+          "transpositionTable": {
+            "probes": 0,
+            "keyMatches": 0,
+            "insufficientDepthMatches": 0,
+            "exactCutoffs": 0,
+            "lowerBoundCutoffs": 0,
+            "upperBoundCutoffs": 0,
+            "hashMovesAvailable": 0,
+            "stores": 0
+          },
+          "moveOrder": {
+            "legalMovesSearched": 0,
+            "betaCutoffs": 0,
+            "firstMoveBetaCutoffs": 0,
+            "cutoffRankSum": 0,
+            "maximumCutoffRank": 0,
+            "cutoffRank1": 0,
+            "cutoffRank2": 0,
+            "cutoffRank3": 0,
+            "cutoffRank4": 0,
+            "cutoffRank5To8": 0,
+            "cutoffRank9Plus": 0,
+            "hashMoveCutoffs": 0,
+            "tacticalCutoffs": 0,
+            "quietCutoffs": 0,
+            "killerCutoffs": 0,
+            "historyCutoffs": 0
+          },
+          "qsearch": {
+            "checkedQNodes": 0,
+            "standPatCutoffs": 0,
+            "tacticalMovesSearched": 0,
+            "evasionMovesSearched": 0,
+            "softDepthLimitEncounters": 0,
+            "qmateTerminals": 0
+          },
+          "selective": {
+            "mateDistanceCutoffs": 0,
+            "razorAttempts": 0,
+            "razorQsearchProbes": 0,
+            "razorAcceptedResults": 0,
+            "futilityEligibleNodes": 0,
+            "futilityQuietMovesPruned": 0
+          }
+        },
+        "iteration": {
+          "completedIterations": 6,
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0,
+          "deepestCompletedDepth": 6
+        }
+      },
+      "selective": true
+    },
+    "result": {
+      "requestedDepth": 6,
+      "completed": true,
+      "bestMove": 65924,
+      "score": 13,
+      "principalVariation": [
+        65924,
+        593852,
+        196869,
+        657467,
+        264002,
+        724664
+      ],
+      "nodes": 1413965,
+      "elapsedNanos": 713021400,
+      "qnodes": 1301073,
+      "maximumQply": 23,
+      "selective": false,
+      "maximumExtensionPlies": 0
+    },
+    "observedCandidate": {
+      "bestMove": 65924,
+      "hasMove": true,
+      "score": 11,
+      "depth": 6,
+      "nodes": 115769,
+      "legalRootMoves": 40,
+      "completed": true,
+      "principalVariation": [
+        65924,
+        593852,
+        263426,
+        658043,
+        131715,
+        657001
+      ],
+      "diagnostics": {
+        "enabled": true,
+        "worker": {
+          "nodes": {
+            "mainNodes": 21253,
+            "qNodes": 94516,
+            "maximumAbsolutePly": 21,
+            "maximumQply": 16,
+            "evaluationCalls": 91182
+          },
+          "transpositionTable": {
+            "probes": 0,
+            "keyMatches": 0,
+            "insufficientDepthMatches": 0,
+            "exactCutoffs": 0,
+            "lowerBoundCutoffs": 0,
+            "upperBoundCutoffs": 0,
+            "hashMovesAvailable": 0,
+            "stores": 0
+          },
+          "moveOrder": {
+            "legalMovesSearched": 0,
+            "betaCutoffs": 0,
+            "firstMoveBetaCutoffs": 0,
+            "cutoffRankSum": 0,
+            "maximumCutoffRank": 0,
+            "cutoffRank1": 0,
+            "cutoffRank2": 0,
+            "cutoffRank3": 0,
+            "cutoffRank4": 0,
+            "cutoffRank5To8": 0,
+            "cutoffRank9Plus": 0,
+            "hashMoveCutoffs": 0,
+            "tacticalCutoffs": 0,
+            "quietCutoffs": 0,
+            "killerCutoffs": 0,
+            "historyCutoffs": 0
+          },
+          "qsearch": {
+            "checkedQNodes": 0,
+            "standPatCutoffs": 0,
+            "tacticalMovesSearched": 0,
+            "evasionMovesSearched": 0,
+            "softDepthLimitEncounters": 0,
+            "qmateTerminals": 0
+          },
+          "selective": {
+            "mateDistanceCutoffs": 0,
+            "razorAttempts": 0,
+            "razorQsearchProbes": 0,
+            "razorAcceptedResults": 0,
+            "futilityEligibleNodes": 0,
+            "futilityQuietMovesPruned": 0
+          }
+        },
+        "iteration": {
+          "completedIterations": 6,
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0,
+          "deepestCompletedDepth": 6
+        }
+      },
+      "selective": true
+    },
+    "reference": "independent_SR001A_unpruned",
+    "kind": "root",
+    "id": "opening-04"
+  },
+  {
+    "kind": "root_move",
+    "id": "opening-04",
+    "move": "c1e3",
+    "reference": {
+      "requestedDepth": 5,
+      "completed": true,
+      "bestMove": 593852,
+      "score": -11,
+      "principalVariation": [
+        593852,
+        65924,
+        658043,
+        131715,
+        657001
+      ],
+      "nodes": 454346,
+      "elapsedNanos": 209276700,
+      "qnodes": 437365,
+      "maximumQply": 23,
+      "selective": false,
+      "maximumExtensionPlies": 0
+    },
+    "parentScore": 11
+  },
+  {
+    "kind": "root_move",
+    "id": "opening-04",
+    "move": "e1g1",
+    "reference": {
+      "requestedDepth": 5,
+      "completed": true,
+      "bestMove": 593852,
+      "score": -13,
+      "principalVariation": [
+        593852,
+        196869,
+        657467,
+        264002,
+        724664
+      ],
+      "nodes": 461985,
+      "elapsedNanos": 208387500,
+      "qnodes": 438626,
+      "maximumQply": 19,
+      "selective": false,
+      "maximumExtensionPlies": 0
+    },
+    "parentScore": 13
+  }
+]

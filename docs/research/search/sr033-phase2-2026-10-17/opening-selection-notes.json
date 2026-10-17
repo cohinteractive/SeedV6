@@ -1,0 +1,9 @@
+{
+  "priorSelectionAttempt": "Failed before output: older receipts lack positionKeys",
+  "excludedReceipts": 84,
+  "legacyReceiptsNotMachineComparable": [
+    "docs\\research\\search\\sr006-phase2-2026-10-10\\played-corpus.selection.json",
+    "docs\\research\\search\\sr029-phase2-2026-10-10\\aa-four-openings.selection.json",
+    "docs\\research\\search\\tournament-execution-2026-10-17\\calibration-openings.selection.json"
+  ]
+}

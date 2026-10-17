@@ -222,12 +222,30 @@ public final class ExactSearch {
     private SeePolicy.Diagnostics seeDiagnostics;
     private FutilityPolicy futilityPolicy = FutilityPolicy.OFF;
     private FutilityPolicy.Diagnostics futilityDiagnostics;
+    private DepthFeedback depthFeedback = DepthFeedback.OFF;
+    private DepthFeedback.Diagnostics feedbackDiagnostics;
+    private byte[] feedbackMoves;
+
+    /** Explicit SR-033 experiment over unchanged cumulative production policies. */
+    public ExactSearch withDepthFeedback(DepthFeedback policy, DepthFeedback.Diagnostics diagnostics) {
+        if(active || requestActive || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
+                || lmrPolicy != LMR_QUIET || iterationReuse == null || nullMovePruning || reverseFutility
+                || pairNull != NullMovePolicy.OFF || checkPolicy != CHECK_OFF
+                || futilityPolicy != FutilityPolicy.OFF || internalPolicy != InternalSearchPolicy.OFF)
+            throw new IllegalStateException("Depth feedback requires idle cumulative QXRAY Search");
+        depthFeedback = Objects.requireNonNull(policy, "policy");
+        feedbackDiagnostics = diagnostics;
+        feedbackMoves = policy == DepthFeedback.MOVE ? new byte[QuietHistory.SIZE] : null;
+        return this;
+    }
+
+    private void clearFeedback() { if(feedbackMoves != null) Arrays.fill(feedbackMoves, (byte)0); }
 
     /** Explicit SR-021 composition; requires the accepted cumulative recursive policies. */
     public ExactSearch withFutilityResearch(FutilityPolicy policy, FutilityPolicy.Diagnostics diagnostics) {
         if(active || requestActive || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
                 || lmrPolicy != LMR_QUIET || iterationReuse == null || nullMovePruning || reverseFutility
-                || pairNull != NullMovePolicy.OFF || checkPolicy != CHECK_OFF)
+                || pairNull != NullMovePolicy.OFF || checkPolicy != CHECK_OFF || depthFeedback != DepthFeedback.OFF)
             throw new IllegalStateException("Futility research requires idle cumulative QXRAY Search");
         futilityPolicy = Objects.requireNonNull(policy, "policy");
         futilityDiagnostics = diagnostics;
@@ -236,7 +254,7 @@ public final class ExactSearch {
 
     /** Configure an idle cumulative research owner; never changes the independent reference. */
     public ExactSearch withSeeResearch(SeePolicy policy, SeePolicy.Diagnostics diagnostics) {
-        if(futilityPolicy != FutilityPolicy.OFF && policy != SeePolicy.QXRAY)
+        if((futilityPolicy != FutilityPolicy.OFF || depthFeedback != DepthFeedback.OFF) && policy != SeePolicy.QXRAY)
             throw new IllegalStateException("Futility research must retain QXRAY");
         if(active || requestActive || !nominalQsearch || qsearchPruning != QSEARCH_BASELINE
                 || qtable != null || quietChecks || qdepthLimit != Integer.MAX_VALUE
@@ -252,6 +270,7 @@ public final class ExactSearch {
         if(active || requestActive || table == null || epoch < 0 || epoch > 255)
             throw new IllegalStateException("Invalid shared Search request.");
         generation = epoch;
+        clearFeedback();
         if(iterationReuse != null) iterationReuse.clear();
         rootJobReuse=rootJobHistory=false;
         requestActive = true;
@@ -586,6 +605,7 @@ public final class ExactSearch {
     public void beginRequest() {
         if(active || requestActive) throw new IllegalStateException("Search request already active.");
         advanceGeneration();
+        clearFeedback();
         if(iterationReuse != null) iterationReuse.clear();
         requestActive = true;
     }
@@ -593,12 +613,14 @@ public final class ExactSearch {
     public void endRequest() {
         if(active || !requestActive) throw new IllegalStateException("No idle Search request.");
         requestActive = false;
+        clearFeedback();
         if(iterationReuse != null) iterationReuse.clear();
     }
 
     public void newGame() {
         if(active || requestActive) throw new IllegalStateException("Search request active.");
         if(table != null) table.clear();
+        clearFeedback();
         if(iterationReuse != null) iterationReuse.clear();
     }
 
@@ -679,7 +701,7 @@ public final class ExactSearch {
         if(alpha < -INFINITY || beta > INFINITY || alpha >= beta) throw new IllegalArgumentException("Invalid window.");
         if(active) throw new IllegalStateException("ExactSearch cannot be re-entered.");
         gameHistory.requireCurrent(board);
-        if(!requestActive) advanceGeneration();
+        if(!requestActive) { advanceGeneration(); clearFeedback(); }
         long start = System.nanoTime();
         active = true;
         nodes = 0;
@@ -748,6 +770,7 @@ public final class ExactSearch {
             history = null;
             this.cancelled = null;
             active = false;
+            if(!requestActive) clearFeedback();
         }
     }
 
@@ -1113,6 +1136,7 @@ public final class ExactSearch {
         long[] child = boards[ply + 1];
         int deferredEnd = -1;
         int searchedQuiets = 0;
+        boolean feedbackCaution = false;
         boolean futilityEvaluated = false;
         int futilityEval = 0;
         if(lmpDiagnostics != null) lmpDiagnostics.node(board, ply, depth, originalAlpha, originalBeta, scout);
@@ -1331,6 +1355,21 @@ public final class ExactSearch {
                     if(extension != 0 && checkDiagnostics != null) checkDiagnostics.scouts++;
                     int reduction = lmrReduction(depth, ply, i + 1, searchedQuiets, scout, checked, move,
                             hashMove, status, child, alpha, beta);
+                    int baseReduction = reduction;
+                    boolean nominalObserved = reduction == 0;
+                    boolean reducedImproved = false;
+                    if(depthFeedback != DepthFeedback.OFF && reduction > 0) {
+                        if(feedbackDiagnostics != null) feedbackDiagnostics.eligible++;
+                        if((feedbackMoves != null && feedbackMoves[QuietHistory.index(move)] > 0)
+                                || (depthFeedback == DepthFeedback.CAUTION && feedbackCaution)) {
+                            reduction--;
+                            nominalObserved = reduction == 0;
+                            if(feedbackDiagnostics != null) {
+                                feedbackDiagnostics.adjusted++;
+                                if(reduction == 0) feedbackDiagnostics.bypassed++;
+                            }
+                        }
+                    }
                     if(reduction > 0) {
                         // Monotone, deliberately conservative: discarded or verified work does
                         // not discharge dependencies from other selectively searched moves.
@@ -1344,6 +1383,7 @@ public final class ExactSearch {
                             lmrDiagnostics.byParentDepth[depth]++;
                         }
                         score = -negamax(childDepth - reduction, ply + 1, -alpha - 1, -alpha, move, true);
+                        reducedImproved = score > alpha;
                         boolean verify = lmrPolicy == LMR_VERIFY_ALL || score > alpha
                                 || score < -MAX_STATIC_SCORE || score > MAX_STATIC_SCORE;
                         if(lmrDiagnostics != null) {
@@ -1355,6 +1395,7 @@ public final class ExactSearch {
                         if(verify) {
                             before = nodes; qbefore = qnodes;
                             score = -negamax(childDepth, ply + 1, -alpha - 1, -alpha, move, true);
+                            nominalObserved = true;
                             if(lmrDiagnostics != null) {
                                 lmrDiagnostics.verifications++;
                                 lmrDiagnostics.verificationNodes += nodes - before;
@@ -1381,6 +1422,16 @@ public final class ExactSearch {
                             lmrDiagnostics.fullResearches++;
                             lmrDiagnostics.fullResearchNodes += nodes - before;
                             lmrDiagnostics.fullResearchQnodes += qnodes - qbefore;
+                        }
+                    }
+                    if(depthFeedback != DepthFeedback.OFF && baseReduction > 0 && nominalObserved) {
+                        checkpoint(); // Never learn an aborted result or fabricate an omitted outcome.
+                        if(feedbackMoves != null) feedbackMoves[QuietHistory.index(move)] = (byte)(score > alpha ? 1 : -1);
+                        if(reducedImproved && score <= alpha) feedbackCaution = true;
+                        if(feedbackDiagnostics != null) {
+                            feedbackDiagnostics.verified++;
+                            if(score > alpha) feedbackDiagnostics.confirmed++; else feedbackDiagnostics.refuted++;
+                            feedbackDiagnostics.outcome(move,ply,childDepth,alpha,score,reduction > 0);
                         }
                     }
                 } else {

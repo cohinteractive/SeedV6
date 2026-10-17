@@ -1,0 +1,52 @@
+{
+  "1": {
+    "counts": {
+      "fullResearchQnodes": 65376,
+      "verificationQnodes": 259684,
+      "verifications": 6734,
+      "omissions": 250460,
+      "reducedQnodes": 1931008,
+      "fullResearchNodes": 74035,
+      "verificationNodes": 311850,
+      "reducedNodes": 2304510,
+      "fullResearches": 81,
+      "attempts": 257194
+    },
+    "observations": [
+      257194,
+      6734,
+      26894,
+      99094,
+      25858,
+      8459
+    ],
+    "samples": 576,
+    "verifiedSamples": 203,
+    "confirmedSample": 69
+  },
+  "4": {
+    "counts": {
+      "fullResearchNodes": 91711,
+      "reducedQnodes": 2264533,
+      "omissions": 283355,
+      "verifications": 7560,
+      "verificationQnodes": 405974,
+      "fullResearchQnodes": 81681,
+      "attempts": 290915,
+      "fullResearches": 119,
+      "reducedNodes": 2694431,
+      "verificationNodes": 477828
+    },
+    "observations": [
+      290915,
+      7560,
+      17121,
+      73418,
+      16434,
+      6491
+    ],
+    "samples": 1945,
+    "verifiedSamples": 580,
+    "confirmedSample": 175
+  }
+}

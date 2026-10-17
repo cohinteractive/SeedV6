@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "arguments": {
+    "baseline": "build/sr033/baseline-runtime",
+    "candidate": "build/sr033/candidate-v1",
+    "production": "build/sr033/baseline-uci",
+    "model": "build-assets/production/bre-pair2-g32.brn-pair2",
+    "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+    "openings": "docs/research/search/sr033-phase2-2026-10-17/development-openings.pgn",
+    "out": "docs/research/search/sr033-phase2-2026-10-17/raw/bridge-v1",
+    "java": "C:/java/jdk-21/bin/java.exe"
+  },
+  "inputsStable": true
+}
