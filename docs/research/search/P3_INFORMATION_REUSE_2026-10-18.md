@@ -12,8 +12,9 @@ Current work: baseline, O2 and combined O1/O2 diagnostics, integrated regression
 worker lifecycle checks and hint-lifetime replay passed. Hints alone (policy 4)
 and all three mechanisms (policy 7) completed their 32-pair one-worker clock
 screens with positive but unconfirmed estimates. The separate four-worker hint
-screen also completed with a positive unconfirmed estimate. The first frozen one-worker ablation is running: policy 5 versus 4
-(retention), followed by policy 7 versus 5 (nominal-learning filter). Assess only complete
+screen also completed with a positive unconfirmed estimate. The policy 5 versus 4
+retention ablation completed near even, with wide uncertainty. The policy 7 versus 5
+nominal-learning filter ablation is running. Assess only complete
 screens; select complete finalist configurations before fresh confirmation.
 The separately planned [deeper lifetime replay](p3-information-reuse-2026-10-18/lifetime-v2.json)
 passed compilation, three focused tests and all 256 request comparisons between
@@ -321,7 +322,7 @@ requests for each binary/configuration. Complete process costs and all requests
 passed audit. No equal-compute inference from equal clocks.
 
 The p4, p7 and w4-p4 champion screens are closed; do not replay or extend them.
-The next game plans are `raw/clock-ablation-v1-history/plan.json` and then
+The history ablation is also closed; the active game plan is
 `raw/clock-ablation-v1-labels/plan.json`. Invoke each study's `inputs/tools/tournament-session.py`
 with the validated `build/research/venv/Scripts/python.exe`, `-B`, and `status`
 before resuming `run --plan ... --stop-before <explicit UTC time>`. An existing
@@ -439,7 +440,7 @@ tuning or another loosely matched champion screen:
 - [Reverse filter ablation](p3-information-reuse-2026-10-18/clock-ablation-v1-labels.json):
   candidate 7 against reference 5, holding hints and retention fixed.
 
-Each is already prepared under the matching `raw/clock-ablation-v1-*` path, with
+Each was prepared under the matching `raw/clock-ablation-v1-*` path, with
 32 paired development openings, four eight-pair blocks, 10+0.1, one worker and
 concurrency one. Both sides use the same experimental binary; the ablation
 reference is explicitly not the accepted champion. Keep all results, complete
@@ -447,6 +448,23 @@ the fixed samples, and do not extend them or infer component acceptance. Shared
 development openings and repeated comparisons limit inference. Individual
 component Elo significance is not a prerequisite for considering an integrated
 candidate, but its complete configuration still needs independent confirmation.
+
+The [completed retention contrast](p3-information-reuse-2026-10-18/clock-ablation-v1-history-summary.json)
+scored **26 W / 13 D / 25 L** for policy 5 against policy 4, 50.78125%, **+5.43 Elo**,
+descriptive paired-normal 95% interval **[-69.57, +80.95]**, bounded interval
+**[-174.79, +188.90]**. All 64 games ended normally and all four blocks passed
+audit. Candidate/reference full-process CPU ratio was 0.99888; throughput about
+127 games/hour. Host samples saw 21-27% total CPU, over 17 GiB free and no paging.
+These incomplete host observations do not establish absence of all contention.
+
+Retention's conditional strength remains **inconclusive**: this small screen
+neither establishes added value nor rejects the mechanism. Similar whole-game
+CPU under equal clocks does not erase the fixed-depth overhead measurements or
+establish equal search quality. Preserve the completed protocol without extension.
+The separately frozen policy 7 versus 5 reverse ablation is now running; its
+result will inform complete one-worker candidate selection. No constituent is
+required to win an independent significance test, and no development result
+qualifies a candidate for production adoption.
 
 ### Hint lifetime and pressure
 
