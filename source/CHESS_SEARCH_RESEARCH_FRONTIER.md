@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F001**
+Internal frontier revision: **P3-F002**
 
-Status: **Initialized; no ACTIVE Phase 3 research workstream. First objective unselected.**
+Status: **ACTIVE: first owner-selected CGLHW, Search Information Retention and Reuse (O1 + O2). No candidate promoted.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -28,11 +28,12 @@ fixed generation-32 evaluator identity in the Contract. Other evaluators, indepe
 references, historical anchors and explicit controls retain their supported scope.
 The owner confirms final Phase 2 mirror synchronization and GPT acceptance of
 SR-032 as DEFERRED without adoption. No successor was authorized by that closeout.
-This initialization begins no research or integrated-engine implementation.
+The initialization began no research; the owner's 18 October 2026 launch now
+authorizes the selected objective below.
 
 The intended first direction is the **production, retention and reuse of useful
 Search information**, especially TT move guidance and relevant history interactions.
-The first actual objective will be selected separately by GPT/owner. Principal
+The owner has selected O1 + O2 as that first coherent objective. Principal
 opportunities from the [pinned Bagatur analysis][Bagatur] are hypotheses, not proven
 bottlenecks or accepted architecture:
 
@@ -49,6 +50,25 @@ necessary. Bagatur examined 38 subjects with 31 direct behavioural matches; its
 permissive proof/draw/outcome practices and suggested sequencing do not override
 the Contract or establish isolated Elo contributions.
 
+## Active objective
+
+**Search Information Retention and Reuse — O1 + O2**, owner-authorized 18 October
+2026. Investigate current TT information production/availability/reuse and history
+quality/lifetime jointly, with relevant ordering, iteration/retry, reduction,
+pruning and private-worker interactions. Begin with measured current structures;
+neither a TT redesign nor independent gains for each component are prerequisites.
+The champion and fixed Pair-2 evaluator above remain the comparator and production
+authority. Research-controlled alternatives do not change accepted policies.
+
+The [focused research record](../docs/research/search/P3_INFORMATION_REUSE_2026-10-18.md)
+is the detailed work-selection/resume entrypoint: bootstrap challenge, verified
+implementation, prospective comparisons, evidence and unresolved dependencies.
+It is evidence under this canon, not another governing contract. Work begins with
+observation and controlled retention/learning contrasts; further consumers and
+combinations follow decision value. O3 as an independent programme and unrelated
+Frontier objectives remain unselected. Promotion requires Contract confirmation
+and explicit GPT/owner acceptance; no successor activates automatically.
+
 ## Compact research inventory
 
 **Production** means a retained accepted implementation, with scope stated.
@@ -56,7 +76,8 @@ the Contract or establish isolated Elo contributions.
 **Evidence only** is a conclusion without an adopted runtime mechanism.
 **Unadopted** includes retained research implementations and historical formulations;
 P1/P2 REJECTED or DEFERRED labels below describe those studies only. Every row has
-an available Phase 3 investigation opportunity; none is ACTIVE or pre-accepted.
+an available Phase 3 investigation opportunity. The O1/O2 objective above selects
+its relevant dependencies; it does not activate all 38 rows or pre-accept changes.
 
 [P1] and [P2] point to complete frozen Frontiers: consult the same SR row, embedded
 scope and linked technical reports. [C1] and [C2] supply detailed technical rules
@@ -151,9 +172,12 @@ history, not current instructions; Phase 2 relative links retain their original
 reports, retained local evidence and source/Git history. Check local evidence
 availability before reuse; no historical experiment is recertified here.
 
-**P3-F001 / P3-R001 require owner replacement of BOTH Project Source mirrors and
-confirmation before dependent GPT planning or the first Phase 3 launch.** Neither
-external synchronization nor selection of that objective has occurred in this task.
+The initialization-era P3-F001 / P3-R001 refresh wording is historical. The owner
+confirms both current predecessor mirrors (P3-F001 / P3-R002) synchronized and
+selects O1 + O2 in this launch. **P3-F002 / P3-R003 now require replacement of BOTH
+Project Source mirrors and synchronization confirmation before dependent GPT
+planning or a subsequent CGLHW launch.** Codex continues this authorized objective
+from repository masters and does not claim to perform external synchronization.
 
 [P1]: ../docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md
 [P2]: ../docs/search-phase2/CHESS_SEARCH_RESEARCH_FRONTIER.md

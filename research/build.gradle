@@ -24,6 +24,14 @@ tasks.register('nnueSlowTest', Test) {
     useJUnitPlatform { includeTags 'slow-nnue' }
 }
 // Research-only runtime export for Python launchers; no app/GUI/UCI artifacts.
+tasks.register('p3InformationBaseline', JavaExec) {
+    group = 'verification'
+    description = 'Observation-neutral cumulative Phase 3 TT/history baseline; bounded diagnostics only.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.P3InformationBaseline'
+    jvmArgs '-Xms128m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
 tasks.register('installResearch', Sync) {
     into layout.buildDirectory.dir('install/research')
     into('lib') { from tasks.named('jar'); from configurations.runtimeClasspath }

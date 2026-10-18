@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R002**
+Internal revision: **P3-R003**
 
-Status: **Initialized; no ACTIVE Phase 3 research workstream. The first objective requires separate GPT/owner selection and authorization.**
+Status: **ACTIVE: first owner-selected CGLHW, Search Information Retention and Reuse (O1 + O2). Accepted cumulative Phase 2 champion retained.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -32,6 +32,16 @@ code/canon discrepancies: static source establishes implementation facts, not
 runtime verification, and neither silently rewrites intended requirements.
 
 ## Initial champion and supported scope
+
+The owner's 18 October 2026 launch activates O1 and O2 as one coherent objective:
+useful Search-information production, retention, quality and reuse, including
+direct consumers, coherent combinations and reverse ablation. Autonomous research,
+experimental implementation and controlled validation are authorized within this
+Contract. O3 calibration/training, unrelated objectives, production promotion,
+owner-reserved binding TT changes and external release remain outside that grant.
+The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md#active-objective) records selection;
+the [focused research record](../docs/research/search/P3_INFORMATION_REUSE_2026-10-18.md)
+holds verified facts, evidence, hypotheses, limitations and next admissible work.
 
 The initial accepted production champion is the cumulative Phase 2 engine:
 **SR-001 + SR-029 + SR-022 + SR-005 + SR-036 + SR-024**. Its accepted Search
@@ -303,8 +313,11 @@ and never claims external synchronization from a refresh request.
 
 The owner confirms final Phase 2 mirror synchronization and GPT acceptance of
 SR-032 as DEFERRED without adoption. Those predecessor actions are satisfied;
-Phase 3 introduces a new two-mirror refresh obligation. No research is ACTIVE,
-no integrated research engine is constructed and no experiment is launched here.
+The owner subsequently confirms synchronization of P3-R002 / P3-F001 at this
+launch, satisfying the initialization mirror obligation. The initialization itself
+launched no experiment; current activation is recorded above. This content update
+requires a new two-mirror refresh for dependent GPT planning or a subsequent launch,
+without blocking Codex's already-authorized work against these repository masters.
 
 | Frozen file | Revision | Verified SHA-256 (complete original bytes) |
 | --- | --- | --- |

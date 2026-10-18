@@ -1,0 +1,22 @@
+{
+  "source": "d536f7ad8000172f00addd55d810f7d647196969",
+  "selection": ":engine-core:test; :research:test --tests com.ohinteractive.seedv6.search.exact.* --tests com.ohinteractive.seedv6.search.driver.*",
+  "results": {
+    "engine-core": {
+      "suites": 11,
+      "tests": 61,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "research": {
+      "suites": 43,
+      "tests": 405,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 11
+    }
+  },
+  "log": "raw/bootstrap-tests.log",
+  "note": "Compiled production and research baseline before new diagnostic source; no engine-core change"
+}

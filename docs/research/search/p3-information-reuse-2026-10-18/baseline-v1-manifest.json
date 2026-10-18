@@ -1,0 +1,28 @@
+{
+  "id": "P3-O1O2-BASELINE-v1",
+  "head": "d536f7ad8000172f00addd55d810f7d647196969",
+  "dirty": [
+    " M research/build.gradle",
+    " M source/CHESS_SEARCH_CONTRACT.md",
+    " M source/CHESS_SEARCH_RESEARCH_FRONTIER.md",
+    "?? docs/research/search/P3_INFORMATION_REUSE_2026-10-18.md",
+    "?? docs/research/search/p3-information-reuse-2026-10-18/",
+    "?? research/src/main/java/com/ohinteractive/seedv6/search/exact/P3InformationBaseline.java",
+    "?? research/src/test/java/com/ohinteractive/seedv6/search/exact/P3InformationBaselineTest.java"
+  ],
+  "host": "DESKTOP-TQLS4KP",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "java": "openjdk version \"21\" 2023-09-19\nOpenJDK Runtime Environment (build 21+35-2513)\nOpenJDK 64-Bit Server VM (build 21+35-2513, mixed mode, sharing)\n",
+  "sha256": {
+    "research/src/main/java/com/ohinteractive/seedv6/search/exact/P3InformationBaseline.java": "5f320fcfed493296af6727bc2b8a30c0009eabd87134a433f8346925f491dc79",
+    "research/src/test/java/com/ohinteractive/seedv6/search/exact/P3InformationBaselineTest.java": "767bc9a465c10365d3ff4451d4a1020bdadbfb545f741af21eece7c461745226",
+    "research/build.gradle": "6db205e175f2af5d931d886e53fb88c7da7c98c23d98ed2b0beb8e53ad47eadc",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java": "2291e87b026c0253d9f3a3d1003b38d4295ef238f5f4118f0a05780ef1102032",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/ProductionSearch.java": "6e0d90efd009f38599c695a228a9ff978e40b04ef099bdc0b698862493dd2c4f",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/tt/TTable.java": "5af7509a82e46afe529279ef9e357fb6c9c3f3b55f322c274e7ddb9be591a5dc",
+    "docs/research/search/sr005-phase2-2026-10-13/diagnostic-corpus.tsv": "cb4b9e92e328426d6f3ebc5d0c590fdd4cff2421c1dda9f75d0e30cee4f54c08",
+    "docs\\research\\search\\p3-information-reuse-2026-10-18\\baseline-v1.json": "c79e294f97d3d5add3d312e7d0eeb0eb9ad41f58d1ce4791c3464dbcb2727851"
+  },
+  "failedHarnessValidation": "raw/baseline-probe-tests.log and raw/baseline-probe-tests-first.xml; corrected recursive-entry versus prepared-transition accounting, no engine change",
+  "passedHarnessValidation": "raw/baseline-probe-tests-v2.log; 2 passed"
+}

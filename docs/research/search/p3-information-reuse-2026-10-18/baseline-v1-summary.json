@@ -1,0 +1,185 @@
+{
+  "id": "P3-O1O2-BASELINE-v1",
+  "completion": {
+    "historyBytesPerWorker": 262144,
+    "observations": 156,
+    "requestedTtMiB": 64,
+    "entries": 2097152,
+    "roots": 26,
+    "status": "passed",
+    "primitiveTtBytes": 50331648,
+    "incompleteInvocations": 0
+  },
+  "rawSha256": "33c159fe7ea877715da468675309fdad6c5ce3e2480c562289627604b7906d6d",
+  "byDepth": [
+    {
+      "depth": 1,
+      "observations": 26,
+      "recursiveEntries": 2709,
+      "preparedAdmissions": 2619,
+      "tt": {
+        "probes": 26,
+        "hits": 0,
+        "saveAttempts": 0
+      },
+      "guidance": {
+        "entries": 26,
+        "ttEntries": 0,
+        "ttApplicable": 0,
+        "ttCutoffs": 0,
+        "legalHash": 0,
+        "legalEffort": 0
+      },
+      "history": {
+        "positive": 1,
+        "negative": 19,
+        "saturated": 0,
+        "absoluteSum": 20,
+        "overlapPreviousCompleted": 0,
+        "sameSign": 0
+      }
+    },
+    {
+      "depth": 2,
+      "observations": 26,
+      "recursiveEntries": 20258,
+      "preparedAdmissions": 20115,
+      "tt": {
+        "probes": 789,
+        "hits": 0,
+        "saveAttempts": 1
+      },
+      "guidance": {
+        "entries": 789,
+        "ttEntries": 0,
+        "ttApplicable": 0,
+        "ttCutoffs": 0,
+        "legalHash": 0,
+        "legalEffort": 37
+      },
+      "history": {
+        "positive": 28,
+        "negative": 149,
+        "saturated": 0,
+        "absoluteSum": 398,
+        "overlapPreviousCompleted": 1,
+        "sameSign": 1
+      }
+    },
+    {
+      "depth": 3,
+      "observations": 26,
+      "recursiveEntries": 34295,
+      "preparedAdmissions": 34063,
+      "tt": {
+        "probes": 2970,
+        "hits": 1,
+        "saveAttempts": 11
+      },
+      "guidance": {
+        "entries": 2970,
+        "ttEntries": 1,
+        "ttApplicable": 0,
+        "ttCutoffs": 0,
+        "legalHash": 1,
+        "legalEffort": 58
+      },
+      "history": {
+        "positive": 70,
+        "negative": 510,
+        "saturated": 0,
+        "absoluteSum": 2156,
+        "overlapPreviousCompleted": 92,
+        "sameSign": 84
+      }
+    },
+    {
+      "depth": 4,
+      "observations": 26,
+      "recursiveEntries": 171495,
+      "preparedAdmissions": 170677,
+      "tt": {
+        "probes": 19295,
+        "hits": 11,
+        "saveAttempts": 11
+      },
+      "guidance": {
+        "entries": 19295,
+        "ttEntries": 11,
+        "ttApplicable": 0,
+        "ttCutoffs": 0,
+        "legalHash": 11,
+        "legalEffort": 85
+      },
+      "history": {
+        "positive": 231,
+        "negative": 1138,
+        "saturated": 0,
+        "absoluteSum": 12142,
+        "overlapPreviousCompleted": 414,
+        "sameSign": 372
+      }
+    },
+    {
+      "depth": 5,
+      "observations": 26,
+      "recursiveEntries": 597338,
+      "preparedAdmissions": 594700,
+      "tt": {
+        "probes": 68557,
+        "hits": 17,
+        "saveAttempts": 203
+      },
+      "guidance": {
+        "entries": 67336,
+        "ttEntries": 11,
+        "ttApplicable": 0,
+        "ttCutoffs": 6,
+        "legalHash": 11,
+        "legalEffort": 99
+      },
+      "history": {
+        "positive": 325,
+        "negative": 2089,
+        "saturated": 0,
+        "absoluteSum": 32123,
+        "overlapPreviousCompleted": 1085,
+        "sameSign": 956
+      }
+    },
+    {
+      "depth": 6,
+      "observations": 26,
+      "recursiveEntries": 1542589,
+      "preparedAdmissions": 1539252,
+      "tt": {
+        "probes": 208407,
+        "hits": 196,
+        "saveAttempts": 326
+      },
+      "guidance": {
+        "entries": 206811,
+        "ttEntries": 167,
+        "ttApplicable": 0,
+        "ttCutoffs": 24,
+        "legalHash": 167,
+        "legalEffort": 126
+      },
+      "history": {
+        "positive": 584,
+        "negative": 2607,
+        "saturated": 0,
+        "absoluteSum": 74893,
+        "overlapPreviousCompleted": 1592,
+        "sameSign": 1403
+      }
+    }
+  ],
+  "limitations": [
+    "Historical development fixtures; repeated depths/roots are not independent population samples",
+    "Fixed-depth diagnostics only; no strength or clean performance evidence",
+    "History overlap compares separately learned tables; it does not show causal or predictive value",
+    "Requested 64 MiB stores 48 MiB primitive payload; actual JVM headers/lock bytes not measured",
+    "Save attempts are not accepted writes; post-cutoff guidance counters are conditional"
+  ]
+}
