@@ -344,6 +344,11 @@ two-sided eligibility, sensitivity and stopping rules. Freeze an immutable copy
 of the assessor/dependency bundle before any confirmation; closed protocols and
 their tools must remain unchanged. Later retuned confirmations require unused
 family alpha, not reuse of a closed contrast.
+Fresh sampling must also consume
+[the 193 direct diagnostic-root exclusions](p3-information-reuse-2026-10-18/diagnostic-exclusions-v1.selection.json),
+in addition to all prior opening-selection receipts. This includes every observed
+root from the mechanism corpus and the four actual-game lifetime trajectories,
+without selecting by outcome; it is not strength evidence.
 
 ### Completed policy-4 screen
 
