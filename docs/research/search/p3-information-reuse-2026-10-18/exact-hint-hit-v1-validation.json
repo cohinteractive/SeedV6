@@ -1,0 +1,63 @@
+{
+  "completedUtc": "2026-10-18T16:22:42.336213+00:00",
+  "sourceHeadBeforeCommit": "815bb6f5773ad50a1f98d1c795672425591cf995",
+  "question": "Ensure the independent exact-oracle check actually consumes legal hint-only records, rather than merely enabling a control whose stores may be dominated by proofs.",
+  "coverage": "Every legal root move in the five existing rule/mate/promotion/en-passant fixtures plus the initial position, depths 1 and 2; seed a depth-255 hint, require ordinary proof miss before Search and a real legal hint hit, preserve exact non-selective oracle score and legal PV. Terminal roots have no hint moves.",
+  "totals": {
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "testSource": "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\CompletedMoveHintsTest.java",
+  "testSourceSha256": "df8b5b672306220288a9fa74746ad38bafe5174527bfd3bf53bc6e6124328308",
+  "log": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\exact-hint-hit-v1-gradle.log",
+  "logSha256": "8a95fafeb0129fdc23362c2d2a53c0e9650369af3af332fa13f080a4f379d92e",
+  "xml": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\exact-hint-hit-v1-tests.xml",
+  "xmlSha256": "345860d659a8b0dc6495569f63cde907be80df5d2ea67f3354eae358d128236b",
+  "command": [
+    "gradlew.bat",
+    "--no-daemon",
+    "--max-workers=1",
+    ":research:test",
+    "--tests",
+    "com.ohinteractive.seedv6.search.exact.CompletedMoveHintsTest"
+  ],
+  "environment": {
+    "JAVA_HOME": "C:/java/jdk-21",
+    "JAVA_TOOL_OPTIONS": "-XX:ActiveProcessorCount=2",
+    "launcherPriority": "BelowNormal"
+  },
+  "executionBoundary": "After four-worker confirmation window 02 paused at 72 pairs; before window 03. No clock play overlapped.",
+  "frozenChecks": [
+    {
+      "protocol": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\confirmation-v1-w1\\protocol.json",
+      "protocolSha256": "7d8296183ee4c38d85faa81b8855b859e9aa7719ff9c2fc6b5a4592f4a6afbf3",
+      "plan": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\plan.json",
+      "planSha256": "038992a70f8b5d9d2971124537e599ff7d08a1254018fe1798d122554577b16f",
+      "immutableInputsAndRuntimeTrees": "passed"
+    },
+    {
+      "protocol": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\confirmation-v1-w1\\protocol.json",
+      "protocolSha256": "7d8296183ee4c38d85faa81b8855b859e9aa7719ff9c2fc6b5a4592f4a6afbf3",
+      "plan": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage2\\plan.json",
+      "planSha256": "55d964c351be534ed4dbebef320bd1d7e4078826d38949777a3f915354b4995e",
+      "immutableInputsAndRuntimeTrees": "passed"
+    },
+    {
+      "protocol": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\confirmation-v1-w4\\protocol.json",
+      "protocolSha256": "c6780bef774ff21aee501dca5a6915192c4c65d9ba29205c6370d4e5b86eb14b",
+      "plan": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w4-stage1\\plan.json",
+      "planSha256": "2e4f6f83719fd4e55adf763b2d5b70375391c5e3318ba000e687f33c0994b2a7",
+      "immutableInputsAndRuntimeTrees": "passed"
+    },
+    {
+      "protocol": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\confirmation-v1-w4\\protocol.json",
+      "protocolSha256": "c6780bef774ff21aee501dca5a6915192c4c65d9ba29205c6370d4e5b86eb14b",
+      "plan": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w4-stage2\\plan.json",
+      "planSha256": "577daa2f9abb711ed7d311960db2964ee60ddbbdef3242ae1f06502224bfb6f5",
+      "immutableInputsAndRuntimeTrees": "passed"
+    }
+  ],
+  "limits": "Supplemental finite-fixture exact-mode coverage, not playing-strength evidence or a replacement for the broader recorded regression. Test source only changed; local Gradle outputs regenerated, all four frozen stage input/runtime trees verified unchanged."
+}

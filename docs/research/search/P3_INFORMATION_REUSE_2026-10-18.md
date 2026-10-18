@@ -22,8 +22,9 @@ required 2.5-SE interval [+4.75, +107.09]. The bounded sensitivity includes zero
 All 256 games and sixteen blocks passed audit; no partial look was taken.
 Do not launch its unused second stage or extend this closed protocol.
 The separate four-worker first look is running at `raw/confirm-v1-w4-stage1`.
-Its first window completed 32/128 pairs with all four blocks audited; the second
-bounded window is active. No partial statistical look was taken or is authorized.
+Its first two windows completed 72/128 pairs with all nine blocks audited.
+The supplemental exact-mode legal-hint-hit check passed between windows; the
+third bounded window is now running. No partial statistical look was taken.
 The separately planned [deeper lifetime replay](p3-information-reuse-2026-10-18/lifetime-v2.json)
 passed compilation, three focused tests and all 256 request comparisons between
 the four-worker screen and history ablations; its parameterization changes research code only.
@@ -310,6 +311,17 @@ include proof/hint segregation and dominance, generation/replacement, concurrent
 collisions, legality/identity, independent exact enumeration, aborted publication,
 combined-history clearing and four-worker ROOT_REUSE drain/reuse. The new launcher
 and research workspace build passed. Match/session Python tests passed 3 + 23.
+
+A later coverage review found that the original static exact-oracle case enabled
+hints without requiring a legal hit. The [supplemental validation](p3-information-reuse-2026-10-18/exact-hint-hit-v1-validation.json)
+now seeds every legal root move as a depth-255 hint-only record over the existing
+rule/mate/promotion/en-passant fixtures and the initial position, at D1/D2.
+It requires an actual legal hint hit, no ordinary proof hit before Search, exact
+non-selective score agreement with independent enumeration, and legal PVs.
+All six focused hint tests passed, with no skips. This closes a test-coverage gap,
+not an observed runtime defect. Only test source changed. It ran between four-worker
+confirmation windows two and three, with no clock overlap; all four frozen stage
+input/runtime trees verified unchanged after local Gradle outputs regenerated.
 Four-worker hints are implemented with existing private ROOT_REUSE histories;
 history retention/filter combinations are explicitly unsupported above one worker.
 Functional four-worker checks do not establish multiworker strength.

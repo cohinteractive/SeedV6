@@ -58,6 +58,38 @@ class CompletedMoveHintsTest {
         }
     }
 
+    @Test void everyLegalRootHintIsConsumedWithoutChangingIndependentExactValue() {
+        ExactEvaluator hce=(b,p)->Eval.evaluate(b);
+        String[] fens=Arrays.copyOf(CheckExtensionTest.FENS,CheckExtensionTest.FENS.length+1);
+        fens[fens.length-1]="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+        int exercised=0;
+        for(String fen:fens) {
+            var board=Board.fromFen(fen);var game=GameHistory.initial(board);
+            long key=SearchKey.key(board,SearchKey.rootHistory(board,game));
+            long[] moves=ExhaustiveOracle.legalMoves(board);
+            for(int depth=1;depth<=2;depth++) {
+                int expected=new ExhaustiveOracle(hce).score(board,
+                        new com.ohinteractive.seedv6.rules.SearchLineHistory(game),depth,0);
+                for(long move:moves) {
+                    var table=new TTable(1);
+                    assertTrue(table.saveHint(key,255,move));
+                    assertFalse(table.probe(key,new TTable.TEntry()));
+                    var diagnostics=new MoveHintDiagnostics();
+                    var search=new ExactSearch(hce,table).withCompletedHints(true,diagnostics);
+                    var result=search.search(board,game,depth,()->false);
+                    assertTrue(result.completed(),fen);
+                    assertFalse(result.selective(),fen);
+                    assertEquals(expected,result.score(),fen+" depth "+depth);
+                    assertTrue(diagnostics.hits>0,"The legal root hint must actually be consumed: "+fen);
+                    assertEquals(0,diagnostics.illegal);
+                    Phase2Oracle.legalPv(board,result.principalVariation());
+                    exercised++;
+                }
+            }
+        }
+        assertTrue(exercised>40);
+    }
+
     @Test void cancelledRootPublishesNoNewRootHintAndCombinedHistoriesRemainSafe() throws Exception {
         var e=P3InformationBaselineTest.evaluation();var board=Board.startingPosition();var game=GameHistory.initial(board);
         for(boolean filter:new boolean[]{false,true}) {
