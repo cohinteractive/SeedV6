@@ -148,7 +148,7 @@ from the runtime pair tables; production/default evaluation remains unchanged.
 
 Unified Windows and macOS packaging builds both GUI and UCI with `packageWindows`
 and `packageMac`, or independent `:app-gui:` / `:app-uci:` module tasks. These are
-local integrity-checked candidates, not official releases. With Python 3.11+,
+local integrity-checked candidates, not official releases. With Python 3.9+,
 Git and a complete installed Java 21 JDK (21.0.6 or newer), a fresh clone needs no
 model transfer or local configuration file:
 

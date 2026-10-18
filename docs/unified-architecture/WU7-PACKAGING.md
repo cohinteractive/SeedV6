@@ -5,7 +5,8 @@
 worktree/branch; the portable follow-up below uses the independent unified `main`.
 The owner additionally permitted `C:/Temp/SeedV6 WU7 validation`
 for disposable outside-repository tests. No graphical launcher is executed by
-Codex. Native Mac execution, interactive GUI and external-client acceptance
+Codex. The [19 October recovery validation](MACOS-PACKAGING-RECOVERY-2026-10-19.md)
+adds native Mac automated evidence. Interactive GUI and external-client acceptance
 remain open; implementation/commit is not full cross-platform acceptance.
 
 ## Current portable build commands and tracked production input
@@ -14,7 +15,7 @@ remain open; implementation/commit is not full cross-platform acceptance.
 A fresh ordinary Git clone contains the wrapper, project configuration, approved
 model and identity manifest. No Git LFS, historical checkout, manual model copy,
 environment setup or ignored configuration file is required. Standard development
-tools are Git, Python 3.11+, a shell and a complete installed native **Java 21 JDK,
+tools are Git, Python 3.9+, a shell and a complete installed native **Java 21 JDK,
 21.0.6 or newer**. Gradle 8.11.1 is supplied by the wrapper; normal Gradle/dependency
 downloads may require network access. JDKs and models are never downloaded by
 the build. Java 21 GA, older patches, other Java majors, early-access JDKs, missing
@@ -81,6 +82,11 @@ Java properties syntax. Never commit machine-specific paths. Missing files mean
 automatic discovery; creation, edits and deletion invalidate configuration-cache
 inputs. All explicit command-line JDK properties precede local settings.
 `-PpackagingPython=<python-executable>` selects a nonstandard Python installation.
+macOS defaults to `python3`; Xcode's Python 3.9.6 is supported without an upgrade.
+File integrity uses SHA-256 with bounded 1 MiB reads, and the UCI shell launcher
+is written as exact UTF-8/LF bytes. Packaging and candidate verification use only
+the Python standard library. See the [19 October recovery validation](MACOS-PACKAGING-RECOVERY-2026-10-19.md)
+for current Mac evidence and acceptance limits.
 
 ### Production model identity and staging
 

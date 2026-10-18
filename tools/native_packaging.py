@@ -33,8 +33,12 @@ def require(ok, message):
 
 
 def sha(path):
+    # hashlib.file_digest requires Python 3.11; packaging also supports 3.9.
+    digest = hashlib.sha256()
     with Path(path).open('rb') as stream:
-        return hashlib.file_digest(stream, 'sha256').hexdigest()
+        for chunk in iter(lambda: stream.read(1024 * 1024), b''):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def encode(value):
@@ -223,7 +227,8 @@ def build_image(context, application, stage, jars):
         require(modules == 'java.base', 'Standalone UCI must require java.base only: ' + modules)
         run([tool(context, 'jlink'), '--add-modules', 'java.base', '--strip-debug', '--no-header-files', '--no-man-pages',
              '--compress=zip-6', '--output', image / 'runtime'])
-        (image / name).write_text(launcher_text(), encoding='utf-8', newline='\n')
+        # Write exact UTF-8/LF bytes without Python 3.10's write_text(newline=).
+        (image / name).write_bytes(launcher_text().encode('utf-8'))
         (image / name).chmod(0o755)
     else:
         command = [tool(context, 'jpackage'), '--type', 'app-image', '--name', name,

@@ -1,5 +1,7 @@
 """Portable safety/configuration tests; all fixtures live in ignored build/packaging."""
 import argparse
+import hashlib
+import io
 import json
 import os
 from pathlib import Path
@@ -19,6 +21,35 @@ class PackagingSafety(unittest.TestCase):
 
     def tearDown(self):
         self.temp.cleanup()
+
+    def test_sha256_vectors_and_chunk_boundaries(self):
+        payload = self.work / 'hash input with spaces'
+        for data in (b'', b'abc', *(bytes(range(256)) * (size // 256) + bytes(range(size % 256))
+                                   for size in (1024 * 1024 - 1, 1024 * 1024, 1024 * 1024 + 1,
+                                                3 * 1024 * 1024 + 123))):
+            with self.subTest(bytes=len(data)):
+                payload.write_bytes(data)
+                actual = p.sha(payload)
+                self.assertEqual(hashlib.sha256(data).hexdigest(), actual)
+                # Also compare the former implementation when running on 3.11+.
+                if hasattr(hashlib, 'file_digest'):
+                    with payload.open('rb') as stream:
+                        self.assertEqual(hashlib.file_digest(stream, 'sha256').hexdigest(), actual)
+        payload.write_bytes(b'abc')
+        self.assertEqual('ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad', p.sha(payload))
+        with self.assertRaises(FileNotFoundError):
+            p.sha(self.work / 'missing')
+
+    def test_sha256_bounded_reads_and_short_chunks(self):
+        data = bytes(range(256)) * 8193
+        test = self
+        class ShortReads(io.BytesIO):
+            def read(self, size=-1):
+                test.assertGreater(size, 0, 'Hashing must not read the whole file at once')
+                test.assertLessEqual(size, 1024 * 1024)
+                return super().read(min(size, 8191))
+        with patch.object(Path, 'open', return_value=ShortReads(data)):
+            self.assertEqual(hashlib.sha256(data).hexdigest(), p.sha(self.work / 'short reads'))
 
     def fixture(self):
         image = self.work / 'image with spaces'; image.mkdir()
@@ -126,6 +157,9 @@ class PackagingSafety(unittest.TestCase):
              patch.object(p, 'production_manifest', return_value={'identity': {'model.sha256': p.sha(model)}}):
             image, _ = p.build_image(context, 'uci', stage, jars)
         self.assertEqual(p.launcher_text(), (image / 'SeedV6-UCI').read_text())
+        self.assertEqual(p.launcher_text().encode('utf-8'), (image / 'SeedV6-UCI').read_bytes())
+        if os.name != 'nt':
+            self.assertEqual(0o755, (image / 'SeedV6-UCI').stat().st_mode & 0o777)
         self.assertEqual('java.base', commands[1][commands[1].index('--add-modules') + 1])
         self.assertEqual({'engine-core.jar', 'app-uci.jar'}, {f.name for f in (image / 'app').glob('*.jar')})
         self.assertEqual(p.sha(model), p.sha(image / 'models/baseline.brn-pair2'))
