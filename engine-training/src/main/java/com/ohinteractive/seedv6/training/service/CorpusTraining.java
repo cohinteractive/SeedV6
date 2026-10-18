@@ -137,26 +137,47 @@ public class CorpusTraining implements AutoCloseable {
     }
     /** Draw placeholders retain the generated sample invariant; only the explicit target selector supplies corpus labels. */
     public static final class Examples {
-        private final List<Sample> samples = new ArrayList<>();
-        private final IdentityHashMap<Sample, Double> targets = new IdentityHashMap<>();
+        private final List<Sample> samples = com.ohinteractive.seedv6.training.selfplay.SampleStore.mutable();
         private final TargetPolicy adapter;
+        private final java.util.function.Consumer<Sample> observer;
+        private final boolean retain;
         private int mates;
-        Examples(TargetPolicy adapter) { this.adapter = adapter; }
+        Examples(TargetPolicy adapter) { this(adapter, sample -> {}); }
+        Examples(TargetPolicy adapter, java.util.function.Consumer<Sample> observer) { this(adapter, observer, true); }
+        Examples(TargetPolicy adapter, java.util.function.Consumer<Sample> observer, boolean retain) {
+            this.adapter = adapter; this.observer = observer; this.retain = retain;
+        }
         void add(TrainingPosition record) {
             add(record, adapter);
         }
         void add(TrainingPosition record, TargetPolicy sourceAdapter) {
             if (sourceAdapter.rejection(record) != null) throw new IllegalArgumentException("Pinned record is no longer eligible");
             long[] board = record.position().toBoard(0);
-            Sample sample = new Sample(board, 0);
-            samples.add(sample); targets.put(sample, sourceAdapter.target(record, board));
+            Sample sample = new Sample(board, 0, sourceAdapter.target(record, board));
+            if (retain) samples.add(sample);
+            observer.accept(sample);
             if (record.targetKind() == CorpusRecord.MATE) mates++;
         }
-        public List<Sample> samples() { return List.copyOf(samples); }
+        public List<Sample> samples() { return com.ohinteractive.seedv6.training.selfplay.SampleStore.copyOf(samples); }
         int mates() { return mates; }
-        public ToDoubleFunction<Sample> targets() { return sample -> Objects.requireNonNull(targets.get(sample), "Unknown corpus example"); }
+        public ToDoubleFunction<Sample> targets() { return Sample::trainingTarget; }
     }
     public record Batch(Examples training, Examples validation, Evidence evidence) {}
+    private java.util.function.Consumer<Sample> trainingObserver = sample -> {};
+    private boolean retainTraining = true;
+    protected final Examples trainingExamples(TargetPolicy adapter) { return new Examples(adapter, trainingObserver, retainTraining); }
+    /** The incremental trainer owns the replay spool; the result retains only holdout and evidence. */
+    public final Batch stream(long generation, java.util.function.Consumer<Sample> observer) throws IOException {
+        retainTraining = false;
+        try { return batch(generation, observer); }
+        finally { retainTraining = true; }
+    }
+    /** Measure the fixed initial network while records arrive, before any optimizer update. */
+    public final Batch batch(long generation, java.util.function.Consumer<Sample> observer) throws IOException {
+        trainingObserver = Objects.requireNonNull(observer);
+        try { return batch(generation); }
+        finally { trainingObserver = sample -> {}; }
+    }
     private final Path directory, checkpointRoot;
     private final TargetPolicy adapter;
     private final CorpusView view;
@@ -278,7 +299,7 @@ public class CorpusTraining implements AutoCloseable {
         if (generation < 1) throw new IllegalArgumentException("Invalid corpus generation");
         int count = pin.positions(), held = (int) Math.max(2, (count + 3L) / 4);
         long reserved = Math.max(2, (view.size() + 4) / 5), trainingSize = view.size() - reserved;
-        var training = new Examples(adapter); var validation = new Examples(adapter);
+        var training = trainingExamples(adapter); var validation = new Examples(adapter);
         MessageDigest trainHash = digest(), heldHash = digest();
         long start = Math.multiplyExact(generation - 1, (long) count), validationStart = Math.multiplyExact(generation - 1, (long) held);
         // A fixed seed-dependent global partition prevents validation leakage even across epochs.

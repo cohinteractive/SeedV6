@@ -63,6 +63,14 @@ final class TrainingProgressView extends JPanel {
                 run == null ? null : run.optimizerLearningRate(), s.generationSamplesTrained(), run == null ? 0 : run.trainingSampleTarget(),
                 s.generationOptimizerUpdates(), Math.max(0, s.optimizerStep() - s.generationOptimizerUpdates()), s.optimizerStep(), s.meanTrainingLoss(),
                 s.generationElapsed(System.nanoTime()).map(java.time.Duration::toNanos).orElse(0L), "Generation active time, including generation and validation", null, -1));
+        if (run != null && run.acquisition() != null) {
+            var acquired = run.acquisition();
+            metrics[2].setText("Epoch: " + acquired.epoch() + " / " + known(config == null ? 0 : config.training().epochs()));
+            detail.setText("Unique training positions acquired: " + count(acquired.uniquePositions())
+                    + " | " + (acquired.measuring() ? "Measuring final training loss" : acquired.verified() ? "Verified dataset" : "Acquiring while training")
+                    + "\nSample visits include repeated epochs; validation samples are separate."
+                    + (acquired.verified() ? "" : " Stop before verification restarts this generation."));
+        }
     }
     private static String known(int value) { return value > 0 ? Integer.toString(value) : "unknown"; }
     private static String count(long value) { return String.format(Locale.ROOT, "%,d", value); }

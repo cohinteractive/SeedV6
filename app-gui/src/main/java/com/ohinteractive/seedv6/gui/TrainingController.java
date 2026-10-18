@@ -199,7 +199,7 @@ final class TrainingController {
         Handle create(TrainingSettings settings, boolean resume, TrainerConfig.DepthChange change) throws IOException {
             settings = resolveSource(settings);
             TrainerConfig config = settings.config(change);
-            var service = resume ? TrainerService.resume(config) : TrainerService.freshInitialized(config);
+            var service = (resume ? TrainerService.resume(config) : TrainerService.freshInitialized(config)).withIncrementalTraining();
             if (TrainingLineage.read(settings.root()).isPresent()) service.withSession();
             return handle(service);
         }

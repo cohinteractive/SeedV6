@@ -3,6 +3,7 @@ package com.ohinteractive.seedv6.training.data;
 import com.github.luben.zstd.Zstd;
 import com.github.luben.zstd.ZstdInputStream;
 import com.ohinteractive.seedv6.corpus.CorpusPreparation;
+import com.ohinteractive.seedv6.training.selfplay.SampleStore;
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
@@ -25,7 +26,7 @@ public final class PreparedBinpack {
             if (!RECIPE.equals(recipe) || profile == null || shards == null || shards.isEmpty() || units == null || units.isEmpty()
                     || !Objects.equals(identity, manifestHash(source, profile, shards, units, count)))
                 throw new IllegalArgumentException("Invalid prepared BINP manifest/checksum");
-            shards = List.copyOf(shards); units = List.copyOf(units);
+            shards = List.copyOf(shards); units = units instanceof DiskUnits ? units : List.copyOf(units);
             long next = 0; long[] offsets = new long[shards.size()]; int[] chunks = new int[shards.size()];
             int lastChunk = -1, lastShard = -1;
             for (Unit unit : units) {
@@ -40,7 +41,76 @@ public final class PreparedBinpack {
         }
     }
     private static String manifestHash(String source, LabelProfile profile, List<DataSource.Shard> shards, List<Unit> units, long count) {
-        return DataFiles.hash(source + ";" + RECIPE + ";" + profile + ";" + shards + ";" + units + ";" + count);
+        var hash = DataFiles.digest();
+        hash.update((source + ";" + RECIPE + ";" + profile + ";" + shards + ";[").getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        boolean first = true;
+        for (Unit unit : units) {
+            if (!first) hash.update(new byte[] {',', ' '}); first = false;
+            hash.update(unit.toString().getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        }
+        hash.update(("];" + count).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        return HexFormat.of().formatHex(hash.digest());
+    }
+    /** Existing JSON identity/schema, but training never constructs the complete chunk index in heap. */
+    private static Manifest readManifest(Path file) throws IOException {
+        if (!SampleStore.streaming()) return DataFiles.read(file, Manifest.class);
+        var units = new DiskUnits(SampleStore.temporary(".binp-index"));
+        String source = null, recipe = null, identity = null; LabelProfile profile = null;
+        List<DataSource.Shard> shards = null; long count = -1;
+        try (var input = new com.google.gson.stream.JsonReader(Files.newBufferedReader(file));
+             var output = new DataOutputStream(new BufferedOutputStream(Files.newOutputStream(units.file)))) {
+            input.beginObject();
+            while (input.hasNext()) switch (input.nextName()) {
+                case "source" -> source = input.nextString();
+                case "recipe" -> recipe = input.nextString();
+                case "identity" -> identity = input.nextString();
+                case "profile" -> profile = LabelProfile.valueOf(input.nextString());
+                case "count" -> count = input.nextLong();
+                case "shards" -> {
+                    shards = new ArrayList<>(); input.beginArray();
+                    while (input.hasNext()) shards.add(DataFiles.JSON.fromJson(input, DataSource.Shard.class));
+                    input.endArray();
+                }
+                case "units" -> {
+                    input.beginArray();
+                    while (input.hasNext()) units.append(output, DataFiles.JSON.fromJson(input, Unit.class));
+                    input.endArray();
+                }
+                default -> input.skipValue();
+            }
+            input.endObject();
+            if (input.peek() != com.google.gson.stream.JsonToken.END_DOCUMENT) throw new IOException("Trailing prepared manifest");
+        }
+        return new Manifest(source, recipe, profile, shards, units, count, identity);
+    }
+    private static final class DiskUnits extends AbstractList<Unit> implements RandomAccess {
+        private static final int BYTES = 72, BLOCK = 512;
+        final Path file;
+        int count, cachedStart = -1, cachedCount;
+        final ByteBuffer cache = ByteBuffer.allocate(BYTES * BLOCK);
+        DiskUnits(Path file) { this.file = file; }
+        void append(DataOutputStream out, Unit unit) throws IOException {
+            if (count == Integer.MAX_VALUE) throw new IOException("Too many prepared chunks");
+            out.writeInt(unit.shard()); out.writeInt(unit.chunk()); out.writeLong(unit.start()); out.writeLong(unit.count());
+            out.writeLong(unit.offset()); out.writeInt(unit.compressed()); out.writeInt(unit.decoded()); out.write(HexFormat.of().parseHex(unit.hash())); count++;
+        }
+        public int size() { return count; }
+        public synchronized Unit get(int index) {
+            Objects.checkIndex(index, count);
+            try {
+                if (index < cachedStart || index >= cachedStart + cachedCount) {
+                    cachedStart = index / BLOCK * BLOCK; cachedCount = Math.min(BLOCK, count - cachedStart);
+                    cache.clear().limit(cachedCount * BYTES);
+                    try (var channel = FileChannel.open(file)) {
+                        while (cache.hasRemaining()) if (channel.read(cache, (long) cachedStart * BYTES + cache.position()) < 0) throw new EOFException("Truncated prepared index");
+                    }
+                }
+                cache.position((index - cachedStart) * BYTES);
+                int shard = cache.getInt(), chunk = cache.getInt(); long start = cache.getLong(), length = cache.getLong(), offset = cache.getLong();
+                int compressed = cache.getInt(), decoded = cache.getInt(); byte[] hash = new byte[32]; cache.get(hash);
+                return new Unit(shard, chunk, start, length, offset, compressed, decoded, HexFormat.of().formatHex(hash));
+            } catch (IOException failure) { throw new UncheckedIOException(failure); }
+        }
     }
     public static Path root() {
         String override = System.getProperty("seedv6.preparedDataRoot");
@@ -54,7 +124,7 @@ public final class PreparedBinpack {
     public static Manifest ready(DataSource source) throws IOException {
         if (source.format() != DataSource.Format.STOCKFISH_BINPACK_ZSTD) throw new IOException("Not a BINP source");
         try {
-            Manifest manifest = DataFiles.read(directory(source).resolve("manifest.json"), Manifest.class);
+            Manifest manifest = readManifest(directory(source).resolve("manifest.json"));
             if (!manifest.source().equals(source.identity()) || manifest.profile() != source.labelProfile() || !manifest.shards().equals(source.shards()))
                 throw new IOException("Prepared source binding mismatch");
             long[] sizes = new long[source.shards().size()];

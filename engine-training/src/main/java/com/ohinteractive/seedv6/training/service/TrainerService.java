@@ -67,6 +67,19 @@ public final class TrainerService implements AutoCloseable {
     private String finalLossObjective;
     private boolean initializedFromConfig;
     private boolean sessionEnabled;
+    private boolean incrementalEnabled;
+    private volatile boolean incrementalActive;
+    private boolean verifiedAcquisition;
+    private long startingContinuationUpdates;
+    private TrainerSnapshot.Acquisition acquisition;
+    private volatile String acquisitionNotice = "";
+    /** GUI opt-in; old research callers and already-updated historical attempts retain their recipe. */
+    public TrainerService withIncrementalTraining() {
+        synchronized (gate) {
+            if (published.state() != IDLE) throw new IllegalStateException("Configure incremental training before Start");
+            incrementalEnabled = true; return this;
+        }
+    }
     private TrainingSession session;
     /** Opt in for lineage-centric GUI sessions; headless/research invocation limits keep their contract. */
     public TrainerService withSession() {
@@ -282,7 +295,8 @@ public final class TrainerService implements AutoCloseable {
                 resolveSupervision();
                 // An invalid external source must not create a new student lineage.
                 if (initialState != null && source.nnue()) source.loadBest(config.checkpointRoot());
-                try (CheckpointStore store = operations.open(config)) {
+                try (var positions = new SampleStore.Workspace();
+                     CheckpointStore store = operations.open(config)) {
                     // Opening may finish an interrupted, already-authorized restart transaction.
                     storedSource = CheckpointStore.readTrainingSource(config.checkpointRoot()).orElse(TrainingSource.SELF_PLAY);
                     if (initialState == null && config.source() == null) source = storedSource;
@@ -506,8 +520,9 @@ public final class TrainerService implements AutoCloseable {
             }
             requireCorpusModel(store.resumeState(latest.id()));
             var preparation = new com.ohinteractive.seedv6.corpus.CorpusPreparation(() -> stopRequested, progress -> {
-                lifecycleNotice = progress.stage() + ": " + progress.completed() + " / " + progress.total()
-                        + ". Stop cancels acquisition safely.";
+                String message = progress.stage() + ": " + progress.completed() + " / " + progress.total();
+                if (incrementalActive) { acquisitionNotice = message; return; }
+                lifecycleNotice = message + ". Stop cancels acquisition safely.";
                 publish(ACQUIRING_TRAINING_DATA);
             });
             corpusTraining = operations.openCorpus(config, source, config.corpusTraining() != null
@@ -528,12 +543,13 @@ public final class TrainerService implements AutoCloseable {
             var attempt = unfinished.attempt();
             var priorPlan = store.bootstrapPlan(attempt.parentId());
             boolean sameObjective = priorPlan.map(p -> p.supervision().equals(supervision)
-                    && (!supervision.blended() || p.teacherStore().equals(config.teacherStore()))).orElse(attempt.format() == GenerationAttempt.Format.INDEPENDENT || !supervision.blended());
+                    && (!supervision.blended() || p.teacherStore().equals(config.teacherStore()))).orElse(attempt.independentValidation() || !supervision.blended());
             if (!attempt.matches(config, source) || !sameObjective) {
                 // Validate a replacement external source before superseding any resumable work.
                 if (source.nnue()) source.loadBest(config.checkpointRoot());
                 if (supervision.blended()) TrainingSource.bootstrap(java.nio.file.Path.of(config.teacherStore())).loadBest(config.checkpointRoot());
                 var replacement = attempt.restarted(config, source);
+                if (incrementalEnabled && !source.frozen()) replacement = replacement.incremental();
                 store.restartGeneration(attempt, replacement, unfinished.candidate());
                 lifecycleNotice = replacement.notice(); runAction = "Restart Generation";
                 refs = store.recoverTrainingReferences(); updateReferences(refs);
@@ -546,6 +562,14 @@ public final class TrainerService implements AutoCloseable {
                 if (continuation != null && (!bestId.equals(attempt.incumbentId()) || !(continuation.candidate().isEmpty()
                         ? latestId.equals(attempt.parentId()) : latestId.equals(continuation.candidate()))))
                     throw new IOException("Partial continuation is disconnected from the durable lineage.");
+                // No optimizer math has happened yet: safely adopt incremental acquisition. Existing
+                // nonzero continuations retain their historical order and checkpoint interpretation.
+                if (incrementalEnabled && !source.frozen() && attempt.format() == GenerationAttempt.Format.INDEPENDENT
+                        && unfinished.candidate().isEmpty() && (continuation == null || continuation.training().updates() == 0)) {
+                    store.writeGenerationAttempt(attempt.incremental());
+                    continuation = null;
+                    lifecycleNotice = "Starting incremental acquisition from the settled parent; previous zero-update work is preserved.";
+                }
             }
         }
         firstRunGeneration = continuation != null && !continuation.recoveryOnly() && !continuation.candidate().isEmpty()
@@ -620,7 +644,11 @@ public final class TrainerService implements AutoCloseable {
             if (continuation != null) { restoreContinuation(continuation); generationNanos = invocationNanos; continuation = null; }
             var attempt = store.generationAttempt();
             if (attempt.isEmpty() || !attempt.get().parentId().equals(parent.id()))
-                store.writeGenerationAttempt(GenerationAttempt.create(parent.id(), bestId, generation, config, source));
+                store.writeGenerationAttempt(incrementalEnabled && !source.frozen()
+                        ? GenerationAttempt.create(parent.id(), bestId, generation, config, source).incremental()
+                        : GenerationAttempt.create(parent.id(), bestId, generation, config, source));
+            acquisition = null; verifiedAcquisition = false; acquisitionNotice = "";
+            startingContinuationUpdates = selfPlayControl.trainingCursor().updates();
             generationFinalized = false;
             if (!generateTrainPublish(store, trainer, parent.id())) return;
             activeTrainer = null;
@@ -629,6 +657,8 @@ public final class TrainerService implements AutoCloseable {
             if (!resolveCandidate(store, Optional.empty())) return;
             recordHistory();
             generationFinalized = true; activeTrainer = null;
+            corpusValidationExamples = null;
+            SampleStore.releaseGeneration();
             completed++;
             countDecision();
             settleSession(store);
@@ -657,6 +687,21 @@ public final class TrainerService implements AutoCloseable {
     private void saveStoppedGeneration(CheckpointStore store) throws IOException {
         if (!stopRequested || generationFinalized || generationStarted == null) return;
         var attempt = store.generationAttempt().orElseThrow();
+        if (attempt.format() == GenerationAttempt.Format.INCREMENTAL && !verifiedAcquisition && candidateId.isEmpty()) {
+            if (startingContinuationUpdates > 0) {
+                lifecycleNotice = "Replay acquisition stopped; the previous verified optimizer continuation remains saved.";
+                return;
+            }
+            selfPlayControl.trainingCursor(SelfPlayControl.TrainingCursor.EMPTY);
+            selfPlayControl.savedGames(SelfPlayBatch.Saved.EMPTY);
+            activeTrainer = null;
+            store.savePartial(new PartialGeneration(attempt, "", SelfPlayBatch.Saved.EMPTY, emptyGames(),
+                    SelfPlayControl.TrainingCursor.EMPTY, java.util.List.of(), generationStarted,
+                    generationDuration(System.nanoTime()), selfPlayNanos, trainingNanos, validationNanos, false,
+                    generationSettingsKnown), null);
+            lifecycleNotice = "Stopped during acquisition: provisional updates were discarded. Resume restarts this generation from its settled parent; no Candidate was published.";
+            return;
+        }
         long duration = generationDuration(System.nanoTime());
         store.savePartial(new PartialGeneration(attempt, candidateId, selfPlayControl.savedGames(), games,
                 selfPlayControl.trainingCursor(), validationControl.savedPairs(), generationStarted,
@@ -671,6 +716,8 @@ public final class TrainerService implements AutoCloseable {
     /** Batch and frozen actor become unreachable before validation; no cross-generation replay buffer. */
     private boolean generateTrainPublish(CheckpointStore store, NetworkTrainingState trainer, String parent) throws IOException {
         if (source.corpus()) return trainCorpus(store, trainer, parent);
+        if (store.generationAttempt().orElseThrow().format() == GenerationAttempt.Format.INCREMENTAL)
+            return trainIncrementalGenerated(store, trainer, parent);
         if (config.heldOut(source) || supervision.blended() || source.frozen()) return generateBootstrap(store, trainer, parent);
         BootstrapPlan plan = source.bootstrap() ? preparePlan(store, parent) : null;
         NetworkModel actor = source.nnue() ? plan.loadGenerator(config.checkpointRoot()).model() : trainer.snapshot();
@@ -740,9 +787,24 @@ public final class TrainerService implements AutoCloseable {
     }
     private boolean trainCorpus(CheckpointStore store, NetworkTrainingState trainer, String parent) throws IOException {
         requireCorpusModel(trainer);
+        if (store.generationAttempt().orElseThrow().format() == GenerationAttempt.Format.INCREMENTAL)
+            return trainIncrementalCorpus(store, trainer, parent);
         if (stopRequested) return false;
         String notice = lifecycleNotice;
-        var batch = corpusTraining.batch(generation); corpusReport = batch.evidence();
+        boolean measureInitial = selfPlayControl.trainingCursor().initialStep() < 0;
+        double[] initialLoss = {0}; long[] initialNanos = {0};
+        var batch = corpusTraining.batch(generation, sample -> {
+            if (!measureInitial) return;
+            long started = System.nanoTime();
+            initialLoss[0] += corpusInitialLoss(trainer, sample);
+            initialNanos[0] += System.nanoTime() - started;
+        });
+        corpusReport = batch.evidence();
+        if (measureInitial) {
+            selfPlayControl.trainingCursor(new SelfPlayControl.TrainingCursor(0, 0, trainer.step(),
+                    initialLoss[0] / batch.evidence().usable(), 0));
+            trainingNanos += initialNanos[0];
+        }
         lifecycleNotice = notice;
         corpusValidationExamples = batch.validation();
         int allSamples = Math.addExact(batch.evidence().usable(), batch.evidence().heldOut());
@@ -762,6 +824,132 @@ public final class TrainerService implements AutoCloseable {
         var candidate = operations.publish(store, trainer, new CheckpointManifest.Metadata(generation, config.selfPlay().depth(), parent));
         candidateId = candidate.manifest().id(); latestId = candidateId; publish(PUBLISHING_CANDIDATE);
         return true;
+    }
+
+    private boolean trainIncrementalGenerated(CheckpointStore store, NetworkTrainingState trainer, String parent) throws IOException {
+        boolean partitioned = config.heldOut(source) || supervision.blended();
+        BootstrapPlan plan = partitioned || source.bootstrap() ? preparePlan(store, parent) : null;
+        BootstrapData retained = partitioned ? store.bootstrapData(plan).orElse(null) : null;
+        NetworkModel initial = startingContinuationUpdates == 0 ? trainer.snapshot() : store.load(parent).model();
+        NetworkModel actor = source.nnue() ? plan.loadGenerator(config.checkpointRoot()).model() : initial;
+        activeGame.selfPlay(generation, source.nnue() ? plan.generatorId() : source.bootstrap() ? "HANDCRAFTED" : parent);
+        var teacher = supervision.blended() ? new com.ohinteractive.seedv6.core.nnue.NnueEvaluator(
+                plan.loadTeacher(config.checkpointRoot()).model().nnue()) : null;
+        var preparation = IncrementalTraining.supervision(supervision.targets(teacher), config.effectiveCaptureConsistency(),
+                teacher == null ? null : board -> { teacher.evaluate(board); return teacher.boundedValue(); },
+                config.seed(generation, TrainerConfig.SeedDomain.CAPTURE));
+        var generated = new java.util.concurrent.atomic.AtomicReference<>(games);
+        bootstrapValidation = Optional.empty(); validation = Optional.empty(); assessment = Optional.empty();
+        validationDetails = Optional.empty(); validationProgress = Optional.empty();
+        incrementalActive = true; acquisition = new TrainerSnapshot.Acquisition(0, 1, false);
+        phase(TRAINING);
+        long started = System.nanoTime();
+        try {
+            var result = IncrementalTraining.train(trainer, initial, config.training(generation), selfPlayControl, sink -> {
+                if (retained != null) {
+                    generated.set(retained.statistics());
+                    for (var sample : retained.partition().training()) sink.accept(sample);
+                    return retained.statistics();
+                }
+                selfPlayControl.acquiredSamples((game, sample) -> {
+                    if (!partitioned || !BootstrapPartition.heldOutGame(game, config.selfPlay().games(), plan.splitSeed())) sink.accept(sample);
+                });
+                try {
+                    Consumer<SelfPlayBatch.Progress> observer = progress -> {
+                        generated.set(progress.statistics());
+                        acquisitionNotice = "Completed game " + (progress.lastGame().gameIndex() + 1) + " / " + config.selfPlay().games();
+                        if (infrastructureFailure(progress.lastGame().termination())) throw new IllegalStateException("Self-play failed: " + progress.lastGame().failure());
+                    };
+                    var batch = source.mode() == TrainingSource.Mode.HANDCRAFTED
+                            ? operations.generateHandcrafted(config.selfPlay(generation), config.startingBoard(), selfPlayControl, observer)
+                            : operations.generate(actor, config.selfPlay(generation), config.startingBoard(), selfPlayControl, observer);
+                    if (batch.cancelled() || stopRequested) return batch.statistics();
+                    if (partitioned) {
+                        acquisitionNotice = "Verifying whole-game partitions and persisting recovery data";
+                        // Eligibility is checked after generation; insufficient data discards provisional student updates.
+                        BootstrapPartition partition;
+                        try { partition = BootstrapPartition.splitAssigned(batch, plan.splitSeed()); }
+                        catch (IllegalArgumentException insufficient) {
+                            store.archiveInsufficientBootstrap(plan);
+                            throw new IOException("Upfront whole-game holdout requires at least two completed games and two samples in each partition. "
+                                    + "The pin was archived and provisional updates discarded; increase games or maximum game plies, then Resume.", insufficient);
+                        }
+                        store.writeBootstrapData(plan, new BootstrapData(plan.hash(), partition, batch.statistics(), System.nanoTime() - started));
+                    }
+                    return batch.statistics();
+                } finally { selfPlayControl.acquiredSamples(null); }
+            }, preparation, config.effectiveCaptureConsistency(), this::incrementalUpdate, status -> {
+                updateGames(generated.get()); incrementalStatus(status);
+            });
+            verifiedAcquisition = result.verified(); training = result.training();
+            if (result.source() != null) updateGames(result.source());
+            trainingSampleTarget = (long) result.samples().size() * config.training().epochs();
+        } finally { incrementalActive = false; trainingNanos += System.nanoTime() - started; optimizerStep = trainer.step(); }
+        if (stopRequested) return false;
+        if (!verifiedAcquisition) throw new IOException("Generated dataset was not verified; Candidate publication blocked");
+        phase(PUBLISHING_CANDIDATE);
+        var candidate = operations.publish(store, trainer, new CheckpointManifest.Metadata(generation, config.selfPlay().depth(), parent));
+        candidateId = candidate.manifest().id(); latestId = candidateId; publish(PUBLISHING_CANDIDATE);
+        return true;
+    }
+
+    private boolean trainIncrementalCorpus(CheckpointStore store, NetworkTrainingState trainer, String parent) throws IOException {
+        if (stopRequested) return false;
+        incrementalActive = true;
+        trainingSampleTarget = (long) config.corpusTraining().positionsPerGeneration() * config.training().epochs();
+        acquisition = new TrainerSnapshot.Acquisition(0, 1, false);
+        phase(TRAINING);
+        long started = System.nanoTime();
+        try {
+            // Resume evaluates the original initial model, never the already-updated continuation.
+            NetworkModel initial = startingContinuationUpdates == 0 ? trainer.snapshot() : store.load(parent).model();
+            var result = IncrementalTraining.train(trainer, initial, config.training(generation), selfPlayControl,
+                    sink -> corpusTraining.stream(generation, sink), sample -> new IncrementalTraining.Prepared(sample, null),
+                    BrnCaptureConsistency.OFF, this::incrementalUpdate, this::incrementalStatus);
+            verifiedAcquisition = result.verified(); training = result.training();
+            if (result.source() != null) {
+                corpusReport = result.source().evidence(); corpusValidationExamples = result.source().validation();
+                int all = Math.addExact(corpusReport.usable(), corpusReport.heldOut());
+                updateGames(new SelfPlayBatch.Statistics(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, all, all));
+            }
+        } finally { incrementalActive = false; trainingNanos += System.nanoTime() - started; optimizerStep = trainer.step(); }
+        if (stopRequested) return false;
+        if (!verifiedAcquisition) throw new IOException("Training dataset was not verified; Candidate publication blocked");
+        phase(PUBLISHING_CANDIDATE);
+        var candidate = operations.publish(store, trainer, new CheckpointManifest.Metadata(generation, config.selfPlay().depth(), parent));
+        candidateId = candidate.manifest().id(); latestId = candidateId; publish(PUBLISHING_CANDIDATE);
+        return true;
+    }
+    private void incrementalUpdate(SelfPlayTraining.Progress progress) {
+        boolean first = updates == 0;
+        totalUpdates += progress.optimizerUpdates() - updates;
+        updates = progress.optimizerUpdates(); samplesTrained = progress.samplesTrained();
+        optimizerStep = progress.optimizerStep(); meanLoss = progress.meanTrainingLoss();
+        if (first) { publish(TRAINING); observer.accept(published); } else publishTrainingProgress();
+    }
+    private void incrementalStatus(IncrementalTraining.Status status) {
+        boolean changed = acquisition == null || acquisition.epoch() != status.epoch() || acquisition.verified() != status.verified()
+                || acquisition.measuring() != status.measuring();
+        acquisition = new TrainerSnapshot.Acquisition(status.acquired(), status.epoch(), status.verified(), status.measuring());
+        verifiedAcquisition = status.verified();
+        lifecycleNotice = status.measuring() ? "Measuring final training loss over verified positions; optimizer updates are complete."
+                : status.verified() ? "Replaying verified training positions; epoch " + status.epoch()
+                : "Acquiring and training epoch 1; " + status.acquired() + " unique training positions. " + acquisitionNotice
+                    + ". Stop before verification restarts this generation from its parent.";
+        if (changed) { publish(TRAINING); observer.accept(published); } else publishTrainingProgress();
+    }
+
+    static double corpusInitialLoss(NetworkTrainingState state, TrajectorySampler.Sample sample) {
+        long[] board = sample.board(); double target = sample.trainingTarget();
+        if (state instanceof NetworkTrainingState.Nnue n) return n.trainer().loss(board, target);
+        if (state instanceof NetworkTrainingState.NnueMaterial n) return n.trainer().loss(board, target);
+        double prediction = switch (state) {
+            case NetworkTrainingState.Brn2 b -> b.trainer().predict(board);
+            case NetworkTrainingState.Brn3 b -> b.trainer().predictOutcome(board);
+            case NetworkTrainingState.BrnPair2 b -> b.trainer().predictOutcome(board);
+            default -> throw new IllegalArgumentException("Unsupported corpus trainer");
+        };
+        double difference = prediction - target; return .5 * difference * difference;
     }
 
     private boolean generateBootstrap(CheckpointStore store, NetworkTrainingState trainer, String parent) throws IOException {
@@ -1098,9 +1286,10 @@ public final class TrainerService implements AutoCloseable {
                 || !Objects.equals(previous.session(), session)
                 || !Objects.equals(previous.optimizerLearningRate(), optimizerLearningRate)
                 || !Objects.equals(previous.finalLossObjective(), finalLossObjective)
+                || !Objects.equals(previous.acquisition(), acquisition)
                 || !Objects.equals(previous.generationTiming(), timing)))
             runDetails = Optional.of(new TrainerSnapshot.RunDetails(config, source, supervision, firstRunGeneration,
-                    targetGeneration, runAction, timeLimitReached, trainingSampleTarget, generationSettingsKnown, timing, corpusReport != null && corpusReport.generation() == generation ? corpusReport : null, optimizerLearningRate, session, finalLossObjective));
+                    targetGeneration, runAction, timeLimitReached, trainingSampleTarget, generationSettingsKnown, timing, corpusReport != null && corpusReport.generation() == generation ? corpusReport : null, optimizerLearningRate, session, finalLossObjective, acquisition));
         return new TrainerSnapshot(state, failure == null ? "" : failure.toString(), elapsed(), generation,
                 bestId, latestId, candidateId, optimizerStep, config.selfPlay().depth(), games, training, updates,
                 samplesTrained, meanLoss, validation, assessment, new TrainerSnapshot.Totals(completed, totalGames,

@@ -34,37 +34,137 @@ public final class SourceReaders {
                 ? new com.ohinteractive.seedv6.corpus.LegacyPositionReader(source, indexes, start)
                 : new Lines(source, indexes, start);
     }
-    public static final class Navigation {
+    /** Streaming merge of immutable old seek points and newly visited points. No heap-sized seek map. */
+    public static final class Navigation implements AutoCloseable {
         private final DataSource source;
         private final Path file;
-        private final TreeMap<Long, Point> points = new TreeMap<>();
-        private long count = -1;
+        private final Point first;
+        private Point lastAdded;
+        private Points old;
+        private Point existing;
+        private Path additions;
+        private DataOutputStream output;
+        private long added, count = -1;
+        private boolean closed;
         public Navigation(DataSource source, Path directory, Point first) throws IOException {
-            this.source = source; file = directory.resolve(source.identity() + ".json");
-            points.put(0L, first);
-            if (Files.exists(file)) {
-                Index index = DataFiles.read(file, Index.class);
-                if (!source.identity().equals(index.identity())) throw new IOException("Seek index source identity mismatch");
-                index.points().forEach(p -> points.put(p.record(), p)); count = index.count();
-            }
+            this.source = source; this.first = first; file = directory.resolve(source.identity() + ".json");
+            if (Files.exists(file)) verify();
+        }
+        private void verify() throws IOException {
+            var digest = DataFiles.digest(); update(digest, source.identity() + "[");
+            String identity = null, checksum = null; long prior = -1; boolean points = false;
+            try (var in = new com.google.gson.stream.JsonReader(Files.newBufferedReader(file))) {
+                in.beginObject();
+                while (in.hasNext()) switch (in.nextName()) {
+                    case "identity" -> identity = in.nextString();
+                    case "count" -> count = in.nextLong();
+                    case "checksum" -> checksum = in.nextString();
+                    case "points" -> {
+                        in.beginArray();
+                        while (in.hasNext()) {
+                            Point point = DataFiles.JSON.fromJson(in, Point.class);
+                            if (point.record() <= prior || point.offset() < 0) throw new IOException("Invalid seek order");
+                            if (points) update(digest, ", "); update(digest, point.toString()); points = true; prior = point.record();
+                        }
+                        in.endArray();
+                    }
+                    default -> in.skipValue();
+                }
+                in.endObject();
+                if (in.peek() != com.google.gson.stream.JsonToken.END_DOCUMENT) throw new IOException("Trailing seek metadata");
+            } catch (RuntimeException invalid) { throw new IOException("Invalid seek metadata", invalid); }
+            update(digest, "]" + count);
+            if (!source.identity().equals(identity) || !points || count < -1 || !HexFormat.of().formatHex(digest.digest()).equals(checksum))
+                throw new IOException("Invalid source seek index/checksum");
         }
         public Point floor(long record) throws IOException {
-            Point point = points.floorEntry(record).getValue();
-            if (record - point.record() > 4096) throw new IOException("Training Data seek metadata does not cover position " + record
+            Point result = first;
+            if (Files.exists(file)) try (var points = new Points(file)) {
+                for (Point point; (point = points.next()) != null && point.record() <= record;) result = point;
+            }
+            if (record - result.record() > 4096) throw new IOException("Training Data seek metadata does not cover position " + record
                     + ". Restore this lineage's seek metadata; an unbounded prefix scan was not started.");
-            return point;
+            return result;
         }
         public void add(Point point) throws IOException {
-            var previous = points.putIfAbsent(point.record(), point);
-            if (previous != null && !previous.equals(point)) throw new IOException("Training Data seek point changed");
+            if (closed || point.record() < 0 || point.offset() < 0 || lastAdded != null && point.record() < lastAdded.record())
+                throw new IOException("Invalid sequential seek point");
+            if (lastAdded != null && point.record() == lastAdded.record()) {
+                if (!point.equals(lastAdded)) throw new IOException("Training Data seek point changed");
+                return;
+            }
+            lastAdded = point;
+            if (old == null && Files.exists(file)) { old = new Points(file); existing = old.next(); }
+            while (existing != null && existing.record() < point.record()) existing = old.next();
+            if (existing != null && existing.record() == point.record()) {
+                if (!existing.equals(point)) throw new IOException("Training Data seek point changed");
+                return;
+            }
+            if (output == null) {
+                additions = Files.createTempFile("seedv6-training-", ".seek-points");
+                output = new DataOutputStream(new BufferedOutputStream(Files.newOutputStream(additions), 65536));
+            }
+            output.writeLong(point.record()); output.writeLong(point.offset()); output.writeLong(point.within()); added++;
         }
         public void eof(long record) throws IOException {
-            if (count >= 0 && count != record) throw new IOException("Training Data position count changed");
-            count = record;
+            if (count >= 0 && count != record) throw new IOException("Training Data position count changed"); count = record;
         }
         public void save() throws IOException {
-            source.verify();
-            DataFiles.write(file, new Index(source.identity(), new ArrayList<>(points.values()), count));
+            Path pending = null;
+            try {
+                source.verify();
+                if (old != null) { old.close(); old = null; }
+                if (output != null) output.close();
+                Files.createDirectories(file.getParent()); pending = Files.createTempFile(file.getParent(), "seek-", ".pending");
+                var digest = DataFiles.digest(); update(digest, source.identity() + "[");
+                try (var previous = Files.exists(file) ? new Points(file) : null;
+                     var addedInput = additions == null ? null : new DataInputStream(new BufferedInputStream(Files.newInputStream(additions)));
+                     var out = new com.google.gson.stream.JsonWriter(Files.newBufferedWriter(pending))) {
+                    out.setIndent("  "); out.beginObject(); out.name("identity").value(source.identity()); out.name("points").beginArray();
+                    Point a = previous == null ? null : previous.next(), b = added == 0 ? null : readPoint(addedInput);
+                    long remaining = added; boolean any = false;
+                    // A newly registered source always retains its initial navigation anchor.
+                    if (a == null && b == null) { a = first; }
+                    while (a != null || b != null) {
+                        boolean takeOld = b == null || a != null && a.record() < b.record();
+                        Point point = takeOld ? a : b;
+                        if (any) update(digest, ", "); update(digest, point.toString()); any = true;
+                        DataFiles.JSON.toJson(point, Point.class, out);
+                        if (takeOld) a = previous == null ? null : previous.next();
+                        else b = --remaining == 0 ? null : readPoint(addedInput);
+                    }
+                    out.endArray(); out.name("count").value(count); update(digest, "]" + count);
+                    out.name("checksum").value(HexFormat.of().formatHex(digest.digest())); out.endObject();
+                }
+                try (var channel = FileChannel.open(pending, StandardOpenOption.WRITE)) { channel.force(true); }
+                Files.move(pending, file, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
+            } finally {
+                try { close(); } finally { if (pending != null) Files.deleteIfExists(pending); }
+            }
+        }
+        public void close() throws IOException {
+            if (closed) return; closed = true;
+            try { if (old != null) old.close(); }
+            finally { try { if (output != null) output.close(); } finally { if (additions != null) Files.deleteIfExists(additions); } }
+        }
+        private static Point readPoint(DataInputStream in) throws IOException { return new Point(in.readLong(), in.readLong(), in.readLong()); }
+        private static void update(java.security.MessageDigest digest, String value) { digest.update(value.getBytes(StandardCharsets.UTF_8)); }
+        private static final class Points implements AutoCloseable {
+            private final com.google.gson.stream.JsonReader reader;
+            private boolean done;
+            Points(Path file) throws IOException {
+                reader = new com.google.gson.stream.JsonReader(Files.newBufferedReader(file));
+                try {
+                    reader.beginObject();
+                    while (reader.hasNext()) { if (reader.nextName().equals("points")) { reader.beginArray(); return; } reader.skipValue(); }
+                    throw new IOException("Missing seek points");
+                } catch (IOException | RuntimeException failure) { reader.close(); throw failure; }
+            }
+            Point next() throws IOException {
+                if (done || !reader.hasNext()) { done = true; return null; }
+                return DataFiles.JSON.fromJson(reader, Point.class);
+            }
+            public void close() throws IOException { reader.close(); }
         }
     }
     public static void requirePzstd(Path path) throws IOException {
@@ -132,7 +232,7 @@ public final class SourceReaders {
                         int n = input.read(buffer, 0, (int) Math.min(buffer.length, remaining));
                         if (n < 0) throw new EOFException("Missing indexed position"); remaining -= n;
                     }
-                } catch (Throwable failure) { input.close(); throw failure; }
+                } catch (Throwable failure) { try { input.close(); } finally { navigation.close(); } throw failure; }
             } else {
                 frames = null;
                 FileChannel channel = FileChannel.open(source.path()); channel.position(point.offset()); plainRead = point.offset();
@@ -141,7 +241,7 @@ public final class SourceReaders {
             try {
                 // Skip bytes/lines only within the visited frame or sparse plain-text interval. Never parse FEN/JSON here.
                 while (position < start) { if (line(false) == null) throw new EOFException("Training Data exhausted before position " + start); position++; seekRecords++; }
-            } catch (Throwable failure) { input.close(); throw failure; }
+            } catch (Throwable failure) { try { input.close(); } finally { navigation.close(); } throw failure; }
         }
         private boolean fill() throws IOException {
             if (cursor < end) return true;

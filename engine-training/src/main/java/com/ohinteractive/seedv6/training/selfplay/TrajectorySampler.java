@@ -9,11 +9,14 @@ public final class TrajectorySampler {
     public static final int DEFAULT_MAXIMUM_SAMPLES = 32;
 
     /** One six-long copy per retained sample; no evaluator/search metadata is a target source. */
-    public record Sample(long[] board, double target) {
+    public record Sample(long[] board, double target, double trainingTarget) {
+        public Sample(long[] board, double target) { this(board, target, target); }
         public Sample {
             if (board.length != Board.MAX_BITBOARDS || (target != -1 && target != 0 && target != 1)) {
                 throw new IllegalArgumentException("Expected a six-long board and exact W/D/L target.");
             }
+            if (!Double.isFinite(trainingTarget) || Math.abs(trainingTarget) > 1)
+                throw new IllegalArgumentException("Invalid training target");
             board = board.clone();
         }
         @Override public long[] board() { return board.clone(); }

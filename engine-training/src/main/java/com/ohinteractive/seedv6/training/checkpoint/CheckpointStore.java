@@ -442,7 +442,16 @@ public final class CheckpointStore implements AutoCloseable {
     public void writeBootstrapData(BootstrapPlan plan, BootstrapData data) throws IOException {
         requireOpen();
         if (!data.planHash().equals(plan.hash())) throw new IOException("Bootstrap data/plan mismatch.");
-        publishRecord("bootstrap", plan.parentId() + ".data", data.encode());
+        Path target = root.resolve("bootstrap").resolve(plan.parentId() + ".data");
+        if (Files.exists(target, LinkOption.NOFOLLOW_LINKS)) {
+            if (!SmallRecord.hash(target).equals(data.hash())) throw new IOException("Conflicting immutable record.");
+            return;
+        }
+        Path temporary = root.resolve("staging").resolve("record-" + UUID.randomUUID());
+        try {
+            data.write(temporary); mover.move(temporary, target, false);
+            forceDirectory(target.getParent()); forceDirectory(temporary.getParent());
+        } finally { Files.deleteIfExists(temporary); }
     }
     /** A completed search with insufficient terminal data has no updates or Candidate to recover.
      * Preserve its pin as a failed attempt, atomically freeing the safe configuration boundary.
@@ -1116,29 +1125,36 @@ public final class CheckpointStore implements AutoCloseable {
         String id = UUID.randomUUID().toString();
         Path stage = root.resolve("staging").resolve("partial-" + id);
         Files.createDirectory(stage);
-        writeBytes(stage.resolve("progress.bin"), progress.encode());
-        boolean model = state != null && progress.training().updates() > 0 && progress.candidate().isEmpty();
-        if (progress.candidate().isEmpty() && progress.training().updates() > 0 && !model)
-            throw new IOException("Missing partial model state.");
-        if (model && (state.architecture() != expectedArchitecture
-                || state.step() != progress.training().initialStep() + progress.training().updates()))
-            throw new IOException("Partial model/cursor mismatch.");
-        if (model) writeArtifact(stage.resolve("training.state"), state::write);
-        String metadataHash = SmallRecord.hash(stage.resolve("progress.bin"));
-        String stateHash = model ? SmallRecord.hash(stage.resolve("training.state")) : "";
-        Path directory = root.resolve("partial-generations"); Files.createDirectories(directory);
-        forceDirectory(stage); mover.move(stage, directory.resolve(id), false); forceDirectory(directory);
-        byte[] reference = SmallRecord.encode("partial-generation-reference-v1", out -> {
-            out.writeUTF(id); out.writeUTF(metadataHash); out.writeUTF(stateHash);
-        });
         Path temporary = root.resolve("staging").resolve("partial-ref-" + id);
-        writeBytes(temporary, reference); mover.move(temporary, root.resolve(PartialGeneration.FILE), true); forceDirectory(root);
+        try {
+            progress.write(stage.resolve("progress.bin"));
+            boolean model = state != null && progress.training().updates() > 0 && progress.candidate().isEmpty();
+            if (progress.candidate().isEmpty() && progress.training().updates() > 0 && !model)
+                throw new IOException("Missing partial model state.");
+            if (model && (state.architecture() != expectedArchitecture
+                    || state.step() != progress.training().initialStep() + progress.training().updates()))
+                throw new IOException("Partial model/cursor mismatch.");
+            if (model) writeArtifact(stage.resolve("training.state"), state::write);
+            String metadataHash = SmallRecord.hash(stage.resolve("progress.bin"));
+            String stateHash = model ? SmallRecord.hash(stage.resolve("training.state")) : "";
+            Path directory = root.resolve("partial-generations"); Files.createDirectories(directory);
+            forceDirectory(stage); mover.move(stage, directory.resolve(id), false); forceDirectory(directory);
+            byte[] reference = SmallRecord.encode("partial-generation-reference-v1", out -> {
+                out.writeUTF(id); out.writeUTF(metadataHash); out.writeUTF(stateHash);
+            });
+            writeBytes(temporary, reference); mover.move(temporary, root.resolve(PartialGeneration.FILE), true); forceDirectory(root);
+        } finally {
+            // Only this invocation's unpublished staging files; published continuations remain owned by retention.
+            Files.deleteIfExists(temporary);
+            Files.deleteIfExists(stage.resolve("progress.bin")); Files.deleteIfExists(stage.resolve("training.state"));
+            Files.deleteIfExists(stage);
+        }
     }
 
     public NetworkTrainingState resumePartialState(PartialGeneration progress) throws IOException {
         requireOpen();
         var stored = PartialGeneration.read(root).orElseThrow();
-        if (!Arrays.equals(stored.progress().encode(), progress.encode())) throw new IOException("Partial state changed.");
+        if (!stored.progress().hash().equals(progress.hash())) throw new IOException("Partial state changed.");
         if (stored.state() == null) return resumeState(progress.attempt().parentId());
         PartialGeneration.verifyState(stored);
         try (var in = new BufferedInputStream(Files.newInputStream(stored.state()))) {

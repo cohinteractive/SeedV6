@@ -32,6 +32,7 @@ public final class LegacyPositionReader implements PositionReader {
             }
         } catch (SQLException | IOException failure) {
             if (opened != null) try { opened.close(); } catch (SQLException close) { failure.addSuppressed(close); }
+            try { navigation.close(); } catch (IOException close) { failure.addSuppressed(close); }
             throw new IOException("Cannot open legacy Training Data source", failure);
         }
     }

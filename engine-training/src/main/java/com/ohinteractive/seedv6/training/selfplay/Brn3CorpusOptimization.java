@@ -14,7 +14,7 @@ public final class Brn3CorpusOptimization {
     public static Optional<Statistics> trainSamples(Brn3Trainer trainer, List<TrajectorySampler.Sample> samples,
             Config config, SelfPlayControl control, Consumer<Progress> observer,
             ToDoubleFunction<TrajectorySampler.Sample> target) {
-        samples = List.copyOf(samples);
+        samples = SampleStore.copyOf(samples);
         Objects.requireNonNull(trainer, "trainer");
         Objects.requireNonNull(config, "config");
         Objects.requireNonNull(observer, "observer");
@@ -26,48 +26,46 @@ public final class Brn3CorpusOptimization {
             throw new IllegalArgumentException("Invalid training continuation position.");
         Metrics before = cursor.initialStep() < 0 ? metrics(trainer, samples, control, target) : new Metrics(cursor.initialLoss(), Double.NaN, Double.NaN);
         if (control.cancelled()) return Optional.empty();
-        int[] order = new int[samples.size()];
-        int capacity = Math.min(config.minibatchSize(), samples.size());
-        long[][] boards = new long[capacity][Board.MAX_BITBOARDS];
-        double[] targets = new double[capacity];
-        SplittableRandom random = new SplittableRandom(config.shuffleSeed());
-        long trained = cursor.samples();
-        double lossSum = cursor.lossSum();
-        control.recordTraining(trained, cursor.updates(), initialStep, before.loss(), lossSum);
-        for (int epoch = 0; epoch < config.epochs() && !control.cancelled(); epoch++) {
-            for (int i = 0; i < order.length; i++) order[i] = i;
-            if (config.shuffle()) {
-                for (int i = order.length - 1; i > 0; i--) {
-                    int other = random.nextInt(i + 1);
-                    int swap = order[i]; order[i] = order[other]; order[other] = swap;
+        try (var order = new TrainingOrder(samples.size())) {
+            int capacity = Math.min(config.minibatchSize(), samples.size());
+            long[][] boards = new long[capacity][Board.MAX_BITBOARDS];
+            double[] targets = new double[capacity];
+            SplittableRandom random = new SplittableRandom(config.shuffleSeed());
+            long trained = cursor.samples();
+            double lossSum = cursor.lossSum();
+            control.recordTraining(trained, cursor.updates(), initialStep, before.loss(), lossSum);
+            for (int epoch = 0; epoch < config.epochs() && !control.cancelled(); epoch++) {
+                if (!order.reset(config.shuffle(), random, control)) break;
+                int resume = (int) Math.max(0, Math.min(order.length, cursor.samples() - (long) epoch * order.length));
+                try (var prefetched = new PrefetchedSamples(samples, order, resume)) {
+                    for (int start = 0; start < order.length && !control.cancelled();) {
+                        int count = Math.min(capacity, order.length - start);
+                        long position = (long) epoch * order.length + start;
+                        if (position < cursor.samples()) {
+                            if (position + count > cursor.samples()) throw new IllegalArgumentException("Continuation is inside an optimizer batch.");
+                            start += count; continue;
+                        }
+                        for (int i = 0; i < count; i++) {
+                            TrajectorySampler.Sample sample = prefetched.next();
+                            sample.copyBoardInto(boards[i]);
+                            targets[i] = target.applyAsDouble(sample);
+                        }
+                        double meanLoss = trainer.trainBatch(boards, targets, count);
+                        trained += count;
+                        lossSum += meanLoss * count;
+                        start += count;
+                        control.recordTraining(trained, trainer.step() - initialStep, initialStep, before.loss(), lossSum);
+                        observer.accept(new Progress(trained, trainer.step() - initialStep, initialStep,
+                                trainer.step(), lossSum / trained));
+                    }
                 }
             }
-            for (int start = 0; start < order.length && !control.cancelled();) {
-                int count = Math.min(capacity, order.length - start);
-                long position = (long) epoch * order.length + start;
-                if (position < cursor.samples()) {
-                    if (position + count > cursor.samples()) throw new IllegalArgumentException("Continuation is inside an optimizer batch.");
-                    start += count; continue;
-                }
-                for (int i = 0; i < count; i++) {
-                    TrajectorySampler.Sample sample = samples.get(order[start + i]);
-                    sample.copyBoardInto(boards[i]);
-                    targets[i] = target.applyAsDouble(sample);
-                }
-                double meanLoss = trainer.trainBatch(boards, targets, count);
-                trained += count;
-                lossSum += meanLoss * count;
-                start += count;
-                control.recordTraining(trained, trainer.step() - initialStep, initialStep, before.loss(), lossSum);
-                observer.accept(new Progress(trained, trainer.step() - initialStep, initialStep,
-                        trainer.step(), lossSum / trained));
-            }
+            if (trained == 0) return Optional.empty();
+            Metrics after = metrics(trainer, samples, control, target);
+            long finalStep = trainer.step();
+            return Optional.of(new Statistics(trained, finalStep - initialStep, initialStep, finalStep,
+                    before.loss(), after.loss(), lossSum / trained, after.prediction(), after.target(), control.cancelled()));
         }
-        if (trained == 0) return Optional.empty();
-        Metrics after = metrics(trainer, samples, control, target);
-        long finalStep = trainer.step();
-        return Optional.of(new Statistics(trained, finalStep - initialStep, initialStep, finalStep,
-                before.loss(), after.loss(), lossSum / trained, after.prediction(), after.target(), control.cancelled()));
     }
 
     private record Metrics(double loss, double prediction, double target) {}

@@ -27,51 +27,42 @@ public final class Brn2SelfPlayTraining {
             Consumer<SelfPlayTraining.Progress> observer, ToDoubleFunction<TrajectorySampler.Sample> target) {
         if (config.epochs() != 1 || config.minibatchSize() != 1)
             throw new IllegalArgumentException("BRN-2 uses one online pass (epochs=1, minibatch=1).");
-        samples = List.copyOf(samples);
+        samples = SampleStore.copyOf(samples);
         if (samples.isEmpty() || control.cancelled()) return Optional.empty();
-        double[] targets = new double[samples.size()];
-        for (int i = 0; i < targets.length; i++) {
-            targets[i] = target.applyAsDouble(samples.get(i));
-            if (!Double.isFinite(targets[i]) || Math.abs(targets[i]) > 1)
-                throw new IllegalArgumentException("Target must be finite and in [-1,+1].");
-        }
+        samples = SampleStore.withTargets(samples, target, control);
+        if (control.cancelled()) return Optional.empty();
         var cursor = control.takeTrainingStart();
         long initial = cursor.initialStep() < 0 ? trainer.optimizer().step() : cursor.initialStep();
         if (trainer.optimizer().step() != initial + cursor.updates() || cursor.samples() > samples.size())
             throw new IllegalArgumentException("Invalid training continuation position.");
-        Metrics before = cursor.initialStep() < 0 ? metrics(trainer, samples, targets, control) : new Metrics(cursor.initialLoss(), Double.NaN, Double.NaN);
+        Metrics before = cursor.initialStep() < 0 ? metrics(trainer, samples, control) : new Metrics(cursor.initialLoss(), Double.NaN, Double.NaN);
         if (control.cancelled()) return Optional.empty();
-        int[] order = new int[samples.size()];
-        for (int i = 0; i < order.length; i++) order[i] = i;
-        if (config.shuffle()) {
-            var random = new SplittableRandom(config.shuffleSeed());
-            for (int i = order.length - 1; i > 0; i--) {
-                int other = random.nextInt(i + 1);
-                int swap = order[i]; order[i] = order[other]; order[other] = swap;
-            }
-        }
-        long[] board = new long[Board.MAX_BITBOARDS];
-        long trained = cursor.samples(); double loss = cursor.lossSum();
-        control.recordTraining(trained, trained, initial, before.loss(), loss);
-        for (int position = (int) trained; position < order.length; position++) {
-            int index = order[position];
-            if (control.cancelled()) break;
-            var sample = samples.get(index);
-            sample.copyBoardInto(board);
-            // Bounded value from THIS position's side to move. Search scores are not targets.
-            loss += trainer.train(board, targets[index]);
-            trained++;
+        try (var order = new TrainingOrder(samples.size())) {
+            if (!order.reset(config.shuffle(), new SplittableRandom(config.shuffleSeed()), control)) return Optional.empty();
+            long[] board = new long[Board.MAX_BITBOARDS];
+            long trained = cursor.samples(); double loss = cursor.lossSum();
             control.recordTraining(trained, trained, initial, before.loss(), loss);
-            observer.accept(new SelfPlayTraining.Progress(trained, trained, initial, trainer.optimizer().step(), loss / trained));
+            try (var prefetched = new PrefetchedSamples(samples, order, (int) trained)) {
+                for (int position = (int) trained; position < order.length; position++) {
+                    if (control.cancelled()) break;
+                    var sample = prefetched.next();
+                    sample.copyBoardInto(board);
+                    // Bounded value from THIS position's side to move. Search scores are not targets.
+                    loss += trainer.train(board, sample.trainingTarget());
+                    trained++;
+                    control.recordTraining(trained, trained, initial, before.loss(), loss);
+                    observer.accept(new SelfPlayTraining.Progress(trained, trained, initial, trainer.optimizer().step(), loss / trained));
+                }
+            }
+            if (trained == 0) return Optional.empty();
+            Metrics after = metrics(trainer, samples, control);
+            return Optional.of(new SelfPlayTraining.Statistics(trained, trained, initial, trainer.optimizer().step(),
+                    before.loss(), after.loss(), loss / trained, after.prediction(), after.target(), control.cancelled()));
         }
-        if (trained == 0) return Optional.empty();
-        Metrics after = metrics(trainer, samples, targets, control);
-        return Optional.of(new SelfPlayTraining.Statistics(trained, trained, initial, trainer.optimizer().step(),
-                before.loss(), after.loss(), loss / trained, after.prediction(), after.target(), control.cancelled()));
     }
 
     private record Metrics(double loss, double prediction, double target) {}
-    private static Metrics metrics(Brn2Trainer trainer, List<TrajectorySampler.Sample> samples, double[] targets,
+    private static Metrics metrics(Brn2Trainer trainer, List<TrajectorySampler.Sample> samples,
                                   SelfPlayControl control) {
         long[] board = new long[Board.MAX_BITBOARDS];
         double loss = 0, prediction = 0, target = 0;
@@ -79,8 +70,8 @@ public final class Brn2SelfPlayTraining {
             var sample = samples.get(i);
             if (control.cancelled()) return new Metrics(Double.NaN, Double.NaN, Double.NaN);
             sample.copyBoardInto(board);
-            double value = trainer.predict(board), difference = value - targets[i];
-            loss += 0.5 * difference * difference; prediction += value; target += targets[i];
+            double value = trainer.predict(board), difference = value - sample.trainingTarget();
+            loss += 0.5 * difference * difference; prediction += value; target += sample.trainingTarget();
         }
         return new Metrics(loss / samples.size(), prediction / samples.size(), target / samples.size());
     }

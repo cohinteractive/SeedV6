@@ -14,6 +14,19 @@ class PreparedBinpackTest {
     String prior;
     @BeforeEach void cache() { prior = System.getProperty("seedv6.preparedDataRoot"); System.setProperty("seedv6.preparedDataRoot", temporary.resolve("cache").toString()); }
     @AfterEach void restore() { if (prior == null) System.clearProperty("seedv6.preparedDataRoot"); else System.setProperty("seedv6.preparedDataRoot", prior); }
+    @Test void trainingScopeUsesBoundedDiskMetadataWithTheSameManifestIdentityAndSeekResults() throws Exception {
+        var source = BinpackFixtures.source(temporary.resolve("streamed-manifest"));
+        var original = PreparedBinpack.prepare(source, CorpusPreparation.NONE);
+        try (var workspace = new com.ohinteractive.seedv6.training.selfplay.SampleStore.Workspace()) {
+            var bounded = PreparedBinpack.ready(source);
+            assertEquals(original, bounded);
+            assertEquals("DiskUnits", bounded.units().getClass().getSimpleName());
+            try (var reader = PreparedBinpack.open(source, 13)) {
+                assertEquals(13, reader.next().ordinal()); assertEquals(14, reader.next().ordinal());
+                assertEquals(15, reader.next().ordinal()); assertNull(reader.next());
+            }
+        }
+    }
     @Test void explicitDirectoryAndIndividualArchivesUseTheSameSortedShardModel() throws Exception {
         Path folder = Files.createDirectory(temporary.resolve("bt4-t80"));
         Path b = BinpackFixtures.archive(folder.resolve("b.binpack.zst"), BinpackFixtures.chunk(-200));

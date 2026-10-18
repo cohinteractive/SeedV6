@@ -86,15 +86,23 @@ public final class SequentialTraining extends CorpusTraining {
         sources.verify(); control.checkCancelled();
         var ledger = new SourceLedger(configuration.checkpointRoot());
         var saved = ledger.generation(generation).orElse(null);
-        String attempt = DataFiles.hash(GenerationAttempt.inspect(configuration.checkpointRoot()).map(Object::toString)
+        var generationAttempt = GenerationAttempt.inspect(configuration.checkpointRoot());
+        String attempt = DataFiles.hash(generationAttempt.map(Object::toString)
                 .orElse(configuration.withCorpusTraining(config()).attemptSettings(generation, source)));
+        // A zero-update pre-streaming attempt may be upgraded without abandoning its exact ranges.
+        if (saved != null && generationAttempt.filter(a -> a.format() == GenerationAttempt.Format.INCREMENTAL).isPresent()) {
+            var a = generationAttempt.orElseThrow();
+            String original = DataFiles.hash(new GenerationAttempt(a.parentId(), a.incumbentId(), a.generation(), a.source(),
+                    a.settings(), GenerationAttempt.Format.INDEPENDENT, a.notice()).toString());
+            if (saved.attempt().equals(original)) attempt = original;
+        }
         if (saved != null && saved.status() == SourceLedger.Status.COMPLETED) attempt = saved.attempt();
         if (saved != null && (!saved.mix().equals(sources.identity()) || !saved.attempt().equals(attempt)))
             throw new IOException("Saved source ranges belong to different generation settings; use the explicit restart lifecycle");
         if (validationOnly && saved == null) throw new IOException("Missing active-generation Training Data ranges");
         int count = config().positionsPerGeneration(), held = configuration.heldOut(source) ? (int) Math.max(2, (count + 3L) / 4) : 0;
         int[] trainingCounts = sources.allocate(count), validationCounts = sources.allocate(held);
-        var training = new Examples(adapter); var validation = new Examples(adapter);
+        var training = trainingExamples(adapter); var validation = new Examples(adapter);
         MessageDigest trainHash = DataFiles.digest(), validationHash = DataFiles.digest();
         if (sourceLabels != null) {
             byte[] binding = sourceLabels.toString().getBytes(java.nio.charset.StandardCharsets.UTF_8);
@@ -127,8 +135,8 @@ public final class SequentialTraining extends CorpusTraining {
                     if (entry == null) throw new EOFException("Training Data source exhausted: " + item.name() + " at position " + reader.nextPosition() + ". No wrapping or source substitution is permitted.");
                     if (entry.position() == null || sourceAdapter.rejection(entry.position()) != null) { skipped++; continue; }
                     boolean heldOut = retained >= train;
-                    // No architecture-specific permanent records. Existing optimizers require a generation list
-                    // for repeated NNUE epochs / safe batch resume; feature encoding stays in those trainers.
+                    // GUI workers spool fixed records; epochs and continuation do not retain decoded positions.
+                    // Feature encoding and optimizer state remain in the architecture-specific trainers.
                     if (heldOut) validation.add(entry.position(), sourceAdapter); else if (!validationOnly) training.add(entry.position(), sourceAdapter);
                     hash(heldOut ? validationHash : trainHash, identityBytes, hashBuffer, entry.ordinal(), entry.position());
                     retained++;

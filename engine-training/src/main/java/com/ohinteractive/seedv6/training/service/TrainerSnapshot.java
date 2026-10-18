@@ -33,7 +33,14 @@ public record TrainerSnapshot(State state, String failureSummary, Duration elaps
     public record RunDetails(TrainerConfig effective, TrainingSource source, BrnSupervision supervision,
                              long firstGeneration, long targetGeneration, String action, boolean timeLimitReached,
                              long trainingSampleTarget, boolean generationSettingsKnown, GenerationTiming generationTiming, CorpusTraining.Evidence corpus,
-                             Double optimizerLearningRate, TrainingSession session, String finalLossObjective) {
+                             Double optimizerLearningRate, TrainingSession session, String finalLossObjective, Acquisition acquisition) {
+        public RunDetails(TrainerConfig effective, TrainingSource source, BrnSupervision supervision,
+                long firstGeneration, long targetGeneration, String action, boolean timeLimitReached,
+                long trainingSampleTarget, boolean generationSettingsKnown, GenerationTiming generationTiming, CorpusTraining.Evidence corpus,
+                Double optimizerLearningRate, TrainingSession session, String finalLossObjective) {
+            this(effective, source, supervision, firstGeneration, targetGeneration, action, timeLimitReached, trainingSampleTarget,
+                    generationSettingsKnown, generationTiming, corpus, optimizerLearningRate, session, finalLossObjective, null);
+        }
         public RunDetails(TrainerConfig effective, TrainingSource source, BrnSupervision supervision,
                 long firstGeneration, long targetGeneration, String action, boolean timeLimitReached,
                 long trainingSampleTarget, boolean generationSettingsKnown, GenerationTiming generationTiming, CorpusTraining.Evidence corpus,
@@ -72,6 +79,9 @@ public record TrainerSnapshot(State state, String failureSummary, Duration elaps
         }
         public long ordinal(long generation) { return Math.max(0, generation - firstGeneration + 1); }
     }
+    public record Acquisition(long uniquePositions, int epoch, boolean verified, boolean measuring) {
+        public Acquisition(long uniquePositions, int epoch, boolean verified) { this(uniquePositions, epoch, verified, false); }
+    }
     /** Immutable publication of the history clock. Accumulated active time survives a safe resume. */
     public record GenerationTiming(long generation, long accumulatedNanos, long startedNanos, boolean ticking) {
         public Duration elapsed(long now) {
@@ -106,8 +116,10 @@ public record TrainerSnapshot(State state, String failureSummary, Duration elaps
     public record BootstrapValidation(String candidateId, String incumbentId,
                                       com.ohinteractive.seedv6.training.checkpoint.BootstrapEvidence evidence) {}
     public TrainerSnapshot {
+        boolean generating = state == State.GENERATING_SELF_PLAY || state == State.TRAINING
+                && run.map(r -> r.acquisition() != null && !r.acquisition().verified() && !r.source().corpus()).orElse(false);
         activeGame = activeGame.filter(game -> game.generation() == generation
-                && (state == State.GENERATING_SELF_PLAY && game.phase() == ActiveGameSnapshot.Phase.SELF_PLAY
+                && (generating && game.phase() == ActiveGameSnapshot.Phase.SELF_PLAY
                 || state == State.VALIDATING && game.phase() == ActiveGameSnapshot.Phase.VALIDATION));
     }
     public TrainerSnapshot(State state, String failureSummary, Duration elapsed, long generation,

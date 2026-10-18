@@ -57,37 +57,38 @@ public record PartialGeneration(GenerationAttempt attempt, String candidate,
             Path metadata = directory.resolve("progress.bin");
             CheckpointPayload.regular(metadata);
             if (!metadataHash.equals(SmallRecord.hash(metadata))) throw new IOException("Partial metadata hash mismatch.");
-            var progress = SmallRecord.read(metadata, "partial-generation-v1", PartialGeneration::read, MAX_BYTES);
+            var progress = SmallRecord.read(metadata, "partial-generation-v1", PartialGeneration::read, SmallRecord.MAX_DATA_BYTES);
             if (!stateHash.isEmpty()) SmallRecord.requireHash(stateHash);
             if (progress.training().updates() > 0 && progress.candidate().isEmpty() && stateHash.isEmpty())
                 throw new IOException("Missing partial optimizer state.");
             return new Stored(progress, stateHash.isEmpty() ? null : directory.resolve("training.state"), stateHash);
         }));
     }
-    byte[] encode() throws IOException {
-        return SmallRecord.encode("partial-generation-v1", out -> {
-            attempt.write(out); out.writeUTF(candidate); out.writeUTF(started.toString());
-            out.writeBoolean(recoveryOnly); out.writeBoolean(generationSettingsKnown);
-            out.writeLong(activeNanos); out.writeLong(selfPlayNanos); out.writeLong(trainingNanos); out.writeLong(validationNanos);
-            var s = statistics;
-            out.writeInt(s.requestedGames()); out.writeInt(s.completedGames()); out.writeInt(s.abortedGames());
-            out.writeInt(s.whiteWins()); out.writeInt(s.draws()); out.writeInt(s.blackWins()); out.writeInt(s.cappedGames());
-            out.writeLong(s.totalPlayedPlies()); out.writeInt(s.minimumCompletedPlies()); out.writeInt(s.maximumCompletedPlies());
-            out.writeDouble(s.meanCompletedPlies()); out.writeLong(s.rawTrajectoryPositions()); out.writeInt(s.sampledPositions());
-            var t = training;
-            out.writeLong(t.samples()); out.writeLong(t.updates()); out.writeLong(t.initialStep());
-            out.writeDouble(t.initialLoss()); out.writeDouble(t.lossSum());
-            out.writeInt(games.games().size());
-            for (var g : games.games()) {
-                out.writeInt(g.gameIndex()); out.writeLong(g.seed()); out.writeUTF(g.termination().name());
-                out.writeInt(g.playedPlies()); out.writeInt(g.rawPositions()); out.writeInt(g.sampledPositions());
-                out.writeUTF(g.failure() == null ? "" : g.failure());
-            }
-            out.writeInt(games.samples().size());
-            for (var sample : games.samples()) { for (long b : sample.board()) out.writeLong(b); out.writeDouble(sample.target()); }
-            out.writeInt(pairs.size());
-            for (var p : pairs) { out.writeUTF(p.openingHash()); writeGame(out, p.candidateWhite()); writeGame(out, p.candidateBlack()); }
-        }, MAX_BYTES);
+    byte[] encode() throws IOException { return SmallRecord.encode("partial-generation-v1", this::writePayload, MAX_BYTES); }
+    void write(Path path) throws IOException { SmallRecord.write(path, "partial-generation-v1", this::writePayload, SmallRecord.MAX_DATA_BYTES); }
+    public String hash() throws IOException { return SmallRecord.hash("partial-generation-v1", this::writePayload, SmallRecord.MAX_DATA_BYTES); }
+    private void writePayload(DataOutputStream out) throws IOException {
+        attempt.write(out); out.writeUTF(candidate); out.writeUTF(started.toString());
+        out.writeBoolean(recoveryOnly); out.writeBoolean(generationSettingsKnown);
+        out.writeLong(activeNanos); out.writeLong(selfPlayNanos); out.writeLong(trainingNanos); out.writeLong(validationNanos);
+        var s = statistics;
+        out.writeInt(s.requestedGames()); out.writeInt(s.completedGames()); out.writeInt(s.abortedGames());
+        out.writeInt(s.whiteWins()); out.writeInt(s.draws()); out.writeInt(s.blackWins()); out.writeInt(s.cappedGames());
+        out.writeLong(s.totalPlayedPlies()); out.writeInt(s.minimumCompletedPlies()); out.writeInt(s.maximumCompletedPlies());
+        out.writeDouble(s.meanCompletedPlies()); out.writeLong(s.rawTrajectoryPositions()); out.writeInt(s.sampledPositions());
+        var t = training;
+        out.writeLong(t.samples()); out.writeLong(t.updates()); out.writeLong(t.initialStep());
+        out.writeDouble(t.initialLoss()); out.writeDouble(t.lossSum());
+        out.writeInt(games.games().size());
+        for (var g : games.games()) {
+            out.writeInt(g.gameIndex()); out.writeLong(g.seed()); out.writeUTF(g.termination().name());
+            out.writeInt(g.playedPlies()); out.writeInt(g.rawPositions()); out.writeInt(g.sampledPositions());
+            out.writeUTF(g.failure() == null ? "" : g.failure());
+        }
+        out.writeInt(games.samples().size());
+        for (var sample : games.samples()) { for (long b : sample.board()) out.writeLong(b); out.writeDouble(sample.target()); }
+        out.writeInt(pairs.size());
+        for (var p : pairs) { out.writeUTF(p.openingHash()); writeGame(out, p.candidateWhite()); writeGame(out, p.candidateBlack()); }
     }
     private static PartialGeneration read(DataInputStream in) throws IOException {
         var attempt = GenerationAttempt.read(in); String candidate = in.readUTF(); Instant started = Instant.parse(in.readUTF());
@@ -99,11 +100,7 @@ public record PartialGeneration(GenerationAttempt attempt, String candidate,
         var games = new ArrayList<SelfPlayBatch.GameSummary>();
         for (int n = count(in); n > 0; n--) games.add(new SelfPlayBatch.GameSummary(in.readInt(), in.readLong(),
                 GameTermination.valueOf(in.readUTF()), in.readInt(), in.readInt(), in.readInt(), in.readUTF()));
-        var samples = new ArrayList<TrajectorySampler.Sample>();
-        for (int n = count(in); n > 0; n--) {
-            long[] board = new long[Board.MAX_BITBOARDS]; for (int i = 0; i < board.length; i++) board[i] = in.readLong();
-            samples.add(new TrajectorySampler.Sample(board, in.readDouble()));
-        }
+        var samples = SmallRecord.samples(in, count(in));
         var pairs = new ArrayList<ValidationResult.Pair>();
         for (int n = count(in); n > 0; n--) pairs.add(new ValidationResult.Pair(in.readUTF(), readGame(in), readGame(in)));
         return new PartialGeneration(attempt, candidate, new SelfPlayBatch.Saved(games, samples), statistics, cursor, pairs,

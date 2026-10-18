@@ -17,6 +17,33 @@ import static org.junit.jupiter.api.Assertions.*;
 class TrainingRunPresentationTest {
     @org.junit.jupiter.api.io.TempDir Path temporary;
 
+    @Test void incrementalProgressDistinguishesAcquiredPositionsVisitsEpochsAndFinalMetrics() throws Exception {
+        SwingUtilities.invokeAndWait(() -> {
+            var snapshot = TrainingDashboardTest.snapshot(TrainerSnapshot.State.TRAINING, false, false, false);
+            var config = TrainingDashboardTest.settings(Path.of("build/unused-incremental-presentation")).config(TrainerConfig.DepthChange.REQUIRE_SAME);
+            for (boolean measuring : new boolean[]{false, true}) {
+                var run = new TrainerSnapshot.RunDetails(config, TrainingSource.SELF_PLAY, BrnSupervision.WDL,
+                        1, 1, "Start", false, 8000, true, null, null, .001, null, null,
+                        new TrainerSnapshot.Acquisition(1000, 2, true, measuring));
+                var value = snapshot.withRun(Optional.of(run), Optional.empty());
+                var progress = TrainingDashboardModel.training(value);
+                assertTrue(progress.value().contains("1,000 acquired"));
+                assertTrue(progress.detail().contains("Epoch 2"));
+                assertTrue(progress.detail().contains(measuring ? "final training loss" : "verified replay"));
+                assertTrue(TrainingProgress.format(TrainingDashboardTest.view(value)).contains("Unique training positions acquired: 1000"));
+            }
+            var run = new TrainerSnapshot.RunDetails(config, TrainingSource.SELF_PLAY, BrnSupervision.WDL,
+                    1, 1, "Start", false, 8000, true, null, null, .001, null, null,
+                    new TrainerSnapshot.Acquisition(1000, 1, false));
+            var acquiring = snapshot.withRun(Optional.of(run), Optional.empty());
+            assertTrue(TrainingDashboardModel.positionGenerationActive(TrainingDashboardTest.view(acquiring)));
+            var feed = new com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed();
+            feed.selfPlay(acquiring.generation(), "fixture");
+            feed.start(new com.ohinteractive.seedv6.training.selfplay.HeadlessGame(com.ohinteractive.seedv6.core.Board.startingPosition(), 8), 1, 0);
+            assertTrue(acquiring.withActiveGame(feed.latest()).activeGame().isPresent());
+        });
+    }
+
     @Test void realReadOnlyActionPreviewDistinguishesMutableChangesAndLineageLocksWithoutWriting() throws Exception {
         Path root = temporary.resolve("preview");
         var s = new TrainingSettings(root, 1, 1, 8, 0, 0, 4, 1, 1, 2, 1, 8, 1,

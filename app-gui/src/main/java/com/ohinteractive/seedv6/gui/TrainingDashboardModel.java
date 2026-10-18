@@ -116,7 +116,8 @@ final class TrainingDashboardModel {
     static boolean positionGenerationActive(TrainingController.ViewState view) {
         var s = view.snapshot();
         if (view.loading() || view.phase() != TrainingController.Phase.RUNNING || s == null
-                || s.state() != TrainerSnapshot.State.GENERATING_SELF_PLAY) return false;
+                || s.state() != TrainerSnapshot.State.GENERATING_SELF_PLAY && !(s.state() == TrainerSnapshot.State.TRAINING
+                    && s.run().map(r -> r.acquisition() != null && !r.acquisition().verified()).orElse(false))) return false;
         var source = s.run().map(TrainerSnapshot.RunDetails::source).orElse(view.settings().source());
         return (source == null || !source.corpus() && !source.frozen()) && s.selfPlay().requestedGames() > 0;
     }
@@ -132,6 +133,11 @@ final class TrainingDashboardModel {
 
     static Progress training(TrainerSnapshot s) {
         if (s == null) return new Progress("No optimizer updates", "Samples and loss appear during training", -1);
+        var acquired = s.run().map(TrainerSnapshot.RunDetails::acquisition).orElse(null);
+        if (acquired != null) return new Progress(count(s.generationOptimizerUpdates()) + " updates | " + count(acquired.uniquePositions()) + " acquired",
+                count(s.generationSamplesTrained()) + " training sample visits | Epoch " + acquired.epoch()
+                        + (acquired.measuring() ? " | final training loss" : acquired.verified() ? " | verified replay" : " | acquiring and training"),
+                s.run().map(r -> percent(s.generationSamplesTrained(), r.trainingSampleTarget())).orElse(-1));
         return new Progress(count(s.generationOptimizerUpdates()) + " updates · " + count(s.selfPlay().sampledPositions()) + " samples",
                 count(s.generationSamplesTrained()) + " sample visits",
                 s.run().map(r -> percent(s.generationSamplesTrained(), r.trainingSampleTarget())).orElse(-1));

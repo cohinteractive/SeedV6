@@ -23,60 +23,58 @@ public final class BrnCaptureTraining {
             return Brn2SelfPlayTraining.trainSamples(trainer, samples, config, control, observer, ordinaryTarget);
         if (config.epochs() != 1 || config.minibatchSize() != 1)
             throw new IllegalArgumentException("BRN-2 uses one online pass (epochs=1, minibatch=1).");
-        samples = List.copyOf(samples);
+        samples = SampleStore.copyOf(samples);
         if (samples.isEmpty() || control.cancelled()) return Optional.empty();
-        double[] targets = new double[samples.size()];
-        Relation[] relations = new Relation[samples.size()];
-        var captureRandom = new SplittableRandom(captureSeed);
-        // Freeze in original sample order, including on resume, before the independent shuffle stream.
-        for (int i = 0; i < targets.length; i++) {
+        try (var relations = new CaptureRecords()) {
+            var frozen = SampleStore.mutable();
+            var captureRandom = new SplittableRandom(captureSeed);
+            // Preserve teacher evaluation and capture RNG order before any optimizer update.
+            for (var sample : samples) {
+                if (control.cancelled()) return Optional.empty();
+                long[] parent = sample.board();
+                double nParent = teacherValue(teacher, parent);
+                frozen.add(new TrajectorySampler.Sample(parent, sample.target(), CAMPAIGN.target(sample.target(), nParent)));
+                relations.add(relation(parent, nParent, teacher, captureRandom));
+            }
+            relations.seal();
+            samples = SampleStore.copyOf(frozen);
+            var cursor = control.takeTrainingStart();
+            long initial = cursor.initialStep() < 0 ? trainer.optimizer().step() : cursor.initialStep();
+            if (trainer.optimizer().step() != initial + cursor.updates() || cursor.samples() > samples.size())
+                throw new IllegalArgumentException("Invalid training continuation position.");
+            Metrics before = cursor.initialStep() < 0 ? metrics(trainer, samples, control) : new Metrics(cursor.initialLoss(), Double.NaN, Double.NaN);
             if (control.cancelled()) return Optional.empty();
-            var sample = samples.get(i);
-            long[] parent = sample.board();
-            double nParent = teacherValue(teacher, parent);
-            targets[i] = CAMPAIGN.target(sample.target(), nParent);
-            relations[i] = relation(parent, nParent, teacher, captureRandom);
-        }
-        var cursor = control.takeTrainingStart();
-        long initial = cursor.initialStep() < 0 ? trainer.optimizer().step() : cursor.initialStep();
-        if (trainer.optimizer().step() != initial + cursor.updates() || cursor.samples() > samples.size())
-            throw new IllegalArgumentException("Invalid training continuation position.");
-        Metrics before = cursor.initialStep() < 0 ? metrics(trainer, samples, targets, control) : new Metrics(cursor.initialLoss(), Double.NaN, Double.NaN);
-        if (control.cancelled()) return Optional.empty();
-        int[] order = new int[samples.size()];
-        for (int i = 0; i < order.length; i++) order[i] = i;
-        if (config.shuffle()) {
-            var random = new SplittableRandom(config.shuffleSeed());
-            for (int i = order.length - 1; i > 0; i--) {
-                int other = random.nextInt(i + 1);
-                int swap = order[i]; order[i] = order[other]; order[other] = swap;
+            try (var order = new TrainingOrder(samples.size())) {
+                if (!order.reset(config.shuffle(), new SplittableRandom(config.shuffleSeed()), control)) return Optional.empty();
+                long[] board = new long[Board.MAX_BITBOARDS];
+                long trained = cursor.samples(); double loss = cursor.lossSum();
+                control.recordTraining(trained, trained, initial, before.loss(), loss);
+                try (var prefetched = new PrefetchedSamples(samples, order, (int) trained)) {
+                    for (int position = (int) trained; position < order.length; position++) {
+                        int index = order.get(position);
+                        if (control.cancelled()) break;
+                        var sample = prefetched.next();
+                        sample.copyBoardInto(board);
+                        // Bounded value from THIS position's side to move. Search scores are not targets.
+                        var relation = relations.get(index);
+                        // Existing progress/cursor telemetry continues to report ordinary BASE loss.
+                        loss += relation == null ? trainer.train(board, sample.trainingTarget())
+                                : trainer.trainCapture(board, sample.trainingTarget(), relation.child(), relation.targetDelta(), capture.lambda()).base();
+                        trained++;
+                        control.recordTraining(trained, trained, initial, before.loss(), loss);
+                        observer.accept(new SelfPlayTraining.Progress(trained, trained, initial, trainer.optimizer().step(), loss / trained));
+                    }
+                }
+                if (trained == 0) return Optional.empty();
+                Metrics after = metrics(trainer, samples, control);
+                return Optional.of(new SelfPlayTraining.Statistics(trained, trained, initial, trainer.optimizer().step(),
+                        before.loss(), after.loss(), loss / trained, after.prediction(), after.target(), control.cancelled()));
             }
         }
-        long[] board = new long[Board.MAX_BITBOARDS];
-        long trained = cursor.samples(); double loss = cursor.lossSum();
-        control.recordTraining(trained, trained, initial, before.loss(), loss);
-        for (int position = (int) trained; position < order.length; position++) {
-            int index = order[position];
-            if (control.cancelled()) break;
-            var sample = samples.get(index);
-            sample.copyBoardInto(board);
-            // Bounded value from THIS position's side to move. Search scores are not targets.
-            var relation = relations[index];
-            // Existing progress/cursor telemetry continues to report ordinary BASE loss.
-            loss += relation == null ? trainer.train(board, targets[index])
-                    : trainer.trainCapture(board, targets[index], relation.child(), relation.targetDelta(), capture.lambda()).base();
-            trained++;
-            control.recordTraining(trained, trained, initial, before.loss(), loss);
-            observer.accept(new SelfPlayTraining.Progress(trained, trained, initial, trainer.optimizer().step(), loss / trained));
-        }
-        if (trained == 0) return Optional.empty();
-        Metrics after = metrics(trainer, samples, targets, control);
-        return Optional.of(new SelfPlayTraining.Statistics(trained, trained, initial, trainer.optimizer().step(),
-                before.loss(), after.loss(), loss / trained, after.prediction(), after.target(), control.cancelled()));
     }
 
     private record Metrics(double loss, double prediction, double target) {}
-    private static Metrics metrics(Brn2Trainer trainer, List<TrajectorySampler.Sample> samples, double[] targets,
+    private static Metrics metrics(Brn2Trainer trainer, List<TrajectorySampler.Sample> samples,
                                   SelfPlayControl control) {
         long[] board = new long[Board.MAX_BITBOARDS];
         double loss = 0, prediction = 0, target = 0;
@@ -84,10 +82,61 @@ public final class BrnCaptureTraining {
             var sample = samples.get(i);
             if (control.cancelled()) return new Metrics(Double.NaN, Double.NaN, Double.NaN);
             sample.copyBoardInto(board);
-            double value = trainer.predict(board), difference = value - targets[i];
-            loss += 0.5 * difference * difference; prediction += value; target += targets[i];
+            double value = trainer.predict(board), difference = value - sample.trainingTarget();
+            loss += 0.5 * difference * difference; prediction += value; target += sample.trainingTarget();
         }
         return new Metrics(loss / samples.size(), prediction / samples.size(), target / samples.size());
+    }
+
+    /** Fixed-width frozen capture relations; no dataset-sized target/child arrays. */
+    private static final class CaptureRecords implements AutoCloseable {
+        private final java.nio.file.Path path;
+        private final java.io.RandomAccessFile file;
+        private final java.io.DataOutputStream out;
+        private boolean sealed;
+        CaptureRecords() {
+            try {
+                path = java.nio.file.Files.createTempFile("seedv6-training-", ".captures");
+                try {
+                    var opened = new java.io.RandomAccessFile(path.toFile(), "rw");
+                    try {
+                        out = new java.io.DataOutputStream(new java.io.BufferedOutputStream(new java.io.FileOutputStream(opened.getFD()), 65536));
+                        file = opened;
+                    } catch (Throwable e) {
+                        try { opened.close(); } catch (Throwable cleanup) { e.addSuppressed(cleanup); }
+                        throw e;
+                    }
+                } catch (Throwable e) {
+                    try { java.nio.file.Files.deleteIfExists(path); } catch (Throwable cleanup) { e.addSuppressed(cleanup); }
+                    throw e;
+                }
+            } catch (java.io.IOException e) { throw new java.io.UncheckedIOException(e); }
+        }
+        void add(Relation relation) {
+            try {
+                out.writeBoolean(relation != null);
+                out.writeLong(relation == null ? 0 : relation.move());
+                for (int i = 0; i < 6; i++) out.writeLong(relation == null ? 0 : relation.child()[i]);
+                out.writeDouble(relation == null ? 0 : relation.targetDelta());
+            } catch (java.io.IOException e) { throw new java.io.UncheckedIOException(e); }
+        }
+        void seal() {
+            try { out.flush(); sealed = true; } catch (java.io.IOException e) { throw new java.io.UncheckedIOException(e); }
+        }
+        Relation get(int index) {
+            if (!sealed) throw new IllegalStateException("Unfrozen capture records");
+            try {
+                file.seek((long) index * 65);
+                if (!file.readBoolean()) return null;
+                long move = file.readLong(); long[] child = new long[6];
+                for (int i = 0; i < child.length; i++) child[i] = file.readLong();
+                return new Relation(move, child, file.readDouble());
+            } catch (java.io.IOException e) { throw new java.io.UncheckedIOException(e); }
+        }
+        public void close() {
+            try { try { out.close(); } finally { try { file.close(); } finally { java.nio.file.Files.deleteIfExists(path); } } }
+            catch (java.io.IOException e) { throw new java.io.UncheckedIOException(e); }
+        }
     }
 
     record Relation(long move, long[] child, double targetDelta) {}

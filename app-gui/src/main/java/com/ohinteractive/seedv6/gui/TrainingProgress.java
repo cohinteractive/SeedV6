@@ -45,6 +45,10 @@ final class TrainingProgress {
         text.append("Sampled positions: ").append(g.sampledPositions()).append(" · Updates: ").append(s.generationOptimizerUpdates())
                 .append(" · ").append(c.architecture().optimizerName()).append(" step: ").append(s.optimizerStep())
                 .append("\nMean loss: ").append(number(s.meanTrainingLoss())).append('\n');
+        s.run().map(TrainerSnapshot.RunDetails::acquisition).ifPresent(a -> text.append("Unique training positions acquired: ")
+                .append(a.uniquePositions()).append(" | Training sample visits: ").append(s.generationSamplesTrained())
+                .append(" | Epoch: ").append(a.epoch()).append(" | Dataset verified: ").append(a.verified())
+                .append(a.measuring() ? " | Measuring final training loss" : "").append('\n'));
         var t = s.totals();
         text.append("Run totals — generations: ").append(t.completedGenerations()).append(" · games: ").append(t.selfPlayGames())
                 .append("\nSamples: ").append(t.sampledPositions()).append(" · updates: ").append(t.optimizerUpdates())

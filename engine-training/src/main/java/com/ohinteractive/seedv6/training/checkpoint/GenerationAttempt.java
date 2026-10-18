@@ -7,7 +7,7 @@ import com.ohinteractive.seedv6.training.service.*;
 /** Settings of work after a settled parent; never an acceptance record. */
 public record GenerationAttempt(String parentId, String incumbentId, long generation,
                                 TrainingSource source, String settings, Format format, String notice) {
-    public enum Format { CURRENT, INDEPENDENT, LEGACY_BOOTSTRAP, LEGACY_SELF_PLAY }
+    public enum Format { CURRENT, INDEPENDENT, INCREMENTAL, LEGACY_BOOTSTRAP, LEGACY_SELF_PLAY }
     public static final String FILE = "generation-attempt.bin";
     public GenerationAttempt {
         CheckpointManifest.requireId(parentId); CheckpointManifest.requireId(incumbentId);
@@ -21,19 +21,23 @@ public record GenerationAttempt(String parentId, String incumbentId, long genera
         return new GenerationAttempt(plan.parentId(), plan.incumbentId(), plan.generation(), plan.source(),
                 plan.settings(), Format.LEGACY_BOOTSTRAP, "");
     }
+    public GenerationAttempt incremental() {
+        return new GenerationAttempt(parentId, incumbentId, generation, source, settings, Format.INCREMENTAL, notice);
+    }
+    public boolean independentValidation() { return format == Format.INDEPENDENT || format == Format.INCREMENTAL; }
     public boolean matches(TrainerConfig config, TrainingSource selected) {
         return source.equals(selected)
                 && (format != Format.LEGACY_SELF_PLAY || !config.effectiveCaptureConsistency().enabled())
-                && (format == Format.INDEPENDENT || config.validationMethod(selected) == ValidationMethod.legacy(source))
+                && (independentValidation() || config.validationMethod(selected) == ValidationMethod.legacy(source))
                 && settings.equals(switch (format) {
-            case INDEPENDENT -> config.attemptSettings(generation, selected);
+            case INDEPENDENT, INCREMENTAL -> config.attemptSettings(generation, selected);
             case CURRENT -> config.legacyAttemptSettings(generation, selected);
             case LEGACY_BOOTSTRAP -> config.generationSettings(generation);
             case LEGACY_SELF_PLAY -> Integer.toString(config.selfPlay().depth());
         });
     }
     public ValidationMethod validationMethod() {
-        if (format != Format.INDEPENDENT) return ValidationMethod.legacy(source);
+        if (!independentValidation()) return ValidationMethod.legacy(source);
         String marker = "|validation=";
         int start = settings.indexOf(marker);
         if (start < 0) throw new IllegalArgumentException("Missing validation method in generation settings.");

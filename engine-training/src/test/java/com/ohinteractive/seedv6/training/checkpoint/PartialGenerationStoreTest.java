@@ -37,6 +37,7 @@ class PartialGenerationStoreTest {
         })) {
             store.requireArchitecture(TrainingArchitecture.BRN2);
             assertThrows(IOException.class, () -> store.savePartial(partial, state));
+            try (var staging = Files.list(root.resolve("staging"))) { assertEquals(0, staging.count()); }
             assertArrayEquals(state.encode(), store.resumePartialState(PartialGeneration.inspect(root).orElseThrow()).encode());
         }
         assertArrayEquals(reference, Files.readAllBytes(root.resolve(PartialGeneration.FILE)));

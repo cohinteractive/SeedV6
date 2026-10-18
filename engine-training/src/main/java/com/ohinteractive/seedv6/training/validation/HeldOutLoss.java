@@ -61,7 +61,8 @@ public final class HeldOutLoss {
         if ((completed & 255) != 0 || completed == 0) progress.accept(completed);
         return new Comparison(samples.size(), candidateSum / samples.size(), bestSum / samples.size());
     }
-    private static ToDoubleFunction<long[]> predictor(NetworkModel model) {
+    /** A private evaluator/workspace over immutable weights; safe to own beside a live trainer. */
+    public static ToDoubleFunction<long[]> predictor(NetworkModel model) {
         return switch (model) {
             case NetworkModel.Brn b -> {
                 var scratch = new BrnFeatures(); yield board -> b.model().evaluate(board, scratch);

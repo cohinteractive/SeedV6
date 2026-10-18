@@ -12,6 +12,10 @@ public final class SelfPlayControl {
     public com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed presentation() { return presentation; }
     private volatile boolean cancelled;
     private SearchControl activeSearch;
+    private java.util.function.BiConsumer<Integer, TrajectorySampler.Sample> acquired;
+    /** Acquisition-thread callback over terminal samples; generation still uses its pinned actor. */
+    public void acquiredSamples(java.util.function.BiConsumer<Integer, TrajectorySampler.Sample> observer) { acquired = observer; }
+    void acquired(int game, TrajectorySampler.Sample sample) { if (acquired != null) acquired.accept(game, sample); }
 
     // Trainer-thread owned continuation, inspected/persisted only after synchronous work returns.
     private SelfPlayBatch.Saved savedGames = SelfPlayBatch.Saved.EMPTY;

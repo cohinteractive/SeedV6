@@ -25,7 +25,7 @@ public final class SelfPlayBatch {
     /** Only finished games, with their original indexed seeds and ordered samples. */
     public record Saved(List<GameSummary> games, List<TrajectorySampler.Sample> samples) {
         public static final Saved EMPTY = new Saved(List.of(), List.of());
-        public Saved { games = List.copyOf(games); samples = List.copyOf(samples); }
+        public Saved { games = List.copyOf(games); samples = SampleStore.copyOf(samples); }
     }
 
     private final NetworkModel generationNetwork;
@@ -40,7 +40,7 @@ public final class SelfPlayBatch {
         generationNetwork = network;
         this.config = config;
         this.games = List.copyOf(games);
-        this.samples = List.copyOf(samples);
+        this.samples = SampleStore.copyOf(samples);
         this.cancelled = cancelled;
         this.statistics = statistics;
     }
@@ -131,14 +131,17 @@ public final class SelfPlayBatch {
         Objects.requireNonNull(observer, "observer");
         var saved = control.takeSavedGames();
         List<GameSummary> games = new ArrayList<>(saved.games());
-        List<TrajectorySampler.Sample> samples = new ArrayList<>(saved.samples());
+        List<TrajectorySampler.Sample> samples = SampleStore.mutable();
+        samples.addAll(saved.samples());
         Totals totals = new Totals();
+        int savedOffset = 0;
         for (int i = 0; i < games.size(); i++) {
             var game = games.get(i);
             if (game.gameIndex() != i || game.seed() != SelfPlayRunner.gameSeed(config.seed(), i)
                     || game.termination() == GameTermination.CANCELLED)
                 throw new IllegalArgumentException("Incompatible self-play continuation.");
             totals.add(game);
+            for (int n = 0; n < game.sampledPositions(); n++) control.acquired(game.gameIndex(), saved.samples().get(savedOffset++));
         }
         if (!games.isEmpty()) observer.accept(new Progress(games.getLast(), totals.snapshot(config.games())));
         for (int index = games.size(); index < config.games() && !control.cancelled(); index++) {
@@ -146,6 +149,7 @@ public final class SelfPlayBatch {
             List<TrajectorySampler.Sample> selected = game.termination().completed()
                     ? TrajectorySampler.sample(game, config.maximumSamplesPerGame()) : List.of();
             samples.addAll(selected);
+            for (var sample : selected) control.acquired(index, sample);
             GameSummary summary = new GameSummary(index, SelfPlayRunner.gameSeed(config.seed(), index), game.termination(),
                     game.playedPlies(), game.positions().size(), selected.size(), game.failure().orElse(null));
             games.add(summary);
