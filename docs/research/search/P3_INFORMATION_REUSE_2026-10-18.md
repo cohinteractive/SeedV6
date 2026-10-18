@@ -16,9 +16,12 @@ screen also completed with a positive unconfirmed estimate. The policy 5 versus 
 retention and policy 7 versus 5 nominal-learning filter ablations both completed
 near even, with wide uncertainty. Policy 4 is selected for separate one- and
 four-worker fresh confirmations; both protocols and stage identities are frozen
-and verified. The first one-worker confirmation window is running at
-`raw/confirm-v1-w1-stage1`; its first statistical look requires all 128 pairs.
-Four-worker confirmation play has not started.
+and verified. One-worker confirmation closed **positive** at its first scheduled
+128-pair look: +54.74 Elo, adjusted paired-normal interval [+4.80, +107.04],
+required 2.5-SE interval [+4.75, +107.09]. The bounded sensitivity includes zero.
+All 256 games and sixteen blocks passed audit; no partial look was taken.
+Do not launch its unused second stage or extend this closed protocol.
+The separate four-worker first look is the next admissible work; play has not started.
 The separately planned [deeper lifetime replay](p3-information-reuse-2026-10-18/lifetime-v2.json)
 passed compilation, three focused tests and all 256 request comparisons between
 the four-worker screen and history ablations; its parameterization changes research code only.
@@ -81,8 +84,9 @@ and tournament execution procedure were inspected in their historical context.
 
 - TTable is direct mapped, three long arrays, 32 coherent striped locks. Requested
   64 MiB rounds to 2,097,152 entries / 48 MiB primitive payload; requested 72 MiB
-  would retain that capacity in the existing representation. Actual object/lock
-  overhead and traffic still need measurement. Current replacement may reject a
+  would retain that capacity in the existing representation. Subsequent measurement
+  found 50,335,976 allocated bytes including object/lock overhead; lifetime probes
+  below measure traffic and pressure. Current replacement may reject a
   same-key shallower/equal-depth same/weaker-type update even across generations;
   retained moves can nevertheless guide while their score is inapplicable.
 - ExactSearch ordinary proof requires equal depth/current generation, original
@@ -268,6 +272,13 @@ hits. This addresses the observed scarcity of 552 ordinary stores without relaxi
 proof admission. One retention+hints and two all-feature D6 invocations hit the
 250k cap; their incomplete evidence is preserved, not labelled inferior.
 
+These counts establish information availability, not separate causal contributions
+from ordering versus existing hint protection in LMR and WINDOW. The current
+cumulative EFFORT research factory does not expose the existing LMR/LMP observer
+hooks together. A separately validated observer composition could quantify those
+downstream events; no such wiring or consumer ablation is part of the frozen
+candidate. Whole-candidate costs and clock evidence include all these interactions.
+
 The uninstrumented 520-request cost run completed all D6 requests:
 
 | Policy | Components beyond champion | D6 nodes / champion | D6 elapsed / champion | Mean depth at 100k admissions |
@@ -330,7 +341,7 @@ requests for each binary/configuration. Complete process costs and all requests
 passed audit. No equal-compute inference from equal clocks.
 
 The p4, p7 and w4-p4 champion screens are closed; do not replay or extend them.
-Both history ablations are also closed. Confirmation is the next work unit;
+Both history ablations are also closed. Confirmation is the current work unit;
 its protocol executors call each study's `inputs/tools/tournament-session.py`
 with the validated `build/research/venv/Scripts/python.exe`, `-B`, and `status`
 before resuming `run --plan ... --stop-before <explicit UTC time>`. An existing
@@ -520,20 +531,50 @@ headroom and preserve all valid games across windows. A scheduled-look result
 must be produced by the frozen executor; the new
 [resource summarizer](p3-information-reuse-2026-10-18/summarize_confirmation.py)
 only reproduces that stored verified result and adds audited process/host costs.
-It is syntax checked; actual use awaits the first completed scheduled look.
+It is syntax checked and has reproduced the completed one-worker scheduled look
+exactly, with all sixteen resource receipts verified.
 
 The [one-worker protocol](p3-information-reuse-2026-10-18/confirmation-v1-w1/protocol.json)
 is frozen, SHA-256 `7d8296183ee4c38d85faa81b8855b859e9aa7719ff9c2fc6b5a4592f4a6afbf3`.
 Its [preparation receipt](p3-information-reuse-2026-10-18/confirmation-v1-w1-preparation.json)
 passed both stages' immutable tree, binary, prospective argument, protocol and
 schedule checks. Its fresh 512-opening selection excludes the reserved four-worker
-set as well as all earlier development/diagnostic selections. Execute only
-`raw/confirmation-v1-w1-tools/p3-information-confirmation.py run --protocol ...
---stop-before <explicit UTC deadline> --max-stages 1` for the first scheduled look.
-The current plan is roughly 50-minute admission windows, which leave time for
+set as well as all earlier development/diagnostic selections. The one-worker
+protocol is now closed; preserve its unused second-stage inputs without launching
+them. Use the four-worker frozen executor for the next first look. The operational
+plan remains roughly 50-minute admission windows, which leave time for
 complete 20-minute watchdog blocks and normally finish several shorter blocks.
 Review host headroom at the safe boundaries and resume the same protocol without
-looking at partial outcomes. Then run the four-worker first look separately.
+looking at partial outcomes. Worker domains remain separate.
+
+### Completed one-worker independent confirmation
+
+The [verified scheduled-look summary](p3-information-reuse-2026-10-18/confirmation-v1-w1-look1-summary.json)
+records **113 W / 70 D / 73 L**, 57.8125%, **+54.74 Elo** over 128 fresh pairs
+(256 games). The frozen rule closed **positive** at the first prospective look.
+Normal eligibility held with 37 pairs below half and 61 above. Family contrast 1
+allocated alpha .025, divided across the two prospective looks: adjusted
+paired-normal Elo interval **[+4.80, +107.04]**, required 2.5-SE interval
+**[+4.75, +107.09]**. Adjusted bounded-pair sensitivity was **[-43.78, +163.15]**.
+Thus this is positive under the predeclared approximate paired-normal rule,
+not a distribution-free gain guarantee or a precise estimate of the effect.
+Development games were not pooled, and no operational-window pause became a look.
+
+All sixteen blocks, 256 normal game endings, full-request accounting and frozen
+identities passed audit. Champion/candidate full match JVM CPU was
+3,743.844/3,740.484 seconds (ratio **0.99910**); summed block wall time was
+7,374.301 seconds, about **125 games/hour**. Champion/candidate totals were
+17,459/17,476 requests and 6,447,167,156/6,048,530,919 admissions. Different game
+trajectories prevent interpreting these totals as matched-position efficiency.
+The eight retained host samples and all process-cost receipts are bound by hash
+in the summary. Point sampling cannot reconstruct unsampled desktop contention;
+the brief tooling-repair tests during the first window remain a disclosed limit.
+
+The one-worker second stage contains no started blocks and must remain unused.
+No retuning, protocol extension, champion promotion or production policy change
+follows. The independently frozen four-worker comparison remains necessary for
+its own domain. This result does not establish strength at 2/8/16 workers,
+different clocks, another evaluator or another host/JVM.
 
 ### Historical tool binding repair during confirmation
 
@@ -570,7 +611,8 @@ experiment's `raw/`; the receipt identifies their hashes and paths. Brief Python
 tooling and file-binding checks overlapped the first confirmation window; no Java
 build or benchmark did. Preserve that shared-host limitation and all valid games.
 Mocked stopping-decision messages in the tooling tests are not actual confirmation
-results. The first actual confirmation look remains pending at 128 complete pairs.
+results. The subsequent actual one-worker confirmation is reported separately
+above; the tool-test decisions were not strength evidence.
 
 ### Hint lifetime and pressure
 
@@ -665,7 +707,8 @@ Both selections, numerical decision-value/resource forecasts and verified frozen
 protocols are recorded. The
 freezer preserves both tested runtime trees and the executor dependencies, excludes
 prior opening/diagnostic receipts, and prepares fresh partition-one 128/512-pair
-looks. One-worker stage-one play is underway; four-worker play remains pending.
+looks. One-worker confirmation closed positive at its first scheduled look;
+four-worker play remains pending and is the next admissible action.
 
 - Blocking finalized-version operations only: supported reconciliation authority
   for the inherited local integrity-failure reservation. Independent research may

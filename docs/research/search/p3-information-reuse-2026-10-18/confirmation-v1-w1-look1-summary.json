@@ -1,0 +1,863 @@
+{
+  "protocol": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\confirmation-v1-w1\\protocol.json",
+  "protocolSha256": "7d8296183ee4c38d85faa81b8855b859e9aa7719ff9c2fc6b5a4592f4a6afbf3",
+  "sourceSha256": "36300ce59455951726f5b794b5834c41b2302fbe7a157ade833ba014ff84dd7c",
+  "frozenAssessor": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirmation-v1-w1-tools\\p3-information-confirmation.py",
+  "frozenAssessorSha256": "56622088bd0d34850a686fcaedce2f70f61e78ba2c58b79895aa8cdf1b81cb87",
+  "storedAssessment": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirmation-v1-w1-execution\\assessment-1.json",
+  "storedAssessmentSha256": "1b1ea64d6603eb954c4ffb43e3c0a8da49e0e4b146aa98ca5d07b6d03c74f3a3",
+  "assessment": {
+    "status": "passed",
+    "protocolSha256": "7d8296183ee4c38d85faa81b8855b859e9aa7719ff9c2fc6b5a4592f4a6afbf3",
+    "records": [
+      {
+        "export": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1-export",
+        "completeSha256": "0c8bcb711690d92a64bb74701dd82ba51fe6572149bb73247adbec9251b39107",
+        "wdl": [
+          113,
+          70,
+          73
+        ],
+        "wholeRequestResources": {
+          "baseline": {
+            "requests": 17459,
+            "nodes": 6447167156,
+            "elapsedNanos": 3648783745700
+          },
+          "candidate": {
+            "requests": 17476,
+            "nodes": 6048530919,
+            "elapsedNanos": 3644311309500
+          }
+        }
+      }
+    ],
+    "looks": [
+      {
+        "pairs": 128,
+        "score": 0.578125,
+        "logisticElo": 54.735183963203085,
+        "pentanomial": [
+          13,
+          24,
+          30,
+          32,
+          29
+        ],
+        "pairSampleVariance": 0.10408464566929133,
+        "pairScoreStandardError": 0.028515983137379967,
+        "normalEligible": true,
+        "pairsBelowHalf": 37,
+        "pairsAboveHalf": 61,
+        "minimumPairsEachSideForNormal": 20,
+        "familyAlpha": 0.05,
+        "candidateIndex": 1,
+        "confirmationAlpha": 0.025,
+        "plannedLooks": [
+          128,
+          512
+        ],
+        "perLookAlpha": 0.0125,
+        "normalCriticalValue": 2.4977054744123737,
+        "primaryAdjustedScore": [
+          0.5069004728095151,
+          0.6493495271904849
+        ],
+        "primaryAdjustedElo": [
+          4.795244081190764,
+          107.0416399274138
+        ],
+        "required2p5SeScore": [
+          0.5068350421565501,
+          0.6494149578434499
+        ],
+        "required2p5SeElo": [
+          4.749769627268472,
+          107.09156184300568
+        ],
+        "adjustedHoeffdingScore": [
+          0.4373240848191776,
+          0.7189259151808224
+        ],
+        "adjustedHoeffdingElo": [
+          -43.78197200304942,
+          163.14533346886938
+        ],
+        "decision": "positive",
+        "plugInConditionalPowerAtMaximum": 0.9997094602342698,
+        "futilityPowerThreshold": 0.1,
+        "method": "Prospectively specified cumulative looks per fresh confirmation; family alpha .05 spent as .05/2^candidateIndex, then Bonferroni across looks; paired-normal intervals and required 2.5-SE sensitivity. Approximate inference; adjusted bounded-pair Hoeffding sensitivity. Degenerate or sparse two-sided outcomes use only the bounded interval. No exploratory pooling. Before the maximum look, normal-eligible plug-in conditional power below .10 stops for computational futility, not inferiority or a minimum Elo threshold."
+      }
+    ],
+    "pairTotals": [
+      0.5,
+      0.5,
+      0.5,
+      1.5,
+      1,
+      1,
+      2,
+      2,
+      1,
+      1.5,
+      1,
+      2,
+      1.5,
+      1.5,
+      1,
+      0,
+      0.5,
+      1,
+      1,
+      0,
+      0.5,
+      0,
+      0.5,
+      1.5,
+      0,
+      1.0,
+      0,
+      1.5,
+      2,
+      1.0,
+      2,
+      1,
+      2,
+      1.0,
+      2,
+      0.5,
+      1.5,
+      1.5,
+      0.5,
+      2,
+      1.5,
+      1,
+      1.5,
+      1,
+      0.5,
+      0,
+      2,
+      0,
+      1,
+      1.5,
+      0.5,
+      1.5,
+      1,
+      2,
+      1.5,
+      1,
+      1.0,
+      2,
+      2,
+      1.5,
+      0.5,
+      0.5,
+      1.5,
+      2,
+      2,
+      0.5,
+      2,
+      1.0,
+      1.5,
+      1.5,
+      1.5,
+      0,
+      0.5,
+      0.5,
+      1.5,
+      1,
+      0.5,
+      0.5,
+      1,
+      0,
+      2,
+      1.5,
+      2,
+      0,
+      2,
+      2,
+      2,
+      1,
+      1.5,
+      2,
+      0,
+      2,
+      1.5,
+      2,
+      0.5,
+      0,
+      1,
+      1.5,
+      1.5,
+      0.5,
+      0.5,
+      2,
+      0.5,
+      1.5,
+      2,
+      1.5,
+      2,
+      0.5,
+      1,
+      1.5,
+      1,
+      1,
+      0.5,
+      1.0,
+      1,
+      0,
+      1.5,
+      2,
+      1,
+      1.0,
+      2,
+      0.5,
+      1.5,
+      2,
+      1,
+      1.5,
+      1.5,
+      1.5
+    ],
+    "finalDecision": "positive"
+  },
+  "games": 256,
+  "fullMatchEngineCpuSeconds": {
+    "baseline": 3743.84375,
+    "candidate": 3740.484375
+  },
+  "candidateToBaselineCpu": 0.9991026935886413,
+  "blockWallSeconds": 7374.300961299858,
+  "gamesPerHour": 124.97455756640977,
+  "blocks": [
+    {
+      "stage": 1,
+      "index": 0,
+      "pairs": 8,
+      "wallSeconds": 493.6431758000399,
+      "cpuSeconds": {
+        "baseline": 252.140625,
+        "candidate": 248.640625
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0000.json",
+      "receiptSha256": "b3e36710b56525bd0cd85675548dc626d419616bd42e0a8d6e99c9e35bf518f4"
+    },
+    {
+      "stage": 1,
+      "index": 1,
+      "pairs": 8,
+      "wallSeconds": 468.40065649995813,
+      "cpuSeconds": {
+        "baseline": 236.875,
+        "candidate": 237.03125
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0001.json",
+      "receiptSha256": "a42eb912d2824699742c6312f88ffe126feabe4525d643d6fa4beed8deb00da8"
+    },
+    {
+      "stage": 1,
+      "index": 2,
+      "pairs": 8,
+      "wallSeconds": 472.4380688999663,
+      "cpuSeconds": {
+        "baseline": 241.0,
+        "candidate": 239.40625
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0002.json",
+      "receiptSha256": "60a7bc3cd59fec070399e4ce5432061f99578b1300d085987157f20184cf0c60"
+    },
+    {
+      "stage": 1,
+      "index": 3,
+      "pairs": 8,
+      "wallSeconds": 413.40173819998745,
+      "cpuSeconds": {
+        "baseline": 209.578125,
+        "candidate": 210.234375
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0003.json",
+      "receiptSha256": "17a4e01253f0c647651607ef3641984e2d0c451a694668ac59f85356e7203c4c"
+    },
+    {
+      "stage": 1,
+      "index": 4,
+      "pairs": 8,
+      "wallSeconds": 481.3586434000172,
+      "cpuSeconds": {
+        "baseline": 243.71875,
+        "candidate": 244.96875
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0004.json",
+      "receiptSha256": "b561c3eceb60dbf8f5b4e6d64b5e00d37ef13ed22cb2cdbe9d72f437041b55dd"
+    },
+    {
+      "stage": 1,
+      "index": 5,
+      "pairs": 8,
+      "wallSeconds": 439.43104570003925,
+      "cpuSeconds": {
+        "baseline": 222.734375,
+        "candidate": 222.03125
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0005.json",
+      "receiptSha256": "334bfae58c4d721da274c2e12472537ab5d96bb8f44cae1740bcfd0067bd621d"
+    },
+    {
+      "stage": 1,
+      "index": 6,
+      "pairs": 8,
+      "wallSeconds": 481.42417489999207,
+      "cpuSeconds": {
+        "baseline": 244.53125,
+        "candidate": 243.234375
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0006.json",
+      "receiptSha256": "dec96722b513b40ab13ab28a8800b73f396152d9106e374144260a2755562503"
+    },
+    {
+      "stage": 1,
+      "index": 7,
+      "pairs": 8,
+      "wallSeconds": 483.32530860003317,
+      "cpuSeconds": {
+        "baseline": 243.375,
+        "candidate": 243.625
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0007.json",
+      "receiptSha256": "e1a5f127f8336fb15c97dfb98672122e946aa4d96b8affe98dd37d80a1ece72c"
+    },
+    {
+      "stage": 1,
+      "index": 8,
+      "pairs": 8,
+      "wallSeconds": 441.4915633999626,
+      "cpuSeconds": {
+        "baseline": 224.078125,
+        "candidate": 225.125
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0008.json",
+      "receiptSha256": "bb6864e5665ea498f8647aa4c8f47f9547f0e1763feeab0dc88f1bba90e6f065"
+    },
+    {
+      "stage": 1,
+      "index": 9,
+      "pairs": 8,
+      "wallSeconds": 491.33512389997486,
+      "cpuSeconds": {
+        "baseline": 251.46875,
+        "candidate": 249.625
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0009.json",
+      "receiptSha256": "eae185ea486699b5433c9987ec36082738d3aec3758b49a8a3f310e89a72fd9d"
+    },
+    {
+      "stage": 1,
+      "index": 10,
+      "pairs": 8,
+      "wallSeconds": 483.3460914999596,
+      "cpuSeconds": {
+        "baseline": 245.78125,
+        "candidate": 245.09375
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0010.json",
+      "receiptSha256": "5e36de34f786577b804a3469675e3761b183a52e6ef0c52eb3ca71e2fe27526e"
+    },
+    {
+      "stage": 1,
+      "index": 11,
+      "pairs": 8,
+      "wallSeconds": 465.3409548999625,
+      "cpuSeconds": {
+        "baseline": 237.109375,
+        "candidate": 236.34375
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0011.json",
+      "receiptSha256": "e61630175018508746b33317056adc0dfc9e1ce09d5e1cd501077ee3a653379e"
+    },
+    {
+      "stage": 1,
+      "index": 12,
+      "pairs": 8,
+      "wallSeconds": 449.3697309999843,
+      "cpuSeconds": {
+        "baseline": 227.421875,
+        "candidate": 228.578125
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0012.json",
+      "receiptSha256": "a1bd4857c9c7e0ddc8b9c1a7e9e27f9a06de9ff640c62ff946fb424d14690bb2"
+    },
+    {
+      "stage": 1,
+      "index": 13,
+      "pairs": 8,
+      "wallSeconds": 478.36808260000544,
+      "cpuSeconds": {
+        "baseline": 241.484375,
+        "candidate": 243.890625
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0013.json",
+      "receiptSha256": "77a5bed244960cc5c001dc86d89a0cf34419b92abb8d07be33dad382079e896d"
+    },
+    {
+      "stage": 1,
+      "index": 14,
+      "pairs": 8,
+      "wallSeconds": 446.3370677999919,
+      "cpuSeconds": {
+        "baseline": 227.3125,
+        "candidate": 226.484375
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0014.json",
+      "receiptSha256": "1253d79772e98ba4b1a1a929eb7c98ea7b62fddb847cf944fcbc8648f6d8f9ce"
+    },
+    {
+      "stage": 1,
+      "index": 15,
+      "pairs": 8,
+      "wallSeconds": 385.2895341999829,
+      "cpuSeconds": {
+        "baseline": 195.234375,
+        "candidate": 196.171875
+      },
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\block-0015.json",
+      "receiptSha256": "88939395abc11f7f89c37a8777311066e983869f7acffa01b4d34bc950f7bef2"
+    }
+  ],
+  "hostSamples": [
+    {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1-host-window01-early.json",
+      "sha256": "280d86350a31deb7f35a8b33233dd6ccd1840221305d2e9df9588993bbfbb2e1",
+      "startedUtc": "2026-10-18T13:08:09Z",
+      "elapsedSeconds": 15.0022331,
+      "systemMemoryKiB": {
+        "TotalVisibleMemorySize": 33339348,
+        "FreePhysicalMemory": 18248596
+      },
+      "systemCpuInstant": {
+        "Name": "_Total",
+        "PercentProcessorTime": 21
+      },
+      "pagingInstant": {
+        "PagesInputPersec": 0,
+        "PagesOutputPersec": 0,
+        "PageReadsPersec": 0,
+        "PageWritesPersec": 0
+      },
+      "limits": "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control.",
+      "busyProcesses": [
+        {
+          "name": "SeedV6-GUI",
+          "averageLogicalCpus": 1.0321,
+          "workingSetBytes": 754569216
+        },
+        {
+          "name": "java",
+          "averageLogicalCpus": 0.5103,
+          "workingSetBytes": 219320320
+        },
+        {
+          "name": "java",
+          "averageLogicalCpus": 0.4958,
+          "workingSetBytes": 193134592
+        },
+        {
+          "name": "powershell",
+          "averageLogicalCpus": 0.0104,
+          "workingSetBytes": 93417472
+        },
+        {
+          "name": "ChatGPT",
+          "averageLogicalCpus": 0.0073,
+          "workingSetBytes": 156213248
+        },
+        {
+          "name": "ChatGPT",
+          "averageLogicalCpus": 0.0062,
+          "workingSetBytes": 273256448
+        },
+        {
+          "name": "nvsphelper64",
+          "averageLogicalCpus": 0.0052,
+          "workingSetBytes": 17043456
+        }
+      ]
+    },
+    {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1-host-window01-late.json",
+      "sha256": "95f461f02f426a08f4289f61f27bf80d5ff7b8713811dce88759e16cfbc1405b",
+      "startedUtc": "2026-10-18T13:30:25Z",
+      "elapsedSeconds": 15.0027452,
+      "systemMemoryKiB": {
+        "TotalVisibleMemorySize": 33339348,
+        "FreePhysicalMemory": 18576176
+      },
+      "systemCpuInstant": {
+        "Name": "_Total",
+        "PercentProcessorTime": 31
+      },
+      "pagingInstant": {
+        "PagesInputPersec": 0,
+        "PagesOutputPersec": 0,
+        "PageReadsPersec": 0,
+        "PageWritesPersec": 0
+      },
+      "limits": "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control.",
+      "busyProcesses": [
+        {
+          "name": "SeedV6-GUI",
+          "averageLogicalCpus": 1.0363,
+          "workingSetBytes": 824655872
+        },
+        {
+          "name": "python",
+          "averageLogicalCpus": 0.0864,
+          "workingSetBytes": 48168960
+        },
+        {
+          "name": "Code",
+          "averageLogicalCpus": 0.0448,
+          "workingSetBytes": 335028224
+        },
+        {
+          "name": "powershell",
+          "averageLogicalCpus": 0.0115,
+          "workingSetBytes": 93675520
+        },
+        {
+          "name": "ChatGPT",
+          "averageLogicalCpus": 0.0073,
+          "workingSetBytes": 156184576
+        },
+        {
+          "name": "Code",
+          "averageLogicalCpus": 0.0073,
+          "workingSetBytes": 274702336
+        }
+      ]
+    },
+    {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1-host-window02-late.json",
+      "sha256": "f1311ff95e5ae8feebad65b49d314d13db3f45134cd3dcf948a3c703c4c125f3",
+      "startedUtc": "2026-10-18T14:01:59Z",
+      "elapsedSeconds": 15.0024958,
+      "systemMemoryKiB": {
+        "TotalVisibleMemorySize": 33339348,
+        "FreePhysicalMemory": 18362280
+      },
+      "systemCpuInstant": {
+        "Name": "_Total",
+        "PercentProcessorTime": 19
+      },
+      "pagingInstant": {
+        "PagesInputPersec": 0,
+        "PagesOutputPersec": 0,
+        "PageReadsPersec": 0,
+        "PageWritesPersec": 0
+      },
+      "limits": "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control.",
+      "busyProcesses": [
+        {
+          "name": "SeedV6-GUI",
+          "averageLogicalCpus": 1.0217,
+          "workingSetBytes": 727719936
+        },
+        {
+          "name": "java",
+          "averageLogicalCpus": 0.5207,
+          "workingSetBytes": 186867712
+        },
+        {
+          "name": "java",
+          "averageLogicalCpus": 0.5103,
+          "workingSetBytes": 186728448
+        },
+        {
+          "name": "Code",
+          "averageLogicalCpus": 0.0542,
+          "workingSetBytes": 553275392
+        },
+        {
+          "name": "Code",
+          "averageLogicalCpus": 0.0156,
+          "workingSetBytes": 338350080
+        },
+        {
+          "name": "powershell",
+          "averageLogicalCpus": 0.0115,
+          "workingSetBytes": 93339648
+        },
+        {
+          "name": "nvsphelper64",
+          "averageLogicalCpus": 0.0073,
+          "workingSetBytes": 17043456
+        },
+        {
+          "name": "ChatGPT",
+          "averageLogicalCpus": 0.0052,
+          "workingSetBytes": 156205056
+        },
+        {
+          "name": "NVIDIA Overlay",
+          "averageLogicalCpus": 0.0052,
+          "workingSetBytes": 54808576
+        }
+      ]
+    },
+    {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1-host-window02-mid.json",
+      "sha256": "f5d6b17e99ef55b3326b95e1e6864d4a22f3c8e022f38a16a91b0063c96fa2f1",
+      "startedUtc": "2026-10-18T13:46:03Z",
+      "elapsedSeconds": 15.0027032,
+      "systemMemoryKiB": {
+        "TotalVisibleMemorySize": 33339348,
+        "FreePhysicalMemory": 18326856
+      },
+      "systemCpuInstant": {
+        "Name": "_Total",
+        "PercentProcessorTime": 18
+      },
+      "pagingInstant": {
+        "PagesInputPersec": 0,
+        "PagesOutputPersec": 0,
+        "PageReadsPersec": 0,
+        "PageWritesPersec": 0
+      },
+      "limits": "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control.",
+      "busyProcesses": [
+        {
+          "name": "SeedV6-GUI",
+          "averageLogicalCpus": 1.0394,
+          "workingSetBytes": 710995968
+        },
+        {
+          "name": "python",
+          "averageLogicalCpus": 0.1052,
+          "workingSetBytes": 49164288
+        },
+        {
+          "name": "Code",
+          "averageLogicalCpus": 0.0625,
+          "workingSetBytes": 340566016
+        },
+        {
+          "name": "powershell",
+          "averageLogicalCpus": 0.0104,
+          "workingSetBytes": 93630464
+        },
+        {
+          "name": "Code",
+          "averageLogicalCpus": 0.0094,
+          "workingSetBytes": 268320768
+        },
+        {
+          "name": "ChatGPT",
+          "averageLogicalCpus": 0.0062,
+          "workingSetBytes": 156192768
+        },
+        {
+          "name": "codex",
+          "averageLogicalCpus": 0.0052,
+          "workingSetBytes": 218841088
+        },
+        {
+          "name": "Code",
+          "averageLogicalCpus": 0.0052,
+          "workingSetBytes": 105590784
+        }
+      ]
+    },
+    {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1-host-window03-late.json",
+      "sha256": "42803e6618f289eeb2bdb5f0b927c1e8a4b29901ba12bd1c8fc3f4f776d5ba10",
+      "startedUtc": "2026-10-18T14:35:04Z",
+      "elapsedSeconds": 15.0409277,
+      "systemMemoryKiB": {
+        "TotalVisibleMemorySize": 33339348,
+        "FreePhysicalMemory": 18221384
+      },
+      "systemCpuInstant": {
+        "Name": "_Total",
+        "PercentProcessorTime": 26
+      },
+      "pagingInstant": {
+        "PagesInputPersec": 0,
+        "PagesOutputPersec": 0,
+        "PageReadsPersec": 0,
+        "PageWritesPersec": 0
+      },
+      "limits": "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control.",
+      "busyProcesses": [
+        {
+          "name": "java",
+          "averageLogicalCpus": 0.5371,
+          "workingSetBytes": 189206528
+        },
+        {
+          "name": "java",
+          "averageLogicalCpus": 0.5236,
+          "workingSetBytes": 187314176
+        },
+        {
+          "name": "Code",
+          "averageLogicalCpus": 0.054,
+          "workingSetBytes": 572764160
+        },
+        {
+          "name": "powershell",
+          "averageLogicalCpus": 0.0125,
+          "workingSetBytes": 92876800
+        },
+        {
+          "name": "fastchess",
+          "averageLogicalCpus": 0.0052,
+          "workingSetBytes": 9125888
+        }
+      ]
+    },
+    {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1-host-window03-mid.json",
+      "sha256": "23bd293f2e3d5e8e3d41a31d60c7ec23829877aa8e7806fb93f1755e5cf3a1ec",
+      "startedUtc": "2026-10-18T14:16:36Z",
+      "elapsedSeconds": 15.0394548,
+      "systemMemoryKiB": {
+        "TotalVisibleMemorySize": 33339348,
+        "FreePhysicalMemory": 18254036
+      },
+      "systemCpuInstant": {
+        "Name": "_Total",
+        "PercentProcessorTime": 10
+      },
+      "pagingInstant": {
+        "PagesInputPersec": 0,
+        "PagesOutputPersec": 0,
+        "PageReadsPersec": 0,
+        "PageWritesPersec": 0
+      },
+      "limits": "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control.",
+      "busyProcesses": [
+        {
+          "name": "java",
+          "averageLogicalCpus": 0.5039,
+          "workingSetBytes": 225280000
+        },
+        {
+          "name": "java",
+          "averageLogicalCpus": 0.5018,
+          "workingSetBytes": 225894400
+        },
+        {
+          "name": "Code",
+          "averageLogicalCpus": 0.0571,
+          "workingSetBytes": 543387648
+        },
+        {
+          "name": "powershell",
+          "averageLogicalCpus": 0.0145,
+          "workingSetBytes": 92876800
+        }
+      ]
+    },
+    {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1-host-window04-late.json",
+      "sha256": "1416763dee826f589be14d880bb76ffcc6b39acd43b16c7c8c0d624a85273011",
+      "startedUtc": "2026-10-18T15:08:04Z",
+      "elapsedSeconds": 15.0398607,
+      "systemMemoryKiB": {
+        "TotalVisibleMemorySize": 33339348,
+        "FreePhysicalMemory": 18119920
+      },
+      "systemCpuInstant": {
+        "Name": "_Total",
+        "PercentProcessorTime": 13
+      },
+      "pagingInstant": {
+        "PagesInputPersec": 0,
+        "PagesOutputPersec": 0,
+        "PageReadsPersec": 0,
+        "PageWritesPersec": 0
+      },
+      "limits": "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control.",
+      "busyProcesses": [
+        {
+          "name": "java",
+          "averageLogicalCpus": 0.5236,
+          "workingSetBytes": 221175808
+        },
+        {
+          "name": "java",
+          "averageLogicalCpus": 0.507,
+          "workingSetBytes": 220225536
+        },
+        {
+          "name": "Code",
+          "averageLogicalCpus": 0.0748,
+          "workingSetBytes": 577748992
+        },
+        {
+          "name": "powershell",
+          "averageLogicalCpus": 0.0135,
+          "workingSetBytes": 93007872
+        },
+        {
+          "name": "ChatGPT",
+          "averageLogicalCpus": 0.0052,
+          "workingSetBytes": 156188672
+        }
+      ]
+    },
+    {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1-host-window04-mid.json",
+      "sha256": "9ef5774eb5095ec2048bd3c6ad473e851b58fd24a122915efddebd42f5913a47",
+      "startedUtc": "2026-10-18T14:49:36Z",
+      "elapsedSeconds": 15.0412705,
+      "systemMemoryKiB": {
+        "TotalVisibleMemorySize": 33339348,
+        "FreePhysicalMemory": 18321516
+      },
+      "systemCpuInstant": {
+        "Name": "_Total",
+        "PercentProcessorTime": 31
+      },
+      "pagingInstant": {
+        "PagesInputPersec": 0,
+        "PagesOutputPersec": 0,
+        "PageReadsPersec": 0,
+        "PageWritesPersec": 0
+      },
+      "limits": "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control.",
+      "busyProcesses": [
+        {
+          "name": "python",
+          "averageLogicalCpus": 0.1361,
+          "workingSetBytes": 60268544
+        },
+        {
+          "name": "Code",
+          "averageLogicalCpus": 0.0634,
+          "workingSetBytes": 594399232
+        },
+        {
+          "name": "Code",
+          "averageLogicalCpus": 0.0405,
+          "workingSetBytes": 337715200
+        },
+        {
+          "name": "powershell",
+          "averageLogicalCpus": 0.0125,
+          "workingSetBytes": 93163520
+        },
+        {
+          "name": "ChatGPT",
+          "averageLogicalCpus": 0.0062,
+          "workingSetBytes": 156200960
+        },
+        {
+          "name": "Code",
+          "averageLogicalCpus": 0.0052,
+          "workingSetBytes": 280657920
+        }
+      ]
+    }
+  ],
+  "limits": "The frozen assessor owns inference and the prospective stopping decision. Worker domains are separate. Full match JVM CPU includes startup, warmup, JIT, GC and aborted requests; separate preflight JVMs are excluded. Equal clocks do not imply equal compute. Host point samples cannot reconstruct unsampled contention. A positive statistical decision is not owner acceptance or production adoption."
+}
