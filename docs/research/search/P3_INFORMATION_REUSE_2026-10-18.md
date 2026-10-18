@@ -13,9 +13,10 @@ worker lifecycle checks and hint-lifetime replay passed. Hints alone (policy 4)
 and all three mechanisms (policy 7) completed their 32-pair one-worker clock
 screens with positive but unconfirmed estimates. The separate four-worker hint
 screen also completed with a positive unconfirmed estimate. The policy 5 versus 4
-retention ablation completed near even, with wide uncertainty. The policy 7 versus 5
-nominal-learning filter ablation is running. Assess only complete
-screens; select complete finalist configurations before fresh confirmation.
+retention and policy 7 versus 5 nominal-learning filter ablations both completed
+near even, with wide uncertainty. Policy 4 is selected for separate one- and
+four-worker fresh confirmations; four-worker freezing is complete and one-worker
+freezing is next. No confirmation games have run.
 The separately planned [deeper lifetime replay](p3-information-reuse-2026-10-18/lifetime-v2.json)
 passed compilation, three focused tests and all 256 request comparisons between
 the four-worker screen and history ablations; its parameterization changes research code only.
@@ -298,7 +299,7 @@ Four-worker hints are implemented with existing private ROOT_REUSE histories;
 history retention/filter combinations are explicitly unsupported above one worker.
 Functional four-worker checks do not establish multiworker strength.
 
-## Clock development v1 — champion screens completed, ablations next
+## Clock development v1 — champion screens and ablations completed
 
 Policies 4 and 7 are chosen for complementary decision value: isolate information
 availability, then test an integrated candidate without demanding independent O2
@@ -322,8 +323,8 @@ requests for each binary/configuration. Complete process costs and all requests
 passed audit. No equal-compute inference from equal clocks.
 
 The p4, p7 and w4-p4 champion screens are closed; do not replay or extend them.
-The history ablation is also closed; the active game plan is
-`raw/clock-ablation-v1-labels/plan.json`. Invoke each study's `inputs/tools/tournament-session.py`
+Both history ablations are also closed. Confirmation is the next work unit;
+its protocol executors call each study's `inputs/tools/tournament-session.py`
 with the validated `build/research/venv/Scripts/python.exe`, `-B`, and `status`
 before resuming `run --plan ... --stop-before <explicit UTC time>`. An existing
 controller owns an OS lock; do not start a competing controller. Never prepare
@@ -385,8 +386,8 @@ protocol, schedules and all immutable inputs. Fresh partition-one schedules
 contain 128 then 384 additional pairs; no confirmation games have run. Execute
 only the frozen `raw/confirmation-v1-w4-tools/p3-information-confirmation.py`
 with this protocol, an explicit stop-before window and `--max-stages 1` initially.
-Both direct history ablations precede confirmation. One-worker selection awaits
-those ablations and must use fresh excluded-opening selection of its own.
+Both direct history ablations preceded confirmation. One-worker selection is
+recorded below and requires fresh excluded-opening selection of its own.
 Fresh sampling must also consume
 [the 193 direct diagnostic-root exclusions](p3-information-reuse-2026-10-18/diagnostic-exclusions-v1.selection.json),
 in addition to all prior opening-selection receipts. This includes every observed
@@ -461,10 +462,58 @@ Retention's conditional strength remains **inconclusive**: this small screen
 neither establishes added value nor rejects the mechanism. Similar whole-game
 CPU under equal clocks does not erase the fixed-depth overhead measurements or
 establish equal search quality. Preserve the completed protocol without extension.
-The separately frozen policy 7 versus 5 reverse ablation is now running; its
-result will inform complete one-worker candidate selection. No constituent is
-required to win an independent significance test, and no development result
-qualifies a candidate for production adoption.
+No constituent is required to win an independent significance test, and no
+development result qualifies a candidate for production adoption.
+
+The [completed reverse filter ablation](p3-information-reuse-2026-10-18/clock-ablation-v1-labels-summary.json)
+scored **27 W / 12 D / 25 L** for policy 7 against policy 5, 51.5625%, **+10.86 Elo**,
+descriptive paired-normal 95% interval **[-44.37, +66.65]**, bounded interval
+**[-167.93, +196.18]**. All 64 games ended normally and all four blocks passed
+audit. Candidate/reference full-process CPU ratio was 0.99782; throughput about
+130 games/hour. Host samples saw 44% then 23% total CPU, over 17 GiB free memory,
+and respectively zero and 55 page inputs/second (three page reads/second). Match
+JVMs averaged about one logical CPU combined and retained BelowNormal priority.
+These point samples record variable shared-host activity, not its full history.
+
+The filter's conditional strength is also **inconclusive**. The two small positive
+ablation estimates cannot be added into an inferred champion-relative Elo gain:
+the games and trajectories differ and shared development selection is correlated.
+Keep both complete samples and all raw evidence; neither protocol is extended.
+
+### Complete candidate selection
+
+[One-worker selection and prospective forecast](p3-information-reuse-2026-10-18/confirmation-selection-v1-w1.json)
+chooses **policy 4**, as does the separately frozen four-worker comparison.
+This selects the complete champion-plus-hints configuration, retaining the
+accepted main-history lifetime and ROOT_REUSE private history behavior. Its
+availability mechanism is established, whole-candidate development estimates
+are positive in both measured domains, and observed fixed-depth elapsed cost is
+lower than policy 7 (0.894 versus 0.908 of champion in the one-worker diagnostic).
+It also requires less additional mutable state. Selection remains uncertain and
+is not an acceptance decision.
+
+Policy 7 remains a viable integrated research alternative, and retention/filter
+controls remain available. Their constituent significance is not a promotion
+prerequisite; the present evidence simply does not establish an additional benefit
+that warrants selecting their extra mechanisms for this first confirmation.
+Policy 6 (hints plus filtering without retained history) has mechanism/cost
+diagnostics but no clock evidence; it is **unconfirmed**, not rejected. A broad
+parameter/configuration sweep has lower present decision value than testing
+whether the substantial availability signal replicates on fresh openings.
+Cross-request history learning, richer history families, new retry drivers and
+TT lookup/replacement refinements remain deferred hypotheses, not adopted work
+or claims of ineffectiveness. No broader Frontier objective is activated.
+
+The one-worker first look is forecast at 2.07 match hours, or 2.76 at 25% lower
+throughput, plus preflight/session overhead. The maximum is 8.29 match hours,
+or 11.05 with that slowdown; this is not an automatic continuous-run commitment.
+Use bounded stop-before windows at complete block boundaries, initially with
+`--max-stages 1`. Operational pauses never become statistical looks. Observe
+headroom and preserve all valid games across windows. A scheduled-look result
+must be produced by the frozen executor; the new
+[resource summarizer](p3-information-reuse-2026-10-18/summarize_confirmation.py)
+only reproduces that stored verified result and adds audited process/host costs.
+It is syntax checked; actual use awaits the first completed scheduled look.
 
 ### Hint lifetime and pressure
 
@@ -555,8 +604,8 @@ The [confirmation freezer](p3-information-reuse-2026-10-18/prepare_confirmation.
 created and verified the four-worker protocol above, without launching games.
 The maintained helper now includes the same per-stage checks used for its
 read-only preparation receipt; the already-frozen tool copy is untouched.
-One-worker selection remains pending. Record selection rationale and a numerical decision-value
-and resource forecast in each chosen champion-comparison configuration. The
+One-worker selection and its numerical decision-value/resource forecast are
+recorded; its protocol freezing remains pending. The
 freezer preserves both tested runtime trees and the executor dependencies, excludes
 prior opening/diagnostic receipts, and prepares fresh partition-one 128/512-pair
 looks. The one-worker protocol and all actual confirmation play remain pending.
