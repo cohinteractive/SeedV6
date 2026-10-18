@@ -21,7 +21,9 @@ and verified. One-worker confirmation closed **positive** at its first scheduled
 required 2.5-SE interval [+4.75, +107.09]. The bounded sensitivity includes zero.
 All 256 games and sixteen blocks passed audit; no partial look was taken.
 Do not launch its unused second stage or extend this closed protocol.
-The separate four-worker first look is the next admissible work; play has not started.
+The separate four-worker first look is running at `raw/confirm-v1-w4-stage1`.
+Its first window completed 32/128 pairs with all four blocks audited; the second
+bounded window is active. No partial statistical look was taken or is authorized.
 The separately planned [deeper lifetime replay](p3-information-reuse-2026-10-18/lifetime-v2.json)
 passed compilation, three focused tests and all 256 request comparisons between
 the four-worker screen and history ablations; its parameterization changes research code only.
@@ -401,9 +403,15 @@ is frozen, SHA-256 `c6780bef774ff21aee501dca5a6915192c4c65d9ba29205c6370d4e5b86e
 The [preparation receipt](p3-information-reuse-2026-10-18/confirmation-v1-w4-preparation.json)
 verifies both prospective stage domains, original/candidate runtime trees, copied
 protocol, schedules and all immutable inputs. Fresh partition-one schedules
-contain 128 then 384 additional pairs; no confirmation games have run. Execute
+contain 128 then 384 additional pairs; the first stage is now running. Execute
 only the frozen `raw/confirmation-v1-w4-tools/p3-information-confirmation.py`
 with this protocol, an explicit stop-before window and `--max-stages 1` initially.
+The first confirmation block's direct priority observation is retained at
+`raw/confirm-v1-w4-stage1-priority-window01.json`, SHA-256
+`b15ca81f0a4cff51780904a8f945d617cea045a7132c46a085d22a0f24c79e5d`.
+Both JVMs were BelowNormal; PIDs and creation times match the completed native
+process-lifetime receipt within timestamp conversion precision. No process
+settings were changed by observation.
 Both direct history ablations preceded confirmation. One-worker selection is
 recorded below and requires fresh excluded-opening selection of its own.
 Fresh sampling must also consume
@@ -708,7 +716,8 @@ protocols are recorded. The
 freezer preserves both tested runtime trees and the executor dependencies, excludes
 prior opening/diagnostic receipts, and prepares fresh partition-one 128/512-pair
 looks. One-worker confirmation closed positive at its first scheduled look;
-four-worker play remains pending and is the next admissible action.
+four-worker stage-one play is running. Continue its existing frozen protocol at
+audited block boundaries without partial statistical looks.
 
 - Blocking finalized-version operations only: supported reconciliation authority
   for the inherited local integrity-failure reservation. Independent research may
