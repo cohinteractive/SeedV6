@@ -16,6 +16,8 @@ spec = importlib.util.spec_from_file_location('baseline', Path(__file__).with_na
 b = importlib.util.module_from_spec(spec); spec.loader.exec_module(b)
 spec = importlib.util.spec_from_file_location('process_cost', Path(__file__).with_name('sr024-process-cost.py'))
 c = importlib.util.module_from_spec(spec); spec.loader.exec_module(c)
+spec = importlib.util.spec_from_file_location('owned_process', Path(__file__).with_name('tournament-process.py'))
+owned = importlib.util.module_from_spec(spec); spec.loader.exec_module(owned)
 
 
 def command(args, side):
@@ -74,7 +76,7 @@ def run(args):
               'resourceNote': 'Ryzen 5500 six physical/twelve logical cores; both engines use the same workers, heaps and JVM ergonomic CPU count. CPU count is not affinity. Existing comparable game concurrency is reused.'}
     started = time.monotonic()
     frozen = {str(Path(p).resolve()): b.digest(p) for p in (args.java, args.runner, args.openings, __file__, b.__file__)}
-    frozen.update({str(Path(p).resolve()):b.digest(p) for p in (c.__file__,c.n.__file__)})
+    frozen.update({str(Path(p).resolve()):b.digest(p) for p in (c.__file__,c.n.__file__,owned.__file__)})
     model = Path(args.store) / 'checkpoints' / b.CHECKPOINT
     assert b.digest(model / 'network.brn-pair2') == b.NETWORK_SHA256
     frozen.update({str(p.resolve()): b.digest(p) for p in model.iterdir() if p.is_file()})
@@ -103,18 +105,26 @@ def run(args):
         report['runnerCommand'] = cmd; b.save(out / 'run.json', report)
         match_started = time.monotonic()
         with (out / 'runner.txt').open('w', encoding='utf-8') as log:
-            process = subprocess.Popen(cmd, cwd=out, env=b.clean_environment(), stdout=log, stderr=subprocess.STDOUT)
-            cohort = c.Cohort(process.pid,args.concurrency,out/'process-cost.json')
+            job=owned.OwnedJob();process=None;cohort=None
             try:
+                process = subprocess.Popen(cmd, cwd=out, env=b.clean_environment(), stdout=log,
+                                           stderr=subprocess.STDOUT,creationflags=0x00000004)
+                job.assign(process);job.resume_initial_thread(process)
+                cohort = c.Cohort(process.pid,args.concurrency,out/'process-cost.json')
                 cohort.attach()
                 code = process.wait(timeout=args.timeout)
             except BaseException:
-                if process.poll() is None:
-                    subprocess.run(['taskkill', '/PID', str(process.pid), '/T', '/F'], capture_output=True)
-                    process.wait()
+                # Close only the suspended-before-assignment owned Job. Never
+                # reconstruct cleanup ownership from recycled parent PID edges.
+                job.close()
+                if process is not None and process.poll() is None:
+                    process.kill();process.wait(timeout=10)
+                if cohort is not None:cohort.wait_for_exit()
                 raise
             finally:
-                cohort.close()
+                try:
+                    if cohort is not None:cohort.close()
+                finally:job.close()
         report['matchWallSeconds'] = time.monotonic() - match_started
         report['runnerExitCode'] = code
         report['results'] = b.analyze(out / 'games.pgn', args.openings, args.pairs, require_accounting=True,

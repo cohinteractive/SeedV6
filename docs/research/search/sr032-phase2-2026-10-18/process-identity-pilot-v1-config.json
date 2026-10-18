@@ -1,0 +1,23 @@
+{
+  "adapter": "sr032-match.py",
+  "purpose": "operational",
+  "blockPairs": 2,
+  "blockLimitSeconds": 600,
+  "assessmentPlan": "Four pairs in two complete blocks to verify repaired native process identity, nested owned Job cleanup, and pause/resume. Development openings reused deliberately. No strength assessment or confirmation pooling.",
+  "arguments": {
+    "java": "C:/java/jdk-21/bin/java.exe",
+    "runner": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\tools\\fastchess.exe",
+    "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\build\\sr032\\candidate-v3",
+    "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\build\\sr032\\candidate-v3",
+    "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+    "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr032-phase2-2026-10-18\\development-openings.pgn",
+    "baseline_policy": "off",
+    "candidate_policy": "promotion",
+    "baseline_workers": 4,
+    "candidate_workers": 4,
+    "concurrency": 2,
+    "pairs": 4,
+    "tc": "10+0.1",
+    "seed": 320018
+  }
+}

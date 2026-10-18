@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "purpose": "Intentional operational failure, not strength data",
+  "allFourBoundEnginesExited": true,
+  "unrelatedFixtureUnaffected": true,
+  "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\process-cleanup-fault-v2",
+  "sourceSha256": "ffea7854f32492e28d42e8e1811a7d44388e4709d3bcb41ed0000f084277eac2",
+  "adapterSha256": "b10055ffcbeaf903dfd45359680509e9146673cb3ff637bf91076979e6a67a8f",
+  "observerSha256": "24c8dd11c3335ee90645c7efe54218553dd723a2dc4195eb9c0fb52612d543fa",
+  "nativeOwnerSha256": "d52f10d46a81ff3bac9b064ca98576d41bc5010a47f6e27aaa42d36114073e9f"
+}

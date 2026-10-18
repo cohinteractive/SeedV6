@@ -1,0 +1,48 @@
+{
+  "status": "blocked_or_interrupted",
+  "startedUtc": "2026-10-18T00:17:05.935732+00:00",
+  "scope": "Both first scheduled 128-pair looks only; no automatic second-stage launch",
+  "stages": [
+    {
+      "name": "recapture-w1",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\sr032-confirmation.py",
+        "run",
+        "--protocol",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr032-phase2-2026-10-18\\confirmation-v1\\recapture-w1-protocol.json",
+        "--stop-before",
+        "2026-10-18T17:30:00+13:00",
+        "--max-stages",
+        "1"
+      ],
+      "exitCode": 0,
+      "execution": {
+        "protocolSha256": "1cc584809760fea3546bb8a5b6c7ae308ee4f3496abe7ee2d5aba66edddbcf9c",
+        "status": "closed",
+        "assessmentFiles": [
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\confirm-recapture-w1-v1-assessments\\assessment-1.json"
+        ],
+        "decision": "futility"
+      }
+    },
+    {
+      "name": "promotion-w4",
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\sr032-confirmation.py",
+        "run",
+        "--protocol",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr032-phase2-2026-10-18\\confirmation-v1\\promotion-w4-protocol.json",
+        "--stop-before",
+        "2026-10-18T17:30:00+13:00",
+        "--max-stages",
+        "1"
+      ],
+      "exitCode": 1
+    }
+  ],
+  "failure": "CalledProcessError(1, ['C:\\\\projects\\\\seed\\\\java\\\\seedv6-unified\\\\build\\\\research\\\\venv\\\\Scripts\\\\python.exe', '-B', 'C:\\\\projects\\\\seed\\\\java\\\\seedv6-unified\\\\tools\\\\sr032-confirmation.py', 'run', '--protocol', 'C:\\\\projects\\\\seed\\\\java\\\\seedv6-unified\\\\docs\\\\research\\\\search\\\\sr032-phase2-2026-10-18\\\\confirmation-v1\\\\promotion-w4-protocol.json', '--stop-before', '2026-10-18T17:30:00+13:00', '--max-stages', '1'], None, None)"
+}

@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F052**
+Internal frontier revision: **P2-F053**
 
-Status: **SR-032 Other Tactical/Forced-Line Extensions is the sole owner-selected ACTIVE feature. SR-033 is owner-accepted DEFERRED without adoption and BOTH starting P2-R044/P2-F048 Project Source mirrors are confirmed synchronized. Accepted cumulative production is unchanged; research proceeds under separately evidenced DEFERRED_FINALIZATION.**
+Status: **SR-032 is technically DEFERRED without production adoption by owner direction. No Search feature is ACTIVE and no continuation or successor is authorized. Cumulative production is unchanged; final GPT/owner reconciliation and BOTH Project Source mirror replacements remain outstanding.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -789,7 +789,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-029 | Late-move reductions and re-search | IMPLEMENTED | Confirmed quiet-class-protected scaled LMR over accepted single-worker Pair-2 SR-001. Independent 231/119/162 over 256 pairs, +47.11 Elo, primary approximate 95% lower bound +21.06 and required 2.0-SE lower bound +20.53; Hoeffding sensitivity includes zero. Integrated/bridged with conservative proof suppression, preserved off/static controls and actual-domain accounting. Full alternatives, limits, future implications and owner/GPT mirror handback above. |
 | SR-030 | Check extensions | DEFERRED | Six formulations, 704 development games and two independent 2,048-game confirmations: FORCED -5.09 Elo, adjusted [-21.56,+11.36]; BOUNDARY +9.67, [-6.61,+26.00], all prescribed intervals cross zero. No adoption; plausible modest low-cost BOUNDARY benefit remains unresolved. Preserve unchanged WINDOW production and all controls; both confirmations are closed. Fresh justified evidence with suitable precision, opening coverage, error accounting and GPT/owner selection is required for resumption. |
 | SR-031 | Singular-extension family | PENDING | TT anchors, exclusion-domain proof, policy identity, extension alternatives and probe cost. |
-| SR-032 | Other tactical/forced-line extensions | ACTIVE | Sole owner-selected feature; investigate incremental tactical/forced continuation coverage over cumulative QXRAY/EFFORT1/ROOT_REUSE2..16. Preserve closed neighboring protocols and separate inherited work; see SR-032 activation/research record. |
+| SR-032 | Other tactical/forced-line extensions | DEFERRED | Owner-directed opportunity-cost deferral without adoption. Three formulations across six exploratory contrasts; native RECAPTURE confirmation closed for futility, four-worker PROMOTION interrupted before assessment, later stages unstarted. Preserve default-OFF controls, uncertainty and frozen/partial evidence. No universal inferiority/equivalence claim or automatic continuation; renewed authorization and suitable fresh evidence are required. |
 | SR-033 | Adaptive/hindsight depth feedback | DEFERRED | Two distinct feedback mechanisms, all-worker semantic validation, 256 development and 1,280 fresh confirmation games; MOVE1 closed for futility and CAUTION4 closed inconclusive. No adoption; cumulative QXRAY/EFFORT1/ROOT_REUSE2..16 preserved. Small-gain/context hypotheses remain; fresh justified evidence and suitable resources require renewed GPT/owner selection. See final SR-033 closeout and both-mirror handback. |
 
 ## Unresolved Phase 1 subjects and accepted evidence
@@ -919,6 +919,20 @@ experiment is not an escalation condition. No extra orchestration ledger or
 governance document is needed.
 
 ## Maintenance and initialization state
+
+### SR-032 owner-directed technical deferral — 2026-10-18 local
+
+SR-032 is **DEFERRED without adoption**; no feature is ACTIVE. Completed screens
+and native confirmation establish no accepted gain; the interrupted four-worker
+study has no scheduled strength outcome. The owner ends further substantial
+experimentation partly for opportunity cost, while meaningful uncertainty and
+possible useful formulations/interactions remain. The
+[research record](../docs/research/search/SR032_TACTICAL_EXTENSIONS_PHASE2_2026-10-18.md)
+contains exact coverage, preserved failures/unstarted stages, validation and
+resumption conditions. Production is unchanged and research controls stay OFF.
+No closed/interrupted protocol, successor or Phase 3 work is authorized to start.
+GPT/owner reconciliation and BOTH final mirror replacements/synchronization
+remain separate from technical closeout.
 
 ### SR-032 native confirmation closed; four-worker confirmation underway — 2026-10-18 local
 
@@ -1647,3 +1661,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-F050 | Record validated default-OFF SR-032 boundary controls, all-worker/proof evidence, diagnostic economics and prospective bounded development; retain sole ACTIVE feature and unchanged production. |
 | P2-F051 | Record completed SR-032 development, shared-host limitation and selected frozen independent worker-domain confirmations with measured resource forecasts; retain sole ACTIVE and unchanged production. |
 | P2-F052 | Record native RECAPTURE confirmation closed for computational futility, separate four-worker PROMOTION first look underway and owner-confirmed resource boundary; retain sole ACTIVE, uncertainty and unchanged production. |
+| P2-F053 | Close SR-032 as owner-directed DEFERRED without adoption; preserve completed, interrupted and unstarted evidence, plausible benefits and default-OFF controls, with no ACTIVE successor or automatic continuation and both final mirrors handed back. |

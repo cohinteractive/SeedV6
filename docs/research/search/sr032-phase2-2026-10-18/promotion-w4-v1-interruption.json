@@ -1,0 +1,27 @@
+{
+  "classification": "Operational process-identity failure; no statistical assessment",
+  "mechanism": "Stale ParentProcessId points to reused runner PID; read-only observer wrongly asserted every reported child was a current Java engine.",
+  "runnerPid": 35696,
+  "unrelatedProcessObservedAfterFailure": {
+    "ProcessId": 25232,
+    "ParentProcessId": 35696,
+    "Name": "AdobeCollabSync.exe",
+    "CreatedUtc": "2026-10-16T20:08:22.8094500Z"
+  },
+  "completedPairs": 16,
+  "failedBlock": 1,
+  "failedBlockPgnBytes": 0,
+  "status": "Interrupted protocol preserved; no replay or export. No inference from partial data.",
+  "priorProtocol": "confirmation-v1/promotion-w4-protocol.json",
+  "freshStudyRationale": "Same frozen promotion candidate remains justified by development. Repair/test observer and owned cleanup first; then fresh independent openings and a new contrast alpha allocation, without pooling or replaying this study.",
+  "files": {
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\confirm-promotion-w4-v1-stage1\\block-0000.json": "c96b7ccbd695212db958f2b838e1dd6d3fa1e347d8f9e755df88185c6bbe9946",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\confirm-promotion-w4-v1-stage1\\block-0001.started.json": "826097fcad2f40d78e20cdb69c9a3777292f4b424196db8ed86945e5a30989e3",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\confirm-promotion-w4-v1-stage1\\block-0001.worker.txt": "5807abc58bc9b56bc6945d32f5dc335f5a47df731a05d89682704bb60aece5ee",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\confirm-promotion-w4-v1-stage1\\block-0001\\run.json": "e3b8bfbf55ca1639a62bf9c65a4c8691e227c3c60cc90ea1f7c3105574ee7847",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\confirm-promotion-w4-v1-stage1\\block-0001\\process-cost.json": "d5163dfaf5c6706860ebc6adb04e3ba3f168761f1836f88ac7f6994de7c3e669",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\confirm-promotion-w4-v1-stage1\\block-0001\\games.pgn": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\confirm-promotion-w4-v1-stage1\\sessions\\20261018T005028694191.json": "ba2bdc00aa382ddee0f7bc355b0b422a287b31aacc6de76cf306dcd7ec62f552",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\confirmation-first-looks-v1.json": "ba21c85edc4154ebb3c1ecf0f834434a1666f018d9f68b9e20a1ac58aa798ce8"
+  }
+}

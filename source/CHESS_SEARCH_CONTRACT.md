@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R048**
+Internal revision: **P2-R049**
 
-Status: **SR-032 Other Tactical/Forced-Line Extensions is the sole owner-selected ACTIVE feature. SR-033 is owner-accepted DEFERRED without adoption and BOTH starting P2-R044/P2-F048 Project Source mirrors are confirmed synchronized. Accepted cumulative production is unchanged; research proceeds under separately evidenced DEFERRED_FINALIZATION.**
+Status: **SR-032 is technically DEFERRED without production adoption by owner direction. No Search feature is ACTIVE and no continuation or successor is authorized. Cumulative production is unchanged; final GPT/owner reconciliation and BOTH Project Source mirror replacements remain outstanding.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -1063,6 +1063,22 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
+### SR-032 owner-directed technical deferral — 2026-10-18 local
+
+SR-032 is **DEFERRED without adoption**, partly for research opportunity cost.
+Three formulations produced six inconclusive exploratory worker-domain contrasts;
+native RECAPTURE closed its 128-pair confirmation for computational futility.
+Four-worker PROMOTION was interrupted after one complete block, with no scheduled
+assessment; later stages remain unstarted. No positive acceptance criterion was
+met. The [research record](../docs/research/search/SR032_TACTICAL_EXTENSIONS_PHASE2_2026-10-18.md)
+preserves exact outcomes, uncertainty, validated default-OFF controls, process
+repair, frozen/partial evidence and resource limits. Cumulative production and
+binding correctness remain unchanged. Possible benefits and interactions remain
+unresolved; no universal negative claim follows. Further research requires renewed
+authorization and appropriate fresh evidence, not automatic protocol continuation.
+No feature or Phase 3 work is activated. BOTH final mirrors require owner
+replacement and explicit synchronization after GPT/owner reconciliation.
+
 ### SR-032 native confirmation closed; four-worker confirmation underway — 2026-10-18 local
 
 RECAPTURE/native1 completed its independent 128-pair look at -4.07 Elo,
@@ -1773,3 +1789,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-R046 | Record validated default-OFF SR-032 boundary controls, credit/proof/worker invariants, mixed diagnostic decisions and costs, and prospective bounded development comparisons; preserve ACTIVE and unchanged production. |
 | P2-R047 | Record all six completed SR-032 development contrasts, shared-host limitation, selected native/four-worker finalists and fresh frozen 128/512-pair confirmation designs/resource forecasts; retain ACTIVE without adoption. |
 | P2-R048 | Record native RECAPTURE confirmation closed for prospective computational futility, separate four-worker PROMOTION first look underway, and owner-confirmed host/window conditions; preserve uncertainty, ACTIVE state and unchanged production. |
+| P2-R049 | Close SR-032 technically as owner-directed DEFERRED without adoption; distinguish completed native futility evidence, interrupted four-worker confirmation and unstarted stages, preserve uncertainty/default-OFF controls, and hand back both final mirrors with no authorized continuation or successor. |

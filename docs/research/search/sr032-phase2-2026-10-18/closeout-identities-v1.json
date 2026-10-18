@@ -1,0 +1,230 @@
+{
+  "observedUtc": "2026-10-18T02:09:03.977237+00:00",
+  "disposition": "Owner-directed technical DEFERRED without production adoption",
+  "authority": "Owner closeout supersedes previous continuation/window. No further SR032 experiment, successor or Phase3 work is authorized.",
+  "preCloseoutHead": "694d3b9dd5741a911e1528efa3b4633b2e4f33c5",
+  "canonicalRevisions": {
+    "closeoutStart": [
+      "P2-R048",
+      "P2-F052"
+    ],
+    "final": [
+      "P2-R049",
+      "P2-F053"
+    ],
+    "featureStart": [
+      "P2-R044",
+      "P2-F048"
+    ]
+  },
+  "production": {
+    "configuration": "Pair2 QXRAY/quiet LMR/WINDOW, native EFFORT1 and ROOT_REUSE2..16, default1; SR032 explicit/default OFF",
+    "factoryMatchesPreSr032": true,
+    "candidateSourceFilesVerified": 118,
+    "runtimeFilesVerified": 202,
+    "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "modelVerification": "Fixed generation32 checkpoint and runtime reverified by completed-stage status/assessment audit; no evaluator change."
+  },
+  "experiments": {
+    "formulations": [
+      "RECAPTURE",
+      "PROMOTION",
+      "UNIQUE"
+    ],
+    "development": [
+      {
+        "name": "recapture-w1",
+        "pairs": 32,
+        "games": 64,
+        "completePath": "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\development-v1\\recapture-w1\\export\\complete.json",
+        "completeSha256": "b9435a7972bc434dc78024cc65206e4bb3828cc066d5db5c144f7da62d5082db",
+        "wdl": [
+          26,
+          16,
+          22
+        ],
+        "elo": 21.74306492903707,
+        "exploratoryInterval": [
+          -62.331887116453956,
+          108.49541584590447
+        ]
+      },
+      {
+        "name": "promotion-w1",
+        "pairs": 32,
+        "games": 64,
+        "completePath": "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\development-v1\\promotion-w1\\export\\complete.json",
+        "completeSha256": "52597f82436aef355e60723bb954c38a5b41509a2a2635ab88b2850e2923aaf6",
+        "wdl": [
+          28,
+          10,
+          26
+        ],
+        "elo": 10.860898417445911,
+        "exploratoryInterval": [
+          -46.492929338018435,
+          68.81820088335132
+        ]
+      },
+      {
+        "name": "unique-w1",
+        "pairs": 32,
+        "games": 64,
+        "completePath": "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\development-v1\\unique-w1\\export\\complete.json",
+        "completeSha256": "da41cee92e671116f9ae8855e437c616ff3c7ea9ae73a011448900f6cf4bc4f4",
+        "wdl": [
+          25,
+          10,
+          29
+        ],
+        "elo": -21.74306492903708,
+        "exploratoryInterval": [
+          -98.79906857494984,
+          53.201885226812585
+        ]
+      },
+      {
+        "name": "recapture-w4",
+        "pairs": 32,
+        "games": 64,
+        "completePath": "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\development-v1\\recapture-w4\\export\\complete.json",
+        "completeSha256": "8637f230d486c513e0cb89372c28fd45f0ed3522b8ee564dc6571acb9ddb5002",
+        "wdl": [
+          25,
+          14,
+          25
+        ],
+        "elo": 0.0,
+        "exploratoryInterval": [
+          -61.79561571015113,
+          61.79561571015112
+        ]
+      },
+      {
+        "name": "promotion-w4",
+        "pairs": 32,
+        "games": 64,
+        "completePath": "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\development-v1\\promotion-w4\\export\\complete.json",
+        "completeSha256": "9cca166a3325d92e87bd05f17440fbba2122d877d8ac9a364b4b848e2bddf0ba",
+        "wdl": [
+          30,
+          11,
+          23
+        ],
+        "elo": 38.153397218633565,
+        "exploratoryInterval": [
+          -31.700984332671233,
+          111.26910805378607
+        ]
+      },
+      {
+        "name": "unique-w4",
+        "pairs": 32,
+        "games": 64,
+        "completePath": "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\development-v1\\unique-w4\\export\\complete.json",
+        "completeSha256": "bb56faf896dbadf5c6973008d47c337551e04094af80c802a1daa5cffe464deb",
+        "wdl": [
+          28,
+          13,
+          23
+        ],
+        "elo": 27.198831638044453,
+        "exploratoryInterval": [
+          -30.359215036793465,
+          86.30118075729662
+        ]
+      }
+    ],
+    "nativeConfirmation": {
+      "pairs": 128,
+      "decision": "closed_futility",
+      "wdl": [
+        98,
+        57,
+        101
+      ],
+      "elo": -4.071697162173555,
+      "adjustedInterval": [
+        -52.956592746096085,
+        44.65146428340828
+      ],
+      "assessmentReplayIdentical": true,
+      "stage2": "unstarted, ineligible after closed decision"
+    },
+    "fourWorkerConfirmation": {
+      "status": "operationally interrupted; administratively discontinued by owner, no inferential outcome",
+      "completedPairs": 16,
+      "failedBlock": 1,
+      "failedBlockPgnBytes": 0,
+      "assessmentExists": false,
+      "stage2": "unstarted, no continuation authorized",
+      "partialDataPooled": false
+    },
+    "replacementConfirmation": "not prepared or started; not authorized",
+    "operationalPilot": {
+      "pairs": 4,
+      "games": 8,
+      "status": "complete before closeout; pause/resume audited, no strength inference"
+    }
+  },
+  "closeoutValidation": {
+    "identityTests": {
+      "passed": 5,
+      "failures": 0
+    },
+    "nativeScheduledAssessment": "reproduced exactly; no new games/look",
+    "development": "all six existing export PGN/audit hashes, WDL and pair totals agree",
+    "priorValidationReused": "95 distinct focused/broad JUnit; 61 core + 13 UCI; all-worker lifecycle, independent evaluator/TT audits and production bridges. Unchanged Search sources. Prior 23 session tests, native ownership fault and operational pilot validate retained tooling repair.",
+    "skipped": "No new matches/benchmarks, broad suites, GUI/mobile/training or release/deployment validation."
+  },
+  "inheritedFiles": {
+    "count": 48,
+    "allBootstrapHashesUnchanged": true
+  },
+  "phase1Archives": {
+    "docs/search-phase1/CHESS_SEARCH_CONTRACT.md": "9f820c2e9efd366b179902d3fc14bdd8f88e6ae793356aded6b6119f73e8401b",
+    "docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md": "ead3743400b1dc513e02ad1c776b39db1486e8800c947cece9e20ba199e8fc1a"
+  },
+  "version": {
+    "state": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 35
+    },
+    "begin": "blocked: IntegrityFailure: Nested repositories are unsupported.",
+    "newToken": null,
+    "verifiedBump": false,
+    "scope": "Authorized DEFERRED_FINALIZATION retained; no repair/manual compensation"
+  },
+  "journalPresent": false,
+  "retention": "Frozen builds/inputs and raw/failed/partial evidence retained locally under ignored paths. No required cleanup or raw-output staging.",
+  "toolHashes": {
+    "tools/sr024-process-cost.py": "24c8dd11c3335ee90645c7efe54218553dd723a2dc4195eb9c0fb52612d543fa",
+    "tools/sr032-match.py": "b10055ffcbeaf903dfd45359680509e9146673cb3ff637bf91076979e6a67a8f",
+    "tools/test_sr024_process_cost.py": "3ac8088828516663fd307e2ad0c8856c7a05f7936c43da484a62ef6cb4021e73",
+    "tools/verify-sr032-process-ownership.py": "ffea7854f32492e28d42e8e1811a7d44388e4709d3bcb41ed0000f084277eac2"
+  },
+  "evidenceHashes": {
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\candidate-v3-identities.json": "c7ce1104641820d131042e9bfc3b37b6a6f17a6fd22318fc15e7c983427c1ed2",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\candidate-validation-v3.json": "eb4be32dc4e566221823e7abf3b709a784f0fb505c1fcbf9006ef72f8c214470",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\development-results-v1.json": "479c83620ef64aba7eaa64e7cc0c8f846c71cead4f99b8a934ec7c2eec70a668",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\recapture-w1-confirmation-v1-summary.json": "6e13d3e49240c161d32d58d25b94482e4ac35cb32cdea7d191f7c01d6cdd1a76",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\confirmation-first-looks-v1.json": "ba21c85edc4154ebb3c1ecf0f834434a1666f018d9f68b9e20a1ac58aa798ce8",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\promotion-w4-v1-interruption.json": "8c3a9e39432edf8cd2719b8fb8217ccc81a823e36df242db5b08898c15f35420",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\process-identity-pilot-v2-summary.json": "dd5ca08fa729228e42725c656388bf3400ff6d38f9573716a5e564405c73d6c3",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\process-ownership-fault-v2-summary.json": "fd9b29652949a6c151c9ba3096a011ef16325dc20452cf050ee67c3335e15b2d",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\confirmation-v1\\recapture-w1-protocol.json": "1cc584809760fea3546bb8a5b6c7ae308ee4f3496abe7ee2d5aba66edddbcf9c",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\confirmation-v1\\promotion-w4-protocol.json": "063ec3e73c33800241f915f206999e27fe3d6f472250080869804f9508f9cb3f",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\closeout-process-identity-tests.log": "73bbb58a098284991eddd7fda25d2d2b65bf462daecf61efb1f7d43ca941934f",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\closeout-native-assessment-v1.json": "8d84154605070c708482f9eff7b5fd06815343b7a5da0e01f3f2753cab8f90c4",
+    "docs\\research\\search\\sr032-phase2-2026-10-18\\raw\\session-regression-v2.log": "bdcff37b2e7647ceddec10738a0dafcf8a0df5a0f275d4adf71d834a6fddec94"
+  },
+  "processVerification": {
+    "matchingOwnedProcesses": [],
+    "pilotExecutorExitCode": 0,
+    "completedPilotBlocksReportZeroOwnedProcesses": true,
+    "newExperimentsLaunchedAtCloseout": false
+  },
+  "humanActions": "GPT/owner reconciliation and replacement/explicit synchronization of BOTH final Project Source mirrors block a successor launch; no cleanup action required. No acceptance/synchronization/release/deployment claimed."
+}

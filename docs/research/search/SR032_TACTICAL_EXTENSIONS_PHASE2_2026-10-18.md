@@ -1,8 +1,109 @@
 # SR-032 Other Tactical/Forced-Line Extensions — Phase 2
 
-Status: **ACTIVE**, owner-selected 18 October 2026 (Pacific/Auckland).
+Status: **TECHNICALLY DEFERRED WITHOUT PRODUCTION ADOPTION**, owner-directed
+closeout 18 October 2026 (Pacific/Auckland).
 This is the feature investigation record under the existing Search Contract and
 Frontier, not a separate governing contract. No successor is selected.
+
+## Owner-directed technical closeout
+
+The owner ends this investigation because the evidence does not sufficiently
+justify further substantial computation now, partly on research opportunity-cost
+grounds. **Further SR-032 investigation is not authorized.** This supersedes all
+earlier ACTIVE, resume, window and experiment-launch instructions below; those
+sections preserve historical checkpoints. No completed valid confirmation meets
+its frozen positive acceptance criterion. Deferral is not a finding of universal
+inferiority, equivalence or absence of possible benefit.
+
+Coverage is **three formulations in two worker domains**, hence six exploratory
+comparisons, rather than six distinct formulations: RECAPTURE, PROMOTION and
+factual unchecked UNIQUE continuation, each adding one boundary main ply with a
+single path-local credit. Six fixed 32-pair screens completed **384 normal games**;
+every exploratory interval includes zero. The table and diagnostics below retain
+the positive, negative and inconclusive findings without pooling worker domains.
+
+| Experiment | Final state at closeout |
+| --- | --- |
+| Six development contrasts | Complete and audited; no adoption inference. |
+| RECAPTURE/native1 independent confirmation | Complete at 128 pairs, 98/57/101 W/D/L, -4.07 Elo, adjusted [-52.96,+44.65]; CLOSED for prospective computational futility. |
+| RECAPTURE/native1 prepared second stage | 384 pairs unstarted and ineligible after the closed decision. |
+| PROMOTION/ROOT_REUSE4 independent first stage | Interrupted operationally after one verified 16-pair block. The next block started but failed; its PGN is empty. No 128-pair assessment or confirmation outcome exists. No replay or partial-data pooling. |
+| PROMOTION/ROOT_REUSE4 prepared second stage | 384 pairs unstarted; no continuation authorized. |
+| Replacement promotion confirmation discussed before the pause | Not prepared or started; no replacement protocol exists and none is authorized. |
+| Process-identity operational pilot | Four pairs/eight games complete, with verified two-block pause/resume and no strength assessment. |
+
+At 15:04 NZDT, process inspection found no SR-032-owned experiment still running;
+the previously launched pilot had completed at 14:05:18 NZDT. Its execution
+session returned exit zero, and both block receipts report zero owned processes
+remaining. No new tournament, benchmark or candidate was launched for closeout.
+
+### Interrupted confirmation and retained tooling repair
+
+The four-worker failure was an accounting defect: Windows exposed an older Adobe
+process through a reused Fastchess parent PID, and the observer treated that stale
+relationship as an unexpected engine child. Adobe remained running afterward.
+`promotion-w4-v1-interruption.json` binds the original logs, empty failed-block
+PGN and completed-block receipt. Neither frozen protocol nor frozen input copy
+was changed, and no incomplete stage was exported or assessed.
+
+The already-developed repair is retained: `sr024-process-cost.py` binds CIM rows
+to native creation times and excludes proven earlier parent-PID lifetimes while
+retaining strict current-child checks. The SR-032 adapter uses the existing
+suspended-launch Windows Job mechanism and retained-handle draining for owned
+cleanup. Five identity tests, the existing 23 session tests, a deliberate native
+fault with four bound engines, and the eight-game operational pilot passed.
+The fault left an unrelated test process unaffected. An initial fault-test
+expectation about forced-exit codes and a pilot preparation opening-count mismatch
+failed; their evidence is preserved. Corrected checks verify failed match status,
+actual engine exit and exact input count, without changing any Search candidate.
+
+### Validation, preservation and remaining uncertainty
+
+Closeout reran the five identity tests and reproduced the stored native scheduled
+assessment exactly, including frozen inputs, complete export and all audits.
+All 118 candidate-v3 source hashes and 202 runtime hashes match. Earlier Search
+validation is reused: 48 focused plus 54 broader JUnit tests (seven overlap),
+61 core and 13 UCI tests, 672 real-model integrity searches with 4,085,204 evaluator
+checks and 93 independent TT-proof audits, and functional/lifecycle checks at
+workers 1..16. Production OFF bridges and independent reference controls remain
+valid for the unchanged Search sources. The bounded operational repair validation
+above is retained; no broad suite or playing-strength campaign was repeated at
+closeout. GUI, mobile, full training and release/deployment checks were deliberately
+omitted because their routing and implementation were not changed.
+
+Accepted cumulative Pair-2 production remains QXRAY + quiet LMR + WINDOW,
+native EFFORT at one worker and ROOT_REUSE at workers 2..16, default one worker.
+SR-032 controls remain explicit, experimental and default OFF. The fixed generation
+32 model, mapping, HCE and independent exact/static/unpruned controls are preserved.
+No new production feature is adopted. Diagnostic recapture cost and mixed deeper
+decisions, sparse promotion/unique opportunities, wide strength intervals and the
+development IDE-contention caveat remain material limitations. The interrupted
+four-worker study supplies no independent strength conclusion.
+
+Modest gains, other tactical/quiet-response horizons, credit policies and useful
+interactions with TT/history/evaluator context remain plausible, unestablished
+hypotheses. Reconsideration requires renewed GPT/owner authorization, a justified
+scope and resource plan, preserved historical evidence, and a fresh prospective
+confirmation where warranted; it cannot silently extend a closed or interrupted
+protocol. The owner's intended Phase 3 direction explains the opportunity cost
+only. No Phase 3 design, files, successor selection or Bagatur work is performed.
+
+`closeout-identities-v1.json` binds the final evidence and validation checks.
+Frozen builds, raw games, failed/partial evidence and diagnostics are intentionally
+retained locally under `build/sr032/` and this experiment's ignored `raw/`; reports,
+manifests, tools and frozen opening inputs are tracked. No disposable-artifact
+deletion or manual cleanup is required. All 48 inherited training/GUI file hashes
+still match bootstrap. Root journal remains absent. Local version begin again
+reports the inherited integrity failure with no new token; separately authorized
+DEFERRED_FINALIZATION continues, build 35 is unchanged, and no bump is claimed.
+
+Technical closeout updates Contract **P2-R048 -> P2-R049** and Frontier
+**P2-F052 -> P2-F053** (whole SR-032 feature: P2-R044 -> P2-R049 and
+P2-F048 -> P2-F053). GPT/owner reconciliation and replacement plus explicit
+synchronization of BOTH final Project Source mirrors remain blocking for any
+successor launch, not for this completed technical closeout. No acceptance,
+synchronization, release or deployment is claimed. No further SR-032 work is
+automatically authorized.
 
 ## Bootstrap and authority
 
