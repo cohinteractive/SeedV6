@@ -1,0 +1,147 @@
+{
+  "id": "P3-O1O2-LIFETIME-v2",
+  "sourceSha256": "d6e56e643155974dd068ee74f80a01fb7a5e130662bd0364185e877c1bbf353f",
+  "planSha256": "f5948a474191bfbc18890f019aa4a71384a61801249acefaeedc5eb4bc3f4d2b",
+  "manifestSha256": "4129dd51256f194aede349aaa48145730162159bc5c1e75ce23ed4e9a1941eb8",
+  "executionSha256": "d235df2efb644cf7828a36a2f42fa0233c2708fd0986306ac0ce7a288d3a3efb",
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\lifetime-v2.jsonl",
+  "rawSha256": "be07d9672a02ea875b9ebd35957c0d695fc8b4075911767a9348ec92c5f6dde8",
+  "status": "passed; every plain/observed invocation matched, including capped invocations",
+  "observations": 256,
+  "configs": [
+    {
+      "policy": 4,
+      "requestedMiB": 64,
+      "entries": 2097152,
+      "requests": 64,
+      "completedDepthHistogram": {
+        "6": 7,
+        "7": 39,
+        "8": 18
+      },
+      "incompleteRequestedDepth": 46,
+      "recursiveNodes": 25885823,
+      "counters": {
+        "probes": 4671210,
+        "hits": 1777537,
+        "currentHits": 1582859,
+        "olderHits": 194678,
+        "proofBlocked": 11628,
+        "deeperBlocked": 96484,
+        "emptyWrites": 2644228,
+        "sameKeyWrites": 1686038,
+        "collisionWrites": 236698,
+        "proofSaveAttempts": 9849
+      },
+      "hitAges": {
+        "0": 1582859,
+        "1": 194008,
+        "2": 666,
+        "3": 4
+      },
+      "olderHitFraction": 0.10952120827864624,
+      "maximumHintOccupancyFraction": 0.1745758056640625,
+      "maximumProofOccupancyFraction": 0.0007953643798828125
+    },
+    {
+      "policy": 4,
+      "requestedMiB": 1,
+      "entries": 32768,
+      "requests": 64,
+      "completedDepthHistogram": {
+        "6": 7,
+        "7": 42,
+        "8": 15
+      },
+      "incompleteRequestedDepth": 49,
+      "recursiveNodes": 26298879,
+      "counters": {
+        "probes": 4764114,
+        "hits": 1204314,
+        "currentHits": 1133032,
+        "olderHits": 71282,
+        "proofBlocked": 62722,
+        "deeperBlocked": 719134,
+        "emptyWrites": 262040,
+        "sameKeyWrites": 1128184,
+        "collisionWrites": 2595441,
+        "proofSaveAttempts": 9974
+      },
+      "hitAges": {
+        "0": 1133032,
+        "1": 71197,
+        "2": 85
+      },
+      "olderHitFraction": 0.05918888263359888,
+      "maximumHintOccupancyFraction": 0.999664306640625,
+      "maximumProofOccupancyFraction": 0.051666259765625
+    },
+    {
+      "policy": 7,
+      "requestedMiB": 64,
+      "entries": 2097152,
+      "requests": 64,
+      "completedDepthHistogram": {
+        "6": 7,
+        "7": 39,
+        "8": 18
+      },
+      "incompleteRequestedDepth": 46,
+      "recursiveNodes": 25417604,
+      "counters": {
+        "probes": 4663384,
+        "hits": 1819333,
+        "currentHits": 1631366,
+        "olderHits": 187967,
+        "proofBlocked": 11235,
+        "deeperBlocked": 90309,
+        "emptyWrites": 2603029,
+        "sameKeyWrites": 1734567,
+        "collisionWrites": 228438,
+        "proofSaveAttempts": 9366
+      },
+      "hitAges": {
+        "0": 1631366,
+        "1": 187087,
+        "2": 880
+      },
+      "olderHitFraction": 0.10331643519905372,
+      "maximumHintOccupancyFraction": 0.17099571228027344,
+      "maximumProofOccupancyFraction": 0.0007905960083007812
+    },
+    {
+      "policy": 7,
+      "requestedMiB": 1,
+      "entries": 32768,
+      "requests": 64,
+      "completedDepthHistogram": {
+        "6": 9,
+        "7": 33,
+        "8": 22
+      },
+      "incompleteRequestedDepth": 42,
+      "recursiveNodes": 25262726,
+      "counters": {
+        "probes": 4611777,
+        "hits": 1245266,
+        "currentHits": 1160849,
+        "olderHits": 84417,
+        "proofBlocked": 52779,
+        "deeperBlocked": 671552,
+        "emptyWrites": 262055,
+        "sameKeyWrites": 1175138,
+        "collisionWrites": 2454516,
+        "proofSaveAttempts": 9635
+      },
+      "hitAges": {
+        "0": 1160849,
+        "1": 84348,
+        "2": 69
+      },
+      "olderHitFraction": 0.0677903355588284,
+      "maximumHintOccupancyFraction": 0.999725341796875,
+      "maximumProofOccupancyFraction": 0.049468994140625
+    }
+  ],
+  "limits": "Selective development trajectories, short request sequences and per-invocation node caps differ from clock play. No memory/default or production replacement change; no automatic redesign or tuning follows occupancy alone. Preserve lifetime-v1 outputs and frozen classes."
+}

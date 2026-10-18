@@ -77,9 +77,15 @@ public final class P3HintLifetimeStudy {
 
     /** model lines.tsv new-output.jsonl; lines: id<TAB>initial FEN<TAB>legal moves.
      * Each color owns its private engine; starts at ply16, ends before ply60.
-     * Two representations, policies4/7, D1..5, 250k recursive entries/invocation. */
+     * Defaults: two representations, policies4/7, D1..5, 250k recursive entries.
+     * Optional maxDepth/endPly/entryCap define a separately frozen diagnostic. */
     public static void main(String[] args)throws Exception {
-        if(args.length!=3)throw new IllegalArgumentException("model lines.tsv new-output.jsonl");
+        if(args.length!=3 && args.length!=6)throw new IllegalArgumentException("model lines.tsv new-output.jsonl [maxDepth endPly entryCap]");
+        int maxDepth=args.length==3?5:Integer.parseInt(args[3]);
+        int endPly=args.length==3?60:Integer.parseInt(args[4]);
+        long entryCap=args.length==3?250000:Long.parseLong(args[5]);
+        if(maxDepth<1 || maxDepth>ExactSearch.MAX_DEPTH || endPly<=16 || entryCap<1)
+            throw new IllegalArgumentException("Invalid diagnostic depth, prefix or entry cap");
         var e=SearchEvaluation.brnPair2(ProductionModel.load(Path.of(args[0])));var gson=new GsonBuilder().create();
         int count=0;
         try(var out=Files.newBufferedWriter(Path.of(args[2]),StandardOpenOption.CREATE_NEW)) {
@@ -92,19 +98,20 @@ public final class P3HintLifetimeStudy {
                     var observed=new ExactSearch[]{search(e,tables[0],policy),search(e,tables[1],policy)};
                     var plain=new ExactSearch[]{search(e,new TTable(size),policy),search(e,new TTable(size),policy)};
                     String[] moves=fields[2].split(" ");
-                    for(int ply=0;ply<Math.min(60,moves.length);ply++) {
+                    for(int ply=0;ply<Math.min(endPly,moves.length);ply++) {
                         int side=Board.player((int)board[Board.STATUS]);
                         if(ply>=16) {
                             var a=plain[side];var b=observed[side];var t=tables[side];
                             a.beginRequest();b.beginRequest();t.resetCounters();long nodes=0;int completedDepth=0;
-                            try {for(int depth=1;depth<=5;depth++) {
-                                var x=a.search(board,history.snapshot(),depth,()->a.visitedNodes()>=250000);
-                                var y=b.search(board,history.snapshot(),depth,()->b.visitedNodes()>=250000);
+                            try {for(int depth=1;depth<=maxDepth;depth++) {
+                                var x=a.search(board,history.snapshot(),depth,()->a.visitedNodes()>=entryCap);
+                                var y=b.search(board,history.snapshot(),depth,()->b.visitedNodes()>=entryCap);
                                 P3InformationBaseline.same(x,y);Phase2Oracle.legalPv(board,y.principalVariation());nodes+=y.nodes();
                                 if(!y.completed())break;completedDepth=depth;
                             }}finally {a.endRequest();b.endRequest();}
                             var row=new LinkedHashMap<String,Object>();row.put("game",fields[0]);row.put("ply",ply);
                             row.put("side",side);row.put("requestedMiB",size);row.put("policy",policy);
+                            row.put("requestedDepth",maxDepth);row.put("recursiveEntryCapPerInvocation",entryCap);
                             row.put("completedDepth",completedDepth);row.put("recursiveNodes",nodes);row.put("tt",t.snapshot());
                             out.write(gson.toJson(row));out.newLine();out.flush();count++;
                         }

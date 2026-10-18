@@ -12,9 +12,12 @@ Current work: baseline, O2 and combined O1/O2 diagnostics, integrated regression
 worker lifecycle checks and hint-lifetime replay passed. Hints alone (policy 4)
 and all three mechanisms (policy 7) completed their 32-pair one-worker clock
 screens with positive but unconfirmed estimates. The separate four-worker hint
-screen is running. Two frozen one-worker ablations follow: policy 5 versus 4
+screen also completed with a positive unconfirmed estimate. Two frozen one-worker ablations follow: policy 5 versus 4
 (retention), then policy 7 versus 5 (nominal-learning filter). Assess only complete
 screens; select complete finalist configurations before fresh confirmation.
+The separately planned [deeper lifetime replay](p3-information-reuse-2026-10-18/lifetime-v2.json)
+passed compilation, three focused tests and all 256 request comparisons between
+the four-worker screen and history ablations; its parameterization changes research code only.
 Production defaults and the accepted champion remain unchanged.
 
 Version-dependent operations are BLOCKED by the inherited reservation described
@@ -294,7 +297,7 @@ Four-worker hints are implemented with existing private ROOT_REUSE histories;
 history retention/filter combinations are explicitly unsupported above one worker.
 Functional four-worker checks do not establish multiworker strength.
 
-## Clock development v1 — frozen, execution underway
+## Clock development v1 — champion screens completed, ablations next
 
 Policies 4 and 7 are chosen for complementary decision value: isolate information
 availability, then test an integrated candidate without demanding independent O2
@@ -315,10 +318,11 @@ are the provenance; embedded build 35 is not a finalized research version.
 [UCI preflight](p3-information-reuse-2026-10-18/uci-preflight-v1.json) confirms pinned
 Pair-2 identity, cumulative policies, warmup and two legal exactly-100k-admission
 requests for each binary/configuration. Complete process costs and all requests
-will be audited. No equal-compute inference from equal clocks.
+passed audit. No equal-compute inference from equal clocks.
 
-Resume from `raw/clock-development-v1-p4/plan.json` and the equivalent `p7` path;
-both are already prepared. Invoke each study's `inputs/tools/tournament-session.py`
+The p4, p7 and w4-p4 champion screens are closed; do not replay or extend them.
+The next game plans are `raw/clock-ablation-v1-history/plan.json` and then
+`raw/clock-ablation-v1-labels/plan.json`. Invoke each study's `inputs/tools/tournament-session.py`
 with the validated `build/research/venv/Scripts/python.exe`, `-B`, and `status`
 before resuming `run --plan ... --stop-before <explicit UTC time>`. An existing
 controller owns an OS lock; do not start a competing controller. Never prepare
@@ -334,24 +338,46 @@ This is observer work, not a new candidate mechanism. Preserve all raw trajector
 and instrumented results.
 
 The separate [four-worker hint screen](p3-information-reuse-2026-10-18/clock-development-v1-w4-p4.json)
-is running at `raw/clock-development-v1-w4-p4/plan.json`, with the same
+completed at `raw/clock-development-v1-w4-p4/plan.json`, with the same
 development openings, 32 pairs, concurrency one and BelowNormal priority. Its
 [frozen-binary preflight](p3-information-reuse-2026-10-18/uci-preflight-w4-v1.json)
 passed for both exact model/policy identities and two 100k-admission requests per
-side. Observe host headroom and never pool worker domains. Current user GUI work
-must remain untouched.
+side. Its [complete-sample result](p3-information-reuse-2026-10-18/clock-development-v1-w4-p4-summary.json)
+is **33 W / 14 D / 17 L**, 62.5%, **+88.74 Elo**, descriptive paired-normal 95%
+interval **[+22.03, +162.64]**, bounded interval **[-81.42, +322.79]**. All 64 games
+ended normally and all four blocks passed accounting/input/lifecycle audits.
+Candidate/champion process CPU was **1.04393**, throughput about 126 games/hour.
+Equal clocks therefore did not mean equal compute. Host samples saw 23-29% total
+CPU, over 16 GiB free memory and no paging, with existing user GUI work untouched;
+samples do not reconstruct all contention. This supports fresh confirmation in
+the four-worker domain, not extrapolation to 2/8/16 workers or champion acceptance.
+
+[Four-worker descriptive diagnostics](p3-information-reuse-2026-10-18/clock-diagnostics-w4-v1-summary.json)
+cover every accounted request: median reported depth 8 for both sides; summed
+recorded GC pauses 150.944/127.155 ms for champion/candidate over four JVMs each.
+These are trajectory-dependent summaries, not matched-position depth or allocation
+measurements. Worker domains remain separate.
 
 `tools/p3-information-confirmation.py` supplies the Phase 3 identity checks around
 the existing SR-032 staged executor and unchanged SR-024 decision rule. A small
 back-compatible runtime-tree check now allows the actual pre-experiment champion
 binary on one side and the experimental binary on the other. Three new binding
-tests and six shared continuation tests pass. No confirmation protocol or finalist
+tests and six shared continuation tests pass. No confirmation protocol
 has yet been frozen. Initial family contrast indices 1/2 are reserved for one/four
 workers, with prospective 128/512-pair looks and inherited alpha spending,
 two-sided eligibility, sensitivity and stopping rules. Freeze an immutable copy
 of the assessor/dependency bundle before any confirmation; closed protocols and
 their tools must remain unchanged. Later retuned confirmations require unused
 family alpha, not reuse of a closed contrast.
+The [four-worker selection and forecast](p3-information-reuse-2026-10-18/confirmation-selection-v1-w4.json)
+now selects policy 4 for that domain only. The first 128-pair look is forecast at
+2.03 match hours (2.71 at 25% lower throughput), plus session/preflight overhead.
+The 512-pair maximum is about 8.14 match hours (10.85 with that slowdown), so it is
+not an unconditional continuous-run commitment. The first look's required 20
+pairs on each side of half may not be met: five losing pairs in development imply
+only 20 at 128 in expectation. The frozen bounded rule handles this honestly.
+Selection is complete for four workers, but protocol freezing and all independent
+confirmation remain pending; one-worker selection awaits its direct ablations.
 Fresh sampling must also consume
 [the 193 direct diagnostic-root exclusions](p3-information-reuse-2026-10-18/diagnostic-exclusions-v1.selection.json),
 in addition to all prior opening-selection receipts. This includes every observed
@@ -445,13 +471,65 @@ completion, exact shared node-cap accounting, cancellation and helper draining.
 These augment, and do not replace, the earlier broad regression. No production
 runtime source changed in this diagnostic unit.
 
+### Deeper lifetime replay
+
+[Plan](p3-information-reuse-2026-10-18/lifetime-v2.json),
+[source/binary/test manifest](p3-information-reuse-2026-10-18/lifetime-v2-manifest.json),
+[execution](p3-information-reuse-2026-10-18/lifetime-v2-execution.json),
+[results](p3-information-reuse-2026-10-18/lifetime-v2-summary.json).
+The research-only CLI gained bounded depth/prefix/cap parameters; the three
+focused lifetime tests passed. The separate D1-8 replay took about 155 seconds,
+one BelowNormal JVM, with no overlapping clock match. All 256 requests matched
+their unobserved counterparts at every invocation. A total of 183 requests hit
+the per-invocation cap before D8; every request completed at least D6. All capped
+evidence is retained. These are recursive-entry caps, not production admission
+counts or clock budgets.
+
+| Policy / requested MiB | Hint probe hits | Older-request hit fraction | Collision replacements | Maximum hint occupancy | Completed D8 / 64 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 4 / 64 | 1,777,537 | 10.95% | 236,698 | 17.46% | 18 |
+| 4 / 1 | 1,204,314 | 5.92% | 2,595,441 | 99.97% | 15 |
+| 7 / 64 | 1,819,333 | 10.33% | 228,438 | 17.10% | 18 |
+| 7 / 1 | 1,245,266 | 6.78% | 2,454,516 | 99.97% | 22 |
+
+Prior-request reuse is more substantial than the shallow sample suggested.
+Severe storage pressure removes many hits, especially older-request hits, despite
+similar aggregate recursive work. Deeper selective trajectories differ under the
+small table, so completed-depth counts do not prove strength or inferiority.
+The 64 MiB table remains far from full in these short trajectories, and increasing
+the request to 72 MiB still adds no entries. Keep the accepted 64 MiB default;
+neither a budget increase nor a redesign has demonstrated decision value here.
+Longer clock-game retention, alternative hint replacement and larger-capacity
+strength remain unmeasured. Completed descendant hints in a capped request remain
+distinct from forbidden publication by an incomplete node.
+
+### Completed-game depth and JVM diagnostics
+
+[Post-hoc descriptive analysis](p3-information-reuse-2026-10-18/clock-diagnostics-w1-v1-summary.json)
+of both completed one-worker screens covers every accounted request, with no
+missing reported depth. Median completed depth was 8/8 (champion/policy 4) and
+7/8 (champion/policy 7). Forced-mate tails include depth 256, making the arithmetic
+mean unrepresentative; different game trajectories also prevent matched-position
+depth comparisons. Only 96/4,433 policy-4 and 76/4,423 policy-7 requests reported
+depth at most five. Thus the D1-5 lifetime replay establishes a reuse mechanism,
+but does not characterize full clock-game storage pressure.
+
+Across four match JVMs per side, summed GC summary pauses were 136.479/126.489 ms
+for champion/policy 4 and 126.405/125.699 ms for champion/policy 7. Maximum individual
+pauses were under 12 ms. All sixteen GC log hashes match their frozen completed
+block receipts. These include match startup/warmup, exclude separate preflights,
+and measure neither allocations nor all JVM/JIT costs. Existing full-process CPU
+and fixed-resource allocation measurements remain the relevant complementary
+evidence. This analysis neither changes an experimental protocol nor adds strength
+evidence or a tuning decision.
+
 ## Human dependencies and boundaries
 
 The [confirmation freezer](p3-information-reuse-2026-10-18/prepare_confirmation.py)
-is prepared and syntax checked, but has not selected a finalist, created a
-confirmation protocol or launched confirmation games. After the complete
-development contrasts, record selection rationale and a numerical decision-value
-and resource forecast in the chosen champion-comparison configuration. The
+is prepared and syntax checked, but has not created a confirmation protocol or
+launched games. Four-worker selection/forecast is recorded above; one-worker
+selection remains pending. Record selection rationale and a numerical decision-value
+and resource forecast in each chosen champion-comparison configuration. The
 freezer preserves both tested runtime trees and the executor dependencies, excludes
 prior opening/diagnostic receipts, and prepares fresh partition-one 128/512-pair
 looks. Its actual preparation and immutable-input verification remain pending.

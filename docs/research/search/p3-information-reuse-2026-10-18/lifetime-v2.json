@@ -1,0 +1,19 @@
+{
+  "id": "P3-O1O2-LIFETIME-v2",
+  "status": "prospective; run after the current four-worker screen, before history ablations or confirmation",
+  "question": "Does the lightly occupied shallow table remain lightly occupied closer to the completed depths actually reported during clock play?",
+  "rationale": "Completed one-worker games have median reported depth 7-8; D1-5 replay cannot characterize their storage pressure. This bounded deeper diagnostic is separate from completed lifetime-v1 and adds no strength evidence.",
+  "sample": "Same first four scheduled p4 development games as lifetime-v1, original actual prefixes only, roots ply16 through31. No outcome filtering or new continuation. The 64 roots are already within diagnostic-exclusions-v1.",
+  "configs": {
+    "policies": [4, 7],
+    "requestedTTMiB": [64, 1],
+    "depths": [1, 2, 3, 4, 5, 6, 7, 8],
+    "endPlyExclusive": 32,
+    "recursiveEntryCapPerInvocation": 250000
+  },
+  "owners": "Separate white/black private owners across actual game requests. Each policy/memory restarts empty. Request-local history only. Completed descendant hint publication can survive an incomplete ancestor; incomplete nodes themselves cannot publish.",
+  "observations": "Identical read-only table counters and post-request occupancy/age as lifetime-v1. Every plain/observed invocation, including incomplete ones, must match score, PV, nodes and provenance. Report completion-depth distribution; do not discard capped requests. No timing inference from observed runs.",
+  "validation": "Compile research-only parameterization; rerun focused lifetime observer tests. Verify frozen core/evaluator/line identities, preserve compiled research classes and test evidence. Full per-invocation observation parity is a runtime requirement.",
+  "resource": "One BelowNormal JVM, ActiveProcessorCount=1, heap768MiB; never overlap clock games or other research JVMs. Forecast approximately 1-5 minutes from prior 27-second shallow replay, uncertain due capped deeper trees. Ten-minute operational watchdog; interruption is incomplete evidence, not inferiority.",
+  "limitations": "Selective development trajectories, short request sequences and per-invocation node caps differ from clock play. No memory/default or production replacement change; no automatic redesign or tuning follows occupancy alone. Preserve lifetime-v1 outputs and frozen classes."
+}
