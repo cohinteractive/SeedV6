@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F003**
+Internal frontier revision: **P3-F004**
 
-Status: **ACTIVE Phase 3: first O1 + O2 CGLHW research technically complete; policy-4 candidate awaiting GPT/owner reconciliation and acceptance. No candidate promoted.**
+Status: **ACTIVE Phase 3: first O1 + O2 CGLHW research technically complete; Policy 4 explicitly owner-accepted. Cumulative Phase 2 production champion/defaults retained; no successor objective activated.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -22,18 +22,18 @@ remains the champion until a separately validated and explicitly accepted promot
 A selected coherent objective may span several SR identifiers and internal
 workstreams; it need not stop after each feature or experiment.
 
-Initial champion: accepted cumulative Pair-2 **QXRAY + quiet LMR + WINDOW**, with
-**EFFORT at one worker / ROOT_REUSE at 2-16**, requested default 64 MiB TT and the
+Initial and retained production champion: cumulative Pair-2 **QXRAY + quiet LMR +
+WINDOW**, with **EFFORT at one worker / ROOT_REUSE at 2-16**, requested default 64 MiB TT and the
 fixed generation-32 evaluator identity in the Contract. Other evaluators, independent
 references, historical anchors and explicit controls retain their supported scope.
 The owner confirms final Phase 2 mirror synchronization and GPT acceptance of
 SR-032 as DEFERRED without adoption. No successor was authorized by that closeout.
-The initialization began no research; the owner's 18 October 2026 launch now
-authorizes the selected objective below.
+The initialization began no research; the owner's 18 October 2026 launch
+authorized the now-completed first objective below.
 
-The intended first direction is the **production, retention and reuse of useful
+The first direction was the **production, retention and reuse of useful
 Search information**, especially TT move guidance and relevant history interactions.
-The owner has selected O1 + O2 as that first coherent objective. Principal
+The owner selected O1 + O2 as that first coherent objective. Principal
 opportunities from the [pinned Bagatur analysis][Bagatur] are hypotheses, not proven
 bottlenecks or accepted architecture:
 
@@ -50,33 +50,54 @@ necessary. Bagatur examined 38 subjects with 31 direct behavioural matches; its
 permissive proof/draw/outcome practices and suggested sequencing do not override
 the Contract or establish isolated Elo contributions.
 
-## Active objective
+## Completed first objective
 
 **Search Information Retention and Reuse — O1 + O2**, owner-authorized 18 October
-2026. Investigate current TT information production/availability/reuse and history
-quality/lifetime jointly, with relevant ordering, iteration/retry, reduction,
-pruning and private-worker interactions. Begin with measured current structures;
-neither a TT redesign nor independent gains for each component are prerequisites.
-The champion and fixed Pair-2 evaluator above remain the comparator and production
-authority. Research-controlled alternatives do not change accepted policies.
+2026, is technically complete. It investigated TT information production,
+availability and reuse, and history quality/lifetime jointly, with ordering, iteration/retry,
+reduction, pruning and private-worker interactions. It began with measured current
+structures; neither a TT redesign nor independent gains for each component were
+prerequisites. The cumulative Phase 2 champion and fixed Pair-2 evaluator above
+supplied the comparison identity; production defaults remain unchanged.
 
 The [focused research record](../docs/research/search/P3_INFORMATION_REUSE_2026-10-18.md)
-is the detailed work-selection/resume entrypoint: bootstrap challenge, verified
-implementation, prospective comparisons, evidence and unresolved dependencies.
+governs exact experimental identities, protocols, measurements and limitations.
+Its pending-acceptance wording records the earlier handback and is superseded by
+the owner's subsequent acceptance below; the closed research record is preserved.
 It is evidence under this canon, not another governing contract. The completed
 work covers current-structure observation, controlled history retention/learning,
 completed legal hints, combinations and reverse ablations, lifetime/pressure and
 cost measurements, and separate fresh one-/four-worker confirmations.
 
-The complete champion-plus-hints configuration (research policy 4) passed both
-frozen confirmation rules and is ready for GPT/owner consideration under their
-recorded statistical and resource limits. Retained history and nominal-only
-malus filtering have inconclusive conditional strength evidence and remain
-unadopted; richer histories, consumer attribution and further TT/driver refinements
-remain open hypotheses, not rejected subjects or automatically selected work.
-The next step is reconciliation and an explicit acceptance/adoption decision.
-The accepted champion remains unchanged. O3 and unrelated Frontier objectives
-remain unselected; no successor activates automatically.
+The owner has explicitly accepted **Policy 4**, the cumulative Phase 2 configuration
+plus completed legal TT hint production and reuse. Separate fresh confirmations
+used **10+0.1 clocks**, each with **128 paired openings / 256 games**:
+
+| Search workers | Policy 4 W / D / L | Estimated Elo gain | Adjusted paired-normal interval |
+| --- | --- | --- | --- |
+| One | 113 / 70 / 73 | +54.7 | +4.8 to +107.0 |
+| Four | 137 / 46 / 73 | +88.7 | +34.3 to +147.9 |
+
+Both closed positive at their first scheduled look and passed the required 2.5-SE
+sensitivity checks. Conservative bounded intervals still include zero; these are
+qualified approximate paired-normal results, not distribution-free guarantees.
+Four-worker candidate CPU was approximately **0.98% higher under equal clocks**;
+equal clocks do not establish equal compute. The recorded evaluator, host/JVM and
+resource limits apply; no gain is established at other worker counts, clocks,
+memory pressures, platforms or resource configurations. Closed protocols stay closed.
+
+Policy 4 is the accepted future research comparison configuration in the confirmed
+domains, with the cumulative Phase 2 production configuration retained as a distinct
+control. This acceptance does not record formal production-champion promotion,
+production integration/default activation, version finalization or external release.
+The Contract preserves separate production authorization and lifecycle/validation
+boundaries; the inherited finalizer integrity blocker remains unresolved.
+
+Retained history and nominal-only malus filtering have inconclusive conditional
+strength evidence and remain unadopted; combined **Policy 7 remains unconfirmed**.
+Richer histories, consumer attribution and further TT/driver refinements remain
+open hypotheses, not rejected subjects or automatically selected work. O3 and
+unrelated Frontier objectives remain unselected; no next CGLHW is activated.
 
 ## Compact research inventory
 
@@ -85,8 +106,8 @@ remain unselected; no successor activates automatically.
 **Evidence only** is a conclusion without an adopted runtime mechanism.
 **Unadopted** includes retained research implementations and historical formulations;
 P1/P2 REJECTED or DEFERRED labels below describe those studies only. Every row has
-an available Phase 3 investigation opportunity. The O1/O2 objective above selects
-its relevant dependencies; it does not activate all 38 rows or pre-accept changes.
+an available Phase 3 investigation opportunity. The completed O1/O2 objective used
+its relevant dependencies; this inventory activates no further work or acceptance.
 
 [P1] and [P2] point to complete frozen Frontiers: consult the same SR row, embedded
 scope and linked technical reports. [C1] and [C2] supply detailed technical rules
@@ -182,12 +203,12 @@ reports, retained local evidence and source/Git history. Check local evidence
 availability before reuse; no historical experiment is recertified here.
 
 The initialization-era P3-F001 / P3-R001 refresh wording is historical. The owner
-confirms both current predecessor mirrors (P3-F001 / P3-R002) synchronized and
-selected O1 + O2 in this launch. **The P3-F003 / P3-R004 technical handback now
-requires replacement of BOTH
-Project Source mirrors and synchronization confirmation before dependent GPT
-planning or a subsequent CGLHW launch.** Codex completed the authorized research
-from repository masters and does not claim to perform external synchronization.
+confirmed P3-F001 / P3-R002 synchronization at the O1 + O2 launch and has now
+confirmed the relevant predecessor Project Source synchronization. **This P3-F004 /
+P3-R006 acceptance reconciliation requires replacement of BOTH Project Source
+mirrors and synchronization confirmation before dependent GPT planning or a
+subsequent CGLHW launch.** The new refresh is outstanding. Codex uses repository
+masters for authorized work and does not claim external synchronization.
 
 [P1]: ../docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md
 [P2]: ../docs/search-phase2/CHESS_SEARCH_RESEARCH_FRONTIER.md

@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R005**
+Internal revision: **P3-R006**
 
-Status: **ACTIVE Phase 3: first O1 + O2 CGLHW research technically complete; candidate awaiting GPT/owner reconciliation and acceptance. Accepted cumulative Phase 2 champion retained.**
+Status: **ACTIVE Phase 3: first O1 + O2 CGLHW research technically complete; Policy 4 explicitly owner-accepted. Cumulative Phase 2 production champion/defaults retained; no successor objective activated.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -31,25 +31,39 @@ non-adoption prose does not create a Phase 3 prohibition. Surface material
 code/canon discrepancies: static source establishes implementation facts, not
 runtime verification, and neither silently rewrites intended requirements.
 
-## Initial champion and supported scope
+## Accepted Policy 4 and retained production scope
 
-The owner's 18 October 2026 launch activates O1 and O2 as one coherent objective:
+The owner's 18 October 2026 launch authorized O1 and O2 as one coherent objective:
 useful Search-information production, retention, quality and reuse, including
 direct consumers, coherent combinations and reverse ablation. Autonomous research,
-experimental implementation and controlled validation are authorized within this
+experimental implementation and controlled validation were authorized within this
 Contract. O3 calibration/training, unrelated objectives, production promotion,
-owner-reserved binding TT changes and external release remain outside that grant.
-The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md#active-objective) records selection;
+owner-reserved binding TT changes and external release were outside that grant.
+The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md#completed-first-objective)
+records disposition;
 the [focused research record](../docs/research/search/P3_INFORMATION_REUSE_2026-10-18.md)
-holds verified facts, evidence, hypotheses, limitations and next admissible work.
+holds exact experimental identities, protocols, measurements and limitations.
 
-The first CGLHW's research execution is technically complete. Its complete
-champion-plus-completed-legal-hints candidate (research policy 4) passed the frozen
-confirmation rule separately at one and four workers. The focused record retains
-the inferential limits, O2 combinations and inconclusive conditional ablations.
-GPT/owner reconciliation and explicit acceptance remain required for adoption;
-the champion, binding TT requirements and production defaults remain authoritative.
-No successor objective is selected by this handback.
+The first CGLHW is technically complete, and the owner has explicitly accepted
+**Policy 4**: the cumulative Phase 2 configuration below plus completed legal TT
+hint production and reuse, retaining the accepted main-history lifetime and
+ROOT_REUSE private seeding. Separate fresh confirmations at **one and four Search
+workers, 10+0.1 clocks**, support this decision in those recorded domains. The
+Frontier summarizes their positive approximate paired-normal results and resource
+costs; conservative bounded intervals still include zero. This is not proof of
+improvement at every worker count, clock, memory pressure, platform or resource
+configuration. Inconclusive O2 ablations and unconfirmed Policy 7 remain research
+alternatives, not accepted components of Policy 4.
+
+Policy 4 is the accepted configuration for future research comparisons in those
+confirmed domains; retain the cumulative Phase 2 production configuration as a
+distinct control. Candidate acceptance is settled, but does not establish formal
+production-champion promotion, completed production integration or default
+activation. The handback reported cumulative Phase 2 production unchanged.
+Any production transition remains separately authorized work with applicable
+lifecycle and supported-configuration validation; existing binding technical
+requirements remain in force. Acceptance implies neither version finalization
+nor external deployment/release. No successor objective or CGLHW is activated.
 
 The initial accepted production champion is the cumulative Phase 2 engine:
 **SR-001 + SR-029 + SR-022 + SR-005 + SR-036 + SR-024**. Its accepted Search
@@ -187,8 +201,9 @@ Two complementary approaches are authorized by a suitably scoped future objectiv
   Validate semantics continuously as mechanisms enter; do not postpone validation
   until dozens of interacting selective features have accumulated.
 
-Keep four identities distinct: accepted production champion, experimental
-integrated candidate, historical comparison anchor, and feature/ablation control.
+Keep the accepted research configuration, accepted production champion,
+experimental integrated candidate, historical comparison anchor, and
+feature/ablation control distinct.
 A convincingly stronger complete candidate may become champion only after credible
 playing-strength evidence, appropriate fresh independent confirmation, correctness,
 lifecycle and supported-configuration validation, and explicit GPT/owner acceptance.
@@ -197,8 +212,9 @@ There is no arbitrary minimum Elo gain or universal game count: decide whether
 the configuration is credibly stronger at the evaluated resources, with costs,
 uncertainty and compatibility stated.
 
-Then optimize the accepted champion through removals, substitutions, interactions
-and configuration mutations; future research normally compares with that champion.
+After production promotion, optimize the champion through removals, substitutions,
+interactions and configuration mutations; future research normally compares with
+that champion.
 Preserve older identities and reproducible evidence as historical controls.
 Reverse ablation must distinguish harmful, redundant, interaction-beneficial and
 unclassifiable components. A removal loss establishes conditional value in that
@@ -343,11 +359,14 @@ and never claims external synchronization from a refresh request.
 
 The owner confirms final Phase 2 mirror synchronization and GPT acceptance of
 SR-032 as DEFERRED without adoption. Those predecessor actions are satisfied;
-The owner subsequently confirms synchronization of P3-R002 / P3-F001 at this
-launch, satisfying the initialization mirror obligation. The initialization itself
-launched no experiment; current activation is recorded above. This content update
-requires a new two-mirror refresh for dependent GPT planning or a subsequent launch,
-without blocking Codex's already-authorized work against these repository masters.
+The owner subsequently confirmed synchronization of P3-R002 / P3-F001 at the
+O1 + O2 launch, satisfying the initialization mirror obligation, and has now
+confirmed the relevant predecessor Project Source synchronization. The initialization
+itself launched no experiment; the first objective's completion and later owner
+acceptance are recorded above. This P3-R006 / P3-F004 reconciliation requires a
+new two-mirror refresh and synchronization confirmation before dependent GPT
+planning or a subsequent launch, without blocking this authorized repository work.
+The new refresh is outstanding; Codex does not claim external synchronization.
 
 | Frozen file | Revision | Verified SHA-256 (complete original bytes) |
 | --- | --- | --- |
