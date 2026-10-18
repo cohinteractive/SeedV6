@@ -1,0 +1,49 @@
+{
+  "id": "P3-O1O2-CONFIRM-v1-W4-SELECTION",
+  "adapter": "p3-information-match.py",
+  "purpose": "confirmatory",
+  "assessmentPlan": "Only prospective cumulative 128/512-pair looks. Existing SR-024 paired-normal rule with family alpha .05/2^contrastIndex, Bonferroni across looks, minimum 20 pairs on each side, 2.5-SE sensitivity, bounded-pair reporting and nonbinding computational futility. No block looks, post-close extension, retuning or selective replay. Explicit owner acceptance remains separate.",
+  "blockPairs": 8,
+  "blockLimitSeconds": 1200,
+  "arguments": {
+    "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\clock-v1-baseline",
+    "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\clock-v1-candidate",
+    "java": "C:/java/jdk-21/bin/java.exe",
+    "runner": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\tools\\fastchess.exe",
+    "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+    "baseline_policy": "0",
+    "candidate_policy": "4",
+    "baseline_workers": 4,
+    "candidate_workers": 4,
+    "concurrency": 1,
+    "tc": "10+0.1",
+    "seed": 3030418,
+    "pairs": 384,
+    "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\confirmation-v1-w4\\stage2-openings.pgn",
+    "background": true
+  },
+  "baselineProvenance": "Frozen engine-core.jar copied before O2/O1 modifications, SHA256 9b41d6b174846cfaf3af9f3089d8c3d13b0614fbf0a4717a6fe46aec346c61d9. Shared new research-only launcher. See uci-preflight-v1.json. Version finalization remains blocked independently; no release identity claim.",
+  "selectionRationale": "Select completed-hint policy 4 in the four-worker ROOT_REUSE domain against the unchanged accepted champion. The complete 32-pair development screen scored 33 W / 14 D / 17 L (+88.74 Elo; descriptive normal 95% interval +22.03 to +162.64, bounded interval crossing zero), with all normal games and audits passed and 4.39% more full-process CPU under equal clocks. Earlier semantic, exact-reference, legal-hint, ownership and 2/4/16-worker lifecycle checks passed. History retention and filtering experiments are intentionally unsupported above one worker, so their pending one-worker ablations do not select this domain. The development signal and measured cost justify fresh confirmation; they do not authorize adoption.",
+  "confirmationForecast": {
+    "sourceSummary": "clock-development-v1-w4-p4-summary.json",
+    "developmentPairs": 32,
+    "developmentScore": 0.625,
+    "developmentPairScoreSE": 0.047625047625071436,
+    "normalCriticalValue": 2.734368786533176,
+    "forecastAt128": {
+      "pairScoreSE": 0.023812523812535718,
+      "approximateEloSE": 17.64974539430237,
+      "matchHours": 2.033765905888932,
+      "matchHoursAt25PercentLowerThroughput": 2.711687874518576
+    },
+    "forecastAt512": {
+      "pairScoreSE": 0.011906261906267859,
+      "approximateEloSE": 8.824872697151186,
+      "matchHours": 8.135063623555729,
+      "matchHoursAt25PercentLowerThroughput": 10.846751498074305
+    },
+    "interpretation": "Plug-in variance and time forecasts from selected development data, not guaranteed power. Five losing pairs out of 32 imply only 20 below-half pairs at 128 in expectation; required two-sided normal eligibility is uncertain, so the bounded rule may require continuation despite a strong signal. At 512 pairs the adjusted normal score half-width is about 0.033, roughly 24 Elo locally. No small-gain power claim. Add roughly 5-10% preflight/session overhead. Run the first 128-pair scheduled look, then use its predeclared decision and observed workstation headroom for continuation windows; no post-close extension. One game at a time, four Search workers per request, BelowNormal, 512 MiB heap per engine. Workstation samples showed 23-29% total CPU and over 16 GiB free, but are incomplete. No automatic disruptive 12-hour run."
+  },
+  "preparationInput": "Only input to prepare_confirmation.py. The development openings path identifies the pinned source book/receipt; the freezer replaces it with fresh partition-one stage schedules. This file is not itself an executable confirmation protocol.",
+  "assessmentProtocol": "protocol.json"
+}

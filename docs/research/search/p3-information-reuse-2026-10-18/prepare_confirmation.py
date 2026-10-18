@@ -108,6 +108,22 @@ def prepare(config_path,label,seed):
     t.save(protocol_path,p);c.verify(protocol_path)
     for stage in stages:t.prepare(stage['config'],Path(stage['plan']).parent)
     c.verify(protocol_path)
+    checked=[]
+    for stage in stages:
+        plan_path=Path(stage['plan'])
+        frozen=c.m.module('prepared_stage',plan_path.parent/'inputs/tools/tournament-session.py')
+        data=frozen.verify(plan_path)
+        frozen.require(data['purpose']=='confirmatory' and data['adapter']==p['expectedAdapter'],'Wrong prepared purpose/adapter')
+        frozen.require(data['configurationSha256']==digest(stage['config']),'Wrong prepared configuration')
+        frozen.require(digest(plan_path.parent/'inputs/assessment-protocol.txt')==digest(protocol_path),'Wrong prepared protocol')
+        frozen.require(digest(plan_path.parent/'inputs/schedule.pgn')==digest(stage['openings']),'Wrong prepared schedule')
+        frozen.require(all(data['arguments'][k]==v for k,v in expected.items()),'Wrong prepared domain')
+        c.m.verify_runtime(p,data['arguments'])
+        checked.append({'plan':str(plan_path),'sha256':digest(plan_path),'pairs':data['pairs'],
+                        'status':'prepared; all immutable trees and prospective domain checks passed; no games run'})
+    t.save(root/('confirmation-v1-'+label+'-preparation.json'),
+           {'protocol':str(protocol_path),'protocolSha256':digest(protocol_path),'checkedUtc':datetime.now(timezone.utc).isoformat(),
+            'stages':checked,'status':'passed','limits':'Read-only preparation and identity checks, not runtime confirmation or playing-strength evidence.'})
     return {'protocol':str(protocol_path),'sha256':digest(protocol_path),'executor':str(bundle/'p3-information-confirmation.py'),
             'looks':p['looks'],'contrastIndex':index,'gamesAtFirstLook':256,'gamesAtMaximum':1024}
 

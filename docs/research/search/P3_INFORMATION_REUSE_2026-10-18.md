@@ -12,8 +12,8 @@ Current work: baseline, O2 and combined O1/O2 diagnostics, integrated regression
 worker lifecycle checks and hint-lifetime replay passed. Hints alone (policy 4)
 and all three mechanisms (policy 7) completed their 32-pair one-worker clock
 screens with positive but unconfirmed estimates. The separate four-worker hint
-screen also completed with a positive unconfirmed estimate. Two frozen one-worker ablations follow: policy 5 versus 4
-(retention), then policy 7 versus 5 (nominal-learning filter). Assess only complete
+screen also completed with a positive unconfirmed estimate. The first frozen one-worker ablation is running: policy 5 versus 4
+(retention), followed by policy 7 versus 5 (nominal-learning filter). Assess only complete
 screens; select complete finalist configurations before fresh confirmation.
 The separately planned [deeper lifetime replay](p3-information-reuse-2026-10-18/lifetime-v2.json)
 passed compilation, three focused tests and all 256 request comparisons between
@@ -362,8 +362,8 @@ measurements. Worker domains remain separate.
 the existing SR-032 staged executor and unchanged SR-024 decision rule. A small
 back-compatible runtime-tree check now allows the actual pre-experiment champion
 binary on one side and the experimental binary on the other. Three new binding
-tests and six shared continuation tests pass. No confirmation protocol
-has yet been frozen. Initial family contrast indices 1/2 are reserved for one/four
+tests and six shared continuation tests pass. Initial family contrast indices
+1/2 are reserved for one/four
 workers, with prospective 128/512-pair looks and inherited alpha spending,
 two-sided eligibility, sensitivity and stopping rules. Freeze an immutable copy
 of the assessor/dependency bundle before any confirmation; closed protocols and
@@ -376,8 +376,16 @@ The 512-pair maximum is about 8.14 match hours (10.85 with that slowdown), so it
 not an unconditional continuous-run commitment. The first look's required 20
 pairs on each side of half may not be met: five losing pairs in development imply
 only 20 at 128 in expectation. The frozen bounded rule handles this honestly.
-Selection is complete for four workers, but protocol freezing and all independent
-confirmation remain pending; one-worker selection awaits its direct ablations.
+The [four-worker protocol](p3-information-reuse-2026-10-18/confirmation-v1-w4/protocol.json)
+is frozen, SHA-256 `c6780bef774ff21aee501dca5a6915192c4c65d9ba29205c6370d4e5b86eb14b`.
+The [preparation receipt](p3-information-reuse-2026-10-18/confirmation-v1-w4-preparation.json)
+verifies both prospective stage domains, original/candidate runtime trees, copied
+protocol, schedules and all immutable inputs. Fresh partition-one schedules
+contain 128 then 384 additional pairs; no confirmation games have run. Execute
+only the frozen `raw/confirmation-v1-w4-tools/p3-information-confirmation.py`
+with this protocol, an explicit stop-before window and `--max-stages 1` initially.
+Both direct history ablations precede confirmation. One-worker selection awaits
+those ablations and must use fresh excluded-opening selection of its own.
 Fresh sampling must also consume
 [the 193 direct diagnostic-root exclusions](p3-information-reuse-2026-10-18/diagnostic-exclusions-v1.selection.json),
 in addition to all prior opening-selection receipts. This includes every observed
@@ -526,13 +534,14 @@ evidence or a tuning decision.
 ## Human dependencies and boundaries
 
 The [confirmation freezer](p3-information-reuse-2026-10-18/prepare_confirmation.py)
-is prepared and syntax checked, but has not created a confirmation protocol or
-launched games. Four-worker selection/forecast is recorded above; one-worker
-selection remains pending. Record selection rationale and a numerical decision-value
+created and verified the four-worker protocol above, without launching games.
+The maintained helper now includes the same per-stage checks used for its
+read-only preparation receipt; the already-frozen tool copy is untouched.
+One-worker selection remains pending. Record selection rationale and a numerical decision-value
 and resource forecast in each chosen champion-comparison configuration. The
 freezer preserves both tested runtime trees and the executor dependencies, excludes
 prior opening/diagnostic receipts, and prepares fresh partition-one 128/512-pair
-looks. Its actual preparation and immutable-input verification remain pending.
+looks. The one-worker protocol and all actual confirmation play remain pending.
 
 - Blocking finalized-version operations only: supported reconciliation authority
   for the inherited local integrity-failure reservation. Independent research may
