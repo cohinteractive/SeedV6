@@ -32,6 +32,14 @@ tasks.register('p3InformationBaseline', JavaExec) {
     jvmArgs '-Xms128m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
     if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
 }
+tasks.register('p3HistoryStudy', JavaExec) {
+    group = 'verification'
+    description = 'Bounded cumulative O2 diagnostics and warmed request costs.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.P3HistoryStudy'
+    jvmArgs '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
 tasks.register('installResearch', Sync) {
     into layout.buildDirectory.dir('install/research')
     into('lib') { from tasks.named('jar'); from configurations.runtimeClasspath }

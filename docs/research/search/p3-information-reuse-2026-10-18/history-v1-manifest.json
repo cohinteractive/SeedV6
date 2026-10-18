@@ -1,0 +1,18 @@
+{
+  "id": "P3-O1O2-HISTORY-v1",
+  "baseCommit": "6fb104eaa2ea68553565c04c114b51f8e0af8b2f",
+  "sha256": {
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java": "0d24d59fe99cbe8e4e2a3fa27daadc826d3170450ecd5f1bbb86c5c81999e578",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java": "c988a17d032d0edf3219fee725d7748f7f5a55bd6219934d0be3b71a370eadbe",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/IterationReuse.java": "b033615538a3ef3db60a02756d4e857dc8b838aada26daf4bac9a24c0a3bf675",
+    "research/build.gradle": "202eac16b520aed9695ce12d16059607d54af1794f748aaadf0f5409a3f3b14e",
+    "research/src/test/java/com/ohinteractive/seedv6/search/exact/IterationReuseTest.java": "f0ee9fc5a47a55781fe3858ecb4b09ca79531275d11c7d0b8a4e015b6f71517f",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/HistoryLearning.java": "6c164597219d0374f3fd92fb8f3afc9d0e3294ca55108e573132f0b023ab492d",
+    "research/src/main/java/com/ohinteractive/seedv6/search/exact/P3HistoryStudy.java": "d7786063a529137b3da3977696ea489d41026e44670883df2c8de48f01e3504a",
+    "research/src/test/java/com/ohinteractive/seedv6/search/exact/HistoryLearningTest.java": "362d027ba9c43beb54dd6efe10e8d064f0557252c033af674bcc0181f69c7d74",
+    "docs\\research\\search\\p3-information-reuse-2026-10-18\\history-v1.json": "e3030901f05a62e1b34eda53d3e546bed2ed609dacb273124593cc8f2a679fc5",
+    "docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\baseline-core.jar": "9b41d6b174846cfaf3af9f3089d8c3d13b0614fbf0a4717a6fe46aec346c61d9"
+  },
+  "validation": "history-validation-v1.json; final broad regression still required",
+  "versionFinalization": "deferred; original operation unchanged"
+}

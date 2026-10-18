@@ -1,0 +1,23 @@
+[
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.HistoryLearningTest",
+    "tests": "4",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.IterationReuseTest",
+    "tests": "11",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.P3InformationBaselineTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  }
+]

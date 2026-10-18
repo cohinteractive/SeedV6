@@ -164,6 +164,7 @@ public final class ExactSearch {
     private boolean rootDomainBound;
     private final MoveReservations reservations;
     private IterationReuse iterationReuse;
+    private HistoryLearning historyLearning;
     private long restrictedRootMove;
     private boolean restrictedRootScout;
     private boolean rootJobReuse, rootJobHistory;
@@ -218,6 +219,22 @@ public final class ExactSearch {
 
     boolean anySelectiveWork() { return selectiveEpoch != 0; }
 
+    /** Explicit O2 experiment, retaining the cumulative EFFORT ordering. No
+     * ordinary factory selects it. Unsupported same-ply/synthetic policies are
+     * excluded so outcome slots describe only their actual searched prefix. */
+    public ExactSearch withHistoryResearch(boolean retain, boolean nominalOnly, HistoryLearning.Diagnostics diagnostics) {
+        if(active || requestActive || iterationReuse==null || !iterationReuse.effort()
+                || ordering!=SEE_MATERIAL_QUIET_HISTORY || mechanics!=STAGED_LAZY
+                || nullMovePruning || reverseFutility || pairNull!=NullMovePolicy.OFF
+                || internalPolicy!=InternalSearchPolicy.OFF || checkPolicy!=CHECK_OFF
+                || tacticalExtension!=TacticalExtension.OFF || depthFeedback!=DepthFeedback.OFF
+                || futilityPolicy!=FutilityPolicy.OFF || (seePolicy!=SeePolicy.OFF && seePolicy!=SeePolicy.QXRAY))
+            throw new IllegalStateException("History research requires idle cumulative or unpruned EFFORT");
+        iterationReuse=new IterationReuse(retain?IterationReuse.EFFORT_HISTORY:IterationReuse.EFFORT,iterationReuse.diagnostics);
+        historyLearning=nominalOnly || diagnostics!=null?new HistoryLearning(nominalOnly,diagnostics):null;
+        return this;
+    }
+
     private SeePolicy seePolicy = SeePolicy.OFF;
     private SeePolicy.Diagnostics seeDiagnostics;
     private FutilityPolicy futilityPolicy = FutilityPolicy.OFF;
@@ -231,7 +248,7 @@ public final class ExactSearch {
 
     /** Explicit, idle cumulative SR-032 composition; controls never alter exact/reference constructors. */
     public ExactSearch withTacticalExtension(TacticalExtension policy,TacticalExtensionDiagnostics diagnostics) {
-        if(active || requestActive || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
+        if(active || requestActive || historyLearning != null || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
                 || lmrPolicy != LMR_QUIET || iterationReuse == null || nullMovePruning || reverseFutility
                 || pairNull != NullMovePolicy.OFF || checkPolicy != CHECK_OFF
                 || futilityPolicy != FutilityPolicy.OFF || internalPolicy != InternalSearchPolicy.OFF
@@ -245,7 +262,7 @@ public final class ExactSearch {
 
     /** Explicit SR-033 experiment over unchanged cumulative production policies. */
     public ExactSearch withDepthFeedback(DepthFeedback policy, DepthFeedback.Diagnostics diagnostics) {
-        if(active || requestActive || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
+        if(active || requestActive || historyLearning != null || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
                 || lmrPolicy != LMR_QUIET || iterationReuse == null || nullMovePruning || reverseFutility
                 || pairNull != NullMovePolicy.OFF || checkPolicy != CHECK_OFF
                 || futilityPolicy != FutilityPolicy.OFF || internalPolicy != InternalSearchPolicy.OFF
@@ -261,7 +278,7 @@ public final class ExactSearch {
 
     /** Explicit SR-021 composition; requires the accepted cumulative recursive policies. */
     public ExactSearch withFutilityResearch(FutilityPolicy policy, FutilityPolicy.Diagnostics diagnostics) {
-        if(active || requestActive || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
+        if(active || requestActive || historyLearning != null || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
                 || lmrPolicy != LMR_QUIET || iterationReuse == null || nullMovePruning || reverseFutility
                 || pairNull != NullMovePolicy.OFF || checkPolicy != CHECK_OFF || depthFeedback != DepthFeedback.OFF
                 || tacticalExtension != TacticalExtension.OFF)
@@ -273,6 +290,8 @@ public final class ExactSearch {
 
     /** Configure an idle cumulative research owner; never changes the independent reference. */
     public ExactSearch withSeeResearch(SeePolicy policy, SeePolicy.Diagnostics diagnostics) {
+        if(historyLearning != null && policy != SeePolicy.OFF && policy != SeePolicy.QXRAY)
+            throw new IllegalStateException("History learning requires ordinary or QXRAY leaves");
         if((futilityPolicy != FutilityPolicy.OFF || depthFeedback != DepthFeedback.OFF
                 || tacticalExtension != TacticalExtension.OFF) && policy != SeePolicy.QXRAY)
             throw new IllegalStateException("Futility research must retain QXRAY");
@@ -740,6 +759,7 @@ public final class ExactSearch {
         if(checkDiagnostics != null) checkDiagnostics.reset();
         if(lmrDiagnostics != null) lmrDiagnostics.reset();
         if(lmpDiagnostics != null) lmpDiagnostics.reset();
+        if(historyLearning != null) historyLearning.reset();
         this.cancelled = cancelled;
         try {
             boolean retainHistory;
@@ -1389,6 +1409,7 @@ public final class ExactSearch {
             long reservation = coordinate && i > 0
                     ? reservations.claim(MoveReservations.fingerprint(key, depth, move)) : 0;
             boolean fullSearch = true;
+            boolean nominalObserved = true;
             try {
                 if(traversal == PVS && i > 0) {
                     // Validated windows stay within +/-32769; alpha < beta implies
@@ -1401,7 +1422,7 @@ public final class ExactSearch {
                     int reduction = lmrReduction(depth, ply, i + 1, searchedQuiets, scout, checked, move,
                             hashMove, status, child, alpha, beta);
                     int baseReduction = reduction;
-                    boolean nominalObserved = reduction == 0;
+                    nominalObserved = reduction == 0;
                     boolean reducedImproved = false;
                     if(depthFeedback != DepthFeedback.OFF && reduction > 0) {
                         if(feedbackDiagnostics != null) feedbackDiagnostics.eligible++;
@@ -1489,6 +1510,7 @@ public final class ExactSearch {
                 history.popRealPosition();
             }
             if(ply == 0 && iterationReuse != null) iterationReuse.rootResult(move, score, nodes - observationNodes - rootNodesBefore);
+            if(historyLearning != null) historyLearning.searched(ply,i,nominalObserved);
             if(countEligible && lmpDiagnostics != null)
                 lmpDiagnostics.searched(board, child, move, ply, depth, i + 1, searchedQuiets,
                         capturedAlpha, beta, score);
@@ -1509,7 +1531,9 @@ public final class ExactSearch {
                 if(lmpDiagnostics != null) lmpDiagnostics.cutoff(board, ply, depth, legalMoves, i);
                 if(quietHistory != null && !nullProbeActive && !nullVerification) {
                     checkpoint(); // A final child may have raised cancellation, even with TT off.
-                    QuietHistory.recordCutoff(quietHistory, legalMoves, i, Board.enPassantSquare(status), depth);
+                    if(historyLearning == null)
+                        QuietHistory.recordCutoff(quietHistory, legalMoves, i, Board.enPassantSquare(status), depth);
+                    else historyLearning.cutoff(quietHistory,legalMoves,i,Board.enPassantSquare(status),depth,ply);
                     if(continuationHistory != null) ContinuationHistory.recordCutoff(continuationHistory,
                             continuationContext, legalMoves, i, Board.enPassantSquare(status), depth);
                     if(killers != null) KillerMoves.recordCutoff(killers, ply, move, Board.enPassantSquare(status));

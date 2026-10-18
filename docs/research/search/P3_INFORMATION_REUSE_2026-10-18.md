@@ -8,11 +8,10 @@ contains evidence and resume state, not additional policy authority.
 
 ## Resume and work selection
 
-Current work: baseline observation complete; next implement explicit, default-off
-EFFORT-preserving history retention and nominal-label controls, then completed
-same-SearchKey hints in the existing table where proof is absent. Keep defaults
-unchanged. Compare coherent combinations only after individual semantic controls
-pass. No strength conclusion yet.
+Current work: baseline and O2 mechanism/cost diagnostics complete. Retention and
+nominal-label controls remain experimental, with mixed cost evidence. Investigate
+completed same-SearchKey hints in existing proof-free table slots and coherent
+O1/O2 combinations next; keep production defaults unchanged. No strength claim.
 
 Version-dependent operations are BLOCKED by the inherited reservation described
 below. Independent O1/O2 source inspection, research, testing and separately
@@ -179,6 +178,55 @@ No engine change or oracle relaxation was used to fix the harness.
 Instrumented elapsed values are not clean cost estimates. No clock games,
 candidate, confidence interval, promotion, or multiworker strength claim yet.
 Read-only baseline results do not resolve retained version-finalizer state.
+
+## O2 retention and label quality — completed development diagnostics
+
+[Prospective plan](p3-information-reuse-2026-10-18/history-v1.json),
+[source manifest](p3-information-reuse-2026-10-18/history-v1-manifest.json),
+[mechanism summary](p3-information-reuse-2026-10-18/history-observe-v1-summary.json),
+[cost summary](p3-information-reuse-2026-10-18/history-cost-v1-summary.json).
+The raw `history-observe-v1.jsonl` and `history-cost-v1.jsonl` files remain local
+under this experiment's `raw/`, with logs and retained test XML.
+
+`EFFORT_HISTORY` adds history retention to EFFORT rather than replacing its PV
+and effort ordering. `HistoryLearning` tracks nominal child-depth observations in
+16,448 bytes of worker-private primitive bit storage; an experimental filter
+omits maluses for reduced unverified failures. All searched outcomes remain
+heuristic under selective descendants. Production factories do not select either
+alternative. No cross-request persistence or broader retry lifetime was added.
+
+17 focused tests pass, including expanded retention invalidation/rule cases,
+independent unpruned enumeration, owner isolation, aborted-learning clearing and
+observation parity. Across 780 diagnostic observations, the 156 champion results
+match the pre-change frozen baseline, and 156 observation-only results match the
+champion. Baseline observed 19,606 nominal and 1,941 reduced-unverified maluses;
+the latter are about 9% of maluses in this sample, not independent error labels.
+The per-invocation 250k cap interrupted 1 retention, 2 filter-only and 1 combined
+D6 observations. They remain in evidence; completed-comparison summaries exclude
+them explicitly and do not interpret interruption as inferiority or futility.
+
+The separate 416-request cost run completed every D6 request with its larger
+prospective safety budget. It uses two rotated rounds, four warmed owners, no
+learning observer and production admission accounting:
+
+| Configuration | D6 nodes / champion | D6 elapsed / champion | 100k-admission mean completed depth |
+| --- | ---: | ---: | ---: |
+| Champion | 1.000 | 1.000 | 9.038 |
+| EFFORT_HISTORY | .962 | .962 | 9.154 |
+| Nominal-only maluses | 1.059 | 1.020 | 9.077 |
+| Both | 1.043 | .990 | 9.154 |
+
+Retention elapsed ratios vary .912–1.013 across rounds; this is noisy local cost
+evidence, not a reliable speedup claim. Fixed-node elapsed ratios are 1.020,
+1.042 and 1.004 respectively. Thread allocation, GC/compilation indicators and
+new-game reset costs are retained. Thread CPU does not include background JIT/GC
+CPU, and engine construction is excluded. No strength games have run.
+
+Disposition: retain all three as controlled research alternatives; no standalone
+adoption or rejection. Better label semantics need not reduce nodes, and retaining
+biased history may help or hurt. O1 combinations now have greater decision value
+than a threshold sweep of these unchanged formulations. Broad final regression
+and any candidate's clock/worker confirmation remain required.
 
 ## Human dependencies and boundaries
 

@@ -144,6 +144,15 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
         return adapter;
     }
 
+    /** Phase 3 opt-in O2 controls over the accepted one-worker cumulative engine. */
+    public static ExactSearchAdapter historyResearch(SearchEvaluation evaluation, boolean retain,
+            boolean nominalOnly, com.ohinteractive.seedv6.search.exact.HistoryLearning.Diagnostics diagnostics) {
+        if(!evaluation.isBrnPair2()) throw new IllegalArgumentException("History research requires Pair-2");
+        var adapter=seeResearch(evaluation,SeePolicy.QXRAY,null);
+        adapter.exact.withHistoryResearch(retain,nominalOnly,diagnostics);
+        return adapter;
+    }
+
     public static ExactSearchAdapter depthFeedbackResearch(SearchEvaluation evaluation,
             com.ohinteractive.seedv6.search.exact.DepthFeedback policy,
             com.ohinteractive.seedv6.search.exact.DepthFeedback.Diagnostics diagnostics) {

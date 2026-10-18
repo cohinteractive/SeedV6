@@ -7,7 +7,8 @@ import com.ohinteractive.seedv6.rules.GameHistory;
 /** SR-005 request-private heuristic information. Never supplies a score or TT proof.
  * Scratch becomes eligible only after a completed full-window iteration. */
 public final class IterationReuse {
-    public static final int OFF=0, OBSERVE=1, ROOT=2, PV=3, SCORE=4, EFFORT=5, HISTORY=6, PV_HISTORY=7;
+    public static final int OFF=0, OBSERVE=1, ROOT=2, PV=3, SCORE=4, EFFORT=5, HISTORY=6, PV_HISTORY=7,
+            EFFORT_HISTORY=8;
     final int policy;
     final Diagnostics diagnostics;
     private final long[] root = new long[Board.MAX_BITBOARDS];
@@ -20,7 +21,7 @@ public final class IterationReuse {
     private final int[] scores = new int[512];
 
     IterationReuse(int policy, Diagnostics diagnostics) {
-        if(policy < OBSERVE || policy > PV_HISTORY) throw new IllegalArgumentException("Invalid reuse policy");
+        if(policy < OBSERVE || policy > EFFORT_HISTORY) throw new IllegalArgumentException("Invalid reuse policy");
         this.policy=policy; this.diagnostics=diagnostics;
     }
     void clear() { game=null; completedDepth=lineLength=count=pendingCount=0; eligible=accepting=false; }
@@ -36,8 +37,9 @@ public final class IterationReuse {
         System.arraycopy(source.line, 0, line, 0, lineLength);
         System.arraycopy(source.ranked, 0, ranked, 0, count);
     }
-    boolean history() { return policy==HISTORY || policy==PV_HISTORY; }
-    boolean ranking() { return policy==SCORE || policy==EFFORT; }
+    boolean history() { return policy==HISTORY || policy==PV_HISTORY || policy==EFFORT_HISTORY; }
+    boolean effort() { return policy==EFFORT || policy==EFFORT_HISTORY; }
+    boolean ranking() { return policy==SCORE || effort(); }
     /** Read a completed full-root observation during a restricted root job.
      * No scout/job may replace it or contribute pending root observations. */
     void prepareRootJob(long[] board, GameHistory history, int depth, boolean request) {
@@ -94,7 +96,7 @@ public final class IterationReuse {
         // Fail-low values are NOT exact alternative scores; no additional searches.
         for(int i=1;i<pendingCount;i++) {
             long move=pending[i], cost=effort[i]; int score=scores[i],j=i;
-            while(j>0 && (policy==EFFORT ? effort[j-1]<cost : scores[j-1]<score)) {
+            while(j>0 && (effort() ? effort[j-1]<cost : scores[j-1]<score)) {
                 pending[j]=pending[j-1]; scores[j]=scores[j-1]; effort[j]=effort[j-1]; j--;
             }
             pending[j]=move; scores[j]=score; effort[j]=cost;

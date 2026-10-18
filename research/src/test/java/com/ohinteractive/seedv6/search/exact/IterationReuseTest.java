@@ -30,7 +30,7 @@ class IterationReuseTest {
     @Test void exactQsearchValuesRemainIndependentOfHintsAndHistory() {
         for(String fen:CheckExtensionTest.FENS) {
             var b=Board.fromFen(fen);var g=GameHistory.initial(b);
-            for(int p=2;p<=7;p++) {
+            for(int p=2;p<=IterationReuse.EFFORT_HISTORY;p++) {
                 var e=engine(p,false,null);e.beginRequest();
                 for(int depth=1;depth<=3;depth++) {
                     var ref=ExactSearch.quiescencePvsResearch(HCE,null,0).search(b,g,depth,()->false);
@@ -42,7 +42,7 @@ class IterationReuseTest {
         }
     }
     @Test void independentEnumerationChecksMatesRulesAndEpWithRetainedInformation() {
-        for(String fen:Arrays.copyOf(CheckExtensionTest.FENS,4)) for(int policy=2;policy<=7;policy++) {
+        for(String fen:Arrays.copyOf(CheckExtensionTest.FENS,4)) for(int policy=2;policy<=IterationReuse.EFFORT_HISTORY;policy++) {
             var b=Board.fromFen(fen);var g=GameHistory.initial(b);var e=engine(policy,false,null);e.beginRequest();
             for(int d=1;d<=2;d++) {
                 int expected=new Phase2Oracle.RestrictedOracle(HCE,0)
@@ -55,7 +55,7 @@ class IterationReuseTest {
 
     @Test void standaloneInvocationsAndRepeatedRequestsCannotReuseStaleState() {
         var b=Board.startingPosition();var g=GameHistory.initial(b);
-        for(int p=2;p<=7;p++) {
+        for(int p=2;p<=IterationReuse.EFFORT_HISTORY;p++) {
             var e=engine(p,true,null);var fresh=engine(0,true,null);
             same(fresh.search(b,3),e.search(b,3));same(fresh.search(b,4),e.search(b,4));
             for(int repeat=0;repeat<2;repeat++) {
@@ -94,7 +94,7 @@ class IterationReuseTest {
 
     @Test void interruptedIterationInvalidatesInformationAndPublishesNoLine() {
         var b=Board.startingPosition();var g=GameHistory.initial(b);
-        for(int p=2;p<=7;p++) {
+        for(int p=2;p<=IterationReuse.EFFORT_HISTORY;p++) {
             var diag=new IterationReuse.Diagnostics();var e=engine(p,true,diag);e.beginRequest();
             e.search(b,g,2,()->false);
             var r=e.search(b,g,3,()->e.visitedNodes()>100);assertFalse(r.completed());assertEquals(0,r.principalVariation().length);
@@ -112,14 +112,14 @@ class IterationReuseTest {
     }
     @Test void terminalAndClockBoundaryHaveNoHeuristicOverride() {
         for(String fen:new String[]{"7k/6Q1/5K2/8/8/8/8/8 b - - 0 1","7k/5K2/6Q1/8/8/8/8/8 b - - 0 1",
-                "4k3/8/8/8/8/8/8/R3K3 w - - 100 1"}) for(int p=2;p<=7;p++) {
+                "4k3/8/8/8/8/8/8/R3K3 w - - 100 1"}) for(int p=2;p<=IterationReuse.EFFORT_HISTORY;p++) {
             var b=Board.fromFen(fen);var e=engine(p,true,null);e.beginRequest();
             for(int d=1;d<=3;d++)same(engine(0,true,null).search(b,d),e.search(b,d));e.endRequest();
         }
     }
     @Test void completedRootHintsCannotCreateSelectiveTtProof() {
         var b=Board.startingPosition();var g=GameHistory.initial(b);
-        for(int p=2;p<=7;p++) {
+        for(int p=2;p<=IterationReuse.EFFORT_HISTORY;p++) {
             var tt=new TTable(1);var e=ExactSearch.iterationReuseResearch(HCE,tt,p,true,null);e.beginRequest();
             for(int d=1;d<=4;d++) {
                 assertTrue(e.search(b,g,d,()->false).selective());

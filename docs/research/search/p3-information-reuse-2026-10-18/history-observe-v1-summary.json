@@ -1,0 +1,86 @@
+{
+  "complete": {
+    "observations": 780,
+    "status": "passed",
+    "mode": "observe"
+  },
+  "parity": "156 frozen baseline and 156 observation-only matched; full semantic tuple excluding time",
+  "policies": [
+    {
+      "policy": 0,
+      "observations": 156,
+      "incomplete": 0,
+      "learning": {
+        "rewards": 0,
+        "nominalMaluses": 0,
+        "reducedMaluses": 0,
+        "filteredMaluses": 0
+      },
+      "d6ObservedEntriesIncludingAborted": 1542589,
+      "commonCompletedD6Roots": 26,
+      "commonCompletedD6NodeRatio": 1.0,
+      "commonCompletedD6ChangedMoves": 0
+    },
+    {
+      "policy": 1,
+      "observations": 156,
+      "incomplete": 1,
+      "learning": {
+        "rewards": 47135,
+        "nominalMaluses": 17891,
+        "reducedMaluses": 1660,
+        "filteredMaluses": 0
+      },
+      "d6ObservedEntriesIncludingAborted": 1498387,
+      "commonCompletedD6Roots": 25,
+      "commonCompletedD6NodeRatio": 0.9307763310150667,
+      "commonCompletedD6ChangedMoves": 5
+    },
+    {
+      "policy": 2,
+      "observations": 156,
+      "incomplete": 2,
+      "learning": {
+        "rewards": 46467,
+        "nominalMaluses": 19727,
+        "reducedMaluses": 2347,
+        "filteredMaluses": 2347
+      },
+      "d6ObservedEntriesIncludingAborted": 1659716,
+      "commonCompletedD6Roots": 24,
+      "commonCompletedD6NodeRatio": 1.0418513560859917,
+      "commonCompletedD6ChangedMoves": 2
+    },
+    {
+      "policy": 3,
+      "observations": 156,
+      "incomplete": 1,
+      "learning": {
+        "rewards": 45920,
+        "nominalMaluses": 16638,
+        "reducedMaluses": 1750,
+        "filteredMaluses": 1750
+      },
+      "d6ObservedEntriesIncludingAborted": 1556752,
+      "commonCompletedD6Roots": 25,
+      "commonCompletedD6NodeRatio": 0.9742922924594701,
+      "commonCompletedD6ChangedMoves": 4
+    },
+    {
+      "policy": 4,
+      "observations": 156,
+      "incomplete": 0,
+      "learning": {
+        "rewards": 45014,
+        "nominalMaluses": 19606,
+        "reducedMaluses": 1941,
+        "filteredMaluses": 0
+      },
+      "d6ObservedEntriesIncludingAborted": 1542589,
+      "commonCompletedD6Roots": 26,
+      "commonCompletedD6NodeRatio": 1.0,
+      "commonCompletedD6ChangedMoves": 0
+    }
+  ],
+  "interpretation": "Diagnostic, censored and historical; no strength or accuracy claim; cap-interrupted rows excluded from same-depth completed contrasts, preserved in counts. No inferiority/futility conclusion from interruption."
+}

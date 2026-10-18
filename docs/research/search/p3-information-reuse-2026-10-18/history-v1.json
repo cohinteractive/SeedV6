@@ -1,0 +1,23 @@
+{
+  "id": "P3-O1O2-HISTORY-v1",
+  "purpose": "Development mechanism and cost diagnostics; no strength inference",
+  "startingCommit": "6fb104e",
+  "model": "build-assets/production/bre-pair2-g32.brn-pair2",
+  "modelSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+  "corpus": "docs/research/search/sr005-phase2-2026-10-13/diagnostic-corpus.tsv",
+  "corpusSha256": "cb4b9e92e328426d6f3ebc5d0c590fdd4cff2421c1dda9f75d0e30cee4f54c08",
+  "policies": {
+    "0": "Accepted EFFORT/QXRAY cumulative champion",
+    "1": "EFFORT_HISTORY: retain main quiet history across eligible completed adjacent full-window iterations",
+    "2": "NOMINAL: omit malus for reduced unverified predecessors; retain completed nominal child-depth observations, including selective descendants",
+    "3": "EFFORT_HISTORY + NOMINAL",
+    "4": "Observation-only champion; require per-root/depth parity with 0"
+  },
+  "semantics": "No unsearched/aborted labels; retained history is heuristic and not proof. Current request/root/history/adjacent-depth restrictions remain; cancellation invalidates learning. TT identity/proof/replacement, LMR verification and production defaults unchanged.",
+  "observation": "All corpus roots at D1..D6, max 250000 recursive entries per invocation; preserve incomplete outcomes. Compare control with prior BASELINE-v1 observations.",
+  "cost": "Policies 0..3, two rounds, rotate policy order by root+round; D6 capped at 2 million prepared admissions and 100000-admission whole requests; four 100000-node starting-position warmups per policy. 30s safety deadline invalidates time-censored cost result. No learning observers. New-game reset measured separately; construction excluded.",
+  "resources": "One process, one Search worker, ActiveProcessorCount=1, max heap 768 MiB, BelowNormal; no simultaneous tests/clock games",
+  "outputs": ["raw/history-observe-v1.jsonl", "raw/history-cost-v1.jsonl"],
+  "nextDecision": "Choose further O1/combinations or consumer tests from coverage, costs and changed decisions; no component Elo requirement and no promotion. Fresh prospective clock evidence still required.",
+  "version": "Deferred independently of inherited finalizer token; no finalized version claim"
+}
