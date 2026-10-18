@@ -16,8 +16,9 @@ screen also completed with a positive unconfirmed estimate. The policy 5 versus 
 retention and policy 7 versus 5 nominal-learning filter ablations both completed
 near even, with wide uncertainty. Policy 4 is selected for separate one- and
 four-worker fresh confirmations; both protocols and stage identities are frozen
-and verified. The first one-worker execution window is next; no confirmation
-games have yet run.
+and verified. The first one-worker confirmation window is running at
+`raw/confirm-v1-w1-stage1`; its first statistical look requires all 128 pairs.
+Four-worker confirmation play has not started.
 The separately planned [deeper lifetime replay](p3-information-reuse-2026-10-18/lifetime-v2.json)
 passed compilation, three focused tests and all 256 request comparisons between
 the four-worker screen and history ablations; its parameterization changes research code only.
@@ -622,7 +623,7 @@ Both selections, numerical decision-value/resource forecasts and verified frozen
 protocols are recorded. The
 freezer preserves both tested runtime trees and the executor dependencies, excludes
 prior opening/diagnostic receipts, and prepares fresh partition-one 128/512-pair
-looks. Actual confirmation play remains pending.
+looks. One-worker stage-one play is underway; four-worker play remains pending.
 
 - Blocking finalized-version operations only: supported reconciliation authority
   for the inherited local integrity-failure reservation. Independent research may
