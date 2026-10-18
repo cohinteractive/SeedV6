@@ -40,6 +40,13 @@ def command(plan, action, *args):
     return json.loads(result.stdout)
 
 
+def verify_runtime(p, arguments):
+    """Permit explicitly frozen per-side binaries; legacy protocols share one tree."""
+    for side in ('baseline', 'candidate'):
+        expected = p['runtimeTrees'][side] if 'runtimeTrees' in p else p['runtimeTree']
+        t.require(t.tree(arguments[side]) == expected, 'Wrong runtime: ' + side)
+
+
 def assess(protocol, count):
     p = verify(protocol)
     t.require(1 <= count <= len(p['stages']), 'Invalid stage count')
@@ -51,6 +58,8 @@ def assess(protocol, count):
         plan = Path(stage['plan']); export = Path(stage['export'])
         t.require(command(plan, 'status')['status'] == 'complete', 'Incomplete stage')
         plan_data = t.read(plan); receipt = t.read(export/'complete.json')
+        if 'expectedAdapter' in p:
+            t.require(plan_data['adapter'] == p['expectedAdapter'], 'Wrong match adapter')
         t.require(plan_data['configurationSha256'] == t.digest(stage['config']), 'Wrong stage configuration')
         t.require(t.digest(plan.parent/'inputs/assessment-protocol.txt') == t.digest(protocol), 'Wrong frozen protocol')
         t.require(receipt['planSha256'] == t.digest(plan) and receipt['pairs'] == stage['pairs'], 'Export identity')
@@ -60,8 +69,7 @@ def assess(protocol, count):
         a = plan_data['arguments']
         for key, value in p['expectedArguments'].items():
             t.require(a[key] == value, 'Wrong domain: ' + key)
-        for side in ('baseline', 'candidate'):
-            t.require(t.tree(a[side]) == p['runtimeTree'], 'Wrong runtime: ' + side)
+        verify_runtime(p, a)
         selection = t.read(stage['selection']); keys = selection['positionKeys']
         t.require(selection['partition'] == 1 and len(keys) == stage['pairs'] == len(set(keys)), 'Opening selection')
         t.require(not seen.intersection(keys) and not excluded.intersection(keys), 'Opening reuse')

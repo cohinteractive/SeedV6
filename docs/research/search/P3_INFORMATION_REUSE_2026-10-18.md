@@ -327,6 +327,24 @@ pressure at 64/1 MiB. It ran between the screens, with no overlapping clock game
 This is observer work, not a new candidate mechanism. Preserve all raw trajectories
 and instrumented results.
 
+The separate [four-worker hint screen](p3-information-reuse-2026-10-18/clock-development-v1-w4-p4.json)
+is also prepared at `raw/clock-development-v1-w4-p4/plan.json`, with the same
+development openings, 32 pairs, concurrency one and BelowNormal priority. Run
+after p7, verify its own frozen-binary preflight and observe host headroom; never
+pool worker domains. Current user GUI work must remain untouched.
+
+`tools/p3-information-confirmation.py` supplies the Phase 3 identity checks around
+the existing SR-032 staged executor and unchanged SR-024 decision rule. A small
+back-compatible runtime-tree check now allows the actual pre-experiment champion
+binary on one side and the experimental binary on the other. Three new binding
+tests and six shared continuation tests pass. No confirmation protocol or finalist
+has yet been frozen. Initial family contrast indices 1/2 are reserved for one/four
+workers, with prospective 128/512-pair looks and inherited alpha spending,
+two-sided eligibility, sensitivity and stopping rules. Freeze an immutable copy
+of the assessor/dependency bundle before any confirmation; closed protocols and
+their tools must remain unchanged. Later retuned confirmations require unused
+family alpha, not reuse of a closed contrast.
+
 ### Completed policy-4 screen
 
 [Complete assessment](p3-information-reuse-2026-10-18/clock-development-v1-p4-summary.json):

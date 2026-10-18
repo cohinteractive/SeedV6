@@ -1,0 +1,20 @@
+{
+  "id": "P3-O1O2-CONFIRMATION-ADAPTER-v1",
+  "status": "passed",
+  "tests": {
+    "tools/test_p3_information_confirmation.py": 3,
+    "tools/test_sr032_confirmation.py": 6
+  },
+  "sourceSha256": {
+    "tools/p3-information-confirmation.py": "56622088bd0d34850a686fcaedce2f70f61e78ba2c58b79895aa8cdf1b81cb87",
+    "tools/sr032-confirmation.py": "78804bb290c5ad913314934d93991e32d8b875e4b8c0374a985b6968e459a3aa",
+    "tools/sr024-confirmation.py": "b2a2f997b86cd3e68a550465f77fdd3ff4f9ccd5efce1235039a6107a1e2ab2f",
+    "tools/test_p3_information_confirmation.py": "ab371defa95faf968da0aac3a9aa5175a858c0d988a59ec91500f5f5a54774ff",
+    "tools/test_sr032_confirmation.py": "5ccaa9b7f81b9009abac9c70917b06e21414cbd0dd9df5dc3773e247fced8728"
+  },
+  "logs": {
+    "docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirmation-adapter-tests-v1.log": "5c3395db976f55c51bbc70858e99b08a20236c3af1e1c21e8355f913e395432a",
+    "docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\shared-confirmation-tests-v1.log": "bfab35da56e4f1763f565c8dba439d7d6e4f0014fbcdc813d0245b1f36fa6385"
+  },
+  "limits": "No confirmation games or finalist selection. Reuses the existing full-stage executor and SR-024 statistical rule; only per-side binary binding and Phase 3 protocol guards are added. Final source differs from the tested new test file only by removal of one unused import."
+}
