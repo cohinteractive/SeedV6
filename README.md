@@ -74,8 +74,8 @@ preserves the original BINP chunks and never modifies the downloaded archives.
 - `src/integrationTest`: mixed application/training tests requiring research references.
 - `src/researchLauncher`: small explicit research-UCI adapter; excluded from production.
 - `app/src/test`: remaining production/legacy integration checks.
-- `source`: active Phase 2 Search Contract and Research Frontier.
-- `docs`: architecture, operation, frozen Phase 1 search canon, historical reports and evidence.
+- `source`: active Phase 3 Search Contract and Research Frontier.
+- `docs`: architecture, operation, frozen Phase 1/2 search canon, historical reports and evidence.
 - `archive`: historical instrumentation, excluded from every source set.
 
 Routine headless checks exclude the explicitly expensive NNUE suite:
@@ -96,12 +96,15 @@ The diagnostic command dispatcher is now `:app:developerTools`:
 # Frozen replay: use -PtoolArgs="frozen-wdl ..." with the explicit input paths.
 ```
 
-The active Phase 2 [Search Contract](source/CHESS_SEARCH_CONTRACT.md) and
+The active Phase 3 [Search Contract](source/CHESS_SEARCH_CONTRACT.md) and
 [Research Frontier](source/CHESS_SEARCH_RESEARCH_FRONTIER.md) govern the
-strength-focused programme. The complete Phase 1
+strength-focused, architecture-aware combination programme. The complete Phase 1
 [Contract R045](docs/search-phase1/CHESS_SEARCH_CONTRACT.md) and
 [Frontier F052](docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md) are frozen
-historical archives; their original active labels describe Phase 1 only.
+historical archives. Final Phase 2 [Contract P2-R049](docs/search-phase2/CHESS_SEARCH_CONTRACT.md)
+and [Frontier P2-F053](docs/search-phase2/CHESS_SEARCH_RESEARCH_FRONTIER.md)
+are also frozen byte-for-byte; historical active and handback statements are not
+current instructions. Phase 3 has no active research objective at initialization.
 [Search reports](docs/research/search/) and
 [BRN reports](docs/research/brn/) preserve the supporting research; their historical
 measurements do not establish current performance or strength.

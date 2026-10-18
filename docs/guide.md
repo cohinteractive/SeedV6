@@ -183,15 +183,18 @@ See [architecture and source classification](architecture.md). The older alpha-b
 
 ## Search Research
 
-Phase 2 is governed by the active [Contract](../source/CHESS_SEARCH_CONTRACT.md)
+Phase 3 is governed by the active [Contract](../source/CHESS_SEARCH_CONTRACT.md)
 and [Research Frontier](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). It seeks
-credible playing-strength gains while preserving the established correctness
-foundations. The complete Phase 1 [Contract R045](search-phase1/CHESS_SEARCH_CONTRACT.md),
-[Frontier F052](search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md) and
-[reports/evidence](research/search/) remain historical references. Phase 2 admits
-the historical rejections for reconsideration and preserves pending pondering
-and evaluator-assisted guidance without starting them. BRE-Pair 2 baseline
-verification and all feature research belong to subsequent authorized work.
+whole-engine playing strength through architectural improvements, integrated
+candidates, combinations, reverse ablation and champion promotion, preserving
+the accepted Pair-2 baseline and binding correctness guarantees. The complete
+Phase 1 [Contract R045](search-phase1/CHESS_SEARCH_CONTRACT.md) and
+[Frontier F052](search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md), final Phase 2
+[Contract P2-R049](search-phase2/CHESS_SEARCH_CONTRACT.md) and
+[Frontier P2-F053](search-phase2/CHESS_SEARCH_RESEARCH_FRONTIER.md), and
+[reports/evidence](research/search/) remain historical evidence. No Phase 3
+research objective is active at initialization; first selection follows
+GPT/owner reconciliation and confirmed replacement of both Project Source mirrors.
 
 ## UCI and Search Lifecycle
 

@@ -48,7 +48,7 @@ performs full-window completed iterations over
 [`ExactSearchAdapter`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java)
 and [`ExactSearch`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java).
 This is the sole production algorithm lineage, confirmed from construction sites
-and retained by the Phase 2 [contract](../source/CHESS_SEARCH_CONTRACT.md) and
+and retained by the Phase 3 [contract](../source/CHESS_SEARCH_CONTRACT.md) and
 [frontier](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md).
 
 Normal TT-enabled search uses recursive nominal-depth PVS, legal hash moves,
@@ -170,8 +170,9 @@ oracle/test/comparison consumers and therefore belong in verification.
 ## Documentation and developer commands
 
 The [guide](guide.md) retains operation, training and packaging details.
-`source/` holds both active Phase 2 Search masters; `docs/search-phase1/` holds
-the frozen, byte-preserved R045/F052 records. `docs/research/search/` holds search
+`source/` holds both active Phase 3 Search masters; `docs/search-phase1/` holds
+frozen R045/F052 and `docs/search-phase2/` holds frozen P2-R049/P2-F053, all
+byte-preserved historical records. `docs/research/search/` holds search
 reports and their CSV/GZIP/ZIP evidence; `docs/research/brn/` holds BRN reports.
 `docs/history/` contains transplant discovery and explicitly historical WS architecture.
 `docs/images/` contains Play/Training references. Build-required source artwork
@@ -188,7 +189,7 @@ installations retain their original command conventions; they are not rewritten.
 
 The search contract/frontier identify manually refreshed ChatGPT Project Source
 mirrors. Their active repository master locations are `source/`; the owner must
-refresh both mirrors and confirm synchronization before the next GPT-led Phase 2
+refresh both mirrors and confirm synchronization before dependent GPT-led Phase 3
 research planning session. Initialization does not modify the external mirrors.
 
 ## Inference/training boundary
