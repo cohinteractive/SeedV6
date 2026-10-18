@@ -15,8 +15,9 @@ screens with positive but unconfirmed estimates. The separate four-worker hint
 screen also completed with a positive unconfirmed estimate. The policy 5 versus 4
 retention and policy 7 versus 5 nominal-learning filter ablations both completed
 near even, with wide uncertainty. Policy 4 is selected for separate one- and
-four-worker fresh confirmations; four-worker freezing is complete and one-worker
-freezing is next. No confirmation games have run.
+four-worker fresh confirmations; both protocols and stage identities are frozen
+and verified. The first one-worker execution window is next; no confirmation
+games have yet run.
 The separately planned [deeper lifetime replay](p3-information-reuse-2026-10-18/lifetime-v2.json)
 passed compilation, three focused tests and all 256 request comparisons between
 the four-worker screen and history ablations; its parameterization changes research code only.
@@ -515,6 +516,19 @@ must be produced by the frozen executor; the new
 only reproduces that stored verified result and adds audited process/host costs.
 It is syntax checked; actual use awaits the first completed scheduled look.
 
+The [one-worker protocol](p3-information-reuse-2026-10-18/confirmation-v1-w1/protocol.json)
+is frozen, SHA-256 `7d8296183ee4c38d85faa81b8855b859e9aa7719ff9c2fc6b5a4592f4a6afbf3`.
+Its [preparation receipt](p3-information-reuse-2026-10-18/confirmation-v1-w1-preparation.json)
+passed both stages' immutable tree, binary, prospective argument, protocol and
+schedule checks. Its fresh 512-opening selection excludes the reserved four-worker
+set as well as all earlier development/diagnostic selections. Execute only
+`raw/confirmation-v1-w1-tools/p3-information-confirmation.py run --protocol ...
+--stop-before <explicit UTC deadline> --max-stages 1` for the first scheduled look.
+The current plan is roughly 50-minute admission windows, which leave time for
+complete 20-minute watchdog blocks and normally finish several shorter blocks.
+Review host headroom at the safe boundaries and resume the same protocol without
+looking at partial outcomes. Then run the four-worker first look separately.
+
 ### Hint lifetime and pressure
 
 [Selection](p3-information-reuse-2026-10-18/lifetime-v1-selection.json),
@@ -604,11 +618,11 @@ The [confirmation freezer](p3-information-reuse-2026-10-18/prepare_confirmation.
 created and verified the four-worker protocol above, without launching games.
 The maintained helper now includes the same per-stage checks used for its
 read-only preparation receipt; the already-frozen tool copy is untouched.
-One-worker selection and its numerical decision-value/resource forecast are
-recorded; its protocol freezing remains pending. The
+Both selections, numerical decision-value/resource forecasts and verified frozen
+protocols are recorded. The
 freezer preserves both tested runtime trees and the executor dependencies, excludes
 prior opening/diagnostic receipts, and prepares fresh partition-one 128/512-pair
-looks. The one-worker protocol and all actual confirmation play remain pending.
+looks. Actual confirmation play remains pending.
 
 - Blocking finalized-version operations only: supported reconciliation authority
   for the inherited local integrity-failure reservation. Independent research may

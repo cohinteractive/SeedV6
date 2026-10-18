@@ -1,0 +1,21 @@
+{
+  "protocol": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\confirmation-v1-w1\\protocol.json",
+  "protocolSha256": "7d8296183ee4c38d85faa81b8855b859e9aa7719ff9c2fc6b5a4592f4a6afbf3",
+  "checkedUtc": "2026-10-18T13:05:43.389841+00:00",
+  "stages": [
+    {
+      "plan": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage1\\plan.json",
+      "sha256": "038992a70f8b5d9d2971124537e599ff7d08a1254018fe1798d122554577b16f",
+      "pairs": 128,
+      "status": "prepared; all immutable trees and prospective domain checks passed; no games run"
+    },
+    {
+      "plan": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\confirm-v1-w1-stage2\\plan.json",
+      "sha256": "55d964c351be534ed4dbebef320bd1d7e4078826d38949777a3f915354b4995e",
+      "pairs": 384,
+      "status": "prepared; all immutable trees and prospective domain checks passed; no games run"
+    }
+  ],
+  "status": "passed",
+  "limits": "Read-only preparation and identity checks, not runtime confirmation or playing-strength evidence."
+}

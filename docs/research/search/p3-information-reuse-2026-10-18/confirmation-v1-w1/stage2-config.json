@@ -1,0 +1,50 @@
+{
+  "id": "P3-O1O2-CONFIRM-v1-W1-SELECTION",
+  "adapter": "p3-information-match.py",
+  "purpose": "confirmatory",
+  "assessmentPlan": "Only prospective cumulative 128/512-pair looks. Existing SR-024 paired-normal rule with family alpha .05/2^contrastIndex, Bonferroni across looks, minimum 20 pairs on each side, 2.5-SE sensitivity, bounded-pair reporting and nonbinding computational futility. No block looks, post-close extension, retuning or selective replay. Explicit owner acceptance remains separate.",
+  "blockPairs": 8,
+  "blockLimitSeconds": 1200,
+  "arguments": {
+    "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\clock-v1-baseline",
+    "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\clock-v1-candidate",
+    "java": "C:/java/jdk-21/bin/java.exe",
+    "runner": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\tools\\fastchess.exe",
+    "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+    "baseline_policy": "0",
+    "candidate_policy": "4",
+    "baseline_workers": 1,
+    "candidate_workers": 1,
+    "concurrency": 1,
+    "tc": "10+0.1",
+    "seed": 3030118,
+    "pairs": 384,
+    "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\confirmation-v1-w1\\stage2-openings.pgn",
+    "background": true
+  },
+  "baselineProvenance": "Frozen engine-core.jar copied before O2/O1 modifications, SHA256 9b41d6b174846cfaf3af9f3089d8c3d13b0614fbf0a4717a6fe46aec346c61d9. Shared new research-only launcher. See uci-preflight-v1.json. Version finalization remains blocked independently; no release identity claim.",
+  "selectionRationale": "Select completed-hint policy 4 against the unchanged accepted champion in the one-worker EFFORT domain. It scored 30 W / 19 D / 15 L (+82.97 Elo) in the complete development screen; the combined policy 7 scored +60.31 Elo with broad correlated uncertainty. Direct conditional contrasts scored +5.43 Elo for retention and +10.86 Elo for the nominal-learning filter, both with wide intervals crossing zero. These do not reject O2 or require individual significance for a combination. Policy 4 has the clearer availability hypothesis, less additional mutable state, and lower observed fixed-depth elapsed cost (0.894 of champion versus 0.908 for policy 7). Its history remains the accepted baseline. Choose this complete configuration for fresh confirmation, retain policy 7 and the O2 controls as viable but unconfirmed alternatives, and avoid a parameter/configuration sweep without a new decision-relevant hypothesis. All semantic/ownership/oracle checks passed; development estimates remain selection-biased.",
+  "confirmationForecast": {
+    "sourceSummary": "clock-development-v1-p4-summary.json",
+    "developmentPairs": 32,
+    "developmentScore": 0.6171875,
+    "developmentPairScoreSE": 0.04890996166220525,
+    "normalCriticalValue": 2.4977054744123737,
+    "requiredSensitivitySigma": 2.5,
+    "forecastAt128": {
+      "pairScoreSE": 0.024454980831102625,
+      "approximateEloSE": 17.98077461744064,
+      "matchHours": 2.072173849888948,
+      "matchHoursAt25PercentLowerThroughput": 2.762898466518597
+    },
+    "forecastAt512": {
+      "pairScoreSE": 0.012227490415551313,
+      "approximateEloSE": 8.99038730872032,
+      "matchHours": 8.288695399555792,
+      "matchHoursAt25PercentLowerThroughput": 11.051593866074388
+    },
+    "interpretation": "Plug-in forecasts from selected development data, not guaranteed power. Six losing pairs out of 32 imply 24 below-half pairs at 128 in expectation; normal eligibility still is not guaranteed. The inherited bounded rule applies if the normal rule is ineligible. At 512 pairs the required score half-width is about 0.031, roughly 22 Elo locally. No small-gain power claim. Add roughly 5-10% preflight/session overhead. Admit complete blocks in bounded resource windows, initially through the first 128-pair scheduled look only. Operational pauses are not statistical looks. Continue only according to the predeclared statistical rule and available non-disruptive workstation capacity. One game at a time, one Search worker, BelowNormal, 512 MiB heap per engine. Preserve all host observations; no automatic disruptive 12-hour run."
+  },
+  "preparationInput": "Only input to prepare_confirmation.py. The development openings path identifies the pinned source book/receipt; the freezer replaces it with fresh partition-one stage schedules excluding prior research and the already-frozen four-worker confirmation openings. This file is not itself an executable confirmation protocol.",
+  "assessmentProtocol": "protocol.json"
+}
