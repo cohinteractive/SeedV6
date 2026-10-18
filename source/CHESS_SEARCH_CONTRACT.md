@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R003**
+Internal revision: **P3-R004**
 
-Status: **ACTIVE: first owner-selected CGLHW, Search Information Retention and Reuse (O1 + O2). Accepted cumulative Phase 2 champion retained.**
+Status: **ACTIVE Phase 3: first O1 + O2 CGLHW research technically complete; candidate awaiting GPT/owner reconciliation and acceptance. Accepted cumulative Phase 2 champion retained.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -42,6 +42,14 @@ owner-reserved binding TT changes and external release remain outside that grant
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md#active-objective) records selection;
 the [focused research record](../docs/research/search/P3_INFORMATION_REUSE_2026-10-18.md)
 holds verified facts, evidence, hypotheses, limitations and next admissible work.
+
+The first CGLHW's research execution is technically complete. Its complete
+champion-plus-completed-legal-hints candidate (research policy 4) passed the frozen
+confirmation rule separately at one and four workers. The focused record retains
+the inferential limits, O2 combinations and inconclusive conditional ablations.
+GPT/owner reconciliation and explicit acceptance remain required for adoption;
+the champion, binding TT requirements and production defaults remain authoritative.
+No successor objective is selected by this handback.
 
 The initial accepted production champion is the cumulative Phase 2 engine:
 **SR-001 + SR-029 + SR-022 + SR-005 + SR-036 + SR-024**. Its accepted Search

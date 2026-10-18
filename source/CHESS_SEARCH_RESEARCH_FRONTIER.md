@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F002**
+Internal frontier revision: **P3-F003**
 
-Status: **ACTIVE: first owner-selected CGLHW, Search Information Retention and Reuse (O1 + O2). No candidate promoted.**
+Status: **ACTIVE Phase 3: first O1 + O2 CGLHW research technically complete; policy-4 candidate awaiting GPT/owner reconciliation and acceptance. No candidate promoted.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -63,11 +63,20 @@ authority. Research-controlled alternatives do not change accepted policies.
 The [focused research record](../docs/research/search/P3_INFORMATION_REUSE_2026-10-18.md)
 is the detailed work-selection/resume entrypoint: bootstrap challenge, verified
 implementation, prospective comparisons, evidence and unresolved dependencies.
-It is evidence under this canon, not another governing contract. Work begins with
-observation and controlled retention/learning contrasts; further consumers and
-combinations follow decision value. O3 as an independent programme and unrelated
-Frontier objectives remain unselected. Promotion requires Contract confirmation
-and explicit GPT/owner acceptance; no successor activates automatically.
+It is evidence under this canon, not another governing contract. The completed
+work covers current-structure observation, controlled history retention/learning,
+completed legal hints, combinations and reverse ablations, lifetime/pressure and
+cost measurements, and separate fresh one-/four-worker confirmations.
+
+The complete champion-plus-hints configuration (research policy 4) passed both
+frozen confirmation rules and is ready for GPT/owner consideration under their
+recorded statistical and resource limits. Retained history and nominal-only
+malus filtering have inconclusive conditional strength evidence and remain
+unadopted; richer histories, consumer attribution and further TT/driver refinements
+remain open hypotheses, not rejected subjects or automatically selected work.
+The next step is reconciliation and an explicit acceptance/adoption decision.
+The accepted champion remains unchanged. O3 and unrelated Frontier objectives
+remain unselected; no successor activates automatically.
 
 ## Compact research inventory
 
@@ -174,9 +183,10 @@ availability before reuse; no historical experiment is recertified here.
 
 The initialization-era P3-F001 / P3-R001 refresh wording is historical. The owner
 confirms both current predecessor mirrors (P3-F001 / P3-R002) synchronized and
-selects O1 + O2 in this launch. **P3-F002 / P3-R003 now require replacement of BOTH
+selected O1 + O2 in this launch. **The P3-F003 / P3-R004 technical handback now
+requires replacement of BOTH
 Project Source mirrors and synchronization confirmation before dependent GPT
-planning or a subsequent CGLHW launch.** Codex continues this authorized objective
+planning or a subsequent CGLHW launch.** Codex completed the authorized research
 from repository masters and does not claim to perform external synchronization.
 
 [P1]: ../docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md

@@ -1,38 +1,50 @@
 # Phase 3: Search Information Retention and Reuse — O1 + O2
 
-Owner-selected first CGLHW, 18 October 2026 (Pacific/Auckland). **ACTIVE research;
-no candidate accepted or promoted.** Governed solely by the Phase 3
+Owner-selected first CGLHW, 18 October 2026 (Pacific/Auckland). **Research technically
+complete; awaiting GPT/owner reconciliation. No candidate accepted or promoted.**
+Governed solely by the Phase 3
 [Contract](../../../source/CHESS_SEARCH_CONTRACT.md) and
 [Frontier](../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). This focused record
 contains evidence and resume state, not additional policy authority.
 
 ## Resume and work selection
 
-Current work: baseline, O2 and combined O1/O2 diagnostics, integrated regression,
-worker lifecycle checks and hint-lifetime replay passed. Hints alone (policy 4)
-and all three mechanisms (policy 7) completed their 32-pair one-worker clock
-screens with positive but unconfirmed estimates. The separate four-worker hint
-screen also completed with a positive unconfirmed estimate. The policy 5 versus 4
-retention and policy 7 versus 5 nominal-learning filter ablations both completed
-near even, with wide uncertainty. Policy 4 is selected for separate one- and
-four-worker fresh confirmations; both protocols and stage identities are frozen
-and verified. One-worker confirmation closed **positive** at its first scheduled
-128-pair look: +54.74 Elo, adjusted paired-normal interval [+4.80, +107.04],
-required 2.5-SE interval [+4.75, +107.09]. The bounded sensitivity includes zero.
-All 256 games and sixteen blocks passed audit; no partial look was taken.
-Do not launch its unused second stage or extend this closed protocol.
-The separate four-worker first look is running at `raw/confirm-v1-w4-stage1`.
-Its first two windows completed 72/128 pairs with all nine blocks audited.
-The supplemental exact-mode legal-hint-hit check passed between windows; the
-third bounded window is now running. No partial statistical look was taken.
-The separately planned [deeper lifetime replay](p3-information-reuse-2026-10-18/lifetime-v2.json)
-passed compilation, three focused tests and all 256 request comparisons between
-the four-worker screen and history ablations; its parameterization changes research code only.
-Production defaults and the accepted champion remain unchanged.
+The complete champion-plus-hints configuration, **policy 4**, is ready for owner
+consideration. Its independent one-worker confirmation closed **positive** at
+128 pairs: +54.74 Elo, adjusted paired-normal interval [+4.80, +107.04]. Its
+separate four-worker confirmation also closed **positive** at 128 pairs:
++88.74 Elo, adjusted interval [+34.28, +147.87]. Both required 2.5-SE checks
+passed; both conservative bounded sensitivities include zero. These are qualified
+positive results under the frozen approximate paired-normal rules, not universal
+or distribution-free gains. No worker-domain pooling was used.
+
+Both protocols are closed. All 512 independent confirmation games and 32 blocks
+passed audit; neither unused second stage has started. The five completed
+development/ablation samples add 320 audited games, kept separate from confirmation.
+Do not extend closed protocols or launch their second stages. No research match
+controller remains active. Production defaults and the accepted champion are unchanged.
+
+| Question | Evidence-supported disposition |
+| --- | --- |
+| O1 information production and availability | Completed legal hints in the existing table substantially increased available guidance while preserving proof/identity. Policy 4 passed separate fresh one-/four-worker confirmations. Candidate only; adoption awaits acceptance. |
+| O1 lifetime and storage pressure | Replay establishes useful older-request hits and loss under 1 MiB pressure. Requested 64/72 MiB have the same current capacity. No default increase or table redesign is justified by these measurements; longer-clock pressure remains open. |
+| O2 retained main history | Completed adjacent-iteration retention is implemented with EFFORT and strict request/abort ownership. The conditional 32-pair policy-5-versus-4 ablation is inconclusive, not a rejection. |
+| O2 learning eligibility | Reduced-unverified maluses were measured and an explicit nominal-only filter validated. Its conditional policy-7-versus-5 ablation is inconclusive; omitted moves never become labels. |
+| Integrated combinations | Policy 7 has a positive development estimate and remains unconfirmed. Policy 6 has mechanism/cost diagnostics only. Component significance was not required; complete policy 4 had the clearest present selection rationale. |
+
+The initial questions now have mechanism, correctness, cost, interaction and fresh
+whole-engine evidence sufficient for a concrete candidate handback. Further richer
+history, cross-request learning, consumer-specific attribution and TT/driver
+refinements remain hypotheses requiring a reasoned next question, not automatic
+configuration enumeration. The next admissible step is GPT/owner reconciliation
+and an explicit adoption decision; no successor objective is activated.
+Raw output and frozen installations are local-only under `raw/`; a fresh checkout
+must check their availability before claiming verification. Tracked protocols,
+manifests and summaries identify those inputs and evidence.
 
 Version-dependent operations are BLOCKED by the inherited reservation described
-below. Independent O1/O2 source inspection, research, testing and separately
-attributed evidence continue under the launch's safe-work authorization. Do not
+below. Independent O1/O2 inspection, implementation, testing and separately
+attributed evidence were completed under the launch's safe-work authorization. Do not
 attribute this work to the old operation, finish its token, edit its state, bypass
 its integrity check, or claim authoritative finalized identity. No build bump.
 
@@ -60,7 +72,10 @@ The current working-content scan finds no nested .git. WU7's
 preserved under `.git/portable-build-validation`; the adapter rejects the stored
 integrity failure before recapture. This is a real retained finalization blocker,
 not a current nested-clone finding or terminal non-blocking warning. Shared r3
-requires blocked/not_attempted evidence; this local active/integrity_failure shape
+status projects an empty blocker list but omits the local `integrity_failure`
+field; it does not clear that guard. Reinspection after the supplemental tests
+confirmed the version bytes and retained state SHA-256 above are unchanged.
+Recovery requires blocked/not_attempted evidence; this local active/integrity_failure shape
 is ineligible. A separately authorized supported local reconciliation extension
 with immutable history, endpoint accounting and disposable-repository tests is
 the proportionate repair path. No policy/tooling/metadata repair is made here.
@@ -344,6 +359,10 @@ new research launcher/classes are shared. The frozen installations are local at
 `raw/clock-v1-baseline` and `raw/clock-v1-candidate`. Each prepared study freezes
 its own copies, runner/tools, JDK, model and opening schedule. Source/hash manifests
 are the provenance; embedded build 35 is not a finalized research version.
+The candidate core JAR used by both confirmations is SHA-256
+`eca59cf0665babf1197cd6d09209312feb0fba31a3fc3298daf8d3e3b9b2a01e`;
+policy 4 and the complete frozen runtime trees, not the core JAR alone, identify
+the evaluated configuration.
 The earlier fixed-resource diagnostics compared feature-off and feature-on
 configurations within the same compiled experimental JVM. Their relative costs
 do not independently establish that adding dormant controls has zero cost versus
@@ -355,12 +374,10 @@ requests for each binary/configuration. Complete process costs and all requests
 passed audit. No equal-compute inference from equal clocks.
 
 The p4, p7 and w4-p4 champion screens are closed; do not replay or extend them.
-Both history ablations are also closed. Confirmation is the current work unit;
-its protocol executors call each study's `inputs/tools/tournament-session.py`
-with the validated `build/research/venv/Scripts/python.exe`, `-B`, and `status`
-before resuming `run --plan ... --stop-before <explicit UTC time>`. An existing
-controller owns an OS lock; do not start a competing controller. Never prepare
-over these directories, replay partial blocks or alter the frozen inputs. Use
+Both history ablations and both subsequent confirmations are also closed.
+Their frozen controllers remain verification entrypoints; no study is to be
+resumed, replayed or extended. Never prepare over these directories or alter
+their frozen inputs. Use
 `summarize_clocks.py` only on a completed full screen, with new local export and
 summary destinations. Initial source/results are committed at `dc8ad41`.
 
@@ -415,17 +432,18 @@ is frozen, SHA-256 `c6780bef774ff21aee501dca5a6915192c4c65d9ba29205c6370d4e5b86e
 The [preparation receipt](p3-information-reuse-2026-10-18/confirmation-v1-w4-preparation.json)
 verifies both prospective stage domains, original/candidate runtime trees, copied
 protocol, schedules and all immutable inputs. Fresh partition-one schedules
-contain 128 then 384 additional pairs; the first stage is now running. Execute
-only the frozen `raw/confirmation-v1-w4-tools/p3-information-confirmation.py`
-with this protocol, an explicit stop-before window and `--max-stages 1` initially.
+contain 128 then 384 additional pairs. The first stage completed and closed the
+protocol positive; preserve the unused second stage without launching it.
+Read-only assessment uses the frozen
+`raw/confirmation-v1-w4-tools/p3-information-confirmation.py` and `--stages 1`.
 The first confirmation block's direct priority observation is retained at
 `raw/confirm-v1-w4-stage1-priority-window01.json`, SHA-256
 `b15ca81f0a4cff51780904a8f945d617cea045a7132c46a085d22a0f24c79e5d`.
 Both JVMs were BelowNormal; PIDs and creation times match the completed native
 process-lifetime receipt within timestamp conversion precision. No process
 settings were changed by observation.
-Both direct history ablations preceded confirmation. One-worker selection is
-recorded below and requires fresh excluded-opening selection of its own.
+Both direct history ablations preceded confirmation. The separate one-worker
+selection and fresh excluded-opening schedule are recorded below.
 Fresh sampling must also consume
 [the 193 direct diagnostic-root exclusions](p3-information-reuse-2026-10-18/diagnostic-exclusions-v1.selection.json),
 in addition to all prior opening-selection receipts. This includes every observed
@@ -561,11 +579,12 @@ passed both stages' immutable tree, binary, prospective argument, protocol and
 schedule checks. Its fresh 512-opening selection excludes the reserved four-worker
 set as well as all earlier development/diagnostic selections. The one-worker
 protocol is now closed; preserve its unused second-stage inputs without launching
-them. Use the four-worker frozen executor for the next first look. The operational
-plan remains roughly 50-minute admission windows, which leave time for
-complete 20-minute watchdog blocks and normally finish several shorter blocks.
-Review host headroom at the safe boundaries and resume the same protocol without
-looking at partial outcomes. Worker domains remain separate.
+them. The four-worker protocol subsequently closed in the same way. Execution
+used roughly 50-minute admission windows, reserving complete 20-minute watchdog
+blocks and checking host headroom at safe boundaries. Operational pauses never
+became statistical looks. Worker domains remain separate. Frozen authority
+metadata retains P3-R003/P3-F002; the P3-R004/P3-F003 handback updates current
+status without changing the binding technical requirements or frozen protocols.
 
 ### Completed one-worker independent confirmation
 
@@ -595,6 +614,37 @@ No retuning, protocol extension, champion promotion or production policy change
 follows. The independently frozen four-worker comparison remains necessary for
 its own domain. This result does not establish strength at 2/8/16 workers,
 different clocks, another evaluator or another host/JVM.
+
+### Completed four-worker independent confirmation
+
+The [verified scheduled-look summary](p3-information-reuse-2026-10-18/confirmation-v1-w4-look1-summary.json)
+records **137 W / 46 D / 73 L**, 62.5%, **+88.74 Elo** over 128 fresh pairs
+(256 games). The frozen rule closed **positive** at its first prospective look.
+Normal eligibility held with 23 pairs below half and 62 above. Family contrast 2
+allocated alpha .0125, divided across the two prospective looks: adjusted
+paired-normal Elo interval **[+34.28, +147.87]**, required 2.5-SE interval
+**[+38.85, +142.52]**. Adjusted bounded-pair sensitivity was **[-17.46, +214.96]**.
+The result satisfies the specified approximate rule; it is not a distribution-free
+gain guarantee. Neither one-worker nor development data entered this assessment.
+
+All sixteen blocks, 256 normal endings, full-request accounting and frozen
+identities passed audit. Champion/candidate full match JVM CPU was
+6,423.891/6,486.969 seconds (ratio **1.00982**, about 0.98% more candidate CPU).
+Summed block wall time was 6,989.080 seconds, about **132 games/hour**.
+Champion/candidate totals were 15,997/16,032 requests and
+9,691,142,531/9,285,382,395 admissions. Equal clocks did not imply equal compute,
+and differing game trajectories prevent matched-position efficiency claims.
+The eight host samples showed 14-25% total CPU, about 16.8-17.3 GiB free memory
+and zero sampled paging. Full cost receipts include match startup/warmup/JIT/GC
+and aborted work, excluding separate preflight JVMs; point samples do not
+reconstruct unsampled contention. The supplemental exact-hint test ran only
+between windows, with no clock overlap.
+
+The unused second stage has no started blocks and must remain unused. Separate
+positive results support policy 4 in the measured one-/four-worker domains under
+the recorded evaluator, clocks, host and JVM. Functional 2/4/16-worker checks do
+not establish strength at 2/8/16 workers. No acceptance, production adoption,
+finalized-version claim or external deployment follows from this research closeout.
 
 ### Historical tool binding repair during confirmation
 
@@ -727,15 +777,22 @@ Both selections, numerical decision-value/resource forecasts and verified frozen
 protocols are recorded. The
 freezer preserves both tested runtime trees and the executor dependencies, excludes
 prior opening/diagnostic receipts, and prepares fresh partition-one 128/512-pair
-looks. One-worker confirmation closed positive at its first scheduled look;
-four-worker stage-one play is running. Continue its existing frozen protocol at
-audited block boundaries without partial statistical looks.
+looks. Both confirmations closed positive at their first scheduled looks. No
+second-stage execution or new CGLHW is selected. The immediate next step is
+GPT/owner reconciliation of the concrete policy-4 candidate and its limits.
+After the handback canon update, read-only reassessment reproduced both saved
+positive decisions and tracked summaries exactly. All four stage input/runtime
+trees verified unchanged, both unused stages had zero started blocks, and no
+experiment process remained active. Version and retained finalizer-state hashes
+still matched the recorded values. Raw output remains excluded from Git.
 
 - Blocking finalized-version operations only: supported reconciliation authority
   for the inherited local integrity-failure reservation. Independent research may
   continue; no old-token attribution, metadata bypass or manual version edit.
 - Blocking dependent GPT planning/subsequent launch: owner refreshes both Project
-  Source mirrors to P3-R003/P3-F002 and confirms synchronization. Current Codex
-  repository-based research is already authorized.
-- Blocking any future production adoption: Contract confirmation and explicit
-  GPT/owner acceptance. Experimental candidates are not accepted champions.
+  Source mirrors to P3-R004/P3-F003 and confirms synchronization. The completed
+  repository-based research was already authorized and did not depend on that refresh.
+- Blocking any future production adoption: GPT/owner reconciliation and explicit
+  acceptance of policy 4, including its experimental TT hint representation and
+  replacement behavior and the intended worker/resource domain. The completed
+  confirmations cover one/four workers; experimental candidates are not accepted champions.
