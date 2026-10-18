@@ -280,7 +280,12 @@ both requested 64 and 72 MiB, including arrays/locks (2,097,152 entries and
 representation. No default memory change or redesign is justified here.
 
 Integrated regression: engine-core 64/64 passed; selected research Search/driver
-and UCI 430 cases, 419 passed and 11 existing skips, no failures/errors. Tests
+and UCI 430 cases, 419 passed and 11 existing skips, no failures/errors.
+The eleven skips are five `QuiescenceDeltaEvidenceTest` and six
+`QuiescencePostMoveEvidenceTest` cases gated by the historical
+`sr001h.instrumented` / `sr001i.instrumented` build switches; neither switch was
+enabled. They are not missing Pair-2 evaluator fixtures or failed production tests.
+The passing tests
 include proof/hint segregation and dominance, generation/replacement, concurrent
 collisions, legality/identity, independent exact enumeration, aborted publication,
 combined-history clearing and four-worker ROOT_REUSE drain/reuse. The new launcher
@@ -441,6 +446,15 @@ These augment, and do not replace, the earlier broad regression. No production
 runtime source changed in this diagnostic unit.
 
 ## Human dependencies and boundaries
+
+The [confirmation freezer](p3-information-reuse-2026-10-18/prepare_confirmation.py)
+is prepared and syntax checked, but has not selected a finalist, created a
+confirmation protocol or launched confirmation games. After the complete
+development contrasts, record selection rationale and a numerical decision-value
+and resource forecast in the chosen champion-comparison configuration. The
+freezer preserves both tested runtime trees and the executor dependencies, excludes
+prior opening/diagnostic receipts, and prepares fresh partition-one 128/512-pair
+looks. Its actual preparation and immutable-input verification remain pending.
 
 - Blocking finalized-version operations only: supported reconciliation authority
   for the inherited local integrity-failure reservation. Independent research may
