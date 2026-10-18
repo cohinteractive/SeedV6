@@ -1,6 +1,6 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R004**
+Internal revision: **P3-R005**
 
 Status: **ACTIVE Phase 3: first O1 + O2 CGLHW research technically complete; candidate awaiting GPT/owner reconciliation and acceptance. Accepted cumulative Phase 2 champion retained.**
 
@@ -276,9 +276,31 @@ run, retain promising candidates with confirmation outstanding; lower-impact
 development screening does not satisfy champion confirmation. Continue other useful
 in-scope work where dependencies permit.
 
-Prefer reliable completion/event-driven monitoring with failure, stall and
-cancellation detection. Avoid count-only polling; communicate material decisions,
-results and blockers while satisfying host/tool reporting requirements. Do not
+Across all Phase 3 research workstreams, including future CGLHWs, monitor
+long-running paired-game tournaments, benchmarks and comparable unattended
+research processes using reliable blocking waits, event-driven notifications or
+completion-driven monitoring in preference to frequent polling. If periodic
+polling is technically necessary, use infrequent checks, ordinarily approximately
+15-30 minutes apart; a shorter interval requires a specific failure-detection,
+safety, operational or tool constraint.
+
+Monitoring frequency and user-facing reporting frequency are distinct: an internal
+check does not itself warrant commentary. Do not issue routine progress commentary
+every minute or two. Game-count-only updates, unchanged status and repeated
+statements that no errors have occurred are not independently report-worthy.
+Report material events when useful or necessary: important experimental or
+statistical milestones; completed scheduled assessments; failures, stalls and
+integrity problems; material decisions, results or changes to evidence or
+conclusions; genuine blockers or required human intervention; and tournament or
+research-unit completion. Impose no mandatory periodic reporting schedule;
+completion-only reporting is acceptable if no intervening material event warrants
+communication.
+
+Preserve reliable failure, stall, timeout, cancellation and completion detection,
+operational safety and evidence integrity. Keep existing logs, durable research
+state and required final evidence-bearing completion reports. Honor mandatory
+host/tool reporting requirements while minimizing unnecessary discretionary
+commentary and tool calls. Do not
 optimize for rapid SR closure or use unlimited experiments in place of meaningful
 hypotheses and controlled comparisons.
 
