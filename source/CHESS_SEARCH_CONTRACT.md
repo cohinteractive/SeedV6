@@ -1,6 +1,6 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R001**
+Internal revision: **P3-R002**
 
 Status: **Initialized; no ACTIVE Phase 3 research workstream. The first objective requires separate GPT/owner selection and authorization.**
 
@@ -197,6 +197,22 @@ overfitting; screen progressively and independently confirm frozen finalists.
 Use the retained Phase 2 infrastructure and focused reports; closed confirmations
 remain closed. Fresh candidate configurations require new appropriate validation.
 
+Default to background-friendly research on the owner's Windows PC so normal
+interactive use can continue. Optimize useful evidence with minimal disruptive
+resource consumption, not maximum tournament throughput or shortest completion
+time. Where scientifically sufficient, prefer few concurrent games, modest Search
+worker counts, background-friendly process priority, controlled memory and
+conservative parallelism. Prefer substantially longer experiments over unnecessary
+CPU saturation or desktop disruption. Increase resources only for experimental
+validity, information value or the worker domain under study, subject to the
+availability and disruptive-workload approval rules below.
+
+- Codex autonomously chooses scientifically appropriate fixed-depth, fixed-node,
+  clock-based or other methods for the mechanisms and research questions involved.
+  Fixed-depth and fixed-node games are legitimate development screens where they
+  provide meaningful evidence with less resource interference. No universal depth,
+  node budget, Search worker count or concurrent game count is prescribed; depth 4
+  is illustrative, not a testing standard.
 - Validate semantic/proof/history/mate/terminal/PV integrity, independent oracles,
   cancellation and worker/evaluator isolation incrementally and after composition.
   Separate fixed-depth/fixed-node mechanism diagnostics, whole-request elapsed/CPU
@@ -204,8 +220,9 @@ remain closed. Fresh candidate configurations require new appropriate validation
 - Clock games are primary strength evidence: paired/color-reversed openings,
   controlled sources/binaries, evaluator/checkpoint/mapping, configuration, seeds,
   workers, TT/resources, host/JVM/warm-up and time controls. Keep single-worker and
-  multiworker domains distinct. Default-OFF controls must identify actual behavior;
-  a familiar option name or old binary path is not sufficient provenance.
+  multiworker domains distinct; single-worker research cannot substitute for required
+  multiworker validation. Default-OFF controls must identify actual behavior; a
+  familiar option name or old binary path is not sufficient provenance.
 - Before substantial confirmation, freeze hypotheses/comparison, candidates,
   sampling/pair model, prospective looks, success/futility/inconclusive stopping,
   uncertainty and acceptance rules. Suitable sequential, staged or fixed-sample
@@ -223,6 +240,9 @@ remain closed. Fresh candidate configurations require new appropriate validation
   A/A checks alone do not prove candidate/baseline immunity to contention. Equal
   clocks do not imply equal compute. Record full runner time, CPU/memory, failures,
   game endings, actual work, precision/value and forecast duration before costly runs.
+  Account for CPU contention and scheduling: fixed-depth/fixed-node games generally
+  remain useful under variable desktop load, but elapsed-time measurements and clock
+  games can be distorted. Uncontrolled contention is not reliable strength evidence.
 - Respect workstation availability: current preferences are roughly 4-6 disruptive
   daytime hours or 6-8 overnight; a disruptive continuous 12-hour run needs an
   alternative or explicit approval. High-value architectural hypotheses may justify
@@ -232,6 +252,11 @@ remain closed. Fresh candidate configurations require new appropriate validation
   [tournament procedure](../docs/research/search/TOURNAMENT_EXECUTION_2026-10-17.md)
   records the pair-block method and limits. Changing the confirmation-clock standard
   requires evidence and owner authority; shorter clocks define another domain.
+
+When valid confirmation would require disruptive resources that cannot currently
+run, retain promising candidates with confirmation outstanding; lower-impact
+development screening does not satisfy champion confirmation. Continue other useful
+in-scope work where dependencies permit.
 
 Prefer reliable completion/event-driven monitoring with failure, stall and
 cancellation detection. Avoid count-only polling; communicate material decisions,
