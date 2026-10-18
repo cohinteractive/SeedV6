@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F051**
+Internal frontier revision: **P2-F052**
 
 Status: **SR-032 Other Tactical/Forced-Line Extensions is the sole owner-selected ACTIVE feature. SR-033 is owner-accepted DEFERRED without adoption and BOTH starting P2-R044/P2-F048 Project Source mirrors are confirmed synchronized. Accepted cumulative production is unchanged; research proceeds under separately evidenced DEFERRED_FINALIZATION.**
 
@@ -920,6 +920,18 @@ governance document is needed.
 
 ## Maintenance and initialization state
 
+### SR-032 native confirmation closed; four-worker confirmation underway — 2026-10-18 local
+
+Native RECAPTURE closed its 128-pair independent look for prospective
+computational futility: -4.07 Elo, adjusted [-52.96,+44.65]. No inferiority,
+equivalence or absence of small gains follows; its second stage is not eligible.
+The separate PROMOTION/ROOT_REUSE4 first look is underway. Follow only its
+frozen stopping rules and complete-block continuation before the owner-retained
+17:30 NZDT cutoff; no later window is authorized. The
+[research record](../docs/research/search/SR032_TACTICAL_EXTENSIONS_PHASE2_2026-10-18.md)
+preserves audited resources and identities. SR-032 alone remains ACTIVE,
+production is unchanged, and no successor or closed neighboring study is opened.
+
 ### SR-032 development complete; confirmations frozen — 2026-10-18 local
 
 Only SR-032 remains ACTIVE. All 384 development games passed audits; positive
@@ -1634,3 +1646,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-F049 | Activate only owner-selected SR-032 after verified cumulative runtime/model/archive baseline and confirmed SR-033 acceptance/BOTH starting mirror synchronization; record inherited-work isolation, qsearch-overlap challenge and durable research continuation. |
 | P2-F050 | Record validated default-OFF SR-032 boundary controls, all-worker/proof evidence, diagnostic economics and prospective bounded development; retain sole ACTIVE feature and unchanged production. |
 | P2-F051 | Record completed SR-032 development, shared-host limitation and selected frozen independent worker-domain confirmations with measured resource forecasts; retain sole ACTIVE and unchanged production. |
+| P2-F052 | Record native RECAPTURE confirmation closed for computational futility, separate four-worker PROMOTION first look underway and owner-confirmed resource boundary; retain sole ACTIVE, uncertainty and unchanged production. |

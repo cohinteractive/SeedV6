@@ -277,8 +277,42 @@ was sent to the owner; no answer is evidence of a guarantee. Current idle state
 supports continued authorized research while preserving this shared-desktop
 limitation; future reported heavy work must pause affected clock studies safely.
 
+The owner subsequently confirmed **no heavy work is planned; continue research**
+and explicitly retained the **17:30 NZDT cutoff**, with any continuation window
+to be arranged later. This supports the current run but does not erase the
+earlier development contention caveat or authorize execution after the cutoff.
+
 Resume: verify the frozen protocols and current host workload; execute the first
 scheduled look using `tools/sr032-confirmation.py run --protocol <path>
 --stop-before 2026-10-18T17:30:00+13:00 --max-stages 1`. Read only the scheduled
 assessment, preserve its stopping decision, and continue eligible work under
 the same prospective protocol. SR-032 remains ACTIVE; no production adoption.
+
+## Native independent confirmation closed; four-worker first look underway
+
+RECAPTURE/native1 completed 128 fresh pairs (256 normal games), W/D/L
+**98/57/101**, point **-4.07 Elo**, primary adjusted interval
+**[-52.96,+44.65]** and required 2.5-SE sensitivity **[-53.00,+44.70]**.
+The bounded-pair Hoeffding interval is [-104.99,+96.15]. Normal eligibility has
+46 pairs below and 40 above half. The prospectively defined plug-in conditional
+power at 512 is 0.000374, below .10: **CLOSED for computational futility**.
+This establishes neither inferiority, equivalence nor absence of small gains.
+Do not execute its prepared second stage, extend, retune or pool this protocol.
+
+`recapture-w1-confirmation-v1-summary.json` binds the immutable assessment,
+paired observations and complete export. Frozen identities, opening separation,
+normal terminations and full pair/history/legal/request/process audits passed.
+The eight blocks consumed 1,954.32 match seconds and 1,971.62 runner seconds
+(235.79/233.72 valid pairs/hour). Engine lifetime CPU was 3,798.02 baseline and
+3,791.48 candidate seconds. Whole-request telemetry includes 6,873,178,250 versus
+6,801,264,920 nodes and 3,609.50 versus 3,615.79 summed engine Search seconds.
+Those clock-budget totals are accounting, not a speed or strength advantage.
+The complete orchestration interval to the next launch was about 33.4 minutes;
+all CPU/resource definitions and shared-host limitations above continue to apply.
+
+PROMOTION/ROOT_REUSE4's independent first 128-pair stage started at about
+00:50:27 UTC (13:50 NZDT). Its frozen stopping decision remains unobserved.
+Current admissible work is to complete that scheduled look, then follow its
+unchanged protocol. A continuation, if required, uses only the remaining window
+before the owner-confirmed 17:30 NZDT cutoff and verified complete-block pauses.
+No later window is authorized. Keep SR-032 ACTIVE and production unchanged.
