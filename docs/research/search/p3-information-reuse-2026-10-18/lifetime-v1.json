@@ -1,0 +1,29 @@
+{
+  "id": "P3-O1O2-LIFETIME-v1",
+  "status": "prospective; run after clock-development-v1-p4 completes and before p7 games",
+  "question": "How much hint traffic comes from prior requests, and how much does storage pressure suppress or replace useful information under the unchanged conservative key?",
+  "sample": "First four games by frozen PGN schedule order of completed p4 development screen, independently of score. Use all legal prefixes from ply16 through min(59,last ply-1). Preserve original actual game sequence; no generated continuation or evaluation filters. Development replay, not independent strength evidence.",
+  "configs": {
+    "policies": [
+      4,
+      7
+    ],
+    "requestedTTMiB": [
+      64,
+      1
+    ],
+    "depths": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "recursiveEntryCapPerInvocation": 250000
+  },
+  "owners": "Separate white/black private engine+TT across their actual alternating requests. Each configuration restarts from empty ownership. No history retained across requests.",
+  "observations": "Read-only single-owner table representation counters and post-request occupancy, generation ages, same-key/collision refreshes, proof/depth rejects. Paired unobserved replay at every request/depth must match all semantic results and nodes; no timing inference. Include incomplete invocations without outcome labels.",
+  "validation": "P3HintLifetimeStudyTest counters + cross-request observation parity; full per-request parity during experiment.",
+  "resource": "One JVM, APC1, heap768MiB, BelowNormal; never concurrent with the clock screen.",
+  "limitations": "Selected existing development game trajectories depend on candidate play. Small-table divergence is selective research evidence, not exact disagreement or an adoption recommendation. No memory/default change."
+}

@@ -1,0 +1,346 @@
+{
+  "id": "P3-O1O2-LIFETIME-v1",
+  "raw": "docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\lifetime-v1.jsonl",
+  "rawSha256": "60ea19268491c3b5cc4c6c222f50bb744bacc548eadbca53fabc334d5e87f8e5",
+  "status": "passed; all plain/observed result and node tuples matched",
+  "observations": 704,
+  "configs": [
+    {
+      "policy": 4,
+      "requestedMiB": 1,
+      "entries": 32768,
+      "requests": 176,
+      "incompleteD5": 0,
+      "recursiveNodes": 4458565,
+      "counters": {
+        "probes": 646707,
+        "hits": 190398,
+        "currentHits": 180725,
+        "olderHits": 9673,
+        "proofBlocked": 2503,
+        "deeperBlocked": 6046,
+        "emptyWrites": 212740,
+        "sameKeyWrites": 188040,
+        "collisionWrites": 237482,
+        "proofSaveAttempts": 1186
+      },
+      "hitAges": {
+        "0": 180725,
+        "1": 9673
+      },
+      "olderHitFraction": 0.05080410508513745,
+      "maximumHintOccupancyFraction": 0.87445068359375,
+      "finalPrivateOwners": [
+        {
+          "game": "game-0",
+          "side": 0,
+          "occupiedHints": 27564,
+          "occupiedProof": 162,
+          "currentGenerationHints": 1635
+        },
+        {
+          "game": "game-0",
+          "side": 1,
+          "occupiedHints": 25966,
+          "occupiedProof": 454,
+          "currentGenerationHints": 1565
+        },
+        {
+          "game": "game-1",
+          "side": 0,
+          "occupiedHints": 28654,
+          "occupiedProof": 4,
+          "currentGenerationHints": 2835
+        },
+        {
+          "game": "game-1",
+          "side": 1,
+          "occupiedHints": 28460,
+          "occupiedProof": 4,
+          "currentGenerationHints": 1938
+        },
+        {
+          "game": "game-2",
+          "side": 0,
+          "occupiedHints": 27375,
+          "occupiedProof": 117,
+          "currentGenerationHints": 2944
+        },
+        {
+          "game": "game-2",
+          "side": 1,
+          "occupiedHints": 26813,
+          "occupiedProof": 373,
+          "currentGenerationHints": 1912
+        },
+        {
+          "game": "game-3",
+          "side": 0,
+          "occupiedHints": 24067,
+          "occupiedProof": 23,
+          "currentGenerationHints": 1707
+        },
+        {
+          "game": "game-3",
+          "side": 1,
+          "occupiedHints": 22734,
+          "occupiedProof": 3,
+          "currentGenerationHints": 1242
+        }
+      ]
+    },
+    {
+      "policy": 4,
+      "requestedMiB": 64,
+      "entries": 2097152,
+      "requests": 176,
+      "incompleteD5": 0,
+      "recursiveNodes": 4469514,
+      "counters": {
+        "probes": 647393,
+        "hits": 197593,
+        "currentHits": 187348,
+        "olderHits": 10245,
+        "proofBlocked": 1270,
+        "deeperBlocked": 1374,
+        "emptyWrites": 443584,
+        "sameKeyWrites": 195208,
+        "collisionWrites": 6060,
+        "proofSaveAttempts": 1187
+      },
+      "hitAges": {
+        "0": 187348,
+        "1": 10245
+      },
+      "olderHitFraction": 0.05184900274807306,
+      "maximumHintOccupancyFraction": 0.03206157684326172,
+      "finalPrivateOwners": [
+        {
+          "game": "game-0",
+          "side": 0,
+          "occupiedHints": 59861,
+          "occupiedProof": 163,
+          "currentGenerationHints": 1678
+        },
+        {
+          "game": "game-0",
+          "side": 1,
+          "occupiedHints": 51685,
+          "occupiedProof": 460,
+          "currentGenerationHints": 1605
+        },
+        {
+          "game": "game-1",
+          "side": 0,
+          "occupiedHints": 67238,
+          "occupiedProof": 4,
+          "currentGenerationHints": 2947
+        },
+        {
+          "game": "game-1",
+          "side": 1,
+          "occupiedHints": 65521,
+          "occupiedProof": 4,
+          "currentGenerationHints": 1988
+        },
+        {
+          "game": "game-2",
+          "side": 0,
+          "occupiedHints": 60105,
+          "occupiedProof": 118,
+          "currentGenerationHints": 3054
+        },
+        {
+          "game": "game-2",
+          "side": 1,
+          "occupiedHints": 57137,
+          "occupiedProof": 373,
+          "currentGenerationHints": 1982
+        },
+        {
+          "game": "game-3",
+          "side": 0,
+          "occupiedHints": 42654,
+          "occupiedProof": 23,
+          "currentGenerationHints": 1756
+        },
+        {
+          "game": "game-3",
+          "side": 1,
+          "occupiedHints": 38303,
+          "occupiedProof": 3,
+          "currentGenerationHints": 1257
+        }
+      ]
+    },
+    {
+      "policy": 7,
+      "requestedMiB": 1,
+      "entries": 32768,
+      "requests": 176,
+      "incompleteD5": 0,
+      "recursiveNodes": 4400653,
+      "counters": {
+        "probes": 641485,
+        "hits": 191405,
+        "currentHits": 181359,
+        "olderHits": 10046,
+        "proofBlocked": 2208,
+        "deeperBlocked": 6114,
+        "emptyWrites": 211979,
+        "sameKeyWrites": 188904,
+        "collisionWrites": 232346,
+        "proofSaveAttempts": 1045
+      },
+      "hitAges": {
+        "0": 181359,
+        "1": 10046
+      },
+      "olderHitFraction": 0.0524855672526841,
+      "maximumHintOccupancyFraction": 0.87030029296875,
+      "finalPrivateOwners": [
+        {
+          "game": "game-0",
+          "side": 0,
+          "occupiedHints": 27264,
+          "occupiedProof": 185,
+          "currentGenerationHints": 1685
+        },
+        {
+          "game": "game-0",
+          "side": 1,
+          "occupiedHints": 25903,
+          "occupiedProof": 406,
+          "currentGenerationHints": 1357
+        },
+        {
+          "game": "game-1",
+          "side": 0,
+          "occupiedHints": 28518,
+          "occupiedProof": 4,
+          "currentGenerationHints": 2770
+        },
+        {
+          "game": "game-1",
+          "side": 1,
+          "occupiedHints": 28142,
+          "occupiedProof": 4,
+          "currentGenerationHints": 1955
+        },
+        {
+          "game": "game-2",
+          "side": 0,
+          "occupiedHints": 27369,
+          "occupiedProof": 119,
+          "currentGenerationHints": 2885
+        },
+        {
+          "game": "game-2",
+          "side": 1,
+          "occupiedHints": 26446,
+          "occupiedProof": 270,
+          "currentGenerationHints": 2078
+        },
+        {
+          "game": "game-3",
+          "side": 0,
+          "occupiedHints": 24287,
+          "occupiedProof": 21,
+          "currentGenerationHints": 1772
+        },
+        {
+          "game": "game-3",
+          "side": 1,
+          "occupiedHints": 23060,
+          "occupiedProof": 3,
+          "currentGenerationHints": 1378
+        }
+      ]
+    },
+    {
+      "policy": 7,
+      "requestedMiB": 64,
+      "entries": 2097152,
+      "requests": 176,
+      "incompleteD5": 0,
+      "recursiveNodes": 4425361,
+      "counters": {
+        "probes": 641628,
+        "hits": 197863,
+        "currentHits": 187358,
+        "olderHits": 10505,
+        "proofBlocked": 1120,
+        "deeperBlocked": 1489,
+        "emptyWrites": 437843,
+        "sameKeyWrites": 195458,
+        "collisionWrites": 5788,
+        "proofSaveAttempts": 1063
+      },
+      "hitAges": {
+        "0": 187358,
+        "1": 10505
+      },
+      "olderHitFraction": 0.05309229113073187,
+      "maximumHintOccupancyFraction": 0.03139829635620117,
+      "finalPrivateOwners": [
+        {
+          "game": "game-0",
+          "side": 0,
+          "occupiedHints": 58620,
+          "occupiedProof": 186,
+          "currentGenerationHints": 1744
+        },
+        {
+          "game": "game-0",
+          "side": 1,
+          "occupiedHints": 52236,
+          "occupiedProof": 411,
+          "currentGenerationHints": 1394
+        },
+        {
+          "game": "game-1",
+          "side": 0,
+          "occupiedHints": 65847,
+          "occupiedProof": 4,
+          "currentGenerationHints": 2873
+        },
+        {
+          "game": "game-1",
+          "side": 1,
+          "occupiedHints": 63865,
+          "occupiedProof": 5,
+          "currentGenerationHints": 2003
+        },
+        {
+          "game": "game-2",
+          "side": 0,
+          "occupiedHints": 58299,
+          "occupiedProof": 119,
+          "currentGenerationHints": 2395
+        },
+        {
+          "game": "game-2",
+          "side": 1,
+          "occupiedHints": 54931,
+          "occupiedProof": 284,
+          "currentGenerationHints": 2144
+        },
+        {
+          "game": "game-3",
+          "side": 0,
+          "occupiedHints": 43653,
+          "occupiedProof": 21,
+          "currentGenerationHints": 1822
+        },
+        {
+          "game": "game-3",
+          "side": 1,
+          "occupiedHints": 39407,
+          "occupiedProof": 3,
+          "currentGenerationHints": 1409
+        }
+      ]
+    }
+  ],
+  "limits": "Four correlated development game trajectories from two paired openings; D1..5 at each real root, two private color owners; capped recursive entries, no timing or strength inference. Small-table effect is a diagnostic, not a proposed production setting."
+}

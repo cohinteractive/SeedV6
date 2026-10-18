@@ -8,12 +8,13 @@ contains evidence and resume state, not additional policy authority.
 
 ## Resume and work selection
 
-Current work: baseline, O2 and combined O1/O2 mechanism/cost diagnostics complete;
-integrated regression and frozen-binary UCI preflights passed. Execute the frozen
-32-pair, one-worker development clock screens for hints alone (policy 4) and
-hints + EFFORT history retention + nominal-only maluses (policy 7). Then assess
-interaction/ablation and independent confirmation value. Production defaults
-remain unchanged. No strength evidence or accepted candidate yet.
+Current work: baseline, O2 and combined O1/O2 diagnostics, integrated regression,
+worker lifecycle checks and hint-lifetime replay passed. Hints alone (policy 4)
+completed its 32-pair one-worker clock screen with a promising development result,
+not confirmation. The frozen hints + EFFORT history retention + nominal-only
+maluses screen (policy 7) is running. Assess it only after completion; then select
+informative reverse ablations, separate multiworker evidence and fresh independent
+confirmation. Production defaults and the accepted champion remain unchanged.
 
 Version-dependent operations are BLOCKED by the inherited reservation described
 below. Independent O1/O2 source inspection, research, testing and separately
@@ -287,7 +288,7 @@ Four-worker hints are implemented with existing private ROOT_REUSE histories;
 history retention/filter combinations are explicitly unsupported above one worker.
 Functional four-worker checks do not establish multiworker strength.
 
-## Clock development v1 — frozen, execution pending
+## Clock development v1 — frozen, execution underway
 
 Policies 4 and 7 are chosen for complementary decision value: isolate information
 availability, then test an integrated candidate without demanding independent O2
@@ -309,6 +310,79 @@ are the provenance; embedded build 35 is not a finalized research version.
 Pair-2 identity, cumulative policies, warmup and two legal exactly-100k-admission
 requests for each binary/configuration. Complete process costs and all requests
 will be audited. No equal-compute inference from equal clocks.
+
+Resume from `raw/clock-development-v1-p4/plan.json` and the equivalent `p7` path;
+both are already prepared. Invoke each study's `inputs/tools/tournament-session.py`
+with the validated `build/research/venv/Scripts/python.exe`, `-B`, and `status`
+before resuming `run --plan ... --stop-before <explicit UTC time>`. An existing
+controller owns an OS lock; do not start a competing controller. Never prepare
+over these directories, replay partial blocks or alter the frozen inputs. Use
+`summarize_clocks.py` only on a completed full screen, with new local export and
+summary destinations. Initial source/results are committed at `dc8ad41`.
+
+The follow-up diagnostic was prospectively specified in
+[lifetime-v1.json](p3-information-reuse-2026-10-18/lifetime-v1.json): first four
+completed p4 games, separate color ownership, prior-request hint ages and storage
+pressure at 64/1 MiB. It ran between the screens, with no overlapping clock games.
+This is observer work, not a new candidate mechanism. Preserve all raw trajectories
+and instrumented results.
+
+### Completed policy-4 screen
+
+[Complete assessment](p3-information-reuse-2026-10-18/clock-development-v1-p4-summary.json):
+**30 wins / 19 draws / 15 losses**, 61.71875%, descriptive logistic estimate
+**+83 Elo**. Paired normal 95% interval +15 to +158; conservative bounded-pair
+interval -87 to +311. All 64 games have normal, independently audited endings;
+all blocks, complete requests, process lifetimes and frozen inputs passed audit.
+The full screen took 1,865 block-wall seconds (about 31 minutes, 124 games/hour).
+Candidate/champion full match process CPU: 946.78/945.53 seconds, ratio 1.0013.
+Totals include JVM startup/warmup/JIT/GC and aborted requests, but not separate
+preflight JVM CPU. Candidate completed 4,433 requests / 1.364 billion admissions;
+champion 4,424 / 1.442 billion. Different game trajectories mean these are resource
+observations, not an equal-position throughput comparison.
+
+This is a small, selected development comparison. The normal approximation has
+few pairs on the losing side and cannot satisfy the inherited confirmation rule.
+The conservative interval includes no gain. No acceptance or promotion follows.
+Disposition: promising enough for the frozen combined screen, interaction work
+and fresh independent confirmation if subsequent validation remains sound.
+
+A 15-second tail host sample saw 21% system CPU, about 16.7 GiB free, zero paging,
+and an active user SeedV6 GUI consuming about one logical CPU alongside the match.
+This is useful headroom evidence, not a reconstruction of unsampled desktop load.
+Do not stop or reconfigure the user's GUI. Keep shared-workstation and approximate
+pair-independence limitations explicit in later strength assessments.
+
+### Hint lifetime and pressure
+
+[Selection](p3-information-reuse-2026-10-18/lifetime-v1-selection.json),
+[source/binary/test manifest](p3-information-reuse-2026-10-18/lifetime-v1-manifest.json),
+[execution](p3-information-reuse-2026-10-18/lifetime-v1-execution.json),
+[results](p3-information-reuse-2026-10-18/lifetime-v1-summary.json).
+The first four scheduled games represent two color-reversed openings, not four
+independent samples. Four configurations replayed 176 actual pre-move roots each,
+with separate private color owners and D1–5 searches. All 704 requests completed
+D5; every plain/observed score, legal PV, node and provenance tuple matched.
+
+| Policy / requested MiB | TT hint probe hits | Older-request hit fraction | Collision replacements | Maximum hint occupancy |
+| --- | ---: | ---: | ---: | ---: |
+| 4 / 64 | 197,593 | 5.18% | 6,060 | 3.21% |
+| 4 / 1 | 190,398 | 5.08% | 237,482 | 87.45% |
+| 7 / 64 | 197,863 | 5.31% | 5,788 | 3.14% |
+| 7 / 1 | 191,405 | 5.25% | 232,346 | 87.03% |
+
+Most reuse is within the current request; prior-request guidance is present and
+remains protected by unchanged identity/legality. Storage pressure creates large
+replacement traffic at 1 MiB, while 64 MiB is lightly occupied in this shallow
+sample. Node differences are small and selective; they do not establish strength
+or justify a smaller/larger production default. Full-depth game retention remains
+less directly measured. A redesign or identity relaxation has no demonstrated need.
+
+Seven focused tests passed: three observer/real-history identity checks and four
+research configuration/lifecycle cases, including actual 2-, 4- and 16-worker
+completion, exact shared node-cap accounting, cancellation and helper draining.
+These augment, and do not replace, the earlier broad regression. No production
+runtime source changed in this diagnostic unit.
 
 ## Human dependencies and boundaries
 
