@@ -10,7 +10,9 @@ import importlib.util
 import json
 from pathlib import Path
 
-spec=importlib.util.spec_from_file_location('p3_shared_confirmation',Path(__file__).with_name('sr032-confirmation.py'))
+shared=Path(__file__).with_name('p3-information-stages.py')
+if not shared.exists():shared=Path(__file__).with_name('sr032-confirmation.py')
+spec=importlib.util.spec_from_file_location('p3_shared_confirmation',shared)
 m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 t=m.t
 BASELINE_CORE='9b41d6b174846cfaf3af9f3089d8c3d13b0614fbf0a4717a6fe46aec346c61d9'

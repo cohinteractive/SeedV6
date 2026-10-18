@@ -1,0 +1,120 @@
+{
+  "checkedUtc": "2026-10-18T13:24:54.533438+00:00",
+  "status": "passed",
+  "beforeEvidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\historical-tool-bindings-v1-before.json",
+  "beforeEvidenceSha256": "beef37fc7f4b88dac11509e63444bcb0818342ad765587ff4dc1c33a295e19cb",
+  "sourceTests": {
+    "tests": 33,
+    "passed": true,
+    "logSha256": "cb8309f33476b3cbfd4ad1fba5e232a2a53138179884cc1d38beba145a372e80"
+  },
+  "packagedTests": {
+    "tests": 28,
+    "passed": true,
+    "logSha256": "dcf43abcad96971b20726ceaf3503b45aeb813221e604a41cf15773cc75dd864"
+  },
+  "restoredHistoricalProtocols": [
+    {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr032-phase2-2026-10-18\\confirmation-v1\\promotion-w4-protocol.json",
+      "sha256": "063ec3e73c33800241f915f206999e27fe3d6f472250080869804f9508f9cb3f",
+      "allDeclaredFrozenFiles": "passed"
+    },
+    {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr032-phase2-2026-10-18\\confirmation-v1\\recapture-w1-protocol.json",
+      "sha256": "1cc584809760fea3546bb8a5b6c7ae308ee4f3496abe7ee2d5aba66edddbcf9c",
+      "allDeclaredFrozenFiles": "passed"
+    }
+  ],
+  "unchangedCurrentProtocols": [
+    {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\confirmation-v1-w1\\protocol.json",
+      "sha256": "7d8296183ee4c38d85faa81b8855b859e9aa7719ff9c2fc6b5a4592f4a6afbf3",
+      "allDeclaredFrozenFiles": "passed"
+    },
+    {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\confirmation-v1-w4\\protocol.json",
+      "sha256": "c6780bef774ff21aee501dca5a6915192c4c65d9ba29205c6370d4e5b86eb14b",
+      "allDeclaredFrozenFiles": "passed"
+    }
+  ],
+  "inheritedSr033BindingMismatches": [
+    {
+      "protocol": "docs/research/search/sr033-phase2-2026-10-17/confirmation-v1/caution-w4-protocol.json",
+      "path": "tools/tournament-session.py",
+      "expected": "4ff0ef14204882078d02b8a5619fc6c7960c6522ac6ecf6a6f01fb40c6b71e72",
+      "actual": "ac30c166c32dfd8bd718045e9e77eec36c38fbaaf88afed27dad156eaee509f9",
+      "initialHeadSha256": "7eb67b31755b10a4b486eeb5f193a9e0e784d238d4f531f871d726ab0943d9a0"
+    },
+    {
+      "protocol": "docs/research/search/sr033-phase2-2026-10-17/confirmation-v1/move-w1-protocol.json",
+      "path": "tools/tournament-session.py",
+      "expected": "4ff0ef14204882078d02b8a5619fc6c7960c6522ac6ecf6a6f01fb40c6b71e72",
+      "actual": "ac30c166c32dfd8bd718045e9e77eec36c38fbaaf88afed27dad156eaee509f9",
+      "initialHeadSha256": "7eb67b31755b10a4b486eeb5f193a9e0e784d238d4f531f871d726ab0943d9a0"
+    }
+  ],
+  "packagingMap": {
+    "sr032-confirmation.py": "p3-information-stages.py",
+    "tournament-session.py": "p3-information-session.py"
+  },
+  "packagedSources": {
+    "p3-information-confirmation.py": "b11fee07c66a41a350759b94add1335a846b504530c3123444c8f631a1999447",
+    "sr032-confirmation.py": "b1170b048ca6016677d5f53604257efa5bf846ade08beee446b81d987d635dda",
+    "sr024-confirmation.py": "b2a2f997b86cd3e68a550465f77fdd3ff4f9ccd5efce1235039a6107a1e2ab2f",
+    "tournament-session.py": "86cf45d4d1602e44b20bb892f0d568e39f98602253c7030aed95b965b1c81895",
+    "p3-information-match.py": "5eaed519fc3dd1dfbc8a576704908771d6f8715a659d125b9966aa6d066b69b0",
+    "sr032-match.py": "22e35cae8d177095a4c0d4073b24e34aee8376ea9a5e9e33c0de897effc3e1a0",
+    "sr021-match.py": "a3531da81fab4059958197a3e6687a470707bb47bbf4103f5647c4d3e7601240",
+    "search-baseline.py": "f67b5c8ad6a88b5d94667b2ee8f12d1b454a0340592f781b70c139f491602678",
+    "sr024-process-cost.py": "24c8dd11c3335ee90645c7efe54218553dd723a2dc4195eb9c0fb52612d543fa",
+    "sr036-process-cost.py": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+    "tournament-process.py": "d52f10d46a81ff3bac9b064ca98576d41bc5010a47f6e27aaa42d36114073e9f"
+  },
+  "sourceFiles": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p3-information-confirmation.py": "b11fee07c66a41a350759b94add1335a846b504530c3123444c8f631a1999447",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p3-information-stages.py": "b1170b048ca6016677d5f53604257efa5bf846ade08beee446b81d987d635dda",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\sr024-confirmation.py": "b2a2f997b86cd3e68a550465f77fdd3ff4f9ccd5efce1235039a6107a1e2ab2f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p3-information-session.py": "86cf45d4d1602e44b20bb892f0d568e39f98602253c7030aed95b965b1c81895",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p3-information-match.py": "5eaed519fc3dd1dfbc8a576704908771d6f8715a659d125b9966aa6d066b69b0",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\sr032-match.py": "22e35cae8d177095a4c0d4073b24e34aee8376ea9a5e9e33c0de897effc3e1a0",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\sr021-match.py": "a3531da81fab4059958197a3e6687a470707bb47bbf4103f5647c4d3e7601240",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\search-baseline.py": "f67b5c8ad6a88b5d94667b2ee8f12d1b454a0340592f781b70c139f491602678",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\sr024-process-cost.py": "24c8dd11c3335ee90645c7efe54218553dd723a2dc4195eb9c0fb52612d543fa",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\sr036-process-cost.py": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\tournament-process.py": "d52f10d46a81ff3bac9b064ca98576d41bc5010a47f6e27aaa42d36114073e9f"
+  },
+  "preparationOnlySmoke": {
+    "configuration": {
+      "id": "P3-TOOL-BINDING-REPAIR-v1",
+      "adapter": "p3-information-match.py",
+      "purpose": "operational",
+      "assessmentPlan": "Preparation/identity smoke check only. No games will be launched, no strength assessment. Preserve this unused study as tool-validation evidence.",
+      "blockPairs": 8,
+      "blockLimitSeconds": 900,
+      "arguments": {
+        "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\clock-v1-baseline",
+        "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\clock-v1-candidate",
+        "java": "C:/java/jdk-21/bin/java.exe",
+        "runner": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\tools\\fastchess.exe",
+        "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+        "baseline_policy": "0",
+        "candidate_policy": "4",
+        "baseline_workers": 1,
+        "candidate_workers": 1,
+        "concurrency": 1,
+        "tc": "10+0.1",
+        "seed": 3010218,
+        "pairs": 8,
+        "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\clock-development-v1-p4\\inputs\\block-0000-openings.pgn",
+        "background": true
+      },
+      "forecast": "About 25-45 minutes each at 85-155 games/hour; bounded 15-minute blocks, one active Search worker/game, BelowNormal engine process priority; stop-before admission gate. Not equal CPU; process-cost/GC and complete request accounting audited.",
+      "baselineProvenance": "Frozen engine-core.jar copied before O2/O1 modifications, SHA256 9b41d6b174846cfaf3af9f3089d8c3d13b0614fbf0a4717a6fe46aec346c61d9. Shared new research-only launcher. See uci-preflight-v1.json. Version finalization remains blocked independently; no release identity claim."
+    },
+    "configSha256": "7fabf6024d0cfe8425c8e3998acc4a3bf3c6dffe5ba56312e2a79b8dbd22e954",
+    "plan": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\binding-repair-v1-unused-stage\\plan.json",
+    "planSha256": "307b05553a946cecf53b9c85b05736100cc6636814e1d5a8da33780aec0b3507",
+    "gamesLaunched": 0
+  },
+  "limits": "Restores only workstream-introduced live-tool binding regressions to the exact initial Git bytes. Older SR-033 bindings already differed at the initial commit; this work does not migrate or reinterpret them. No historical protocol, statistical result, current frozen bundle, Search runtime or candidate identity changed. These are tooling checks, not new strength evidence."
+}

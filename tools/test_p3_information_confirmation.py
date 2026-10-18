@@ -8,6 +8,22 @@ c=importlib.util.module_from_spec(spec);spec.loader.exec_module(c)
 
 
 class BindingTests(unittest.TestCase):
+    def test_phase3_session_is_separate_and_requires_packaging_before_mutation(self):
+        self.assertEqual('p3-information-match.py',c.t.adapter_name({'adapter':'p3-information-match.py'}))
+        with self.assertRaisesRegex(ValueError,'Package the Phase 3'):
+            c.t.prepare('unused','unused')
+
+    def test_each_frozen_runtime_is_checked_without_substituting_candidate_off(self):
+        arguments={'baseline':'old','candidate':'new'}
+        trees={'old':{'core':'old-sha'},'new':{'core':'new-sha'}}
+        with patch.object(c.t,'tree',side_effect=lambda path:trees[path]):
+            c.m.verify_runtime({'runtimeTrees':{'baseline':trees['old'],'candidate':trees['new']}},arguments)
+            with self.assertRaisesRegex(ValueError,'Wrong runtime: baseline'):
+                c.m.verify_runtime({'runtimeTrees':{'baseline':trees['new'],'candidate':trees['new']}},arguments)
+            c.m.verify_runtime({'runtimeTree':trees['old']},{'baseline':'old','candidate':'old'})
+            with self.assertRaisesRegex(ValueError,'Wrong runtime: candidate'):
+                c.m.verify_runtime({'runtimeTree':trees['old']},arguments)
+
     def protocol(self):
         dependencies=[c.__file__,c.m.__file__,c.m.rules.__file__,c.m.t.__file__,c.m.b.__file__]
         return {'design':'p3-information-paired-stages-v1','family':'P3-O1O2','executorSha256':c.t.digest(c.__file__),

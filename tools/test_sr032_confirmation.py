@@ -10,17 +10,6 @@ c = importlib.util.module_from_spec(spec); spec.loader.exec_module(c)
 
 
 class ContinuationTest(unittest.TestCase):
-    def test_each_frozen_runtime_is_checked_without_substituting_candidate_off(self):
-        arguments={'baseline':'old','candidate':'new'}
-        trees={'old':{'core':'old-sha'},'new':{'core':'new-sha'}}
-        with patch.object(c.t,'tree',side_effect=lambda path:trees[path]):
-            c.verify_runtime({'runtimeTrees':{'baseline':trees['old'],'candidate':trees['new']}},arguments)
-            with self.assertRaisesRegex(ValueError,'Wrong runtime: baseline'):
-                c.verify_runtime({'runtimeTrees':{'baseline':trees['new'],'candidate':trees['new']}},arguments)
-            c.verify_runtime({'runtimeTree':trees['old']},{'baseline':'old','candidate':'old'})
-            with self.assertRaisesRegex(ValueError,'Wrong runtime: candidate'):
-                c.verify_runtime({'runtimeTree':trees['old']},arguments)
-
     def test_pause_does_not_assess_or_export(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp); protocol = root/'protocol.json'; protocol.write_text('{}')

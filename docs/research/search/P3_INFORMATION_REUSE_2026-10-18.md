@@ -319,6 +319,11 @@ new research launcher/classes are shared. The frozen installations are local at
 `raw/clock-v1-baseline` and `raw/clock-v1-candidate`. Each prepared study freezes
 its own copies, runner/tools, JDK, model and opening schedule. Source/hash manifests
 are the provenance; embedded build 35 is not a finalized research version.
+The earlier fixed-resource diagnostics compared feature-off and feature-on
+configurations within the same compiled experimental JVM. Their relative costs
+do not independently establish that adding dormant controls has zero cost versus
+the original binary. Clock comparisons deliberately retain that original binary
+as the champion reference; semantic parity is not presumed to imply cost parity.
 [UCI preflight](p3-information-reuse-2026-10-18/uci-preflight-v1.json) confirms pinned
 Pair-2 identity, cumulative policies, warmup and two legal exactly-100k-admission
 requests for each binary/configuration. Complete process costs and all requests
@@ -529,6 +534,43 @@ The current plan is roughly 50-minute admission windows, which leave time for
 complete 20-minute watchdog blocks and normally finish several shorter blocks.
 Review host headroom at the safe boundaries and resume the same protocol without
 looking at partial outcomes. Then run the four-worker first look separately.
+
+### Historical tool binding repair during confirmation
+
+The broader [binding audit and repair receipt](p3-information-reuse-2026-10-18/historical-tool-binding-repair-v1.json)
+found that the closed SR-032 protocols bind live `tools/sr032-confirmation.py` and
+`tools/tournament-session.py` paths. The compatible Phase 3 extensions had changed
+their hashes, temporarily preventing those historical file-binding checks.
+Their exact initial Git bytes, which match the SR-032 frozen hashes, are now
+restored. No historical protocol, result, raw evidence or candidate runtime was
+rewritten. This corrects an omission in the initial tooling provenance review.
+
+Phase 3's required extensions now live separately in `tools/p3-information-stages.py`
+and `tools/p3-information-session.py`. These are packaging versions of the existing
+stage/session executors, with the same statistical rule and lifecycle checks;
+the duplication is necessary to leave historical bound paths unchanged. Future
+preparation copies them under the canonical executor filenames inside a **new**
+tool bundle. The session source refuses direct preparation before packaging.
+Existing frozen Phase 3 bundles, protocols and stages are untouched and remain
+the sole executors for their experiments. Do not prepare a new Phase 3 study with
+the restored historical root `tools/tournament-session.py`.
+
+Validation: 33 source-level tooling tests and 28 packaged executor/session tests
+passed. A separate eight-pair operational preparation smoke check verified the
+new packaging path and immutable inputs, and launched **zero games**. Both SR-032
+protocols' full declared frozen-file checks passed after restoration; both current
+Phase 3 protocols' declared frozen-file checks also passed unchanged. The initial
+broader repair guard stopped before source mutation when it found older SR-033
+bindings expecting yet another session-tool hash. Those two SR-033 mismatches
+already existed at the initial commit and remain unchanged; this work does not
+migrate their historical verification paths or reinterpret their conclusions.
+
+The before-audit JSON, test logs and unused smoke-study inputs remain under this
+experiment's `raw/`; the receipt identifies their hashes and paths. Brief Python
+tooling and file-binding checks overlapped the first confirmation window; no Java
+build or benchmark did. Preserve that shared-host limitation and all valid games.
+Mocked stopping-decision messages in the tooling tests are not actual confirmation
+results. The first actual confirmation look remains pending at 128 complete pairs.
 
 ### Hint lifetime and pressure
 

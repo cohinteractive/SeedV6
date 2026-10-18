@@ -55,7 +55,10 @@ def prepare(config_path,label,seed):
     names=('p3-information-confirmation.py','sr032-confirmation.py','sr024-confirmation.py',
            'tournament-session.py','p3-information-match.py','sr032-match.py','sr021-match.py',
            'search-baseline.py','sr024-process-cost.py','sr036-process-cost.py','tournament-process.py')
-    if not all((repo/'tools'/name).is_file()for name in names):raise ValueError('Missing maintained dependency')
+    source_names={'sr032-confirmation.py':'p3-information-stages.py',
+                  'tournament-session.py':'p3-information-session.py'}
+    sources={name:repo/'tools'/source_names.get(name,name)for name in names}
+    if not all(path.is_file()for path in sources.values()):raise ValueError('Missing maintained dependency')
     authority={}
     for name,revision in [('CHESS_SEARCH_CONTRACT.md','P3-R003'),('CHESS_SEARCH_RESEARCH_FRONTIER.md','P3-F002')]:
         path=repo/'source'/name
@@ -63,7 +66,7 @@ def prepare(config_path,label,seed):
         authority[str(path)]={'revision':revision,'sha256':digest(path)}
     source_head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip()
     out.mkdir();bundle.mkdir()
-    for name in names:shutil.copy2(repo/'tools'/name,bundle/name)
+    for name in names:shutil.copy2(sources[name],bundle/name)
     shutil.copy2(__file__,bundle/'prepare_confirmation.py')
     spec=importlib.util.spec_from_file_location('frozen_p3_confirmation',bundle/'p3-information-confirmation.py')
     c=importlib.util.module_from_spec(spec);spec.loader.exec_module(c);t=c.t;b=c.m.b

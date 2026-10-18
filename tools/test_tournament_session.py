@@ -21,7 +21,6 @@ class SessionTests(unittest.TestCase):
         self.assertEqual('sr021-match.py', s.adapter_name({}))
         self.assertEqual('sr033-match.py', s.adapter_name({'adapter':'sr033-match.py'}))
         self.assertEqual('sr032-match.py', s.adapter_name({'adapter':'sr032-match.py'}))
-        self.assertEqual('p3-information-match.py', s.adapter_name({'adapter':'p3-information-match.py'}))
         with self.assertRaisesRegex(ValueError, 'Unsupported'):
             s.adapter_name({'adapter':'../sr033-match.py'})
 
