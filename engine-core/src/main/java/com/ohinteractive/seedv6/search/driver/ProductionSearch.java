@@ -17,14 +17,29 @@ public final class ProductionSearch {
 
     /** Same production policies with an explicitly bounded application Hash setting. */
     public static SingleDepthSearch create(int workers, SearchEvaluation evaluation, int hashMiB) {
+        return create(workers, evaluation, hashMiB, true);
+    }
+
+    /** Cumulative Phase 2 comparison: QXRAY/EFFORT/ROOT_REUSE, completed TT hints off. */
+    public static SingleDepthSearch createInformationControl(int workers, SearchEvaluation evaluation) {
+        return createInformationControl(workers, evaluation, 64);
+    }
+
+    public static SingleDepthSearch createInformationControl(int workers, SearchEvaluation evaluation, int hashMiB) {
+        return create(workers, evaluation, hashMiB, false);
+    }
+
+    private static SingleDepthSearch create(int workers, SearchEvaluation evaluation, int hashMiB,
+            boolean completedHints) {
         validate(workers, evaluation);
         if (hashMiB < 1 || hashMiB > 1024) throw new IllegalArgumentException("Hash must be 1..1024 MiB");
         var table = new TTable(hashMiB);
         if (evaluation.isBrnPair2())
             return workers == 1
                     ? ExactSearchAdapter.seeResearch(evaluation, SeePolicy.QXRAY, null, table)
+                            .withCompletedHints(completedHints, null)
                     : new ParallelSearch(workers, evaluation, table, ConcurrencyPolicy.ROOT_REUSE)
-                            .withSeeResearch(SeePolicy.QXRAY, null);
+                            .withSeeResearch(SeePolicy.QXRAY, null).withCompletedHints(completedHints, null);
         return workers == 1 ? new ExactSearchAdapter(evaluation, table)
                 : new ParallelSearch(workers, evaluation, table, ConcurrencyPolicy.OFF);
     }

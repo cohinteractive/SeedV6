@@ -24,7 +24,8 @@ import com.ohinteractive.seedv6.search.tt.TTable;
  * Worker-confined production boundary for one fixed-depth Search invocation.
  * The calibrated HCE default composes SR-018 and SR-019; neural and explicitly supplied
  * evaluator constructors retain static leaves. Single-worker Pair-2 production selects
- * QXRAY qsearch, native EFFORT, quiet LMR and protected narrow-window LMP at its factory.
+ * QXRAY qsearch, native EFFORT, quiet LMR, protected narrow-window LMP and completed
+ * legal TT hints at its factory. Main history retains its per-invocation lifetime.
  * The recursive algorithm uses the same
  * evaluator interface, without evaluator-type tests in its hot path.
  * Owns evaluator and Search TTable state, reusing both across iterations and
@@ -159,6 +160,13 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
         var adapter=historyResearch(evaluation,retain,nominalOnly,null);
         adapter.exact.withCompletedHints(hints,diagnostics);
         return adapter;
+    }
+
+    /** Select the existing completed legal hint mechanism on an idle cumulative owner. */
+    public ExactSearchAdapter withCompletedHints(boolean enabled,
+            com.ohinteractive.seedv6.search.exact.MoveHintDiagnostics diagnostics) {
+        exact.withCompletedHints(enabled, diagnostics);
+        return this;
     }
 
     public static ExactSearchAdapter depthFeedbackResearch(SearchEvaluation evaluation,

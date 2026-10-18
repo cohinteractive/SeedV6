@@ -55,7 +55,7 @@ public final class Sr036Cost {
         try(var out=Files.newBufferedWriter(Path.of(args[2]),StandardOpenOption.CREATE_NEW)) {
             for(int i=0;i<configs.length;i++) {
                 var fields=configs[i].split(":");int workers=Integer.parseInt(fields[1]);
-                SingleDepthSearch search=fields[0].equals("production")?ProductionSearch.create(workers,eval)
+                SingleDepthSearch search=fields[0].equals("production")?ProductionSearch.createInformationControl(workers,eval)
                         :new ParallelSearch(workers,eval,ConcurrencyPolicy.valueOf(fields[0].toUpperCase(Locale.ROOT)));
                 tracked[i]=new Tracked(search,workers);drivers[i]=new SearchDriver(tracked[i]);
                 for(int warm=0;warm<3;warm++) {

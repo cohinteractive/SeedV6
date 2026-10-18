@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F004**
+Internal frontier revision: **P3-F005**
 
-Status: **ACTIVE Phase 3: first O1 + O2 CGLHW research technically complete; Policy 4 explicitly owner-accepted. Cumulative Phase 2 production champion/defaults retained; no successor objective activated.**
+Status: **ACTIVE Phase 3: owner-accepted Policy 4 integrated, validated and promoted as the production Search champion/default for Pair-2 at 1-16 workers. Cumulative Phase 2 retained as a comparison control; no successor objective activated.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -22,8 +22,9 @@ remains the champion until a separately validated and explicitly accepted promot
 A selected coherent objective may span several SR identifiers and internal
 workstreams; it need not stop after each feature or experiment.
 
-Initial and retained production champion: cumulative Pair-2 **QXRAY + quiet LMR +
-WINDOW**, with **EFFORT at one worker / ROOT_REUSE at 2-16**, requested default 64 MiB TT and the
+Production champion: **Policy 4**, cumulative Pair-2 **QXRAY + quiet LMR +
+WINDOW + completed legal TT hints**, with **EFFORT at one worker / ROOT_REUSE at 2-16**,
+requested default 64 MiB TT and the
 fixed generation-32 evaluator identity in the Contract. Other evaluators, independent
 references, historical anchors and explicit controls retain their supported scope.
 The owner confirms final Phase 2 mirror synchronization and GPT acceptance of
@@ -58,7 +59,7 @@ availability and reuse, and history quality/lifetime jointly, with ordering, ite
 reduction, pruning and private-worker interactions. It began with measured current
 structures; neither a TT redesign nor independent gains for each component were
 prerequisites. The cumulative Phase 2 champion and fixed Pair-2 evaluator above
-supplied the comparison identity; production defaults remain unchanged.
+supplied the comparison identity; production stayed unchanged at that research handback.
 
 The [focused research record](../docs/research/search/P3_INFORMATION_REUSE_2026-10-18.md)
 governs exact experimental identities, protocols, measurements and limitations.
@@ -86,12 +87,28 @@ equal clocks do not establish equal compute. The recorded evaluator, host/JVM an
 resource limits apply; no gain is established at other worker counts, clocks,
 memory pressures, platforms or resource configurations. Closed protocols stay closed.
 
-Policy 4 is the accepted future research comparison configuration in the confirmed
-domains, with the cumulative Phase 2 production configuration retained as a distinct
-control. This acceptance does not record formal production-champion promotion,
-production integration/default activation, version finalization or external release.
-The Contract preserves separate production authorization and lifecycle/validation
-boundaries; the inherited finalizer integrity blocker remains unresolved.
+The owner's subsequent production-integration launch authorized implementation
+and promotion without reopening research acceptance. The
+[integration record](../docs/research/search/P3_POLICY4_PRODUCTION_2026-10-19.md)
+records passed configuration-equivalence, correctness, architecture, lifecycle and
+compatibility gates. **Policy 4 is formally promoted as the normal Pair-2 production
+Search champion/default at 1-16 workers and the future research baseline.**
+The previous cumulative Phase 2 engine remains an explicit hints-off comparison
+and regression control (`ProductionSearch.createInformationControl`; research
+information policy 0). Normal standalone UCI, legacy Pair-2 and GUI Pair-2 share
+the production factory. Main-history lifetime and ROOT_REUSE private seeding are
+unchanged; no retained-history/filter combination is promoted.
+
+Compatibility checks cover all supported worker counts and representative Hash
+settings. Other evaluator families retain prior behavior with completed hints off;
+other Pair-2 checkpoints have no new strength claim. Production applicability is
+broader than the one-/four-worker generation-32 strength evidence above. The TT
+budget, layout, locking, replacement, SearchKey and proof policy are unchanged.
+A pre-existing headless Training-panel widget-test failure reproduced with the
+frozen pre-integration core; it is separate from the passed Search/GUI-adapter
+gates. Native GUI/client and macOS acceptance were not newly established.
+Version finalization remains separately owner-handled; promotion is not external
+release or deployment.
 
 Retained history and nominal-only malus filtering have inconclusive conditional
 strength evidence and remain unadopted; combined **Policy 7 remains unconfirmed**.
@@ -127,9 +144,9 @@ focused Phase 2 reports. This inventory does not duplicate their experimental re
 | SR-009 | Static-evaluation evidence and correction | Evidence only; bounded HCE findings. No correction-history, generic improving or confidence mechanism adopted. | Raw/cached/heuristic/proof separation, one/two-ply movement, residual calibration, sparse/biased labels, correction learning/aging/bounds and marginal cost. | O3, SR-008/018/019/020/021/029/033/038; evaluator identity. | [P1], [C1], [R018], [R021] |
 | SR-010 | Repetition, cycles and graph-history interaction | Baseline formal real-history adjudication and primitive bucket-chain detection; conservative ordered SearchKey. | Broader proven count-state equivalence, history mechanics, upcoming repetition and clock/status relevance without twofold-as-draw or invented history. | SR-011/012/013/018/036; evaluator-relevant status. | [P1], [C1] |
 | SR-011 | Mate-distance pruning | Baseline core mate-domain restriction. Finite-horizon gap proof retained; HORIZON_DOMAIN runtime candidate historically REJECTED. | Reassess domain cost/usefulness under new horizons; retain ordinary/mate separation, real-ply normalization and searched witnesses. | SR-001/003/012/029/030/031/032. | [P1], [C1], [R001] |
-| SR-012 | Remaining advanced TT policy | Baseline TTable, 64 MiB requested, equal-depth/current-generation/cutoff-only proof, NO_LEAF_TT, shared score/move identity; no production prefetch/statistics. | Information content, producer eligibility, hint retention/identity, replacement, sizing/layout, bound retention, q/selective domains, partial-work non-score evidence and measured traffic. | O1; SR-004/005/007/010/027/031/036/037. Binding changes need owner authority. | [P1], [C1], [Bagatur] |
+| SR-012 | Remaining advanced TT policy | Production Pair-2 completed legal hints in the existing TTable; 64 MiB requested, equal-depth/current-generation/cutoff-only proof, NO_LEAF_TT, unchanged SearchKey identity; no production prefetch/statistics. | Information content, producer eligibility, hint retention/identity, replacement, sizing/layout, bound retention, q/selective domains, partial-work non-score evidence and measured traffic. | O1; SR-004/005/007/010/027/031/036/037. Binding changes need owner authority. | [P1], [C1], [Bagatur] |
 | SR-013 | Tablebase integration into Search | Baseline optional guarded three/four-piece root WIN outcomes; no ordinary score/depth/TT substitution. | Broader materials/outcomes, root/interior WDL/DTZ, repeated-history/rule guards, probe economics and native-platform coverage. | SR-010/011/012/034/035/036; separate outcome/native ownership. | [P1], [C1] |
-| SR-014 | Overall move-order architecture | Baseline legal hash, good/bad tacticals, main quiet history, with accepted completed-PV/root-effort guidance. | Coherent hash/PV/refutation/history/tactical precedence, bad-tactical demotion and consumer interactions; ordering remains distinct from pruning. | O1/O2, SR-003/005/015/016/017/022/029. | [P1], [R005], [R036] |
+| SR-014 | Overall move-order architecture | Baseline legal hash, good/bad tacticals, main quiet history, with accepted completed-PV/root-effort guidance and Pair-2 completed legal TT hints. | Coherent hash/PV/refutation/history/tactical precedence, bad-tactical demotion and consumer interactions; ordering remains distinct from pruning. | O1/O2, SR-003/005/015/016/017/022/029. | [P1], [R005], [R036] |
 | SR-015 | Capture/tactical ordering and SEE | Baseline SEE-sign partition and descending immediate material including EP/promotion; LVA/capture-history alternatives unadopted. | MVV-LVA, capture/noisy history, tactical tiers/thresholds, main/q ordering and reusable SEE evidence. | O2, SR-001/014/017/024/037; exchange units are not Pair-2 score units. | [P1], [R024] |
 | SR-016 | Quiet-move ordering memory | Baseline signed bounded main history; per-invocation reset plus ROOT_REUSE private seeding. Richer histories unadopted. | Killers, countermoves, continuation/follow-up/relative/context/pawn/threat histories; gravity/update/decay, lifetime and label quality. | O2, SR-005/014/021/022/023/029/033/036; no labels for omitted moves. | [P1], [R005], [R023], [R036] |
 | SR-017 | Move sorting and generation mechanics | Baseline staged generation/lazy selection, complete checked evasions and exact legal existence; full/hybrid sorts unadopted. | Full/partial/selection sorting, historical insertion/quick-sort crossover, generated-but-unused work, stage/setup and repeated classification costs. | SR-002/014/015/016/037; distinguish value parity from tree-shape identity. | [P1], [C1], [Bagatur] |
@@ -202,10 +219,9 @@ history, not current instructions; Phase 2 relative links retain their original
 reports, retained local evidence and source/Git history. Check local evidence
 availability before reuse; no historical experiment is recertified here.
 
-The initialization-era P3-F001 / P3-R001 refresh wording is historical. The owner
-confirmed P3-F001 / P3-R002 synchronization at the O1 + O2 launch and has now
-confirmed the relevant predecessor Project Source synchronization. **This P3-F004 /
-P3-R006 acceptance reconciliation requires replacement of BOTH Project Source
+The initialization-era refresh wording is historical. The owner confirmed
+P3-F004 / P3-R006 synchronization before this integration launch. **This P3-F005 /
+P3-R007 production-promotion update requires replacement of BOTH Project Source
 mirrors and synchronization confirmation before dependent GPT planning or a
 subsequent CGLHW launch.** The new refresh is outstanding. Codex uses repository
 masters for authorized work and does not claim external synchronization.

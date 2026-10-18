@@ -76,7 +76,7 @@ public final class Sr021Study {
                     board=ExhaustiveOracle.child(board,m);h.appendPosition(board);
                 }
                 var history=h.snapshot();var captures=new ArrayList<Capture>();
-                var owner=ProductionSearch.create(workers,definition);
+                var owner=ProductionSearch.createInformationControl(workers,definition);
                 if(owner instanceof ExactSearchAdapter)captures.add(new Capture((ExactSearch)field(owner,"exact"),history,210015L+roots));
                 else for(Object w:(Object[])field(owner,"workers"))captures.add(new Capture((ExactSearch)field(w,"search"),history,210015L+roots*17+captures.size()));
                 try(var driver=new SearchDriver(owner)) {
@@ -85,7 +85,7 @@ public final class Sr021Study {
                     if(result.nodes()!=control.nodes()||result.nodes()!=result.diagnostics().totalEnteredNodes())throw new AssertionError("accounting");
                     if(result.lastCompletedResult()!=null)Phase2Oracle.legalPv(board,result.lastCompletedResult().principalVariation());
                     boolean parity=false;
-                    if(workers==1)try(var plain=new SearchDriver(ProductionSearch.create(1,definition))){
+                    if(workers==1)try(var plain=new SearchDriver(ProductionSearch.createInformationControl(1,definition))){
                         var other=plain.search(new SearchRequest(board,history,6,SearchObserver.NONE,SearchControl.controlled(5_000_000,0,-1,TimeSource.SYSTEM),true));
                         var a=result.lastCompletedResult();var b=other.lastCompletedResult();
                         if(result.nodes()!=other.nodes()||a.score()!=b.score()||a.bestMove()!=b.bestMove()||!Arrays.equals(a.principalVariation(),b.principalVariation()))throw new AssertionError("observer tree changed");

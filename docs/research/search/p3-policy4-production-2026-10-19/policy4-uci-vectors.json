@@ -1,0 +1,451 @@
+{
+  "provenance": {
+    "source": "Accepted frozen Policy 4 confirmation runtime; observations generated before comparison with integrated production",
+    "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\clock-v1-candidate",
+    "coreSha256": "eca59cf0665babf1197cd6d09209312feb0fba31a3fc3298daf8d3e3b9b2a01e",
+    "allFrozenRuntimeFilesVerified": true,
+    "command": [
+      "C:\\java\\jdk-21\\bin\\java.exe",
+      "-Xms256m",
+      "-Xmx512m",
+      "-XX:ActiveProcessorCount=1",
+      "-Dseedv6.uci.informationResearch=4",
+      "-Dseedv6.uci.warmupWorkers=1",
+      "-Dseedv6.research.actor=candidate",
+      "-Djava.awt.headless=true",
+      "-Dseedv6.syzygy.config=",
+      "-Dseedv6.syzygy.path=",
+      "-Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+      "-Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "-Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "-Dseedv6.uci.warmupDepth=4",
+      "-Dseedv6.uci.qsearchResearch=production",
+      "-Dseedv6.uci.lmrResearch=production",
+      "-Dseedv6.uci.aspirationResearch=off",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\clock-v1-candidate\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\clock-v1-candidate\\lib\\*",
+      "com.ohinteractive.seedv6.integration.P3InformationUciMain"
+    ],
+    "modelSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "positionSourceSha256": "0a10bc7de11506fca7945e236caa8badffab4abbcee975fd1b72583e47dfa3e7",
+    "transcript": "raw/frozen-policy4-vectors-uci.txt"
+  },
+  "vectors": [
+    {
+      "depth": 3,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "",
+      "uciScore": "cp 1",
+      "nodes": 479,
+      "pv": "c2c4 b8c6 d2d4"
+    },
+    {
+      "depth": 3,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR b KQkq - 0 1",
+      "moves": "",
+      "uciScore": "cp 1",
+      "nodes": 480,
+      "pv": "c7c5 b1c3 d7d5"
+    },
+    {
+      "depth": 3,
+      "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+      "moves": "",
+      "uciScore": "cp 16",
+      "nodes": 7451,
+      "pv": "e2a6 e6d5 c3d5 e7e5"
+    },
+    {
+      "depth": 3,
+      "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+      "moves": "",
+      "uciScore": "cp 84",
+      "nodes": 302,
+      "pv": "b4f4 h4g3 f4f7"
+    },
+    {
+      "depth": 3,
+      "fen": "r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1",
+      "moves": "",
+      "uciScore": "cp 804",
+      "nodes": 515,
+      "pv": "a1a8 e8d7 h1h8"
+    },
+    {
+      "depth": 3,
+      "fen": "r3k2r/8/8/8/8/8/8/R3K2R b KQkq - 0 1",
+      "moves": "",
+      "uciScore": "cp 804",
+      "nodes": 530,
+      "pv": "a8a1 e1d2 h8h1"
+    },
+    {
+      "depth": 3,
+      "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 2",
+      "moves": "",
+      "uciScore": "cp 0",
+      "nodes": 103,
+      "pv": "e5d6 e8d7 e1d1 d7d6"
+    },
+    {
+      "depth": 3,
+      "fen": "4k3/8/8/8/3Pp3/8/8/4K3 b - d3 0 2",
+      "moves": "",
+      "uciScore": "cp 0",
+      "nodes": 120,
+      "pv": "e4d3 e1d2 e8d7 d2d3"
+    },
+    {
+      "depth": 3,
+      "fen": "4k3/P7/8/8/8/8/7p/4K3 w - - 0 1",
+      "moves": "",
+      "uciScore": "cp 631",
+      "nodes": 409,
+      "pv": "a7a8q e8d7 a8d5 d7e7"
+    },
+    {
+      "depth": 3,
+      "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+      "moves": "",
+      "uciScore": "cp 639",
+      "nodes": 360,
+      "pv": "h2h1q e1f2 h1h2 f2f3"
+    },
+    {
+      "depth": 1,
+      "fen": "7k/6Q1/6K1/8/8/8/8/8 b - - 0 1",
+      "moves": "",
+      "uciScore": "mate 0",
+      "nodes": 0,
+      "pv": ""
+    },
+    {
+      "depth": 1,
+      "fen": "7k/5Q2/6K1/8/8/8/8/8 b - - 0 1",
+      "moves": "",
+      "uciScore": "cp 0",
+      "nodes": 0,
+      "pv": ""
+    },
+    {
+      "depth": 3,
+      "fen": "7k/5Q2/6K1/8/8/8/8/8 w - - 0 1",
+      "moves": "",
+      "uciScore": "mate 1",
+      "nodes": 26,
+      "pv": "f7g7"
+    },
+    {
+      "depth": 3,
+      "fen": "4k3/8/8/8/8/8/3Q4/4K3 w - - 0 1",
+      "moves": "",
+      "uciScore": "cp 736",
+      "nodes": 1469,
+      "pv": "d2h6 e8d7 h6h3 d7e7"
+    },
+    {
+      "depth": 3,
+      "fen": "4k3/8/8/8/8/8/3Q4/4K3 b - - 0 1",
+      "moves": "",
+      "uciScore": "cp -738",
+      "nodes": 324,
+      "pv": "e8f7 d2g5 f7e8"
+    },
+    {
+      "depth": 3,
+      "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
+      "moves": "",
+      "uciScore": "cp -2",
+      "nodes": 1640,
+      "pv": "d1h5 b8c6 d2d3"
+    },
+    {
+      "depth": 3,
+      "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3",
+      "moves": "",
+      "uciScore": "cp -3",
+      "nodes": 1939,
+      "pv": "d2d4 e5d4 f3d4"
+    },
+    {
+      "depth": 3,
+      "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/2N2N2/PPPP1PPP/R1BQK2R w KQkq - 4 5",
+      "moves": "",
+      "uciScore": "cp -7",
+      "nodes": 2760,
+      "pv": "e1g1 e8g8 f1e1"
+    },
+    {
+      "depth": 1,
+      "fen": "4k3/8/8/8/8/8/3R4/4K3 w - - 100 60",
+      "moves": "",
+      "uciScore": "cp 0",
+      "nodes": 0,
+      "pv": ""
+    },
+    {
+      "depth": 1,
+      "fen": "4k3/8/8/8/8/8/8/4K3 w - - 0 1",
+      "moves": "",
+      "uciScore": "cp 0",
+      "nodes": 0,
+      "pv": ""
+    },
+    {
+      "depth": 5,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "",
+      "uciScore": "cp 0",
+      "nodes": 9561,
+      "pv": "e2e3 b8c6 g1f3 d7d6 d2d4"
+    },
+    {
+      "depth": 6,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "",
+      "uciScore": "cp 7",
+      "nodes": 36027,
+      "pv": "c2c4 d7d5 c4d5 d8d5 b1c3 d5h5"
+    },
+    {
+      "depth": 5,
+      "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+      "moves": "",
+      "uciScore": "cp 88",
+      "nodes": 2229,
+      "pv": "b4f4 h4g3 f4f7 c7c5 f7g7 g3f2"
+    },
+    {
+      "depth": 6,
+      "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+      "moves": "",
+      "uciScore": "cp 89",
+      "nodes": 6767,
+      "pv": "b4f4 h4g3 f4f7 c7c5 f7f6 d6d5"
+    },
+    {
+      "depth": 5,
+      "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/2N2N2/PPPP1PPP/R1BQK2R w KQkq - 4 5",
+      "moves": "",
+      "uciScore": "cp -2",
+      "nodes": 65059,
+      "pv": "d2d3 e8g8 c1g5 d7d6 g5f6 d8f6"
+    },
+    {
+      "depth": 6,
+      "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/2N2N2/PPPP1PPP/R1BQK2R w KQkq - 4 5",
+      "moves": "",
+      "uciScore": "cp 11",
+      "nodes": 273053,
+      "pv": "a2a3 d7d6 b2b4 c5b6 e1g1 e8g8"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "g1f3 d7d5 g2g3 c7c5 f1g2 g7g6 e1g1 f8g7 d2d4 c5d4 f3d4 e7e5 d4b3 g8e7 e2e4 d5d4",
+      "uciScore": "cp 6",
+      "nodes": 4120,
+      "pv": "c2c3 e8g8 c3d4 e5d4"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "f2f4 g7g6 g1f3 g8f6 g2g3 f8g7 f1g2 e8g8 e1g1 d7d6 d2d3 b8c6 c2c4 a7a6 b1a3 e7e5",
+      "uciScore": "cp 0",
+      "nodes": 4445,
+      "pv": "a3c2 f8e8 f4e5 d6e5"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 g8f6 b1c3 d7d6 f1c4 e7e5 d4f3 f8e7 c1g5 e8g8",
+      "uciScore": "cp 9",
+      "nodes": 75556,
+      "pv": "e1g1 c8g4 f1e1 g4f3 d1f3"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "g1f3 g8f6 c2c4 e7e6 g2g3 d7d5 f1g2 f8e7 e1g1 e8g8 b2b3 d5d4 d2d3 c7c5 e2e3 b8c6",
+      "uciScore": "cp -3",
+      "nodes": 4677,
+      "pv": "f1e1 d4e3 f2e3 a8b8"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "e2e4 e7e6 d2d4 d7d5 f1d3 d5e4 d3e4 g8f6 e4d3 c7c5 d4c5 f8c5 g1f3 e8g8 e1g1 b8c6",
+      "uciScore": "cp -1",
+      "nodes": 16864,
+      "pv": "c2c3 d8b6 b2b4 c5e7"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "e2e4 e7e6 d2d4 d7d5 b1d2 d5e4 d2e4 b8d7 g1f3 g8f6 e4f6 d7f6 c1e3 f8e7 f1d3 b7b6",
+      "uciScore": "cp 18",
+      "nodes": 4711,
+      "pv": "e1g1 e8g8 f1e1 d8d5"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "e2e4 c7c5 g1f3 e7e6 d2d3 b8c6 g2g3 d7d5 b1d2 f8d6 f1g2 g8e7 e1g1 b7b6 f3h4 c8b7",
+      "uciScore": "cp 11",
+      "nodes": 6064,
+      "pv": "d1h5 g7g6 h5h6 c6e5"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "d2d4 d7d5 b1c3 g8f6 c1g5 e7e6 e2e4 f8b4 e4e5 h7h6 g5c1 f6e4 d1g4 g7g5 a2a3 h6h5",
+      "uciScore": "cp -5",
+      "nodes": 6735,
+      "pv": "g4h3 g5g4 h3e3 b4c3 b2c3"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "c2c4 e7e5 b1c3 g8f6 g1f3 b8c6 e2e3 f8b4 d1c2 b4c3 c2c3 d8e7 a2a3 d7d5 c4d5 f6d5",
+      "uciScore": "cp 8",
+      "nodes": 7023,
+      "pv": "c3b3 d5b6 b3c2 e8g8"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "e2e4 c7c6 d2d4 d7d5 e4d5 c6d5 f1d3 b8c6 c2c3 d8c7 c1g5 g8f6 b1d2 c8g4 d3e2 g4f5",
+      "uciScore": "cp 0",
+      "nodes": 5502,
+      "pv": "g1f3 h7h6 g5f6 e7f6"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "e2e4 e7e5 g1f3 b8c6 f1c4 g8f6 d2d3 h7h6 c2c3 d7d6 c4b3 g7g6 d3d4 d8e7 e1g1 f6e4",
+      "uciScore": "cp -63",
+      "nodes": 12912,
+      "pv": "f1e1 e5d4 c3d4 f8g7"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5 d4b5 d7d6 c1e3 g8f6 e3g5 c8e6 b1d2 a7a6",
+      "uciScore": "cp -1",
+      "nodes": 6587,
+      "pv": "b5c3 h7h6 g5e3 d6d5"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "e2e4 g7g6 d2d4 f8g7 b1c3 c7c6 f2f4 d7d5 e4e5 g8h6 g1f3 f7f6 h2h3 h6f5 f1d3 f5g3",
+      "uciScore": "cp 6",
+      "nodes": 7034,
+      "pv": "h1g1 f6e5 f4e5 e8g8"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "g1f3 d7d5 d2d4 c7c6 c2c4 e7e6 d1c2 d5c4 c2c4 g8f6 c1g5 h7h6 g5f6 d8f6 e2e4 b8d7",
+      "uciScore": "cp -3",
+      "nodes": 10429,
+      "pv": "b1c3 c6c5 d4c5 d7c5"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "e2e4 e7e5 g1f3 b8c6 f1c4 f8c5 c2c3 g8f6 d2d3 a7a6 c4b3 e8g8 e1g1 d7d6 h2h3 c5a7",
+      "uciScore": "cp 16",
+      "nodes": 29795,
+      "pv": "f1e1 f8e8 c1g5 a6a5"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "g1f3 g7g6 d2d4 g8f6 c2c4 f8g7 b1c3 d7d5 c4d5 f6d5 c1d2 e8g8 a1c1 d5b6 d2g5 h7h6",
+      "uciScore": "cp 5",
+      "nodes": 7023,
+      "pv": "g5f4 b6d5 c3d5 d8d5"
+    },
+    {
+      "depth": 4,
+      "fen": "8/8/K2p4/8/2R2r2/5pk1/4P1P1/8 w - - 2 9",
+      "moves": "",
+      "uciScore": "cp 89",
+      "nodes": 985,
+      "pv": "c4f4 g3f4 g2f3 d6d5"
+    },
+    {
+      "depth": 4,
+      "fen": "8/8/8/8/8/4Q3/1k6/3K4 w - - 6 4",
+      "moves": "",
+      "uciScore": "cp 738",
+      "nodes": 4136,
+      "pv": "e3h3 b2b1 h3h8 b1a2"
+    },
+    {
+      "depth": 4,
+      "fen": "8/8/1Q6/8/7k/8/4K3/8 w - - 18 10",
+      "moves": "",
+      "uciScore": "cp 742",
+      "nodes": 3481,
+      "pv": "b6g6 h4h3 e2f3 h3h4"
+    },
+    {
+      "depth": 4,
+      "fen": "7k/8/5KQ1/8/8/8/8/8 w - - 98 1",
+      "moves": "",
+      "uciScore": "mate 1",
+      "nodes": 25,
+      "pv": "g6g7"
+    },
+    {
+      "depth": 4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "moves": "g1f3 g8f6 f3g1 f6g8",
+      "uciScore": "cp 9",
+      "nodes": 3034,
+      "pv": "e2e3 d7d5 d1h5 e7e6"
+    },
+    {
+      "depth": 4,
+      "fen": "8/8/3N4/2PPk3/7K/8/8/8 w - - 1 10",
+      "moves": "",
+      "uciScore": "cp 342",
+      "nodes": 903,
+      "pv": "h4g3 e5d5 d6b7 d5c4"
+    },
+    {
+      "depth": 4,
+      "fen": "8/8/2Kp1r2/8/8/8/6k1/5b2 b - - 1 16",
+      "moves": "",
+      "uciScore": "cp 765",
+      "nodes": 3316,
+      "pv": "g2f3 c6d5 f1g2 d5d4"
+    },
+    {
+      "depth": 4,
+      "fen": "8/k1P5/8/1K6/8/8/8/8 w - - 0 1",
+      "moves": "",
+      "uciScore": "cp 737",
+      "nodes": 372,
+      "pv": "b5c6 a7a6 c7c8q a6a5"
+    },
+    {
+      "depth": 4,
+      "fen": "7k/8/5KB1/2B5/8/8/8/7R b - - 0 1",
+      "moves": "",
+      "uciScore": "mate -1",
+      "nodes": 44,
+      "pv": "h8g8 g6f7"
+    },
+    {
+      "depth": 4,
+      "fen": "4r1k1/8/8/8/8/8/8/4K3 w - - 98 1",
+      "moves": "",
+      "uciScore": "cp 0",
+      "nodes": 76,
+      "pv": "e1f2 g8f7"
+    }
+  ]
+}

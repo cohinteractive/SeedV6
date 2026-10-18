@@ -20,7 +20,7 @@ class P3InformationBaselineTest {
         return SearchEvaluation.brnPair2(ProductionModel.load(Path.of("../build-assets/production/bre-pair2-g32.brn-pair2")));
     }
 
-    @Test void observedCumulativeCompositionMatchesActualProductionFactory() throws Exception {
+    @Test void observedCumulativeCompositionMatchesPreservedPhase2Control() throws Exception {
         var evaluation=evaluation();var board=Board.startingPosition();var game=GameHistory.initial(board);
         var table=new P3InformationBaseline.ObservedTable(64);var d=new InternalSearchPolicy.Diagnostics();
         var admissions=new P3InformationBaseline.Admissions(evaluation);
@@ -28,7 +28,7 @@ class P3InformationBaselineTest {
         ExactSearchResult last=null;long entered=0;
         try { for(int depth=1;depth<=4;depth++) {last=observed.search(board,game,depth,()->false);entered+=admissions.nodes;} }
         finally {observed.endRequest();}
-        try(var driver=new SearchDriver(ProductionSearch.create(1,evaluation))) {
+        try(var driver=new SearchDriver(ProductionSearch.createInformationControl(1,evaluation))) {
             var result=driver.search(new SearchRequest(board,game,4));
             assertEquals(last.score(),result.lastCompletedResult().score());
             assertEquals(last.bestMove(),result.lastCompletedResult().bestMove());

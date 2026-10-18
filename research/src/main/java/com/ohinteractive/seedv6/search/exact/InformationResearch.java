@@ -15,7 +15,7 @@ public final class InformationResearch {
     public static SingleDepthSearch create(SearchEvaluation evaluation,int workers,int hashMiB,int policy) {
         if(!evaluation.isBrnPair2() || !accepts(workers,policy) || hashMiB!=64)
             throw new IllegalArgumentException("Unsupported Phase 3 information configuration");
-        if(policy==0) return ProductionSearch.create(workers,evaluation,hashMiB);
+        if(policy==0) return ProductionSearch.createInformationControl(workers,evaluation,hashMiB);
         if(workers==1) return ExactSearchAdapter.informationResearch(evaluation,(policy&4)!=0,(policy&1)!=0,(policy&2)!=0,null);
         return new ParallelSearch(workers,evaluation,new TTable(hashMiB),ConcurrencyPolicy.ROOT_REUSE)
                 .withSeeResearch(SeePolicy.QXRAY,null).withCompletedHints(true,null);

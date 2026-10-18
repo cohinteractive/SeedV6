@@ -14,6 +14,34 @@ import static org.junit.jupiter.api.Assertions.*;
 class UciEvaluationTest {
     @TempDir Path root;
 
+    @Test void historicalCumulativeControlPreservesOptionalBookAndOrdinarySearch() throws Exception {
+        var pair = SearchEvaluation.brnPair2(com.ohinteractive.seedv6.core.brnpair2.ProductionModel.load(
+                Path.of("../build-assets/production/bre-pair2-g32.brn-pair2")));
+        var board = Board.startingPosition();
+        for(var evaluation : new SearchEvaluation[]{SearchEvaluation.handcrafted(), pair})
+        for(int workers : new int[]{1,4}) {
+            var selected = new UciEvaluation(evaluation, "test", -1, -1);
+            try(var service = selected.service(workers)) {
+                for(boolean book : new boolean[]{true,false}) {
+                    service.setBookEnabled(book);
+                    var done = new java.util.concurrent.CompletableFuture<com.ohinteractive.seedv6.search.manage.ManagedSearchResult>();
+                    service.start(board, com.ohinteractive.seedv6.rules.GameHistory.initial(board),
+                            new com.ohinteractive.seedv6.search.manage.SearchLimits(3,-1,-1,false), done::complete);
+                    var result = done.get(10, java.util.concurrent.TimeUnit.SECONDS);
+                    assertNull(result.failure());
+                    assertEquals(book ? com.ohinteractive.seedv6.search.common.SearchTermination.BOOK
+                            : com.ohinteractive.seedv6.search.common.SearchTermination.COMPLETED, result.termination());
+                    if(!book && workers==1) try(var reference=new com.ohinteractive.seedv6.search.driver.SearchDriver(
+                            com.ohinteractive.seedv6.search.driver.ProductionSearch.createInformationControl(1,evaluation))) {
+                        var expected=reference.search(new com.ohinteractive.seedv6.search.common.SearchRequest(board,3));
+                        assertEquals(expected.lastCompletedResult(),result.lastCompletedResult());
+                        assertEquals(expected.nodes(),result.nodes());
+                    }
+                }
+            }
+        }
+    }
+
     @Test void seeResearchControlsRequireUnconfoundedPair2AndLeaveHceUnchanged() {
         assertEquals(com.ohinteractive.seedv6.search.exact.SeePolicy.OFF,UciEvaluation.load(new Properties()).seePolicy());
         for(var policy:com.ohinteractive.seedv6.search.exact.SeePolicy.values()) {

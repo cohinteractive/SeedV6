@@ -29,6 +29,8 @@ final class ProductionUciConfiguration implements UciConfiguration {
                 + " mapping=" + BrnPair2Model.CALIBRATION_ID + " engine=" + ProductionModel.ENGINE_SOURCE
                 + " mode=production leaves=see_selective see=qxray lmr=quiet lmp=window"
                 + " reuse=effort concurrency=" + (workers == 1 ? "off" : "root_reuse")
+                + " hints=completed_same_key history=" + (workers == 1 ? "invocation" : "root_seeded_private")
+                + " learning=all_searched"
                 + " workers=" + workers + " futility=off build=" + version.build() + " source=" + version.sourceRevision();
     }
     private final SearchEvaluation evaluation;

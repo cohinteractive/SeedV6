@@ -269,7 +269,10 @@ public record UciEvaluation(SearchEvaluation evaluation, String identity, int qp
                         ? SearchLifecycleService.quietLmrControl(workers, evaluation)
                         : (reusePolicy == IterationReuse.OFF
                                 ? SearchLifecycleService.iterationReuseControl(workers, evaluation)
-                                : new SearchLifecycleService(workers, evaluation)))
+                                : new SearchLifecycleService(TimeSource.SYSTEM,
+                                        () -> ProductionSearch.createInformationControl(workers, evaluation),
+                                        com.ohinteractive.seedv6.search.tablebase.SyzygyNative.configured(),
+                                        com.ohinteractive.seedv6.book.Book.bundled())))
                 : SearchLifecycleService.unprunedControl(workers, evaluation);
         if(qpolicy == STATIC_CONTROL) return SearchLifecycleService.staticControl(workers, evaluation);
         return new SearchLifecycleService(TimeSource.SYSTEM,
@@ -317,7 +320,7 @@ public record UciEvaluation(SearchEvaluation evaluation, String identity, int qp
                         : (reusePolicy == IterationReuse.OFF
                                 ? ProductionSearch.createIterationReuseControl(workers, evaluation)
                                 : seeOff ? ProductionSearch.createSeeControl(workers, evaluation)
-                                        : ProductionSearch.create(workers, evaluation)))
+                                        : ProductionSearch.createInformationControl(workers, evaluation)))
                 : ProductionSearch.createUnprunedControl(workers, evaluation);
         if(policy == STATIC_CONTROL) return ProductionSearch.createStaticControl(workers, evaluation);
         if(workers != 1) throw new IllegalArgumentException("Qsearch research requires one worker");

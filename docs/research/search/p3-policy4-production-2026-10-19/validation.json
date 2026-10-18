@@ -1,0 +1,620 @@
+{
+  "id": "P3-POLICY4-PRODUCTION-2026-10-19",
+  "sourceHeadBefore": "674ca049c6ced0cbcb7fdff6f768cd6cdd651de9",
+  "sourceState": "Attributable uncommitted integration changes atop the clean starting HEAD; committed together with this receipt. Local packages were built before the commit and report the starting source revision plus dirty state. No finalized version identity claimed.",
+  "host": "Windows-11-10.0.26300-SP0",
+  "java": "openjdk version \"21\" 2023-09-19\nOpenJDK Runtime Environment (build 21+35-2513)\nOpenJDK 64-Bit Server VM (build 21+35-2513, mixed mode, sharing)",
+  "pythonChess": "1.11.2 in existing build/research/venv",
+  "tests": [
+    {
+      "group": "final-focused-results",
+      "localEvidencePath": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\final-focused-results",
+      "totals": {
+        "tests": 20,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "suites": [
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.CompletedMoveHintsTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.369,
+          "xmlSha256": "865146c33ca69156bbd87778a3a060df2bb06c99b695b03a6dc55cb4e4cb9fba"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.InformationResearchTest",
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.108,
+          "xmlSha256": "4af63bf3922c828671ef48bf6eadde3e1cb9e59b69153e6eb2f5bff87aec3fe9"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.P3InformationBaselineTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.059,
+          "xmlSha256": "1cfc81e3f5e9324f0161e7973fbc2ff16d80055c3435c089fdefff95a81c1213"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.Policy4ProductionTest",
+          "tests": 8,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 1.372,
+          "xmlSha256": "4c40ba604a087714ef859d25c7faeaf3b679db8fef20e873b15bfd30f2a87b1b"
+        }
+      ]
+    },
+    {
+      "group": "core-regression-results",
+      "localEvidencePath": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\core-regression-results",
+      "totals": {
+        "tests": 47,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "suites": [
+        {
+          "suite": "com.ohinteractive.seedv6.rules.DrawAdjudicatorTest",
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.068,
+          "xmlSha256": "431a781691e12e1e6bd97ef7722efe33ea332f6c5971b0fbecbfe0c64ae2f1a4"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.rules.GameHistoryTest",
+          "tests": 14,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.053,
+          "xmlSha256": "176d9e06a0f322c2df72303adc6e1746c2aa11afa92a6cbebecf81dd6f2285e2"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.rules.PositionIdentityTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.006,
+          "xmlSha256": "ea89235f95e098ce7672b21530a9fdd4491819dcd4391454e1a370a4862c06bb"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.manage.TimeManagerTest",
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.007,
+          "xmlSha256": "5e2068bd96f01b98acd2ece17c1000d10471eab32d941f45d93dd305938b3013"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.tablebase.SyzygyResourcesTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.005,
+          "xmlSha256": "e3e068361e640f04f536a3ad6bcb94546318077cb42440161540780b4541ea8c"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.tt.TranspositionScoresTest",
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.008,
+          "xmlSha256": "f47ff75939d143f895176332d00bbe7027d3ff50060243c109329474a8a57a81"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.tt.TTableHintsTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.018,
+          "xmlSha256": "954a851b6b76782251fce0417fc1aeafae608f779230e259c77d9aa6b386c558"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.tt.TTableTest",
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.02,
+          "xmlSha256": "4c7022537c6e4a8e65a08a1a980c10d4326b7fdccb72085b0841eeb7af50ac1c"
+        }
+      ]
+    },
+    {
+      "group": "research-regression-results",
+      "localEvidencePath": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\research-regression-results",
+      "totals": {
+        "tests": 164,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "suites": [
+        {
+          "suite": "com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearchTest",
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.282,
+          "xmlSha256": "8c84926664f53a7b58b256e03f6a951c09c246f08c7a4174e36ff84b8043479f"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.driver.ProductionSearchIntegrationTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.406,
+          "xmlSha256": "f454a763df1cf3132a1f264853eb513d107b08f6c73f3e1d94084056e098cf55"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.driver.SearchDriverTest",
+          "tests": 12,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.324,
+          "xmlSha256": "cd36bacbd64a8ea4b8650ae219e34dc5266dc07a2dd9a2d85512b3d5d7ade782"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest",
+          "tests": 9,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.801,
+          "xmlSha256": "f6abfb0d5043775aea7e82d1f063a642c6cd598f21996f78a86027efa4ee67e0"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest",
+          "tests": 9,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 1.167,
+          "xmlSha256": "09aa5d21d221c7f0c4af0565146d146ae0c7438faccdf7b5a5493c3782d91c90"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.ExactSearchTest",
+          "tests": 14,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.113,
+          "xmlSha256": "e63f8119710216e37f420c8f71c88086443a5bd8a08e94d66132b67cdb7d40f7"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.ExactSearchTTableTest",
+          "tests": 18,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.357,
+          "xmlSha256": "ea80034873f023f939e72d41e3c82fc40da0dd3d69e11b7b5f6223c38fd3e30f"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.FlatExactSearchTest",
+          "tests": 21,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 2.759,
+          "xmlSha256": "5014c96a52cca1958430f2ab63f0b397207da7893b73e84d442bad280d11683e"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.IterationReuseTest",
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.356,
+          "xmlSha256": "a1bc23974fa765ec8ffd76183679aac328dee5c1c11213daf508d602cb3f4d28"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.ProductionSeeTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 2.656,
+          "xmlSha256": "27a6f3eddc15167b76d1fc8bbbd15bb5d2d84440c0206f89a3ed026c33261e28"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.PvsSearchTest",
+          "tests": 12,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 1.348,
+          "xmlSha256": "d89abcc651a0f0699a887d005797dea3ee94c9dcc3ed8126039331a48ac9bd70"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.QuietHistoryTest",
+          "tests": 10,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.248,
+          "xmlSha256": "9860e6dd7b611ac42b739972ad9e7cbd6ae1a6b7d185b601a2f6e1a0e5ea510c"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.StagedSearchTest",
+          "tests": 9,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 34.903,
+          "xmlSha256": "8a29b9044330756bcacfb488e53ffb7f6abf3eeba1f327d86631343217d99548"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.manage.SearchLifecycleServiceTest",
+          "tests": 23,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 4.092,
+          "xmlSha256": "0f3d9037067489edf699231a8eb7a4730fee9a59e235639efab6d7007d12b8e6"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.order.OrderedExactSearchTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.019,
+          "xmlSha256": "31cb2a42e744002ec6ef5873e579e63201bf2e1d39e4896b7bff08b74c9ed3c6"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.tt.TtExactSearchTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.138,
+          "xmlSha256": "f9b39c0f4106ce6677c7dacf4c0397d4d4edf659bcd1bafd72259401e10a5f50"
+        }
+      ]
+    },
+    {
+      "group": "uci-regression-results",
+      "localEvidencePath": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\uci-regression-results",
+      "totals": {
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "suites": [
+        {
+          "suite": "com.ohinteractive.seedv6.uci.GoCommandParserTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.068,
+          "xmlSha256": "f9ec023c24e2f580de932955c99af0c90883154677396c463e89a77738e80018"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.uci.StandaloneBoundaryTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.327,
+          "xmlSha256": "c71df08e4a44d36314301061ee66043f8d0bc89255a771e8d534cddb1778de5a"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.uci.UciMoveParserTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.003,
+          "xmlSha256": "af814cbde3eb96994d8596d2e7374d0658c68bb37186fe65ba9b01869c7bb4ef"
+        }
+      ]
+    },
+    {
+      "group": "app-regression-results",
+      "localEvidencePath": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\app-regression-results",
+      "totals": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "suites": [
+        {
+          "suite": "com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest",
+          "tests": 8,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.811,
+          "xmlSha256": "6d70a9d207e5377c27efecdda18f6132073a4dff1362d88d56405c1e5d093f5c"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.driver.ProductionSearchBoundaryTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.16,
+          "xmlSha256": "566f600efcdee6d995e3e5916438b8446e18589bda80a00641f0f1cc13eb3b1f"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.uci.LegacyProductionConfigurationTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.01,
+          "xmlSha256": "4e0c417af9792f8013215e00c87569ce7304992ab01baedee6f3c85f0f3a2ec4"
+        }
+      ]
+    },
+    {
+      "group": "integration-regression-results",
+      "localEvidencePath": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\integration-regression-results",
+      "totals": {
+        "tests": 53,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 1
+      },
+      "suites": [
+        {
+          "suite": "com.ohinteractive.seedv6.gui.BrnPair2GuiTest",
+          "tests": 3,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 1.422,
+          "xmlSha256": "7c71426fc28587ea51d8e8d6b4943c70717fdba8926b98cc71f5ecf134a14add"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.gui.EngineSearchAdapterTest",
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.433,
+          "xmlSha256": "32a12984c1fd0806e20070038b4edd2163c826980c800f0c03fc66fa7756a8a8"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.gui.HumanEngineSelectionTest",
+          "tests": 10,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 59.957,
+          "xmlSha256": "fd668dddd3f435f1c5fae4dab5f74e73a26e69ac164c1ed21ac0406887594870"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.gui.ThreadAndTerminationTest",
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 1,
+          "seconds": 0.023,
+          "xmlSha256": "a19bdb24edda456f41dab2e9a6fd9ee4eefbad425f525fc1d3c1689026781277"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.driver.ProductionSearchTest",
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.024,
+          "xmlSha256": "eb1c3b0159141ff2fa164700178cc5458a58d2ff8503d7c55ed29eed22514c36"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.uci.UciProcessTest",
+          "tests": 16,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 7.573,
+          "xmlSha256": "e746d2ca405af4dc7c63fd3c6ed6057728fd94c32c044ec6d0f0524bb6668808"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.uci.UciReportingTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.021,
+          "xmlSha256": "97ae1636592956acfab4b99f07fe383f074cfd560c0dbf101313c0dbe9fad254"
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.uci.UciSessionTest",
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.012,
+          "xmlSha256": "2340c4f9de716d2e93fc8e71003a3dab2f2163df72936ec0279c436e9eb2c745"
+        }
+      ]
+    },
+    {
+      "group": "baseline-gui-results",
+      "localEvidencePath": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\baseline-gui-results",
+      "totals": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      "suites": [
+        {
+          "suite": "com.ohinteractive.seedv6.gui.BrnPair2GuiTest",
+          "tests": 1,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 0.524,
+          "xmlSha256": "0f6dd76bb87fe17d09092efdf459432ce2738eeef519be504aeafb4f9c9b77b5"
+        }
+      ]
+    },
+    {
+      "group": "research-control-results",
+      "localEvidencePath": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\research-control-results",
+      "totals": {
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "suites": [
+        {
+          "suite": "com.ohinteractive.seedv6.uci.UciEvaluationTest",
+          "tests": 14,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 1.05,
+          "xmlSha256": "ab16e91426eb3e31eedec9760a8d27b741704067fa2d4f1004e5fcec9170cadc"
+        }
+      ]
+    }
+  ],
+  "standaloneUci": {
+    "status": "passed",
+    "searches": 159,
+    "resultPath": "build\\migration\\policy4-production-2026-10-19-uci-r3\\result.json",
+    "sha256": "064ab1b69e88ffc8de9e2f0d07315805d6e19c262bc4011e6ad67c7ace315c8b",
+    "checks": [
+      "Historical UCI assertions with explicitly identified vectors: clocks, reset, stop, EOF, invalid input",
+      "All workers 1..16: accepted identity, exact request budget, independently legal bestmove/PV",
+      "Hash=1024 allocation failure retains Hash=64 and successful search under -Xmx192m",
+      "Hash minimum, non-power-of-two request and restored default with Clear Hash",
+      "Zero-budget honesty, strict FEN atomicity, winning/losing mate distances",
+      "Relocated standard Java launcher, spaces, unrelated cwd, DEBUG=1, adjacent verified model",
+      {
+        "modelFailure": "missing",
+        "exitCode": 1,
+        "stderr": "SeedV6 UCI startup/runtime error: Required BRE-Pair 2 model missing: C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\policy4-production-2026-10-19-uci-r3\\missing; supply --model <file>; expected SHA-256 5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+      },
+      {
+        "modelFailure": "corrupt.brn-pair2",
+        "exitCode": 1,
+        "stderr": "SeedV6 UCI startup/runtime error: Corrupt or different BRE-Pair 2 model: C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\policy4-production-2026-10-19-uci-r3\\corrupt.brn-pair2; expected SHA-256 5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7, got 9099ffbdae301e10fed1a271c7d3d934f304eb2df5498689f01e1af499f67a3a"
+      },
+      {
+        "modelFailure": "truncated.brn-pair2",
+        "exitCode": 1,
+        "stderr": "SeedV6 UCI startup/runtime error: Incompatible BRE-Pair 2 model length: C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\policy4-production-2026-10-19-uci-r3\\truncated.brn-pair2"
+      },
+      "Missing default model fails without HCE fallback",
+      "Standalone rejects legacy/research selection properties before startup"
+    ],
+    "referenceVectorCount": 52
+  },
+  "artifacts": [
+    {
+      "path": "engine-core\\build\\libs\\engine-core.jar",
+      "sha256": "0f4006ac3478be89bd1bd7ff7c1dbe038e9895899c34c55a2a4a707ac8aa01bd",
+      "bytes": 411914
+    },
+    {
+      "path": "app-uci\\build\\libs\\app-uci.jar",
+      "sha256": "ba532b7503d3c6a8d638bf946d716d84f354716cfedc316c09dac62c052a9c48",
+      "bytes": 26239
+    },
+    {
+      "path": "app-uci\\build\\distributions\\seedv6-uci.zip",
+      "sha256": "7049fdeb11a046c311987a863327ad88800ec50849c5eea9aa5531f254bf2be9",
+      "bytes": 413021
+    },
+    {
+      "path": "app\\build\\distributions\\seedv6.zip",
+      "sha256": "2b332ec65efed3bf4cc0f41173ad0f88a3dc9ef346a6f9b874b83b4078a97029",
+      "bytes": 28282563
+    }
+  ],
+  "logs": [
+    {
+      "path": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\baseline-gui-r2.log",
+      "sha256": "cb025ec64ef5fd30803afc5ad9214b32e9430641b2a7db551f2db0d5a12d69c5"
+    },
+    {
+      "path": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\baseline-gui.log",
+      "sha256": "a486d3a53ccfd4ba8eb0e20c0359727267a4872d1d631089cb960f683935a644"
+    },
+    {
+      "path": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\capture-vectors.log",
+      "sha256": "799d0b8383de3eea882c7b825473db73761343fa33a23cd7587dfe62fff6a1f1"
+    },
+    {
+      "path": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\final-focused-package.log",
+      "sha256": "804f4dafc98ff597d1e7cafe84a40cc64c659cf3f58d2134a449ff472072de8d"
+    },
+    {
+      "path": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\focused-tests-r2.log",
+      "sha256": "c752a5665e282f5549c4b22fcad7b6c85177d3a81dd4cf0a6e4088e7d5b10014"
+    },
+    {
+      "path": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\focused-tests.log",
+      "sha256": "f08f77a7710ff7c2d5f461b72c4d56798e3254d3d527bccf6488b8c5c9f4d456"
+    },
+    {
+      "path": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\phase2-control.log",
+      "sha256": "51a3eb1939c1395226960c20f7cf0bdd7b40e13b33943b57f72b2c3d0401e255"
+    },
+    {
+      "path": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\regression-package.log",
+      "sha256": "a75dc497c2975c1c1e0714f2d45e1c4f93820071085b3173bc358b4f12e3f341"
+    },
+    {
+      "path": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\research-control-lifecycle.log",
+      "sha256": "3f01dedf36cff4b9b2bb47ffee4af5a6f689f35d3c2e5889e6f5c9b5e9218f7d"
+    },
+    {
+      "path": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\standalone-uci-r2.log",
+      "sha256": "d9e43e584f6abb145aaaf9e9680c36aec7487474d02c19b1cd6258e100108b43"
+    },
+    {
+      "path": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\standalone-uci-r3.log",
+      "sha256": "19576258df002a21c293972dfa1a303420b1f0a1b1914c5f2fd0e404696af671"
+    },
+    {
+      "path": "docs\\research\\search\\p3-policy4-production-2026-10-19\\raw\\standalone-uci.log",
+      "sha256": "4ba3398e936087721a7290a2c5ba307a96d421225ed5c2045eeeae9c36284a37"
+    }
+  ],
+  "modelSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+  "version": {
+    "display": "0.0.0 build 35",
+    "sha256": "92a26d4e187edc6c47ed88100d355f77b4597d98524d21d005a3c164986b4bca",
+    "finalizerInvoked": false,
+    "finalizationClaimed": false
+  },
+  "limitations": [
+    "One unchanged Training-panel widget test fails with both integrated and frozen pre-integration core; outside Search integration gates.",
+    "One native GUI test skipped by its existing headless assumption.",
+    "No native GUI/client or macOS certification, fresh tournaments, strength extrapolation, version finalization or deployment."
+  ],
+  "verifierSha256": "69cd4576c8efa4a6397429c3e706ea9d0ccd280ca83862601600d0e64cef965f",
+  "phase2ControlReceiptSha256": "487a6aaa1f93587bb6be444e55b87ee163707f0bb30ec6709553902bdecd7297"
+}

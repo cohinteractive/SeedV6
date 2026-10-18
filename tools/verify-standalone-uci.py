@@ -3,6 +3,8 @@
 Requires a built Java distribution, the explicit pinned local model, python-chess,
 and read-only access to UE Git objects. Writes only to a new build/migration folder.
 Native packages, real Arena/BotLi clients and live games are deliberately outside this test.
+An explicit reference-vector receipt can bind the same positions to a later accepted
+Search binary; the original Phase 2 vectors and protocol assertions are preserved.
 """
 import argparse
 import hashlib
@@ -52,6 +54,25 @@ def main(a):
     adapted = source.replace('id name SeedV6-UE v{version}', 'id name SeedV6 UCI 0.0.0 (build 35)')
     adapted = adapted.replace('id name SeedV6-UE', 'id name SeedV6 UCI')
     adapted = adapted.replace('SeedV6-UE rejected command:', 'SeedV6 UCI rejected command:')
+    if a.reference_vectors:
+        selected = Path(a.reference_vectors).resolve()
+        receipt = json.loads(selected.read_text(encoding='utf-8'))
+        vectors = receipt['vectors']
+        original = [r.split('\t') for r in (fixture/'src/test/resources/sr024-vectors.tsv').read_text().splitlines()]
+        expected_inputs = [(int(c[8]), c[2], c[3]) for c in original if c[0] == 'production']
+        assert [(v['depth'], v['fen'], v['moves']) for v in vectors] == expected_inputs
+        tuples = [(v['depth'], v['fen'], v['uciScore'], str(v['nodes']), v['pv'], v['moves']) for v in vectors]
+        # Only the input observations and their score representation change. Keep
+        # the exact score/node/PV, reset, lifecycle and protocol assertions intact.
+        start = adapted.index('        vectors = []\n')
+        end = adapted.index('        for depth, fen, score, nodes, pv, moves in vectors:\n', start)
+        adapted = adapted[:start] + '        vectors = ' + repr(tuples) + '\n' + adapted[end:]
+        start = adapted.index('                numeric = int(score)\n')
+        end = adapted.index('                assert any(', start)
+        adapted = adapted[:start] + '                expected_score = score\n' + adapted[end:]
+        adapted = adapted.replace('score cp {expected[2]}', 'score {expected[2]}')
+        report['referenceVectors'] = {'path': str(selected), 'sha256': digest(selected),
+                                      'provenance': receipt['provenance'], 'count': len(vectors)}
     path = fixture/'tools/adapted_test_uci.py'; path.write_text(adapted)
     spec = importlib.util.spec_from_file_location('historical_uci', path)
     ue = importlib.util.module_from_spec(spec); spec.loader.exec_module(ue)
@@ -82,7 +103,7 @@ def main(a):
     command = base + ['--model', str(model)]
     try:
         ue.exchange(command, cwd, env, release_version='6')
-        report['checks'].append('Unweakened historical SR-024 UCI exchange: vectors, clocks, reset, stop, EOF, invalid input')
+        report['checks'].append('Historical UCI assertions with explicitly identified vectors: clocks, reset, stop, EOF, invalid input')
         engine = RecordedEngine(command, cwd, env)
         try:
             engine.send('uci'); handshake = engine.until('uciok')
@@ -194,4 +215,5 @@ def main(a):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     for key in ('java','install','model','ue-repo','out'): p.add_argument('--'+key,required=True)
+    p.add_argument('--reference-vectors', help='Provenance-bound UCI observations for the complete original position list')
     main(p.parse_args())

@@ -78,7 +78,7 @@ public final class Sr033Study {
                     long move=Arrays.stream(ExhaustiveOracle.legalMoves(board)).filter(m->Move.coordinate(m).equals(uci)).findFirst().orElseThrow();
                     board=ExhaustiveOracle.child(board,move);builder.appendPosition(board);
                 }
-                var history=builder.snapshot();var owner=ProductionSearch.create(workers,definition);var captures=new ArrayList<Capture>();
+                var history=builder.snapshot();var owner=ProductionSearch.createInformationControl(workers,definition);var captures=new ArrayList<Capture>();
                 if(workers==1)captures.add(new Capture((ExactSearch)field(owner,"exact"),330017L+roots));
                 else for(Object w:(Object[])field(owner,"workers"))captures.add(new Capture((ExactSearch)field(w,"search"),330017L+roots*17+captures.size()));
                 try(var driver=new SearchDriver(owner)) {
@@ -87,7 +87,7 @@ public final class Sr033Study {
                     if(result.nodes()!=control.nodes()||result.nodes()!=result.diagnostics().totalEnteredNodes()||driver.activeSearchThreads()!=0)throw new AssertionError("accounting/drain");
                     if(result.lastCompletedResult()!=null)Phase2Oracle.legalPv(board,result.lastCompletedResult().principalVariation());
                     boolean parity=false;
-                    if(workers==1)try(var plain=new SearchDriver(ProductionSearch.create(1,definition))) {
+                    if(workers==1)try(var plain=new SearchDriver(ProductionSearch.createInformationControl(1,definition))) {
                         var other=plain.search(new SearchRequest(board,history,depth,SearchObserver.NONE,SearchControl.controlled(2_000_000,0,-1,TimeSource.SYSTEM),true));
                         var a=result.lastCompletedResult();var b=other.lastCompletedResult();
                         if(result.nodes()!=other.nodes()||a.score()!=b.score()||a.bestMove()!=b.bestMove()||!Arrays.equals(a.principalVariation(),b.principalVariation()))throw new AssertionError("observer tree changed");parity=true;

@@ -221,8 +221,8 @@ public final class ExactSearch {
 
     boolean anySelectiveWork() { return selectiveEpoch != 0; }
 
-    /** Explicit completed-node hint experiment. Ordinary proof/identity remain
-     * unchanged; production constructors never activate hint production/use. */
+    /** Completed legal guidance, selected by the Pair-2 production factory.
+     * Ordinary proof/identity and independent constructor defaults remain unchanged. */
     public ExactSearch withCompletedHints(boolean enabled,MoveHintDiagnostics diagnostics) {
         if(active || requestActive || table==null || nullMovePruning || reverseFutility
                 || pairNull!=NullMovePolicy.OFF || internalPolicy!=InternalSearchPolicy.OFF

@@ -1,0 +1,38 @@
+[
+  {
+    "workers": 1,
+    "protocol": "docs\\research\\search\\p3-information-reuse-2026-10-18\\confirmation-v1-w1\\protocol.json",
+    "protocolSha256": "7d8296183ee4c38d85faa81b8855b859e9aa7719ff9c2fc6b5a4592f4a6afbf3",
+    "acceptedCore": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\clock-v1-candidate\\lib\\engine-core.jar",
+    "acceptedSha256": "eca59cf0665babf1197cd6d09209312feb0fba31a3fc3298daf8d3e3b9b2a01e",
+    "currentCore": "engine-core\\build\\libs\\engine-core.jar",
+    "currentSha256": "0f4006ac3478be89bd1bd7ff7c1dbe038e9895899c34c55a2a4a707ac8aa01bd",
+    "identicalClasses": 179,
+    "changedClasses": [
+      "com/ohinteractive/seedv6/search/driver/ExactSearchAdapter$1.class",
+      "com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.class",
+      "com/ohinteractive/seedv6/search/driver/ProductionSearch.class"
+    ],
+    "addedClasses": [],
+    "removedClasses": [],
+    "adapterObserverJavapCodeIdentical": true
+  },
+  {
+    "workers": 4,
+    "protocol": "docs\\research\\search\\p3-information-reuse-2026-10-18\\confirmation-v1-w4\\protocol.json",
+    "protocolSha256": "c6780bef774ff21aee501dca5a6915192c4c65d9ba29205c6370d4e5b86eb14b",
+    "acceptedCore": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\clock-v1-candidate\\lib\\engine-core.jar",
+    "acceptedSha256": "eca59cf0665babf1197cd6d09209312feb0fba31a3fc3298daf8d3e3b9b2a01e",
+    "currentCore": "engine-core\\build\\libs\\engine-core.jar",
+    "currentSha256": "0f4006ac3478be89bd1bd7ff7c1dbe038e9895899c34c55a2a4a707ac8aa01bd",
+    "identicalClasses": 179,
+    "changedClasses": [
+      "com/ohinteractive/seedv6/search/driver/ExactSearchAdapter$1.class",
+      "com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.class",
+      "com/ohinteractive/seedv6/search/driver/ProductionSearch.class"
+    ],
+    "addedClasses": [],
+    "removedClasses": [],
+    "adapterObserverJavapCodeIdentical": true
+  }
+]

@@ -67,4 +67,27 @@ class StandaloneBoundaryTest {
             assertEquals(temporary.resolve("explicit"), ProductionModel.resolve(temporary.resolve("explicit").toString()));
         } finally { System.setProperty("user.dir", original); }
     }
+
+    @Test void pinnedProductionProfileReportsPolicy4AndCompletesAfterWorkerAndHashSelection() throws Exception {
+        var profile = ProductionUciConfiguration.load(Path.of("../build-assets/production/bre-pair2-g32.brn-pair2"));
+        for(int workers : new int[]{1,4,16}) {
+            String identity = profile.identity(workers);
+            assertTrue(identity.contains("sha256=" + ProductionModel.SHA256));
+            assertTrue(identity.contains("hints=completed_same_key"));
+            assertTrue(identity.contains("history=" + (workers == 1 ? "invocation" : "root_seeded_private")));
+            assertTrue(identity.contains("learning=all_searched"));
+            try(var service = profile.service(workers, 1)) {
+                service.setBookEnabled(false);
+                var done = new java.util.concurrent.CompletableFuture<com.ohinteractive.seedv6.search.manage.ManagedSearchResult>();
+                var board = Board.startingPosition();
+                service.start(board, com.ohinteractive.seedv6.rules.GameHistory.initial(board),
+                        new com.ohinteractive.seedv6.search.manage.SearchLimits(3,-1,-1,false), done::complete);
+                var result = done.get(20, java.util.concurrent.TimeUnit.SECONDS);
+                assertNull(result.failure());
+                assertEquals(com.ohinteractive.seedv6.search.common.SearchTermination.COMPLETED, result.termination());
+                assertEquals(3, result.lastCompletedResult().depth());
+                assertTrue(result.lastCompletedResult().hasMove());
+            }
+        }
+    }
 }

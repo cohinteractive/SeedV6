@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R006**
+Internal revision: **P3-R007**
 
-Status: **ACTIVE Phase 3: first O1 + O2 CGLHW research technically complete; Policy 4 explicitly owner-accepted. Cumulative Phase 2 production champion/defaults retained; no successor objective activated.**
+Status: **ACTIVE Phase 3: owner-accepted Policy 4 integrated, validated and promoted as the production Search champion/default for Pair-2 at 1-16 workers. Cumulative Phase 2 retained as a comparison control; no successor objective activated.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -31,7 +31,7 @@ non-adoption prose does not create a Phase 3 prohibition. Surface material
 code/canon discrepancies: static source establishes implementation facts, not
 runtime verification, and neither silently rewrites intended requirements.
 
-## Accepted Policy 4 and retained production scope
+## Policy 4 production champion and retained controls
 
 The owner's 18 October 2026 launch authorized O1 and O2 as one coherent objective:
 useful Search-information production, retention, quality and reuse, including
@@ -45,7 +45,7 @@ the [focused research record](../docs/research/search/P3_INFORMATION_REUSE_2026-
 holds exact experimental identities, protocols, measurements and limitations.
 
 The first CGLHW is technically complete, and the owner has explicitly accepted
-**Policy 4**: the cumulative Phase 2 configuration below plus completed legal TT
+**Policy 4**: the previous cumulative Phase 2 configuration plus completed legal TT
 hint production and reuse, retaining the accepted main-history lifetime and
 ROOT_REUSE private seeding. Separate fresh confirmations at **one and four Search
 workers, 10+0.1 clocks**, support this decision in those recorded domains. The
@@ -55,17 +55,30 @@ improvement at every worker count, clock, memory pressure, platform or resource
 configuration. Inconclusive O2 ablations and unconfirmed Policy 7 remain research
 alternatives, not accepted components of Policy 4.
 
-Policy 4 is the accepted configuration for future research comparisons in those
-confirmed domains; retain the cumulative Phase 2 production configuration as a
-distinct control. Candidate acceptance is settled, but does not establish formal
-production-champion promotion, completed production integration or default
-activation. The handback reported cumulative Phase 2 production unchanged.
-Any production transition remains separately authorized work with applicable
-lifecycle and supported-configuration validation; existing binding technical
-requirements remain in force. Acceptance implies neither version finalization
-nor external deployment/release. No successor objective or CGLHW is activated.
+The owner's 19 October 2026 production-integration launch separately authorized
+adoption and promotion after correctness, configuration-equivalence, architecture,
+lifecycle and supported-configuration validation. Those gates passed: **Policy 4
+is now the production Search champion/default for Pair-2 at 1-16 workers** and
+the baseline for future research. The [integration record](../docs/research/search/P3_POLICY4_PRODUCTION_2026-10-19.md)
+binds frozen-candidate equivalence, production entry points, tests and limitations.
+The integrated mechanism is unchanged; only normal activation and identity reporting
+change. Retained-history, nominal-learning-filter and Policy 7 alternatives remain off.
 
-The initial accepted production champion is the cumulative Phase 2 engine:
+`ProductionSearch.create` selects Policy 4 for Pair-2; standalone pinned-model UCI,
+legacy explicitly selected Pair-2 and GUI Pair-2 Search use that shared factory.
+`ProductionSearch.createInformationControl` retains the cumulative Phase 2 engine
+with completed hints off, including explicit Hash selection. Existing research
+information policy 0 and historical cumulative study controls are pinned to that
+control; policy 4 remains independently constructible for equivalence checks.
+Other evaluator families preserve their previous behavior, with completed hints off.
+Functional compatibility at all supported workers and smaller Hash settings is
+not new strength evidence. Confirmed gains remain limited to the recorded generation-32,
+one-/four-worker, 10+0.1 domains; neither other Pair-2 checkpoints nor HCE, NNUE or
+other BRN families inherit an Elo claim. No successor objective/CGLHW is activated.
+Promotion establishes neither version finalization nor external deployment/release;
+the inherited finalizer issue remains separately owner-handled.
+
+The preserved previous champion/control is the cumulative Phase 2 engine:
 **SR-001 + SR-029 + SR-022 + SR-005 + SR-036 + SR-024**. Its accepted Search
 source anchor is `35294146bb7e44975b516005b2cc196439666e09`; the
 [unified architecture contract](../docs/unified-architecture/CONTRACT.md) governs
@@ -75,13 +88,13 @@ HEAD `cbee909da837deaf11ac8c65964d4f9ee3f5a1f0`; the intervening training/GUI
 commit did not change the Search masters or `engine-core`. Initialization changes
 no engine, evaluator, default, configuration or production acceptance.
 
-| Scope | Retained configuration |
+| Scope | Production configuration |
 | --- | --- |
-| Pair-2, one worker (default count) | Recursive nominal-depth PVS, full-window successive-depth driver, QXRAY selective qsearch, protected quiet LMR, WINDOW LMP, EFFORT completed-PV/inclusive-root-effort ordering. |
-| Pair-2, 2-16 workers | ROOT_REUSE with the same cumulative selective mechanisms; eligible depth >=3 roots use eldest-first full work, parallel scouts and required original-window full retries. Completed-root guidance and private history seeding; smaller/terminal/draw roots retain the owner path. Restricted root jobs neither consume nor publish ordinary root proof. |
-| Other supported evaluators and controls | Preserve HCE, NNUE and supported BRN-family configurations, exact/static/unpruned and explicit feature-off controls, and the inherited same-depth coordinator. Bounded HCE NMP (fixed R=2, depth 4-6, surplus 512) and depth-two static-null (margin 960) remain HCE-only; Pair-2 does not inherit them. |
+| Pair-2, one worker (default count) | Recursive nominal-depth PVS, full-window successive-depth driver, QXRAY selective qsearch, protected quiet LMR, WINDOW LMP, EFFORT completed-PV/inclusive-root-effort ordering, completed legal TT hints. |
+| Pair-2, 2-16 workers | ROOT_REUSE with the same cumulative selective mechanisms; eligible depth >=3 roots use eldest-first full work, parallel scouts and required original-window full retries. Completed-root guidance, private history seeding and completed legal TT hints; smaller/terminal/draw roots retain the owner path. Restricted root jobs neither consume nor publish ordinary root proof. |
+| Other supported evaluators and controls | Preserve HCE, NNUE and supported BRN-family configurations with completed hints off, exact/static/unpruned and explicit feature-off controls, and the inherited same-depth coordinator. Bounded HCE NMP (fixed R=2, depth 4-6, surplus 512) and depth-two static-null (margin 960) remain HCE-only; Pair-2 does not inherit them. |
 | Shared mechanics | Legal hash priority, SEE-good then SEE-bad tacticals by immediate material, quiet history, staged/lazy generation and exact legal-existence checks; accepted completed-PV/root-effort guidance composes with these. Independent owners remain isolated. |
-| TT, outcomes and clocks | Current primitive direct-mapped TTable, coherent striped locking, requested default 64 MiB, NO_LEAF_TT, equal-depth/current-generation cutoff-only ordinary proof, existing replacement/hash-move rules and separate evaluation cache. No production qTT. Guarded optional root tablebase outcomes and bounded clock management remain separate from nominal Search. |
+| TT, outcomes and clocks | Current primitive direct-mapped TTable, coherent striped locking, requested default 64 MiB, NO_LEAF_TT, equal-depth/current-generation cutoff-only ordinary proof, existing replacement/hash-move rules and separate evaluation cache. Pair-2 completed-node hints occupy the existing hint-only representation, never ordinary mathematical proof. No production qTT. Guarded optional root tablebase outcomes and bounded clock management remain separate from nominal Search. |
 
 QXRAY omits SEE-negative ordinary nonchecking qcaptures outside check while
 protecting promotions, en passant and the accepted off-square friendly-slider
@@ -359,14 +372,13 @@ and never claims external synchronization from a refresh request.
 
 The owner confirms final Phase 2 mirror synchronization and GPT acceptance of
 SR-032 as DEFERRED without adoption. Those predecessor actions are satisfied;
-The owner subsequently confirmed synchronization of P3-R002 / P3-F001 at the
-O1 + O2 launch, satisfying the initialization mirror obligation, and has now
-confirmed the relevant predecessor Project Source synchronization. The initialization
-itself launched no experiment; the first objective's completion and later owner
-acceptance are recorded above. This P3-R006 / P3-F004 reconciliation requires a
-new two-mirror refresh and synchronization confirmation before dependent GPT
-planning or a subsequent launch, without blocking this authorized repository work.
-The new refresh is outstanding; Codex does not claim external synchronization.
+The owner confirmed synchronization of P3-R002 / P3-F001 at the O1 + O2 launch
+and of P3-R006 / P3-F004 before this production-integration launch. The first
+objective is complete; acceptance and validated production promotion are recorded
+above. This P3-R007 / P3-F005 promotion update requires a new two-mirror refresh
+and synchronization confirmation before dependent GPT planning or a subsequent
+launch, without blocking this authorized repository work. The new refresh is
+outstanding; Codex does not claim external synchronization.
 
 | Frozen file | Revision | Verified SHA-256 (complete original bytes) |
 | --- | --- | --- |

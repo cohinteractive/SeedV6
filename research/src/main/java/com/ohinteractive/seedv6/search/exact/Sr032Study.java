@@ -69,7 +69,7 @@ public final class Sr032Study {
                     long move=Arrays.stream(ExhaustiveOracle.legalMoves(board)).filter(m->Move.coordinate(m).equals(uci)).findFirst().orElseThrow();
                     board=ExhaustiveOracle.child(board,move);builder.appendPosition(board);
                 }
-                var history=builder.snapshot();var owner=ProductionSearch.create(workers,eval);var sinks=new ArrayList<Capture>();
+                var history=builder.snapshot();var owner=ProductionSearch.createInformationControl(workers,eval);var sinks=new ArrayList<Capture>();
                 if(workers==1)sinks.add(new Capture((ExactSearch)Sr033Study.field(owner,"exact")));
                 else for(Object w:(Object[])Sr033Study.field(owner,"workers"))sinks.add(new Capture((ExactSearch)Sr033Study.field(w,"search")));
                 try(var driver=new SearchDriver(owner)) {
@@ -77,7 +77,7 @@ public final class Sr032Study {
                     var result=driver.search(new SearchRequest(board,history,depth,SearchObserver.NONE,control,true));
                     if(result.nodes()!=control.nodes()||result.nodes()!=result.diagnostics().totalEnteredNodes()||driver.activeSearchThreads()!=0)throw new AssertionError("accounting/drain");
                     Phase2Oracle.legalPv(board,result.lastCompletedResult().principalVariation());
-                    if(workers==1)try(var plain=new SearchDriver(ProductionSearch.create(1,eval))) {
+                    if(workers==1)try(var plain=new SearchDriver(ProductionSearch.createInformationControl(1,eval))) {
                         var other=plain.search(new SearchRequest(board,history,depth,SearchObserver.NONE,SearchControl.controlled(2_000_000,0,-1,TimeSource.SYSTEM),true));
                         var a=result.lastCompletedResult();var b=other.lastCompletedResult();
                         if(result.nodes()!=other.nodes()||a.score()!=b.score()||a.bestMove()!=b.bestMove()||!Arrays.equals(a.principalVariation(),b.principalVariation()))throw new AssertionError("observer parity");

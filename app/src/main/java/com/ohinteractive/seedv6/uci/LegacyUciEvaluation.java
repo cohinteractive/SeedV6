@@ -76,6 +76,8 @@ public record LegacyUciEvaluation(SearchEvaluation evaluation, String identity) 
         if (identity.isEmpty()) return identity;
         return identity + " internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=" + workers
                 + " leaves=see_selective mode=production qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off"
+                + " hints=completed_same_key history=" + (workers == 1 ? "invocation" : "root_seeded_private")
+                + " learning=all_searched"
                 + " see=qxray concurrency=" + (workers > 1 ? "root_reuse rootHistory=seeded_private" : "off");
     }
 }

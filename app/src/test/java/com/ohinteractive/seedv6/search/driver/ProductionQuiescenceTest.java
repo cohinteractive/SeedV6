@@ -121,7 +121,7 @@ class ProductionQuiescenceTest {
             try(var canonical = ProductionSearch.createUnprunedControl(1, evaluation);
                 var driver = new SearchDriver(evaluation);
                 var candidate = new SearchDriver(ExactSearchAdapter.seeResearch(
-                        evaluation, SeePolicy.QXRAY, null))) {
+                        evaluation, SeePolicy.QXRAY, null).withCompletedHints(true, null))) {
                 var actual = canonical.search(new SearchRequest(board, 2));
                 assertTrue(actual.completed());
                 assertEquals(reference.score(), actual.score(), fen);
@@ -192,7 +192,7 @@ class ProductionQuiescenceTest {
         var omissions = new SeePolicy.Diagnostics();
         SearchDriverOutcome expected;
         try(var driver = new SearchDriver(ExactSearchAdapter.seeResearch(
-                evaluation, SeePolicy.QXRAY, omissions))) {
+                evaluation, SeePolicy.QXRAY, omissions).withCompletedHints(true, null))) {
             expected = driver.search(new SearchRequest(board, 4));
             assertTrue(omissions.qOmitted > 0);
         }

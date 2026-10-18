@@ -35,9 +35,9 @@ public final class P3HistoryStudy {
     static boolean retain(int p) {return p==1 || p==3;}
     static boolean nominal(int p) {return p==2 || p==3;}
     static SingleDepthSearch engine(SearchEvaluation e,int p,boolean hints) {
-        if(hints) return p==0?ProductionSearch.create(1,e)
+        if(hints) return p==0?ProductionSearch.createInformationControl(1,e)
                 :ExactSearchAdapter.informationResearch(e,(p&4)!=0,(p&1)!=0,(p&2)!=0,null);
-        return p==0?ProductionSearch.create(1,e):ExactSearchAdapter.historyResearch(e,retain(p),nominal(p),null);
+        return p==0?ProductionSearch.createInformationControl(1,e):ExactSearchAdapter.historyResearch(e,retain(p),nominal(p),null);
     }
     public static void main(String[] args) throws Exception {
         if(args.length!=4 && args.length!=5) throw new IllegalArgumentException("model corpus.tsv new-output.jsonl observe|cost [hints]");

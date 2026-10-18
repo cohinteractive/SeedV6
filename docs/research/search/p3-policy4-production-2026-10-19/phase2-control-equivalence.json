@@ -1,0 +1,30 @@
+{
+  "source": "Current explicit research information policy 0 / production createInformationControl",
+  "command": [
+    "C:\\java\\jdk-21\\bin\\java.exe",
+    "-Xms256m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=1",
+    "-Dseedv6.uci.informationResearch=0",
+    "-Dseedv6.uci.warmupWorkers=1",
+    "-Dseedv6.research.actor=candidate",
+    "-Djava.awt.headless=true",
+    "-Dseedv6.syzygy.config=",
+    "-Dseedv6.syzygy.path=",
+    "-Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+    "-Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+    "-Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "-Dseedv6.uci.warmupDepth=4",
+    "-Dseedv6.uci.qsearchResearch=production",
+    "-Dseedv6.uci.lmrResearch=production",
+    "-Dseedv6.uci.aspirationResearch=off",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\classes;C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib\\*",
+    "com.ohinteractive.seedv6.integration.P3InformationUciMain"
+  ],
+  "coreSha256": "0f4006ac3478be89bd1bd7ff7c1dbe038e9895899c34c55a2a4a707ac8aa01bd",
+  "positions": 52,
+  "allOriginalPhase2ScoreNodesPvEqual": true,
+  "referenceSha256": "0a10bc7de11506fca7945e236caa8badffab4abbcee975fd1b72583e47dfa3e7",
+  "transcript": "raw/phase2-control-vectors-uci.txt"
+}
