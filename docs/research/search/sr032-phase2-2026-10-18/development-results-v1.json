@@ -1,0 +1,644 @@
+{
+  "recapture-w1": {
+    "wdl": [
+      26,
+      16,
+      22
+    ],
+    "statistics": {
+      "pairs": 32,
+      "pentanomial": [
+        5,
+        6,
+        8,
+        6,
+        7
+      ],
+      "score": 0.53125,
+      "logisticElo": 21.74306492903707,
+      "pairedHoeffding95Score": [
+        0.2911693021700198,
+        0.7713306978299802
+      ],
+      "pairedHoeffding95Elo": [
+        -154.55877278910938,
+        211.21309982380384
+      ],
+      "pairScoreStandardError": 0.06122695418975893,
+      "pairedNormal95Score": [
+        0.41124737490498875,
+        0.6512526250950113
+      ],
+      "pairedNormal95Elo": [
+        -62.331887116453956,
+        108.49541584590447
+      ],
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 4502,
+        "nodes": 1769156119,
+        "elapsedNanos": 915843954000
+      },
+      "candidate": {
+        "requests": 4502,
+        "nodes": 1753784674,
+        "elapsedNanos": 916387040000
+      }
+    },
+    "pairTotals": [
+      1.5,
+      0,
+      2,
+      1.5,
+      2,
+      0,
+      0.5,
+      1.5,
+      1.0,
+      1,
+      2,
+      0.5,
+      0,
+      0,
+      1,
+      2,
+      1.5,
+      0.5,
+      0.5,
+      1,
+      1,
+      1.5,
+      0.5,
+      1.0,
+      0.5,
+      2,
+      2,
+      1.5,
+      1,
+      0,
+      2,
+      1
+    ],
+    "blocks": [
+      {
+        "wallSeconds": 249.43164520000573,
+        "matchWallSeconds": 247.22786500002258,
+        "cpuSeconds": {
+          "baseline": 487.34375,
+          "candidate": 489.765625
+        },
+        "ratio": 1.004969541519718
+      },
+      {
+        "wallSeconds": 243.2134280000464,
+        "matchWallSeconds": 240.9758394000237,
+        "cpuSeconds": {
+          "baseline": 475.65625,
+          "candidate": 472.53125
+        },
+        "ratio": 0.9934301294264503
+      }
+    ],
+    "matchSeconds": 488.20370440004626,
+    "sessionSeconds": 492.64507320005214,
+    "pairsPerMatchHour": 235.96707473076086,
+    "approximate512PairEloSE": 10.638183290470614
+  },
+  "promotion-w1": {
+    "wdl": [
+      28,
+      10,
+      26
+    ],
+    "statistics": {
+      "pairs": 32,
+      "pentanomial": [
+        3,
+        2,
+        19,
+        6,
+        2
+      ],
+      "score": 0.515625,
+      "logisticElo": 10.860898417445911,
+      "pairedHoeffding95Score": [
+        0.2755443021700198,
+        0.7557056978299802
+      ],
+      "pairedHoeffding95Elo": [
+        -167.92815902955456,
+        196.17574357324824
+      ],
+      "pairScoreStandardError": 0.041907486195112545,
+      "pairedNormal95Score": [
+        0.4334878363749699,
+        0.5977621636250301
+      ],
+      "pairedNormal95Elo": [
+        -46.492929338018435,
+        68.81820088335132
+      ],
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 4676,
+        "nodes": 1672681786,
+        "elapsedNanos": 954721833400
+      },
+      "candidate": {
+        "requests": 4677,
+        "nodes": 1665620183,
+        "elapsedNanos": 959025014300
+      }
+    },
+    "pairTotals": [
+      1,
+      1,
+      1,
+      1.0,
+      1,
+      2,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1.5,
+      1.5,
+      1.5,
+      1,
+      1,
+      0.5,
+      1,
+      0,
+      1.5,
+      2,
+      1.5,
+      0,
+      0.5,
+      1,
+      1,
+      1,
+      1.5,
+      1,
+      1,
+      1
+    ],
+    "blocks": [
+      {
+        "wallSeconds": 262.3519808999845,
+        "matchWallSeconds": 260.24103470001137,
+        "cpuSeconds": {
+          "baseline": 505.125,
+          "candidate": 510.125
+        },
+        "ratio": 1.009898539965355
+      },
+      {
+        "wallSeconds": 250.1498120999895,
+        "matchWallSeconds": 247.9900018000044,
+        "cpuSeconds": {
+          "baseline": 496.65625,
+          "candidate": 498.84375
+        },
+        "ratio": 1.0044044547914177
+      }
+    ],
+    "matchSeconds": 508.23103650001576,
+    "sessionSeconds": 512.501792999974,
+    "pairsPerMatchHour": 226.6685655274743,
+    "approximate512PairEloSE": 7.281425726400805
+  },
+  "unique-w1": {
+    "wdl": [
+      25,
+      10,
+      29
+    ],
+    "statistics": {
+      "pairs": 32,
+      "pentanomial": [
+        6,
+        4,
+        14,
+        4,
+        4
+      ],
+      "score": 0.46875,
+      "logisticElo": -21.74306492903708,
+      "pairedHoeffding95Score": [
+        0.22866930217001982,
+        0.7088306978299802
+      ],
+      "pairedHoeffding95Elo": [
+        -211.21309982380384,
+        154.55877278910938
+      ],
+      "pairScoreStandardError": 0.05470549819038361,
+      "pairedNormal95Score": [
+        0.36152919379052706,
+        0.5759708062094729
+      ],
+      "pairedNormal95Elo": [
+        -98.79906857494984,
+        53.201885226812585
+      ],
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 4661,
+        "nodes": 1310029735,
+        "elapsedNanos": 953023157100
+      },
+      "candidate": {
+        "requests": 4660,
+        "nodes": 1297258390,
+        "elapsedNanos": 953786356200
+      }
+    },
+    "pairTotals": [
+      0,
+      0.5,
+      1.5,
+      0.5,
+      0,
+      1,
+      1.0,
+      1.5,
+      1.5,
+      0,
+      0.5,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      0,
+      2,
+      0.5,
+      1,
+      1.5
+    ],
+    "blocks": [
+      {
+        "wallSeconds": 256.43299130001105,
+        "matchWallSeconds": 254.23932719998993,
+        "cpuSeconds": {
+          "baseline": 503.0625,
+          "candidate": 504.453125
+        },
+        "ratio": 1.0027643185488881
+      },
+      {
+        "wallSeconds": 256.1763759999885,
+        "matchWallSeconds": 254.0063012999599,
+        "cpuSeconds": {
+          "baseline": 495.484375,
+          "candidate": 497.203125
+        },
+        "ratio": 1.0034688278515342
+      }
+    ],
+    "matchSeconds": 508.2456284999498,
+    "sessionSeconds": 512.6093672999996,
+    "pairsPerMatchHour": 226.66205775346157,
+    "approximate512PairEloSE": 9.505080310579153
+  },
+  "recapture-w4": {
+    "wdl": [
+      25,
+      14,
+      25
+    ],
+    "statistics": {
+      "pairs": 32,
+      "pentanomial": [
+        2,
+        7,
+        15,
+        5,
+        3
+      ],
+      "score": 0.5,
+      "logisticElo": 0.0,
+      "pairedHoeffding95Score": [
+        0.2599193021700198,
+        0.7400806978299802
+      ],
+      "pairedHoeffding95Elo": [
+        -181.77621804089128,
+        181.77621804089128
+      ],
+      "pairScoreStandardError": 0.04490132550669373,
+      "pairedNormal95Score": [
+        0.4119950191487706,
+        0.5880049808512293
+      ],
+      "pairedNormal95Elo": [
+        -61.79561571015113,
+        61.79561571015112
+      ],
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 4134,
+        "nodes": 1951757300,
+        "elapsedNanos": 886846103100
+      },
+      "candidate": {
+        "requests": 4134,
+        "nodes": 1954364425,
+        "elapsedNanos": 889034599500
+      }
+    },
+    "pairTotals": [
+      1.0,
+      1.5,
+      1,
+      0.5,
+      1,
+      1.5,
+      0.5,
+      1,
+      1.5,
+      1,
+      1,
+      2,
+      1.5,
+      2,
+      1,
+      0,
+      1,
+      2,
+      0.5,
+      1,
+      0.5,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0.5,
+      1.5,
+      0.5,
+      1,
+      0.5,
+      1
+    ],
+    "blocks": [
+      {
+        "wallSeconds": 501.9961626000004,
+        "matchWallSeconds": 499.90016879996983,
+        "cpuSeconds": {
+          "baseline": 814.34375,
+          "candidate": 846.3125
+        },
+        "ratio": 1.0392570704938793
+      },
+      {
+        "wallSeconds": 416.82756160001736,
+        "matchWallSeconds": 414.75667089998024,
+        "cpuSeconds": {
+          "baseline": 656.796875,
+          "candidate": 644.4375
+        },
+        "ratio": 0.9811823480432973
+      }
+    ],
+    "matchSeconds": 914.6568396999501,
+    "sessionSeconds": 918.8237242000178,
+    "pairsPerMatchHour": 125.94887503141719,
+    "approximate512PairEloSE": 7.801605306788035
+  },
+  "promotion-w4": {
+    "wdl": [
+      30,
+      11,
+      23
+    ],
+    "statistics": {
+      "pairs": 32,
+      "pentanomial": [
+        3,
+        3,
+        16,
+        4,
+        6
+      ],
+      "score": 0.5546875,
+      "logisticElo": 38.153397218633565,
+      "pairedHoeffding95Score": [
+        0.3146068021700198,
+        0.7947681978299802
+      ],
+      "pairedHoeffding95Elo": [
+        -135.26867264857964,
+        235.19832879614765
+      ],
+      "pairScoreStandardError": 0.0511145621393905,
+      "pairedNormal95Score": [
+        0.45450479912126,
+        0.6548702008787399
+      ],
+      "pairedNormal95Elo": [
+        -31.700984332671233,
+        111.26910805378607
+      ],
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 4318,
+        "nodes": 2266387483,
+        "elapsedNanos": 902909675100
+      },
+      "candidate": {
+        "requests": 4323,
+        "nodes": 2254831120,
+        "elapsedNanos": 901897348100
+      }
+    },
+    "pairTotals": [
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1.0,
+      1,
+      1,
+      1.5,
+      2,
+      1.0,
+      1.5,
+      0.5,
+      0.5,
+      2,
+      1,
+      0.5,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      1.5,
+      0,
+      2,
+      1,
+      1.5
+    ],
+    "blocks": [
+      {
+        "wallSeconds": 450.0160033000284,
+        "matchWallSeconds": 447.8927028999897,
+        "cpuSeconds": {
+          "baseline": 762.484375,
+          "candidate": 736.75
+        },
+        "ratio": 0.9662493083874669
+      },
+      {
+        "wallSeconds": 476.7727803000016,
+        "matchWallSeconds": 474.65730829996755,
+        "cpuSeconds": {
+          "baseline": 799.890625,
+          "candidate": 815.140625
+        },
+        "ratio": 1.0190651065575371
+      }
+    ],
+    "matchSeconds": 922.5500111999572,
+    "sessionSeconds": 926.78878360003,
+    "pairsPerMatchHour": 124.8712791734291,
+    "approximate512PairEloSE": 8.881155171719099
+  },
+  "unique-w4": {
+    "wdl": [
+      28,
+      13,
+      23
+    ],
+    "statistics": {
+      "pairs": 32,
+      "pentanomial": [
+        1,
+        5,
+        18,
+        4,
+        4
+      ],
+      "score": 0.5390625,
+      "logisticElo": 27.198831638044453,
+      "pairedHoeffding95Score": [
+        0.2989818021700198,
+        0.7791431978299802
+      ],
+      "pairedHoeffding95Elo": [
+        -148.0338146675374,
+        219.00260154063554
+      ],
+      "pairScoreStandardError": 0.04216509261560157,
+      "pairedNormal95Score": [
+        0.4564204370686252,
+        0.6217045629313749
+      ],
+      "pairedNormal95Elo": [
+        -30.359215036793465,
+        86.30118075729662
+      ],
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 4214,
+        "nodes": 2675403947,
+        "elapsedNanos": 893855285400
+      },
+      "candidate": {
+        "requests": 4213,
+        "nodes": 2692170170,
+        "elapsedNanos": 896194930600
+      }
+    },
+    "pairTotals": [
+      0.5,
+      1,
+      1,
+      1.0,
+      1.5,
+      1.5,
+      2,
+      1,
+      1,
+      1.5,
+      2,
+      0.5,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1.5,
+      1,
+      0.5,
+      1,
+      0.5,
+      1,
+      1,
+      1,
+      0,
+      1.0,
+      1,
+      1,
+      2,
+      0.5
+    ],
+    "blocks": [
+      {
+        "wallSeconds": 436.00452889996814,
+        "matchWallSeconds": 433.9012102999841,
+        "cpuSeconds": {
+          "baseline": 740.5,
+          "candidate": 750.375
+        },
+        "ratio": 1.013335584064821
+      },
+      {
+        "wallSeconds": 485.7849659000058,
+        "matchWallSeconds": 483.65985759999603,
+        "cpuSeconds": {
+          "baseline": 820.71875,
+          "candidate": 814.140625
+        },
+        "ratio": 0.9919849217530365
+      }
+    ],
+    "matchSeconds": 917.5610678999801,
+    "sessionSeconds": 921.7894947999739,
+    "pairsPerMatchHour": 125.55022660634236,
+    "approximate512PairEloSE": 7.326184841960773
+  }
+}

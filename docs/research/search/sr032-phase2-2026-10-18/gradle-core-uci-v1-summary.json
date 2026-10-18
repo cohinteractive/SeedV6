@@ -1,0 +1,32 @@
+{
+  "engine-core": {
+    "tests": 61,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "files": {
+      "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.book.BookTest.xml": "0a32adf8ef31c5836e6367af23f9271afc773313802060cf23ddef318f1c61ce",
+      "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.core.brnpair2.BrnPair2RuntimeBoundaryTest.xml": "5d95e919bbdeac67b67c80ecef057f967a45daeaefb44e0e4b20323919554d67",
+      "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.core.util.FenTest.xml": "c6004c604b7d546c2ef34003fa9c4f0a7340df7533993b7b9ad3a0f90d62c516",
+      "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.core.util.PextTest.xml": "12717efc51d1b29848e2362b6d840c353d2971c4b89ff726a822b17126caf540",
+      "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.rules.DrawAdjudicatorTest.xml": "b1f6fc5763fd5ebbf8aafe1825e35e8c6a3eefed38256cf30052a6dff142e2c3",
+      "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.rules.GameHistoryTest.xml": "98557b9687b1964a34c0bd181958fbf3eafca7f4fa6dcb259dbe2fa6d9784928",
+      "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.rules.PositionIdentityTest.xml": "0e9fff0050c7b8a175825372f545ea413416cd74de61beba158bf2af1fb7d598",
+      "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.manage.TimeManagerTest.xml": "3801eaa7029a79fe5f05de93faf932292765f30b7962d38039b1fae7df0f164e",
+      "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.tablebase.SyzygyResourcesTest.xml": "69262212cd127e27fa409e83e8dc2e46cc4caf2560a32c20a894acb52050374e",
+      "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.tt.TranspositionScoresTest.xml": "6a87593b96475c801dd138e516e3a4b22cee23aa073e83c2dfb2f978367a5e6e",
+      "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.tt.TTableTest.xml": "858d4a773fd05a684a82effd8801310160d2c2279b0c2613a4a1b50e2c7562f2"
+    }
+  },
+  "app-uci": {
+    "tests": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "files": {
+      "app-uci\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.uci.GoCommandParserTest.xml": "d40a0b8ddf85f4befe697561f6c47e802d81fa28231125275c28f94d183ec174",
+      "app-uci\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.uci.StandaloneBoundaryTest.xml": "0f89cd19a156345cd9ddb25cc23534167db41cfcf3156cbb4ddc953a5494d28f",
+      "app-uci\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.uci.UciMoveParserTest.xml": "946f882ce5e025a52ce2c2463dd8166136ff015a6d80bed1c78d0de24b60a6ff"
+    }
+  }
+}

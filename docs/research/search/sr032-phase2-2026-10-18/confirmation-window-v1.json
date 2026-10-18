@@ -1,0 +1,15 @@
+{
+  "stopBefore": "2026-10-18T17:30:00+13:00",
+  "order": [
+    "recapture-w1 first scheduled look",
+    "promotion-w4 first scheduled look",
+    "promotion-w4 continuation if required",
+    "recapture-w1 continuation if required"
+  ],
+  "firstLooksExpectedMatchHours": 1.56719273724064,
+  "maximaExpectedMatchHours": 6.26877094896256,
+  "slowdownAllowance": 1.25,
+  "overhead": "Measured block restart/preflight/audit/drain in development-economics; additional top-level preparation/checking not match time.",
+  "resourceBoundary": "Both maxima exceed the remaining authorized bounded daytime window. Preserve frozen sample sizes, pause at complete blocks, and obtain a sufficiently defined later window if required. No automatic overnight execution.",
+  "statistics": "Only cumulative 128 and 512 paired looks. Operational pauses carry no inference. No continuation after closed success, negative, futility or inconclusive decisions."
+}

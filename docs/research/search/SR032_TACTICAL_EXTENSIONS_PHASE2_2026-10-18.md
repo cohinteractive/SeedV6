@@ -200,3 +200,85 @@ Resume only verified complete blocks using each study's frozen executor. Never
 replay partial/abnormal blocks or assess an operational pause as a statistical
 look. After all six full contrasts, reconcile all development outcomes and
 choose further in-scope research or fresh independent confirmation.
+
+## Completed development and independent confirmation selection
+
+All six fixed 32-pair contrasts completed: **384 games**, every termination
+normal, all input/pair/legality/history/accounting/process audits passed. Results
+are exploratory and correlated across candidates through shared openings; every
+unadjusted paired-normal 95% interval includes zero. Neither point Elo nor these
+screens establish a gain, inferiority or equivalence.
+
+| Policy/domain | W/D/L | Point Elo | Exploratory paired-normal 95% interval |
+| --- | --- | ---: | --- |
+| RECAPTURE/native1 | 26/16/22 | +21.74 | [-62.33,+108.50] |
+| PROMOTION/native1 | 28/10/26 | +10.86 | [-46.49,+68.82] |
+| UNIQUE/native1 | 25/10/29 | -21.74 | [-98.80,+53.20] |
+| RECAPTURE/ROOT_REUSE4 | 25/14/25 | 0.00 | [-61.80,+61.80] |
+| PROMOTION/ROOT_REUSE4 | 30/11/23 | +38.15 | [-31.70,+111.27] |
+| UNIQUE/ROOT_REUSE4 | 28/13/23 | +27.20 | [-30.36,+86.30] |
+
+`development-results-v1.json` retains pair totals, pentanomials, conservative
+bounded-pair sensitivities and whole-request resources. Raw per-game analysis,
+original PGNs/transcripts and completed-block exports remain under `raw/`.
+Total match time is 4,259.45 seconds; summed block sessions 4,285.16 seconds;
+top-level execution ran 22:59:12–00:11:42 UTC. Engine lifetime CPU is 7,558.06
+baseline and 7,580.08 candidate seconds. Native measured throughput is 227–236
+pairs/hour and four-worker 125–126. CPU includes engine startup/JIT/aborted work;
+it excludes non-engine process CPU, and logical CPU seconds are not physical
+core occupancy. Inputs/configurations and failed earlier diagnostics remain.
+
+Select the unchanged **RECAPTURE/native1** and **PROMOTION/ROOT_REUSE4** as separate
+independent finalists. The first has the best native screen despite extra cost;
+the second combines the strongest four-worker screen with low diagnostic cost.
+These selected estimates are noisy and optimistic; fresh data, not selection,
+must establish any gain. Advancing these credible finalists has greater current
+decision value than a parameter sweep or unrelated threat/ordering research.
+UNIQUE and other worker/policy contrasts are retained as inconclusive development.
+
+`confirmation-v1/*-protocol.json` prospectively freezes fresh partition-one
+openings (seed 320118), unchanged candidate-v3 runtime/model/clocks/concurrency,
+16-pair operational blocks and cumulative **128/512-pair** statistical looks.
+The existing SR-024 assessor allocates feature family alpha .05 as .025/.0125
+to these two contrasts, then across two looks. Normal inference requires at
+least 20 pair scores on each side of half and agreement with the 2.5-SE
+sensitivity; adjusted Hoeffding intervals are also reported. Conditional power
+below .10 closes for computational futility, never inferiority. A maximum that
+does not pass closes inconclusive. Closed confirmations cannot extend or retune.
+No development games enter confirmation and worker domains are never pooled.
+
+At 512 pairs, development variance predicts approximate Elo SE 10.6 native and
+8.9 four-worker, adjusted half widths about 26.6/24.3 Elo. Those are uncertain
+planning estimates, not small-gain power guarantees. Both first looks forecast
+1.57 match hours plus overhead; both maxima 6.27 match hours, 7.84 at 25% slower
+throughput, plus overhead. Maxima therefore do not both fit the remaining daytime
+window. Run both first looks, then prioritize the four-worker continuation if
+required, pausing at complete blocks before 17:30 NZDT. Additional execution
+requires a sufficiently defined authorized window; do not shrink the frozen
+statistical sample to fit one session. Five confirmation boundary tests pass,
+including scheduled-look pausing, immutable replay and no continuation after a
+stopping decision. Ordinary Gradle core/UCI validation additionally passes
+**61 + 13 tests**, with zero failures/skips.
+
+### Shared-host observation before confirmation
+
+The ordinary Gradle class output (not the frozen candidate runtime) has a
+23:38:56 UTC write time, during development. A second VS Code Gradle/Java
+language-server session started at 23:38:04/06 UTC; the latter accumulated
+231.39 CPU seconds by inspection. Its exact overlap/impact on games is unknown.
+Do not reinterpret development as controlled confirmation or erase its results.
+The candidate inputs remained stable and all inherited source hashes are intact.
+No frozen protocol or binary is changed by this observation.
+
+A fresh ten-second check records only 0.03125 total CPU seconds across the six
+Java IDE/Gradle processes, with the new language server idle. See
+`raw/background-java-idle-v1.json`. An asynchronous resource-availability question
+was sent to the owner; no answer is evidence of a guarantee. Current idle state
+supports continued authorized research while preserving this shared-desktop
+limitation; future reported heavy work must pause affected clock studies safely.
+
+Resume: verify the frozen protocols and current host workload; execute the first
+scheduled look using `tools/sr032-confirmation.py run --protocol <path>
+--stop-before 2026-10-18T17:30:00+13:00 --max-stages 1`. Read only the scheduled
+assessment, preserve its stopping decision, and continue eligible work under
+the same prospective protocol. SR-032 remains ACTIVE; no production adoption.

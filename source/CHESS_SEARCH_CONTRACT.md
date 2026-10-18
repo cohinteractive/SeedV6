@@ -1,6 +1,6 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R046**
+Internal revision: **P2-R047**
 
 Status: **SR-032 Other Tactical/Forced-Line Extensions is the sole owner-selected ACTIVE feature. SR-033 is owner-accepted DEFERRED without adoption and BOTH starting P2-R044/P2-F048 Project Source mirrors are confirmed synchronized. Accepted cumulative production is unchanged; research proceeds under separately evidenced DEFERRED_FINALIZATION.**
 
@@ -1063,6 +1063,16 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
+### SR-032 development complete; confirmations frozen — 2026-10-18 local
+
+SR-032 remains ACTIVE with unchanged production. Six fixed screens completed
+384 audited games; all exploratory intervals cross zero. The [research record](../docs/research/search/SR032_TACTICAL_EXTENSIONS_PHASE2_2026-10-18.md)
+selects unchanged RECAPTURE/native1 and PROMOTION/ROOT_REUSE4 for fresh independent
+128/512-pair confirmations, with prospective multiplicity/futility boundaries,
+measured economics, complete-pair operational sessions and a bounded daytime
+window. A later observed IDE rebuild limits development resource comparability;
+fresh idle checks and frozen confirmation inputs are recorded. No gain is claimed.
+
 ### SR-032 validated candidates and development — 2026-10-18 local
 
 SR-032 remains ACTIVE. The [research record](../docs/research/search/SR032_TACTICAL_EXTENSIONS_PHASE2_2026-10-18.md)
@@ -1750,3 +1760,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-R044 | Close SR-033 technically as DEFERRED without adoption after native computational-futility and four-worker maximum inconclusive confirmations; preserve controls, all-worker/proof validation, measured costs and small-gain uncertainty, quantify fresh-study economics, and hand back BOTH final mirrors with no successor. |
 | P2-R045 | Activate only owner-selected SR-032 after verified cumulative runtime/model/archive baseline and confirmed SR-033 acceptance/BOTH starting mirror synchronization; record inherited-work isolation, qsearch-overlap challenge and durable research continuation. |
 | P2-R046 | Record validated default-OFF SR-032 boundary controls, credit/proof/worker invariants, mixed diagnostic decisions and costs, and prospective bounded development comparisons; preserve ACTIVE and unchanged production. |
+| P2-R047 | Record all six completed SR-032 development contrasts, shared-host limitation, selected native/four-worker finalists and fresh frozen 128/512-pair confirmation designs/resource forecasts; retain ACTIVE without adoption. |
