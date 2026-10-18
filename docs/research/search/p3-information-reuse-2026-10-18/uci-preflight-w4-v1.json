@@ -1,0 +1,40 @@
+{
+  "baseline": {
+    "identity": "info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=d536f7ad8000 (uncommitted changes) internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=4 leaves=see_selective mode=production qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off see=qxray concurrency=root_reuse rootHistory=seeded_private information=0 hints=off history=root_seeded_private learning=all_searched",
+    "requests": [
+      {
+        "nodes": 100000,
+        "elapsedNanos": 141463800,
+        "termination": "NODE_LIMIT",
+        "bestmove": "e2e3",
+        "finalInfo": "info depth 7 score cp 3 nodes 68416 time 104 nps 656490 pv e2e3 g8f6 g1f3 d7d5 d2d4 b8c6 f1d3"
+      },
+      {
+        "nodes": 100000,
+        "elapsedNanos": 71813000,
+        "termination": "NODE_LIMIT",
+        "bestmove": "e2e3",
+        "finalInfo": "info depth 7 score cp 3 nodes 69183 time 47 nps 1454576 pv e2e3 g8f6 g1f3 d7d5 d2d4 b8c6 f1d3"
+      }
+    ]
+  },
+  "candidate": {
+    "identity": "info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=d8c08f47d367 (uncommitted changes) internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=4 leaves=see_selective mode=research qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off see=qxray concurrency=root_reuse rootHistory=seeded_private experimental=true information=4 hints=completed_same_key history=root_seeded_private learning=all_searched",
+    "requests": [
+      {
+        "nodes": 100000,
+        "elapsedNanos": 149679100,
+        "termination": "NODE_LIMIT",
+        "bestmove": "c2c4",
+        "finalInfo": "info depth 7 score cp 1 nodes 81107 time 127 nps 634139 pv c2c4 e7e6 d2d4 d7d5 e2e3 d5c4 f1c4"
+      },
+      {
+        "nodes": 100000,
+        "elapsedNanos": 84601600,
+        "termination": "NODE_LIMIT",
+        "bestmove": "d2d4",
+        "finalInfo": "info depth 7 score cp 2 nodes 77756 time 64 nps 1203919 pv d2d4 g7g6 e2e3 g8f6 g1f3 f8h6 f1d3"
+      }
+    ]
+  }
+}

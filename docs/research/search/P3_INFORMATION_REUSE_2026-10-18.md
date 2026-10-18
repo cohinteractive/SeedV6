@@ -10,11 +10,12 @@ contains evidence and resume state, not additional policy authority.
 
 Current work: baseline, O2 and combined O1/O2 diagnostics, integrated regression,
 worker lifecycle checks and hint-lifetime replay passed. Hints alone (policy 4)
-completed its 32-pair one-worker clock screen with a promising development result,
-not confirmation. The frozen hints + EFFORT history retention + nominal-only
-maluses screen (policy 7) is running. Assess it only after completion; then select
-informative reverse ablations, separate multiworker evidence and fresh independent
-confirmation. Production defaults and the accepted champion remain unchanged.
+and all three mechanisms (policy 7) completed their 32-pair one-worker clock
+screens with positive but unconfirmed estimates. The separate four-worker hint
+screen is running. Two frozen one-worker ablations follow: policy 5 versus 4
+(retention), then policy 7 versus 5 (nominal-learning filter). Assess only complete
+screens; select complete finalist configurations before fresh confirmation.
+Production defaults and the accepted champion remain unchanged.
 
 Version-dependent operations are BLOCKED by the inherited reservation described
 below. Independent O1/O2 source inspection, research, testing and separately
@@ -328,10 +329,12 @@ This is observer work, not a new candidate mechanism. Preserve all raw trajector
 and instrumented results.
 
 The separate [four-worker hint screen](p3-information-reuse-2026-10-18/clock-development-v1-w4-p4.json)
-is also prepared at `raw/clock-development-v1-w4-p4/plan.json`, with the same
-development openings, 32 pairs, concurrency one and BelowNormal priority. Run
-after p7, verify its own frozen-binary preflight and observe host headroom; never
-pool worker domains. Current user GUI work must remain untouched.
+is running at `raw/clock-development-v1-w4-p4/plan.json`, with the same
+development openings, 32 pairs, concurrency one and BelowNormal priority. Its
+[frozen-binary preflight](p3-information-reuse-2026-10-18/uci-preflight-w4-v1.json)
+passed for both exact model/policy identities and two 100k-admission requests per
+side. Observe host headroom and never pool worker domains. Current user GUI work
+must remain untouched.
 
 `tools/p3-information-confirmation.py` supplies the Phase 3 identity checks around
 the existing SR-032 staged executor and unchanged SR-024 decision rule. A small
@@ -375,6 +378,36 @@ and an active user SeedV6 GUI consuming about one logical CPU alongside the matc
 This is useful headroom evidence, not a reconstruction of unsampled desktop load.
 Do not stop or reconfigure the user's GUI. Keep shared-workstation and approximate
 pair-independence limitations explicit in later strength assessments.
+
+### Completed policy-7 screen and direct ablations
+
+[Complete assessment](p3-information-reuse-2026-10-18/clock-development-v1-p7-summary.json):
+**31 wins / 13 draws / 20 losses**, 58.59375%, descriptive estimate **+60 Elo**;
+paired normal 95% interval -21 to +148, bounded interval -111 to +271. All 64
+games and four blocks passed the complete audits. Candidate/champion process CPU
+ratio 1.0041; throughput about 125 games/hour. Host point samples saw 21–25% total
+CPU, ample free memory and no paging, alongside active user GUI work. Sampling is
+incomplete and does not establish absence of all contention.
+
+Positive whole-candidate performance does not establish additional O2 value over
+policy 4. Conversely, the lower development point estimate does not prove history
+retention or the filter harmful. The source and fixed configurations remain frozen.
+Two direct, conditional contrasts now have better decision value than parameter
+tuning or another loosely matched champion screen:
+
+- [Retained-history contrast](p3-information-reuse-2026-10-18/clock-ablation-v1-history.json):
+  candidate 5 against reference 4, holding completed hints and EFFORT ordering fixed.
+- [Reverse filter ablation](p3-information-reuse-2026-10-18/clock-ablation-v1-labels.json):
+  candidate 7 against reference 5, holding hints and retention fixed.
+
+Each is already prepared under the matching `raw/clock-ablation-v1-*` path, with
+32 paired development openings, four eight-pair blocks, 10+0.1, one worker and
+concurrency one. Both sides use the same experimental binary; the ablation
+reference is explicitly not the accepted champion. Keep all results, complete
+the fixed samples, and do not extend them or infer component acceptance. Shared
+development openings and repeated comparisons limit inference. Individual
+component Elo significance is not a prerequisite for considering an integrated
+candidate, but its complete configuration still needs independent confirmation.
 
 ### Hint lifetime and pressure
 
