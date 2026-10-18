@@ -87,6 +87,17 @@ public final class ParallelSearch implements SingleDepthSearch {
         return this;
     }
 
+    /** Same coherent TT, private counters, and unchanged ROOT_REUSE scheduling. */
+    public ParallelSearch withCompletedHints(boolean enabled,
+            java.util.function.IntFunction<MoveHintDiagnostics> diagnostics) {
+        ensureIdle();
+        if(requestActive || policy != ConcurrencyPolicy.ROOT_REUSE)
+            throw new IllegalStateException("Completed hints require idle ROOT_REUSE");
+        for(var worker:workers) worker.search.withCompletedHints(enabled,
+                diagnostics==null?null:diagnostics.apply(worker.index));
+        return this;
+    }
+
     /** Each worker learns privately over its own request; no shared table or copy. */
     public ParallelSearch withDepthFeedback(DepthFeedback feedback,
             java.util.function.IntFunction<DepthFeedback.Diagnostics> diagnostics) {

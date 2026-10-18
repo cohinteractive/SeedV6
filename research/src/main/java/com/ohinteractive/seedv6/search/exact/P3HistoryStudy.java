@@ -34,23 +34,31 @@ public final class P3HistoryStudy {
     }
     static boolean retain(int p) {return p==1 || p==3;}
     static boolean nominal(int p) {return p==2 || p==3;}
-    static SingleDepthSearch engine(SearchEvaluation e,int p) {
+    static SingleDepthSearch engine(SearchEvaluation e,int p,boolean hints) {
+        if(hints) return p==0?ProductionSearch.create(1,e)
+                :ExactSearchAdapter.informationResearch(e,(p&4)!=0,(p&1)!=0,(p&2)!=0,null);
         return p==0?ProductionSearch.create(1,e):ExactSearchAdapter.historyResearch(e,retain(p),nominal(p),null);
     }
     public static void main(String[] args) throws Exception {
-        if(args.length!=4) throw new IllegalArgumentException("model corpus.tsv new-output.jsonl observe|cost");
+        if(args.length!=4 && args.length!=5) throw new IllegalArgumentException("model corpus.tsv new-output.jsonl observe|cost [hints]");
+        boolean hints=args.length==5;
+        if(hints && !args[4].equals("hints")) throw new IllegalArgumentException("Unknown family");
         var e=SearchEvaluation.brnPair2(ProductionModel.load(Path.of(args[0])));
         var roots=roots(Path.of(args[1]));var gson=new GsonBuilder().create();
         boolean observe=args[3].equals("observe");
         if(!observe && !args[3].equals("cost")) throw new IllegalArgumentException("Unknown mode");
+        int[] policies=hints?(observe?new int[]{0,4,5,6,7,8}:new int[]{0,4,5,6,7})
+                :(observe?new int[]{0,1,2,3,4}:new int[]{0,1,2,3});
         int observations=0;
         try(var out=Files.newBufferedWriter(Path.of(args[2]),StandardOpenOption.CREATE_NEW)) {
             if(observe) {
-                for(var root:roots) for(int p=0;p<=4;p++) {
+                for(var root:roots) for(int p:policies) {
                     var d=new HistoryLearning.Diagnostics();var t=new P3InformationBaseline.ObservedTable(64);
+                    var hd=new MoveHintDiagnostics();
                     var a=new P3InformationBaseline.Admissions(e);
                     var search=P3InformationBaseline.engine(a,t,null);
-                    if(p!=0) search.withHistoryResearch(retain(p),nominal(p),d);
+                    if(p!=0) search.withHistoryResearch(hints?(p&1)!=0:retain(p),hints?(p&2)!=0:nominal(p),d);
+                    if(hints && p!=0) search.withCompletedHints((p&4)!=0,hd);
                     search.beginRequest();
                     try { for(int depth=1;depth<=6;depth++) {
                         t.resetCounters();
@@ -59,6 +67,7 @@ public final class P3HistoryStudy {
                         var row=new LinkedHashMap<String,Object>();
                         row.put("id",root.id);row.put("policy",p);row.put("depth",depth);row.put("outcome",result);
                         row.put("preparedAdmissions",a.nodes);row.put("learning",d);
+                        if(hints) row.put("hints",hd);
                         row.put("history",P3InformationBaseline.historySummary(P3InformationBaseline.history(search),null));
                         row.put("tt",Map.of("probes",t.probes,"hits",t.hits,"saveAttempts",t.saves));
                         out.write(gson.toJson(row));out.newLine();out.flush();observations++;
@@ -72,10 +81,10 @@ public final class P3HistoryStudy {
                     throw new IllegalStateException("Cost counters unavailable");
                 mx.setThreadAllocatedMemoryEnabled(true);mx.setThreadCpuTimeEnabled(true);
                 long thread=Thread.currentThread().threadId();
-                SearchDriver[] drivers=new SearchDriver[4];
+                SearchDriver[] drivers=new SearchDriver[policies.length];
                 try {
-                    for(int p=0;p<4;p++) {
-                        drivers[p]=new SearchDriver(engine(e,p));
+                    for(int p=0;p<policies.length;p++) {
+                        drivers[p]=new SearchDriver(engine(e,policies[p],hints));
                         for(int w=0;w<4;w++) {
                             drivers[p].newGame();long start=System.nanoTime();
                             drivers[p].search(new SearchRequest(Board.startingPosition(),GameHistory.initial(Board.startingPosition()),20,
@@ -84,8 +93,8 @@ public final class P3HistoryStudy {
                     }
                     for(int round=0;round<2;round++) for(int i=0;i<roots.size();i++) {
                         var root=roots.get(i);
-                        for(long budget:new long[]{0,100000}) for(int offset=0;offset<4;offset++) {
-                            int p=(i+round+offset)%4;var driver=drivers[p];
+                        for(long budget:new long[]{0,100000}) for(int offset=0;offset<policies.length;offset++) {
+                            int index=(i+round+offset)%policies.length,p=policies[index];var driver=drivers[index];
                             long reset=System.nanoTime();driver.newGame();reset=System.nanoTime()-reset;
                             long allocated=mx.getThreadAllocatedBytes(thread),cpu=mx.getCurrentThreadCpuTime();
                             long gc=gcCount(),compiled=ManagementFactory.getCompilationMXBean().getTotalCompilationTime();

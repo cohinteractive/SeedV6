@@ -153,6 +153,14 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
         return adapter;
     }
 
+    /** Explicit O1/O2 composition; never selected by the production factory. */
+    public static ExactSearchAdapter informationResearch(SearchEvaluation evaluation, boolean hints,
+            boolean retain, boolean nominalOnly, com.ohinteractive.seedv6.search.exact.MoveHintDiagnostics diagnostics) {
+        var adapter=historyResearch(evaluation,retain,nominalOnly,null);
+        adapter.exact.withCompletedHints(hints,diagnostics);
+        return adapter;
+    }
+
     public static ExactSearchAdapter depthFeedbackResearch(SearchEvaluation evaluation,
             com.ohinteractive.seedv6.search.exact.DepthFeedback policy,
             com.ohinteractive.seedv6.search.exact.DepthFeedback.Diagnostics diagnostics) {

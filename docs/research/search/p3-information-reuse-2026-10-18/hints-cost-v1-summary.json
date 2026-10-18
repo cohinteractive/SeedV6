@@ -1,0 +1,236 @@
+{
+  "completion": {
+    "observations": 520,
+    "status": "passed",
+    "mode": "cost"
+  },
+  "sha256": "d53ce03ed0dc72fe0d3a84dd0b80d545899d008a2a035de94b071bd85c3d3e61",
+  "groups": [
+    {
+      "budget": 0,
+      "policy": 0,
+      "requests": 52,
+      "nodes": 4722852,
+      "meanCompletedDepth": 6.0,
+      "incompleteRequests": 0,
+      "elapsedNanos": 3599631300,
+      "threadCpuNanos": 3562500000,
+      "threadAllocatedBytes": 3052568,
+      "newGameNanos": 71747300,
+      "processCompilationMillis": 215,
+      "processGcCollections": 0,
+      "elapsedNanosRatio": 1.0,
+      "threadCpuNanosRatio": 1.0,
+      "threadAllocatedBytesRatio": 1.0,
+      "nodesRatio": 1.0,
+      "elapsedRatioByRound": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "budget": 0,
+      "policy": 4,
+      "requests": 52,
+      "nodes": 4074068,
+      "meanCompletedDepth": 6.0,
+      "incompleteRequests": 0,
+      "elapsedNanos": 3217850600,
+      "threadCpuNanos": 3296875000,
+      "threadAllocatedBytes": 2899360,
+      "newGameNanos": 70550900,
+      "processCompilationMillis": 256,
+      "processGcCollections": 0,
+      "elapsedNanosRatio": 0.8939389431356484,
+      "threadCpuNanosRatio": 0.9254385964912281,
+      "threadAllocatedBytesRatio": 0.9498101270798881,
+      "nodesRatio": 0.8626287675328382,
+      "elapsedRatioByRound": [
+        0.9412722364063335,
+        0.8491532340515212
+      ]
+    },
+    {
+      "budget": 0,
+      "policy": 5,
+      "requests": 52,
+      "nodes": 3995944,
+      "meanCompletedDepth": 6.0,
+      "incompleteRequests": 0,
+      "elapsedNanos": 3362330200,
+      "threadCpuNanos": 3390625000,
+      "threadAllocatedBytes": 2900776,
+      "newGameNanos": 71247900,
+      "processCompilationMillis": 164,
+      "processGcCollections": 0,
+      "elapsedNanosRatio": 0.9340762760897207,
+      "threadCpuNanosRatio": 0.9517543859649122,
+      "threadAllocatedBytesRatio": 0.9502739988101822,
+      "nodesRatio": 0.8460870677294143,
+      "elapsedRatioByRound": [
+        0.9852465179246361,
+        0.8856601316334829
+      ]
+    },
+    {
+      "budget": 0,
+      "policy": 6,
+      "requests": 52,
+      "nodes": 4006058,
+      "meanCompletedDepth": 6.0,
+      "incompleteRequests": 0,
+      "elapsedNanos": 3290078500,
+      "threadCpuNanos": 3281250000,
+      "threadAllocatedBytes": 2901960,
+      "newGameNanos": 71672000,
+      "processCompilationMillis": 141,
+      "processGcCollections": 0,
+      "elapsedNanosRatio": 0.9140043037185502,
+      "threadCpuNanosRatio": 0.9210526315789473,
+      "threadAllocatedBytesRatio": 0.9506618689575466,
+      "nodesRatio": 0.8482285703638395,
+      "elapsedRatioByRound": [
+        0.9504453352552692,
+        0.8795246103704486
+      ]
+    },
+    {
+      "budget": 0,
+      "policy": 7,
+      "requests": 52,
+      "nodes": 3968252,
+      "meanCompletedDepth": 6.0,
+      "incompleteRequests": 0,
+      "elapsedNanos": 3267498500,
+      "threadCpuNanos": 3312500000,
+      "threadAllocatedBytes": 2903848,
+      "newGameNanos": 72756900,
+      "processCompilationMillis": 364,
+      "processGcCollections": 0,
+      "elapsedNanosRatio": 0.9077314390504383,
+      "threadCpuNanosRatio": 0.9298245614035088,
+      "threadAllocatedBytesRatio": 0.9512803645979385,
+      "nodesRatio": 0.840223661465572,
+      "elapsedRatioByRound": [
+        0.8897357324922255,
+        0.9247585762511069
+      ]
+    },
+    {
+      "budget": 100000,
+      "policy": 0,
+      "requests": 52,
+      "nodes": 4111528,
+      "meanCompletedDepth": 9.038461538461538,
+      "incompleteRequests": 40,
+      "elapsedNanos": 3342710400,
+      "threadCpuNanos": 3312500000,
+      "threadAllocatedBytes": 4470504,
+      "newGameNanos": 71272200,
+      "processCompilationMillis": 231,
+      "processGcCollections": 0,
+      "elapsedNanosRatio": 1.0,
+      "threadCpuNanosRatio": 1.0,
+      "threadAllocatedBytesRatio": 1.0,
+      "nodesRatio": 1.0,
+      "elapsedRatioByRound": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "budget": 100000,
+      "policy": 4,
+      "requests": 52,
+      "nodes": 4133396,
+      "meanCompletedDepth": 9.23076923076923,
+      "incompleteRequests": 40,
+      "elapsedNanos": 3404818900,
+      "threadCpuNanos": 3359375000,
+      "threadAllocatedBytes": 4554888,
+      "newGameNanos": 70457100,
+      "processCompilationMillis": 564,
+      "processGcCollections": 0,
+      "elapsedNanosRatio": 1.0185802814386793,
+      "threadCpuNanosRatio": 1.0141509433962264,
+      "threadAllocatedBytesRatio": 1.0188757240794326,
+      "nodesRatio": 1.0053187038979183,
+      "elapsedRatioByRound": [
+        1.0412784150432346,
+        0.9974932690540377
+      ]
+    },
+    {
+      "budget": 100000,
+      "policy": 5,
+      "requests": 52,
+      "nodes": 4108916,
+      "meanCompletedDepth": 9.346153846153847,
+      "incompleteRequests": 40,
+      "elapsedNanos": 3354410800,
+      "threadCpuNanos": 3375000000,
+      "threadAllocatedBytes": 4607016,
+      "newGameNanos": 70721400,
+      "processCompilationMillis": 117,
+      "processGcCollections": 0,
+      "elapsedNanosRatio": 1.0035002733111429,
+      "threadCpuNanosRatio": 1.0188679245283019,
+      "threadAllocatedBytesRatio": 1.0305361543128022,
+      "nodesRatio": 0.9993647130701773,
+      "elapsedRatioByRound": [
+        1.026711583316246,
+        0.9819365099608767
+      ]
+    },
+    {
+      "budget": 100000,
+      "policy": 6,
+      "requests": 52,
+      "nodes": 4110634,
+      "meanCompletedDepth": 9.26923076923077,
+      "incompleteRequests": 40,
+      "elapsedNanos": 3301475300,
+      "threadCpuNanos": 3296875000,
+      "threadAllocatedBytes": 4572104,
+      "newGameNanos": 70833000,
+      "processCompilationMillis": 173,
+      "processGcCollections": 0,
+      "elapsedNanosRatio": 0.987664172164002,
+      "threadCpuNanosRatio": 0.9952830188679245,
+      "threadAllocatedBytesRatio": 1.0227267440091765,
+      "nodesRatio": 0.9997825625898693,
+      "elapsedRatioByRound": [
+        1.0373754570207185,
+        0.9414814111629107
+      ]
+    },
+    {
+      "budget": 100000,
+      "policy": 7,
+      "requests": 52,
+      "nodes": 4109750,
+      "meanCompletedDepth": 9.346153846153847,
+      "incompleteRequests": 40,
+      "elapsedNanos": 3431436900,
+      "threadCpuNanos": 3390625000,
+      "threadAllocatedBytes": 4604456,
+      "newGameNanos": 72007200,
+      "processCompilationMillis": 97,
+      "processGcCollections": 0,
+      "elapsedNanosRatio": 1.0265432805665726,
+      "threadCpuNanosRatio": 1.0235849056603774,
+      "threadAllocatedBytesRatio": 1.029963511944067,
+      "nodesRatio": 0.9995675573655342,
+      "elapsedRatioByRound": [
+        1.1035260360880748,
+        0.9550247871359079
+      ]
+    }
+  ],
+  "limitations": [
+    "Historical development roots; single JVM, two rotations, not strength",
+    "CPU is requesting thread; compiler/GC CPU not included",
+    "All D6 contrasts retain full requests; fixed-node partial iteration costs included",
+    "Changed root decisions and deeper nominal depth are not accuracy evidence"
+  ]
+}

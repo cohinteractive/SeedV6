@@ -1,0 +1,27 @@
+{
+  "id": "P3-O1O2-CLOCK-DEV-v1-P4",
+  "adapter": "p3-information-match.py",
+  "purpose": "exploratory",
+  "assessmentPlan": "Fixed 32 color-reversed opening pairs, four 8-pair blocks; finish every block unless operational failure. No outcome-based stopping or extension. Evaluate hints alone (4) and hints+retention+nominal filter (7) against the frozen pre-experiment champion core on the same development openings. Descriptive pair score and pre-existing paired intervals only; correlated two-comparison development evidence, no confirmatory claim, promotion or independent Elo prerequisite. Retain failures; no automatic replay/exclusion. Subsequent ablation/confirmation uses separate prospective protocols.",
+  "blockPairs": 8,
+  "blockLimitSeconds": 900,
+  "arguments": {
+    "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\clock-v1-baseline",
+    "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\clock-v1-candidate",
+    "java": "C:/java/jdk-21/bin/java.exe",
+    "runner": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\tools\\fastchess.exe",
+    "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+    "baseline_policy": "0",
+    "candidate_policy": "4",
+    "baseline_workers": 1,
+    "candidate_workers": 1,
+    "concurrency": 1,
+    "tc": "10+0.1",
+    "seed": 3010218,
+    "pairs": 32,
+    "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-information-reuse-2026-10-18\\development-v1-openings.pgn",
+    "background": true
+  },
+  "forecast": "About 25-45 minutes each at 85-155 games/hour; bounded 15-minute blocks, one active Search worker/game, BelowNormal engine process priority; stop-before admission gate. Not equal CPU; process-cost/GC and complete request accounting audited.",
+  "baselineProvenance": "Frozen engine-core.jar copied before O2/O1 modifications, SHA256 9b41d6b174846cfaf3af9f3089d8c3d13b0614fbf0a4717a6fe46aec346c61d9. Shared new research-only launcher. See uci-preflight-v1.json. Version finalization remains blocked independently; no release identity claim."
+}

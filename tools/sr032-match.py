@@ -108,7 +108,7 @@ def run(args):
             job=owned.OwnedJob();process=None;cohort=None
             try:
                 process = subprocess.Popen(cmd, cwd=out, env=b.clean_environment(), stdout=log,
-                                           stderr=subprocess.STDOUT,creationflags=0x00000004)
+                                           stderr=subprocess.STDOUT,creationflags=0x00000004 | (0x00004000 if getattr(args,'background',False) else 0))
                 job.assign(process);job.resume_initial_thread(process)
                 cohort = c.Cohort(process.pid,args.concurrency,out/'process-cost.json')
                 cohort.attach()

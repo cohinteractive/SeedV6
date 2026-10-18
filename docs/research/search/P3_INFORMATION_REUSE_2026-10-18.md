@@ -8,10 +8,12 @@ contains evidence and resume state, not additional policy authority.
 
 ## Resume and work selection
 
-Current work: baseline and O2 mechanism/cost diagnostics complete. Retention and
-nominal-label controls remain experimental, with mixed cost evidence. Investigate
-completed same-SearchKey hints in existing proof-free table slots and coherent
-O1/O2 combinations next; keep production defaults unchanged. No strength claim.
+Current work: baseline, O2 and combined O1/O2 mechanism/cost diagnostics complete;
+integrated regression and frozen-binary UCI preflights passed. Execute the frozen
+32-pair, one-worker development clock screens for hints alone (policy 4) and
+hints + EFFORT history retention + nominal-only maluses (policy 7). Then assess
+interaction/ablation and independent confirmation value. Production defaults
+remain unchanged. No strength evidence or accepted candidate yet.
 
 Version-dependent operations are BLOCKED by the inherited reservation described
 below. Independent O1/O2 source inspection, research, testing and separately
@@ -228,6 +230,86 @@ biased history may help or hurt. O1 combinations now have greater decision value
 than a threshold sweep of these unchanged formulations. Broad final regression
 and any candidate's clock/worker confirmation remain required.
 
+## O1 and combinations — completed development diagnostics
+
+[Prospective plan](p3-information-reuse-2026-10-18/hints-v1.json),
+[source manifest](p3-information-reuse-2026-10-18/hints-v1-manifest.json),
+[mechanism summary](p3-information-reuse-2026-10-18/hints-observe-v1-summary.json),
+[cost summary](p3-information-reuse-2026-10-18/hints-cost-v1-summary.json),
+[integrated validation](p3-information-reuse-2026-10-18/integrated-validation-v1.json).
+Raw observations/costs and logs remain in this experiment's `raw/` directory.
+
+Explicit `withCompletedHints` uses a previously unused payload bit within the
+existing three TT arrays. Ordinary probe excludes hint-only entries completely;
+ordinary proof saves may displace hints, and hints never displace any proof.
+Current-generation deeper hints survive shallower completions; equal-depth latest
+completions and old generations can refresh. Complete positive-depth real nodes
+with a searched move may publish a hint, including selective nodes. Incomplete
+nodes, qnodes, synthetic/verification and restricted root jobs cannot do so.
+Completed descendants remain eligible when a later ancestor is cancelled.
+Probes retain the exact SearchKey and validate current legal membership; hints
+affect existing ordering/protection, never scores, bounds or PV certification.
+All production factories leave the new behavior off. This is an experimental
+representation/replacement alternative, not adoption of a new production policy.
+
+936 diagnostic invocations: champion and observation-only each match all 156
+pre-change baseline results. Hints alone produced 258,915 eligible completions,
+256,042 accepted hint writes and 80,696 legal hits from 261,727 probes, zero illegal
+hits. This addresses the observed scarcity of 552 ordinary stores without relaxing
+proof admission. One retention+hints and two all-feature D6 invocations hit the
+250k cap; their incomplete evidence is preserved, not labelled inferior.
+
+The uninstrumented 520-request cost run completed all D6 requests:
+
+| Policy | Components beyond champion | D6 nodes / champion | D6 elapsed / champion | Mean depth at 100k admissions |
+| --- | --- | ---: | ---: | ---: |
+| 0 | none | 1.000 | 1.000 | 9.038 |
+| 4 | hints | .863 | .894 | 9.231 |
+| 5 | hints + retention | .846 | .934 | 9.346 |
+| 6 | hints + nominal-only maluses | .848 | .914 | 9.269 |
+| 7 | all three | .840 | .908 | 9.346 |
+
+Round-to-round timing remains variable; all costs are diagnostics on historical
+development roots, not strength. Complete request admissions, allocation, reset,
+GC and JIT indicators are retained; thread CPU excludes background JVM CPU.
+Direct constructor allocation measurement on this JDK gives 50,335,976 bytes for
+both requested 64 and 72 MiB, including arrays/locks (2,097,152 entries and
+50,331,648 array payload bytes). A request increase to 72 adds no capacity in this
+representation. No default memory change or redesign is justified here.
+
+Integrated regression: engine-core 64/64 passed; selected research Search/driver
+and UCI 430 cases, 419 passed and 11 existing skips, no failures/errors. Tests
+include proof/hint segregation and dominance, generation/replacement, concurrent
+collisions, legality/identity, independent exact enumeration, aborted publication,
+combined-history clearing and four-worker ROOT_REUSE drain/reuse. The new launcher
+and research workspace build passed. Match/session Python tests passed 3 + 23.
+Four-worker hints are implemented with existing private ROOT_REUSE histories;
+history retention/filter combinations are explicitly unsupported above one worker.
+Functional four-worker checks do not establish multiworker strength.
+
+## Clock development v1 — frozen, execution pending
+
+Policies 4 and 7 are chosen for complementary decision value: isolate information
+availability, then test an integrated candidate without demanding independent O2
+Elo gains. [Policy 4 plan](p3-information-reuse-2026-10-18/clock-development-v1-p4.json)
+and [policy 7 plan](p3-information-reuse-2026-10-18/clock-development-v1-p7.json)
+freeze 32 color-reversed pairs each at 10+0.1, one worker, concurrency one,
+BelowNormal process priority, four eight-pair blocks and no outcome-based stopping.
+Shared new partition-0 openings exclude 92 prior selection receipts. They remain
+development data; correlated comparisons and tuning selection preclude a
+confirmation claim. No post-hoc extension or selective failure exclusion.
+
+The comparator uses the pre-experiment core JAR preserved before O2 edits, SHA-256
+`9b41d6b174846cfaf3af9f3089d8c3d13b0614fbf0a4717a6fe46aec346c61d9`;
+new research launcher/classes are shared. The frozen installations are local at
+`raw/clock-v1-baseline` and `raw/clock-v1-candidate`. Each prepared study freezes
+its own copies, runner/tools, JDK, model and opening schedule. Source/hash manifests
+are the provenance; embedded build 35 is not a finalized research version.
+[UCI preflight](p3-information-reuse-2026-10-18/uci-preflight-v1.json) confirms pinned
+Pair-2 identity, cumulative policies, warmup and two legal exactly-100k-admission
+requests for each binary/configuration. Complete process costs and all requests
+will be audited. No equal-compute inference from equal clocks.
+
 ## Human dependencies and boundaries
 
 - Blocking finalized-version operations only: supported reconciliation authority
@@ -237,4 +319,4 @@ and any candidate's clock/worker confirmation remain required.
   Source mirrors to P3-R003/P3-F002 and confirms synchronization. Current Codex
   repository-based research is already authorized.
 - Blocking any future production adoption: Contract confirmation and explicit
-  GPT/owner acceptance. No candidate or strength claim exists at bootstrap.
+  GPT/owner acceptance. Experimental candidates are not accepted champions.

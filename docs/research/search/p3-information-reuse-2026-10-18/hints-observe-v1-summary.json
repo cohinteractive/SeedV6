@@ -1,0 +1,102 @@
+{
+  "completion": {
+    "observations": 936,
+    "status": "passed",
+    "mode": "observe"
+  },
+  "policies": [
+    {
+      "policy": 0,
+      "observations": 156,
+      "incomplete": 0,
+      "commonCompletedD6Roots": 26,
+      "commonCompletedD6NodeRatio": 1.0,
+      "commonCompletedD6ChangedMoves": 0,
+      "hints": {
+        "probes": 0,
+        "hits": 0,
+        "illegal": 0,
+        "completedProducers": 0,
+        "stored": 0
+      }
+    },
+    {
+      "policy": 4,
+      "observations": 156,
+      "incomplete": 0,
+      "commonCompletedD6Roots": 26,
+      "commonCompletedD6NodeRatio": 0.8891350839400515,
+      "commonCompletedD6ChangedMoves": 6,
+      "hints": {
+        "probes": 261727,
+        "hits": 80696,
+        "illegal": 0,
+        "completedProducers": 258915,
+        "stored": 256042
+      }
+    },
+    {
+      "policy": 5,
+      "observations": 156,
+      "incomplete": 1,
+      "commonCompletedD6Roots": 25,
+      "commonCompletedD6NodeRatio": 0.7660024514774476,
+      "commonCompletedD6ChangedMoves": 3,
+      "hints": {
+        "probes": 235530,
+        "hits": 74275,
+        "illegal": 0,
+        "completedProducers": 233034,
+        "stored": 230929
+      }
+    },
+    {
+      "policy": 6,
+      "observations": 156,
+      "incomplete": 0,
+      "commonCompletedD6Roots": 26,
+      "commonCompletedD6NodeRatio": 0.8559441302900513,
+      "commonCompletedD6ChangedMoves": 5,
+      "hints": {
+        "probes": 252092,
+        "hits": 79577,
+        "illegal": 0,
+        "completedProducers": 249605,
+        "stored": 247027
+      }
+    },
+    {
+      "policy": 7,
+      "observations": 156,
+      "incomplete": 2,
+      "commonCompletedD6Roots": 24,
+      "commonCompletedD6NodeRatio": 0.6980442535912248,
+      "commonCompletedD6ChangedMoves": 2,
+      "hints": {
+        "probes": 232080,
+        "hits": 73918,
+        "illegal": 0,
+        "completedProducers": 229586,
+        "stored": 227532
+      }
+    },
+    {
+      "policy": 8,
+      "observations": 156,
+      "incomplete": 0,
+      "commonCompletedD6Roots": 26,
+      "commonCompletedD6NodeRatio": 1.0,
+      "commonCompletedD6ChangedMoves": 0,
+      "hints": {
+        "probes": 0,
+        "hits": 0,
+        "illegal": 0,
+        "completedProducers": 297227,
+        "stored": 0
+      }
+    }
+  ],
+  "parity": "156 baseline and 156 observation-only semantic tuples match",
+  "rawSha256": "6fad47a4c9a193ea89f4a4d653f7a7decac11eff66bda22066a93fccea48f0e5",
+  "limitations": "Historical development diagnostics only; incomplete rows retained/excluded from completed contrasts; conditional guidance and no strength inference"
+}

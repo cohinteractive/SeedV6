@@ -25,7 +25,7 @@ FILES = ('tournament-session.py', 'tournament-process.py', 'sr021-match.py',
 
 def adapter_name(record):
     name = record.get('adapter', 'sr021-match.py')
-    require(name in ('sr021-match.py', 'sr033-match.py', 'sr032-match.py'), 'Unsupported match adapter')
+    require(name in ('sr021-match.py', 'sr033-match.py', 'sr032-match.py', 'p3-information-match.py'), 'Unsupported match adapter')
     return name
 
 
@@ -137,7 +137,8 @@ def prepare(config_path, output):
     if protocol is not None:
         shutil.copy2(protocol, payload/'assessment-protocol.txt')
     tool_dir = payload / 'tools'; tool_dir.mkdir()
-    for name in dict.fromkeys((*FILES, adapter)):
+    dependencies=('sr032-match.py',) if adapter=='p3-information-match.py' else ()
+    for name in dict.fromkeys((*FILES, *dependencies, adapter)):
         shutil.copy2(Path(__file__).with_name(name), tool_dir / name)
     for side in ('baseline', 'candidate'):
         source = Path(args[side]); require((source/'lib').is_dir(), 'Missing installation')

@@ -1,0 +1,133 @@
+{
+  "id": "P3-O1O2-HINTS-v1",
+  "baseCommit": "d8c08f47d3677761d3a511377d6ffc972bbdd4e6",
+  "sha256": {
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java": "73cbf0c9c1a7c9bd5b9f74907e3f1fe0c2b12ac7efd696294d3d367b5aa49ccd",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java": "cda4ffacc912d23e66125a80ffb04a4b6f2cd52e9b43811f17c753c7a2fd4a29",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ParallelSearch.java": "805455cd3a6f68961606942abc5e7bebeb70b610a240aeecbc92af7c82756950",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/tt/TTable.java": "e1ef62acc49d8bc08286f23a0414ca626f4ac8879165db317b28810622990d21",
+    "research/src/main/java/com/ohinteractive/seedv6/search/exact/P3HistoryStudy.java": "e25696da733a496f097cf7fc9fd8209d49aa17861e631652e86a5afc77abad19",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/MoveHintDiagnostics.java": "156ad884ad5791a71e18f53fa351d83d6ed87791228ec01f0735b4be756b20da",
+    "engine-core/src/test/java/com/ohinteractive/seedv6/search/tt/TTableHintsTest.java": "8341d3dbed8276ee556e370f7a62c02dc6d02c6f51c5b2f0316769c152c2cb74",
+    "research/src/test/java/com/ohinteractive/seedv6/search/exact/CompletedMoveHintsTest.java": "c314904c7d4093cd5548aa0fe94ebc25f36a8206a29a4d7b2017048e916a6db1",
+    "docs\\research\\search\\p3-information-reuse-2026-10-18\\hints-v1.json": "6144194abb65766ff4895024cac90551b255f5628d1a01f78496226a5881b560"
+  },
+  "testResults": {
+    "engine-core": [
+      {
+        "name": "com.ohinteractive.seedv6.book.BookTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.BrnPair2RuntimeBoundaryTest",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.core.util.FenTest",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.core.util.PextTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.rules.DrawAdjudicatorTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.rules.GameHistoryTest",
+        "tests": "14",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.rules.PositionIdentityTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.manage.TimeManagerTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.tablebase.SyzygyResourcesTest",
+        "tests": "1",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.tt.TranspositionScoresTest",
+        "tests": "5",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.tt.TTableHintsTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.tt.TTableTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      }
+    ],
+    "research": [
+      {
+        "name": "com.ohinteractive.seedv6.search.exact.CompletedMoveHintsTest",
+        "tests": "5",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.exact.HistoryLearningTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.exact.IterationReuseTest",
+        "tests": "11",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.exact.P3InformationBaselineTest",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      }
+    ]
+  }
+}

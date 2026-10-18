@@ -1,0 +1,26 @@
+{
+  "id": "P3-O1O2-TT-MEMORY-v1",
+  "method": "com.sun.management.ThreadMXBean per-thread allocated bytes immediately around new TTable after warmup, JDK21, APC1, Xmx256m; constructor only, not retained-heap profiling",
+  "source": "raw/TableMemory.java",
+  "sourceSha256": "d41104c33ef4df31d86cf035c65b903b082706af7b57ee1810178ddad7bfbee8",
+  "results": [
+    {
+      "requestedMiB": 64,
+      "entries": 2097152,
+      "arrayPayloadBytes": 50331648,
+      "constructionAllocatedBytes": 50335976
+    },
+    {
+      "requestedMiB": 72,
+      "entries": 2097152,
+      "arrayPayloadBytes": 50331648,
+      "constructionAllocatedBytes": 50335976
+    },
+    {
+      "requestedMiB": 64,
+      "entries": 2097152,
+      "arrayPayloadBytes": 50331648,
+      "constructionAllocatedBytes": 50335976
+    }
+  ]
+}

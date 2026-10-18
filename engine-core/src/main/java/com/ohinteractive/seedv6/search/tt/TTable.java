@@ -65,7 +65,7 @@ public class TTable {
         synchronized (locks[stripe]) {
             if(this.key[index] != key) return false;
             long data = this.data[index];
-            if((data & VALID_MASK) == 0) return false;
+            if((data & (VALID_MASK | HINT_MASK)) != VALID_MASK) return false;
             entry.data = data;
             entry.hashMove = this.hashMove[index];
             return true;
@@ -92,7 +92,7 @@ public class TTable {
                 return;
             }
             long existingData = this.data[index];
-            if((existingData & VALID_MASK) != 0) {
+            if((existingData & (VALID_MASK | HINT_MASK)) == VALID_MASK) {
                 long existingKey = this.key[index];
                 int existingDepth = (int) (existingData & DEPTH_BITS);
                 int existingType = (int) (existingData >>> TYPE_SHIFT & TYPE_BITS);
@@ -110,6 +110,37 @@ public class TTable {
         Arrays.fill(this.data, 0L); 
     }
 
+    /** Experimental completed-move guidance, with the caller's unchanged SearchKey.
+     * Ordinary probe never exposes these records as score evidence. No extra arrays,
+     * entry count or locks, and no ordinary proof entry is replaced by a hint. */
+    public long probeHint(long key) {
+        int index=(int)key & indexMask;
+        synchronized(locks[index & STRIPE_MASK]) {
+            return this.key[index]==key && (data[index] & (VALID_MASK | HINT_MASK))==(VALID_MASK | HINT_MASK)
+                    ? hashMove[index] : 0;
+        }
+    }
+
+    /** Research-only hint replacement: current-generation deeper hints survive;
+     * equal-depth/latest completions refresh, old-generation hints may be replaced.
+     * Ordinary score saves retain their existing policy and can displace any hint. */
+    public boolean saveHint(long key,int depth,long move) {
+        if(depth<1 || depth>255 || move==0) return false;
+        int index=(int)key & indexMask;
+        synchronized(locks[index & STRIPE_MASK]) {
+            long old=data[index];
+            if((old & VALID_MASK)!=0) {
+                if((old & HINT_MASK)==0) return false;
+                int oldGen=(int)(old>>>GENERATION_SHIFT & GENERATION_BITS);
+                if(oldGen==(generation & GENERATION_BITS) && (old & DEPTH_BITS)>depth) return false;
+            }
+            this.key[index]=key;
+            data[index]=VALID_MASK | HINT_MASK | ((long)(generation & GENERATION_BITS)<<GENERATION_SHIFT) | depth;
+            hashMove[index]=move;
+            return true;
+        }
+    }
+
     private static final long DEPTH_BITS = 0xffL;
     private static final int TYPE_SHIFT = 8;
     private static final long TYPE_BITS = 0b11L;
@@ -117,6 +148,7 @@ public class TTable {
     private static final long GENERATION_BITS = 0xffL;
     private static final int VALID_SHIFT = 18;
     private static final long VALID_MASK = 1L << VALID_SHIFT;
+    private static final long HINT_MASK = 1L << 19;
     private static final int SCORE_SHIFT = 32;
 
     private static final int DEFAULT_TABLE_SIZE_IN_MB = 64;

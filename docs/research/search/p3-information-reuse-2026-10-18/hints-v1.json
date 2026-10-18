@@ -1,0 +1,28 @@
+{
+  "id": "P3-O1O2-HINTS-v1",
+  "purpose": "Same-table completed move hints with O2 combinations and reverse ablation; development only",
+  "baselineCommit": "6fb104e",
+  "historyCommit": "d8c08f4",
+  "model": "build-assets/production/bre-pair2-g32.brn-pair2",
+  "modelSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+  "corpus": "docs/research/search/sr005-phase2-2026-10-13/diagnostic-corpus.tsv",
+  "corpusSha256": "cb4b9e92e328426d6f3ebc5d0c590fdd4cff2421c1dda9f75d0e30cee4f54c08",
+  "policies": {
+    "0": "Accepted EFFORT/QXRAY champion",
+    "4": "Completed same-SearchKey hints, no ordinary proof displacement",
+    "5": "Hints + EFFORT_HISTORY",
+    "6": "Hints + nominal-only history maluses",
+    "7": "Hints + EFFORT_HISTORY + nominal-only history maluses",
+    "8": "Observe completed hint producers and learning only; require champion parity"
+  },
+  "representation": "Existing three TTable long arrays and 32 stripe locks, 64 MiB requested / 2097152 entries / 48 MiB primitive payload. Bit 19 distinguishes hint-only records. Ordinary probe rejects them; hint probe returns only move. No score admission, proof replacement, key relaxation, added arrays or production activation.",
+  "hintReplacement": "Never overwrite any ordinary proof. Replace old-generation hints or same-generation hints of no greater depth; equal-depth latest completion refreshes. Ordinary score saves may displace hints but keep their original proof-versus-proof policy.",
+  "producer": "Only completed positive-depth real-domain nodes with a searched legal move after cancellation checkpoint. No q-node, synthetic/verification, domain-only or restricted root producer. Completed descendants may remain hints if an ancestor later aborts; the incomplete ancestor publishes no hint or result. Depth 256 excluded.",
+  "consumer": "Only after ordinary TT miss, same conservative key and legal membership; normal hash priority/protection, no score/window/PV certificate. Old-generation/depth-mismatched hints may guide only. Independent owners do not share tables. ROOT_REUSE helpers may share current coherent table with restricted root excluded.",
+  "observation": "All historical corpus roots D1..D6, 250000 recursive-entry cap per invocation; preserve incomplete outcomes; compare 0 with frozen baseline and 8 with 0. No clean-cost claim from observations.",
+  "cost": "0,4,5,6,7; two rounds, rotate order by root+round, four 100000-node warmups per owner, D6/2-million admission safety cap and 100000-admission requests. 30s watchdog invalidates cost result. Thread CPU/allocation, compilation/GC and new-game reset tracked; construction excluded.",
+  "resources": "One BelowNormal process, one Search worker, ActiveProcessorCount=1, 768 MiB heap; no overlapping tests or clock games. Separate functional 4-worker checks are not strength confirmation.",
+  "outputs": ["raw/hints-observe-v1.jsonl", "raw/hints-cost-v1.jsonl"],
+  "nextDecision": "Screen coherent candidate(s) with fresh prospective paired clock development if semantics and cost justify it; preserve reverse-ablation evidence and no component-gain requirement. No production promotion.",
+  "version": "Independent deferred finalization; no old-token attribution"
+}
