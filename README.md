@@ -15,6 +15,11 @@ including HCE vs HCE, without training. See the [Arena guide](docs/learning-aren
 Start with the [architecture and source boundaries](docs/architecture.md) and
 [operating guide](docs/guide.md).
 
+For explicit **construction-v1** experimental gameplay in macOS BotLi or Windows
+Play/Arena, use the [construction-v1 activation guide](docs/construction-v1-gameplay.md).
+It selects the full flattened Search with the verified Pair-2 g32 model and
+aspiration OFF; ordinary standalone UCI continues to select production Policy 4.
+
 The [unified architecture migration contract](docs/unified-architecture/CONTRACT.md)
 and [migration state](docs/unified-architecture/STATE.md) govern the staged move to
 one shared engine, training, GUI, UCI and research build. The five target Gradle

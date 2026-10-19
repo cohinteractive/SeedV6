@@ -6,6 +6,7 @@ import com.ohinteractive.seedv6.search.manage.SearchLifecycleService;
 public interface UciConfiguration {
     SearchLifecycleService service(int workers, int hashMiB);
     String identity(int workers);
+    default String identity(int workers, int hashMiB) { return identity(workers); }
     default String name() { return "SeedV6"; }
     default boolean standalone() { return false; }
     default boolean acceptsWorkers(int workers) { return true; }

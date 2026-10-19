@@ -89,8 +89,8 @@ public final class LearningArenaService implements AutoCloseable {
             if (state.status() == Status.COMPLETE) { report("Campaign complete", null); return; }
             save(state.status(Status.RUNNING, "Resume uses durable tranches, optimizer boundaries and game receipts; uncommitted work may be recomputed"));
             var config = state.config();
-            try (var a = config.a().isHandcrafted() ? null : new CheckpointStore(root.resolve("A"), config.a().architecture());
-                 var b = config.b().isHandcrafted() ? null : new CheckpointStore(root.resolve("B"), config.b().architecture())) {
+            try (var a = !config.a().usesStore() ? null : new CheckpointStore(root.resolve("A"), config.a().architecture());
+                 var b = !config.b().usesStore() ? null : new CheckpointStore(root.resolve("B"), config.b().architecture())) {
                 verifyEndpoints(a, b);
                 while (!paused) {
                     var round = state.current();
@@ -134,7 +134,7 @@ public final class LearningArenaService implements AutoCloseable {
         }
     }
     private static void verify(CheckpointStore store, Endpoint endpoint) throws IOException {
-        if (endpoint.isHandcrafted()) return;
+        if (!endpoint.usesStore()) return;
         var manifest = CheckpointInspection.manifest(store.root().resolve("checkpoints").resolve(endpoint.checkpoint()));
         if (manifest.generation() != endpoint.generation()) throw new IOException("Campaign checkpoint generation mismatch");
     }
@@ -152,6 +152,11 @@ public final class LearningArenaService implements AutoCloseable {
     private void endpoint(boolean first, CheckpointStore store, LearningArenaTranche tranche) throws IOException {
         var config = state.config(); var round = state.current();
         var competitor = first ? config.a() : config.b();
+        if (competitor.isPinned()) {
+            // Verify before persisting the endpoint; no checkpoint-store or fallback substitution.
+            com.ohinteractive.seedv6.search.driver.PinnedSearch.load(competitor.evaluator().policy());
+            save(state.withRound(round.endpoint(first, Endpoint.pinned(competitor.evaluator())))); return;
+        }
         if (competitor.isHandcrafted()) {
             save(state.withRound(round.endpoint(first, Endpoint.handcrafted()))); return;
         }
@@ -216,7 +221,7 @@ public final class LearningArenaService implements AutoCloseable {
         control.savedPairs(round.pairs().stream().map(p -> new ValidationResult.Pair(p.openingHash(), retry(p.candidateWhite()), retry(p.candidateBlack()))).toList());
         if (paused) control.cancel();
         long[] board = Board.fromFen(config.arena().startingFen());
-        var result = new ValidationArena().match(evaluation(a, round.a()), evaluation(b, round.b()),
+        var result = new ValidationArena().matchSearches(searchFactory(a, round.a()), searchFactory(b, round.b()),
                 config.arena().matches(config.seed()), board, GameHistory.initial(board), control, config.arena().timeLimit(),
                 p -> report("Arena game " + p.gameOrdinal() + " / " + config.arena().games(), p),
                 pairs -> {
@@ -232,6 +237,14 @@ public final class LearningArenaService implements AutoCloseable {
     private static ValidationResult.Game retry(ValidationResult.Game game) {
         return LearningArenaState.settled(game) ? game : new ValidationResult.Game(GameTermination.CANCELLED, 0);
     }
+    java.util.function.IntFunction<com.ohinteractive.seedv6.search.common.SingleDepthSearch> searchFactory(CheckpointStore store, Endpoint endpoint) throws IOException {
+        if (endpoint.isPinned()) {
+            var binding = com.ohinteractive.seedv6.search.driver.PinnedSearch.load(endpoint.evaluator().policy());
+            return workers -> binding.create(workers, 64);
+        }
+        var evaluation = evaluation(store, endpoint);
+        return workers -> com.ohinteractive.seedv6.search.driver.ProductionSearch.create(workers, evaluation);
+    }
     private com.ohinteractive.seedv6.search.evaluation.SearchEvaluation evaluation(CheckpointStore store, Endpoint endpoint) throws IOException {
         return endpoint.isHandcrafted() ? com.ohinteractive.seedv6.search.evaluation.SearchEvaluation.handcrafted()
                 : store.load(endpoint.checkpoint()).model().evaluation(state.config().arena().matches(state.config().seed()).scoreMapping());
@@ -239,6 +252,8 @@ public final class LearningArenaService implements AutoCloseable {
     private com.ohinteractive.seedv6.training.telemetry.ActiveGameSnapshot.Participant participant(boolean first, Endpoint endpoint) throws IOException {
         if (endpoint.isHandcrafted()) return new com.ohinteractive.seedv6.training.telemetry.ActiveGameSnapshot.Participant(
                 com.ohinteractive.seedv6.training.telemetry.ActiveGameSnapshot.Role.HCE, "");
+        if (endpoint.isPinned()) return new ActiveGameSnapshot.Participant(ActiveGameSnapshot.Role.MODEL,
+                endpoint.checkpoint(), null, endpoint.evaluator().policy().toString());
         Path store = root.resolve(first ? "A" : "B");
         var competitor = first ? state.config().a() : state.config().b();
         var binding = new ModelLibrary.Binding(store, TrainingLineage.read(store).map(TrainingLineage::id),

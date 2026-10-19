@@ -37,6 +37,26 @@ distributions {
     }
 }
 tasks.named('assemble') { dependsOn tasks.named('distZip'), tasks.named('distTar') }
+
+tasks.register('constructionStartScripts', CreateStartScripts) {
+    applicationName = 'seedv6-construction-v1'
+    mainClass = 'com.ohinteractive.seedv6.uci.ConstructionUciMain'
+    defaultJvmOpts = ['-Djava.awt.headless=true', '-Xmx768m']
+    outputDir = layout.buildDirectory.dir('constructionScripts').get().asFile
+    classpath = files(tasks.named('jar'), configurations.runtimeClasspath)
+    doLast {
+        windowsScript.text = windowsScript.text.replace('@if "%DEBUG%"=="" @echo off', '@echo off')
+    }
+}
+distributions {
+    construction {
+        distributionBaseName = 'seedv6-construction-v1'
+        contents {
+            into('lib') { from tasks.named('jar'); from configurations.runtimeClasspath }
+            into('bin') { from tasks.named('constructionStartScripts'); filePermissions { unix('rwxr-xr-x') } }
+        }
+    }
+}
 tasks.withType(Test).configureEach {
     systemProperty 'java.awt.headless', 'true'
     maxHeapSize = '768m'

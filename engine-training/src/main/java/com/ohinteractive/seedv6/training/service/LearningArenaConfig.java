@@ -25,7 +25,16 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
     public static LearningArenaConfig match(String name, Competitor a, Competitor b, long seed, Arena arena) {
         return new LearningArenaConfig(name, a, b, null, 0, 0, 0, seed, arena, Mode.MATCH_ONLY);
     }
-    public enum Evaluator { HCE }
+    public enum Evaluator {
+        HCE, POLICY4_PAIR2, CONSTRUCTION_V1;
+        public com.ohinteractive.seedv6.search.driver.PinnedSearch.Policy policy() {
+            return switch (this) {
+                case POLICY4_PAIR2 -> com.ohinteractive.seedv6.search.driver.PinnedSearch.Policy.POLICY4;
+                case CONSTRUCTION_V1 -> com.ohinteractive.seedv6.search.driver.PinnedSearch.Policy.CONSTRUCTION_V1;
+                default -> throw new IllegalArgumentException("HCE is not a pinned model");
+            };
+        }
+    }
     /** A concrete source snapshot. Source stores are read only; each competitor gets its own campaign lineage. */
     public record InitialModel(String root, String lineageId, String name, String checkpoint, long generation) {
         public InitialModel {
@@ -44,7 +53,14 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
             this(name, architecture, seed, minibatch, learningRate, initialModel, nnueObjective, null);
         }
         public boolean isHandcrafted() { return evaluator == Evaluator.HCE; }
-        public String displayName() { return isHandcrafted() ? "HCE" : architecture.displayName(); }
+        public boolean isPinned() { return evaluator != null && !isHandcrafted(); }
+        public boolean usesStore() { return evaluator == null; }
+        public String displayName() { return isPinned() ? evaluator.policy().toString() : isHandcrafted() ? "HCE" : architecture.displayName(); }
+        public static Competitor pinned(com.ohinteractive.seedv6.search.driver.PinnedSearch.Policy policy) {
+            var evaluator = policy == com.ohinteractive.seedv6.search.driver.PinnedSearch.Policy.CONSTRUCTION_V1
+                    ? Evaluator.CONSTRUCTION_V1 : Evaluator.POLICY4_PAIR2;
+            return new Competitor(policy.toString(), TrainingArchitecture.BRN_PAIR2, 0, 1, null, null, null, evaluator);
+        }
         public static Competitor handcrafted() { return new Competitor("HCE", null, 0, 1, null, null, null, Evaluator.HCE); }
         public static Competitor fixed(com.ohinteractive.seedv6.training.model.ModelLibrary.Binding binding) {
             return new Competitor(binding.lineageName(), binding.architecture(), 0, 1, null, InitialModel.from(binding), null);
@@ -62,6 +78,9 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
             if (evaluator == Evaluator.HCE) {
                 if (architecture != null || initialModel != null || learningRate != null || nnueObjective != null)
                     throw new IllegalArgumentException("HCE has no network or training recipe");
+            } else if (evaluator != null) {
+                if (architecture != TrainingArchitecture.BRN_PAIR2 || initialModel != null || learningRate != null || nnueObjective != null)
+                    throw new IllegalArgumentException("Pinned gameplay requires bundled Pair-2 g32 and has no training recipe");
             } else {
                 Objects.requireNonNull(architecture);
                 if (initialModel == null) LearningArenaTraining.requireSupported(architecture);
@@ -100,12 +119,12 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
             if (source != null || positionsPerRound != 0 || epochs != 0 || rounds != 0)
                 throw new IllegalArgumentException("Match-only Arena has no training exposure");
             for (var c : new Competitor[]{a, b})
-                if (!c.isHandcrafted() && (c.initialModel() == null || c.learningRate() != null))
+                if (c.usesStore() && (c.initialModel() == null || c.learningRate() != null))
                     throw new IllegalArgumentException("Match-only networks require a fixed checkpoint and unchanged recipe");
         } else {
             Objects.requireNonNull(source);
             for (var c : new Competitor[]{a, b}) {
-                if (c.isHandcrafted()) throw new IllegalArgumentException("HCE requires match-only Arena");
+                if (!c.usesStore()) throw new IllegalArgumentException("HCE and pinned gameplay require match-only Arena");
                 LearningArenaTraining.requireSupported(c.architecture());
                 CorpusTraining.targetPolicy(c.architecture(), source.labelProfile());
             }

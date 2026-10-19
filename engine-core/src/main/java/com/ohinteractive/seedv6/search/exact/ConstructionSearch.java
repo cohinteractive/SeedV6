@@ -6,13 +6,17 @@ import com.ohinteractive.seedv6.search.driver.*;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.tt.TTable;
 
-/** Research-owned activation and reproducible pre-request composition. */
+/** Shared immutable composition for explicit experimental activation and research controls.
+ * This factory does not change the production default. */
 public record ConstructionSearch(FlatSearchConfig mechanisms,int workers,int hashMiB,
                                  AspirationSearch.Policy aspiration) {
     public ConstructionSearch {
         Objects.requireNonNull(mechanisms,"mechanisms");
         if(workers<1 || workers>16) throw new IllegalArgumentException("Workers must be 1..16");
         if(hashMiB<1 || hashMiB>1024) throw new IllegalArgumentException("Hash must be 1..1024 MiB");
+    }
+    public static ConstructionSearch v1(int workers, int hashMiB, AspirationSearch.Policy aspiration) {
+        return new ConstructionSearch(FlatSearchConfig.candidate(), workers, hashMiB, aspiration);
     }
     public SingleDepthSearch create(SearchEvaluation evaluation) {
         Objects.requireNonNull(evaluation,"evaluation");

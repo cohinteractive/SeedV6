@@ -172,8 +172,8 @@ final class LearningArenaPanel extends JPanel {
         if (u == null) { history.showState(null, null); status.setText(c.error().isBlank() ? c.busy() ? "Opening campaign..." : "New campaign draft - configure Setup, then Create and run" : c.error()); return; }
         var state = u.state();
         if (c.root() != null) {
-            if (state.history().getFirst().a() != null && !state.config().a().isHandcrafted()) registerLineage(c.root().resolve("A"), state.config().a().architecture());
-            if (state.history().getFirst().b() != null && !state.config().b().isHandcrafted()) registerLineage(c.root().resolve("B"), state.config().b().architecture());
+            if (state.history().getFirst().a() != null && state.config().a().usesStore()) registerLineage(c.root().resolve("A"), state.config().a().architecture());
+            if (state.history().getFirst().b() != null && state.config().b().usesStore()) registerLineage(c.root().resolve("B"), state.config().b().architecture());
         }
         status.setText(c.error().isBlank() ? "Round " + state.current().number() + " | " + state.status() + " | " + u.detail() + " | Saved setup is read-only; Start new creates a fresh draft" : c.error());
         status.setToolTipText(status.getText()); storage.setToolTipText(storage.getText());

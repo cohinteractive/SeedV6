@@ -8,6 +8,7 @@ import static com.ohinteractive.seedv6.gui.TrainingDashboardModel.network;
 /** Shared read-only participant and move-score semantics; no evaluation or match policy. */
 final class MatchPresentation {
     static String participant(ActiveGameSnapshot.Participant p) {
+        if (p.searchProfile() != null) return p.searchProfile();
         if (p.role() == ActiveGameSnapshot.Role.HCE) return "HCE (Handcrafted evaluator)";
         if (p.model() != null) return p.model().description();
         return switch (p.role()) {
@@ -20,6 +21,7 @@ final class MatchPresentation {
     }
     static NetworkArchitecture architecture(ActiveGameSnapshot game, NetworkArchitecture fallback) {
         var actor = game.searchingParticipant();
+        if (actor != null && actor.searchProfile() != null) return NetworkArchitecture.BRN_PAIR2;
         return actor != null && actor.model() != null ? NetworkArchitecture.valueOf(actor.model().architecture().name()) : fallback;
     }
     static PlayScore score(ActiveGameSnapshot game, NetworkArchitecture fallback) {

@@ -89,7 +89,7 @@ public final class UciEngine implements AutoCloseable {
     }
 
     private void identify() {
-        String identity = configuration.identity(rootWorkers);
+        String identity = configuration.identity(rootWorkers, hashMiB);
         if (!identity.isEmpty()) uciOutput.line("info string " + identity
                 + (configuration.standalone() ? " ttMiB=" + hashMiB : ""));
     }

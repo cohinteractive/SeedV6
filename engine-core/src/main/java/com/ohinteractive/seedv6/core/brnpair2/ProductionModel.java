@@ -21,6 +21,19 @@ public final class ProductionModel {
         if (Files.size(file) != BrnPair2Codec.MODEL_BYTES) throw new IOException("Incompatible BRE-Pair 2 model length: " + file);
         byte[] bytes;
         try (var in = Files.newInputStream(file)) { bytes = in.readNBytes(BrnPair2Codec.MODEL_BYTES + 1); }
+        return decode(bytes, file.toString());
+    }
+
+    /** Tracked generation-32 payload, packaged with core; independent of cwd or model libraries. */
+    public static BrnPair2Model bundled() throws IOException {
+        try (var in = ProductionModel.class.getResourceAsStream("/models/bre-pair2-g32.brn-pair2")) {
+            if (in == null) throw new IOException("Required bundled BRE-Pair 2 generation-32 model is missing; rebuild the distribution");
+            return decode(in.readNBytes(BrnPair2Codec.MODEL_BYTES + 1), "bundled generation-32 model");
+        }
+    }
+
+    private static BrnPair2Model decode(byte[] bytes, String file) throws IOException {
+        if (bytes.length != BrnPair2Codec.MODEL_BYTES) throw new IOException("Incompatible BRE-Pair 2 model length: " + file);
         try {
             String actual = HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(bytes));
             if (!actual.equals(SHA256)) throw new IOException("Corrupt or different BRE-Pair 2 model: " + file

@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/** Immutable construction-time policy. No production entry point selects it.
+/** Immutable construction-time policy, available through explicit experimental selection.
  * Primitive flags are read directly by the shared flattened kernel. */
 public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) {
     public enum Feature { QXRAY, LMR, LMP, EFFORT, COMPLETED_HINTS,

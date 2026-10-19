@@ -26,7 +26,7 @@ record PlayParticipants(PlayEvaluator white, PlayEvaluator black, Selection sele
         Selection swapped() { return new Selection(blackId, whiteId, blackRoot, whiteRoot, blackLineageId, whiteLineageId, blackMode, whiteMode); }
         Selection(String whiteId, String blackId) { this(whiteId, blackId, null, null); }
         boolean independentStores() { return whiteRoot != null || blackRoot != null
-                || whiteMode == PlayEvaluator.Mode.HANDCRAFTED || blackMode == PlayEvaluator.Mode.HANDCRAFTED; }
+                || whiteMode != PlayEvaluator.Mode.BEST_NNUE || blackMode != PlayEvaluator.Mode.BEST_NNUE; }
         static final Selection BEST = new Selection("", "");
         // Bind the opponent for either colour, preserving Human side changes within the game.
         static Selection singleEngine(Path root, String id) { return new Selection(id, id, root, root); }
@@ -36,8 +36,8 @@ record PlayParticipants(PlayEvaluator white, PlayEvaluator black, Selection sele
         Selection {
             Objects.requireNonNull(whiteId); Objects.requireNonNull(blackId);
             Objects.requireNonNull(whiteMode); Objects.requireNonNull(blackMode);
-            if (whiteMode == PlayEvaluator.Mode.HANDCRAFTED) { whiteId = ""; whiteRoot = null; whiteLineageId = null; }
-            if (blackMode == PlayEvaluator.Mode.HANDCRAFTED) { blackId = ""; blackRoot = null; blackLineageId = null; }
+            if (whiteMode != PlayEvaluator.Mode.BEST_NNUE) { whiteId = ""; whiteRoot = null; whiteLineageId = null; }
+            if (blackMode != PlayEvaluator.Mode.BEST_NNUE) { blackId = ""; blackRoot = null; blackLineageId = null; }
         }
     }
 
@@ -46,6 +46,7 @@ record PlayParticipants(PlayEvaluator white, PlayEvaluator black, Selection sele
 
     static PlayParticipants load(PlayEvaluator.Mode mode, Path root, Selection selection) throws IOException {
         if (mode == PlayEvaluator.Mode.HANDCRAFTED) return shared(PlayEvaluator.handcrafted());
+        if (mode.pinned()) return shared(PlayEvaluator.pinned(mode));
         if (selection.independentStores()) return loadIndependent(selection);
         // Both Best choices resolve the same snapshot even if promotion occurs during construction.
         PlayEvaluator best = selection.whiteId().isEmpty() || selection.blackId().isEmpty()
@@ -64,8 +65,10 @@ record PlayParticipants(PlayEvaluator white, PlayEvaluator black, Selection sele
         // and search lifecycle; a common Best is read once even if promotion happens concurrently.
         var bests = new java.util.HashMap<Path, java.util.Map<String, com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.Checkpoint>>();
         PlayEvaluator white = selection.whiteMode() == PlayEvaluator.Mode.HANDCRAFTED ? PlayEvaluator.handcrafted()
+                : selection.whiteMode().pinned() ? PlayEvaluator.pinned(selection.whiteMode())
                 : loadIndependentSide(selection.whiteRoot(), selection.whiteId(), selection.whiteLineageId(), "White", bests);
         PlayEvaluator black = selection.blackMode() == PlayEvaluator.Mode.HANDCRAFTED ? PlayEvaluator.handcrafted()
+                : selection.blackMode().pinned() ? PlayEvaluator.pinned(selection.blackMode())
                 : loadIndependentSide(selection.blackRoot(), selection.blackId(), selection.blackLineageId(), "Black", bests);
         return new PlayParticipants(white, black, selection);
     }

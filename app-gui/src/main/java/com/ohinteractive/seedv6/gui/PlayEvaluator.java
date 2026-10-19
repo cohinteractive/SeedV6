@@ -1,13 +1,28 @@
 package com.ohinteractive.seedv6.gui;
 
 import java.io.IOException;
+import com.ohinteractive.seedv6.search.driver.PinnedSearch;
+import com.ohinteractive.seedv6.core.brnpair2.ProductionModel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 
 /** Immutable game binding to HCE or a validated persisted network. */
-record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchEvaluation evaluation, com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture, com.ohinteractive.seedv6.training.model.ModelLibrary.Binding binding) {
+record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchEvaluation evaluation, com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture, com.ohinteractive.seedv6.training.model.ModelLibrary.Binding binding, PinnedSearch pinned) {
+    PlayEvaluator {
+        java.util.Objects.requireNonNull(mode);
+        if (mode.pinned() != (pinned != null) || pinned != null && (pinned.policy() != mode.policy()
+                || evaluation != pinned.evaluation() || !ProductionModel.SHA256.equals(networkHash)
+                || !ProductionModel.CHECKPOINT.equals(checkpointId)
+                || architecture != com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN_PAIR2))
+            throw new IllegalArgumentException("Pinned gameplay requires its verified Pair-2 generation-32 Search binding");
+    }
+    PlayEvaluator(Mode mode, String id, String hash, SearchEvaluation evaluation,
+                  com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture,
+                  com.ohinteractive.seedv6.training.model.ModelLibrary.Binding binding) {
+        this(mode, id, hash, evaluation, architecture, binding, null);
+    }
     PlayEvaluator(Mode mode, String id, String hash, SearchEvaluation evaluation,
                   com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture) {
         this(mode, id, hash, evaluation, architecture, null);
@@ -30,10 +45,26 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
                 checkpoint.model().evaluation(TrainingSettings.SCORE_MAPPING), manifest.architecture(), binding);
     }
     enum Mode {
-        HANDCRAFTED("Handcrafted"), BEST_NNUE("Best NNUE");
+        HANDCRAFTED("Handcrafted"), BEST_NNUE("Best NNUE"),
+        POLICY4_PAIR2("Policy 4 / Pair-2 g32"), CONSTRUCTION_V1("construction-v1 / Pair-2 g32 (experimental)");
+        boolean pinned() { return this == POLICY4_PAIR2 || this == CONSTRUCTION_V1; }
+        PinnedSearch.Policy policy() {
+            return switch (this) {
+                case POLICY4_PAIR2 -> PinnedSearch.Policy.POLICY4;
+                case CONSTRUCTION_V1 -> PinnedSearch.Policy.CONSTRUCTION_V1;
+                default -> throw new IllegalArgumentException("Not a pinned gameplay profile: " + this);
+            };
+        }
         private final String label;
         Mode(String label) { this.label = label; }
         @Override public String toString() { return label; }
+    }
+
+    boolean neural() { return mode != Mode.HANDCRAFTED; }
+    static PlayEvaluator pinned(Mode mode) throws IOException {
+        var engine = PinnedSearch.load(mode.policy());
+        return new PlayEvaluator(mode, ProductionModel.CHECKPOINT, ProductionModel.SHA256,
+                engine.evaluation(), com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN_PAIR2, null, engine);
     }
 
     static PlayEvaluator handcrafted() {
@@ -67,13 +98,17 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
     }
 
     String description() {
+        if (pinned != null) return mode.toString();
         if (binding != null) return binding.description();
         return mode == Mode.BEST_NNUE ? NetworkArchitecture.valueOf(architecture.name()) + " \u00b7 Gen " + TrainingProgress.generation(java.util.OptionalLong.empty(), checkpointId) : "Handcrafted evaluator";
     }
 
     String identity() {
+        if (pinned != null) return mode + " | model.sha256=" + networkHash + " | Checkpoint: " + checkpointId;
         return mode == Mode.BEST_NNUE ? (binding == null ? "" : binding.description() + " | Lineage: " + binding.lineageId().map(Object::toString).orElse("not recorded") + " | ") + "Checkpoint: " + checkpointId + " | Network SHA-256: " + networkHash : description();
     }
+
+    String identity(int workers) { return pinned == null ? identity() : pinned.identity(workers, 64); }
 
     static String shortId(String id) {
         if (id == null || id.isEmpty()) return "—";

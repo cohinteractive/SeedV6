@@ -9,6 +9,11 @@ description = 'Shared production board, rules, search, evaluation and runtime mo
 
 apply from: rootProject.file('gradle/syzygy.gradle')
 
+// One tracked, checksum-verified runtime input for explicit pinned gameplay profiles.
+tasks.named('processResources') {
+    from(rootProject.file('build-assets/production/bre-pair2-g32.brn-pair2')) { into 'models' }
+}
+
 tasks.withType(Test).configureEach {
     if (project.hasProperty('headless')) systemProperty 'java.awt.headless', 'true'
     maxHeapSize = '2g'

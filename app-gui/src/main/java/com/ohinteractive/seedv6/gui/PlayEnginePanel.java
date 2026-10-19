@@ -39,13 +39,17 @@ final class PlayEnginePanel extends JPanel {
         evaluator.setRenderer(new DefaultListCellRenderer() {
             @Override public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean selected, boolean focus) {
                 return super.getListCellRendererComponent(list, value == PlayEvaluator.Mode.HANDCRAFTED
-                        ? "HCE (Handcrafted)" : "Network", index, selected, focus);
+                        ? "HCE (Handcrafted)" : value == PlayEvaluator.Mode.BEST_NNUE ? "Network (production Search)" : value, index, selected, focus);
             }
         });
-        evaluator.setSelectedItem(preferences != null && preferences.get("evaluator", "").equals("HANDCRAFTED")
-                && !side.equals("opponent") ? PlayEvaluator.Mode.HANDCRAFTED : PlayEvaluator.Mode.BEST_NNUE);
+        var savedMode = PlayEvaluator.Mode.BEST_NNUE;
+        if (preferences != null && !side.equals("opponent")) {
+            try { savedMode = PlayEvaluator.Mode.valueOf(preferences.get("evaluator", "BEST_NNUE")); }
+            catch (IllegalArgumentException obsolete) { /* Keep the existing network setup default. */ }
+        }
+        evaluator.setSelectedItem(savedMode);
         if (!side.equals("opponent")) {
-            var row = SeedTheme.panel(new GridBagLayout()); TrainingPanel.row(row, 0, "Evaluator Type", evaluator); heading.add(row);
+            var row = SeedTheme.panel(new GridBagLayout()); TrainingPanel.row(row, 0, "Engine / evaluator", evaluator); heading.add(row);
         }
         evaluator.addActionListener(e -> { remember(); setEditable(editing); changed.run(); });
         heading.add(description, BorderLayout.SOUTH);
@@ -53,17 +57,22 @@ final class PlayEnginePanel extends JPanel {
     }
     PlayEvaluator.Mode selectedMode() { return (PlayEvaluator.Mode) evaluator.getSelectedItem(); }
     boolean handcrafted() { return selectedMode() == PlayEvaluator.Mode.HANDCRAFTED; }
-    boolean validSelection() { return !disposed && (handcrafted() || model.validSelection()); }
-    Path selectedRoot() { return handcrafted() ? null : model.selectedRoot(); }
-    UUID selectedLineageId() { return handcrafted() ? null : model.selectedLineageId(); }
-    String selectedId() { return handcrafted() ? "" : model.selectedId(); }
-    String error() { return handcrafted() ? "" : model.error(); }
+    boolean preset() { return selectedMode().pinned(); }
+    boolean storedNetwork() { return !handcrafted() && !preset(); }
+    boolean validSelection() { return !disposed && (!storedNetwork() || model.validSelection()); }
+    Path selectedRoot() { return !storedNetwork() ? null : model.selectedRoot(); }
+    UUID selectedLineageId() { return !storedNetwork() ? null : model.selectedLineageId(); }
+    String selectedId() { return !storedNetwork() ? "" : model.selectedId(); }
+    String error() { return !storedNetwork() ? "" : model.error(); }
     void selectStore(Path root) { model.selectStore(root); }
     void refresh(boolean preserve) { model.refresh(preserve); }
     void setEditable(boolean value) {
-        editing = value; evaluator.setEnabled(value && !disposed); model.setEditable(value && !handcrafted());
-        model.setVisible(fixedBinding == null && !handcrafted());
-        description.setVisible(fixedBinding != null || handcrafted());
+        editing = value; evaluator.setEnabled(value && !disposed); model.setEditable(value && storedNetwork());
+        model.setVisible(fixedBinding == null && storedNetwork());
+        description.setVisible(fixedBinding != null || !storedNetwork());
+        if (fixedBinding == null) description.setText(preset() ? selectedMode().toString() : "HCE does not use a checkpoint.");
+        if (fixedBinding == null) description.setToolTipText(preset()
+                ? "Bundled, SHA-256 verified Pair-2 generation 32; Hash 64 MiB; aspiration OFF." : null);
         revalidate();
     }
     void dispose() { disposed = true; model.dispose(); }
@@ -73,14 +82,17 @@ final class PlayEnginePanel extends JPanel {
     }
     LearningArenaConfig.Competitor fixedCompetitor() {
         if (!validSelection()) throw new IllegalStateException("Select an evaluator and an available network generation");
+        if (preset()) return LearningArenaConfig.Competitor.pinned(selectedMode().policy());
         return handcrafted() ? LearningArenaConfig.Competitor.handcrafted()
                 : LearningArenaConfig.Competitor.fixed(model.binding());
     }
     void loadFixed(LearningArenaConfig.Competitor competitor) {
         fixedBinding = competitor;
-        evaluator.setSelectedItem(competitor.isHandcrafted() ? PlayEvaluator.Mode.HANDCRAFTED : PlayEvaluator.Mode.BEST_NNUE);
+        evaluator.setSelectedItem(competitor.isPinned() ? competitor.evaluator() == LearningArenaConfig.Evaluator.CONSTRUCTION_V1
+                ? PlayEvaluator.Mode.CONSTRUCTION_V1 : PlayEvaluator.Mode.POLICY4_PAIR2
+                : competitor.isHandcrafted() ? PlayEvaluator.Mode.HANDCRAFTED : PlayEvaluator.Mode.BEST_NNUE);
         var initial = competitor.initialModel();
-        description.setText(competitor.isHandcrafted() ? "HCE does not use a checkpoint."
+        description.setText(competitor.isPinned() ? competitor.displayName() : competitor.isHandcrafted() ? "HCE does not use a checkpoint."
                 : competitor.displayName() + " · " + initial.name() + " · source Gen " + initial.generation());
         description.setToolTipText(initial == null ? null : initial.root() + " / " + initial.checkpoint());
         setEditable(false);

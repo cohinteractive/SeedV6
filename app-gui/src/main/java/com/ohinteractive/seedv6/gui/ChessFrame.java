@@ -176,7 +176,7 @@ final class ChessFrame extends JFrame implements GameController.View {
     public void showSearch(GameController.SearchInfo search) {
         requireEdt();
         var evaluator = participants.forSide(search.scoreSide());
-        boardPanel.showScore(engineCard.showSearch(search, evaluator, controller.workerCount()), evaluator.mode() == PlayEvaluator.Mode.BEST_NNUE);
+        boardPanel.showScore(engineCard.showSearch(search, evaluator, controller.workerCount()), evaluator.neural());
         String state = controller.positionStatus().terminal() ? controller.positionStatus().displayText()
                 : search.state().equals("Idle") ? "Ready" : search.state();
         controlState.setText("●  " + state);
@@ -403,17 +403,17 @@ final class ChessFrame extends JFrame implements GameController.View {
         boolean whiteEngine = mode == GameController.GameMode.ENGINE_VS_ENGINE || mode == GameController.GameMode.HUMAN_VS_ENGINE && !humanWhite;
         // A failed mode change retains the previous bindings, which may still be distinct.
         PlayEvaluator displayed = mode == GameController.GameMode.HUMAN_VS_ENGINE && humanWhite ? participants.black() : participants.white();
-        boolean nnueActive = displayed.mode() == PlayEvaluator.Mode.BEST_NNUE;
+        boolean nnueActive = displayed.neural();
         pinnedLabel.setText(evaluatorChanging ? "Loading evaluator…" : nnueActive
                 ? (participants.selection().equals(PlayParticipants.Selection.BEST) ? "Pinned best: " : "Pinned network: ")
                     + displayed.description() : "Handcrafted evaluator");
-        pinnedLabel.setToolTipText(nnueActive ? displayed.identity() : null);
+        pinnedLabel.setToolTipText(nnueActive ? displayed.identity(controller.workerCount()) : null);
         blackIdentity.setText(blackEngine ? "SeedV6 (Engine)" : mode == GameController.GameMode.HUMAN_VS_HUMAN ? "Black (Human)" : "You (Human)");
         whiteIdentity.setText(whiteEngine ? "SeedV6 (Engine)" : mode == GameController.GameMode.HUMAN_VS_HUMAN ? "White (Human)" : "You (Human)");
         blackDetail.setText(blackEngine ? participants.black().description() : "Black pieces");
         whiteDetail.setText(whiteEngine ? participants.white().description() : "White pieces");
-        blackDetail.setToolTipText(blackEngine ? participants.black().identity() : null);
-        whiteDetail.setToolTipText(whiteEngine ? participants.white().identity() : null);
+        blackDetail.setToolTipText(blackEngine ? participants.black().identity(controller.workerCount()) : null);
+        whiteDetail.setToolTipText(whiteEngine ? participants.white().identity(controller.workerCount()) : null);
         blackBadge.setIcon(blackEngine ? ENGINE_BADGE : HUMAN_BADGE);
         whiteBadge.setIcon(whiteEngine ? ENGINE_BADGE : HUMAN_BADGE);
         controlHint.setText(mode == GameController.GameMode.HUMAN_VS_HUMAN ? "Move pieces on the board"
@@ -442,8 +442,8 @@ final class ChessFrame extends JFrame implements GameController.View {
                         whiteEngine.versus(blackEngine));
             } else if (modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_ENGINE) {
                 PlayEvaluator.Mode evaluator = (PlayEvaluator.Mode) evaluatorBox.getSelectedItem();
-                if (evaluator == PlayEvaluator.Mode.HANDCRAFTED || opponentEngine.validSelection())
-                    controller.startGame(evaluator, evaluator == PlayEvaluator.Mode.HANDCRAFTED
+                if (evaluator != PlayEvaluator.Mode.BEST_NNUE || opponentEngine.validSelection())
+                    controller.startGame(evaluator, evaluator != PlayEvaluator.Mode.BEST_NNUE
                             ? PlayParticipants.Selection.BEST
                             : PlayParticipants.Selection.singleEngine(opponentEngine.selectedRoot(), opponentEngine.selectedId(), opponentEngine.selectedLineageId()));
             } else controller.newGame();

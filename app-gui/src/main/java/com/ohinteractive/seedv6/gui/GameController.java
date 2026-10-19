@@ -260,9 +260,9 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         requireEdt(); ensureOpen();
         if (mode != GameMode.ENGINE_VS_ENGINE || evaluatorChanging) return;
         if (!selection.independentStores()
-                || selection.whiteMode() != PlayEvaluator.Mode.HANDCRAFTED && selection.whiteRoot() == null
-                || selection.blackMode() != PlayEvaluator.Mode.HANDCRAFTED && selection.blackRoot() == null) {
-            view.showError("Unable to start game", "Select HCE or a valid checkpoint store for each engine."); return;
+                || selection.whiteMode() == PlayEvaluator.Mode.BEST_NNUE && selection.whiteRoot() == null
+                || selection.blackMode() == PlayEvaluator.Mode.BEST_NNUE && selection.blackRoot() == null) {
+            view.showError("Unable to start game", "Select a pinned engine, HCE or a valid checkpoint store for each engine."); return;
         }
         selfPlayContinuous = false;
         networkSelection = selection;

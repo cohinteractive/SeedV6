@@ -123,6 +123,16 @@ public final class ValidationArena {
                 observer, TimeSource.SYSTEM, millis, Objects.requireNonNull(commit));
     }
 
+    /** Explicit immutable participant composition for fixed gameplay. Each game/colour gets a fresh owner. */
+    public ValidationResult matchSearches(java.util.function.IntFunction<com.ohinteractive.seedv6.search.common.SingleDepthSearch> a,
+            java.util.function.IntFunction<com.ohinteractive.seedv6.search.common.SingleDepthSearch> b, ValidationConfig config,
+            long[] board, GameHistory history, ValidationControl control, long millis,
+            Consumer<ValidationProgress> observer, Consumer<List<ValidationResult.Pair>> commit) {
+        if (millis != -1 && millis < 1) throw new IllegalArgumentException("Invalid move time");
+        return validateModels(a, b, config, board, history, control,
+                (factory, c) -> search(factory.apply(c.threads()), millis >= 0), observer, TimeSource.SYSTEM, millis, Objects.requireNonNull(commit));
+    }
+
     private <T> ValidationResult validateModels(T candidate, T incumbent, ValidationConfig config,
                               long[] board, GameHistory history, ValidationControl control,
                               BiFunction<T, ValidationConfig, Player> factory, Consumer<ValidationProgress> observer,
@@ -177,8 +187,11 @@ public final class ValidationArena {
         return search(evaluation, config, config.timed());
     }
     private static Player search(SearchEvaluation evaluation, ValidationConfig config, boolean timed) {
+        return search(ProductionSearch.create(config.threads(), evaluation), timed);
+    }
+    private static Player search(com.ohinteractive.seedv6.search.common.SingleDepthSearch owner, boolean timed) {
         // Each colour owns its driver, TTable, board stack and evaluator state.
-        var search = new SearchDriver(ProductionSearch.create(config.threads(), evaluation));
+        var search = new SearchDriver(owner);
         return new Player() {
             private ValidationProgress.MoveSearch lastSearch;
             private com.ohinteractive.seedv6.search.common.SearchResult completed;

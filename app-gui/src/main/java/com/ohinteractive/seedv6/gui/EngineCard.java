@@ -43,7 +43,7 @@ final class EngineCard extends JPanel {
 
     PlayScore showSearch(GameController.SearchInfo search, PlayEvaluator evaluator, int configuredWorkers) {
         boolean tablebase = search.score().equals("tablebase win");
-        boolean nnue = evaluator.mode() == PlayEvaluator.Mode.BEST_NNUE;
+        boolean nnue = evaluator.neural();
         String modelName = nnue ? NetworkArchitecture.valueOf(evaluator.architecture().name()).toString() : "";
         PlayScore value = PlayScore.from(search, nnue);
         score.setFont(SeedTheme.font(tablebase ? 17 : 21, Font.BOLD));
@@ -83,6 +83,10 @@ final class EngineCard extends JPanel {
             score.setToolTipText("Proven game outcome, not an evaluation score or mate distance.");
             termination.setText("Game outcome  |  " + search.termination());
             termination.setToolTipText("Local tablebase decision");
+        }
+        if (evaluator.pinned() != null) {
+            termination.setText(evaluator.mode() + " | " + termination.getText());
+            termination.setToolTipText(evaluator.pinned().identity(configuredWorkers, 64));
         }
         return value;
     }
