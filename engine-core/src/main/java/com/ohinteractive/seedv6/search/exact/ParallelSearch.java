@@ -58,6 +58,7 @@ public final class ParallelSearch implements SingleDepthSearch {
     private boolean active;
     private boolean closed;
     private boolean splitActive;
+    private int rootAlpha, rootBeta;
     private long[] splitMoves = new long[0], previousMoves = new long[0], previousEffort = new long[0];
     private long[] splitEffort = new long[0];
     private long preferred;
@@ -227,7 +228,7 @@ public final class ParallelSearch implements SingleDepthSearch {
                 if(splitActive) { rootJobs(); return; }
                 int depth = policy == ConcurrencyPolicy.OFFSET && index > 0
                         ? Math.min(maxSupportedDepth(), request.depth() + 1) : request.depth();
-                var result = search.search(root, request.gameHistory(), depth,
+                var result = search.searchWindow(root, request.gameHistory(), depth, rootAlpha, rootBeta,
                         ParallelSearch.this::cancelled);
                 tainted |= search.anySelectiveWork();
                 if(!result.completed()) abortedNodes += nodes;
@@ -258,14 +259,17 @@ public final class ParallelSearch implements SingleDepthSearch {
 
         private void rootJobs() {
             for(int job; !cancelled() && (job=nextRoot.getAndIncrement())<splitMoves.length;) {
-                int originalAlpha=policy==ConcurrencyPolicy.ROOT_FULL ? -ExactSearch.INFINITY : splitBest.get().score();
-                var result=rootJob(job,originalAlpha,policy==ConcurrencyPolicy.ROOT_FULL ? ExactSearch.INFINITY : originalAlpha+1,
+                if(splitBest.get().score()>=rootBeta) return;
+                int originalAlpha=policy==ConcurrencyPolicy.ROOT_FULL ? rootAlpha : Math.max(rootAlpha,splitBest.get().score());
+                var result=rootJob(job,originalAlpha,policy==ConcurrencyPolicy.ROOT_FULL ? rootBeta : originalAlpha+1,
                         policy!=ConcurrencyPolicy.ROOT_FULL);
                 if(!result.completed()) return;
-                if(policy!=ConcurrencyPolicy.ROOT_FULL && result.score()>originalAlpha) {
+                if(policy!=ConcurrencyPolicy.ROOT_FULL && result.score()>originalAlpha && result.score()<rootBeta) {
                     // The old scout lower bound cannot be compared with a newer alpha
                     // to skip its full retry. Re-search every original-window fail-high.
-                    result=rootJob(job,splitBest.get().score(),ExactSearch.INFINITY,false);
+                    int retryAlpha=Math.max(rootAlpha,splitBest.get().score());
+                    if(retryAlpha>=rootBeta) return; // Another completed job already proves this root cutoff.
+                    result=rootJob(job,retryAlpha,rootBeta,false);
                     if(!result.completed()) return;
                 }
                 completed=result;
@@ -323,12 +327,23 @@ public final class ParallelSearch implements SingleDepthSearch {
     }
 
     @Override public SearchResult search(SearchRequest next) {
+        return searchWindow(next,-ExactSearch.INFINITY,ExactSearch.INFINITY);
+    }
+
+    /** Invocation-only research seam. Narrow completion is a bound, never a completed iteration.
+     * ROOT_REUSE retains private seeding and drains every pass; restricted jobs never store root proof. */
+    public SearchResult searchWindow(SearchRequest next,int alpha,int beta) {
         Objects.requireNonNull(next, "request");
         ensureIdle();
+        if(alpha < -ExactSearch.INFINITY || beta > ExactSearch.INFINITY || alpha>=beta)
+            throw new IllegalArgumentException("Invalid root window");
+        if((alpha!=-ExactSearch.INFINITY || beta!=ExactSearch.INFINITY) && policy!=ConcurrencyPolicy.ROOT_REUSE)
+            throw new IllegalStateException("Narrow parallel research requires ROOT_REUSE");
         if(next.depth() > maxSupportedDepth()) throw new IllegalArgumentException("Unsupported depth.");
         boolean standalone = !requestActive;
         if(standalone) beginRequest();
         active = true;
+        rootAlpha=alpha;rootBeta=beta;
         request = next;
         control = next.control();
         abort.set(false);
@@ -364,7 +379,7 @@ public final class ParallelSearch implements SingleDepthSearch {
                     if(rootOrdering != null) for(var worker:workers) worker.search.prepareRootIteration(rootOrdering);
                     workers[0].used=true;participating.incrementAndGet();
                     ExactSearchResult first;
-                    try { first=workers[0].rootJob(0,-ExactSearch.INFINITY,ExactSearch.INFINITY,false); }
+                    try { first=workers[0].rootJob(0,rootAlpha,rootBeta,false); }
                     finally { participating.decrementAndGet(); }
                     splitBest.set(first);
                     if(!first.completed()) abort.set(true);
@@ -382,9 +397,12 @@ public final class ParallelSearch implements SingleDepthSearch {
             if(problem instanceof Error error) throw error;
             if(problem instanceof RuntimeException runtime) throw runtime;
             if(problem != null) throw new IllegalStateException("Parallel Search failed.", problem);
-            if(splitActive && !cancelled() && !splitIncomplete.get() && nextRoot.get()>=splitMoves.length) {
+            if(splitActive && !cancelled() && (splitBest.get().score()>=rootBeta
+                    || (!splitIncomplete.get() && nextRoot.get()>=splitMoves.length))) {
                 winner.set(splitBest.get());
-                previousMoves=splitMoves.clone();previousEffort=splitEffort.clone();
+                if(alpha==-ExactSearch.INFINITY && beta==ExactSearch.INFINITY) {
+                    previousMoves=splitMoves.clone();previousEffort=splitEffort.clone();
+                }
             }
 
             long nodes = 0, evaluations = 0, qnodes = 0;
@@ -402,8 +420,9 @@ public final class ParallelSearch implements SingleDepthSearch {
             }
             var diagnostics = diagnostics(next.diagnosticsEnabled(), nodes, evaluations, maximumPly, qnodes, maximumQply);
             var completed = winner.get();
-            if(completed!=null && completed.hasMove()) preferred=completed.bestMove();
-            if(completed != null && rootOrdering != null) {
+            boolean fullWindow=alpha==-ExactSearch.INFINITY && beta==ExactSearch.INFINITY;
+            if(completed!=null && completed.hasMove() && fullWindow) preferred=completed.bestMove();
+            if(completed != null && rootOrdering != null && fullWindow) {
                 rootOrdering.prepare(root,next.gameHistory(),next.depth(),true,-ExactSearch.INFINITY,ExactSearch.INFINITY);
                 if(splitActive) for(int i=0;i<splitMoves.length;i++) rootOrdering.rootResult(splitMoves[i],0,splitEffort[i]);
                 long[] line=completed.principalVariation();

@@ -1,0 +1,11 @@
+{
+  "sourceHashes": {
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java": "662065cc395e9629b000eac6fc374033da293ea4c59dde436775b44394ef5d08",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ParallelSearch.java": "7c30d99f5289f1d41b4ceed9a7907517a169e8eed5a557a7fb0a9d3db8d5c06f",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java": "7deab491548916c65b5b48553da559616b2d27b73d89b2aecb4a402d4206e7e7",
+    "research/src/main/java/com/ohinteractive/seedv6/search/driver/MtdDriverResearch.java": "99857ca8bfb9cf7872ddfcaf82ba898b1e3e557e9a55fd811d0a8cb1e9eb8f51",
+    "research/src/main/java/com/ohinteractive/seedv6/search/exact/Sr004DriverStudy.java": "4da78f4e56ff84648dfffa211e2396fbf4218a6bf7ccdf66a126dff65330b760"
+  },
+  "runtime": "raw/development-v1-runtime",
+  "note": "Runtime hashes in each execution receipt; original source copied before next refinement."
+}

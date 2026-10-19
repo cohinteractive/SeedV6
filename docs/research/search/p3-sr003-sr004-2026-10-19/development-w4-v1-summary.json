@@ -1,0 +1,195 @@
+{
+  "input": "raw\\development-w4-v1.jsonl",
+  "sha256": "91ea08d6cf913bdbf1d7e9a3a5a31f2d4e0b8d816cdc2dc8d028b307266f594a",
+  "identity": {
+    "java": "21+35-2513",
+    "workers": 4,
+    "arguments": [
+      "build-assets/production/bre-pair2-g32.brn-pair2",
+      "docs/research/search/sr005-phase2-2026-10-13/diagnostic-corpus.tsv",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr003-sr004-2026-10-19\\raw\\development-w4-v1.jsonl",
+      "4",
+      "2",
+      "2",
+      "6",
+      "2000000",
+      "12",
+      "PVS,PREV,PARITY,BRACKET,TWO_PASS,FULL_RECOVERY",
+      "false"
+    ],
+    "hashMiB": 64,
+    "type": "identity",
+    "jvm": [
+      "--add-modules=jdk.incubator.vector",
+      "-Djava.awt.headless=true",
+      "-Xms256m",
+      "-Xmx768m",
+      "-XX:ActiveProcessorCount=2"
+    ]
+  },
+  "rows": 144,
+  "policies": {
+    "PVS": {
+      "elapsedNanos": 1295393300,
+      "processCpuNanos": 2921875000,
+      "allocatedBytes": 27610992,
+      "passes": 144,
+      "compilationMillis": 35,
+      "gcCollections": 0,
+      "requests": 24,
+      "nodes": 3461260,
+      "completed": 24,
+      "meanCompletedDepth": 6,
+      "maxHeapUsed": 639810352,
+      "terminations": {
+        "NONE": 24
+      },
+      "mainNodes": 400718,
+      "qNodes": 3060542,
+      "ratiosToPvs": {
+        "elapsedNanos": 1.0,
+        "processCpuNanos": 1.0,
+        "allocatedBytes": 1.0,
+        "nodes": 1.0,
+        "passes": 1.0
+      },
+      "scoreDifferences": 0,
+      "moveDifferences": 0
+    },
+    "PREV": {
+      "elapsedNanos": 2701934000,
+      "processCpuNanos": 7015625000,
+      "allocatedBytes": 227844448,
+      "passes": 2481,
+      "compilationMillis": 41,
+      "gcCollections": 0,
+      "requests": 24,
+      "nodes": 7811783,
+      "completed": 24,
+      "meanCompletedDepth": 6,
+      "maxHeapUsed": 641916016,
+      "terminations": {
+        "NONE": 24
+      },
+      "mainNodes": 1315641,
+      "qNodes": 6496142,
+      "ratiosToPvs": {
+        "elapsedNanos": 2.0858020494625067,
+        "processCpuNanos": 2.4010695187165774,
+        "allocatedBytes": 8.25194719552271,
+        "nodes": 2.256918867695579,
+        "passes": 17.229166666666668
+      },
+      "scoreDifferences": 8,
+      "moveDifferences": 3
+    },
+    "PARITY": {
+      "elapsedNanos": 2271539700,
+      "processCpuNanos": 5921875000,
+      "allocatedBytes": 147563336,
+      "passes": 2054,
+      "compilationMillis": 4,
+      "gcCollections": 0,
+      "requests": 24,
+      "nodes": 6849967,
+      "completed": 24,
+      "meanCompletedDepth": 6,
+      "maxHeapUsed": 652401776,
+      "terminations": {
+        "NONE": 24
+      },
+      "mainNodes": 979305,
+      "qNodes": 5870662,
+      "ratiosToPvs": {
+        "elapsedNanos": 1.7535521451284333,
+        "processCpuNanos": 2.0267379679144386,
+        "allocatedBytes": 5.34436922802339,
+        "nodes": 1.979038558212905,
+        "passes": 14.26388888888889
+      },
+      "scoreDifferences": 11,
+      "moveDifferences": 5
+    },
+    "BRACKET": {
+      "elapsedNanos": 2143801800,
+      "processCpuNanos": 5781250000,
+      "allocatedBytes": 134610720,
+      "passes": 1005,
+      "compilationMillis": 4,
+      "gcCollections": 1,
+      "requests": 24,
+      "nodes": 6572700,
+      "completed": 24,
+      "meanCompletedDepth": 6,
+      "maxHeapUsed": 650296112,
+      "terminations": {
+        "NONE": 24
+      },
+      "mainNodes": 961401,
+      "qNodes": 5611299,
+      "ratiosToPvs": {
+        "elapsedNanos": 1.654942788418004,
+        "processCpuNanos": 1.9786096256684491,
+        "allocatedBytes": 4.875258375360074,
+        "nodes": 1.8989327585908022,
+        "passes": 6.979166666666667
+      },
+      "scoreDifferences": 12,
+      "moveDifferences": 6
+    },
+    "TWO_PASS": {
+      "elapsedNanos": 1394867200,
+      "processCpuNanos": 3468750000,
+      "allocatedBytes": 55489440,
+      "passes": 396,
+      "compilationMillis": 7,
+      "gcCollections": 0,
+      "requests": 24,
+      "nodes": 3944212,
+      "completed": 24,
+      "meanCompletedDepth": 6,
+      "maxHeapUsed": 652393264,
+      "terminations": {
+        "NONE": 24
+      },
+      "mainNodes": 474668,
+      "qNodes": 3469544,
+      "ratiosToPvs": {
+        "elapsedNanos": 1.0767905006147553,
+        "processCpuNanos": 1.1871657754010696,
+        "allocatedBytes": 2.0096865769980305,
+        "nodes": 1.139530691135598,
+        "passes": 2.75
+      },
+      "scoreDifferences": 10,
+      "moveDifferences": 4
+    },
+    "FULL_RECOVERY": {
+      "elapsedNanos": 3072799600,
+      "processCpuNanos": 8671875000,
+      "allocatedBytes": 245497408,
+      "passes": 2512,
+      "compilationMillis": 13,
+      "gcCollections": 4,
+      "requests": 24,
+      "nodes": 9298577,
+      "completed": 24,
+      "meanCompletedDepth": 6,
+      "maxHeapUsed": 638761776,
+      "terminations": {
+        "NONE": 24
+      },
+      "mainNodes": 1452540,
+      "qNodes": 7846037,
+      "ratiosToPvs": {
+        "elapsedNanos": 2.372097802265922,
+        "processCpuNanos": 2.9679144385026737,
+        "allocatedBytes": 8.891292569278207,
+        "nodes": 2.6864716895003555,
+        "passes": 17.444444444444443
+      },
+      "scoreDifferences": 12,
+      "moveDifferences": 7
+    }
+  }
+}

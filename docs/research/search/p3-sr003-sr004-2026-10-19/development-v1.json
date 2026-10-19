@@ -1,0 +1,45 @@
+{
+  "identity": "development-v1",
+  "status": "frozen before measurement",
+  "purpose": "bounded mechanism/cost development; no strength or independent confirmation claim",
+  "policies": [
+    "PVS",
+    "PREV",
+    "PARITY",
+    "BRACKET",
+    "TWO_PASS",
+    "FULL_RECOVERY"
+  ],
+  "model": "production generation 32 quarter-residual; payload hash verified in focused record",
+  "kernel": "full flattened Policy 4; default 64MiB requested per owner",
+  "samples": "first 12 real-history roots of sr005 diagnostic-corpus.tsv",
+  "runs": [
+    {
+      "workers": 1,
+      "depth": 6,
+      "budget": 2000000,
+      "warmups": 2,
+      "rounds": 2,
+      "trace": false
+    },
+    {
+      "workers": 4,
+      "depth": 6,
+      "budget": 2000000,
+      "warmups": 2,
+      "rounds": 2,
+      "trace": false
+    },
+    {
+      "workers": 1,
+      "depth": 6,
+      "budget": 2000000,
+      "warmups": 0,
+      "rounds": 1,
+      "trace": true
+    }
+  ],
+  "analysis": "all samples retained; completion, pass, total work, aggregate costs and root heterogeneity; no superiority threshold or Elo conversion",
+  "next": "diagnose costs and inconsistency; bounded credible alternatives before deciding whether strength experiments have decision value",
+  "resources": "one BelowNormal JVM at a time; 768MiB heap; ActiveProcessorCount=2; timeout 30min per run"
+}

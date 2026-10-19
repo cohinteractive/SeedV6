@@ -1,0 +1,343 @@
+{
+  "input": "raw\\diagnostic-w1-v1.jsonl",
+  "sha256": "bb71c754cd8191e7e67e1ba48ecab5823a02369c43d80471eb60cc0485d9bd61",
+  "identity": {
+    "java": "21+35-2513",
+    "workers": 1,
+    "arguments": [
+      "build-assets/production/bre-pair2-g32.brn-pair2",
+      "docs/research/search/sr005-phase2-2026-10-13/diagnostic-corpus.tsv",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr003-sr004-2026-10-19\\raw\\diagnostic-w1-v1.jsonl",
+      "1",
+      "0",
+      "1",
+      "6",
+      "2000000",
+      "12",
+      "PVS,PREV,PARITY,BRACKET,TWO_PASS,FULL_RECOVERY",
+      "true"
+    ],
+    "hashMiB": 64,
+    "type": "identity",
+    "jvm": [
+      "--add-modules=jdk.incubator.vector",
+      "-Djava.awt.headless=true",
+      "-Xms256m",
+      "-Xmx768m",
+      "-XX:ActiveProcessorCount=2"
+    ]
+  },
+  "rows": 72,
+  "policies": {
+    "PVS": {
+      "elapsedNanos": 1085389100,
+      "processCpuNanos": 1406250000,
+      "allocatedBytes": 1620320,
+      "passes": 72,
+      "compilationMillis": 263,
+      "gcCollections": 1,
+      "requests": 12,
+      "nodes": 1390898,
+      "completed": 12,
+      "meanCompletedDepth": 6,
+      "maxHeapUsed": 358157584,
+      "terminations": {
+        "NONE": 12
+      },
+      "mainNodes": 173261,
+      "qNodes": 1217637,
+      "phases": {
+        "full": {
+          "calls": 72,
+          "nodes": 1390898,
+          "selective": 72
+        }
+      },
+      "tt": {
+        "mechanicalHits": 6,
+        "hintHits": 51751,
+        "probes": 175716,
+        "saveAttempts": 10
+      },
+      "ratiosToPvs": {
+        "elapsedNanos": 1.0,
+        "processCpuNanos": 1.0,
+        "allocatedBytes": 1.0,
+        "nodes": 1.0,
+        "passes": 1.0
+      },
+      "scoreDifferences": 0,
+      "moveDifferences": 0
+    },
+    "PREV": {
+      "elapsedNanos": 2276714300,
+      "processCpuNanos": 2687500000,
+      "allocatedBytes": 10742944,
+      "passes": 1347,
+      "compilationMillis": 416,
+      "gcCollections": 0,
+      "requests": 12,
+      "nodes": 3096411,
+      "completed": 12,
+      "meanCompletedDepth": 6,
+      "maxHeapUsed": 357109008,
+      "terminations": {
+        "NONE": 12
+      },
+      "mainNodes": 451481,
+      "qNodes": 2644930,
+      "phases": {
+        "full": {
+          "calls": 12,
+          "nodes": 1680,
+          "selective": 12
+        },
+        "zero": {
+          "calls": 1240,
+          "nodes": 1871205,
+          "selective": 1240
+        },
+        "materialize": {
+          "calls": 60,
+          "nodes": 551231,
+          "selective": 60
+        },
+        "fallback": {
+          "calls": 35,
+          "nodes": 672295,
+          "selective": 35
+        }
+      },
+      "tt": {
+        "mechanicalHits": 27,
+        "hintHits": 331078,
+        "probes": 455729,
+        "saveAttempts": 17
+      },
+      "ratiosToPvs": {
+        "elapsedNanos": 2.097601956754495,
+        "processCpuNanos": 1.9111111111111112,
+        "allocatedBytes": 6.630137256838156,
+        "nodes": 2.226195594500819,
+        "passes": 18.708333333333332
+      },
+      "scoreDifferences": 6,
+      "moveDifferences": 3
+    },
+    "PARITY": {
+      "elapsedNanos": 2215317200,
+      "processCpuNanos": 3109375000,
+      "allocatedBytes": 9926712,
+      "passes": 1245,
+      "compilationMillis": 1114,
+      "gcCollections": 1,
+      "requests": 12,
+      "nodes": 3089411,
+      "completed": 12,
+      "meanCompletedDepth": 6,
+      "maxHeapUsed": 360254736,
+      "terminations": {
+        "NONE": 12
+      },
+      "mainNodes": 453779,
+      "qNodes": 2635632,
+      "phases": {
+        "full": {
+          "calls": 12,
+          "nodes": 1680,
+          "selective": 12
+        },
+        "zero": {
+          "calls": 1136,
+          "nodes": 1908346,
+          "selective": 1136
+        },
+        "materialize": {
+          "calls": 60,
+          "nodes": 555339,
+          "selective": 60
+        },
+        "fallback": {
+          "calls": 37,
+          "nodes": 624046,
+          "selective": 37
+        }
+      },
+      "tt": {
+        "mechanicalHits": 37,
+        "hintHits": 324775,
+        "probes": 457430,
+        "saveAttempts": 16
+      },
+      "ratiosToPvs": {
+        "elapsedNanos": 2.0410350536964117,
+        "processCpuNanos": 2.2111111111111112,
+        "allocatedBytes": 6.126389848918732,
+        "nodes": 2.221162874632072,
+        "passes": 17.291666666666668
+      },
+      "scoreDifferences": 6,
+      "moveDifferences": 4
+    },
+    "BRACKET": {
+      "elapsedNanos": 2164151900,
+      "processCpuNanos": 2765625000,
+      "allocatedBytes": 4379312,
+      "passes": 525,
+      "compilationMillis": 515,
+      "gcCollections": 2,
+      "requests": 12,
+      "nodes": 3075667,
+      "completed": 12,
+      "meanCompletedDepth": 6,
+      "maxHeapUsed": 363400464,
+      "terminations": {
+        "NONE": 12
+      },
+      "mainNodes": 446998,
+      "qNodes": 2628669,
+      "phases": {
+        "full": {
+          "calls": 12,
+          "nodes": 1680,
+          "selective": 12
+        },
+        "zero": {
+          "calls": 418,
+          "nodes": 1866173,
+          "selective": 418
+        },
+        "materialize": {
+          "calls": 60,
+          "nodes": 628051,
+          "selective": 60
+        },
+        "fallback": {
+          "calls": 35,
+          "nodes": 579763,
+          "selective": 35
+        }
+      },
+      "tt": {
+        "mechanicalHits": 35,
+        "hintHits": 317863,
+        "probes": 450000,
+        "saveAttempts": 20
+      },
+      "ratiosToPvs": {
+        "elapsedNanos": 1.9938950004196652,
+        "processCpuNanos": 1.9666666666666666,
+        "allocatedBytes": 2.7027451367631086,
+        "nodes": 2.211281488649779,
+        "passes": 7.291666666666667
+      },
+      "scoreDifferences": 7,
+      "moveDifferences": 4
+    },
+    "TWO_PASS": {
+      "elapsedNanos": 1235868600,
+      "processCpuNanos": 1312500000,
+      "allocatedBytes": 1816632,
+      "passes": 198,
+      "compilationMillis": 118,
+      "gcCollections": 0,
+      "requests": 12,
+      "nodes": 1978065,
+      "completed": 12,
+      "meanCompletedDepth": 6,
+      "maxHeapUsed": 363400464,
+      "terminations": {
+        "NONE": 12
+      },
+      "mainNodes": 222564,
+      "qNodes": 1755501,
+      "phases": {
+        "full": {
+          "calls": 12,
+          "nodes": 1680,
+          "selective": 12
+        },
+        "zero": {
+          "calls": 120,
+          "nodes": 626342,
+          "selective": 120
+        },
+        "fallback": {
+          "calls": 54,
+          "nodes": 938070,
+          "selective": 54
+        },
+        "materialize": {
+          "calls": 12,
+          "nodes": 411973,
+          "selective": 12
+        }
+      },
+      "tt": {
+        "mechanicalHits": 21,
+        "hintHits": 104986,
+        "probes": 224378,
+        "saveAttempts": 9
+      },
+      "ratiosToPvs": {
+        "elapsedNanos": 1.1386410642966656,
+        "processCpuNanos": 0.9333333333333333,
+        "allocatedBytes": 1.1211563148020145,
+        "nodes": 1.422149575310339,
+        "passes": 2.75
+      },
+      "scoreDifferences": 5,
+      "moveDifferences": 3
+    },
+    "FULL_RECOVERY": {
+      "elapsedNanos": 2159614400,
+      "processCpuNanos": 2625000000,
+      "allocatedBytes": 10483696,
+      "passes": 1314,
+      "compilationMillis": 554,
+      "gcCollections": 1,
+      "requests": 12,
+      "nodes": 3098566,
+      "completed": 12,
+      "meanCompletedDepth": 6,
+      "maxHeapUsed": 365497616,
+      "terminations": {
+        "NONE": 12
+      },
+      "mainNodes": 437249,
+      "qNodes": 2661317,
+      "phases": {
+        "full": {
+          "calls": 12,
+          "nodes": 1680,
+          "selective": 12
+        },
+        "zero": {
+          "calls": 1242,
+          "nodes": 1952292,
+          "selective": 1242
+        },
+        "fallback": {
+          "calls": 60,
+          "nodes": 1144594,
+          "selective": 60
+        }
+      },
+      "tt": {
+        "mechanicalHits": 19,
+        "hintHits": 310519,
+        "probes": 441846,
+        "saveAttempts": 18
+      },
+      "ratiosToPvs": {
+        "elapsedNanos": 1.9897144719806013,
+        "processCpuNanos": 1.8666666666666667,
+        "allocatedBytes": 6.47013923175669,
+        "nodes": 2.2277449532604114,
+        "passes": 18.25
+      },
+      "scoreDifferences": 5,
+      "moveDifferences": 4
+    }
+  }
+}

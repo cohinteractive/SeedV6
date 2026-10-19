@@ -1,0 +1,72 @@
+{
+  "suites": [
+    {
+      "name": "com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest",
+      "tests": "14",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:30:49",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.711"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.MtdDriverResearchTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:30:50",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.016"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.Policy4ProductionTest",
+      "tests": "8",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:30:50",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "1.577"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.Sr002FlatQuiescenceTest",
+      "tests": "13",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:30:52",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "4.26"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.Sr002FullLifecycleTest",
+      "tests": "2",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:30:56",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.065"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.Sr004IntegratedTest",
+      "tests": "4",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:30:56",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.378"
+    }
+  ],
+  "totals": {
+    "tests": 44,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "log": "raw/integrity-v2.log",
+  "shell_note": "Gradle BUILD SUCCESSFUL; PowerShell reports native stderr incubator warning as NativeCommandError. XML is definitive test evidence."
+}

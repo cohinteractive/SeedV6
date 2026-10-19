@@ -1,0 +1,106 @@
+{
+  "command": [
+    "cmd.exe",
+    "/c",
+    "gradlew.bat",
+    "--gradle-user-home",
+    "build/migration/gradle-user-home",
+    "--no-daemon",
+    "--max-workers=1",
+    ":research:test",
+    "--tests",
+    "*Sr004IntegratedTest",
+    "--tests",
+    "*MtdDriverResearchTest",
+    "--tests",
+    "*Sr002*",
+    "--tests",
+    "*RootParallelSearchTest",
+    "--tests",
+    "*ConcurrencyResearchTest",
+    "--tests",
+    "*Policy4ProductionTest"
+  ],
+  "exitCode": 0,
+  "elapsedSeconds": 21.924505000002682,
+  "suites": [
+    {
+      "path": "raw\\integrity-v3-research-TEST-com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest.xml",
+      "sha256": "18312e7602df7ba95ff633d78c05907eff18d24e8099b6ef37e812f44b73a2e2",
+      "name": "com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest",
+      "tests": "14",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:34:09",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.664"
+    },
+    {
+      "path": "raw\\integrity-v3-research-TEST-com.ohinteractive.seedv6.search.driver.MtdDriverResearchTest.xml",
+      "sha256": "4557533e7f7169667ec060fc191c41da85f6ede7925f09603e4a185008bb6bc3",
+      "name": "com.ohinteractive.seedv6.search.driver.MtdDriverResearchTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:34:09",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.016"
+    },
+    {
+      "path": "raw\\integrity-v3-research-TEST-com.ohinteractive.seedv6.search.exact.Policy4ProductionTest.xml",
+      "sha256": "6b1adc732e2e97bf21f37c465b77480ace7ec7920a55f2cb7d87f216657100ea",
+      "name": "com.ohinteractive.seedv6.search.exact.Policy4ProductionTest",
+      "tests": "8",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:34:09",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "1.624"
+    },
+    {
+      "path": "raw\\integrity-v3-research-TEST-com.ohinteractive.seedv6.search.exact.Sr002FlatQuiescenceTest.xml",
+      "sha256": "718ca4afb31d153824b52242f05a471f4926f392ee5b35b2565a276b1b11887d",
+      "name": "com.ohinteractive.seedv6.search.exact.Sr002FlatQuiescenceTest",
+      "tests": "13",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:34:11",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "4.215"
+    },
+    {
+      "path": "raw\\integrity-v3-research-TEST-com.ohinteractive.seedv6.search.exact.Sr002FullLifecycleTest.xml",
+      "sha256": "a2d1db5b1ed3975e356f3f5db114157d79a2ace4b9dc7a16250d5a588902f91b",
+      "name": "com.ohinteractive.seedv6.search.exact.Sr002FullLifecycleTest",
+      "tests": "2",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:34:15",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.053"
+    },
+    {
+      "path": "raw\\integrity-v3-research-TEST-com.ohinteractive.seedv6.search.exact.Sr004IntegratedTest.xml",
+      "sha256": "4b5f9331246e7c8f6a1aa90749807f1d35d27fd5a7f3935c918d829289e1ef9e",
+      "name": "com.ohinteractive.seedv6.search.exact.Sr004IntegratedTest",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:34:15",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "1.104"
+    }
+  ],
+  "totals": {
+    "tests": 45,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
