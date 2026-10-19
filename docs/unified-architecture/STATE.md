@@ -4,6 +4,12 @@ Updated 17 October 2026 (Pacific/Auckland). Governing [CONTRACT](CONTRACT.md),
 [BASELINE / preservation](BASELINE.md), [ACCEPTANCE matrix](ACCEPTANCE.md),
 [foundation evidence](foundation-evidence.json).
 
+Version-policy update, 19 October 2026: the owner's instruction in root
+`AGENTS.md` retires the finalizer dependency. Retained finalization records below
+are historical evidence and impose no gate on version management, validation or
+commits. Independent `VERSION_STATE.txt` handling and migration acceptance gates
+remain in force.
+
 ## Current boundary
 
 **WU0-WU6 are accepted by GPT. The owner identifies WU7 commit
@@ -450,8 +456,8 @@ The commit containing this entry is the work-unit handback, pending GPT/user
 reconciliation. Native Mac, GUI/client and inherited-failure gates remain open;
 this does not admit WU8.
 
-Version finalization remains blocked independently of packaging: the same-token
-`no_bump` attempt retained an integrity failure from the task's nested validation
+Historical finalization failure (superseded by the version-policy update above):
+the same-token `no_bump` attempt retained an integrity failure from the task's nested validation
 clones. Their metadata is now preserved under `.git/portable-build-validation`,
 with source/output evidence intact, but the helper rejects the stored error before
 retrying. The original active reservation remains, mutation `not_attempted`; no
@@ -469,9 +475,8 @@ Separate inherited-failure remediation remains necessary at its existing gates.
 Human actions required after this prompt:
 
 - **Immediate implementation blocker: None.** Available WU7 checks are complete.
-- **Blocking later version operations:** authorize supported reconciliation of
-  the retained nested-validation integrity failure before another finalizer begin
-  or work requiring finalized version provenance. Ordinary packaging remains usable.
+- **Version bookkeeping:** follow root `AGENTS.md`; no finalizer reconciliation
+  is required. Preserve the historical failure evidence.
 - **Blocking dependent migration:** GPT/user reconciliation before further work;
   WU8 cutover requires native Mac, GUI/client and inherited-failure gates passed or
   explicitly reconciled by the authorized owner.

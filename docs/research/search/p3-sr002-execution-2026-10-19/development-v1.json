@@ -1,0 +1,13 @@
+{
+  "id": "P3-SR002-DEVELOPMENT-v1",
+  "purpose": "Characterization and prototype selection, not confirmation or Elo",
+  "baseline": "ProductionSearch.create Policy 4, pinned Pair-2 generation 32, 64 MiB TT",
+  "corpus": "docs/research/search/sr005-phase2-2026-10-13/diagnostic-corpus.tsv",
+  "baselineSampling": "First 8 roots, one full warmup traversal, two measured rounds, depth ceiling 20 and 100000 admitted nodes per complete driver request; separate 1 and 4 worker runs",
+  "profile": "Separate JFR profile baseline run; never include instrumented timings in clean cost comparison. Record JVM compilation and native memory output.",
+  "metrics": "Whole driver wall/process CPU (all workers, JIT and GC), owner CPU, live-thread allocated bytes, heap/GC, compilation, completed depth/PV, full main/q work including aborted attempts; new-game clearing reported separately. Construction excluded.",
+  "resources": "One BelowNormal JVM, OpenJDK 21, Xms256m Xmx768m ActiveProcessorCount=2; no concurrent tests/benchmarks",
+  "prototype": "Primitive explicit qsearch frames only, main PVS and root coordination retained. Recursive implementation unchanged. Eligibility restricted to equivalent unpruned or QXRAY leaves; no production selection.",
+  "gates": "Resolve all correctness mismatches before timing interpretation. Use deterministic one-worker parity and independent unpruned references. Multiworker traversal can vary; separately validate lifecycle, private ownership, budgets and legal publication.",
+  "stopping": "Select next experiment from measured cost and code complexity. No closed-run extension, favorable sample selection, or full-flattening conclusion from partial equivalence. Freeze fresh comparison and uncertainty criteria before substantial confirmation. Safety deadline failure is censored evidence, not inferiority."
+}

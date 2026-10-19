@@ -1,0 +1,251 @@
+{
+  "profile": "docs\\research\\search\\p3-sr002-execution-2026-10-19\\raw\\full-profile-w4-flat-v1",
+  "analysisRevision": 2,
+  "jfrPrintStackDepth": 256,
+  "supersedes": "v1 summaries used jfr print default display depth 5; those sampled-stack maxima and search sample counts were display-limited. Original derived output remains preserved.",
+  "jfrSha256": "8367ab94af0581196220438b6cba964d991ff5954e88ce632f460d81be153738",
+  "searchStackSamples": 2447,
+  "truncatedSearchStackSamples": 0,
+  "maxSampledRecursiveFrames": 0,
+  "topMethods": [
+    [
+      "com/ohinteractive/seedv6/core/brnpair2/BrnPair2Model$Workspace.evaluatePawns",
+      636
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.flatNegamax",
+      272
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.getPawnTactical",
+      179
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.flatQuiescence",
+      175
+    ],
+    [
+      "com/ohinteractive/seedv6/core/See.captureAtLeast",
+      129
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Board.makeMoveInto",
+      126
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.getQueenTactical",
+      105
+    ],
+    [
+      "com/ohinteractive/seedv6/core/brnpair2/BrnPair2Model$Workspace.setCode",
+      82
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.appendQuiets",
+      69
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/Sort.next",
+      68
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/QuietHistory.recordCutoff",
+      54
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.getBishopTactical",
+      49
+    ],
+    [
+      "com/ohinteractive/seedv6/core/See.atLeastGeneratedLegal",
+      46
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.getRookTactical",
+      45
+    ],
+    [
+      "com/ohinteractive/seedv6/rules/SearchLineHistory.currentOccurrences",
+      34
+    ],
+    [
+      "java/util/Arrays.fill",
+      33
+    ]
+  ],
+  "inclusiveMethods": [
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.flatNegamax",
+      2447
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.searchWindow",
+      2447
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker.rootJob",
+      2442
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.searchRootMove",
+      2442
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.flatQuiescence",
+      1574
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker.run",
+      1406
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker.rootJobs",
+      1401
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/Sr002ExecutionStudy.main",
+      1387
+    ],
+    [
+      "com/ohinteractive/seedv6/search/driver/SearchDriver.searchInternal",
+      1387
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch.search",
+      1387
+    ],
+    [
+      "com/ohinteractive/seedv6/search/driver/SearchDriver.search",
+      1387
+    ],
+    [
+      "java/util/concurrent/ThreadPoolExecutor$Worker.run",
+      1060
+    ],
+    [
+      "java/util/concurrent/FutureTask.run",
+      1060
+    ],
+    [
+      "java/lang/Thread.run",
+      1060
+    ],
+    [
+      "java/util/concurrent/Executors$RunnableAdapter.call",
+      1060
+    ],
+    [
+      "java/util/concurrent/ThreadPoolExecutor.runWorker",
+      1060
+    ],
+    [
+      "java/lang/Thread.runWith",
+      1060
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactEvaluator$1.evaluate",
+      769
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker$1.evaluate",
+      769
+    ],
+    [
+      "com/ohinteractive/seedv6/search/evaluation/SearchEvaluation$Pair2State.evaluate",
+      769
+    ]
+  ],
+  "lastObservedC2Compilation": {
+    "flatQuiescence (IIII)I": {
+      "bytes": "1173",
+      "size": "55304",
+      "stamp": "2.807",
+      "firstC2Stamp": "1.158",
+      "c2Versions": 2
+    },
+    "flatNegamax (III)I": {
+      "bytes": "2529",
+      "size": "105272",
+      "stamp": "7.641",
+      "firstC2Stamp": "1.655",
+      "c2Versions": 8
+    }
+  },
+  "wholeJvmInlineFailureReasons": [
+    [
+      "callee is too large",
+      3595
+    ],
+    [
+      "no static binding",
+      795
+    ],
+    [
+      "callee uses too much stack",
+      791
+    ],
+    [
+      "too big",
+      441
+    ],
+    [
+      "don&apos;t inline Throwable constructors",
+      405
+    ],
+    [
+      "not inlineable",
+      259
+    ],
+    [
+      "low call site frequency",
+      202
+    ],
+    [
+      "native method",
+      191
+    ],
+    [
+      "hot method too big",
+      102
+    ],
+    [
+      "callee&apos;s klass not linked yet",
+      101
+    ],
+    [
+      "receiver not constant",
+      64
+    ],
+    [
+      "size &gt; DesiredMethodLimit",
+      56
+    ]
+  ],
+  "nativeMemoryAtExitBytes": {
+    "Java Heap": {
+      "reserved": 805306368,
+      "committed": 268435456
+    },
+    "Thread": {
+      "reserved": 16831592,
+      "committed": 861288
+    },
+    "Code": {
+      "reserved": 254431472,
+      "committed": 11313392
+    },
+    "GC": {
+      "reserved": 54650911,
+      "committed": 44165151
+    },
+    "Compiler": {
+      "reserved": 208864,
+      "committed": 208864
+    },
+    "threadStacks": {
+      "reserved": 16777216,
+      "committed": 806912
+    }
+  },
+  "limits": "Sampling is approximate; inlined scopes may appear in traces. Top/inclusive samples cannot isolate call overhead or hardware branches/cache misses. NMT is whole-process exit state including JVM/JIT/JFR/GC, not per-search peak. Thread stack reservations remain even with flat Search. Clean cost data exclude these profiled runs."
+}

@@ -1,0 +1,244 @@
+{
+  "profile": "docs\\research\\search\\p3-sr002-execution-2026-10-19\\raw\\full-profile-w4-flat-v1",
+  "jfrSha256": "8367ab94af0581196220438b6cba964d991ff5954e88ce632f460d81be153738",
+  "searchStackSamples": 1673,
+  "truncatedSearchStackSamples": 0,
+  "maxSampledRecursiveFrames": 0,
+  "topMethods": [
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.flatNegamax",
+      272
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.getPawnTactical",
+      178
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.flatQuiescence",
+      175
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Board.makeMoveInto",
+      126
+    ],
+    [
+      "com/ohinteractive/seedv6/core/See.captureAtLeast",
+      113
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.getQueenTactical",
+      101
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.appendQuiets",
+      69
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/Sort.next",
+      68
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/QuietHistory.recordCutoff",
+      54
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.getBishopTactical",
+      47
+    ],
+    [
+      "com/ohinteractive/seedv6/core/See.atLeastGeneratedLegal",
+      46
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.getRookTactical",
+      44
+    ],
+    [
+      "com/ohinteractive/seedv6/rules/SearchLineHistory.currentOccurrences",
+      34
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.completed",
+      30
+    ],
+    [
+      "com/ohinteractive/seedv6/core/brnpair2/BrnPair2Model$Workspace.evaluatePawns",
+      22
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.genTactical",
+      20
+    ]
+  ],
+  "inclusiveMethods": [
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.flatNegamax",
+      1553
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.searchWindow",
+      1478
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.flatQuiescence",
+      817
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.searchRootMove",
+      789
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.genTactical",
+      411
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker.rootJob",
+      271
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.getPawnTactical",
+      180
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.snapshotOrdering",
+      176
+    ],
+    [
+      "com/ohinteractive/seedv6/core/See.atLeastGeneratedLegal",
+      176
+    ],
+    [
+      "com/ohinteractive/seedv6/core/See.continuationAtLeast",
+      130
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Board.makeMoveInto",
+      126
+    ],
+    [
+      "com/ohinteractive/seedv6/core/See.captureAtLeast",
+      115
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.appendQuiets",
+      112
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.getQueenTactical",
+      101
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/Sort.next",
+      68
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.genEvasion",
+      61
+    ],
+    [
+      "com/ohinteractive/seedv6/search/exact/QuietHistory.recordCutoff",
+      54
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.genQuiet",
+      50
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.getBishopTactical",
+      47
+    ],
+    [
+      "com/ohinteractive/seedv6/core/Gen.getRookTactical",
+      44
+    ]
+  ],
+  "lastObservedC2Compilation": {
+    "flatQuiescence (IIII)I": {
+      "bytes": "1173",
+      "size": "55304",
+      "stamp": "2.807"
+    },
+    "flatNegamax (III)I": {
+      "bytes": "2529",
+      "size": "105272",
+      "stamp": "7.641"
+    }
+  },
+  "wholeJvmInlineFailureReasons": [
+    [
+      "callee is too large",
+      3595
+    ],
+    [
+      "no static binding",
+      795
+    ],
+    [
+      "callee uses too much stack",
+      791
+    ],
+    [
+      "too big",
+      441
+    ],
+    [
+      "don&apos;t inline Throwable constructors",
+      405
+    ],
+    [
+      "not inlineable",
+      259
+    ],
+    [
+      "low call site frequency",
+      202
+    ],
+    [
+      "native method",
+      191
+    ],
+    [
+      "hot method too big",
+      102
+    ],
+    [
+      "callee&apos;s klass not linked yet",
+      101
+    ],
+    [
+      "receiver not constant",
+      64
+    ],
+    [
+      "size &gt; DesiredMethodLimit",
+      56
+    ]
+  ],
+  "nativeMemoryAtExitBytes": {
+    "Java Heap": {
+      "reserved": 805306368,
+      "committed": 268435456
+    },
+    "Thread": {
+      "reserved": 16831592,
+      "committed": 861288
+    },
+    "Code": {
+      "reserved": 254431472,
+      "committed": 11313392
+    },
+    "GC": {
+      "reserved": 54650911,
+      "committed": 44165151
+    },
+    "Compiler": {
+      "reserved": 208864,
+      "committed": 208864
+    },
+    "threadStacks": {
+      "reserved": 16777216,
+      "committed": 806912
+    }
+  },
+  "limits": "Sampling is approximate; inlined scopes may appear in traces. Top/inclusive samples cannot isolate call overhead or hardware branches/cache misses. NMT is whole-process exit state including JVM/JIT/JFR/GC, not per-search peak. Thread stack reservations remain even with flat Search. Clean cost data exclude these profiled runs."
+}

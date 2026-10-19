@@ -179,6 +179,53 @@ public final class ExactSearch {
     private InternalSearchPolicy.Diagnostics internalDiagnostics;
     private boolean internalProbe;
     private long[] internalMoves;
+    // SR-002 diagnostic only. Six primitive saved-parent fields, no per-node allocation.
+    // Main PVS remains recursive; production factories never enable this alternative.
+    private int[][] flatQFrames;
+    private int[][] flatMainFrames;
+    private long[][] flatMainLongs;
+
+    /** Bounded SR-002 integrated alternative. Supports the current production
+     * composition and its unpruned control, not unrelated research policies. */
+    public ExactSearch withFlatSearchResearch(boolean enabled) {
+        if(active || requestActive) throw new IllegalStateException("Search request active");
+        if(enabled) requireFlatMainDomain();
+        flatMainFrames=enabled?new int[11][MAX_DEPTH]:null;
+        flatMainLongs=enabled?new long[4][MAX_DEPTH]:null;
+        withFlatQuiescenceResearch(enabled);
+        return this;
+    }
+
+    private void requireFlatMainDomain() {
+        requireFlatQuiescenceDomain();
+        if(!nominalQsearch || mechanics!=STAGED_LAZY || ordering!=SEE_MATERIAL_QUIET_HISTORY
+                || traversal!=PVS || !mateDistancePruning || reverseFutility || nullMovePruning
+                || pairNull!=NullMovePolicy.OFF || internalPolicy!=InternalSearchPolicy.OFF
+                || checkPolicy!=CHECK_OFF || tacticalExtension!=TacticalExtension.OFF
+                || depthFeedback!=DepthFeedback.OFF || futilityPolicy!=FutilityPolicy.OFF
+                || historyLearning!=null || reservations!=null || internalDiagnostics!=null
+                || lmrDiagnostics!=null || lmpDiagnostics!=null
+                || (lmrPolicy!=LMR_OFF && lmrPolicy!=LMR_QUIET)
+                || (lmpPolicy!=LMP_OFF && lmpPolicy!=LMP_WINDOW)
+                || (iterationReuse!=null && iterationReuse.diagnostics!=null))
+            throw new IllegalStateException("Flat main Search supports current Policy 4 or unpruned control");
+    }
+
+    public ExactSearch withFlatQuiescenceResearch(boolean enabled) {
+        if(active || requestActive) throw new IllegalStateException("Search request active");
+        if(!enabled && flatMainFrames!=null) throw new IllegalStateException("Disable full flattening first");
+        if(enabled) requireFlatQuiescenceDomain();
+        flatQFrames=enabled ? new int[6][MAX_DEPTH] : null;
+        return this;
+    }
+
+    private void requireFlatQuiescenceDomain() {
+        if(!quiescence || qtable!=null || quietChecks || recapturesOnlyAfterFirst
+                || qsearchPruning!=QSEARCH_BASELINE || qdepthLimit!=Integer.MAX_VALUE
+                || (seePolicy!=SeePolicy.OFF && seePolicy!=SeePolicy.QXRAY)
+                || quietCheckCounters!=null || forcingCounters!=null || tacticalDiagnostics!=null)
+            throw new IllegalStateException("Flat qsearch supports only unpruned or QXRAY leaves");
+    }
 
     /** Explicit cumulative EFFORT experiment. No ordinary constructor enables SR-007. */
     public static ExactSearch internalSearchResearch(ExactEvaluator evaluator, TTable table,
@@ -754,6 +801,8 @@ public final class ExactSearch {
         if(depth < 0 || depth > MAX_DEPTH) throw new IllegalArgumentException("Depth must be 0.." + MAX_DEPTH);
         if(alpha < -INFINITY || beta > INFINITY || alpha >= beta) throw new IllegalArgumentException("Invalid window.");
         if(active) throw new IllegalStateException("ExactSearch cannot be re-entered.");
+        if(flatQFrames!=null) requireFlatQuiescenceDomain();
+        if(flatMainFrames!=null) requireFlatMainDomain();
         gameHistory.requireCurrent(board);
         if(!requestActive) { advanceGeneration(); clearFeedback(); }
         long start = System.nanoTime();
@@ -800,7 +849,8 @@ public final class ExactSearch {
             history = new SearchLineHistory(gameHistory, quiescence ? MAX_DEPTH : depth);
             if(historyKeys != null) historyKeys[0] = SearchKey.rootHistory(board, gameHistory);
             evaluator.initialize(boards[0]);
-            int score = consumedQplies < 0 ? negamax(depth, 0, alpha, beta, 0, false)
+            int score = consumedQplies < 0 ? (flatMainFrames!=null ? flatNegamax(depth,alpha,beta)
+                    : negamax(depth, 0, alpha, beta, 0, false))
                     : quiescence(0, consumedQplies, alpha, beta, quietChecksUsed);
             checkpoint();
             // Conservative provenance: even a prediction later made irrelevant
@@ -829,6 +879,189 @@ public final class ExactSearch {
             active = false;
             if(!requestActive) clearFeedback();
         }
+    }
+
+    /** Saved-parent main continuations: entry, next edge, returned child. Stage 2
+     * is reduced scout, 3 nominal scout, 4 full window. The real child stays pushed
+     * through both retries. Only the current supported policy domain is admitted;
+     * shared ordering/proof/learning helpers and recursive references stay intact. */
+    private int flatNegamax(int depth,int alpha,int beta) {
+        int ply=0,state=0,score=0,originalAlpha=0,originalBeta=0,count=0,index=0,best=0;
+        int flags=0,searchedQuiets=0,stage=4;
+        long key=0,hashMove=0,entryEpoch=0,rootNodesBefore=0;
+        int historySize=history.size();
+        try {
+            while(true) {
+                if(state==2) {
+                    if(ply==0) return score;
+                    --ply;
+                    depth=flatMainFrames[0][ply];alpha=flatMainFrames[1][ply];beta=flatMainFrames[2][ply];
+                    originalAlpha=flatMainFrames[3][ply];originalBeta=flatMainFrames[4][ply];
+                    count=flatMainFrames[5][ply];index=flatMainFrames[6][ply];best=flatMainFrames[7][ply];
+                    flags=flatMainFrames[8][ply];searchedQuiets=flatMainFrames[9][ply];stage=flatMainFrames[10][ply];
+                    key=flatMainLongs[0][ply];hashMove=flatMainLongs[1][ply];
+                    entryEpoch=flatMainLongs[2][ply];rootNodesBefore=flatMainLongs[3][ply];
+                    score=-score;
+                    if(stage==2) {
+                        if(score>alpha || score < -MAX_STATIC_SCORE || score > MAX_STATIC_SCORE) {
+                            flatMainFrames[10][ply]=3;
+                            int childAlpha=-alpha-1;beta=-alpha;alpha=childAlpha;
+                            depth--;ply++;flags=4;state=0;continue;
+                        }
+                        score=alpha; // Reduced fail-low is a threshold prediction, never nominal proof.
+                    }
+                    if(stage==3 && score>alpha && score<beta) {
+                        flatMainFrames[10][ply]=4;
+                        int childAlpha=-beta;beta=-alpha;alpha=childAlpha;
+                        depth--;ply++;flags=0;state=0;continue;
+                    }
+                    history.popRealPosition();
+                    long move=moves[ply][index];
+                    if(ply==0 && iterationReuse!=null) iterationReuse.rootResult(move,score,nodes-observationNodes-rootNodesBefore);
+                    if(score>best) {
+                        best=score;
+                        if(stage==4 || score>=beta) {
+                            pv[ply][0]=move;
+                            int length=stage==4?pvLength[ply+1]:0;
+                            System.arraycopy(pv[ply+1],0,pv[ply],1,length);pvLength[ply]=1+length;
+                        }
+                    }
+                    if(score>=beta) {
+                        checkpoint();
+                        QuietHistory.recordCutoff(quietHistory,moves[ply],index,
+                                Board.enPassantSquare((int)boards[ply][Board.STATUS]),depth);
+                        score=completed(key,depth,ply,originalAlpha,originalBeta,score,move,entryEpoch);
+                        continue;
+                    }
+                    if(score>alpha) alpha=score;
+                    index++;state=1;
+                }
+                long[] board=boards[ply],legalMoves=moves[ply];
+                int status=(int)board[Board.STATUS],keyBase=ply*MAX_MOVES;
+                if(state==0) {
+                    if(depth<=0) {
+                        selectiveEpoch++;
+                        score=flatQuiescence(ply,0,alpha,beta);state=2;continue;
+                    }
+                    checkpoint();nodes++;pvLength[ply]=0;
+                    long checking=checkers(board,status);
+                    flags=(flags&4)|(checking!=0?1:0);
+                    if(checking!=0) count=Gen.genEvasion(board[0],board[1],board[2],board[3],status,
+                            board[Board.KEY],true,checking,legalMoves,generatorScratch);
+                    else {
+                        count=Gen.genTactical(board[0],board[1],board[2],board[3],status,
+                                board[Board.KEY],true,legalMoves,generatorScratch);
+                        if(count==0) count=Gen.genQuiet(board[0],board[1],board[2],board[3],status,
+                                board[Board.KEY],true,legalMoves,generatorScratch);
+                        else flags|=2;
+                    }
+                    state=2;
+                    if(count==0) {score=(flags&1)!=0?-MATE_SCORE+ply:0;continue;}
+                    if(DrawAdjudicator.adjudicateNonTerminal(board,history)!=DrawAdjudicator.RuleDraw.NONE) {
+                        score=0;continue;
+                    }
+                    if(ply==0 && restrictedRootMove!=0) {
+                        if((flags&2)!=0) {count=appendQuiets(board,legalMoves,count);flags&=~2;}
+                        if(!containsMove(legalMoves,count,restrictedRootMove)) throw new IllegalArgumentException("Illegal restricted root move");
+                        legalMoves[0]=restrictedRootMove;count=1;
+                    }
+                    if(ply==MAX_DEPTH) throw ABORTED;
+                    originalAlpha=alpha;originalBeta=beta;key=0;hashMove=0;
+                    boolean ttPresent=false,ttReturn=false;
+                    if(table!=null && (ply!=0 || restrictedRootMove==0)) {
+                        key=SearchKey.key(board,historyKeys[ply]);
+                        if(table.probe(key,entry)) {
+                            ttPresent=true;hashMove=entry.hashMove;
+                            if((flags&2)!=0 && hashMove!=0 && !CaptureHistory.isTactical(hashMove,Board.enPassantSquare(status))) {
+                                count=appendQuiets(board,legalMoves,count);flags&=~2;
+                            }
+                            long data=entry.data;
+                            if((data&255)==depth && ((data>>>10)&255)==generation) {
+                                score=TranspositionScores.fromTableScore((int)(data>>32),ply);
+                                int type=(int)(data>>>8)&3;
+                                if(type==TTable.TYPE_EXACT || (type==TTable.TYPE_LOWER && score>=beta)
+                                        || (type==TTable.TYPE_UPPER && score<=alpha)) {
+                                    if(containsMove(legalMoves,count,hashMove)) {pv[ply][0]=hashMove;pvLength[ply]=1;}
+                                    if(ply!=0 || pvLength[ply]!=0) ttReturn=true;
+                                    else hashMove=0;
+                                }
+                            }
+                        }
+                    }
+                    if(ttReturn) continue;
+                    if(completedHints && !ttPresent && (ply!=0 || restrictedRootMove==0)) {
+                        if(hintDiagnostics!=null) hintDiagnostics.probes++;
+                        hashMove=table.probeHint(key);
+                        if(hashMove!=0) {
+                            if((flags&2)!=0 && !CaptureHistory.isTactical(hashMove,Board.enPassantSquare(status))) {
+                                count=appendQuiets(board,legalMoves,count);flags&=~2;
+                            }
+                            if(!containsMove(legalMoves,count,hashMove)) {
+                                if(hintDiagnostics!=null) hintDiagnostics.illegal++;
+                                hashMove=0;
+                            } else if(hintDiagnostics!=null) hintDiagnostics.hits++;
+                        }
+                    }
+                    long iterationHint=iterationReuse==null?0:iterationReuse.hint(ply,hashMove);
+                    if(iterationReuse!=null && (flags&2)!=0 && (iterationHint!=0 || (ply==0 && iterationReuse.rootRanking()))) {
+                        count=appendQuiets(board,legalMoves,count);flags&=~2;
+                    }
+                    int upper=MATE_SCORE-ply-1,lower=-MATE_SCORE+ply+2;
+                    if(upper<=originalAlpha) {if(ply==0) rootDomainBound=true;score=upper;continue;}
+                    if(lower>=originalBeta) {if(ply==0) rootDomainBound=true;score=lower;continue;}
+                    if(alpha<lower) alpha=lower;if(beta>upper) beta=upper;
+                    entryEpoch=selectiveEpoch;
+                    snapshotOrdering(board,legalMoves,count,hashMove,selectionKeys,keyBase);
+                    if(iterationReuse!=null) iterationReuse.order(legalMoves,count,selectionKeys,keyBase,hashMove,iterationHint,ply);
+                    best=-INFINITY;searchedQuiets=0;index=0;state=1;
+                }
+                if(index==count && (flags&2)==0) {
+                    score=completed(key,depth,ply,originalAlpha,originalBeta,best,pv[ply][0],entryEpoch);
+                    state=2;continue;
+                }
+                checkpoint();
+                if(index==count) {
+                    int from=count;count=appendQuiets(board,legalMoves,count);flags&=~2;
+                    for(int j=from;j<count;j++) {
+                        int evidence=quietHistory[QuietHistory.index(legalMoves[j])];
+                        selectionKeys[keyBase+j]=((evidence+QuietHistory.LIMIT)<<9)|(511-j);
+                    }
+                    if(index==count) continue;
+                }
+                Sort.next(legalMoves,selectionKeys,keyBase,index,count);
+                long move=legalMoves[index];long[] child=boards[ply+1];
+                Board.makeMoveInto(board[0],board[1],board[2],board[3],status,board[Board.KEY],move,child);
+                boolean prune=lmpPolicy!=LMP_OFF && depth>=1 && depth<=4 && lmpPrunes(board,depth,searchedQuiets);
+                if(prune && lmpEligible(depth,ply,index,(flags&4)!=0 || originalBeta==originalAlpha+1,
+                        (flags&1)!=0,move,hashMove,status,child,alpha,beta)) {
+                    selectiveEpoch++;best=Math.max(best,alpha);
+                    legalMoves[index]=legalMoves[--count];selectionKeys[keyBase+index]=selectionKeys[keyBase+count];
+                    continue;
+                }
+                rootNodesBefore=ply==0 && iterationReuse!=null?nodes-observationNodes:0;
+                if(iterationReuse!=null) iterationReuse.descend(ply,move);
+                int childDepth=depth-1;
+                evaluator.child(board,child,ply,childDepth==0?0:-1);
+                if(lmrPolicy==LMR_QUIET && !CaptureHistory.isTactical(move,Board.enPassantSquare(status))) searchedQuiets++;
+                history.pushRealPosition(child);
+                if(historyKeys!=null) historyKeys[ply+1]=SearchKey.childHistory(historyKeys[ply],history.currentKey(),(int)child[Board.STATUS]);
+                stage=4;
+                int childAlpha=-beta,childBeta=-alpha,childFlags=ply==0 && restrictedRootMove!=0 && restrictedRootScout?4:0;
+                if(index>0) {
+                    childAlpha=-alpha-1;childFlags=4;stage=3;
+                    int reduction=lmrReduction(depth,ply,index+1,searchedQuiets,(flags&4)!=0,(flags&1)!=0,
+                            move,hashMove,status,child,alpha,beta);
+                    if(reduction>0) {selectiveEpoch++;childDepth-=reduction;stage=2;}
+                }
+                flatMainFrames[0][ply]=depth;flatMainFrames[1][ply]=alpha;flatMainFrames[2][ply]=beta;
+                flatMainFrames[3][ply]=originalAlpha;flatMainFrames[4][ply]=originalBeta;
+                flatMainFrames[5][ply]=count;flatMainFrames[6][ply]=index;flatMainFrames[7][ply]=best;
+                flatMainFrames[8][ply]=flags;flatMainFrames[9][ply]=searchedQuiets;flatMainFrames[10][ply]=stage;
+                flatMainLongs[0][ply]=key;flatMainLongs[1][ply]=hashMove;
+                flatMainLongs[2][ply]=entryEpoch;flatMainLongs[3][ply]=rootNodesBefore;
+                depth=childDepth;alpha=childAlpha;beta=childBeta;flags=childFlags;ply++;state=0;
+            }
+        } finally {while(history.size()>historySize) history.popRealPosition();}
     }
 
     private int negamax(int depth, int ply, int alpha, int beta, long previousMove, boolean scout) {
@@ -1673,11 +1906,115 @@ public final class ExactSearch {
      * SR-001E/F/G append eligible legal quiet checks in generated order after those tacticals.
      */
     private int quiescence(int ply, int qply, int alpha, int beta) {
+        if(flatQFrames!=null) return flatQuiescence(ply,qply,alpha,beta);
         return quiescence(ply, qply, alpha, beta, 0);
     }
 
     private int quiescence(int ply, int qply, int alpha, int beta, int quietChecksUsed) {
+        if(flatQFrames!=null) return flatQuiescence(ply,qply,alpha,beta);
         return quiescence(ply, qply, alpha, beta, quietChecksUsed, -1);
+    }
+
+    /** Explicit qsearch continuations; all main-search retries and proof ownership
+     * stay with the unchanged recursive caller. Restricted domain is checked before
+     * each invocation. Recursive SR-001A and the six-argument qsearch stay independent.
+     * This is partial flattening, not a fully flattened Search implementation. */
+    private int flatQuiescence(int startPly, int startQply, int alpha, int beta) {
+        int ply=startPly,state=0,score=0,best=0,count=0,index=0;
+        boolean checked=false;
+        int historySize=history.size();
+        try {
+            while(true) {
+                if(state==2) {
+                    if(ply==startPly) return score;
+                    history.popRealPosition();
+                    --ply;
+                    alpha=flatQFrames[0][ply];beta=flatQFrames[1][ply];
+                    best=flatQFrames[2][ply];count=flatQFrames[3][ply];
+                    index=flatQFrames[4][ply];checked=flatQFrames[5][ply]!=0;
+                    score=-score;
+                    if(score>best) {
+                        best=score;pv[ply][0]=moves[ply][index];
+                        int length=score>=beta ? 0 : pvLength[ply+1];
+                        System.arraycopy(pv[ply+1],0,pv[ply],1,length);
+                        pvLength[ply]=1+length;
+                    }
+                    if(score>=beta) continue;
+                    if(score>alpha) alpha=score;
+                    index++;state=1;
+                }
+                long[] board=boards[ply],legalMoves=moves[ply];
+                int status=(int)board[Board.STATUS],qply=startQply+ply-startPly;
+                if(state==0) {
+                    checkpoint();nodes++;qnodes++;
+                    maximumQply=Math.max(maximumQply,qply);pvLength[ply]=0;
+                    long checking=checkers(board,status);checked=checking!=0;
+                    count=checked
+                            ? Gen.genEvasion(board[0],board[1],board[2],board[3],status,
+                                    board[Board.KEY],true,checking,legalMoves,generatorScratch)
+                            : Gen.genTactical(board[0],board[1],board[2],board[3],status,
+                                    board[Board.KEY],true,legalMoves,generatorScratch);
+                    state=2;
+                    if(count==0) {
+                        if(checked) {score=-MATE_SCORE+ply;continue;}
+                        boolean legal=nominalQsearch
+                                ? Gen.hasLegalMoveNotInCheck(board[0],board[1],board[2],board[3],status)
+                                : Gen.genQuiet(board[0],board[1],board[2],board[3],status,
+                                        board[Board.KEY],true,quietScratch,generatorScratch)!=0;
+                        if(!legal) {score=0;continue;}
+                    }
+                    if(DrawAdjudicator.adjudicateNonTerminal(board,history)!=DrawAdjudicator.RuleDraw.NONE) {
+                        score=0;continue;
+                    }
+                    best=-INFINITY;
+                    if(!checked) {
+                        best=evaluator.evaluate(board,ply);
+                        if(best < -MAX_STATIC_SCORE || best > MAX_STATIC_SCORE)
+                            throw new IllegalArgumentException("Static score enters the reserved mate band: "+best);
+                        if(best>=beta || count==0) {score=best;continue;}
+                        if(best>alpha) alpha=best;
+                    }
+                    if(ply==MAX_DEPTH) throw ABORTED;
+                    if(!checked) snapshotOrdering(board,legalMoves,count,0,selectionKeys,ply*MAX_MOVES);
+                    index=0;state=1;
+                }
+                if(index==count) {score=best;state=2;continue;}
+                checkpoint();
+                int keyBase=ply*MAX_MOVES;
+                if(!checked) Sort.next(legalMoves,selectionKeys,keyBase,index,count);
+                long move=legalMoves[index];
+                boolean seeSuspect=!checked && seePolicy.prunesQuiescence(qply)
+                        && (selectionKeys[keyBase+index]>>>25)==1
+                        && ((move>>>Board.PROMOTE_PIECE_SHIFT)&Board.PIECE_BITS)==0
+                        && ((move>>>Board.TARGET_PIECE_SHIFT)&Board.PIECE_BITS)!=0;
+                long[] child=boards[ply+1];
+                Board.makeMoveInto(board[0],board[1],board[2],board[3],status,board[Board.KEY],move,child);
+                if(seeSuspect) {
+                    if(seeDiagnostics!=null) seeDiagnostics.qCandidates++;
+                    boolean seeChecking=checkers(child,(int)child[Board.STATUS])!=0;
+                    if(!seeChecking && !SeePolicy.opensSliderThreat(board,child,move)) {
+                        selectiveEpoch++;
+                        if(seeDiagnostics!=null) {
+                            seeDiagnostics.qOmitted++;
+                            seeDiagnostics.omitted(board,child,move,ply,0,qply,-1,-1,alpha,beta);
+                        }
+                        index++;continue;
+                    }
+                    if(seeChecking && seeDiagnostics!=null) seeDiagnostics.checksRetained++;
+                }
+                evaluator.child(board,child,ply,qply+1);
+                history.pushRealPosition(child);
+                flatQFrames[0][ply]=alpha;flatQFrames[1][ply]=beta;
+                flatQFrames[2][ply]=best;flatQFrames[3][ply]=count;
+                flatQFrames[4][ply]=index;flatQFrames[5][ply]=checked?1:0;
+                int childAlpha=-beta;beta=-alpha;alpha=childAlpha;
+                ply++;state=0;
+            }
+        } finally {
+            // Restore exactly this qtree's entry, preserving the main caller's path
+            // for its own finally blocks, including evaluator failure/cancellation.
+            while(history.size()>historySize) history.popRealPosition();
+        }
     }
 
     private int quiescence(int ply, int qply, int alpha, int beta, int quietChecksUsed, int previousTo) {

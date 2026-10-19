@@ -88,6 +88,23 @@ public final class ParallelSearch implements SingleDepthSearch {
     }
 
     /** Same coherent TT, private counters, and unchanged ROOT_REUSE scheduling. */
+    public ParallelSearch withFlatQuiescenceResearch(boolean enabled) {
+        ensureIdle();
+        if(requestActive || policy!=ConcurrencyPolicy.ROOT_REUSE)
+            throw new IllegalStateException("Flat qsearch requires idle ROOT_REUSE");
+        for(var worker:workers) worker.search.withFlatQuiescenceResearch(enabled);
+        return this;
+    }
+
+    public ParallelSearch withFlatSearchResearch(boolean enabled) {
+        ensureIdle();
+        if(requestActive || policy!=ConcurrencyPolicy.ROOT_REUSE)
+            throw new IllegalStateException("Flat Search requires idle ROOT_REUSE");
+        for(var worker:workers) worker.search.withFlatSearchResearch(enabled);
+        return this;
+    }
+
+    /** Same coherent TT, private counters, and unchanged ROOT_REUSE scheduling. */
     public ParallelSearch withCompletedHints(boolean enabled,
             java.util.function.IntFunction<MoveHintDiagnostics> diagnostics) {
         ensureIdle();

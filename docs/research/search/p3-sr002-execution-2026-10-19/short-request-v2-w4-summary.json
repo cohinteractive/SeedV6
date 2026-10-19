@@ -1,0 +1,227 @@
+{
+  "sources": [
+    {
+      "path": "docs/research/search/p3-sr002-execution-2026-10-19/raw/short-request-v2-w4-f1.jsonl",
+      "sha256": "0f0a4e0a893f990805b4895980e04185ed91cc8dd7584a4869ad675f63f97c49",
+      "identity": {
+        "arguments": [
+          "build-assets/production/bre-pair2-g32.brn-pair2",
+          "docs/research/search/p3-sr002-execution-2026-10-19/confirmation-corpus.tsv",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr002-execution-2026-10-19\\raw\\short-request-v2-w4-f1.jsonl",
+          "4",
+          "8",
+          "6",
+          "6",
+          "2000000",
+          "20",
+          "full-both"
+        ],
+        "hashMiB": 64,
+        "vm": "OpenJDK 64-Bit Server VM",
+        "configuration": "Policy4-full-both",
+        "workers": 4,
+        "java": "21+35-2513",
+        "jvm": [
+          "--add-modules=jdk.incubator.vector",
+          "-Djava.awt.headless=true",
+          "-Xms256m",
+          "-Xmx768m",
+          "-XX:ActiveProcessorCount=2"
+        ],
+        "type": "identity"
+      }
+    },
+    {
+      "path": "docs/research/search/p3-sr002-execution-2026-10-19/raw/short-request-v2-w4-f2.jsonl",
+      "sha256": "7d5147aa4eaf6004709aeb11d54b66f3407bc6ce413f27b61892a2872557fce1",
+      "identity": {
+        "vm": "OpenJDK 64-Bit Server VM",
+        "configuration": "Policy4-full-both",
+        "workers": 4,
+        "java": "21+35-2513",
+        "jvm": [
+          "--add-modules=jdk.incubator.vector",
+          "-Djava.awt.headless=true",
+          "-Xms256m",
+          "-Xmx768m",
+          "-XX:ActiveProcessorCount=2"
+        ],
+        "type": "identity",
+        "arguments": [
+          "build-assets/production/bre-pair2-g32.brn-pair2",
+          "docs/research/search/p3-sr002-execution-2026-10-19/confirmation-corpus.tsv",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr002-execution-2026-10-19\\raw\\short-request-v2-w4-f2.jsonl",
+          "4",
+          "8",
+          "6",
+          "6",
+          "2000000",
+          "20",
+          "full-both"
+        ],
+        "hashMiB": 64
+      }
+    }
+  ],
+  "measuredRequests": 480,
+  "modes": {
+    "0": {
+      "requests": 240,
+      "nodes": 20589621,
+      "qFraction": 0.8648196098412885,
+      "wallSeconds": 7.6296112,
+      "processCpuSeconds": 17.125,
+      "ownerCpuSeconds": 7.40625,
+      "medianAllocatedBytesPerRequest": 1145408.0,
+      "allocatedBytesPerNode": 13.222755290153229,
+      "gcCollections": 1,
+      "compilationMillis": 61,
+      "maximumObservedHeapUsed": 250238232,
+      "maximumObservedPly": 29,
+      "maximumObservedQply": 23
+    },
+    "2": {
+      "requests": 240,
+      "nodes": 20410762,
+      "qFraction": 0.8644559669060861,
+      "wallSeconds": 7.9123387,
+      "processCpuSeconds": 17.859375,
+      "ownerCpuSeconds": 7.671875,
+      "medianAllocatedBytesPerRequest": 1145396.0,
+      "allocatedBytesPerNode": 13.333582744240514,
+      "gcCollections": 5,
+      "compilationMillis": 117,
+      "maximumObservedHeapUsed": 251286808,
+      "maximumObservedPly": 29,
+      "maximumObservedQply": 23
+    }
+  },
+  "candidateMode": 2,
+  "pairedRequests": 240,
+  "elapsedNanos": {
+    "geometricFlatOverRecursive": 1.0366515976737323,
+    "positionClusterPercentile95": [
+      1.0226845419350556,
+      1.0525486834592763
+    ],
+    "positionCount": 20,
+    "perPosition": {
+      "fresh-00-8": 1.047466607715146,
+      "fresh-01-16": 0.9963189930434776,
+      "fresh-02-24": 1.0383288068178316,
+      "fresh-03-8": 1.0351653939944274,
+      "fresh-04-16": 1.002499544456358,
+      "fresh-05-24": 1.045103072993298,
+      "fresh-06-8": 1.025946366390512,
+      "fresh-07-16": 1.0476405918303968,
+      "fresh-08-24": 1.0436665243126548,
+      "fresh-09-8": 1.0085332169150283,
+      "fresh-10-16": 1.0233163136351904,
+      "fresh-11-24": 0.9826289468890234,
+      "fresh-12-8": 1.0283998542211563,
+      "fresh-13-16": 1.0340584826125436,
+      "fresh-14-24": 1.0316749474742772,
+      "fresh-15-8": 1.0457367066348058,
+      "fresh-16-16": 1.0502117833829288,
+      "fresh-17-24": 1.1214409435144148,
+      "fresh-18-8": 1.0093436860456997,
+      "fresh-19-16": 1.1266182368447875
+    },
+    "aggregateFlatOverRecursive": 1.0370566065017834
+  },
+  "processCpuNanos": {
+    "geometricFlatOverRecursive": 1.12397033538015,
+    "positionClusterPercentile95": [
+      1.0158930827940593,
+      1.260731018168349
+    ],
+    "positionCount": 20,
+    "perPosition": {
+      "fresh-00-8": 0.9799185947080309,
+      "fresh-01-16": 1.3362224092292516,
+      "fresh-02-24": 1.1017824022944978,
+      "fresh-03-8": 1.3222928907310165,
+      "fresh-04-16": 0.8908987181403394,
+      "fresh-05-24": 0.8987552872045582,
+      "fresh-06-8": 0.9746354454835903,
+      "fresh-07-16": 1.7697379961749373,
+      "fresh-08-24": 0.9966039468010824,
+      "fresh-09-8": 0.9792749099032926,
+      "fresh-10-16": 1.7455173324519482,
+      "fresh-11-24": 1.0399639186025635,
+      "fresh-12-8": 0.9350022697506644,
+      "fresh-13-16": 0.8603735936536366,
+      "fresh-14-24": 1.414213562373095,
+      "fresh-15-8": 0.9371998343719159,
+      "fresh-16-16": 0.8869545190903207,
+      "fresh-18-8": 1.0053926986291915,
+      "fresh-19-16": 1.166541222242349,
+      "fresh-17-24": 2.0
+    },
+    "aggregateFlatOverRecursive": 1.042883211678832
+  },
+  "ownerCpuNanos": {
+    "geometricFlatOverRecursive": 1.0354562345563552,
+    "positionClusterPercentile95": [
+      1.0045424311614393,
+      1.0688335906672257
+    ],
+    "positionCount": 20,
+    "perPosition": {
+      "fresh-00-8": 0.9389309106617063,
+      "fresh-01-16": 1.1840535873752085,
+      "fresh-02-24": 1.0958726911352443,
+      "fresh-03-8": 1.0594630943592953,
+      "fresh-04-16": 0.9438743126816935,
+      "fresh-05-24": 1.0594630943592953,
+      "fresh-06-8": 1.0343660831319166,
+      "fresh-07-16": 1.148698354997035,
+      "fresh-08-24": 1.0,
+      "fresh-09-8": 0.9667757057270663,
+      "fresh-10-16": 1.189207115002721,
+      "fresh-11-24": 1.0,
+      "fresh-12-8": 0.9573329748137452,
+      "fresh-13-16": 1.0,
+      "fresh-14-24": 1.0594630943592953,
+      "fresh-15-8": 1.069913193933663,
+      "fresh-16-16": 1.0242631807409892,
+      "fresh-18-8": 0.9438743126816935,
+      "fresh-19-16": 1.0851690389061426,
+      "fresh-17-24": 1.0
+    },
+    "aggregateFlatOverRecursive": 1.0358649789029535
+  },
+  "liveThreadAllocatedBytes": {
+    "geometricFlatOverRecursive": 0.9996036647026717,
+    "positionClusterPercentile95": [
+      0.9989962399440445,
+      1.0000121597130907
+    ],
+    "positionCount": 20,
+    "perPosition": {
+      "fresh-00-8": 0.9999901590084042,
+      "fresh-01-16": 0.9999936271838915,
+      "fresh-02-24": 0.9999799475181615,
+      "fresh-03-8": 1.0000734471073545,
+      "fresh-04-16": 1.0000032820779263,
+      "fresh-05-24": 1.0000581169082348,
+      "fresh-06-8": 1.0000146908874343,
+      "fresh-07-16": 1.0000519534123726,
+      "fresh-08-24": 1.000041139178889,
+      "fresh-09-8": 0.995803344122603,
+      "fresh-10-16": 1.0000016251097066,
+      "fresh-11-24": 0.9962694338743718,
+      "fresh-12-8": 1.0000381303669352,
+      "fresh-13-16": 0.9999989694063198,
+      "fresh-14-24": 1.0000155199279575,
+      "fresh-15-8": 1.0000070267136965,
+      "fresh-16-16": 1.0000180543642467,
+      "fresh-17-24": 1.000025626746686,
+      "fresh-18-8": 0.9998467817156235,
+      "fresh-19-16": 0.9998566841222426
+    },
+    "aggregateFlatOverRecursive": 0.9996219084470125
+  },
+  "identicalOutcomes": false,
+  "limits": "Position-cluster percentile bootstrap is approximate, conditional on fixed host/corpus/JVM; no platform generalization. Shared-JVM carryover, low-priority contention, coarse process CPU and live-thread allocation limits remain. Profiling runs are not clean timing evidence."
+}

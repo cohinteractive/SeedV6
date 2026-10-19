@@ -161,8 +161,9 @@ identity. Validate complete app images and extracted archives outside the build
 tree with paths containing spaces and without external Java. Native execution is
 required on each supported platform; static inspection cannot certify it.
 
-Keep `VERSION_STATE.txt` as SeedV6's existing version authority and use the local
-finalizer under AGENTS.md. Structural/application changes are assessed per unit;
+Keep `VERSION_STATE.txt` as SeedV6's existing version authority and follow the
+commit-based version rules in AGENTS.md, with no finalizer dependency.
+Structural/application changes are assessed per unit;
 WU0 is documentation-only and must not bump. Builds/retries do not invent release
 identity. Every future package records source commit/dirty state, version/build,
 engine baseline and changes, model SHA-256, JAR/archive hashes, runtime and host

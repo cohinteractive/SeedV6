@@ -1,0 +1,49 @@
+{
+  "id": "P3-SR002-FULL-CONFIRMATION-v1",
+  "sourceHead": "fab5461",
+  "version": "0.0.0 build 35; DEFERRED_FINALIZATION, experimental identities use content hashes",
+  "sourceHashes": {
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ExactSearch.java": "662065cc395e9629b000eac6fc374033da293ea4c59dde436775b44394ef5d08",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ParallelSearch.java": "78109624238558ecc1987a1e18732d981b2c301ae369fe60054376e24d2e6661",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\driver\\ExactSearchAdapter.java": "7deab491548916c65b5b48553da559616b2d27b73d89b2aecb4a402d4206e7e7",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\Sr002ExecutionStudy.java": "738306a93156fd2a6c352004b4475c2ff1c66ebf0414c47bf0a1b33a6bc0a99e",
+    "docs\\research\\search\\p3-sr002-execution-2026-10-19\\run_study.py": "36cc888d5518d205eeab2919f4b94409a3586be3a7fbb1563720ef333ab90962",
+    "docs\\research\\search\\p3-sr002-execution-2026-10-19\\summarize_study.py": "4e7ee10105731bb07493632a3b439d2f68f227bb86da46cf914fe35a61e12b67",
+    "docs\\research\\search\\p3-sr002-execution-2026-10-19\\confirmation-v1.json": "9e5958078d415000948cf2a4b7d002e2860d026e1f25c230ab586915f6d968e2",
+    "docs\\research\\search\\p3-sr002-execution-2026-10-19\\confirmation-corpus.tsv": "781bfbf5d55fec0aef380e2db8c44bb25553ef295c24cb5c5697dd50f2e4f131"
+  },
+  "runtimeHashes": {
+    "research\\build\\install\\research\\lib\\engine-core.jar": "1d1e753faaab601846ebffd422b3e0e3a14ebaba33f91d21718380d6f6baece8",
+    "research\\build\\install\\research\\lib\\engine-training.jar": "76032c4ef2cb734d8630bb3b9344dc6d1a645eb50d3baa8661d3a359937d07f4",
+    "research\\build\\install\\research\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "research\\build\\install\\research\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research\\build\\install\\research\\lib\\research.jar": "43f27a28e290e8f44dfc8acead65dfb45f673d8acb1ed309168bd4168e8a6a62",
+    "research\\build\\install\\research\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "research\\build\\install\\research\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "corpusSource": "docs\\research\\search\\sr021-phase2-2026-10-15\\fresh-diagnostic-corpus.tsv",
+  "corpusSourceSha256": "3c27aaaea29e10c5641a678b230d20a25e68e6a99e24eb6999b082e0477ec592",
+  "selectedIds": [
+    "fresh-00-8",
+    "fresh-01-16",
+    "fresh-02-24",
+    "fresh-03-8",
+    "fresh-04-16",
+    "fresh-05-24",
+    "fresh-06-8",
+    "fresh-07-16",
+    "fresh-08-24",
+    "fresh-09-8",
+    "fresh-10-16",
+    "fresh-11-24",
+    "fresh-12-8",
+    "fresh-13-16",
+    "fresh-14-24",
+    "fresh-15-8",
+    "fresh-16-16",
+    "fresh-17-24",
+    "fresh-18-8",
+    "fresh-19-16"
+  ],
+  "modelSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+}

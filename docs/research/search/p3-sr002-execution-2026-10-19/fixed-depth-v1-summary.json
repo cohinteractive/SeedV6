@@ -1,0 +1,22 @@
+{
+  "1": {
+    "raw": "docs\\research\\search\\p3-sr002-execution-2026-10-19\\raw\\fixed-depth-w1-v1.jsonl",
+    "sha256": "23e2dde4613eb4ce3ec6e27f22449397b3604e24363d54d32a3f0fead5501b61",
+    "requests": 80,
+    "completed": 80,
+    "pairs": 40,
+    "identicalOutcomes": true,
+    "aggregateWallRatio": 1.032463593875193,
+    "limits": "Separate fixed-depth diagnostics; not pooled with confirmation. Whole requests include reset-excluded iteration/setup/coordination/retries. Parallel traversal can differ."
+  },
+  "4": {
+    "raw": "docs\\research\\search\\p3-sr002-execution-2026-10-19\\raw\\fixed-depth-w4-v1.jsonl",
+    "sha256": "e98ecaa6cebacb823f4661dac212fee11e14ff7160e65a92f21f68673b544564",
+    "requests": 80,
+    "completed": 80,
+    "pairs": 40,
+    "identicalOutcomes": false,
+    "aggregateWallRatio": 1.0850298681504764,
+    "limits": "Separate fixed-depth diagnostics; not pooled with confirmation. Whole requests include reset-excluded iteration/setup/coordination/retries. Parallel traversal can differ."
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "sources": [
+    {
+      "path": "docs/research/search/p3-sr002-execution-2026-10-19/raw/development-w4-v1.jsonl",
+      "sha256": "39d9edb6eb18a41db99d3d7212134e2b918b51267fe90fe557a4403d0c2488f9",
+      "identity": {
+        "jvm": [
+          "--add-modules=jdk.incubator.vector",
+          "-Djava.awt.headless=true",
+          "-Xms256m",
+          "-Xmx768m",
+          "-XX:ActiveProcessorCount=2"
+        ],
+        "java": "21+35-2513",
+        "workers": 4,
+        "configuration": "Policy4-both",
+        "vm": "OpenJDK 64-Bit Server VM",
+        "hashMiB": 64,
+        "arguments": [
+          "build-assets/production/bre-pair2-g32.brn-pair2",
+          "docs/research/search/sr005-phase2-2026-10-13/diagnostic-corpus.tsv",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr002-execution-2026-10-19\\raw\\development-w4-v1.jsonl",
+          "4",
+          "2",
+          "3",
+          "20",
+          "500000",
+          "8",
+          "both"
+        ],
+        "type": "identity"
+      }
+    }
+  ],
+  "measuredRequests": 48,
+  "modes": {
+    "0": {
+      "requests": 24,
+      "nodes": 12000000,
+      "qFraction": 0.83429125,
+      "wallSeconds": 5.4869351,
+      "processCpuSeconds": 11.03125,
+      "ownerCpuSeconds": 5.46875,
+      "medianAllocatedBytesPerRequest": 1473048.0,
+      "allocatedBytesPerNode": 3.0555373333333335,
+      "gcCollections": 0,
+      "compilationMillis": 969,
+      "maximumObservedHeapUsed": 231828992,
+      "maximumObservedPly": 34,
+      "maximumObservedQply": 26
+    },
+    "1": {
+      "requests": 24,
+      "nodes": 12000000,
+      "qFraction": 0.8319393333333334,
+      "wallSeconds": 5.4790557,
+      "processCpuSeconds": 10.1875,
+      "ownerCpuSeconds": 5.421875,
+      "medianAllocatedBytesPerRequest": 1504608.0,
+      "allocatedBytesPerNode": 3.083104666666667,
+      "gcCollections": 0,
+      "compilationMillis": 329,
+      "maximumObservedHeapUsed": 230780416,
+      "maximumObservedPly": 32,
+      "maximumObservedQply": 24
+    }
+  },
+  "pairedRequests": 24,
+  "elapsedNanos": {
+    "geometricFlatOverRecursive": 0.9945986824830223,
+    "positionClusterPercentile95": [
+      0.9333300745386907,
+      1.054496756758206
+    ],
+    "positionCount": 8,
+    "perPosition": {
+      "opening-00": 0.9306990692451363,
+      "opening-01": 1.039405959677464,
+      "opening-02": 0.8342164105043812,
+      "opening-03": 0.9821851935427858,
+      "opening-04": 1.0229785100879238,
+      "opening-05": 1.0043216563119342,
+      "opening-06": 1.1578610714794177,
+      "opening-07": 1.0155952290480486
+    },
+    "aggregateFlatOverRecursive": 0.9985639706217775
+  },
+  "processCpuNanos": {
+    "geometricFlatOverRecursive": 0.9354071436467781,
+    "positionClusterPercentile95": [
+      0.8698915978273987,
+      0.9980218393436436
+    ],
+    "positionCount": 8,
+    "perPosition": {
+      "opening-00": 0.776452770479825,
+      "opening-01": 1.0221246148259795,
+      "opening-02": 1.0170069274603861,
+      "opening-03": 0.9101726516996135,
+      "opening-04": 0.8262650022685953,
+      "opening-05": 0.9787706092339615,
+      "opening-06": 1.0406707157368935,
+      "opening-07": 0.9480369458075444
+    },
+    "aggregateFlatOverRecursive": 0.9235127478753541
+  },
+  "ownerCpuNanos": {
+    "geometricFlatOverRecursive": 0.9902073285768114,
+    "positionClusterPercentile95": [
+      0.9338666950202176,
+      1.0497984371735536
+    ],
+    "positionCount": 8,
+    "perPosition": {
+      "opening-00": 0.9043230514704445,
+      "opening-01": 1.0250102959657679,
+      "opening-02": 0.8526261160758652,
+      "opening-03": 0.9841840446856395,
+      "opening-04": 0.9811275528138894,
+      "opening-05": 1.0270400246248397,
+      "opening-06": 1.1524490328746742,
+      "opening-07": 1.0232641080938132
+    },
+    "aggregateFlatOverRecursive": 0.9914285714285714
+  },
+  "liveThreadAllocatedBytes": {
+    "geometricFlatOverRecursive": 1.0098721836760105,
+    "positionClusterPercentile95": [
+      0.9932858945811363,
+      1.0317738098337716
+    ],
+    "positionCount": 8,
+    "perPosition": {
+      "opening-00": 1.0178624498687896,
+      "opening-01": 1.0000498197258783,
+      "opening-02": 1.0794216368701957,
+      "opening-03": 1.001639470534129,
+      "opening-04": 1.0092259352658555,
+      "opening-05": 1.0014660473368577,
+      "opening-06": 0.9724093320541792,
+      "opening-07": 1.000101897227926
+    },
+    "aggregateFlatOverRecursive": 1.0090220901681013
+  },
+  "identicalOutcomes": false,
+  "limits": "Position-cluster percentile bootstrap is approximate, conditional on fixed host/corpus/JVM; no platform generalization. Shared-JVM carryover, low-priority contention, coarse process CPU and live-thread allocation limits remain. Profiling runs are not clean timing evidence."
+}

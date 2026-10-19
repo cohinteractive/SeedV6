@@ -169,6 +169,17 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
         return this;
     }
 
+    /** SR-002 opt-in partial flattening; production construction remains recursive. */
+    public ExactSearchAdapter withFlatQuiescenceResearch(boolean enabled) {
+        exact.withFlatQuiescenceResearch(enabled);
+        return this;
+    }
+
+    public ExactSearchAdapter withFlatSearchResearch(boolean enabled) {
+        exact.withFlatSearchResearch(enabled);
+        return this;
+    }
+
     public static ExactSearchAdapter depthFeedbackResearch(SearchEvaluation evaluation,
             com.ohinteractive.seedv6.search.exact.DepthFeedback policy,
             com.ohinteractive.seedv6.search.exact.DepthFeedback.Diagnostics diagnostics) {

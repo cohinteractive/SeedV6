@@ -1196,23 +1196,20 @@ platform backend initializes its native bindings. No helper executable is used.
 
 The source-controlled root `VERSION_STATE.txt` is the sole numeric application
 version authority: exactly the non-negative JSON integers `major`, `minor`,
-`patch`, and `build`. Only the user changes major/minor/patch. Automation changes
-only build, by one, and never resets it when another number changes.
+`patch`, and `build`. Only the user changes major/minor/patch. Codex changes only
+build, by one when committing qualifying application changes, and never resets it
+when another number changes.
 SeedV6 previously had no application build counter; old Windows images inherited
 jpackage's default `1.0`. The initial `0.0.0`, build `0` was explicitly selected
 by the user; it is a new counter, not a recovered historical number.
 
-The existing shared Codex completion workflow applies through root-file presence.
-Use the repository adapter `python -B tools/seed_version_finalizer.py --repo . begin`
-under AGENTS.md before implementation, retaining an active token. WU7 is explicitly no-bump.
-After implementation and required validation, use the same token with
-`finish <token> --decision bump` for qualifying built/shipped application changes,
-or `--decision no_bump` for non-qualifying work. The existing semantic distinction
-is unchanged: read-only analysis, diagnostics, testing-only, documentation-only,
-and non-runtime tooling work do not acquire a bump just by running commands.
-The finalizer verifies build-only mutation; same-token retries cannot bump twice.
-Follow the maintained binding and safety checks in the shared Codex instructions.
-There is no Gradle bump task, local completion hook, or second version writer.
+Follow the build-version rules in root `AGENTS.md`: when Codex commits changes
+that warrant a new application build, increment only `build` by exactly one and
+include `VERSION_STATE.txt` in that same commit. Preserve its JSON structure and
+all other values. Uncommitted work, investigations and documentation-only changes
+do not increment it; never create a separate version-only commit. WU7 remains
+explicitly no-bump. No finalizer, token, reservation or completion receipt is
+required. There is no Gradle bump task or local completion hook.
 
 Normal resource processing generates `application-version.properties` inside the
 application JAR from the canonical file. Every build reinspects Git metadata;
@@ -1244,9 +1241,10 @@ The Java reader and Gradle resources are platform independent; both packagers
 stamp the same desktop resource in their own packaging copy.
 
 Focused headless checks: `gradlew :app:test -Pheadless --tests '*ApplicationVersionTest'
---tests '*ApplicationMenuTest' --tests '*VersionResourceBuildTest'`. The maintained
-finalizer's disposable-repository regression suite covers build-only, no-bump and
-exactly-once completion semantics; do not mutation-test version bumps in this checkout.
+--tests '*ApplicationMenuTest' --tests '*VersionResourceBuildTest'`. These tests
+cover the embedded identity and independent Gradle version validation, including
+read-only builds, changed version inputs and rejection of malformed authority.
+Version-mutation fixtures use disposable directories, not this checkout.
 
 ### Unified Windows and macOS applications
 

@@ -3,7 +3,7 @@ import org.gradle.api.tasks.*
 import org.gradle.process.ExecOperations
 import javax.inject.Inject
 
-// Read-only build input. Only the shared Codex completion finalizer bumps build.
+// Read-only build input. Build-number updates follow the commit rules in AGENTS.md.
 abstract class GenerateApplicationVersion extends DefaultTask {
     @InputFile @PathSensitive(PathSensitivity.NONE)
     abstract RegularFileProperty getVersionState()

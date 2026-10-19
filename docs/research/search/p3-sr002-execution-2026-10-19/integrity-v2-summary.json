@@ -1,0 +1,103 @@
+{
+  "suites": [
+    {
+      "name": "com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearchTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest",
+      "tests": "14",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.SearchDriverTest",
+      "tests": "12",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.CompletedMoveHintsTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.ExactSearchTTableTest",
+      "tests": "18",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.FlatExactSearchTest",
+      "tests": "21",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.IterationReuseTest",
+      "tests": "11",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.LateMovePruningTest",
+      "tests": "23",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.Phase2QuiescenceTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.Policy4ProductionTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.ProductionSeeTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.PvsSearchTest",
+      "tests": "12",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.Sr002FlatQuiescenceTest",
+      "tests": "13",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "totals": {
+    "tests": 152,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "raw": "raw/integrity-v2-results",
+  "log": "raw/integrity-v2.log"
+}

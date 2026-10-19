@@ -1,0 +1,9 @@
+{
+  "id": "P3-SR002-SHORT-REQUEST-DIAGNOSTIC-v2",
+  "purpose": "Diagnose fixed-depth-v1 four-worker short-request wall ratio 1.085 and geometric ratio 1.097, with 1187/2432 ms of concurrent compilation in only 1.511/1.639 seconds of measured request wall time. Preserve that negative warmup-sensitive outcome; do not extend or pool the closed confirmation or v1 diagnostic.",
+  "hypothesis": "Some of the short-request difference is JVM warmup/compilation or scheduling variability; a warmed difference may still persist and must remain a limitation.",
+  "binding": "Reuse the exact confirmation-v1-binding.json source/runtime/model/corpus; no candidate refinement",
+  "sample": "Four workers only; two fresh sequential JVM forks. Each uses eight full corpus warmup passes, six measured rounds, 20 frozen confirmation roots, both modes alternating by root+round. Depth 6, cap 2000000 nodes, same 60-second safety deadline and background resource settings. All results included; no repeat-until-stable rule.",
+  "analysis": "Report all complete/incomplete outcomes, elapsed and process CPU, entered work, compilation and GC. Use the same root-cluster summary and per-fork sensitivity. The short process-CPU tick resolution limits individual ratios. This is a new diagnostic, not independent confirmation selected after observing a favorable outcome.",
+  "stopping": "Fixed two forks, no extension or tuning. If excess cost persists, qualify or revise the architecture recommendation; if results remain variable, retain the short-request limitation explicitly. No deletion or replacement of the prior run and no universal equivalence claim."
+}

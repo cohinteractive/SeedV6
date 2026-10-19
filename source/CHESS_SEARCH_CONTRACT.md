@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R008**
+Internal revision: **P3-R010**
 
-Status: **ACTIVE Phase 3: Policy 4 remains the accepted Pair-2 production Search champion/default at 1-16 workers. The next feature-rich Search programme is owner-approved; no new research or construction workstream is activated.**
+Status: **ACTIVE Phase 3: SR-002 is technically complete and owner-accepted. Flattened Search execution is selected for subsequent Phase 3 development under the near-equal-performance preference. Recursive Policy 4 remains the unchanged Pair-2 production Search champion/default and fallback at 1-16 workers. No successor workstream is activated.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -19,7 +19,12 @@ sound, feature-rich experimental Search implementation as quickly as reasonably
 possible: two bounded architectural investigations, one coherent construction
 objective, then whole-configuration strength evaluation and reverse ablation.
 Independent Elo research and acceptance for every included mechanism are not
-prerequisites. This decision approves future scope, not its execution.
+prerequisites. That programme decision approved future scope, not its execution.
+The owner subsequently launched the bounded SR-002 CGLHW and explicitly accepted
+its recommendation: flattened Search execution is the architecture for subsequent
+Phase 3 development under the near-equal-performance preference. This architectural
+selection establishes neither superior speed nor playing strength, production
+adoption or deployment. A successor launch remains a separate owner action.
 
 This Contract governs objectives, requirements, methodology, architecture and
 acceptance. The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) governs subjects,
@@ -82,11 +87,12 @@ Other evaluator families preserve their previous behavior, with completed hints 
 Functional compatibility at all supported workers and smaller Hash settings is
 not new strength evidence. Confirmed gains remain limited to the recorded generation-32,
 one-/four-worker, 10+0.1 domains; neither other Pair-2 checkpoints nor HCE, NNUE or
-other BRN families inherit an Elo claim. No successor objective/CGLHW is activated.
-Promotion is not external deployment/release. The owner removed the local
-`AGENTS.md` finalizer requirement and explicitly removed that execution gate for
-this canon update. The inherited operation's historical metadata remains preserved;
-this revision neither repairs it nor claims version finalization.
+other BRN families inherit an Elo claim. That integration launch activated no successor.
+Promotion is not external deployment/release. For that earlier production-integration
+canon update, the owner removed the local `AGENTS.md` finalizer requirement and
+explicitly removed that execution gate. This historical instruction does not resolve
+the inherited reservation or establish version finalization for SR-002; its current
+closeout state is recorded in the [SR-002 focused record](../docs/research/search/P3_SR002_EXECUTION_2026-10-19.md#owner-acceptance-and-repository-closeout).
 
 The preserved previous champion/control is the cumulative Phase 2 engine:
 **SR-001 + SR-029 + SR-022 + SR-005 + SR-036 + SR-024**. Its accepted Search
@@ -193,6 +199,24 @@ necessary implementation-local measurements and correctness checks remain permit
    implementation must not delay construction indefinitely: retain recursive execution
    if warranted and record why. Select the execution architecture while retaining the
    independent recursive oracle and required correctness references.
+   **Technical conclusion, 19 October 2026:** the owner-authorized investigation
+   recommends **flattened execution** for the subsequent programme under the
+   near-equal preference. A guarded primitive main/q implementation of current
+   Policy 4 passed independent-reference, exact one-worker traversal, TT/history/PV,
+   selective-retry and representative worker/lifecycle checks. Frozen whole-request
+   elapsed ratios were 1.019 at one worker and 1.022 at four; process CPU ratios
+   were 1.020/1.031. Short-request warmup and worker/JVM variability can exceed 5%;
+   no universal speed, memory or strength advantage is claimed. The
+   [focused record](../docs/research/search/P3_SR002_EXECUTION_2026-10-19.md) binds
+   protocols, uncertainty, adverse results, implementation domain and limitations.
+   **Owner-accepted architectural decision, 19 October 2026:** select flattened
+   Search execution for subsequent Phase 3 development under the near-equal-performance
+   preference, with the recorded uncertainty and limitations. This accepts the
+   architecture, not superior speed, playing-strength confirmation, production
+   adoption or deployment. Recursive Policy 4 remains the unchanged production
+   champion/default and fallback. Future construction must validate its composition
+   and preserve independent recursive references and shared-core ownership without
+   maintaining two production kernels. No successor is launched by this closeout.
 2. **SR-003 versus SR-004: PVS versus MTD(f).** Using the selected execution
    architecture, compare the current PVS-based root approach and an MTD(f)-based
    driver as competing executable configurations, not necessarily incompatible
@@ -465,12 +489,17 @@ The owner confirmed synchronization of P3-R002 / P3-F001 at the O1 + O2 launch
 and of P3-R006 / P3-F004 before this production-integration launch. The first
 objective is complete; acceptance and validated production promotion are recorded
 above. The owner also confirmed the P3-R007 / P3-F005 Project Source refresh before
-this programme update. **P3-R008 / P3-F006 requires a fresh two-mirror refresh and
-synchronization confirmation before dependent GPT planning or the next launch.**
-This update activates no investigation, construction, strength study or promotion.
-After GPT/owner canon reconciliation and mirror synchronization, the intended next
-action is explicit authorization of the bounded SR-002 investigation. Codex does
-not claim synchronization of these new revisions.
+the programme update. The SR-002 launch explicitly confirmed synchronization of
+**P3-R008 / P3-F006** after `fab5461` and authorized that investigation. The owner
+has now explicitly accepted the completed SR-002 recommendation and confirmed
+synchronization of **P3-R009 / P3-F007**. Those acceptance and synchronization gates
+are satisfied; earlier pending wording is superseded. **This P3-R010 / P3-F008
+acceptance reconciliation requires a fresh replacement of BOTH Project Source
+mirrors and synchronization confirmation before dependent GPT planning or the next
+launch.** After that refresh, the next admissible launch remains the separately
+authorized bounded SR-003/SR-004 driver investigation on the selected flattened
+architecture. This closeout launches no successor or construction and authorizes
+no production adoption or release. Repository edits do not synchronize the mirrors.
 
 | Frozen file | Revision | Verified SHA-256 (complete original bytes) |
 | --- | --- | --- |

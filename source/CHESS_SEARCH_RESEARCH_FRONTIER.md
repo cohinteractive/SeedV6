@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F006**
+Internal frontier revision: **P3-F008**
 
-Status: **ACTIVE Phase 3: Policy 4 remains the accepted Pair-2 production Search champion/default at 1-16 workers. The next feature-rich Search programme is owner-approved; no new research or construction workstream is activated.**
+Status: **ACTIVE Phase 3: SR-002 is technically complete and owner-accepted. Flattened Search execution is selected for subsequent Phase 3 development under the near-equal-performance preference. Recursive Policy 4 remains the unchanged Pair-2 production Search champion/default and fallback at 1-16 workers. No successor workstream is activated.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -25,7 +25,10 @@ workstreams; it need not stop after each feature or experiment.
 The owner's 19 October 2026 decision selects two bounded preliminary architectural
 investigations, rapid feature-rich construction, then whole-configuration strength
 evaluation and reverse ablation. The partition and progression below record approved
-future scope. No investigation or construction objective is currently launched.
+future scope. The owner subsequently launched and Codex technically completed
+SR-002 as the first bounded investigation. The owner has explicitly accepted
+flattened Search execution for subsequent Phase 3 development under the Contract's
+near-equal-performance preference, with the recorded limits. No successor is launched.
 
 Production champion: **Policy 4**, cumulative Pair-2 **QXRAY + quiet LMR +
 WINDOW + completed legal TT hints**, with **EFFORT at one worker / ROOT_REUSE at 2-16**,
@@ -112,9 +115,11 @@ budget, layout, locking, replacement, SearchKey and proof policy are unchanged.
 A pre-existing headless Training-panel widget-test failure reproduced with the
 frozen pre-integration core; it is separate from the passed Search/GUI-adapter
 gates. Native GUI/client and macOS acceptance were not newly established.
-Promotion is not external release or deployment. Under the owner's current
-instruction and revised local `AGENTS.md`, the inherited finalizer operation is not
-an execution gate for this canon update; its historical metadata remains untouched.
+Promotion is not external release or deployment. The owner's instruction and revised
+local `AGENTS.md` removed the finalizer execution gate for that earlier
+production-integration canon update. That historical instruction does not resolve
+the inherited reservation or establish version finalization for SR-002; see its
+[current closeout state](../docs/research/search/P3_SR002_EXECUTION_2026-10-19.md#owner-acceptance-and-repository-closeout).
 
 Retained history and nominal-only malus filtering have inconclusive conditional
 strength evidence and remain unadopted; combined **Policy 7 remains unconfirmed**.
@@ -122,7 +127,38 @@ Richer histories, consumer attribution and further TT/driver refinements remain
 open hypotheses, not accepted results. Their inclusion in the programme below
 does not reopen the completed objective or its closed studies. Limited Pair-2
 implementation calibration is within construction scope; independent evaluator
-architecture/training research remains outside it. No next CGLHW is activated.
+architecture/training research remains outside it. That earlier objective did not
+activate a successor; the separate SR-002 launch and disposition follow below.
+
+## Completed SR-002 execution-architecture investigation
+
+The owner-authorized 19 October 2026 CGLHW is **technically complete and
+owner-accepted**. The owner explicitly selected **flattened Search execution for
+subsequent Phase 3 development** under the Contract's near-equal-performance
+preference. This is architectural acceptance, not a claim of superior speed or
+playing strength, production adoption or deployment. Recursive Policy 4 remains
+the unchanged production champion/default and fallback; independent recursive
+references remain required.
+
+A primitive explicit main/q candidate preserves the integrated Policy 4 mechanisms
+and existing shared-core ownership. Independent references, exact single-worker
+events/outcomes/TT/history, selective retries, PVs, cancellation and representative
+one-/two-/four-worker lifecycle checks passed. Frozen one-million-node complete
+requests gave flat/recursive elapsed ratios **1.019 [1.014,1.025]** at one worker
+and **1.022 [1.013,1.030]** at four; process CPU ratios were 1.020/1.031. These are
+approximate host/corpus-specific mechanical comparisons, not Elo or universal
+equivalence. Short-request warmup was adverse (four-worker depth-six ratio 1.085);
+a separate warmed diagnostic was 1.037 [1.023,1.053]. Four-worker CPU varied across
+JVMs, with one fork about 5.2% higher. No material allocation/GC or reserved-stack
+advantage was established. The fixed frame payload is 25,600 bytes per worker.
+
+The [focused record](../docs/research/search/P3_SR002_EXECUTION_2026-10-19.md) binds
+implementations, frozen protocols, all results, JVM/memory evidence, failures and
+limits. Further generic rewriting/layout tuning has insufficient decision value
+for this prerequisite. Future feature composition must validate its selected
+kernel while retaining recursive independent references; unrelated historical
+research policies are outside the new candidate's guarded domain. Recursive
+production remains a fallback if later correctness or economics require it.
 
 ## Compact research inventory
 
@@ -144,7 +180,7 @@ focused Phase 2 reports. This inventory does not duplicate their experimental re
 | ID | Stable research subject | Existing production / historical disposition | Phase 3 opportunity, including embedded scope | Important dependencies | Evidence |
 | --- | --- | --- | --- | --- | --- |
 | SR-001 | Quiescence Search | Production Pair-2 qsearch, now QXRAY through SR-024; independent unpruned SR-001A retained. Other leaves/controls preserved. | Stand-pat, tactical ordering, SEE, qdepth/explosion limits, qTT, quiet checks/forcing limits, delta and post-static futility; combine credible variants without weakening checked evasions/rules. | SR-009/012/015/020/024/029/030; explicit q-domain identity. | [P1], [R001], [R024] |
-| SR-002 | Recursive vs flattened Search mechanics | Recursive baseline; P1 flat/local-leaf candidate unadopted, scoped REJECTED. | Explicit frames/state machines, same-ply scratch and setup, stack/JIT/branch/locality costs under current composition. | Independent recursive oracle; SR-007/017/031/037. | [P1], [C1], [Bagatur] |
+| SR-002 | Recursive vs flattened Search mechanics | P3 technically complete and owner-accepted: flattened execution selected for subsequent Phase 3 development under the near-equal preference. Recursive Policy 4 remains production default/fallback. P1 scoped negative evidence preserved. | Guarded integrated main/q candidate; approximately equal warmed costs with short-request/JVM/worker limits. Future composition validation remains necessary; no speed or strength superiority claim. | Independent recursive oracle; next SR-003/SR-004 workstream requires the new mirror refresh and explicit launch. | [SR002], [P1], [C1], [Bagatur] |
 | SR-003 | Principal Variation Search / zero-window Search | Baseline exact PVS scouts/full re-search; TT-off ordered alpha-beta reference. | First-move quality, retry economics, exact/scout provenance and interaction with selective consumers. | SR-004/006/008/012/014/029; original-window and nominal verification rules. | [P1], [C1], [R029] |
 | SR-004 | MTD(f) and memory-enhanced zero-window drivers | Full-window driver retained; P1 MTD formulations REJECTED, research controls retained. | First guesses, repeated-pass reuse, convergence/PV costs; related `MTD`/`NegaC*`/`SSS*`/`Dual*` drivers where useful. | O1, SR-003/005/006/012; explicit driver/outcome ownership. | [P1], [C1], [Bagatur] |
 | SR-005 | Iterative-deepening information reuse | Production EFFORT/PV and ROOT_REUSE completed-root guidance; broader HISTORY/PVHISTORY unadopted. | Previous value/move/PV, root effort/stability, history retention across iterations/retries and request/new-game aging. | O1/O2, SR-006/012/014/016/034/036. | [R005], [R036] |
@@ -190,7 +226,7 @@ deferrals**. These dispositions do not replace historical research outcomes:
 
 | Programme disposition | Subjects | Scope and dependency |
 | --- | --- | --- |
-| Workstream 1: bounded execution-architecture investigation | SR-002 | Current integrated recursive versus semantically equivalent flattened Search; select architecture with evidence/limitations under the Contract's indicative approximately 5% comparison and bounded fallback rules. Retain the independent recursive oracle. |
+| Workstream 1: bounded execution-architecture investigation | SR-002 | Technically complete and owner-accepted: flattened execution selected for subsequent Phase 3 development under the near-equal preference, with recorded limits. Recursive Policy 4 remains production default/fallback; independent references remain retained. |
 | Workstream 2: bounded root-driver investigation | SR-003, SR-004 | After Workstream 1, compare PVS-based and MTD(f)-based executable configurations on the selected architecture. Preserve TT proof restrictions; select the driver, retaining PVS if replacement is not justified and the unselected comparison capability where practical. |
 | Workstream 3: selected feature-rich construction | SR-001; SR-005; SR-006 through SR-012; SR-014 through SR-034; SR-036 | 31 subjects, including inherited accepted implementations. One coherent long-horizon construction objective after both prerequisite conclusions and explicit launch; apply the Contract's lightweight composition, validation and technical-selection requirements. |
 | Deferred from first construction milestone | SR-013 | Broader tablebase integration; retain existing guarded functionality. |
@@ -229,11 +265,14 @@ before production promotion; these follow-on investigations need not await promo
 Apply the Contract's resource, worker-domain, selection-bias and confirmation rules;
 do not extend closed studies post hoc or enumerate configurations exhaustively.
 
-**Next launch boundary:** this canon update authorizes no execution. After GPT/owner
-reconciliation and confirmed P3-R008 / P3-F006 Project Source synchronization, seek
-explicit authorization for **Workstream 1, the bounded SR-002 investigation**. Its
-conclusion informs the separate Workstream 2 launch; the two conclusions inform
-the subsequent single construction launch. Routine in-scope implementation choices
+**Next launch boundary:** SR-002 architectural acceptance and P3-R009 / P3-F007
+Project Source synchronization are owner-confirmed and satisfied. This closeout
+authorizes no successor execution. After refreshing BOTH mirrors to **P3-R010 /
+P3-F008** and confirming synchronization, seek explicit authorization for
+**Workstream 2, the bounded SR-003/SR-004 driver investigation** on the selected
+flattened architecture. Its conclusion and the accepted execution architecture
+inform the subsequent single construction
+launch. Routine in-scope implementation choices
 then remain autonomous; unrelated objectives and material scope/binding changes
 require owner authority. No SR identifier is added or renumbered.
 
@@ -255,17 +294,22 @@ availability before reuse; no historical experiment is recertified here.
 
 The initialization-era refresh wording is historical. The owner confirmed
 P3-F004 / P3-R006 synchronization before production integration and has also
-confirmed the P3-R007 / P3-F005 refresh. **This P3-R008 / P3-F006 programme update
-requires replacement of BOTH Project Source mirrors and synchronization confirmation
-before dependent GPT planning or the SR-002 launch.** This fresh refresh is outstanding.
-Codex uses repository masters for authorized work and does not claim external
-synchronization of the new revisions.
+confirmed the P3-R007 / P3-F005 refresh. The SR-002 launch explicitly confirmed the
+**P3-R008 / P3-F006** refresh after `fab5461`. The owner has now explicitly accepted
+the SR-002 architectural recommendation and confirmed **P3-R009 / P3-F007**
+synchronization. Those gates are satisfied; earlier pending wording is superseded.
+**This P3-R010 / P3-F008 acceptance reconciliation requires replacement of BOTH
+Project Source mirrors and synchronization confirmation before dependent GPT
+planning or the next launch.** Codex uses repository masters for authorized work;
+repository edits do not synchronize external mirrors. Architectural acceptance
+does not establish production adoption, playing-strength confirmation or deployment.
 
 [P1]: ../docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md
 [P2]: ../docs/search-phase2/CHESS_SEARCH_RESEARCH_FRONTIER.md
 [C1]: ../docs/search-phase1/CHESS_SEARCH_CONTRACT.md
 [C2]: ../docs/search-phase2/CHESS_SEARCH_CONTRACT.md
 [Bagatur]: ../../BAGATUR_SEARCH_FRONTIER_ARCHITECTURE_ANALYSIS.md
+[SR002]: ../docs/research/search/P3_SR002_EXECUTION_2026-10-19.md
 [R001]: ../docs/research/search/SR001_QUIESCENCE_PHASE2_2026-10-09.md
 [R005]: ../docs/research/search/SR005_ITERATION_REUSE_PHASE2_2026-10-13.md
 [R006]: ../docs/research/search/SR006_ASPIRATION_PHASE2_2026-10-10.md

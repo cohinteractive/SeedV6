@@ -1,4 +1,25 @@
-# SeedV6 version finalizer
+# Retired SeedV6 version finalizer
+
+Retired by owner instruction on 2026-10-19. The repository adapter and its test
+suite have been removed. Follow root `AGENTS.md` for independent, commit-based
+`VERSION_STATE.txt` handling. No operation requires a finalizer, shared helper,
+token, reservation, receipt or historical-failure reconciliation.
+
+The removed adapter loaded the hard-coded external
+`C:/projects/codebase-entropy-control/scripts/codex-versioning/finalizer.py` at
+import time, so missing shared files also broke test discovery. Inspection on
+2026-10-19 found the shared files present on this Windows host, while
+`C:/Users/Central/.codex/AGENTS.md` and
+`C:/projects/llm-governance/registry/meta.json` still contained the old requirement.
+The owner's explicit repository-local retirement supersedes that requirement
+here; those external files were not changed.
+
+The incident, implementation and validation account below is historical. Its
+commands and former invocation requirements are not current instructions.
+Preserve existing Git-metadata evidence; retirement does not certify historical
+version mutations or application/release acceptance.
+
+## Historical implementation and validation (2026-10-04)
 
 The owner authorized non-critical build bookkeeping on 2026-10-04. The local
 entrypoint in `tools/seed_version_finalizer.py` is the repository-specific

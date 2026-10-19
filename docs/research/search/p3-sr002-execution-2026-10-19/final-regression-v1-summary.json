@@ -1,0 +1,179 @@
+{
+  "core": {
+    "suites": [
+      {
+        "name": "com.ohinteractive.seedv6.book.BookTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.BrnPair2RuntimeBoundaryTest",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.core.util.FenTest",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.core.util.PextTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.rules.DrawAdjudicatorTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.rules.GameHistoryTest",
+        "tests": "14",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.rules.PositionIdentityTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.manage.TimeManagerTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.tablebase.SyzygyResourcesTest",
+        "tests": "1",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.tt.TranspositionScoresTest",
+        "tests": "5",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.tt.TTableHintsTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.tt.TTableTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      }
+    ],
+    "totals": {
+      "tests": 64,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "research": {
+    "suites": [
+      {
+        "name": "com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest",
+        "tests": "9",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.exact.HistoryLearningTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.exact.LateMoveReductionTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.exact.MateDistancePruningTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.exact.Sr002FullLifecycleTest",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.search.manage.SearchLifecycleServiceTest",
+        "tests": "23",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      }
+    ],
+    "totals": {
+      "tests": 52,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "uci": {
+    "suites": [
+      {
+        "name": "com.ohinteractive.seedv6.uci.GoCommandParserTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.uci.StandaloneBoundaryTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.ohinteractive.seedv6.uci.UciMoveParserTest",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      }
+    ],
+    "totals": {
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  }
+}

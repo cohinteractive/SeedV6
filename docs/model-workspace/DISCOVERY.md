@@ -3,7 +3,9 @@
 Observed 2026-10-05 before implementation, starting from a clean worktree.
 Root AGENTS.md applies; no nested AGENTS.md found. Java 21 / Gradle / Swing;
 main ships, verification/test do not. No CODEXLOG_CURRENT.md exists; do not create
-one. VERSION_STATE.txt exists (initial build 34); use the local SeedV6 finalizer.
+one. VERSION_STATE.txt exists (initial build 34).
+Version-policy update (2026-10-19): follow root AGENTS.md's commit-based version
+rules, with no finalizer dependency.
 
 ## Verified dependency map
 
