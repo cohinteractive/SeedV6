@@ -1,0 +1,29 @@
+{
+  "identity": "refinement-v1",
+  "status": "frozen before measurement",
+  "hypothesis": "Preserving prior full-window EFFORT across bounded probes can reduce an avoidable integration cost; a guarded two-probe/full-result hybrid may become competitive. No speculative guidance accepted.",
+  "policies": [
+    "PVS",
+    "TWO_PASS",
+    "GUARDED_TWO"
+  ],
+  "corpus": "sr005 diagnostic-corpus.tsv first 12 roots",
+  "runs": [
+    {
+      "workers": 1,
+      "depth": 7,
+      "budget": 5000000,
+      "warmups": 2,
+      "rounds": 2
+    },
+    {
+      "workers": 4,
+      "depth": 7,
+      "budget": 5000000,
+      "warmups": 2,
+      "rounds": 2
+    }
+  ],
+  "classification": "development; no independent confirmation or strength inference",
+  "analysis": "all requests retained, complete request resources; choose next action by observed uncertainty and decision value, without a preset rejection threshold"
+}

@@ -1,0 +1,26 @@
+{
+  "identity": "heldout-cost-v1",
+  "status": "frozen before outcomes",
+  "purpose": "fresh roots/JVM replication of economics; no strength confirmation",
+  "corpus": "docs/research/search/p3-sr002-execution-2026-10-19/confirmation-corpus.tsv",
+  "sampling": "all 20 roots, 2 fresh JVM forks per worker domain, 2 warmup corpus passes and 2 measured rounds in each fork; rotated arms",
+  "workers": [
+    1,
+    4
+  ],
+  "policies": [
+    "PVS",
+    "TWO_PASS",
+    "GUARDED_TWO"
+  ],
+  "depth": 7,
+  "nodeLimit": 5000000,
+  "analysis": "fixed sample; no interim tuning or extension; root-cluster geometric ratios with bootstrap descriptive uncertainty; separately report forks, aggregate CPU, incomplete requests and compilation",
+  "stopping": "Complete four specified JVM runs; failures preserved; any correctness failure blocks interpretation; resource failure is incomplete, not futility",
+  "sourceHashes": {
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ExactSearch.java": "2bb3502cac79214dd9e9c8a8bb463b738e59289554ffd85fde53b6137ad23ea3",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ParallelSearch.java": "e076b86371409b440af7873b90fea4f5473718053e39cfabfe4048b8190123b5",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\IterationReuse.java": "d29234f1cda9cca5ef0fa4fff885d4b98809bfa515fff5164df18621b5612d06",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\driver\\MtdDriverResearch.java": "325093e3b383db2e4faad89b05ca52d372116c0924cca5b018c5dc2c4fcc47d4"
+  }
+}

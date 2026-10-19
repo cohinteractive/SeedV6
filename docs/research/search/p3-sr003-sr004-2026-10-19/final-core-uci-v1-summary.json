@@ -1,0 +1,203 @@
+{
+  "command": [
+    "cmd.exe",
+    "/c",
+    "gradlew.bat",
+    "--gradle-user-home",
+    "build/migration/gradle-user-home",
+    "--no-daemon",
+    "--max-workers=1",
+    ":engine-core:test",
+    ":app-uci:test"
+  ],
+  "exitCode": 0,
+  "elapsedSeconds": 13.004792699997779,
+  "suites": [
+    {
+      "path": "raw\\final-core-uci-v1-engine-core-TEST-com.ohinteractive.seedv6.book.BookTest.xml",
+      "sha256": "819409288ef1bb40cb4ee76c8591d8b77257ee4426cb0950405060182dd54f4a",
+      "name": "com.ohinteractive.seedv6.book.BookTest",
+      "tests": "6",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:43:57",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.342"
+    },
+    {
+      "path": "raw\\final-core-uci-v1-engine-core-TEST-com.ohinteractive.seedv6.core.brnpair2.BrnPair2RuntimeBoundaryTest.xml",
+      "sha256": "0af9950822b38a58a4a2e22a85f5dfa88a9396bfbfadcd16a5c9a04b6e717445",
+      "name": "com.ohinteractive.seedv6.core.brnpair2.BrnPair2RuntimeBoundaryTest",
+      "tests": "2",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:43:58",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.055"
+    },
+    {
+      "path": "raw\\final-core-uci-v1-engine-core-TEST-com.ohinteractive.seedv6.core.util.FenTest.xml",
+      "sha256": "945fda33259a00128c68e6940818d9bf543ea69e6657a8827535657289bb3d2e",
+      "name": "com.ohinteractive.seedv6.core.util.FenTest",
+      "tests": "2",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:43:58",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.007"
+    },
+    {
+      "path": "raw\\final-core-uci-v1-engine-core-TEST-com.ohinteractive.seedv6.core.util.PextTest.xml",
+      "sha256": "adb09990a54d19f6b028fa7dae0206ddb35315c1a42eca90af31aabc30bbc412",
+      "name": "com.ohinteractive.seedv6.core.util.PextTest",
+      "tests": "7",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:43:58",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.051"
+    },
+    {
+      "path": "raw\\final-core-uci-v1-engine-core-TEST-com.ohinteractive.seedv6.rules.DrawAdjudicatorTest.xml",
+      "sha256": "1d8f5b02483eb736338cdcca0ad90aea84b7bc12409c2703ccb3f6a588a781ba",
+      "name": "com.ohinteractive.seedv6.rules.DrawAdjudicatorTest",
+      "tests": "4",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:43:58",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.015"
+    },
+    {
+      "path": "raw\\final-core-uci-v1-engine-core-TEST-com.ohinteractive.seedv6.rules.GameHistoryTest.xml",
+      "sha256": "738b16a270446d8bcf0baf112c019b0ce73716fe5b1a6a23c5c0224760c6ea13",
+      "name": "com.ohinteractive.seedv6.rules.GameHistoryTest",
+      "tests": "14",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:43:58",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.017"
+    },
+    {
+      "path": "raw\\final-core-uci-v1-engine-core-TEST-com.ohinteractive.seedv6.rules.PositionIdentityTest.xml",
+      "sha256": "d9201e4471928df3317724d4202b9a8fd1687687bcb6e1aae101fa83fc29fece",
+      "name": "com.ohinteractive.seedv6.rules.PositionIdentityTest",
+      "tests": "6",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:43:58",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.008"
+    },
+    {
+      "path": "raw\\final-core-uci-v1-engine-core-TEST-com.ohinteractive.seedv6.search.manage.TimeManagerTest.xml",
+      "sha256": "32657f981c70453ae2575cfa16b2b54a7d266a79fee37a16bbead092afc68bb4",
+      "name": "com.ohinteractive.seedv6.search.manage.TimeManagerTest",
+      "tests": "7",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:43:58",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.009"
+    },
+    {
+      "path": "raw\\final-core-uci-v1-engine-core-TEST-com.ohinteractive.seedv6.search.tablebase.SyzygyResourcesTest.xml",
+      "sha256": "391fa9509aecc15915bd88cafb990cd193e8c9231bd31c4ba9f630ddca1641d3",
+      "name": "com.ohinteractive.seedv6.search.tablebase.SyzygyResourcesTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:43:58",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.005"
+    },
+    {
+      "path": "raw\\final-core-uci-v1-engine-core-TEST-com.ohinteractive.seedv6.search.tt.TranspositionScoresTest.xml",
+      "sha256": "07f1ca7dbb145a78f92899b07f69c545163787f22abe099c3ede56b6779401e2",
+      "name": "com.ohinteractive.seedv6.search.tt.TranspositionScoresTest",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:43:58",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.006"
+    },
+    {
+      "path": "raw\\final-core-uci-v1-engine-core-TEST-com.ohinteractive.seedv6.search.tt.TTableHintsTest.xml",
+      "sha256": "983b095fcb948fdd81c37e2980ee691a8ea0b926d9247a9e84f403df0998e514",
+      "name": "com.ohinteractive.seedv6.search.tt.TTableHintsTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:43:58",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.023"
+    },
+    {
+      "path": "raw\\final-core-uci-v1-engine-core-TEST-com.ohinteractive.seedv6.search.tt.TTableTest.xml",
+      "sha256": "5c4389e47c7740e6b9611b7a7df28b799e9af5e7842e6127d9ab649c52d87d6b",
+      "name": "com.ohinteractive.seedv6.search.tt.TTableTest",
+      "tests": "7",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:43:58",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.022"
+    },
+    {
+      "path": "raw\\final-core-uci-v1-app-uci-TEST-com.ohinteractive.seedv6.uci.GoCommandParserTest.xml",
+      "sha256": "7ce64fc81701b353a2481af3dd443b8cfa35f5a6583440a2742b2a21bc13b7e0",
+      "name": "com.ohinteractive.seedv6.uci.GoCommandParserTest",
+      "tests": "6",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:43:59",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.076"
+    },
+    {
+      "path": "raw\\final-core-uci-v1-app-uci-TEST-com.ohinteractive.seedv6.uci.StandaloneBoundaryTest.xml",
+      "sha256": "1410624295eca793e228fc8bdd7a3820e38acc8ec8ba4f35f82d644a2030f1b8",
+      "name": "com.ohinteractive.seedv6.uci.StandaloneBoundaryTest",
+      "tests": "6",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:43:59",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.402"
+    },
+    {
+      "path": "raw\\final-core-uci-v1-app-uci-TEST-com.ohinteractive.seedv6.uci.UciMoveParserTest.xml",
+      "sha256": "28faa486b52883904e0c5f412bea5bd201db83ce83c870a27b482ca6e4bf8e2d",
+      "name": "com.ohinteractive.seedv6.uci.UciMoveParserTest",
+      "tests": "2",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T10:44:00",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.006"
+    }
+  ],
+  "totals": {
+    "tests": 78,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

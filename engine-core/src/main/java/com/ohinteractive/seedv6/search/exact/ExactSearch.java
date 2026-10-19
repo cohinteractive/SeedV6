@@ -268,6 +268,15 @@ public final class ExactSearch {
 
     boolean anySelectiveWork() { return selectiveEpoch != 0; }
 
+    /** Opt-in root-driver probes may read prior full-window guidance without replacing it.
+     * History still resets per invocation; aborted work still clears guidance. */
+    public ExactSearch withRepeatedRootPassResearch() {
+        if(active || requestActive || (iterationReuse!=null && iterationReuse.history()))
+            throw new IllegalStateException("Repeated probes require idle non-retained iteration guidance");
+        if(iterationReuse!=null) iterationReuse.preserveCompletedDuringProbes=true;
+        return this;
+    }
+
     /** Completed legal guidance, selected by the Pair-2 production factory.
      * Ordinary proof/identity and independent constructor defaults remain unchanged. */
     public ExactSearch withCompletedHints(boolean enabled,MoveHintDiagnostics diagnostics) {

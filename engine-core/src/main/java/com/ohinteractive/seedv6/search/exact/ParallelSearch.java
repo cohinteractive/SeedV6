@@ -105,6 +105,14 @@ public final class ParallelSearch implements SingleDepthSearch {
         return this;
     }
 
+    public ParallelSearch withRepeatedRootPassResearch() {
+        ensureIdle();
+        if(requestActive || policy!=ConcurrencyPolicy.ROOT_REUSE)
+            throw new IllegalStateException("Repeated probes require idle ROOT_REUSE");
+        for(var worker:workers) worker.search.withRepeatedRootPassResearch();
+        return this;
+    }
+
     /** Same coherent TT, private counters, and unchanged ROOT_REUSE scheduling. */
     public ParallelSearch withCompletedHints(boolean enabled,
             java.util.function.IntFunction<MoveHintDiagnostics> diagnostics) {

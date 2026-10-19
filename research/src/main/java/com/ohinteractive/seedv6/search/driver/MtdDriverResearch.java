@@ -12,7 +12,7 @@ import com.ohinteractive.seedv6.search.exact.ParallelSearch;
  * Selective brackets are estimates, NEVER mathematical proof. Only a searched
  * interior result (or full fallback) can complete an iteration. No table writes here. */
 public final class MtdDriverResearch implements SingleDepthSearch {
-    public enum Policy { PVS, PREV, PARITY, BRACKET, TWO_PASS, FULL_RECOVERY }
+    public enum Policy { PVS, PREV, PARITY, BRACKET, TWO_PASS, FULL_RECOVERY, GUARDED_TWO }
     @FunctionalInterface public interface Window { SearchResult search(SearchRequest r,int alpha,int beta); }
     @FunctionalInterface public interface Observer { void attempt(int depth,String phase,int alpha,int beta,
             int lower,int upper,SearchResult result); }
@@ -26,9 +26,11 @@ public final class MtdDriverResearch implements SingleDepthSearch {
 
     public MtdDriverResearch(ExactSearchAdapter owner,Policy policy,Observer observer) {
         this(owner,owner::searchWindow,policy,observer);
+        if(policy==Policy.GUARDED_TWO) owner.withRepeatedRootPassResearch();
     }
     public MtdDriverResearch(ParallelSearch owner,Policy policy,Observer observer) {
         this(owner,owner::searchWindow,policy,observer);
+        if(policy==Policy.GUARDED_TWO) owner.withRepeatedRootPassResearch();
     }
     /** Deterministic failure/cancellation tests; production never constructs this facility. */
     public MtdDriverResearch(SingleDepthSearch owner,Window window,Policy policy,Observer observer) {
@@ -93,9 +95,9 @@ public final class MtdDriverResearch implements SingleDepthSearch {
             }
             g=score;
             if(lower==upper) {
-                full=policy==Policy.FULL_RECOVERY;
+                full=policy==Policy.FULL_RECOVERY || policy==Policy.GUARDED_TWO;
                 materialize=!full;
-            } else if(policy==Policy.TWO_PASS && pass>=2) full=true;
+            } else if((policy==Policy.TWO_PASS || policy==Policy.GUARDED_TWO) && pass>=2) full=true;
             // Strict interval shrink gives a finite 65536-pass domain bound.
             // Budgets/deadlines are checked before EVERY subsequent invocation.
         }

@@ -180,6 +180,11 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
         return this;
     }
 
+    public ExactSearchAdapter withRepeatedRootPassResearch() {
+        exact.withRepeatedRootPassResearch();
+        return this;
+    }
+
     public static ExactSearchAdapter depthFeedbackResearch(SearchEvaluation evaluation,
             com.ohinteractive.seedv6.search.exact.DepthFeedback policy,
             com.ohinteractive.seedv6.search.exact.DepthFeedback.Diagnostics diagnostics) {

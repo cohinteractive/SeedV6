@@ -15,6 +15,30 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Timeout(180)
 class Sr004IntegratedTest {
+    @Test void guardedProbesReadOnlyCompletedGuidanceAndStillResetHistory() throws Exception {
+        var e=P3InformationBaselineTest.evaluation();var b=Board.startingPosition();
+        var search=ExactSearch.iterationReuseResearch(ExactEvaluator.from(e),new TTable(1),IterationReuse.EFFORT,true,null)
+                .withSeeResearch(SeePolicy.QXRAY,null).withCompletedHints(true,null).withFlatSearchResearch(true)
+                .withRepeatedRootPassResearch();
+        search.beginRequest();
+        try {
+            assertTrue(search.search(b,3).completed());
+            var reuse=Policy4ProductionTest.field(search,"iterationReuse");
+            long[] ranked=((long[])Policy4ProductionTest.field(reuse,"ranked")).clone();
+            long[] line=((long[])Policy4ProductionTest.field(reuse,"line")).clone();
+            for(int beta:new int[]{-100,0,100}) {
+                assertTrue(search.searchWindow(b,GameHistory.initial(b),4,beta-1,beta,()->false).completed());
+                assertEquals(3,Policy4ProductionTest.field(reuse,"completedDepth"));
+                assertArrayEquals(ranked,(long[])Policy4ProductionTest.field(reuse,"ranked"));
+                assertArrayEquals(line,(long[])Policy4ProductionTest.field(reuse,"line"));
+                assertTrue((boolean)Policy4ProductionTest.field(reuse,"eligible"));
+                assertFalse((boolean)Policy4ProductionTest.field(reuse,"accepting"));
+            }
+            assertTrue(search.search(b,4).completed());
+            assertEquals(4,Policy4ProductionTest.field(reuse,"completedDepth"));
+        } finally {search.endRequest();}
+        assertEquals(0,Policy4ProductionTest.field(Policy4ProductionTest.field(search,"iterationReuse"),"completedDepth"));
+    }
     @Test void tacticalUnprunedScoresAndPvWitnessesMatchIndependentTtOffQsearch() {
         var e=SearchEvaluation.handcrafted();ExactEvaluator hce=(b,p)->Eval.evaluate(b);
         for(var fixture:QuiescenceSeeCorpus.FIXTURES) {
@@ -64,7 +88,7 @@ class Sr004IntegratedTest {
 
     @Test void policy4AccountingCancellationAndReuseAtSupportedWorkerExtremes() throws Exception {
         var e=P3InformationBaselineTest.evaluation();var b=Board.startingPosition();var original=b.clone();
-        for(int workers:new int[]{1,2,4,16}) for(var policy:List.of(Policy.PREV,Policy.BRACKET,Policy.TWO_PASS)) {
+        for(int workers:new int[]{1,2,4,16}) for(var policy:List.of(Policy.PREV,Policy.BRACKET,Policy.TWO_PASS,Policy.GUARDED_TWO)) {
             var raw=Sr002ExecutionStudy.engine(workers,e,2);
             var mtd=raw instanceof ExactSearchAdapter a?new MtdDriverResearch(a,policy,null):new MtdDriverResearch((ParallelSearch)raw,policy,null);
             try(var driver=new SearchDriver(mtd)) {

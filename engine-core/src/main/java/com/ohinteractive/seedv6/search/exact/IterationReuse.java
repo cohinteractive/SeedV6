@@ -15,6 +15,7 @@ public final class IterationReuse {
     private GameHistory game;
     private int completedDepth, lineLength, count, pendingCount;
     private boolean eligible, accepting;
+    boolean preserveCompletedDuringProbes;
     private final long[] line = new long[ExactSearch.MAX_DEPTH];
     private final boolean[] prefix = new boolean[ExactSearch.MAX_DEPTH+1];
     private final long[] ranked = new long[512], pending = new long[512], effort = new long[512];
@@ -48,7 +49,7 @@ public final class IterationReuse {
     }
     boolean prepare(long[] board, GameHistory history, int depth, boolean request, int alpha, int beta) {
         accepting=request && alpha==-ExactSearch.INFINITY && beta==ExactSearch.INFINITY && depth>0;
-        eligible=accepting && completedDepth+1==depth && game!=null
+        eligible=(accepting || (preserveCompletedDuringProbes && request && depth>0)) && completedDepth+1==depth && game!=null
                 && Arrays.equals(root,0,root.length,board,0,root.length) && sameHistory(game,history);
         if(!eligible) { completedDepth=lineLength=count=0; }
         pendingCount=0;
@@ -90,7 +91,7 @@ public final class IterationReuse {
         pending[pendingCount]=move; scores[pendingCount]=score; effort[pendingCount++]=nodes;
     }
     void complete(int depth,long[] pv,int length) {
-        if(!accepting) { clear(); return; }
+        if(!accepting) { if(!preserveCompletedDuringProbes) clear(); return; }
         completedDepth=depth; lineLength=length; System.arraycopy(pv,0,line,0,length);
         // Stable ordering of heuristic fail-soft returns or inclusive prior effort.
         // Fail-low values are NOT exact alternative scores; no additional searches.
