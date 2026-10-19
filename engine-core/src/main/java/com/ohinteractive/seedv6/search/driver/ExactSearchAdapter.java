@@ -253,8 +253,23 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
             int checkPolicy, CheckExtensionDiagnostics checkDiagnostics, int reuse, IterationReuse.Diagnostics reuseDiagnostics,
             NullMovePolicy nullPolicy, NullMovePolicy.Diagnostics nullDiagnostics,
             InternalSearchPolicy internalPolicy, InternalSearchPolicy.Diagnostics internalDiagnostics) {
+        ExactEvaluator observed = observe(evaluator);
+        exact = internalPolicy != null ? ExactSearch.internalSearchResearch(observed, table, internalPolicy, internalDiagnostics)
+                : nullPolicy != null ? ExactSearch.nullMoveResearch(observed, table, nullPolicy, nullDiagnostics)
+                : reuse != IterationReuse.OFF ? ExactSearch.iterationReuseResearch(observed, table, reuse, true, reuseDiagnostics)
+                : checkPolicy != ExactSearch.CHECK_OFF || checkDiagnostics != null
+                ? ExactSearch.checkExtensionResearch(observed, table, checkPolicy, lmrPolicy, lmpPolicy, checkDiagnostics)
+                : lmpPolicy != ExactSearch.LMP_OFF || lmpDiagnostics != null
+                ? ExactSearch.lateMovePruningResearch(observed, table, lmpPolicy, lmpDiagnostics)
+                : lmrPolicy != ExactSearch.LMR_OFF || lmrDiagnostics != null
+                ? ExactSearch.lateMoveReductionResearch(observed, table, lmrPolicy, lmrDiagnostics)
+                : qpolicy >= 0 ? ExactSearch.quiescencePvsResearch(observed, table, qpolicy)
+                : calibratedPruning ? ExactSearch.withCalibratedPruning(observed, table) : new ExactSearch(observed, table);
+    }
+
+    private ExactEvaluator observe(ExactEvaluator evaluator) {
         Objects.requireNonNull(evaluator, "evaluator");
-        ExactEvaluator observed = new ExactEvaluator() {
+        return new ExactEvaluator() {
             @Override public void initialize(long[] board) { evaluator.initialize(board); }
             @Override public void reenter(int ply) {
                 if(!control.tryEnterNode()) return;
@@ -288,17 +303,15 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
                 evaluator.child(parent, child, parentPly, qply);
             }
         };
-        exact = internalPolicy != null ? ExactSearch.internalSearchResearch(observed, table, internalPolicy, internalDiagnostics)
-                : nullPolicy != null ? ExactSearch.nullMoveResearch(observed, table, nullPolicy, nullDiagnostics)
-                : reuse != IterationReuse.OFF ? ExactSearch.iterationReuseResearch(observed, table, reuse, true, reuseDiagnostics)
-                : checkPolicy != ExactSearch.CHECK_OFF || checkDiagnostics != null
-                ? ExactSearch.checkExtensionResearch(observed, table, checkPolicy, lmrPolicy, lmpPolicy, checkDiagnostics)
-                : lmpPolicy != ExactSearch.LMP_OFF || lmpDiagnostics != null
-                ? ExactSearch.lateMovePruningResearch(observed, table, lmpPolicy, lmpDiagnostics)
-                : lmrPolicy != ExactSearch.LMR_OFF || lmrDiagnostics != null
-                ? ExactSearch.lateMoveReductionResearch(observed, table, lmrPolicy, lmrDiagnostics)
-                : qpolicy >= 0 ? ExactSearch.quiescencePvsResearch(observed, table, qpolicy)
-                : calibratedPruning ? ExactSearch.withCalibratedPruning(observed, table) : new ExactSearch(observed, table);
+    }
+
+    public static ExactSearchAdapter constructionResearch(SearchEvaluation evaluation,TTable table,
+            com.ohinteractive.seedv6.search.exact.FlatSearchConfig config) {
+        return new ExactSearchAdapter(ExactEvaluator.from(evaluation),table,config);
+    }
+    private ExactSearchAdapter(ExactEvaluator evaluator,TTable table,
+            com.ohinteractive.seedv6.search.exact.FlatSearchConfig config) {
+        exact=ExactSearch.constructionResearch(observe(evaluator),table,config);
     }
 
     @Override public SearchResult search(SearchRequest request) {

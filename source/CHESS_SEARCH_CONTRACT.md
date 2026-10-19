@@ -1,22 +1,23 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R012**
+Internal revision: **P3-R013**
 
-Status: **ACTIVE Phase 3: Workstream 2 is technically complete and recommends retaining PVS on the accepted flattened architecture, pending GPT/owner reconciliation and acceptance. SR-002 remains owner-accepted. Recursive Policy 4 remains the unchanged production champion/default and fallback at 1-16 workers. Workstream 3 is not activated.**
+Status: **ACTIVE Workstream 3: owner-authorized feature-rich experimental construction on owner-accepted flattened PVS. Workstreams 1 and 2 are closed and owner-accepted. Recursive Policy 4 remains the unchanged production champion/default and fallback at 1-16 workers.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
 ## Authority and objective
 
-The owner launched Workstream 2 on 19 October 2026 and confirmed BOTH Project
-Source mirrors at P3-R010/P3-F008. Its bounded investigation is technically complete
-on 20 October: **retain PVS**, because the tested integrated MTD formulations do
-not justify replacement under the current TT/selectivity rules. This is a technical
-recommendation awaiting GPT/owner acceptance, not production promotion. The
-[focused driver record](../docs/research/search/P3_SR003_SR004_DRIVERS_2026-10-19.md)
-binds implementations, frozen evidence, uncertainty and handback actions. No TT
-policy relaxation or Workstream 3 is authorized. Both mirrors now require refresh
-to P3-R012/P3-F010 before dependent GPT planning or the next launch.
+On 20 October 2026 the owner accepted Workstream 2's **retain PVS** decision and
+explicitly launched Workstream 3 as one autonomous construction objective across
+the 31 selected subjects. The confirmed P3-R012/P3-F010 Project Source mirrors
+predate these decisions; their pending wording is superseded by this launch.
+The [driver record](../docs/research/search/P3_SR003_SR004_DRIVERS_2026-10-19.md)
+remains frozen evidence, including tested MTD alternatives and their limitations.
+The [construction record](../docs/research/search/P3_CONSTRUCTION_2026-10-20.md)
+holds implementation composition, validation and continuity under this Contract.
+No TT authority change, production promotion, subsequent workstream or release
+is authorized. Repository changes do not synchronize external mirrors.
 
 Maximize the playing strength of the complete SeedV6 engine through foundational
 Search improvements, technically sound integrated candidates, controlled
@@ -34,7 +35,7 @@ The owner subsequently launched the bounded SR-002 CGLHW and explicitly accepted
 its recommendation: flattened Search execution is the architecture for subsequent
 Phase 3 development under the near-equal-performance preference. This architectural
 selection establishes neither superior speed nor playing strength, production
-adoption or deployment. A successor launch remains a separate owner action.
+adoption or deployment. Workstream 3 now has its separate explicit owner launch.
 
 This Contract governs objectives, requirements, methodology, architecture and
 acceptance. The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) governs subjects,
@@ -98,11 +99,9 @@ Functional compatibility at all supported workers and smaller Hash settings is
 not new strength evidence. Confirmed gains remain limited to the recorded generation-32,
 one-/four-worker, 10+0.1 domains; neither other Pair-2 checkpoints nor HCE, NNUE or
 other BRN families inherit an Elo claim. That integration launch activated no successor.
-Promotion is not external deployment/release. For that earlier production-integration
-canon update, the owner removed the local `AGENTS.md` finalizer requirement and
-explicitly removed that execution gate. This historical instruction does not resolve
-the inherited reservation or establish version finalization for SR-002; its current
-closeout state is recorded in the [SR-002 focused record](../docs/research/search/P3_SR002_EXECUTION_2026-10-19.md#owner-acceptance-and-repository-closeout).
+Promotion is not external deployment/release. Current root `AGENTS.md` removes
+all finalizer dependencies and governs commit-based build increments. Historical
+reservation/closeout reports are preserved evidence, not current execution gates.
 
 The preserved previous champion/control is the cumulative Phase 2 engine:
 **SR-001 + SR-029 + SR-022 + SR-005 + SR-036 + SR-024**. Its accepted Search
@@ -240,7 +239,8 @@ necessary implementation-local measurements and correctness checks remain permit
    driver as a comparison capability where practical. Select the preferred candidate
    root driver; if evidence does not justify replacing PVS, retain it and proceed.
    **Technical conclusion, 20 October 2026:** recommend retaining **PVS** on the
-   accepted flattened architecture, pending GPT/owner reconciliation and acceptance.
+   accepted flattened architecture; the owner accepted this decision at the
+   Workstream 3 launch on 20 October 2026.
    Integrated guarded MTD variants passed exact/unpruned and lifecycle validation
    but incurred substantial repeated work under unchanged proof restrictions;
    selective bracket equality frequently needed searched-PV/full-window recovery.
@@ -519,12 +519,12 @@ has now explicitly accepted the completed SR-002 recommendation and confirmed
 synchronization of **P3-R009 / P3-F007**. Those acceptance and synchronization gates
 are satisfied; earlier pending wording is superseded. The Workstream 2 launch
 confirmed **P3-R010/P3-F008** synchronization and authorized the now-completed
-driver investigation. **This P3-R012/P3-F010 technical closeout requires replacement
-of BOTH Project Source mirrors and synchronization confirmation before dependent
-GPT planning or the next launch.** GPT/owner reconciliation and acceptance of the
-driver recommendation remain separate. Any Workstream 3 construction requires its
-own explicit launch. No production adoption or release is authorized; repository
-edits do not synchronize external mirrors.
+driver investigation. The owner confirms P3-R012/P3-F010 synchronization, accepts
+the driver decision and explicitly launches Workstream 3 on 20 October 2026.
+Those predecessor gates are satisfied. BOTH mirrors require refresh to the current
+master revisions before dependent GPT planning or a subsequent launch; authorized
+construction proceeds from repository masters. No production adoption or release
+is authorized; repository edits do not synchronize external mirrors.
 
 | Frozen file | Revision | Verified SHA-256 (complete original bytes) |
 | --- | --- | --- |

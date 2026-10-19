@@ -1,19 +1,20 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F010**
+Internal frontier revision: **P3-F011**
 
-Status: **ACTIVE Phase 3: Workstream 2 is technically complete and recommends retaining PVS on the accepted flattened architecture, pending GPT/owner reconciliation and acceptance. SR-002 remains owner-accepted. Recursive Policy 4 remains the unchanged production champion/default and fallback at 1-16 workers. Workstream 3 is not activated.**
+Status: **ACTIVE Workstream 3: owner-authorized feature-rich experimental construction on owner-accepted flattened PVS. Workstreams 1 and 2 are closed and owner-accepted. Recursive Policy 4 remains the unchanged production champion/default and fallback at 1-16 workers.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
 ## Authority and current direction
 
-**Current disposition, 20 October 2026:** owner-authorized Workstream 2 is technically
-complete and recommends **retaining PVS** on the accepted flattened architecture.
-P3-R010/P3-F008 mirror synchronization was confirmed at launch. Detailed evidence
-and limits reside in the [focused driver record](../docs/research/search/P3_SR003_SR004_DRIVERS_2026-10-19.md).
-GPT/owner acceptance, P3-R012/P3-F010 mirror refresh and a separate construction
-launch remain required before dependent progression. Production Policy 4 is unchanged.
+**Current disposition, 20 October 2026:** Workstream 2 is closed and owner-accepted:
+**retain PVS** on the accepted flattened architecture. The owner confirms the
+P3-R012/P3-F010 mirrors and explicitly launches Workstream 3 construction.
+The [driver record](../docs/research/search/P3_SR003_SR004_DRIVERS_2026-10-19.md)
+retains its historical evidence and limits. The [construction record](../docs/research/search/P3_CONSTRUCTION_2026-10-20.md)
+records the dependency-aware implementation groups, evidence and next useful work.
+Production Policy 4 is unchanged; no successor or promotion is authorized.
 
 The [Contract](CHESS_SEARCH_CONTRACT.md) governs objectives, technical guarantees,
 methodology, architecture and acceptance. This Frontier governs subjects, current
@@ -36,7 +37,7 @@ future scope. The owner subsequently launched and Codex technically completed
 SR-002 as the first bounded investigation. The owner has explicitly accepted
 flattened Search execution for subsequent Phase 3 development under the Contract's
 near-equal-performance preference, with the recorded limits. The separately launched
-driver investigation is now technically complete; construction remains unlaunched.
+driver investigation is now owner-accepted; construction is explicitly launched.
 
 Production champion: **Policy 4**, cumulative Pair-2 **QXRAY + quiet LMR +
 WINDOW + completed legal TT hints**, with **EFFORT at one worker / ROOT_REUSE at 2-16**,
@@ -170,13 +171,14 @@ production remains a fallback if later correctness or economics require it.
 
 ## Completed SR-003/SR-004 root-driver investigation
 
-The bounded Workstream 2 recommends **retaining PVS** under the current integrated
-configuration and binding TT model, pending GPT/owner acceptance. Seven experimental
+The owner accepted the bounded Workstream 2 decision to **retain PVS** under the
+current integrated configuration and binding TT model. Seven experimental
 PVS/MTD configurations share the accepted flattened kernel. Independent exact/unpruned
 references, PV/history/mate/proof checks and cancellation/worker lifecycle tests
 passed; final groups total 365 passes with no failures/skips. Recursive Policy 4
 remains production champion/default/fallback, and independent recursive references
-remain unchanged. No production promotion or Workstream 3 occurred.
+remain unchanged. That closeout did not promote production or launch construction;
+the subsequent owner instruction explicitly launches Workstream 3.
 
 Conventional repeated-pass MTD had scarce ordinary TT proof reuse despite many legal
 hint hits, and 35/60 development materializations needed full-window recovery from
@@ -223,7 +225,7 @@ focused Phase 2 reports. This inventory does not duplicate their experimental re
 | --- | --- | --- | --- | --- | --- |
 | SR-001 | Quiescence Search | Production Pair-2 qsearch, now QXRAY through SR-024; independent unpruned SR-001A retained. Other leaves/controls preserved. | Stand-pat, tactical ordering, SEE, qdepth/explosion limits, qTT, quiet checks/forcing limits, delta and post-static futility; combine credible variants without weakening checked evasions/rules. | SR-009/012/015/020/024/029/030; explicit q-domain identity. | [P1], [R001], [R024] |
 | SR-002 | Recursive vs flattened Search mechanics | P3 technically complete and owner-accepted: flattened execution selected for subsequent Phase 3 development under the near-equal preference. Recursive Policy 4 remains production default/fallback. P1 scoped negative evidence preserved. | Guarded integrated main/q candidate; approximately equal warmed costs with short-request/JVM/worker limits. Future composition validation remains necessary; no speed or strength superiority claim. | Independent recursive oracle; accepted foundation used by completed Workstream 2. | [SR002], [P1], [C1], [Bagatur] |
-| SR-003 | Principal Variation Search / zero-window Search | Workstream 2 technically recommends retaining PVS on flattened execution, pending owner acceptance; independent TT-off references retained. | First-move quality, retry economics, exact/scout provenance and interaction with selective consumers. | SR-004/006/008/012/014/029; original-window and nominal verification rules. | [SR004], [P1], [C1], [R029] |
+| SR-003 | Principal Variation Search / zero-window Search | Workstream 2 owner-accepted: retain PVS on flattened execution; independent TT-off references retained. | First-move quality, retry economics, exact/scout provenance and interaction with selective consumers. | SR-004/006/008/012/014/029; original-window and nominal verification rules. | [SR004], [P1], [C1], [R029] |
 | SR-004 | MTD(f) and memory-enhanced zero-window drivers | Bounded P3 investigation technically complete: tested integrated MTD/hybrids do not justify replacing PVS. Strength inconclusive; adverse request economics. Research comparisons retained; no universal rejection. | Preserved first-guess, convergence, TT, PV-recovery and worker evidence; broader formulations remain hypotheses outside this closed unit. | SR-003/005/006/012; unchanged TT/proof policy; any new material policy requires owner authority. | [SR004], [P1], [C1], [Bagatur] |
 | SR-005 | Iterative-deepening information reuse | Production EFFORT/PV and ROOT_REUSE completed-root guidance; broader HISTORY/PVHISTORY unadopted. | Previous value/move/PV, root effort/stability, history retention across iterations/retries and request/new-game aging. | O1/O2, SR-006/012/014/016/034/036. | [R005], [R036] |
 | SR-006 | Aspiration windows | Full windows retained; P2 six-formulation study scoped REJECTED, no adoption. | Initial windows, asymmetric/directional widening, volatility/parity and mate handling with better retained guidance. | O1, SR-003/004/005/012; full-request retries. | [R006], [P1] |
@@ -269,8 +271,8 @@ deferrals**. These dispositions do not replace historical research outcomes:
 | Programme disposition | Subjects | Scope and dependency |
 | --- | --- | --- |
 | Workstream 1: bounded execution-architecture investigation | SR-002 | Technically complete and owner-accepted: flattened execution selected for subsequent Phase 3 development under the near-equal preference, with recorded limits. Recursive Policy 4 remains production default/fallback; independent references remain retained. |
-| Workstream 2: bounded root-driver investigation | SR-003, SR-004 | Technically complete: recommend retaining PVS on accepted flattened execution, pending GPT/owner acceptance. Tested MTD variants have adverse costs and no confirmed strength benefit; comparison capability retained, TT policy unchanged. |
-| Workstream 3: selected feature-rich construction | SR-001; SR-005; SR-006 through SR-012; SR-014 through SR-034; SR-036 | 31 subjects, including inherited accepted implementations. One coherent long-horizon construction objective after both prerequisite conclusions and explicit launch; apply the Contract's lightweight composition, validation and technical-selection requirements. |
+| Workstream 2: bounded root-driver investigation | SR-003, SR-004 | Closed and owner-accepted: retain PVS on accepted flattened execution. Tested MTD variants have adverse costs and no confirmed strength benefit; comparison capability retained, TT policy unchanged. |
+| Workstream 3: selected feature-rich construction | SR-001; SR-005; SR-006 through SR-012; SR-014 through SR-034; SR-036 | ACTIVE by explicit owner launch, 20 October 2026. One coherent construction objective across 31 subjects, including inherited mechanisms; integrate and validate dependency-aware groups with explicit dispositions. |
 | Deferred from first construction milestone | SR-013 | Broader tablebase integration; retain existing guarded functionality. |
 | Deferred from first construction milestone | SR-035 | Pondering and speculative opponent-turn Search. |
 | Deferred from first construction milestone | SR-037 | Dedicated production Search hot-path mechanical optimization research; normal implementation-level performance discipline still applies. |
@@ -307,14 +309,14 @@ before production promotion; these follow-on investigations need not await promo
 Apply the Contract's resource, worker-domain, selection-bias and confirmation rules;
 do not extend closed studies post hoc or enumerate configurations exhaustively.
 
-**Next launch boundary:** SR-002 architectural acceptance and the Workstream 2
-launch's P3-R010/P3-F008 mirror refresh are satisfied. Workstream 2 is technically
-complete; GPT/owner reconciliation and acceptance remain separate. Refresh BOTH
-mirrors to **P3-R012/P3-F010**, confirm synchronization, and obtain an explicit
-**Workstream 3 construction launch** before its execution. This closeout does not
-launch it. Routine in-scope choices then remain autonomous; unrelated objectives
-and material scope/binding changes require owner authority. No SR identifier is
-added or renumbered.
+**Current work selection:** implement immutable pre-request composition and
+one-/multiworker aspiration over the shared flattened kernel; validate richer
+ordering before dependent depth and selective consumers; then freeze the integrated
+configuration and characterize correctness, lifecycle and complete-request costs.
+Challenge exclusions against actual proof, ownership and resource economics.
+All 31 subjects require concrete dispositions; an implemented flag alone is not
+completion. Routine in-scope choices are autonomous. Workstream 4, production
+promotion and binding TT changes require separate authority. No SR is renumbered.
 
 At objective closeout retain concise dispositions and dependencies here, with detail
 in focused existing research locations. Distinguish technical completion, adoption,
@@ -339,9 +341,10 @@ confirmed the P3-R007 / P3-F005 refresh. The SR-002 launch explicitly confirmed 
 the SR-002 architectural recommendation and confirmed **P3-R009 / P3-F007**
 synchronization. Those gates are satisfied; earlier pending wording is superseded.
 The owner subsequently confirmed P3-R010/P3-F008 synchronization at the Workstream 2
-launch. **This P3-R012/P3-F010 technical closeout requires replacement of BOTH
-Project Source mirrors and synchronization confirmation before dependent GPT
-planning or the next launch.** Driver acceptance remains pending. Codex uses repository masters for authorized work;
+launch. The owner confirms P3-R012/P3-F010 synchronization, accepts Workstream 2
+and explicitly launches construction on 20 October. BOTH mirrors require refresh
+to the current master revisions before dependent GPT planning or a subsequent
+launch. Codex uses repository masters for authorized work;
 repository edits do not synchronize external mirrors. Architectural acceptance
 does not establish production adoption, playing-strength confirmation or deployment.
 

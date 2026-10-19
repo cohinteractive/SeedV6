@@ -184,6 +184,26 @@ public final class ExactSearch {
     private int[][] flatQFrames;
     private int[][] flatMainFrames;
     private long[][] flatMainLongs;
+    private FlatSearchConfig construction;
+
+    /** Explicit immutable composition; ordinary constructors and references stay unchanged. */
+    public static ExactSearch constructionResearch(ExactEvaluator evaluator,TTable table,FlatSearchConfig config) {
+        Objects.requireNonNull(config,"config");
+        if(config.has(FlatSearchConfig.Feature.COMPLETED_HINTS) && table==null)
+            throw new IllegalArgumentException("Completed hints require a table");
+        var search=new ExactSearch(evaluator,table,SEE_MATERIAL_QUIET_HISTORY,STAGED_LAZY,
+                SORT_CROSSOVER,PVS,true,QSEARCH_BASELINE,false,false,false,true,null,true,
+                config.has(FlatSearchConfig.Feature.LMR)?LMR_QUIET:LMR_OFF,null,
+                config.has(FlatSearchConfig.Feature.LMP)?LMP_WINDOW:LMP_OFF,null);
+        search.construction=config;
+        if(config.has(FlatSearchConfig.Feature.EFFORT)) {
+            search.iterationReuse=new IterationReuse(IterationReuse.EFFORT,null);
+            search.iterationReuse.collectInteriorWindows=true;
+        }
+        search.withSeeResearch(config.has(FlatSearchConfig.Feature.QXRAY)?SeePolicy.QXRAY:SeePolicy.OFF,null);
+        if(table!=null) search.withCompletedHints(config.has(FlatSearchConfig.Feature.COMPLETED_HINTS),null);
+        return search.withFlatSearchResearch(true).withRepeatedRootPassResearch();
+    }
 
     /** Bounded SR-002 integrated alternative. Supports the current production
      * composition and its unpruned control, not unrelated research policies. */
@@ -867,7 +887,10 @@ public final class ExactSearch {
             boolean selective = selectiveEpoch != 0;
             if(table != null && restrictedRootMove == 0 && depth > 0 && !selective && !rootDomainBound) store(SearchKey.key(boards[0], historyKeys[0]), depth, 0,
                     alpha, beta, score, pvLength[0] == 0 ? 0 : pv[0][0]);
-            if(iterationReuse != null && restrictedRootMove == 0) iterationReuse.complete(depth, pv[0], pvLength[0]);
+            if(iterationReuse != null && restrictedRootMove == 0
+                    && (construction==null || (alpha==-INFINITY && beta==INFINITY)
+                        || (score>alpha && score<beta && !TranspositionScores.isMateScore(score))))
+                iterationReuse.complete(depth, pv[0], pvLength[0]);
             long[] line = Arrays.copyOf(pv[0], pvLength[0]);
             return new ExactSearchResult(depth, true, line.length == 0 ? 0 : line[0], score,
                     line, nodes, System.nanoTime() - start, qnodes, Math.max(0, maximumQply - Math.max(0, consumedQplies)), selective, maximumExtensionPlies);

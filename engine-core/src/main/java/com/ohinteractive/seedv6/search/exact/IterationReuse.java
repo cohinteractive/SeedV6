@@ -16,6 +16,7 @@ public final class IterationReuse {
     private int completedDepth, lineLength, count, pendingCount;
     private boolean eligible, accepting;
     boolean preserveCompletedDuringProbes;
+    boolean collectInteriorWindows;
     private final long[] line = new long[ExactSearch.MAX_DEPTH];
     private final boolean[] prefix = new boolean[ExactSearch.MAX_DEPTH+1];
     private final long[] ranked = new long[512], pending = new long[512], effort = new long[512];
@@ -48,7 +49,7 @@ public final class IterationReuse {
         accepting=false;
     }
     boolean prepare(long[] board, GameHistory history, int depth, boolean request, int alpha, int beta) {
-        accepting=request && alpha==-ExactSearch.INFINITY && beta==ExactSearch.INFINITY && depth>0;
+        accepting=request && (collectInteriorWindows || (alpha==-ExactSearch.INFINITY && beta==ExactSearch.INFINITY)) && depth>0;
         eligible=(accepting || (preserveCompletedDuringProbes && request && depth>0)) && completedDepth+1==depth && game!=null
                 && Arrays.equals(root,0,root.length,board,0,root.length) && sameHistory(game,history);
         if(!eligible) { completedDepth=lineLength=count=0; }

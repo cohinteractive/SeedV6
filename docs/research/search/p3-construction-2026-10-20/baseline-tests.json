@@ -1,0 +1,39 @@
+{
+  "command": "gradlew :research:test --tests *Sr002* --tests *Sr004IntegratedTest --tests *Policy4ProductionTest --max-workers=2",
+  "exitCode": 0,
+  "raw": "docs/research/search/p3-construction-2026-10-20/raw/baseline-tests",
+  "suites": [
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.Policy4ProductionTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "2.056"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.Sr002FlatQuiescenceTest",
+      "tests": "13",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "4.11"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.Sr002FullLifecycleTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.062"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.Sr004IntegratedTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.836"
+    }
+  ]
+}

@@ -7,11 +7,12 @@ import com.ohinteractive.seedv6.search.common.*;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.IterationMetrics;
 import com.ohinteractive.seedv6.search.exact.ExactSearch;
+import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.search.tt.TranspositionScores;
 
 /** SR-006 explicit research composition. No production factory selects it.
  * Only resolved iterations leave this boundary; bounds remain invocation facts.
- * Mutable state is confined to the owning single-worker request. */
+ * Mutable driver state belongs to the owner; parallel windows drain before return. */
 public final class AspirationSearch implements SingleDepthSearch {
     public enum Policy { ONE16, WIDE64, WIDEN16, ADAPTIVE16, ALPHA16, PARITY16 }
     @FunctionalInterface
@@ -31,6 +32,10 @@ public final class AspirationSearch implements SingleDepthSearch {
     public AspirationSearch(ExactSearchAdapter exact, Policy policy) { this(exact, policy, null); }
     public AspirationSearch(ExactSearchAdapter exact, Policy policy, AttemptObserver observer) {
         this(exact, exact::searchWindow, policy, observer);
+    }
+    public AspirationSearch(ParallelSearch exact, Policy policy) { this(exact,policy,null); }
+    public AspirationSearch(ParallelSearch exact, Policy policy, AttemptObserver observer) {
+        this(exact,exact::searchWindow,policy,observer);
     }
     AspirationSearch(SingleDepthSearch owner, WindowSearch window, Policy policy, AttemptObserver observer) {
         this.owner = Objects.requireNonNull(owner);
