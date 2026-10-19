@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F005**
+Internal frontier revision: **P3-F006**
 
-Status: **ACTIVE Phase 3: owner-accepted Policy 4 integrated, validated and promoted as the production Search champion/default for Pair-2 at 1-16 workers. Cumulative Phase 2 retained as a comparison control; no successor objective activated.**
+Status: **ACTIVE Phase 3: Policy 4 remains the accepted Pair-2 production Search champion/default at 1-16 workers. The next feature-rich Search programme is owner-approved; no new research or construction workstream is activated.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -21,6 +21,11 @@ not automatic Phase 3 rejection/adoption decisions. Existing accepted production
 remains the champion until a separately validated and explicitly accepted promotion.
 A selected coherent objective may span several SR identifiers and internal
 workstreams; it need not stop after each feature or experiment.
+
+The owner's 19 October 2026 decision selects two bounded preliminary architectural
+investigations, rapid feature-rich construction, then whole-configuration strength
+evaluation and reverse ablation. The partition and progression below record approved
+future scope. No investigation or construction objective is currently launched.
 
 Production champion: **Policy 4**, cumulative Pair-2 **QXRAY + quiet LMR +
 WINDOW + completed legal TT hints**, with **EFFORT at one worker / ROOT_REUSE at 2-16**,
@@ -107,14 +112,17 @@ budget, layout, locking, replacement, SearchKey and proof policy are unchanged.
 A pre-existing headless Training-panel widget-test failure reproduced with the
 frozen pre-integration core; it is separate from the passed Search/GUI-adapter
 gates. Native GUI/client and macOS acceptance were not newly established.
-Version finalization remains separately owner-handled; promotion is not external
-release or deployment.
+Promotion is not external release or deployment. Under the owner's current
+instruction and revised local `AGENTS.md`, the inherited finalizer operation is not
+an execution gate for this canon update; its historical metadata remains untouched.
 
 Retained history and nominal-only malus filtering have inconclusive conditional
 strength evidence and remain unadopted; combined **Policy 7 remains unconfirmed**.
 Richer histories, consumer attribution and further TT/driver refinements remain
-open hypotheses, not rejected subjects or automatically selected work. O3 and
-unrelated Frontier objectives remain unselected; no next CGLHW is activated.
+open hypotheses, not accepted results. Their inclusion in the programme below
+does not reopen the completed objective or its closed studies. Limited Pair-2
+implementation calibration is within construction scope; independent evaluator
+architecture/training research remains outside it. No next CGLHW is activated.
 
 ## Compact research inventory
 
@@ -122,9 +130,11 @@ unrelated Frontier objectives remain unselected; no next CGLHW is activated.
 **Baseline** identifies inherited functionality, not a new strength claim.
 **Evidence only** is a conclusion without an adopted runtime mechanism.
 **Unadopted** includes retained research implementations and historical formulations;
-P1/P2 REJECTED or DEFERRED labels below describe those studies only. Every row has
-an available Phase 3 investigation opportunity. The completed O1/O2 objective used
-its relevant dependencies; this inventory activates no further work or acceptance.
+P1/P2 REJECTED or DEFERRED labels below describe those studies only. Opportunities
+describe each subject's broader scope, not a requirement to implement every variant.
+The programme partition below supplies the new dispositions alongside these retained
+baseline/historical facts. Dependency references to deferred subjects do not select
+them for the first milestone. This inventory activates no work or acceptance.
 
 [P1] and [P2] point to complete frozen Frontiers: consult the same SR row, embedded
 scope and linked technical reports. [C1] and [C2] supply detailed technical rules
@@ -174,34 +184,58 @@ focused Phase 2 reports. This inventory does not duplicate their experimental re
 
 ## Selection, combinations and progression
 
-Select a coherent objective by plausible whole-engine strength, architectural
-leverage, informative evidence, dependencies, implementation maturity and resource
-value. Record its scope, champion/configuration identity, owner decisions and
-acceptance boundaries here when separately authorized. Newly discovered dependencies
-may be investigated within that objective; unrelated objectives need a new launch.
-New top-level identifiers or material subject-scope changes require a GPT/owner
-programme decision; do not renumber existing subjects.
+The accepted first feature-rich programme accounts for **all 38 subjects: 31
+selected construction subjects, 3 preliminary/foundational subjects and 4 explicit
+deferrals**. These dispositions do not replace historical research outcomes:
 
-The Contract supports both evidence-guided foundations/combinations and integrated
-candidate optimization. Useful prospective contrasts include guidance + aspiration,
-retained history + pruning, evaluation evidence + depth adjustment, and TT retention
-+ repeated zero-window drivers. Baseline/foundation/consumer/combination controls
-can separate interactions when informative; they are not a mandatory tournament
-matrix or a requirement for positive standalone Elo before composition.
+| Programme disposition | Subjects | Scope and dependency |
+| --- | --- | --- |
+| Workstream 1: bounded execution-architecture investigation | SR-002 | Current integrated recursive versus semantically equivalent flattened Search; select architecture with evidence/limitations under the Contract's indicative approximately 5% comparison and bounded fallback rules. Retain the independent recursive oracle. |
+| Workstream 2: bounded root-driver investigation | SR-003, SR-004 | After Workstream 1, compare PVS-based and MTD(f)-based executable configurations on the selected architecture. Preserve TT proof restrictions; select the driver, retaining PVS if replacement is not justified and the unselected comparison capability where practical. |
+| Workstream 3: selected feature-rich construction | SR-001; SR-005; SR-006 through SR-012; SR-014 through SR-034; SR-036 | 31 subjects, including inherited accepted implementations. One coherent long-horizon construction objective after both prerequisite conclusions and explicit launch; apply the Contract's lightweight composition, validation and technical-selection requirements. |
+| Deferred from first construction milestone | SR-013 | Broader tablebase integration; retain existing guarded functionality. |
+| Deferred from first construction milestone | SR-035 | Pondering and speculative opponent-turn Search. |
+| Deferred from first construction milestone | SR-037 | Dedicated production Search hot-path mechanical optimization research; normal implementation-level performance discipline still applies. |
+| Deferred from first construction milestone | SR-038 | Experimental learned/evaluator-assisted Search guidance. |
 
-Build capabilities and validate semantics incrementally, then select coherent
-configurations. Pair/triplet/larger combinations, removals, substitutions and
-economical stochastic/evolutionary exploration are permitted within scope. A
-feature-rich candidate may include individually neutral or apparently negative
-components. It still needs whole-candidate confirmation and explicit acceptance
-before replacing the champion; mere construction changes no production status.
+SR-003 remains a foundation of the driver comparison; SR-002/SR-004 are resolved
+by the preliminary investigations. They are not additional independent construction
+features. The four deferrals remain available for later Phase 3 work or explicitly
+authorized subsequent phases; none is a rejection. There are no other dedicated
+preliminary research workstreams, including for composition architecture.
 
-After promotion, normally compare against the new champion. Use reverse ablation
-and mutations to distinguish harmful, redundant, interaction-beneficial and uncertain
-components without claiming universal value. Preserve older champions and feature
-controls with reproducible identities. Account for selection bias/multiplicity,
-independent confirmation, worker domains and resource cost under the Contract;
-avoid exhaustive configuration enumeration and post-hoc extension of closed studies.
+Construction retains appropriate accepted mechanisms and selects credible concrete
+formulations for the remaining subjects without mandatory standalone Elo research
+or owner approval for each routine implementation/parameter choice. The initial
+configuration must meaningfully activate a broad compatible combination. SR-006
+aspiration must support configuration-level enabled/disabled comparison where
+compatible with the chosen driver. Validate interacting mechanisms in dependency-aware
+groups, not only at final assembly; expose individual controls and meaningful
+variants with immutable pre-request configuration, validated dependencies/exclusions
+and reproducible identities under the Contract. Record every material selected-subject
+exclusion, supersession, incompatibility or technical blocker explicitly. The 31
+subjects are not 31 switches, new implementations or separate authorization gates.
+
+Construction closes with a technically validated, reproducible experimental
+configuration and its explicit composition/dispositions; superiority over Policy 4
+is a separate question and must not hold construction open indefinitely. Freeze and
+identify the whole candidate, then compare it against the Policy 4 champion under
+controlled strength evidence. Follow with reverse ablations, interaction studies,
+substitutions and configuration improvements, distinguishing harmful, redundant,
+interaction-beneficial and inconclusive components without inferring universal value
+from one configuration. Preserve the cumulative Phase 2 control and reproducible
+feature controls. Independent confirmation and explicit acceptance remain necessary
+before production promotion; these follow-on investigations need not await promotion.
+Apply the Contract's resource, worker-domain, selection-bias and confirmation rules;
+do not extend closed studies post hoc or enumerate configurations exhaustively.
+
+**Next launch boundary:** this canon update authorizes no execution. After GPT/owner
+reconciliation and confirmed P3-R008 / P3-F006 Project Source synchronization, seek
+explicit authorization for **Workstream 1, the bounded SR-002 investigation**. Its
+conclusion informs the separate Workstream 2 launch; the two conclusions inform
+the subsequent single construction launch. Routine in-scope implementation choices
+then remain autonomous; unrelated objectives and material scope/binding changes
+require owner authority. No SR identifier is added or renumbered.
 
 At objective closeout retain concise dispositions and dependencies here, with detail
 in focused existing research locations. Distinguish technical completion, adoption,
@@ -220,11 +254,12 @@ reports, retained local evidence and source/Git history. Check local evidence
 availability before reuse; no historical experiment is recertified here.
 
 The initialization-era refresh wording is historical. The owner confirmed
-P3-F004 / P3-R006 synchronization before this integration launch. **This P3-F005 /
-P3-R007 production-promotion update requires replacement of BOTH Project Source
-mirrors and synchronization confirmation before dependent GPT planning or a
-subsequent CGLHW launch.** The new refresh is outstanding. Codex uses repository
-masters for authorized work and does not claim external synchronization.
+P3-F004 / P3-R006 synchronization before production integration and has also
+confirmed the P3-R007 / P3-F005 refresh. **This P3-R008 / P3-F006 programme update
+requires replacement of BOTH Project Source mirrors and synchronization confirmation
+before dependent GPT planning or the SR-002 launch.** This fresh refresh is outstanding.
+Codex uses repository masters for authorized work and does not claim external
+synchronization of the new revisions.
 
 [P1]: ../docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md
 [P2]: ../docs/search-phase2/CHESS_SEARCH_RESEARCH_FRONTIER.md

@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R007**
+Internal revision: **P3-R008**
 
-Status: **ACTIVE Phase 3: owner-accepted Policy 4 integrated, validated and promoted as the production Search champion/default for Pair-2 at 1-16 workers. Cumulative Phase 2 retained as a comparison control; no successor objective activated.**
+Status: **ACTIVE Phase 3: Policy 4 remains the accepted Pair-2 production Search champion/default at 1-16 workers. The next feature-rich Search programme is owner-approved; no new research or construction workstream is activated.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -13,6 +13,13 @@ Search improvements, technically sound integrated candidates, controlled
 combinations, reverse ablation and champion-based optimization. Correctness,
 lifecycle integrity and computational economy remain binding. Nodes, NPS,
 nominal depth and isolated tactical wins are diagnostics, not strength proof.
+
+The owner's 19 October 2026 programme decision prioritizes a clean, technically
+sound, feature-rich experimental Search implementation as quickly as reasonably
+possible: two bounded architectural investigations, one coherent construction
+objective, then whole-configuration strength evaluation and reverse ablation.
+Independent Elo research and acceptance for every included mechanism are not
+prerequisites. This decision approves future scope, not its execution.
 
 This Contract governs objectives, requirements, methodology, architecture and
 acceptance. The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) governs subjects,
@@ -25,8 +32,9 @@ before dependent implementation/adoption; a launch may explicitly supply it.
 Phase 3 supersedes the earlier research methodology, feature-by-feature execution
 boundary and historical reopening restrictions. Negative, rejected and deferred
 formulations remain evidence and may be reconsidered, including under changed
-baselines. Only the technical requirements and current baseline explicitly retained
-here carry authority from the archives; adjacent old workflow, activation and
+baselines. Selecting a subject for construction does not reopen its closed studies
+or rewrite their outcomes. Only the technical requirements and current baseline
+explicitly retained here carry authority from the archives; adjacent old workflow, activation and
 non-adoption prose does not create a Phase 3 prohibition. Surface material
 code/canon discrepancies: static source establishes implementation facts, not
 runtime verification, and neither silently rewrites intended requirements.
@@ -75,8 +83,10 @@ Functional compatibility at all supported workers and smaller Hash settings is
 not new strength evidence. Confirmed gains remain limited to the recorded generation-32,
 one-/four-worker, 10+0.1 domains; neither other Pair-2 checkpoints nor HCE, NNUE or
 other BRN families inherit an Elo claim. No successor objective/CGLHW is activated.
-Promotion establishes neither version finalization nor external deployment/release;
-the inherited finalizer issue remains separately owner-handled.
+Promotion is not external deployment/release. The owner removed the local
+`AGENTS.md` finalizer requirement and explicitly removed that execution gate for
+this canon update. The inherited operation's historical metadata remains preserved;
+this revision neither repairs it nor claims version finalization.
 
 The preserved previous champion/control is the cumulative Phase 2 engine:
 **SR-001 + SR-029 + SR-022 + SR-005 + SR-036 + SR-024**. Its accepted Search
@@ -166,17 +176,95 @@ architecture, evidence, resources or mutually exclusive algorithms. Record each
 candidate's concrete composition, dependencies, exclusions, defaults and identity.
 Experimental availability does not make it the production default or champion.
 
+### Bounded foundations and feature-rich construction
+
+The accepted sequence has only two dedicated preliminary research workstreams.
+Each must reach its own bounded, evidence-based conclusion with limitations;
+necessary implementation-local measurements and correctness checks remain permitted.
+
+1. **SR-002: recursive versus flattened Search.** Compare semantically equivalent
+   implementations of the current integrated engine, preserving TT semantics,
+   history, PV handling, selective-search safeguards, lifecycle and worker ownership.
+   Measure JVM/JIT behaviour, allocation, memory, whole-request CPU and elapsed cost.
+   Prefer flattened execution when equivalent and approximately equal in performance;
+   around **5%** is an indicative comparison threshold, not an unconditional acceptance
+   rule. Prefer a meaningfully faster implementation when the difference is substantial
+   and technically justified. An inconclusive or disproportionately expensive flattened
+   implementation must not delay construction indefinitely: retain recursive execution
+   if warranted and record why. Select the execution architecture while retaining the
+   independent recursive oracle and required correctness references.
+2. **SR-003 versus SR-004: PVS versus MTD(f).** Using the selected execution
+   architecture, compare the current PVS-based root approach and an MTD(f)-based
+   driver as competing executable configurations, not necessarily incompatible
+   underlying algorithms. Reuse equivalent underlying Search mechanisms where
+   technically appropriate. Evaluate convergence, first guesses, TT retention/reuse,
+   total nodes and retries, PV production, correctness, completed iterations,
+   elapsed/CPU costs and practical playing strength. Account for selective-search
+   behaviour, zero-window semantics, clock management and one-/multiworker operation.
+   The existing mathematical TT proof restrictions remain binding; any change needs
+   separate owner authorization. A justified hybrid is optional. Retain the unselected
+   driver as a comparison capability where practical. Select the preferred candidate
+   root driver; if evidence does not justify replacing PVS, retain it and proceed.
+3. **Feature-rich construction.** After those conclusions and its explicit launch,
+   execute one coherent long-horizon objective covering the Frontier's **31 selected
+   subjects**, including accepted baseline mechanisms. These are neither 31 independent
+   switches nor necessarily 31 new implementations. Preserve accepted implementations
+   where appropriate and choose credible, technically compatible concrete formulations
+   from Phase 1/2 research, current Phase 3 evidence and binding requirements. Codex
+   may choose defensible implementations and parameters without individual owner
+   approval for routine technical choices. Rejected, deferred, neutral or inconclusive
+   formulations may be included experimentally without standalone Elo proof or a
+   separate research workstream for each mechanism; do not implement every historical
+   variant indiscriminately. Resolve overlaps, conflicts and supersession coherently,
+   without forcing mutually exclusive algorithms to run together. SR-006 aspiration
+   must be available for configuration-level comparison, including enabled/disabled
+   variants where compatible with the selected driver.
+
+The initial candidate must activate a meaningful, broad combination of compatible
+mechanisms, not merely contain dormant implementations. Identify every materially
+excluded, superseded, incompatible or technically blocked selected subject explicitly.
+Implement and validate in dependency-aware groups as mechanisms enter; preserve all
+binding semantics and independent references rather than accumulating interactions
+before semantic validation. Evaluator-specific thresholds must respect the actual
+Pair-2 domain: HCE margins are not transferable authority. Limited implementation
+calibration is allowed; independent evaluator architecture/training research and
+unrelated architecture or optimization programmes are outside construction scope.
+
+The first construction milestone defers SR-013 broader tablebase integration
+(retain existing guarded functionality), SR-035 pondering/speculative opponent-turn
+Search, SR-037 dedicated production hot-path mechanical optimization research and
+SR-038 learned/evaluator-assisted Search guidance. Deferral is not rejection;
+later Phase 3 work or explicitly authorized subsequent phases may address them.
+Normal implementation-level performance discipline remains required.
+
+### Lightweight composition and ownership
+
 Preserve the unified ownership boundary: accepted shared runtime belongs in
 `engine-core`; research tools/oracles and experimental activation remain under
 research ownership. Production must not acquire a dependency on research or a
 second independently maintained engine. Use existing extension seams or obtain
 a scoped architecture decision when necessary.
 
-Select compact primitive policies at construction where practical; prefer packed
-state, reusable scratch and direct control flow. Avoid unnecessary per-node
-allocation, heavyweight abstractions and hot-path dispatch. Measure branches,
-cache/indexing/locking, reset/seed cost, JVM/JIT/allocation and full-request CPU
-and elapsed cost. Research flexibility must not impose needless production cost.
+Lightweight composition is a construction requirement, not a third prerequisite:
+
+- Choose immutable configuration before a Search request begins; select major
+  architectural alternatives at construction time where practical.
+- Keep mechanisms individually controllable with meaningful variants for research
+  and reverse ablation. Validate dependencies/exclusions and provide reproducible
+  configuration identities covering active mechanisms and relevant parameters.
+- Use primitive-oriented direct Search execution, packed state, reusable scratch,
+  low allocation and minimal hot-path overhead. Preserve worker-local mutable
+  ownership; avoid unnecessary per-node polymorphism or heavyweight machinery.
+- Predictable inexpensive branches are acceptable when eliminating them would add
+  disproportionate complexity or worsen performance. Measure relevant branch,
+  cache/indexing/locking, reset/seed, JVM/JIT/allocation and full-request CPU/elapsed
+  costs without turning composition into an independent optimization programme.
+
+Generated specialized Java source/bytecode, runtime Search compilation,
+general-purpose plugin/component frameworks, architecture-wide rewriting solely
+to remove configuration checks, and standalone composition-performance optimization
+are deferred. The feature-rich engine is the deliverable; configuration architecture
+enables its construction and subsequent research rather than delaying it.
 
 TT research may examine information content, producer eligibility, retention,
 replacement, reuse and representation. Do not presume TTable is defective or
@@ -200,19 +288,17 @@ Never relax SeedV6 guarantees to copy more permissive reference behaviour.
 
 ## Combinations, ablation and promotion
 
-Two complementary approaches are authorized by a suitably scoped future objective:
+Construction completion means a technically validated, reproducible feature-rich
+experimental configuration with the selected compatible mechanisms meaningfully
+integrated and exclusions accounted for. It is separate from proving superiority
+over Policy 4: lack of confirmed strength must not keep construction open indefinitely.
 
-- **Evidence-guided combinations:** test plausible dependencies, including TT
-  guidance with aspiration, retained history with history-conditioned pruning,
-  evaluation evidence with depth adjustment, or TT retention with repeated
-  zero-window drivers. Compare foundations alone and combined when informative;
-  pair/triplet and larger coherent combinations are legitimate.
-- **Integrated-candidate optimization:** assemble a technically valid feature-rich
-  configuration and compare the complete candidate with the accepted champion.
-  Constituents need not each demonstrate independently positive Elo. Neutral or
-  apparently negative mechanisms may be retained experimentally for interactions.
-  Validate semantics continuously as mechanisms enter; do not postpone validation
-  until dozens of interacting selective features have accumulated.
+After construction, freeze and identify the complete configuration, then compare
+the whole candidate against Policy 4 using appropriate controlled strength evidence.
+Follow with reverse ablations, interactions, substitutions and configuration
+improvements; they need not await production promotion. Evidence-guided foundation,
+consumer and combination controls, including pair/triplet/larger combinations,
+remain useful when informative, not mandatory standalone Elo acceptance gates.
 
 Keep the accepted research configuration, accepted production champion,
 experimental integrated candidate, historical comparison anchor, and
@@ -225,12 +311,11 @@ There is no arbitrary minimum Elo gain or universal game count: decide whether
 the configuration is credibly stronger at the evaluated resources, with costs,
 uncertainty and compatibility stated.
 
-After production promotion, optimize the champion through removals, substitutions,
-interactions and configuration mutations; future research normally compares with
-that champion.
+After any later production promotion, future research normally compares with that
+new champion through removals, substitutions, interactions and configuration mutations.
 Preserve older identities and reproducible evidence as historical controls.
 Reverse ablation must distinguish harmful, redundant, interaction-beneficial and
-unclassifiable components. A removal loss establishes conditional value in that
+inconclusive components. A removal loss establishes conditional value in that
 configuration, not universal component value. Diagnose changed dependencies and
 resource costs before attributing a causal contribution.
 
@@ -341,8 +426,12 @@ investigation, prototypes, diagnosis, experiments, combinations, ablations,
 validation and iteration toward an evidence-supported conclusion. One failed
 formulation or finished experiment is not automatic closeout. Continue useful
 work within scope; do not autonomously start another unrelated objective.
-Escalate genuine external blockers, unresolved owner decisions, binding changes
-and work outside the authorized boundary.
+Each prerequisite investigation is a distinct bounded workstream; construction
+is one coherent objective spanning dependency-aware implementation groups, with
+no separate authorization stop after each SR identifier. Routine technical choices
+remain autonomous once the relevant objective is launched. Escalate material
+authority conflicts, owner-reserved decisions, binding TT changes, unsupported
+correctness changes, genuine external blockers and scope expansion.
 
 Record material conclusions, dependencies, candidate/configuration identities,
 accepted changes, uncertainty and unresolved hypotheses in the two masters or
@@ -371,14 +460,17 @@ and never claims external synchronization from a refresh request.
 ## Historical evidence and initialization boundary
 
 The owner confirms final Phase 2 mirror synchronization and GPT acceptance of
-SR-032 as DEFERRED without adoption. Those predecessor actions are satisfied;
+SR-032 as DEFERRED without adoption. Those predecessor actions are satisfied.
 The owner confirmed synchronization of P3-R002 / P3-F001 at the O1 + O2 launch
 and of P3-R006 / P3-F004 before this production-integration launch. The first
 objective is complete; acceptance and validated production promotion are recorded
-above. This P3-R007 / P3-F005 promotion update requires a new two-mirror refresh
-and synchronization confirmation before dependent GPT planning or a subsequent
-launch, without blocking this authorized repository work. The new refresh is
-outstanding; Codex does not claim external synchronization.
+above. The owner also confirmed the P3-R007 / P3-F005 Project Source refresh before
+this programme update. **P3-R008 / P3-F006 requires a fresh two-mirror refresh and
+synchronization confirmation before dependent GPT planning or the next launch.**
+This update activates no investigation, construction, strength study or promotion.
+After GPT/owner canon reconciliation and mirror synchronization, the intended next
+action is explicit authorization of the bounded SR-002 investigation. Codex does
+not claim synchronization of these new revisions.
 
 | Frozen file | Revision | Verified SHA-256 (complete original bytes) |
 | --- | --- | --- |
