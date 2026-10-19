@@ -1,0 +1,171 @@
+{
+  "1": {
+    "inputs": {
+      "raw\\heldout-w1-fork1.jsonl": "cb33e8ff1f3c85426209be73d5333972a3060bc7165ea1e9a46a9f4844cc50d7",
+      "raw\\heldout-w1-fork2.jsonl": "e995b7aac58fefd936de13af1e4b0c928647ada8e19d9a4dc49357f6a0533d1e"
+    },
+    "measuredRequests": 240,
+    "arms": {
+      "PVS": {
+        "requests": 80,
+        "completed": 80,
+        "rootGeometricWallRatio": 1.0,
+        "rootBootstrap95WallRatio": [
+          1.0,
+          1.0
+        ],
+        "forkWallRatios": {
+          "1": 1.0,
+          "2": 1.0
+        },
+        "totalNodes": 17780336,
+        "passes": 560,
+        "meanCompletedDepth": 7,
+        "elapsedNanos": 11065762200,
+        "elapsedNanosRatio": 1.0,
+        "processCpuNanos": 11109375000,
+        "processCpuNanosRatio": 1.0,
+        "allocatedBytes": 6137528,
+        "allocatedBytesRatio": 1.0,
+        "compilationMillis": 55,
+        "gcCollections": 2,
+        "nodeRatio": 1.0
+      },
+      "TWO_PASS": {
+        "requests": 80,
+        "completed": 80,
+        "rootGeometricWallRatio": 1.6192243685028107,
+        "rootBootstrap95WallRatio": [
+          1.4856030760259913,
+          1.7651280477820201
+        ],
+        "forkWallRatios": {
+          "1": 1.610470597995468,
+          "2": 1.5973445320697233
+        },
+        "totalNodes": 28949128,
+        "passes": 1540,
+        "meanCompletedDepth": 7,
+        "elapsedNanos": 17748836900,
+        "elapsedNanosRatio": 1.6039416516649887,
+        "processCpuNanos": 17781250000,
+        "processCpuNanosRatio": 1.6005625879043601,
+        "allocatedBytes": 13685856,
+        "allocatedBytesRatio": 2.2298645317789183,
+        "compilationMillis": 103,
+        "gcCollections": 0,
+        "nodeRatio": 1.628154158616575
+      },
+      "GUARDED_TWO": {
+        "requests": 80,
+        "completed": 80,
+        "rootGeometricWallRatio": 1.649339681797878,
+        "rootBootstrap95WallRatio": [
+          1.5207605317739452,
+          1.7926888689016636
+        ],
+        "forkWallRatios": {
+          "1": 1.6514961097467797,
+          "2": 1.6425600394815194
+        },
+        "totalNodes": 29373028,
+        "passes": 1520,
+        "meanCompletedDepth": 7,
+        "elapsedNanos": 18225877800,
+        "elapsedNanosRatio": 1.6470512803898858,
+        "processCpuNanos": 18718750000,
+        "processCpuNanosRatio": 1.6849507735583684,
+        "allocatedBytes": 13539232,
+        "allocatedBytesRatio": 2.205974783332964,
+        "compilationMillis": 397,
+        "gcCollections": 0,
+        "nodeRatio": 1.651995102904692
+      }
+    }
+  },
+  "4": {
+    "inputs": {
+      "raw\\heldout-w4-fork1.jsonl": "d5de7e33d7b64e0d61a658ddce8d5e5796f9b1422da671e60878ebe84e761809",
+      "raw\\heldout-w4-fork2.jsonl": "00d8aa67458309b73de989e27bc6c609fafa2037188f96480a30b6c0a371577a"
+    },
+    "measuredRequests": 240,
+    "arms": {
+      "PVS": {
+        "requests": 80,
+        "completed": 80,
+        "rootGeometricWallRatio": 1.0,
+        "rootBootstrap95WallRatio": [
+          1.0,
+          1.0
+        ],
+        "forkWallRatios": {
+          "1": 1.0,
+          "2": 1.0
+        },
+        "totalNodes": 18061136,
+        "passes": 560,
+        "meanCompletedDepth": 7,
+        "elapsedNanos": 6291032200,
+        "elapsedNanosRatio": 1.0,
+        "processCpuNanos": 12828125000,
+        "processCpuNanosRatio": 1.0,
+        "allocatedBytes": 113690904,
+        "allocatedBytesRatio": 1.0,
+        "compilationMillis": 123,
+        "gcCollections": 0,
+        "nodeRatio": 1.0
+      },
+      "TWO_PASS": {
+        "requests": 80,
+        "completed": 80,
+        "rootGeometricWallRatio": 1.427830728367877,
+        "rootBootstrap95WallRatio": [
+          1.339127840651979,
+          1.5166227174485678
+        ],
+        "forkWallRatios": {
+          "1": 1.4275580781323112,
+          "2": 1.4276073572931096
+        },
+        "totalNodes": 30191635,
+        "passes": 1544,
+        "meanCompletedDepth": 7,
+        "elapsedNanos": 8980958200,
+        "elapsedNanosRatio": 1.4275810255747856,
+        "processCpuNanos": 22546875000,
+        "processCpuNanosRatio": 1.7576126674786845,
+        "allocatedBytes": 239371384,
+        "allocatedBytesRatio": 2.1054576538506544,
+        "compilationMillis": 187,
+        "gcCollections": 2,
+        "nodeRatio": 1.6716354386567933
+      },
+      "GUARDED_TWO": {
+        "requests": 80,
+        "completed": 80,
+        "rootGeometricWallRatio": 1.4889196220440195,
+        "rootBootstrap95WallRatio": [
+          1.4214645094616685,
+          1.5599928110340886
+        ],
+        "forkWallRatios": {
+          "1": 1.4915344808265196,
+          "2": 1.4911058247256805
+        },
+        "totalNodes": 30495885,
+        "passes": 1520,
+        "meanCompletedDepth": 7,
+        "elapsedNanos": 9382035700,
+        "elapsedNanosRatio": 1.4913348718831863,
+        "processCpuNanos": 22921875000,
+        "processCpuNanosRatio": 1.7868453105968332,
+        "allocatedBytes": 234374424,
+        "allocatedBytesRatio": 2.061505500915007,
+        "compilationMillis": 521,
+        "gcCollections": 5,
+        "nodeRatio": 1.6884810014165221
+      }
+    }
+  },
+  "limitations": "Fixed frozen cost replication, not playing-strength confirmation. Root-cluster percentile intervals do not cover arbitrary JVM/host/platform variability. CPU uses aggregate counters to avoid coarse per-request tick division. All capped/incomplete work retained."
+}

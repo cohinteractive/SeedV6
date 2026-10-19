@@ -1,0 +1,81 @@
+{
+  "domain": "one-worker development; PVS selective target is a comparison value, never oracle proof",
+  "policies": {
+    "PREV": {
+      "comparisons": 60,
+      "guessMinusMatchingPvsScore": {
+        "min": -83,
+        "max": 20,
+        "medianAbsolute": 7.0,
+        "exact": 6,
+        "within16": 55
+      },
+      "zeroPasses": {
+        "median": 8.0,
+        "maximum": 184,
+        "total": 1240
+      },
+      "finalPhases": {
+        "materialize": 25,
+        "fallback": 35
+      }
+    },
+    "PARITY": {
+      "comparisons": 60,
+      "guessMinusMatchingPvsScore": {
+        "min": -74,
+        "max": 13,
+        "medianAbsolute": 3.0,
+        "exact": 6,
+        "within16": 58
+      },
+      "zeroPasses": {
+        "median": 5.5,
+        "maximum": 184,
+        "total": 1136
+      },
+      "finalPhases": {
+        "materialize": 23,
+        "fallback": 37
+      }
+    },
+    "BRACKET": {
+      "comparisons": 60,
+      "guessMinusMatchingPvsScore": {
+        "min": -83,
+        "max": 20,
+        "medianAbsolute": 7.0,
+        "exact": 6,
+        "within16": 55
+      },
+      "zeroPasses": {
+        "median": 7.0,
+        "maximum": 16,
+        "total": 418
+      },
+      "finalPhases": {
+        "materialize": 25,
+        "fallback": 35
+      }
+    },
+    "TWO_PASS": {
+      "comparisons": 60,
+      "guessMinusMatchingPvsScore": {
+        "min": -83,
+        "max": 20,
+        "medianAbsolute": 7.0,
+        "exact": 6,
+        "within16": 55
+      },
+      "zeroPasses": {
+        "median": 2.0,
+        "maximum": 2,
+        "total": 120
+      },
+      "finalPhases": {
+        "fallback": 54,
+        "materialize": 6
+      }
+    }
+  }
+}
