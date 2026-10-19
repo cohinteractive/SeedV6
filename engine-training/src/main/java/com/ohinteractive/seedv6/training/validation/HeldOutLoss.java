@@ -92,6 +92,10 @@ public final class HeldOutLoss {
                 var workspace=b.model().newWorkspace();
                 yield board -> com.ohinteractive.seedv6.core.brn3.Brn3Objective.outcome(workspace.evaluatePawns(board),board);
             }
+            case NetworkModel.BrnNext b -> {
+                var workspace = b.model().newWorkspace();
+                yield board -> com.ohinteractive.seedv6.core.brn3.Brn3Objective.outcome(b.model().rawPawns(board, workspace), board);
+            }
             case NetworkModel.Brn3 b -> {
                 var workspace=b.model().newWorkspace();
                 yield board -> com.ohinteractive.seedv6.core.brn3.Brn3Objective.outcome(workspace.evaluatePawns(board),board);

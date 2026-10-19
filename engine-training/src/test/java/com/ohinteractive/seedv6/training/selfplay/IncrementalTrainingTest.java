@@ -135,6 +135,7 @@ class IncrementalTrainingTest {
             case NetworkTrainingState.NnueMaterial s -> s.trainer().trainBatch(boards, targets, n);
             case NetworkTrainingState.Brn3 s -> s.trainer().trainBatch(boards, targets, n);
             case NetworkTrainingState.BrnPair2 s -> s.trainer().trainBatch(boards, targets, n);
+            case NetworkTrainingState.BrnNext s -> s.trainer().trainBatch(boards, targets, n);
             case NetworkTrainingState.Brn s -> s.trainer().train(boards[0], targets[0]);
             case NetworkTrainingState.Brn1 s -> s.trainer().train(boards[0], targets[0]);
             case NetworkTrainingState.Brn2 s -> s.trainer().train(boards[0], targets[0]);

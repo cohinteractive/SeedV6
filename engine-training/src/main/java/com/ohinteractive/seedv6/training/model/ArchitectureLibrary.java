@@ -8,7 +8,7 @@ public final class ArchitectureLibrary {
     public record Descriptor(String name, TrainingArchitecture implementation, Status status,
                              List<String> aliases, String capabilities) {
         public Descriptor { aliases = List.copyOf(aliases); }
-        public boolean canCreate() { return implementation != null && status == Status.AVAILABLE; }
+        public boolean canCreate() { return implementation != null && (status == Status.AVAILABLE || status == Status.RESEARCH); }
         public TrainingRecipe defaults() {
             if (implementation == null) throw new IllegalStateException("No executable implementation");
             return TrainingRecipe.defaults(implementation);
@@ -29,7 +29,13 @@ public final class ArchitectureLibrary {
             List.of("BRN1"), "Existing lineages; online Adam"),
         new Descriptor("BRN-2", TrainingArchitecture.BRN2, Status.LEGACY,
             List.of("BRN2"), "Existing lineages; online Adam / CP datasets"),
-        new Descriptor("BRN-4", null, Status.RESEARCH, List.of(), "Future research; no implementation"));
+        new Descriptor("BRN-4", null, Status.RESEARCH, List.of(), "Future research; no implementation"),
+        new Descriptor("BRN Gated Pairs (research)", TrainingArchitecture.BRN_GATED, Status.RESEARCH,
+            List.of("W1-GATE"), "Four context-gated local pair experts; corpus Adam"),
+        new Descriptor("BRN Cubic-16 (research)", TrainingArchitecture.BRN_CUBIC, Status.RESEARCH,
+            List.of("W1-CUBIC"), "Rank16 quadratic/cubic ANOVA interactions; corpus Adam"),
+        new Descriptor("BRN Pooled-16 (control)", TrainingArchitecture.BRN_POOLED, Status.RESEARCH,
+            List.of("W1-POOL"), "Small pooled tanh nonlinear control; corpus Adam"));
     public static List<Descriptor> entries() { return ENTRIES; }
     public static Descriptor describe(TrainingArchitecture architecture) {
         return ENTRIES.stream().filter(e -> e.implementation() == architecture).findFirst().orElseThrow();

@@ -45,6 +45,17 @@ tasks.register('installResearch', Sync) {
     into('lib') { from tasks.named('jar'); from configurations.runtimeClasspath }
 }
 
+tasks.register('brnSuccessorProbe', JavaExec) {
+    group = 'verification'
+    description = 'Bounded BRN successor Gen0 inference feasibility and frozen checkpoint verification; no training.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.eval.BrnSuccessorProbe'
+    jvmArgs '-Xmx768m', '-XX:ActiveProcessorCount=1'
+    args rootProject.file('build-assets/production/bre-pair2-g32.brn-pair2').absolutePath
+    if (project.hasProperty('baselineLineage')) args project.property('baselineLineage')
+    if (project.hasProperty('probeReport')) args rootProject.file(project.property('probeReport')).absolutePath
+}
+
 tasks.register('brnDiagnostic', JavaExec) {
     group = 'verification'
     description = 'Isolated cross-host BRN replay and production training diagnostics (no GUI).'

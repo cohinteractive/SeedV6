@@ -145,6 +145,7 @@ public final class IncrementalTraining {
             case NetworkTrainingState.Brn2 n -> n.trainer().predict(board);
             case NetworkTrainingState.Brn3 n -> n.trainer().predictOutcome(board);
             case NetworkTrainingState.BrnPair2 n -> n.trainer().predictOutcome(board);
+            case NetworkTrainingState.BrnNext n -> n.trainer().predictOutcome(board);
         };
     }
     static double loss(NetworkTrainingState state, Sample sample) {
@@ -185,6 +186,7 @@ public final class IncrementalTraining {
                     case NetworkTrainingState.NnueMaterial n -> n.trainer().trainBatch(boards, targets, count).meanLoss();
                     case NetworkTrainingState.Brn3 n -> n.trainer().trainBatch(boards, targets, count);
                     case NetworkTrainingState.BrnPair2 n -> n.trainer().trainBatch(boards, targets, count);
+                    case NetworkTrainingState.BrnNext n -> n.trainer().trainBatch(boards, targets, count);
                     case NetworkTrainingState.Brn n -> n.trainer().train(boards[0], targets[0]);
                     case NetworkTrainingState.Brn1 n -> n.trainer().train(boards[0], targets[0]);
                     case NetworkTrainingState.Brn2 n -> relation == null ? n.trainer().train(boards[0], targets[0])

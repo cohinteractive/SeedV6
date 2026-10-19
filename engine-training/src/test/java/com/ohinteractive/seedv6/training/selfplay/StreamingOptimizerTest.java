@@ -50,6 +50,7 @@ class StreamingOptimizerTest {
             case NetworkTrainingState.NnueMaterial n -> n.trainer().trainBatch(boards, targets, count);
             case NetworkTrainingState.Brn3 n -> n.trainer().trainBatch(boards, targets, count);
             case NetworkTrainingState.BrnPair2 n -> n.trainer().trainBatch(boards, targets, count);
+            case NetworkTrainingState.BrnNext n -> n.trainer().trainBatch(boards, targets, count);
             case NetworkTrainingState.Brn n -> n.trainer().train(boards[0], targets[0]);
             case NetworkTrainingState.Brn1 n -> n.trainer().train(boards[0], targets[0]);
             case NetworkTrainingState.Brn2 n -> n.trainer().train(boards[0], targets[0]);
@@ -62,6 +63,7 @@ class StreamingOptimizerTest {
             case NetworkTrainingState.NnueMaterial n -> SelfPlayTraining.trainSamples(n.trainer(), samples, config, control, observer);
             case NetworkTrainingState.Brn3 n -> Brn3CorpusOptimization.trainSamples(n.trainer(), samples, config, control, observer, TrajectorySampler.Sample::target);
             case NetworkTrainingState.BrnPair2 n -> BrnPair2CorpusOptimization.trainSamples(n.trainer(), samples, config, control, observer, TrajectorySampler.Sample::target);
+            case NetworkTrainingState.BrnNext n -> BatchedCorpusOptimization.trainSamples(n.trainer()::step, n.trainer()::trainBatch, n.trainer()::predictOutcome, samples, config, control, observer, TrajectorySampler.Sample::target);
             case NetworkTrainingState.Brn n -> BrnSelfPlayTraining.trainSamples(n.trainer(), samples, config, control, observer);
             case NetworkTrainingState.Brn1 n -> Brn1SelfPlayTraining.trainSamples(n.trainer(), samples, config, control, observer);
             case NetworkTrainingState.Brn2 n -> Brn2SelfPlayTraining.trainSamples(n.trainer(), samples, config, control, observer);

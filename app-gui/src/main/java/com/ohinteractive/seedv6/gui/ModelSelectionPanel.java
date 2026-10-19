@@ -148,7 +148,9 @@ class ModelSelectionPanel extends JPanel {
                 var found = ModelLibrary.browse(entry);
                 if (!expectedId.isEmpty() && !found.lineage().lineage().map(l -> l.id().toString()).orElse("").equals(expectedId))
                     throw new IOException("Selected lineage identity changed. Register the intended lineage explicitly.");
-                if (registerExisting) folders.register(base, actual, entry.root());
+                // An empty initial location may fall back to a different architecture.
+                // Register the resolved lineage identity, never the earlier selector default.
+                if (registerExisting) folders.register(base, NetworkArchitecture.valueOf(entry.architecture().name()), entry.root());
                 return new Loaded(List.copyOf(entries), found, selected);
             }
             protected void done() {

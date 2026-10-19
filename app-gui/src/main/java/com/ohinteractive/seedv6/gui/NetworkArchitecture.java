@@ -2,7 +2,8 @@ package com.ohinteractive.seedv6.gui;
 
 /** Built-in training choices, mirrored by explicit persisted schema identities. */
 enum NetworkArchitecture {
-    NNUE_MATERIAL("NNUE (material parity)"), NNUE("NNUE (legacy, no material)"), BRN("BRN-0"), BRN1("BRN-1"), BRN2("BRN-2"), BRN3("BRN-3"), BRN_PAIR2("BRE-Pair 2");
+    NNUE_MATERIAL("NNUE (material parity)"), NNUE("NNUE (legacy, no material)"), BRN("BRN-0"), BRN1("BRN-1"), BRN2("BRN-2"), BRN3("BRN-3"), BRN_PAIR2("BRE-Pair 2"),
+    BRN_GATED("BRN Gated Pairs (research)"), BRN_CUBIC("BRN Cubic-16 (research)"), BRN_POOLED("BRN Pooled-16 (control)");
 
     private final String label;
     NetworkArchitecture(String label) { this.label = label; }
@@ -13,18 +14,20 @@ enum NetworkArchitecture {
     }
 
     String optimizerName() {
-        return switch (this) { case NNUE, NNUE_MATERIAL, BRN, BRN1, BRN2 -> "Adam"; case BRN3, BRN_PAIR2 -> "Masked Adam"; };
+        return switch (this) { case NNUE, NNUE_MATERIAL, BRN, BRN1, BRN2, BRN_GATED, BRN_CUBIC, BRN_POOLED -> "Adam"; case BRN3, BRN_PAIR2 -> "Masked Adam"; };
     }
 
     String evaluationUnits() {
-        return switch (this) { case NNUE -> "Legacy NNUE units (uncalibrated)"; case NNUE_MATERIAL -> "NNUE material + residual units (uncalibrated)"; case BRN, BRN1, BRN2 -> "BRN units (uncalibrated)"; case BRN3 -> "BRN-3 units (100 = 1 pawn)"; case BRN_PAIR2 -> "BRE-Pair 2 units (100 = 1 pawn)"; };
+        if (brnNext()) return "BRN successor units (100 = 1 pawn; uncalibrated)";
+        return switch (this) { case NNUE -> "Legacy NNUE units (uncalibrated)"; case NNUE_MATERIAL -> "NNUE material + residual units (uncalibrated)"; case BRN, BRN1, BRN2 -> "BRN units (uncalibrated)"; case BRN3 -> "BRN-3 units (100 = 1 pawn)"; case BRN_PAIR2 -> "BRE-Pair 2 units (100 = 1 pawn)"; default -> throw new AssertionError(); };
     }
 
     /** Presentation scale only; neither a calibrated score nor a win probability. */
     double evaluationBar(int whiteScore) {
-        return switch (this) { case NNUE, NNUE_MATERIAL, BRN, BRN1, BRN2 -> 0.5 + 0.48 * Math.tanh(whiteScore / 2000.0); case BRN3, BRN_PAIR2 -> 0.5 + 0.48 * Math.tanh(whiteScore / 400.0); };
+        return switch (this) { case NNUE, NNUE_MATERIAL, BRN, BRN1, BRN2 -> 0.5 + 0.48 * Math.tanh(whiteScore / 2000.0); case BRN3, BRN_PAIR2, BRN_GATED, BRN_CUBIC, BRN_POOLED -> 0.5 + 0.48 * Math.tanh(whiteScore / 400.0); };
     }
     boolean corpusOnly(){return trainingArchitecture().corpusOnly();}
+    boolean brnNext() { return trainingArchitecture().brnNext(); }
     boolean nnueFamily() { return this == NNUE || this == NNUE_MATERIAL; }
     String folderName() { return trainingArchitecture().folderName(); }
     boolean supportsTrainingData(){return nnueFamily()||this==BRN2||corpusOnly();}

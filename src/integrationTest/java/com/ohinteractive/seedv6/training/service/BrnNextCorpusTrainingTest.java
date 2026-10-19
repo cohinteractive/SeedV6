@@ -1,0 +1,108 @@
+package com.ohinteractive.seedv6.training.service;
+
+import com.ohinteractive.seedv6.training.checkpoint.*;
+import com.ohinteractive.seedv6.training.data.*;
+import com.ohinteractive.seedv6.training.model.*;
+import com.ohinteractive.seedv6.training.selfplay.*;
+import java.nio.file.*;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
+import org.junit.jupiter.api.Timeout;
+import org.junit.jupiter.api.io.TempDir;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+@Timeout(120)
+class BrnNextCorpusTrainingTest {
+    @TempDir Path temporary;
+    TrainerConfig config(Path root, Path data, TrainingArchitecture architecture) throws Exception {
+        try (var store = new CheckpointStore(root, architecture)) {
+            new DataSources(1, List.of(DataSource.register("tiny-source", data, 1)), false).save(DataSources.directory(root));
+        }
+        var base = Brn2TrainerServiceTest.config(root, 1);
+        return new TrainerConfig(root, 71, base.selfPlay(), new TrainerConfig.Training(2, 4, true), base.validation(), 1,
+                base.depthChange(), TrainerConfig.STANDARD_START, architecture, .003)
+                .withSource(TrainingSource.dataSources(DataSources.directory(root)))
+                .withCorpusTraining(new CorpusTrainingConfig(12)).withValidationMethod(ValidationMethod.HELD_OUT);
+    }
+
+    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"BRN_GATED", "BRN_CUBIC", "BRN_POOLED"})
+    void guiServicePublicationPartialResumeAndNextGenerationKeepExactStateAndOwnCursor(TrainingArchitecture architecture) throws Exception {
+        Path source = temporary.resolve("source.jsonl"); var lines = new StringBuilder();
+        for (int i = 0; i < 1200; i++) {
+            // Varied placements: a repeated single-position fixture cannot supply disjoint partitions.
+            int white = 8 + i % 40, black = 8 + (i / 40) % 40;
+            if (white == black) continue;
+            char[] squares = new char[64]; Arrays.fill(squares, ' '); squares[4] = 'K'; squares[60] = 'k';
+            squares[white] = 'N'; squares[black] = 'p'; var fen = new StringBuilder();
+            for (int rank = 7; rank >= 0; rank--) {
+                int empty = 0;
+                for (int file = 0; file < 8; file++) {
+                    char piece = squares[rank * 8 + file];
+                    if (piece == ' ') empty++; else { if (empty > 0) fen.append(empty); empty = 0; fen.append(piece); }
+                }
+                if (empty > 0) fen.append(empty); if (rank > 0) fen.append('/');
+            }
+            lines.append(SourceReadersTest.line(i % 100 - 50).replace("4k3/8/8/8/3pP3/8/8/4K3", fen));
+        }
+        Files.writeString(source, lines);
+        var a = config(temporary.resolve("continuous"), source, architecture);
+        var b = config(temporary.resolve("split"), source, architecture);
+        var probe = config(temporary.resolve("partition-probe"), source, architecture);
+        var trainGroups = new HashSet<String>(); var validGroups = new HashSet<String>();
+        try (var acquisition = new SequentialTraining(probe, probe.source(), com.ohinteractive.seedv6.corpus.CorpusPreparation.NONE)) {
+            for (int generation = 1; generation <= 2; generation++) {
+                var batch = acquisition.batch(generation);
+                for (var sample : batch.training().samples()) {
+                    var position = com.ohinteractive.seedv6.corpus.CorpusPosition.fromFen(com.ohinteractive.seedv6.core.util.Fen.fromBoard(sample.board()));
+                    assertEquals(BrnNextPartition.Part.TRAIN, BrnNextPartition.part(position)); trainGroups.add(BrnNextPartition.groupKey(position));
+                }
+                for (var sample : batch.validation().samples()) {
+                    var position = com.ohinteractive.seedv6.corpus.CorpusPosition.fromFen(com.ohinteractive.seedv6.core.util.Fen.fromBoard(sample.board()));
+                    assertEquals(BrnNextPartition.Part.VALIDATION, BrnNextPartition.part(position)); validGroups.add(BrnNextPartition.groupKey(position));
+                }
+                acquisition.complete(generation);
+            }
+        }
+        assertTrue(Collections.disjoint(trainGroups, validGroups));
+        TrainerSnapshot expected, actual;
+        try (var service = TrainerService.freshInitialized(a, NnueCorpusTrainingTest.forbidden(), s -> {})) {
+            expected = NnueCorpusTrainingTest.finish(service);
+            assertEquals(24, expected.training().orElseThrow().samplesTrained());
+            assertEquals(6, expected.optimizerStep()); assertEquals(0, expected.totals().selfPlayGames());
+            assertEquals(CorpusTraining.TargetPolicy.BRN3_CP_WDL_V1.identity, service.corpusReport().orElseThrow().adapterIdentity());
+        }
+        var provenance = LineageProvenance.read(a.checkpointRoot()).orElseThrow();
+        assertEquals(71L, provenance.initializationSeed());
+        var owner = new AtomicReference<TrainerService>();
+        var stop = new TrainerService.Operations() {
+            @Override Optional<SelfPlayTraining.Statistics> trainCorpus(NetworkTrainingState state, CorpusTraining.Examples examples,
+                    SelfPlayTraining.Config c, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
+                return super.trainCorpus(state, examples, c, control, p -> { observer.accept(p); owner.get().stop(); });
+            }
+        };
+        try (var service = TrainerService.freshInitialized(b, stop, s -> {})) {
+            owner.set(service); assertEquals(1, NnueCorpusTrainingTest.finish(service).optimizerStep());
+        }
+        var reservation = new SourceLedger(b.checkpointRoot()).active().orElseThrow();
+        try (var service = TrainerService.resume(b, NnueCorpusTrainingTest.forbidden(), s -> {})) { actual = NnueCorpusTrainingTest.finish(service); }
+        assertEquals(expected.latestTrainingId(), actual.latestTrainingId());
+        try (var left = new CheckpointStore(a.checkpointRoot(), architecture); var right = new CheckpointStore(b.checkpointRoot(), architecture)) {
+            assertArrayEquals(left.resumeState(expected.latestTrainingId()).encode(), right.resumeState(actual.latestTrainingId()).encode());
+            var checkpoint = right.load(actual.latestTrainingId());
+            assertNotEquals(right.load(checkpoint.manifest().parentId()).manifest().networkSha256(), checkpoint.manifest().networkSha256());
+            assertTrue(right.validationFor(checkpoint.manifest().id()).isPresent());
+            assertEquals(architecture, checkpoint.model().architecture());
+        }
+        assertEquals(reservation.ranges(), new SourceLedger(b.checkpointRoot()).generation(1).orElseThrow().ranges());
+        try (var service = TrainerService.resume(b, NnueCorpusTrainingTest.forbidden(), s -> {})) {
+            assertEquals(12, NnueCorpusTrainingTest.finish(service).optimizerStep());
+        }
+        var next = new SourceLedger(b.checkpointRoot()).generation(2).orElseThrow();
+        assertEquals(reservation.ranges().getFirst().end(), next.ranges().getFirst().start());
+        assertThrows(IllegalArgumentException.class, () -> b.withSource(TrainingSource.SELF_PLAY));
+        assertEquals(CorpusTraining.TargetPolicy.BT4_Q_V1, CorpusTraining.targetPolicy(architecture, LabelProfile.BT4_Q_V1));
+    }
+}

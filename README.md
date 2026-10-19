@@ -151,6 +151,11 @@ training, exact resume, generations/Best, Play, Arena and model-selected search
 benchmarks. It preserves C02 compilation and keeps full training state separate
 from the runtime pair tables; production/default evaluation remains unchanged.
 
+[BRN successor research](docs/research/brn-successor-cglhw/STATE.md) provides three
+new GUI-trainable research lineages: gated pairs, cubic factors and a pooled nonlinear
+control. The first wave is at its human-training gate; no strength improvement or
+production adoption is claimed. See its [training handoff](docs/research/brn-successor-cglhw/WAVE1.md).
+
 Unified Windows and macOS packaging builds both GUI and UCI with `packageWindows`
 and `packageMac`, or independent `:app-gui:` / `:app-uci:` module tasks. These are
 local integrity-checked candidates, not official releases. With Python 3.9+,

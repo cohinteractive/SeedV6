@@ -87,6 +87,16 @@ public sealed interface NetworkModel {
         public void write(OutputStream out)throws IOException{BrnPair2Codec.writeModel(model,out);}
     }
 
+    record BrnNext(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model) implements NetworkModel {
+        public BrnNext { Objects.requireNonNull(model); }
+        public TrainingArchitecture architecture() { return TrainingArchitecture.fromNext(model.architecture()); }
+        public SearchEvaluation evaluation(NnueScoreMapping mapping) {
+            if (!NnueScoreMapping.V1.equals(mapping)) throw new IllegalArgumentException("BRN successor uses fixed pawn mapping");
+            return SearchEvaluation.brnNext(model);
+        }
+        public void write(OutputStream out) throws IOException { com.ohinteractive.seedv6.core.brnnext.BrnNextCodec.writeModel(model, out); }
+    }
+
     /** Legacy NNUE-only consumers (including Play) fail explicitly on BRN. */
     default NnueNetwork nnue() {
         if (this instanceof Nnue n) return n.network();
@@ -107,6 +117,7 @@ public sealed interface NetworkModel {
             case BRN2 -> new Brn2(Brn2Codec.readModel(input));
             case BRN3 -> new Brn3(Brn3Codec.readModel(input));
             case BRN_PAIR2 -> new BrnPair2(BrnPair2Codec.readModel(input));
+            case BRN_GATED, BRN_CUBIC, BRN_POOLED -> new BrnNext(com.ohinteractive.seedv6.core.brnnext.BrnNextCodec.readModel(architecture.nextKind(), input));
         };
     }
 }

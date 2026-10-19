@@ -1,0 +1,73 @@
+{
+  "wave": "brn-successor-2026-10-20-wave1",
+  "recorded": "2026-10-19T23:49:22.842561300Z",
+  "library": "E:\\SeedV6-Networks",
+  "operation": "prepare-existing-GUI-library",
+  "source": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+  "sourceIdentity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+  "entries": [
+    {
+      "candidate": "W1-GATE",
+      "name": "W1-GATE BRN Gated Pairs (research)",
+      "architecture": "BRN_GATED",
+      "configuration": "GATED_PAIRS_W4_PS768_MATERIAL_QUARTER_V1",
+      "root": "E:\\SeedV6-Networks\\BRN-GATED\\699672ff-5dcc-326a-afef-924996c76f79",
+      "lineageId": "699672ff-5dcc-326a-afef-924996c76f79",
+      "initialCheckpoint": "g000000-s000000000-1dccd99b1ab1245b131a58ad9d12d1df8bbc85a82fd9ac356d754f1c44df6c68",
+      "initialNetworkSha256": "6d512388603a2f0adab9eef09908a0808372bfc6077fd7b6ba2bf441abcefcac",
+      "currentCheckpoint": "g000000-s000000000-1dccd99b1ab1245b131a58ad9d12d1df8bbc85a82fd9ac356d754f1c44df6c68",
+      "currentNetworkSha256": "6d512388603a2f0adab9eef09908a0808372bfc6077fd7b6ba2bf441abcefcac",
+      "currentGeneration": 0,
+      "seed": 1,
+      "recipe": {
+        "learningRate": 0.003,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "sourceSelectionIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+      "partition": "brn-next-geometry-sha256-8train-1validation-1sealed-v1"
+    },
+    {
+      "candidate": "W1-CUBIC",
+      "name": "W1-CUBIC BRN Cubic-16 (research)",
+      "architecture": "BRN_CUBIC",
+      "configuration": "CUBIC_W16_PS768_MATERIAL_QUARTER_V1",
+      "root": "E:\\SeedV6-Networks\\BRN-CUBIC\\e04052b9-6784-3c12-abb5-abc75cd21f59",
+      "lineageId": "e04052b9-6784-3c12-abb5-abc75cd21f59",
+      "initialCheckpoint": "g000000-s000000000-32ca939860fe4ea76bf0c3c416cd4bf73bedd6f8a8fb548c6d8bdbe1840fd3e8",
+      "initialNetworkSha256": "c70f213e491183972c7aec70d94bdbae25bf01b27501ded9385d99a88b1d1f87",
+      "currentCheckpoint": "g000000-s000000000-32ca939860fe4ea76bf0c3c416cd4bf73bedd6f8a8fb548c6d8bdbe1840fd3e8",
+      "currentNetworkSha256": "c70f213e491183972c7aec70d94bdbae25bf01b27501ded9385d99a88b1d1f87",
+      "currentGeneration": 0,
+      "seed": 1,
+      "recipe": {
+        "learningRate": 0.003,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "sourceSelectionIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+      "partition": "brn-next-geometry-sha256-8train-1validation-1sealed-v1"
+    },
+    {
+      "candidate": "W1-POOL",
+      "name": "W1-POOL BRN Pooled-16 (control)",
+      "architecture": "BRN_POOLED",
+      "configuration": "POOLED_W16_PS768_MATERIAL_QUARTER_V1",
+      "root": "E:\\SeedV6-Networks\\BRN-POOLED\\97b2fdda-f812-3455-9f62-43e5ee322651",
+      "lineageId": "97b2fdda-f812-3455-9f62-43e5ee322651",
+      "initialCheckpoint": "g000000-s000000000-65bf30f99a4a1c666e68e1204cc1f8226b7d10354c54e50842c44ad77ffb9e40",
+      "initialNetworkSha256": "47c3576594650bb8e7c54758afcdb01e41bea8780d002534d18b81ca3f44fc96",
+      "currentCheckpoint": "g000000-s000000000-65bf30f99a4a1c666e68e1204cc1f8226b7d10354c54e50842c44ad77ffb9e40",
+      "currentNetworkSha256": "47c3576594650bb8e7c54758afcdb01e41bea8780d002534d18b81ca3f44fc96",
+      "currentGeneration": 0,
+      "seed": 1,
+      "recipe": {
+        "learningRate": 0.003,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "sourceSelectionIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+      "partition": "brn-next-geometry-sha256-8train-1validation-1sealed-v1"
+    }
+  ]
+}

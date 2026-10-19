@@ -265,6 +265,9 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
 
     /** Prevent mixing old and calibrated game results in an unfinished BRN-3 attempt. */
     private String brn3SearchCalibrationSuffix() {
+        if (architecture.brnNext()) return "|brn-next=" + architecture.nextKind().configurationId()
+                + ":" + com.ohinteractive.seedv6.core.brnnext.BrnNextModel.CALIBRATION_ID
+                + "|split=" + com.ohinteractive.seedv6.training.data.BrnNextPartition.ID;
         return architecture == TrainingArchitecture.BRN_PAIR2
                 ? "|pair2-search=" + com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.CALIBRATION_ID
                 : architecture == TrainingArchitecture.BRN3

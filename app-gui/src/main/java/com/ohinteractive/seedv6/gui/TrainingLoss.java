@@ -71,7 +71,7 @@ final class TrainingLoss {
         return recorded == null ? invariantFinalObjective(architecture) : objective(recorded);
     }
     static Objective runningObjective(TrainerSnapshot s, NetworkArchitecture architecture) {
-        return architecture == NetworkArchitecture.BRN_PAIR2 ? Objective.CROSS_ENTROPY : currentFinalObjective(s, architecture);
+        return architecture == NetworkArchitecture.BRN_PAIR2 || architecture.brnNext() ? Objective.CROSS_ENTROPY : currentFinalObjective(s, architecture);
     }
     private static Objective objective(String value) {
         return switch (value) {

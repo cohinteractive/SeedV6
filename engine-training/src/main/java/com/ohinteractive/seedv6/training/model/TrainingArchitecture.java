@@ -1,6 +1,7 @@
 package com.ohinteractive.seedv6.training.model;
 
 import java.io.IOException;
+import com.ohinteractive.seedv6.core.brnnext.*;
 import com.ohinteractive.seedv6.core.brn1.Brn1Codec;
 import com.ohinteractive.seedv6.core.brn2.Brn2Codec;
 import com.ohinteractive.seedv6.core.brn2.Brn2Features;
@@ -23,7 +24,10 @@ public enum TrainingArchitecture {
             com.ohinteractive.seedv6.core.brn3.Brn3Codec.MODEL_BYTES, com.ohinteractive.seedv6.core.brn3.Brn3Codec.TRAINING_BYTES),
     // Legacy wire/file identity of BRE-Pair 2. Campaign bindings and checkpoints depend on it.
     BRN_PAIR2("seedv6.brn.pair2", 1, "network.brn-pair2",
-            com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.MODEL_BYTES, com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.TRAINING_BYTES);
+            com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.MODEL_BYTES, com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.TRAINING_BYTES),
+    BRN_GATED(BrnNextArchitecture.GATED_PAIRS),
+    BRN_CUBIC(BrnNextArchitecture.CUBIC),
+    BRN_POOLED(BrnNextArchitecture.POOLED);
 
     private final String schemaId, networkFile;
     private final int schemaVersion;
@@ -33,15 +37,39 @@ public enum TrainingArchitecture {
         this.schemaId = schemaId; this.schemaVersion = schemaVersion; this.networkFile = networkFile;
         this.networkBytes = networkBytes; this.trainingBytes = trainingBytes;
     }
-    public boolean corpusOnly() { return this == BRN3 || this == BRN_PAIR2; }
+    TrainingArchitecture(BrnNextArchitecture kind) {
+        this("seedv6.brn.next." + kind.name().toLowerCase(java.util.Locale.ROOT), 1,
+                "network.brn-" + kind.name().toLowerCase(java.util.Locale.ROOT),
+                BrnNextCodec.modelBytes(kind), BrnNextCodec.trainingBytes(kind));
+    }
+    public boolean brnNext() { return this == BRN_GATED || this == BRN_CUBIC || this == BRN_POOLED; }
+    public BrnNextArchitecture nextKind() {
+        return switch (this) {
+            case BRN_GATED -> BrnNextArchitecture.GATED_PAIRS;
+            case BRN_CUBIC -> BrnNextArchitecture.CUBIC;
+            case BRN_POOLED -> BrnNextArchitecture.POOLED;
+            default -> throw new IllegalStateException("Not a BRN successor architecture");
+        };
+    }
+    public static TrainingArchitecture fromNext(BrnNextArchitecture kind) {
+        return switch (kind) { case GATED_PAIRS -> BRN_GATED; case CUBIC -> BRN_CUBIC; case POOLED -> BRN_POOLED; };
+    }
+    public boolean corpusOnly() { return this == BRN3 || this == BRN_PAIR2 || brnNext(); }
     public boolean nnueFamily() { return this == NNUE || this == NNUE_MATERIAL; }
     /** Existing managed-library layout; independent of translated/display labels. */
     public String folderName() {
+        if (brnNext()) return name().replace('_', '-');
         return this == BRN_PAIR2 ? "BRN-Pair2" : this == NNUE ? "NNUE" : this == NNUE_MATERIAL ? "NNUE-Material"
                 : this == BRN ? "BRN-0" : name().replace("BRN", "BRN-");
     }
     /** Keep enum toString/name stable: old campaign bindings contain them. */
     public String displayName() {
+        if (brnNext()) return switch (this) {
+            case BRN_GATED -> "BRN Gated Pairs (research)";
+            case BRN_CUBIC -> "BRN Cubic-16 (research)";
+            case BRN_POOLED -> "BRN Pooled-16 (control)";
+            default -> throw new AssertionError();
+        };
         return this == BRN_PAIR2 ? "BRE-Pair 2" : this == NNUE ? "NNUE (legacy, no material)" : this == NNUE_MATERIAL ? "NNUE (material parity)"
                 : this == BRN ? "BRN-0" : name().replace("BRN", "BRN-");
     }

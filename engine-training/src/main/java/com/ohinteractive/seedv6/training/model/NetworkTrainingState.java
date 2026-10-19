@@ -24,6 +24,7 @@ public sealed interface NetworkTrainingState {
             case Brn2 b -> b.trainer().setLearningRate(rate);
             case Brn3 b -> b.trainer().setLearningRate(rate);
             case BrnPair2 b -> b.trainer().setLearningRate(rate);
+            case BrnNext b -> b.trainer().setLearningRate(rate);
         }
     }
     void write(OutputStream output) throws IOException;
@@ -37,6 +38,7 @@ public sealed interface NetworkTrainingState {
             case BRN2 -> new Brn2(new Brn2Trainer(learningRate));
             case BRN3 -> new Brn3(new Brn3Trainer(seed, new BrnAdamConfig(learningRate)));
             case BRN_PAIR2 -> new BrnPair2(new BrnPair2Trainer(learningRate));
+            case BRN_GATED, BRN_CUBIC, BRN_POOLED -> new BrnNext(new com.ohinteractive.seedv6.core.brnnext.BrnNextTrainer(architecture.nextKind(), seed, learningRate));
         };
         state.setLearningRate(learningRate); return state;
     }
@@ -102,6 +104,13 @@ public sealed interface NetworkTrainingState {
         public AdamHyperparameters hyperparameters(){return new AdamHyperparameters(trainer.rate(),.9,.999,1e-8);}
         public void write(OutputStream out)throws IOException{BrnPair2TrainingCodec.writeTraining(trainer,out);}
     }
+    record BrnNext(com.ohinteractive.seedv6.core.brnnext.BrnNextTrainer trainer) implements NetworkTrainingState {
+        public BrnNext { Objects.requireNonNull(trainer); }
+        public NetworkModel snapshot() { return new NetworkModel.BrnNext(trainer.snapshot()); }
+        public long step() { return trainer.step(); }
+        public AdamHyperparameters hyperparameters() { return new AdamHyperparameters(trainer.rate(), .9, .999, 1e-8); }
+        public void write(OutputStream out) throws IOException { trainer.write(out); }
+    }
     default TrainingArchitecture architecture() {
         return switch (this) {
             case Nnue n -> TrainingArchitecture.NNUE;
@@ -111,6 +120,7 @@ public sealed interface NetworkTrainingState {
             case Brn2 b -> TrainingArchitecture.BRN2;
             case Brn3 b -> TrainingArchitecture.BRN3;
             case BrnPair2 b -> TrainingArchitecture.BRN_PAIR2;
+            case BrnNext b -> TrainingArchitecture.fromNext(b.trainer().architecture());
         };
     }
     default byte[] encode() throws IOException {
@@ -122,6 +132,7 @@ public sealed interface NetworkTrainingState {
             case Brn2 b -> Brn2TrainingCodec.encodeTraining(b.trainer());
             case Brn3 b -> Brn3TrainingCodec.encodeTraining(b.trainer());
             case BrnPair2 b -> { var out=new ByteArrayOutputStream(); b.write(out); yield out.toByteArray(); }
+            case BrnNext b -> { var out = new ByteArrayOutputStream(); b.write(out); yield out.toByteArray(); }
         };
     }
     static NetworkTrainingState read(TrainingArchitecture architecture, InputStream input) throws IOException {
@@ -133,6 +144,7 @@ public sealed interface NetworkTrainingState {
             case BRN2 -> new Brn2(Brn2TrainingCodec.readTraining(input));
             case BRN3 -> new Brn3(Brn3TrainingCodec.readTraining(input));
             case BRN_PAIR2 -> new BrnPair2(BrnPair2TrainingCodec.readTraining(input));
+            case BRN_GATED, BRN_CUBIC, BRN_POOLED -> new BrnNext(com.ohinteractive.seedv6.core.brnnext.BrnNextTrainer.read(architecture.nextKind(), input));
         };
     }
 }

@@ -1,0 +1,14 @@
+{
+  "id": "wave1-feasibility-v1",
+  "purpose": "Bounded initialization, baseline checkpoint availability and warmed inference-cost diagnostic before human training; no strength inference",
+  "baselineNetworkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+  "candidateState": "Gen0, seed1, zero residual head; full refresh; not competitively trained",
+  "positions": "32 deterministic legal-walk roots, seed20261020, recorded in result; reserve them from later independent confirmation",
+  "warmupEvaluationsPerModel": 20000,
+  "measuredEvaluationsPerModelPerPass": 20000,
+  "passes": 7,
+  "order": "Rotate model order each pass",
+  "resources": {"processes": 1, "activeProcessors": 1, "maximumHeapMiB": 768, "maximumSeconds": 300},
+  "comparability": "Pair2 rolling workspace and candidate full refresh have different mechanics; measured workload is changing legal-walk roots, not a trained search tree",
+  "limitations": "Single JVM/host, no heap profiler/cache counters, no incremental candidate timing or strength claim. Training size and latency are diagnostics, not rejection criteria."
+}

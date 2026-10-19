@@ -57,7 +57,7 @@ class NetworkArchitectureTest {
                 var selector = named(panel, "trainingLineage", JComboBox.class);
                 assertNull(named(panel, "networkArchitecture", JComboBox.class));
                 var cards = named(panel, "architectureConfiguration", JPanel.class);
-                assertInstanceOf(CardLayout.class, cards.getLayout()); assertEquals(6, cards.getComponentCount());
+                assertInstanceOf(CardLayout.class, cards.getLayout()); assertEquals(NetworkArchitecture.values().length - 1, cards.getComponentCount());
                 var nnue = named(panel, "nnueConfiguration", NnueConfigurationPanel.class);
                 var batch = named(panel, "trainingMinibatch", JSpinner.class);
                 var epochs = named(panel, "trainingEpochs", JSpinner.class);

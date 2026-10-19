@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StreamingInitialLossTest {
-    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"NNUE", "NNUE_MATERIAL", "BRN2", "BRN3", "BRN_PAIR2"})
+    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"NNUE", "NNUE_MATERIAL", "BRN2", "BRN3", "BRN_PAIR2", "BRN_GATED", "BRN_CUBIC", "BRN_POOLED"})
     void fusedInitialLossEqualsOriginalMetricPass(TrainingArchitecture architecture) {
         verify(NetworkTrainingState.initialized(architecture, 71, .001));
     }
@@ -34,6 +34,7 @@ class StreamingInitialLossTest {
             case NetworkTrainingState.Brn2 n -> Brn2SelfPlayTraining.trainSamples(n.trainer(), samples, config, control, stop, TrajectorySampler.Sample::trainingTarget).orElseThrow();
             case NetworkTrainingState.Brn3 n -> Brn3CorpusOptimization.trainSamples(n.trainer(), samples, config, control, stop, TrajectorySampler.Sample::trainingTarget).orElseThrow();
             case NetworkTrainingState.BrnPair2 n -> BrnPair2CorpusOptimization.trainSamples(n.trainer(), samples, config, control, stop, TrajectorySampler.Sample::trainingTarget).orElseThrow();
+            case NetworkTrainingState.BrnNext n -> BatchedCorpusOptimization.trainSamples(n.trainer()::step, n.trainer()::trainBatch, n.trainer()::predictOutcome, samples, config, control, stop, TrajectorySampler.Sample::trainingTarget).orElseThrow();
             default -> throw new AssertionError();
         };
         assertEquals(Double.doubleToRawLongBits(sum / samples.size()), Double.doubleToRawLongBits(result.initialLoss()));

@@ -135,6 +135,10 @@ public final class SequentialTraining extends CorpusTraining {
                     if (entry == null) throw new EOFException("Training Data source exhausted: " + item.name() + " at position " + reader.nextPosition() + ". No wrapping or source substitution is permitted.");
                     if (entry.position() == null || sourceAdapter.rejection(entry.position()) != null) { skipped++; continue; }
                     boolean heldOut = retained >= train;
+                    if (configuration.architecture().brnNext()) {
+                        var required = heldOut ? BrnNextPartition.Part.VALIDATION : BrnNextPartition.Part.TRAIN;
+                        if (BrnNextPartition.part(entry.position().position()) != required) { skipped++; continue; }
+                    }
                     // GUI workers spool fixed records; epochs and continuation do not retain decoded positions.
                     // Feature encoding and optimizer state remain in the architecture-specific trainers.
                     if (heldOut) validation.add(entry.position(), sourceAdapter); else if (!validationOnly) training.add(entry.position(), sourceAdapter);

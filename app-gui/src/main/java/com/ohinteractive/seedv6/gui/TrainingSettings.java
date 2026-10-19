@@ -38,7 +38,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         root = root.toAbsolutePath().normalize();
         // Use the authoritative service configuration validation, including cross-field bounds.
         config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
-                validationPairs, seed, maximumPlies, maximumGenerations, TrainerConfig.DepthChange.REQUIRE_SAME, architecture, architecture == NetworkArchitecture.BRN_PAIR2 ? .01 : architecture == NetworkArchitecture.BRN3 ? .003 : architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate);
+                validationPairs, seed, maximumPlies, maximumGenerations, TrainerConfig.DepthChange.REQUIRE_SAME, architecture, architecture == NetworkArchitecture.BRN_PAIR2 ? .01 : (architecture == NetworkArchitecture.BRN3 || architecture.brnNext()) ? .003 : architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -91,7 +91,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     double initialLearningRate() {
         return switch (architecture) {
             case NNUE, NNUE_MATERIAL -> .001;
-            case BRN3 -> .003;
+            case BRN3, BRN_GATED, BRN_CUBIC, BRN_POOLED -> .003;
             case BRN_PAIR2 -> .01;
             case BRN -> brnLearningRate;
             case BRN1 -> brn1LearningRate;
@@ -296,7 +296,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
 
     TrainerConfig config(TrainerConfig.DepthChange depthChange) {
         return config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
-                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN_PAIR2 ? .01 : architecture == NetworkArchitecture.BRN3 ? .003 : architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate)
+                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN_PAIR2 ? .01 : (architecture == NetworkArchitecture.BRN3 || architecture.brnNext()) ? .003 : architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate)
                 .withSource(source).withRunSeeds(runSeeds)
                 .withSupervision(corpusSelected() ? BrnSupervision.WDL : supervision)
                 .withTeacherStore(corpusSelected() ? null : teacherStore)
@@ -389,7 +389,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         save(prefs, true);
     }
 
-    private static String corpusPreferencePrefix(NetworkArchitecture architecture) { return architecture == NetworkArchitecture.BRN_PAIR2 ? "brnPair2Corpus." : architecture == NetworkArchitecture.BRN3 ? "brn3Corpus." : architecture == NetworkArchitecture.NNUE_MATERIAL ? "nnueMaterialCorpus." : architecture == NetworkArchitecture.NNUE ? "nnueCorpus." : "brn2Corpus."; }
+    private static String corpusPreferencePrefix(NetworkArchitecture architecture) { return architecture.brnNext() ? architecture.name() + "Corpus." : architecture == NetworkArchitecture.BRN_PAIR2 ? "brnPair2Corpus." : architecture == NetworkArchitecture.BRN3 ? "brn3Corpus." : architecture == NetworkArchitecture.NNUE_MATERIAL ? "nnueMaterialCorpus." : architecture == NetworkArchitecture.NNUE ? "nnueCorpus." : "brn2Corpus."; }
 
     private static TrainingSource sourcePreference(Preferences prefs, NetworkArchitecture architecture, String root) {
         String prefix = "trainingSource." + architecture.name() + ".";

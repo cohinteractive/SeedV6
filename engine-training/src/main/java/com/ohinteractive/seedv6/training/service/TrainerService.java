@@ -482,7 +482,7 @@ public final class TrainerService implements AutoCloseable {
             var bootstrap = store.initialize(initial, new CheckpointManifest.Metadata(0, config.selfPlay().depth(), ""));
             if (initializedFromConfig) {
                 Long initializationSeed = switch (config.architecture()) {
-                    case NNUE, NNUE_MATERIAL, BRN3 -> config.masterSeed();
+                    case NNUE, NNUE_MATERIAL, BRN3, BRN_GATED, BRN_CUBIC, BRN_POOLED -> config.masterSeed();
                     case BRN1 -> com.ohinteractive.seedv6.core.brn1.Brn1Model.INITIALIZATION_SEED;
                     case BRN2 -> com.ohinteractive.seedv6.core.brn2.Brn2Model.INITIALIZATION_SEED;
                     case BRN, BRN_PAIR2 -> null;
@@ -780,7 +780,7 @@ public final class TrainerService implements AutoCloseable {
 
     private static void requireCorpusModel(NetworkTrainingState state) throws IOException {
         if (state instanceof NetworkTrainingState.Nnue || state instanceof NetworkTrainingState.NnueMaterial) return;
-        if (state instanceof NetworkTrainingState.Brn3 || state instanceof NetworkTrainingState.BrnPair2) return;
+        if (state.architecture().corpusOnly()) return;
         if (!(state instanceof NetworkTrainingState.Brn2 brn)
                 || brn.trainer().materialPrior() != com.ohinteractive.seedv6.core.brn2.Brn2MaterialPrior.BASIC_V1)
             throw new IOException("Training Data CP supervision requires a BASIC_V1 BRN-2 network; legacy NONE semantics are preserved.");
@@ -809,7 +809,7 @@ public final class TrainerService implements AutoCloseable {
         corpusValidationExamples = batch.validation();
         int allSamples = Math.addExact(batch.evidence().usable(), batch.evidence().heldOut());
         updateGames(new SelfPlayBatch.Statistics(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, allSamples, allSamples));
-        trainingSampleTarget = (long) batch.evidence().usable() * (trainer instanceof NetworkTrainingState.Nnue || trainer instanceof NetworkTrainingState.NnueMaterial || trainer instanceof NetworkTrainingState.Brn3 || trainer instanceof NetworkTrainingState.BrnPair2 ? config.training().epochs() : 1);
+        trainingSampleTarget = (long) batch.evidence().usable() * (trainer.architecture().nnueFamily() || trainer.architecture().corpusOnly() ? config.training().epochs() : 1);
         phase(TRAINING);
         if (stopRequested) return false;
         long start = System.nanoTime();
@@ -947,6 +947,7 @@ public final class TrainerService implements AutoCloseable {
             case NetworkTrainingState.Brn2 b -> b.trainer().predict(board);
             case NetworkTrainingState.Brn3 b -> b.trainer().predictOutcome(board);
             case NetworkTrainingState.BrnPair2 b -> b.trainer().predictOutcome(board);
+            case NetworkTrainingState.BrnNext b -> b.trainer().predictOutcome(board);
             default -> throw new IllegalArgumentException("Unsupported corpus trainer");
         };
         double difference = prediction - target; return .5 * difference * difference;
@@ -1324,6 +1325,9 @@ public final class TrainerService implements AutoCloseable {
                 return SelfPlayTraining.trainSamples(nnue.trainer(), examples.samples(), config, control, observer, examples.targets());
             if(state instanceof NetworkTrainingState.BrnPair2 pair)
                 return BrnPair2CorpusOptimization.trainSamples(pair.trainer(),examples.samples(),config,control,observer,examples.targets());
+            if (state instanceof NetworkTrainingState.BrnNext next)
+                return BatchedCorpusOptimization.trainSamples(next.trainer()::step, next.trainer()::trainBatch,
+                        next.trainer()::predictOutcome, examples.samples(), config, control, observer, examples.targets());
             if(state instanceof NetworkTrainingState.Brn3 brn)
                 return Brn3CorpusOptimization.trainSamples(brn.trainer(),examples.samples(),config,control,observer,examples.targets());
             return trainCorpus(state, examples, control, observer);
@@ -1378,6 +1382,7 @@ public final class TrainerService implements AutoCloseable {
                 case NetworkTrainingState.Nnue n -> SelfPlayTraining.trainSamples(n.trainer(), samples, config, control, observer);
                 case NetworkTrainingState.NnueMaterial n -> SelfPlayTraining.trainSamples(n.trainer(), samples, config, control, observer);
                 case NetworkTrainingState.BrnPair2 b -> throw new IllegalArgumentException("BRE-Pair 2 requires Training Data.");
+                case NetworkTrainingState.BrnNext b -> throw new IllegalArgumentException("BRN successors require Training Data.");
                 case NetworkTrainingState.Brn3 b -> throw new IllegalArgumentException("This architecture requires Training Data.");
             };
         }
@@ -1398,7 +1403,7 @@ public final class TrainerService implements AutoCloseable {
                 SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
             if (state instanceof NetworkTrainingState.Nnue nnue) return train(nnue.trainer(), batch, config, control, observer);
             if (state instanceof NetworkTrainingState.NnueMaterial nnue) return train(nnue.trainer(), batch, config, control, observer);
-            if (state instanceof NetworkTrainingState.Brn3 || state instanceof NetworkTrainingState.BrnPair2) throw new IllegalArgumentException("This architecture requires Training Data.");
+            if (state.architecture().corpusOnly()) throw new IllegalArgumentException("This architecture requires Training Data.");
             if (state instanceof NetworkTrainingState.Brn1 b)
                 return Brn1SelfPlayTraining.train(b.trainer(), batch, config, control, observer);
             if (state instanceof NetworkTrainingState.Brn2 b)

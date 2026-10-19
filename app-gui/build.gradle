@@ -21,7 +21,18 @@ tasks.register('runGui', JavaExec) {
     jvmArgs '--add-modules=jdk.incubator.vector'
 }
 
+tasks.register('brnSuccessorWave', JavaExec) {
+    group = 'verification'
+    description = 'Inspects or explicitly prepares the BRN successor GUI training wave without training.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.gui.BrnSuccessorWave'
+    jvmArgs '--add-modules=jdk.incubator.vector', '-Xmx768m', '-Djava.awt.headless=true'
+    if (project.hasProperty('waveReport')) args '--create', rootProject.file(project.property('waveReport')).absolutePath
+    else args '--inspect'
+}
+
 tasks.withType(Test).configureEach {
     if (project.hasProperty('headless')) systemProperty 'java.awt.headless', 'true'
+    if (project.hasProperty('waveGuiReport')) systemProperty 'seedv6.waveGuiReport', rootProject.file(project.property('waveGuiReport')).absolutePath
     maxHeapSize = '2g'
 }

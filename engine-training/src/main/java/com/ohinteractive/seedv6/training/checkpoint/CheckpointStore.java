@@ -949,7 +949,10 @@ public final class CheckpointStore implements AutoCloseable {
                 || absolute.getFileName().toString().equals(TrainingArchitecture.BRN1.networkFile())
                 || absolute.getFileName().toString().equals(TrainingArchitecture.BRN2.networkFile())
                 || absolute.getFileName().toString().equals(TrainingArchitecture.BRN3.networkFile())
-                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN_PAIR2.networkFile())) && directory != null
+                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN_PAIR2.networkFile())
+                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN_GATED.networkFile())
+                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN_CUBIC.networkFile())
+                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN_POOLED.networkFile())) && directory != null
                 && directory.getParent() != null && directory.getParent().getFileName() != null
                 && directory.getParent().getFileName().toString().equals("checkpoints")) {
             try (var access = PayloadAccess.acquire(checkpointRoot(directory))) {
@@ -1080,6 +1083,13 @@ public final class CheckpointStore implements AutoCloseable {
                 if (Double.doubleToRawLongBits(left.model().weight(i)) != Double.doubleToRawLongBits(right.weight(i)))
                     throw new IOException("BRN-2 network/model parameter mismatch.");
             }
+            return;
+        }
+        if (a instanceof NetworkModel.BrnNext left) {
+            var right = ((NetworkModel.BrnNext) b).model();
+            for (int i = 0; i < left.model().architecture().parameters(); i++)
+                if (Double.doubleToRawLongBits(left.model().weight(i)) != Double.doubleToRawLongBits(right.weight(i)))
+                    throw new IOException("BRN successor runtime/optimizer mismatch");
             return;
         }
         if(a instanceof NetworkModel.BrnPair2 left) {
