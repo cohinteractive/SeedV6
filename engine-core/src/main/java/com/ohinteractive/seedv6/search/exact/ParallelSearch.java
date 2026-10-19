@@ -175,10 +175,15 @@ public final class ParallelSearch implements SingleDepthSearch {
 
     public static ParallelSearch constructionResearch(int threads,SearchEvaluation evaluation,
             TTable table,FlatSearchConfig config) {
+        return constructionResearch(threads,evaluation,table,config,null);
+    }
+
+    static ParallelSearch constructionResearch(int threads,SearchEvaluation evaluation,
+            TTable table,FlatSearchConfig config,java.util.function.IntFunction<ExactEvaluator> evaluators) {
         Objects.requireNonNull(config,"config");
         return new ParallelSearch(threads,evaluation,table,
                 config.has(FlatSearchConfig.Feature.EFFORT)?ConcurrencyPolicy.ROOT_REUSE:ConcurrencyPolicy.ROOT_SPLIT,
-                null,config);
+                evaluators,config);
     }
 
     private ParallelSearch(int threads,SearchEvaluation definition,TTable table,ConcurrencyPolicy policy,

@@ -1,0 +1,115 @@
+{
+  "command": [
+    "cmd.exe",
+    "/c",
+    "gradlew.bat",
+    "--gradle-user-home",
+    "build/migration/gradle-user-home",
+    "--no-daemon",
+    "--max-workers=1",
+    ":research:test",
+    "--tests",
+    "*Construction*Test",
+    "--tests",
+    "*Sr002*",
+    "--tests",
+    "*Sr004IntegratedTest",
+    "--tests",
+    "*Policy4ProductionTest",
+    "--console=plain"
+  ],
+  "exitCode": 0,
+  "elapsedSeconds": 34.992178600048646,
+  "suites": [
+    {
+      "path": "raw\\group3-verified-research-TEST-com.ohinteractive.seedv6.search.exact.ConstructionDepthTest.xml",
+      "sha256": "91e7434fca8409f5809a7aec1be5423f5e05dd8389a5990688f83e26121537b0",
+      "name": "com.ohinteractive.seedv6.search.exact.ConstructionDepthTest",
+      "tests": "7",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T19:04:19",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "1.165"
+    },
+    {
+      "path": "raw\\group3-verified-research-TEST-com.ohinteractive.seedv6.search.exact.ConstructionOrderingTest.xml",
+      "sha256": "a937c8bc7d3771fdbab5951240c1f89eb6759501884ec7cafdd6930aa42dcfc1",
+      "name": "com.ohinteractive.seedv6.search.exact.ConstructionOrderingTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T19:04:20",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.416"
+    },
+    {
+      "path": "raw\\group3-verified-research-TEST-com.ohinteractive.seedv6.search.exact.ConstructionSearchTest.xml",
+      "sha256": "0583cb1ec4b0e25f5b706eadb1d74613b879449c4345f6eca85806bdd0366ef0",
+      "name": "com.ohinteractive.seedv6.search.exact.ConstructionSearchTest",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T19:04:20",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.265"
+    },
+    {
+      "path": "raw\\group3-verified-research-TEST-com.ohinteractive.seedv6.search.exact.Policy4ProductionTest.xml",
+      "sha256": "7d02b3e211a845781144228a9250bf46d6696b19301a00bf88b415ba3a35ee91",
+      "name": "com.ohinteractive.seedv6.search.exact.Policy4ProductionTest",
+      "tests": "8",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T19:04:20",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "1.67"
+    },
+    {
+      "path": "raw\\group3-verified-research-TEST-com.ohinteractive.seedv6.search.exact.Sr002FlatQuiescenceTest.xml",
+      "sha256": "5c746f241a29fa118eac314c7570396350345242b1897edb4041f44266d02b5e",
+      "name": "com.ohinteractive.seedv6.search.exact.Sr002FlatQuiescenceTest",
+      "tests": "13",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T19:04:22",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "4.037"
+    },
+    {
+      "path": "raw\\group3-verified-research-TEST-com.ohinteractive.seedv6.search.exact.Sr002FullLifecycleTest.xml",
+      "sha256": "ff07675f1e0b0e1d422a93e1f9ad9a499ee547df533e8169e876f7a70a881315",
+      "name": "com.ohinteractive.seedv6.search.exact.Sr002FullLifecycleTest",
+      "tests": "2",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T19:04:26",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.05"
+    },
+    {
+      "path": "raw\\group3-verified-research-TEST-com.ohinteractive.seedv6.search.exact.Sr004IntegratedTest.xml",
+      "sha256": "6c748d0c5cc1d85e685aea4cdb49261a7fed75d3ee1b357c068a1ef991ca0c72",
+      "name": "com.ohinteractive.seedv6.search.exact.Sr004IntegratedTest",
+      "tests": "6",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T19:04:26",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.779"
+    }
+  ],
+  "totals": {
+    "tests": 44,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

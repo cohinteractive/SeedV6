@@ -185,6 +185,27 @@ public final class ExactSearch {
     private int[][] flatMainFrames;
     private long[][] flatMainLongs;
     private FlatSearchConfig construction;
+    private FlatSearchState constructionState;
+    private ConstructionTrace constructionTrace;
+
+    public ExactSearch withConstructionTrace(ConstructionTrace trace) {
+        if(active || requestActive || construction==null) throw new IllegalStateException("Idle construction owner required");
+        constructionTrace=trace;return this;
+    }
+
+    /** Quiescent observations only; counters are per fixed-depth invocation. */
+    public java.util.Map<String,Long> constructionCounters() {
+        if(active) throw new IllegalStateException("Search active");
+        if(constructionState==null) return java.util.Map.of();
+        var s=constructionState;
+        String[] names={"captureUpdates","quietUpdates","filtered","orderingChanges","reductions","verifications",
+                "fullRetries","refuted","relief","extensions","futilityOmissions","reverseCutoffs","protectedMoves","evaluations"};
+        long[] values={s.captureUpdates,s.quietUpdates,s.filtered,s.orderingChanges,s.reductions,s.verifications,
+                s.fullRetries,s.refuted,s.relief,s.extensions,s.futilityOmissions,s.reverseCutoffs,s.protectedMoves,s.evaluations};
+        var result=new java.util.LinkedHashMap<String,Long>();
+        for(int i=0;i<names.length;i++) result.put(names[i],values[i]);
+        return java.util.Collections.unmodifiableMap(result);
+    }
 
     /** Explicit immutable composition; ordinary constructors and references stay unchanged. */
     public static ExactSearch constructionResearch(ExactEvaluator evaluator,TTable table,FlatSearchConfig config) {
@@ -195,22 +216,29 @@ public final class ExactSearch {
                 SORT_CROSSOVER,PVS,true,QSEARCH_BASELINE,false,false,false,true,null,true,
                 config.has(FlatSearchConfig.Feature.LMR)?LMR_QUIET:LMR_OFF,null,
                 config.has(FlatSearchConfig.Feature.LMP)?LMP_WINDOW:LMP_OFF,null);
-        search.construction=config;
+        if((config.flags()&~31L)!=0) search.constructionState=new FlatSearchState(config);
         if(config.has(FlatSearchConfig.Feature.EFFORT)) {
             search.iterationReuse=new IterationReuse(IterationReuse.EFFORT,null);
             search.iterationReuse.collectInteriorWindows=true;
         }
         search.withSeeResearch(config.has(FlatSearchConfig.Feature.QXRAY)?SeePolicy.QXRAY:SeePolicy.OFF,null);
         if(table!=null) search.withCompletedHints(config.has(FlatSearchConfig.Feature.COMPLETED_HINTS),null);
-        return search.withFlatSearchResearch(true).withRepeatedRootPassResearch();
+        search.withFlatSearchResearch(true).withRepeatedRootPassResearch();
+        search.construction=config;
+        return search;
+    }
+
+    private void requireMutableConfiguration() {
+        if(construction!=null) throw new IllegalStateException("Immutable construction configuration");
     }
 
     /** Bounded SR-002 integrated alternative. Supports the current production
      * composition and its unpruned control, not unrelated research policies. */
     public ExactSearch withFlatSearchResearch(boolean enabled) {
+        requireMutableConfiguration();
         if(active || requestActive) throw new IllegalStateException("Search request active");
         if(enabled) requireFlatMainDomain();
-        flatMainFrames=enabled?new int[11][MAX_DEPTH]:null;
+        flatMainFrames=enabled?new int[12][MAX_DEPTH]:null;
         flatMainLongs=enabled?new long[4][MAX_DEPTH]:null;
         withFlatQuiescenceResearch(enabled);
         return this;
@@ -232,6 +260,7 @@ public final class ExactSearch {
     }
 
     public ExactSearch withFlatQuiescenceResearch(boolean enabled) {
+        requireMutableConfiguration();
         if(active || requestActive) throw new IllegalStateException("Search request active");
         if(!enabled && flatMainFrames!=null) throw new IllegalStateException("Disable full flattening first");
         if(enabled) requireFlatQuiescenceDomain();
@@ -291,6 +320,7 @@ public final class ExactSearch {
     /** Opt-in root-driver probes may read prior full-window guidance without replacing it.
      * History still resets per invocation; aborted work still clears guidance. */
     public ExactSearch withRepeatedRootPassResearch() {
+        requireMutableConfiguration();
         if(active || requestActive || (iterationReuse!=null && iterationReuse.history()))
             throw new IllegalStateException("Repeated probes require idle non-retained iteration guidance");
         if(iterationReuse!=null) iterationReuse.preserveCompletedDuringProbes=true;
@@ -300,6 +330,7 @@ public final class ExactSearch {
     /** Completed legal guidance, selected by the Pair-2 production factory.
      * Ordinary proof/identity and independent constructor defaults remain unchanged. */
     public ExactSearch withCompletedHints(boolean enabled,MoveHintDiagnostics diagnostics) {
+        requireMutableConfiguration();
         if(active || requestActive || table==null || nullMovePruning || reverseFutility
                 || pairNull!=NullMovePolicy.OFF || internalPolicy!=InternalSearchPolicy.OFF
                 || checkPolicy!=CHECK_OFF || tacticalExtension!=TacticalExtension.OFF
@@ -314,6 +345,7 @@ public final class ExactSearch {
      * ordinary factory selects it. Unsupported same-ply/synthetic policies are
      * excluded so outcome slots describe only their actual searched prefix. */
     public ExactSearch withHistoryResearch(boolean retain, boolean nominalOnly, HistoryLearning.Diagnostics diagnostics) {
+        requireMutableConfiguration();
         if(active || requestActive || iterationReuse==null || !iterationReuse.effort()
                 || ordering!=SEE_MATERIAL_QUIET_HISTORY || mechanics!=STAGED_LAZY
                 || nullMovePruning || reverseFutility || pairNull!=NullMovePolicy.OFF
@@ -339,6 +371,7 @@ public final class ExactSearch {
 
     /** Explicit, idle cumulative SR-032 composition; controls never alter exact/reference constructors. */
     public ExactSearch withTacticalExtension(TacticalExtension policy,TacticalExtensionDiagnostics diagnostics) {
+        requireMutableConfiguration();
         if(active || requestActive || historyLearning != null || completedHints || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
                 || lmrPolicy != LMR_QUIET || iterationReuse == null || nullMovePruning || reverseFutility
                 || pairNull != NullMovePolicy.OFF || checkPolicy != CHECK_OFF
@@ -353,6 +386,7 @@ public final class ExactSearch {
 
     /** Explicit SR-033 experiment over unchanged cumulative production policies. */
     public ExactSearch withDepthFeedback(DepthFeedback policy, DepthFeedback.Diagnostics diagnostics) {
+        requireMutableConfiguration();
         if(active || requestActive || historyLearning != null || completedHints || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
                 || lmrPolicy != LMR_QUIET || iterationReuse == null || nullMovePruning || reverseFutility
                 || pairNull != NullMovePolicy.OFF || checkPolicy != CHECK_OFF
@@ -369,6 +403,7 @@ public final class ExactSearch {
 
     /** Explicit SR-021 composition; requires the accepted cumulative recursive policies. */
     public ExactSearch withFutilityResearch(FutilityPolicy policy, FutilityPolicy.Diagnostics diagnostics) {
+        requireMutableConfiguration();
         if(active || requestActive || historyLearning != null || completedHints || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
                 || lmrPolicy != LMR_QUIET || iterationReuse == null || nullMovePruning || reverseFutility
                 || pairNull != NullMovePolicy.OFF || checkPolicy != CHECK_OFF || depthFeedback != DepthFeedback.OFF
@@ -381,6 +416,7 @@ public final class ExactSearch {
 
     /** Configure an idle cumulative research owner; never changes the independent reference. */
     public ExactSearch withSeeResearch(SeePolicy policy, SeePolicy.Diagnostics diagnostics) {
+        requireMutableConfiguration();
         if((historyLearning != null || completedHints) && policy != SeePolicy.OFF && policy != SeePolicy.QXRAY)
             throw new IllegalStateException("History learning requires ordinary or QXRAY leaves");
         if((futilityPolicy != FutilityPolicy.OFF || depthFeedback != DepthFeedback.OFF
@@ -453,6 +489,10 @@ public final class ExactSearch {
         int count=Gen.genAll(board[0],board[1],board[2],board[3],(int)board[Board.STATUS],board[Board.KEY],true,list,generatorScratch);
         if(quietHistory != null) Arrays.fill(quietHistory,0);
         snapshotOrdering(board,list,count,preferred,keys,0);
+        if(constructionState!=null) {
+            constructionState.reset();
+            constructionState.order(list,0,count,Board.enPassantSquare((int)board[Board.STATUS]),preferred,keys,0,0,quietHistory);
+        }
         Sort.full(list,keys,0,count,SORT_CROSSOVER);
         return Arrays.copyOf(list,count);
     }
@@ -864,6 +904,7 @@ public final class ExactSearch {
                     depth, requestActive && consumedQplies < 0, alpha, beta);
             // Invocation-local by default; SR-005 may retain only a completed adjacent iteration.
             if(captureHistory != null) Arrays.fill(captureHistory, 0);
+            if(constructionState!=null) constructionState.reset();
             if(quietHistory != null && !retainHistory) Arrays.fill(quietHistory, 0);
             if(continuationHistory != null) Arrays.fill(continuationHistory, (short) 0);
             if(killers != null) Arrays.fill(killers, 0);
@@ -885,7 +926,8 @@ public final class ExactSearch {
             // Conservative provenance: even a prediction later made irrelevant
             // prevents claiming this completed invocation as entirely exact.
             boolean selective = selectiveEpoch != 0;
-            if(table != null && restrictedRootMove == 0 && depth > 0 && !selective && !rootDomainBound) store(SearchKey.key(boards[0], historyKeys[0]), depth, 0,
+            if(table != null && restrictedRootMove == 0 && depth > 0 && !selective && !rootDomainBound
+                    && (construction==null || !construction.extensions())) store(SearchKey.key(boards[0], historyKeys[0]), depth, 0,
                     alpha, beta, score, pvLength[0] == 0 ? 0 : pv[0][0]);
             if(iterationReuse != null && restrictedRootMove == 0
                     && (construction==null || (alpha==-INFINITY && beta==INFINITY)
@@ -895,6 +937,7 @@ public final class ExactSearch {
             return new ExactSearchResult(depth, true, line.length == 0 ? 0 : line[0], score,
                     line, nodes, System.nanoTime() - start, qnodes, Math.max(0, maximumQply - Math.max(0, consumedQplies)), selective, maximumExtensionPlies);
         } catch(Aborted ignored) {
+            if(constructionState!=null) constructionState.reset();
             if(iterationReuse != null) iterationReuse.clear();
             if(quietHistory != null) Arrays.fill(quietHistory, 0);
             if(continuationHistory != null) Arrays.fill(continuationHistory, (short) 0);
@@ -903,6 +946,7 @@ public final class ExactSearch {
             return new ExactSearchResult(depth, false, 0, Value.INVALID, new long[0],
                     nodes, System.nanoTime() - start, qnodes, Math.max(0, maximumQply - Math.max(0, consumedQplies)), false, maximumExtensionPlies);
         } catch(RuntimeException | Error failure) {
+            if(constructionState!=null) constructionState.reset();
             if(iterationReuse != null) iterationReuse.clear();
             throw failure;
         } finally {
@@ -936,19 +980,29 @@ public final class ExactSearch {
                     score=-score;
                     if(stage==2) {
                         if(score>alpha || score < -MAX_STATIC_SCORE || score > MAX_STATIC_SCORE) {
+                            if(constructionState!=null) {
+                                constructionState.verifications++;
+                                if(score>alpha) flatMainFrames[8][ply]=flags|16;
+                            }
                             flatMainFrames[10][ply]=3;
                             int childAlpha=-alpha-1;beta=-alpha;alpha=childAlpha;
-                            depth--;ply++;flags=4;state=0;continue;
+                            depth=flatMainFrames[11][ply];ply++;flags=4;state=0;continue;
                         }
                         score=alpha; // Reduced fail-low is a threshold prediction, never nominal proof.
                     }
                     if(stage==3 && score>alpha && score<beta) {
+                        if(constructionState!=null) constructionState.fullRetries++;
                         flatMainFrames[10][ply]=4;
                         int childAlpha=-beta;beta=-alpha;alpha=childAlpha;
-                        depth--;ply++;flags=0;state=0;continue;
+                        depth=flatMainFrames[11][ply];ply++;flags=0;state=0;continue;
                     }
+                    if(constructionState!=null && (flags&16)!=0 && score<=alpha) {
+                        flags|=8;constructionState.refuted++;
+                    }
+                    flags&=~16;
                     history.popRealPosition();
                     long move=moves[ply][index];
+                    if(constructionState!=null) constructionState.nominal.searched(ply,index,stage!=2);
                     if(ply==0 && iterationReuse!=null) iterationReuse.rootResult(move,score,nodes-observationNodes-rootNodesBefore);
                     if(score>best) {
                         best=score;
@@ -960,7 +1014,9 @@ public final class ExactSearch {
                     }
                     if(score>=beta) {
                         checkpoint();
-                        QuietHistory.recordCutoff(quietHistory,moves[ply],index,
+                        if(constructionState!=null) constructionState.cutoff(quietHistory,moves[ply],index,
+                                Board.enPassantSquare((int)boards[ply][Board.STATUS]),depth,ply);
+                        else QuietHistory.recordCutoff(quietHistory,moves[ply],index,
                                 Board.enPassantSquare((int)boards[ply][Board.STATUS]),depth);
                         score=completed(key,depth,ply,originalAlpha,originalBeta,score,move,entryEpoch);
                         continue;
@@ -976,6 +1032,7 @@ public final class ExactSearch {
                         score=flatQuiescence(ply,0,alpha,beta);state=2;continue;
                     }
                     checkpoint();nodes++;pvLength[ply]=0;
+                    if(constructionState!=null) constructionState.rawEval[ply]=Integer.MIN_VALUE;
                     long checking=checkers(board,status);
                     flags=(flags&4)|(checking!=0?1:0);
                     if(checking!=0) count=Gen.genEvasion(board[0],board[1],board[2],board[3],status,
@@ -1008,7 +1065,8 @@ public final class ExactSearch {
                                 count=appendQuiets(board,legalMoves,count);flags&=~2;
                             }
                             long data=entry.data;
-                            if((data&255)==depth && ((data>>>10)&255)==generation) {
+                            if((construction==null || !construction.extensions())
+                                    && (data&255)==depth && ((data>>>10)&255)==generation) {
                                 score=TranspositionScores.fromTableScore((int)(data>>32),ply);
                                 int type=(int)(data>>>8)&3;
                                 if(type==TTable.TYPE_EXACT || (type==TTable.TYPE_LOWER && score>=beta)
@@ -1043,7 +1101,26 @@ public final class ExactSearch {
                     if(lower>=originalBeta) {if(ply==0) rootDomainBound=true;score=lower;continue;}
                     if(alpha<lower) alpha=lower;if(beta>upper) beta=upper;
                     entryEpoch=selectiveEpoch;
+                    if(constructionState!=null && (flags&1)==0) {
+                        if(construction.has(FlatSearchConfig.Feature.IMPROVING)) constructionEval(board,ply);
+                        if(construction.has(FlatSearchConfig.Feature.REVERSE_FUTILITY) && ply>0 && depth<=2
+                                && originalBeta==originalAlpha+1 && originalBeta>=0
+                                && originalBeta<=MAX_STATIC_SCORE-construction.reverseMargin()*depth
+                                && Board.halfMoveClock(status)+depth<DrawAdjudicator.FIFTY_MOVE_HALFMOVES
+                                && Long.bitCount(board[0]|board[1]|board[2])>6 && hasNonPawnMaterial(board,status)
+                                && constructionEval(board,ply)-construction.reverseMargin()*depth>=originalBeta) {
+                            checkpoint();selectiveEpoch++;constructionState.reverseCutoffs++;
+                            if(constructionTrace!=null) constructionTrace.prediction(true,board,0,ply,depth,
+                                    originalAlpha,originalBeta,constructionState.rawEval[ply],constructionState.pathMoves);
+                            score=originalBeta;state=2;continue;
+                        }
+                    }
+                    if(construction!=null && construction.has(FlatSearchConfig.Feature.BAD_TACTICAL_LAST) && (flags&2)!=0) {
+                        count=appendQuiets(board,legalMoves,count);flags&=~2;
+                    }
                     snapshotOrdering(board,legalMoves,count,hashMove,selectionKeys,keyBase);
+                    if(constructionState!=null) constructionState.order(legalMoves,0,count,Board.enPassantSquare(status),
+                            hashMove,selectionKeys,keyBase,ply,quietHistory);
                     if(iterationReuse!=null) iterationReuse.order(legalMoves,count,selectionKeys,keyBase,hashMove,iterationHint,ply);
                     best=-INFINITY;searchedQuiets=0;index=0;state=1;
                 }
@@ -1058,23 +1135,62 @@ public final class ExactSearch {
                         int evidence=quietHistory[QuietHistory.index(legalMoves[j])];
                         selectionKeys[keyBase+j]=((evidence+QuietHistory.LIMIT)<<9)|(511-j);
                     }
+                    if(constructionState!=null) constructionState.order(legalMoves,from,count,Board.enPassantSquare(status),
+                            hashMove,selectionKeys,keyBase,ply,quietHistory);
                     if(index==count) continue;
                 }
                 Sort.next(legalMoves,selectionKeys,keyBase,index,count);
                 long move=legalMoves[index];long[] child=boards[ply+1];
                 Board.makeMoveInto(board[0],board[1],board[2],board[3],status,board[Board.KEY],move,child);
                 boolean prune=lmpPolicy!=LMP_OFF && depth>=1 && depth<=4 && lmpPrunes(board,depth,searchedQuiets);
+                if(prune && constructionState!=null && construction.has(FlatSearchConfig.Feature.HISTORY_PROTECTION)
+                        && quietHistory[QuietHistory.index(move)]>0) {
+                    prune=false;constructionState.protectedMoves++;
+                }
                 if(prune && lmpEligible(depth,ply,index,(flags&4)!=0 || originalBeta==originalAlpha+1,
                         (flags&1)!=0,move,hashMove,status,child,alpha,beta)) {
                     selectiveEpoch++;best=Math.max(best,alpha);
                     legalMoves[index]=legalMoves[--count];selectionKeys[keyBase+index]=selectionKeys[keyBase+count];
                     continue;
                 }
+                if(constructionState!=null && construction.has(FlatSearchConfig.Feature.FUTILITY)
+                        && depth<=2 && ply>0 && index>0 && searchedQuiets>=3 && (flags&1)==0
+                        && originalBeta==originalAlpha+1 && alpha>=0 && beta<=MAX_STATIC_SCORE
+                        && move!=hashMove && !CaptureHistory.isTactical(move,Board.enPassantSquare(status))
+                        && ((move>>>Board.START_PIECE_SHIFT)&Piece.TYPE)!=Piece.PAWN
+                        && ((move>>>Board.START_PIECE_SHIFT)&Piece.TYPE)!=Piece.KING
+                        && Long.bitCount(board[0]|board[1]|board[2])>6
+                        && Board.halfMoveClock((int)child[Board.STATUS])+depth-1<DrawAdjudicator.FIFTY_MOVE_HALFMOVES
+                        && checkers(child,(int)child[Board.STATUS])==0
+                        && (!construction.has(FlatSearchConfig.Feature.HISTORY_PROTECTION) || quietHistory[QuietHistory.index(move)]<=0)
+                        && constructionEval(board,ply)+construction.futilityMargin()*depth<=alpha) {
+                    checkpoint();selectiveEpoch++;constructionState.futilityOmissions++;best=Math.max(best,alpha);
+                    if(constructionTrace!=null) constructionTrace.prediction(false,board,move,ply,depth,
+                            alpha,beta,constructionState.rawEval[ply],constructionState.pathMoves);
+                    legalMoves[index]=legalMoves[--count];selectionKeys[keyBase+index]=selectionKeys[keyBase+count];
+                    continue;
+                }
                 rootNodesBefore=ply==0 && iterationReuse!=null?nodes-observationNodes:0;
                 if(iterationReuse!=null) iterationReuse.descend(ply,move);
                 int childDepth=depth-1;
+                int extension=0;
+                if(constructionState!=null) {
+                    constructionState.pathMoves[ply+1]=move;
+                    int used=constructionState.credits[ply];
+                    if(used==0 && ((construction.has(FlatSearchConfig.Feature.CHECK_EXTENSION) && depth<=2
+                            && (flags&1)!=0 && count==1 && (ply!=0 || restrictedRootMove==0))
+                            || (construction.has(FlatSearchConfig.Feature.RECAPTURE_EXTENSION) && depth==1 && (flags&1)==0
+                            && TacticalExtension.RECAPTURE.eligible(move,constructionState.pathMoves[ply],false,0)
+                            && checkers(child,(int)child[Board.STATUS])==0))) {
+                        extension=1;selectiveEpoch++;constructionState.extensions++;
+                        maximumExtensionPlies=Math.max(maximumExtensionPlies,1);
+                    }
+                    constructionState.credits[ply+1]=used+extension;childDepth+=extension;
+                }
                 evaluator.child(board,child,ply,childDepth==0?0:-1);
-                if(lmrPolicy==LMR_QUIET && !CaptureHistory.isTactical(move,Board.enPassantSquare(status))) searchedQuiets++;
+                if((lmrPolicy==LMR_QUIET || lmpPolicy!=LMP_OFF
+                        || (construction!=null && construction.has(FlatSearchConfig.Feature.FUTILITY)))
+                        && !CaptureHistory.isTactical(move,Board.enPassantSquare(status))) searchedQuiets++;
                 history.pushRealPosition(child);
                 if(historyKeys!=null) historyKeys[ply+1]=SearchKey.childHistory(historyKeys[ply],history.currentKey(),(int)child[Board.STATUS]);
                 stage=4;
@@ -1083,17 +1199,40 @@ public final class ExactSearch {
                     childAlpha=-alpha-1;childFlags=4;stage=3;
                     int reduction=lmrReduction(depth,ply,index+1,searchedQuiets,(flags&4)!=0,(flags&1)!=0,
                             move,hashMove,status,child,alpha,beta);
-                    if(reduction>0) {selectiveEpoch++;childDepth-=reduction;stage=2;}
+                    if(extension!=0) reduction=0;
+                    if(reduction>0 && constructionState!=null
+                            && ((construction.has(FlatSearchConfig.Feature.CAUTION) && (flags&8)!=0)
+                                || (construction.has(FlatSearchConfig.Feature.IMPROVING) && ply>=2
+                                    && constructionState.rawEval[ply]!=Integer.MIN_VALUE
+                                    && constructionState.rawEval[ply-2]!=Integer.MIN_VALUE
+                                    && constructionState.rawEval[ply]>constructionState.rawEval[ply-2]))) {
+                        reduction--;constructionState.relief++;
+                    }
+                    if(reduction>0) {selectiveEpoch++;childDepth-=reduction;stage=2;
+                        if(constructionState!=null) constructionState.reductions++;
+                    }
                 }
                 flatMainFrames[0][ply]=depth;flatMainFrames[1][ply]=alpha;flatMainFrames[2][ply]=beta;
                 flatMainFrames[3][ply]=originalAlpha;flatMainFrames[4][ply]=originalBeta;
                 flatMainFrames[5][ply]=count;flatMainFrames[6][ply]=index;flatMainFrames[7][ply]=best;
                 flatMainFrames[8][ply]=flags;flatMainFrames[9][ply]=searchedQuiets;flatMainFrames[10][ply]=stage;
+                flatMainFrames[11][ply]=depth-1+extension;
                 flatMainLongs[0][ply]=key;flatMainLongs[1][ply]=hashMove;
                 flatMainLongs[2][ply]=entryEpoch;flatMainLongs[3][ply]=rootNodesBefore;
                 depth=childDepth;alpha=childAlpha;beta=childBeta;flags=childFlags;ply++;state=0;
             }
         } finally {while(history.size()>historySize) history.popRealPosition();}
+    }
+
+    private int constructionEval(long[] board,int ply) {
+        int value=constructionState.rawEval[ply];
+        if(value==Integer.MIN_VALUE) {
+            checkpoint();value=evaluator.evaluate(board,ply);constructionState.evaluations++;
+            if(value < -MAX_STATIC_SCORE || value > MAX_STATIC_SCORE)
+                throw new IllegalArgumentException("Static score enters the reserved mate band: "+value);
+            constructionState.rawEval[ply]=value;
+        }
+        return value;
     }
 
     private int negamax(int depth, int ply, int alpha, int beta, long previousMove, boolean scout) {
@@ -2326,6 +2465,7 @@ public final class ExactSearch {
         // Suppress ancestor writes too, including otherwise EXACT outcomes.
         // Unaffected subtrees remain eligible for normal exact TT reuse.
         if(table != null && !nullProbeActive && entryEpoch == selectiveEpoch
+                && (construction==null || !construction.extensions())
                 && (tacticalCreditsUsed == null || tacticalCreditsUsed[ply] == 1)) {
             checkpoint(); // Includes cancellation raised by the final evaluated child.
             // R004 has eight depth bits; depth 256 must never alias depth zero.

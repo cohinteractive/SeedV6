@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "gradleLog": "raw/group2-gradle.txt",
+  "raw": "docs/research/search/p3-construction-2026-10-20/raw/group2-tests",
+  "suites": [
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.ConstructionOrderingTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.637"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.ConstructionSearchTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.215"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.Policy4ProductionTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "1.384"
+    }
+  ],
+  "totals": {
+    "tests": 16,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

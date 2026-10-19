@@ -16,6 +16,8 @@ public record ConstructionSearch(FlatSearchConfig mechanisms,int workers,int has
     }
     public SingleDepthSearch create(SearchEvaluation evaluation) {
         Objects.requireNonNull(evaluation,"evaluation");
+        if((mechanisms.has(FlatSearchConfig.Feature.FUTILITY)||mechanisms.has(FlatSearchConfig.Feature.REVERSE_FUTILITY))
+                && !evaluation.isBrnPair2()) throw new IllegalArgumentException("Construction margins require fixed Pair-2 evaluation");
         var table=new TTable(hashMiB);
         if(workers==1) {
             var owner=ExactSearchAdapter.constructionResearch(evaluation,table,mechanisms);
