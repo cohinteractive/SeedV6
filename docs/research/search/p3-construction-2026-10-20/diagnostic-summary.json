@@ -1,0 +1,536 @@
+{
+  "roots": 12,
+  "completedDepth6": 12,
+  "mechanismCounters": {
+    "captureUpdates": 119451,
+    "quietUpdates": 57213,
+    "filtered": 1194,
+    "orderingChanges": 1642603,
+    "reductions": 39874,
+    "verifications": 421,
+    "fullRetries": 1314,
+    "refuted": 331,
+    "relief": 17754,
+    "extensions": 29222,
+    "futilityOmissions": 125725,
+    "reverseCutoffs": 23269,
+    "protectedMoves": 8605,
+    "evaluations": 254519
+  },
+  "counterInterpretation": "protectedMoves counts positive-history count-pruning guard bypasses before all eligibility checks, not proven omissions prevented; it does not count futility protection. Other event counters include repeated work.",
+  "conditionalAudits": 96,
+  "completedAudits": 96,
+  "falseThresholds": 0,
+  "shallowDisagreements": [
+    {
+      "id": "opening-03",
+      "reference": -7,
+      "candidate": -8
+    }
+  ],
+  "witness": [
+    {
+      "depth": 2,
+      "type": "reference",
+      "score": -7,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "candidate",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "flat-policy4",
+      "score": -7,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "exact",
+      "score": -7,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-QXRAY",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-LMR",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-LMP",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-EFFORT",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-COMPLETED_HINTS",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-CAPTURE_HISTORY",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-CONTINUATION",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-KILLERS",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-COUNTERMOVES",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-NOMINAL_HISTORY",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-BAD_TACTICAL_LAST",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-IMPROVING",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-CAUTION",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-CHECK_EXTENSION",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-RECAPTURE_EXTENSION",
+      "score": -7,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-FUTILITY",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-REVERSE_FUTILITY",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "without-HISTORY_PROTECTION",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "unpruned-extended",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 2,
+      "type": "variant",
+      "name": "unpruned-ordered",
+      "score": -7,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "reference",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "candidate",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "flat-policy4",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "exact",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-QXRAY",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-LMR",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-LMP",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-EFFORT",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-COMPLETED_HINTS",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-CAPTURE_HISTORY",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-CONTINUATION",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-KILLERS",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-COUNTERMOVES",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-NOMINAL_HISTORY",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-BAD_TACTICAL_LAST",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-IMPROVING",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-CAUTION",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-CHECK_EXTENSION",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-RECAPTURE_EXTENSION",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-FUTILITY",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-REVERSE_FUTILITY",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "without-HISTORY_PROTECTION",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "unpruned-extended",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 3,
+      "type": "variant",
+      "name": "unpruned-ordered",
+      "score": -8,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "reference",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "candidate",
+      "score": -1,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "flat-policy4",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "exact",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-QXRAY",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-LMR",
+      "score": -1,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-LMP",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-EFFORT",
+      "score": -1,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-COMPLETED_HINTS",
+      "score": -1,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-CAPTURE_HISTORY",
+      "score": -1,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-CONTINUATION",
+      "score": -1,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-KILLERS",
+      "score": -5,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-COUNTERMOVES",
+      "score": -1,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-NOMINAL_HISTORY",
+      "score": -1,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-BAD_TACTICAL_LAST",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-IMPROVING",
+      "score": -1,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-CAUTION",
+      "score": -1,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-CHECK_EXTENSION",
+      "score": -1,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-RECAPTURE_EXTENSION",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-FUTILITY",
+      "score": -1,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-REVERSE_FUTILITY",
+      "score": -1,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "without-HISTORY_PROTECTION",
+      "score": -1,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "unpruned-extended",
+      "score": -3,
+      "completed": true
+    },
+    {
+      "depth": 4,
+      "type": "variant",
+      "name": "unpruned-ordered",
+      "score": -3,
+      "completed": true
+    }
+  ],
+  "ordinaryProofStores": 0,
+  "limitations": "Conditional event samples are not random or a calibrated population error rate. Different selective horizons are diagnosed, not forced to equal the unpruned reference. No strength inference."
+}

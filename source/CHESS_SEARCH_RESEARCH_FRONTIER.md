@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F011**
+Internal frontier revision: **P3-F012**
 
-Status: **ACTIVE Workstream 3: owner-authorized feature-rich experimental construction on owner-accepted flattened PVS. Workstreams 1 and 2 are closed and owner-accepted. Recursive Policy 4 remains the unchanged production champion/default and fallback at 1-16 workers.**
+Status: **Workstream 3 construction is technically complete, pending GPT/owner reconciliation and acceptance. Workstreams 1 and 2 are closed and owner-accepted. Recursive Policy 4 remains the unchanged production champion/default and fallback at 1-16 workers. No successor is launched.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -13,7 +13,9 @@ Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/se
 P3-R012/P3-F010 mirrors and explicitly launches Workstream 3 construction.
 The [driver record](../docs/research/search/P3_SR003_SR004_DRIVERS_2026-10-19.md)
 retains its historical evidence and limits. The [construction record](../docs/research/search/P3_CONSTRUCTION_2026-10-20.md)
-records the dependency-aware implementation groups, evidence and next useful work.
+records the completed dependency-aware implementation, all 31 dispositions,
+frozen candidate, independent validation and measured costs. Construction is
+technically complete; GPT/owner reconciliation and acceptance remain outstanding.
 Production Policy 4 is unchanged; no successor or promotion is authorized.
 
 The [Contract](CHESS_SEARCH_CONTRACT.md) governs objectives, technical guarantees,
@@ -37,7 +39,8 @@ future scope. The owner subsequently launched and Codex technically completed
 SR-002 as the first bounded investigation. The owner has explicitly accepted
 flattened Search execution for subsequent Phase 3 development under the Contract's
 near-equal-performance preference, with the recorded limits. The separately launched
-driver investigation is now owner-accepted; construction is explicitly launched.
+driver investigation is owner-accepted; the subsequently launched construction
+now has its technical handback, without automatic successor authorization.
 
 Production champion: **Policy 4**, cumulative Pair-2 **QXRAY + quiet LMR +
 WINDOW + completed legal TT hints**, with **EFFORT at one worker / ROOT_REUSE at 2-16**,
@@ -204,6 +207,34 @@ not every MTD algorithm; broader TT/selective-cache hypotheses require their own
 authority and evidence. No binding policy was relaxed and no new prerequisite is
 created for the separately authorized construction programme.
 
+## Completed Workstream 3 construction
+
+The [focused record](../docs/research/search/P3_CONSTRUCTION_2026-10-20.md) freezes
+`construction-v1` on shared flattened PVS: all 18 immutable controls (flags 262143),
+Pair-2 shallow margins 100*d/200*d, shared extension cap one, WIDEN16 and requested
+64 MiB TT. Aspiration OFF and individual removals/variants remain available at
+1-16 workers. Ordering/history, raw evaluation movement, reduction caution,
+bounded check/recapture extension and guarded shallow pruning are active alongside
+accepted QXRAY/LMR/WINDOW/EFFORT/completed hints. Production selection is unchanged.
+
+All 31 selected subjects have explicit dispositions. SR-007/018 alternatives
+remain available but inactive; SR-020/025/026/027/028/031 formulations are inactive
+or excluded for the recorded cost, calibration, redundancy or proof-anchor reasons.
+No binding TT change is needed or authorized. The four programme deferrals remain.
+
+Final integrated Search testing passed 303 tests plus one subsequent focused
+history-protection control; core/UCI testing passed 78.
+Real UCI sessions cover 1/4/16 workers and aspiration ON/OFF. New selective
+diagnostics completed 96 sampled independent checks with no sampled false
+threshold; a shallow disagreement is explained by recapture/QXRAY horizons.
+This is neither a population error guarantee nor playing-strength confirmation.
+Warmer depth-six requests cost the aspiration candidate about 11.2%/4.7% more
+elapsed and 12.1%/17.3% more process CPU at one/four workers than flat Policy 4;
+equal-node costs expose additional per-node overhead. Preserve all failed starts,
+earlier JIT-heavy runs and uncertainty. Technical completion awaits GPT/owner
+acceptance; whole-configuration strength research and reverse ablation require
+their own launch and have not begun.
+
 ## Compact research inventory
 
 **Production** means a retained accepted implementation, with scope stated.
@@ -272,7 +303,7 @@ deferrals**. These dispositions do not replace historical research outcomes:
 | --- | --- | --- |
 | Workstream 1: bounded execution-architecture investigation | SR-002 | Technically complete and owner-accepted: flattened execution selected for subsequent Phase 3 development under the near-equal preference, with recorded limits. Recursive Policy 4 remains production default/fallback; independent references remain retained. |
 | Workstream 2: bounded root-driver investigation | SR-003, SR-004 | Closed and owner-accepted: retain PVS on accepted flattened execution. Tested MTD variants have adverse costs and no confirmed strength benefit; comparison capability retained, TT policy unchanged. |
-| Workstream 3: selected feature-rich construction | SR-001; SR-005; SR-006 through SR-012; SR-014 through SR-034; SR-036 | ACTIVE by explicit owner launch, 20 October 2026. One coherent construction objective across 31 subjects, including inherited mechanisms; integrate and validate dependency-aware groups with explicit dispositions. |
+| Workstream 3: selected feature-rich construction | SR-001; SR-005; SR-006 through SR-012; SR-014 through SR-034; SR-036 | Technically complete after the explicit 20 October launch; all 31 dispositions and the active construction-v1 candidate are recorded above and in the focused record. Pending GPT/owner reconciliation and acceptance; no production promotion. |
 | Deferred from first construction milestone | SR-013 | Broader tablebase integration; retain existing guarded functionality. |
 | Deferred from first construction milestone | SR-035 | Pondering and speculative opponent-turn Search. |
 | Deferred from first construction milestone | SR-037 | Dedicated production Search hot-path mechanical optimization research; normal implementation-level performance discipline still applies. |
@@ -309,14 +340,12 @@ before production promotion; these follow-on investigations need not await promo
 Apply the Contract's resource, worker-domain, selection-bias and confirmation rules;
 do not extend closed studies post hoc or enumerate configurations exhaustively.
 
-**Current work selection:** implement immutable pre-request composition and
-one-/multiworker aspiration over the shared flattened kernel; validate richer
-ordering before dependent depth and selective consumers; then freeze the integrated
-configuration and characterize correctness, lifecycle and complete-request costs.
-Challenge exclusions against actual proof, ownership and resource economics.
-All 31 subjects require concrete dispositions; an implemented flag alone is not
-completion. Routine in-scope choices are autonomous. Workstream 4, production
-promotion and binding TT changes require separate authority. No SR is renumbered.
+**Current work selection:** reconcile the technically completed construction
+handback with GPT/owner, refresh both Project Source mirrors and obtain explicit
+acceptance/next-objective authority before dependent research. No in-scope technical
+blocker remains. Preserve the frozen candidate, controls and negative/resource
+evidence for that separately launched whole-configuration investigation. Workstream
+4, production promotion and binding TT changes are not authorized. No SR is renumbered.
 
 At objective closeout retain concise dispositions and dependencies here, with detail
 in focused existing research locations. Distinguish technical completion, adoption,
@@ -344,7 +373,8 @@ The owner subsequently confirmed P3-R010/P3-F008 synchronization at the Workstre
 launch. The owner confirms P3-R012/P3-F010 synchronization, accepts Workstream 2
 and explicitly launches construction on 20 October. BOTH mirrors require refresh
 to the current master revisions before dependent GPT planning or a subsequent
-launch. Codex uses repository masters for authorized work;
+launch. Workstream 3 now awaits GPT/owner reconciliation and acceptance after
+technical completion. Codex uses repository masters for authorized work;
 repository edits do not synchronize external mirrors. Architectural acceptance
 does not establish production adoption, playing-strength confirmation or deployment.
 

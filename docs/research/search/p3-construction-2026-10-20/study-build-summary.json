@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cmd.exe",
+    "/c",
+    "gradlew.bat",
+    "--gradle-user-home",
+    "build/migration/gradle-user-home",
+    "--no-daemon",
+    "--max-workers=1",
+    ":research:installResearch",
+    "--console=plain"
+  ],
+  "exitCode": 0,
+  "elapsedSeconds": 17.018928100005724,
+  "suites": [],
+  "totals": {
+    "tests": 0,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

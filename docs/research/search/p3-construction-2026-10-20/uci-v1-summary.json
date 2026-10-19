@@ -1,0 +1,154 @@
+{
+  "status": "passed",
+  "elapsedSeconds": 3.1587441000156105,
+  "records": [
+    {
+      "profile": "rich",
+      "aspiration": "WIDEN16",
+      "sessions": [
+        {
+          "workers": 1,
+          "depth3Nodes": 490,
+          "boundedNodes": 1234
+        },
+        {
+          "workers": 4,
+          "depth3Nodes": 725,
+          "boundedNodes": 1234
+        },
+        {
+          "workers": 16,
+          "depth3Nodes": 721,
+          "boundedNodes": 1234
+        }
+      ],
+      "exitCode": 0
+    },
+    {
+      "profile": "rich",
+      "aspiration": "OFF",
+      "sessions": [
+        {
+          "workers": 1,
+          "depth3Nodes": 490,
+          "boundedNodes": 1234
+        },
+        {
+          "workers": 4,
+          "depth3Nodes": 726,
+          "boundedNodes": 1234
+        },
+        {
+          "workers": 16,
+          "depth3Nodes": 726,
+          "boundedNodes": 1234
+        }
+      ],
+      "exitCode": 0
+    },
+    {
+      "profile": "policy4",
+      "aspiration": "OFF",
+      "sessions": [
+        {
+          "workers": 1,
+          "depth3Nodes": 479,
+          "boundedNodes": 1234
+        },
+        {
+          "workers": 4,
+          "depth3Nodes": 704,
+          "boundedNodes": 1234
+        },
+        {
+          "workers": 16,
+          "depth3Nodes": 703,
+          "boundedNodes": 1234
+        }
+      ],
+      "exitCode": 0
+    },
+    {
+      "profile": "exact",
+      "aspiration": "OFF",
+      "sessions": [
+        {
+          "workers": 1,
+          "depth3Nodes": 1071,
+          "boundedNodes": 1234
+        },
+        {
+          "workers": 4,
+          "depth3Nodes": 2047,
+          "boundedNodes": 1234
+        },
+        {
+          "workers": 16,
+          "depth3Nodes": 2181,
+          "boundedNodes": 1234
+        }
+      ],
+      "exitCode": 0
+    },
+    {
+      "rejected": [
+        "seedv6.construction.disable=LMR"
+      ],
+      "exitCode": 1
+    },
+    {
+      "rejected": [
+        "seedv6.construction.profile=unknown"
+      ],
+      "exitCode": 1
+    },
+    {
+      "rejected": [
+        "seedv6.construction.futilityMargin=garbage"
+      ],
+      "exitCode": 1
+    },
+    {
+      "rejected": [
+        "seedv6.construction.reverseMargin=0"
+      ],
+      "exitCode": 1
+    },
+    {
+      "rejected": [
+        "seedv6.construction.disable=NOT_A_FEATURE"
+      ],
+      "exitCode": 1
+    },
+    {
+      "rejected": [
+        "seedv6.construction.aspiration=unknown"
+      ],
+      "exitCode": 1
+    },
+    {
+      "rejected": "missing pinned model",
+      "exitCode": 1
+    }
+  ],
+  "logSha256": "bfe5f735ca9917321db5e68dd97dabdf8414d923ed28725022ee388763a5aba6",
+  "runtime": {
+    "build\\research\\runtime\\research-launcher.properties": "a7c61ea7a9363040d74d62f8b3ce450305f0b833ef13cd5dc87a85425f5849e4",
+    "build\\research\\runtime\\lib\\app-uci.jar": "ba532b7503d3c6a8d638bf946d716d84f354716cfedc316c09dac62c052a9c48",
+    "build\\research\\runtime\\lib\\engine-core.jar": "afd1902449e3f9bdbc93b80d18f322bde57f9094e6326858bd9a25f9acb710c5",
+    "build\\research\\runtime\\lib\\engine-training.jar": "76032c4ef2cb734d8630bb3b9344dc6d1a645eb50d3baa8661d3a359937d07f4",
+    "build\\research\\runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "build\\research\\runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "build\\research\\runtime\\lib\\research.jar": "b6a27be0f54a7a943893f0f19ff672795c6c22979465adba37e4d14712f2bdf3",
+    "build\\research\\runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "build\\research\\runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "build\\research\\runtime\\classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain$1.class": "58c3d4ebe21a2b8aa46a3114d1bc3e37a851860312fe330867a78d5708df6598",
+    "build\\research\\runtime\\classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain.class": "1c47b49bba3d0fb4a9349db23ac757778cd6c6f9d6e32a3911eb2f1613451735",
+    "build\\research\\runtime\\classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain$1.class": "1a0b995fb5c2046b1a4e18a5cec8b0bd1eeb949595e1b1c36a556e7514c45b14",
+    "build\\research\\runtime\\classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain.class": "b35ec2373bd5a0cf4e6d714d5e7b8e6c948fc33775b5b461af10696c539b84fd",
+    "build\\research\\runtime\\classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain$1.class": "a7e2f469e7b6976ec1897c05ec9428220e9ff4a97ec03ef894189b0ecd4e3bf3",
+    "build\\research\\runtime\\classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain.class": "1fb37318975ec761b2117db35602d72fd28113e678b17700752a1764156006ec",
+    "build\\research\\runtime\\classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain$1.class": "745f48127c0e35629ea731691b838b7cf0c51ddb732f7bec9b87bb171e0fe7d6",
+    "build\\research\\runtime\\classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain.class": "706958cf81282a7d9e4b130b92f36f80219d993f86547e40d2c2a16aff431141"
+  }
+}

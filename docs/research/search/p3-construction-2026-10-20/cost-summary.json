@@ -1,0 +1,813 @@
+{
+  "limitations": "Same reused 12 roots, diagnostic budgets, one host; JIT/GC/OS effects retained. Allocation counts only threads live at request start. Three drivers coexist; heap is not isolated per-engine memory. No strength evidence. Baseline is flat Policy 4 in the shared current runtime, not the recursive production binary.",
+  "runs": {
+    "depth-w1-v1": {
+      "inputSha256": "518cfcaf4a628385813468cb0d0cae7c2f99dd79c488eb96acf27432e4433e56",
+      "warmupRequests": 36,
+      "measuredRequests": 72,
+      "profiles": {
+        "flat-policy4": {
+          "requests": 24,
+          "targetDepthCompleted": 24,
+          "nodes": 907028,
+          "elapsedMillis": 582.9344,
+          "processCpuMillis": 875.0,
+          "liveThreadAllocatedMiB": 1.1589813232421875,
+          "resetMillis": 29.9688,
+          "gcCollections": 0,
+          "compilationMillis": 347,
+          "heapUsedMiBRange": [
+            173.79656982421875,
+            181.79656982421875
+          ],
+          "deepestCompletedRange": [
+            5,
+            5
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-full": {
+          "requests": 24,
+          "targetDepthCompleted": 24,
+          "nodes": 877206,
+          "elapsedMillis": 694.9508,
+          "processCpuMillis": 1093.75,
+          "liveThreadAllocatedMiB": 1.164337158203125,
+          "resetMillis": 30.4424,
+          "gcCollections": 0,
+          "compilationMillis": 366,
+          "heapUsedMiBRange": [
+            173.79656982421875,
+            181.79656982421875
+          ],
+          "deepestCompletedRange": [
+            5,
+            5
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-aspiration": {
+          "requests": 24,
+          "targetDepthCompleted": 24,
+          "nodes": 819374,
+          "elapsedMillis": 649.1515,
+          "processCpuMillis": 1000.0,
+          "liveThreadAllocatedMiB": 1.3261795043945312,
+          "resetMillis": 30.9804,
+          "gcCollections": 0,
+          "compilationMillis": 63,
+          "heapUsedMiBRange": [
+            173.79656982421875,
+            181.79656982421875
+          ],
+          "deepestCompletedRange": [
+            5,
+            5
+          ],
+          "aspirationAttempts": 108,
+          "failLowResearches": 2,
+          "failHighResearches": 10,
+          "fullWindowFallbacks": 0
+        }
+      },
+      "ratiosToFlatPolicy4": {
+        "rich-full": {
+          "nodes": 0.967121191407542,
+          "elapsedMillis": 1.192159529442764,
+          "processCpuMillis": 1.25,
+          "liveThreadAllocatedMiB": 1.0046211572641697,
+          "rootMeanElapsedRatioMinMedianMax": [
+            0.8612903225806452,
+            1.1771294628172164,
+            1.8017139619434346
+          ]
+        },
+        "rich-aspiration": {
+          "nodes": 0.9033613074789312,
+          "elapsedMillis": 1.1135927130050998,
+          "processCpuMillis": 1.1428571428571428,
+          "liveThreadAllocatedMiB": 1.1442630504904219,
+          "rootMeanElapsedRatioMinMedianMax": [
+            0.5865716310675047,
+            1.1223525444201359,
+            1.7361183247556542
+          ]
+        }
+      },
+      "runnerElapsedSeconds": 3.8885400000144728
+    },
+    "depth-w4-v1": {
+      "inputSha256": "d24a794728b9ec23a29b5e64f0ec6933055e5ae4a1023173f1431860f1e0f1ab",
+      "warmupRequests": 36,
+      "measuredRequests": 72,
+      "profiles": {
+        "flat-policy4": {
+          "requests": 24,
+          "targetDepthCompleted": 24,
+          "nodes": 1033085,
+          "elapsedMillis": 446.3699,
+          "processCpuMillis": 1437.5,
+          "liveThreadAllocatedMiB": 19.75782012939453,
+          "resetMillis": 33.7617,
+          "gcCollections": 0,
+          "compilationMillis": 95,
+          "heapUsedMiBRange": [
+            211.06903076171875,
+            245.06903076171875
+          ],
+          "deepestCompletedRange": [
+            5,
+            5
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-full": {
+          "requests": 24,
+          "targetDepthCompleted": 24,
+          "nodes": 1173852,
+          "elapsedMillis": 616.8344,
+          "processCpuMillis": 2484.375,
+          "liveThreadAllocatedMiB": 19.84710693359375,
+          "resetMillis": 32.4656,
+          "gcCollections": 0,
+          "compilationMillis": 1590,
+          "heapUsedMiBRange": [
+            214.06903076171875,
+            246.06903076171875
+          ],
+          "deepestCompletedRange": [
+            5,
+            5
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-aspiration": {
+          "requests": 24,
+          "targetDepthCompleted": 24,
+          "nodes": 850390,
+          "elapsedMillis": 471.0019,
+          "processCpuMillis": 1656.25,
+          "liveThreadAllocatedMiB": 20.26427459716797,
+          "resetMillis": 33.6478,
+          "gcCollections": 1,
+          "compilationMillis": 47,
+          "heapUsedMiBRange": [
+            210.06903076171875,
+            247.06903076171875
+          ],
+          "deepestCompletedRange": [
+            5,
+            5
+          ],
+          "aspirationAttempts": 108,
+          "failLowResearches": 2,
+          "failHighResearches": 10,
+          "fullWindowFallbacks": 0
+        }
+      },
+      "ratiosToFlatPolicy4": {
+        "rich-full": {
+          "nodes": 1.136258875116762,
+          "elapsedMillis": 1.3818906695993614,
+          "processCpuMillis": 1.7282608695652173,
+          "liveThreadAllocatedMiB": 1.0045190614963835,
+          "rootMeanElapsedRatioMinMedianMax": [
+            0.8745886676079803,
+            1.4573032008318063,
+            2.2157811264407425
+          ]
+        },
+        "rich-aspiration": {
+          "nodes": 0.8231558874632775,
+          "elapsedMillis": 1.0551829323617028,
+          "processCpuMillis": 1.1521739130434783,
+          "liveThreadAllocatedMiB": 1.0256331146076163,
+          "rootMeanElapsedRatioMinMedianMax": [
+            0.5801052467620552,
+            1.089577069178723,
+            1.4689144235484342
+          ]
+        }
+      },
+      "runnerElapsedSeconds": 3.3239079999621026
+    },
+    "nodes-w1-v1": {
+      "inputSha256": "aa59629310e1359d89087b470b7fc7beb17ec376296cbbc58ebfb6c52f943dc9",
+      "warmupRequests": 36,
+      "measuredRequests": 72,
+      "profiles": {
+        "flat-policy4": {
+          "requests": 24,
+          "targetDepthCompleted": 0,
+          "nodes": 480000,
+          "elapsedMillis": 360.8983,
+          "processCpuMillis": 593.75,
+          "liveThreadAllocatedMiB": 1.1978302001953125,
+          "resetMillis": 30.552,
+          "gcCollections": 0,
+          "compilationMillis": 755,
+          "heapUsedMiBRange": [
+            173.84113311767578,
+            181.84113311767578
+          ],
+          "deepestCompletedRange": [
+            2,
+            5
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-full": {
+          "requests": 24,
+          "targetDepthCompleted": 0,
+          "nodes": 480000,
+          "elapsedMillis": 466.5204,
+          "processCpuMillis": 906.25,
+          "liveThreadAllocatedMiB": 1.226470947265625,
+          "resetMillis": 29.6873,
+          "gcCollections": 0,
+          "compilationMillis": 214,
+          "heapUsedMiBRange": [
+            173.84113311767578,
+            181.84113311767578
+          ],
+          "deepestCompletedRange": [
+            3,
+            5
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-aspiration": {
+          "requests": 24,
+          "targetDepthCompleted": 0,
+          "nodes": 480000,
+          "elapsedMillis": 475.5589,
+          "processCpuMillis": 859.375,
+          "liveThreadAllocatedMiB": 1.3936614990234375,
+          "resetMillis": 30.1206,
+          "gcCollections": 0,
+          "compilationMillis": 80,
+          "heapUsedMiBRange": [
+            173.84113311767578,
+            181.84113311767578
+          ],
+          "deepestCompletedRange": [
+            3,
+            5
+          ],
+          "aspirationAttempts": 118,
+          "failLowResearches": 2,
+          "failHighResearches": 10,
+          "fullWindowFallbacks": 0
+        }
+      },
+      "ratiosToFlatPolicy4": {
+        "rich-full": {
+          "nodes": 1.0,
+          "elapsedMillis": 1.292664443140907,
+          "processCpuMillis": 1.5263157894736843,
+          "liveThreadAllocatedMiB": 1.0239105234328225,
+          "rootMeanElapsedRatioMinMedianMax": [
+            1.1157363961690607,
+            1.3058994232718661,
+            1.513762371182893
+          ]
+        },
+        "rich-aspiration": {
+          "nodes": 1.0,
+          "elapsedMillis": 1.317708894721865,
+          "processCpuMillis": 1.4473684210526316,
+          "liveThreadAllocatedMiB": 1.1634883632055644,
+          "rootMeanElapsedRatioMinMedianMax": [
+            1.1844436561853147,
+            1.2978301312674612,
+            1.473784396811389
+          ]
+        }
+      },
+      "runnerElapsedSeconds": 2.954231499985326
+    },
+    "nodes-w4-v1": {
+      "inputSha256": "c6e3abf83a48405ad719cbc1e0c0c1abbde3be64f2f03bf80c35722bb4e8e2d1",
+      "warmupRequests": 36,
+      "measuredRequests": 72,
+      "profiles": {
+        "flat-policy4": {
+          "requests": 24,
+          "targetDepthCompleted": 0,
+          "nodes": 480000,
+          "elapsedMillis": 288.4235,
+          "processCpuMillis": 921.875,
+          "liveThreadAllocatedMiB": 15.97918701171875,
+          "resetMillis": 31.9199,
+          "gcCollections": 0,
+          "compilationMillis": 442,
+          "heapUsedMiBRange": [
+            211.26016998291016,
+            237.26016998291016
+          ],
+          "deepestCompletedRange": [
+            2,
+            5
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-full": {
+          "requests": 24,
+          "targetDepthCompleted": 0,
+          "nodes": 480000,
+          "elapsedMillis": 468.4733,
+          "processCpuMillis": 1406.25,
+          "liveThreadAllocatedMiB": 16.28570556640625,
+          "resetMillis": 31.5927,
+          "gcCollections": 1,
+          "compilationMillis": 119,
+          "heapUsedMiBRange": [
+            209.2777862548828,
+            238.26016998291016
+          ],
+          "deepestCompletedRange": [
+            3,
+            5
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-aspiration": {
+          "requests": 24,
+          "targetDepthCompleted": 0,
+          "nodes": 480000,
+          "elapsedMillis": 447.2391,
+          "processCpuMillis": 1406.25,
+          "liveThreadAllocatedMiB": 17.99756622314453,
+          "resetMillis": 32.3073,
+          "gcCollections": 0,
+          "compilationMillis": 117,
+          "heapUsedMiBRange": [
+            210.2777862548828,
+            236.2777862548828
+          ],
+          "deepestCompletedRange": [
+            3,
+            6
+          ],
+          "aspirationAttempts": 118,
+          "failLowResearches": 2,
+          "failHighResearches": 10,
+          "fullWindowFallbacks": 0
+        }
+      },
+      "ratiosToFlatPolicy4": {
+        "rich-full": {
+          "nodes": 1.0,
+          "elapsedMillis": 1.624254958420517,
+          "processCpuMillis": 1.5254237288135593,
+          "liveThreadAllocatedMiB": 1.0191823623105922,
+          "rootMeanElapsedRatioMinMedianMax": [
+            1.2644417844448592,
+            1.6018541843290515,
+            2.1908485840690717
+          ]
+        },
+        "rich-aspiration": {
+          "nodes": 1.0,
+          "elapsedMillis": 1.5506333568519903,
+          "processCpuMillis": 1.5254237288135593,
+          "liveThreadAllocatedMiB": 1.126313010164131,
+          "rootMeanElapsedRatioMinMedianMax": [
+            1.0734837208203383,
+            1.5044480051596656,
+            2.236956479370091
+          ]
+        }
+      },
+      "runnerElapsedSeconds": 2.641723499982618
+    },
+    "depth-w1-v2": {
+      "inputSha256": "9864829ff4286a118bd4b3a6c91b8d45addd06e8ae4fb23a42bc9499e872b10f",
+      "warmupRequests": 144,
+      "measuredRequests": 144,
+      "profiles": {
+        "flat-policy4": {
+          "requests": 48,
+          "targetDepthCompleted": 48,
+          "nodes": 5563592,
+          "elapsedMillis": 3684.8646,
+          "processCpuMillis": 3625.0,
+          "liveThreadAllocatedMiB": 2.730804443359375,
+          "resetMillis": 60.221,
+          "gcCollections": 0,
+          "compilationMillis": 22,
+          "heapUsedMiBRange": [
+            171.08241271972656,
+            187.08241271972656
+          ],
+          "deepestCompletedRange": [
+            6,
+            6
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-full": {
+          "requests": 48,
+          "targetDepthCompleted": 48,
+          "nodes": 6379340,
+          "elapsedMillis": 5202.4076,
+          "processCpuMillis": 5234.375,
+          "liveThreadAllocatedMiB": 2.7421798706054688,
+          "resetMillis": 60.7343,
+          "gcCollections": 0,
+          "compilationMillis": 42,
+          "heapUsedMiBRange": [
+            171.08241271972656,
+            187.08241271972656
+          ],
+          "deepestCompletedRange": [
+            6,
+            6
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-aspiration": {
+          "requests": 48,
+          "targetDepthCompleted": 48,
+          "nodes": 5096356,
+          "elapsedMillis": 4096.9814,
+          "processCpuMillis": 4062.5,
+          "liveThreadAllocatedMiB": 3.1262130737304688,
+          "resetMillis": 61.7245,
+          "gcCollections": 0,
+          "compilationMillis": 31,
+          "heapUsedMiBRange": [
+            171.08241271972656,
+            187.08241271972656
+          ],
+          "deepestCompletedRange": [
+            6,
+            6
+          ],
+          "aspirationAttempts": 268,
+          "failLowResearches": 4,
+          "failHighResearches": 24,
+          "fullWindowFallbacks": 0
+        }
+      },
+      "ratiosToFlatPolicy4": {
+        "rich-full": {
+          "nodes": 1.146622541696084,
+          "elapsedMillis": 1.4118314143754427,
+          "processCpuMillis": 1.4439655172413792,
+          "liveThreadAllocatedMiB": 1.004165595699742,
+          "rootMeanElapsedRatioMinMedianMax": [
+            0.7725066457372038,
+            1.325745314852805,
+            1.9769888905516484
+          ]
+        },
+        "rich-aspiration": {
+          "nodes": 0.9160190035502244,
+          "elapsedMillis": 1.1118404187768527,
+          "processCpuMillis": 1.1206896551724137,
+          "liveThreadAllocatedMiB": 1.1447956595107451,
+          "rootMeanElapsedRatioMinMedianMax": [
+            0.47158845065462396,
+            0.9856402698673484,
+            1.6765044538748324
+          ]
+        }
+      },
+      "runnerElapsedSeconds": 27.8584114999976
+    },
+    "depth-w4-v2": {
+      "inputSha256": "7cffe23ac88a6ad137384f671b75c99e837f959d196acfba3bc19097ab4651b3",
+      "warmupRequests": 144,
+      "measuredRequests": 144,
+      "profiles": {
+        "flat-policy4": {
+          "requests": 48,
+          "targetDepthCompleted": 48,
+          "nodes": 6770217,
+          "elapsedMillis": 2283.3462,
+          "processCpuMillis": 4609.375,
+          "liveThreadAllocatedMiB": 52.361427307128906,
+          "resetMillis": 58.4514,
+          "gcCollections": 3,
+          "compilationMillis": 52,
+          "heapUsedMiBRange": [
+            210.4001007080078,
+            332.0366897583008
+          ],
+          "deepestCompletedRange": [
+            6,
+            6
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-full": {
+          "requests": 48,
+          "targetDepthCompleted": 48,
+          "nodes": 7247697,
+          "elapsedMillis": 3375.7168,
+          "processCpuMillis": 6703.125,
+          "liveThreadAllocatedMiB": 52.488380432128906,
+          "resetMillis": 56.3714,
+          "gcCollections": 1,
+          "compilationMillis": 124,
+          "heapUsedMiBRange": [
+            210.37811279296875,
+            331.0366897583008
+          ],
+          "deepestCompletedRange": [
+            6,
+            6
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-aspiration": {
+          "requests": 48,
+          "targetDepthCompleted": 48,
+          "nodes": 6077919,
+          "elapsedMillis": 2389.6337,
+          "processCpuMillis": 5406.25,
+          "liveThreadAllocatedMiB": 53.84087371826172,
+          "resetMillis": 57.463,
+          "gcCollections": 0,
+          "compilationMillis": 116,
+          "heapUsedMiBRange": [
+            211.37811279296875,
+            331.37811279296875
+          ],
+          "deepestCompletedRange": [
+            6,
+            6
+          ],
+          "aspirationAttempts": 270,
+          "failLowResearches": 4,
+          "failHighResearches": 26,
+          "fullWindowFallbacks": 0
+        }
+      },
+      "ratiosToFlatPolicy4": {
+        "rich-full": {
+          "nodes": 1.0705265429453739,
+          "elapsedMillis": 1.4784077859064912,
+          "processCpuMillis": 1.4542372881355932,
+          "liveThreadAllocatedMiB": 1.0024245543242232,
+          "rootMeanElapsedRatioMinMedianMax": [
+            0.7175678412400686,
+            1.4414267579026285,
+            2.340424550458978
+          ]
+        },
+        "rich-aspiration": {
+          "nodes": 0.8977436026053522,
+          "elapsedMillis": 1.046549007767635,
+          "processCpuMillis": 1.1728813559322033,
+          "liveThreadAllocatedMiB": 1.028254508847802,
+          "rootMeanElapsedRatioMinMedianMax": [
+            0.28289586333796024,
+            1.063626885197432,
+            1.413230703379261
+          ]
+        }
+      },
+      "runnerElapsedSeconds": 18.623951000045054
+    },
+    "nodes-w1-v2": {
+      "inputSha256": "52e111f9bf34945750db3e50c9fe336d92d7b58e19fb44dba1c5131f04f7c986",
+      "warmupRequests": 144,
+      "measuredRequests": 144,
+      "profiles": {
+        "flat-policy4": {
+          "requests": 48,
+          "targetDepthCompleted": 0,
+          "nodes": 4800000,
+          "elapsedMillis": 3225.1766,
+          "processCpuMillis": 3218.75,
+          "liveThreadAllocatedMiB": 2.9035263061523438,
+          "resetMillis": 56.5051,
+          "gcCollections": 0,
+          "compilationMillis": 47,
+          "heapUsedMiBRange": [
+            170.40005493164062,
+            189.05679321289062
+          ],
+          "deepestCompletedRange": [
+            4,
+            6
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-full": {
+          "requests": 48,
+          "targetDepthCompleted": 0,
+          "nodes": 4800000,
+          "elapsedMillis": 4184.9995,
+          "processCpuMillis": 4171.875,
+          "liveThreadAllocatedMiB": 2.9807357788085938,
+          "resetMillis": 58.2789,
+          "gcCollections": 0,
+          "compilationMillis": 14,
+          "heapUsedMiBRange": [
+            170.40005493164062,
+            189.05679321289062
+          ],
+          "deepestCompletedRange": [
+            4,
+            7
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-aspiration": {
+          "requests": 48,
+          "targetDepthCompleted": 0,
+          "nodes": 4800000,
+          "elapsedMillis": 4184.0756,
+          "processCpuMillis": 4265.625,
+          "liveThreadAllocatedMiB": 3.526031494140625,
+          "resetMillis": 56.9116,
+          "gcCollections": 1,
+          "compilationMillis": 83,
+          "heapUsedMiBRange": [
+            170.40005493164062,
+            189.05679321289062
+          ],
+          "deepestCompletedRange": [
+            4,
+            7
+          ],
+          "aspirationAttempts": 316,
+          "failLowResearches": 4,
+          "failHighResearches": 24,
+          "fullWindowFallbacks": 0
+        }
+      },
+      "ratiosToFlatPolicy4": {
+        "rich-full": {
+          "nodes": 1.0,
+          "elapsedMillis": 1.297603207216622,
+          "processCpuMillis": 1.296116504854369,
+          "liveThreadAllocatedMiB": 1.0265916215371114,
+          "rootMeanElapsedRatioMinMedianMax": [
+            1.1237335165811642,
+            1.3046809732447617,
+            1.4197728172054302
+          ]
+        },
+        "rich-aspiration": {
+          "nodes": 1.0,
+          "elapsedMillis": 1.297316742283198,
+          "processCpuMillis": 1.325242718446602,
+          "liveThreadAllocatedMiB": 1.2143962624582536,
+          "rootMeanElapsedRatioMinMedianMax": [
+            1.110549151096525,
+            1.2911014119332538,
+            1.421747783746939
+          ]
+        }
+      },
+      "runnerElapsedSeconds": 25.140651899972
+    },
+    "nodes-w4-v2": {
+      "inputSha256": "b870701154138ee1c4127f2db44187e190d34f30b48fdc2d539e1174c1eedcdd",
+      "warmupRequests": 144,
+      "measuredRequests": 144,
+      "profiles": {
+        "flat-policy4": {
+          "requests": 48,
+          "targetDepthCompleted": 0,
+          "nodes": 4800000,
+          "elapsedMillis": 2234.0742,
+          "processCpuMillis": 3781.25,
+          "liveThreadAllocatedMiB": 48.51618957519531,
+          "resetMillis": 60.2364,
+          "gcCollections": 4,
+          "compilationMillis": 172,
+          "heapUsedMiBRange": [
+            208.39076232910156,
+            327.5728302001953
+          ],
+          "deepestCompletedRange": [
+            4,
+            6
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-full": {
+          "requests": 48,
+          "targetDepthCompleted": 0,
+          "nodes": 4800000,
+          "elapsedMillis": 3047.9687,
+          "processCpuMillis": 4656.25,
+          "liveThreadAllocatedMiB": 49.00877380371094,
+          "resetMillis": 57.4242,
+          "gcCollections": 0,
+          "compilationMillis": 193,
+          "heapUsedMiBRange": [
+            210.39076232910156,
+            325.5728302001953
+          ],
+          "deepestCompletedRange": [
+            4,
+            7
+          ],
+          "aspirationAttempts": 0,
+          "failLowResearches": 0,
+          "failHighResearches": 0,
+          "fullWindowFallbacks": 0
+        },
+        "rich-aspiration": {
+          "requests": 48,
+          "targetDepthCompleted": 0,
+          "nodes": 4800000,
+          "elapsedMillis": 2569.0135,
+          "processCpuMillis": 5296.875,
+          "liveThreadAllocatedMiB": 54.698150634765625,
+          "resetMillis": 59.0372,
+          "gcCollections": 0,
+          "compilationMillis": 126,
+          "heapUsedMiBRange": [
+            213.39076232910156,
+            329.5728302001953
+          ],
+          "deepestCompletedRange": [
+            4,
+            7
+          ],
+          "aspirationAttempts": 311,
+          "failLowResearches": 4,
+          "failHighResearches": 24,
+          "fullWindowFallbacks": 0
+        }
+      },
+      "ratiosToFlatPolicy4": {
+        "rich-full": {
+          "nodes": 1.0,
+          "elapsedMillis": 1.3643095202478055,
+          "processCpuMillis": 1.2314049586776858,
+          "liveThreadAllocatedMiB": 1.010152986721106,
+          "rootMeanElapsedRatioMinMedianMax": [
+            0.9909286342539531,
+            1.3771247968289728,
+            2.0893135733899557
+          ]
+        },
+        "rich-aspiration": {
+          "nodes": 1.0,
+          "elapsedMillis": 1.1499230867085792,
+          "processCpuMillis": 1.4008264462809918,
+          "liveThreadAllocatedMiB": 1.1274205809174045,
+          "rootMeanElapsedRatioMinMedianMax": [
+            0.9296946726253021,
+            1.1010523413478541,
+            1.575113678072964
+          ]
+        }
+      },
+      "runnerElapsedSeconds": 18.105776299955323
+    }
+  }
+}

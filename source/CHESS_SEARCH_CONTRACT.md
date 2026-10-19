@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R013**
+Internal revision: **P3-R014**
 
-Status: **ACTIVE Workstream 3: owner-authorized feature-rich experimental construction on owner-accepted flattened PVS. Workstreams 1 and 2 are closed and owner-accepted. Recursive Policy 4 remains the unchanged production champion/default and fallback at 1-16 workers.**
+Status: **Workstream 3 construction is technically complete, pending GPT/owner reconciliation and acceptance. Workstreams 1 and 2 are closed and owner-accepted. Recursive Policy 4 remains the unchanged production champion/default and fallback at 1-16 workers. No successor is launched.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -15,7 +15,10 @@ predate these decisions; their pending wording is superseded by this launch.
 The [driver record](../docs/research/search/P3_SR003_SR004_DRIVERS_2026-10-19.md)
 remains frozen evidence, including tested MTD alternatives and their limitations.
 The [construction record](../docs/research/search/P3_CONSTRUCTION_2026-10-20.md)
-holds implementation composition, validation and continuity under this Contract.
+holds the technically completed composition, all 31 dispositions, validation,
+costs and reproducibility under this Contract. Construction V1 activates 18
+compatible controls on flattened PVS, with WIDEN16 aspiration and OFF available
+at 1-16 workers. This is technical construction evidence, not strength acceptance.
 No TT authority change, production promotion, subsequent workstream or release
 is authorized. Repository changes do not synchronize external mirrors.
 
@@ -278,6 +281,15 @@ Pair-2 domain: HCE margins are not transferable authority. Limited implementatio
 calibration is allowed; independent evaluator architecture/training research and
 unrelated architecture or optimization programmes are outside construction scope.
 
+The 20 October construction handback freezes `construction-v1`: all 18
+`FlatSearchConfig` controls (flags 262143), Pair-2 margins 100*d/200*d, shared
+extension cap one, WIDEN16, requested 64 MiB TT, pinned generation-32 model.
+Independent references, selective diagnostics, integrated tests and whole-request
+costs are recorded in the focused record. Ordinary proof remains conservatively
+suppressed for extended policies; hints and TT authority are unchanged. Richer
+per-node cost and unconfirmed playing strength are explicit limits, not grounds
+for extending this construction into a next objective requiring a separate launch.
+
 The first construction milestone defers SR-013 broader tablebase integration
 (retain existing guarded functionality), SR-035 pondering/speculative opponent-turn
 Search, SR-037 dedicated production hot-path mechanical optimization research and
@@ -522,8 +534,9 @@ confirmed **P3-R010/P3-F008** synchronization and authorized the now-completed
 driver investigation. The owner confirms P3-R012/P3-F010 synchronization, accepts
 the driver decision and explicitly launches Workstream 3 on 20 October 2026.
 Those predecessor gates are satisfied. BOTH mirrors require refresh to the current
-master revisions before dependent GPT planning or a subsequent launch; authorized
-construction proceeds from repository masters. No production adoption or release
+master revisions before dependent GPT planning or a subsequent launch. Workstream 3
+is technically complete but awaits GPT/owner reconciliation and acceptance.
+No production adoption or release
 is authorized; repository edits do not synchronize external mirrors.
 
 | Frozen file | Revision | Verified SHA-256 (complete original bytes) |

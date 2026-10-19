@@ -1,0 +1,46 @@
+{
+  "identity": "construction-cost-v2",
+  "status": "frozen before measurement",
+  "sourceRuntimeCommit": "2224a8b75f47117e54482e04170c5423098c717d",
+  "purpose": "Longer warmup and deeper requests because v1 aggregate costs contain substantial ongoing JIT; configuration unchanged, retain v1",
+  "corpus": {
+    "path": "docs\\research\\search\\p3-construction-2026-10-20\\diagnostic-corpus.tsv",
+    "sha256": "14dbe5241c65344672aed0a32dbc506f72b2f43dea8b2aa3e9849f366a07a8e1",
+    "source": "docs\\research\\search\\sr005-phase2-2026-10-13\\diagnostic-corpus.tsv",
+    "sourceSha256": "cb4b9e92e328426d6f3ebc5d0c590fdd4cff2421c1dda9f75d0e30cee4f54c08",
+    "selection": "first 12 full-real-history roots; reused diagnostic inputs, no independent confirmation claim"
+  },
+  "candidate": {
+    "mechanisms": "all 18 FlatSearchConfig v1 features",
+    "flags": 262143,
+    "futilityMarginPerDepth": 100,
+    "reverseMarginPerDepth": 200,
+    "extensionCap": 1,
+    "aspiration": "WIDEN16",
+    "hashMiB": 64,
+    "evaluatorSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+  },
+  "cost": {
+    "workers": [
+      1,
+      4
+    ],
+    "profiles": [
+      "flat-policy4",
+      "rich-full",
+      "rich-aspiration"
+    ],
+    "warmups": 4,
+    "rounds": 4,
+    "fixedDepth": 6,
+    "depthNodeGuard": 2000000,
+    "fixedNodeBudget": 100000,
+    "nodeRunDepthCeiling": 20,
+    "rotation": "round plus root index plus offset modulo three",
+    "allRetriesHelpersAndAborts": "included in request telemetry and wall/process CPU",
+    "reset": "separately measured newGame cost"
+  },
+  "resources": "one BelowNormal hidden JVM at a time; ActiveProcessorCount=2; Xms256m Xmx768m; 30-second per-request safety limit; 15-minute runner timeout",
+  "analysis": "all outputs/failures retained; warmups excluded from aggregates; approximate root-level cost spread, complete requests, process CPU, live-thread allocation, GC/JIT and heap; no Elo inference; conditional sample errors are neither population calibration nor automatically correctness defects",
+  "next": "diagnose material integrity or composition issues; preserve v1 if any new formulation/run is necessary"
+}

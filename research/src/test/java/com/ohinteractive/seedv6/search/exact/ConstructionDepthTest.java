@@ -45,6 +45,23 @@ class ConstructionDepthTest {
         assertThrows(IllegalArgumentException.class,()->new FlatSearchConfig(0,0,100));
         assertThrows(IllegalArgumentException.class,()->new ConstructionSearch(FlatSearchConfig.candidate(),1,1,null).create(SearchEvaluation.handcrafted()));
     }
+    @Test void historyProtectionHasObservableEffectBeyondItsGuardCounter() throws Exception {
+        var root=P3HistoryStudy.roots(java.nio.file.Path.of("../docs/research/search/p3-construction-2026-10-20/diagnostic-corpus.tsv")).get(0);
+        var e=P3InformationBaselineTest.evaluation();var config=FlatSearchConfig.candidate();
+        var protectedSearch=ExactSearch.constructionResearch(ExactEvaluator.from(e),new TTable(64),config);
+        var control=ExactSearch.constructionResearch(ExactEvaluator.from(e),new TTable(64),config.with(HISTORY_PROTECTION,false));
+        var a=protectedSearch.search(root.board(),root.history(),6,()->protectedSearch.visitedNodes()>=1_000_000);
+        var b=control.search(root.board(),root.history(),6,()->control.visitedNodes()>=1_000_000);
+        assertTrue(a.completed());assertTrue(b.completed());
+        Phase2Oracle.legalPv(root.board(),a.principalVariation());Phase2Oracle.legalPv(root.board(),b.principalVariation());
+        // The existing counter includes guard bypasses before all move-eligibility
+        // checks. A changed traversal independently establishes an effective control.
+        assertTrue(state(protectedSearch).protectedMoves>0);
+        assertEquals(0,state(control).protectedMoves);
+        assertNotEquals(a.nodes(),b.nodes());
+        System.out.printf("history-protection root=%s enabled nodes=%d score=%d disabled nodes=%d score=%d guardBypasses=%d%n",
+                root.id(),a.nodes(),a.score(),b.nodes(),b.score(),state(protectedSearch).protectedMoves);
+    }
     @Test void predictionObservationIsNeutralAndUsesRealLegalDomain() throws Exception {
         var e=P3InformationBaselineTest.evaluation();var b=Board.fromFen(SeePruningTest.MIDDLE);
         var config=FlatSearchConfig.candidate();long[] events={0,0};

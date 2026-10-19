@@ -1,0 +1,37 @@
+{
+  "command": [
+    "cmd.exe",
+    "/c",
+    "gradlew.bat",
+    "--gradle-user-home",
+    "build/migration/gradle-user-home",
+    "--no-daemon",
+    "--max-workers=1",
+    ":research:test",
+    "--tests",
+    "*ConstructionDepthTest.historyProtectionHasObservableEffectBeyondItsGuardCounter",
+    "--console=plain"
+  ],
+  "exitCode": 0,
+  "elapsedSeconds": 13.339460199989844,
+  "suites": [
+    {
+      "path": "raw\\protection-control-research-TEST-com.ohinteractive.seedv6.search.exact.ConstructionDepthTest.xml",
+      "sha256": "3b479339341679ba4cb48b9c37b40c29e1ee5728b6c2a8784588c6a83270ae9f",
+      "name": "com.ohinteractive.seedv6.search.exact.ConstructionDepthTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-19T19:26:55",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.583"
+    }
+  ],
+  "totals": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
