@@ -1,0 +1,73 @@
+{
+  "classification": "fixed 32-pair development screen; not independent strength confirmation",
+  "protocol": "clock-screen-v3.json",
+  "run": "raw/clock-screen-w4-v3/run.json",
+  "runSha256": "21f1600d04aa77b672da8c82d9dcc8a0eaea4029bce97ed6413e38befd55e7a0",
+  "pgnSha256": "ced2328bbdd2e7d6764648970e361bdf4512f8500fb9e129d0eadf500ab0a635",
+  "candidate": "TWO_PASS",
+  "baseline": "PVS",
+  "workers": 4,
+  "tc": "10+0.1",
+  "concurrentGames": 1,
+  "wdl": [
+    25,
+    9,
+    30
+  ],
+  "statistics": {
+    "pairs": 32,
+    "pentanomial": [
+      6,
+      6,
+      12,
+      3,
+      5
+    ],
+    "score": 0.4609375,
+    "logisticElo": -27.198831638044446,
+    "pairedHoeffding95Score": [
+      0.22085680217001982,
+      0.7010181978299802
+    ],
+    "pairedHoeffding95Elo": [
+      -219.00260154063548,
+      148.0338146675374
+    ],
+    "pairScoreStandardError": 0.05735845020113258,
+    "pairedNormal95Score": [
+      0.34851700339674596,
+      0.573357996603254
+    ],
+    "pairedNormal95Elo": [
+      -108.67164562802667,
+      51.34490558612539
+    ],
+    "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+  },
+  "terminations": {
+    "normal": 64
+  },
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 4387,
+      "nodes": 2319498745,
+      "elapsedNanos": 910156030500
+    },
+    "candidate": {
+      "requests": 4384,
+      "nodes": 2624232637,
+      "elapsedNanos": 913958841000
+    }
+  },
+  "matchWallSeconds": 1851.2433005999774,
+  "runnerWallSeconds": 1872.0612880999688,
+  "lifetimeCpuSeconds": {
+    "baseline": 1664.046875,
+    "candidate": 1938.265625
+  },
+  "candidateToBaselineCpu": 1.1647902797209364,
+  "inputsStable": true,
+  "exclusions": [],
+  "priorFailures": "V1 startup deadline expired with zero completed games; V2 adapter failed before runner launch. Neither contributes data. Both retained.",
+  "limits": "Four-worker domain only; same machine and JVM. Normal interval is approximate and development selection/multiplicity are not confirmation-controlled. Conservative bounded interval also reported. Equal clock is not equal CPU. Desktop load uncontrolled; no peak RSS measurement. No production adoption."
+}

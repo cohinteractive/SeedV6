@@ -1,0 +1,461 @@
+{
+  "source": "raw/diagnostic-w1-v1.jsonl",
+  "selection": "All PREV iterations whose estimated convergence needed full-window recovery; no outcome filtering within this definition",
+  "witnesses": [
+    {
+      "id": "opening-00",
+      "depth": 3,
+      "estimatedEquality": 6,
+      "materializationWindow": [
+        5,
+        7
+      ],
+      "materializedScore": 5,
+      "fullFallbackScore": 1,
+      "allSelective": true,
+      "zeroPasses": 4
+    },
+    {
+      "id": "opening-00",
+      "depth": 5,
+      "estimatedEquality": 6,
+      "materializationWindow": [
+        5,
+        7
+      ],
+      "materializedScore": 5,
+      "fullFallbackScore": 0,
+      "allSelective": true,
+      "zeroPasses": 2
+    },
+    {
+      "id": "opening-01",
+      "depth": 4,
+      "estimatedEquality": -3,
+      "materializationWindow": [
+        -4,
+        -2
+      ],
+      "materializedScore": -2,
+      "fullFallbackScore": 0,
+      "allSelective": true,
+      "zeroPasses": 3
+    },
+    {
+      "id": "opening-02",
+      "depth": 2,
+      "estimatedEquality": 18,
+      "materializationWindow": [
+        17,
+        19
+      ],
+      "materializedScore": 17,
+      "fullFallbackScore": 14,
+      "allSelective": true,
+      "zeroPasses": 21
+    },
+    {
+      "id": "opening-02",
+      "depth": 4,
+      "estimatedEquality": 5,
+      "materializationWindow": [
+        4,
+        6
+      ],
+      "materializedScore": 6,
+      "fullFallbackScore": 9,
+      "allSelective": true,
+      "zeroPasses": 5
+    },
+    {
+      "id": "opening-03",
+      "depth": 4,
+      "estimatedEquality": -2,
+      "materializationWindow": [
+        -3,
+        -1
+      ],
+      "materializedScore": -3,
+      "fullFallbackScore": -3,
+      "allSelective": true,
+      "zeroPasses": 8
+    },
+    {
+      "id": "opening-03",
+      "depth": 5,
+      "estimatedEquality": -10,
+      "materializationWindow": [
+        -11,
+        -9
+      ],
+      "materializedScore": -11,
+      "fullFallbackScore": -11,
+      "allSelective": true,
+      "zeroPasses": 8
+    },
+    {
+      "id": "opening-04",
+      "depth": 3,
+      "estimatedEquality": -9,
+      "materializationWindow": [
+        -10,
+        -8
+      ],
+      "materializedScore": -10,
+      "fullFallbackScore": -12,
+      "allSelective": true,
+      "zeroPasses": 16
+    },
+    {
+      "id": "opening-04",
+      "depth": 5,
+      "estimatedEquality": -10,
+      "materializationWindow": [
+        -11,
+        -9
+      ],
+      "materializedScore": -11,
+      "fullFallbackScore": -11,
+      "allSelective": true,
+      "zeroPasses": 10
+    },
+    {
+      "id": "opening-04",
+      "depth": 6,
+      "estimatedEquality": -7,
+      "materializationWindow": [
+        -8,
+        -6
+      ],
+      "materializedScore": -6,
+      "fullFallbackScore": 1,
+      "allSelective": true,
+      "zeroPasses": 6
+    },
+    {
+      "id": "opening-05",
+      "depth": 6,
+      "estimatedEquality": 16,
+      "materializationWindow": [
+        15,
+        17
+      ],
+      "materializedScore": 17,
+      "fullFallbackScore": 16,
+      "allSelective": true,
+      "zeroPasses": 8
+    },
+    {
+      "id": "opening-06",
+      "depth": 2,
+      "estimatedEquality": 13,
+      "materializationWindow": [
+        12,
+        14
+      ],
+      "materializedScore": 11,
+      "fullFallbackScore": 8,
+      "allSelective": true,
+      "zeroPasses": 12
+    },
+    {
+      "id": "opening-06",
+      "depth": 3,
+      "estimatedEquality": 8,
+      "materializationWindow": [
+        7,
+        9
+      ],
+      "materializedScore": 7,
+      "fullFallbackScore": 6,
+      "allSelective": true,
+      "zeroPasses": 2
+    },
+    {
+      "id": "opening-06",
+      "depth": 4,
+      "estimatedEquality": 51,
+      "materializationWindow": [
+        50,
+        52
+      ],
+      "materializedScore": 50,
+      "fullFallbackScore": 8,
+      "allSelective": true,
+      "zeroPasses": 47
+    },
+    {
+      "id": "opening-06",
+      "depth": 5,
+      "estimatedEquality": 11,
+      "materializationWindow": [
+        10,
+        12
+      ],
+      "materializedScore": 10,
+      "fullFallbackScore": 10,
+      "allSelective": true,
+      "zeroPasses": 5
+    },
+    {
+      "id": "opening-06",
+      "depth": 6,
+      "estimatedEquality": 8,
+      "materializationWindow": [
+        7,
+        9
+      ],
+      "materializedScore": 9,
+      "fullFallbackScore": 6,
+      "allSelective": true,
+      "zeroPasses": 3
+    },
+    {
+      "id": "opening-07",
+      "depth": 3,
+      "estimatedEquality": -4,
+      "materializationWindow": [
+        -5,
+        -3
+      ],
+      "materializedScore": -5,
+      "fullFallbackScore": -9,
+      "allSelective": true,
+      "zeroPasses": 2
+    },
+    {
+      "id": "opening-07",
+      "depth": 5,
+      "estimatedEquality": -5,
+      "materializationWindow": [
+        -6,
+        -4
+      ],
+      "materializedScore": -6,
+      "fullFallbackScore": -5,
+      "allSelective": true,
+      "zeroPasses": 2
+    },
+    {
+      "id": "opening-08",
+      "depth": 2,
+      "estimatedEquality": 178,
+      "materializationWindow": [
+        177,
+        179
+      ],
+      "materializedScore": 176,
+      "fullFallbackScore": 11,
+      "allSelective": true,
+      "zeroPasses": 184
+    },
+    {
+      "id": "opening-08",
+      "depth": 3,
+      "estimatedEquality": -6,
+      "materializationWindow": [
+        -7,
+        -5
+      ],
+      "materializedScore": -5,
+      "fullFallbackScore": 2,
+      "allSelective": true,
+      "zeroPasses": 18
+    },
+    {
+      "id": "opening-08",
+      "depth": 5,
+      "estimatedEquality": 24,
+      "materializationWindow": [
+        23,
+        25
+      ],
+      "materializedScore": 23,
+      "fullFallbackScore": 9,
+      "allSelective": true,
+      "zeroPasses": 18
+    },
+    {
+      "id": "opening-08",
+      "depth": 6,
+      "estimatedEquality": 16,
+      "materializationWindow": [
+        15,
+        17
+      ],
+      "materializedScore": 17,
+      "fullFallbackScore": 7,
+      "allSelective": true,
+      "zeroPasses": 9
+    },
+    {
+      "id": "opening-09",
+      "depth": 2,
+      "estimatedEquality": 154,
+      "materializationWindow": [
+        153,
+        155
+      ],
+      "materializedScore": 10,
+      "fullFallbackScore": 3,
+      "allSelective": true,
+      "zeroPasses": 157
+    },
+    {
+      "id": "opening-09",
+      "depth": 3,
+      "estimatedEquality": -1,
+      "materializationWindow": [
+        -2,
+        0
+      ],
+      "materializedScore": -2,
+      "fullFallbackScore": -1,
+      "allSelective": true,
+      "zeroPasses": 5
+    },
+    {
+      "id": "opening-09",
+      "depth": 4,
+      "estimatedEquality": 0,
+      "materializationWindow": [
+        -1,
+        1
+      ],
+      "materializedScore": 1,
+      "fullFallbackScore": 0,
+      "allSelective": true,
+      "zeroPasses": 3
+    },
+    {
+      "id": "opening-09",
+      "depth": 5,
+      "estimatedEquality": 151,
+      "materializationWindow": [
+        150,
+        152
+      ],
+      "materializedScore": 150,
+      "fullFallbackScore": 0,
+      "allSelective": true,
+      "zeroPasses": 153
+    },
+    {
+      "id": "opening-09",
+      "depth": 6,
+      "estimatedEquality": 4,
+      "materializationWindow": [
+        3,
+        5
+      ],
+      "materializedScore": 3,
+      "fullFallbackScore": -1,
+      "allSelective": true,
+      "zeroPasses": 6
+    },
+    {
+      "id": "opening-10",
+      "depth": 2,
+      "estimatedEquality": 93,
+      "materializationWindow": [
+        92,
+        94
+      ],
+      "materializedScore": 91,
+      "fullFallbackScore": -66,
+      "allSelective": true,
+      "zeroPasses": 165
+    },
+    {
+      "id": "opening-10",
+      "depth": 4,
+      "estimatedEquality": -66,
+      "materializationWindow": [
+        -67,
+        -65
+      ],
+      "materializedScore": -65,
+      "fullFallbackScore": -63,
+      "allSelective": true,
+      "zeroPasses": 12
+    },
+    {
+      "id": "opening-10",
+      "depth": 5,
+      "estimatedEquality": -71,
+      "materializationWindow": [
+        -72,
+        -70
+      ],
+      "materializedScore": -72,
+      "fullFallbackScore": -72,
+      "allSelective": true,
+      "zeroPasses": 9
+    },
+    {
+      "id": "opening-10",
+      "depth": 6,
+      "estimatedEquality": -3,
+      "materializationWindow": [
+        -4,
+        -2
+      ],
+      "materializedScore": -4,
+      "fullFallbackScore": -54,
+      "allSelective": true,
+      "zeroPasses": 71
+    },
+    {
+      "id": "opening-11",
+      "depth": 2,
+      "estimatedEquality": 11,
+      "materializationWindow": [
+        10,
+        12
+      ],
+      "materializedScore": 7,
+      "fullFallbackScore": 5,
+      "allSelective": true,
+      "zeroPasses": 26
+    },
+    {
+      "id": "opening-11",
+      "depth": 4,
+      "estimatedEquality": -8,
+      "materializationWindow": [
+        -9,
+        -7
+      ],
+      "materializedScore": -7,
+      "fullFallbackScore": -1,
+      "allSelective": true,
+      "zeroPasses": 2
+    },
+    {
+      "id": "opening-11",
+      "depth": 5,
+      "estimatedEquality": -17,
+      "materializationWindow": [
+        -18,
+        -16
+      ],
+      "materializedScore": -18,
+      "fullFallbackScore": -24,
+      "allSelective": true,
+      "zeroPasses": 17
+    },
+    {
+      "id": "opening-11",
+      "depth": 6,
+      "estimatedEquality": 0,
+      "materializationWindow": [
+        -1,
+        1
+      ],
+      "materializedScore": 1,
+      "fullFallbackScore": -6,
+      "allSelective": true,
+      "zeroPasses": 26
+    }
+  ]
+}

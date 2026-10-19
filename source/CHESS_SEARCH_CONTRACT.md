@@ -1,20 +1,22 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R011**
+Internal revision: **P3-R012**
 
-Status: **ACTIVE Phase 3: owner-authorized Workstream 2 investigates SR-003/SR-004, PVS versus MTD(f), on the accepted flattened architecture. SR-002 remains technically complete and owner-accepted. Recursive Policy 4 remains the unchanged production champion/default and fallback at 1-16 workers. Workstream 3 is not activated.**
+Status: **ACTIVE Phase 3: Workstream 2 is technically complete and recommends retaining PVS on the accepted flattened architecture, pending GPT/owner reconciliation and acceptance. SR-002 remains owner-accepted. Recursive Policy 4 remains the unchanged production champion/default and fallback at 1-16 workers. Workstream 3 is not activated.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
 ## Authority and objective
 
 The owner launched Workstream 2 on 19 October 2026 and confirmed BOTH Project
-Source mirrors at P3-R010/P3-F008. This supersedes historical successor-inactive
-and launch-refresh wording below. The bounded driver investigation, implementation,
-validation, controlled experiments and attributable commits/non-forced pushes are
-authorized under the existing requirements. No TT policy relaxation, production
-promotion or Workstream 3 is authorized. The [focused driver record](../docs/research/search/P3_SR003_SR004_DRIVERS_2026-10-19.md)
-holds implementation identities, evidence, limitations and resumable work selection.
+Source mirrors at P3-R010/P3-F008. Its bounded investigation is technically complete
+on 20 October: **retain PVS**, because the tested integrated MTD formulations do
+not justify replacement under the current TT/selectivity rules. This is a technical
+recommendation awaiting GPT/owner acceptance, not production promotion. The
+[focused driver record](../docs/research/search/P3_SR003_SR004_DRIVERS_2026-10-19.md)
+binds implementations, frozen evidence, uncertainty and handback actions. No TT
+policy relaxation or Workstream 3 is authorized. Both mirrors now require refresh
+to P3-R012/P3-F010 before dependent GPT planning or the next launch.
 
 Maximize the playing strength of the complete SeedV6 engine through foundational
 Search improvements, technically sound integrated candidates, controlled
@@ -237,6 +239,20 @@ necessary implementation-local measurements and correctness checks remain permit
    separate owner authorization. A justified hybrid is optional. Retain the unselected
    driver as a comparison capability where practical. Select the preferred candidate
    root driver; if evidence does not justify replacing PVS, retain it and proceed.
+   **Technical conclusion, 20 October 2026:** recommend retaining **PVS** on the
+   accepted flattened architecture, pending GPT/owner reconciliation and acceptance.
+   Integrated guarded MTD variants passed exact/unpruned and lifecycle validation
+   but incurred substantial repeated work under unchanged proof restrictions;
+   selective bracket equality frequently needed searched-PV/full-window recovery.
+   Fresh cost roots gave the bounded two-pass variant elapsed ratios 1.619 at one
+   worker and 1.428 at four, with process CPU ratios 1.601/1.758. Its separate
+   four-worker 10+0.1 development screen scored 25/9/30 W/D/L in 64 games;
+   approximate paired-normal Elo interval [-108.7,+51.3] is inconclusive, not proof
+   of inferiority, and lifetime CPU was 16.5% higher. No independent strength
+   confirmation or universal MTD rejection is claimed. The [focused driver record](../docs/research/search/P3_SR003_SR004_DRIVERS_2026-10-19.md)
+   preserves configurations, controls, failed starts, uncertainty and all evidence.
+   Retain the research comparisons over the shared kernel; no TT relaxation,
+   production promotion or construction launch follows automatically.
 3. **Feature-rich construction.** After those conclusions and its explicit launch,
    execute one coherent long-horizon objective covering the Frontier's **31 selected
    subjects**, including accepted baseline mechanisms. These are neither 31 independent
@@ -501,13 +517,14 @@ the programme update. The SR-002 launch explicitly confirmed synchronization of
 **P3-R008 / P3-F006** after `fab5461` and authorized that investigation. The owner
 has now explicitly accepted the completed SR-002 recommendation and confirmed
 synchronization of **P3-R009 / P3-F007**. Those acceptance and synchronization gates
-are satisfied; earlier pending wording is superseded. **This P3-R010 / P3-F008
-acceptance reconciliation requires a fresh replacement of BOTH Project Source
-mirrors and synchronization confirmation before dependent GPT planning or the next
-launch.** After that refresh, the next admissible launch remains the separately
-authorized bounded SR-003/SR-004 driver investigation on the selected flattened
-architecture. This closeout launches no successor or construction and authorizes
-no production adoption or release. Repository edits do not synchronize the mirrors.
+are satisfied; earlier pending wording is superseded. The Workstream 2 launch
+confirmed **P3-R010/P3-F008** synchronization and authorized the now-completed
+driver investigation. **This P3-R012/P3-F010 technical closeout requires replacement
+of BOTH Project Source mirrors and synchronization confirmation before dependent
+GPT planning or the next launch.** GPT/owner reconciliation and acceptance of the
+driver recommendation remain separate. Any Workstream 3 construction requires its
+own explicit launch. No production adoption or release is authorized; repository
+edits do not synchronize external mirrors.
 
 | Frozen file | Revision | Verified SHA-256 (complete original bytes) |
 | --- | --- | --- |
