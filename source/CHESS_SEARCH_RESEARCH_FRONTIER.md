@@ -1,12 +1,19 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F008**
+Internal frontier revision: **P3-F009**
 
-Status: **ACTIVE Phase 3: SR-002 is technically complete and owner-accepted. Flattened Search execution is selected for subsequent Phase 3 development under the near-equal-performance preference. Recursive Policy 4 remains the unchanged Pair-2 production Search champion/default and fallback at 1-16 workers. No successor workstream is activated.**
+Status: **ACTIVE Phase 3: owner-authorized Workstream 2 investigates SR-003/SR-004, PVS versus MTD(f), on the accepted flattened architecture. SR-002 remains technically complete and owner-accepted. Recursive Policy 4 remains the unchanged production champion/default and fallback at 1-16 workers. Workstream 3 is not activated.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
 ## Authority and current direction
+
+**Current selection, 19 October 2026:** the owner explicitly launched Workstream 2
+and confirmed P3-R010/P3-F008 mirror synchronization. Earlier next-launch and
+successor-inactive wording is historical. Investigate integrated PVS/MTD(f) on
+flattened execution, retaining PVS unless replacement is justified. Detailed
+dynamic work selection and evidence reside in the [focused driver record](../docs/research/search/P3_SR003_SR004_DRIVERS_2026-10-19.md).
+Construction requires a separate later launch; production Policy 4 stays unchanged.
 
 The [Contract](CHESS_SEARCH_CONTRACT.md) governs objectives, technical guarantees,
 methodology, architecture and acceptance. This Frontier governs subjects, current
