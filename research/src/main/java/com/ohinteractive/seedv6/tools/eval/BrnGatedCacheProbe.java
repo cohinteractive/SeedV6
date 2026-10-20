@@ -32,7 +32,7 @@ public final class BrnGatedCacheProbe {
         boolean cubic=model.architecture().correctionKind()==BrnNextArchitecture.CUBIC;
         if(!cubic&&model.architecture().correctionKind()!=BrnNextArchitecture.GATED_PAIRS)throw new IllegalArgumentException("Unsupported cache");
         var full=SearchEvaluation.brnNext(model);
-        var cached=spec.gatedDeltaCache()?SearchEvaluation.brnGatedDeltaResearch(model):
+        var cached=spec.cubicDeltaCache()?SearchEvaluation.brnCubicDeltaResearch(model):spec.gatedDeltaCache()?SearchEvaluation.brnGatedDeltaResearch(model):
                 cubic?SearchEvaluation.brnCubicIncrementalResearch(model):SearchEvaluation.brnGatedIncrementalResearch(model);
         var base=plan.models().getFirst();
         var referenceModel=CheckpointStore.readSnapshot(Path.of(base.root()),base.checkpoint()).model();
@@ -46,14 +46,14 @@ public final class BrnGatedCacheProbe {
                 for(var move:receipt.moves())boards.add(Board.fromFen(move.fenAfter()));
             }
         }
-        var accumulator=cache(model,spec.gatedDeltaCache());var workspace=model.newWorkspace();
+        var accumulator=cache(model,spec.gatedDeltaCache()||spec.cubicDeltaCache());var workspace=model.newWorkspace();
         double maximum=0,maximumFreshError=0;int differences=0,freshIntegerDifferences=0;
         for(int i=0;i<boards.size();i++) {
             var board=boards.get(i);double expected=model.rawPawns(board,workspace),actual=accumulator.rawPawns(board);
             maximum=Math.max(maximum,Math.abs(expected-actual));
             if(model.score(board,workspace)!=accumulator.score(board))differences++;
             if(i%97==0) {
-                var fresh=cache(model,spec.gatedDeltaCache());double independent=fresh.rawPawns(board);
+                var fresh=cache(model,spec.gatedDeltaCache()||spec.cubicDeltaCache());double independent=fresh.rawPawns(board);
                 maximumFreshError=Math.max(maximumFreshError,Math.abs(actual-independent));
                 if(accumulator.score(board)!=fresh.score(board))freshIntegerDifferences++;
                 if(!model.architecture().frozenBase()&&Double.doubleToLongBits(actual)!=Double.doubleToLongBits(independent))
@@ -146,6 +146,17 @@ public final class BrnGatedCacheProbe {
         default Map<String,Object> details() { return Map.of(); }
     }
     private static Cache cache(BrnNextModel model,boolean delta) {
+        if(delta && model.architecture()==BrnNextArchitecture.GEN32_CUBIC) {
+            var value=new BrnCubicDeltaAccumulator(model);
+            return new Cache() {
+                public double rawPawns(long[] board){return value.rawPawns(board);}
+                public int score(long[] board){return value.score(board);}
+                public long primitiveBytes(){return value.primitiveBytes();}
+                public Map<String,Object> details(){return Map.of("kind","polynomial-period64-canonical-rounding-guard-v1",
+                        "correctionErrorBound",value.correctionErrorBound(),"roundingFallbacks",value.roundingFallbacks,
+                        "rebuilds",value.rebuilds,"updates",value.updates);}
+            };
+        }
         if(delta) {
             var value=new BrnGatedDeltaAccumulator(model);
             return new Cache() {

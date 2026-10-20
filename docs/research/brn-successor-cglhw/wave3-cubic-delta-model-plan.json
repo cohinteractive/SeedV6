@@ -1,0 +1,19 @@
+{
+  "id": "wave3-cubic-delta-verified-model-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    },
+    {
+      "name": "RESCUBIC32-half",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\22b42be6-15c4-3f36-a376-3776aa1931f2",
+      "checkpoint": "g000032-s000262144-41d911c124b545bc293252c7a75361f45ddd386bd600e9e64523d0fce5516197",
+      "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+      "correctionScale": 0.5,
+      "cubicDeltaCache": true
+    }
+  ]
+}

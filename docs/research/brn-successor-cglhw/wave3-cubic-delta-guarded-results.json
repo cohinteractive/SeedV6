@@ -1,0 +1,214 @@
+{
+  "id": "wave3-cubic-delta-guarded-results-v1",
+  "oldRuntimeManifest": "wave3-fair-control-runtime.json",
+  "newModelPlan": "wave3-cubic-delta-model-plan.json",
+  "newBenchmarkRuntime": {
+    "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-guarded-benchmark-runtime/lib",
+    "source": "4766d66 plus guarded cubic delta implementation",
+    "jars": {
+      "engine-core.jar": "52db831d05c5861d495b3ddb96cff4454847ec5ecea04c6f2e065b0f03a9aa30",
+      "engine-training.jar": "b3973db8e9b2d2a7cf3140ad1c42f667d2aef575a5556d536a7418273edb428a",
+      "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "research.jar": "1b41318ded6b346f9e6155a02696a0c3596ee1f286513847c8ca23569b762661",
+      "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+    }
+  },
+  "sequence": "old,new,new,old,new,old,old,new",
+  "limits": {
+    "activeProcessors": 1,
+    "heapMiB": 768,
+    "priority": "BelowNormal",
+    "tournamentsPaused": true
+  },
+  "means": {
+    "old": {
+      "transitionMedianNanos": 571.7855,
+      "warmed32SearchSeconds": 0.958188175
+    },
+    "new": {
+      "transitionMedianNanos": 290.3425,
+      "warmed32SearchSeconds": 0.790183675
+    }
+  },
+  "warmedSearchTimeReductionFraction": 0.17533560148558502,
+  "allOldNewSearchResultsEqual": true,
+  "runs": [
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-abba-01-old.json",
+      "sha256": "ed1ef4f4998caf2c3a05e176245482087ce72ad3c68683825bb392bf7b9d796e",
+      "implementation": "old",
+      "positions": 6333,
+      "maximumRawError": 2.220446049250313e-15,
+      "maximumFreshRawError": 7.993605777301127e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 10162,
+      "transitionMedianNanos": 558.218,
+      "warmed32SearchSeconds": 0.9922204,
+      "cacheDetails": null
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-abba-02-new.json",
+      "sha256": "787ddeb0b2e760a7dc62d15df15ef246009fe8fda74e187d06a7630c2d0e6f8c",
+      "implementation": "new",
+      "positions": 6333,
+      "maximumRawError": 5.329070518200751e-15,
+      "maximumFreshRawError": 8.215650382226158e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 4329,
+      "transitionMedianNanos": 291.134,
+      "warmed32SearchSeconds": 0.7977956,
+      "cacheDetails": {
+        "kind": "polynomial-period64-canonical-rounding-guard-v1",
+        "correctionErrorBound": 2.3995851027858993e-05,
+        "rebuilds": 129,
+        "roundingFallbacks": 9,
+        "updates": 6213
+      }
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-abba-03-new.json",
+      "sha256": "7e051e2e8a47f010180010c5f859bb5a3920d301d7c019b774dd57747b100635",
+      "implementation": "new",
+      "positions": 6333,
+      "maximumRawError": 5.329070518200751e-15,
+      "maximumFreshRawError": 8.215650382226158e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 4329,
+      "transitionMedianNanos": 293.034,
+      "warmed32SearchSeconds": 0.7694159,
+      "cacheDetails": {
+        "updates": 6213,
+        "roundingFallbacks": 9,
+        "rebuilds": 129,
+        "correctionErrorBound": 2.3995851027858993e-05,
+        "kind": "polynomial-period64-canonical-rounding-guard-v1"
+      }
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-abba-04-old.json",
+      "sha256": "6e58b24af8477ebd02c29391f75d4728d6e8cedafcde9b4363603a57ba5cae85",
+      "implementation": "old",
+      "positions": 6333,
+      "maximumRawError": 2.220446049250313e-15,
+      "maximumFreshRawError": 7.993605777301127e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 10162,
+      "transitionMedianNanos": 577.632,
+      "warmed32SearchSeconds": 0.9230521,
+      "cacheDetails": null
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-abba-05-new.json",
+      "sha256": "cf20f8d37575f5bd160665ee03ba376b5b57cb516850bece60211addda35cdd2",
+      "implementation": "new",
+      "positions": 6333,
+      "maximumRawError": 5.329070518200751e-15,
+      "maximumFreshRawError": 8.215650382226158e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 4329,
+      "transitionMedianNanos": 288.126,
+      "warmed32SearchSeconds": 0.7986491,
+      "cacheDetails": {
+        "correctionErrorBound": 2.3995851027858993e-05,
+        "kind": "polynomial-period64-canonical-rounding-guard-v1",
+        "updates": 6213,
+        "roundingFallbacks": 9,
+        "rebuilds": 129
+      }
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-abba-06-old.json",
+      "sha256": "baeedcc8f510e2bd698084ed9ca81e491263e437ecece59021fc03c3c369a9fd",
+      "implementation": "old",
+      "positions": 6333,
+      "maximumRawError": 2.220446049250313e-15,
+      "maximumFreshRawError": 7.993605777301127e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 10162,
+      "transitionMedianNanos": 574.536,
+      "warmed32SearchSeconds": 0.9035996,
+      "cacheDetails": null
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-abba-07-old.json",
+      "sha256": "a9d1080ff3a2f27085ad3c307b9e960f1e165805c6a7e029e0dad42ecfc2d583",
+      "implementation": "old",
+      "positions": 6333,
+      "maximumRawError": 2.220446049250313e-15,
+      "maximumFreshRawError": 7.993605777301127e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 10162,
+      "transitionMedianNanos": 576.756,
+      "warmed32SearchSeconds": 1.0138806,
+      "cacheDetails": null
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-abba-08-new.json",
+      "sha256": "69a5a16db4d89de5ac4dda40fbc5bc684054a392dece66e4e5083a2a88085967",
+      "implementation": "new",
+      "positions": 6333,
+      "maximumRawError": 5.329070518200751e-15,
+      "maximumFreshRawError": 8.215650382226158e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 4329,
+      "transitionMedianNanos": 289.076,
+      "warmed32SearchSeconds": 0.7948741,
+      "cacheDetails": {
+        "updates": 6213,
+        "roundingFallbacks": 9,
+        "rebuilds": 129,
+        "correctionErrorBound": 2.3995851027858993e-05,
+        "kind": "polynomial-period64-canonical-rounding-guard-v1"
+      }
+    }
+  ],
+  "tests": [
+    {
+      "path": "engine-core/build/test-results/test/TEST-com.ohinteractive.seedv6.core.brnnext.BrnCubicDeltaAccumulatorTest.xml",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "path": "engine-core/build/test-results/test/TEST-com.ohinteractive.seedv6.core.brnnext.BrnGatedDeltaAccumulatorTest.xml",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "path": "engine-core/build/test-results/test/TEST-com.ohinteractive.seedv6.core.brnnext.BrnCubicAccumulatorTest.xml",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "path": "engine-core/build/test-results/test/TEST-com.ohinteractive.seedv6.core.brnnext.BrnGen32ResidualTest.xml",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "path": "research/build/test-results/test/TEST-com.ohinteractive.seedv6.tools.eval.BrnSuccessorVariantsTest.xml",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "limitations": [
+    "Repeated same positions/search roots; no strength claim.",
+    "Conservative bound and adversarial coverage are not a universal formal floating-point proof.",
+    "Raw sums can differ by a few ulps; canonical score fallback near rounding boundaries.",
+    "Primitive bytes exclude headers/references/alignment.",
+    "Existing tournament protocols retain original runtime."
+  ]
+}

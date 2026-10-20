@@ -492,3 +492,52 @@ runtime: `wave3-cubic-delta-prototype-results.json`. Admit numerical-bound/fallb
 adversarial boundary/transition tests and exact-search cost checks before any use.
 The temporary admission pause finished after the node protocol completed; original
 clock protocols continue unchanged with new log prefixes.
+
+
+The fresh-control result and bounded lower-rate diagnostics retain two distinct
+hypotheses: inference cost may mask useful evaluations, and32 correction generations
+may not adequately optimize the new parameters. Cost controls continue first.
+A future paired-rate continuation should fork exact W3 latest32 weights/Adam states
+and source ledgers into distinct GUI lineages, comparing.001 with.003 for each
+architecture. Preserve original calibration and checkpoint choices; do not silently
+start from CUBIC Best31. Such forks must retain generation32 bootstrap counters to
+avoid old ledger-generation collisions, authenticate actual bootstrap acceptance,
+and visibly distinguish inherited from new exposure. The cross-family source split
+and prior exposure confound remains; matched within-family rate arms do not remove
+it. This is preparation guidance, not an admitted human gate or permission to train.
+
+Metric interpretation: GUI final loss/held-out WDL records use half-squared outcome
+error; the BRN3/Pair2/next optimizer minibatches use cross-entropy. This is explicit
+current-source behaviour (`IncrementalTraining.loss`, `TrainerService` and trainer
+kernels), not a mislabeled CE value or evidence of an optimizer bug. Compare the
+same metric on the same positions; diagnostic CE and GUI loss numbers are not
+interchangeable. Historical executable identity remains unavailable.
+
+
+## Guarded CUBIC cost result
+
+The explicit research implementation now propagates conservative error bounds for
+inverse/additive polynomial coefficients, rebuilding canonically near rounding
+boundaries. Four new tests cover9000 arbitrary transitions, special moves/undo/
+null-side changes,12 score-boundary cases and separate-owner full-search equality.
+GATE delta regression, original CUBIC cache and Gen32 residual tests also pass;
+25 selected core/research tests in total, plus project-boundary/build checks.
+
+Eight balanced actual-model runs each pass6333 positions and48 full/cache search
+pairs, with all old/new search results equal. Maximum fresh raw difference8.22e-15;
+zero integer differences. The actual correction-error bound is2.40e-5 raw pawns;
+nine canonical rounding fallbacks occur on the6333-position sequence. This is
+conservative guarded empirical verification, not a universal numerical proof.
+
+`wave3-cubic-delta-guarded-results.json` binds raw evidence and benchmark jars.
+Mean transition time571.8ns->290.3ns; warmed32-search time.9582s->.7902s,17.5%
+less. Worker primitive storage10162->4329bytes, excluding headers/references.
+No learned-function, checkpoint, optimizer or ordinary-loading change. The original
+rank cache remains the default and an independent implementation oracle.
+
+Admit a separately frozen64-game half-CUBIC32 delta comparison vsGen32 at200ms,
+using the existing32 development opening pairs (`wave3-cubic-delta-clock-plan.json`).
+Complete legal smoke before games. This preserves the old longer-clock study and
+measures the implementation revision without changing checkpoint selection. It is
+reused development evidence; no combined independent significance claim or optional
+extension. All substantial training remains reserved for the human GUI gate.

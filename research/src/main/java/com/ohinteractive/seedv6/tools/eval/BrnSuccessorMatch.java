@@ -22,10 +22,11 @@ import java.util.*;
 public final class BrnSuccessorMatch {
     record Model(String name, String root, String checkpoint, String networkSha256, Double residualGain,
                  boolean gatedCache, boolean cubicCache, Double blendCandidateWeight,
-                 Double correctionScale, String correctionAblation, double[] constantGates, boolean gatedDeltaCache) {
+                 Double correctionScale, String correctionAblation, double[] constantGates, boolean gatedDeltaCache, boolean cubicDeltaCache) {
         Model {
             if(constantGates!=null&&!"constant-gates".equals(correctionAblation))
                 throw new IllegalArgumentException("Explicit constant-gates ablation required");
+            if(cubicDeltaCache&&(gatedCache||cubicCache||gatedDeltaCache))throw new IllegalArgumentException("Choose one cache");
             if(gatedDeltaCache&&(gatedCache||cubicCache))throw new IllegalArgumentException("Choose one cache");
         }
     }
@@ -75,7 +76,10 @@ public final class BrnSuccessorMatch {
             }
             SearchEvaluation evaluation;
             if(spec.gatedCache()&&spec.cubicCache())throw new IllegalArgumentException("Choose one cache");
-            if(spec.gatedDeltaCache()) {
+            if(spec.cubicDeltaCache()) {
+                if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("CUBIC delta cache requires W3");
+                evaluation=SearchEvaluation.brnCubicDeltaResearch(n.model());
+            } else if(spec.gatedDeltaCache()) {
                 if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("GATE delta cache requires W3");
                 evaluation=SearchEvaluation.brnGatedDeltaResearch(n.model());
             } else if(spec.gatedCache()) {
@@ -95,6 +99,7 @@ public final class BrnSuccessorMatch {
                     "effectiveNetworkSha256",HexFormat.of().formatHex(DataFiles.digest().digest(bytes.toByteArray())),
                     "residualGain",spec.residualGain()==null?.25:spec.residualGain(),"gatedCache",spec.gatedCache()));
             if(spec.cubicCache())modelBinding.put("cubicCache",true);
+            if(spec.cubicDeltaCache())modelBinding.put("cubicDeltaCache","polynomial-period64-canonical-rounding-guard-v1");
             if(spec.gatedDeltaCache())modelBinding.put("gatedDeltaCache","period64-canonical-rounding-guard-v1");
             if(model instanceof NetworkModel.BrnNext n && n.model().architecture().frozenBase()) {
                 modelBinding.put("nativeResidualCache",true);

@@ -1,6 +1,6 @@
 # BRN successor workstream state
 
-Updated20 October2026. **Human training gate G3 is verified complete. Trained Wave3 assessment is active.
+Updated21 October2026. **Human training gate G3 is verified complete. Trained Wave3 assessment is active.
 No programme success is claimed.** This remains the original CGLHW.
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
 [completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md).
@@ -106,34 +106,38 @@ ordering remains unchanged. The compiled half-change BRE control passed12360
 actual-weight comparisons with zero integer differences and retains ordinary
 single-table cost. Eight research variant tests pass. See WAVE3-ASSESSMENT.
 
-In progress after clean15e2ba4/build47 runtime freeze and passed six-game/48-move
-legal smoke (intentional eight-ply caps excluded from strength):
-`wave3-fair-control-node-plan.json` and `wave3-longer-clock-plan.json`.
-Each192games on32 fresh development opening pairs, fixed before outcomes.
-First compares half-GATE,half-CUBIC,half-BRE against continued full BRE at32768
-nodes/move. Second compares those three against frozen Gen32 at200ms/move.
-One game/worker,768MiB/64MiB TT,BelowNormal,12games/240seconds per invocation.
-Opening inputs and exclusion hashes are tracked; confirmation partition1 untouched.
-Use `wave3-fair-control-runtime.json`, never change old receipts/plans. Outputs are
-`raw/wave3/fair-control-node` and `raw/wave3/longer-clock`; each requires192 receipts.
-Resume only missing games through `tools/run-brn-successor-batch.ps1`, checking
-that no prior process is active and using new batch log prefixes. Investigate any
-`.failed` before continuation. Independently replay completed plans before
-interpreting or selecting a next experiment.
-Tournament admission is temporarily paused at a completed batch boundary using
-the owned sentinel `build/research/brn-successor-batches.pause`; no game was
-interrupted. A GATE delta-cache prototype passed25143 score comparisons and showed
-~2.4x transition speed in a bounded experiment. Guarded integration now passes boundary tests,6333 actual positions and48 exact
-search pairs per balanced run; warmed search time falls26.8%. See WAVE3-ASSESSMENT
-and `wave3-gate-delta-guarded-results.json`. The guarded cache is committed atb765a7f/build48; its separate runtime is frozen
-in `wave3-gate-delta-runtime.json`. Two-game/16-move smoke independently replayed
-with two intentional eight-ply caps, excluded from strength. The owned pause
-sentinel is removed. Resume the unchanged fresh-development protocols with new
-log prefixes, then complete `wave3-gate-delta-clock-plan.json` (64games), output
-`raw/wave3/gate-delta-clock`, using its separate runtime. Never mix runtimes.
-At resume, fair-control-node has48/192 games and longer-clock30/192, no failures.
-No next human training gate or independent confirmation has been admitted.
-Do not infer either from preliminary results.
+Fresh-development status:
+- `wave3-fair-control-node-plan.json` is complete192games/24063 independently
+  replayed moves, no failures/caps/missing pairs. Half-GATE57.8125%, half-CUBIC56.25%,
+  half-BRE58.59375% against continued full BRE; all descriptive intervals include50%.
+  No expressive separation established. `wave3-fair-control-node-results.json`.
+- `wave3-longer-clock-plan.json` remains active/incomplete, original192-game target,
+  reference Gen32,200ms/move, same32 fresh development roots. Use unchanged
+  `wave3-fair-control-runtime.json` (15e2ba4/build47) and `raw/wave3/longer-clock`.
+- `wave3-gate-delta-clock-plan.json` is admitted64games on the same roots/200ms,
+  faster half-GATE vsGen32. Use separate `wave3-gate-delta-runtime.json`
+  (b765a7f/build48), output `raw/wave3/gate-delta-clock`. Two-game legal smoke
+  independently replayed16moves; intentional eight-ply caps excluded from strength.
+Never mix runtimes/receipts or substitute code in an existing plan. No optional
+extension or independent-confirmation claim. One game/worker,768MiB/64MiB TT,
+BelowNormal,12games/240seconds per invocation, completing the current game.
+
+GATE guarded delta cache is verified:6333 actual positions,48 full/cache search
+pairs per balanced run, all integer/search results equal; warmed search time
+falls26.8%. See `wave3-gate-delta-guarded-results.json`. Explicit research factory
+only; ordinary model loading unchanged. A CUBIC delta prototype then passed25143
+comparisons and approximately halved transition cost. Its guarded integration passes25 selected tests and eight balanced runs of6333
+positions/48 full-cache search pairs, all old/new integer/search results equal.
+Warmed search time falls17.5%; worker primitive storage10162->4329bytes. See
+`wave3-cubic-delta-guarded-results.json`. Admit the separate64-game
+`wave3-cubic-delta-clock-plan.json` after clean runtime freeze and legal smoke.
+
+Exact current action: tournament admission is temporarily paused at the next batch
+boundary by owned `build/research/brn-successor-batches.pause`. Check active processes
+before any build/benchmark; let the current bounded batch finish. Finish CUBIC runtime freeze/legal smoke, then remove only the sentinel and resume missing clock
+games with new unique log prefixes. Previous resume03 prefixes may already exist;
+inspect rather than overwrite. Investigate any `.failed` before resuming. Independently
+replay completed protocols. No next human training gate has been admitted.
 
 Source progress started at zero and overlaps Gen32 history. Hybrid stable-layout
 splits differ from BRE sequential holdout; residual tranches match each other,
