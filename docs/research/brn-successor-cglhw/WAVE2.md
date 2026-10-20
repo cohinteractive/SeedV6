@@ -293,6 +293,32 @@ mistook an unavailable process ExitCode for failure after the first successful v
 game; the game was preserved and resumed normally. These were harness/preflight
 issues, not model-training failures.
 
+### Conditional contribution versus average mixture
+
+`wave2-gate-context-plan.json` / `raw/wave2/gate-context-01.json` fit only an
+unlabelled mean gate vector on the first1,024 positions of each existing diagnostic
+source, then compare on the remaining1,024/source. No optimizer or neural training.
+Mean weights are[.34516,.13161,.04248,.48076]. Expert0/3 usage varies markedly:
+within material/source strata their gate standard deviations range approximately
+.115–.305. Expert2 mean usage is about.008–.009 in high-material positions and
+.089–.109 in low-material positions. This is not a collapsed constant gate.
+
+| Source, second half | Full raw CE | Learned-mean raw CE | Full quarter CE | Learned-mean quarter CE |
+| --- | ---: | ---: | ---: | ---: |
+| BT4 | .645990 | .676821 | .787014 | .765722 |
+| Lichess | .591204 | .642034 | 1.354524 | 1.320523 |
+
+Raw-function outcome MSE also favours context on both samples (.12409 vs.19024
+BT4; .32524 vs.41180 CP). At quarter gain, constant-mixture CE is better on both;
+MSE favours the constant mixture slightly on BT4 but full GATE slightly on CP.
+Thus context contributes to the uncalibrated function's label prediction on these
+samples, while its search-facing practical value remains unestablished.
+The data is previously inspected development evidence. Co-adaptation, correlated
+positions, mean-fit choice and missing independent training controls remain limits.
+If a promising GATE candidate emerges, compare playing strength with the learned-mean
+control and assess the efficiency of folding that constant mixture into one additive
+expert. Do not award complexity credit from the uniform-gate ablation alone.
+
 ## Implementation and validation record
 
 Initial research-only runners: `BrnSuccessorAudit`, `BrnSuccessorMatch`,

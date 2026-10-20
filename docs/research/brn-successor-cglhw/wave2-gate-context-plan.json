@@ -1,0 +1,11 @@
+{
+  "id": "brn-successor-wave2-gate-context-v1",
+  "question": "Does GATE's conditional mixture contribute beyond its learned average expert weights?",
+  "model": "W1-GATE Gen200 from wave2-diagnostics-plan.json",
+  "inputs": ["raw/wave2/data-01/bt4-fresh-positions.jsonl", "raw/wave2/data-01/lichess-sealed-positions.jsonl"],
+  "meanFit": "Average softmax gate probabilities, without labels, over the first1024 positions of each input (2048 total). No optimizer, target fitting or neural training.",
+  "evaluation": "Remaining1024 positions per source; compare original full model with a constant mixture using those means, preserving unary weights and expert tables. Record phase-stratified gate means, deviations, entropy, argmax usage, cross entropy and smooth outcome MSE at gains.25 and1.",
+  "controls": "Uniform-gate results already exist but confound average mixture with context. A learned-mean fixed mixture removes conditional variation while preserving typical expert usage. This remains a post-training ablation with co-adapted weights.",
+  "interpretation": "Development-only diagnostic on already inspected data, not independent validation or strength. If a useful conditional effect survives, later playing-strength ablations and an efficient additive control are still needed. If it does not, revise architecture selection rather than attributing uniform-gate loss to context.",
+  "resources": "One below-normal JVM, ActiveProcessorCount1, Xmx768m, bounded4096 stored positions, no concurrent tournament/benchmark execution, no original-store writes."
+}

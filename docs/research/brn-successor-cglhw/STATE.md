@@ -95,8 +95,11 @@ No success claim from either development screen.
 
 Hypothesis frontier: calibration and runtime cost remain active; test a similarly
 history-independent CUBIC cache if justified by its throughput deficit. Separate
-GATE's learned mean mixture from conditional variation before claiming that its
-extra expressiveness contributes useful value. Re-match existing from-scratch
+GATE's learned mean mixture from conditional variation before claiming practical
+value: `raw/wave2/gate-context-01.json` now shows noncollapsed gates and improved
+raw-function CE/MSE versus a fitted constant mean; quarter-gain CE instead favours
+the mean control. Playing-strength and efficient-additive-control ablations remain.
+Re-match existing from-scratch
 campaign snapshots under common search if needed to isolate learning efficacy.
 Only then select retraining/hybrid architecture work. User training is not yet a
 blocker; no new training gate has been invented.
