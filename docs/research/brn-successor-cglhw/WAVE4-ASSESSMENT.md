@@ -557,3 +557,30 @@ estimate of architecture alone. Conditional-gate/cubic-term ablations and total
 training cost are necessary; a matched further-training BRE control may be needed
 before an architectural success claim. No extra training is inferred or requested
 at this stage. Investigate the prepared compositions first.
+
+
+## Hybrid nonlinear components
+
+The explicit ablation generator prepares full, unary-only and conditional/cubic-term
+removal variants for all eight compositions. GATE constants are mean probabilities
+from the first1024 positions/source, without labels; the same correction has exactly
+the same gate vector on either base. All eight full functions reproduce their prior
+predictions exactly. Independent CE checks agree within1.23e-15; the same21 CP
+standard-status flags remain preserved, with no data filtering.
+
+Removing conditional gating worsens held-out CE by.00429-.00492 on BT4 and
+.00996-.01345 on CP. Removing cubic terms worsens it by.000397-.000749 on BT4 and
+.000588-.001099 on CP. The nonlinear terms retain predictive value after replacing
+the base, although cubic's contribution is smaller. Unary removal comparisons
+are mostly favourable to the full model; CUBIC001 on BRE003 is a CP exception,
+where unary-only is slightly better. Thus the whole correction's value and the
+cubic term's marginal value are different questions. These are inference ablations
+without retraining, on consumed development data, not chess evidence.
+
+Exact plans, fit constants and metrics are in wave4-hybrid-ablation-model-plan.json
+and wave4-hybrid-ablation-results.json. The diagnostic runtime adds only the plan
+generator class; every existing inference/search/research class byte is unchanged
+from the original hybrid runtime (the generated version property records its later
+source revision). Core/application behaviour remains build52. No hybrid or ablated
+strength plan is yet admitted; both trained additive controls and aggregate training
+history remain necessary comparisons.

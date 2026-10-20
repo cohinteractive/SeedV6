@@ -231,7 +231,8 @@ hybrid feasibility diagnostic supports complementary prediction signal, especial
 with BRE001; ordinary additive mixing does not reproduce its consistent benefit.
 See wave4-hybrid-feasibility-verified.json. Explicit inference composition is implemented with35 distinct passing targeted
 test cases, including loader/component identity and unchanged blend behaviour.
-Actual-model prediction/cache/search, cost checks and legal-play smoke remain next. Both component identities must
+Actual-model prediction/cache/search, cost checks and legal-play smoke now pass
+(see the readiness evidence below). Both component identities must
 be bound; no combined optimizer/checkpoint is implied. No hybrid games are yet
 admitted and no new substantial training is authorized. The core inference addition qualifies build52 in its implementation commit;
 see wave4-hybrid-implementation-validation.json. Native packaging/GUI acceptance
@@ -250,7 +251,7 @@ The initial1024-node smoke failure is preserved; its separate32768-node replacem
 passed with16 intentional caps, all excluded from strength. Frozen runtime:
 wave4-hybrid-runtime.json, source583310e/build52. Observed transition cost is near
 the original residual, not BRE. No hybrid strength protocol is yet admitted.
-Continue direct-clock-LR003 (currently batches01..04), then its remaining batches,
+Continue direct-clock-LR003 (currently batches05..08), then
 selected full-clock and BRE full/half controls. Use the original frozen averaging
 runtime for those plans, never the hybrid runtime. Then choose a bounded hybrid
 comparison that retains both additive controls and an expressive-value ablation.
@@ -262,10 +263,12 @@ half at131072 nodes, on the same eight development pairs. The earlier32768-node
 versus100ms contrast also changes absolute search depth; do not attribute its
 score gap solely to speed. Keep the original averaging runtime. This follows the
 clock/calibration controls and precedes any new substantial training direction.
-A research-only generator for hybrid unary/constant-gate/quadratic ablations is
-being prepared; its gate means use only first1024/source without labels. It is
-not compiled/verified yet and admits no strength games. Complete at a match batch
-boundary, preserving frozen runtimes and the one-active-workload restriction.
+The research-only hybrid unary/constant-gate/quadratic ablation generator is now
+compiled and verified on all eight actual compositions. Gate means use only
+first1024/source without labels. Full predictions reproduce exactly; all removed
+conditional/cubic terms worsen CE on both sources, with stronger effects for gates.
+See wave4-hybrid-ablation-results.json. This admits no strength games. Select and
+verify actual ablated search functions before any mechanism-value chess comparison.
 
 Hybrid provenance caveat: combining a continued base and a separately trained
 correction uses two post-reference training streams, unlike one BRE endpoint.

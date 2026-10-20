@@ -1,0 +1,202 @@
+{
+  "id": "wave4-hybrid-ablation-results-v1",
+  "evidence": {
+    "docs\\research\\brn-successor-cglhw\\wave4-hybrid-ablation-model-plan.json": "ea331728ca245ff22713f28fddf6dfacf4d7eb9ce024d09e220df3723c4622fe",
+    "docs\\research\\brn-successor-cglhw\\wave4-hybrid-ablation-runtime.json": "ee757f66bdaf13d2dcab557a80c4591ecc844bdd5c8cd5787600b552ae7fc84c",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-ablation-prediction-01\\summary.json": "28fbca863ffce2824255348d20cc3a98150656808850b2f09667a55feaf2a02d",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-ablation-independent-01.json": "dffefe31f251ff9dc1bdfa65e167cda4e79ce710fa66c5c411d7aa823b6bfb59"
+  },
+  "fullHybridReproductionMaximumError": 0,
+  "models": [
+    {
+      "name": "W4-RESGATE-LR001-average8-half-on-BRE001-half",
+      "nonlinearAblation": "constant-gates",
+      "sources": [
+        {
+          "source": "BT4",
+          "fullCE": 0.627896779296896,
+          "unaryCE": 0.6394308850691441,
+          "nonlinearRemovedCE": 0.632812667784432,
+          "nonlinearValueCE": 0.004915888487535991
+        },
+        {
+          "source": "CP",
+          "fullCE": 0.5804570886336707,
+          "unaryCE": 0.5858651486717061,
+          "nonlinearRemovedCE": 0.5913849941637515,
+          "nonlinearValueCE": 0.010927905530080717
+        }
+      ]
+    },
+    {
+      "name": "W4-RESGATE-LR003-average8-half-on-BRE001-half",
+      "nonlinearAblation": "constant-gates",
+      "sources": [
+        {
+          "source": "BT4",
+          "fullCE": 0.6282170347201508,
+          "unaryCE": 0.64318521170893,
+          "nonlinearRemovedCE": 0.6328083139564336,
+          "nonlinearValueCE": 0.004591279236282775
+        },
+        {
+          "source": "CP",
+          "fullCE": 0.5786556114069416,
+          "unaryCE": 0.5867424560329698,
+          "nonlinearRemovedCE": 0.5921090744614593,
+          "nonlinearValueCE": 0.013453463054517778
+        }
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-average8-half-on-BRE001-half",
+      "nonlinearAblation": "quadratic",
+      "sources": [
+        {
+          "source": "BT4",
+          "fullCE": 0.6258749087312019,
+          "unaryCE": 0.6471868296904961,
+          "nonlinearRemovedCE": 0.6265672026286099,
+          "nonlinearValueCE": 0.0006922938974079917
+        },
+        {
+          "source": "CP",
+          "fullCE": 0.5828061326668844,
+          "unaryCE": 0.5914058213765175,
+          "nonlinearRemovedCE": 0.5839049215804096,
+          "nonlinearValueCE": 0.0010987889135252171
+        }
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-average8-half-on-BRE001-half",
+      "nonlinearAblation": "quadratic",
+      "sources": [
+        {
+          "source": "BT4",
+          "fullCE": 0.6272030008360006,
+          "unaryCE": 0.6609595153883769,
+          "nonlinearRemovedCE": 0.6279516088104161,
+          "nonlinearValueCE": 0.0007486079744155605
+        },
+        {
+          "source": "CP",
+          "fullCE": 0.5832811625807824,
+          "unaryCE": 0.5966890129788183,
+          "nonlinearRemovedCE": 0.5838787047755619,
+          "nonlinearValueCE": 0.0005975421947794768
+        }
+      ]
+    },
+    {
+      "name": "W4-RESGATE-LR001-average8-half-on-BRE003-half",
+      "nonlinearAblation": "constant-gates",
+      "sources": [
+        {
+          "source": "BT4",
+          "fullCE": 0.6273322108899488,
+          "unaryCE": 0.6364712221817234,
+          "nonlinearRemovedCE": 0.6319039559795453,
+          "nonlinearValueCE": 0.004571745089596457
+        },
+        {
+          "source": "CP",
+          "fullCE": 0.5838851696518652,
+          "unaryCE": 0.5862422745833668,
+          "nonlinearRemovedCE": 0.5938445647650188,
+          "nonlinearValueCE": 0.00995939511315358
+        }
+      ]
+    },
+    {
+      "name": "W4-RESGATE-LR003-average8-half-on-BRE003-half",
+      "nonlinearAblation": "constant-gates",
+      "sources": [
+        {
+          "source": "BT4",
+          "fullCE": 0.6275150335811626,
+          "unaryCE": 0.6392888539287664,
+          "nonlinearRemovedCE": 0.6318010894930657,
+          "nonlinearValueCE": 0.004286055911903119
+        },
+        {
+          "source": "CP",
+          "fullCE": 0.5820036868522162,
+          "unaryCE": 0.5859932609570545,
+          "nonlinearRemovedCE": 0.5947173681168043,
+          "nonlinearValueCE": 0.012713681264588161
+        }
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-average8-half-on-BRE003-half",
+      "nonlinearAblation": "quadratic",
+      "sources": [
+        {
+          "source": "BT4",
+          "fullCE": 0.6254132182428329,
+          "unaryCE": 0.6427300760110305,
+          "nonlinearRemovedCE": 0.6258104721031198,
+          "nonlinearValueCE": 0.0003972538602868836
+        },
+        {
+          "source": "CP",
+          "fullCE": 0.5907162812662865,
+          "unaryCE": 0.5898010901543442,
+          "nonlinearRemovedCE": 0.5915870548635173,
+          "nonlinearValueCE": 0.0008707735972307562
+        }
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-average8-half-on-BRE003-half",
+      "nonlinearAblation": "quadratic",
+      "sources": [
+        {
+          "source": "BT4",
+          "fullCE": 0.626686701212738,
+          "unaryCE": 0.6542510254824657,
+          "nonlinearRemovedCE": 0.6271724398238576,
+          "nonlinearValueCE": 0.0004857386111196682
+        },
+        {
+          "source": "CP",
+          "fullCE": 0.5899002104526333,
+          "unaryCE": 0.5918097153514684,
+          "nonlinearRemovedCE": 0.590488349744463,
+          "nonlinearValueCE": 0.0005881392918296591
+        }
+      ]
+    }
+  ],
+  "constantGates": {
+    "W4-RESGATE-LR001-average8-half-on-BRE001-half": [
+      0.3867703555687761,
+      0.1658689896720921,
+      0.16805278784869176,
+      0.2793078669104414
+    ],
+    "W4-RESGATE-LR001-average8-half-on-BRE003-half": [
+      0.3867703555687761,
+      0.1658689896720921,
+      0.16805278784869176,
+      0.2793078669104414
+    ],
+    "W4-RESGATE-LR003-average8-half-on-BRE001-half": [
+      0.4080113807327728,
+      0.15277428914212116,
+      0.17174816133484022,
+      0.2674661687902652
+    ],
+    "W4-RESGATE-LR003-average8-half-on-BRE003-half": [
+      0.4080113807327728,
+      0.15277428914212116,
+      0.17174816133484022,
+      0.2674661687902652
+    ]
+  },
+  "fitPositions": 2048,
+  "evaluationPositionsPerSource": 1024,
+  "maximumCompositionRawError": 1.7763568394002505e-15,
+  "limitations": "Consumed development data. Inference removal without retraining; no chess, architecture superiority, or matched aggregate training-cost claim. All original full-hybrid predictions reproduce exactly. Gate means are label-free and equal for the same correction on either base."
+}

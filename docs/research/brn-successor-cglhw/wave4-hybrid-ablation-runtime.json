@@ -1,0 +1,34 @@
+{
+  "id": "wave4-hybrid-ablation-runtime-v1",
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-ablation-runtime-01\\lib",
+  "createdUtc": "2026-10-20T23:32:17.779831+00:00",
+  "sourceCommit": "93e090d107dd9981a4df281356143564e965377e",
+  "build": 52,
+  "modelFeatures": [
+    "brn-hybrid-raw-v1"
+  ],
+  "uncommittedRuntimeSources": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnHybridAblationPlan.java": "ce0b67522276be44c7eb01ec9079bb8ea7823d19a1b04c40061475e08d6891cc"
+  },
+  "jars": {
+    "engine-core.jar": "e676097604c0409d95ced7331346bad6711ef4ebe9a7b128ea392dd345a6f8f4",
+    "engine-training.jar": "ec58521d7d7769729f4afd2a4db1bb63298a006c8e308b27aa6548c027878a64",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "d305cd5b374523958badb88c0314faa30e5aa47eaf33800bbf50d136b07da0ec",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "changesFromHybridRuntime": {
+    "engine-core.jar": [
+      "com/ohinteractive/seedv6/application-version.properties"
+    ],
+    "research.jar": [
+      "com/ohinteractive/seedv6/tools/eval/BrnHybridAblationPlan.class"
+    ]
+  },
+  "scope": "Plan generator added; all prior inference/search/research class bytes unchanged. Use original frozen hybrid runtime for strength plans.",
+  "java": "C:/java/jdk-21/bin/java.exe",
+  "heapMiB": 768,
+  "activeProcessors": 1
+}
