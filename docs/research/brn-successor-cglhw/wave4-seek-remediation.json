@@ -411,11 +411,59 @@
     "W4-RESGATE-LR003-owner.png": "df80473d2b90fcfee4e07c34917a47d14459e5aff9a0f12fdd56b75b6476d2dd"
   },
   "nativeScreenshotDirectory": "docs/research/brn-successor-cglhw/raw/wave4/seek-native-02",
-  "nativeDistribution": "Pending build51 package verification after implementation commit",
+  "nativeDistribution": {
+    "candidate": "dist/windows/candidates/candidate-20261020T193415-78093c22",
+    "status": "VERIFIED_LOCAL_CANDIDATE",
+    "receipt": {
+      "path": "dist/windows/candidates/candidate-20261020T193415-78093c22/candidate.json",
+      "sha256": "153df36fd2be4a803017dd4e4820017efbed1fd3561510881459dff574fd2cbe"
+    },
+    "imageManifest": {
+      "path": "dist/windows/candidates/candidate-20261020T193415-78093c22/SeedV6-GUI/build-manifest.json",
+      "sha256": "acf229c783f52b0d35f05db94271a5bd1846756f385613931a98abca07c206d3"
+    },
+    "archive": {
+      "path": "dist/windows/candidates/candidate-20261020T193415-78093c22/SeedV6-GUI-windows-x64.zip",
+      "sha256": "919d5a656cec018719fea1de3dda350cf276288800e051e1b8aa0b75d2317f0b"
+    },
+    "launcher": "dist/windows/candidates/candidate-20261020T193415-78093c22/SeedV6-GUI/SeedV6-GUI.exe",
+    "applicationBuild": 51,
+    "imageChecks": "headless-resources-jni-passed",
+    "extractedChecks": "headless-resources-jni-passed",
+    "packagedNativeGui": {
+      "status": "passed; actual packaged GUI/training/core jars and bundled Java runtime, six owner lineages, no training",
+      "helperSource": {
+        "path": "docs/research/brn-successor-cglhw/raw/wave4/seek-packaged-native-51/PackagedSeekProbe.java",
+        "sha256": "2aa2636921fe103536a76f0f58870f3ae9d70c4f0f94bbcb3b9abc2a4c6870bd"
+      },
+      "log": {
+        "path": "docs/research/brn-successor-cglhw/raw/wave4/seek-packaged-native-51/packaged-native.log",
+        "sha256": "ddeef9fc542c417eaba9a8456618d45741e40b2b0944430105d19d19998156c2"
+      },
+      "screenshots": {
+        "seek-packaged-native-51/build/brn-successor-native/W4-BRE-CONTROL-LR001-owner-recipe.png": "a898ec6c6a1d273e0453d2ae42a4c9519698fe383d3f7b15a781567bf581aca8",
+        "seek-packaged-native-51/build/brn-successor-native/W4-BRE-CONTROL-LR001-owner.png": "67375ad948ff5d891e3d05963dbe3c61b08a8f8c2e4f000df553934e137d51fc",
+        "seek-packaged-native-51/build/brn-successor-native/W4-BRE-CONTROL-LR003-owner-recipe.png": "953067993853a74e2ef5def59610158b6c4ff575b858f0b0e9768df6adce5a02",
+        "seek-packaged-native-51/build/brn-successor-native/W4-BRE-CONTROL-LR003-owner.png": "bfc927f58d53e2c70f33052636da050df2fc2907a8fd3da1d8d13a4af24324b9",
+        "seek-packaged-native-51/build/brn-successor-native/W4-RESCUBIC-LR001-owner-recipe.png": "c820a13763fccd97694f796396576946cce53d0646fe930f5f0ec2a7cef65129",
+        "seek-packaged-native-51/build/brn-successor-native/W4-RESCUBIC-LR001-owner.png": "10210c61ea28e4369c8a293027dbcb66964f0f7cf1b737f2757d627251b46eef",
+        "seek-packaged-native-51/build/brn-successor-native/W4-RESCUBIC-LR003-owner-recipe.png": "d3068641efd19eab6fef26df88f11f8111d34b51d5a75bf310af803a432a0305",
+        "seek-packaged-native-51/build/brn-successor-native/W4-RESCUBIC-LR003-owner.png": "e3346e880e725e000cd54648c3ef9d9191b2e22e5b1fe978a9ca867ec43863c9",
+        "seek-packaged-native-51/build/brn-successor-native/W4-RESGATE-LR001-owner-recipe.png": "10a977cc3d2a1a9b7f3f0f27aacd4a7e82eb385f3ef56e90b987087e548c8fa6",
+        "seek-packaged-native-51/build/brn-successor-native/W4-RESGATE-LR001-owner.png": "c28fcd84f57a6e4f3e59e2fe5a0d90c8c83a9d4ce9675f071090e17808b71a09",
+        "seek-packaged-native-51/build/brn-successor-native/W4-RESGATE-LR003-owner-recipe.png": "6a80758341cbd5e6793288fcab4934a50b50e6dd7f616ca6de11b87de4551fd0",
+        "seek-packaged-native-51/build/brn-successor-native/W4-RESGATE-LR003-owner.png": "df80473d2b90fcfee4e07c34917a47d14459e5aff9a0f12fdd56b75b6476d2dd"
+      }
+    },
+    "integrityAfterNativeGui": "passed"
+  },
   "limitations": [
     "No substantive owner training performed; actual Gen33 completion is blocking operational verification.",
     "Source fingerprints retain existing bounded identity semantics, not full-archive hashing.",
     "Optional SEED_TRAINING_SMOKE_SOURCE reader test skipped; explicit actual-owner boundary/oracle test ran.",
     "Failed shell launches seek-repair-01.log and seek-owner-after-01.log happened before repair/test execution; corrected quoted invocations passed."
-  ]
+  ],
+  "implementationCommit": "fc69aeb68e24aeb3374f7d7265414813f6d968c9",
+  "finalPreservationRecheckUtc": "2026-10-20T19:36:44.891107+00:00",
+  "nextHumanAction": "Close build50. Open verified build51; select W4-BRE-CONTROL-LR001; unchanged recipe; Resume Generation33 in ACTIVE session through64. Gen33 completion is blocking operational verification. Then finish other five existing arms through64, one at a time; report completion/failure. G4 remains active."
 }

@@ -214,6 +214,11 @@ Validation is bound by `wave4-seek-remediation.json` and local raw/wave4 evidenc
 - Native Swing loaded all six actual lineages, checked settings and enabled actions,
   and preserved12 screenshots. Failed BRE's visible button is Resume Generation33;
   its session and attempt remain unchanged. No owner training was started.
+- Build51 commit `fc69aeb` passed native Windows packaging, image/archive integrity,
+  extracted-image resource/JNI checks and a second six-lineage native Swing run
+  using the packaged jars and bundled Java runtime. That run asserted embedded
+  build51 and the packaged GUI class location; twelve further screenshots are
+  preserved. Post-GUI package integrity and all817 original-file hashes passed.
 
 Limits: this is real-source boundary and recovery verification, not completion of
 a131072-position generation or the32-generation programme. Source fingerprints
@@ -231,6 +236,11 @@ expressive formulation and the additive control. Use the repaired build51 launch
 ```powershell
 .\app\build\install\seedv6\bin\seedv6.bat gui
 ```
+
+Close any old build50 window first. The verified native build51 executable is
+`dist/windows/candidates/candidate-20261020T193415-78093c22/SeedV6-GUI/SeedV6-GUI.exe`.
+The adjacent ZIP is also verified. Both this native image and the development
+launcher contain the repair; the installed data indexes have already been restored.
 
 Select the six existing names above in Network Training; do not create/import
 replacement lineages. Their settings are already prepared:

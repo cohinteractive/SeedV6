@@ -182,14 +182,19 @@ application. Inspect Git for the closing handoff commit. No push, deployment,
 production-default replacement, finalizer or root journal creation. Root
 CODEXLOG_CURRENT.md was absent; VERSION_STATE remains build50.
 
-The focused G4 seek remediation began clean at d7d7599/build50. It corrects
+The focused G4 seek remediation began clean at d7d7599/build50 and is implemented
+in fc69aeb/build51. It corrects
 continuation navigation inheritance without changing evaluator, optimizer, data
 selection or search policy. The earlier readiness tests used offsets below4096
 and failed to detect the omission; their readiness conclusion was insufficient.
 The new tests cover large inherited offsets, missing/corrupt/uncovered indexes,
 locked repair, exact failed/resumed Adam equality, real source boundary decoding
-and native GUI Resume. Detailed evidence and final build: WAVE4 and the remediation
-manifest. G4 remains active; the frontier and research objective are unchanged.
+and native GUI Resume. Build51's Windows image/archive, extracted-image checks and
+six-lineage Swing verification using its packaged jars/bundled runtime pass.
+Use the exact build51 executable in WAVE4, then Resume the existing failed Gen33.
+Detailed evidence: WAVE4 and the remediation manifest. G4 remains active; the
+frontier and research objective are unchanged. No finalizer, journal creation,
+push or new research wave; no training/tournament remains running.
 
 Raw evidence is local-only under raw/wave1..wave4 and module build paths; a fresh
 checkout lacks it. Verify availability before analysis. Compact tracked manifests
