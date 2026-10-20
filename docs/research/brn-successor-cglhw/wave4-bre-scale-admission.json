@@ -1,0 +1,18 @@
+{
+  "id": "wave4-bre-scale-admission-v1",
+  "createdUtc": "2026-10-20T23:06:40.520368+00:00",
+  "plans": {
+    "wave4-bre-scale-node-LR001-plan.json": "b0d00ee760a903ac3e37565a976e2bdaabbda244a6a1f66e0e85a4ce42caa2e5",
+    "wave4-bre-scale-clock-LR001-plan.json": "a25cf0c4ce521bf1112d8b5e7e074396edf3d20b2077c25b45cdb4b842ef92cf",
+    "wave4-bre-scale-node-LR003-plan.json": "9dbac93860a3f2e84271d3818530470c8f5c7368fbafffa859d5f68736b7f8a6",
+    "wave4-bre-scale-clock-LR003-plan.json": "941dffd0e4644d361ba809fe2a25619ba5f9911c1bfd8906235ce0147c00f0e5"
+  },
+  "runtime": "wave4-average-runtime.json",
+  "games": 64,
+  "question": "Does the W4 trained BRE endpoint prefer full or half continuation in chess? Prediction calibration and earlier W3 findings are not sufficient to assume the W4 half-scale control is reasonably optimized.",
+  "selection": "Both rates, exact Gen64 endpoints, full versus its own half interpolation; no full-scale W4 BRE match outcomes used. Same eight development pairs as the direct residual screens.",
+  "protocol": "Four fixed16-game plans,32768nodes or100ms per move. One game, one worker, no pondering,64MiB TT,768MiB heap,ActiveProcessorCount1,BelowNormal;12games/240seconds per launch.",
+  "stopping": "Complete each fixed plan; failures investigated, never counted as draws. No significance or confirmation stopping.",
+  "sequence": "After the already admitted direct-clock and selected residual-full-clock screens, before claiming any expressive advantage over optimized BRE continuation.",
+  "limitations": "Small reused development openings. Calibration control only, not independent confirmation or an exhaustive search of BRE settings. No training or owner-store writes."
+}

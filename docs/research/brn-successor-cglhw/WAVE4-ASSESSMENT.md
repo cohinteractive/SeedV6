@@ -471,3 +471,24 @@ zero-correction and search cases. Actual-component cache/search/cost and predict
 oracles, loader tests and strength admission remain pending. Do not treat a
 correction codec hash as the identity of the combined function: bind both component
 payloads, scales and mapping. No new human training gate is justified yet.
+
+
+One remaining control gap is now explicitly admitted: full-versus-half continuation
+for both actual BRE Gen64 endpoints,16 games/rate at nodes and16 at time (64 total).
+The observed residual calibration reversals make it unsafe to assume the earlier
+W3 preference or W4 prediction loss identifies the strongest BRE calibration.
+`wave4-bre-scale-admission.json` fixes these small development comparisons before
+any full-scale W4 BRE results. They follow the original clock protocols and use the
+unchanged averaging runtime; no new architecture or training is involved. They
+must inform later hybrid comparisons, so a weakly calibrated additive control is
+not mistaken for evidence of expressive value.
+
+
+The direct LR001 clock plan is CLOSED:96 games,13113 independently replayed legal
+moves, no failures/caps/fallbacks. Scores versus the BRE001 half endpoint are
+GATE00121.875%,GATE00343.75%,CUBIC00146.875%,CUBIC00331.25%,BRE001 mean53.125%,
+Gen3225%. The corresponding low-rate residual node scores were62.5/75%.
+This strengthens the inference-cost concern without proving the expressive signal
+is useless. Only eight pairs per comparison, opening sensitivity and selection
+remain material. Finish the other fixed protocols; no favourable stopping or
+post-hoc confirmation follows. Exact evidence: wave4-direct-clock-LR001-results.json.

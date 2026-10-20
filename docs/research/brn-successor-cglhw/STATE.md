@@ -139,8 +139,10 @@ and excluded from strength counts. See direct results and orientation records.
 Direct-full-node and both pruned node plans are CLOSED. Full scale materially
 changes the LR003 node ranking; full cubic pruning loses its encouraging prediction
 advantage in chess. See WAVE4-ASSESSMENT and the exact result manifests.
-Current active plan: direct-clock-LR001 (batches05..08), then direct-clock-LR003
-and the separately admitted32 full-clock games. Use
+Direct-clock-LR001 is CLOSED:96games/13113 legal moves, no failures/caps/fallbacks.
+GATE00121.875%,CUBIC00146.875% versus BRE001 half under time, despite62.5/75%
+at nodes. Inference cost remains material; no architectural rejection follows.
+Next match plan: direct-clock-LR003, then the separately admitted32 full-clock games. Use
 wave4-average-runtime.json. See wave4-direct-admission.json; fixed448-game budget.
 Also admitted:64 rank4-vs-rank16 node games, full/half, after13 tests and actual
 masked score/search oracles pass. Use wave4-pruned-admission.json and the separate
@@ -234,3 +236,8 @@ be bound; no combined optimizer/checkpoint is implied. No hybrid games are yet
 admitted and no new substantial training is authorized. Pending core changes may
 qualify the next application build commit after validation; build51 is still the
 last committed identity. Existing protocols continue using their frozen jars.
+
+Before any architectural superiority claim, also finish the newly admitted64 BRE
+full-versus-half calibration games (both rates, nodes/time), after the pending
+clock screens. See wave4-bre-scale-admission.json. Earlier W3 preference and W4
+prediction loss do not establish the strongest W4 BRE chess calibration.
