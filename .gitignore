@@ -61,6 +61,8 @@ desktop.ini
 !/docs/research/search/sr021-phase2-2026-10-15/confirmation-w[14]-protocol-*.pgn
 # Frozen W3 development INPUT; generated game PGNs remain ignored.
 !/docs/research/brn-successor-cglhw/wave3-fair-control-openings.pgn
+# Frozen W4 development INPUT; match output remains under ignored raw/.
+!/docs/research/brn-successor-cglhw/wave4-development-openings.pgn
 
 # Generated Search observations; retain JSON summaries, manifests and configs,
 # compact integrity/oracle/witness JSONL, and analytical CSV/TSV tables.

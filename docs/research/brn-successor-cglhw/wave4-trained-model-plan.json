@@ -1,0 +1,232 @@
+{
+  "id": "wave4-trained-models-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/Gen32",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    },
+    {
+      "name": "W4-RESGATE-LR001-g32",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESGATE-LR001-g32",
+      "checkpoint": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d",
+      "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+      "gatedDeltaCache": true
+    },
+    {
+      "name": "W4-RESGATE-LR001-g40",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESGATE-LR001-g40",
+      "checkpoint": "g000040-s000327680-7ef877ea2f4fcc72917ce219032bae53bcd87514165af1b7f7c31f381b21341d",
+      "networkSha256": "8120b4a135cb332f014f2b36805c2adac98d5b3e2707f403e0ff8e3094e73ab5",
+      "gatedDeltaCache": true
+    },
+    {
+      "name": "W4-RESGATE-LR001-g48",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESGATE-LR001-g48",
+      "checkpoint": "g000048-s000393216-d73a063660e4fa7039baa35a9dea43a2870f53ecd50a99f8a8e7a1baa0589550",
+      "networkSha256": "0988a9f3f258266e8cf162e770c36d409b936a78e4ce81ad45dc39c711fa9ae4",
+      "gatedDeltaCache": true
+    },
+    {
+      "name": "W4-RESGATE-LR001-g56",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESGATE-LR001-g56",
+      "checkpoint": "g000056-s000458752-312b970c7114ee84f53d8ee85c67e4213e78e30be69e061ea41d00ac2749812c",
+      "networkSha256": "596d74fb6aa199ba63ee5f24d0ae60ca6b3b586556198587f052f37fbc60d59f",
+      "gatedDeltaCache": true
+    },
+    {
+      "name": "W4-RESGATE-LR001-g63",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESGATE-LR001-g63",
+      "checkpoint": "g000063-s000516096-363b208509b37269f3978ee180cc786184ab620bfd79fe7ae501cca6b3df9207",
+      "networkSha256": "b26f0b79c9a48e63fdf661e9e661453f416859d8948617a84f82563e3175a0ab",
+      "gatedDeltaCache": true
+    },
+    {
+      "name": "W4-RESGATE-LR001-g64",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESGATE-LR001-g64",
+      "checkpoint": "g000064-s000524288-bd455415c07f597ff1d815ef3fef0994f6900d761789574e971ef5a347c2ad8d",
+      "networkSha256": "c455f68516c22d34033b29da34f6eb4d80d07a8e698507fbe3ee240a0dc25f62",
+      "gatedDeltaCache": true
+    },
+    {
+      "name": "W4-RESGATE-LR003-g32",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESGATE-LR003-g32",
+      "checkpoint": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d",
+      "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+      "gatedDeltaCache": true
+    },
+    {
+      "name": "W4-RESGATE-LR003-g40",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESGATE-LR003-g40",
+      "checkpoint": "g000040-s000327680-c0f196b08797ae0c3bb62c10a07afc791c5807ad1d3c99079a152c8c7109c093",
+      "networkSha256": "092431ed1baa14122890dd6fa6a13be9d147274e83513f36260b477f0a5fc1c3",
+      "gatedDeltaCache": true
+    },
+    {
+      "name": "W4-RESGATE-LR003-g48",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESGATE-LR003-g48",
+      "checkpoint": "g000048-s000393216-31ed30a0a1ac54b785e0864d9cc39c8d155bca11146c79e36852e58091b32d06",
+      "networkSha256": "888bc09eed507799afa7fc12580f42b9f37e9eafb73ddb43d707465395b34025",
+      "gatedDeltaCache": true
+    },
+    {
+      "name": "W4-RESGATE-LR003-g56",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESGATE-LR003-g56",
+      "checkpoint": "g000056-s000458752-e124041d67b12bae2339663dd49651e5c09c6777000c7737a049ad1f51267aed",
+      "networkSha256": "380a2f8b192e22e827db5a893d2c45f2b268d8ba41cbb386f5f7792e23500604",
+      "gatedDeltaCache": true
+    },
+    {
+      "name": "W4-RESGATE-LR003-g64",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESGATE-LR003-g64",
+      "checkpoint": "g000064-s000524288-c4a19e81755089d2a7a0e3904dd81347db96eda02dad7c4d3aedec5d630fb044",
+      "networkSha256": "f98aadffa26dafd5f5ec2f2947526e082c7b26f6979dd77be61b7f11a2fa7baf",
+      "gatedDeltaCache": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g32",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESCUBIC-LR001-g32",
+      "checkpoint": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf",
+      "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g40",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESCUBIC-LR001-g40",
+      "checkpoint": "g000040-s000327680-0f09e4a16bea49874e4c1444935d35fc87d69dc9a8e63cce39242156dcf59121",
+      "networkSha256": "4db2fda08719de5f39567ac1a1b9a433f5bc599014df2446e0088b48c9855128",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g48",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESCUBIC-LR001-g48",
+      "checkpoint": "g000048-s000393216-3bf2586cce57ab6d7491fea8b9e8463c20ad0670905befdd22ec4f1ba67d454c",
+      "networkSha256": "df40d668fea50ef8dbc77f363adcfafbcbb3be5bf3e157da17ad3af747490f27",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g56",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESCUBIC-LR001-g56",
+      "checkpoint": "g000056-s000458752-d8a039ca155287d8ed1223e3a9b54e78ca8edea2fa66ec5ae625b85e259e5186",
+      "networkSha256": "2b10686505798d62710cd4d5d9ca1ce72bbf5a4b3ef524800f666e5de6699e49",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g63",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESCUBIC-LR001-g63",
+      "checkpoint": "g000063-s000516096-3f2c7a050f1b185025eeb55a0ef44b7e31c133c30f6ece8e338c91813a1a4902",
+      "networkSha256": "0c1787f3b217e4175a065789ef6228190ed315e6bf0947998464d78302abd2fc",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g64",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESCUBIC-LR001-g64",
+      "checkpoint": "g000064-s000524288-452b71fa8b42d6da3a6ec06e6991d08ff4adcd4cc7d4a88a7c8228fc5c36b75f",
+      "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g32",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESCUBIC-LR003-g32",
+      "checkpoint": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf",
+      "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g40",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESCUBIC-LR003-g40",
+      "checkpoint": "g000040-s000327680-f1db1185e174f87a025c0b166964f5fdd7a7b2c55205499a1a5ebd8f2df5ad7b",
+      "networkSha256": "fdaf11fad536e6215e62b19cd0874f7af1a1bf5f1d1c4b0a6b1b90285564d58d",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g48",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESCUBIC-LR003-g48",
+      "checkpoint": "g000048-s000393216-3d2a13f3f4d37de2e8e673b113ae25a233e5162935856afb15bc97ab24d2318d",
+      "networkSha256": "eb157bef25afecaf36b3a7327da4996b659365812f70d44c7440f5bb679f8924",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g56",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESCUBIC-LR003-g56",
+      "checkpoint": "g000056-s000458752-e7014c17ffb5c2223dd0a7dcee7d92b4967015005567e87100cc918cd2eb2d2b",
+      "networkSha256": "5d11e69afe0f0ff9733ac9fc3ffe1d7d4664314d49e41412754760e2957d06ac",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g63",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESCUBIC-LR003-g63",
+      "checkpoint": "g000063-s000516096-20f05fb4a8e00abf9592091a99858d7c18c08ae06e2edb5faeb05b7cf1bf4e75",
+      "networkSha256": "149850f9e757cc0bcd2c45a31b9ad9f2e86979e4cf14445e95bce3173fec5412",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g64",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESCUBIC-LR003-g64",
+      "checkpoint": "g000064-s000524288-5982ea47c1d2bd88f049fa13c2b4b16eebe75ef919dfca18aad7d7fd673e4c66",
+      "networkSha256": "cfa37ddd14e461546de266d622ded7ebdeea240b4c90274c269d2ffbd5be8901",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g32",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g32",
+      "checkpoint": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+      "networkSha256": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g40",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g40",
+      "checkpoint": "g000040-s002080768-415c1498e320efd228adaba7aa9cca4de24f2f85124a1ae5b3c007d9adb55360",
+      "networkSha256": "d0e2d8a830ecbe9725b94b31ee50d043d713cb5eaa5bc24b42ec1d9f02dd115a"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g48",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g48",
+      "checkpoint": "g000048-s002146304-9ec332d1de08494ebaf4e052a860c0cce1ab14471abd67e013cd7d29412a425b",
+      "networkSha256": "6220a41b66976d4d63f978ba50ee12bb3f961fa68e2c3b3996c489c298ca1842"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g56",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g56",
+      "checkpoint": "g000056-s002211840-0ae51c45fb5854d8ce19d177b0742d64f1928ac58b7df903d6b9e616955f0fc3",
+      "networkSha256": "197b42836c00aea313094bd3b328493c2c59f655366a36f1cfa5ad0b8a1e3541"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g64",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g64",
+      "checkpoint": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+      "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g32",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR003-g32",
+      "checkpoint": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+      "networkSha256": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g40",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR003-g40",
+      "checkpoint": "g000040-s002080768-b7a3c931ce2933f940a8a094ea081627d398c7a2b41a48f2da93579ef6680fdd",
+      "networkSha256": "b563ea82f9cc9292db7130b3213368d7925c7bd2eea7497432861b1c8d4b34a5"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g48",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR003-g48",
+      "checkpoint": "g000048-s002146304-75a33b8eb11f8f61bdb86d9bb96a6d4120cde8c25bc4636e8340468777403973",
+      "networkSha256": "61910f3490b0ad1408f61c6c8259200ea47b78a766093c2ed9164ea1add44532"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g56",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR003-g56",
+      "checkpoint": "g000056-s002211840-758821a3198cc5dc85f5279dd6f3a0cacd0c76b668e502b758f6b7f435cf251d",
+      "networkSha256": "cd2e2a9d81b1ec45e9338a84eacc1c4f57bc68bab69fba88d0268969a064b149"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g64",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR003-g64",
+      "checkpoint": "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1",
+      "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050"
+    }
+  ]
+}

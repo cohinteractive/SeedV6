@@ -1,0 +1,77 @@
+{
+  "id": "wave4-training-validation-v1",
+  "liveFilesUnchanged": 1405,
+  "codecCheckpointPairs": 199,
+  "newHistoryRecords": 192,
+  "residualRawParityMaximum": 0.0,
+  "cacheReports": {
+    "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESCUBIC-LR001-g63.json": {
+      "sha256": "0e17bc578b27a929d338ed9a1ff915674171d0495c07a6aa5d2130e60456021c",
+      "positions": 6333,
+      "pairedSearches": 48,
+      "maximumRawError": 2.1649348980190553e-15,
+      "combinedPayloadBytes": 899816,
+      "combinedImmutablePrimitiveBytes": 904400,
+      "accumulatorPrimitiveBytes": 4329
+    },
+    "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESCUBIC-LR001-g64.json": {
+      "sha256": "ccd52df9fe7ad1700322ca0caab132099b5aac9ccda2fb2b4194b630e96a3b39",
+      "positions": 6333,
+      "pairedSearches": 48,
+      "maximumRawError": 4.440892098500626e-15,
+      "combinedPayloadBytes": 899816,
+      "combinedImmutablePrimitiveBytes": 904400,
+      "accumulatorPrimitiveBytes": 4329
+    },
+    "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESCUBIC-LR003-g63.json": {
+      "sha256": "6ade5c1b6e552e9f888171f6519fd6856cc5d1ef22ceebe98c1b594895f0eae2",
+      "positions": 6333,
+      "pairedSearches": 48,
+      "maximumRawError": 3.1086244689504383e-15,
+      "combinedPayloadBytes": 899816,
+      "combinedImmutablePrimitiveBytes": 904400,
+      "accumulatorPrimitiveBytes": 4329
+    },
+    "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESCUBIC-LR003-g64.json": {
+      "sha256": "fa9371e1e6eb915e4109227287dd5cc16be37942797ae1fda007498ef7548fb9",
+      "positions": 6333,
+      "pairedSearches": 48,
+      "maximumRawError": 3.1086244689504383e-15,
+      "combinedPayloadBytes": 899816,
+      "combinedImmutablePrimitiveBytes": 904400,
+      "accumulatorPrimitiveBytes": 4329
+    },
+    "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESGATE-LR001-g63.json": {
+      "sha256": "42ba0ffd74776af56ca710bac8fc5870de2d36324d4246bce5181017bb370a9e",
+      "positions": 6333,
+      "pairedSearches": 48,
+      "maximumRawError": 3.9968028886505635e-15,
+      "combinedPayloadBytes": 847496,
+      "combinedImmutablePrimitiveBytes": 852080,
+      "accumulatorPrimitiveBytes": 6341
+    },
+    "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESGATE-LR001-g64.json": {
+      "sha256": "85c4992a7184fba7de144d2f156c176ca258f737baf1c1af7a6abd82f3be830f",
+      "positions": 6333,
+      "pairedSearches": 48,
+      "maximumRawError": 7.105427357601002e-15,
+      "combinedPayloadBytes": 847496,
+      "combinedImmutablePrimitiveBytes": 852080,
+      "accumulatorPrimitiveBytes": 6341
+    },
+    "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESGATE-LR003-g64.json": {
+      "sha256": "f967ecd820b39f738c1da1c72b0d5ae3ff1d89302fd72d6754e3eab81906b9bd",
+      "positions": 6333,
+      "pairedSearches": 48,
+      "maximumRawError": 8.881784197001252e-15,
+      "combinedPayloadBytes": 847496,
+      "combinedImmutablePrimitiveBytes": 852080,
+      "accumulatorPrimitiveBytes": 6341
+    }
+  },
+  "limitations": [
+    "No substantive training replay. User session evidence plus prior continuation tests establish readiness.",
+    "Some early cache timing overlapped bounded Python calibration; timing not used as uncontended cost evidence."
+  ],
+  "nativeGui": "Not rerun: no GUI/runtime changes and the user completed all six actual sessions."
+}

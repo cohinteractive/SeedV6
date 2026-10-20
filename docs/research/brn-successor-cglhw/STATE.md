@@ -1,10 +1,9 @@
 # BRN successor workstream state
 
-Updated21 October2026. **G3 and its admitted Wave3 assessment are complete.
-G4 remains active. The first Gen33 attempt failed because continuation preparation
-omitted inherited seek indexes. All six lineages have been repaired and verified;
-human Resume/completion is blocking the next research decision.
-No programme success is claimed.** This remains the original CGLHW.
+Updated21 October2026. **G4 is complete and verified. All six arms reached64,
+with exact expected continuation and preserved starting payloads. Wave4 trained
+assessment is active; no programme success is claimed.** This remains the original
+CGLHW. Current evidence/protocol: [WAVE4-ASSESSMENT](WAVE4-ASSESSMENT.md).
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
 [completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md), and [current G4 training gate](WAVE4.md).
 
@@ -23,9 +22,9 @@ search. Architectural complexity or lower validation loss alone is insufficient.
 | W3-RESGATE | BRN-GEN32-GATED/e6b6775d-39cd-392b-bd18-5e964a445f62, latest/Best32, frozen Gen32 plus trained gated correction |
 | W3-RESCUBIC | BRN-GEN32-CUBIC/22b42be6-15c4-3f36-a376-3776aa1931f2, latest32/Best31, frozen Gen32 plus trained cubic correction |
 | W3-BRE-CONTROL | BRN-Pair2/ed0750a3-3163-3979-9f26-2e466c49c771, latest/Best32,262144 added updates from exact Gen32 clone |
-| W4-RESGATE-LR001 / LR003 | Exact W3 latest32 continuations; omitted seek indexes repaired; no training sessions |
-| W4-RESCUBIC-LR001 / LR003 | Exact W3 latest32 continuations; seek repaired; no sessions; W3 Best31 preserved |
-| W4-BRE-CONTROL-LR001 / LR003 | Seek repaired; LR001 has resumable Gen33 attempt/ACTIVE budget through64, no durable updates; LR003 not started |
+| W4-RESGATE-LR001 / LR003 | Completed64; LR001 Best63, LR003 Best64; exact W3 latest32 ancestry |
+| W4-RESCUBIC-LR001 / LR003 | Completed64; both Best63; exact W3 latest32 ancestry; W3 Best31 preserved |
+| W4-BRE-CONTROL-LR001 / LR003 | Both completed64 and Best64; original failed LR001 session successfully resumed |
 
 All managed roots are under E:/SeedV6-Networks. Exact checkpoint IDs, hashes and
 sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`, `wave3-trained-checkpoints.json`, `wave4-owner-readiness.json`. Frozen reference
@@ -76,8 +75,9 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
 8. **G4 admitted.** Exact-state .001/.003 continuation in six new GUI lineages
    tests rate versus additional exposure, retaining both expressive families and
    additive controls. Bounded optimizer diagnostics support this intervention;
-   they do not establish an optimal rate or guarantee improvement. Training is
-   the next missing discriminating evidence. See WAVE4 for exact settings/gate.
+   they do not establish an optimal rate or guarantee improvement. G4 is verified complete. Lower rate improves same-data held-out loss in32/32
+   residual generations and31/32 BRE generations, with lower training fit at.001.
+   This is an optimization result, not strength. See WAVE4-ASSESSMENT.
 9. **Deferred.** Further calibration/normalization, selective feature/attack/blocker
    formulations, more efficient corrections, distillation or new architecture remain
    options if evidence warrants. Do not mechanically exhaust old architecture lists
@@ -85,51 +85,23 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
 
 ## Current action and exact resume point
 
-**Human actions required after this prompt: Blocking: perform G4 GUI training in
-all six prepared W4 lineages and report completion or failure.** This blocks
-trained-W4 comparison and the next architecture/strength decision. No other human
-action is required. Do not infer completion from a later invocation.
+**Human actions required after this prompt: None.** G4 was satisfied by the owner
+report and persisted verification, not merely a later invocation. Do not repeat G4
+or follow historical Gen33 Resume instructions. Preserve all six live roots.
 
-Read [WAVE4](WAVE4.md), `wave4-seek-remediation.json` and the historical
-`wave4-owner-readiness.json`. **First resume W4-BRE-CONTROL-LR001 using
-Resume Generation33, unchanged settings and existing session.** Its32-additional
-budget still ends at64. Do not restart/import/reset the lineage. Actual Gen33
-completion remains the blocking operational check; no substantive owner training
-was run by Codex. All six actual lineages
-were created and verified, including native GUI controls and screenshots. They
-start at accepted generation32 with exact W3 latest32 weights/Adam state and copied
-source progress. New bootstrap IDs differ from original W3 IDs; do not infer them
-from generation labels. Latest and Best both currently point to their bootstrap.
-The GUI correctly reports0 newly completed generations and next33. LR001 BRE's
-failed worker left an INCREMENTAL attempt and ACTIVE session, but no partial
-optimizer, Gen33 checkpoint, reservation or history. Its reported508 updates were
-provisional; ordinary Resume reacquires Gen33 from the unchanged Gen32 Adam state.
-The other five roots still have no session/attempt. All817 pre-repair files in
-the six W4 roots, three W3 roots and frozen Gen32 checkpoint remain byte-identical;
-the repair added only six source-bound CP seek indexes (986602 bytes).
-
-Each requires32 additional generations through64, one lineage at a time: LR001
-uses.001, LR003 uses.003; batch128,8epochs,seed1,one worker,131072 training positions,
-held-out WDL, existing half BT4/half CP selection. Leave inherited-rate checkbox
-unchecked. Full prerequisites, resume arithmetic, preservation and evidence
-requirements are in WAVE4; do not manually recreate/import these lineages.
-
-After the owner reports readiness:
-1. Inspect current Git/governance and local evidence; verify actual histories,
-   sessions, latest/Best IDs, immutable origins, steps, settings and cursor ranges.
-   Expected new generations33..64,262144 added updates/arm. Expected final steps
-   524288 for residuals and2277376 for BRE. Early stops remain explicit.
-2. Freeze actual selected endpoints separately from live lineages. Check parity,
-   calibration and learning trajectories; compare .001 versus .003 within family.
-   Do not silently substitute Best, reset Adam or ignore missing controls.
-3. Admit the next bounded development protocols only after those checks. Compare
-   against frozen Gen32 and appropriately continued BRE, including calibration
-   controls, fixed nodes/time, cost and nonlinear ablations where useful. Research
-   delta caches remain explicit paths; GUI Arena timing is not a decisive gate.
-4. If a positive practical case emerges, predeclare genuinely independent
-   confirmation with opening dependence, candidate selection, multiplicity and
-   stopping handled. Reserved confirmation partition1 remains unused. Otherwise
-   adapt the same frontier using evidence; no fixed wave limit or automatic rejection.
+Current unit: execute the prospective Wave4 development assessment in
+WAVE4-ASSESSMENT. Audit/freeze/parity/calibration are complete. The model plan binds
+nine distinct Latest/Best endpoints; Best63 differs from Latest64 in three residual
+arms. Both continued BRE rates are mandatory controls. Fixed-node primary288 games
+and preselected-Best100ms192 games are admitted on sixteen fresh development roots.
+Exact plans: `wave4-primary-node-plan.json`, `wave4-primary-clock-plan.json`;
+runtime: `wave4-trained-runtime.json`; evidence under `raw/wave4`.
+Resume only the active immutable plans/receipts, inspecting errors and batch limits;
+never enlarge closed W3 protocols. Then analyze rate, Best/latest, inference cost and
+common-opponent differences; admit focused direct comparisons against both trained
+BRE controls and mechanism/calibration diagnostics as warranted. Fresh confirmation
+partition1 remains unused. No architecture decision or further training is inferred
+from loss or an initial equal-time defeat.
 
 All admitted W3 protocols are closed:1152 strength-screen games and153189
 independently replayed moves. Primary320, calibration320, fresh-node192 and fresh
@@ -141,10 +113,8 @@ opening-family intervals. Full results: `wave3-primary-results.json`,
 `wave3-calibration-results.json`, `wave3-fair-control-node-results.json`,
 `wave3-clock-results.json`.
 
-No tournament, probe or autonomous training is running or queued. The owned
-`build/research/brn-successor-batches.pause` sentinel prevents accidental batch
-admission during G4. Remove it only when new evidence/plans justify resumed games;
-never resume or enlarge a closed W3 protocol. Future tournaments remain one game,
+The G4 pause sentinel may be removed after the new immutable plans are recorded.
+Wave4 assessment is active; no autonomous training is admitted. Tournaments remain one game,
 one worker/engine,no pondering,64MiB TT,768MiB JVM,ActiveProcessorCount1,
 BelowNormal,12games/240seconds per batch, finishing the current game. No competing
 heavy jobs or substantive Codex training.
@@ -191,14 +161,13 @@ The new tests cover large inherited offsets, missing/corrupt/uncovered indexes,
 locked repair, exact failed/resumed Adam equality, real source boundary decoding
 and native GUI Resume. Build51's Windows image/archive, extracted-image checks and
 six-lineage Swing verification using its packaged jars/bundled runtime pass.
-Use the exact build51 executable in WAVE4, then Resume the existing failed Gen33.
-Detailed evidence: WAVE4 and the remediation manifest. G4 remains active; the
-frontier and research objective are unchanged. No finalizer, journal creation,
+The owner successfully completed training with the repair. Detailed historical
+evidence: WAVE4 and the remediation manifest. G4 is complete; the research
+objective is unchanged. No finalizer, journal creation,
 push or new research wave; no training/tournament remains running.
 
 Raw evidence is local-only under raw/wave1..wave4 and module build paths; a fresh
 checkout lacks it. Verify availability before analysis. Compact tracked manifests
 bind local reports, exact configurations, hashes and limitations. Preserve all
 negative/failed/frozen evidence. A completed turn or implementation is not programme
-success, adoption or user acceptance. The next admissible dependent action is
-verification of evidenced G4 training completion, not another unchanged W3 match.
+success, adoption or user acceptance. The next admissible action is the active trained-W4 assessment above.

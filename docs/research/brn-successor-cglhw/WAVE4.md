@@ -2,10 +2,13 @@
 
 21 October2026. Part of the existing BRN successor CGLHW; [STATE](STATE.md) and
 [CONTRACT](CONTRACT.md) govern. Preparation was verified on isolated fixtures.
-**G4 remains active and blocking trained-candidate research.** The first human
-Gen33 attempt exposed omitted seek metadata in all six continuations. The focused
-repair below supersedes the original readiness conclusion. All six indexes are
-now restored; actual Gen33 completion remains a human verification boundary.
+**G4 is complete and verified.** The owner completed all six arms through64.
+The post-training audit verifies32 new generations and262144 additional Adam
+updates per arm, exact starting payloads and uninterrupted parent chains. See
+[trained assessment](WAVE4-ASSESSMENT.md) and `wave4-trained-checkpoints.json`.
+The first human Gen33 attempt exposed omitted seek metadata in all six continuations;
+the repair and original human instructions below are retained as historical evidence.
+The repaired BRE-LR001 session has now completed its original budget successfully.
 No substantive training has been performed by Codex.
 
 ## Question and controls
@@ -228,7 +231,7 @@ test above ran. Initial command-launch failures (unquoted dotted PowerShell opti
 occurred before Java repair/test execution and remain in the evidence; corrected
 quoted commands passed. No source/optimizer repair was needed for those failures.
 
-## Human training gate G4
+## Human training gate G4 (completed; historical instructions)
 
 Purpose: distinguish additional exposure from a lower learning rate for each
 expressive formulation and the additive control. Use the repaired build51 launcher:
@@ -298,8 +301,8 @@ effects against frozen Gen32 and the corresponding continued BRE controls. Keep
 fresh independent confirmation, selection/multiplicity/stopping rules, nonlinear
 ablations and practical costs separate from development selection.
 
-**Human actions required after this prompt: Blocking: perform G4 GUI training and
-report completion or failure.** This blocks trained-W4 comparison and the next
-architecture/strength decision. No other human action is required. All W3 protocols
-are closed; no tournament or autonomous training remains running or queued.
-Programme success, adoption and final user acceptance remain unestablished.
+The former blocking action was completion of G4 GUI training. It was fulfilled by
+the owner's report and the persisted-evidence audit on21 October2026. Do not repeat
+training or use the historical Resume instructions above. Assessment now proceeds
+under WAVE4-ASSESSMENT and STATE. Programme success, adoption and final user
+acceptance remain unestablished.

@@ -1,0 +1,40 @@
+{
+  "id": "brn-wave4-post-training-audit-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304"
+    },
+    {
+      "name": "W4-RESGATE-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\9d2412de-8563-35f3-b520-ef41e610a098",
+      "initialCheckpoint": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d"
+    },
+    {
+      "name": "W4-RESGATE-LR003",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\77dad574-34c1-3639-b827-0127fcab4fb2",
+      "initialCheckpoint": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d"
+    },
+    {
+      "name": "W4-RESCUBIC-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\4e693253-bfdd-38b1-b8e2-be30ac620568",
+      "initialCheckpoint": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf"
+    },
+    {
+      "name": "W4-RESCUBIC-LR003",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\6b995953-5bc1-3b7b-bae2-eaf7a5377d9a",
+      "initialCheckpoint": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\d1a2e220-c1a0-3953-ad2c-2e001af93e7d",
+      "initialCheckpoint": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\819e0f58-6726-3479-8709-bfa7079ad2d0",
+      "initialCheckpoint": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233"
+    }
+  ]
+}

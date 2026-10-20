@@ -1,0 +1,1432 @@
+{
+  "id": "wave4-frozen-v1",
+  "frozenRoot": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01",
+  "bindings": [
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000000-s000000000-662d11672650fca616debf4adf3c45f397618b3708d1728377265013640b95d4",
+        "generation": 0,
+        "optimizerStep": 0,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 795032,
+        "networkSha256": "189989020bf622cb900984e804b61a2efd06e58b672c8cb561df50bd5c96af58",
+        "trainingBytes": 2731424,
+        "trainingSha256": "4a3df1c3694e7c2ac5cc0d6e56c4ba5859301b64ce37ea332e49768158b46fe6",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "cf07f5ff2dc0db2e9a89afcf66b7284b02b933c2da0af9345745a98ea29dd2f6",
+        "network.brn-pair2": "189989020bf622cb900984e804b61a2efd06e58b672c8cb561df50bd5c96af58",
+        "training-metadata.bin": "147beafd64d86cb58faa2e9c66f057daab57f4c6d235f0c3fbf18efcf42da8c2",
+        "training.state": "4a3df1c3694e7c2ac5cc0d6e56c4ba5859301b64ce37ea332e49768158b46fe6"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000001-s000065536-ed60290a91f9bfdb6a5c3a303bdd739b290b3fbf3882cd7606da0c4f577c3062",
+        "generation": 1,
+        "optimizerStep": 65536,
+        "trainingDepth": 4,
+        "parentId": "g000000-s000000000-662d11672650fca616debf4adf3c45f397618b3708d1728377265013640b95d4",
+        "networkBytes": 795032,
+        "networkSha256": "63c0b40ba02b4751080825ac0c10a0349e437335749256f30e0e32137b1bdecc",
+        "trainingBytes": 2731424,
+        "trainingSha256": "51c46213973dde8906ac7af5664b1711bfa4d98992160768ef8e3c6d625f5f72",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "26cf33e63f4a1a01736a4f441d933457f75103063d3b2ea97a3f4513c203c6c4",
+        "network.brn-pair2": "63c0b40ba02b4751080825ac0c10a0349e437335749256f30e0e32137b1bdecc",
+        "training-metadata.bin": "8d591c7e9c8b7b9e6e61306241f4f0a8a44929e47dcdfa5a0fe497b5f4200f81",
+        "training.state": "51c46213973dde8906ac7af5664b1711bfa4d98992160768ef8e3c6d625f5f72"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000002-s000131072-2825ce76d148b5f0c47f3a453c52acfa1e5c16fd9afba5370ee7f9970ea11940",
+        "generation": 2,
+        "optimizerStep": 131072,
+        "trainingDepth": 4,
+        "parentId": "g000001-s000065536-ed60290a91f9bfdb6a5c3a303bdd739b290b3fbf3882cd7606da0c4f577c3062",
+        "networkBytes": 795032,
+        "networkSha256": "98d61cff46955822e9c16afd5c5414a6bac4debabb8b819a32cb70ab23336afe",
+        "trainingBytes": 2731424,
+        "trainingSha256": "2bb730a3ec5ce93884e3a50d5515be339c20dd6f0aa61aab6b5a0f9d959d32f7",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "83327224c4b5aa0192ce6f6a800231a5024f4ab098241a790138b130d098bd2d",
+        "payload-pruned.bin": "517208176b36d93d17c1c85cbfb3a95f3e517be60f964d73f9e539fd69ab3449",
+        "training-metadata.bin": "d9f0f7a70a61ab6240c3fb2982beca26fbc2565cafe87fd4b4b8f744669c424c"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000003-s000196608-33796f572bb179e14ef987d0e212666f241e9e090029bae6c9a3bb537e4f86b9",
+        "generation": 3,
+        "optimizerStep": 196608,
+        "trainingDepth": 4,
+        "parentId": "g000002-s000131072-2825ce76d148b5f0c47f3a453c52acfa1e5c16fd9afba5370ee7f9970ea11940",
+        "networkBytes": 795032,
+        "networkSha256": "e8292e92f31e392c644e4820e01f7e12702ac50f67461176849c1ab607837a7e",
+        "trainingBytes": 2731424,
+        "trainingSha256": "9578f21eecc0a881e4a6ee36da5972484ca8b99d7f40e7788b137d549229a9ca",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "ace7671ca2e6700b942e5d9d312e648fd259df45b537c58c69aaf6da6e952c1f",
+        "payload-pruned.bin": "f9a6a3d0b6245e9c3470027cff19c8cd0ccdc5ec1352708cc237ff87f49487d9",
+        "training-metadata.bin": "bd8483f11c40dfee27cb029b7ad7b39b7a09321774e93cd10397f6c0d22e5720"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000004-s000262144-c046270428ee1933aaf0406ee7fe4c9cab6c0a78664c9e999f9dc13aa715c9ba",
+        "generation": 4,
+        "optimizerStep": 262144,
+        "trainingDepth": 4,
+        "parentId": "g000003-s000196608-33796f572bb179e14ef987d0e212666f241e9e090029bae6c9a3bb537e4f86b9",
+        "networkBytes": 795032,
+        "networkSha256": "3b1fdc75296dbfe0a3d02a1e378f72902a6b788c8ccd1871a2bbcc06b88588fc",
+        "trainingBytes": 2731424,
+        "trainingSha256": "483bedf7c6f6e8cbd6b83a4a5bc65ada5ec79fc1e588f53994fa90df2d3402c0",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "2e3d8802e878ea4388b1969f4c6d434bc9f2a81c953b42b2f72c2e47c786f22c",
+        "payload-pruned.bin": "1b86fa904c3bd550a52484b34f7f6537a64833ff42afe08ea8adb3306e7d37cf",
+        "training-metadata.bin": "6a5c6001dcd4a96d07232ec8802daa5bc98f7c1fcad21bdf67f480fef8092089"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000005-s000327680-fa21ba88e31ec2ff2b6f5b51a1ed3be27cee772d3dac9b15c711a4a9cdaa8fd2",
+        "generation": 5,
+        "optimizerStep": 327680,
+        "trainingDepth": 4,
+        "parentId": "g000004-s000262144-c046270428ee1933aaf0406ee7fe4c9cab6c0a78664c9e999f9dc13aa715c9ba",
+        "networkBytes": 795032,
+        "networkSha256": "64deea9fc0f9b13ab4ccece4d0d26263ebce2fa7f83e1686d81a12983355290a",
+        "trainingBytes": 2731424,
+        "trainingSha256": "4a0828d91ac4eb8d0f8a42c339b93ab36c68b276f33d84c2555703a6e958a777",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "965131a182d6f59167d4d5a40603ed8eff58eb43f2e3b2ef3e84873638a462da",
+        "payload-pruned.bin": "196cd4e1f103e7204101d10ad28858257c6e8124c37468fbf629701e424b3fb8",
+        "training-metadata.bin": "538a3783d092ab1c516b189eda55db0ef5f27b7d40922706cda25c7a31dc5892"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000006-s000393216-31063a24f29943033d95290c5e78bf365aa8e37bfd026b290b985cb36d57d0fe",
+        "generation": 6,
+        "optimizerStep": 393216,
+        "trainingDepth": 4,
+        "parentId": "g000005-s000327680-fa21ba88e31ec2ff2b6f5b51a1ed3be27cee772d3dac9b15c711a4a9cdaa8fd2",
+        "networkBytes": 795032,
+        "networkSha256": "746967f5f614509b9a612b050093661641c4e469b22d32c7390bfec8d9c42b4f",
+        "trainingBytes": 2731424,
+        "trainingSha256": "44d163d53daf9baadac63ba4c7ef9e7e5f0c615e2269b349ff399727bde08890",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "6ef04c2aef2cf97e078b75f12c28e8c672a4e820ce88251eade1137acd4b31f1",
+        "payload-pruned.bin": "6c0d6965841a9dae14501436f04045d4dd959703d8060269717922d8897343ee",
+        "training-metadata.bin": "f476c585827fddb66d286931bfe8c51c4011eb8877e7fea61e99c7577bac38c4"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000007-s000458752-96b8184f7c11aa24def3517055467aa96d2b7a5603f0c7525091040d7b9ae5a0",
+        "generation": 7,
+        "optimizerStep": 458752,
+        "trainingDepth": 4,
+        "parentId": "g000006-s000393216-31063a24f29943033d95290c5e78bf365aa8e37bfd026b290b985cb36d57d0fe",
+        "networkBytes": 795032,
+        "networkSha256": "57ceade354839c0b3cb8a7896856798e011085fa0ae5677c61fe59d333c72583",
+        "trainingBytes": 2731424,
+        "trainingSha256": "651701b6da1b5dd85e2e05799923e8e68536bde4311c08ed510faa7c2c5de384",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "e1f3fd804c2f4f8f7fa2e27655782717328c0dc77acba751245598a6ae56bf2f",
+        "payload-pruned.bin": "af8c61a7e54c9dc074a4b6dbba9046e6df4d81b790e8b680bb3cc4a138c895d0",
+        "training-metadata.bin": "b2c7eaa401702290aab80215592ba9da7a8ae083d200a9b61fc627ea36ed5bd2"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000008-s000524288-caf2bb25cd09933f7524975939b432bc4d3497982d42e89999b05b69854428ac",
+        "generation": 8,
+        "optimizerStep": 524288,
+        "trainingDepth": 4,
+        "parentId": "g000007-s000458752-96b8184f7c11aa24def3517055467aa96d2b7a5603f0c7525091040d7b9ae5a0",
+        "networkBytes": 795032,
+        "networkSha256": "80aac1492c494f7de6c85542b68059bcf43710ba4eefda974f673e8d0aac7361",
+        "trainingBytes": 2731424,
+        "trainingSha256": "95ab65b3592f6216fa9a708d091e4e1a4f404067c2d4f4f62146d67367dacb60",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "bc5619bcde3e68da69941d00d10b334973ce5fd83654724f1955af0ad2930789",
+        "payload-pruned.bin": "ac81dad2db5d2bf5a0d8965069d183889e80d8dfcb1edcac8d113b490462a9ad",
+        "training-metadata.bin": "f1d34706b91976e4892cf68c4d9f22191610457088d262608ad4ed690d9064af"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000009-s000532480-e09bafb7fad9ab1023b222ff876963271671430759a0abbed63723dabc1b0adc",
+        "generation": 9,
+        "optimizerStep": 532480,
+        "trainingDepth": 4,
+        "parentId": "g000008-s000524288-caf2bb25cd09933f7524975939b432bc4d3497982d42e89999b05b69854428ac",
+        "networkBytes": 795032,
+        "networkSha256": "fc5abf195777ff083bc71bbc15e60d0f806fdb7c124e20fdf8458d2365ed5848",
+        "trainingBytes": 2731424,
+        "trainingSha256": "4d4fb9104df6e9ed542c5413c70886c6fbfe2febd95227a9f894096057857025",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "230767bc693d68e245129337d81e9baf14d73906254063bcfd46e5ab6acab16b",
+        "payload-pruned.bin": "1dbce9ee35ab26551ea3748e03db3a9b31dd9211cca1020739370fd6584f6ecc",
+        "training-metadata.bin": "25d8cd8de548248ab0fdedce13a324ec84851a18d47108a52cd4ae54da9a324f"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000010-s000540672-efcc622fd5585ccac7076a6694373aba0fc2a075a58d68e6d4c7b753e5a42f08",
+        "generation": 10,
+        "optimizerStep": 540672,
+        "trainingDepth": 4,
+        "parentId": "g000009-s000532480-e09bafb7fad9ab1023b222ff876963271671430759a0abbed63723dabc1b0adc",
+        "networkBytes": 795032,
+        "networkSha256": "cca1372a6165f17727f96dcdf8c02169113fb23ea9c2e7fd2b58b6be94206fcc",
+        "trainingBytes": 2731424,
+        "trainingSha256": "c087eefb7cca2adb8ad82e62be259b8501deb8419cbd169c3578273ad39b6c21",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "1c57f4db9a248f7088f98eb8afc6fe8eb29bce2a4d033fb3c120047dc597f7b0",
+        "network.brn-pair2": "cca1372a6165f17727f96dcdf8c02169113fb23ea9c2e7fd2b58b6be94206fcc",
+        "training-metadata.bin": "5dd5133fc302f36059fcd5442c0e407b0be8de83a8c76da123fad6091d045300",
+        "training.state": "c087eefb7cca2adb8ad82e62be259b8501deb8419cbd169c3578273ad39b6c21"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000011-s000548864-63701aa44ac0e7cd9888c0e72b80b40febc98a0dc386d56f02ca586b78f1e7b8",
+        "generation": 11,
+        "optimizerStep": 548864,
+        "trainingDepth": 4,
+        "parentId": "g000010-s000540672-efcc622fd5585ccac7076a6694373aba0fc2a075a58d68e6d4c7b753e5a42f08",
+        "networkBytes": 795032,
+        "networkSha256": "659045e241ae0f18a5b6f36f31b419cab4023fda2a349d3cc67d2835f0761b92",
+        "trainingBytes": 2731424,
+        "trainingSha256": "dc45c977bdaf950151b825322ef53b0d14cf24a04c6e9a03470f8635def96708",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "0797833cd6b5123e878183e7a075d19ed3803de2a6d7159dd109eb40e5acc39f",
+        "payload-pruned.bin": "ebfd6804c16eaa7afd2ed53eebe1a9782fd44d758f3301fa8c1aac11dae13ec1",
+        "training-metadata.bin": "14407f0169e304194a8100445a401343a2dfd78bca4617988bdd0677533df93a"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000012-s000557056-4500a23dbb513188ca675409740f43c19a9d54ad4c51a3d8ba8c3d1b9ea06013",
+        "generation": 12,
+        "optimizerStep": 557056,
+        "trainingDepth": 4,
+        "parentId": "g000011-s000548864-63701aa44ac0e7cd9888c0e72b80b40febc98a0dc386d56f02ca586b78f1e7b8",
+        "networkBytes": 795032,
+        "networkSha256": "f2aa9d6b7157fa9c0cf048798833fcb059f9df8baa5375732dd4c70adef2f998",
+        "trainingBytes": 2731424,
+        "trainingSha256": "30889784ea70e3530aa7a71522eabbfa2337d13249459e50c4a7141b510e7ceb",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "30d36cca3b5bd6f682a264be300108fd4233dbc8b0aac1abc0d879d54315c9ed",
+        "payload-pruned.bin": "72a80d2d9b86d93167bee2a5d8f8a8dd8dda919277f0d9e22c33707a3b200f47",
+        "training-metadata.bin": "d75b9dc0435fafc2bbbfdedb9039c20203b7eb38e5a61bab832d0f466dfb14be"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000013-s000565248-bf67c9154c24598184d57d884b8dda28cb22ca0e023ce54d1c1bef56ce518e5e",
+        "generation": 13,
+        "optimizerStep": 565248,
+        "trainingDepth": 4,
+        "parentId": "g000012-s000557056-4500a23dbb513188ca675409740f43c19a9d54ad4c51a3d8ba8c3d1b9ea06013",
+        "networkBytes": 795032,
+        "networkSha256": "7a0ffcd23419fe1fed59b9e8eea49fc2d5ee2c70d7c4fae7bf2dd7d13b0b1dc2",
+        "trainingBytes": 2731424,
+        "trainingSha256": "b78f4f657067627dd9301fd5c7d4c45da79fdbe8f2e5b735bb5e2f725113cc2e",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "17d050163cf0f02f772ddec50243ea153207265956fb69708ebf3f8c440ff235",
+        "payload-pruned.bin": "d71f961c33dca1797d0d50aeb715a21b9ac2d9577a2efba3648c3a02b35b9d82",
+        "training-metadata.bin": "6b19bbec3a3e93edf648b7efa3f6d6e8153ecf162d504a4dc75cccd326b1c273"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000014-s000573440-4373d312d36e39f1bf6216f5789a66e0450c0b768f5649e3dca861d64b1eae94",
+        "generation": 14,
+        "optimizerStep": 573440,
+        "trainingDepth": 4,
+        "parentId": "g000013-s000565248-bf67c9154c24598184d57d884b8dda28cb22ca0e023ce54d1c1bef56ce518e5e",
+        "networkBytes": 795032,
+        "networkSha256": "07bac927bcadfc5180547b8e185a32a89429c346284a78b16f763bdb998b7265",
+        "trainingBytes": 2731424,
+        "trainingSha256": "5d3e6adb177836f98c18a426220a5dd237aafd913cb4295db307f3362b53fae1",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "5793460a163c85c1c5600ce0260c2b7e4620e485dfd20bc9d386c7f8956c90da",
+        "payload-pruned.bin": "ea4f013fb4b07feefff4a340343b8802ce0ea26b3e832952c3ccda6c083929d7",
+        "training-metadata.bin": "ef4e7e35f8fed2bdcd72fa69822dc991b77a46c5aff91934dc7f7df6e21bbf3b"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000015-s000581632-643c0d130bb13e012c2f9f0f227cdd83d4665cb1e2514821a1a7c2f4e96e2b5e",
+        "generation": 15,
+        "optimizerStep": 581632,
+        "trainingDepth": 4,
+        "parentId": "g000014-s000573440-4373d312d36e39f1bf6216f5789a66e0450c0b768f5649e3dca861d64b1eae94",
+        "networkBytes": 795032,
+        "networkSha256": "cfcf3b65cf7294fde76f6fc5940e531fea6d528b26f6235c46a6e201c48a1a1a",
+        "trainingBytes": 2731424,
+        "trainingSha256": "658b01623d82ef6791ad73fe87c6e16a1fa4b01d5ae4b2567c71e3f063f415c7",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "46687ae4013ba8c558a05c52ea0c0875125dc7e9e96c8f1b8d8df1d1907d11ea",
+        "payload-pruned.bin": "9ab157fc47dfde805e044d2b8acb574921ab3a394b6ec8b619aef9b6144e00f0",
+        "training-metadata.bin": "56e20a33cad03552dc213bb5e32bea38237802a82b89fb584d2ed5b73dff238c"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000016-s000589824-298d07394a2ee1699a4d1771b00c8897b22453f3648a0e419ed5b8b9f263cd6c",
+        "generation": 16,
+        "optimizerStep": 589824,
+        "trainingDepth": 4,
+        "parentId": "g000015-s000581632-643c0d130bb13e012c2f9f0f227cdd83d4665cb1e2514821a1a7c2f4e96e2b5e",
+        "networkBytes": 795032,
+        "networkSha256": "e6ed6a3c490e5a4a2a85af4ad56466e146edfab0c396fd9c1f9057199d4713b5",
+        "trainingBytes": 2731424,
+        "trainingSha256": "73795794d58fb4c028132c310cfd7cb07d73fad2c7f5347dedae401074a2ee16",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "84ab290c833334fbfbcd445dd201c723f7a32e3736c04ef3a5ae0a31bc6c8ca2",
+        "payload-pruned.bin": "2c89603430562bfed3f960cde50ba15687fba87458452c0b02eb7b8df0774f12",
+        "training-metadata.bin": "e74ae832cdb2657e95d454374199588536dbd180f2f50ed60bef64652db3b012"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000017-s000598016-ff0223b46e9d1c3646319afb15e79e12efd29bddf17203581cc224896508b5ed",
+        "generation": 17,
+        "optimizerStep": 598016,
+        "trainingDepth": 4,
+        "parentId": "g000016-s000589824-298d07394a2ee1699a4d1771b00c8897b22453f3648a0e419ed5b8b9f263cd6c",
+        "networkBytes": 795032,
+        "networkSha256": "1497136b86e3dd12d14ce1319e2e738bfde41226dfc2dcf5ced79d8d76ab40f0",
+        "trainingBytes": 2731424,
+        "trainingSha256": "6be6d78ea1e2e045219ca29742da660e1a957d19041e430392c55cc6c3efff3a",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "b4711702c9eb12a4c30beb6daee89ac12a3e8dc08a44cfe6758e8b1c64b33e59",
+        "payload-pruned.bin": "7ee63bff1a86438b44d5cd6d7a5f0d7f0c4c7e8b31347cabfb35e599d3501d8d",
+        "training-metadata.bin": "685c961683e45817957c8296dde1433945a0473fe7d7c9ee711789d2648cd1b2"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000018-s000606208-66236bac9f2c58c5a0e1d8f8fd34d73433bd662d1e4e61badf3c7b434427d150",
+        "generation": 18,
+        "optimizerStep": 606208,
+        "trainingDepth": 4,
+        "parentId": "g000017-s000598016-ff0223b46e9d1c3646319afb15e79e12efd29bddf17203581cc224896508b5ed",
+        "networkBytes": 795032,
+        "networkSha256": "1b7df025f44e642a66f002ea64608666b0ec355c4f3c416e8ccc02772c59c7ef",
+        "trainingBytes": 2731424,
+        "trainingSha256": "4ed8854c7d721e8e72e220ed4cb4f7a0a7195e18ac13dc2870561503884c59c5",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "d504c62ce86aace2138f8b4ae56689a6d125a402b9ed4be4834f5217b87f1a8e",
+        "payload-pruned.bin": "b271239c112e3f771c935fb691d658bf9556f93d4c5fc1acad4ad06563394a27",
+        "training-metadata.bin": "56cb8d3a1b38f00b80eaebbdc3ef623ad4aee554e7bee36aa344d818c5fe755f"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000019-s000614400-e9e9265b236b6195124469d1ff41a67450506663ca549fbd5e1a77d97b86fbcf",
+        "generation": 19,
+        "optimizerStep": 614400,
+        "trainingDepth": 4,
+        "parentId": "g000018-s000606208-66236bac9f2c58c5a0e1d8f8fd34d73433bd662d1e4e61badf3c7b434427d150",
+        "networkBytes": 795032,
+        "networkSha256": "530ce94671d37979ce66e4197864e815e5eeb28cfdaa19761115d0004fbdba50",
+        "trainingBytes": 2731424,
+        "trainingSha256": "664ece69cdc2c342c8501e7af8cdee517483630c2bb90376ff3906b03abca068",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "db1c1c50d9e2ecb3f6323d52f38f79b5213bd937563521dbbe6f6464f1eeec8c",
+        "payload-pruned.bin": "85c08bee70bbd2c23d72eed1d54ea88480b688b308613f801c458f23cae11327",
+        "training-metadata.bin": "84317145e3d809885584122610752b3fe9eebbdd23141284ba23818b222ac382"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000020-s000622592-8e3796d5431b6a5c74b244462a5cd24be8e1872b78c03114db04cd7bf4741c11",
+        "generation": 20,
+        "optimizerStep": 622592,
+        "trainingDepth": 4,
+        "parentId": "g000019-s000614400-e9e9265b236b6195124469d1ff41a67450506663ca549fbd5e1a77d97b86fbcf",
+        "networkBytes": 795032,
+        "networkSha256": "e650a916e42a082a344aa24475cd2e13d10b0fad31188f0c679d3f487bf6d2f3",
+        "trainingBytes": 2731424,
+        "trainingSha256": "d4e3cc71a0204d8fc6e4f5c162deb67f45de04d66126e5b4ca9d2283c293ade2",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "15ab9770c0b22114d72c1114b181e1566d87159cbb0f2f8ee2066a7d4844000a",
+        "network.brn-pair2": "e650a916e42a082a344aa24475cd2e13d10b0fad31188f0c679d3f487bf6d2f3",
+        "training-metadata.bin": "7c6ae93d61e54e397c8901033b58e52422e6f69f07f397348be90847bb1485bc",
+        "training.state": "d4e3cc71a0204d8fc6e4f5c162deb67f45de04d66126e5b4ca9d2283c293ade2"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000021-s000630784-f965e7d8acf5e9778ea555f85a21ffbda60b7c72f3b4a240a4de0659cb0282a1",
+        "generation": 21,
+        "optimizerStep": 630784,
+        "trainingDepth": 4,
+        "parentId": "g000020-s000622592-8e3796d5431b6a5c74b244462a5cd24be8e1872b78c03114db04cd7bf4741c11",
+        "networkBytes": 795032,
+        "networkSha256": "09b27748ed085fa3355cbde7869ec6e8d13a5fc2c18ae62881b739498e201bd3",
+        "trainingBytes": 2731424,
+        "trainingSha256": "2dcae491d3cbe157dd5127ddbe68d6ad5a69f7b0c3f4300deb39f12ac3a394b4",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "e9d6612a3b81cd23c7e753c7e7497519979f745b0a5f3b9ff2af0df47af24d44",
+        "payload-pruned.bin": "b93279f43dbca130c0ac76cef184a3b14873e159e27be539750cc7e8715cc563",
+        "training-metadata.bin": "79753c95d177e39c12d0f1fbabf3964dee62e602deb3b66938d8f5369bc8694e"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000022-s000638976-709430eb6f332a19e3788d72a81fc711c480e0ef3638d3d09c16927194676f03",
+        "generation": 22,
+        "optimizerStep": 638976,
+        "trainingDepth": 4,
+        "parentId": "g000021-s000630784-f965e7d8acf5e9778ea555f85a21ffbda60b7c72f3b4a240a4de0659cb0282a1",
+        "networkBytes": 795032,
+        "networkSha256": "74f4bf2c7acde11929d21a148d15833c4b93042366049f13f77416efbe5f8523",
+        "trainingBytes": 2731424,
+        "trainingSha256": "a4618632eb311fa320bbabc0b5913e0633ad0c9bab20cbc0d44b3508d3d1bc7b",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "b061b197f9d70878b6892dc7b6d9078980b80c2ba8bab1f600bfaf1cc89d0119",
+        "payload-pruned.bin": "e9fcf3dbf69c67d5323074184a6e803743f5f19bbc96e19aefc6886a38f10452",
+        "training-metadata.bin": "5d2a3f36a644cbbd50a840a6ab39cf3bfe5af0ad9f450714ee028a8d9d8230bb"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000023-s000647168-21c66b0d4e85c20e256d1636392696cf302d08f07d160787f8772be902d55053",
+        "generation": 23,
+        "optimizerStep": 647168,
+        "trainingDepth": 4,
+        "parentId": "g000022-s000638976-709430eb6f332a19e3788d72a81fc711c480e0ef3638d3d09c16927194676f03",
+        "networkBytes": 795032,
+        "networkSha256": "4949edbee329e2f4ea6eaecb92348a997af3d5bb788d6e3f459cb9bc0362fa0e",
+        "trainingBytes": 2731424,
+        "trainingSha256": "17bdfbc0359ffadd640bbd0a856016993fb8b15afd9715a9d96d245c8eb6556e",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "147e7084b880c5756fa36ca15243fba72c4f14f971fec0fb9751b5d58befc96e",
+        "payload-pruned.bin": "45f0413dacb939fa82e10fac1347b26c9d21b56af67e029f053b67e0051d6643",
+        "training-metadata.bin": "5e1aa5a26f93e6270b7279ccde5193b35568c6a74f2df2ddd27bcfa6b4ea89f3"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000024-s000655360-e71c3d1747918efcc9eb3833ab71e2722aa73c3440919790493d2a1b8d28d17f",
+        "generation": 24,
+        "optimizerStep": 655360,
+        "trainingDepth": 4,
+        "parentId": "g000023-s000647168-21c66b0d4e85c20e256d1636392696cf302d08f07d160787f8772be902d55053",
+        "networkBytes": 795032,
+        "networkSha256": "b52fa30d86f6947665a10d50e76585d3852514ba3ddc0e1d350d5c83d47c1767",
+        "trainingBytes": 2731424,
+        "trainingSha256": "cce02f5c1524cc58fc792b691eb94d5e81832535877895f65629db9d51884304",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "329af61691325ab163f3c48366759c60d45302dee6fb5af90ce037c7953a96ea",
+        "payload-pruned.bin": "b06585f962e78c3c252ceb010f6629275d73887827677e7d690a40d714f73647",
+        "training-metadata.bin": "7f185bc5ddc2a360f7182135323920b9d389197901b41f98d80dbb16ce5a2894"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000025-s000663552-7a3a351b24a37a86f94d045808b1d27e1fcf097f5f5ccdc17cfb608a68d1f71a",
+        "generation": 25,
+        "optimizerStep": 663552,
+        "trainingDepth": 4,
+        "parentId": "g000024-s000655360-e71c3d1747918efcc9eb3833ab71e2722aa73c3440919790493d2a1b8d28d17f",
+        "networkBytes": 795032,
+        "networkSha256": "eafe3fbfcb3716f07e953dd35cee90e7a2f71b615e1b21392b997770c2494971",
+        "trainingBytes": 2731424,
+        "trainingSha256": "0434426228e5c89c4a51271b5bc4616783a646590f9f5389d241f4d1faea5cb8",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "af81d4e7f7af13124c9300bd44ce71df069131cd10a473f0f28ff2ff752dd34c",
+        "payload-pruned.bin": "4ff69c49d809c82c32afc71bcb4f020225caa9bb81bc4237be0c85637cb402b9",
+        "training-metadata.bin": "a3a694240c1ceb58a3ccd36d20c25d0ca986d3a3ab8d8e0e58cd509e7ae3bb4a"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000026-s000671744-36c1ba0e24686add1517754a557eec5fbe389026fb4c77a07e474b398bf64b79",
+        "generation": 26,
+        "optimizerStep": 671744,
+        "trainingDepth": 4,
+        "parentId": "g000025-s000663552-7a3a351b24a37a86f94d045808b1d27e1fcf097f5f5ccdc17cfb608a68d1f71a",
+        "networkBytes": 795032,
+        "networkSha256": "86e5dfb71e1563af728109903881b36c4fc1481552260e76922d71c351967a4a",
+        "trainingBytes": 2731424,
+        "trainingSha256": "6bff11acff2ce444438a6c0b6156e921e7dcfab2c96667d7cabc9058a26746c4",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "62e20e02cacdf85adad967ff161292904ca27cfaf66df13688523e8fa510a76b",
+        "payload-pruned.bin": "05d0c322bb9c7992189cf664b1e0f92f02ffbfbca00ceaa942cb4e912e5db574",
+        "training-metadata.bin": "a88d050f465c3b292d5c6514a4b67453b2db8a91ef3cacbb01554cec821d664a"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000027-s000679936-440b779832299247782ed044a1a90481b29afccc61ee12168307283a926ddb1f",
+        "generation": 27,
+        "optimizerStep": 679936,
+        "trainingDepth": 4,
+        "parentId": "g000026-s000671744-36c1ba0e24686add1517754a557eec5fbe389026fb4c77a07e474b398bf64b79",
+        "networkBytes": 795032,
+        "networkSha256": "51239ba96b8dc45368089cac05996732ea643c6350631065948ec0fef72e482a",
+        "trainingBytes": 2731424,
+        "trainingSha256": "8083447c9a0e73cd3d5b8d8cd41df5418b56f5d07a8ec6e6415b2a6545545bdf",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "ad47f1fd3236f559e5cac6069de6d9946be9d009acdfb04119b1b218ab71ebaa",
+        "payload-pruned.bin": "467660e0647a198c648941f24222b21dfa84982c7fc621594752f89c9590b330",
+        "training-metadata.bin": "2017ae1139173a83d129f7dc4552321e5126b3849bbfcfd3f36b078395c8411c"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000028-s000688128-e61d662cbcd733c0d2d44bdc1b5de7b04ba871c81a4e74b40def1e69e8000b93",
+        "generation": 28,
+        "optimizerStep": 688128,
+        "trainingDepth": 4,
+        "parentId": "g000027-s000679936-440b779832299247782ed044a1a90481b29afccc61ee12168307283a926ddb1f",
+        "networkBytes": 795032,
+        "networkSha256": "c697a30e2ebde92fce9565f998fd078c623bb683489718f8b9132cb8e15450d6",
+        "trainingBytes": 2731424,
+        "trainingSha256": "b47101c75c7320a4ca1a451033b78c6ae7de5463985fc76234a2a4dd4b01533a",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "a4bf7c329e03ecea8b205592cee223cfe9e00ea104cd2ceb28a2a2b635609476",
+        "payload-pruned.bin": "78e1959824850a3ec01fc04e9a9cd896e1442b42c08429de68d61dd052eda56d",
+        "training-metadata.bin": "d51dd43232d2362913e654cc9a3cd7a471d00baa6ab9e166c6c6f015737297fb"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000029-s000696320-c9f5bf60b9015286f232334c41bba8694992cbdcf2685d79d96c09e222150ed4",
+        "generation": 29,
+        "optimizerStep": 696320,
+        "trainingDepth": 4,
+        "parentId": "g000028-s000688128-e61d662cbcd733c0d2d44bdc1b5de7b04ba871c81a4e74b40def1e69e8000b93",
+        "networkBytes": 795032,
+        "networkSha256": "4943c5106c63bb633947565a01a15035aafa073d06b6347ba5060bdbd3d13114",
+        "trainingBytes": 2731424,
+        "trainingSha256": "79f7502bbf3d5100f050810315ed4f203ff6b34b8c31ea42320e4bb3adda34de",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "791fd12be37618d7de5f4624cffb02ebc8f4dc2dc87e790161212ab06bc79084",
+        "payload-pruned.bin": "df6d37b3b6ac36495ff1301c03120a6e1499fcc4235afe1fd38e827c2e71a7d4",
+        "training-metadata.bin": "55794ffb9d488a098554449e54f6e5cd0040a56eec8835d2488a47d7ca8821b7"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000030-s000704512-ddd36c9c1fe44cc6b61fc216aad01384049e9002679daf04582a65aa345a4899",
+        "generation": 30,
+        "optimizerStep": 704512,
+        "trainingDepth": 4,
+        "parentId": "g000029-s000696320-c9f5bf60b9015286f232334c41bba8694992cbdcf2685d79d96c09e222150ed4",
+        "networkBytes": 795032,
+        "networkSha256": "b2e5ebb6653c79fe7d3fa6ce25916e9fa927934f58b615fa5dd2b2e77249d9dd",
+        "trainingBytes": 2731424,
+        "trainingSha256": "e23ecd70fb7f9bdee0a3c86d68f4b302161ed84937b450a2064208898dcc27dc",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "a487852fa2bf100a42bd11c992c22619e77a03263ddba5f55b3fc1bb54fb9a53",
+        "network.brn-pair2": "b2e5ebb6653c79fe7d3fa6ce25916e9fa927934f58b615fa5dd2b2e77249d9dd",
+        "training-metadata.bin": "eeb04ae0191655d92e5ed1a92e3a05c49155bda9cb6679a7beb518f4dcd970aa",
+        "training.state": "e23ecd70fb7f9bdee0a3c86d68f4b302161ed84937b450a2064208898dcc27dc"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000031-s001228800-3b52a75c2077c9b9a44edcee222201e0b3a0b76dc8b9cef5ae99804fa5549c78",
+        "generation": 31,
+        "optimizerStep": 1228800,
+        "trainingDepth": 4,
+        "parentId": "g000030-s000704512-ddd36c9c1fe44cc6b61fc216aad01384049e9002679daf04582a65aa345a4899",
+        "networkBytes": 795032,
+        "networkSha256": "b4d6ec6a5ad3ab6c1ac885afadcef2ee97fcf3e73f3bbe50636f8584cc5c0e42",
+        "trainingBytes": 2731424,
+        "trainingSha256": "0e3a69d35f6f2bc5c92b48927a8df67697e49b37ff8e5fd44829778f01ef4f48",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "761267b22801a375bfded426732cbe4db7fc9b345d2a4298aa99316a185b9ec0",
+        "payload-pruned.bin": "6aa57f436b23d89121c027b633d1e3099cab67175a383837e5c47102cd90de2e",
+        "training-metadata.bin": "b5e31d95794cfef881ff354a36272de1fd1a7d39fb8fc3b44d3331cfa1a378e8"
+      }
+    },
+    {
+      "name": "Gen32",
+      "sourceRoot": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+        "generation": 32,
+        "optimizerStep": 1753088,
+        "trainingDepth": 4,
+        "parentId": "g000031-s001228800-3b52a75c2077c9b9a44edcee222201e0b3a0b76dc8b9cef5ae99804fa5549c78",
+        "networkBytes": 795032,
+        "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "trainingBytes": 2731424,
+        "trainingSha256": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "a51513ddb6e23a8537cc38b8aeb7676af5723c3e3b6bb8151f265bb87ae83891",
+        "network.brn-pair2": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "training-metadata.bin": "135fb61ed736f313158e5514f2a16a81eda6526c4f034d2232ff26f8ee4176e7",
+        "training.state": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5"
+      }
+    },
+    {
+      "name": "W4-RESGATE-LR001-g32",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\9d2412de-8563-35f3-b520-ef41e610a098",
+      "manifest": {
+        "id": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d",
+        "generation": 32,
+        "optimizerStep": 262144,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 52464,
+        "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+        "trainingBytes": 157264,
+        "trainingSha256": "9fa47b99b2349c20ca0c79a35ae007086ecab9acbb8c9b9cf18d4ecfa223a26d",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "files": {
+        "manifest.bin": "437e2b76fe39e17aad0db91e9cc3daf62ab59b68913ff632b8d5a4aa3b8e3fdd",
+        "network.brn-gen32_gated": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+        "training-metadata.bin": "0adc67cd97010410bc10f4026d792a320e6da13fdb7a49a633301c90a1ba64ff",
+        "training.state": "9fa47b99b2349c20ca0c79a35ae007086ecab9acbb8c9b9cf18d4ecfa223a26d"
+      }
+    },
+    {
+      "name": "W4-RESGATE-LR001-g40",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\9d2412de-8563-35f3-b520-ef41e610a098",
+      "manifest": {
+        "id": "g000040-s000327680-7ef877ea2f4fcc72917ce219032bae53bcd87514165af1b7f7c31f381b21341d",
+        "generation": 40,
+        "optimizerStep": 327680,
+        "trainingDepth": 4,
+        "parentId": "g000039-s000319488-405fa428d5136c31fca57ab53d55221ec75ca0793543ea6b8156beeba1a2c2e7",
+        "networkBytes": 52464,
+        "networkSha256": "8120b4a135cb332f014f2b36805c2adac98d5b3e2707f403e0ff8e3094e73ab5",
+        "trainingBytes": 157264,
+        "trainingSha256": "5912c6f3ea7d63ea28da642f75a1c10186e341fdc4728cb163c4ea8b5224170c",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "files": {
+        "manifest.bin": "a0e1332cec1b22da69af396a17eab4844fc8f868a9b04be4b04396789791c1c1",
+        "network.brn-gen32_gated": "8120b4a135cb332f014f2b36805c2adac98d5b3e2707f403e0ff8e3094e73ab5",
+        "training-metadata.bin": "6e7bd8f8421767e92d97dd5e4f6fecebe9a9e2b055955053e958c31671abe121",
+        "training.state": "5912c6f3ea7d63ea28da642f75a1c10186e341fdc4728cb163c4ea8b5224170c"
+      }
+    },
+    {
+      "name": "W4-RESGATE-LR001-g48",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\9d2412de-8563-35f3-b520-ef41e610a098",
+      "manifest": {
+        "id": "g000048-s000393216-d73a063660e4fa7039baa35a9dea43a2870f53ecd50a99f8a8e7a1baa0589550",
+        "generation": 48,
+        "optimizerStep": 393216,
+        "trainingDepth": 4,
+        "parentId": "g000047-s000385024-1a931397e11847e47c65f308bf132e61b17ccb351de23418583f4b90526f0f29",
+        "networkBytes": 52464,
+        "networkSha256": "0988a9f3f258266e8cf162e770c36d409b936a78e4ce81ad45dc39c711fa9ae4",
+        "trainingBytes": 157264,
+        "trainingSha256": "ee29f241e358be00383bbeceb27f14c08691f38fcf15de75fa9a073943582a30",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "files": {
+        "manifest.bin": "25be747c5ba90f79aefe658d57b1f230a650e74f13f10aab9691ebf5cedb82ae",
+        "network.brn-gen32_gated": "0988a9f3f258266e8cf162e770c36d409b936a78e4ce81ad45dc39c711fa9ae4",
+        "training-metadata.bin": "ed7ce758de17f37caaa08a0a25755d4b0d1c1b48b8570f2b0f53194df3e980bb",
+        "training.state": "ee29f241e358be00383bbeceb27f14c08691f38fcf15de75fa9a073943582a30"
+      }
+    },
+    {
+      "name": "W4-RESGATE-LR001-g56",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\9d2412de-8563-35f3-b520-ef41e610a098",
+      "manifest": {
+        "id": "g000056-s000458752-312b970c7114ee84f53d8ee85c67e4213e78e30be69e061ea41d00ac2749812c",
+        "generation": 56,
+        "optimizerStep": 458752,
+        "trainingDepth": 4,
+        "parentId": "g000055-s000450560-32d2a8ac9b0bff04fc291a0d6701cf83a08354904c64f241ddeda063c717a5b6",
+        "networkBytes": 52464,
+        "networkSha256": "596d74fb6aa199ba63ee5f24d0ae60ca6b3b586556198587f052f37fbc60d59f",
+        "trainingBytes": 157264,
+        "trainingSha256": "78c9edbf0be578fc7179b97d02e339e8fef7e30d9d2b394d06ab2d2df09574fa",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "files": {
+        "manifest.bin": "a55acf78b4b3569866df85fa50154846fbda97620b4924b23e15b277fe219f7e",
+        "network.brn-gen32_gated": "596d74fb6aa199ba63ee5f24d0ae60ca6b3b586556198587f052f37fbc60d59f",
+        "training-metadata.bin": "e27d5ffaf8efb52a5d2ec7af9c3cb48193bdd1195ab9e5fc29f340794934c55f",
+        "training.state": "78c9edbf0be578fc7179b97d02e339e8fef7e30d9d2b394d06ab2d2df09574fa"
+      }
+    },
+    {
+      "name": "W4-RESGATE-LR001-g63",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\9d2412de-8563-35f3-b520-ef41e610a098",
+      "manifest": {
+        "id": "g000063-s000516096-363b208509b37269f3978ee180cc786184ab620bfd79fe7ae501cca6b3df9207",
+        "generation": 63,
+        "optimizerStep": 516096,
+        "trainingDepth": 4,
+        "parentId": "g000062-s000507904-fb855ccc2ddc7984938ea1712dfb35db1c7fc152d44072bb4167fed7e5ac7fd6",
+        "networkBytes": 52464,
+        "networkSha256": "b26f0b79c9a48e63fdf661e9e661453f416859d8948617a84f82563e3175a0ab",
+        "trainingBytes": 157264,
+        "trainingSha256": "1243c96e6b4b818353d8f751559db3ff1fa3e5ede069362f88f9d871c962b765",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "files": {
+        "manifest.bin": "1d3ca9e3e07c603a8727486b78526a4e51c52c0cc422f1c0a9c468f129b09ae0",
+        "network.brn-gen32_gated": "b26f0b79c9a48e63fdf661e9e661453f416859d8948617a84f82563e3175a0ab",
+        "training-metadata.bin": "14bb4febabd37abb0ae5f511f5847ee7fa4acb3783257c1366b8195b34378292",
+        "training.state": "1243c96e6b4b818353d8f751559db3ff1fa3e5ede069362f88f9d871c962b765"
+      }
+    },
+    {
+      "name": "W4-RESGATE-LR001-g64",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\9d2412de-8563-35f3-b520-ef41e610a098",
+      "manifest": {
+        "id": "g000064-s000524288-bd455415c07f597ff1d815ef3fef0994f6900d761789574e971ef5a347c2ad8d",
+        "generation": 64,
+        "optimizerStep": 524288,
+        "trainingDepth": 4,
+        "parentId": "g000063-s000516096-363b208509b37269f3978ee180cc786184ab620bfd79fe7ae501cca6b3df9207",
+        "networkBytes": 52464,
+        "networkSha256": "c455f68516c22d34033b29da34f6eb4d80d07a8e698507fbe3ee240a0dc25f62",
+        "trainingBytes": 157264,
+        "trainingSha256": "cbe8b1f1dd6907474c5ee103f8a79a7f9dddd613afe172db62d1a099b06216cc",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "files": {
+        "manifest.bin": "baff5a1ac0193a47b006591358283526d4d5ac3b9c2b06933a7c076176dec61b",
+        "network.brn-gen32_gated": "c455f68516c22d34033b29da34f6eb4d80d07a8e698507fbe3ee240a0dc25f62",
+        "training-metadata.bin": "bdffbbbbabcf0d5723908c15377a5284db20f005dda048b14c6def91b3007187",
+        "training.state": "cbe8b1f1dd6907474c5ee103f8a79a7f9dddd613afe172db62d1a099b06216cc"
+      }
+    },
+    {
+      "name": "W4-RESGATE-LR003-g32",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\77dad574-34c1-3639-b827-0127fcab4fb2",
+      "manifest": {
+        "id": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d",
+        "generation": 32,
+        "optimizerStep": 262144,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 52464,
+        "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+        "trainingBytes": 157264,
+        "trainingSha256": "9fa47b99b2349c20ca0c79a35ae007086ecab9acbb8c9b9cf18d4ecfa223a26d",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "files": {
+        "manifest.bin": "437e2b76fe39e17aad0db91e9cc3daf62ab59b68913ff632b8d5a4aa3b8e3fdd",
+        "network.brn-gen32_gated": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+        "training-metadata.bin": "0adc67cd97010410bc10f4026d792a320e6da13fdb7a49a633301c90a1ba64ff",
+        "training.state": "9fa47b99b2349c20ca0c79a35ae007086ecab9acbb8c9b9cf18d4ecfa223a26d"
+      }
+    },
+    {
+      "name": "W4-RESGATE-LR003-g40",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\77dad574-34c1-3639-b827-0127fcab4fb2",
+      "manifest": {
+        "id": "g000040-s000327680-c0f196b08797ae0c3bb62c10a07afc791c5807ad1d3c99079a152c8c7109c093",
+        "generation": 40,
+        "optimizerStep": 327680,
+        "trainingDepth": 4,
+        "parentId": "g000039-s000319488-f780d50b421e4cc9502a224eb3421d1a105222be85157aee8b34eb9d34b8cca1",
+        "networkBytes": 52464,
+        "networkSha256": "092431ed1baa14122890dd6fa6a13be9d147274e83513f36260b477f0a5fc1c3",
+        "trainingBytes": 157264,
+        "trainingSha256": "206f23e5da5d6fb008db869d37363ccbb6034e5c82ff84317d5ef27a5a2a7945",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "files": {
+        "manifest.bin": "32d523a543c24accb94cde457af59f609a9c4634f59738fcf453c870303fb812",
+        "network.brn-gen32_gated": "092431ed1baa14122890dd6fa6a13be9d147274e83513f36260b477f0a5fc1c3",
+        "training-metadata.bin": "df561176c1d88cf3d80a335643004ca91461d12a7c21cc8e930d29d6cc09ed36",
+        "training.state": "206f23e5da5d6fb008db869d37363ccbb6034e5c82ff84317d5ef27a5a2a7945"
+      }
+    },
+    {
+      "name": "W4-RESGATE-LR003-g48",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\77dad574-34c1-3639-b827-0127fcab4fb2",
+      "manifest": {
+        "id": "g000048-s000393216-31ed30a0a1ac54b785e0864d9cc39c8d155bca11146c79e36852e58091b32d06",
+        "generation": 48,
+        "optimizerStep": 393216,
+        "trainingDepth": 4,
+        "parentId": "g000047-s000385024-179dcecf3447af430c1a83f6b93bc8d07af256fc4ebaa332102adcbe9b748204",
+        "networkBytes": 52464,
+        "networkSha256": "888bc09eed507799afa7fc12580f42b9f37e9eafb73ddb43d707465395b34025",
+        "trainingBytes": 157264,
+        "trainingSha256": "d8281478653018001aa2569570a4b553dc600c0000eed0a839104aff76de8109",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "files": {
+        "manifest.bin": "e2af95f754347a5cbace8bab915c48dd9d5138ada417d950c08e27f84bd1fb53",
+        "network.brn-gen32_gated": "888bc09eed507799afa7fc12580f42b9f37e9eafb73ddb43d707465395b34025",
+        "training-metadata.bin": "b203f40cd90d67b45a937dd705f973a56acdd53e79291113ecc6db5f16656893",
+        "training.state": "d8281478653018001aa2569570a4b553dc600c0000eed0a839104aff76de8109"
+      }
+    },
+    {
+      "name": "W4-RESGATE-LR003-g56",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\77dad574-34c1-3639-b827-0127fcab4fb2",
+      "manifest": {
+        "id": "g000056-s000458752-e124041d67b12bae2339663dd49651e5c09c6777000c7737a049ad1f51267aed",
+        "generation": 56,
+        "optimizerStep": 458752,
+        "trainingDepth": 4,
+        "parentId": "g000055-s000450560-a7d3ca2e78e5f5bc4f4c6fadfade4b88815c79b639402ff9a7d11561a5748cfa",
+        "networkBytes": 52464,
+        "networkSha256": "380a2f8b192e22e827db5a893d2c45f2b268d8ba41cbb386f5f7792e23500604",
+        "trainingBytes": 157264,
+        "trainingSha256": "bcb1ced8282fce3a532566a669dea57b48f48b17f20ef3b237194cbb32a1985a",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "files": {
+        "manifest.bin": "4ccef74779b122a73c6988bf55732f1023ae8b5f256a5db823d561b98d7f5b8f",
+        "network.brn-gen32_gated": "380a2f8b192e22e827db5a893d2c45f2b268d8ba41cbb386f5f7792e23500604",
+        "training-metadata.bin": "0ccb734bf4c96d361b2e5b93264ea67fcfa4e1a2f7701d3c4745136b7ccd6a5e",
+        "training.state": "bcb1ced8282fce3a532566a669dea57b48f48b17f20ef3b237194cbb32a1985a"
+      }
+    },
+    {
+      "name": "W4-RESGATE-LR003-g64",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\77dad574-34c1-3639-b827-0127fcab4fb2",
+      "manifest": {
+        "id": "g000064-s000524288-c4a19e81755089d2a7a0e3904dd81347db96eda02dad7c4d3aedec5d630fb044",
+        "generation": 64,
+        "optimizerStep": 524288,
+        "trainingDepth": 4,
+        "parentId": "g000063-s000516096-b2b092903ea30d834118459c9bb821d03a6cfe0428f6d0806247b338a56dfd44",
+        "networkBytes": 52464,
+        "networkSha256": "f98aadffa26dafd5f5ec2f2947526e082c7b26f6979dd77be61b7f11a2fa7baf",
+        "trainingBytes": 157264,
+        "trainingSha256": "8844aee0d51bf0dd8e846735ab584313ff84a5c539770d98f12b2c4884c483b1",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "files": {
+        "manifest.bin": "afe31ef5f25b4a240fc06e93c47a054fdf15465c2088f431c00e4d04b22698e7",
+        "network.brn-gen32_gated": "f98aadffa26dafd5f5ec2f2947526e082c7b26f6979dd77be61b7f11a2fa7baf",
+        "training-metadata.bin": "b1de062581f6f14c12c7f7fbcb0b66989cd4a1e175e73567cb1c73f2cdc60c75",
+        "training.state": "8844aee0d51bf0dd8e846735ab584313ff84a5c539770d98f12b2c4884c483b1"
+      }
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g32",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\4e693253-bfdd-38b1-b8e2-be30ac620568",
+      "manifest": {
+        "id": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf",
+        "generation": 32,
+        "optimizerStep": 262144,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 104784,
+        "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+        "trainingBytes": 314224,
+        "trainingSha256": "137685439f0447dec59f15071dbd5227e1f9865a1376ff2c348d8cd36ba953df",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "files": {
+        "manifest.bin": "2535642c62ff484302bce99ae0329b4ff740f72763b860a7399799275fe31d2a",
+        "network.brn-gen32_cubic": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+        "training-metadata.bin": "61f31d6e2644e939efc743f044003c9ff41e395d4e1bd92064a8069402a4ebe6",
+        "training.state": "137685439f0447dec59f15071dbd5227e1f9865a1376ff2c348d8cd36ba953df"
+      }
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g40",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\4e693253-bfdd-38b1-b8e2-be30ac620568",
+      "manifest": {
+        "id": "g000040-s000327680-0f09e4a16bea49874e4c1444935d35fc87d69dc9a8e63cce39242156dcf59121",
+        "generation": 40,
+        "optimizerStep": 327680,
+        "trainingDepth": 4,
+        "parentId": "g000039-s000319488-79d51b7a05e71f7665be834f53737dfd9cc4d0c0390f7d9b0c11744341a3c57d",
+        "networkBytes": 104784,
+        "networkSha256": "4db2fda08719de5f39567ac1a1b9a433f5bc599014df2446e0088b48c9855128",
+        "trainingBytes": 314224,
+        "trainingSha256": "930d5acbce02ff355c223ac96683bfc148b6a51aa3dc832e31942b10f57f8e8e",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "files": {
+        "manifest.bin": "6ed11b8e3a7fa6641fa817bfdec0ce26462a9871fcceda5cb39b1e8242b6f424",
+        "network.brn-gen32_cubic": "4db2fda08719de5f39567ac1a1b9a433f5bc599014df2446e0088b48c9855128",
+        "training-metadata.bin": "b46e0908b727569f1dbee6b5aeab24107cce91e6df5d05d20b60fd6f1b145ddc",
+        "training.state": "930d5acbce02ff355c223ac96683bfc148b6a51aa3dc832e31942b10f57f8e8e"
+      }
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g48",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\4e693253-bfdd-38b1-b8e2-be30ac620568",
+      "manifest": {
+        "id": "g000048-s000393216-3bf2586cce57ab6d7491fea8b9e8463c20ad0670905befdd22ec4f1ba67d454c",
+        "generation": 48,
+        "optimizerStep": 393216,
+        "trainingDepth": 4,
+        "parentId": "g000047-s000385024-11196480db2f9e92e3ff5dc884267717a23856d396363221a387f69451155093",
+        "networkBytes": 104784,
+        "networkSha256": "df40d668fea50ef8dbc77f363adcfafbcbb3be5bf3e157da17ad3af747490f27",
+        "trainingBytes": 314224,
+        "trainingSha256": "c28d7bb50664d4983a414c001bedba096e493cde12f7521c723db4c3ab29a4a5",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "files": {
+        "manifest.bin": "84659c40b0d1d96ed1c135f0aa80b2b4f855c860c8de6b0fa36bcc7c16cda5a1",
+        "network.brn-gen32_cubic": "df40d668fea50ef8dbc77f363adcfafbcbb3be5bf3e157da17ad3af747490f27",
+        "training-metadata.bin": "ec5b46e40c814b291cf091c87553296dc4b881f3cca52e04e92f44c1154423b2",
+        "training.state": "c28d7bb50664d4983a414c001bedba096e493cde12f7521c723db4c3ab29a4a5"
+      }
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g56",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\4e693253-bfdd-38b1-b8e2-be30ac620568",
+      "manifest": {
+        "id": "g000056-s000458752-d8a039ca155287d8ed1223e3a9b54e78ca8edea2fa66ec5ae625b85e259e5186",
+        "generation": 56,
+        "optimizerStep": 458752,
+        "trainingDepth": 4,
+        "parentId": "g000055-s000450560-66a94afe49cb9cf4b9f420271678116e2b6001161efdc49b0e187da6ff2c2c13",
+        "networkBytes": 104784,
+        "networkSha256": "2b10686505798d62710cd4d5d9ca1ce72bbf5a4b3ef524800f666e5de6699e49",
+        "trainingBytes": 314224,
+        "trainingSha256": "22d1f843fefc9bc42184661851481b760cbeb7261a4951f99a4e3fe6d46154a6",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "files": {
+        "manifest.bin": "f196e4465a0d2d2790b253958de17aac9b40f68dbf72bc1f0e7ae2b68d0d9898",
+        "network.brn-gen32_cubic": "2b10686505798d62710cd4d5d9ca1ce72bbf5a4b3ef524800f666e5de6699e49",
+        "training-metadata.bin": "44e03458bb5b42c51a2aeac4b815f1351b8ab6c3302fc48629daf9d7eac48e2f",
+        "training.state": "22d1f843fefc9bc42184661851481b760cbeb7261a4951f99a4e3fe6d46154a6"
+      }
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g63",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\4e693253-bfdd-38b1-b8e2-be30ac620568",
+      "manifest": {
+        "id": "g000063-s000516096-3f2c7a050f1b185025eeb55a0ef44b7e31c133c30f6ece8e338c91813a1a4902",
+        "generation": 63,
+        "optimizerStep": 516096,
+        "trainingDepth": 4,
+        "parentId": "g000062-s000507904-72900694c054f80ec7fa67ccb4f21474e4c589378a9ae3944b1f3adaa1ba8b23",
+        "networkBytes": 104784,
+        "networkSha256": "0c1787f3b217e4175a065789ef6228190ed315e6bf0947998464d78302abd2fc",
+        "trainingBytes": 314224,
+        "trainingSha256": "fd5d220c218f8be743923969cf6e9f16bf907fb792a3db535601213ca77f73bc",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "files": {
+        "manifest.bin": "cac4bea9b04f64722a43183b4902bb54d6df3ac22f1aa23aed3eb7db0cfdcc83",
+        "network.brn-gen32_cubic": "0c1787f3b217e4175a065789ef6228190ed315e6bf0947998464d78302abd2fc",
+        "training-metadata.bin": "0705c050633717b1b80c763ccc2c87e21c89d5d4d8cd6b9cfdf29bf9e61730b6",
+        "training.state": "fd5d220c218f8be743923969cf6e9f16bf907fb792a3db535601213ca77f73bc"
+      }
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g64",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\4e693253-bfdd-38b1-b8e2-be30ac620568",
+      "manifest": {
+        "id": "g000064-s000524288-452b71fa8b42d6da3a6ec06e6991d08ff4adcd4cc7d4a88a7c8228fc5c36b75f",
+        "generation": 64,
+        "optimizerStep": 524288,
+        "trainingDepth": 4,
+        "parentId": "g000063-s000516096-3f2c7a050f1b185025eeb55a0ef44b7e31c133c30f6ece8e338c91813a1a4902",
+        "networkBytes": 104784,
+        "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc",
+        "trainingBytes": 314224,
+        "trainingSha256": "3c8d6ed2cb7884ac661de8bcbd1f8d6332ddac2788c272747ab2787808b682a8",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "files": {
+        "manifest.bin": "43eaa5e1aca850b34f193483be891f76cce276c9759f8f4e4b692fdd8ab3c254",
+        "network.brn-gen32_cubic": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc",
+        "training-metadata.bin": "4194756bcb485babfbee1e34eba6e4834e8ff4b970ee7aa5012cab8aaef83ee6",
+        "training.state": "3c8d6ed2cb7884ac661de8bcbd1f8d6332ddac2788c272747ab2787808b682a8"
+      }
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g32",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\6b995953-5bc1-3b7b-bae2-eaf7a5377d9a",
+      "manifest": {
+        "id": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf",
+        "generation": 32,
+        "optimizerStep": 262144,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 104784,
+        "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+        "trainingBytes": 314224,
+        "trainingSha256": "137685439f0447dec59f15071dbd5227e1f9865a1376ff2c348d8cd36ba953df",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "files": {
+        "manifest.bin": "2535642c62ff484302bce99ae0329b4ff740f72763b860a7399799275fe31d2a",
+        "network.brn-gen32_cubic": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+        "training-metadata.bin": "61f31d6e2644e939efc743f044003c9ff41e395d4e1bd92064a8069402a4ebe6",
+        "training.state": "137685439f0447dec59f15071dbd5227e1f9865a1376ff2c348d8cd36ba953df"
+      }
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g40",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\6b995953-5bc1-3b7b-bae2-eaf7a5377d9a",
+      "manifest": {
+        "id": "g000040-s000327680-f1db1185e174f87a025c0b166964f5fdd7a7b2c55205499a1a5ebd8f2df5ad7b",
+        "generation": 40,
+        "optimizerStep": 327680,
+        "trainingDepth": 4,
+        "parentId": "g000039-s000319488-d974b36753c8a7838a9a009ed90ef344b1dacaf05b8e31d51cbff2b0c0bb94cc",
+        "networkBytes": 104784,
+        "networkSha256": "fdaf11fad536e6215e62b19cd0874f7af1a1bf5f1d1c4b0a6b1b90285564d58d",
+        "trainingBytes": 314224,
+        "trainingSha256": "6c6e6a819dd949c1cfc4321ff7cca730323bfbaebb9db8e0bf163c871e0792ec",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "files": {
+        "manifest.bin": "61d8dbad0a695c95b769224579536131ac7b4b379b598dcac82c244569a9abbd",
+        "network.brn-gen32_cubic": "fdaf11fad536e6215e62b19cd0874f7af1a1bf5f1d1c4b0a6b1b90285564d58d",
+        "training-metadata.bin": "930ba56e4a32313827dca9337c6b353ebf8e02154fd0bac8b4da7587fbd1f151",
+        "training.state": "6c6e6a819dd949c1cfc4321ff7cca730323bfbaebb9db8e0bf163c871e0792ec"
+      }
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g48",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\6b995953-5bc1-3b7b-bae2-eaf7a5377d9a",
+      "manifest": {
+        "id": "g000048-s000393216-3d2a13f3f4d37de2e8e673b113ae25a233e5162935856afb15bc97ab24d2318d",
+        "generation": 48,
+        "optimizerStep": 393216,
+        "trainingDepth": 4,
+        "parentId": "g000047-s000385024-3a47da710f743810fc72fb84aa81267354ed854a00fd3696948559cad9d45828",
+        "networkBytes": 104784,
+        "networkSha256": "eb157bef25afecaf36b3a7327da4996b659365812f70d44c7440f5bb679f8924",
+        "trainingBytes": 314224,
+        "trainingSha256": "ab0179ad2c4521a588892b97b38747ac696d60a1a84e8cc0536cfa0aad2fbf54",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "files": {
+        "manifest.bin": "c75e1334036f9651ed82c93887a426aa61a4e34a71b5ef73267ab32ab9a63f28",
+        "network.brn-gen32_cubic": "eb157bef25afecaf36b3a7327da4996b659365812f70d44c7440f5bb679f8924",
+        "training-metadata.bin": "d9ca8cecda02318a2252e4ec92b0b570a48beb79a57172c34133d1a2223ac21c",
+        "training.state": "ab0179ad2c4521a588892b97b38747ac696d60a1a84e8cc0536cfa0aad2fbf54"
+      }
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g56",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\6b995953-5bc1-3b7b-bae2-eaf7a5377d9a",
+      "manifest": {
+        "id": "g000056-s000458752-e7014c17ffb5c2223dd0a7dcee7d92b4967015005567e87100cc918cd2eb2d2b",
+        "generation": 56,
+        "optimizerStep": 458752,
+        "trainingDepth": 4,
+        "parentId": "g000055-s000450560-163e187c5c203faed93d429d54860c6fa712653f326f86d6ed256a4274710b7d",
+        "networkBytes": 104784,
+        "networkSha256": "5d11e69afe0f0ff9733ac9fc3ffe1d7d4664314d49e41412754760e2957d06ac",
+        "trainingBytes": 314224,
+        "trainingSha256": "d141bc09b7233f9bc527f6cf832441d860a452bb1004df1b892a35601ca3864b",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "files": {
+        "manifest.bin": "3859a9af3340bb261f37d2392690dcbfd4276e9f1d8b800b2259efc299e78459",
+        "network.brn-gen32_cubic": "5d11e69afe0f0ff9733ac9fc3ffe1d7d4664314d49e41412754760e2957d06ac",
+        "training-metadata.bin": "78c43ab691cdff5b457d41e0416ca756937db228cc65e20793545fc591d61884",
+        "training.state": "d141bc09b7233f9bc527f6cf832441d860a452bb1004df1b892a35601ca3864b"
+      }
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g63",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\6b995953-5bc1-3b7b-bae2-eaf7a5377d9a",
+      "manifest": {
+        "id": "g000063-s000516096-20f05fb4a8e00abf9592091a99858d7c18c08ae06e2edb5faeb05b7cf1bf4e75",
+        "generation": 63,
+        "optimizerStep": 516096,
+        "trainingDepth": 4,
+        "parentId": "g000062-s000507904-08ae6907feab3295b7f77e1e060fe38d6b8893bfa8da1cf3934f107072c85fe4",
+        "networkBytes": 104784,
+        "networkSha256": "149850f9e757cc0bcd2c45a31b9ad9f2e86979e4cf14445e95bce3173fec5412",
+        "trainingBytes": 314224,
+        "trainingSha256": "bd01cdf92c5bdcaa3690af39064a5623066d51a883b6cc1accf2c82b6f5ea1c8",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "files": {
+        "manifest.bin": "9925069892ac7b34441f22f8793f92a39244076955a403750c48d5d06f5e0b66",
+        "network.brn-gen32_cubic": "149850f9e757cc0bcd2c45a31b9ad9f2e86979e4cf14445e95bce3173fec5412",
+        "training-metadata.bin": "2e3dbf38b88799842c6314aad7bb20b16efcae839f52a5ea2d2a121eca745b9a",
+        "training.state": "bd01cdf92c5bdcaa3690af39064a5623066d51a883b6cc1accf2c82b6f5ea1c8"
+      }
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g64",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\6b995953-5bc1-3b7b-bae2-eaf7a5377d9a",
+      "manifest": {
+        "id": "g000064-s000524288-5982ea47c1d2bd88f049fa13c2b4b16eebe75ef919dfca18aad7d7fd673e4c66",
+        "generation": 64,
+        "optimizerStep": 524288,
+        "trainingDepth": 4,
+        "parentId": "g000063-s000516096-20f05fb4a8e00abf9592091a99858d7c18c08ae06e2edb5faeb05b7cf1bf4e75",
+        "networkBytes": 104784,
+        "networkSha256": "cfa37ddd14e461546de266d622ded7ebdeea240b4c90274c269d2ffbd5be8901",
+        "trainingBytes": 314224,
+        "trainingSha256": "dd3a1f15c3a9e650c3b1090b6a5820ac0fd88bc8c56bdd2f7974fb6d8d6c1cb8",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "files": {
+        "manifest.bin": "15c9b17ce2f43adce660f08286dd01a42d860b2a33cee943a7fce530edaed460",
+        "network.brn-gen32_cubic": "cfa37ddd14e461546de266d622ded7ebdeea240b4c90274c269d2ffbd5be8901",
+        "training-metadata.bin": "c039b87d7c3476efe4923d89da39ccda0442f8f4da69d1ff9a71b6b29039d0e6",
+        "training.state": "dd3a1f15c3a9e650c3b1090b6a5820ac0fd88bc8c56bdd2f7974fb6d8d6c1cb8"
+      }
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g32",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-Pair2\\d1a2e220-c1a0-3953-ad2c-2e001af93e7d",
+      "manifest": {
+        "id": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+        "generation": 32,
+        "optimizerStep": 2015232,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 795032,
+        "networkSha256": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0",
+        "trainingBytes": 2731424,
+        "trainingSha256": "b839898fc4ae3824118df95e62d3ef3dbf548d0cd60b5b29dd84691fe1783f89",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "81562a0d41106ec1fefe9135609d8e1afe7cfde8b498bf09c1550a557aa11579",
+        "network.brn-pair2": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0",
+        "training-metadata.bin": "64ae110eb0a1cc0dae9a5d22269f70e7f9e585a820ae245f53cc592da7287250",
+        "training.state": "b839898fc4ae3824118df95e62d3ef3dbf548d0cd60b5b29dd84691fe1783f89"
+      }
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g40",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-Pair2\\d1a2e220-c1a0-3953-ad2c-2e001af93e7d",
+      "manifest": {
+        "id": "g000040-s002080768-415c1498e320efd228adaba7aa9cca4de24f2f85124a1ae5b3c007d9adb55360",
+        "generation": 40,
+        "optimizerStep": 2080768,
+        "trainingDepth": 4,
+        "parentId": "g000039-s002072576-7cade70795756b0e12ce5f28af4be01eacd347be1bd8b198c5fae082865b1579",
+        "networkBytes": 795032,
+        "networkSha256": "d0e2d8a830ecbe9725b94b31ee50d043d713cb5eaa5bc24b42ec1d9f02dd115a",
+        "trainingBytes": 2731424,
+        "trainingSha256": "e62b3432e36beccea745522050a2e0d5b40f41495dfa2e00655ec5d4b1746f60",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "63194b1d5e68c7176e332ed5b67a24b800be08afea536938763469bcae5428b5",
+        "network.brn-pair2": "d0e2d8a830ecbe9725b94b31ee50d043d713cb5eaa5bc24b42ec1d9f02dd115a",
+        "training-metadata.bin": "7df8cc17c1f457cdfc82fda5d299fe11fc509667eedcff64609fb8aacb03ba3c",
+        "training.state": "e62b3432e36beccea745522050a2e0d5b40f41495dfa2e00655ec5d4b1746f60"
+      }
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g48",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-Pair2\\d1a2e220-c1a0-3953-ad2c-2e001af93e7d",
+      "manifest": {
+        "id": "g000048-s002146304-9ec332d1de08494ebaf4e052a860c0cce1ab14471abd67e013cd7d29412a425b",
+        "generation": 48,
+        "optimizerStep": 2146304,
+        "trainingDepth": 4,
+        "parentId": "g000047-s002138112-813408e612f118f672f1464321bc5767864c2ec6c5656c6f5cb5d9bc7f8c4e21",
+        "networkBytes": 795032,
+        "networkSha256": "6220a41b66976d4d63f978ba50ee12bb3f961fa68e2c3b3996c489c298ca1842",
+        "trainingBytes": 2731424,
+        "trainingSha256": "77b165daa60d74a1373b6a2cfed8fdb53717a0a9ad1f7ea66ac2a67d77c29574",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "35e99f9606f872a04f5fd1ab28638832bb0d7f78b850285dc123d17bdfb59d52",
+        "network.brn-pair2": "6220a41b66976d4d63f978ba50ee12bb3f961fa68e2c3b3996c489c298ca1842",
+        "training-metadata.bin": "16ee67c370f873ec71a310aab151b5e4f2324375c2e34427f973ba384abcc8d5",
+        "training.state": "77b165daa60d74a1373b6a2cfed8fdb53717a0a9ad1f7ea66ac2a67d77c29574"
+      }
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g56",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-Pair2\\d1a2e220-c1a0-3953-ad2c-2e001af93e7d",
+      "manifest": {
+        "id": "g000056-s002211840-0ae51c45fb5854d8ce19d177b0742d64f1928ac58b7df903d6b9e616955f0fc3",
+        "generation": 56,
+        "optimizerStep": 2211840,
+        "trainingDepth": 4,
+        "parentId": "g000055-s002203648-e989c5e166a822030b10e7ed829220fe1d9484e17d881c092d5754c751bf6f56",
+        "networkBytes": 795032,
+        "networkSha256": "197b42836c00aea313094bd3b328493c2c59f655366a36f1cfa5ad0b8a1e3541",
+        "trainingBytes": 2731424,
+        "trainingSha256": "4f81e9213a44e39c745e38f1f9fe2b76d77798af72a30c11550d00053a6619aa",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "4ff6861755644cd79b4bbf70bf15c27182faeea4340da48f5023d0d3e17aedaf",
+        "network.brn-pair2": "197b42836c00aea313094bd3b328493c2c59f655366a36f1cfa5ad0b8a1e3541",
+        "training-metadata.bin": "1fdca31071a6630468559a8a637ca61887eda93a6ebbccc0802ed827085f6500",
+        "training.state": "4f81e9213a44e39c745e38f1f9fe2b76d77798af72a30c11550d00053a6619aa"
+      }
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g64",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-Pair2\\d1a2e220-c1a0-3953-ad2c-2e001af93e7d",
+      "manifest": {
+        "id": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+        "generation": 64,
+        "optimizerStep": 2277376,
+        "trainingDepth": 4,
+        "parentId": "g000063-s002269184-442287932c112c798471b208a5c8ffffe59420aa116db7134d53f8ab53740cd6",
+        "networkBytes": 795032,
+        "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+        "trainingBytes": 2731424,
+        "trainingSha256": "19aa0beffaf653c5b8ba4dca89f5b4b4a3f0eb31440e297acf7f0969b0485502",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "0b2758e22454788e0c026de00953a2a08d9ce43125f7074e7f100beed063b394",
+        "network.brn-pair2": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+        "training-metadata.bin": "486c9d3bf4e9b45e6962fd8fbc4d3ebf92a6700be5ff7bafbe3a99c8a2c543ce",
+        "training.state": "19aa0beffaf653c5b8ba4dca89f5b4b4a3f0eb31440e297acf7f0969b0485502"
+      }
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g32",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-Pair2\\819e0f58-6726-3479-8709-bfa7079ad2d0",
+      "manifest": {
+        "id": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+        "generation": 32,
+        "optimizerStep": 2015232,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 795032,
+        "networkSha256": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0",
+        "trainingBytes": 2731424,
+        "trainingSha256": "b839898fc4ae3824118df95e62d3ef3dbf548d0cd60b5b29dd84691fe1783f89",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "81562a0d41106ec1fefe9135609d8e1afe7cfde8b498bf09c1550a557aa11579",
+        "network.brn-pair2": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0",
+        "training-metadata.bin": "64ae110eb0a1cc0dae9a5d22269f70e7f9e585a820ae245f53cc592da7287250",
+        "training.state": "b839898fc4ae3824118df95e62d3ef3dbf548d0cd60b5b29dd84691fe1783f89"
+      }
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g40",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-Pair2\\819e0f58-6726-3479-8709-bfa7079ad2d0",
+      "manifest": {
+        "id": "g000040-s002080768-b7a3c931ce2933f940a8a094ea081627d398c7a2b41a48f2da93579ef6680fdd",
+        "generation": 40,
+        "optimizerStep": 2080768,
+        "trainingDepth": 4,
+        "parentId": "g000039-s002072576-b55792ef264c28d771cf7192661236cce9bcffa2f7808bf96032595d972e9bb5",
+        "networkBytes": 795032,
+        "networkSha256": "b563ea82f9cc9292db7130b3213368d7925c7bd2eea7497432861b1c8d4b34a5",
+        "trainingBytes": 2731424,
+        "trainingSha256": "74253e528c9e84ef717a561025fe0ac9b707a4a4b3f723c750d4ceeda5a00428",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "465b8aa7a23cdb286d0a45901c676eb13acc053272447072b2d872fca99930df",
+        "network.brn-pair2": "b563ea82f9cc9292db7130b3213368d7925c7bd2eea7497432861b1c8d4b34a5",
+        "training-metadata.bin": "355057027d1df6e75f7e9e1f8952a485974aeaf1a9795692a2b1085105d644dc",
+        "training.state": "74253e528c9e84ef717a561025fe0ac9b707a4a4b3f723c750d4ceeda5a00428"
+      }
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g48",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-Pair2\\819e0f58-6726-3479-8709-bfa7079ad2d0",
+      "manifest": {
+        "id": "g000048-s002146304-75a33b8eb11f8f61bdb86d9bb96a6d4120cde8c25bc4636e8340468777403973",
+        "generation": 48,
+        "optimizerStep": 2146304,
+        "trainingDepth": 4,
+        "parentId": "g000047-s002138112-98951faace53b7374c519dcc31b8656fa0ac50c2d5f3356a42facf2a24dc7ce7",
+        "networkBytes": 795032,
+        "networkSha256": "61910f3490b0ad1408f61c6c8259200ea47b78a766093c2ed9164ea1add44532",
+        "trainingBytes": 2731424,
+        "trainingSha256": "7752687c1a2649e8608c97933e6f6baa5542c32786c4825366dbbe5c1a209bab",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "21f6b44ac3970b86b9be50c78e7f99833f741df6248fb27b7519b486ee6e5d76",
+        "network.brn-pair2": "61910f3490b0ad1408f61c6c8259200ea47b78a766093c2ed9164ea1add44532",
+        "training-metadata.bin": "0b7d9e56f3607d46800de439ae1001c151fb56c70b79eb371d15d583fa95a098",
+        "training.state": "7752687c1a2649e8608c97933e6f6baa5542c32786c4825366dbbe5c1a209bab"
+      }
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g56",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-Pair2\\819e0f58-6726-3479-8709-bfa7079ad2d0",
+      "manifest": {
+        "id": "g000056-s002211840-758821a3198cc5dc85f5279dd6f3a0cacd0c76b668e502b758f6b7f435cf251d",
+        "generation": 56,
+        "optimizerStep": 2211840,
+        "trainingDepth": 4,
+        "parentId": "g000055-s002203648-a133b6e89e215ecc17a616c14fcb126df2a7715cae459713bc9161bd7dcff2f2",
+        "networkBytes": 795032,
+        "networkSha256": "cd2e2a9d81b1ec45e9338a84eacc1c4f57bc68bab69fba88d0268969a064b149",
+        "trainingBytes": 2731424,
+        "trainingSha256": "7fcd3c22ed41bc2cb9e48a2dbcdcdfd43e4cf1dd6443529a4d44100e1e80a495",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "04d3f21f8952213dddc0c29fd3a916788a0c4d03b8a91e2b8684f35fcde39efa",
+        "network.brn-pair2": "cd2e2a9d81b1ec45e9338a84eacc1c4f57bc68bab69fba88d0268969a064b149",
+        "training-metadata.bin": "8e3c87f1762803d9117759d79b55ff08a1992d8e61db19d7f33e3607d437f818",
+        "training.state": "7fcd3c22ed41bc2cb9e48a2dbcdcdfd43e4cf1dd6443529a4d44100e1e80a495"
+      }
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g64",
+      "sourceRoot": "E:\\SeedV6-Networks\\BRN-Pair2\\819e0f58-6726-3479-8709-bfa7079ad2d0",
+      "manifest": {
+        "id": "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1",
+        "generation": 64,
+        "optimizerStep": 2277376,
+        "trainingDepth": 4,
+        "parentId": "g000063-s002269184-335373a32552a851d1ff5dafd2a0aa843d8d2d1262ee32128465a106de7b1f23",
+        "networkBytes": 795032,
+        "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050",
+        "trainingBytes": 2731424,
+        "trainingSha256": "4c23665148d475c44c7e24f903c011407128f17272e5cbba197ce3d642fa883a",
+        "architecture": "BRN_PAIR2"
+      },
+      "files": {
+        "manifest.bin": "b98938185d01bbf9988993c1def7e9aa8336d6d8d361c9ae9c20c65586459d47",
+        "network.brn-pair2": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050",
+        "training-metadata.bin": "c05c8e494a52f77fb84a73fa078bbf21309694bf6c75913ddd234f809b5c1caf",
+        "training.state": "4c23665148d475c44c7e24f903c011407128f17272e5cbba197ce3d642fa883a"
+      }
+    }
+  ],
+  "note": "Freezing initially also copied 32 historical reference ancestors into the isolated Gen32 root; preserved but excluded from the model plan. Only explicit frozen Gen32 is admissible as reference."
+}

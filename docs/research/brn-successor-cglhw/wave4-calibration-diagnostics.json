@@ -1,0 +1,625 @@
+{
+  "scope": "Reused development data; affine change from frozen Gen32 before standard .25 search residual mapping. No strength selection or independent evidence.",
+  "sources": [
+    {
+      "source": "bt4",
+      "metrics": {
+        "Gen32@0": {
+          "fit": 0.6653542504272657,
+          "evaluation": 0.642954045745302,
+          "validEvaluation": 0.642954045745302
+        },
+        "W4-RESGATE-LR001-g32@0.25": {
+          "fit": 0.6562268427467969,
+          "evaluation": 0.6347620420609381,
+          "validEvaluation": 0.6347620420609381
+        },
+        "W4-RESGATE-LR001-g32@0.5": {
+          "fit": 0.6514404485982757,
+          "evaluation": 0.6308731378268639,
+          "validEvaluation": 0.6308731378268639
+        },
+        "W4-RESGATE-LR001-g32@0.75": {
+          "fit": 0.6502066050685996,
+          "evaluation": 0.630480840344103,
+          "validEvaluation": 0.630480840344103
+        },
+        "W4-RESGATE-LR001-g32@1": {
+          "fit": 0.6530375758251392,
+          "evaluation": 0.6341018440655094,
+          "validEvaluation": 0.6341018440655094
+        },
+        "W4-RESGATE-LR001-g63@0.25": {
+          "fit": 0.6558339280556497,
+          "evaluation": 0.6354473343569818,
+          "validEvaluation": 0.6354473343569818
+        },
+        "W4-RESGATE-LR001-g63@0.5": {
+          "fit": 0.6498472586534922,
+          "evaluation": 0.631154197024169,
+          "validEvaluation": 0.631154197024169
+        },
+        "W4-RESGATE-LR001-g63@0.75": {
+          "fit": 0.6464742925961589,
+          "evaluation": 0.6292026426328403,
+          "validEvaluation": 0.6292026426328403
+        },
+        "W4-RESGATE-LR001-g63@1": {
+          "fit": 0.64550538229367,
+          "evaluation": 0.6291674424754615,
+          "validEvaluation": 0.6291674424754615
+        },
+        "W4-RESGATE-LR001-g64@0.25": {
+          "fit": 0.6562430561938994,
+          "evaluation": 0.635865348743165,
+          "validEvaluation": 0.635865348743165
+        },
+        "W4-RESGATE-LR001-g64@0.5": {
+          "fit": 0.6506797208208291,
+          "evaluation": 0.6325557188152079,
+          "validEvaluation": 0.6325557188152079
+        },
+        "W4-RESGATE-LR001-g64@0.75": {
+          "fit": 0.6482003108243439,
+          "evaluation": 0.6320304131233471,
+          "validEvaluation": 0.6320304131233471
+        },
+        "W4-RESGATE-LR001-g64@1": {
+          "fit": 0.6490847729737087,
+          "evaluation": 0.6342031389212978,
+          "validEvaluation": 0.6342031389212978
+        },
+        "W4-RESGATE-LR003-g32@0.25": {
+          "fit": 0.6562268427467969,
+          "evaluation": 0.6347620420609381,
+          "validEvaluation": 0.6347620420609381
+        },
+        "W4-RESGATE-LR003-g32@0.5": {
+          "fit": 0.6514404485982757,
+          "evaluation": 0.6308731378268639,
+          "validEvaluation": 0.6308731378268639
+        },
+        "W4-RESGATE-LR003-g32@0.75": {
+          "fit": 0.6502066050685996,
+          "evaluation": 0.630480840344103,
+          "validEvaluation": 0.630480840344103
+        },
+        "W4-RESGATE-LR003-g32@1": {
+          "fit": 0.6530375758251392,
+          "evaluation": 0.6341018440655094,
+          "validEvaluation": 0.6341018440655094
+        },
+        "W4-RESGATE-LR003-g64@0.25": {
+          "fit": 0.6560892260025009,
+          "evaluation": 0.6357193624054148,
+          "validEvaluation": 0.6357193624054148
+        },
+        "W4-RESGATE-LR003-g64@0.5": {
+          "fit": 0.6514851879086879,
+          "evaluation": 0.6328476193025178,
+          "validEvaluation": 0.6328476193025178
+        },
+        "W4-RESGATE-LR003-g64@0.75": {
+          "fit": 0.6512380450002967,
+          "evaluation": 0.6333280435504434,
+          "validEvaluation": 0.6333280435504434
+        },
+        "W4-RESGATE-LR003-g64@1": {
+          "fit": 0.6560163025009795,
+          "evaluation": 0.6373099962813158,
+          "validEvaluation": 0.6373099962813158
+        },
+        "W4-RESCUBIC-LR001-g32@0.25": {
+          "fit": 0.6564557475155026,
+          "evaluation": 0.6345405138696791,
+          "validEvaluation": 0.6345405138696791
+        },
+        "W4-RESCUBIC-LR001-g32@0.5": {
+          "fit": 0.6522678602543065,
+          "evaluation": 0.6323605652497505,
+          "validEvaluation": 0.6323605652497505
+        },
+        "W4-RESCUBIC-LR001-g32@0.75": {
+          "fit": 0.6531982147254393,
+          "evaluation": 0.6346717213533143,
+          "validEvaluation": 0.6346717213533143
+        },
+        "W4-RESCUBIC-LR001-g32@1": {
+          "fit": 0.6597144716669797,
+          "evaluation": 0.6420377042165422,
+          "validEvaluation": 0.6420377042165422
+        },
+        "W4-RESCUBIC-LR001-g63@0.25": {
+          "fit": 0.6543530128873576,
+          "evaluation": 0.6340960784262759,
+          "validEvaluation": 0.6340960784262759
+        },
+        "W4-RESCUBIC-LR001-g63@0.5": {
+          "fit": 0.6475377482755472,
+          "evaluation": 0.629640918986701,
+          "validEvaluation": 0.629640918986701
+        },
+        "W4-RESCUBIC-LR001-g63@0.75": {
+          "fit": 0.6445320352366415,
+          "evaluation": 0.6281162142996878,
+          "validEvaluation": 0.6281162142996878
+        },
+        "W4-RESCUBIC-LR001-g63@1": {
+          "fit": 0.6472153910109596,
+          "evaluation": 0.629983588226725,
+          "validEvaluation": 0.629983588226725
+        },
+        "W4-RESCUBIC-LR001-g64@0.25": {
+          "fit": 0.6549042622036149,
+          "evaluation": 0.6347376918183161,
+          "validEvaluation": 0.6347376918183161
+        },
+        "W4-RESCUBIC-LR001-g64@0.5": {
+          "fit": 0.6484805360896865,
+          "evaluation": 0.6313889995973947,
+          "validEvaluation": 0.6313889995973947
+        },
+        "W4-RESCUBIC-LR001-g64@0.75": {
+          "fit": 0.6467998569029868,
+          "evaluation": 0.6320161064284312,
+          "validEvaluation": 0.6320161064284312
+        },
+        "W4-RESCUBIC-LR001-g64@1": {
+          "fit": 0.6524506914576466,
+          "evaluation": 0.6388347128120785,
+          "validEvaluation": 0.6388347128120785
+        },
+        "W4-RESCUBIC-LR003-g32@0.25": {
+          "fit": 0.6564557475155026,
+          "evaluation": 0.6345405138696791,
+          "validEvaluation": 0.6345405138696791
+        },
+        "W4-RESCUBIC-LR003-g32@0.5": {
+          "fit": 0.6522678602543065,
+          "evaluation": 0.6323605652497505,
+          "validEvaluation": 0.6323605652497505
+        },
+        "W4-RESCUBIC-LR003-g32@0.75": {
+          "fit": 0.6531982147254393,
+          "evaluation": 0.6346717213533143,
+          "validEvaluation": 0.6346717213533143
+        },
+        "W4-RESCUBIC-LR003-g32@1": {
+          "fit": 0.6597144716669797,
+          "evaluation": 0.6420377042165422,
+          "validEvaluation": 0.6420377042165422
+        },
+        "W4-RESCUBIC-LR003-g63@0.25": {
+          "fit": 0.6562795328741805,
+          "evaluation": 0.6356333598805128,
+          "validEvaluation": 0.6356333598805128
+        },
+        "W4-RESCUBIC-LR003-g63@0.5": {
+          "fit": 0.6520884672734942,
+          "evaluation": 0.6330233746835078,
+          "validEvaluation": 0.6330233746835078
+        },
+        "W4-RESCUBIC-LR003-g63@0.75": {
+          "fit": 0.6520532407832499,
+          "evaluation": 0.6341383034095639,
+          "validEvaluation": 0.6341383034095639
+        },
+        "W4-RESCUBIC-LR003-g63@1": {
+          "fit": 0.6570639869365034,
+          "evaluation": 0.6398316718672433,
+          "validEvaluation": 0.6398316718672433
+        },
+        "W4-RESCUBIC-LR003-g64@0.25": {
+          "fit": 0.6577952088128073,
+          "evaluation": 0.635809174200749,
+          "validEvaluation": 0.635809174200749
+        },
+        "W4-RESCUBIC-LR003-g64@0.5": {
+          "fit": 0.6551143112102547,
+          "evaluation": 0.6342907731516814,
+          "validEvaluation": 0.6342907731516814
+        },
+        "W4-RESCUBIC-LR003-g64@0.75": {
+          "fit": 0.6565065714952364,
+          "evaluation": 0.6394779316875812,
+          "validEvaluation": 0.6394779316875812
+        },
+        "W4-RESCUBIC-LR003-g64@1": {
+          "fit": 0.6638146500998401,
+          "evaluation": 0.6537445560952357,
+          "validEvaluation": 0.6537445560952357
+        },
+        "W4-BRE-CONTROL-LR001-g32@0.25": {
+          "fit": 0.6588385466051205,
+          "evaluation": 0.6385326219794333,
+          "validEvaluation": 0.6385326219794333
+        },
+        "W4-BRE-CONTROL-LR001-g32@0.5": {
+          "fit": 0.6561469599545577,
+          "evaluation": 0.638565504958462,
+          "validEvaluation": 0.638565504958462
+        },
+        "W4-BRE-CONTROL-LR001-g32@0.75": {
+          "fit": 0.6551126859512613,
+          "evaluation": 0.6417665448044028,
+          "validEvaluation": 0.6417665448044028
+        },
+        "W4-BRE-CONTROL-LR001-g32@1": {
+          "fit": 0.6569887492683892,
+          "evaluation": 0.6485883380089581,
+          "validEvaluation": 0.6485883380089581
+        },
+        "W4-BRE-CONTROL-LR001-g64@0.25": {
+          "fit": 0.6585142359774995,
+          "evaluation": 0.6385260699644215,
+          "validEvaluation": 0.6385260699644215
+        },
+        "W4-BRE-CONTROL-LR001-g64@0.5": {
+          "fit": 0.6548969672494694,
+          "evaluation": 0.6369177581838593,
+          "validEvaluation": 0.6369177581838593
+        },
+        "W4-BRE-CONTROL-LR001-g64@0.75": {
+          "fit": 0.6540227019832788,
+          "evaluation": 0.6379653180935,
+          "validEvaluation": 0.6379653180935
+        },
+        "W4-BRE-CONTROL-LR001-g64@1": {
+          "fit": 0.6569304462139438,
+          "evaluation": 0.6420179523487638,
+          "validEvaluation": 0.6420179523487638
+        },
+        "W4-BRE-CONTROL-LR003-g32@0.25": {
+          "fit": 0.6588385466051205,
+          "evaluation": 0.6385326219794333,
+          "validEvaluation": 0.6385326219794333
+        },
+        "W4-BRE-CONTROL-LR003-g32@0.5": {
+          "fit": 0.6561469599545577,
+          "evaluation": 0.638565504958462,
+          "validEvaluation": 0.638565504958462
+        },
+        "W4-BRE-CONTROL-LR003-g32@0.75": {
+          "fit": 0.6551126859512613,
+          "evaluation": 0.6417665448044028,
+          "validEvaluation": 0.6417665448044028
+        },
+        "W4-BRE-CONTROL-LR003-g32@1": {
+          "fit": 0.6569887492683892,
+          "evaluation": 0.6485883380089581,
+          "validEvaluation": 0.6485883380089581
+        },
+        "W4-BRE-CONTROL-LR003-g64@0.25": {
+          "fit": 0.6572388060524835,
+          "evaluation": 0.6370884089893427,
+          "validEvaluation": 0.6370884089893427
+        },
+        "W4-BRE-CONTROL-LR003-g64@0.5": {
+          "fit": 0.6540060700478253,
+          "evaluation": 0.6351422554533109,
+          "validEvaluation": 0.6351422554533109
+        },
+        "W4-BRE-CONTROL-LR003-g64@0.75": {
+          "fit": 0.6555137561905948,
+          "evaluation": 0.6366700452501063,
+          "validEvaluation": 0.6366700452501063
+        },
+        "W4-BRE-CONTROL-LR003-g64@1": {
+          "fit": 0.6635761526226047,
+          "evaluation": 0.6418588767285177,
+          "validEvaluation": 0.6418588767285177
+        }
+      }
+    },
+    {
+      "source": "cp",
+      "metrics": {
+        "Gen32@0": {
+          "fit": 0.597491205909238,
+          "evaluation": 0.598240239935532,
+          "validEvaluation": 0.5978427380776782
+        },
+        "W4-RESGATE-LR001-g32@0.25": {
+          "fit": 0.5910097813044247,
+          "evaluation": 0.5928615531305352,
+          "validEvaluation": 0.5923188330745596
+        },
+        "W4-RESGATE-LR001-g32@0.5": {
+          "fit": 0.5867398554359466,
+          "evaluation": 0.5917205668777793,
+          "validEvaluation": 0.5910583851797543
+        },
+        "W4-RESGATE-LR001-g32@0.75": {
+          "fit": 0.5849279012754788,
+          "evaluation": 0.5943041514139942,
+          "validEvaluation": 0.5935496558108849
+        },
+        "W4-RESGATE-LR001-g32@1": {
+          "fit": 0.5877548087284942,
+          "evaluation": 0.600824491117499,
+          "validEvaluation": 0.6000034629243965
+        },
+        "W4-RESGATE-LR001-g63@0.25": {
+          "fit": 0.589056564053406,
+          "evaluation": 0.5900723988629225,
+          "validEvaluation": 0.5896998217927558
+        },
+        "W4-RESGATE-LR001-g63@0.5": {
+          "fit": 0.5835559617376223,
+          "evaluation": 0.5845666318616523,
+          "validEvaluation": 0.5842192601476027
+        },
+        "W4-RESGATE-LR001-g63@0.75": {
+          "fit": 0.5808816405342629,
+          "evaluation": 0.5812479516360466,
+          "validEvaluation": 0.5809342780443988
+        },
+        "W4-RESGATE-LR001-g63@1": {
+          "fit": 0.581337137538694,
+          "evaluation": 0.5805431883091684,
+          "validEvaluation": 0.580263838586816
+        },
+        "W4-RESGATE-LR001-g64@0.25": {
+          "fit": 0.58982773831633,
+          "evaluation": 0.5912972436576354,
+          "validEvaluation": 0.5909868866205022
+        },
+        "W4-RESGATE-LR001-g64@0.5": {
+          "fit": 0.5849922661641745,
+          "evaluation": 0.5874043476241398,
+          "validEvaluation": 0.587189016990965
+        },
+        "W4-RESGATE-LR001-g64@0.75": {
+          "fit": 0.5827289073202597,
+          "evaluation": 0.5862678686902862,
+          "validEvaluation": 0.5861629715841379
+        },
+        "W4-RESGATE-LR001-g64@1": {
+          "fit": 0.5835887660104406,
+          "evaluation": 0.5880738112576386,
+          "validEvaluation": 0.588092296814536
+        },
+        "W4-RESGATE-LR003-g32@0.25": {
+          "fit": 0.5910097813044247,
+          "evaluation": 0.5928615531305352,
+          "validEvaluation": 0.5923188330745596
+        },
+        "W4-RESGATE-LR003-g32@0.5": {
+          "fit": 0.5867398554359466,
+          "evaluation": 0.5917205668777793,
+          "validEvaluation": 0.5910583851797543
+        },
+        "W4-RESGATE-LR003-g32@0.75": {
+          "fit": 0.5849279012754788,
+          "evaluation": 0.5943041514139942,
+          "validEvaluation": 0.5935496558108849
+        },
+        "W4-RESGATE-LR003-g32@1": {
+          "fit": 0.5877548087284942,
+          "evaluation": 0.600824491117499,
+          "validEvaluation": 0.6000034629243965
+        },
+        "W4-RESGATE-LR003-g64@0.25": {
+          "fit": 0.588507138370896,
+          "evaluation": 0.5905581644041432,
+          "validEvaluation": 0.590397870942189
+        },
+        "W4-RESGATE-LR003-g64@0.5": {
+          "fit": 0.5831340467529836,
+          "evaluation": 0.5861734870083812,
+          "validEvaluation": 0.5862478514482289
+        },
+        "W4-RESGATE-LR003-g64@0.75": {
+          "fit": 0.581471614218196,
+          "evaluation": 0.5854857053878447,
+          "validEvaluation": 0.5857924033603111
+        },
+        "W4-RESGATE-LR003-g64@1": {
+          "fit": 0.5846606563232927,
+          "evaluation": 0.5895821406759854,
+          "validEvaluation": 0.5901164831262
+        },
+        "W4-RESCUBIC-LR001-g32@0.25": {
+          "fit": 0.5857060766447586,
+          "evaluation": 0.5919306589364368,
+          "validEvaluation": 0.5915101934386179
+        },
+        "W4-RESCUBIC-LR001-g32@0.5": {
+          "fit": 0.5775443172945469,
+          "evaluation": 0.5910566513164643,
+          "validEvaluation": 0.5906746093036013
+        },
+        "W4-RESCUBIC-LR001-g32@0.75": {
+          "fit": 0.5735831676833034,
+          "evaluation": 0.5971928450704197,
+          "validEvaluation": 0.5956611286924967
+        },
+        "W4-RESCUBIC-LR001-g32@1": {
+          "fit": 0.5754486838046902,
+          "evaluation": 0.6240157010840688,
+          "validEvaluation": 0.6073460969672618
+        },
+        "W4-RESCUBIC-LR001-g63@0.25": {
+          "fit": 0.58342592295396,
+          "evaluation": 0.5893845617186769,
+          "validEvaluation": 0.5883657760714532
+        },
+        "W4-RESCUBIC-LR001-g63@0.5": {
+          "fit": 0.5739414340872422,
+          "evaluation": 0.5847481090975174,
+          "validEvaluation": 0.5828183593802307
+        },
+        "W4-RESCUBIC-LR001-g63@0.75": {
+          "fit": 0.5685056792940353,
+          "evaluation": 0.5929887137241729,
+          "validEvaluation": 0.5813469893658205
+        },
+        "W4-RESCUBIC-LR001-g63@1": {
+          "fit": 0.5669296223407304,
+          "evaluation": 0.6144258193589744,
+          "validEvaluation": 0.5842312665252075
+        },
+        "W4-RESCUBIC-LR001-g64@0.25": {
+          "fit": 0.5847829136963983,
+          "evaluation": 0.5906774954658142,
+          "validEvaluation": 0.5897531467321205
+        },
+        "W4-RESCUBIC-LR001-g64@0.5": {
+          "fit": 0.5767739183930428,
+          "evaluation": 0.5885411753440446,
+          "validEvaluation": 0.5866030308148801
+        },
+        "W4-RESCUBIC-LR001-g64@0.75": {
+          "fit": 0.5730046815602854,
+          "evaluation": 0.6016618025783411,
+          "validEvaluation": 0.5879195859016688
+        },
+        "W4-RESCUBIC-LR001-g64@1": {
+          "fit": 0.5737460596003633,
+          "evaluation": 0.6358168489711393,
+          "validEvaluation": 0.5948339801700313
+        },
+        "W4-RESCUBIC-LR003-g32@0.25": {
+          "fit": 0.5857060766447586,
+          "evaluation": 0.5919306589364368,
+          "validEvaluation": 0.5915101934386179
+        },
+        "W4-RESCUBIC-LR003-g32@0.5": {
+          "fit": 0.5775443172945469,
+          "evaluation": 0.5910566513164643,
+          "validEvaluation": 0.5906746093036013
+        },
+        "W4-RESCUBIC-LR003-g32@0.75": {
+          "fit": 0.5735831676833034,
+          "evaluation": 0.5971928450704197,
+          "validEvaluation": 0.5956611286924967
+        },
+        "W4-RESCUBIC-LR003-g32@1": {
+          "fit": 0.5754486838046902,
+          "evaluation": 0.6240157010840688,
+          "validEvaluation": 0.6073460969672618
+        },
+        "W4-RESCUBIC-LR003-g63@0.25": {
+          "fit": 0.5903127851316774,
+          "evaluation": 0.5921845071230957,
+          "validEvaluation": 0.5913514675836989
+        },
+        "W4-RESCUBIC-LR003-g63@0.5": {
+          "fit": 0.5887318305111248,
+          "evaluation": 0.5901983968988064,
+          "validEvaluation": 0.5887413957559262
+        },
+        "W4-RESCUBIC-LR003-g63@0.75": {
+          "fit": 0.5921263299220983,
+          "evaluation": 0.59986642923245,
+          "validEvaluation": 0.5903224251496588
+        },
+        "W4-RESCUBIC-LR003-g63@1": {
+          "fit": 0.6002260855570204,
+          "evaluation": 0.6165299967790852,
+          "validEvaluation": 0.5966030178718539
+        },
+        "W4-RESCUBIC-LR003-g64@0.25": {
+          "fit": 0.5928367589922823,
+          "evaluation": 0.5898238507189989,
+          "validEvaluation": 0.5889352831881096
+        },
+        "W4-RESCUBIC-LR003-g64@0.5": {
+          "fit": 0.594349705906828,
+          "evaluation": 0.5869528827902201,
+          "validEvaluation": 0.5850821580476974
+        },
+        "W4-RESCUBIC-LR003-g64@0.75": {
+          "fit": 0.6017610196508276,
+          "evaluation": 0.5986875252351276,
+          "validEvaluation": 0.5868212325186177
+        },
+        "W4-RESCUBIC-LR003-g64@1": {
+          "fit": 0.6167792488894769,
+          "evaluation": 0.6194622891350956,
+          "validEvaluation": 0.5963473377077066
+        },
+        "W4-BRE-CONTROL-LR001-g32@0.25": {
+          "fit": 0.5951607794060949,
+          "evaluation": 0.596350669434692,
+          "validEvaluation": 0.5958970184610048
+        },
+        "W4-BRE-CONTROL-LR001-g32@0.5": {
+          "fit": 0.5974737891242038,
+          "evaluation": 0.5982266830202055,
+          "validEvaluation": 0.5977306042491288
+        },
+        "W4-BRE-CONTROL-LR001-g32@0.75": {
+          "fit": 0.6027238616275968,
+          "evaluation": 0.6035217329540224,
+          "validEvaluation": 0.6030050541697437
+        },
+        "W4-BRE-CONTROL-LR001-g32@1": {
+          "fit": 0.6108707044644536,
+          "evaluation": 0.614426738278029,
+          "validEvaluation": 0.6139361511828848
+        },
+        "W4-BRE-CONTROL-LR001-g64@0.25": {
+          "fit": 0.5938413830815966,
+          "evaluation": 0.5917292703640791,
+          "validEvaluation": 0.5915694396257687
+        },
+        "W4-BRE-CONTROL-LR001-g64@0.5": {
+          "fit": 0.5952014305698897,
+          "evaluation": 0.588288620550222,
+          "validEvaluation": 0.5883445362723317
+        },
+        "W4-BRE-CONTROL-LR001-g64@0.75": {
+          "fit": 0.6007703513800379,
+          "evaluation": 0.5885872570239201,
+          "validEvaluation": 0.588856553394512
+        },
+        "W4-BRE-CONTROL-LR001-g64@1": {
+          "fit": 0.6102570097587604,
+          "evaluation": 0.5933150015214779,
+          "validEvaluation": 0.5937781777115021
+        },
+        "W4-BRE-CONTROL-LR003-g32@0.25": {
+          "fit": 0.5951607794060949,
+          "evaluation": 0.596350669434692,
+          "validEvaluation": 0.5958970184610048
+        },
+        "W4-BRE-CONTROL-LR003-g32@0.5": {
+          "fit": 0.5974737891242038,
+          "evaluation": 0.5982266830202055,
+          "validEvaluation": 0.5977306042491288
+        },
+        "W4-BRE-CONTROL-LR003-g32@0.75": {
+          "fit": 0.6027238616275968,
+          "evaluation": 0.6035217329540224,
+          "validEvaluation": 0.6030050541697437
+        },
+        "W4-BRE-CONTROL-LR003-g32@1": {
+          "fit": 0.6108707044644536,
+          "evaluation": 0.614426738278029,
+          "validEvaluation": 0.6139361511828848
+        },
+        "W4-BRE-CONTROL-LR003-g64@0.25": {
+          "fit": 0.5931301544381942,
+          "evaluation": 0.5912993236090647,
+          "validEvaluation": 0.5910174620159911
+        },
+        "W4-BRE-CONTROL-LR003-g64@0.5": {
+          "fit": 0.5958962314501539,
+          "evaluation": 0.5895130909359284,
+          "validEvaluation": 0.589274289327955
+        },
+        "W4-BRE-CONTROL-LR003-g64@0.75": {
+          "fit": 0.60335202822041,
+          "evaluation": 0.5937225818380473,
+          "validEvaluation": 0.5931294255798718
+        },
+        "W4-BRE-CONTROL-LR003-g64@1": {
+          "fit": 0.6150086048807096,
+          "evaluation": 0.6037034949112157,
+          "validEvaluation": 0.603202883194054
+        }
+      }
+    }
+  ]
+}
