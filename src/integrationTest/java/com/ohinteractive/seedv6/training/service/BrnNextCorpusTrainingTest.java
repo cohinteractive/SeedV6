@@ -18,18 +18,20 @@ import static org.junit.jupiter.api.Assertions.*;
 class BrnNextCorpusTrainingTest {
     @TempDir Path temporary;
     TrainerConfig config(Path root, Path data, TrainingArchitecture architecture) throws Exception {
+        return config(root, data, architecture, 1);
+    }
+    TrainerConfig config(Path root, Path data, TrainingArchitecture architecture, int generations) throws Exception {
         try (var store = new CheckpointStore(root, architecture)) {
             new DataSources(1, List.of(DataSource.register("tiny-source", data, 1)), false).save(DataSources.directory(root));
         }
         var base = Brn2TrainerServiceTest.config(root, 1);
-        return new TrainerConfig(root, 71, base.selfPlay(), new TrainerConfig.Training(2, 4, true), base.validation(), 1,
+        return new TrainerConfig(root, 71, base.selfPlay(), new TrainerConfig.Training(2, 4, true), base.validation(), generations,
                 base.depthChange(), TrainerConfig.STANDARD_START, architecture, .003)
                 .withSource(TrainingSource.dataSources(DataSources.directory(root)))
                 .withCorpusTraining(new CorpusTrainingConfig(12)).withValidationMethod(ValidationMethod.HELD_OUT);
     }
 
-    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"BRN_GATED", "BRN_CUBIC", "BRN_POOLED"})
-    void guiServicePublicationPartialResumeAndNextGenerationKeepExactStateAndOwnCursor(TrainingArchitecture architecture) throws Exception {
+    Path source() throws Exception {
         Path source = temporary.resolve("source.jsonl"); var lines = new StringBuilder();
         for (int i = 0; i < 1200; i++) {
             // Varied placements: a repeated single-position fixture cannot supply disjoint partitions.
@@ -48,6 +50,12 @@ class BrnNextCorpusTrainingTest {
             lines.append(SourceReadersTest.line(i % 100 - 50).replace("4k3/8/8/8/3pP3/8/8/4K3", fen));
         }
         Files.writeString(source, lines);
+        return source;
+    }
+
+    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"BRN_GATED", "BRN_CUBIC", "BRN_POOLED"})
+    void guiServicePublicationPartialResumeAndNextGenerationKeepExactStateAndOwnCursor(TrainingArchitecture architecture) throws Exception {
+        Path source = source();
         var a = config(temporary.resolve("continuous"), source, architecture);
         var b = config(temporary.resolve("split"), source, architecture);
         var probe = config(temporary.resolve("partition-probe"), source, architecture);
@@ -104,5 +112,62 @@ class BrnNextCorpusTrainingTest {
         assertEquals(reservation.ranges().getFirst().end(), next.ranges().getFirst().start());
         assertThrows(IllegalArgumentException.class, () -> b.withSource(TrainingSource.SELF_PLAY));
         assertEquals(CorpusTraining.TargetPolicy.BT4_Q_V1, CorpusTraining.targetPolicy(architecture, LabelProfile.BT4_Q_V1));
+    }
+
+    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"BRN_GATED", "BRN_CUBIC", "BRN_POOLED"})
+    void boundedGuiSessionsPersistFinalDecisionOptimizerAndCursorBeforeResuming(TrainingArchitecture architecture) throws Exception {
+        Path source = source(), root = temporary.resolve("bounded"), uninterrupted = temporary.resolve("uninterrupted");
+        var first = config(root, source, architecture, 1);
+        try (var store = new CheckpointStore(root, architecture)) {
+            store.writeLineage(new TrainingLineage(UUID.randomUUID(), "bounded fixture", architecture, java.time.Instant.now(), "", "test"));
+        }
+        TrainerSnapshot initial;
+        try (var service = TrainerService.freshInitialized(first, NnueCorpusTrainingTest.forbidden(), s -> {}).withSession().withIncrementalTraining()) {
+            initial = NnueCorpusTrainingTest.finish(service);
+        }
+        byte[] initialOptimizer = CheckpointStore.readTrainingSnapshot(root, initial.latestTrainingId()).encode();
+        var firstSession = TrainingSession.read(root).orElseThrow();
+        assertEquals(TrainingSession.State.COMPLETED, firstSession.state());
+        var finalValidationSeen = new java.util.concurrent.atomic.AtomicBoolean();
+        TrainerSnapshot resumed;
+        try (var service = TrainerService.resume(config(root, source, architecture, 2), NnueCorpusTrainingTest.forbidden(), s -> {
+            if (s.generation() == 3 && s.state() == TrainerSnapshot.State.VALIDATING) {
+                try {
+                    var session = TrainingSession.read(root).orElseThrow();
+                    assertEquals(1, session.baseline()); assertEquals(2, session.target());
+                    assertEquals(1, session.completed()); assertEquals(TrainingSession.State.ACTIVE, session.state());
+                    finalValidationSeen.set(true);
+                } catch (java.io.IOException failure) { throw new java.io.UncheckedIOException(failure); }
+            }
+        }).withSession().withIncrementalTraining()) {
+            resumed = NnueCorpusTrainingTest.finish(service);
+        }
+        assertTrue(finalValidationSeen.get()); assertEquals(3, resumed.generation());
+        assertEquals(2, resumed.totals().completedGenerations());
+        var complete = TrainingSession.read(root).orElseThrow();
+        assertNotEquals(firstSession.id(), complete.id());
+        assertEquals(TrainingSession.State.COMPLETED, complete.state()); assertEquals(2, complete.completed());
+        assertEquals(complete, resumed.run().orElseThrow().session());
+        assertEquals(3, GenerationAttempt.inspect(root).orElseThrow().generation());
+        assertEquals(3, CheckpointInspection.validations(root).size());
+        assertEquals(3, new com.ohinteractive.seedv6.training.history.HistoryRepository(root).refresh().records().size());
+        assertTrue(PartialGeneration.inspect(root).isEmpty());
+        var ledger = new SourceLedger(root); assertTrue(ledger.active().isEmpty()); assertTrue(ledger.generation(4).isEmpty());
+        assertEquals(SourceLedger.Status.COMPLETED, ledger.generation(3).orElseThrow().status());
+        try (var store = new CheckpointStore(root, architecture)) {
+            assertEquals(3, TrainingSession.settledGeneration(store));
+            var decision = store.validationFor(resumed.latestTrainingId()).orElseThrow();
+            assertEquals(decision.decision() == com.ohinteractive.seedv6.training.validation.PromotionPolicy.Decision.PROMOTE,
+                    resumed.latestTrainingId().equals(CheckpointInspection.reference(root, "best")));
+            assertArrayEquals(initialOptimizer, store.resumeState(initial.latestTrainingId()).encode());
+        }
+        try (var service = TrainerService.freshInitialized(config(uninterrupted, source, architecture, 3),
+                NnueCorpusTrainingTest.forbidden(), s -> {}).withIncrementalTraining()) {
+            var expected = NnueCorpusTrainingTest.finish(service);
+            assertEquals(expected.latestTrainingId(), resumed.latestTrainingId());
+            assertArrayEquals(CheckpointStore.readTrainingSnapshot(uninterrupted, expected.latestTrainingId()).encode(),
+                    CheckpointStore.readTrainingSnapshot(root, resumed.latestTrainingId()).encode());
+        }
+        assertEquals(new SourceLedger(uninterrupted).state().next(), ledger.state().next());
     }
 }

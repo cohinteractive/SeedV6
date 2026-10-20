@@ -103,4 +103,56 @@ class TrainingSessionTest {
         assertThrows(java.io.IOException.class, () -> s.reconcile(11));
         assertThrows(java.io.IOException.class, () -> s.reconcile(27));
     }
+
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.EnumSource(value = TrainerSnapshot.State.class, names = {"VALIDATING", "RECORDING_DECISION"})
+    void finalGenerationFailureKeepsBudgetUntilValidationAndDecisionAreDurable(TrainerSnapshot.State failAt) throws Exception {
+        Path root = temporary.resolve("final-boundary"); lineage(root, 8);
+        var injected = new AtomicBoolean();
+        try (var service = TrainerService.resume(config(root, 2), new TrainerService.Operations(), snapshot -> {
+            if (snapshot.generation() == 10 && snapshot.state() == failAt && injected.compareAndSet(false, true))
+                throw new IllegalStateException("Injected final generation failure");
+        })) {
+            service.withSession().start(); assertTrue(service.awaitTermination(Duration.ofSeconds(90)));
+            assertTrue(service.snapshot().failed()); assertTrue(injected.get());
+        }
+        var pending = TrainingSession.read(root).orElseThrow();
+        assertEquals(TrainingSession.State.ACTIVE, pending.state());
+        assertEquals(8, pending.baseline()); assertEquals(1, pending.completed()); assertEquals(1, pending.remaining());
+        String candidate = CheckpointInspection.reference(root, "latest-training");
+        byte[] optimizer = CheckpointStore.readTrainingSnapshot(root, candidate).encode();
+        try (var service = TrainerService.resume(config(root, 99))) {
+            var end = run(service);
+            assertEquals(10, end.generation()); assertEquals(candidate, end.latestTrainingId());
+            assertEquals(pending.id(), end.run().orElseThrow().session().id());
+        }
+        var complete = TrainingSession.read(root).orElseThrow();
+        assertEquals(TrainingSession.State.COMPLETED, complete.state()); assertEquals(2, complete.completed());
+        assertEquals(10, GenerationAttempt.inspect(root).orElseThrow().generation());
+        assertEquals(2, CheckpointInspection.validations(root).size());
+        assertTrue(PartialGeneration.inspect(root).isEmpty());
+        try (var store = new CheckpointStore(root, TrainingArchitecture.BRN2)) {
+            assertEquals(10, TrainingSession.settledGeneration(store));
+            var record = store.validationFor(candidate).orElseThrow();
+            if (record.decision() == com.ohinteractive.seedv6.training.validation.PromotionPolicy.Decision.PROMOTE)
+                assertEquals(candidate, CheckpointInspection.reference(root, "best"));
+            assertArrayEquals(optimizer, store.resumeState(candidate).encode());
+        }
+    }
+
+    @Test void continuousSessionStillRunsUntilManualGenerationBoundaryStop() throws Exception {
+        Path root = temporary.resolve("continuous"); lineage(root, 10);
+        var owner = new AtomicReference<TrainerService>();
+        try (var service = TrainerService.resume(config(root, 0), new TrainerService.Operations(), snapshot -> {
+            if (snapshot.totals().completedGenerations() == 2) owner.get().stopAfterGeneration();
+        })) {
+            owner.set(service);
+            var end = run(service); assertEquals(12, end.generation());
+            assertEquals(2, end.totals().completedGenerations());
+        }
+        var stopped = TrainingSession.read(root).orElseThrow();
+        assertEquals(0, stopped.target()); assertEquals(2, stopped.completed());
+        assertEquals(TrainingSession.State.STOPPED, stopped.state());
+        assertEquals(2, CheckpointInspection.validations(root).size());
+    }
 }

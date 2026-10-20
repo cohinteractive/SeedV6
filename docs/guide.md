@@ -709,8 +709,13 @@ cancels active search. Validation configuration is frozen per attempt; old depth
 fingerprints and records retain their encoding, and timed evidence has a distinct policy
 identity. Candidate/incumbent IDs and W/D/L evidence remain bound to that experiment.
 
-**Session** contains Training Duration and the existing dashboard/lifecycle controls.
-Choose **Unlimited / Until Stopped** or **Fixed Number of Generations**. A target of 16
+**Training Duration** and **Additional Generations** are above the Network Training
+tabs, alongside the selected lineage, and remain visible while editing settings.
+Choose **Fixed Number of Generations**, enter a positive whole number such as **100**,
+then click **Start Training**. The count means additional completed generations,
+not an absolute destination generation. **Unlimited / Until Stopped** preserves
+continuous training and disables the count field. **Session** retains the dashboard
+and session progress. A target of 16
 from 10 completed generations runs 16 additional settled cycles, through generation 26.
 Rejected and inconclusive completed cycles count; partial, interrupted and failed cycles
 do not. A session ends at the settled generation boundary without changing promotion,
@@ -728,7 +733,7 @@ keeps the session running. Completed-session records are displayed without execu
 
 Example: create `l1` with BRE-Pair 2, keep 0.01 / 128 / 8 and seed 1, set 65536
 positions, and select just an eligible Stockfish dataset at weight 1. Choose Game Pair,
-128 pairs, Depth 4, and four search threads where supported. In Session choose Fixed
+128 pairs, Depth 4, and four search threads where supported. In Training Duration choose Fixed
 Number of Generations, 16, then Start Training. The fixture tests exercise this GUI
 configuration and real budget accounting without a production 16-generation campaign.
 

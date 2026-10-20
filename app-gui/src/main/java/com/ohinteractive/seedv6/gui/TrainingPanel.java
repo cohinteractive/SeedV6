@@ -108,11 +108,12 @@ final class TrainingPanel extends JPanel {
         depth.setValue(settings.depth()); ThreadSelection.setChoice(threads, settings.threads()); games.setValue(settings.games()); pairs.setValue(settings.validationPairs());
         min = spinner(settings.openingMin(), 0, 100_000); max = spinner(settings.openingMax(), 0, 100_000);
         samples = spinner(settings.samples(), 1, 100_000); plies = spinner(settings.maximumPlies(), 1, 100_000);
-        generations = new JSpinner(new SpinnerNumberModel(settings.maximumGenerations(), 0L, Long.MAX_VALUE, 1L));
+        generations = generationCount(settings.maximumGenerations());
         runMinutes = new JSpinner(new SpinnerNumberModel(settings.maximumRunMinutes(), 0L, 5256000L, 1L));
         runMinutes.setName("trainingRunMinutes"); generations.setName("trainingGenerations");
         termination.setName("trainingTermination"); termination.setSelectedItem(settings.termination().kind());
         termination.setToolTipText("Additional completed generations from Start. Rejected generations count. Stop ends the session; next Start gets a new budget.");
+        generations.setToolTipText("Choose Fixed Number of Generations and enter a positive whole number, e.g. 100. The final generation finishes validation and saving before stopping.");
         searchLimit.setName("validationSearchLimit"); searchTime.setName("validationSearchTime");
         searchLimit.addActionListener(e -> sourceChanged());
         searchTime.setValue(settings.validationMoveMillis() > 0 ? settings.validationMoveMillis() : 1000L);
@@ -178,7 +179,9 @@ final class TrainingPanel extends JPanel {
         lineageSelector.setName("trainingLineage"); newLineage.setName("newTrainingLineage"); importLineage.setName("importTrainingLineage");
         baseRoot.setName("baseTrainingRoot"); baseRoot.setText(folders.base().toString()); baseRoot.setEditable(false);
         root.setEditable(false); scheduledStop.setName("scheduleTrainingStop");
-        add(selection, BorderLayout.NORTH);
+        JPanel runControls = panel(new BorderLayout(0, SeedTheme.scale(6)));
+        runControls.add(selection, BorderLayout.NORTH);
+        add(runControls, BorderLayout.NORTH);
         editors.addAll(List.of(lineageSelector, newLineage, renameLineage, importLineage, baseRoot, searchLimit, searchTime));
         editors.addAll(List.of(root, browse, depth, threads, games, pairs, min, max, samples, plies, generations, runMinutes, seed, architecture, validationMethod, apply));
         editors.add(termination); editors.add(browseGenerations);
@@ -188,8 +191,8 @@ final class TrainingPanel extends JPanel {
         JPanel duration = padded(new GridBagLayout(), 8);
         row(duration, 0, "Training Duration", termination); row(duration, 1, "Additional Generations", generations);
         row(duration, 2, "Time budget (minutes)", runMinutes);
-        var sessionHeader = panel(new BorderLayout()); sessionHeader.add(duration); sessionHeader.add(sessionSummary, BorderLayout.SOUTH);
-        sessionSummary.setName("trainingSessionSummary"); session.add(sessionHeader, BorderLayout.NORTH); session.add(dashboardScroll);
+        runControls.add(duration); updateTerminationControls();
+        sessionSummary.setName("trainingSessionSummary"); session.add(sessionSummary, BorderLayout.NORTH); session.add(dashboardScroll);
         tabs.addTab("Session", session);
         JPanel lineageBody = new ConfigurationCards();
         addCard(lineageBody, manage, 0); lineageSummary.setName("trainingLineageSummary");
@@ -373,7 +376,7 @@ final class TrainingPanel extends JPanel {
                     : displayedLineage.lineage().configurationOrigin());
             depth.setValue(s.depth()); ThreadSelection.setChoice(threads, s.threads()); games.setValue(s.games()); pairs.setValue(s.validationPairs());
             min.setValue(s.openingMin()); max.setValue(s.openingMax()); samples.setValue(s.samples()); plies.setValue(s.maximumPlies());
-            generations.setValue(s.maximumGenerations()); runMinutes.setValue(s.maximumRunMinutes()); seed.setText(Long.toString(s.seed()));
+            generations.setValue(Math.max(1L, s.maximumGenerations())); runMinutes.setValue(s.maximumRunMinutes()); seed.setText(Long.toString(s.seed()));
             termination.setSelectedItem(s.termination().kind()); updateTerminationControls();
             validationChoiceEdited = true; validationMethod.setSelectedItem(s.generatedValidation());
             loadGenerationProtocol(s);
@@ -406,7 +409,8 @@ final class TrainingPanel extends JPanel {
         if (controller == null || applying) return false;
         applying = true;
         try {
-            for (JSpinner spinner : List.of(depth, threads, games, pairs, min, max, samples, plies, generations, runMinutes, searchTime, generationDepth, generationThreads, generationMin, generationMax, generationCap)) spinner.commitEdit();
+            for (JSpinner spinner : List.of(depth, threads, games, pairs, min, max, samples, plies, runMinutes, searchTime, generationDepth, generationThreads, generationMin, generationMax, generationCap)) spinner.commitEdit();
+            if (generations.isEnabled()) generations.commitEdit();
             if (root.getText().isBlank()) throw new IllegalArgumentException("Select a checkpoint folder.");
             var previous = controller.state().settings();
             var options = recipe.read();
@@ -612,10 +616,33 @@ final class TrainingPanel extends JPanel {
     }
 
     private static JSpinner spinner(int value, int min, int max) { return new JSpinner(new SpinnerNumberModel(value, min, max, 1)); }
+    private static JSpinner generationCount(long saved) {
+        var spinner = new JSpinner(new SpinnerNumberModel(Math.max(1L, saved), 1L, Long.MAX_VALUE, 1L));
+        var editor = new JSpinner.NumberEditor(spinner, "0");
+        var format = new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0")) {
+            @Override public Object stringToValue(String text) throws java.text.ParseException {
+                try {
+                    String value = text.trim();
+                    if (!value.matches("[0-9]+")) throw new NumberFormatException();
+                    long count = Long.parseLong(value);
+                    if (count < 1) throw new NumberFormatException();
+                    return count;
+                } catch (NumberFormatException invalid) {
+                    throw new java.text.ParseException("Additional Generations must be a positive whole number (1.." + Long.MAX_VALUE + ").", 0);
+                }
+            }
+        };
+        format.setValueClass(Long.class);
+        editor.getTextField().setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(format));
+        // Keep invalid text for Start/Apply to report, instead of silently reverting on focus loss.
+        editor.getTextField().setFocusLostBehavior(JFormattedTextField.PERSIST);
+        spinner.setEditor(editor);
+        return spinner;
+    }
     private static int value(JSpinner spinner) { return ((Number) spinner.getValue()).intValue(); }
     private void updateTerminationControls() {
         var kind = (RunTermination.Kind) termination.getSelectedItem();
-        fieldVisible(generations, kind == RunTermination.Kind.GENERATIONS || kind == RunTermination.Kind.COMBINED);
+        generations.setEnabled(termination.isEnabled() && (kind == RunTermination.Kind.GENERATIONS || kind == RunTermination.Kind.COMBINED));
         fieldVisible(runMinutes, kind == RunTermination.Kind.TIME_BUDGET || kind == RunTermination.Kind.COMBINED);
     }
     private NetworkArchitecture selectedArchitecture() { return (NetworkArchitecture) architecture.getSelectedItem(); }
