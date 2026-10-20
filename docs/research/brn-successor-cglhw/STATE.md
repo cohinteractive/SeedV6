@@ -1,7 +1,9 @@
 # BRN successor workstream state
 
 Updated21 October2026. **G3 and its admitted Wave3 assessment are complete.
-G4 is ready: human GUI training is blocking the next research decision.
+G4 remains active. The first Gen33 attempt failed because continuation preparation
+omitted inherited seek indexes. All six lineages have been repaired and verified;
+human Resume/completion is blocking the next research decision.
 No programme success is claimed.** This remains the original CGLHW.
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
 [completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md), and [current G4 training gate](WAVE4.md).
@@ -21,9 +23,9 @@ search. Architectural complexity or lower validation loss alone is insufficient.
 | W3-RESGATE | BRN-GEN32-GATED/e6b6775d-39cd-392b-bd18-5e964a445f62, latest/Best32, frozen Gen32 plus trained gated correction |
 | W3-RESCUBIC | BRN-GEN32-CUBIC/22b42be6-15c4-3f36-a376-3776aa1931f2, latest32/Best31, frozen Gen32 plus trained cubic correction |
 | W3-BRE-CONTROL | BRN-Pair2/ed0750a3-3163-3979-9f26-2e466c49c771, latest/Best32,262144 added updates from exact Gen32 clone |
-| W4-RESGATE-LR001 / LR003 | Two exact W3 latest32 continuations, untrained in these new roots; G4 ready |
-| W4-RESCUBIC-LR001 / LR003 | Two exact W3 latest32 continuations, untrained in these new roots; Best31 source preserved |
-| W4-BRE-CONTROL-LR001 / LR003 | Two exact W3 latest32 continuations with inherited Adam state; G4 ready |
+| W4-RESGATE-LR001 / LR003 | Exact W3 latest32 continuations; omitted seek indexes repaired; no training sessions |
+| W4-RESCUBIC-LR001 / LR003 | Exact W3 latest32 continuations; seek repaired; no sessions; W3 Best31 preserved |
+| W4-BRE-CONTROL-LR001 / LR003 | Seek repaired; LR001 has resumable Gen33 attempt/ACTIVE budget through64, no durable updates; LR003 not started |
 
 All managed roots are under E:/SeedV6-Networks. Exact checkpoint IDs, hashes and
 sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`, `wave3-trained-checkpoints.json`, `wave4-owner-readiness.json`. Frozen reference
@@ -88,13 +90,23 @@ all six prepared W4 lineages and report completion or failure.** This blocks
 trained-W4 comparison and the next architecture/strength decision. No other human
 action is required. Do not infer completion from a later invocation.
 
-Read [WAVE4](WAVE4.md) and `wave4-owner-readiness.json`. All six actual lineages
+Read [WAVE4](WAVE4.md), `wave4-seek-remediation.json` and the historical
+`wave4-owner-readiness.json`. **First resume W4-BRE-CONTROL-LR001 using
+Resume Generation33, unchanged settings and existing session.** Its32-additional
+budget still ends at64. Do not restart/import/reset the lineage. Actual Gen33
+completion remains the blocking operational check; no substantive owner training
+was run by Codex. All six actual lineages
 were created and verified, including native GUI controls and screenshots. They
 start at accepted generation32 with exact W3 latest32 weights/Adam state and copied
 source progress. New bootstrap IDs differ from original W3 IDs; do not infer them
 from generation labels. Latest and Best both currently point to their bootstrap.
-The GUI correctly reports0 newly completed generations and next33. No training
-session/history has been created in these roots.
+The GUI correctly reports0 newly completed generations and next33. LR001 BRE's
+failed worker left an INCREMENTAL attempt and ACTIVE session, but no partial
+optimizer, Gen33 checkpoint, reservation or history. Its reported508 updates were
+provisional; ordinary Resume reacquires Gen33 from the unchanged Gen32 Adam state.
+The other five roots still have no session/attempt. All817 pre-repair files in
+the six W4 roots, three W3 roots and frozen Gen32 checkpoint remain byte-identical;
+the repair added only six source-bound CP seek indexes (986602 bytes).
 
 Each requires32 additional generations through64, one lineage at a time: LR001
 uses.001, LR003 uses.003; batch128,8epochs,seed1,one worker,131072 training positions,
@@ -169,6 +181,15 @@ Later analysis and readiness changes are tooling/tests/reports and do not bump t
 application. Inspect Git for the closing handoff commit. No push, deployment,
 production-default replacement, finalizer or root journal creation. Root
 CODEXLOG_CURRENT.md was absent; VERSION_STATE remains build50.
+
+The focused G4 seek remediation began clean at d7d7599/build50. It corrects
+continuation navigation inheritance without changing evaluator, optimizer, data
+selection or search policy. The earlier readiness tests used offsets below4096
+and failed to detect the omission; their readiness conclusion was insufficient.
+The new tests cover large inherited offsets, missing/corrupt/uncovered indexes,
+locked repair, exact failed/resumed Adam equality, real source boundary decoding
+and native GUI Resume. Detailed evidence and final build: WAVE4 and the remediation
+manifest. G4 remains active; the frontier and research objective are unchanged.
 
 Raw evidence is local-only under raw/wave1..wave4 and module build paths; a fresh
 checkout lacks it. Verify availability before analysis. Compact tracked manifests

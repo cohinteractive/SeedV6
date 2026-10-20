@@ -1,0 +1,421 @@
+{
+  "id": "wave4-seek-remediation-v1",
+  "recordedUtc": "2026-10-20T19:33:53.024255+00:00",
+  "startingCommit": "d7d7599",
+  "startingBuild": 50,
+  "repairBuild": 51,
+  "gate": "G4 ACTIVE; blocking human Resume Gen33 and completion through64; no new wave",
+  "rootCause": "Exact-state factory copied source cursors but omitted lineage-local CP navigation. All six destination indexes absent; source indexes valid. Shared prepared BT4 index unaffected.",
+  "reportedFailure": {
+    "candidate": "W4-BRE-CONTROL-LR001",
+    "generation": 33,
+    "target": 64,
+    "updates": 508,
+    "acquiredSamples": 65535,
+    "completedGenerations": 0,
+    "status": "FAILED",
+    "provenance": "User report, not a persisted optimizer receipt"
+  },
+  "repair": {
+    "mode": "--repair-seek",
+    "report": {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/seek-repair-02.json",
+      "sha256": "86c611a58d8b187749ff09c80d7b28a82b612a54c5e2a2ba470a4b56dbaa6412"
+    },
+    "addedFiles": {
+      "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\4e693253-bfdd-38b1-b8e2-be30ac620568\\training-data\\seek\\d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": {
+        "bytes": 211182,
+        "sha256": "9055d7261fd94d1a61894e8d35bca61d0b87ede7b78c74d0f2a4f71ac20e7926"
+      },
+      "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\6b995953-5bc1-3b7b-bae2-eaf7a5377d9a\\training-data\\seek\\d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": {
+        "bytes": 211182,
+        "sha256": "9055d7261fd94d1a61894e8d35bca61d0b87ede7b78c74d0f2a4f71ac20e7926"
+      },
+      "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\77dad574-34c1-3639-b827-0127fcab4fb2\\training-data\\seek\\d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": {
+        "bytes": 211182,
+        "sha256": "9055d7261fd94d1a61894e8d35bca61d0b87ede7b78c74d0f2a4f71ac20e7926"
+      },
+      "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\9d2412de-8563-35f3-b520-ef41e610a098\\training-data\\seek\\d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": {
+        "bytes": 211182,
+        "sha256": "9055d7261fd94d1a61894e8d35bca61d0b87ede7b78c74d0f2a4f71ac20e7926"
+      },
+      "E:\\SeedV6-Networks\\BRN-Pair2\\819e0f58-6726-3479-8709-bfa7079ad2d0\\training-data\\seek\\d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": {
+        "bytes": 70937,
+        "sha256": "7f308dde01de212062ffda5fdbc18751ebb6ef75d35904e1aee0608b3a62f204"
+      },
+      "E:\\SeedV6-Networks\\BRN-Pair2\\d1a2e220-c1a0-3953-ad2c-2e001af93e7d\\training-data\\seek\\d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": {
+        "bytes": 70937,
+        "sha256": "7f308dde01de212062ffda5fdbc18751ebb6ef75d35904e1aee0608b3a62f204"
+      }
+    },
+    "bytesAdded": 986602,
+    "existingFilesChanged": 0,
+    "existingFilesVerifiedUnchanged": 817,
+    "scope": "Complete six W4 and three W3 roots plus exact frozen Gen32 checkpoint; source data read only",
+    "beforeInventory": {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/seek-remediation-before-01.json",
+      "sha256": "f5e13f5b44347494e38059040337c10b60e55fb78c7cd0f327ec8c4a62a058b7"
+    },
+    "preservation": {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/seek-preservation-after-02.json",
+      "sha256": "81c1efdfd31f2588f5fe29d7e32733f96e1762b6a21399516bd5c6a3d204bc7b"
+    }
+  },
+  "ownerBefore": {
+    "path": "docs/research/brn-successor-cglhw/raw/wave4/seek-owner-before-01.json",
+    "sha256": "9b706ec0e7af2e7f8fab89da79abd6e7d6e6e536c61ec31d16c8ebd153e7e26a"
+  },
+  "ownerAfter": {
+    "path": "docs/research/brn-successor-cglhw/raw/wave4/seek-owner-after-02.json",
+    "sha256": "516b25159aab68ab8a28b4f758d0c68c2847732c68bec3f777488f2c8ab07bdb"
+  },
+  "entries": [
+    {
+      "candidate": "W4-RESGATE-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\9d2412de-8563-35f3-b520-ef41e610a098",
+      "latest": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d",
+      "best": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d",
+      "generation": 32,
+      "optimizerStep": 262144,
+      "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+      "trainingSha256": "9fa47b99b2349c20ca0c79a35ae007086ecab9acbb8c9b9cf18d4ecfa223a26d",
+      "recipe": {
+        "learningRate": 0.001,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "session": null,
+      "attempt": null,
+      "partialOptimizerPersisted": false,
+      "preview": "Start Training",
+      "cpCursor": 9248035,
+      "cpSeekFloor": {
+        "record": 9244672,
+        "offset": 680134785,
+        "within": 13736528
+      },
+      "cpIndexSha256": "9055d7261fd94d1a61894e8d35bca61d0b87ede7b78c74d0f2a4f71ac20e7926",
+      "cpIndexPresentAfter": true,
+      "independentFrameOracle": true,
+      "checkedOrdinals": [
+        "9244671",
+        "9244672",
+        "9244673",
+        "9248034",
+        "9248035",
+        "9248036",
+        "9248768",
+        "9248769"
+      ]
+    },
+    {
+      "candidate": "W4-RESGATE-LR003",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\77dad574-34c1-3639-b827-0127fcab4fb2",
+      "latest": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d",
+      "best": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d",
+      "generation": 32,
+      "optimizerStep": 262144,
+      "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+      "trainingSha256": "9fa47b99b2349c20ca0c79a35ae007086ecab9acbb8c9b9cf18d4ecfa223a26d",
+      "recipe": {
+        "learningRate": 0.003,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "session": null,
+      "attempt": null,
+      "partialOptimizerPersisted": false,
+      "preview": "Start Training",
+      "cpCursor": 9248035,
+      "cpSeekFloor": {
+        "record": 9244672,
+        "offset": 680134785,
+        "within": 13736528
+      },
+      "cpIndexSha256": "9055d7261fd94d1a61894e8d35bca61d0b87ede7b78c74d0f2a4f71ac20e7926",
+      "cpIndexPresentAfter": true,
+      "independentFrameOracle": true,
+      "checkedOrdinals": [
+        "9244671",
+        "9244672",
+        "9244673",
+        "9248034",
+        "9248035",
+        "9248036",
+        "9248768",
+        "9248769"
+      ]
+    },
+    {
+      "candidate": "W4-RESCUBIC-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\4e693253-bfdd-38b1-b8e2-be30ac620568",
+      "latest": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf",
+      "best": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf",
+      "generation": 32,
+      "optimizerStep": 262144,
+      "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+      "trainingSha256": "137685439f0447dec59f15071dbd5227e1f9865a1376ff2c348d8cd36ba953df",
+      "recipe": {
+        "learningRate": 0.001,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "session": null,
+      "attempt": null,
+      "partialOptimizerPersisted": false,
+      "preview": "Start Training",
+      "cpCursor": 9248035,
+      "cpSeekFloor": {
+        "record": 9244672,
+        "offset": 680134785,
+        "within": 13736528
+      },
+      "cpIndexSha256": "9055d7261fd94d1a61894e8d35bca61d0b87ede7b78c74d0f2a4f71ac20e7926",
+      "cpIndexPresentAfter": true,
+      "independentFrameOracle": true,
+      "checkedOrdinals": [
+        "9244671",
+        "9244672",
+        "9244673",
+        "9248034",
+        "9248035",
+        "9248036",
+        "9248768",
+        "9248769"
+      ]
+    },
+    {
+      "candidate": "W4-RESCUBIC-LR003",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\6b995953-5bc1-3b7b-bae2-eaf7a5377d9a",
+      "latest": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf",
+      "best": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf",
+      "generation": 32,
+      "optimizerStep": 262144,
+      "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+      "trainingSha256": "137685439f0447dec59f15071dbd5227e1f9865a1376ff2c348d8cd36ba953df",
+      "recipe": {
+        "learningRate": 0.003,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "session": null,
+      "attempt": null,
+      "partialOptimizerPersisted": false,
+      "preview": "Start Training",
+      "cpCursor": 9248035,
+      "cpSeekFloor": {
+        "record": 9244672,
+        "offset": 680134785,
+        "within": 13736528
+      },
+      "cpIndexSha256": "9055d7261fd94d1a61894e8d35bca61d0b87ede7b78c74d0f2a4f71ac20e7926",
+      "cpIndexPresentAfter": true,
+      "independentFrameOracle": true,
+      "checkedOrdinals": [
+        "9244671",
+        "9244672",
+        "9244673",
+        "9248034",
+        "9248035",
+        "9248036",
+        "9248768",
+        "9248769"
+      ]
+    },
+    {
+      "candidate": "W4-BRE-CONTROL-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\d1a2e220-c1a0-3953-ad2c-2e001af93e7d",
+      "latest": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+      "best": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+      "generation": 32,
+      "optimizerStep": 2015232,
+      "networkSha256": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0",
+      "trainingSha256": "b839898fc4ae3824118df95e62d3ef3dbf548d0cd60b5b29dd84691fe1783f89",
+      "recipe": {
+        "learningRate": 0.001,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "session": {
+        "version": 1,
+        "id": "965bb68b-6865-42f2-b1fd-9efd36598cbf",
+        "lineageId": "d1a2e220-c1a0-3953-ad2c-2e001af93e7d",
+        "baseline": 32,
+        "target": 32,
+        "completed": 0,
+        "state": "ACTIVE"
+      },
+      "attempt": {
+        "parentId": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+        "incumbentId": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+        "generation": 33,
+        "source": {
+          "mode": "TRAINING_DATA",
+          "generatorStore": "E:\\SeedV6-Networks\\BRN-Pair2\\d1a2e220-c1a0-3953-ad2c-2e001af93e7d\\training-data"
+        },
+        "settings": "SelfPlayConfig[games=64, depth=4, threads=1, seed=-314750537559436269, minimumOpeningPlies=0, maximumOpeningPlies=8, maximumSamplesPerGame=32, maximumPlies=1024, scoreMapping=NnueScoreMapping[scale=32511.0], nodesPerMove=-1, millisPerMove=-1]|Config[epochs=8, minibatchSize=128, shuffle=true, shuffleSeed=-1350742651216309469]|-8280757370330684917|rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1|corpus-outcome-v1:131072:1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5:BRN3_SOURCE_OUTCOME_V1|learningRate=0.001|validation=HELD_OUT|supervision=BrnSupervision[mode=WDL, teacherWeight=0.0]|teacher=",
+        "format": "INCREMENTAL",
+        "notice": ""
+      },
+      "partialOptimizerPersisted": false,
+      "preview": "Resume Generation 33",
+      "cpCursor": 3110674,
+      "cpSeekFloor": {
+        "record": 3108864,
+        "offset": 238507629,
+        "within": 31532275
+      },
+      "cpIndexSha256": "7f308dde01de212062ffda5fdbc18751ebb6ef75d35904e1aee0608b3a62f204",
+      "cpIndexPresentAfter": true,
+      "independentFrameOracle": true,
+      "checkedOrdinals": [
+        "3108863",
+        "3108864",
+        "3108865",
+        "3110673",
+        "3110674",
+        "3110675",
+        "3112960",
+        "3112961"
+      ]
+    },
+    {
+      "candidate": "W4-BRE-CONTROL-LR003",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\819e0f58-6726-3479-8709-bfa7079ad2d0",
+      "latest": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+      "best": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+      "generation": 32,
+      "optimizerStep": 2015232,
+      "networkSha256": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0",
+      "trainingSha256": "b839898fc4ae3824118df95e62d3ef3dbf548d0cd60b5b29dd84691fe1783f89",
+      "recipe": {
+        "learningRate": 0.003,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "session": null,
+      "attempt": null,
+      "partialOptimizerPersisted": false,
+      "preview": "Start Training",
+      "cpCursor": 3110674,
+      "cpSeekFloor": {
+        "record": 3108864,
+        "offset": 238507629,
+        "within": 31532275
+      },
+      "cpIndexSha256": "7f308dde01de212062ffda5fdbc18751ebb6ef75d35904e1aee0608b3a62f204",
+      "cpIndexPresentAfter": true,
+      "independentFrameOracle": true,
+      "checkedOrdinals": [
+        "3108863",
+        "3108864",
+        "3108865",
+        "3110673",
+        "3110674",
+        "3110675",
+        "3112960",
+        "3112961"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/seek-unit-02.xml",
+      "sha256": "bc983d65f038a6bd77c670aa04b33dd95295b10a768a4850b814237943862037",
+      "name": "com.ohinteractive.seedv6.training.data.ContinuationSeekTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "time": "0.323"
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/seek-factory-03.xml",
+      "sha256": "d06da4afe9f24d1299ed40e66c5bcae9846ac1543efb47ff23e8986b4ef978eb",
+      "name": "com.ohinteractive.seedv6.gui.BrnContinuationWaveTest",
+      "tests": "5",
+      "skipped": "1",
+      "failures": "0",
+      "errors": "0",
+      "time": "7.379"
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/seek-service-01.xml",
+      "sha256": "e17489f82bdfc613203c6be219159cd57f24b012fe8dc47b786e376a620e981c",
+      "name": "com.ohinteractive.seedv6.training.service.IncrementalTrainerServiceTest",
+      "tests": "6",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "time": "12.268"
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/seek-readers-01.xml",
+      "sha256": "36cbb02ee9fe16ec9e34175403a8d22586c3f8d81b89adf16584d004e20b21d5",
+      "name": "com.ohinteractive.seedv6.training.data.SourceReadersTest",
+      "tests": "6",
+      "skipped": "1",
+      "failures": "0",
+      "errors": "0",
+      "time": "0.401"
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/seek-owner-before-01.xml",
+      "sha256": "aff8786430f098fe32f349dc61275c9dd742ce0fb165dce05788cb54fab43cfa",
+      "name": "com.ohinteractive.seedv6.gui.BrnContinuationSeekOwnerTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "time": "5.072"
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/seek-owner-after-02.xml",
+      "sha256": "d76b06f4fd5f7ccfbea6d59432538153d05ae9b9140878489ec79e3c9348e0fc",
+      "name": "com.ohinteractive.seedv6.gui.BrnContinuationSeekOwnerTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "time": "4.154"
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/seek-native-02.xml",
+      "sha256": "3b4bbd5a516d409febb9eef10d9ea23b1796bf20b2a2ec9f1db3d8193be67c84",
+      "name": "com.ohinteractive.seedv6.gui.BrnContinuationWaveTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "time": "7.664"
+    }
+  ],
+  "nativeScreenshots": {
+    "W1-CUBIC-owner.png": "69d8cdb6a3caff94cf827c5bc7155ad3f69c17702060bf8d762959ce5c54dbe5",
+    "W1-GATE-owner.png": "bcc5dec99d9839a19c06c5fc47a2bf7a6cd0e1ad7eda70dc0acc8af5af76c839",
+    "W1-POOL-owner.png": "6ae19fd7f4520280130c8fcc5f63f14b95d2a858463d1fbb65ce71303789390c",
+    "W3-BRE-CONTROL-owner.png": "8dcb3747d43d645e5505a83cc60802038c0766038876cf2e61526ff1958d93f7",
+    "W3-RESCUBIC-owner.png": "c799d0d87e33fd49cb98153433a6dca23e5f218c60000a2a5a5d8fd81bc7a7f6",
+    "W3-RESGATE-owner.png": "eb1b2faabb092660e6ad94486738aaf445155260b322ab73fc1b6bd4f9b683fd",
+    "W4-BRE-CONTROL-LR001-owner-recipe.png": "0ca1597da2097b5b6774f5253778aa7a026decd744469fd372a05ce8983df173",
+    "W4-BRE-CONTROL-LR001-owner.png": "67375ad948ff5d891e3d05963dbe3c61b08a8f8c2e4f000df553934e137d51fc",
+    "W4-BRE-CONTROL-LR003-owner-recipe.png": "953067993853a74e2ef5def59610158b6c4ff575b858f0b0e9768df6adce5a02",
+    "W4-BRE-CONTROL-LR003-owner.png": "bfc927f58d53e2c70f33052636da050df2fc2907a8fd3da1d8d13a4af24324b9",
+    "W4-RESCUBIC-LR001-owner-recipe.png": "c820a13763fccd97694f796396576946cce53d0646fe930f5f0ec2a7cef65129",
+    "W4-RESCUBIC-LR001-owner.png": "10210c61ea28e4369c8a293027dbcb66964f0f7cf1b737f2757d627251b46eef",
+    "W4-RESCUBIC-LR003-owner-recipe.png": "d3068641efd19eab6fef26df88f11f8111d34b51d5a75bf310af803a432a0305",
+    "W4-RESCUBIC-LR003-owner.png": "e3346e880e725e000cd54648c3ef9d9191b2e22e5b1fe978a9ca867ec43863c9",
+    "W4-RESGATE-LR001-owner-recipe.png": "10a977cc3d2a1a9b7f3f0f27aacd4a7e82eb385f3ef56e90b987087e548c8fa6",
+    "W4-RESGATE-LR001-owner.png": "c28fcd84f57a6e4f3e59e2fe5a0d90c8c83a9d4ce9675f071090e17808b71a09",
+    "W4-RESGATE-LR003-owner-recipe.png": "b3d3b5768b72ae49790f17d1ab694b4f4b82988a0bd57bc7be900058274e4047",
+    "W4-RESGATE-LR003-owner.png": "df80473d2b90fcfee4e07c34917a47d14459e5aff9a0f12fdd56b75b6476d2dd"
+  },
+  "nativeScreenshotDirectory": "docs/research/brn-successor-cglhw/raw/wave4/seek-native-02",
+  "nativeDistribution": "Pending build51 package verification after implementation commit",
+  "limitations": [
+    "No substantive owner training performed; actual Gen33 completion is blocking operational verification.",
+    "Source fingerprints retain existing bounded identity semantics, not full-archive hashing.",
+    "Optional SEED_TRAINING_SMOKE_SOURCE reader test skipped; explicit actual-owner boundary/oracle test ran.",
+    "Failed shell launches seek-repair-01.log and seek-owner-after-01.log happened before repair/test execution; corrected quoted invocations passed."
+  ]
+}

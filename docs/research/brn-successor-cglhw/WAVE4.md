@@ -2,9 +2,11 @@
 
 21 October2026. Part of the existing BRN successor CGLHW; [STATE](STATE.md) and
 [CONTRACT](CONTRACT.md) govern. Preparation was verified on isolated fixtures.
-**G4 is ready and blocking trained-candidate research.** All six owner lineages
-exist and passed native GUI readiness checks following completed Wave3 clock
-reconciliation. No substantive training has been performed by Codex.
+**G4 remains active and blocking trained-candidate research.** The first human
+Gen33 attempt exposed omitted seek metadata in all six continuations. The focused
+repair below supersedes the original readiness conclusion. All six indexes are
+now restored; actual Gen33 completion remains a human verification boundary.
+No substantive training has been performed by Codex.
 
 ## Question and controls
 
@@ -29,8 +31,8 @@ different starting point. Intended arms:
 
 Each admitted run adds32 generations,131072 training positions/generation,
 batch128,8epochs,seed1,one worker,held-out WDL validation, equal registered
-BT4/CP weights. No owner training has occurred. Any eventual handoff must verify
-the actual created roots, loaded GUI settings and checkpoint identities first.
+BT4/CP weights. The first owner run failed before a completed generation; its
+persisted state and validated Resume path are recorded below.
 
 The two arms within each family start with identical weights, Adam moments/step,
 source offsets and completed reservations. Training generation numbers continue
@@ -56,8 +58,11 @@ distinct deterministic lineage IDs and immutable `continuation-origin.json`.
 Existing destinations are inspected only; edited settings and later training
 are preserved. Foreign/partial destinations fail without replacement.
 
-Only source selection, corpus configuration and the complete settled cursor ledger
-are copied. Original histories/checkpoints remain in their original roots; origin
+Initial build50 preparation copied source selection, corpus configuration and the
+complete settled cursor ledger but omitted required seek indexes. The corrected
+factory also verifies coverage and inherits navigation for those cursors. Existing
+valid destination indexes are preserved; missing/invalid coverage blocks ordinary
+preparation. Original histories/checkpoints remain in their original roots; origin
 records link them. New roots begin from an exact parentless generation32 bootstrap,
 avoiding collisions with inherited reservations1..32. New session/history counts
 describe added work; inherited generation number is not new exposure.
@@ -144,10 +149,84 @@ passes. Both logs/XML remain. An initial independent audit assumed text referenc
 it stopped read-only, then passed with verified SmallRecord binary framing/checksums.
 Neither diagnostic error changed a model or trained an owner lineage.
 
+## Gen33 seek failure and focused remediation
+
+The owner reported build50 W4-BRE-CONTROL-LR001 failing at33/64 with508 updates,
+65535 acquired samples and0 completed generations. The reported exception was:
+`Training Data seek metadata does not cover position 3110674. Restore this lineage's seek metadata; an unbounded prefix scan was not started.`
+These display counters are user-reported; they were not a durable optimizer receipt.
+
+Verified cause: `BrnContinuationWave` copied CP cursor3110674 but omitted
+`training-data/seek/d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json`.
+`SourceReaders.Navigation.floor` therefore had only the implicit record0 anchor
+and correctly refused more than4096 prefix records. BT4 was acquired first through
+its shared prepared index; incremental epoch1 updates were still provisional when
+CP opening failed. All six W4 roots lacked their CP index. Residual cursors9248035
+would fail identically. No evidence supports a changed dataset, corrupt donor
+index, wrong cursor arithmetic or missing shared BT4 preparation as the cause.
+
+The original W3 indexes were intact, identity/checksum-valid and sufficient:
+BRE's floor3108864 leaves1810 records to seek; residual floor9244672 leaves3363.
+The repair copied each family's exact original index into both rate arms, under
+source/destination writer locks. Total986602 bytes, six new files; no rebuild or
+prefix scan. The reusable inheritance helper verifies source readiness, checksums
+and coverage, refuses invalid or linked metadata and never replaces existing
+indexes. The explicit `--repair-seek PLAN NEW_REPORT` factory mode authenticates
+the existing continuation origins and payloads, refuses absent roots, and changes
+only missing navigation. Future newly prepared continuations inherit it normally.
+The4096 bound, data identity checks and checkpoint integrity checks remain intact.
+
+Actual failed state: latest and Best remain the accepted bootstrap
+`g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233`;
+Adam step2015232, exact original network/state hashes in `wave4-owner-readiness.json`.
+No Gen33 checkpoint, partial-generation/optimizer file, generation receipt,
+reservation or history exists. The settled ledger still contains32 reservations
+and the original offsets. The failure did persist an INCREMENTAL Gen33 attempt,
+ACTIVE session965bb68b-6865-42f2-b1fd-9efd36598cbf (baseline32,target32,completed0),
+selection archive and saved lineage revisions. These were preserved byte-for-byte.
+FAILED was the worker/UI state; the durable session remains ACTIVE deliberately.
+
+**Use ordinary Resume Generation33.** It reloads the unchanged Gen32 Adam state,
+reacquires the same Gen33 source ranges and retains the target64 budget. The
+provisional508 displayed updates are not a durable continuation to replay on top
+of the parent. No saved optimizer work is being discarded by this repair. Leave
+the recipe unchanged: the recorded attempt and GUI preview agree on Resume,
+not a settings restart. Other five arms still have no session/attempt and use Start.
+
+Validation is bound by `wave4-seek-remediation.json` and local raw/wave4 evidence:
+
+- Reproduced the exact seek failure in all six owner roots before repair, without
+  training or mutation. After repair each actual inherited cursor opens correctly.
+- Independent PZstandard frame decoding checked FEN, CP/mate target and perspective
+  at cursor±1, surrounding sparse anchors and the following4096 boundary. Sequential
+  reading extends navigation correctly; reopening the next boundary also passes.
+  BT4 preparation/identity and three actual records per arm passed.
+- Isolated two-source failure occurred after provisional updates. Repair plus
+  ordinary Resume retained its session ID/budget and produced byte-identical final
+  weights and Adam state to uninterrupted training. Existing stop/resume tests
+  cover both unverified acquisition and verified partial optimizer continuation.
+- Factory fixtures now inherit cursor5000 instead of10. Creation fails before a
+  destination is created when source coverage is absent. Explicit repair preserves
+  a failed attempt/session and cursors, rejects a held writer lock, and is idempotent.
+- All817 existing files across the six W4 roots, three W3 roots and frozen Gen32
+  checkpoint remain byte-identical. Only six indexes were added. All six checkpoint
+  payloads, latest/Best IDs, generation32 and configured learning rates passed.
+- Native Swing loaded all six actual lineages, checked settings and enabled actions,
+  and preserved12 screenshots. Failed BRE's visible button is Resume Generation33;
+  its session and attempt remain unchanged. No owner training was started.
+
+Limits: this is real-source boundary and recovery verification, not completion of
+a131072-position generation or the32-generation programme. Source fingerprints
+are the existing bounded identity checks, not full hashes of the entire archives.
+One optional environment-driven source smoke was skipped; the explicit owner-data
+test above ran. Initial command-launch failures (unquoted dotted PowerShell options)
+occurred before Java repair/test execution and remain in the evidence; corrected
+quoted commands passed. No source/optimizer repair was needed for those failures.
+
 ## Human training gate G4
 
 Purpose: distinguish additional exposure from a lower learning rate for each
-expressive formulation and the additive control. Use the verified build50 launcher:
+expressive formulation and the additive control. Use the repaired build51 launcher:
 
 ```powershell
 .\app\build\install\seedv6\bin\seedv6.bat gui
@@ -155,6 +234,14 @@ expressive formulation and the additive control. Use the verified build50 launch
 
 Select the six existing names above in Network Training; do not create/import
 replacement lineages. Their settings are already prepared:
+
+First select **W4-BRE-CONTROL-LR001** and click **Resume Generation33**. Keep its
+existing ACTIVE session and32 Additional Generations setting; target remains64.
+There is no need to clear the failure, reset progress, restore a checkpoint or
+choose Restart Generation. If the action instead says Restart, stop and report
+the settings discrepancy. Completion of Gen33 is the remaining blocking operational
+verification. If it succeeds, continue the same session through64 and then train
+the other five arms as below; no intermediate Codex gate is required.
 
 - Learning rate.001 for LR001 and.003 for LR003. Leave **Keep checkpoint learning
   rate on Resume unchecked** so the explicit recipe applies without resetting Adam.

@@ -42,6 +42,9 @@ public final class BrnContinuationWave {
                 .withValidationMethod(ValidationMethod.HELD_OUT).withLearningRate(rate);
     }
     static List<Entry> prepare(Path library,List<Source> specifications) throws IOException {
+        return prepare(library,specifications,false);
+    }
+    private static List<Entry> prepare(Path library,List<Source> specifications,boolean repairingSeek) throws IOException {
         library=library.toAbsolutePath().normalize();
         if(!Files.isDirectory(library,LinkOption.NOFOLLOW_LINKS)||Files.isSymbolicLink(library))
             throw new IOException("Existing unlinked library required");
@@ -77,6 +80,7 @@ public final class BrnContinuationWave {
                 if(ledger.active().isPresent()||ledger.state().reservations().stream()
                         .anyMatch(r->r.status()!=SourceLedger.Status.COMPLETED||r.generation()>manifest.generation()))
                     throw new IOException("Continuation requires settled, completed source reservations");
+                ContinuationSeek.verify(selection,ledger.state().next(),sourceData.resolve("seek"));
                 var corpus=DataFiles.read(sourceData.resolve("configuration.json"),CorpusTrainingConfig.class);
                 byte[] ledgerBytes=Files.readAllBytes(sourceData.resolve("cursors.json"));
                 byte[] selectionBytes=Files.readAllBytes(sourceData.resolve("sources.json"));
@@ -108,6 +112,8 @@ public final class BrnContinuationWave {
                                     WAVE+": exact continuation of "+source.checkpoint(),null,configured.seed(),Instant.now()));
                             Files.write(DataSources.directory(root).resolve("cursors.json"),ledgerBytes,StandardOpenOption.CREATE_NEW);
                             Files.write(DataSources.directory(root).resolve("configuration.json"),configurationBytes,StandardOpenOption.CREATE_NEW);
+                            ContinuationSeek.inherit(selection,ledger.state().next(),sourceData.resolve("seek"),
+                                    DataSources.directory(root).resolve("seek"));
                             var origin=new Origin(1,WAVE,source,hash(ledgerBytes),hash(selectionBytes),bootstrap.manifest().id(),cloned.step(),rate);
                             DataFiles.write(root.resolve(ORIGIN),origin);
                         }
@@ -129,6 +135,8 @@ public final class BrnContinuationWave {
                     if(currentLedger.reservations().size()<ledger.state().reservations().size()
                             ||!currentLedger.reservations().subList(0,ledger.state().reservations().size()).equals(ledger.state().reservations()))
                         throw new IOException("Inherited reservation prefix differs");
+                    if(!repairingSeek)ContinuationSeek.verify(DataSources.read(DataSources.directory(root)),
+                            currentLedger.next(),DataSources.directory(root).resolve("seek"));
                     var selected=TrainingLineages.read(new TrainingLineages.Entry(root,architecture,candidate));
                     String latest=CheckpointInspection.reference(root,"latest-training");
                     var current=CheckpointStore.readSnapshot(root,latest).manifest();
@@ -147,16 +155,46 @@ public final class BrnContinuationWave {
         return List.copyOf(results);
     }
     public static void main(String[] args) throws Exception {
-        if(args.length!=3||!args[0].equals("--create"))throw new IllegalArgumentException("--create PLAN NEW_REPORT");
+        if(args.length!=3||!Set.of("--create","--repair-seek").contains(args[0]))
+            throw new IllegalArgumentException("--create|--repair-seek PLAN NEW_REPORT");
         var plan=DataFiles.read(Path.of(args[1]),Plan.class);Path report=Path.of(args[2]);
         if(!plan.id().equals(WAVE)||Files.exists(report))throw new IOException("Explicit wave plan and new report required");
         Path library=Path.of(plan.library()).toAbsolutePath().normalize();
         String configured=TrainingSettings.preferences().get("baseTrainingRoot","");
         if(configured.isBlank()||!Path.of(configured).toAbsolutePath().normalize().equals(library))
             throw new IOException("Plan does not match the existing GUI library");
-        var entries=prepare(library,plan.sources());
+        if(args[0].equals("--repair-seek")) {
+            // Repair must not create a replacement lineage if an expected owner root is absent.
+            for(var source:plan.sources()) for(double rate:RATES) {
+                var architecture=CheckpointInspection.manifest(Path.of(source.root()).resolve("checkpoints").resolve(source.checkpoint())).architecture();
+                Path root=library.resolve(NetworkArchitecture.valueOf(architecture.name()).folderName()).resolve(id(source,rate).toString());
+                if(!Files.isRegularFile(root.resolve(ORIGIN)))throw new IOException("Existing continuation required for repair: "+root);
+            }
+        }
+        var entries=prepare(library,plan.sources(),args[0].equals("--repair-seek"));
+        if(args[0].equals("--repair-seek")) for(var entry:entries) repairSeek(entry);
         DataFiles.write(report,new Report(WAVE,Instant.now().toString(),library.toString(),entries));
         System.out.println("Prepared/verified exact-state continuation arms; no training: "+report);
+    }
+    static List<String> repairSeek(Entry entry) throws IOException {
+        Path root=Path.of(entry.root()), sourceRoot=Path.of(entry.origin().source().root());
+        try(var sourceChannel=FileChannel.open(sourceRoot.resolve("store.lock"),StandardOpenOption.WRITE);
+            var sourceLock=sourceChannel.tryLock();
+            var destinationChannel=FileChannel.open(root.resolve("store.lock"),StandardOpenOption.WRITE);
+            var destinationLock=destinationChannel.tryLock()) {
+            if(sourceLock==null||destinationLock==null)throw new IOException("Active writer prevents seek repair");
+            if(!DataFiles.read(root.resolve(ORIGIN),Origin.class).equals(entry.origin()))throw new IOException("Continuation origin changed");
+            Path data=DataSources.directory(root), original=DataSources.directory(sourceRoot);
+            var selection=DataSources.read(data);
+            if(!hash(Files.readAllBytes(data.resolve("sources.json"))).equals(entry.origin().selectionSha256())
+                    ||!hash(Files.readAllBytes(original.resolve("cursors.json"))).equals(entry.origin().ledgerSha256()))
+                throw new IOException("Continuation source binding changed");
+            var ledger=new SourceLedger(root);
+            if(!ledger.state().next().equals(entry.sourceOffsets()))throw new IOException("Destination cursors changed during repair");
+            return ContinuationSeek.inherit(selection,ledger.state().next(),original.resolve("seek"),data.resolve("seek"));
+        } catch(java.nio.channels.OverlappingFileLockException busy) {
+            throw new IOException("Active writer prevents seek repair",busy);
+        }
     }
     private BrnContinuationWave() {}
 }

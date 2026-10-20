@@ -87,6 +87,55 @@ class IncrementalTrainerServiceTest {
             assertEquals(0, store.recover().latestTraining().orElseThrow().manifest().optimizerStep());
         }
     }
+    @Test void inheritedSeekFailureAfterProvisionalUpdatesResumesExactParentAndSession() throws Exception {
+        Path first=data(9000), second=temporary.resolve("second.jsonl");
+        Files.copy(first,second);Files.writeString(second,SourceReadersTest.line(77),StandardOpenOption.APPEND);
+        var selection=new DataSources(1,List.of(DataSource.register("first",first,1),DataSource.register("second",second,1)),false);
+        Path donor=temporary.resolve("donor-seek");
+        for(var item:selection.sources())try(var reader=SourceReaders.open(item,donor,0)) {
+            for(int i=0;i<5000;i++)assertNotNull(reader.next());
+        }
+        byte[][] finalStates=new byte[2][];
+        for(int run=0;run<2;run++) {
+            var cfg=config(temporary.resolve("seek-resume-"+run),first,2048);
+            Path root=cfg.checkpointRoot();selection.save(DataSources.directory(root));
+            try(var store=new CheckpointStore(root,TrainingArchitecture.BRN_PAIR2)) {
+                store.writeLineage(new TrainingLineage(UUID.randomUUID(),"Seek fixture",TrainingArchitecture.BRN_PAIR2,
+                        java.time.Instant.now(),"","Synthetic generation counter"));
+                store.initialize(initial(),new CheckpointManifest.Metadata(32,1,""));store.writeTrainingSource(cfg.source());
+                var ledger=new SourceLedger(root);ledger.initialize();
+                ledger.reserve(32,"fixture",selection.identity(),selection.sources().stream()
+                        .map(s->new SourceLedger.Range(s.identity(),0,5000,4000,1000,0)).toList(),"a".repeat(64),"b".repeat(64));
+                ledger.complete(32);
+            }
+            Path seek=DataSources.directory(root).resolve("seek");
+            if(run==0) {
+                Files.createDirectories(seek);
+                Files.copy(donor.resolve(selection.sources().getFirst().identity()+".json"),seek.resolve(selection.sources().getFirst().identity()+".json"));
+                String parent=CheckpointInspection.reference(root,"latest-training");
+                try(var service=TrainerService.resume(cfg,NnueCorpusTrainingTest.forbidden(),s->{}).withIncrementalTraining().withSession()) {
+                    service.start();assertTrue(service.awaitTermination(Duration.ofSeconds(30)));
+                    assertTrue(service.snapshot().failed());assertTrue(service.snapshot().generationOptimizerUpdates()>0);
+                    assertTrue(service.snapshot().failureSummary().contains("does not cover position 5000"));
+                }
+                assertEquals(parent,CheckpointInspection.reference(root,"latest-training"));
+                assertTrue(PartialGeneration.inspect(root).isEmpty());assertTrue(new SourceLedger(root).generation(33).isEmpty());
+                var session=TrainingSession.read(root).orElseThrow();assertEquals(TrainingSession.State.ACTIVE,session.state());
+                assertEquals(32,session.baseline());assertEquals(33,session.finalGeneration());
+                var attempt=GenerationAttempt.inspect(root).orElseThrow();assertEquals(33,attempt.generation());
+                assertEquals(GenerationAttempt.Format.INCREMENTAL,attempt.format());
+            }
+            ContinuationSeek.inherit(selection,new SourceLedger(root).state().next(),donor,seek);
+            UUID sessionId=TrainingSession.read(root).map(TrainingSession::id).orElse(null);
+            try(var service=TrainerService.resume(cfg,NnueCorpusTrainingTest.forbidden(),s->{}).withIncrementalTraining().withSession()) {
+                var end=finish(service);assertEquals(48,end.generationOptimizerUpdates());
+                finalStates[run]=state(root,end);
+            }
+            var end=TrainingSession.read(root).orElseThrow();assertEquals(TrainingSession.State.COMPLETED,end.state());
+            assertEquals(1,end.completed());assertEquals(33,end.finalGeneration());if(sessionId!=null)assertEquals(sessionId,end.id());
+        }
+        assertArrayEquals(finalStates[1],finalStates[0],"Repair/resume must equal uninterrupted Adam/weights byte for byte");
+    }
     @Test void zeroUpdateHistoricalReservationAdoptsIncrementalOrderingWithoutAbandoningRanges() throws Exception {
         var cfg = config(temporary.resolve("upgrade"), data(500), 257);
         try (var store = new CheckpointStore(cfg.checkpointRoot(), TrainingArchitecture.BRN_PAIR2)) {

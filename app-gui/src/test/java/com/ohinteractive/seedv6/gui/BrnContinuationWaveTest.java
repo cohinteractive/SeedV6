@@ -19,7 +19,7 @@ class BrnContinuationWaveTest {
     List<BrnContinuationWave.Source> sources() throws Exception {
         library=temporary.resolve("library");Files.createDirectories(library);
         Path file=temporary.resolve("source.jsonl");var text=new StringBuilder();
-        for(int i=0;i<1600;i++) {
+        for(int i=0;i<12000;i++) {
             int white=8+i%40,black=8+(i/40)%40;if(white==black)continue;
             char[] squares=new char[64];Arrays.fill(squares,' ');squares[4]='K';squares[60]='k';
             squares[white]='N';squares[black]='p';var fen=new StringBuilder();
@@ -48,8 +48,11 @@ class BrnContinuationWaveTest {
                 selection.save(DataSources.directory(root));store.writeTrainingSource(configured.source());
                 var checkpoint=store.initialize(state,new CheckpointManifest.Metadata(32,4,""));
                 var ledger=new SourceLedger(root);ledger.initialize();
-                ledger.reserve(32,"fixture",selection.identity(),List.of(new SourceLedger.Range(selection.sources().getFirst().identity(),0,10,8,2,0)),
+                ledger.reserve(32,"fixture",selection.identity(),List.of(new SourceLedger.Range(selection.sources().getFirst().identity(),0,5000,4000,1000,0)),
                         "a".repeat(64),"b".repeat(64));ledger.complete(32);
+                try(var reader=SourceReaders.open(selection.sources().getFirst(),DataSources.directory(root).resolve("seek"),0)) {
+                    for(int i=0;i<5000;i++) assertNotNull(reader.next());
+                }
                 DataFiles.write(DataSources.directory(root).resolve("configuration.json"),corpus);
                 result.add(new BrnContinuationWave.Source(architecture.name(),root.toString(),checkpoint.manifest().id(),
                         checkpoint.manifest().networkSha256(),checkpoint.manifest().trainingSha256(),32,71,12,
@@ -98,7 +101,7 @@ class BrnContinuationWaveTest {
             var session=TrainingSession.read(root).orElseThrow();
             assertEquals(32,session.baseline());assertEquals(1,session.completed());assertEquals(TrainingSession.State.COMPLETED,session.state());
             var current=new SourceLedger(root);var next=current.generation(33).orElseThrow();
-            assertEquals(10,next.ranges().getFirst().start());assertEquals(SourceLedger.Status.COMPLETED,next.status());
+            assertEquals(5000,next.ranges().getFirst().start());assertEquals(SourceLedger.Status.COMPLETED,next.status());
             var prior=firstRanges.putIfAbsent(entry.architecture(),next);
             if(prior!=null) { assertEquals(prior.ranges(),next.ranges());assertEquals(prior.trainingHash(),next.trainingHash());assertEquals(prior.validationHash(),next.validationHash()); }
             assertArrayEquals(sourceBefore,CheckpointStore.readTrainingSnapshot(original,entry.origin().source().checkpoint()).encode());
@@ -132,6 +135,29 @@ class BrnContinuationWaveTest {
         }
         assertFalse(Files.exists(library.resolve(NetworkArchitecture.BRN_GEN32_GATED.folderName()).resolve(BrnContinuationWave.id(source,.001).toString())));
     }
+    @Test void missingSourceSeekPreventsCreationAndExplicitRepairPreservesFailedSession() throws Exception {
+        var input=sources();var source=input.getFirst();Path original=Path.of(source.root());
+        var selection=DataSources.read(DataSources.directory(original));
+        Path sourceIndex=DataSources.directory(original).resolve("seek").resolve(selection.sources().getFirst().identity()+".json");
+        byte[] index=Files.readAllBytes(sourceIndex);Files.delete(sourceIndex);
+        assertThrows(java.io.IOException.class,()->BrnContinuationWave.prepare(library,List.of(source)));
+        Path root=library.resolve(NetworkArchitecture.BRN_GEN32_GATED.folderName()).resolve(BrnContinuationWave.id(source,.001).toString());
+        assertFalse(Files.exists(root));Files.write(sourceIndex,index);
+        var entry=BrnContinuationWave.prepare(library,List.of(source)).getFirst();
+        Path destinationIndex=DataSources.directory(root).resolve("seek").resolve(sourceIndex.getFileName());Files.delete(destinationIndex);
+        var session=new TrainingSession(1,UUID.randomUUID(),entry.lineageId(),32,32,0,TrainingSession.State.ACTIVE);session.save(root);
+        var selected=TrainingLineages.read(new TrainingLineages.Entry(root,NetworkArchitecture.BRN_GEN32_GATED,entry.candidate()));
+        var attempt=GenerationAttempt.create(entry.latest(),entry.latest(),33,selected.settings().config(TrainerConfig.DepthChange.REQUIRE_SAME),selected.settings().source()).incremental();
+        try(var store=new CheckpointStore(root,TrainingArchitecture.BRN_GEN32_GATED)){store.writeGenerationAttempt(attempt);}
+        byte[] ledger=Files.readAllBytes(DataSources.directory(root).resolve("cursors.json"));
+        try(var channel=java.nio.channels.FileChannel.open(root.resolve("store.lock"),StandardOpenOption.WRITE);var lock=channel.lock()) {
+            assertThrows(java.io.IOException.class,()->BrnContinuationWave.repairSeek(entry));assertFalse(Files.exists(destinationIndex));
+        }
+        assertEquals(1,BrnContinuationWave.repairSeek(entry).size());assertTrue(BrnContinuationWave.repairSeek(entry).isEmpty());
+        assertArrayEquals(index,Files.readAllBytes(destinationIndex));assertEquals(session,TrainingSession.read(root).orElseThrow());
+        assertEquals(attempt,GenerationAttempt.inspect(root).orElseThrow());assertEquals(entry.latest(),CheckpointInspection.reference(root,"latest-training"));
+        assertArrayEquals(ledger,Files.readAllBytes(DataSources.directory(root).resolve("cursors.json")));
+    }
     @Test void nativeWindowLoadsEachContinuationWithoutStartingTraining() throws Exception {
         Assumptions.assumeFalse(java.awt.GraphicsEnvironment.isHeadless(),"Native Swing required");
         String ownerReport=System.getProperty("seedv6.continuationWaveGuiReport");
@@ -141,6 +167,8 @@ class BrnContinuationWaveTest {
         for(var entry:entries) {
             var architecture=NetworkArchitecture.valueOf(entry.architecture());
             var selected=TrainingLineages.read(new TrainingLineages.Entry(Path.of(entry.root()),architecture,entry.candidate()));
+            var savedSession=TrainingSession.read(Path.of(entry.root()));
+            var savedAttempt=GenerationAttempt.inspect(Path.of(entry.root()));
             var frame=edt(()->new ChessFrame(selected.settings(),new TrainingController.Backend(),ignored->{}));
             try {
                 edt(()->{frame.setSize(1440,950);frame.setVisible(true);
@@ -167,7 +195,9 @@ class BrnContinuationWaveTest {
                     assertEquals(1,((Number)BrnResidualWaveTest.named(frame,"trainingThreads",javax.swing.JSpinner.class).getValue()).intValue());
                     assertEquals(ValidationMethod.HELD_OUT,BrnResidualWaveTest.named(frame,"trainingValidationMethod",javax.swing.JComboBox.class).getSelectedItem());
                     String summary=BrnResidualWaveTest.named(frame,"trainingLineageSummary",javax.swing.JTextArea.class).getText();
-                    assertTrue(summary.contains(entry.candidate()));assertTrue(summary.contains("Gen 32 (Starting checkpoint)"));assertFalse(summary.contains("unfinished"));
+                    assertTrue(summary.contains(entry.candidate()));assertTrue(summary.contains("Gen 32 (Starting checkpoint)"));
+                    assertEquals(savedAttempt.isPresent()?"Resume Generation 33":"Start Training",
+                            BrnResidualWaveTest.named(frame,"startTraining",javax.swing.JButton.class).getText());
                     frame.validate();Path output=Path.of("build/brn-successor-native");Files.createDirectories(output);
                     var image=new java.awt.image.BufferedImage(frame.getWidth(),frame.getHeight(),java.awt.image.BufferedImage.TYPE_INT_RGB);
                     var graphics=image.createGraphics();frame.paintAll(graphics);graphics.dispose();
@@ -185,7 +215,8 @@ class BrnContinuationWaveTest {
                 while(edt(frame::isDisplayable)){if(System.nanoTime()>deadline)fail("Window did not close");Thread.sleep(50);}
             }
             assertEquals(entry.latest(),CheckpointInspection.reference(Path.of(entry.root()),"latest-training"));
-            assertTrue(TrainingSession.read(Path.of(entry.root())).isEmpty(),"Visual inspection must not start training");
+            assertEquals(savedSession,TrainingSession.read(Path.of(entry.root())),"Visual inspection must not change session");
+            assertEquals(savedAttempt,GenerationAttempt.inspect(Path.of(entry.root())),"Visual inspection must not change attempt");
         }
     }
     private static <T> T edt(java.util.concurrent.Callable<T> call) throws Exception {
