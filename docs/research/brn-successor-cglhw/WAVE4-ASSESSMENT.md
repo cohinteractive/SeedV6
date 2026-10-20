@@ -492,3 +492,16 @@ This strengthens the inference-cost concern without proving the expressive signa
 is useless. Only eight pairs per comparison, opening sensitivity and selection
 remain material. Finish the other fixed protocols; no favourable stopping or
 post-hoc confirmation follows. Exact evidence: wave4-direct-clock-LR001-results.json.
+
+
+Hybrid inference implementation is now unit-verified (35 distinct targeted cases;
+three loader cases rechecked after making the base scale mandatory). It composes
+one immutable Pair2 table and an unchanged correction layout, through canonical
+and guarded delta paths. Ordinary loading/codecs/optimizers/default dispatch are
+unchanged. Research receipts bind base and correction hashes to a distinct function
+identity. The launcher rejects a hybrid plan with an older runtime lacking that
+capability, before starting an engine; the negative test created no output/process.
+Exact evidence and the initial PowerShell stderr-handling limitation are recorded
+in wave4-hybrid-implementation-validation.json. This core addition warrants build52;
+actual trained-model oracles/cost and legal-play readiness still precede any hybrid
+strength admission. No GUI availability or native package verification is inferred.

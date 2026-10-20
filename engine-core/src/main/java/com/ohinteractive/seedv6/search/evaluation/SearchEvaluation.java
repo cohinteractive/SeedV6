@@ -33,6 +33,7 @@ public final class SearchEvaluation {
     private final Brn3Definition brn3;
     private final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model pair2;
     private final com.ohinteractive.seedv6.core.brnnext.BrnNextModel next;
+    private final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model residualBase;
     private final NnueScoreMapping mapping;
     private final boolean incremental;
     private final boolean rollingDelta;
@@ -51,7 +52,7 @@ public final class SearchEvaluation {
 
     private SearchEvaluation(NnueNetwork network, NnueScoreMapping mapping, boolean incremental,
                              boolean scalarOracle, boolean materialBootstrap) {
-        blend = null; next = null; rollingDelta = false; this.materialBootstrap = materialBootstrap;
+        residualBase = null; blend = null; next = null; rollingDelta = false; this.materialBootstrap = materialBootstrap;
         this.brn = null; this.brn1 = null; this.brn2 = null; this.brn3 = null; pair2 = null;
         this.network = network;
         this.mapping = mapping;
@@ -60,13 +61,13 @@ public final class SearchEvaluation {
     }
 
     private SearchEvaluation(BrnModel model) {
-        blend = null; next = null; rollingDelta = false;
+        residualBase = null; blend = null; next = null; rollingDelta = false;
         brn = Objects.requireNonNull(model, "BRN model"); brn1 = null; brn2 = null; brn3 = null; pair2 = null;
         network = null; mapping = null; incremental = false; scalarOracle = false; materialBootstrap = false;
     }
 
     private SearchEvaluation(Brn1Model model) {
-        blend = null; next = null; rollingDelta = false;
+        residualBase = null; blend = null; next = null; rollingDelta = false;
         brn1 = Objects.requireNonNull(model, "BRN-1 model"); brn = null; brn2 = null; brn3 = null; pair2 = null;
         network = null; mapping = null; incremental = false; scalarOracle = false; materialBootstrap = false;
     }
@@ -74,7 +75,7 @@ public final class SearchEvaluation {
     public static SearchEvaluation brn1(Brn1Model model) { return new SearchEvaluation(model); }
 
     private SearchEvaluation(Brn2Model model, boolean incremental) {
-        blend = null; next = null; rollingDelta = false;
+        residualBase = null; blend = null; next = null; rollingDelta = false;
         brn2 = Objects.requireNonNull(model, "BRN-2 model"); brn = null; brn1 = null; brn3 = null; pair2 = null;
         network = null; mapping = null; this.incremental = incremental; scalarOracle = false; materialBootstrap = false;
     }
@@ -86,7 +87,7 @@ public final class SearchEvaluation {
     public static SearchEvaluation brn(BrnModel model) { return new SearchEvaluation(model); }
 
     private SearchEvaluation(Brn3Model model, double residualGain) {
-        blend = null; next = null; rollingDelta = false;
+        residualBase = null; blend = null; next = null; rollingDelta = false;
         if(!Double.isFinite(residualGain)||residualGain<0||residualGain>1)throw new IllegalArgumentException("BRN-3 residual gain must be in [0,1]");
         pair2=null; brn3=new Brn3Definition(Objects.requireNonNull(model,"BRN-3 model"),residualGain);brn=null;brn1=null;brn2=null;
         network=null;mapping=null;incremental=true;scalarOracle=false;materialBootstrap=false;
@@ -96,7 +97,7 @@ public final class SearchEvaluation {
     public static SearchEvaluation brn3Research(Brn3Model model,double residualGain){return new SearchEvaluation(model,residualGain);}
 
     private SearchEvaluation(com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model model) {
-        blend = null; next = null; rollingDelta = false;
+        residualBase = null; blend = null; next = null; rollingDelta = false;
         pair2=Objects.requireNonNull(model);brn=null;brn1=null;brn2=null;brn3=null;
         network=null;mapping=null;incremental=true;scalarOracle=false;materialBootstrap=false;
     }
@@ -109,7 +110,14 @@ public final class SearchEvaluation {
         this(model, blockCache, false);
     }
     private SearchEvaluation(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model, boolean blockCache, boolean rollingDelta) {
+        this(model, blockCache, rollingDelta, null);
+    }
+    private SearchEvaluation(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model, boolean blockCache, boolean rollingDelta,
+                             com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model residualBase) {
         blend = null; this.rollingDelta = rollingDelta;
+        this.residualBase = residualBase;
+        if (residualBase != null && (!model.architecture().frozenBase() || blockCache && !rollingDelta))
+            throw new IllegalArgumentException("Hybrid requires a frozen-base correction and canonical or guarded delta evaluation");
         if (blockCache && model.architecture() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.POOLED)
             throw new IllegalArgumentException("No pooled block cache is admitted");
         next = Objects.requireNonNull(model); pair2 = null; brn = null; brn1 = null; brn2 = null; brn3 = null;
@@ -139,14 +147,25 @@ public final class SearchEvaluation {
             throw new IllegalArgumentException("Delta cache requires W3 CUBIC");
         return new SearchEvaluation(model, true, true);
     }
+    /** Separately bound immutable base plus learned correction, with one base evaluation.
+     * Research composition only: it is not represented by the correction's original codec identity. */
+    public static SearchEvaluation brnResidualHybridResearch(com.ohinteractive.seedv6.core.brnnext.BrnNextModel correction,
+                                                            com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model base) {
+        return new SearchEvaluation(correction, true, true, Objects.requireNonNull(base));
+    }
+    /** Full canonical oracle for the same explicitly composed research function. */
+    public static SearchEvaluation brnResidualHybridFullResearch(com.ohinteractive.seedv6.core.brnnext.BrnNextModel correction,
+                                                                com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model base) {
+        return new SearchEvaluation(correction, false, false, Objects.requireNonNull(base));
+    }
     /** New residual schemas explicitly retain the reference search family and verified cache. */
     public static SearchEvaluation brnGen32Residual(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model) {
         if (!model.architecture().frozenBase()) throw new IllegalArgumentException("Frozen Gen32 residual schema required");
         return new SearchEvaluation(model, true);
     }
-    public boolean isBrnGen32Residual() { return next != null && next.architecture().frozenBase(); }
+    public boolean isBrnGen32Residual() { return next != null && next.architecture().frozenBase() && residualBase == null; }
     private SearchEvaluation(SearchEvaluation reference, SearchEvaluation candidate, double weight) {
-        blend = new Blend(reference, candidate, weight); rollingDelta = false;
+        residualBase = null; blend = new Blend(reference, candidate, weight); rollingDelta = false;
         next = null; pair2 = null; brn = null; brn1 = null; brn2 = null; brn3 = null;
         network = null; mapping = null; incremental = false; scalarOracle = false; materialBootstrap = false;
     }
@@ -349,15 +368,19 @@ public final class SearchEvaluation {
         private final com.ohinteractive.seedv6.core.brnnext.BrnGatedDeltaAccumulator delta;
         private final com.ohinteractive.seedv6.core.brnnext.BrnCubicDeltaAccumulator cubicDelta;
         NextState(SearchEvaluation definition) {
-            this.definition = definition; workspace = definition.incremental ? null : definition.next.newWorkspace();
+            this.definition = definition;
+            workspace = definition.incremental ? null : definition.residualBase == null
+                    ? definition.next.newWorkspace() : definition.next.newResearchWorkspace(definition.residualBase);
             accumulator = definition.incremental && !definition.rollingDelta && definition.next.architecture().correctionKind() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GATED_PAIRS
                     ? new com.ohinteractive.seedv6.core.brnnext.BrnGatedAccumulator(definition.next) : null;
             cubic = definition.incremental && !definition.rollingDelta && definition.next.architecture().correctionKind() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.CUBIC
                     ? new com.ohinteractive.seedv6.core.brnnext.BrnCubicAccumulator(definition.next) : null;
             delta = definition.rollingDelta && definition.next.architecture().correctionKind() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GATED_PAIRS
-                    ? new com.ohinteractive.seedv6.core.brnnext.BrnGatedDeltaAccumulator(definition.next) : null;
+                    ? definition.residualBase == null ? new com.ohinteractive.seedv6.core.brnnext.BrnGatedDeltaAccumulator(definition.next)
+                    : new com.ohinteractive.seedv6.core.brnnext.BrnGatedDeltaAccumulator(definition.next, definition.residualBase) : null;
             cubicDelta = definition.rollingDelta && definition.next.architecture().correctionKind() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.CUBIC
-                    ? new com.ohinteractive.seedv6.core.brnnext.BrnCubicDeltaAccumulator(definition.next) : null;
+                    ? definition.residualBase == null ? new com.ohinteractive.seedv6.core.brnnext.BrnCubicDeltaAccumulator(definition.next)
+                    : new com.ohinteractive.seedv6.core.brnnext.BrnCubicDeltaAccumulator(definition.next, definition.residualBase) : null;
         }
         @Override public void initialize(long[] board, int ply) {}
         @Override public void child(long[] parent, long[] child, int parentPly) {}

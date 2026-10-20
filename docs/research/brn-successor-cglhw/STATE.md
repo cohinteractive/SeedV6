@@ -229,13 +229,13 @@ Current implementation question: combine a continued BRE table with the existing
 nonlinear correction at unchanged one-base inference structure. The fixed-grid
 hybrid feasibility diagnostic supports complementary prediction signal, especially
 with BRE001; ordinary additive mixing does not reproduce its consistent benefit.
-See wave4-hybrid-feasibility-verified.json. Explicit inference composition is in
-progress, with19 passing core tests, pending actual-model prediction/cache/search
-and cost checks and research loader verification. Both component identities must
+See wave4-hybrid-feasibility-verified.json. Explicit inference composition is implemented with35 distinct passing targeted
+test cases, including loader/component identity and unchanged blend behaviour.
+Actual-model prediction/cache/search, cost checks and legal-play smoke remain next. Both component identities must
 be bound; no combined optimizer/checkpoint is implied. No hybrid games are yet
-admitted and no new substantial training is authorized. Pending core changes may
-qualify the next application build commit after validation; build51 is still the
-last committed identity. Existing protocols continue using their frozen jars.
+admitted and no new substantial training is authorized. The core inference addition qualifies build52 in its implementation commit;
+see wave4-hybrid-implementation-validation.json. Native packaging/GUI acceptance
+is not claimed for this research-only composition. Existing protocols continue using their frozen jars.
 
 Before any architectural superiority claim, also finish the newly admitted64 BRE
 full-versus-half calibration games (both rates, nodes/time), after the pending

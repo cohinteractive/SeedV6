@@ -16,10 +16,15 @@ public final class BrnCubicDeltaAccumulator {
     final double[] unary=new double[2],last=new double[2],material=new double[2];
     final boolean[] valid=new boolean[2],canonical=new boolean[2];
     private final double correctionErrorBound;
-    final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.Workspace base=BrnNextBase.model().newWorkspace();
+    final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.Workspace base;
     boolean initialized;int changes;public long rebuilds,updates,roundingFallbacks;
     public BrnCubicDeltaAccumulator(BrnNextModel model) {
+        this(model,BrnNextBase.model());
+    }
+    /** Explicit research composition; no source model, base or codec is changed. */
+    public BrnCubicDeltaAccumulator(BrnNextModel model,com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model frozenBase) {
         if(model.architecture()!=GEN32_CUBIC)throw new IllegalArgumentException("W3 CUBIC only");
+        base=java.util.Objects.requireNonNull(frozenBase).newWorkspace();
         this.model=model;
         double embedding=0,unaryMagnitude=Math.abs(model.weight(0)),head2=0,head3=0;
         for(int i=UNARY;i<EMBEDDING;i++)unaryMagnitude=Math.max(unaryMagnitude,Math.abs(PIECE_NORM*model.weight(i)));

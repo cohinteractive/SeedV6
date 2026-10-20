@@ -23,6 +23,12 @@ public final class BrnNextModel {
     public BrnNextArchitecture architecture() { return architecture; }
     public double weight(int index) { return weights[index]; }
     public Workspace newWorkspace() { return new Workspace(architecture); }
+    /** Explicit inference composition, never a change to this component's codec or optimizer.
+     * Callers must bind both immutable components as a distinct research function. */
+    public Workspace newResearchWorkspace(com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model frozenBase) {
+        if (!architecture.frozenBase()) throw new IllegalArgumentException("Frozen-base correction required");
+        return new Workspace(architecture, Objects.requireNonNull(frozenBase));
+    }
     public double rawPawns(long[] board, Workspace workspace) { return workspace.forward(weights, board, architecture); }
     public int score(long[] board, Workspace workspace) {
         double raw = rawPawns(board, workspace);
@@ -39,8 +45,12 @@ public final class BrnNextModel {
         int count;
         double material;
         public Workspace(BrnNextArchitecture architecture) {
+            this(architecture, architecture.frozenBase() ? BrnNextBase.model() : null);
+        }
+        private Workspace(BrnNextArchitecture architecture,
+                          com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model frozenBase) {
             this.architecture = Objects.requireNonNull(architecture);
-            base = architecture.frozenBase() ? BrnNextBase.model().newWorkspace() : null;
+            base = frozenBase == null ? null : frozenBase.newWorkspace();
             int width = architecture.width();
             first = new double[width]; second = new double[width]; third = new double[width];
             output = new double[width]; gates = new double[width];

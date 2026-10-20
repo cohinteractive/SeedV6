@@ -37,12 +37,17 @@ public final class BrnGatedDeltaAccumulator {
     final double[] unary=new double[2],gates=new double[4],last=new double[2],material=new double[2];
     final boolean[] valid=new boolean[2],canonical=new boolean[2];
     private final double correctionErrorBound;
-    final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.Workspace base=BrnNextBase.model().newWorkspace();
+    final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.Workspace base;
     boolean initialized;
     int changes,serial;
     public long rebuilds,updates,roundingFallbacks;
     public BrnGatedDeltaAccumulator(BrnNextModel model) {
+        this(model,BrnNextBase.model());
+    }
+    /** Explicit research composition; no source model, base or codec is changed. */
+    public BrnGatedDeltaAccumulator(BrnNextModel model,com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model frozenBase) {
         if(model.architecture()!=GEN32_GATED)throw new IllegalArgumentException("W3 GATE only");
+        base=java.util.Objects.requireNonNull(frozenBase).newWorkspace();
         this.model=model;
         double u=Math.abs(model.weight(0)),embedding=0,expert=0,bias=0;
         for(int i=UNARY;i<EMBEDDING;i++)u=Math.max(u,Math.abs(PIECE_NORM*model.weight(i)));

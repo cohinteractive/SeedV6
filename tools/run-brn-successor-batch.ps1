@@ -25,6 +25,10 @@ if (Test-Path -LiteralPath 'build/research/brn-successor-batches.pause') {
 }
 $binding=Get-Content -LiteralPath $RuntimeManifest -Raw -Encoding UTF8 | ConvertFrom-Json
 $configuration=Get-Content -LiteralPath $Plan -Raw -Encoding UTF8 | ConvertFrom-Json
+if (@($configuration.models | Where-Object { $null -ne $_.hybridBase }).Count -ne 0 `
+        -and @($binding.modelFeatures) -notcontains 'brn-hybrid-raw-v1') {
+    throw 'This plan requires explicit hybrid component binding; the frozen runtime does not declare that capability.'
+}
 if ($configuration.batchGames -gt 12 -or $configuration.batchSeconds -gt 240) {
     throw 'Batch exceeds the admitted resource envelope.'
 }

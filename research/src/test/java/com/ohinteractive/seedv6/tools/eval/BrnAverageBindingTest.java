@@ -68,4 +68,26 @@ class BrnAverageBindingTest {
     private BrnSuccessorMatch.Model spec(Map<String,Object> map) {
         return DataFiles.JSON.fromJson(DataFiles.JSON.toJson(map),BrnSuccessorMatch.Model.class);
     }
+    @Test void hybridBaseRequiresItsOwnVerifiedIdentityAndPreservesItsOptimizer() throws Exception {
+        Path root=temporary.resolve("base");CheckpointManifest manifest;
+        try(var store=new CheckpointStore(root,TrainingArchitecture.BRN_PAIR2)) {
+            manifest=store.initialize(NetworkTrainingState.initialized(TrainingArchitecture.BRN_PAIR2,71,.001),
+                    new CheckpointManifest.Metadata(0,4,"")).manifest();
+        }
+        var input=new HashMap<String,Object>();input.put("root",root.toString());input.put("checkpoint",manifest.id());
+        input.put("networkSha256",manifest.networkSha256());input.put("changeScale",.5);
+        var map=new HashMap<String,Object>();map.put("name","hybrid");map.put("hybridBase",input);map.put("gatedDeltaCache",true);
+        var model=BrnSuccessorMatch.loadHybridBase(spec(map));
+        var binding=BrnSuccessorMatch.hybridBinding(spec(map),model,"correction-a");
+        assertNotEquals(binding.get("functionSha256"),BrnSuccessorMatch.hybridBinding(spec(map),model,"correction-b").get("functionSha256"));
+        input.put("changeScale",1.0);var other=BrnSuccessorMatch.loadHybridBase(spec(map));
+        assertNotEquals(binding.get("functionSha256"),BrnSuccessorMatch.hybridBinding(spec(map),other,"correction-a").get("functionSha256"));
+        input.put("networkSha256","wrong");assertThrows(IllegalArgumentException.class,()->BrnSuccessorMatch.loadHybridBase(spec(map)));
+        input.put("networkSha256",manifest.networkSha256());input.put("changeScale",-1.0);
+        assertThrows(RuntimeException.class,()->spec(map));
+        input.remove("changeScale");assertThrows(RuntimeException.class,()->spec(map));
+        input.put("changeScale",.5);map.put("blendCandidateWeight",.5);assertThrows(RuntimeException.class,()->spec(map));
+        var unchanged=CheckpointStore.readSnapshot(root,manifest.id()).manifest();
+        assertEquals(manifest.networkSha256(),unchanged.networkSha256());assertEquals(manifest.trainingSha256(),unchanged.trainingSha256());
+    }
 }

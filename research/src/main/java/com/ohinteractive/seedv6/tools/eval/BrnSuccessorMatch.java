@@ -21,16 +21,48 @@ import java.util.*;
 /** Single-worker paired diagnostic with immutable per-game receipts and explicit equal search. */
 public final class BrnSuccessorMatch {
     record AverageInput(String root,String checkpoint,String networkSha256) {}
+    record HybridBase(String root,String checkpoint,String networkSha256,Double changeScale) {
+        HybridBase {
+            if(changeScale==null||!Double.isFinite(changeScale)||changeScale<0||changeScale>1)
+                throw new IllegalArgumentException("Hybrid base change scale must be in [0,1]");
+        }
+    }
     record Model(String name, String root, String checkpoint, String networkSha256, Double residualGain,
                  boolean gatedCache, boolean cubicCache, Double blendCandidateWeight,
                  Double correctionScale, String correctionAblation, double[] constantGates, boolean gatedDeltaCache, boolean cubicDeltaCache,
-                 List<AverageInput> averagedInputs, List<Integer> retainedCubicRanks) {
+                 List<AverageInput> averagedInputs, List<Integer> retainedCubicRanks, HybridBase hybridBase) {
         Model {
             if(constantGates!=null&&!"constant-gates".equals(correctionAblation))
                 throw new IllegalArgumentException("Explicit constant-gates ablation required");
             if(cubicDeltaCache&&(gatedCache||cubicCache||gatedDeltaCache))throw new IllegalArgumentException("Choose one cache");
             if(gatedDeltaCache&&(gatedCache||cubicCache))throw new IllegalArgumentException("Choose one cache");
+            if(hybridBase!=null&&(residualGain!=null||blendCandidateWeight!=null||gatedCache||cubicCache))
+                throw new IllegalArgumentException("Hybrid requires explicit correction scaling and canonical or delta evaluation");
         }
+    }
+    static com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model loadHybridBase(Model spec) throws Exception {
+        if(spec.hybridBase()==null)return null;
+        var input=spec.hybridBase();
+        var snapshot=CheckpointStore.readSnapshot(Path.of(input.root()),input.checkpoint());
+        if(!snapshot.manifest().networkSha256().equals(input.networkSha256()))
+            throw new IllegalArgumentException("Hybrid base hash changed");
+        if(!(snapshot.model() instanceof NetworkModel.BrnPair2 pair))
+            throw new IllegalArgumentException("Hybrid base must be ordinary BRE-Pair2");
+        return BrnSuccessorVariants.additiveChange(pair.model(),input.changeScale());
+    }
+    static Map<String,Object> hybridBinding(Model spec,com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model base,
+                                             String correctionHash) throws Exception {
+        var bytes=new ByteArrayOutputStream();com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.writeModel(base,bytes);
+        String baseHash=HexFormat.of().formatHex(DataFiles.digest().digest(bytes.toByteArray()));
+        String function="brn-hybrid-raw-v1\n"+baseHash+"\n"+correctionHash+"\n";
+        var result=new LinkedHashMap<String,Object>();
+        result.put("input",spec.hybridBase());
+        result.put("originalManifest",CheckpointStore.readSnapshot(Path.of(spec.hybridBase().root()),spec.hybridBase().checkpoint()).manifest());
+        result.put("effectiveBaseSha256",baseHash);result.put("effectiveCorrectionSha256",correctionHash);
+        result.put("functionSha256",DataFiles.hash(function));
+        result.put("identityEncoding",function);
+        result.put("mapping","Compiled continued base + scaled nonlinear correction; material + .25 * (raw-material), one rounding; not a trainable combined checkpoint");
+        return result;
     }
     /** Bound inference-only mean. The anchor remains the latest source checkpoint, never a fake
      * trainable checkpoint. Every ingredient and the effective model hash are retained in receipts. */
@@ -107,8 +139,18 @@ public final class BrnSuccessorMatch {
                 model=new NetworkModel.BrnNext(BrnSuccessorVariants.gain(n.model(),spec.residualGain()));
             }
             SearchEvaluation evaluation;
+            var hybridBase=loadHybridBase(spec);
             if(spec.gatedCache()&&spec.cubicCache())throw new IllegalArgumentException("Choose one cache");
-            if(spec.cubicDeltaCache()) {
+            if(hybridBase!=null) {
+                if(!(model instanceof NetworkModel.BrnNext n)||!n.model().architecture().frozenBase())
+                    throw new IllegalArgumentException("Hybrid requires a frozen-base correction");
+                if(spec.gatedDeltaCache()&&n.model().architecture()!=com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GEN32_GATED
+                        ||spec.cubicDeltaCache()&&n.model().architecture()!=com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GEN32_CUBIC)
+                    throw new IllegalArgumentException("Hybrid cache architecture mismatch");
+                evaluation=spec.gatedDeltaCache()||spec.cubicDeltaCache()
+                        ?SearchEvaluation.brnResidualHybridResearch(n.model(),hybridBase)
+                        :SearchEvaluation.brnResidualHybridFullResearch(n.model(),hybridBase);
+            } else if(spec.cubicDeltaCache()) {
                 if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("CUBIC delta cache requires W3");
                 evaluation=SearchEvaluation.brnCubicDeltaResearch(n.model());
             } else if(spec.gatedDeltaCache()) {
@@ -143,8 +185,9 @@ public final class BrnSuccessorMatch {
             if(spec.gatedDeltaCache())modelBinding.put("gatedDeltaCache","period64-canonical-rounding-guard-v1");
             if(model instanceof NetworkModel.BrnNext n && n.model().architecture().frozenBase()) {
                 modelBinding.put("nativeResidualCache",true);
-                modelBinding.put("frozenBaseSha256",com.ohinteractive.seedv6.core.brnnext.BrnNextBase.SHA256);
+                if(hybridBase==null)modelBinding.put("frozenBaseSha256",com.ohinteractive.seedv6.core.brnnext.BrnNextBase.SHA256);
             }
+            if(hybridBase!=null)modelBinding.put("hybrid",hybridBinding(spec,hybridBase,(String)modelBinding.get("effectiveNetworkSha256")));
             if(spec.correctionScale()!=null||spec.correctionAblation()!=null) {
                 modelBinding.put("correctionScale",spec.correctionScale()==null?1:spec.correctionScale());
                 modelBinding.put("correctionAblation",spec.correctionAblation());

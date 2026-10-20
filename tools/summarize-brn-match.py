@@ -33,6 +33,16 @@ def summarize(plan_file, receipts, analysis_file, runtime_file, output):
         assert spec["name"] == bound["name"]
         assert spec["checkpoint"] == bound["originalManifest"]["id"]
         assert spec["networkSha256"] == bound["originalManifest"]["networkSha256"]
+        if spec.get("hybridBase") is not None:
+            assert "brn-hybrid-raw-v1" in runtime["modelFeatures"]
+            hybrid = bound["hybrid"]
+            assert hybrid["input"] == spec["hybridBase"]
+            assert hybrid["originalManifest"]["id"] == spec["hybridBase"]["checkpoint"]
+            assert hybrid["originalManifest"]["networkSha256"] == spec["hybridBase"]["networkSha256"]
+            assert hybrid["effectiveCorrectionSha256"] == bound["effectiveNetworkSha256"]
+            identity = "brn-hybrid-raw-v1\n" + hybrid["effectiveBaseSha256"] + "\n" + hybrid["effectiveCorrectionSha256"] + "\n"
+            assert identity == hybrid["identityEncoding"]
+            assert hashlib.sha256(identity.encode("utf-8")).hexdigest() == hybrid["functionSha256"]
     for model in analysis["models"]:
         assert model["validPairs"] == plan["pairs"]
         assert model["missingPairs"] == model["incompletePairs"] == 0
