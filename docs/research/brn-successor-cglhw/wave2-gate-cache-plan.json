@@ -1,0 +1,15 @@
+{
+  "id": "brn-successor-wave2-gate-cache-v1",
+  "question": "Can recomputing only changed rank and pair blocks preserve the trained GATE function while recovering useful search throughput?",
+  "motivation": "Gen200 GATE predicts both diagnostic label samples at least as well as Gen32 and has a positive tiny equal-node score, but ongoing clock-screen telemetry shows roughly 0.7M versus 1.7M nodes/s. This is a hypothesis, not a final clock-screen result.",
+  "design": "Worker-private cache of canonical codes for both perspectives, rank unary/embedding partials and shape-by-rank expert partials. Recompute dirty blocks from current codes, then sum in fixed order. Never accumulate floating subtraction/addition deltas across moves. Cache identity depends only on current placement and immutable model; status/STM handled on each evaluation.",
+  "constraints": "No model weights, codecs, trained stores or inference inputs change. Original full-recompute implementation remains an explicit oracle. Initial integration is an opt-in research factory; no default search-policy or evaluator adoption.",
+  "validation": [
+    "Independent scalar forward versus cached raw scores over seeded random weights, legal special moves, arbitrary board jumps, both perspectives, undo/revisit and long transition traces.",
+    "Incremental versus rebuilt cache must be bit-identical for the same board regardless of history. Raw error versus original summation bounded and reported; integer score differences explicitly counted.",
+    "Fixed-node common-policy search score/move/PV/node parity on frozen trained positions.",
+    "Bounded warmed inference/search performance comparison with isolated sequential jobs, one CPU and 768MiB heap.",
+    "Only if correctness passes and cost improves: fresh prospective equal-time comparison of trained GATE against frozen Gen32, plus unchanged full-recompute control as appropriate."
+  ],
+  "evidenceProtection": "The ongoing original clock screen uses immutable copied jars in raw/wave2/clock-runtime/lib. Do not rebuild or overwrite that directory. Preserve original and failed evidence; no concurrent runtime benchmarks or tests."
+}

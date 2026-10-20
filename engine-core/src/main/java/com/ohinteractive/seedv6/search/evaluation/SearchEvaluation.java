@@ -100,10 +100,19 @@ public final class SearchEvaluation {
     public static SearchEvaluation brnPair2(com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model model){return new SearchEvaluation(model);}
 
     private SearchEvaluation(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model) {
+        this(model, false);
+    }
+    private SearchEvaluation(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model, boolean gatedCache) {
+        if (gatedCache && model.architecture() != com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GATED_PAIRS)
+            throw new IllegalArgumentException("Incremental GATE requires GATED_PAIRS");
         next = Objects.requireNonNull(model); pair2 = null; brn = null; brn1 = null; brn2 = null; brn3 = null;
-        network = null; mapping = null; incremental = false; scalarOracle = false; materialBootstrap = false;
+        network = null; mapping = null; incremental = gatedCache; scalarOracle = false; materialBootstrap = false;
     }
     public static SearchEvaluation brnNext(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model) { return new SearchEvaluation(model); }
+    /** Explicit research implementation control; ordinary loading retains its existing evaluator. */
+    public static SearchEvaluation brnGatedIncrementalResearch(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model) {
+        return new SearchEvaluation(model, true);
+    }
 
     /** Immutable definition identity for composition at the production factory boundary. */
     public boolean isBrnPair2() { return pair2 != null; }
@@ -262,13 +271,17 @@ public final class SearchEvaluation {
     private static final class NextState extends State {
         private final SearchEvaluation definition;
         private final com.ohinteractive.seedv6.core.brnnext.BrnNextModel.Workspace workspace;
-        NextState(SearchEvaluation definition) { this.definition = definition; workspace = definition.next.newWorkspace(); }
+        private final com.ohinteractive.seedv6.core.brnnext.BrnGatedAccumulator accumulator;
+        NextState(SearchEvaluation definition) {
+            this.definition = definition; workspace = definition.next.newWorkspace();
+            accumulator = definition.incremental ? new com.ohinteractive.seedv6.core.brnnext.BrnGatedAccumulator(definition.next) : null;
+        }
         @Override public void initialize(long[] board, int ply) {}
         @Override public void child(long[] parent, long[] child, int parentPly) {}
         @Override public void initializeFrom(long[] board, int ply, State source) {
             if (!(source instanceof NextState other) || definition != other.definition) throw new IllegalArgumentException("Evaluator mismatch.");
         }
-        @Override public int evaluate(long[] board, int ply) { return definition.next.score(board, workspace); }
+        @Override public int evaluate(long[] board, int ply) { return accumulator == null ? definition.next.score(board, workspace) : accumulator.score(board); }
     }
     private static final class HandcraftedState extends State {
         @Override public void initialize(long[] board, int ply) {}

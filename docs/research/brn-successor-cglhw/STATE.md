@@ -76,6 +76,13 @@ Active: finish `wave2-clock-screen-plan.json` (128 games total), common Policy4,
 an active JVM before launching another batch; do not run parallel benchmark work.
 Plans and source-backed reproduction commands are in WAVE2 and the runner CLI.
 Trained latency probe and13 selected math/runtime tests pass.
+An opt-in GATE block cache is implemented and passes three additional tests plus
+actual Gen200 oracle/search probes (`wave2-gate-cache-plan.json`,
+`raw/wave2/gate-cache-01.json`): zero integer-score differences on6,333 positions,
+identical48 paired searches, approximately1.30x search speedup. Ordinary loading
+still uses full recomputation. The original clock screen must continue exclusively
+from `raw/wave2/clock-runtime/lib/*`, not rebuilt research distribution jars.
+The qualifying cache implementation advances build42→43 in its own commit.
 Retain W1 designs pending these results; speculative Wave2 redesign is premature.
 Prepare a narrowly scoped explicit common-policy Arena option if needed for fair
 user comparisons, preserving historical campaign semantics and production identity.

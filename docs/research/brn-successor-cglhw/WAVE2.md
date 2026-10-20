@@ -197,6 +197,46 @@ W1 and avoid speculative replacement architectures before these results.
 More user training is not currently necessary. If retraining becomes necessary,
 prepare a consolidated, exact GUI gate with new identities and resume evidence.
 
+### Incremental GATE implementation experiment
+
+`wave2-gate-cache-plan.json` was frozen after observing the original clock screen's
+large GATE throughput deficit. The original screen continues using immutable
+copied jars in `raw/wave2/clock-runtime/lib`; its engine/training jars predate this
+change. Batch02/03/04 execution inventories record jar hashes. Batch01 did not
+capture a jar inventory before execution; subsequent research-only replay additions
+and a helper visibility change preceded the frozen copy. Engine/training behaviour
+did not change in that interval; do not claim an independently recorded Batch01
+research-jar hash.
+
+`BrnGatedAccumulator` caches canonical piece codes for both perspectives,
+rank unary/embedding sums and shape-by-rank expert sums. Dirty blocks are recomputed
+from their current inputs, then combined in fixed order. No floating delta history,
+model conversion, codec change, new input feature, retraining or default activation.
+`SearchEvaluation.brnGatedIncrementalResearch` is explicit opt-in; ordinary model
+loading retains full recomputation. Model weights and checkpoint identities remain.
+
+Three new tests pass:9,000 random-weight legal/arbitrary transitions, bit-identical
+cached versus rebuilt values, original-forward error at most1.51e-14 pawns,
+special moves/undo/null perspective/empty ownership, worker independence and
+common-policy depth4 search parity. Existing three-family runtime tests also pass.
+
+`raw/wave2/gate-cache-01.json` freezes input-receipt hashes and actual Gen200 model:
+6,333 positions, maximum raw error5.33e-14 pawns, zero integer-score differences;
+48 paired fixed-node search comparisons (16 roots,3 passes) have identical
+score/move/PV/node results. The cache uses3,312 primitive bytes per worker, plus
+JVM object overhead and the existing workspace retained by the integration.
+Median transition latency: full GATE1429ns, cached950ns, rolling Gen32143ns.
+Summed fixed-node search time fell from2.371s to1.821s (1.30x speedup).
+These are bounded host measurements, not universal timings or strength evidence.
+The small summation-order difference remains a numerical limitation; universal
+bit equality with the original scalar summation is not claimed.
+
+This added inference capability is a qualifying core implementation commit:
+application build42→43, with major/minor/patch unchanged. No GUI default policy,
+production evaluator replacement, checkpoint update or deployment is implied.
+Next evaluate the opt-in cache under equal time, and investigate calibration if
+the fixed clock screen warrants it. Preserve a full-recompute control.
+
 ## Implementation and validation record
 
 Research-only runners: `BrnSuccessorAudit`, `BrnSuccessorMatch`,
