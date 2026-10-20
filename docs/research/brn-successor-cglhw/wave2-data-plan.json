@@ -1,0 +1,31 @@
+{
+  "id": "brn-successor-wave2-data-v1",
+  "modelPlan": "docs/research/brn-successor-cglhw/wave2-diagnostics-plan.json",
+  "positions": 2048,
+  "sources": [
+    {
+      "name": "bt4-fresh",
+      "selection": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017/training-data/selections/1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5.json",
+      "identity": "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+      "start": 20000000,
+      "stride": 31,
+      "sealed": false
+    },
+    {
+      "name": "lichess-sealed",
+      "selection": "E:/SeedV6-Networks/BRN-GATED/699672ff-5dcc-326a-afef-924996c76f79/training-data/sources.json",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "seek": "E:/SeedV6-Networks/BRN-GATED/699672ff-5dcc-326a-afef-924996c76f79/training-data/seek",
+      "start": 20000000,
+      "stride": 31,
+      "sealed": true
+    }
+  ],
+  "hypotheses": [
+    "Data/domain mismatch may explain some weakness: Gen32 learned equal BT4/CP, W1 CP only.",
+    "Compare full trained functions, unary-only ablations, uniform GATE mixing and quadratic-only CUBIC. Ablation harm supports functional contribution on these labels, not chess strength.",
+    "Compare raw and quarter-residual calibration on identical examples; no score mapping changes from loss alone.",
+    "All original stores/data are read-only. Copy seek metadata to the new raw result directory before source reading. Maximum five minutes, one low-priority CPU JVM, 768MiB heap; no training."
+  ],
+  "limitations": "Ordinal20M exceeds frozen Gen32 source ranges; repeated positions across source offsets/sources are not ruled out. Lichess sealed geometry was excluded from W1 training and selection, but this diagnostic now consumes it for development, never future independent confirmation. BT4 sample is unseen by W1 CP-only models. Striding reduces adjacency, does not establish independent games. No confidence intervals or generalization claims from 2048 correlated records."
+}

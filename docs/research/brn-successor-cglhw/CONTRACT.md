@@ -1,10 +1,19 @@
 # BRN evaluator successor CGLHW
 
-Revision 1, 20 October 2026 (Pacific/Auckland). Authority: the owner's launch
+Revision 2, 20 October 2026 (Pacific/Auckland). Authority: the owner's launch
 request to establish and execute a GUI-trained evaluator research programme against
 BRE-Pair 2 Gen 32. Start at [STATE](STATE.md); initial decisions and challenged
 assumptions are in [BOOTSTRAP](BOOTSTRAP.md). This is a new programme, not a rewrite
 of the completed `brn-architecture-cglhw` experiments or the Search programme.
+
+Continuation amendment: the owner has supplied substantial W1 training and
+preliminary adverse Arena results. First-wave implementation is complete; do not
+restart that programme. Investigate baseline provenance, implementation, effective
+optimization, data, calibration and search confounds before major redesign.
+Use the existing STATE frontier as a hypothesis-driven selection mechanism.
+Negative W1 observations do not establish architectural inferiority; useful extra
+expressiveness must ultimately contribute to independently credible strength over
+frozen Gen32. Resource limits and the user-only substantive training boundary remain.
 
 ## Objective and authority
 

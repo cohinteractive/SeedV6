@@ -1,0 +1,23 @@
+{
+  "id": "brn-successor-wave2-diagnostics-v1",
+  "purpose": "Disentangle search policy, exposure, data and numerical correctness before selecting further architecture or human training.",
+  "prospective": "Recorded before executing the new diagnostic runner. Historical Arena outcomes have already been inspected.",
+  "models": [
+    {"name":"Gen32","root":"E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017","checkpoint":"g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304"},
+    {"name":"W1-GATE","root":"E:/SeedV6-Networks/BRN-GATED/699672ff-5dcc-326a-afef-924996c76f79","checkpoint":"g000200-s001638400-60858ba6cf162daff10b68ee239f7811dd03d7ec4df22c8de130a1c52bd49a18"},
+    {"name":"W1-CUBIC","root":"E:/SeedV6-Networks/BRN-CUBIC/e04052b9-6784-3c12-abb5-abc75cd21f59","checkpoint":"g000200-s001638400-ebca5e96961f27edb7cd419b8badc5cba0f4b74c11d4db0064e12753dab51e49"},
+    {"name":"W1-POOL","root":"E:/SeedV6-Networks/BRN-POOLED/97b2fdda-f812-3455-9f62-43e5ee322651","checkpoint":"g000200-s001638400-0a07366b5db4b68af5ae44a5c15c74cc03ac0a2827e7285f571f1a739fd5923d"}
+  ],
+  "audit": "Use checksum-validating production readers for checkpoint payloads, optimizer state, lineage, parent chain, history, source ledger and Arena campaigns. Never acquire a store writer or resume training.",
+  "runtime": {
+    "seed": 2026102002,
+    "positions": 24,
+    "positionConstruction": "Seeded legal random walks, 3 plies between samples; diagnostic coverage only, not representative chess strength.",
+    "gen0Parity": "All four material-only evaluators must return identical scores. Under the SAME explicit common Policy4 adapter they must return identical completed depth3 scores, best moves, PVs and node counts on 8 positions. Compare current production dispatch separately.",
+    "trainedParity": "Reload complete optimizer state and compare snapshot inference to stored runtime inference over all positions. Record score ranges and depth3 common-policy searches.",
+    "searchPolicy": "ExactSearchAdapter.seeResearch(QXRAY, fresh 64MiB TT).withCompletedHints(true); one worker; identical cumulative Policy4 for every family.",
+    "limit": "One JVM, ActiveProcessorCount=1, Xmx768m, below-normal Windows priority, five-minute wall budget. No training."
+  },
+  "interpretation": "Numerical checks cannot prove general chess correctness. Gen0 same-policy parity plus different production-dispatch results identifies a search confound, not its full causal share in historical trained losses. Later strength screens require a separately frozen protocol and independent confirmation.",
+  "outputs": "raw/wave2/audit-* and compact wave2 provenance/report; preserve failed attempts. No original model, pointer or corpus writes."
+}

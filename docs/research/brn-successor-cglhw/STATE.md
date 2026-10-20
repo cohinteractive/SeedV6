@@ -1,22 +1,26 @@
 # BRN successor workstream state
 
-Updated 20 October 2026. **Paused at the intended human-training gate.**
+Updated 20 October 2026. **Active: Wave 2 evidence reconciliation and controlled diagnostics.**
 Governing [CONTRACT](CONTRACT.md), [bootstrap/challenge](BOOTSTRAP.md),
-[implemented wave and handoff](WAVE1.md), [exact lineage manifest](wave1-lineages.json).
-This is a new programme; the completed older BRN programme and Search contracts
+[implemented wave and handoff](WAVE1.md), [current findings](WAVE2.md),
+[exact initial lineage manifest](wave1-lineages.json).
+This is the established successor programme; the completed older BRN programme and Search contracts
 retain their own evidence and scope. No playing-strength improvement is established.
 
 | Candidate | Implemented formulation | GUI lineage UUID | Current state |
 | --- | --- | --- | --- |
-| W1-GATE | Four context-gated local pair experts | `699672ff-5dcc-326a-afef-924996c76f79` | Gen0, ready for user training |
-| W1-CUBIC | Rank16 quadratic/cubic ANOVA factors | `e04052b9-6784-3c12-abb5-abc75cd21f59` | Gen0, ready for user training |
-| W1-POOL | Rank16 pooled tanh nonlinear control | `97b2fdda-f812-3455-9f62-43e5ee322651` | Gen0, ready for user training |
+| W1-GATE | Four context-gated local pair experts | `699672ff-5dcc-326a-afef-924996c76f79` | Gen200 frozen for diagnostics; live Best Gen198 |
+| W1-CUBIC | Rank16 quadratic/cubic ANOVA factors | `e04052b9-6784-3c12-abb5-abc75cd21f59` | Gen200 frozen; live Best Gen200 |
+| W1-POOL | Rank16 pooled tanh nonlinear control | `97b2fdda-f812-3455-9f62-43e5ee322651` | Gen200 frozen; live Best Gen200 |
 
 All live under `E:\SeedV6-Networks`, in the architecture folders recorded in the
 manifest. Created with matched Adam 0.003 / batch128 / 8 epochs / seed1,
 131072 training positions and held-out validation. The registered external CP
-source is already selected. Current Gen0 checkpoints are fully loadable with
-optimizer state; no user lineage has received a substantive training update.
+source was selected. User training has now been verified through 200 completed
+generations each, 26,214,400 retained training positions, 209,715,200 sample visits
+and 1,638,400 optimizer steps. The prior training gate is satisfied for diagnostics;
+this does not establish competitive maturity. Historical handoff remains in WAVE1.
+Current immutable bindings and hashes: [trained manifest](wave2-trained-checkpoints.json).
 
 Completed: inference and separate training codecs, optimizers and exact continuation;
 existing corpus/training/checkpoint services; stable layout-group data partition;
@@ -35,25 +39,47 @@ Training loss and latency do not select a winner. GATE's weaker tiny-fit result 
 an open diagnostic concern, not a rejection. Features omit explicit attack/pin/
 blocker information; empirical gain calibration remains open for every candidate.
 
-## Blocking action and next admissible work
+## Current evidence and next admissible work
 
-Human actions required after this prompt: **Blocking** — train a useful subset or
-all ready lineages through Network Training, then report readiness, generation or
-checkpoint identities and notable training behavior. This blocks competitive
-screening/confirmation. Meaningful learning and plausible play, not a fixed number
-of generations, are the readiness signal. Unstable/nonlearning candidates can return
-for diagnosis; they need not receive prolonged ineffective training.
+Human actions currently required: **None**. Existing trained checkpoints permit
+further autonomous work. Do not launch substantive training or resume the user's
+paused Learning Arena campaigns. User-reported poor matches are confirmed as
+preliminary observations, with material search-policy and data confounds.
 
-On resumption, inspect actual stores before claiming the gate is satisfied. Read
-training recipes/revisions, source identities and reservations, exposure/history,
-held-out records, Best/latest manifests and complete optimizer/payload hashes. Keep
-initial manifest immutable; add a new frozen trained-checkpoint manifest. Do not
-silently choose live Best or assume that a later prompt establishes maturity.
+Checksum-validating readers verified all four frozen payloads/optimizer states,
+complete parent chains, history (no warnings), source ledgers and saved Arena
+campaigns. Gen32 is zero-initialized, with 28,049,408 training positions and
+224,395,264 visits: half BT4, half Lichess CP. W1 is CP-only. Nominal generation
+counts were misleading. Raw records: `raw/wave2/audit-01` and
+`raw/wave2/training-reconciliation.json`. Do not substitute live Best/latest.
 
-Next dependent unit: assess maturity and training defects; freeze admitted checkpoints;
-record a common search policy for evaluator isolation (Pair2 production Policy4 must
-not differ silently from candidate search); preflight loading/legal games/clock and
-termination/resources, then prospectively define bounded paired screening. One game,
+Common-policy Gen0 numerical/search parity passed. Production dispatch differs by
+family, and historical frozen-reference opponents used pinned Construction V1.
+Eight-opening fixed-node diagnostics (`wave2-node-screen-plan.json`) finished:
+GATE 9/2/5; CUBIC 10/0/4 on seven valid pairs plus one failed pair; POOL 5/4/7.
+These are exploratory, random-opening, short-budget results, not strength claims.
+Exact-history replay reproduced the failure: the retained search table's ordering
+exhausts8192 nodes before the first completed iteration. It is preserved as a
+SEARCH_FAILURE, not a draw or replaced game. Python-chess independently replayed
+all6,285 recorded moves and checked all completed game terminations.
+
+The fixed data probe (`wave2-data-plan.json`, `raw/wave2/data-01`) found exact W1
+trainer/runtime raw parity on 4,096 positions. GATE full-function cross entropy
+slightly beat Gen32 on both samples; uniform-gate and unary-only ablations worsened
+it. Cubic terms also improve CUBIC's sample prediction. Data errors do not select
+the chess winner. The sampled sealed bucket is now development evidence, not
+independent future confirmation.
+
+Active: finish `wave2-clock-screen-plan.json` (128 games total), common Policy4,
+50ms/move,32 book openings, reversed colours for GATE and CUBIC. The existing
+`raw/wave2/clock-screen` contains resumable immutable per-game receipts. Check for
+an active JVM before launching another batch; do not run parallel benchmark work.
+Plans and source-backed reproduction commands are in WAVE2 and the runner CLI.
+Trained latency probe and13 selected math/runtime tests pass.
+Retain W1 designs pending these results; speculative Wave2 redesign is premature.
+Prepare a narrowly scoped explicit common-policy Arena option if needed for fair
+user comparisons, preserving historical campaign semantics and production identity.
+One game,
 one worker per engine, ponder off, initially 64MiB TT, below-normal priority, no
 competing heavy jobs. Competitive confirmation and any claimed gain require later
 independent evidence. Training changes requiring substantial learning return here.

@@ -1,0 +1,40 @@
+{
+  "id": "brn-successor-wave2-common-nodes-screen-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    },
+    {
+      "name": "W1-GATE",
+      "root": "E:/SeedV6-Networks/BRN-GATED/699672ff-5dcc-326a-afef-924996c76f79",
+      "checkpoint": "g000200-s001638400-60858ba6cf162daff10b68ee239f7811dd03d7ec4df22c8de130a1c52bd49a18",
+      "networkSha256": "aefca5d77e68c57f286f533d02d519229ae9ef487fb46ed9ca46a4d93ad4d785"
+    },
+    {
+      "name": "W1-CUBIC",
+      "root": "E:/SeedV6-Networks/BRN-CUBIC/e04052b9-6784-3c12-abb5-abc75cd21f59",
+      "checkpoint": "g000200-s001638400-ebca5e96961f27edb7cd419b8badc5cba0f4b74c11d4db0064e12753dab51e49",
+      "networkSha256": "2483d892ab397dc111fb077aaca2ce7196272140abc62b165b933bbeefe8a347"
+    },
+    {
+      "name": "W1-POOL",
+      "root": "E:/SeedV6-Networks/BRN-POOLED/97b2fdda-f812-3455-9f62-43e5ee322651",
+      "checkpoint": "g000200-s001638400-0a07366b5db4b68af5ae44a5c15c74cc03ac0a2827e7285f571f1a739fd5923d",
+      "networkSha256": "1b319d7ba9406c6277b457042412354d72f20a0786324cac34a1071890b50905"
+    }
+  ],
+  "pairs": 8,
+  "seed": 2026102003,
+  "nodes": 8192,
+  "moveMillis": 0,
+  "maximumPlies": 512,
+  "batchGames": 12,
+  "batchSeconds": 240,
+  "search": "Common Policy4, fresh 64MiB TT per engine/game, one worker, no ponder",
+  "openings": "ValidationArena seeded legal random openings 4..12 plies; colour reversed; same openings for all candidates",
+  "interpretation": "48-game exploratory diagnostic fixed before execution. No success claim or statistical selection threshold. Capped pairs excluded and reported, never draws. Common nodes measures evaluator/search interaction without speed cost; time screen must follow. Confirmation uses different openings and a prospective multiplicity-aware protocol.",
+  "resources": "One JVM, ActiveProcessorCount=1, Xmx768m, BelowNormal; 12 games or four minutes per invocation, finish current game; rerun unchanged plan resumes immutable game receipts."
+}

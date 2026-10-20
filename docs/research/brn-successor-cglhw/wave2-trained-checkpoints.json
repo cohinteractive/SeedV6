@@ -1,0 +1,141 @@
+{
+  "id": "brn-successor-wave2-trained-manifest-v1",
+  "evidence": "raw/wave2/audit-01",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "manifest": {
+        "id": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+        "generation": 32,
+        "optimizerStep": 1753088,
+        "trainingDepth": 4,
+        "parentId": "g000031-s001228800-3b52a75c2077c9b9a44edcee222201e0b3a0b76dc8b9cef5ae99804fa5549c78",
+        "networkBytes": 795032,
+        "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "trainingBytes": 2731424,
+        "trainingSha256": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+        "architecture": "BRN_PAIR2"
+      },
+      "optimizerStep": 1753088,
+      "optimizer": {
+        "learningRate": 0.01,
+        "beta1": 0.9,
+        "beta2": 0.999,
+        "epsilon": 1e-08
+      },
+      "best": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "latestTraining": "g000281-s066174976-d15c7c758577ba1280bf7ea29dfbdf66f284a133000a9a9c2985b09cea2cd989",
+      "initializer": {
+        "initialCheckpoint": "g000000-s000000000-662d11672650fca616debf4adf3c45f397618b3708d1728377265013640b95d4",
+        "architecture": "BRN_PAIR2",
+        "initializer": "Zero-weight initializer",
+        "firstRunSeed": 1,
+        "recorded": "2026-10-07T05:06:05.646291200Z"
+      },
+      "optimizerRuntimeScoreParity": true
+    },
+    {
+      "name": "W1-GATE",
+      "root": "E:/SeedV6-Networks/BRN-GATED/699672ff-5dcc-326a-afef-924996c76f79",
+      "manifest": {
+        "id": "g000200-s001638400-60858ba6cf162daff10b68ee239f7811dd03d7ec4df22c8de130a1c52bd49a18",
+        "generation": 200,
+        "optimizerStep": 1638400,
+        "trainingDepth": 4,
+        "parentId": "g000199-s001630208-304386c8b728092e8d755fdbd820aa44d261d9d1d2cbfc77f10aa41d94a03b86",
+        "networkBytes": 52432,
+        "networkSha256": "aefca5d77e68c57f286f533d02d519229ae9ef487fb46ed9ca46a4d93ad4d785",
+        "trainingBytes": 157232,
+        "trainingSha256": "1df4b1f220da57414fe2e73b0cbeac1c69c50f95d82687c40b9a1fd99950ec17",
+        "architecture": "BRN_GATED"
+      },
+      "optimizerStep": 1638400,
+      "optimizer": {
+        "learningRate": 0.003,
+        "beta1": 0.9,
+        "beta2": 0.999,
+        "epsilon": 1e-08
+      },
+      "best": "g000198-s001622016-f30acc04d56a4c0097717790d37c6dfafee00c2a86e0e53a48917d968af9772b",
+      "latestTraining": "g000200-s001638400-60858ba6cf162daff10b68ee239f7811dd03d7ec4df22c8de130a1c52bd49a18",
+      "initializer": {
+        "initialCheckpoint": "g000000-s000000000-1dccd99b1ab1245b131a58ad9d12d1df8bbc85a82fd9ac356d754f1c44df6c68",
+        "architecture": "BRN_GATED",
+        "initializer": "brn-successor-2026-10-20-wave1:GATED_PAIRS_W4_PS768_MATERIAL_QUARTER_V1: seeded zero head",
+        "initializationSeed": 1,
+        "firstRunSeed": 1,
+        "recorded": "2026-10-19T23:49:22.387807700Z"
+      },
+      "optimizerRuntimeScoreParity": true
+    },
+    {
+      "name": "W1-CUBIC",
+      "root": "E:/SeedV6-Networks/BRN-CUBIC/e04052b9-6784-3c12-abb5-abc75cd21f59",
+      "manifest": {
+        "id": "g000200-s001638400-ebca5e96961f27edb7cd419b8badc5cba0f4b74c11d4db0064e12753dab51e49",
+        "generation": 200,
+        "optimizerStep": 1638400,
+        "trainingDepth": 4,
+        "parentId": "g000199-s001630208-67ccf05fe04c9ce54a4e6ff22b8d7409c6ff3f0a2d7bc6f9e80383a76556c347",
+        "networkBytes": 104752,
+        "networkSha256": "2483d892ab397dc111fb077aaca2ce7196272140abc62b165b933bbeefe8a347",
+        "trainingBytes": 314192,
+        "trainingSha256": "4432aff63b50b11bf3e479f5f340c2746ea543f17f3970469288c015bf15a184",
+        "architecture": "BRN_CUBIC"
+      },
+      "optimizerStep": 1638400,
+      "optimizer": {
+        "learningRate": 0.003,
+        "beta1": 0.9,
+        "beta2": 0.999,
+        "epsilon": 1e-08
+      },
+      "best": "g000200-s001638400-ebca5e96961f27edb7cd419b8badc5cba0f4b74c11d4db0064e12753dab51e49",
+      "latestTraining": "g000200-s001638400-ebca5e96961f27edb7cd419b8badc5cba0f4b74c11d4db0064e12753dab51e49",
+      "initializer": {
+        "initialCheckpoint": "g000000-s000000000-32ca939860fe4ea76bf0c3c416cd4bf73bedd6f8a8fb548c6d8bdbe1840fd3e8",
+        "architecture": "BRN_CUBIC",
+        "initializer": "brn-successor-2026-10-20-wave1:CUBIC_W16_PS768_MATERIAL_QUARTER_V1: seeded zero head",
+        "initializationSeed": 1,
+        "firstRunSeed": 1,
+        "recorded": "2026-10-19T23:49:22.598101300Z"
+      },
+      "optimizerRuntimeScoreParity": true
+    },
+    {
+      "name": "W1-POOL",
+      "root": "E:/SeedV6-Networks/BRN-POOLED/97b2fdda-f812-3455-9f62-43e5ee322651",
+      "manifest": {
+        "id": "g000200-s001638400-0a07366b5db4b68af5ae44a5c15c74cc03ac0a2827e7285f571f1a739fd5923d",
+        "generation": 200,
+        "optimizerStep": 1638400,
+        "trainingDepth": 4,
+        "parentId": "g000199-s001630208-d3d868a371da76d993c202d77b81cf250b87064d4f042cb6aa57a3a1f5fe5188",
+        "networkBytes": 104752,
+        "networkSha256": "1b319d7ba9406c6277b457042412354d72f20a0786324cac34a1071890b50905",
+        "trainingBytes": 314192,
+        "trainingSha256": "9d00099d9192ef73974bfdbfad2bbe65f5ff7a654396eff1c6c11b74b6e3bfc8",
+        "architecture": "BRN_POOLED"
+      },
+      "optimizerStep": 1638400,
+      "optimizer": {
+        "learningRate": 0.003,
+        "beta1": 0.9,
+        "beta2": 0.999,
+        "epsilon": 1e-08
+      },
+      "best": "g000200-s001638400-0a07366b5db4b68af5ae44a5c15c74cc03ac0a2827e7285f571f1a739fd5923d",
+      "latestTraining": "g000200-s001638400-0a07366b5db4b68af5ae44a5c15c74cc03ac0a2827e7285f571f1a739fd5923d",
+      "initializer": {
+        "initialCheckpoint": "g000000-s000000000-65bf30f99a4a1c666e68e1204cc1f8226b7d10354c54e50842c44ad77ffb9e40",
+        "architecture": "BRN_POOLED",
+        "initializer": "brn-successor-2026-10-20-wave1:POOLED_W16_PS768_MATERIAL_QUARTER_V1: seeded zero head",
+        "initializationSeed": 1,
+        "firstRunSeed": 1,
+        "recorded": "2026-10-19T23:49:22.795395700Z"
+      },
+      "optimizerRuntimeScoreParity": true
+    }
+  ]
+}
