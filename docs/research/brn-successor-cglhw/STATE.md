@@ -107,7 +107,13 @@ BRE controls and mechanism/calibration diagnostics as warranted. A fixed last-ei
 checkpoint average improves residual development prediction at unchanged inference
 size/cost; explicit hash/ancestry-bound research loading and12 tests plus96 legal
 smoke plies pass. No optimizer/checkpoint is changed. See the average plans/results;
-actual averaged-model cache/search oracles remain required before strength games.
+the frozen33535b4 runtime reproduced all diagnostic results exactly, and all eight
+full/half averaged residuals pass actual cache/search oracles. The first diagnostic's
+unretained jar identity remains explicitly unknown, not retrospectively inferred.
+Fit-only rank removal on averaged cubic models gives plausible quality/cost tradeoffs;
+full16 reproduction and independent prediction checks pass. An isolated sparse-rank
+prototype still needs compilation, actual-model parity and balanced cost validation.
+No core/application path or pruning strength protocol has changed.
 Primary protocols continue using frozen original jars. Fresh confirmation
 partition1 remains unused. No architecture decision or further training is inferred
 from loss or an initial equal-time defeat.

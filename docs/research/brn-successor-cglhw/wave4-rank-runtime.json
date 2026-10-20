@@ -1,0 +1,22 @@
+{
+  "id": "wave4-rank-runtime-v1",
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave4\\rank-runtime-01\\lib",
+  "createdUtc": "2026-10-20T21:42:03.860261+00:00",
+  "sourceCommit": "33535b4da00f068c526915fd771efd496e714748",
+  "uncommittedRuntimeSources": {
+    "research/src/main/java/com/ohinteractive/seedv6/tools/eval/BrnCubicRankProbe.java": "0ce6480bf598af06189b1399ad98b650c595fbc9f33176a70d960ef4ce2c83f3"
+  },
+  "build": 51,
+  "jars": {
+    "engine-core.jar": "109816e2f59297f857496f835517f0ededb90f6e6b26173d8be41db59aed3ecb",
+    "engine-training.jar": "ec58521d7d7769729f4afd2a4db1bb63298a006c8e308b27aa6548c027878a64",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "2e376d7ca3511c6a3a7a88d839d55e2a37d8b0ddc9d127f795f1486d3a71e2af",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "java": "C:/java/jdk-21/bin/java.exe",
+  "activeProcessors": 1,
+  "heapMiB": 768
+}

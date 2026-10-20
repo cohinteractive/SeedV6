@@ -1,0 +1,469 @@
+{
+  "id": "wave4-average-validation-v1",
+  "runtime": "wave4-average-runtime.json",
+  "reproduction": "wave4-average-reproduction.json",
+  "junitTests": 12,
+  "junitFailures": 0,
+  "legalSmokePlies": 96,
+  "intentionalSmokeCaps": 12,
+  "strengthSmokeGames": 0,
+  "cacheOracles": [
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESCUBIC-LR001-average8-half.json",
+      "sha256": "cb4d8b9144d6fb6ba7c26ecd3bb1145e3ec332476e85cfbf43f76166c05d6514",
+      "name": "W4-RESCUBIC-LR001-average8-half",
+      "effectiveNetworkSha256": "aeb48ecd4158c7b41c367dda9b071b6634c8454578feec1473cd842aa8352ad8",
+      "maximumRawError": 1.9984014443252818e-15,
+      "positions": 6333,
+      "pairedSearches": 48,
+      "meanSearchMillis": {
+        "CUBIC-full": 44.90853952083334,
+        "CUBIC-cache": 31.229066666666668
+      },
+      "transitionLatency": [
+        {
+          "medianNanos": 823.314,
+          "passNanos": [
+            46244700,
+            43346099,
+            41743200,
+            41165700,
+            41056500,
+            40722599,
+            40569101
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "CUBIC-full"
+        },
+        {
+          "medianNanos": 315.614,
+          "passNanos": [
+            21161499,
+            18603700,
+            17461200,
+            15780700,
+            14517100,
+            14700900,
+            14489400
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "CUBIC-cache"
+        },
+        {
+          "medianNanos": 140.27802,
+          "passNanos": [
+            9161500,
+            7906600,
+            7471101,
+            7013901,
+            6721799,
+            6902900,
+            6939500
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "Gen32"
+        }
+      ]
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESCUBIC-LR001-average8.json",
+      "sha256": "8014810871cf3aa2057249314e68554d5a0d17a7a501045389d8a043c58de1e3",
+      "name": "W4-RESCUBIC-LR001-average8",
+      "effectiveNetworkSha256": "5fb25c176913fd7131d4dba1cc540cd73a856a10d999bc774974f2cde82c8e6e",
+      "maximumRawError": 3.9968028886505635e-15,
+      "positions": 6333,
+      "pairedSearches": 48,
+      "meanSearchMillis": {
+        "CUBIC-full": 45.36226664583334,
+        "CUBIC-cache": 30.87851866666667
+      },
+      "transitionLatency": [
+        {
+          "name": "CUBIC-full",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            48941000,
+            42867900,
+            41394300,
+            43793200,
+            44255601,
+            44412200,
+            41682699
+          ],
+          "medianNanos": 875.864
+        },
+        {
+          "name": "CUBIC-cache",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            20415299,
+            17706900,
+            14470499,
+            14693899,
+            14397900,
+            15330000,
+            15723000
+          ],
+          "medianNanos": 306.6
+        },
+        {
+          "name": "Gen32",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            11323899,
+            7610200,
+            6954500,
+            7010600,
+            6747099,
+            6946801,
+            7177000
+          ],
+          "medianNanos": 140.212
+        }
+      ]
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESCUBIC-LR003-average8-half.json",
+      "sha256": "08089e53ef58a2377a430c69dba07bde26b7075010c33f778e4b274e25728fb7",
+      "name": "W4-RESCUBIC-LR003-average8-half",
+      "effectiveNetworkSha256": "80b2c14469aa22d0e82d7c6b8f74bd13fcf409034cc8fc1641378a7c839a9074",
+      "maximumRawError": 2.3037127760972e-15,
+      "positions": 6333,
+      "pairedSearches": 48,
+      "meanSearchMillis": {
+        "CUBIC-full": 48.60854175,
+        "CUBIC-cache": 34.017347791666666
+      },
+      "transitionLatency": [
+        {
+          "passNanos": [
+            46674700,
+            52443000,
+            46475100,
+            48107100,
+            44577300,
+            45328600,
+            44409799
+          ],
+          "medianNanos": 929.502,
+          "name": "CUBIC-full",
+          "evaluationsPerPass": 50000
+        },
+        {
+          "passNanos": [
+            20028300,
+            19679600,
+            20740199,
+            15406000,
+            15176000,
+            15992900,
+            19332800
+          ],
+          "medianNanos": 386.656,
+          "name": "CUBIC-cache",
+          "evaluationsPerPass": 50000
+        },
+        {
+          "passNanos": [
+            7899100,
+            10039001,
+            7702900,
+            7133101,
+            6879000,
+            7766100,
+            9094001
+          ],
+          "medianNanos": 155.322,
+          "name": "Gen32",
+          "evaluationsPerPass": 50000
+        }
+      ]
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESCUBIC-LR003-average8.json",
+      "sha256": "d32d568d98168fcd1992290e634b890e0187acedad80a6bbce0880c02c33b493",
+      "name": "W4-RESCUBIC-LR003-average8",
+      "effectiveNetworkSha256": "423ecddbbff24c44614562e295b6692e6a2f3d1c898aac833e1ce5b773275a3f",
+      "maximumRawError": 4.6629367034256575e-15,
+      "positions": 6333,
+      "pairedSearches": 48,
+      "meanSearchMillis": {
+        "CUBIC-full": 47.986372833333334,
+        "CUBIC-cache": 34.5610830625
+      },
+      "transitionLatency": [
+        {
+          "medianNanos": 840.836,
+          "passNanos": [
+            44076300,
+            42703100,
+            42041800,
+            41110400,
+            41406301,
+            42791800,
+            41307000
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "CUBIC-full"
+        },
+        {
+          "medianNanos": 308.86,
+          "passNanos": [
+            16853800,
+            15506000,
+            15501600,
+            15044900,
+            15161401,
+            15443000,
+            14593699
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "CUBIC-cache"
+        },
+        {
+          "medianNanos": 135.97398,
+          "passNanos": [
+            7386700,
+            7380100,
+            6886800,
+            6798699,
+            6683700,
+            6776299,
+            6680700
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "Gen32"
+        }
+      ]
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESGATE-LR001-average8-half.json",
+      "sha256": "8863ec47d6d953784c4358aa058068c0a16e8e5560d660f76e48f9ef81bc409f",
+      "name": "W4-RESGATE-LR001-average8-half",
+      "effectiveNetworkSha256": "eb8004dd0b0550a93419e2ca7774847421c8857010555a02d3435e258faf2963",
+      "maximumRawError": 5.329070518200751e-15,
+      "positions": 6333,
+      "pairedSearches": 48,
+      "meanSearchMillis": {
+        "GATE-full": 64.14565204166666,
+        "GATE-cache": 39.13091058333334
+      },
+      "transitionLatency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            97066400,
+            81765400,
+            76730600,
+            89327499,
+            85885000,
+            79380800,
+            86112699
+          ],
+          "medianNanos": 1717.7,
+          "name": "GATE-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            23867100,
+            23810300,
+            26072899,
+            25492100,
+            22524299,
+            32848500,
+            22528500
+          ],
+          "medianNanos": 477.342,
+          "name": "GATE-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            7128599,
+            7035901,
+            7302500,
+            7347200,
+            6820100,
+            7840899,
+            7006601
+          ],
+          "medianNanos": 142.57198,
+          "name": "Gen32"
+        }
+      ]
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESGATE-LR001-average8.json",
+      "sha256": "a7018566e2a84410a97363ffa72ae51fad32fc711b8e378286dfd89da8a1f92d",
+      "name": "W4-RESGATE-LR001-average8",
+      "effectiveNetworkSha256": "ba39eefb8b383711eb672f47e36c9afec3ed9b692e0bb6c75e284b747d6b9236",
+      "maximumRawError": 1.0658141036401503e-14,
+      "positions": 6333,
+      "pairedSearches": 48,
+      "meanSearchMillis": {
+        "GATE-full": 65.52540639583333,
+        "GATE-cache": 38.353843770833336
+      },
+      "transitionLatency": [
+        {
+          "medianNanos": 1721.57202,
+          "passNanos": [
+            90350901,
+            87199399,
+            89754500,
+            85823599,
+            84718500,
+            86078601,
+            82668800
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "GATE-full"
+        },
+        {
+          "medianNanos": 488.5,
+          "passNanos": [
+            39618800,
+            26714900,
+            26060700,
+            21097500,
+            21122899,
+            24425000,
+            22467301
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "GATE-cache"
+        },
+        {
+          "medianNanos": 147.34,
+          "passNanos": [
+            8234799,
+            7269600,
+            10825800,
+            7320800,
+            7367000,
+            7903900,
+            7141200
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "Gen32"
+        }
+      ]
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESGATE-LR003-average8-half.json",
+      "sha256": "d2567ff9d92b6310ec47955bacb0e69df196d6b251cd5903fbe4919ea00a3248",
+      "name": "W4-RESGATE-LR003-average8-half",
+      "effectiveNetworkSha256": "10ba0866eb8944697be4d41287d61508d4370bf5f5d971013e7ff6d0d1a9c621",
+      "maximumRawError": 4.3298697960381105e-15,
+      "positions": 6333,
+      "pairedSearches": 48,
+      "meanSearchMillis": {
+        "GATE-full": 63.82983745833334,
+        "GATE-cache": 37.315379229166666
+      },
+      "transitionLatency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            81157500,
+            76121100,
+            75940700,
+            76638500,
+            77029700,
+            76258301,
+            77799700
+          ],
+          "medianNanos": 1532.77,
+          "name": "GATE-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            30051399,
+            20068299,
+            21931700,
+            19790500,
+            19873299,
+            19680801,
+            20963500
+          ],
+          "medianNanos": 401.36598,
+          "name": "GATE-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            7199200,
+            7378500,
+            7294500,
+            7257499,
+            6960100,
+            6936999,
+            7085401
+          ],
+          "medianNanos": 143.984,
+          "name": "Gen32"
+        }
+      ]
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/cache-W4-RESGATE-LR003-average8.json",
+      "sha256": "e5de89d4022f2455b4bab377ee3b9e603170dfd3f4ff24b8a1c7c79e7042934e",
+      "name": "W4-RESGATE-LR003-average8",
+      "effectiveNetworkSha256": "e7b57f7809a1bdc964c2f261fae1a3ba834f398d41b2b8c8dca4c415b6795f85",
+      "maximumRawError": 8.659739592076221e-15,
+      "positions": 6333,
+      "pairedSearches": 48,
+      "meanSearchMillis": {
+        "GATE-full": 64.31521458333333,
+        "GATE-cache": 37.69904789583334
+      },
+      "transitionLatency": [
+        {
+          "name": "GATE-full",
+          "medianNanos": 1683.966,
+          "passNanos": [
+            87221700,
+            84198300,
+            84711000,
+            82039300,
+            75498101,
+            88445400,
+            79562800
+          ],
+          "evaluationsPerPass": 50000
+        },
+        {
+          "name": "GATE-cache",
+          "medianNanos": 489.72202,
+          "passNanos": [
+            28873699,
+            24886501,
+            21617300,
+            23050401,
+            20286700,
+            24486101,
+            29911500
+          ],
+          "evaluationsPerPass": 50000
+        },
+        {
+          "name": "Gen32",
+          "medianNanos": 152.246,
+          "passNanos": [
+            9180300,
+            7612300,
+            9408000,
+            7064000,
+            6785499,
+            6926500,
+            8698601
+          ],
+          "evaluationsPerPass": 50000
+        }
+      ]
+    }
+  ],
+  "scope": "No concurrent research jobs during these oracles. Balanced within-process cost; host/JIT variation remains. No playing-strength conclusion."
+}

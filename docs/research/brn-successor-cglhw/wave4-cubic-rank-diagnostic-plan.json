@@ -1,0 +1,23 @@
+{
+  "id": "wave4-cubic-rank-removal-v1",
+  "question": "Cubic has encouraging equal-node development scores but known inference cost. Can fewer active polynomial components retain prediction quality before implementing a cheaper inference path?",
+  "models": [
+    "W4-RESCUBIC-LR001-average8",
+    "W4-RESCUBIC-LR003-average8"
+  ],
+  "modelPlan": "wave4-average-model-plan.json",
+  "fit": "First1024/source, equal-source full raw cross entropy, rank each of16 components by leave-one-out loss increase.",
+  "evaluation": "Remaining1024/source, unchanged consumed development inputs and invalid-CP sensitivity. No reranking on evaluation half.",
+  "widths": [
+    4,
+    8,
+    12,
+    16
+  ],
+  "scales": [
+    0.5,
+    1
+  ],
+  "decision": "A diagnostic only. Full16 must reproduce the averaged input. Do not claim speed from zeroed heads; any cheaper path needs separate correctness/cost and chess testing. No strength-based rank/window selection.",
+  "resources": "One BelowNormal JVM, one active processor,768MiB, only after tournament batch boundary; no training or original-store writes."
+}

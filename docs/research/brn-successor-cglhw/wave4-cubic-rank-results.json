@@ -1,0 +1,881 @@
+{
+  "id": "wave4-cubic-rank-results-v1",
+  "runtime": "wave4-rank-runtime.json",
+  "fullRankPayloadAndPredictionReproduced": true,
+  "results": [
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/cubic-ranks-LR001-01/summary.json",
+      "sha256": "f5bfe072cc937fb774872c170d6399bc698884000e9b6b6ac08649bc453c8062",
+      "model": "W4-RESCUBIC-LR001",
+      "fitOnlyRankImportance": [
+        {
+          "rank": 3,
+          "removedMinusFullFitLoss": 0.06579008617574356
+        },
+        {
+          "rank": 5,
+          "removedMinusFullFitLoss": 0.022153987884590443
+        },
+        {
+          "rank": 9,
+          "removedMinusFullFitLoss": 0.008904542986147956
+        },
+        {
+          "rank": 2,
+          "removedMinusFullFitLoss": 0.004179257324570362
+        },
+        {
+          "rank": 8,
+          "removedMinusFullFitLoss": 0.0033144354024957634
+        },
+        {
+          "rank": 4,
+          "removedMinusFullFitLoss": 0.0026644218772139405
+        },
+        {
+          "rank": 13,
+          "removedMinusFullFitLoss": 0.002468554232719744
+        },
+        {
+          "rank": 10,
+          "removedMinusFullFitLoss": 0.001832701827452432
+        },
+        {
+          "rank": 1,
+          "removedMinusFullFitLoss": 0.0013088451503152632
+        },
+        {
+          "rank": 12,
+          "removedMinusFullFitLoss": 0.0008758341701032846
+        },
+        {
+          "rank": 15,
+          "removedMinusFullFitLoss": 0.0008733342040537773
+        },
+        {
+          "rank": 14,
+          "removedMinusFullFitLoss": 0.0005212641268217411
+        },
+        {
+          "rank": 0,
+          "removedMinusFullFitLoss": 0.00036755072856986537
+        },
+        {
+          "rank": 6,
+          "removedMinusFullFitLoss": -0.0004195844341667865
+        },
+        {
+          "rank": 7,
+          "removedMinusFullFitLoss": -0.0005663741008737899
+        },
+        {
+          "rank": 11,
+          "removedMinusFullFitLoss": -0.000959247313163214
+        }
+      ],
+      "variants": [
+        {
+          "count": 4,
+          "ranks": [
+            2,
+            3,
+            5,
+            9
+          ],
+          "networkSha256": "2aa39be2f162dabf773307d2466a8dee452c57114e8590143675c71fb6c4a3c3"
+        },
+        {
+          "count": 8,
+          "ranks": [
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            13
+          ],
+          "networkSha256": "73e2b72078cef48b9a14ec6e0c98b8774882a0011d6c12a9d55181ce4242d65e"
+        },
+        {
+          "count": 12,
+          "ranks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15
+          ],
+          "networkSha256": "9f1d829ec5d7d4dcc25d02621a87b136c2aba40255c3677eb2818414b4645060"
+        },
+        {
+          "count": 16,
+          "ranks": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "networkSha256": "5fb25c176913fd7131d4dba1cc540cd73a856a10d999bc774974f2cde82c8e6e"
+        }
+      ],
+      "sources": [
+        {
+          "source": "BT4",
+          "metrics": {
+            "Gen32@1.0:evaluation": {
+              "residualRmsPawns": 2.189706551484556,
+              "crossEntropy": 0.6429540476445533,
+              "rawMinPawns": -3.9154871215187566,
+              "count": 1024,
+              "smoothOutcomeMse": 0.13484834711495358,
+              "rawMaxPawns": 5.126466363869927
+            },
+            "Gen32@1.0:fit": {
+              "residualRmsPawns": 1.9616839900833771,
+              "crossEntropy": 0.6653542513257861,
+              "rawMinPawns": -3.9750645340082276,
+              "count": 1024,
+              "smoothOutcomeMse": 0.12629251795019203,
+              "rawMaxPawns": 4.874243151871838
+            },
+            "ranks12-scale0.5@1.0:evaluation": {
+              "residualRmsPawns": 2.1139026420742266,
+              "crossEntropy": 0.6288422709405866,
+              "rawMinPawns": -4.04110284749366,
+              "count": 1024,
+              "smoothOutcomeMse": 0.11411333900410933,
+              "rawMaxPawns": 6.084483613322152
+            },
+            "ranks12-scale0.5@1.0:fit": {
+              "residualRmsPawns": 1.9046394168420366,
+              "crossEntropy": 0.6482631167442894,
+              "rawMinPawns": -3.645594935375145,
+              "count": 1024,
+              "smoothOutcomeMse": 0.10469664199786183,
+              "rawMaxPawns": 5.708851706451972
+            },
+            "ranks12-scale1.0@1.0:evaluation": {
+              "residualRmsPawns": 2.0579205245928365,
+              "crossEntropy": 0.6280041541449529,
+              "rawMinPawns": -4.315147493058899,
+              "count": 1024,
+              "smoothOutcomeMse": 0.11055424057569277,
+              "rawMaxPawns": 7.042500862774377
+            },
+            "ranks12-scale1.0@1.0:fit": {
+              "residualRmsPawns": 1.8693870509099086,
+              "crossEntropy": 0.6445996755782969,
+              "rawMinPawns": -3.3161253367420627,
+              "count": 1024,
+              "smoothOutcomeMse": 0.09982412252305058,
+              "rawMaxPawns": 6.543460261032106
+            },
+            "ranks16-scale0.5@1.0:evaluation": {
+              "residualRmsPawns": 2.1177306467813604,
+              "crossEntropy": 0.6286452351407363,
+              "rawMinPawns": -3.897375595798859,
+              "count": 1024,
+              "smoothOutcomeMse": 0.11409623290308714,
+              "rawMaxPawns": 6.17705461566365
+            },
+            "ranks16-scale0.5@1.0:fit": {
+              "residualRmsPawns": 1.9115140949883949,
+              "crossEntropy": 0.6480713563277001,
+              "rawMinPawns": -3.64024401372874,
+              "count": 1024,
+              "smoothOutcomeMse": 0.10525544920732999,
+              "rawMaxPawns": 5.637916214717714
+            },
+            "ranks16-scale1.0@1.0:evaluation": {
+              "residualRmsPawns": 2.065098610433892,
+              "crossEntropy": 0.6275049484768117,
+              "rawMinPawns": -4.422919481998045,
+              "count": 1024,
+              "smoothOutcomeMse": 0.11075992786221642,
+              "rawMaxPawns": 7.227642867457373
+            },
+            "ranks16-scale1.0@1.0:fit": {
+              "residualRmsPawns": 1.8808659617752066,
+              "crossEntropy": 0.6454244369381351,
+              "rawMinPawns": -3.305423493449253,
+              "count": 1024,
+              "smoothOutcomeMse": 0.10225057300390562,
+              "rawMaxPawns": 6.401589277563591
+            },
+            "ranks4-scale0.5@1.0:evaluation": {
+              "residualRmsPawns": 2.110804909638727,
+              "crossEntropy": 0.6281508325156128,
+              "rawMinPawns": -3.9910043846824124,
+              "count": 1024,
+              "smoothOutcomeMse": 0.1130931249169662,
+              "rawMaxPawns": 5.926652111655121
+            },
+            "ranks4-scale0.5@1.0:fit": {
+              "residualRmsPawns": 1.9029179373380845,
+              "crossEntropy": 0.6504413428092293,
+              "rawMinPawns": -3.731465346914331,
+              "count": 1024,
+              "smoothOutcomeMse": 0.10819080441832506,
+              "rawMaxPawns": 5.637085189827398
+            },
+            "ranks4-scale1.0@1.0:evaluation": {
+              "residualRmsPawns": 2.0494555505124907,
+              "crossEntropy": 0.6245743223366821,
+              "rawMinPawns": -4.066521647846068,
+              "count": 1024,
+              "smoothOutcomeMse": 0.10726570503998212,
+              "rawMaxPawns": 6.726837859440316
+            },
+            "ranks4-scale1.0@1.0:fit": {
+              "residualRmsPawns": 1.8635180292827171,
+              "crossEntropy": 0.6497993365531756,
+              "rawMinPawns": -3.4878661598204346,
+              "count": 1024,
+              "smoothOutcomeMse": 0.10657527559324459,
+              "rawMaxPawns": 6.399927227782958
+            },
+            "ranks8-scale0.5@1.0:evaluation": {
+              "residualRmsPawns": 2.1078420029556506,
+              "crossEntropy": 0.6282086514657577,
+              "rawMinPawns": -3.9362913255374536,
+              "count": 1024,
+              "smoothOutcomeMse": 0.11345594072172295,
+              "rawMaxPawns": 5.985745579443581
+            },
+            "ranks8-scale0.5@1.0:fit": {
+              "residualRmsPawns": 1.8954332410934112,
+              "crossEntropy": 0.6474148847066394,
+              "rawMinPawns": -3.7078735264433895,
+              "count": 1024,
+              "smoothOutcomeMse": 0.10315975560941305,
+              "rawMaxPawns": 5.691424873289471
+            },
+            "ranks8-scale1.0@1.0:evaluation": {
+              "residualRmsPawns": 2.0514214101997705,
+              "crossEntropy": 0.6291860632388088,
+              "rawMinPawns": -3.9570955295561507,
+              "count": 1024,
+              "smoothOutcomeMse": 0.11283226136509991,
+              "rawMaxPawns": 6.845024795017235
+            },
+            "ranks8-scale1.0@1.0:fit": {
+              "residualRmsPawns": 1.8573261513748691,
+              "crossEntropy": 0.6468024550530799,
+              "rawMinPawns": -3.440682518878551,
+              "count": 1024,
+              "smoothOutcomeMse": 0.10215648943361695,
+              "rawMaxPawns": 6.508606594707105
+            }
+          }
+        },
+        {
+          "source": "CP",
+          "metrics": {
+            "Gen32@1.0:evaluation": {
+              "residualRmsPawns": 3.3103520689251966,
+              "crossEntropy": 0.5982402406571896,
+              "rawMinPawns": -7.879687659269514,
+              "count": 1024,
+              "smoothOutcomeMse": 0.34083877432007775,
+              "rawMaxPawns": 9.693355922987287
+            },
+            "Gen32@1.0:fit": {
+              "residualRmsPawns": 3.3931899903522345,
+              "crossEntropy": 0.5974912110359241,
+              "rawMinPawns": -6.820212120889021,
+              "count": 1024,
+              "smoothOutcomeMse": 0.3036090769173005,
+              "rawMaxPawns": 7.254998153340367
+            },
+            "ranks12-scale0.5@1.0:evaluation": {
+              "residualRmsPawns": 3.3136304704439,
+              "crossEntropy": 0.5897080841802893,
+              "rawMinPawns": -5.092683290941809,
+              "count": 1024,
+              "smoothOutcomeMse": 0.3303942330097946,
+              "rawMaxPawns": 9.30074919482901
+            },
+            "ranks12-scale0.5@1.0:fit": {
+              "residualRmsPawns": 3.334240198805121,
+              "crossEntropy": 0.5724525789585854,
+              "rawMinPawns": -6.342618770915207,
+              "count": 1024,
+              "smoothOutcomeMse": 0.28172113339728305,
+              "rawMaxPawns": 8.789968282694785
+            },
+            "ranks12-scale1.0@1.0:evaluation": {
+              "residualRmsPawns": 3.338259640573909,
+              "crossEntropy": 0.5971931047233289,
+              "rawMinPawns": -5.537793857922229,
+              "count": 1024,
+              "smoothOutcomeMse": 0.33294406819956024,
+              "rawMaxPawns": 8.908142466670734
+            },
+            "ranks12-scale1.0@1.0:fit": {
+              "residualRmsPawns": 3.2910310824081823,
+              "crossEntropy": 0.5648428374294077,
+              "rawMinPawns": -5.865025420941394,
+              "count": 1024,
+              "smoothOutcomeMse": 0.27314468979012596,
+              "rawMaxPawns": 10.324938412049203
+            },
+            "ranks16-scale0.5@1.0:evaluation": {
+              "residualRmsPawns": 3.323622427737665,
+              "crossEntropy": 0.5856540039931482,
+              "rawMinPawns": -5.143239948505885,
+              "count": 1024,
+              "smoothOutcomeMse": 0.323570906005425,
+              "rawMaxPawns": 9.28271047825825
+            },
+            "ranks16-scale0.5@1.0:fit": {
+              "residualRmsPawns": 3.3374957684655677,
+              "crossEntropy": 0.5753102037525947,
+              "rawMinPawns": -6.456968652137507,
+              "count": 1024,
+              "smoothOutcomeMse": 0.28095410846120367,
+              "rawMaxPawns": 8.860327465581983
+            },
+            "ranks16-scale1.0@1.0:evaluation": {
+              "residualRmsPawns": 3.3584789233146632,
+              "crossEntropy": 0.599503447868128,
+              "rawMinPawns": -5.63890717305038,
+              "count": 1024,
+              "smoothOutcomeMse": 0.31917469105058593,
+              "rawMaxPawns": 8.872065033529216
+            },
+            "ranks16-scale1.0@1.0:fit": {
+              "residualRmsPawns": 3.2968698500010913,
+              "crossEntropy": 0.5685762481763348,
+              "rawMinPawns": -6.093725183385994,
+              "count": 1024,
+              "smoothOutcomeMse": 0.2699786228067831,
+              "rawMaxPawns": 10.4656567778236
+            },
+            "ranks4-scale0.5@1.0:evaluation": {
+              "residualRmsPawns": 3.289217878398135,
+              "crossEntropy": 0.5921935364025228,
+              "rawMinPawns": -5.09754035079658,
+              "count": 1024,
+              "smoothOutcomeMse": 0.3385079086209229,
+              "rawMaxPawns": 9.524561919386656
+            },
+            "ranks4-scale0.5@1.0:fit": {
+              "residualRmsPawns": 3.32543919679869,
+              "crossEntropy": 0.583513242747798,
+              "rawMinPawns": -6.348085102357188,
+              "count": 1024,
+              "smoothOutcomeMse": 0.29129808258791756,
+              "rawMaxPawns": 8.938985535800729
+            },
+            "ranks4-scale1.0@1.0:evaluation": {
+              "residualRmsPawns": 3.285598773947536,
+              "crossEntropy": 0.5987680621827343,
+              "rawMinPawns": -5.5475079776317715,
+              "count": 1024,
+              "smoothOutcomeMse": 0.3475765966536842,
+              "rawMaxPawns": 9.355767915786025
+            },
+            "ranks4-scale1.0@1.0:fit": {
+              "residualRmsPawns": 3.270533131815542,
+              "crossEntropy": 0.5810493322916226,
+              "rawMinPawns": -5.8759580838253544,
+              "count": 1024,
+              "smoothOutcomeMse": 0.2904283974527252,
+              "rawMaxPawns": 10.622972918261093
+            },
+            "ranks8-scale0.5@1.0:evaluation": {
+              "residualRmsPawns": 3.3103496573497355,
+              "crossEntropy": 0.5904869078665838,
+              "rawMinPawns": -5.060318266703362,
+              "count": 1024,
+              "smoothOutcomeMse": 0.33437001547600714,
+              "rawMaxPawns": 9.21394313501441
+            },
+            "ranks8-scale0.5@1.0:fit": {
+              "residualRmsPawns": 3.3234044927339133,
+              "crossEntropy": 0.5773704742814844,
+              "rawMinPawns": -6.281238710687802,
+              "count": 1024,
+              "smoothOutcomeMse": 0.2872891989593103,
+              "rawMaxPawns": 8.848065689015622
+            },
+            "ranks8-scale1.0@1.0:evaluation": {
+              "residualRmsPawns": 3.33606910292886,
+              "crossEntropy": 0.6046678298909959,
+              "rawMinPawns": -5.473063809445336,
+              "count": 1024,
+              "smoothOutcomeMse": 0.343801325115057,
+              "rawMaxPawns": 8.734530347041535
+            },
+            "ranks8-scale1.0@1.0:fit": {
+              "residualRmsPawns": 3.2722124140197018,
+              "crossEntropy": 0.576565552642017,
+              "rawMinPawns": -5.742265300486583,
+              "count": 1024,
+              "smoothOutcomeMse": 0.28594246340900914,
+              "rawMaxPawns": 10.441133224690875
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave4/cubic-ranks-LR003-01/summary.json",
+      "sha256": "4c7b1cf0dc5ae317d51f4a660bf3a90601c0d1e6d633526cb7c2b595d102eb27",
+      "model": "W4-RESCUBIC-LR003",
+      "fitOnlyRankImportance": [
+        {
+          "rank": 3,
+          "removedMinusFullFitLoss": 0.08156496706949923
+        },
+        {
+          "rank": 5,
+          "removedMinusFullFitLoss": 0.039397926839062736
+        },
+        {
+          "rank": 2,
+          "removedMinusFullFitLoss": 0.004259941399447187
+        },
+        {
+          "rank": 9,
+          "removedMinusFullFitLoss": 0.004187377166364303
+        },
+        {
+          "rank": 13,
+          "removedMinusFullFitLoss": 0.0025394416485950977
+        },
+        {
+          "rank": 8,
+          "removedMinusFullFitLoss": 0.0015608093776006138
+        },
+        {
+          "rank": 10,
+          "removedMinusFullFitLoss": 0.0006318883860045865
+        },
+        {
+          "rank": 4,
+          "removedMinusFullFitLoss": 0.0005750267166660938
+        },
+        {
+          "rank": 7,
+          "removedMinusFullFitLoss": 0.0005461558833321778
+        },
+        {
+          "rank": 14,
+          "removedMinusFullFitLoss": 0.00024188086546994558
+        },
+        {
+          "rank": 12,
+          "removedMinusFullFitLoss": -0.00013570634602499965
+        },
+        {
+          "rank": 11,
+          "removedMinusFullFitLoss": -0.00018648467296300542
+        },
+        {
+          "rank": 6,
+          "removedMinusFullFitLoss": -0.0006914996172674437
+        },
+        {
+          "rank": 1,
+          "removedMinusFullFitLoss": -0.0008478559740024982
+        },
+        {
+          "rank": 0,
+          "removedMinusFullFitLoss": -0.001033003080370909
+        },
+        {
+          "rank": 15,
+          "removedMinusFullFitLoss": -0.0013913736204171911
+        }
+      ],
+      "variants": [
+        {
+          "count": 4,
+          "networkSha256": "c0ac8ac06b750271121b23f523f242919cd1cdfe6d4281588a91e60c8eb60b9c",
+          "ranks": [
+            2,
+            3,
+            5,
+            9
+          ]
+        },
+        {
+          "count": 8,
+          "networkSha256": "b028771b685082063c47819cf4c2bb8c9ef302964b404ef7d48104262b120067",
+          "ranks": [
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            13
+          ]
+        },
+        {
+          "count": 12,
+          "networkSha256": "b806e37f9bf45ab17948dc33f38e7c67fd5b77639c654b15659ebb15892e759e",
+          "ranks": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "count": 16,
+          "networkSha256": "423ecddbbff24c44614562e295b6692e6a2f3d1c898aac833e1ce5b773275a3f",
+          "ranks": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "metrics": {
+            "Gen32@1.0:evaluation": {
+              "rawMaxPawns": 5.126466363869927,
+              "smoothOutcomeMse": 0.13484834711495358,
+              "count": 1024,
+              "rawMinPawns": -3.9154871215187566,
+              "crossEntropy": 0.6429540476445533,
+              "residualRmsPawns": 2.189706551484556
+            },
+            "Gen32@1.0:fit": {
+              "rawMaxPawns": 4.874243151871838,
+              "smoothOutcomeMse": 0.12629251795019203,
+              "count": 1024,
+              "rawMinPawns": -3.9750645340082276,
+              "crossEntropy": 0.6653542513257861,
+              "residualRmsPawns": 1.9616839900833771
+            },
+            "ranks12-scale0.5@1.0:evaluation": {
+              "rawMaxPawns": 6.071339394929045,
+              "smoothOutcomeMse": 0.11442720006552075,
+              "count": 1024,
+              "rawMinPawns": -3.767024245107337,
+              "crossEntropy": 0.6293982468631132,
+              "residualRmsPawns": 2.1094852805030038
+            },
+            "ranks12-scale0.5@1.0:fit": {
+              "rawMaxPawns": 5.610168829225865,
+              "smoothOutcomeMse": 0.1059898368903037,
+              "count": 1024,
+              "rawMinPawns": -3.6656739470215287,
+              "crossEntropy": 0.6493240251792789,
+              "residualRmsPawns": 1.9028036276666729
+            },
+            "ranks12-scale1.0@1.0:evaluation": {
+              "rawMaxPawns": 7.383186828296744,
+              "smoothOutcomeMse": 0.11045113667754732,
+              "count": 1024,
+              "rawMinPawns": -3.871761033977596,
+              "crossEntropy": 0.6292386071697496,
+              "residualRmsPawns": 2.0476648954361636
+            },
+            "ranks12-scale1.0@1.0:fit": {
+              "rawMaxPawns": 6.346094506579892,
+              "smoothOutcomeMse": 0.10146245599019314,
+              "count": 1024,
+              "rawMinPawns": -3.3562833600348303,
+              "crossEntropy": 0.6462525115154487,
+              "residualRmsPawns": 1.862705554539067
+            },
+            "ranks16-scale0.5@1.0:evaluation": {
+              "rawMaxPawns": 6.18498555287234,
+              "smoothOutcomeMse": 0.11563974734024692,
+              "count": 1024,
+              "rawMinPawns": -3.8094199109515388,
+              "crossEntropy": 0.6304195448778607,
+              "residualRmsPawns": 2.1151471532880457
+            },
+            "ranks16-scale0.5@1.0:fit": {
+              "rawMaxPawns": 5.598003360425149,
+              "smoothOutcomeMse": 0.10762251678033931,
+              "count": 1024,
+              "rawMinPawns": -3.571834262108515,
+              "crossEntropy": 0.650690175683159,
+              "residualRmsPawns": 1.910244943623886
+            },
+            "ranks16-scale1.0@1.0:evaluation": {
+              "rawMaxPawns": 7.422986662389874,
+              "smoothOutcomeMse": 0.11136317164262542,
+              "count": 1024,
+              "rawMinPawns": -4.340998249784412,
+              "crossEntropy": 0.630302837423816,
+              "residualRmsPawns": 2.058128882342681
+            },
+            "ranks16-scale1.0@1.0:fit": {
+              "rawMaxPawns": 6.32176356897846,
+              "smoothOutcomeMse": 0.1034057832277114,
+              "count": 1024,
+              "rawMinPawns": -3.1897111473411743,
+              "crossEntropy": 0.6480378041023694,
+              "residualRmsPawns": 1.8756651280187828
+            },
+            "ranks4-scale0.5@1.0:evaluation": {
+              "rawMaxPawns": 5.963045514772253,
+              "smoothOutcomeMse": 0.11306986450732293,
+              "count": 1024,
+              "rawMinPawns": -3.8662814666793754,
+              "crossEntropy": 0.6286344200441305,
+              "residualRmsPawns": 2.110233245514665
+            },
+            "ranks4-scale0.5@1.0:fit": {
+              "rawMaxPawns": 5.501488739836774,
+              "smoothOutcomeMse": 0.10793644154298576,
+              "count": 1024,
+              "rawMinPawns": -3.6835377705625088,
+              "crossEntropy": 0.6505071981332273,
+              "residualRmsPawns": 1.9052003313447994
+            },
+            "ranks4-scale1.0@1.0:evaluation": {
+              "rawMaxPawns": 7.416979843944787,
+              "smoothOutcomeMse": 0.10730450864065166,
+              "count": 1024,
+              "rawMinPawns": -3.8170758118399943,
+              "crossEntropy": 0.6256471576603422,
+              "residualRmsPawns": 2.048062033571349
+            },
+            "ranks4-scale1.0@1.0:fit": {
+              "rawMaxPawns": 6.128734327801712,
+              "smoothOutcomeMse": 0.10489430247124584,
+              "count": 1024,
+              "rawMinPawns": -3.39201100711679,
+              "crossEntropy": 0.6489437214562264,
+              "residualRmsPawns": 1.8679616586331849
+            },
+            "ranks8-scale0.5@1.0:evaluation": {
+              "rawMaxPawns": 5.9703497353094335,
+              "smoothOutcomeMse": 0.11412731486960179,
+              "count": 1024,
+              "rawMinPawns": -3.8148679811386694,
+              "crossEntropy": 0.6292507837621386,
+              "residualRmsPawns": 2.1082702892586482
+            },
+            "ranks8-scale0.5@1.0:fit": {
+              "rawMaxPawns": 5.601449026128013,
+              "smoothOutcomeMse": 0.10597974346112815,
+              "count": 1024,
+              "rawMinPawns": -3.658114683258828,
+              "crossEntropy": 0.6497054271395147,
+              "residualRmsPawns": 1.8983631266074363
+            },
+            "ranks8-scale1.0@1.0:evaluation": {
+              "rawMaxPawns": 7.314010591498658,
+              "smoothOutcomeMse": 0.11125980048988923,
+              "count": 1024,
+              "rawMinPawns": -3.7142488407585823,
+              "crossEntropy": 0.62885301787622,
+              "residualRmsPawns": 2.0461881068034327
+            },
+            "ranks8-scale1.0@1.0:fit": {
+              "rawMaxPawns": 6.328654900384188,
+              "smoothOutcomeMse": 0.10179762401469275,
+              "count": 1024,
+              "rawMinPawns": -3.4158162992782026,
+              "crossEntropy": 0.6471303230367679,
+              "residualRmsPawns": 1.8553002280263817
+            }
+          },
+          "source": "BT4"
+        },
+        {
+          "metrics": {
+            "Gen32@1.0:evaluation": {
+              "rawMaxPawns": 9.693355922987287,
+              "smoothOutcomeMse": 0.34083877432007775,
+              "count": 1024,
+              "rawMinPawns": -7.879687659269514,
+              "crossEntropy": 0.5982402406571896,
+              "residualRmsPawns": 3.3103520689251966
+            },
+            "Gen32@1.0:fit": {
+              "rawMaxPawns": 7.254998153340367,
+              "smoothOutcomeMse": 0.3036090769173005,
+              "count": 1024,
+              "rawMinPawns": -6.820212120889021,
+              "crossEntropy": 0.5974912110359241,
+              "residualRmsPawns": 3.3931899903522345
+            },
+            "ranks12-scale0.5@1.0:evaluation": {
+              "rawMaxPawns": 10.120960397340992,
+              "smoothOutcomeMse": 0.3290499142732438,
+              "count": 1024,
+              "rawMinPawns": -5.066416815161199,
+              "crossEntropy": 0.5867994721523775,
+              "residualRmsPawns": 3.3013138735730547
+            },
+            "ranks12-scale0.5@1.0:fit": {
+              "rawMaxPawns": 9.099536485790326,
+              "smoothOutcomeMse": 0.2870956667344783,
+              "count": 1024,
+              "rawMinPawns": -6.108452460554539,
+              "crossEntropy": 0.5793090925092749,
+              "residualRmsPawns": 3.331115987734613
+            },
+            "ranks12-scale1.0@1.0:evaluation": {
+              "rawMaxPawns": 10.548564871694698,
+              "smoothOutcomeMse": 0.3297211239106564,
+              "count": 1024,
+              "rawMinPawns": -5.485260906361009,
+              "crossEntropy": 0.5875630992826302,
+              "residualRmsPawns": 3.3129659071443043
+            },
+            "ranks12-scale1.0@1.0:fit": {
+              "rawMaxPawns": 10.944074818240285,
+              "smoothOutcomeMse": 0.2844876260761517,
+              "count": 1024,
+              "rawMinPawns": -5.396692800220057,
+              "crossEntropy": 0.5775972060882193,
+              "residualRmsPawns": 3.2845862739086154
+            },
+            "ranks16-scale0.5@1.0:evaluation": {
+              "rawMaxPawns": 10.025605843789451,
+              "smoothOutcomeMse": 0.32582015754248506,
+              "count": 1024,
+              "rawMinPawns": -5.150764084439055,
+              "crossEntropy": 0.5868696414993181,
+              "residualRmsPawns": 3.3120973571200993
+            },
+            "ranks16-scale0.5@1.0:fit": {
+              "rawMaxPawns": 9.065039122447155,
+              "smoothOutcomeMse": 0.2884717016138569,
+              "count": 1024,
+              "rawMinPawns": -6.191929554103939,
+              "crossEntropy": 0.5814748946112793,
+              "residualRmsPawns": 3.3358265253886
+            },
+            "ranks16-scale1.0@1.0:evaluation": {
+              "rawMaxPawns": 10.357855764591616,
+              "smoothOutcomeMse": 0.324216444253798,
+              "count": 1024,
+              "rawMinPawns": -5.653955444916723,
+              "crossEntropy": 0.595921243016693,
+              "residualRmsPawns": 3.3346094186848476
+            },
+            "ranks16-scale1.0@1.0:fit": {
+              "rawMaxPawns": 10.875080091553944,
+              "smoothOutcomeMse": 0.2833230405598723,
+              "count": 1024,
+              "rawMinPawns": -5.563646987318855,
+              "crossEntropy": 0.5836914720071301,
+              "residualRmsPawns": 3.2932291233675115
+            },
+            "ranks4-scale0.5@1.0:evaluation": {
+              "rawMaxPawns": 10.252803514762952,
+              "smoothOutcomeMse": 0.337742792117317,
+              "count": 1024,
+              "rawMinPawns": -5.054497878582518,
+              "crossEntropy": 0.5914912506823785,
+              "residualRmsPawns": 3.276330406153778
+            },
+            "ranks4-scale0.5@1.0:fit": {
+              "rawMaxPawns": 9.209070813916973,
+              "smoothOutcomeMse": 0.29296298781453645,
+              "count": 1024,
+              "rawMinPawns": -6.076436570628034,
+              "crossEntropy": 0.5862339120963951,
+              "residualRmsPawns": 3.323105446359718
+            },
+            "ranks4-scale1.0@1.0:evaluation": {
+              "rawMaxPawns": 10.812251106538618,
+              "smoothOutcomeMse": 0.34646019755919477,
+              "count": 1024,
+              "rawMinPawns": -5.461423033203649,
+              "crossEntropy": 0.5968810422065732,
+              "residualRmsPawns": 3.2610150596529865
+            },
+            "ranks4-scale1.0@1.0:fit": {
+              "rawMaxPawns": 11.163143474493582,
+              "smoothOutcomeMse": 0.2957794444557441,
+              "count": 1024,
+              "rawMinPawns": -5.332661020367047,
+              "crossEntropy": 0.5868901394591614,
+              "residualRmsPawns": 3.2677843059092164
+            },
+            "ranks8-scale0.5@1.0:evaluation": {
+              "rawMaxPawns": 10.056467875995457,
+              "smoothOutcomeMse": 0.33413375700375064,
+              "count": 1024,
+              "rawMinPawns": -5.060878609315457,
+              "crossEntropy": 0.5904057300920813,
+              "residualRmsPawns": 3.2997060149185202
+            },
+            "ranks8-scale0.5@1.0:fit": {
+              "rawMaxPawns": 9.104976043748216,
+              "smoothOutcomeMse": 0.2889503540320714,
+              "count": 1024,
+              "rawMinPawns": -6.053770296479175,
+              "crossEntropy": 0.5801343223658035,
+              "residualRmsPawns": 3.3250520671421615
+            },
+            "ranks8-scale1.0@1.0:evaluation": {
+              "rawMaxPawns": 10.419579829003629,
+              "smoothOutcomeMse": 0.34073312826965124,
+              "count": 1024,
+              "rawMinPawns": -5.474184494669525,
+              "crossEntropy": 0.6014506379098543,
+              "residualRmsPawns": 3.3112895697350053
+            },
+            "ranks8-scale1.0@1.0:fit": {
+              "rawMaxPawns": 10.954953934156068,
+              "smoothOutcomeMse": 0.2886770688409685,
+              "count": 1024,
+              "rawMinPawns": -5.287328472069329,
+              "crossEntropy": 0.5795579738111741,
+              "residualRmsPawns": 3.272872169822207
+            }
+          },
+          "source": "CP"
+        }
+      ]
+    }
+  ]
+}

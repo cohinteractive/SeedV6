@@ -224,9 +224,42 @@ loaded and played96 independently verified legal smoke plies. Twelve deliberate
 eight-ply caps are excluded from strength and preserved, never converted to draws.
 The first diagnostic build used an int for the long generation field; compilation
 rejected it before execution and the corrected build/tests passed. Reports/logs
-are retained. No application/runtime distribution changes or build increment.
+are retained. No application distribution changes or build increment.
+
+Implementation33535b4 and `wave4-average-runtime.json` now freeze all averaging
+runtime jars. The first diagnostic's jar was not retained before a later build;
+its identity was explicitly left unknown. A second run under the frozen runtime
+reproduces every structured metric and binding exactly (`wave4-average-reproduction.json`).
+No historical runtime identity was reconstructed. Eight actual residual means,
+both rates/full-and-half, then pass6333-position and48 paired-search oracles each:
+zero integer/search differences, maximum raw error1.1e-14. This resolves averaging
+readiness for subsequent development games, not chess superiority. Full results
+and clean balanced timing are in `wave4-average-validation.json`.
+
+## Bounded cubic-rank investigation
+
+Cubic's equal-node results and persistent inference cost motivate reducing active
+polynomial components before any new substantial training. The fixed diagnostic
+`wave4-cubic-rank-diagnostic-plan.json` ranks each of16 components by its removal's
+full-prediction CE effect on the first1024 positions/source, then evaluates retained
+4/8/12/16 sets on the second halves, without reranking. Both rate arms' eight-model
+means are included. This is reused development selection, not independent evidence.
+
+`wave4-cubic-rank-results.json` and `wave4-rank-runtime.json` bind actual outputs,
+the source delta and runtime jars before execution. Full16 exactly reproduces the
+averaged input's payload hash and loss. Independent Python means agree within1.5e-15;
+original CP invalid-position sensitivity remains. LR001 full rank4 CE is
+.62457/.59877 versus rank16 .62750/.59950. LR003 full rank12 is .62924/.58756 versus
+rank16 .63030/.59592. At half scale, rank4 improves BT4 but degrades CP for both rates.
+This supports a measured cost/quality tradeoff, not blanket harmless pruning.
+
+Zeroing heads alone does not make the current evaluator cheaper. A separate isolated
+research sparse-rank prototype is being prepared, retaining the existing period64
+rebuild, rounding guard and full-rank behavior for nonfinite numerical bounds.
+It must pass actual-model score parity and balanced transition-cost checks before
+any search integration is considered. No core evaluator, codec, optimizer or ordinary
+application path has been changed. No pruning strength protocol is yet admitted.
 
 Next: finish the unchanged preselected-Best equal-time screen. Then admit focused
 direct comparisons against both trained BRE controls, full/half calibration and
-mean variants where warranted. Actual averaged-model cache/search oracles must
-pass before strength admission. Do not reopen the completed primary-node budget.
+mean/pruned variants where warranted. Do not reopen the completed primary-node budget.

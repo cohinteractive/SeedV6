@@ -1,0 +1,10 @@
+{
+  "id": "wave4-averaging-reproduction-v1",
+  "runtime": "wave4-average-runtime.json",
+  "sourceCommit": "33535b4",
+  "firstRun": "raw/wave4/average-diagnostic-01",
+  "frozenReproduction": "raw/wave4/average-diagnostic-02",
+  "allStructuredMetricsAndBindingsExactlyEqual": true,
+  "reportSha256": "ba7dac82d56867afade52a6589ca6624a93a63e443120f5bee1115f45a1e0c2d",
+  "scope": "Earlier run had no separately retained runtime; frozen source33535b4 reproduces every metric/binding exactly. Original evidence preserved."
+}
