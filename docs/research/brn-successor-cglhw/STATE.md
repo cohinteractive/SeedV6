@@ -93,13 +93,22 @@ Current unit: execute the prospective Wave4 development assessment in
 WAVE4-ASSESSMENT. Audit/freeze/parity/calibration are complete. The model plan binds
 nine distinct Latest/Best endpoints; Best63 differs from Latest64 in three residual
 arms. Both continued BRE rates are mandatory controls. Fixed-node primary288 games
-and preselected-Best100ms192 games are admitted on sixteen fresh development roots.
+are CLOSED,35656 moves independently verified, no failures/caps/missing pairs.
+CUBIC001 Best63 and CUBIC003 Latest64 score68.75% against Gen32, but BRE003 also
+scores68.75%; all residual-minus-BRE003 intervals include zero. BRE001 scores40.625%
+despite better validation. These are small selected development comparisons.
+The preselected-Best100ms192-game protocol is active on the same sixteen roots.
 Exact plans: `wave4-primary-node-plan.json`, `wave4-primary-clock-plan.json`;
 runtime: `wave4-trained-runtime.json`; evidence under `raw/wave4`.
 Resume only the active immutable plans/receipts, inspecting errors and batch limits;
 never enlarge closed W3 protocols. Then analyze rate, Best/latest, inference cost and
 common-opponent differences; admit focused direct comparisons against both trained
-BRE controls and mechanism/calibration diagnostics as warranted. Fresh confirmation
+BRE controls and mechanism/calibration diagnostics as warranted. A fixed last-eight
+checkpoint average improves residual development prediction at unchanged inference
+size/cost; explicit hash/ancestry-bound research loading and12 tests plus96 legal
+smoke plies pass. No optimizer/checkpoint is changed. See the average plans/results;
+actual averaged-model cache/search oracles remain required before strength games.
+Primary protocols continue using frozen original jars. Fresh confirmation
 partition1 remains unused. No architecture decision or further training is inferred
 from loss or an initial equal-time defeat.
 

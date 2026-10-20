@@ -1,0 +1,892 @@
+{
+  "planHash": "af94c3d64eac548114b42d05267da6038b5cbf1fff0eb5b7a384d7071fd86cf8",
+  "validatedMoves": 35656,
+  "terminations": {
+    "WHITE_CHECKMATES_BLACK": 138,
+    "THREEFOLD_REPETITION": 20,
+    "BLACK_CHECKMATES_WHITE": 107,
+    "FIFTY_MOVE_RULE": 12,
+    "INSUFFICIENT_MATERIAL": 11
+  },
+  "failures": [],
+  "failedAttemptFiles": [],
+  "models": [
+    {
+      "name": "W4-RESGATE-LR001-g63",
+      "wins": 15,
+      "draws": 5,
+      "losses": 12,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.546875,
+      "pairStandardError": 0.09190900731157964,
+      "descriptiveNormal95": [
+        0.36673334566930393,
+        0.7270166543306961
+      ],
+      "pairScores": [
+        0.5,
+        0.25,
+        0.5,
+        0.25,
+        0.5,
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        0.5,
+        0.75,
+        1.0,
+        0.75,
+        0.0,
+        0.0,
+        0.75
+      ],
+      "illustrativeBonferroniNormal95": [
+        0.2920185564593776,
+        0.8017314435406224
+      ]
+    },
+    {
+      "name": "W4-RESGATE-LR001-g64",
+      "wins": 12,
+      "draws": 7,
+      "losses": 13,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.484375,
+      "pairStandardError": 0.07022564079451322,
+      "descriptiveNormal95": [
+        0.3467327440427541,
+        0.6220172559572459
+      ],
+      "pairScores": [
+        0.75,
+        0.75,
+        0.25,
+        0.75,
+        0.5,
+        0.25,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.0,
+        0.0,
+        0.5,
+        0.5,
+        0.75,
+        0.25
+      ],
+      "illustrativeBonferroniNormal95": [
+        0.28964482521335555,
+        0.6791051747866444
+      ]
+    },
+    {
+      "name": "W4-RESGATE-LR003-g64",
+      "wins": 15,
+      "draws": 6,
+      "losses": 11,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.5625,
+      "pairStandardError": 0.0739509972887452,
+      "descriptiveNormal95": [
+        0.41755604531405943,
+        0.7074439546859406
+      ],
+      "pairScores": [
+        0.25,
+        1.0,
+        0.5,
+        0.75,
+        1.0,
+        0.0,
+        0.75,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.25,
+        0.75,
+        0.25,
+        0.5,
+        0.5
+      ],
+      "illustrativeBonferroniNormal95": [
+        0.35743970486049104,
+        0.767560295139509
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g63",
+      "wins": 19,
+      "draws": 6,
+      "losses": 7,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.6875,
+      "pairStandardError": 0.07739239842086129,
+      "descriptiveNormal95": [
+        0.5358108990951118,
+        0.8391891009048882
+      ],
+      "pairScores": [
+        0.5,
+        1.0,
+        0.5,
+        1.0,
+        1.0,
+        0.75,
+        1.0,
+        1.0,
+        0.75,
+        0.5,
+        0.25,
+        0.5,
+        0.0,
+        0.75,
+        0.5,
+        1.0
+      ],
+      "illustrativeBonferroniNormal95": [
+        0.47289697037795597,
+        0.902103029622044
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g64",
+      "wins": 20,
+      "draws": 2,
+      "losses": 10,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.65625,
+      "pairStandardError": 0.07864410870073697,
+      "descriptiveNormal95": [
+        0.5021075469465556,
+        0.8103924530534444
+      ],
+      "pairScores": [
+        1.0,
+        0.5,
+        0.0,
+        0.5,
+        1.0,
+        0.5,
+        1.0,
+        0.5,
+        1.0,
+        1.0,
+        1.0,
+        0.5,
+        0.5,
+        0.25,
+        0.75,
+        0.5
+      ],
+      "illustrativeBonferroniNormal95": [
+        0.4381760762882081,
+        0.8743239237117919
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g63",
+      "wins": 18,
+      "draws": 1,
+      "losses": 13,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.578125,
+      "pairStandardError": 0.08452918011945144,
+      "descriptiveNormal95": [
+        0.4124478069658752,
+        0.7438021930341248
+      ],
+      "pairScores": [
+        0.5,
+        0.5,
+        0.0,
+        0.5,
+        0.5,
+        0.0,
+        1.0,
+        0.25,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "illustrativeBonferroniNormal95": [
+        0.34373223643096196,
+        0.812517763569038
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g64",
+      "wins": 19,
+      "draws": 6,
+      "losses": 7,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.6875,
+      "pairStandardError": 0.0739509972887452,
+      "descriptiveNormal95": [
+        0.5425560453140594,
+        0.8324439546859406
+      ],
+      "pairScores": [
+        0.75,
+        0.5,
+        0.75,
+        0.75,
+        1.0,
+        1.0,
+        1.0,
+        0.5,
+        0.5,
+        0.0,
+        0.75,
+        0.25,
+        0.75,
+        1.0,
+        0.5,
+        1.0
+      ],
+      "illustrativeBonferroniNormal95": [
+        0.48243970486049104,
+        0.892560295139509
+      ]
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g64",
+      "wins": 10,
+      "draws": 6,
+      "losses": 16,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.40625,
+      "pairStandardError": 0.07864410870073697,
+      "descriptiveNormal95": [
+        0.25210754694655557,
+        0.5603924530534444
+      ],
+      "pairScores": [
+        0.0,
+        0.5,
+        0.5,
+        0.5,
+        0.75,
+        0.75,
+        0.5,
+        0.25,
+        0.25,
+        0.0,
+        0.75,
+        0.5,
+        0.25,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "illustrativeBonferroniNormal95": [
+        0.1881760762882081,
+        0.6243239237117919
+      ]
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g64",
+      "wins": 20,
+      "draws": 4,
+      "losses": 8,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.6875,
+      "pairStandardError": 0.08068715304598785,
+      "descriptiveNormal95": [
+        0.5293531800298639,
+        0.8456468199701361
+      ],
+      "pairScores": [
+        0.0,
+        1.0,
+        0.5,
+        1.0,
+        1.0,
+        0.5,
+        0.5,
+        0.5,
+        1.0,
+        1.0,
+        1.0,
+        0.25,
+        1.0,
+        0.75,
+        0.5,
+        0.5
+      ],
+      "illustrativeBonferroniNormal95": [
+        0.46376087511743214,
+        0.9112391248825679
+      ]
+    }
+  ],
+  "commonOpponentContrasts": [
+    {
+      "left": "W4-RESGATE-LR001-g63",
+      "right": "W4-RESGATE-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.0625,
+      "pairStandardError": 0.12603736218545145,
+      "descriptiveNormal95": [
+        -0.18453322988348483,
+        0.30953322988348486
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g63",
+      "right": "W4-RESGATE-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.015625,
+      "pairStandardError": 0.10069743769497481,
+      "descriptiveNormal95": [
+        -0.21299197788215063,
+        0.18174197788215063
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g63",
+      "right": "W4-RESCUBIC-LR001-g63",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.140625,
+      "pairStandardError": 0.12283277504395966,
+      "descriptiveNormal95": [
+        -0.38137723908616095,
+        0.10012723908616092
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g63",
+      "right": "W4-RESCUBIC-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.109375,
+      "pairStandardError": 0.1019823054505045,
+      "descriptiveNormal95": [
+        -0.3092603186829888,
+        0.09051031868298881
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g63",
+      "right": "W4-RESCUBIC-LR003-g63",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.03125,
+      "pairStandardError": 0.08801929239282337,
+      "descriptiveNormal95": [
+        -0.2037678130899338,
+        0.1412678130899338
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g63",
+      "right": "W4-RESCUBIC-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.140625,
+      "pairStandardError": 0.1290363926378911,
+      "descriptiveNormal95": [
+        -0.3935363295702666,
+        0.11228632957026657
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g63",
+      "right": "W4-BRE-CONTROL-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.140625,
+      "pairStandardError": 0.109375,
+      "descriptiveNormal95": [
+        -0.07374999999999998,
+        0.355
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g63",
+      "right": "W4-BRE-CONTROL-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.140625,
+      "pairStandardError": 0.12700219404272772,
+      "descriptiveNormal95": [
+        -0.38954930032374635,
+        0.10829930032374632
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g64",
+      "right": "W4-RESGATE-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.078125,
+      "pairStandardError": 0.08452918011945146,
+      "descriptiveNormal95": [
+        -0.24380219303412484,
+        0.08755219303412484
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g64",
+      "right": "W4-RESCUBIC-LR001-g63",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.203125,
+      "pairStandardError": 0.08297448779594846,
+      "descriptiveNormal95": [
+        -0.365754996080059,
+        -0.040495003919941014
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g64",
+      "right": "W4-RESCUBIC-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.171875,
+      "pairStandardError": 0.10134190787461358,
+      "descriptiveNormal95": [
+        -0.3705051394342426,
+        0.026755139434242625
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g64",
+      "right": "W4-RESCUBIC-LR003-g63",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.09375,
+      "pairStandardError": 0.12263385543967864,
+      "descriptiveNormal95": [
+        -0.33411235666177014,
+        0.14661235666177014
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g64",
+      "right": "W4-RESCUBIC-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.203125,
+      "pairStandardError": 0.10757446548786566,
+      "descriptiveNormal95": [
+        -0.4139709523562167,
+        0.007720952356216698
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g64",
+      "right": "W4-BRE-CONTROL-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.078125,
+      "pairStandardError": 0.1305412410887839,
+      "descriptiveNormal95": [
+        -0.17773583253401642,
+        0.3339858325340164
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g64",
+      "right": "W4-BRE-CONTROL-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.203125,
+      "pairStandardError": 0.105125792704106,
+      "descriptiveNormal95": [
+        -0.40917155370004776,
+        0.002921553700047763
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-g64",
+      "right": "W4-RESCUBIC-LR001-g63",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.125,
+      "pairStandardError": 0.09128709291752768,
+      "descriptiveNormal95": [
+        -0.30392270211835426,
+        0.05392270211835426
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-g64",
+      "right": "W4-RESCUBIC-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.09375,
+      "pairStandardError": 0.09092980351164665,
+      "descriptiveNormal95": [
+        -0.2719724148828274,
+        0.08447241488282742
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-g64",
+      "right": "W4-RESCUBIC-LR003-g63",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.015625,
+      "pairStandardError": 0.09538504752667824,
+      "descriptiveNormal95": [
+        -0.20257969315228935,
+        0.17132969315228935
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-g64",
+      "right": "W4-RESCUBIC-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.125,
+      "pairStandardError": 0.10704360482220941,
+      "descriptiveNormal95": [
+        -0.33480546545153045,
+        0.08480546545153045
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-g64",
+      "right": "W4-BRE-CONTROL-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.15625,
+      "pairStandardError": 0.10174262872562316,
+      "descriptiveNormal95": [
+        -0.04316555230222138,
+        0.3556655523022214
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-g64",
+      "right": "W4-BRE-CONTROL-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.125,
+      "pairStandardError": 0.06454972243679029,
+      "descriptiveNormal95": [
+        -0.251517455976109,
+        0.0015174559761089723
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-g63",
+      "right": "W4-RESCUBIC-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.03125,
+      "pairStandardError": 0.11151186409227197,
+      "descriptiveNormal95": [
+        -0.18731325362085305,
+        0.24981325362085305
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-g63",
+      "right": "W4-RESCUBIC-LR003-g63",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.109375,
+      "pairStandardError": 0.12283277504395966,
+      "descriptiveNormal95": [
+        -0.13137723908616092,
+        0.35012723908616095
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-g63",
+      "right": "W4-RESCUBIC-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.0,
+      "pairStandardError": 0.09128709291752768,
+      "descriptiveNormal95": [
+        -0.17892270211835426,
+        0.17892270211835426
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-g63",
+      "right": "W4-BRE-CONTROL-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.28125,
+      "pairStandardError": 0.09092980351164665,
+      "descriptiveNormal95": [
+        0.10302758511717258,
+        0.4594724148828274
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-g63",
+      "right": "W4-BRE-CONTROL-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.0,
+      "pairStandardError": 0.11180339887498948,
+      "descriptiveNormal95": [
+        -0.21913466179497937,
+        0.21913466179497937
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-g64",
+      "right": "W4-RESCUBIC-LR003-g63",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.078125,
+      "pairStandardError": 0.06738705829014945,
+      "descriptiveNormal95": [
+        -0.0539536342486929,
+        0.2102036342486929
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-g64",
+      "right": "W4-RESCUBIC-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.03125,
+      "pairStandardError": 0.11608859763129194,
+      "descriptiveNormal95": [
+        -0.25878365135733217,
+        0.1962836513573322
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-g64",
+      "right": "W4-BRE-CONTROL-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.25,
+      "pairStandardError": 0.11636866703140784,
+      "descriptiveNormal95": [
+        0.02191741261844063,
+        0.4780825873815594
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-g64",
+      "right": "W4-BRE-CONTROL-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.03125,
+      "pairStandardError": 0.10427078130201832,
+      "descriptiveNormal95": [
+        -0.2356207313519559,
+        0.1731207313519559
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR003-g63",
+      "right": "W4-RESCUBIC-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.109375,
+      "pairStandardError": 0.13301149308111185,
+      "descriptiveNormal95": [
+        -0.37007752643897923,
+        0.15132752643897923
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR003-g63",
+      "right": "W4-BRE-CONTROL-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.171875,
+      "pairStandardError": 0.12230160379842395,
+      "descriptiveNormal95": [
+        -0.06783614344491093,
+        0.41158614344491096
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR003-g63",
+      "right": "W4-BRE-CONTROL-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.109375,
+      "pairStandardError": 0.1019823054505045,
+      "descriptiveNormal95": [
+        -0.3092603186829888,
+        0.09051031868298881
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR003-g64",
+      "right": "W4-BRE-CONTROL-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.28125,
+      "pairStandardError": 0.07864410870073697,
+      "descriptiveNormal95": [
+        0.12710754694655554,
+        0.43539245305344443
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR003-g64",
+      "right": "W4-BRE-CONTROL-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.0,
+      "pairStandardError": 0.11410886614690961,
+      "descriptiveNormal95": [
+        -0.22365337764794282,
+        0.22365337764794282
+      ]
+    },
+    {
+      "left": "W4-BRE-CONTROL-LR001-g64",
+      "right": "W4-BRE-CONTROL-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.28125,
+      "pairStandardError": 0.10673907047874581,
+      "descriptiveNormal95": [
+        -0.4904585781383418,
+        -0.07204142186165821
+      ]
+    }
+  ],
+  "sameRootSearch": [
+    {
+      "name": "W4-RESGATE-LR001-g63",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 9,
+      "meanDepthDifference": 0.125,
+      "lessEqualMoreDepth": [
+        0,
+        14,
+        2
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 5.519620669412426,
+      "medianNpsRatio": 0.18182261126079077
+    },
+    {
+      "name": "W4-RESGATE-LR001-g64",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 10,
+      "meanDepthDifference": 0.0625,
+      "lessEqualMoreDepth": [
+        0,
+        15,
+        1
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.561797896951576,
+      "medianNpsRatio": 0.6403762150848993
+    },
+    {
+      "name": "W4-RESGATE-LR003-g64",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 12,
+      "meanDepthDifference": 0,
+      "lessEqualMoreDepth": [
+        1,
+        14,
+        1
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.4854431128218093,
+      "medianNpsRatio": 0.6732006937115669
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g63",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 8,
+      "meanDepthDifference": 0.0625,
+      "lessEqualMoreDepth": [
+        0,
+        15,
+        1
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 4.10862859291815,
+      "medianNpsRatio": 0.24374884515187922
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g64",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 8,
+      "meanDepthDifference": -0.0625,
+      "lessEqualMoreDepth": [
+        2,
+        13,
+        1
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.3752803038751527,
+      "medianNpsRatio": 0.727137097486646
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g63",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 8,
+      "meanDepthDifference": -0.0625,
+      "lessEqualMoreDepth": [
+        1,
+        15,
+        0
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.3372182443830851,
+      "medianNpsRatio": 0.7478211357014087
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g64",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 9,
+      "meanDepthDifference": -0.125,
+      "lessEqualMoreDepth": [
+        2,
+        14,
+        0
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 2.872999721335925,
+      "medianNpsRatio": 0.388965708493727
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g64",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 7,
+      "meanDepthDifference": 0.0625,
+      "lessEqualMoreDepth": [
+        0,
+        15,
+        1
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 0.9656006906364969,
+      "medianNpsRatio": 1.0356415157545118
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g64",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 7,
+      "meanDepthDifference": 0.0625,
+      "lessEqualMoreDepth": [
+        0,
+        15,
+        1
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 0.9495168901940363,
+      "medianNpsRatio": 1.0532060784989663
+    }
+  ],
+  "id": "wave4-primary-node-results-v1",
+  "analysis": {
+    "path": "docs/research/brn-successor-cglhw/raw/wave4/primary-node-analysis.json",
+    "sha256": "a5ef5d923d1f12fb994243663ff320cf2bf765413b9af707f2e592818fb8763b"
+  },
+  "games": 288,
+  "status": "CLOSED: admitted288 games complete",
+  "interpretation": "Development only:16 shared paired openings, nine comparisons, no independent success claim. Node-screen initial roots are not JIT-warmed; do not treat their latency ratios as warmed inference cost.",
+  "multiplicityLimit": "Bonferroni normal intervals are illustrative at16 roots and do not resolve opening-family dependence or cumulative research selection."
+}

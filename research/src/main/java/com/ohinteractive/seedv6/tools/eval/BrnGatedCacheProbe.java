@@ -25,7 +25,7 @@ public final class BrnGatedCacheProbe {
         var plan=DataFiles.read(Path.of(args[0]),ModelPlan.class);
         var spec=plan.models().stream().filter(m->m.name().equals(candidate)).findFirst().orElseThrow();
         var snapshot=CheckpointStore.readSnapshot(Path.of(spec.root()),spec.checkpoint());
-        var model=((NetworkModel.BrnNext)snapshot.model()).model();
+        var model=((NetworkModel.BrnNext)BrnSuccessorMatch.loadModel(spec)).model();
         if(spec.correctionScale()!=null||spec.correctionAblation()!=null)
             model=BrnSuccessorVariants.correction(model,spec.correctionScale()==null?1:spec.correctionScale(),
                     spec.correctionAblation(),spec.constantGates());
@@ -64,6 +64,7 @@ public final class BrnGatedCacheProbe {
         result.put("plan",model.architecture().frozenBase()?"brn-successor-wave3-cache-oracle-v2":
                 "brn-successor-wave2-"+(cubic?"cubic":"gate")+"-cache-v1");result.put("manifest",snapshot.manifest());
         result.put("modelPlanId",plan.id());
+        if(spec.averagedInputs()!=null)result.put("averagedInputs",spec.averagedInputs());
         var effectiveBytes=new ByteArrayOutputStream();BrnNextCodec.writeModel(model,effectiveBytes);
         result.put("effectiveNetworkSha256",HexFormat.of().formatHex(DataFiles.digest().digest(effectiveBytes.toByteArray())));
         if(spec.correctionScale()!=null||spec.correctionAblation()!=null) {

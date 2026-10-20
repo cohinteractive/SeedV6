@@ -11,6 +11,39 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BrnSuccessorVariantsTest {
     @org.junit.jupiter.api.Test
+    void additiveAverageMatchesIndependentFunctionEnsembleWithoutExtraRuntimeStorage() throws Exception {
+        var trainer=new com.ohinteractive.seedv6.core.brnpair2.BrnPair2Trainer(.003);
+        var models=new java.util.ArrayList<com.ohinteractive.seedv6.training.model.NetworkModel>();
+        for(var board:BrnSuccessorAudit.boards().subList(0,8)) {
+            trainer.trainBatch(new long[][]{board},new double[]{.3},1);
+            models.add(new com.ohinteractive.seedv6.training.model.NetworkModel.BrnPair2(
+                    new com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model(trainer.snapshot())));
+        }
+        var average=BrnSuccessorVariants.average(models);var actual=BrnCheckpointAverageProbe.raw(average);
+        var functions=models.stream().map(BrnCheckpointAverageProbe::raw).toList();
+        for(int pass=0;pass<3;pass++)for(var board:BrnSuccessorAudit.boards()) {
+            double expected=0;for(var f:functions)expected+=f.applyAsDouble(board)/8;
+            assertEquals(expected,actual.applyAsDouble(board),1e-11);
+        }
+        var model=((com.ohinteractive.seedv6.training.model.NetworkModel.BrnPair2)average).model();
+        var source=((com.ohinteractive.seedv6.training.model.NetworkModel.BrnPair2)models.getFirst()).model();
+        assertEquals(source.immutablePrimitiveBytes(),model.immutablePrimitiveBytes());
+        assertEquals(source.newWorkspace().primitiveBytes(),model.newWorkspace().primitiveBytes());
+        assertSame(models.getFirst(),BrnSuccessorVariants.average(java.util.List.of(models.getFirst())));
+        assertThrows(IllegalArgumentException.class,()->BrnSuccessorVariants.average(java.util.List.of()));
+    }
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC"})
+    void averagePreservesZeroCorrectionAndRejectsMixedSchemas(BrnNextArchitecture kind) throws Exception {
+        var models=new java.util.ArrayList<com.ohinteractive.seedv6.training.model.NetworkModel>();
+        for(int seed=0;seed<8;seed++)models.add(new com.ohinteractive.seedv6.training.model.NetworkModel.BrnNext(
+                new BrnNextTrainer(kind,seed,.003).snapshot()));
+        var result=BrnCheckpointAverageProbe.raw(BrnSuccessorVariants.average(models));
+        var base=BrnNextBase.model().newWorkspace();
+        for(var board:BrnSuccessorAudit.boards())assertEquals(base.evaluatePawns(board),result.applyAsDouble(board),1e-12);
+        models.add(new com.ohinteractive.seedv6.training.model.NetworkModel.BrnPair2(BrnNextBase.model()));
+        assertThrows(IllegalArgumentException.class,()->BrnSuccessorVariants.average(models));
+    }
+    @org.junit.jupiter.api.Test
     void additiveInterpolationKeepsSingleTableCostAndPreservesSource() throws Exception {
         var trainer=new com.ohinteractive.seedv6.core.brnpair2.BrnPair2Trainer(.003);
         var boards=BrnSuccessorAudit.boards();

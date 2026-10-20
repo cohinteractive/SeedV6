@@ -37,6 +37,11 @@ confounds remain; equal exposure does not establish identical architectural tria
 | BRE-CONTROL-LR001 | 64 | 64 | 26 | 31/32 |
 | BRE-CONTROL-LR003 | 64 | 64 | 23 | — |
 
+Best63 contains31 additional generations,4063232 training positions and253952
+additional updates, while Latest64 contains32. The equal-exposure comparison uses
+Latest64; the Best comparison evaluates the GUI's practical selection rule. Do not
+describe a Best63-versus-BRE64 match as exactly matched training exposure.
+
 The higher rate reduces final training loss but worsens held-out loss. Mean matched
 .001-minus-.003 validation differences are −.002206(GATE),−.004416(CUBIC),−.002815(BRE).
 This supports lower-rate optimization for all families, not a residual-only effect.
@@ -147,3 +152,81 @@ All jobs use frozen build51 jars, one game,one worker/engine,no ponder,64MiB TT,
 768MiB JVM,ActiveProcessorCount1,BelowNormal, batches at most12 games/240seconds
 (finish current game). No substantive autonomous training. Inspect each batch before
 admitting its successor. Exact model/plans/runtime hashes and receipts are retained.
+
+## Primary fixed-node results (closed)
+
+All288 admitted games completed in24 bounded batches, no caps/failures/missing pairs.
+Independent python-chess replay verified35656 moves and every termination.
+`wave4-primary-node-results.json` binds full local analysis and paired contrasts.
+All candidates here use half-change; sixteen colour-reversed opening pairs each.
+
+| Candidate | W/D/L | Score | Descriptive paired95% interval |
+| --- | --- | --- | --- |
+| GATE-LR001 Best63 | 15/5/12 | 54.69% | 36.67–72.70% |
+| GATE-LR001 Latest64 | 12/7/13 | 48.44% | 34.67–62.20% |
+| GATE-LR00364 | 15/6/11 | 56.25% | 41.76–70.74% |
+| CUBIC-LR001 Best63 | 19/6/7 | 68.75% | 53.58–83.92% |
+| CUBIC-LR001 Latest64 | 20/2/10 | 65.63% | 50.21–81.04% |
+| CUBIC-LR003 Best63 | 18/1/13 | 57.81% | 41.24–74.38% |
+| CUBIC-LR003 Latest64 | 19/6/7 | 68.75% | 54.26–83.24% |
+| BRE-LR00164 | 10/6/16 | 40.63% | 25.21–56.04% |
+| BRE-LR00364 | 20/4/8 | 68.75% | 52.94–84.56% |
+
+Cubic's encouraging equal-node point estimates do not separate it from the additive
+LR003 control. The better validation rate does not select the stronger BRE in this
+small chess screen. Within the same roots, BRE001 minus BRE003 is −28.125 percentage
+points (unadjusted paired interval−49.05..−7.20); selection/multiplicity/opening
+dependence prevent a definitive rate-strength claim. All residual-minus-BRE003
+contrast intervals include zero. The report also includes illustrative simultaneous
+Bonferroni-normal intervals; none is an independent programme acceptance test.
+
+Fixed-node launches do not perform the timed runner's JIT warmup. Batch-start model
+positions exhibit severely depressed apparent NPS (for example GATE001 Best63.182
+of baseline versus its Latest64.640). These are cold-launch timing artifacts, not
+valid warmed model-cost differences. Node budgets/legality remain intact; do not
+use this screen's latency ratios as practical throughput. The timed protocol warms
+all models before its budget and will provide separately qualified cost evidence.
+
+## Endpoint-stability diagnostic and inference-only averaging
+
+Nonmonotonic learning curves and distinct Best/latest motivated a predetermined
+uniform last-eight window57..64 for **all six arms**, before inspecting primary
+match outcomes. No window/rate was fitted to chess results. The plan is
+`wave4-average-diagnostic-plan.json`;48 source checkpoint pairs were copied and
+hash-verified into `raw/wave4/average-inputs-01`. No owner files were changed.
+
+`BrnCheckpointAverageProbe` compares latest, parameter average and functional
+ensemble on the same consumed development panels, both full and half change.
+`wave4-average-diagnostic-results.json` binds provenance, parameter/function mean
+differences, independent CE reproduction and validity sensitivity. Parameter means
+retain one ordinary model's size/runtime; the eight-model functional ensemble is
+only a diagnostic oracle. No optimizer is averaged, reset or exported, and these
+inference variants are not new trainable checkpoints or continuation parents.
+
+All four residual parameter means improve BT4 and CP full-prediction CE versus
+their Latest64. Full GATE001 mean gives .62752/.57893 and GATE003 .62871/.57601;
+CUBIC001 .62750/.59950 and CUBIC003 .63030/.59592. BRE means improve BT4, while
+BRE001 CP worsens (.59332→.59649); BRE003 CP improves (.60370→.59627).
+Thus smoothing is useful enough to test, not an expressive-only improvement.
+For BRE, compiled-table averaging agrees with the independent functional ensemble
+within1.8e-15. Nonlinear parameter means are different functions: maximum raw
+discrepancy reaches.625 pawns for CUBIC003; their actual measured losses, not ensemble
+equivalence, govern. Independent Python CE agrees within1.4e-15;21 invalid CP rows
+remain explicitly stratified. No new generalization/strength claim follows.
+
+Research match loading now supports an explicit eight-checkpoint mean with exact
+ingredient hashes, consecutive parent/generation/update checks and latest-anchor
+identity. Effective network hash and every ingredient are retained in bindings.
+Existing plans without averaging retain their semantics. Tests verify additive
+function equivalence, unchanged runtime storage, frozen-base preservation, schema
+and identity failures;12 targeted JUnit cases pass. All six actual averaged models
+loaded and played96 independently verified legal smoke plies. Twelve deliberate
+eight-ply caps are excluded from strength and preserved, never converted to draws.
+The first diagnostic build used an int for the long generation field; compilation
+rejected it before execution and the corrected build/tests passed. Reports/logs
+are retained. No application/runtime distribution changes or build increment.
+
+Next: finish the unchanged preselected-Best equal-time screen. Then admit focused
+direct comparisons against both trained BRE controls, full/half calibration and
+mean variants where warranted. Actual averaged-model cache/search oracles must
+pass before strength admission. Do not reopen the completed primary-node budget.

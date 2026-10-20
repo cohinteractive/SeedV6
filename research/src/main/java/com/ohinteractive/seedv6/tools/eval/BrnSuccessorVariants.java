@@ -5,11 +5,49 @@ import com.ohinteractive.seedv6.core.brnpair2.*;
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
+import java.util.List;
 import java.util.zip.CRC32;
+import com.ohinteractive.seedv6.training.model.NetworkModel;
 import static com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.*;
 
 /** Research-only immutable function variants. Never write back to a checkpoint or optimizer. */
 final class BrnSuccessorVariants {
+    /** Uniform adjacent-checkpoint parameter average for a diagnostic, never an Adam continuation.
+     * Pair2 averages compiled additive tables, hence its raw function is also the uniform mean.
+     * Nonlinear parameters share their original lineage basis; function equality is not assumed. */
+    static NetworkModel average(List<NetworkModel> sources) throws IOException {
+        if(sources.isEmpty()||sources.size()>32)throw new IllegalArgumentException("Average needs1..32 models");
+        var first=sources.getFirst();
+        if(sources.stream().anyMatch(m->m.architecture()!=first.architecture()))
+            throw new IllegalArgumentException("Average architecture mismatch");
+        if(sources.size()==1)return first;
+        double scale=1.0/sources.size();
+        if(first instanceof NetworkModel.BrnNext n) {
+            if(!n.model().architecture().frozenBase())throw new IllegalArgumentException("Frozen-base residuals only");
+            double[] weights=new double[n.model().architecture().parameters()];
+            for(var source:sources) {
+                var model=((NetworkModel.BrnNext)source).model();
+                for(int i=0;i<weights.length;i++)weights[i]+=scale*model.weight(i);
+            }
+            return new NetworkModel.BrnNext(new BrnNextModel(n.model().architecture(),weights));
+        }
+        if(first instanceof NetworkModel.BrnPair2 p) {
+            var encoded=new ByteArrayOutputStream();BrnPair2Codec.writeModel(p.model(),encoded);
+            byte[] bytes=encoded.toByteArray();var buffer=ByteBuffer.wrap(bytes);
+            buffer.position(BrnPair2Codec.MODEL_BYTES-4-8*(BrnPair2Codec.TABLE_VALUES+1));
+            double bias=0;
+            for(var source:sources)bias+=scale*((NetworkModel.BrnPair2)source).model().bias();
+            buffer.putDouble(bias);
+            for(int i=0;i<BrnPair2Codec.TABLE_VALUES;i++) {
+                double weight=0;
+                for(var source:sources)weight+=scale*((NetworkModel.BrnPair2)source).model().weight(i);
+                buffer.putDouble(weight);
+            }
+            var crc=new CRC32();crc.update(bytes,0,bytes.length-4);buffer.putInt((int)crc.getValue());
+            return new NetworkModel.BrnPair2(BrnPair2Codec.readModel(new ByteArrayInputStream(bytes)));
+        }
+        throw new IllegalArgumentException("Unsupported diagnostic average");
+    }
     /** Fold an additive change into one ordinary Pair2 table, retaining its ordinary inference cost.
      * The public codec validates the generated in-memory payload. No store or optimizer is written. */
     static BrnPair2Model additiveChange(BrnPair2Model source,double scale) throws IOException {

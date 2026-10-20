@@ -1,0 +1,973 @@
+{
+  "id": "wave4-uniform-last-eight-v1",
+  "inputs": {
+    "docs/research/brn-successor-cglhw/raw/wave2/data-01/bt4-fresh-positions.jsonl": "68793d927055fee9fc2161b2276d8f6071f1afcebb5ab5d521cd9bae237d4ff8",
+    "docs/research/brn-successor-cglhw/raw/wave2/data-01/lichess-sealed-positions.jsonl": "03a2d078e05cd95fb27274d39e6bd8eaf58ab21103f016721a7f49fd166fe728",
+    "docs/research/brn-successor-cglhw/wave4-average-diagnostic-plan.json": "2dad4cde36ef2584b6d39b469a1aeba23ff5fbc7a0c251103001e81454700c4e"
+  },
+  "bindings": [
+    {
+      "name": "W4-RESGATE-LR001",
+      "averagedNetworkSha256": "ba39eefb8b383711eb672f47e36c9afec3ed9b692e0bb6c75e284b747d6b9236",
+      "optimizer": "None: inference-only diagnostic",
+      "payloadBytes": 52464,
+      "members": [
+        {
+          "id": "g000057-s000466944-37e09c1514e7f7eea53d4c2ff45ac4feca53def28cf6b9cd972ca8aa27134461",
+          "generation": 57,
+          "optimizerStep": 466944,
+          "trainingDepth": 4,
+          "parentId": "g000056-s000458752-312b970c7114ee84f53d8ee85c67e4213e78e30be69e061ea41d00ac2749812c",
+          "networkBytes": 52464,
+          "networkSha256": "a56a22643735c9f206541d80a837214a8bb8ba628a0a706c211effb9c22251ca",
+          "trainingBytes": 157264,
+          "trainingSha256": "21fdd2906e1d7d5b492c8ac0c644ea8bab335616e5a06e7b7e285df5b4590975",
+          "architecture": "BRN_GEN32_GATED"
+        },
+        {
+          "id": "g000058-s000475136-f84e57c3f0c807f08ec47b82497a01d979d9c19e278baa5bb8a2f81ccba972eb",
+          "generation": 58,
+          "optimizerStep": 475136,
+          "trainingDepth": 4,
+          "parentId": "g000057-s000466944-37e09c1514e7f7eea53d4c2ff45ac4feca53def28cf6b9cd972ca8aa27134461",
+          "networkBytes": 52464,
+          "networkSha256": "95a87be6a11888ea4bfc2667e7aec567a25650a24cf5f551a3408d0544e111af",
+          "trainingBytes": 157264,
+          "trainingSha256": "f3cef696909ab3eb722ccd97f6a5e8bf3f72e31cc62e688f3fcc4880fd04c542",
+          "architecture": "BRN_GEN32_GATED"
+        },
+        {
+          "id": "g000059-s000483328-2e5fbb383a1e0265c3241285fd5d31edbf5a85ab3a37611b3e55774551474206",
+          "generation": 59,
+          "optimizerStep": 483328,
+          "trainingDepth": 4,
+          "parentId": "g000058-s000475136-f84e57c3f0c807f08ec47b82497a01d979d9c19e278baa5bb8a2f81ccba972eb",
+          "networkBytes": 52464,
+          "networkSha256": "d46ecbc8463b405b49099e209be5edff6f96f37179168a08b0d509be9b1c30b0",
+          "trainingBytes": 157264,
+          "trainingSha256": "f6cd34b46955518abd3c29630ed8f006ef785d4d4c854dadf405c1a4492d0f90",
+          "architecture": "BRN_GEN32_GATED"
+        },
+        {
+          "id": "g000060-s000491520-06ce954eca44d10a18bfed8faa1fe8ed789d6225b6629c14b02b98163c6df7c2",
+          "generation": 60,
+          "optimizerStep": 491520,
+          "trainingDepth": 4,
+          "parentId": "g000059-s000483328-2e5fbb383a1e0265c3241285fd5d31edbf5a85ab3a37611b3e55774551474206",
+          "networkBytes": 52464,
+          "networkSha256": "5536a68fe958f04f6df4edfd4cc73c87bfccdd2ca895598de2617e35935ba172",
+          "trainingBytes": 157264,
+          "trainingSha256": "3af46b1bf60f26e39d786ea486f6bc5bd70394492481d00b041504f900321f3f",
+          "architecture": "BRN_GEN32_GATED"
+        },
+        {
+          "id": "g000061-s000499712-3a71061f3e42458b3cc8976c3fe84faff76168a912f0aab59e8c9e23e1fa92f8",
+          "generation": 61,
+          "optimizerStep": 499712,
+          "trainingDepth": 4,
+          "parentId": "g000060-s000491520-06ce954eca44d10a18bfed8faa1fe8ed789d6225b6629c14b02b98163c6df7c2",
+          "networkBytes": 52464,
+          "networkSha256": "207c9ebfdeb6f8d12ebc35585f4eca0c0d9b170cfd30f94a6c0dda13ec36329d",
+          "trainingBytes": 157264,
+          "trainingSha256": "7863b07eded5d9efcdcb60f7e8a37adff6d8d77e75d887c9b070aca52de610a9",
+          "architecture": "BRN_GEN32_GATED"
+        },
+        {
+          "id": "g000062-s000507904-fb855ccc2ddc7984938ea1712dfb35db1c7fc152d44072bb4167fed7e5ac7fd6",
+          "generation": 62,
+          "optimizerStep": 507904,
+          "trainingDepth": 4,
+          "parentId": "g000061-s000499712-3a71061f3e42458b3cc8976c3fe84faff76168a912f0aab59e8c9e23e1fa92f8",
+          "networkBytes": 52464,
+          "networkSha256": "cc816bb69f256bd0db62201c695a592ca68cef70f4d927b3bdffb9acb06b683d",
+          "trainingBytes": 157264,
+          "trainingSha256": "56f0b48e30591fd6f848dec59390dbcd007ca7e0e9451dab88a278f144ad3d22",
+          "architecture": "BRN_GEN32_GATED"
+        },
+        {
+          "id": "g000063-s000516096-363b208509b37269f3978ee180cc786184ab620bfd79fe7ae501cca6b3df9207",
+          "generation": 63,
+          "optimizerStep": 516096,
+          "trainingDepth": 4,
+          "parentId": "g000062-s000507904-fb855ccc2ddc7984938ea1712dfb35db1c7fc152d44072bb4167fed7e5ac7fd6",
+          "networkBytes": 52464,
+          "networkSha256": "b26f0b79c9a48e63fdf661e9e661453f416859d8948617a84f82563e3175a0ab",
+          "trainingBytes": 157264,
+          "trainingSha256": "1243c96e6b4b818353d8f751559db3ff1fa3e5ede069362f88f9d871c962b765",
+          "architecture": "BRN_GEN32_GATED"
+        },
+        {
+          "id": "g000064-s000524288-bd455415c07f597ff1d815ef3fef0994f6900d761789574e971ef5a347c2ad8d",
+          "generation": 64,
+          "optimizerStep": 524288,
+          "trainingDepth": 4,
+          "parentId": "g000063-s000516096-363b208509b37269f3978ee180cc786184ab620bfd79fe7ae501cca6b3df9207",
+          "networkBytes": 52464,
+          "networkSha256": "c455f68516c22d34033b29da34f6eb4d80d07a8e698507fbe3ee240a0dc25f62",
+          "trainingBytes": 157264,
+          "trainingSha256": "cbe8b1f1dd6907474c5ee103f8a79a7f9dddd613afe172db62d1a099b06216cc",
+          "architecture": "BRN_GEN32_GATED"
+        }
+      ]
+    },
+    {
+      "name": "W4-RESGATE-LR003",
+      "averagedNetworkSha256": "e7b57f7809a1bdc964c2f261fae1a3ba834f398d41b2b8c8dca4c415b6795f85",
+      "optimizer": "None: inference-only diagnostic",
+      "payloadBytes": 52464,
+      "members": [
+        {
+          "id": "g000057-s000466944-eddcc7505f8598c7d1c5e076b615173d91f9525028c12c2baf23d05082c040f1",
+          "generation": 57,
+          "optimizerStep": 466944,
+          "trainingDepth": 4,
+          "parentId": "g000056-s000458752-e124041d67b12bae2339663dd49651e5c09c6777000c7737a049ad1f51267aed",
+          "networkBytes": 52464,
+          "networkSha256": "310fec1aa9efd25d920451b496cf00018e5c41bb0676624c36e42480da021c82",
+          "trainingBytes": 157264,
+          "trainingSha256": "febcfba5cc722d75fa0697ac4f44b7a35ae79917fca868f6d8a5a08bf780c9c6",
+          "architecture": "BRN_GEN32_GATED"
+        },
+        {
+          "id": "g000058-s000475136-4436a4c042384209e3af699c7182265568cf60ae0846fa2f7adaa61ac7acac84",
+          "generation": 58,
+          "optimizerStep": 475136,
+          "trainingDepth": 4,
+          "parentId": "g000057-s000466944-eddcc7505f8598c7d1c5e076b615173d91f9525028c12c2baf23d05082c040f1",
+          "networkBytes": 52464,
+          "networkSha256": "e6ba1be1bc186d0abdc61ee6eccac5bc52a47651c0b83743c0663b20fd09e171",
+          "trainingBytes": 157264,
+          "trainingSha256": "715c37a4148b02ed35b4e3bce2b5a07962c3aa57a1a795b2b0bf2e04f48c2ead",
+          "architecture": "BRN_GEN32_GATED"
+        },
+        {
+          "id": "g000059-s000483328-618deb1ca05e6a51d1011ceef8e91003fe69f04497165a55289dced5b805d90f",
+          "generation": 59,
+          "optimizerStep": 483328,
+          "trainingDepth": 4,
+          "parentId": "g000058-s000475136-4436a4c042384209e3af699c7182265568cf60ae0846fa2f7adaa61ac7acac84",
+          "networkBytes": 52464,
+          "networkSha256": "f35e3646d46c67cc3faf1b2ddf91a8be76cf8c4559a185078db6bbcdb17264f7",
+          "trainingBytes": 157264,
+          "trainingSha256": "115c9e1590686d001efe8d67ac0dce651d80bf93ab36eb5eae13e3650fb8a918",
+          "architecture": "BRN_GEN32_GATED"
+        },
+        {
+          "id": "g000060-s000491520-a23bf99174b928f16c1ee4b8190cb851053f0739618dc2f4141d73d7439178ed",
+          "generation": 60,
+          "optimizerStep": 491520,
+          "trainingDepth": 4,
+          "parentId": "g000059-s000483328-618deb1ca05e6a51d1011ceef8e91003fe69f04497165a55289dced5b805d90f",
+          "networkBytes": 52464,
+          "networkSha256": "a2e69bda81dfb9c7cdddd0f5c8c614fc6d0d79b3766a2c1b4d13b67b081677bc",
+          "trainingBytes": 157264,
+          "trainingSha256": "2a6fa0e2d4c11c6780d5a65d60a529325c83f160adf8e844b2bbaf132c1ecee6",
+          "architecture": "BRN_GEN32_GATED"
+        },
+        {
+          "id": "g000061-s000499712-31e5547cffa41402ba829f8754b9e2468cfceda225bec6a842faff378129a948",
+          "generation": 61,
+          "optimizerStep": 499712,
+          "trainingDepth": 4,
+          "parentId": "g000060-s000491520-a23bf99174b928f16c1ee4b8190cb851053f0739618dc2f4141d73d7439178ed",
+          "networkBytes": 52464,
+          "networkSha256": "5571c7fee883051f3f25996171c83c6db27e70527fe69bfd5836b94fa3609468",
+          "trainingBytes": 157264,
+          "trainingSha256": "3c08f61085c2c23fcc0c9918d1d452921e8929643fc7f188575296011d488ac1",
+          "architecture": "BRN_GEN32_GATED"
+        },
+        {
+          "id": "g000062-s000507904-f5d85dafc07e53e9923bf63445aade10bda130ae650df144ca23e1387422c2c9",
+          "generation": 62,
+          "optimizerStep": 507904,
+          "trainingDepth": 4,
+          "parentId": "g000061-s000499712-31e5547cffa41402ba829f8754b9e2468cfceda225bec6a842faff378129a948",
+          "networkBytes": 52464,
+          "networkSha256": "9754baa7d83cf89b02ee974dfc04e9201659c536e7d03d724b10c31b2fc93567",
+          "trainingBytes": 157264,
+          "trainingSha256": "bd1c0e82347daf739334c213b588b297f57245c663608cc0dfca74ed3613d035",
+          "architecture": "BRN_GEN32_GATED"
+        },
+        {
+          "id": "g000063-s000516096-b2b092903ea30d834118459c9bb821d03a6cfe0428f6d0806247b338a56dfd44",
+          "generation": 63,
+          "optimizerStep": 516096,
+          "trainingDepth": 4,
+          "parentId": "g000062-s000507904-f5d85dafc07e53e9923bf63445aade10bda130ae650df144ca23e1387422c2c9",
+          "networkBytes": 52464,
+          "networkSha256": "14f380a85961c273792c6e3805bcc848f2ee6edac609f0842b334273c8ab7991",
+          "trainingBytes": 157264,
+          "trainingSha256": "1e8d6d2aea32c59a23f500b49d2aa4d56b3691c4cdb37b0945cdcccecd31316e",
+          "architecture": "BRN_GEN32_GATED"
+        },
+        {
+          "id": "g000064-s000524288-c4a19e81755089d2a7a0e3904dd81347db96eda02dad7c4d3aedec5d630fb044",
+          "generation": 64,
+          "optimizerStep": 524288,
+          "trainingDepth": 4,
+          "parentId": "g000063-s000516096-b2b092903ea30d834118459c9bb821d03a6cfe0428f6d0806247b338a56dfd44",
+          "networkBytes": 52464,
+          "networkSha256": "f98aadffa26dafd5f5ec2f2947526e082c7b26f6979dd77be61b7f11a2fa7baf",
+          "trainingBytes": 157264,
+          "trainingSha256": "8844aee0d51bf0dd8e846735ab584313ff84a5c539770d98f12b2c4884c483b1",
+          "architecture": "BRN_GEN32_GATED"
+        }
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR001",
+      "averagedNetworkSha256": "5fb25c176913fd7131d4dba1cc540cd73a856a10d999bc774974f2cde82c8e6e",
+      "optimizer": "None: inference-only diagnostic",
+      "payloadBytes": 104784,
+      "members": [
+        {
+          "id": "g000057-s000466944-871123d7fd3a2c29c4350c2ec747001e1e7c9c40031c4bb420e65fab0bb03cc6",
+          "generation": 57,
+          "optimizerStep": 466944,
+          "trainingDepth": 4,
+          "parentId": "g000056-s000458752-d8a039ca155287d8ed1223e3a9b54e78ca8edea2fa66ec5ae625b85e259e5186",
+          "networkBytes": 104784,
+          "networkSha256": "6d6e48d85dadb6ab9f0c081eb7a5e3209cc3cd1f19017198631bd5a24c6e01a1",
+          "trainingBytes": 314224,
+          "trainingSha256": "81d705b3931ad36b1d8debcbeff7c3bc1da9a39d8e86c411414bcb0d67810789",
+          "architecture": "BRN_GEN32_CUBIC"
+        },
+        {
+          "id": "g000058-s000475136-6fc67dc7d31c411b3ad14ff7702be3dfff2665beef505c85df878bbfb0451d5c",
+          "generation": 58,
+          "optimizerStep": 475136,
+          "trainingDepth": 4,
+          "parentId": "g000057-s000466944-871123d7fd3a2c29c4350c2ec747001e1e7c9c40031c4bb420e65fab0bb03cc6",
+          "networkBytes": 104784,
+          "networkSha256": "11600436ab1372ff9d2200d393be3545507083ebdde83e6ee41fc55c2d4d2c34",
+          "trainingBytes": 314224,
+          "trainingSha256": "016a52ba17060c47a6a13b5dfd3d597c62c50b3b077c8625f6d92332a513a55e",
+          "architecture": "BRN_GEN32_CUBIC"
+        },
+        {
+          "id": "g000059-s000483328-e918443a5f9149e2c3a46f794862df7697148ca6627a4e32793fc73a863a940a",
+          "generation": 59,
+          "optimizerStep": 483328,
+          "trainingDepth": 4,
+          "parentId": "g000058-s000475136-6fc67dc7d31c411b3ad14ff7702be3dfff2665beef505c85df878bbfb0451d5c",
+          "networkBytes": 104784,
+          "networkSha256": "cbe63893c5784ded1ef2656ecf056d7724808bbe9101e50f254ffcc7455e5cef",
+          "trainingBytes": 314224,
+          "trainingSha256": "bf30d0ddf4ebfec4e8ecaa6ff713c3c912a8141d066e22df78c3263accd05601",
+          "architecture": "BRN_GEN32_CUBIC"
+        },
+        {
+          "id": "g000060-s000491520-7a22fcae6e75af5d6e2d9cd3aa2091ff630a55f9d73627e89a75e1b236c552d7",
+          "generation": 60,
+          "optimizerStep": 491520,
+          "trainingDepth": 4,
+          "parentId": "g000059-s000483328-e918443a5f9149e2c3a46f794862df7697148ca6627a4e32793fc73a863a940a",
+          "networkBytes": 104784,
+          "networkSha256": "d05023a9ec6d6b8e231ef23a1ea8efbcf1975e3faba2be7238d56e4eb36ae8bb",
+          "trainingBytes": 314224,
+          "trainingSha256": "6e373b599309d92a1fb5f5d4f5e74c4a61bd1e821b21a7d3f5680c8fc555b11e",
+          "architecture": "BRN_GEN32_CUBIC"
+        },
+        {
+          "id": "g000061-s000499712-6bab9761e1a8db70ea22587f4075324e0366f849851ce06ce2559d9b7308bdbf",
+          "generation": 61,
+          "optimizerStep": 499712,
+          "trainingDepth": 4,
+          "parentId": "g000060-s000491520-7a22fcae6e75af5d6e2d9cd3aa2091ff630a55f9d73627e89a75e1b236c552d7",
+          "networkBytes": 104784,
+          "networkSha256": "b2762f8dccf2d759b89660640c66988fff31f4e3d4cfdfe1929d5d52d553e702",
+          "trainingBytes": 314224,
+          "trainingSha256": "6bfc3d2a71e7e0e550fd01bcfc9565ecaca0401bf48c98bb9b99808ad7ef0539",
+          "architecture": "BRN_GEN32_CUBIC"
+        },
+        {
+          "id": "g000062-s000507904-72900694c054f80ec7fa67ccb4f21474e4c589378a9ae3944b1f3adaa1ba8b23",
+          "generation": 62,
+          "optimizerStep": 507904,
+          "trainingDepth": 4,
+          "parentId": "g000061-s000499712-6bab9761e1a8db70ea22587f4075324e0366f849851ce06ce2559d9b7308bdbf",
+          "networkBytes": 104784,
+          "networkSha256": "fc82a6c7d185bb82b93117a45a39cbd71489f30087ad4a531b5107a04ae0c258",
+          "trainingBytes": 314224,
+          "trainingSha256": "9eb871a51a18b17ec67fde899a4278651ab5217d9dbd2d275fb778864c6bb3f9",
+          "architecture": "BRN_GEN32_CUBIC"
+        },
+        {
+          "id": "g000063-s000516096-3f2c7a050f1b185025eeb55a0ef44b7e31c133c30f6ece8e338c91813a1a4902",
+          "generation": 63,
+          "optimizerStep": 516096,
+          "trainingDepth": 4,
+          "parentId": "g000062-s000507904-72900694c054f80ec7fa67ccb4f21474e4c589378a9ae3944b1f3adaa1ba8b23",
+          "networkBytes": 104784,
+          "networkSha256": "0c1787f3b217e4175a065789ef6228190ed315e6bf0947998464d78302abd2fc",
+          "trainingBytes": 314224,
+          "trainingSha256": "fd5d220c218f8be743923969cf6e9f16bf907fb792a3db535601213ca77f73bc",
+          "architecture": "BRN_GEN32_CUBIC"
+        },
+        {
+          "id": "g000064-s000524288-452b71fa8b42d6da3a6ec06e6991d08ff4adcd4cc7d4a88a7c8228fc5c36b75f",
+          "generation": 64,
+          "optimizerStep": 524288,
+          "trainingDepth": 4,
+          "parentId": "g000063-s000516096-3f2c7a050f1b185025eeb55a0ef44b7e31c133c30f6ece8e338c91813a1a4902",
+          "networkBytes": 104784,
+          "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc",
+          "trainingBytes": 314224,
+          "trainingSha256": "3c8d6ed2cb7884ac661de8bcbd1f8d6332ddac2788c272747ab2787808b682a8",
+          "architecture": "BRN_GEN32_CUBIC"
+        }
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR003",
+      "averagedNetworkSha256": "423ecddbbff24c44614562e295b6692e6a2f3d1c898aac833e1ce5b773275a3f",
+      "optimizer": "None: inference-only diagnostic",
+      "payloadBytes": 104784,
+      "members": [
+        {
+          "id": "g000057-s000466944-3285f65d492e26bbe986ad1442f94cb191c6a5716d30d3814896b3bd2e5ef3c2",
+          "generation": 57,
+          "optimizerStep": 466944,
+          "trainingDepth": 4,
+          "parentId": "g000056-s000458752-e7014c17ffb5c2223dd0a7dcee7d92b4967015005567e87100cc918cd2eb2d2b",
+          "networkBytes": 104784,
+          "networkSha256": "974ceca912e70bc4e1c61f2e83a04311f7036e634364c5c8957738f6997b8e8a",
+          "trainingBytes": 314224,
+          "trainingSha256": "5e3b9cbf087c48039c13ed98a1df11058f4aab44190480d64f96c71fbcfe1d11",
+          "architecture": "BRN_GEN32_CUBIC"
+        },
+        {
+          "id": "g000058-s000475136-912fac92f9055ae6094522500f76d1ca1039dcc1d490fad684aa992f3ff3a1b5",
+          "generation": 58,
+          "optimizerStep": 475136,
+          "trainingDepth": 4,
+          "parentId": "g000057-s000466944-3285f65d492e26bbe986ad1442f94cb191c6a5716d30d3814896b3bd2e5ef3c2",
+          "networkBytes": 104784,
+          "networkSha256": "4995720da4e36413542e5eba21bedc6864b7976bd5e4993fdbe170f7e167dce5",
+          "trainingBytes": 314224,
+          "trainingSha256": "84c0df89908cd522c9466f5fab3f8e7d0861ba63768a794f5c907e0305d8c2ea",
+          "architecture": "BRN_GEN32_CUBIC"
+        },
+        {
+          "id": "g000059-s000483328-9946c016f19cb3a22d4397869569f64d0cc303e9ba7ee104875d017e5e130a73",
+          "generation": 59,
+          "optimizerStep": 483328,
+          "trainingDepth": 4,
+          "parentId": "g000058-s000475136-912fac92f9055ae6094522500f76d1ca1039dcc1d490fad684aa992f3ff3a1b5",
+          "networkBytes": 104784,
+          "networkSha256": "3270f40ed019dd93cce1652fce99069683f4be932993c1841cb02eef48c23e92",
+          "trainingBytes": 314224,
+          "trainingSha256": "1e2ca462c00e7de9aaf2de6b5987f078ae66f686eb01ae6caab18cc5a318fcfd",
+          "architecture": "BRN_GEN32_CUBIC"
+        },
+        {
+          "id": "g000060-s000491520-0172668f4b2e3b4ea4a253407a3d0eea84e1e232f23b5acd2da54cc4d2576080",
+          "generation": 60,
+          "optimizerStep": 491520,
+          "trainingDepth": 4,
+          "parentId": "g000059-s000483328-9946c016f19cb3a22d4397869569f64d0cc303e9ba7ee104875d017e5e130a73",
+          "networkBytes": 104784,
+          "networkSha256": "f8b20c7c958da211a9e582248d443666c3921185e4fd2e11d4d3e8e3b60d2b7e",
+          "trainingBytes": 314224,
+          "trainingSha256": "d8dcb09240d1a57f9dadbdf0f9f423d8f56aa47dc0b6d0a9a24b9207e8197c42",
+          "architecture": "BRN_GEN32_CUBIC"
+        },
+        {
+          "id": "g000061-s000499712-f6965a48fd70c9eda316a9e890a6d245467a3ccb62c5abadbc037dd49e541507",
+          "generation": 61,
+          "optimizerStep": 499712,
+          "trainingDepth": 4,
+          "parentId": "g000060-s000491520-0172668f4b2e3b4ea4a253407a3d0eea84e1e232f23b5acd2da54cc4d2576080",
+          "networkBytes": 104784,
+          "networkSha256": "b9ac4cdac7fd8b82e3f6a00399b83a7bf0cba1bc0dc27f8bb418aea000febbe5",
+          "trainingBytes": 314224,
+          "trainingSha256": "866f0d3408177f65b548772fd503177caebd172c91637dce1281b8aa10e600a1",
+          "architecture": "BRN_GEN32_CUBIC"
+        },
+        {
+          "id": "g000062-s000507904-08ae6907feab3295b7f77e1e060fe38d6b8893bfa8da1cf3934f107072c85fe4",
+          "generation": 62,
+          "optimizerStep": 507904,
+          "trainingDepth": 4,
+          "parentId": "g000061-s000499712-f6965a48fd70c9eda316a9e890a6d245467a3ccb62c5abadbc037dd49e541507",
+          "networkBytes": 104784,
+          "networkSha256": "e802df2c98ff9a83074033ce6948efde693bf1631ce3c068ccc57f9cf505545c",
+          "trainingBytes": 314224,
+          "trainingSha256": "41d5d34d4b53dbd5dff930287b0563e84a6e56628818cea1306004227bff0086",
+          "architecture": "BRN_GEN32_CUBIC"
+        },
+        {
+          "id": "g000063-s000516096-20f05fb4a8e00abf9592091a99858d7c18c08ae06e2edb5faeb05b7cf1bf4e75",
+          "generation": 63,
+          "optimizerStep": 516096,
+          "trainingDepth": 4,
+          "parentId": "g000062-s000507904-08ae6907feab3295b7f77e1e060fe38d6b8893bfa8da1cf3934f107072c85fe4",
+          "networkBytes": 104784,
+          "networkSha256": "149850f9e757cc0bcd2c45a31b9ad9f2e86979e4cf14445e95bce3173fec5412",
+          "trainingBytes": 314224,
+          "trainingSha256": "bd01cdf92c5bdcaa3690af39064a5623066d51a883b6cc1accf2c82b6f5ea1c8",
+          "architecture": "BRN_GEN32_CUBIC"
+        },
+        {
+          "id": "g000064-s000524288-5982ea47c1d2bd88f049fa13c2b4b16eebe75ef919dfca18aad7d7fd673e4c66",
+          "generation": 64,
+          "optimizerStep": 524288,
+          "trainingDepth": 4,
+          "parentId": "g000063-s000516096-20f05fb4a8e00abf9592091a99858d7c18c08ae06e2edb5faeb05b7cf1bf4e75",
+          "networkBytes": 104784,
+          "networkSha256": "cfa37ddd14e461546de266d622ded7ebdeea240b4c90274c269d2ffbd5be8901",
+          "trainingBytes": 314224,
+          "trainingSha256": "dd3a1f15c3a9e650c3b1090b6a5820ac0fd88bc8c56bdd2f7974fb6d8d6c1cb8",
+          "architecture": "BRN_GEN32_CUBIC"
+        }
+      ]
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001",
+      "averagedNetworkSha256": "34710521d25627294e3cc5775acab542281648262a9557591c045238e2cd69ba",
+      "optimizer": "None: inference-only diagnostic",
+      "payloadBytes": 795032,
+      "members": [
+        {
+          "id": "g000057-s002220032-b454b95f89eb1aa456b7972cfdd33a743feee21849c5b1b20f92a103eb4db2ae",
+          "generation": 57,
+          "optimizerStep": 2220032,
+          "trainingDepth": 4,
+          "parentId": "g000056-s002211840-0ae51c45fb5854d8ce19d177b0742d64f1928ac58b7df903d6b9e616955f0fc3",
+          "networkBytes": 795032,
+          "networkSha256": "2c16e64dfbb5cdfbec17b9575387c68fa8515c35b80536f3154bd0eeeb419ed0",
+          "trainingBytes": 2731424,
+          "trainingSha256": "569904bc31dc07eca7d89b64b0e31e238b18623de1d7036476cca23edcf3d7ef",
+          "architecture": "BRN_PAIR2"
+        },
+        {
+          "id": "g000058-s002228224-3ddb745e8a37825d2dd9711a2803501b85f4a0218d45194c89278a4d24875367",
+          "generation": 58,
+          "optimizerStep": 2228224,
+          "trainingDepth": 4,
+          "parentId": "g000057-s002220032-b454b95f89eb1aa456b7972cfdd33a743feee21849c5b1b20f92a103eb4db2ae",
+          "networkBytes": 795032,
+          "networkSha256": "054dcb55ce2aa635788fd83f19ac67e6706c5edc51e18d61029d03d49215bd5f",
+          "trainingBytes": 2731424,
+          "trainingSha256": "6836a7c487e69811e01f362c1f730cf164bc9855fc1dc07e9389492c54303242",
+          "architecture": "BRN_PAIR2"
+        },
+        {
+          "id": "g000059-s002236416-08fbe307417f5bb6393f9d3fa1fab7eb9b7baef81354bdaf76f27e861ca89b50",
+          "generation": 59,
+          "optimizerStep": 2236416,
+          "trainingDepth": 4,
+          "parentId": "g000058-s002228224-3ddb745e8a37825d2dd9711a2803501b85f4a0218d45194c89278a4d24875367",
+          "networkBytes": 795032,
+          "networkSha256": "c29a657570d21578539007a6e089b7511e13fb25691b9fedd802f71dfefcc287",
+          "trainingBytes": 2731424,
+          "trainingSha256": "7f3ccac6d07d2a7c89a5b01882fe3a3b070f585017aaa089f6ce8a8417881537",
+          "architecture": "BRN_PAIR2"
+        },
+        {
+          "id": "g000060-s002244608-732f911b295c6b315b8850f4c25692f95a2bcb27a32a9bf99ebd75bb7826ada7",
+          "generation": 60,
+          "optimizerStep": 2244608,
+          "trainingDepth": 4,
+          "parentId": "g000059-s002236416-08fbe307417f5bb6393f9d3fa1fab7eb9b7baef81354bdaf76f27e861ca89b50",
+          "networkBytes": 795032,
+          "networkSha256": "390c0f6919c08a95f5d4789e2b3219e6631d98de5a45e285c2dc983543d418bb",
+          "trainingBytes": 2731424,
+          "trainingSha256": "cb7dabaaa428b7ecd60bca38e9ab049420789b808b447bc4a7060c00fedb0a74",
+          "architecture": "BRN_PAIR2"
+        },
+        {
+          "id": "g000061-s002252800-dd2aaa66198473fcde602934736cf20be32d6ab853f0b831ef949a7a102d3946",
+          "generation": 61,
+          "optimizerStep": 2252800,
+          "trainingDepth": 4,
+          "parentId": "g000060-s002244608-732f911b295c6b315b8850f4c25692f95a2bcb27a32a9bf99ebd75bb7826ada7",
+          "networkBytes": 795032,
+          "networkSha256": "caaef80c068002d61831ba20f298998df5a19ba1a617134fdef5270b425ebb0f",
+          "trainingBytes": 2731424,
+          "trainingSha256": "eea3591fa384136146b682d89326c18b99d1c77f28f9587297286a1398992f9e",
+          "architecture": "BRN_PAIR2"
+        },
+        {
+          "id": "g000062-s002260992-7b91e3d97199ef665bef1bc56b4e97afe0f983b4cd9812ae36e4f0a74fba0a1a",
+          "generation": 62,
+          "optimizerStep": 2260992,
+          "trainingDepth": 4,
+          "parentId": "g000061-s002252800-dd2aaa66198473fcde602934736cf20be32d6ab853f0b831ef949a7a102d3946",
+          "networkBytes": 795032,
+          "networkSha256": "36839e21a526d1a94f6e9cf4eb7d28e43b0a5feb61200ec28e235b50bf2295d8",
+          "trainingBytes": 2731424,
+          "trainingSha256": "cfcb5b8cf6dff9f85bddc1210fb002057a98bef1f1016ea12637413b3ef5fd22",
+          "architecture": "BRN_PAIR2"
+        },
+        {
+          "id": "g000063-s002269184-442287932c112c798471b208a5c8ffffe59420aa116db7134d53f8ab53740cd6",
+          "generation": 63,
+          "optimizerStep": 2269184,
+          "trainingDepth": 4,
+          "parentId": "g000062-s002260992-7b91e3d97199ef665bef1bc56b4e97afe0f983b4cd9812ae36e4f0a74fba0a1a",
+          "networkBytes": 795032,
+          "networkSha256": "222ae454dbade976465668792ca1795c2ea99aabcb8d244e614a2dd7ada5ccb2",
+          "trainingBytes": 2731424,
+          "trainingSha256": "89e7cf84d19a86366b31194a8752d45a820e916e298a07f3b1b3be11b7bdb7ce",
+          "architecture": "BRN_PAIR2"
+        },
+        {
+          "id": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+          "generation": 64,
+          "optimizerStep": 2277376,
+          "trainingDepth": 4,
+          "parentId": "g000063-s002269184-442287932c112c798471b208a5c8ffffe59420aa116db7134d53f8ab53740cd6",
+          "networkBytes": 795032,
+          "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+          "trainingBytes": 2731424,
+          "trainingSha256": "19aa0beffaf653c5b8ba4dca89f5b4b4a3f0eb31440e297acf7f0969b0485502",
+          "architecture": "BRN_PAIR2"
+        }
+      ]
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003",
+      "averagedNetworkSha256": "75669c2ede2932d578ea333bde7e0202be079b89c872f3f2c376fb570be01be5",
+      "optimizer": "None: inference-only diagnostic",
+      "payloadBytes": 795032,
+      "members": [
+        {
+          "id": "g000057-s002220032-d7d98ea48971955dea378a3b790d0fce94db85d2443e117f4f6125d52d7a11cb",
+          "generation": 57,
+          "optimizerStep": 2220032,
+          "trainingDepth": 4,
+          "parentId": "g000056-s002211840-758821a3198cc5dc85f5279dd6f3a0cacd0c76b668e502b758f6b7f435cf251d",
+          "networkBytes": 795032,
+          "networkSha256": "26728dce429c5e3ec494e8166b715ac012612c60653aae5a7e42cdda8fdd48ce",
+          "trainingBytes": 2731424,
+          "trainingSha256": "84bab774ebc37f0012ea288a177f1ddaf8f3e23974995c53f228859e6f600ff6",
+          "architecture": "BRN_PAIR2"
+        },
+        {
+          "id": "g000058-s002228224-5a9b0f759f59242d8d385c1087b83e337c066175b4b3db12ab8def5c5ee9e490",
+          "generation": 58,
+          "optimizerStep": 2228224,
+          "trainingDepth": 4,
+          "parentId": "g000057-s002220032-d7d98ea48971955dea378a3b790d0fce94db85d2443e117f4f6125d52d7a11cb",
+          "networkBytes": 795032,
+          "networkSha256": "9a0ee7ebdf3c28f91683877f16ef74dd30f1fcd3a5369b5c99847cbd78292b88",
+          "trainingBytes": 2731424,
+          "trainingSha256": "8090a390bb7db3333afebe7b067d3e2666e4cca108ee2387963a6acade98eaaf",
+          "architecture": "BRN_PAIR2"
+        },
+        {
+          "id": "g000059-s002236416-910c7f1891e1ba1aa926cd388d649856425f4c85600c18394c0bb3b801a2a7a9",
+          "generation": 59,
+          "optimizerStep": 2236416,
+          "trainingDepth": 4,
+          "parentId": "g000058-s002228224-5a9b0f759f59242d8d385c1087b83e337c066175b4b3db12ab8def5c5ee9e490",
+          "networkBytes": 795032,
+          "networkSha256": "721142385ecb5852afe83b67dde181e6a02063be8420706e4fd51ddc0135337c",
+          "trainingBytes": 2731424,
+          "trainingSha256": "5424bd4b6c0fecd81bb8e95ac3eeeea6a81fd01461c96a10a5fe288f116a5769",
+          "architecture": "BRN_PAIR2"
+        },
+        {
+          "id": "g000060-s002244608-d1736d31c0f08c8ae0a5469bcb8a051e2aacf9b7cb412cd039eb6bcb97c68fe1",
+          "generation": 60,
+          "optimizerStep": 2244608,
+          "trainingDepth": 4,
+          "parentId": "g000059-s002236416-910c7f1891e1ba1aa926cd388d649856425f4c85600c18394c0bb3b801a2a7a9",
+          "networkBytes": 795032,
+          "networkSha256": "4ebe0b22496342f0a81daa659d97cd9db588eec56ca757a6df18ca2dafbe1944",
+          "trainingBytes": 2731424,
+          "trainingSha256": "df964e734c01bf58535ad85dc981c7fe36e4999651fe5ef297323eb5b76156d9",
+          "architecture": "BRN_PAIR2"
+        },
+        {
+          "id": "g000061-s002252800-79bb2790ccbd5f0292472d0119ab8b0bb9a93e213c323d0cd68f94aadf7a91ae",
+          "generation": 61,
+          "optimizerStep": 2252800,
+          "trainingDepth": 4,
+          "parentId": "g000060-s002244608-d1736d31c0f08c8ae0a5469bcb8a051e2aacf9b7cb412cd039eb6bcb97c68fe1",
+          "networkBytes": 795032,
+          "networkSha256": "43754eb7281ce6ebb1fcc8f17d07479ab942e2a8ea79985672b83307f296e20a",
+          "trainingBytes": 2731424,
+          "trainingSha256": "688b192e69d3afb547bb9e429737f896081e554acdc37c05e8dcde99adab5381",
+          "architecture": "BRN_PAIR2"
+        },
+        {
+          "id": "g000062-s002260992-6aaf129d10d18621e4a76686aa50f76da93b39446b35bbe8e803778596887341",
+          "generation": 62,
+          "optimizerStep": 2260992,
+          "trainingDepth": 4,
+          "parentId": "g000061-s002252800-79bb2790ccbd5f0292472d0119ab8b0bb9a93e213c323d0cd68f94aadf7a91ae",
+          "networkBytes": 795032,
+          "networkSha256": "4419afb79e310259c2203bcfc330047958ab69ba51e2bf4287072dc3a71f2ff7",
+          "trainingBytes": 2731424,
+          "trainingSha256": "999d76cbf191b22bd943e4a78db7fcf9b73d86420908f827569443611ab2bce1",
+          "architecture": "BRN_PAIR2"
+        },
+        {
+          "id": "g000063-s002269184-335373a32552a851d1ff5dafd2a0aa843d8d2d1262ee32128465a106de7b1f23",
+          "generation": 63,
+          "optimizerStep": 2269184,
+          "trainingDepth": 4,
+          "parentId": "g000062-s002260992-6aaf129d10d18621e4a76686aa50f76da93b39446b35bbe8e803778596887341",
+          "networkBytes": 795032,
+          "networkSha256": "36d989f16bfc0a3c29e732dd509971cd3e8b848ff78d83e5d73a50ec17a199de",
+          "trainingBytes": 2731424,
+          "trainingSha256": "7e08b7e7b4167337920b066de3a9a3aa37b102df6053dd1c5d86e250cfbc8dae",
+          "architecture": "BRN_PAIR2"
+        },
+        {
+          "id": "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1",
+          "generation": 64,
+          "optimizerStep": 2277376,
+          "trainingDepth": 4,
+          "parentId": "g000063-s002269184-335373a32552a851d1ff5dafd2a0aa843d8d2d1262ee32128465a106de7b1f23",
+          "networkBytes": 795032,
+          "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050",
+          "trainingBytes": 2731424,
+          "trainingSha256": "4c23665148d475c44c7e24f903c011407128f17272e5cbba197ce3d642fa883a",
+          "architecture": "BRN_PAIR2"
+        }
+      ]
+    }
+  ],
+  "scope": "Consumed development data. Uniform last-eight parameter mean, not training or Adam continuation; functional ensemble is diagnostic only.",
+  "sources": [
+    {
+      "source": "bt4",
+      "invalid": 0,
+      "independentMeanMaximumError": 1.3322676295501878e-15,
+      "parameterVsFunctionMeanMaxError": {
+        "W4-BRE-CONTROL-LR001": 8.881784197001252e-16,
+        "W4-BRE-CONTROL-LR003": 1.7763568394002505e-15,
+        "W4-RESCUBIC-LR001": 0.09548114157225585,
+        "W4-RESCUBIC-LR003": 0.3258428560589489,
+        "W4-RESGATE-LR001": 0.043280301649424466,
+        "W4-RESGATE-LR003": 0.21515882471617656
+      },
+      "evaluation": {
+        "Gen32": {
+          "all": 0.6429540476445537,
+          "valid": 0.6429540476445537
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "all": 0.6336168651374675,
+          "valid": 0.6336168651374675
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "all": 0.633527368910603,
+          "valid": 0.633527368910603
+        },
+        "W4-BRE-CONTROL-LR001-ensemble8": {
+          "all": 0.6336168651374675,
+          "valid": 0.6336168651374675
+        },
+        "W4-BRE-CONTROL-LR001-ensemble8-half": {
+          "all": 0.633527368910603,
+          "valid": 0.633527368910603
+        },
+        "W4-BRE-CONTROL-LR001-latest": {
+          "all": 0.6420179536400595,
+          "valid": 0.6420179536400595
+        },
+        "W4-BRE-CONTROL-LR001-latest-half": {
+          "all": 0.6369177597340052,
+          "valid": 0.6369177597340052
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "all": 0.6343513838265262,
+          "valid": 0.6343513838265262
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "all": 0.6337037673423377,
+          "valid": 0.6337037673423377
+        },
+        "W4-BRE-CONTROL-LR003-ensemble8": {
+          "all": 0.6343513838265262,
+          "valid": 0.6343513838265262
+        },
+        "W4-BRE-CONTROL-LR003-ensemble8-half": {
+          "all": 0.6337037673423377,
+          "valid": 0.6337037673423377
+        },
+        "W4-BRE-CONTROL-LR003-latest": {
+          "all": 0.6418588746718152,
+          "valid": 0.6418588746718152
+        },
+        "W4-BRE-CONTROL-LR003-latest-half": {
+          "all": 0.6351422549253589,
+          "valid": 0.6351422549253589
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "all": 0.6275049484768109,
+          "valid": 0.6275049484768109
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "all": 0.628645235140736,
+          "valid": 0.628645235140736
+        },
+        "W4-RESCUBIC-LR001-ensemble8": {
+          "all": 0.6277091523953539,
+          "valid": 0.6277091523953539
+        },
+        "W4-RESCUBIC-LR001-ensemble8-half": {
+          "all": 0.6286989304737092,
+          "valid": 0.6286989304737092
+        },
+        "W4-RESCUBIC-LR001-latest": {
+          "all": 0.6388347128120785,
+          "valid": 0.6388347128120785
+        },
+        "W4-RESCUBIC-LR001-latest-half": {
+          "all": 0.6313889999555953,
+          "valid": 0.6313889999555953
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "all": 0.630302837423815,
+          "valid": 0.630302837423815
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "all": 0.6304195448778599,
+          "valid": 0.6304195448778599
+        },
+        "W4-RESCUBIC-LR003-ensemble8": {
+          "all": 0.6304087609752974,
+          "valid": 0.6304087609752974
+        },
+        "W4-RESCUBIC-LR003-ensemble8-half": {
+          "all": 0.6303830642410254,
+          "valid": 0.6303830642410254
+        },
+        "W4-RESCUBIC-LR003-latest": {
+          "all": 0.6537445560952357,
+          "valid": 0.6537445560952357
+        },
+        "W4-RESCUBIC-LR003-latest-half": {
+          "all": 0.6342907734258574,
+          "valid": 0.6342907734258574
+        },
+        "W4-RESGATE-LR001-average8": {
+          "all": 0.6275180527507946,
+          "valid": 0.6275180527507946
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "all": 0.6308085144693348,
+          "valid": 0.6308085144693348
+        },
+        "W4-RESGATE-LR001-ensemble8": {
+          "all": 0.6274334259904548,
+          "valid": 0.6274334259904548
+        },
+        "W4-RESGATE-LR001-ensemble8-half": {
+          "all": 0.6307951815293014,
+          "valid": 0.6307951815293014
+        },
+        "W4-RESGATE-LR001-latest": {
+          "all": 0.6342031389212978,
+          "valid": 0.6342031389212978
+        },
+        "W4-RESGATE-LR001-latest-half": {
+          "all": 0.6325557194871831,
+          "valid": 0.6325557194871831
+        },
+        "W4-RESGATE-LR003-average8": {
+          "all": 0.6287060222825827,
+          "valid": 0.6287060222825827
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "all": 0.6310660217124613,
+          "valid": 0.6310660217124613
+        },
+        "W4-RESGATE-LR003-ensemble8": {
+          "all": 0.6282348788115688,
+          "valid": 0.6282348788115688
+        },
+        "W4-RESGATE-LR003-ensemble8-half": {
+          "all": 0.6309367773008538,
+          "valid": 0.6309367773008538
+        },
+        "W4-RESGATE-LR003-latest": {
+          "all": 0.6373099962813158,
+          "valid": 0.6373099962813158
+        },
+        "W4-RESGATE-LR003-latest-half": {
+          "all": 0.6328476199402431,
+          "valid": 0.6328476199402431
+        }
+      }
+    },
+    {
+      "source": "cp",
+      "invalid": 21,
+      "independentMeanMaximumError": 1.2212453270876722e-15,
+      "parameterVsFunctionMeanMaxError": {
+        "W4-BRE-CONTROL-LR001": 1.7763568394002505e-15,
+        "W4-BRE-CONTROL-LR003": 1.7763568394002505e-15,
+        "W4-RESCUBIC-LR001": 0.11165928147142058,
+        "W4-RESCUBIC-LR003": 0.6245430032123457,
+        "W4-RESGATE-LR001": 0.05512879705115825,
+        "W4-RESGATE-LR003": 0.10214935030810124
+      },
+      "evaluation": {
+        "Gen32": {
+          "all": 0.5982402406571895,
+          "valid": 0.597842739077793
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "all": 0.5964898211259823,
+          "valid": 0.5962287568707303
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "all": 0.5932361976217114,
+          "valid": 0.5928915037423809
+        },
+        "W4-BRE-CONTROL-LR001-ensemble8": {
+          "all": 0.5964898211259823,
+          "valid": 0.5962287568707303
+        },
+        "W4-BRE-CONTROL-LR001-ensemble8-half": {
+          "all": 0.5932361976217114,
+          "valid": 0.5928915037423809
+        },
+        "W4-BRE-CONTROL-LR001-latest": {
+          "all": 0.5933150001297893,
+          "valid": 0.5937781762194212
+        },
+        "W4-BRE-CONTROL-LR001-latest-half": {
+          "all": 0.5882886205032758,
+          "valid": 0.5883445362726986
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "all": 0.5962651494959003,
+          "valid": 0.5950984385575091
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "all": 0.5921702883322201,
+          "valid": 0.5916594519420704
+        },
+        "W4-BRE-CONTROL-LR003-ensemble8": {
+          "all": 0.5962651494959003,
+          "valid": 0.5950984385575091
+        },
+        "W4-BRE-CONTROL-LR003-ensemble8-half": {
+          "all": 0.5921702883322201,
+          "valid": 0.5916594519420704
+        },
+        "W4-BRE-CONTROL-LR003-latest": {
+          "all": 0.6037034973581227,
+          "valid": 0.6032028854600004
+        },
+        "W4-BRE-CONTROL-LR003-latest-half": {
+          "all": 0.5895130913398278,
+          "valid": 0.5892742897453648
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "all": 0.5995034478681286,
+          "valid": 0.5833607350308182
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "all": 0.585654003993148,
+          "valid": 0.5843725104195372
+        },
+        "W4-RESCUBIC-LR001-ensemble8": {
+          "all": 0.5987018817711184,
+          "valid": 0.5829224907250928
+        },
+        "W4-RESCUBIC-LR001-ensemble8-half": {
+          "all": 0.5853559488814506,
+          "valid": 0.5841025149520163
+        },
+        "W4-RESCUBIC-LR001-latest": {
+          "all": 0.6358168489711393,
+          "valid": 0.5948339801700313
+        },
+        "W4-RESCUBIC-LR001-latest-half": {
+          "all": 0.5885411746188125,
+          "valid": 0.5866030301264681
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "all": 0.5959212430166922,
+          "valid": 0.5841488609469213
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "all": 0.5868696414993174,
+          "valid": 0.5856398246734174
+        },
+        "W4-RESCUBIC-LR003-ensemble8": {
+          "all": 0.5935690708586192,
+          "valid": 0.5837003025279914
+        },
+        "W4-RESCUBIC-LR003-ensemble8-half": {
+          "all": 0.5865736775165225,
+          "valid": 0.5854129851503388
+        },
+        "W4-RESCUBIC-LR003-latest": {
+          "all": 0.6194622891350956,
+          "valid": 0.5963473377077066
+        },
+        "W4-RESCUBIC-LR003-latest-half": {
+          "all": 0.5869528817385461,
+          "valid": 0.5850821570649019
+        },
+        "W4-RESGATE-LR001-average8": {
+          "all": 0.5789302188252784,
+          "valid": 0.5784585204589412
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "all": 0.5842971501851048,
+          "valid": 0.5838433204634652
+        },
+        "W4-RESGATE-LR001-ensemble8": {
+          "all": 0.5790487075924088,
+          "valid": 0.5785876872365382
+        },
+        "W4-RESGATE-LR001-ensemble8-half": {
+          "all": 0.5843806760871696,
+          "valid": 0.583931627946881
+        },
+        "W4-RESGATE-LR001-latest": {
+          "all": 0.5880738112576386,
+          "valid": 0.588092296814536
+        },
+        "W4-RESGATE-LR001-latest-half": {
+          "all": 0.5874043476333197,
+          "valid": 0.5871890171250569
+        },
+        "W4-RESGATE-LR003-average8": {
+          "all": 0.576012337282789,
+          "valid": 0.5759103869237826
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "all": 0.582740386549119,
+          "valid": 0.5825005064250584
+        },
+        "W4-RESGATE-LR003-ensemble8": {
+          "all": 0.5760702980668266,
+          "valid": 0.5760011196585337
+        },
+        "W4-RESGATE-LR003-ensemble8-half": {
+          "all": 0.5827895624118691,
+          "valid": 0.5825636646456113
+        },
+        "W4-RESGATE-LR003-latest": {
+          "all": 0.5895821406759854,
+          "valid": 0.5901164831262
+        },
+        "W4-RESGATE-LR003-latest-half": {
+          "all": 0.5861734869656288,
+          "valid": 0.5862478515513
+        }
+      }
+    }
+  ],
+  "builtJarsAtAnalysis": {
+    "engine-core.jar": "29d06b5184f5e664ec2c3693f301292cf2952b5ee03f470d536de71676c45b16",
+    "engine-training.jar": "ec58521d7d7769729f4afd2a4db1bb63298a006c8e308b27aa6548c027878a64",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "07db12127c7f5c5ab404d67376bab69066d6032730cd58e68555f9d1d526e0e4",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "runtimeProvenance": "Initial diagnostic preceded the later match-loader build; its jar was not separately frozen. builtJarsAtAnalysis is the later tested build, not a claimed historical run binding. Reproduce the same diagnostic under a frozen runtime before averaging strength admission."
+}

@@ -20,15 +20,37 @@ import java.util.*;
 
 /** Single-worker paired diagnostic with immutable per-game receipts and explicit equal search. */
 public final class BrnSuccessorMatch {
+    record AverageInput(String root,String checkpoint,String networkSha256) {}
     record Model(String name, String root, String checkpoint, String networkSha256, Double residualGain,
                  boolean gatedCache, boolean cubicCache, Double blendCandidateWeight,
-                 Double correctionScale, String correctionAblation, double[] constantGates, boolean gatedDeltaCache, boolean cubicDeltaCache) {
+                 Double correctionScale, String correctionAblation, double[] constantGates, boolean gatedDeltaCache, boolean cubicDeltaCache,
+                 List<AverageInput> averagedInputs) {
         Model {
             if(constantGates!=null&&!"constant-gates".equals(correctionAblation))
                 throw new IllegalArgumentException("Explicit constant-gates ablation required");
             if(cubicDeltaCache&&(gatedCache||cubicCache||gatedDeltaCache))throw new IllegalArgumentException("Choose one cache");
             if(gatedDeltaCache&&(gatedCache||cubicCache))throw new IllegalArgumentException("Choose one cache");
         }
+    }
+    /** Bound inference-only mean. The anchor remains the latest source checkpoint, never a fake
+     * trainable checkpoint. Every ingredient and the effective model hash are retained in receipts. */
+    static NetworkModel loadModel(Model spec) throws Exception {
+        var anchor=CheckpointStore.readSnapshot(Path.of(spec.root()),spec.checkpoint());
+        if(!anchor.manifest().networkSha256().equals(spec.networkSha256()))throw new IllegalArgumentException("Model hash changed");
+        if(spec.averagedInputs()==null)return anchor.model();
+        if(spec.averagedInputs().size()!=8)throw new IllegalArgumentException("Explicit eight-checkpoint window required");
+        var models=new ArrayList<NetworkModel>();String parent=null;long generation=-1,step=-1;
+        for(var input:spec.averagedInputs()) {
+            var snapshot=CheckpointStore.readSnapshot(Path.of(input.root()),input.checkpoint());var manifest=snapshot.manifest();
+            if(!manifest.networkSha256().equals(input.networkSha256()))throw new IllegalArgumentException("Average input hash changed");
+            if(parent!=null&&(!manifest.parentId().equals(parent)||manifest.generation()!=generation+1||manifest.optimizerStep()!=step+8192))
+                throw new IllegalArgumentException("Consecutive same-lineage mean required");
+            parent=input.checkpoint();generation=manifest.generation();step=manifest.optimizerStep();models.add(snapshot.model());
+        }
+        var last=spec.averagedInputs().getLast();
+        if(!last.checkpoint().equals(spec.checkpoint())||!last.networkSha256().equals(spec.networkSha256()))
+            throw new IllegalArgumentException("Mean anchor must be latest ingredient");
+        return BrnSuccessorVariants.average(models);
     }
     record Plan(String id, List<Model> models, int pairs, long seed, long nodes, long moveMillis,
                 int maximumPlies, int batchGames, int batchSeconds, List<List<String>> openingMoves, boolean legalFallback) {
@@ -58,7 +80,7 @@ public final class BrnSuccessorMatch {
         for (var spec : plan.models()) {
             var snapshot = CheckpointStore.readSnapshot(Path.of(spec.root()), spec.checkpoint());
             if (!snapshot.manifest().networkSha256().equals(spec.networkSha256())) throw new IllegalStateException("Model hash changed");
-            NetworkModel model=snapshot.model();
+            NetworkModel model=loadModel(spec);
             if(spec.correctionScale()!=null||spec.correctionAblation()!=null) {
                 if(spec.residualGain()!=null||spec.blendCandidateWeight()!=null)
                     throw new IllegalArgumentException("Separate correction controls from W1 gain/blending");
@@ -99,6 +121,10 @@ public final class BrnSuccessorMatch {
                     "effectiveNetworkSha256",HexFormat.of().formatHex(DataFiles.digest().digest(bytes.toByteArray())),
                     "residualGain",spec.residualGain()==null?.25:spec.residualGain(),"gatedCache",spec.gatedCache()));
             if(spec.cubicCache())modelBinding.put("cubicCache",true);
+            if(spec.averagedInputs()!=null) {
+                modelBinding.put("averagedInputs",spec.averagedInputs());
+                modelBinding.put("averaging","Uniform parameter mean; Pair2 compiled tables; inference only, no optimizer continuation");
+            }
             if(spec.cubicDeltaCache())modelBinding.put("cubicDeltaCache","polynomial-period64-canonical-rounding-guard-v1");
             if(spec.gatedDeltaCache())modelBinding.put("gatedDeltaCache","period64-canonical-rounding-guard-v1");
             if(model instanceof NetworkModel.BrnNext n && n.model().architecture().frozenBase()) {
