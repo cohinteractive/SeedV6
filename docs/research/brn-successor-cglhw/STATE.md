@@ -70,10 +70,12 @@ it. Cubic terms also improve CUBIC's sample prediction. Data errors do not selec
 the chess winner. The sampled sealed bucket is now development evidence, not
 independent future confirmation.
 
-Active: finish `wave2-clock-screen-plan.json` (128 games total), common Policy4,
-50ms/move,32 book openings, reversed colours for GATE and CUBIC. The existing
-`raw/wave2/clock-screen` contains resumable immutable per-game receipts. Check for
-an active JVM before launching another batch; do not run parallel benchmark work.
+Completed `wave2-clock-screen-plan.json` (128 games), common Policy4,
+50ms/move,32 book openings, reversed colours: GATE14/17/33 (35.16%),
+CUBIC23/11/30 (44.53%). All16,152 moves/terminations independently replayed.
+No failed/capped pairs or fallbacks. GATE regressed under these conditions; CUBIC
+is inconclusive. Records remain in `raw/wave2/clock-screen`; do not rerun it.
+Check for an active JVM before launching another batch; no parallel benchmark work.
 Plans and source-backed reproduction commands are in WAVE2 and the runner CLI.
 Trained latency probe and13 selected math/runtime tests pass.
 An opt-in GATE block cache is implemented and passes three additional tests plus
@@ -83,6 +85,21 @@ identical48 paired searches, approximately1.30x search speedup. Ordinary loading
 still uses full recomputation. The original clock screen must continue exclusively
 from `raw/wave2/clock-runtime/lib/*`, not rebuilt research distribution jars.
 The qualifying cache implementation advances build42→43 in its own commit.
+Active: `wave2-calibration-plan.json`,128 exploratory games across cached
+GATE gains.25/.5/1 and CUBIC.5, reusing16 development openings. Three gain-scaling
+tests and a four-JVM resume smoke pass; original models remain untouched.
+Resume `raw/wave2/calibration-screen` exclusively with the frozen
+`raw/wave2/calibration-runtime/lib/*`. Each invocation plays at most12 games or
+240 seconds (finishing its current game). Stop/investigate any runtime failure.
+No success claim from either development screen.
+
+Hypothesis frontier: calibration and runtime cost remain active; test a similarly
+history-independent CUBIC cache if justified by its throughput deficit. Separate
+GATE's learned mean mixture from conditional variation before claiming that its
+extra expressiveness contributes useful value. Re-match existing from-scratch
+campaign snapshots under common search if needed to isolate learning efficacy.
+Only then select retraining/hybrid architecture work. User training is not yet a
+blocker; no new training gate has been invented.
 Retain W1 designs pending these results; speculative Wave2 redesign is premature.
 Prepare a narrowly scoped explicit common-policy Arena option if needed for fair
 user comparisons, preserving historical campaign semantics and production identity.

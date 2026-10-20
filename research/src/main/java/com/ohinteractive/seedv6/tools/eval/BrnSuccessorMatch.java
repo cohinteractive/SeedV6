@@ -13,12 +13,14 @@ import com.ohinteractive.seedv6.training.validation.*;
 import com.ohinteractive.seedv6.training.selfplay.HeadlessGame;
 import com.ohinteractive.seedv6.core.move.LegalMoveResolver;
 import com.ohinteractive.seedv6.core.move.MoveIntent;
+import com.ohinteractive.seedv6.training.model.NetworkModel;
+import java.io.ByteArrayOutputStream;
 import java.nio.file.*;
 import java.util.*;
 
 /** Single-worker paired diagnostic with immutable per-game receipts and explicit equal search. */
 public final class BrnSuccessorMatch {
-    record Model(String name, String root, String checkpoint, String networkSha256) {}
+    record Model(String name, String root, String checkpoint, String networkSha256, Double residualGain, boolean gatedCache) {}
     record Plan(String id, List<Model> models, int pairs, long seed, long nodes, long moveMillis,
                 int maximumPlies, int batchGames, int batchSeconds, List<List<String>> openingMoves, boolean legalFallback) {
         Plan {
@@ -26,11 +28,12 @@ public final class BrnSuccessorMatch {
                     || (nodes > 0) == (moveMillis > 0) || maximumPlies < 1)
                 throw new IllegalArgumentException("Invalid bounded match plan");
             if (openingMoves != null && openingMoves.size() != pairs) throw new IllegalArgumentException("Opening count");
+            if (models.stream().map(Model::name).distinct().count()!=models.size())throw new IllegalArgumentException("Distinct model names required");
         }
     }
     record Move(int player, long move, Integer score, int depth, long nodes, long elapsedNanos, String fenAfter, boolean fallback) {}
     record Receipt(String planHash, String candidate, String reference, int pair, int colour,
-                   String openingHash, String openingFen, ValidationResult.Game result, List<Move> moves) {}
+                   String openingHash, String openingFen, ValidationResult.Game result, List<Move> moves, String candidateName) {}
     public static void main(String[] args) throws Exception {
         if (args.length != 2) throw new IllegalArgumentException("PLAN OUTPUT_DIRECTORY (same plan resumes completed games)");
         Path planFile = Path.of(args[0]), output = Path.of(args[1]);
@@ -42,12 +45,34 @@ public final class BrnSuccessorMatch {
             if (!Files.readString(binding).equals(hash)) throw new IllegalStateException("Different resume plan");
         } else Files.writeString(binding, hash, StandardOpenOption.CREATE_NEW);
         var models = new ArrayList<SearchEvaluation>();
+        var bindings = new ArrayList<Object>();
         for (var spec : plan.models()) {
             var snapshot = CheckpointStore.readSnapshot(Path.of(spec.root()), spec.checkpoint());
             if (!snapshot.manifest().networkSha256().equals(spec.networkSha256())) throw new IllegalStateException("Model hash changed");
-            models.add(snapshot.model().evaluation(NnueScoreMapping.V1));
+            NetworkModel model=snapshot.model();
+            if(spec.residualGain()!=null) {
+                if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("Gain override requires W1");
+                model=new NetworkModel.BrnNext(BrnSuccessorVariants.gain(n.model(),spec.residualGain()));
+            }
+            SearchEvaluation evaluation;
+            if(spec.gatedCache()) {
+                if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("GATE cache requires W1");
+                evaluation=SearchEvaluation.brnGatedIncrementalResearch(n.model());
+            } else evaluation=model.evaluation(NnueScoreMapping.V1);
+            models.add(evaluation);
+            var bytes=new ByteArrayOutputStream();model.write(bytes);
+            bindings.add(Map.of("name",spec.name(),"originalManifest",snapshot.manifest(),
+                    "effectiveNetworkSha256",HexFormat.of().formatHex(DataFiles.digest().digest(bytes.toByteArray())),
+                    "residualGain",spec.residualGain()==null?.25:spec.residualGain(),"gatedCache",spec.gatedCache()));
         }
-        var config = new ValidationConfig(plan.pairs(), plan.seed(), 4, 12, 64, 1, NnueScoreMapping.V1, plan.maximumPlies());
+        String bound=DataFiles.JSON.toJson(Map.of("planHash",hash,"models",bindings))+"\n";
+        Path identities=output.resolve("model-bindings.json");
+        if(Files.exists(identities)) {
+            if(!com.google.gson.JsonParser.parseString(Files.readString(identities)).equals(com.google.gson.JsonParser.parseString(bound)))
+                throw new IllegalStateException("Effective model binding changed");
+        } else Files.writeString(identities,bound,StandardOpenOption.CREATE_NEW);
+        var config = new ValidationConfig(plan.pairs(), plan.seed(), plan.openingMoves()==null?4:0,
+                plan.openingMoves()==null?12:0, 64, 1, NnueScoreMapping.V1, plan.maximumPlies());
         if (plan.moveMillis() > 0) for (var evaluation : models) for (int i=0;i<4;i++)
             try (var warmup = new SearchDriver(BrnSuccessorAudit.common(evaluation))) {
                 var opening=opening(plan,config,i%plan.pairs());
@@ -66,6 +91,7 @@ public final class BrnSuccessorMatch {
                     if (!prior.planHash().equals(hash) || !prior.openingHash().equals(opening.identity())
                             || prior.pair() != pair || prior.colour() != colour
                             || !prior.candidate().equals(plan.models().get(candidate).checkpoint())
+                            || prior.candidateName()!=null&&!prior.candidateName().equals(plan.models().get(candidate).name())
                             || !prior.reference().equals(plan.models().getFirst().checkpoint()))
                         throw new IllegalStateException("Receipt binding mismatch: " + file);
                     continue;
@@ -98,13 +124,14 @@ public final class BrnSuccessorMatch {
                                 control.elapsedNanos(), Fen.fromBoard(game.boardSnapshot()),false));
                     }
                 } catch (RuntimeException failure) {
-                    DataFiles.write(output.resolve(name + ".failed"), Map.of("failure", failure.toString(), "moves", trace,
-                            "planHash", hash, "pair", pair, "colour", colour));
+                    Files.writeString(output.resolve(name + "." + UUID.randomUUID() + ".failed"),
+                            DataFiles.JSON.toJson(Map.of("failure", failure.toString(), "moves", trace,
+                                    "planHash", hash, "pair", pair, "colour", colour)) + "\n", StandardOpenOption.CREATE_NEW);
                     throw failure; // Never silently exclude a failure and continue selection.
                 }
                 var receipt = new Receipt(hash, plan.models().get(candidate).checkpoint(), plan.models().getFirst().checkpoint(),
                         pair, colour, opening.identity(), Fen.fromBoard(opening.board()),
-                        new ValidationResult.Game(game.termination(), game.playedPlies()), List.copyOf(trace));
+                        new ValidationResult.Game(game.termination(), game.playedPlies()), List.copyOf(trace),plan.models().get(candidate).name());
                 DataFiles.write(file, receipt);
                 System.out.println(name + " " + game.termination() + " plies=" + game.playedPlies());
                 played++;

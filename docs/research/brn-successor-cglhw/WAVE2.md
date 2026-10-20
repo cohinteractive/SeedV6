@@ -152,8 +152,11 @@ seek metadata was copied into this new raw directory.
 | POOL | .697121 | .713222 |
 
 All W1 trainer/runtime raw predictions agree exactly on4,096 samples. Uniform
-GATE mixing gives CE2.245348/2.229703; its context dependence contributes to label
-prediction. Removing CUBIC's cubic head increases CE to .757521/.840136. Removing
+GATE mixing gives CE2.245348/2.229703. This changes both learned average mixture
+and context dependence; the large loss increase does not isolate those effects.
+A learned-mean constant-mixture control is still required before attributing the
+benefit specifically to context. Removing CUBIC's cubic head increases CE to
+.757521/.840136. Removing
 all interaction terms worsens every W1 model. These are post-training ablations:
 co-adaptation means they are not equivalent to separately trained restricted models,
 and they do not establish that expressive machinery improves playing strength.
@@ -179,15 +182,33 @@ jointly learned embeddings/heads and dense Adam. These differences plausibly aff
 optimization, capacity and search speed. Their individual causal effects have not
 been isolated. “Pairwise is inherently weaker” is not an accepted premise.
 
-## Active next experiment and frontier
+## Completed clock screen and active frontier
 
 `wave2-clock-screen-plan.json`: GATE and CUBIC admitted to64 games each on32
 predetermined eight-move book openings from existing Search development input.
 50ms/move, identical common Policy4, one worker,64MiB each, no ponder, warmed JVM;
 12 games or240 seconds per invocation (finish current game), immutable game
-receipts and resumable batches. This is a short exploratory clock screen, not
-the contract's independent strength confirmation. Finish fixed N irrespective
-of scores. Later confirmation must use independent openings, a prospective error
+receipts and resumable batches. All128 games completed at the fixed endpoint:
+
+| Candidate | W/D/L | Score | Descriptive paired normal95% interval |
+| --- | --- | ---: | --- |
+| GATE Gen200, full recompute | 14/17/33 | 35.16% | 25.35–44.96% |
+| CUBIC Gen200, full recompute | 23/11/30 | 44.53% | 33.81–55.25% |
+
+No failed/capped pairs and no legal-move fallbacks. Independent python-chess1.11.2
+replayed16,152 moves and checked every termination (`raw/wave2/clock-analysis-01.json`).
+GATE regressed in this screen; CUBIC is inconclusive. Neither establishes improvement.
+These descriptive intervals do not correct for selection, shared opening families
+or repeated development tests. The short clock limits extrapolation.
+Mean search telemetry: GATE0.701M nodes/s and depth7.41; CUBIC1.146M and8.48;
+reference1.748M and8.75. Different games reach different position distributions,
+so these are workload observations, not isolated speed ratios. Maximum recorded
+move elapsed time was83.5ms; ordinary OS/JVM scheduling and polling contribute
+overrun. One worker, no ponder,64MiB TT each,768MiB heap, BelowNormal priority,
+ActiveProcessorCount1. Host AMD Ryzen5 5500,6 cores/12 logical processors, Java21.
+
+This is a short exploratory clock screen, not the contract's independent strength
+confirmation. Later confirmation must use independent openings, a prospective error
 rule accounting for candidate selection, appropriate clocks and cost/ablation evidence.
 
 Priorities now: complete clock screen; independently audit legal trajectories and
@@ -237,11 +258,47 @@ production evaluator replacement, checkpoint update or deployment is implied.
 Next evaluate the opt-in cache under equal time, and investigate calibration if
 the fixed clock screen warrants it. Preserve a full-recompute control.
 
+### Prepared calibration study
+
+`wave2-calibration-plan.json` fixes128 exploratory games:16 development openings
+and colour reversal for cached GATE at gains.25/.5/1, plus CUBIC at.5. The first
+16 openings are an explicitly reused development subset, not independent evidence.
+The .25 cache arm controls implementation effects; higher gains test the unverified
+inheritance of Pair2's quarter-residual calibration. Original frozen Gen32 always
+retains its .25 mapping. No substantive training, checkpoint writes or conversion.
+Execution has begun in `raw/wave2/calibration-screen`, using the separately frozen
+`raw/wave2/calibration-runtime/lib/*` and its SHA256 inventory. Do not rebuild or
+substitute those jars while resuming this study.
+
+`BrnSuccessorVariants` scales only bias/unary and output-linear weights in an
+immutable copied W1 runtime model; embeddings and hidden/gate biases stay fixed.
+This realizes the requested residual gain under the unchanged quarter mapper.
+Three architecture-parameterized tests verify the mathematical score mapping and
+preservation of source weights. A malformed test FEN (black to move with white's
+EP rank) was corrected before the tests passed.
+The match runner records original and effective payload hashes and distinct variant
+names, including when several variants share one original checkpoint. Resume compares
+JSON bindings semantically so map key iteration order cannot change model identity.
+Failure traces now receive unique immutable names instead of overwriting a retry.
+
+`raw/wave2/variant-smoke-v2` completed four deliberately capped, unscored games across
+four fresh JVMs; all16 moves independently replayed. The two GATE variants retain
+separate pair accounting. Quarter-gain effective payload equals the original network
+hash; half-gain hash is
+`a28ce147971c14bb87b6b7fcf0ea5b2d938a87e471273d96a0704d71a96addbd`.
+The original smoke attempt stopped at configuration validation because random-opening
+bounds were irrelevant but incompatible with its four-ply cap. Book-opening runs now
+use zero random-opening bounds; old failed outputs remain. A PowerShell wrapper also
+mistook an unavailable process ExitCode for failure after the first successful v2
+game; the game was preserved and resumed normally. These were harness/preflight
+issues, not model-training failures.
+
 ## Implementation and validation record
 
-Research-only runners: `BrnSuccessorAudit`, `BrnSuccessorMatch`,
-`BrnSuccessorDataProbe`, `BrnSuccessorCostProbe`, `BrnSuccessorReplay`. No evaluator,
-trainer, default search, GUI or checkpoint format has yet changed.
+Initial research-only runners: `BrnSuccessorAudit`, `BrnSuccessorMatch`,
+`BrnSuccessorDataProbe`, `BrnSuccessorCostProbe`, `BrnSuccessorReplay`. That diagnostic
+unit changed no evaluator, trainer, default search, GUI or checkpoint format.
+The later opt-in GATE cache and calibration controls are documented above.
 Build uses Java21, offline Gradle with one worker and the existing migration cache.
 `:research:installResearch` succeeds. Selected existing
 `BrnNextMathTest`, `BrnNextPartitionTest`, `BrnNextRuntimeTest` pass, including

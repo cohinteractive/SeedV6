@@ -45,7 +45,7 @@ def analyze(plan_path, directory, output):
             assert entry["player"] == (0 if board.turn else 1)
             board.push(move)
             assert board.fen(en_passant="fen").split()[:5] == entry["fenAfter"].split()[:5], (path, move)
-            model = record["candidate"] if entry["player"] == colour else record["reference"]
+            model = (record.get("candidateName") or record["candidate"]) if entry["player"] == colour else record["reference"]
             t = telemetry[model]
             t["moves"] += 1
             t["nodes"] += entry["nodes"]
@@ -79,14 +79,19 @@ def analyze(plan_path, directory, output):
             failures.append({"receipt": path.name, "termination": termination})
             white_score = None
         score = white_score if colour == 0 or white_score is None else 1 - white_score
-        key = (record["candidate"], pair)
+        candidate_name = record.get("candidateName")
+        if candidate_name is None:
+            matching = [m["name"] for m in plan["models"][1:] if m["checkpoint"] == record["candidate"]]
+            assert len(matching) == 1
+            candidate_name = matching[0]
+        key = (candidate_name, pair)
         assert colour not in groups[key]
         groups[key][colour] = score
     results = []
     for model in plan["models"][1:]:
         pairs, wdl, missing, incomplete = [], [0, 0, 0], 0, 0
         for pair in range(plan["pairs"]):
-            game = groups[(model["checkpoint"], pair)]
+            game = groups[(model["name"], pair)]
             if len(game) != 2:
                 missing += 1
             elif any(v is None for v in game.values()):
