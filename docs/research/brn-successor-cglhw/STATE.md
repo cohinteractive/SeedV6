@@ -161,3 +161,11 @@ Wave1 chronology remains in WAVE1 and Git. No finalizer, root journal creation,
 production-default replacement, push or deployment. Repository-root
 CODEXLOG_CURRENT.md was absent. Finished turn, implementation readiness and accepted
 workstream outcome remain distinct; owner acceptance/success are not established.
+
+
+Latest continuation: fresh-node study complete192games/24063 replayed moves,
+no failures/caps; half-GATE57.8125%, half-CUBIC56.25%, half-BRE58.59375%
+against continued full BRE. No expressive separation established. Longer-clock
+and guarded-GATE-clock remain pending. A CUBIC delta prototype also passed25143
+comparisons with~2x transition speed; numerical guard/search verification is next
+independent work, with no production activation. See WAVE3-ASSESSMENT.

@@ -470,3 +470,25 @@ and longer-clock studies resume48/192 and30/192 respectively, without failures.
 The failed final-build attempt01 requested nonexistent `installDist`; no tests
 ran there. Retry02 used the actual `installResearch` task, passed13 selected
 core tests, project-boundary validation and runtime export. Preserve both logs.
+
+
+## Fresh equal-node control result
+
+The192-game fresh-opening node study completed and independently replayed24063
+moves, with no failures/caps/missing pairs. Against continued full BRE, half-GATE
+31/12/21=57.8125%, half-CUBIC32/8/24=56.25%, half-BRE34/7/23=58.59375%.
+All paired descriptive95% intervals include50%; see
+`wave3-fair-control-node-results.json`. Neither expressive function separates from
+the calibrated additive control. This supports calibration as a shared issue,
+not an expressiveness claim or a definitive rejection. Clock studies remain pending.
+
+A second bounded cost experiment (`wave3-cubic-delta-plan.json`) updates degree-three
+polynomial coefficients by removing/adding changed piece factors, with canonical
+rebuilding after64 changes or jumps larger than8 squares. The prototype passed
+25143 comparisons, raw maximum5.33e-15 and no integer differences. Balanced mean
+transition time592ns->291ns, with startup effects in both arms. It is research-only,
+without search activation or model writes. Compact evidence and frozen prototype
+runtime: `wave3-cubic-delta-prototype-results.json`. Admit numerical-bound/fallback,
+adversarial boundary/transition tests and exact-search cost checks before any use.
+The temporary admission pause finished after the node protocol completed; original
+clock protocols continue unchanged with new log prefixes.
