@@ -1,0 +1,70 @@
+{
+  "id": "wave4-continuation-preparation-v1",
+  "status": "Fixture verification only; owner-library creation and human gate not admitted yet",
+  "plan": "wave4-continuation-plan.json",
+  "tests": [
+    {
+      "path": "engine-training/build/test-results/test/TEST-com.ohinteractive.seedv6.training.checkpoint.ContinuationProvenanceTest.xml",
+      "sha256": "8cb2fa082e7261e8872719104a534fd4761675d10742feedafe8f51e14a8f9d7",
+      "tests": 3,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "path": "app-gui/build/test-results/test/TEST-com.ohinteractive.seedv6.gui.BrnContinuationWaveTest.xml",
+      "sha256": "bd073cc5d633d057f8bccfef2c14f051dcc10ef632442d771257063035e37ab7",
+      "tests": 4,
+      "skipped": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "path": "build/test-results/integrationTest/TEST-com.ohinteractive.seedv6.training.service.LineageProvenanceTest.xml",
+      "sha256": "b05f5d174846fda00e7268a75c03357fa8b3e0c57022ff7993c1eb51fa89aaa1",
+      "tests": 6,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/continuation-native-fixtures-01.xml",
+      "sha256": "9d2969d2b01ffed260828b1f8d5403c637f17a51097f7d080ff591e08d8e0b9b",
+      "tests": 1,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "passed": 13,
+  "nativeFixtureConfigurations": 6,
+  "nativeVisualInspection": "GATE LR001, CUBIC LR003 and BRE LR001 screenshots inspected; all six native controls asserted correct rates,128batch,8epochs,32 additional generations, held-out validation, starting-generation summary, enabled Start; no session created.",
+  "screenshots": {
+    "app-gui/build/brn-successor-native/W4-BRN_GEN32_CUBIC-LR001-fixture.png": "fceb13e23cb6d1a1fa585ac87db3406a299d5091d5ae0f8970e0c2a8cb2be1c4",
+    "app-gui/build/brn-successor-native/W4-BRN_GEN32_CUBIC-LR003-fixture.png": "a0623e0867703879d653a8e42d50c6dc23fa5d7eb33fbd77556152fb82b1f8a1",
+    "app-gui/build/brn-successor-native/W4-BRN_GEN32_GATED-LR001-fixture.png": "5b17afde94243013dd066cec55439e83c88f3a82dd6410648751259044964dc1",
+    "app-gui/build/brn-successor-native/W4-BRN_GEN32_GATED-LR003-fixture.png": "ce7492ad9986cb174fd299bed515b555ce16cb029558b92dd1bc488773cea228",
+    "app-gui/build/brn-successor-native/W4-BRN_PAIR2-LR001-fixture.png": "47225ca589411d2953dbc711faa99d7020f172cc9af4fa5c7ce820057ada9860",
+    "app-gui/build/brn-successor-native/W4-BRN_PAIR2-LR003-fixture.png": "3df8c03a29a60e4bde6ff1a6895968a8ac7f8d101ecb73382dd80b39b129bd08"
+  },
+  "negativeAttempts": [
+    "continuation-preparation-tests-01.log: test used package-private Operations from GUI package; compiler refused; corrected to public service.",
+    "continuation-preparation-tests-02.log/xml: test omitted GUI session/incremental opt-ins; training completed but session assertion failed. Corrected to the actual GUI service setup;03/04 pass."
+  ],
+  "sourceCapacity": {
+    "bt4PreparedCount": 6670929023,
+    "bt4PreparedIdentity": "f31d471fd96548318141b44498c18ebb9cd9d3acb6e6e56c70efe42bf6c65457",
+    "historicalLedgerPath": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017/training-data/cursors.json",
+    "historicalLedgerSha256": "c8137b00b0056b6c9da28cbac3379f98d7cb250b2a77308726360c2c4072ef58",
+    "completedRawEndLowerBounds": {
+      "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 1151848274,
+      "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 303903849
+    },
+    "limitations": "CP total unknown (seek index count=-1). Completed same-source historical consumption exceeds the proposed continuation ranges; future usable quotas still depend on actual records. Original later BRE models are not strength references."
+  },
+  "remaining": [
+    "Complete frozen clock studies and reconcile before owner-library creation.",
+    "Verify actual six new roots/checkpoint hashes and native GUI bindings if continuation is admitted.",
+    "Substantial training remains user-only; no gate completed by invocation alone."
+  ]
+}

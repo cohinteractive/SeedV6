@@ -23,7 +23,10 @@ final class LineageSummary {
                         ? "Available" : "Checkpoint unavailable";
                 var decisions = CheckpointInspection.validations(entry.root());
                 settled = java.util.stream.Stream.concat(records.stream().map(GenerationRecord::candidate), decisions.keySet().stream()).distinct().count();
-                if (manifest.generation() > 0 && !decisions.containsKey(id)) latest += " (Candidate, unfinished)";
+                if (manifest.generation() > 0 && !decisions.containsKey(id)) {
+                    boolean bootstrap = manifest.parentId().isEmpty() && CheckpointInspection.accepted(entry.root()).contains(id);
+                    latest += bootstrap ? " (Starting checkpoint)" : " (Candidate, unfinished)";
+                }
             }
             if (Files.exists(entry.root().resolve("refs/best"))) {
                 String id = CheckpointInspection.reference(entry.root(), "best");

@@ -541,3 +541,31 @@ Complete legal smoke before games. This preserves the old longer-clock study and
 measures the implementation revision without changing checkpoint selection. It is
 reused development evidence; no combined independent significance claim or optional
 extension. All substantial training remains reserved for the human GUI gate.
+
+
+## Continuation-support preparation admitted
+
+While fixed clock studies run, admit the narrow continuation-support implementation
+needed if the retained maturity/rate hypothesis reaches the next human gate.
+Both residual families now have verified cost reductions, yet fresh equal-node
+results have not separated from additive shrinkage; the bounded optimizer/order
+studies support testing a lower rate without declaring it best. Prepare exact
+latest32 forks into paired.001/.003 arms for all three families, preserving Adam
+state, source offsets and historical reservations. No owner-library fork or
+substantial training is executed until the clock evidence is reconciled.
+
+Resolve the earlier nonzero-bootstrap constraint by authenticating an accepted
+parentless bootstrap instead of assuming its generation is zero. Keep provenance
+format/immutability and verify rejection of unaccepted or nonbootstrap checkpoints.
+GUI metadata must distinguish a nonzero starting checkpoint from unfinished new
+work. Do not copy/alter original histories or reset ledgers. Six future arms share
+records within each family; existing cross-family split/cursor differences remain
+explicit confounds. This preparation does not establish a training gate or success.
+
+
+Continuation support now passes13 tests including six native GUI configurations;
+see [WAVE4](WAVE4.md) and `wave4-preparation-results.json`. Exact source payloads,
+Adam continuation, inherited ledgers, actual incremental/session behaviour and
+rejection/preservation cases are verified on tiny isolated fixtures. Owner-library
+creation remains deferred until the fixed clock studies are reconciled. The latest
+bounded pause occurred after59 longer-clock games, without interrupting a game.

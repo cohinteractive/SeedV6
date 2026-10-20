@@ -211,9 +211,7 @@ public final class CheckpointStore implements AutoCloseable {
     }
     public void writeProvenance(LineageProvenance provenance) throws IOException {
         requireOpen(); requireArchitecture(provenance.architecture());
-        var manifest = historicalManifest(root, provenance.initialCheckpoint());
-        if (manifest.architecture() != provenance.architecture() || manifest.generation() != 0 || !manifest.parentId().isEmpty())
-            throw new IOException("Provenance requires the actual bootstrap checkpoint");
+        LineageProvenance.requireBootstrap(root, provenance.initialCheckpoint(), provenance.architecture());
         var existing = LineageProvenance.read(root);
         if (existing.isPresent()) {
             if (!existing.get().equals(provenance)) throw new IOException("Initialization provenance is immutable");

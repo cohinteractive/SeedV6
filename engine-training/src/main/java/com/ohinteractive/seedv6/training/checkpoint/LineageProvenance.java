@@ -27,9 +27,14 @@ public record LineageProvenance(String initialCheckpoint, TrainingArchitecture a
         var value = SmallRecord.read(file, "lineage-provenance-v1", in -> new LineageProvenance(in.readUTF(),
                 TrainingArchitecture.valueOf(in.readUTF()), in.readUTF(), in.readBoolean() ? in.readLong() : null,
                 in.readLong(), Instant.parse(in.readUTF())));
-        var manifest = CheckpointStore.historicalManifest(root, value.initialCheckpoint());
-        if (manifest.architecture() != value.architecture() || manifest.generation() != 0 || !manifest.parentId().isEmpty())
-            throw new IOException("Initializer evidence does not match this lineage bootstrap");
+        requireBootstrap(root, value.initialCheckpoint(), value.architecture());
         return Optional.of(value);
+    }
+    /** Continuation forks may retain a nonzero counter, but must name an accepted parentless bootstrap. */
+    static void requireBootstrap(Path root, String checkpoint, TrainingArchitecture architecture) throws IOException {
+        var manifest = CheckpointStore.historicalManifest(root, checkpoint);
+        if (manifest.architecture() != architecture || !manifest.parentId().isEmpty()
+                || !CheckpointInspection.accepted(root).contains(checkpoint))
+            throw new IOException("Initializer evidence does not match this lineage bootstrap");
     }
 }

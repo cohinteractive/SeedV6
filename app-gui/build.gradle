@@ -40,9 +40,22 @@ tasks.register('brnResidualWave', JavaExec) {
     else doFirst { throw new GradleException('Supply -PresidualWaveReport=<new report path>') }
 }
 
+tasks.register('brnContinuationWave', JavaExec) {
+    group = 'verification'
+    description = 'Prepares explicitly planned exact-state BRN continuation lineages without training.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.gui.BrnContinuationWave'
+    jvmArgs '--add-modules=jdk.incubator.vector', '-Xmx768m', '-XX:ActiveProcessorCount=1', '-Djava.awt.headless=true'
+    if (project.hasProperty('continuationWavePlan') && project.hasProperty('continuationWaveReport'))
+        args '--create', rootProject.file(project.property('continuationWavePlan')).absolutePath,
+                rootProject.file(project.property('continuationWaveReport')).absolutePath
+    else doFirst { throw new GradleException('Supply continuationWavePlan and continuationWaveReport') }
+}
+
 tasks.withType(Test).configureEach {
     if (project.hasProperty('headless')) systemProperty 'java.awt.headless', 'true'
     if (project.hasProperty('waveGuiReport')) systemProperty 'seedv6.waveGuiReport', rootProject.file(project.property('waveGuiReport')).absolutePath
     if (project.hasProperty('residualWaveGuiReport')) systemProperty 'seedv6.residualWaveGuiReport', rootProject.file(project.property('residualWaveGuiReport')).absolutePath
+    if (project.hasProperty('continuationWaveGuiReport')) systemProperty 'seedv6.continuationWaveGuiReport', rootProject.file(project.property('continuationWaveGuiReport')).absolutePath
     maxHeapSize = '2g'
 }

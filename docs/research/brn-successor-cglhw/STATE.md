@@ -3,7 +3,7 @@
 Updated21 October2026. **Human training gate G3 is verified complete. Trained Wave3 assessment is active.
 No programme success is claimed.** This remains the original CGLHW.
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
-[completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md).
+[completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md), and [continuation preparation](WAVE4.md).
 
 Objective: statistically credible practical chess improvement over frozen BRE-Pair2
 Gen32 through useful additional expressiveness, with measured costs and compatible
@@ -132,12 +132,17 @@ Warmed search time falls17.5%; worker primitive storage10162->4329bytes. See
 `wave3-cubic-delta-guarded-results.json`. Admit the separate64-game
 `wave3-cubic-delta-clock-plan.json` after clean runtime freeze and legal smoke.
 
-Exact current action: tournament admission is temporarily paused at the next batch
-boundary by owned `build/research/brn-successor-batches.pause`. Check active processes
-before any build/benchmark; let the current bounded batch finish. Finish CUBIC runtime freeze/legal smoke, then remove only the sentinel and resume missing clock
-games with new unique log prefixes. Previous resume03 prefixes may already exist;
-inspect rather than overwrite. Investigate any `.failed` before resuming. Independently
-replay completed protocols. No next human training gate has been admitted.
+Exact current action: CUBIC delta committed atcfae34d/build49, separately frozen in
+`wave3-cubic-delta-runtime.json`; two-game/16-move legal smoke passed independent
+replay (intentional eight-ply caps excluded). Tournament admission is resumed,
+serially finishing longer-clock192, GATE delta64, CUBIC delta64. Resume04 log
+prefixes may already exist: inspect active processes/receipts and choose unique
+prefixes. No simultaneous heavy work; use the owned pause sentinel at a batch
+boundary before tests/builds. Investigate any `.failed` before continuation.
+Independently replay completed protocols. Exact-state GUI continuation preparation is verified on isolated fixtures
+(13 passing tests, including six native GUI configurations). See WAVE4 and
+`wave4-preparation-results.json`. No owner-library fork or human training gate
+until clock evidence reconciliation. Resume05 prefixes are the next planned set.
 
 Source progress started at zero and overlaps Gen32 history. Hybrid stable-layout
 splits differ from BRE sequential holdout; residual tranches match each other,
@@ -167,9 +172,10 @@ CODEXLOG_CURRENT.md was absent. Finished turn, implementation readiness and acce
 workstream outcome remain distinct; owner acceptance/success are not established.
 
 
-Latest continuation: fresh-node study complete192games/24063 replayed moves,
-no failures/caps; half-GATE57.8125%, half-CUBIC56.25%, half-BRE58.59375%
-against continued full BRE. No expressive separation established. Longer-clock
-and guarded-GATE-clock remain pending. A CUBIC delta prototype also passed25143
-comparisons with~2x transition speed; numerical guard/search verification is next
-independent work, with no production activation. See WAVE3-ASSESSMENT.
+
+Continuation fixture verification is complete; source-state/cursor preservation,
+nonzero bootstrap authentication and the actual GUI session path pass. No real W4
+lineages exist yet. The owned admission sentinel was used to stop after59/192
+longer-clock games (no game interrupted); remove only that sentinel after this
+coherent preparation commit, then resume original longer-clock and both separately
+frozen delta-clock protocols with unique resume05 log prefixes. No other heavy jobs.
