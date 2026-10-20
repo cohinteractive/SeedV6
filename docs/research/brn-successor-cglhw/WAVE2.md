@@ -430,6 +430,85 @@ Evidence: `raw/wave2/fromscratch-cache-01.json`. Both fixed rematch samples are
 now executing sequentially from the frozen calibration-runtime. Preserve all
 outcomes; no outcome-based early stop or replacement games.
 
+### Matched from-scratch rematch results
+
+Both fixed samples completed, with independent legal/termination replay:
+`raw/wave2/fromscratch-node-analysis-01.json` (3,761 moves),
+`raw/wave2/fromscratch-clock-analysis-01.json` (3,856 moves).
+No failed/capped pairs or fallbacks. GATE scores against its matched BRE endpoint:
+
+| Budget | W/D/L | Score | Descriptive paired normal95% interval |
+| --- | --- | ---: | --- |
+| 32768 nodes/move | 11/7/14 | 45.3125% | 28.45-62.18% |
+| 50ms/move | 13/5/14 | 48.4375% | 31.42-65.45% |
+
+These are inconclusive small samples, and do not reproduce the earlier one-sided
+aggregate gap. They do not isolate a causal share for search, rate or data: the
+historical aggregate included multiple checkpoints, different openings/search,
+and differing rates in the smaller-exposure campaigns. They do establish that
+this trained GATE can compete with a matched BRE endpoint under common search;
+they do not establish improvement over frozen Gen32. The next existing-model
+screen (`wave2-bt4-reference-plan.json`,64 games) compares both round8 endpoints
+with frozen Gen32 under the same50ms/common-policy setup. No new training needed.
+
+### Complementary prediction errors and mixture hypothesis
+
+`tools/analyze-brn-successor-mixtures.py` / `raw/wave2/mixture-data-01.json` evaluates
+a fixed grid of W1 weights0/.25/.5/1 on the existing4,096 development positions.
+Its independent smooth-WDL implementation matches all Java alpha0/1 CE endpoints
+within1e-12. This is a diagnostic over already inspected data, not a fresh test.
+At raw gain1, half mixtures give BT4/CP CE.639827/.575755 for GATE and
+.641519/.581203 for CUBIC, versus Gen32.654154/.597866. Outcome MSE also improves.
+Thus errors are sufficiently complementary for averaging to help these labels;
+this does not imply a search gain, as the calibration study already demonstrated.
+
+`wave2-mixture-plan.json` prospectively fixes128 development games,64 each for
+half Gen32/half cached GATE and half Gen32/half cached CUBIC, all at the original
+quarter residual scale,32 reused openings,50ms/move and common Policy4. The explicit
+research composition mixes calibrated integer scores, rounded half away from zero.
+Each binding must identify both immutable component checkpoints, weights and cache
+choice; total runtime cost includes both. Default loading/search remains unchanged.
+Core ownership/numerical/search tests and the separate four-ply smoke must pass
+before scored execution. Freeze the runtime jars after validation. Any promising
+result needs independent confirmation and expressive-mechanism ablations; mere
+ensemble averaging or development loss cannot establish the governing objective.
+
+### Verified mixture implementation and cost preflight
+
+`SearchEvaluation.blendResearch` keeps immutable component definitions and separate
+worker-local states, delegating initialize/child/qsearch-owner transfer to each.
+Weights0/1 return the original definitions exactly. Interior mixtures have their
+own identity and never masquerade as Pair2 for production dispatch. The research
+runner explicitly binds the reference checkpoint, candidate checkpoint, calibrated
+weight, effective component hash and cache setting. Existing no-blend binding fields
+remain compatible. It also admits the explicit CUBIC cache control.
+
+Two new core tests cover3,000 legal transitions, numerical combination, separate
+workers, undo, endpoint identities, invalid weights and identical-component
+common-policy depth4 search parity. Together with both cache suites, existing W1
+runtime and three calibration tests,14 selected tests pass. Research installation
+succeeds. `raw/wave2/mixture-smoke` completed four deliberately four-ply-capped games
+in two fresh JVMs; independent replay validates16 moves. Caps are expected smoke
+outcomes and are excluded from scoring. Full scored games have not yet begun.
+
+Isolated transition-cost probes on the same6,333 saved positions, seven rotating
+50,000-evaluation passes, are `raw/wave2/mixture-cost-gate-01.json` and
+`mixture-cost-cubic-01.json`. GATE blend median1262ns versus cached GATE1082ns and
+Gen32153ns in that run; CUBIC blend830ns versus cached CUBIC594ns and Gen32189ns.
+These are host microbenchmarks, not universal ratios or strength measurements.
+Shared immutable primitive model bytes total852,080(GATE blend) or904,400(CUBIC
+blend), including Gen32's799,688 bytes. Worker state includes Gen32's2,920 primitive
+bytes plus W1 cache/workspace, component objects and normal search state. Both
+components' payloads and total memory must accompany any practicality claim.
+The cache probe's optional sixth argument measures the specified blend weight.
+
+This explicit core research capability advances build44 to45 in its coherent
+implementation commit. No trainer/model/codec changes, GUI defaults, production
+routing, user checkpoint updates, push or deployment. Freeze a separate mixture
+runtime after the commit; previous screens continue exclusively on their original
+frozen runtimes. Next complete BT4-reference games and execute the admitted fixed
+mixture screen, then independently replay/analyze both before selecting more work.
+
 ## Implementation and validation record
 
 Initial research-only runners: `BrnSuccessorAudit`, `BrnSuccessorMatch`,

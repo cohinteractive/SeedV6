@@ -107,10 +107,16 @@ rates produce very different functional steps and higher W1 rates do not reliabl
 improve held-out loss. See `wave2-optimizer-plan.json`. Prepared next are the
 node/clock from-scratch plans against matched .01/.01 BT4 round8 endpoints.
 The round8 cache oracle passed (6,333 positions,zero integer differences,48 paired
-searches identical). Rematches are ACTIVE in `raw/wave2/fromscratch-node` and
-`raw/wave2/fromscratch-clock`, sequential bounded batches from calibration-runtime.
-Each fixed study requires32 games. Inspect active JVMs before resuming; independently
-replay completed samples afterward. No user campaign is resumed. Separate
+searches identical). Both rematches completed32 games and independent replay: GATE45.3125% at equal
+nodes,48.4375% at equal time, inconclusive with no failures/caps/fallbacks.
+Next ACTIVE:`wave2-bt4-reference-plan.json` compares both endpoints to Gen32
+(64games), from frozen calibration-runtime. Prepared:`wave2-mixture-plan.json`
+tests half Gen32/half W1 GATE or CUBIC (128games), motivated by complementary
+development prediction errors. Core blend tests and actual-model smoke passed (14 selected tests, four capped
+smoke games,16 independently replayed moves). Isolated mixture-cost probes quantify
+both components; no strength inference. Core research blend commit advances44
+to45. Freeze its new runtime separately before scored mixture games. Inspect active
+JVMs before any test/benchmark/tournament; no concurrent heavy work. No user campaign is resumed. Separate
 GATE's learned mean mixture from conditional variation before claiming practical
 value: `raw/wave2/gate-context-01.json` now shows noncollapsed gates and improved
 raw-function CE/MSE versus a fitted constant mean; quarter-gain CE instead favours

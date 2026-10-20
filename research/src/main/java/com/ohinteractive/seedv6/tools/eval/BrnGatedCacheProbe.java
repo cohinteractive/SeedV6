@@ -17,8 +17,8 @@ import java.util.*;
 public final class BrnGatedCacheProbe {
     private static volatile long sink;
     public static void main(String[] args) throws Exception {
-        if(args.length<4||args.length>5)throw new IllegalArgumentException("MODEL_PLAN NODE_RECEIPTS CORPUS_JSONL NEW_OUTPUT [MODEL_NAME]");
-        String candidate=args.length==5?args[4]:"W1-GATE";
+        if(args.length<4||args.length>6)throw new IllegalArgumentException("MODEL_PLAN NODE_RECEIPTS CORPUS_JSONL NEW_OUTPUT [MODEL_NAME [BLEND_WEIGHT]]");
+        String candidate=args.length>=5?args[4]:"W1-GATE";
         Path output=Path.of(args[3]);if(Files.exists(output))throw new IllegalArgumentException("Preserve prior evidence");
         var plan=DataFiles.read(Path.of(args[0]),BrnSuccessorAudit.Plan.class);
         var spec=plan.models().stream().filter(m->m.name().equals(candidate)).findFirst().orElseThrow();
@@ -29,7 +29,8 @@ public final class BrnGatedCacheProbe {
         var full=SearchEvaluation.brnNext(model);
         var cached=cubic?SearchEvaluation.brnCubicIncrementalResearch(model):SearchEvaluation.brnGatedIncrementalResearch(model);
         var base=plan.models().getFirst();
-        var reference=CheckpointStore.readSnapshot(Path.of(base.root()),base.checkpoint()).model().evaluation(NnueScoreMapping.V1);
+        var referenceModel=CheckpointStore.readSnapshot(Path.of(base.root()),base.checkpoint()).model();
+        var reference=referenceModel.evaluation(NnueScoreMapping.V1);
         var boards=new ArrayList<long[]>();var inputs=new TreeMap<String,String>();
         try(var files=Files.list(Path.of(args[1]))) {
             for(var file:files.filter(f->f.getFileName().toString().matches("p\\d+-m\\d+-c\\d+\\.json")).sorted().toList()) {
@@ -56,15 +57,27 @@ public final class BrnGatedCacheProbe {
         DataFiles.write(output,result);
         if(maximum>1e-9||differences!=0)throw new IllegalStateException("Trained oracle mismatch; evidence preserved");
         String label=cubic?"CUBIC":"GATE";
-        var names=List.of(label+"-full",label+"-cache","Gen32");
-        var states=List.of(full.newState(2),cached.newState(2),reference.newState(2));
+        var names=new ArrayList<>(List.of(label+"-full",label+"-cache","Gen32"));
+        var states=new ArrayList<>(List.of(full.newState(2),cached.newState(2),reference.newState(2)));
+        if(args.length==6) {
+            double alpha=Double.parseDouble(args[5]);
+            names.add(label+"-blend-"+alpha);
+            states.add(SearchEvaluation.blendResearch(reference,cached,alpha).newState(2));
+            result.put("blendCandidateWeight",alpha);
+            result.put("referenceManifest",CheckpointStore.readSnapshot(Path.of(base.root()),base.checkpoint()).manifest());
+            if(referenceModel instanceof NetworkModel.BrnPair2 pair) {
+                result.put("blendReferenceImmutablePrimitiveBytes",pair.model().immutablePrimitiveBytes());
+                result.put("blendReferenceWorkspacePrimitiveBytes",pair.model().newWorkspace().primitiveBytes());
+            }
+            result.put("blendCandidateWeightBytes",8L*model.architecture().parameters());
+        }
         for(var state:states)run(state,boards,50000);
-        long[][] timings=new long[3][7];
-        for(int pass=0;pass<7;pass++)for(int offset=0;offset<3;offset++) {
-            int i=(pass+offset)%3;long start=System.nanoTime();run(states.get(i),boards,50000);timings[i][pass]=System.nanoTime()-start;
+        long[][] timings=new long[states.size()][7];
+        for(int pass=0;pass<7;pass++)for(int offset=0;offset<states.size();offset++) {
+            int i=(pass+offset)%states.size();long start=System.nanoTime();run(states.get(i),boards,50000);timings[i][pass]=System.nanoTime()-start;
         }
         var latency=new ArrayList<Object>();
-        for(int i=0;i<3;i++) {
+        for(int i=0;i<states.size();i++) {
             long[] sorted=timings[i].clone();Arrays.sort(sorted);
             latency.add(Map.of("name",names.get(i),"passNanos",timings[i],"evaluationsPerPass",50000,"medianNanos",sorted[3]/50000.0));
         }

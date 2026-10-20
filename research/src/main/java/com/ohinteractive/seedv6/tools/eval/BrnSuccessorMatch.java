@@ -20,7 +20,8 @@ import java.util.*;
 
 /** Single-worker paired diagnostic with immutable per-game receipts and explicit equal search. */
 public final class BrnSuccessorMatch {
-    record Model(String name, String root, String checkpoint, String networkSha256, Double residualGain, boolean gatedCache) {}
+    record Model(String name, String root, String checkpoint, String networkSha256, Double residualGain,
+                 boolean gatedCache, boolean cubicCache, Double blendCandidateWeight) {}
     record Plan(String id, List<Model> models, int pairs, long seed, long nodes, long moveMillis,
                 int maximumPlies, int batchGames, int batchSeconds, List<List<String>> openingMoves, boolean legalFallback) {
         Plan {
@@ -55,15 +56,30 @@ public final class BrnSuccessorMatch {
                 model=new NetworkModel.BrnNext(BrnSuccessorVariants.gain(n.model(),spec.residualGain()));
             }
             SearchEvaluation evaluation;
+            if(spec.gatedCache()&&spec.cubicCache())throw new IllegalArgumentException("Choose one cache");
             if(spec.gatedCache()) {
                 if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("GATE cache requires W1");
                 evaluation=SearchEvaluation.brnGatedIncrementalResearch(n.model());
+            } else if(spec.cubicCache()) {
+                if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("CUBIC cache requires W1");
+                evaluation=SearchEvaluation.brnCubicIncrementalResearch(n.model());
             } else evaluation=model.evaluation(NnueScoreMapping.V1);
+            if(spec.blendCandidateWeight()!=null) {
+                if(models.isEmpty())throw new IllegalArgumentException("The reference cannot be a blend");
+                evaluation=SearchEvaluation.blendResearch(models.getFirst(),evaluation,spec.blendCandidateWeight());
+            }
             models.add(evaluation);
             var bytes=new ByteArrayOutputStream();model.write(bytes);
-            bindings.add(Map.of("name",spec.name(),"originalManifest",snapshot.manifest(),
+            var modelBinding=new LinkedHashMap<String,Object>(Map.of("name",spec.name(),"originalManifest",snapshot.manifest(),
                     "effectiveNetworkSha256",HexFormat.of().formatHex(DataFiles.digest().digest(bytes.toByteArray())),
                     "residualGain",spec.residualGain()==null?.25:spec.residualGain(),"gatedCache",spec.gatedCache()));
+            if(spec.cubicCache())modelBinding.put("cubicCache",true);
+            if(spec.blendCandidateWeight()!=null) {
+                modelBinding.put("blendCandidateWeight",spec.blendCandidateWeight());
+                modelBinding.put("blendReference",plan.models().getFirst());
+                modelBinding.put("blendMapping","Convex calibrated integer scores, symmetric half-away rounding");
+            }
+            bindings.add(modelBinding);
         }
         String bound=DataFiles.JSON.toJson(Map.of("planHash",hash,"models",bindings))+"\n";
         Path identities=output.resolve("model-bindings.json");

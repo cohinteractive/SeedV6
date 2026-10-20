@@ -1,0 +1,64 @@
+{
+  "id": "brn-successor-wave2-mixture-smoke-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    },
+    {
+      "name": "W2-MIX-GATE50",
+      "root": "E:/SeedV6-Networks/BRN-GATED/699672ff-5dcc-326a-afef-924996c76f79",
+      "checkpoint": "g000200-s001638400-60858ba6cf162daff10b68ee239f7811dd03d7ec4df22c8de130a1c52bd49a18",
+      "networkSha256": "aefca5d77e68c57f286f533d02d519229ae9ef487fb46ed9ca46a4d93ad4d785",
+      "gatedCache": true,
+      "blendCandidateWeight": 0.5
+    },
+    {
+      "name": "W2-MIX-CUBIC50",
+      "root": "E:/SeedV6-Networks/BRN-CUBIC/e04052b9-6784-3c12-abb5-abc75cd21f59",
+      "checkpoint": "g000200-s001638400-ebca5e96961f27edb7cd419b8badc5cba0f4b74c11d4db0064e12753dab51e49",
+      "networkSha256": "2483d892ab397dc111fb077aaca2ce7196272140abc62b165b933bbeefe8a347",
+      "cubicCache": true,
+      "blendCandidateWeight": 0.5
+    }
+  ],
+  "pairs": 1,
+  "seed": 2026102004,
+  "nodes": 0,
+  "moveMillis": 50,
+  "maximumPlies": 4,
+  "batchGames": 2,
+  "batchSeconds": 240,
+  "openingMoves": [
+    [
+      "e2e4",
+      "e7e5",
+      "g1f3",
+      "d7d6",
+      "d2d4",
+      "e5d4",
+      "f3d4",
+      "g8f6",
+      "b1c3",
+      "f8e7",
+      "f1d3",
+      "e8g8",
+      "e1g1",
+      "c7c6",
+      "f1e1",
+      "b8d7"
+    ]
+  ],
+  "legalFallback": true,
+  "openingSource": "docs/research/search/p3-information-reuse-2026-10-18/development-v1-openings.pgn",
+  "openingSourceSha256": "c81a4d8a9b2b3bda15c0c9d4c477afba33f91c5ba6fe07e3e4e8ff03d3df9281",
+  "search": "Common Policy4; fresh64MiB TT per engine/game; one worker; no ponder; warmup4x32768nodes/model before each batch",
+  "interpretation": "Four capped smoke games in two JVM invocations; no strength scoring.",
+  "resources": "One JVM, Xmx768m,ActiveProcessorCount1,BelowNormal,one game/one search worker per engine,64MiB TT each,no ponder,12games or240seconds/batch,finish current game. No parallel benchmarks/training.",
+  "fallback": "If a timed search completes no iteration, first generated legal move with no score and depth0, matching UCI legal-only fallback; count explicitly. Other search failures stop for investigation; never draws.",
+  "question": "Do complementary prediction errors translate into useful practical strength when retaining half of frozen Gen32 and half of an existing W1 evaluator?",
+  "implementation": "Explicit SearchEvaluation.blendResearch; cached GATE/CUBIC opt-in components, unchanged default loading/policy. Models, training states and reference remain read-only. Freeze jars after validation and before first scored game.",
+  "preflight": "Core tests verify numerical composition, endpoint definitions, separate worker lifecycles, undo and common-policy identical-component search equality. Four capped four-ply games validate actual frozen models and two fresh-JVM resumes; exclude smoke from scores. Independently replay scored games afterward."
+}

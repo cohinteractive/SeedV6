@@ -37,6 +37,8 @@ public final class SearchEvaluation {
     private final boolean incremental;
     private final boolean scalarOracle;
     private final boolean materialBootstrap;
+    private record Blend(SearchEvaluation reference, SearchEvaluation candidate, double candidateWeight) {}
+    private final Blend blend;
 
     private SearchEvaluation(NnueNetwork network, NnueScoreMapping mapping, boolean incremental) {
         this(network, mapping, incremental, false);
@@ -48,7 +50,7 @@ public final class SearchEvaluation {
 
     private SearchEvaluation(NnueNetwork network, NnueScoreMapping mapping, boolean incremental,
                              boolean scalarOracle, boolean materialBootstrap) {
-        next = null; this.materialBootstrap = materialBootstrap;
+        blend = null; next = null; this.materialBootstrap = materialBootstrap;
         this.brn = null; this.brn1 = null; this.brn2 = null; this.brn3 = null; pair2 = null;
         this.network = network;
         this.mapping = mapping;
@@ -57,13 +59,13 @@ public final class SearchEvaluation {
     }
 
     private SearchEvaluation(BrnModel model) {
-        next = null;
+        blend = null; next = null;
         brn = Objects.requireNonNull(model, "BRN model"); brn1 = null; brn2 = null; brn3 = null; pair2 = null;
         network = null; mapping = null; incremental = false; scalarOracle = false; materialBootstrap = false;
     }
 
     private SearchEvaluation(Brn1Model model) {
-        next = null;
+        blend = null; next = null;
         brn1 = Objects.requireNonNull(model, "BRN-1 model"); brn = null; brn2 = null; brn3 = null; pair2 = null;
         network = null; mapping = null; incremental = false; scalarOracle = false; materialBootstrap = false;
     }
@@ -71,7 +73,7 @@ public final class SearchEvaluation {
     public static SearchEvaluation brn1(Brn1Model model) { return new SearchEvaluation(model); }
 
     private SearchEvaluation(Brn2Model model, boolean incremental) {
-        next = null;
+        blend = null; next = null;
         brn2 = Objects.requireNonNull(model, "BRN-2 model"); brn = null; brn1 = null; brn3 = null; pair2 = null;
         network = null; mapping = null; this.incremental = incremental; scalarOracle = false; materialBootstrap = false;
     }
@@ -83,7 +85,7 @@ public final class SearchEvaluation {
     public static SearchEvaluation brn(BrnModel model) { return new SearchEvaluation(model); }
 
     private SearchEvaluation(Brn3Model model, double residualGain) {
-        next = null;
+        blend = null; next = null;
         if(!Double.isFinite(residualGain)||residualGain<0||residualGain>1)throw new IllegalArgumentException("BRN-3 residual gain must be in [0,1]");
         pair2=null; brn3=new Brn3Definition(Objects.requireNonNull(model,"BRN-3 model"),residualGain);brn=null;brn1=null;brn2=null;
         network=null;mapping=null;incremental=true;scalarOracle=false;materialBootstrap=false;
@@ -93,7 +95,7 @@ public final class SearchEvaluation {
     public static SearchEvaluation brn3Research(Brn3Model model,double residualGain){return new SearchEvaluation(model,residualGain);}
 
     private SearchEvaluation(com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model model) {
-        next = null;
+        blend = null; next = null;
         pair2=Objects.requireNonNull(model);brn=null;brn1=null;brn2=null;brn3=null;
         network=null;mapping=null;incremental=true;scalarOracle=false;materialBootstrap=false;
     }
@@ -103,6 +105,7 @@ public final class SearchEvaluation {
         this(model, false);
     }
     private SearchEvaluation(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model, boolean blockCache) {
+        blend = null;
         if (blockCache && model.architecture() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.POOLED)
             throw new IllegalArgumentException("No pooled block cache is admitted");
         next = Objects.requireNonNull(model); pair2 = null; brn = null; brn1 = null; brn2 = null; brn3 = null;
@@ -119,6 +122,21 @@ public final class SearchEvaluation {
         if (model.architecture() != com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.CUBIC)
             throw new IllegalArgumentException("Incremental CUBIC requires CUBIC");
         return new SearchEvaluation(model, true);
+    }
+    private SearchEvaluation(SearchEvaluation reference, SearchEvaluation candidate, double weight) {
+        blend = new Blend(reference, candidate, weight);
+        next = null; pair2 = null; brn = null; brn1 = null; brn2 = null; brn3 = null;
+        network = null; mapping = null; incremental = false; scalarOracle = false; materialBootstrap = false;
+    }
+    /** Explicit research composition of already calibrated integer scores, rounded once after mixing.
+     * Both immutable definitions and their worker-local lifecycles are retained. No default routing changes. */
+    public static SearchEvaluation blendResearch(SearchEvaluation reference, SearchEvaluation candidate, double candidateWeight) {
+        Objects.requireNonNull(reference); Objects.requireNonNull(candidate);
+        if (!Double.isFinite(candidateWeight) || candidateWeight < 0 || candidateWeight > 1)
+            throw new IllegalArgumentException("Blend weight must be in [0,1]");
+        if (candidateWeight == 0) return reference;
+        if (candidateWeight == 1) return candidate;
+        return new SearchEvaluation(reference, candidate, candidateWeight);
     }
 
     /** Immutable definition identity for composition at the production factory boundary. */
@@ -166,6 +184,7 @@ public final class SearchEvaluation {
 
     public State newState(int capacity) {
         if (capacity < 1) throw new IllegalArgumentException("State capacity must be positive.");
+        if (blend != null) return new BlendState(this, capacity);
         if (next != null) return new NextState(this);
         if (pair2 != null) return new Pair2State(this);
         if (brn != null) return new BrnState(this);
@@ -186,6 +205,31 @@ public final class SearchEvaluation {
         public abstract void child(long[] parent, long[] child, int parentPly);
         public abstract void initializeFrom(long[] board, int ply, State source);
         public abstract int evaluate(long[] board, int ply);
+    }
+    private static final class BlendState extends State {
+        private final SearchEvaluation definition;
+        private final State reference, candidate;
+        BlendState(SearchEvaluation definition, int capacity) {
+            this.definition = definition;
+            reference = definition.blend.reference().newState(capacity);
+            candidate = definition.blend.candidate().newState(capacity);
+        }
+        @Override public void initialize(long[] board, int ply) {
+            reference.initialize(board, ply); candidate.initialize(board, ply);
+        }
+        @Override public void child(long[] parent, long[] child, int parentPly) {
+            reference.child(parent, child, parentPly); candidate.child(parent, child, parentPly);
+        }
+        @Override public void initializeFrom(long[] board, int ply, State source) {
+            if (!(source instanceof BlendState other) || definition != other.definition)
+                throw new IllegalArgumentException("Evaluator mismatch.");
+            reference.initializeFrom(board, ply, other.reference); candidate.initializeFrom(board, ply, other.candidate);
+        }
+        @Override public int evaluate(long[] board, int ply) {
+            double alpha = definition.blend.candidateWeight();
+            double value = (1 - alpha) * reference.evaluate(board, ply) + alpha * candidate.evaluate(board, ply);
+            return (int) Math.copySign(Math.floor(Math.abs(value) + .5), value);
+        }
     }
 
     private static final class BrnState extends State {
