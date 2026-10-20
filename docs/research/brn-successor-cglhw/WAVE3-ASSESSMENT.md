@@ -426,3 +426,37 @@ bounded process; it never interrupts a game or alters a receipt. Admission was
 temporarily paused at a completed batch boundary for this bounded verification.
 Remove only this owned sentinel when checks finish, then resume missing games
 with fresh log prefixes and the unchanged fair-control runtime/plan hashes.
+
+
+## Guarded delta cache verification
+
+The subsequent research implementation adds a conservative per-model summation
+error bound and canonical recomputation near half-integer score boundaries.
+It is selected only by `SearchEvaluation.brnGatedDeltaResearch` and the explicit
+`gatedDeltaCache` research-plan flag; ordinary loading retains the earlier cache.
+No weights, codecs, training behaviour, search rules or model defaults change.
+
+Four new core tests pass:9000 random/arbitrary transitions, special moves/undo/
+side-to-move and empty-ownership changes, separate owners/full-search equality,
+and12 deliberately near-boundary score cases exercising fallback. Existing GATE
+and Gen32 residual tests and eight research variant tests also pass. The actual
+trained half-GATE model passed6333 positions and48 exact full/cache search pairs
+in each of eight balanced old/new runs; all old/new search results also agree.
+Maximum fresh raw discrepancy is8.66e-15; integer differences are zero.
+
+`wave3-gate-delta-guarded-results.json` records all raw hashes, checks and timings.
+Mean transition time979.4ns->390.1ns; mean warmed32-search time1.1991s->.8777s,
+a26.8% reduction. This is a same-function, fixed-node cost measurement, not a
+strength result. Worker primitive bytes6266->6341, plus4200 shared geometry bytes;
+headers/references/alignment excluded. The actual-model conservative correction
+bound is2.70e-7 raw pawns; no rounding fallbacks on the6333-position corpus, while
+the synthetic boundary test explicitly requires them. This is strong empirical
+coverage with conservative guarding, not a universal floating-point proof.
+
+Keep both already frozen fresh-development protocols unchanged and complete their
+fixed counts. Do not silently substitute this cache or pool unlike runtimes.
+After a separate runtime freeze and legal smoke, admit one64-game development
+comparison of the faster half-GATE against Gen32 at200ms/move on the same32 roots.
+This isolates implementation cost from checkpoint/calibration choice, but remains
+a timing-sensitive repeated development comparison, not independent confirmation.
+No candidate selection or human-training gate follows from microbenchmarks alone.

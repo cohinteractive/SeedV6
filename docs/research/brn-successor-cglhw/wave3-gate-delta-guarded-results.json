@@ -1,0 +1,213 @@
+{
+  "id": "wave3-gate-delta-guarded-results-v1",
+  "status": "Verified explicit research implementation; ordinary application routing unchanged",
+  "oldRuntimeManifest": "wave3-fair-control-runtime.json",
+  "newModelPlan": "wave3-gate-delta-model-plan.json",
+  "sequence": "old,new,new,old,new,old,old,new",
+  "limits": {
+    "activeProcessors": 1,
+    "heapMiB": 768,
+    "priority": "BelowNormal",
+    "tournamentsPaused": true
+  },
+  "means": {
+    "old": {
+      "transitionMedianNanos": 979.371,
+      "warmed32SearchSeconds": 1.199080575
+    },
+    "new": {
+      "transitionMedianNanos": 390.1435,
+      "warmed32SearchSeconds": 0.877652825
+    }
+  },
+  "warmedSearchTimeReductionFraction": 0.2680618439674082,
+  "allOldNewSearchResultsEqual": true,
+  "runs": [
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-abba-01-old.json",
+      "sha256": "e01a5e7bc14629e36d0c494fc0008f7d91a1f992c7a9b91a55758242d241954f",
+      "implementation": "old",
+      "positions": 6333,
+      "maximumRawError": 2.6645352591003757e-15,
+      "maximumFreshRawError": 7.993605777301127e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 6266,
+      "transitionMedianNanos": 957.888,
+      "warmed32SearchSeconds": 1.1887914,
+      "cacheDetails": null
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-abba-02-new.json",
+      "sha256": "6aa0476d4c8594f5d7cfd8157f173b07fb30f9fbb3c2017753c77d9461730a05",
+      "implementation": "new",
+      "positions": 6333,
+      "maximumRawError": 3.552713678800501e-15,
+      "maximumFreshRawError": 8.659739592076221e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 6341,
+      "transitionMedianNanos": 404.408,
+      "warmed32SearchSeconds": 0.8842647,
+      "cacheDetails": {
+        "rebuilds": 124,
+        "roundingFallbacks": 0,
+        "sharedGeometryPrimitiveBytes": 4200,
+        "kind": "period64-canonical-rounding-guard-v1",
+        "correctionErrorBound": 2.6995942265787253e-07,
+        "updates": 6209
+      }
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-abba-03-new.json",
+      "sha256": "fb7a49e0c02e79bd6834424def4c27b7d793dfa44cfdcd0f05b0de2129e6f6d9",
+      "implementation": "new",
+      "positions": 6333,
+      "maximumRawError": 3.552713678800501e-15,
+      "maximumFreshRawError": 8.659739592076221e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 6341,
+      "transitionMedianNanos": 391.228,
+      "warmed32SearchSeconds": 0.8780577,
+      "cacheDetails": {
+        "roundingFallbacks": 0,
+        "rebuilds": 124,
+        "updates": 6209,
+        "correctionErrorBound": 2.6995942265787253e-07,
+        "kind": "period64-canonical-rounding-guard-v1",
+        "sharedGeometryPrimitiveBytes": 4200
+      }
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-abba-04-old.json",
+      "sha256": "074aaeaf4e3684b7631b8cc7add8df05aeacb56e3b7a0da957f4b03ef6722f79",
+      "implementation": "old",
+      "positions": 6333,
+      "maximumRawError": 2.6645352591003757e-15,
+      "maximumFreshRawError": 7.993605777301127e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 6266,
+      "transitionMedianNanos": 958.478,
+      "warmed32SearchSeconds": 1.1812763,
+      "cacheDetails": null
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-abba-05-new.json",
+      "sha256": "2851a1832470850b4a6c3abadfb781e2c0e4c6472a0b760f1061b8f6e7f44ef1",
+      "implementation": "new",
+      "positions": 6333,
+      "maximumRawError": 3.552713678800501e-15,
+      "maximumFreshRawError": 8.659739592076221e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 6341,
+      "transitionMedianNanos": 382.292,
+      "warmed32SearchSeconds": 0.8790999,
+      "cacheDetails": {
+        "updates": 6209,
+        "correctionErrorBound": 2.6995942265787253e-07,
+        "kind": "period64-canonical-rounding-guard-v1",
+        "sharedGeometryPrimitiveBytes": 4200,
+        "roundingFallbacks": 0,
+        "rebuilds": 124
+      }
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-abba-06-old.json",
+      "sha256": "346b016f7a139364061d6c82f5d33c0a562cb3059e056f401d21b8e619f0ab66",
+      "implementation": "old",
+      "positions": 6333,
+      "maximumRawError": 2.6645352591003757e-15,
+      "maximumFreshRawError": 7.993605777301127e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 6266,
+      "transitionMedianNanos": 1046.346,
+      "warmed32SearchSeconds": 1.2516538,
+      "cacheDetails": null
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-abba-07-old.json",
+      "sha256": "b47846e82c4d234616ad7e92deb17a1e2c18539e2896438f08213c697ae28435",
+      "implementation": "old",
+      "positions": 6333,
+      "maximumRawError": 2.6645352591003757e-15,
+      "maximumFreshRawError": 7.993605777301127e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 6266,
+      "transitionMedianNanos": 954.772,
+      "warmed32SearchSeconds": 1.1746008,
+      "cacheDetails": null
+    },
+    {
+      "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-abba-08-new.json",
+      "sha256": "c3b2ac6d57fbf0df79d377e8d4fa42eb1c16ee2341e2de82bfeab0c6f5cafbd1",
+      "implementation": "new",
+      "positions": 6333,
+      "maximumRawError": 3.552713678800501e-15,
+      "maximumFreshRawError": 8.659739592076221e-15,
+      "integerDifferences": 0,
+      "exactSearchComparisons": 48,
+      "workerPrimitiveBytes": 6341,
+      "transitionMedianNanos": 382.646,
+      "warmed32SearchSeconds": 0.869189,
+      "cacheDetails": {
+        "rebuilds": 124,
+        "roundingFallbacks": 0,
+        "sharedGeometryPrimitiveBytes": 4200,
+        "kind": "period64-canonical-rounding-guard-v1",
+        "correctionErrorBound": 2.6995942265787253e-07,
+        "updates": 6209
+      }
+    }
+  ],
+  "tests": [
+    {
+      "path": "engine-core/build/test-results/test/TEST-com.ohinteractive.seedv6.core.brnnext.BrnGatedDeltaAccumulatorTest.xml",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "path": "engine-core/build/test-results/test/TEST-com.ohinteractive.seedv6.core.brnnext.BrnGatedAccumulatorTest.xml",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "path": "engine-core/build/test-results/test/TEST-com.ohinteractive.seedv6.core.brnnext.BrnGen32ResidualTest.xml",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "path": "research/build/test-results/test/TEST-com.ohinteractive.seedv6.tools.eval.BrnSuccessorVariantsTest.xml",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "limitations": [
+    "Repeated same positions/search roots; not independent game evidence.",
+    "Conservative numerical guard plus adversarial tests supports score correctness, not a universal formal floating-point proof.",
+    "Raw floating-point sums may differ by a few ulps; canonical fallback used near integer rounding boundaries.",
+    "Working-set values exclude JVM object headers/references/alignment.",
+    "Existing primary/fresh protocols keep their original runtime; no mixed-runtime aggregation."
+  ],
+  "newBenchmarkRuntime": {
+    "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-guarded-benchmark-runtime/lib",
+    "source": "ef8bec9 plus guarded delta implementation; final exception-text-only cleanup postdates these benchmark jars",
+    "jars": {
+      "engine-core.jar": "893964d9c602fcd9a63e0bf9402b632f0621173fb6a59030697a255986ea4f9d",
+      "engine-training.jar": "b3973db8e9b2d2a7cf3140ad1c42f667d2aef575a5556d536a7418273edb428a",
+      "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "research.jar": "1967456e7322a3ee7d4d404033f7d26410490eb491fa0f367d3f1613e3ac0f00",
+      "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+    }
+  }
+}

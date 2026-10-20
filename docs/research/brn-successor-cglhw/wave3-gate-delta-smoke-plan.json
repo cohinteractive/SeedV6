@@ -1,0 +1,50 @@
+{
+  "id": "brn-wave3-gate-delta-legal-smoke-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    },
+    {
+      "name": "RESGATE32-half",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\e6b6775d-39cd-392b-bd18-5e964a445f62",
+      "checkpoint": "g000032-s000262144-92921536d7dd4929661cdef6992b6cc5e7089edfcd09b36c646f84f4cd5d94b0",
+      "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+      "correctionScale": 0.5,
+      "gatedDeltaCache": true
+    }
+  ],
+  "pairs": 1,
+  "seed": 2026102101,
+  "nodes": 2048,
+  "moveMillis": 0,
+  "maximumPlies": 8,
+  "batchGames": 12,
+  "batchSeconds": 240,
+  "openingMoves": [
+    [
+      "e2e4",
+      "c7c5",
+      "b1c3",
+      "b8c6",
+      "g2g3",
+      "e7e6",
+      "f1g2",
+      "g8e7",
+      "g1e2",
+      "c6d4",
+      "e2d4",
+      "c5d4",
+      "c3e2",
+      "e7c6",
+      "e1g1",
+      "d7d6"
+    ]
+  ],
+  "legalFallback": true,
+  "openingSource": "docs\\research\\brn-successor-cglhw\\wave3-fair-control-openings.pgn",
+  "openingSourceSha256": "57aa45855d446ee6b1b2a48b6820bc9eb2b31ca62b3bbc773b2ceeca17f069cf",
+  "purpose": "Two legal-play smoke games, eight-ply intentional caps; excluded from all strength evidence."
+}

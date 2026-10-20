@@ -1,0 +1,19 @@
+{
+  "id": "wave3-gate-delta-verified-model-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    },
+    {
+      "name": "RESGATE32-half",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\e6b6775d-39cd-392b-bd18-5e964a445f62",
+      "checkpoint": "g000032-s000262144-92921536d7dd4929661cdef6992b6cc5e7089edfcd09b36c646f84f4cd5d94b0",
+      "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+      "correctionScale": 0.5,
+      "gatedDeltaCache": true
+    }
+  ]
+}
