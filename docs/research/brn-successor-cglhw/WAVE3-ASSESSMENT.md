@@ -236,3 +236,135 @@ clock remain development limitations. Interpret maturity/calibration/cost jointl
 decide the next research or human-training wave only from the completed evidence.
 Variant cache oracles must pass before scoring; runtime/provenance is separately
 frozen at build47. Original primary evidence remains unchanged.
+
+The runtime was frozen from clean4cc079c/build47 in `wave3-variant-runtime.json`.
+The10-game/80-move legal smoke passed independent replay, with10 intentional
+eight-ply caps excluded from strength results (`wave3-variants-smoke-plan.json`,
+`raw/wave3/variants-smoke-analysis.json`).
+
+The two32-game ablations are complete and independently replayed (8640moves,
+no failures or caps). Constant half-GATE scored8/8/16,37.5% against full half-GATE;
+its paired descriptive interval is26.54..48.46%. This supports retaining the
+conditional-gate hypothesis, not a Gen32 improvement or independent confirmation.
+Quadratic-only half-CUBIC scored11/11/10,51.56%, interval36.41..66.71% against
+full half-CUBIC. No useful cubic-term playing contribution is established here.
+Raw independent analyses: `raw/wave3/{gate,cubic}-ablation-node-analysis.json`.
+`wave3-nonlinear-prediction-summary.json` separately records prediction changes.
+The96-game calibration-node screen also completed, with13323 independently replayed
+moves and no failures/caps. Half-GATE21/4/7,71.875% (descriptive95%57.12..86.63%);
+half-CUBIC18/5/9,64.0625% (49.94..78.19%); full persisted CUBIC Best31
+14/7/11,54.6875% (38.42..70.95%), each against Gen32.
+The large change from unscaled endpoints makes calibration a material research
+finding. It does not identify the effect at practical clocks or remove selection
+and reused-opening limitations.
+
+All320 follow-up games are now complete:43240 independently replayed moves,
+zero failures/caps/fallbacks; sampled peak working set610308096bytes. Compact
+results: `wave3-calibration-results.json`. At50ms/move versus Gen32:
+
+| Function | W/D/L | Score |
+| --- | --- | ---: |
+| Optimized unscaled GATE32 | 13/7/12 | 51.5625% |
+| Optimized unscaled CUBIC32 | 8/5/19 | 32.8125% |
+| Half-GATE32 | 9/5/18 | 35.9375% |
+| Half-CUBIC32 | 11/7/14 | 45.3125% |
+| Full CUBIC Best31 | 13/5/14 | 48.4375% |
+
+Each32 games. None establishes a practical strength gain. The large short-clock
+rerun change for unscaled GATE (26.56% before,51.56% after) cannot be assigned to
+the measured4.7% cache speedup: timing/search variation and small reused samples
+remain material. Half-GATE throughput was about.85M nodes/s, half-CUBIC1.16M,
+Gen321.84M across different searched positions. Equal-node gains and conditional
+ablation evidence justify further controlled testing rather than rejecting either
+family or requesting more training without resolving these comparison limits.
+
+Additional additive control: `wave3-control-shrinkage.json` applies the same fixed
+half interpolation to the continued BRE's prediction change from Gen32, using
+preserved second-half predictions and the independently checked WDL link. BT4 CE
+changes.648588->.638566; CP.614427->.598227 (valid CP.613936->.597731).
+Thus a shrinkage benefit alone is not evidence of expressiveness. Half residuals
+still have lower diagnostic losses on these subsets, but chess value requires
+the separate controls. This uses trainer-double Pair2 predictions, whereas native
+Gen32 residual bases use compiled runtime weights; their tiny serialization
+differences do not establish an implementation discrepancy.
+
+The next fair control must give continued BRE the same fixed half-change option.
+Research-only compiled interpolation is now implemented so this additive control
+retains one ordinary Pair2 table and ordinary inference cost; composing two
+separate evaluators would impose an artificial overhead. Original payloads and
+optimizer states remain immutable. Eight correction-control tests passed.
+`BrnAdditiveControlProbe` passed12360 actual-weight comparisons across preserved
+positions in forward/reverse/repeated order: maximum raw error1.78e-15,
+zero integer differences. Evidence: `raw/wave3/additive-half-oracle-01.json`.
+Subsequent development uses new opening positions and compares both residuals
+against continued BRE, with its half-change variant as a parallel additive control.
+No independent-confirmation or next substantial-training gate is admitted yet.
+
+## Training-order investigation
+
+Current source inspection reveals an additional optimization caveat. GUI
+`TrainerService.trainIncrementalCorpus` calls `IncrementalTraining`, whose first
+epoch uses a512-record random mixer at batch128. Subsequent epochs permute2048-
+record blocks and shuffle within each block. `SequentialTraining` acquires one
+source's training quota, then its validation quota, before moving to the next
+source. At equal weights and131072 training records, each source supplies65536,
+an exact multiple of2048. Thus all replay minibatches in epochs2..8 contain one
+source, although source blocks occur in shuffled order. This is current-code
+inspection, not proof of the unavailable historical GUI executable identity.
+
+This can create source-order sensitivity; it is not yet an established cause of
+the W3 strength discrepancy. Larger generations alone do not change the2048-record
+mixing block. The earlier optimizer probe globally shuffled each tiny single-source
+subset, so it cannot diagnose this two-source interaction.
+
+Completed bounded diagnostic: `wave3-training-order-plan.json`, through the actual
+GUI incremental loop, after tournament work stopped. Twelve arms compared identical
+records in original/reversed source order, alternating sources and a preshuffled
+input; three actual W3 endpoints, LR.001,8epochs,b128,192updates each, no model
+publication. First1536/source fit,last512/source diagnose generalization. This
+small dataset differs from a full GUI tranche and remains development evidence.
+All12 arms completed192 updates,24576 visits each, in one bounded low-priority
+process; no models saved. `wave3-training-order-results.json` retains the compact
+curves and raw binding. CUBIC CP heldout improved from.614969 to.601927..602928
+across all four orders; BT4 changed.634609 to.634108..634432. BRE was more
+order-sensitive (final BT4.639921..644703, CP.610246..617394). GATE changed little
+on BT4 and improved CP modestly. There is no residual-specific ordering defect
+established by these results, and no basis for a production shuffle change.
+Lower-rate continuation remains plausible, not yet a required human gate.
+
+A post-cache JFR probe of half-GATE (`raw/wave3/half-gate-profile-02.*`) passed
+the existing position/search oracle. Of502 execution samples,151 included its
+cached evaluator;95 top-frame samples map to the frozen-base evaluation call.
+Inlining and mixed diagnostic/search phases prevent an exact cost attribution.
+No further production optimization is admitted from this profile alone.
+
+## Prospective fresh-development comparison
+
+`wave3-fair-control-openings.pgn` selects32 new, unique16-ply roots from the
+existing legal book, development partition0, seed2026102101, excluding all40
+previously recorded BRN opening roots (1224 local receipts plus tracked plans).
+Selection and exclusion manifests preserve hashes. No evaluator filtering.
+The PGN is an intentional tracked input, with a narrow `.gitignore` exception.
+Confirmation partition1 remains unused by this continuation.
+
+Two fixed plans,192 games each:
+
+- `wave3-fair-control-node-plan.json`: continued full BRE32 as reference,
+  half-GATE32, half-CUBIC32 and compiled half-change BRE32 as candidates,
+  32768 nodes/move.
+- `wave3-longer-clock-plan.json`: frozen Gen32 as reference, the same three
+  candidates,200ms/move. This investigates whether the short-clock result persists
+  with a larger search budget; it is still a development screen, not confirmation.
+
+Same32 reversed-colour pairs per candidate, common Policy4, one game and one
+worker/engine, no pondering,64MiB TT,768MiB JVM,ActiveProcessorCount1,BelowNormal.
+Each invocation remains at most12 games or240seconds, finishing the current game.
+The longer clock increases elapsed duration, not concurrency or peak resource
+limits. Freeze the separately hashed runtime, perform legal smoke, then complete
+the fixed counts with independent replay. Preserve failures/caps; no optional
+extension. Runtime and plans must not overwrite earlier screens.
+
+Interpret both continued training and additive shrinkage controls alongside
+expressive value and measured costs. Any later selected-candidate confirmation
+requires a fresh protocol and multiplicity/selection accounting. Do not call these
+development screens independent confirmation or automatically admit more training.

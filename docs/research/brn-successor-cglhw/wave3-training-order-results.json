@@ -1,0 +1,549 @@
+{
+  "id": "wave3-training-order-results-v1",
+  "plan": "wave3-training-order-plan.json",
+  "raw": "raw\\wave3\\training-order-01.json",
+  "sha256": "26c1b0425018b4be2cfd16f2171bfeafecfb5eaa6790cc87d81aec0a3602654f",
+  "arms": [
+    {
+      "name": "W3-RESGATE",
+      "order": "BT4-then-CP",
+      "before": {
+        "BT4": {
+          "heldCE": 0.6240675644134749,
+          "fitCE": 0.650070425122608
+        },
+        "CP": {
+          "heldCE": 0.6045399459123003,
+          "fitCE": 0.5908728845932286
+        }
+      },
+      "curve": [
+        {
+          "completedEpochs": 1,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6238347001209439,
+              "fitCE": 0.6491020334507852
+            },
+            "CP": {
+              "heldCE": 0.6023348334177411,
+              "fitCE": 0.5885804776203741
+            }
+          },
+          "step": 262168
+        },
+        {
+          "completedEpochs": 8,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6241429315355199,
+              "fitCE": 0.6442326456133932
+            },
+            "CP": {
+              "heldCE": 0.6026849143537351,
+              "fitCE": 0.5697105272418314
+            }
+          },
+          "step": 262336
+        }
+      ],
+      "elapsedSeconds": 0.3321499
+    },
+    {
+      "name": "W3-RESGATE",
+      "order": "CP-then-BT4",
+      "before": {
+        "BT4": {
+          "heldCE": 0.6240675644134749,
+          "fitCE": 0.650070425122608
+        },
+        "CP": {
+          "heldCE": 0.6045399459123003,
+          "fitCE": 0.5908728845932286
+        }
+      },
+      "curve": [
+        {
+          "completedEpochs": 1,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6238659377176746,
+              "fitCE": 0.6494878079798657
+            },
+            "CP": {
+              "heldCE": 0.6033639495822937,
+              "fitCE": 0.5870225987545076
+            }
+          },
+          "step": 262168
+        },
+        {
+          "completedEpochs": 8,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6240958585152071,
+              "fitCE": 0.6440604697644933
+            },
+            "CP": {
+              "heldCE": 0.6019027909466466,
+              "fitCE": 0.5700735173937647
+            }
+          },
+          "step": 262336
+        }
+      ],
+      "elapsedSeconds": 0.2134152
+    },
+    {
+      "name": "W3-RESGATE",
+      "order": "alternating",
+      "before": {
+        "BT4": {
+          "heldCE": 0.6240675644134749,
+          "fitCE": 0.650070425122608
+        },
+        "CP": {
+          "heldCE": 0.6045399459123003,
+          "fitCE": 0.5908728845932286
+        }
+      },
+      "curve": [
+        {
+          "completedEpochs": 1,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6239061563135351,
+              "fitCE": 0.6492516904747674
+            },
+            "CP": {
+              "heldCE": 0.6035551279553331,
+              "fitCE": 0.587816715535662
+            }
+          },
+          "step": 262168
+        },
+        {
+          "completedEpochs": 8,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.62409842204278,
+              "fitCE": 0.6441889290619364
+            },
+            "CP": {
+              "heldCE": 0.6015150815636539,
+              "fitCE": 0.5698577579805362
+            }
+          },
+          "step": 262336
+        }
+      ],
+      "elapsedSeconds": 0.210336
+    },
+    {
+      "name": "W3-RESGATE",
+      "order": "pre-shuffled",
+      "before": {
+        "BT4": {
+          "heldCE": 0.6240675644134749,
+          "fitCE": 0.650070425122608
+        },
+        "CP": {
+          "heldCE": 0.6045399459123003,
+          "fitCE": 0.5908728845932286
+        }
+      },
+      "curve": [
+        {
+          "completedEpochs": 1,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6238446609200259,
+              "fitCE": 0.6493619615639795
+            },
+            "CP": {
+              "heldCE": 0.6032615815159719,
+              "fitCE": 0.5876766777589926
+            }
+          },
+          "step": 262168
+        },
+        {
+          "completedEpochs": 8,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6242865915315792,
+              "fitCE": 0.644084088393883
+            },
+            "CP": {
+              "heldCE": 0.6033868120730018,
+              "fitCE": 0.570075695674702
+            }
+          },
+          "step": 262336
+        }
+      ],
+      "elapsedSeconds": 0.2063429
+    },
+    {
+      "name": "W3-RESCUBIC",
+      "order": "BT4-then-CP",
+      "before": {
+        "BT4": {
+          "heldCE": 0.6346089639798135,
+          "fitCE": 0.6562984625957433
+        },
+        "CP": {
+          "heldCE": 0.6149689128500242,
+          "fitCE": 0.5946532856424974
+        }
+      },
+      "curve": [
+        {
+          "completedEpochs": 1,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6338454662431239,
+              "fitCE": 0.6519863212997389
+            },
+            "CP": {
+              "heldCE": 0.6122917351078546,
+              "fitCE": 0.5820420170678904
+            }
+          },
+          "step": 262168
+        },
+        {
+          "completedEpochs": 8,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.63439154647902,
+              "fitCE": 0.6400977601991965
+            },
+            "CP": {
+              "heldCE": 0.6020890764406458,
+              "fitCE": 0.5471571799486487
+            }
+          },
+          "step": 262336
+        }
+      ],
+      "elapsedSeconds": 0.2946193
+    },
+    {
+      "name": "W3-RESCUBIC",
+      "order": "CP-then-BT4",
+      "before": {
+        "BT4": {
+          "heldCE": 0.6346089639798135,
+          "fitCE": 0.6562984625957433
+        },
+        "CP": {
+          "heldCE": 0.6149689128500242,
+          "fitCE": 0.5946532856424974
+        }
+      },
+      "curve": [
+        {
+          "completedEpochs": 1,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6343895935161857,
+              "fitCE": 0.6530843148311191
+            },
+            "CP": {
+              "heldCE": 0.6108459798649916,
+              "fitCE": 0.5750090557399519
+            }
+          },
+          "step": 262168
+        },
+        {
+          "completedEpochs": 8,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6341078527466445,
+              "fitCE": 0.6397720831810146
+            },
+            "CP": {
+              "heldCE": 0.6029283258495612,
+              "fitCE": 0.5479069644684681
+            }
+          },
+          "step": 262336
+        }
+      ],
+      "elapsedSeconds": 0.1728844
+    },
+    {
+      "name": "W3-RESCUBIC",
+      "order": "alternating",
+      "before": {
+        "BT4": {
+          "heldCE": 0.6346089639798135,
+          "fitCE": 0.6562984625957433
+        },
+        "CP": {
+          "heldCE": 0.6149689128500242,
+          "fitCE": 0.5946532856424974
+        }
+      },
+      "curve": [
+        {
+          "completedEpochs": 1,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6341049330223733,
+              "fitCE": 0.6524013036048114
+            },
+            "CP": {
+              "heldCE": 0.6112835718100317,
+              "fitCE": 0.5773239590108427
+            }
+          },
+          "step": 262168
+        },
+        {
+          "completedEpochs": 8,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6344318932118884,
+              "fitCE": 0.6401711577158197
+            },
+            "CP": {
+              "heldCE": 0.6019269669872321,
+              "fitCE": 0.5471976004054823
+            }
+          },
+          "step": 262336
+        }
+      ],
+      "elapsedSeconds": 0.1770843
+    },
+    {
+      "name": "W3-RESCUBIC",
+      "order": "pre-shuffled",
+      "before": {
+        "BT4": {
+          "heldCE": 0.6346089639798135,
+          "fitCE": 0.6562984625957433
+        },
+        "CP": {
+          "heldCE": 0.6149689128500242,
+          "fitCE": 0.5946532856424974
+        }
+      },
+      "curve": [
+        {
+          "completedEpochs": 1,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6344343309932274,
+              "fitCE": 0.6529736418614557
+            },
+            "CP": {
+              "heldCE": 0.6114606050274263,
+              "fitCE": 0.5768945976895518
+            }
+          },
+          "step": 262168
+        },
+        {
+          "completedEpochs": 8,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6342654373925382,
+              "fitCE": 0.6399896513226934
+            },
+            "CP": {
+              "heldCE": 0.602210000081565,
+              "fitCE": 0.5474578882452511
+            }
+          },
+          "step": 262336
+        }
+      ],
+      "elapsedSeconds": 0.168296
+    },
+    {
+      "name": "W3-BRE-CONTROL",
+      "order": "BT4-then-CP",
+      "before": {
+        "BT4": {
+          "heldCE": 0.6454601367012939,
+          "fitCE": 0.6552313459511329
+        },
+        "CP": {
+          "heldCE": 0.6195750543189819,
+          "fitCE": 0.6103399437219944
+        }
+      },
+      "curve": [
+        {
+          "completedEpochs": 1,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6466341891285087,
+              "fitCE": 0.6545584685164597
+            },
+            "CP": {
+              "heldCE": 0.6147206651452745,
+              "fitCE": 0.6057761708166732
+            }
+          },
+          "step": 2015256
+        },
+        {
+          "completedEpochs": 8,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6399211536532544,
+              "fitCE": 0.6437852768584258
+            },
+            "CP": {
+              "heldCE": 0.61739371475962,
+              "fitCE": 0.572237226722303
+            }
+          },
+          "step": 2015424
+        }
+      ],
+      "elapsedSeconds": 0.3821099
+    },
+    {
+      "name": "W3-BRE-CONTROL",
+      "order": "CP-then-BT4",
+      "before": {
+        "BT4": {
+          "heldCE": 0.6454601367012939,
+          "fitCE": 0.6552313459511329
+        },
+        "CP": {
+          "heldCE": 0.6195750543189819,
+          "fitCE": 0.6103399437219944
+        }
+      },
+      "curve": [
+        {
+          "completedEpochs": 1,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6412573747106188,
+              "fitCE": 0.652821518009591
+            },
+            "CP": {
+              "heldCE": 0.6271517320136457,
+              "fitCE": 0.6082741343414838
+            }
+          },
+          "step": 2015256
+        },
+        {
+          "completedEpochs": 8,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6447031883680531,
+              "fitCE": 0.6448401390100357
+            },
+            "CP": {
+              "heldCE": 0.6102456749993206,
+              "fitCE": 0.5707324489493891
+            }
+          },
+          "step": 2015424
+        }
+      ],
+      "elapsedSeconds": 0.2632079
+    },
+    {
+      "name": "W3-BRE-CONTROL",
+      "order": "alternating",
+      "before": {
+        "BT4": {
+          "heldCE": 0.6454601367012939,
+          "fitCE": 0.6552313459511329
+        },
+        "CP": {
+          "heldCE": 0.6195750543189819,
+          "fitCE": 0.6103399437219944
+        }
+      },
+      "curve": [
+        {
+          "completedEpochs": 1,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6444217451739432,
+              "fitCE": 0.6536085191345177
+            },
+            "CP": {
+              "heldCE": 0.6180898518481074,
+              "fitCE": 0.6056199592158007
+            }
+          },
+          "step": 2015256
+        },
+        {
+          "completedEpochs": 8,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6408062397208663,
+              "fitCE": 0.643784533310107
+            },
+            "CP": {
+              "heldCE": 0.614948436825581,
+              "fitCE": 0.5712184928530681
+            }
+          },
+          "step": 2015424
+        }
+      ],
+      "elapsedSeconds": 0.2984947
+    },
+    {
+      "name": "W3-BRE-CONTROL",
+      "order": "pre-shuffled",
+      "before": {
+        "BT4": {
+          "heldCE": 0.6454601367012939,
+          "fitCE": 0.6552313459511329
+        },
+        "CP": {
+          "heldCE": 0.6195750543189819,
+          "fitCE": 0.6103399437219944
+        }
+      },
+      "curve": [
+        {
+          "completedEpochs": 1,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6437950328594896,
+              "fitCE": 0.6532116405109203
+            },
+            "CP": {
+              "heldCE": 0.6187565611433908,
+              "fitCE": 0.6058147014613161
+            }
+          },
+          "step": 2015256
+        },
+        {
+          "completedEpochs": 8,
+          "metrics": {
+            "BT4": {
+              "heldCE": 0.6425301345846388,
+              "fitCE": 0.6441898659168505
+            },
+            "CP": {
+              "heldCE": 0.612487807528231,
+              "fitCE": 0.5703655769964407
+            }
+          },
+          "step": 2015424
+        }
+      ],
+      "elapsedSeconds": 0.3438711
+    }
+  ],
+  "conclusion": "Order sensitivity exists, particularly in continued BRE. Cubic CP heldout improves across all tested orders. No consistent residual-specific ordering defect established; do not change production ordering from this small reused dataset."
+}

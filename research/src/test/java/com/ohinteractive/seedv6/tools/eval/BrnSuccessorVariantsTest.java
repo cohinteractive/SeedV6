@@ -10,6 +10,35 @@ import org.junit.jupiter.params.provider.EnumSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BrnSuccessorVariantsTest {
+    @org.junit.jupiter.api.Test
+    void additiveInterpolationKeepsSingleTableCostAndPreservesSource() throws Exception {
+        var trainer=new com.ohinteractive.seedv6.core.brnpair2.BrnPair2Trainer(.003);
+        var boards=BrnSuccessorAudit.boards();
+        for(var board:boards)trainer.trainBatch(new long[][]{board},new double[]{.3},1);
+        var source=new com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model(trainer.snapshot());
+        var base=BrnNextBase.model();
+        var before=new java.io.ByteArrayOutputStream();
+        com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.writeModel(source,before);
+        for(double scale:new double[]{0,.5,1}) {
+            var variant=BrnSuccessorVariants.additiveChange(source,scale);
+            assertEquals(source.immutablePrimitiveBytes(),variant.immutablePrimitiveBytes());
+            assertEquals(source.newWorkspace().primitiveBytes(),variant.newWorkspace().primitiveBytes());
+            var actual=variant.newWorkspace();var ref=base.newWorkspace();var candidate=source.newWorkspace();
+            for(int cycle=0;cycle<4;cycle++)for(var board:boards) {
+                double raw=ref.evaluatePawns(board);
+                double expected=raw+scale*(candidate.evaluatePawns(board)-raw);
+                assertEquals(expected,actual.evaluatePawns(board),1e-11);
+                double material=BrnPair2Features.material(board);
+                assertEquals(Brn3Model.score(material+.25*(expected-material)),
+                        Brn3Model.score(variant.newWorkspace().evaluatePawns(board,.25)));
+            }
+        }
+        var after=new java.io.ByteArrayOutputStream();
+        com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.writeModel(source,after);
+        assertArrayEquals(before.toByteArray(),after.toByteArray());
+        assertThrows(IllegalArgumentException.class,()->BrnSuccessorVariants.additiveChange(source,Double.NaN));
+        assertThrows(IllegalArgumentException.class,()->BrnSuccessorVariants.additiveChange(source,1.1));
+    }
     @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class, names={"GEN32_GATED","GEN32_CUBIC"})
     void correctionControlPreservesFrozenBaseAndSourceAcrossPositions(BrnNextArchitecture kind) {
         var random=new SplittableRandom(229);double[] weights=new double[kind.parameters()];

@@ -60,9 +60,13 @@ public final class BrnSuccessorMatch {
             if(spec.correctionScale()!=null||spec.correctionAblation()!=null) {
                 if(spec.residualGain()!=null||spec.blendCandidateWeight()!=null)
                     throw new IllegalArgumentException("Separate correction controls from W1 gain/blending");
-                if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("Residual model required");
-                model=new NetworkModel.BrnNext(BrnSuccessorVariants.correction(n.model(),
-                        spec.correctionScale()==null?1:spec.correctionScale(),spec.correctionAblation(),spec.constantGates()));
+                if(model instanceof NetworkModel.BrnNext n)
+                    model=new NetworkModel.BrnNext(BrnSuccessorVariants.correction(n.model(),
+                            spec.correctionScale()==null?1:spec.correctionScale(),spec.correctionAblation(),spec.constantGates()));
+                else if(model instanceof NetworkModel.BrnPair2 p && spec.correctionScale()!=null
+                        && spec.correctionAblation()==null && spec.constantGates()==null)
+                    model=new NetworkModel.BrnPair2(BrnSuccessorVariants.additiveChange(p.model(),spec.correctionScale()));
+                else throw new IllegalArgumentException("Residual correction or additive interpolation required");
             }
             if(spec.residualGain()!=null) {
                 if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("Gain override requires W1");
@@ -95,6 +99,10 @@ public final class BrnSuccessorMatch {
                 modelBinding.put("correctionScale",spec.correctionScale()==null?1:spec.correctionScale());
                 modelBinding.put("correctionAblation",spec.correctionAblation());
                 modelBinding.put("constantGates",spec.constantGates());
+                if(model instanceof NetworkModel.BrnPair2) {
+                    modelBinding.put("frozenBaseSha256",com.ohinteractive.seedv6.core.brnnext.BrnNextBase.SHA256);
+                    modelBinding.put("additiveMapping","Gen32 compiled tables + scale * (continued compiled tables - Gen32 tables)");
+                }
             }
             if(spec.blendCandidateWeight()!=null) {
                 modelBinding.put("blendCandidateWeight",spec.blendCandidateWeight());

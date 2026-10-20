@@ -1,0 +1,539 @@
+{
+  "id": "wave3-calibration-ablation-results-v1",
+  "recordedUtc": "2026-10-20T11:31:41.850944+00:00",
+  "runtime": "wave3-variant-runtime.json",
+  "games": 320,
+  "validatedMoves": 43240,
+  "rawFailedGames": 0,
+  "maximumSampledWorkingSetBytes": 610308096,
+  "results": [
+    {
+      "study": "calibration-node",
+      "evidence": "raw\\wave3\\calibration-node-analysis.json",
+      "sha256": "e0a560211c8feb69c5e253cb202847adadce491892c0e787b2ff8d2b7ad41d20",
+      "planHash": "a59f704a9cbdb712fa7e676c7dc24ca3a5c7ed0ee568cb121b4069dae7af16f3",
+      "pythonChess": "1.11.2",
+      "validatedMoves": 13323,
+      "terminations": {
+        "BLACK_CHECKMATES_WHITE": 38,
+        "WHITE_CHECKMATES_BLACK": 42,
+        "THREEFOLD_REPETITION": 5,
+        "INSUFFICIENT_MATERIAL": 4,
+        "FIFTY_MOVE_RULE": 6,
+        "STALEMATE": 1
+      },
+      "failures": [],
+      "models": [
+        {
+          "name": "RESGATE32-half",
+          "wins": 21,
+          "draws": 4,
+          "losses": 7,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.71875,
+          "pairStandardError": 0.07525996611745185,
+          "descriptiveNormal95": [
+            0.5712404664097943,
+            0.8662595335902057
+          ],
+          "pairScores": [
+            0.0,
+            1.0,
+            1.0,
+            1.0,
+            0.5,
+            0.75,
+            0.75,
+            1.0,
+            0.5,
+            1.0,
+            1.0,
+            1.0,
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "name": "RESCUBIC32-half",
+          "wins": 18,
+          "draws": 5,
+          "losses": 9,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.640625,
+          "pairStandardError": 0.07205593168967192,
+          "descriptiveNormal95": [
+            0.49939537388824307,
+            0.7818546261117569
+          ],
+          "pairScores": [
+            1.0,
+            0.5,
+            1.0,
+            0.5,
+            0.5,
+            1.0,
+            0.5,
+            0.25,
+            1.0,
+            0.25,
+            0.75,
+            0.75,
+            0.5,
+            0.5,
+            0.25,
+            1.0
+          ]
+        },
+        {
+          "name": "RESCUBIC-Best31",
+          "wins": 14,
+          "draws": 7,
+          "losses": 11,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.546875,
+          "pairStandardError": 0.08297448779594846,
+          "descriptiveNormal95": [
+            0.384245003919941,
+            0.709504996080059
+          ],
+          "pairScores": [
+            1.0,
+            0.5,
+            0.75,
+            0.0,
+            0.75,
+            0.25,
+            1.0,
+            1.0,
+            0.75,
+            0.5,
+            0.25,
+            0.75,
+            0.0,
+            0.5,
+            0.5,
+            0.25
+          ]
+        }
+      ],
+      "telemetry": {
+        "RESGATE32-half": {
+          "moves": 2262,
+          "nodes": 72251067,
+          "elapsedNanos": 93410507600,
+          "sumDepth": 16829,
+          "fallbacks": 0,
+          "maximumMoveNanos": 199044700
+        },
+        "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304": {
+          "moves": 6654,
+          "nodes": 212935252,
+          "elapsedNanos": 122488966800,
+          "sumDepth": 48558,
+          "fallbacks": 0,
+          "maximumMoveNanos": 92560400
+        },
+        "RESCUBIC32-half": {
+          "moves": 2329,
+          "nodes": 74591956,
+          "elapsedNanos": 70726068600,
+          "sumDepth": 16844,
+          "fallbacks": 0,
+          "maximumMoveNanos": 148724300
+        },
+        "RESCUBIC-Best31": {
+          "moves": 2078,
+          "nodes": 66381427,
+          "elapsedNanos": 62537767000,
+          "sumDepth": 15317,
+          "fallbacks": 0,
+          "maximumMoveNanos": 91026400
+        }
+      },
+      "statisticalLimit": "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims."
+    },
+    {
+      "study": "calibration-clock",
+      "evidence": "raw\\wave3\\calibration-clock-analysis.json",
+      "sha256": "565ff64abc070a112fca79975ed49d4aacdf0210f34092aa512dbdc12530fdca",
+      "planHash": "16f62ac79e431cb5dfaad5ec636e6c3bb3592c37748fca8626f667e5ed4ebc4a",
+      "pythonChess": "1.11.2",
+      "validatedMoves": 21277,
+      "terminations": {
+        "BLACK_CHECKMATES_WHITE": 62,
+        "THREEFOLD_REPETITION": 14,
+        "WHITE_CHECKMATES_BLACK": 69,
+        "INSUFFICIENT_MATERIAL": 6,
+        "FIFTY_MOVE_RULE": 9
+      },
+      "failures": [],
+      "models": [
+        {
+          "name": "RESGATE32-optimized",
+          "wins": 13,
+          "draws": 7,
+          "losses": 12,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.515625,
+          "pairStandardError": 0.08680902770833611,
+          "descriptiveNormal95": [
+            0.34547930569166124,
+            0.6857706943083388
+          ],
+          "pairScores": [
+            0.25,
+            0.0,
+            0.5,
+            1.0,
+            0.5,
+            0.0,
+            0.75,
+            0.75,
+            1.0,
+            1.0,
+            0.25,
+            0.5,
+            0.5,
+            0.5,
+            0.75,
+            0.0
+          ]
+        },
+        {
+          "name": "RESCUBIC32-optimized",
+          "wins": 8,
+          "draws": 5,
+          "losses": 19,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.328125,
+          "pairStandardError": 0.08139010356507315,
+          "descriptiveNormal95": [
+            0.16860039701245663,
+            0.48764960298754334
+          ],
+          "pairScores": [
+            0.5,
+            0.0,
+            1.0,
+            0.25,
+            0.0,
+            0.75,
+            0.75,
+            0.0,
+            0.25,
+            0.0,
+            0.0,
+            0.5,
+            0.0,
+            0.5,
+            0.25,
+            0.5
+          ]
+        },
+        {
+          "name": "RESGATE32-half",
+          "wins": 9,
+          "draws": 5,
+          "losses": 18,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.359375,
+          "pairStandardError": 0.0755836663902989,
+          "descriptiveNormal95": [
+            0.21123101387501417,
+            0.5075189861249858
+          ],
+          "pairScores": [
+            0.5,
+            0.0,
+            0.5,
+            0.25,
+            0.5,
+            0.5,
+            0.5,
+            0.75,
+            1.0,
+            0.25,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.0
+          ]
+        },
+        {
+          "name": "RESCUBIC32-half",
+          "wins": 11,
+          "draws": 7,
+          "losses": 14,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.453125,
+          "pairStandardError": 0.08903051326184,
+          "descriptiveNormal95": [
+            0.27862519400679364,
+            0.6276248059932064
+          ],
+          "pairScores": [
+            1.0,
+            1.0,
+            0.0,
+            0.75,
+            0.0,
+            0.5,
+            0.25,
+            0.25,
+            0.25,
+            0.5,
+            0.25,
+            0.25,
+            0.5,
+            1.0,
+            0.75,
+            0.0
+          ]
+        },
+        {
+          "name": "RESCUBIC-Best31",
+          "wins": 13,
+          "draws": 5,
+          "losses": 14,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.484375,
+          "pairStandardError": 0.08680902770833611,
+          "descriptiveNormal95": [
+            0.31422930569166124,
+            0.6545206943083388
+          ],
+          "pairScores": [
+            0.75,
+            0.25,
+            1.0,
+            0.0,
+            0.0,
+            0.75,
+            0.75,
+            0.5,
+            1.0,
+            0.0,
+            0.5,
+            0.5,
+            0.75,
+            0.5,
+            0.0,
+            0.5
+          ]
+        }
+      ],
+      "telemetry": {
+        "RESGATE32-optimized": {
+          "moves": 2181,
+          "nodes": 91534014,
+          "elapsedNanos": 106089657400,
+          "sumDepth": 17156,
+          "fallbacks": 0,
+          "maximumMoveNanos": 77857000
+        },
+        "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304": {
+          "moves": 10643,
+          "nodes": 952446871,
+          "elapsedNanos": 516924891300,
+          "sumDepth": 92708,
+          "fallbacks": 0,
+          "maximumMoveNanos": 101244100
+        },
+        "RESCUBIC32-optimized": {
+          "moves": 2285,
+          "nodes": 125120672,
+          "elapsedNanos": 111348355600,
+          "sumDepth": 18371,
+          "fallbacks": 0,
+          "maximumMoveNanos": 50653500
+        },
+        "RESGATE32-half": {
+          "moves": 2038,
+          "nodes": 84013641,
+          "elapsedNanos": 98876177800,
+          "sumDepth": 16534,
+          "fallbacks": 0,
+          "maximumMoveNanos": 103764300
+        },
+        "RESCUBIC32-half": {
+          "moves": 2371,
+          "nodes": 134558317,
+          "elapsedNanos": 115523879500,
+          "sumDepth": 19358,
+          "fallbacks": 0,
+          "maximumMoveNanos": 84776400
+        },
+        "RESCUBIC-Best31": {
+          "moves": 1759,
+          "nodes": 92484967,
+          "elapsedNanos": 84890193600,
+          "sumDepth": 14910,
+          "fallbacks": 0,
+          "maximumMoveNanos": 51400000
+        }
+      },
+      "statisticalLimit": "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims."
+    },
+    {
+      "study": "gate-ablation-node",
+      "evidence": "raw\\wave3\\gate-ablation-node-analysis.json",
+      "sha256": "c55c327f6e2e6a1214a189e1c41779e88553823217ad215cc3797a5ca8cd8704",
+      "planHash": "e5baeb795f3aa12f37d3541973ce3acf09f38c12da70ef4103cc9b3e042bcda6",
+      "pythonChess": "1.11.2",
+      "validatedMoves": 4256,
+      "terminations": {
+        "BLACK_CHECKMATES_WHITE": 11,
+        "WHITE_CHECKMATES_BLACK": 13,
+        "FIFTY_MOVE_RULE": 3,
+        "INSUFFICIENT_MATERIAL": 1,
+        "THREEFOLD_REPETITION": 4
+      },
+      "failures": [],
+      "models": [
+        {
+          "name": "RESGATE32-half-constant",
+          "wins": 8,
+          "draws": 8,
+          "losses": 16,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.375,
+          "pairStandardError": 0.05590169943749474,
+          "descriptiveNormal95": [
+            0.2654326691025103,
+            0.4845673308974897
+          ],
+          "pairScores": [
+            0.5,
+            0.5,
+            0.75,
+            0.5,
+            0.25,
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.25,
+            0.75,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.5
+          ]
+        }
+      ],
+      "telemetry": {
+        "RESGATE32-half-constant": {
+          "moves": 2127,
+          "nodes": 68180293,
+          "elapsedNanos": 86090793100,
+          "sumDepth": 15149,
+          "fallbacks": 0,
+          "maximumMoveNanos": 205412100
+        },
+        "g000032-s000262144-92921536d7dd4929661cdef6992b6cc5e7089edfcd09b36c646f84f4cd5d94b0": {
+          "moves": 2129,
+          "nodes": 68207210,
+          "elapsedNanos": 85673501300,
+          "sumDepth": 15174,
+          "fallbacks": 0,
+          "maximumMoveNanos": 134597000
+        }
+      },
+      "statisticalLimit": "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims."
+    },
+    {
+      "study": "cubic-ablation-node",
+      "evidence": "raw\\wave3\\cubic-ablation-node-analysis.json",
+      "sha256": "ad3177173647761c57f7e2572b7362a02c58957dec8e542ad98e3cbc9ff63dff",
+      "planHash": "1a4b6a04ca7297bf10b87b15e270576eb18d6afaea49d78f9a85ea8250a59898",
+      "pythonChess": "1.11.2",
+      "validatedMoves": 4384,
+      "terminations": {
+        "INSUFFICIENT_MATERIAL": 3,
+        "WHITE_CHECKMATES_BLACK": 13,
+        "FIFTY_MOVE_RULE": 2,
+        "BLACK_CHECKMATES_WHITE": 8,
+        "THREEFOLD_REPETITION": 6
+      },
+      "failures": [],
+      "models": [
+        {
+          "name": "RESCUBIC32-half-quadratic",
+          "wins": 11,
+          "draws": 11,
+          "losses": 10,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.515625,
+          "pairStandardError": 0.0772871741731231,
+          "descriptiveNormal95": [
+            0.36414213862067873,
+            0.6671078613793213
+          ],
+          "pairScores": [
+            0.25,
+            0.75,
+            0.0,
+            0.5,
+            1.0,
+            0.75,
+            0.5,
+            0.25,
+            0.5,
+            1.0,
+            0.25,
+            0.25,
+            0.25,
+            1.0,
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "telemetry": {
+        "RESCUBIC32-half-quadratic": {
+          "moves": 2192,
+          "nodes": 70426967,
+          "elapsedNanos": 65501751000,
+          "sumDepth": 15921,
+          "fallbacks": 0,
+          "maximumMoveNanos": 208536700
+        },
+        "g000032-s000262144-41d911c124b545bc293252c7a75361f45ddd386bd600e9e64523d0fce5516197": {
+          "moves": 2192,
+          "nodes": 70442145,
+          "elapsedNanos": 65331460100,
+          "sumDepth": 15925,
+          "fallbacks": 0,
+          "maximumMoveNanos": 132941200
+        }
+      },
+      "statisticalLimit": "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims."
+    }
+  ],
+  "limitations": "Fixed development screens on reused opening clusters. Descriptive intervals, not confirmation. Short-clock rerun differences cannot be attributed solely to the modest cache change."
+}

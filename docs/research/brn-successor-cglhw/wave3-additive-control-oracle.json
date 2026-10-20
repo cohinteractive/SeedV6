@@ -1,0 +1,29 @@
+{
+  "immutablePrimitiveBytes": 799688,
+  "effectiveNetworkSha256": "e43b238e40fc889121e0bc9ec67b53c269666b571f416d73b96424091c0d1794",
+  "integerDifferences": 0,
+  "id": "wave3-additive-half-oracle-v1",
+  "workerPrimitiveBytes": 2920,
+  "networkBytes": 795032,
+  "source": {
+    "id": "g000032-s002015232-cf5efb1b0aa45f997cad7b362d7417679ba1e70ea6741a71d8bf65470ba52f3c",
+    "generation": 32,
+    "optimizerStep": 2015232,
+    "trainingDepth": 4,
+    "parentId": "g000031-s002007040-1940c4c178ddc162ec8ff1ae79b8e0770925402fea26e5290ed9da9ed2a225e0",
+    "networkBytes": 795032,
+    "networkSha256": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0",
+    "trainingBytes": 2731424,
+    "trainingSha256": "b839898fc4ae3824118df95e62d3ef3dbf548d0cd60b5b29dd84691fe1783f89",
+    "architecture": "BRN_PAIR2"
+  },
+  "comparisons": 12360,
+  "inputs": {
+    "docs/research/brn-successor-cglhw/raw/wave2/data-01/bt4-fresh-positions.jsonl": "68793d927055fee9fc2161b2276d8f6071f1afcebb5ab5d521cd9bae237d4ff8",
+    "docs/research/brn-successor-cglhw/raw/wave2/data-01/lichess-sealed-positions.jsonl": "03a2d078e05cd95fb27274d39e6bd8eaf58ab21103f016721a7f49fd166fe728",
+    "docs/research/brn-successor-cglhw/wave3-trained-model-plan.json": "5ef4d37c0cada208cca70ede8492714ce06fc4a0670169646613f3df9fb45a92"
+  },
+  "maxRawError": 1.7763568394002505e-15,
+  "evidence": "raw\\wave3\\additive-half-oracle-01.json",
+  "evidenceSha256": "ec9f0ae1376959684f1a47a8edb997e01c6f67305720ed903a75cfbdfb4c3ab7"
+}

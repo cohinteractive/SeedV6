@@ -1,0 +1,20 @@
+{
+  "id": "brn-wave3-variant-runtime-v1",
+  "sourceCommit": "4cc079cd6938556b70595baf04a03d42b79d3d30",
+  "build": 47,
+  "recordedUtc": "2026-10-20T10:58:24.411934+00:00",
+  "runtime": "docs\\research\\brn-successor-cglhw\\raw\\wave3\\variant-runtime\\lib",
+  "java": "21+35-2513",
+  "activeProcessors": 1,
+  "heapMiB": 768,
+  "priority": "BelowNormal",
+  "jars": {
+    "engine-core.jar": "36d8bce046b8b7d04f05414a0bb5042184e1c83ea27ab7c75fdabedf780a5634",
+    "engine-training.jar": "b3973db8e9b2d2a7cf3140ad1c42f667d2aef575a5556d536a7418273edb428a",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "543b1a04f3b75a8b44cf86f11715413b8bb05212576ad4aaa7635ca8a62362e4",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "id": "wave3-control-shrinkage-v1",
+  "formula": "Gen32 trainer raw + alpha * (continued BRE trainer raw - Gen32 trainer raw)",
+  "alphas": [
+    0,
+    0.5,
+    1
+  ],
+  "split": "same second1024/source as residual diagnostics; development only",
+  "purpose": "Check whether half-correction prediction benefit is specific to expressive architectures. No coefficient fit or match selection. Trainer double predictions differ slightly from compiled Pair2 runtime.",
+  "results": [
+    {
+      "source": "bt4",
+      "input": "raw\\wave3\\trained-data-02\\bt4-predictions.jsonl",
+      "sha256": "34df4791169962e03234899586834231fc3688ab1590eb019401d5cfecde9e6c",
+      "count": 1024,
+      "validCount": 1024,
+      "allCE": {
+        "0": 0.642954045745302,
+        "0.5": 0.638565504958462,
+        "1": 0.6485883380089581
+      },
+      "validCE": {
+        "0": 0.642954045745302,
+        "0.5": 0.638565504958462,
+        "1": 0.6485883380089581
+      }
+    },
+    {
+      "source": "cp",
+      "input": "raw\\wave3\\trained-data-02\\cp-predictions.jsonl",
+      "sha256": "f0d09ab8506366ab6709b76ce37111d567859248d2fe3dc38982a040aafbb800",
+      "count": 1024,
+      "validCount": 1015,
+      "allCE": {
+        "0": 0.598240239935532,
+        "0.5": 0.5982266830202055,
+        "1": 0.614426738278029
+      },
+      "validCE": {
+        "0": 0.5978427380776782,
+        "0.5": 0.5977306042491288,
+        "1": 0.6139361511828848
+      }
+    }
+  ]
+}

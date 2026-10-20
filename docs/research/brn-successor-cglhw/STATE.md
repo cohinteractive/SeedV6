@@ -58,9 +58,10 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
    Initial cached search costs2.11x(GATE)/1.68x(CUBIC) Gen32: substantial risk, not
    evidence of practical efficiency. G3 is now verified complete; trained costs and strength are being assessed.
 7. **Current after G3.** Actual exposures/endpoints verified; trained parity passes.
-   Half correction improves development prediction; now prospective strength screen against Gen32 and continued BRE under common
-   Policy4. For useful expressiveness, ablate conditional GATE to constant/additive
-   and CUBIC to quadratic/unary, with real costs. Independent confirmation requires
+   Half correction improves development prediction and equal-node strength on the
+   first screen. GATE's conditional ablation supports useful signal; cubic-term
+   value is unestablished. Equal-time gains remain unproved. Additive shrinkage also
+   helps prediction, so fresh controls and a longer clock are next. Independent confirmation requires
    fresh opening clusters and predeclared error/multiplicity/stopping rules.
 8. **Deferred.** Further calibration/normalization, selective feature/attack/blocker
    formulations, more efficient corrections, distillation or new architecture remain
@@ -89,14 +90,32 @@ research audit/screen commit5c06d70. Balanced timings found modest whole-search
 savings (~4.7% GATE/~3.0% CUBIC), not elimination of the cost gap. Fourteen core tests
 and actual trained/variant oracles pass; primary runtime remains frozen unchanged.
 
-Next: run the four prospective follow-up plans described in WAVE3-ASSESSMENT,
-`wave3-calibration-{node,clock}-plan.json` and
-`wave3-{gate,cubic}-ablation-node-plan.json`, after freezing the new runtime and
-bounded variant legal-play smoke.320 games total, same low-resource batch rules.
-All five variant cache oracles passed6333 positions and48 exact full/cache search
-comparisons each; source artifacts remain unchanged. Use the forthcoming
-`wave3-variant-runtime.json` binding. No next human training gate or independent
-confirmation has been admitted. Do not infer either from preliminary results.
+The calibration/ablation follow-up is complete:320 games,43240 independently
+replayed moves,no failures/caps/fallbacks. `wave3-calibration-results.json` and
+`wave3-variant-runtime.json` preserve it. Half-GATE71.875% nodes/35.9375% time,
+half-CUBIC64.0625%/45.3125%,CUBICBest31 54.6875%/48.4375% vsGen32.
+Unscaled optimized GATE51.5625%/CUBIC32.8125% at50ms. Short-clock rerun changes
+cannot be assigned solely to the small cache speedup. Constant half-GATE37.5%
+vs full half-GATE; quadratic-only half-CUBIC51.5625% vs full half-CUBIC.
+All five variant cache oracles passed6333 positions and48 exact search comparisons.
+
+The12-arm actual-GUI-loop order diagnostic also completed:192 updates/arm, no
+saved models. Source-order sensitivity exists, particularly in continued BRE,
+but no consistent residual-specific ordering defect is established. Production
+ordering remains unchanged. The compiled half-change BRE control passed12360
+actual-weight comparisons with zero integer differences and retains ordinary
+single-table cost. Eight research variant tests pass. See WAVE3-ASSESSMENT.
+
+Next: freeze the new research runtime and run the six-game legal smoke, then
+`wave3-fair-control-node-plan.json` and `wave3-longer-clock-plan.json`.
+Each192games on32 fresh development opening pairs, fixed before outcomes.
+First compares half-GATE,half-CUBIC,half-BRE against continued full BRE at32768
+nodes/move. Second compares those three against frozen Gen32 at200ms/move.
+One game/worker,768MiB/64MiB TT,BelowNormal,12games/240seconds per invocation.
+Opening inputs and exclusion hashes are tracked; confirmation partition1 untouched.
+Use a new `wave3-fair-control-runtime.json` binding, never change old receipts/plans.
+No next human training gate or independent confirmation has been admitted.
+Do not infer either from preliminary results.
 
 Source progress started at zero and overlaps Gen32 history. Hybrid stable-layout
 splits differ from BRE sequential holdout; residual tranches match each other,

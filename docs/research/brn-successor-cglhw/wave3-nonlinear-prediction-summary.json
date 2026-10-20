@@ -1,0 +1,109 @@
+{
+  "evidence": [
+    "raw/wave3/trained-data-02",
+    "raw/wave3/data-validity-sensitivity.json"
+  ],
+  "contributions": [
+    {
+      "source": "bt4",
+      "full": "W3-RESGATE",
+      "ablation": "W3-RESGATE-constant-gates",
+      "positions": 2048,
+      "nonlinearDeltaRmsPawns": 0.3277901678047687,
+      "maximumAbsDeltaPawns": 3.1089702841579827
+    },
+    {
+      "source": "bt4",
+      "full": "W3-RESCUBIC",
+      "ablation": "W3-RESCUBIC-quadratic",
+      "positions": 2048,
+      "nonlinearDeltaRmsPawns": 0.1272408507739772,
+      "maximumAbsDeltaPawns": 0.996231589722959
+    },
+    {
+      "source": "cp",
+      "full": "W3-RESGATE",
+      "ablation": "W3-RESGATE-constant-gates",
+      "positions": 2048,
+      "nonlinearDeltaRmsPawns": 0.4211813554062662,
+      "maximumAbsDeltaPawns": 3.270631668053965
+    },
+    {
+      "source": "cp",
+      "full": "W3-RESCUBIC",
+      "ablation": "W3-RESCUBIC-quadratic",
+      "positions": 2048,
+      "nonlinearDeltaRmsPawns": 0.16886324627360952,
+      "maximumAbsDeltaPawns": 3.154836590742591
+    }
+  ],
+  "validEvaluation": [
+    {
+      "source": "bt4",
+      "results": [
+        {
+          "name": "W3-RESGATE",
+          "validity": "valid",
+          "partition": "evaluation",
+          "count": 1024,
+          "value": 0.6341018440655094
+        },
+        {
+          "name": "W3-RESGATE-constant-gates",
+          "validity": "valid",
+          "partition": "evaluation",
+          "count": 1024,
+          "value": 0.6378040051025348
+        },
+        {
+          "name": "W3-RESCUBIC",
+          "validity": "valid",
+          "partition": "evaluation",
+          "count": 1024,
+          "value": 0.6420377042165422
+        },
+        {
+          "name": "W3-RESCUBIC-quadratic",
+          "validity": "valid",
+          "partition": "evaluation",
+          "count": 1024,
+          "value": 0.642626223872424
+        }
+      ]
+    },
+    {
+      "source": "cp",
+      "results": [
+        {
+          "name": "W3-RESGATE",
+          "validity": "valid",
+          "partition": "evaluation",
+          "count": 1015,
+          "value": 0.6000034629243965
+        },
+        {
+          "name": "W3-RESGATE-constant-gates",
+          "validity": "valid",
+          "partition": "evaluation",
+          "count": 1015,
+          "value": 0.6077735255828712
+        },
+        {
+          "name": "W3-RESCUBIC",
+          "validity": "valid",
+          "partition": "evaluation",
+          "count": 1015,
+          "value": 0.6073460969672618
+        },
+        {
+          "name": "W3-RESCUBIC-quadratic",
+          "validity": "valid",
+          "partition": "evaluation",
+          "count": 1015,
+          "value": 0.603159809530737
+        }
+      ]
+    }
+  ],
+  "interpretation": "Post-training function ablation on consumed development data; no strength or optimized-additive claim."
+}

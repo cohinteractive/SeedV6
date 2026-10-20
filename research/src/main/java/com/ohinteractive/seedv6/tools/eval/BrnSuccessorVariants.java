@@ -1,11 +1,32 @@
 package com.ohinteractive.seedv6.tools.eval;
 
 import com.ohinteractive.seedv6.core.brnnext.*;
+import com.ohinteractive.seedv6.core.brnpair2.*;
+import java.io.*;
+import java.nio.ByteBuffer;
 import java.util.Arrays;
+import java.util.zip.CRC32;
 import static com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.*;
 
 /** Research-only immutable function variants. Never write back to a checkpoint or optimizer. */
 final class BrnSuccessorVariants {
+    /** Fold an additive change into one ordinary Pair2 table, retaining its ordinary inference cost.
+     * The public codec validates the generated in-memory payload. No store or optimizer is written. */
+    static BrnPair2Model additiveChange(BrnPair2Model source,double scale) throws IOException {
+        if(!Double.isFinite(scale)||scale<0||scale>1)throw new IllegalArgumentException("Additive change scale must be 0..1");
+        var reference=BrnNextBase.model();
+        if(scale==0)return reference;
+        if(scale==1)return source;
+        var encoded=new ByteArrayOutputStream();BrnPair2Codec.writeModel(reference,encoded);
+        byte[] bytes=encoded.toByteArray();
+        int header=BrnPair2Codec.MODEL_BYTES-4-8*(BrnPair2Codec.TABLE_VALUES+1);
+        var buffer=ByteBuffer.wrap(bytes);buffer.position(header);
+        buffer.putDouble(reference.bias()+scale*(source.bias()-reference.bias()));
+        for(int i=0;i<BrnPair2Codec.TABLE_VALUES;i++)
+            buffer.putDouble(reference.weight(i)+scale*(source.weight(i)-reference.weight(i)));
+        var crc=new CRC32();crc.update(bytes,0,bytes.length-4);buffer.putInt((int)crc.getValue());
+        return BrnPair2Codec.readModel(new ByteArrayInputStream(bytes));
+    }
     /** Preserve the exact frozen Gen32 function while changing only its learned correction. */
     static BrnNextModel correction(BrnNextModel source,double scale,String ablation,double[] meanGates) {
         if(!source.architecture().frozenBase()||!Double.isFinite(scale)||scale<0||scale>2)

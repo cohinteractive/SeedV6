@@ -1,0 +1,20 @@
+{
+  "id": "wave3-training-order-v1",
+  "question": "Does source acquisition order materially change a tiny continuation through the actual GUI incremental optimizer loop?",
+  "modelPlan": "wave3-trained-model-plan.json",
+  "inputs": ["raw/wave2/data-01/bt4-fresh-positions.jsonl", "raw/wave2/data-01/lichess-sealed-positions.jsonl"],
+  "split": "First 1536 per source fit; last 512 per source held out. All are previously consumed development data.",
+  "orders": ["BT4-then-CP", "CP-then-BT4", "alternating", "pre-shuffled"],
+  "architectures": ["W3-RESGATE", "W3-RESCUBIC", "W3-BRE-CONTROL"],
+  "learningRate": 0.001,
+  "batch": 128,
+  "epochs": 8,
+  "shuffleSeed": 71,
+  "inputPreShuffle": "java.util.Random(71), Collections.shuffle, starting BT4 then CP",
+  "visitsPerArm": 24576,
+  "updatesPerArm": 192,
+  "runtime": "Actual IncrementalTraining: 512-record first-epoch mixer, 2048-record shuffled replay blocks.",
+  "limits": "One BelowNormal JVM, ActiveProcessorCount=1, at most 2GiB heap and 300s; run after tournament worker stops; no checkpoints saved.",
+  "interpretation": "Same exact records and starting optimizer per architecture. Diagnose order sensitivity, not competitive strength, optimal ordering or historical executable behavior. Small data cannot represent the full 131072-position generation. Preserve invalid development records in all arms.",
+  "selection": "Freeze before executing any arm; use both-source heldout changes and sensitivity across orders, not the best single loss."
+}
