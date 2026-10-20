@@ -1,0 +1,9 @@
+{
+  "id": "brn-successor-wave2-cubic-cache-v1",
+  "question": "Can a fixed-order rank-block polynomial cache preserve CUBIC's learned function and reduce its equal-time deficit?",
+  "evidence": "Original common-policy clock screen: CUBIC23/11/30,44.53%, inconclusive;1.146M nodes/s versus reference1.748M. Its small equal-node result was positive but inconclusive. This justifies a bounded implementation-cost experiment, not a strength claim.",
+  "design": "Cache per-perspective, per-rank elementary symmetric polynomials of degrees1/2/3 for each factor. Recompute dirty ranks from current canonical pieces, combine rank polynomials in fixed order, preserve unary terms and material. No floating subtraction/update drift. Reuse cached outputs for unchanged placements/perspective.",
+  "scope": "Opt-in research inference only; retain scalar full recomputation, trained weights, codecs, default loading and search policies. No training.",
+  "validation": "Independent scalar versus cached raw/integer scores, arbitrary legal transitions and jumps, rebuilt-cache bit equality, special moves, undo, STM changes, worker identity and common-policy search equality. Then actual Gen200 weights on preserved game transitions and16 corpus roots over3 rotated32768-node passes. Record raw error and integer differences before timing.",
+  "resources": "One CPU process,768MiB probe heap, BelowNormal, no concurrent tournaments/tests/benchmarks. Preserve failed attempts. Only proceed to a separate clock experiment if correctness passes and measured search cost improves."
+}

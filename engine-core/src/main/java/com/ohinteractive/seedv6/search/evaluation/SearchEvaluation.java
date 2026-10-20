@@ -102,15 +102,22 @@ public final class SearchEvaluation {
     private SearchEvaluation(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model) {
         this(model, false);
     }
-    private SearchEvaluation(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model, boolean gatedCache) {
-        if (gatedCache && model.architecture() != com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GATED_PAIRS)
-            throw new IllegalArgumentException("Incremental GATE requires GATED_PAIRS");
+    private SearchEvaluation(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model, boolean blockCache) {
+        if (blockCache && model.architecture() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.POOLED)
+            throw new IllegalArgumentException("No pooled block cache is admitted");
         next = Objects.requireNonNull(model); pair2 = null; brn = null; brn1 = null; brn2 = null; brn3 = null;
-        network = null; mapping = null; incremental = gatedCache; scalarOracle = false; materialBootstrap = false;
+        network = null; mapping = null; incremental = blockCache; scalarOracle = false; materialBootstrap = false;
     }
     public static SearchEvaluation brnNext(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model) { return new SearchEvaluation(model); }
     /** Explicit research implementation control; ordinary loading retains its existing evaluator. */
     public static SearchEvaluation brnGatedIncrementalResearch(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model) {
+        if (model.architecture() != com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GATED_PAIRS)
+            throw new IllegalArgumentException("Incremental GATE requires GATED_PAIRS");
+        return new SearchEvaluation(model, true);
+    }
+    public static SearchEvaluation brnCubicIncrementalResearch(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model) {
+        if (model.architecture() != com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.CUBIC)
+            throw new IllegalArgumentException("Incremental CUBIC requires CUBIC");
         return new SearchEvaluation(model, true);
     }
 
@@ -272,16 +279,22 @@ public final class SearchEvaluation {
         private final SearchEvaluation definition;
         private final com.ohinteractive.seedv6.core.brnnext.BrnNextModel.Workspace workspace;
         private final com.ohinteractive.seedv6.core.brnnext.BrnGatedAccumulator accumulator;
+        private final com.ohinteractive.seedv6.core.brnnext.BrnCubicAccumulator cubic;
         NextState(SearchEvaluation definition) {
             this.definition = definition; workspace = definition.next.newWorkspace();
-            accumulator = definition.incremental ? new com.ohinteractive.seedv6.core.brnnext.BrnGatedAccumulator(definition.next) : null;
+            accumulator = definition.incremental && definition.next.architecture() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GATED_PAIRS
+                    ? new com.ohinteractive.seedv6.core.brnnext.BrnGatedAccumulator(definition.next) : null;
+            cubic = definition.incremental && definition.next.architecture() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.CUBIC
+                    ? new com.ohinteractive.seedv6.core.brnnext.BrnCubicAccumulator(definition.next) : null;
         }
         @Override public void initialize(long[] board, int ply) {}
         @Override public void child(long[] parent, long[] child, int parentPly) {}
         @Override public void initializeFrom(long[] board, int ply, State source) {
             if (!(source instanceof NextState other) || definition != other.definition) throw new IllegalArgumentException("Evaluator mismatch.");
         }
-        @Override public int evaluate(long[] board, int ply) { return accumulator == null ? definition.next.score(board, workspace) : accumulator.score(board); }
+        @Override public int evaluate(long[] board, int ply) {
+            return accumulator != null ? accumulator.score(board) : cubic != null ? cubic.score(board) : definition.next.score(board, workspace);
+        }
     }
     private static final class HandcraftedState extends State {
         @Override public void initialize(long[] board, int ply) {}

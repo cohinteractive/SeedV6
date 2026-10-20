@@ -13,17 +13,21 @@ import com.ohinteractive.seedv6.training.model.NetworkModel;
 import java.nio.file.*;
 import java.util.*;
 
-/** Actual frozen GATE weights, preserved game transitions and same-node search oracle. */
+/** Actual frozen GATE/CUBIC weights, preserved game transitions and same-node search oracle. */
 public final class BrnGatedCacheProbe {
     private static volatile long sink;
     public static void main(String[] args) throws Exception {
-        if(args.length!=4)throw new IllegalArgumentException("MODEL_PLAN NODE_RECEIPTS CORPUS_JSONL NEW_OUTPUT");
+        if(args.length<4||args.length>5)throw new IllegalArgumentException("MODEL_PLAN NODE_RECEIPTS CORPUS_JSONL NEW_OUTPUT [W1-GATE|W1-CUBIC]");
+        String candidate=args.length==5?args[4]:"W1-GATE";
+        if(!Set.of("W1-GATE","W1-CUBIC").contains(candidate))throw new IllegalArgumentException("Unsupported cache");
+        boolean cubic=candidate.equals("W1-CUBIC");
         Path output=Path.of(args[3]);if(Files.exists(output))throw new IllegalArgumentException("Preserve prior evidence");
         var plan=DataFiles.read(Path.of(args[0]),BrnSuccessorAudit.Plan.class);
-        var spec=plan.models().stream().filter(m->m.name().equals("W1-GATE")).findFirst().orElseThrow();
+        var spec=plan.models().stream().filter(m->m.name().equals(candidate)).findFirst().orElseThrow();
         var snapshot=CheckpointStore.readSnapshot(Path.of(spec.root()),spec.checkpoint());
         var model=((NetworkModel.BrnNext)snapshot.model()).model();
-        var full=SearchEvaluation.brnNext(model);var cached=SearchEvaluation.brnGatedIncrementalResearch(model);
+        var full=SearchEvaluation.brnNext(model);
+        var cached=cubic?SearchEvaluation.brnCubicIncrementalResearch(model):SearchEvaluation.brnGatedIncrementalResearch(model);
         var base=plan.models().getFirst();
         var reference=CheckpointStore.readSnapshot(Path.of(base.root()),base.checkpoint()).model().evaluation(NnueScoreMapping.V1);
         var boards=new ArrayList<long[]>();var inputs=new TreeMap<String,String>();
@@ -35,22 +39,23 @@ public final class BrnGatedCacheProbe {
                 for(var move:receipt.moves())boards.add(Board.fromFen(move.fenAfter()));
             }
         }
-        var accumulator=new BrnGatedAccumulator(model);var workspace=model.newWorkspace();
+        var accumulator=cache(model);var workspace=model.newWorkspace();
         double maximum=0;int differences=0;
         for(int i=0;i<boards.size();i++) {
             var board=boards.get(i);double expected=model.rawPawns(board,workspace),actual=accumulator.rawPawns(board);
             maximum=Math.max(maximum,Math.abs(expected-actual));
             if(model.score(board,workspace)!=accumulator.score(board))differences++;
-            if(i%97==0&&Double.doubleToLongBits(actual)!=Double.doubleToLongBits(new BrnGatedAccumulator(model).rawPawns(board)))
+            if(i%97==0&&Double.doubleToLongBits(actual)!=Double.doubleToLongBits(cache(model).rawPawns(board)))
                 throw new IllegalStateException("History-dependent cached value");
         }
         var result=new LinkedHashMap<String,Object>();
-        result.put("plan","brn-successor-wave2-gate-cache-v1");result.put("manifest",snapshot.manifest());
+        result.put("plan","brn-successor-wave2-"+(cubic?"cubic":"gate")+"-cache-v1");result.put("manifest",snapshot.manifest());
         result.put("inputs",inputs);result.put("positions",boards.size());result.put("maximumRawError",maximum);
         result.put("integerDifferences",differences);result.put("accumulatorPrimitiveBytes",accumulator.primitiveBytes());
         DataFiles.write(output,result);
         if(maximum>1e-9||differences!=0)throw new IllegalStateException("Trained oracle mismatch; evidence preserved");
-        var names=List.of("GATE-full","GATE-cache","Gen32");
+        String label=cubic?"CUBIC":"GATE";
+        var names=List.of(label+"-full",label+"-cache","Gen32");
         var states=List.of(full.newState(2),cached.newState(2),reference.newState(2));
         for(var state:states)run(state,boards,50000);
         long[][] timings=new long[3][7];
@@ -87,7 +92,28 @@ public final class BrnGatedCacheProbe {
         }
         result.put("searches",searches);result.put("completed",true);
         result.put("java",System.getProperty("java.runtime.version"));result.put("activeProcessors",Runtime.getRuntime().availableProcessors());
-        DataFiles.write(output,result);System.out.println("Trained GATE cache oracle and performance complete: "+output);
+        DataFiles.write(output,result);System.out.println("Trained "+label+" cache oracle and performance complete: "+output);
+    }
+    private interface Cache {
+        double rawPawns(long[] board);
+        int score(long[] board);
+        long primitiveBytes();
+    }
+    private static Cache cache(BrnNextModel model) {
+        if(model.architecture()==BrnNextArchitecture.CUBIC) {
+            var value=new BrnCubicAccumulator(model);
+            return new Cache() {
+                public double rawPawns(long[] board){return value.rawPawns(board);}
+                public int score(long[] board){return value.score(board);}
+                public long primitiveBytes(){return value.primitiveBytes();}
+            };
+        }
+        var value=new BrnGatedAccumulator(model);
+        return new Cache() {
+            public double rawPawns(long[] board){return value.rawPawns(board);}
+            public int score(long[] board){return value.score(board);}
+            public long primitiveBytes(){return value.primitiveBytes();}
+        };
     }
     private static void run(SearchEvaluation.State state,List<long[]>boards,int count) {
         long sum=0;for(int i=0;i<count;i++)sum+=state.evaluate(boards.get(i%boards.size()),0);sink=sum;

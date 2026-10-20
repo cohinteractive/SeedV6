@@ -32,8 +32,8 @@ enabled. A model-browser fallback identity defect was found and repaired.
 The full Gen32 reference and optimizer were verified; original checkpoint/reference
 hashes were preserved. Details, failed attempts and validation limits are in WAVE1.
 
-Measured Gen0 cost: 52-105kB runtime payloads but slower current full-refresh
-inference than Gen32 rolling tables. No incremental candidate implementation,
+Historical Wave1 Gen0 cost: 52-105kB runtime payloads but slower current full-refresh
+inference than Gen32 rolling tables. At that handoff there was no incremental candidate implementation,
 sustained training-throughput conclusion, competitive tournament or strength ranking.
 Training loss and latency do not select a winner. GATE's weaker tiny-fit result is
 an open diagnostic concern, not a rejection. Features omit explicit attack/pin/
@@ -82,8 +82,7 @@ An opt-in GATE block cache is implemented and passes three additional tests plus
 actual Gen200 oracle/search probes (`wave2-gate-cache-plan.json`,
 `raw/wave2/gate-cache-01.json`): zero integer-score differences on6,333 positions,
 identical48 paired searches, approximately1.30x search speedup. Ordinary loading
-still uses full recomputation. The original clock screen must continue exclusively
-from `raw/wave2/clock-runtime/lib/*`, not rebuilt research distribution jars.
+still uses full recomputation. The completed original clock screen used `raw/wave2/clock-runtime/lib/*`, not rebuilt research distribution jars.
 The qualifying cache implementation advances build42→43 in its own commit.
 Active: `wave2-calibration-plan.json`,128 exploratory games across cached
 GATE gains.25/.5/1 and CUBIC.5, reusing16 development openings. Three gain-scaling
@@ -93,8 +92,14 @@ Resume `raw/wave2/calibration-screen` exclusively with the frozen
 240 seconds (finishing its current game). Stop/investigate any runtime failure.
 No success claim from either development screen.
 
-Hypothesis frontier: calibration and runtime cost remain active; test a similarly
-history-independent CUBIC cache if justified by its throughput deficit. Separate
+CUBIC cache is also implemented as opt-in research and verified:9,000 random
+transitions,6,333 actual Gen200 positions with zero integer differences,48 paired
+searches equal; measured search speedup1.078x and7,242 primitive bytes/worker.
+See `wave2-cubic-cache-plan.json` and `raw/wave2/cubic-cache-01.json`. Its coherent
+core commit advances build43 to44; frozen calibration-runtime remains unchanged.
+Hypothesis frontier: complete the fixed calibration study; compare cached CUBIC
+under time only if the results justify it. Diagnose effective optimization with
+bounded from-scratch smoke learning and/or existing frozen Arena endpoints. Separate
 GATE's learned mean mixture from conditional variation before claiming practical
 value: `raw/wave2/gate-context-01.json` now shows noncollapsed gates and improved
 raw-function CE/MSE versus a fitted constant mean; quarter-gain CE instead favours

@@ -319,6 +319,35 @@ If a promising GATE candidate emerges, compare playing strength with the learned
 control and assess the efficiency of folding that constant mixture into one additive
 expert. Do not award complexity credit from the uniform-gate ablation alone.
 
+### Incremental CUBIC implementation experiment
+
+`wave2-cubic-cache-plan.json` / `raw/wave2/cubic-cache-01.json` test a
+rank-block polynomial cache after the original clock screen. Each rank stores
+first/second/third elementary symmetric sums; dirty ranks are recomputed, then
+combined in a fixed order. Cached results depend on current pieces and perspective,
+not the transition history. There are no model, training, codec or default changes.
+`SearchEvaluation.brnCubicIncrementalResearch` explicitly opts in.
+
+Three new tests pass alongside the three GATE cache and three existing runtime
+tests. On9,000 random-weight legal/jump transitions the largest original-forward
+error is1.78e-14 pawns; rebuilt caches are bit identical, and integer scores agree.
+Special moves, undo, side-to-move/empty ownership, independent workers and depth4
+common-policy search parity pass. Actual Gen200 weights on6,333 saved positions
+have maximum raw error1.65e-14 and zero integer differences. All48 paired32768-node
+search results agree in score, move, PV and nodes. Search time totals1.626s scalar
+versus1.509s cached, a modest1.078x speedup; transition medians740ns versus600ns,
+with Gen32153ns. The cache adds7,242 primitive bytes per worker plus objects and
+the existing workspace. These bounded measurements do not establish chess strength
+or universal floating bit equality with scalar summation.
+
+The research probe accepts optional fifth argument`W1-CUBIC`; its four-argument
+GATE invocation is preserved. Build/test and probe ran between tournament batches,
+with one CPU process and no competing measurement. Gradle reports BUILD SUCCESSFUL
+and XML verifies9 tests with no failures; PowerShell surfaced the ordinary incubator
+warning as a native-command error despite Gradle success. Probe completed normally.
+This qualifying opt-in core capability advances application build43 to44 when
+committed. No GUI default activation, model mutation, push or deployment.
+
 ## Implementation and validation record
 
 Initial research-only runners: `BrnSuccessorAudit`, `BrnSuccessorMatch`,
