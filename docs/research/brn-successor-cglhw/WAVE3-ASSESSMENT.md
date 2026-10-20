@@ -591,3 +591,23 @@ confounds prevent attributing this difference solely to architecture.
 `wave3-strata-sensitivity.json` preserves compact results and input/output hashes.
 No game or training protocol changes. This strengthens the case to distinguish
 prediction, calibration, maturity and search cost, not to declare chess superiority.
+
+## Independent analysis hardening and opening dependence
+
+The independent legal replay now binds receipt filenames, candidate/reference IDs
+and plan membership, records every receipt SHA, preserves visibility of failed
+attempts, and summarizes first-search cost on identical reversed-colour roots.
+Five tiny legal-game tests pass (0.101s): colour reversal/cost arithmetic, wrong
+checkpoint rejection, illegal move rejection, filename mismatch, and exclusion of
+caps with retained failure visibility. The existing16-move CUBIC smoke also replays
+with all previous scoring/telemetry fields unchanged; its two intentional caps
+remain excluded. No match runner or frozen runtime changed.
+
+The32 fresh roots contain23 distinct4-ply prefixes (largest group5),31 at8 plies
+(largest group2), and32 at12/16 plies. Source-game/ECO identities are unavailable
+in the converted input book. Earlier shorthand '32 fresh opening clusters' must
+not be interpreted as32 independently established opening families. Published
+paired intervals remain unadjusted descriptive diagnostics. Future confirmation
+must predetermine its sampling/cluster and repeated-testing treatment; unique
+root FENs alone do not establish independence. Replay now includes this prefix
+sensitivity automatically without changing outcome scoring.
