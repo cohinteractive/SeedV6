@@ -460,3 +460,13 @@ comparison of the faster half-GATE against Gen32 at200ms/move on the same32 root
 This isolates implementation cost from checkpoint/calibration choice, but remains
 a timing-sensitive repeated development comparison, not independent confirmation.
 No candidate selection or human-training gate follows from microbenchmarks alone.
+
+
+Guarded implementation committed atb765a7f/build48. Separate runtime manifest:
+`wave3-gate-delta-runtime.json`; raw jars remain local. Two-game smoke replayed
+all16 moves; both intentional eight-ply caps are excluded from strength. The
+fixed64-game follow-up is `wave3-gate-delta-clock-plan.json`. Existing fresh-node
+and longer-clock studies resume48/192 and30/192 respectively, without failures.
+The failed final-build attempt01 requested nonexistent `installDist`; no tests
+ran there. Retry02 used the actual `installResearch` task, passed13 selected
+core tests, project-boundary validation and runtime export. Preserve both logs.

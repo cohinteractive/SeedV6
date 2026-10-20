@@ -125,10 +125,13 @@ the owned sentinel `build/research/brn-successor-batches.pause`; no game was
 interrupted. A GATE delta-cache prototype passed25143 score comparisons and showed
 ~2.4x transition speed in a bounded experiment. Guarded integration now passes boundary tests,6333 actual positions and48 exact
 search pairs per balanced run; warmed search time falls26.8%. See WAVE3-ASSESSMENT
-and `wave3-gate-delta-guarded-results.json`. Finish the separate runtime freeze and
-legal smoke, then remove only the owned pause sentinel and resume the unchanged
-fresh-development protocols with new log prefixes. Add the separately frozen
-64-game faster-GATE200ms development comparison; never mix runtimes.
+and `wave3-gate-delta-guarded-results.json`. The guarded cache is committed atb765a7f/build48; its separate runtime is frozen
+in `wave3-gate-delta-runtime.json`. Two-game/16-move smoke independently replayed
+with two intentional eight-ply caps, excluded from strength. The owned pause
+sentinel is removed. Resume the unchanged fresh-development protocols with new
+log prefixes, then complete `wave3-gate-delta-clock-plan.json` (64games), output
+`raw/wave3/gate-delta-clock`, using its separate runtime. Never mix runtimes.
+At resume, fair-control-node has48/192 games and longer-clock30/192, no failures.
 No next human training gate or independent confirmation has been admitted.
 Do not infer either from preliminary results.
 
