@@ -611,3 +611,13 @@ paired intervals remain unadjusted descriptive diagnostics. Future confirmation
 must predetermine its sampling/cluster and repeated-testing treatment; unique
 root FENs alone do not establish independence. Replay now includes this prefix
 sensitivity automatically without changing outcome scoring.
+
+The replay also reports paired common-opponent contrasts on shared complete
+opening pairs, rather than inferring candidate separation from overlapping marginal
+intervals. Seven tiny legal-game tests now pass (0.136s), including contrast sign
+and exclusion of a missing colour. Applied to the already verified fresh-node
+pair scores, half-GATE minus half-BRE is-0.78125 percentage points (descriptive95%
+-19.2527..17.6902); half-CUBIC minus half-BRE is-2.34375 points
+(-20.5347..15.8472). These are differences against the common continued-full-BRE
+opponent, not direct head-to-head Elo or causal architectural effects. No separation
+is established. The clock protocols remain fixed and their scores uninterpreted.

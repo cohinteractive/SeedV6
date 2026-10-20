@@ -120,6 +120,21 @@ def analyze(plan_path, directory, output):
         results.append(dict(name=model["name"], wins=wdl[0], draws=wdl[1], losses=wdl[2],
                             validPairs=len(pairs), missingPairs=missing, incompletePairs=incomplete,
                             score=mean, pairStandardError=se, descriptiveNormal95=interval, pairScores=pairs))
+    contrasts = []
+    for i, left in enumerate(plan["models"][1:]):
+        for right in plan["models"][i + 2:]:
+            differences = []
+            for pair in range(plan["pairs"]):
+                a, b = groups[(left["name"], pair)], groups[(right["name"], pair)]
+                if len(a) == len(b) == 2 and all(v is not None for v in (*a.values(), *b.values())):
+                    differences.append((sum(a.values()) - sum(b.values())) / 2)
+            n = len(differences)
+            mean = statistics.mean(differences) if n else None
+            se = statistics.stdev(differences) / math.sqrt(n) if n > 1 else None
+            contrasts.append(dict(
+                left=left["name"], right=right["name"], sharedCompletePairs=n,
+                scoreDifference=mean, pairStandardError=se,
+                descriptiveNormal95=[max(-1, mean - 1.96 * se), min(1, mean + 1.96 * se)] if se is not None else None))
     root_summaries = []
     for model in plan["models"][1:]:
         observations = []
@@ -159,6 +174,9 @@ def analyze(plan_path, directory, output):
                   terminations=terminations, failures=failures, models=results, telemetry=telemetry,
                   failedAttemptFiles=[p.name for p in sorted(directory.glob("*.failed"))],
                   receiptHashes=receipt_hashes, sameRootSearch=root_summaries,
+                  commonOpponentContrasts=contrasts,
+                  contrastLimit="Paired differences on shared complete opening pairs against the same reference. "
+                                "Positive favours left. Descriptive, unadjusted, not direct head-to-head strength or architectural causation.",
                   sameRootLimit="Fresh search/TT at identical opening roots; different evaluator-dependent trees. "
                                 "Clock protocols warm up; node protocols do not. Descriptive cost/behaviour, not causal latency or strength.",
                   statisticalLimit="Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims.")

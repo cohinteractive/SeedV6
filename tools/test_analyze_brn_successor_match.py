@@ -102,6 +102,43 @@ class MatchEvidenceTest(unittest.TestCase):
         self.assertIsNone(report["models"][0]["score"])
         self.assertEqual(1, report["models"][0]["incompletePairs"])
 
+    def add_control(self, complete=True):
+        plan = json.loads(self.plan.read_text())
+        plan["models"].append(dict(name="control", checkpoint="continued"))
+        self.plan.write_text(json.dumps(plan), encoding="utf-8")
+        binding = hashlib.sha256(self.plan.read_bytes()).hexdigest()
+        for record in self.records:
+            record["planHash"] = binding
+        self.save()
+        controls = json.loads(json.dumps(self.records))
+        for record in controls:
+            record.update(candidateName="control", candidate="continued")
+        board, moves = chess.Board(), []
+        for uci in ("e2e4", "f7f6", "d2d4", "g7g5", "d1h5"):
+            move = chess.Move.from_uci(uci)
+            player = 0 if board.turn else 1
+            board.push(move)
+            moves.append(dict(move=move.from_square | (move.to_square << 6), player=player,
+                              fenAfter=board.fen(en_passant="fen"), depth=4, nodes=200,
+                              elapsedNanos=1000, fallback=False))
+        controls[0].update(moves=moves, result=dict(termination="WHITE_CHECKMATES_BLACK", plies=5))
+        for colour in range(2 if complete else 1):
+            (self.root / f"p000-m2-c{colour}.json").write_text(json.dumps(controls[colour]), encoding="utf-8")
+
+    def test_common_opponent_contrast_has_direction_and_shared_pair(self):
+        self.add_control()
+        contrast = self.analyze()["commonOpponentContrasts"][0]
+        self.assertEqual(("candidate", "control"), (contrast["left"], contrast["right"]))
+        self.assertEqual(1, contrast["sharedCompletePairs"])
+        self.assertEqual(-.5, contrast["scoreDifference"])
+        self.assertIsNone(contrast["descriptiveNormal95"])
+
+    def test_common_opponent_contrast_excludes_missing_colour(self):
+        self.add_control(complete=False)
+        contrast = self.analyze()["commonOpponentContrasts"][0]
+        self.assertEqual(0, contrast["sharedCompletePairs"])
+        self.assertIsNone(contrast["scoreDifference"])
+
 
 if __name__ == "__main__":
     unittest.main()
