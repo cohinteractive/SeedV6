@@ -58,7 +58,12 @@ def main(directory, output):
         maximum_error = 0
         for name in rows[0]["predictions"]:
             actual = statistics.mean(metrics[(name, "all", "evaluation")])
-            expected = java_source["metrics"][name + "@1.0:evaluation"]["crossEntropy"]
+            # Residual ablations include an explicit scale suffix; averaging
+            # already encodes its scale in the predictor name.
+            keys = [key for key in (name + "@1.0:evaluation", name + ":evaluation")
+                    if key in java_source["metrics"]]
+            assert len(keys) == 1, (name, keys)
+            expected = java_source["metrics"][keys[0]]["crossEntropy"]
             maximum_error = max(maximum_error, abs(actual - expected))
         assert maximum_error < 1e-12, maximum_error
         results.append(dict(source=source, positions=len(rows), invalid=sum(s != 0 for s in statuses),

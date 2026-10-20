@@ -1,0 +1,11 @@
+{
+  "id": "wave4-packed-cubic-prototype-v1",
+  "createdUtc": "2026-10-20T22:02:40.737732+00:00",
+  "question": "Did rank-index indirection obscure the benefit of active-rank arithmetic? Pack retained embeddings/head coefficients contiguously and retain only active accumulator columns.",
+  "parent": "wave4-sparse-cubic-prototype-plan.json",
+  "models": "Same both actual cubic means and preselected4/8/12/16 masks; no refitting",
+  "verification": "Identical three-way canonical/dense/prototype score oracle; masked payload hashes; same6333 positions and balanced8 timing passes; no concurrent tournament/probe",
+  "numerical": "Same conservative original bound and period64 rebuild; preserve ascending original-rank accumulation and all ranks for nonfinite bound",
+  "memory": "Additional packed immutable copy retained beside original model; report its actual primitive bytes; no false model size reduction claim",
+  "decision": "Research-only microcost; no engine routing/default change. Stronger cost still requires masked chess quality before adoption."
+}

@@ -114,7 +114,11 @@ Fit-only rank removal on averaged cubic models gives plausible quality/cost trad
 full16 reproduction and independent prediction checks pass. The isolated sparse-rank
 prototype passes actual-model parity but only rank4/8 reduces transition cost;
 rank12/16 offers no gain. Defer integration pending pruned chess quality evidence.
-No core/application path or pruning strength protocol has changed.
+Packed-layout oracles also pass, but variable timing baselines leave its incremental
+benefit uncertain; no core/application path or pruning strength protocol has changed.
+Fixed-window maturity comparison verifies GATE/BRE prediction improvement but
+CUBIC full CP degradation; half calibration partly offsets it. Extra generations
+are not automatically an improvement. See wave4-maturity-average-results.json.
 The prospective direct admission fixes448 follow-up games against both actual BRE
 Gen64 endpoints, all four residual means, additive means and full/half calibration
 on eight unused development roots. See wave4-direct-admission.json; begin only after

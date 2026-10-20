@@ -1,0 +1,469 @@
+{
+  "id": "wave4-packed-cubic-results-v1",
+  "runtime": "wave4-packed-runtime.json",
+  "results": [
+    {
+      "rate": "LR001",
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\packed-LR001-01.json",
+      "sha256": "497998b9ee82c15e216046a33d1352126e0ce335f77e3b18357a03c445bbfacb",
+      "results": [
+        {
+          "ranks": [
+            2,
+            3,
+            5,
+            9
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 4.551914400963142e-15,
+          "integerDifferences": 0,
+          "packedPrimitiveBytes": 28409,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "packed": false,
+              "nanosPerTransition": 454.561005
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 285.264
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 240.0115
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 322.937995
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 295.4075
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 397.8855
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 355.519
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 243.330995
+            }
+          ],
+          "medianDenseNs": 376.70225,
+          "medianPackedNs": 264.2974975,
+          "packedToDense": 0.7016084918526503
+        },
+        {
+          "ranks": [
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            13
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 3.774758283725532e-15,
+          "integerDifferences": 0,
+          "packedPrimitiveBytes": 53257,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "packed": false,
+              "nanosPerTransition": 323.716005
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 260.902
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 274.466
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 315.0245
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 267.893
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 300.113
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 305.0615
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 255.9555
+            }
+          ],
+          "medianDenseNs": 310.043,
+          "medianPackedNs": 264.3975,
+          "packedToDense": 0.8527768728853738
+        },
+        {
+          "ranks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 3.885780586188048e-15,
+          "integerDifferences": 0,
+          "packedPrimitiveBytes": 78105,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "packed": false,
+              "nanosPerTransition": 306.282495
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 293.596
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 291.2775
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 300.516
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 282.732005
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 333.3395
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 333.0835
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 290.746505
+            }
+          ],
+          "medianDenseNs": 319.6829975,
+          "medianPackedNs": 291.0120025,
+          "packedToDense": 0.9103142950228374
+        },
+        {
+          "ranks": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 3.9968028886505635e-15,
+          "integerDifferences": 0,
+          "packedPrimitiveBytes": 102953,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "packed": false,
+              "nanosPerTransition": 337.057005
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 322.308495
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 360.736
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 325.156
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 318.167995
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 308.2055
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 304.208495
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 317.839
+            }
+          ],
+          "medianDenseNs": 316.68075,
+          "medianPackedNs": 320.238245,
+          "packedToDense": 1.0112336951330323
+        }
+      ]
+    },
+    {
+      "rate": "LR003",
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\packed-LR003-01.json",
+      "sha256": "8dcecdd9669e847b2954a95e4e1f52a4f014eaaceb0dac8aa258a85ac987ee0c",
+      "results": [
+        {
+          "ranks": [
+            2,
+            3,
+            5,
+            9
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 3.774758283725532e-15,
+          "integerDifferences": 0,
+          "packedPrimitiveBytes": 28409,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "packed": false,
+              "nanosPerTransition": 527.904495
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 346.3595
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 252.768995
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 310.7665
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 238.1115
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 326.386505
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 332.634
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 208.883
+            }
+          ],
+          "medianDenseNs": 329.5102525,
+          "medianPackedNs": 245.4402475,
+          "packedToDense": 0.7448637656577924
+        },
+        {
+          "ranks": [
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            13
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 3.941291737419306e-15,
+          "integerDifferences": 0,
+          "packedPrimitiveBytes": 53257,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "packed": false,
+              "nanosPerTransition": 322.640995
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 278.738005
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 258.8005
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 303.956505
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 249.944005
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 305.7625
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 303.1295
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 257.9295
+            }
+          ],
+          "medianDenseNs": 304.85950249999996,
+          "medianPackedNs": 258.365,
+          "packedToDense": 0.8474887542664019
+        },
+        {
+          "ranks": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 4.107825191113079e-15,
+          "integerDifferences": 0,
+          "packedPrimitiveBytes": 78105,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "packed": false,
+              "nanosPerTransition": 304.584495
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 293.8705
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 284.478505
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 309.087995
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 286.298
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 320.5715
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 329.114005
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 320.5505
+            }
+          ],
+          "medianDenseNs": 314.8297475,
+          "medianPackedNs": 290.08425,
+          "packedToDense": 0.9214003832341161
+        },
+        {
+          "ranks": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 4.6629367034256575e-15,
+          "integerDifferences": 0,
+          "packedPrimitiveBytes": 102953,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "packed": false,
+              "nanosPerTransition": 367.449005
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 372.567
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 350.423
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 404.1665
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 371.559995
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 384.382
+            },
+            {
+              "packed": false,
+              "nanosPerTransition": 361.218
+            },
+            {
+              "packed": true,
+              "nanosPerTransition": 418.529
+            }
+          ],
+          "medianDenseNs": 375.9155025,
+          "medianPackedNs": 372.06349750000004,
+          "packedToDense": 0.9897530030701515
+        }
+      ]
+    }
+  ],
+  "scope": "Eight actual models pass integer/raw oracle. Packed/dense within-run ratios0.70-0.75 rank4,0.85 rank8,0.91-0.92 rank12,about1 rank16. Cross-run dense baseline varies; rank4 absolute time resembles sparse prototype. No causal claim that packing adds the apparent full ratio gain. A three-way balanced comparison is required before selecting layout. Full retained model plus packed duplicate adds memory; no serialized size reduction."
+}

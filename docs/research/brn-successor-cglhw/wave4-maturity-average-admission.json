@@ -1,0 +1,9 @@
+{
+  "id": "wave4-maturity-average-admission-v1",
+  "createdUtc": "2026-10-20T22:04:07.230884+00:00",
+  "question": "Does extra W4 exposure improve fixed-window predictions beyond W3 when endpoint noise is reduced at both ages?",
+  "comparison": "Predetermined W3 mean25..32 against W4 mean57..64 for both rates. Full and half on same consumed development panels; no window tuning.",
+  "runtime": "wave4-average-runtime.json",
+  "integrity": "Read-only24 exact original W3 checkpoints; hashes bound; Java codec and consecutive actual generation/parent/step verification. No original file writes.",
+  "interpretation": "Prediction maturity diagnostic, not chess strength or identically matched architecture data. Compare actual average predictions, not nominal generation count. No training or optimizer export."
+}
