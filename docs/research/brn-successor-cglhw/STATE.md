@@ -84,12 +84,19 @@ Against Gen32, GATE45.31% nodes/26.56% time, CUBIC46.88%/42.19%, continued BRE56
 Against continued BRE, CUBIC71.88% nodes/56.25% time; small reused samples do not
 establish an architectural ranking or programme success.
 
-Next: profile-guided residual cache cost reduction, preserving score/search semantics;
-then freeze a new half-correction/Best31/ablation development study. Original primary
-runtime/receipts remain immutable. Research correction controls pass7 tests;
-18 tiny optimizer arms completed without saving models. LR.001 is a credible
-continuation hypothesis, not an established optimum. No next human training gate
-or independent confirmation has yet been admitted. No tournament is currently queued.
+The cache cost revision is verified and committed at0583989/build47, after the
+research audit/screen commit5c06d70. Balanced timings found modest whole-search
+savings (~4.7% GATE/~3.0% CUBIC), not elimination of the cost gap. Fourteen core tests
+and actual trained/variant oracles pass; primary runtime remains frozen unchanged.
+
+Next: run the four prospective follow-up plans described in WAVE3-ASSESSMENT,
+`wave3-calibration-{node,clock}-plan.json` and
+`wave3-{gate,cubic}-ablation-node-plan.json`, after freezing the new runtime and
+bounded variant legal-play smoke.320 games total, same low-resource batch rules.
+All five variant cache oracles passed6333 positions and48 exact full/cache search
+comparisons each; source artifacts remain unchanged. Use the forthcoming
+`wave3-variant-runtime.json` binding. No next human training gate or independent
+confirmation has been admitted. Do not infer either from preliminary results.
 
 Source progress started at zero and overlaps Gen32 history. Hybrid stable-layout
 splits differ from BRE sequential holdout; residual tranches match each other,

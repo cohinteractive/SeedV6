@@ -203,3 +203,36 @@ general speed or strength guarantee, and do not remove the baseline cost gap.
 GATE worker primitive payload rises34bytes to6266; CUBIC remains10162.
 The small revision is retained on this evidence. The next clock screen must include
 unscaled optimized models to distinguish cache and correction-amplitude effects.
+
+## Prospective calibration/ablation follow-up
+
+Frozen before these games: `wave3-calibration-{node,clock}-plan.json`,
+`wave3-{gate,cubic}-ablation-node-plan.json`.
+Half correction means `Gen32Raw + .5 * learnedCorrection`, retaining the existing
+quarter search mapping. It never halves Gen32 or changes an original checkpoint.
+The .5 value was selected from prediction diagnostics, not searched match scores.
+
+At32768 nodes/move, compare half-GATE32, half-CUBIC32 and persisted full CUBIC
+Best31 against frozen Gen32 (32games each). At50ms/move, compare those three plus
+unscaled optimized GATE32 and CUBIC32 against Gen32 (32games each).
+Separately, at32768 nodes/move, compare constant-mean-gate half-GATE against
+conditional half-GATE, and quadratic-only half-CUBIC against full half-CUBIC
+(32games each). Total320 games; same16 colour-reversed development openings,
+maximum512plies and existing12game/240s batch/resource envelope.
+
+The direct ablations test function contribution with co-adapted weights. They
+retain the original evaluator implementation cost and are not independently
+retrained/optimized additive controls. Learned gate means come from the previously
+recorded label-independent first1024/source fit. A positive nonlinear-value claim
+would still need appropriate independently trained comparisons/confirmation.
+The continued-BRE primary comparisons remain relevant; any promising newly selected
+function must also receive an appropriate continued-control comparison before a
+final architecture claim.
+
+All counts are fixed; failures require investigation, caps remain unscored,
+and every move receives independent replay. Do not extend these unchanged
+comparisons to seek significance. Multiple variants, reused openings and the short
+clock remain development limitations. Interpret maturity/calibration/cost jointly;
+decide the next research or human-training wave only from the completed evidence.
+Variant cache oracles must pass before scoring; runtime/provenance is separately
+frozen at build47. Original primary evidence remains unchanged.

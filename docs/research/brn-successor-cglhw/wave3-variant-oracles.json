@@ -1,0 +1,121 @@
+{
+  "id": "brn-wave3-variant-oracles-v1",
+  "results": [
+    {
+      "candidateName": "RESCUBIC-Best31",
+      "manifest": {
+        "id": "g000031-s000253952-6603c901c1cb7bb23e5b78f5054be56a436c940ae1891c5bac6f3b7fd246dd80",
+        "generation": 31,
+        "optimizerStep": 253952,
+        "trainingDepth": 4,
+        "parentId": "g000030-s000245760-226f06a8221a972293d32e200fa372019d12153a4e895f564d13f2afb8037caa",
+        "networkBytes": 104784,
+        "networkSha256": "7e1bfe99c30edc2d197fefcde63efd05ec60dfada0983f9893ea0da4c1b3e952",
+        "trainingBytes": 314224,
+        "trainingSha256": "cc8517a6f079c2c556d18a04b916584d5c0161a4dbb68e36fb83448ff8391d5a",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "effectiveNetworkSha256": "7e1bfe99c30edc2d197fefcde63efd05ec60dfada0983f9893ea0da4c1b3e952",
+      "positions": 6333,
+      "maximumRawError": 2.7755575615628914e-15,
+      "maximumFreshRawError": 7.993605777301127e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "accumulatorPrimitiveBytes": 10162,
+      "evidence": "raw\\wave3\\variant-RESCUBIC-Best31.json"
+    },
+    {
+      "candidateName": "RESCUBIC32-half-quadratic",
+      "manifest": {
+        "id": "g000032-s000262144-41d911c124b545bc293252c7a75361f45ddd386bd600e9e64523d0fce5516197",
+        "generation": 32,
+        "optimizerStep": 262144,
+        "trainingDepth": 4,
+        "parentId": "g000031-s000253952-6603c901c1cb7bb23e5b78f5054be56a436c940ae1891c5bac6f3b7fd246dd80",
+        "networkBytes": 104784,
+        "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+        "trainingBytes": 314224,
+        "trainingSha256": "137685439f0447dec59f15071dbd5227e1f9865a1376ff2c348d8cd36ba953df",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "effectiveNetworkSha256": "e9da9899b98824f0a5711b5ddcc1f612705887bf9f3ed27d3cd79e9487a701a5",
+      "positions": 6333,
+      "maximumRawError": 1.3322676295501878e-15,
+      "maximumFreshRawError": 7.993605777301127e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "accumulatorPrimitiveBytes": 10162,
+      "evidence": "raw\\wave3\\variant-RESCUBIC32-half-quadratic.json"
+    },
+    {
+      "candidateName": "RESCUBIC32-half",
+      "manifest": {
+        "id": "g000032-s000262144-41d911c124b545bc293252c7a75361f45ddd386bd600e9e64523d0fce5516197",
+        "generation": 32,
+        "optimizerStep": 262144,
+        "trainingDepth": 4,
+        "parentId": "g000031-s000253952-6603c901c1cb7bb23e5b78f5054be56a436c940ae1891c5bac6f3b7fd246dd80",
+        "networkBytes": 104784,
+        "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+        "trainingBytes": 314224,
+        "trainingSha256": "137685439f0447dec59f15071dbd5227e1f9865a1376ff2c348d8cd36ba953df",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "effectiveNetworkSha256": "02f603153ef005444e55d509cc1b0b29b9b76e75a8fdc43bb51fd6b53e064c33",
+      "positions": 6333,
+      "maximumRawError": 2.220446049250313e-15,
+      "maximumFreshRawError": 7.993605777301127e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "accumulatorPrimitiveBytes": 10162,
+      "evidence": "raw\\wave3\\variant-RESCUBIC32-half.json"
+    },
+    {
+      "candidateName": "RESGATE32-half-constant",
+      "manifest": {
+        "id": "g000032-s000262144-92921536d7dd4929661cdef6992b6cc5e7089edfcd09b36c646f84f4cd5d94b0",
+        "generation": 32,
+        "optimizerStep": 262144,
+        "trainingDepth": 4,
+        "parentId": "g000031-s000253952-cc75be06d27414aa8707c03f4c6f94ce1d26a7273e1ab4c2ac68ae16cefbae9d",
+        "networkBytes": 52464,
+        "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+        "trainingBytes": 157264,
+        "trainingSha256": "9fa47b99b2349c20ca0c79a35ae007086ecab9acbb8c9b9cf18d4ecfa223a26d",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "effectiveNetworkSha256": "d2efb3733e6d8c04b54e06a814934ba27813dbdc656d51c136b4c96a73d20669",
+      "positions": 6333,
+      "maximumRawError": 1.7763568394002505e-15,
+      "maximumFreshRawError": 7.993605777301127e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "accumulatorPrimitiveBytes": 6266,
+      "evidence": "raw\\wave3\\variant-RESGATE32-half-constant.json"
+    },
+    {
+      "candidateName": "RESGATE32-half",
+      "manifest": {
+        "id": "g000032-s000262144-92921536d7dd4929661cdef6992b6cc5e7089edfcd09b36c646f84f4cd5d94b0",
+        "generation": 32,
+        "optimizerStep": 262144,
+        "trainingDepth": 4,
+        "parentId": "g000031-s000253952-cc75be06d27414aa8707c03f4c6f94ce1d26a7273e1ab4c2ac68ae16cefbae9d",
+        "networkBytes": 52464,
+        "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+        "trainingBytes": 157264,
+        "trainingSha256": "9fa47b99b2349c20ca0c79a35ae007086ecab9acbb8c9b9cf18d4ecfa223a26d",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "effectiveNetworkSha256": "a3aa161246fbf2d4af081e4b6f51964ba81345a02069329d27d3ea2156b82ec2",
+      "positions": 6333,
+      "maximumRawError": 2.6645352591003757e-15,
+      "maximumFreshRawError": 7.993605777301127e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "accumulatorPrimitiveBytes": 6266,
+      "evidence": "raw\\wave3\\variant-RESGATE32-half.json"
+    }
+  ],
+  "searchPairsPerVariant": 48
+}

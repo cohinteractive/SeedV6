@@ -11,19 +11,24 @@ import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 import com.ohinteractive.seedv6.training.data.DataFiles;
 import com.ohinteractive.seedv6.training.model.NetworkModel;
 import java.nio.file.*;
+import java.io.ByteArrayOutputStream;
 import java.util.*;
 
 /** Actual frozen GATE/CUBIC weights, preserved game transitions and same-node search oracle. */
 public final class BrnGatedCacheProbe {
+    record ModelPlan(String id,List<BrnSuccessorMatch.Model> models) {}
     private static volatile long sink;
     public static void main(String[] args) throws Exception {
         if(args.length<4||args.length>6)throw new IllegalArgumentException("MODEL_PLAN NODE_RECEIPTS CORPUS_JSONL NEW_OUTPUT [MODEL_NAME [BLEND_WEIGHT]]");
         String candidate=args.length>=5?args[4]:"W1-GATE";
         Path output=Path.of(args[3]);if(Files.exists(output))throw new IllegalArgumentException("Preserve prior evidence");
-        var plan=DataFiles.read(Path.of(args[0]),BrnSuccessorAudit.Plan.class);
+        var plan=DataFiles.read(Path.of(args[0]),ModelPlan.class);
         var spec=plan.models().stream().filter(m->m.name().equals(candidate)).findFirst().orElseThrow();
         var snapshot=CheckpointStore.readSnapshot(Path.of(spec.root()),spec.checkpoint());
         var model=((NetworkModel.BrnNext)snapshot.model()).model();
+        if(spec.correctionScale()!=null||spec.correctionAblation()!=null)
+            model=BrnSuccessorVariants.correction(model,spec.correctionScale()==null?1:spec.correctionScale(),
+                    spec.correctionAblation(),spec.constantGates());
         boolean cubic=model.architecture().correctionKind()==BrnNextArchitecture.CUBIC;
         if(!cubic&&model.architecture().correctionKind()!=BrnNextArchitecture.GATED_PAIRS)throw new IllegalArgumentException("Unsupported cache");
         var full=SearchEvaluation.brnNext(model);
@@ -58,6 +63,12 @@ public final class BrnGatedCacheProbe {
         result.put("plan",model.architecture().frozenBase()?"brn-successor-wave3-cache-oracle-v2":
                 "brn-successor-wave2-"+(cubic?"cubic":"gate")+"-cache-v1");result.put("manifest",snapshot.manifest());
         result.put("modelPlanId",plan.id());
+        var effectiveBytes=new ByteArrayOutputStream();BrnNextCodec.writeModel(model,effectiveBytes);
+        result.put("effectiveNetworkSha256",HexFormat.of().formatHex(DataFiles.digest().digest(effectiveBytes.toByteArray())));
+        if(spec.correctionScale()!=null||spec.correctionAblation()!=null) {
+            result.put("correctionScale",spec.correctionScale()==null?1:spec.correctionScale());
+            result.put("correctionAblation",spec.correctionAblation());result.put("constantGates",spec.constantGates());
+        }
         result.put("candidateWeightBytes",8L*model.architecture().parameters());
         if(model.architecture().frozenBase()) {
             result.put("baseSha256",BrnNextBase.SHA256);
