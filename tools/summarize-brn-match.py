@@ -10,6 +10,17 @@ from pathlib import Path
 import sys
 
 
+def diagnostic_entrypoint(record):
+    """Recognize explicitly separate diagnostic receipts; malformed match records fail closed."""
+    arguments = record.get("arguments")
+    assert isinstance(arguments, list) and all(isinstance(x, str) for x in arguments)
+    entries = [x for x in arguments if x.startswith("com.ohinteractive.seedv6.tools.eval.")]
+    admitted = {"BrnHybridProbe", "BrnHybridAblationPlan", "BrnGatedCacheProbe", "BrnCubicLayoutProbe"}
+    assert len(entries) == 1 and entries[0].rsplit(".", 1)[-1] in admitted, "Unclassified process record without a plan"
+    assert isinstance(record.get("exitCode"), int)
+    return entries[0]
+
+
 def summarize(plan_file, receipts, analysis_file, runtime_file, output):
     plan_file, receipts, analysis_file, runtime_file, output = map(
         Path, (plan_file, receipts, analysis_file, runtime_file, output))
@@ -57,8 +68,15 @@ def summarize(plan_file, receipts, analysis_file, runtime_file, output):
     for name, expected in runtime["jars"].items():
         assert digest(Path(runtime["runtime"]) / name) == expected
     processes = []
+    separate_diagnostics = []
     for path in sorted(receipts.parent.glob("*.process.json")):
         record = read(path)
+        if "plan" not in record:
+            entry = diagnostic_entrypoint(record)
+            separate_diagnostics.append(dict(path=str(path), sha256=digest(path), entrypoint=entry,
+                                             exitCode=record["exitCode"]))
+            continue
+        assert isinstance(record["plan"], str) and record["plan"], "Missing match process plan"
         if Path(record["plan"]).resolve() != plan_file.resolve():
             continue
         assert record["exitCode"] == 0
@@ -78,6 +96,7 @@ def summarize(plan_file, receipts, analysis_file, runtime_file, output):
         commonOpponentContrasts=analysis["commonOpponentContrasts"],
         openingPrefixSensitivity=analysis.get("openingPrefixSensitivity"),
         processReceipts=processes,
+        separateDiagnosticProcessReceipts=separate_diagnostics,
         maximumSampledWorkingSetMiB=max(p["sampledPeakWorkingSetBytes"] for p in processes) / 1048576,
         totalEngineCpuSeconds=sum(p["cpuSeconds"] for p in processes),
         limitations=[analysis["statisticalLimit"], analysis["contrastLimit"], analysis["sameRootLimit"],

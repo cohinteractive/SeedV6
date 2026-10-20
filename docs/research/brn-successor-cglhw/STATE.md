@@ -142,7 +142,10 @@ advantage in chess. See WAVE4-ASSESSMENT and the exact result manifests.
 Direct-clock-LR001 is CLOSED:96games/13113 legal moves, no failures/caps/fallbacks.
 GATE00121.875%,CUBIC00146.875% versus BRE001 half under time, despite62.5/75%
 at nodes. Inference cost remains material; no architectural rejection follows.
-Next match plan: direct-clock-LR003, then the separately admitted32 full-clock games. Use
+Direct-clock-LR003 is also CLOSED:96games/13508 moves, zero failures/caps/fallbacks.
+GATE001/003 both31.25%,CUBIC00153.125%,CUBIC00359.375%,BRE003 mean50%,Gen3234.375%.
+The original448-game direct admission is CLOSED (61709 legal moves).
+Current match plan: separately admitted32 direct-full-clock games (batches01..03). Use
 wave4-average-runtime.json. See wave4-direct-admission.json; fixed448-game budget.
 Also admitted:64 rank4-vs-rank16 node games, full/half, after13 tests and actual
 masked score/search oracles pass. Use wave4-pruned-admission.json and the separate
@@ -251,8 +254,8 @@ The initial1024-node smoke failure is preserved; its separate32768-node replacem
 passed with16 intentional caps, all excluded from strength. Frozen runtime:
 wave4-hybrid-runtime.json, source583310e/build52. Observed transition cost is near
 the original residual, not BRE. No hybrid strength protocol is yet admitted.
-Continue direct-clock-LR003 (currently batches05..08), then
-selected full-clock and BRE full/half controls. Use the original frozen averaging
+Both direct-clock plans are complete. Continue selected direct-full-clock
+(currently batches01..03), then BRE full/half controls. Use the original frozen averaging
 runtime for those plans, never the hybrid runtime. Then choose a bounded hybrid
 comparison that retains both additive controls and an expressive-value ablation.
 No new human action or training gate is yet required.
@@ -276,3 +279,12 @@ Data overlap/diversity and aggregate training cost remain confounds. Do not call
 hybrid victory a controlled architectural gain without the expressive ablation
 and appropriate training control; matched further GUI training may be justified
 if the prepared hybrid tests show value. No such human gate is admitted yet.
+
+Completed bounded cost diagnostic: wave4-cubic-layout-results.json records the
+same-JVM rotated dense/sparse/packed score comparison on existing half-correction
+rank masks. All score oracles pass; packed rank4 costs25-30% less than dense and
+7-9% less than sparse. BrnCubicLayoutProbe is compiled and verified. This resolves the
+previous cross-run timing ambiguity; it does not authorize pruning adoption or
+infer chess quality from speed. Next implementation question: promote an explicit packed research cache, then
+verify actual search parity/throughput at a batch boundary. Keep existing clocks
+on their frozen runtime and do not infer pruned chess quality from this speed gain.

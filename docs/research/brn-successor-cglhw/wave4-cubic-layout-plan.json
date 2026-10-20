@@ -1,0 +1,20 @@
+{
+  "id": "wave4-cubic-layout-plan-v1",
+  "createdUtc": "2026-10-20T23:38:29.311018+00:00",
+  "question": "Resolve the prior cross-run timing ambiguity: does packing retained cubic components beat sparse indirection when all three score implementations run in the same JVM?",
+  "models": [
+    "W4-RESCUBIC-LR001-average8",
+    "W4-RESCUBIC-LR003-average8"
+  ],
+  "modelPlan": "wave4-average-model-plan.json",
+  "rankSelection": "Reuse the original frozen fit-only4/8/12/16 rank masks; no reranking on cost or chess.",
+  "scale": 0.5,
+  "implementations": [
+    "existing dense guarded delta",
+    "existing isolated sparse prototype",
+    "existing isolated packed prototype"
+  ],
+  "protocol": "Three forward/reverse correctness passes over6333 game positions plus2048 CP positions;100000 warmup transitions/layout;9 passes/layout, rotated order,200000 score transitions/pass. Same one-time constructions outside timers, immutable payloads bound.",
+  "resources": "Two sequential BelowNormal JVMs,ActiveProcessorCount1,768MiB, only at a tournament boundary. No concurrent heavy workload, training, model write, search integration or strength claim.",
+  "decision": "Choose an implementation only if same-run cost and correctness support it. This diagnostic cannot establish that pruning preserves chess quality; the half-mask match remains inconclusive and full-mask chess result adverse."
+}

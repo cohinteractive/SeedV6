@@ -584,3 +584,42 @@ from the original hybrid runtime (the generated version property records its lat
 source revision). Core/application behaviour remains build52. No hybrid or ablated
 strength plan is yet admitted; both trained additive controls and aggregate training
 history remain necessary comparisons.
+
+
+## Original direct programme closed; packed-layout decision
+
+All448 games in the original direct admission are now closed, with61709 legal
+moves independently replayed. The LR003 clock screen contributes96 games/13508
+moves, without failures/caps/fallbacks: GATE00131.25%,GATE00331.25%,CUBIC00153.125%,
+CUBIC00359.375%,BRE003 mean50%,Gen3234.375%, against BRE003 half. The corresponding
+LR001 clock screen was21.875/43.75/46.875/31.25/53.125/25%. These eight-pair screens
+retain wide uncertainty and opening sensitivity; no expressive superiority or
+independent confirmation is established. Both trained controls remain necessary.
+The selected32 full-clock games are now active, followed by64 BRE full/half controls
+and32 deeper equal-node sensitivity games, all under the unchanged averaging runtime.
+
+The completed same-JVM layout diagnostic resolves the earlier cross-run ambiguity.
+All dense/sparse/packed implementations match canonical integer scores across
+25143 checks/model, for both rates and all four retained widths at half correction.
+At rank4, packed median score-transition costs are215.5/226.7ns versus dense
+307.0/303.4ns (29.8/25.3% lower) and sparse237.6/245.0ns (9.3/7.5% lower).
+Rank8 packed costs255.9/257.2ns; rank12 approximately286ns; rank16 approximately
+303-307ns, close to dense. Nine rotated passes per implementation are retained.
+These are microcosts, not whole-search gains. Packed copies add memory beside the
+retained source model; all per-layout primitive counts are recorded.
+
+This supports preparing an explicit packed research cache and actual search
+oracles, while keeping ordinary model loading unchanged. It does not resolve
+pruned chess quality: full masking was adverse and half masking inconclusive.
+Any packed match must bind the same mask/function and a separate verified runtime.
+Evidence: wave4-cubic-layout-plan/runtime/results.json. No core integration has yet
+been performed at this record boundary.
+
+The LR003 completion summarizer initially rejected nearby diagnostic process
+receipts because they lack a tournament plan. It now explicitly classifies known
+diagnostic entrypoints, records their hashes separately, and still rejects malformed
+or unclassified records. Two targeted tests pass; a prior96-game clock summary's
+results and all match-process bindings reproduce exactly. No timed match overlapped
+any of the16 newly recorded diagnostic processes. Initial failed summary/regression
+setup attempts remain preserved in wave4-process-summary-validation.json; no engine
+or match result changed.

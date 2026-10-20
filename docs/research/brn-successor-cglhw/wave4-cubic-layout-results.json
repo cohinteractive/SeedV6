@@ -1,0 +1,551 @@
+{
+  "id": "wave4-cubic-layout-results-v1",
+  "plan": "wave4-cubic-layout-plan.json",
+  "runtime": "wave4-cubic-layout-runtime.json",
+  "correctionScale": 0.5,
+  "results": [
+    {
+      "rate": "001",
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\cubic-layout-LR001-01.json",
+      "sha256": "d95546e2b5b2aa3c296e16efef5cf532a33e3719df20c002bd7f593ee103e21e",
+      "results": [
+        {
+          "ranks": [
+            2,
+            3,
+            5,
+            9
+          ],
+          "medianScoreTransitionNanos": {
+            "dense": 307.0495,
+            "sparse": 237.616005,
+            "packed": 215.5355
+          },
+          "sparseToDense": 0.7738687247495925,
+          "packedToDense": 0.7019568506055213,
+          "packedToSparse": 0.9070748411917792,
+          "scoreTransitionNanos": {
+            "dense": [
+              518.7255,
+              331.58,
+              316.224495,
+              307.0495,
+              308.236995,
+              298.218995,
+              292.9045,
+              301.79,
+              302.64
+            ],
+            "sparse": [
+              291.129005,
+              237.616005,
+              250.365995,
+              231.4675,
+              236.2215,
+              260.4735,
+              235.9735,
+              248.149,
+              232.554995
+            ],
+            "packed": [
+              316.5775,
+              219.09,
+              226.8415,
+              216.3995,
+              215.5355,
+              213.340495,
+              214.281995,
+              210.179495,
+              213.52
+            ]
+          },
+          "positionsCompared": 25143,
+          "maximumRawError": 2.275957200481571e-15,
+          "integerDifferences": 0,
+          "effectiveNetworkSha256": "86a2a2e2b7c40c5f906bd9685df0d119823d46a0d9cdcf878aadfd091b19df9f",
+          "primitiveBytes": {
+            "dense": 4329,
+            "sparse": 4345,
+            "packed": 28409
+          }
+        },
+        {
+          "ranks": [
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            13
+          ],
+          "medianScoreTransitionNanos": {
+            "dense": 301.449505,
+            "sparse": 277.154005,
+            "packed": 255.9225
+          },
+          "sparseToDense": 0.9194044123575522,
+          "packedToDense": 0.8489730311549194,
+          "packedToSparse": 0.9233945581987892,
+          "scoreTransitionNanos": {
+            "dense": [
+              300.611005,
+              300.0225,
+              313.526,
+              314.7685,
+              296.416,
+              310.972,
+              301.449505,
+              297.644495,
+              303.228
+            ],
+            "sparse": [
+              274.088495,
+              276.2785,
+              275.079,
+              277.742,
+              278.187505,
+              277.154005,
+              274.824,
+              282.557505,
+              306.6575
+            ],
+            "packed": [
+              255.053005,
+              249.685005,
+              259.7205,
+              263.7665,
+              264.766505,
+              255.429995,
+              260.736505,
+              255.9225,
+              252.309505
+            ]
+          },
+          "positionsCompared": 25143,
+          "maximumRawError": 1.887379141862766e-15,
+          "integerDifferences": 0,
+          "effectiveNetworkSha256": "079e2147bb177b568af36bf852456c8c03e3985fc2fa8686514d319afb39855a",
+          "primitiveBytes": {
+            "dense": 4329,
+            "sparse": 4361,
+            "packed": 53257
+          }
+        },
+        {
+          "ranks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15
+          ],
+          "medianScoreTransitionNanos": {
+            "dense": 304.205,
+            "sparse": 328.839505,
+            "packed": 286.6585
+          },
+          "sparseToDense": 1.0809799477326145,
+          "packedToDense": 0.9423201459542085,
+          "packedToSparse": 0.8717276836917754,
+          "scoreTransitionNanos": {
+            "dense": [
+              303.9315,
+              338.4435,
+              303.266,
+              296.033,
+              304.205,
+              318.244495,
+              304.658,
+              310.611,
+              304.153
+            ],
+            "sparse": [
+              356.547,
+              325.064005,
+              328.839505,
+              326.252,
+              331.388,
+              337.3175,
+              326.000505,
+              320.296,
+              329.7585
+            ],
+            "packed": [
+              296.6875,
+              292.140005,
+              300.169,
+              284.812,
+              280.734495,
+              286.6585,
+              279.787,
+              276.334,
+              298.2055
+            ]
+          },
+          "positionsCompared": 25143,
+          "maximumRawError": 1.887379141862766e-15,
+          "integerDifferences": 0,
+          "effectiveNetworkSha256": "9506f05c512014c825ce32807fb19ebc156fb9f74da71b5bc3106077f16ef66a",
+          "primitiveBytes": {
+            "dense": 4329,
+            "sparse": 4377,
+            "packed": 78105
+          }
+        },
+        {
+          "ranks": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "medianScoreTransitionNanos": {
+            "dense": 308.4505,
+            "sparse": 375.33,
+            "packed": 307.392505
+          },
+          "sparseToDense": 1.2168240933310208,
+          "packedToDense": 0.9965699682769198,
+          "packedToSparse": 0.8189926331494952,
+          "scoreTransitionNanos": {
+            "dense": [
+              455.6255,
+              298.312505,
+              297.58,
+              303.173,
+              299.1025,
+              312.645,
+              308.4505,
+              313.392495,
+              313.215495
+            ],
+            "sparse": [
+              513.905005,
+              391.288495,
+              376.681,
+              375.33,
+              376.619495,
+              361.017005,
+              368.4635,
+              367.187,
+              365.239
+            ],
+            "packed": [
+              350.728,
+              318.7105,
+              304.4425,
+              309.530995,
+              303.747,
+              307.392505,
+              308.948995,
+              302.473995,
+              301.06
+            ]
+          },
+          "positionsCompared": 25143,
+          "maximumRawError": 1.9984014443252818e-15,
+          "integerDifferences": 0,
+          "effectiveNetworkSha256": "aeb48ecd4158c7b41c367dda9b071b6634c8454578feec1473cd842aa8352ad8",
+          "primitiveBytes": {
+            "dense": 4329,
+            "sparse": 4393,
+            "packed": 102953
+          }
+        }
+      ]
+    },
+    {
+      "rate": "003",
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\cubic-layout-LR003-01.json",
+      "sha256": "fc028eb312d243fb72fc98e1bab5eef61b67220b887b3ebdf65d5522922ddd89",
+      "results": [
+        {
+          "ranks": [
+            2,
+            3,
+            5,
+            9
+          ],
+          "medianScoreTransitionNanos": {
+            "dense": 303.367495,
+            "sparse": 245.035995,
+            "packed": 226.65
+          },
+          "sparseToDense": 0.8077200063902693,
+          "packedToDense": 0.7471136616004295,
+          "packedToSparse": 0.9249661463002609,
+          "scoreTransitionNanos": {
+            "dense": [
+              497.7005,
+              299.316,
+              344.379,
+              308.074,
+              308.458505,
+              292.736505,
+              294.032005,
+              303.367495,
+              301.493
+            ],
+            "sparse": [
+              330.811495,
+              232.119,
+              255.1175,
+              235.2715,
+              261.525505,
+              241.496,
+              246.301,
+              235.8345,
+              245.035995
+            ],
+            "packed": [
+              270.017005,
+              217.519,
+              245.156,
+              221.422005,
+              226.65,
+              217.8475,
+              228.280995,
+              227.0695,
+              219.001
+            ]
+          },
+          "positionsCompared": 25143,
+          "maximumRawError": 1.7763568394002505e-15,
+          "integerDifferences": 0,
+          "effectiveNetworkSha256": "ffa135f55b2fbe5eefc4f3c641b226f83697b64e49171331791fbc0b0d0a9827",
+          "primitiveBytes": {
+            "dense": 4329,
+            "sparse": 4345,
+            "packed": 28409
+          }
+        },
+        {
+          "ranks": [
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            13
+          ],
+          "medianScoreTransitionNanos": {
+            "dense": 306.203,
+            "sparse": 286.540495,
+            "packed": 257.1935
+          },
+          "sparseToDense": 0.9357860471647895,
+          "packedToDense": 0.8399444159593472,
+          "packedToSparse": 0.8975816838733386,
+          "scoreTransitionNanos": {
+            "dense": [
+              311.966,
+              306.203,
+              301.964005,
+              302.422,
+              312.321995,
+              299.8145,
+              311.9035,
+              303.536005,
+              320.269505
+            ],
+            "sparse": [
+              279.565,
+              274.624,
+              285.459,
+              286.540495,
+              284.738,
+              292.966005,
+              293.219,
+              286.929505,
+              310.3785
+            ],
+            "packed": [
+              252.7745,
+              254.755495,
+              257.143005,
+              259.653,
+              257.988,
+              257.1935,
+              259.733005,
+              262.65,
+              255.272
+            ]
+          },
+          "positionsCompared": 25143,
+          "maximumRawError": 2.0539125955565396e-15,
+          "integerDifferences": 0,
+          "effectiveNetworkSha256": "c982cdd50b4b056bd609acc29bf91166544bd6a624b8b9b92e88a9f9f413890f",
+          "primitiveBytes": {
+            "dense": 4329,
+            "sparse": 4361,
+            "packed": 53257
+          }
+        },
+        {
+          "ranks": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "medianScoreTransitionNanos": {
+            "dense": 303.5885,
+            "sparse": 334.035995,
+            "packed": 285.602
+          },
+          "sparseToDense": 1.1002919906386441,
+          "packedToDense": 0.9407536846751441,
+          "packedToSparse": 0.8550036650990261,
+          "scoreTransitionNanos": {
+            "dense": [
+              301.22,
+              309.634995,
+              296.13,
+              301.649,
+              312.116,
+              303.5885,
+              302.408,
+              332.2825,
+              306.9785
+            ],
+            "sparse": [
+              334.035995,
+              325.5195,
+              332.667505,
+              342.423995,
+              325.136,
+              330.4085,
+              363.273505,
+              356.2565,
+              354.291995
+            ],
+            "packed": [
+              285.602,
+              286.608,
+              276.7375,
+              289.313,
+              281.881495,
+              290.9835,
+              281.286495,
+              309.996,
+              275.005
+            ]
+          },
+          "positionsCompared": 25143,
+          "maximumRawError": 2.3592239273284576e-15,
+          "integerDifferences": 0,
+          "effectiveNetworkSha256": "315090fbeed4b5a2f46f241eaad1bd046e0107b372d9896ce2136ad7819448bc",
+          "primitiveBytes": {
+            "dense": 4329,
+            "sparse": 4377,
+            "packed": 78105
+          }
+        },
+        {
+          "ranks": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "medianScoreTransitionNanos": {
+            "dense": 313.5995,
+            "sparse": 376.764,
+            "packed": 302.987
+          },
+          "sparseToDense": 1.2014177318522512,
+          "packedToDense": 0.9661590659423884,
+          "packedToSparse": 0.8041824590459811,
+          "scoreTransitionNanos": {
+            "dense": [
+              419.753,
+              308.637005,
+              299.63,
+              299.586,
+              319.726005,
+              316.247,
+              313.5995,
+              299.8795,
+              324.5245
+            ],
+            "sparse": [
+              580.974495,
+              385.173,
+              375.333,
+              375.283995,
+              381.161505,
+              367.279495,
+              373.3305,
+              376.764,
+              377.518495
+            ],
+            "packed": [
+              299.756,
+              295.132505,
+              299.1745,
+              302.987,
+              303.466005,
+              305.2085,
+              309.324005,
+              297.7905,
+              308.129995
+            ]
+          },
+          "positionsCompared": 25143,
+          "maximumRawError": 2.3037127760972e-15,
+          "integerDifferences": 0,
+          "effectiveNetworkSha256": "80b2c14469aa22d0e82d7c6b8f74bd13fcf409034cc8fc1641378a7c839a9074",
+          "primitiveBytes": {
+            "dense": 4329,
+            "sparse": 4393,
+            "packed": 102953
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": "Same-JVM balanced microcost, not whole-search speed or chess. Different widths/functions must not be ranked by timing alone. Prototype retains original model plus packed copies; no source, production path or optimizer is changed."
+}

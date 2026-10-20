@@ -1,0 +1,14 @@
+{
+  "id": "wave4-process-summary-validation-v1",
+  "targetedTests": 2,
+  "regressionGames": 96,
+  "regressionMoves": 13113,
+  "originalModelResultsAndMatchProcessBindingsUnchanged": true,
+  "separateDiagnosticRecords": 16,
+  "diagnosticMatchOverlap": [],
+  "interpretation": "Initial direct-LR003 summary rejected diagnostic process records without a tournament plan. Corrected summarizer explicitly recognizes known diagnostic entrypoints and records them separately; malformed/unclassified records still fail closed. Engine/replay results were unaffected. Historical process receipts unchanged.",
+  "failedAttempt": "raw/wave4/direct-clock-LR003-summary-01.stdout",
+  "passedAttempt": "raw/wave4/direct-clock-LR003-summary-02.stdout",
+  "regression": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\summary-diagnostic-regression-03.json",
+  "regressionSetup": "Two initial regression commands used an absent analysis filename and then assumed the older primary report had the later compact-summary schema. The successful regression uses the complete prior LR001 clock manifest; all setup logs remain preserved."
+}

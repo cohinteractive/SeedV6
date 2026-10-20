@@ -1,0 +1,1170 @@
+{
+  "id": "wave4-direct-clock-LR003-v1-completed",
+  "status": "Closed fixed-budget development experiment",
+  "plan": "docs\\research\\brn-successor-cglhw\\wave4-direct-clock-LR003-plan.json",
+  "receipts": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-clock-LR003",
+  "analysis": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-clock-LR003-analysis-01.json",
+  "runtime": "docs\\research\\brn-successor-cglhw\\wave4-average-runtime.json",
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\wave4-direct-clock-LR003-plan.json": "5913bd1e28d08497cfc0b9dfaf03020f2c5b614f272dbfc4c367f615e46ba1f6",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-clock-LR003-analysis-01.json": "53a74f429724aa253f3d1500408e28006d34a5bc1d8a933eda876112ef947f89",
+    "docs\\research\\brn-successor-cglhw\\wave4-average-runtime.json": "acab10e4d23200a2823cee0d359a7ce030c83b9359f3bb45f3c4b2f23b0c34ec",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-clock-LR003\\model-bindings.json": "f1e36860ff4fd8d58a9a6a27b51baa599ce231837d9579b83b660ed8315a3c70"
+  },
+  "games": 96,
+  "validatedMoves": 13508,
+  "models": [
+    {
+      "name": "W4-RESGATE-LR001-average8-half",
+      "wins": 3,
+      "draws": 4,
+      "losses": 9,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.3125,
+      "pairStandardError": 0.09149063183892499,
+      "descriptiveNormal95": [
+        0.13317836159570703,
+        0.49182163840429294
+      ],
+      "pairScores": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundedPair95": [
+        0,
+        0.7926613956599604
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        0.8977691113572238
+      ]
+    },
+    {
+      "name": "W4-RESGATE-LR003-average8-half",
+      "wins": 4,
+      "draws": 2,
+      "losses": 10,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.3125,
+      "pairStandardError": 0.10296930888098925,
+      "descriptiveNormal95": [
+        0.11068015459326108,
+        0.5143198454067389
+      ],
+      "pairScores": [
+        0.5,
+        0.75,
+        0.0,
+        0.25,
+        0.0,
+        0.0,
+        0.5,
+        0.5
+      ],
+      "boundedPair95": [
+        0,
+        0.7926613956599604
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        0.8977691113572238
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-average8-half",
+      "wins": 7,
+      "draws": 3,
+      "losses": 6,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.53125,
+      "pairStandardError": 0.15978151935869,
+      "descriptiveNormal95": [
+        0.21807822205696759,
+        0.8444217779430324
+      ],
+      "pairScores": [
+        0.0,
+        1.0,
+        0.25,
+        0.75,
+        0.0,
+        1.0,
+        0.25,
+        1.0
+      ],
+      "boundedPair95": [
+        0.051088604340039645,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-average8-half",
+      "wins": 8,
+      "draws": 3,
+      "losses": 5,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.59375,
+      "pairStandardError": 0.08097480869293328,
+      "descriptiveNormal95": [
+        0.43503937496185074,
+        0.7524606250381493
+      ],
+      "pairScores": [
+        0.75,
+        0.5,
+        1.0,
+        0.75,
+        0.25,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "boundedPair95": [
+        0.11358860434003965,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.008480888642776185,
+        1
+      ]
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-average8-half",
+      "wins": 6,
+      "draws": 4,
+      "losses": 6,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.5,
+      "pairStandardError": 0.0944911182523068,
+      "descriptiveNormal95": [
+        0.31479740822547864,
+        0.6852025917745214
+      ],
+      "pairScores": [
+        0.0,
+        0.25,
+        0.75,
+        0.5,
+        0.5,
+        0.75,
+        0.5,
+        0.75
+      ],
+      "boundedPair95": [
+        0.019838604340039645,
+        0.9801613956599604
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Gen32",
+      "wins": 4,
+      "draws": 3,
+      "losses": 9,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.34375,
+      "pairStandardError": 0.1331076028203176,
+      "descriptiveNormal95": [
+        0.08285909847217748,
+        0.6046409015278225
+      ],
+      "pairScores": [
+        1.0,
+        0.0,
+        0.75,
+        0.25,
+        0.5,
+        0.0,
+        0.25,
+        0.0
+      ],
+      "boundedPair95": [
+        0,
+        0.8239113956599604
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        0.9290191113572238
+      ]
+    }
+  ],
+  "modelBindings": [
+    {
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "effectiveNetworkSha256": "5f92579f7a2163fae9517c6cb341a1f439b71c999c96be0d7d71d4d366fb2a49",
+      "originalManifest": {
+        "id": "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1",
+        "generation": 64,
+        "optimizerStep": 2277376,
+        "trainingDepth": 4,
+        "parentId": "g000063-s002269184-335373a32552a851d1ff5dafd2a0aa843d8d2d1262ee32128465a106de7b1f23",
+        "networkBytes": 795032,
+        "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050",
+        "trainingBytes": 2731424,
+        "trainingSha256": "4c23665148d475c44c7e24f903c011407128f17272e5cbba197ce3d642fa883a",
+        "architecture": "BRN_PAIR2"
+      },
+      "name": "W4-BRE-CONTROL-LR003-g64-half",
+      "correctionScale": 0.5,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "additiveMapping": "Gen32 compiled tables + scale * (continued compiled tables - Gen32 tables)"
+    },
+    {
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "effectiveNetworkSha256": "eb8004dd0b0550a93419e2ca7774847421c8857010555a02d3435e258faf2963",
+      "originalManifest": {
+        "id": "g000064-s000524288-bd455415c07f597ff1d815ef3fef0994f6900d761789574e971ef5a347c2ad8d",
+        "generation": 64,
+        "optimizerStep": 524288,
+        "trainingDepth": 4,
+        "parentId": "g000063-s000516096-363b208509b37269f3978ee180cc786184ab620bfd79fe7ae501cca6b3df9207",
+        "networkBytes": 52464,
+        "networkSha256": "c455f68516c22d34033b29da34f6eb4d80d07a8e698507fbe3ee240a0dc25f62",
+        "trainingBytes": 157264,
+        "trainingSha256": "cbe8b1f1dd6907474c5ee103f8a79a7f9dddd613afe172db62d1a099b06216cc",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "name": "W4-RESGATE-LR001-average8-half",
+      "averagedInputs": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000057-s000466944-37e09c1514e7f7eea53d4c2ff45ac4feca53def28cf6b9cd972ca8aa27134461",
+          "networkSha256": "a56a22643735c9f206541d80a837214a8bb8ba628a0a706c211effb9c22251ca"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000058-s000475136-f84e57c3f0c807f08ec47b82497a01d979d9c19e278baa5bb8a2f81ccba972eb",
+          "networkSha256": "95a87be6a11888ea4bfc2667e7aec567a25650a24cf5f551a3408d0544e111af"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000059-s000483328-2e5fbb383a1e0265c3241285fd5d31edbf5a85ab3a37611b3e55774551474206",
+          "networkSha256": "d46ecbc8463b405b49099e209be5edff6f96f37179168a08b0d509be9b1c30b0"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000060-s000491520-06ce954eca44d10a18bfed8faa1fe8ed789d6225b6629c14b02b98163c6df7c2",
+          "networkSha256": "5536a68fe958f04f6df4edfd4cc73c87bfccdd2ca895598de2617e35935ba172"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000061-s000499712-3a71061f3e42458b3cc8976c3fe84faff76168a912f0aab59e8c9e23e1fa92f8",
+          "networkSha256": "207c9ebfdeb6f8d12ebc35585f4eca0c0d9b170cfd30f94a6c0dda13ec36329d"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000062-s000507904-fb855ccc2ddc7984938ea1712dfb35db1c7fc152d44072bb4167fed7e5ac7fd6",
+          "networkSha256": "cc816bb69f256bd0db62201c695a592ca68cef70f4d927b3bdffb9acb06b683d"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000063-s000516096-363b208509b37269f3978ee180cc786184ab620bfd79fe7ae501cca6b3df9207",
+          "networkSha256": "b26f0b79c9a48e63fdf661e9e661453f416859d8948617a84f82563e3175a0ab"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000064-s000524288-bd455415c07f597ff1d815ef3fef0994f6900d761789574e971ef5a347c2ad8d",
+          "networkSha256": "c455f68516c22d34033b29da34f6eb4d80d07a8e698507fbe3ee240a0dc25f62"
+        }
+      ],
+      "averaging": "Uniform parameter mean; Pair2 compiled tables; inference only, no optimizer continuation",
+      "gatedDeltaCache": "period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "effectiveNetworkSha256": "10ba0866eb8944697be4d41287d61508d4370bf5f5d971013e7ff6d0d1a9c621",
+      "originalManifest": {
+        "id": "g000064-s000524288-c4a19e81755089d2a7a0e3904dd81347db96eda02dad7c4d3aedec5d630fb044",
+        "generation": 64,
+        "optimizerStep": 524288,
+        "trainingDepth": 4,
+        "parentId": "g000063-s000516096-b2b092903ea30d834118459c9bb821d03a6cfe0428f6d0806247b338a56dfd44",
+        "networkBytes": 52464,
+        "networkSha256": "f98aadffa26dafd5f5ec2f2947526e082c7b26f6979dd77be61b7f11a2fa7baf",
+        "trainingBytes": 157264,
+        "trainingSha256": "8844aee0d51bf0dd8e846735ab584313ff84a5c539770d98f12b2c4884c483b1",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "name": "W4-RESGATE-LR003-average8-half",
+      "averagedInputs": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000057-s000466944-eddcc7505f8598c7d1c5e076b615173d91f9525028c12c2baf23d05082c040f1",
+          "networkSha256": "310fec1aa9efd25d920451b496cf00018e5c41bb0676624c36e42480da021c82"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000058-s000475136-4436a4c042384209e3af699c7182265568cf60ae0846fa2f7adaa61ac7acac84",
+          "networkSha256": "e6ba1be1bc186d0abdc61ee6eccac5bc52a47651c0b83743c0663b20fd09e171"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000059-s000483328-618deb1ca05e6a51d1011ceef8e91003fe69f04497165a55289dced5b805d90f",
+          "networkSha256": "f35e3646d46c67cc3faf1b2ddf91a8be76cf8c4559a185078db6bbcdb17264f7"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000060-s000491520-a23bf99174b928f16c1ee4b8190cb851053f0739618dc2f4141d73d7439178ed",
+          "networkSha256": "a2e69bda81dfb9c7cdddd0f5c8c614fc6d0d79b3766a2c1b4d13b67b081677bc"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000061-s000499712-31e5547cffa41402ba829f8754b9e2468cfceda225bec6a842faff378129a948",
+          "networkSha256": "5571c7fee883051f3f25996171c83c6db27e70527fe69bfd5836b94fa3609468"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000062-s000507904-f5d85dafc07e53e9923bf63445aade10bda130ae650df144ca23e1387422c2c9",
+          "networkSha256": "9754baa7d83cf89b02ee974dfc04e9201659c536e7d03d724b10c31b2fc93567"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000063-s000516096-b2b092903ea30d834118459c9bb821d03a6cfe0428f6d0806247b338a56dfd44",
+          "networkSha256": "14f380a85961c273792c6e3805bcc848f2ee6edac609f0842b334273c8ab7991"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000064-s000524288-c4a19e81755089d2a7a0e3904dd81347db96eda02dad7c4d3aedec5d630fb044",
+          "networkSha256": "f98aadffa26dafd5f5ec2f2947526e082c7b26f6979dd77be61b7f11a2fa7baf"
+        }
+      ],
+      "averaging": "Uniform parameter mean; Pair2 compiled tables; inference only, no optimizer continuation",
+      "gatedDeltaCache": "period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "effectiveNetworkSha256": "aeb48ecd4158c7b41c367dda9b071b6634c8454578feec1473cd842aa8352ad8",
+      "originalManifest": {
+        "id": "g000064-s000524288-452b71fa8b42d6da3a6ec06e6991d08ff4adcd4cc7d4a88a7c8228fc5c36b75f",
+        "generation": 64,
+        "optimizerStep": 524288,
+        "trainingDepth": 4,
+        "parentId": "g000063-s000516096-3f2c7a050f1b185025eeb55a0ef44b7e31c133c30f6ece8e338c91813a1a4902",
+        "networkBytes": 104784,
+        "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc",
+        "trainingBytes": 314224,
+        "trainingSha256": "3c8d6ed2cb7884ac661de8bcbd1f8d6332ddac2788c272747ab2787808b682a8",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "name": "W4-RESCUBIC-LR001-average8-half",
+      "averagedInputs": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000057-s000466944-871123d7fd3a2c29c4350c2ec747001e1e7c9c40031c4bb420e65fab0bb03cc6",
+          "networkSha256": "6d6e48d85dadb6ab9f0c081eb7a5e3209cc3cd1f19017198631bd5a24c6e01a1"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000058-s000475136-6fc67dc7d31c411b3ad14ff7702be3dfff2665beef505c85df878bbfb0451d5c",
+          "networkSha256": "11600436ab1372ff9d2200d393be3545507083ebdde83e6ee41fc55c2d4d2c34"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000059-s000483328-e918443a5f9149e2c3a46f794862df7697148ca6627a4e32793fc73a863a940a",
+          "networkSha256": "cbe63893c5784ded1ef2656ecf056d7724808bbe9101e50f254ffcc7455e5cef"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000060-s000491520-7a22fcae6e75af5d6e2d9cd3aa2091ff630a55f9d73627e89a75e1b236c552d7",
+          "networkSha256": "d05023a9ec6d6b8e231ef23a1ea8efbcf1975e3faba2be7238d56e4eb36ae8bb"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000061-s000499712-6bab9761e1a8db70ea22587f4075324e0366f849851ce06ce2559d9b7308bdbf",
+          "networkSha256": "b2762f8dccf2d759b89660640c66988fff31f4e3d4cfdfe1929d5d52d553e702"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000062-s000507904-72900694c054f80ec7fa67ccb4f21474e4c589378a9ae3944b1f3adaa1ba8b23",
+          "networkSha256": "fc82a6c7d185bb82b93117a45a39cbd71489f30087ad4a531b5107a04ae0c258"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000063-s000516096-3f2c7a050f1b185025eeb55a0ef44b7e31c133c30f6ece8e338c91813a1a4902",
+          "networkSha256": "0c1787f3b217e4175a065789ef6228190ed315e6bf0947998464d78302abd2fc"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000064-s000524288-452b71fa8b42d6da3a6ec06e6991d08ff4adcd4cc7d4a88a7c8228fc5c36b75f",
+          "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc"
+        }
+      ],
+      "averaging": "Uniform parameter mean; Pair2 compiled tables; inference only, no optimizer continuation",
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "effectiveNetworkSha256": "80b2c14469aa22d0e82d7c6b8f74bd13fcf409034cc8fc1641378a7c839a9074",
+      "originalManifest": {
+        "id": "g000064-s000524288-5982ea47c1d2bd88f049fa13c2b4b16eebe75ef919dfca18aad7d7fd673e4c66",
+        "generation": 64,
+        "optimizerStep": 524288,
+        "trainingDepth": 4,
+        "parentId": "g000063-s000516096-20f05fb4a8e00abf9592091a99858d7c18c08ae06e2edb5faeb05b7cf1bf4e75",
+        "networkBytes": 104784,
+        "networkSha256": "cfa37ddd14e461546de266d622ded7ebdeea240b4c90274c269d2ffbd5be8901",
+        "trainingBytes": 314224,
+        "trainingSha256": "dd3a1f15c3a9e650c3b1090b6a5820ac0fd88bc8c56bdd2f7974fb6d8d6c1cb8",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "name": "W4-RESCUBIC-LR003-average8-half",
+      "averagedInputs": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000057-s000466944-3285f65d492e26bbe986ad1442f94cb191c6a5716d30d3814896b3bd2e5ef3c2",
+          "networkSha256": "974ceca912e70bc4e1c61f2e83a04311f7036e634364c5c8957738f6997b8e8a"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000058-s000475136-912fac92f9055ae6094522500f76d1ca1039dcc1d490fad684aa992f3ff3a1b5",
+          "networkSha256": "4995720da4e36413542e5eba21bedc6864b7976bd5e4993fdbe170f7e167dce5"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000059-s000483328-9946c016f19cb3a22d4397869569f64d0cc303e9ba7ee104875d017e5e130a73",
+          "networkSha256": "3270f40ed019dd93cce1652fce99069683f4be932993c1841cb02eef48c23e92"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000060-s000491520-0172668f4b2e3b4ea4a253407a3d0eea84e1e232f23b5acd2da54cc4d2576080",
+          "networkSha256": "f8b20c7c958da211a9e582248d443666c3921185e4fd2e11d4d3e8e3b60d2b7e"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000061-s000499712-f6965a48fd70c9eda316a9e890a6d245467a3ccb62c5abadbc037dd49e541507",
+          "networkSha256": "b9ac4cdac7fd8b82e3f6a00399b83a7bf0cba1bc0dc27f8bb418aea000febbe5"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000062-s000507904-08ae6907feab3295b7f77e1e060fe38d6b8893bfa8da1cf3934f107072c85fe4",
+          "networkSha256": "e802df2c98ff9a83074033ce6948efde693bf1631ce3c068ccc57f9cf505545c"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000063-s000516096-20f05fb4a8e00abf9592091a99858d7c18c08ae06e2edb5faeb05b7cf1bf4e75",
+          "networkSha256": "149850f9e757cc0bcd2c45a31b9ad9f2e86979e4cf14445e95bce3173fec5412"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000064-s000524288-5982ea47c1d2bd88f049fa13c2b4b16eebe75ef919dfca18aad7d7fd673e4c66",
+          "networkSha256": "cfa37ddd14e461546de266d622ded7ebdeea240b4c90274c269d2ffbd5be8901"
+        }
+      ],
+      "averaging": "Uniform parameter mean; Pair2 compiled tables; inference only, no optimizer continuation",
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "effectiveNetworkSha256": "8ec3aa1de3f020fa31dae39370d6bab00fd55dc2cdf6a9f47651724961088e43",
+      "originalManifest": {
+        "id": "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1",
+        "generation": 64,
+        "optimizerStep": 2277376,
+        "trainingDepth": 4,
+        "parentId": "g000063-s002269184-335373a32552a851d1ff5dafd2a0aa843d8d2d1262ee32128465a106de7b1f23",
+        "networkBytes": 795032,
+        "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050",
+        "trainingBytes": 2731424,
+        "trainingSha256": "4c23665148d475c44c7e24f903c011407128f17272e5cbba197ce3d642fa883a",
+        "architecture": "BRN_PAIR2"
+      },
+      "name": "W4-BRE-CONTROL-LR003-average8-half",
+      "averagedInputs": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-BRE-CONTROL-LR003",
+          "checkpoint": "g000057-s002220032-d7d98ea48971955dea378a3b790d0fce94db85d2443e117f4f6125d52d7a11cb",
+          "networkSha256": "26728dce429c5e3ec494e8166b715ac012612c60653aae5a7e42cdda8fdd48ce"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-BRE-CONTROL-LR003",
+          "checkpoint": "g000058-s002228224-5a9b0f759f59242d8d385c1087b83e337c066175b4b3db12ab8def5c5ee9e490",
+          "networkSha256": "9a0ee7ebdf3c28f91683877f16ef74dd30f1fcd3a5369b5c99847cbd78292b88"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-BRE-CONTROL-LR003",
+          "checkpoint": "g000059-s002236416-910c7f1891e1ba1aa926cd388d649856425f4c85600c18394c0bb3b801a2a7a9",
+          "networkSha256": "721142385ecb5852afe83b67dde181e6a02063be8420706e4fd51ddc0135337c"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-BRE-CONTROL-LR003",
+          "checkpoint": "g000060-s002244608-d1736d31c0f08c8ae0a5469bcb8a051e2aacf9b7cb412cd039eb6bcb97c68fe1",
+          "networkSha256": "4ebe0b22496342f0a81daa659d97cd9db588eec56ca757a6df18ca2dafbe1944"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-BRE-CONTROL-LR003",
+          "checkpoint": "g000061-s002252800-79bb2790ccbd5f0292472d0119ab8b0bb9a93e213c323d0cd68f94aadf7a91ae",
+          "networkSha256": "43754eb7281ce6ebb1fcc8f17d07479ab942e2a8ea79985672b83307f296e20a"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-BRE-CONTROL-LR003",
+          "checkpoint": "g000062-s002260992-6aaf129d10d18621e4a76686aa50f76da93b39446b35bbe8e803778596887341",
+          "networkSha256": "4419afb79e310259c2203bcfc330047958ab69ba51e2bf4287072dc3a71f2ff7"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-BRE-CONTROL-LR003",
+          "checkpoint": "g000063-s002269184-335373a32552a851d1ff5dafd2a0aa843d8d2d1262ee32128465a106de7b1f23",
+          "networkSha256": "36d989f16bfc0a3c29e732dd509971cd3e8b848ff78d83e5d73a50ec17a199de"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-BRE-CONTROL-LR003",
+          "checkpoint": "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1",
+          "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050"
+        }
+      ],
+      "averaging": "Uniform parameter mean; Pair2 compiled tables; inference only, no optimizer continuation",
+      "correctionScale": 0.5,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "additiveMapping": "Gen32 compiled tables + scale * (continued compiled tables - Gen32 tables)"
+    },
+    {
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "effectiveNetworkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "originalManifest": {
+        "id": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+        "generation": 32,
+        "optimizerStep": 1753088,
+        "trainingDepth": 4,
+        "parentId": "g000031-s001228800-3b52a75c2077c9b9a44edcee222201e0b3a0b76dc8b9cef5ae99804fa5549c78",
+        "networkBytes": 795032,
+        "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "trainingBytes": 2731424,
+        "trainingSha256": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+        "architecture": "BRN_PAIR2"
+      },
+      "name": "Gen32"
+    }
+  ],
+  "sameRootSearch": [
+    {
+      "name": "W4-RESGATE-LR001-average8-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 4,
+      "meanDepthDifference": -0.625,
+      "lessEqualMoreDepth": [
+        5,
+        3,
+        0
+      ],
+      "medianNodeRatio": 0.6627425423310933,
+      "medianElapsedRatio": 1.0008392526099732,
+      "medianNpsRatio": 0.6621962967709693
+    },
+    {
+      "name": "W4-RESGATE-LR003-average8-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 5,
+      "meanDepthDifference": -0.5,
+      "lessEqualMoreDepth": [
+        5,
+        2,
+        1
+      ],
+      "medianNodeRatio": 0.7098646771200849,
+      "medianElapsedRatio": 1.0003068095065033,
+      "medianNpsRatio": 0.709772725269846
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-average8-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 5,
+      "meanDepthDifference": -0.375,
+      "lessEqualMoreDepth": [
+        3,
+        5,
+        0
+      ],
+      "medianNodeRatio": 0.8372680438440422,
+      "medianElapsedRatio": 0.9999110752539841,
+      "medianNpsRatio": 0.8372962826761343
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-average8-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 6,
+      "meanDepthDifference": -0.375,
+      "lessEqualMoreDepth": [
+        3,
+        5,
+        0
+      ],
+      "medianNodeRatio": 0.6963629491651744,
+      "medianElapsedRatio": 0.9999270546988108,
+      "medianNpsRatio": 0.696434973613107
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-average8-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 4,
+      "meanDepthDifference": -0.125,
+      "lessEqualMoreDepth": [
+        1,
+        7,
+        0
+      ],
+      "medianNodeRatio": 1.007465816703938,
+      "medianElapsedRatio": 1.0000434740692037,
+      "medianNpsRatio": 1.0074828636647877
+    },
+    {
+      "name": "Gen32",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 5,
+      "meanDepthDifference": -0.125,
+      "lessEqualMoreDepth": [
+        1,
+        7,
+        0
+      ],
+      "medianNodeRatio": 1.0405174388826777,
+      "medianElapsedRatio": 0.9999910042669751,
+      "medianNpsRatio": 1.0404926022075651
+    }
+  ],
+  "telemetry": {
+    "W4-RESGATE-LR001-average8-half": {
+      "moves": 1106,
+      "nodes": 114099673,
+      "elapsedNanos": 107709710097,
+      "sumDepth": 9833,
+      "fallbacks": 0,
+      "maximumMoveNanos": 168348800
+    },
+    "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1": {
+      "moves": 6758,
+      "nodes": 1164966074,
+      "elapsedNanos": 655075516363,
+      "sumDepth": 64233,
+      "fallbacks": 0,
+      "maximumMoveNanos": 131131501
+    },
+    "W4-RESGATE-LR003-average8-half": {
+      "moves": 1109,
+      "nodes": 123703882,
+      "elapsedNanos": 107251544492,
+      "sumDepth": 10121,
+      "fallbacks": 0,
+      "maximumMoveNanos": 100286400
+    },
+    "W4-RESCUBIC-LR001-average8-half": {
+      "moves": 1257,
+      "nodes": 160385500,
+      "elapsedNanos": 122506974916,
+      "sumDepth": 11260,
+      "fallbacks": 0,
+      "maximumMoveNanos": 100369400
+    },
+    "W4-RESCUBIC-LR003-average8-half": {
+      "moves": 1008,
+      "nodes": 125643746,
+      "elapsedNanos": 97554823425,
+      "sumDepth": 9103,
+      "fallbacks": 0,
+      "maximumMoveNanos": 100559401
+    },
+    "W4-BRE-CONTROL-LR003-average8-half": {
+      "moves": 1235,
+      "nodes": 222568925,
+      "elapsedNanos": 120393816224,
+      "sumDepth": 11377,
+      "fallbacks": 0,
+      "maximumMoveNanos": 100198401
+    },
+    "Gen32": {
+      "moves": 1035,
+      "nodes": 180293135,
+      "elapsedNanos": 99957553501,
+      "sumDepth": 9971,
+      "fallbacks": 0,
+      "maximumMoveNanos": 106390400
+    }
+  },
+  "commonOpponentContrasts": [
+    {
+      "left": "W4-RESGATE-LR001-average8-half",
+      "right": "W4-RESGATE-LR003-average8-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.0,
+      "pairStandardError": 0.1417366773784602,
+      "descriptiveNormal95": [
+        -0.277803887661782,
+        0.277803887661782
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-average8-half",
+      "right": "W4-RESCUBIC-LR001-average8-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.21875,
+      "pairStandardError": 0.21358703060545867,
+      "descriptiveNormal95": [
+        -0.637380579986699,
+        0.199880579986699
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-average8-half",
+      "right": "W4-RESCUBIC-LR003-average8-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.28125,
+      "pairStandardError": 0.09952453932860693,
+      "descriptiveNormal95": [
+        -0.4763180970840696,
+        -0.08618190291593042
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-average8-half",
+      "right": "W4-BRE-CONTROL-LR003-average8-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.1875,
+      "pairStandardError": 0.16194961738586655,
+      "descriptiveNormal95": [
+        -0.5049212500762985,
+        0.12992125007629846
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-average8-half",
+      "right": "Gen32",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.03125,
+      "pairStandardError": 0.11016930963618808,
+      "descriptiveNormal95": [
+        -0.24718184688692862,
+        0.18468184688692862
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-average8-half",
+      "right": "W4-RESCUBIC-LR001-average8-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.21875,
+      "pairStandardError": 0.16662015720108503,
+      "descriptiveNormal95": [
+        -0.5453255081141266,
+        0.10782550811412667
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-average8-half",
+      "right": "W4-RESCUBIC-LR003-average8-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.28125,
+      "pairStandardError": 0.1372359477583875,
+      "descriptiveNormal95": [
+        -0.5502324576064395,
+        -0.012267542393560538
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-average8-half",
+      "right": "W4-BRE-CONTROL-LR003-average8-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.1875,
+      "pairStandardError": 0.17519122205668378,
+      "descriptiveNormal95": [
+        -0.5308747952311001,
+        0.1558747952311002
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-average8-half",
+      "right": "Gen32",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.03125,
+      "pairStandardError": 0.1856305614847481,
+      "descriptiveNormal95": [
+        -0.3950859005101063,
+        0.3325859005101063
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-average8-half",
+      "right": "W4-RESCUBIC-LR003-average8-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.0625,
+      "pairStandardError": 0.18749999999999997,
+      "descriptiveNormal95": [
+        -0.42999999999999994,
+        0.30499999999999994
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-average8-half",
+      "right": "W4-BRE-CONTROL-LR003-average8-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.03125,
+      "pairStandardError": 0.15263679461856033,
+      "descriptiveNormal95": [
+        -0.26791811745237826,
+        0.33041811745237826
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-average8-half",
+      "right": "Gen32",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.1875,
+      "pairStandardError": 0.2824873574920781,
+      "descriptiveNormal95": [
+        -0.36617522068447306,
+        0.7411752206844731
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR003-average8-half",
+      "right": "W4-BRE-CONTROL-LR003-average8-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.09375,
+      "pairStandardError": 0.124440713078271,
+      "descriptiveNormal95": [
+        -0.15015379763341113,
+        0.33765379763341113
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR003-average8-half",
+      "right": "Gen32",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.25,
+      "pairStandardError": 0.11572751247156893,
+      "descriptiveNormal95": [
+        0.0231740755557249,
+        0.4768259244442751
+      ]
+    },
+    {
+      "left": "W4-BRE-CONTROL-LR003-average8-half",
+      "right": "Gen32",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.15625,
+      "pairStandardError": 0.19444001553913004,
+      "descriptiveNormal95": [
+        -0.2248524304566949,
+        0.5373524304566949
+      ]
+    }
+  ],
+  "openingPrefixSensitivity": [
+    {
+      "plies": 4,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 8,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 12,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 16,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    }
+  ],
+  "processReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-clock-LR003-01.process.json",
+      "sha256": "2617fad6fc2437ef99f14a18135784a2fc2feb2f7e37c0c5b5cdccf707037e2b",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "863532112ba396b52cd7a7b2e2b038b3b04bf6e48a64fb7012a2a8b07460ff37",
+      "completedUtc": "2026-10-20T23:21:42.2718496Z",
+      "sampledPeakWorkingSetBytes": 607236096,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-average-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 213.6875,
+      "plan": "docs/research/brn-successor-cglhw/wave4-direct-clock-LR003-plan.json",
+      "processId": 51376,
+      "startedUtc": "2026-10-20T23:18:11.6686291Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-clock-LR003-02.process.json",
+      "sha256": "817e4e205c0a1db8d31da65861ca9c76c5dbd1de62077cb19a20b68b7e37d7bf",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "863532112ba396b52cd7a7b2e2b038b3b04bf6e48a64fb7012a2a8b07460ff37",
+      "completedUtc": "2026-10-20T23:24:20.0881148Z",
+      "sampledPeakWorkingSetBytes": 600690688,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-average-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 162.46875,
+      "plan": "docs/research/brn-successor-cglhw/wave4-direct-clock-LR003-plan.json",
+      "processId": 23372,
+      "startedUtc": "2026-10-20T23:21:42.5198583Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-clock-LR003-03.process.json",
+      "sha256": "c1ec01dae18edc85e263f5bc214f8fa4791552015ce6f782350f4cee7bc75663",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "863532112ba396b52cd7a7b2e2b038b3b04bf6e48a64fb7012a2a8b07460ff37",
+      "completedUtc": "2026-10-20T23:26:41.4538241Z",
+      "sampledPeakWorkingSetBytes": 599773184,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-average-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 144.953125,
+      "plan": "docs/research/brn-successor-cglhw/wave4-direct-clock-LR003-plan.json",
+      "processId": 43456,
+      "startedUtc": "2026-10-20T23:24:20.2940746Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-clock-LR003-04.process.json",
+      "sha256": "49bcd136b14efddea60f3dfe9e767a812ce9b5894d20001de1435fd746e74559",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "863532112ba396b52cd7a7b2e2b038b3b04bf6e48a64fb7012a2a8b07460ff37",
+      "completedUtc": "2026-10-20T23:30:40.6764625Z",
+      "sampledPeakWorkingSetBytes": 605679616,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-average-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 242.734375,
+      "plan": "docs/research/brn-successor-cglhw/wave4-direct-clock-LR003-plan.json",
+      "processId": 47100,
+      "startedUtc": "2026-10-20T23:26:41.6848740Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-clock-LR003-05.process.json",
+      "sha256": "31f6ee553bc4278858a2346e02b6552d1c02f9aff14d60a0b4d3209aa60c8d1f",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "863532112ba396b52cd7a7b2e2b038b3b04bf6e48a64fb7012a2a8b07460ff37",
+      "completedUtc": "2026-10-20T23:35:42.2804890Z",
+      "sampledPeakWorkingSetBytes": 612827136,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-average-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 143.390625,
+      "plan": "docs/research/brn-successor-cglhw/wave4-direct-clock-LR003-plan.json",
+      "processId": 37472,
+      "startedUtc": "2026-10-20T23:33:22.9750113Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-clock-LR003-06.process.json",
+      "sha256": "f0c268a446ae25e3a180a5cafd5c21601c847431a1e4b09a996e3dafc8a10f4d",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "863532112ba396b52cd7a7b2e2b038b3b04bf6e48a64fb7012a2a8b07460ff37",
+      "completedUtc": "2026-10-20T23:38:10.5883747Z",
+      "sampledPeakWorkingSetBytes": 612720640,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-average-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 153.25,
+      "plan": "docs/research/brn-successor-cglhw/wave4-direct-clock-LR003-plan.json",
+      "processId": 26064,
+      "startedUtc": "2026-10-20T23:35:42.5104938Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-clock-LR003-07.process.json",
+      "sha256": "f493c0469db932628bb7a263b16a639cac4effec6208fa835c27416b550006a1",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "863532112ba396b52cd7a7b2e2b038b3b04bf6e48a64fb7012a2a8b07460ff37",
+      "completedUtc": "2026-10-20T23:40:37.0970623Z",
+      "sampledPeakWorkingSetBytes": 598700032,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-average-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 149,
+      "plan": "docs/research/brn-successor-cglhw/wave4-direct-clock-LR003-plan.json",
+      "processId": 51496,
+      "startedUtc": "2026-10-20T23:38:10.8205498Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-clock-LR003-08.process.json",
+      "sha256": "5a9ffd09c2049675232c6900e4ebcc66a3f4566f68846f1aa6683739bb281e51",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "863532112ba396b52cd7a7b2e2b038b3b04bf6e48a64fb7012a2a8b07460ff37",
+      "completedUtc": "2026-10-20T23:43:09.7228800Z",
+      "sampledPeakWorkingSetBytes": 607907840,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-average-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 157.296875,
+      "plan": "docs/research/brn-successor-cglhw/wave4-direct-clock-LR003-plan.json",
+      "processId": 46680,
+      "startedUtc": "2026-10-20T23:40:37.3063141Z"
+    }
+  ],
+  "separateDiagnosticProcessReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-ablation-plan-01.process.json",
+      "sha256": "dbdcac527bc6310b0063f45be09ded156a29868f8317198d9f7f34ebb6f0ee5a",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnHybridAblationPlan",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-ablation-prediction-01.process.json",
+      "sha256": "7efb931b12f2aae87163fb4f3ba940cdcf721999f555c88fb6bfbb79d3455841",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnHybridProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-model-cache-01.process.json",
+      "sha256": "4903d276f3db9c85911dbc7c578b5b444553c1f869b44ef78d300f79d6e05175",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-model-cache-02.process.json",
+      "sha256": "3c3f13b5686adf380c1d96c7a770aef5d1ccffd26782799fdd9b322ad8b414e9",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-model-cache-03.process.json",
+      "sha256": "a2637b585750ae071c764335e828cf26a258bbed0661a95bb8d40b18682845f4",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-model-cache-04.process.json",
+      "sha256": "4a8e5e51f0bcc59b4ee80a624f9ac40a9c9ea1740878898a19b6d9ee6ae1b934",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-model-cache-05.process.json",
+      "sha256": "126d25af532d77243019550bae617783a90870d751118d88ec3b8927a87ff3f3",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-model-cache-06.process.json",
+      "sha256": "44da45b62530d29663e171a034d0f64f6eb34a173d71a3e1997a9e6e61e85a7d",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-model-cache-07.process.json",
+      "sha256": "cab2fd9509cd2cff17b80646b1990a49b86549844055d075cf706cc3e7171012",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-model-cache-08.process.json",
+      "sha256": "38ee9399adc29431f4bc2d12ad0451a39ad84bbe818929331c4cabf1d7a9eb17",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-model-prediction-01.process.json",
+      "sha256": "970756f885eb5cf170c6844fe95b47cf8dc766e56ef9480366629f8b9116642f",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnHybridProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-zero-cache-01.process.json",
+      "sha256": "c7d053608fa7967bc1adc07d6cb0cfa5d9c4eeb99b4230e4f29f9343fc332dd5",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-zero-cache-02.process.json",
+      "sha256": "99d9f11f1c5584ea58704e561f2e4e6f72784b5fc0c280b2b46a84aab7415f9f",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-zero-prediction-01.process.json",
+      "sha256": "2de8599acf232b3987953c7626d201abef76aafcb9b70ddc3c632e05a6d29648",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnHybridProbe",
+      "exitCode": 0
+    }
+  ],
+  "maximumSampledWorkingSetMiB": 584.4375,
+  "totalEngineCpuSeconds": 1366.78125,
+  "limitations": [
+    "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims.",
+    "Paired differences on shared complete opening pairs against the same reference. Positive favours left. Descriptive, unadjusted, not direct head-to-head strength or architectural causation.",
+    "Fresh search/TT at identical opening roots; different evaluator-dependent trees. Clock protocols warm up; node protocols do not. Descriptive cost/behaviour, not causal latency or strength.",
+    "Move-prefix grouping is a descriptive dependence warning, not ECO/source-game classification or proof of independent opening families. Pair intervals are unadjusted.",
+    "Hoeffding intervals assume independent bounded opening-pair scores; within-plan union bound covers only this plan, not prior candidate selection or repeated protocols. Independence remains unverified.",
+    "No final strength claim, selection-adjusted confirmation, or architectural causation inferred."
+  ]
+}
