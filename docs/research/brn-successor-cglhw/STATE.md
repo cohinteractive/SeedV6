@@ -150,7 +150,7 @@ runtimes separately bind15e2ba4/build47, b765a7f/build48 and cfae34d/build49.
 Later analysis and readiness changes are tooling/tests/reports and do not bump the
 application. Inspect Git for the closing handoff commit. No push, deployment,
 production-default replacement, finalizer or root journal creation. Root
-CODEXLOG_CURRENT.md was absent; VERSION_STATE remains build50.
+CODEXLOG_CURRENT.md was absent; that historical handoff retained build50.
 
 The focused G4 seek remediation began clean at d7d7599/build50 and is implemented
 in fc69aeb/build51. It corrects
@@ -163,8 +163,10 @@ and native GUI Resume. Build51's Windows image/archive, extracted-image checks a
 six-lineage Swing verification using its packaged jars/bundled runtime pass.
 The owner successfully completed training with the repair. Detailed historical
 evidence: WAVE4 and the remediation manifest. G4 is complete; the research
-objective is unchanged. No finalizer, journal creation,
-push or new research wave; no training/tournament remains running.
+objective is unchanged. That remediation ended with no running training/tournament.
+Current assessment began clean at d7c53d8/build51; G4 audit/admission is committed
+at8acdc4e. Research-only ablation instrumentation does not change application build51.
+No finalizer, journal creation, push or production replacement.
 
 Raw evidence is local-only under raw/wave1..wave4 and module build paths; a fresh
 checkout lacks it. Verify availability before analysis. Compact tracked manifests

@@ -1,0 +1,545 @@
+{
+  "id": "wave4-best-ablation-prediction-v1",
+  "inputs": {
+    "docs/research/brn-successor-cglhw/raw/wave2/data-01/bt4-fresh-positions.jsonl": "68793d927055fee9fc2161b2276d8f6071f1afcebb5ab5d521cd9bae237d4ff8",
+    "docs/research/brn-successor-cglhw/raw/wave2/data-01/lichess-sealed-positions.jsonl": "03a2d078e05cd95fb27274d39e6bd8eaf58ab21103f016721a7f49fd166fe728"
+  },
+  "meanGates": {
+    "W4-RESGATE-LR001-g63": [
+      0.3881098860358026,
+      0.16540974585904566,
+      0.16322697241419695,
+      0.28325339569095515
+    ],
+    "W4-RESGATE-LR003-g64": [
+      0.39957110064383167,
+      0.15949487505518567,
+      0.17903782631900744,
+      0.2618961979819759
+    ]
+  },
+  "rawParity": {
+    "W4-RESGATE-LR001-g63": 0.0,
+    "W4-RESGATE-LR003-g64": 0.0,
+    "W4-RESCUBIC-LR001-g63": 0.0,
+    "W4-RESCUBIC-LR003-g63": 0.0
+  },
+  "results": [
+    {
+      "source": "BT4",
+      "metrics": {
+        "Gen32": {
+          "residualRmsPawns": 2.1897065504921045,
+          "crossEntropy": 0.6429540457453015,
+          "rawMinPawns": -3.9154871407473575,
+          "count": 1024,
+          "smoothOutcomeMse": 0.13484834443334007,
+          "rawMaxPawns": 5.126466232703139
+        },
+        "W4-RESGATE-LR001-g63": {
+          "residualRmsPawns": 2.086217048290682,
+          "crossEntropy": 0.6291674424754631,
+          "rawMinPawns": -3.1066148583579665,
+          "count": 1024,
+          "smoothOutcomeMse": 0.11196891078832202,
+          "rawMaxPawns": 7.567572820821997
+        },
+        "W4-RESGATE-LR001-g63-correction0.0": {
+          "residualRmsPawns": 2.189706551484556,
+          "crossEntropy": 0.6429540476445533,
+          "rawMinPawns": -3.9154871215187566,
+          "count": 1024,
+          "smoothOutcomeMse": 0.13484834711495358,
+          "rawMaxPawns": 5.126466363869927
+        },
+        "W4-RESGATE-LR001-g63-correction0.25": {
+          "residualRmsPawns": 2.157882087518725,
+          "crossEntropy": 0.6354473351396684,
+          "rawMinPawns": -3.656705075673834,
+          "count": 1024,
+          "smoothOutcomeMse": 0.12435718492990043,
+          "rawMaxPawns": 5.736742978107944
+        },
+        "W4-RESGATE-LR001-g63-correction0.5": {
+          "residualRmsPawns": 2.1299255877772216,
+          "crossEntropy": 0.6311541973582984,
+          "rawMinPawns": -3.397923029828913,
+          "count": 1024,
+          "smoothOutcomeMse": 0.11746433292669883,
+          "rawMaxPawns": 6.347019592345962
+        },
+        "W4-RESGATE-LR001-g63-correction1.5": {
+          "residualRmsPawns": 2.0596044452627322,
+          "crossEntropy": 0.6380245967066868,
+          "rawMinPawns": -3.369958810128881,
+          "count": 1024,
+          "smoothOutcomeMse": 0.11791991320798662,
+          "rawMaxPawns": 8.788126049298032
+        },
+        "W4-RESGATE-LR001-g63-unary": {
+          "residualRmsPawns": 2.2135645047955688,
+          "crossEntropy": 0.6543069389490238,
+          "rawMinPawns": -4.11260922104862,
+          "count": 1024,
+          "smoothOutcomeMse": 0.14670067612819362,
+          "rawMaxPawns": 5.500389383949734
+        },
+        "W4-RESGATE-LR001-g63-constant-gates": {
+          "residualRmsPawns": 2.1714211296517107,
+          "crossEntropy": 0.6369285099544485,
+          "rawMinPawns": -4.3549648320486,
+          "count": 1024,
+          "smoothOutcomeMse": 0.1273601148654651,
+          "rawMaxPawns": 5.528131359171812
+        },
+        "W4-RESGATE-LR003-g64": {
+          "residualRmsPawns": 2.076193738978599,
+          "crossEntropy": 0.6373099962813152,
+          "rawMinPawns": -3.1504301638347867,
+          "count": 1024,
+          "smoothOutcomeMse": 0.12006691538766184,
+          "rawMaxPawns": 7.398054265807666
+        },
+        "W4-RESGATE-LR003-g64-correction0.0": {
+          "residualRmsPawns": 2.189706551484556,
+          "crossEntropy": 0.6429540476445533,
+          "rawMinPawns": -3.9154871215187566,
+          "count": 1024,
+          "smoothOutcomeMse": 0.13484834711495358,
+          "rawMaxPawns": 5.126466363869927
+        },
+        "W4-RESGATE-LR003-g64-correction0.25": {
+          "residualRmsPawns": 2.153661361405616,
+          "crossEntropy": 0.6357193633968727,
+          "rawMinPawns": -3.67891942289841,
+          "count": 1024,
+          "smoothOutcomeMse": 0.12455840859595947,
+          "rawMaxPawns": 5.694363339354361
+        },
+        "W4-RESGATE-LR003-g64-correction0.5": {
+          "residualRmsPawns": 2.1225846733728,
+          "crossEntropy": 0.6328476199402435,
+          "rawMinPawns": -3.442351724278062,
+          "count": 1024,
+          "smoothOutcomeMse": 0.11908717328890307,
+          "rawMaxPawns": 6.262260314838796
+        },
+        "W4-RESGATE-LR003-g64-correction1.5": {
+          "residualRmsPawns": 2.0519403061553376,
+          "crossEntropy": 0.6616528230882378,
+          "rawMinPawns": -3.4356817683441214,
+          "count": 1024,
+          "smoothOutcomeMse": 0.13688177976158808,
+          "rawMaxPawns": 8.576061371520545
+        },
+        "W4-RESGATE-LR003-g64-unary": {
+          "residualRmsPawns": 2.2360106243390234,
+          "crossEntropy": 0.6824999812810423,
+          "rawMinPawns": -4.000200405351963,
+          "count": 1024,
+          "smoothOutcomeMse": 0.17706861339219165,
+          "rawMaxPawns": 5.43359239881366
+        },
+        "W4-RESGATE-LR003-g64-constant-gates": {
+          "residualRmsPawns": 2.1740469522125956,
+          "crossEntropy": 0.6420096650005795,
+          "rawMinPawns": -4.552676310770648,
+          "count": 1024,
+          "smoothOutcomeMse": 0.13524618814868977,
+          "rawMaxPawns": 5.5254878628958295
+        },
+        "W4-RESCUBIC-LR001-g63": {
+          "residualRmsPawns": 2.072979080328368,
+          "crossEntropy": 0.6299835882267246,
+          "rawMinPawns": -4.52550074734496,
+          "count": 1024,
+          "smoothOutcomeMse": 0.1130208758519216,
+          "rawMaxPawns": 7.342266798515503
+        },
+        "W4-RESCUBIC-LR001-g63-correction0.0": {
+          "residualRmsPawns": 2.189706551484556,
+          "crossEntropy": 0.6429540476445533,
+          "rawMinPawns": -3.9154871215187566,
+          "count": 1024,
+          "smoothOutcomeMse": 0.13484834711495358,
+          "rawMaxPawns": 5.126466363869927
+        },
+        "W4-RESCUBIC-LR001-g63-correction0.25": {
+          "residualRmsPawns": 2.1523286880672208,
+          "crossEntropy": 0.6340960790260395,
+          "rawMinPawns": -4.051013918366454,
+          "count": 1024,
+          "smoothOutcomeMse": 0.12255178673746385,
+          "rawMaxPawns": 5.68041647253132
+        },
+        "W4-RESCUBIC-LR001-g63-correction0.5": {
+          "residualRmsPawns": 2.1202573811707075,
+          "crossEntropy": 0.6296409191067053,
+          "rawMinPawns": -4.18654071521415,
+          "count": 1024,
+          "smoothOutcomeMse": 0.11603382921510877,
+          "rawMaxPawns": 6.234366581192715
+        },
+        "W4-RESCUBIC-LR001-g63-correction1.5": {
+          "residualRmsPawns": 2.0494066206648553,
+          "crossEntropy": 0.6510898969438248,
+          "rawMinPawns": -5.149330334958108,
+          "count": 1024,
+          "smoothOutcomeMse": 0.1287776723835367,
+          "rawMaxPawns": 8.538997838615252
+        },
+        "W4-RESCUBIC-LR001-g63-unary": {
+          "residualRmsPawns": 2.264074096478849,
+          "crossEntropy": 0.7100630681090184,
+          "rawMinPawns": -4.002146984030068,
+          "count": 1024,
+          "smoothOutcomeMse": 0.2182366593623782,
+          "rawMaxPawns": 5.66841309429436
+        },
+        "W4-RESCUBIC-LR001-g63-quadratic": {
+          "residualRmsPawns": 2.0690833976792504,
+          "crossEntropy": 0.6304511465891964,
+          "rawMinPawns": -4.50754925566028,
+          "count": 1024,
+          "smoothOutcomeMse": 0.11311423224064004,
+          "rawMaxPawns": 7.441460439880412
+        },
+        "W4-RESCUBIC-LR003-g63": {
+          "residualRmsPawns": 2.0745728658520255,
+          "crossEntropy": 0.6398316718672433,
+          "rawMinPawns": -4.248548202221688,
+          "count": 1024,
+          "smoothOutcomeMse": 0.12169011961534622,
+          "rawMaxPawns": 7.891082390115066
+        },
+        "W4-RESCUBIC-LR003-g63-correction0.0": {
+          "residualRmsPawns": 2.189706551484556,
+          "crossEntropy": 0.6429540476445533,
+          "rawMinPawns": -3.9154871215187566,
+          "count": 1024,
+          "smoothOutcomeMse": 0.13484834711495358,
+          "rawMaxPawns": 5.126466363869927
+        },
+        "W4-RESCUBIC-LR003-g63-correction0.25": {
+          "residualRmsPawns": 2.1523055190701688,
+          "crossEntropy": 0.6356333603578369,
+          "rawMinPawns": -3.99875239169449,
+          "count": 1024,
+          "smoothOutcomeMse": 0.12389901153161426,
+          "rawMaxPawns": 5.817620370431211
+        },
+        "W4-RESCUBIC-LR003-g63-correction0.5": {
+          "residualRmsPawns": 2.1204858173794965,
+          "crossEntropy": 0.6330233747086744,
+          "rawMinPawns": -4.082017661870221,
+          "count": 1024,
+          "smoothOutcomeMse": 0.11879711523912857,
+          "rawMaxPawns": 6.508774376992497
+        },
+        "W4-RESCUBIC-LR003-g63-correction1.5": {
+          "residualRmsPawns": 2.0535316417528193,
+          "crossEntropy": 0.6745125219808878,
+          "rawMinPawns": -4.727714039525562,
+          "count": 1024,
+          "smoothOutcomeMse": 0.14423692340989713,
+          "rawMaxPawns": 9.434453022369734
+        },
+        "W4-RESCUBIC-LR003-g63-unary": {
+          "residualRmsPawns": 2.3299260006534985,
+          "crossEntropy": 0.8222105412631413,
+          "rawMinPawns": -3.9395186674414404,
+          "count": 1024,
+          "smoothOutcomeMse": 0.31863574682000745,
+          "rawMaxPawns": 6.108294766401329
+        },
+        "W4-RESCUBIC-LR003-g63-quadratic": {
+          "residualRmsPawns": 2.0720794519158012,
+          "crossEntropy": 0.6410795152723229,
+          "rawMinPawns": -4.263089175917582,
+          "count": 1024,
+          "smoothOutcomeMse": 0.12189250266804934,
+          "rawMaxPawns": 7.911048365052933
+        },
+        "W4-BRE-CONTROL-LR001-g64": {
+          "residualRmsPawns": 2.1634117245465085,
+          "crossEntropy": 0.6420179523487636,
+          "rawMinPawns": -4.654450523262431,
+          "count": 1024,
+          "smoothOutcomeMse": 0.13286063341528956,
+          "rawMaxPawns": 5.406316633433416
+        },
+        "W4-BRE-CONTROL-LR003-g64": {
+          "residualRmsPawns": 2.1353814585678887,
+          "crossEntropy": 0.641858876728517,
+          "rawMinPawns": -4.829835778451013,
+          "count": 1024,
+          "smoothOutcomeMse": 0.1318561873974348,
+          "rawMaxPawns": 5.389067555377103
+        }
+      }
+    },
+    {
+      "source": "CP",
+      "metrics": {
+        "Gen32": {
+          "residualRmsPawns": 3.310352066786221,
+          "crossEntropy": 0.5982402399355317,
+          "rawMinPawns": -7.87968771537313,
+          "count": 1024,
+          "smoothOutcomeMse": 0.3408387752392578,
+          "rawMaxPawns": 9.693356168633912
+        },
+        "W4-RESGATE-LR001-g63": {
+          "residualRmsPawns": 3.2104607629852255,
+          "crossEntropy": 0.5805431883091685,
+          "rawMinPawns": -5.377670484790153,
+          "count": 1024,
+          "smoothOutcomeMse": 0.32336394728106244,
+          "rawMaxPawns": 12.017532924255534
+        },
+        "W4-RESGATE-LR001-g63-correction0.0": {
+          "residualRmsPawns": 3.3103520689251966,
+          "crossEntropy": 0.5982402406571896,
+          "rawMinPawns": -7.879687659269514,
+          "count": 1024,
+          "smoothOutcomeMse": 0.34083877432007775,
+          "rawMaxPawns": 9.693355922987287
+        },
+        "W4-RESGATE-LR001-g63-correction0.25": {
+          "residualRmsPawns": 3.2790798552415135,
+          "crossEntropy": 0.5900723990133926,
+          "rawMinPawns": -7.0122243063919285,
+          "count": 1024,
+          "smoothOutcomeMse": 0.3327295134960168,
+          "rawMaxPawns": 10.27440017330435
+        },
+        "W4-RESGATE-LR001-g63-correction0.5": {
+          "residualRmsPawns": 3.251940021647623,
+          "crossEntropy": 0.5845666316913399,
+          "rawMinPawns": -6.14476095351435,
+          "count": 1024,
+          "smoothOutcomeMse": 0.32739980075058017,
+          "rawMaxPawns": 10.85544442362141
+        },
+        "W4-RESGATE-LR001-g63-correction1.5": {
+          "residualRmsPawns": 3.186575597574883,
+          "crossEntropy": 0.5916013437066923,
+          "rawMinPawns": -5.7427193652045325,
+          "count": 1024,
+          "smoothOutcomeMse": 0.33378823529842444,
+          "rawMaxPawns": 13.179621424889657
+        },
+        "W4-RESGATE-LR001-g63-unary": {
+          "residualRmsPawns": 3.2937114946979458,
+          "crossEntropy": 0.5987960884784539,
+          "rawMinPawns": -8.400330626618505,
+          "count": 1024,
+          "smoothOutcomeMse": 0.33767580955182047,
+          "rawMaxPawns": 10.097260994257514
+        },
+        "W4-RESGATE-LR001-g63-constant-gates": {
+          "residualRmsPawns": 3.268762200421555,
+          "crossEntropy": 0.606392865091084,
+          "rawMinPawns": -8.112166100795093,
+          "count": 1024,
+          "smoothOutcomeMse": 0.3509778449807297,
+          "rawMaxPawns": 9.792370367923688
+        },
+        "W4-RESGATE-LR003-g64": {
+          "residualRmsPawns": 3.203396655817778,
+          "crossEntropy": 0.5895821406759844,
+          "rawMinPawns": -5.490213023082569,
+          "count": 1024,
+          "smoothOutcomeMse": 0.33539776657779874,
+          "rawMaxPawns": 12.566222194599987
+        },
+        "W4-RESGATE-LR003-g64-correction0.0": {
+          "residualRmsPawns": 3.3103520689251966,
+          "crossEntropy": 0.5982402406571896,
+          "rawMinPawns": -7.879687659269514,
+          "count": 1024,
+          "smoothOutcomeMse": 0.34083877432007775,
+          "rawMaxPawns": 9.693355922987287
+        },
+        "W4-RESGATE-LR003-g64-correction0.25": {
+          "residualRmsPawns": 3.275615983327265,
+          "crossEntropy": 0.5905581647938258,
+          "rawMinPawns": -6.7656190013946045,
+          "count": 1024,
+          "smoothOutcomeMse": 0.33373324160433443,
+          "rawMaxPawns": 10.411572490890464
+        },
+        "W4-RESGATE-LR003-g64-correction0.5": {
+          "residualRmsPawns": 3.24611917617599,
+          "crossEntropy": 0.586173486965629,
+          "rawMinPawns": -5.651550343519695,
+          "count": 1024,
+          "smoothOutcomeMse": 0.3307349333350692,
+          "rawMaxPawns": 11.129789058793637
+        },
+        "W4-RESGATE-LR003-g64-correction1.5": {
+          "residualRmsPawns": 3.1830507545338342,
+          "crossEntropy": 0.6167932346826843,
+          "rawMinPawns": -5.911533172643162,
+          "count": 1024,
+          "smoothOutcomeMse": 0.3470940721379442,
+          "rawMaxPawns": 14.002655330406313
+        },
+        "W4-RESGATE-LR003-g64-unary": {
+          "residualRmsPawns": 3.2843222202746176,
+          "crossEntropy": 0.6095112160140302,
+          "rawMinPawns": -8.458876434438437,
+          "count": 1024,
+          "smoothOutcomeMse": 0.34651572744644743,
+          "rawMaxPawns": 10.844249222272442
+        },
+        "W4-RESGATE-LR003-g64-constant-gates": {
+          "residualRmsPawns": 3.250355138486799,
+          "crossEntropy": 0.6146164814809563,
+          "rawMinPawns": -8.202005576212422,
+          "count": 1024,
+          "smoothOutcomeMse": 0.355913616162815,
+          "rawMaxPawns": 10.393919380277662
+        },
+        "W4-RESCUBIC-LR001-g63": {
+          "residualRmsPawns": 3.3971813959375736,
+          "crossEntropy": 0.6144258193589741,
+          "rawMinPawns": -5.9853328895848925,
+          "count": 1024,
+          "smoothOutcomeMse": 0.3274295482457653,
+          "rawMaxPawns": 8.970321471593966
+        },
+        "W4-RESCUBIC-LR001-g63-correction0.0": {
+          "residualRmsPawns": 3.3103520689251966,
+          "crossEntropy": 0.5982402406571896,
+          "rawMinPawns": -7.879687659269514,
+          "count": 1024,
+          "smoothOutcomeMse": 0.34083877432007775,
+          "rawMaxPawns": 9.693355922987287
+        },
+        "W4-RESCUBIC-LR001-g63-correction0.25": {
+          "residualRmsPawns": 3.3219544647182775,
+          "crossEntropy": 0.5893845612870819,
+          "rawMinPawns": -5.289905456507306,
+          "count": 1024,
+          "smoothOutcomeMse": 0.33012473137566467,
+          "rawMaxPawns": 9.512597310138958
+        },
+        "W4-RESCUBIC-LR001-g63-correction0.5": {
+          "residualRmsPawns": 3.340374248031848,
+          "crossEntropy": 0.5847481079863734,
+          "rawMinPawns": -5.316452806773141,
+          "count": 1024,
+          "smoothOutcomeMse": 0.3241929161611851,
+          "rawMaxPawns": 9.331838697290628
+        },
+        "W4-RESCUBIC-LR001-g63-correction1.5": {
+          "residualRmsPawns": 3.4794618520983023,
+          "crossEntropy": 0.6865363680219276,
+          "rawMinPawns": -7.924890629063231,
+          "count": 1024,
+          "smoothOutcomeMse": 0.3390582384561666,
+          "rawMaxPawns": 8.608804245897307
+        },
+        "W4-RESCUBIC-LR001-g63-unary": {
+          "residualRmsPawns": 3.363875378681707,
+          "crossEntropy": 0.6474873387305186,
+          "rawMinPawns": -7.608008680120463,
+          "count": 1024,
+          "smoothOutcomeMse": 0.3953835531601729,
+          "rawMaxPawns": 9.671131174407872
+        },
+        "W4-RESCUBIC-LR001-g63-quadratic": {
+          "residualRmsPawns": 3.413239778985608,
+          "crossEntropy": 0.6269871238608404,
+          "rawMinPawns": -5.778925661475704,
+          "count": 1024,
+          "smoothOutcomeMse": 0.32902548539658916,
+          "rawMaxPawns": 8.473386445652846
+        },
+        "W4-RESCUBIC-LR003-g63": {
+          "residualRmsPawns": 3.3626230514929873,
+          "crossEntropy": 0.616529996779085,
+          "rawMinPawns": -6.131240312081109,
+          "count": 1024,
+          "smoothOutcomeMse": 0.3297780363173205,
+          "rawMaxPawns": 9.87902048389639
+        },
+        "W4-RESCUBIC-LR003-g63-correction0.0": {
+          "residualRmsPawns": 3.3103520689251966,
+          "crossEntropy": 0.5982402406571896,
+          "rawMinPawns": -7.879687659269514,
+          "count": 1024,
+          "smoothOutcomeMse": 0.34083877432007775,
+          "rawMaxPawns": 9.693355922987287
+        },
+        "W4-RESCUBIC-LR003-g63-correction0.25": {
+          "residualRmsPawns": 3.313639677969537,
+          "crossEntropy": 0.592184506641902,
+          "rawMinPawns": -5.746656517045722,
+          "count": 1024,
+          "smoothOutcomeMse": 0.3335980897512154,
+          "rawMaxPawns": 9.739772063214563
+        },
+        "W4-RESCUBIC-LR003-g63-correction0.5": {
+          "residualRmsPawns": 3.3234922558716398,
+          "crossEntropy": 0.5901983957046579,
+          "rawMinPawns": -5.389406518021248,
+          "count": 1024,
+          "smoothOutcomeMse": 0.32938152831618944,
+          "rawMaxPawns": 9.786188203441839
+        },
+        "W4-RESCUBIC-LR003-g63-correction1.5": {
+          "residualRmsPawns": 3.426854221442305,
+          "crossEntropy": 0.6949850520841386,
+          "rawMinPawns": -7.606819793817593,
+          "count": 1024,
+          "smoothOutcomeMse": 0.353888482890348,
+          "rawMaxPawns": 9.971852764350938
+        },
+        "W4-RESCUBIC-LR003-g63-unary": {
+          "residualRmsPawns": 3.3958851508072567,
+          "crossEntropy": 0.73680605893853,
+          "rawMinPawns": -7.313362151968754,
+          "count": 1024,
+          "smoothOutcomeMse": 0.4613991107879335,
+          "rawMaxPawns": 10.442200775212832
+        },
+        "W4-RESCUBIC-LR003-g63-quadratic": {
+          "residualRmsPawns": 3.4002901309682976,
+          "crossEntropy": 0.6396737077265322,
+          "rawMinPawns": -6.086166734505529,
+          "count": 1024,
+          "smoothOutcomeMse": 0.335541948532844,
+          "rawMaxPawns": 9.537929924236508
+        },
+        "W4-BRE-CONTROL-LR001-g64": {
+          "residualRmsPawns": 3.3192132450582816,
+          "crossEntropy": 0.5933150015214789,
+          "rawMinPawns": -6.5932607654735165,
+          "count": 1024,
+          "smoothOutcomeMse": 0.3334814807848242,
+          "rawMaxPawns": 9.197315479957688
+        },
+        "W4-BRE-CONTROL-LR003-g64": {
+          "residualRmsPawns": 3.3105404021731877,
+          "crossEntropy": 0.6037034949112157,
+          "rawMinPawns": -6.5244566810367814,
+          "count": 1024,
+          "smoothOutcomeMse": 0.34289017128720634,
+          "rawMaxPawns": 9.059606835635869
+        }
+      }
+    }
+  ],
+  "runtimeJars": {
+    "engine-core.jar": "6e5a6a2edf0381fb673b616c45cf450d10af2798aa83d6e94fa547c9f0b50820",
+    "engine-training.jar": "ec58521d7d7769729f4afd2a4db1bb63298a006c8e308b27aa6548c027878a64",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "de8559271ec698bb92ab73838c5744486f47fcf0b5a253f96034f4b77aae1f6e",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "scope": "Consumed development second-half diagnostic only; no chess strength conclusion."
+}

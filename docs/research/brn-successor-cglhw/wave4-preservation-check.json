@@ -1,0 +1,13 @@
+{
+  "priorInventory": "raw/wave4/seek-remediation-before-01.json",
+  "historicalW3AndFrozenFilesUnchanged": 710,
+  "currentW4FilesUnchanged": 1405,
+  "roots": [
+    "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\22b42be6-15c4-3f36-a376-3776aa1931f2",
+    "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\e6b6775d-39cd-392b-bd18-5e964a445f62",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\ed0750a3-3163-3979-9f26-2e466c49c771"
+  ],
+  "changed": [],
+  "scope": "Current root only reads owner stores. Six W4 training changes predate this turn and are attributed to user G4 training."
+}

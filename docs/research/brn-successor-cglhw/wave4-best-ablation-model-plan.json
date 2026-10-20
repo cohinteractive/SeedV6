@@ -1,0 +1,51 @@
+{
+  "id": "wave4-best-prediction-ablations-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/Gen32",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    },
+    {
+      "name": "W4-RESGATE-LR001-g63",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESGATE-LR001-g63",
+      "checkpoint": "g000063-s000516096-363b208509b37269f3978ee180cc786184ab620bfd79fe7ae501cca6b3df9207",
+      "networkSha256": "b26f0b79c9a48e63fdf661e9e661453f416859d8948617a84f82563e3175a0ab",
+      "gatedDeltaCache": true
+    },
+    {
+      "name": "W4-RESGATE-LR003-g64",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESGATE-LR003-g64",
+      "checkpoint": "g000064-s000524288-c4a19e81755089d2a7a0e3904dd81347db96eda02dad7c4d3aedec5d630fb044",
+      "networkSha256": "f98aadffa26dafd5f5ec2f2947526e082c7b26f6979dd77be61b7f11a2fa7baf",
+      "gatedDeltaCache": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g63",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESCUBIC-LR001-g63",
+      "checkpoint": "g000063-s000516096-3f2c7a050f1b185025eeb55a0ef44b7e31c133c30f6ece8e338c91813a1a4902",
+      "networkSha256": "0c1787f3b217e4175a065789ef6228190ed315e6bf0947998464d78302abd2fc",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g63",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-RESCUBIC-LR003-g63",
+      "checkpoint": "g000063-s000516096-20f05fb4a8e00abf9592091a99858d7c18c08ae06e2edb5faeb05b7cf1bf4e75",
+      "networkSha256": "149850f9e757cc0bcd2c45a31b9ad9f2e86979e4cf14445e95bce3173fec5412",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g64",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g64",
+      "checkpoint": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+      "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g64",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR003-g64",
+      "checkpoint": "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1",
+      "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050"
+    }
+  ]
+}

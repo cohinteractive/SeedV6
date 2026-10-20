@@ -44,6 +44,11 @@ The GUI WDL Loss is half-squared error on bounded outcome predictions, not cross
 entropy. Best is sequential incumbent promotion on each generation's fresh holdout,
 not the global minimum on a fixed validation set. Changing examples confound raw
 generation-to-generation averages; they are not proof of monotonic convergence.
+The trainer's minibatch gradient objective is WDL cross entropy; the displayed
+final training loss and promotion loss are half-squared outcome error. Both BRE
+and residual code use this distinction. BRE updates moments only at touched sparse
+addresses; the residual trainer updates dense parameters. Identical Adam coefficients
+therefore do not imply identical effective optimization.
 
 ## Fixed-panel diagnostics and correctness
 
@@ -81,6 +86,33 @@ Failed preparatory diagnostics are preserved: learning-curve-01 stopped before
 prediction on a mistyped input filename; the corrected02 run succeeded. The first
 structural audit asserted RETAIN instead of the actual RETAIN_INCUMBENT enum and
 was corrected before producing its report. Neither was a training/model defect.
+
+The additional W3/frozen preservation audit checks710 historical files against
+the pre-repair inventory: all byte-identical. All1405 current W4 files also remain
+unchanged by Codex. `wave4-preservation-check.json` records the scope. No W1 store
+was written or involved in this assessment.
+
+The prediction-ablation tool now selects frozen-base schemas instead of hardcoded
+W3 display names. This is research-only instrumentation; no evaluator/trainer/search
+semantics change and no application build bump. `:research:installResearch` and
+actual W4 Best assessment pass. Seven existing independent match-analyzer tests pass.
+`wave4-best-ablation-prediction.json` binds the resulting jar hashes and metrics;
+original matches continue using the previously frozen build51 runtime.
+
+On the second-half development panels, GATE-LR001 Best63 CE is .62917(BT4)/.58054(CP),
+versus .63693/.60639 with label-independent constant gates. CUBIC-LR001 Best63 is
+.62998/.61443, versus .63045/.62699 without the cubic term. LR003 shows the same
+direction for these ablations. Nonlinear components contribute to these trained
+functions; removing jointly trained components is not a retrained additive baseline
+and does not establish expressive chess value. Original CP validity caveats remain.
+
+Orchestration notes: a wrapper after node batch03 tested PowerShell's unset
+LASTEXITCODE despite Start-Process's successful exit receipt. Admission paused;
+the verified successful batch was preserved and ordinary resume continued at04,
+using the explicit process receipt. No game was repeated/discarded. Git's default
+whitespace check flags intentional Windows CRLF in newly frozen JSON/PGN inputs;
+the explicit `core.whitespace=cr-at-eol` check passes. Preserve frozen input bytes
+and their hashes rather than normalizing an already admitted protocol.
 
 ## Prospective development assessment admission
 

@@ -51,7 +51,9 @@ public final class BrnResidualAssessment {
                 parity.put(spec.name(),error);
                 if(error>1e-9)throw new IllegalStateException("Raw trainer/runtime discrepancy");
                 predictors.add(new Predictor(spec.name(),b->model.rawPawns(b,ws)));
-                if(!Set.of("W3-RESGATE","W3-RESCUBIC").contains(spec.name()))continue;
+                // Later waves retain these schemas under new lineage names. Select by
+                // semantics, not historical display aliases, so their ablations remain auditable.
+                if(!model.architecture().frozenBase())continue;
                 var kind=model.architecture();
                 for(double alpha:new double[]{0,.25,.5,1.5})
                     add(predictors,spec.name()+"-correction"+alpha,BrnSuccessorVariants.correction(model,alpha,null,null));
