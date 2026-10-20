@@ -97,13 +97,17 @@ are CLOSED,35656 moves independently verified, no failures/caps/missing pairs.
 CUBIC001 Best63 and CUBIC003 Latest64 score68.75% against Gen32, but BRE003 also
 scores68.75%; all residual-minus-BRE003 intervals include zero. BRE001 scores40.625%
 despite better validation. These are small selected development comparisons.
-The preselected-Best100ms192-game protocol is active on the same sixteen roots.
+The preselected-Best100ms192-game protocol is CLOSED,26798 legal moves, zero
+failures/caps/fallbacks. Scores: GATE00143.75%,GATE00348.4375%,CUBIC00154.6875%,
+CUBIC00356.25%,BRE00146.875%,BRE00359.375%; all paired intervals include50%.
+Warm same-root NPS ratios: GATE.61-.62,CUBIC.71-.75,BRE.97-.99.
+Direct comparisons against both actual continued BRE endpoints are now active.
 Exact plans: `wave4-primary-node-plan.json`, `wave4-primary-clock-plan.json`;
 runtime: `wave4-trained-runtime.json`; evidence under `raw/wave4`.
 Resume only the active immutable plans/receipts, inspecting errors and batch limits;
-never enlarge closed W3 protocols. Then analyze rate, Best/latest, inference cost and
-common-opponent differences; admit focused direct comparisons against both trained
-BRE controls and mechanism/calibration diagnostics as warranted. A fixed last-eight
+never enlarge closed W3 protocols. Primary rate, Best/latest, inference cost and
+common-opponent differences are recorded; the focused direct controls and calibration
+diagnostics now test the unresolved architectural value. A fixed last-eight
 checkpoint average improves residual development prediction at unchanged inference
 size/cost; explicit hash/ancestry-bound research loading and12 tests plus96 legal
 smoke plies pass. No optimizer/checkpoint is changed. See the average plans/results;
@@ -121,8 +125,13 @@ CUBIC full CP degradation; half calibration partly offsets it. Extra generations
 are not automatically an improvement. See wave4-maturity-average-results.json.
 The prospective direct admission fixes448 follow-up games against both actual BRE
 Gen64 endpoints, all four residual means, additive means and full/half calibration
-on eight unused development roots. See wave4-direct-admission.json; begin only after
-primary-clock completion/validation. No favorable partial-score stopping.
+on eight previously unused development roots. Primary-clock is complete/validated;
+resume direct-node-LR001 then LR003/full-node and both direct-clock plans, using
+wave4-average-runtime.json. See wave4-direct-admission.json; fixed448-game budget.
+Also admitted:64 rank4-vs-rank16 node games, full/half, after13 tests and actual
+masked score/search oracles pass. Use wave4-pruned-admission.json and the separate
+wave4-mask-runtime.json; dense cache means no pruning speed claim. Do not mix
+runtimes or enlarge completed protocols. No favorable partial-score stopping.
 Primary protocols continue using frozen original jars. Fresh confirmation
 partition1 remains unused. No architecture decision or further training is inferred
 from loss or an initial equal-time defeat.

@@ -1,0 +1,17 @@
+{
+  "id": "wave4-pruned-admission-v1",
+  "createdUtc": "2026-10-20T22:12:18.781242+00:00",
+  "question": "Does the fit-selected rank4 mask preserve equal-node chess quality against the identical unmasked mean, at full and half scale?",
+  "selection": "LR001 rank4 chosen for improved full-scale BT4/CP prediction and plausible microcost. Half CP is worse, so both scales are included. No new ranking/window fitting.",
+  "plans": {
+    "wave4-pruned-full-node-plan.json": "3bbeacf92852380999df5eb7a618aeee1d916f9c034733ce98c818ead1baf56d",
+    "wave4-pruned-half-node-plan.json": "b82cb6ba779de389c40118ea744e527a3653c0d4719edf6f34e61a59786c7254"
+  },
+  "games": 64,
+  "openings": "Development roots17..32, pairs reversed; overlap17..24 with other direct diagnostics. Not independent confirmation.",
+  "dependencies": "New mask loader tests, actual masked cache/search oracle and frozen runtime must pass/bind before games. Primary-clock completes first; do not alter any existing match runtime.",
+  "runtime": "wave4-mask-runtime.json",
+  "resource": "Same one-game/worker,no-ponder64MiB/768MiB/ActiveProcessorCount1/BelowNormal12games240sec bounds",
+  "decision": "Fixed budgets regardless scores; no speed claim from dense current16-rank cache. If function quality fails, do not integrate packed implementation merely for speed; if promising, verify same-run layout cost and actual search parity before adoption. No training or owner-store writes.",
+  "readiness": "wave4-pruned-readiness.json"
+}

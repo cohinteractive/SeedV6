@@ -19,7 +19,7 @@ public final class BrnCubicRankProbe {
     record Predictor(String name,ToDoubleFunction<long[]> raw) {}
     static BrnNextModel keep(BrnNextModel source,List<Integer> ranks) {
         if(source.architecture()!=BrnNextArchitecture.GEN32_CUBIC||ranks.isEmpty()
-                ||new HashSet<>(ranks).size()!=ranks.size()||ranks.stream().anyMatch(r->r<0||r>=16))
+                ||new HashSet<>(ranks).size()!=ranks.size()||ranks.stream().anyMatch(r->r==null||r<0||r>=16))
             throw new IllegalArgumentException("Distinct cubic ranks0..15 required");
         var kind=source.architecture();double[] weights=new double[kind.parameters()];
         for(int i=0;i<weights.length;i++)weights[i]=source.weight(i);

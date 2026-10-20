@@ -24,7 +24,7 @@ public final class BrnSuccessorMatch {
     record Model(String name, String root, String checkpoint, String networkSha256, Double residualGain,
                  boolean gatedCache, boolean cubicCache, Double blendCandidateWeight,
                  Double correctionScale, String correctionAblation, double[] constantGates, boolean gatedDeltaCache, boolean cubicDeltaCache,
-                 List<AverageInput> averagedInputs) {
+                 List<AverageInput> averagedInputs, List<Integer> retainedCubicRanks) {
         Model {
             if(constantGates!=null&&!"constant-gates".equals(correctionAblation))
                 throw new IllegalArgumentException("Explicit constant-gates ablation required");
@@ -35,6 +35,16 @@ public final class BrnSuccessorMatch {
     /** Bound inference-only mean. The anchor remains the latest source checkpoint, never a fake
      * trainable checkpoint. Every ingredient and the effective model hash are retained in receipts. */
     static NetworkModel loadModel(Model spec) throws Exception {
+        var model=loadAveragedOrAnchor(spec);
+        if(spec.retainedCubicRanks()!=null) {
+            if(!(model instanceof NetworkModel.BrnNext n)
+                    ||n.model().architecture()!=com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GEN32_CUBIC)
+                throw new IllegalArgumentException("Explicit frozen-base cubic rank mask required");
+            model=new NetworkModel.BrnNext(BrnCubicRankProbe.keep(n.model(),spec.retainedCubicRanks()));
+        }
+        return model;
+    }
+    private static NetworkModel loadAveragedOrAnchor(Model spec) throws Exception {
         var anchor=CheckpointStore.readSnapshot(Path.of(spec.root()),spec.checkpoint());
         if(!anchor.manifest().networkSha256().equals(spec.networkSha256()))throw new IllegalArgumentException("Model hash changed");
         if(spec.averagedInputs()==null)return anchor.model();
@@ -124,6 +134,10 @@ public final class BrnSuccessorMatch {
             if(spec.averagedInputs()!=null) {
                 modelBinding.put("averagedInputs",spec.averagedInputs());
                 modelBinding.put("averaging","Uniform parameter mean; Pair2 compiled tables; inference only, no optimizer continuation");
+            }
+            if(spec.retainedCubicRanks()!=null) {
+                modelBinding.put("retainedCubicRanks",spec.retainedCubicRanks());
+                modelBinding.put("rankMask","Both omitted output heads zeroed after averaging, before correction scaling; dense verified cache, no claimed speedup");
             }
             if(spec.cubicDeltaCache())modelBinding.put("cubicDeltaCache","polynomial-period64-canonical-rounding-guard-v1");
             if(spec.gatedDeltaCache())modelBinding.put("gatedDeltaCache","period64-canonical-rounding-guard-v1");

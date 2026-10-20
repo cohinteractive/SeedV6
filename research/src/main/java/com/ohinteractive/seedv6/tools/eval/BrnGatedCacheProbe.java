@@ -65,6 +65,7 @@ public final class BrnGatedCacheProbe {
                 "brn-successor-wave2-"+(cubic?"cubic":"gate")+"-cache-v1");result.put("manifest",snapshot.manifest());
         result.put("modelPlanId",plan.id());
         if(spec.averagedInputs()!=null)result.put("averagedInputs",spec.averagedInputs());
+        if(spec.retainedCubicRanks()!=null)result.put("retainedCubicRanks",spec.retainedCubicRanks());
         var effectiveBytes=new ByteArrayOutputStream();BrnNextCodec.writeModel(model,effectiveBytes);
         result.put("effectiveNetworkSha256",HexFormat.of().formatHex(DataFiles.digest().digest(effectiveBytes.toByteArray())));
         if(spec.correctionScale()!=null||spec.correctionAblation()!=null) {

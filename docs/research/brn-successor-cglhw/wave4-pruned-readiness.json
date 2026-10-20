@@ -1,0 +1,41 @@
+{
+  "id": "wave4-pruned-readiness-v1",
+  "runtime": "wave4-mask-runtime.json",
+  "junitTests": 13,
+  "junitFailures": 0,
+  "oracles": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\cache-pruned-full-01.json",
+      "sha256": "bb1a511be188d564fa696784bdae75568eb5e6674dff4bafaece795c30b623f7",
+      "name": "W4-RESCUBIC-LR001-average8-full-rank4",
+      "retainedCubicRanks": [
+        2,
+        3,
+        5,
+        9
+      ],
+      "positions": 6333,
+      "maximumRawError": 4.551914400963142e-15,
+      "searches": 96,
+      "effectiveNetworkSha256": "2aa39be2f162dabf773307d2466a8dee452c57114e8590143675c71fb6c4a3c3"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\cache-pruned-half-01.json",
+      "sha256": "149eac74d308b1794e23f57834eb735d479b5d341fb8fb227038c997a7732db5",
+      "name": "W4-RESCUBIC-LR001-average8-half-rank4",
+      "retainedCubicRanks": [
+        2,
+        3,
+        5,
+        9
+      ],
+      "positions": 6333,
+      "maximumRawError": 2.275957200481571e-15,
+      "searches": 96,
+      "effectiveNetworkSha256": "86a2a2e2b7c40c5f906bd9685df0d119823d46a0d9cdcf878aadfd091b19df9f"
+    }
+  ],
+  "fullMaskedPayloadMatchesPredictionDiagnostic": true,
+  "readyForAdmitted64Games": true,
+  "scope": "Dense existing cache and common search; no speed/strength claim, no optimizer export, no source writes."
+}

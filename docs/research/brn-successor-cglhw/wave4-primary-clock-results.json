@@ -1,0 +1,1004 @@
+{
+  "id": "wave4-primary-clock-v1-completed",
+  "status": "Closed fixed-budget development experiment",
+  "plan": "docs\\research\\brn-successor-cglhw\\wave4-primary-clock-plan.json",
+  "receipts": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock",
+  "analysis": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-analysis.json",
+  "runtime": "docs\\research\\brn-successor-cglhw\\wave4-trained-runtime.json",
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\wave4-primary-clock-plan.json": "d658c168c7473af96b57f2fb112780dd115ef265ae8586ce270a5c5fe60cfee5",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-analysis.json": "1237763b2bd2f952e7f89c03f90ba06b7ac22141aa67a3f6c6f02463aea2cd0f",
+    "docs\\research\\brn-successor-cglhw\\wave4-trained-runtime.json": "f1ca1ba6d0e0553ff650c476ee8afa0ba0896373636d6e268adc6dcec3667e29",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock\\model-bindings.json": "939e1f6624e849918139064c0ae2aac34990c7d86d1a077e19b20b1b7551fccd"
+  },
+  "games": 192,
+  "validatedMoves": 26798,
+  "models": [
+    {
+      "name": "W4-RESGATE-LR001-g63",
+      "wins": 10,
+      "draws": 8,
+      "losses": 14,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.4375,
+      "pairStandardError": 0.08984941105353261,
+      "descriptiveNormal95": [
+        0.2613951543350761,
+        0.6136048456649239
+      ],
+      "pairScores": [
+        0.0,
+        0.25,
+        0.75,
+        0.75,
+        1.0,
+        0.0,
+        0.25,
+        0.75,
+        0.5,
+        0.0,
+        0.75,
+        1.0,
+        0.25,
+        0.0,
+        0.5,
+        0.25
+      ]
+    },
+    {
+      "name": "W4-RESGATE-LR003-g64",
+      "wins": 12,
+      "draws": 7,
+      "losses": 13,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.484375,
+      "pairStandardError": 0.07022564079451322,
+      "descriptiveNormal95": [
+        0.3467327440427541,
+        0.6220172559572459
+      ],
+      "pairScores": [
+        0.0,
+        0.5,
+        0.0,
+        0.75,
+        0.25,
+        0.75,
+        0.25,
+        0.75,
+        0.5,
+        0.25,
+        1.0,
+        0.5,
+        0.75,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g63",
+      "wins": 15,
+      "draws": 5,
+      "losses": 12,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.546875,
+      "pairStandardError": 0.056911618248532234,
+      "descriptiveNormal95": [
+        0.4353282282328768,
+        0.6584217717671231
+      ],
+      "pairScores": [
+        1.0,
+        0.5,
+        0.75,
+        1.0,
+        0.5,
+        0.5,
+        0.25,
+        0.5,
+        0.25,
+        0.5,
+        0.5,
+        0.5,
+        0.25,
+        0.75,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g63",
+      "wins": 15,
+      "draws": 6,
+      "losses": 11,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.5625,
+      "pairStandardError": 0.08068715304598785,
+      "descriptiveNormal95": [
+        0.4043531800298638,
+        0.7206468199701361
+      ],
+      "pairScores": [
+        0.5,
+        0.5,
+        0.75,
+        0.25,
+        0.0,
+        0.5,
+        0.5,
+        0.75,
+        0.5,
+        1.0,
+        0.0,
+        0.25,
+        1.0,
+        0.75,
+        0.75,
+        1.0
+      ]
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g64",
+      "wins": 12,
+      "draws": 6,
+      "losses": 14,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.46875,
+      "pairStandardError": 0.08801929239282337,
+      "descriptiveNormal95": [
+        0.2962321869100662,
+        0.6412678130899339
+      ],
+      "pairScores": [
+        0.25,
+        0.5,
+        0.75,
+        0.5,
+        0.0,
+        1.0,
+        0.5,
+        0.0,
+        0.0,
+        0.5,
+        1.0,
+        0.0,
+        1.0,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g64",
+      "wins": 17,
+      "draws": 4,
+      "losses": 11,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.59375,
+      "pairStandardError": 0.07525996611745185,
+      "descriptiveNormal95": [
+        0.44624046640979437,
+        0.7412595335902057
+      ],
+      "pairScores": [
+        0.25,
+        0.5,
+        0.5,
+        0.5,
+        1.0,
+        0.5,
+        0.0,
+        0.75,
+        1.0,
+        0.5,
+        0.5,
+        0.5,
+        1.0,
+        1.0,
+        0.25,
+        0.75
+      ]
+    }
+  ],
+  "modelBindings": [
+    {
+      "name": "Gen32",
+      "originalManifest": {
+        "id": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+        "generation": 32,
+        "optimizerStep": 1753088,
+        "trainingDepth": 4,
+        "parentId": "g000031-s001228800-3b52a75c2077c9b9a44edcee222201e0b3a0b76dc8b9cef5ae99804fa5549c78",
+        "networkBytes": 795032,
+        "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "trainingBytes": 2731424,
+        "trainingSha256": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+        "architecture": "BRN_PAIR2"
+      },
+      "effectiveNetworkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "residualGain": 0.25,
+      "gatedCache": false
+    },
+    {
+      "name": "W4-RESGATE-LR001-g63",
+      "originalManifest": {
+        "id": "g000063-s000516096-363b208509b37269f3978ee180cc786184ab620bfd79fe7ae501cca6b3df9207",
+        "generation": 63,
+        "optimizerStep": 516096,
+        "trainingDepth": 4,
+        "parentId": "g000062-s000507904-fb855ccc2ddc7984938ea1712dfb35db1c7fc152d44072bb4167fed7e5ac7fd6",
+        "networkBytes": 52464,
+        "networkSha256": "b26f0b79c9a48e63fdf661e9e661453f416859d8948617a84f82563e3175a0ab",
+        "trainingBytes": 157264,
+        "trainingSha256": "1243c96e6b4b818353d8f751559db3ff1fa3e5ede069362f88f9d871c962b765",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "effectiveNetworkSha256": "2cbd9a4419ef1c6d375e120c23ff7d28d2f1bb09165828ba640b81a7e5b8c6ae",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "gatedDeltaCache": "period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "name": "W4-RESGATE-LR003-g64",
+      "originalManifest": {
+        "id": "g000064-s000524288-c4a19e81755089d2a7a0e3904dd81347db96eda02dad7c4d3aedec5d630fb044",
+        "generation": 64,
+        "optimizerStep": 524288,
+        "trainingDepth": 4,
+        "parentId": "g000063-s000516096-b2b092903ea30d834118459c9bb821d03a6cfe0428f6d0806247b338a56dfd44",
+        "networkBytes": 52464,
+        "networkSha256": "f98aadffa26dafd5f5ec2f2947526e082c7b26f6979dd77be61b7f11a2fa7baf",
+        "trainingBytes": 157264,
+        "trainingSha256": "8844aee0d51bf0dd8e846735ab584313ff84a5c539770d98f12b2c4884c483b1",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "effectiveNetworkSha256": "2110bd6a7a8092c308552c5eab93a041ab07971a902f1c588bfef9edb967186e",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "gatedDeltaCache": "period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g63",
+      "originalManifest": {
+        "id": "g000063-s000516096-3f2c7a050f1b185025eeb55a0ef44b7e31c133c30f6ece8e338c91813a1a4902",
+        "generation": 63,
+        "optimizerStep": 516096,
+        "trainingDepth": 4,
+        "parentId": "g000062-s000507904-72900694c054f80ec7fa67ccb4f21474e4c589378a9ae3944b1f3adaa1ba8b23",
+        "networkBytes": 104784,
+        "networkSha256": "0c1787f3b217e4175a065789ef6228190ed315e6bf0947998464d78302abd2fc",
+        "trainingBytes": 314224,
+        "trainingSha256": "fd5d220c218f8be743923969cf6e9f16bf907fb792a3db535601213ca77f73bc",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "effectiveNetworkSha256": "d494949090360c30adcbccebda85df75d40425606d4f874e2ea972f0e7fb53bd",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g63",
+      "originalManifest": {
+        "id": "g000063-s000516096-20f05fb4a8e00abf9592091a99858d7c18c08ae06e2edb5faeb05b7cf1bf4e75",
+        "generation": 63,
+        "optimizerStep": 516096,
+        "trainingDepth": 4,
+        "parentId": "g000062-s000507904-08ae6907feab3295b7f77e1e060fe38d6b8893bfa8da1cf3934f107072c85fe4",
+        "networkBytes": 104784,
+        "networkSha256": "149850f9e757cc0bcd2c45a31b9ad9f2e86979e4cf14445e95bce3173fec5412",
+        "trainingBytes": 314224,
+        "trainingSha256": "bd01cdf92c5bdcaa3690af39064a5623066d51a883b6cc1accf2c82b6f5ea1c8",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "effectiveNetworkSha256": "456529124128214dfea87a47ed56eebb1fef4f93636a13e39403ae9466590799",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g64",
+      "originalManifest": {
+        "id": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+        "generation": 64,
+        "optimizerStep": 2277376,
+        "trainingDepth": 4,
+        "parentId": "g000063-s002269184-442287932c112c798471b208a5c8ffffe59420aa116db7134d53f8ab53740cd6",
+        "networkBytes": 795032,
+        "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+        "trainingBytes": 2731424,
+        "trainingSha256": "19aa0beffaf653c5b8ba4dca89f5b4b4a3f0eb31440e297acf7f0969b0485502",
+        "architecture": "BRN_PAIR2"
+      },
+      "effectiveNetworkSha256": "50a20bb63a79416690f7695e6b1bef5d13fe99c5190277b27de76e5e69cbcfc3",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "correctionScale": 0.5,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "additiveMapping": "Gen32 compiled tables + scale * (continued compiled tables - Gen32 tables)"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g64",
+      "originalManifest": {
+        "id": "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1",
+        "generation": 64,
+        "optimizerStep": 2277376,
+        "trainingDepth": 4,
+        "parentId": "g000063-s002269184-335373a32552a851d1ff5dafd2a0aa843d8d2d1262ee32128465a106de7b1f23",
+        "networkBytes": 795032,
+        "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050",
+        "trainingBytes": 2731424,
+        "trainingSha256": "4c23665148d475c44c7e24f903c011407128f17272e5cbba197ce3d642fa883a",
+        "architecture": "BRN_PAIR2"
+      },
+      "effectiveNetworkSha256": "5f92579f7a2163fae9517c6cb341a1f439b71c999c96be0d7d71d4d366fb2a49",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "correctionScale": 0.5,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "additiveMapping": "Gen32 compiled tables + scale * (continued compiled tables - Gen32 tables)"
+    }
+  ],
+  "sameRootSearch": [
+    {
+      "name": "W4-RESGATE-LR001-g63",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 8,
+      "meanDepthDifference": -0.375,
+      "lessEqualMoreDepth": [
+        7,
+        8,
+        1
+      ],
+      "medianNodeRatio": 0.6095962665423075,
+      "medianElapsedRatio": 1.001000597839457,
+      "medianNpsRatio": 0.6091050084652941
+    },
+    {
+      "name": "W4-RESGATE-LR003-g64",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 13,
+      "meanDepthDifference": -0.375,
+      "lessEqualMoreDepth": [
+        6,
+        10,
+        0
+      ],
+      "medianNodeRatio": 0.6171225640333293,
+      "medianElapsedRatio": 1.0000374712311297,
+      "medianNpsRatio": 0.6171501346440479
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-g63",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 6,
+      "meanDepthDifference": -0.25,
+      "lessEqualMoreDepth": [
+        4,
+        12,
+        0
+      ],
+      "medianNodeRatio": 0.7458092975105557,
+      "medianElapsedRatio": 1.0001448978078422,
+      "medianNpsRatio": 0.7457427404008519
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-g63",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 6,
+      "meanDepthDifference": -0.3125,
+      "lessEqualMoreDepth": [
+        5,
+        11,
+        0
+      ],
+      "medianNodeRatio": 0.7056779936917328,
+      "medianElapsedRatio": 1.0000989612928608,
+      "medianNpsRatio": 0.7055317450687517
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001-g64",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 8,
+      "meanDepthDifference": -0.0625,
+      "lessEqualMoreDepth": [
+        1,
+        15,
+        0
+      ],
+      "medianNodeRatio": 0.9881809067437062,
+      "medianElapsedRatio": 1.0000060017263013,
+      "medianNpsRatio": 0.9880673667556066
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003-g64",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 6,
+      "meanDepthDifference": 0.0625,
+      "lessEqualMoreDepth": [
+        0,
+        15,
+        1
+      ],
+      "medianNodeRatio": 0.9735577216724519,
+      "medianElapsedRatio": 1.000044955850257,
+      "medianNpsRatio": 0.9735552759723441
+    }
+  ],
+  "telemetry": {
+    "W4-RESGATE-LR001-g63": {
+      "moves": 2341,
+      "nodes": 256146621,
+      "elapsedNanos": 227825273264,
+      "sumDepth": 20206,
+      "fallbacks": 0,
+      "maximumMoveNanos": 108524999
+    },
+    "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304": {
+      "moves": 13396,
+      "nodes": 2303260477,
+      "elapsedNanos": 1296960551266,
+      "sumDepth": 126814,
+      "fallbacks": 0,
+      "maximumMoveNanos": 202558200
+    },
+    "W4-RESGATE-LR003-g64": {
+      "moves": 2328,
+      "nodes": 255018024,
+      "elapsedNanos": 225433908043,
+      "sumDepth": 20840,
+      "fallbacks": 0,
+      "maximumMoveNanos": 109477200
+    },
+    "W4-RESCUBIC-LR001-g63": {
+      "moves": 1874,
+      "nodes": 231113512,
+      "elapsedNanos": 179672184592,
+      "sumDepth": 17862,
+      "fallbacks": 0,
+      "maximumMoveNanos": 101222600
+    },
+    "W4-RESCUBIC-LR003-g63": {
+      "moves": 2274,
+      "nodes": 284586129,
+      "elapsedNanos": 220951941101,
+      "sumDepth": 20342,
+      "fallbacks": 0,
+      "maximumMoveNanos": 116671699
+    },
+    "W4-BRE-CONTROL-LR001-g64": {
+      "moves": 2398,
+      "nodes": 413973946,
+      "elapsedNanos": 232894263632,
+      "sumDepth": 22889,
+      "fallbacks": 0,
+      "maximumMoveNanos": 111734700
+    },
+    "W4-BRE-CONTROL-LR003-g64": {
+      "moves": 2187,
+      "nodes": 373241859,
+      "elapsedNanos": 211261793522,
+      "sumDepth": 20987,
+      "fallbacks": 0,
+      "maximumMoveNanos": 107114500
+    }
+  },
+  "commonOpponentContrasts": [
+    {
+      "left": "W4-RESGATE-LR001-g63",
+      "right": "W4-RESGATE-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.046875,
+      "pairStandardError": 0.105125792704106,
+      "descriptiveNormal95": [
+        -0.25292155370004776,
+        0.15917155370004776
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g63",
+      "right": "W4-RESCUBIC-LR001-g63",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.109375,
+      "pairStandardError": 0.10696755251788585,
+      "descriptiveNormal95": [
+        -0.3190314029350563,
+        0.10028140293505627
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g63",
+      "right": "W4-RESCUBIC-LR003-g63",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.125,
+      "pairStandardError": 0.15138251770487457,
+      "descriptiveNormal95": [
+        -0.42170973470155415,
+        0.17170973470155415
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g63",
+      "right": "W4-BRE-CONTROL-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.03125,
+      "pairStandardError": 0.14768173832039402,
+      "descriptiveNormal95": [
+        -0.32070620710797226,
+        0.25820620710797226
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-g63",
+      "right": "W4-BRE-CONTROL-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.15625,
+      "pairStandardError": 0.10915155747858113,
+      "descriptiveNormal95": [
+        -0.370187052658019,
+        0.05768705265801902
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-g64",
+      "right": "W4-RESCUBIC-LR001-g63",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.0625,
+      "pairStandardError": 0.10077822185373186,
+      "descriptiveNormal95": [
+        -0.2600253148333145,
+        0.13502531483331445
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-g64",
+      "right": "W4-RESCUBIC-LR003-g63",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.078125,
+      "pairStandardError": 0.1157375578266047,
+      "descriptiveNormal95": [
+        -0.3049706133401452,
+        0.14872061334014522
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-g64",
+      "right": "W4-BRE-CONTROL-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.015625,
+      "pairStandardError": 0.09261465304331347,
+      "descriptiveNormal95": [
+        -0.1658997199648944,
+        0.1971497199648944
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-g64",
+      "right": "W4-BRE-CONTROL-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.109375,
+      "pairStandardError": 0.08829622844908684,
+      "descriptiveNormal95": [
+        -0.2824356077602102,
+        0.0636856077602102
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-g63",
+      "right": "W4-RESCUBIC-LR003-g63",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.015625,
+      "pairStandardError": 0.10574327697305394,
+      "descriptiveNormal95": [
+        -0.22288182286718572,
+        0.19163182286718572
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-g63",
+      "right": "W4-BRE-CONTROL-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.078125,
+      "pairStandardError": 0.10635717633678196,
+      "descriptiveNormal95": [
+        -0.13033506562009264,
+        0.28658506562009267
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-g63",
+      "right": "W4-BRE-CONTROL-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.046875,
+      "pairStandardError": 0.10261870666858618,
+      "descriptiveNormal95": [
+        -0.2480076650704289,
+        0.1542576650704289
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR003-g63",
+      "right": "W4-BRE-CONTROL-LR001-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": 0.09375,
+      "pairStandardError": 0.10673907047874581,
+      "descriptiveNormal95": [
+        -0.11545857813834179,
+        0.3029585781383418
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR003-g63",
+      "right": "W4-BRE-CONTROL-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.03125,
+      "pairStandardError": 0.10427078130201832,
+      "descriptiveNormal95": [
+        -0.2356207313519559,
+        0.1731207313519559
+      ]
+    },
+    {
+      "left": "W4-BRE-CONTROL-LR001-g64",
+      "right": "W4-BRE-CONTROL-LR003-g64",
+      "sharedCompletePairs": 16,
+      "scoreDifference": -0.125,
+      "pairStandardError": 0.125,
+      "descriptiveNormal95": [
+        -0.37,
+        0.12
+      ]
+    }
+  ],
+  "openingPrefixSensitivity": [
+    {
+      "plies": 4,
+      "uniquePrefixes": 8,
+      "largestGroup": 4
+    },
+    {
+      "plies": 8,
+      "uniquePrefixes": 15,
+      "largestGroup": 2
+    },
+    {
+      "plies": 12,
+      "uniquePrefixes": 16,
+      "largestGroup": 1
+    },
+    {
+      "plies": 16,
+      "uniquePrefixes": 16,
+      "largestGroup": 1
+    }
+  ],
+  "processReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-01.process.json",
+      "sha256": "cf4a25139245cc81da1a6a135084066ad12c9026d3dee9124b8203a01b581a2a",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T21:27:17.7946903Z",
+      "sampledPeakWorkingSetBytes": 603947008,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 165.3125,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 47584,
+      "startedUtc": "2026-10-20T21:24:37.5807888Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-02.process.json",
+      "sha256": "443e804f201eabebee05ee92f6b67b3d5b1f460cec8e5ca05bed4dfcc41c3d03",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T21:33:15.8942468Z",
+      "sampledPeakWorkingSetBytes": 598929408,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 192.640625,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 28712,
+      "startedUtc": "2026-10-20T21:30:07.5772967Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-03.process.json",
+      "sha256": "f4ea47189372a928fc571cdfd782399e0d7da3537fedc29ffbf80a7762f2ff9d",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T21:35:56.2358665Z",
+      "sampledPeakWorkingSetBytes": 601595904,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 163.421875,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 40208,
+      "startedUtc": "2026-10-20T21:33:16.0192090Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-04.process.json",
+      "sha256": "c5383c0483fa84091dd3a9268a2d49c83ef4f6922331799129e142eed5731ba0",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T21:39:07.5501728Z",
+      "sampledPeakWorkingSetBytes": 597737472,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 192.984375,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 16484,
+      "startedUtc": "2026-10-20T21:35:56.3360194Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-05.process.json",
+      "sha256": "6b2e4e8a8378363bc930dd79d6be4e45b5cd26b798922307dda08afa31f1bb32",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T21:44:43.5448322Z",
+      "sampledPeakWorkingSetBytes": 597532672,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 129.078125,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 4284,
+      "startedUtc": "2026-10-20T21:42:37.1811982Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-06.process.json",
+      "sha256": "931e8bd7e8bf0450e46e81f4254d1e6c599a57217caf1061b57e28d41884a2bb",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T21:46:59.0578039Z",
+      "sampledPeakWorkingSetBytes": 601493504,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 137.84375,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 29116,
+      "startedUtc": "2026-10-20T21:44:43.7024676Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-07.process.json",
+      "sha256": "a0332a1d989f8720b64d05ea6aa3bdf804decb3c3ca161fd538241e7bfedacaa",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T21:49:55.9035132Z",
+      "sampledPeakWorkingSetBytes": 597606400,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 182.3125,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 46316,
+      "startedUtc": "2026-10-20T21:46:59.1468058Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-08.process.json",
+      "sha256": "34a90a7ec3aabc3ce5ba28154bf3fe95997c224f834a4e6d3c9fb50ab0af4d76",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T21:52:50.9457194Z",
+      "sampledPeakWorkingSetBytes": 606453760,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 180.734375,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 47492,
+      "startedUtc": "2026-10-20T21:49:55.9963546Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-09.process.json",
+      "sha256": "61ebcaed77b1f4b9236f675fd63c8ec95b41343f6fa067e30dd3c593fb7bdf6a",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T21:57:24.4085954Z",
+      "sampledPeakWorkingSetBytes": 603389952,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 164.859375,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 14276,
+      "startedUtc": "2026-10-20T21:54:44.8580637Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-10.process.json",
+      "sha256": "223564d8a31f263dcb18432a7dada0b8479f1fcced5dab030ad5d58173097729",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T22:00:27.0194756Z",
+      "sampledPeakWorkingSetBytes": 601571328,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 186.453125,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 13940,
+      "startedUtc": "2026-10-20T21:57:24.5315979Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-11.process.json",
+      "sha256": "9c6e13848222fd48607b16a9685cc1d21121ae0b0229945e459b436995bc5868",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T22:03:13.0989762Z",
+      "sampledPeakWorkingSetBytes": 598253568,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 168.546875,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 47404,
+      "startedUtc": "2026-10-20T22:00:27.0944114Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-12.process.json",
+      "sha256": "e20c8da6bca7a0488f00155caf8124fe207791f799a2dbf572e3a81992f5d563",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T22:05:47.0771166Z",
+      "sampledPeakWorkingSetBytes": 605933568,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 157.375,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 50084,
+      "startedUtc": "2026-10-20T22:03:13.1792657Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-13.process.json",
+      "sha256": "8a8bb6d6b79a5f22eaa565030e391058801d5b9a8709d9de0e7ea33d091c78c1",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T22:09:49.3613473Z",
+      "sampledPeakWorkingSetBytes": 598515712,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 155.90625,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 49728,
+      "startedUtc": "2026-10-20T22:07:16.0798782Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-14.process.json",
+      "sha256": "9d54a5ee551aa6077d6a45feab7dd3a0576f7a1fc975c929836a1019ed95334d",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T22:12:37.2281450Z",
+      "sampledPeakWorkingSetBytes": 609169408,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 170.640625,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 1360,
+      "startedUtc": "2026-10-20T22:09:49.4797967Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-15.process.json",
+      "sha256": "528fe27e27bcf263193dccda84eced591dceb41b9008114efc71454b837c397a",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T22:15:08.1359822Z",
+      "sampledPeakWorkingSetBytes": 599273472,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 154.21875,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 38248,
+      "startedUtc": "2026-10-20T22:12:37.3083320Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-clock-16.process.json",
+      "sha256": "3e5108783661cc99eddace42f9b149f5173b225d291f22b52409035da14888e7",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "completedUtc": "2026-10-20T22:18:18.7982588Z",
+      "sampledPeakWorkingSetBytes": 600875008,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-trained-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 193.890625,
+      "plan": "docs/research/brn-successor-cglhw/wave4-primary-clock-plan.json",
+      "processId": 47836,
+      "startedUtc": "2026-10-20T22:15:08.2115395Z"
+    }
+  ],
+  "maximumSampledWorkingSetMiB": 580.94921875,
+  "totalEngineCpuSeconds": 2696.21875,
+  "limitations": [
+    "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims.",
+    "Paired differences on shared complete opening pairs against the same reference. Positive favours left. Descriptive, unadjusted, not direct head-to-head strength or architectural causation.",
+    "Fresh search/TT at identical opening roots; different evaluator-dependent trees. Clock protocols warm up; node protocols do not. Descriptive cost/behaviour, not causal latency or strength.",
+    "Move-prefix grouping is a descriptive dependence warning, not ECO/source-game classification or proof of independent opening families. Pair intervals are unadjusted.",
+    "No final strength claim, selection-adjusted confirmation, or architectural causation inferred."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "wave4-mask-runtime-v1",
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave4\\mask-runtime-01\\lib",
+  "createdUtc": "2026-10-20T22:19:43.351782+00:00",
+  "sourceCommit": "3656a8ee2c6792e9f788090bec2e80b3e732492f",
+  "uncommittedRuntimeSources": {
+    "research/src/main/java/com/ohinteractive/seedv6/tools/eval/BrnSuccessorMatch.java": "a2aa575c265e2f5c5c03ea042d158605d1d7c12ad0555bdbc0ceae91679ca70b",
+    "research/src/main/java/com/ohinteractive/seedv6/tools/eval/BrnCubicRankProbe.java": "f8461ae7791bdd4233c72d01a396636bb96229e8f74acb8933305ae141e93cb2",
+    "research/src/main/java/com/ohinteractive/seedv6/tools/eval/BrnGatedCacheProbe.java": "c7979943b57ac3199a2a6a79116d89431d19271dd4aff42235f724104e1e99d2"
+  },
+  "build": 51,
+  "jars": {
+    "engine-core.jar": "422657ad730ac0ae5a57a13a54ac151fdea9acc4c654a35a3bc61ccfbb6a82fe",
+    "engine-training.jar": "ec58521d7d7769729f4afd2a4db1bb63298a006c8e308b27aa6548c027878a64",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "c63307fdb98655ca24fb47dc9c05ecdd24e0546d60fa17f2572370788e9c0ee5",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "java": "C:/java/jdk-21/bin/java.exe",
+  "activeProcessors": 1,
+  "heapMiB": 768
+}

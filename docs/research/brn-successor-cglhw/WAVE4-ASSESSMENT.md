@@ -324,3 +324,50 @@ copies add about24-96KiB beside the retained model. See the packed plan/results 
 runtime. A same-run three-layout test is needed before selecting an implementation;
 that work is deferred until pruned quality justifies integration. No optimizer,
 serialized model, core search path or GUI distribution was changed.
+
+## Primary equal-time screen closed
+
+`wave4-primary-clock-results.json` closes the fixed192 games with26798 independently
+replayed legal moves. No failures, ply caps, incomplete/missing pairs or legal
+fallbacks. All16 bounded process receipts verify the same frozen original runtime,
+one worker/game, no ponder and BelowNormal priority; maximum sampled working set
+581MiB under the768MiB heap. No protocol extension or favorable-score stopping.
+
+All candidates below use half-change around frozen Gen32, with preselected GUI Best.
+
+| Candidate | W/D/L | Score | Descriptive paired95% interval | Median same-root NPS / Gen32 |
+| --- | --- | --- | --- | --- |
+| W4-RESGATE-LR001-g63 | 10/8/14 | 43.75% | 26.14-61.36% | 0.609 |
+| W4-RESGATE-LR003-g64 | 12/7/13 | 48.44% | 34.67-62.20% | 0.617 |
+| W4-RESCUBIC-LR001-g63 | 15/5/12 | 54.69% | 43.53-65.84% | 0.746 |
+| W4-RESCUBIC-LR003-g63 | 15/6/11 | 56.25% | 40.44-72.06% | 0.706 |
+| W4-BRE-CONTROL-LR001-g64 | 12/6/14 | 46.88% | 29.62-64.13% | 0.988 |
+| W4-BRE-CONTROL-LR003-g64 | 17/4/11 | 59.38% | 44.62-74.13% | 0.974 |
+
+Cubic retains encouraging point estimates under time, with substantial uncertainty;
+the faster BRE003 control is also encouraging and higher in this screen. Every
+interval includes50%. No architecture separation or superiority is established.
+The warmed same-opening measurements support a continuing throughput disadvantage,
+not the stale cold-node timing ratios. Evaluator-dependent trees still differ, so
+these are practical search observations, not a pure instruction-latency experiment.
+Do not pool node and clock scores or reuse these roots as independent confirmation.
+
+The admitted direct448-game programme is now active, starting with equal-node
+comparisons against BRE001. Both trained endpoint controls remain mandatory.
+A separate64-game rank4-versus-identical-rank16 function test is admitted at full
+and half scale on development roots17..32; exact plans and dependencies are in
+`wave4-pruned-admission.json`. This selection follows the fit-only mask and cost
+hypothesis, not pruning chess results. Runtime/loading support preserves all
+originals, binds retained components and effective hashes, and uses the existing
+dense cache. Thirteen targeted tests pass; both actual masked models pass6333-position
+and48 paired-search oracles with zero integer/search differences. Full masked
+payload hash exactly matches the earlier prediction diagnostic. No speed claim is
+attached to these games, and no production path has changed. The frozen mask runtime
+is distinct from the unchanged averaging runtime used by the448 direct games.
+
+The new compact summarizer verifies analysis/receipt/plan/model/runtime hashes and
+all bounded process records before closure. Its regression reproduced the completed
+288-game node accounting (35656 moves,24 process receipts). It does not infer
+selection-adjusted significance or acceptance. Original reports and raw evidence
+remain preserved. The earlier accidental UTF-8 display conversion in this Markdown
+was restored from the preceding committed bytes; research numbers were unchanged.
