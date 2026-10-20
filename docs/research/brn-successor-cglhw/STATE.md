@@ -5,7 +5,7 @@ with exact expected continuation and preserved starting payloads. Wave4 trained
 assessment is active; no programme success is claimed.** This remains the original
 CGLHW. Current evidence/protocol: [WAVE4-ASSESSMENT](WAVE4-ASSESSMENT.md).
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
-[completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md), and [current G4 training gate](WAVE4.md).
+[completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md), and [completed G4 training gate](WAVE4.md).
 
 Objective: statistically credible practical chess improvement over frozen BRE-Pair2
 Gen32 through useful additional expressiveness, with measured costs and compatible
@@ -104,7 +104,10 @@ Warm same-root NPS ratios: GATE.61-.62,CUBIC.71-.75,BRE.97-.99.
 Direct comparisons against both actual continued BRE endpoints are now active.
 Exact plans: `wave4-primary-node-plan.json`, `wave4-primary-clock-plan.json`;
 runtime: `wave4-trained-runtime.json`; evidence under `raw/wave4`.
-Resume only the active immutable plans/receipts, inspecting errors and batch limits;
+Before launch, inspect any existing BrnSuccessorMatch process and wait for it;
+never start a competing runner. The wrapper now also holds a worktree launch lease
+and rejects existing runner processes. Resume only the active immutable plans/receipts,
+inspecting errors and batch limits;
 never enlarge closed W3 protocols. Primary rate, Best/latest, inference cost and
 common-opponent differences are recorded; the focused direct controls and calibration
 diagnostics now test the unresolved architectural value. A fixed last-eight
@@ -119,20 +122,28 @@ full16 reproduction and independent prediction checks pass. The isolated sparse-
 prototype passes actual-model parity but only rank4/8 reduces transition cost;
 rank12/16 offers no gain. Defer integration pending pruned chess quality evidence.
 Packed-layout oracles also pass, but variable timing baselines leave its incremental
-benefit uncertain; no core/application path or pruning strength protocol has changed.
+benefit uncertain; no core/application path has changed. Pruned function matches
+are separately admitted below, using the existing dense cache.
 Fixed-window maturity comparison verifies GATE/BRE prediction improvement but
 CUBIC full CP degradation; half calibration partly offsets it. Extra generations
 are not automatically an improvement. See wave4-maturity-average-results.json.
 The prospective direct admission fixes448 follow-up games against both actual BRE
 Gen64 endpoints, all four residual means, additive means and full/half calibration
 on eight previously unused development roots. Primary-clock is complete/validated;
-resume direct-node-LR001 then LR003/full-node and both direct-clock plans, using
+Both half-change direct node plans are CLOSED (96games each;12992/13259 legal
+moves). GATE001 mean scores62.5/65.625% against BRE001/003; CUBIC00175/56.25%;
+GATE00359.375/43.75%; CUBIC00340.625/43.75%. Same-rate BRE means68.75/34.375%.
+Only eight pairs each; no expressive separation. The large opening-set reversal
+for BRE001/Gen32 triggered four exact orientation replays (595 moves), all passed
+and excluded from strength counts. See direct results and orientation records.
+Current active plan: direct-full-node; then pruned full/half node and both direct-clock
+plans. Use
 wave4-average-runtime.json. See wave4-direct-admission.json; fixed448-game budget.
 Also admitted:64 rank4-vs-rank16 node games, full/half, after13 tests and actual
 masked score/search oracles pass. Use wave4-pruned-admission.json and the separate
 wave4-mask-runtime.json; dense cache means no pruning speed claim. Do not mix
 runtimes or enlarge completed protocols. No favorable partial-score stopping.
-Primary protocols continue using frozen original jars. Fresh confirmation
+Closed primary protocols retain their original frozen jars. Fresh confirmation
 partition1 remains unused. No architecture decision or further training is inferred
 from loss or an initial equal-time defeat.
 
@@ -146,7 +157,8 @@ opening-family intervals. Full results: `wave3-primary-results.json`,
 `wave3-calibration-results.json`, `wave3-fair-control-node-results.json`,
 `wave3-clock-results.json`.
 
-The G4 pause sentinel may be removed after the new immutable plans are recorded.
+The verified G4 pause sentinel was preserved in raw/wave4/g4-completed-pause.txt
+and removed after admission; there is currently no research pause sentinel.
 Wave4 assessment is active; no autonomous training is admitted. Tournaments remain one game,
 one worker/engine,no pondering,64MiB TT,768MiB JVM,ActiveProcessorCount1,
 BelowNormal,12games/240seconds per batch, finishing the current game. No competing

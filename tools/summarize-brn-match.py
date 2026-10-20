@@ -5,6 +5,7 @@ Does not run engines, alter protocols, select candidates or claim confirmation.
 """
 import hashlib
 import json
+import math
 from pathlib import Path
 import sys
 
@@ -35,6 +36,14 @@ def summarize(plan_file, receipts, analysis_file, runtime_file, output):
     for model in analysis["models"]:
         assert model["validPairs"] == plan["pairs"]
         assert model["missingPairs"] == model["incompletePairs"] == 0
+        # Pair scores are bounded in [0,1]. Unlike the descriptive normal
+        # interval, this does not collapse when a tiny sample has zero variance.
+        # Coverage still requires independent opening-pair units; the book's
+        # shared prefixes do not establish that assumption.
+        for label, comparisons in (("boundedPair95", 1),
+                                   ("withinPlanSimultaneousBoundedPair95", len(analysis["models"]))):
+            radius = math.sqrt(math.log(2 * comparisons / .05) / (2 * model["validPairs"]))
+            model[label] = [max(0, model["score"] - radius), min(1, model["score"] + radius)]
     for name, expected in runtime["jars"].items():
         assert digest(Path(runtime["runtime"]) / name) == expected
     processes = []
@@ -63,6 +72,7 @@ def summarize(plan_file, receipts, analysis_file, runtime_file, output):
         totalEngineCpuSeconds=sum(p["cpuSeconds"] for p in processes),
         limitations=[analysis["statisticalLimit"], analysis["contrastLimit"], analysis["sameRootLimit"],
                      analysis.get("openingPrefixLimit"),
+                     "Hoeffding intervals assume independent bounded opening-pair scores; within-plan union bound covers only this plan, not prior candidate selection or repeated protocols. Independence remains unverified.",
                      "No final strength claim, selection-adjusted confirmation, or architectural causation inferred."])
     with output.open("x", encoding="utf-8", newline="\n") as stream:
         json.dump(report, stream, indent=2)

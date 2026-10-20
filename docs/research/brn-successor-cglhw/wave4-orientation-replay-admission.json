@@ -1,0 +1,8 @@
+{
+  "id": "wave4-orientation-replay-admission-v1",
+  "createdUtc": "2026-10-20T22:27:00.188579+00:00",
+  "question": "Does reversing reference/candidate labels and changing only research loading runtime reproduce the original deterministic fixed-node game?",
+  "trigger": "BRE001 scored40.625% vsGen32 on primary16roots but81.25% on new8roots (Gen32 candidate18.75%). Investigate identity/runtime/orientation before interpreting opening dependence.",
+  "identities": "Effective BRE001-half and frozenGen32 hashes exactly equal old bindings",
+  "scope": "Four correctness replays on firsttwo old roots, not new strength evidence. Compare all moves/scores/depth/nodes/FEN/results, excluding wall timing and label metadata. Fixed budget, original common search, no training."
+}

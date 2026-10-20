@@ -1,0 +1,17 @@
+{
+  "id": "wave4-runner-launch-guard-v1",
+  "createdUtc": "2026-10-20T22:30:26.761176+00:00",
+  "source": "tools\\run-brn-successor-batch.ps1",
+  "sourceSha256": "f31bac670c6ae7e91c4845330dba6a48945d0b760a115ce58788a77151434fe1",
+  "change": "Exclusive worktree file lease plus existing Java-match process detection before plan loading/launch. Catches cooperating races and orphaned runner after shell interruption. New process records capture launcher hash at entry.",
+  "verification": "PowerShell syntax parsed; with exactly one actual active runner, a nonexistent-plan invocation was rejected by the active-runner guard before plan loading; same sole process preserved. No second engine launched. Normal next bounded invocation still pending observation.",
+  "scope": "Supervisor safety only; immutable engine runtimes/plans/arguments, game budgets and search unchanged. Pre-existing process records without launcher hash remain unchanged; do not infer missing historical field.",
+  "normalLaunchVerification": {
+    "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-node-LR003-07.process.json",
+    "sha256": "fedd1f4b65924ff4e9a5325264dae0345dd3cea4f1ac9268801b99f44fa6a7cb",
+    "exitCode": 0,
+    "launcherHashMatched": true,
+    "oneGameOneWorkerVerified": true,
+    "scope": "Normal later invocation completed after guard rejection, demonstrating lease release and unchanged engine launch."
+  }
+}

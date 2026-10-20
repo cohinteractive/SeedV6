@@ -5,7 +5,21 @@ param(
     [Parameter(Mandatory=$true)][string]$LogPrefix
 )
 $ErrorActionPreference='Stop'
+$launcherSha256=(Get-FileHash -LiteralPath $PSCommandPath -Algorithm SHA256).Hash.ToLowerInvariant()
 # One bounded runner invocation. No loop, training, cleanup, or store writes.
+# A worktree lease prevents cooperating launches racing. The process check also
+# catches a runner left alive after its supervising shell was interrupted.
+$leaseDirectory=Join-Path $PWD 'build/research'
+[IO.Directory]::CreateDirectory($leaseDirectory) | Out-Null
+$lease=[IO.File]::Open((Join-Path $leaseDirectory 'brn-successor-batch.lock'),
+    [IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None)
+try {
+$active=@(Get-CimInstance Win32_Process -Filter "Name='java.exe'" | Where-Object {
+    $_.CommandLine -and $_.CommandLine.Contains('com.ohinteractive.seedv6.tools.eval.BrnSuccessorMatch')
+})
+if ($active.Count -ne 0) {
+    throw 'An existing BRN successor match runner is active; preserve it and wait before another launch.'
+}
 if (Test-Path -LiteralPath 'build/research/brn-successor-batches.pause') {
     throw 'Research batches intentionally paused before launch; preserve receipts and resume with a new log prefix.'
 }
@@ -48,7 +62,11 @@ $record=@{
     processId=$process.Id; exitCode=$process.ExitCode; cpuSeconds=$process.TotalProcessorTime.TotalSeconds;
     sampledPeakWorkingSetBytes=$peakWorkingSet; plan=$Plan; runtimeManifest=$RuntimeManifest;
     heapMiB=768; activeProcessors=1; priority='BelowNormal'; concurrentGames=1; workersPerEngine=1; pondering=$false
+    launcherSha256=$launcherSha256
 }
 $record | ConvertTo-Json | Set-Content -LiteralPath ($LogPrefix+'.process.json') -Encoding UTF8
 if ($process.ExitCode -ne 0) { throw "Research batch failed: $($process.ExitCode). See $LogPrefix.stderr" }
 Get-Content -LiteralPath ($LogPrefix+'.stdout') -Tail 2
+} finally {
+    $lease.Dispose()
+}

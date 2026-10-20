@@ -1,0 +1,64 @@
+{
+  "id": "wave4-orientation-replay-v1",
+  "models": [
+    {
+      "name": "W4-BRE-CONTROL-LR001-g64-half",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g64",
+      "checkpoint": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+      "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+      "correctionScale": 0.5
+    },
+    {
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/Gen32",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "name": "Gen32"
+    }
+  ],
+  "pairs": 2,
+  "seed": 2026102104,
+  "nodes": 32768,
+  "moveMillis": 0,
+  "maximumPlies": 512,
+  "batchGames": 4,
+  "batchSeconds": 240,
+  "openingMoves": [
+    [
+      "e2e4",
+      "c7c6",
+      "d2d4",
+      "d7d5",
+      "b1c3",
+      "d5e4",
+      "c3e4",
+      "c8f5",
+      "e4g3",
+      "f5g6",
+      "g1h3",
+      "e7e6",
+      "h3f4",
+      "f8e7",
+      "f1c4",
+      "e7f6"
+    ],
+    [
+      "e2e4",
+      "e7e5",
+      "g1f3",
+      "b8c6",
+      "f1b5",
+      "a7a6",
+      "b5a4",
+      "g8f6",
+      "e1g1",
+      "f8e7",
+      "c2c3",
+      "b7b5",
+      "a4c2",
+      "d7d6",
+      "h2h3",
+      "c8e6"
+    ]
+  ],
+  "legalFallback": false
+}

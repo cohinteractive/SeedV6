@@ -371,3 +371,50 @@ all bounded process records before closure. Its regression reproduced the comple
 selection-adjusted significance or acceptance. Original reports and raw evidence
 remain preserved. The earlier accidental UTF-8 display conversion in this Markdown
 was restored from the preceding committed bytes; research numbers were unchanged.
+
+## Direct half-change node screens closed
+
+Both fixed96-game control screens complete with no failures/caps/incomplete pairs;
+12992 moves against BRE001 and13259 against BRE003 were independently replayed.
+All candidates here are fixed-window means at half change, except frozen Gen32.
+Each entry has only eight colour-reversed opening pairs; these are diagnostic scores.
+
+| Candidate | Score vs BRE001 endpoint | Score vs BRE003 endpoint |
+| --- | --- | --- |
+| W4-RESGATE-LR001-average8-half | 62.50% | 65.62% |
+| W4-RESGATE-LR003-average8-half | 59.38% | 43.75% |
+| W4-RESCUBIC-LR001-average8-half | 75.00% | 56.25% |
+| W4-RESCUBIC-LR003-average8-half | 40.62% | 43.75% |
+| Same-rate BRE mean | 68.75% | 34.375% |
+| Frozen Gen32 | 18.75% | 46.875% |
+
+Averaging is not universally beneficial: the low-rate additive mean improves its
+endpoint comparison, while the high-rate mean loses to its endpoint here. Both
+residual low-rate means have encouraging node point estimates, but there is no
+credible expressive separation. Normal intervals are descriptive; the compact
+summaries also provide conservative bounded-pair Hoeffding intervals and a within-
+plan union bound. These require independent opening-pair units, still unverified;
+they do not account for all prior candidate selection or protocol repetitions.
+The old primary reports are preserved. No final significance claim follows.
+
+The change in BRE001 versus Gen32 (40.625% on the primary16 roots,81.25% on the
+new8 roots) prompted a focused integrity check before further interpretation.
+Effective model hashes match. Four original games, with reference/candidate roles
+reversed under the averaging loader, reproduce all595 moves, scores, depths, nodes,
+FENs and terminations exactly; only wall timing and labels differ. The orientation
+replay plan/results preserve this check and are excluded from new strength counts.
+No orientation/loading defect was found; opening selection remains a material
+source of small-screen variation. Do not pool the screens into a confirmation claim.
+
+To protect restartability during long bounded programmes, the existing PowerShell
+launcher now holds an exclusive worktree lease and refuses a live BRN match process,
+including one orphaned by a shell interruption. A safe nonexistent-plan check was
+rejected before plan loading while the same sole runner stayed alive. A later normal
+batch completed under the guard with its launcher hash recorded. Exact evidence:
+`wave4-runner-guard-validation.json`. Engine jars, arguments and frozen protocols
+are unchanged. Older process receipts without this new field remain unchanged.
+
+Next: finish the64 full-scale node comparisons, the64 pruned function comparisons,
+and both96-game direct clock plans. Interpret full/half, smoothing and component
+value jointly with both additive controls and measured costs before selecting the
+next implementation/training question. No further training gate is yet admitted.

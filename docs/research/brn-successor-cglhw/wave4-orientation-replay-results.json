@@ -1,0 +1,40 @@
+{
+  "id": "wave4-orientation-replay-results-v1",
+  "runtime": "wave4-average-runtime.json",
+  "checks": [
+    {
+      "original": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-node\\p000-m8-c1.json",
+      "originalSha256": "4c428c9ddebe0f6ee0c683d0c08e04fd8d3acebeb431f17f226244f7b4a4c383",
+      "replay": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\orientation-replay\\p000-m1-c0.json",
+      "replaySha256": "d8cd6fd7d39a2b46b8051192b7e8089231a307c884e705387b0e3cf27993cb71",
+      "moves": 157,
+      "allNonTimingMoveFieldsAndResultIdentical": true
+    },
+    {
+      "original": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-node\\p000-m8-c0.json",
+      "originalSha256": "182ee25864a688b0b560f889277e547d5344d2d4e4b42485eac516547ad8ef69",
+      "replay": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\orientation-replay\\p000-m1-c1.json",
+      "replaySha256": "ad4b590e84668cc3e05eff1d5739b9d728288f619480fec674e0ad2aae48a408",
+      "moves": 174,
+      "allNonTimingMoveFieldsAndResultIdentical": true
+    },
+    {
+      "original": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-node\\p001-m8-c1.json",
+      "originalSha256": "b6a9408701c057d9500b7b9837d6e058d1cd8b93a803c1e3527f7da5b53ce000",
+      "replay": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\orientation-replay\\p001-m1-c0.json",
+      "replaySha256": "442544f722a2d0a7dd8be0a7a119af17cbf1446934911b469e813fd8b32fb5c6",
+      "moves": 162,
+      "allNonTimingMoveFieldsAndResultIdentical": true
+    },
+    {
+      "original": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\primary-node\\p001-m8-c0.json",
+      "originalSha256": "7afd18d98b18c7f7099c972960eb07902f3fa02beefd87ed6ed32d00f3a6ba09",
+      "replay": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\orientation-replay\\p001-m1-c1.json",
+      "replaySha256": "f96f3bed2e9e29fb89348a22dd2a7374cbe24d6b43f3fe52b31f23beab386f50",
+      "moves": 102,
+      "allNonTimingMoveFieldsAndResultIdentical": true
+    }
+  ],
+  "moves": 595,
+  "conclusion": "Four games exactly reproduce all non-timing move fields/results after reference/candidate reversal. Effective checkpoint hashes match original bindings. No evidence of orientation or loading-runtime defect; different opening selection remains an important source of screen variation. These are correctness replays, not additional independent strength games."
+}
