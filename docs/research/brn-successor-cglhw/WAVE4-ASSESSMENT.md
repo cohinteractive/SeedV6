@@ -505,3 +505,32 @@ Exact evidence and the initial PowerShell stderr-handling limitation are recorde
 in wave4-hybrid-implementation-validation.json. This core addition warrants build52;
 actual trained-model oracles/cost and legal-play readiness still precede any hybrid
 strength admission. No GUI availability or native package verification is inferred.
+
+
+## Actual hybrid readiness
+
+Frozen build52 runtime583310e reproduces all eight hybrid predictions and two
+zero-correction controls on4096 rows/model. Maximum discrepancy from the separately
+frozen component algebra is3.56e-15; independent CE agrees within1.23e-15.
+Every composition passes6333-position full/delta and fresh-cache integer oracles,
+with maximum raw discrepancy5.33e-15, plus48 paired32768-node searches. The two
+zero-correction controls additionally reproduce their actual continued BRE base
+searches exactly. No source checkpoint, optimizer or codec is changed.
+
+Within-run transition ratios for hybrid versus the corresponding Gen32-based
+residual range0.978..1.055. This avoids a second evaluator call; it does not prove
+zero overhead, and it retains the residual's substantial cost relative to ordinary
+BRE. Candidate primitive memory remains852080 bytes for GATE and904400 for CUBIC,
+with6341/4329-byte workspaces, excluding headers/loading temporaries and the shared
+resident Gen32 construction resource. Model-component hashes and function identity
+are explicit in wave4-hybrid-readiness.json and its frozen runtime manifest.
+
+The first1024-node legal smoke stopped without a completed iteration on a tactical
+position in its third game; two prior intentional8-ply caps and the failed attempt
+remain preserved. A separate plan uses the already verified32768-node budget:
+all16 eight-ply games replay independently (128 legal plies), with matching hybrid
+bindings and16 intentional administrative caps. No fallback or engine correction
+was introduced. All smoke receipts, including the failed setup, are excluded from
+strength statistics. This is readiness for development games, not strength or GUI
+adoption. A new strength admission must remain distinct from the unchanged
+build51 clocks and BRE calibration protocols still being completed.

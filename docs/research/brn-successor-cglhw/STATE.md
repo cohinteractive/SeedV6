@@ -241,3 +241,17 @@ Before any architectural superiority claim, also finish the newly admitted64 BRE
 full-versus-half calibration games (both rates, nodes/time), after the pending
 clock screens. See wave4-bre-scale-admission.json. Earlier W3 preference and W4
 prediction loss do not establish the strongest W4 BRE chess calibration.
+
+
+Hybrid actual readiness is now complete: wave4-hybrid-readiness.json binds eight
+compositions and two zero controls, each6333-position/48-search oracles, plus
+4096-row algebra/CE reproduction and128 independently verified legal smoke plies.
+The initial1024-node smoke failure is preserved; its separate32768-node replacement
+passed with16 intentional caps, all excluded from strength. Frozen runtime:
+wave4-hybrid-runtime.json, source583310e/build52. Observed transition cost is near
+the original residual, not BRE. No hybrid strength protocol is yet admitted.
+Continue direct-clock-LR003 (currently batches01..04), then its remaining batches,
+selected full-clock and BRE full/half controls. Use the original frozen averaging
+runtime for those plans, never the hybrid runtime. Then choose a bounded hybrid
+comparison that retains both additive controls and an expressive-value ablation.
+No new human action or training gate is yet required.
