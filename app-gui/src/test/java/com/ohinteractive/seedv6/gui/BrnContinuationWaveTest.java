@@ -160,6 +160,11 @@ class BrnContinuationWaveTest {
                     assertEquals(32,((Number)BrnResidualWaveTest.named(frame,"trainingGenerations",javax.swing.JSpinner.class).getValue()).longValue());
                     assertEquals(128,((Number)BrnResidualWaveTest.named(frame,"trainingMinibatch",javax.swing.JSpinner.class).getValue()).intValue());
                     assertEquals(8,((Number)BrnResidualWaveTest.named(frame,"trainingEpochs",javax.swing.JSpinner.class).getValue()).intValue());
+                    assertEquals(selected.settings().corpusTraining().positionsPerGeneration(),
+                            ((Number)BrnResidualWaveTest.named(frame,"brnCorpusPositions",javax.swing.JSpinner.class).getValue()).intValue());
+                    assertEquals(selected.settings().seed(),
+                            Long.parseLong(BrnResidualWaveTest.named(frame,"trainingSeed",javax.swing.JTextField.class).getText()));
+                    assertEquals(1,((Number)BrnResidualWaveTest.named(frame,"trainingThreads",javax.swing.JSpinner.class).getValue()).intValue());
                     assertEquals(ValidationMethod.HELD_OUT,BrnResidualWaveTest.named(frame,"trainingValidationMethod",javax.swing.JComboBox.class).getSelectedItem());
                     String summary=BrnResidualWaveTest.named(frame,"trainingLineageSummary",javax.swing.JTextArea.class).getText();
                     assertTrue(summary.contains(entry.candidate()));assertTrue(summary.contains("Gen 32 (Starting checkpoint)"));assertFalse(summary.contains("unfinished"));
@@ -167,6 +172,11 @@ class BrnContinuationWaveTest {
                     var image=new java.awt.image.BufferedImage(frame.getWidth(),frame.getHeight(),java.awt.image.BufferedImage.TYPE_INT_RGB);
                     var graphics=image.createGraphics();frame.paintAll(graphics);graphics.dispose();
                     javax.imageio.ImageIO.write(image,"png",output.resolve(entry.candidate()+(ownerReport==null?"-fixture.png":"-owner.png")).toFile());
+                    if(ownerReport!=null) {
+                        BrnResidualWaveTest.named(frame,"trainingViews",javax.swing.JTabbedPane.class).setSelectedIndex(2);
+                        frame.validate();graphics=image.createGraphics();frame.paintAll(graphics);graphics.dispose();
+                        javax.imageio.ImageIO.write(image,"png",output.resolve(entry.candidate()+"-owner-recipe.png").toFile());
+                    }
                     return null;
                 });
             } finally {

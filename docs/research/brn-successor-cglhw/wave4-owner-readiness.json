@@ -1,0 +1,375 @@
+{
+  "id": "wave4-owner-readiness-v1",
+  "verifiedUtc": "2026-10-20T14:57:09.018049+00:00",
+  "status": "Ready for blocking G4 human training; no new owner training performed",
+  "plan": "wave4-continuation-plan.json",
+  "planSha256": "614d92671241f9ed1086516b0bf8c8eab570c3cb0c250b7062d6fc7d42dcaab7",
+  "preparationReport": "docs/research/brn-successor-cglhw/raw/wave4/owner-preparation-01.json",
+  "preparationReportSha256": "0a822b06f738667734156fc0b45e02c8be0921d0feea46a4fde479effe89d555",
+  "sourcePreservation": {
+    "before": "docs/research/brn-successor-cglhw/raw/wave3/wave4-sources-before-01.json",
+    "beforeSha256": "f26500c195fbf17ad0b946af432e87cc048106f59b33e4c80d493a805e9fe969",
+    "unchangedFiles": 691,
+    "scopeCorrection": "The before-inventory excludes training-data, which is the acquisition directory (not scratch, contrary to its initial scope string). All included checkpoint/history/settings/reference/session/lock files are unchanged. Source cursors/sources/configuration are separately verified against hashes bound during preparation and the copied destinations. Seek/selection archives were not independently inventoried before preparation."
+  },
+  "nativeVerification": {
+    "xml": "docs/research/brn-successor-cglhw/raw/wave4/owner-native-gui-02.xml",
+    "xmlSha256": "694cd85294b5ccd40f6552ac157fe2c04d77006785cfc34066a16752b8aed849",
+    "tests": 1,
+    "configurations": 6,
+    "failures": 0,
+    "trainingStarted": false,
+    "controls": "Actual names and startingGen32; rates.001/.003, inherit-rate unchecked,128batch,8epochs,131072positions,seed1,oneworker,32additional,heldoutWDL,Start enabled.",
+    "visualInspection": "Actual GATE LR001, CUBIC LR003, BRE LR001 recipe screenshots and GATE LR001 lineage/provenance screenshot inspected; all12 screenshots preserved.",
+    "failedAttempt": "owner-native-gui-01.xml/log: new test incorrectly looked for seed as JSpinner; actual control is JTextField. Fixture assertion fixed; no production code or training change."
+  },
+  "referenceVerification": "Independent SmallRecord v1 magic/version/kind/payload-length/SHA-256 and ASCII ID/evidence parsing; both actual references equal the bootstrap. Initial read-only audit incorrectly assumed text references, stopped before writes, then corrected to inspected binary format.",
+  "screenshots": {
+    "docs/research/brn-successor-cglhw/raw/wave4/native-owner-02/W4-RESGATE-LR001-owner.png": "c28fcd84f57a6e4f3e59e2fe5a0d90c8c83a9d4ce9675f071090e17808b71a09",
+    "docs/research/brn-successor-cglhw/raw/wave4/native-owner-02/W4-RESGATE-LR001-owner-recipe.png": "29f67ff4209246cacaa1352692b9854c4795480a710ab89b00694a3a211b2c84",
+    "docs/research/brn-successor-cglhw/raw/wave4/native-owner-02/W4-RESGATE-LR003-owner.png": "df80473d2b90fcfee4e07c34917a47d14459e5aff9a0f12fdd56b75b6476d2dd",
+    "docs/research/brn-successor-cglhw/raw/wave4/native-owner-02/W4-RESGATE-LR003-owner-recipe.png": "6a80758341cbd5e6793288fcab4934a50b50e6dd7f616ca6de11b87de4551fd0",
+    "docs/research/brn-successor-cglhw/raw/wave4/native-owner-02/W4-RESCUBIC-LR001-owner.png": "10210c61ea28e4369c8a293027dbcb66964f0f7cf1b737f2757d627251b46eef",
+    "docs/research/brn-successor-cglhw/raw/wave4/native-owner-02/W4-RESCUBIC-LR001-owner-recipe.png": "77909f5382f641228c5069fa756e86912bf9cb90470245ab1b555fcd0e38537f",
+    "docs/research/brn-successor-cglhw/raw/wave4/native-owner-02/W4-RESCUBIC-LR003-owner.png": "e3346e880e725e000cd54648c3ef9d9191b2e22e5b1fe978a9ca867ec43863c9",
+    "docs/research/brn-successor-cglhw/raw/wave4/native-owner-02/W4-RESCUBIC-LR003-owner-recipe.png": "55e9a15ef3b7f203c02fe86c04c0b034703faadac0faef93c28af8133b798859",
+    "docs/research/brn-successor-cglhw/raw/wave4/native-owner-02/W4-BRE-CONTROL-LR001-owner.png": "8193674694c7b9b051140873f2dcb86e1c641d3caed13b69a164e486495ff06f",
+    "docs/research/brn-successor-cglhw/raw/wave4/native-owner-02/W4-BRE-CONTROL-LR001-owner-recipe.png": "4d4e66fe57e31f80b67c66c42e3b6611707d33ac96beec75a9004ed26f08e140",
+    "docs/research/brn-successor-cglhw/raw/wave4/native-owner-02/W4-BRE-CONTROL-LR003-owner.png": "bfc927f58d53e2c70f33052636da050df2fc2907a8fd3da1d8d13a4af24324b9",
+    "docs/research/brn-successor-cglhw/raw/wave4/native-owner-02/W4-BRE-CONTROL-LR003-owner-recipe.png": "953067993853a74e2ef5def59610158b6c4ff575b858f0b0e9768df6adce5a02"
+  },
+  "entries": [
+    {
+      "candidate": "W4-RESGATE-LR001",
+      "architecture": "BRN_GEN32_GATED",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\9d2412de-8563-35f3-b520-ef41e610a098",
+      "lineageId": "9d2412de-8563-35f3-b520-ef41e610a098",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave4",
+        "source": {
+          "candidate": "RESGATE",
+          "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\e6b6775d-39cd-392b-bd18-5e964a445f62",
+          "checkpoint": "g000032-s000262144-92921536d7dd4929661cdef6992b6cc5e7089edfcd09b36c646f84f4cd5d94b0",
+          "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+          "trainingSha256": "9fa47b99b2349c20ca0c79a35ae007086ecab9acbb8c9b9cf18d4ecfa223a26d",
+          "generation": 32,
+          "seed": 1,
+          "positionsPerGeneration": 131072,
+          "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+        },
+        "ledgerSha256": "3a351f09981a8e87a64ee2f264d09ed6038a0224b8af591662148fdc96351b1b",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d",
+        "inheritedStep": 262144,
+        "requestedRate": 0.001
+      },
+      "latest": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d",
+      "latestGeneration": 32,
+      "recipe": {
+        "learningRate": 0.001,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "additionalGenerations": 32,
+      "sourceOffsets": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 9712391,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 9248035
+      },
+      "partition": "brn-next-geometry-sha256-8train-1validation-1sealed-v1",
+      "best": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d",
+      "historyRecords": 0,
+      "trainingSession": null,
+      "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+      "trainingSha256": "9fa47b99b2349c20ca0c79a35ae007086ecab9acbb8c9b9cf18d4ecfa223a26d",
+      "sourceMetadataHashes": {
+        "cursors.json": "3a351f09981a8e87a64ee2f264d09ed6038a0224b8af591662148fdc96351b1b",
+        "sources.json": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "configuration.json": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      }
+    },
+    {
+      "candidate": "W4-RESGATE-LR003",
+      "architecture": "BRN_GEN32_GATED",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\77dad574-34c1-3639-b827-0127fcab4fb2",
+      "lineageId": "77dad574-34c1-3639-b827-0127fcab4fb2",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave4",
+        "source": {
+          "candidate": "RESGATE",
+          "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\e6b6775d-39cd-392b-bd18-5e964a445f62",
+          "checkpoint": "g000032-s000262144-92921536d7dd4929661cdef6992b6cc5e7089edfcd09b36c646f84f4cd5d94b0",
+          "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+          "trainingSha256": "9fa47b99b2349c20ca0c79a35ae007086ecab9acbb8c9b9cf18d4ecfa223a26d",
+          "generation": 32,
+          "seed": 1,
+          "positionsPerGeneration": 131072,
+          "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+        },
+        "ledgerSha256": "3a351f09981a8e87a64ee2f264d09ed6038a0224b8af591662148fdc96351b1b",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d",
+        "inheritedStep": 262144,
+        "requestedRate": 0.003
+      },
+      "latest": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d",
+      "latestGeneration": 32,
+      "recipe": {
+        "learningRate": 0.003,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "additionalGenerations": 32,
+      "sourceOffsets": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 9712391,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 9248035
+      },
+      "partition": "brn-next-geometry-sha256-8train-1validation-1sealed-v1",
+      "best": "g000032-s000262144-4457e31ace76db048cc216f0cd667eebd47dbadb19d84a6ac356381cdd60d79d",
+      "historyRecords": 0,
+      "trainingSession": null,
+      "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+      "trainingSha256": "9fa47b99b2349c20ca0c79a35ae007086ecab9acbb8c9b9cf18d4ecfa223a26d",
+      "sourceMetadataHashes": {
+        "cursors.json": "3a351f09981a8e87a64ee2f264d09ed6038a0224b8af591662148fdc96351b1b",
+        "sources.json": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "configuration.json": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      }
+    },
+    {
+      "candidate": "W4-RESCUBIC-LR001",
+      "architecture": "BRN_GEN32_CUBIC",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\4e693253-bfdd-38b1-b8e2-be30ac620568",
+      "lineageId": "4e693253-bfdd-38b1-b8e2-be30ac620568",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave4",
+        "source": {
+          "candidate": "RESCUBIC",
+          "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\22b42be6-15c4-3f36-a376-3776aa1931f2",
+          "checkpoint": "g000032-s000262144-41d911c124b545bc293252c7a75361f45ddd386bd600e9e64523d0fce5516197",
+          "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+          "trainingSha256": "137685439f0447dec59f15071dbd5227e1f9865a1376ff2c348d8cd36ba953df",
+          "generation": 32,
+          "seed": 1,
+          "positionsPerGeneration": 131072,
+          "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+        },
+        "ledgerSha256": "7b61a9c0ba381b74e3890119f453203e32c4805159fe3b7de6dafa7d4a1f30ea",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf",
+        "inheritedStep": 262144,
+        "requestedRate": 0.001
+      },
+      "latest": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf",
+      "latestGeneration": 32,
+      "recipe": {
+        "learningRate": 0.001,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "additionalGenerations": 32,
+      "sourceOffsets": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 9712391,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 9248035
+      },
+      "partition": "brn-next-geometry-sha256-8train-1validation-1sealed-v1",
+      "best": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf",
+      "historyRecords": 0,
+      "trainingSession": null,
+      "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+      "trainingSha256": "137685439f0447dec59f15071dbd5227e1f9865a1376ff2c348d8cd36ba953df",
+      "sourceMetadataHashes": {
+        "cursors.json": "7b61a9c0ba381b74e3890119f453203e32c4805159fe3b7de6dafa7d4a1f30ea",
+        "sources.json": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "configuration.json": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      }
+    },
+    {
+      "candidate": "W4-RESCUBIC-LR003",
+      "architecture": "BRN_GEN32_CUBIC",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\6b995953-5bc1-3b7b-bae2-eaf7a5377d9a",
+      "lineageId": "6b995953-5bc1-3b7b-bae2-eaf7a5377d9a",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave4",
+        "source": {
+          "candidate": "RESCUBIC",
+          "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\22b42be6-15c4-3f36-a376-3776aa1931f2",
+          "checkpoint": "g000032-s000262144-41d911c124b545bc293252c7a75361f45ddd386bd600e9e64523d0fce5516197",
+          "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+          "trainingSha256": "137685439f0447dec59f15071dbd5227e1f9865a1376ff2c348d8cd36ba953df",
+          "generation": 32,
+          "seed": 1,
+          "positionsPerGeneration": 131072,
+          "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+        },
+        "ledgerSha256": "7b61a9c0ba381b74e3890119f453203e32c4805159fe3b7de6dafa7d4a1f30ea",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf",
+        "inheritedStep": 262144,
+        "requestedRate": 0.003
+      },
+      "latest": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf",
+      "latestGeneration": 32,
+      "recipe": {
+        "learningRate": 0.003,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "additionalGenerations": 32,
+      "sourceOffsets": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 9712391,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 9248035
+      },
+      "partition": "brn-next-geometry-sha256-8train-1validation-1sealed-v1",
+      "best": "g000032-s000262144-ef776dd3be64ec7b477a67b0912f94a1924fb01b7052a5d35ca0615607ec5fbf",
+      "historyRecords": 0,
+      "trainingSession": null,
+      "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+      "trainingSha256": "137685439f0447dec59f15071dbd5227e1f9865a1376ff2c348d8cd36ba953df",
+      "sourceMetadataHashes": {
+        "cursors.json": "7b61a9c0ba381b74e3890119f453203e32c4805159fe3b7de6dafa7d4a1f30ea",
+        "sources.json": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "configuration.json": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      }
+    },
+    {
+      "candidate": "W4-BRE-CONTROL-LR001",
+      "architecture": "BRN_PAIR2",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\d1a2e220-c1a0-3953-ad2c-2e001af93e7d",
+      "lineageId": "d1a2e220-c1a0-3953-ad2c-2e001af93e7d",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave4",
+        "source": {
+          "candidate": "BRE-CONTROL",
+          "root": "E:\\SeedV6-Networks\\BRN-Pair2\\ed0750a3-3163-3979-9f26-2e466c49c771",
+          "checkpoint": "g000032-s002015232-cf5efb1b0aa45f997cad7b362d7417679ba1e70ea6741a71d8bf65470ba52f3c",
+          "networkSha256": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0",
+          "trainingSha256": "b839898fc4ae3824118df95e62d3ef3dbf548d0cd60b5b29dd84691fe1783f89",
+          "generation": 32,
+          "seed": 1,
+          "positionsPerGeneration": 131072,
+          "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+        },
+        "ledgerSha256": "10540445b21c357c2fddb8ae85e74277a532c523278891760df9f3ec26d219f7",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+        "inheritedStep": 2015232,
+        "requestedRate": 0.001
+      },
+      "latest": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+      "latestGeneration": 32,
+      "recipe": {
+        "learningRate": 0.001,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "additionalGenerations": 32,
+      "sourceOffsets": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 3209073,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 3110674
+      },
+      "partition": "Existing Pair2 sequential train/validation acquisition",
+      "best": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+      "historyRecords": 0,
+      "trainingSession": null,
+      "networkSha256": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0",
+      "trainingSha256": "b839898fc4ae3824118df95e62d3ef3dbf548d0cd60b5b29dd84691fe1783f89",
+      "sourceMetadataHashes": {
+        "cursors.json": "10540445b21c357c2fddb8ae85e74277a532c523278891760df9f3ec26d219f7",
+        "sources.json": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "configuration.json": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      }
+    },
+    {
+      "candidate": "W4-BRE-CONTROL-LR003",
+      "architecture": "BRN_PAIR2",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\819e0f58-6726-3479-8709-bfa7079ad2d0",
+      "lineageId": "819e0f58-6726-3479-8709-bfa7079ad2d0",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave4",
+        "source": {
+          "candidate": "BRE-CONTROL",
+          "root": "E:\\SeedV6-Networks\\BRN-Pair2\\ed0750a3-3163-3979-9f26-2e466c49c771",
+          "checkpoint": "g000032-s002015232-cf5efb1b0aa45f997cad7b362d7417679ba1e70ea6741a71d8bf65470ba52f3c",
+          "networkSha256": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0",
+          "trainingSha256": "b839898fc4ae3824118df95e62d3ef3dbf548d0cd60b5b29dd84691fe1783f89",
+          "generation": 32,
+          "seed": 1,
+          "positionsPerGeneration": 131072,
+          "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+        },
+        "ledgerSha256": "10540445b21c357c2fddb8ae85e74277a532c523278891760df9f3ec26d219f7",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+        "inheritedStep": 2015232,
+        "requestedRate": 0.003
+      },
+      "latest": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+      "latestGeneration": 32,
+      "recipe": {
+        "learningRate": 0.003,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "additionalGenerations": 32,
+      "sourceOffsets": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 3209073,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 3110674
+      },
+      "partition": "Existing Pair2 sequential train/validation acquisition",
+      "best": "g000032-s002015232-80ac891e51e69142ed7d4922541c6ab9308da9a2c917af0b186eedcd1e31e233",
+      "historyRecords": 0,
+      "trainingSession": null,
+      "networkSha256": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0",
+      "trainingSha256": "b839898fc4ae3824118df95e62d3ef3dbf548d0cd60b5b29dd84691fe1783f89",
+      "sourceMetadataHashes": {
+        "cursors.json": "10540445b21c357c2fddb8ae85e74277a532c523278891760df9f3ec26d219f7",
+        "sources.json": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "configuration.json": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      }
+    }
+  ],
+  "applicationBuild": 50,
+  "factoryRuntimeJars": {
+    "app-gui.jar": "c152370c8a61cd5b388e19430c45dcf82789b2fd0a084ddc3624eb8a4e864a22",
+    "app-uci.jar": "7e903f8bdfdd487f1be9d7187628a39916d4e98e4cb174668570a7003ebecb7d",
+    "app.jar": "03a2c6280e333cb98730de5c0db22184596d243eebc2a8b9242a7e5800a29372",
+    "checker-qual-3.42.0.jar": "ccaedd33af0b7894d9f2f3b644f4d19e43928e32902e61ac4d10777830f5aac7",
+    "engine-core.jar": "631abd8c7fbcdff54831c91bb8ab3fc95ac58e43e9d882fa9b40b2afd420d2a9",
+    "engine-training.jar": "96e3557f89e9f4d0d181cf3db9a9dd8298ce40979dfb1c60d72d1e2cb84772d6",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "failureaccess-1.0.2.jar": "8a8f81cf9b359e3f6dfa691a1e776985c061ef2f223c9b2c80753e1b458e8064",
+    "flatlaf-3.7.jar": "1dc4f08cc0e01122f5bc6cebe1dcf253872c1fe8126208f43dab314d7deb0da2",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "guava-33.2.1-jre.jar": "452b2d9787b7d366fa8cf5ed9a1c40404542d05effa7a598da03bbbbb76d9f31",
+    "jna-5.17.0.jar": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0",
+    "jna-platform-5.17.0.jar": "b7e3d46c87bad2eb409b0e704916bcd81206168e357312dfddd0e253679cd9e0",
+    "jsr305-3.0.2.jar": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+    "listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "frozenGen32Sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+  "expectedAdditionalExposurePerArm": {
+    "generations": 32,
+    "trainingPositions": 4194304,
+    "validationPositions": 1048576,
+    "trainingVisits": 33554432,
+    "updates": 262144
+  },
+  "expectedFinalGeneration": 64,
+  "expectedFinalSteps": {
+    "residual": 524288,
+    "BRE": 2277376
+  },
+  "limitations": [
+    "No substantive training or post-G4 strength evidence yet.",
+    "Equal rate-arm data within family; cross-family source partitions/cursors and lifetime optimizer histories still differ.",
+    "Initial inherited exposure is linked to original W3 history; new GUI history correctly shows0 completed generations."
+  ]
+}

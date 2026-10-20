@@ -36,7 +36,7 @@
       "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
     }
   ],
-  "status": "Preparation only; do not execute owner-library creation before clock-evidence reconciliation.",
+  "status": "Admitted after completed Wave3 clock reconciliation; create separate owner lineages and verify native GUI readiness before G4. No autonomous substantive training.",
   "rates": [
     0.001,
     0.003

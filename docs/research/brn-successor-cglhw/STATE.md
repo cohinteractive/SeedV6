@@ -1,9 +1,10 @@
 # BRN successor workstream state
 
-Updated21 October2026. **Human training gate G3 is verified complete. Trained Wave3 assessment is active.
+Updated21 October2026. **G3 and its admitted Wave3 assessment are complete.
+G4 is ready: human GUI training is blocking the next research decision.
 No programme success is claimed.** This remains the original CGLHW.
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
-[completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md), and [continuation preparation](WAVE4.md).
+[completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md), and [current G4 training gate](WAVE4.md).
 
 Objective: statistically credible practical chess improvement over frozen BRE-Pair2
 Gen32 through useful additional expressiveness, with measured costs and compatible
@@ -20,9 +21,12 @@ search. Architectural complexity or lower validation loss alone is insufficient.
 | W3-RESGATE | BRN-GEN32-GATED/e6b6775d-39cd-392b-bd18-5e964a445f62, latest/Best32, frozen Gen32 plus trained gated correction |
 | W3-RESCUBIC | BRN-GEN32-CUBIC/22b42be6-15c4-3f36-a376-3776aa1931f2, latest32/Best31, frozen Gen32 plus trained cubic correction |
 | W3-BRE-CONTROL | BRN-Pair2/ed0750a3-3163-3979-9f26-2e466c49c771, latest/Best32,262144 added updates from exact Gen32 clone |
+| W4-RESGATE-LR001 / LR003 | Two exact W3 latest32 continuations, untrained in these new roots; G4 ready |
+| W4-RESCUBIC-LR001 / LR003 | Two exact W3 latest32 continuations, untrained in these new roots; Best31 source preserved |
+| W4-BRE-CONTROL-LR001 / LR003 | Two exact W3 latest32 continuations with inherited Adam state; G4 ready |
 
 All managed roots are under E:/SeedV6-Networks. Exact checkpoint IDs, hashes and
-sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`, `wave3-trained-checkpoints.json`. Frozen reference
+sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`, `wave3-trained-checkpoints.json`, `wave4-owner-readiness.json`. Frozen reference
 network SHA256 is `5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7`.
 Original lineages/campaigns/checkpoints remain preserved. W1 human training is verified
 complete for investigation; it does not establish competitive maturity. Never resume
@@ -56,127 +60,119 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
    correction; compare with continued BRE. Verified zero-head score/search parity,
    gradients, codecs/base binding, GUI, corpus continuation, actual-owner smoke.
    Initial cached search costs2.11x(GATE)/1.68x(CUBIC) Gen32: substantial risk, not
-   evidence of practical efficiency. G3 is now verified complete; trained costs and strength are being assessed.
-7. **Current after G3.** Actual exposures/endpoints verified; trained parity passes.
-   Half correction improves development prediction and equal-node strength on the
-   first screen. GATE's conditional ablation supports useful signal; cubic-term
-   value is unestablished. Equal-time gains remain unproved. Additive shrinkage also
-   helps prediction, so fresh controls and a longer clock are next. Independent confirmation requires
-   fresh opening clusters and predeclared error/multiplicity/stopping rules.
-8. **Deferred.** Further calibration/normalization, selective feature/attack/blocker
+   evidence of practical efficiency. G3 and all admitted assessment protocols are now complete.
+7. **Trained Wave3 findings.** Exact exposures/endpoints and trained parity verified.
+   Half correction improves development prediction; additive shrinkage also helps.
+   Fresh equal-node scores against continued full BRE: half-GATE57.8125%,
+   half-CUBIC56.25%, half-BRE58.59375%; no expressive separation.
+   At200ms versus frozen Gen32, faster half-GATE44.53125%, faster half-CUBIC
+   46.09375%, half-BRE53.125%. All descriptive intervals include50%.
+   GATE conditional ablation supports useful signal; cubic-term chess value remains
+   unestablished. Guarded caches reduce controlled search cost26.8%/17.5%, but
+   same-root node ratios still trail Gen32 (.631/.711). No positive confirmation
+   candidate is ready. Details/negative findings: WAVE3-ASSESSMENT and manifests.
+8. **G4 admitted.** Exact-state .001/.003 continuation in six new GUI lineages
+   tests rate versus additional exposure, retaining both expressive families and
+   additive controls. Bounded optimizer diagnostics support this intervention;
+   they do not establish an optimal rate or guarantee improvement. Training is
+   the next missing discriminating evidence. See WAVE4 for exact settings/gate.
+9. **Deferred.** Further calibration/normalization, selective feature/attack/blocker
    formulations, more efficient corrections, distillation or new architecture remain
    options if evidence warrants. Do not mechanically exhaust old architecture lists
    or prematurely reject W1; no credible direction has been declared exhausted.
 
 ## Current action and exact resume point
 
-**Human actions required after this prompt: None currently.** G3 completion is
-verified from all three histories/sessions/checkpoint chains, not inferred from
-this invocation.32 generations each,262144 additional updates,matching requested
-recipe. All99 initial/intermediate/latest/Best W3 payloads remain available.
-RESCUBIC Best31 differs from latest32. Frozen identities and settings are in
-`wave3-trained-checkpoints.json`; full audit in `raw/wave3/trained-audit-01`.
+**Human actions required after this prompt: Blocking: perform G4 GUI training in
+all six prepared W4 lineages and report completion or failure.** This blocks
+trained-W4 comparison and the next architecture/strength decision. No other human
+action is required. Do not infer completion from a later invocation.
 
-The four primary development plans are complete:320 games,41622 independently
-replayed moves,no failed/capped games. Two first-iteration legal fallbacks (one each
-engine) occurred in a single CUBIC-vs-control clock game and remain included.
-See `wave3-primary-results.json` and WAVE3-ASSESSMENT for all results/uncertainty.
-Against Gen32, GATE45.31% nodes/26.56% time, CUBIC46.88%/42.19%, continued BRE56.25%/48.44%.
-Against continued BRE, CUBIC71.88% nodes/56.25% time; small reused samples do not
-establish an architectural ranking or programme success.
+Read [WAVE4](WAVE4.md) and `wave4-owner-readiness.json`. All six actual lineages
+were created and verified, including native GUI controls and screenshots. They
+start at accepted generation32 with exact W3 latest32 weights/Adam state and copied
+source progress. New bootstrap IDs differ from original W3 IDs; do not infer them
+from generation labels. Latest and Best both currently point to their bootstrap.
+The GUI correctly reports0 newly completed generations and next33. No training
+session/history has been created in these roots.
 
-The cache cost revision is verified and committed at0583989/build47, after the
-research audit/screen commit5c06d70. Balanced timings found modest whole-search
-savings (~4.7% GATE/~3.0% CUBIC), not elimination of the cost gap. Fourteen core tests
-and actual trained/variant oracles pass; primary runtime remains frozen unchanged.
+Each requires32 additional generations through64, one lineage at a time: LR001
+uses.001, LR003 uses.003; batch128,8epochs,seed1,one worker,131072 training positions,
+held-out WDL, existing half BT4/half CP selection. Leave inherited-rate checkbox
+unchecked. Full prerequisites, resume arithmetic, preservation and evidence
+requirements are in WAVE4; do not manually recreate/import these lineages.
 
-The calibration/ablation follow-up is complete:320 games,43240 independently
-replayed moves,no failures/caps/fallbacks. `wave3-calibration-results.json` and
-`wave3-variant-runtime.json` preserve it. Half-GATE71.875% nodes/35.9375% time,
-half-CUBIC64.0625%/45.3125%,CUBICBest31 54.6875%/48.4375% vsGen32.
-Unscaled optimized GATE51.5625%/CUBIC32.8125% at50ms. Short-clock rerun changes
-cannot be assigned solely to the small cache speedup. Constant half-GATE37.5%
-vs full half-GATE; quadratic-only half-CUBIC51.5625% vs full half-CUBIC.
-All five variant cache oracles passed6333 positions and48 exact search comparisons.
+After the owner reports readiness:
+1. Inspect current Git/governance and local evidence; verify actual histories,
+   sessions, latest/Best IDs, immutable origins, steps, settings and cursor ranges.
+   Expected new generations33..64,262144 added updates/arm. Expected final steps
+   524288 for residuals and2277376 for BRE. Early stops remain explicit.
+2. Freeze actual selected endpoints separately from live lineages. Check parity,
+   calibration and learning trajectories; compare .001 versus .003 within family.
+   Do not silently substitute Best, reset Adam or ignore missing controls.
+3. Admit the next bounded development protocols only after those checks. Compare
+   against frozen Gen32 and appropriately continued BRE, including calibration
+   controls, fixed nodes/time, cost and nonlinear ablations where useful. Research
+   delta caches remain explicit paths; GUI Arena timing is not a decisive gate.
+4. If a positive practical case emerges, predeclare genuinely independent
+   confirmation with opening dependence, candidate selection, multiplicity and
+   stopping handled. Reserved confirmation partition1 remains unused. Otherwise
+   adapt the same frontier using evidence; no fixed wave limit or automatic rejection.
 
-The12-arm actual-GUI-loop order diagnostic also completed:192 updates/arm, no
-saved models. Source-order sensitivity exists, particularly in continued BRE,
-but no consistent residual-specific ordering defect is established. Production
-ordering remains unchanged. The compiled half-change BRE control passed12360
-actual-weight comparisons with zero integer differences and retains ordinary
-single-table cost. Eight research variant tests pass. See WAVE3-ASSESSMENT.
+All admitted W3 protocols are closed:1152 strength-screen games and153189
+independently replayed moves. Primary320, calibration320, fresh-node192 and fresh
+clock/delta320. No failures/caps/missing pairs; the primary short-clock study's two
+legal fallbacks remain included and documented. Never pool reused roots or
+chronologically separate runtimes as independent confirmation. The32 fresh roots
+share some early prefixes; pair intervals are descriptive, not verified independent
+opening-family intervals. Full results: `wave3-primary-results.json`,
+`wave3-calibration-results.json`, `wave3-fair-control-node-results.json`,
+`wave3-clock-results.json`.
 
-Fresh-development status:
-- `wave3-fair-control-node-plan.json` is complete192games/24063 independently
-  replayed moves, no failures/caps/missing pairs. Half-GATE57.8125%, half-CUBIC56.25%,
-  half-BRE58.59375% against continued full BRE; all descriptive intervals include50%.
-  No expressive separation established. `wave3-fair-control-node-results.json`.
-- `wave3-longer-clock-plan.json` remains active/incomplete, original192-game target,
-  reference Gen32,200ms/move, same32 fresh development roots. Use unchanged
-  `wave3-fair-control-runtime.json` (15e2ba4/build47) and `raw/wave3/longer-clock`.
-- `wave3-gate-delta-clock-plan.json` is admitted64games on the same roots/200ms,
-  faster half-GATE vsGen32. Use separate `wave3-gate-delta-runtime.json`
-  (b765a7f/build48), output `raw/wave3/gate-delta-clock`. Two-game legal smoke
-  independently replayed16moves; intentional eight-ply caps excluded from strength.
-Never mix runtimes/receipts or substitute code in an existing plan. No optional
-extension or independent-confirmation claim. One game/worker,768MiB/64MiB TT,
-BelowNormal,12games/240seconds per invocation, completing the current game.
+No tournament, probe or autonomous training is running or queued. The owned
+`build/research/brn-successor-batches.pause` sentinel prevents accidental batch
+admission during G4. Remove it only when new evidence/plans justify resumed games;
+never resume or enlarge a closed W3 protocol. Future tournaments remain one game,
+one worker/engine,no pondering,64MiB TT,768MiB JVM,ActiveProcessorCount1,
+BelowNormal,12games/240seconds per batch, finishing the current game. No competing
+heavy jobs or substantive Codex training.
 
-GATE guarded delta cache is verified:6333 actual positions,48 full/cache search
-pairs per balanced run, all integer/search results equal; warmed search time
-falls26.8%. See `wave3-gate-delta-guarded-results.json`. Explicit research factory
-only; ordinary model loading unchanged. A CUBIC delta prototype then passed25143
-comparisons and approximately halved transition cost. Its guarded integration passes25 selected tests and eight balanced runs of6333
-positions/48 full-cache search pairs, all old/new integer/search results equal.
-Warmed search time falls17.5%; worker primitive storage10162->4329bytes. See
-`wave3-cubic-delta-guarded-results.json`. Admit the separate64-game
-`wave3-cubic-delta-clock-plan.json` after clean runtime freeze and legal smoke.
+## Evidence, limitations and provenance
 
-Exact current action: CUBIC delta committed atcfae34d/build49, separately frozen in
-`wave3-cubic-delta-runtime.json`; two-game/16-move legal smoke passed independent
-replay (intentional eight-ply caps excluded). Tournament admission is resumed,
-serially finishing longer-clock192, GATE delta64, CUBIC delta64. Resume04 log
-prefixes may already exist: inspect active processes/receipts and choose unique
-prefixes. No simultaneous heavy work; use the owned pause sentinel at a batch
-boundary before tests/builds. Investigate any `.failed` before continuation.
-Independently replay completed protocols. Exact-state GUI continuation preparation is verified on isolated fixtures
-(13 passing tests, including six native GUI configurations). See WAVE4 and
-`wave4-preparation-results.json`. No owner-library fork or human training gate
-until clock evidence reconciliation. Resume05 prefixes are the next planned set.
+All99 W3 initial/intermediate endpoints remain preserved; CUBIC Best31 differs from
+latest32. G3 used32 generations/262144 added updates per family. Original source
+progress started at zero and overlaps Gen32 history. Hybrid stable geometry splits
+and raw cursors differ from BRE sequential holdout; equal counts are not identical
+data or effective optimization. W4 copies each family's existing state, matching
+its two rate arms while retaining those cross-family confounds.
 
-Source progress started at zero and overlaps Gen32 history. Hybrid stable-layout
-splits differ from BRE sequential holdout; residual tranches match each other,
-not the control. Same counts are not identical data/effective optimization.
-Continued BRE inherited1753088 Adam updates; corrections started without moments.
+Actual owner readiness verifies691 original checkpoint/history/settings/reference/
+session/lock files unchanged, plus source cursor/selection/configuration hashes
+separately bound during preparation. See the scope correction in WAVE4/readiness:
+the inventory excluded the acquisition directory, not scratch. Frozen Gen32's
+bundled SHA remains exact. No W1/W3/frozen model was overwritten or trained.
 
-## Restart and provenance
+Correctness evidence includes gradients, codecs, exact continuation and actual-model
+cache/search parity. GATE/CUBIC guarded delta caches each passed eight balanced
+6333-position/48-search runs with zero integer/search differences. These empirical
+and conservative numerical checks are not a universal floating-point proof.
+Thirteen continuation-preparation tests passed earlier; the final owner-native test
+passes all six actual configurations with twelve preserved screenshots. Seven
+independent match-analysis tests pass. Failed fixture/audit assumptions are retained
+and explained; no production training defect was inferred from them.
 
-All admitted Wave2 games and Wave3 correctness/initial-cost/smoke jobs are complete;
-the primary trained-W3 screen and bounded optimizer study are complete. No autonomous training is queued. Keep one game,one worker/engine,
-no pondering,64MiB TT,768MiB JVM,ActiveProcessorCount1,BelowNormal for future screens;
-no simultaneous heavy jobs or substantial training by Codex.
+This G3 assessment root began clean at87008af/build46. Runtime changes are committed
+through31b6d49/build50: material reuse0583989/build47, GATE delta b765a7f/build48,
+CUBIC delta cfae34d/build49, exact-state continuation31b6d49/build50. Frozen clock
+runtimes separately bind15e2ba4/build47, b765a7f/build48 and cfae34d/build49.
+Later analysis and readiness changes are tooling/tests/reports and do not bump the
+application. Inspect Git for the closing handoff commit. No push, deployment,
+production-default replacement, finalizer or root journal creation. Root
+CODEXLOG_CURRENT.md was absent; VERSION_STATE remains build50.
 
-Raw evidence is local-only under `raw/wave1`, `raw/wave2`, `raw/wave3` and module
-build directories; a fresh checkout does not contain it. Check availability before
-analysis. Frozen runtimes/receipts/plans retain original outcomes including failures.
-The first Wave3 cache probe failed a raw-bitwise history assertion; the recorded
-retry found only inherited BRE rounding (~8e-15), zero integer differences and exact
-full/cache/reference search equality. Do not silently reinterpret the failed attempt.
-
-This continuation started clean at2334760/build42. Subsequent coherent commits added
-research controls/caches through build45. Wave3's qualifying implementation includes
-build46 in the same closing commit; inspect Git to establish that boundary. Earlier
-Wave1 chronology remains in WAVE1 and Git. No finalizer, root journal creation,
-production-default replacement, push or deployment. Repository-root
-CODEXLOG_CURRENT.md was absent. Finished turn, implementation readiness and accepted
-workstream outcome remain distinct; owner acceptance/success are not established.
-
-
-
-Continuation preparation is committed at31b6d49/build50, with13 passing tests and
-successful application runtime assembly. No real W4 lineages exist yet. The owned
-pause sentinel has been removed and resume05 batches are running serially from
-59/192 longer-clock games, followed by64 GATE-delta and64 CUBIC-delta games.
-Check actual counts/processes before any new invocation. No other heavy jobs;
-no owner training is queued. Finish and independently replay these fixed studies
-before choosing confirmation, more diagnosis or the prepared human continuation.
+Raw evidence is local-only under raw/wave1..wave4 and module build paths; a fresh
+checkout lacks it. Verify availability before analysis. Compact tracked manifests
+bind local reports, exact configurations, hashes and limitations. Preserve all
+negative/failed/frozen evidence. A completed turn or implementation is not programme
+success, adoption or user acceptance. The next admissible dependent action is
+verification of evidenced G4 training completion, not another unchanged W3 match.

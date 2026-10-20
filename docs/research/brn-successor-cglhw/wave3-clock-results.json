@@ -1,0 +1,706 @@
+{
+  "id": "wave3-fresh-clock-results-v1",
+  "completedUtc": "2026-10-20T14:48:44.764867+00:00",
+  "games": 320,
+  "validatedMoves": 44264,
+  "failures": 0,
+  "caps": 0,
+  "missingPairs": 0,
+  "fallbacks": 0,
+  "analysisScriptSha256": "8fea59bca64d57bc53b5345586aa14357fb5468b5232b03bd8370b9e9ed99e05",
+  "studies": [
+    {
+      "study": "longer-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave3-longer-clock-plan.json",
+      "planSha256": "1614205301f6e2b60978073b4f9d0e9c2bbbe52120208a3cb36768617e1085bf",
+      "runtimeManifest": "wave3-fair-control-runtime.json",
+      "analysis": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-analysis.json",
+      "analysisSha256": "62d757d8e3d4540681974e7b5f731220745076efac30bea47b55894bb30fa17e",
+      "validatedMoves": 26544,
+      "models": [
+        {
+          "name": "RESGATE32-half",
+          "wins": 21,
+          "draws": 13,
+          "losses": 30,
+          "validPairs": 32,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.4296875,
+          "pairStandardError": 0.05293118702122414,
+          "descriptiveNormal95": [
+            0.3259423734384007,
+            0.5334326265615993
+          ],
+          "pairScores": [
+            0.5,
+            0.75,
+            0.5,
+            0.0,
+            0.25,
+            0.25,
+            0.5,
+            0.0,
+            0.5,
+            1.0,
+            0.25,
+            0.5,
+            0.5,
+            0.25,
+            1.0,
+            1.0,
+            0.5,
+            1.0,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.5,
+            0.25,
+            0.25,
+            0.0,
+            0.5,
+            0.5,
+            0.75
+          ]
+        },
+        {
+          "name": "RESCUBIC32-half",
+          "wins": 18,
+          "draws": 18,
+          "losses": 28,
+          "validPairs": 32,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.421875,
+          "pairStandardError": 0.055491639700164776,
+          "descriptiveNormal95": [
+            0.31311138618767703,
+            0.5306386138123229
+          ],
+          "pairScores": [
+            0.5,
+            0.25,
+            0.75,
+            0.25,
+            0.75,
+            0.25,
+            1.0,
+            0.25,
+            0.25,
+            1.0,
+            0.25,
+            0.5,
+            1.0,
+            0.75,
+            0.25,
+            0.0,
+            0.0,
+            0.75,
+            0.0,
+            0.25,
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.0,
+            0.25,
+            1.0,
+            0.0,
+            0.5,
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        {
+          "name": "BRE-CONTROL32-half",
+          "wins": 26,
+          "draws": 16,
+          "losses": 22,
+          "validPairs": 32,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.53125,
+          "pairStandardError": 0.051133817955533865,
+          "descriptiveNormal95": [
+            0.4310277168071536,
+            0.6314722831928463
+          ],
+          "pairScores": [
+            0.25,
+            0.25,
+            0.25,
+            0.5,
+            0.5,
+            0.5,
+            0.75,
+            0.25,
+            0.5,
+            0.75,
+            0.0,
+            0.25,
+            0.25,
+            0.75,
+            0.5,
+            0.25,
+            1.0,
+            0.25,
+            0.0,
+            0.5,
+            0.75,
+            0.5,
+            0.5,
+            0.5,
+            1.0,
+            1.0,
+            0.75,
+            0.5,
+            0.5,
+            0.75,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "RESGATE32-half",
+          "usablePairedRoots": 32,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 19,
+          "meanDepthDifference": -0.75,
+          "lessEqualMoreDepth": [
+            23,
+            9,
+            0
+          ],
+          "medianNodeRatio": 0.4724092645790453,
+          "medianElapsedRatio": 1.0000289945454148,
+          "medianNpsRatio": 0.47243471636639317
+        },
+        {
+          "name": "RESCUBIC32-half",
+          "usablePairedRoots": 32,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 20,
+          "meanDepthDifference": -0.4375,
+          "lessEqualMoreDepth": [
+            14,
+            18,
+            0
+          ],
+          "medianNodeRatio": 0.5782489158284262,
+          "medianElapsedRatio": 1.0000399897584566,
+          "medianNpsRatio": 0.5782234957929686
+        },
+        {
+          "name": "BRE-CONTROL32-half",
+          "usablePairedRoots": 32,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 20,
+          "meanDepthDifference": 0.03125,
+          "lessEqualMoreDepth": [
+            2,
+            27,
+            3
+          ],
+          "medianNodeRatio": 0.9944855572277953,
+          "medianElapsedRatio": 1.0000302432436348,
+          "medianNpsRatio": 0.9944652119162676
+        }
+      ],
+      "commonOpponentContrasts": [
+        {
+          "left": "RESGATE32-half",
+          "right": "RESCUBIC32-half",
+          "sharedCompletePairs": 32,
+          "scoreDifference": 0.0078125,
+          "pairStandardError": 0.07486915249259656,
+          "descriptiveNormal95": [
+            -0.13893103888548924,
+            0.15455603888548924
+          ]
+        },
+        {
+          "left": "RESGATE32-half",
+          "right": "BRE-CONTROL32-half",
+          "sharedCompletePairs": 32,
+          "scoreDifference": -0.1015625,
+          "pairStandardError": 0.07087032310193442,
+          "descriptiveNormal95": [
+            -0.24046833327979145,
+            0.037343333279791446
+          ]
+        },
+        {
+          "left": "RESCUBIC32-half",
+          "right": "BRE-CONTROL32-half",
+          "sharedCompletePairs": 32,
+          "scoreDifference": -0.109375,
+          "pairStandardError": 0.0760821625856526,
+          "descriptiveNormal95": [
+            -0.25849603866787907,
+            0.0397460386678791
+          ]
+        }
+      ],
+      "terminations": {
+        "WHITE_CHECKMATES_BLACK": 86,
+        "INSUFFICIENT_MATERIAL": 21,
+        "THREEFOLD_REPETITION": 12,
+        "BLACK_CHECKMATES_WHITE": 59,
+        "FIFTY_MOVE_RULE": 14
+      },
+      "telemetry": {
+        "RESGATE32-half": {
+          "moves": 4294,
+          "nodes": 759027993,
+          "elapsedNanos": 830097358700,
+          "sumDepth": 41482,
+          "fallbacks": 0,
+          "maximumMoveNanos": 200626400
+        },
+        "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304": {
+          "moves": 13279,
+          "nodes": 5037741760,
+          "elapsedNanos": 2569362938900,
+          "sumDepth": 137658,
+          "fallbacks": 0,
+          "maximumMoveNanos": 259260500
+        },
+        "RESCUBIC32-half": {
+          "moves": 4628,
+          "nodes": 1093932930,
+          "elapsedNanos": 897577684900,
+          "sumDepth": 45625,
+          "fallbacks": 0,
+          "maximumMoveNanos": 200771900
+        },
+        "BRE-CONTROL32-half": {
+          "moves": 4343,
+          "nodes": 1635144828,
+          "elapsedNanos": 840056192900,
+          "sumDepth": 44824,
+          "fallbacks": 0,
+          "maximumMoveNanos": 200460500
+        }
+      },
+      "effectiveModels": [
+        {
+          "name": "Gen32",
+          "effectiveNetworkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+        },
+        {
+          "name": "RESGATE32-half",
+          "effectiveNetworkSha256": "a3aa161246fbf2d4af081e4b6f51964ba81345a02069329d27d3ea2156b82ec2"
+        },
+        {
+          "name": "RESCUBIC32-half",
+          "effectiveNetworkSha256": "02f603153ef005444e55d509cc1b0b29b9b76e75a8fdc43bb51fd6b53e064c33"
+        },
+        {
+          "name": "BRE-CONTROL32-half",
+          "effectiveNetworkSha256": "e43b238e40fc889121e0bc9ec67b53c269666b571f416d73b96424091c0d1794"
+        }
+      ],
+      "processSummary": {
+        "completedBatches": 21,
+        "cpuSeconds": 5283.21875,
+        "maximumSampledWorkingSetBytes": 611766272,
+        "receipts": [
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-b01.process.json",
+            "sha256": "1aa17a34fad26237823bb0ba4f90011cd24f0da752c49799514444a33958fff9"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-b02.process.json",
+            "sha256": "5d160b7593314da95bdbb7639fd99d402a64de0b805509e652478a5d2826713e"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-b03.process.json",
+            "sha256": "e4cfbb39931b29b6c7315dda1b90b571001c45534d6aad2d743a87d526ea8722"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume03-b001.process.json",
+            "sha256": "b800dcbc4c67a3d792e190c6f86090b2717343d805489e75a4f4f7e500b30187"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume04-b001.process.json",
+            "sha256": "ff43ca3b1fb4300f9841a3ef4fbcd39eee50bb08bea4bbc14f5c3fae080a2a59"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume04-b002.process.json",
+            "sha256": "ba44c1c8dd6e9cfc066b4ac3914bf35f7da8f34ece83cea74d0e3496f14f20a7"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b001.process.json",
+            "sha256": "08b9f3b08d9580a96e3c51fd0b75fe3d88e798a4f3596ae015aec089135aa329"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b002.process.json",
+            "sha256": "8f488e1731ec7b36b7a7427fed7e0e860abaf55a2be43905d88f8666c169d1ca"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b003.process.json",
+            "sha256": "7afa132a047f39588fb2e177a0a48e166f12d111311fccc00f8b5f00f4a1b361"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b004.process.json",
+            "sha256": "090d48405d8e95afbcf621e1efc3f53826d750444efc1b4019b90ee5fa814076"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b005.process.json",
+            "sha256": "07f6f58eb1ad0a6857c47aaec6a795c8697c6a4120e603a08258b0dc6505c37a"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b006.process.json",
+            "sha256": "3624c843d85226901988b1d502fcf2815f6d3563e1c737e7fdb1f59a3a740b6b"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b007.process.json",
+            "sha256": "23dbf507eceb717ecf33df3e1ce969b2a5444d86b85e95aa3e7b56c3669bd2db"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b008.process.json",
+            "sha256": "4d77bfe2f8b96637fba5e233b22cc59f05fb8998f31ec641dd1cce340d13ac4f"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b009.process.json",
+            "sha256": "a00a496c9eb2164b5b881e7316cf34aefe59fa16bf8f733484b01da3245c9853"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b010.process.json",
+            "sha256": "738b898db491db0f482781b2d2490e3e55c660865fe4a89ee431e5cbdc418509"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b011.process.json",
+            "sha256": "88bf7b1f4a2e5a3ea1a504deb5f4b1f77ab667d436c4b700b38ce1c5ce36ea2b"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b012.process.json",
+            "sha256": "7046f36b95992bd4ad7854215e7d8dfca6506e65449462b61672327b603310c1"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b013.process.json",
+            "sha256": "93f9c3c59585f706e1926b4793dcb8c767b8325c5f7857317bd7ea310c9b28bf"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b014.process.json",
+            "sha256": "5f1c17bd30b59cbc54d9eedf65fa69def0d6c01c64c331ad9ff37f76db884858"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/longer-clock-resume05-b015.process.json",
+            "sha256": "a70cabc3f89860e9be22ce9707836db5958acd39dacfadc8a026d8bd12d67309"
+          }
+        ]
+      }
+    },
+    {
+      "study": "gate-delta-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave3-gate-delta-clock-plan.json",
+      "planSha256": "c09b4d33b04d1855a884dbf45cf2289faabd539fcd2b028e9e6d59078c298305",
+      "runtimeManifest": "wave3-gate-delta-runtime.json",
+      "analysis": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-clock-analysis.json",
+      "analysisSha256": "a72da94e06b8d5f2fb9cb26b6a7ca2287ae815094f0df03b5570a2a7de9b083b",
+      "validatedMoves": 8639,
+      "models": [
+        {
+          "name": "RESGATE32-half",
+          "wins": 23,
+          "draws": 11,
+          "losses": 30,
+          "validPairs": 32,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.4453125,
+          "pairStandardError": 0.047272341481602385,
+          "descriptiveNormal95": [
+            0.3526587106960593,
+            0.5379662893039406
+          ],
+          "pairScores": [
+            1.0,
+            0.25,
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.75,
+            0.5,
+            0.75,
+            0.0,
+            0.5,
+            0.5,
+            0.75,
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.0,
+            0.5,
+            0.0,
+            0.25,
+            0.0,
+            0.5,
+            0.0,
+            0.75,
+            0.75,
+            0.5,
+            0.0,
+            0.25,
+            0.75,
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "RESGATE32-half",
+          "usablePairedRoots": 32,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 21,
+          "meanDepthDifference": -0.40625,
+          "lessEqualMoreDepth": [
+            13,
+            19,
+            0
+          ],
+          "medianNodeRatio": 0.6313263842329717,
+          "medianElapsedRatio": 1.00002149099028,
+          "medianNpsRatio": 0.6312877190053501
+        }
+      ],
+      "commonOpponentContrasts": [],
+      "terminations": {
+        "WHITE_CHECKMATES_BLACK": 26,
+        "BLACK_CHECKMATES_WHITE": 27,
+        "THREEFOLD_REPETITION": 6,
+        "INSUFFICIENT_MATERIAL": 2,
+        "FIFTY_MOVE_RULE": 3
+      },
+      "telemetry": {
+        "RESGATE32-half": {
+          "moves": 4318,
+          "nodes": 1029307060,
+          "elapsedNanos": 833357421397,
+          "sumDepth": 43611,
+          "fallbacks": 0,
+          "maximumMoveNanos": 200590100
+        },
+        "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304": {
+          "moves": 4321,
+          "nodes": 1640299049,
+          "elapsedNanos": 834036968900,
+          "sumDepth": 45598,
+          "fallbacks": 0,
+          "maximumMoveNanos": 200230800
+        }
+      },
+      "effectiveModels": [
+        {
+          "name": "Gen32",
+          "effectiveNetworkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+        },
+        {
+          "name": "RESGATE32-half",
+          "effectiveNetworkSha256": "a3aa161246fbf2d4af081e4b6f51964ba81345a02069329d27d3ea2156b82ec2"
+        }
+      ],
+      "processSummary": {
+        "completedBatches": 7,
+        "cpuSeconds": 1713.625,
+        "maximumSampledWorkingSetBytes": 610574336,
+        "receipts": [
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-clock-resume05-b001.process.json",
+            "sha256": "7cce850843bc9b3496036d63f53573561d680507cc4c89a7730706a2c05afb24"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-clock-resume05-b002.process.json",
+            "sha256": "0fbfafabbcf8e73c5e1847588aed2835fcc22ae73755a1f8c95b3c627947b519"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-clock-resume05-b003.process.json",
+            "sha256": "2226ce32647515d658671db334730e8b2e5fb358233e187252151ec94b9e0713"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-clock-resume05-b004.process.json",
+            "sha256": "18dde192da9321e68229cc9164acdce26105def5826f26041a850aa15d340652"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-clock-resume05-b005.process.json",
+            "sha256": "1c7b1e5bdbe2e70c2df1001f08d31c41c4154773d4d16c15ad43ef3cc0f07b65"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-clock-resume05-b006.process.json",
+            "sha256": "609518f6551191feee4079964f6e805a01a0659b934189b1463f76f0bd002b67"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/gate-delta-clock-resume05-b007.process.json",
+            "sha256": "1d8e413db454b2aa678b45070872a67a70794ec05c8c4bd1e1dea2b3e18b4ccb"
+          }
+        ]
+      }
+    },
+    {
+      "study": "cubic-delta-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave3-cubic-delta-clock-plan.json",
+      "planSha256": "278cece0733096a3cce98b96fb1d438350417d69f6498fc2a447c037b5692092",
+      "runtimeManifest": "wave3-cubic-delta-runtime.json",
+      "analysis": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-clock-analysis.json",
+      "analysisSha256": "c2590f7c7d22f76507784830dc450ac472f0c136895db30b3817b16d5847dda4",
+      "validatedMoves": 9081,
+      "models": [
+        {
+          "name": "RESCUBIC32-half",
+          "wins": 22,
+          "draws": 15,
+          "losses": 27,
+          "validPairs": 32,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.4609375,
+          "pairStandardError": 0.05157471751638744,
+          "descriptiveNormal95": [
+            0.3598510536678806,
+            0.5620239463321194
+          ],
+          "pairScores": [
+            0.5,
+            0.5,
+            0.25,
+            0.25,
+            0.25,
+            0.5,
+            0.5,
+            0.0,
+            0.5,
+            0.75,
+            0.25,
+            0.25,
+            0.5,
+            0.25,
+            0.25,
+            0.75,
+            1.0,
+            0.0,
+            1.0,
+            0.75,
+            0.25,
+            1.0,
+            0.5,
+            0.25,
+            0.75,
+            0.5,
+            0.75,
+            0.5,
+            0.75,
+            0.0,
+            0.0,
+            0.5
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "RESCUBIC32-half",
+          "usablePairedRoots": 32,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 23,
+          "meanDepthDifference": -0.40625,
+          "lessEqualMoreDepth": [
+            12,
+            20,
+            0
+          ],
+          "medianNodeRatio": 0.7112189272589875,
+          "medianElapsedRatio": 1.0000007523352337,
+          "medianNpsRatio": 0.71121035354649
+        }
+      ],
+      "commonOpponentContrasts": [],
+      "terminations": {
+        "WHITE_CHECKMATES_BLACK": 29,
+        "BLACK_CHECKMATES_WHITE": 20,
+        "THREEFOLD_REPETITION": 4,
+        "INSUFFICIENT_MATERIAL": 5,
+        "FIFTY_MOVE_RULE": 6
+      },
+      "telemetry": {
+        "RESCUBIC32-half": {
+          "moves": 4541,
+          "nodes": 1266206189,
+          "elapsedNanos": 878455461072,
+          "sumDepth": 45795,
+          "fallbacks": 0,
+          "maximumMoveNanos": 200579199
+        },
+        "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304": {
+          "moves": 4540,
+          "nodes": 1728062250,
+          "elapsedNanos": 877685336037,
+          "sumDepth": 47452,
+          "fallbacks": 0,
+          "maximumMoveNanos": 200234699
+        }
+      },
+      "effectiveModels": [
+        {
+          "name": "Gen32",
+          "effectiveNetworkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+        },
+        {
+          "name": "RESCUBIC32-half",
+          "effectiveNetworkSha256": "02f603153ef005444e55d509cc1b0b29b9b76e75a8fdc43bb51fd6b53e064c33"
+        }
+      ],
+      "processSummary": {
+        "completedBatches": 7,
+        "cpuSeconds": 1798.59375,
+        "maximumSampledWorkingSetBytes": 605478912,
+        "receipts": [
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-clock-resume05-b001.process.json",
+            "sha256": "05cf70dda1ecc097c93e0313270463505da76d7f70cef6da3f68505fae9f2165"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-clock-resume05-b002.process.json",
+            "sha256": "1752c2e29bc96a5753a15105c8a5a19f5b568369dad4c04327aabf1c7a6b75d4"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-clock-resume05-b003.process.json",
+            "sha256": "d5d1da753cb1b6eccff90b2ce846b741762dbe57420d87c262b8f227826eec78"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-clock-resume05-b004.process.json",
+            "sha256": "6edaf98878491108fd8fa797337bd47eea2dbf25cce7476e0d9d763b0d6eadb9"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-clock-resume05-b005.process.json",
+            "sha256": "df68ff78d9ff7969c107936fd56314f541129e8486f387a2e9f40c4f6806463f"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-clock-resume05-b006.process.json",
+            "sha256": "f096efbae0c48d081febaa0576abd0416633f7f2fbcd5c1dfa90cddbb6a9db03"
+          },
+          {
+            "path": "docs/research/brn-successor-cglhw/raw/wave3/cubic-delta-clock-resume05-b007.process.json",
+            "sha256": "e78bd04756cab246e5a8911025eda687d76195c06b9d599f9f05a645e080ab97"
+          }
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "Development evidence on the same32 roots; not independent confirmation. No pooling across runtimes or protocols.",
+    "Paired normal intervals are descriptive, without candidate-selection/multiplicity/opening-family adjustment.",
+    "Cache followups occurred in separate chronological cohorts. Match-score changes cannot be causally assigned to cache speed alone.",
+    "Common roots still produce different evaluator-dependent search trees; NPS/depth is supporting evidence, not intrinsic latency."
+  ],
+  "decision": "No positive equal-time strength case ready for confirmation. Admit separate exact-state W4 .001/.003 continuation arms for both residuals and BRE; retain cost/maturity hypotheses without rejecting architectures."
+}

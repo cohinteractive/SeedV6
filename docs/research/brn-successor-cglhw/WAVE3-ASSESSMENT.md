@@ -621,3 +621,45 @@ pair scores, half-GATE minus half-BRE is-0.78125 percentage points (descriptive9
 (-20.5347..15.8472). These are differences against the common continued-full-BRE
 opponent, not direct head-to-head Elo or causal architectural effects. No separation
 is established. The clock protocols remain fixed and their scores uninterpreted.
+
+## Completed fresh clock protocols and next-wave decision
+
+All320 games are complete and independently replayed:44264 legal moves, no failed
+attempts, caps, missing pairs or first-iteration fallbacks. Exact effective model
+hashes match between original and delta-cache protocols. All35 recorded batch
+processes exited0; maximum sampled working set583.43MiB. One game/worker,
+BelowNormal,768MiB heap,64MiB TT, no pondering. No research runner remains active.
+Compact results, raw replay hashes/receipt inventories, telemetry and process
+provenance: `wave3-clock-results.json`.
+
+All comparisons below use200ms/move,32 reversed-colour root pairs, frozen Gen32:
+
+| Implementation/candidate | W/D/L | Score | Descriptive paired95% |
+| --- | --- | --- | --- |
+| Original half-GATE |21/13/30|42.96875%|32.59..53.34%|
+| Original half-CUBIC |18/18/28|42.1875%|31.31..53.06%|
+| Compiled half-change continued BRE |26/16/22|53.125%|43.10..63.15%|
+| Guarded delta half-GATE |23/11/30|44.53125%|35.27..53.80%|
+| Guarded delta half-CUBIC |22/15/27|46.09375%|35.99..56.20%|
+
+Within the original common-opponent protocol, GATE minus calibrated BRE is
+-10.15625 points (descriptive95%-24.05..3.73), CUBIC-10.9375
+(-25.85..3.97). No expressive advantage is established. The original and delta
+cohorts share roots and occur at different times: never pool them as independent
+confirmation or assign their small score differences causally to the cache.
+
+Same-root median candidate/reference node ratios improve.4724->.6313 for GATE
+and.5782->.7112 for CUBIC. Mean completed-depth deficits change-.75->-.40625
+and-.4375->-.40625 respectively; additive half-BRE is.9945 nodes/+0.03125 depth.
+These agree with the controlled cost evidence while retaining evaluator-dependent
+tree and host-timing limitations. The speed improvements are useful, but do not
+yet establish practical playing-strength improvement.
+
+Decision: no candidate is ready for positive independent confirmation. Admit W4's
+six exact-state continuation arms (.001/.003 for both residuals and BRE), followed
+by one consolidated GUI training gate after actual owner readiness checks. This
+separates a rate intervention from additional exposure within each family, with
+cross-family data/history limitations retained. Lower-rate optimizer diagnostics,
+nonmonotonic validation and persistent cost/maturity uncertainty justify this next
+bounded experiment. Neither residual architecture is rejected; no success claim,
+production-default change or additional unchanged tournament extension is admitted.
