@@ -122,8 +122,8 @@ full16 reproduction and independent prediction checks pass. The isolated sparse-
 prototype passes actual-model parity but only rank4/8 reduces transition cost;
 rank12/16 offers no gain. Defer integration pending pruned chess quality evidence.
 Packed-layout oracles also pass, but variable timing baselines leave its incremental
-benefit uncertain; no core/application path has changed. Pruned function matches
-are separately admitted below, using the existing dense cache.
+benefit uncertain; no sparse/packed core path is admitted. Pruned function matches
+use the existing dense cache.
 Fixed-window maturity comparison verifies GATE/BRE prediction improvement but
 CUBIC full CP degradation; half calibration partly offsets it. Extra generations
 are not automatically an improvement. See wave4-maturity-average-results.json.
@@ -136,15 +136,18 @@ GATE00359.375/43.75%; CUBIC00340.625/43.75%. Same-rate BRE means68.75/34.375%.
 Only eight pairs each; no expressive separation. The large opening-set reversal
 for BRE001/Gen32 triggered four exact orientation replays (595 moves), all passed
 and excluded from strength counts. See direct results and orientation records.
-Current active plan: direct-full-node; then pruned full/half node and both direct-clock
-plans. Use
+Direct-full-node and both pruned node plans are CLOSED. Full scale materially
+changes the LR003 node ranking; full cubic pruning loses its encouraging prediction
+advantage in chess. See WAVE4-ASSESSMENT and the exact result manifests.
+Current active plan: direct-clock-LR001 (batches05..08), then direct-clock-LR003
+and the separately admitted32 full-clock games. Use
 wave4-average-runtime.json. See wave4-direct-admission.json; fixed448-game budget.
 Also admitted:64 rank4-vs-rank16 node games, full/half, after13 tests and actual
 masked score/search oracles pass. Use wave4-pruned-admission.json and the separate
 wave4-mask-runtime.json; dense cache means no pruning speed claim. Do not mix
 runtimes or enlarge completed protocols. No favorable partial-score stopping.
 Closed primary protocols retain their original frozen jars. Fresh confirmation
-partition1 remains unused. No architecture decision or further training is inferred
+partition1 remains unused. All32 development roots have now been consumed. No architecture decision or further training is inferred
 from loss or an initial equal-time defeat.
 
 All admitted W3 protocols are closed:1152 strength-screen games and153189
@@ -218,3 +221,16 @@ checkout lacks it. Verify availability before analysis. Compact tracked manifest
 bind local reports, exact configurations, hashes and limitations. Preserve all
 negative/failed/frozen evidence. A completed turn or implementation is not programme
 success, adoption or user acceptance. The next admissible action is the active trained-W4 assessment above.
+
+
+Current implementation question: combine a continued BRE table with the existing
+nonlinear correction at unchanged one-base inference structure. The fixed-grid
+hybrid feasibility diagnostic supports complementary prediction signal, especially
+with BRE001; ordinary additive mixing does not reproduce its consistent benefit.
+See wave4-hybrid-feasibility-verified.json. Explicit inference composition is in
+progress, with19 passing core tests, pending actual-model prediction/cache/search
+and cost checks and research loader verification. Both component identities must
+be bound; no combined optimizer/checkpoint is implied. No hybrid games are yet
+admitted and no new substantial training is authorized. Pending core changes may
+qualify the next application build commit after validation; build51 is still the
+last committed identity. Existing protocols continue using their frozen jars.

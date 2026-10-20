@@ -1,0 +1,14 @@
+{
+  "id": "wave4-direct-full-clock-admission-v1",
+  "createdUtc": "2026-10-20T22:39:12.831259+00:00",
+  "question": "Do the full-scale gains for the two LR003 residual means survive practical equal-time search?",
+  "selection": "Full-minus-half node point differences+15.625pp GATE003,+21.875pp CUBIC003; selected on node evidence before either direct clock plan has run. Lower-rate full variants show no positive node difference; their half variants remain in the original fixed programme. This is selected development, not confirmation.",
+  "plan": "wave4-direct-full-clock-plan.json",
+  "planSha256": "e9aefc810a0f1b2602fba0e1eba5b6a17b4fae35b47d17543133ffacbc527259",
+  "runtime": "wave4-average-runtime.json",
+  "games": 32,
+  "openings": "Same8 development roots17..24, paired colors, shared BRE003-half endpoint; direct contrasts possible but not independent opening replication.",
+  "readiness": "Both actual full averaged models already passed6333-position and48 paired-search cache oracles and legal load smoke.",
+  "resources": "Unchanged one-game/worker,no ponder,64MiBTT/768MiBheap,one active processor,BelowNormal,12games/240sec per batch.",
+  "stopping": "Complete32 regardless outcome, except correctness/resource failure. Do not enlarge any previous protocol or claim strength from this selection."
+}

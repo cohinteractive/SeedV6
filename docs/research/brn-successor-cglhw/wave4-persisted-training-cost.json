@@ -1,0 +1,110 @@
+{
+  "id": "wave4-persisted-training-cost-v1",
+  "source": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\trained-audit-01\\stores.json",
+  "sourceSha256": "926f1e1604d21fc6134ef171290f8e2afd1e201c8b0de44c76502e6081637311",
+  "lineages": [
+    {
+      "name": "W4-RESGATE-LR001",
+      "generations": 32,
+      "trainingPositions": 4194304,
+      "visits": 33554432,
+      "recordedTrainingSeconds": 286.396897699,
+      "recordedValidationSeconds": 6.767508804,
+      "recordedGenerationSeconds": 302.001113398,
+      "medianTrainingSecondsPerGeneration": 8.95027735,
+      "medianGenerationSeconds": 9.3983805,
+      "minMaxGenerationSeconds": [
+        9.0793646,
+        9.988667901
+      ],
+      "firstStarted": "2026-10-20T20:37:26.960891300Z",
+      "lastCompleted": "2026-10-20T20:42:29.411583900Z"
+    },
+    {
+      "name": "W4-RESGATE-LR003",
+      "generations": 32,
+      "trainingPositions": 4194304,
+      "visits": 33554432,
+      "recordedTrainingSeconds": 286.593017497,
+      "recordedValidationSeconds": 6.696839902,
+      "recordedGenerationSeconds": 300.385586705,
+      "medianTrainingSecondsPerGeneration": 8.9537409,
+      "medianGenerationSeconds": 9.3636431,
+      "minMaxGenerationSeconds": [
+        9.0190679,
+        9.961629299
+      ],
+      "firstStarted": "2026-10-20T20:43:05.481422200Z",
+      "lastCompleted": "2026-10-20T20:48:06.326165900Z"
+    },
+    {
+      "name": "W4-RESCUBIC-LR001",
+      "generations": 32,
+      "trainingPositions": 4194304,
+      "visits": 33554432,
+      "recordedTrainingSeconds": 231.111660598,
+      "recordedValidationSeconds": 4.5023734,
+      "recordedGenerationSeconds": 244.822145095,
+      "medianTrainingSecondsPerGeneration": 7.2220511,
+      "medianGenerationSeconds": 7.6554159495,
+      "minMaxGenerationSeconds": [
+        6.9245964,
+        8.2254439
+      ],
+      "firstStarted": "2026-10-20T20:23:39.355464300Z",
+      "lastCompleted": "2026-10-20T20:27:44.545618300Z"
+    },
+    {
+      "name": "W4-RESCUBIC-LR003",
+      "generations": 32,
+      "trainingPositions": 4194304,
+      "visits": 33554432,
+      "recordedTrainingSeconds": 232.992279298,
+      "recordedValidationSeconds": 4.5877537,
+      "recordedGenerationSeconds": 244.669413805,
+      "medianTrainingSecondsPerGeneration": 7.3310872,
+      "medianGenerationSeconds": 7.6728031005,
+      "minMaxGenerationSeconds": [
+        6.788859301,
+        8.4536591
+      ],
+      "firstStarted": "2026-10-20T20:28:53.070565100Z",
+      "lastCompleted": "2026-10-20T20:32:58.150951900Z"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001",
+      "generations": 32,
+      "trainingPositions": 4194304,
+      "visits": 33554432,
+      "recordedTrainingSeconds": 326.176286602,
+      "recordedValidationSeconds": 2.147343996,
+      "recordedGenerationSeconds": 350.721428702,
+      "medianTrainingSecondsPerGeneration": 10.1596417505,
+      "medianGenerationSeconds": 11.0545509495,
+      "minMaxGenerationSeconds": [
+        10.023724,
+        12.4821755
+      ],
+      "firstStarted": "2026-10-20T19:51:48.557771900Z",
+      "lastCompleted": "2026-10-20T19:57:39.661523600Z"
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003",
+      "generations": 32,
+      "trainingPositions": 4194304,
+      "visits": 33554432,
+      "recordedTrainingSeconds": 335.616094599,
+      "recordedValidationSeconds": 2.118502399,
+      "recordedGenerationSeconds": 357.852650902,
+      "medianTrainingSecondsPerGeneration": 10.60680215,
+      "medianGenerationSeconds": 11.1910968995,
+      "minMaxGenerationSeconds": [
+        9.9586963,
+        12.1663272
+      ],
+      "firstStarted": "2026-10-20T20:00:27.447886100Z",
+      "lastCompleted": "2026-10-20T20:06:25.642508400Z"
+    }
+  ],
+  "scope": "Persisted owner-run elapsed counters, not new benchmarks, CPU time or equal host conditions. Acquisition/shuffling/measurement may be inside training time; generation totals include validation/other service work. Does not recover unpersisted failed-Gen33 optimizer time or pauses between generations. No training performed by this diagnostic."
+}

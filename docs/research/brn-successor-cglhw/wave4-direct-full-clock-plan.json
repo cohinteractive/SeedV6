@@ -1,0 +1,266 @@
+{
+  "id": "wave4-direct-full-clock-v1",
+  "models": [
+    {
+      "name": "W4-BRE-CONTROL-LR003-g64-half",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR003-g64",
+      "checkpoint": "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1",
+      "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050",
+      "correctionScale": 0.5
+    },
+    {
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+      "checkpoint": "g000064-s000524288-c4a19e81755089d2a7a0e3904dd81347db96eda02dad7c4d3aedec5d630fb044",
+      "networkSha256": "f98aadffa26dafd5f5ec2f2947526e082c7b26f6979dd77be61b7f11a2fa7baf",
+      "name": "W4-RESGATE-LR003-average8-full",
+      "averagedInputs": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000057-s000466944-eddcc7505f8598c7d1c5e076b615173d91f9525028c12c2baf23d05082c040f1",
+          "networkSha256": "310fec1aa9efd25d920451b496cf00018e5c41bb0676624c36e42480da021c82"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000058-s000475136-4436a4c042384209e3af699c7182265568cf60ae0846fa2f7adaa61ac7acac84",
+          "networkSha256": "e6ba1be1bc186d0abdc61ee6eccac5bc52a47651c0b83743c0663b20fd09e171"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000059-s000483328-618deb1ca05e6a51d1011ceef8e91003fe69f04497165a55289dced5b805d90f",
+          "networkSha256": "f35e3646d46c67cc3faf1b2ddf91a8be76cf8c4559a185078db6bbcdb17264f7"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000060-s000491520-a23bf99174b928f16c1ee4b8190cb851053f0739618dc2f4141d73d7439178ed",
+          "networkSha256": "a2e69bda81dfb9c7cdddd0f5c8c614fc6d0d79b3766a2c1b4d13b67b081677bc"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000061-s000499712-31e5547cffa41402ba829f8754b9e2468cfceda225bec6a842faff378129a948",
+          "networkSha256": "5571c7fee883051f3f25996171c83c6db27e70527fe69bfd5836b94fa3609468"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000062-s000507904-f5d85dafc07e53e9923bf63445aade10bda130ae650df144ca23e1387422c2c9",
+          "networkSha256": "9754baa7d83cf89b02ee974dfc04e9201659c536e7d03d724b10c31b2fc93567"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000063-s000516096-b2b092903ea30d834118459c9bb821d03a6cfe0428f6d0806247b338a56dfd44",
+          "networkSha256": "14f380a85961c273792c6e3805bcc848f2ee6edac609f0842b334273c8ab7991"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000064-s000524288-c4a19e81755089d2a7a0e3904dd81347db96eda02dad7c4d3aedec5d630fb044",
+          "networkSha256": "f98aadffa26dafd5f5ec2f2947526e082c7b26f6979dd77be61b7f11a2fa7baf"
+        }
+      ],
+      "gatedDeltaCache": true,
+      "correctionScale": 1
+    },
+    {
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+      "checkpoint": "g000064-s000524288-5982ea47c1d2bd88f049fa13c2b4b16eebe75ef919dfca18aad7d7fd673e4c66",
+      "networkSha256": "cfa37ddd14e461546de266d622ded7ebdeea240b4c90274c269d2ffbd5be8901",
+      "name": "W4-RESCUBIC-LR003-average8-full",
+      "averagedInputs": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000057-s000466944-3285f65d492e26bbe986ad1442f94cb191c6a5716d30d3814896b3bd2e5ef3c2",
+          "networkSha256": "974ceca912e70bc4e1c61f2e83a04311f7036e634364c5c8957738f6997b8e8a"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000058-s000475136-912fac92f9055ae6094522500f76d1ca1039dcc1d490fad684aa992f3ff3a1b5",
+          "networkSha256": "4995720da4e36413542e5eba21bedc6864b7976bd5e4993fdbe170f7e167dce5"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000059-s000483328-9946c016f19cb3a22d4397869569f64d0cc303e9ba7ee104875d017e5e130a73",
+          "networkSha256": "3270f40ed019dd93cce1652fce99069683f4be932993c1841cb02eef48c23e92"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000060-s000491520-0172668f4b2e3b4ea4a253407a3d0eea84e1e232f23b5acd2da54cc4d2576080",
+          "networkSha256": "f8b20c7c958da211a9e582248d443666c3921185e4fd2e11d4d3e8e3b60d2b7e"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000061-s000499712-f6965a48fd70c9eda316a9e890a6d245467a3ccb62c5abadbc037dd49e541507",
+          "networkSha256": "b9ac4cdac7fd8b82e3f6a00399b83a7bf0cba1bc0dc27f8bb418aea000febbe5"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000062-s000507904-08ae6907feab3295b7f77e1e060fe38d6b8893bfa8da1cf3934f107072c85fe4",
+          "networkSha256": "e802df2c98ff9a83074033ce6948efde693bf1631ce3c068ccc57f9cf505545c"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000063-s000516096-20f05fb4a8e00abf9592091a99858d7c18c08ae06e2edb5faeb05b7cf1bf4e75",
+          "networkSha256": "149850f9e757cc0bcd2c45a31b9ad9f2e86979e4cf14445e95bce3173fec5412"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000064-s000524288-5982ea47c1d2bd88f049fa13c2b4b16eebe75ef919dfca18aad7d7fd673e4c66",
+          "networkSha256": "cfa37ddd14e461546de266d622ded7ebdeea240b4c90274c269d2ffbd5be8901"
+        }
+      ],
+      "cubicDeltaCache": true,
+      "correctionScale": 1
+    }
+  ],
+  "pairs": 8,
+  "seed": 2026102104,
+  "nodes": 0,
+  "moveMillis": 100,
+  "maximumPlies": 512,
+  "batchGames": 12,
+  "batchSeconds": 240,
+  "openingMoves": [
+    [
+      "d2d4",
+      "d7d5",
+      "c2c4",
+      "c7c6",
+      "c4d5",
+      "c6d5",
+      "b1c3",
+      "g8f6",
+      "g1f3",
+      "c8f5",
+      "d1b3",
+      "f5c8",
+      "c1f4",
+      "e7e6",
+      "c3b5",
+      "b8a6"
+    ],
+    [
+      "d2d4",
+      "g8f6",
+      "c2c4",
+      "e7e5",
+      "d4e5",
+      "f6g4",
+      "g1f3",
+      "f8c5",
+      "e2e3",
+      "b8c6",
+      "a2a3",
+      "a7a5",
+      "c1d2",
+      "e8g8",
+      "f1d3",
+      "f8e8"
+    ],
+    [
+      "e2e4",
+      "c7c5",
+      "g1f3",
+      "b8c6",
+      "f1b5",
+      "g7g6",
+      "b5c6",
+      "b7c6",
+      "e1g1",
+      "f8g7",
+      "c2c3",
+      "g8h6",
+      "d2d4",
+      "c5d4",
+      "c3d4",
+      "d7d6"
+    ],
+    [
+      "e2e4",
+      "e7e5",
+      "g1f3",
+      "b8c6",
+      "f1b5",
+      "g8f6",
+      "e1g1",
+      "d7d6",
+      "f1e1",
+      "f8e7",
+      "d2d4",
+      "c8d7",
+      "d4d5",
+      "c6b8",
+      "b5d7",
+      "f6d7"
+    ],
+    [
+      "d2d4",
+      "g8f6",
+      "c2c4",
+      "e7e6",
+      "g1f3",
+      "c7c5",
+      "g2g3",
+      "c5d4",
+      "f3d4",
+      "f8b4",
+      "c1d2",
+      "b4e7",
+      "f1g2",
+      "e8g8",
+      "b1c3",
+      "a7a6"
+    ],
+    [
+      "e2e4",
+      "c7c5",
+      "c2c3",
+      "g8f6",
+      "e4e5",
+      "f6d5",
+      "g1f3",
+      "b8c6",
+      "f1c4",
+      "d5b6",
+      "c4b3",
+      "d7d5",
+      "e5d6",
+      "e7e5",
+      "d2d4",
+      "c5c4"
+    ],
+    [
+      "d2d4",
+      "g8f6",
+      "g1f3",
+      "c7c5",
+      "d4d5",
+      "g7g6",
+      "b1c3",
+      "d7d6",
+      "e2e4",
+      "f8g7",
+      "f1c4",
+      "e8g8",
+      "a2a4",
+      "e7e6",
+      "e1g1",
+      "e6d5"
+    ],
+    [
+      "d2d4",
+      "g7g6",
+      "c2c4",
+      "f8g7",
+      "b1c3",
+      "d7d6",
+      "e2e4",
+      "e7e5",
+      "d4e5",
+      "d6e5",
+      "d1d8",
+      "e8d8",
+      "g1f3",
+      "c7c6",
+      "c1e3",
+      "d8c7"
+    ]
+  ],
+  "legalFallback": true
+}

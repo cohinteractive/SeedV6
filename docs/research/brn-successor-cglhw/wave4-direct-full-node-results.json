@@ -1,0 +1,753 @@
+{
+  "id": "wave4-direct-full-node-v1-completed",
+  "status": "Closed fixed-budget development experiment",
+  "plan": "docs\\research\\brn-successor-cglhw\\wave4-direct-full-node-plan.json",
+  "receipts": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-full-node",
+  "analysis": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-full-node-analysis.json",
+  "runtime": "docs\\research\\brn-successor-cglhw\\wave4-average-runtime.json",
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\wave4-direct-full-node-plan.json": "c6e5e2b34da947a0b0692225c31a8db7667fd3bd65e09ec4c1c6e70aebcbd825",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-full-node-analysis.json": "03adf5c01b55b7443d867ee2ef93d3007a74e9dedc79e5bfb27eb0d9da3c4fe3",
+    "docs\\research\\brn-successor-cglhw\\wave4-average-runtime.json": "acab10e4d23200a2823cee0d359a7ce030c83b9359f3bb45f3c4b2f23b0c34ec",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-full-node\\model-bindings.json": "f8e730906b71ea3183f47d906b14504e9d31dc390ae1dd70b77c725f80273312"
+  },
+  "games": 64,
+  "validatedMoves": 8837,
+  "models": [
+    {
+      "name": "W4-RESGATE-LR001-average8-full",
+      "wins": 9,
+      "draws": 2,
+      "losses": 5,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.625,
+      "pairStandardError": 0.11572751247156893,
+      "descriptiveNormal95": [
+        0.3981740755557249,
+        0.8518259244442751
+      ],
+      "pairScores": [
+        1.0,
+        0.75,
+        0.0,
+        0.5,
+        0.75,
+        0.5,
+        0.5,
+        1.0
+      ],
+      "boundedPair95": [
+        0.14483860434003965,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.06179633927671058,
+        1
+      ]
+    },
+    {
+      "name": "W4-RESGATE-LR003-average8-full",
+      "wins": 8,
+      "draws": 3,
+      "losses": 5,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.59375,
+      "pairStandardError": 0.08097480869293328,
+      "descriptiveNormal95": [
+        0.43503937496185074,
+        0.7524606250381493
+      ],
+      "pairScores": [
+        1.0,
+        0.75,
+        0.5,
+        0.5,
+        0.5,
+        0.25,
+        0.5,
+        0.75
+      ],
+      "boundedPair95": [
+        0.11358860434003965,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.030546339276710577,
+        1
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-average8-full",
+      "wins": 5,
+      "draws": 4,
+      "losses": 7,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.4375,
+      "pairStandardError": 0.09149063183892499,
+      "descriptiveNormal95": [
+        0.25817836159570706,
+        0.6168216384042929
+      ],
+      "pairScores": [
+        0.25,
+        0.25,
+        0.75,
+        0.5,
+        0.0,
+        0.5,
+        0.75,
+        0.5
+      ],
+      "boundedPair95": [
+        0,
+        0.9176613956599604
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-average8-full",
+      "wins": 8,
+      "draws": 5,
+      "losses": 3,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.65625,
+      "pairStandardError": 0.06576303510114391,
+      "descriptiveNormal95": [
+        0.527354451201758,
+        0.785145548798242
+      ],
+      "pairScores": [
+        1.0,
+        0.75,
+        0.75,
+        0.5,
+        0.75,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "boundedPair95": [
+        0.17608860434003965,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.09304633927671058,
+        1
+      ]
+    }
+  ],
+  "modelBindings": [
+    {
+      "effectiveNetworkSha256": "5f92579f7a2163fae9517c6cb341a1f439b71c999c96be0d7d71d4d366fb2a49",
+      "originalManifest": {
+        "id": "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1",
+        "generation": 64,
+        "optimizerStep": 2277376,
+        "trainingDepth": 4,
+        "parentId": "g000063-s002269184-335373a32552a851d1ff5dafd2a0aa843d8d2d1262ee32128465a106de7b1f23",
+        "networkBytes": 795032,
+        "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050",
+        "trainingBytes": 2731424,
+        "trainingSha256": "4c23665148d475c44c7e24f903c011407128f17272e5cbba197ce3d642fa883a",
+        "architecture": "BRN_PAIR2"
+      },
+      "name": "W4-BRE-CONTROL-LR003-g64-half",
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "correctionScale": 0.5,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "additiveMapping": "Gen32 compiled tables + scale * (continued compiled tables - Gen32 tables)"
+    },
+    {
+      "effectiveNetworkSha256": "ba39eefb8b383711eb672f47e36c9afec3ed9b692e0bb6c75e284b747d6b9236",
+      "originalManifest": {
+        "id": "g000064-s000524288-bd455415c07f597ff1d815ef3fef0994f6900d761789574e971ef5a347c2ad8d",
+        "generation": 64,
+        "optimizerStep": 524288,
+        "trainingDepth": 4,
+        "parentId": "g000063-s000516096-363b208509b37269f3978ee180cc786184ab620bfd79fe7ae501cca6b3df9207",
+        "networkBytes": 52464,
+        "networkSha256": "c455f68516c22d34033b29da34f6eb4d80d07a8e698507fbe3ee240a0dc25f62",
+        "trainingBytes": 157264,
+        "trainingSha256": "cbe8b1f1dd6907474c5ee103f8a79a7f9dddd613afe172db62d1a099b06216cc",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "name": "W4-RESGATE-LR001-average8-full",
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "averagedInputs": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000057-s000466944-37e09c1514e7f7eea53d4c2ff45ac4feca53def28cf6b9cd972ca8aa27134461",
+          "networkSha256": "a56a22643735c9f206541d80a837214a8bb8ba628a0a706c211effb9c22251ca"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000058-s000475136-f84e57c3f0c807f08ec47b82497a01d979d9c19e278baa5bb8a2f81ccba972eb",
+          "networkSha256": "95a87be6a11888ea4bfc2667e7aec567a25650a24cf5f551a3408d0544e111af"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000059-s000483328-2e5fbb383a1e0265c3241285fd5d31edbf5a85ab3a37611b3e55774551474206",
+          "networkSha256": "d46ecbc8463b405b49099e209be5edff6f96f37179168a08b0d509be9b1c30b0"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000060-s000491520-06ce954eca44d10a18bfed8faa1fe8ed789d6225b6629c14b02b98163c6df7c2",
+          "networkSha256": "5536a68fe958f04f6df4edfd4cc73c87bfccdd2ca895598de2617e35935ba172"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000061-s000499712-3a71061f3e42458b3cc8976c3fe84faff76168a912f0aab59e8c9e23e1fa92f8",
+          "networkSha256": "207c9ebfdeb6f8d12ebc35585f4eca0c0d9b170cfd30f94a6c0dda13ec36329d"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000062-s000507904-fb855ccc2ddc7984938ea1712dfb35db1c7fc152d44072bb4167fed7e5ac7fd6",
+          "networkSha256": "cc816bb69f256bd0db62201c695a592ca68cef70f4d927b3bdffb9acb06b683d"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000063-s000516096-363b208509b37269f3978ee180cc786184ab620bfd79fe7ae501cca6b3df9207",
+          "networkSha256": "b26f0b79c9a48e63fdf661e9e661453f416859d8948617a84f82563e3175a0ab"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000064-s000524288-bd455415c07f597ff1d815ef3fef0994f6900d761789574e971ef5a347c2ad8d",
+          "networkSha256": "c455f68516c22d34033b29da34f6eb4d80d07a8e698507fbe3ee240a0dc25f62"
+        }
+      ],
+      "averaging": "Uniform parameter mean; Pair2 compiled tables; inference only, no optimizer continuation",
+      "gatedDeltaCache": "period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 1.0
+    },
+    {
+      "effectiveNetworkSha256": "e7b57f7809a1bdc964c2f261fae1a3ba834f398d41b2b8c8dca4c415b6795f85",
+      "originalManifest": {
+        "id": "g000064-s000524288-c4a19e81755089d2a7a0e3904dd81347db96eda02dad7c4d3aedec5d630fb044",
+        "generation": 64,
+        "optimizerStep": 524288,
+        "trainingDepth": 4,
+        "parentId": "g000063-s000516096-b2b092903ea30d834118459c9bb821d03a6cfe0428f6d0806247b338a56dfd44",
+        "networkBytes": 52464,
+        "networkSha256": "f98aadffa26dafd5f5ec2f2947526e082c7b26f6979dd77be61b7f11a2fa7baf",
+        "trainingBytes": 157264,
+        "trainingSha256": "8844aee0d51bf0dd8e846735ab584313ff84a5c539770d98f12b2c4884c483b1",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "name": "W4-RESGATE-LR003-average8-full",
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "averagedInputs": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000057-s000466944-eddcc7505f8598c7d1c5e076b615173d91f9525028c12c2baf23d05082c040f1",
+          "networkSha256": "310fec1aa9efd25d920451b496cf00018e5c41bb0676624c36e42480da021c82"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000058-s000475136-4436a4c042384209e3af699c7182265568cf60ae0846fa2f7adaa61ac7acac84",
+          "networkSha256": "e6ba1be1bc186d0abdc61ee6eccac5bc52a47651c0b83743c0663b20fd09e171"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000059-s000483328-618deb1ca05e6a51d1011ceef8e91003fe69f04497165a55289dced5b805d90f",
+          "networkSha256": "f35e3646d46c67cc3faf1b2ddf91a8be76cf8c4559a185078db6bbcdb17264f7"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000060-s000491520-a23bf99174b928f16c1ee4b8190cb851053f0739618dc2f4141d73d7439178ed",
+          "networkSha256": "a2e69bda81dfb9c7cdddd0f5c8c614fc6d0d79b3766a2c1b4d13b67b081677bc"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000061-s000499712-31e5547cffa41402ba829f8754b9e2468cfceda225bec6a842faff378129a948",
+          "networkSha256": "5571c7fee883051f3f25996171c83c6db27e70527fe69bfd5836b94fa3609468"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000062-s000507904-f5d85dafc07e53e9923bf63445aade10bda130ae650df144ca23e1387422c2c9",
+          "networkSha256": "9754baa7d83cf89b02ee974dfc04e9201659c536e7d03d724b10c31b2fc93567"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000063-s000516096-b2b092903ea30d834118459c9bb821d03a6cfe0428f6d0806247b338a56dfd44",
+          "networkSha256": "14f380a85961c273792c6e3805bcc848f2ee6edac609f0842b334273c8ab7991"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR003",
+          "checkpoint": "g000064-s000524288-c4a19e81755089d2a7a0e3904dd81347db96eda02dad7c4d3aedec5d630fb044",
+          "networkSha256": "f98aadffa26dafd5f5ec2f2947526e082c7b26f6979dd77be61b7f11a2fa7baf"
+        }
+      ],
+      "averaging": "Uniform parameter mean; Pair2 compiled tables; inference only, no optimizer continuation",
+      "gatedDeltaCache": "period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 1.0
+    },
+    {
+      "effectiveNetworkSha256": "5fb25c176913fd7131d4dba1cc540cd73a856a10d999bc774974f2cde82c8e6e",
+      "originalManifest": {
+        "id": "g000064-s000524288-452b71fa8b42d6da3a6ec06e6991d08ff4adcd4cc7d4a88a7c8228fc5c36b75f",
+        "generation": 64,
+        "optimizerStep": 524288,
+        "trainingDepth": 4,
+        "parentId": "g000063-s000516096-3f2c7a050f1b185025eeb55a0ef44b7e31c133c30f6ece8e338c91813a1a4902",
+        "networkBytes": 104784,
+        "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc",
+        "trainingBytes": 314224,
+        "trainingSha256": "3c8d6ed2cb7884ac661de8bcbd1f8d6332ddac2788c272747ab2787808b682a8",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "name": "W4-RESCUBIC-LR001-average8-full",
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "averagedInputs": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000057-s000466944-871123d7fd3a2c29c4350c2ec747001e1e7c9c40031c4bb420e65fab0bb03cc6",
+          "networkSha256": "6d6e48d85dadb6ab9f0c081eb7a5e3209cc3cd1f19017198631bd5a24c6e01a1"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000058-s000475136-6fc67dc7d31c411b3ad14ff7702be3dfff2665beef505c85df878bbfb0451d5c",
+          "networkSha256": "11600436ab1372ff9d2200d393be3545507083ebdde83e6ee41fc55c2d4d2c34"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000059-s000483328-e918443a5f9149e2c3a46f794862df7697148ca6627a4e32793fc73a863a940a",
+          "networkSha256": "cbe63893c5784ded1ef2656ecf056d7724808bbe9101e50f254ffcc7455e5cef"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000060-s000491520-7a22fcae6e75af5d6e2d9cd3aa2091ff630a55f9d73627e89a75e1b236c552d7",
+          "networkSha256": "d05023a9ec6d6b8e231ef23a1ea8efbcf1975e3faba2be7238d56e4eb36ae8bb"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000061-s000499712-6bab9761e1a8db70ea22587f4075324e0366f849851ce06ce2559d9b7308bdbf",
+          "networkSha256": "b2762f8dccf2d759b89660640c66988fff31f4e3d4cfdfe1929d5d52d553e702"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000062-s000507904-72900694c054f80ec7fa67ccb4f21474e4c589378a9ae3944b1f3adaa1ba8b23",
+          "networkSha256": "fc82a6c7d185bb82b93117a45a39cbd71489f30087ad4a531b5107a04ae0c258"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000063-s000516096-3f2c7a050f1b185025eeb55a0ef44b7e31c133c30f6ece8e338c91813a1a4902",
+          "networkSha256": "0c1787f3b217e4175a065789ef6228190ed315e6bf0947998464d78302abd2fc"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000064-s000524288-452b71fa8b42d6da3a6ec06e6991d08ff4adcd4cc7d4a88a7c8228fc5c36b75f",
+          "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc"
+        }
+      ],
+      "averaging": "Uniform parameter mean; Pair2 compiled tables; inference only, no optimizer continuation",
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 1.0
+    },
+    {
+      "effectiveNetworkSha256": "423ecddbbff24c44614562e295b6692e6a2f3d1c898aac833e1ce5b773275a3f",
+      "originalManifest": {
+        "id": "g000064-s000524288-5982ea47c1d2bd88f049fa13c2b4b16eebe75ef919dfca18aad7d7fd673e4c66",
+        "generation": 64,
+        "optimizerStep": 524288,
+        "trainingDepth": 4,
+        "parentId": "g000063-s000516096-20f05fb4a8e00abf9592091a99858d7c18c08ae06e2edb5faeb05b7cf1bf4e75",
+        "networkBytes": 104784,
+        "networkSha256": "cfa37ddd14e461546de266d622ded7ebdeea240b4c90274c269d2ffbd5be8901",
+        "trainingBytes": 314224,
+        "trainingSha256": "dd3a1f15c3a9e650c3b1090b6a5820ac0fd88bc8c56bdd2f7974fb6d8d6c1cb8",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "name": "W4-RESCUBIC-LR003-average8-full",
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "averagedInputs": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000057-s000466944-3285f65d492e26bbe986ad1442f94cb191c6a5716d30d3814896b3bd2e5ef3c2",
+          "networkSha256": "974ceca912e70bc4e1c61f2e83a04311f7036e634364c5c8957738f6997b8e8a"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000058-s000475136-912fac92f9055ae6094522500f76d1ca1039dcc1d490fad684aa992f3ff3a1b5",
+          "networkSha256": "4995720da4e36413542e5eba21bedc6864b7976bd5e4993fdbe170f7e167dce5"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000059-s000483328-9946c016f19cb3a22d4397869569f64d0cc303e9ba7ee104875d017e5e130a73",
+          "networkSha256": "3270f40ed019dd93cce1652fce99069683f4be932993c1841cb02eef48c23e92"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000060-s000491520-0172668f4b2e3b4ea4a253407a3d0eea84e1e232f23b5acd2da54cc4d2576080",
+          "networkSha256": "f8b20c7c958da211a9e582248d443666c3921185e4fd2e11d4d3e8e3b60d2b7e"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000061-s000499712-f6965a48fd70c9eda316a9e890a6d245467a3ccb62c5abadbc037dd49e541507",
+          "networkSha256": "b9ac4cdac7fd8b82e3f6a00399b83a7bf0cba1bc0dc27f8bb418aea000febbe5"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000062-s000507904-08ae6907feab3295b7f77e1e060fe38d6b8893bfa8da1cf3934f107072c85fe4",
+          "networkSha256": "e802df2c98ff9a83074033ce6948efde693bf1631ce3c068ccc57f9cf505545c"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000063-s000516096-20f05fb4a8e00abf9592091a99858d7c18c08ae06e2edb5faeb05b7cf1bf4e75",
+          "networkSha256": "149850f9e757cc0bcd2c45a31b9ad9f2e86979e4cf14445e95bce3173fec5412"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR003",
+          "checkpoint": "g000064-s000524288-5982ea47c1d2bd88f049fa13c2b4b16eebe75ef919dfca18aad7d7fd673e4c66",
+          "networkSha256": "cfa37ddd14e461546de266d622ded7ebdeea240b4c90274c269d2ffbd5be8901"
+        }
+      ],
+      "averaging": "Uniform parameter mean; Pair2 compiled tables; inference only, no optimizer continuation",
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 1.0
+    }
+  ],
+  "sameRootSearch": [
+    {
+      "name": "W4-RESGATE-LR001-average8-full",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 4,
+      "meanDepthDifference": -0.125,
+      "lessEqualMoreDepth": [
+        1,
+        7,
+        0
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 4.600897893715754,
+      "medianNpsRatio": 0.21821706548573083
+    },
+    {
+      "name": "W4-RESGATE-LR003-average8-full",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 4,
+      "meanDepthDifference": 0,
+      "lessEqualMoreDepth": [
+        0,
+        8,
+        0
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.5474482373749705,
+      "medianNpsRatio": 0.6462953454089665
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-average8-full",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 5,
+      "meanDepthDifference": 0.125,
+      "lessEqualMoreDepth": [
+        0,
+        7,
+        1
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 3.5997642049275784,
+      "medianNpsRatio": 0.2780619508985981
+    },
+    {
+      "name": "W4-RESCUBIC-LR003-average8-full",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 6,
+      "meanDepthDifference": 0,
+      "lessEqualMoreDepth": [
+        0,
+        8,
+        0
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.4403568018518518,
+      "medianNpsRatio": 0.6944210671731645
+    }
+  ],
+  "telemetry": {
+    "W4-RESGATE-LR001-average8-full": {
+      "moves": 957,
+      "nodes": 30476824,
+      "elapsedNanos": 29236019701,
+      "sumDepth": 7226,
+      "fallbacks": 0,
+      "maximumMoveNanos": 254905000
+    },
+    "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1": {
+      "moves": 4415,
+      "nodes": 141429595,
+      "elapsedNanos": 78478674231,
+      "sumDepth": 32588,
+      "fallbacks": 0,
+      "maximumMoveNanos": 119456900
+    },
+    "W4-RESGATE-LR003-average8-full": {
+      "moves": 1264,
+      "nodes": 40560317,
+      "elapsedNanos": 34742765008,
+      "sumDepth": 9383,
+      "fallbacks": 0,
+      "maximumMoveNanos": 141311900
+    },
+    "W4-RESCUBIC-LR001-average8-full": {
+      "moves": 1132,
+      "nodes": 36341610,
+      "elapsedNanos": 28082877290,
+      "sumDepth": 8216,
+      "fallbacks": 0,
+      "maximumMoveNanos": 154678200
+    },
+    "W4-RESCUBIC-LR003-average8-full": {
+      "moves": 1069,
+      "nodes": 34301990,
+      "elapsedNanos": 25149521750,
+      "sumDepth": 7614,
+      "fallbacks": 0,
+      "maximumMoveNanos": 43852799
+    }
+  },
+  "commonOpponentContrasts": [
+    {
+      "left": "W4-RESGATE-LR001-average8-full",
+      "right": "W4-RESGATE-LR003-average8-full",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.03125,
+      "pairStandardError": 0.08759561102834189,
+      "descriptiveNormal95": [
+        -0.1404373976155501,
+        0.2029373976155501
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-average8-full",
+      "right": "W4-RESCUBIC-LR001-average8-full",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.1875,
+      "pairStandardError": 0.18749999999999997,
+      "descriptiveNormal95": [
+        -0.17999999999999994,
+        0.5549999999999999
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR001-average8-full",
+      "right": "W4-RESCUBIC-LR003-average8-full",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.03125,
+      "pairStandardError": 0.119872514125871,
+      "descriptiveNormal95": [
+        -0.26620012768670714,
+        0.20370012768670714
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-average8-full",
+      "right": "W4-RESCUBIC-LR001-average8-full",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.15625,
+      "pairStandardError": 0.14124367874603905,
+      "descriptiveNormal95": [
+        -0.12058761034223653,
+        0.43308761034223653
+      ]
+    },
+    {
+      "left": "W4-RESGATE-LR003-average8-full",
+      "right": "W4-RESCUBIC-LR003-average8-full",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.0625,
+      "pairStandardError": 0.0625,
+      "descriptiveNormal95": [
+        -0.185,
+        0.06
+      ]
+    },
+    {
+      "left": "W4-RESCUBIC-LR001-average8-full",
+      "right": "W4-RESCUBIC-LR003-average8-full",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.21875,
+      "pairStandardError": 0.1372359477583875,
+      "descriptiveNormal95": [
+        -0.48773245760643946,
+        0.05023245760643946
+      ]
+    }
+  ],
+  "openingPrefixSensitivity": [
+    {
+      "plies": 4,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 8,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 12,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 16,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    }
+  ],
+  "processReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-full-node-01.process.json",
+      "sha256": "852022d1272d20a0aeb4cc8befbbfe36b7016f77c5e1a4acf6148ca4ee34fc07",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "f31bac670c6ae7e91c4845330dba6a48945d0b760a115ce58788a77151434fe1",
+      "completedUtc": "2026-10-20T22:34:25.1056754Z",
+      "sampledPeakWorkingSetBytes": 542732288,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-average-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 43.109375,
+      "plan": "docs/research/brn-successor-cglhw/wave4-direct-full-node-plan.json",
+      "processId": 49816,
+      "startedUtc": "2026-10-20T22:33:46.2519780Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-full-node-02.process.json",
+      "sha256": "50c000d2395a78e861538f906b654baaaa45a1ce0c698b6c4c02b9fb414b9c8c",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "f31bac670c6ae7e91c4845330dba6a48945d0b760a115ce58788a77151434fe1",
+      "completedUtc": "2026-10-20T22:34:56.5818021Z",
+      "sampledPeakWorkingSetBytes": 610095104,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-average-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 35.5,
+      "plan": "docs/research/brn-successor-cglhw/wave4-direct-full-node-plan.json",
+      "processId": 49340,
+      "startedUtc": "2026-10-20T22:34:25.3088630Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-full-node-03.process.json",
+      "sha256": "ddf3feaf042774bed4dfe3b8264b4530da3f0c439ae4e9d5f04650099aa36c0e",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "f31bac670c6ae7e91c4845330dba6a48945d0b760a115ce58788a77151434fe1",
+      "completedUtc": "2026-10-20T22:35:44.6982123Z",
+      "sampledPeakWorkingSetBytes": 597315584,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-average-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 51.609375,
+      "plan": "docs/research/brn-successor-cglhw/wave4-direct-full-node-plan.json",
+      "processId": 47036,
+      "startedUtc": "2026-10-20T22:34:56.7588060Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-full-node-04.process.json",
+      "sha256": "97c4f4b36dd3441158ed422b226b70a45bb6d55e2a309e45593288bc02f58d28",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "f31bac670c6ae7e91c4845330dba6a48945d0b760a115ce58788a77151434fe1",
+      "completedUtc": "2026-10-20T22:36:23.9271531Z",
+      "sampledPeakWorkingSetBytes": 596541440,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-average-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 42.96875,
+      "plan": "docs/research/brn-successor-cglhw/wave4-direct-full-node-plan.json",
+      "processId": 52272,
+      "startedUtc": "2026-10-20T22:35:45.1352181Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-full-node-05.process.json",
+      "sha256": "6a25acf756ab44ee76f9c9649464d904839b38e60743d0d478927c3b87f9171b",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "f31bac670c6ae7e91c4845330dba6a48945d0b760a115ce58788a77151434fe1",
+      "completedUtc": "2026-10-20T22:36:57.9074752Z",
+      "sampledPeakWorkingSetBytes": 599322624,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-average-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 38.8125,
+      "plan": "docs/research/brn-successor-cglhw/wave4-direct-full-node-plan.json",
+      "processId": 52652,
+      "startedUtc": "2026-10-20T22:36:24.1951574Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\direct-full-node-06.process.json",
+      "sha256": "6c1338d4ea175a1d65faa8170bf9d6dab563a36de0c370c43793e82ddbad142e",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "f31bac670c6ae7e91c4845330dba6a48945d0b760a115ce58788a77151434fe1",
+      "completedUtc": "2026-10-20T22:37:11.2454714Z",
+      "sampledPeakWorkingSetBytes": 261820416,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave4-average-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 17.0625,
+      "plan": "docs/research/brn-successor-cglhw/wave4-direct-full-node-plan.json",
+      "processId": 53036,
+      "startedUtc": "2026-10-20T22:36:58.1444732Z"
+    }
+  ],
+  "maximumSampledWorkingSetMiB": 581.83203125,
+  "totalEngineCpuSeconds": 229.0625,
+  "limitations": [
+    "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims.",
+    "Paired differences on shared complete opening pairs against the same reference. Positive favours left. Descriptive, unadjusted, not direct head-to-head strength or architectural causation.",
+    "Fresh search/TT at identical opening roots; different evaluator-dependent trees. Clock protocols warm up; node protocols do not. Descriptive cost/behaviour, not causal latency or strength.",
+    "Move-prefix grouping is a descriptive dependence warning, not ECO/source-game classification or proof of independent opening families. Pair intervals are unadjusted.",
+    "Hoeffding intervals assume independent bounded opening-pair scores; within-plan union bound covers only this plan, not prior candidate selection or repeated protocols. Independence remains unverified.",
+    "No final strength claim, selection-adjusted confirmation, or architectural causation inferred."
+  ]
+}

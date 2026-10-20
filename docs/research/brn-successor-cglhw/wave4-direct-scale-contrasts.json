@@ -1,0 +1,48 @@
+{
+  "id": "wave4-direct-scale-contrasts-v1",
+  "full": "wave4-direct-full-node-results.json",
+  "half": "wave4-direct-node-LR003-results.json",
+  "contrasts": [
+    {
+      "full": "W4-RESGATE-LR001-average8-full",
+      "half": "W4-RESGATE-LR001-average8-half",
+      "fullMinusHalf": -0.03125,
+      "pairStandardError": 0.1451407875625791,
+      "descriptiveNormal95": [
+        -0.315725943622655,
+        0.253225943622655
+      ]
+    },
+    {
+      "full": "W4-RESGATE-LR003-average8-full",
+      "half": "W4-RESGATE-LR003-average8-half",
+      "fullMinusHalf": 0.15625,
+      "pairStandardError": 0.10498192871700757,
+      "descriptiveNormal95": [
+        -0.049514580285334814,
+        0.36201458028533484
+      ]
+    },
+    {
+      "full": "W4-RESCUBIC-LR001-average8-full",
+      "half": "W4-RESCUBIC-LR001-average8-half",
+      "fullMinusHalf": -0.125,
+      "pairStandardError": 0.20044593143431827,
+      "descriptiveNormal95": [
+        -0.5178740256112637,
+        0.2678740256112638
+      ]
+    },
+    {
+      "full": "W4-RESCUBIC-LR003-average8-full",
+      "half": "W4-RESCUBIC-LR003-average8-half",
+      "fullMinusHalf": 0.21875,
+      "pairStandardError": 0.1972891053034317,
+      "descriptiveNormal95": [
+        -0.1679366463947261,
+        0.605436646394726
+      ]
+    }
+  ],
+  "scope": "Same8 development roots, same BRE003 half-change endpoint,32768nodes. Paired descriptive differences, not independent confirmation or causal search-policy attribution."
+}

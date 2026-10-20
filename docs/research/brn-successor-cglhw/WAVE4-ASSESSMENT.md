@@ -418,3 +418,56 @@ Next: finish the64 full-scale node comparisons, the64 pruned function comparison
 and both96-game direct clock plans. Interpret full/half, smoothing and component
 value jointly with both additive controls and measured costs before selecting the
 next implementation/training question. No further training gate is yet admitted.
+
+
+## Full-scale and pruning controls; hybrid feasibility
+
+The64 full-scale direct node games against BRE003 half are closed, with8837 legal
+moves independently replayed and no failure/cap. GATE001 scores62.5%,GATE00359.375%,
+CUBIC00143.75%,CUBIC00365.625%. On the same eight opening pairs, full-minus-half
+changes are -3.125,+15.625,-12.5,+21.875 percentage points respectively. These
+selected small comparisons do not establish superiority, but reject treating the
+half-scale LR003 ranking as calibration-independent architectural evidence.
+`wave4-direct-scale-contrasts.json` records paired uncertainty. Before any direct
+clock outcomes were examined, a fixed32-game full-clock screen of GATE003 and
+CUBIC003 against BRE003 half was admitted in `wave4-direct-full-clock-admission.json`.
+It follows the original two96-game half-clock plans under the same frozen averaging
+runtime. Selection is explicit; it is not independent confirmation.
+
+The64 rank4-versus-rank16 node games are also closed: full scale9/7/16 (39.0625%,
+paired normal95%27.25-50.87), half scale13/7/12 (51.5625%,39.34-63.79). All8250 moves
+replay legally, without failures/caps. Full prediction improvement did not preserve
+the full-scale chess point score. Half pruning remains uncertain, not proven
+noninferior. These games use the dense verified cache and establish no speed gain.
+Sparse/packed integration is deferred; any further cost choice requires a balanced
+same-run layout comparison and must retain the function mask identity.
+
+`wave4-persisted-training-cost.json` extracts the existing counters, not new training.
+Across32 generations, recorded training-time medians are8.95s for both GATE arms,
+7.22/7.33s for CUBIC001/003 and10.16/10.61s for BRE001/003. Summed generation elapsed
+counters are302.0/300.4,244.8/244.7 and350.7/357.9s respectively. Host conditions and
+acquisition/shuffling differ; these are not controlled CPU costs, and exclude
+unpersisted failed-attempt time and pauses. Inference speed and training speed must
+not be conflated.
+
+The next discriminating hypothesis preserves continued additive learning alongside
+the existing correction: Gen32 +.5*(BRE64-Gen32) + beta*(residual mean-Gen32).
+The fixed beta grid0/.25/.5/1 and both additive-only mean controls were recorded
+before calculation in `wave4-hybrid-feasibility-plan.json`. Each source's first1024
+rows select beta; the remaining1024 report prediction separately. All panels are
+already consumed development data. All eight residual/base combinations select.5.
+All four on BRE001 improve both sources versus both the base alone and the
+standalone half residual. GATE001/003 on BRE003 also improve both; CUBIC on BRE003
+trades improved BT4 for worse CP. Additive-only mean mixtures do not give the same
+consistent cross-source benefit. This supports complementarity, not chess strength.
+
+The initial algebra report is preserved; the separately extended
+`wave4-hybrid-feasibility-verified.json` reproduces Java CE to1.22e-15 and adds
+standalone comparisons without changing selection. No model or optimizer is exported.
+An explicit one-base-plus-correction research evaluator is being implemented;
+ordinary codecs, training and production defaults remain unchanged. Nineteen core
+tests pass, including six new hybrid composition, transition, rounding-boundary,
+zero-correction and search cases. Actual-component cache/search/cost and prediction
+oracles, loader tests and strength admission remain pending. Do not treat a
+correction codec hash as the identity of the combined function: bind both component
+payloads, scales and mapping. No new human training gate is justified yet.

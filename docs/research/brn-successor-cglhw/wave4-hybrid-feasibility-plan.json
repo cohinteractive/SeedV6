@@ -1,0 +1,32 @@
+{
+  "id": "wave4-hybrid-feasibility-v1",
+  "createdUtc": "2026-10-20T22:45:18.428053+00:00",
+  "question": "Can a continued BRE additive function and an existing nonlinear correction complement each other, preserving BRE improvements instead of forcing the correction to replace them?",
+  "formula": "Gen32 +0.5*(BRE64 endpoint-Gen32)+beta*(residual eight-checkpoint mean-Gen32)",
+  "bases": [
+    "W4-BRE-CONTROL-LR001-latest",
+    "W4-BRE-CONTROL-LR003-latest"
+  ],
+  "corrections": [
+    "W4-RESGATE-LR001-average8",
+    "W4-RESGATE-LR003-average8",
+    "W4-RESCUBIC-LR001-average8",
+    "W4-RESCUBIC-LR003-average8",
+    "W4-BRE-CONTROL-LR001-average8",
+    "W4-BRE-CONTROL-LR003-average8"
+  ],
+  "betaGrid": [
+    0,
+    0.25,
+    0.5,
+    1
+  ],
+  "additiveControls": "The two BRE-mean corrections test whether generic additive mixing gives the same benefit. Their composed functions remain additive.",
+  "inputs": [
+    "raw/wave4/average-diagnostic-02/bt4-predictions.jsonl",
+    "raw/wave4/average-diagnostic-02/cp-predictions.jsonl"
+  ],
+  "selection": "Select beta by equal-source mean CE on first1024/source only, report all grid points and second-half sources separately. These panels are already consumed development data, not independent generalization.",
+  "budget": "Algebra on existing verified predictions only; no training, engine or owner-store writes.",
+  "decision": "Prediction improvement would justify correctness/cost investigation of replacing the residual frozen-base evaluation with a separately bound continued BRE table. A naive two-evaluator blend adds cost; no integration or strength protocol is admitted by this diagnostic alone."
+}

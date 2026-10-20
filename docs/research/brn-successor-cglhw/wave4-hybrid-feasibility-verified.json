@@ -1,0 +1,1252 @@
+{
+  "id": "wave4-hybrid-feasibility-v1-results",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\wave4-hybrid-feasibility-plan.json": "0d9b44d25c85e609fb87b77ba885217061f312a846c25385d0aa1c6181d42404",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\average-diagnostic-02\\bt4-predictions.jsonl": "9e89c4ab705db8caeb96cb43281b8e00178bc13f930e72ea059b1cc776cecb1b",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\average-diagnostic-02\\summary.json": "ba7dac82d56867afade52a6589ca6624a93a63e443120f5bee1115f45a1e0c2d",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\average-diagnostic-02\\cp-predictions.jsonl": "ece2861a1e06ef003995c221feaa7673fa912f1ded4b579d4de1b6c1c1764523"
+  },
+  "measurements": [
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESGATE-LR001-average8",
+      "beta": 0,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6548969673155366,
+          "evaluationCE": 0.6369177597340052,
+          "standaloneEvaluationCE": 0.6429540476445537,
+          "evaluationDeltaRmsPawns": 0.0
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5952014323775267,
+          "evaluationCE": 0.5882886205032758,
+          "standaloneEvaluationCE": 0.5982402406571895,
+          "evaluationDeltaRmsPawns": 0.0
+        }
+      ],
+      "meanFitCE": 0.6250491998465316
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESGATE-LR001-average8",
+      "beta": 0.25,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6496211156524906,
+          "evaluationCE": 0.6312246454355052,
+          "standaloneEvaluationCE": 0.6354893307068208,
+          "evaluationDeltaRmsPawns": 0.0920080539628389
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5890383148380851,
+          "evaluationCE": 0.5831972340525444,
+          "standaloneEvaluationCE": 0.5899315769054011,
+          "evaluationDeltaRmsPawns": 0.11208616736968446
+        }
+      ],
+      "meanFitCE": 0.6193297152452879
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESGATE-LR001-average8",
+      "beta": 0.5,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.646454546152457,
+          "evaluationCE": 0.6278967792968959,
+          "standaloneEvaluationCE": 0.6308085144693348,
+          "evaluationDeltaRmsPawns": 0.1840161079256778
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5851700976812675,
+          "evaluationCE": 0.5804570886336696,
+          "standaloneEvaluationCE": 0.5842971501851048,
+          "evaluationDeltaRmsPawns": 0.2241723347393689
+        }
+      ],
+      "meanFitCE": 0.6158123219168623
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESGATE-LR001-average8",
+      "beta": 1,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.647632271062936,
+          "evaluationCE": 0.6274488338340215,
+          "standaloneEvaluationCE": 0.6275180527507946,
+          "evaluationDeltaRmsPawns": 0.3680322158513556
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5852275144982045,
+          "evaluationCE": 0.5808500574175964,
+          "standaloneEvaluationCE": 0.5789302188252784,
+          "evaluationDeltaRmsPawns": 0.44834466947873786
+        }
+      ],
+      "meanFitCE": 0.6164298927805703
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESGATE-LR003-average8",
+      "beta": 0,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6548969673155366,
+          "evaluationCE": 0.6369177597340052,
+          "standaloneEvaluationCE": 0.6429540476445537,
+          "evaluationDeltaRmsPawns": 0.0
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5952014323775267,
+          "evaluationCE": 0.5882886205032758,
+          "standaloneEvaluationCE": 0.5982402406571895,
+          "evaluationDeltaRmsPawns": 0.0
+        }
+      ],
+      "meanFitCE": 0.6250491998465316
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESGATE-LR003-average8",
+      "beta": 0.25,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.649463861505991,
+          "evaluationCE": 0.6312406735349895,
+          "standaloneEvaluationCE": 0.6355663004462021,
+          "evaluationDeltaRmsPawns": 0.09106239383627651
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5879758393766211,
+          "evaluationCE": 0.5822485363556159,
+          "standaloneEvaluationCE": 0.5892654305909455,
+          "evaluationDeltaRmsPawns": 0.11605948275578803
+        }
+      ],
+      "meanFitCE": 0.6187198504413061
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESGATE-LR003-average8",
+      "beta": 0.5,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6461658100572216,
+          "evaluationCE": 0.6282170347201511,
+          "standaloneEvaluationCE": 0.6310660217124613,
+          "evaluationDeltaRmsPawns": 0.182124787672553
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5835565459143465,
+          "evaluationCE": 0.5786556114069413,
+          "standaloneEvaluationCE": 0.582740386549119,
+          "evaluationDeltaRmsPawns": 0.23211896551157607
+        }
+      ],
+      "meanFitCE": 0.614861177985784
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESGATE-LR003-average8",
+      "beta": 1,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6478283468802659,
+          "evaluationCE": 0.6292992424489163,
+          "standaloneEvaluationCE": 0.6287060222825827,
+          "evaluationDeltaRmsPawns": 0.364249575345106
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5836573150577398,
+          "evaluationCE": 0.5786032116171064,
+          "standaloneEvaluationCE": 0.576012337282789,
+          "evaluationDeltaRmsPawns": 0.46423793102315214
+        }
+      ],
+      "meanFitCE": 0.6157428309690028
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESCUBIC-LR001-average8",
+      "beta": 0,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6548969673155366,
+          "evaluationCE": 0.6369177597340052,
+          "standaloneEvaluationCE": 0.6429540476445537,
+          "evaluationDeltaRmsPawns": 0.0
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5952014323775267,
+          "evaluationCE": 0.5882886205032758,
+          "standaloneEvaluationCE": 0.5982402406571895,
+          "evaluationDeltaRmsPawns": 0.0
+        }
+      ],
+      "meanFitCE": 0.6250491998465316
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESCUBIC-LR001-average8",
+      "beta": 0.25,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6485824585742491,
+          "evaluationCE": 0.6296074294664441,
+          "standaloneEvaluationCE": 0.633859288053659,
+          "evaluationDeltaRmsPawns": 0.10599579460782992
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5849319515021125,
+          "evaluationCE": 0.583797209979197,
+          "standaloneEvaluationCE": 0.5900686304339644,
+          "evaluationDeltaRmsPawns": 0.1345731280124646
+        }
+      ],
+      "meanFitCE": 0.6167572050381809
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESCUBIC-LR001-average8",
+      "beta": 0.5,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6448139639726659,
+          "evaluationCE": 0.6258749087312016,
+          "standaloneEvaluationCE": 0.628645235140736,
+          "evaluationDeltaRmsPawns": 0.21199158921565983
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5779062614993887,
+          "evaluationCE": 0.5828061326668851,
+          "standaloneEvaluationCE": 0.585654003993148,
+          "evaluationDeltaRmsPawns": 0.26914625602492914
+        }
+      ],
+      "meanFitCE": 0.6113601127360273
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESCUBIC-LR001-average8",
+      "beta": 1,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6501094166193725,
+          "evaluationCE": 0.6291053897157907,
+          "standaloneEvaluationCE": 0.6275049484768109,
+          "evaluationDeltaRmsPawns": 0.42398317843131966
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5745310437482108,
+          "evaluationCE": 0.6066474444477236,
+          "standaloneEvaluationCE": 0.5995034478681286,
+          "evaluationDeltaRmsPawns": 0.5382925120498584
+        }
+      ],
+      "meanFitCE": 0.6123202301837917
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESCUBIC-LR003-average8",
+      "beta": 0,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6548969673155366,
+          "evaluationCE": 0.6369177597340052,
+          "standaloneEvaluationCE": 0.6429540476445537,
+          "evaluationDeltaRmsPawns": 0.0
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5952014323775267,
+          "evaluationCE": 0.5882886205032758,
+          "standaloneEvaluationCE": 0.5982402406571895,
+          "evaluationDeltaRmsPawns": 0.0
+        }
+      ],
+      "meanFitCE": 0.6250491998465316
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESCUBIC-LR003-average8",
+      "beta": 0.25,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6499647794764042,
+          "evaluationCE": 0.630437518185901,
+          "standaloneEvaluationCE": 0.634979000733116,
+          "evaluationDeltaRmsPawns": 0.10186652898674646
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5878922639423685,
+          "evaluationCE": 0.5844212859793015,
+          "standaloneEvaluationCE": 0.5910014914149879,
+          "evaluationDeltaRmsPawns": 0.13137398398042824
+        }
+      ],
+      "meanFitCE": 0.6189285217093863
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESCUBIC-LR003-average8",
+      "beta": 0.5,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6477935392830572,
+          "evaluationCE": 0.6272030008360007,
+          "standaloneEvaluationCE": 0.6304195448778599,
+          "evaluationDeltaRmsPawns": 0.20373305797349292
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5840137013542341,
+          "evaluationCE": 0.5832811625807827,
+          "standaloneEvaluationCE": 0.5868696414993174,
+          "evaluationDeltaRmsPawns": 0.2627479679608565
+        }
+      ],
+      "meanFitCE": 0.6159036203186457
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESCUBIC-LR003-average8",
+      "beta": 1,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6531251419578246,
+          "evaluationCE": 0.630497452978957,
+          "standaloneEvaluationCE": 0.630302837423815,
+          "evaluationDeltaRmsPawns": 0.40746611594698584
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5879828249771675,
+          "evaluationCE": 0.6045503777984282,
+          "standaloneEvaluationCE": 0.5959212430166922,
+          "evaluationDeltaRmsPawns": 0.525495935921713
+        }
+      ],
+      "meanFitCE": 0.620553983467496
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-BRE-CONTROL-LR001-average8",
+      "beta": 0,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6548969673155366,
+          "evaluationCE": 0.6369177597340052,
+          "standaloneEvaluationCE": 0.6429540476445537,
+          "evaluationDeltaRmsPawns": 0.0
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5952014323775267,
+          "evaluationCE": 0.5882886205032758,
+          "standaloneEvaluationCE": 0.5982402406571895,
+          "evaluationDeltaRmsPawns": 0.0
+        }
+      ],
+      "meanFitCE": 0.6250491998465316
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-BRE-CONTROL-LR001-average8",
+      "beta": 0.25,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6517530147473306,
+          "evaluationCE": 0.6350216186977234,
+          "standaloneEvaluationCE": 0.6364612267631768,
+          "evaluationDeltaRmsPawns": 0.0803547544723535
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5973716206013798,
+          "evaluationCE": 0.5891174456815178,
+          "standaloneEvaluationCE": 0.5946542150625367,
+          "evaluationDeltaRmsPawns": 0.08378437563289602
+        }
+      ],
+      "meanFitCE": 0.6245623176743552
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-BRE-CONTROL-LR001-average8",
+      "beta": 0.5,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6512771623683744,
+          "evaluationCE": 0.6353417726820906,
+          "standaloneEvaluationCE": 0.633527368910603,
+          "evaluationDeltaRmsPawns": 0.160709508944707
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.6023406498336636,
+          "evaluationCE": 0.5922735314026584,
+          "standaloneEvaluationCE": 0.5932361976217114,
+          "evaluationDeltaRmsPawns": 0.16756875126579204
+        }
+      ],
+      "meanFitCE": 0.626808906101019
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-BRE-CONTROL-LR001-average8",
+      "beta": 1,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6579785144470642,
+          "evaluationCE": 0.6418487622051205,
+          "standaloneEvaluationCE": 0.6336168651374675,
+          "evaluationDeltaRmsPawns": 0.321419017889414
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.6202954012175591,
+          "evaluationCE": 0.6060469192975646,
+          "standaloneEvaluationCE": 0.5964898211259823,
+          "evaluationDeltaRmsPawns": 0.3351375025315841
+        }
+      ],
+      "meanFitCE": 0.6391369578323116
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-BRE-CONTROL-LR003-average8",
+      "beta": 0,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6548969673155366,
+          "evaluationCE": 0.6369177597340052,
+          "standaloneEvaluationCE": 0.6429540476445537,
+          "evaluationDeltaRmsPawns": 0.0
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5952014323775267,
+          "evaluationCE": 0.5882886205032758,
+          "standaloneEvaluationCE": 0.5982402406571895,
+          "evaluationDeltaRmsPawns": 0.0
+        }
+      ],
+      "meanFitCE": 0.6250491998465316
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-BRE-CONTROL-LR003-average8",
+      "beta": 0.25,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6517559248612728,
+          "evaluationCE": 0.6352201018782614,
+          "standaloneEvaluationCE": 0.636572729870083,
+          "evaluationDeltaRmsPawns": 0.0800107180993664
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5972441631926129,
+          "evaluationCE": 0.588633028418663,
+          "standaloneEvaluationCE": 0.5939510216587791,
+          "evaluationDeltaRmsPawns": 0.08893650535829319
+        }
+      ],
+      "meanFitCE": 0.6245000440269428
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-BRE-CONTROL-LR003-average8",
+      "beta": 0.5,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6513632346842595,
+          "evaluationCE": 0.6359422887193387,
+          "standaloneEvaluationCE": 0.6337037673423377,
+          "evaluationDeltaRmsPawns": 0.16002143619873277
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.6024518867396532,
+          "evaluationCE": 0.5920478788429856,
+          "standaloneEvaluationCE": 0.5921702883322201,
+          "evaluationDeltaRmsPawns": 0.17787301071658637
+        }
+      ],
+      "meanFitCE": 0.6269075607119563
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-BRE-CONTROL-LR003-average8",
+      "beta": 1,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6576326793115189,
+          "evaluationCE": 0.643852470039227,
+          "standaloneEvaluationCE": 0.6343513838265262,
+          "evaluationDeltaRmsPawns": 0.32004287239746554
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.6212785146046266,
+          "evaluationCE": 0.606505704445271,
+          "standaloneEvaluationCE": 0.5962651494959003,
+          "evaluationDeltaRmsPawns": 0.35574602143317274
+        }
+      ],
+      "meanFitCE": 0.6394555969580727
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESGATE-LR001-average8",
+      "beta": 0,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6540060705069684,
+          "evaluationCE": 0.6351422549253589,
+          "standaloneEvaluationCE": 0.6429540476445537,
+          "evaluationDeltaRmsPawns": 0.0
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5958962317244247,
+          "evaluationCE": 0.5895130913398278,
+          "standaloneEvaluationCE": 0.5982402406571895,
+          "evaluationDeltaRmsPawns": 0.0
+        }
+      ],
+      "meanFitCE": 0.6249511511156965
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESGATE-LR001-average8",
+      "beta": 0.25,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.649400377766107,
+          "evaluationCE": 0.6301021628560359,
+          "standaloneEvaluationCE": 0.6354893307068208,
+          "evaluationDeltaRmsPawns": 0.0920080539628389
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5906702354994776,
+          "evaluationCE": 0.5856838349907022,
+          "standaloneEvaluationCE": 0.5899315769054011,
+          "evaluationDeltaRmsPawns": 0.11208616736968445
+        }
+      ],
+      "meanFitCE": 0.6200353066327924
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESGATE-LR001-average8",
+      "beta": 0.5,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6470294200786274,
+          "evaluationCE": 0.62733221088995,
+          "standaloneEvaluationCE": 0.6308085144693348,
+          "evaluationDeltaRmsPawns": 0.1840161079256778
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5875309219408864,
+          "evaluationCE": 0.5838851696518651,
+          "standaloneEvaluationCE": 0.5842971501851048,
+          "evaluationDeltaRmsPawns": 0.22417233473936893
+        }
+      ],
+      "meanFitCE": 0.6172801710097569
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESGATE-LR001-average8",
+      "beta": 1,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6500842500556208,
+          "evaluationCE": 0.627690841702515,
+          "standaloneEvaluationCE": 0.6275180527507946,
+          "evaluationDeltaRmsPawns": 0.3680322158513556
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5883605719120278,
+          "evaluationCE": 0.5856034454338414,
+          "standaloneEvaluationCE": 0.5789302188252784,
+          "evaluationDeltaRmsPawns": 0.44834466947873786
+        }
+      ],
+      "meanFitCE": 0.6192224109838242
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESGATE-LR003-average8",
+      "beta": 0,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6540060705069684,
+          "evaluationCE": 0.6351422549253589,
+          "standaloneEvaluationCE": 0.6429540476445537,
+          "evaluationDeltaRmsPawns": 0.0
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5958962317244247,
+          "evaluationCE": 0.5895130913398278,
+          "standaloneEvaluationCE": 0.5982402406571895,
+          "evaluationDeltaRmsPawns": 0.0
+        }
+      ],
+      "meanFitCE": 0.6249511511156965
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESGATE-LR003-average8",
+      "beta": 0.25,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6490708481708564,
+          "evaluationCE": 0.6300564945303567,
+          "standaloneEvaluationCE": 0.6355663004462021,
+          "evaluationDeltaRmsPawns": 0.0910623938362765
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5897109874272499,
+          "evaluationCE": 0.5847087205459568,
+          "standaloneEvaluationCE": 0.5892654305909455,
+          "evaluationDeltaRmsPawns": 0.11605948275578803
+        }
+      ],
+      "meanFitCE": 0.6193909177990531
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESGATE-LR003-average8",
+      "beta": 0.5,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6464171622553804,
+          "evaluationCE": 0.6275150335811618,
+          "standaloneEvaluationCE": 0.6310660217124613,
+          "evaluationDeltaRmsPawns": 0.182124787672553
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5861509037162511,
+          "evaluationCE": 0.5820036868522154,
+          "standaloneEvaluationCE": 0.582740386549119,
+          "evaluationDeltaRmsPawns": 0.23211896551157607
+        }
+      ],
+      "meanFitCE": 0.6162840329858157
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESGATE-LR003-average8",
+      "beta": 1,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6494312120226572,
+          "evaluationCE": 0.6292483976092762,
+          "standaloneEvaluationCE": 0.6287060222825827,
+          "evaluationDeltaRmsPawns": 0.364249575345106
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5872713774341987,
+          "evaluationCE": 0.5836431049169869,
+          "standaloneEvaluationCE": 0.576012337282789,
+          "evaluationDeltaRmsPawns": 0.46423793102315214
+        }
+      ],
+      "meanFitCE": 0.618351294728428
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESCUBIC-LR001-average8",
+      "beta": 0,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6540060705069684,
+          "evaluationCE": 0.6351422549253589,
+          "standaloneEvaluationCE": 0.6429540476445537,
+          "evaluationDeltaRmsPawns": 0.0
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5958962317244247,
+          "evaluationCE": 0.5895130913398278,
+          "standaloneEvaluationCE": 0.5982402406571895,
+          "evaluationDeltaRmsPawns": 0.0
+        }
+      ],
+      "meanFitCE": 0.6249511511156965
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESCUBIC-LR001-average8",
+      "beta": 0.25,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6484615517065144,
+          "evaluationCE": 0.6286517613108964,
+          "standaloneEvaluationCE": 0.633859288053659,
+          "evaluationDeltaRmsPawns": 0.10599579460782992
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5864129311572772,
+          "evaluationCE": 0.5868842564406286,
+          "standaloneEvaluationCE": 0.5900686304339644,
+          "evaluationDeltaRmsPawns": 0.1345731280124646
+        }
+      ],
+      "meanFitCE": 0.6174372414318958
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESCUBIC-LR001-average8",
+      "beta": 0.5,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.645756520768948,
+          "evaluationCE": 0.6254132182428324,
+          "standaloneEvaluationCE": 0.628645235140736,
+          "evaluationDeltaRmsPawns": 0.21199158921565983
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5796890962948038,
+          "evaluationCE": 0.5907162812662857,
+          "standaloneEvaluationCE": 0.585654003993148,
+          "evaluationDeltaRmsPawns": 0.2691462560249292
+        }
+      ],
+      "meanFitCE": 0.6127228085318759
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESCUBIC-LR001-average8",
+      "beta": 1,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6535246422962813,
+          "evaluationCE": 0.6299158982253894,
+          "standaloneEvaluationCE": 0.6275049484768109,
+          "evaluationDeltaRmsPawns": 0.42398317843131966
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5766858349004514,
+          "evaluationCE": 0.6168425820683069,
+          "standaloneEvaluationCE": 0.5995034478681286,
+          "evaluationDeltaRmsPawns": 0.5382925120498584
+        }
+      ],
+      "meanFitCE": 0.6151052385983664
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESCUBIC-LR003-average8",
+      "beta": 0,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6540060705069684,
+          "evaluationCE": 0.6351422549253589,
+          "standaloneEvaluationCE": 0.6429540476445537,
+          "evaluationDeltaRmsPawns": 0.0
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5958962317244247,
+          "evaluationCE": 0.5895130913398278,
+          "standaloneEvaluationCE": 0.5982402406571895,
+          "evaluationDeltaRmsPawns": 0.0
+        }
+      ],
+      "meanFitCE": 0.6249511511156965
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESCUBIC-LR003-average8",
+      "beta": 0.25,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6496017157862032,
+          "evaluationCE": 0.629383625650103,
+          "standaloneEvaluationCE": 0.634979000733116,
+          "evaluationDeltaRmsPawns": 0.10186652898674646
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5896399665572684,
+          "evaluationCE": 0.5875102468896221,
+          "standaloneEvaluationCE": 0.5910014914149879,
+          "evaluationDeltaRmsPawns": 0.13137398398042824
+        }
+      ],
+      "meanFitCE": 0.6196208411717358
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESCUBIC-LR003-average8",
+      "beta": 0.5,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6481096610890849,
+          "evaluationCE": 0.626686701212738,
+          "standaloneEvaluationCE": 0.6304195448778599,
+          "evaluationDeltaRmsPawns": 0.20373305797349292
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5861888356447643,
+          "evaluationCE": 0.5899002104526335,
+          "standaloneEvaluationCE": 0.5868696414993174,
+          "evaluationDeltaRmsPawns": 0.2627479679608565
+        }
+      ],
+      "meanFitCE": 0.6171492483669245
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESCUBIC-LR003-average8",
+      "beta": 1,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.654726476289068,
+          "evaluationCE": 0.6314363312212246,
+          "standaloneEvaluationCE": 0.630302837423815,
+          "evaluationDeltaRmsPawns": 0.40746611594698584
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5903341437834075,
+          "evaluationCE": 0.6158357037044863,
+          "standaloneEvaluationCE": 0.5959212430166922,
+          "evaluationDeltaRmsPawns": 0.525495935921713
+        }
+      ],
+      "meanFitCE": 0.6225303100362378
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-BRE-CONTROL-LR001-average8",
+      "beta": 0,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6540060705069684,
+          "evaluationCE": 0.6351422549253589,
+          "standaloneEvaluationCE": 0.6429540476445537,
+          "evaluationDeltaRmsPawns": 0.0
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5958962317244247,
+          "evaluationCE": 0.5895130913398278,
+          "standaloneEvaluationCE": 0.5982402406571895,
+          "evaluationDeltaRmsPawns": 0.0
+        }
+      ],
+      "meanFitCE": 0.6249511511156965
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-BRE-CONTROL-LR001-average8",
+      "beta": 0.25,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.651492597263586,
+          "evaluationCE": 0.6337200959322401,
+          "standaloneEvaluationCE": 0.6364612267631768,
+          "evaluationDeltaRmsPawns": 0.0803547544723535
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5991026902816985,
+          "evaluationCE": 0.5913284959090626,
+          "standaloneEvaluationCE": 0.5946542150625367,
+          "evaluationDeltaRmsPawns": 0.08378437563289602
+        }
+      ],
+      "meanFitCE": 0.6252976437726423
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-BRE-CONTROL-LR001-average8",
+      "beta": 0.5,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6516651683926783,
+          "evaluationCE": 0.6342568709961742,
+          "standaloneEvaluationCE": 0.633527368910603,
+          "evaluationDeltaRmsPawns": 0.160709508944707
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.6045912448779301,
+          "evaluationCE": 0.5953733345171068,
+          "standaloneEvaluationCE": 0.5932361976217114,
+          "evaluationDeltaRmsPawns": 0.16756875126579204
+        }
+      ],
+      "meanFitCE": 0.6281282066353042
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-BRE-CONTROL-LR001-average8",
+      "beta": 1,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6590761710397285,
+          "evaluationCE": 0.6403173904857903,
+          "standaloneEvaluationCE": 0.6336168651374675,
+          "evaluationDeltaRmsPawns": 0.321419017889414
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.622815457491699,
+          "evaluationCE": 0.6102879714262822,
+          "standaloneEvaluationCE": 0.5964898211259823,
+          "evaluationDeltaRmsPawns": 0.3351375025315841
+        }
+      ],
+      "meanFitCE": 0.6409458142657137
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-BRE-CONTROL-LR003-average8",
+      "beta": 0,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6540060705069684,
+          "evaluationCE": 0.6351422549253589,
+          "standaloneEvaluationCE": 0.6429540476445537,
+          "evaluationDeltaRmsPawns": 0.0
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5958962317244247,
+          "evaluationCE": 0.5895130913398278,
+          "standaloneEvaluationCE": 0.5982402406571895,
+          "evaluationDeltaRmsPawns": 0.0
+        }
+      ],
+      "meanFitCE": 0.6249511511156965
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-BRE-CONTROL-LR003-average8",
+      "beta": 0.25,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6517405574774945,
+          "evaluationCE": 0.6341925420301572,
+          "standaloneEvaluationCE": 0.636572729870083,
+          "evaluationDeltaRmsPawns": 0.08001071809936638
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.5992441349265824,
+          "evaluationCE": 0.5914975496424573,
+          "standaloneEvaluationCE": 0.5939510216587791,
+          "evaluationDeltaRmsPawns": 0.08893650535829319
+        }
+      ],
+      "meanFitCE": 0.6254923462020384
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-BRE-CONTROL-LR003-average8",
+      "beta": 0.5,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6522197404341892,
+          "evaluationCE": 0.6354021905803406,
+          "standaloneEvaluationCE": 0.6337037673423377,
+          "evaluationDeltaRmsPawns": 0.16002143619873277
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.6051001469416473,
+          "evaluationCE": 0.5958321553559609,
+          "standaloneEvaluationCE": 0.5921702883322201,
+          "evaluationDeltaRmsPawns": 0.17787301071658637
+        }
+      ],
+      "meanFitCE": 0.6286599436879182
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-BRE-CONTROL-LR003-average8",
+      "beta": 1,
+      "sources": [
+        {
+          "source": "BT4",
+          "fitCE": 0.6603227117285269,
+          "evaluationCE": 0.6435787353711212,
+          "standaloneEvaluationCE": 0.6343513838265262,
+          "evaluationDeltaRmsPawns": 0.32004287239746554
+        },
+        {
+          "source": "CP",
+          "fitCE": 0.6246798419791396,
+          "evaluationCE": 0.6127102498905532,
+          "standaloneEvaluationCE": 0.5962651494959003,
+          "evaluationDeltaRmsPawns": 0.35574602143317274
+        }
+      ],
+      "meanFitCE": 0.6425012768538332
+    }
+  ],
+  "selections": [
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESGATE-LR001-average8",
+      "beta": 0.5,
+      "meanFitImprovement": 0.009236877929669318,
+      "evaluationImprovement": {
+        "BT4": 0.009020980437109305,
+        "CP": 0.007831531869606168
+      },
+      "improvementOverStandalone": {
+        "BT4": 0.002911735172438923,
+        "CP": 0.0038400615514351255
+      },
+      "additiveOnly": false
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESGATE-LR003-average8",
+      "beta": 0.5,
+      "meanFitImprovement": 0.010188021860747631,
+      "evaluationImprovement": {
+        "BT4": 0.008700725013854105,
+        "CP": 0.009633009096334466
+      },
+      "improvementOverStandalone": {
+        "BT4": 0.0028489869923101763,
+        "CP": 0.0040847751421776435
+      },
+      "additiveOnly": false
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESCUBIC-LR001-average8",
+      "beta": 0.5,
+      "meanFitImprovement": 0.013689087110504317,
+      "evaluationImprovement": {
+        "BT4": 0.011042851002803666,
+        "CP": 0.005482487836390715
+      },
+      "improvementOverStandalone": {
+        "BT4": 0.0027703264095344515,
+        "CP": 0.002847871326262963
+      },
+      "additiveOnly": false
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-RESCUBIC-LR003-average8",
+      "beta": 0.5,
+      "meanFitImprovement": 0.009145579527885972,
+      "evaluationImprovement": {
+        "BT4": 0.00971475889800455,
+        "CP": 0.00500745792249313
+      },
+      "improvementOverStandalone": {
+        "BT4": 0.003216544041859226,
+        "CP": 0.0035884789185347543
+      },
+      "additiveOnly": false
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-BRE-CONTROL-LR001-average8",
+      "beta": 0.25,
+      "meanFitImprovement": 0.00048688217217640606,
+      "evaluationImprovement": {
+        "BT4": 0.0018961410362817732,
+        "CP": -0.0008288251782420097
+      },
+      "improvementOverStandalone": {
+        "BT4": 0.0014396080654534016,
+        "CP": 0.00553676938101888
+      },
+      "additiveOnly": true
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR001-latest",
+      "correction": "W4-BRE-CONTROL-LR003-average8",
+      "beta": 0.25,
+      "meanFitImprovement": 0.0005491558195888091,
+      "evaluationImprovement": {
+        "BT4": 0.0016976578557438282,
+        "CP": -0.000344407915387257
+      },
+      "improvementOverStandalone": {
+        "BT4": 0.0013526279918215645,
+        "CP": 0.005317993240116059
+      },
+      "additiveOnly": true
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESGATE-LR001-average8",
+      "beta": 0.5,
+      "meanFitImprovement": 0.007670980105939695,
+      "evaluationImprovement": {
+        "BT4": 0.0078100440354089695,
+        "CP": 0.005627921687962667
+      },
+      "improvementOverStandalone": {
+        "BT4": 0.0034763035793848873,
+        "CP": 0.0004119805332396531
+      },
+      "additiveOnly": false
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESGATE-LR003-average8",
+      "beta": 0.5,
+      "meanFitImprovement": 0.008667118129880858,
+      "evaluationImprovement": {
+        "BT4": 0.007627221344197133,
+        "CP": 0.007509404487612392
+      },
+      "improvementOverStandalone": {
+        "BT4": 0.003550988131299504,
+        "CP": 0.0007366996969035977
+      },
+      "additiveOnly": false
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESCUBIC-LR001-average8",
+      "beta": 0.5,
+      "meanFitImprovement": 0.012228342583820662,
+      "evaluationImprovement": {
+        "BT4": 0.00972903668252656,
+        "CP": -0.0012031899264579593
+      },
+      "improvementOverStandalone": {
+        "BT4": 0.0032320168979036445,
+        "CP": -0.005062277273137683
+      },
+      "additiveOnly": false
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-RESCUBIC-LR003-average8",
+      "beta": 0.5,
+      "meanFitImprovement": 0.007801902748772016,
+      "evaluationImprovement": {
+        "BT4": 0.008455553712620967,
+        "CP": -0.00038711911280575606
+      },
+      "improvementOverStandalone": {
+        "BT4": 0.003732843665121943,
+        "CP": -0.003030568953316104
+      },
+      "additiveOnly": false
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-BRE-CONTROL-LR001-average8",
+      "beta": 0,
+      "meanFitImprovement": 0.0,
+      "evaluationImprovement": {
+        "BT4": 0.0,
+        "CP": 0.0
+      },
+      "improvementOverStandalone": {
+        "BT4": 0.007811792719194743,
+        "CP": 0.008727149317361738
+      },
+      "additiveOnly": true
+    },
+    {
+      "base": "W4-BRE-CONTROL-LR003-latest",
+      "correction": "W4-BRE-CONTROL-LR003-average8",
+      "beta": 0,
+      "meanFitImprovement": 0.0,
+      "evaluationImprovement": {
+        "BT4": 0.0,
+        "CP": 0.0
+      },
+      "improvementOverStandalone": {
+        "BT4": 0.007811792719194743,
+        "CP": 0.008727149317361738
+      },
+      "additiveOnly": true
+    }
+  ],
+  "maximumIndependentJavaCEError": 1.2212453270876722e-15,
+  "formula": "Gen32 +0.5*(BRE64 endpoint-Gen32)+beta*(residual eight-checkpoint mean-Gen32)",
+  "limitations": "Consumed development panels and multiple choices. Algebraic feasibility only; no trained model, efficient implementation, chess gain, or independent generalization claimed. Additive-only mixtures are essential controls."
+}
