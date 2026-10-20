@@ -6,6 +6,9 @@ param(
 )
 $ErrorActionPreference='Stop'
 # One bounded runner invocation. No loop, training, cleanup, or store writes.
+if (Test-Path -LiteralPath 'build/research/brn-successor-batches.pause') {
+    throw 'Research batches intentionally paused before launch; preserve receipts and resume with a new log prefix.'
+}
 $binding=Get-Content -LiteralPath $RuntimeManifest -Raw -Encoding UTF8 | ConvertFrom-Json
 $configuration=Get-Content -LiteralPath $Plan -Raw -Encoding UTF8 | ConvertFrom-Json
 if ($configuration.batchGames -gt 12 -or $configuration.batchSeconds -gt 240) {

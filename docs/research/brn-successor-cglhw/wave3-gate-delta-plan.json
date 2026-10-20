@@ -1,0 +1,13 @@
+{
+  "id": "wave3-gate-delta-prototype-v1",
+  "question": "Can updating only changed GATE pieces and incident pairs reduce transition cost while a periodic canonical rebuild bounds accumulation history?",
+  "modelPlan": "wave3-variant-model-plan.json",
+  "candidate": "RESGATE32-half",
+  "inputs": ["raw/wave2/node-screen", "raw/wave2/data-01/lichess-sealed-positions.jsonl"],
+  "scope": "Research-only prototype, no search routing or production evaluator changes, no training or checkpoint writes.",
+  "rebuild": "Initially, after64 changed placements, or whenever more than8 squares change. Canonical full sums for both perspectives.",
+  "oracle": "Three forward/reverse/forward passes of preserved game transitions and CP diagnostic positions; compare raw and integer results with original full recomputation. Maximum allowed empirical raw error1e-9 and no integer differences.",
+  "timing": "100000 paired warmup transitions, eight balanced old/new samples,200000 transitions/sample, game transitions only. Same stored sequence.",
+  "limits": "One BelowNormal process, ActiveProcessorCount=1,768MiB; pause tournament admission at a batch boundary before compiling/running; resume frozen protocols afterward.",
+  "decision": "No adoption from speed alone. A promising result requires adversarial rounding/transition tests, search parity, whole-search cost and an explicit numerical-error/fallback strategy. Negative or negligible benefit closes this prototype without changing production."
+}

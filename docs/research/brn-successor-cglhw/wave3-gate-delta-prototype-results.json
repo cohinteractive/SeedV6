@@ -1,0 +1,73 @@
+{
+  "id": "wave3-gate-delta-prototype-v1",
+  "plan": "wave3-gate-delta-plan.json",
+  "raw": "raw\\wave3\\gate-delta-01.json",
+  "rawSha256": "0750ee5de543664f83b3187ff6708faf6713a0bddd49b17d83950b553e99fb68",
+  "sourceFile": "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnGatedDeltaProbe.java",
+  "sourceSha256": "e7c75b0970cfd7036ff029cc8dbf1143067d5dcf584621c90fde91d641536a71",
+  "baseCommit": "15e2ba4dcb08457e45014e7cfca197fcc0627004",
+  "runtimeJarHashes": {
+    "engine-core.jar": "bc1ea12aa9015b6a7ff11859d07cb599b24d8e9b0fc1f766394f0163a3b896d5",
+    "engine-training.jar": "b3973db8e9b2d2a7cf3140ad1c42f667d2aef575a5556d536a7418273edb428a",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "688fb021440fe4edefe4240fa0d4daed46363a37d994db755229946e35ef5d4e",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "comparisons": 25143,
+  "maximumRawError": 5.329070518200751e-15,
+  "integerDifferences": 0,
+  "timings": [
+    {
+      "updates": 0,
+      "nanosPerTransition": 1273.8075,
+      "delta": false,
+      "rebuilds": 0
+    },
+    {
+      "updates": 196083,
+      "nanosPerTransition": 559.8455,
+      "delta": true,
+      "rebuilds": 3917
+    },
+    {
+      "updates": 196083,
+      "nanosPerTransition": 373.606,
+      "delta": true,
+      "rebuilds": 3917
+    },
+    {
+      "updates": 0,
+      "nanosPerTransition": 949.732,
+      "delta": false,
+      "rebuilds": 0
+    },
+    {
+      "updates": 196083,
+      "nanosPerTransition": 381.804,
+      "delta": true,
+      "rebuilds": 3917
+    },
+    {
+      "updates": 0,
+      "nanosPerTransition": 952.9195,
+      "delta": false,
+      "rebuilds": 0
+    },
+    {
+      "updates": 0,
+      "nanosPerTransition": 951.685,
+      "delta": false,
+      "rebuilds": 0
+    },
+    {
+      "updates": 196083,
+      "nanosPerTransition": 376.0485,
+      "delta": true,
+      "rebuilds": 3917
+    }
+  ],
+  "scope": "Research only; rebuild after64 changed placements or more than8 changed squares. Empirical error check, not a universal rounding proof; no search integration or model publication.",
+  "decision": "Admit numerical-edge and full-search validation; no production routing or strength claim."
+}

@@ -106,14 +106,27 @@ ordering remains unchanged. The compiled half-change BRE control passed12360
 actual-weight comparisons with zero integer differences and retains ordinary
 single-table cost. Eight research variant tests pass. See WAVE3-ASSESSMENT.
 
-Next: freeze the new research runtime and run the six-game legal smoke, then
+In progress after clean15e2ba4/build47 runtime freeze and passed six-game/48-move
+legal smoke (intentional eight-ply caps excluded from strength):
 `wave3-fair-control-node-plan.json` and `wave3-longer-clock-plan.json`.
 Each192games on32 fresh development opening pairs, fixed before outcomes.
 First compares half-GATE,half-CUBIC,half-BRE against continued full BRE at32768
 nodes/move. Second compares those three against frozen Gen32 at200ms/move.
 One game/worker,768MiB/64MiB TT,BelowNormal,12games/240seconds per invocation.
 Opening inputs and exclusion hashes are tracked; confirmation partition1 untouched.
-Use a new `wave3-fair-control-runtime.json` binding, never change old receipts/plans.
+Use `wave3-fair-control-runtime.json`, never change old receipts/plans. Outputs are
+`raw/wave3/fair-control-node` and `raw/wave3/longer-clock`; each requires192 receipts.
+Resume only missing games through `tools/run-brn-successor-batch.ps1`, checking
+that no prior process is active and using new batch log prefixes. Investigate any
+`.failed` before continuation. Independently replay completed plans before
+interpreting or selecting a next experiment.
+Tournament admission is temporarily paused at a completed batch boundary using
+the owned sentinel `build/research/brn-successor-batches.pause`; no game was
+interrupted. A GATE delta-cache prototype passed25143 score comparisons and showed
+~2.4x transition speed in a bounded experiment. Next verify numerical rounding
+edges and same-node full-search parity before activation; see WAVE3-ASSESSMENT
+and `wave3-gate-delta-prototype-results.json`. Then remove only the owned pause
+sentinel and resume the unchanged fresh-development protocols with new log prefixes.
 No next human training gate or independent confirmation has been admitted.
 Do not infer either from preliminary results.
 

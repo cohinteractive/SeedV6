@@ -1,0 +1,231 @@
+{
+  "id": "wave3-root-budget-summary-v1",
+  "source": "First search of each reversed-colour game on identical opening roots; fresh SearchDriver/TT per game; all receipts already independently replayed.",
+  "limitations": "Same initial roots, but different evaluator-dependent search trees. Node screens lack pregame warmup; root latency there includes startup. No causal intrinsic-latency or strength claim.",
+  "results": [
+    {
+      "study": "trained-gen32-node",
+      "candidate": "W3-RESGATE",
+      "planHash": "41cf73a4e63fe48b09c4fdcd754d779749332bc853a0172994b06ca788f1b8b5",
+      "pairedRoots": 16,
+      "sameFirstMove": 8,
+      "meanCandidateMinusReferenceDepth": -0.0625,
+      "lessEqualMoreDepth": [
+        1,
+        15,
+        0
+      ],
+      "medianCandidateNodeRatio": 1.0,
+      "medianCandidateElapsedRatio": 3.766540008666982,
+      "medianCandidateNpsRatio": 0.279977688947465
+    },
+    {
+      "study": "trained-gen32-node",
+      "candidate": "W3-RESCUBIC",
+      "planHash": "41cf73a4e63fe48b09c4fdcd754d779749332bc853a0172994b06ca788f1b8b5",
+      "pairedRoots": 16,
+      "sameFirstMove": 10,
+      "meanCandidateMinusReferenceDepth": 0,
+      "lessEqualMoreDepth": [
+        0,
+        16,
+        0
+      ],
+      "medianCandidateNodeRatio": 1.0,
+      "medianCandidateElapsedRatio": 2.4964794982804097,
+      "medianCandidateNpsRatio": 0.40115085016210994
+    },
+    {
+      "study": "trained-gen32-node",
+      "candidate": "W3-BRE-CONTROL",
+      "planHash": "41cf73a4e63fe48b09c4fdcd754d779749332bc853a0172994b06ca788f1b8b5",
+      "pairedRoots": 16,
+      "sameFirstMove": 7,
+      "meanCandidateMinusReferenceDepth": 0.125,
+      "lessEqualMoreDepth": [
+        0,
+        14,
+        2
+      ],
+      "medianCandidateNodeRatio": 1.0,
+      "medianCandidateElapsedRatio": 1.075356072366164,
+      "medianCandidateNpsRatio": 0.9307596976465524
+    },
+    {
+      "study": "trained-gen32-clock",
+      "candidate": "W3-RESGATE",
+      "planHash": "3aa48d8d3b1acb4bca191cdacbe06696a6351247e2fa6e5ad2205572b03bb9e5",
+      "pairedRoots": 16,
+      "sameFirstMove": 6,
+      "meanCandidateMinusReferenceDepth": -0.625,
+      "lessEqualMoreDepth": [
+        9,
+        7,
+        0
+      ],
+      "medianCandidateNodeRatio": 0.42492024230605563,
+      "medianCandidateElapsedRatio": 1.0006505834455117,
+      "medianCandidateNpsRatio": 0.42484901758776505
+    },
+    {
+      "study": "trained-gen32-clock",
+      "candidate": "W3-RESCUBIC",
+      "planHash": "3aa48d8d3b1acb4bca191cdacbe06696a6351247e2fa6e5ad2205572b03bb9e5",
+      "pairedRoots": 16,
+      "sameFirstMove": 7,
+      "meanCandidateMinusReferenceDepth": -0.625,
+      "lessEqualMoreDepth": [
+        10,
+        6,
+        0
+      ],
+      "medianCandidateNodeRatio": 0.5262593109910916,
+      "medianCandidateElapsedRatio": 1.0003214756636325,
+      "medianCandidateNpsRatio": 0.5264621772377021
+    },
+    {
+      "study": "trained-gen32-clock",
+      "candidate": "W3-BRE-CONTROL",
+      "planHash": "3aa48d8d3b1acb4bca191cdacbe06696a6351247e2fa6e5ad2205572b03bb9e5",
+      "pairedRoots": 16,
+      "sameFirstMove": 8,
+      "meanCandidateMinusReferenceDepth": 0.1875,
+      "lessEqualMoreDepth": [
+        1,
+        11,
+        4
+      ],
+      "medianCandidateNodeRatio": 1.01676042252884,
+      "medianCandidateElapsedRatio": 0.9999041053597073,
+      "medianCandidateNpsRatio": 1.0172856096602578
+    },
+    {
+      "study": "calibration-node",
+      "candidate": "RESGATE32-half",
+      "planHash": "a59f704a9cbdb712fa7e676c7dc24ca3a5c7ed0ee568cb121b4069dae7af16f3",
+      "pairedRoots": 16,
+      "sameFirstMove": 8,
+      "meanCandidateMinusReferenceDepth": -0.125,
+      "lessEqualMoreDepth": [
+        2,
+        14,
+        0
+      ],
+      "medianCandidateNodeRatio": 1.0,
+      "medianCandidateElapsedRatio": 3.4210964974011064,
+      "medianCandidateNpsRatio": 0.30615845738655884
+    },
+    {
+      "study": "calibration-node",
+      "candidate": "RESCUBIC32-half",
+      "planHash": "a59f704a9cbdb712fa7e676c7dc24ca3a5c7ed0ee568cb121b4069dae7af16f3",
+      "pairedRoots": 16,
+      "sameFirstMove": 11,
+      "meanCandidateMinusReferenceDepth": 0,
+      "lessEqualMoreDepth": [
+        0,
+        16,
+        0
+      ],
+      "medianCandidateNodeRatio": 1.0,
+      "medianCandidateElapsedRatio": 2.393311108885011,
+      "medianCandidateNpsRatio": 0.42411665841265284
+    },
+    {
+      "study": "calibration-node",
+      "candidate": "RESCUBIC-Best31",
+      "planHash": "a59f704a9cbdb712fa7e676c7dc24ca3a5c7ed0ee568cb121b4069dae7af16f3",
+      "pairedRoots": 16,
+      "sameFirstMove": 9,
+      "meanCandidateMinusReferenceDepth": 0,
+      "lessEqualMoreDepth": [
+        0,
+        16,
+        0
+      ],
+      "medianCandidateNodeRatio": 1.0,
+      "medianCandidateElapsedRatio": 1.683189888022663,
+      "medianCandidateNpsRatio": 0.5941117916303316
+    },
+    {
+      "study": "calibration-clock",
+      "candidate": "RESGATE32-optimized",
+      "planHash": "16f62ac79e431cb5dfaad5ec636e6c3bb3592c37748fca8626f667e5ed4ebc4a",
+      "pairedRoots": 16,
+      "sameFirstMove": 7,
+      "meanCandidateMinusReferenceDepth": -0.75,
+      "lessEqualMoreDepth": [
+        11,
+        5,
+        0
+      ],
+      "medianCandidateNodeRatio": 0.4704560591668803,
+      "medianCandidateElapsedRatio": 1.0003106563147126,
+      "medianCandidateNpsRatio": 0.4704207092515913
+    },
+    {
+      "study": "calibration-clock",
+      "candidate": "RESCUBIC32-optimized",
+      "planHash": "16f62ac79e431cb5dfaad5ec636e6c3bb3592c37748fca8626f667e5ed4ebc4a",
+      "pairedRoots": 16,
+      "sameFirstMove": 10,
+      "meanCandidateMinusReferenceDepth": -0.25,
+      "lessEqualMoreDepth": [
+        4,
+        12,
+        0
+      ],
+      "medianCandidateNodeRatio": 0.6114649092657469,
+      "medianCandidateElapsedRatio": 1.0000789294790828,
+      "medianCandidateNpsRatio": 0.6110518087844748
+    },
+    {
+      "study": "calibration-clock",
+      "candidate": "RESGATE32-half",
+      "planHash": "16f62ac79e431cb5dfaad5ec636e6c3bb3592c37748fca8626f667e5ed4ebc4a",
+      "pairedRoots": 16,
+      "sameFirstMove": 6,
+      "meanCandidateMinusReferenceDepth": -0.75,
+      "lessEqualMoreDepth": [
+        11,
+        5,
+        0
+      ],
+      "medianCandidateNodeRatio": 0.4625584300139458,
+      "medianCandidateElapsedRatio": 1.0003795646829228,
+      "medianCandidateNpsRatio": 0.4627081577015635
+    },
+    {
+      "study": "calibration-clock",
+      "candidate": "RESCUBIC32-half",
+      "planHash": "16f62ac79e431cb5dfaad5ec636e6c3bb3592c37748fca8626f667e5ed4ebc4a",
+      "pairedRoots": 16,
+      "sameFirstMove": 12,
+      "meanCandidateMinusReferenceDepth": -0.4375,
+      "lessEqualMoreDepth": [
+        7,
+        9,
+        0
+      ],
+      "medianCandidateNodeRatio": 0.5518336087588078,
+      "medianCandidateElapsedRatio": 1.0003197289460286,
+      "medianCandidateNpsRatio": 0.5514603270697604
+    },
+    {
+      "study": "calibration-clock",
+      "candidate": "RESCUBIC-Best31",
+      "planHash": "16f62ac79e431cb5dfaad5ec636e6c3bb3592c37748fca8626f667e5ed4ebc4a",
+      "pairedRoots": 16,
+      "sameFirstMove": 8,
+      "meanCandidateMinusReferenceDepth": -0.5,
+      "lessEqualMoreDepth": [
+        8,
+        8,
+        0
+      ],
+      "medianCandidateNodeRatio": 0.5894338939452431,
+      "medianCandidateElapsedRatio": 1.000246598885902,
+      "medianCandidateNpsRatio": 0.589544384255383
+    }
+  ]
+}

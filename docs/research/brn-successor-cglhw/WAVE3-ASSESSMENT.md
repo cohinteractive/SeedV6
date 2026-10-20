@@ -278,6 +278,17 @@ Gen321.84M across different searched positions. Equal-node gains and conditional
 ablation evidence justify further controlled testing rather than rejecting either
 family or requesting more training without resolving these comparison limits.
 
+`wave3-root-budget-summary.json` compares the first search of each reversed-colour
+game on the exact same opening root, with fresh search owners/tables. Half-GATE
+loses an average.75 completed ply at50ms (11/16 roots shallower,5 equal) and gets
+46.3% of Gen32's nodes at the median root. Half-CUBIC loses.4375 ply (7 shallower,
+9 equal), with55.2% of the nodes. At equal nodes, the depth differences shrink to
+-.125 and0 respectively. This supports a real budget cost; it does not isolate
+intrinsic evaluator latency because searched trees differ. Node-only runs have
+no pregame warmup, so their first-root elapsed measurements include startup and
+must not replace the warmed cache benchmarks. The clock runner warms each model
+on four fixed-node roots before scored games.
+
 Additional additive control: `wave3-control-shrinkage.json` applies the same fixed
 half interpolation to the continued BRE's prediction change from Gen32, using
 preserved second-half predictions and the independently checked WDL link. BT4 CE
@@ -368,3 +379,50 @@ Interpret both continued training and additive shrinkage controls alongside
 expressive value and measured costs. Any later selected-candidate confirmation
 requires a fresh protocol and multiplicity/selection accounting. Do not call these
 development screens independent confirmation or automatically admit more training.
+
+## Continuation preparation constraint
+
+Read-only investigation of a possible later controlled-rate continuation found
+that copying a completed W3 source ledger into a new lineage starting at Gen0
+would collide with its generation1..32 reservations. Keeping the bootstrap counter
+at32 avoids that collision, and `CheckpointStore.initialize`/`TrainingSession`
+already support a nonzero parentless bootstrap, but `LineageProvenance.read` and
+`CheckpointStore.writeProvenance` currently require Gen0. `LineageSummary` also
+labels any nonzero checkpoint without a validation as unfinished.
+
+Do not implement the earlier tentative "copy ledger and start at32" idea without
+resolving and testing those boundaries. A future fork must preserve exact weights,
+Adam moments, source offsets and historical completed reservations, distinguish
+inherited exposure from new updates, and keep every existing store immutable.
+Use the established checkpoint/library mechanisms; do not falsify old reservation
+status/generation numbers or reset cursors. No fork, provenance relaxation or
+human-training gate is admitted merely by this investigation.
+
+## Bounded GATE cache experiment
+
+The same-root depth penalty motivates a research-only cache experiment,
+`wave3-gate-delta-plan.json`. It updates only changed piece terms and incident
+pair experts, rebuilding both canonical perspectives after64 changed placements
+or a jump changing more than8 squares. It does not change the learned function,
+weights, optimizer, search rules or normal runtime routing.
+
+The first prototype passed25143 forward/reverse/repeated comparisons against
+full recomputation, including preserved game transitions and CP positions:
+max raw error5.33e-15,zero integer differences. Eight balanced samples averaged
+1032ns/transition for the existing cache and423ns for the prototype; first samples
+were slower in both arms. Last three samples average about951ns vs377ns.
+These are transition microbenchmarks, not full-search or strength gains.
+`wave3-gate-delta-prototype-results.json` binds raw evidence, source and frozen
+runtime under `raw/wave3/gate-delta-prototype-runtime/lib`.
+
+Admit rounding-boundary/transition tests and exact-search comparison before any
+activation. Periodic rebuilding alone is not a universal integer-rounding proof;
+an explicit conservative rounding guard/fallback is required. Keep the earlier
+fixed-order cache as an independent oracle and preserve negative outcomes.
+
+The tournament admission helper now recognizes the local control sentinel
+`build/research/brn-successor-batches.pause`. It stops before spawning the next
+bounded process; it never interrupts a game or alters a receipt. Admission was
+temporarily paused at a completed batch boundary for this bounded verification.
+Remove only this owned sentinel when checks finish, then resume missing games
+with fresh log prefixes and the unchanged fair-control runtime/plan hashes.
