@@ -15,6 +15,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BrnGen32ResidualTest {
     @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC"})
+    void repeatedPlacementAndNullPerspectiveReuseCorrectMaterial(BrnNextArchitecture kind) {
+        var random=new SplittableRandom(221);var weights=new double[kind.parameters()];
+        for(int i=0;i<weights.length;i++)weights[i]=random.nextDouble(-.2,.2);
+        var model=new BrnNextModel(kind,weights);var scalar=model.newWorkspace();
+        var cached=SearchEvaluation.brnGen32Residual(model).newState(64);
+        var board=Board.fromFen("4k3/8/8/8/8/8/P7/3QK3 w - - 0 1");
+        var base=BrnNextBase.model().newWorkspace();
+        assertThrows(IllegalStateException.class,()->base.materialPawns(0));
+        base.evaluatePawns(board);
+        assertEquals(10,base.materialPawns(0),1e-12);assertEquals(-10,base.materialPawns(1),1e-12);
+        assertThrows(IllegalStateException.class,()->base.materialPawns(2));
+        for(int i=0;i<80;i++) {
+            assertEquals(model.score(board,scalar),cached.evaluate(board,0));
+            assertEquals(model.score(board,scalar),cached.evaluate(board,0));
+            board[4]^=Board.PLAYER_BIT;
+            board[3]^=~(board[0]|board[1]|board[2]);
+        }
+    }
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC"})
     void zeroHeadPreservesActualReferenceAndProductionSearch(BrnNextArchitecture kind) throws Exception {
         var random=new SplittableRandom(71);var weights=new double[kind.parameters()];
         for(int i=BrnNextArchitecture.EMBEDDING;i<kind.head();i++)weights[i]=random.nextDouble(-.5,.5);

@@ -1,0 +1,87 @@
+{
+  "id": "brn-wave3-material-cache-abba-v1",
+  "evidence": "raw/wave3/material-abba-*",
+  "ordering": "oldG,newG,newC,oldC,newG,oldG,oldC,newC; serial JVMs, same checkpoints/inputs/resources",
+  "runs": [
+    {
+      "file": "material-abba-01-old-gate.json",
+      "kind": "GATE",
+      "revision": "old",
+      "latencyNs": 1128.21,
+      "relativeToBase": 7.146992867007057,
+      "warmedSearchSeconds": 1.3109791,
+      "fullSearchSeconds": 1.6342037,
+      "searchFullOverCache": 1.2465520617376737
+    },
+    {
+      "file": "material-abba-02-new-gate.json",
+      "kind": "GATE",
+      "revision": "new",
+      "latencyNs": 1045.468,
+      "relativeToBase": 6.271327966599883,
+      "warmedSearchSeconds": 1.2845375,
+      "fullSearchSeconds": 1.6355514,
+      "searchFullOverCache": 1.2732609207594172
+    },
+    {
+      "file": "material-abba-03-new-cubic.json",
+      "kind": "CUBIC",
+      "revision": "new",
+      "latencyNs": 619.15,
+      "relativeToBase": 4.239359662576687,
+      "warmedSearchSeconds": 1.0117144,
+      "fullSearchSeconds": 1.0954136,
+      "searchFullOverCache": 1.0827300669042568
+    },
+    {
+      "file": "material-abba-04-old-cubic.json",
+      "kind": "CUBIC",
+      "revision": "old",
+      "latencyNs": 736.832,
+      "relativeToBase": 4.17781003356618,
+      "warmedSearchSeconds": 1.0138296,
+      "fullSearchSeconds": 1.0767847,
+      "searchFullOverCache": 1.0620963325592387
+    },
+    {
+      "file": "material-abba-05-new-gate.json",
+      "kind": "GATE",
+      "revision": "new",
+      "latencyNs": 1015.082,
+      "relativeToBase": 7.052902920986075,
+      "warmedSearchSeconds": 1.2715146,
+      "fullSearchSeconds": 1.6463447,
+      "searchFullOverCache": 1.2947902446420985
+    },
+    {
+      "file": "material-abba-06-old-gate.json",
+      "kind": "GATE",
+      "revision": "old",
+      "latencyNs": 1219.862,
+      "relativeToBase": 8.324316578182364,
+      "warmedSearchSeconds": 1.3722748,
+      "fullSearchSeconds": 1.6274826,
+      "searchFullOverCache": 1.1859742669616902
+    },
+    {
+      "file": "material-abba-07-old-cubic.json",
+      "kind": "CUBIC",
+      "revision": "old",
+      "latencyNs": 760.046,
+      "relativeToBase": 4.518542739260194,
+      "warmedSearchSeconds": 1.0241131,
+      "fullSearchSeconds": 1.0774512,
+      "searchFullOverCache": 1.0520822358389907
+    },
+    {
+      "file": "material-abba-08-new-cubic.json",
+      "kind": "CUBIC",
+      "revision": "new",
+      "latencyNs": 644.054,
+      "relativeToBase": 4.013347623973379,
+      "warmedSearchSeconds": 0.9654187,
+      "fullSearchSeconds": 1.0547364,
+      "searchFullOverCache": 1.0925170602143919
+    }
+  ]
+}

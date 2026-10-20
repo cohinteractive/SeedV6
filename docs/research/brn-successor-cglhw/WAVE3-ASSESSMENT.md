@@ -183,3 +183,23 @@ its raw evaluator overall. This motivates reusing the already maintained frozen
 base material and avoiding repeated same-position work. Sampling combines diagnostic
 and search phases; it is not an exact percentage of total engine time.
 Verify integer/raw bounds and identical search results before admitting any speedup.
+
+The cache revision reuses the frozen base's maintained material, and GATE caches
+same-placement results separately for each side. It changes no weights, codecs,
+training objective or search algorithm. Scalar full recomputation remains the oracle.
+Fourteen focused core tests passed, including imbalanced-material repeated/null
+perspectives, special moves, separate owners,9000 random transitions per W1 cache
+and4000 zero-correction reference transitions. Trained probes retain zero integer
+differences and maximum raw discrepancy below8e-15; all recorded old/new completed
+search results agree.
+
+The first timing comparison was noisy and did not establish whole-search benefit.
+A serial balanced old/new follow-up is preserved in
+`wave3-material-cache-results.json`, with all eight raw runs retained.
+Mean cached transition latency changed GATE1174->1030ns and CUBIC748->632ns.
+Mean warmed fixed-node search time changed GATE1.342->1.278s (~4.7% less elapsed)
+and CUBIC1.019->.989s (~3.0%). These modest measurements on16 roots are not a
+general speed or strength guarantee, and do not remove the baseline cost gap.
+GATE worker primitive payload rises34bytes to6266; CUBIC remains10162.
+The small revision is retained on this evidence. The next clock screen must include
+unscaled optimized models to distinguish cache and correction-amplitude effects.

@@ -20,6 +20,8 @@ public final class BrnGatedAccumulator {
             experts=new double[2][32*width];
     private final int[] dirtyRanks={255,255}, dirtyBlocks={-1,-1};
     private final double[] first=new double[width], gates=new double[width];
+    private final double[] lastRaw=new double[2],lastMaterial=new double[2];
+    private final boolean[] valid=new boolean[2];
     private boolean initialized;
     private double material;
     private final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.Workspace base;
@@ -30,12 +32,13 @@ public final class BrnGatedAccumulator {
         this.model=model;
         base=model.architecture().frozenBase()?BrnNextBase.model().newWorkspace():null;
     }
-    public long primitiveBytes() { return 8L*(4+2*8+2*8*width+2*32*width+2*width)+4L*(2*64+4)+(base==null?0:base.primitiveBytes()); }
+    public long primitiveBytes() { return 8L*(4+2*8+2*8*width+2*32*width+2*width+4)+4L*(2*64+4)+2+(base==null?0:base.primitiveBytes()); }
     public double rawPawns(long[] board) {
         long changed=0;
         for(int i=0;i<4;i++)changed|=previous[i]^board[i];
         changed&=previous[0]|previous[1]|previous[2]|board[0]|board[1]|board[2];
         if(!initialized)changed=-1L;
+        if(changed!=0)valid[0]=valid[1]=false;
         for(long bits=changed;bits!=0;bits&=bits-1) {
             int square=Long.numberOfTrailingZeros(bits);
             int code=Board.getSquare(board[0],board[1],board[2],board[3],square),type=code&7;
@@ -53,10 +56,10 @@ public final class BrnGatedAccumulator {
         }
         System.arraycopy(board,0,previous,0,4);initialized=true;
         int side=Board.player((int)board[Board.STATUS]);
+        if(valid[side]) { material=lastMaterial[side];return lastRaw[side]; }
         for(int ranks=dirtyRanks[side];ranks!=0;ranks&=ranks-1)rank(side,Integer.numberOfTrailingZeros(ranks));
         for(int blocks=dirtyBlocks[side];blocks!=0;blocks&=blocks-1)block(side,Integer.numberOfTrailingZeros(blocks));
         dirtyRanks[side]=0;dirtyBlocks[side]=0;
-        material=BrnPair2Features.material(board);
         double residual=model.weight(0);
         Arrays.fill(first,0);
         for(int rank=0;rank<8;rank++) {
@@ -74,8 +77,12 @@ public final class BrnGatedAccumulator {
             for(int block=0;block<32;block++)sum+=experts[side][block*width+r];
             residual+=(gates[r]/total)*(sum*PAIR_NORM);
         }
-        double value=(base==null?material:base.evaluatePawns(board))+residual;
+        double baseValue;
+        if(base==null)baseValue=material=BrnPair2Features.material(board);
+        else { baseValue=base.evaluatePawns(board);material=base.materialPawns(side); }
+        double value=baseValue+residual;
         if(!Double.isFinite(value))throw new ArithmeticException("Nonfinite GATE accumulator");
+        lastRaw[side]=value;lastMaterial[side]=material;valid[side]=true;
         return value;
     }
     public int score(long[] board) {

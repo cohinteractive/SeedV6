@@ -63,8 +63,10 @@ public final class BrnCubicAccumulator {
         }
         for(int r=0;r<width;r++)residual+=model.weight(head+r)*second[r]*DEGREE2_NORM
                 +model.weight(head+width+r)*third[r]*DEGREE3_NORM;
-        lastMaterial[side]=BrnPair2Features.material(board);
-        double result=(base==null?lastMaterial[side]:base.evaluatePawns(board))+residual;
+        double baseValue;
+        if(base==null)baseValue=lastMaterial[side]=BrnPair2Features.material(board);
+        else { baseValue=base.evaluatePawns(board);lastMaterial[side]=base.materialPawns(side); }
+        double result=baseValue+residual;
         if(!Double.isFinite(result))throw new ArithmeticException("Nonfinite CUBIC accumulator");
         lastRaw[side]=result;valid[side]=true;return result;
     }

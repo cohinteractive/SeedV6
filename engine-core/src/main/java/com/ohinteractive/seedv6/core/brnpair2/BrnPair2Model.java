@@ -109,5 +109,11 @@ public final class BrnPair2Model {
             double raw=evaluatePawns(board),material=Board.player((int)board[4])==0?whiteMaterial:-whiteMaterial;
             return material+gain*(raw-material);
         }
+        /** Material of the placement most recently evaluated by this private workspace.
+         * A residual evaluator can reuse it after evaluatePawns instead of rescanning all pieces. */
+        public double materialPawns(int sideToMove) {
+            if(!initialized||(sideToMove&~1)!=0)throw new IllegalStateException("Evaluate a placement and use side 0 or 1");
+            return sideToMove==0?whiteMaterial:-whiteMaterial;
+        }
     }
 }
