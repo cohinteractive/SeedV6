@@ -1,0 +1,20 @@
+{
+  "id": "wave4-direct-admission-v1",
+  "createdUtc": "2026-10-20T21:56:42.383102+00:00",
+  "question": "Do fixed-window residual means give practical advantage beyond both continued BRE endpoints? Does full vs half correction change node quality, and does averaging also benefit BRE?",
+  "selection": "All four residual architecture/rate means retained, both endpoint BRE controls retained; predetermined window57..64. Admitted before primary-clock score analysis. No lowest-loss-only or winning-rate-only selection.",
+  "plans": {
+    "wave4-direct-node-LR001-plan.json": "6c0482ba425c1624f22de1141c8f68dc0eee7cf82e803a53216a437fa8a48336",
+    "wave4-direct-node-LR003-plan.json": "f7028c9e7299936d5b3395d1cb7ba7d31de3c8aafc0f7b7e1b907630c8c52e1e",
+    "wave4-direct-clock-LR001-plan.json": "c18e5bd0ccdf548ad43d39b8499478af8dff673cfd560ba62da1fbf544671902",
+    "wave4-direct-clock-LR003-plan.json": "5913bd1e28d08497cfc0b9dfaf03020f2c5b614f272dbfc4c367f615e46ba1f6",
+    "wave4-direct-full-node-plan.json": "c6e5e2b34da947a0b0692225c31a8db7667fd3bd65e09ec4c1c6e70aebcbd825"
+  },
+  "runtime": "wave4-average-runtime.json",
+  "games": 448,
+  "breakdown": "192 equal-node half +192 equal-time half +64 full-correction equal-node calibration",
+  "openings": "Frozen development roots17..24, previously unused; paired colors; shared roots across comparisons and correlated early opening prefixes. Remaining25..32 and confirmation partition1 unused.",
+  "analysis": "Finish fixed budgets regardless scores; paired descriptive intervals/contrasts, legal replay and telemetry. Small development samples and multiple selections preclude final superiority claim. No pooled pseudo-independent games. Full vs half comparison to same LR003 reference; shrinkage always about frozen Gen32, not match reference.",
+  "resource": "One game/worker,no ponder,64MiB TT,768MiB,ActiveProcessorCount1,BelowNormal,12games/240s per launch; no competing heavy jobs.",
+  "dependencies": "Primary-clock completes and is validated first. Existing average load/smoke/prediction/cache/search verification passed. No source store writes. Sparse prototype deferred; no masks in these games."
+}

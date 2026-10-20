@@ -1,0 +1,470 @@
+{
+  "id": "wave4-sparse-cubic-results-v1",
+  "runtime": "wave4-sparse-runtime.json",
+  "results": [
+    {
+      "rate": "LR001",
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\sparse-LR001-01.json",
+      "sha256": "180f689b725d952c0f5d9e4cadf01a9d43ad8e94a9f1d7c29e57b7b67b4b08ff",
+      "results": [
+        {
+          "ranks": [
+            2,
+            3,
+            5,
+            9
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 4.551914400963142e-15,
+          "integerDifferences": 0,
+          "sparsePrimitiveBytes": 4345,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "sparse": false,
+              "nanosPerTransition": 458.750495
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 288.968
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 244.906
+            },
+            {
+              "sparse": false,
+              "nanosPerTransition": 306.0385
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 279.0025
+            },
+            {
+              "sparse": false,
+              "nanosPerTransition": 327.6485
+            },
+            {
+              "sparse": false,
+              "nanosPerTransition": 303.0
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 241.101
+            }
+          ],
+          "medianDenseNs": 316.8435,
+          "medianSparseNs": 261.95425,
+          "sparseToDense": 0.8267622659136135
+        },
+        {
+          "ranks": [
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            13
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 3.774758283725532e-15,
+          "integerDifferences": 0,
+          "sparsePrimitiveBytes": 4361,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "sparse": false,
+              "nanosPerTransition": 309.0325
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 286.4385
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 273.723
+            },
+            {
+              "sparse": false,
+              "nanosPerTransition": 308.585
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 278.6275
+            },
+            {
+              "sparse": false,
+              "nanosPerTransition": 305.281995
+            },
+            {
+              "sparse": false,
+              "nanosPerTransition": 302.616
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 277.748005
+            }
+          ],
+          "medianDenseNs": 306.9334975,
+          "medianSparseNs": 278.1877525,
+          "sparseToDense": 0.9063453639497266
+        },
+        {
+          "ranks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 3.885780586188048e-15,
+          "integerDifferences": 0,
+          "sparsePrimitiveBytes": 4377,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "sparse": false,
+              "nanosPerTransition": 299.705505
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 338.910495
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 362.616
+            },
+            {
+              "sparse": false,
+              "nanosPerTransition": 341.199495
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 330.7
+            },
+            {
+              "sparse": false,
+              "nanosPerTransition": 332.208
+            },
+            {
+              "sparse": false,
+              "nanosPerTransition": 347.4215
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 337.359
+            }
+          ],
+          "medianDenseNs": 336.7037475,
+          "medianSparseNs": 338.1347475,
+          "sparseToDense": 1.0042500269469081
+        },
+        {
+          "ranks": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 3.9968028886505635e-15,
+          "integerDifferences": 0,
+          "sparsePrimitiveBytes": 4393,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "sparse": false,
+              "nanosPerTransition": 312.725505
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 363.6725
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 371.773005
+            },
+            {
+              "sparse": false,
+              "nanosPerTransition": 321.146495
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 390.203505
+            },
+            {
+              "sparse": false,
+              "nanosPerTransition": 310.27
+            },
+            {
+              "sparse": false,
+              "nanosPerTransition": 314.374005
+            },
+            {
+              "sparse": true,
+              "nanosPerTransition": 378.983005
+            }
+          ],
+          "medianDenseNs": 313.549755,
+          "medianSparseNs": 375.37800500000003,
+          "sparseToDense": 1.1971880029056314
+        }
+      ]
+    },
+    {
+      "rate": "LR003",
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\sparse-LR003-01.json",
+      "sha256": "a49d262d540d9feed23dd89cbc05f9a140ece013d3b1527762f996646151d87c",
+      "results": [
+        {
+          "ranks": [
+            2,
+            3,
+            5,
+            9
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 3.774758283725532e-15,
+          "integerDifferences": 0,
+          "sparsePrimitiveBytes": 4345,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "nanosPerTransition": 548.0755,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 300.921005,
+              "sparse": true
+            },
+            {
+              "nanosPerTransition": 253.702505,
+              "sparse": true
+            },
+            {
+              "nanosPerTransition": 304.5715,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 236.389,
+              "sparse": true
+            },
+            {
+              "nanosPerTransition": 298.956995,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 293.359495,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 238.1315,
+              "sparse": true
+            }
+          ],
+          "medianDenseNs": 301.7642475,
+          "medianSparseNs": 245.9170025,
+          "sparseToDense": 0.814930875798996
+        },
+        {
+          "ranks": [
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            13
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 3.941291737419306e-15,
+          "integerDifferences": 0,
+          "sparsePrimitiveBytes": 4361,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "nanosPerTransition": 298.554495,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 271.875505,
+              "sparse": true
+            },
+            {
+              "nanosPerTransition": 277.597,
+              "sparse": true
+            },
+            {
+              "nanosPerTransition": 303.635,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 287.8845,
+              "sparse": true
+            },
+            {
+              "nanosPerTransition": 305.2785,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 302.1995,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 273.473995,
+              "sparse": true
+            }
+          ],
+          "medianDenseNs": 302.91724999999997,
+          "medianSparseNs": 275.5354975,
+          "sparseToDense": 0.9096064931924479
+        },
+        {
+          "ranks": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 4.107825191113079e-15,
+          "integerDifferences": 0,
+          "sparsePrimitiveBytes": 4377,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "nanosPerTransition": 293.1805,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 315.8845,
+              "sparse": true
+            },
+            {
+              "nanosPerTransition": 317.612,
+              "sparse": true
+            },
+            {
+              "nanosPerTransition": 293.0455,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 308.8905,
+              "sparse": true
+            },
+            {
+              "nanosPerTransition": 290.7075,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 290.1845,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 316.672505,
+              "sparse": true
+            }
+          ],
+          "medianDenseNs": 291.87649999999996,
+          "medianSparseNs": 316.2785025,
+          "sparseToDense": 1.0836038615647372
+        },
+        {
+          "ranks": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "positionsCompared": 25143,
+          "maximumRawError": 4.6629367034256575e-15,
+          "integerDifferences": 0,
+          "sparsePrimitiveBytes": 4393,
+          "densePrimitiveBytes": 4329,
+          "timings": [
+            {
+              "nanosPerTransition": 289.954995,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 355.5335,
+              "sparse": true
+            },
+            {
+              "nanosPerTransition": 355.679005,
+              "sparse": true
+            },
+            {
+              "nanosPerTransition": 291.354995,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 361.06,
+              "sparse": true
+            },
+            {
+              "nanosPerTransition": 286.952505,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 288.612,
+              "sparse": false
+            },
+            {
+              "nanosPerTransition": 350.616505,
+              "sparse": true
+            }
+          ],
+          "medianDenseNs": 289.2834975,
+          "medianSparseNs": 355.6062525,
+          "sparseToDense": 1.2292656012982557
+        }
+      ]
+    }
+  ],
+  "conclusion": "All actual masked models pass parity, raw error<5e-15 and zero integer differences. Rank4 transition cost improves17-19%; rank8 about9%; rank12/16 no benefit or slower. No production integration justified now; whole-search improvement would be smaller and pruned chess quality remains unknown. Preserve prototype, defer pending stronger quality evidence.",
+  "scope": "No search/optimizer/codec/application changes. No universal numerical proof or chess claim."
+}

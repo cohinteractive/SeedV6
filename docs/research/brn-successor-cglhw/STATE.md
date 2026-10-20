@@ -111,9 +111,14 @@ the frozen33535b4 runtime reproduced all diagnostic results exactly, and all eig
 full/half averaged residuals pass actual cache/search oracles. The first diagnostic's
 unretained jar identity remains explicitly unknown, not retrospectively inferred.
 Fit-only rank removal on averaged cubic models gives plausible quality/cost tradeoffs;
-full16 reproduction and independent prediction checks pass. An isolated sparse-rank
-prototype still needs compilation, actual-model parity and balanced cost validation.
+full16 reproduction and independent prediction checks pass. The isolated sparse-rank
+prototype passes actual-model parity but only rank4/8 reduces transition cost;
+rank12/16 offers no gain. Defer integration pending pruned chess quality evidence.
 No core/application path or pruning strength protocol has changed.
+The prospective direct admission fixes448 follow-up games against both actual BRE
+Gen64 endpoints, all four residual means, additive means and full/half calibration
+on eight unused development roots. See wave4-direct-admission.json; begin only after
+primary-clock completion/validation. No favorable partial-score stopping.
 Primary protocols continue using frozen original jars. Fresh confirmation
 partition1 remains unused. No architecture decision or further training is inferred
 from loss or an initial equal-time defeat.

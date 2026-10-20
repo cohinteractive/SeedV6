@@ -31,11 +31,11 @@ confounds remain; equal exposure does not establish identical architectural tria
 | Arm | Latest | Best | New promotions | .001 lower validation loss than .003 |
 | --- | --- | --- | --- | --- |
 | RESGATE-LR001 | 64 | 63 | 15 | 32/32 matched generations |
-| RESGATE-LR003 | 64 | 64 | 10 | — |
+| RESGATE-LR003 | 64 | 64 | 10 | â€” |
 | RESCUBIC-LR001 | 64 | 63 | 19 | 32/32 |
-| RESCUBIC-LR003 | 64 | 63 | 15 | — |
+| RESCUBIC-LR003 | 64 | 63 | 15 | â€” |
 | BRE-CONTROL-LR001 | 64 | 64 | 26 | 31/32 |
-| BRE-CONTROL-LR003 | 64 | 64 | 23 | — |
+| BRE-CONTROL-LR003 | 64 | 64 | 23 | â€” |
 
 Best63 contains31 additional generations,4063232 training positions and253952
 additional updates, while Latest64 contains32. The equal-exposure comparison uses
@@ -43,7 +43,7 @@ Latest64; the Best comparison evaluates the GUI's practical selection rule. Do n
 describe a Best63-versus-BRE64 match as exactly matched training exposure.
 
 The higher rate reduces final training loss but worsens held-out loss. Mean matched
-.001-minus-.003 validation differences are −.002206(GATE),−.004416(CUBIC),−.002815(BRE).
+.001-minus-.003 validation differences are âˆ’.002206(GATE),âˆ’.004416(CUBIC),âˆ’.002815(BRE).
 This supports lower-rate optimization for all families, not a residual-only effect.
 The GUI WDL Loss is half-squared error on bounded outcome predictions, not cross
 entropy. Best is sequential incumbent promotion on each generation's fresh holdout,
@@ -69,8 +69,8 @@ No live checkpoint or pointer was changed. The pre-audit inventory is
 Independent Python WDL cross entropy agrees within1.6e-15;21 CP positions have
 invalid python-chess status, so valid-position sensitivity is retained separately.
 These old development panels are not independent generalization or strength proof.
-Full GATE-LR001 Best63 improves CP cross entropy .60082→.58054 from its initial32;
-BRE-LR001 improves .61443→.59332. Cubic trajectories are more variable and Latest64
+Full GATE-LR001 Best63 improves CP cross entropy .60082â†’.58054 from its initial32;
+BRE-LR001 improves .61443â†’.59332. Cubic trajectories are more variable and Latest64
 can deteriorate materially from Best63. BT4 and CP do not always rank checkpoints
 alike. Additional exposure improved some predictions, without uniform convergence.
 
@@ -162,20 +162,20 @@ All candidates here use half-change; sixteen colour-reversed opening pairs each.
 
 | Candidate | W/D/L | Score | Descriptive paired95% interval |
 | --- | --- | --- | --- |
-| GATE-LR001 Best63 | 15/5/12 | 54.69% | 36.67–72.70% |
-| GATE-LR001 Latest64 | 12/7/13 | 48.44% | 34.67–62.20% |
-| GATE-LR00364 | 15/6/11 | 56.25% | 41.76–70.74% |
-| CUBIC-LR001 Best63 | 19/6/7 | 68.75% | 53.58–83.92% |
-| CUBIC-LR001 Latest64 | 20/2/10 | 65.63% | 50.21–81.04% |
-| CUBIC-LR003 Best63 | 18/1/13 | 57.81% | 41.24–74.38% |
-| CUBIC-LR003 Latest64 | 19/6/7 | 68.75% | 54.26–83.24% |
-| BRE-LR00164 | 10/6/16 | 40.63% | 25.21–56.04% |
-| BRE-LR00364 | 20/4/8 | 68.75% | 52.94–84.56% |
+| GATE-LR001 Best63 | 15/5/12 | 54.69% | 36.67â€“72.70% |
+| GATE-LR001 Latest64 | 12/7/13 | 48.44% | 34.67â€“62.20% |
+| GATE-LR00364 | 15/6/11 | 56.25% | 41.76â€“70.74% |
+| CUBIC-LR001 Best63 | 19/6/7 | 68.75% | 53.58â€“83.92% |
+| CUBIC-LR001 Latest64 | 20/2/10 | 65.63% | 50.21â€“81.04% |
+| CUBIC-LR003 Best63 | 18/1/13 | 57.81% | 41.24â€“74.38% |
+| CUBIC-LR003 Latest64 | 19/6/7 | 68.75% | 54.26â€“83.24% |
+| BRE-LR00164 | 10/6/16 | 40.63% | 25.21â€“56.04% |
+| BRE-LR00364 | 20/4/8 | 68.75% | 52.94â€“84.56% |
 
 Cubic's encouraging equal-node point estimates do not separate it from the additive
 LR003 control. The better validation rate does not select the stronger BRE in this
-small chess screen. Within the same roots, BRE001 minus BRE003 is −28.125 percentage
-points (unadjusted paired interval−49.05..−7.20); selection/multiplicity/opening
+small chess screen. Within the same roots, BRE001 minus BRE003 is âˆ’28.125 percentage
+points (unadjusted paired intervalâˆ’49.05..âˆ’7.20); selection/multiplicity/opening
 dependence prevent a definitive rate-strength claim. All residual-minus-BRE003
 contrast intervals include zero. The report also includes illustrative simultaneous
 Bonferroni-normal intervals; none is an independent programme acceptance test.
@@ -206,7 +206,7 @@ inference variants are not new trainable checkpoints or continuation parents.
 All four residual parameter means improve BT4 and CP full-prediction CE versus
 their Latest64. Full GATE001 mean gives .62752/.57893 and GATE003 .62871/.57601;
 CUBIC001 .62750/.59950 and CUBIC003 .63030/.59592. BRE means improve BT4, while
-BRE001 CP worsens (.59332→.59649); BRE003 CP improves (.60370→.59627).
+BRE001 CP worsens (.59332â†’.59649); BRE003 CP improves (.60370â†’.59627).
 Thus smoothing is useful enough to test, not an expressive-only improvement.
 For BRE, compiled-table averaging agrees with the independent functional ensemble
 within1.8e-15. Nonlinear parameter means are different functions: maximum raw
@@ -253,13 +253,40 @@ original CP invalid-position sensitivity remains. LR001 full rank4 CE is
 rank16 .63030/.59592. At half scale, rank4 improves BT4 but degrades CP for both rates.
 This supports a measured cost/quality tradeoff, not blanket harmless pruning.
 
-Zeroing heads alone does not make the current evaluator cheaper. A separate isolated
-research sparse-rank prototype is being prepared, retaining the existing period64
-rebuild, rounding guard and full-rank behavior for nonfinite numerical bounds.
-It must pass actual-model score parity and balanced transition-cost checks before
-any search integration is considered. No core evaluator, codec, optimizer or ordinary
-application path has been changed. No pruning strength protocol is yet admitted.
+Zeroing heads alone does not make the current evaluator cheaper. The isolated
+research sparse-rank prototype preserves the period64 rebuild and rounding guard,
+and retains all ranks if its numerical bound is nonfinite. All eight actual masked
+models pass forward/reverse/forward checks on6333 positions: zero integer
+mismatches, maximum raw error below5e-15. Reconstructed masked payload hashes match
+the prior rank diagnostic. `wave4-sparse-cubic-results.json` binds the frozen
+runtime and balanced transition timings. Rank4 saves17?19%, rank8 about9%; rank12
+is unchanged/slower and rank16 is20?23% slower. Whole-search benefits would be
+smaller. This limited result does not justify production integration without
+pruned chess quality evidence; defer it behind direct architecture/control tests.
+No core evaluator, codec, optimizer or ordinary application path changed.
 
-Next: finish the unchanged preselected-Best equal-time screen. Then admit focused
-direct comparisons against both trained BRE controls, full/half calibration and
-mean/pruned variants where warranted. Do not reopen the completed primary-node budget.
+Core jar hashes across research builds differ because generated application-version
+properties record the source identity; an entry comparison found no changed core
+class bytes. Exact jar hashes remain separately bound; no runtime substitution is
+allowed within an active protocol.
+
+## Direct controls and stabilization: prospective admission
+
+Before analyzing the primary-clock scores, `wave4-direct-admission.json` admits a
+fixed448-game development follow-up:192 half-change equal-node,192 half-change
+100ms, and64 full-correction equal-node calibration games. Four residual means
+(all architecture/rate arms) face **both actual continued BRE Gen64 endpoints**,
+with each control's own mean and frozen Gen32 included as candidates. Thus an
+expressive candidate cannot obtain an apparent advantage just by replacing the
+control with a weaker averaged control. Four full residual means also face the
+same LR003 half-change endpoint on the same roots, allowing full/half comparison.
+
+Eight previously unused frozen development roots17..24 are paired and shared across
+these tests. This is a diagnostic selection screen with wide uncertainty, not final
+confirmation. Root reuse, early-prefix dependence and multiple comparisons remain
+explicit. No candidate was removed for an initial time defeat or picked solely for
+validation loss. No new substantive training or source checkpoint writes occur.
+The frozen averaging runtime is required; complete fixed budgets unless correctness
+or resource problems stop them. Primary-clock must complete and be validated first.
+Plans, exact models/ingredients and limits are recorded in the admission manifest.
+Remaining development roots25..32 and confirmation partition1 are still unused.

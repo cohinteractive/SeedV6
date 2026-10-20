@@ -1,0 +1,24 @@
+{
+  "id": "wave4-sparse-runtime-v1",
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave4\\sparse-runtime-01\\lib",
+  "createdUtc": "2026-10-20T21:54:30.937394+00:00",
+  "sourceCommit": "08dc93b21f641b56a213fb98876dfd4f2881dad3",
+  "uncommittedRuntimeSources": {
+    "research/src/main/java/com/ohinteractive/seedv6/tools/eval/BrnCubicSparseProbe.java": "f7ec19df304cac3a8ea5e33c99c91d5e6897e1056f16f13b2415b92117436f18",
+    "research/src/main/java/com/ohinteractive/seedv6/tools/eval/BrnCubicSparsePrototype.java": "b4ecc6ff8fa575b935256d457b5d641ddd6d004d941b572c0f8da49279ee57e3"
+  },
+  "build": 51,
+  "jars": {
+    "engine-core.jar": "22f49228b0b3c19d13b4c8b237861ea66546224037ec5bd5e47a67f164f8c660",
+    "engine-training.jar": "ec58521d7d7769729f4afd2a4db1bb63298a006c8e308b27aa6548c027878a64",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "accedb0f8f5b4dfa1ec07834e38be6c57f65df5c5c866f1c2c43942e3495831e",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "java": "C:/java/jdk-21/bin/java.exe",
+  "activeProcessors": 1,
+  "heapMiB": 768,
+  "note": "Core class bytes unchanged; application-version.properties records build source identity and accounts for differing core jar hashes."
+}

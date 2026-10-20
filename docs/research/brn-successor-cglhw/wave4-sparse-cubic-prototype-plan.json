@@ -1,0 +1,13 @@
+{
+  "id": "wave4-sparse-cubic-prototype-v1",
+  "question": "Does skipping exactly zero-output cubic components reduce actual transition cost while preserving the same masked model scores?",
+  "models": [
+    "W4-RESCUBIC-LR001-average8",
+    "W4-RESCUBIC-LR003-average8"
+  ],
+  "ranks": "Use the pre-recorded fit-only4/8/12/16 subsets, without further fitting.",
+  "oracle": "Original canonical model and existing dense guarded delta cache; forward/reverse/forward on preserved game transitions plus CP positions; no integer differences, raw discrepancy <=1e-9.",
+  "timing": "Game transitions only:100000 paired warmup;8 balanced dense/sparse passes of200000 transitions each. One process, BelowNormal, ActiveProcessorCount1,768MiB. No concurrent research jobs.",
+  "numerical": "Same period64 rebuild and conservative rounding guard. Nonfinite bound retains all ranks rather than bypassing numerical failures.",
+  "decision": "Microcost diagnostic only. Favorable cost/quality would justify equal-node pruned-model comparisons before core/search integration; no default path changes or strength claim."
+}
