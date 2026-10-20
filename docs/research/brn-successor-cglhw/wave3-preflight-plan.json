@@ -1,0 +1,35 @@
+{
+  "id": "brn-successor-wave3-initial-preflight-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    },
+    {
+      "name": "W3-RESGATE",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\e6b6775d-39cd-392b-bd18-5e964a445f62",
+      "checkpoint": "g000000-s000000000-ce2461d9effee1103475c8939842ad3793dd5d96c877a9949b26c336a30ee000",
+      "networkSha256": "72c47ea4a6ff31c3769040cfa227f10fd441e4346342f4f3905ceb4da475ea82"
+    },
+    {
+      "name": "W3-RESCUBIC",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\22b42be6-15c4-3f36-a376-3776aa1931f2",
+      "checkpoint": "g000000-s000000000-e85be6a1e9d7619b15c21cb441c3b3007db9463fdd98d074f3f5fe7b64df5b84",
+      "networkSha256": "62c4906a6a6f2a6b8f8a3b25c0ca737f11d0b364f2c8627211cf00b49c2e5dc5"
+    },
+    {
+      "name": "W3-BRE-CONTROL",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\ed0750a3-3163-3979-9f26-2e466c49c771",
+      "checkpoint": "g000000-s001753088-0a1e4f88f4a932a5361446dbf73175f6326f83a1fff069296ec0e63d6de50439",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    }
+  ],
+  "question": "Verify actual prepared Gen0 hybrid cache/scalar parity and initial cost, before user training. No strength claim.",
+  "positions": "raw/wave2/node-screen receipts,6333 positions; raw/wave2/data-01/bt4-fresh-positions.jsonl16roots",
+  "design": "Existing cache probe: all6333 transitions,seven rotating50000-evaluation warmed passes,48 matched full/cache/reference32768-node searches per hybrid; exact search-result equality required for zero-output corrections; one CPU process,BelowNormal,768MiB. No simultaneous tournament.",
+  "limits": "Gen0 zero-head costs only; real trained models require fresh checks. Model payload includes frozen base795032bytes plus correction. Shared immutable primitive base799688bytes counted once; object overhead and ordinary search TT additional.",
+  "seed": "Hybrid initializers seed1; continued BRE runtime and optimizer exact clones of frozen Gen32, generation0 new identity.",
+  "amendmentBeforeRetry": "First GATE attempt stopped before output on raw-bitwise fresh-cache equality. The hybrid contains the existing Gen32 rolling floating accumulator, whose fresh and history sums need not be bit-identical. Retry records max raw fresh/history difference and requires <=1e-9 plus zero integer differences, full/cache/reference same-node search equality. Original W1 correction bitwise invariant remains. Preserve failed stderr and original jars; this does not permit integer/search differences."
+}

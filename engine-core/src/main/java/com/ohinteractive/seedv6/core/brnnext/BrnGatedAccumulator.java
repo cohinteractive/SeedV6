@@ -22,13 +22,15 @@ public final class BrnGatedAccumulator {
     private final double[] first=new double[width], gates=new double[width];
     private boolean initialized;
     private double material;
+    private final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.Workspace base;
     long recomputedRanks, recomputedBlocks;
 
     public BrnGatedAccumulator(BrnNextModel model) {
-        if(model.architecture()!=GATED_PAIRS)throw new IllegalArgumentException("GATE model required");
+        if(model.architecture().correctionKind()!=GATED_PAIRS)throw new IllegalArgumentException("GATE model required");
         this.model=model;
+        base=model.architecture().frozenBase()?BrnNextBase.model().newWorkspace():null;
     }
-    public long primitiveBytes() { return 8L*(4+2*8+2*8*width+2*32*width+2*width)+4L*(2*64+4); }
+    public long primitiveBytes() { return 8L*(4+2*8+2*8*width+2*32*width+2*width)+4L*(2*64+4)+(base==null?0:base.primitiveBytes()); }
     public double rawPawns(long[] board) {
         long changed=0;
         for(int i=0;i<4;i++)changed|=previous[i]^board[i];
@@ -72,7 +74,7 @@ public final class BrnGatedAccumulator {
             for(int block=0;block<32;block++)sum+=experts[side][block*width+r];
             residual+=(gates[r]/total)*(sum*PAIR_NORM);
         }
-        double value=material+residual;
+        double value=(base==null?material:base.evaluatePawns(board))+residual;
         if(!Double.isFinite(value))throw new ArithmeticException("Nonfinite GATE accumulator");
         return value;
     }

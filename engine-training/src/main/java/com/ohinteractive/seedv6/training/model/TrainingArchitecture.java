@@ -27,7 +27,9 @@ public enum TrainingArchitecture {
             com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.MODEL_BYTES, com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.TRAINING_BYTES),
     BRN_GATED(BrnNextArchitecture.GATED_PAIRS),
     BRN_CUBIC(BrnNextArchitecture.CUBIC),
-    BRN_POOLED(BrnNextArchitecture.POOLED);
+    BRN_POOLED(BrnNextArchitecture.POOLED),
+    BRN_GEN32_GATED(BrnNextArchitecture.GEN32_GATED),
+    BRN_GEN32_CUBIC(BrnNextArchitecture.GEN32_CUBIC);
 
     private final String schemaId, networkFile;
     private final int schemaVersion;
@@ -42,17 +44,23 @@ public enum TrainingArchitecture {
                 "network.brn-" + kind.name().toLowerCase(java.util.Locale.ROOT),
                 BrnNextCodec.modelBytes(kind), BrnNextCodec.trainingBytes(kind));
     }
-    public boolean brnNext() { return this == BRN_GATED || this == BRN_CUBIC || this == BRN_POOLED; }
+    public boolean brnNext() { return this == BRN_GATED || this == BRN_CUBIC || this == BRN_POOLED
+            || this == BRN_GEN32_GATED || this == BRN_GEN32_CUBIC; }
     public BrnNextArchitecture nextKind() {
         return switch (this) {
             case BRN_GATED -> BrnNextArchitecture.GATED_PAIRS;
             case BRN_CUBIC -> BrnNextArchitecture.CUBIC;
             case BRN_POOLED -> BrnNextArchitecture.POOLED;
+            case BRN_GEN32_GATED -> BrnNextArchitecture.GEN32_GATED;
+            case BRN_GEN32_CUBIC -> BrnNextArchitecture.GEN32_CUBIC;
             default -> throw new IllegalStateException("Not a BRN successor architecture");
         };
     }
     public static TrainingArchitecture fromNext(BrnNextArchitecture kind) {
-        return switch (kind) { case GATED_PAIRS -> BRN_GATED; case CUBIC -> BRN_CUBIC; case POOLED -> BRN_POOLED; };
+        return switch (kind) {
+            case GATED_PAIRS -> BRN_GATED; case CUBIC -> BRN_CUBIC; case POOLED -> BRN_POOLED;
+            case GEN32_GATED -> BRN_GEN32_GATED; case GEN32_CUBIC -> BRN_GEN32_CUBIC;
+        };
     }
     public boolean corpusOnly() { return this == BRN3 || this == BRN_PAIR2 || brnNext(); }
     public boolean nnueFamily() { return this == NNUE || this == NNUE_MATERIAL; }
@@ -68,6 +76,8 @@ public enum TrainingArchitecture {
             case BRN_GATED -> "BRN Gated Pairs (research)";
             case BRN_CUBIC -> "BRN Cubic-16 (research)";
             case BRN_POOLED -> "BRN Pooled-16 (control)";
+            case BRN_GEN32_GATED -> "Gen32 + Gated Residual (research)";
+            case BRN_GEN32_CUBIC -> "Gen32 + Cubic Residual (research)";
             default -> throw new AssertionError();
         };
         return this == BRN_PAIR2 ? "BRE-Pair 2" : this == NNUE ? "NNUE (legacy, no material)" : this == NNUE_MATERIAL ? "NNUE (material parity)"

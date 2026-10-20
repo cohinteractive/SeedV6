@@ -34,7 +34,8 @@ public final class ProductionSearch {
         validate(workers, evaluation);
         if (hashMiB < 1 || hashMiB > 1024) throw new IllegalArgumentException("Hash must be 1..1024 MiB");
         var table = new TTable(hashMiB);
-        if (evaluation.isBrnPair2())
+        // Explicit new residual models retain Gen32's search environment; old families are unchanged.
+        if (evaluation.isBrnPair2() || evaluation.isBrnGen32Residual())
             return workers == 1
                     ? ExactSearchAdapter.seeResearch(evaluation, SeePolicy.QXRAY, null, table)
                             .withCompletedHints(completedHints, null)

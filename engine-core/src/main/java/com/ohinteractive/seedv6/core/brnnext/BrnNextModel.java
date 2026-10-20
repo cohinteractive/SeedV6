@@ -35,10 +35,12 @@ public final class BrnNextModel {
         final BrnNextArchitecture architecture;
         final int[] features = new int[64], codes = new int[64], pairs = new int[210];
         final double[] first, second, third, output, gates;
+        private final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.Workspace base;
         int count;
         double material;
         public Workspace(BrnNextArchitecture architecture) {
             this.architecture = Objects.requireNonNull(architecture);
+            base = architecture.frozenBase() ? BrnNextBase.model().newWorkspace() : null;
             int width = architecture.width();
             first = new double[width]; second = new double[width]; third = new double[width];
             output = new double[width]; gates = new double[width];
@@ -63,7 +65,7 @@ public final class BrnNextModel {
                 int base = EMBEDDING + features[i] * width;
                 for (int r = 0; r < width; r++) {
                     double value = weights[base + r];
-                    if (architecture == CUBIC) {
+                    if (architecture.correctionKind() == CUBIC) {
                         third[r] += second[r] * value;
                         second[r] += first[r] * value;
                     }
@@ -71,7 +73,7 @@ public final class BrnNextModel {
                 }
             }
             switch (architecture) {
-                case CUBIC -> {
+                case CUBIC, GEN32_CUBIC -> {
                     for (int r = 0; r < width; r++) residual += weights[head + r] * second[r] * DEGREE2_NORM
                             + weights[head + width + r] * third[r] * DEGREE3_NORM;
                 }
@@ -81,7 +83,7 @@ public final class BrnNextModel {
                         residual += weights[head + width + r] * output[r];
                     }
                 }
-                case GATED_PAIRS -> {
+                case GATED_PAIRS, GEN32_GATED -> {
                     int n = 0;
                     for (int shape = 0; shape < 4; shape++) {
                         int dx = shape == 1 ? 0 : shape == 3 ? -1 : 1;
@@ -107,7 +109,7 @@ public final class BrnNextModel {
                     }
                 }
             }
-            double result = material + residual;
+            double result = (base == null ? material : base.evaluatePawns(board)) + residual;
             if (!Double.isFinite(result)) throw new ArithmeticException("Nonfinite BRN-next evaluation");
             return result;
         }

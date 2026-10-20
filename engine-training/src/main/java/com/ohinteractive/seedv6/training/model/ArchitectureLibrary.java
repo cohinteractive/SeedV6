@@ -35,7 +35,11 @@ public final class ArchitectureLibrary {
         new Descriptor("BRN Cubic-16 (research)", TrainingArchitecture.BRN_CUBIC, Status.RESEARCH,
             List.of("W1-CUBIC"), "Rank16 quadratic/cubic ANOVA interactions; corpus Adam"),
         new Descriptor("BRN Pooled-16 (control)", TrainingArchitecture.BRN_POOLED, Status.RESEARCH,
-            List.of("W1-POOL"), "Small pooled tanh nonlinear control; corpus Adam"));
+            List.of("W1-POOL"), "Small pooled tanh nonlinear control; corpus Adam"),
+        new Descriptor("Gen32 + Gated Residual (research)", TrainingArchitecture.BRN_GEN32_GATED, Status.RESEARCH,
+            List.of("W3-RESGATE"), "Frozen Gen32 plus context-gated correction; corpus Adam; Policy4"),
+        new Descriptor("Gen32 + Cubic Residual (research)", TrainingArchitecture.BRN_GEN32_CUBIC, Status.RESEARCH,
+            List.of("W3-RESCUBIC"), "Frozen Gen32 plus rank16 cubic correction; corpus Adam; Policy4"));
     public static List<Descriptor> entries() { return ENTRIES; }
     public static Descriptor describe(TrainingArchitecture architecture) {
         return ENTRIES.stream().filter(e -> e.implementation() == architecture).findFirst().orElseThrow();

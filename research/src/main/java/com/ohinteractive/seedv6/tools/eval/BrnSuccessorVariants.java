@@ -8,6 +8,7 @@ final class BrnSuccessorVariants {
     static BrnNextModel gain(BrnNextModel source,double gain) {
         if(!Double.isFinite(gain)||gain<0||gain>1)throw new IllegalArgumentException("Residual gain must be 0..1");
         if(gain==BrnNextModel.RESIDUAL_GAIN)return source;
+        if(source.architecture().frozenBase())throw new IllegalArgumentException("W1 gain override cannot rescale a frozen Gen32 component");
         var kind=source.architecture();double[] weights=new double[kind.parameters()];
         for(int i=0;i<weights.length;i++)weights[i]=source.weight(i);
         double factor=gain/BrnNextModel.RESIDUAL_GAIN;

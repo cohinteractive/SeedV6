@@ -19,12 +19,14 @@ public final class BrnCubicAccumulator {
             lastRaw=new double[2],lastMaterial=new double[2];
     private final boolean[] valid=new boolean[2];
     private boolean initialized;
+    private final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.Workspace base;
     long recomputedRanks;
     public BrnCubicAccumulator(BrnNextModel model) {
-        if(model.architecture()!=CUBIC)throw new IllegalArgumentException("CUBIC model required");
+        if(model.architecture().correctionKind()!=CUBIC)throw new IllegalArgumentException("CUBIC model required");
         this.model=model;
+        base=model.architecture().frozenBase()?BrnNextBase.model().newWorkspace():null;
     }
-    public long primitiveBytes() { return 8L*(4+2*8+6*8*width+3*width+4)+4L*(2*64+2)+2; }
+    public long primitiveBytes() { return 8L*(4+2*8+6*8*width+3*width+4)+4L*(2*64+2)+2+(base==null?0:base.primitiveBytes()); }
     public double rawPawns(long[] board) {
         long changed=0;
         for(int i=0;i<4;i++)changed|=previous[i]^board[i];
@@ -62,7 +64,7 @@ public final class BrnCubicAccumulator {
         for(int r=0;r<width;r++)residual+=model.weight(head+r)*second[r]*DEGREE2_NORM
                 +model.weight(head+width+r)*third[r]*DEGREE3_NORM;
         lastMaterial[side]=BrnPair2Features.material(board);
-        double result=lastMaterial[side]+residual;
+        double result=(base==null?lastMaterial[side]:base.evaluatePawns(board))+residual;
         if(!Double.isFinite(result))throw new ArithmeticException("Nonfinite CUBIC accumulator");
         lastRaw[side]=result;valid[side]=true;return result;
     }

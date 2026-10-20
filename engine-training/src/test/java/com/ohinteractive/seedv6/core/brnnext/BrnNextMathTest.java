@@ -39,7 +39,7 @@ class BrnNextMathTest {
     @ParameterizedTest @EnumSource(BrnNextArchitecture.class)
     void materialInitializationBoundedFitAndExactStateContinuation(BrnNextArchitecture kind) throws Exception {
         var trainer = new BrnNextTrainer(kind, 71, .003);
-        for (var board : BOARDS) assertEquals(BrnPair2Features.material(board), trainer.predictPawns(board));
+        for (var board : BOARDS) assertEquals(initial(kind, board), trainer.predictPawns(board));
         double[] targets = {.6, -.4, .2};
         double before = loss(trainer, targets);
         for (int update = 0; update < 512; update++) trainer.trainBatch(BOARDS, targets, targets.length);
@@ -88,6 +88,10 @@ class BrnNextMathTest {
         huge[0] = Double.NaN; assertThrows(IllegalArgumentException.class, () -> new BrnNextModel(kind, huge));
     }
 
+    private static double initial(BrnNextArchitecture kind, long[] board) {
+        return kind.frozenBase() ? BrnNextBase.model().newWorkspace().evaluatePawns(board) : BrnPair2Features.material(board);
+    }
+
     private static double loss(BrnNextTrainer trainer, double[] targets) {
         double sum = 0;
         for (int i = 0; i < BOARDS.length; i++) {
@@ -108,11 +112,11 @@ class BrnNextMathTest {
                 categories[q] = channel + 1; active.add(channel * 64 + q);
             }
         }
-        double sum = BrnPair2Features.material(board) + w[0];
+        double sum = initial(kind, board) + w[0];
         for (int feature : active) sum += w[UNARY + feature] / Math.sqrt(32);
         int width = kind.width(), h = kind.head(); double[] gate = new double[width], expert = new double[width];
         for (int r = 0; r < width; r++) {
-            if (kind == CUBIC) {
+            if (kind.correctionKind() == CUBIC) {
                 for (int i = 0; i < active.size(); i++) for (int j = i + 1; j < active.size(); j++) {
                     double pair = w[EMBEDDING + active.get(i) * width + r] * w[EMBEDDING + active.get(j) * width + r];
                     sum += w[h + r] * pair / Math.sqrt(496);
@@ -122,7 +126,7 @@ class BrnNextMathTest {
             } else {
                 double projection = w[h + r];
                 for (int feature : active) projection += w[EMBEDDING + feature * width + r] / Math.sqrt(32);
-                if (kind == POOLED) sum += w[h + width + r] * Math.tanh(projection);
+                if (kind.correctionKind() == POOLED) sum += w[h + width + r] * Math.tanh(projection);
                 else {
                     gate[r] = Math.exp(projection);
                     int[][] directions = {{1, 0}, {0, 1}, {1, 1}, {-1, 1}};
@@ -134,7 +138,7 @@ class BrnNextMathTest {
                 }
             }
         }
-        if (kind == GATED_PAIRS) {
+        if (kind.correctionKind() == GATED_PAIRS) {
             double total = Arrays.stream(gate).sum();
             for (int r = 0; r < width; r++) sum += gate[r] * expert[r] / total;
         }

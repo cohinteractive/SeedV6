@@ -1,0 +1,12 @@
+{
+  "id": "brn-successor-wave3-optimizer-smoke-v1",
+  "question": "Does learning a correction to Gen32 remain finite and stable at small rates, and does the continued additive control respond differently?",
+  "reference": "wave2-diagnostics-plan.json models[0], both runtime and optimizer hashes verified by runner",
+  "design": "Frozen Gen32 Adam continuation or fresh GEN32_GATED/GEN32_CUBIC correction seed71; Adam rates .001/.003/.01. Each source separately: first1024 train,last1024 development holdout, identical seed71 shuffles,batch128,8epochs,64 updates. Record step0/1/4/16/64 losses and function displacement from Gen32.",
+  "sources": [
+    "raw/wave2/data-01/bt4-fresh-positions.jsonl",
+    "raw/wave2/data-01/lichess-sealed-positions.jsonl"
+  ],
+  "limits": "18 arms,8192 visits/arm,147456 visits total; no saved networks, generations or original-store writes; one process/CPU,768MiB,BelowNormal,300s deadline. No additional rate sweep after outcomes.",
+  "interpretation": "Previously inspected development data; this bounds implementation/early stability, not optimum hyperparameters, generalization or strength. Different optimizer initialization and sparse/dense updates are explicit. Choose conservative initial human rates based on stability and existing evidence, not a claim of optimized architectures."
+}

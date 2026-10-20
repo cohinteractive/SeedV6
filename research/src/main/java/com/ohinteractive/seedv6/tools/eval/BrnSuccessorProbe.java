@@ -37,7 +37,7 @@ public final class BrnSuccessorProbe {
         var names = new ArrayList<String>(); var evaluations = new ArrayList<SearchEvaluation>();
         var sizes = new ArrayList<Long>(); var weightBytes = new ArrayList<Long>();
         names.add("Gen32"); evaluations.add(SearchEvaluation.brnPair2(reference)); sizes.add((long) BrnPair2Codec.MODEL_BYTES); weightBytes.add(reference.immutablePrimitiveBytes());
-        for (var kind : BrnNextArchitecture.values()) {
+        for (var kind : List.of(BrnNextArchitecture.GATED_PAIRS, BrnNextArchitecture.CUBIC, BrnNextArchitecture.POOLED)) {
             var trainer = new BrnNextTrainer(kind, 1, .003); names.add(kind.name());
             evaluations.add(SearchEvaluation.brnNext(trainer.snapshot())); sizes.add((long) BrnNextCodec.modelBytes(kind));
             weightBytes.add(kind.parameters() * 8L);

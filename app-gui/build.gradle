@@ -30,9 +30,19 @@ tasks.register('brnSuccessorWave', JavaExec) {
     if (project.hasProperty('waveReport')) args '--create', rootProject.file(project.property('waveReport')).absolutePath
     else args '--inspect'
 }
+tasks.register('brnResidualWave', JavaExec) {
+    group = 'verification'
+    description = 'Prepares the explicit Gen32 residual wave and continued-BRE control, without training.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.gui.BrnResidualWave'
+    jvmArgs '--add-modules=jdk.incubator.vector', '-Xmx768m', '-Djava.awt.headless=true'
+    if (project.hasProperty('residualWaveReport')) args '--create', rootProject.file(project.property('residualWaveReport')).absolutePath
+    else doFirst { throw new GradleException('Supply -PresidualWaveReport=<new report path>') }
+}
 
 tasks.withType(Test).configureEach {
     if (project.hasProperty('headless')) systemProperty 'java.awt.headless', 'true'
     if (project.hasProperty('waveGuiReport')) systemProperty 'seedv6.waveGuiReport', rootProject.file(project.property('waveGuiReport')).absolutePath
+    if (project.hasProperty('residualWaveGuiReport')) systemProperty 'seedv6.residualWaveGuiReport', rootProject.file(project.property('residualWaveGuiReport')).absolutePath
     maxHeapSize = '2g'
 }

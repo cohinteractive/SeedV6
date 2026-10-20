@@ -1,154 +1,113 @@
 # BRN successor workstream state
 
-Updated 20 October 2026. **Active: Wave 2 evidence reconciliation and controlled diagnostics.**
-Governing [CONTRACT](CONTRACT.md), [bootstrap/challenge](BOOTSTRAP.md),
-[implemented wave and handoff](WAVE1.md), [current findings](WAVE2.md),
-[exact initial lineage manifest](wave1-lineages.json).
-This is the established successor programme; the completed older BRN programme and Search contracts
-retain their own evidence and scope. No playing-strength improvement is established.
+Updated20 October2026. **Human training gate G3 is ready and blocking trained Wave3
+assessment. No programme success is claimed.** This remains the original CGLHW.
+Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
+[completed investigations](WAVE2.md), and [current implementation/training gate](WAVE3.md).
 
-| Candidate | Implemented formulation | GUI lineage UUID | Current state |
-| --- | --- | --- | --- |
-| W1-GATE | Four context-gated local pair experts | `699672ff-5dcc-326a-afef-924996c76f79` | Gen200 frozen for diagnostics; live Best Gen198 |
-| W1-CUBIC | Rank16 quadratic/cubic ANOVA factors | `e04052b9-6784-3c12-abb5-abc75cd21f59` | Gen200 frozen; live Best Gen200 |
-| W1-POOL | Rank16 pooled tanh nonlinear control | `97b2fdda-f812-3455-9f62-43e5ee322651` | Gen200 frozen; live Best Gen200 |
+Objective: statistically credible practical chess improvement over frozen BRE-Pair2
+Gen32 through useful additional expressiveness, with measured costs and compatible
+search. Architectural complexity or lower validation loss alone is insufficient.
 
-All live under `E:\SeedV6-Networks`, in the architecture folders recorded in the
-manifest. Created with matched Adam 0.003 / batch128 / 8 epochs / seed1,
-131072 training positions and held-out validation. The registered external CP
-source was selected. User training has now been verified through 200 completed
-generations each, 26,214,400 retained training positions, 209,715,200 sample visits
-and 1,638,400 optimizer steps. The prior training gate is satisfied for diagnostics;
-this does not establish competitive maturity. Historical handoff remains in WAVE1.
-Current immutable bindings and hashes: [trained manifest](wave2-trained-checkpoints.json).
+## Candidate registry and preserved reference
 
-Completed: inference and separate training codecs, optimizers and exact continuation;
-existing corpus/training/checkpoint services; stable layout-group data partition;
-GUI architecture/lineage/settings and Play/Arena model loading; automatic idempotent
-wave creation. Math, information-boundary, gradient, tiny learning, runtime/search,
-corpus, interruption/resume, shared regression and Arena fixture checks pass.
-Native Windows Swing checks loaded all three actual owner lineages with Start
-enabled. A model-browser fallback identity defect was found and repaired.
-The full Gen32 reference and optimizer were verified; original checkpoint/reference
-hashes were preserved. Details, failed attempts and validation limits are in WAVE1.
+| Candidate | Identity / state |
+| --- | --- |
+| Frozen Gen32 | BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017, Gen32; never replace with live Best/latest |
+| W1-GATE | 699672ff-5dcc-326a-afef-924996c76f79, Gen200 frozen; historical Best198 |
+| W1-CUBIC | e04052b9-6784-3c12-abb5-abc75cd21f59, Gen200 frozen |
+| W1-POOL | 97b2fdda-f812-3455-9f62-43e5ee322651, Gen200 frozen; lower research priority, not discarded |
+| W3-RESGATE | BRN-GEN32-GATED/e6b6775d-39cd-392b-bd18-5e964a445f62, Gen0, frozen Gen32 plus fresh gated correction |
+| W3-RESCUBIC | BRN-GEN32-CUBIC/22b42be6-15c4-3f36-a376-3776aa1931f2, Gen0, frozen Gen32 plus fresh cubic correction |
+| W3-BRE-CONTROL | BRN-Pair2/ed0750a3-3163-3979-9f26-2e466c49c771, new Gen0 counter, exact Gen32 runtime/Adam clone |
 
-Historical Wave1 Gen0 cost: 52-105kB runtime payloads but slower current full-refresh
-inference than Gen32 rolling tables. At that handoff there was no incremental candidate implementation,
-sustained training-throughput conclusion, competitive tournament or strength ranking.
-Training loss and latency do not select a winner. GATE's weaker tiny-fit result is
-an open diagnostic concern, not a rejection. Features omit explicit attack/pin/
-blocker information; empirical gain calibration remains open for every candidate.
+All managed roots are under E:/SeedV6-Networks. Exact checkpoint IDs, hashes and
+sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`. Frozen reference
+network SHA256 is `5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7`.
+Original lineages/campaigns/checkpoints remain preserved. W1 human training is verified
+complete for investigation; it does not establish competitive maturity. Never resume
+the user's paused Learning Arena campaign as an inferred authorization to train.
 
-## Current evidence and next admissible work
+## Established findings and hypothesis frontier
 
-Human actions currently required: **None**. Existing trained checkpoints permit
-further autonomous work. Do not launch substantive training or resume the user's
-paused Learning Arena campaigns. User-reported poor matches are confirmed as
-preliminary observations, with material search-policy and data confounds.
+1. **Verified provenance/confounds.** Gen32 used28,049,408 training positions,
+   224,395,264 visits,1,753,088 updates, LR.01, half BT4/half CP; W1 each used26,214,400
+   positions,209,715,200 visits,1,638,400 updates,LR.003,CP-only. Nominal generation
+   counts misled. Historical executable identity and game overlap remain incomplete.
+2. **Verified search confound.** Existing W1 production dispatch differs from Pair2;
+   old frozen Arena bindings also used ConstructionV1. Common-policy Gen0 results
+   match. Matched .01/.01 BT4 round8 rematches score GATE45.31% at equal nodes and
+   48.44% at equal time, inconclusive; historical one-sided aggregate is not reproduced.
+   Causal shares of policy/rate/data/architecture are not isolated.
+3. **Correctness supported, not universally proved.** Finite differences, independent
+   forward/runtime, persistence/continuation, color/special moves and service tests
+   pass. No demonstrated W1 gradient/checkpoint bug explains the gap. Rates have very
+   different functional effects; increasing W1 rate is not a general fix.
+4. **BRE advantages supported.** Compiled additive tables are much faster; W1 shared
+   compact features are not a strict superset of BRE's absolute-location pair detail.
+   Lower development prediction error and useful cubic/conditional prediction signal
+   do not establish chess value. Calibration/search interaction is material.
+5. **Existing-model screens complete.** Original clock screen GATE35.16%,CUBIC44.53%
+   (64games each); cached/calibration controls remain inconclusive. BT4-reference:
+   BRE48.44%,GATE37.5% (32each). Final half mixtures: GATE43.75%,CUBIC47.66% (64each).
+   Reused development openings, small samples and selection prevent confirmation.
+   Do not extend unchanged mixtures to seek significance. Preserve all raw evidence.
+6. **Wave3 admitted and implemented.** Freeze entire Gen32 function, train only a new
+   correction; compare with continued BRE. Verified zero-head score/search parity,
+   gradients, codecs/base binding, GUI, corpus continuation, actual-owner smoke.
+   Initial cached search costs2.11x(GATE)/1.68x(CUBIC) Gen32: substantial risk, not
+   evidence of practical efficiency. Human training is now the required dependency.
+7. **Next after G3.** Audit actual exposures/endpoints, recheck parity/calibration/cost,
+   then prospective strength screen against Gen32 and continued BRE under common
+   Policy4. For useful expressiveness, ablate conditional GATE to constant/additive
+   and CUBIC to quadratic/unary, with real costs. Independent confirmation requires
+   fresh opening clusters and predeclared error/multiplicity/stopping rules.
+8. **Deferred.** Further calibration/normalization, selective feature/attack/blocker
+   formulations, more efficient corrections, distillation or new architecture remain
+   options if evidence warrants. Do not mechanically exhaust old architecture lists
+   or prematurely reject W1; no credible direction has been declared exhausted.
 
-Checksum-validating readers verified all four frozen payloads/optimizer states,
-complete parent chains, history (no warnings), source ledgers and saved Arena
-campaigns. Gen32 is zero-initialized, with 28,049,408 training positions and
-224,395,264 visits: half BT4, half Lichess CP. W1 is CP-only. Nominal generation
-counts were misleading. Raw records: `raw/wave2/audit-01` and
-`raw/wave2/training-reconciliation.json`. Do not substitute live Best/latest.
+## Blocking human gate and exact resume point
 
-Common-policy Gen0 numerical/search parity passed. Production dispatch differs by
-family, and historical frozen-reference opponents used pinned Construction V1.
-Eight-opening fixed-node diagnostics (`wave2-node-screen-plan.json`) finished:
-GATE 9/2/5; CUBIC 10/0/4 on seven valid pairs plus one failed pair; POOL 5/4/7.
-These are exploratory, random-opening, short-budget results, not strength claims.
-Exact-history replay reproduced the failure: the retained search table's ordering
-exhausts8192 nodes before the first completed iteration. It is preserved as a
-SEARCH_FAILURE, not a draw or replaced game. Python-chess independently replayed
-all6,285 recorded moves and checked all completed game terminations.
+**Human actions required after this prompt: Blocking - train the three prepared W3
+lineages through the SeedV6 GUI and report readiness or failure.** It blocks trained
+Wave3 strength/ablation/optimization assessment. No other human action is required.
+Full settings, safeguards and resume semantics are in WAVE3's G3 section.
 
-The fixed data probe (`wave2-data-plan.json`, `raw/wave2/data-01`) found exact W1
-trainer/runtime raw parity on 4,096 positions. GATE full-function cross entropy
-slightly beat Gen32 on both samples; uniform-gate and unary-only ablations worsened
-it. Cubic terms also improve CUBIC's sample prediction. Data errors do not select
-the chess winner. The sampled sealed bucket is now development evidence, not
-independent future confirmation.
+Use local build46 (`app/build/install/seedv6/bin/seedv6.bat gui`). Each starts at new
+Gen0: LR.003,batch128,8epochs,131072training/32768validation positions,seed1,oneworker,
+held-out WDL,registered BT4/CP equal weights,32 Additional Generations. One lineage
+at a time; stop at new generation32 or earlier on instability/errors/contention.
+If explicitly stopped, a new session needs only the remaining generation count;
+crash-ACTIVE sessions retain their original budget. Preserve all checkpoints/data.
+Report completed/latest/Best generations, any deviations, loss behavior and elapsed
+training time. Counts are a diagnostic batch, not a universal maturity requirement.
 
-Completed `wave2-clock-screen-plan.json` (128 games), common Policy4,
-50ms/move,32 book openings, reversed colours: GATE14/17/33 (35.16%),
-CUBIC23/11/30 (44.53%). All16,152 moves/terminations independently replayed.
-No failed/capped pairs or fallbacks. GATE regressed under these conditions; CUBIC
-is inconclusive. Records remain in `raw/wave2/clock-screen`; do not rerun it.
-Check for an active JVM before launching another batch; no parallel benchmark work.
-Plans and source-backed reproduction commands are in WAVE2 and the runner CLI.
-Trained latency probe and13 selected math/runtime tests pass.
-An opt-in GATE block cache is implemented and passes three additional tests plus
-actual Gen200 oracle/search probes (`wave2-gate-cache-plan.json`,
-`raw/wave2/gate-cache-01.json`): zero integer-score differences on6,333 positions,
-identical48 paired searches, approximately1.30x search speedup. Ordinary loading
-still uses full recomputation. The completed original clock screen used `raw/wave2/clock-runtime/lib/*`, not rebuilt research distribution jars.
-The qualifying cache implementation advances build42→43 in its own commit.
-Completed: `wave2-calibration-plan.json`,128 exploratory games across cached
-GATE gains.25/.5/1 and CUBIC.5, reusing16 development openings. Three gain-scaling
-tests and a four-JVM resume smoke pass; original models remain untouched.
-Preserve completed `raw/wave2/calibration-screen` and its frozen
-`raw/wave2/calibration-runtime/lib/*`. Each invocation plays at most12 games or
-240 seconds (finishing its current game). Stop/investigate any runtime failure.
-Independent replay verified16,109 moves, no failures/caps/fallbacks. Scores:
-GATE-cache gains.25/.5/1:46.875%/42.1875%/23.4375%; CUBIC.5:48.4375%.
-No success claim from either development screen; full GATE gain regresses.
+Source progress starts at zero and can overlap Gen32 history. Hybrid stable-layout
+splits differ from BRE sequential holdout; the frozen base may have seen hybrid
+holdout. Same nominal settings are not identical data/effective optimization.
+Continued BRE inherits1753088 Adam updates; new corrections inherit no optimizer
+moments. A later prompt alone does not complete this gate. Independently ready
+candidates can proceed while another is pending, after verifying actual evidence.
 
-CUBIC cache is also implemented as opt-in research and verified:9,000 random
-transitions,6,333 actual Gen200 positions with zero integer differences,48 paired
-searches equal; measured search speedup1.078x and7,242 primitive bytes/worker.
-See `wave2-cubic-cache-plan.json` and `raw/wave2/cubic-cache-01.json`. Its coherent
-core commit advances build43 to44; frozen calibration-runtime remains unchanged.
-Hypothesis frontier: calibration is complete; compare cached CUBIC
-under time only if the results justify it. Diagnose effective optimization with
-bounded from-scratch smoke learning and existing frozen Arena endpoints.
-The optimizer smoke is complete:16 arms,64 updates each, no saved models; nominal
-rates produce very different functional steps and higher W1 rates do not reliably
-improve held-out loss. See `wave2-optimizer-plan.json`. Prepared next are the
-node/clock from-scratch plans against matched .01/.01 BT4 round8 endpoints.
-The round8 cache oracle passed (6,333 positions,zero integer differences,48 paired
-searches identical). Both rematches completed32 games and independent replay: GATE45.3125% at equal
-nodes,48.4375% at equal time, inconclusive with no failures/caps/fallbacks.
-Next ACTIVE:`wave2-bt4-reference-plan.json` compares both endpoints to Gen32
-(64games), from frozen calibration-runtime. Prepared:`wave2-mixture-plan.json`
-tests half Gen32/half W1 GATE or CUBIC (128games), motivated by complementary
-development prediction errors. Core blend tests and actual-model smoke passed (14 selected tests, four capped
-smoke games,16 independently replayed moves). Isolated mixture-cost probes quantify
-both components; no strength inference. Core research blend commit advances44
-to45. Freeze its new runtime separately before scored mixture games. Inspect active
-JVMs before any test/benchmark/tournament; no concurrent heavy work. No user campaign is resumed. Separate
-GATE's learned mean mixture from conditional variation before claiming practical
-value: `raw/wave2/gate-context-01.json` now shows noncollapsed gates and improved
-raw-function CE/MSE versus a fitted constant mean; quarter-gain CE instead favours
-the mean control. Playing-strength and efficient-additive-control ablations remain.
-Re-match existing from-scratch
-campaign snapshots under common search if needed to isolate learning efficacy.
-Only then select retraining/hybrid architecture work. User training is not yet a
-blocker; no new training gate has been invented.
-Retain W1 designs pending these results; speculative Wave2 redesign is premature.
-Prepare a narrowly scoped explicit common-policy Arena option if needed for fair
-user comparisons, preserving historical campaign semantics and production identity.
-One game,
-one worker per engine, ponder off, initially 64MiB TT, below-normal priority, no
-competing heavy jobs. Competitive confirmation and any claimed gain require later
-independent evidence. Training changes requiring substantial learning return here.
+## Restart and provenance
 
-Later frontier: investigate calibration, normalization and training issues first;
-then incremental inference, sparse attack/blocker features, higher-order/gating
-hybrids and controlled ablations if evidence supports them. Continue after failures
-or an initial success under the contract; this handoff does not close the programme.
+All admitted Wave2 games and Wave3 correctness/initial-cost/smoke jobs are complete;
+no tournament or autonomous training is queued. Keep one game,one worker/engine,
+no pondering,64MiB TT,768MiB JVM,ActiveProcessorCount1,BelowNormal for future screens;
+no simultaneous heavy jobs or substantial training by Codex.
 
-## Fresh-session recovery
+Raw evidence is local-only under `raw/wave1`, `raw/wave2`, `raw/wave3` and module
+build directories; a fresh checkout does not contain it. Check availability before
+analysis. Frozen runtimes/receipts/plans retain original outcomes including failures.
+The first Wave3 cache probe failed a raw-bitwise history assertion; the recorded
+retry found only inherited BRE rounding (~8e-15), zero integer differences and exact
+full/cache/reference search equality. Do not silently reinterpret the failed attempt.
 
-Read CONTRACT, this STATE and WAVE1; inspect Git and actual files before acting.
-Initial HEAD was `38e5626a6bfb76690a539d0ce0e04e70bd57f9d1`, clean, build40.
-The coherent implementation commit containing this state advances application build
-to41 under the owner's commit-based rule. No finalizer was invoked; root journal
-was absent and was not created. No push, production evaluator replacement or installer
-deployment. Use the new local distribution launcher in WAVE1 for these architectures.
-
-Raw evidence is local-only under `docs/research/brn-successor-cglhw/raw/wave1` and
-`app-gui/build/brn-successor-native`; a fresh checkout lacks it. Preserve prior
-failed/preliminary output. Tracked contract, plans, manifest and compact report
-provide continuity, not a substitute for missing raw evidence in fresh analysis.
-Turn/commit/wave readiness is not user acceptance or programme completion.
+This continuation started clean at2334760/build42. Subsequent coherent commits added
+research controls/caches through build45. Wave3's qualifying implementation includes
+build46 in the same closing commit; inspect Git to establish that boundary. Earlier
+Wave1 chronology remains in WAVE1 and Git. No finalizer, root journal creation,
+production-default replacement, push or deployment. Repository-root
+CODEXLOG_CURRENT.md was absent. Finished turn, implementation readiness and accepted
+workstream outcome remain distinct; owner acceptance/success are not established.

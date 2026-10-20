@@ -74,6 +74,10 @@ public final class BrnSuccessorMatch {
                     "effectiveNetworkSha256",HexFormat.of().formatHex(DataFiles.digest().digest(bytes.toByteArray())),
                     "residualGain",spec.residualGain()==null?.25:spec.residualGain(),"gatedCache",spec.gatedCache()));
             if(spec.cubicCache())modelBinding.put("cubicCache",true);
+            if(model instanceof NetworkModel.BrnNext n && n.model().architecture().frozenBase()) {
+                modelBinding.put("nativeResidualCache",true);
+                modelBinding.put("frozenBaseSha256",com.ohinteractive.seedv6.core.brnnext.BrnNextBase.SHA256);
+            }
             if(spec.blendCandidateWeight()!=null) {
                 modelBinding.put("blendCandidateWeight",spec.blendCandidateWeight());
                 modelBinding.put("blendReference",plan.models().getFirst());

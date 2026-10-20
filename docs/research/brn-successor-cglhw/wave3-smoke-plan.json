@@ -1,0 +1,59 @@
+{
+  "id": "brn-successor-wave3-native-load-smoke-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    },
+    {
+      "name": "W3-RESGATE",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\e6b6775d-39cd-392b-bd18-5e964a445f62",
+      "checkpoint": "g000000-s000000000-ce2461d9effee1103475c8939842ad3793dd5d96c877a9949b26c336a30ee000",
+      "networkSha256": "72c47ea4a6ff31c3769040cfa227f10fd441e4346342f4f3905ceb4da475ea82"
+    },
+    {
+      "name": "W3-RESCUBIC",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\22b42be6-15c4-3f36-a376-3776aa1931f2",
+      "checkpoint": "g000000-s000000000-e85be6a1e9d7619b15c21cb441c3b3007db9463fdd98d074f3f5fe7b64df5b84",
+      "networkSha256": "62c4906a6a6f2a6b8f8a3b25c0ca737f11d0b364f2c8627211cf00b49c2e5dc5"
+    },
+    {
+      "name": "W3-BRE-CONTROL",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\ed0750a3-3163-3979-9f26-2e466c49c771",
+      "checkpoint": "g000000-s001753088-0a1e4f88f4a932a5361446dbf73175f6326f83a1fff069296ec0e63d6de50439",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    }
+  ],
+  "pairs": 1,
+  "seed": 2026102007,
+  "nodes": 0,
+  "moveMillis": 25,
+  "maximumPlies": 8,
+  "batchGames": 3,
+  "batchSeconds": 60,
+  "openingMoves": [
+    [
+      "e2e4",
+      "e7e5",
+      "g1f3",
+      "d7d6",
+      "d2d4",
+      "e5d4",
+      "f3d4",
+      "g8f6",
+      "b1c3",
+      "f8e7",
+      "f1d3",
+      "e8g8",
+      "e1g1",
+      "c7c6",
+      "f1e1",
+      "b8d7"
+    ]
+  ],
+  "legalFallback": true,
+  "purpose": "Six actual-owner Gen0 games, two colors for each hybrid and additive continued control, capped at8plies; two new JVMs test resume. No scored strength inference. Explicit commonPolicy4,oneworker,64MiBTT, no ponder,onegame,oneCPU,768MiB,BelowNormal. Hybrids use native cache defaults bound by distinct schema+frozen-base hash.",
+  "output": "raw/wave3/native-load-smoke"
+}

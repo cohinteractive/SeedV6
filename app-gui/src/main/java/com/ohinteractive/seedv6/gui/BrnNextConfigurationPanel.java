@@ -11,14 +11,20 @@ final class BrnNextConfigurationPanel extends JPanel {
             case BRN_GATED -> "Four learned context gates combine shared local pair-pattern experts.";
             case BRN_CUBIC -> "Rank16 factors learn distinct two-piece and three-piece interactions.";
             case BRN_POOLED -> "A small pooled tanh network controls for generic nonlinear capacity.";
+            case BRN_GEN32_GATED -> "A frozen Gen32 evaluator plus a learned context-gated correction.";
+            case BRN_GEN32_CUBIC -> "A frozen Gen32 evaluator plus learned rank16 quadratic/cubic corrections.";
             default -> throw new IllegalArgumentException("Not a BRN successor");
         };
         JPanel body = padded(new BorderLayout(), 14);
         var information = text(description + "\n"
-                + "Fresh models start from fixed material with a zero learned residual.\n"
+                + (architecture.trainingArchitecture().nextKind().frozenBase()
+                        ? "Fresh models reproduce Gen32; only the zero-initialized correction is trained.\n"
+                        : "Fresh models start from fixed material with a zero learned residual.\n")
                 + "Defaults: Adam 0.003, batch 128, 8 epochs; compatible CP / BT4 Q Training Data.\n"
                 + "Stop / Resume retains weights, moments, seed identity and source progress.\n"
-                + "Play initially uses one quarter of the residual; strength is not yet established.\n"
+                + (architecture.trainingArchitecture().nextKind().frozenBase()
+                        ? "Play uses Gen32's quarter calibration and Policy4; improvement is unproven.\n"
+                        : "Play initially uses one quarter of the residual; strength is not yet established.\n")
                 + "Training fit and held-out loss are diagnostics, not playing-strength evidence.", 12, SeedTheme.SECONDARY);
         information.setName("brnNextTrainingInformation-" + architecture.name()); information.setRows(7);
         body.add(information); add(card(architecture + " capabilities", null, body));

@@ -10,7 +10,13 @@ import org.junit.jupiter.params.provider.EnumSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BrnSuccessorVariantsTest {
-    @ParameterizedTest @EnumSource(BrnNextArchitecture.class)
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class, names={"GEN32_GATED","GEN32_CUBIC"})
+    void oldGainControlCannotSilentlyRescaleOnlyTheCorrection(BrnNextArchitecture kind) {
+        var model=new BrnNextModel(kind,new double[kind.parameters()]);
+        assertSame(model,BrnSuccessorVariants.gain(model,.25));
+        assertThrows(IllegalArgumentException.class,()->BrnSuccessorVariants.gain(model,.5));
+    }
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class, names={"GATED_PAIRS","CUBIC","POOLED"})
     void outputScalingChangesOnlyResidualGainAndPreservesSource(BrnNextArchitecture kind) {
         var random=new SplittableRandom(913);double[] weights=new double[kind.parameters()];
         for(int i=0;i<weights.length;i++)weights[i]=random.nextDouble(-.4,.4);

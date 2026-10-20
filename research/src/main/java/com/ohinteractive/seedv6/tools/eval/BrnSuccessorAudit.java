@@ -88,7 +88,7 @@ public final class BrnSuccessorAudit {
         write(output.resolve("campaigns.json"), campaigns);
         var gen0 = new ArrayList<SearchEvaluation>();
         gen0.add(SearchEvaluation.brnPair2(new BrnPair2Model(new BrnPair2Trainer(.01).snapshot())));
-        for (var kind : BrnNextArchitecture.values()) gen0.add(SearchEvaluation.brnNext(new BrnNextTrainer(kind, 1, .003).snapshot()));
+        for (var kind : List.of(BrnNextArchitecture.GATED_PAIRS, BrnNextArchitecture.CUBIC, BrnNextArchitecture.POOLED)) gen0.add(SearchEvaluation.brnNext(new BrnNextTrainer(kind, 1, .003).snapshot()));
         var expected = scores(gen0.getFirst(), boards);
         for (var evaluation : gen0) if (!expected.equals(scores(evaluation, boards))) throw new IllegalStateException("Gen0 material mismatch");
         var searches = new ArrayList<Object>();

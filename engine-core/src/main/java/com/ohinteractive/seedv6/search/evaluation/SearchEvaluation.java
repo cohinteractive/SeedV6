@@ -114,15 +114,21 @@ public final class SearchEvaluation {
     public static SearchEvaluation brnNext(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model) { return new SearchEvaluation(model); }
     /** Explicit research implementation control; ordinary loading retains its existing evaluator. */
     public static SearchEvaluation brnGatedIncrementalResearch(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model) {
-        if (model.architecture() != com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GATED_PAIRS)
+        if (model.architecture().correctionKind() != com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GATED_PAIRS)
             throw new IllegalArgumentException("Incremental GATE requires GATED_PAIRS");
         return new SearchEvaluation(model, true);
     }
     public static SearchEvaluation brnCubicIncrementalResearch(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model) {
-        if (model.architecture() != com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.CUBIC)
+        if (model.architecture().correctionKind() != com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.CUBIC)
             throw new IllegalArgumentException("Incremental CUBIC requires CUBIC");
         return new SearchEvaluation(model, true);
     }
+    /** New residual schemas explicitly retain the reference search family and verified cache. */
+    public static SearchEvaluation brnGen32Residual(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model) {
+        if (!model.architecture().frozenBase()) throw new IllegalArgumentException("Frozen Gen32 residual schema required");
+        return new SearchEvaluation(model, true);
+    }
+    public boolean isBrnGen32Residual() { return next != null && next.architecture().frozenBase(); }
     private SearchEvaluation(SearchEvaluation reference, SearchEvaluation candidate, double weight) {
         blend = new Blend(reference, candidate, weight);
         next = null; pair2 = null; brn = null; brn1 = null; brn2 = null; brn3 = null;
@@ -325,10 +331,10 @@ public final class SearchEvaluation {
         private final com.ohinteractive.seedv6.core.brnnext.BrnGatedAccumulator accumulator;
         private final com.ohinteractive.seedv6.core.brnnext.BrnCubicAccumulator cubic;
         NextState(SearchEvaluation definition) {
-            this.definition = definition; workspace = definition.next.newWorkspace();
-            accumulator = definition.incremental && definition.next.architecture() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GATED_PAIRS
+            this.definition = definition; workspace = definition.incremental ? null : definition.next.newWorkspace();
+            accumulator = definition.incremental && definition.next.architecture().correctionKind() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GATED_PAIRS
                     ? new com.ohinteractive.seedv6.core.brnnext.BrnGatedAccumulator(definition.next) : null;
-            cubic = definition.incremental && definition.next.architecture() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.CUBIC
+            cubic = definition.incremental && definition.next.architecture().correctionKind() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.CUBIC
                     ? new com.ohinteractive.seedv6.core.brnnext.BrnCubicAccumulator(definition.next) : null;
         }
         @Override public void initialize(long[] board, int ply) {}

@@ -71,7 +71,7 @@ class LearningArenaTest {
         byte[] bytes = Files.readAllBytes(payload); bytes[25] ^= 1; Files.write(payload, bytes);
         assertThrows(IOException.class, () -> LearningArenaTranche.read(directory.resolve("tranche"), config, 0));
     }
-    @org.junit.jupiter.params.ParameterizedTest @org.junit.jupiter.params.provider.EnumSource(value = TrainingArchitecture.class, names = {"NNUE", "NNUE_MATERIAL", "BRN_PAIR2", "BRN_GATED", "BRN_CUBIC", "BRN_POOLED"})
+    @org.junit.jupiter.params.ParameterizedTest @org.junit.jupiter.params.provider.EnumSource(value = TrainingArchitecture.class, names = {"NNUE", "NNUE_MATERIAL", "BRN_PAIR2", "BRN_GATED", "BRN_CUBIC", "BRN_POOLED", "BRN_GEN32_GATED", "BRN_GEN32_CUBIC"})
     void freshNnueVersusBrn3RoundZeroTrainingCheckpointsArenaAndCompletedResume(TrainingArchitecture architecture) throws Exception {
         var config = config(architecture, TrainingArchitecture.BRN3, 1, Limit.DEPTH);
         Path root = temporary.resolve("smoke"); var stages = new ArrayList<String>();

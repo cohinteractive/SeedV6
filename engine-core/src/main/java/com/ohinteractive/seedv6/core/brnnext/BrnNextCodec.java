@@ -7,11 +7,12 @@ import java.util.zip.CRC32;
 public final class BrnNextCodec {
     static final long MODEL_MAGIC = 0x53364E5852543031L, STATE_MAGIC = 0x53364E5853543031L;
     private static final int HEADER_BYTES = 36;
-    public static int modelBytes(BrnNextArchitecture kind) { return HEADER_BYTES + kind.parameters() * 8 + 4; }
-    public static int trainingBytes(BrnNextArchitecture kind) { return HEADER_BYTES + 16 + kind.parameters() * 24 + 4; }
+    public static int modelBytes(BrnNextArchitecture kind) { return HEADER_BYTES + (kind.frozenBase()?32:0) + kind.parameters() * 8 + 4; }
+    public static int trainingBytes(BrnNextArchitecture kind) { return HEADER_BYTES + (kind.frozenBase()?32:0) + 16 + kind.parameters() * 24 + 4; }
     static void header(DataOutputStream out, long magic, BrnNextArchitecture kind) throws IOException {
         out.writeLong(magic);
         for (int value : new int[]{1, kind.wireId(), kind.parameters(), kind.width(), 1, 1, 64}) out.writeInt(value);
+        if(kind.frozenBase())out.write(java.util.HexFormat.of().parseHex(BrnNextBase.SHA256));
     }
     static DataInputStream checked(InputStream input, long magic, BrnNextArchitecture kind, int size) throws IOException {
         byte[] bytes = input.readNBytes(size + 1);
@@ -23,6 +24,8 @@ public final class BrnNextCodec {
         if (in.readLong() != magic) throw new IOException("Wrong BRN-next artifact/family");
         for (int value : new int[]{1, kind.wireId(), kind.parameters(), kind.width(), 1, 1, 64})
             if (in.readInt() != value) throw new IOException("Incompatible BRN-next architecture/layout/calibration");
+        if(kind.frozenBase()&&!java.util.Arrays.equals(in.readNBytes(32),java.util.HexFormat.of().parseHex(BrnNextBase.SHA256)))
+            throw new IOException("Incompatible frozen base identity");
         return in;
     }
     static void finish(ByteArrayOutputStream bytes, DataOutputStream out, OutputStream target) throws IOException {

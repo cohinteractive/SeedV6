@@ -44,7 +44,7 @@ class TrainingGenerationLimitTest {
         if (frame != null) edt(() -> { frame.dispose(); return null; });
     }
 
-    @ParameterizedTest @EnumSource(value = NetworkArchitecture.class, names = {"BRN_GATED", "BRN_CUBIC", "BRN_POOLED"})
+    @ParameterizedTest @EnumSource(value = NetworkArchitecture.class, names = {"BRN_GATED", "BRN_CUBIC", "BRN_POOLED", "BRN_GEN32_GATED", "BRN_GEN32_CUBIC"})
     void runControlsRemainVisibleAcrossTabsAndContinuousMode(NetworkArchitecture architecture) throws Exception {
         open(architecture);
         edt(() -> {
@@ -107,7 +107,7 @@ class TrainingGenerationLimitTest {
         });
     }
 
-    @ParameterizedTest @EnumSource(value = NetworkArchitecture.class, names = {"BRN_GATED", "BRN_CUBIC", "BRN_POOLED"})
+    @ParameterizedTest @EnumSource(value = NetworkArchitecture.class, names = {"BRN_GATED", "BRN_CUBIC", "BRN_POOLED", "BRN_GEN32_GATED", "BRN_GEN32_CUBIC"})
     void startUsesTypedBudgetAndLineageReloadPreservesItWithoutChangingTrainingParameters(NetworkArchitecture architecture) throws Exception {
         var entry = TrainingLineages.create(temporary, architecture, "Bounded GUI fixture");
         Path source = temporary.resolve("tiny.jsonl");

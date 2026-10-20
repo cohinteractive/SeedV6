@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StreamingInitialLossTest {
-    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"NNUE", "NNUE_MATERIAL", "BRN2", "BRN3", "BRN_PAIR2", "BRN_GATED", "BRN_CUBIC", "BRN_POOLED"})
+    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"NNUE", "NNUE_MATERIAL", "BRN2", "BRN3", "BRN_PAIR2", "BRN_GATED", "BRN_CUBIC", "BRN_POOLED", "BRN_GEN32_GATED", "BRN_GEN32_CUBIC"})
     void fusedInitialLossEqualsOriginalMetricPass(TrainingArchitecture architecture) {
         verify(NetworkTrainingState.initialized(architecture, 71, .001));
     }

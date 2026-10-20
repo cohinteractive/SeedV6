@@ -53,7 +53,7 @@ class BrnNextCorpusTrainingTest {
         return source;
     }
 
-    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"BRN_GATED", "BRN_CUBIC", "BRN_POOLED"})
+    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"BRN_GATED", "BRN_CUBIC", "BRN_POOLED", "BRN_GEN32_GATED", "BRN_GEN32_CUBIC"})
     void guiServicePublicationPartialResumeAndNextGenerationKeepExactStateAndOwnCursor(TrainingArchitecture architecture) throws Exception {
         Path source = source();
         var a = config(temporary.resolve("continuous"), source, architecture);
@@ -114,7 +114,7 @@ class BrnNextCorpusTrainingTest {
         assertEquals(CorpusTraining.TargetPolicy.BT4_Q_V1, CorpusTraining.targetPolicy(architecture, LabelProfile.BT4_Q_V1));
     }
 
-    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"BRN_GATED", "BRN_CUBIC", "BRN_POOLED"})
+    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"BRN_GATED", "BRN_CUBIC", "BRN_POOLED", "BRN_GEN32_GATED", "BRN_GEN32_CUBIC"})
     void boundedGuiSessionsPersistFinalDecisionOptimizerAndCursorBeforeResuming(TrainingArchitecture architecture) throws Exception {
         Path source = source(), root = temporary.resolve("bounded"), uninterrupted = temporary.resolve("uninterrupted");
         var first = config(root, source, architecture, 1);

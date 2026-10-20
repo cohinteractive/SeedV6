@@ -66,6 +66,28 @@ do not infer that every historical search feature was already active in October7
 Selection across generations means historical promotion is not independent evidence
 for a new successor's strength.
 
+### Historical selection and architectural antecedent
+
+The audited Gen32 history record independently matches the earlier Search baseline
+report: promotion over its Gen1 incumbent with128 wins/59 draws/69 losses over128
+valid pairs, score.615234375, recorded lower bound.5070582261. Generation32's
+reported fit loss is.1078145868 (the history metric, not raw CE). Its record spans
+2026-10-07T12:05:49.123223400Z to12:19:13.082140100Z, including697.53 optimizer
+seconds and58.16 validation seconds. These are historical receipts, not a new
+hardware-controlled benchmark. Repeated promotion opportunities and same-regime
+validation preclude treating this as fresh independent strength confirmation.
+
+Historical [C02 results](../brn-architecture-cglhw/C02-RESULTS.md) and
+[recommendation](../brn-architecture-cglhw/RECOMMENDATION.md) explain a verified
+architectural advantage distinct from nonlinearity: the same learned pair function
+was compiled into294 physical tables with rolling updates, reducing measured search
+cost and improving equal-time play for those historical research models. They were
+not this Gen32 checkpoint. The old raw models/inputs were intentionally deleted by
+the owner on13 October, so their reports are historical evidence, not newly replayed
+experiments. Current Gen32/runtime checks above are independent and available.
+The earlier recommendation explicitly limited its conclusions to tested recipes,
+budgets and opponents; it did not establish additive pairwise superiority in general.
+
 ## Historical Arena evidence and the search confound
 
 The saved user campaigns substantiate poor preliminary results, but were not
@@ -530,3 +552,36 @@ CorpusPosition.toBoard argument) were corrected before successful execution.
 Keep failed experiment outputs, paused user campaigns and all original models.
 Root journal absent; no finalizer invoked. Starting HEAD2334760, clean, build42;
 research-only work does not warrant an application build increment. No push/deploy.
+
+
+## Closing existing-model screens and decision for Wave3
+
+The BT4-reference screen completed64 games (`raw/wave2/bt4-reference-analysis-01.json`):
+BRE round8 scored12/7/13 (48.4375%, descriptive paired95%35.42-61.45%); GATE round8
+scored8/8/16 (37.5%,26.54-48.46%) against frozen Gen32. All8,825 moves and terminal
+outcomes replayed independently; no failures, caps or fallbacks. This does not
+isolate architecture from history or generalize beyond this development sample.
+
+The prospective mixture screen completed all128 games without outcome-based stops
+(`raw/wave2/mixture-analysis-01.json`, frozen `mixture-runtime/lib`):
+
+| Candidate versus frozen Gen32 | W/D/L | Score | Descriptive paired95% interval |
+| --- | --- | ---: | --- |
+| Half Gen32 / half cached W1-GATE | 22/12/30 | 43.75% | 33.91-53.59% |
+| Half Gen32 / half cached W1-CUBIC | 23/15/26 | 47.65625% | 35.53-59.78% |
+
+Independent python-chess1.11.2 replay verified17,150 moves and every termination;
+all64 opening pairs completed, with no search failures, caps or fallbacks. Maximum
+recorded move69.47ms under nominal50ms: OS/JVM timing and polling overshoot matter
+at these clocks. Below-half point estimates with broad intervals establish neither
+equality nor general inferiority. Lower prediction error did not establish strength.
+Reused openings, candidate selection and repeated screens prevent confirmation claims.
+
+Decision: do not extend these unchanged mixtures. No existing W1 endpoint or selected
+calibration/mixture earned independent confirmation here. Preserve all evidence.
+The next admitted hypothesis is [Wave3](WAVE3.md): preserve the entire Gen32 function
+and train a compact correction, with separately cloned continued-BRE control. This
+follows verified baseline representation/initialization advantages and complementary
+prediction errors, not presumed value of expressiveness. Corrections must earn their
+cost in later games. All admitted Wave2 batches are complete; no tournament remains
+running or queued. Programme success is unestablished.

@@ -39,7 +39,7 @@ public final class BrnNextTrainer {
         int width = architecture.width(), head = architecture.head();
         for (int i = 0; i < workspace.count; i++) gradient[UNARY + workspace.features[i]] += derivative * PIECE_NORM;
         switch (architecture) {
-            case CUBIC -> {
+            case CUBIC, GEN32_CUBIC -> {
                 for (int r = 0; r < width; r++) {
                     gradient[head + r] += derivative * workspace.second[r] * DEGREE2_NORM;
                     gradient[head + width + r] += derivative * workspace.third[r] * DEGREE3_NORM;
@@ -62,7 +62,7 @@ public final class BrnNextTrainer {
                         gradient[EMBEDDING + workspace.features[i] * width + r] += delta * PIECE_NORM;
                 }
             }
-            case GATED_PAIRS -> {
+            case GATED_PAIRS, GEN32_GATED -> {
                 double mean = 0;
                 for (int r = 0; r < width; r++) mean += workspace.gates[r] * workspace.output[r];
                 for (int r = 0; r < width; r++) {

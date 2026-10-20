@@ -1,0 +1,113 @@
+{
+  "wave": "brn-successor-2026-10-20-wave3",
+  "recorded": "2026-10-20T08:58:38.820952500Z",
+  "library": "E:\\SeedV6-Networks",
+  "reference": {
+    "id": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+    "generation": 32,
+    "optimizerStep": 1753088,
+    "trainingDepth": 4,
+    "parentId": "g000031-s001228800-3b52a75c2077c9b9a44edcee222201e0b3a0b76dc8b9cef5ae99804fa5549c78",
+    "networkBytes": 795032,
+    "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "trainingBytes": 2731424,
+    "trainingSha256": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+    "architecture": "BRN_PAIR2"
+  },
+  "sources": [
+    {
+      "name": "bt4-t80",
+      "format": "STOCKFISH_BINPACK_ZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\bt4-t80",
+      "identity": "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+      "weight": 1,
+      "labelProfile": "BT4_Q_V1",
+      "shards": [
+        {
+          "name": "test80-2024-01-jan-2tb7p.min-v2.v6.relabel.binpack.zst",
+          "fingerprint": "9825fe0fe17f27a5bf0c0fa171ce580541770c0fb4072626864cd81fa62d3a1f",
+          "bytes": 8381534064
+        },
+        {
+          "name": "test80-2024-02-feb-2tb7p.min-v2.v6.relabel.binpack.zst",
+          "fingerprint": "2e047d687747e6fa6bc91c12fc883fdd103a9ad5ebd2afac208a696087479baf",
+          "bytes": 7148752289
+        }
+      ]
+    },
+    {
+      "name": "lichess_db_eval.jsonl.zst",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1,
+      "labelProfile": "STOCKFISH_CP_MATE_V1",
+      "shards": []
+    }
+  ],
+  "entries": [
+    {
+      "candidate": "W3-RESGATE",
+      "name": "W3-RESGATE",
+      "architecture": "BRN_GEN32_GATED",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\e6b6775d-39cd-392b-bd18-5e964a445f62",
+      "lineageId": "e6b6775d-39cd-392b-bd18-5e964a445f62",
+      "initialCheckpoint": "g000000-s000000000-ce2461d9effee1103475c8939842ad3793dd5d96c877a9949b26c336a30ee000",
+      "initialNetworkSha256": "72c47ea4a6ff31c3769040cfa227f10fd441e4346342f4f3905ceb4da475ea82",
+      "initialTrainingSha256": "d9098cef64cb7a6bbb85eefcd971fbbcbb2658150258dcf3c80645c253838bdd",
+      "initialOptimizerStep": 0,
+      "currentCheckpoint": "g000000-s000000000-ce2461d9effee1103475c8939842ad3793dd5d96c877a9949b26c336a30ee000",
+      "currentGeneration": 0,
+      "recipe": {
+        "learningRate": 0.003,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "maximumGenerations": 32,
+      "sourceSelectionIdentity": "1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5",
+      "partition": "brn-next-geometry-sha256-8train-1validation-1sealed-v1"
+    },
+    {
+      "candidate": "W3-RESCUBIC",
+      "name": "W3-RESCUBIC",
+      "architecture": "BRN_GEN32_CUBIC",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\22b42be6-15c4-3f36-a376-3776aa1931f2",
+      "lineageId": "22b42be6-15c4-3f36-a376-3776aa1931f2",
+      "initialCheckpoint": "g000000-s000000000-e85be6a1e9d7619b15c21cb441c3b3007db9463fdd98d074f3f5fe7b64df5b84",
+      "initialNetworkSha256": "62c4906a6a6f2a6b8f8a3b25c0ca737f11d0b364f2c8627211cf00b49c2e5dc5",
+      "initialTrainingSha256": "4da8fa6fda938ad4179971b74a5fa9aebdd862e73d7dcfe9be0ac85e949bf63b",
+      "initialOptimizerStep": 0,
+      "currentCheckpoint": "g000000-s000000000-e85be6a1e9d7619b15c21cb441c3b3007db9463fdd98d074f3f5fe7b64df5b84",
+      "currentGeneration": 0,
+      "recipe": {
+        "learningRate": 0.003,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "maximumGenerations": 32,
+      "sourceSelectionIdentity": "1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5",
+      "partition": "brn-next-geometry-sha256-8train-1validation-1sealed-v1"
+    },
+    {
+      "candidate": "W3-BRE-CONTROL",
+      "name": "W3-BRE-CONTROL",
+      "architecture": "BRN_PAIR2",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\ed0750a3-3163-3979-9f26-2e466c49c771",
+      "lineageId": "ed0750a3-3163-3979-9f26-2e466c49c771",
+      "initialCheckpoint": "g000000-s001753088-0a1e4f88f4a932a5361446dbf73175f6326f83a1fff069296ec0e63d6de50439",
+      "initialNetworkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "initialTrainingSha256": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+      "initialOptimizerStep": 1753088,
+      "currentCheckpoint": "g000000-s001753088-0a1e4f88f4a932a5361446dbf73175f6326f83a1fff069296ec0e63d6de50439",
+      "currentGeneration": 0,
+      "recipe": {
+        "learningRate": 0.003,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "maximumGenerations": 32,
+      "sourceSelectionIdentity": "1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5",
+      "partition": "Existing Pair2 sequential train/validation acquisition"
+    }
+  ]
+}
