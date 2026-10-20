@@ -1,0 +1,57 @@
+{
+  "evidence": "raw/wave3/trained-data-02/*-predictions.jsonl",
+  "metrics": {
+    "bt4": {
+      "W3-RESGATE": {
+        "count": 2048,
+        "rawDeltaRmsPawns": 0.4476209960467692,
+        "rawDeltaMeanPawns": -0.21567005139209008,
+        "absoluteDeltaMedian": 0.2864101893061545,
+        "absoluteDelta95": 0.8426552701183228,
+        "maximumAbsDelta": 3.5117040270165933
+      },
+      "W3-RESCUBIC": {
+        "count": 2048,
+        "rawDeltaRmsPawns": 0.46324230719918824,
+        "rawDeltaMeanPawns": -0.2048054569941934,
+        "absoluteDeltaMedian": 0.30057157941407997,
+        "absoluteDelta95": 0.9174085329882102,
+        "maximumAbsDelta": 2.638886967621545
+      },
+      "W3-BRE-CONTROL": {
+        "count": 2048,
+        "rawDeltaRmsPawns": 0.4204816814756862,
+        "rawDeltaMeanPawns": -0.1923613614271751,
+        "absoluteDeltaMedian": 0.2836424630216726,
+        "absoluteDelta95": 0.8252028240265468,
+        "maximumAbsDelta": 1.76372653989191
+      }
+    },
+    "cp": {
+      "W3-RESGATE": {
+        "count": 2048,
+        "rawDeltaRmsPawns": 0.5048503217526895,
+        "rawDeltaMeanPawns": -0.15127092407384243,
+        "absoluteDeltaMedian": 0.28935003790173364,
+        "absoluteDelta95": 0.9742182061458458,
+        "maximumAbsDelta": 3.4181391352930177
+      },
+      "W3-RESCUBIC": {
+        "count": 2048,
+        "rawDeltaRmsPawns": 0.557162671990386,
+        "rawDeltaMeanPawns": -0.13933326951051772,
+        "absoluteDeltaMedian": 0.30576820574886,
+        "absoluteDelta95": 0.9865545778859839,
+        "maximumAbsDelta": 11.560173116832093
+      },
+      "W3-BRE-CONTROL": {
+        "count": 2048,
+        "rawDeltaRmsPawns": 0.447435133028192,
+        "rawDeltaMeanPawns": -0.21480238898505655,
+        "absoluteDeltaMedian": 0.29753627377551384,
+        "absoluteDelta95": 0.8935982937518765,
+        "maximumAbsDelta": 1.8058267500436769
+      }
+    }
+  }
+}

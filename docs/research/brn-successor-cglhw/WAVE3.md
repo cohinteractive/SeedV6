@@ -3,6 +3,10 @@
 20 October2026. Implemented training wave within the existing successor CGLHW;
 not a new contract, trained result or success claim. Wave2's mixture study is complete; neither mixture established improvement.
 
+Continuation: G3 has subsequently been verified complete for all three lineages.
+The handoff below is preserved as history. Read [trained assessment](WAVE3-ASSESSMENT.md)
+and [current state](STATE.md) for actual endpoints, experiments and the next action.
+
 ## Evidence and question
 
 Wave2 verified substantial W1 exposure, correct gradients/runtime/checkpoints and

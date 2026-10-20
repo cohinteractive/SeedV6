@@ -1,0 +1,1356 @@
+{
+  "id": "brn-wave3-trained-endpoints-v1",
+  "evidence": "raw/wave3/trained-audit-01",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    },
+    {
+      "name": "W3-RESGATE",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\e6b6775d-39cd-392b-bd18-5e964a445f62",
+      "checkpoint": "g000032-s000262144-92921536d7dd4929661cdef6992b6cc5e7089edfcd09b36c646f84f4cd5d94b0",
+      "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0"
+    },
+    {
+      "name": "W3-RESCUBIC",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\22b42be6-15c4-3f36-a376-3776aa1931f2",
+      "checkpoint": "g000032-s000262144-41d911c124b545bc293252c7a75361f45ddd386bd600e9e64523d0fce5516197",
+      "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4"
+    },
+    {
+      "name": "W3-BRE-CONTROL",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\ed0750a3-3163-3979-9f26-2e466c49c771",
+      "checkpoint": "g000032-s002015232-cf5efb1b0aa45f997cad7b362d7417679ba1e70ea6741a71d8bf65470ba52f3c",
+      "networkSha256": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0"
+    }
+  ],
+  "lineages": [
+    {
+      "name": "W3-RESGATE",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\e6b6775d-39cd-392b-bd18-5e964a445f62",
+      "best": {
+        "id": "g000032-s000262144-92921536d7dd4929661cdef6992b6cc5e7089edfcd09b36c646f84f4cd5d94b0",
+        "generation": 32,
+        "optimizerStep": 262144,
+        "trainingDepth": 4,
+        "parentId": "g000031-s000253952-cc75be06d27414aa8707c03f4c6f94ce1d26a7273e1ab4c2ac68ae16cefbae9d",
+        "networkBytes": 52464,
+        "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+        "trainingBytes": 157264,
+        "trainingSha256": "9fa47b99b2349c20ca0c79a35ae007086ecab9acbb8c9b9cf18d4ecfa223a26d",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "latest": {
+        "id": "g000032-s000262144-92921536d7dd4929661cdef6992b6cc5e7089edfcd09b36c646f84f4cd5d94b0",
+        "generation": 32,
+        "optimizerStep": 262144,
+        "trainingDepth": 4,
+        "parentId": "g000031-s000253952-cc75be06d27414aa8707c03f4c6f94ce1d26a7273e1ab4c2ac68ae16cefbae9d",
+        "networkBytes": 52464,
+        "networkSha256": "f4d14afe64b46b6b3cc3af1c5040e6cd19d853161d03b10bd677d82c361c73d0",
+        "trainingBytes": 157264,
+        "trainingSha256": "9fa47b99b2349c20ca0c79a35ae007086ecab9acbb8c9b9cf18d4ecfa223a26d",
+        "architecture": "BRN_GEN32_GATED"
+      },
+      "initialVerified": true,
+      "session": {
+        "version": 1,
+        "id": "e296ca7f-44bf-4338-b6ae-52959919acb6",
+        "lineageId": "e6b6775d-39cd-392b-bd18-5e964a445f62",
+        "baseline": 0,
+        "target": 32,
+        "completed": 32,
+        "state": "COMPLETED"
+      },
+      "trainingPositions": 4194304,
+      "heldOutPositions": 1048576,
+      "trainingVisits": 33554432,
+      "additionalUpdates": 262144,
+      "optimizer": {
+        "learningRate": 0.003,
+        "beta1": 0.9,
+        "beta2": 0.999,
+        "epsilon": 1e-08
+      },
+      "sourceEnd": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 9712391,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 9248035
+      },
+      "totalSeconds": 291.9042604,
+      "trainingSeconds": 274.1642961,
+      "settings": "SelfPlay[depth=4, threads=1, games=64, minimumOpeningPlies=0, maximumOpeningPlies=8, maximumSamplesPerGame=32, maximumPlies=1024, scoreMapping=NnueScoreMapping[scale=32511.0]]|Training[epochs=8, minibatchSize=128, shuffle=true, learningRate=0.003]|source=TrainingSource[mode=Training Data sources, generatorStore=E:\\SeedV6-Networks\\BRN-GEN32-GATED\\e6b6775d-39cd-392b-bd18-5e964a445f62\\training-data]|validation=WDL Loss|masterSeed=1|runSeeds=null|supervision=CORPUS_CP_BASIC_V1|teacher=|fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1|corpus-outcome-v1:131072:1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5:BRN3_SOURCE_OUTCOME_V1|brn-next=GEN32_GATED_W4_PS768_MATERIAL_QUARTER_V1_BASE_5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7:BRN_NEXT_MATERIAL_RESIDUAL_QUARTER_V1|split=brn-next-geometry-sha256-8train-1validation-1sealed-v1|finalLossObjective=half-squared target error (target units squared/example)",
+      "history": [
+        {
+          "generation": 1,
+          "trainingLoss": 0.07827238249461005,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.0917170032842876,
+            "bestLoss": 0.0961991577686711
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "1e246d75e9ff6d27e15cc96eb517da08ff4904df2b1421aae5fc072a411768ef",
+          "heldOutHash": "a69e3d81582a65d8c527bdca5a649c7a47af04236ecff42b45e122987c7e2e69"
+        },
+        {
+          "generation": 2,
+          "trainingLoss": 0.08289215636712755,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09831767346582233,
+            "bestLoss": 0.09973947432262364
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "b56ed73b8422d882e9057e0ed13a03ddd071e5dbc667d63e37cf801716670ec6",
+          "heldOutHash": "fcd65eca56897ab89743b9741cbd6d16c3a831a114c066ecb3d2ed8f2fd75eda"
+        },
+        {
+          "generation": 3,
+          "trainingLoss": 0.0859015416116706,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09778545460323029,
+            "bestLoss": 0.0973076832210863
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "1bae136ed62ddb44c2bc9387ee1dd192f157788ab363576aa6d8c14c7c250bf5",
+          "heldOutHash": "6c6dbc9d2c87586c9688af51538271cc750c6f2f03a1072601f8e9e60e0dec7f"
+        },
+        {
+          "generation": 4,
+          "trainingLoss": 0.08529310159919411,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09816494426262919,
+            "bestLoss": 0.09911355276146407
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "8bbaafb377f1ca1f66a90d8cbc44e6979ecddbf69df266e29769375ac3b4ff31",
+          "heldOutHash": "e71a559d493708e6c02faa84118e25924c7b2e212c86b2a138f85db5ecde30bd"
+        },
+        {
+          "generation": 5,
+          "trainingLoss": 0.08606052155609051,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10142356604173107,
+            "bestLoss": 0.10270059155789525
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "51ce87378dad63eb0ffa368cfbcc36a7b3650c098c18a3f2e30e6e997eb3e53b",
+          "heldOutHash": "283b66cc6357159415b98e8f6a59764d224401a6a6f31d03f1ce168b2ac382d7"
+        },
+        {
+          "generation": 6,
+          "trainingLoss": 0.0890795279777942,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09339690803474793,
+            "bestLoss": 0.09424011230161777
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "ab3ecdca617c8150831c6d72fe97b1d0ca41630782683eb9ba4047e6a580f63e",
+          "heldOutHash": "769713f3f5aa197571c5b9af2316f4e7f68db24313266deebb077dbb07f64a3b"
+        },
+        {
+          "generation": 7,
+          "trainingLoss": 0.08250081897797874,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09969247659585084,
+            "bestLoss": 0.10458587957098954
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "8643d430924a94518f394c9bece80c7b9ae3b9bdae654b3d3bbb78129651c81e",
+          "heldOutHash": "8afa33c35b3ab75d693524defaa8c825d8dabe4f8f7fa0e9d25f9ca9cf8d521a"
+        },
+        {
+          "generation": 8,
+          "trainingLoss": 0.08694524022715594,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09531718038426351,
+            "bestLoss": 0.09765343451831911
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "53bee11e5977fd5670349c5e72658ce8f7b45a39efa35dd56704dd3a94621cb4",
+          "heldOutHash": "cb5e934b23ccfe2983e15f02edde42ba8a20f1e1f8cf3777904d150646bddf38"
+        },
+        {
+          "generation": 9,
+          "trainingLoss": 0.08768210118067717,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09549930145119925,
+            "bestLoss": 0.09613978503096529
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "13b69239d8476210c4bcc13fb520fc4f41b09f1c22bb39a48e3147336d1743d9",
+          "heldOutHash": "14cb19ecceca5f5fe6659af14ab3ba5e0ad6a464d859aadeec838f9c3f07be40"
+        },
+        {
+          "generation": 10,
+          "trainingLoss": 0.08815821032181721,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.1098422925687884,
+            "bestLoss": 0.11802915928291073
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "659d8356f5cba94593bc71181450b580fdfbbde09b592f0c1ff11a6b0d091d44",
+          "heldOutHash": "5230b525fd5df471efaed00a5c29f944c12776d57bfde2053f729a7319b3610c"
+        },
+        {
+          "generation": 11,
+          "trainingLoss": 0.08642999439322281,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09895661779118285,
+            "bestLoss": 0.10067478688009439
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "cd4122bdaa2823514bccd71a2871bda5059f7d011374baccee03aa05effc8f37",
+          "heldOutHash": "aebbd0e9870423224e9f1df0ff740999d427d43f30a430e0e0bbd90e596007bb"
+        },
+        {
+          "generation": 12,
+          "trainingLoss": 0.08671034115258523,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09935035527465157,
+            "bestLoss": 0.10106125289754792
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "a64ea45d1aeed667fac960a840a1a04bfa8436960e7ddb3882c8cd4af9067e9d",
+          "heldOutHash": "96318c4d1465f9ec785305a41b2b7f50e640ba915156bb52ec1a321e798ed4fd"
+        },
+        {
+          "generation": 13,
+          "trainingLoss": 0.08974966246401749,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09885535601556632,
+            "bestLoss": 0.09678859060745709
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "abce6189089c813f45106f87ade06a1255873105b011507f0aa26b150397517a",
+          "heldOutHash": "2dd3882518bc625fa9c377a05b973ccb5b8b2a5da913025fb1f3a83ac47c95fb"
+        },
+        {
+          "generation": 14,
+          "trainingLoss": 0.0831833612206505,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09863562525356237,
+            "bestLoss": 0.09840996695285802
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "8df331087a48e19eb886cad8c3ab65c1c4e696957731e7cb0981c1aa87950025",
+          "heldOutHash": "7bf5bef104bc25bc53a56a960562897aac90dca14d59fbdeb22e8931741dfe7f"
+        },
+        {
+          "generation": 15,
+          "trainingLoss": 0.08472781733007603,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10254132703506207,
+            "bestLoss": 0.10207375441397723
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "9f297ea76b559e7d80c943219e21411bbc21ae5d578d7f1b125fe90e71b35aa8",
+          "heldOutHash": "4b678bd90c1080c4ad08a06da44581bf359dd11c5101217786f2981e537a09b2"
+        },
+        {
+          "generation": 16,
+          "trainingLoss": 0.07902221899929059,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09614624564276213,
+            "bestLoss": 0.09651964808409536
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "a507a85f7bef1df787fc0ca54ebbdf49ee775d0e8220778c7ad6dbfc7e50ca64",
+          "heldOutHash": "28e393a1b922b53badb40afb964a33f9780da98ee5e3f73fcf245b98ef4e39f9"
+        },
+        {
+          "generation": 17,
+          "trainingLoss": 0.08926419643012906,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10451886872131602,
+            "bestLoss": 0.10482418580321429
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "6e954b728a7f5b43dd308be1a933f53b78ace9c62bd2ff67b99f1f9217ea7c75",
+          "heldOutHash": "3e53e1bd40e19e054e069933975926325c679718ec0bc6a2d3e107ad8b0415c2"
+        },
+        {
+          "generation": 18,
+          "trainingLoss": 0.08988248262845575,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09804803950254301,
+            "bestLoss": 0.10061652764421186
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "678f50de2492a413c33134150c946b48ab8110f972d28e1f17369182f76132f6",
+          "heldOutHash": "8de6a9a28df1119d89eca005411836f6db8ddafb0bbf145fd0ac5c8c355439af"
+        },
+        {
+          "generation": 19,
+          "trainingLoss": 0.08899131807177932,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.0986989421829641,
+            "bestLoss": 0.09913158837839374
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "43a5591e00b992cf5bf33fe927edf7862db4e8e03970d5bb5d39e3e4ea4fcd6d",
+          "heldOutHash": "8a6b6dddcf07e3c341092cf923b3615b7ffe5f0a175b909255d4ce13041819c9"
+        },
+        {
+          "generation": 20,
+          "trainingLoss": 0.08349439711094869,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10665757653529756,
+            "bestLoss": 0.10471515684883866
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "7c2def53db6ebd48f97340cb18ee317970ddbd77e379f0ef235c738b353cc3da",
+          "heldOutHash": "0c6cb1969aabbc3a8d282136762d17e1b67097e72b4e4a985abb68d7e6e4f5bd"
+        },
+        {
+          "generation": 21,
+          "trainingLoss": 0.07263171266049913,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10441874905871372,
+            "bestLoss": 0.1023485127455966
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "70fe964115cbefecc49e52ed23cc2036d4b275247479f385225aa8a116855b91",
+          "heldOutHash": "04bd1bddfa7ee91ca0b9a84243dce6189d887e3fab3bde9fbed0cc7a0f4b7caf"
+        },
+        {
+          "generation": 22,
+          "trainingLoss": 0.09051106048988325,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10441373818895507,
+            "bestLoss": 0.10535837473057184
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "b48da785c6439d28b256f9b87d3f18046dcbe9f9d9953b3dfde3bf3e25d8f47f",
+          "heldOutHash": "4e5b0182bdd843e766feaf43ed0505cd7cf9c03e4b581cd08f6abcd35081d104"
+        },
+        {
+          "generation": 23,
+          "trainingLoss": 0.08531751381912862,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10252498623813075,
+            "bestLoss": 0.10281546391462944
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "21514408b6fde24f17e28fc4e5fefbaee137f1820693eab13a9e4f9224be05f7",
+          "heldOutHash": "b4f5f2e22c95a11fc203408d6c8aae952fe01611e6567468eed613f957c43d4a"
+        },
+        {
+          "generation": 24,
+          "trainingLoss": 0.09037443332386966,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.1044558275590983,
+            "bestLoss": 0.100960237831626
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "e6655edd71ed773caf40b91d3b8650adcb3230a9313e3deb4eeea89849cc7e48",
+          "heldOutHash": "9b2458107cdab00665db9118d3f1fb0471bc25909cb5d94f83e9fdf60ba4eceb"
+        },
+        {
+          "generation": 25,
+          "trainingLoss": 0.09105921075016699,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09815550820163807,
+            "bestLoss": 0.09748949924058256
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "2609cf913cadffb09abe9f8eddaa6bd567308099fba3d2aedf80e6421a1e18b2",
+          "heldOutHash": "ad0ab2fc8a844d56f3dbf795c0e86982b399c9b192b0d7a6345dca41c14e8969"
+        },
+        {
+          "generation": 26,
+          "trainingLoss": 0.08631773910708926,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09508216564559062,
+            "bestLoss": 0.09533231135404394
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "435e3c54f549a67b7e98c93e3b266feaae2f6ce7d4c55870e9d5e10f65f62227",
+          "heldOutHash": "ca5ae658bfc6c2ca428d546ffd9eab98f001903e07761a051217583253b87499"
+        },
+        {
+          "generation": 27,
+          "trainingLoss": 0.09098690908812791,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10285458817057257,
+            "bestLoss": 0.10172696053364898
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "bfbc0744e5ea7b042bee4209d8c59a7a15f9a7aa83dffd8a834e5deb3cd0bd1c",
+          "heldOutHash": "3eb9194da0d12abcb9b14786d792b03daf3dd9b1a12b985029aa310d3914cac6"
+        },
+        {
+          "generation": 28,
+          "trainingLoss": 0.09172732534775113,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10003230091836408,
+            "bestLoss": 0.09824971983228512
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "7b3f83a2a4cd647bf953190a657a6252cbed14dd373fe131288b1108d868965e",
+          "heldOutHash": "07a959f336cd99a80d7217f20b603ccc6726fe973557c76c2cb6ce63bc9cc9f5"
+        },
+        {
+          "generation": 29,
+          "trainingLoss": 0.08511278738899836,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.1021290568093718,
+            "bestLoss": 0.10216031400227234
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "acfd307d95db758efb6fad6d184a14cff039d41a4902914e13f6faacfbfc3ae8",
+          "heldOutHash": "fa9b413b587dcf3fdd69db19ea257a52217e724e0cb902a824c5b854c7693793"
+        },
+        {
+          "generation": 30,
+          "trainingLoss": 0.08945290340035145,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10079256485134651,
+            "bestLoss": 0.10020835870863125
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "0ea77ce63f55b1cdfaa96a6e61829b4bf792c14462e439d0a781c5e85117257a",
+          "heldOutHash": "7cdc2d0aeba51bfed56ab873127b37a4f919aac39232782e45b18c596cb24d07"
+        },
+        {
+          "generation": 31,
+          "trainingLoss": 0.09239033369208241,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10439047816351976,
+            "bestLoss": 0.10186653387451086
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "86257128e6ff63fee0a572529399993971b72f757cccf7e65157f621ce1341df",
+          "heldOutHash": "d22bbad32e2605ca5545469891ddf4d09812e6ef6891eefbdaa51e412be734c3"
+        },
+        {
+          "generation": 32,
+          "trainingLoss": 0.08913536186968644,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10300896033078993,
+            "bestLoss": 0.10442257329127108
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "8002429bc7c738ccd21727c297f8fab9a3e7791de64aa963fd2f4f7542fdd3a3",
+          "heldOutHash": "070ce7956a6ee285402d4795667441ca1feaaf1ba917ad70dcaa08023a0bdc55"
+        }
+      ]
+    },
+    {
+      "name": "W3-RESCUBIC",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\22b42be6-15c4-3f36-a376-3776aa1931f2",
+      "best": {
+        "id": "g000031-s000253952-6603c901c1cb7bb23e5b78f5054be56a436c940ae1891c5bac6f3b7fd246dd80",
+        "generation": 31,
+        "optimizerStep": 253952,
+        "trainingDepth": 4,
+        "parentId": "g000030-s000245760-226f06a8221a972293d32e200fa372019d12153a4e895f564d13f2afb8037caa",
+        "networkBytes": 104784,
+        "networkSha256": "7e1bfe99c30edc2d197fefcde63efd05ec60dfada0983f9893ea0da4c1b3e952",
+        "trainingBytes": 314224,
+        "trainingSha256": "cc8517a6f079c2c556d18a04b916584d5c0161a4dbb68e36fb83448ff8391d5a",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "latest": {
+        "id": "g000032-s000262144-41d911c124b545bc293252c7a75361f45ddd386bd600e9e64523d0fce5516197",
+        "generation": 32,
+        "optimizerStep": 262144,
+        "trainingDepth": 4,
+        "parentId": "g000031-s000253952-6603c901c1cb7bb23e5b78f5054be56a436c940ae1891c5bac6f3b7fd246dd80",
+        "networkBytes": 104784,
+        "networkSha256": "68efe76dd921c641047cb6db0d84bf5412b27de0a4eedefedd8297e5e9d4dae4",
+        "trainingBytes": 314224,
+        "trainingSha256": "137685439f0447dec59f15071dbd5227e1f9865a1376ff2c348d8cd36ba953df",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "initialVerified": true,
+      "session": {
+        "version": 1,
+        "id": "6f1687ad-0085-4315-970a-5401dbbfe76e",
+        "lineageId": "22b42be6-15c4-3f36-a376-3776aa1931f2",
+        "baseline": 0,
+        "target": 32,
+        "completed": 32,
+        "state": "COMPLETED"
+      },
+      "trainingPositions": 4194304,
+      "heldOutPositions": 1048576,
+      "trainingVisits": 33554432,
+      "additionalUpdates": 262144,
+      "optimizer": {
+        "learningRate": 0.003,
+        "beta1": 0.9,
+        "beta2": 0.999,
+        "epsilon": 1e-08
+      },
+      "sourceEnd": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 9712391,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 9248035
+      },
+      "totalSeconds": 239.7021941,
+      "trainingSeconds": 228.8902051,
+      "settings": "SelfPlay[depth=4, threads=1, games=64, minimumOpeningPlies=0, maximumOpeningPlies=8, maximumSamplesPerGame=32, maximumPlies=1024, scoreMapping=NnueScoreMapping[scale=32511.0]]|Training[epochs=8, minibatchSize=128, shuffle=true, learningRate=0.003]|source=TrainingSource[mode=Training Data sources, generatorStore=E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\22b42be6-15c4-3f36-a376-3776aa1931f2\\training-data]|validation=WDL Loss|masterSeed=1|runSeeds=null|supervision=CORPUS_CP_BASIC_V1|teacher=|fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1|corpus-outcome-v1:131072:1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5:BRN3_SOURCE_OUTCOME_V1|brn-next=GEN32_CUBIC_W16_PS768_MATERIAL_QUARTER_V1_BASE_5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7:BRN_NEXT_MATERIAL_RESIDUAL_QUARTER_V1|split=brn-next-geometry-sha256-8train-1validation-1sealed-v1|finalLossObjective=half-squared target error (target units squared/example)",
+      "history": [
+        {
+          "generation": 1,
+          "trainingLoss": 0.0606000746473302,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09743355171487411,
+            "bestLoss": 0.0961991577686711
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "1e246d75e9ff6d27e15cc96eb517da08ff4904df2b1421aae5fc072a411768ef",
+          "heldOutHash": "a69e3d81582a65d8c527bdca5a649c7a47af04236ecff42b45e122987c7e2e69"
+        },
+        {
+          "generation": 2,
+          "trainingLoss": 0.06660715548613244,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10516847405141645,
+            "bestLoss": 0.10265749469823253
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "b56ed73b8422d882e9057e0ed13a03ddd071e5dbc667d63e37cf801716670ec6",
+          "heldOutHash": "fcd65eca56897ab89743b9741cbd6d16c3a831a114c066ecb3d2ed8f2fd75eda"
+        },
+        {
+          "generation": 3,
+          "trainingLoss": 0.07110092333732626,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10344675528196723,
+            "bestLoss": 0.10158068114173928
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "1bae136ed62ddb44c2bc9387ee1dd192f157788ab363576aa6d8c14c7c250bf5",
+          "heldOutHash": "6c6dbc9d2c87586c9688af51538271cc750c6f2f03a1072601f8e9e60e0dec7f"
+        },
+        {
+          "generation": 4,
+          "trainingLoss": 0.06919261083072406,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10215233660645746,
+            "bestLoss": 0.10115316400308906
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "8bbaafb377f1ca1f66a90d8cbc44e6979ecddbf69df266e29769375ac3b4ff31",
+          "heldOutHash": "e71a559d493708e6c02faa84118e25924c7b2e212c86b2a138f85db5ecde30bd"
+        },
+        {
+          "generation": 5,
+          "trainingLoss": 0.073389187008653,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10733495442401611,
+            "bestLoss": 0.10665499164361815
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "51ce87378dad63eb0ffa368cfbcc36a7b3650c098c18a3f2e30e6e997eb3e53b",
+          "heldOutHash": "283b66cc6357159415b98e8f6a59764d224401a6a6f31d03f1ce168b2ac382d7"
+        },
+        {
+          "generation": 6,
+          "trainingLoss": 0.07539730042876512,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10138385545207373,
+            "bestLoss": 0.09910618669764343
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "ab3ecdca617c8150831c6d72fe97b1d0ca41630782683eb9ba4047e6a580f63e",
+          "heldOutHash": "769713f3f5aa197571c5b9af2316f4e7f68db24313266deebb077dbb07f64a3b"
+        },
+        {
+          "generation": 7,
+          "trainingLoss": 0.06833436447179962,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10389340707603026,
+            "bestLoss": 0.10832906890223706
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "8643d430924a94518f394c9bece80c7b9ae3b9bdae654b3d3bbb78129651c81e",
+          "heldOutHash": "8afa33c35b3ab75d693524defaa8c825d8dabe4f8f7fa0e9d25f9ca9cf8d521a"
+        },
+        {
+          "generation": 8,
+          "trainingLoss": 0.0750204667684285,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09753331636718841,
+            "bestLoss": 0.10058576655220375
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "53bee11e5977fd5670349c5e72658ce8f7b45a39efa35dd56704dd3a94621cb4",
+          "heldOutHash": "cb5e934b23ccfe2983e15f02edde42ba8a20f1e1f8cf3777904d150646bddf38"
+        },
+        {
+          "generation": 9,
+          "trainingLoss": 0.07779205273351852,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09879486545989213,
+            "bestLoss": 0.10088249253361464
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "13b69239d8476210c4bcc13fb520fc4f41b09f1c22bb39a48e3147336d1743d9",
+          "heldOutHash": "14cb19ecceca5f5fe6659af14ab3ba5e0ad6a464d859aadeec838f9c3f07be40"
+        },
+        {
+          "generation": 10,
+          "trainingLoss": 0.07635540506826029,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.11266862981630588,
+            "bestLoss": 0.12105050101323879
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "659d8356f5cba94593bc71181450b580fdfbbde09b592f0c1ff11a6b0d091d44",
+          "heldOutHash": "5230b525fd5df471efaed00a5c29f944c12776d57bfde2053f729a7319b3610c"
+        },
+        {
+          "generation": 11,
+          "trainingLoss": 0.07535576989311263,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.101107532049314,
+            "bestLoss": 0.10321808337242562
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "cd4122bdaa2823514bccd71a2871bda5059f7d011374baccee03aa05effc8f37",
+          "heldOutHash": "aebbd0e9870423224e9f1df0ff740999d427d43f30a430e0e0bbd90e596007bb"
+        },
+        {
+          "generation": 12,
+          "trainingLoss": 0.07526964021004096,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10319274052224298,
+            "bestLoss": 0.10332591649043157
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "a64ea45d1aeed667fac960a840a1a04bfa8436960e7ddb3882c8cd4af9067e9d",
+          "heldOutHash": "96318c4d1465f9ec785305a41b2b7f50e640ba915156bb52ec1a321e798ed4fd"
+        },
+        {
+          "generation": 13,
+          "trainingLoss": 0.07766999182170621,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10029454277167602,
+            "bestLoss": 0.10202960623590837
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "abce6189089c813f45106f87ade06a1255873105b011507f0aa26b150397517a",
+          "heldOutHash": "2dd3882518bc625fa9c377a05b973ccb5b8b2a5da913025fb1f3a83ac47c95fb"
+        },
+        {
+          "generation": 14,
+          "trainingLoss": 0.07345405539995901,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.100256794660842,
+            "bestLoss": 0.10032232561239622
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "8df331087a48e19eb886cad8c3ab65c1c4e696957731e7cb0981c1aa87950025",
+          "heldOutHash": "7bf5bef104bc25bc53a56a960562897aac90dca14d59fbdeb22e8931741dfe7f"
+        },
+        {
+          "generation": 15,
+          "trainingLoss": 0.07517616223124202,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10515537423639348,
+            "bestLoss": 0.10452762417141596
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "9f297ea76b559e7d80c943219e21411bbc21ae5d578d7f1b125fe90e71b35aa8",
+          "heldOutHash": "4b678bd90c1080c4ad08a06da44581bf359dd11c5101217786f2981e537a09b2"
+        },
+        {
+          "generation": 16,
+          "trainingLoss": 0.07058660161554223,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09918028156732561,
+            "bestLoss": 0.09912325071058643
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "a507a85f7bef1df787fc0ca54ebbdf49ee775d0e8220778c7ad6dbfc7e50ca64",
+          "heldOutHash": "28e393a1b922b53badb40afb964a33f9780da98ee5e3f73fcf245b98ef4e39f9"
+        },
+        {
+          "generation": 17,
+          "trainingLoss": 0.08058494552663649,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10721758254696195,
+            "bestLoss": 0.1107211439702642
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "6e954b728a7f5b43dd308be1a933f53b78ace9c62bd2ff67b99f1f9217ea7c75",
+          "heldOutHash": "3e53e1bd40e19e054e069933975926325c679718ec0bc6a2d3e107ad8b0415c2"
+        },
+        {
+          "generation": 18,
+          "trainingLoss": 0.0807621117644719,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10149879258958651,
+            "bestLoss": 0.10433596701789778
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "678f50de2492a413c33134150c946b48ab8110f972d28e1f17369182f76132f6",
+          "heldOutHash": "8de6a9a28df1119d89eca005411836f6db8ddafb0bbf145fd0ac5c8c355439af"
+        },
+        {
+          "generation": 19,
+          "trainingLoss": 0.07961804804277951,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10323233035473119,
+            "bestLoss": 0.1030628702339866
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "43a5591e00b992cf5bf33fe927edf7862db4e8e03970d5bb5d39e3e4ea4fcd6d",
+          "heldOutHash": "8a6b6dddcf07e3c341092cf923b3615b7ffe5f0a175b909255d4ce13041819c9"
+        },
+        {
+          "generation": 20,
+          "trainingLoss": 0.07487146628925687,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10739161696368954,
+            "bestLoss": 0.11452651288373895
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "7c2def53db6ebd48f97340cb18ee317970ddbd77e379f0ef235c738b353cc3da",
+          "heldOutHash": "0c6cb1969aabbc3a8d282136762d17e1b67097e72b4e4a985abb68d7e6e4f5bd"
+        },
+        {
+          "generation": 21,
+          "trainingLoss": 0.06343104998496106,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10742019296051424,
+            "bestLoss": 0.10679310182307725
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "70fe964115cbefecc49e52ed23cc2036d4b275247479f385225aa8a116855b91",
+          "heldOutHash": "04bd1bddfa7ee91ca0b9a84243dce6189d887e3fab3bde9fbed0cc7a0f4b7caf"
+        },
+        {
+          "generation": 22,
+          "trainingLoss": 0.0816801055611991,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.1085862035126399,
+            "bestLoss": 0.10926749897674469
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "b48da785c6439d28b256f9b87d3f18046dcbe9f9d9953b3dfde3bf3e25d8f47f",
+          "heldOutHash": "4e5b0182bdd843e766feaf43ed0505cd7cf9c03e4b581cd08f6abcd35081d104"
+        },
+        {
+          "generation": 23,
+          "trainingLoss": 0.07664385541125085,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10727391653833669,
+            "bestLoss": 0.1060769512952157
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "21514408b6fde24f17e28fc4e5fefbaee137f1820693eab13a9e4f9224be05f7",
+          "heldOutHash": "b4f5f2e22c95a11fc203408d6c8aae952fe01611e6567468eed613f957c43d4a"
+        },
+        {
+          "generation": 24,
+          "trainingLoss": 0.07765668117035306,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.1039137410970556,
+            "bestLoss": 0.10407717287899866
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "e6655edd71ed773caf40b91d3b8650adcb3230a9313e3deb4eeea89849cc7e48",
+          "heldOutHash": "9b2458107cdab00665db9118d3f1fb0471bc25909cb5d94f83e9fdf60ba4eceb"
+        },
+        {
+          "generation": 25,
+          "trainingLoss": 0.08164676536540882,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10174690588665497,
+            "bestLoss": 0.10160176349469197
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "2609cf913cadffb09abe9f8eddaa6bd567308099fba3d2aedf80e6421a1e18b2",
+          "heldOutHash": "ad0ab2fc8a844d56f3dbf795c0e86982b399c9b192b0d7a6345dca41c14e8969"
+        },
+        {
+          "generation": 26,
+          "trainingLoss": 0.07731757058755294,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09809907103658258,
+            "bestLoss": 0.09938822962547995
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "435e3c54f549a67b7e98c93e3b266feaae2f6ce7d4c55870e9d5e10f65f62227",
+          "heldOutHash": "ca5ae658bfc6c2ca428d546ffd9eab98f001903e07761a051217583253b87499"
+        },
+        {
+          "generation": 27,
+          "trainingLoss": 0.08010961411185952,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10532591333380165,
+            "bestLoss": 0.10403218470100775
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "bfbc0744e5ea7b042bee4209d8c59a7a15f9a7aa83dffd8a834e5deb3cd0bd1c",
+          "heldOutHash": "3eb9194da0d12abcb9b14786d792b03daf3dd9b1a12b985029aa310d3914cac6"
+        },
+        {
+          "generation": 28,
+          "trainingLoss": 0.07933759827937834,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.1021832028264518,
+            "bestLoss": 0.10123525620049158
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "7b3f83a2a4cd647bf953190a657a6252cbed14dd373fe131288b1108d868965e",
+          "heldOutHash": "07a959f336cd99a80d7217f20b603ccc6726fe973557c76c2cb6ce63bc9cc9f5"
+        },
+        {
+          "generation": 29,
+          "trainingLoss": 0.07487242166520357,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10580240359023292,
+            "bestLoss": 0.10525761257759587
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "acfd307d95db758efb6fad6d184a14cff039d41a4902914e13f6faacfbfc3ae8",
+          "heldOutHash": "fa9b413b587dcf3fdd69db19ea257a52217e724e0cb902a824c5b854c7693793"
+        },
+        {
+          "generation": 30,
+          "trainingLoss": 0.07854388808665128,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10302353917189123,
+            "bestLoss": 0.1031000241756733
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "0ea77ce63f55b1cdfaa96a6e61829b4bf792c14462e439d0a781c5e85117257a",
+          "heldOutHash": "7cdc2d0aeba51bfed56ab873127b37a4f919aac39232782e45b18c596cb24d07"
+        },
+        {
+          "generation": 31,
+          "trainingLoss": 0.0791358070028879,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10422349650195757,
+            "bestLoss": 0.10492763777161522
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "86257128e6ff63fee0a572529399993971b72f757cccf7e65157f621ce1341df",
+          "heldOutHash": "d22bbad32e2605ca5545469891ddf4d09812e6ef6891eefbdaa51e412be734c3"
+        },
+        {
+          "generation": 32,
+          "trainingLoss": 0.07836605999426645,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10768008293542569,
+            "bestLoss": 0.10641073459848024
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "8002429bc7c738ccd21727c297f8fab9a3e7791de64aa963fd2f4f7542fdd3a3",
+          "heldOutHash": "070ce7956a6ee285402d4795667441ca1feaaf1ba917ad70dcaa08023a0bdc55"
+        }
+      ]
+    },
+    {
+      "name": "W3-BRE-CONTROL",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\ed0750a3-3163-3979-9f26-2e466c49c771",
+      "best": {
+        "id": "g000032-s002015232-cf5efb1b0aa45f997cad7b362d7417679ba1e70ea6741a71d8bf65470ba52f3c",
+        "generation": 32,
+        "optimizerStep": 2015232,
+        "trainingDepth": 4,
+        "parentId": "g000031-s002007040-1940c4c178ddc162ec8ff1ae79b8e0770925402fea26e5290ed9da9ed2a225e0",
+        "networkBytes": 795032,
+        "networkSha256": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0",
+        "trainingBytes": 2731424,
+        "trainingSha256": "b839898fc4ae3824118df95e62d3ef3dbf548d0cd60b5b29dd84691fe1783f89",
+        "architecture": "BRN_PAIR2"
+      },
+      "latest": {
+        "id": "g000032-s002015232-cf5efb1b0aa45f997cad7b362d7417679ba1e70ea6741a71d8bf65470ba52f3c",
+        "generation": 32,
+        "optimizerStep": 2015232,
+        "trainingDepth": 4,
+        "parentId": "g000031-s002007040-1940c4c178ddc162ec8ff1ae79b8e0770925402fea26e5290ed9da9ed2a225e0",
+        "networkBytes": 795032,
+        "networkSha256": "5f208844d4335e2f818b68c3b8b4f93376341302fad6a50ef2f69787d8fbb1b0",
+        "trainingBytes": 2731424,
+        "trainingSha256": "b839898fc4ae3824118df95e62d3ef3dbf548d0cd60b5b29dd84691fe1783f89",
+        "architecture": "BRN_PAIR2"
+      },
+      "initialVerified": true,
+      "session": {
+        "version": 1,
+        "id": "12c42c21-aebf-4aa7-901a-6448a44a577e",
+        "lineageId": "ed0750a3-3163-3979-9f26-2e466c49c771",
+        "baseline": 0,
+        "target": 32,
+        "completed": 32,
+        "state": "COMPLETED"
+      },
+      "trainingPositions": 4194304,
+      "heldOutPositions": 1048576,
+      "trainingVisits": 33554432,
+      "additionalUpdates": 262144,
+      "optimizer": {
+        "learningRate": 0.003,
+        "beta1": 0.9,
+        "beta2": 0.999,
+        "epsilon": 1e-08
+      },
+      "sourceEnd": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 3209073,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 3110674
+      },
+      "totalSeconds": 355.3849439,
+      "trainingSeconds": 331.6015501,
+      "settings": "SelfPlay[depth=4, threads=1, games=64, minimumOpeningPlies=0, maximumOpeningPlies=8, maximumSamplesPerGame=32, maximumPlies=1024, scoreMapping=NnueScoreMapping[scale=32511.0]]|Training[epochs=8, minibatchSize=128, shuffle=true, learningRate=0.003]|source=TrainingSource[mode=Training Data sources, generatorStore=E:\\SeedV6-Networks\\BRN-Pair2\\ed0750a3-3163-3979-9f26-2e466c49c771\\training-data]|validation=WDL Loss|masterSeed=1|runSeeds=null|supervision=CORPUS_CP_BASIC_V1|teacher=|fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1|corpus-outcome-v1:131072:1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5:BRN3_SOURCE_OUTCOME_V1|pair2-search=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1|finalLossObjective=half-squared target error (target units squared/example)",
+      "history": [
+        {
+          "generation": 1,
+          "trainingLoss": 0.07320094607618484,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.08769055842276856,
+            "bestLoss": 0.09091393379156176
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "39e004acd56e6e3a3c1cfd5445c4d3cc113156bc5bcd39616fb71bd7db08c0fb",
+          "heldOutHash": "204d1a9a4c37e8e3e795a6617c0064ab0075deda1adf9288434fd34ad3927866"
+        },
+        {
+          "generation": 2,
+          "trainingLoss": 0.0763444691855256,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.08928868094717078,
+            "bestLoss": 0.09038370431661501
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "972e00574aeb2140cf1d189a891def16a995a9107683e27fca21abb705967fa2",
+          "heldOutHash": "851d708cbec38e289c6fe3c2bbd0b9efbaec42f16532e9997e625aca145f4b5d"
+        },
+        {
+          "generation": 3,
+          "trainingLoss": 0.07884249335616735,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.0940696616457286,
+            "bestLoss": 0.0946750181524975
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "15d0b840beb869af0cb08a1faaff80be8bae313038af244550378da595cd20c8",
+          "heldOutHash": "3d9ddaf7b1d2b38cfdaae20cd76eb9af01023804427a6a3421c5f77d399b0980"
+        },
+        {
+          "generation": 4,
+          "trainingLoss": 0.07776454639976081,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09626516321788064,
+            "bestLoss": 0.09738757201797642
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "8e50ab527da31303d4450d85dcbf7eec3d5b5280097fe608246db3d21ae83176",
+          "heldOutHash": "ce736fbe716627ab50d61547724478f58508b1ba2530adcd25cdf268544bea85"
+        },
+        {
+          "generation": 5,
+          "trainingLoss": 0.08091755638267055,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09837646895452136,
+            "bestLoss": 0.10118472247658084
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "441395ca7334648424499ffc0c999a0943746b5eb9ddc37244c163276b176c8d",
+          "heldOutHash": "f2175606bee9f43fe427286f6bd14a64b210f7eed326fe70838847b798f83657"
+        },
+        {
+          "generation": 6,
+          "trainingLoss": 0.08499161849539859,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10197345885278761,
+            "bestLoss": 0.09990465152899011
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "ea6db8d7bc09ac6dae44f0c14a3a41765c8748dddad0b3d43cbeacab5830fb63",
+          "heldOutHash": "44724275f1a5d00974b16c442fee910d14ec6a67709db50769079da8e1fa36a8"
+        },
+        {
+          "generation": 7,
+          "trainingLoss": 0.08075883536063644,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10092409878913478,
+            "bestLoss": 0.09978123794693358
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "8987784603f6ec7bcad1f7ddc2d8460e327b365edba6aa5be0637544dd889c94",
+          "heldOutHash": "6e7803076bf6b336d93b8ffe58a43baaf18d83de455c11c010c837f6840b27bb"
+        },
+        {
+          "generation": 8,
+          "trainingLoss": 0.07803804618115241,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09780151423445252,
+            "bestLoss": 0.09603482368529227
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "e88c99bd9b7134d89f3a62f70918f9c5b2cd23ddb03cb2f42f89c02583685b7b",
+          "heldOutHash": "58c5f693127fbb729f99e7e4d0369baf51225e3dfbec36e03b1298bcc2b305d8"
+        },
+        {
+          "generation": 9,
+          "trainingLoss": 0.08305748541755105,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09669271630767828,
+            "bestLoss": 0.09566917266601233
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "679d36c0546dca8fce167ee9be239d29d330c1d607b6b0ddf7e9cc9c8ccf1474",
+          "heldOutHash": "a88e4515b5353da5a654572ba7e3f1a7c204564ca539177767d7e145f431fbe0"
+        },
+        {
+          "generation": 10,
+          "trainingLoss": 0.08148359204311095,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09363481213579761,
+            "bestLoss": 0.09565327332668777
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "cfbb4aff6f62ceb1c7b8f12a80421904091150e675881409901c359ad35f9bb5",
+          "heldOutHash": "43cf7b8bd7ccc2cf3fe2ee0909f158fc8315fef71b47db5c7ab8a6b1e0b50e8f"
+        },
+        {
+          "generation": 11,
+          "trainingLoss": 0.07875004679752745,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09075051341833651,
+            "bestLoss": 0.09225401321645839
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "1afde286866f9a32dae7fd00132d078bb75f3cb386b6667dd108f10e315ae6b4",
+          "heldOutHash": "b47361f94388e33b187066c23dc527fd25f9a0e26830fb70f8370897d4342f48"
+        },
+        {
+          "generation": 12,
+          "trainingLoss": 0.08240309693372348,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09742964994517134,
+            "bestLoss": 0.09808178547996318
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "d06cd982c3cdfb41523f58d97afac8a5ebfa448c4b75859103ba46b0ece53df3",
+          "heldOutHash": "614686c5c955c80f88bbd525535e3c98e396cf8c4debf0d2af6f6da11f92a823"
+        },
+        {
+          "generation": 13,
+          "trainingLoss": 0.0821739284609289,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.1053164883039824,
+            "bestLoss": 0.10709532320318751
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "a4d727ecbbabe515fd735a9f01c2c3ea3d876ec68d1d4d7e795497b4b36a1110",
+          "heldOutHash": "2e7c9580fded9b4c551804e9a2ffaa81df26ecfe85ee18d723bbbf5f9813c153"
+        },
+        {
+          "generation": 14,
+          "trainingLoss": 0.0844677053115139,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10450920745357982,
+            "bestLoss": 0.10514678004566838
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "d700f9902b806a38d1daef4fe4af88f5d99bbeb2a3a61565b61edc4674b53fc7",
+          "heldOutHash": "329549cb68a8a4116f1c6dff020ef01af6013ce621b7bde643dbe2c86c81e0ee"
+        },
+        {
+          "generation": 15,
+          "trainingLoss": 0.08445295118644347,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10561969631699987,
+            "bestLoss": 0.10776956251103993
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "a212bd4db4592daa406f041dea000c95da7178bf61257f65ce3da560216e58a0",
+          "heldOutHash": "78da21d836b64d1fd989c965068efdf388eb28b9a03ddcf42dd629980d467301"
+        },
+        {
+          "generation": 16,
+          "trainingLoss": 0.0890172499349954,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10483316378389544,
+            "bestLoss": 0.09957754983337343
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "ab6281bde95e06d89bc26c96f14064e23fbdcaba62c46215ac6b4e7120b2e4b1",
+          "heldOutHash": "dd48e7d0e8b756c9717ad814e93a0daf187d517b5e0c31bffd84887db634c877"
+        },
+        {
+          "generation": 17,
+          "trainingLoss": 0.0745768991116928,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09528856144478016,
+            "bestLoss": 0.0990736228632088
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "6488217573f609c17e3588d43a20a88e3f833a94090f315ecf9d794897e03ce2",
+          "heldOutHash": "652cae48be911ab44b77e1cee367b94eaded521a015f51f58cd4abfa62e34366"
+        },
+        {
+          "generation": 18,
+          "trainingLoss": 0.078129598225295,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09237092347310961,
+            "bestLoss": 0.0969993128668713
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "f51e1473dd4f217981af460d87c6210196478e7c2a1921265d20a726c3ec5442",
+          "heldOutHash": "a33c4b46df73a9336f365c694994f28f1f8da3b2da69bc6c01615b64f553b614"
+        },
+        {
+          "generation": 19,
+          "trainingLoss": 0.08295044730148568,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.0942470761912919,
+            "bestLoss": 0.14494203129199584
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "f097b756040fa5d3eca96fa3d9b05c4f2f04774688af6485ed4b03d1c64c5743",
+          "heldOutHash": "d7f10a6c50f3a23b78cb920ba5ce6e45acfa67ec838d95488e24e4addb7dc8eb"
+        },
+        {
+          "generation": 20,
+          "trainingLoss": 0.08013633649478749,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.1055928467717971,
+            "bestLoss": 0.10857257491772535
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "5842778dc399f98e8fc4bd09e4977a0a68e0e952f65c17a2ed72508d88c56531",
+          "heldOutHash": "81130b220253d23feb27b21eec95d8c92a72924466a0db977c5d681b942d6c85"
+        },
+        {
+          "generation": 21,
+          "trainingLoss": 0.08065433729171777,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10285383710905066,
+            "bestLoss": 0.10500125489214678
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "f4335d15e71fd8e96ae8433727607e4d126b5a4ea787b45fb0ba93842170985b",
+          "heldOutHash": "944e586f4d437b94d7640e48b0fc385c70d6b19fedaa4639c633ebcf3e6006e1"
+        },
+        {
+          "generation": 22,
+          "trainingLoss": 0.08277286801999505,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10255492161874559,
+            "bestLoss": 0.1042770888420354
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "f0986177f23e3df8dde16488a8212968677c92ff6106055a923f846ca2a80f67",
+          "heldOutHash": "82a7d155e7b7f880050bf45e8bd3a06d6e9bc87cd1d0b76c53ea421dc3c0b681"
+        },
+        {
+          "generation": 23,
+          "trainingLoss": 0.081940261152607,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.09926657222219493,
+            "bestLoss": 0.10357504114364811
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "43ed0614a2ffb4b7e07cd00caf5b55cc57640eb565c9dfe58bfafeb3575ac2fc",
+          "heldOutHash": "cc10845338396a5950b666e6bffeccb4defa28bb904d512eb6769b16616c9526"
+        },
+        {
+          "generation": 24,
+          "trainingLoss": 0.08012292565980882,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10300477049543166,
+            "bestLoss": 0.10366067364686933
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "fb8a8746f4607473c3cbf2ad0677af0bfe67235f7b41ab359b27994a6dba7d20",
+          "heldOutHash": "9bfd436f40960e00a65301628f3b4435439f0315d8ba55e649a7bd70381891ab"
+        },
+        {
+          "generation": 25,
+          "trainingLoss": 0.08503369772480487,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10908149368934036,
+            "bestLoss": 0.10599317726150183
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "53df273dbdaa444181f6decd13c4dd42c8c65cce1e492fad7e52390cb937f072",
+          "heldOutHash": "59a632bd9d04e709170aedc2e33dcde04cc2561851030daf75edcdf6034f552a"
+        },
+        {
+          "generation": 26,
+          "trainingLoss": 0.08264439330078713,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.0965195516331386,
+            "bestLoss": 0.09838208258110062
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "90a0b2c1d7314ffccdca2c72711fb23d9e5d3d6f78c5363832775ac69e90f4f9",
+          "heldOutHash": "24222abb8f6f88e5a4922d85c86366f7596975019ec789adbe476cef12c1e182"
+        },
+        {
+          "generation": 27,
+          "trainingLoss": 0.0810586497231034,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.0930924004910197,
+            "bestLoss": 0.09370320282504062
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "b0c65d15533a48ecc9ce20812814c79d7775ab15fdc142bdc770fd37e55d8810",
+          "heldOutHash": "9d00916c7dee664f0019dcf584046e52b4af3bc53b5dd97ede1129f19d40dd79"
+        },
+        {
+          "generation": 28,
+          "trainingLoss": 0.08355169309624803,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10456867662364812,
+            "bestLoss": 0.10837970517552173
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "f4054b87127981f7d77db6a433b7777c138bb9224627075c194550207579d503",
+          "heldOutHash": "75e67c13e94454eebf48e98df79271085f69e638d81f347a8a3c933b146f1752"
+        },
+        {
+          "generation": 29,
+          "trainingLoss": 0.0834730295565254,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.10049509735130924,
+            "bestLoss": 0.11147958803355754
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "80806d821d4bc4f3518aebfc98adcdd99446172e1edec0c41d9d5d5a5f82b2af",
+          "heldOutHash": "8a6566d7d23c586a5bb0ad3f2cb196025affe2c0e2ddfaac84f3a10f930e84fb"
+        },
+        {
+          "generation": 30,
+          "trainingLoss": 0.07664414005242728,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.08277937706941185,
+            "bestLoss": 0.10601704067977917
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "6ef92d557809b59598ab37029f75d769d39f48c3694e7dcfe266e49f28c96152",
+          "heldOutHash": "a899b64b03fa97dcb979df6307c9ee511545d11d2471a89bed95dd573fcf4828"
+        },
+        {
+          "generation": 31,
+          "trainingLoss": 0.07928822132342578,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.11184951202688267,
+            "bestLoss": 0.11141182532536903
+          },
+          "decision": "RETAIN_INCUMBENT",
+          "trainingHash": "ce1cd2c0edc0f223093b2fedd6a2a18799df43213095f85e13de2b65cc108062",
+          "heldOutHash": "1a1a6b08a850c7cd76672eeaf913366cf32545f90b1117213b4c015332fdbdf3"
+        },
+        {
+          "generation": 32,
+          "trainingLoss": 0.08032403967092369,
+          "validation": {
+            "samples": 32768,
+            "candidateLoss": 0.1016562973518674,
+            "bestLoss": 0.10331812587011842
+          },
+          "decision": "PROMOTE",
+          "trainingHash": "e0d6f86c928711775344e0b206996ff9fe7a8ba33e42859d914b09cabfe99a7b",
+          "heldOutHash": "d02c1f1d10b385a7f6108534d44997d0f60d9691c4e0dcb4a5654d533582fa06"
+        }
+      ]
+    }
+  ],
+  "selection": "Primary comparison uses each latest generation32 before viewing match outcomes. RESCUBIC Best31 is retained for prediction and sensitivity diagnostics."
+}

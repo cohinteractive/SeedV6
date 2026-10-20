@@ -55,7 +55,7 @@ public final class BrnGatedCacheProbe {
             }
         }
         var result=new LinkedHashMap<String,Object>();
-        result.put("plan",model.architecture().frozenBase()?"brn-successor-wave3-initial-preflight-v1":
+        result.put("plan",model.architecture().frozenBase()?"brn-successor-wave3-cache-oracle-v2":
                 "brn-successor-wave2-"+(cubic?"cubic":"gate")+"-cache-v1");result.put("manifest",snapshot.manifest());
         result.put("modelPlanId",plan.id());
         result.put("candidateWeightBytes",8L*model.architecture().parameters());

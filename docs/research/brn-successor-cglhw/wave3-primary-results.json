@@ -1,0 +1,499 @@
+{
+  "id": "brn-wave3-primary-results-v1",
+  "recordedUtc": "2026-10-20T10:44:11.252861+00:00",
+  "runtime": "wave3-trained-runtime.json",
+  "games": 320,
+  "validatedMoves": 41622,
+  "rawFailedGames": 0,
+  "cappedGames": 0,
+  "maximumSampledWorkingSetBytes": 614486016,
+  "results": [
+    {
+      "study": "gen32-node",
+      "evidence": "raw\\wave3\\trained-gen32-node-analysis.json",
+      "analysisSha256": "5ea910d1de373a48d84ae94cf8a3d123d770797f123c54abfe4cfb07d68ea8de",
+      "planSha256": "41cf73a4e63fe48b09c4fdcd754d779749332bc853a0172994b06ca788f1b8b5",
+      "validatedMoves": 12237,
+      "models": [
+        {
+          "name": "W3-RESGATE",
+          "wins": 14,
+          "draws": 1,
+          "losses": 17,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.453125,
+          "pairStandardError": 0.08605578980134534,
+          "descriptiveNormal95": [
+            0.2844556519893631,
+            0.6217943480106369
+          ],
+          "pairScores": [
+            1.0,
+            0.5,
+            0.25,
+            0.5,
+            0.5,
+            0.0,
+            0.5,
+            0.5,
+            1.0,
+            1.0,
+            0.5,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "W3-RESCUBIC",
+          "wins": 11,
+          "draws": 8,
+          "losses": 13,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.46875,
+          "pairStandardError": 0.08500919067959652,
+          "descriptiveNormal95": [
+            0.30213198626799087,
+            0.6353680137320091
+          ],
+          "pairScores": [
+            1.0,
+            0.25,
+            0.5,
+            0.0,
+            0.25,
+            0.25,
+            0.5,
+            0.75,
+            0.75,
+            0.0,
+            0.5,
+            1.0,
+            1.0,
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        {
+          "name": "W3-BRE-CONTROL",
+          "wins": 15,
+          "draws": 6,
+          "losses": 11,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.5625,
+          "pairStandardError": 0.0739509972887452,
+          "descriptiveNormal95": [
+            0.41755604531405943,
+            0.7074439546859406
+          ],
+          "pairScores": [
+            0.75,
+            0.5,
+            0.5,
+            0.5,
+            0.25,
+            1.0,
+            0.0,
+            0.5,
+            0.5,
+            0.5,
+            1.0,
+            0.25,
+            0.25,
+            1.0,
+            0.75,
+            0.75
+          ]
+        }
+      ],
+      "telemetry": {
+        "W3-RESGATE": {
+          "moves": 1763,
+          "nodes": 55843308,
+          "elapsedSeconds": 78.7933049,
+          "nodesPerSecond": 708731.6374262149,
+          "meanCompletedDepth": 7.792399319342031,
+          "fallbacks": 0
+        },
+        "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304": {
+          "moves": 6120,
+          "nodes": 195350590,
+          "elapsedSeconds": 113.6368125,
+          "nodesPerSecond": 1719078.4016403134,
+          "meanCompletedDepth": 7.41045751633987,
+          "fallbacks": 0
+        },
+        "W3-RESCUBIC": {
+          "moves": 2211,
+          "nodes": 70813237,
+          "elapsedSeconds": 70.0822716,
+          "nodesPerSecond": 1010430.1042661979,
+          "meanCompletedDepth": 7.226142017186794,
+          "fallbacks": 0
+        },
+        "W3-BRE-CONTROL": {
+          "moves": 2143,
+          "nodes": 68519090,
+          "elapsedSeconds": 37.9610391,
+          "nodesPerSecond": 1804984.5743026566,
+          "meanCompletedDepth": 7.367708819412039,
+          "fallbacks": 0
+        }
+      }
+    },
+    {
+      "study": "control-node",
+      "evidence": "raw\\wave3\\trained-control-node-analysis.json",
+      "analysisSha256": "b74c0ea8da8352efabec7964f0e56d8deedcdb15b3e79f6e5632d0220744d34e",
+      "planSha256": "06e85ba0782ebc0e64750bec54b4d601f5005f270da07687f5224db5bf0a5dc2",
+      "validatedMoves": 8609,
+      "models": [
+        {
+          "name": "W3-RESGATE",
+          "wins": 15,
+          "draws": 6,
+          "losses": 11,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.5625,
+          "pairStandardError": 0.08068715304598785,
+          "descriptiveNormal95": [
+            0.4043531800298638,
+            0.7206468199701361
+          ],
+          "pairScores": [
+            0.5,
+            0.75,
+            1.0,
+            0.5,
+            1.0,
+            0.5,
+            0.0,
+            0.75,
+            0.25,
+            0.75,
+            0.75,
+            0.25,
+            0.0,
+            0.5,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "name": "W3-RESCUBIC",
+          "wins": 20,
+          "draws": 6,
+          "losses": 6,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.71875,
+          "pairStandardError": 0.08801929239282337,
+          "descriptiveNormal95": [
+            0.5462321869100661,
+            0.8912678130899339
+          ],
+          "pairScores": [
+            0.75,
+            0.75,
+            0.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            0.0,
+            1.0,
+            0.25,
+            0.75,
+            1.0,
+            0.75,
+            0.75,
+            0.5,
+            1.0
+          ]
+        }
+      ],
+      "telemetry": {
+        "W3-RESGATE": {
+          "moves": 2228,
+          "nodes": 71190894,
+          "elapsedSeconds": 90.6274114,
+          "nodesPerSecond": 785533.7904972977,
+          "meanCompletedDepth": 7.480251346499102,
+          "fallbacks": 0
+        },
+        "g000032-s002015232-cf5efb1b0aa45f997cad7b362d7417679ba1e70ea6741a71d8bf65470ba52f3c": {
+          "moves": 4299,
+          "nodes": 137565814,
+          "elapsedSeconds": 77.7700421,
+          "nodesPerSecond": 1768879.253313404,
+          "meanCompletedDepth": 7.560595487322633,
+          "fallbacks": 0
+        },
+        "W3-RESCUBIC": {
+          "moves": 2082,
+          "nodes": 66583503,
+          "elapsedSeconds": 64.5180373,
+          "nodesPerSecond": 1032013.7714418662,
+          "meanCompletedDepth": 7.362151777137368,
+          "fallbacks": 0
+        }
+      }
+    },
+    {
+      "study": "gen32-clock",
+      "evidence": "raw\\wave3\\trained-gen32-clock-analysis.json",
+      "analysisSha256": "a0320313c7ac5d873b803b022dddc85b4619905bac44039b9f03656d34c032a4",
+      "planSha256": "3aa48d8d3b1acb4bca191cdacbe06696a6351247e2fa6e5ad2205572b03bb9e5",
+      "validatedMoves": 12933,
+      "models": [
+        {
+          "name": "W3-RESGATE",
+          "wins": 4,
+          "draws": 9,
+          "losses": 19,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.265625,
+          "pairStandardError": 0.06641390887206283,
+          "descriptiveNormal95": [
+            0.13545373861075685,
+            0.3957962613892432
+          ],
+          "pairScores": [
+            0.0,
+            0.0,
+            0.5,
+            0.0,
+            0.25,
+            0.5,
+            0.5,
+            0.75,
+            0.0,
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.75,
+            0.25
+          ]
+        },
+        {
+          "name": "W3-RESCUBIC",
+          "wins": 10,
+          "draws": 7,
+          "losses": 15,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.421875,
+          "pairStandardError": 0.07471734933512207,
+          "descriptiveNormal95": [
+            0.2754289953031608,
+            0.5683210046968392
+          ],
+          "pairScores": [
+            0.0,
+            0.5,
+            1.0,
+            0.75,
+            0.25,
+            0.25,
+            0.5,
+            0.5,
+            0.25,
+            0.75,
+            0.0,
+            0.75,
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ]
+        },
+        {
+          "name": "W3-BRE-CONTROL",
+          "wins": 13,
+          "draws": 5,
+          "losses": 14,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.484375,
+          "pairStandardError": 0.07022564079451322,
+          "descriptiveNormal95": [
+            0.3467327440427541,
+            0.6220172559572459
+          ],
+          "pairScores": [
+            1.0,
+            0.5,
+            0.25,
+            0.5,
+            0.0,
+            0.25,
+            1.0,
+            0.5,
+            0.0,
+            0.5,
+            0.5,
+            0.75,
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "telemetry": {
+        "W3-RESGATE": {
+          "moves": 2403,
+          "nodes": 96633180,
+          "elapsedSeconds": 117.3614238,
+          "nodesPerSecond": 823381.1151156126,
+          "meanCompletedDepth": 7.770287141073658,
+          "fallbacks": 0
+        },
+        "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304": {
+          "moves": 6472,
+          "nodes": 571816664,
+          "elapsedSeconds": 314.5350752,
+          "nodesPerSecond": 1817974.2390778044,
+          "meanCompletedDepth": 8.700092707045735,
+          "fallbacks": 0
+        },
+        "W3-RESCUBIC": {
+          "moves": 2177,
+          "nodes": 113173969,
+          "elapsedSeconds": 105.9289357,
+          "nodesPerSecond": 1068395.2241389318,
+          "meanCompletedDepth": 8.07762976573266,
+          "fallbacks": 0
+        },
+        "W3-BRE-CONTROL": {
+          "moves": 1881,
+          "nodes": 163983384,
+          "elapsedSeconds": 90.9645935,
+          "nodesPerSecond": 1802716.6141296502,
+          "meanCompletedDepth": 9.156299840510366,
+          "fallbacks": 0
+        }
+      }
+    },
+    {
+      "study": "control-clock",
+      "evidence": "raw\\wave3\\trained-control-clock-analysis.json",
+      "analysisSha256": "be8822441e958f90209e3b4551fa783dcd85b0e001e867c761baa44d5cea13fe",
+      "planSha256": "d5cc2433311037b7b19e48ed516fa19af5523e6e99cbf7349b67703f0cb9bd27",
+      "validatedMoves": 7843,
+      "models": [
+        {
+          "name": "W3-RESGATE",
+          "wins": 8,
+          "draws": 4,
+          "losses": 20,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.3125,
+          "pairStandardError": 0.07739239842086129,
+          "descriptiveNormal95": [
+            0.16081089909511187,
+            0.46418910090488813
+          ],
+          "pairScores": [
+            0.25,
+            0.25,
+            1.0,
+            0.5,
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.75,
+            0.25,
+            0.0,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.5
+          ]
+        },
+        {
+          "name": "W3-RESCUBIC",
+          "wins": 16,
+          "draws": 4,
+          "losses": 12,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.5625,
+          "pairStandardError": 0.07739239842086129,
+          "descriptiveNormal95": [
+            0.41081089909511187,
+            0.7141891009048882
+          ],
+          "pairScores": [
+            1.0,
+            1.0,
+            0.5,
+            0.5,
+            0.0,
+            1.0,
+            0.25,
+            0.5,
+            0.5,
+            0.0,
+            0.5,
+            0.75,
+            0.75,
+            0.5,
+            0.75,
+            0.5
+          ]
+        }
+      ],
+      "telemetry": {
+        "W3-RESGATE": {
+          "moves": 1972,
+          "nodes": 76671842,
+          "elapsedSeconds": 95.5105487,
+          "nodesPerSecond": 802757.8423910782,
+          "meanCompletedDepth": 8.254563894523326,
+          "fallbacks": 0
+        },
+        "g000032-s002015232-cf5efb1b0aa45f997cad7b362d7417679ba1e70ea6741a71d8bf65470ba52f3c": {
+          "moves": 3923,
+          "nodes": 336221171,
+          "elapsedSeconds": 189.7748438,
+          "nodesPerSecond": 1771684.614607492,
+          "meanCompletedDepth": 9.045373438694876,
+          "fallbacks": 1
+        },
+        "W3-RESCUBIC": {
+          "moves": 1948,
+          "nodes": 97124294,
+          "elapsedSeconds": 94.3114696,
+          "nodesPerSecond": 1029824.8390352726,
+          "meanCompletedDepth": 8.311088295687885,
+          "fallbacks": 1
+        }
+      }
+    }
+  ],
+  "interpretation": "Fixed development screen. Descriptive paired intervals only; no confirmation claim or causal attribution from triangle rankings."
+}

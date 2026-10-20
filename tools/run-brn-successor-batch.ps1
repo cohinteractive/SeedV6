@@ -1,0 +1,51 @@
+param(
+    [Parameter(Mandatory=$true)][string]$Plan,
+    [Parameter(Mandatory=$true)][string]$Output,
+    [Parameter(Mandatory=$true)][string]$RuntimeManifest,
+    [Parameter(Mandatory=$true)][string]$LogPrefix
+)
+$ErrorActionPreference='Stop'
+# One bounded runner invocation. No loop, training, cleanup, or store writes.
+$binding=Get-Content -LiteralPath $RuntimeManifest -Raw -Encoding UTF8 | ConvertFrom-Json
+$configuration=Get-Content -LiteralPath $Plan -Raw -Encoding UTF8 | ConvertFrom-Json
+if ($configuration.batchGames -gt 12 -or $configuration.batchSeconds -gt 240) {
+    throw 'Batch exceeds the admitted resource envelope.'
+}
+foreach ($jar in $binding.jars.PSObject.Properties) {
+    $file=Join-Path $binding.runtime $jar.Name
+    if ((Get-FileHash -LiteralPath $file -Algorithm SHA256).Hash.ToLowerInvariant() -ne $jar.Value) {
+        throw "Frozen runtime changed: $file"
+    }
+}
+if (Test-Path -LiteralPath $Output) {
+    if (Get-ChildItem -LiteralPath $Output -Filter '*.failed') {
+        throw 'Prior failed game requires investigation; preserve evidence.'
+    }
+}
+foreach ($suffix in @('.stdout','.stderr','.process.json')) {
+    if (Test-Path -LiteralPath ($LogPrefix+$suffix)) { throw 'Preserve prior batch logs.' }
+}
+$started=[DateTime]::UtcNow
+$process=Start-Process -FilePath 'C:/java/jdk-21/bin/java.exe' -ArgumentList @(
+    '-Xmx768m','-XX:ActiveProcessorCount=1','--add-modules=jdk.incubator.vector',
+    '-cp',($binding.runtime+'/*'),'com.ohinteractive.seedv6.tools.eval.BrnSuccessorMatch',
+    $Plan,$Output
+) -WorkingDirectory $PWD -WindowStyle Hidden -PassThru `
+    -RedirectStandardOutput ($LogPrefix+'.stdout') -RedirectStandardError ($LogPrefix+'.stderr')
+$handle=$process.Handle
+$process.PriorityClass='BelowNormal'
+$peakWorkingSet=0L
+while (-not $process.WaitForExit(1000)) {
+    $process.Refresh()
+    if (-not $process.HasExited) { $peakWorkingSet=[Math]::Max($peakWorkingSet,$process.WorkingSet64) }
+}
+$process.Refresh()
+$record=@{
+    startedUtc=$started.ToString('o'); completedUtc=[DateTime]::UtcNow.ToString('o');
+    processId=$process.Id; exitCode=$process.ExitCode; cpuSeconds=$process.TotalProcessorTime.TotalSeconds;
+    sampledPeakWorkingSetBytes=$peakWorkingSet; plan=$Plan; runtimeManifest=$RuntimeManifest;
+    heapMiB=768; activeProcessors=1; priority='BelowNormal'; concurrentGames=1; workersPerEngine=1; pondering=$false
+}
+$record | ConvertTo-Json | Set-Content -LiteralPath ($LogPrefix+'.process.json') -Encoding UTF8
+if ($process.ExitCode -ne 0) { throw "Research batch failed: $($process.ExitCode). See $LogPrefix.stderr" }
+Get-Content -LiteralPath ($LogPrefix+'.stdout') -Tail 2

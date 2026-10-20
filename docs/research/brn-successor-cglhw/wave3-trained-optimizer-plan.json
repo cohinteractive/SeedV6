@@ -1,0 +1,22 @@
+{
+  "id": "brn-successor-wave3-trained-optimizer-v1",
+  "question": "Do smaller learning rates produce useful, less disruptive updates from the trained W3 endpoints with their actual Adam moments?",
+  "modelPlan": "wave3-trained-model-plan.json",
+  "sources": [
+    "raw/wave2/data-01/bt4-fresh-positions.jsonl",
+    "raw/wave2/data-01/lichess-sealed-positions.jsonl"
+  ],
+  "partition": "Existing consumed development data only. First1024/source fit, remaining1024 evaluate; sources tested separately.",
+  "startingStates": "Independently reload each latest32 optimizer for every arm; retain moments/step and change only learning rate in memory.",
+  "rates": [0.0003, 0.001, 0.003],
+  "shuffleSeed": 71,
+  "batch": 128,
+  "epochs": 8,
+  "stepsPerArm": 64,
+  "arms": 18,
+  "observationsAtSteps": [0, 1, 4, 16, 64],
+  "measurements": "Cross entropy, outcome MSE, residual scale and RMS change from frozen Gen32 on fit/evaluation halves; training nanoseconds.",
+  "interpretation": "Optimizer diagnostic, not substantive competitive training or evidence of chess strength. Tiny reused subsets cannot establish an optimal long-run rate. CP data-quality sensitivity is separately recorded.",
+  "resources": "After primary tournament jobs finish: one BelowNormal JVM, ActiveProcessorCount1, Xmx768m, <=300seconds total. Never save trained models or mutate source stores.",
+  "invocation": "BrnSuccessorOptimizerProbe BT4_JSONL CP_JSONL NEW_OUTPUT TRAINED_MODEL_PLAN --trained"
+}

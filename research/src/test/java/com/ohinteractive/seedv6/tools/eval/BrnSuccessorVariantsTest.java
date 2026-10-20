@@ -11,6 +11,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BrnSuccessorVariantsTest {
     @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class, names={"GEN32_GATED","GEN32_CUBIC"})
+    void correctionControlPreservesFrozenBaseAndSourceAcrossPositions(BrnNextArchitecture kind) {
+        var random=new SplittableRandom(229);double[] weights=new double[kind.parameters()];
+        for(int i=0;i<weights.length;i++)weights[i]=random.nextDouble(-.4,.4);
+        var source=new BrnNextModel(kind,weights);
+        for(double scale:new double[]{0,.25,.5,1,1.5}) {
+            var variant=BrnSuccessorVariants.correction(source,scale,null,null);
+            for(var board:BrnSuccessorAudit.boards()) {
+                double base=BrnNextBase.model().newWorkspace().evaluatePawns(board);
+                double expected=base+scale*(source.rawPawns(board,source.newWorkspace())-base);
+                assertEquals(expected,variant.rawPawns(board,variant.newWorkspace()),1e-12);
+                double material=BrnPair2Features.material(board);
+                assertEquals(Brn3Model.score(material+.25*(expected-material)),variant.score(board,variant.newWorkspace()));
+            }
+        }
+        for(String ablation:new String[]{"unary",kind.correctionKind()==BrnNextArchitecture.CUBIC?"quadratic":"constant-gates"}) {
+            var variant=BrnSuccessorVariants.correction(source,0,ablation,
+                    ablation.equals("constant-gates")?new double[]{.1,.2,.3,.4}:null);
+            for(var board:BrnSuccessorAudit.boards())
+                assertEquals(BrnNextBase.model().newWorkspace().evaluatePawns(board),variant.rawPawns(board,variant.newWorkspace()),1e-12);
+        }
+        for(int i=0;i<weights.length;i++)assertEquals(weights[i],source.weight(i));
+        assertThrows(IllegalArgumentException.class,()->BrnSuccessorVariants.correction(source,Double.NaN,null,null));
+        assertThrows(IllegalArgumentException.class,()->BrnSuccessorVariants.correction(source,1,"unknown",null));
+    }
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class, names={"GEN32_GATED","GEN32_CUBIC"})
     void oldGainControlCannotSilentlyRescaleOnlyTheCorrection(BrnNextArchitecture kind) {
         var model=new BrnNextModel(kind,new double[kind.parameters()]);
         assertSame(model,BrnSuccessorVariants.gain(model,.25));

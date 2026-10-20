@@ -1,9 +1,9 @@
 # BRN successor workstream state
 
-Updated20 October2026. **Human training gate G3 is ready and blocking trained Wave3
-assessment. No programme success is claimed.** This remains the original CGLHW.
+Updated20 October2026. **Human training gate G3 is verified complete. Trained Wave3 assessment is active.
+No programme success is claimed.** This remains the original CGLHW.
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
-[completed investigations](WAVE2.md), and [current implementation/training gate](WAVE3.md).
+[completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md).
 
 Objective: statistically credible practical chess improvement over frozen BRE-Pair2
 Gen32 through useful additional expressiveness, with measured costs and compatible
@@ -17,12 +17,12 @@ search. Architectural complexity or lower validation loss alone is insufficient.
 | W1-GATE | 699672ff-5dcc-326a-afef-924996c76f79, Gen200 frozen; historical Best198 |
 | W1-CUBIC | e04052b9-6784-3c12-abb5-abc75cd21f59, Gen200 frozen |
 | W1-POOL | 97b2fdda-f812-3455-9f62-43e5ee322651, Gen200 frozen; lower research priority, not discarded |
-| W3-RESGATE | BRN-GEN32-GATED/e6b6775d-39cd-392b-bd18-5e964a445f62, Gen0, frozen Gen32 plus fresh gated correction |
-| W3-RESCUBIC | BRN-GEN32-CUBIC/22b42be6-15c4-3f36-a376-3776aa1931f2, Gen0, frozen Gen32 plus fresh cubic correction |
-| W3-BRE-CONTROL | BRN-Pair2/ed0750a3-3163-3979-9f26-2e466c49c771, new Gen0 counter, exact Gen32 runtime/Adam clone |
+| W3-RESGATE | BRN-GEN32-GATED/e6b6775d-39cd-392b-bd18-5e964a445f62, latest/Best32, frozen Gen32 plus trained gated correction |
+| W3-RESCUBIC | BRN-GEN32-CUBIC/22b42be6-15c4-3f36-a376-3776aa1931f2, latest32/Best31, frozen Gen32 plus trained cubic correction |
+| W3-BRE-CONTROL | BRN-Pair2/ed0750a3-3163-3979-9f26-2e466c49c771, latest/Best32,262144 added updates from exact Gen32 clone |
 
 All managed roots are under E:/SeedV6-Networks. Exact checkpoint IDs, hashes and
-sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`. Frozen reference
+sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`, `wave3-trained-checkpoints.json`. Frozen reference
 network SHA256 is `5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7`.
 Original lineages/campaigns/checkpoints remain preserved. W1 human training is verified
 complete for investigation; it does not establish competitive maturity. Never resume
@@ -56,9 +56,9 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
    correction; compare with continued BRE. Verified zero-head score/search parity,
    gradients, codecs/base binding, GUI, corpus continuation, actual-owner smoke.
    Initial cached search costs2.11x(GATE)/1.68x(CUBIC) Gen32: substantial risk, not
-   evidence of practical efficiency. Human training is now the required dependency.
-7. **Next after G3.** Audit actual exposures/endpoints, recheck parity/calibration/cost,
-   then prospective strength screen against Gen32 and continued BRE under common
+   evidence of practical efficiency. G3 is now verified complete; trained costs and strength are being assessed.
+7. **Current after G3.** Actual exposures/endpoints verified; trained parity passes.
+   Half correction improves development prediction; now prospective strength screen against Gen32 and continued BRE under common
    Policy4. For useful expressiveness, ablate conditional GATE to constant/additive
    and CUBIC to quadratic/unary, with real costs. Independent confirmation requires
    fresh opening clusters and predeclared error/multiplicity/stopping rules.
@@ -67,33 +67,39 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
    options if evidence warrants. Do not mechanically exhaust old architecture lists
    or prematurely reject W1; no credible direction has been declared exhausted.
 
-## Blocking human gate and exact resume point
+## Current action and exact resume point
 
-**Human actions required after this prompt: Blocking - train the three prepared W3
-lineages through the SeedV6 GUI and report readiness or failure.** It blocks trained
-Wave3 strength/ablation/optimization assessment. No other human action is required.
-Full settings, safeguards and resume semantics are in WAVE3's G3 section.
+**Human actions required after this prompt: None currently.** G3 completion is
+verified from all three histories/sessions/checkpoint chains, not inferred from
+this invocation.32 generations each,262144 additional updates,matching requested
+recipe. All99 initial/intermediate/latest/Best W3 payloads remain available.
+RESCUBIC Best31 differs from latest32. Frozen identities and settings are in
+`wave3-trained-checkpoints.json`; full audit in `raw/wave3/trained-audit-01`.
 
-Use local build46 (`app/build/install/seedv6/bin/seedv6.bat gui`). Each starts at new
-Gen0: LR.003,batch128,8epochs,131072training/32768validation positions,seed1,oneworker,
-held-out WDL,registered BT4/CP equal weights,32 Additional Generations. One lineage
-at a time; stop at new generation32 or earlier on instability/errors/contention.
-If explicitly stopped, a new session needs only the remaining generation count;
-crash-ACTIVE sessions retain their original budget. Preserve all checkpoints/data.
-Report completed/latest/Best generations, any deviations, loss behavior and elapsed
-training time. Counts are a diagnostic batch, not a universal maturity requirement.
+The four primary development plans are complete:320 games,41622 independently
+replayed moves,no failed/capped games. Two first-iteration legal fallbacks (one each
+engine) occurred in a single CUBIC-vs-control clock game and remain included.
+See `wave3-primary-results.json` and WAVE3-ASSESSMENT for all results/uncertainty.
+Against Gen32, GATE45.31% nodes/26.56% time, CUBIC46.88%/42.19%, continued BRE56.25%/48.44%.
+Against continued BRE, CUBIC71.88% nodes/56.25% time; small reused samples do not
+establish an architectural ranking or programme success.
 
-Source progress starts at zero and can overlap Gen32 history. Hybrid stable-layout
-splits differ from BRE sequential holdout; the frozen base may have seen hybrid
-holdout. Same nominal settings are not identical data/effective optimization.
-Continued BRE inherits1753088 Adam updates; new corrections inherit no optimizer
-moments. A later prompt alone does not complete this gate. Independently ready
-candidates can proceed while another is pending, after verifying actual evidence.
+Next: profile-guided residual cache cost reduction, preserving score/search semantics;
+then freeze a new half-correction/Best31/ablation development study. Original primary
+runtime/receipts remain immutable. Research correction controls pass7 tests;
+18 tiny optimizer arms completed without saving models. LR.001 is a credible
+continuation hypothesis, not an established optimum. No next human training gate
+or independent confirmation has yet been admitted. No tournament is currently queued.
+
+Source progress started at zero and overlaps Gen32 history. Hybrid stable-layout
+splits differ from BRE sequential holdout; residual tranches match each other,
+not the control. Same counts are not identical data/effective optimization.
+Continued BRE inherited1753088 Adam updates; corrections started without moments.
 
 ## Restart and provenance
 
 All admitted Wave2 games and Wave3 correctness/initial-cost/smoke jobs are complete;
-no tournament or autonomous training is queued. Keep one game,one worker/engine,
+the primary trained-W3 screen and bounded optimizer study are complete. No autonomous training is queued. Keep one game,one worker/engine,
 no pondering,64MiB TT,768MiB JVM,ActiveProcessorCount1,BelowNormal for future screens;
 no simultaneous heavy jobs or substantial training by Codex.
 

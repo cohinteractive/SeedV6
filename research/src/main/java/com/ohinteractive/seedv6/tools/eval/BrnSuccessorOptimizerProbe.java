@@ -20,11 +20,27 @@ public final class BrnSuccessorOptimizerProbe {
         double train(long[][] boards,double[] targets);
     }
     public static void main(String[] args) throws Exception {
-        if(args.length!=3&&args.length!=4)throw new IllegalArgumentException("BT4_JSONL CP_JSONL NEW_OUTPUT [GEN32_MODEL_PLAN]");
-        boolean residual=args.length==4;
-        String planId=residual?"brn-successor-wave3-optimizer-smoke-v1":"brn-successor-wave2-optimizer-smoke-v1";
+        if(args.length<3||args.length>5||args.length==5&&!args[4].equals("--trained"))
+            throw new IllegalArgumentException("BT4_JSONL CP_JSONL NEW_OUTPUT [GEN32_MODEL_PLAN | TRAINED_MODEL_PLAN --trained]");
+        boolean trained=args.length==5,residual=args.length>=4;
+        String planId=trained?"brn-successor-wave3-trained-optimizer-v1":
+                residual?"brn-successor-wave3-optimizer-smoke-v1":"brn-successor-wave2-optimizer-smoke-v1";
         BrnSuccessorAudit.ModelSpec reference=null;
-        if(residual) {
+        var trainedModels=new LinkedHashMap<String,BrnSuccessorAudit.ModelSpec>();
+        var trainedBindings=new ArrayList<Object>();
+        if(trained) {
+            for(var spec:DataFiles.read(Path.of(args[3]),BrnSuccessorAudit.Plan.class).models()) {
+                if(spec.name().equals("Gen32"))continue;
+                var manifest=CheckpointStore.readSnapshot(Path.of(spec.root()),spec.checkpoint()).manifest();
+                String kind=switch(manifest.architecture()) {
+                    case BRN_PAIR2 -> "PAIR2_CONTINUED";case BRN_GEN32_GATED -> "GEN32_GATED";
+                    case BRN_GEN32_CUBIC -> "GEN32_CUBIC";default -> throw new IllegalArgumentException("Trained W3 architectures only");
+                };
+                if(trainedModels.put(kind,spec)!=null)throw new IllegalArgumentException("One endpoint per architecture");
+                trainedBindings.add(Map.of("name",spec.name(),"manifest",manifest));
+            }
+            if(trainedModels.size()!=3)throw new IllegalArgumentException("Three trained endpoints required");
+        } else if(residual) {
             reference=DataFiles.read(Path.of(args[3]),BrnSuccessorAudit.Plan.class).models().getFirst();
             var manifest=CheckpointStore.readSnapshot(Path.of(reference.root()),reference.checkpoint()).manifest();
             if(!manifest.networkSha256().equals(BrnNextBase.SHA256)||!manifest.trainingSha256().equals("f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5"))
@@ -50,8 +66,9 @@ public final class BrnSuccessorOptimizerProbe {
                 Collections.shuffle(order,random);orders.add(order);
             }
             for(String kind:residual?List.of("PAIR2_CONTINUED","GEN32_GATED","GEN32_CUBIC"):List.of("PAIR2","GATED_PAIRS","CUBIC","POOLED"))
-                for(double rate:residual?new double[]{.001,.003,.01}:new double[]{.003,.01}) {
-                Trainer trainer=create(kind,rate,reference);var curve=new ArrayList<Object>();long nanos=0;
+                for(double rate:trained?new double[]{.0003,.001,.003}:residual?new double[]{.001,.003,.01}:new double[]{.003,.01}) {
+                Trainer trainer=trained?resume(trainedModels.get(kind),rate):create(kind,rate,reference);
+                var curve=new ArrayList<Object>();long nanos=0;
                 curve.add(metrics(trainer,train,heldout,0,0));
                 long[][] boards=new long[128][];double[] targets=new double[128];int step=0;
                 for(var order:orders)for(int batch=0;batch<8;batch++) {
@@ -63,11 +80,11 @@ public final class BrnSuccessorOptimizerProbe {
                 results.add(Map.of("source",source==0?"BT4":"CP","architecture",kind,"rate",rate,"seed",71,
                         "visits",8192,"batch",128,"curve",curve));
                 DataFiles.write(output,Map.of("plan",planId,"inputs",inputs,
-                        "arms",results,"completed",false));
+                        "arms",results,"trainedBindings",trainedBindings,"completed",false));
             }
         }
         DataFiles.write(output,Map.of("plan",planId,"inputs",inputs,
-                "arms",results,"completed",true,"java",System.getProperty("java.runtime.version"),
+                "arms",results,"trainedBindings",trainedBindings,"completed",true,"java",System.getProperty("java.runtime.version"),
                 "activeProcessors",Runtime.getRuntime().availableProcessors()));
         System.out.println("Completed"+results.size()+" bounded optimizer arms; no models saved: "+output);
     }
@@ -101,6 +118,19 @@ public final class BrnSuccessorOptimizerProbe {
         return new Trainer() {
             public double predict(long[] board){return trainer.predictPawns(board);}
             public double train(long[][] boards,double[] targets){return trainer.trainBatch(boards,targets,128);}
+        };
+    }
+    private static Trainer resume(BrnSuccessorAudit.ModelSpec spec,double rate) throws Exception {
+        var state=CheckpointStore.readTrainingSnapshot(Path.of(spec.root()),spec.checkpoint());
+        state.setLearningRate(rate);
+        if(state instanceof NetworkTrainingState.BrnPair2 p) return new Trainer() {
+            public double predict(long[] board){return p.trainer().predictPawns(board);}
+            public double train(long[][] boards,double[] targets){return p.trainer().trainBatch(boards,targets,128);}
+        };
+        var p=(NetworkTrainingState.BrnNext)state;
+        return new Trainer() {
+            public double predict(long[] board){return p.trainer().predictPawns(board);}
+            public double train(long[][] boards,double[] targets){return p.trainer().trainBatch(boards,targets,128);}
         };
     }
     private BrnSuccessorOptimizerProbe() {}

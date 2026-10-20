@@ -1,0 +1,25 @@
+{
+  "id": "brn-wave3-post-training-audit-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304"
+    },
+    {
+      "name": "W3-RESGATE",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-GATED\\e6b6775d-39cd-392b-bd18-5e964a445f62",
+      "initialCheckpoint": "g000000-s000000000-ce2461d9effee1103475c8939842ad3793dd5d96c877a9949b26c336a30ee000"
+    },
+    {
+      "name": "W3-RESCUBIC",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\22b42be6-15c4-3f36-a376-3776aa1931f2",
+      "initialCheckpoint": "g000000-s000000000-e85be6a1e9d7619b15c21cb441c3b3007db9463fdd98d074f3f5fe7b64df5b84"
+    },
+    {
+      "name": "W3-BRE-CONTROL",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\ed0750a3-3163-3979-9f26-2e466c49c771",
+      "initialCheckpoint": "g000000-s001753088-0a1e4f88f4a932a5361446dbf73175f6326f83a1fff069296ec0e63d6de50439"
+    }
+  ]
+}

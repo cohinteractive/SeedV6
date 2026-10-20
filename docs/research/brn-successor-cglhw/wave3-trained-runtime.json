@@ -1,0 +1,33 @@
+{
+  "id": "brn-wave3-trained-runtime-v1",
+  "sourceBaseline": "87008af9464c67d9979310783f60dd1076197bdc",
+  "recordedUtc": "2026-10-20T10:10:34.568942+00:00",
+  "runtime": "docs\\research\\brn-successor-cglhw\\raw\\wave3\\trained-runtime\\lib",
+  "java": "21",
+  "activeProcessors": 1,
+  "heapMiB": 768,
+  "priority": "BelowNormal",
+  "jars": {
+    "engine-core.jar": "c735598a04f9730ad3c21eb0ec94c561a118a5a512a0605aa903c40881fda8ec",
+    "engine-training.jar": "b3973db8e9b2d2a7cf3140ad1c42f667d2aef575a5556d536a7418273edb428a",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "6c1c96a08304947a5e60f6f47311b1c87f22d8174ad3275e75ff8651f0bd4610",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "researchSourceHashes": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnGatedCacheProbe.java": "f0ffb46b000106b5986c1037d137cb91435752e7a8d208ffe362f58dbd450352",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnGatedContextProbe.java": "7a6bd81198eb0222b28c409c175a82ebaeeb46e9016c02c461d55675f636ec93",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnLineageAudit.java": "3f52ebe008324372b2d85c8fe195516d1df87d99acd24bb3a875c3210d4018c8",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnResidualAssessment.java": "e83fd4a8dbf5b98b4e91cf9271ab6c77e950e797f077d30721c66a697f9a8b6a",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnSuccessorAudit.java": "0c6a244c3015d9c6619f766e1b949f9879be613c766d9cfe6e5a89deb4c81c43",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnSuccessorCostProbe.java": "e272c8b3ba0deb944a1cc21547eb242cc08ef2132e45624f4a4b9b77504bf6aa",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnSuccessorDataProbe.java": "efd8e022f90896609911d198c496805021174faf81c6911bceddb3b1aca33b40",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnSuccessorMatch.java": "4b3296316f0b7736a7343907dd1283bc5be47e6610bcf838e51eab371a103199",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnSuccessorOptimizerProbe.java": "2aaeba798ea19bda4338ce8204405e4d5b7ee85210da3b7df22bfb204b66d8c2",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnSuccessorProbe.java": "bb116314221db2d98acee2b5f3b9df1de1aa157f0d73cc2424e568588e1bb8b8",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnSuccessorReplay.java": "610ab2e3e5182075a30d0aca77cb70a501b2e1ad977a57614846cb284d4d2e5c",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnSuccessorVariants.java": "420846a398190f02471b8d97af87d5bf93944f497a75533898fb01139634676a"
+  }
+}

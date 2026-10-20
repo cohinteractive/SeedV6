@@ -1,0 +1,746 @@
+{
+  "id": "brn-successor-wave3-trained-optimizer-v1",
+  "evidence": "raw/wave3/trained-optimizer-01.json",
+  "completed": true,
+  "arms": [
+    {
+      "source": "BT4",
+      "architecture": "PAIR2_CONTINUED",
+      "rate": 0.0003,
+      "start": {
+        "train": {
+          "residualRmsPawns": 1.9348839831879532,
+          "outcomeMse": 0.11895656830076227,
+          "deltaFromGen32RmsPawns": 0.42216621833034257,
+          "crossEntropy": 0.6569887492683895,
+          "maxResidualPawns": 14.130102809253422
+        },
+        "heldout": {
+          "residualRmsPawns": 2.177123409001955,
+          "outcomeMse": 0.1422551202934443,
+          "deltaFromGen32RmsPawns": 0.41879035592594543,
+          "crossEntropy": 0.6485883380089587,
+          "maxResidualPawns": 15.953821894247595
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 1.9281881643125127,
+          "outcomeMse": 0.11148201822919862,
+          "deltaFromGen32RmsPawns": 0.478616813762717,
+          "crossEntropy": 0.6508766808355447,
+          "maxResidualPawns": 13.984944609854683
+        },
+        "heldout": {
+          "residualRmsPawns": 2.1719522617800346,
+          "outcomeMse": 0.13953790207245534,
+          "deltaFromGen32RmsPawns": 0.4780125930881274,
+          "crossEntropy": 0.6457350882690803,
+          "maxResidualPawns": 16.098558885886128
+        },
+        "step": 64,
+        "trainingNanos": 119249500
+      }
+    },
+    {
+      "source": "BT4",
+      "architecture": "PAIR2_CONTINUED",
+      "rate": 0.001,
+      "start": {
+        "train": {
+          "residualRmsPawns": 1.9348839831879532,
+          "outcomeMse": 0.11895656830076227,
+          "deltaFromGen32RmsPawns": 0.42216621833034257,
+          "crossEntropy": 0.6569887492683895,
+          "maxResidualPawns": 14.130102809253422
+        },
+        "heldout": {
+          "residualRmsPawns": 2.177123409001955,
+          "outcomeMse": 0.1422551202934443,
+          "deltaFromGen32RmsPawns": 0.41879035592594543,
+          "crossEntropy": 0.6485883380089587,
+          "maxResidualPawns": 15.953821894247595
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 1.9262575408038884,
+          "outcomeMse": 0.1026623409590614,
+          "deltaFromGen32RmsPawns": 0.477306757010229,
+          "crossEntropy": 0.6445910322016278,
+          "maxResidualPawns": 13.96973554133331
+        },
+        "heldout": {
+          "residualRmsPawns": 2.1713884298545914,
+          "outcomeMse": 0.13875509073381545,
+          "deltaFromGen32RmsPawns": 0.4781593323456362,
+          "crossEntropy": 0.6448402778811075,
+          "maxResidualPawns": 16.11394110447687
+        },
+        "step": 64,
+        "trainingNanos": 64187600
+      }
+    },
+    {
+      "source": "BT4",
+      "architecture": "PAIR2_CONTINUED",
+      "rate": 0.003,
+      "start": {
+        "train": {
+          "residualRmsPawns": 1.9348839831879532,
+          "outcomeMse": 0.11895656830076227,
+          "deltaFromGen32RmsPawns": 0.42216621833034257,
+          "crossEntropy": 0.6569887492683895,
+          "maxResidualPawns": 14.130102809253422
+        },
+        "heldout": {
+          "residualRmsPawns": 2.177123409001955,
+          "outcomeMse": 0.1422551202934443,
+          "deltaFromGen32RmsPawns": 0.41879035592594543,
+          "crossEntropy": 0.6485883380089587,
+          "maxResidualPawns": 15.953821894247595
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 1.9217225735012518,
+          "outcomeMse": 0.08804941019544901,
+          "deltaFromGen32RmsPawns": 0.476128825312778,
+          "crossEntropy": 0.6352074010897348,
+          "maxResidualPawns": 14.038239885477125
+        },
+        "heldout": {
+          "residualRmsPawns": 2.168221288044328,
+          "outcomeMse": 0.13879464396267363,
+          "deltaFromGen32RmsPawns": 0.47429095829874024,
+          "crossEntropy": 0.6447665325006903,
+          "maxResidualPawns": 16.07170981313128
+        },
+        "step": 64,
+        "trainingNanos": 68935800
+      }
+    },
+    {
+      "source": "BT4",
+      "architecture": "GEN32_GATED",
+      "rate": 0.0003,
+      "start": {
+        "train": {
+          "residualRmsPawns": 1.8546977025556908,
+          "outcomeMse": 0.10813459288161059,
+          "deltaFromGen32RmsPawns": 0.43702956108388263,
+          "crossEntropy": 0.6530375758251393,
+          "maxResidualPawns": 15.515090323655018
+        },
+        "heldout": {
+          "residualRmsPawns": 2.0367904552880427,
+          "outcomeMse": 0.12146061102012072,
+          "deltaFromGen32RmsPawns": 0.45796755050630616,
+          "crossEntropy": 0.6341018440655102,
+          "maxResidualPawns": 13.152235818767961
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 1.8557247205636451,
+          "outcomeMse": 0.105680621616451,
+          "deltaFromGen32RmsPawns": 0.4417386205202258,
+          "crossEntropy": 0.650505005523419,
+          "maxResidualPawns": 15.568373911471497
+        },
+        "heldout": {
+          "residualRmsPawns": 2.038755605288295,
+          "outcomeMse": 0.12165014405554547,
+          "deltaFromGen32RmsPawns": 0.461344033099057,
+          "crossEntropy": 0.634201699507569,
+          "maxResidualPawns": 13.167164009477865
+        },
+        "step": 64,
+        "trainingNanos": 63279600
+      }
+    },
+    {
+      "source": "BT4",
+      "architecture": "GEN32_GATED",
+      "rate": 0.001,
+      "start": {
+        "train": {
+          "residualRmsPawns": 1.8546977025556908,
+          "outcomeMse": 0.10813459288161059,
+          "deltaFromGen32RmsPawns": 0.43702956108388263,
+          "crossEntropy": 0.6530375758251393,
+          "maxResidualPawns": 15.515090323655018
+        },
+        "heldout": {
+          "residualRmsPawns": 2.0367904552880427,
+          "outcomeMse": 0.12146061102012072,
+          "deltaFromGen32RmsPawns": 0.45796755050630616,
+          "crossEntropy": 0.6341018440655102,
+          "maxResidualPawns": 13.152235818767961
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 1.8589427001513759,
+          "outcomeMse": 0.101190607359619,
+          "deltaFromGen32RmsPawns": 0.4419433748063323,
+          "crossEntropy": 0.646091977588735,
+          "maxResidualPawns": 15.660779900544094
+        },
+        "heldout": {
+          "residualRmsPawns": 2.0431327194021014,
+          "outcomeMse": 0.12231782133533292,
+          "deltaFromGen32RmsPawns": 0.45972027184740216,
+          "crossEntropy": 0.6345537968897312,
+          "maxResidualPawns": 13.205811336278485
+        },
+        "step": 64,
+        "trainingNanos": 44599700
+      }
+    },
+    {
+      "source": "BT4",
+      "architecture": "GEN32_GATED",
+      "rate": 0.003,
+      "start": {
+        "train": {
+          "residualRmsPawns": 1.8546977025556908,
+          "outcomeMse": 0.10813459288161059,
+          "deltaFromGen32RmsPawns": 0.43702956108388263,
+          "crossEntropy": 0.6530375758251393,
+          "maxResidualPawns": 15.515090323655018
+        },
+        "heldout": {
+          "residualRmsPawns": 2.0367904552880427,
+          "outcomeMse": 0.12146061102012072,
+          "deltaFromGen32RmsPawns": 0.45796755050630616,
+          "crossEntropy": 0.6341018440655102,
+          "maxResidualPawns": 13.152235818767961
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 1.858239442760641,
+          "outcomeMse": 0.09162449917353827,
+          "deltaFromGen32RmsPawns": 0.44191345450977765,
+          "crossEntropy": 0.637887941593259,
+          "maxResidualPawns": 15.715757750259895
+        },
+        "heldout": {
+          "residualRmsPawns": 2.042650662501072,
+          "outcomeMse": 0.12302444508603701,
+          "deltaFromGen32RmsPawns": 0.45821175755336224,
+          "crossEntropy": 0.6351707121401059,
+          "maxResidualPawns": 13.233187665481127
+        },
+        "step": 64,
+        "trainingNanos": 44091500
+      }
+    },
+    {
+      "source": "BT4",
+      "architecture": "GEN32_CUBIC",
+      "rate": 0.0003,
+      "start": {
+        "train": {
+          "residualRmsPawns": 1.9252618580686933,
+          "outcomeMse": 0.1135154397119226,
+          "deltaFromGen32RmsPawns": 0.4554925949086977,
+          "crossEntropy": 0.6597144716669789,
+          "maxResidualPawns": 15.744254611507824
+        },
+        "heldout": {
+          "residualRmsPawns": 2.1072820410345576,
+          "outcomeMse": 0.1286033227909888,
+          "deltaFromGen32RmsPawns": 0.4708644926602506,
+          "crossEntropy": 0.6420377042165407,
+          "maxResidualPawns": 14.625786672034652
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 1.918639328583923,
+          "outcomeMse": 0.10739589207238065,
+          "deltaFromGen32RmsPawns": 0.4598798713206716,
+          "crossEntropy": 0.6517617386100426,
+          "maxResidualPawns": 15.745184012835399
+        },
+        "heldout": {
+          "residualRmsPawns": 2.1035268051295635,
+          "outcomeMse": 0.1272596161495512,
+          "deltaFromGen32RmsPawns": 0.47780061622919173,
+          "crossEntropy": 0.6407764614028065,
+          "maxResidualPawns": 14.645360854291525
+        },
+        "step": 64,
+        "trainingNanos": 67175700
+      }
+    },
+    {
+      "source": "BT4",
+      "architecture": "GEN32_CUBIC",
+      "rate": 0.001,
+      "start": {
+        "train": {
+          "residualRmsPawns": 1.9252618580686933,
+          "outcomeMse": 0.1135154397119226,
+          "deltaFromGen32RmsPawns": 0.4554925949086977,
+          "crossEntropy": 0.6597144716669789,
+          "maxResidualPawns": 15.744254611507824
+        },
+        "heldout": {
+          "residualRmsPawns": 2.1072820410345576,
+          "outcomeMse": 0.1286033227909888,
+          "deltaFromGen32RmsPawns": 0.4708644926602506,
+          "crossEntropy": 0.6420377042165407,
+          "maxResidualPawns": 14.625786672034652
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 1.911304244820234,
+          "outcomeMse": 0.09750369173194548,
+          "deltaFromGen32RmsPawns": 0.45714668713388407,
+          "crossEntropy": 0.6420748731878307,
+          "maxResidualPawns": 15.739268961428445
+        },
+        "heldout": {
+          "residualRmsPawns": 2.1006855060251777,
+          "outcomeMse": 0.12622255999382082,
+          "deltaFromGen32RmsPawns": 0.4780390722946912,
+          "crossEntropy": 0.6394660683596672,
+          "maxResidualPawns": 14.676674099360095
+        },
+        "step": 64,
+        "trainingNanos": 31030400
+      }
+    },
+    {
+      "source": "BT4",
+      "architecture": "GEN32_CUBIC",
+      "rate": 0.003,
+      "start": {
+        "train": {
+          "residualRmsPawns": 1.9252618580686933,
+          "outcomeMse": 0.1135154397119226,
+          "deltaFromGen32RmsPawns": 0.4554925949086977,
+          "crossEntropy": 0.6597144716669789,
+          "maxResidualPawns": 15.744254611507824
+        },
+        "heldout": {
+          "residualRmsPawns": 2.1072820410345576,
+          "outcomeMse": 0.1286033227909888,
+          "deltaFromGen32RmsPawns": 0.4708644926602506,
+          "crossEntropy": 0.6420377042165407,
+          "maxResidualPawns": 14.625786672034652
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 1.9048941927812422,
+          "outcomeMse": 0.08511635255271137,
+          "deltaFromGen32RmsPawns": 0.44683181293927915,
+          "crossEntropy": 0.6324680857063085,
+          "maxResidualPawns": 15.698324219151136
+        },
+        "heldout": {
+          "residualRmsPawns": 2.09916148281166,
+          "outcomeMse": 0.12582860653391403,
+          "deltaFromGen32RmsPawns": 0.467810155621615,
+          "crossEntropy": 0.6386440920284584,
+          "maxResidualPawns": 14.709990003912404
+        },
+        "step": 64,
+        "trainingNanos": 30376100
+      }
+    },
+    {
+      "source": "CP",
+      "architecture": "PAIR2_CONTINUED",
+      "rate": 0.0003,
+      "start": {
+        "train": {
+          "residualRmsPawns": 3.374557663290337,
+          "outcomeMse": 0.3194121308856574,
+          "deltaFromGen32RmsPawns": 0.43540805510838126,
+          "crossEntropy": 0.6108707044644541,
+          "maxResidualPawns": 23.001343479754865
+        },
+        "heldout": {
+          "residualRmsPawns": 3.287093554906119,
+          "outcomeMse": 0.3602276743208671,
+          "deltaFromGen32RmsPawns": 0.45914727721906307,
+          "crossEntropy": 0.6144267382780285,
+          "maxResidualPawns": 31.40905990828467
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 3.3819794189200882,
+          "outcomeMse": 0.30885948171761046,
+          "deltaFromGen32RmsPawns": 0.41055069641010883,
+          "crossEntropy": 0.5971754678330974,
+          "maxResidualPawns": 22.945907039329565
+        },
+        "heldout": {
+          "residualRmsPawns": 3.2894899252904275,
+          "outcomeMse": 0.35519578283571607,
+          "deltaFromGen32RmsPawns": 0.4334653301247705,
+          "crossEntropy": 0.6101716690984876,
+          "maxResidualPawns": 31.49292806173122
+        },
+        "step": 64,
+        "trainingNanos": 70280500
+      }
+    },
+    {
+      "source": "CP",
+      "architecture": "PAIR2_CONTINUED",
+      "rate": 0.001,
+      "start": {
+        "train": {
+          "residualRmsPawns": 3.374557663290337,
+          "outcomeMse": 0.3194121308856574,
+          "deltaFromGen32RmsPawns": 0.43540805510838126,
+          "crossEntropy": 0.6108707044644541,
+          "maxResidualPawns": 23.001343479754865
+        },
+        "heldout": {
+          "residualRmsPawns": 3.287093554906119,
+          "outcomeMse": 0.3602276743208671,
+          "deltaFromGen32RmsPawns": 0.45914727721906307,
+          "crossEntropy": 0.6144267382780285,
+          "maxResidualPawns": 31.40905990828467
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 3.38995635521071,
+          "outcomeMse": 0.28737888196251943,
+          "deltaFromGen32RmsPawns": 0.40687219735168867,
+          "crossEntropy": 0.5741119783082308,
+          "maxResidualPawns": 22.95242645693837
+        },
+        "heldout": {
+          "residualRmsPawns": 3.2920374709925864,
+          "outcomeMse": 0.3524038345907017,
+          "deltaFromGen32RmsPawns": 0.427397162190128,
+          "crossEntropy": 0.6084128467259194,
+          "maxResidualPawns": 31.55060141911602
+        },
+        "step": 64,
+        "trainingNanos": 68167600
+      }
+    },
+    {
+      "source": "CP",
+      "architecture": "PAIR2_CONTINUED",
+      "rate": 0.003,
+      "start": {
+        "train": {
+          "residualRmsPawns": 3.374557663290337,
+          "outcomeMse": 0.3194121308856574,
+          "deltaFromGen32RmsPawns": 0.43540805510838126,
+          "crossEntropy": 0.6108707044644541,
+          "maxResidualPawns": 23.001343479754865
+        },
+        "heldout": {
+          "residualRmsPawns": 3.287093554906119,
+          "outcomeMse": 0.3602276743208671,
+          "deltaFromGen32RmsPawns": 0.45914727721906307,
+          "crossEntropy": 0.6144267382780285,
+          "maxResidualPawns": 31.40905990828467
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 3.4061396362696126,
+          "outcomeMse": 0.24734499632128268,
+          "deltaFromGen32RmsPawns": 0.42219983847412407,
+          "crossEntropy": 0.5429826644665183,
+          "maxResidualPawns": 22.92266507730664
+        },
+        "heldout": {
+          "residualRmsPawns": 3.2996418176014872,
+          "outcomeMse": 0.34888986874212335,
+          "deltaFromGen32RmsPawns": 0.4281657954607693,
+          "crossEntropy": 0.6063366498852757,
+          "maxResidualPawns": 31.599478964261777
+        },
+        "step": 64,
+        "trainingNanos": 72003000
+      }
+    },
+    {
+      "source": "CP",
+      "architecture": "GEN32_GATED",
+      "rate": 0.0003,
+      "start": {
+        "train": {
+          "residualRmsPawns": 3.267850654787328,
+          "outcomeMse": 0.29086316200735995,
+          "deltaFromGen32RmsPawns": 0.5099353692890588,
+          "crossEntropy": 0.5877548087284943,
+          "maxResidualPawns": 24.07328419593947
+        },
+        "heldout": {
+          "residualRmsPawns": 3.172825441336545,
+          "outcomeMse": 0.34026180398814254,
+          "deltaFromGen32RmsPawns": 0.4997135467883365,
+          "crossEntropy": 0.6008244911174989,
+          "maxResidualPawns": 34.016835891664606
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 3.284799042015372,
+          "outcomeMse": 0.28429172328899155,
+          "deltaFromGen32RmsPawns": 0.5007693463280032,
+          "crossEntropy": 0.5797066597303324,
+          "maxResidualPawns": 24.124193318702545
+        },
+        "heldout": {
+          "residualRmsPawns": 3.189277353417643,
+          "outcomeMse": 0.3399368605384441,
+          "deltaFromGen32RmsPawns": 0.49091339395154,
+          "crossEntropy": 0.5994854149199382,
+          "maxResidualPawns": 34.110514588634175
+        },
+        "step": 64,
+        "trainingNanos": 258942200
+      }
+    },
+    {
+      "source": "CP",
+      "architecture": "GEN32_GATED",
+      "rate": 0.001,
+      "start": {
+        "train": {
+          "residualRmsPawns": 3.267850654787328,
+          "outcomeMse": 0.29086316200735995,
+          "deltaFromGen32RmsPawns": 0.5099353692890588,
+          "crossEntropy": 0.5877548087284943,
+          "maxResidualPawns": 24.07328419593947
+        },
+        "heldout": {
+          "residualRmsPawns": 3.172825441336545,
+          "outcomeMse": 0.34026180398814254,
+          "deltaFromGen32RmsPawns": 0.4997135467883365,
+          "crossEntropy": 0.6008244911174989,
+          "maxResidualPawns": 34.016835891664606
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 3.307532085211425,
+          "outcomeMse": 0.27180687241669876,
+          "deltaFromGen32RmsPawns": 0.49683832241878545,
+          "crossEntropy": 0.5662244281282205,
+          "maxResidualPawns": 24.159046199666356
+        },
+        "heldout": {
+          "residualRmsPawns": 3.2120311945619244,
+          "outcomeMse": 0.3409255427072919,
+          "deltaFromGen32RmsPawns": 0.48639765195872936,
+          "crossEntropy": 0.5989948107616064,
+          "maxResidualPawns": 34.21795889556708
+        },
+        "step": 64,
+        "trainingNanos": 44117400
+      }
+    },
+    {
+      "source": "CP",
+      "architecture": "GEN32_GATED",
+      "rate": 0.003,
+      "start": {
+        "train": {
+          "residualRmsPawns": 3.267850654787328,
+          "outcomeMse": 0.29086316200735995,
+          "deltaFromGen32RmsPawns": 0.5099353692890588,
+          "crossEntropy": 0.5877548087284943,
+          "maxResidualPawns": 24.07328419593947
+        },
+        "heldout": {
+          "residualRmsPawns": 3.172825441336545,
+          "outcomeMse": 0.34026180398814254,
+          "deltaFromGen32RmsPawns": 0.4997135467883365,
+          "crossEntropy": 0.6008244911174989,
+          "maxResidualPawns": 34.016835891664606
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 3.3161652335869407,
+          "outcomeMse": 0.24601617883694962,
+          "deltaFromGen32RmsPawns": 0.5059277469332673,
+          "crossEntropy": 0.5425130653231193,
+          "maxResidualPawns": 24.098130679503868
+        },
+        "heldout": {
+          "residualRmsPawns": 3.221393757970969,
+          "outcomeMse": 0.34016391784924127,
+          "deltaFromGen32RmsPawns": 0.48934655073242306,
+          "crossEntropy": 0.5992196902655876,
+          "maxResidualPawns": 34.27102020594748
+        },
+        "step": 64,
+        "trainingNanos": 40038900
+      }
+    },
+    {
+      "source": "CP",
+      "architecture": "GEN32_CUBIC",
+      "rate": 0.0003,
+      "start": {
+        "train": {
+          "residualRmsPawns": 3.3625055640386483,
+          "outcomeMse": 0.27926733858667296,
+          "deltaFromGen32RmsPawns": 0.5052153060706003,
+          "crossEntropy": 0.5754486838046904,
+          "maxResidualPawns": 24.100021814727775
+        },
+        "heldout": {
+          "residualRmsPawns": 3.4021103585786614,
+          "outcomeMse": 0.3356311980421039,
+          "deltaFromGen32RmsPawns": 0.6046635324500562,
+          "crossEntropy": 0.6240157010840685,
+          "maxResidualPawns": 43.68048540145897
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 3.3626858972466107,
+          "outcomeMse": 0.2645148443401574,
+          "deltaFromGen32RmsPawns": 0.4990726834092378,
+          "crossEntropy": 0.5604822585041945,
+          "maxResidualPawns": 24.051575022846755
+        },
+        "heldout": {
+          "residualRmsPawns": 3.3993395399336515,
+          "outcomeMse": 0.3349451910380187,
+          "deltaFromGen32RmsPawns": 0.5976562823230114,
+          "crossEntropy": 0.6205777453974891,
+          "maxResidualPawns": 43.48453369583675
+        },
+        "step": 64,
+        "trainingNanos": 34741500
+      }
+    },
+    {
+      "source": "CP",
+      "architecture": "GEN32_CUBIC",
+      "rate": 0.001,
+      "start": {
+        "train": {
+          "residualRmsPawns": 3.3625055640386483,
+          "outcomeMse": 0.27926733858667296,
+          "deltaFromGen32RmsPawns": 0.5052153060706003,
+          "crossEntropy": 0.5754486838046904,
+          "maxResidualPawns": 24.100021814727775
+        },
+        "heldout": {
+          "residualRmsPawns": 3.4021103585786614,
+          "outcomeMse": 0.3356311980421039,
+          "deltaFromGen32RmsPawns": 0.6046635324500562,
+          "crossEntropy": 0.6240157010840685,
+          "maxResidualPawns": 43.68048540145897
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 3.365328482303467,
+          "outcomeMse": 0.24181764664542305,
+          "deltaFromGen32RmsPawns": 0.495770170072973,
+          "crossEntropy": 0.5410231349165509,
+          "maxResidualPawns": 24.023608360770723
+        },
+        "heldout": {
+          "residualRmsPawns": 3.3988157000940236,
+          "outcomeMse": 0.3337509761190152,
+          "deltaFromGen32RmsPawns": 0.5923364244444744,
+          "crossEntropy": 0.6167241725316883,
+          "maxResidualPawns": 43.30869443625184
+        },
+        "step": 64,
+        "trainingNanos": 36539000
+      }
+    },
+    {
+      "source": "CP",
+      "architecture": "GEN32_CUBIC",
+      "rate": 0.003,
+      "start": {
+        "train": {
+          "residualRmsPawns": 3.3625055640386483,
+          "outcomeMse": 0.27926733858667296,
+          "deltaFromGen32RmsPawns": 0.5052153060706003,
+          "crossEntropy": 0.5754486838046904,
+          "maxResidualPawns": 24.100021814727775
+        },
+        "heldout": {
+          "residualRmsPawns": 3.4021103585786614,
+          "outcomeMse": 0.3356311980421039,
+          "deltaFromGen32RmsPawns": 0.6046635324500562,
+          "crossEntropy": 0.6240157010840685,
+          "maxResidualPawns": 43.68048540145897
+        },
+        "step": 0,
+        "trainingNanos": 0
+      },
+      "end": {
+        "train": {
+          "residualRmsPawns": 3.3723545474545356,
+          "outcomeMse": 0.21001777237005678,
+          "deltaFromGen32RmsPawns": 0.525577042864228,
+          "crossEntropy": 0.5177421863948929,
+          "maxResidualPawns": 24.1389968909139
+        },
+        "heldout": {
+          "residualRmsPawns": 3.4147183469938343,
+          "outcomeMse": 0.3334668438715012,
+          "deltaFromGen32RmsPawns": 0.6301245692271494,
+          "crossEntropy": 0.6221537286542028,
+          "maxResidualPawns": 44.22589997332796
+        },
+        "step": 64,
+        "trainingNanos": 35112600
+      }
+    }
+  ],
+  "limits": "Tiny reused subsets,18 independently loaded64-step arms; no competitive checkpoints saved. Lower rate is a continuation hypothesis, not an established optimum."
+}

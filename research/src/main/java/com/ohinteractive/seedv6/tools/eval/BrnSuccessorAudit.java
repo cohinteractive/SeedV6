@@ -124,12 +124,12 @@ public final class BrnSuccessorAudit {
             return outcome.lastCompletedResult();
         }
     }
-    private static List<Integer> scores(SearchEvaluation evaluation, List<long[]> boards) {
+    static List<Integer> scores(SearchEvaluation evaluation, List<long[]> boards) {
         var state = evaluation.newState(2); var result = new ArrayList<Integer>();
         for (var board : boards) { state.initialize(board, 0); result.add(state.evaluate(board, 0)); }
         return result;
     }
-    private static List<long[]> boards() {
+    static List<long[]> boards() {
         var result = new ArrayList<long[]>(); var random = new SplittableRandom(2026102002L);
         var game = new HeadlessGame(Board.startingPosition(), 256);
         while (result.size() < 24) {

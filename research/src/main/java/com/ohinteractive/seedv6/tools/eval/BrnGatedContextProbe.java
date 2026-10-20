@@ -81,7 +81,7 @@ public final class BrnGatedContextProbe {
                 "inputs",inputs,"meanFitPositions",2048,"meanGates",mean,"gateDistribution",distribution,"evaluation",results));
         System.out.println("Completed constant learned-mean gate control: "+output);
     }
-    private static double[] gates(BrnNextModel model,long[] board) {
+    static double[] gates(BrnNextModel model,long[] board) {
         int side=Board.player((int)board[4]),head=GATED_PAIRS.head();double[] g=new double[4];
         for(int square=0;square<64;square++) {
             int code=Board.getSquare(board[0],board[1],board[2],board[3],square^(side*56));

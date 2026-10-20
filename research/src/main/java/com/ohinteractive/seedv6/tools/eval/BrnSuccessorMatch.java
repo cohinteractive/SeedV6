@@ -21,7 +21,13 @@ import java.util.*;
 /** Single-worker paired diagnostic with immutable per-game receipts and explicit equal search. */
 public final class BrnSuccessorMatch {
     record Model(String name, String root, String checkpoint, String networkSha256, Double residualGain,
-                 boolean gatedCache, boolean cubicCache, Double blendCandidateWeight) {}
+                 boolean gatedCache, boolean cubicCache, Double blendCandidateWeight,
+                 Double correctionScale, String correctionAblation, double[] constantGates) {
+        Model {
+            if(constantGates!=null&&!"constant-gates".equals(correctionAblation))
+                throw new IllegalArgumentException("Explicit constant-gates ablation required");
+        }
+    }
     record Plan(String id, List<Model> models, int pairs, long seed, long nodes, long moveMillis,
                 int maximumPlies, int batchGames, int batchSeconds, List<List<String>> openingMoves, boolean legalFallback) {
         Plan {
@@ -51,6 +57,13 @@ public final class BrnSuccessorMatch {
             var snapshot = CheckpointStore.readSnapshot(Path.of(spec.root()), spec.checkpoint());
             if (!snapshot.manifest().networkSha256().equals(spec.networkSha256())) throw new IllegalStateException("Model hash changed");
             NetworkModel model=snapshot.model();
+            if(spec.correctionScale()!=null||spec.correctionAblation()!=null) {
+                if(spec.residualGain()!=null||spec.blendCandidateWeight()!=null)
+                    throw new IllegalArgumentException("Separate correction controls from W1 gain/blending");
+                if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("Residual model required");
+                model=new NetworkModel.BrnNext(BrnSuccessorVariants.correction(n.model(),
+                        spec.correctionScale()==null?1:spec.correctionScale(),spec.correctionAblation(),spec.constantGates()));
+            }
             if(spec.residualGain()!=null) {
                 if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("Gain override requires W1");
                 model=new NetworkModel.BrnNext(BrnSuccessorVariants.gain(n.model(),spec.residualGain()));
@@ -77,6 +90,11 @@ public final class BrnSuccessorMatch {
             if(model instanceof NetworkModel.BrnNext n && n.model().architecture().frozenBase()) {
                 modelBinding.put("nativeResidualCache",true);
                 modelBinding.put("frozenBaseSha256",com.ohinteractive.seedv6.core.brnnext.BrnNextBase.SHA256);
+            }
+            if(spec.correctionScale()!=null||spec.correctionAblation()!=null) {
+                modelBinding.put("correctionScale",spec.correctionScale()==null?1:spec.correctionScale());
+                modelBinding.put("correctionAblation",spec.correctionAblation());
+                modelBinding.put("constantGates",spec.constantGates());
             }
             if(spec.blendCandidateWeight()!=null) {
                 modelBinding.put("blendCandidateWeight",spec.blendCandidateWeight());
