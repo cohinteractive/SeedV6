@@ -569,3 +569,25 @@ Adam continuation, inherited ledgers, actual incremental/session behaviour and
 rejection/preservation cases are verified on tiny isolated fixtures. Owner-library
 creation remains deferred until the fixed clock studies are reconciled. The latest
 bounded pause occurred after59 longer-clock games, without interrupting a game.
+
+## Source/phase sensitivity question
+
+While fixed clock studies continue, inspect the already consumed second-half
+prediction rows for concentration of the shared calibration issue by source,
+material, target magnitude and side to move. Compare full and fixed half-change
+for all three W3 families against Gen32; retain invalid rows in original totals
+and report validity only as a separate sensitivity. No new fitting or game-based
+selection. `tools/analyze-brn-successor-strata.py` must recover the independently
+verified Java full-model means before interpreting its strata. This is descriptive
+mechanism diagnosis, not an independent sample or a change to a frozen match.
+
+The strata analysis recovered Java full-model CE means within1.5e-15. Both half
+residuals improve CE against Gen32 in all four material bands in both sources;
+the benefit is not confined to one phase. Mean full corrections are negative for
+both sides to move in all three families, so this pattern does not by itself
+indicate a colour-perspective defect. GATE/CUBIC correction correlations are.583
+(BT4)/.481(CP), versus.128..223 with continued BRE; cross-family data/history
+confounds prevent attributing this difference solely to architecture.
+`wave3-strata-sensitivity.json` preserves compact results and input/output hashes.
+No game or training protocol changes. This strengthens the case to distinguish
+prediction, calibration, maturity and search cost, not to declare chess superiority.

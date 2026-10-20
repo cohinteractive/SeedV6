@@ -1,0 +1,501 @@
+{
+  "id": "brn-wave3-strata-sensitivity-v1",
+  "localEvidence": "docs/research/brn-successor-cglhw/raw/wave3/strata-sensitivity-01.json",
+  "sha256": "baf8f33d3c75d0d8d6ed96809f59c7a08eaf935ffb7a585e4df0c8cb5d4f1e09",
+  "method": "Unchanged second half, rows1024..2047 of each previously consumed2048-position source; no fitting. Full-model means independently recover Java values.",
+  "sources": [
+    {
+      "source": "bt4",
+      "inputSha256": "34df4791169962e03234899586834231fc3688ab1590eb019401d5cfecde9e6c",
+      "maximumJavaMeanError": 1.4432899320127035e-15,
+      "correctionCorrelations": [
+        {
+          "a": "W3-RESGATE",
+          "b": "W3-RESCUBIC",
+          "pearson": 0.5831891931060192
+        },
+        {
+          "a": "W3-RESGATE",
+          "b": "W3-BRE-CONTROL",
+          "pearson": 0.2212266201059036
+        },
+        {
+          "a": "W3-RESCUBIC",
+          "b": "W3-BRE-CONTROL",
+          "pearson": 0.1500010959412666
+        }
+      ],
+      "metrics": [
+        {
+          "family": "W3-RESGATE",
+          "scale": 0.5,
+          "stratum": "all",
+          "count": 1024,
+          "crossEntropy": 0.6308731378268639,
+          "baselineCrossEntropy": 0.642954045745302,
+          "lossDelta": -0.012080907918438091,
+          "fractionLowerLoss": 0.638671875,
+          "meanRawChangePawns": -0.11120538190447296,
+          "rmsRawChangePawns": 0.22898377286177968
+        },
+        {
+          "family": "W3-RESGATE",
+          "scale": 0.5,
+          "stratum": "valid",
+          "count": 1024,
+          "crossEntropy": 0.6308731378268639,
+          "baselineCrossEntropy": 0.642954045745302,
+          "lossDelta": -0.012080907918438091,
+          "fractionLowerLoss": 0.638671875,
+          "meanRawChangePawns": -0.11120538190447296,
+          "rmsRawChangePawns": 0.22898377286177968
+        },
+        {
+          "family": "W3-RESGATE",
+          "scale": 0.5,
+          "stratum": "material60plus",
+          "count": 388,
+          "crossEntropy": 0.684678861764947,
+          "baselineCrossEntropy": 0.6923637205458375,
+          "lossDelta": -0.007684858780890618,
+          "fractionLowerLoss": 0.6365979381443299,
+          "meanRawChangePawns": -0.09379106616229917,
+          "rmsRawChangePawns": 0.17131111538376032
+        },
+        {
+          "family": "W3-RESCUBIC",
+          "scale": 0.5,
+          "stratum": "all",
+          "count": 1024,
+          "crossEntropy": 0.6323605652497505,
+          "baselineCrossEntropy": 0.642954045745302,
+          "lossDelta": -0.010593480495551484,
+          "fractionLowerLoss": 0.6142578125,
+          "meanRawChangePawns": -0.10438196179770619,
+          "rmsRawChangePawns": 0.2354322436457623
+        },
+        {
+          "family": "W3-RESCUBIC",
+          "scale": 0.5,
+          "stratum": "valid",
+          "count": 1024,
+          "crossEntropy": 0.6323605652497505,
+          "baselineCrossEntropy": 0.642954045745302,
+          "lossDelta": -0.010593480495551484,
+          "fractionLowerLoss": 0.6142578125,
+          "meanRawChangePawns": -0.10438196179770619,
+          "rmsRawChangePawns": 0.2354322436457623
+        },
+        {
+          "family": "W3-RESCUBIC",
+          "scale": 0.5,
+          "stratum": "material60plus",
+          "count": 388,
+          "crossEntropy": 0.6849932823980595,
+          "baselineCrossEntropy": 0.6923637205458375,
+          "lossDelta": -0.007370438147778099,
+          "fractionLowerLoss": 0.6365979381443299,
+          "meanRawChangePawns": -0.09461131927794877,
+          "rmsRawChangePawns": 0.19973965320853235
+        },
+        {
+          "family": "W3-BRE-CONTROL",
+          "scale": 0.5,
+          "stratum": "all",
+          "count": 1024,
+          "crossEntropy": 0.638565504958462,
+          "baselineCrossEntropy": 0.642954045745302,
+          "lossDelta": -0.00438854078683996,
+          "fractionLowerLoss": 0.5732421875,
+          "meanRawChangePawns": -0.09749720902767259,
+          "rmsRawChangePawns": 0.2093951798882657
+        },
+        {
+          "family": "W3-BRE-CONTROL",
+          "scale": 0.5,
+          "stratum": "valid",
+          "count": 1024,
+          "crossEntropy": 0.638565504958462,
+          "baselineCrossEntropy": 0.642954045745302,
+          "lossDelta": -0.00438854078683996,
+          "fractionLowerLoss": 0.5732421875,
+          "meanRawChangePawns": -0.09749720902767259,
+          "rmsRawChangePawns": 0.2093951798882657
+        },
+        {
+          "family": "W3-BRE-CONTROL",
+          "scale": 0.5,
+          "stratum": "material60plus",
+          "count": 388,
+          "crossEntropy": 0.6862489945110286,
+          "baselineCrossEntropy": 0.6923637205458375,
+          "lossDelta": -0.0061147260348088945,
+          "fractionLowerLoss": 0.6134020618556701,
+          "meanRawChangePawns": -0.12628101121092838,
+          "rmsRawChangePawns": 0.21489689860513597
+        },
+        {
+          "family": "W3-RESGATE",
+          "scale": 0.5,
+          "stratum": "material40_59",
+          "count": 167,
+          "crossEntropy": 0.6602559522603535,
+          "baselineCrossEntropy": 0.6732708249959555,
+          "lossDelta": -0.01301487273560193,
+          "fractionLowerLoss": 0.6287425149700598,
+          "meanRawChangePawns": -0.13722510316434702,
+          "rmsRawChangePawns": 0.2180127188636763
+        },
+        {
+          "family": "W3-RESCUBIC",
+          "scale": 0.5,
+          "stratum": "material40_59",
+          "count": 167,
+          "crossEntropy": 0.6721538027659401,
+          "baselineCrossEntropy": 0.6732708249959555,
+          "lossDelta": -0.0011170222300154254,
+          "fractionLowerLoss": 0.5748502994011976,
+          "meanRawChangePawns": -0.11828878660528708,
+          "rmsRawChangePawns": 0.264139198939015
+        },
+        {
+          "family": "W3-BRE-CONTROL",
+          "scale": 0.5,
+          "stratum": "material40_59",
+          "count": 167,
+          "crossEntropy": 0.6644917818449342,
+          "baselineCrossEntropy": 0.6732708249959555,
+          "lossDelta": -0.008779043151021251,
+          "fractionLowerLoss": 0.5209580838323353,
+          "meanRawChangePawns": -0.08113025366322668,
+          "rmsRawChangePawns": 0.20995895321920124
+        },
+        {
+          "family": "W3-RESGATE",
+          "scale": 0.5,
+          "stratum": "material17_39",
+          "count": 275,
+          "crossEntropy": 0.6381448243908279,
+          "baselineCrossEntropy": 0.6510122303860139,
+          "lossDelta": -0.012867405995186012,
+          "fractionLowerLoss": 0.610909090909091,
+          "meanRawChangePawns": -0.12618881776937782,
+          "rmsRawChangePawns": 0.2832164358755714
+        },
+        {
+          "family": "W3-RESCUBIC",
+          "scale": 0.5,
+          "stratum": "material17_39",
+          "count": 275,
+          "crossEntropy": 0.6353279568018868,
+          "baselineCrossEntropy": 0.6510122303860139,
+          "lossDelta": -0.015684273584127054,
+          "fractionLowerLoss": 0.5854545454545454,
+          "meanRawChangePawns": -0.10888980304686763,
+          "rmsRawChangePawns": 0.2678653797402171
+        },
+        {
+          "family": "W3-BRE-CONTROL",
+          "scale": 0.5,
+          "stratum": "material17_39",
+          "count": 275,
+          "crossEntropy": 0.6490327206297656,
+          "baselineCrossEntropy": 0.6510122303860139,
+          "lossDelta": -0.001979509756248329,
+          "fractionLowerLoss": 0.5418181818181819,
+          "meanRawChangePawns": -0.07120476148401697,
+          "rmsRawChangePawns": 0.2168317306291259
+        },
+        {
+          "family": "W3-RESGATE",
+          "scale": 0.5,
+          "stratum": "material00_16",
+          "count": 194,
+          "crossEntropy": 0.4876604331698583,
+          "baselineCrossEntropy": 0.5066145780460097,
+          "lossDelta": -0.01895414487615139,
+          "fractionLowerLoss": 0.6907216494845361,
+          "meanRawChangePawns": -0.10239618703187313,
+          "rmsRawChangePawns": 0.2518952317589753
+        },
+        {
+          "family": "W3-RESCUBIC",
+          "scale": 0.5,
+          "stratum": "material00_16",
+          "count": 194,
+          "crossEntropy": 0.4886337735199308,
+          "baselineCrossEntropy": 0.5066145780460097,
+          "lossDelta": -0.01798080452607887,
+          "fractionLowerLoss": 0.6443298969072165,
+          "meanRawChangePawns": -0.10556192680430654,
+          "rmsRawChangePawns": 0.22585153713999614
+        },
+        {
+          "family": "W3-BRE-CONTROL",
+          "scale": 0.5,
+          "stratum": "material00_16",
+          "count": 194,
+          "crossEntropy": 0.506042997246889,
+          "baselineCrossEntropy": 0.5066145780460097,
+          "lossDelta": -0.0005715807991207687,
+          "fractionLowerLoss": 0.5824742268041238,
+          "meanRawChangePawns": -0.09128890682800517,
+          "rmsRawChangePawns": 0.1856908217417397
+        }
+      ]
+    },
+    {
+      "source": "cp",
+      "inputSha256": "f0d09ab8506366ab6709b76ce37111d567859248d2fe3dc38982a040aafbb800",
+      "maximumJavaMeanError": 4.440892098500626e-16,
+      "correctionCorrelations": [
+        {
+          "a": "W3-RESGATE",
+          "b": "W3-RESCUBIC",
+          "pearson": 0.48080937139335017
+        },
+        {
+          "a": "W3-RESGATE",
+          "b": "W3-BRE-CONTROL",
+          "pearson": 0.2232833057488296
+        },
+        {
+          "a": "W3-RESCUBIC",
+          "b": "W3-BRE-CONTROL",
+          "pearson": 0.12788573757628946
+        }
+      ],
+      "metrics": [
+        {
+          "family": "W3-RESGATE",
+          "scale": 0.5,
+          "stratum": "all",
+          "count": 1024,
+          "crossEntropy": 0.5917205668777793,
+          "baselineCrossEntropy": 0.598240239935532,
+          "lossDelta": -0.006519673057752674,
+          "fractionLowerLoss": 0.5693359375,
+          "meanRawChangePawns": -0.07430083571969501,
+          "rmsRawChangePawns": 0.24985677176813642
+        },
+        {
+          "family": "W3-RESGATE",
+          "scale": 0.5,
+          "stratum": "valid",
+          "count": 1015,
+          "crossEntropy": 0.5910583851797543,
+          "baselineCrossEntropy": 0.5978427380776782,
+          "lossDelta": -0.006784352897923988,
+          "fractionLowerLoss": 0.5684729064039409,
+          "meanRawChangePawns": -0.07587182281087673,
+          "rmsRawChangePawns": 0.24765106642986884
+        },
+        {
+          "family": "W3-RESGATE",
+          "scale": 0.5,
+          "stratum": "material40_59",
+          "count": 203,
+          "crossEntropy": 0.6398068755738742,
+          "baselineCrossEntropy": 0.6549810050639978,
+          "lossDelta": -0.015174129490123719,
+          "fractionLowerLoss": 0.5911330049261084,
+          "meanRawChangePawns": -0.09040752375415295,
+          "rmsRawChangePawns": 0.26601437991123805
+        },
+        {
+          "family": "W3-RESCUBIC",
+          "scale": 0.5,
+          "stratum": "all",
+          "count": 1024,
+          "crossEntropy": 0.5910566513164643,
+          "baselineCrossEntropy": 0.598240239935532,
+          "lossDelta": -0.007183588619067691,
+          "fractionLowerLoss": 0.5849609375,
+          "meanRawChangePawns": -0.0667412358437655,
+          "rmsRawChangePawns": 0.30233176650297583
+        },
+        {
+          "family": "W3-RESCUBIC",
+          "scale": 0.5,
+          "stratum": "valid",
+          "count": 1015,
+          "crossEntropy": 0.5906746093036013,
+          "baselineCrossEntropy": 0.5978427380776782,
+          "lossDelta": -0.007168128774076931,
+          "fractionLowerLoss": 0.587192118226601,
+          "meanRawChangePawns": -0.07275204585047347,
+          "rmsRawChangePawns": 0.2400445349931365
+        },
+        {
+          "family": "W3-RESCUBIC",
+          "scale": 0.5,
+          "stratum": "material40_59",
+          "count": 203,
+          "crossEntropy": 0.6499398139688299,
+          "baselineCrossEntropy": 0.6549810050639978,
+          "lossDelta": -0.0050411910951678966,
+          "fractionLowerLoss": 0.5714285714285714,
+          "meanRawChangePawns": -0.06722561108782964,
+          "rmsRawChangePawns": 0.4827599362406228
+        },
+        {
+          "family": "W3-BRE-CONTROL",
+          "scale": 0.5,
+          "stratum": "all",
+          "count": 1024,
+          "crossEntropy": 0.5982266830202055,
+          "baselineCrossEntropy": 0.598240239935532,
+          "lossDelta": -1.3556915326446938e-05,
+          "fractionLowerLoss": 0.49609375,
+          "meanRawChangePawns": -0.11042463933863045,
+          "rmsRawChangePawns": 0.2295736414380683
+        },
+        {
+          "family": "W3-BRE-CONTROL",
+          "scale": 0.5,
+          "stratum": "valid",
+          "count": 1015,
+          "crossEntropy": 0.5977306042491288,
+          "baselineCrossEntropy": 0.5978427380776782,
+          "lossDelta": -0.00011213382854936945,
+          "fractionLowerLoss": 0.49556650246305417,
+          "meanRawChangePawns": -0.11025989928202455,
+          "rmsRawChangePawns": 0.22940247452303714
+        },
+        {
+          "family": "W3-BRE-CONTROL",
+          "scale": 0.5,
+          "stratum": "material40_59",
+          "count": 203,
+          "crossEntropy": 0.6489522826601175,
+          "baselineCrossEntropy": 0.6549810050639978,
+          "lossDelta": -0.006028722403880374,
+          "fractionLowerLoss": 0.458128078817734,
+          "meanRawChangePawns": -0.1250420711869459,
+          "rmsRawChangePawns": 0.2487954536159861
+        },
+        {
+          "family": "W3-RESGATE",
+          "scale": 0.5,
+          "stratum": "material17_39",
+          "count": 215,
+          "crossEntropy": 0.49066093155168317,
+          "baselineCrossEntropy": 0.49429396950435095,
+          "lossDelta": -0.003633037952667805,
+          "fractionLowerLoss": 0.5488372093023256,
+          "meanRawChangePawns": -0.05837120293387868,
+          "rmsRawChangePawns": 0.3239416590086586
+        },
+        {
+          "family": "W3-RESCUBIC",
+          "scale": 0.5,
+          "stratum": "material17_39",
+          "count": 215,
+          "crossEntropy": 0.48310680731876654,
+          "baselineCrossEntropy": 0.49429396950435095,
+          "lossDelta": -0.0111871621855844,
+          "fractionLowerLoss": 0.5488372093023256,
+          "meanRawChangePawns": -0.07643156013579469,
+          "rmsRawChangePawns": 0.25931083724454634
+        },
+        {
+          "family": "W3-BRE-CONTROL",
+          "scale": 0.5,
+          "stratum": "material17_39",
+          "count": 215,
+          "crossEntropy": 0.5053014441622197,
+          "baselineCrossEntropy": 0.49429396950435095,
+          "lossDelta": 0.01100747465786866,
+          "fractionLowerLoss": 0.48372093023255813,
+          "meanRawChangePawns": -0.09949189418178828,
+          "rmsRawChangePawns": 0.2354389311314996
+        },
+        {
+          "family": "W3-RESGATE",
+          "scale": 0.5,
+          "stratum": "material60plus",
+          "count": 457,
+          "crossEntropy": 0.6594939806463301,
+          "baselineCrossEntropy": 0.6640819235055931,
+          "lossDelta": -0.0045879428592630256,
+          "fractionLowerLoss": 0.5645514223194749,
+          "meanRawChangePawns": -0.08139947325023567,
+          "rmsRawChangePawns": 0.1841143327537776
+        },
+        {
+          "family": "W3-RESCUBIC",
+          "scale": 0.5,
+          "stratum": "material60plus",
+          "count": 457,
+          "crossEntropy": 0.6561775414493265,
+          "baselineCrossEntropy": 0.6640819235055931,
+          "lossDelta": -0.007904382056266666,
+          "fractionLowerLoss": 0.5864332603938731,
+          "meanRawChangePawns": -0.05610288834533542,
+          "rmsRawChangePawns": 0.22773713261973355
+        },
+        {
+          "family": "W3-BRE-CONTROL",
+          "scale": 0.5,
+          "stratum": "material60plus",
+          "count": 457,
+          "crossEntropy": 0.661640647585866,
+          "baselineCrossEntropy": 0.6640819235055931,
+          "lossDelta": -0.002441275919727053,
+          "fractionLowerLoss": 0.5142231947483589,
+          "meanRawChangePawns": -0.10590447232021631,
+          "rmsRawChangePawns": 0.22162587841530904
+        },
+        {
+          "family": "W3-RESGATE",
+          "scale": 0.5,
+          "stratum": "material00_16",
+          "count": 149,
+          "crossEntropy": 0.46416251880781767,
+          "baselineCrossEntropy": 0.46898133678189047,
+          "lossDelta": -0.004818817974072768,
+          "fractionLowerLoss": 0.5838926174496645,
+          "meanRawChangePawns": -0.05357020502505389,
+          "rmsRawChangePawns": 0.27791805649920687
+        },
+        {
+          "family": "W3-RESCUBIC",
+          "scale": 0.5,
+          "stratum": "material00_16",
+          "count": 149,
+          "crossEntropy": 0.4668666355470467,
+          "baselineCrossEntropy": 0.46898133678189047,
+          "lossDelta": -0.0021147012348437543,
+          "fractionLowerLoss": 0.6510067114093959,
+          "meanRawChangePawns": -0.08472765805484768,
+          "rmsRawChangePawns": 0.23356887453143713
+        },
+        {
+          "family": "W3-BRE-CONTROL",
+          "scale": 0.5,
+          "stratum": "material00_16",
+          "count": 149,
+          "crossEntropy": 0.4687061985977759,
+          "baselineCrossEntropy": 0.46898133678189047,
+          "lossDelta": -0.00027513818411452817,
+          "fractionLowerLoss": 0.5100671140939598,
+          "meanRawChangePawns": -0.12014892035157201,
+          "rmsRawChangePawns": 0.21734689142964148
+        }
+      ]
+    }
+  ],
+  "interpretation": [
+    "Both half residuals improve CE over Gen32 in all four material bands in both sources; no single material band accounts for the aggregate benefit.",
+    "Mean unscaled corrections are negative for both sides to move in all three families. This does not diagnose a colour-perspective error.",
+    "Residual corrections correlate more with one another than with the continued BRE change; unequal cross-family data and optimizer histories confound architectural attribution.",
+    "Prediction advantages remain development diagnostics and have not established expressive playing-strength separation."
+  ],
+  "limitations": [
+    "Previously consumed development predictions; descriptive post-hoc mechanism diagnosis only.",
+    "All original evaluation rows retained. Validity is a separate sensitivity stratum.",
+    "No training, calibration fitting, candidate selection or independent playing-strength evidence.",
+    "Source game identities unavailable; positions and strata are not assumed independent.",
+    "Half-change interpolates recorded raw predictions; compiled BRE float folding may differ slightly."
+  ]
+}
