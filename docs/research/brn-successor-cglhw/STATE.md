@@ -255,3 +255,21 @@ selected full-clock and BRE full/half controls. Use the original frozen averagin
 runtime for those plans, never the hybrid runtime. Then choose a bounded hybrid
 comparison that retains both additive controls and an expressive-value ablation.
 No new human action or training gate is yet required.
+
+A further32-game equal-node depth sensitivity check is prospectively admitted in
+wave4-depth-admission.json: unchanged GATE001/CUBIC001 half means versus BRE001
+half at131072 nodes, on the same eight development pairs. The earlier32768-node
+versus100ms contrast also changes absolute search depth; do not attribute its
+score gap solely to speed. Keep the original averaging runtime. This follows the
+clock/calibration controls and precedes any new substantial training direction.
+A research-only generator for hybrid unary/constant-gate/quadratic ablations is
+being prepared; its gate means use only first1024/source without labels. It is
+not compiled/verified yet and admits no strength games. Complete at a match batch
+boundary, preserving frozen runtimes and the one-active-workload restriction.
+
+Hybrid provenance caveat: combining a continued base and a separately trained
+correction uses two post-reference training streams, unlike one BRE endpoint.
+Data overlap/diversity and aggregate training cost remain confounds. Do not call a
+hybrid victory a controlled architectural gain without the expressive ablation
+and appropriate training control; matched further GUI training may be justified
+if the prepared hybrid tests show value. No such human gate is admitted yet.

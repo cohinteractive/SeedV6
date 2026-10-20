@@ -534,3 +534,26 @@ was introduced. All smoke receipts, including the failed setup, are excluded fro
 strength statistics. This is readiness for development games, not strength or GUI
 adoption. A new strength admission must remain distinct from the unchanged
 build51 clocks and BRE calibration protocols still being completed.
+
+
+The large node/time gap has a second confound:100ms searches do more absolute work
+than32768 nodes. A fixed32-game sensitivity test now compares the same low-rate
+GATE/CUBIC half means against the same BRE001 half control at131072 nodes, with
+unchanged common search and the original eight pairs. It follows the existing
+clock/calibration screens. This can distinguish a retained deeper equal-node
+advantage from deterioration with search depth; it cannot identify the exact
+search mechanism or establish confirmation. See wave4-depth-admission.json.
+The per-launch240-second, one-worker resource envelope is unchanged.
+
+
+Hybrid interpretation must also account for training history. A continued BRE base
+plus a separately trained correction combines two post-reference optimization
+streams, while a single BRE endpoint represents one. Each component's full ancestry
+remains bound; their examples are not proven disjoint, and the BRE versus residual
+data partitions differ. Existing additive-only mean mixtures provide a useful
+control but do not fully match this cross-family data diversity. Any hybrid gain
+would therefore be practical evidence for the composed function, not a clean causal
+estimate of architecture alone. Conditional-gate/cubic-term ablations and total
+training cost are necessary; a matched further-training BRE control may be needed
+before an architectural success claim. No extra training is inferred or requested
+at this stage. Investigate the prepared compositions first.

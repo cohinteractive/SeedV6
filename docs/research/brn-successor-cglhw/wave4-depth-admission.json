@@ -1,0 +1,14 @@
+{
+  "id": "wave4-depth-admission-v1",
+  "createdUtc": "2026-10-20T23:23:08.287829+00:00",
+  "plan": "wave4-depth-node-plan.json",
+  "planSha256": "347df7852f7e22813dc7c6cdc092678a9db2e25f7260b783ae7d6813c4b75671",
+  "runtime": "wave4-average-runtime.json",
+  "games": 32,
+  "question": "Do the low-rate residual equal-node advantages persist at a deeper common node budget? The32768-node and100ms conditions differ in absolute search work as well as relative throughput, so their score gap cannot be attributed solely to inference cost.",
+  "selection": "GATE001 and CUBIC001 means at half correction against the identical BRE001 half endpoint, exactly the earlier eight pairs. Fixed131072nodes/move; no changed model, calibration, policy, source or time match.",
+  "expectedEvidence": "Persistence supports useful residual quality at a more relevant depth with speed still a practical cost. Deterioration at equal nodes indicates depth/search interaction or unstable small-screen rankings; it does not by itself identify a pruning or evaluation defect.",
+  "resource": "One concurrent game, one worker/engine, no ponder,64MiB TT,768MiB heap,ActiveProcessorCount1,BelowNormal,12games/240seconds per launch;2-second per-move safety limit unchanged. Longer elapsed experiment, no increased parallel CPU or memory.",
+  "sequence": "After admitted clocks and BRE full/half calibration; before choosing a new substantial training direction. Complete fixed32 games or investigate genuine failures, no favourable-result stopping.",
+  "limitations": "Reused selected development openings, small sample, repeated testing. This is a depth sensitivity diagnostic, not independent strength confirmation; it does not equate equal-node and practical equal-time strength."
+}
