@@ -173,9 +173,10 @@ workstream outcome remain distinct; owner acceptance/success are not established
 
 
 
-Continuation fixture verification is complete; source-state/cursor preservation,
-nonzero bootstrap authentication and the actual GUI session path pass. No real W4
-lineages exist yet. The owned admission sentinel was used to stop after59/192
-longer-clock games (no game interrupted); remove only that sentinel after this
-coherent preparation commit, then resume original longer-clock and both separately
-frozen delta-clock protocols with unique resume05 log prefixes. No other heavy jobs.
+Continuation preparation is committed at31b6d49/build50, with13 passing tests and
+successful application runtime assembly. No real W4 lineages exist yet. The owned
+pause sentinel has been removed and resume05 batches are running serially from
+59/192 longer-clock games, followed by64 GATE-delta and64 CUBIC-delta games.
+Check actual counts/processes before any new invocation. No other heavy jobs;
+no owner training is queued. Finish and independently replay these fixed studies
+before choosing confirmation, more diagnosis or the prepared human continuation.
