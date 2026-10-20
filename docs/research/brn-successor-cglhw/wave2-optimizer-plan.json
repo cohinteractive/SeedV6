@@ -1,0 +1,11 @@
+{
+  "id": "brn-successor-wave2-optimizer-smoke-v1",
+  "question": "Do nominal learning rates produce comparable early functional learning in Pair2 and W1, and is there an obvious failure to learn under either data source?",
+  "sources": [
+    "raw/wave2/data-01/bt4-fresh-positions.jsonl",
+    "raw/wave2/data-01/lichess-sealed-positions.jsonl"
+  ],
+  "design": "Fresh initializers, seed71; Pair2/GATE/CUBIC/POOL at Adam rates.003/.01. First1024 positions train, last1024 diagnostic holdout; identical seeded shuffle within each of8 epochs, batch128,64 updates per arm. Record steps0/1/4/16/64, raw cross entropy, held-out outcome MSE, residual RMS and functional movement, plus training-only elapsed time. This is bounded optimizer smoke, not competitive training or optimization selection.",
+  "exposure": "16 arms total,8192 visits/arm,131072 visits overall; no saved networks, user-store writes, generations, or further tuning repetitions. One process, one CPU,768MiB heap, BelowNormal, hard300-second wall deadline checked at every batch.",
+  "interpretation": "Both sources are previously inspected development evidence. Within-arm train/holdout records differ, but correlated layouts/game overlap are not ruled out. Early loss or rate response does not establish eventual optimization quality, architectural inferiority or chess strength. Pair2 uses sparse touched-state Adam; W1 uses dense Adam, so equal nominal rate is not equal functional step."
+}

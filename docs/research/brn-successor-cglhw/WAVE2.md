@@ -293,6 +293,27 @@ mistook an unavailable process ExitCode for failure after the first successful v
 game; the game was preserved and resumed normally. These were harness/preflight
 issues, not model-training failures.
 
+### Calibration study results
+
+All128 fixed games completed; `raw/wave2/calibration-analysis-01.json` independently
+replayed16,109 moves and verified all terminations. No failed/capped pairs or fallbacks.
+
+| Candidate | W/D/L | Score | Descriptive paired normal95% interval |
+| --- | --- | ---: | --- |
+| GATE cache, gain.25 | 11/8/13 | 46.875% | 34.32-59.43% |
+| GATE cache, gain.5 | 12/3/17 | 42.1875% | 27.54-56.83% |
+| GATE cache, gain1 | 6/3/23 | 23.4375% | 12.06-34.81% |
+| CUBIC full, gain.5 | 12/7/13 | 48.4375% | 32.64-64.23% |
+
+No improvement established. Full GATE gain strongly regressed here despite better
+sample prediction at full gain; score calibration for external-label prediction is
+not search calibration. Quarter gain remains the conservative GATE setting for
+further diagnosis, not a proven optimum. CUBIC half gain is inconclusive. Comparisons
+with the earlier64-game full-recompute arms involve different sample sizes and
+host timing; do not attribute point-estimate changes entirely to cache speed.
+These are reused development openings and unadjusted descriptive intervals.
+No independent confirmation has been attempted or earned by these results.
+
 ### Conditional contribution versus average mixture
 
 `wave2-gate-context-plan.json` / `raw/wave2/gate-context-01.json` fit only an
@@ -348,6 +369,67 @@ warning as a native-command error despite Gradle success. Probe completed normal
 This qualifying opt-in core capability advances application build43 to44 when
 committed. No GUI default activation, model mutation, push or deployment.
 
+### Bounded optimization diagnostic and matched endpoint rematch
+
+`wave2-optimizer-plan.json` / `raw/wave2/optimizer-smoke-01.json` completed16
+fresh-initializer arms in a single bounded process: four architectures, two rates,
+two sources;1,024 training positions plus1,024 held-out diagnostic positions/source,
+8 epochs, batch128,64 updates/arm. Total131,072 sample visits; no models saved or
+user-store writes. This is early optimizer diagnosis, not substantive competitive
+training. The previously inspected CP sealed sample remains development-consumed.
+
+| Source | Architecture | First-step held-out residual RMS, rate.003/.01 | Step64 held-out CE, rate.003/.01 |
+| --- | --- | ---: | ---: |
+| BT4 | PAIR2 | 0.08439 / 0.28130 | 0.887067 / 0.883220 |
+| BT4 | GATED_PAIRS | 0.04335 / 0.14451 | 0.887756 / 0.892699 |
+| BT4 | CUBIC | 0.00810 / 0.02701 | 0.891053 / 0.910220 |
+| BT4 | POOLED | 0.01147 / 0.03822 | 0.890252 / 0.926807 |
+| CP | PAIR2 | 0.09407 / 0.31357 | 1.644227 / 1.607441 |
+| CP | GATED_PAIRS | 0.03870 / 0.12901 | 1.682374 / 1.634269 |
+| CP | CUBIC | 0.00543 / 0.01810 | 1.685807 / 1.653933 |
+| CP | POOLED | 0.00840 / 0.02800 | 1.674990 / 1.731941 |
+
+Initial held-out CE was.895292 BT4 and1.760498 CP, identical material predictions.
+BRE's initial functional step is about2x GATE and10x CUBIC on BT4 at equal rate;
+the historical.01 versus.003 difference compounds this. Higher W1 rate improves
+training fit, but improves held-out CE inconsistently. On BT4, CUBIC/POOL at.01
+worsen held-out CE relative to initialization after64 steps, despite better training
+fit. No architecture fails to update or learn the small training set. This does not
+identify an eventual optimal rate or justify rejecting the architecture. Small,
+correlated samples and early optimization limit inference.
+
+Source inspection confirms another material difference: Pair2 uses sparse Adam
+updates only for touched table entries; W1 uses dense Adam. Both use the same
+beta/epsilon and global bias-correction step, but equal nominal settings do not
+make equal optimization. Zero W1 output heads intentionally give zero embedding
+gradients on the first step, while direct table/unary/head gradients are active.
+Existing finite-difference tests and actual checkpoint/runtime parity passed;
+there is no verified gradient bug to repair.
+
+The initial bootstrap already identified that W1 is not a strict expressive
+superset of BRE. Source now confirms BRE's327 geometric templates with absolute
+location tables, two perspective roles and shared8-shape terms, while GATE uses
+four shared adjacent-pair shapes plus unary/global gates. Extra nonlinear capability
+comes with lost absolute pair detail; compactness and expressive order must not
+be conflated with dominance. CUBIC's rank16 representation similarly trades capacity
+for compactness. A baseline-preserving residual hybrid is therefore a credible
+later hypothesis if calibration and controlled existing-model comparisons fail.
+
+Prepared `wave2-fromscratch-node-plan.json` and `wave2-fromscratch-clock-plan.json`:
+32 games each under common Policy4, comparing preserved GATE and BRE round8 from
+campaign20261020-183014-25dadd0a. Both received8,388,608 identical BT4 positions,
+67,108,864 visits,524,288 steps, rate.01, batch128,8 epochs and seed71.
+The campaign's paused round9 remains untouched. Equal32768-node and50ms/move
+comparisons separate evaluator signal from practical cost. They use16 reused
+development openings, fixed endpoints and explicit original checkpoint hashes.
+These tests concern the user's fresh-model comparison; frozen Gen32 remains the
+success target, and no success claim follows from beating this younger BRE.
+The actual round8 GATE cache oracle passed before games:6,333 positions, zero
+integer differences, maximum raw error4.27e-14,48 identical paired searches.
+Evidence: `raw/wave2/fromscratch-cache-01.json`. Both fixed rematch samples are
+now executing sequentially from the frozen calibration-runtime. Preserve all
+outcomes; no outcome-based early stop or replacement games.
+
 ## Implementation and validation record
 
 Initial research-only runners: `BrnSuccessorAudit`, `BrnSuccessorMatch`,
@@ -359,7 +441,8 @@ Build uses Java21, offline Gradle with one worker and the existing migration cac
 `BrnNextMathTest`, `BrnNextPartitionTest`, `BrnNextRuntimeTest` pass, including
 independent forward/finite-difference gradient checks, tiny fit, exact continuation,
 codec corruption rejection, colour symmetry and search runtime checks.
-Only the existing512-update/three-position test is training performed by Codex.
+Training performed by Codex is limited to the existing512-update/three-position
+test and the explicitly bounded64-update optimizer diagnostic above.
 No substantial training or full-suite claim. No browser/GUI verification has yet
 been needed for these headless research-only changes.
 

@@ -84,22 +84,33 @@ actual Gen200 oracle/search probes (`wave2-gate-cache-plan.json`,
 identical48 paired searches, approximately1.30x search speedup. Ordinary loading
 still uses full recomputation. The completed original clock screen used `raw/wave2/clock-runtime/lib/*`, not rebuilt research distribution jars.
 The qualifying cache implementation advances build42→43 in its own commit.
-Active: `wave2-calibration-plan.json`,128 exploratory games across cached
+Completed: `wave2-calibration-plan.json`,128 exploratory games across cached
 GATE gains.25/.5/1 and CUBIC.5, reusing16 development openings. Three gain-scaling
 tests and a four-JVM resume smoke pass; original models remain untouched.
-Resume `raw/wave2/calibration-screen` exclusively with the frozen
+Preserve completed `raw/wave2/calibration-screen` and its frozen
 `raw/wave2/calibration-runtime/lib/*`. Each invocation plays at most12 games or
 240 seconds (finishing its current game). Stop/investigate any runtime failure.
-No success claim from either development screen.
+Independent replay verified16,109 moves, no failures/caps/fallbacks. Scores:
+GATE-cache gains.25/.5/1:46.875%/42.1875%/23.4375%; CUBIC.5:48.4375%.
+No success claim from either development screen; full GATE gain regresses.
 
 CUBIC cache is also implemented as opt-in research and verified:9,000 random
 transitions,6,333 actual Gen200 positions with zero integer differences,48 paired
 searches equal; measured search speedup1.078x and7,242 primitive bytes/worker.
 See `wave2-cubic-cache-plan.json` and `raw/wave2/cubic-cache-01.json`. Its coherent
 core commit advances build43 to44; frozen calibration-runtime remains unchanged.
-Hypothesis frontier: complete the fixed calibration study; compare cached CUBIC
+Hypothesis frontier: calibration is complete; compare cached CUBIC
 under time only if the results justify it. Diagnose effective optimization with
-bounded from-scratch smoke learning and/or existing frozen Arena endpoints. Separate
+bounded from-scratch smoke learning and existing frozen Arena endpoints.
+The optimizer smoke is complete:16 arms,64 updates each, no saved models; nominal
+rates produce very different functional steps and higher W1 rates do not reliably
+improve held-out loss. See `wave2-optimizer-plan.json`. Prepared next are the
+node/clock from-scratch plans against matched .01/.01 BT4 round8 endpoints.
+The round8 cache oracle passed (6,333 positions,zero integer differences,48 paired
+searches identical). Rematches are ACTIVE in `raw/wave2/fromscratch-node` and
+`raw/wave2/fromscratch-clock`, sequential bounded batches from calibration-runtime.
+Each fixed study requires32 games. Inspect active JVMs before resuming; independently
+replay completed samples afterward. No user campaign is resumed. Separate
 GATE's learned mean mixture from conditional variation before claiming practical
 value: `raw/wave2/gate-context-01.json` now shows noncollapsed gates and improved
 raw-function CE/MSE versus a fitted constant mean; quarter-gain CE instead favours

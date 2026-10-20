@@ -17,15 +17,15 @@ import java.util.*;
 public final class BrnGatedCacheProbe {
     private static volatile long sink;
     public static void main(String[] args) throws Exception {
-        if(args.length<4||args.length>5)throw new IllegalArgumentException("MODEL_PLAN NODE_RECEIPTS CORPUS_JSONL NEW_OUTPUT [W1-GATE|W1-CUBIC]");
+        if(args.length<4||args.length>5)throw new IllegalArgumentException("MODEL_PLAN NODE_RECEIPTS CORPUS_JSONL NEW_OUTPUT [MODEL_NAME]");
         String candidate=args.length==5?args[4]:"W1-GATE";
-        if(!Set.of("W1-GATE","W1-CUBIC").contains(candidate))throw new IllegalArgumentException("Unsupported cache");
-        boolean cubic=candidate.equals("W1-CUBIC");
         Path output=Path.of(args[3]);if(Files.exists(output))throw new IllegalArgumentException("Preserve prior evidence");
         var plan=DataFiles.read(Path.of(args[0]),BrnSuccessorAudit.Plan.class);
         var spec=plan.models().stream().filter(m->m.name().equals(candidate)).findFirst().orElseThrow();
         var snapshot=CheckpointStore.readSnapshot(Path.of(spec.root()),spec.checkpoint());
         var model=((NetworkModel.BrnNext)snapshot.model()).model();
+        boolean cubic=model.architecture()==BrnNextArchitecture.CUBIC;
+        if(!cubic&&model.architecture()!=BrnNextArchitecture.GATED_PAIRS)throw new IllegalArgumentException("Unsupported cache");
         var full=SearchEvaluation.brnNext(model);
         var cached=cubic?SearchEvaluation.brnCubicIncrementalResearch(model):SearchEvaluation.brnGatedIncrementalResearch(model);
         var base=plan.models().getFirst();
@@ -50,6 +50,7 @@ public final class BrnGatedCacheProbe {
         }
         var result=new LinkedHashMap<String,Object>();
         result.put("plan","brn-successor-wave2-"+(cubic?"cubic":"gate")+"-cache-v1");result.put("manifest",snapshot.manifest());
+        result.put("modelPlanHash",DataFiles.hash(Files.readString(Path.of(args[0]))));result.put("candidateName",candidate);
         result.put("inputs",inputs);result.put("positions",boards.size());result.put("maximumRawError",maximum);
         result.put("integerDifferences",differences);result.put("accumulatorPrimitiveBytes",accumulator.primitiveBytes());
         DataFiles.write(output,result);
