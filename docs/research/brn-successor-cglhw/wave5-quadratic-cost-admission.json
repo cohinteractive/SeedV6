@@ -1,0 +1,19 @@
+{
+  "id": "wave5-quadratic-cost-admission-v1",
+  "recordedUtc": "2026-10-21T04:23:49.543202+00:00",
+  "question": "How much cost can be removed from the quadratic-only control by omitting unused third-moment arithmetic?",
+  "rationale": "The marginal degree3 games deliberately retain identical existing arithmetic. An optimized lower-degree control is necessary to assess the practical cost of cubic terms; a masked head does not measure it.",
+  "scope": "Research-only scalar prototype. Reject nonzero degree3 heads. No model, optimizer, application, search policy or tournament runtime changes.",
+  "activation": "After the current finite match tail ends, alongside the admitted quadratic score/search oracles. No concurrent benchmark and engine.",
+  "replicates": 3,
+  "limits": {
+    "processors": 1,
+    "heapMiB": 768,
+    "secondsMaximum": 300,
+    "positionsMaximum": 10000,
+    "parityPasses": 4,
+    "timingPasses": 9,
+    "evaluationsPerPass": 100000
+  },
+  "decision": "Require scalar raw-bit and canonical score parity in all fixed replications. Report actual cost and memory; no search speed claim or trained quadratic strength inference. Do not extend favourable runs."
+}

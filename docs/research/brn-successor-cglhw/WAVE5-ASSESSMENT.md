@@ -262,3 +262,27 @@ quadratic cache arithmetic retains unused third moments, so this is a quality te
 not an optimized quadratic throughput comparison. No trained quadratic baseline or
 higher-order success is inferred. A later human gate must address this distinction
 if the evidence warrants it, rather than assume cubic complexity is intrinsically useful.
+
+## Continued-BRE clock control and lower-degree cost question
+
+The 32 direct clock games against BRE001 are closed with independent legal replay.
+R4 scores 5/4/7 = 43.75% (descriptive normal 95% 17.97-69.53%); R16 scores
+3/5/8 = 34.375% (11.81-56.94%). Both remain uncertain. These results do not recover
+the favourable shallow-node scores, and motivate the already admitted deeper-node
+comparison. They do not identify inference cost as the sole cause. Same-root NPS
+ratios against BRE001 are .79055/.82146; different search paths and measurement
+conditions prevent treating any one cross-model ratio as a universal cost factor.
+
+A bounded quadratic cost prototype is admitted in wave5-quadratic-cost-admission.json.
+It rejects every nonzero third-degree head and omits only unused third-moment
+arithmetic. The existing marginal-degree games retain their original frozen runtime;
+the prototype is research-only, with no application or model changes. After the
+active finite tail ends, run targeted parity/rejection tests and three fixed JVM
+replications on preserved game transitions. Require exact original-cache raw bits
+and canonical integer scores. This estimates a lower-degree implementation's cost,
+not its trained quality or end-to-end search strength. No new training gate is selected.
+
+The current tail stopped normally at the explicit pause after direct R4/unary clock
+closed. Fifteen targeted JUnit tests pass (two quadratic parity/rejection cases and
+thirteen variant tests), zero failures/skips. The aggregate assessment tool rejects
+the still-incomplete budget without writing a completion report. No app build bump.
