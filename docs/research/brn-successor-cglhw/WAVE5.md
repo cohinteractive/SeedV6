@@ -2,8 +2,11 @@
 
 21 October2026. Continuation of the existing [contract](CONTRACT.md), following
 the verified G4 training and [W4 assessment](WAVE4-ASSESSMENT.md). Implementation
-and actual owner preparation are complete in build55. **G5 is ready; human training
-is blocking and has not begun.** No programme success is claimed.
+and actual owner preparation are complete in build55. **G5 training is complete
+and verified through96 in all four lineages.** No programme success is claimed.
+The instructions below preserve the completed gate; do not repeat them. Current
+assessment and exact checkpoint identities are in [WAVE5-ASSESSMENT](WAVE5-ASSESSMENT.md)
+and [trained checkpoints](wave5-trained-checkpoints.json).
 
 ## Discriminating question
 
@@ -99,7 +102,7 @@ and [preservation](wave5-preservation-check.json). Raw evidence is local-only in
 raw/wave5; the initial preparation command's quoting failure and incompatible-GA-JDK
 relocation attempt remain preserved, with successful separate retries.
 
-## Human training gate G5: exact action
+## Completed human training gate G5: historical instructions
 
 Open the verified build55 executable:
 `C:/projects/seed/java/seedv6-unified/dist/windows/candidates/candidate-20261021T013302-0f255e57/SeedV6-GUI/SeedV6-GUI.exe`.
@@ -146,19 +149,17 @@ or silently restart at64. Resume semantics were verified on tiny fixture updates
 if errors/nonfinite loss occur, preserve the failure and report it before changing
 state. The owner remains responsible for substantive training.
 
-**Human actions required after this prompt: Blocking — train these four lineages
+**Historical G5 action (fulfilled): train these four lineages
 through Gen96, then close the GUI and report completion or any interruption/settings
 change.** This blocks W5 trained strength assessment, not acceptance of the programme.
 No manual Arena match or G4 retraining is requested. Report unusual loss or contention;
 Codex will inspect actual Latest/Best, ancestry, recipes, steps, validation and source
 reservations. A later prompt alone does not satisfy the gate.
 
-## Exact restart
+## Exact restart after completed G5
 
-The research batch pause sentinel is active at `build/research/brn-successor-batches.pause`.
-No match/training process is running. On reported completion, verify all four actual
-stores before clearing that sentinel (preserve it in raw/wave5). Freeze Latest/Best
-independently, distinguish full16 versus compact retraining, both continued BRE rates,
-frozenGen32, calibration and fast additive/quadratic ablations. Reassess costs at the
-trained weights. Keep development selection separate from fresh confirmation; no
-candidate currently qualifies for a final positive-strength claim.
+The owner completed all four arms through96 without reported anomalies. The
+persisted-evidence audit verifies that report. No repeated training is requested.
+The pause sentinel is preserved at `raw/wave5/g5-completed-pause.txt`; matches now
+follow the frozen admission in WAVE5-ASSESSMENT and current STATE. Check actual
+receipts before resuming any batch. This completed gate does not establish success.

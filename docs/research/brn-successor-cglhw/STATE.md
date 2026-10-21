@@ -2,9 +2,9 @@
 
 Updated21 October2026. **G4 is complete and verified. All six arms reached64,
 with exact expected continuation and preserved starting payloads. Wave4 trained
-assessment is closed; G5 compact-cubic retraining is ready and awaits human training.
+assessment is closed; G5 is complete and verified. Wave5 trained assessment is active.
 No programme success is claimed.** This remains the original
-CGLHW. Current evidence/protocol: [WAVE4-ASSESSMENT](WAVE4-ASSESSMENT.md).
+CGLHW. Current evidence/protocol: [WAVE5-ASSESSMENT](WAVE5-ASSESSMENT.md).
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
 [completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md), and [completed G4 training gate](WAVE4.md).
 
@@ -26,8 +26,8 @@ search. Architectural complexity or lower validation loss alone is insufficient.
 | W4-RESGATE-LR001 / LR003 | Completed64; LR001 Best63, LR003 Best64; exact W3 latest32 ancestry |
 | W4-RESCUBIC-LR001 / LR003 | Completed64; both Best63; exact W3 latest32 ancestry; W3 Best31 preserved |
 | W4-BRE-CONTROL-LR001 / LR003 | Both completed64 and Best64; original failed LR001 session successfully resumed |
-| W5-RESCUBIC-R4-LR001 / R16-LR001 | Prepared Gen64, Latest=Best bootstrap; compact projected/full exact W4-CUBIC001 optimizer; G5 training64->96 pending |
-| W5-BRE-CONTROL-LR001 / LR003 | Prepared Gen64, Latest=Best exact-source bootstrap; G5 training64->96 pending |
+| W5-RESCUBIC-R4-LR001 / R16-LR001 | Completed96; Best93/95 respectively; exact compact/full bootstrap continuation verified |
+| W5-BRE-CONTROL-LR001 / LR003 | Completed96; Best95/94 respectively; expected optimizer/data continuation verified |
 
 All managed roots are under E:/SeedV6-Networks. Exact checkpoint IDs, hashes and
 sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`, `wave3-trained-checkpoints.json`, `wave4-owner-readiness.json`, `wave4-trained-checkpoints.json`, `wave5-owner-readiness.json`. Frozen reference
@@ -88,20 +88,20 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
 
 ## Current action and exact resume point
 
-**Human actions required after this prompt: Blocking — complete G5 GUI training of
-W5-RESCUBIC-R4-LR001, W5-RESCUBIC-R16-LR001, W5-BRE-CONTROL-LR001 and
-W5-BRE-CONTROL-LR003, each32 additional generations from64 through96.** Use verified
-build55 and the exact settings/resume instructions in [WAVE5](WAVE5.md).
-G4 is complete; do not repeat training or historical Gen33 recovery instructions.
-The original objective remains open; no successor or production adoption is established.
-
-Current unit: G5 human gate. Actual new roots, source-preserving moment projection,
-continuation, seek inheritance, native packaged GUI and legal smoke are verified in
-[readiness](wave5-owner-readiness.json). No substantive G5 training has begun.
-Next admissible dependent action: on the owner's completion report, audit actual
-Latest/Best, histories, settings, optimizer/source continuity and anomalies, then
-freeze/evaluate versus full16, both BRE rates and Gen32 with mechanism/cost controls.
-Do not infer completion from a later invocation or mechanically reopen closed matches.
+**Human actions required after this prompt: None.** G5 is complete, verified from
+all133 retained payload/optimizer pairs and128 new history rows. No repeated training.
+Current unit: execute the prospectively frozen256-game primary W5 assessment in
+[WAVE5-ASSESSMENT](WAVE5-ASSESSMENT.md) and `wave5-primary-admission.json`.
+Latest/Best for all four lineages face frozenGen32 at32768 nodes and200ms/move;
+eight fresh development opening pairs, common search and fixed half-change calibration.
+Four actual trained cubic cache probes pass6333 positions and48 search root passes
+each, with zero integer/search differences. Use ONLY preserved `wave5-runtime.json`.
+The root started clean b43b761/build55. Read-only audit/freeze preserved owner models.
+G5 pause is preserved at `raw/wave5/g5-completed-pause.txt`; current sentinel removed.
+Next: finish fixed primary counts, independently replay receipts, compare R4/R16,
+both continued BRE rates, endpoint selection and cost. Admit focused direct/maturity/
+mechanism controls based on evidence, without a predetermined new training gate.
+No independent strength confirmation or useful cubic chess advantage is established.
 All admitted W4 games are closed. The research frontier is evidence-driven:
 
 1. **Closed:** all64 BRE full-versus-half calibration controls,8970 legal moves.
@@ -140,7 +140,7 @@ All admitted W4 games are closed. The research frontier is evidence-driven:
    W5 preparation is admitted to test whether retraining can recover compact cubic
    quality. Distinct rank4 projection, full rank16 continuation and both BRE-rate
    controls start from actual Latest64, retain optimizer state and add32 generations
-   at the now-verified G5 gate. No substantive training has begun.
+   at the now-completed G5 gate. See the active W5 assessment above.
    Fast additive ablations are implemented and verified: unary terms fit the
    existing BRE table; constant GATE retains four additional physical pair relations
    in an explicitly bounded research layout. Actual parity/cost and the first
@@ -163,7 +163,7 @@ and bounded resources after the preserved runtime mislaunch below.
 Resources: one concurrent game, one worker/engine, no pondering,64MiB TT,768MiB
 JVM,ActiveProcessorCount1,BelowNormal,12games/240seconds per batch (finish current
 game). No concurrent heavy build/probe/training. The G4 pause sentinel was preserved
-at raw/wave4/g4-completed-pause.txt and removed after audit/admission. The G5 human-training pause sentinel is active; the temporary unary-build pause is preserved
+at raw/wave4/g4-completed-pause.txt and removed after audit/admission. G5 pause is preserved at raw/wave5/g5-completed-pause.txt; the temporary unary-build pause is preserved
 at raw/wave4/unary-build-pause-01.txt. No game was interrupted. Substantive training remains exclusively the owner's GUI action.
 
 ## Completed W4 evidence and interpretation

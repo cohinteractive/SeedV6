@@ -1,0 +1,63 @@
+{
+  "id": "wave5-start-versus-trained-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/Gen32",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    },
+    {
+      "name": "W5-RESCUBIC-R4-LR001-g64",
+      "root": "docs/research/brn-successor-cglhw/raw/wave5/trained-frozen-01/W5-RESCUBIC-R4-LR001",
+      "checkpoint": "g000064-s000524288-50b88e15725392cf5c63e72b9477e8d95209d582b3dba3a46f6a4340d3b3f71e",
+      "networkSha256": "0d4740db66991f3454c19ff9121592f582999db2aaacb7d6e81325c1784b1a12",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W5-RESCUBIC-R4-LR001-g96",
+      "root": "docs/research/brn-successor-cglhw/raw/wave5/trained-frozen-01/W5-RESCUBIC-R4-LR001",
+      "checkpoint": "g000096-s000786432-014449a8d5676d1a4569501219355fad6f5c7182a02537397d526db6e31ea35a",
+      "networkSha256": "a831c9beea3889351b92fea09039ab7eabd8eb9ee6f648807336dfaa9684c158",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W5-RESCUBIC-R16-LR001-g64",
+      "root": "docs/research/brn-successor-cglhw/raw/wave5/trained-frozen-01/W5-RESCUBIC-R16-LR001",
+      "checkpoint": "g000064-s000524288-d0a345a8e3b094c1ddb67c579999fff1ed5cd28e2fd88b788249045f04185db5",
+      "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W5-RESCUBIC-R16-LR001-g96",
+      "root": "docs/research/brn-successor-cglhw/raw/wave5/trained-frozen-01/W5-RESCUBIC-R16-LR001",
+      "checkpoint": "g000096-s000786432-f4c32fa4e682d031c65def888ef238210184540017bdce382c0c967d477b89b4",
+      "networkSha256": "14e72d384c4a18ec80b2db2d55df6a3c9ae69f671c9c0b9688fac3e3fb8c1218",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR001-g64",
+      "root": "docs/research/brn-successor-cglhw/raw/wave5/trained-frozen-01/W5-BRE-CONTROL-LR001",
+      "checkpoint": "g000064-s002277376-106cadb4ac5474fd8d8193b801dfeb10e723e6e4c5a33ee72831eaefa8500441",
+      "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381"
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR001-g96",
+      "root": "docs/research/brn-successor-cglhw/raw/wave5/trained-frozen-01/W5-BRE-CONTROL-LR001",
+      "checkpoint": "g000096-s002539520-9b44587ab62305e69ee1952a5c30524ce08dafca1a893a155384218fe141cf02",
+      "networkSha256": "303d94b16ad1fb24a10070db9113704cee4c33aa25b2a92f43b3e76741642a94"
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR003-g64",
+      "root": "docs/research/brn-successor-cglhw/raw/wave5/trained-frozen-01/W5-BRE-CONTROL-LR003",
+      "checkpoint": "g000064-s002277376-a1b29b6a66cee4b9484194f26401ca1e4252587f64ebc668cce191b050d1d05d",
+      "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050"
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR003-g96",
+      "root": "docs/research/brn-successor-cglhw/raw/wave5/trained-frozen-01/W5-BRE-CONTROL-LR003",
+      "checkpoint": "g000096-s002539520-e8c98f1dc0b6c5ab2b6b25dc68a74396ab885fb2afbe556d10c6a195abb80348",
+      "networkSha256": "4fb6f56b4a65828b12f93864753f0219d9db00b00fd0ebc26fe9de723129c1e5"
+    }
+  ]
+}

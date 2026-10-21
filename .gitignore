@@ -63,6 +63,8 @@ desktop.ini
 !/docs/research/brn-successor-cglhw/wave3-fair-control-openings.pgn
 # Frozen W4 development INPUT; match output remains under ignored raw/.
 !/docs/research/brn-successor-cglhw/wave4-development-openings.pgn
+# Frozen W5 development INPUT; excludes prior selected roots, reserves partition1.
+!/docs/research/brn-successor-cglhw/wave5-development-openings.pgn
 
 # Generated Search observations; retain JSON summaries, manifests and configs,
 # compact integrity/oracle/witness JSONL, and analytical CSV/TSV tables.

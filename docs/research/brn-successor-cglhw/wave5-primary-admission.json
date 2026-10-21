@@ -1,0 +1,20 @@
+{
+  "id": "wave5-primary-admission-v1",
+  "recordedUtc": "2026-10-21T02:37:21.303904+00:00",
+  "questions": [
+    "Compare both actual Latest and Best, rather than infer Best=96 or pick by loss.",
+    "Common Gen32 comparator permits paired within-family endpoint and R4/R16 contrasts.",
+    "Equal-node quality versus warmed equal-time practical throughput."
+  ],
+  "games": 256,
+  "perCondition": 128,
+  "perCandidateCondition": 16,
+  "candidates": 8,
+  "openingSelection": "wave5-development-openings.selection.json",
+  "openingRange": "first8 pairs; partition0; excludes all prior W3/W4 selected roots; remaining24 reserved for distinct follow-up",
+  "calibration": "Fixed .5 change from Gen32 for both cubic corrections and BRE continuation, based on prior W3/W4 controls. No per-candidate fit selection or averaging in primary screen.",
+  "runtime": "wave5-runtime.json",
+  "stopRule": "Finish fixed admitted counts; stop affected run for failures/resource problems, preserve all receipts; no optional significance stop.",
+  "interpretation": "Exploratory unadjusted paired uncertainty only; opening dependence,8 pairs, endpoint selection, family data/optimizer confounds prevent final success.",
+  "nextDecision": "Choose useful endpoints using clock and node jointly; prioritize Latest for equal-exposure controls when inconclusive. Direct R4/R16, continued BRE and additive ablations require separately frozen finite follow-up plans. Fixed-panel Gen64/96 predictions support maturity interpretation, not strength."
+}
