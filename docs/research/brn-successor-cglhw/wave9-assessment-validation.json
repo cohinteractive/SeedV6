@@ -1,0 +1,104 @@
+{
+  "id": "wave9-assessment-validation-v1",
+  "tests": {
+    "xml": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\projection-tests-02.xml",
+    "sha256": "e579ac00a6259dfa16f0c39f4936720afd11aa1b76f5aeb009b341c20ca0cbb8",
+    "tests": 24,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "scope": "Research variant, formula, rejection, preservation and cache checks; not full-suite testing."
+  },
+  "processes": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\continued-base-01.execution.json",
+      "sha256": "24477392081575d66a4799a01ffe65f7512b93e2cea94396202ac039950b3d3d",
+      "requestSha256": "77fa44f09dfa36903fa0a670c9eb689c07812cc11b472f2683fbb997ccd92b15",
+      "exitCode": 0,
+      "request": "docs/research/brn-successor-cglhw/raw/wave9/continued-base-request-01.json",
+      "completedUtc": "2026-10-21T21:42:32.8184069Z",
+      "priority": "BelowNormal",
+      "timedOut": false,
+      "activeProcessors": 1,
+      "startedUtc": "2026-10-21T21:42:29.8122264Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\king-contact-01.execution.json",
+      "sha256": "2266ade85e075e5ea797baaf8bb09bda9a55aacc3919aa4886e4966e15947ff3",
+      "requestSha256": "9b000d49b2fb976e4345c67f1e098ecbfb8ffc2e8b0d2ce58a6c54dcb15199ad",
+      "exitCode": 0,
+      "request": "docs/research/brn-successor-cglhw/raw/wave9/king-contact-request-01.json",
+      "completedUtc": "2026-10-21T21:50:55.2089288Z",
+      "priority": "BelowNormal",
+      "timedOut": false,
+      "activeProcessors": 1,
+      "startedUtc": "2026-10-21T21:50:52.6674664Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\adaptive-degree-01.execution.json",
+      "sha256": "d35221aa5c53f72bac663c84c6129feea27e580eab5a5124d885216cfaa1900c",
+      "requestSha256": "30ce165db0496de1a51262a0f49ccebacea90bf0306d4beefd2d60cac110f34a",
+      "exitCode": 0,
+      "request": "docs/research/brn-successor-cglhw/raw/wave9/adaptive-degree-request-01.json",
+      "completedUtc": "2026-10-21T21:55:14.1554519Z",
+      "priority": "BelowNormal",
+      "timedOut": false,
+      "activeProcessors": 1,
+      "startedUtc": "2026-10-21T21:55:11.3304242Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\fresh-data-01.execution.json",
+      "sha256": "a12e7cfe859fb6ea2b02127cf6b9cb8b64d620a0188ec23832a129d144024f5b",
+      "requestSha256": "7cae98344133dfbaf02c509c968da3655ecdedb02f1f9b80e45e3d37afa4aea9",
+      "exitCode": 0,
+      "request": "docs/research/brn-successor-cglhw/raw/wave9/fresh-data-request-01.json",
+      "completedUtc": "2026-10-21T22:04:27.9039470Z",
+      "priority": "BelowNormal",
+      "timedOut": false,
+      "activeProcessors": 1,
+      "startedUtc": "2026-10-21T22:04:25.7980895Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01.execution.json",
+      "sha256": "5754d1cdf317b6b4185c3896f76fda4dc8712bf82aeac9115f237986ddd0b3e2",
+      "requestSha256": "ced28d64fd32af354c2c2fe0366864e27ded6a05ce07c67a557f1f259f028713",
+      "exitCode": 0,
+      "request": "docs/research/brn-successor-cglhw/raw/wave9/predictions-new-window-request-01.json",
+      "completedUtc": "2026-10-21T22:04:40.1833966Z",
+      "priority": "BelowNormal",
+      "timedOut": false,
+      "activeProcessors": 1,
+      "startedUtc": "2026-10-21T22:04:37.9909143Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\new-window-analysis-01.execution.json",
+      "sha256": "89b734d38a473da3b1d59cfd88e4f52316f316af839bb6b3850a85cfcec4ff0e",
+      "requestSha256": "30cb81569298e7d6b7ebd1df34a6a13f46819410f711a24807552f0447d0115d",
+      "exitCode": 0,
+      "request": "docs/research/brn-successor-cglhw/raw/wave9/new-window-analysis-request-01.json",
+      "completedUtc": "2026-10-21T22:04:50.9583771Z",
+      "priority": "BelowNormal",
+      "timedOut": false,
+      "activeProcessors": 1,
+      "startedUtc": "2026-10-21T22:04:49.2362530Z"
+    }
+  ],
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\wave9-trained-checkpoints.json": "385c8e6d10299ad9257af101ecc8b5882d6e03466de7745184a3fca6a1ecab95",
+    "docs\\research\\brn-successor-cglhw\\wave9-trained-admission.json": "989c29379ea9a2245cb928fb90430780af2da361128d68f3e69cb8eec6d9e5fa",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-audit-01\\stores.json": "7e7b83d42bed6e9bf66b784dcd2a1bf2b7bd42e0bd9d70882a5805ddf61802c5",
+    "docs\\research\\brn-successor-cglhw\\wave9-maturity-model-plan.json": "e6a32901330ef605ca186e63581ff70c7808d0a2313800b8bf3f757187b207a9",
+    "docs\\research\\brn-successor-cglhw\\wave9-fresh-data-plan.json": "30112678df340b620c136d1cd4c8b7020ce269d3776518dfc80ef84679730fba",
+    "docs\\research\\brn-successor-cglhw\\wave9-new-window-admission.json": "4321994f97e3a088216abc070c46cc61d643ae971fd09f28104f2f6e629661d7",
+    "docs\\research\\brn-successor-cglhw\\wave9-new-window-results.json": "546ed0f4ea7022db4a73b46f46d9f992c78524e28373933486ab52e036f40581",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\fresh-data-01\\summary.json": "b7a8506fec3002a2135ad65b5d631f2357cd858a40fd21ebb782c24026682c6c",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01\\summary.json": "32a67de5fc25f84be14df5a3bbe4a0931cab6208a3baff09e0224cbe59983fea"
+  },
+  "actualModelChecks": "37 payload/state pairs x24 boards; trained3 and projected5 cache probes each4340 positions and48 search pairs, source records linked in admission/diagnostics/readiness.",
+  "limitations": [
+    "Research-only changes; no core/trainer/GUI or build/version changes. Existing native build59 not rebuilt or newly visually accepted in this root.",
+    "No substantive autonomous training or independent strength confirmation. Tiny pilot models/optimizers not exported.",
+    "All fixed development match budgets still active; per-plan closure reports distinguish completed protocols.",
+    "Owner preservation1960 files verified at G9 audit/freeze; final full preservation audit remains due at stopping boundary."
+  ]
+}

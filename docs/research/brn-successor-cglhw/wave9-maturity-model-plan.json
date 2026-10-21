@@ -1,0 +1,83 @@
+{
+  "id": "wave9-fixed-panel-maturity-v1",
+  "models": [
+    {
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/Gen32",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "name": "Gen32"
+    },
+    {
+      "name": "W9-CAL-AFFINE-R4-LR001-g168",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-AFFINE-R4-LR001",
+      "checkpoint": "g000168-s000000000-191791f2dc359e702f9a4fd5c13f3044247f068e16cfdaf0a8533ecd669540c7",
+      "networkSha256": "1f38d934d124dd520daff43284294b63176a67121f9d1ed0671ea9e7be0ee22e"
+    },
+    {
+      "name": "W9-CAL-AFFINE-R4-LR001-g176",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-AFFINE-R4-LR001",
+      "checkpoint": "g000176-s000065536-16a82f32ff52b872fd12a2dd8ddfa3ede57e292c9e2f29974ac42f7fa57cb762",
+      "networkSha256": "df813617b4404ea826ea7f6b076fabbd12b4120f6b9e7e536e91a4c0fe7fbf21"
+    },
+    {
+      "name": "W9-CAL-AFFINE-R4-LR001-best",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-AFFINE-R4-LR001",
+      "checkpoint": "g000175-s000057344-403cbfc5b1b6f5d4bfa330488cf5d782c2415b2bb1939b7456bdb5804c026d03",
+      "networkSha256": "3bfdcf006900805c0129c94a6beb332837fb40b0e002af1c34529d0ec3732e8a"
+    },
+    {
+      "name": "W9-CAL-QUAD-R4-LR001-g168",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-QUAD-R4-LR001",
+      "checkpoint": "g000168-s000000000-39fb2a306f1fb72924aaa5eb00764051a8b41cea1e128dc51b7ed3bdf23276c6",
+      "networkSha256": "cf89fd6caccc1f39be1875203774ecf8cc979980c1d76410a04cd62e978179a2"
+    },
+    {
+      "name": "W9-CAL-QUAD-R4-LR001-g176",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-QUAD-R4-LR001",
+      "checkpoint": "g000176-s000065536-28d94ac77120ee02c2e24a03e350a01486e928f08325ebafcaa55576e1791674",
+      "networkSha256": "7d5a231b21ea8e1ad0760ea97a12cf77d40247aaeeecc621867085633d6acd0e"
+    },
+    {
+      "name": "W9-CAL-QUAD-R4-LR001-best",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-QUAD-R4-LR001",
+      "checkpoint": "g000175-s000057344-b506adbe13a9dadeb84c4c83a976eb2168368f743317e397a82b1d53fbfa4a7d",
+      "networkSha256": "8271af162c1c3f3edc335b2ee5fcd25ea62e725682eabf2cf585ef06288e5ea2"
+    },
+    {
+      "name": "W9-CAL-CUBIC-R4-LR001-g168",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-CUBIC-R4-LR001",
+      "checkpoint": "g000168-s000000000-4294923477e1a39688d5942fdd34bc7c7841696b4864570d5bff26bbbf92eb8a",
+      "networkSha256": "e696c32709fcf8c29fb66d56414a98099ec25c5767de559bf8050b0f35bc5f7a"
+    },
+    {
+      "name": "W9-CAL-CUBIC-R4-LR001-g176",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-CUBIC-R4-LR001",
+      "checkpoint": "g000176-s000065536-a924ec59b6d56c319475b79c6c9fa2c661fd6345c401c324d8715463a39bebfa",
+      "networkSha256": "5c10589acc5d3870fbca065f4829ad538de3e1e28bb0e3b6cdb2ce8b7d2e56e2"
+    },
+    {
+      "name": "W9-CAL-CUBIC-R4-LR001-best",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-CUBIC-R4-LR001",
+      "checkpoint": "g000175-s000057344-2cd1216869ef01c5bc806a060a158caafba948527c242de6d4357cac32a6d644",
+      "networkSha256": "ae9890c6e43c28dd8183a2531e6c567db9d3befc6c647e5d5b52bffca5ddfcb3"
+    },
+    {
+      "name": "W9-BRE-CONTROL-LR001-g168",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-BRE-CONTROL-LR001",
+      "checkpoint": "g000168-s003129344-eecb3b3370c98fecff98fd7a9c7357d78e9950c9748674a1087ffeba427ff566",
+      "networkSha256": "f19d3dd3b7fa9bc3adff21f0bef7f7b2b7d62ff3621d518098486a5ef77b932e"
+    },
+    {
+      "name": "W9-BRE-CONTROL-LR001-g176",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-BRE-CONTROL-LR001",
+      "checkpoint": "g000176-s003194880-f9086c5c055bf6bfc0ba2b62f4bd6121e1f29c4a7268100caac4fd9ddbadf9a1",
+      "networkSha256": "faf91dd6355790e683e66110686765209349a1e50211014464ef55f4890c407e"
+    },
+    {
+      "name": "W9-BRE-CONTROL-LR001-best",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-BRE-CONTROL-LR001",
+      "checkpoint": "g000176-s003194880-f9086c5c055bf6bfc0ba2b62f4bd6121e1f29c4a7268100caac4fd9ddbadf9a1",
+      "networkSha256": "faf91dd6355790e683e66110686765209349a1e50211014464ef55f4890c407e"
+    }
+  ]
+}

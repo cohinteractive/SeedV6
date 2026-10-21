@@ -1,0 +1,15 @@
+{
+  "id": "wave9-research-environment-note-v1",
+  "rootStartUtc": "2026-10-21T20:49:07.8977537Z",
+  "startingHead": "2673400",
+  "initialTrackedWorktree": "clean",
+  "unattributedGeneratedPaths": [
+    "bin/",
+    "engine-core/bin/",
+    "engine-training/bin/"
+  ],
+  "observation": "These untracked paths appeared during the root and contain compiled classes and copied test/resources. Existing VSCode Java/Gradle processes were present. Exact writer attribution is unverified; no source changes are attributed to them.",
+  "action": "Preserve without staging, deletion, ignore-policy expansion or process termination. Frozen research runtimes exclusively use their recorded jars, not bin outputs.",
+  "version": "Build59 unchanged; no finalizer dependency; research-only work does not qualify an application bump.",
+  "journal": "Root CODEXLOG_CURRENT.md absent; not created."
+}

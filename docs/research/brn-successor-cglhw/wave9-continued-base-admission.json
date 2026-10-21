@@ -1,0 +1,39 @@
+{
+  "id": "wave9-continued-base-head-feasibility-v1",
+  "question": "Does fixed cubic information help a continued strong BRE base beyond adapted affine/quadratic controls, or is its apparent value specific to the old frozen base?",
+  "anchor": {
+    "name": "W9-CAL-AFFINE-R4-LR001",
+    "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-AFFINE-R4-LR001",
+    "checkpoint": "g000176-s000065536-16a82f32ff52b872fd12a2dd8ddfa3ede57e292c9e2f29974ac42f7fa57cb762",
+    "networkSha256": "df813617b4404ea826ea7f6b076fabbd12b4120f6b9e7e536e91a4c0fe7fbf21"
+  },
+  "predictor": "W9-CAL-AFFINE-R4-LR001-g176",
+  "predictions": {
+    "fresh5": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01",
+    "old": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01"
+  },
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\bt4-predictions.jsonl": "878b43c6223e3f6ea9824669569d5e9b87b4ce3bbc8abcf1e74f7f1a626e8c1a",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\cp-predictions.jsonl": "c903e919a76bd64c28a5486defe023f9ed60758df65751bea26414e3c7228395",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\bt4-predictions.jsonl": "5327d60cac2c766f95ad6f890e22d79db2075957d4cb7d1a839c4c396c573b25",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\cp-predictions.jsonl": "56781da22ad2083b54b08d4a3d2add8490aabcf2ea2c82eeb086eae577434832"
+  },
+  "budget": {
+    "fitRows": 2043,
+    "epochs": 8,
+    "batch": 128,
+    "stepsPerArm": 128,
+    "rate": 0.01,
+    "l2": 0.001,
+    "seed": 2026102209
+  },
+  "arms": [
+    "Gen32/continued x affine/affine+quadratic/affine+cubic"
+  ],
+  "objective": "Raw CE, frozen base plus half new head correction, fit-only centered/unit-RMS features. Report raw and quarter-search metrics; no model exported.",
+  "trigger": "Native degree arms fail to beat adapted affine and continued BRE in closed development screens. Investigate the old-anchor dependency before proposing another architecture or training gate.",
+  "selection": "All six fixed arms and all four consumed evaluation halves, with adapted controls and no-fit degree masks; a positive pilot alone is not strength evidence or a new gate.",
+  "resource": "One serial BelowNormal process, timeout300seconds, between match batches only.",
+  "script": "tools\\probe-brn-continued-base-heads.py",
+  "scriptSha256": "e39ff52ea222c7ff2c9a507d0f106972e02851de5f4add0471d2ebb2c39d3d78"
+}

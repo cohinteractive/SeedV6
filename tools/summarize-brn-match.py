@@ -98,6 +98,11 @@ def summarize(plan_file, receipts, analysis_file, runtime_file, output, historic
         assert spec["name"] == bound["name"]
         assert spec["checkpoint"] == bound["originalManifest"]["id"]
         assert spec["networkSha256"] == bound["originalManifest"]["networkSha256"]
+        if spec.get("calibratedVariant") is not None:
+            assert "brn-calibrated-search-projection-v1" in runtime["modelFeatures"]
+            assert bound["calibratedVariant"] == spec["calibratedVariant"]
+            assert bound["calibratedVariantMapping"].startswith("brn-calibrated-search-projection-v1:")
+            assert len(bound["effectiveNetworkSha256"]) == 64
         if spec.get("packedCubicCache"):
             assert "brn-cubic-packed-v1" in runtime["modelFeatures"]
             assert bound["packedCubicCache"] == "packed-polynomial-period64-canonical-rounding-guard-v1"

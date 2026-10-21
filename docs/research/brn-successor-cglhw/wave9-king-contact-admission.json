@@ -1,0 +1,34 @@
+{
+  "id": "wave9-king-contact-feasibility-v1",
+  "question": "Can explicit conjunctions of geometric king-ring attackers add information beyond an adapted pairwise king-contact control on continued BRE176?",
+  "predictions": {
+    "fresh5": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01",
+    "old": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01"
+  },
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\bt4-predictions.jsonl": "878b43c6223e3f6ea9824669569d5e9b87b4ce3bbc8abcf1e74f7f1a626e8c1a",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\cp-predictions.jsonl": "c903e919a76bd64c28a5486defe023f9ed60758df65751bea26414e3c7228395",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\bt4-predictions.jsonl": "5327d60cac2c766f95ad6f890e22d79db2075957d4cb7d1a839c4c396c573b25",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\cp-predictions.jsonl": "56781da22ad2083b54b08d4a3d2add8490aabcf2ea2c82eeb086eae577434832"
+  },
+  "budget": {
+    "fitRows": 2043,
+    "epochs": 8,
+    "batch": 128,
+    "stepsPerArm": 128,
+    "rate": 0.01,
+    "l2": 0.001,
+    "seed": 2026102209
+  },
+  "arms": [
+    "affine3",
+    "affine3 + additive king/piece contact counts10",
+    "affine3 + contact counts10 + joint attacker terms6"
+  ],
+  "objective": "Raw CE on frozen BRE176 plus half normalized new head correction; fixed128updates/arm, report raw and quarter-search metrics.",
+  "hypothesis": "Fixed polynomial features and changed base alone lack robust pilot gains. King-relative multi-attacker conjunction is a different, sparse higher-order information basis. It can be computed with ten bit-counts from fixed king/type masks, without board-wide attack maps.",
+  "selection": "All three arms, four consumed evaluation halves, mirror and explicit third mixed difference. No gate or production code without useful discriminating evidence.",
+  "resource": "Single BelowNormal process <=300seconds between batches, no owner writes or model export.",
+  "script": "tools\\probe-brn-king-contacts.py",
+  "scriptSha256": "19f371e75706e96b60bdc5a7130d5959bc3e10130f9d310fa163f5e216b62f48"
+}

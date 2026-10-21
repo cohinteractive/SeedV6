@@ -1,0 +1,9 @@
+{
+  "id": "wave9-continued-base-between-batch-pause-v1",
+  "protocol": "affine-clock",
+  "preservedReceipts": 12,
+  "diagnostic": "wave9-continued-base-results.json",
+  "pause": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\continued-base-completed-pause-01.txt",
+  "pauseSha256": "52cb5abfe5252363a9666cff4266ca5b6d2d3e6a7348487c78e80b9da1cd2560",
+  "meaning": "Intentional resource pause after completed batch; next launch refused before engine/log. All receipts preserved. Resume fixed32-game plan without replay."
+}

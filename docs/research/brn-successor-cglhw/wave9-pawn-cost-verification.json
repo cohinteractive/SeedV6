@@ -1,0 +1,86 @@
+{
+  "id": "wave9-pawn-condition-cost-verification-v1",
+  "admission": "docs\\research\\brn-successor-cglhw\\wave9-pawn-cost-admission.json",
+  "admissionSha256": "6353a5155f0e51c08d99b470d7132f5cb67014f50bc3b0f3304d0fd8bc95d4f9",
+  "summary": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\pawn-cost-01\\summary.json",
+  "summarySha256": "f439d9e9394046534038673eca1445ca1672e17a8be174bc8ba834f1fdb7eb7a",
+  "features": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\pawn-cost-01\\features.jsonl",
+  "featuresSha256": "784ba279f4b625b2979dffde42aaf1aeb25ca0951295334179d98a969ea02243",
+  "sourceSha256": "44f2b636227b9b8ab5c5f9bf384f75a607203371fdaa5102a20f1f9a956db653",
+  "classes": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\pawn-cost-classes-01\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnPawnConditionProbe$Cache.class": "f0b8966b2b487da98691fcba7a7a83c3564e026f4d1fd8dbb978c0d5704d8c8d",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\pawn-cost-classes-01\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnPawnConditionProbe.class": "4440c11360f19f01fe90071256843d6cafd2fa4a2912734f9f86af507117ca99"
+  },
+  "positions": 4340,
+  "independentPythonFeatureMaximumError": 0,
+  "colorMirror": true,
+  "cacheMaximumError": 2.220446049250313e-16,
+  "pawnStructureRefreshes": [
+    956,
+    956
+  ],
+  "latency": [
+    {
+      "medianNanos": 43.279,
+      "mode": "additive-full",
+      "evaluationsPerPass": 100000,
+      "passNanos": [
+        4537100,
+        4507300,
+        5329600,
+        4272200,
+        3889800,
+        3907300,
+        4327900
+      ]
+    },
+    {
+      "medianNanos": 14.951,
+      "mode": "additive-cached",
+      "evaluationsPerPass": 100000,
+      "passNanos": [
+        3738400,
+        1931200,
+        1499000,
+        1495100,
+        1285300,
+        1280800,
+        1253100
+      ]
+    },
+    {
+      "medianNanos": 40.829,
+      "mode": "conditional-full",
+      "evaluationsPerPass": 100000,
+      "passNanos": [
+        4600500,
+        4484000,
+        4834300,
+        4082900,
+        3902700,
+        3829900,
+        3808700
+      ]
+    },
+    {
+      "medianNanos": 15.233,
+      "mode": "conditional-cached",
+      "evaluationsPerPass": 100000,
+      "passNanos": [
+        2004100,
+        1960000,
+        3298000,
+        1523300,
+        1265200,
+        1243400,
+        1235600
+      ]
+    }
+  ],
+  "limitations": [
+    "Random weights; correction only, excludes existing evaluator, score rounding and search.",
+    "Played-game adjacency is not a recursive search transition trace; cache hit rates and costs need search integration measurement.",
+    "No training, checkpoint, architecture admission, GUI or playing-strength claim."
+  ],
+  "decision": "Cost feasibility is plausible; fitting impact analysis shows pawn terms help CP but hurt both BT4 panels. No architecture or human training gate is admitted by these bounded diagnostics."
+}

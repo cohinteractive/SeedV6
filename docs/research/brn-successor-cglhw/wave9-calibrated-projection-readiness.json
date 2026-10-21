@@ -1,0 +1,314 @@
+{
+  "id": "wave9-calibrated-search-projection-readiness-v1",
+  "status": "passed",
+  "tests": {
+    "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\projection-tests-02.xml",
+    "sha256": "e579ac00a6259dfa16f0c39f4936720afd11aa1b76f5aeb009b341c20ca0cbb8",
+    "tests": 24,
+    "failures": 0,
+    "skips": 0
+  },
+  "runtime": "wave9-calibrated-projection-runtime.json",
+  "runtimeSha256": "245651b88155463b873ae33f4d67a111762a0dbd36f7df6bd2df2c7eacc3a543",
+  "modelPlan": "wave9-calibrated-projection-model-plan.json",
+  "modelPlanSha256": "8eba091498c193b5d336b355f177f88140c5b92ec9a894572f47bf5d83c3b129",
+  "probes": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\projection-cache-01.json",
+      "sha256": "763007285ad29e14030e540bb23a866620039436a0dd71f1bae175eca3eb66da",
+      "candidate": "W9-CAL-AFFINE-R4-LR001-search025",
+      "effectiveNetworkSha256": "ad7e06ada0c19d8e499776f117f9507c5ba781235b2425565abcc547f6737e08",
+      "variant": {
+        "residualScale": 0.25,
+        "maskDegree": false
+      },
+      "positions": 4340,
+      "fullCacheSearchPairs": 48,
+      "projectionError": 1.7763568394002505e-15,
+      "cacheError": 3.552713678800501e-15,
+      "latency": [
+        {
+          "name": "QUADRATIC-full",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            34523900,
+            34338900,
+            33148500,
+            31968400,
+            28648700,
+            30063600,
+            31898700
+          ],
+          "medianNanos": 639.368
+        },
+        {
+          "name": "QUADRATIC-cache",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            17893500,
+            12580400,
+            12364700,
+            11838300,
+            11988500,
+            12390500,
+            11368000
+          ],
+          "medianNanos": 247.294
+        },
+        {
+          "name": "Gen32",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            11241000,
+            8523100,
+            8087200,
+            7200500,
+            7780600,
+            7438700,
+            7084700
+          ],
+          "medianNanos": 155.612
+        }
+      ]
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\projection-cache-02.json",
+      "sha256": "f792ddb59e67bf34abff036744d2379e5bf544f8283004df79fba77bfbc3eff4",
+      "candidate": "W9-CAL-QUAD-R4-LR001-search025",
+      "effectiveNetworkSha256": "25f8b1382d384a2d8ab26c12104e30459bbc80cf24cb5d71574e0604c0ae7d19",
+      "variant": {
+        "residualScale": 0.25,
+        "maskDegree": false
+      },
+      "positions": 4340,
+      "fullCacheSearchPairs": 48,
+      "projectionError": 1.7763568394002505e-15,
+      "cacheError": 4.052314039881821e-15,
+      "latency": [
+        {
+          "medianNanos": 621.266,
+          "passNanos": [
+            29679500,
+            31063300,
+            31919900,
+            29378100,
+            27276000,
+            33405500,
+            33506900
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "QUADRATIC-full"
+        },
+        {
+          "medianNanos": 231.582,
+          "passNanos": [
+            18691500,
+            11579100,
+            12078000,
+            10321700,
+            10503000,
+            11689100,
+            11481300
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "QUADRATIC-cache"
+        },
+        {
+          "medianNanos": 146.052,
+          "passNanos": [
+            7826100,
+            7430700,
+            7182700,
+            7302600,
+            7281900,
+            7296200,
+            8273200
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "Gen32"
+        }
+      ]
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\projection-cache-03.json",
+      "sha256": "fdf5e322720f2a097fa98e006c284f520b6c346012cc76c01e3adb956b255566",
+      "candidate": "W9-CAL-CUBIC-R4-LR001-search025",
+      "effectiveNetworkSha256": "5c14299078c30d48c3de82c2422496db4e342f24637590eeebdd334ac7c824a9",
+      "variant": {
+        "residualScale": 0.25,
+        "maskDegree": false
+      },
+      "positions": 4340,
+      "fullCacheSearchPairs": 48,
+      "projectionError": 1.7763568394002505e-15,
+      "cacheError": 4.773959005888173e-15,
+      "latency": [
+        {
+          "passNanos": [
+            36042900,
+            34010300,
+            31329000,
+            30914300,
+            32388000,
+            32735500,
+            31443400
+          ],
+          "medianNanos": 647.76,
+          "name": "CUBIC-full",
+          "evaluationsPerPass": 50000
+        },
+        {
+          "passNanos": [
+            14057800,
+            12793800,
+            13394700,
+            11145800,
+            10902000,
+            11135800,
+            11500900
+          ],
+          "medianNanos": 230.018,
+          "name": "CUBIC-cache",
+          "evaluationsPerPass": 50000
+        },
+        {
+          "passNanos": [
+            8144200,
+            7600800,
+            7121300,
+            6912700,
+            6879600,
+            7358700,
+            6973600
+          ],
+          "medianNanos": 142.426,
+          "name": "Gen32",
+          "evaluationsPerPass": 50000
+        }
+      ]
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\projection-cache-04.json",
+      "sha256": "87ae12f78ffbf88f531de257e40874d177e625377dcf31c6b317a9b3b3b55612",
+      "candidate": "W9-CAL-CUBIC-R4-LR001-degree-masked-search025",
+      "effectiveNetworkSha256": "5c5bcfc3c2f98946c54e5ec8b7fb5fe86406d912aba5a1a9e4324d82c8df2e47",
+      "variant": {
+        "residualScale": 0.25,
+        "maskDegree": true
+      },
+      "positions": 4340,
+      "fullCacheSearchPairs": 48,
+      "projectionError": 1.7763568394002505e-15,
+      "cacheError": 3.774758283725532e-15,
+      "latency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            36132300,
+            34520500,
+            33571600,
+            35257400,
+            33694200,
+            34356500,
+            36630700
+          ],
+          "medianNanos": 690.41,
+          "name": "CUBIC-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            16228500,
+            13786600,
+            11302000,
+            11133400,
+            11305100,
+            11355000,
+            12324300
+          ],
+          "medianNanos": 227.1,
+          "name": "CUBIC-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            9357500,
+            7038400,
+            7283200,
+            7153100,
+            6991400,
+            6859400,
+            7205800
+          ],
+          "medianNanos": 143.062,
+          "name": "Gen32"
+        }
+      ]
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\projection-cache-05.json",
+      "sha256": "657f6fb976b478b7de55a23cc5e8560153c80fa961ac868c529f6bcae533ce88",
+      "candidate": "W9-CAL-CUBIC-R4-LR001-degree-masked-native",
+      "effectiveNetworkSha256": "a049204c53b63874875f745d5d113a231631cad35abb5ed3f0002275251a211a",
+      "variant": {
+        "residualScale": 1.0,
+        "maskDegree": true
+      },
+      "positions": 4340,
+      "fullCacheSearchPairs": 48,
+      "projectionError": 0.0,
+      "cacheError": 4.7406523151494184e-14,
+      "latency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            43360200,
+            39682000,
+            36900500,
+            36367800,
+            37438200,
+            40569600,
+            38979200
+          ],
+          "medianNanos": 779.584,
+          "name": "CUBIC-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            17259500,
+            12630900,
+            12202000,
+            10932000,
+            10842800,
+            11556800,
+            11290700
+          ],
+          "medianNanos": 231.136,
+          "name": "CUBIC-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            7823500,
+            7273700,
+            6861300,
+            6823500,
+            6653500,
+            7031900,
+            7314100
+          ],
+          "medianNanos": 140.638,
+          "name": "Gen32"
+        }
+      ]
+    }
+  ],
+  "formula": "For native floating score V and material M, Vprime=M+s*(V-M), then one ordinary integer rounding. Optional extra heads are first masked using a separately validated affine-layout oracle; original cubic cache kind is retained.",
+  "purpose": "Isolate global residual score scale and unadapted degree contribution; no objective, GUI, owner checkpoint or production search change.",
+  "limitations": [
+    "No strength games on these variants yet; primary192-game programme remains frozen build59 with native coefficients.",
+    "Unadapted degree masks do not replace trained additive controls.",
+    "Research-only change; no application build increment or new GUI package required. Seven original production/dependency jars are byte-identical; newly built core differed only in application-version.properties and is not used."
+  ]
+}

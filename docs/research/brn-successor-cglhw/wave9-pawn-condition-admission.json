@@ -1,0 +1,30 @@
+{
+  "id": "wave9-pawn-condition-feasibility-v1",
+  "question": "Does a specific sparse non-pairwise pawn condition add held-out information beyond matched additive pawn geometry after calibration?",
+  "predictor": "W9-CAL-AFFINE-R4-LR001-g176",
+  "predictions": {
+    "fresh5": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01",
+    "old": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01"
+  },
+  "anchorPlan": "wave9-maturity-model-plan.json",
+  "anchorPlanSha256": "e6a32901330ef605ca186e63581ff70c7808d0a2313800b8bf3f757187b207a9",
+  "budget": {
+    "fitRows": 2043,
+    "epochs": 8,
+    "batch": 128,
+    "stepsPerArm": 128,
+    "rate": 0.01,
+    "l2": 0.001,
+    "seed": 2026102209
+  },
+  "arms": [
+    "affine4 + pawn-rank12 + additive opposing-blocker-count12",
+    "affine4 + pawn-rank12 + no-opposing-blocker-condition12"
+  ],
+  "objective": "Existing search-pawn CE on fixed trained affine baseline, plus.125 times new features; identical settings and data in both arms.",
+  "resource": "One bounded BelowNormal process, timeout300seconds, only between match batches; no owner writes or model export.",
+  "selection": "Report both fixed arms and all four evaluation halves. A positive fit is not admission to architecture/training or proof of useful chess information.",
+  "rationale": "G9 fixes calibration yet compact degree signals remain small and panel-dependent. Passed-pawn conjunction offers a distinct sparse information basis and an explicit pairwise control. It is separate from the prior broad visibility pilot.",
+  "script": "tools\\probe-brn-pawn-conditions.py",
+  "scriptSha256": "5fb01f2435c99b355a838ff8f1bfb255cf8c9e3b1a918e9079913f3076da097d"
+}

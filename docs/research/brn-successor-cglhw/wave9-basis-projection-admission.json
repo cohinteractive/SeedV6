@@ -1,0 +1,31 @@
+{
+  "id": "wave9-calibrated-basis-projection-v1",
+  "question": "How much of the learned cubic feature signal is linearly reproducible by ordinary calibration or the quadratic basis, and is poor conditioning a plausible optimization confound?",
+  "anchor": {
+    "name": "W9-CAL-AFFINE-R4-LR001",
+    "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-AFFINE-R4-LR001",
+    "checkpoint": "g000176-s000065536-16a82f32ff52b872fd12a2dd8ddfa3ede57e292c9e2f29974ac42f7fa57cb762",
+    "networkSha256": "df813617b4404ea826ea7f6b076fabbd12b4120f6b9e7e536e91a4c0fe7fbf21"
+  },
+  "predictor": "W9-CAL-AFFINE-R4-LR001-g176",
+  "learnedCubicHeads": [
+    -0.1674623477236847,
+    0.0254073204759999,
+    -0.0755735369212943,
+    -0.5955250235907561
+  ],
+  "predictions": {
+    "fresh5": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01",
+    "old": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01"
+  },
+  "fit": "Only2043 status-valid consumed fresh5 first-half rows; no target labels in the projection fit. Four evaluation halves reported, no selection.",
+  "spans": [
+    "affine4",
+    "affine4+quadratic4"
+  ],
+  "ridge": 1e-08,
+  "script": "tools\\probe-brn-calibrated-basis.py",
+  "scriptSha256": "132d0661861d4a90472c213ecb5984a2a3872d9d45f4ef8c9fc57e061675406e",
+  "resource": "One bounded BelowNormal CPU process between game batches, timeout120seconds; no training/store/model export.",
+  "limits": "Feature redundancy/conditioning does not establish prediction value or chess strength; remains development evidence."
+}

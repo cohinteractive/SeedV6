@@ -28,6 +28,10 @@ if (Test-Path -LiteralPath 'build/research/brn-successor-batches.pause') {
 }
 $binding=Get-Content -LiteralPath $RuntimeManifest -Raw -Encoding UTF8 | ConvertFrom-Json
 $configuration=Get-Content -LiteralPath $Plan -Raw -Encoding UTF8 | ConvertFrom-Json
+if (@($configuration.models | Where-Object { $null -ne $_.calibratedVariant }).Count -ne 0 `
+        -and @($binding.modelFeatures) -notcontains 'brn-calibrated-search-projection-v1') {
+    throw 'This plan requires explicit calibrated search projection capability.'
+}
 if (@($configuration.models | Where-Object { $_.correctionAblation -eq 'cubic-only' }).Count -ne 0 `
         -and @($binding.modelFeatures) -notcontains 'brn-cubic-only-ablation-v1') {
     throw 'This plan requires explicit cubic-only ablation capability.'

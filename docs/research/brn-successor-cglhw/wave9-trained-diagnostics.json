@@ -1,0 +1,1950 @@
+{
+  "id": "wave9-trained-diagnostics-v1",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\bt4-predictions.jsonl": "878b43c6223e3f6ea9824669569d5e9b87b4ce3bbc8abcf1e74f7f1a626e8c1a",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\cp-predictions.jsonl": "c903e919a76bd64c28a5486defe023f9ed60758df65751bea26414e3c7228395",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\bt4-predictions.jsonl": "5327d60cac2c766f95ad6f890e22d79db2075957d4cb7d1a839c4c396c573b25",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\cp-predictions.jsonl": "56781da22ad2083b54b08d4a3d2add8490aabcf2ea2c82eeb086eae577434832",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-cache-affine-01.json": "0336957f627248c6bb25967e31229bd6684b1e1f6bc09fdfa66af29315e946f4",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-cache-quad-01.json": "46cf63faf79315560945bde1612240a8a1df424b5063649988f52b97237bda33",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-cache-cubic-01.json": "1c8bba4edd170112b999a37fa1dda56415f561a2a561efdf05102e9ff4f1fcab"
+  },
+  "coefficients": [
+    {
+      "name": "W9-CAL-AFFINE-R4-LR001",
+      "trajectory": [
+        {
+          "generation": 168,
+          "heads": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "searchConstant": 0.0,
+          "searchMaterialCoefficient": 1.0,
+          "searchBaseResidualCoefficient": 0.25,
+          "searchQAnchorCoefficient": 0.125
+        },
+        {
+          "generation": 169,
+          "heads": [
+            1.8890017082328412,
+            -7.078181902135749,
+            6.918746788227529,
+            1.284655237402146
+          ],
+          "searchConstant": 0.23612521352910515,
+          "searchMaterialCoefficient": 0.889403407779129,
+          "searchBaseResidualCoefficient": 0.4662108371321103,
+          "searchQAnchorCoefficient": 0.28558190467526823
+        },
+        {
+          "generation": 170,
+          "heads": [
+            1.8732707629812626,
+            -12.452321096677924,
+            12.213555865865928,
+            2.9130428831923902
+          ],
+          "searchConstant": 0.23415884537265783,
+          "searchMaterialCoefficient": 0.8054324828644075,
+          "searchBaseResidualCoefficient": 0.6316736208083102,
+          "searchQAnchorCoefficient": 0.4891303603990488
+        },
+        {
+          "generation": 171,
+          "heads": [
+            1.4993459777528801,
+            -13.873548722463076,
+            13.947712309471303,
+            3.4066538639943578
+          ],
+          "searchConstant": 0.18741824721911002,
+          "searchMaterialCoefficient": 0.7832258012115144,
+          "searchBaseResidualCoefficient": 0.6858660096709782,
+          "searchQAnchorCoefficient": 0.5508317329992947
+        },
+        {
+          "generation": 172,
+          "heads": [
+            1.1432269806063171,
+            -13.982160826385464,
+            14.902379804353393,
+            3.9953771194565895
+          ],
+          "searchConstant": 0.14290337257578964,
+          "searchMaterialCoefficient": 0.7815287370877271,
+          "searchBaseResidualCoefficient": 0.7156993688860436,
+          "searchQAnchorCoefficient": 0.6244221399320737
+        },
+        {
+          "generation": 173,
+          "heads": [
+            0.9845352671845472,
+            -13.177189391314794,
+            15.565036687077631,
+            5.325816715684717
+          ],
+          "searchConstant": 0.1230669083980684,
+          "searchMaterialCoefficient": 0.7941064157607063,
+          "searchBaseResidualCoefficient": 0.7364073964711759,
+          "searchQAnchorCoefficient": 0.7907270894605897
+        },
+        {
+          "generation": 174,
+          "heads": [
+            0.8999938446514923,
+            -12.656719897092346,
+            15.799207698310834,
+            4.864923535275802
+          ],
+          "searchConstant": 0.11249923058143654,
+          "searchMaterialCoefficient": 0.8022387516079321,
+          "searchBaseResidualCoefficient": 0.7437252405722136,
+          "searchQAnchorCoefficient": 0.7331154419094752
+        },
+        {
+          "generation": 175,
+          "heads": [
+            0.8691160176783745,
+            -12.068928435945846,
+            16.403106682276274,
+            5.27451994272799
+          ],
+          "searchConstant": 0.10863950220979682,
+          "searchMaterialCoefficient": 0.8114229931883461,
+          "searchBaseResidualCoefficient": 0.7625970838211336,
+          "searchQAnchorCoefficient": 0.7843149928409987
+        },
+        {
+          "generation": 176,
+          "heads": [
+            0.7355641211851637,
+            -11.771020670188557,
+            17.00731147722114,
+            5.482777702104095
+          ],
+          "searchConstant": 0.09194551514814546,
+          "searchMaterialCoefficient": 0.8160778020283038,
+          "searchBaseResidualCoefficient": 0.7814784836631606,
+          "searchQAnchorCoefficient": 0.8103472127630119
+        }
+      ]
+    },
+    {
+      "name": "W9-CAL-QUAD-R4-LR001",
+      "trajectory": [
+        {
+          "generation": 168,
+          "heads": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "searchConstant": 0.0,
+          "searchMaterialCoefficient": 1.0,
+          "searchBaseResidualCoefficient": 0.25,
+          "searchQAnchorCoefficient": 0.125
+        },
+        {
+          "generation": 169,
+          "heads": [
+            1.0385217653879828,
+            -7.040257476308828,
+            6.901436881453414,
+            1.1107918138087698,
+            0.4916459973270449,
+            1.0747781150141267,
+            -1.0714918934478392,
+            -1.1561645900654605
+          ],
+          "searchConstant": 0.12981522067349785,
+          "searchMaterialCoefficient": 0.8899959769326745,
+          "searchBaseResidualCoefficient": 0.4656699025454192,
+          "searchQAnchorCoefficient": 0.2638489767260962
+        },
+        {
+          "generation": 170,
+          "heads": [
+            1.458489496722711,
+            -12.29584341987299,
+            12.114548449582612,
+            2.071710007417408,
+            0.45269005237741133,
+            1.541984555827205,
+            -0.5836662727103658,
+            -1.3762193594132295
+          ],
+          "searchConstant": 0.1823111870903389,
+          "searchMaterialCoefficient": 0.8078774465644846,
+          "searchBaseResidualCoefficient": 0.6285796390494567,
+          "searchQAnchorCoefficient": 0.383963750927176
+        },
+        {
+          "generation": 171,
+          "heads": [
+            0.5699209343101923,
+            -13.64214790662623,
+            13.773334219199915,
+            2.368433514599973,
+            0.6189279078044919,
+            1.132159840644252,
+            -0.42378109907090156,
+            -1.8259143758681586
+          ],
+          "searchConstant": 0.07124011678877404,
+          "searchMaterialCoefficient": 0.7868414389589652,
+          "searchBaseResidualCoefficient": 0.6804166943499974,
+          "searchQAnchorCoefficient": 0.4210541893249966
+        },
+        {
+          "generation": 172,
+          "heads": [
+            0.5457755045912428,
+            -13.90864188617473,
+            14.911132923038812,
+            2.5020393272353467,
+            0.4131435053020363,
+            0.8680128973443222,
+            0.10662181659328693,
+            -1.8284721885729718
+          ],
+          "searchConstant": 0.06822193807390535,
+          "searchMaterialCoefficient": 0.7826774705285199,
+          "searchBaseResidualCoefficient": 0.7159729038449629,
+          "searchQAnchorCoefficient": 0.43775491590441834
+        },
+        {
+          "generation": 173,
+          "heads": [
+            0.6717094145409958,
+            -13.242228280893059,
+            15.540965949621157,
+            3.369434952415176,
+            0.4705028245340746,
+            0.4726440551837007,
+            0.43964248054870086,
+            -1.6009911906573169
+          ],
+          "searchConstant": 0.08396367681762447,
+          "searchMaterialCoefficient": 0.793090183111046,
+          "searchBaseResidualCoefficient": 0.7356551859256611,
+          "searchQAnchorCoefficient": 0.546179369051897
+        },
+        {
+          "generation": 174,
+          "heads": [
+            0.2909528613931273,
+            -12.731943368087864,
+            15.744299805202221,
+            3.1775611925700495,
+            0.2632906259897592,
+            0.1866366468401881,
+            0.17106665229984422,
+            -1.1820789622273276
+          ],
+          "searchConstant": 0.036369107674140914,
+          "searchMaterialCoefficient": 0.8010633848736272,
+          "searchBaseResidualCoefficient": 0.7420093689125694,
+          "searchQAnchorCoefficient": 0.5221951490712562
+        },
+        {
+          "generation": 175,
+          "heads": [
+            0.46599558455973117,
+            -12.229248575284897,
+            16.377609606155826,
+            3.7982354340515454,
+            0.3758905913214739,
+            0.09030783244696339,
+            0.4444023175828926,
+            -1.2311800136843576
+          ],
+          "searchConstant": 0.058249448069966396,
+          "searchMaterialCoefficient": 0.8089179910111735,
+          "searchBaseResidualCoefficient": 0.7618003001923696,
+          "searchQAnchorCoefficient": 0.5997794292564431
+        },
+        {
+          "generation": 176,
+          "heads": [
+            0.37231512173245845,
+            -12.02015547838638,
+            16.930131430330206,
+            4.18830472639637,
+            0.1306153200213341,
+            0.1040445779601236,
+            0.45684821929791397,
+            -1.2763011754094207
+          ],
+          "searchConstant": 0.04653939021655731,
+          "searchMaterialCoefficient": 0.8121850706502128,
+          "searchBaseResidualCoefficient": 0.779066607197819,
+          "searchQAnchorCoefficient": 0.6485380907995463
+        }
+      ]
+    },
+    {
+      "name": "W9-CAL-CUBIC-R4-LR001",
+      "trajectory": [
+        {
+          "generation": 168,
+          "heads": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "searchConstant": 0.0,
+          "searchMaterialCoefficient": 1.0,
+          "searchBaseResidualCoefficient": 0.25,
+          "searchQAnchorCoefficient": 0.125
+        },
+        {
+          "generation": 169,
+          "heads": [
+            1.2400427871911766,
+            -6.893121256374655,
+            6.72508081882502,
+            0.799549548231431,
+            0.4680439095959253,
+            -1.9386787548340267,
+            -0.8195167620299033,
+            -2.646820167227735
+          ],
+          "searchConstant": 0.15500534839889707,
+          "searchMaterialCoefficient": 0.892294980369146,
+          "searchBaseResidualCoefficient": 0.4601587755882819,
+          "searchQAnchorCoefficient": 0.22494369352892887
+        },
+        {
+          "generation": 170,
+          "heads": [
+            0.8975421193694441,
+            -12.009630827085745,
+            11.756977704154194,
+            2.1395749166715925,
+            0.5682208687034295,
+            -1.584299814379927,
+            -0.5369177504353747,
+            -2.325857566803887
+          ],
+          "searchConstant": 0.11219276492118051,
+          "searchMaterialCoefficient": 0.8123495183267853,
+          "searchBaseResidualCoefficient": 0.6174055532548186,
+          "searchQAnchorCoefficient": 0.39244686458394906
+        },
+        {
+          "generation": 171,
+          "heads": [
+            0.37508771249095973,
+            -13.43165367378049,
+            13.477406166903613,
+            2.7066477406791787,
+            0.057099216508118764,
+            -1.050344425599691,
+            -0.046530697811253324,
+            -1.7776689483568016
+          ],
+          "searchConstant": 0.04688596406136997,
+          "searchMaterialCoefficient": 0.7901304113471799,
+          "searchBaseResidualCoefficient": 0.6711689427157379,
+          "searchQAnchorCoefficient": 0.46333096758489734
+        },
+        {
+          "generation": 172,
+          "heads": [
+            0.03795039612814423,
+            -13.846743642742782,
+            14.590081479592236,
+            3.5793225270753837,
+            -0.15863370222732592,
+            -0.8841566741077653,
+            -0.138830261786325,
+            -1.692125210024695
+          ],
+          "searchConstant": 0.004743799516018029,
+          "searchMaterialCoefficient": 0.7836446305821441,
+          "searchBaseResidualCoefficient": 0.7059400462372574,
+          "searchQAnchorCoefficient": 0.572415315884423
+        },
+        {
+          "generation": 173,
+          "heads": [
+            0.5674336714762059,
+            -13.277528829110384,
+            15.270957412327196,
+            4.779687876203831,
+            -0.29809437234412,
+            -0.063621872818354,
+            -0.03769496726950968,
+            -1.0158247983430553
+          ],
+          "searchConstant": 0.07092920893452574,
+          "searchMaterialCoefficient": 0.7925386120451503,
+          "searchBaseResidualCoefficient": 0.7272174191352249,
+          "searchQAnchorCoefficient": 0.7224609845254789
+        },
+        {
+          "generation": 174,
+          "heads": [
+            0.6123651686748227,
+            -12.86723631609375,
+            15.660500381720423,
+            4.581077695367229,
+            -0.2676873653838502,
+            -0.09712960177800112,
+            -0.15226823183662555,
+            -0.7803056813045017
+          ],
+          "searchConstant": 0.07654564608435284,
+          "searchMaterialCoefficient": 0.7989494325610351,
+          "searchBaseResidualCoefficient": 0.7393906369287633,
+          "searchQAnchorCoefficient": 0.6976347119209036
+        },
+        {
+          "generation": 175,
+          "heads": [
+            0.6416668645010916,
+            -12.476377337446708,
+            16.223081445287853,
+            5.014251294725975,
+            -0.4682270202141468,
+            0.2691392335494912,
+            0.03566539093689349,
+            -0.4792957771463669
+          ],
+          "searchConstant": 0.08020835806263645,
+          "searchMaterialCoefficient": 0.8050566041023952,
+          "searchBaseResidualCoefficient": 0.7569712951652454,
+          "searchQAnchorCoefficient": 0.7517814118407469
+        },
+        {
+          "generation": 176,
+          "heads": [
+            0.6886938266332031,
+            -12.141638048459273,
+            16.628616818348345,
+            5.073798040431991,
+            -0.1674623477236847,
+            0.0254073204759999,
+            -0.0755735369212943,
+            -0.5955250235907561
+          ],
+          "searchConstant": 0.08608672832915039,
+          "searchMaterialCoefficient": 0.8102869054928239,
+          "searchBaseResidualCoefficient": 0.7696442755733858,
+          "searchQAnchorCoefficient": 0.7592247550539989
+        }
+      ]
+    }
+  ],
+  "panels": [
+    {
+      "panel": "fresh5",
+      "source": "bt4",
+      "statusValidEvaluationRows": 1024,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.7674759687349086,
+          "scoreMeanPawns": -0.036599163776959154,
+          "scoreRmsPawns": 2.0262971952340196,
+          "residualRmsPawns": 0.50051935582946,
+          "minPawns": -17.600582426531787,
+          "maxPawns": 15.161135563962194,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g168": {
+          "crossEntropy": 0.7679547539320146,
+          "scoreMeanPawns": -0.05899123315056483,
+          "scoreRmsPawns": 2.031033803459852,
+          "residualRmsPawns": 0.4918588960862635,
+          "minPawns": -17.40090991547484,
+          "maxPawns": 15.284961287108237,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g168-zero-heads": {
+          "crossEntropy": 0.7679547539320146,
+          "scoreMeanPawns": -0.05899123315056483,
+          "scoreRmsPawns": 2.031033803459852,
+          "residualRmsPawns": 0.4918588960862635,
+          "minPawns": -17.40090991547484,
+          "maxPawns": 15.284961287108237,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g176": {
+          "crossEntropy": 0.651134888535494,
+          "scoreMeanPawns": 0.1364451406371374,
+          "scoreRmsPawns": 0.7073249866576946,
+          "residualRmsPawns": 1.9812959219000073,
+          "minPawns": -3.277100196360024,
+          "maxPawns": 5.555116581379838,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g176-zero-heads": {
+          "crossEntropy": 0.7679547539320146,
+          "scoreMeanPawns": -0.05899123315056483,
+          "scoreRmsPawns": 2.031033803459852,
+          "residualRmsPawns": 0.4918588960862635,
+          "minPawns": -17.40090991547484,
+          "maxPawns": 15.284961287108237,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-best": {
+          "crossEntropy": 0.6505629010660229,
+          "scoreMeanPawns": 0.15123714861724738,
+          "scoreRmsPawns": 0.7241509118200529,
+          "residualRmsPawns": 1.9585431350980094,
+          "minPawns": -3.5176782539996125,
+          "maxPawns": 5.71207867663713,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-best-zero-heads": {
+          "crossEntropy": 0.7679547539320146,
+          "scoreMeanPawns": -0.05899123315056483,
+          "scoreRmsPawns": 2.031033803459852,
+          "residualRmsPawns": 0.4918588960862635,
+          "minPawns": -17.40090991547484,
+          "maxPawns": 15.284961287108237,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g168": {
+          "crossEntropy": 0.7679547539320146,
+          "scoreMeanPawns": -0.05899123315056483,
+          "scoreRmsPawns": 2.031033803459852,
+          "residualRmsPawns": 0.4918588960862635,
+          "minPawns": -17.40090991547484,
+          "maxPawns": 15.284961287108237,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g168-zero-heads": {
+          "crossEntropy": 0.7679547539320146,
+          "scoreMeanPawns": -0.05899123315056483,
+          "scoreRmsPawns": 2.031033803459852,
+          "residualRmsPawns": 0.4918588960862635,
+          "minPawns": -17.40090991547484,
+          "maxPawns": 15.284961287108237,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g168-affine-only": {
+          "crossEntropy": 0.7679547539320146,
+          "scoreMeanPawns": -0.05899123315056483,
+          "scoreRmsPawns": 2.031033803459852,
+          "residualRmsPawns": 0.4918588960862635,
+          "minPawns": -17.40090991547484,
+          "maxPawns": 15.284961287108237,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g176": {
+          "crossEntropy": 0.6511355548092856,
+          "scoreMeanPawns": 0.1443927077553101,
+          "scoreRmsPawns": 0.7087075591356921,
+          "residualRmsPawns": 1.98421617193266,
+          "minPawns": -3.4254246847422287,
+          "maxPawns": 5.462237914791732,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g176-zero-heads": {
+          "crossEntropy": 0.7679547539320146,
+          "scoreMeanPawns": -0.05899123315056483,
+          "scoreRmsPawns": 2.031033803459852,
+          "residualRmsPawns": 0.4918588960862635,
+          "minPawns": -17.40090991547484,
+          "maxPawns": 15.284961287108237,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g176-affine-only": {
+          "crossEntropy": 0.6491663254737644,
+          "scoreMeanPawns": 0.11962047390125952,
+          "scoreRmsPawns": 0.6847204375369434,
+          "residualRmsPawns": 1.9858591838302606,
+          "minPawns": -3.536629337139601,
+          "maxPawns": 5.309617603829945,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-best": {
+          "crossEntropy": 0.650743877648831,
+          "scoreMeanPawns": 0.13939924848317484,
+          "scoreRmsPawns": 0.7204215988461413,
+          "residualRmsPawns": 1.9628263896550369,
+          "minPawns": -3.60881673669299,
+          "maxPawns": 5.613166339244703,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-best-zero-heads": {
+          "crossEntropy": 0.7679547539320146,
+          "scoreMeanPawns": -0.05899123315056483,
+          "scoreRmsPawns": 2.031033803459852,
+          "residualRmsPawns": 0.4918588960862635,
+          "minPawns": -17.40090991547484,
+          "maxPawns": 15.284961287108237,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-best-affine-only": {
+          "crossEntropy": 0.6485159021886036,
+          "scoreMeanPawns": 0.13393101086994055,
+          "scoreRmsPawns": 0.7006361831917398,
+          "residualRmsPawns": 1.9631339190581722,
+          "minPawns": -3.8216167866868425,
+          "maxPawns": 5.443185513758127,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g168": {
+          "crossEntropy": 0.7679547539320146,
+          "scoreMeanPawns": -0.05899123315056483,
+          "scoreRmsPawns": 2.031033803459852,
+          "residualRmsPawns": 0.4918588960862635,
+          "minPawns": -17.40090991547484,
+          "maxPawns": 15.284961287108237,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g168-zero-heads": {
+          "crossEntropy": 0.7679547539320146,
+          "scoreMeanPawns": -0.05899123315056483,
+          "scoreRmsPawns": 2.031033803459852,
+          "residualRmsPawns": 0.4918588960862635,
+          "minPawns": -17.40090991547484,
+          "maxPawns": 15.284961287108237,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g168-affine-only": {
+          "crossEntropy": 0.7679547539320146,
+          "scoreMeanPawns": -0.05899123315056483,
+          "scoreRmsPawns": 2.031033803459852,
+          "residualRmsPawns": 0.4918588960862635,
+          "minPawns": -17.40090991547484,
+          "maxPawns": 15.284961287108237,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g176": {
+          "crossEntropy": 0.6510625047690908,
+          "scoreMeanPawns": 0.14556787262559798,
+          "scoreRmsPawns": 0.713411744635635,
+          "residualRmsPawns": 1.9789979675009726,
+          "minPawns": -3.4469152101862797,
+          "maxPawns": 5.508377332883793,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g176-zero-heads": {
+          "crossEntropy": 0.7679547539320146,
+          "scoreMeanPawns": -0.05899123315056483,
+          "scoreRmsPawns": 2.031033803459852,
+          "residualRmsPawns": 0.4918588960862635,
+          "minPawns": -17.40090991547484,
+          "maxPawns": 15.284961287108237,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g176-affine-only": {
+          "crossEntropy": 0.6503113128720299,
+          "scoreMeanPawns": 0.136007610573845,
+          "scoreRmsPawns": 0.7065516906472197,
+          "residualRmsPawns": 1.9729754589066342,
+          "minPawns": -3.437166556092116,
+          "maxPawns": 5.549535276869321,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-best": {
+          "crossEntropy": 0.6512299735935554,
+          "scoreMeanPawns": 0.14888247777312613,
+          "scoreRmsPawns": 0.7257050402810409,
+          "residualRmsPawns": 1.966082486941848,
+          "minPawns": -3.404968882763953,
+          "maxPawns": 5.561348118677795,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-best-zero-heads": {
+          "crossEntropy": 0.7679547539320146,
+          "scoreMeanPawns": -0.05899123315056483,
+          "scoreRmsPawns": 2.031033803459852,
+          "residualRmsPawns": 0.4918588960862635,
+          "minPawns": -17.40090991547484,
+          "maxPawns": 15.284961287108237,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-best-affine-only": {
+          "crossEntropy": 0.650045841759433,
+          "scoreMeanPawns": 0.1273333010147465,
+          "scoreRmsPawns": 0.7110195291925638,
+          "residualRmsPawns": 1.9601806312482697,
+          "minPawns": -3.5537907507187505,
+          "maxPawns": 5.608776366475269,
+          "beyondSearchClamp": 0
+        },
+        "W9-BRE-CONTROL-LR001-g168": {
+          "crossEntropy": 0.7714103002573408,
+          "scoreMeanPawns": -0.09268626914498772,
+          "scoreRmsPawns": 2.032116218155699,
+          "residualRmsPawns": 0.4900807173697842,
+          "minPawns": -17.750487937300825,
+          "maxPawns": 15.174277658661168,
+          "beyondSearchClamp": 0
+        },
+        "W9-BRE-CONTROL-LR001-g176": {
+          "crossEntropy": 0.7714266101144753,
+          "scoreMeanPawns": -0.09571746107976635,
+          "scoreRmsPawns": 2.0280954884949263,
+          "residualRmsPawns": 0.493177234775632,
+          "minPawns": -17.702354431540986,
+          "maxPawns": 15.014138845174601,
+          "beyondSearchClamp": 0
+        },
+        "W9-BRE-CONTROL-LR001-best": {
+          "crossEntropy": 0.7714266101144753,
+          "scoreMeanPawns": -0.09571746107976635,
+          "scoreRmsPawns": 2.0280954884949263,
+          "residualRmsPawns": 0.493177234775632,
+          "minPawns": -17.702354431540986,
+          "maxPawns": 15.014138845174601,
+          "beyondSearchClamp": 0
+        }
+      },
+      "contrasts": [
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-g176",
+          "right": "W9-CAL-AFFINE-R4-LR001-g176",
+          "crossEntropyDifference": 6.662737916940387e-07,
+          "meanScoreChangePawns": 0.007947567118172722,
+          "rmsScoreChangePawns": 0.06380854689118351,
+          "maxAbsoluteChangePawns": 0.27513344166348164
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-AFFINE-R4-LR001-g176",
+          "crossEntropyDifference": -7.238376640317234e-05,
+          "meanScoreChangePawns": 0.009122731988460591,
+          "rmsScoreChangePawns": 0.06272265523847502,
+          "maxAbsoluteChangePawns": 0.251756222714838
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-QUAD-R4-LR001-g176",
+          "crossEntropyDifference": -7.305004019486638e-05,
+          "meanScoreChangePawns": 0.0011751648702878704,
+          "rmsScoreChangePawns": 0.07343203389852059,
+          "maxAbsoluteChangePawns": 0.2655176114970854
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-g176",
+          "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+          "crossEntropyDifference": 0.0019692293355212387,
+          "meanScoreChangePawns": 0.024772233854050595,
+          "rmsScoreChangePawns": 0.07648169383792891,
+          "maxAbsoluteChangePawns": 0.45398870954432735
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+          "crossEntropyDifference": 0.0007511918970608544,
+          "meanScoreChangePawns": 0.009560262051752972,
+          "rmsScoreChangePawns": 0.061412104732004015,
+          "maxAbsoluteChangePawns": 0.24486287882491764
+        },
+        {
+          "left": "W9-CAL-AFFINE-R4-LR001-g176",
+          "right": "W9-CAL-AFFINE-R4-LR001-g168",
+          "crossEntropyDifference": -0.11681986539652067,
+          "meanScoreChangePawns": 0.1954363737877022,
+          "rmsScoreChangePawns": 1.4915904879719766,
+          "maxAbsoluteChangePawns": 14.123809719114817
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-g176",
+          "right": "W9-CAL-QUAD-R4-LR001-g168",
+          "crossEntropyDifference": -0.11681919912272898,
+          "meanScoreChangePawns": 0.20338394090587494,
+          "rmsScoreChangePawns": 1.4944889770078154,
+          "maxAbsoluteChangePawns": 13.975485230732613
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-CUBIC-R4-LR001-g168",
+          "crossEntropyDifference": -0.11689224916292384,
+          "meanScoreChangePawns": 0.2045591057761628,
+          "rmsScoreChangePawns": 1.4892076222795856,
+          "maxAbsoluteChangePawns": 13.953994705288562
+        }
+      ]
+    },
+    {
+      "panel": "fresh5",
+      "source": "cp",
+      "statusValidEvaluationRows": 1015,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.9846966609646659,
+          "scoreMeanPawns": -0.1165380781866069,
+          "scoreRmsPawns": 2.8698322223862114,
+          "residualRmsPawns": 0.7253905101944673,
+          "minPawns": -16.115624469123542,
+          "maxPawns": 18.291009752281095,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g168": {
+          "crossEntropy": 0.9784849237627349,
+          "scoreMeanPawns": -0.13807500078222557,
+          "scoreRmsPawns": 2.8850665682725007,
+          "residualRmsPawns": 0.7095699286521135,
+          "minPawns": -16.003052295170342,
+          "maxPawns": 18.516002561165408,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g168-zero-heads": {
+          "crossEntropy": 0.9784849237627349,
+          "scoreMeanPawns": -0.13807500078222557,
+          "scoreRmsPawns": 2.8850665682725007,
+          "residualRmsPawns": 0.7095699286521135,
+          "minPawns": -16.003052295170342,
+          "maxPawns": 18.516002561165408,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g176": {
+          "crossEntropy": 0.5677578328918713,
+          "scoreMeanPawns": 0.1854098278865795,
+          "scoreRmsPawns": 1.0055944770536802,
+          "residualRmsPawns": 2.828999280214365,
+          "minPawns": -3.249778619189943,
+          "maxPawns": 7.217300270179692,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g176-zero-heads": {
+          "crossEntropy": 0.9784849237627349,
+          "scoreMeanPawns": -0.13807500078222557,
+          "scoreRmsPawns": 2.8850665682725007,
+          "residualRmsPawns": 0.7095699286521135,
+          "minPawns": -16.003052295170342,
+          "maxPawns": 18.516002561165408,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-best": {
+          "crossEntropy": 0.5673542235030239,
+          "scoreMeanPawns": 0.19706200233661006,
+          "scoreRmsPawns": 1.0272085829179525,
+          "residualRmsPawns": 2.7960267044188654,
+          "minPawns": -3.290128812574938,
+          "maxPawns": 7.3861169177445944,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-best-zero-heads": {
+          "crossEntropy": 0.9784849237627349,
+          "scoreMeanPawns": -0.13807500078222557,
+          "scoreRmsPawns": 2.8850665682725007,
+          "residualRmsPawns": 0.7095699286521135,
+          "minPawns": -16.003052295170342,
+          "maxPawns": 18.516002561165408,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g168": {
+          "crossEntropy": 0.9784849237627349,
+          "scoreMeanPawns": -0.13807500078222557,
+          "scoreRmsPawns": 2.8850665682725007,
+          "residualRmsPawns": 0.7095699286521135,
+          "minPawns": -16.003052295170342,
+          "maxPawns": 18.516002561165408,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g168-zero-heads": {
+          "crossEntropy": 0.9784849237627349,
+          "scoreMeanPawns": -0.13807500078222557,
+          "scoreRmsPawns": 2.8850665682725007,
+          "residualRmsPawns": 0.7095699286521135,
+          "minPawns": -16.003052295170342,
+          "maxPawns": 18.516002561165408,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g168-affine-only": {
+          "crossEntropy": 0.9784849237627349,
+          "scoreMeanPawns": -0.13807500078222557,
+          "scoreRmsPawns": 2.8850665682725007,
+          "residualRmsPawns": 0.7095699286521135,
+          "minPawns": -16.003052295170342,
+          "maxPawns": 18.516002561165408,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g176": {
+          "crossEntropy": 0.5672036586364099,
+          "scoreMeanPawns": 0.18489687609835678,
+          "scoreRmsPawns": 1.0048202834619677,
+          "residualRmsPawns": 2.8372657453207495,
+          "minPawns": -3.214673878541573,
+          "maxPawns": 7.169999789653975,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g176-zero-heads": {
+          "crossEntropy": 0.9784849237627349,
+          "scoreMeanPawns": -0.13807500078222557,
+          "scoreRmsPawns": 2.8850665682725007,
+          "residualRmsPawns": 0.7095699286521135,
+          "minPawns": -16.003052295170342,
+          "maxPawns": 18.516002561165408,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g176-affine-only": {
+          "crossEntropy": 0.5708347089053513,
+          "scoreMeanPawns": 0.16751867170232115,
+          "scoreRmsPawns": 0.9649403538420005,
+          "residualRmsPawns": 2.844851852750668,
+          "minPawns": -3.2153704406366614,
+          "maxPawns": 6.832515925821898,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-best": {
+          "crossEntropy": 0.567002509943985,
+          "scoreMeanPawns": 0.17803319851655824,
+          "scoreRmsPawns": 1.0215633298423932,
+          "residualRmsPawns": 2.8068073598799734,
+          "minPawns": -3.2578625091205993,
+          "maxPawns": 7.289816184453979,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-best-zero-heads": {
+          "crossEntropy": 0.9784849237627349,
+          "scoreMeanPawns": -0.13807500078222557,
+          "scoreRmsPawns": 2.8850665682725007,
+          "residualRmsPawns": 0.7095699286521135,
+          "minPawns": -16.003052295170342,
+          "maxPawns": 18.516002561165408,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-best-affine-only": {
+          "crossEntropy": 0.5706915500604242,
+          "scoreMeanPawns": 0.17866158974644764,
+          "scoreRmsPawns": 0.9836716557073761,
+          "residualRmsPawns": 2.813340565185599,
+          "minPawns": -3.350826490779884,
+          "maxPawns": 6.960489158624835,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g168": {
+          "crossEntropy": 0.9784849237627349,
+          "scoreMeanPawns": -0.13807500078222557,
+          "scoreRmsPawns": 2.8850665682725007,
+          "residualRmsPawns": 0.7095699286521135,
+          "minPawns": -16.003052295170342,
+          "maxPawns": 18.516002561165408,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g168-zero-heads": {
+          "crossEntropy": 0.9784849237627349,
+          "scoreMeanPawns": -0.13807500078222557,
+          "scoreRmsPawns": 2.8850665682725007,
+          "residualRmsPawns": 0.7095699286521135,
+          "minPawns": -16.003052295170342,
+          "maxPawns": 18.516002561165408,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g168-affine-only": {
+          "crossEntropy": 0.9784849237627349,
+          "scoreMeanPawns": -0.13807500078222557,
+          "scoreRmsPawns": 2.8850665682725007,
+          "residualRmsPawns": 0.7095699286521135,
+          "minPawns": -16.003052295170342,
+          "maxPawns": 18.516002561165408,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g176": {
+          "crossEntropy": 0.5683146441947377,
+          "scoreMeanPawns": 0.19134514870518707,
+          "scoreRmsPawns": 1.0132127257009607,
+          "residualRmsPawns": 2.831200219015216,
+          "minPawns": -3.245426989179405,
+          "maxPawns": 7.044918440965564,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g176-zero-heads": {
+          "crossEntropy": 0.9784849237627349,
+          "scoreMeanPawns": -0.13807500078222557,
+          "scoreRmsPawns": 2.8850665682725007,
+          "residualRmsPawns": 0.7095699286521135,
+          "minPawns": -16.003052295170342,
+          "maxPawns": 18.516002561165408,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g176-affine-only": {
+          "crossEntropy": 0.5685002031385146,
+          "scoreMeanPawns": 0.18313111108694233,
+          "scoreRmsPawns": 1.0020040992774104,
+          "residualRmsPawns": 2.819171043263632,
+          "minPawns": -3.252275033972378,
+          "maxPawns": 7.180059919495999,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-best": {
+          "crossEntropy": 0.5666490050064946,
+          "scoreMeanPawns": 0.18919310251500818,
+          "scoreRmsPawns": 1.032612777690616,
+          "residualRmsPawns": 2.8033345020419302,
+          "minPawns": -3.2833137479225165,
+          "maxPawns": 7.115837910043588,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-best-zero-heads": {
+          "crossEntropy": 0.9784849237627349,
+          "scoreMeanPawns": -0.13807500078222557,
+          "scoreRmsPawns": 2.8850665682725007,
+          "residualRmsPawns": 0.7095699286521135,
+          "minPawns": -16.003052295170342,
+          "maxPawns": 18.516002561165408,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-best-affine-only": {
+          "crossEntropy": 0.5687762229452795,
+          "scoreMeanPawns": 0.17268541806455318,
+          "scoreRmsPawns": 1.0091429963323901,
+          "residualRmsPawns": 2.8007246718202037,
+          "minPawns": -3.2908212822017653,
+          "maxPawns": 7.247371658414448,
+          "beyondSearchClamp": 0
+        },
+        "W9-BRE-CONTROL-LR001-g168": {
+          "crossEntropy": 0.9892746324063169,
+          "scoreMeanPawns": -0.18405131530479651,
+          "scoreRmsPawns": 2.8872518246471213,
+          "residualRmsPawns": 0.7040442127972698,
+          "minPawns": -16.233535923842318,
+          "maxPawns": 18.2606944019178,
+          "beyondSearchClamp": 0
+        },
+        "W9-BRE-CONTROL-LR001-g176": {
+          "crossEntropy": 0.9884465103207798,
+          "scoreMeanPawns": -0.18589225850083327,
+          "scoreRmsPawns": 2.8806345982122834,
+          "residualRmsPawns": 0.7102710988050861,
+          "minPawns": -16.313193000033007,
+          "maxPawns": 18.276368932167166,
+          "beyondSearchClamp": 0
+        },
+        "W9-BRE-CONTROL-LR001-best": {
+          "crossEntropy": 0.9884465103207798,
+          "scoreMeanPawns": -0.18589225850083327,
+          "scoreRmsPawns": 2.8806345982122834,
+          "residualRmsPawns": 0.7102710988050861,
+          "minPawns": -16.313193000033007,
+          "maxPawns": 18.276368932167166,
+          "beyondSearchClamp": 0
+        }
+      },
+      "contrasts": [
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-g176",
+          "right": "W9-CAL-AFFINE-R4-LR001-g176",
+          "crossEntropyDifference": -0.0005541742554614482,
+          "meanScoreChangePawns": -0.0005129517882227242,
+          "rmsScoreChangePawns": 0.066864994678462,
+          "maxAbsoluteChangePawns": 0.30983939650179915
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-AFFINE-R4-LR001-g176",
+          "crossEntropyDifference": 0.0005568113028663335,
+          "meanScoreChangePawns": 0.005935320818607553,
+          "rmsScoreChangePawns": 0.0662745166925813,
+          "maxAbsoluteChangePawns": 0.23836040966614613
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-QUAD-R4-LR001-g176",
+          "crossEntropyDifference": 0.0011109855583277817,
+          "meanScoreChangePawns": 0.0064482726068302776,
+          "rmsScoreChangePawns": 0.08519060623858772,
+          "maxAbsoluteChangePawns": 0.3020677343579732
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-g176",
+          "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+          "crossEntropyDifference": -0.0036310502689413937,
+          "meanScoreChangePawns": 0.017378204396035612,
+          "rmsScoreChangePawns": 0.08602974793689916,
+          "maxAbsoluteChangePawns": 0.46368519089364924
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+          "crossEntropyDifference": -0.00018555894377692006,
+          "meanScoreChangePawns": 0.008214037618244718,
+          "rmsScoreChangePawns": 0.06849634294285374,
+          "maxAbsoluteChangePawns": 0.23420635637433707
+        },
+        {
+          "left": "W9-CAL-AFFINE-R4-LR001-g176",
+          "right": "W9-CAL-AFFINE-R4-LR001-g168",
+          "crossEntropyDifference": -0.41072709087086356,
+          "meanScoreChangePawns": 0.32348482866880507,
+          "rmsScoreChangePawns": 2.1212568360172557,
+          "maxAbsoluteChangePawns": 13.107412998262031
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-g176",
+          "right": "W9-CAL-QUAD-R4-LR001-g168",
+          "crossEntropyDifference": -0.411281265126325,
+          "meanScoreChangePawns": 0.3229718768805823,
+          "rmsScoreChangePawns": 2.129475138621326,
+          "maxAbsoluteChangePawns": 13.073523833760738
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-CUBIC-R4-LR001-g168",
+          "crossEntropyDifference": -0.41017027956799723,
+          "meanScoreChangePawns": 0.3294201494874126,
+          "rmsScoreChangePawns": 2.123341569584986,
+          "maxAbsoluteChangePawns": 13.044914662102766
+        }
+      ]
+    },
+    {
+      "panel": "old",
+      "source": "bt4",
+      "statusValidEvaluationRows": 1024,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.7800438889271725,
+          "scoreMeanPawns": 0.017413281009328322,
+          "scoreRmsPawns": 2.2453588069668053,
+          "residualRmsPawns": 0.547426637623026,
+          "minPawns": -13.57887178518684,
+          "maxPawns": 17.031616558175784,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g168": {
+          "crossEntropy": 0.7804399439276047,
+          "scoreMeanPawns": -0.007682209562476152,
+          "scoreRmsPawns": 2.261266308376808,
+          "residualRmsPawns": 0.5281362535115744,
+          "minPawns": -13.590839646001292,
+          "maxPawns": 17.17676983149672,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g168-zero-heads": {
+          "crossEntropy": 0.7804399439276047,
+          "scoreMeanPawns": -0.007682209562476152,
+          "scoreRmsPawns": 2.261266308376808,
+          "residualRmsPawns": 0.5281362535115744,
+          "minPawns": -13.590839646001292,
+          "maxPawns": 17.17676983149672,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g176": {
+          "crossEntropy": 0.6306132498523778,
+          "scoreMeanPawns": 0.14858106124012488,
+          "scoreRmsPawns": 0.8196206242389209,
+          "residualRmsPawns": 2.1055848699076174,
+          "minPawns": -3.6267769843068756,
+          "maxPawns": 6.0547878834385855,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g176-zero-heads": {
+          "crossEntropy": 0.7804399439276047,
+          "scoreMeanPawns": -0.007682209562476152,
+          "scoreRmsPawns": 2.261266308376808,
+          "residualRmsPawns": 0.5281362535115744,
+          "minPawns": -13.590839646001292,
+          "maxPawns": 17.17676983149672,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-best": {
+          "crossEntropy": 0.6302027312657942,
+          "scoreMeanPawns": 0.16412699755188684,
+          "scoreRmsPawns": 0.838745029571092,
+          "residualRmsPawns": 2.0822921266007715,
+          "minPawns": -3.772667447283421,
+          "maxPawns": 6.214750727176668,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-best-zero-heads": {
+          "crossEntropy": 0.7804399439276047,
+          "scoreMeanPawns": -0.007682209562476152,
+          "scoreRmsPawns": 2.261266308376808,
+          "residualRmsPawns": 0.5281362535115744,
+          "minPawns": -13.590839646001292,
+          "maxPawns": 17.17676983149672,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g168": {
+          "crossEntropy": 0.7804399439276047,
+          "scoreMeanPawns": -0.007682209562476152,
+          "scoreRmsPawns": 2.261266308376808,
+          "residualRmsPawns": 0.5281362535115744,
+          "minPawns": -13.590839646001292,
+          "maxPawns": 17.17676983149672,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g168-zero-heads": {
+          "crossEntropy": 0.7804399439276047,
+          "scoreMeanPawns": -0.007682209562476152,
+          "scoreRmsPawns": 2.261266308376808,
+          "residualRmsPawns": 0.5281362535115744,
+          "minPawns": -13.590839646001292,
+          "maxPawns": 17.17676983149672,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g168-affine-only": {
+          "crossEntropy": 0.7804399439276047,
+          "scoreMeanPawns": -0.007682209562476152,
+          "scoreRmsPawns": 2.261266308376808,
+          "residualRmsPawns": 0.5281362535115744,
+          "minPawns": -13.590839646001292,
+          "maxPawns": 17.17676983149672,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g176": {
+          "crossEntropy": 0.630058116716625,
+          "scoreMeanPawns": 0.15707952222940208,
+          "scoreRmsPawns": 0.8185341799749953,
+          "residualRmsPawns": 2.110873425194387,
+          "minPawns": -3.6997145026333307,
+          "maxPawns": 5.725267785519158,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g176-zero-heads": {
+          "crossEntropy": 0.7804399439276047,
+          "scoreMeanPawns": -0.007682209562476152,
+          "scoreRmsPawns": 2.261266308376808,
+          "residualRmsPawns": 0.5281362535115744,
+          "minPawns": -13.590839646001292,
+          "maxPawns": 17.17676983149672,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g176-affine-only": {
+          "crossEntropy": 0.6306372148070414,
+          "scoreMeanPawns": 0.13508156426910453,
+          "scoreRmsPawns": 0.7844985733394562,
+          "residualRmsPawns": 2.1264420820430185,
+          "minPawns": -3.6223689968414696,
+          "maxPawns": 5.620033958154638,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-best": {
+          "crossEntropy": 0.6301910129466416,
+          "scoreMeanPawns": 0.15531695147405009,
+          "scoreRmsPawns": 0.8315089914251889,
+          "residualRmsPawns": 2.0899264306926257,
+          "minPawns": -3.831387526695181,
+          "maxPawns": 5.856468640608002,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-best-zero-heads": {
+          "crossEntropy": 0.7804399439276047,
+          "scoreMeanPawns": -0.007682209562476152,
+          "scoreRmsPawns": 2.261266308376808,
+          "residualRmsPawns": 0.5281362535115744,
+          "minPawns": -13.590839646001292,
+          "maxPawns": 17.17676983149672,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-best-affine-only": {
+          "crossEntropy": 0.6302661115702856,
+          "scoreMeanPawns": 0.1506808369344122,
+          "scoreRmsPawns": 0.8008646188293327,
+          "residualRmsPawns": 2.105285539758354,
+          "minPawns": -3.773571659153827,
+          "maxPawns": 5.7287507531160085,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g168": {
+          "crossEntropy": 0.7804399439276047,
+          "scoreMeanPawns": -0.007682209562476152,
+          "scoreRmsPawns": 2.261266308376808,
+          "residualRmsPawns": 0.5281362535115744,
+          "minPawns": -13.590839646001292,
+          "maxPawns": 17.17676983149672,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g168-zero-heads": {
+          "crossEntropy": 0.7804399439276047,
+          "scoreMeanPawns": -0.007682209562476152,
+          "scoreRmsPawns": 2.261266308376808,
+          "residualRmsPawns": 0.5281362535115744,
+          "minPawns": -13.590839646001292,
+          "maxPawns": 17.17676983149672,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g168-affine-only": {
+          "crossEntropy": 0.7804399439276047,
+          "scoreMeanPawns": -0.007682209562476152,
+          "scoreRmsPawns": 2.261266308376808,
+          "residualRmsPawns": 0.5281362535115744,
+          "minPawns": -13.590839646001292,
+          "maxPawns": 17.17676983149672,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g176": {
+          "crossEntropy": 0.629270012187625,
+          "scoreMeanPawns": 0.1610839016188488,
+          "scoreRmsPawns": 0.8240703797656089,
+          "residualRmsPawns": 2.1095640176766866,
+          "minPawns": -3.6844138106021767,
+          "maxPawns": 5.957150509957927,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g176-zero-heads": {
+          "crossEntropy": 0.7804399439276047,
+          "scoreMeanPawns": -0.007682209562476152,
+          "scoreRmsPawns": 2.261266308376808,
+          "residualRmsPawns": 0.5281362535115744,
+          "minPawns": -13.590839646001292,
+          "maxPawns": 17.17676983149672,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g176-affine-only": {
+          "crossEntropy": 0.6303802527770802,
+          "scoreMeanPawns": 0.14919570285337747,
+          "scoreRmsPawns": 0.816816614567607,
+          "residualRmsPawns": 2.1013018974155284,
+          "minPawns": -3.682932102236279,
+          "maxPawns": 6.006215186664264,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-best": {
+          "crossEntropy": 0.6284707952120292,
+          "scoreMeanPawns": 0.1649011051432522,
+          "scoreRmsPawns": 0.8387427586845965,
+          "residualRmsPawns": 2.0937600826980645,
+          "minPawns": -3.850495358134115,
+          "maxPawns": 6.007461521488324,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-best-zero-heads": {
+          "crossEntropy": 0.7804399439276047,
+          "scoreMeanPawns": -0.007682209562476152,
+          "scoreRmsPawns": 2.261266308376808,
+          "residualRmsPawns": 0.5281362535115744,
+          "minPawns": -13.590839646001292,
+          "maxPawns": 17.17676983149672,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-best-affine-only": {
+          "crossEntropy": 0.6301056451093616,
+          "scoreMeanPawns": 0.14068361882718192,
+          "scoreRmsPawns": 0.8229183708096016,
+          "residualRmsPawns": 2.0883583038674893,
+          "minPawns": -3.7635139409702028,
+          "maxPawns": 6.075998909539125,
+          "beyondSearchClamp": 0
+        },
+        "W9-BRE-CONTROL-LR001-g168": {
+          "crossEntropy": 0.7809592575847994,
+          "scoreMeanPawns": -0.044999690348028226,
+          "scoreRmsPawns": 2.2539909941970877,
+          "residualRmsPawns": 0.5356552337794636,
+          "minPawns": -13.796833445811846,
+          "maxPawns": 17.0585151508396,
+          "beyondSearchClamp": 0
+        },
+        "W9-BRE-CONTROL-LR001-g176": {
+          "crossEntropy": 0.7796914274689996,
+          "scoreMeanPawns": -0.04795966934112898,
+          "scoreRmsPawns": 2.248197412280719,
+          "residualRmsPawns": 0.5396336204616352,
+          "minPawns": -13.630724071755006,
+          "maxPawns": 17.01059373381523,
+          "beyondSearchClamp": 0
+        },
+        "W9-BRE-CONTROL-LR001-best": {
+          "crossEntropy": 0.7796914274689996,
+          "scoreMeanPawns": -0.04795966934112898,
+          "scoreRmsPawns": 2.248197412280719,
+          "residualRmsPawns": 0.5396336204616352,
+          "minPawns": -13.630724071755006,
+          "maxPawns": 17.01059373381523,
+          "beyondSearchClamp": 0
+        }
+      },
+      "contrasts": [
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-g176",
+          "right": "W9-CAL-AFFINE-R4-LR001-g176",
+          "crossEntropyDifference": -0.0005551331357527278,
+          "meanScoreChangePawns": 0.008498460989277215,
+          "rmsScoreChangePawns": 0.06809933598330428,
+          "maxAbsoluteChangePawns": 0.3295200979194277
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-AFFINE-R4-LR001-g176",
+          "crossEntropyDifference": -0.00134323766475275,
+          "meanScoreChangePawns": 0.012502840378723932,
+          "rmsScoreChangePawns": 0.061168020975934836,
+          "maxAbsoluteChangePawns": 0.23209402805762624
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-QUAD-R4-LR001-g176",
+          "crossEntropyDifference": -0.0007881045290000221,
+          "meanScoreChangePawns": 0.004004379389446716,
+          "rmsScoreChangePawns": 0.07613449371672351,
+          "maxAbsoluteChangePawns": 0.28876441036299416
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-g176",
+          "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+          "crossEntropyDifference": -0.0005790980904163412,
+          "meanScoreChangePawns": 0.021997957960297562,
+          "rmsScoreChangePawns": 0.07826068090649099,
+          "maxAbsoluteChangePawns": 0.32856792495671994
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+          "crossEntropyDifference": -0.0011102405894551914,
+          "meanScoreChangePawns": 0.011888198765471324,
+          "rmsScoreChangePawns": 0.06112184763885799,
+          "maxAbsoluteChangePawns": 0.2655629730698056
+        },
+        {
+          "left": "W9-CAL-AFFINE-R4-LR001-g176",
+          "right": "W9-CAL-AFFINE-R4-LR001-g168",
+          "crossEntropyDifference": -0.14982669407522697,
+          "meanScoreChangePawns": 0.15626327080260102,
+          "rmsScoreChangePawns": 1.5792447868548056,
+          "maxAbsoluteChangePawns": 11.411019279002215
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-g176",
+          "right": "W9-CAL-QUAD-R4-LR001-g168",
+          "crossEntropyDifference": -0.1503818272109797,
+          "meanScoreChangePawns": 0.16476173179187822,
+          "rmsScoreChangePawns": 1.5844516232794486,
+          "maxAbsoluteChangePawns": 11.547243442808494
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-CUBIC-R4-LR001-g168",
+          "crossEntropyDifference": -0.15116993173997972,
+          "meanScoreChangePawns": 0.16876611118132495,
+          "rmsScoreChangePawns": 1.5831214034242542,
+          "maxAbsoluteChangePawns": 11.472957047809736
+        }
+      ]
+    },
+    {
+      "panel": "old",
+      "source": "cp",
+      "statusValidEvaluationRows": 1015,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 1.3070189455767378,
+          "scoreMeanPawns": 0.050382463593604314,
+          "scoreRmsPawns": 3.1450381636839873,
+          "residualRmsPawns": 0.7689231223377864,
+          "minPawns": -14.432627942918511,
+          "maxPawns": 32.423339042158474,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g168": {
+          "crossEntropy": 1.3065621813011363,
+          "scoreMeanPawns": 0.03263326813553358,
+          "scoreRmsPawns": 3.1612092753495387,
+          "residualRmsPawns": 0.752874049508512,
+          "minPawns": -14.238878382610363,
+          "maxPawns": 32.63541236472601,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g168-zero-heads": {
+          "crossEntropy": 1.3065621813011363,
+          "scoreMeanPawns": 0.03263326813553358,
+          "scoreRmsPawns": 3.1612092753495387,
+          "residualRmsPawns": 0.752874049508512,
+          "minPawns": -14.238878382610363,
+          "maxPawns": 32.63541236472601,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g176": {
+          "crossEntropy": 0.5903100941952657,
+          "scoreMeanPawns": 0.21493247243355537,
+          "scoreRmsPawns": 1.111562007471534,
+          "residualRmsPawns": 3.0153333136250384,
+          "minPawns": -4.867148370824108,
+          "maxPawns": 10.425891942927322,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-g176-zero-heads": {
+          "crossEntropy": 1.3065621813011363,
+          "scoreMeanPawns": 0.03263326813553358,
+          "scoreRmsPawns": 3.1612092753495387,
+          "residualRmsPawns": 0.752874049508512,
+          "minPawns": -14.238878382610363,
+          "maxPawns": 32.63541236472601,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-best": {
+          "crossEntropy": 0.5922712990858509,
+          "scoreMeanPawns": 0.22904595172197795,
+          "scoreRmsPawns": 1.136977322003717,
+          "residualRmsPawns": 2.9794533571187802,
+          "minPawns": -4.959342556854068,
+          "maxPawns": 10.78445951330793,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-AFFINE-R4-LR001-best-zero-heads": {
+          "crossEntropy": 1.3065621813011363,
+          "scoreMeanPawns": 0.03263326813553358,
+          "scoreRmsPawns": 3.1612092753495387,
+          "residualRmsPawns": 0.752874049508512,
+          "minPawns": -14.238878382610363,
+          "maxPawns": 32.63541236472601,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g168": {
+          "crossEntropy": 1.3065621813011363,
+          "scoreMeanPawns": 0.03263326813553358,
+          "scoreRmsPawns": 3.1612092753495387,
+          "residualRmsPawns": 0.752874049508512,
+          "minPawns": -14.238878382610363,
+          "maxPawns": 32.63541236472601,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g168-zero-heads": {
+          "crossEntropy": 1.3065621813011363,
+          "scoreMeanPawns": 0.03263326813553358,
+          "scoreRmsPawns": 3.1612092753495387,
+          "residualRmsPawns": 0.752874049508512,
+          "minPawns": -14.238878382610363,
+          "maxPawns": 32.63541236472601,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g168-affine-only": {
+          "crossEntropy": 1.3065621813011363,
+          "scoreMeanPawns": 0.03263326813553358,
+          "scoreRmsPawns": 3.1612092753495387,
+          "residualRmsPawns": 0.752874049508512,
+          "minPawns": -14.238878382610363,
+          "maxPawns": 32.63541236472601,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g176": {
+          "crossEntropy": 0.58907999911919,
+          "scoreMeanPawns": 0.21466711499634727,
+          "scoreRmsPawns": 1.10296508255936,
+          "residualRmsPawns": 3.0326244143846006,
+          "minPawns": -4.980609386376024,
+          "maxPawns": 9.612722763504287,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g176-zero-heads": {
+          "crossEntropy": 1.3065621813011363,
+          "scoreMeanPawns": 0.03263326813553358,
+          "scoreRmsPawns": 3.1612092753495387,
+          "residualRmsPawns": 0.752874049508512,
+          "minPawns": -14.238878382610363,
+          "maxPawns": 32.63541236472601,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-g176-affine-only": {
+          "crossEntropy": 0.5923213333932107,
+          "scoreMeanPawns": 0.1918154283347056,
+          "scoreRmsPawns": 1.0679194935397682,
+          "residualRmsPawns": 3.036299716570219,
+          "minPawns": -4.7210234390668635,
+          "maxPawns": 10.023349180036988,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-best": {
+          "crossEntropy": 0.5919017807100968,
+          "scoreMeanPawns": 0.21022263592804752,
+          "scoreRmsPawns": 1.1229753513662826,
+          "residualRmsPawns": 3.001199066067478,
+          "minPawns": -5.034501437624272,
+          "maxPawns": 9.93424504295502,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-best-zero-heads": {
+          "crossEntropy": 1.3065621813011363,
+          "scoreMeanPawns": 0.03263326813553358,
+          "scoreRmsPawns": 3.1612092753495387,
+          "residualRmsPawns": 0.752874049508512,
+          "minPawns": -14.238878382610363,
+          "maxPawns": 32.63541236472601,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-QUAD-R4-LR001-best-affine-only": {
+          "crossEntropy": 0.5944534865763988,
+          "scoreMeanPawns": 0.20467439410936145,
+          "scoreRmsPawns": 1.09009726367297,
+          "residualRmsPawns": 3.0021751997466306,
+          "minPawns": -4.800079004514034,
+          "maxPawns": 10.344936558453476,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g168": {
+          "crossEntropy": 1.3065621813011363,
+          "scoreMeanPawns": 0.03263326813553358,
+          "scoreRmsPawns": 3.1612092753495387,
+          "residualRmsPawns": 0.752874049508512,
+          "minPawns": -14.238878382610363,
+          "maxPawns": 32.63541236472601,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g168-zero-heads": {
+          "crossEntropy": 1.3065621813011363,
+          "scoreMeanPawns": 0.03263326813553358,
+          "scoreRmsPawns": 3.1612092753495387,
+          "residualRmsPawns": 0.752874049508512,
+          "minPawns": -14.238878382610363,
+          "maxPawns": 32.63541236472601,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g168-affine-only": {
+          "crossEntropy": 1.3065621813011363,
+          "scoreMeanPawns": 0.03263326813553358,
+          "scoreRmsPawns": 3.1612092753495387,
+          "residualRmsPawns": 0.752874049508512,
+          "minPawns": -14.238878382610363,
+          "maxPawns": 32.63541236472601,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g176": {
+          "crossEntropy": 0.5890610980602543,
+          "scoreMeanPawns": 0.21501886968704542,
+          "scoreRmsPawns": 1.1187550992929292,
+          "residualRmsPawns": 3.0168080001665056,
+          "minPawns": -4.962375341398264,
+          "maxPawns": 10.59883779271778,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g176-zero-heads": {
+          "crossEntropy": 1.3065621813011363,
+          "scoreMeanPawns": 0.03263326813553358,
+          "scoreRmsPawns": 3.1612092753495387,
+          "residualRmsPawns": 0.752874049508512,
+          "minPawns": -14.238878382610363,
+          "maxPawns": 32.63541236472601,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-g176-affine-only": {
+          "crossEntropy": 0.5917002639463637,
+          "scoreMeanPawns": 0.21249880820952619,
+          "scoreRmsPawns": 1.1086594021764173,
+          "residualRmsPawns": 3.0060258803208835,
+          "minPawns": -4.862609808171982,
+          "maxPawns": 10.460318726369778,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-best": {
+          "crossEntropy": 0.5917705067312582,
+          "scoreMeanPawns": 0.21378550450861655,
+          "scoreRmsPawns": 1.1346951473427618,
+          "residualRmsPawns": 2.99476694184647,
+          "minPawns": -5.015083124146766,
+          "maxPawns": 10.42917263753511,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-best-zero-heads": {
+          "crossEntropy": 1.3065621813011363,
+          "scoreMeanPawns": 0.03263326813553358,
+          "scoreRmsPawns": 3.1612092753495387,
+          "residualRmsPawns": 0.752874049508512,
+          "minPawns": -14.238878382610363,
+          "maxPawns": 32.63541236472601,
+          "beyondSearchClamp": 0
+        },
+        "W9-CAL-CUBIC-R4-LR001-best-affine-only": {
+          "crossEntropy": 0.5934096345108796,
+          "scoreMeanPawns": 0.20353780289180434,
+          "scoreRmsPawns": 1.1173867816070062,
+          "residualRmsPawns": 2.9875253328142852,
+          "minPawns": -4.918463116897275,
+          "maxPawns": 10.616675527243757,
+          "beyondSearchClamp": 0
+        },
+        "W9-BRE-CONTROL-LR001-g168": {
+          "crossEntropy": 1.319774395426085,
+          "scoreMeanPawns": -0.003815145022848567,
+          "scoreRmsPawns": 3.154002792823323,
+          "residualRmsPawns": 0.7573419850708571,
+          "minPawns": -14.472899147957834,
+          "maxPawns": 32.29035850825372,
+          "beyondSearchClamp": 0
+        },
+        "W9-BRE-CONTROL-LR001-g176": {
+          "crossEntropy": 1.3227451842009743,
+          "scoreMeanPawns": -0.009531211953145111,
+          "scoreRmsPawns": 3.1484193627491464,
+          "residualRmsPawns": 0.7625693546935587,
+          "minPawns": -14.415217972586301,
+          "maxPawns": 32.31845157594829,
+          "beyondSearchClamp": 0
+        },
+        "W9-BRE-CONTROL-LR001-best": {
+          "crossEntropy": 1.3227451842009743,
+          "scoreMeanPawns": -0.009531211953145111,
+          "scoreRmsPawns": 3.1484193627491464,
+          "residualRmsPawns": 0.7625693546935587,
+          "minPawns": -14.415217972586301,
+          "maxPawns": 32.31845157594829,
+          "beyondSearchClamp": 0
+        }
+      },
+      "contrasts": [
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-g176",
+          "right": "W9-CAL-AFFINE-R4-LR001-g176",
+          "crossEntropyDifference": -0.0012300950760757434,
+          "meanScoreChangePawns": -0.00026535743720809067,
+          "rmsScoreChangePawns": 0.07732347499138487,
+          "maxAbsoluteChangePawns": 0.8131691794230349
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-AFFINE-R4-LR001-g176",
+          "crossEntropyDifference": -0.0012489961350113932,
+          "meanScoreChangePawns": 8.639725349005105e-05,
+          "rmsScoreChangePawns": 0.06699237428359367,
+          "maxAbsoluteChangePawns": 0.23928304738737083
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-QUAD-R4-LR001-g176",
+          "crossEntropyDifference": -1.890105893564975e-05,
+          "meanScoreChangePawns": 0.0003517546906981417,
+          "rmsScoreChangePawns": 0.08839509487240983,
+          "maxAbsoluteChangePawns": 0.9861150292134937
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-g176",
+          "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+          "crossEntropyDifference": -0.003241334274020735,
+          "meanScoreChangePawns": 0.022851686661641685,
+          "rmsScoreChangePawns": 0.08963122072217213,
+          "maxAbsoluteChangePawns": 0.5404416924867155
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+          "crossEntropyDifference": -0.0026391658861093514,
+          "meanScoreChangePawns": 0.002520061477519235,
+          "rmsScoreChangePawns": 0.0693932982095681,
+          "maxAbsoluteChangePawns": 0.2480192394247691
+        },
+        {
+          "left": "W9-CAL-AFFINE-R4-LR001-g176",
+          "right": "W9-CAL-AFFINE-R4-LR001-g168",
+          "crossEntropyDifference": -0.7162520871058706,
+          "meanScoreChangePawns": 0.1822992042980218,
+          "rmsScoreChangePawns": 2.2641555338818984,
+          "maxAbsoluteChangePawns": 22.209520421798686
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-g176",
+          "right": "W9-CAL-QUAD-R4-LR001-g168",
+          "crossEntropyDifference": -0.7174821821819464,
+          "meanScoreChangePawns": 0.1820338468608137,
+          "rmsScoreChangePawns": 2.2813615297264316,
+          "maxAbsoluteChangePawns": 23.02268960122172
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-g176",
+          "right": "W9-CAL-CUBIC-R4-LR001-g168",
+          "crossEntropyDifference": -0.717501083240882,
+          "meanScoreChangePawns": 0.18238560155151184,
+          "rmsScoreChangePawns": 2.2655309769535736,
+          "maxAbsoluteChangePawns": 22.036574572008227
+        }
+      ]
+    }
+  ],
+  "cache": [
+    {
+      "candidateName": "W9-CAL-AFFINE-R4-LR001",
+      "positions": 4340,
+      "maximumRawError": 4.8405723873656825e-14,
+      "maximumFreshRawError": 9.769962616701378e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "candidateWeightBytes": 30792,
+      "combinedPayloadBytes": 825896,
+      "combinedImmutablePrimitiveBytes": 830480,
+      "accumulatorPrimitiveBytes": 8205,
+      "cacheDetails": {
+        "derivedModelPrimitiveBytes": 30760,
+        "roundingFallbacks": 0,
+        "kind": "calibrated-fixed-head-composition-v1"
+      },
+      "transitionLatency": [
+        {
+          "medianNanos": 559.354,
+          "passNanos": [
+            30611900,
+            29004800,
+            27758900,
+            27287200,
+            29058500,
+            27784000,
+            27967700
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "QUADRATIC-full"
+        },
+        {
+          "medianNanos": 212.824,
+          "passNanos": [
+            15844500,
+            19092800,
+            15747300,
+            10484300,
+            10627900,
+            10440200,
+            10641200
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "QUADRATIC-cache"
+        },
+        {
+          "medianNanos": 140.84,
+          "passNanos": [
+            6925600,
+            7042000,
+            7332400,
+            6833900,
+            6835400,
+            7661500,
+            7052500
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "Gen32"
+        }
+      ],
+      "fullCacheSearchPairs": 48
+    },
+    {
+      "candidateName": "W9-CAL-QUAD-R4-LR001",
+      "positions": 4340,
+      "maximumRawError": 4.9682480351975755e-14,
+      "maximumFreshRawError": 1.0658141036401503e-14,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "candidateWeightBytes": 30824,
+      "combinedPayloadBytes": 825928,
+      "combinedImmutablePrimitiveBytes": 830512,
+      "accumulatorPrimitiveBytes": 8205,
+      "cacheDetails": {
+        "roundingFallbacks": 0,
+        "derivedModelPrimitiveBytes": 30760,
+        "kind": "calibrated-fixed-head-composition-v1"
+      },
+      "transitionLatency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            29053400,
+            32706600,
+            28887200,
+            28597000,
+            28201700,
+            27997800,
+            27565400
+          ],
+          "medianNanos": 571.94,
+          "name": "QUADRATIC-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            12241400,
+            14797300,
+            11083800,
+            10714900,
+            10350100,
+            10676700,
+            10299600
+          ],
+          "medianNanos": 214.298,
+          "name": "QUADRATIC-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            7442500,
+            6952000,
+            11047900,
+            6852500,
+            6676000,
+            7161300,
+            6957500
+          ],
+          "medianNanos": 139.15,
+          "name": "Gen32"
+        }
+      ],
+      "fullCacheSearchPairs": 48
+    },
+    {
+      "candidateName": "W9-CAL-CUBIC-R4-LR001",
+      "positions": 4340,
+      "maximumRawError": 4.96269692007445e-14,
+      "maximumFreshRawError": 1.554312234475219e-14,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "candidateWeightBytes": 30824,
+      "combinedPayloadBytes": 825928,
+      "combinedImmutablePrimitiveBytes": 830512,
+      "accumulatorPrimitiveBytes": 8269,
+      "cacheDetails": {
+        "roundingFallbacks": 9,
+        "derivedModelPrimitiveBytes": 30792,
+        "kind": "calibrated-fixed-head-composition-v1"
+      },
+      "transitionLatency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            31370900,
+            31481200,
+            29625500,
+            30512200,
+            30387000,
+            31079900,
+            30584700
+          ],
+          "medianNanos": 611.694,
+          "name": "CUBIC-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            13353700,
+            15756400,
+            11398500,
+            11239100,
+            11898800,
+            11768900,
+            11586300
+          ],
+          "medianNanos": 235.378,
+          "name": "CUBIC-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            7596700,
+            7282200,
+            6741900,
+            6823000,
+            6790100,
+            6669300,
+            7421300
+          ],
+          "medianNanos": 136.46,
+          "name": "Gen32"
+        }
+      ],
+      "fullCacheSearchPairs": 48
+    }
+  ],
+  "limitations": [
+    "Consumed evaluation halves, status-valid rows only; source/game/training overlap unknown. No independent generalization or strength claim.",
+    "New heads optimize search-pawn loss, BRE optimizes raw-pawn loss; these panel comparisons apply common search mapping.",
+    "Best175 is separately reported; Latest176 remains prospectively selected. Masks lack separate adaptation.",
+    "Changing generation validation panels do not prove convergence. Affine explains most fitting improvement; small degree differences vary by panel.",
+    "Microbenchmarks are warmed isolated measurements, not practical strength or proportional NPS guarantees.",
+    "Diagnostic preparation initially named unavailable historical input filenames; it stopped before that probe, then used the preserved actual files. No owner or completed output changed."
+  ]
+}

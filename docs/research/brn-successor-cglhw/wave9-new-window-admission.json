@@ -1,0 +1,17 @@
+{
+  "id": "wave9-new-window-stability-check-v1",
+  "trainedEvidence": "docs\\research\\brn-successor-cglhw\\wave9-trained-checkpoints.json",
+  "audit": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-audit-01\\stores.json",
+  "frozen": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-frozen-01",
+  "predictions": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01",
+  "dataPlan": "wave9-fresh-data-plan.json",
+  "dataPlanSha256": "30112678df340b620c136d1cd4c8b7020ce269d3776518dfc80ef84679730fba",
+  "candidatePlan": "wave9-maturity-model-plan.json",
+  "candidatePlanSha256": "e6a32901330ef605ca186e63581ff70c7808d0a2313800b8bf3f757187b207a9",
+  "selection": "Verified initial168, Latest176 and Best plus one fixed uniform head average173..176 for all three heads. Also average only extra degree heads while retaining Latest affine coefficients. No grid, fits, match selection or owner mutation.",
+  "question": "Does fitting generalize to the newly decoded ordinal windows, and does head volatility contribute to prediction differences?",
+  "trigger": "G9 head coefficients still move across final generations; consumed-panel Latest/Best results are mixed and tiny alternative-basis fits are inconclusive or adverse. These averaging rules are fixed before decoding the new rows.",
+  "statistics": "Entire2048 rows/source are evaluation; report all contrasts, invalid-row exclusion and descriptive row errors with clustering limitations. No independent chess claim.",
+  "script": "tools\\analyze-brn-wave9-fresh.py",
+  "scriptSha256": "ceeae269c0a78097300302c0dc7ed31b4d224259817711005b2740ef3e76e900"
+}

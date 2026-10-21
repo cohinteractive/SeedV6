@@ -18,15 +18,16 @@ def load(path):
 
 
 def summarize(directory, output, mode=None):
-    assert mode in (None, "--followup", "--wave7", "--wave8")
+    assert mode in (None, "--followup", "--wave7", "--wave8", "--wave9", "--wave9-scale")
     followup = mode == "--followup"
-    wave = 8 if mode == "--wave8" else 7 if mode == "--wave7" else 6
+    scale = mode == "--wave9-scale"
+    wave = 9 if mode in ("--wave9", "--wave9-scale") else 8 if mode == "--wave8" else 7 if mode == "--wave7" else 6
     directory, output = Path(directory), Path(output)
     if output.exists():
         raise ValueError("Preserve completed report")
-    admission_path = directory / ("wave6-followup-admission.json" if followup else f"wave{wave}-assessment-protocol.json")
+    admission_path = directory / ("wave9-scale-followup-admission.json" if scale else "wave6-followup-admission.json" if followup else f"wave{wave}-assessment-protocol.json")
     admission = load(admission_path)
-    assert admission["id"] == ("wave6-cost-and-compact-degree-followup-v1" if followup else f"wave{wave}-development-assessment-v1")
+    assert admission["id"] == ("wave9-calibration-scale-followup-v1" if scale else "wave6-cost-and-compact-degree-followup-v1" if followup else f"wave{wave}-development-assessment-v1")
     rows = []
     for protocol in admission["protocols"]:
         name, games = protocol["label"], protocol["games"]
@@ -53,7 +54,7 @@ def summarize(directory, output, mode=None):
                          models=result["models"], sameRootSearch=result["sameRootSearch"],
                          peakWorkingSetMiB=result["maximumSampledWorkingSetMiB"],
                          engineCpuSeconds=result["totalEngineCpuSeconds"]))
-    report = dict(id="wave6-trained-development-followup-v1" if followup else f"wave{wave}-trained-development-assessment-v1",
+    report = dict(id="wave9-calibration-scale-followup-results-v1" if scale else "wave6-trained-development-followup-v1" if followup else f"wave{wave}-trained-development-assessment-v1",
                   admission=str(admission_path), admissionSha256=digest(admission_path),
                   protocols=rows, totalGames=sum(x["games"] for x in rows),
                   validatedMoves=sum(x["validatedMoves"] for x in rows),
@@ -65,11 +66,15 @@ def summarize(directory, output, mode=None):
                       "Normal intervals are descriptive; bounded intervals still assume independent opening pairs.",
                       "Distinct budgets/opponents answer distinct questions; fixed budgets completed without favorable optional stopping.",
                       f"Quadratic is adaptation-trained on identical G{wave} residual reservations; BRE retains different historical data, split and optimizer semantics."])
-    assert report["totalGames"] == admission["totalGames"] == (80 if followup else 176 if wave in (7, 8) else 208)
+    assert report["totalGames"] == admission["totalGames"] == (80 if followup or scale else 192 if wave == 9 else 176 if wave in (7, 8) else 208)
     if wave == 8:
         report['limitations'][-1] = 'Fixed heads have identical initial Q4 function/data and new head-only Adam; BRE retains distinct historical data and optimizer. Exact Q4 anchor isolates zero cubic terms plus lower runtime cost.'
+    if wave == 9:
+        report['limitations'][-1] = 'Calibrated heads share exact frozen Q4/data/fresh Adam and search-pawn objective. Quad/cubic eight-head spaces are not nested; affine is their common adapted control. BRE retains a distinct historical split and raw objective. No extra half scaling is applied.'
     if followup:
         report["limitations"].append("Compact degree mask is unadapted and retains cubic cache cost; no adapted Q4 strength conclusion.")
+    if scale:
+        report["limitations"].append("Separate prospectively fixed scale.25 sensitivity on reused G9 development roots; original192-game native protocol preserved. No scale grid or refitting. This changes magnitude/search interaction, not mathematical information.")
     with output.open("x", encoding="utf-8", newline="\n") as stream:
         json.dump(report, stream, indent=2)
         stream.write("\n")

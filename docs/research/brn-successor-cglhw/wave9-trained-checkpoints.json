@@ -1,0 +1,692 @@
+{
+  "id": "wave9-trained-evidence-v1",
+  "audit": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-audit-01",
+  "auditFiles": {
+    "complete.json": "80d004128967243a04b7a31bbd8f0198cd80ec4fb5e21ad9bb1ad83cba90cc9c",
+    "stores.json": "7e7b83d42bed6e9bf66b784dcd2a1bf2b7bd42e0bd9d70882a5805ddf61802c5"
+  },
+  "reference": {
+    "id": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+    "generation": 32,
+    "optimizerStep": 1753088,
+    "trainingDepth": 4,
+    "parentId": "g000031-s001228800-3b52a75c2077c9b9a44edcee222201e0b3a0b76dc8b9cef5ae99804fa5549c78",
+    "networkBytes": 795032,
+    "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "trainingBytes": 2731424,
+    "trainingSha256": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+    "architecture": "BRN_PAIR2"
+  },
+  "lineages": [
+    {
+      "name": "W9-CAL-AFFINE-R4-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CAL-AFFINE-R4\\ef6b7d2e-a8d3-397f-b66e-6f93d123d57e",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-22-wave9",
+        "arm": {
+          "name": "W9-CAL-AFFINE-R4-LR001",
+          "source": {
+            "candidate": "W8-FIXED-CUBIC-R4-LR001",
+            "root": "E:\\SeedV6-Networks\\BRN-GEN32-FIXED-CUBIC-R4\\606c30bf-7392-3872-bf62-806ff2e6df3e",
+            "checkpoint": "g000168-s000065536-28a1c5695b6c0bc41dd95d3ba4f3f7cb479354305fe053a9910b189d17df2c73",
+            "networkSha256": "c1ecc378294bfee8b06ac957e6115ce07a71b4a10fce63e69bc561dd6d0115c4",
+            "trainingSha256": "98e2e47a11eed0fb2f4d16075840b75c2b5414c0ba22008d06efe960e78c450d",
+            "generation": 168,
+            "seed": 1,
+            "positionsPerGeneration": 131072,
+            "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+          },
+          "rate": 0.001,
+          "projection": "calibrated-affine"
+        },
+        "sourceLedgerSha256": "a7cc3bacddc403a12ffce3032b88fe60a8bf8ce71f8b6b582f9cee69de875b7f",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000168-s000000000-191791f2dc359e702f9a4fd5c13f3044247f068e16cfdaf0a8533ecd669540c7",
+        "networkSha256": "1f38d934d124dd520daff43284294b63176a67121f9d1ed0671ea9e7be0ee22e",
+        "trainingSha256": "4ffe3d8eb0c5f07534bbb82b3059fe7e8398be8f854ae253a3b0dae96b700ac8",
+        "inheritedStep": 65536
+      },
+      "initial": {
+        "id": "g000168-s000000000-191791f2dc359e702f9a4fd5c13f3044247f068e16cfdaf0a8533ecd669540c7",
+        "generation": 168,
+        "optimizerStep": 0,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 30864,
+        "networkSha256": "1f38d934d124dd520daff43284294b63176a67121f9d1ed0671ea9e7be0ee22e",
+        "trainingBytes": 92464,
+        "trainingSha256": "4ffe3d8eb0c5f07534bbb82b3059fe7e8398be8f854ae253a3b0dae96b700ac8",
+        "architecture": "BRN_GEN32_CAL_AFFINE_R4"
+      },
+      "latest": {
+        "id": "g000176-s000065536-16a82f32ff52b872fd12a2dd8ddfa3ede57e292c9e2f29974ac42f7fa57cb762",
+        "generation": 176,
+        "optimizerStep": 65536,
+        "trainingDepth": 4,
+        "parentId": "g000175-s000057344-403cbfc5b1b6f5d4bfa330488cf5d782c2415b2bb1939b7456bdb5804c026d03",
+        "networkBytes": 30864,
+        "networkSha256": "df813617b4404ea826ea7f6b076fabbd12b4120f6b9e7e536e91a4c0fe7fbf21",
+        "trainingBytes": 92464,
+        "trainingSha256": "40d4a91510579e5eb7c622844c22b9cf4c065f474156f05d605024513b0b7845",
+        "architecture": "BRN_GEN32_CAL_AFFINE_R4"
+      },
+      "best": {
+        "id": "g000175-s000057344-403cbfc5b1b6f5d4bfa330488cf5d782c2415b2bb1939b7456bdb5804c026d03",
+        "generation": 175,
+        "optimizerStep": 57344,
+        "trainingDepth": 4,
+        "parentId": "g000174-s000049152-68c040f98a746b942d20c69c6a375387f67af4c3c076d1ca19d002b47de808e9",
+        "networkBytes": 30864,
+        "networkSha256": "3bfdcf006900805c0129c94a6beb332837fb40b0e002af1c34529d0ec3732e8a",
+        "trainingBytes": 92464,
+        "trainingSha256": "e0babd159052ef9280c4da01720d16ec55df631f09527f0ac27beadb7196ebf3",
+        "architecture": "BRN_GEN32_CAL_AFFINE_R4"
+      },
+      "session": {
+        "version": 1,
+        "id": "1e52a8b6-de74-41e9-a61e-41e12770fa1d",
+        "lineageId": "ef6b7d2e-a8d3-397f-b66e-6f93d123d57e",
+        "baseline": 168,
+        "target": 8,
+        "completed": 8,
+        "state": "COMPLETED"
+      },
+      "addedOptimizerSteps": 65536,
+      "generations": 8,
+      "trainingSamples": 1048576,
+      "validationSamples": 262144,
+      "trainingVisits": 8388608,
+      "promotions": 6,
+      "trainingSeconds": 51.8350455,
+      "finalComparison": {
+        "samples": 32768,
+        "candidateLoss": 0.1114588388178757,
+        "bestLoss": 0.11125853593551853
+      },
+      "finalCursors": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 53379086,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 49941604
+      },
+      "originSha256": "67fa202a7155a73d17baa4ee897b82a9b9859de862f8b87283a082aab148734c",
+      "generationMetrics": [
+        {
+          "generation": 169,
+          "trainingLoss": 0.11795612981162366,
+          "validationLoss": 0.12307740726444646,
+          "incumbentLoss": 0.146378501626862,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 170,
+          "trainingLoss": 0.10497430627639252,
+          "validationLoss": 0.10673757963312289,
+          "incumbentLoss": 0.12106364678753033,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 171,
+          "trainingLoss": 0.11224174888985258,
+          "validationLoss": 0.1103128557144273,
+          "incumbentLoss": 0.1107608205627518,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 172,
+          "trainingLoss": 0.10702496754762558,
+          "validationLoss": 0.10893688300599597,
+          "incumbentLoss": 0.10875725471404202,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 173,
+          "trainingLoss": 0.10724371817225206,
+          "validationLoss": 0.10600927649516043,
+          "incumbentLoss": 0.10681513698378625,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 174,
+          "trainingLoss": 0.10815934800779389,
+          "validationLoss": 0.11133559594812316,
+          "incumbentLoss": 0.11139900019944235,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 175,
+          "trainingLoss": 0.1048044532103019,
+          "validationLoss": 0.1077788569690416,
+          "incumbentLoss": 0.10799435139617027,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 176,
+          "trainingLoss": 0.10785023596769133,
+          "validationLoss": 0.1114588388178757,
+          "incumbentLoss": 0.11125853593551853,
+          "decision": "RETAIN_INCUMBENT"
+        }
+      ],
+      "first4": {
+        "trainingLoss": 0.11054928813137359,
+        "validationLoss": 0.11226618140449815,
+        "candidateMinusIncumbent": -0.009473874518298384
+      },
+      "last4": {
+        "trainingLoss": 0.1070144388395098,
+        "validationLoss": 0.10914564205755023,
+        "candidateMinusIncumbent": -0.00022111407117912651
+      },
+      "optimizerSemantics": "New zero head-only Adam"
+    },
+    {
+      "name": "W9-CAL-QUAD-R4-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CAL-QUADRATIC-R4\\741f4848-b98f-3b26-9263-5f5adb4d20b1",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-22-wave9",
+        "arm": {
+          "name": "W9-CAL-QUAD-R4-LR001",
+          "source": {
+            "candidate": "W8-FIXED-CUBIC-R4-LR001",
+            "root": "E:\\SeedV6-Networks\\BRN-GEN32-FIXED-CUBIC-R4\\606c30bf-7392-3872-bf62-806ff2e6df3e",
+            "checkpoint": "g000168-s000065536-28a1c5695b6c0bc41dd95d3ba4f3f7cb479354305fe053a9910b189d17df2c73",
+            "networkSha256": "c1ecc378294bfee8b06ac957e6115ce07a71b4a10fce63e69bc561dd6d0115c4",
+            "trainingSha256": "98e2e47a11eed0fb2f4d16075840b75c2b5414c0ba22008d06efe960e78c450d",
+            "generation": 168,
+            "seed": 1,
+            "positionsPerGeneration": 131072,
+            "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+          },
+          "rate": 0.001,
+          "projection": "calibrated-quadratic"
+        },
+        "sourceLedgerSha256": "a7cc3bacddc403a12ffce3032b88fe60a8bf8ce71f8b6b582f9cee69de875b7f",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000168-s000000000-39fb2a306f1fb72924aaa5eb00764051a8b41cea1e128dc51b7ed3bdf23276c6",
+        "networkSha256": "cf89fd6caccc1f39be1875203774ecf8cc979980c1d76410a04cd62e978179a2",
+        "trainingSha256": "4c6e81760f6823e3bd343a65898401ef53f7a1a294b8395dfcfe72c576bae06a",
+        "inheritedStep": 65536
+      },
+      "initial": {
+        "id": "g000168-s000000000-39fb2a306f1fb72924aaa5eb00764051a8b41cea1e128dc51b7ed3bdf23276c6",
+        "generation": 168,
+        "optimizerStep": 0,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 30896,
+        "networkSha256": "cf89fd6caccc1f39be1875203774ecf8cc979980c1d76410a04cd62e978179a2",
+        "trainingBytes": 92560,
+        "trainingSha256": "4c6e81760f6823e3bd343a65898401ef53f7a1a294b8395dfcfe72c576bae06a",
+        "architecture": "BRN_GEN32_CAL_QUADRATIC_R4"
+      },
+      "latest": {
+        "id": "g000176-s000065536-28d94ac77120ee02c2e24a03e350a01486e928f08325ebafcaa55576e1791674",
+        "generation": 176,
+        "optimizerStep": 65536,
+        "trainingDepth": 4,
+        "parentId": "g000175-s000057344-b506adbe13a9dadeb84c4c83a976eb2168368f743317e397a82b1d53fbfa4a7d",
+        "networkBytes": 30896,
+        "networkSha256": "7d5a231b21ea8e1ad0760ea97a12cf77d40247aaeeecc621867085633d6acd0e",
+        "trainingBytes": 92560,
+        "trainingSha256": "6f0b7fc77f6ae2ee1a5bae88566e18426dc4ad2f884f34b03bfc003136ab2b48",
+        "architecture": "BRN_GEN32_CAL_QUADRATIC_R4"
+      },
+      "best": {
+        "id": "g000175-s000057344-b506adbe13a9dadeb84c4c83a976eb2168368f743317e397a82b1d53fbfa4a7d",
+        "generation": 175,
+        "optimizerStep": 57344,
+        "trainingDepth": 4,
+        "parentId": "g000174-s000049152-999521e1089e91322f3729b092b88e32c5f470471ae53bfe2eddf91451b3030f",
+        "networkBytes": 30896,
+        "networkSha256": "8271af162c1c3f3edc335b2ee5fcd25ea62e725682eabf2cf585ef06288e5ea2",
+        "trainingBytes": 92560,
+        "trainingSha256": "98209a616ca1dae46449cf6848c3879b118d53e3be29eaf77b50f3f3fb97c636",
+        "architecture": "BRN_GEN32_CAL_QUADRATIC_R4"
+      },
+      "session": {
+        "version": 1,
+        "id": "8d425c89-eea3-4c14-ba0b-1bfd7d09147e",
+        "lineageId": "741f4848-b98f-3b26-9263-5f5adb4d20b1",
+        "baseline": 168,
+        "target": 8,
+        "completed": 8,
+        "state": "COMPLETED"
+      },
+      "addedOptimizerSteps": 65536,
+      "generations": 8,
+      "trainingSamples": 1048576,
+      "validationSamples": 262144,
+      "trainingVisits": 8388608,
+      "promotions": 6,
+      "trainingSeconds": 48.895595098,
+      "finalComparison": {
+        "samples": 32768,
+        "candidateLoss": 0.11124117574297324,
+        "bestLoss": 0.11106117075495123
+      },
+      "finalCursors": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 53379086,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 49941604
+      },
+      "originSha256": "b34c7053c3bcf0b51efed18d390a03f78af58334ffa201fa565ce43ce572579d",
+      "generationMetrics": [
+        {
+          "generation": 169,
+          "trainingLoss": 0.11734012988733532,
+          "validationLoss": 0.12193271958144981,
+          "incumbentLoss": 0.146378501626862,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 170,
+          "trainingLoss": 0.10530120879607906,
+          "validationLoss": 0.1066684350001672,
+          "incumbentLoss": 0.12037168219350974,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 171,
+          "trainingLoss": 0.11233575035980757,
+          "validationLoss": 0.11038848038533175,
+          "incumbentLoss": 0.11101689411058446,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 172,
+          "trainingLoss": 0.106690474984233,
+          "validationLoss": 0.10868756216363011,
+          "incumbentLoss": 0.10881007977486927,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 173,
+          "trainingLoss": 0.1069842308828553,
+          "validationLoss": 0.10588528911663841,
+          "incumbentLoss": 0.10658856509031775,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 174,
+          "trainingLoss": 0.10835151438447185,
+          "validationLoss": 0.11166275989497537,
+          "incumbentLoss": 0.11139966340208912,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 175,
+          "trainingLoss": 0.10454568267445585,
+          "validationLoss": 0.1073747560232325,
+          "incumbentLoss": 0.10775185833368837,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 176,
+          "trainingLoss": 0.10753795709838997,
+          "validationLoss": 0.11124117574297324,
+          "incumbentLoss": 0.11106117075495123,
+          "decision": "RETAIN_INCUMBENT"
+        }
+      ],
+      "first4": {
+        "trainingLoss": 0.11041689100686373,
+        "validationLoss": 0.11191929928264471,
+        "candidateMinusIncumbent": -0.00972499014381165
+      },
+      "last4": {
+        "trainingLoss": 0.10685484626004324,
+        "validationLoss": 0.10904099519445488,
+        "candidateMinusIncumbent": -0.00015931920080673734
+      },
+      "optimizerSemantics": "New zero head-only Adam"
+    },
+    {
+      "name": "W9-CAL-CUBIC-R4-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CAL-CUBIC-R4\\d3694155-fb64-3037-a247-b5bf804b8d79",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-22-wave9",
+        "arm": {
+          "name": "W9-CAL-CUBIC-R4-LR001",
+          "source": {
+            "candidate": "W8-FIXED-CUBIC-R4-LR001",
+            "root": "E:\\SeedV6-Networks\\BRN-GEN32-FIXED-CUBIC-R4\\606c30bf-7392-3872-bf62-806ff2e6df3e",
+            "checkpoint": "g000168-s000065536-28a1c5695b6c0bc41dd95d3ba4f3f7cb479354305fe053a9910b189d17df2c73",
+            "networkSha256": "c1ecc378294bfee8b06ac957e6115ce07a71b4a10fce63e69bc561dd6d0115c4",
+            "trainingSha256": "98e2e47a11eed0fb2f4d16075840b75c2b5414c0ba22008d06efe960e78c450d",
+            "generation": 168,
+            "seed": 1,
+            "positionsPerGeneration": 131072,
+            "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+          },
+          "rate": 0.001,
+          "projection": "calibrated-cubic"
+        },
+        "sourceLedgerSha256": "a7cc3bacddc403a12ffce3032b88fe60a8bf8ce71f8b6b582f9cee69de875b7f",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000168-s000000000-4294923477e1a39688d5942fdd34bc7c7841696b4864570d5bff26bbbf92eb8a",
+        "networkSha256": "e696c32709fcf8c29fb66d56414a98099ec25c5767de559bf8050b0f35bc5f7a",
+        "trainingSha256": "d816ed6e80497072ecec85746607613d123c68b864c727053567149b94c38557",
+        "inheritedStep": 65536
+      },
+      "initial": {
+        "id": "g000168-s000000000-4294923477e1a39688d5942fdd34bc7c7841696b4864570d5bff26bbbf92eb8a",
+        "generation": 168,
+        "optimizerStep": 0,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 30896,
+        "networkSha256": "e696c32709fcf8c29fb66d56414a98099ec25c5767de559bf8050b0f35bc5f7a",
+        "trainingBytes": 92560,
+        "trainingSha256": "d816ed6e80497072ecec85746607613d123c68b864c727053567149b94c38557",
+        "architecture": "BRN_GEN32_CAL_CUBIC_R4"
+      },
+      "latest": {
+        "id": "g000176-s000065536-a924ec59b6d56c319475b79c6c9fa2c661fd6345c401c324d8715463a39bebfa",
+        "generation": 176,
+        "optimizerStep": 65536,
+        "trainingDepth": 4,
+        "parentId": "g000175-s000057344-2cd1216869ef01c5bc806a060a158caafba948527c242de6d4357cac32a6d644",
+        "networkBytes": 30896,
+        "networkSha256": "5c10589acc5d3870fbca065f4829ad538de3e1e28bb0e3b6cdb2ce8b7d2e56e2",
+        "trainingBytes": 92560,
+        "trainingSha256": "dae3d2b37f73303ccffaa4b13a43111a3dec483111cc472525c1a6ec9ed9afd8",
+        "architecture": "BRN_GEN32_CAL_CUBIC_R4"
+      },
+      "best": {
+        "id": "g000175-s000057344-2cd1216869ef01c5bc806a060a158caafba948527c242de6d4357cac32a6d644",
+        "generation": 175,
+        "optimizerStep": 57344,
+        "trainingDepth": 4,
+        "parentId": "g000174-s000049152-d649f3fc290da229042df8f97c82586a3854758df28d64bfe44c483abb06143d",
+        "networkBytes": 30896,
+        "networkSha256": "ae9890c6e43c28dd8183a2531e6c567db9d3befc6c647e5d5b52bffca5ddfcb3",
+        "trainingBytes": 92560,
+        "trainingSha256": "eb328ce869244e9dc0341b4df380cd1fd5ff249cf6d9fff2da6e17c779bc9e3e",
+        "architecture": "BRN_GEN32_CAL_CUBIC_R4"
+      },
+      "session": {
+        "version": 1,
+        "id": "354c2c03-3a3b-4196-ad43-53b3bda22d4a",
+        "lineageId": "d3694155-fb64-3037-a247-b5bf804b8d79",
+        "baseline": 168,
+        "target": 8,
+        "completed": 8,
+        "state": "COMPLETED"
+      },
+      "addedOptimizerSteps": 65536,
+      "generations": 8,
+      "trainingSamples": 1048576,
+      "validationSamples": 262144,
+      "trainingVisits": 8388608,
+      "promotions": 6,
+      "trainingSeconds": 52.2153034,
+      "finalComparison": {
+        "samples": 32768,
+        "candidateLoss": 0.11121498897638853,
+        "bestLoss": 0.11056890893027202
+      },
+      "finalCursors": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 53379086,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 49941604
+      },
+      "originSha256": "6100c1e830dd6a08ef0a3d3e4d666c4f9cedcbcb73c0789e591b460ea273ab8d",
+      "generationMetrics": [
+        {
+          "generation": 169,
+          "trainingLoss": 0.11693765576745052,
+          "validationLoss": 0.1208671617086229,
+          "incumbentLoss": 0.146378501626862,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 170,
+          "trainingLoss": 0.10748017751946752,
+          "validationLoss": 0.10872968144133249,
+          "incumbentLoss": 0.11933128188360252,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 171,
+          "trainingLoss": 0.11321527279841552,
+          "validationLoss": 0.1108992072540142,
+          "incumbentLoss": 0.11279772158041748,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 172,
+          "trainingLoss": 0.10731962086783817,
+          "validationLoss": 0.10907202326151363,
+          "incumbentLoss": 0.10924939594248687,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 173,
+          "trainingLoss": 0.10661893810038534,
+          "validationLoss": 0.10549322604527424,
+          "incumbentLoss": 0.10737854184540353,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 174,
+          "trainingLoss": 0.10794756758334134,
+          "validationLoss": 0.1110730964154469,
+          "incumbentLoss": 0.11093911499319276,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 175,
+          "trainingLoss": 0.10399946350090339,
+          "validationLoss": 0.10730013203146269,
+          "incumbentLoss": 0.10751521080766716,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 176,
+          "trainingLoss": 0.10756323820898493,
+          "validationLoss": 0.11121498897638853,
+          "incumbentLoss": 0.11056890893027202,
+          "decision": "RETAIN_INCUMBENT"
+        }
+      ],
+      "first4": {
+        "trainingLoss": 0.11123818173829293,
+        "validationLoss": 0.11239201841637081,
+        "candidateMinusIncumbent": -0.009547206841971412
+      },
+      "last4": {
+        "trainingLoss": 0.10653230184840375,
+        "validationLoss": 0.10877036086714309,
+        "candidateMinusIncumbent": -0.0003300832769907794
+      },
+      "optimizerSemantics": "New zero head-only Adam"
+    },
+    {
+      "name": "W9-BRE-CONTROL-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\b6135d13-24a9-3d5f-8cc3-63e1880e323e",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-22-wave9",
+        "arm": {
+          "name": "W9-BRE-CONTROL-LR001",
+          "source": {
+            "candidate": "W8-BRE-CONTROL-LR001",
+            "root": "E:\\SeedV6-Networks\\BRN-Pair2\\3addbfce-b83a-35b5-9a82-14734ccb61c8",
+            "checkpoint": "g000168-s003129344-a60d5bba9a7ad33bdfed01c1ab879d91fda072a09a7ddad0a711a2d54a79dfbf",
+            "networkSha256": "f19d3dd3b7fa9bc3adff21f0bef7f7b2b7d62ff3621d518098486a5ef77b932e",
+            "trainingSha256": "f1a50155f879dd5ac76b631f1dbfb9009ad65320da6cb1b2d8f48a72d9d65045",
+            "generation": 168,
+            "seed": 1,
+            "positionsPerGeneration": 131072,
+            "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+          },
+          "rate": 0.001,
+          "projection": "exact"
+        },
+        "sourceLedgerSha256": "4ea8020e148d1b9faaae541b1f2dd4f94e5b833732d1369eef0dee0594dbcc99",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000168-s003129344-eecb3b3370c98fecff98fd7a9c7357d78e9950c9748674a1087ffeba427ff566",
+        "networkSha256": "f19d3dd3b7fa9bc3adff21f0bef7f7b2b7d62ff3621d518098486a5ef77b932e",
+        "trainingSha256": "f1a50155f879dd5ac76b631f1dbfb9009ad65320da6cb1b2d8f48a72d9d65045",
+        "inheritedStep": 3129344
+      },
+      "initial": {
+        "id": "g000168-s003129344-eecb3b3370c98fecff98fd7a9c7357d78e9950c9748674a1087ffeba427ff566",
+        "generation": 168,
+        "optimizerStep": 3129344,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 795032,
+        "networkSha256": "f19d3dd3b7fa9bc3adff21f0bef7f7b2b7d62ff3621d518098486a5ef77b932e",
+        "trainingBytes": 2731424,
+        "trainingSha256": "f1a50155f879dd5ac76b631f1dbfb9009ad65320da6cb1b2d8f48a72d9d65045",
+        "architecture": "BRN_PAIR2"
+      },
+      "latest": {
+        "id": "g000176-s003194880-f9086c5c055bf6bfc0ba2b62f4bd6121e1f29c4a7268100caac4fd9ddbadf9a1",
+        "generation": 176,
+        "optimizerStep": 3194880,
+        "trainingDepth": 4,
+        "parentId": "g000175-s003186688-c9ead9a4b2e2f1d0e3c2cfb2d89afe3461da3835c2b82213ab0594b861887a42",
+        "networkBytes": 795032,
+        "networkSha256": "faf91dd6355790e683e66110686765209349a1e50211014464ef55f4890c407e",
+        "trainingBytes": 2731424,
+        "trainingSha256": "9230940cebd856b31eaf3f18e1be2803e18447409ce3252c133b9f75914ae64e",
+        "architecture": "BRN_PAIR2"
+      },
+      "best": {
+        "id": "g000176-s003194880-f9086c5c055bf6bfc0ba2b62f4bd6121e1f29c4a7268100caac4fd9ddbadf9a1",
+        "generation": 176,
+        "optimizerStep": 3194880,
+        "trainingDepth": 4,
+        "parentId": "g000175-s003186688-c9ead9a4b2e2f1d0e3c2cfb2d89afe3461da3835c2b82213ab0594b861887a42",
+        "networkBytes": 795032,
+        "networkSha256": "faf91dd6355790e683e66110686765209349a1e50211014464ef55f4890c407e",
+        "trainingBytes": 2731424,
+        "trainingSha256": "9230940cebd856b31eaf3f18e1be2803e18447409ce3252c133b9f75914ae64e",
+        "architecture": "BRN_PAIR2"
+      },
+      "session": {
+        "version": 1,
+        "id": "d282add0-2c98-41ee-967f-36850828cfe6",
+        "lineageId": "b6135d13-24a9-3d5f-8cc3-63e1880e323e",
+        "baseline": 168,
+        "target": 8,
+        "completed": 8,
+        "state": "COMPLETED"
+      },
+      "addedOptimizerSteps": 65536,
+      "generations": 8,
+      "trainingSamples": 1048576,
+      "validationSamples": 262144,
+      "trainingVisits": 8388608,
+      "promotions": 4,
+      "trainingSeconds": 120.1528271,
+      "finalComparison": {
+        "samples": 32768,
+        "candidateLoss": 0.11732684823974854,
+        "bestLoss": 0.12003925506035368
+      },
+      "finalCursors": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 17647883,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 16850511
+      },
+      "originSha256": "192cb8768f88f3de7f032bfbf419e0c3bb8cfbcded32d3522917a250772c0529",
+      "generationMetrics": [
+        {
+          "generation": 169,
+          "trainingLoss": 0.09096366006939849,
+          "validationLoss": 0.10382626479566913,
+          "incumbentLoss": 0.1047205303636159,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 170,
+          "trainingLoss": 0.09220590155008153,
+          "validationLoss": 0.10737780951441665,
+          "incumbentLoss": 0.10642282494151498,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 171,
+          "trainingLoss": 0.09548052336707712,
+          "validationLoss": 0.1065752768799637,
+          "incumbentLoss": 0.10655228668148657,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 172,
+          "trainingLoss": 0.09149161834663509,
+          "validationLoss": 0.11040487426056869,
+          "incumbentLoss": 0.11157916932949725,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 173,
+          "trainingLoss": 0.09820140794903817,
+          "validationLoss": 0.10441713547915862,
+          "incumbentLoss": 0.10324761813533428,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 174,
+          "trainingLoss": 0.08823527510250177,
+          "validationLoss": 0.10006866340880961,
+          "incumbentLoss": 0.1009254436916922,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 175,
+          "trainingLoss": 0.0883859086534234,
+          "validationLoss": 0.1046137596457929,
+          "incumbentLoss": 0.10326754966569342,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 176,
+          "trainingLoss": 0.0940736487001122,
+          "validationLoss": 0.11732684823974854,
+          "incumbentLoss": 0.12003925506035368,
+          "decision": "PROMOTE"
+        }
+      ],
+      "first4": {
+        "trainingLoss": 0.09253542583329806,
+        "validationLoss": 0.10704605636265455,
+        "candidateMinusIncumbent": -0.0002726464663741317
+      },
+      "last4": {
+        "trainingLoss": 0.09222406010126888,
+        "validationLoss": 0.10660660169337742,
+        "candidateMinusIncumbent": -0.00026336494489097306
+      },
+      "optimizerSemantics": "Exact inherited full Adam"
+    }
+  ],
+  "pairedComparisons": [
+    {
+      "left": "W9-CAL-AFFINE-R4-LR001",
+      "right": "W9-CAL-QUAD-R4-LR001",
+      "identicalDataThroughGeneration": 176,
+      "leftValidationWins": 2,
+      "meanLeftMinusRight": 0.00022576449247438748,
+      "last8LeftMinusRight": 0.00022576449247438748
+    },
+    {
+      "left": "W9-CAL-CUBIC-R4-LR001",
+      "right": "W9-CAL-QUAD-R4-LR001",
+      "identicalDataThroughGeneration": 176,
+      "leftValidationWins": 5,
+      "meanLeftMinusRight": 0.0001010424032071456,
+      "last8LeftMinusRight": 0.0001010424032071456
+    }
+  ],
+  "limitations": [
+    "Codec/runtime parity is verified separately by BrnLineageAudit.",
+    "Sequential generations use different validation examples; raw temporal means are descriptive.",
+    "Best is a sequential held-out promotion decision, not the global minimum on a fixed panel.",
+    "Three head arms share frozen Q4 anchor, data and new Adam; train/validation use the explicit search pawn function. BRE retains different historical data/split/full optimizer and raw objective; losses are not directly comparable across that objective boundary.",
+    "WDL Loss GUI label does not change the recorded half-squared target-error objective.",
+    "No chess strength conclusion follows from these losses."
+  ]
+}

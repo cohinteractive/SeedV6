@@ -2,9 +2,9 @@
 
 Updated22 October2026. **G4 is complete and verified. All six arms reached64,
 with exact expected continuation and preserved starting payloads. Wave4 trained
-assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; G6 is complete and verified through128; Wave6 trained assessment is closed; G7 is complete and verified through160; Wave7 assessment is closed; G8 is verified complete through Gen168; Wave8 assessment is closed; G9 is prepared and awaiting owner training.
+assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; G6 is complete and verified through128; Wave6 trained assessment is closed; G7 is complete and verified through160; Wave7 assessment is closed; G8 is verified complete through Gen168; Wave8 assessment is closed; G9 is verified complete through Gen176; its trained assessment is active.
 No programme success is claimed.** This remains the original
-CGLHW. Current assessment: [WAVE8-ASSESSMENT](WAVE8-ASSESSMENT.md); active gate: [WAVE9](WAVE9.md).
+CGLHW. Current assessment: [WAVE9-ASSESSMENT](WAVE9-ASSESSMENT.md); completed gate: [WAVE9](WAVE9.md).
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
 [completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md), and [completed G4 training gate](WAVE4.md).
 
@@ -12,73 +12,90 @@ Objective: statistically credible practical chess improvement over frozen BRE-Pa
 Gen32 through useful additional expressiveness, with measured costs and compatible
 search. Architectural complexity or lower validation loss alone is insufficient.
 
-## Current restart point (22 October 2026: G9 human-training gate)
+## Current restart point (22 October 2026: G9 trained assessment active)
 
-G8 is verified complete through Gen168. Latest168 for all; fixed cubic/quad Best167,
-BRE Best168. All 28 payload/state pairs pass 24-board runtime parity; all frozen
-weights, excluded moments, parents, recipes, source reservations and seek prefixes
-pass. Head steps 65,536; BRE 3,129,344. No partial/staging anomaly. Exact identities,
-full hashes and histories: wave8-trained-checkpoints.json. Do not repeat G8 training.
+The owner reports all four G9 GUI runs complete; actual persisted evidence verifies
+Gen169..176, correct settings and ancestry, 65,536 new updates per arm, and no
+partial/staging or unsettled-session anomaly. Latest176 for all; Best175 for the
+three calibrated heads, Best176 for BRE. All37 payload/state pairs pass24-board
+runtime checks. All frozen3,845 values and excluded Adam moments remain exact.
+Head data reservations match through176; BRE retains its documented separate
+history/objective. No repeated training is required.
 
-All 176 fixed G8 development games are closed, with 23,873 independently legal moves
-and no game failures/caps/fallbacks. Cubic scores50%/45.3125% against trained quad
-at nodes/time and56.25%/65.625% against unchanged Q4 anchor. Quad/cubic score
-46.875%/40.625% against continued BRE at time. Against frozen Gen32, quad/cubic/BRE
-score28.125%/53.125%/75%. These are small development comparisons, not independent
-confirmation or proof of useful cubic strength. Read WAVE8-ASSESSMENT and
-wave8-assessment-results.json; never extend the closed protocols for significance.
-Reserved confirmation partition1 remains untouched.
+Full checkpoint/state hashes, source chains, recipes and trajectories:
+wave9-trained-checkpoints.json. Read-only admission and frozen stores:
+wave9-trained-admission.json and wave9-trained-model-plan.json. All1,960 owner
+files were unchanged by auditing and freezing. Actual trained cache probes pass
+4,340 played positions and48 full/cache search pairs per head, with no integer
+or search discrepancy; see wave9-trained-diagnostics.json.
 
-G8's tiny cubic signal and bounded fitting diagnostics identify ordinary calibration
-as a material confound. The admitted G9 comparison trains affine-only,
-affine+quadratic and affine+cubic heads on the same frozen Q4 basis with the
-search-mapped objective, plus exact ordinary BRE continuation. The eight-head
-feature spaces are not nested; affine-only is their common adapted control.
-No further unchanged G8 training or phase-conditioned implementation is admitted.
+Calibration explains most consumed-panel fitting improvement. Learned Gen32
+non-material coefficients are approximately.77-.78 versus the initial.25;
+material coefficients are approximately.81. Cubic beats quad on five changing
+held-out generations, but its mean loss over all eight is higher; the later four
+favor cubic. These are fitting observations, not strength evidence or convergence.
+All heads' Best175 differs from Latest176. Preserve the prospective Latest selection.
 
-**Blocking owner action:** use build59 and train all four prepared lineages for
-**8 additional generations 169..176**, from their existing Latest168 checkpoints:
-W9-CAL-AFFINE-R4-LR001, W9-CAL-QUAD-R4-LR001,
-W9-CAL-CUBIC-R4-LR001 and W9-BRE-CONTROL-LR001.
-Exact GUI instructions, initialization, settings and interruption handling are in
-WAVE9. Full roots/checkpoint hashes/source chains: wave9-owner-readiness.json.
-All use .001, batch128, eight epochs,131072 training positions,seed1,one worker,
-held-out WDL and inherited sources. Head Adam is deliberately new step0; BRE
-retains 3,129,344. Expected final steps 65,536/3,194,880. No W9 training has begun.
-If interrupted resume the same session toward176, without adding another eight
-or resetting/switching to Best. Close GUI and report completion/anomalies.
-No manual Arena, repeated G8 training or other human action is required.
+The fixed192-game development programme is in wave9-assessment-protocol.json.
+Run only the frozen build59 wave9-runtime.json, one game/worker, no ponder,
+64MiB TT,768MiB heap,BelowNormal, bounded12-game/240-second launches. Compare
+calibrated affine/quad/cubic at time and nodes, all three with continued BRE,
+and cubic/BRE with frozen Gen32. New32 development roots exclude prior exact
+roots; partition1 remains untouched. No independent confirmation candidate.
+Common Policy4/QXRAY; native learned calibrated mapping once, no legacy half
+scaling. BRE uses its native quarter mapping in this protocol; older half-change
+results are distinct evidence, not silently carried forward.
 
-Build59 implementation e804482 passes 241 final targeted tests (zero failures or
-skips; not a full-suite claim). Independent projection, actual five-pair/24-board
-audit, three 4,340-position/48-search-pair cache probes,4,096 initial-function rows,
-eight bounded actual-source cursor reads and the packaged native GUI preview for
-all four owner lineages pass. Representative screenshots were visually inspected.
-6,620 unique existing/new files are unchanged, including all 72 new owner files.
-W1 and datasets were untouched, without a new complete rehash claim.
-Native executable: dist/windows/candidates/candidate-20261021T192119-a567d46b/
-SeedV6-GUI/SeedV6-GUI.exe. The local image retains an honest dirty-worktree marker;
-tracked application code matches e804482, with exact package/jar evidence in
-wave9-package-source-provenance.json. No shortcut/install was replaced.
+G9 pause is archived at raw/wave9/g9-completed-pause.txt following verification.
+Next: complete the fixed batches and independent legal replay, interpret paired
+uncertainty, calibration and costs; continue the highest-value justified research.
+The affine-node32 games are closed (Q31.25%,C21.875%, both uncertain);
+BRE-clock48 closes A43.75%,Q18.75%,C21.875%; degree-node16 closes C62.5%
+against Q. Affine-clock32 closes Q46.875%,C28.125% versus affine;
+degree-clock32 closes C40.625% versus Q. Primary reference-clock32 remains.
+The fixed scale-node follow-up is active before that last primary comparison;
+all original192 and separate80 budgets remain mandatory and unchanged.
+Separately admitted80 scale-sensitivity games are fixed in
+wave9-scale-followup-admission.json; use ONLY wave9-calibrated-projection-runtime.json
+for those projected variants. Its24 targeted tests and five actual4,340-position/
+48-search-pair probes pass; seven production/dependency jars remain build59-exact.
+Primary192 games keep the original runtime and native coefficients. No app bump.
+A two-arm128-update pawn-condition pilot is complete, with tiny mixed differences
+against additive geometry. No-fit attribution finds pawn terms hurt both BT4
+panels while helping CP; shared calibration explains the apparent broad gains.
+No model export or architecture/training gate is admitted. Independent Java/Python
+feature/cache checks pass4,340 positions; correction-only cached cost is about15ns,
+but played sequences do not establish recursive-search cost. See the pawn-condition
+impact and pawn-cost-verification records. The intentional between-batch pause
+is archived and BRE-clock completed with all34 earlier receipts preserved.
+The separate six-arm128-update continued-base pilot is mixed: cubic beats its
+adapted affine control on only one of four consumed panels with BRE176 as base.
+No newer-base architecture or training gate is justified by that result.
+Its between-batch affine-clock pause preserves12 receipts and is archived in
+wave9-continued-base-pause.json; the original32-game plan resumed. A label-free
+cubic-to-additive projection leaves most learned cubic signal unexplained; this
+does not establish its usefulness or optimal training. See basis-projection records.
+King-contact conjunction and rank-one embedding-adaptation pilots also fail to
+show consistent gains; all arms/panels remain in their respective records. No
+new architecture is admitted. A bounded read-only new-ordinal prediction check
+is admitted in wave9-fresh-data-plan.json, beyond current candidate source cursors;
+no fitting is permitted on that window in this check. Execute only between games.
+That read-only check is complete:2,048 valid BT4 and2,029 valid CP rows,19 invalid
+CP excluded. Cubic beats adapted affine/quad on both new windows (small BT4 margin),
+but fixed uniform head averages173..176 help BT4 and hurt CP. No consistent
+averaging remedy or independent strength evidence. See wave9-new-window-results.json.
+Neither this pilot nor scale sensitivity constitutes success.
+Never extend these matches merely for significance. If calibrated cubic adds no
+useful value, investigate a different information basis or selective mechanism
+rather than another unchanged head extension. No substantive autonomous training.
 
-**Resume only after G9 evidence:** inspect actual histories169..176, parent chains,
-Latest/Best, frozen prefixes, zero excluded moments, expected optimizer steps,
-recipes and source/seek continuity. Audit tools now support G9; no nonexistent
-trained endpoint has been audited. Archive the G9 runner pause only after verified
-completion. Freeze actual endpoints and admit comparisons of cubic against both
-adapted additive controls at equal time and targeted equal nodes; include BRE
-and frozen Gen32 as appropriate. Latest176 is prospective primary, Best separate.
-New calibrated models already include half-anchor composition and quarter mapping:
-never apply legacy correctionScale=.5 again. BRE keeps its distinct training
-objective/data history; its GUI loss is not directly comparable to the new losses.
-
-The runner pause is active at build/research/brn-successor-batches.pause. No research
-engine, training job or GUI preview remains active. Dependent research is paused
-at the genuine human gate, not completed. If calibrated cubic adds no useful value,
-prioritize a different information basis or selective mechanism rather than another
-unchanged extension. The original contract/objective and all earlier evidence remain.
-Human actions required after this prompt: the four G9 runs above and completion
-report, **blocking** trained G9 assessment; no other action.
+Implementation remains build59/e804482; current research starts at2673400.
+No application changes or new human gate yet. Original contract and all earlier
+findings remain. Human actions required after this prompt: None at this active
+assessment stage; report any later genuine gate explicitly.
+Untracked bin/,engine-core/bin/,engine-training/bin/ appeared during this root;
+their compiled classes/resources are unattributed environment output, preserved
+and excluded from commits. Frozen experiment runtimes do not read these paths.
 
 ## Candidate registry and preserved reference
 
@@ -101,7 +118,7 @@ report, **blocking** trained G9 assessment; no other action.
 | W6-BRE-CONTROL-LR001 | Latest/Best128; exact W5 BRE001 Latest96 continuation; distinct historical data/split remains a confound |
 | W7 Q4 / C4 / BRE001 | Verified Latest160; Best160/158/158; all176 development games closed |
 | W8 fixed C3 heads / fixed Q heads / BRE001 | Verified Latest168; Best167/167/168; all176 development games closed |
-| W9 affine / affine+Q / affine+C / BRE001 | Prepared Latest=Best168; zero new generations; G9 requires eight additional generations through176 |
+| W9 affine / affine+Q / affine+C / BRE001 | Verified Latest176; Best175/175/175/176; matched head data/frozen anchor, G9 assessment active |
 
 All managed roots are under E:/SeedV6-Networks. Exact checkpoint IDs, hashes and
 sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`, `wave3-trained-checkpoints.json`, `wave4-owner-readiness.json`, `wave4-trained-checkpoints.json`, `wave5-owner-readiness.json`. Frozen reference
@@ -155,10 +172,11 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
    they do not establish an optimal rate or guarantee improvement. G4 is verified complete. Lower rate improves same-data held-out loss in32/32
    residual generations and31/32 BRE generations, with lower training fit at.001.
    This is an optimization result, not strength. See WAVE4-ASSESSMENT.
-9. **Current G9 frontier.** Matched calibration controls and search-aligned training
-   are implemented and verified after closed G8 evidence. The next admissible
-   substantive step requires owner training, followed by actual degree/control
-   comparisons. No useful cubic chess gain or independent success is established.
+9. **Current G9 frontier.** Training is verified through176. Matched calibration
+   explains most fitting improvement; actual degree/control strength comparisons
+   are active under the fixed192-game protocol. Distinguish learned scale from
+   new information and practical cost. No useful cubic chess gain or independent
+   success is established. Do not repeat the completed owner action.
 10. **Deferred.** Selective feature/attack/blocker
    formulations, more efficient corrections, distillation or new architecture remain
    options if evidence warrants. Do not mechanically exhaust old architecture lists

@@ -12,6 +12,27 @@ import static com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.*;
 
 /** Research-only immutable function variants. Never write back to a checkpoint or optimizer. */
 final class BrnSuccessorVariants {
+    /** Explicit research-only search-scale sensitivity, not a training objective change.
+     * Maps V to M + scale*(V-M) before the single score rounding. The frozen
+     * anchor remains bit-identical; four affine coefficients absorb the mapping.
+     * An optional unadapted degree mask retains the original architecture/cache.
+     */
+    static BrnNextModel calibratedSearch(BrnNextModel source,double scale,boolean maskDegree) {
+        var kind=source.architecture();
+        if(!kind.calibratedHeads()||!Double.isFinite(scale)||scale<=0||scale>1)
+            throw new IllegalArgumentException("Explicit calibrated search scale in (0,1] required");
+        if(maskDegree&&kind==GEN32_CAL_AFFINE_R4)
+            throw new IllegalArgumentException("Affine control has no extra degree heads");
+        if(scale==1&&!maskDegree)return source;
+        double[] w=new double[kind.parameters()];
+        for(int i=0;i<w.length;i++)w[i]=source.weight(i);
+        int a=kind.affineHead();
+        w[a]*=scale;w[a+1]*=scale;
+        w[a+2]=scale*w[a+2]+8*(scale-1);
+        w[a+3]=scale*(1+w[a+3])-1;
+        for(int i=kind.extraHead();i<w.length;i++)w[i]=maskDegree?0:scale*w[i];
+        return new BrnNextModel(kind,w);
+    }
     /** Uniform adjacent-checkpoint parameter average for a diagnostic, never an Adam continuation.
      * Pair2 averages compiled additive tables, hence its raw function is also the uniform mean.
      * Nonlinear parameters share their original lineage basis; function equality is not assumed. */

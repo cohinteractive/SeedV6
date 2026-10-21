@@ -62,10 +62,27 @@ public final class BrnGatedCacheProbe {
         var workspace=hybridBase==null?model.newWorkspace():model.newResearchWorkspace(hybridBase);
         var ordinary=model.newWorkspace();var gen32=BrnNextBase.model().newWorkspace();
         var replacement=hybridBase==null?null:hybridBase.newWorkspace();
-        double maximum=0,maximumFreshError=0,compositionError=0;int differences=0,freshIntegerDifferences=0;
+        BrnNextModel calibratedOracle=null;
+        if(spec.calibratedVariant()!=null) {
+            var original=((NetworkModel.BrnNext)snapshot.model()).model();
+            if(spec.calibratedVariant().maskDegree()) {
+                // Separate affine layout omits degree machinery entirely.
+                var kind=BrnNextArchitecture.GEN32_CAL_AFFINE_R4;double[] w=new double[kind.parameters()];
+                for(int i=0;i<w.length;i++)w[i]=original.weight(i);
+                calibratedOracle=new BrnNextModel(kind,w);
+            } else calibratedOracle=original;
+        }
+        var calibratedWorkspace=calibratedOracle==null?null:calibratedOracle.newWorkspace();
+        double maximum=0,maximumFreshError=0,compositionError=0,calibratedProjectionError=0;int differences=0,freshIntegerDifferences=0;
         for(int i=0;i<boards.size();i++) {
             var board=boards.get(i);double expected=model.rawPawns(board,workspace),actual=accumulator.rawPawns(board);
             maximum=Math.max(maximum,Math.abs(expected-actual));
+            if(calibratedOracle!=null) {
+                double m=com.ohinteractive.seedv6.core.brnpair2.BrnPair2Features.material(board);
+                double nativePawns=m+.25*(calibratedOracle.rawPawns(board,calibratedWorkspace)-m);
+                double projected=m+spec.calibratedVariant().residualScale()*(nativePawns-m);
+                calibratedProjectionError=Math.max(calibratedProjectionError,Math.abs(projected-(m+.25*(expected-m))));
+            }
             if(replacement!=null)compositionError=Math.max(compositionError,Math.abs(expected-
                     (model.rawPawns(board,ordinary)-gen32.evaluatePawns(board)+replacement.evaluatePawns(board))));
             if(model.score(board,workspace)!=accumulator.score(board))differences++;
@@ -95,6 +112,11 @@ public final class BrnGatedCacheProbe {
         result.put("effectiveNetworkSha256",HexFormat.of().formatHex(DataFiles.digest().digest(effectiveBytes.toByteArray())));
         if(hybridBase!=null)result.put("hybrid",BrnSuccessorMatch.hybridBinding(spec,hybridBase,(String)result.get("effectiveNetworkSha256")));
         result.put("maximumCompositionRawError",compositionError);
+        if(spec.calibratedVariant()!=null) {
+            result.put("calibratedVariant",spec.calibratedVariant());
+            result.put("maximumCalibratedProjectionSearchPawnError",calibratedProjectionError);
+            if(calibratedProjectionError>1e-9)throw new IllegalStateException("Calibrated projection formula mismatch");
+        }
         if(spec.correctionScale()!=null||spec.correctionAblation()!=null) {
             result.put("correctionScale",spec.correctionScale()==null?1:spec.correctionScale());
             result.put("correctionAblation",spec.correctionAblation());result.put("constantGates",spec.constantGates());

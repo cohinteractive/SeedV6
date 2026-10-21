@@ -1,0 +1,182 @@
+{
+  "id": "wave9-pawn-condition-feasibility-v1-results",
+  "admission": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\wave9-pawn-condition-admission.json",
+  "admissionSha256": "b1891f5339ae7b8477bc8c88ab7937015fefb26bf5fd470484ed2377e188491f",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\bt4-predictions.jsonl": "878b43c6223e3f6ea9824669569d5e9b87b4ce3bbc8abcf1e74f7f1a626e8c1a",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\cp-predictions.jsonl": "c903e919a76bd64c28a5486defe023f9ed60758df65751bea26414e3c7228395",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\bt4-predictions.jsonl": "5327d60cac2c766f95ad6f890e22d79db2075957d4cb7d1a839c4c396c573b25",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\cp-predictions.jsonl": "56781da22ad2083b54b08d4a3d2add8490aabcf2ea2c82eeb086eae577434832"
+  },
+  "independentFeatureMaximumError": 4.440892098500626e-16,
+  "colorMirrorMaximumError": 0,
+  "thirdMixedDifference": {
+    "additive": 0.0,
+    "conditional": 0.35355339059327373
+  },
+  "arms": [
+    {
+      "mode": "additive",
+      "steps": 128,
+      "weights": [
+        0.12698463506172855,
+        0.32668982531829416,
+        -0.25089879529902953,
+        -0.3534064254049496,
+        0.20242012053956596,
+        -0.13437384477537698,
+        0.028893825004694423,
+        0.09234672281799428,
+        0.20049662384458825,
+        0.05780083131098699,
+        -0.012287583980121222,
+        0.046044968695225334,
+        0.30207780700320713,
+        -0.31907812298593463,
+        -0.22406439842805753,
+        -0.03803193115037116,
+        0.13838152852853428,
+        -0.10817241184927599,
+        -0.0943444674101817,
+        0.059420709058767895,
+        0.007009225042886781,
+        0.0,
+        -0.0010268041638690265,
+        -0.004252423860121693,
+        0.15283507756381456,
+        -0.08840445419531047,
+        0.002064038381277812,
+        0.0
+      ],
+      "epochLoss": [
+        0.6324589443134296,
+        0.6314545033766024,
+        0.6303698679908427,
+        0.6295593309902175,
+        0.6287266044917805,
+        0.6281179791975868,
+        0.6271086308649905,
+        0.6264618052712636
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "count": 1024,
+          "meanCrossEntropyChange": -0.0004883753572507592,
+          "standardError": 0.00047927097498961157,
+          "changeRmsPawns": 0.06988222729928126
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "count": 1015,
+          "meanCrossEntropyChange": -0.00191372886583046,
+          "standardError": 0.0007625231121157777,
+          "changeRmsPawns": 0.07176597919186158
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "count": 1024,
+          "meanCrossEntropyChange": -0.00032489442917379323,
+          "standardError": 0.0003972640235093014,
+          "changeRmsPawns": 0.06790036369679914
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "count": 1015,
+          "meanCrossEntropyChange": 0.0001913954854260457,
+          "standardError": 0.001573861891271168,
+          "changeRmsPawns": 0.07434076773285433
+        }
+      ]
+    },
+    {
+      "mode": "conditional",
+      "steps": 128,
+      "weights": [
+        0.13806656171922022,
+        0.3256151102198981,
+        -0.2488891818787249,
+        -0.3540693281530604,
+        0.2217239590571206,
+        -0.13295442442781222,
+        0.031707075093623846,
+        0.09552606246470491,
+        0.20085073870163364,
+        0.05960661923744927,
+        0.005422471858104307,
+        0.05638980093175044,
+        0.31035902791128245,
+        -0.3186979704082146,
+        -0.22347151037500976,
+        -0.037880431040442045,
+        -0.0570982412896102,
+        0.13235402529524506,
+        0.15072958995518002,
+        -0.04663588744929958,
+        0.14624111759371577,
+        0.05960661923744927,
+        0.011768391949298265,
+        -0.052287462098007005,
+        0.15878330160932064,
+        -0.19955042637814793,
+        -0.25350084522227423,
+        -0.037880431040442045
+      ],
+      "epochLoss": [
+        0.6324663514010836,
+        0.6314047993290282,
+        0.6302740036999914,
+        0.629445034308823,
+        0.6285911934943391,
+        0.6279704831250278,
+        0.6269571854321,
+        0.626310307708419
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "count": 1024,
+          "meanCrossEntropyChange": -0.0004947804031371822,
+          "standardError": 0.0004980367272119655,
+          "changeRmsPawns": 0.06784166907718567
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "count": 1015,
+          "meanCrossEntropyChange": -0.0020667448650314693,
+          "standardError": 0.0007498534343568265,
+          "changeRmsPawns": 0.07040418326987864
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "count": 1024,
+          "meanCrossEntropyChange": -0.00030036452209412776,
+          "standardError": 0.0004236155309212389,
+          "changeRmsPawns": 0.06586743052586394
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "count": 1015,
+          "meanCrossEntropyChange": -4.061504549122781e-05,
+          "standardError": 0.0015522414034875335,
+          "changeRmsPawns": 0.07274632495759593
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Consumed status-valid panels, no independent generalization or playing-strength claim.",
+    "Fixed128 updates/arm, not optimized convergence or evidence that either basis is unsuitable.",
+    "Same28 parameter budget and nominal Adam, but different feature conditioning/scale.",
+    "No checkpoint/optimizer export or owner writes; no architecture implementation admitted by this pilot alone.",
+    "Passed-pawn condition ignores piece blockers, king safety and tactical feasibility; it describes pawn geometry only."
+  ]
+}

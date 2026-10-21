@@ -1,0 +1,250 @@
+{
+  "id": "wave9-degree-clock-v1-completed",
+  "status": "Closed fixed-budget development experiment",
+  "plan": "docs\\research\\brn-successor-cglhw\\wave9-degree-clock-plan.json",
+  "receipts": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\degree-clock",
+  "analysis": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\degree-clock-analysis-01.json",
+  "runtime": "docs\\research\\brn-successor-cglhw\\wave9-runtime.json",
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\wave9-degree-clock-plan.json": "7dfe91360048f7dee180d2adea87dccde5342cbc58a4b7e5f966e142d7dbcbee",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\degree-clock-analysis-01.json": "a5e4ca5c2304e587da1ca20e5c5d32d2239d3a15b41f328ff0dab11128a45d90",
+    "docs\\research\\brn-successor-cglhw\\wave9-runtime.json": "888756bce145ddfa4de5494318e04f98d3d9347d96383b21ec835f4892b4374c",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\degree-clock\\model-bindings.json": "c3f95ef0e3579423304c97a3320f9200aac66c2d98513601603f67ef65be008f"
+  },
+  "games": 32,
+  "validatedMoves": 3862,
+  "models": [
+    {
+      "name": "W9-CAL-CUBIC-R4-LR001",
+      "wins": 11,
+      "draws": 4,
+      "losses": 17,
+      "validPairs": 16,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.40625,
+      "pairStandardError": 0.07525996611745185,
+      "descriptiveNormal95": [
+        0.25874046640979437,
+        0.5537595335902057
+      ],
+      "pairScores": [
+        0.0,
+        0.0,
+        0.0,
+        0.5,
+        0.5,
+        0.5,
+        0.75,
+        0.0,
+        0.75,
+        0.0,
+        0.75,
+        0.5,
+        0.75,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "boundedPair95": [
+        0.06672462106484511,
+        0.7457753789351549
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.06672462106484511,
+        0.7457753789351549
+      ]
+    }
+  ],
+  "modelBindings": [
+    {
+      "name": "W9-CAL-QUAD-R4-LR001",
+      "originalManifest": {
+        "id": "g000176-s000065536-28d94ac77120ee02c2e24a03e350a01486e928f08325ebafcaa55576e1791674",
+        "generation": 176,
+        "optimizerStep": 65536,
+        "trainingDepth": 4,
+        "parentId": "g000175-s000057344-b506adbe13a9dadeb84c4c83a976eb2168368f743317e397a82b1d53fbfa4a7d",
+        "networkBytes": 30896,
+        "networkSha256": "7d5a231b21ea8e1ad0760ea97a12cf77d40247aaeeecc621867085633d6acd0e",
+        "trainingBytes": 92560,
+        "trainingSha256": "6f0b7fc77f6ae2ee1a5bae88566e18426dc4ad2f884f34b03bfc003136ab2b48",
+        "architecture": "BRN_GEN32_CAL_QUADRATIC_R4"
+      },
+      "effectiveNetworkSha256": "7d5a231b21ea8e1ad0760ea97a12cf77d40247aaeeecc621867085633d6acd0e",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "calibratedHeadCache": "calibrated-fixed-head-composition-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    },
+    {
+      "name": "W9-CAL-CUBIC-R4-LR001",
+      "originalManifest": {
+        "id": "g000176-s000065536-a924ec59b6d56c319475b79c6c9fa2c661fd6345c401c324d8715463a39bebfa",
+        "generation": 176,
+        "optimizerStep": 65536,
+        "trainingDepth": 4,
+        "parentId": "g000175-s000057344-2cd1216869ef01c5bc806a060a158caafba948527c242de6d4357cac32a6d644",
+        "networkBytes": 30896,
+        "networkSha256": "5c10589acc5d3870fbca065f4829ad538de3e1e28bb0e3b6cdb2ce8b7d2e56e2",
+        "trainingBytes": 92560,
+        "trainingSha256": "dae3d2b37f73303ccffaa4b13a43111a3dec483111cc472525c1a6ec9ed9afd8",
+        "architecture": "BRN_GEN32_CAL_CUBIC_R4"
+      },
+      "effectiveNetworkSha256": "5c10589acc5d3870fbca065f4829ad538de3e1e28bb0e3b6cdb2ce8b7d2e56e2",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "calibratedHeadCache": "calibrated-fixed-head-composition-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    }
+  ],
+  "sameRootSearch": [
+    {
+      "name": "W9-CAL-CUBIC-R4-LR001",
+      "usablePairedRoots": 16,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 9,
+      "meanDepthDifference": -0.125,
+      "lessEqualMoreDepth": [
+        3,
+        11,
+        2
+      ],
+      "medianNodeRatio": 0.9461597903014421,
+      "medianElapsedRatio": 1.000071481192467,
+      "medianNpsRatio": 0.9461307681109388
+    }
+  ],
+  "telemetry": {
+    "W9-CAL-CUBIC-R4-LR001": {
+      "moves": 1930,
+      "nodes": 502419459,
+      "elapsedNanos": 369608783000,
+      "sumDepth": 20412,
+      "fallbacks": 0,
+      "maximumMoveNanos": 252149400
+    },
+    "g000176-s000065536-28d94ac77120ee02c2e24a03e350a01486e928f08325ebafcaa55576e1791674": {
+      "moves": 1932,
+      "nodes": 519940115,
+      "elapsedNanos": 369671152000,
+      "sumDepth": 20673,
+      "fallbacks": 0,
+      "maximumMoveNanos": 212474300
+    }
+  },
+  "commonOpponentContrasts": [],
+  "openingPrefixSensitivity": [
+    {
+      "plies": 4,
+      "uniquePrefixes": 12,
+      "largestGroup": 3
+    },
+    {
+      "plies": 8,
+      "uniquePrefixes": 15,
+      "largestGroup": 2
+    },
+    {
+      "plies": 12,
+      "uniquePrefixes": 16,
+      "largestGroup": 1
+    },
+    {
+      "plies": 16,
+      "uniquePrefixes": 16,
+      "largestGroup": 1
+    }
+  ],
+  "processReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\degree-clock-batch01.process.json",
+      "sha256": "96667beebeb2bea9f8aafdcfb21ac241f5a9bd4b78566a70f86cd1acbd713424",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "d6773be17826f54395d3397c11139528e3342ef22bf683df58c48c868924fc48",
+      "completedUtc": "2026-10-21T21:55:06.9184200Z",
+      "sampledPeakWorkingSetBytes": 599343104,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave9-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 228.953125,
+      "plan": "docs/research/brn-successor-cglhw/wave9-degree-clock-plan.json",
+      "processId": 32368,
+      "startedUtc": "2026-10-21T21:51:03.3877420Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\degree-clock-batch02.process.json",
+      "sha256": "87a34acb5cbc4aa9fd62fa579d648f7518ed67d8738ea28de985dc6edab8900e",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "d6773be17826f54395d3397c11139528e3342ef22bf683df58c48c868924fc48",
+      "completedUtc": "2026-10-21T22:00:13.5934174Z",
+      "sampledPeakWorkingSetBytes": 516780032,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave9-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 288.84375,
+      "plan": "docs/research/brn-successor-cglhw/wave9-degree-clock-plan.json",
+      "processId": 28880,
+      "startedUtc": "2026-10-21T21:55:25.5775219Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\degree-clock-batch03.process.json",
+      "sha256": "fae56f8848fc7e9bd680282bf0e93280d7e646486c8ba2ae04bb83cdf78c0d4d",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "d6773be17826f54395d3397c11139528e3342ef22bf683df58c48c868924fc48",
+      "completedUtc": "2026-10-21T22:04:02.2437546Z",
+      "sampledPeakWorkingSetBytes": 581599232,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave9-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 233.296875,
+      "plan": "docs/research/brn-successor-cglhw/wave9-degree-clock-plan.json",
+      "processId": 5036,
+      "startedUtc": "2026-10-21T22:00:14.3054204Z"
+    }
+  ],
+  "separateDiagnosticProcessReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-cache-affine-01.process.json",
+      "sha256": "4f45363cadd64da6d9c6188eef8600f071aac13a01bf07cfb149184fb8e2425a",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-cache-cubic-01.process.json",
+      "sha256": "281118171cb068757b78e4d6f3b0c403e9ba7c16ce68add17610da85ab8ac56e",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-cache-quad-01.process.json",
+      "sha256": "ac963803aadf20d8d91c0400849e9e528e04eb67ab787a20ccb9e0eb19fba4fe",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    }
+  ],
+  "maximumSampledWorkingSetMiB": 571.578125,
+  "totalEngineCpuSeconds": 751.09375,
+  "limitations": [
+    "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims.",
+    "Paired differences on shared complete opening pairs against the same reference. Positive favours left. Descriptive, unadjusted, not direct head-to-head strength or architectural causation.",
+    "Fresh search/TT at identical opening roots; different evaluator-dependent trees. Clock protocols warm up; node protocols do not. Descriptive cost/behaviour, not causal latency or strength.",
+    "Move-prefix grouping is a descriptive dependence warning, not ECO/source-game classification or proof of independent opening families. Pair intervals are unadjusted.",
+    "Hoeffding intervals assume independent bounded opening-pair scores; within-plan union bound covers only this plan, not prior candidate selection or repeated protocols. Independence remains unverified.",
+    "No final strength claim, selection-adjusted confirmation, or architectural causation inferred."
+  ]
+}

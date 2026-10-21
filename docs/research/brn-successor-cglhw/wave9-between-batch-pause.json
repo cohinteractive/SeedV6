@@ -1,0 +1,12 @@
+{
+  "id": "wave9-between-batch-diagnostics-pause-v1",
+  "completedUtc": "2026-10-21T21:26:26.807552+00:00",
+  "reason": "Intentional one-CPU scheduling between fixed batches for bounded pawn feature/cost and no-fit impact diagnostics.",
+  "pausedSentinel": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\diagnostics-completed-pause-01.txt",
+  "sentinelSha256": "b8663dd0f0c1d0c5af7bfb798826cab98881784c178057b532ba0138f17561be",
+  "completedGameReceipts": 34,
+  "lastBatch": "raw/wave9/bre-clock-batch03.process.json",
+  "lastBatchExitCode": 0,
+  "nextLaunch": "bre-clock-batch04 was rejected by the pause sentinel before engine/log creation. Parent orchestration exited1 as designed by the existing fail-closed runner; not a game failure.",
+  "resume": "Continue the same48-game BRE protocol with original runtime/plans; no game discarded or replayed."
+}

@@ -20,6 +20,12 @@ import java.util.*;
 
 /** Single-worker paired diagnostic with immutable per-game receipts and explicit equal search. */
 public final class BrnSuccessorMatch {
+    record CalibratedVariant(Double residualScale,boolean maskDegree) {
+        CalibratedVariant {
+            if(residualScale==null||!Double.isFinite(residualScale)||residualScale<=0||residualScale>1)
+                throw new IllegalArgumentException("Explicit calibrated residualScale in (0,1] required");
+        }
+    }
     record AverageInput(String root,String checkpoint,String networkSha256) {}
     record HybridBase(String root,String checkpoint,String networkSha256,Double changeScale) {
         HybridBase {
@@ -31,8 +37,14 @@ public final class BrnSuccessorMatch {
                  boolean gatedCache, boolean cubicCache, Double blendCandidateWeight,
                  Double correctionScale, String correctionAblation, double[] constantGates, boolean gatedDeltaCache, boolean cubicDeltaCache,
                  List<AverageInput> averagedInputs, List<Integer> retainedCubicRanks, HybridBase hybridBase,
-                 Boolean packedCubicCache, Boolean compiledUnary, Boolean compiledConstantGates) {
+                 Boolean packedCubicCache, Boolean compiledUnary, Boolean compiledConstantGates,
+                 CalibratedVariant calibratedVariant) {
         Model {
+            if(calibratedVariant!=null&&(residualGain!=null||correctionScale!=null||correctionAblation!=null
+                    ||constantGates!=null||hybridBase!=null||blendCandidateWeight!=null||averagedInputs!=null
+                    ||retainedCubicRanks!=null||gatedCache||cubicCache||gatedDeltaCache||cubicDeltaCache
+                    ||Boolean.TRUE.equals(packedCubicCache)||Boolean.TRUE.equals(compiledUnary)||Boolean.TRUE.equals(compiledConstantGates)))
+                throw new IllegalArgumentException("Calibrated projection requires its native cache and exclusive variant binding");
             if(constantGates!=null&&!"constant-gates".equals(correctionAblation))
                 throw new IllegalArgumentException("Explicit constant-gates ablation required");
             if(cubicDeltaCache&&(gatedCache||cubicCache||gatedDeltaCache))throw new IllegalArgumentException("Choose one cache");
@@ -87,6 +99,11 @@ public final class BrnSuccessorMatch {
      * trainable checkpoint. Every ingredient and the effective model hash are retained in receipts. */
     static NetworkModel loadModel(Model spec) throws Exception {
         var model=loadAveragedOrAnchor(spec);
+        if(spec.calibratedVariant()!=null) {
+            if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("Calibrated model required");
+            var v=spec.calibratedVariant();
+            model=new NetworkModel.BrnNext(BrnSuccessorVariants.calibratedSearch(n.model(),v.residualScale(),v.maskDegree()));
+        }
         if(spec.retainedCubicRanks()!=null) {
             if(!(model instanceof NetworkModel.BrnNext n)
                     ||n.model().architecture()!=com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GEN32_CUBIC)
@@ -253,6 +270,10 @@ public final class BrnSuccessorMatch {
                 modelBinding.put("blendCandidateWeight",spec.blendCandidateWeight());
                 modelBinding.put("blendReference",plan.models().getFirst());
                 modelBinding.put("blendMapping","Convex calibrated integer scores, symmetric half-away rounding");
+            }
+            if(spec.calibratedVariant()!=null) {
+                modelBinding.put("calibratedVariant",spec.calibratedVariant());
+                modelBinding.put("calibratedVariantMapping","brn-calibrated-search-projection-v1: optional unadapted degree mask, then M + scale*(nativeSearchPawns-M), one rounding; source and optimizer unchanged");
             }
             bindings.add(modelBinding);
         }

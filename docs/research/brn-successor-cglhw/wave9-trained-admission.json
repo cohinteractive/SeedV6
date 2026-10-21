@@ -1,0 +1,104 @@
+{
+  "status": "passed",
+  "ownerInventory": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-before-01.json",
+  "ownerFilesUnchanged": 1960,
+  "freeze": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-frozen-01",
+  "checks": [
+    {
+      "name": "W9-CAL-AFFINE-R4-LR001",
+      "retainedAttempt": {
+        "parent": "g000175-s000057344-403cbfc5b1b6f5d4bfa330488cf5d782c2415b2bb1939b7456bdb5804c026d03",
+        "incumbent": "g000175-s000057344-403cbfc5b1b6f5d4bfa330488cf5d782c2415b2bb1939b7456bdb5804c026d03",
+        "generation": 176,
+        "sourceMode": "TRAINING_DATA",
+        "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CAL-AFFINE-R4\\ef6b7d2e-a8d3-397f-b66e-6f93d123d57e\\training-data",
+        "settings": "SelfPlayConfig[games=64, depth=4, threads=1, seed=-8984732553279230128, minimumOpeningPlies=0, maximumOpeningPlies=8, maximumSamplesPerGame=32, maximumPlies=1024, scoreMapping=NnueScoreMapping[scale=32511.0], nodesPerMove=-1, millisPerMove=-1]|Config[epochs=8, minibatchSize=128, shuffle=true, shuffleSeed=-7091997325553517615]|-552470235369335871|rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1|corpus-outcome-v1:131072:1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5:BRN3_SOURCE_OUTCOME_V1|learningRate=0.001|validation=HELD_OUT|supervision=BrnSupervision[mode=WDL, teacherWeight=0.0]|teacher=",
+        "format": "INCREMENTAL",
+        "notice": ""
+      },
+      "seek": {
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": {
+          "sha256": "29ba583605f85053f57f8ed7b879b832641d390bee2d1fae9453d123fe7dd2cf",
+          "inheritedPoints": 12141,
+          "currentPoints": 12708
+        }
+      },
+      "initialProjectionVerified": true,
+      "sourcePrefixReservations": 168
+    },
+    {
+      "name": "W9-CAL-QUAD-R4-LR001",
+      "retainedAttempt": {
+        "parent": "g000175-s000057344-b506adbe13a9dadeb84c4c83a976eb2168368f743317e397a82b1d53fbfa4a7d",
+        "incumbent": "g000175-s000057344-b506adbe13a9dadeb84c4c83a976eb2168368f743317e397a82b1d53fbfa4a7d",
+        "generation": 176,
+        "sourceMode": "TRAINING_DATA",
+        "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CAL-QUADRATIC-R4\\741f4848-b98f-3b26-9263-5f5adb4d20b1\\training-data",
+        "settings": "SelfPlayConfig[games=64, depth=4, threads=1, seed=-8984732553279230128, minimumOpeningPlies=0, maximumOpeningPlies=8, maximumSamplesPerGame=32, maximumPlies=1024, scoreMapping=NnueScoreMapping[scale=32511.0], nodesPerMove=-1, millisPerMove=-1]|Config[epochs=8, minibatchSize=128, shuffle=true, shuffleSeed=-7091997325553517615]|-552470235369335871|rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1|corpus-outcome-v1:131072:1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5:BRN3_SOURCE_OUTCOME_V1|learningRate=0.001|validation=HELD_OUT|supervision=BrnSupervision[mode=WDL, teacherWeight=0.0]|teacher=",
+        "format": "INCREMENTAL",
+        "notice": ""
+      },
+      "seek": {
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": {
+          "sha256": "29ba583605f85053f57f8ed7b879b832641d390bee2d1fae9453d123fe7dd2cf",
+          "inheritedPoints": 12141,
+          "currentPoints": 12708
+        }
+      },
+      "initialProjectionVerified": true,
+      "sourcePrefixReservations": 168
+    },
+    {
+      "name": "W9-CAL-CUBIC-R4-LR001",
+      "retainedAttempt": {
+        "parent": "g000175-s000057344-2cd1216869ef01c5bc806a060a158caafba948527c242de6d4357cac32a6d644",
+        "incumbent": "g000175-s000057344-2cd1216869ef01c5bc806a060a158caafba948527c242de6d4357cac32a6d644",
+        "generation": 176,
+        "sourceMode": "TRAINING_DATA",
+        "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-CAL-CUBIC-R4\\d3694155-fb64-3037-a247-b5bf804b8d79\\training-data",
+        "settings": "SelfPlayConfig[games=64, depth=4, threads=1, seed=-8984732553279230128, minimumOpeningPlies=0, maximumOpeningPlies=8, maximumSamplesPerGame=32, maximumPlies=1024, scoreMapping=NnueScoreMapping[scale=32511.0], nodesPerMove=-1, millisPerMove=-1]|Config[epochs=8, minibatchSize=128, shuffle=true, shuffleSeed=-7091997325553517615]|-552470235369335871|rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1|corpus-outcome-v1:131072:1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5:BRN3_SOURCE_OUTCOME_V1|learningRate=0.001|validation=HELD_OUT|supervision=BrnSupervision[mode=WDL, teacherWeight=0.0]|teacher=",
+        "format": "INCREMENTAL",
+        "notice": ""
+      },
+      "seek": {
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": {
+          "sha256": "29ba583605f85053f57f8ed7b879b832641d390bee2d1fae9453d123fe7dd2cf",
+          "inheritedPoints": 12141,
+          "currentPoints": 12708
+        }
+      },
+      "initialProjectionVerified": true,
+      "sourcePrefixReservations": 168
+    },
+    {
+      "name": "W9-BRE-CONTROL-LR001",
+      "retainedAttempt": {
+        "parent": "g000175-s003186688-c9ead9a4b2e2f1d0e3c2cfb2d89afe3461da3835c2b82213ab0594b861887a42",
+        "incumbent": "g000174-s003178496-148addf76de501e8eec6f1637e3ebeacd416c91eed6f3deddaf0f09e08c563d2",
+        "generation": 176,
+        "sourceMode": "TRAINING_DATA",
+        "sourceRoot": "E:\\SeedV6-Networks\\BRN-Pair2\\b6135d13-24a9-3d5f-8cc3-63e1880e323e\\training-data",
+        "settings": "SelfPlayConfig[games=64, depth=4, threads=1, seed=-8984732553279230128, minimumOpeningPlies=0, maximumOpeningPlies=8, maximumSamplesPerGame=32, maximumPlies=1024, scoreMapping=NnueScoreMapping[scale=32511.0], nodesPerMove=-1, millisPerMove=-1]|Config[epochs=8, minibatchSize=128, shuffle=true, shuffleSeed=-7091997325553517615]|-552470235369335871|rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1|corpus-outcome-v1:131072:1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5:BRN3_SOURCE_OUTCOME_V1|learningRate=0.001|validation=HELD_OUT|supervision=BrnSupervision[mode=WDL, teacherWeight=0.0]|teacher=",
+        "format": "INCREMENTAL",
+        "notice": ""
+      },
+      "seek": {
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": {
+          "sha256": "e77706738aacb4ecdef934ecf0f864c9935b8df13281e2d24670dd26895c49d6",
+          "inheritedPoints": 4110,
+          "currentPoints": 4304
+        }
+      },
+      "initialProjectionVerified": true,
+      "sourcePrefixReservations": 168
+    }
+  ],
+  "selection": "Latest176 prospectively selected in WAVE9; Best identities remain separately audited.",
+  "limitations": [
+    "Retained final attempt describes settled Gen176; no partial optimizer state exists.",
+    "No observed persisted restart notice or incomplete generation; uninterrupted wall-clock execution cannot be proved.",
+    "Calibrated heads share the same frozen Q4 anchor with fresh Adam and common search-pawn objective; affine4 or affine+degree8 coefficients train.",
+    "BRE has distinct historical exposure, source cursors/split and sparse optimizer semantics.",
+    "Seek indexes append during training; normal settled attempts are INCREMENTAL. These facts were established during G6 admission."
+  ]
+}

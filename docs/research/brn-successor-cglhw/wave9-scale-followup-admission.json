@@ -1,0 +1,42 @@
+{
+  "id": "wave9-calibration-scale-followup-v1",
+  "protocols": [
+    {
+      "label": "scale-node",
+      "plan": "docs\\research\\brn-successor-cglhw\\wave9-scale-node-plan.json",
+      "sha256": "fe0e450a96fc64ac1c7750090a4be76fa11e74b754774cdbb15989ef3056bcd6",
+      "games": 16
+    },
+    {
+      "label": "scale-clock",
+      "plan": "docs\\research\\brn-successor-cglhw\\wave9-scale-clock-plan.json",
+      "sha256": "2fca0e9876680c5690a15519ca0b96e2dd0b9bfe7a7cf710ee9f1b7b3515b74a",
+      "games": 16
+    },
+    {
+      "label": "scaled-degree-clock",
+      "plan": "docs\\research\\brn-successor-cglhw\\wave9-scaled-degree-clock-plan.json",
+      "sha256": "ccd221309921248b5d85b4250acca566a3b40048e4d6738346c9ee9ef0106ac6",
+      "games": 16
+    },
+    {
+      "label": "scaled-bre-clock",
+      "plan": "docs\\research\\brn-successor-cglhw\\wave9-scaled-bre-clock-plan.json",
+      "sha256": "927811c5af3c376c3c2af53ece4b15a955bc18ccb0f4367c8eb8a5e0cb40ba31",
+      "games": 32
+    }
+  ],
+  "totalGames": 80,
+  "runtime": "wave9-calibrated-projection-runtime.json",
+  "runtimeSha256": "245651b88155463b873ae33f4d67a111762a0dbd36f7df6bd2df2c7eacc3a543",
+  "readiness": "wave9-calibrated-projection-readiness.json",
+  "readinessSha256": "1eea863a134f03dbb2bf5778ea5c55ac658f381f3b2c5785bc73dd129b08f5ed",
+  "question": "Do the learned residual score magnitudes explain practical weakness independently of cubic information? Does cubic add value against the equally scaled, adapted affine control?",
+  "trigger": "All head models learned about.77-.78 Gen32 non-material gain versus initial.25. Native Q/C scored31.25/21.875% against affine at equal nodes in the closed32-game comparison; other primary comparisons remain unclosed. This is a prespecified sensitivity, not a winner search.",
+  "mapping": "One fixed additional material-preserving residual scale.25 applied analytically to calibrated heads before integer rounding. Native checkpoint/optimizer and source function preserved. No search-policy changes, parameter refits or scale grid.",
+  "stopping": "Complete80 fixed games except correctness/resource failure; no favorable stopping or unchanged extension. All192 primary games remain required and unchanged.",
+  "selection": "Latest176 throughout; no Best selection. No new training.",
+  "statistics": "Development only, eight reversed-colour pairs per cell; reused G9 roots and prior model selection, unknown family/training overlap. Descriptive and bounded intervals, no independent superiority.",
+  "resource": "One game/worker,no ponder,64MiB TT,768MiB heap,ActiveProcessorCount1,BelowNormal,12games/240sec per bounded launch.",
+  "limits": "Scale control changes evaluator/search interaction and residual magnitude, not mathematical information. Cubic versus adapted affine is still subject to optimization differences. Confirmation partition1 untouched."
+}

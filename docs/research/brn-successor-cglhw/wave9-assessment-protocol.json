@@ -1,0 +1,56 @@
+{
+  "id": "wave9-development-assessment-v1",
+  "protocols": [
+    {
+      "label": "affine-node",
+      "plan": "docs/research/brn-successor-cglhw/wave9-affine-node-plan.json",
+      "sha256": "28a0d608aa5d676fade891c6ba17f6144f04f8368a1afcbb57aa52653f5156bf",
+      "games": 32
+    },
+    {
+      "label": "degree-node",
+      "plan": "docs/research/brn-successor-cglhw/wave9-degree-node-plan.json",
+      "sha256": "a699d05cb762fcdd7f72eff2f123ce545b52ceb19aaa400c9249ee8f90900abe",
+      "games": 16
+    },
+    {
+      "label": "affine-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave9-affine-clock-plan.json",
+      "sha256": "e3bfba953600153e58d2a1662d7d3961ae9b4bb1bae2c33bc5bbd842606e70b8",
+      "games": 32
+    },
+    {
+      "label": "degree-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave9-degree-clock-plan.json",
+      "sha256": "7dfe91360048f7dee180d2adea87dccde5342cbc58a4b7e5f966e142d7dbcbee",
+      "games": 32
+    },
+    {
+      "label": "bre-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave9-bre-clock-plan.json",
+      "sha256": "3db369bd9bddc0b7f4ca90c808e4e2c836581ae91d1216c1e41fe6b55678d526",
+      "games": 48
+    },
+    {
+      "label": "reference-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave9-reference-clock-plan.json",
+      "sha256": "7da2983b3b62c0e7345e8f8063122084d8e84fb35a1cb8a445602ec5542fc303",
+      "games": 32
+    }
+  ],
+  "totalGames": 192,
+  "runtime": "wave9-runtime.json",
+  "selection": "Latest176 primary selected prospectively in WAVE9 before training. All head Best175; BRE Best176. No match-based substitution.",
+  "admissionEvidence": {
+    "wave9-trained-checkpoints.json": "385c8e6d10299ad9257af101ecc8b5882d6e03466de7745184a3fca6a1ecab95",
+    "wave9-trained-admission.json": "989c29379ea9a2245cb928fb90430780af2da361128d68f3e69cb8eec6d9e5fa",
+    "wave9-runtime.json": "888756bce145ddfa4de5494318e04f98d3d9347d96383b21ec835f4892b4374c"
+  },
+  "mapping": "Common Policy4/QXRAY and material plus quarter raw residual. Native learned calibrated heads already include half anchor; no extra correction scaling. BRE uses its actual native quarter mapping, not the prior half-change variant.",
+  "purpose": "Direct calibrated affine/quad/cubic comparisons at nodes and time; all three versus continued BRE at time; expressive cubic and BRE versus frozen Gen32 at time.",
+  "stopping": "Complete all fixed budgets except correctness/resource failure. No favorable stopping, unchanged extension or post-hoc Best substitution.",
+  "statistics": "Opening-pair descriptive and bounded intervals. Development roots reused across related protocols; unknown opening-family/training dependence, prior candidate selection, multiplicity. No independent confirmation.",
+  "resource": "One game, one worker/engine, no pondering,64MiB TT,768MiB heap,ActiveProcessorCount1,BelowNormal;12games/240sec per launch.",
+  "confirmation": "Partition1 untouched; no candidate admitted to confirmation.",
+  "causalLimits": "Head arms share identical frozen Q4/data/new Adam. Quad and cubic eight-head feature spaces are not nested. BRE has distinct historical exposure, splits and raw training objective. Learned heads greatly alter score scale; common search does not itself prove calibration optimal."
+}

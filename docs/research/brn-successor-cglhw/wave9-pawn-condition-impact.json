@@ -1,0 +1,214 @@
+{
+  "id": "wave9-pawn-condition-impact-v1",
+  "admission": "docs\\research\\brn-successor-cglhw\\wave9-pawn-condition-admission.json",
+  "admissionSha256": "b1891f5339ae7b8477bc8c88ab7937015fefb26bf5fd470484ed2377e188491f",
+  "pilot": "docs\\research\\brn-successor-cglhw\\wave9-pawn-condition-results.json",
+  "pilotSha256": "02bd0fcd6dd5afa8883d24de3fe0a1ecbc62d86532c7f58abaf4076aad58b9fa",
+  "findings": [
+    {
+      "panel": "fresh5",
+      "source": "bt4",
+      "arms": [
+        {
+          "mode": "additive",
+          "metrics": {
+            "all": {
+              "count": 1024,
+              "crossEntropyChange": -0.000488375357250759,
+              "changeRmsPawns": 0.06988222729928126
+            },
+            "affine-only": {
+              "count": 1024,
+              "crossEntropyChange": -0.0008029214121607804,
+              "changeRmsPawns": 0.03564634436109236
+            },
+            "pawn-only": {
+              "count": 1024,
+              "crossEntropyChange": 0.0002580954754779519,
+              "changeRmsPawns": 0.04797230617802867
+            },
+            "pawnBeyondFittedAffine": 0.0003145460549100214
+          }
+        },
+        {
+          "mode": "conditional",
+          "metrics": {
+            "all": {
+              "count": 1024,
+              "crossEntropyChange": -0.0004947804031371825,
+              "changeRmsPawns": 0.06784166907718567
+            },
+            "affine-only": {
+              "count": 1024,
+              "crossEntropyChange": -0.0007866530219184074,
+              "changeRmsPawns": 0.036361650266213054
+            },
+            "pawn-only": {
+              "count": 1024,
+              "crossEntropyChange": 0.0002313665850538656,
+              "changeRmsPawns": 0.043783372505753614
+            },
+            "pawnBeyondFittedAffine": 0.0002918726187812249
+          }
+        }
+      ],
+      "pawnOccurrences": 10389,
+      "multipleOpposingBlockers": 8186
+    },
+    {
+      "panel": "fresh5",
+      "source": "cp",
+      "arms": [
+        {
+          "mode": "additive",
+          "metrics": {
+            "all": {
+              "count": 1015,
+              "crossEntropyChange": -0.0019137288658304596,
+              "changeRmsPawns": 0.07176597919186158
+            },
+            "affine-only": {
+              "count": 1015,
+              "crossEntropyChange": -0.0008586160380171211,
+              "changeRmsPawns": 0.04272690344630998
+            },
+            "pawn-only": {
+              "count": 1015,
+              "crossEntropyChange": -0.0011189563363319128,
+              "changeRmsPawns": 0.04606426687543927
+            },
+            "pawnBeyondFittedAffine": -0.0010551128278133385
+          }
+        },
+        {
+          "mode": "conditional",
+          "metrics": {
+            "all": {
+              "count": 1015,
+              "crossEntropyChange": -0.0020667448650314693,
+              "changeRmsPawns": 0.07040418326987864
+            },
+            "affine-only": {
+              "count": 1015,
+              "crossEntropyChange": -0.0008776030500240031,
+              "changeRmsPawns": 0.04315364206456749
+            },
+            "pawn-only": {
+              "count": 1015,
+              "crossEntropyChange": -0.0012617628078349125,
+              "changeRmsPawns": 0.04285628836654066
+            },
+            "pawnBeyondFittedAffine": -0.0011891418150074664
+          }
+        }
+      ],
+      "pawnOccurrences": 10694,
+      "multipleOpposingBlockers": 8355
+    },
+    {
+      "panel": "old",
+      "source": "bt4",
+      "arms": [
+        {
+          "mode": "additive",
+          "metrics": {
+            "all": {
+              "count": 1024,
+              "crossEntropyChange": -0.00032489442917379394,
+              "changeRmsPawns": 0.06790036369679914
+            },
+            "affine-only": {
+              "count": 1024,
+              "crossEntropyChange": -0.0005231181890689363,
+              "changeRmsPawns": 0.03559552234286043
+            },
+            "pawn-only": {
+              "count": 1024,
+              "crossEntropyChange": 0.00016479622104961715,
+              "changeRmsPawns": 0.04596294986694066
+            },
+            "pawnBeyondFittedAffine": 0.0001982237598951424
+          }
+        },
+        {
+          "mode": "conditional",
+          "metrics": {
+            "all": {
+              "count": 1024,
+              "crossEntropyChange": -0.0003003645220941284,
+              "changeRmsPawns": 0.06586743052586394
+            },
+            "affine-only": {
+              "count": 1024,
+              "crossEntropyChange": -0.0005018830675797356,
+              "changeRmsPawns": 0.03635557780230601
+            },
+            "pawn-only": {
+              "count": 1024,
+              "crossEntropyChange": 0.0001579051834747661,
+              "changeRmsPawns": 0.04169224617286375
+            },
+            "pawnBeyondFittedAffine": 0.00020151854548560718
+          }
+        }
+      ],
+      "pawnOccurrences": 9863,
+      "multipleOpposingBlockers": 7739
+    },
+    {
+      "panel": "old",
+      "source": "cp",
+      "arms": [
+        {
+          "mode": "additive",
+          "metrics": {
+            "all": {
+              "count": 1015,
+              "crossEntropyChange": 0.00019139548542604592,
+              "changeRmsPawns": 0.07434076773285433
+            },
+            "affine-only": {
+              "count": 1015,
+              "crossEntropyChange": 0.0015955508879904351,
+              "changeRmsPawns": 0.04549866443105435
+            },
+            "pawn-only": {
+              "count": 1015,
+              "crossEntropyChange": -0.001444244932789755,
+              "changeRmsPawns": 0.046327884045738094
+            },
+            "pawnBeyondFittedAffine": -0.0014041554025643892
+          }
+        },
+        {
+          "mode": "conditional",
+          "metrics": {
+            "all": {
+              "count": 1015,
+              "crossEntropyChange": -4.06150454912277e-05,
+              "changeRmsPawns": 0.07274632495759593
+            },
+            "affine-only": {
+              "count": 1015,
+              "crossEntropyChange": 0.0015301681690716186,
+              "changeRmsPawns": 0.04590931648021322
+            },
+            "pawn-only": {
+              "count": 1015,
+              "crossEntropyChange": -0.0015931588357433256,
+              "changeRmsPawns": 0.042756924854123926
+            },
+            "pawnBeyondFittedAffine": -0.0015707832145628463
+          }
+        }
+      ],
+      "pawnOccurrences": 10675,
+      "multipleOpposingBlockers": 8330
+    }
+  ],
+  "limitations": [
+    "No refitting. Affine/pawn masks are unadapted; joint optimization couples coefficients.",
+    "Consumed panels and model selection, not independent strength/generalization.",
+    "Gen32 predictions use the preserved trainer representation; tiny compiled/trainer roundoff remains as in earlier diagnostics."
+  ]
+}

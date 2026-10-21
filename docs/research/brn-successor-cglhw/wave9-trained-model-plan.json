@@ -1,0 +1,35 @@
+{
+  "id": "wave9-trained-latest176-v1",
+  "models": [
+    {
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/Gen32",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "name": "Gen32"
+    },
+    {
+      "name": "W9-CAL-AFFINE-R4-LR001",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-AFFINE-R4-LR001",
+      "checkpoint": "g000176-s000065536-16a82f32ff52b872fd12a2dd8ddfa3ede57e292c9e2f29974ac42f7fa57cb762",
+      "networkSha256": "df813617b4404ea826ea7f6b076fabbd12b4120f6b9e7e536e91a4c0fe7fbf21"
+    },
+    {
+      "name": "W9-CAL-QUAD-R4-LR001",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-QUAD-R4-LR001",
+      "checkpoint": "g000176-s000065536-28d94ac77120ee02c2e24a03e350a01486e928f08325ebafcaa55576e1791674",
+      "networkSha256": "7d5a231b21ea8e1ad0760ea97a12cf77d40247aaeeecc621867085633d6acd0e"
+    },
+    {
+      "name": "W9-CAL-CUBIC-R4-LR001",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-CUBIC-R4-LR001",
+      "checkpoint": "g000176-s000065536-a924ec59b6d56c319475b79c6c9fa2c661fd6345c401c324d8715463a39bebfa",
+      "networkSha256": "5c10589acc5d3870fbca065f4829ad538de3e1e28bb0e3b6cdb2ce8b7d2e56e2"
+    },
+    {
+      "name": "W9-BRE-CONTROL-LR001",
+      "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-BRE-CONTROL-LR001",
+      "checkpoint": "g000176-s003194880-f9086c5c055bf6bfc0ba2b62f4bd6121e1f29c4a7268100caac4fd9ddbadf9a1",
+      "networkSha256": "faf91dd6355790e683e66110686765209349a1e50211014464ef55f4890c407e"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "wave9-new-window-resource-pause-v1",
+  "completedProtocol": "degree-clock",
+  "completedReceipts": 32,
+  "pause": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\new-window-completed-pause-01.txt",
+  "pauseSha256": "aa4f4bb3c95a67b7c02a1469b020e2e0b4f65d780f1989f6dfc4da0e99abbd8c",
+  "diagnostics": [
+    "fresh-data-01",
+    "predictions-new-window-01",
+    "new-window-analysis-01"
+  ],
+  "meaning": "Current degree-clock batch naturally completed all32 games and independent replay; no match was interrupted. Bounded data/prediction/analysis ran sequentially, then pause archived.",
+  "next": "Execute already fixed scale-node before primary reference-clock to resolve calibration sooner; all original192 and separate80 budgets remain unchanged."
+}

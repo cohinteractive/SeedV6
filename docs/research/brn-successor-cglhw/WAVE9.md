@@ -1,9 +1,8 @@
 # Wave 9: calibrated fixed-basis controls
 
 22 October 2026. This continues the original CGLHW under contract revision 2.
-G8 training and its 176-game development assessment are closed. **G9 is prepared
-and blocks dependent research until the owner completes GUI training. No research
-success or independent strength superiority is claimed.**
+G8 training and its 176-game development assessment are closed. **G9 is verified complete through Gen176. Trained assessment is active; see
+WAVE9-ASSESSMENT.md. No research success or independent strength superiority is claimed.**
 
 ## Question and decision
 
@@ -66,7 +65,7 @@ affine+cubic adds four third-degree directions and can rescale the full anchor.
 Affine-only is their common adapted control. Use both trained controls and
 appropriate masks; an unadapted mask alone cannot establish architectural value.
 
-## Blocking human action: G9
+## Historical human action: G9 (completed and verified)
 
 Use verified **build59**:
 `dist/windows/candidates/candidate-20261021T192119-a567d46b/SeedV6-GUI/SeedV6-GUI.exe`.
@@ -171,6 +170,7 @@ negative result concerns this fixed rank-four basis and objective, not all
 higher-order chess relationships. Changed fitting may still harm pruning or
 actual strength; no optimal calibration or future gain is assumed.
 
-**Human actions required after this prompt:** complete the four G9 GUI runs above
-and report their outcome. **Blocking** for trained G9 assessment and dependent
-research. No other human action is required.
+**G9 completion verified22 October2026:** all four Latest176; head Best175, BRE
+Best176. Exact evidence: wave9-trained-checkpoints.json and
+wave9-trained-admission.json. Prepared instructions above are historical; do not
+repeat training. Current assessment and next action: WAVE9-ASSESSMENT.md and STATE.md.

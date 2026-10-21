@@ -1,0 +1,437 @@
+{
+  "id": "wave9-king-contact-feasibility-v1-results",
+  "admission": "docs\\research\\brn-successor-cglhw\\wave9-king-contact-admission.json",
+  "admissionSha256": "d14f5873e936b7e6536853726967e0e62400149f48256315a01cb96a8f8fcd24",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\bt4-predictions.jsonl": "878b43c6223e3f6ea9824669569d5e9b87b4ce3bbc8abcf1e74f7f1a626e8c1a",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\cp-predictions.jsonl": "c903e919a76bd64c28a5486defe023f9ed60758df65751bea26414e3c7228395",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\bt4-predictions.jsonl": "5327d60cac2c766f95ad6f890e22d79db2075957d4cb7d1a839c4c396c573b25",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\cp-predictions.jsonl": "56781da22ad2083b54b08d4a3d2add8490aabcf2ea2c82eeb086eae577434832"
+  },
+  "witness": {
+    "additiveThirdDifference": 0,
+    "jointThirdDifference": -1.0
+  },
+  "arms": [
+    {
+      "mode": "affine",
+      "parameters": 3,
+      "steps": 128,
+      "coefficients": [
+        0.24148928436791106,
+        0.016403390157139684,
+        -0.10159775849091834
+      ],
+      "means": [
+        0,
+        -0.028983113069016152,
+        0.061530207637352716
+      ],
+      "scales": [
+        1,
+        0.5013306418579341,
+        0.7497403852058986
+      ],
+      "epochLoss": [
+        0.6139306010906034,
+        0.6127825804918,
+        0.6121537347574804,
+        0.6118804598445726,
+        0.6120099515339612,
+        0.6120426256504766,
+        0.6119387521144768,
+        0.6118001508531409
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": 0.0003033560218656228,
+          "standardError": 0.001301604491571045,
+          "changeRmsPawns": 0.12852777425518186,
+          "unadaptedJointMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0005298553284574674,
+          "standardError": 0.0006192738181156814,
+          "changeRmsPawns": 0.032131943563795465,
+          "unadaptedJointMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.0017889843881633302,
+          "standardError": 0.0020961415537523237,
+          "changeRmsPawns": 0.13193840011601093,
+          "unadaptedJointMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.0008312550934697921,
+          "standardError": 0.0009952740028674213,
+          "changeRmsPawns": 0.032984600029002734,
+          "unadaptedJointMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": 0.001390673010693147,
+          "standardError": 0.001334093674493337,
+          "changeRmsPawns": 0.1306201609157427,
+          "unadaptedJointMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0011619082803264737,
+          "standardError": 0.0006807185130000581,
+          "changeRmsPawns": 0.03265504022893567,
+          "unadaptedJointMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.0038027039598318405,
+          "standardError": 0.002930413865054184,
+          "changeRmsPawns": 0.13715138449253758,
+          "unadaptedJointMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.0011795349883659554,
+          "standardError": 0.0013751704763400728,
+          "changeRmsPawns": 0.034287846123134395,
+          "unadaptedJointMaskDifference": 0.0
+        }
+      ]
+    },
+    {
+      "mode": "linear",
+      "parameters": 13,
+      "steps": 128,
+      "coefficients": [
+        0.24191361338279793,
+        -0.03394762827032481,
+        -0.08816912453466388,
+        0.0052178059308337355,
+        0.008671331424586716,
+        0.041386285116608384,
+        0.11685734974658052,
+        -0.030700809727816778,
+        -0.06371096811578468,
+        -0.0582068346632203,
+        -0.011537624614072595,
+        -0.15434596698768582,
+        0.10645289646415372
+      ],
+      "means": [
+        0,
+        -0.028983113069016152,
+        0.061530207637352716,
+        0.1693587860988742,
+        0.11062163485070974,
+        0.3044542339696525,
+        0.4336759667156143,
+        0.43759177679882527,
+        0.16397454723445912,
+        0.1130690161527166,
+        0.2824278022515908,
+        0.44150758688203623,
+        0.44836025452765543
+      ],
+      "scales": [
+        1,
+        0.5013306418579341,
+        0.7497403852058986,
+        0.4731673614464791,
+        0.3228903898825148,
+        0.5163169516416811,
+        0.5391038291144089,
+        0.4980593526061706,
+        0.4512822470564288,
+        0.3258191658938893,
+        0.4927467829624457,
+        0.5463177840874144,
+        0.5204115651931818
+      ],
+      "epochLoss": [
+        0.6147916885355813,
+        0.6119522213867367,
+        0.6109526488331742,
+        0.6102951209797404,
+        0.6104622332768299,
+        0.6104589162026745,
+        0.6104331050232006,
+        0.6103469931982954
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": 0.004337258060316304,
+          "standardError": 0.00176738259218393,
+          "changeRmsPawns": 0.15910736702095155,
+          "unadaptedJointMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0005060941983871408,
+          "standardError": 0.0006410039162316879,
+          "changeRmsPawns": 0.039776841755237886,
+          "unadaptedJointMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": 0.003077417783861171,
+          "standardError": 0.0025955152252612125,
+          "changeRmsPawns": 0.16170299587856876,
+          "unadaptedJointMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": -0.0010847576757268195,
+          "standardError": 0.0014533909557379752,
+          "changeRmsPawns": 0.04042574896964219,
+          "unadaptedJointMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": 0.0013301288010405166,
+          "standardError": 0.0019355411335926411,
+          "changeRmsPawns": 0.16308864314192914,
+          "unadaptedJointMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0011456976884958276,
+          "standardError": 0.0009026032850430399,
+          "changeRmsPawns": 0.040772160785482285,
+          "unadaptedJointMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.0019392262609041907,
+          "standardError": 0.003445818377262084,
+          "changeRmsPawns": 0.16142912559962003,
+          "unadaptedJointMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": -0.001289798502691285,
+          "standardError": 0.0018099463908196063,
+          "changeRmsPawns": 0.04035728139990501,
+          "unadaptedJointMaskDifference": 0.0
+        }
+      ]
+    },
+    {
+      "mode": "joint",
+      "parameters": 19,
+      "steps": 128,
+      "coefficients": [
+        0.24410624461023098,
+        -0.0481441587431936,
+        -0.08729302662863714,
+        -0.049654467826314254,
+        -0.05692081451212754,
+        -0.0591151297345064,
+        0.027254132958635612,
+        -0.09723319656738037,
+        0.009713738205882805,
+        -0.004662908269712592,
+        0.03545564890952966,
+        -0.09577071302402762,
+        0.14091652968405735,
+        0.0023974903959989,
+        0.18125699761705444,
+        0.0896733441547458,
+        -0.11570483356104869,
+        -0.00338852623134173,
+        -0.04688284049956306
+      ],
+      "means": [
+        0,
+        -0.028983113069016152,
+        0.061530207637352716,
+        0.1693587860988742,
+        0.11062163485070974,
+        0.3044542339696525,
+        0.4336759667156143,
+        0.43759177679882527,
+        0.16397454723445912,
+        0.1130690161527166,
+        0.2824278022515908,
+        0.44150758688203623,
+        0.44836025452765543,
+        0.846793930494371,
+        0.37298091042584436,
+        0.1977484092021537,
+        0.8502202643171806,
+        0.36612824278022515,
+        0.19676945668135096
+      ],
+      "scales": [
+        1,
+        0.5013306418579341,
+        0.7497403852058986,
+        0.4731673614464791,
+        0.3228903898825148,
+        0.5163169516416811,
+        0.5391038291144089,
+        0.4980593526061706,
+        0.4512822470564288,
+        0.3258191658938893,
+        0.4927467829624457,
+        0.5463177840874144,
+        0.5204115651931818,
+        1.5088329423407605,
+        0.7612071930342752,
+        0.7066253980006133,
+        1.5483980955178034,
+        0.7529144139498374,
+        0.6943230674436679
+      ],
+      "epochLoss": [
+        0.6144946071116947,
+        0.6114004937663888,
+        0.6097417737659301,
+        0.608930448974214,
+        0.608819232826996,
+        0.6088590149420413,
+        0.608699170795386,
+        0.6087067532063825
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": 0.004747645686029058,
+          "standardError": 0.0020267472134146494,
+          "changeRmsPawns": 0.16506829104633247,
+          "unadaptedJointMaskDifference": 0.0022910899675639414
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.00017567106063875136,
+          "standardError": 0.0007345614396628713,
+          "changeRmsPawns": 0.04126707276158312,
+          "unadaptedJointMaskDifference": 0.0014170211272189464
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": 0.0043364637890755025,
+          "standardError": 0.0030026997889240395,
+          "changeRmsPawns": 0.17108716981751085,
+          "unadaptedJointMaskDifference": 0.0033371021061006307
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": -0.0026025678438905916,
+          "standardError": 0.001571720087491715,
+          "changeRmsPawns": 0.04277179245437771,
+          "unadaptedJointMaskDifference": -0.0010252020646831029
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": 0.0019143797283845095,
+          "standardError": 0.002006224358905344,
+          "changeRmsPawns": 0.17264972318743568,
+          "unadaptedJointMaskDifference": 1.3676402090488302e-05
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0007075971184227442,
+          "standardError": 0.0010212678019373275,
+          "changeRmsPawns": 0.04316243079685892,
+          "unadaptedJointMaskDifference": 0.0013752186650989866
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": 3.4462123692145105e-05,
+          "standardError": 0.0037506727920730964,
+          "changeRmsPawns": 0.16902051294249937,
+          "unadaptedJointMaskDifference": -0.000973211190685101
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": -0.0033038750225251722,
+          "standardError": 0.002134509384459397,
+          "changeRmsPawns": 0.04225512823562484,
+          "unadaptedJointMaskDifference": -0.00340239170067278
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Consumed panels and selected hypothesis; not independent prediction or chess evidence.",
+    "Geometric contacts ignore blockers and tactical feasibility in both controls. Joint terms represent multiple attackers, not verified king danger.",
+    "Joint has six additional coefficients; adapted linear control and unadapted joint mask are distinct comparisons.",
+    "Small128-update fits, no convergence claim, model export, owner mutation or automatic training-wave admission."
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "wave9-adaptive-degree-between-batch-pause-v1",
+  "protocol": "degree-clock",
+  "preservedReceipts": 12,
+  "diagnostic": "wave9-adaptive-degree-results.json",
+  "pause": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\adaptive-degree-completed-pause-01.txt",
+  "pauseSha256": "10c985716d1a24342929860416aca7c1121c3170dc22d4c842791a7d60249a2c",
+  "meaning": "Intentional pause after completed batch; subsequent launch refused before engine/log. All receipts preserved, original fixed32-game plan resumes."
+}

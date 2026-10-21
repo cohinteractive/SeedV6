@@ -1,0 +1,14 @@
+{
+  "id": "wave9-pawn-condition-cost-admission-v1",
+  "question": "Can a sparse no-opposing-pawn condition provide non-pairwise information with cheap pawn-only cache invalidation?",
+  "source": "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnPawnConditionProbe.java",
+  "sourceSha256": "44f2b636227b9b8ab5c5f9bf384f75a607203371fdaa5102a20f1f9a956db653",
+  "inputs": "raw/wave8/degree-node",
+  "runtime": "wave9-runtime.json",
+  "runtimeSha256": "888756bce145ddfa4de5494318e04f98d3d9347d96383b21ec835f4892b4374c",
+  "classes": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\pawn-cost-classes-01",
+  "output": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\pawn-cost-01",
+  "resource": "One CPU process BelowNormal between tournament batches; each compile/probe bounded120seconds; no training/store writes.",
+  "validation": "Independent Java coordinate oracle, Python chess bit/coordinate and colour-perspective checks; random-weight memoization versus full features, played-position cost.",
+  "limitation": "Correction-only cost on played-game sequences does not establish recursive-search hit rate, full evaluator cost, strength or architecture admission."
+}

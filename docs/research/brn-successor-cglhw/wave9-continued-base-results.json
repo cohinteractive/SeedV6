@@ -1,0 +1,765 @@
+{
+  "id": "wave9-continued-base-head-feasibility-v1-results",
+  "admission": "docs\\research\\brn-successor-cglhw\\wave9-continued-base-admission.json",
+  "admissionSha256": "5d45ddb75680400edfb17f46b61f173837f2907092dc844b665f17dbef1998b0",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\bt4-predictions.jsonl": "878b43c6223e3f6ea9824669569d5e9b87b4ce3bbc8abcf1e74f7f1a626e8c1a",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\cp-predictions.jsonl": "c903e919a76bd64c28a5486defe023f9ed60758df65751bea26414e3c7228395",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\bt4-predictions.jsonl": "5327d60cac2c766f95ad6f890e22d79db2075957d4cb7d1a839c4c396c573b25",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\cp-predictions.jsonl": "56781da22ad2083b54b08d4a3d2add8490aabcf2ea2c82eeb086eae577434832"
+  },
+  "maximumIndependentBasisError": 5.176894417591171e-07,
+  "arms": [
+    {
+      "base": "Gen32",
+      "mode": "affine",
+      "parameters": 4,
+      "steps": 128,
+      "epochLoss": [
+        0.6159931225802218,
+        0.6133810268620823,
+        0.6121104365694284,
+        0.6114996345772257,
+        0.6112441026071761,
+        0.6108993804205172,
+        0.6107682352653483,
+        0.6104008331561431
+      ],
+      "featureMeans": [
+        0,
+        -0.028983113069016152,
+        0.12472481026498115,
+        -0.1486542109036296
+      ],
+      "featureScales": [
+        1,
+        0.5013306418579341,
+        0.7480281722496034,
+        1.2122583326024778
+      ],
+      "coefficients": [
+        -0.25095365497225164,
+        0.011287757018872687,
+        -0.1181940429513876,
+        0.7526347188130588
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": -0.011787426989518934,
+          "standardError": 0.0027331902027323204,
+          "changeRmsPawns": 0.17371940757899032,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0024269199012470037,
+          "standardError": 0.0009812781219927713,
+          "changeRmsPawns": 0.04342985189474758,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.013339411555112755,
+          "standardError": 0.003915503319559107,
+          "changeRmsPawns": 0.19984735498829823,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.0028602114324215097,
+          "standardError": 0.001762388434231317,
+          "changeRmsPawns": 0.049961838747074556,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": -0.012850820491094633,
+          "standardError": 0.002069899037429329,
+          "changeRmsPawns": 0.189027241281594,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0025516934335601607,
+          "standardError": 0.0010369402854720933,
+          "changeRmsPawns": 0.0472568103203985,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.0015606756620750062,
+          "standardError": 0.004369011003302997,
+          "changeRmsPawns": 0.19520710027746563,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.011232369066076702,
+          "standardError": 0.002269859250457617,
+          "changeRmsPawns": 0.04880177506936641,
+          "unadaptedDegreeMaskDifference": 0.0
+        }
+      ]
+    },
+    {
+      "base": "Gen32",
+      "mode": "quadratic",
+      "parameters": 8,
+      "steps": 128,
+      "epochLoss": [
+        0.6159169962389115,
+        0.6129728284659414,
+        0.611989925183224,
+        0.6113777060894902,
+        0.6110981867632305,
+        0.6108111969575899,
+        0.6107428575794686,
+        0.6104223293002233
+      ],
+      "featureMeans": [
+        0,
+        -0.028983113069016152,
+        0.12472481026498115,
+        -0.1486542109036296,
+        -0.5315570537274462,
+        -0.8580815661643311,
+        -1.158782594963245,
+        -0.6857205127101174
+      ],
+      "featureScales": [
+        1,
+        0.5013306418579341,
+        0.7480281722496034,
+        1.2122583326024778,
+        0.791038226834949,
+        2.0804757452967504,
+        2.0472297725541786,
+        0.745605521645335
+      ],
+      "coefficients": [
+        -0.24607282021203492,
+        -0.013069277787064633,
+        -0.10993084538226616,
+        0.699218465453805,
+        -0.016377355302521185,
+        0.17453439062333093,
+        0.08604720238530517,
+        -0.13274275036997707
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": -0.0116538685459179,
+          "standardError": 0.002897513757154468,
+          "changeRmsPawns": 0.18055923592462572,
+          "unadaptedDegreeMaskDifference": -3.178987848023035e-05
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.002231673412281175,
+          "standardError": 0.0010712574392852925,
+          "changeRmsPawns": 0.04513980898115643,
+          "unadaptedDegreeMaskDifference": 0.0002577613866424724
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.013696174657693252,
+          "standardError": 0.003897447196023374,
+          "changeRmsPawns": 0.21231166263256374,
+          "unadaptedDegreeMaskDifference": -0.0010486936839268542
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.0005924275792011618,
+          "standardError": 0.00199745355950748,
+          "changeRmsPawns": 0.053077915658140934,
+          "unadaptedDegreeMaskDifference": -0.0015074400256663008
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": -0.013692792949840658,
+          "standardError": 0.0022367342693072148,
+          "changeRmsPawns": 0.19654825994785433,
+          "unadaptedDegreeMaskDifference": -0.0012674951914026927
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0023179177192102812,
+          "standardError": 0.0011061451725930696,
+          "changeRmsPawns": 0.04913706498696358,
+          "unadaptedDegreeMaskDifference": 0.0003022275764691814
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.0037478112078299292,
+          "standardError": 0.004406746118671014,
+          "changeRmsPawns": 0.20335352158678696,
+          "unadaptedDegreeMaskDifference": -0.001606293941066522
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.007840617509595861,
+          "standardError": 0.002431769653372844,
+          "changeRmsPawns": 0.05083838039669674,
+          "unadaptedDegreeMaskDifference": -0.0017330010835888369
+        }
+      ]
+    },
+    {
+      "base": "Gen32",
+      "mode": "cubic",
+      "parameters": 8,
+      "steps": 128,
+      "epochLoss": [
+        0.6160824615391022,
+        0.6133316718747293,
+        0.612083070462983,
+        0.6114494389626965,
+        0.6111239664559823,
+        0.6107813381407223,
+        0.6106142210346711,
+        0.6101943735956307
+      ],
+      "featureMeans": [
+        0,
+        -0.028983113069016152,
+        0.12472481026498115,
+        -0.1486542109036296,
+        -0.4689452988478612,
+        -0.3745779721600768,
+        1.034702766763352,
+        -0.1262196278791492
+      ],
+      "featureScales": [
+        1,
+        0.5013306418579341,
+        0.7480281722496034,
+        1.2122583326024778,
+        1.1081735771000993,
+        10.338918311432803,
+        7.455410465190917,
+        0.8260734220035821
+      ],
+      "coefficients": [
+        -0.23723023439263594,
+        0.013683652297587156,
+        -0.11536792605373654,
+        0.7589588096953055,
+        -0.035416837310967855,
+        0.3103770674677949,
+        -0.01610355134570804,
+        0.047230347829682315
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": -0.011404811983991256,
+          "standardError": 0.0027467081150656346,
+          "changeRmsPawns": 0.17356423391222095,
+          "unadaptedDegreeMaskDifference": 0.0002628646987072412
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.002700613436096324,
+          "standardError": 0.000982724365963725,
+          "changeRmsPawns": 0.04339105847805524,
+          "unadaptedDegreeMaskDifference": 0.0003277086032396695
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.013214803582204365,
+          "standardError": 0.0038604672004126936,
+          "changeRmsPawns": 0.19994201902278308,
+          "unadaptedDegreeMaskDifference": 0.00023366802103821395
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.0037734219657965017,
+          "standardError": 0.001717388657897557,
+          "changeRmsPawns": 0.04998550475569577,
+          "unadaptedDegreeMaskDifference": 0.0011707224090929304
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": -0.012328472334244084,
+          "standardError": 0.0020009839702890436,
+          "changeRmsPawns": 0.18923647146694575,
+          "unadaptedDegreeMaskDifference": 0.0003941119724313793
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.002917976798958885,
+          "standardError": 0.001041603340303297,
+          "changeRmsPawns": 0.04730911786673644,
+          "unadaptedDegreeMaskDifference": 0.00040674143269560283
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.0009472688975473824,
+          "standardError": 0.004341360665775445,
+          "changeRmsPawns": 0.19400732745618518,
+          "unadaptedDegreeMaskDifference": 0.000940254493429859
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.012548478255842708,
+          "standardError": 0.0023389154068589445,
+          "changeRmsPawns": 0.048501831864046295,
+          "unadaptedDegreeMaskDifference": 0.001721724205731582
+        }
+      ]
+    },
+    {
+      "base": "continued",
+      "mode": "affine",
+      "parameters": 4,
+      "steps": 128,
+      "epochLoss": [
+        0.6138342823480557,
+        0.6123966257133177,
+        0.6115364249360686,
+        0.6111203822273995,
+        0.6111690398398392,
+        0.611104495969656,
+        0.6109614585165414,
+        0.6107744920049217
+      ],
+      "featureMeans": [
+        0,
+        -0.028983113069016152,
+        0.061530207637352716,
+        -0.1486542109036296
+      ],
+      "featureScales": [
+        1,
+        0.5013306418579341,
+        0.7497403852058986,
+        1.2122583326024778
+      ],
+      "coefficients": [
+        0.2548484982332421,
+        -0.0038734911747435293,
+        -0.0937118658925979,
+        0.40212089246435395
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": -0.000109672398589073,
+          "standardError": 0.0012265467364972864,
+          "changeRmsPawns": 0.1389378495697351,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0003340631348311654,
+          "standardError": 0.0006008521025500915,
+          "changeRmsPawns": 0.034734462392433774,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.004544634852044074,
+          "standardError": 0.0021562505014813107,
+          "changeRmsPawns": 0.14906267306339213,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": -0.0026723761023256186,
+          "standardError": 0.0010781061252761513,
+          "changeRmsPawns": 0.03726566826584803,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": 0.0005110502890644886,
+          "standardError": 0.0013032322096984113,
+          "changeRmsPawns": 0.14138988094201707,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0009164441032655759,
+          "standardError": 0.0007018576860381844,
+          "changeRmsPawns": 0.03534747023550427,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.00682007608742641,
+          "standardError": 0.0030193403828370617,
+          "changeRmsPawns": 0.1581183472487975,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": -0.00181597509807332,
+          "standardError": 0.0014363309639451303,
+          "changeRmsPawns": 0.039529586812199376,
+          "unadaptedDegreeMaskDifference": 0.0
+        }
+      ]
+    },
+    {
+      "base": "continued",
+      "mode": "quadratic",
+      "parameters": 8,
+      "steps": 128,
+      "epochLoss": [
+        0.6139288329938924,
+        0.61177131511922,
+        0.6108021787118699,
+        0.6102094348606156,
+        0.6100904156348784,
+        0.6099036056514993,
+        0.6097796455102661,
+        0.6095814831181128
+      ],
+      "featureMeans": [
+        0,
+        -0.028983113069016152,
+        0.061530207637352716,
+        -0.1486542109036296,
+        -0.5315570537274462,
+        -0.8580815661643311,
+        -1.158782594963245,
+        -0.6857205127101174
+      ],
+      "featureScales": [
+        1,
+        0.5013306418579341,
+        0.7497403852058986,
+        1.2122583326024778,
+        0.791038226834949,
+        2.0804757452967504,
+        2.0472297725541786,
+        0.745605521645335
+      ],
+      "coefficients": [
+        0.27996188402599137,
+        -0.034810150560292,
+        -0.0653300352834463,
+        0.3297844802243678,
+        -0.04186026060564753,
+        0.10659386182199126,
+        0.2877712479122858,
+        -0.17672228092539266
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": 0.0012286118184780005,
+          "standardError": 0.0016872473552703273,
+          "changeRmsPawns": 0.164773460754697,
+          "unadaptedDegreeMaskDifference": 0.000725060337158704
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.00032780035390336814,
+          "standardError": 0.0007571330247242123,
+          "changeRmsPawns": 0.04119336518867425,
+          "unadaptedDegreeMaskDifference": 0.0008962784277251118
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.005830577679198448,
+          "standardError": 0.0025421869407922758,
+          "changeRmsPawns": 0.17805190304716223,
+          "unadaptedDegreeMaskDifference": -0.002321523317388531
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": -0.005710950295268118,
+          "standardError": 0.0014644344999613847,
+          "changeRmsPawns": 0.04451297576179056,
+          "unadaptedDegreeMaskDifference": -0.001080239362506603
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": -0.0004714896081939859,
+          "standardError": 0.001826055001726726,
+          "changeRmsPawns": 0.16748018407802212,
+          "unadaptedDegreeMaskDifference": -0.0020053739204618616
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0010268988300475815,
+          "standardError": 0.0008616219282599285,
+          "changeRmsPawns": 0.04187004601950553,
+          "unadaptedDegreeMaskDifference": 0.001158105847677121
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.00969603455005787,
+          "standardError": 0.004167148978234793,
+          "changeRmsPawns": 0.18248978721565895,
+          "unadaptedDegreeMaskDifference": -0.0015164131471510408
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": -0.006562439350159542,
+          "standardError": 0.0018204466351459303,
+          "changeRmsPawns": 0.04562244680391474,
+          "unadaptedDegreeMaskDifference": -0.0011162654572021685
+        }
+      ]
+    },
+    {
+      "base": "continued",
+      "mode": "cubic",
+      "parameters": 8,
+      "steps": 128,
+      "epochLoss": [
+        0.6138790255076033,
+        0.6120845014153772,
+        0.6112859839069477,
+        0.610823860670337,
+        0.6108698598160287,
+        0.6107669970925549,
+        0.6106192292385936,
+        0.6104675411303482
+      ],
+      "featureMeans": [
+        0,
+        -0.028983113069016152,
+        0.061530207637352716,
+        -0.1486542109036296,
+        -0.4689452988478612,
+        -0.3745779721600768,
+        1.034702766763352,
+        -0.1262196278791492
+      ],
+      "featureScales": [
+        1,
+        0.5013306418579341,
+        0.7497403852058986,
+        1.2122583326024778,
+        1.1081735771000993,
+        10.338918311432803,
+        7.455410465190917,
+        0.8260734220035821
+      ],
+      "coefficients": [
+        0.25264007347194917,
+        0.01945588757960501,
+        -0.08483136798046002,
+        0.38869732622837333,
+        0.06366371072605136,
+        0.3155940575862341,
+        -0.004843246665358518,
+        0.02226053380704158
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": -0.0004415430725414763,
+          "standardError": 0.0013416592029731056,
+          "changeRmsPawns": 0.1422670296450895,
+          "unadaptedDegreeMaskDifference": -0.00039591822914125213
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0006790264196769673,
+          "standardError": 0.0006825506647935835,
+          "changeRmsPawns": 0.035566757411272375,
+          "unadaptedDegreeMaskDifference": 0.00017310687685988724
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.003290210455981807,
+          "standardError": 0.0022548769726076297,
+          "changeRmsPawns": 0.1531221532763914,
+          "unadaptedDegreeMaskDifference": 0.0012441485673900113
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": -0.00180497130145443,
+          "standardError": 0.0011531461014567855,
+          "changeRmsPawns": 0.03828053831909785,
+          "unadaptedDegreeMaskDifference": 0.00041387955015246745
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": 0.0008728582181505522,
+          "standardError": 0.001505732564518866,
+          "changeRmsPawns": 0.14592144819222513,
+          "unadaptedDegreeMaskDifference": 0.00034950980410544674
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0016976839041531898,
+          "standardError": 0.0007628724641521033,
+          "changeRmsPawns": 0.03648036204805628,
+          "unadaptedDegreeMaskDifference": 0.0005768665891072871
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.0061800348742090784,
+          "standardError": 0.003118253285901215,
+          "changeRmsPawns": 0.16261647554650807,
+          "unadaptedDegreeMaskDifference": 0.00012549008866471513
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": -0.0009206423507961688,
+          "standardError": 0.0015902625326854076,
+          "changeRmsPawns": 0.04065411888662702,
+          "unadaptedDegreeMaskDifference": 0.00020490662416921754
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Consumed small panels, source/game/training overlap unknown; no independent prediction or strength claim.",
+    "Only128 updates per arm with fit-only normalization; not converged optimal configurations or production optimizer continuation.",
+    "Raw objective matches BRE convention; quarter-search metrics diagnose the distinct deployment function.",
+    "Bases differ in exposure/history by design; within-base calibrated affine and quadratic are adapted controls.",
+    "Degree masks are unadapted attribution checks; no model/optimizer export or owner artifact mutation."
+  ]
+}

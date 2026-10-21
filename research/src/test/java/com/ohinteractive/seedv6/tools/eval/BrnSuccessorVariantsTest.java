@@ -11,6 +11,63 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BrnSuccessorVariantsTest {
     @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_CAL_AFFINE_R4","GEN32_CAL_QUADRATIC_R4","GEN32_CAL_CUBIC_R4"})
+    void explicitCalibratedProjectionScalesSearchResidualAndPreservesSource(BrnNextArchitecture kind) {
+        var random=new SplittableRandom(1009);double[] w=new double[kind.parameters()];
+        for(int i=0;i<w.length;i++)w[i]=random.nextDouble(-.7,.7);
+        w[kind.affineHead()+1]=-12;w[kind.affineHead()+2]=17;w[kind.affineHead()+3]=5;
+        var source=new BrnNextModel(kind,w);var boards=new java.util.ArrayList<>(BrnSuccessorAudit.boards());
+        boards.add(Board.fromFen("r3k2r/8/8/3pP3/8/8/8/R3K2R b KQkq - 0 1"));
+        boards.add(Board.fromFen("4k3/P7/8/8/8/8/7p/4K3 w - - 0 1"));
+        for(double scale:new double[]{.25,.5,1}) {
+            var v=BrnSuccessorVariants.calibratedSearch(source,scale,false);
+            var cache=new BrnCalibratedAccumulator(v);
+            for(var board:boards) {
+                double material=BrnPair2Features.material(board);
+                double original=material+.25*(source.rawPawns(board,source.newWorkspace())-material);
+                double expected=material+scale*(original-material);
+                assertEquals(expected,material+.25*(v.rawPawns(board,v.newWorkspace())-material),1e-12);
+                assertEquals(Brn3Model.score(expected),v.score(board,v.newWorkspace()));
+                assertEquals(v.score(board,v.newWorkspace()),cache.score(board));
+            }
+            for(int i=0;i<kind.trainableStart();i++)assertEquals(w[i],v.weight(i));
+        }
+        for(int i=0;i<w.length;i++)assertEquals(w[i],source.weight(i));
+        assertSame(source,BrnSuccessorVariants.calibratedSearch(source,1,false));
+        for(double bad:new double[]{0,-1,1.01,Double.NaN,Double.POSITIVE_INFINITY})
+            assertThrows(IllegalArgumentException.class,()->BrnSuccessorVariants.calibratedSearch(source,bad,false));
+    }
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_CAL_QUADRATIC_R4","GEN32_CAL_CUBIC_R4"})
+    void degreeMaskMatchesSeparateAffineRepresentationWhileRetainingOriginalCacheKind(BrnNextArchitecture kind) {
+        var random=new SplittableRandom(1109);double[] w=new double[kind.parameters()];
+        for(int i=0;i<w.length;i++)w[i]=random.nextDouble(-.8,.8);
+        var source=new BrnNextModel(kind,w);
+        var affine=new BrnNextModel(BrnNextArchitecture.GEN32_CAL_AFFINE_R4,
+                java.util.Arrays.copyOf(w,BrnNextArchitecture.GEN32_CAL_AFFINE_R4.parameters()));
+        for(double scale:new double[]{.25,1}) {
+            var masked=BrnSuccessorVariants.calibratedSearch(source,scale,true);
+            var expected=BrnSuccessorVariants.calibratedSearch(affine,scale,false);
+            assertEquals(kind,masked.architecture());
+            var cache=new BrnCalibratedAccumulator(masked);
+            for(var board:BrnSuccessorAudit.boards()) {
+                assertEquals(expected.rawPawns(board,expected.newWorkspace()),masked.rawPawns(board,masked.newWorkspace()),1e-12);
+                assertEquals(expected.score(board,expected.newWorkspace()),cache.score(board));
+            }
+        }
+        assertThrows(IllegalArgumentException.class,()->BrnSuccessorVariants.calibratedSearch(affine,1,true));
+    }
+    @org.junit.jupiter.api.Test
+    void calibratedPlanRequiresExplicitScaleAndExclusiveComposition() {
+        var json=new com.google.gson.Gson();
+        for(String variant:new String[]{"{}","{\"residualScale\":0}","{\"residualScale\":2}"})
+            assertThrows(RuntimeException.class,()->json.fromJson(variant,BrnSuccessorMatch.CalibratedVariant.class));
+        for(String conflict:new String[]{"\"correctionScale\":0.5","\"residualGain\":0.25","\"cubicDeltaCache\":true","\"blendCandidateWeight\":0.5"})
+            assertThrows(RuntimeException.class,()->json.fromJson("{\"calibratedVariant\":{\"residualScale\":0.25},"+conflict+"}",BrnSuccessorMatch.Model.class));
+        var model=json.fromJson("{\"calibratedVariant\":{\"residualScale\":0.25,\"maskDegree\":true}}",BrnSuccessorMatch.Model.class);
+        assertEquals(.25,model.calibratedVariant().residualScale());assertTrue(model.calibratedVariant().maskDegree());
+        var old=new BrnNextModel(BrnNextArchitecture.GEN32_QUADRATIC_R4,new double[3845]);
+        assertThrows(IllegalArgumentException.class,()->BrnSuccessorVariants.calibratedSearch(old,.25,false));
+    }
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_CAL_AFFINE_R4","GEN32_CAL_QUADRATIC_R4","GEN32_CAL_CUBIC_R4"})
     void calibratedObjectiveCannotSilentlyReceiveLegacyScaling(BrnNextArchitecture kind) {
         var model=new BrnNextModel(kind,new double[kind.parameters()]);
         assertSame(model,BrnSuccessorVariants.correction(model,1,null,null));

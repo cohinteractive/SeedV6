@@ -1,0 +1,446 @@
+{
+  "id": "wave9-calibrated-basis-projection-v1-results",
+  "admission": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\wave9-basis-projection-admission.json",
+  "admissionSha256": "473c52af234262ef24c3277e142100b01a31b6ed4489be512acd47f7a755a2fb",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\bt4-predictions.jsonl": "878b43c6223e3f6ea9824669569d5e9b87b4ce3bbc8abcf1e74f7f1a626e8c1a",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\cp-predictions.jsonl": "c903e919a76bd64c28a5486defe023f9ed60758df65751bea26414e3c7228395",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\bt4-predictions.jsonl": "5327d60cac2c766f95ad6f890e22d79db2075957d4cb7d1a839c4c396c573b25",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\cp-predictions.jsonl": "56781da22ad2083b54b08d4a3d2add8490aabcf2ea2c82eeb086eae577434832"
+  },
+  "fitRows": 2043,
+  "ridge": 1e-08,
+  "maximumCompiledTrainerReferenceDifference": 5.176894417591171e-07,
+  "projections": [
+    {
+      "span": "affine",
+      "featureMeans": [
+        0,
+        -0.028983113069016152,
+        0.12472481026498115,
+        -0.1486542109036296
+      ],
+      "featureScales": [
+        1,
+        0.5013306418579341,
+        0.7480281722496034,
+        1.2122583326024778
+      ],
+      "standardizedGramEigenvalues": [
+        0.015524767314820704,
+        0.7688430784838136,
+        1.0,
+        2.2156321542013657
+      ],
+      "standardizedGramCondition": 142.71596535209997,
+      "projectionCoefficients": [
+        [
+          -0.4689452988478612,
+          -0.7607317517222126,
+          -0.6777988028652263,
+          -0.06460904706401836
+        ],
+        [
+          -0.3745779721600769,
+          -2.934129667946408,
+          -1.0755229465356848,
+          8.863992364615669
+        ],
+        [
+          1.034702766763352,
+          -3.2528945346468845,
+          -1.7401448876879329,
+          6.012092235525625
+        ],
+        [
+          -0.1262196278791492,
+          -1.042743396282721,
+          -1.118125583775568,
+          -0.3107300760569012
+        ]
+      ],
+      "panels": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "count": 1024,
+          "components": [
+            {
+              "component": 0,
+              "rawRms": 1.1263418948251334,
+              "residualRms": 1.0390303518966424,
+              "outOfSampleR2": 0.005632072940146671,
+              "meanGradientTimesResidual": 0.003664610476921101
+            },
+            {
+              "component": 1,
+              "rawRms": 1.0812580841863408,
+              "residualRms": 2.7487810032753077,
+              "outOfSampleR2": -7.884936120550442,
+              "meanGradientTimesResidual": -0.12061213204405608
+            },
+            {
+              "component": 2,
+              "rawRms": 1.854925157429488,
+              "residualRms": 2.436324547645749,
+              "outOfSampleR2": -1.7307113445327933,
+              "meanGradientTimesResidual": -0.09100795480504308
+            },
+            {
+              "component": 3,
+              "rawRms": 0.7233399575587429,
+              "residualRms": 0.7064725249960238,
+              "outOfSampleR2": -0.013271746392919725,
+              "meanGradientTimesResidual": 0.00018988768144784406
+            }
+          ],
+          "learnedCubicRmsPawns": 0.06141210473200402,
+          "remainingCubicRmsPawns": 0.06077233287882945
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "count": 1015,
+          "components": [
+            {
+              "component": 0,
+              "rawRms": 1.1821610430280705,
+              "residualRms": 1.0835356037926203,
+              "outOfSampleR2": 0.031162626903796342,
+              "meanGradientTimesResidual": 0.024810857729416033
+            },
+            {
+              "component": 1,
+              "rawRms": 1.0974824049514007,
+              "residualRms": 3.0494905381941853,
+              "outOfSampleR2": -9.515772408976387,
+              "meanGradientTimesResidual": 0.026852259672085876
+            },
+            {
+              "component": 2,
+              "rawRms": 1.881398946018925,
+              "residualRms": 2.8580504079207665,
+              "outOfSampleR2": -1.8011955446618053,
+              "meanGradientTimesResidual": -0.07913701387871734
+            },
+            {
+              "component": 3,
+              "rawRms": 0.7845407652583158,
+              "residualRms": 0.7360579459199961,
+              "outOfSampleR2": 0.10095290693566172,
+              "meanGradientTimesResidual": -0.010264133665643261
+            }
+          ],
+          "learnedCubicRmsPawns": 0.06849634294285373,
+          "remainingCubicRmsPawns": 0.06469433575024713
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "count": 1024,
+          "components": [
+            {
+              "component": 0,
+              "rawRms": 1.1177342114745359,
+              "residualRms": 1.0279586461896761,
+              "outOfSampleR2": 0.012536544552764428,
+              "meanGradientTimesResidual": 0.009104924869213374
+            },
+            {
+              "component": 1,
+              "rawRms": 1.028799731379467,
+              "residualRms": 2.5659369306855275,
+              "outOfSampleR2": -7.053737105059913,
+              "meanGradientTimesResidual": -0.06489574822056159
+            },
+            {
+              "component": 2,
+              "rawRms": 1.754102650918664,
+              "residualRms": 2.2448107140323357,
+              "outOfSampleR2": -1.4663064624238324,
+              "meanGradientTimesResidual": -0.0535593167397406
+            },
+            {
+              "component": 3,
+              "rawRms": 0.7122714188104595,
+              "residualRms": 0.6790008754659501,
+              "outOfSampleR2": 0.021131442511632237,
+              "meanGradientTimesResidual": 0.016215020840576456
+            }
+          ],
+          "learnedCubicRmsPawns": 0.061121847638857994,
+          "remainingCubicRmsPawns": 0.05898139671430435
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "count": 1015,
+          "components": [
+            {
+              "component": 0,
+              "rawRms": 1.2682957089642257,
+              "residualRms": 1.1688942084091247,
+              "outOfSampleR2": 0.004931973352017005,
+              "meanGradientTimesResidual": -0.009272050548799335
+            },
+            {
+              "component": 1,
+              "rawRms": 1.184953791764073,
+              "residualRms": 3.012258466501712,
+              "outOfSampleR2": -8.214178655203417,
+              "meanGradientTimesResidual": 0.08826593004923981
+            },
+            {
+              "component": 2,
+              "rawRms": 1.936062511990514,
+              "residualRms": 2.8866137906069516,
+              "outOfSampleR2": -1.529097725605296,
+              "meanGradientTimesResidual": 0.08846461033056248
+            },
+            {
+              "component": 3,
+              "rawRms": 0.7961249959495511,
+              "residualRms": 0.75337953698871,
+              "outOfSampleR2": 0.1043452405168459,
+              "meanGradientTimesResidual": 0.008086133252608128
+            }
+          ],
+          "learnedCubicRmsPawns": 0.06939329820956813,
+          "remainingCubicRmsPawns": 0.06582747302716979
+        }
+      ]
+    },
+    {
+      "span": "affineQuadratic",
+      "featureMeans": [
+        0,
+        -0.028983113069016152,
+        0.12472481026498115,
+        -0.1486542109036296,
+        -0.5315570537274462,
+        -0.8580815661643311,
+        -1.158782594963245,
+        -0.6857205127101174
+      ],
+      "featureScales": [
+        1,
+        0.5013306418579341,
+        0.7480281722496034,
+        1.2122583326024778,
+        0.791038226834949,
+        2.0804757452967504,
+        2.0472297725541786,
+        0.745605521645335
+      ],
+      "standardizedGramEigenvalues": [
+        0.013444714307667468,
+        0.03345767653255867,
+        0.10071666155341531,
+        0.7752500281806477,
+        1.0,
+        1.0476372972770391,
+        1.479881437635447,
+        3.5496121845132254
+      ],
+      "standardizedGramCondition": 264.01544155452194,
+      "projectionCoefficients": [
+        [
+          -0.4689452988478612,
+          -0.7126177380367623,
+          -0.6155151764146325,
+          -0.3366582870347561,
+          -0.0177228735628146,
+          -0.17039725681310436,
+          0.474338087999701,
+          0.2331497736157752
+        ],
+        [
+          -0.3745779721600768,
+          -1.9484849521418113,
+          -0.4009179574819063,
+          5.945714427917838,
+          -0.5866171667527785,
+          2.7226745032509045,
+          0.7367416370215202,
+          0.1675005051652493
+        ],
+        [
+          1.034702766763352,
+          -2.3959646442519995,
+          -1.214448091933169,
+          4.043319006534855,
+          -0.5074035065723234,
+          2.872368054690977,
+          -0.5025446051487019,
+          -0.31426026464393053
+        ],
+        [
+          -0.12621962787914923,
+          -0.612469631274408,
+          -0.7089132800213308,
+          0.43221694297820457,
+          -0.17327504450179976,
+          -0.5318941877834419,
+          -0.3535373174232094,
+          0.4027344308457364
+        ]
+      ],
+      "panels": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "count": 1024,
+          "components": [
+            {
+              "component": 0,
+              "rawRms": 1.1263418948251334,
+              "residualRms": 0.9377620990713633,
+              "outOfSampleR2": 0.19001683638525468,
+              "meanGradientTimesResidual": 0.006948557785565142
+            },
+            {
+              "component": 1,
+              "rawRms": 1.0812580841863408,
+              "residualRms": 2.2356880844964095,
+              "outOfSampleR2": -4.877551626797564,
+              "meanGradientTimesResidual": -0.08489228879085225
+            },
+            {
+              "component": 2,
+              "rawRms": 1.854925157429488,
+              "residualRms": 2.2169797787639163,
+              "outOfSampleR2": -1.2611479318961605,
+              "meanGradientTimesResidual": -0.06530550537729543
+            },
+            {
+              "component": 3,
+              "rawRms": 0.7233399575587429,
+              "residualRms": 0.6643251735034981,
+              "outOfSampleR2": 0.10402312828708737,
+              "meanGradientTimesResidual": 0.003478791952803316
+            }
+          ],
+          "learnedCubicRmsPawns": 0.06141210473200402,
+          "remainingCubicRmsPawns": 0.05726818523423916
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "count": 1015,
+          "components": [
+            {
+              "component": 0,
+              "rawRms": 1.1821610430280705,
+              "residualRms": 1.041035156431775,
+              "outOfSampleR2": 0.10567514020989788,
+              "meanGradientTimesResidual": 0.02288765338117688
+            },
+            {
+              "component": 1,
+              "rawRms": 1.0974824049514007,
+              "residualRms": 2.679222620349945,
+              "outOfSampleR2": -7.117161751520435,
+              "meanGradientTimesResidual": 0.01094174685185916
+            },
+            {
+              "component": 2,
+              "rawRms": 1.881398946018925,
+              "residualRms": 2.7043721089180703,
+              "outOfSampleR2": -1.508052106161367,
+              "meanGradientTimesResidual": -0.08955120215905853
+            },
+            {
+              "component": 3,
+              "rawRms": 0.7845407652583158,
+              "residualRms": 0.707913032438023,
+              "outOfSampleR2": 0.1683927906894469,
+              "meanGradientTimesResidual": -0.0087564849722261
+            }
+          ],
+          "learnedCubicRmsPawns": 0.06849634294285373,
+          "remainingCubicRmsPawns": 0.06214807062147818
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "count": 1024,
+          "components": [
+            {
+              "component": 0,
+              "rawRms": 1.1177342114745359,
+              "residualRms": 0.9185405043636599,
+              "outOfSampleR2": 0.21156414096194964,
+              "meanGradientTimesResidual": 0.010224794106566548
+            },
+            {
+              "component": 1,
+              "rawRms": 1.028799731379467,
+              "residualRms": 2.2031775455673794,
+              "outOfSampleR2": -4.937511823433996,
+              "meanGradientTimesResidual": -0.03961105298263315
+            },
+            {
+              "component": 2,
+              "rawRms": 1.754102650918664,
+              "residualRms": 2.1607047982204137,
+              "outOfSampleR2": -1.2849592572645214,
+              "meanGradientTimesResidual": -0.03305901304644755
+            },
+            {
+              "component": 3,
+              "rawRms": 0.7122714188104595,
+              "residualRms": 0.6459661355887588,
+              "outOfSampleR2": 0.11406224061756909,
+              "meanGradientTimesResidual": 0.017906546319476812
+            }
+          ],
+          "learnedCubicRmsPawns": 0.061121847638857994,
+          "remainingCubicRmsPawns": 0.05611073032361012
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "count": 1015,
+          "components": [
+            {
+              "component": 0,
+              "rawRms": 1.2682957089642257,
+              "residualRms": 1.1133531984684417,
+              "outOfSampleR2": 0.09724837181502488,
+              "meanGradientTimesResidual": -0.01145217046655116
+            },
+            {
+              "component": 1,
+              "rawRms": 1.184953791764073,
+              "residualRms": 2.6205324267402776,
+              "outOfSampleR2": -5.97350693802904,
+              "meanGradientTimesResidual": 0.08340048809135864
+            },
+            {
+              "component": 2,
+              "rawRms": 1.936062511990514,
+              "residualRms": 2.720490021922696,
+              "outOfSampleR2": -1.2463763673099302,
+              "meanGradientTimesResidual": 0.08835505991566207
+            },
+            {
+              "component": 3,
+              "rawRms": 0.7961249959495511,
+              "residualRms": 0.705536046753612,
+              "outOfSampleR2": 0.21449055215415236,
+              "meanGradientTimesResidual": 0.007068213723267422
+            }
+          ],
+          "learnedCubicRmsPawns": 0.06939329820956813,
+          "remainingCubicRmsPawns": 0.06181646395228203
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Label-free information projection on consumed panels; no neural training, exported model or owner writes.",
+    "Explained feature variance does not establish predictive relevance, strength, optimal Adam convergence or an architecture defect.",
+    "Out-of-sample here means only a held-out half of already consumed diagnostic data; game/source/training overlap remains unknown.",
+    "Standardized feature Gram conditioning is not the full loss Hessian or a proof that preconditioning would improve chess."
+  ]
+}

@@ -1,0 +1,685 @@
+{
+  "id": "wave9-new-window-stability-check-v1-results",
+  "admission": "docs\\research\\brn-successor-cglhw\\wave9-new-window-admission.json",
+  "admissionSha256": "4321994f97e3a088216abc070c46cc61d643ae971fd09f28104f2f6e629661d7",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01\\bt4-predictions.jsonl": "548b61629780a90c34c2ee816e7db38154921beb614a7b6ed71031f3f06929b9",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01\\cp-predictions.jsonl": "5eb30a8177035663b8c5ae37d21fa54d2e86281ff951f8e3af00f463e5416b6f"
+  },
+  "averageSourceHashes": {
+    "g000173-s000040960-4618241e4a01adb2e908fa1a81a731d2e803e7487bbd4541cb83cdc7db8e0c3f": "d723c3126bb7a25b38c222d1332f899ce9db83c9a46458fead83b9ed85ff30e6",
+    "g000174-s000049152-68c040f98a746b942d20c69c6a375387f67af4c3c076d1ca19d002b47de808e9": "9a3a934e8b74e03c3d27a4528e001216d3ae99bb8711877aaa233b5487dea35c",
+    "g000175-s000057344-403cbfc5b1b6f5d4bfa330488cf5d782c2415b2bb1939b7456bdb5804c026d03": "3bfdcf006900805c0129c94a6beb332837fb40b0e002af1c34529d0ec3732e8a",
+    "g000176-s000065536-16a82f32ff52b872fd12a2dd8ddfa3ede57e292c9e2f29974ac42f7fa57cb762": "df813617b4404ea826ea7f6b076fabbd12b4120f6b9e7e536e91a4c0fe7fbf21",
+    "g000173-s000040960-3f267f6fe87a6e1d66152bea38eb09ed97054f925ea66fd914a4e18735fd89e3": "60bda4479577f45d02e80f00a394eb055c678942c5a25b0a329a19bcb62098f5",
+    "g000174-s000049152-999521e1089e91322f3729b092b88e32c5f470471ae53bfe2eddf91451b3030f": "663519b789c496771fdcc0e9abd8d5cd759d24467d5c667bae0e2e005333be4f",
+    "g000175-s000057344-b506adbe13a9dadeb84c4c83a976eb2168368f743317e397a82b1d53fbfa4a7d": "8271af162c1c3f3edc335b2ee5fcd25ea62e725682eabf2cf585ef06288e5ea2",
+    "g000176-s000065536-28d94ac77120ee02c2e24a03e350a01486e928f08325ebafcaa55576e1791674": "7d5a231b21ea8e1ad0760ea97a12cf77d40247aaeeecc621867085633d6acd0e",
+    "g000173-s000040960-8f4a86ac47b2e8b82740c3e199c6ccaf020d2e50863434e313a80cb46a38fe5c": "e93a8fa2edafb4421a6fd48f5c255de7e5815e05333ba4c4dba8395aecf30459",
+    "g000174-s000049152-d649f3fc290da229042df8f97c82586a3854758df28d64bfe44c483abb06143d": "ff68b2c17edef4f291b9d1cc8eb91e894ee37ef9838a1f9bbfa7c5e1cee2a317",
+    "g000175-s000057344-2cd1216869ef01c5bc806a060a158caafba948527c242de6d4357cac32a6d644": "ae9890c6e43c28dd8183a2531e6c567db9d3befc6c647e5d5b52bffca5ddfcb3",
+    "g000176-s000065536-a924ec59b6d56c319475b79c6c9fa2c661fd6345c401c324d8715463a39bebfa": "5c10589acc5d3870fbca065f4829ad538de3e1e28bb0e3b6cdb2ce8b7d2e56e2"
+  },
+  "averageHeads": {
+    "W9-CAL-AFFINE-R4-LR001": [
+      0.8723023126748944,
+      -12.418464598635385,
+      16.19366563622147,
+      5.2370094739481505
+    ],
+    "W9-CAL-QUAD-R4-LR001": [
+      0.4502432455565782,
+      -12.55589392566305,
+      16.14825169782735,
+      3.6333840763582854,
+      0.31007484046666045,
+      0.21340827810774393,
+      0.3779899174323379,
+      -1.3226378354946058
+    ],
+    "W9-CAL-CUBIC-R4-LR001": [
+      0.6275398828213308,
+      -12.69069513277753,
+      15.945789014420955,
+      4.862203726682257,
+      -0.3003677764164504,
+      0.033448769857284,
+      -0.05746783627263401,
+      -0.71773782009617
+    ]
+  },
+  "maximumIndependentForwardError": 3.885780586188048e-14,
+  "panels": [
+    {
+      "source": "bt4",
+      "validRows": 2048,
+      "invalidRowsExcluded": 0,
+      "meanPieces": 18.3447265625,
+      "meanMaterialPhase": 42.3056640625,
+      "nearDecisiveTargetFraction": 0.16943359375,
+      "metrics": {
+        "Gen32@native": {
+          "crossEntropy": 0.8337568669692843,
+          "scoreRmsPawns": 2.7327185370577878,
+          "minPawns": -14.494233073714003,
+          "maxPawns": 17.09663565708089
+        },
+        "Gen32@search025": {
+          "crossEntropy": 0.9503106403289738,
+          "scoreRmsPawns": 3.2095568139879176,
+          "minPawns": -17.1235582684285,
+          "maxPawns": 19.724158914270223
+        },
+        "BRE176@native": {
+          "crossEntropy": 0.8354490690931183,
+          "scoreRmsPawns": 2.7378740171261375,
+          "minPawns": -14.555006553798627,
+          "maxPawns": 17.143377689091103
+        },
+        "BRE176@search025": {
+          "crossEntropy": 0.951113863752011,
+          "scoreRmsPawns": 3.210962794588742,
+          "minPawns": -17.13875163844966,
+          "maxPawns": 19.735844422272777
+        },
+        "initial168@native": {
+          "crossEntropy": 0.835024063825765,
+          "scoreRmsPawns": 2.749887646482087,
+          "minPawns": -14.427017130213311,
+          "maxPawns": 17.18168099761831
+        },
+        "initial168@search025": {
+          "crossEntropy": 0.9509151749184482,
+          "scoreRmsPawns": 3.213930619218288,
+          "minPawns": -17.10675428255333,
+          "maxPawns": 19.745420249404578
+        },
+        "W9-CAL-AFFINE-R4-LR001-latest@native": {
+          "crossEntropy": 0.6151779716279224,
+          "scoreRmsPawns": 0.9765128128810926,
+          "minPawns": -3.6606126731343824,
+          "maxPawns": 6.808612573507428
+        },
+        "W9-CAL-AFFINE-R4-LR001-latest@search025": {
+          "crossEntropy": 0.8368440381442468,
+          "scoreRmsPawns": 2.745113835405736,
+          "minPawns": -14.331863120304567,
+          "maxPawns": 17.07581571413475
+        },
+        "W9-CAL-AFFINE-R4-LR001-best@native": {
+          "crossEntropy": 0.6148392673355109,
+          "scoreRmsPawns": 1.0003769534378473,
+          "minPawns": -3.808417930002852,
+          "maxPawns": 6.946346251839305
+        },
+        "W9-CAL-AFFINE-R4-LR001-best@search025": {
+          "crossEntropy": 0.8385374462476504,
+          "scoreRmsPawns": 2.752305906724518,
+          "minPawns": -14.374526329655264,
+          "maxPawns": 17.117737530308915
+        },
+        "W9-CAL-AFFINE-R4-LR001-mean173to176@native": {
+          "crossEntropy": 0.6148844452021341,
+          "scoreRmsPawns": 0.9968993219892293,
+          "minPawns": -3.800229415831387,
+          "maxPawns": 6.923786106115868
+        },
+        "W9-CAL-AFFINE-R4-LR001-mean173to176@search025": {
+          "crossEntropy": 0.8385657854955383,
+          "scoreRmsPawns": 2.751697640391574,
+          "minPawns": -14.373541594903415,
+          "maxPawns": 17.111842475434983
+        },
+        "W9-CAL-QUAD-R4-LR001-latest@native": {
+          "crossEntropy": 0.615991049652059,
+          "scoreRmsPawns": 0.9762120820961118,
+          "minPawns": -3.8329588896254023,
+          "maxPawns": 6.70633941862166
+        },
+        "W9-CAL-QUAD-R4-LR001-latest@search025": {
+          "crossEntropy": 0.8374732420336549,
+          "scoreRmsPawns": 2.744447292381075,
+          "minPawns": -14.313674071968162,
+          "maxPawns": 17.036559653068792
+        },
+        "W9-CAL-QUAD-R4-LR001-best@native": {
+          "crossEntropy": 0.6154749224947512,
+          "scoreRmsPawns": 0.9917653497086512,
+          "minPawns": -3.9749375390214787,
+          "maxPawns": 6.751881856087003
+        },
+        "W9-CAL-QUAD-R4-LR001-best@search025": {
+          "crossEntropy": 0.8391373690856716,
+          "scoreRmsPawns": 2.7500974748363323,
+          "minPawns": -14.351562162863573,
+          "maxPawns": 17.070816934632106
+        },
+        "W9-CAL-QUAD-R4-LR001-mean173to176@native": {
+          "crossEntropy": 0.6155996160288877,
+          "scoreRmsPawns": 0.9895022765826764,
+          "minPawns": -3.9697013388242937,
+          "maxPawns": 6.719814890920739
+        },
+        "W9-CAL-QUAD-R4-LR001-mean173to176@search025": {
+          "crossEntropy": 0.8391058939785603,
+          "scoreRmsPawns": 2.7497443234267154,
+          "minPawns": -14.357395718739904,
+          "maxPawns": 17.057341611266096
+        },
+        "W9-CAL-QUAD-R4-LR001-degreeMeanOnly@native": {
+          "crossEntropy": 0.6159648780245187,
+          "scoreRmsPawns": 0.9737523736231111,
+          "minPawns": -3.811438797878287,
+          "maxPawns": 6.699508933758203
+        },
+        "W9-CAL-QUAD-R4-LR001-degreeMeanOnly@search025": {
+          "crossEntropy": 0.8373587178309916,
+          "scoreRmsPawns": 2.743740750849426,
+          "minPawns": -14.303534443899593,
+          "maxPawns": 17.024214615261148
+        },
+        "W9-CAL-CUBIC-R4-LR001-latest@native": {
+          "crossEntropy": 0.6149333025665137,
+          "scoreRmsPawns": 0.9809476339917963,
+          "minPawns": -3.724462072783915,
+          "maxPawns": 6.719067855563251
+        },
+        "W9-CAL-CUBIC-R4-LR001-latest@search025": {
+          "crossEntropy": 0.8365281929663416,
+          "scoreRmsPawns": 2.7453460649200494,
+          "minPawns": -14.344161919749391,
+          "maxPawns": 17.08729410090263
+        },
+        "W9-CAL-CUBIC-R4-LR001-best@native": {
+          "crossEntropy": 0.61394057342019,
+          "scoreRmsPawns": 0.9950436884480443,
+          "minPawns": -3.826194309745297,
+          "maxPawns": 6.71114872993256
+        },
+        "W9-CAL-CUBIC-R4-LR001-best@search025": {
+          "crossEntropy": 0.8378614354231914,
+          "scoreRmsPawns": 2.749522341827595,
+          "minPawns": -14.382264929175479,
+          "maxPawns": 17.09278681476129
+        },
+        "W9-CAL-CUBIC-R4-LR001-mean173to176@native": {
+          "crossEntropy": 0.6143521054747868,
+          "scoreRmsPawns": 0.9975258248061284,
+          "minPawns": -3.870552958703369,
+          "maxPawns": 6.776798185700185
+        },
+        "W9-CAL-CUBIC-R4-LR001-mean173to176@search025": {
+          "crossEntropy": 0.837951963289019,
+          "scoreRmsPawns": 2.750691418324196,
+          "minPawns": -14.38555065465522,
+          "maxPawns": 17.110712195969455
+        },
+        "W9-CAL-CUBIC-R4-LR001-degreeMeanOnly@native": {
+          "crossEntropy": 0.6149925941638451,
+          "scoreRmsPawns": 0.9850914859449543,
+          "minPawns": -3.733004806532394,
+          "maxPawns": 6.705769563369733
+        },
+        "W9-CAL-CUBIC-R4-LR001-degreeMeanOnly@search025": {
+          "crossEntropy": 0.8363123188467618,
+          "scoreRmsPawns": 2.745348897176222,
+          "minPawns": -14.345507640479322,
+          "maxPawns": 17.086547890939688
+        }
+      },
+      "contrasts": [
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-latest@native",
+          "right": "W9-CAL-AFFINE-R4-LR001-latest@native",
+          "crossEntropyDifference": 0.0008130780241366038,
+          "descriptiveRowSE": 0.00046521760731300726
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-latest@search025",
+          "right": "W9-CAL-AFFINE-R4-LR001-latest@search025",
+          "crossEntropyDifference": 0.0006292038894081832,
+          "descriptiveRowSE": 0.0003454128002587864
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-latest@native",
+          "right": "W9-CAL-AFFINE-R4-LR001-latest@native",
+          "crossEntropyDifference": -0.00024466906140869685,
+          "descriptiveRowSE": 0.00027361540030766153
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-latest@search025",
+          "right": "W9-CAL-AFFINE-R4-LR001-latest@search025",
+          "crossEntropyDifference": -0.00031584517790508946,
+          "descriptiveRowSE": 0.0002429924981510852
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-latest@native",
+          "right": "W9-CAL-QUAD-R4-LR001-latest@native",
+          "crossEntropyDifference": -0.0010577470855453008,
+          "descriptiveRowSE": 0.0004876186917674786
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-latest@search025",
+          "right": "W9-CAL-QUAD-R4-LR001-latest@search025",
+          "crossEntropyDifference": -0.0009450490673132728,
+          "descriptiveRowSE": 0.0003225065357489995
+        },
+        {
+          "left": "W9-CAL-AFFINE-R4-LR001-latest@native",
+          "right": "W9-CAL-AFFINE-R4-LR001-best@native",
+          "crossEntropyDifference": 0.00033870429241155705,
+          "descriptiveRowSE": 0.00015901970654974925
+        },
+        {
+          "left": "W9-CAL-AFFINE-R4-LR001-latest@search025",
+          "right": "W9-CAL-AFFINE-R4-LR001-best@search025",
+          "crossEntropyDifference": -0.001693408103403651,
+          "descriptiveRowSE": 0.00017906074282931456
+        },
+        {
+          "left": "W9-CAL-AFFINE-R4-LR001-mean173to176@native",
+          "right": "W9-CAL-AFFINE-R4-LR001-latest@native",
+          "crossEntropyDifference": -0.0002935264257883043,
+          "descriptiveRowSE": 0.0001662478437944905
+        },
+        {
+          "left": "W9-CAL-AFFINE-R4-LR001-mean173to176@search025",
+          "right": "W9-CAL-AFFINE-R4-LR001-latest@search025",
+          "crossEntropyDifference": 0.0017217473512915326,
+          "descriptiveRowSE": 0.00018740104280790898
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-latest@native",
+          "right": "W9-CAL-QUAD-R4-LR001-best@native",
+          "crossEntropyDifference": 0.0005161271573078169,
+          "descriptiveRowSE": 0.0001977886613071532
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-latest@search025",
+          "right": "W9-CAL-QUAD-R4-LR001-best@search025",
+          "crossEntropyDifference": -0.0016641270520167007,
+          "descriptiveRowSE": 0.00020319158783388254
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-mean173to176@native",
+          "right": "W9-CAL-QUAD-R4-LR001-latest@native",
+          "crossEntropyDifference": -0.00039143362317132195,
+          "descriptiveRowSE": 0.00021407535702755123
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-mean173to176@search025",
+          "right": "W9-CAL-QUAD-R4-LR001-latest@search025",
+          "crossEntropyDifference": 0.001632651944905293,
+          "descriptiveRowSE": 0.00020652999038528935
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-degreeMeanOnly@native",
+          "right": "W9-CAL-QUAD-R4-LR001-latest@native",
+          "crossEntropyDifference": -2.617162754032107e-05,
+          "descriptiveRowSE": 0.00010157193302269954
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-degreeMeanOnly@search025",
+          "right": "W9-CAL-QUAD-R4-LR001-latest@search025",
+          "crossEntropyDifference": -0.00011452420266332182,
+          "descriptiveRowSE": 8.070102662844088e-05
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-latest@native",
+          "right": "W9-CAL-CUBIC-R4-LR001-best@native",
+          "crossEntropyDifference": 0.0009927291463237102,
+          "descriptiveRowSE": 0.0002628931153764827
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-latest@search025",
+          "right": "W9-CAL-CUBIC-R4-LR001-best@search025",
+          "crossEntropyDifference": -0.0013332424568496995,
+          "descriptiveRowSE": 0.00023594968956622264
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-mean173to176@native",
+          "right": "W9-CAL-CUBIC-R4-LR001-latest@native",
+          "crossEntropyDifference": -0.0005811970917269282,
+          "descriptiveRowSE": 0.00018378991066115736
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-mean173to176@search025",
+          "right": "W9-CAL-CUBIC-R4-LR001-latest@search025",
+          "crossEntropyDifference": 0.0014237703226773705,
+          "descriptiveRowSE": 0.00017064718420582324
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-degreeMeanOnly@native",
+          "right": "W9-CAL-CUBIC-R4-LR001-latest@native",
+          "crossEntropyDifference": 5.929159733138702e-05,
+          "descriptiveRowSE": 0.00011707796587712102
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-degreeMeanOnly@search025",
+          "right": "W9-CAL-CUBIC-R4-LR001-latest@search025",
+          "crossEntropyDifference": -0.00021587411957985794,
+          "descriptiveRowSE": 7.441543919033092e-05
+        }
+      ]
+    },
+    {
+      "source": "cp",
+      "validRows": 2029,
+      "invalidRowsExcluded": 19,
+      "meanPieces": 21.67865943814687,
+      "meanMaterialPhase": 50.89107934943322,
+      "nearDecisiveTargetFraction": 0.4440611138491868,
+      "metrics": {
+        "Gen32@native": {
+          "crossEntropy": 1.3404097002283732,
+          "scoreRmsPawns": 2.3839229417735748,
+          "minPawns": -13.00065552427153,
+          "maxPawns": 14.80772540094907
+        },
+        "Gen32@search025": {
+          "crossEntropy": 1.6547246695428648,
+          "scoreRmsPawns": 2.8247768799255657,
+          "minPawns": -15.250163881067882,
+          "maxPawns": 17.201931350237267
+        },
+        "BRE176@native": {
+          "crossEntropy": 1.3525013196817508,
+          "scoreRmsPawns": 2.3941211652010725,
+          "minPawns": -13.111637331242493,
+          "maxPawns": 14.895104184036027
+        },
+        "BRE176@search025": {
+          "crossEntropy": 1.6580183586924855,
+          "scoreRmsPawns": 2.827462427566296,
+          "minPawns": -15.277909332810623,
+          "maxPawns": 17.223776046009007
+        },
+        "initial168@native": {
+          "crossEntropy": 1.337581912200609,
+          "scoreRmsPawns": 2.3959337166674963,
+          "minPawns": -12.89300077114789,
+          "maxPawns": 15.034594973473038
+        },
+        "initial168@search025": {
+          "crossEntropy": 1.6538346480703112,
+          "scoreRmsPawns": 2.8278027899941307,
+          "minPawns": -15.223250192786972,
+          "maxPawns": 17.25864874336826
+        },
+        "W9-CAL-AFFINE-R4-LR001-latest@native": {
+          "crossEntropy": 0.607109557571975,
+          "scoreRmsPawns": 0.8714408458889702,
+          "minPawns": -3.234330514251539,
+          "maxPawns": 6.273315305290893
+        },
+        "W9-CAL-AFFINE-R4-LR001-latest@search025": {
+          "crossEntropy": 1.3457431040496872,
+          "scoreRmsPawns": 2.3930232474561675,
+          "minPawns": -12.808582628562885,
+          "maxPawns": 15.068328826322723
+        },
+        "W9-CAL-AFFINE-R4-LR001-best@native": {
+          "crossEntropy": 0.6091688054662342,
+          "scoreRmsPawns": 0.885164415567981,
+          "minPawns": -3.3785592113176683,
+          "maxPawns": 6.400073836829758
+        },
+        "W9-CAL-AFFINE-R4-LR001-best@search025": {
+          "crossEntropy": 1.3507650832159868,
+          "scoreRmsPawns": 2.3995731956402095,
+          "minPawns": -12.844639802829416,
+          "maxPawns": 15.10001845920744
+        },
+        "W9-CAL-AFFINE-R4-LR001-mean173to176@native": {
+          "crossEntropy": 0.6095096807619799,
+          "scoreRmsPawns": 0.8814180483945742,
+          "minPawns": -3.3721818385876006,
+          "maxPawns": 6.377229260345562
+        },
+        "W9-CAL-AFFINE-R4-LR001-mean173to176@search025": {
+          "crossEntropy": 1.3512015601440654,
+          "scoreRmsPawns": 2.399221108531729,
+          "minPawns": -12.8430454596469,
+          "maxPawns": 15.09430731508639
+        },
+        "W9-CAL-QUAD-R4-LR001-latest@native": {
+          "crossEntropy": 0.6065185166552174,
+          "scoreRmsPawns": 0.873877524196528,
+          "minPawns": -3.2816600612242013,
+          "maxPawns": 6.29820437198989
+        },
+        "W9-CAL-QUAD-R4-LR001-latest@search025": {
+          "crossEntropy": 1.3434353921786388,
+          "scoreRmsPawns": 2.392211563965224,
+          "minPawns": -12.82041501530605,
+          "maxPawns": 15.074551092997472
+        },
+        "W9-CAL-QUAD-R4-LR001-best@native": {
+          "crossEntropy": 0.6076280259251068,
+          "scoreRmsPawns": 0.8867470151437037,
+          "minPawns": -3.3848351154040834,
+          "maxPawns": 6.392401105416477
+        },
+        "W9-CAL-QUAD-R4-LR001-best@search025": {
+          "crossEntropy": 1.348148103040871,
+          "scoreRmsPawns": 2.3982900094313617,
+          "minPawns": -12.846208778851022,
+          "maxPawns": 15.098100276354119
+        },
+        "W9-CAL-QUAD-R4-LR001-mean173to176@native": {
+          "crossEntropy": 0.6084368269984695,
+          "scoreRmsPawns": 0.8821349180110593,
+          "minPawns": -3.4254865551664118,
+          "maxPawns": 6.317370872920446
+        },
+        "W9-CAL-QUAD-R4-LR001-mean173to176@search025": {
+          "crossEntropy": 1.3487665154356079,
+          "scoreRmsPawns": 2.3979186469700378,
+          "minPawns": -12.856371638791604,
+          "maxPawns": 15.079342718230112
+        },
+        "W9-CAL-QUAD-R4-LR001-degreeMeanOnly@native": {
+          "crossEntropy": 0.6059885755412573,
+          "scoreRmsPawns": 0.8771013890566508,
+          "minPawns": -3.262945172330138,
+          "maxPawns": 6.272204055200156
+        },
+        "W9-CAL-QUAD-R4-LR001-degreeMeanOnly@search025": {
+          "crossEntropy": 1.3425626463386653,
+          "scoreRmsPawns": 2.391858988272282,
+          "minPawns": -12.815736293082534,
+          "maxPawns": 15.068051013800039
+        },
+        "W9-CAL-CUBIC-R4-LR001-latest@native": {
+          "crossEntropy": 0.6046617783208545,
+          "scoreRmsPawns": 0.8774718347298727,
+          "minPawns": -3.2563204315469427,
+          "maxPawns": 6.264930117882834
+        },
+        "W9-CAL-CUBIC-R4-LR001-latest@search025": {
+          "crossEntropy": 1.3437567694863617,
+          "scoreRmsPawns": 2.3925457907704843,
+          "minPawns": -12.814080107886735,
+          "maxPawns": 15.066232529470708
+        },
+        "W9-CAL-CUBIC-R4-LR001-best@native": {
+          "crossEntropy": 0.605732779244525,
+          "scoreRmsPawns": 0.8928616985928988,
+          "minPawns": -3.348056834397841,
+          "maxPawns": 6.254796416827945
+        },
+        "W9-CAL-CUBIC-R4-LR001-best@search025": {
+          "crossEntropy": 1.3492712868703811,
+          "scoreRmsPawns": 2.398645876902661,
+          "minPawns": -12.83701420859946,
+          "maxPawns": 15.063699104206986
+        },
+        "W9-CAL-CUBIC-R4-LR001-mean173to176@native": {
+          "crossEntropy": 0.6058625302125403,
+          "scoreRmsPawns": 0.888437079364487,
+          "minPawns": -3.3847234869772116,
+          "maxPawns": 6.316095712631276
+        },
+        "W9-CAL-CUBIC-R4-LR001-mean173to176@search025": {
+          "crossEntropy": 1.348389402820466,
+          "scoreRmsPawns": 2.3980320000365296,
+          "minPawns": -12.846180871744302,
+          "maxPawns": 15.079023928157818
+        },
+        "W9-CAL-CUBIC-R4-LR001-degreeMeanOnly@native": {
+          "crossEntropy": 0.6041624874025264,
+          "scoreRmsPawns": 0.8840318659849251,
+          "minPawns": -3.248444956513847,
+          "maxPawns": 6.253694840330782
+        },
+        "W9-CAL-CUBIC-R4-LR001-degreeMeanOnly@search025": {
+          "crossEntropy": 1.3428149976264754,
+          "scoreRmsPawns": 2.3924386202343775,
+          "minPawns": -12.812111239128463,
+          "maxPawns": 15.063423710082695
+        }
+      },
+      "contrasts": [
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-latest@native",
+          "right": "W9-CAL-AFFINE-R4-LR001-latest@native",
+          "crossEntropyDifference": -0.0005910409167576669,
+          "descriptiveRowSE": 0.0008189613630556953
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-latest@search025",
+          "right": "W9-CAL-AFFINE-R4-LR001-latest@search025",
+          "crossEntropyDifference": -0.002307711871048396,
+          "descriptiveRowSE": 0.0005719204812658763
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-latest@native",
+          "right": "W9-CAL-AFFINE-R4-LR001-latest@native",
+          "crossEntropyDifference": -0.0024477792511204974,
+          "descriptiveRowSE": 0.0006595723693178055
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-latest@search025",
+          "right": "W9-CAL-AFFINE-R4-LR001-latest@search025",
+          "crossEntropyDifference": -0.00198633456332534,
+          "descriptiveRowSE": 0.0005499480246099412
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-latest@native",
+          "right": "W9-CAL-QUAD-R4-LR001-latest@native",
+          "crossEntropyDifference": -0.0018567383343628305,
+          "descriptiveRowSE": 0.0009048497604640313
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-latest@search025",
+          "right": "W9-CAL-QUAD-R4-LR001-latest@search025",
+          "crossEntropyDifference": 0.0003213773077230555,
+          "descriptiveRowSE": 0.0006675801381633317
+        },
+        {
+          "left": "W9-CAL-AFFINE-R4-LR001-latest@native",
+          "right": "W9-CAL-AFFINE-R4-LR001-best@native",
+          "crossEntropyDifference": -0.0020592478942591725,
+          "descriptiveRowSE": 0.0006814563704805054
+        },
+        {
+          "left": "W9-CAL-AFFINE-R4-LR001-latest@search025",
+          "right": "W9-CAL-AFFINE-R4-LR001-best@search025",
+          "crossEntropyDifference": -0.005021979166299729,
+          "descriptiveRowSE": 0.0004423758253647268
+        },
+        {
+          "left": "W9-CAL-AFFINE-R4-LR001-mean173to176@native",
+          "right": "W9-CAL-AFFINE-R4-LR001-latest@native",
+          "crossEntropyDifference": 0.0024001231900047893,
+          "descriptiveRowSE": 0.0006728519166994691
+        },
+        {
+          "left": "W9-CAL-AFFINE-R4-LR001-mean173to176@search025",
+          "right": "W9-CAL-AFFINE-R4-LR001-latest@search025",
+          "crossEntropyDifference": 0.005458456094378247,
+          "descriptiveRowSE": 0.00047745312767383426
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-latest@native",
+          "right": "W9-CAL-QUAD-R4-LR001-best@native",
+          "crossEntropyDifference": -0.0011095092698894281,
+          "descriptiveRowSE": 0.0006063621687769929
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-latest@search025",
+          "right": "W9-CAL-QUAD-R4-LR001-best@search025",
+          "crossEntropyDifference": -0.004712710862232328,
+          "descriptiveRowSE": 0.00047538694467460347
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-mean173to176@native",
+          "right": "W9-CAL-QUAD-R4-LR001-latest@native",
+          "crossEntropyDifference": 0.0019183103432521345,
+          "descriptiveRowSE": 0.0006777849236306913
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-mean173to176@search025",
+          "right": "W9-CAL-QUAD-R4-LR001-latest@search025",
+          "crossEntropyDifference": 0.0053311232569690755,
+          "descriptiveRowSE": 0.0004944668746781533
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-degreeMeanOnly@native",
+          "right": "W9-CAL-QUAD-R4-LR001-latest@native",
+          "crossEntropyDifference": -0.0005299411139601052,
+          "descriptiveRowSE": 0.0002807175214739648
+        },
+        {
+          "left": "W9-CAL-QUAD-R4-LR001-degreeMeanOnly@search025",
+          "right": "W9-CAL-QUAD-R4-LR001-latest@search025",
+          "crossEntropyDifference": -0.0008727458399735081,
+          "descriptiveRowSE": 0.00026752189441832684
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-latest@native",
+          "right": "W9-CAL-CUBIC-R4-LR001-best@native",
+          "crossEntropyDifference": -0.0010710009236704291,
+          "descriptiveRowSE": 0.00101567994797554
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-latest@search025",
+          "right": "W9-CAL-CUBIC-R4-LR001-best@search025",
+          "crossEntropyDifference": -0.005514517384019362,
+          "descriptiveRowSE": 0.0006670328504112405
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-mean173to176@native",
+          "right": "W9-CAL-CUBIC-R4-LR001-latest@native",
+          "crossEntropyDifference": 0.0012007518916857878,
+          "descriptiveRowSE": 0.0006098483118932593
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-mean173to176@search025",
+          "right": "W9-CAL-CUBIC-R4-LR001-latest@search025",
+          "crossEntropyDifference": 0.004632633334104134,
+          "descriptiveRowSE": 0.0004547341321672069
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-degreeMeanOnly@native",
+          "right": "W9-CAL-CUBIC-R4-LR001-latest@native",
+          "crossEntropyDifference": -0.0004992909183281142,
+          "descriptiveRowSE": 0.00029129559663217206
+        },
+        {
+          "left": "W9-CAL-CUBIC-R4-LR001-degreeMeanOnly@search025",
+          "right": "W9-CAL-CUBIC-R4-LR001-latest@search025",
+          "crossEntropyDifference": -0.0009417718598864719,
+          "descriptiveRowSE": 0.00021635337452922002
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "All rows are new-window evaluation for these fixed candidates; ordinal exclusion is not game/FEN independence or chess strength.",
+    "Row standard errors are descriptive and ignore source/game clustering and multiple comparisons.",
+    "Uniform173..176 and degree-only averages were fixed before these labels; no checkpoint/optimizer export or runtime/search-parity claim for averages.",
+    "Native and fixed.25 residual scale are separate search functions. Loss is evaluated on that function, not directly comparable GUI objectives across families.",
+    "No training, owner cursor mutation, source replacement or independent strength confirmation."
+  ]
+}
