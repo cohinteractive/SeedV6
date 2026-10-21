@@ -1,0 +1,31 @@
+{
+  "id": "wave4-packed-probe-runtime-mislaunch-v1",
+  "status": "Excluded from correctness/performance conclusions",
+  "cause": "Freeze directory packed-runtime-01 already existed from the earlier isolated prototype. Python failed without overwriting it; the surrounding shell incorrectly continued with that historical runtime. Four old-runtime probes ignored new packed/hybrid/mask fields they did not support. All outputs retained, no checkpoints or prior runtime altered.",
+  "excludedReports": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\packed-model-cache-01.json",
+      "sha256": "2630bb6b301846469f2b403d191856a2e78f1d8abad1f24ae623b97b33424b58",
+      "reportedEffectiveNetwork": "aeb48ecd4158c7b41c367dda9b071b6634c8454578feec1473cd842aa8352ad8"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\packed-model-cache-02.json",
+      "sha256": "531ad7047ab64ce0b679d1eb40efef93c625a347ecbac46a48b950bfb4c44f9c",
+      "reportedEffectiveNetwork": "aeb48ecd4158c7b41c367dda9b071b6634c8454578feec1473cd842aa8352ad8"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\packed-model-cache-03.json",
+      "sha256": "e3575ddd67ad7c7c652223751fe66173a91dd28c7aed1436ec6492c00f6b54bb",
+      "reportedEffectiveNetwork": "aeb48ecd4158c7b41c367dda9b071b6634c8454578feec1473cd842aa8352ad8"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\packed-model-cache-04.json",
+      "sha256": "2d3fb20bba8f368169d2c007cbe32eb604322da1c5162307cb5d6e51d127662d",
+      "reportedEffectiveNetwork": "f758128d54585b99c76d74948d228a961092490f42376db227ffaccc7a84d448"
+    }
+  ],
+  "oldRuntime": "wave4-packed-runtime.json",
+  "replacementRuntime": "wave4-packed-core-runtime.json",
+  "replacementReports": "raw/wave4/packed-core-cache-01..04.json",
+  "prevention": "Replacement uses a distinct name; explicit Python exit check, declared packed capability and all jar hashes verified before launch. Match launcher independently rejects incompatible runtime capabilities."
+}

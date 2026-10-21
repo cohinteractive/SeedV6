@@ -1,0 +1,422 @@
+{
+  "id": "wave4-packed-core-readiness-v1",
+  "runtime": "wave4-packed-core-runtime.json",
+  "sourceCommit": "c396945",
+  "build": 53,
+  "oracles": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\packed-core-cache-01.json",
+      "sha256": "3a938a9b4621973760476cf9fd02b0c1b141c0d88099cc6d9fa338f7fa7a2ea1",
+      "name": "W4-RESCUBIC-LR001-average8-half-rank4-packed",
+      "positions": 6333,
+      "effectiveNetworkSha256": "86a2a2e2b7c40c5f906bd9685df0d119823d46a0d9cdcf878aadfd091b19df9f",
+      "hybrid": null,
+      "integerDifferences": 0,
+      "maximumRawError": 2.275957200481571e-15,
+      "searchRootPasses": 48,
+      "implementations": 3,
+      "medianPairedSearchCostRatioPackedToDense": 0.8846174599591207,
+      "transitionLatency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            46496799,
+            42355300,
+            44313500,
+            41791701,
+            44681700,
+            44897401,
+            42358999
+          ],
+          "medianNanos": 886.27,
+          "name": "CUBIC-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            13287300,
+            11264900,
+            12126400,
+            11077700,
+            11404800,
+            11862900,
+            11401099
+          ],
+          "medianNanos": 228.096,
+          "name": "CUBIC-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            8219500,
+            7002200,
+            7107900,
+            7202800,
+            7079900,
+            7318000,
+            7934200
+          ],
+          "medianNanos": 144.056,
+          "name": "Gen32"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            16836600,
+            16083000,
+            15687999,
+            15006700,
+            16647201,
+            15271700,
+            15227300
+          ],
+          "medianNanos": 313.75998,
+          "name": "CUBIC-same-base-dense"
+        }
+      ],
+      "cacheDetails": {
+        "activeComponents": 4,
+        "updates": 6211,
+        "correctionErrorBound": 6.200299162103936e-06,
+        "kind": "packed-polynomial-period64-canonical-rounding-guard-v1",
+        "roundingFallbacks": 3,
+        "rebuilds": 125
+      },
+      "workspacePrimitiveBytes": 28409,
+      "priorEquivalent": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\cache-pruned-half-01.json"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\packed-core-cache-02.json",
+      "sha256": "65e7f53ce25c0142fa187a7a01732df957bf25864b772bd1d9afcd8e5c4ebbee",
+      "name": "W4-RESCUBIC-LR001-average8-half-rank4-packed-on-BRE001-half",
+      "positions": 6333,
+      "effectiveNetworkSha256": "86a2a2e2b7c40c5f906bd9685df0d119823d46a0d9cdcf878aadfd091b19df9f",
+      "hybrid": {
+        "input": {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g64",
+          "checkpoint": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+          "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+          "changeScale": 0.5
+        },
+        "originalManifest": {
+          "id": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+          "generation": 64,
+          "optimizerStep": 2277376,
+          "trainingDepth": 4,
+          "parentId": "g000063-s002269184-442287932c112c798471b208a5c8ffffe59420aa116db7134d53f8ab53740cd6",
+          "networkBytes": 795032,
+          "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+          "trainingBytes": 2731424,
+          "trainingSha256": "19aa0beffaf653c5b8ba4dca89f5b4b4a3f0eb31440e297acf7f0969b0485502",
+          "architecture": "BRN_PAIR2"
+        },
+        "effectiveBaseSha256": "50a20bb63a79416690f7695e6b1bef5d13fe99c5190277b27de76e5e69cbcfc3",
+        "effectiveCorrectionSha256": "86a2a2e2b7c40c5f906bd9685df0d119823d46a0d9cdcf878aadfd091b19df9f",
+        "functionSha256": "547da33a928688e9e5b5a38a03954e66160418b38b4bb7fe247b22b604e22883",
+        "identityEncoding": "brn-hybrid-raw-v1\n50a20bb63a79416690f7695e6b1bef5d13fe99c5190277b27de76e5e69cbcfc3\n86a2a2e2b7c40c5f906bd9685df0d119823d46a0d9cdcf878aadfd091b19df9f\n",
+        "mapping": "Compiled continued base + scaled nonlinear correction; material + .25 * (raw-material), one rounding; not a trainable combined checkpoint"
+      },
+      "integerDifferences": 0,
+      "maximumRawError": 2.275957200481571e-15,
+      "searchRootPasses": 48,
+      "implementations": 3,
+      "medianPairedSearchCostRatioPackedToDense": 0.8898878408250485,
+      "transitionLatency": [
+        {
+          "medianNanos": 801.566,
+          "name": "CUBIC-full",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            50081400,
+            41380900,
+            40078300,
+            40153400,
+            39843799,
+            39955900,
+            39864399
+          ]
+        },
+        {
+          "medianNanos": 207.232,
+          "name": "CUBIC-cache",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            16069800,
+            12525501,
+            10361600,
+            10056401,
+            10296400,
+            10213301,
+            10858799
+          ]
+        },
+        {
+          "medianNanos": 125.884,
+          "name": "HybridBase",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            6316700,
+            6294200,
+            6371800,
+            6358600,
+            6258900,
+            6276900,
+            6253700
+          ]
+        },
+        {
+          "medianNanos": 286.09598,
+          "name": "CUBIC-same-base-dense",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            16159700,
+            14304799,
+            14338400,
+            13999600,
+            14768200,
+            14059401,
+            13976500
+          ]
+        },
+        {
+          "medianNanos": 289.772,
+          "name": "CUBIC-original-base-cache",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            15301900,
+            14528400,
+            14403200,
+            14201700,
+            14507600,
+            14402200,
+            14488600
+          ]
+        }
+      ],
+      "cacheDetails": {
+        "kind": "packed-polynomial-period64-canonical-rounding-guard-v1",
+        "roundingFallbacks": 0,
+        "rebuilds": 124,
+        "activeComponents": 4,
+        "updates": 6209,
+        "correctionErrorBound": 6.200299162103936e-06
+      },
+      "workspacePrimitiveBytes": 28409,
+      "priorEquivalent": null
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\packed-core-cache-03.json",
+      "sha256": "8d9b9902f68d60108842e552e515c1906598c2f6c34bb2e8980d1fba2fe46366",
+      "name": "W4-RESCUBIC-LR001-average8-half-rank16-packed",
+      "positions": 6333,
+      "effectiveNetworkSha256": "aeb48ecd4158c7b41c367dda9b071b6634c8454578feec1473cd842aa8352ad8",
+      "hybrid": null,
+      "integerDifferences": 0,
+      "maximumRawError": 1.9984014443252818e-15,
+      "searchRootPasses": 48,
+      "implementations": 3,
+      "medianPairedSearchCostRatioPackedToDense": 1.0088009154622926,
+      "transitionLatency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            45713000,
+            45682400,
+            43546699,
+            42582400,
+            46088700,
+            44626700,
+            44069000
+          ],
+          "medianNanos": 892.534,
+          "name": "CUBIC-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            18201501,
+            19263300,
+            16774100,
+            16283500,
+            22851600,
+            17826400,
+            16808501
+          ],
+          "medianNanos": 356.528,
+          "name": "CUBIC-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            8243500,
+            10142600,
+            7097500,
+            8246401,
+            7165600,
+            7324400,
+            7401101
+          ],
+          "medianNanos": 148.02202,
+          "name": "Gen32"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            23142901,
+            19919601,
+            15041800,
+            15920999,
+            16902400,
+            16447800,
+            16539399
+          ],
+          "medianNanos": 330.78798,
+          "name": "CUBIC-same-base-dense"
+        }
+      ],
+      "cacheDetails": {
+        "rebuilds": 124,
+        "activeComponents": 16,
+        "updates": 6210,
+        "correctionErrorBound": 1.141150203304523e-05,
+        "kind": "packed-polynomial-period64-canonical-rounding-guard-v1",
+        "roundingFallbacks": 1
+      },
+      "workspacePrimitiveBytes": 102953,
+      "priorEquivalent": null
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\packed-core-cache-04.json",
+      "sha256": "4fc5d609d94558505932c4b1ac5a15e8e451055f45f8e4c760aa8bd66b380703",
+      "name": "W4-RESCUBIC-LR001-average8-half-on-BRE003-half-zero-correction-packed",
+      "positions": 6333,
+      "effectiveNetworkSha256": "f758128d54585b99c76d74948d228a961092490f42376db227ffaccc7a84d448",
+      "hybrid": {
+        "input": {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR003-g64",
+          "checkpoint": "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1",
+          "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050",
+          "changeScale": 0.5
+        },
+        "originalManifest": {
+          "id": "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1",
+          "generation": 64,
+          "optimizerStep": 2277376,
+          "trainingDepth": 4,
+          "parentId": "g000063-s002269184-335373a32552a851d1ff5dafd2a0aa843d8d2d1262ee32128465a106de7b1f23",
+          "networkBytes": 795032,
+          "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050",
+          "trainingBytes": 2731424,
+          "trainingSha256": "4c23665148d475c44c7e24f903c011407128f17272e5cbba197ce3d642fa883a",
+          "architecture": "BRN_PAIR2"
+        },
+        "effectiveBaseSha256": "5f92579f7a2163fae9517c6cb341a1f439b71c999c96be0d7d71d4d366fb2a49",
+        "effectiveCorrectionSha256": "f758128d54585b99c76d74948d228a961092490f42376db227ffaccc7a84d448",
+        "functionSha256": "54be815470564c1feed4000679bfeb0d79d9f8f53e48cd752911f950d5a832c4",
+        "identityEncoding": "brn-hybrid-raw-v1\n5f92579f7a2163fae9517c6cb341a1f439b71c999c96be0d7d71d4d366fb2a49\nf758128d54585b99c76d74948d228a961092490f42376db227ffaccc7a84d448\n",
+        "mapping": "Compiled continued base + scaled nonlinear correction; material + .25 * (raw-material), one rounding; not a trainable combined checkpoint"
+      },
+      "integerDifferences": 0,
+      "maximumRawError": 0.0,
+      "searchRootPasses": 48,
+      "implementations": 4,
+      "medianPairedSearchCostRatioPackedToDense": 0.7979293768036779,
+      "transitionLatency": [
+        {
+          "name": "CUBIC-full",
+          "medianNanos": 823.092,
+          "passNanos": [
+            45788300,
+            40756500,
+            41115400,
+            40897700,
+            41154600,
+            41682801,
+            43875199
+          ],
+          "evaluationsPerPass": 50000
+        },
+        {
+          "name": "CUBIC-cache",
+          "medianNanos": 177.082,
+          "passNanos": [
+            9982200,
+            9513200,
+            9508000,
+            8589400,
+            8378900,
+            8854100,
+            8450501
+          ],
+          "evaluationsPerPass": 50000
+        },
+        {
+          "name": "HybridBase",
+          "medianNanos": 137.03598,
+          "passNanos": [
+            7315300,
+            7835800,
+            6628599,
+            6512400,
+            6935800,
+            6520901,
+            6851799
+          ],
+          "evaluationsPerPass": 50000
+        },
+        {
+          "name": "CUBIC-same-base-dense",
+          "medianNanos": 292.682,
+          "passNanos": [
+            18444200,
+            14694400,
+            14403500,
+            15032299,
+            14555800,
+            14604700,
+            14634100
+          ],
+          "evaluationsPerPass": 50000
+        },
+        {
+          "name": "CUBIC-original-base-cache",
+          "medianNanos": 297.45998,
+          "passNanos": [
+            15506001,
+            14882600,
+            14872999,
+            14658699,
+            14956600,
+            14767601,
+            14549300
+          ],
+          "evaluationsPerPass": 50000
+        }
+      ],
+      "cacheDetails": {
+        "rebuilds": 124,
+        "roundingFallbacks": 0,
+        "kind": "packed-polynomial-period64-canonical-rounding-guard-v1",
+        "correctionErrorBound": 1.0524914273446484e-12,
+        "updates": 6209,
+        "activeComponents": 0
+      },
+      "workspacePrimitiveBytes": 3561,
+      "priorEquivalent": null
+    }
+  ],
+  "excludedMislaunch": "wave4-packed-probe-runtime-incident.json",
+  "conclusion": "Actual rank4 packed and dense implementations are score/search identical on these inputs. Packed saves roughly11% median search elapsed on the same trees; full-width cost is near dense. This is a cache optimization of the already-pruned function, not evidence that pruning preserves chess quality. No default adoption or strength claim.",
+  "memory": "Rank4 workspace primitive payload28409bytes vs dense4329; source payload/model retained. Headers/references/alignment excluded.",
+  "smoke": {
+    "plan": "wave4-packed-smoke-plan.json",
+    "analysis": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\packed-smoke-analysis.json",
+    "sha256": "d06a2aa8dacc38d04ad31962eb24c9ad5bfa26883825fe1a8c2d582e919d0e3c",
+    "bindings": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\packed-smoke-01\\model-bindings.json",
+    "bindingsSha256": "95845edf0897cf721a179d94dff7905612ab9db4cac39bde715325a40bc29bd9",
+    "legalPlies": 64,
+    "intentionalCaps": 8,
+    "strengthGames": 0,
+    "componentBindingsMatchOracles": true
+  }
+}

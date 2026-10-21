@@ -291,3 +291,5 @@ on their frozen runtime and do not infer pruned chess quality from this speed ga
 
 
 The selected full-clock32 is now closed (both full corrections43.75% vsBRE003 half; see results). Packed cache research implementation passes21 targeted tests and its old-runtime rejection. Freeze its build53 jars and execute the actual four-model score/search plan before any packed games. Then finish the existing64 BRE calibration and32 deeper-node controls using the original averaging runtime. No human gate or action is yet required.
+
+Packed actual-model score/search and smoke verification now passes under c396945/build53; see wave4-packed-core-readiness.json. The old prototype runtime retains its original name; use wave4-packed-core-runtime.json for the integrated cache. The bounded BRE scale control loop is active (node001, node003, clock001, clock003, two batches each); then run depth control. No new training gate yet.
