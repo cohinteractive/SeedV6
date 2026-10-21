@@ -31,7 +31,7 @@ public final class BrnSuccessorMatch {
                  boolean gatedCache, boolean cubicCache, Double blendCandidateWeight,
                  Double correctionScale, String correctionAblation, double[] constantGates, boolean gatedDeltaCache, boolean cubicDeltaCache,
                  List<AverageInput> averagedInputs, List<Integer> retainedCubicRanks, HybridBase hybridBase,
-                 Boolean packedCubicCache) {
+                 Boolean packedCubicCache, Boolean compiledUnary) {
         Model {
             if(constantGates!=null&&!"constant-gates".equals(correctionAblation))
                 throw new IllegalArgumentException("Explicit constant-gates ablation required");
@@ -39,10 +39,14 @@ public final class BrnSuccessorMatch {
             if(gatedDeltaCache&&(gatedCache||cubicCache))throw new IllegalArgumentException("Choose one cache");
             if(Boolean.TRUE.equals(packedCubicCache)&&(gatedCache||cubicCache||gatedDeltaCache||cubicDeltaCache))
                 throw new IllegalArgumentException("Choose one cache");
+            if(Boolean.TRUE.equals(compiledUnary)&&(!"unary".equals(correctionAblation)||gatedCache||cubicCache
+                    ||gatedDeltaCache||cubicDeltaCache||Boolean.TRUE.equals(packedCubicCache)||residualGain!=null||blendCandidateWeight!=null))
+                throw new IllegalArgumentException("Compiled unary requires explicit unary ablation and ordinary Pair2 evaluation");
             if(hybridBase!=null&&(residualGain!=null||blendCandidateWeight!=null||gatedCache||cubicCache))
                 throw new IllegalArgumentException("Hybrid requires explicit correction scaling and canonical or delta evaluation");
         }
         boolean packedCubicCacheEnabled() { return Boolean.TRUE.equals(packedCubicCache); }
+        boolean compiledUnaryEnabled() { return Boolean.TRUE.equals(compiledUnary); }
     }
     static com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model loadHybridBase(Model spec) throws Exception {
         if(spec.hybridBase()==null)return null;
@@ -144,8 +148,14 @@ public final class BrnSuccessorMatch {
             }
             SearchEvaluation evaluation;
             var hybridBase=loadHybridBase(spec);
+            com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model compiledUnary=null;
             if(spec.gatedCache()&&spec.cubicCache())throw new IllegalArgumentException("Choose one cache");
-            if(spec.packedCubicCacheEnabled()) {
+            if(spec.compiledUnaryEnabled()) {
+                if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("Unary residual component required");
+                compiledUnary=com.ohinteractive.seedv6.core.brnpair2.BrnUnaryResearchCompiler.compile(
+                        hybridBase==null?com.ohinteractive.seedv6.core.brnnext.BrnNextBase.model():hybridBase,n.model());
+                evaluation=SearchEvaluation.brnPair2(compiledUnary);
+            } else if(spec.packedCubicCacheEnabled()) {
                 if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("Packed cubic requires a frozen correction");
                 evaluation=hybridBase==null?SearchEvaluation.brnCubicPackedResearch(n.model())
                         :SearchEvaluation.brnCubicPackedHybridResearch(n.model(),hybridBase);
@@ -193,6 +203,13 @@ public final class BrnSuccessorMatch {
             }
             if(spec.cubicDeltaCache())modelBinding.put("cubicDeltaCache","polynomial-period64-canonical-rounding-guard-v1");
             if(spec.packedCubicCacheEnabled())modelBinding.put("packedCubicCache","packed-polynomial-period64-canonical-rounding-guard-v1");
+            if(compiledUnary!=null) {
+                var compiledBytes=new java.io.ByteArrayOutputStream();
+                com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.writeModel(compiledUnary,compiledBytes);
+                modelBinding.put("compiledUnary",Map.of("kind","brn-unary-compiled-v1",
+                        "compiledNetworkSha256",HexFormat.of().formatHex(DataFiles.digest().digest(compiledBytes.toByteArray())),
+                        "payloadBytes",compiledBytes.size(),"numericalLimit","Algebraically equivalent; binary64 summation order changes, actual score/search oracles required"));
+            }
             if(spec.gatedDeltaCache())modelBinding.put("gatedDeltaCache","period64-canonical-rounding-guard-v1");
             if(model instanceof NetworkModel.BrnNext n && n.model().architecture().frozenBase()) {
                 modelBinding.put("nativeResidualCache",true);

@@ -114,6 +114,10 @@ continued-base/nonlinear compositions. The research frontier is evidence-driven:
    ablation. It combines two post-reference training streams; matched additional
    BRE training/data diversity may remain a human gate before causal conclusions.
    No new substantive training or human gate is admitted yet.
+   If hybrids show value, investigate fast additive ablations: unary terms fit the
+   existing BRE table; constant GATE contains four additional physical pair relations
+   and cannot be silently folded into the unchanged table. Static finding in
+   WAVE4-ASSESSMENT; no compiled-control performance claim.
 
 Before launch, inspect active Java research processes and preserved receipts. Never
 start a competing runner, change frozen plans/runtimes, enlarge closed protocols or
@@ -126,8 +130,10 @@ and bounded resources after the preserved runtime mislaunch below.
 Resources: one concurrent game, one worker/engine, no pondering,64MiB TT,768MiB
 JVM,ActiveProcessorCount1,BelowNormal,12games/240seconds per batch (finish current
 game). No concurrent heavy build/probe/training. The G4 pause sentinel was preserved
-at raw/wave4/g4-completed-pause.txt and removed after audit/admission. No current
-pause sentinel. Substantive training remains exclusively the owner's GUI action.
+at raw/wave4/g4-completed-pause.txt and removed after audit/admission. An intentional temporary
+pause sentinel is present to stop the hybrid loop at its next batch boundary while
+the research-only compiled unary control is built/tested. Resume the unchanged
+node-v2/clock plans after removing this owned sentinel, using fresh log prefixes. Substantive training remains exclusively the owner's GUI action.
 
 ## Completed W4 evidence and interpretation
 
@@ -235,3 +241,5 @@ consolidation removes superseded current-action prose, not accepted evidence.
 Turn completion, implementation completion and research acceptance are distinct.
 No statistically credible positive strength improvement or useful-expression
 causation has yet been established. Continue at the active frontier above.
+
+Pending implementation: research-only unary-to-BRE table compilation and explicit model/runtime binding, plus targeted tests and actual oracles. Compiled with18 passing targeted tests; actual-model oracles remain pending. Do not use it in matches until verified. Existing hybrid games retain their frozen c396945 runtime. No application build bump is expected for this research-only control.

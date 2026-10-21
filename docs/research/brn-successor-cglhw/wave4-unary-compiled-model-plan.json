@@ -1,0 +1,134 @@
+{
+  "id": "wave4-unary-compiled-model-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/Gen32",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "gatedCache": false,
+      "cubicCache": false,
+      "gatedDeltaCache": false,
+      "cubicDeltaCache": false
+    },
+    {
+      "name": "W4-RESGATE-LR001-average8-half-on-BRE001-half-unary-compiled",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+      "checkpoint": "g000064-s000524288-bd455415c07f597ff1d815ef3fef0994f6900d761789574e971ef5a347c2ad8d",
+      "networkSha256": "c455f68516c22d34033b29da34f6eb4d80d07a8e698507fbe3ee240a0dc25f62",
+      "gatedCache": false,
+      "cubicCache": false,
+      "correctionScale": 0.5,
+      "correctionAblation": "unary",
+      "averagedInputs": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000057-s000466944-37e09c1514e7f7eea53d4c2ff45ac4feca53def28cf6b9cd972ca8aa27134461",
+          "networkSha256": "a56a22643735c9f206541d80a837214a8bb8ba628a0a706c211effb9c22251ca"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000058-s000475136-f84e57c3f0c807f08ec47b82497a01d979d9c19e278baa5bb8a2f81ccba972eb",
+          "networkSha256": "95a87be6a11888ea4bfc2667e7aec567a25650a24cf5f551a3408d0544e111af"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000059-s000483328-2e5fbb383a1e0265c3241285fd5d31edbf5a85ab3a37611b3e55774551474206",
+          "networkSha256": "d46ecbc8463b405b49099e209be5edff6f96f37179168a08b0d509be9b1c30b0"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000060-s000491520-06ce954eca44d10a18bfed8faa1fe8ed789d6225b6629c14b02b98163c6df7c2",
+          "networkSha256": "5536a68fe958f04f6df4edfd4cc73c87bfccdd2ca895598de2617e35935ba172"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000061-s000499712-3a71061f3e42458b3cc8976c3fe84faff76168a912f0aab59e8c9e23e1fa92f8",
+          "networkSha256": "207c9ebfdeb6f8d12ebc35585f4eca0c0d9b170cfd30f94a6c0dda13ec36329d"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000062-s000507904-fb855ccc2ddc7984938ea1712dfb35db1c7fc152d44072bb4167fed7e5ac7fd6",
+          "networkSha256": "cc816bb69f256bd0db62201c695a592ca68cef70f4d927b3bdffb9acb06b683d"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000063-s000516096-363b208509b37269f3978ee180cc786184ab620bfd79fe7ae501cca6b3df9207",
+          "networkSha256": "b26f0b79c9a48e63fdf661e9e661453f416859d8948617a84f82563e3175a0ab"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+          "checkpoint": "g000064-s000524288-bd455415c07f597ff1d815ef3fef0994f6900d761789574e971ef5a347c2ad8d",
+          "networkSha256": "c455f68516c22d34033b29da34f6eb4d80d07a8e698507fbe3ee240a0dc25f62"
+        }
+      ],
+      "hybridBase": {
+        "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g64",
+        "checkpoint": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+        "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+        "changeScale": 0.5
+      },
+      "compiledUnary": true
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-average8-half-on-BRE001-half-unary-compiled",
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+      "checkpoint": "g000064-s000524288-452b71fa8b42d6da3a6ec06e6991d08ff4adcd4cc7d4a88a7c8228fc5c36b75f",
+      "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc",
+      "gatedCache": false,
+      "cubicCache": false,
+      "correctionScale": 0.5,
+      "correctionAblation": "unary",
+      "averagedInputs": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000057-s000466944-871123d7fd3a2c29c4350c2ec747001e1e7c9c40031c4bb420e65fab0bb03cc6",
+          "networkSha256": "6d6e48d85dadb6ab9f0c081eb7a5e3209cc3cd1f19017198631bd5a24c6e01a1"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000058-s000475136-6fc67dc7d31c411b3ad14ff7702be3dfff2665beef505c85df878bbfb0451d5c",
+          "networkSha256": "11600436ab1372ff9d2200d393be3545507083ebdde83e6ee41fc55c2d4d2c34"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000059-s000483328-e918443a5f9149e2c3a46f794862df7697148ca6627a4e32793fc73a863a940a",
+          "networkSha256": "cbe63893c5784ded1ef2656ecf056d7724808bbe9101e50f254ffcc7455e5cef"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000060-s000491520-7a22fcae6e75af5d6e2d9cd3aa2091ff630a55f9d73627e89a75e1b236c552d7",
+          "networkSha256": "d05023a9ec6d6b8e231ef23a1ea8efbcf1975e3faba2be7238d56e4eb36ae8bb"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000061-s000499712-6bab9761e1a8db70ea22587f4075324e0366f849851ce06ce2559d9b7308bdbf",
+          "networkSha256": "b2762f8dccf2d759b89660640c66988fff31f4e3d4cfdfe1929d5d52d553e702"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000062-s000507904-72900694c054f80ec7fa67ccb4f21474e4c589378a9ae3944b1f3adaa1ba8b23",
+          "networkSha256": "fc82a6c7d185bb82b93117a45a39cbd71489f30087ad4a531b5107a04ae0c258"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000063-s000516096-3f2c7a050f1b185025eeb55a0ef44b7e31c133c30f6ece8e338c91813a1a4902",
+          "networkSha256": "0c1787f3b217e4175a065789ef6228190ed315e6bf0947998464d78302abd2fc"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESCUBIC-LR001",
+          "checkpoint": "g000064-s000524288-452b71fa8b42d6da3a6ec06e6991d08ff4adcd4cc7d4a88a7c8228fc5c36b75f",
+          "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc"
+        }
+      ],
+      "hybridBase": {
+        "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g64",
+        "checkpoint": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+        "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+        "changeScale": 0.5
+      },
+      "compiledUnary": true
+    }
+  ],
+  "purpose": "Strong additive ablation control using the same learned unary terms and continued base at ordinary compiled BRE cost. Algebraically equivalent, changed summation order; actual score/search validation required. No games admitted."
+}

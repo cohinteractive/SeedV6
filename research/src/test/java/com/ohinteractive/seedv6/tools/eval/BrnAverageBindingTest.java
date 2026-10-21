@@ -68,6 +68,15 @@ class BrnAverageBindingTest {
     private BrnSuccessorMatch.Model spec(Map<String,Object> map) {
         return DataFiles.JSON.fromJson(DataFiles.JSON.toJson(map),BrnSuccessorMatch.Model.class);
     }
+    @Test void compiledUnaryRequiresExplicitAblationAndExclusiveEvaluationMode() {
+        var map=new HashMap<String,Object>();map.put("compiledUnary",true);
+        assertThrows(RuntimeException.class,()->spec(map));
+        map.put("correctionAblation","unary");assertTrue(spec(map).compiledUnaryEnabled());
+        for(String mode:List.of("gatedCache","cubicCache","gatedDeltaCache","cubicDeltaCache","packedCubicCache")) {
+            map.put(mode,true);assertThrows(RuntimeException.class,()->spec(map));map.remove(mode);
+        }
+        map.put("correctionAblation","constant-gates");assertThrows(RuntimeException.class,()->spec(map));
+    }
     @Test void hybridBaseRequiresItsOwnVerifiedIdentityAndPreservesItsOptimizer() throws Exception {
         Path root=temporary.resolve("base");CheckpointManifest manifest;
         try(var store=new CheckpointStore(root,TrainingArchitecture.BRN_PAIR2)) {

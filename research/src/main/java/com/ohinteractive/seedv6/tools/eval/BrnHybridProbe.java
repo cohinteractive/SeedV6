@@ -24,12 +24,19 @@ public final class BrnHybridProbe {
             var model=BrnSuccessorVariants.correction(original,spec.correctionScale()==null?1:spec.correctionScale(),
                     spec.correctionAblation(),spec.constantGates());
             var base=BrnSuccessorMatch.loadHybridBase(spec);var hybrid=model.newResearchWorkspace(base);
+            var compiled=spec.compiledUnaryEnabled()?com.ohinteractive.seedv6.core.brnpair2.BrnUnaryResearchCompiler.compile(base,model):null;
+            var compiledWorkspace=compiled==null?null:compiled.newWorkspace();
             var correction=model.newWorkspace();var gen32=BrnNextBase.model().newWorkspace();var replacement=base.newWorkspace();
-            predictors.add(new Predictor(spec.name(),b->model.rawPawns(b,hybrid),
+            predictors.add(new Predictor(spec.name(),b->compiledWorkspace==null?model.rawPawns(b,hybrid):compiledWorkspace.evaluatePawns(b),
                     b->replacement.evaluatePawns(b)+model.rawPawns(b,correction)-gen32.evaluatePawns(b)));
             var bytes=new ByteArrayOutputStream();BrnNextCodec.writeModel(model,bytes);
             var binding=new LinkedHashMap<String,Object>();binding.put("spec",spec);
             binding.put("hybrid",BrnSuccessorMatch.hybridBinding(spec,base,HexFormat.of().formatHex(DataFiles.digest().digest(bytes.toByteArray()))));
+            if(compiled!=null) {
+                var encoded=new ByteArrayOutputStream();com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.writeModel(compiled,encoded);
+                binding.put("compiledUnary",Map.of("kind","brn-unary-compiled-v1",
+                        "compiledNetworkSha256",HexFormat.of().formatHex(DataFiles.digest().digest(encoded.toByteArray()))));
+            }
             bindings.add(binding);
         }
         if(predictors.isEmpty())throw new IllegalArgumentException("Explicit hybrid specifications required");

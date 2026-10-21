@@ -1,0 +1,32 @@
+{
+  "id": "wave4-unary-compiled-implementation-validation-v1",
+  "tests": [
+    {
+      "suite": "com.ohinteractive.seedv6.tools.eval.BrnAverageBindingTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.tools.eval.BrnSuccessorVariantsTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.tools.eval.BrnUnaryResearchCompilerTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "rawEvidence": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\unary-compiled-tests-01",
+  "buildLog": "raw/wave4/unary-compiled-validation-01.log",
+  "scope": "Research module compiler/loader/probes only; core/application dependencies unchanged. Build remains53. Ordinary Pair2 evaluation, no runtime extra unary traversal or new optimizer. Explicit flag requires unary ablation and exclusive evaluation mode; runtime capabilities fail closed.",
+  "numericalLimit": "Algebraically equivalent; binary64 table summation order differs. Actual trained score/search and prediction oracles pending. No universal bit-identical claim.",
+  "preservation": "Tests preserve original base bytes and require non-unary/unbound/overflow compilation rejection. All64 squares x12 categories x2 perspectives covered.",
+  "otherValidation": "Two existing Python process-summary classification tests pass; no native GUI packaging/acceptance is required or claimed for this research-only control."
+}

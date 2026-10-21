@@ -33,6 +33,8 @@ try {
                 -and @($binding.modelFeatures) -notcontains 'brn-hybrid-raw-v1'){throw 'Plan requires hybrid capability'}
         if(@($plan.models | Where-Object {$_.packedCubicCache -eq $true}).Count -ne 0 `
                 -and @($binding.modelFeatures) -notcontains 'brn-cubic-packed-v1'){throw 'Plan requires packed capability'}
+        if(@($plan.models | Where-Object {$_.compiledUnary -eq $true}).Count -ne 0 `
+                -and @($binding.modelFeatures) -notcontains 'brn-unary-compiled-v1'){throw 'Plan requires compiled unary capability'}
     }
     foreach($jar in $binding.jars.PSObject.Properties){
         if((Get-FileHash -LiteralPath (Join-Path $binding.runtime $jar.Name)).Hash.ToLowerInvariant() -ne $jar.Value){throw 'Frozen runtime hash changed'}

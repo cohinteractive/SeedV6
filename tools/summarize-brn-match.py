@@ -47,6 +47,11 @@ def summarize(plan_file, receipts, analysis_file, runtime_file, output):
         if spec.get("packedCubicCache"):
             assert "brn-cubic-packed-v1" in runtime["modelFeatures"]
             assert bound["packedCubicCache"] == "packed-polynomial-period64-canonical-rounding-guard-v1"
+        if spec.get("compiledUnary"):
+            assert "brn-unary-compiled-v1" in runtime["modelFeatures"]
+            assert spec["correctionAblation"] == "unary"
+            assert bound["compiledUnary"]["kind"] == "brn-unary-compiled-v1"
+            assert len(bound["compiledUnary"]["compiledNetworkSha256"]) == 64
         if spec.get("hybridBase") is not None:
             assert "brn-hybrid-raw-v1" in runtime["modelFeatures"]
             hybrid = bound["hybrid"]
