@@ -103,7 +103,7 @@ continued-base/nonlinear compositions. The research frontier is evidence-driven:
 3. **Active:** prospectively fixed96 hybrid games in `wave4-hybrid-direct-admission.json`:
    full GATE001, full CUBIC001 and packed rank4 CUBIC001 on the same BRE001 half
    base, each16 games at131072 nodes and16 at100ms. Use ONLY
-   `wave4-packed-core-runtime.json`. Node-v2 then clock, four bounded batches each.
+   `wave4-packed-core-runtime.json`. Node-v2 is closed48 games/7366 legal moves; clock48 is active, four bounded batches.
    The original node plan was rejected before model/game execution for two positive
    budgets; preserve it and use `wave4-hybrid-direct-node-v2-plan.json` under
    `wave4-hybrid-direct-budget-amendment.json`. Same intended131072-node limit and
@@ -130,10 +130,8 @@ and bounded resources after the preserved runtime mislaunch below.
 Resources: one concurrent game, one worker/engine, no pondering,64MiB TT,768MiB
 JVM,ActiveProcessorCount1,BelowNormal,12games/240seconds per batch (finish current
 game). No concurrent heavy build/probe/training. The G4 pause sentinel was preserved
-at raw/wave4/g4-completed-pause.txt and removed after audit/admission. An intentional temporary
-pause sentinel is present to stop the hybrid loop at its next batch boundary while
-the research-only compiled unary control is built/tested. Resume the unchanged
-node-v2/clock plans after removing this owned sentinel, using fresh log prefixes. Substantive training remains exclusively the owner's GUI action.
+at raw/wave4/g4-completed-pause.txt and removed after audit/admission. No pause sentinel is currently present; the temporary unary-build pause is preserved
+at raw/wave4/unary-build-pause-01.txt. No game was interrupted. Substantive training remains exclusively the owner's GUI action.
 
 ## Completed W4 evidence and interpretation
 
@@ -242,4 +240,6 @@ Turn completion, implementation completion and research acceptance are distinct.
 No statistically credible positive strength improvement or useful-expression
 causation has yet been established. Continue at the active frontier above.
 
-Pending implementation: research-only unary-to-BRE table compilation and explicit model/runtime binding, plus targeted tests and actual oracles. Compiled with18 passing targeted tests; actual-model oracles remain pending. Do not use it in matches until verified. Existing hybrid games retain their frozen c396945 runtime. No application build bump is expected for this research-only control.
+Compiled unary controls are implemented in2d04ae8/build53 (research-only, no bump) and pass18 targeted tests plus actual2x6333-position/48-root-pass score/search oracles,4096-row prediction reproduction and32 legal smoke plies. See wave4-unary-compiled-readiness.json. Their payload/cache size is ordinary BRE, and they save35%/26% search time against evaluating the same unary ablation with the residual caches. No control strength games admitted yet.
+
+Hybrid node-v2 scores against the identical BRE001 base: GATE71.875% (8/7/1),CUBIC59.375% (8/3/5),packed rank4 CUBIC50% (5/6/5). Small selected development evidence, not a confirmation. Complete the fixed clock48 before selecting follow-up comparisons.

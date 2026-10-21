@@ -1,0 +1,256 @@
+{
+  "id": "wave4-unary-compiled-readiness-v1",
+  "runtime": "wave4-unary-compiled-runtime.json",
+  "sourceCommit": "2d04ae8",
+  "build": 53,
+  "oracles": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\unary-compiled-cache-01.json",
+      "sha256": "dbabed0180c53095f9c08dd6f8a922ebfbb25ba35fe8a72783957bd2c8be89b9",
+      "candidate": "W4-RESGATE-LR001-average8-half-on-BRE001-half-unary-compiled",
+      "compiled": {
+        "immutablePrimitiveBytes": 799688,
+        "kind": "brn-unary-compiled-v1",
+        "compiledNetworkSha256": "318dc949e58db189963c710a5d282840adb72ba20e864ad686be06686c172f6d",
+        "payloadBytes": 795032
+      },
+      "effectiveCorrectionSha256": "be729935fc9c4b5cdef87c71ee13779ba63719947d894a02b43d044990c22d0d",
+      "hybrid": {
+        "input": {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g64",
+          "checkpoint": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+          "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+          "changeScale": 0.5
+        },
+        "originalManifest": {
+          "id": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+          "generation": 64,
+          "optimizerStep": 2277376,
+          "trainingDepth": 4,
+          "parentId": "g000063-s002269184-442287932c112c798471b208a5c8ffffe59420aa116db7134d53f8ab53740cd6",
+          "networkBytes": 795032,
+          "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+          "trainingBytes": 2731424,
+          "trainingSha256": "19aa0beffaf653c5b8ba4dca89f5b4b4a3f0eb31440e297acf7f0969b0485502",
+          "architecture": "BRN_PAIR2"
+        },
+        "effectiveBaseSha256": "50a20bb63a79416690f7695e6b1bef5d13fe99c5190277b27de76e5e69cbcfc3",
+        "effectiveCorrectionSha256": "be729935fc9c4b5cdef87c71ee13779ba63719947d894a02b43d044990c22d0d",
+        "functionSha256": "ec0c549c48d913b39cabf268c7f751446e8a9c98c55461a03d6d8ce5d7c42cd2",
+        "identityEncoding": "brn-hybrid-raw-v1\n50a20bb63a79416690f7695e6b1bef5d13fe99c5190277b27de76e5e69cbcfc3\nbe729935fc9c4b5cdef87c71ee13779ba63719947d894a02b43d044990c22d0d\n",
+        "mapping": "Compiled continued base + scaled nonlinear correction; material + .25 * (raw-material), one rounding; not a trainable combined checkpoint"
+      },
+      "positions": 6333,
+      "integerDifferences": 0,
+      "maximumRawError": 1.7319479184152442e-14,
+      "maximumFreshError": 1.6431300764452317e-14,
+      "rootPasses": 48,
+      "implementations": 3,
+      "medianPairedSearchCompiledToDense": 0.6477655115898182,
+      "transitionLatency": [
+        {
+          "evaluationsPerPass": 50000,
+          "name": "GATE-full",
+          "medianNanos": 1605.9,
+          "passNanos": [
+            80295000,
+            79544499,
+            82132500,
+            76687700,
+            78149000,
+            80816300,
+            82620400
+          ]
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "name": "GATE-cache",
+          "medianNanos": 147.684,
+          "passNanos": [
+            7181800,
+            7055600,
+            7516101,
+            7384200,
+            8096999,
+            8180800,
+            6984800
+          ]
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "name": "HybridBase",
+          "medianNanos": 141.238,
+          "passNanos": [
+            7464600,
+            6972000,
+            7255999,
+            6898699,
+            7327500,
+            7061900,
+            6995000
+          ]
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "name": "GATE-same-base-dense",
+          "medianNanos": 402.87,
+          "passNanos": [
+            20517900,
+            19872999,
+            20403300,
+            20665800,
+            20143500,
+            18639701,
+            18662799
+          ]
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "name": "GATE-original-base-cache",
+          "medianNanos": 387.852,
+          "passNanos": [
+            18957099,
+            21109199,
+            21961101,
+            19392600,
+            18719401,
+            18610400,
+            22060700
+          ]
+        }
+      ],
+      "workspacePrimitiveBytes": 2920
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\unary-compiled-cache-02.json",
+      "sha256": "8895a08a2f5205de9d47ae0bfb7cf0b2738b7ccc002ccd8b1f5070e554487a86",
+      "candidate": "W4-RESCUBIC-LR001-average8-half-on-BRE001-half-unary-compiled",
+      "compiled": {
+        "kind": "brn-unary-compiled-v1",
+        "compiledNetworkSha256": "59422739274b65154a3dfb97e80f9d1d31a17ebfc3a47c9b0055c4ed1bb19a1f",
+        "payloadBytes": 795032,
+        "immutablePrimitiveBytes": 799688
+      },
+      "effectiveCorrectionSha256": "e2dd93a3742b7b588b63dbcf1d9634319a0ab6a90ed63c987fb64b7c530405d2",
+      "hybrid": {
+        "input": {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g64",
+          "checkpoint": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+          "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+          "changeScale": 0.5
+        },
+        "originalManifest": {
+          "id": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+          "generation": 64,
+          "optimizerStep": 2277376,
+          "trainingDepth": 4,
+          "parentId": "g000063-s002269184-442287932c112c798471b208a5c8ffffe59420aa116db7134d53f8ab53740cd6",
+          "networkBytes": 795032,
+          "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+          "trainingBytes": 2731424,
+          "trainingSha256": "19aa0beffaf653c5b8ba4dca89f5b4b4a3f0eb31440e297acf7f0969b0485502",
+          "architecture": "BRN_PAIR2"
+        },
+        "effectiveBaseSha256": "50a20bb63a79416690f7695e6b1bef5d13fe99c5190277b27de76e5e69cbcfc3",
+        "effectiveCorrectionSha256": "e2dd93a3742b7b588b63dbcf1d9634319a0ab6a90ed63c987fb64b7c530405d2",
+        "functionSha256": "a5c72923dcb91be326025190d1e26190f4993c4ea65aa91061639901a1b3b352",
+        "identityEncoding": "brn-hybrid-raw-v1\n50a20bb63a79416690f7695e6b1bef5d13fe99c5190277b27de76e5e69cbcfc3\ne2dd93a3742b7b588b63dbcf1d9634319a0ab6a90ed63c987fb64b7c530405d2\n",
+        "mapping": "Compiled continued base + scaled nonlinear correction; material + .25 * (raw-material), one rounding; not a trainable combined checkpoint"
+      },
+      "positions": 6333,
+      "integerDifferences": 0,
+      "maximumRawError": 2.220446049250313e-14,
+      "maximumFreshError": 2.3314683517128287e-14,
+      "rootPasses": 48,
+      "implementations": 3,
+      "medianPairedSearchCompiledToDense": 0.7386513129796377,
+      "transitionLatency": [
+        {
+          "medianNanos": 820.32998,
+          "passNanos": [
+            43767400,
+            41016499,
+            42563000,
+            40490500,
+            40643600,
+            41519900,
+            40771500
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "CUBIC-full"
+        },
+        {
+          "medianNanos": 136.7,
+          "passNanos": [
+            7022800,
+            7096600,
+            6654200,
+            6660001,
+            6587400,
+            7241200,
+            6835000
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "CUBIC-cache"
+        },
+        {
+          "medianNanos": 127.87798,
+          "passNanos": [
+            9484901,
+            7061800,
+            6272900,
+            6393899,
+            6299400,
+            6389200,
+            6615800
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "HybridBase"
+        },
+        {
+          "medianNanos": 294.55198,
+          "passNanos": [
+            19354900,
+            20565101,
+            14727599,
+            13803600,
+            15660000,
+            14710500,
+            13687999
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "CUBIC-same-base-dense"
+        },
+        {
+          "medianNanos": 281.98402,
+          "passNanos": [
+            15331900,
+            15087500,
+            15070799,
+            13910400,
+            13891601,
+            14099201,
+            13993101
+          ],
+          "evaluationsPerPass": 50000,
+          "name": "CUBIC-original-base-cache"
+        }
+      ],
+      "workspacePrimitiveBytes": 2920
+    }
+  ],
+  "predictionVerification": "wave4-unary-compiled-prediction-verification.json",
+  "maximumPriorCanonicalPredictionError": 1.9984014443252818e-14,
+  "maximumIndependentCEError": 1.2212453270876722e-15,
+  "smoke": {
+    "plan": "wave4-unary-compiled-smoke-plan.json",
+    "analysis": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\unary-compiled-smoke-analysis.json",
+    "sha256": "2b75d4eb7edbb5f9c102ecd194e962919e70961779b3f8bcf69c0ccf3d798fe6",
+    "bindingsSha256": "52683c790eb1baa5698ae3cfbf7914735e9f21415dc867a05f7e74c9dceda2e6",
+    "legalPlies": 32,
+    "intentionalCaps": 4,
+    "strengthGames": 0
+  },
+  "capabilityNegative": "raw/wave4/unary-capability-guard-01.txt",
+  "conclusion": "Both actual unary controls preserve tested scores/searches and prior predictions within roundoff at ordinary BRE payload/cache size.35%/26% search savings versus slow residual-cache evaluation of the identical ablation. Ready for separately admitted additive-control games. Not retrained additive models, universal floating-point equality or strength evidence."
+}
