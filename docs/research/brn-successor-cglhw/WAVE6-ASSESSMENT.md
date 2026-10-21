@@ -229,3 +229,36 @@ is eligible for consideration as an optimized control, but a BRE-only match is
 deferred until it answers a useful architectural question; fitting eligibility
 alone does not justify expanding the tournament. Continue the admitted BRE and
 frozen-reference comparisons before choosing the next research unit.
+
+## Continued BRE screen and targeted follow-up
+
+`wave6-bre-clock-results.json` closes48 games/6938 independently replayed legal
+moves, without failure/cap/fallback. Against continued BRE at200ms:
+
+| Arm | W/D/L | Score | Descriptive95 interval | Paired-root NPS/BRE |
+| --- | --- | --- | --- | --- |
+| Q16 | 7/6/3 | 62.5% | 43.980-81.020% | .79123 |
+| C16 | 6/3/7 | 46.875% | 21.621-72.129% | .75432 |
+| C4 | 8/1/7 | 53.125% | 23.208-83.042% | .80220 |
+
+Eight shared reversed-colour pairs per arm. Bounded and within-plan simultaneous
+intervals are much wider; all conclusions remain development-only. Q16 has the
+best point score, but common-opponent contrasts do not establish architectural
+causation or direct head-to-head superiority. BRE retains an important throughput
+advantage; different inherited data and optimizer histories remain explicit.
+
+Before seeing the frozen-reference outcomes, admit a separate fixed80-game
+diagnostic in `wave6-followup-admission.json`:48 equal-node games for all three
+arms versus BRE on the same eight roots at262144 nodes, plus16 equal-node and16
+equal-time games of C4 versus its own unadapted degree2 ablation. Finish the
+original208 games and verify the actual masked-C4 cache/search oracle first.
+This is not an extension of a closed experiment to seek significance.
+
+The first comparison addresses the measured20-25% throughput deficit. The second
+asks whether compact C4's current function needs its cubic heads; rank4 capacity
+may make the degree contribution differ from rank16. Retain all weights except
+the explicit cubic-head mask and the same cubic-cache implementation. This is not
+an adapted quadratic control or proof of architectural value. A possible trained
+compact-degree control, a different correction, or no further polynomial training
+must be selected from the combined evidence, not assumed in advance. No G7 gate
+or new implementation is yet admitted. The frozen-reference64 programme is active.

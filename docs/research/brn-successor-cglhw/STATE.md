@@ -30,8 +30,11 @@ descriptive95 39.8-66.5%,5184 legal moves; inconclusive). Degree-clock32 is clos
 (C16 39.0625%,9/7/16; descriptive95 22.95-55.17%,4475 legal moves).
 Compact-node16/compact-clock16 are closed (C4 versus C16:50%/65.625%; both uncertain).
 The fixed last-eight average fails the residual eligibility criterion; only BRE
-passes, with no average match selected. BRE-clock48 is active, then reference-clock64 per the
-fixed208-game admission. Use unique bounded launch logs and verify actual receipt
+passes, with no average match selected. BRE-clock48 is closed (Q16/C16/C4 versus BRE:
+62.5%/46.875%/53.125%, all uncertain); reference-clock64 is active under the
+fixed208-game admission. After its closure, the separate80-game cost/compact-degree
+follow-up is admitted, gated on actual masked-C4 cache/search parity. See
+wave6-followup-admission.json. Use unique bounded launch logs and verify actual receipt
 counts/processes before resuming. Fitting/cost/strata evidence is recorded in
 WAVE6-ASSESSMENT; no new architecture or human gate has yet been selected.
 

@@ -1,0 +1,46 @@
+{
+  "id": "wave6-cost-and-compact-degree-followup-v1",
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\wave6-degree-node-results.json": "241a8a108ef536558773ef4eb207e825998b78b484854b76bf9bb161690038cc",
+    "docs\\research\\brn-successor-cglhw\\wave6-degree-clock-results.json": "183dd66b5437fc6ab90ac1adb4d401369cc3db835e8f9ef0f936989a911480ed",
+    "docs\\research\\brn-successor-cglhw\\wave6-compact-node-results.json": "c8e583b003db6bf3715cf99dffe1107303125892d410d780e76e422c328bce9e",
+    "docs\\research\\brn-successor-cglhw\\wave6-compact-clock-results.json": "2c008bbdc96460875fa53dabd39f597b4c3e0cb7b7a1cc15b4338a7e5d4d7647",
+    "docs\\research\\brn-successor-cglhw\\wave6-bre-clock-results.json": "9347076b4cf5c59d118425d709fc1ff9484b7501fb45abf0a5973254b92fc13c"
+  },
+  "sourcePlan": "docs\\research\\brn-successor-cglhw\\wave6-bre-clock-plan.json",
+  "sourcePlanSha256": "dcdaa06e5bb33fcb0164825f6b956b43e734709e3bfc0bae82dfdf39eea16271",
+  "protocols": [
+    {
+      "label": "bre-node",
+      "plan": "docs\\research\\brn-successor-cglhw\\wave6-bre-node-plan.json",
+      "sha256": "75a6b35f2907507e3a65636af06d31002a90f2303c6fae67cb231966cbf50105",
+      "games": 48
+    },
+    {
+      "label": "compact-degree-node",
+      "plan": "docs\\research\\brn-successor-cglhw\\wave6-compact-degree-node-plan.json",
+      "sha256": "6ef071c4f13b8a46657ea58a5bce571066131b4ec2f7e24cad7b25ceafb7ef99",
+      "games": 16
+    },
+    {
+      "label": "compact-degree-clock",
+      "plan": "docs\\research\\brn-successor-cglhw\\wave6-compact-degree-clock-plan.json",
+      "sha256": "4286a9b71392ac1c09e5e9e88bbc8ce04e67337089c018f5a701387bb618b363",
+      "games": 16
+    }
+  ],
+  "totalGames": 80,
+  "runtime": "wave6-runtime.json",
+  "probePlan": "docs\\research\\brn-successor-cglhw\\wave6-compact-degree-model-plan.json",
+  "probePlanSha256": "81ad652674f685a611bdf309251eefd6c2121bd1c1354f77b009476609176e29",
+  "prerequisites": "Finish primary reference-clock64; pass actual masked-C4 cache/fresh-score/search oracle before ablation games. No competing workloads.",
+  "questions": [
+    "At262144 equal nodes on the same roots, does residual quality versus continued BRE differ from the completed200ms screen? All three arms retained, no point-score winner selected.",
+    "Does current C4 performance depend on its third-degree heads when retained weights and cubic-cache implementation stay fixed? C16 already has a trained degree control; compact capacity may change the role of degree3."
+  ],
+  "selection": "Latest128 and half learned change remain fixed. C4 selected for the compact-degree diagnostic from its measured cost advantage and completed compact tradeoff, not frozen-reference outcomes.",
+  "interpretation": "Unadapted C4 degree ablation tests current functional contribution, not optimal quadratic architecture or equal adaptation. Any training gate requires the combined evidence and explicit expected value.",
+  "stopping": "Complete fixed48+16+16 games unless correctness/resource failure; no significance-dependent extension. Original208-game admission remains separately closed and immutable.",
+  "statistics": "Development only, eight reused reversed-colour pairs each; descriptive and bounded pair intervals. No independent confirmation, causal throughput decomposition, or pooled score.",
+  "resources": "One game, one search worker, no pondering,64MiB TT,768MiB heap,ActiveProcessorCount1,BelowNormal;12games/240sec batches."
+}
