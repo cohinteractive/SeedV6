@@ -1,0 +1,64 @@
+{
+  "id": "wave4-hybrid-followup-admission-v1",
+  "createdUtc": "2026-10-21T00:49:35.129643+00:00",
+  "runtime": "wave4-constant-compiled-runtime.json",
+  "plans": [
+    {
+      "plan": "wave4-hybrid-followup-gate-constant-node-plan.json",
+      "sha256": "6290d75e783cd05fd9b1ef30e2d1affc98878b09227171a70234f36d5c10e6fa",
+      "games": 16,
+      "mode": "node"
+    },
+    {
+      "plan": "wave4-hybrid-followup-gate-constant-clock-plan.json",
+      "sha256": "5aa1ded1344cdb81c1be65d6dba0b5c29e7fc7ad94dcf27a08d352ee6fdf035f",
+      "games": 16,
+      "mode": "clock"
+    },
+    {
+      "plan": "wave4-hybrid-followup-cubic-quadratic-node-plan.json",
+      "sha256": "e1ab876c754e4d6c58da581dc1aacc6af3d719f46ead50bd7f96e8496883ff38",
+      "games": 16,
+      "mode": "node"
+    },
+    {
+      "plan": "wave4-hybrid-followup-cubic-unary-clock-plan.json",
+      "sha256": "d6029f4736a386f335f1ac4d5b485abb794f05aa9debc497b423d77c62732143",
+      "games": 16,
+      "mode": "clock"
+    },
+    {
+      "plan": "wave4-hybrid-followup-cubic-gen32-clock-plan.json",
+      "sha256": "574b9bc1d07956af1b41caf58e047fc02f9e76b89ddaa700bfd9b8475fb98f1a",
+      "games": 32,
+      "mode": "clock"
+    },
+    {
+      "plan": "wave4-hybrid-followup-cubic-bre003-clock-plan.json",
+      "sha256": "a2f8786bb7d850ab40109d2ae933c4f4759fbc59456fa2614d7a7a568acdd14e",
+      "games": 32,
+      "mode": "clock"
+    }
+  ],
+  "totalGames": 128,
+  "selectionEvidence": [
+    "wave4-hybrid-direct-node-results.json",
+    "wave4-hybrid-direct-clock-results.json"
+  ],
+  "selection": "Full CUBIC is the only hybrid with positive node and clock point scores against BRE001. Advance it to both frozen Gen32 and the other trained BRE rate on16 development pairs. Retain GATE for a conditional-value/cost diagnostic despite adverse clocks because its deeper-node score is promising. Do not advance rank4 pruning on cost alone; its current quality point scores are weaker.",
+  "questions": [
+    "GATE full versus efficiently compiled identical constant-gate ablation at nodes/time: does conditional gating earn its practical cost?",
+    "CUBIC full versus quadratic at equal nodes: does the cubic term add quality? The quadratic implementation is not cost optimized, so no quadratic-clock claim is admitted.",
+    "CUBIC full versus its learned unary ablation compiled at ordinary BRE cost: is benefit merely extra additive learning?",
+    "CUBIC hybrid versus frozen Gen32 and BRE003 at100ms on the16 primary development roots: does the signal transfer across comparator and openings?"
+  ],
+  "readiness": [
+    "wave4-hybrid-readiness.json",
+    "wave4-selected-hybrid-ablation-readiness.json",
+    "wave4-unary-compiled-readiness.json",
+    "wave4-constant-compiled-readiness.json"
+  ],
+  "resource": "One concurrent game,one worker per engine,no ponder,64MiB TT,768MiB JVM,ActiveProcessorCount1,BelowNormal;12games/240seconds per launch. Fixed budgets, legal replay, no favourable stopping. No training or owner-store writes.",
+  "interpretation": "Development selection and reused opening pools, not independent confirmation. Complete128 or investigate a genuine failure. Hybrid total optimization/data diversity remains confounded with one BRE64 stream; positive results may justify a consolidated matched-exposure human gate. No such gate is admitted yet.",
+  "sequence": "Node mechanism controls first, then their clocks/unary control, then the two external comparator clocks. Preserve all functions/runtime bindings. Both Gen32 and trained BRE remain mandatory targets."
+}

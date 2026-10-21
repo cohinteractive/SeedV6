@@ -1,4 +1,4 @@
-"""Compare compiled unary predictions with the previously evaluated canonical ablation.
+"""Compare compiled unary or constant-gate predictions with the prior canonical ablation.
 Usage: venv-python verify-brn-compiled-unary.py PLAN ACTUAL_DIRECTORY PRIOR_DIRECTORY NEW_REPORT
 """
 import hashlib
@@ -21,11 +21,18 @@ def verify(plan_path, actual_dir, prior_dir, output):
     assert {Path(k).resolve(): v for k, v in summary["inputs"].items()}[plan_path.resolve()] == digest(plan_path)
     models = plan["models"][1:]
     for model, binding in zip(models, summary["bindings"]):
-        assert model["compiledUnary"] and model["correctionAblation"] == "unary"
+        if model.get("compiledUnary"):
+            assert model["correctionAblation"] == "unary"
+            assert binding["compiledUnary"]["kind"] == "brn-unary-compiled-v1"
+        else:
+            assert model["compiledConstantGates"] and model["correctionAblation"] == "constant-gates"
+            compiled = binding["compiledConstantGates"]
+            assert compiled["kind"] == "brn-constant-gates-compiled-v1" and compiled["relations"] == 298
+            identity = "brn-constant-gates-compiled-v1\n" + compiled["foldedBaseSha256"] + "\n" + compiled["extraTablesSha256"] + "\n"
+            assert hashlib.sha256(identity.encode("utf-8")).hexdigest() == compiled["functionSha256"]
         assert model["name"].endswith("-compiled")
         for key, value in model.items():
             assert binding["spec"][key] == value
-        assert binding["compiledUnary"]["kind"] == "brn-unary-compiled-v1"
     assert len(summary["bindings"]) == len(models)
     spec = importlib.util.spec_from_file_location("metrics", Path(__file__).with_name("analyze-brn-residual-data.py"))
     metric = importlib.util.module_from_spec(spec)

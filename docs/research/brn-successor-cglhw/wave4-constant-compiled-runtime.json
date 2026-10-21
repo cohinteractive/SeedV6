@@ -1,0 +1,25 @@
+{
+  "id": "wave4-constant-compiled-runtime-v1",
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave4\\constant-compiled-runtime-01\\lib",
+  "createdUtc": "2026-10-21T00:45:13.919229+00:00",
+  "sourceCommit": "a6c4a9c044bf4d433cba46759a38eb10d15b1432",
+  "build": 54,
+  "modelFeatures": [
+    "brn-hybrid-raw-v1",
+    "brn-cubic-packed-v1",
+    "brn-unary-compiled-v1",
+    "brn-constant-gates-compiled-v1"
+  ],
+  "jars": {
+    "engine-core.jar": "9fab3ffdaee782b73f54b162f8029e925801c77be897ecdb468107295ef1a1ec",
+    "engine-training.jar": "ec58521d7d7769729f4afd2a4db1bb63298a006c8e308b27aa6548c027878a64",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "6b8cc09f3777176b68dd15ad794fc8db4f1c5c9763d467ad4a52ab8bb109e2ac",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "java": "C:/java/jdk-21/bin/java.exe",
+  "heapMiB": 768,
+  "activeProcessors": 1
+}

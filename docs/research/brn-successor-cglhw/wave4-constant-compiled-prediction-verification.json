@@ -1,0 +1,160 @@
+{
+  "id": "wave4-constant-compiled-model-v1-prediction-verification",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\wave4-constant-compiled-model-plan.json": "58044add11bf01de512161148568181f7a96a80b5f02d7f23abf59a96257a990",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\constant-compiled-prediction-01\\summary.json": "c3a942f3a0a0d298bf29ff2edd43e0a698b6630884e8ce4e23ef967e36166d38",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-ablation-prediction-01\\summary.json": "28fbca863ffce2824255348d20cc3a98150656808850b2f09667a55feaf2a02d",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\constant-compiled-prediction-01\\bt4-predictions.jsonl": "54600473d63e80915aefec700a11d62a84d0f67e3f0c0b31f53e799559c8b63c",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-ablation-prediction-01\\bt4-predictions.jsonl": "7319767f5f22d9e3dbd80725253eed3c8ba9a458140fec7b11ee4adda620259d",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\constant-compiled-prediction-01\\cp-predictions.jsonl": "32986b436d5675f2e5b9c587a671c41a5ee960d56fc605f2cfe1f59e82820b78",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\hybrid-ablation-prediction-01\\cp-predictions.jsonl": "7b7d77ac98e7a5b53315494217b8307a1eb43ac0d72c79ba6da3de9f9c778fcc"
+  },
+  "models": 1,
+  "positionsPerModel": 4096,
+  "maximumPriorCanonicalRawError": 1.3233858453531866e-13,
+  "maximumIndependentJavaCEError": 8.881784197001252e-16,
+  "metrics": [
+    {
+      "source": "bt4",
+      "model": "W4-RESGATE-LR001-average8-half-on-BRE001-half-constant-gates-compiled",
+      "partition": "fit",
+      "crossEntropy": 0.6526259881231841
+    },
+    {
+      "source": "bt4",
+      "model": "W4-RESGATE-LR001-average8-half-on-BRE001-half-constant-gates-compiled",
+      "partition": "evaluation",
+      "crossEntropy": 0.6328126677844335
+    },
+    {
+      "source": "cp",
+      "model": "W4-RESGATE-LR001-average8-half-on-BRE001-half-constant-gates-compiled",
+      "partition": "fit",
+      "crossEntropy": 0.6004676996948884
+    },
+    {
+      "source": "cp",
+      "model": "W4-RESGATE-LR001-average8-half-on-BRE001-half-constant-gates-compiled",
+      "partition": "evaluation",
+      "crossEntropy": 0.5913849941637513
+    }
+  ],
+  "bindings": [
+    {
+      "spec": {
+        "name": "W4-RESGATE-LR001-average8-half-on-BRE001-half-constant-gates-compiled",
+        "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+        "checkpoint": "g000064-s000524288-bd455415c07f597ff1d815ef3fef0994f6900d761789574e971ef5a347c2ad8d",
+        "networkSha256": "c455f68516c22d34033b29da34f6eb4d80d07a8e698507fbe3ee240a0dc25f62",
+        "gatedCache": false,
+        "cubicCache": false,
+        "correctionScale": 0.5,
+        "correctionAblation": "constant-gates",
+        "constantGates": [
+          0.3867703555687761,
+          0.1658689896720921,
+          0.16805278784869176,
+          0.2793078669104414
+        ],
+        "gatedDeltaCache": false,
+        "cubicDeltaCache": false,
+        "averagedInputs": [
+          {
+            "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+            "checkpoint": "g000057-s000466944-37e09c1514e7f7eea53d4c2ff45ac4feca53def28cf6b9cd972ca8aa27134461",
+            "networkSha256": "a56a22643735c9f206541d80a837214a8bb8ba628a0a706c211effb9c22251ca"
+          },
+          {
+            "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+            "checkpoint": "g000058-s000475136-f84e57c3f0c807f08ec47b82497a01d979d9c19e278baa5bb8a2f81ccba972eb",
+            "networkSha256": "95a87be6a11888ea4bfc2667e7aec567a25650a24cf5f551a3408d0544e111af"
+          },
+          {
+            "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+            "checkpoint": "g000059-s000483328-2e5fbb383a1e0265c3241285fd5d31edbf5a85ab3a37611b3e55774551474206",
+            "networkSha256": "d46ecbc8463b405b49099e209be5edff6f96f37179168a08b0d509be9b1c30b0"
+          },
+          {
+            "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+            "checkpoint": "g000060-s000491520-06ce954eca44d10a18bfed8faa1fe8ed789d6225b6629c14b02b98163c6df7c2",
+            "networkSha256": "5536a68fe958f04f6df4edfd4cc73c87bfccdd2ca895598de2617e35935ba172"
+          },
+          {
+            "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+            "checkpoint": "g000061-s000499712-3a71061f3e42458b3cc8976c3fe84faff76168a912f0aab59e8c9e23e1fa92f8",
+            "networkSha256": "207c9ebfdeb6f8d12ebc35585f4eca0c0d9b170cfd30f94a6c0dda13ec36329d"
+          },
+          {
+            "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+            "checkpoint": "g000062-s000507904-fb855ccc2ddc7984938ea1712dfb35db1c7fc152d44072bb4167fed7e5ac7fd6",
+            "networkSha256": "cc816bb69f256bd0db62201c695a592ca68cef70f4d927b3bdffb9acb06b683d"
+          },
+          {
+            "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+            "checkpoint": "g000063-s000516096-363b208509b37269f3978ee180cc786184ab620bfd79fe7ae501cca6b3df9207",
+            "networkSha256": "b26f0b79c9a48e63fdf661e9e661453f416859d8948617a84f82563e3175a0ab"
+          },
+          {
+            "root": "docs/research/brn-successor-cglhw/raw/wave4/average-inputs-01/W4-RESGATE-LR001",
+            "checkpoint": "g000064-s000524288-bd455415c07f597ff1d815ef3fef0994f6900d761789574e971ef5a347c2ad8d",
+            "networkSha256": "c455f68516c22d34033b29da34f6eb4d80d07a8e698507fbe3ee240a0dc25f62"
+          }
+        ],
+        "hybridBase": {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g64",
+          "checkpoint": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+          "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+          "changeScale": 0.5
+        },
+        "compiledConstantGates": true
+      },
+      "hybrid": {
+        "input": {
+          "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g64",
+          "checkpoint": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+          "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+          "changeScale": 0.5
+        },
+        "originalManifest": {
+          "id": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+          "generation": 64,
+          "optimizerStep": 2277376,
+          "trainingDepth": 4,
+          "parentId": "g000063-s002269184-442287932c112c798471b208a5c8ffffe59420aa116db7134d53f8ab53740cd6",
+          "networkBytes": 795032,
+          "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+          "trainingBytes": 2731424,
+          "trainingSha256": "19aa0beffaf653c5b8ba4dca89f5b4b4a3f0eb31440e297acf7f0969b0485502",
+          "architecture": "BRN_PAIR2"
+        },
+        "effectiveBaseSha256": "50a20bb63a79416690f7695e6b1bef5d13fe99c5190277b27de76e5e69cbcfc3",
+        "effectiveCorrectionSha256": "d18635edc17e6d918af95e709e42d4c68e2af7e6046f2d36e70196d2d51baede",
+        "functionSha256": "f2eb4350f41b597e7311ec66db363e17141664cb09f294f300a1346b7d97c6dc",
+        "identityEncoding": "brn-hybrid-raw-v1\n50a20bb63a79416690f7695e6b1bef5d13fe99c5190277b27de76e5e69cbcfc3\nd18635edc17e6d918af95e709e42d4c68e2af7e6046f2d36e70196d2d51baede\n",
+        "mapping": "Compiled continued base + scaled nonlinear correction; material + .25 * (raw-material), one rounding; not a trainable combined checkpoint"
+      },
+      "compiledConstantGates": {
+        "extraFirst": [
+          1,
+          6,
+          48,
+          55
+        ],
+        "extraSecond": [
+          8,
+          15,
+          57,
+          62
+        ],
+        "kind": "brn-constant-gates-compiled-v1",
+        "foldedBaseSha256": "ba120330603548a1b1b6d122647f17c7ba1b80b6c1b588294fa757c5405fbd52",
+        "immutablePrimitiveBytes": 810568,
+        "ordinaryCheckpointExport": false,
+        "relations": 298,
+        "functionSha256": "e17446d875a0de770ddb77cd50e87ee1390ad73bacd057c023d1543dfbffda58",
+        "extraTablesSha256": "b5ffcfd9d154744e69bf4b8825a08912f9a519eaef3119f6785cc16a6deaad3a"
+      }
+    }
+  ],
+  "limitations": "Consumed panels; algebraic and empirical numerical checks, not universal bit identity, retrained additive optimization or playing strength."
+}

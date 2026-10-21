@@ -100,17 +100,23 @@ continued-base/nonlinear compositions. The research frontier is evidence-driven:
    53.125% versus BRE001 half at131072 nodes, below their shallow point scores.
    Pair uncertainty includes no change; throughput alone is not an adequate explanation.
    See `wave4-depth-node-results.json` and the activation record.
-3. **Active:** prospectively fixed96 hybrid games in `wave4-hybrid-direct-admission.json`:
+3. **Closed:** the prospectively fixed96 hybrid games in `wave4-hybrid-direct-admission.json`:
    full GATE001, full CUBIC001 and packed rank4 CUBIC001 on the same BRE001 half
    base, each16 games at131072 nodes and16 at100ms. Use ONLY
-   `wave4-packed-core-runtime.json`. Node-v2 is closed48 games/7366 legal moves; clock48 is active, four bounded batches.
+   `wave4-packed-core-runtime.json`. Node-v2 closes48 games/7366 legal moves; clock48 closes6326 legal moves.
+   Clock scores GATE34.375%,CUBIC56.25%,packed rank4 CUBIC43.75%, all uncertain.
    The original node plan was rejected before model/game execution for two positive
    budgets; preserve it and use `wave4-hybrid-direct-node-v2-plan.json` under
    `wave4-hybrid-direct-budget-amendment.json`. Same intended131072-node limit and
    internal2-second safety; zero games were discarded or replayed.
    Three selected nonlinear ablations pass actual cache/search oracles; see
    `wave4-selected-hybrid-ablation-readiness.json`. No ablation matches yet.
-4. Any promising hybrid must face both BRE rates, frozen Gen32 and an expressive
+4. **Next active protocol:** `wave4-hybrid-followup-admission.json`,128 fixed games.
+   GATE versus fast constant gates at nodes/time; CUBIC versus quadratic at nodes
+   and compiled unary at time; CUBIC versus Gen32 and BRE003 at time on16 pairs.
+   Use ONLY `wave4-constant-compiled-runtime.json`. Node controls first, then clocks.
+   Do not optimize the quadratic-clock result by assumption: no such match is admitted.
+5. Any promising hybrid must face both BRE rates, frozen Gen32 and an expressive
    ablation. It combines two post-reference training streams; matched additional
    BRE training/data diversity may remain a human gate before causal conclusions.
    No new substantive training or human gate is admitted yet.
@@ -242,6 +248,6 @@ causation has yet been established. Continue at the active frontier above.
 
 Compiled unary controls are implemented in2d04ae8/build53 (research-only, no bump) and pass18 targeted tests plus actual2x6333-position/48-root-pass score/search oracles,4096-row prediction reproduction and32 legal smoke plies. See wave4-unary-compiled-readiness.json. Their payload/cache size is ordinary BRE, and they save35%/26% search time against evaluating the same unary ablation with the residual caches. No control strength games admitted yet.
 
-Hybrid node-v2 scores against the identical BRE001 base: GATE71.875% (8/7/1),CUBIC59.375% (8/3/5),packed rank4 CUBIC50% (5/6/5). Small selected development evidence, not a confirmation. Complete the fixed clock48 before selecting follow-up comparisons.
+Hybrid node-v2 scores against the identical BRE001 base: GATE71.875% (8/7/1),CUBIC59.375% (8/3/5),packed rank4 CUBIC50% (5/6/5). Small selected development evidence, not a confirmation. The fixed clock48 is now complete; its follow-up selection is frozen separately.
 
-Pending next control: explicit constant-gate additive compilation retaining all210 GATE relations by extending the294-pair BRE layout with exactly four missing relations. Core extension and research compiler pass targeted tests; actual trained oracles remain pending. ordinary Pair2 codec export rejects this research layout. A root-owned pause sentinel now requests a stop after the current clock batch for targeted build/verification. Do not use the new path in games until actual oracles pass. The qualifying implementation commit advances build53 to54. Existing hybrid clocks retain their frozen build53 packed-core runtime.
+The complete constant-gate additive control is implemented in a6c4a9c/build54 and passes17 targeted tests,6333 actual positions/48 triple search root passes,4096 prediction rows and16 legal smoke plies. It retains all210 GATE relations in298 total compiled pairs, adds10880 immutable primitive bytes to BRE, and saves37% paired search cost versus the slow identical ablation. Ordinary Pair2 checkpoint export rejects this research layout. See wave4-constant-compiled-readiness.json. No pause sentinel remains; the last bounded build pause is preserved in raw/wave4/constant-build-pause-01.txt. No new human training gate yet.

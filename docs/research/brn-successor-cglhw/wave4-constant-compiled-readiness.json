@@ -1,0 +1,151 @@
+{
+  "id": "wave4-constant-compiled-readiness-v1",
+  "sourceCommit": "a6c4a9c",
+  "build": 54,
+  "runtime": "wave4-constant-compiled-runtime.json",
+  "oracle": {
+    "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\constant-compiled-cache-01.json",
+    "sha256": "5c5b8d288530251de85583c75ccce594b4a040d9938fc0d1ca8d8c5f5bc17475",
+    "positions": 6333,
+    "integerDifferences": 0,
+    "freshIntegerDifferences": 0,
+    "maximumRawError": 1.4477308241112041e-13,
+    "rootPasses": 48,
+    "implementations": 3,
+    "searchParityPassed": true,
+    "medianPairedSearchCompiledToDense": 0.6333108333823475,
+    "transitionLatency": [
+      {
+        "medianNanos": 1509.386,
+        "name": "GATE-full",
+        "evaluationsPerPass": 50000,
+        "passNanos": [
+          77869701,
+          76068100,
+          75095700,
+          75469300,
+          74757001,
+          75160700,
+          82804400
+        ]
+      },
+      {
+        "medianNanos": 130.31598,
+        "name": "GATE-cache",
+        "evaluationsPerPass": 50000,
+        "passNanos": [
+          6821200,
+          6869400,
+          6515799,
+          6513300,
+          6519201,
+          6510600,
+          6442099
+        ]
+      },
+      {
+        "medianNanos": 126.234,
+        "name": "HybridBase",
+        "evaluationsPerPass": 50000,
+        "passNanos": [
+          6531100,
+          6977300,
+          6017200,
+          6311700,
+          6092999,
+          6250400,
+          6488501
+        ]
+      },
+      {
+        "medianNanos": 367.564,
+        "name": "GATE-same-base-dense",
+        "evaluationsPerPass": 50000,
+        "passNanos": [
+          18712700,
+          21327900,
+          18378200,
+          18191800,
+          18267199,
+          18162600,
+          20114900
+        ]
+      },
+      {
+        "medianNanos": 378.694,
+        "name": "GATE-original-base-cache",
+        "evaluationsPerPass": 50000,
+        "passNanos": [
+          19057999,
+          18934700,
+          19211401,
+          18468700,
+          18822699,
+          18789500,
+          19835999
+        ]
+      }
+    ],
+    "workspacePrimitiveBytes": 2952,
+    "compiled": {
+      "extraSecond": [
+        8,
+        15,
+        57,
+        62
+      ],
+      "extraFirst": [
+        1,
+        6,
+        48,
+        55
+      ],
+      "extraTablesSha256": "b5ffcfd9d154744e69bf4b8825a08912f9a519eaef3119f6785cc16a6deaad3a",
+      "functionSha256": "e17446d875a0de770ddb77cd50e87ee1390ad73bacd057c023d1543dfbffda58",
+      "relations": 298,
+      "ordinaryCheckpointExport": false,
+      "immutablePrimitiveBytes": 810568,
+      "foldedBaseSha256": "ba120330603548a1b1b6d122647f17c7ba1b80b6c1b588294fa757c5405fbd52",
+      "kind": "brn-constant-gates-compiled-v1"
+    },
+    "hybrid": {
+      "input": {
+        "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/W4-BRE-CONTROL-LR001-g64",
+        "checkpoint": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+        "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+        "changeScale": 0.5
+      },
+      "originalManifest": {
+        "id": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+        "generation": 64,
+        "optimizerStep": 2277376,
+        "trainingDepth": 4,
+        "parentId": "g000063-s002269184-442287932c112c798471b208a5c8ffffe59420aa116db7134d53f8ab53740cd6",
+        "networkBytes": 795032,
+        "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+        "trainingBytes": 2731424,
+        "trainingSha256": "19aa0beffaf653c5b8ba4dca89f5b4b4a3f0eb31440e297acf7f0969b0485502",
+        "architecture": "BRN_PAIR2"
+      },
+      "effectiveBaseSha256": "50a20bb63a79416690f7695e6b1bef5d13fe99c5190277b27de76e5e69cbcfc3",
+      "effectiveCorrectionSha256": "d18635edc17e6d918af95e709e42d4c68e2af7e6046f2d36e70196d2d51baede",
+      "functionSha256": "f2eb4350f41b597e7311ec66db363e17141664cb09f294f300a1346b7d97c6dc",
+      "identityEncoding": "brn-hybrid-raw-v1\n50a20bb63a79416690f7695e6b1bef5d13fe99c5190277b27de76e5e69cbcfc3\nd18635edc17e6d918af95e709e42d4c68e2af7e6046f2d36e70196d2d51baede\n",
+      "mapping": "Compiled continued base + scaled nonlinear correction; material + .25 * (raw-material), one rounding; not a trainable combined checkpoint"
+    }
+  },
+  "predictionVerification": "wave4-constant-compiled-prediction-verification.json",
+  "maximumPriorCanonicalPredictionError": 1.3233858453531866e-13,
+  "maximumIndependentCEError": 8.881784197001252e-16,
+  "smoke": {
+    "plan": "wave4-constant-compiled-smoke-plan.json",
+    "analysis": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\constant-compiled-smoke-analysis.json",
+    "sha256": "968628dbf4690e04042853fea3bce089b95b710424ec801b209b5edb060d0366",
+    "bindingsSha256": "cfdf4adbc2785916878942cc2a9e1819c822bb2fa5be86be5a3486b3591b08c7",
+    "legalPlies": 16,
+    "intentionalCaps": 2,
+    "strengthGames": 0
+  },
+  "capabilityNegative": "raw/wave4/constant-capability-guard-01.txt",
+  "conclusion": "All original constant-gate relations retained, tested scores/search identical.37% paired search saving versus the dense residual-cache ablation; transition cost near the actual BRE base. This is an additive mechanism control, not a trained expressive successor, new optimizer or strength claim. Ordinary checkpoint export is forbidden for298 relations."
+}
