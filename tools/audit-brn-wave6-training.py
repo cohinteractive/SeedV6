@@ -1,4 +1,4 @@
-"""Read-only W6/W7 history/ancestry audit after BrnLineageAudit's codec checks.
+"""Read-only W6/W7/W8 history/ancestry audit after BrnLineageAudit's codec checks.
 
 Usage: python -B tools/audit-brn-wave6-training.py AUDIT_DIRECTORY NEW_REPORT
 The report binds live evidence, but never changes a training store.
@@ -20,11 +20,13 @@ def main():
     assert not output.exists(), "Preserve prior evidence"
     stores = json.loads((audit / 'stores.json').read_text())
     wave = json.loads((Path(stores[1]['root']) / 'degree-continuation-origin.json').read_text())['wave']
-    assert wave in ('brn-successor-2026-10-21-wave6', 'brn-successor-2026-10-21-wave7')
+    assert wave in ('brn-successor-2026-10-21-wave6', 'brn-successor-2026-10-21-wave7', 'brn-successor-2026-10-22-wave8')
+    fixed = wave.endswith('wave8')
     compact = wave.endswith('wave7')
-    number, start = (7, 128) if compact else (6, 96)
-    end = start + 32
-    assert len(stores) == (4 if compact else 5)
+    number, start = (8, 160) if fixed else (7, 128) if compact else (6, 96)
+    additional = 8 if fixed else 32
+    end = start + additional
+    assert len(stores) == (4 if compact or fixed else 5)
     results = []
     for store in stores[1:]:
         name, root = store['name'], Path(store['root'])
@@ -37,11 +39,17 @@ def main():
         expected_architecture = 'BRN_GEN32_QUADRATIC' if 'RESQUAD' in name else 'BRN_GEN32_CUBIC_R4' if '-R4-' in name else 'BRN_GEN32_CUBIC' if '-R16-' in name else 'BRN_PAIR2'
         if compact and 'RESQUAD' in name:
             expected_architecture = 'BRN_GEN32_QUADRATIC_R4'
+        if fixed:
+            expected_architecture = 'BRN_GEN32_FIXED_CUBIC_R4' if 'FIXED-CUBIC' in name else 'BRN_GEN32_FIXED_QUADRATIC_R4' if 'FIXED-QUAD' in name else 'BRN_PAIR2'
         assert all(c['architecture'] == expected_architecture for c in chain)
-        assert origin['arm']['projection'] == ('quadratic' if 'RESQUAD' in name else 'exact')
+        projection = ('fixed-cubic-heads' if 'FIXED-CUBIC' in name else 'fixed-quadratic-heads' if 'FIXED-QUAD' in name else 'exact') if fixed else ('quadratic' if 'RESQUAD' in name else 'exact')
+        assert origin['arm']['projection'] == projection
         assert origin['bootstrap'] == initial['id'] == store['initializer']['initialCheckpoint']
         assert initial['parentId'] == ''
-        assert origin['inheritedStep'] == initial['optimizerStep']
+        if fixed and projection != 'exact':
+            assert origin['inheritedStep'] == 1310720 and initial['optimizerStep'] == 0
+        else:
+            assert origin['inheritedStep'] == initial['optimizerStep']
         assert origin['arm']['rate'] == rate
         for field, pattern in [('networkSha256', 'network.*'), ('trainingSha256', 'training.state')]:
             assert initial[field] == origin[field]
@@ -52,7 +60,25 @@ def main():
             assert current['parentId'] == previous['id']
             assert current['optimizerStep'] == previous['optimizerStep'] + 8192
         assert store['latestTraining'] == chain[-1]['id']
-        assert len(store['checkpoints']) == 33
+        assert len(store['checkpoints']) == additional + 1
+        if fixed and projection != 'exact':
+            import importlib.util
+            spec = importlib.util.spec_from_file_location('degree', Path(__file__).with_name('audit-brn-degree-projection.py'))
+            codec = importlib.util.module_from_spec(spec); spec.loader.exec_module(codec)
+            cubic = projection == 'fixed-cubic-heads'
+            wire, frozen_values = (10, 3845) if cubic else (9, 3841)
+            baseline = codec.decode(codec.payload(root, initial['id'], 'network.*'), False, wire)[0]
+            source = origin['arm']['source']
+            source_weights = codec.decode(codec.payload(source['root'], source['checkpoint'], 'network.*'), False, 8)[0]
+            assert baseline == source_weights + (bytes(32) if cubic else b'')
+            for c in chain:
+                network = codec.decode(codec.payload(root, c['id'], 'network.*'), False, wire)[0]
+                state = codec.decode(codec.payload(root, c['id'], 'training.state'), True, wire)
+                assert state[0] == network
+                assert network[:frozen_values*8] == baseline[:frozen_values*8]
+                assert all(a[:frozen_values*8] == bytes(frozen_values*8) for a in state[1:])
+                if c['id'] == initial['id']:
+                    assert all(a == bytes(len(a)) for a in state[1:])
         for checkpoint in store['checkpoints']:
             gen = checkpoint['manifest']['generation']
             assert checkpoint['optimizerStep'] == checkpoint['manifest']['optimizerStep']
@@ -60,7 +86,7 @@ def main():
             assert checkpoint['optimizer'] == dict(learningRate=rate,
                                                    beta1=.9, beta2=.999, epsilon=1e-8)
         session = store['session']
-        assert (session['baseline'], session['target'], session['completed'], session['state']) == (start, 32, 32, 'COMPLETED')
+        assert (session['baseline'], session['target'], session['completed'], session['state']) == (start, additional, additional, 'COMPLETED')
         history = store['history']
         assert not history['warnings']
         rows = history['records']
@@ -109,8 +135,8 @@ def main():
         results.append(dict(name=name, root=str(root), origin=origin, initial=initial,
                             latest=chain[-1], best=by_id[best], session=session,
                             addedOptimizerSteps=chain[-1]['optimizerStep']-initial['optimizerStep'],
-                            generations=32, trainingSamples=4194304, validationSamples=1048576,
-                            trainingVisits=33554432, promotions=sum(r['decision']=='PROMOTE' for r in rows),
+                            generations=additional, trainingSamples=131072*additional, validationSamples=32768*additional,
+                            trainingVisits=1048576*additional, promotions=sum(r['decision']=='PROMOTE' for r in rows),
                             first8=means(rows[:8]), last8=means(rows[-8:]),
                             trainingSeconds=sum(r['trainingNanos'] for r in rows)/1e9,
                             finalComparison=rows[-1]['bootstrap']['comparison'],
@@ -118,8 +144,13 @@ def main():
                             generationMetrics=[dict(generation=r['generation'], trainingLoss=r['loss'],
                                 validationLoss=r['bootstrap']['comparison']['candidateLoss'],
                                 incumbentLoss=r['bootstrap']['comparison']['bestLoss'], decision=r['decision']) for r in rows]))
+        if fixed:
+            result = results[-1]
+            result.pop('first8'); result.pop('last8')
+            result.update(first4=means(rows[:4]), last4=means(rows[-4:]),
+                          optimizerSemantics='New zero head-only Adam' if projection != 'exact' else 'Exact inherited full Adam')
     comparisons = []
-    for left, right in ([(stores[1],stores[2])] if compact else [(stores[1],stores[2]), (stores[3],stores[2])]):
+    for left, right in ([(stores[1],stores[2])] if compact or fixed else [(stores[1],stores[2]), (stores[3],stores[2])]):
         lrows, rrows = left['history']['records'], right['history']['records']
         for l, r in zip(left['ledger']['reservations'], right['ledger']['reservations']):
             for key in ['generation','mix','ranges','trainingHash','validationHash','status']:
@@ -137,8 +168,10 @@ def main():
                     'Data matches between residual arms; BRE raw ranges/splits and historical exposure differ. Quadratic inherits cubic-trained embeddings/Adam.',
                     'WDL Loss GUI label does not change the recorded half-squared target-error objective.',
                     'No chess strength conclusion follows from these losses.'])
+    if fixed:
+        report['limitations'][3] = 'Residual arms share data and exact initial Q4 function; only four heads train with new Adam. BRE retains different historical data/split/full optimizer.'
     output.write_text(json.dumps(report,indent=2)+'\n')
-    print(json.dumps(dict(lineages=len(results), verifiedCheckpointPairs=1+33*len(results), pairedComparisons=comparisons)))
+    print(json.dumps(dict(lineages=len(results), verifiedCheckpointPairs=1+(additional+1)*len(results), pairedComparisons=comparisons)))
 
 
 if __name__ == '__main__':

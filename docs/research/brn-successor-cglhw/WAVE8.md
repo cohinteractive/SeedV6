@@ -13,11 +13,12 @@ the lower-degree function as well as cubic terms. Q4 versus C4 training and mask
 therefore do not isolate interference from absence of useful cubic information.
 
 The prespecified small diagnostic in wave7-fixed-head-admission.json fits only
-head deltas, with new zero Adam moments and step. Four cubic heads on W7 Q4 improve
-all four consumed search-mapped evaluation panels slightly, versus deterioration
-for matched quadratic-head changes. Raw results are mixed. R16 does not show a
-consistent mapped benefit. These128-update results justify correctness and
-integration preparation, not convergence, generalization or a chess claim.
+head deltas, with new zero Adam moments and step. The original all-row Q4 pilot gives small mapped improvements, but its apparent
+cubic separation fails the later status-valid control: quadratic heads improve
+more on all four valid panels. Raw cubic results are mixed; R16 has no consistent
+mapped benefit. This downgrades the initial rationale. Fixed-basis optimization
+remains an unproved isolation hypothesis, not positive expressive-value evidence,
+convergence, generalization or a chess claim.
 The separate visibility pilot failed its consistency criterion and remains deferred.
 
 ## Proposed implementation and controls
@@ -95,3 +96,25 @@ useful higher-degree adjustment from ordinary recalibration after broader fittin
 The raw/mapped and source disagreements mean loss alone cannot decide chess value.
 Gate admission still requires completed G7 strength results and explicit expected
 value review; implementation availability is not sufficient justification.
+
+## Isolated actual-weight readiness
+
+Before owner gate admission, three isolated fixtures under raw/wave8/isolated-library-01
+use the exact prospective W7 Latest160 parents. Independent byte/CRC inspection
+passes all retained weights, new zero head moments/steps and inherited source/seek
+metadata. Six payload/state pairs (fixtures, sources, Gen32) pass24-board runtime
+checks. The new cubic and quadratic functions exactly match Q4 at initialization;
+BRE matches its source. Four full/half probes each pass6333 positions and48 cache
+search pairs, with zero integer discrepancies. Qhead/Chead produce identical full
+search results in all96 runs per mapping. Sequential cached inference is192.568/
+213.598ns full and205.412/234.320ns half; this is readiness/cost evidence, not a
+trained quality or speedup claim. See wave8-isolated-projection.json and
+wave8-isolated-readiness.json. An initial audit request used frozen inference-only
+stores without managed Best refs; its failure is preserved and the corrected v2
+managed-reference audit passes. No checkpoint repair or engine change was needed.
+
+The continuation auditor now supports eight-generation fixed-head runs and verifies
+every frozen weight and excluded zero Adam moment through168. W6/W7 audit replays
+remain exactly unchanged. Actual trained G8 audit awaits future evidence. The native
+GUI test now reads each prepared generation budget instead of assuming32; its
+packaged test harness compiles, with actual owner GUI execution still pending.

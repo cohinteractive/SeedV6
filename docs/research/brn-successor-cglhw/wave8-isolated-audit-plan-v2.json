@@ -1,0 +1,35 @@
+{
+  "id": "wave8-actual-weight-fixture-audit-v2-managed-references",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304"
+    },
+    {
+      "name": "W8-FIXED-CUBIC-R4-LR001",
+      "root": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-library-01\\BRN-GEN32-FIXED-CUBIC-R4\\606c30bf-7392-3872-bf62-806ff2e6df3e",
+      "initialCheckpoint": "g000160-s000000000-4ccca807a51ef50992c1a0ababc7a864c14439e460d0c0c51d97331cbb8ea246"
+    },
+    {
+      "name": "W8-FIXED-QUAD-R4-LR001",
+      "root": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-library-01\\BRN-GEN32-FIXED-QUADRATIC-R4\\1070bed1-b29c-3c21-9bba-ddb992a87ce7",
+      "initialCheckpoint": "g000160-s000000000-d949ecfb9bf688d2d3724692b04e261ef6040368a590cb8b463d0364f9481b7c"
+    },
+    {
+      "name": "W8-BRE-CONTROL-LR001",
+      "root": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-library-01\\BRN-Pair2\\3addbfce-b83a-35b5-9a82-14734ccb61c8",
+      "initialCheckpoint": "g000160-s003063808-a9ec3870634a74f2d5d0ae9f73252a290503777ec79b2b78de2226389676a493"
+    },
+    {
+      "name": "W7-RESQUAD-R4-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-QUADRATIC-R4\\91af04c6-dec5-39f9-a70a-02e58b38d856",
+      "checkpoint": "g000160-s001310720-b5d40cc7a3cd74a4eab18f6e274676b7c58d094896d931d5f40f06828a4ed338"
+    },
+    {
+      "name": "W7-BRE-CONTROL-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\d945d1bd-91c4-370c-91f3-8b14226bfff1",
+      "checkpoint": "g000160-s003063808-54726e9dc33906a097242113f4884b2d229fb151c50d9ee6026f36f326e13679"
+    }
+  ]
+}

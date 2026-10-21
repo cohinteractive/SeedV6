@@ -1,0 +1,47 @@
+{
+  "id": "wave8-actual-weight-fixture-half-parity-v1",
+  "models": [
+    {
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/Gen32",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "name": "Gen32"
+    },
+    {
+      "name": "W8-FIXED-CUBIC-R4-LR001",
+      "root": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-library-01\\BRN-GEN32-FIXED-CUBIC-R4\\606c30bf-7392-3872-bf62-806ff2e6df3e",
+      "checkpoint": "g000160-s000000000-4ccca807a51ef50992c1a0ababc7a864c14439e460d0c0c51d97331cbb8ea246",
+      "networkSha256": "b8012fd8a2fc939998bd1c621be3da1318f9b71e610e83f39196f1f0060d0079",
+      "cubicDeltaCache": true,
+      "correctionScale": 0.5
+    },
+    {
+      "name": "W8-FIXED-QUAD-R4-LR001",
+      "root": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-library-01\\BRN-GEN32-FIXED-QUADRATIC-R4\\1070bed1-b29c-3c21-9bba-ddb992a87ce7",
+      "checkpoint": "g000160-s000000000-d949ecfb9bf688d2d3724692b04e261ef6040368a590cb8b463d0364f9481b7c",
+      "networkSha256": "2b9caaef756193434f1d06af34e4fb9fbf6f7ed4391e2f869c854579bd2aa5bc",
+      "correctionScale": 0.5
+    },
+    {
+      "name": "W8-BRE-CONTROL-LR001",
+      "root": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-library-01\\BRN-Pair2\\3addbfce-b83a-35b5-9a82-14734ccb61c8",
+      "checkpoint": "g000160-s003063808-a9ec3870634a74f2d5d0ae9f73252a290503777ec79b2b78de2226389676a493",
+      "networkSha256": "b83832f93b28e6c3e197e12a720477c07fdfc03ee174499219b1a3d9ba894d3b",
+      "correctionScale": 0.5
+    },
+    {
+      "name": "W7-RESQUAD-R4-LR001",
+      "root": "docs/research/brn-successor-cglhw/raw/wave7/trained-frozen-01/W7-RESQUAD-R4-LR001",
+      "checkpoint": "g000160-s001310720-b5d40cc7a3cd74a4eab18f6e274676b7c58d094896d931d5f40f06828a4ed338",
+      "networkSha256": "fd6c2fc1ec2549bced72ab5d3bf245ff4a56abf6d779ba36a921040bd4dd70bd",
+      "correctionScale": 0.5
+    },
+    {
+      "name": "W7-BRE-CONTROL-LR001",
+      "root": "docs/research/brn-successor-cglhw/raw/wave7/trained-frozen-01/W7-BRE-CONTROL-LR001",
+      "checkpoint": "g000160-s003063808-54726e9dc33906a097242113f4884b2d229fb151c50d9ee6026f36f326e13679",
+      "networkSha256": "b83832f93b28e6c3e197e12a720477c07fdfc03ee174499219b1a3d9ba894d3b",
+      "correctionScale": 0.5
+    }
+  ]
+}

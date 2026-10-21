@@ -35,8 +35,12 @@ collapse. Prior data/split/exposure and cubic-trained projection confounds remai
 No independent superiority or useful cubic chess advantage is established.
 
 Implementation preparation: WAVE8 records a fixed-basis four-head hypothesis supported
-by the bounded diagnostic. Build58 implementation passes195 targeted tests; native/package and actual owner
-checks remain pending. No W8 owner stores or training gate exist yet. Finish frozen57 Wave7 games
+by an initially promising but sensitivity-dependent bounded diagnostic. Build58
+passes195 targeted tests and native package image/archive checks; actual owner
+and native GUI checks remain pending. The valid-only pilot favours quadratic heads
+on mapped prediction, so cubic expressive value remains unestablished. A32768-row
+training-source health sample does not reproduce extreme material outliers from
+the sealed diagnostic panel; no data-policy change is justified. No W8 owner stores or training gate exist yet. Finish frozen57 Wave7 games
 and inspect the full assessment before final gate admission.
 
 Active frontier: (1) adapted rank4 degree/value versus continued BRE, (2) practical

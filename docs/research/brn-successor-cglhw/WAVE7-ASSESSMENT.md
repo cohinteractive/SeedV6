@@ -158,3 +158,12 @@ admitted valid-refit records. A read-only32768-record actual Gen129/160 source
 sample finds only bad castling-right status among eligible TRAIN anomalies, no
 excess-piece case. No data-policy change is warranted by that sample. Full corpus
 prevalence and historical optimization effects remain unknown.
+
+The32-game equal-time BRE comparison closes4514 legal moves. Q4 scores56.25%
+(7 wins,4 draws,5 losses), descriptive95%30.47..82.03; C4 scores37.50%
+(5,2,9),11.31..63.69. Eight root pairs per arm, reused with the node condition;
+no independent significance. Paired-root Q4/C4 NPS relative to BRE is.8508/.7930,
+with mean completed-depth differences-.125/-.375. Throughput contributes to the
+practical setting but is not an isolated explanation: both equal-node scores
+are53.125%, also inconclusive. Frozen-reference comparisons are still underway.
+See wave7-bre-clock-results.json.

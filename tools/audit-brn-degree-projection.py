@@ -23,8 +23,8 @@ def payload(root, checkpoint, pattern):
 
 
 def decode(data, state, wire):
-    count = {5: 13089, 6: 3849, 7: 13073, 8: 3845}[wire]
-    width = 4 if wire in (6, 8) else 16
+    count = {5: 13089, 6: 3849, 7: 13073, 8: 3845, 9: 3845, 10: 3849}[wire]
+    width = 4 if wire in (6, 8, 9, 10) else 16
     assert struct.unpack('>Q7i', data[:36]) == (
         0x53364E5853543031 if state else 0x53364E5852543031,
         1, wire, count, width, 1, 1, 64)
@@ -36,9 +36,11 @@ def decode(data, state, wire):
 
 
 def audit(report):
-    assert report['wave'] in ('brn-successor-2026-10-21-wave6', 'brn-successor-2026-10-21-wave7')
+    assert report['wave'] in ('brn-successor-2026-10-21-wave6', 'brn-successor-2026-10-21-wave7', 'brn-successor-2026-10-22-wave8')
+    fixed = report['wave'].endswith('wave8')
     compact = report['wave'].endswith('wave7')
-    generation, step_expected = (128, 1048576) if compact else (96, 786432)
+    generation, step_expected = (160, 1310720) if fixed else (128, 1048576) if compact else (96, 786432)
+    additional = 8 if fixed else 32
     source_wire, target_wire, retained = (6, 8, 3845) if compact else (5, 7, 13073)
     architecture = 'BRN_GEN32_QUADRATIC_R4' if compact else 'BRN_GEN32_QUADRATIC'
     rows = []
@@ -47,7 +49,7 @@ def audit(report):
         root, old_root = Path(entry['root']), Path(source['root'])
         assert root.resolve() != old_root.resolve()
         assert entry['latest'] == origin['bootstrap'] and entry['latestGeneration'] == source['generation'] == generation
-        assert entry['additionalGenerations'] == 32
+        assert entry['additionalGenerations'] == additional
         row = dict(candidate=entry['candidate'], root=str(root), checkpoint=entry['latest'],
                    architecture=entry['architecture'], projection=arm['projection'])
         for state, pattern, key in [(False, 'network.*', 'networkSha256'),
@@ -55,7 +57,22 @@ def audit(report):
             before = payload(old_root, source['checkpoint'], pattern)
             after = payload(root, entry['latest'], pattern)
             assert sha(before) == source[key] and sha(after) == origin[key]
-            if arm['projection'] == 'quadratic':
+            if fixed and arm['projection'].startswith('fixed-'):
+                cubic = arm['projection'] == 'fixed-cubic-heads'
+                assert arm['projection'] in ('fixed-cubic-heads', 'fixed-quadratic-heads')
+                assert entry['architecture'] == ('BRN_GEN32_FIXED_CUBIC_R4' if cubic else 'BRN_GEN32_FIXED_QUADRATIC_R4')
+                old, new = decode(before, state, 8), decode(after, state, 10 if cubic else 9)
+                assert new[0] == old[0] + (bytes(32) if cubic else b'')
+                if state:
+                    assert all(a == bytes(len(a)) for a in new[1:])
+                    source_step, source_rate = struct.unpack('>qd', before[68:84])
+                    step, rate = struct.unpack('>qd', after[68:84])
+                    assert source_step == origin['inheritedStep'] == step_expected
+                    assert step == 0 and source_rate == rate == arm['rate'] == .001
+                    row.update(step=step, sourceStep=source_step, rate=rate, exactRetainedWeights=3845,
+                               optimizer='New zero head-only Adam; source state preserved',
+                               zeroMomentValues=sum(len(a)//8 for a in new[1:]))
+            elif arm['projection'] == 'quadratic':
                 assert entry['architecture'] == architecture
                 old, new = decode(before, state, source_wire), decode(after, state, target_wire)
                 assert all(n == o[:retained*8] for n, o in zip(new, old))
@@ -95,7 +112,7 @@ def audit(report):
         assert not list((root/'history').glob('*'))
         assert len(list((root/'checkpoints').iterdir())) == 1
         row.update(inheritedMetadata=inherited, inheritedSeek=seek, generation=generation,
-                   addedGenerations=0, nextGeneration=generation+1, targetGeneration=generation+32)
+                   addedGenerations=0, nextGeneration=generation+1, targetGeneration=generation+additional)
         rows.append(row)
     return dict(status='passed', scope='Independent exact byte/CRC/layout projection and source/data inheritance audit',
                 entries=rows, limitations=['No substantive training or strength verification.',

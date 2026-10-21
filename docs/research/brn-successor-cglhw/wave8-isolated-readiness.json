@@ -1,0 +1,260 @@
+{
+  "id": "wave8-actual-weight-isolated-readiness-v1",
+  "auditFiles": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-audit-02\\complete.json": "caf89c43c18fc9b2e09b8e13e056a36cd8e4bc6c41a6a15ab4b8fad41284b81c",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-audit-02\\stores.json": "fa99733f6e018c0e188e3582ddb9fa308079de24aca524f849dd5e7ae6d7d0f1"
+  },
+  "verifiedPayloadAndOptimizerPairs": 6,
+  "sourceScoreParityBoards": 24,
+  "sourceScoresEqual": true,
+  "probes": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-cache-quad-full-01.json",
+      "sha256": "22be7a83ac0b9b5bc298cd95a31486b51684515598047595c558ff383231aa0f",
+      "candidate": "W8-FIXED-QUAD-R4-LR001",
+      "mapping": "full",
+      "positions": 6333,
+      "searchPairs": 48,
+      "maximumRawError": 4.6629367034256575e-15,
+      "maximumFreshRawError": 9.547918011776346e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "workspacePrimitiveBytes": 3689,
+      "combinedPayloadBytes": 825864,
+      "transitionLatency": [
+        {
+          "medianNanos": 526.504,
+          "name": "QUADRATIC-full",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            28644000,
+            27259500,
+            26319100,
+            26250000,
+            26325200,
+            26410000,
+            26103700
+          ]
+        },
+        {
+          "medianNanos": 192.568,
+          "name": "QUADRATIC-cache",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            11734700,
+            11703700,
+            10897900,
+            9628400,
+            9577600,
+            9542300,
+            9523000
+          ]
+        },
+        {
+          "medianNanos": 137.672,
+          "name": "Gen32",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            7514800,
+            7086100,
+            6883600,
+            6929100,
+            6725200,
+            6862800,
+            6760000
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-cache-quad-half-01.json",
+      "sha256": "3af1baad28a77be350ff5a94780a18fc0cded3c3f034aa04225cc49aa63666f8",
+      "candidate": "W8-FIXED-QUAD-R4-LR001",
+      "mapping": "half",
+      "positions": 6333,
+      "searchPairs": 48,
+      "maximumRawError": 2.3314683517128287e-15,
+      "maximumFreshRawError": 8.770761894538737e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "workspacePrimitiveBytes": 3689,
+      "combinedPayloadBytes": 825864,
+      "transitionLatency": [
+        {
+          "name": "QUADRATIC-full",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            29551400,
+            28455800,
+            26412700,
+            26237000,
+            26612400,
+            26223900,
+            26677200
+          ],
+          "medianNanos": 532.248
+        },
+        {
+          "name": "QUADRATIC-cache",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            12471300,
+            11137800,
+            10982500,
+            9829400,
+            10270600,
+            9702800,
+            10043700
+          ],
+          "medianNanos": 205.412
+        },
+        {
+          "name": "Gen32",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            7617900,
+            7138900,
+            6874200,
+            7124600,
+            6711800,
+            6723100,
+            6960000
+          ],
+          "medianNanos": 139.2
+        }
+      ]
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-cache-cubic-full-01.json",
+      "sha256": "2e63d89f2f9e8b8c8386a3cb1a59d7d0042700a47677d7e710f0bf6097ee93ba",
+      "candidate": "W8-FIXED-CUBIC-R4-LR001",
+      "mapping": "full",
+      "positions": 6333,
+      "searchPairs": 48,
+      "maximumRawError": 4.6629367034256575e-15,
+      "maximumFreshRawError": 9.547918011776346e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "workspacePrimitiveBytes": 3753,
+      "combinedPayloadBytes": 825896,
+      "transitionLatency": [
+        {
+          "name": "CUBIC-full",
+          "medianNanos": 577.6,
+          "passNanos": [
+            30599000,
+            31093000,
+            28880000,
+            28551300,
+            29381400,
+            28661300,
+            28466500
+          ],
+          "evaluationsPerPass": 50000
+        },
+        {
+          "name": "CUBIC-cache",
+          "medianNanos": 213.598,
+          "passNanos": [
+            13358500,
+            11678200,
+            11595200,
+            10679900,
+            10558800,
+            10483100,
+            10366100
+          ],
+          "evaluationsPerPass": 50000
+        },
+        {
+          "name": "Gen32",
+          "medianNanos": 139.996,
+          "passNanos": [
+            7388200,
+            7005600,
+            6999800,
+            7225500,
+            6681400,
+            6496600,
+            6873200
+          ],
+          "evaluationsPerPass": 50000
+        }
+      ]
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-cache-cubic-half-01.json",
+      "sha256": "dfa91a67ad1f78f5733dc8ecf62057c3859deb425b761b0fd616493559a6b4fa",
+      "candidate": "W8-FIXED-CUBIC-R4-LR001",
+      "mapping": "half",
+      "positions": 6333,
+      "searchPairs": 48,
+      "maximumRawError": 2.3314683517128287e-15,
+      "maximumFreshRawError": 8.770761894538737e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "workspacePrimitiveBytes": 3753,
+      "combinedPayloadBytes": 825896,
+      "transitionLatency": [
+        {
+          "name": "CUBIC-full",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            36048100,
+            30845900,
+            29530400,
+            31325400,
+            29515900,
+            29352100,
+            29137400
+          ],
+          "medianNanos": 590.608
+        },
+        {
+          "name": "CUBIC-cache",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            14651400,
+            12603900,
+            11716000,
+            14339600,
+            10503300,
+            11089100,
+            10708400
+          ],
+          "medianNanos": 234.32
+        },
+        {
+          "name": "Gen32",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            8766200,
+            6972300,
+            6886000,
+            6810400,
+            6539800,
+            6975400,
+            6886200
+          ],
+          "medianNanos": 137.724
+        }
+      ]
+    }
+  ],
+  "crossArchitectureSearch": [
+    {
+      "mapping": "full",
+      "exactCrossArchitectureSearchResults": 96
+    },
+    {
+      "mapping": "half",
+      "exactCrossArchitectureSearchResults": 96
+    }
+  ],
+  "limitations": [
+    "Isolated actual-source fixtures, not yet owner lineages or trained models.",
+    "Sequential latency measurements have host/JIT variation.",
+    "First audit request incorrectly targeted inference-only frozen stores lacking managed refs; preserved failed request/output, corrected managed-store plan v2 succeeds.",
+    "No substantial training or strength evidence."
+  ]
+}
