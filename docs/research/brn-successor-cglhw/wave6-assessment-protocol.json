@@ -1,0 +1,50 @@
+{
+  "id": "wave6-development-assessment-v1",
+  "protocols": [
+    {
+      "label": "degree-node",
+      "plan": "docs/research/brn-successor-cglhw/wave6-degree-node-plan.json",
+      "sha256": "86aa0f3c14e5a281608af5d38c51b907c1ea47fa1a181cf405065c8ac1e5e87f",
+      "games": 32
+    },
+    {
+      "label": "degree-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave6-degree-clock-plan.json",
+      "sha256": "9618f467e5f34463c10e1a032d6b3cb40ac39db39d83edeed9398fff254930a6",
+      "games": 32
+    },
+    {
+      "label": "compact-node",
+      "plan": "docs/research/brn-successor-cglhw/wave6-compact-node-plan.json",
+      "sha256": "9c9585c12e827218ad3f092b256bf808ddc3a4ab619f1cd6e163127233d9a1aa",
+      "games": 16
+    },
+    {
+      "label": "compact-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave6-compact-clock-plan.json",
+      "sha256": "37fc197668049fab79c02e8489b6ec943a597e3adc1ae3a8cfe7dc2f1a413e93",
+      "games": 16
+    },
+    {
+      "label": "bre-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave6-bre-clock-plan.json",
+      "sha256": "dcdaa06e5bb33fcb0164825f6b956b43e734709e3bfc0bae82dfdf39eea16271",
+      "games": 48
+    },
+    {
+      "label": "reference-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave6-reference-clock-plan.json",
+      "sha256": "195b00a98d9caabad37a2c7f7f444595879539fb5e7b139dc32b311725ff50c0",
+      "games": 64
+    }
+  ],
+  "totalGames": 208,
+  "runtime": "wave6-runtime.json",
+  "selection": "Latest Gen128 prospectively specified before games; all four Best pointers equal Latest.",
+  "mapping": "Common Policy4/QXRAY; existing material plus quarter residual; half learned change from Gen32 for every trained arm.",
+  "purpose": "Trained degree comparison at practical-depth equal nodes and equal time, compact tradeoff, continued BRE and frozen reference.",
+  "stopping": "Complete each fixed budget; stop for correctness/resource failure, never for favorable significance. Further protocols require a separately recorded question/selection.",
+  "statistics": "Pair-level descriptive intervals and bounded-pair intervals; reused roots within this programme and unknown opening family dependence. No independent superiority claim.",
+  "resource": "One game, one search worker, no ponder,64MiB TT,768MiB heap,ActiveProcessorCount1,BelowNormal;12games/240sec per launch.",
+  "confirmation": "Partition1 remains reserved. No confirmation candidate selected."
+}

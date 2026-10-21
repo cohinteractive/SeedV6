@@ -2,15 +2,28 @@
 
 Updated21 October2026. **G4 is complete and verified. All six arms reached64,
 with exact expected continuation and preserved starting payloads. Wave4 trained
-assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; G6 is prepared and verified; human training is blocking.
+assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; G6 is complete and verified through128; Wave6 trained assessment is active.
 No programme success is claimed.** This remains the original
-CGLHW. Current evidence/protocol: [WAVE5-ASSESSMENT](WAVE5-ASSESSMENT.md).
+CGLHW. Current evidence/protocol: [WAVE6-ASSESSMENT](WAVE6-ASSESSMENT.md).
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
 [completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md), and [completed G4 training gate](WAVE4.md).
 
 Objective: statistically credible practical chess improvement over frozen BRE-Pair2
 Gen32 through useful additional expressiveness, with measured costs and compatible
 search. Architectural complexity or lower validation loss alone is insufficient.
+
+## Current restart point (21 October2026, G6 verified)
+
+G6 owner action is evidenced, not pending. Four sessions completed97..128; all
+Latest/Best are128, 133 checkpoint/state pairs pass runtime parity, and941 owner
+files are unchanged by audit/freeze. See wave6-trained-checkpoints.json and
+wave6-trained-admission.json for exact identities. No retraining is requested.
+Trained Q16/C16/C4 have identical source reservations; BRE historical/split
+confounds remain. Next: finish actual trained cache checks, fixed208-game
+development assessment and fitting diagnostics, interpret and select the next
+credible investigation. Preserve frozen runtime56, all checkpoints and completed
+protocols. Do not stop merely at this audit. Historical G6 preparation instructions
+below are fulfilled and superseded for next-action selection.
 
 ## Candidate registry and preserved reference
 
@@ -86,9 +99,9 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
    options if evidence warrants. Do not mechanically exhaust old architecture lists
    or prematurely reject W1; no credible direction has been declared exhausted.
 
-## Current action and exact resume point
+## Historical G6 preparation boundary (fulfilled)
 
-**Human actions required after this prompt: blocking ? complete G6 in [WAVE6](WAVE6.md).**
+The former blocking G6 action below is completed and verified; use the current restart point above.
 G5 is complete and verified. All544 fixed W5 development games are closed, with
 71731 independent legal move replays and no game failure/cap/fallback. No independent
 strength confirmation or useful cubic chess advantage is established. See
@@ -112,10 +125,10 @@ SeedV6-GUI/SeedV6-GUI.exe (packaging source4faba8d5a79d).
 
 Final preservation rehash passes710 historical W3/frozen,1405 W4,925 trained W5
 and72 new W6 files; W1 untouched, not freshly rehashed. All research engines/GUI
-preview processes have exited. The existing runner pause is active at
-build/research/brn-successor-batches.pause. No new owner lineage has been trained.
+preview processes have exited. At that historical boundary the runner pause was active and owner training had not begun.
+The pause is now archived and all four arms are verified at128.
 
-Exact resume: after the owner reports G6, verify actual histories, recipes, parent
+Historical gate resume instructions (now executed): after the owner reports G6, verify actual histories, recipes, parent
 chains, optimizer steps and Latest/Best; expected final128 with1048576 residual or
 2801664 BRE steps. Resolve material anomalies before games. Archive the pause as
 raw/wave6/g6-completed-pause.txt only when completion is evidenced. Freeze actual

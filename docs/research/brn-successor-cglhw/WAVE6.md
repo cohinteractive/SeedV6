@@ -3,7 +3,10 @@
 21 October2026. This is the next experiment within the existing BRN successor
 CGLHW, governed by CONTRACT revision2. G5 and all544 admitted W5 development
 games are complete. No successor or independent strength superiority is established.
-**Preparation verified; human-training gate G6 is active and blocking.**
+**G6 completed and verified21 October2026. All four Latest/Best endpoints are128.**
+See [WAVE6-ASSESSMENT](WAVE6-ASSESSMENT.md), wave6-trained-checkpoints.json and
+wave6-trained-admission.json. The preparation and GUI instructions below are preserved
+as history; no repeat training is requested. Trained assessment is now active.
 
 ## Question and evidence for admission
 
