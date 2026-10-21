@@ -159,6 +159,9 @@ final class ChessFrame extends JFrame implements GameController.View {
         setSize(Math.min(getWidth(), usable.width), Math.min(getHeight(), usable.height));
         setLocationRelativeTo(null);
         controller.initialize();
+        // Ordinary Play starts from the bundled production model, without a training store.
+        evaluatorBox.setSelectedItem(PlayEvaluator.Mode.POLICY4_PAIR2);
+        controller.changeEvaluator(PlayEvaluator.Mode.POLICY4_PAIR2, false);
     }
 
     @Override

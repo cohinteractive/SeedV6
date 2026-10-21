@@ -15,6 +15,11 @@ including HCE vs HCE, without training. See the [Arena guide](docs/learning-aren
 Start with the [architecture and source boundaries](docs/architecture.md) and
 [operating guide](docs/guide.md).
 
+The [verified temporary engine baseline](docs/engine-baseline-2026-10-22.md)
+records build 61: frozen BRE-Pair 2 Gen32 with production Policy 4 for standalone
+UCI and fresh desktop Play. It includes actual runtime evidence, launch paths,
+NNUE reuse boundaries and remaining Search Phase 3 acceptance requirements.
+
 For explicit **construction-v1** experimental gameplay in macOS BotLi or Windows
 Play/Arena, use the [construction-v1 activation guide](docs/construction-v1-gameplay.md).
 It selects the full flattened Search with the verified Pair-2 g32 model and
@@ -32,7 +37,7 @@ for launch instructions, compatibility profiles and the remaining acceptance gat
 ```powershell
 .\gradlew.bat :app:installDist
 .\app\build\install\seedv6\bin\seedv6.bat gui
-# Omit gui for UCI.
+# Without gui this compatibility launcher uses HCE; use standalone UCI below for Gen32.
 ```
 
 On other platforms use `./gradlew` and the generated `seedv6` launcher.
@@ -146,15 +151,16 @@ within the tested consumer-compute regime, with controlled BRN/NNUE comparisons,
 3,072 final games and explicit limits. Production adoption remains a separate
 owner decision; the current production evaluator is unchanged.
 
-[BRE-Pair 2](docs/brn/BRN_PAIR2.md) now supports independent normal
+[BRE-Pair 2](docs/brn/BRN_PAIR2.md) supports independent normal
 training, exact resume, generations/Best, Play, Arena and model-selected search
 benchmarks. It preserves C02 compilation and keeps full training state separate
-from the runtime pair tables; production/default evaluation remains unchanged.
+from the runtime pair tables. The frozen Gen32 production binding and current
+Play defaults are recorded in the [baseline](docs/engine-baseline-2026-10-22.md).
 
-[BRN successor research](docs/research/brn-successor-cglhw/STATE.md) provides three
-new GUI-trainable research lineages: gated pairs, cubic factors and a pooled nonlinear
-control. The first wave is at its human-training gate; no strength improvement or
-production adoption is claimed. See its [training handoff](docs/research/brn-successor-cglhw/WAVE1.md).
+[BRN successor research](docs/research/brn-successor-cglhw/STATE.md) is suspended
+by owner decision. Its implementations, checkpoints, unfinished G9 comparison
+and resumption instructions remain preserved. Normal Play does not require
+reactivating it; no successor strength objective is claimed achieved.
 
 Unified Windows and macOS packaging builds both GUI and UCI with `packageWindows`
 and `packageMac`, or independent `:app-gui:` / `:app-uci:` module tasks. These are

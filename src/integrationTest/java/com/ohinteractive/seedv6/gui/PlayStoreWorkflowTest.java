@@ -94,6 +94,7 @@ class PlayStoreWorkflowTest {
         } finally { edt(game::beginShutdown).run(); }
         var panel = edt(() -> new PlayEnginePanel("white", brn, null, () -> {}));
         try {
+            edt(() -> panel.evaluator.setSelectedItem(PlayEvaluator.Mode.BEST_NNUE));
             until(() -> edt(panel::validSelection)); assertEquals("", edt(panel::selectedId));
             edt(() -> {
                 assertTrue(java.util.stream.IntStream.range(0, panel.generation.getItemCount()).anyMatch(i -> old.equals(panel.generation.getItemAt(i).checkpointId())), "Pruned generations retain browsable metadata");

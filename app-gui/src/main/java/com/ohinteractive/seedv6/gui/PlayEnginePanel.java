@@ -42,10 +42,11 @@ final class PlayEnginePanel extends JPanel {
                         ? "HCE (Handcrafted)" : value == PlayEvaluator.Mode.BEST_NNUE ? "Network (production Search)" : value, index, selected, focus);
             }
         });
-        var savedMode = PlayEvaluator.Mode.BEST_NNUE;
+        var savedMode = side.equals("white") || side.equals("black")
+                ? PlayEvaluator.Mode.POLICY4_PAIR2 : PlayEvaluator.Mode.BEST_NNUE;
         if (preferences != null && !side.equals("opponent")) {
-            try { savedMode = PlayEvaluator.Mode.valueOf(preferences.get("evaluator", "BEST_NNUE")); }
-            catch (IllegalArgumentException obsolete) { /* Keep the existing network setup default. */ }
+            try { savedMode = PlayEvaluator.Mode.valueOf(preferences.get("evaluator", savedMode.name())); }
+            catch (IllegalArgumentException obsolete) { /* Keep this selector's default. */ }
         }
         evaluator.setSelectedItem(savedMode);
         if (!side.equals("opponent")) {
