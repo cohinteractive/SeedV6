@@ -346,3 +346,23 @@ compile failed on a missing closing parenthesis; its source/logs remain under
 verification pass under `visibility-diagnostics-02`, with no owner or frozen-runtime
 mutation. Keep this as a plausible frontier option requiring incremental/cost and
 matched geometric-control fitting evidence before architecture admission.
+
+
+## Compact degree follow-up
+
+The fixed16-game C4 degree-mask node comparison closes7/5/4,59.375%, descriptive95
+50.409?68.341%, bounded95 11.359?100%. Only three opening pairs favour cubic and five
+tie: the sign-flip sensitivity tails are.125/.25, not confirmatory significance.
+The matching clock comparison closes7/4/5,56.25%, descriptive95 32.191?80.309%,
+bounded95 8.234?100%. All4433 combined moves are legal; no failure/cap/fallback.
+Same-checkpoint masking retains the cubic cache in both arms; measured clock root
+NPS ratio.99812 supports the intended cost control. It is not an adapted quadratic
+architecture. These observations motivate the narrow Q4 adaptation question in
+WAVE7 without establishing useful cubic expressiveness. Remaining BRE-node48 is
+still required before final gate admission. No protocol is extended for significance.
+
+An initial analysis invocation used the nonexistent receipt directory without its
+`-01` suffix and wrote a zero-game raw analysis; summary correctly failed on missing
+model bindings. That artifact is retained as `raw/wave6/compact-degree-clock-analysis.json`.
+The correct `compact-degree-clock-analysis-01.json` verifies all16 actual receipts.
+This was an analysis-path error, not a game or evaluator failure.

@@ -36,7 +36,7 @@ passes, with no average match selected. BRE-clock48 is closed (Q16/C16/C4 versus
 versus Gen32:50%/50%/59.375%/56.25%, all uncertain). Primary total208 games/30637
 legal moves, no failure/cap/fallback; no confirmation candidate selected.
 Actual masked-C4 oracle passes6333 positions and48 search pairs. Compact-degree
-node16 then clock16 are active, with BRE-node48 next under the separate follow-up.
+node16 and clock16 are closed (59.375%/56.25%, both uncertain); BRE-node48 is active under the separate follow-up.
 See wave6-followup-admission.json. The untrained visibility feasibility probe passes
 independent feature/symmetry checks but establishes no efficiency or fitting gain.
 Use unique bounded launch logs and verify actual receipt
