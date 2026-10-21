@@ -27,7 +27,7 @@ search. Architectural complexity or lower validation loss alone is insufficient.
 | W4-BRE-CONTROL-LR001 / LR003 | Both completed64 and Best64; original failed LR001 session successfully resumed |
 
 All managed roots are under E:/SeedV6-Networks. Exact checkpoint IDs, hashes and
-sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`, `wave3-trained-checkpoints.json`, `wave4-owner-readiness.json`. Frozen reference
+sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`, `wave3-trained-checkpoints.json`, `wave4-owner-readiness.json`, `wave4-trained-checkpoints.json`. Frozen reference
 network SHA256 is `5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7`.
 Original lineages/campaigns/checkpoints remain preserved. W1 human training is verified
 complete for investigation; it does not establish competitive maturity. Never resume
@@ -85,211 +85,145 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
 
 ## Current action and exact resume point
 
-**Human actions required after this prompt: None.** G4 was satisfied by the owner
-report and persisted verification, not merely a later invocation. Do not repeat G4
-or follow historical Gen33 Resume instructions. Preserve all six live roots.
+**Human actions required after this prompt: None.** G4 is complete, verified from
+persisted evidence. Do not repeat training or historical Gen33 recovery instructions.
+The original objective remains open; no successor or production adoption is established.
 
-Current unit: execute the prospective Wave4 development assessment in
-WAVE4-ASSESSMENT. Audit/freeze/parity/calibration are complete. The model plan binds
-nine distinct Latest/Best endpoints; Best63 differs from Latest64 in three residual
-arms. Both continued BRE rates are mandatory controls. Fixed-node primary288 games
-are CLOSED,35656 moves independently verified, no failures/caps/missing pairs.
-CUBIC001 Best63 and CUBIC003 Latest64 score68.75% against Gen32, but BRE003 also
-scores68.75%; all residual-minus-BRE003 intervals include zero. BRE001 scores40.625%
-despite better validation. These are small selected development comparisons.
-The preselected-Best100ms192-game protocol is CLOSED,26798 legal moves, zero
-failures/caps/fallbacks. Scores: GATE00143.75%,GATE00348.4375%,CUBIC00154.6875%,
-CUBIC00356.25%,BRE00146.875%,BRE00359.375%; all paired intervals include50%.
-Warm same-root NPS ratios: GATE.61-.62,CUBIC.71-.75,BRE.97-.99.
-Direct comparisons against both actual continued BRE endpoints are now active.
-Exact plans: `wave4-primary-node-plan.json`, `wave4-primary-clock-plan.json`;
-runtime: `wave4-trained-runtime.json`; evidence under `raw/wave4`.
-Before launch, inspect any existing BrnSuccessorMatch process and wait for it;
-never start a competing runner. The wrapper now also holds a worktree launch lease
-and rejects existing runner processes. Resume only the active immutable plans/receipts,
-inspecting errors and batch limits;
-never enlarge closed W3 protocols. Primary rate, Best/latest, inference cost and
-common-opponent differences are recorded; the focused direct controls and calibration
-diagnostics now test the unresolved architectural value. A fixed last-eight
-checkpoint average improves residual development prediction at unchanged inference
-size/cost; explicit hash/ancestry-bound research loading and12 tests plus96 legal
-smoke plies pass. No optimizer/checkpoint is changed. See the average plans/results;
-the frozen33535b4 runtime reproduced all diagnostic results exactly, and all eight
-full/half averaged residuals pass actual cache/search oracles. The first diagnostic's
-unretained jar identity remains explicitly unknown, not retrospectively inferred.
-Fit-only rank removal on averaged cubic models gives plausible quality/cost tradeoffs;
-full16 reproduction and independent prediction checks pass. The isolated sparse-rank
-prototype passes actual-model parity but only rank4/8 reduces transition cost;
-rank12/16 offers no gain. Defer integration pending pruned chess quality evidence.
-Packed-layout oracles also pass, but variable timing baselines leave its incremental
-benefit uncertain; no sparse/packed core path is admitted. Pruned function matches
-use the existing dense cache.
-Fixed-window maturity comparison verifies GATE/BRE prediction improvement but
-CUBIC full CP degradation; half calibration partly offsets it. Extra generations
-are not automatically an improvement. See wave4-maturity-average-results.json.
-The prospective direct admission fixes448 follow-up games against both actual BRE
-Gen64 endpoints, all four residual means, additive means and full/half calibration
-on eight previously unused development roots. Primary-clock is complete/validated;
-Both half-change direct node plans are CLOSED (96games each;12992/13259 legal
-moves). GATE001 mean scores62.5/65.625% against BRE001/003; CUBIC00175/56.25%;
-GATE00359.375/43.75%; CUBIC00340.625/43.75%. Same-rate BRE means68.75/34.375%.
-Only eight pairs each; no expressive separation. The large opening-set reversal
-for BRE001/Gen32 triggered four exact orientation replays (595 moves), all passed
-and excluded from strength counts. See direct results and orientation records.
-Direct-full-node and both pruned node plans are CLOSED. Full scale materially
-changes the LR003 node ranking; full cubic pruning loses its encouraging prediction
-advantage in chess. See WAVE4-ASSESSMENT and the exact result manifests.
-Direct-clock-LR001 is CLOSED:96games/13113 legal moves, no failures/caps/fallbacks.
-GATE00121.875%,CUBIC00146.875% versus BRE001 half under time, despite62.5/75%
-at nodes. Inference cost remains material; no architectural rejection follows.
-Direct-clock-LR003 is also CLOSED:96games/13508 moves, zero failures/caps/fallbacks.
-GATE001/003 both31.25%,CUBIC00153.125%,CUBIC00359.375%,BRE003 mean50%,Gen3234.375%.
-The original448-game direct admission is CLOSED (61709 legal moves).
-Current match plan: separately admitted32 direct-full-clock games (batches01..03). Use
-wave4-average-runtime.json. See wave4-direct-admission.json; fixed448-game budget.
-Also admitted:64 rank4-vs-rank16 node games, full/half, after13 tests and actual
-masked score/search oracles pass. Use wave4-pruned-admission.json and the separate
-wave4-mask-runtime.json; dense cache means no pruning speed claim. Do not mix
-runtimes or enlarge completed protocols. No favorable partial-score stopping.
-Closed primary protocols retain their original frozen jars. Fresh confirmation
-partition1 remains unused. All32 development roots have now been consumed. No architecture decision or further training is inferred
-from loss or an initial equal-time defeat.
+Current unit: finish the controlled trained-W4 assessment, then test complementary
+continued-base/nonlinear compositions. The research frontier is evidence-driven:
 
-All admitted W3 protocols are closed:1152 strength-screen games and153189
-independently replayed moves. Primary320, calibration320, fresh-node192 and fresh
-clock/delta320. No failures/caps/missing pairs; the primary short-clock study's two
-legal fallbacks remain included and documented. Never pool reused roots or
-chronologically separate runtimes as independent confirmation. The32 fresh roots
-share some early prefixes; pair intervals are descriptive, not verified independent
-opening-family intervals. Full results: `wave3-primary-results.json`,
-`wave3-calibration-results.json`, `wave3-fair-control-node-results.json`,
-`wave3-clock-results.json`.
+1. **Closed:** all64 BRE full-versus-half calibration controls,8970 legal moves.
+   Both node scores are50%; full clock scores37.5% atLR001 and34.375% atLR003
+   against their half variants. Small selected screens, not proof of optimal scaling.
+   Use `wave4-bre-scale-admission.json` and frozen `wave4-average-runtime.json`.
+2. **Active:** the admitted32-game depth control at131072 nodes, unchanged GATE001
+   and CUBIC001 half means versus BRE001 half. See `wave4-depth-admission.json`.
+   This separates absolute search depth from the earlier time/node cost contrast.
+3. **Then:** prospectively fixed96 hybrid games in `wave4-hybrid-direct-admission.json`:
+   full GATE001, full CUBIC001 and packed rank4 CUBIC001 on the same BRE001 half
+   base, each16 games at131072 nodes and16 at100ms. Use ONLY
+   `wave4-packed-core-runtime.json`. No hybrid strength games have begun.
+   Three selected nonlinear ablations pass actual cache/search oracles; see
+   `wave4-selected-hybrid-ablation-readiness.json`. No ablation matches yet.
+4. Any promising hybrid must face both BRE rates, frozen Gen32 and an expressive
+   ablation. It combines two post-reference training streams; matched additional
+   BRE training/data diversity may remain a human gate before causal conclusions.
+   No new substantive training or human gate is admitted yet.
 
-The verified G4 pause sentinel was preserved in raw/wave4/g4-completed-pause.txt
-and removed after admission; there is currently no research pause sentinel.
-Wave4 assessment is active; no autonomous training is admitted. Tournaments remain one game,
-one worker/engine,no pondering,64MiB TT,768MiB JVM,ActiveProcessorCount1,
-BelowNormal,12games/240seconds per batch, finishing the current game. No competing
-heavy jobs or substantive Codex training.
+Before launch, inspect active Java research processes and preserved receipts. Never
+start a competing runner, change frozen plans/runtimes, enlarge closed protocols or
+stop on a favourable partial score. The batch wrapper holds a worktree lease and
+rejects active matches/diagnostics; each process binds its launcher hash. The separate
+read-only probe wrapper is validated for active-lease/incompatible-runtime rejection
+and three normal actual probes. It enforces the same lease, jar hashes, capabilities
+and bounded resources after the preserved runtime mislaunch below.
 
-## Evidence, limitations and provenance
+Resources: one concurrent game, one worker/engine, no pondering,64MiB TT,768MiB
+JVM,ActiveProcessorCount1,BelowNormal,12games/240seconds per batch (finish current
+game). No concurrent heavy build/probe/training. The G4 pause sentinel was preserved
+at raw/wave4/g4-completed-pause.txt and removed after audit/admission. No current
+pause sentinel. Substantive training remains exclusively the owner's GUI action.
 
-All99 W3 initial/intermediate endpoints remain preserved; CUBIC Best31 differs from
-latest32. G3 used32 generations/262144 added updates per family. Original source
-progress started at zero and overlaps Gen32 history. Hybrid stable geometry splits
-and raw cursors differ from BRE sequential holdout; equal counts are not identical
-data or effective optimization. W4 copies each family's existing state, matching
-its two rate arms while retaining those cross-family confounds.
+## Completed W4 evidence and interpretation
 
-Actual owner readiness verifies691 original checkpoint/history/settings/reference/
-session/lock files unchanged, plus source cursor/selection/configuration hashes
-separately bound during preparation. See the scope correction in WAVE4/readiness:
-the inventory excluded the acquisition directory, not scratch. Frozen Gen32's
-bundled SHA remains exact. No W1/W3/frozen model was overwritten or trained.
+Exact training: all199 initial/new/reference checkpoint+optimizer pairs pass codec,
+checksums and24-board runtime/state integer parity. All192 new histories have expected
+parentage,8192 updates/generation, no warnings or unsettled reservation/partial state.
+Both rate arms within each family have identical data ranges/hashes; GATE/CUBIC also
+match. BRE's inherited cursor/split differs, so architectures did not see identical
+data. The failed BRE001 Gen33 attempt persisted no provisional updates and its
+original session ultimately completed. Best63 differs fromLatest64 for GATE001 and
+both CUBIC arms. See `wave4-trained-checkpoints.json`, training audit/validation and
+`WAVE4-ASSESSMENT.md`. Lower-rate validation is better in32/32 residual and31/32 BRE
+matched generations; this does not establish better chess or an optimal rate.
 
-Correctness evidence includes gradients, codecs, exact continuation and actual-model
-cache/search parity. GATE/CUBIC guarded delta caches each passed eight balanced
-6333-position/48-search runs with zero integer/search differences. These empirical
-and conservative numerical checks are not a universal floating-point proof.
-Thirteen continuation-preparation tests passed earlier; the final owner-native test
-passes all six actual configurations with twelve preserved screenshots. Seven
-independent match-analysis tests pass. Failed fixture/audit assumptions are retained
-and explained; no production training defect was inferred from them.
+Closed strength screens (all development, not independent confirmation):
 
-This G3 assessment root began clean at87008af/build46. Runtime changes are committed
-through31b6d49/build50: material reuse0583989/build47, GATE delta b765a7f/build48,
-CUBIC delta cfae34d/build49, exact-state continuation31b6d49/build50. Frozen clock
-runtimes separately bind15e2ba4/build47, b765a7f/build48 and cfae34d/build49.
-Later analysis and readiness changes are tooling/tests/reports and do not bump the
-application. Inspect Git for the closing handoff commit. No push, deployment,
-production-default replacement, finalizer or root journal creation. Root
-CODEXLOG_CURRENT.md was absent; that historical handoff retained build50.
+- Primary288 node/192 clock games: CUBIC001 Best63 and CUBIC003 Latest64 node68.75%
+  against Gen32, but BRE003 also68.75%. Best-half clock scores GATE00143.75%,
+  GATE00348.4375%,CUBIC00154.6875%,CUBIC00356.25%,BRE00146.875%,BRE00359.375%.
+  All clock pair intervals include50%; no residual-minus-BRE003 separation.
+- Original direct448 games,61709 legal moves, against both actual BRE64 controls,
+  using fixed last-eight means. Low-rate node advantages do not consistently survive
+  equal time. LR001 clock: GATE00121.875%,CUBIC00146.875%; LR003 clock:
+  GATE001/00331.25%,CUBIC00153.125%,CUBIC00359.375%. Selected full-clock32 adds
+ 4528 legal moves; both high-rate full corrections43.75% against BRE003 half.
+- Pruned64 node games,8250 legal moves: cubic rank4 versus rank16 full39.0625%,
+  half51.5625%, uncertain. Better prediction does not establish harmless pruning.
+- Four orientation replays reproduce595 moves/scores/depth/nodes/results exactly;
+  excluded from strength. They support no loading/orientation defect explaining the
+  large opening-set reversal. Opening dependence and variance remain material.
 
-The focused G4 seek remediation began clean at d7d7599/build50 and is implemented
-in fc69aeb/build51. It corrects
-continuation navigation inheritance without changing evaluator, optimizer, data
-selection or search policy. The earlier readiness tests used offsets below4096
-and failed to detect the omission; their readiness conclusion was insufficient.
-The new tests cover large inherited offsets, missing/corrupt/uncovered indexes,
-locked repair, exact failed/resumed Adam equality, real source boundary decoding
-and native GUI Resume. Build51's Windows image/archive, extracted-image checks and
-six-lineage Swing verification using its packaged jars/bundled runtime pass.
-The owner successfully completed training with the repair. Detailed historical
-evidence: WAVE4 and the remediation manifest. G4 is complete; the research
-objective is unchanged. That remediation ended with no running training/tournament.
-Current assessment began clean at d7c53d8/build51; G4 audit/admission is committed
-at8acdc4e. Research-only ablation instrumentation does not change application build51.
-No finalizer, journal creation, push or production replacement.
+Primary uses `wave4-trained-runtime.json`; original direct/remaining scale/depth use
+`wave4-average-runtime.json`; pruning uses `wave4-mask-runtime.json`. Preserve all.
+All32 development roots are consumed; confirmation partition1 remains untouched.
+Do not pool these selected/reused screens as independent games. All W3 protocols
+are also closed (1152 games/153189 legal moves); their two historical legal fallbacks
+remain included. See WAVE3-ASSESSMENT and its frozen manifests, not a reopened test.
 
-Raw evidence is local-only under raw/wave1..wave4 and module build paths; a fresh
-checkout lacks it. Verify availability before analysis. Compact tracked manifests
-bind local reports, exact configurations, hashes and limitations. Preserve all
-negative/failed/frozen evidence. A completed turn or implementation is not programme
-success, adoption or user acceptance. The next admissible action is the active trained-W4 assessment above.
+## Implemented research refinements and their limits
 
+Fixed Gen57..64 parameter averages improve residual development prediction at
+unchanged model size. They are explicitly bound to eight inputs; no averaged Adam
+state or fake checkpoint exists. Parameter averaging differs from function averaging
+for nonlinear models. Exact loaders, cache/search oracles and smoke pass. The first
+average diagnostic's unretained executable identity remains unknown; the separately
+frozen33535b4 replay exactly reproduces its numerical result. CUBIC maturity is mixed:
+full CP worsens fromW3 toW4, while half calibration improves. No generic maturity cure.
 
-Current implementation question: combine a continued BRE table with the existing
-nonlinear correction at unchanged one-base inference structure. The fixed-grid
-hybrid feasibility diagnostic supports complementary prediction signal, especially
-with BRE001; ordinary additive mixing does not reproduce its consistent benefit.
-See wave4-hybrid-feasibility-verified.json. Explicit inference composition is implemented with35 distinct passing targeted
-test cases, including loader/component identity and unchanged blend behaviour.
-Actual-model prediction/cache/search, cost checks and legal-play smoke now pass
-(see the readiness evidence below). Both component identities must
-be bound; no combined optimizer/checkpoint is implied. No hybrid games are yet
-admitted and no new substantial training is authorized. The core inference addition qualifies build52 in its implementation commit;
-see wave4-hybrid-implementation-validation.json. Native packaging/GUI acceptance
-is not claimed for this research-only composition. Existing protocols continue using their frozen jars.
+Explicit continued-base hybrid APIs are implemented in583310e/build52. Formula:
+Gen32 + .5*(BRE64-Gen32) + .5*(residual mean-Gen32). One compiled additive base,
+not two evaluator calls. Eight actual compositions and two zero controls pass6333
+positions/48 search-oracle root passes each,4096-row algebra/CE reproduction and128
+legal smoke plies. The failed1024-node smoke remains excluded; its separate32768-node
+replacement passed intentional caps. Full/constant-gate/quadratic/unary prediction
+ablations show useful conditional/cubic signal on consumed panels, not chess value.
+See `wave4-hybrid-readiness.json`, feasibility and ablation records. No combined
+trainable checkpoint/optimizer or GUI/default adoption is implied.
 
-Before any architectural superiority claim, also finish the newly admitted64 BRE
-full-versus-half calibration games (both rates, nodes/time), after the pending
-clock screens. See wave4-bre-scale-admission.json. Earlier W3 preference and W4
-prediction loss do not establish the strongest W4 BRE chess calibration.
+Packed cubic cache is implemented in c396945/build53, explicitly opted in. Same
+source payload, periodic rebuild and conservative rounding guard; only zero-head
+components are packed.21 targeted tests pass. Four actual rank4/rank16/zero and
+original/continued-base oracles pass4x6333 positions and48 root passes each with
+zero integer/search differences.64 smoke plies pass;8 intentional caps excluded.
+Rank4 search costs about11% less than same-base dense, with28409 primitive workspace
+bytes versus4329; full rank16 gives no measured search saving. Source weights and
+headers are separate memory costs. This optimizes the pruned function and does not
+prove pruning retains chess quality. `wave4-packed-core-readiness.json` binds evidence.
+The original isolated prototype retains `wave4-packed-runtime.json`; do NOT confuse
+it with the integrated `wave4-packed-core-runtime.json`.
 
+The initial integrated freeze-name collision safely refused to overwrite the old
+prototype, but the shell incorrectly continued to four probes using that old runtime.
+Their unsupported fields were ignored. All four are excluded in
+`wave4-packed-probe-runtime-incident.json`; replacement probes verify capabilities
+and all jars first. No source model/runtime was altered. Preserve the failed/negative
+evidence; do not infer correctness from the excluded outputs.
 
-Hybrid actual readiness is now complete: wave4-hybrid-readiness.json binds eight
-compositions and two zero controls, each6333-position/48-search oracles, plus
-4096-row algebra/CE reproduction and128 independently verified legal smoke plies.
-The initial1024-node smoke failure is preserved; its separate32768-node replacement
-passed with16 intentional caps, all excluded from strength. Frozen runtime:
-wave4-hybrid-runtime.json, source583310e/build52. Observed transition cost is near
-the original residual, not BRE. No hybrid strength protocol is yet admitted.
-Both direct-clock plans are complete. Continue selected direct-full-clock
-(currently batches01..03), then BRE full/half controls. Use the original frozen averaging
-runtime for those plans, never the hybrid runtime. Then choose a bounded hybrid
-comparison that retains both additive controls and an expressive-value ablation.
-No new human action or training gate is yet required.
+## Preservation, historical provenance and acceptance
 
-A further32-game equal-node depth sensitivity check is prospectively admitted in
-wave4-depth-admission.json: unchanged GATE001/CUBIC001 half means versus BRE001
-half at131072 nodes, on the same eight development pairs. The earlier32768-node
-versus100ms contrast also changes absolute search depth; do not attribute its
-score gap solely to speed. Keep the original averaging runtime. This follows the
-clock/calibration controls and precedes any new substantial training direction.
-The research-only hybrid unary/constant-gate/quadratic ablation generator is now
-compiled and verified on all eight actual compositions. Gate means use only
-first1024/source without labels. Full predictions reproduce exactly; all removed
-conditional/cubic terms worsen CE on both sources, with stronger effects for gates.
-See wave4-hybrid-ablation-results.json. This admits no strength games. Select and
-verify actual ablated search functions before any mechanism-value chess comparison.
+All1405 audited W4 live files and710 prior W3/frozen files were unchanged by the
+read-only G4 audit/freeze; no W1 artifact was touched. Continued work uses isolated
+frozen inputs and writes no owner model store. Final preservation recheck is still
+required at the stopping boundary. Source cursor/split, sparse BRE versus dense
+residual Adam, sequential promotion validation and aggregate hybrid exposure remain
+comparison limitations. A displayed generation or Best pointer is not an identity.
 
-Hybrid provenance caveat: combining a continued base and a separately trained
-correction uses two post-reference training streams, unlike one BRE endpoint.
-Data overlap/diversity and aggregate training cost remain confounds. Do not call a
-hybrid victory a controlled architectural gain without the expressive ablation
-and appropriate training control; matched further GUI training may be justified
-if the prepared hybrid tests show value. No such human gate is admitted yet.
+Historical G3 implementation:87008af/build46 start, material reuse0583989/build47,
+GATE delta b765a7f/build48,CUBIC delta cfae34d/build49,continuation31b6d49/build50.
+Seek repair fc69aeb/build51 and final evidence d7c53d8 preserve exact failed/resumed
+Adam equality, real large-offset decoding and six-lineage native GUI Resume checks.
+The owner completed G4 using build51; no repeat repair is indicated. Current root
+began clean at d7c53d8/build51; audit/admission8acdc4e, hybrid583310e/build52,
+packed c396945/build53. Later research tooling/reports do not bump the application.
+No finalizer, push, deployment, default replacement or journal creation. Root
+CODEXLOG_CURRENT.md is absent. Inspect Git for later coherent evidence commits.
 
-Completed bounded cost diagnostic: wave4-cubic-layout-results.json records the
-same-JVM rotated dense/sparse/packed score comparison on existing half-correction
-rank masks. All score oracles pass; packed rank4 costs25-30% less than dense and
-7-9% less than sparse. BrnCubicLayoutProbe is compiled and verified. This resolves the
-previous cross-run timing ambiguity; it does not authorize pruning adoption or
-infer chess quality from speed. Next implementation question: promote an explicit packed research cache, then
-verify actual search parity/throughput at a batch boundary. Keep existing clocks
-on their frozen runtime and do not infer pruned chess quality from this speed gain.
-
-
-The selected full-clock32 is now closed (both full corrections43.75% vsBRE003 half; see results). Packed cache research implementation passes21 targeted tests and its old-runtime rejection. Freeze its build53 jars and execute the actual four-model score/search plan before any packed games. Then finish the existing64 BRE calibration and32 deeper-node controls using the original averaging runtime. No human gate or action is yet required.
-
-Packed actual-model score/search and smoke verification now passes under c396945/build53; see wave4-packed-core-readiness.json. The old prototype runtime retains its original name; use wave4-packed-core-runtime.json for the integrated cache. The bounded BRE scale control loop is active (node001, node003, clock001, clock003, two batches each); then run depth control. No new training gate yet.
+Raw evidence is local-only under raw/wave1..wave4 and build paths; a fresh checkout
+lacks it. Verify availability before analysis. Tracked manifests/reports bind paths,
+identities/configurations/results and limitations. All historical detail and negative
+findings remain in WAVE1..WAVE4-ASSESSMENT, manifests and Git history; this state
+consolidation removes superseded current-action prose, not accepted evidence.
+Turn completion, implementation completion and research acceptance are distinct.
+No statistically credible positive strength improvement or useful-expression
+causation has yet been established. Continue at the active frontier above.

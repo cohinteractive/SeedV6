@@ -644,3 +644,12 @@ Prospective hybrid screen
 The next96-game mechanism screen is frozen before its outcomes: three LR001 corrections on the identical BRE001 half base (full GATE, full CUBIC, packed rank4 CUBIC),48 games at131072 nodes and48 at100ms, eight colour-reversed pairs each. It activates only after the existing calibration/depth controls close or a material contradiction warrants amendment. Selection follows lower-rate validation, complementary prediction and measured cache cost, not hybrid chess results. Both BRE rates and Gen32 remain required subsequent targets for any promising composition; nonlinear ablation and aggregate-training control remain essential. See wave4-hybrid-direct-admission.json.
 
 Packed rank4 hybrid prediction algebra preserves BT4 improvement (.625507 vs base .636918) but CP is slightly worse than base (.588801 vs .588289) and worse than full cubic hybrid (.582806). This is a real quality/cost tradeoff, not a universally improved predictor. Consumed panels, no new fit or independent validation claim. See wave4-packed-hybrid-prediction.json.
+
+
+Calibration controls and ablation readiness
+
+All64 BRE full-versus-half games are closed,8970 legal moves, no failure/cap/fallback. Full BRE scores50% at32768 nodes for both rates, but37.5% at100ms forLR001 and34.375% forLR003. Broad pair uncertainty and reused openings preclude optimal-calibration claims. Half-change BRE remains an appropriate strong control; the depth interaction reinforces the admitted131072-node sensitivity test, now active.
+
+All three selected hybrid ablations pass6333-position and48 root/pass canonical/cache search oracles (packed adds same-base dense). Maximum raw errors below2.7e-15. A dedicated read-only probe wrapper now fails closed on runtime hash/capability mismatch, shares the tournament lease, rejects orphan diagnostic/match processes, and caps a probe at300seconds. Active-lease and incompatible-runtime negative checks plus three normal probes pass; forced timeout was not exercised. The batch wrapper also recognizes orphan diagnostic processes. No search/model/optimizer change, no application bump. See wave4-selected-hybrid-ablation-readiness.json.
+
+STATE has been consolidated to remove superseded current-action prose; historical findings remain here, in the manifests and Git history.

@@ -15,10 +15,13 @@ $lease=[IO.File]::Open((Join-Path $leaseDirectory 'brn-successor-batch.lock'),
     [IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None)
 try {
 $active=@(Get-CimInstance Win32_Process -Filter "Name='java.exe'" | Where-Object {
-    $_.CommandLine -and $_.CommandLine.Contains('com.ohinteractive.seedv6.tools.eval.BrnSuccessorMatch')
+    $_.CommandLine -and ($_.CommandLine.Contains('com.ohinteractive.seedv6.tools.eval.BrnSuccessorMatch') `
+        -or $_.CommandLine.Contains('com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe') `
+        -or $_.CommandLine.Contains('com.ohinteractive.seedv6.tools.eval.BrnHybridProbe') `
+        -or $_.CommandLine.Contains('com.ohinteractive.seedv6.tools.eval.BrnCubicLayoutProbe'))
 })
 if ($active.Count -ne 0) {
-    throw 'An existing BRN successor match runner is active; preserve it and wait before another launch.'
+    throw 'An existing BRN successor match or diagnostic is active; preserve it and wait before another launch.'
 }
 if (Test-Path -LiteralPath 'build/research/brn-successor-batches.pause') {
     throw 'Research batches intentionally paused before launch; preserve receipts and resume with a new log prefix.'
