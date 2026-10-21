@@ -1,0 +1,61 @@
+{
+  "id": "wave9-final-preservation-v1",
+  "recordedUtc": "2026-10-21T20:04:05.184103+00:00",
+  "status": "passed",
+  "inventories": [
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\trained-before-01.json",
+      "sha256": "8884401cc5b60b82e1715c1504be28c5daca8496e902581885eb17f7bb4ebad7",
+      "verifiedFiles": 1405,
+      "filterLineageIds": null
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-before-01.json",
+      "sha256": "f5ca8fc5833dc2179b31baacb54c63b6e2a76921456de327893a9cc8c97a5fa9",
+      "verifiedFiles": 925,
+      "filterLineageIds": null
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-before-01.json",
+      "sha256": "9ad0e9e99320ed2fa24ba1f3fd210a4c28f6355e854e4e7a8c569d8a5b18c541",
+      "verifiedFiles": 941,
+      "filterLineageIds": null
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-before-01.json",
+      "sha256": "ca539c9c5ae69d6b1740be8b1f62137525e5c69ff076a7c4e29839ecf3d226b0",
+      "verifiedFiles": 695,
+      "filterLineageIds": null
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\trained-before-01.json",
+      "sha256": "875b429a9e33abdc22a00028a11851c5fd120a115f38e2cb1007b35fad21f515",
+      "verifiedFiles": 1876,
+      "filterLineageIds": null
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\seek-remediation-before-01.json",
+      "sha256": "f5e13f5b44347494e38059040337c10b60e55fb78c7cd0f327ec8c4a62a058b7",
+      "verifiedFiles": 710,
+      "filterLineageIds": [
+        "22b42be6-15c4-3f36-a376-3776aa1931f2",
+        "e6b6775d-39cd-392b-bd18-5e964a445f62",
+        "ed0750a3-3163-3979-9f26-2e466c49c771",
+        "235d0688-e060-44e3-8f1e-119c39bc8017"
+      ]
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\owner-before-preview-01.json",
+      "sha256": "e62149b1e2fbad39d0d4e8f8c35dcf4ab36d78f5f1167f14181f170c995b990e",
+      "verifiedFiles": 72,
+      "filterLineageIds": null
+    }
+  ],
+  "uniqueVerifiedFiles": 6620,
+  "newOwnerFileSetUnchanged": true,
+  "failures": [],
+  "limitations": [
+    "W1 and source datasets were never modified; no fresh complete W1 or dataset rehash is claimed.",
+    "Counts per inventory can overlap; uniqueVerifiedFiles deduplicates exact paths."
+  ]
+}

@@ -1,11 +1,12 @@
 # Wave8 fixed-basis investigation and preparation
 
 22 October2026. Existing CGLHW, contract revision2. G7 is complete and all176
-Wave7 development games are closed. **G8 is completed and verified through Gen168. Wave8 assessment is active.
+Wave7 development games are closed. **G8 is completed and verified through Gen168. All176 Wave8 development games are closed; G9 is the current human gate.
 No programme success is claimed.**
 Current authority/restart: STATE, CONTRACT and WAVE8-ASSESSMENT. Earlier proposal
 and sensitivity records below preserve how this gate was challenged and admitted.
-Exact artifact identities and complete hashes: wave8-owner-readiness.json.
+Exact prepared identities: wave8-owner-readiness.json. Verified trained Latest/Best
+identities and complete hashes: wave8-trained-checkpoints.json.
 
 ## Historical G8 instructions (fulfilled; do not repeat)
 

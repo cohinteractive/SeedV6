@@ -1,0 +1,43 @@
+{
+  "id": "wave9-gate-boundary-validation-v1",
+  "recordedUtc": "2026-10-21T20:07:39.275683+00:00",
+  "status": "passed",
+  "ownerReadinessEvidenceAndImageHashesVerified": 37,
+  "frozenRuntimeJarHashesVerified": 15,
+  "g8FixedGames": 176,
+  "g8IndependentlyReplayedLegalMoves": 23873,
+  "trainingPerformed": "No substantive training; bounded diagnostics only",
+  "researchProcessesRemaining": 0,
+  "humanGate": "G9 active; four owner runs through176 block trained assessment",
+  "build": 59,
+  "implementationCommit": "e804482157d6e9064077dbbeb0c4c9a7d9ca06ce",
+  "fullSuiteRun": false,
+  "evidence": {
+    "docs\\research\\brn-successor-cglhw\\STATE.md": "c65af105858165a936ffc966470256838b7c1cfe48c96588595dfb1ebc11f1a8",
+    "docs\\research\\brn-successor-cglhw\\WAVE8.md": "cda69cd68f8b2c228816a594db9e63a96f24ec70a0cea082b622276a68b4f890",
+    "docs\\research\\brn-successor-cglhw\\WAVE8-ASSESSMENT.md": "5b4a3281c57359fdfbfe0d027068209f72e8d7bd343fc00effc6b98d221b258d",
+    "docs\\research\\brn-successor-cglhw\\WAVE9.md": "3e04e68d31e6e6609087f816bc37118a4287ffcc2585a80bab692515ef5dbd75",
+    "docs\\research\\brn-successor-cglhw\\wave8-assessment-results.json": "b99eb5ea50854e921ea4dbf89c8f2e8210ebcd3e843229fc90f08718e76c497e",
+    "docs\\research\\brn-successor-cglhw\\wave9-owner-readiness.json": "ef5f46665a70b12a43ed4b4fa0cdc40cf10dcfdda265061d859a2038e15a1ae4",
+    "docs\\research\\brn-successor-cglhw\\wave9-final-preservation.json": "664c8b9590cb7f4ad83cfb5760a6f7daf355768076b425e874046f59aea03110",
+    "docs\\research\\brn-successor-cglhw\\wave9-package-source-provenance.json": "737a69d15fcea892d9efefbfd764612c046082f7ac6ddd4779472a506b4d1ac6",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\final-processes-01.json": "05ce8248874586ee46e1df04b0cb1d415e4ebf19ee8dfb2ce3843536c2694909",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\close-wave8-document-01.py": "64df6a42b731b8233e1b77dee8cecd64105c2756f53d55375a33b04c1b5fb266",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave8\\finish-reference-01.ps1": "c0c9e324b1b1d974f25a5bdbc86725f79660957d10f35c33c780443fe11660e6",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave8\\bre-clock-launch-observation-01.json": "212480ac456a6e9cf11dd48ca03c47f5e778d2c814683dcfc8a1d721f9898157",
+    "build\\research\\brn-successor-batches.pause": "e1d9d80147c806d41e17b621048b7649cfff238fdbc8823e4df31535edf0c450"
+  },
+  "limitations": [
+    "No independent strength confirmation or useful cubic gain established.",
+    "Final trained G9 behaviour is not known; user training remains necessary.",
+    "Raw evidence is local-only; a fresh checkout lacks these outputs."
+  ],
+  "reportSerializationFinalization": {
+    "reason": "Git whitespace check identified CRLF in the new package provenance report. Normalized that report to LF and rebound dependent report hashes before commit; no experiment/configuration/result/model change.",
+    "preservedPreNormalizationReports": {
+      "docs\\research\\brn-successor-cglhw\\raw\\wave9\\report-format-originals-01\\wave9-package-source-provenance.json": "da66d6abccc781de5a8e5f4d15ce0e8b75fd4467dc720e3ffb88854cc0ec438d",
+      "docs\\research\\brn-successor-cglhw\\raw\\wave9\\report-format-originals-01\\wave9-owner-readiness.json": "a17366664eeb227288909681e2469b5a3cf09491e9c27814f5e4fd08a1e8cc65",
+      "docs\\research\\brn-successor-cglhw\\raw\\wave9\\report-format-originals-01\\wave9-boundary-validation.json": "ad75b4f4c5e67c4e3bfd771002d4339b633b15a577d2cbbd1f0028706b9f5bd1"
+    }
+  }
+}

@@ -1,0 +1,544 @@
+{
+  "id": "wave8-trained-development-assessment-v1",
+  "admission": "docs\\research\\brn-successor-cglhw\\wave8-assessment-protocol.json",
+  "admissionSha256": "0e43dfafc07fdf0093d9717d7784590d8e79f59d1ae9045421148e5fbc2c70f6",
+  "protocols": [
+    {
+      "protocol": "degree-node",
+      "report": "docs\\research\\brn-successor-cglhw\\wave8-degree-node-results.json",
+      "sha256": "bc4f3045ae184b38532a03b350cbf6a296bdda2823d67b22a1b04f4e8e2ec716",
+      "games": 32,
+      "validatedMoves": 4308,
+      "models": [
+        {
+          "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+          "wins": 12,
+          "draws": 8,
+          "losses": 12,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.5,
+          "pairStandardError": 0.08228507357554792,
+          "descriptiveNormal95": [
+            0.3387212557919261,
+            0.6612787442080739
+          ],
+          "pairScores": [
+            0.25,
+            0.5,
+            0.5,
+            0.5,
+            0.75,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.5,
+            0.5,
+            0.75,
+            0.75,
+            1.0,
+            0.75,
+            0.25
+          ],
+          "boundedPair95": [
+            0.1604746210648451,
+            0.8395253789351549
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.1604746210648451,
+            0.8395253789351549
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+          "usablePairedRoots": 16,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 8,
+          "meanDepthDifference": 0.0625,
+          "lessEqualMoreDepth": [
+            1,
+            13,
+            2
+          ],
+          "medianNodeRatio": 1.0,
+          "medianElapsedRatio": 1.058558299468687,
+          "medianNpsRatio": 0.9451389306753384
+        }
+      ],
+      "peakWorkingSetMiB": 581.90625,
+      "engineCpuSeconds": 745.59375
+    },
+    {
+      "protocol": "degree-clock",
+      "report": "docs\\research\\brn-successor-cglhw\\wave8-degree-clock-results.json",
+      "sha256": "d40675b835505ef9f7e05297f05fe46bbba76b6e08eef85ecc6a44bc110e2197",
+      "games": 32,
+      "validatedMoves": 4085,
+      "models": [
+        {
+          "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+          "wins": 10,
+          "draws": 9,
+          "losses": 13,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.453125,
+          "pairStandardError": 0.056911618248532234,
+          "descriptiveNormal95": [
+            0.3415782282328768,
+            0.5646717717671231
+          ],
+          "pairScores": [
+            0.0,
+            0.5,
+            0.75,
+            0.5,
+            0.75,
+            0.25,
+            0.25,
+            0.5,
+            0.75,
+            0.5,
+            0.5,
+            0.5,
+            0.25,
+            0.25,
+            0.25,
+            0.75
+          ],
+          "boundedPair95": [
+            0.11359962106484511,
+            0.7926503789351549
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.11359962106484511,
+            0.7926503789351549
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+          "usablePairedRoots": 16,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 9,
+          "meanDepthDifference": -0.1875,
+          "lessEqualMoreDepth": [
+            4,
+            11,
+            1
+          ],
+          "medianNodeRatio": 0.9107814603626971,
+          "medianElapsedRatio": 1.000061980725155,
+          "medianNpsRatio": 0.9107437239251717
+        }
+      ],
+      "peakWorkingSetMiB": 572.34765625,
+      "engineCpuSeconds": 811.125
+    },
+    {
+      "protocol": "anchor-node",
+      "report": "docs\\research\\brn-successor-cglhw\\wave8-anchor-node-results.json",
+      "sha256": "a50c8e53e0e02d098f66a09ae2979f3fe7e15afe0e4d98aeedf0798c5e2b4ac8",
+      "games": 16,
+      "validatedMoves": 2439,
+      "models": [
+        {
+          "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+          "wins": 7,
+          "draws": 4,
+          "losses": 5,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.5625,
+          "pairStandardError": 0.10296930888098925,
+          "descriptiveNormal95": [
+            0.3606801545932611,
+            0.7643198454067389
+          ],
+          "pairScores": [
+            0.5,
+            1.0,
+            0.5,
+            1.0,
+            0.25,
+            0.5,
+            0.5,
+            0.25
+          ],
+          "boundedPair95": [
+            0.08233860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.08233860434003965,
+            1
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 5,
+          "meanDepthDifference": 0.125,
+          "lessEqualMoreDepth": [
+            0,
+            7,
+            1
+          ],
+          "medianNodeRatio": 1.0,
+          "medianElapsedRatio": 1.0501499296262644,
+          "medianNpsRatio": 0.952249896261351
+        }
+      ],
+      "peakWorkingSetMiB": 560.375,
+      "engineCpuSeconds": 413.84375
+    },
+    {
+      "protocol": "anchor-clock",
+      "report": "docs\\research\\brn-successor-cglhw\\wave8-anchor-clock-results.json",
+      "sha256": "98d870df13f240ac07ac0c593cb7d3ded3a42dd950a18da1fe6b84d43d510e2f",
+      "games": 16,
+      "validatedMoves": 2082,
+      "models": [
+        {
+          "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+          "wins": 8,
+          "draws": 5,
+          "losses": 3,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.65625,
+          "pairStandardError": 0.09375,
+          "descriptiveNormal95": [
+            0.47250000000000003,
+            0.84
+          ],
+          "pairScores": [
+            0.5,
+            0.5,
+            1.0,
+            1.0,
+            0.75,
+            0.5,
+            0.25,
+            0.75
+          ],
+          "boundedPair95": [
+            0.17608860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.17608860434003965,
+            1
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 5,
+          "meanDepthDifference": 0.125,
+          "lessEqualMoreDepth": [
+            0,
+            7,
+            1
+          ],
+          "medianNodeRatio": 0.9388268701996336,
+          "medianElapsedRatio": 1.000071979817284,
+          "medianNpsRatio": 0.9388356212811424
+        }
+      ],
+      "peakWorkingSetMiB": 573.33984375,
+      "engineCpuSeconds": 417.171875
+    },
+    {
+      "protocol": "bre-clock",
+      "report": "docs\\research\\brn-successor-cglhw\\wave8-bre-clock-results.json",
+      "sha256": "7b65f1cc05aa552dedbd2b31dbcbb1e6c8c7229ec0f639f8a75643d63da8270d",
+      "games": 32,
+      "validatedMoves": 4178,
+      "models": [
+        {
+          "name": "W8-FIXED-QUAD-R4-LR001-g168-half",
+          "wins": 5,
+          "draws": 5,
+          "losses": 6,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.46875,
+          "pairStandardError": 0.119872514125871,
+          "descriptiveNormal95": [
+            0.23379987231329286,
+            0.7037001276867072
+          ],
+          "pairScores": [
+            0.25,
+            0.75,
+            0.25,
+            0.0,
+            0.75,
+            0.25,
+            0.5,
+            1.0
+          ],
+          "boundedPair95": [
+            0,
+            0.9489113956599604
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0,
+            0.9920822698507302
+          ]
+        },
+        {
+          "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+          "wins": 5,
+          "draws": 3,
+          "losses": 8,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.40625,
+          "pairStandardError": 0.10498192871700757,
+          "descriptiveNormal95": [
+            0.2004854197146652,
+            0.6120145802853348
+          ],
+          "pairScores": [
+            0.5,
+            0.0,
+            0.5,
+            0.25,
+            0.25,
+            0.5,
+            0.25,
+            1.0
+          ],
+          "boundedPair95": [
+            0,
+            0.8864113956599604
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0,
+            0.9295822698507302
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W8-FIXED-QUAD-R4-LR001-g168-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 6,
+          "meanDepthDifference": -0.125,
+          "lessEqualMoreDepth": [
+            1,
+            7,
+            0
+          ],
+          "medianNodeRatio": 0.8671800802726454,
+          "medianElapsedRatio": 1.0000167467062746,
+          "medianNpsRatio": 0.8671449497225434
+        },
+        {
+          "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 5,
+          "meanDepthDifference": -0.125,
+          "lessEqualMoreDepth": [
+            1,
+            7,
+            0
+          ],
+          "medianNodeRatio": 0.8489331389344339,
+          "medianElapsedRatio": 1.000053232046306,
+          "medianNpsRatio": 0.8488353861751161
+        }
+      ],
+      "peakWorkingSetMiB": 583.7109375,
+      "engineCpuSeconds": 831.46875
+    },
+    {
+      "protocol": "reference-clock",
+      "report": "docs\\research\\brn-successor-cglhw\\wave8-reference-clock-results.json",
+      "sha256": "eef26e350cbacb4b9addab4b1e70dc6c8e5ab7c319d1108055151b8a197266d7",
+      "games": 48,
+      "validatedMoves": 6781,
+      "models": [
+        {
+          "name": "W8-FIXED-QUAD-R4-LR001-g168-half",
+          "wins": 4,
+          "draws": 1,
+          "losses": 11,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.28125,
+          "pairStandardError": 0.1288470508005519,
+          "descriptiveNormal95": [
+            0.02870978043091832,
+            0.5337902195690817
+          ],
+          "pairScores": [
+            0.0,
+            0.5,
+            1.0,
+            0.5,
+            0.25,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "boundedPair95": [
+            0,
+            0.7614113956599604
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0,
+            0.8282584404503077
+          ]
+        },
+        {
+          "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+          "wins": 7,
+          "draws": 3,
+          "losses": 6,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.53125,
+          "pairStandardError": 0.15978151935869,
+          "descriptiveNormal95": [
+            0.21807822205696759,
+            0.8444217779430324
+          ],
+          "pairScores": [
+            0.0,
+            1.0,
+            1.0,
+            1.0,
+            0.0,
+            0.25,
+            0.75,
+            0.25
+          ],
+          "boundedPair95": [
+            0.051088604340039645,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0,
+            1
+          ]
+        },
+        {
+          "name": "W8-BRE-CONTROL-LR001-g168-half",
+          "wins": 11,
+          "draws": 2,
+          "losses": 3,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.75,
+          "pairStandardError": 0.08183170883849714,
+          "descriptiveNormal95": [
+            0.5896098506765456,
+            0.9103901493234544
+          ],
+          "pairScores": [
+            0.5,
+            0.75,
+            1.0,
+            1.0,
+            1.0,
+            0.75,
+            0.5,
+            0.5
+          ],
+          "boundedPair95": [
+            0.26983860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.20299155954969228,
+            1
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W8-FIXED-QUAD-R4-LR001-g168-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 5,
+          "meanDepthDifference": 0,
+          "lessEqualMoreDepth": [
+            1,
+            6,
+            1
+          ],
+          "medianNodeRatio": 0.8925867594866557,
+          "medianElapsedRatio": 0.9999355259948974,
+          "medianNpsRatio": 0.8926449019802556
+        },
+        {
+          "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 6,
+          "meanDepthDifference": 0.25,
+          "lessEqualMoreDepth": [
+            0,
+            6,
+            2
+          ],
+          "medianNodeRatio": 0.8247836308689043,
+          "medianElapsedRatio": 0.9999867624729124,
+          "medianNpsRatio": 0.8248630658673461
+        },
+        {
+          "name": "W8-BRE-CONTROL-LR001-g168-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 6,
+          "meanDepthDifference": 0.25,
+          "lessEqualMoreDepth": [
+            0,
+            6,
+            2
+          ],
+          "medianNodeRatio": 1.0861465335840992,
+          "medianElapsedRatio": 0.9999490185991918,
+          "medianNpsRatio": 1.0864534628921483
+        }
+      ],
+      "peakWorkingSetMiB": 571.00390625,
+      "engineCpuSeconds": 1336.578125
+    }
+  ],
+  "totalGames": 176,
+  "validatedMoves": 23873,
+  "maximumSampledWorkingSetMiB": 583.7109375,
+  "totalEngineCpuSeconds": 4555.78125,
+  "limitations": [
+    "Development only; no pooled strength score, independent confirmation or success claim.",
+    "Eight or sixteen reversed-colour opening pairs per comparison; roots reused across related protocols, unknown opening-family dependence and prior candidate selection.",
+    "Normal intervals are descriptive; bounded intervals still assume independent opening pairs.",
+    "Distinct budgets/opponents answer distinct questions; fixed budgets completed without favorable optional stopping.",
+    "Fixed heads have identical initial Q4 function/data and new head-only Adam; BRE retains distinct historical data and optimizer. Exact Q4 anchor isolates zero cubic terms plus lower runtime cost."
+  ]
+}

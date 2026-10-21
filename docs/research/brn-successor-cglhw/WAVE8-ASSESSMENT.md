@@ -1,118 +1,156 @@
-# Wave8 fixed-head assessment
+# Wave 8 fixed-head assessment
 
-22 October2026. Existing CGLHW, contract revision2. G8 is verified complete.
-Assessment active; no independent superiority or programme success claimed.
+22 October 2026. Original CGLHW, contract revision 2. **G8 is verified complete
+through Gen168 and all 176 prescribed development games are closed. No independent
+strength superiority, useful cubic strength advantage or programme success is
+established.** The next admitted experiment is WAVE9; G8 requires no retraining.
 
-All three sessions completed eight generations161..168. Every frozen value,
-excluded zero Adam moment, parent/step increment, recipe, data reservation and
-inherited CP seek prefix passes.28 checksum-valid payload/state pairs each pass
-24 runtime boards. Exact identities/hashes/history: wave8-trained-checkpoints.json.
-Latest168 prospectively primary; head Best167, BRE Best168. No partial state or
-staging artifacts. All1876 inventoried owner files unchanged; models frozen into
-raw/wave8/trained-frozen-01. No substantive autonomous training was performed.
+## Training and checkpoint verification
 
-Both head arms start from the exact Q4 Gen160 function with fresh Adam step0;
-fixed cubic freezes all3845 Q4 weights and trains four new cubic coefficients;
-fixed quadratic freezes3841 values and trains four existing quadratic heads.
-BRE retains full Adam and distinct historical data/split. Heads share all source
-reservations through168. Each adds1048576 training examples,262144 validation,
-8388608 visits and65536 updates. Equal nominal rate is not equal conditioning.
+All three sessions completed eight generations161..168 from their exact prepared
+Gen160 bootstraps. Nine checkpoints per arm, expected parent chains and 8,192-step
+increments pass. Latest is168 for all; fixed cubic and fixed quadratic Best are167,
+BRE Best is168. Full checkpoint IDs, network/optimizer hashes, ancestry, histories,
+recipes and validation records are in [wave8-trained-checkpoints.json](wave8-trained-checkpoints.json).
+Selection was prospective Latest168, without retrospective Best substitution.
 
-Training/validation losses are finite. Cubic beats quadratic validation in3/8
-generations; mean cubic-minus-quadratic0.00000078368. First4/last4 validation
-means cubic.10573650/.10463036, quadratic.10570503/.10466027,
-BRE.10670902/.10491812. Panels change each generation; these are not fixed-test
-learning curves. Optimizer objective is cross-entropy; reported loss half-squared
-error. Best promotions compare candidate/incumbent on that generation's panel.
+All 28 payload/state pairs, including the explicit frozen Gen32 reference, pass
+checksum and 24-board runtime/optimizer score parity. Every frozen weight and
+excluded zero Adam moment is exact through every generation. Heads end at65,536
+steps; BRE at3,129,344. Sessions are COMPLETED, final attempts settled, with no
+partial/staging state or recorded anomaly. Uninterrupted wall-clock execution is
+not independently known. Source reservations, recipes and inherited CP seek
+prefixes pass. Read-only frozen copies and admission are retained locally under
+raw/wave8/trained-frozen-01 and bound by wave8-trained-admission.json.
 
-Consumed-panel diagnostics use unchanged prior data, full/raw/half mappings,
-status-valid sensitivity, and Gen160/Latest168/Best. Java metrics independently
-reproduce within3.34e-15. Latest cubic improves all four mapped valid evaluation
-panels modestly; quadratic and BRE are mixed. Best cubic is worse than Latest on
-those panels. No new calibration fitting or independent generalization claim.
-See wave8-fitting-old/fresh5.json. Coefficient sign/magnitude changes between
-167/168 motivate stability diagnostics; they do not prove defective training.
+Both head arms begin at the exact W7 Q4 Gen160 function with new Adam step0.
+Cubic freezes all3,845 Q4 weights and trains four new cubic coefficients;
+quadratic freezes3,841 values and trains four existing quadratic heads. Their
+source reservations match through Gen168. BRE retains its full optimizer and distinct
+historical data/split. Each adds1,048,576 training examples,262,144 validation
+examples,8,388,608 visits and65,536 updates. Equal nominal learning rate does not
+imply equal functional conditioning.
 
-Frozen programme: wave8-assessment-protocol.json.176 development games answer
-matched degree, exact zero-C3 anchor, continued BRE and frozen reference questions.
-Use exact frozen build58, Latest168, prior half-change/quarter mapping, common
-Policy4/QXRAY. New32 development roots exclude prior exact roots; related families
-and training overlap remain unknown. Partition1 untouched. Fixed budgets, paired
-colours, no outcome-dependent extension. Resource envelope and stopping rules
-are in the protocol. Results pending; do not infer strength from fitting.
+All losses are finite. Cubic beats quadratic validation in3/8 generations, with
+mean cubic-minus-quadratic +0.00000078368. First-four/last-four means are cubic
+.10573650/.10463036, quadratic .10570503/.10466027 and BRE .10670902/.10491812.
+Panels change each generation, so these are not fixed-test learning curves.
+Training optimizes cross-entropy; displayed training/validation loss is
+half-squared outcome error. Best promotions compare incumbent/candidate on that
+generation's panel. No strong convergence, overfitting or capacity conclusion is
+warranted from eight changing panels.
 
-Next: complete admitted comparisons and actual cache/cost measurements; investigate
-optimization stability as evidence warrants; select the next useful research unit.
-Human actions required after this prompt: None while autonomous assessment proceeds.
+On four consumed, status-valid evaluation panels, Latest cubic improves the
+established half-change/search-mapped cross-entropy modestly; quadratic/BRE are
+mixed. Best cubic is worse than Latest on those panels. Java metrics independently
+reproduce within3.34e-15 (wave8-fitting-old/fresh5.json). Coefficient signs and
+magnitudes vary considerably between167/168. This supports optimization/calibration
+investigation, not a claim of corruption or inherent cubic unsuitability.
 
-## Bounded follow-up diagnostics
+## Fixed development strength programme
 
-Uniform161..168 averaging is inference-only and equals functional averaging to
-roundoff on fixed bases. It reduces the tiny cubic signal and is worse than
-Latest168 on all four mapped valid evaluation panels; no cubic-average match
-is admitted. Quadratic/BRE averages improve their Latest mapped losses, but
-neither establishes additional expressive value. Exact figures and integer-score
-impact: wave8-head-impact.json. Latest cubic changes about23..30% of mapped
-integer scores, mean absolute0.23..0.30 score units, RMS0.0033..0.0039 pawns.
-This is a small signal relative to its measured cost, not proof it cannot matter.
+Protocol: wave8-assessment-protocol.json; complete results and evidence hashes:
+[wave8-assessment-results.json](wave8-assessment-results.json), with individual
+wave8-*-results.json reports. Frozen build58 and exact Latest168 payloads were
+used throughout. Common Policy4/QXRAY, material-plus-quarter mapping, half learned
+change from Gen32, reversed colors and fixed node/time budgets. Thirty-two new
+development roots exclude prior exact roots; training and opening-family overlap
+remain unknown. Roots are reused across related comparisons. Partition1 remains
+untouched for separately admitted confirmation.
 
-A separately admitted six-arm,128-update diagnostic compares quadratic, cubic
-and material-phase-times-quadratic fixed bases under raw and search-mapped
-objectives.2043 status-valid consumed fit rows, same nominal Adam.001 and seed,
-no owner writes/model export. Phase conditioning has no consistent advantage
-and is not selected for implementation. Search-mapped fitting improves mapped
-loss more strongly; raw losses often worsen. It remains unclear whether this is
-useful nonlinear information or ordinary calibration. A matched affine control
-is the next discriminating diagnostic, before any objective/architecture gate.
-See wave8-phase-head-admission/results.json. No substantial training occurred.
+NPS below is the median ratio at paired identical initial search roots, not a
+universal engine speed ratio. W/D/L and score refer to the first column.
 
-The head-impact analyzer initially compared BRE trainer binary64 predictions
-with the averaging tool's compiled runtime predictions as if byte-identical.
-The corrected analysis separates that known representation difference (maximum
-metric delta2.89e-9) from exact same-representation checks (1.12e-15). No model,
-training, source or match correction was required; original raw outputs remain.
+| Candidate | Opponent | Budget | W/D/L | Score | Descriptive paired95% | Bounded paired95% | NPS ratio |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Fixed cubic | Trained fixed quadratic | 262,144 nodes | 12/8/12 | 50.0000% | 33.87–66.13% | 16.05–83.95% | 0.945 |
+| Fixed cubic | Trained fixed quadratic | 200 ms/move | 10/9/13 | 45.3125% | 34.16–56.47% | 11.36–79.27% | 0.911 |
+| Fixed cubic | Unchanged Q4 anchor | 262,144 nodes | 7/4/5 | 56.2500% | 36.07–76.43% | 8.23–100.00% | 0.952 |
+| Fixed cubic | Unchanged Q4 anchor | 200 ms/move | 8/5/3 | 65.6250% | 47.25–84.00% | 17.61–100.00% | 0.939 |
+| Fixed quadratic | Continued BRE | 200 ms/move | 5/5/6 | 46.8750% | 23.38–70.37% | 0.00–94.89% | 0.867 |
+| Fixed cubic | Continued BRE | 200 ms/move | 5/3/8 | 40.6250% | 20.05–61.20% | 0.00–88.64% | 0.849 |
+| Fixed quadratic | Frozen Gen32 | 200 ms/move | 4/1/11 | 28.1250% | 2.87–53.38% | 0.00–76.14% | 0.893 |
+| Fixed cubic | Frozen Gen32 | 200 ms/move | 7/3/6 | 53.1250% | 21.81–84.44% | 5.11–100.00% | 0.825 |
+| Continued BRE | Frozen Gen32 | 200 ms/move | 11/2/3 | 75.0000% | 58.96–91.04% | 26.98–100.00% | 1.086 |
 
-The matched four-coefficient affine control produces larger mapped CE reductions
-than every interaction-only pilot on all four panels. Affine raw fitting helps
-three raw panels but worsens all mapped panels. Hence the apparent mapped-head
-fitting benefit does not isolate expressive value; ordinary calibration is a
-strong confound. Preserve this negative control. The next useful question is
-whether cubic terms add value *after* matched calibration, rather than comparing
-an uncalibrated additive baseline with a differently fitted nonlinear function.
-No architecture/training gate is admitted solely from these small diagnostics.
+All 23,873 recorded moves replay independently as legal; no game
+failure, ply cap or fallback. Every resource receipt verifies one game, one search
+worker, no pondering,64MiB TT,768MiB heap,ActiveProcessorCount1 and BelowNormal.
+Each launch was bounded at12 games/240 seconds, finishing the current game.
+Maximum sampled working set was583.7MiB;
+recorded engine CPU totaled4555.8seconds. No training ran
+with tournaments. The owned idle build daemon was released after packaging;
+pre-existing user Java processes were preserved.
 
-Degree-node closes32 games: cubic12 wins/8 draws/12 losses,50%, descriptive95%
-33.87..66.13, bounded16.05..83.95.4308 moves independently replayed; no failures.
-Paired-root cubic/quadratic NPS.94514. This establishes no degree advantage.
-Remaining fixed protocols continue without an outcome-dependent budget change.
+Normal intervals are descriptive, not selection-adjusted confirmation. Bounded
+intervals assume independent opening pairs, which family dependence may violate;
+within-plan simultaneous bounds are in the individual reports and do not correct
+all prior selection or cross-protocol comparisons. Do not pool different budgets
+or opponents. All fixed budgets completed without favorable stopping or extension.
+One premature BRE batch launch was rejected at the exclusive lease before any
+engine/receipt creation, then resumed only after the preceding batch exited0;
+raw/wave8/bre-clock-launch-observation-01.json preserves the event.
 
-Degree-clock closes32 games: cubic10 wins/9 draws/13 losses,45.3125%,
-descriptive95%34.16..56.47, bounded11.36..79.27.4085 moves independently
-replayed; no failures. Paired-root cubic/quadratic NPS.91074. These small
-comparisons do not establish useful cubic strength or its absence.
+The direct degree comparisons do not establish a cubic advantage. Positive exact-
+anchor point estimates remain uncertain and do not establish benefit beyond an
+adapted additive control. Both candidates' continued-BRE point estimates are
+below50%, also uncertain. No candidate is admitted to independent success testing.
+The evidence neither proves useful cubic strength nor rules out nonlinear
+expressiveness generally. Training maturity, low-dimensional fixed features,
+calibration and throughput remain plausible contributors.
 
-The joint calibration diagnostic (wave8-calibrated-degree-admission/results)
-fits affine4, affine+quadratic8 and affine+cubic8 on identical2043 consumed
-fit rows with128 updates/arm. Both joint models improve mapped CE beyond
-matched affine on all four consumed evaluation panels; cubic beats quadratic
-on only fresh BT4. This supports a matched calibration-aware follow-up, not
-cubic preference or generalization/strength claims. WAVE9 describes provisional
-implementation preparation, with the G8 assessment still required to finish.
+## Inference cost and bounded diagnostics
 
-The exact-anchor controls close16 games each. Cubic scores56.25% equal nodes
-(7/4/5, descriptive95%36.07..76.43) and65.625% equal time (8/5/3,
-47.25..84.00). Independently replayed2439/2082 moves; no failures. NPS ratios
-against unchanged Q4 anchor are.95225/.93884. The paired bounded intervals
-remain much wider. Both point estimates are positive, preserving a plausible
-cubic signal, but neither interval excludes50%; adapted quadratic still matches
-or exceeds cubic in the direct degree comparisons. Do not pool distinct budgets
-or treat this selected developmental evidence as an independent expressive gain.
+Actual frozen G8 cache probes each pass6,333 positions and48 full/cache search
+pairs, with zero integer/fresh/search differences and maximum raw error2.22e-15.
+Cached medians are cubic 255.552ns and quadratic 204.704ns; corresponding separate
+Gen32 medians151.404ns and137.040ns. Full evaluation medians are639.664ns and
+555.986ns. Sequential host/JIT variation limits direct ratios. Parameter counts
+are3,849/3,845 plus the frozen base; combined serialized model sizes825,896/825,864B;
+workspaces3,753/3,689 primitive bytes, excluding object headers. Evidence:
+wave8-trained-readiness.json and raw/wave8/trained-cache-*-half-01.json.
 
-The continued-BRE clock controls close32 games: quadratic5/5/6,46.875%,
-descriptive95%23.38..70.37; cubic5/3/8,40.625%,20.05..61.20.4178 moves
-independently replayed, no failures. Same-root NPS relative to BRE is.86714
-for quadratic and.84884 for cubic. These results establish neither superiority
-nor architectural inferiority. Only the frozen-reference48-game unit remains.
-One premature batch04 launch was rejected at the exclusive worktree lease before
-starting an engine or writing receipts; batch03 finished normally before resume.
-The observation is retained at raw/wave8/bre-clock-launch-observation-01.json.
+Cubic costs about25% more than quadratic in these isolated cached measurements;
+the direct equal-time search ratio is about.911. Against continued BRE, quadratic
+and cubic ratios are.867/.849 on another root set. These differences demonstrate
+why isolated latency cannot substitute for measured search or strength.
+
+Uniform161..168 head averaging equals functional averaging to roundoff but reduces
+the already small cubic signal and worsens all four mapped panels versus Latest;
+no averaged-cubic match was admitted. Quadratic/BRE averages improve fitting but
+do not demonstrate extra expressiveness. Latest cubic changes about23–30% of
+mapped integer scores, mean absolute0.23–0.30 score units, RMS.0033–.0039 pawns.
+See wave8-head-impact.json. Its initial BRE comparison mixed trainer and compiled
+representations; the corrected analysis separates the known2.89e-9 metric delta
+from same-representation agreement1.12e-15. Raw failed output is preserved; no
+model, data, training or match repair was required.
+
+Bounded128-update diagnostics use2,043 consumed fit rows, identical nominal Adam
+.001 and seed, no owner writes or model export. Material-phase-conditioned
+quadratic features lack consistent benefit and were not selected. Search-mapped
+fitting helps mapped loss more than raw fitting, but a four-coefficient ordinary
+affine control improves more than interaction-only pilots on all four panels.
+Thus calibration is a material confound, not proof of expressive information.
+Joint affine+quadratic and affine+cubic improve further; cubic wins only fresh
+BT4. Full configurations and negative results: wave8-phase-head-admission/results,
+wave8-affine-head-admission/results and wave8-calibrated-degree-admission/results.
+These are diagnostics, not substantive training or independent generalization.
+
+## Decision and continuity
+
+Admit W9's matched affine-only, affine+quadratic and affine+cubic head models,
+plus exact BRE continuation, to test degree value after shared calibration and
+search-aligned fitting. This follows the completed G8 evidence and concrete
+diagnostics, not a favorable selected match. The underlying Q4 basis remains fixed;
+all new head coefficients/Adam begin at zero in distinct identities. See WAVE9
+and wave9-gate-admission.json for architecture, validation, exact human settings
+and restart conditions. No unchanged G8 extension is requested.
+
+All existing model artifacts are preserved; final audited inventory results are
+in wave9-final-preservation.json. W1 and source data were untouched, without a new
+complete checksum claim. Raw evidence is local-only and absent from a fresh Git
+checkout; manifests bind the recorded local paths. Application implementation is
+build59/e804482, while the closed G8 games remain frozen build58 evidence.
+
+Human actions required after this prompt: the consolidated G9 GUI training in
+WAVE9, blocking trained G9 assessment. G8 itself requires no further human action.

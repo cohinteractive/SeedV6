@@ -1,0 +1,21 @@
+{
+  "id": "wave9-package-source-provenance-v1",
+  "recordedUtc": "2026-10-21T20:04:33.664977+00:00",
+  "embeddedSourceRevision": "e804482157d6 (uncommitted changes)",
+  "interpretation": "Native package retains its honest dirty-worktree marker. All tracked differences from implementation commit e804482 are research documentation/evidence; no tracked runtime/source/version differences remain. This is a verified local candidate, not a clean-tree release claim.",
+  "trackedDifferencesFromImplementation": [
+    "docs/research/brn-successor-cglhw/STATE.md",
+    "docs/research/brn-successor-cglhw/WAVE8-ASSESSMENT.md",
+    "docs/research/brn-successor-cglhw/WAVE9.md",
+    "docs/research/brn-successor-cglhw/wave8-anchor-clock-results.json",
+    "docs/research/brn-successor-cglhw/wave8-bre-clock-results.json",
+    "docs/research/brn-successor-cglhw/wave9-initial-function-parity.json",
+    "docs/research/brn-successor-cglhw/wave9-initial-function-plan.json",
+    "docs/research/brn-successor-cglhw/wave9-native-package-validation.json",
+    "docs/research/brn-successor-cglhw/wave9-runtime.json"
+  ],
+  "implementationCommit": "e804482157d6e9064077dbbeb0c4c9a7d9ca06ce",
+  "validatedJarEvidence": "wave9-native-package-validation.json",
+  "nativeVersionOutput": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\native-gui-01.stdout",
+  "nativeVersionOutputSha256": "9b138492b32cefd2369d6c6d00a170e6e94e71cdfd958cca80ababe56880dd19"
+}

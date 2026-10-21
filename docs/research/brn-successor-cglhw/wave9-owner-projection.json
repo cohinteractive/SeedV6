@@ -1,0 +1,122 @@
+{
+  "status": "passed",
+  "scope": "Independent exact byte/CRC/layout projection and source/data inheritance audit",
+  "entries": [
+    {
+      "candidate": "W9-CAL-AFFINE-R4-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CAL-AFFINE-R4\\ef6b7d2e-a8d3-397f-b66e-6f93d123d57e",
+      "checkpoint": "g000168-s000000000-191791f2dc359e702f9a4fd5c13f3044247f068e16cfdaf0a8533ecd669540c7",
+      "architecture": "BRN_GEN32_CAL_AFFINE_R4",
+      "projection": "calibrated-affine",
+      "networkSha256": "1f38d934d124dd520daff43284294b63176a67121f9d1ed0671ea9e7be0ee22e",
+      "modelBytes": 30864,
+      "step": 0,
+      "sourceStep": 65536,
+      "rate": 0.001,
+      "exactRetainedWeights": 3845,
+      "optimizer": "New zero calibrated-head Adam; source cubic heads omitted and source store preserved",
+      "zeroMomentValues": 7698,
+      "trainingSha256": "4ffe3d8eb0c5f07534bbb82b3059fe7e8398be8f854ae253a3b0dae96b700ac8",
+      "stateBytes": 92464,
+      "inheritedMetadata": {
+        "sources.json": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "cursors.json": "a7cc3bacddc403a12ffce3032b88fe60a8bf8ce71f8b6b582f9cee69de875b7f",
+        "configuration.json": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      },
+      "inheritedSeek": {
+        "training-data\\seek\\d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": "b40dcab76e09e0eac96dc911023811148ccb17cfe010dfdac65ceb39aa52e767"
+      },
+      "generation": 168,
+      "addedGenerations": 0,
+      "nextGeneration": 169,
+      "targetGeneration": 176
+    },
+    {
+      "candidate": "W9-CAL-QUAD-R4-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CAL-QUADRATIC-R4\\741f4848-b98f-3b26-9263-5f5adb4d20b1",
+      "checkpoint": "g000168-s000000000-39fb2a306f1fb72924aaa5eb00764051a8b41cea1e128dc51b7ed3bdf23276c6",
+      "architecture": "BRN_GEN32_CAL_QUADRATIC_R4",
+      "projection": "calibrated-quadratic",
+      "networkSha256": "cf89fd6caccc1f39be1875203774ecf8cc979980c1d76410a04cd62e978179a2",
+      "modelBytes": 30896,
+      "step": 0,
+      "sourceStep": 65536,
+      "rate": 0.001,
+      "exactRetainedWeights": 3845,
+      "optimizer": "New zero calibrated-head Adam; source cubic heads omitted and source store preserved",
+      "zeroMomentValues": 7706,
+      "trainingSha256": "4c6e81760f6823e3bd343a65898401ef53f7a1a294b8395dfcfe72c576bae06a",
+      "stateBytes": 92560,
+      "inheritedMetadata": {
+        "sources.json": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "cursors.json": "a7cc3bacddc403a12ffce3032b88fe60a8bf8ce71f8b6b582f9cee69de875b7f",
+        "configuration.json": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      },
+      "inheritedSeek": {
+        "training-data\\seek\\d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": "b40dcab76e09e0eac96dc911023811148ccb17cfe010dfdac65ceb39aa52e767"
+      },
+      "generation": 168,
+      "addedGenerations": 0,
+      "nextGeneration": 169,
+      "targetGeneration": 176
+    },
+    {
+      "candidate": "W9-CAL-CUBIC-R4-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CAL-CUBIC-R4\\d3694155-fb64-3037-a247-b5bf804b8d79",
+      "checkpoint": "g000168-s000000000-4294923477e1a39688d5942fdd34bc7c7841696b4864570d5bff26bbbf92eb8a",
+      "architecture": "BRN_GEN32_CAL_CUBIC_R4",
+      "projection": "calibrated-cubic",
+      "networkSha256": "e696c32709fcf8c29fb66d56414a98099ec25c5767de559bf8050b0f35bc5f7a",
+      "modelBytes": 30896,
+      "step": 0,
+      "sourceStep": 65536,
+      "rate": 0.001,
+      "exactRetainedWeights": 3845,
+      "optimizer": "New zero calibrated-head Adam; source cubic heads omitted and source store preserved",
+      "zeroMomentValues": 7706,
+      "trainingSha256": "d816ed6e80497072ecec85746607613d123c68b864c727053567149b94c38557",
+      "stateBytes": 92560,
+      "inheritedMetadata": {
+        "sources.json": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "cursors.json": "a7cc3bacddc403a12ffce3032b88fe60a8bf8ce71f8b6b582f9cee69de875b7f",
+        "configuration.json": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      },
+      "inheritedSeek": {
+        "training-data\\seek\\d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": "b40dcab76e09e0eac96dc911023811148ccb17cfe010dfdac65ceb39aa52e767"
+      },
+      "generation": 168,
+      "addedGenerations": 0,
+      "nextGeneration": 169,
+      "targetGeneration": 176
+    },
+    {
+      "candidate": "W9-BRE-CONTROL-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\b6135d13-24a9-3d5f-8cc3-63e1880e323e",
+      "checkpoint": "g000168-s003129344-eecb3b3370c98fecff98fd7a9c7357d78e9950c9748674a1087ffeba427ff566",
+      "architecture": "BRN_PAIR2",
+      "projection": "exact",
+      "networkSha256": "f19d3dd3b7fa9bc3adff21f0bef7f7b2b7d62ff3621d518098486a5ef77b932e",
+      "modelBytes": 795032,
+      "trainingSha256": "f1a50155f879dd5ac76b631f1dbfb9009ad65320da6cb1b2d8f48a72d9d65045",
+      "stateBytes": 2731424,
+      "inheritedMetadata": {
+        "sources.json": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "cursors.json": "4ea8020e148d1b9faaae541b1f2dd4f94e5b833732d1369eef0dee0594dbcc99",
+        "configuration.json": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      },
+      "inheritedSeek": {
+        "training-data\\seek\\d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": "e09b073d09ea2707c5c78707ab3ed70fd0ec80f5daa309be464a6f090d5f4e82"
+      },
+      "generation": 168,
+      "addedGenerations": 0,
+      "nextGeneration": 169,
+      "targetGeneration": 176
+    }
+  ],
+  "limitations": [
+    "No substantive training or strength verification.",
+    "GUI settings, checkpoint references and source readiness are verified separately by Java/native checks."
+  ],
+  "preparationReport": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\owner-preparation-01.json",
+  "preparationReportSha256": "635063d4d108daaa9d75bfb485a0a913997960bf29d30921b489ff837c62c74b"
+}

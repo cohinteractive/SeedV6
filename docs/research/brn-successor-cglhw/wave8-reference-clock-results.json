@@ -1,0 +1,504 @@
+{
+  "id": "wave8-reference-clock-v1-completed",
+  "status": "Closed fixed-budget development experiment",
+  "plan": "docs\\research\\brn-successor-cglhw\\wave8-reference-clock-plan.json",
+  "receipts": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\reference-clock",
+  "analysis": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\reference-clock-analysis-01.json",
+  "runtime": "docs\\research\\brn-successor-cglhw\\wave8-runtime.json",
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\wave8-reference-clock-plan.json": "2c97d4b8020c7398bacdede2624bee3eae7b121813afd41b0d7e8f5e7dbb9e4c",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave8\\reference-clock-analysis-01.json": "e2ea242fab05903df8b24c5b709e69686961178ad9e57c03dea4477dadf016d1",
+    "docs\\research\\brn-successor-cglhw\\wave8-runtime.json": "7fcb0f1d4418f0c09c180aa64d688f250431f59d1770f37a6cbb1430a7ebbb3e",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave8\\reference-clock\\model-bindings.json": "a8ee27aada9eb3f7ab78d55792dbb8af10f7d96bfc4ff6d92ecbe137b0e49a78"
+  },
+  "games": 48,
+  "validatedMoves": 6781,
+  "models": [
+    {
+      "name": "W8-FIXED-QUAD-R4-LR001-g168-half",
+      "wins": 4,
+      "draws": 1,
+      "losses": 11,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.28125,
+      "pairStandardError": 0.1288470508005519,
+      "descriptiveNormal95": [
+        0.02870978043091832,
+        0.5337902195690817
+      ],
+      "pairScores": [
+        0.0,
+        0.5,
+        1.0,
+        0.5,
+        0.25,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundedPair95": [
+        0,
+        0.7614113956599604
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        0.8282584404503077
+      ]
+    },
+    {
+      "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+      "wins": 7,
+      "draws": 3,
+      "losses": 6,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.53125,
+      "pairStandardError": 0.15978151935869,
+      "descriptiveNormal95": [
+        0.21807822205696759,
+        0.8444217779430324
+      ],
+      "pairScores": [
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        0.0,
+        0.25,
+        0.75,
+        0.25
+      ],
+      "boundedPair95": [
+        0.051088604340039645,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "W8-BRE-CONTROL-LR001-g168-half",
+      "wins": 11,
+      "draws": 2,
+      "losses": 3,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.75,
+      "pairStandardError": 0.08183170883849714,
+      "descriptiveNormal95": [
+        0.5896098506765456,
+        0.9103901493234544
+      ],
+      "pairScores": [
+        0.5,
+        0.75,
+        1.0,
+        1.0,
+        1.0,
+        0.75,
+        0.5,
+        0.5
+      ],
+      "boundedPair95": [
+        0.26983860434003965,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.20299155954969228,
+        1
+      ]
+    }
+  ],
+  "modelBindings": [
+    {
+      "gatedCache": false,
+      "name": "Gen32",
+      "originalManifest": {
+        "id": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+        "generation": 32,
+        "optimizerStep": 1753088,
+        "trainingDepth": 4,
+        "parentId": "g000031-s001228800-3b52a75c2077c9b9a44edcee222201e0b3a0b76dc8b9cef5ae99804fa5549c78",
+        "networkBytes": 795032,
+        "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "trainingBytes": 2731424,
+        "trainingSha256": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+        "architecture": "BRN_PAIR2"
+      },
+      "effectiveNetworkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "residualGain": 0.25
+    },
+    {
+      "gatedCache": false,
+      "name": "W8-FIXED-QUAD-R4-LR001-g168-half",
+      "originalManifest": {
+        "id": "g000168-s000065536-1715df0e06ba6c3177bef8230ce7db2c78b5235541ee0d7b1c8419d1d074745b",
+        "generation": 168,
+        "optimizerStep": 65536,
+        "trainingDepth": 4,
+        "parentId": "g000167-s000057344-6d1577cdfd1db18cd18d201422a0b1e58095bb5f94013e31822e5ef15f3be42b",
+        "networkBytes": 30832,
+        "networkSha256": "5dea364a4fc055564ff50f3a892b06c2a7a302cf3a5fbd296f39cbdc6268f2df",
+        "trainingBytes": 92368,
+        "trainingSha256": "778b8d39fd94066a975094ef6bb6e875871e1b84b2d709285afaede30a885c05",
+        "architecture": "BRN_GEN32_FIXED_QUADRATIC_R4"
+      },
+      "effectiveNetworkSha256": "3803814e02d1f3a76c75e5c97b1e4edf6b6d47ce3d8a6d8df968afbe5d0c871c",
+      "residualGain": 0.25,
+      "quadraticCache": "quadratic-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "gatedCache": false,
+      "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+      "originalManifest": {
+        "id": "g000168-s000065536-28a1c5695b6c0bc41dd95d3ba4f3f7cb479354305fe053a9910b189d17df2c73",
+        "generation": 168,
+        "optimizerStep": 65536,
+        "trainingDepth": 4,
+        "parentId": "g000167-s000057344-db698f87f59cf2023dc654bb3a7b7824a2811e3dbca077f6c96196a71f56dfe0",
+        "networkBytes": 30864,
+        "networkSha256": "c1ecc378294bfee8b06ac957e6115ce07a71b4a10fce63e69bc561dd6d0115c4",
+        "trainingBytes": 92464,
+        "trainingSha256": "98e2e47a11eed0fb2f4d16075840b75c2b5414c0ba22008d06efe960e78c450d",
+        "architecture": "BRN_GEN32_FIXED_CUBIC_R4"
+      },
+      "effectiveNetworkSha256": "ad6d690d87fc760111bcfab07a8bec01a8f8574f8b94630236ad23f2a81e7c32",
+      "residualGain": 0.25,
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "gatedCache": false,
+      "name": "W8-BRE-CONTROL-LR001-g168-half",
+      "originalManifest": {
+        "id": "g000168-s003129344-a60d5bba9a7ad33bdfed01c1ab879d91fda072a09a7ddad0a711a2d54a79dfbf",
+        "generation": 168,
+        "optimizerStep": 3129344,
+        "trainingDepth": 4,
+        "parentId": "g000167-s003121152-7e4de84e81da36d30c067651d38f0fc673d0f3d9c9fb7ce44d99be6fec426ab9",
+        "networkBytes": 795032,
+        "networkSha256": "f19d3dd3b7fa9bc3adff21f0bef7f7b2b7d62ff3621d518098486a5ef77b932e",
+        "trainingBytes": 2731424,
+        "trainingSha256": "f1a50155f879dd5ac76b631f1dbfb9009ad65320da6cb1b2d8f48a72d9d65045",
+        "architecture": "BRN_PAIR2"
+      },
+      "effectiveNetworkSha256": "61d1fb5a689f05f6b92672c1b59e4485c90a2f838bc72eebe1f679dfca6c7afb",
+      "residualGain": 0.25,
+      "correctionScale": 0.5,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "additiveMapping": "Gen32 compiled tables + scale * (continued compiled tables - Gen32 tables)"
+    }
+  ],
+  "sameRootSearch": [
+    {
+      "name": "W8-FIXED-QUAD-R4-LR001-g168-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 5,
+      "meanDepthDifference": 0,
+      "lessEqualMoreDepth": [
+        1,
+        6,
+        1
+      ],
+      "medianNodeRatio": 0.8925867594866557,
+      "medianElapsedRatio": 0.9999355259948974,
+      "medianNpsRatio": 0.8926449019802556
+    },
+    {
+      "name": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 6,
+      "meanDepthDifference": 0.25,
+      "lessEqualMoreDepth": [
+        0,
+        6,
+        2
+      ],
+      "medianNodeRatio": 0.8247836308689043,
+      "medianElapsedRatio": 0.9999867624729124,
+      "medianNpsRatio": 0.8248630658673461
+    },
+    {
+      "name": "W8-BRE-CONTROL-LR001-g168-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 6,
+      "meanDepthDifference": 0.25,
+      "lessEqualMoreDepth": [
+        0,
+        6,
+        2
+      ],
+      "medianNodeRatio": 1.0861465335840992,
+      "medianElapsedRatio": 0.9999490185991918,
+      "medianNpsRatio": 1.0864534628921483
+    }
+  ],
+  "telemetry": {
+    "W8-FIXED-QUAD-R4-LR001-g168-half": {
+      "moves": 1168,
+      "nodes": 354860152,
+      "elapsedNanos": 224116002600,
+      "sumDepth": 12415,
+      "fallbacks": 0,
+      "maximumMoveNanos": 225646300
+    },
+    "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304": {
+      "moves": 3390,
+      "nodes": 1199078420,
+      "elapsedNanos": 653309232600,
+      "sumDepth": 35636,
+      "fallbacks": 0,
+      "maximumMoveNanos": 205782200
+    },
+    "W8-FIXED-CUBIC-R4-LR001-g168-half": {
+      "moves": 1293,
+      "nodes": 391400594,
+      "elapsedNanos": 250667414800,
+      "sumDepth": 13171,
+      "fallbacks": 0,
+      "maximumMoveNanos": 203563400
+    },
+    "W8-BRE-CONTROL-LR001-g168-half": {
+      "moves": 930,
+      "nodes": 320561745,
+      "elapsedNanos": 177898914600,
+      "sumDepth": 10022,
+      "fallbacks": 0,
+      "maximumMoveNanos": 200369100
+    }
+  },
+  "commonOpponentContrasts": [
+    {
+      "left": "W8-FIXED-QUAD-R4-LR001-g168-half",
+      "right": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.25,
+      "pairStandardError": 0.11572751247156893,
+      "descriptiveNormal95": [
+        -0.4768259244442751,
+        -0.0231740755557249
+      ]
+    },
+    {
+      "left": "W8-FIXED-QUAD-R4-LR001-g168-half",
+      "right": "W8-BRE-CONTROL-LR001-g168-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.46875,
+      "pairStandardError": 0.08759561102834189,
+      "descriptiveNormal95": [
+        -0.6404373976155501,
+        -0.2970626023844499
+      ]
+    },
+    {
+      "left": "W8-FIXED-CUBIC-R4-LR001-g168-half",
+      "right": "W8-BRE-CONTROL-LR001-g168-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.21875,
+      "pairStandardError": 0.15263679461856033,
+      "descriptiveNormal95": [
+        -0.5179181174523783,
+        0.08041811745237826
+      ]
+    }
+  ],
+  "openingPrefixSensitivity": [
+    {
+      "plies": 4,
+      "uniquePrefixes": 7,
+      "largestGroup": 2
+    },
+    {
+      "plies": 8,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 12,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 16,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    }
+  ],
+  "processReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\reference-clock-batch-01.process.json",
+      "sha256": "bc05576eca6e6928d7177e400fe1711a389b60c7fae82a9f8f59531e6a43f6d5",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T19:43:57.2743570Z",
+      "sampledPeakWorkingSetBytes": 595845120,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave8-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 251.09375,
+      "plan": "docs/research/brn-successor-cglhw/wave8-reference-clock-plan.json",
+      "processId": 44128,
+      "startedUtc": "2026-10-21T19:39:51.5165772Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\reference-clock-batch-02.process.json",
+      "sha256": "9c63ada023900da3d8961cb1fbaaadc656c904bcdf484c4aa0dcfc71db12baa9",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T19:48:13.0592229Z",
+      "sampledPeakWorkingSetBytes": 598740992,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave8-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 246.984375,
+      "plan": "docs/research/brn-successor-cglhw/wave8-reference-clock-plan.json",
+      "processId": 8908,
+      "startedUtc": "2026-10-21T19:44:08.8013258Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\reference-clock-batch-03.process.json",
+      "sha256": "5703ff4e3aeb8c609be05b41898f1936fcc6572e71c1fd1e43ea3312df95df74",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T19:52:34.0464130Z",
+      "sampledPeakWorkingSetBytes": 539271168,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave8-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 262.546875,
+      "plan": "docs/research/brn-successor-cglhw/wave8-reference-clock-plan.json",
+      "processId": 40068,
+      "startedUtc": "2026-10-21T19:48:13.2723279Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\reference-clock-batch-04.process.json",
+      "sha256": "20404f6bcde114123e371840f97df8750d7b014aab7cc81d72a6e143700bd140",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T19:56:53.0426901Z",
+      "sampledPeakWorkingSetBytes": 595095552,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave8-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 260.015625,
+      "plan": "docs/research/brn-successor-cglhw/wave8-reference-clock-plan.json",
+      "processId": 39756,
+      "startedUtc": "2026-10-21T19:52:34.2304138Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\reference-clock-batch-05.process.json",
+      "sha256": "29dfe0022205b4daf7d7ab8189daa8f40d99b6ccc621f9848786c26ae156777a",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T20:01:42.3722416Z",
+      "sampledPeakWorkingSetBytes": 434262016,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave8-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 292.359375,
+      "plan": "docs/research/brn-successor-cglhw/wave8-reference-clock-plan.json",
+      "processId": 46948,
+      "startedUtc": "2026-10-21T19:56:53.2272375Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\reference-clock-batch-06.process.json",
+      "sha256": "b0e0f6e67692dc3848241a05aa80274c48fa26fe428c95ef0f1765a2eb648358",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T20:02:00.8870069Z",
+      "sampledPeakWorkingSetBytes": 352686080,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave8-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 23.578125,
+      "plan": "docs/research/brn-successor-cglhw/wave8-reference-clock-plan.json",
+      "processId": 51216,
+      "startedUtc": "2026-10-21T20:01:42.5702400Z"
+    }
+  ],
+  "separateDiagnosticProcessReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\cache-cubic-half-01.process.json",
+      "sha256": "5f4c44824bbd3e2c837ab474b11c28e007b06329dc24389cb9cff377fb9d0def",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\cache-quad-half-01.process.json",
+      "sha256": "6c9ddced1804fb909ec969a00d440cbb0feaff66ef6c4cc2441a0cfea8d62873",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-cache-cubic-full-01.process.json",
+      "sha256": "f0f4985e6dac13443a40ac87b305cced82c2a392fd811f7847d4c61752b257b8",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-cache-cubic-half-01.process.json",
+      "sha256": "4f7336e26c93c94f8e88ad1999ac5d2b9979d61d288e6c92654d8ad968080d8b",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-cache-quad-full-01.process.json",
+      "sha256": "9c97742e645660d85dfa604617d47ebd0e9cb63665ab1412da432e6fb2dd7b3f",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\isolated-cache-quad-half-01.process.json",
+      "sha256": "4f30e9cf8b76c710b345dd684a59b25d8ac20d87462ce9928962f9c1f1057139",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    }
+  ],
+  "maximumSampledWorkingSetMiB": 571.00390625,
+  "totalEngineCpuSeconds": 1336.578125,
+  "limitations": [
+    "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims.",
+    "Paired differences on shared complete opening pairs against the same reference. Positive favours left. Descriptive, unadjusted, not direct head-to-head strength or architectural causation.",
+    "Fresh search/TT at identical opening roots; different evaluator-dependent trees. Clock protocols warm up; node protocols do not. Descriptive cost/behaviour, not causal latency or strength.",
+    "Move-prefix grouping is a descriptive dependence warning, not ECO/source-game classification or proof of independent opening families. Pair intervals are unadjusted.",
+    "Hoeffding intervals assume independent bounded opening-pair scores; within-plan union bound covers only this plan, not prior candidate selection or repeated protocols. Independence remains unverified.",
+    "No final strength claim, selection-adjusted confirmation, or architectural causation inferred."
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "wave9-calibrated-fixed-basis-gate-admission-v1",
+  "recordedUtc": "2026-10-21T20:02:32.159656+00:00",
+  "decision": "Admit four separate G9 owner lineages and final packaged readiness verification; request human training only after readiness passes",
+  "objectiveUnchanged": true,
+  "g8GamesClosed": 176,
+  "rationale": [
+    "Cubic has no established advantage over the adapted quadratic or continued-BRE controls; positive exact-anchor development scores remain uncertain.",
+    "Frozen-reference scores cubic53.125%,quad28.125%,BRE75% are small selected development results, not confirmation. Continued additive training remains an essential practical control.",
+    "A matched four-parameter affine pilot explains substantial mapped fitting gains; joint affine+degree diagnostics motivate testing degree contribution after shared calibration.",
+    "This is a changed objective with matched additive controls, not an unchanged G8 extension or assumption of cubic superiority."
+  ],
+  "architecture": "Three shared frozen Q4 bases with new zero affine/optional quadratic/cubic heads; exact BRE continuation",
+  "dose": "Four lineages, eight additional generations169..176, .001/128/8epochs/131072positions/seed1/oneworker/heldoutWDL/inheritedsources",
+  "selection": "Prospective Latest176 primary; Best separately audited",
+  "expectedValueLimit": "No independent confirmation candidate admitted. If matched cubic again lacks useful value, prioritize a different information basis/conditional mechanism over unchanged head extension.",
+  "evidence": {
+    "docs\\research\\brn-successor-cglhw\\wave8-assessment-results.json": "b99eb5ea50854e921ea4dbf89c8f2e8210ebcd3e843229fc90f08718e76c497e",
+    "docs\\research\\brn-successor-cglhw\\wave8-trained-checkpoints.json": "fba5f9743aaad837815c4c4eba3942cd7ace8ed58901b1813aa19ee54de9936b",
+    "docs\\research\\brn-successor-cglhw\\wave8-head-impact.json": "61c7ed40956bfcfab532664b84cc39a183c5c871ce84d0ab04506e507d02f241",
+    "docs\\research\\brn-successor-cglhw\\wave8-phase-head-results.json": "43c7cd174dac48e92bd6d7b06797926b135621c76406c92ec9c32744111a1683",
+    "docs\\research\\brn-successor-cglhw\\wave8-affine-head-results.json": "18e6dd9ab0826ea4184f76829ce929dabe8d72c093d244cf078778e9af00d7de",
+    "docs\\research\\brn-successor-cglhw\\wave8-calibrated-degree-results.json": "960b0482812593af68d38331441c8eb0b0788e317c6ebe16196af014aa98b8c2",
+    "docs\\research\\brn-successor-cglhw\\wave9-continuation-plan.json": "596bcdd1d3e1b5bf3936f6a6221e4aba701dd5ad298df5b0eda101e27a86b9d2",
+    "docs\\research\\brn-successor-cglhw\\wave9-implementation-validation-v2.json": "d87fc609d0a0e2d48d852c82a8e9a76882a76cb9adf19de2154073c741892aaf",
+    "docs\\research\\brn-successor-cglhw\\wave9-isolated-projection.json": "3e925285e670243a107dbb8575a7e592f3c74e0fcae9cd4c239233a27454af4d",
+    "docs\\research\\brn-successor-cglhw\\wave9-isolated-readiness.json": "09ea5233545c49dbf42874d73224d425a4825858489073c5f41cdee1e39341a8",
+    "docs\\research\\brn-successor-cglhw\\wave9-initial-function-parity.json": "c0258588d1aab73e137f2ff708883d9535d9bd2f2a4b5b8cd470e5a64e02cfb8",
+    "docs\\research\\brn-successor-cglhw\\wave9-native-package-validation.json": "5e20e543c38c06286b152637ffaf31714e0be8823000160ee28ec1a5d847e72d",
+    "docs\\research\\brn-successor-cglhw\\wave9-runtime.json": "888756bce145ddfa4de5494318e04f98d3d9347d96383b21ec835f4892b4374c"
+  },
+  "remainingBeforeHumanRequest": [
+    "Actual owner projection/checkpoint audit",
+    "Packaged native owner GUI preview and visual review",
+    "Bounded source cursor reads",
+    "Final artifact preservation audit"
+  ],
+  "limitations": [
+    "Pilot panels consumed; no independent fitting or strength conclusion.",
+    "Affine+quadratic and affine+cubic feature spaces are not nested.",
+    "BRE retains distinct raw objective, historical data and optimizer; GUI loss comparison across objectives is invalid."
+  ]
+}
