@@ -1,0 +1,27 @@
+{
+  "id": "wave7-visibility-bounded-fit-admission-v1",
+  "source": "raw/wave7/trained-predictions-fresh5-01",
+  "script": "tools\\probe-brn-visibility-fit.py",
+  "scriptSha256": "743a0b657fb351da2db71ec314925c3d0b50123af34d21a4fd30c5280407b74d",
+  "question": "Does occupancy-dependent ray visibility supply predictive signal beyond matched geometric pairs under raw or search-mapped supervision?",
+  "fit": "First1024 rows of each BT4/CP source; second1024 evaluation. Both panels previously consumed; no game-independent generalization claim.",
+  "arms": [
+    "visible/raw",
+    "geometry/raw",
+    "visible/quarter-mapped",
+    "geometry/quarter-mapped"
+  ],
+  "budget": {
+    "rowsPerFit": 2048,
+    "epochs": 8,
+    "batch": 128,
+    "updatesPerArm": 128,
+    "rate": 0.01,
+    "l2": 0.001,
+    "parameters": 2688,
+    "seed": 2026102107
+  },
+  "interpretation": "Report every fixed arm. Positive feasibility requires evaluation improvement over zero correction and inspect geometry comparison on both sources. Failure is evidence about this limited diagnostic, not definitive feature rejection. No optimizer setting selected from evaluation results.",
+  "resource": "Run sequentially at BelowNormal between match batches; no owner artifacts or substantive training.",
+  "next": "Only a promising diagnostic motivates incremental cost investigation and a separately admitted architecture; no automatic training gate."
+}
