@@ -35,6 +35,9 @@ public final class BrnGatedCacheProbe {
         boolean packed=spec.packedCubicCacheEnabled();
         var compiledUnary=spec.compiledUnaryEnabled()?com.ohinteractive.seedv6.core.brnpair2.BrnUnaryResearchCompiler.compile(
                 hybridBase==null?BrnNextBase.model():hybridBase,model):null;
+        var compiledConstant=spec.compiledConstantGatesEnabled()?com.ohinteractive.seedv6.core.brnpair2.BrnConstantGateResearchCompiler.compile(
+                hybridBase==null?BrnNextBase.model():hybridBase,model):null;
+        if(compiledConstant!=null)compiledUnary=compiledConstant.model();
         if(hybridBase!=null&&!(spec.cubicDeltaCache()||spec.gatedDeltaCache()||packed||compiledUnary!=null))
             throw new IllegalArgumentException("Hybrid probe requires guarded delta cache");
         var full=hybridBase==null?SearchEvaluation.brnNext(model):SearchEvaluation.brnResidualHybridFullResearch(model,hybridBase);
@@ -80,7 +83,8 @@ public final class BrnGatedCacheProbe {
         if(spec.averagedInputs()!=null)result.put("averagedInputs",spec.averagedInputs());
         if(spec.retainedCubicRanks()!=null)result.put("retainedCubicRanks",spec.retainedCubicRanks());
         if(packed)result.put("packedCubicCache","packed-polynomial-period64-canonical-rounding-guard-v1");
-        if(compiledUnary!=null) {
+        if(compiledConstant!=null)result.put("compiledConstantGates",BrnSuccessorMatch.constantBinding(compiledConstant));
+        if(compiledUnary!=null&&compiledConstant==null) {
             var bytes=new ByteArrayOutputStream();com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.writeModel(compiledUnary,bytes);
             result.put("compiledUnary",Map.of("kind","brn-unary-compiled-v1",
                     "compiledNetworkSha256",HexFormat.of().formatHex(DataFiles.digest().digest(bytes.toByteArray())),
@@ -104,7 +108,7 @@ public final class BrnGatedCacheProbe {
         result.put("inputs",inputs);result.put("positions",boards.size());result.put("maximumRawError",maximum);
         result.put("maximumFreshRawError",maximumFreshError);result.put("freshIntegerDifferences",freshIntegerDifferences);
         result.put("integerDifferences",differences);result.put("accumulatorPrimitiveBytes",accumulator.primitiveBytes());
-        result.put("cacheDetails",accumulator.details());
+        result.put("cacheDetails",compiledConstant==null?accumulator.details():Map.of("kind","brn-constant-gates-compiled-v1"));
         DataFiles.write(output,result);
         if(maximum>1e-9||maximumFreshError>1e-9||compositionError>1e-9||differences!=0||freshIntegerDifferences!=0)throw new IllegalStateException("Trained oracle mismatch; evidence preserved");
         String label=cubic?"CUBIC":"GATE";

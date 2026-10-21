@@ -1,0 +1,46 @@
+{
+  "id": "wave4-constant-compiled-implementation-validation-v1",
+  "tests": [
+    {
+      "suite": "com.ohinteractive.seedv6.core.brnpair2.BrnPair2RuntimeBoundaryTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.core.brn3.BrnPair2EquivalenceTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.tools.eval.BrnAverageBindingTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.tools.eval.BrnConstantGateResearchCompilerTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.tools.eval.BrnUnaryResearchCompilerTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "rawEvidence": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\constant-compiled-tests-01",
+  "buildLog": "raw/wave4/constant-compiled-validation-01.log",
+  "scope": "Bounded core research relation extension1..4 additional pairs, source copy/validation, ordinary codec export rejects nonstandard layout before writing bytes. Research compiler includes all constant-gate relations, explicit component hashes and runtime capability. No default/optimizer/GUI behaviour change.",
+  "numericalLimit": "Mathematically additive equivalent; binary64 summation order differs. Actual trained score/search/cost/smoke checks still required. Not a universal floating-point proof.",
+  "buildDecision": "Core factory/codec guard ship with application and qualify exactly build53 to54 in the implementation commit. Native GUI packaging/adoption not claimed for this research-only control.",
+  "metadataCorrection": "The earlier unary-only frozen runner labelled its source BrnNext as nativeResidualCache despite routing execution through ordinary Pair2. Preserve those historical receipts; explicit compiledUnary payload hash, code and actual oracles establish the executed function. New compiled bindings use sourceFrozenResidual instead. No score or model change."
+}

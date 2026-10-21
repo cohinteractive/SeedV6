@@ -52,6 +52,15 @@ def summarize(plan_file, receipts, analysis_file, runtime_file, output):
             assert spec["correctionAblation"] == "unary"
             assert bound["compiledUnary"]["kind"] == "brn-unary-compiled-v1"
             assert len(bound["compiledUnary"]["compiledNetworkSha256"]) == 64
+        if spec.get("compiledConstantGates"):
+            assert "brn-constant-gates-compiled-v1" in runtime["modelFeatures"]
+            assert spec["correctionAblation"] == "constant-gates"
+            compiled = bound["compiledConstantGates"]
+            assert compiled["kind"] == "brn-constant-gates-compiled-v1" and compiled["relations"] == 298
+            assert compiled["extraFirst"] == [1, 6, 48, 55] and compiled["extraSecond"] == [8, 15, 57, 62]
+            assert compiled["ordinaryCheckpointExport"] is False
+            identity = "brn-constant-gates-compiled-v1\n" + compiled["foldedBaseSha256"] + "\n" + compiled["extraTablesSha256"] + "\n"
+            assert hashlib.sha256(identity.encode("utf-8")).hexdigest() == compiled["functionSha256"]
         if spec.get("hybridBase") is not None:
             assert "brn-hybrid-raw-v1" in runtime["modelFeatures"]
             hybrid = bound["hybrid"]

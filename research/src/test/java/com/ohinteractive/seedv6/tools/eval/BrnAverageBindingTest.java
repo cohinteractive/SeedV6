@@ -77,6 +77,14 @@ class BrnAverageBindingTest {
         }
         map.put("correctionAblation","constant-gates");assertThrows(RuntimeException.class,()->spec(map));
     }
+    @Test void compiledConstantGatesRequireBoundConstantsAndExclusiveMode() {
+        var map=new HashMap<String,Object>();map.put("compiledConstantGates",true);map.put("correctionAblation","constant-gates");
+        assertThrows(RuntimeException.class,()->spec(map));map.put("constantGates",new double[]{.1,.2,.3,.4});
+        assertTrue(spec(map).compiledConstantGatesEnabled());
+        for(String mode:List.of("gatedDeltaCache","packedCubicCache","compiledUnary")) {
+            map.put(mode,true);assertThrows(RuntimeException.class,()->spec(map));map.remove(mode);
+        }
+    }
     @Test void hybridBaseRequiresItsOwnVerifiedIdentityAndPreservesItsOptimizer() throws Exception {
         Path root=temporary.resolve("base");CheckpointManifest manifest;
         try(var store=new CheckpointStore(root,TrainingArchitecture.BRN_PAIR2)) {

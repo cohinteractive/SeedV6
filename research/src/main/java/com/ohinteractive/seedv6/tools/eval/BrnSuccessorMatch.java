@@ -31,7 +31,7 @@ public final class BrnSuccessorMatch {
                  boolean gatedCache, boolean cubicCache, Double blendCandidateWeight,
                  Double correctionScale, String correctionAblation, double[] constantGates, boolean gatedDeltaCache, boolean cubicDeltaCache,
                  List<AverageInput> averagedInputs, List<Integer> retainedCubicRanks, HybridBase hybridBase,
-                 Boolean packedCubicCache, Boolean compiledUnary) {
+                 Boolean packedCubicCache, Boolean compiledUnary, Boolean compiledConstantGates) {
         Model {
             if(constantGates!=null&&!"constant-gates".equals(correctionAblation))
                 throw new IllegalArgumentException("Explicit constant-gates ablation required");
@@ -42,11 +42,22 @@ public final class BrnSuccessorMatch {
             if(Boolean.TRUE.equals(compiledUnary)&&(!"unary".equals(correctionAblation)||gatedCache||cubicCache
                     ||gatedDeltaCache||cubicDeltaCache||Boolean.TRUE.equals(packedCubicCache)||residualGain!=null||blendCandidateWeight!=null))
                 throw new IllegalArgumentException("Compiled unary requires explicit unary ablation and ordinary Pair2 evaluation");
+            if(Boolean.TRUE.equals(compiledConstantGates)&&(!"constant-gates".equals(correctionAblation)||constantGates==null
+                    ||gatedCache||cubicCache||gatedDeltaCache||cubicDeltaCache||Boolean.TRUE.equals(packedCubicCache)
+                    ||Boolean.TRUE.equals(compiledUnary)||residualGain!=null||blendCandidateWeight!=null))
+                throw new IllegalArgumentException("Compiled constant gates require the explicit ablation and exclusive additive evaluation");
             if(hybridBase!=null&&(residualGain!=null||blendCandidateWeight!=null||gatedCache||cubicCache))
                 throw new IllegalArgumentException("Hybrid requires explicit correction scaling and canonical or delta evaluation");
         }
         boolean packedCubicCacheEnabled() { return Boolean.TRUE.equals(packedCubicCache); }
         boolean compiledUnaryEnabled() { return Boolean.TRUE.equals(compiledUnary); }
+        boolean compiledConstantGatesEnabled() { return Boolean.TRUE.equals(compiledConstantGates); }
+    }
+    static Map<String,Object> constantBinding(com.ohinteractive.seedv6.core.brnpair2.BrnConstantGateResearchCompiler.Compiled c) {
+        return Map.of("kind","brn-constant-gates-compiled-v1","foldedBaseSha256",c.foldedBaseSha256(),
+                "extraTablesSha256",c.extraTablesSha256(),"functionSha256",c.functionSha256(),
+                "extraFirst",c.extraFirst(),"extraSecond",c.extraSecond(),"relations",c.model().pairs(),
+                "immutablePrimitiveBytes",c.model().immutablePrimitiveBytes(),"ordinaryCheckpointExport",false);
     }
     static com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model loadHybridBase(Model spec) throws Exception {
         if(spec.hybridBase()==null)return null;
@@ -149,8 +160,14 @@ public final class BrnSuccessorMatch {
             SearchEvaluation evaluation;
             var hybridBase=loadHybridBase(spec);
             com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model compiledUnary=null;
+            com.ohinteractive.seedv6.core.brnpair2.BrnConstantGateResearchCompiler.Compiled compiledConstant=null;
             if(spec.gatedCache()&&spec.cubicCache())throw new IllegalArgumentException("Choose one cache");
-            if(spec.compiledUnaryEnabled()) {
+            if(spec.compiledConstantGatesEnabled()) {
+                if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("Constant-gate residual component required");
+                compiledConstant=com.ohinteractive.seedv6.core.brnpair2.BrnConstantGateResearchCompiler.compile(
+                        hybridBase==null?com.ohinteractive.seedv6.core.brnnext.BrnNextBase.model():hybridBase,n.model());
+                evaluation=SearchEvaluation.brnPair2(compiledConstant.model());
+            } else if(spec.compiledUnaryEnabled()) {
                 if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("Unary residual component required");
                 compiledUnary=com.ohinteractive.seedv6.core.brnpair2.BrnUnaryResearchCompiler.compile(
                         hybridBase==null?com.ohinteractive.seedv6.core.brnnext.BrnNextBase.model():hybridBase,n.model());
@@ -203,6 +220,7 @@ public final class BrnSuccessorMatch {
             }
             if(spec.cubicDeltaCache())modelBinding.put("cubicDeltaCache","polynomial-period64-canonical-rounding-guard-v1");
             if(spec.packedCubicCacheEnabled())modelBinding.put("packedCubicCache","packed-polynomial-period64-canonical-rounding-guard-v1");
+            if(compiledConstant!=null)modelBinding.put("compiledConstantGates",constantBinding(compiledConstant));
             if(compiledUnary!=null) {
                 var compiledBytes=new java.io.ByteArrayOutputStream();
                 com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.writeModel(compiledUnary,compiledBytes);
@@ -212,7 +230,8 @@ public final class BrnSuccessorMatch {
             }
             if(spec.gatedDeltaCache())modelBinding.put("gatedDeltaCache","period64-canonical-rounding-guard-v1");
             if(model instanceof NetworkModel.BrnNext n && n.model().architecture().frozenBase()) {
-                modelBinding.put("nativeResidualCache",true);
+                if(compiledUnary==null&&compiledConstant==null)modelBinding.put("nativeResidualCache",true);
+                else modelBinding.put("sourceFrozenResidual",true);
                 if(hybridBase==null)modelBinding.put("frozenBaseSha256",com.ohinteractive.seedv6.core.brnnext.BrnNextBase.SHA256);
             }
             if(hybridBase!=null)modelBinding.put("hybrid",hybridBinding(spec,hybridBase,(String)modelBinding.get("effectiveNetworkSha256")));

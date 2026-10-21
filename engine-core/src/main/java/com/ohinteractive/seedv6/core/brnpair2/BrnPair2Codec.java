@@ -37,6 +37,8 @@ public final class BrnPair2Codec {
         out.flush();var crc=new CRC32();crc.update(bytes.toByteArray());out.writeInt((int)crc.getValue());out.flush();bytes.writeTo(stream);
     }
     public static void writeModel(BrnPair2Model model,OutputStream stream)throws IOException {
+        if(model.pairs()!=PAIRS||model.weights.length!=TABLE_VALUES)
+            throw new IOException("Research relation extensions cannot be saved as ordinary BRE-Pair2 checkpoints");
         var bytes=new ByteArrayOutputStream(MODEL_BYTES);var out=new DataOutputStream(bytes);header(out,MODEL_MAGIC);
         out.writeDouble(model.bias);for(double value:model.weights)out.writeDouble(value);finish(bytes,out,stream);
     }

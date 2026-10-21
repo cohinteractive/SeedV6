@@ -52,6 +52,36 @@ public final class BrnPair2Model {
         for(double value:weights)if(!Double.isFinite(value))throw new IllegalArgumentException("Nonfinite compiled table");
     }
     private static int oppositeCategory(int category){return category==0?0:category<=6?category+6:category-6;}
+    /** Explicit research-only additive relation extension. It has no ordinary Pair2 codec identity.
+     * Tables use physical categories and adjacent STM entries, in existing C02 normalization. */
+    public static BrnPair2Model withResearchPairs(BrnPair2Model base,int[] first,int[] second,double[] tables) {
+        return new BrnPair2Model(base,first,second,tables);
+    }
+    private BrnPair2Model(BrnPair2Model base,int[] first,int[] second,double[] tables) {
+        Objects.requireNonNull(base);Objects.requireNonNull(first);Objects.requireNonNull(second);Objects.requireNonNull(tables);
+        if(base.pairs()!=BrnPair2Codec.PAIRS||first.length<1||first.length>4||second.length!=first.length
+                ||tables.length!=first.length*169*2)throw new IllegalArgumentException("Bounded ordinary-base relation extension required");
+        var keys=new TreeMap<Integer,Integer>();
+        for(int i=0;i<base.pairs();i++)keys.put(base.firstSquare[i]*64+base.secondSquare[i],i);
+        for(int i=0;i<first.length;i++) {
+            if(first[i]<0||second[i]>=64||first[i]>=second[i]||keys.putIfAbsent(first[i]*64+second[i],base.pairs()+i)!=null)
+                throw new IllegalArgumentException("Distinct new canonical physical relations required");
+        }
+        for(double value:tables)if(!Double.isFinite(value))throw new IllegalArgumentException("Nonfinite supplemental table");
+        firstSquare=new int[keys.size()];secondSquare=new int[keys.size()];weights=new double[keys.size()*169*2];bias=base.bias;
+        int index=0;
+        for(var entry:keys.entrySet()) {
+            firstSquare[index]=entry.getKey()/64;secondSquare[index]=entry.getKey()%64;int source=entry.getValue();
+            System.arraycopy(source<base.pairs()?base.weights:tables,(source<base.pairs()?source:source-base.pairs())*338,weights,index*338,338);
+            index++;
+        }
+        incident=new int[64][];
+        for(int square=0;square<64;square++) {
+            var found=new ArrayList<Integer>();
+            for(int pair=0;pair<keys.size();pair++)if(firstSquare[pair]==square||secondSquare[pair]==square)found.add(pair);
+            incident[square]=found.stream().mapToInt(Integer::intValue).toArray();
+        }
+    }
     public int pairs(){return firstSquare.length;}
     public long immutablePrimitiveBytes(){
         long bytes=8L*weights.length+8+4L*(firstSquare.length+secondSquare.length);
