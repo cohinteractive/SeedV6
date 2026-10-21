@@ -45,7 +45,11 @@ public final class ArchitectureLibrary {
         new Descriptor("Gen32 + Quadratic Residual (control)", TrainingArchitecture.BRN_GEN32_QUADRATIC, Status.RESEARCH,
             List.of("GEN32-QUADRATIC-CONTROL"), "Additive pairwise control without cubic terms; corpus Adam; Policy4"),
         new Descriptor("Gen32 + Quadratic-4 Residual (control)", TrainingArchitecture.BRN_GEN32_QUADRATIC_R4, Status.RESEARCH,
-            List.of("GEN32-QUADRATIC-R4-CONTROL"), "Four-component additive pairwise control without cubic terms; corpus Adam; Policy4"));
+            List.of("GEN32-QUADRATIC-R4-CONTROL"), "Four-component additive pairwise control without cubic terms; corpus Adam; Policy4"),
+        new Descriptor("Fixed Basis + Quadratic-4 Heads (control)", TrainingArchitecture.BRN_GEN32_FIXED_QUADRATIC_R4, Status.RESEARCH,
+            List.of("W8-FIXED-QUAD-R4"), "Four trainable quadratic heads; frozen unary terms and embeddings; Policy4"),
+        new Descriptor("Fixed Basis + Cubic-4 Heads (research)", TrainingArchitecture.BRN_GEN32_FIXED_CUBIC_R4, Status.RESEARCH,
+            List.of("W8-FIXED-CUBIC-R4"), "Four trainable cubic heads; frozen quadratic anchor and embeddings; Policy4"));
     public static List<Descriptor> entries() { return ENTRIES; }
     public static Descriptor describe(TrainingArchitecture architecture) {
         return ENTRIES.stream().filter(e -> e.implementation() == architecture).findFirst().orElseThrow();

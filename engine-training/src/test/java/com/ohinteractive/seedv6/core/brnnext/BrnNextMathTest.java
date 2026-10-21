@@ -36,7 +36,8 @@ class BrnNextMathTest {
         }
     }
 
-    @ParameterizedTest @EnumSource(BrnNextArchitecture.class)
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,mode=EnumSource.Mode.EXCLUDE,
+            names={"GEN32_FIXED_QUADRATIC_R4","GEN32_FIXED_CUBIC_R4"})
     void materialInitializationBoundedFitAndExactStateContinuation(BrnNextArchitecture kind) throws Exception {
         var trainer = new BrnNextTrainer(kind, 71, .003);
         for (var board : BOARDS) assertEquals(initial(kind, board), trainer.predictPawns(board));

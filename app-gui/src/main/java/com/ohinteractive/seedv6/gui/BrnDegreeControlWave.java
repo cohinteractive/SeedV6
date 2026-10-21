@@ -15,12 +15,14 @@ import java.util.*;
 public final class BrnDegreeControlWave {
     static final String WAVE="brn-successor-2026-10-21-wave6",ORIGIN="degree-continuation-origin.json";
     static final String COMPACT_WAVE="brn-successor-2026-10-21-wave7";
+    static final String FIXED_WAVE="brn-successor-2026-10-22-wave8";
     public record Arm(String name,BrnContinuationWave.Source source,double rate,String projection) {
         public Arm {
-            if(name==null||!(name.startsWith("W6-")||name.startsWith("W7-"))||source==null||rate!=.001&&rate!=.003)
-                throw new IllegalArgumentException("Explicit W6 or W7 arm required");
-            if(projection==null||!Set.of("exact","quadratic").contains(projection))
-                throw new IllegalArgumentException("Explicit exact or quadratic projection required");
+            if(name==null||!(name.startsWith("W6-")||name.startsWith("W7-")||name.startsWith("W8-"))||source==null||rate!=.001&&rate!=.003)
+                throw new IllegalArgumentException("Explicit W6, W7 or W8 arm required");
+            var allowed=name.startsWith("W8-")?Set.of("exact","fixed-quadratic-heads","fixed-cubic-heads"):Set.of("exact","quadratic");
+            if(projection==null||!allowed.contains(projection))
+                throw new IllegalArgumentException("Explicit wave-compatible projection required");
         }
     }
     public record Plan(String id,String library,List<Arm> arms) {}
@@ -30,7 +32,7 @@ public final class BrnDegreeControlWave {
                         String latest,long latestGeneration,TrainingRecipe recipe,long additionalGenerations,
                         Map<String,Long> sourceOffsets,String partition) {}
     public record Report(String wave,String recorded,String library,List<Entry> entries) {}
-    static String wave(Arm arm) { return arm.name().startsWith("W6-")?WAVE:COMPACT_WAVE; }
+    static String wave(Arm arm) { return arm.name().startsWith("W6-")?WAVE:arm.name().startsWith("W7-")?COMPACT_WAVE:FIXED_WAVE; }
     static UUID id(Arm arm) {
         return UUID.nameUUIDFromBytes((wave(arm)+":"+arm.name()+":"+arm.source().checkpoint()+":"+arm.rate()+":"+arm.projection())
                 .getBytes(StandardCharsets.UTF_8));
@@ -39,6 +41,11 @@ public final class BrnDegreeControlWave {
     static NetworkTrainingState project(NetworkTrainingState source,Arm arm) throws IOException {
         if(source.hyperparameters().learningRate()!=arm.rate())throw new IOException("Source rate differs; no silent optimizer change");
         if(arm.projection().equals("exact"))return source;
+        if(wave(arm).equals(FIXED_WAVE)) {
+            if(!(source instanceof NetworkTrainingState.BrnNext n)||source.architecture()!=TrainingArchitecture.BRN_GEN32_QUADRATIC_R4)
+                throw new IOException("Fixed-basis experiment requires the explicitly bound trained Q4 source");
+            return new NetworkTrainingState.BrnNext(n.trainer().freezeQuadraticBasis(arm.projection().equals("fixed-cubic-heads")));
+        }
         var expected=wave(arm).equals(WAVE)?TrainingArchitecture.BRN_GEN32_CUBIC:TrainingArchitecture.BRN_GEN32_CUBIC_R4;
         if(!(source instanceof NetworkTrainingState.BrnNext n)||source.architecture()!=expected)
             throw new IOException("Quadratic projection requires the wave's explicitly bound cubic rank");
@@ -59,7 +66,9 @@ public final class BrnDegreeControlWave {
                 var manifest=CheckpointStore.readSnapshot(original,source.checkpoint()).manifest();
                 if(manifest.generation()!=source.generation()||!manifest.networkSha256().equals(source.networkSha256())
                         ||!manifest.trainingSha256().equals(source.trainingSha256()))throw new IOException("Source checkpoint identity differs");
-                var allowed=wave(arm).equals(WAVE)
+                var allowed=wave(arm).equals(FIXED_WAVE)
+                        ?Set.of(TrainingArchitecture.BRN_GEN32_QUADRATIC_R4,TrainingArchitecture.BRN_PAIR2)
+                        :wave(arm).equals(WAVE)
                         ?Set.of(TrainingArchitecture.BRN_GEN32_CUBIC,TrainingArchitecture.BRN_GEN32_CUBIC_R4,TrainingArchitecture.BRN_PAIR2)
                         :Set.of(TrainingArchitecture.BRN_GEN32_CUBIC_R4,TrainingArchitecture.BRN_PAIR2);
                 if(!allowed.contains(manifest.architecture()))throw new IOException("Degree-control source architecture differs");
@@ -93,9 +102,11 @@ public final class BrnDegreeControlWave {
                 if(Files.isSymbolicLink(parent)||Files.isSymbolicLink(root))throw new IOException("Linked destination refused");
                 if(Files.notExists(root)) {
                     Files.createDirectories(parent);Files.createDirectory(root);
-                    var settings=BrnContinuationWave.settings(root,architecture,arm.rate(),corpus,source.seed());
+                    var settings=BrnContinuationWave.settings(root,architecture,arm.rate(),corpus,source.seed(),wave(arm).equals(FIXED_WAVE)?8:32);
                     var lineage=new TrainingLineage(id(arm),arm.name(),state.architecture(),Instant.now(),LineageConfiguration.encode(settings),
-                            wave(arm)+": "+(arm.projection().equals("exact")?"exact continuation":"explicit degree2 projection; third-degree heads and moments omitted")+" of "+source.checkpoint());
+                            wave(arm)+": "+(arm.projection().equals("exact")?"exact continuation":wave(arm).equals(FIXED_WAVE)
+                                    ?arm.projection()+"; frozen Q4, new Adam step0"
+                                    :"explicit degree2 projection; third-degree heads and moments omitted")+" of "+source.checkpoint());
                     try(var store=new CheckpointStore(root,state.architecture())) {
                         store.requireEmptyForBootstrap();store.writeLineage(lineage);store.writeTrainingSource(settings.source());
                         Files.createDirectories(DataSources.directory(root));
@@ -109,13 +120,14 @@ public final class BrnDegreeControlWave {
                         Files.write(DataSources.directory(root).resolve("configuration.json"),configBytes,StandardOpenOption.CREATE_NEW);
                         ContinuationSeek.inherit(selection,ledger.state().next(),data.resolve("seek"),DataSources.directory(root).resolve("seek"));
                         DataFiles.write(root.resolve(ORIGIN),new Origin(1,wave(arm),arm,hash(ledgerBytes),hash(selectionBytes),bootstrap.manifest().id(),
-                                bootstrap.manifest().networkSha256(),bootstrap.manifest().trainingSha256(),state.step()));
+                                bootstrap.manifest().networkSha256(),bootstrap.manifest().trainingSha256(),sourceState.step()));
                     }
                 }
                 var origin=DataFiles.read(root.resolve(ORIGIN),Origin.class);
                 var lineage=TrainingLineage.read(root).orElseThrow(()->new IOException("Missing degree-control identity"));
                 var provenance=LineageProvenance.read(root).orElseThrow(()->new IOException("Missing degree-control provenance"));
                 if(origin.version()!=1||!origin.wave().equals(wave(arm))||!origin.arm().equals(arm)||!lineage.id().equals(id(arm))
+                        ||origin.inheritedStep()!=sourceState.step()
                         ||!origin.sourceLedgerSha256().equals(hash(ledgerBytes))||!origin.selectionSha256().equals(hash(selectionBytes))
                         ||!origin.trainingSha256().equals(hash(stateBytes))||!origin.networkSha256().equals(expectedNetworkHash)
                         ||!provenance.initialCheckpoint().equals(origin.bootstrap()))
@@ -144,7 +156,7 @@ public final class BrnDegreeControlWave {
     public static void main(String[] args) throws Exception {
         if(args.length!=3||!args[0].equals("--create"))throw new IllegalArgumentException("--create PLAN NEW_REPORT");
         var plan=DataFiles.read(Path.of(args[1]),Plan.class);Path report=Path.of(args[2]);
-        if(!Set.of(WAVE,COMPACT_WAVE).contains(plan.id())||plan.arms().isEmpty()
+        if(!Set.of(WAVE,COMPACT_WAVE,FIXED_WAVE).contains(plan.id())||plan.arms().isEmpty()
                 ||plan.arms().stream().anyMatch(arm->!wave(arm).equals(plan.id()))||Files.exists(report))
             throw new IOException("Explicit matching degree-control plan and new report required");
         Path library=Path.of(plan.library()).toAbsolutePath().normalize();

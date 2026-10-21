@@ -38,7 +38,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         root = root.toAbsolutePath().normalize();
         // Use the authoritative service configuration validation, including cross-field bounds.
         config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
-                validationPairs, seed, maximumPlies, maximumGenerations, TrainerConfig.DepthChange.REQUIRE_SAME, architecture, architecture == NetworkArchitecture.BRN_PAIR2 ? .01 : (architecture == NetworkArchitecture.BRN3 || architecture.brnNext()) ? .003 : architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate);
+                validationPairs, seed, maximumPlies, maximumGenerations, TrainerConfig.DepthChange.REQUIRE_SAME, architecture, architecture.brnNext() && architecture.trainingArchitecture().nextKind().fixedBasis() ? .001 : architecture == NetworkArchitecture.BRN_PAIR2 ? .01 : (architecture == NetworkArchitecture.BRN3 || architecture.brnNext()) ? .003 : architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -91,6 +91,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     double initialLearningRate() {
         return switch (architecture) {
             case NNUE, NNUE_MATERIAL -> .001;
+            case BRN_GEN32_FIXED_QUADRATIC_R4, BRN_GEN32_FIXED_CUBIC_R4 -> .001;
             case BRN3, BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC, BRN_GEN32_QUADRATIC_R4 -> .003;
             case BRN_PAIR2 -> .01;
             case BRN -> brnLearningRate;
@@ -296,7 +297,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
 
     TrainerConfig config(TrainerConfig.DepthChange depthChange) {
         return config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
-                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN_PAIR2 ? .01 : (architecture == NetworkArchitecture.BRN3 || architecture.brnNext()) ? .003 : architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate)
+                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture.brnNext() && architecture.trainingArchitecture().nextKind().fixedBasis() ? .001 : architecture == NetworkArchitecture.BRN_PAIR2 ? .01 : (architecture == NetworkArchitecture.BRN3 || architecture.brnNext()) ? .003 : architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate)
                 .withSource(source).withRunSeeds(runSeeds)
                 .withSupervision(corpusSelected() ? BrnSupervision.WDL : supervision)
                 .withTeacherStore(corpusSelected() ? null : teacherStore)

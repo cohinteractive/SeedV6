@@ -16,14 +16,19 @@ final class BrnNextConfigurationPanel extends JPanel {
             case BRN_GEN32_CUBIC_R4 -> "A frozen Gen32 evaluator plus four learned quadratic/cubic components.";
             case BRN_GEN32_QUADRATIC -> "An additive pairwise control: frozen Gen32 plus rank16 two-piece interactions, without cubic terms.";
             case BRN_GEN32_QUADRATIC_R4 -> "An additive pairwise control: frozen Gen32 plus four two-piece components, without cubic terms.";
+            case BRN_GEN32_FIXED_QUADRATIC_R4 -> "Four quadratic coefficients learn on fixed unary terms and embeddings. Additive pairwise control.";
+            case BRN_GEN32_FIXED_CUBIC_R4 -> "Four cubic coefficients learn while the complete quadratic anchor and embeddings stay fixed.";
             default -> throw new IllegalArgumentException("Not a BRN successor");
         };
         JPanel body = padded(new BorderLayout(), 14);
+        boolean fixed = architecture.trainingArchitecture().nextKind().fixedBasis();
         var information = text(description + "\n"
-                + (architecture.trainingArchitecture().nextKind().frozenBase()
+                + (fixed ? "Prepared lineages retain their selected Q4 basis; fresh models use a fixed seeded basis.\n"
+                : architecture.trainingArchitecture().nextKind().frozenBase()
                         ? "Fresh models reproduce Gen32; only the zero-initialized correction is trained.\n"
                         : "Fresh models start from fixed material with a zero learned residual.\n")
-                + "Defaults: Adam 0.003, batch 128, 8 epochs; compatible CP / BT4 Q Training Data.\n"
+                + (fixed ? "Defaults: head-only Adam 0.001, batch 128, 8 epochs; CP / BT4 Q Training Data.\n"
+                         : "Defaults: Adam 0.003, batch 128, 8 epochs; compatible CP / BT4 Q Training Data.\n")
                 + "Stop / Resume retains weights, moments, seed identity and source progress.\n"
                 + (architecture.trainingArchitecture().nextKind().frozenBase()
                         ? "Play uses Gen32's quarter calibration and Policy4; improvement is unproven.\n"

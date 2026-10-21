@@ -7,7 +7,7 @@ import com.ohinteractive.seedv6.core.brn3.Brn3Objective;
 import com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets;
 import static com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.*;
 
-/** Bounded dense Adam over compact layouts. Single owner; exact binary64 continuation. */
+/** Bounded Adam over compact layouts, with explicit fixed-basis masks. Single owner; exact binary64 continuation. */
 public final class BrnNextTrainer {
     private final BrnNextArchitecture architecture;
     final double[] weights, first, second, gradient;
@@ -54,13 +54,23 @@ public final class BrnNextTrainer {
      * its Adam moments, rate and step; omit only degree3 heads and their moments.
      * This is an explicit function projection into a distinct wire schema. */
     public BrnNextTrainer projectQuadratic() {
-        if (!architecture.frozenCubic())
+        if (architecture != GEN32_CUBIC && architecture != GEN32_CUBIC_R4)
             throw new IllegalArgumentException("Frozen rank16 or rank4 cubic source required");
         var target = new BrnNextTrainer(architecture == GEN32_CUBIC ? GEN32_QUADRATIC : GEN32_QUADRATIC_R4, 0, rate);
         target.step = step;
         System.arraycopy(weights, 0, target.weights, 0, target.weights.length);
         System.arraycopy(first, 0, target.first, 0, target.first.length);
         System.arraycopy(second, 0, target.second, 0, target.second.length);
+        return target;
+    }
+    /** Explicit new optimizer experiment, not an Adam continuation. Preserve the
+     * entire learned Q4 function; new cubic heads are zero. Both controls start
+     * fresh head moments/step, with every excluded moment fixed at zero. */
+    public BrnNextTrainer freezeQuadraticBasis(boolean cubic) {
+        if (architecture != GEN32_QUADRATIC_R4)
+            throw new IllegalArgumentException("Trained ordinary Q4 source required");
+        var target = new BrnNextTrainer(cubic ? GEN32_FIXED_CUBIC_R4 : GEN32_FIXED_QUADRATIC_R4, 0, rate);
+        System.arraycopy(weights, 0, target.weights, 0, weights.length);
         return target;
     }
     public void setLearningRate(double rate) { new BrnAdamConfig(rate); this.rate = rate; }
@@ -74,7 +84,7 @@ public final class BrnNextTrainer {
         int width = architecture.width(), head = architecture.head();
         for (int i = 0; i < workspace.count; i++) gradient[UNARY + workspace.features[i]] += derivative * PIECE_NORM;
         switch (architecture) {
-            case GEN32_QUADRATIC, GEN32_QUADRATIC_R4 -> {
+            case GEN32_QUADRATIC, GEN32_QUADRATIC_R4, GEN32_FIXED_QUADRATIC_R4 -> {
                 for (int r = 0; r < width; r++) {
                     gradient[head + r] += derivative * workspace.second[r] * DEGREE2_NORM;
                     for (int i = 0; i < workspace.count; i++) {
@@ -84,7 +94,7 @@ public final class BrnNextTrainer {
                     }
                 }
             }
-            case CUBIC, GEN32_CUBIC_R4, GEN32_CUBIC -> {
+            case CUBIC, GEN32_CUBIC_R4, GEN32_CUBIC, GEN32_FIXED_CUBIC_R4 -> {
                 for (int r = 0; r < width; r++) {
                     gradient[head + r] += derivative * workspace.second[r] * DEGREE2_NORM;
                     gradient[head + width + r] += derivative * workspace.third[r] * DEGREE3_NORM;
@@ -135,7 +145,7 @@ public final class BrnNextTrainer {
         for (double g : gradient) if (!Double.isFinite(g)) throw new ArithmeticException("Nonfinite BRN-next gradient");
         step++;
         double c1 = 1 - Math.pow(.9, step), c2 = 1 - Math.pow(.999, step);
-        for (int i = 0; i < weights.length; i++) {
+        for (int i = architecture.trainableStart(); i < weights.length; i++) {
             double g = gradient[i] / count;
             first[i] = .9 * first[i] + .1 * g; second[i] = .999 * second[i] + .001 * g * g;
             weights[i] -= rate * (first[i] / c1) / (Math.sqrt(second[i] / c2) + 1e-8);
@@ -161,6 +171,9 @@ public final class BrnNextTrainer {
         for (double[] values : new double[][]{trainer.weights, trainer.first, trainer.second})
             for (int i = 0; i < values.length; i++) values[i] = BrnNextCodec.finite(in);
         for (double value : trainer.second) if (value < 0) throw new IOException("Negative BRN-next second moment");
+        for (int i = 0; i < architecture.trainableStart(); i++)
+            if (trainer.first[i] != 0 || trainer.second[i] != 0)
+                throw new IOException("Fixed-basis excluded optimizer moment is nonzero");
         return trainer;
     }
 }

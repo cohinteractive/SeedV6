@@ -10,6 +10,7 @@ public record TrainingRecipe(double learningRate, int minibatchSize, int epochs)
             throw new IllegalArgumentException("Recipe batch size and epochs must be 1..100000.");
     }
     public static TrainingRecipe defaults(TrainingArchitecture architecture) {
+        if (architecture.brnNext() && architecture.nextKind().fixedBasis()) return new TrainingRecipe(.001, 128, 8);
         return architecture == TrainingArchitecture.BRN_PAIR2 ? new TrainingRecipe(.01, 128, 8)
                 : architecture == TrainingArchitecture.BRN3 || architecture.brnNext() ? new TrainingRecipe(.003, 128, 8)
                 : architecture.nnueFamily() ? new TrainingRecipe(.001, 32, 1) : new TrainingRecipe(.001, 1, 1);

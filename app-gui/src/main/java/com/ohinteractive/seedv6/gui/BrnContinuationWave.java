@@ -36,7 +36,12 @@ public final class BrnContinuationWave {
     static String hash(byte[] bytes) { return HexFormat.of().formatHex(DataFiles.digest().digest(bytes)); }
     static TrainingSettings settings(Path root,NetworkArchitecture architecture,double rate,
                                      CorpusTrainingConfig corpus,long seed) {
-        return new TrainingSettings(root,4,1,64,0,8,32,128,8,64,seed,1024,32,architecture)
+        return settings(root,architecture,rate,corpus,seed,32);
+    }
+    static TrainingSettings settings(Path root,NetworkArchitecture architecture,double rate,
+                                     CorpusTrainingConfig corpus,long seed,long additionalGenerations) {
+        if(additionalGenerations<1)throw new IllegalArgumentException("Explicit positive continuation budget required");
+        return new TrainingSettings(root,4,1,64,0,8,32,128,8,64,seed,1024,additionalGenerations,architecture)
                 .withSource(TrainingSource.dataSources(DataSources.directory(root)))
                 .withCorpus("",corpus.forArchitecture(architecture.trainingArchitecture()))
                 .withValidationMethod(ValidationMethod.HELD_OUT).withLearningRate(rate);

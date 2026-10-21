@@ -33,7 +33,7 @@ class BrnQuadraticAccumulatorTest {
         }
         return result;
     }
-    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_QUADRATIC","GEN32_QUADRATIC_R4"})
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_QUADRATIC","GEN32_QUADRATIC_R4","GEN32_FIXED_QUADRATIC_R4"})
     void arbitraryTransitionsAndRebuildsRetainRawBoundsAndIntegerScores(BrnNextArchitecture kind) {
         double maximum=0;
         for(long seed:new long[]{13,71,242}) {
@@ -51,7 +51,7 @@ class BrnQuadraticAccumulatorTest {
         }
         System.out.println("Delta maximum raw error over9000 transitions: "+maximum);
     }
-    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_QUADRATIC","GEN32_QUADRATIC_R4"})
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_QUADRATIC","GEN32_QUADRATIC_R4","GEN32_FIXED_QUADRATIC_R4"})
     void roundingBoundariesUseCanonicalFallbackOnBothScoreSigns(BrnNextArchitecture kind) {
         var positions=walk(197,91);var last=positions.getLast();double material=BrnPair2Features.material(last);
         for(double target:new double[]{-.5,.5,-37.5,37.5})for(double offset:new double[]{-1e-9,0,1e-9}) {
@@ -68,7 +68,7 @@ class BrnQuadraticAccumulatorTest {
             assertTrue(delta.roundingFallbacks>0,"Boundary must exercise canonical fallback");
         }
     }
-    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_QUADRATIC","GEN32_QUADRATIC_R4"})
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_QUADRATIC","GEN32_QUADRATIC_R4","GEN32_FIXED_QUADRATIC_R4"})
     void specialMovesUndoNullAndEmptyOwnershipMatchFull(BrnNextArchitecture kind) {
         var model=new BrnNextModel(kind,weights(kind,97));
         var delta=new BrnQuadraticAccumulator(model);var full=model.newWorkspace();
@@ -86,7 +86,7 @@ class BrnQuadraticAccumulatorTest {
             assertEquals(model.score(empty,full),delta.score(empty));
         }
     }
-    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_QUADRATIC","GEN32_QUADRATIC_R4"})
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_QUADRATIC","GEN32_QUADRATIC_R4","GEN32_FIXED_QUADRATIC_R4"})
     void separateOwnersAndSearchMatchOriginal(BrnNextArchitecture kind) {
         var model=new BrnNextModel(kind,weights(kind,42));
         var full=SearchEvaluation.brnNext(model);var fast=SearchEvaluation.brnGen32Residual(model);

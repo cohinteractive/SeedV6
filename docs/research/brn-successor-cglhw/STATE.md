@@ -34,6 +34,11 @@ BRE late per-generation validation rise is not reproduced as a general fixed-pan
 collapse. Prior data/split/exposure and cubic-trained projection confounds remain.
 No independent superiority or useful cubic chess advantage is established.
 
+Implementation preparation: WAVE8 records a fixed-basis four-head hypothesis supported
+by the bounded diagnostic. Build58 implementation passes195 targeted tests; native/package and actual owner
+checks remain pending. No W8 owner stores or training gate exist yet. Finish frozen57 Wave7 games
+and inspect the full assessment before final gate admission.
+
 Active frontier: (1) adapted rank4 degree/value versus continued BRE, (2) practical
 cost and depth interaction, (3) training/search mapping alignment, (4) selective or
 local-blocker corrections if compact degree lacks useful value. Q4 is an additive

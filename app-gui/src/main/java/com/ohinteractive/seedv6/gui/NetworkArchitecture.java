@@ -7,7 +7,9 @@ enum NetworkArchitecture {
     BRN_GEN32_GATED("Gen32 + Gated Residual (research)"), BRN_GEN32_CUBIC("Gen32 + Cubic Residual (research)"),
     BRN_GEN32_CUBIC_R4("Gen32 + Cubic-4 Residual (research)"),
     BRN_GEN32_QUADRATIC("Gen32 + Quadratic Residual (control)"),
-    BRN_GEN32_QUADRATIC_R4("Gen32 + Quadratic-4 Residual (control)");
+    BRN_GEN32_QUADRATIC_R4("Gen32 + Quadratic-4 Residual (control)"),
+    BRN_GEN32_FIXED_QUADRATIC_R4("Fixed Basis + Quadratic-4 Heads (control)"),
+    BRN_GEN32_FIXED_CUBIC_R4("Fixed Basis + Cubic-4 Heads (research)");
 
     private final String label;
     NetworkArchitecture(String label) { this.label = label; }
@@ -18,7 +20,8 @@ enum NetworkArchitecture {
     }
 
     String optimizerName() {
-        return switch (this) { case NNUE, NNUE_MATERIAL, BRN, BRN1, BRN2, BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC, BRN_GEN32_QUADRATIC_R4 -> "Adam"; case BRN3, BRN_PAIR2 -> "Masked Adam"; };
+        if (brnNext() && trainingArchitecture().nextKind().fixedBasis()) return "Head-only Adam";
+        return switch (this) { case NNUE, NNUE_MATERIAL, BRN, BRN1, BRN2, BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC, BRN_GEN32_QUADRATIC_R4 -> "Adam"; case BRN3, BRN_PAIR2 -> "Masked Adam"; default -> throw new AssertionError(); };
     }
 
     String evaluationUnits() {
@@ -28,7 +31,7 @@ enum NetworkArchitecture {
 
     /** Presentation scale only; neither a calibrated score nor a win probability. */
     double evaluationBar(int whiteScore) {
-        return switch (this) { case NNUE, NNUE_MATERIAL, BRN, BRN1, BRN2 -> 0.5 + 0.48 * Math.tanh(whiteScore / 2000.0); case BRN3, BRN_PAIR2, BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC, BRN_GEN32_QUADRATIC_R4 -> 0.5 + 0.48 * Math.tanh(whiteScore / 400.0); };
+        return switch (this) { case NNUE, NNUE_MATERIAL, BRN, BRN1, BRN2 -> 0.5 + 0.48 * Math.tanh(whiteScore / 2000.0); case BRN3, BRN_PAIR2, BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC, BRN_GEN32_QUADRATIC_R4, BRN_GEN32_FIXED_QUADRATIC_R4, BRN_GEN32_FIXED_CUBIC_R4 -> 0.5 + 0.48 * Math.tanh(whiteScore / 400.0); };
     }
     boolean corpusOnly(){return trainingArchitecture().corpusOnly();}
     boolean brnNext() { return trainingArchitecture().brnNext(); }
