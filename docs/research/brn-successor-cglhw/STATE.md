@@ -2,7 +2,7 @@
 
 Updated21 October2026. **G4 is complete and verified. All six arms reached64,
 with exact expected continuation and preserved starting payloads. Wave4 trained
-assessment is closed; G5 is complete and verified. Wave5 trained assessment is active.
+assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; Wave6 degree-control preparation is active.
 No programme success is claimed.** This remains the original
 CGLHW. Current evidence/protocol: [WAVE5-ASSESSMENT](WAVE5-ASSESSMENT.md).
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
@@ -88,32 +88,34 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
 
 ## Current action and exact resume point
 
-**Human actions required after this prompt: None.** G5 is complete, verified from
-all133 retained payload/optimizer pairs and128 new history rows. No repeated training.
-Current unit: execute the prospectively frozen256-game primary W5 assessment in
-[WAVE5-ASSESSMENT](WAVE5-ASSESSMENT.md) and `wave5-primary-admission.json`.
-Latest/Best for all four lineages face frozenGen32 at32768 nodes and200ms/move;
-eight fresh development opening pairs, common search and fixed half-change calibration.
-Four actual trained cubic cache probes pass6333 positions and48 search root passes
-each, with zero integer/search differences. Use ONLY preserved `wave5-runtime.json`.
-The root started clean b43b761/build55. Read-only audit/freeze preserved owner models.
-Primary 256, direct 160, cubic-only node32 and cubic-only/full clock16 games are
-closed. Finish the fixed16-game cubic-only/unary clock protocol, then admitted
-depth32 and marginal-degree3 32. All W5 games use
-their original frozen build55 runtimes, even though the application is now build56.
-The finite driver is build/research/w5-complete-frozen-assessment.ps1, calling
-tail-v4 and final-discriminators. Inspect receipts and first missing completion report
-before any recovery; never rerun a one-off driver from the top or use duplicate logs.
-Both quadratic oracles and the isolated cost prototype are complete and preserved.
-The new wire7 quadratic control implementation is committed as7e28740/build56 and
-passes126 targeted tests. No owner lineage, actual projected payload, native package
-or GUI readiness is yet claimed. Finish W5 interpretation before admitting the
-consolidated next human-training gate. No human action currently required.
-Next: finish fixed primary counts, independently replay receipts, compare R4/R16,
-both continued BRE rates, endpoint selection and cost. Admit focused direct/maturity/
-mechanism controls based on evidence, without a predetermined new training gate.
+**Human actions required after this prompt: None.** G5 is complete and verified;
+all544 fixed W5 development games are closed, with71731 independent legal move
+replays, no game failure/cap/fallback and maximum sampled engine working set589.23MiB.
 No independent strength confirmation or useful cubic chess advantage is established.
-All admitted W4 games are closed. The research frontier is evidence-driven:
+See WAVE5-ASSESSMENT and wave5-assessment-results.json. Do not restart those games.
+
+Current unit: prepare the four explicitly admitted W6 continuations in [WAVE6](WAVE6.md)
+and wave6-continuation-plan.json. Full R16 beats its untrained quadratic ablation
+62.5% in16 games, with broad uncertainty; a separately adapted quadratic control
+is needed. Q16/C16 share the exact W5 C16 Latest96 state/data; C4 and BRE001 continue
+their own exact Latest96. All rates.001, intended32 additional generations97..128.
+This is a new experiment within this programme, not a new contract or success claim.
+
+Implementation7e28740/build56 passes126 targeted tests. Next create the distinct
+owner stores, run independent actual byte/Adam/seek and Java codec audits, actual
+cache/search/legal-play checks, native packaging and GUI previews, and preservation
+rehashes. Activate the consolidated G6 human gate only after readiness passes.
+No substantive training has been run by Codex. Source checkpoints and W5 Best
+pointers remain protected. All W5 games used their originally frozen build55 runtimes.
+
+Active frontier: (1) trained Q16/C16 degree contribution, (2) R4 maturity versus
+capacity and practical cost, (3) training/search mapping alignment, (4) selective or
+new corrections if these mechanisms lack value. R16 vector integration is deferred:
+isolated11.8-13.3% savings do not establish search gains; R4 vector was slower.
+Do not mechanically extend unchanged matches or training to obtain a favourable score.
+The reserved confirmation opening partition has not been consumed.
+
+Historical closed W4 controls (retained for continuity):
 
 1. **Closed:** all64 BRE full-versus-half calibration controls,8970 legal moves.
    Both node scores are50%; full clock scores37.5% atLR001 and34.375% atLR003
@@ -271,13 +273,13 @@ Historical G3 implementation:87008af/build46 start, material reuse0583989/build4
 GATE delta b765a7f/build48,CUBIC delta cfae34d/build49,continuation31b6d49/build50.
 Seek repair fc69aeb/build51 and final evidence d7c53d8 preserve exact failed/resumed
 Adam equality, real large-offset decoding and six-lineage native GUI Resume checks.
-The owner completed G4 using build51; no repeat repair is indicated. Current root
+The owner completed G4 using build51; no repeat repair is indicated. The historical G4 assessment root
 began clean at d7c53d8/build51; audit/admission8acdc4e, hybrid583310e/build52,
 packed c396945/build53. Later research tooling/reports do not bump the application.
 No finalizer, push, deployment, default replacement or journal creation. Root
 CODEXLOG_CURRENT.md is absent. Inspect Git for later coherent evidence commits.
 
-Current compact implementation82331a5/build55 and packaging-sourcebd65091 are verified;
+Historical compact implementation82331a5/build55 and packaging-sourcebd65091 are verified;
 88 distinct JUnit tests, actual5-payload audit,3 cache/search probes and64 smoke plies pass.
 Build55 native candidate: dist/windows/candidates/candidate-20261021T013302-0f255e57.
 Precise lineage IDs/checkpoint hashes/settings/resume actions are in WAVE5/readiness.

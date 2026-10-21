@@ -1,0 +1,152 @@
+{
+  "id": "wave5-cp-status-sensitivity-v1",
+  "sources": [
+    {
+      "panel": "trained-predictions-02",
+      "input": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-predictions-02\\cp-predictions.jsonl",
+      "sha256": "b415810da007abc14533afa160889e7a46dcf5d4de0dc08ee7ce93bd477a618b",
+      "statusCounts": {
+        "0": 1015,
+        "72": 2,
+        "256": 7
+      },
+      "rows": [
+        {
+          "family": "R4",
+          "generation": 64,
+          "subset": "all",
+          "count": 1024,
+          "crossEntropy": 1.338620493024847
+        },
+        {
+          "family": "R4",
+          "generation": 64,
+          "subset": "standard-valid",
+          "count": 1015,
+          "crossEntropy": 1.313811039424758
+        },
+        {
+          "family": "R4",
+          "generation": 96,
+          "subset": "all",
+          "count": 1024,
+          "crossEntropy": 1.3314008249846836
+        },
+        {
+          "family": "R4",
+          "generation": 96,
+          "subset": "standard-valid",
+          "count": 1015,
+          "crossEntropy": 1.3067981929339831
+        },
+        {
+          "family": "R16",
+          "generation": 64,
+          "subset": "all",
+          "count": 1024,
+          "crossEntropy": 1.330305703116886
+        },
+        {
+          "family": "R16",
+          "generation": 64,
+          "subset": "standard-valid",
+          "count": 1015,
+          "crossEntropy": 1.3056867247708037
+        },
+        {
+          "family": "R16",
+          "generation": 96,
+          "subset": "all",
+          "count": 1024,
+          "crossEntropy": 1.3305010129098336
+        },
+        {
+          "family": "R16",
+          "generation": 96,
+          "subset": "standard-valid",
+          "count": 1015,
+          "crossEntropy": 1.3060048648049591
+        }
+      ]
+    },
+    {
+      "panel": "fresh-predictions-01",
+      "input": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\fresh-predictions-01\\cp-predictions.jsonl",
+      "sha256": "039a6220a13f83a2de9daf6f1697719943dcb701599aa2faa6f7ed043afb0983",
+      "statusCounts": {
+        "0": 1015,
+        "256": 9
+      },
+      "rows": [
+        {
+          "family": "R4",
+          "generation": 64,
+          "subset": "all",
+          "count": 1024,
+          "crossEntropy": 0.9790178251237512
+        },
+        {
+          "family": "R4",
+          "generation": 64,
+          "subset": "standard-valid",
+          "count": 1015,
+          "crossEntropy": 0.982925584672342
+        },
+        {
+          "family": "R4",
+          "generation": 96,
+          "subset": "all",
+          "count": 1024,
+          "crossEntropy": 0.97375346258837
+        },
+        {
+          "family": "R4",
+          "generation": 96,
+          "subset": "standard-valid",
+          "count": 1015,
+          "crossEntropy": 0.9776297307183699
+        },
+        {
+          "family": "R16",
+          "generation": 64,
+          "subset": "all",
+          "count": 1024,
+          "crossEntropy": 0.9690529901852422
+        },
+        {
+          "family": "R16",
+          "generation": 64,
+          "subset": "standard-valid",
+          "count": 1015,
+          "crossEntropy": 0.972872055575772
+        },
+        {
+          "family": "R16",
+          "generation": 96,
+          "subset": "all",
+          "count": 1024,
+          "crossEntropy": 0.9704223079036854
+        },
+        {
+          "family": "R16",
+          "generation": 96,
+          "subset": "standard-valid",
+          "count": 1015,
+          "crossEntropy": 0.9742592597285991
+        }
+      ]
+    }
+  ],
+  "statusFlags": {
+    "8": "TOO_MANY_WHITE_PAWNS",
+    "64": "TOO_MANY_WHITE_PIECES",
+    "128": "TOO_MANY_BLACK_PIECES",
+    "256": "BAD_CASTLING_RIGHTS"
+  },
+  "mapping": "material + .25 residual; half correction; saved evaluation half only",
+  "limitations": [
+    "Posthoc sensitivity, not a replacement protocol or independent validation.",
+    "No filtering or modification of owner datasets, histories or previous metrics.",
+    "Standard-board validity does not establish label correctness, uniqueness or game independence."
+  ]
+}

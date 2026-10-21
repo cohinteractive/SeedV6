@@ -1,0 +1,286 @@
+{
+  "id": "wave5-degree3-r4-node-v1-completed",
+  "status": "Closed fixed-budget development experiment",
+  "plan": "docs\\research\\brn-successor-cglhw\\wave5-degree3-r4-node-plan.json",
+  "receipts": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\degree3-r4-node-01",
+  "analysis": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\degree3-r4-node-analysis-01.json",
+  "runtime": "docs\\research\\brn-successor-cglhw\\wave5-runtime.json",
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\wave5-degree3-r4-node-plan.json": "0f4b9cd6cfdab6252a561fc9496124330f64cfae93dbad47742f7eebb3857646",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave5\\degree3-r4-node-analysis-01.json": "76209cbc3d1424f90b63af603cec37af12ce312f2c3a0ac3af8927d433daeaec",
+    "docs\\research\\brn-successor-cglhw\\wave5-runtime.json": "25cf0f09d2af4ff520ecfa8f4eeb150d1c2c91358b05d4010aeb7a7e5c1df7dd",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave5\\degree3-r4-node-01\\model-bindings.json": "8c42162ed33647cd1c32d27ae014cc4f80bdf77233b5d86f0d6c99d3b354dfb7"
+  },
+  "games": 16,
+  "validatedMoves": 1896,
+  "models": [
+    {
+      "name": "W5-RESCUBIC-R4-LR001-g96-half",
+      "wins": 6,
+      "draws": 3,
+      "losses": 7,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.46875,
+      "pairStandardError": 0.1288470508005519,
+      "descriptiveNormal95": [
+        0.21620978043091832,
+        0.7212902195690817
+      ],
+      "pairScores": [
+        0.75,
+        0.75,
+        0.5,
+        0.25,
+        1.0,
+        0.5,
+        0.0,
+        0.0
+      ],
+      "boundedPair95": [
+        0,
+        0.9489113956599604
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        0.9489113956599604
+      ]
+    }
+  ],
+  "modelBindings": [
+    {
+      "residualGain": 0.25,
+      "effectiveNetworkSha256": "7b5ed98716db9f995cddf7e2408b691a5d728e71610d58e0c89528f10f8bb378",
+      "originalManifest": {
+        "id": "g000096-s000786432-014449a8d5676d1a4569501219355fad6f5c7182a02537397d526db6e31ea35a",
+        "generation": 96,
+        "optimizerStep": 786432,
+        "trainingDepth": 4,
+        "parentId": "g000095-s000778240-e44abd3cf0617c304869dddf06783705a97c8c7c37866ac6b1345b318c71723d",
+        "networkBytes": 30864,
+        "networkSha256": "a831c9beea3889351b92fea09039ab7eabd8eb9ee6f648807336dfaa9684c158",
+        "trainingBytes": 92464,
+        "trainingSha256": "00f32dc27648a4e7ce5ffc24ea5c430f67059317b59818437b9ca1a9f99ff630",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "name": "W5-RESCUBIC-R4-LR001-g96-half-quadratic",
+      "gatedCache": false,
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5,
+      "correctionAblation": "quadratic"
+    },
+    {
+      "residualGain": 0.25,
+      "effectiveNetworkSha256": "66d1bd24d900d803aa6db92300804aa6ba015efa6c05eca6e19210745ee4b8c6",
+      "originalManifest": {
+        "id": "g000096-s000786432-014449a8d5676d1a4569501219355fad6f5c7182a02537397d526db6e31ea35a",
+        "generation": 96,
+        "optimizerStep": 786432,
+        "trainingDepth": 4,
+        "parentId": "g000095-s000778240-e44abd3cf0617c304869dddf06783705a97c8c7c37866ac6b1345b318c71723d",
+        "networkBytes": 30864,
+        "networkSha256": "a831c9beea3889351b92fea09039ab7eabd8eb9ee6f648807336dfaa9684c158",
+        "trainingBytes": 92464,
+        "trainingSha256": "00f32dc27648a4e7ce5ffc24ea5c430f67059317b59818437b9ca1a9f99ff630",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "name": "W5-RESCUBIC-R4-LR001-g96-half",
+      "gatedCache": false,
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    }
+  ],
+  "sameRootSearch": [
+    {
+      "name": "W5-RESCUBIC-R4-LR001-g96-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 4,
+      "meanDepthDifference": 0,
+      "lessEqualMoreDepth": [
+        0,
+        8,
+        0
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.2095652865762863,
+      "medianNpsRatio": 0.8297368732861521
+    }
+  ],
+  "telemetry": {
+    "W5-RESCUBIC-R4-LR001-g96-half": {
+      "moves": 948,
+      "nodes": 30252652,
+      "elapsedNanos": 23086020800,
+      "sumDepth": 7264,
+      "fallbacks": 0,
+      "maximumMoveNanos": 313866300
+    },
+    "g000096-s000786432-014449a8d5676d1a4569501219355fad6f5c7182a02537397d526db6e31ea35a": {
+      "moves": 948,
+      "nodes": 30221339,
+      "elapsedNanos": 22525707200,
+      "sumDepth": 7311,
+      "fallbacks": 0,
+      "maximumMoveNanos": 186776500
+    }
+  },
+  "commonOpponentContrasts": [],
+  "openingPrefixSensitivity": [
+    {
+      "plies": 4,
+      "uniquePrefixes": 5,
+      "largestGroup": 3
+    },
+    {
+      "plies": 8,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 12,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 16,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    }
+  ],
+  "processReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\degree3-r4-node-batch-000.process.json",
+      "sha256": "b42cbf1200fa249ee4ed31c82d4f746a269348dfebe2a9080c92008dd9b4dd34",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T05:14:07.2755960Z",
+      "sampledPeakWorkingSetBytes": 596705280,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 40.09375,
+      "plan": "docs/research/brn-successor-cglhw/wave5-degree3-r4-node-plan.json",
+      "processId": 37252,
+      "startedUtc": "2026-10-21T05:13:32.4520879Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\degree3-r4-node-batch-001.process.json",
+      "sha256": "3362cbd80ecddc65e6b9c70bd92dafc6b8d4ee8b12b31a049f8880a9dfc2398f",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T05:14:19.9279861Z",
+      "sampledPeakWorkingSetBytes": 333361152,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 17.140625,
+      "plan": "docs/research/brn-successor-cglhw/wave5-degree3-r4-node-plan.json",
+      "processId": 42196,
+      "startedUtc": "2026-10-21T05:14:07.4745608Z"
+    }
+  ],
+  "separateDiagnosticProcessReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\build-tests-01.process.json",
+      "sha256": "20b9d48dd2af92d3926c9ce5f7b2d4e268307d51ce932b8b911ece8f36540521",
+      "entrypoint": "separate-bounded-gradle-qa",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cache-0-01.process.json",
+      "sha256": "aa6109ebcae8a1bd62a1c6e58a13ec1ec4ece2ead472ef30fd7ed8236af0bfb7",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cache-1-01.process.json",
+      "sha256": "06ce0b26f4d4639010f228678d521e09cad76bebc467ddd2dd31472f4db343cd",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cache-2-01.process.json",
+      "sha256": "9af56c9e2cfc03246d3b1ca054b232797f23d986e63d4ae54ac5637b792f839e",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cubic-only-cache-01.process.json",
+      "sha256": "162b59248538717bf32982c352636e28eec941bf030c1d5e2a12cf3dd88acf3e",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\quadratic-cache-1-01.process.json",
+      "sha256": "3dd353b703c77ed43e9112507430107ae0cc31a7ef80b7724a1328a9da992241",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\quadratic-cache-2-01.process.json",
+      "sha256": "6562037767b80c2419b94033cb314cf9b84dcd21fff831272baf81d62ad8572c",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-cache-0-01.process.json",
+      "sha256": "dbeda4367e506b8a657cede3c45694d4ddb92ca31bb183a2cb3db11fd49f6f77",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-cache-1-01.process.json",
+      "sha256": "4117f8522f4e039cb1877eb63a78d8e13a826e7f63c8a9454b92cb87d59c95ac",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-cache-2-01.process.json",
+      "sha256": "1ee3b147bbcf0df3ac32f511999ee7a3ec128f1eca922db59d39292acf63ea0c",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-cache-3-01.process.json",
+      "sha256": "1076690c54667019e34ce5cd37ad89e62a3fc10a18edb360de2215aae27015fa",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\unary-cache-1-01.process.json",
+      "sha256": "6c4b6e4042d1268c1f15eac079a06cc745969df60e198d9b75ffce50a6ccc5fb",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\unary-cache-2-01.process.json",
+      "sha256": "a0909b77f7d3b52e2d2777dee53d6acf568bd5c3ca2fcc67e6f68f4ccb72a996",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    }
+  ],
+  "maximumSampledWorkingSetMiB": 569.0625,
+  "totalEngineCpuSeconds": 57.234375,
+  "limitations": [
+    "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims.",
+    "Paired differences on shared complete opening pairs against the same reference. Positive favours left. Descriptive, unadjusted, not direct head-to-head strength or architectural causation.",
+    "Fresh search/TT at identical opening roots; different evaluator-dependent trees. Clock protocols warm up; node protocols do not. Descriptive cost/behaviour, not causal latency or strength.",
+    "Move-prefix grouping is a descriptive dependence warning, not ECO/source-game classification or proof of independent opening families. Pair intervals are unadjusted.",
+    "Hoeffding intervals assume independent bounded opening-pair scores; within-plan union bound covers only this plan, not prior candidate selection or repeated protocols. Independence remains unverified.",
+    "No final strength claim, selection-adjusted confirmation, or architectural causation inferred."
+  ]
+}

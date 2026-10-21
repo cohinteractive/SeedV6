@@ -1,7 +1,7 @@
 # Wave 5 trained assessment
 
 21 October 2026. Existing CGLHW, contract revision2. G5 is **complete and verified**;
-no programme success or production adoption is established. This root began clean
+all544 admitted development games are closed. No programme success or production adoption is established. This root began clean
 at b43b761/build55 at observed02:31:57 UTC. No root journal exists; no finalizer used.
 
 ## Verified training
@@ -343,3 +343,44 @@ A separate read-only preparation auditor is ready for the eventual degree-contro
 gate. It independently checks wire7 CRC/layout, every retained parameter/moment byte,
 step/rate and exact cursor/source/configuration/CP-seek inheritance. Parser validation
 has passed; actual owner-projection validation remains pending, not inferred.
+
+## Closed assessment and next experiment
+
+All544 prospectively bounded development games are closed:71731 independently
+replayed legal moves, zero failed/capped/fallback games. Seventeen protocols remain
+separate in wave5-assessment-results.json; no pooled strength estimate. Maximum
+sampled engine working set589.23MiB and total recorded engine CPU7973.84seconds.
+Every launch retained one game, one worker, no pondering,64MiB TT,768MiB heap,
+one active processor and BelowNormal priority. Original frozen build55 runtimes
+were retained through all later implementation changes.
+
+The final deeper262144-node comparisons versus BRE001 score R4 2/5/9 =28.125%
+(descriptive normal95 4.63-51.62%) and R16 6/2/8 =43.75% (23.57-63.93%). They
+use different roots from the shallow screen: the contrast does not isolate depth
+causally, but throughput alone cannot explain this practical-depth observation.
+Full versus quadratic-only at32768 nodes scores R4 6/3/7 =46.875% (21.62-72.13%)
+and R16 9/2/5 =62.5% (49.40-75.60%). Bounded pair intervals are much wider;
+R16's is14.48-100%. These eight-pair selected development screens do not establish
+positive strength or higher-order value. Cubic-only R4 versus unary at200ms closes
+6/2/8 =43.75% (16.36-71.14%), consistent with not selecting it from prediction loss.
+
+Standard-board-status sensitivity preserves the Gen64-to96 fitting conclusion.
+Removing flagged rows only for this posthoc diagnostic leaves1015 CP evaluation
+rows in each panel. R4 CE improves1.313811->1.306798 on old CP and.982926->.977630
+on fresh CP; R16 changes1.305687->1.306005 and.972872->.974259. The original
+all-row protocols, metrics and source data are unchanged. Flags mostly concern
+castling rights, with two old evaluation rows having excess pieces/pawns. This
+sensitivity is not a new independent holdout or a general data-quality guarantee;
+see wave5-status-sensitivity.json and its analysis tool.
+
+Decision: no candidate is ready for independent strength confirmation. R4 reduces
+isolated cost and recovers some prediction quality, but its actual NPS advantage
+over R16 is position-dependent and it does not show robust practical-depth quality.
+R16 has the more promising marginal-degree point score, which may reflect weights
+co-adapted with cubic heads. The most discriminating next intervention is a trained
+Q16 control sharing the retained weights, optimizer, objective and data with C16.
+Admit the consolidated four-arm Wave6 in WAVE6.md: Q16, full C16, compact C4 and
+BRE001 exact continuation from96 to128. The two cubic continuations preserve the
+maturity question; the ordinary BRE continuation controls additional exposure.
+No cubic-only architecture, objective change, vector integration or default-evaluator
+replacement is selected. Human training starts only after actual owner/native readiness.
