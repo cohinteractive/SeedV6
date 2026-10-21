@@ -1,0 +1,36 @@
+{
+  "id": "wave4-hybrid-direct-admission-v1",
+  "createdUtc": "2026-10-21T00:06:48.299030+00:00",
+  "status": "Prospectively frozen; activate after the existing BRE calibration and depth controls close or a material finding warrants a recorded amendment.",
+  "plans": [
+    {
+      "path": "wave4-hybrid-direct-node-plan.json",
+      "sha256": "55f3edab8a2f174a637ef9c8b5a00a2c23e9473ee0d2482f4888335c00fc25de",
+      "games": 48
+    },
+    {
+      "path": "wave4-hybrid-direct-clock-plan.json",
+      "sha256": "16cada00b2976d8f089753eb68cff47cb2b9f5cdaf598e2d24c79c7bbf2894d9",
+      "games": 48
+    }
+  ],
+  "runtime": "wave4-packed-core-runtime.json",
+  "question": "Does adding a separately trained nonlinear correction to continued BRE produce practical value beyond that same continued base? Does packed rank4 improve the quality/cost balance?",
+  "selection": "Three mechanisms, not all eight compositions: LR001 gate and cubic full-width means on BRE001 half, plus the existing fit-only cubic rank4 mask on that identical base. Lower-rate validation and complementary prediction motivate this choice before hybrid match outcomes; no favourable-result stopping. Fixed half base and half correction. Both-rate direct residual controls are already closed; any promising hybrid must subsequently face BRE003 and frozen Gen32 plus a nonlinear-value ablation.",
+  "readiness": [
+    "wave4-hybrid-readiness.json",
+    "wave4-packed-core-readiness.json",
+    "wave4-packed-hybrid-prediction.json"
+  ],
+  "nodes": 131072,
+  "moveMillis": 100,
+  "openings": "Same direct development roots17..24, eight colour-reversed pairs per candidate. Consumed and selected; no confirmation.",
+  "resource": "One concurrent game,one worker/engine,no ponder,64MiB TT,768MiB JVM,ActiveProcessorCount1,BelowNormal;12games/240seconds per launch. Two-second node safety unchanged. No parallel training/build/probe.",
+  "decision": "Complete all96 games. Compare both node and clock outcomes/cost with broad uncertainty; no candidate adoption or final success. Record future comparison selection separately before any further games.",
+  "confounds": [
+    "Hybrid combines two post-reference training streams; single BRE endpoint one. More total optimization/data diversity remain alternative explanations.",
+    "Pruned rank4 was selected on prediction panels and has uncertain chess noninferiority; this is a cost/quality diagnostic.",
+    "Reused openings, candidate selection and repeated testing prevent independent confirmation.",
+    "Equal nodes isolate one budget dimension; clock strength remains the practical target."
+  ]
+}

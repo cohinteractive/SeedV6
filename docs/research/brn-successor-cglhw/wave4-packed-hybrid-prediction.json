@@ -1,0 +1,45 @@
+{
+  "id": "wave4-packed-hybrid-prediction-v1",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\average-diagnostic-02\\bt4-predictions.jsonl": "9e89c4ab705db8caeb96cb43281b8e00178bc13f930e72ea059b1cc776cecb1b",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\cubic-ranks-LR001-01\\bt4-predictions.jsonl": "abb897836076826a19c354dd1625fc6bd0ebaf4845d3f22d44d32afd36bfe68e",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\average-diagnostic-02\\cp-predictions.jsonl": "ece2861a1e06ef003995c221feaa7673fa912f1ded4b579d4de1b6c1c1764523",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\cubic-ranks-LR001-01\\cp-predictions.jsonl": "942425e227fe3bef74b867f93e869612a8c6910a50736509a638486cb272ca2b"
+  },
+  "measurements": [
+    {
+      "source": "bt4",
+      "rows": 2048,
+      "fit": {
+        "base": 0.6548969673155366,
+        "fullHybrid": 0.6448139639726659,
+        "rank4Hybrid": 0.6470215224820354,
+        "rank4Standalone": 0.6504413428092287
+      },
+      "evaluation": {
+        "base": 0.6369177597340052,
+        "fullHybrid": 0.6258749087312016,
+        "rank4Hybrid": 0.6255070136377813,
+        "rank4Standalone": 0.6281508325156127
+      }
+    },
+    {
+      "source": "cp",
+      "rows": 2048,
+      "fit": {
+        "base": 0.5952014323775267,
+        "fullHybrid": 0.5779062614993887,
+        "rank4Hybrid": 0.5863306100612445,
+        "rank4Standalone": 0.5835132427477987
+      },
+      "evaluation": {
+        "base": 0.5882886205032758,
+        "fullHybrid": 0.5828061326668851,
+        "rank4Hybrid": 0.5888014739123415,
+        "rank4Standalone": 0.5921935364025231
+      }
+    }
+  ],
+  "selection": "Original fit-only rank4 mask [2,3,5,9], fixed half correction, BRE001 half; no new grid or refit.",
+  "limitations": "Algebraic reuse of consumed prediction panels. No independent generalization, native prediction execution or chess improvement claim."
+}
