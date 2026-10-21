@@ -2,6 +2,8 @@ plugins { id 'java-library' }
 apply from: rootProject.file('gradle/java-conventions.gradle')
 
 description = 'Independent references, research implementations, empirical runners and diagnostic resources.'
+// Optional vector experiment remains research-only; core/UCI acquire no module dependency.
+tasks.withType(JavaCompile).configureEach { options.compilerArgs += ['--add-modules', 'jdk.incubator.vector'] }
 dependencies {
     implementation project(':engine-core')
     implementation project(':engine-training')

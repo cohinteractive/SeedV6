@@ -1,0 +1,23 @@
+{
+  "id": "wave5-vector-feasibility-admission-v1",
+  "recordedUtc": "2026-10-21T03:57:48.701120+00:00",
+  "question": "Can vector lanes preserve the scalar cubic recurrence and lower its actual cost, especially rank16 whose shallow-node quality exceeds the compact model?",
+  "scope": "Research-only prototype. No production core dependency, no default changes, no search strength claim. All snapshots read-only.",
+  "limits": {
+    "positionsPerPassMaximum": 10000,
+    "parityPasses": 4,
+    "timingPasses": 9,
+    "evaluationsPerTimingPass": 100000,
+    "secondsMaximum": 300,
+    "processors": 1,
+    "heapMiB": 768
+  },
+  "decision": "Require exact scalar/vector raw bits and integer parity in all3 fixed JVM replications. Consider search integration only for a useful repeatable reduction (target>=10%) over core scalar; report copied-scalar control and memory cost. No result-dependent extra replications.",
+  "overlap": "Pause match launches at a completed batch boundary for build and probe; resume unchanged frozen plans/runtimes afterward.",
+  "replicates": 3,
+  "implementations": [
+    "existing core scalar",
+    "private copied coefficients with scalar arithmetic",
+    "same private coefficients with vector lane arithmetic"
+  ]
+}

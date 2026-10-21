@@ -188,3 +188,48 @@ search mapping and half-change intervention create a substantially different ope
 point. Cubic-only chess tests remain useful, but a later training wave must consider
 objective/mapping alignment and retain controls rather than blindly deleting useful
 quadratic capacity. No production mapping or training objective has been changed.
+
+## Primary clock closure and search-cost interpretation
+
+Primary assessment is closed:128 node+128 clock games,33369 independently replayed
+legal moves, zero failure/cap/fallback. The128 clock games alone contain16868 moves.
+Latest96 clock scores against Gen32 are R4 56.25% (6/6/4; descriptive normal95
+44–68.5%), R16 62.5% (8/4/4;38–87%), BRE001 68.75% (9/4/3;53.39–84.11%) and
+BRE003 68.75% (9/4/3;41.36–96.14%). Best scores respectively56.25/46.875/50/50%.
+Eight pairs and selection/dependence make these exploratory, not positive confirmation.
+See wave5-primary-clock-results.json and wave5-primary-contrasts.json.
+
+On warmed paired opening roots, Latest R4/R16/BRE001/BRE003 median NPS ratios
+versus Gen32 are .78649/.71214/.99309/1.04396. R4 is about10.4% faster than R16 by
+these ratios, much less than proportional to component count. The base/search costs
+dominate. Same-root R4 depth difference0, R16 -.5 ply (eight roots, descriptive).
+Gen32 median opening effort is295315 nodes; R4/R16 about224371/207622. Therefore
+32768-node versus200ms score changes mix search depth and throughput; do not attribute
+the whole loss of the shallow-node advantage to evaluator cost alone. A targeted
+deeper-node diagnostic may be warranted after the direct controls clarify the mechanism.
+
+The independently admitted160 direct and64 cubic-only games remain active. BRE001
+remains a defensible direct control: stronger shallow-node point score and tied clock
+point score with BRE003; this is not proof of the optimal learning rate. No W5 successor
+or next-wave training recipe has been selected from these small primary results.
+
+## Direct shallow-node closure and vector feasibility question
+
+All80 direct node games close without failure. R4 versus R16 scores37.5%; versus
+BRE001 R4/R16 score62.5/78.125%; versus their own fast unary ablation they score
+78.125/65.625%. Each comparison has only8 opening pairs. These support further
+investigation of expressive value, not a conclusive architectural claim. R4 versus
+R16 at200ms scores59.375% (9/1/6; descriptive95 33.29–85.46%), with paired root
+NPS ratio1.01146 and mean depth difference+.25. The larger primary cost ratio is
+not a universal speedup; positions/search behaviour matter. Separate reports retain
+all identities, legal replays and paired uncertainty.
+
+The remaining direct clock/cubic-only protocols pause at a completed plan boundary
+for a research-only vector feasibility experiment (wave5-vector-admission.json).
+It keeps the exact polynomial recurrence/order, adding no model/optimizer/search
+policy change. Compare core scalar, copied-coefficient scalar, and vector lanes in
+three fixed JVM replications on preserved game transitions. The coefficient-copy
+memory cost is explicit. Require bit/score parity and useful repeatable speedup
+before any search integration. Core/UCI gain no vector-module dependency. Fifteen
+targeted tests pass (2 prototype parameterizations,13 variants); both initial and
+final control-enhanced build logs are preserved. This is build55 research tooling.
