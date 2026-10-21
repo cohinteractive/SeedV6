@@ -1,5 +1,11 @@
 # Wave 7: compact degree adaptation
 
+G7 completion update,21 October2026: owner training is verified complete through160.
+All three sessions and100 checkpoint/state pairs pass. Q4 Best160; C4/BRE Best158.
+The former blocking gate below is retained as fulfilled historical instructions.
+Use [WAVE7-ASSESSMENT](WAVE7-ASSESSMENT.md) and STATE for active work and exact identities.
+No repeated training is requested. The runner pause is archived after verification.
+
 Preparation admitted 21 October 2026 within the existing CONTRACT revision2.
 **G7 READY ? human training is blocking.** G6 is verified and all288 development
 games are closed. Three new lineages are prepared at128 in native build57.
@@ -138,7 +144,7 @@ Final rehash verifies all4035 inventoried files unchanged:710 historical W3/froz
 not newly rehashed. Frozen runtime56 and new runtime57 hashes also remain intact.
 No previous model, optimizer, checkpoint, Latest/Best pointer or history was replaced.
 
-## Blocking human-training gate G7
+## Historical human-training gate G7 (fulfilled)
 
 Use this verified executable (the default installed shortcut was not replaced):
 `dist/windows/candidates/candidate-20261021T095502-65efe5a1/SeedV6-GUI/SeedV6-GUI.exe`.

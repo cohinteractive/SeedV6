@@ -1,4 +1,4 @@
-"""Read-only W6 history/ancestry audit after BrnLineageAudit's codec checks.
+"""Read-only W6/W7 history/ancestry audit after BrnLineageAudit's codec checks.
 
 Usage: python -B tools/audit-brn-wave6-training.py AUDIT_DIRECTORY NEW_REPORT
 The report binds live evidence, but never changes a training store.
@@ -19,16 +19,24 @@ def main():
     audit, output = map(Path, sys.argv[1:])
     assert not output.exists(), "Preserve prior evidence"
     stores = json.loads((audit / 'stores.json').read_text())
-    assert len(stores) == 5
+    wave = json.loads((Path(stores[1]['root']) / 'degree-continuation-origin.json').read_text())['wave']
+    assert wave in ('brn-successor-2026-10-21-wave6', 'brn-successor-2026-10-21-wave7')
+    compact = wave.endswith('wave7')
+    number, start = (7, 128) if compact else (6, 96)
+    end = start + 32
+    assert len(stores) == (4 if compact else 5)
     results = []
     for store in stores[1:]:
         name, root = store['name'], Path(store['root'])
         rate = .001
         origin = json.loads((root / 'degree-continuation-origin.json').read_text())
+        assert origin['wave'] == wave and name.startswith(f'W{number}-')
         chain = store['chain']
-        assert [x['generation'] for x in chain] == list(range(96, 129))
+        assert [x['generation'] for x in chain] == list(range(start, end + 1))
         initial = chain[0]
         expected_architecture = 'BRN_GEN32_QUADRATIC' if 'RESQUAD' in name else 'BRN_GEN32_CUBIC_R4' if '-R4-' in name else 'BRN_GEN32_CUBIC' if '-R16-' in name else 'BRN_PAIR2'
+        if compact and 'RESQUAD' in name:
+            expected_architecture = 'BRN_GEN32_QUADRATIC_R4'
         assert all(c['architecture'] == expected_architecture for c in chain)
         assert origin['arm']['projection'] == ('quadratic' if 'RESQUAD' in name else 'exact')
         assert origin['bootstrap'] == initial['id'] == store['initializer']['initialCheckpoint']
@@ -52,15 +60,15 @@ def main():
             assert checkpoint['optimizer'] == dict(learningRate=rate,
                                                    beta1=.9, beta2=.999, epsilon=1e-8)
         session = store['session']
-        assert (session['baseline'], session['target'], session['completed'], session['state']) == (96, 32, 32, 'COMPLETED')
+        assert (session['baseline'], session['target'], session['completed'], session['state']) == (start, 32, 32, 'COMPLETED')
         history = store['history']
         assert not history['warnings']
         rows = history['records']
-        assert [x['generation'] for x in rows] == list(range(97, 129))
+        assert [x['generation'] for x in rows] == list(range(start + 1, end + 1))
         ledger = store['ledger']
         reservations = ledger['reservations']
-        assert len(reservations) == 128
-        assert [r['generation'] for r in reservations] == list(range(1, 129))
+        assert len(reservations) == end
+        assert [r['generation'] for r in reservations] == list(range(1, end + 1))
         assert all(r['status'] == 'COMPLETED' for r in reservations)
         cursors = {}
         for reservation in reservations:
@@ -71,7 +79,7 @@ def main():
                 cursors[r['source']] = r['end']
         assert cursors == ledger['next']
         best = initial['id']
-        for row, checkpoint, reservation in zip(rows, chain[1:], reservations[96:]):
+        for row, checkpoint, reservation in zip(rows, chain[1:], reservations[start:]):
             assert row['candidate'] == checkpoint['id'] and row['incumbent'] == best
             assert row['decision'] in ('PROMOTE', 'RETAIN_INCUMBENT')
             if row['decision'] == 'PROMOTE':
@@ -111,26 +119,26 @@ def main():
                                 validationLoss=r['bootstrap']['comparison']['candidateLoss'],
                                 incumbentLoss=r['bootstrap']['comparison']['bestLoss'], decision=r['decision']) for r in rows]))
     comparisons = []
-    for left, right in [(stores[1],stores[2]), (stores[3],stores[2])]:
+    for left, right in ([(stores[1],stores[2])] if compact else [(stores[1],stores[2]), (stores[3],stores[2])]):
         lrows, rrows = left['history']['records'], right['history']['records']
         for l, r in zip(left['ledger']['reservations'], right['ledger']['reservations']):
             for key in ['generation','mix','ranges','trainingHash','validationHash','status']:
                 assert l[key] == r[key], (left['name'], key)
         delta = [l['bootstrap']['comparison']['candidateLoss']-r['bootstrap']['comparison']['candidateLoss'] for l,r in zip(lrows,rrows)]
-        comparisons.append(dict(left=left['name'],right=right['name'],identicalDataAll128Generations=True,
+        comparisons.append(dict(left=left['name'],right=right['name'],identicalDataThroughGeneration=end,
                                 leftValidationWins=sum(d<0 for d in delta),
                                 meanLeftMinusRight=statistics.mean(delta),last8LeftMinusRight=statistics.mean(delta[-8:])))
-    report = dict(id='wave6-trained-evidence-v1', audit=str(audit),
+    report = dict(id=f'wave{number}-trained-evidence-v1', audit=str(audit),
                   auditFiles={p.name:sha(p) for p in audit.iterdir() if p.is_file()},
                   reference=stores[0]['checkpoints'][0]['manifest'], lineages=results, pairedComparisons=comparisons,
                   limitations=['Codec/runtime parity is verified separately by BrnLineageAudit.',
                     'Sequential generations use different validation examples; raw temporal means are descriptive.',
                     'Best is a sequential held-out promotion decision, not the global minimum on a fixed panel.',
-                    'Data matches between Q16/C16/C4; BRE raw ranges/splits and historical exposure differ. Q16 inherits cubic-trained embeddings/Adam.',
+                    'Data matches between residual arms; BRE raw ranges/splits and historical exposure differ. Quadratic inherits cubic-trained embeddings/Adam.',
                     'WDL Loss GUI label does not change the recorded half-squared target-error objective.',
                     'No chess strength conclusion follows from these losses.'])
     output.write_text(json.dumps(report,indent=2)+'\n')
-    print(json.dumps(dict(lineages=len(results), verifiedCheckpointPairs=133, pairedComparisons=comparisons)))
+    print(json.dumps(dict(lineages=len(results), verifiedCheckpointPairs=1+33*len(results), pairedComparisons=comparisons)))
 
 
 if __name__ == '__main__':

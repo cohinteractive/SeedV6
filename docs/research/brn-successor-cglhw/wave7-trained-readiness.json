@@ -1,0 +1,284 @@
+{
+  "id": "wave7-trained-runtime-readiness-v1",
+  "runtime": "wave7-runtime.json",
+  "probes": [
+    {
+      "evidence": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-cache-cubic-full-01.json",
+      "sha256": "6b64fda994bc2b34dd3bef9e5352312c4324305d3adc55224c0a93ee7b982fb9",
+      "candidate": "W7-RESCUBIC-R4-LR001",
+      "scale": 1,
+      "positions": 6333,
+      "searchPairs": 48,
+      "maximumRawError": 1.942890293094024e-14,
+      "maximumFreshRawError": 7.549516567451064e-15,
+      "integerDifferences": 0,
+      "searchDifferences": 0,
+      "weightBytes": 30792,
+      "combinedPayloadBytes": 825896,
+      "immutablePrimitiveBytes": 830480,
+      "accumulatorPrimitiveBytes": 3753,
+      "latency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            30720100,
+            29384900,
+            28789900,
+            31083800,
+            30330900,
+            29245700,
+            28730000
+          ],
+          "medianNanos": 587.698,
+          "name": "CUBIC-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            12424600,
+            12848600,
+            12111800,
+            10627800,
+            10609600,
+            10703700,
+            12617200
+          ],
+          "medianNanos": 242.236,
+          "name": "CUBIC-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            7331700,
+            6988100,
+            7043100,
+            6938900,
+            6781900,
+            6838900,
+            9102200
+          ],
+          "medianNanos": 139.762,
+          "name": "Gen32"
+        }
+      ],
+      "cacheDetails": {
+        "updates": 6214,
+        "roundingFallbacks": 11,
+        "rebuilds": 130,
+        "correctionErrorBound": 2.139932567066034e-05,
+        "kind": "polynomial-period64-canonical-rounding-guard-v1"
+      },
+      "warmedCacheToCanonicalSearchMedian": 0.8261652349392814
+    },
+    {
+      "evidence": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-cache-cubic-half-01.json",
+      "sha256": "76ac9e2306edd6744c04c9a5a8f0fda75033d54292ea00ecbb1a69b9a0073a16",
+      "candidate": "W7-RESCUBIC-R4-LR001",
+      "scale": 0.5,
+      "positions": 6333,
+      "searchPairs": 48,
+      "maximumRawError": 6.439293542825908e-15,
+      "maximumFreshRawError": 7.771561172376096e-15,
+      "integerDifferences": 0,
+      "searchDifferences": 0,
+      "weightBytes": 30792,
+      "combinedPayloadBytes": 825896,
+      "immutablePrimitiveBytes": 830480,
+      "accumulatorPrimitiveBytes": 3753,
+      "latency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            31527100,
+            30737500,
+            28537900,
+            28632800,
+            28463000,
+            28409700,
+            28455100
+          ],
+          "medianNanos": 570.758,
+          "name": "CUBIC-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            13709600,
+            11573100,
+            11894600,
+            10346700,
+            10450100,
+            10352400,
+            10405200
+          ],
+          "medianNanos": 209.002,
+          "name": "CUBIC-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            7474400,
+            6960000,
+            6749500,
+            6869900,
+            6528400,
+            6761600,
+            6748700
+          ],
+          "medianNanos": 135.232,
+          "name": "Gen32"
+        }
+      ],
+      "cacheDetails": {
+        "updates": 6211,
+        "roundingFallbacks": 4,
+        "rebuilds": 126,
+        "correctionErrorBound": 1.069966283533017e-05,
+        "kind": "polynomial-period64-canonical-rounding-guard-v1"
+      },
+      "warmedCacheToCanonicalSearchMedian": 0.840155372890593
+    },
+    {
+      "evidence": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-cache-quad-full-01.json",
+      "sha256": "09f3f862abea47c8ae2fa7d8ab519ebe1baa5d0a494239a7fbb18bd351463dbb",
+      "candidate": "W7-RESQUAD-R4-LR001",
+      "scale": 1,
+      "positions": 6333,
+      "searchPairs": 48,
+      "maximumRawError": 4.6629367034256575e-15,
+      "maximumFreshRawError": 9.547918011776346e-15,
+      "integerDifferences": 0,
+      "searchDifferences": 0,
+      "weightBytes": 30760,
+      "combinedPayloadBytes": 825864,
+      "immutablePrimitiveBytes": 830448,
+      "accumulatorPrimitiveBytes": 3689,
+      "latency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            30319100,
+            27757800,
+            27427700,
+            27327900,
+            27261600,
+            27389300,
+            26757600
+          ],
+          "medianNanos": 547.786,
+          "name": "QUADRATIC-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            13285200,
+            12815100,
+            11221100,
+            10220800,
+            10072400,
+            9836900,
+            9986100
+          ],
+          "medianNanos": 204.416,
+          "name": "QUADRATIC-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            7899000,
+            7454700,
+            7240000,
+            7068100,
+            7030300,
+            6885900,
+            6997100
+          ],
+          "medianNanos": 141.362,
+          "name": "Gen32"
+        }
+      ],
+      "cacheDetails": {
+        "updates": 6209,
+        "roundingFallbacks": 0,
+        "rebuilds": 124,
+        "correctionErrorBound": 1.561451964569922e-07,
+        "kind": "quadratic-period64-canonical-rounding-guard-v1"
+      },
+      "warmedCacheToCanonicalSearchMedian": 0.8413968417525699
+    },
+    {
+      "evidence": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-cache-quad-half-01.json",
+      "sha256": "9590b3f4afbfe3cb255ef30ddc453b5bc73e131704beffef3c2e4e8033376e1d",
+      "candidate": "W7-RESQUAD-R4-LR001",
+      "scale": 0.5,
+      "positions": 6333,
+      "searchPairs": 48,
+      "maximumRawError": 2.3314683517128287e-15,
+      "maximumFreshRawError": 8.770761894538737e-15,
+      "integerDifferences": 0,
+      "searchDifferences": 0,
+      "weightBytes": 30760,
+      "combinedPayloadBytes": 825864,
+      "immutablePrimitiveBytes": 830448,
+      "accumulatorPrimitiveBytes": 3689,
+      "latency": [
+        {
+          "medianNanos": 543.522,
+          "name": "QUADRATIC-full",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            29351300,
+            29820000,
+            26966300,
+            26749600,
+            27176100,
+            26993200,
+            28071600
+          ]
+        },
+        {
+          "medianNanos": 196.162,
+          "name": "QUADRATIC-cache",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            11951600,
+            10787900,
+            9808100,
+            9661400,
+            9653700,
+            9783400,
+            9970400
+          ]
+        },
+        {
+          "medianNanos": 136.77,
+          "name": "Gen32",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            7332900,
+            6831400,
+            6858200,
+            6838500,
+            6781400,
+            6693200,
+            7528000
+          ]
+        }
+      ],
+      "cacheDetails": {
+        "roundingFallbacks": 0,
+        "rebuilds": 124,
+        "correctionErrorBound": 7.80725982284961e-08,
+        "kind": "quadratic-period64-canonical-rounding-guard-v1",
+        "updates": 6209
+      },
+      "warmedCacheToCanonicalSearchMedian": 0.8246367585186292
+    }
+  ],
+  "auditRegression": "W6 actual audit reproduced exactly except generalized comparison-key and limitation wording.",
+  "limitations": [
+    "Sequential latency probes have host/JIT variation; no proportional whole-search speed claim.",
+    "Cache and canonical compare the same function. Q4 versus C4 is a different-function comparison.",
+    "No training or independent strength confirmation."
+  ]
+}

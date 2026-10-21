@@ -1,0 +1,25 @@
+{
+  "id": "wave7-trained-endpoint-audit-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304"
+    },
+    {
+      "name": "W7-RESQUAD-R4-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-QUADRATIC-R4\\91af04c6-dec5-39f9-a70a-02e58b38d856",
+      "initialCheckpoint": "g000128-s001048576-82d4969a16ecc7e7921b45d4af453b59f096188677b37c168b8437f7e6b089d0"
+    },
+    {
+      "name": "W7-RESCUBIC-R4-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC-R4\\65907dc7-c479-3894-927f-bb9f1679d054",
+      "initialCheckpoint": "g000128-s001048576-f86c64d4205ff58b87449aa07192c1a3eb793177c9bd1618860d68e7a436f8ab"
+    },
+    {
+      "name": "W7-BRE-CONTROL-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\d945d1bd-91c4-370c-91f3-8b14226bfff1",
+      "initialCheckpoint": "g000128-s002801664-a8f7cdc93ae5232d78fa21c10a94b01efb8b875c59c50585fb2293e1003eb192"
+    }
+  ]
+}

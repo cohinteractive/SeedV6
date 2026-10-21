@@ -1,0 +1,44 @@
+{
+  "id": "wave7-development-assessment-v1",
+  "protocols": [
+    {
+      "label": "degree-node",
+      "plan": "docs/research/brn-successor-cglhw/wave7-degree-node-plan.json",
+      "sha256": "d72e566b40721efeed367d90cefe101179be5315afc5daa11b9e238317dad218",
+      "games": 32
+    },
+    {
+      "label": "degree-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave7-degree-clock-plan.json",
+      "sha256": "b97cb90ba5b62958220abddb2a0e299c428367fbc5a9d13d0770ba018e21caab",
+      "games": 32
+    },
+    {
+      "label": "bre-node",
+      "plan": "docs/research/brn-successor-cglhw/wave7-bre-node-plan.json",
+      "sha256": "ddc786d6305eecd711ddc55388717edf526ea17221a077b2fcc75098f1a1d5ae",
+      "games": 32
+    },
+    {
+      "label": "bre-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave7-bre-clock-plan.json",
+      "sha256": "cce2d4b639409ad11298766c834f8fd566096ab26f303dbe7127fdc06df00073",
+      "games": 32
+    },
+    {
+      "label": "reference-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave7-reference-clock-plan.json",
+      "sha256": "e44b576946ec05ae31a83a855cdeda174e9f0496edead2a3b1a3c2730fd00a8c",
+      "games": 48
+    }
+  ],
+  "totalGames": 176,
+  "runtime": "wave7-runtime.json",
+  "selection": "Latest160 selected before G7 training; Q4 Best160, C4/BRE Best158 audited separately. Fixed consumed-panel results do not justify substituting Best. No Best match selected.",
+  "mapping": "Common Policy4/QXRAY, material plus quarter residual, half learned change from Gen32 in all trained arms; unchanged from G6.",
+  "purpose": "Adapted rank4 degree comparison, continued BRE at practical-depth equal nodes and time, and frozen reference at time.",
+  "stopping": "Complete fixed budgets, except correctness/resource failure. No favorable-score stopping or budget extension. Any further protocol needs a separately recorded discriminating question.",
+  "statistics": "Opening-pair descriptive and bounded intervals; roots reused between conditions, opening-family dependence unknown. Development only, no independent superiority claim.",
+  "resource": "One game, one worker per engine, no ponder,64MiB TT,768MiB heap,ActiveProcessorCount1,BelowNormal;12games/240sec per launch.",
+  "confirmation": "Partition1 remains reserved. No confirmation candidate selected."
+}

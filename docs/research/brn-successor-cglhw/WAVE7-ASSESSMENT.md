@@ -1,0 +1,108 @@
+# Wave7 trained rank-four assessment
+
+21 October2026. Existing CGLHW, contract revision2. G7 is verified complete;
+the assessment is active. No research success or independent superiority is claimed.
+
+## Verification and endpoint selection
+
+The owner reports no anomalies. All three persisted sessions are COMPLETED,
+baseline128, target32 additional, completed32. Histories contain129..160 and
+33 retained checkpoint/state pairs128..160. Every parent link and8192-step
+increment is exact. Final residual step1310720, BRE3063808. Each adds4194304
+training examples,1048576 validation examples,33554432 visits and262144 updates.
+Rate.001, batch128, eight epochs, seed1, one worker,131072 training positions
+and32768 held-out WDL examples per generation agree with the prepared design.
+
+The build57 Java audit verifies100 pairs including frozen Gen32,24 boards each.
+Independent ancestry/header/CRC checks, exact inherited weights and Adam state,
+source cursors and CP seek-prefix inheritance pass. All695 inventoried owner files
+remain unchanged. No staging/partial checkpoint exists; final settled incremental
+attempt160 points to159 with no notice. This establishes durable consistency, not
+an independently observed uninterrupted wall-clock session or training executable.
+
+Complete checkpoint IDs, full network/state hashes, Best pointers, histories and
+settings: [wave7-trained-checkpoints.json](wave7-trained-checkpoints.json).
+Read-only frozen copies and initialization proofs: [admission](wave7-trained-admission.json).
+Q4's Latest and Best are160. C4 and BRE Latest are160, Best158. Generation numbers
+alone do not identify payloads. Latest160 was specified in WAVE7 before training
+and remains the primary endpoint. Best158 is included in fixed-panel diagnostics;
+no Best tournament substitution is currently admitted.
+
+Q4 deletes four cubic heads and moments from the same C4 Gen128 source, retaining
+all11535 other weight/moment values and the step/rate. Q4 and C4 have identical
+source reservations through160. This is matched adaptation after a cubic-trained
+initialization, not a symmetric from-scratch architecture experiment. BRE retains
+different historical source ranges, validation split and sparse Adam semantics.
+Q4 is mathematically additive pairwise and cannot itself satisfy the additional
+expressiveness success requirement.
+
+## Training and fixed-panel diagnosis
+
+First-eight to last-eight descriptive means (different examples each generation):
+
+| Arm | Training loss | Held-out validation loss |
+| --- | --- | --- |
+| Q4 | .096168 to .097656 | .105467 to .104920 |
+| C4 | .095936 to .096893 | .105433 to .104595 |
+| BRE | .090542 to .092473 | .102571 to .109639 |
+
+Q4 beats C4 validation in8/32 generations; mean Q4 minus C4 is.0001704,
+last-eight.0003251. C4 has a small fitting advantage, not established chess value.
+GUI loss is half-squared target error; the optimizer uses cross-entropy. Sequential
+Best promotion is not minimization of a single fixed validation panel.
+
+The two established2048-row/source diagnostic panels are already consumed data,
+including the panel historically named fresh5. Independent Python reproduction
+of Java cross-entropy is within3.11e-15, with status-valid sensitivity retained.
+No new training, calibration fitting or independent generalization claim occurs.
+Model bindings: wave7-maturity-model-plan.json; full/raw/half-change results:
+wave7-fitting-old.json and wave7-fitting-fresh5.json; raw predictions under
+raw/wave7/trained-predictions-{old,fresh5}-01.
+
+Using the established half learned change and material-plus-quarter-residual
+mapping, second-half CE128 to160 is:
+
+| Arm | Old BT4 | Old CP | W5 BT4 | W5 CP |
+| --- | --- | --- | --- | --- |
+| Q4 | .780073 to .780440 | 1.330021 to1.331167 | .768723 to .767955 | .975886 to .974619 |
+| C4 | .781095 to .780345 | 1.334590 to1.331413 | .768884 to .768093 | .977399 to .974136 |
+| BRE | .779104 to .778771 | 1.336331 to1.337204 | .767667 to .767546 | .981334 to .982519 |
+
+C4 improves all four mapped panels; Q4 is mixed. BRE's large late per-generation
+validation rise does not reproduce as a general fixed-panel collapse. Best158 C4
+is worse than Latest160 on all four mapped panels; BRE Best is mixed. This does
+not prove Latest is the strongest chess checkpoint, but supplies no material
+reason to depart from the prospective selection. No numerical/runtime discrepancy
+or evidence requiring repeated owner training was found.
+
+## Runtime readiness and cost
+
+Four actual full/half Q4/C4 probes pass6333 positions and48 paired canonical/cache
+searches each, zero integer/fresh/search differences, maximum raw error below2e-14.
+Exact evidence hashes and measurements: wave7-trained-readiness.json.
+Full cached inference Q4/C4 is204.416/242.236ns; half is196.162/209.002ns.
+Gen32 measured135.232..141.362ns in those sequential probes. Host/JIT variation
+prevents interpreting the two ratios as a precise causal speedup. Match throughput
+will be measured separately. Q4/C4 have3845/3849 correction parameters,
+3689/3753-byte primitive workspaces,825864/825896-byte base-plus-model payloads.
+Object overhead, runtime/TT allocation and search cost are separate quantities.
+
+## Prospective development programme
+
+wave7-assessment-protocol.json fixes176 games: C4 versus Q4,32 each at262144 nodes
+and200ms; Q4/C4 versus continued BRE,16 each at both limits; all three versus
+frozen Gen32,16 each at200ms. Common Policy4/QXRAY and half learned change are
+unchanged from G6. New32 development roots exclude previous selected roots;
+colours reverse, roots repeat between conditions. Unknown family dependence,
+candidate selection and repeated research prevent independent confirmation claims.
+Partition1 remains reserved. Complete fixed budgets except correctness/resource
+failure; no favorable-score stopping or unchanged extensions.
+
+One game, one worker per engine, no ponder,64MiB TT,768MiB JVM,ActiveProcessorCount1,
+BelowNormal; each launch at most12 games/240 seconds, finishing its current game.
+Use frozen wave7-runtime.json only. Check receipts/processes before launch and do
+not run concurrent heavy probes/builds/training. Raw output is local-only evidence.
+
+After closing the assessment, select a discriminating follow-up using the current
+STATE frontier. Do not automatically request another32 generations or stop at this
+documentation boundary. Human actions currently required: None.

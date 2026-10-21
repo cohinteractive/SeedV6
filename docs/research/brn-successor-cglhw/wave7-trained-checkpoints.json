@@ -1,0 +1,1024 @@
+{
+  "id": "wave7-trained-evidence-v1",
+  "audit": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-audit-01",
+  "auditFiles": {
+    "complete.json": "03bf88d5250c74ecdb6f15c0485a59796df86e952e5a3cebea3de707a273cf81",
+    "stores.json": "c47f99210275f592811ebdb59830e285c0e4fd657fd891496bc1ee8656aa9960"
+  },
+  "reference": {
+    "id": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+    "generation": 32,
+    "optimizerStep": 1753088,
+    "trainingDepth": 4,
+    "parentId": "g000031-s001228800-3b52a75c2077c9b9a44edcee222201e0b3a0b76dc8b9cef5ae99804fa5549c78",
+    "networkBytes": 795032,
+    "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "trainingBytes": 2731424,
+    "trainingSha256": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+    "architecture": "BRN_PAIR2"
+  },
+  "lineages": [
+    {
+      "name": "W7-RESQUAD-R4-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-QUADRATIC-R4\\91af04c6-dec5-39f9-a70a-02e58b38d856",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave7",
+        "arm": {
+          "name": "W7-RESQUAD-R4-LR001",
+          "source": {
+            "candidate": "W6-RESCUBIC-R4-LR001",
+            "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC-R4\\dd1c701f-ff67-38da-97e3-40f41605ec98",
+            "checkpoint": "g000128-s001048576-e466f76a69ab9cd0c4a9703972ad7072b777a46cae8c5aa0d8a16bdc25b1e771",
+            "networkSha256": "f583b20bd181eb044999a1ad07f2432911374793051bfd15ecc376e5ff3ddb16",
+            "trainingSha256": "7f8f65263a642d0b3aa93ed7a8c855530afd001f5e4269272d7dd325559ffc43",
+            "generation": 128,
+            "seed": 1,
+            "positionsPerGeneration": 131072,
+            "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+          },
+          "rate": 0.001,
+          "projection": "quadratic"
+        },
+        "sourceLedgerSha256": "fb2057062c46b139020b7f534b59ddc8193a3122e1312614d12c1edb37a1c8c9",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000128-s001048576-82d4969a16ecc7e7921b45d4af453b59f096188677b37c168b8437f7e6b089d0",
+        "networkSha256": "7033f6611765e959a5c1e1aa027c3e1aace72773bd56b5fa0bd3922f3f7e777a",
+        "trainingSha256": "b8f64ac9ad13004a256b9f763e1d3daf7397c92eb9e190b9af67401dfaba7412",
+        "inheritedStep": 1048576
+      },
+      "initial": {
+        "id": "g000128-s001048576-82d4969a16ecc7e7921b45d4af453b59f096188677b37c168b8437f7e6b089d0",
+        "generation": 128,
+        "optimizerStep": 1048576,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 30832,
+        "networkSha256": "7033f6611765e959a5c1e1aa027c3e1aace72773bd56b5fa0bd3922f3f7e777a",
+        "trainingBytes": 92368,
+        "trainingSha256": "b8f64ac9ad13004a256b9f763e1d3daf7397c92eb9e190b9af67401dfaba7412",
+        "architecture": "BRN_GEN32_QUADRATIC_R4"
+      },
+      "latest": {
+        "id": "g000160-s001310720-b5d40cc7a3cd74a4eab18f6e274676b7c58d094896d931d5f40f06828a4ed338",
+        "generation": 160,
+        "optimizerStep": 1310720,
+        "trainingDepth": 4,
+        "parentId": "g000159-s001302528-5f0fb29eab78eda811e5c087698ade7dcd126281fe56b0674ec8a17a5e1d2ed8",
+        "networkBytes": 30832,
+        "networkSha256": "fd6c2fc1ec2549bced72ab5d3bf245ff4a56abf6d779ba36a921040bd4dd70bd",
+        "trainingBytes": 92368,
+        "trainingSha256": "683b146e2911126c40dca6e7e36fcb9aa447f9def00138c51a52c5559757faf8",
+        "architecture": "BRN_GEN32_QUADRATIC_R4"
+      },
+      "best": {
+        "id": "g000160-s001310720-b5d40cc7a3cd74a4eab18f6e274676b7c58d094896d931d5f40f06828a4ed338",
+        "generation": 160,
+        "optimizerStep": 1310720,
+        "trainingDepth": 4,
+        "parentId": "g000159-s001302528-5f0fb29eab78eda811e5c087698ade7dcd126281fe56b0674ec8a17a5e1d2ed8",
+        "networkBytes": 30832,
+        "networkSha256": "fd6c2fc1ec2549bced72ab5d3bf245ff4a56abf6d779ba36a921040bd4dd70bd",
+        "trainingBytes": 92368,
+        "trainingSha256": "683b146e2911126c40dca6e7e36fcb9aa447f9def00138c51a52c5559757faf8",
+        "architecture": "BRN_GEN32_QUADRATIC_R4"
+      },
+      "session": {
+        "version": 1,
+        "id": "74649c30-5124-41eb-9722-887ea91fd3f7",
+        "lineageId": "91af04c6-dec5-39f9-a70a-02e58b38d856",
+        "baseline": 128,
+        "target": 32,
+        "completed": 32,
+        "state": "COMPLETED"
+      },
+      "addedOptimizerSteps": 262144,
+      "generations": 32,
+      "trainingSamples": 4194304,
+      "validationSamples": 1048576,
+      "trainingVisits": 33554432,
+      "promotions": 15,
+      "first8": {
+        "trainingLoss": 0.0961676848212592,
+        "validationLoss": 0.10546656303020487,
+        "candidateMinusIncumbent": -0.0028704376487205616
+      },
+      "last8": {
+        "trainingLoss": 0.09765556575656671,
+        "validationLoss": 0.1049203880384183,
+        "candidateMinusIncumbent": 7.998559504650456e-05
+      },
+      "trainingSeconds": 196.1579354,
+      "finalComparison": {
+        "samples": 32768,
+        "candidateLoss": 0.10516499088621217,
+        "bestLoss": 0.10531752697510274
+      },
+      "finalCursors": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 48533269,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 45458323
+      },
+      "originSha256": "0b8a547a55672881eebe858221ef43031a61b07f33cec4ef8a35fd27869257cb",
+      "generationMetrics": [
+        {
+          "generation": 129,
+          "trainingLoss": 0.09745210690336598,
+          "validationLoss": 0.10262596711534688,
+          "incumbentLoss": 0.12607909603499745,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 130,
+          "trainingLoss": 0.09553726666094947,
+          "validationLoss": 0.10500314042023545,
+          "incumbentLoss": 0.10504119201917575,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 131,
+          "trainingLoss": 0.09937289508055609,
+          "validationLoss": 0.10606745085866856,
+          "incumbentLoss": 0.10559144128614995,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 132,
+          "trainingLoss": 0.09502999609881749,
+          "validationLoss": 0.10635007944634385,
+          "incumbentLoss": 0.10640802498911202,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 133,
+          "trainingLoss": 0.09866803931805938,
+          "validationLoss": 0.10659800766452468,
+          "incumbentLoss": 0.10687956155544938,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 134,
+          "trainingLoss": 0.09344591699101708,
+          "validationLoss": 0.10411425259970793,
+          "incumbentLoss": 0.10408445651774086,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 135,
+          "trainingLoss": 0.09700569955256695,
+          "validationLoss": 0.10649104662074747,
+          "incumbentLoss": 0.10658018375536325,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 136,
+          "trainingLoss": 0.09282955796474116,
+          "validationLoss": 0.1064825595160641,
+          "incumbentLoss": 0.10603204927341477,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 137,
+          "trainingLoss": 0.0986089432636763,
+          "validationLoss": 0.11011435031469638,
+          "incumbentLoss": 0.1111256526509001,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 138,
+          "trainingLoss": 0.0970803175471666,
+          "validationLoss": 0.1020520558943045,
+          "incumbentLoss": 0.10185721608750249,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 139,
+          "trainingLoss": 0.09379282046637079,
+          "validationLoss": 0.10657472757691301,
+          "incumbentLoss": 0.10634451080843352,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 140,
+          "trainingLoss": 0.0936536484229061,
+          "validationLoss": 0.10418461334687477,
+          "incumbentLoss": 0.10603423153065972,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 141,
+          "trainingLoss": 0.09743670846110361,
+          "validationLoss": 0.10213961837629232,
+          "incumbentLoss": 0.10163730620273474,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 142,
+          "trainingLoss": 0.09548056838321944,
+          "validationLoss": 0.10326540084000681,
+          "incumbentLoss": 0.10331262637278035,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 143,
+          "trainingLoss": 0.09689274114789868,
+          "validationLoss": 0.09968541371572061,
+          "incumbentLoss": 0.09987584967045121,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 144,
+          "trainingLoss": 0.09853671423948383,
+          "validationLoss": 0.10441682926360085,
+          "incumbentLoss": 0.10348679527227841,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 145,
+          "trainingLoss": 0.09683230758831463,
+          "validationLoss": 0.10478760583525974,
+          "incumbentLoss": 0.10470062261409725,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 146,
+          "trainingLoss": 0.09420959018234139,
+          "validationLoss": 0.10408678532433101,
+          "incumbentLoss": 0.10319487291233528,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 147,
+          "trainingLoss": 0.09785231121513065,
+          "validationLoss": 0.10585135700322668,
+          "incumbentLoss": 0.10447462869889566,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 148,
+          "trainingLoss": 0.09818021342938288,
+          "validationLoss": 0.10553529971514428,
+          "incumbentLoss": 0.10522610247127645,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 149,
+          "trainingLoss": 0.09820075221766146,
+          "validationLoss": 0.10548516588109479,
+          "incumbentLoss": 0.10680264190059419,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 150,
+          "trainingLoss": 0.0976381663658999,
+          "validationLoss": 0.10746894268205229,
+          "incumbentLoss": 0.10719789570987594,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 151,
+          "trainingLoss": 0.097858257840749,
+          "validationLoss": 0.10510601176038252,
+          "incumbentLoss": 0.10521668601474163,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 152,
+          "trainingLoss": 0.09292713652549878,
+          "validationLoss": 0.106223824745979,
+          "incumbentLoss": 0.1057773484171932,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 153,
+          "trainingLoss": 0.0988606478758066,
+          "validationLoss": 0.10487809944028907,
+          "incumbentLoss": 0.10483776120081839,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 154,
+          "trainingLoss": 0.09561173127514852,
+          "validationLoss": 0.1002428597409952,
+          "incumbentLoss": 0.10054506545100364,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 155,
+          "trainingLoss": 0.09925624507410409,
+          "validationLoss": 0.10636985528557824,
+          "incumbentLoss": 0.10528896719303327,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 156,
+          "trainingLoss": 0.09799170619413582,
+          "validationLoss": 0.10718153168210422,
+          "incumbentLoss": 0.10788220692266823,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 157,
+          "trainingLoss": 0.09721708293381455,
+          "validationLoss": 0.10447193281946471,
+          "incumbentLoss": 0.10378241712588544,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 158,
+          "trainingLoss": 0.09622034712794587,
+          "validationLoss": 0.10740227597346617,
+          "incumbentLoss": 0.10746152329296275,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 159,
+          "trainingLoss": 0.09756234964586226,
+          "validationLoss": 0.10365155847923661,
+          "incumbentLoss": 0.1036077513854999,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 160,
+          "trainingLoss": 0.09852441592571602,
+          "validationLoss": 0.10516499088621217,
+          "incumbentLoss": 0.10531752697510274,
+          "decision": "PROMOTE"
+        }
+      ]
+    },
+    {
+      "name": "W7-RESCUBIC-R4-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC-R4\\65907dc7-c479-3894-927f-bb9f1679d054",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave7",
+        "arm": {
+          "name": "W7-RESCUBIC-R4-LR001",
+          "source": {
+            "candidate": "W6-RESCUBIC-R4-LR001",
+            "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC-R4\\dd1c701f-ff67-38da-97e3-40f41605ec98",
+            "checkpoint": "g000128-s001048576-e466f76a69ab9cd0c4a9703972ad7072b777a46cae8c5aa0d8a16bdc25b1e771",
+            "networkSha256": "f583b20bd181eb044999a1ad07f2432911374793051bfd15ecc376e5ff3ddb16",
+            "trainingSha256": "7f8f65263a642d0b3aa93ed7a8c855530afd001f5e4269272d7dd325559ffc43",
+            "generation": 128,
+            "seed": 1,
+            "positionsPerGeneration": 131072,
+            "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+          },
+          "rate": 0.001,
+          "projection": "exact"
+        },
+        "sourceLedgerSha256": "fb2057062c46b139020b7f534b59ddc8193a3122e1312614d12c1edb37a1c8c9",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000128-s001048576-f86c64d4205ff58b87449aa07192c1a3eb793177c9bd1618860d68e7a436f8ab",
+        "networkSha256": "f583b20bd181eb044999a1ad07f2432911374793051bfd15ecc376e5ff3ddb16",
+        "trainingSha256": "7f8f65263a642d0b3aa93ed7a8c855530afd001f5e4269272d7dd325559ffc43",
+        "inheritedStep": 1048576
+      },
+      "initial": {
+        "id": "g000128-s001048576-f86c64d4205ff58b87449aa07192c1a3eb793177c9bd1618860d68e7a436f8ab",
+        "generation": 128,
+        "optimizerStep": 1048576,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 30864,
+        "networkSha256": "f583b20bd181eb044999a1ad07f2432911374793051bfd15ecc376e5ff3ddb16",
+        "trainingBytes": 92464,
+        "trainingSha256": "7f8f65263a642d0b3aa93ed7a8c855530afd001f5e4269272d7dd325559ffc43",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "latest": {
+        "id": "g000160-s001310720-8c3cb384f9307517f76bb3b67072209060e26c3d2a89cca357e9eb5498ba543c",
+        "generation": 160,
+        "optimizerStep": 1310720,
+        "trainingDepth": 4,
+        "parentId": "g000159-s001302528-03e692f0f42e770e00abf4fbc6a9ff52091be1ad2ab47f7072450c60fc933af8",
+        "networkBytes": 30864,
+        "networkSha256": "a93290ed92737aaaa377a361239e30228f44a6e154d8a0927737a682caa77cab",
+        "trainingBytes": 92464,
+        "trainingSha256": "e7e76292b1da57d18c653e8f8b710561e92195eab0567fb88de19e9f7b41c6ef",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "best": {
+        "id": "g000158-s001294336-a53442ba157502b1d45f9121bade60ffc901df72ddc7fa88254276bba25ecbd7",
+        "generation": 158,
+        "optimizerStep": 1294336,
+        "trainingDepth": 4,
+        "parentId": "g000157-s001286144-65c84182522f3545859d911d7279ea9f952fb68934a383a9fcf2351da4545d4c",
+        "networkBytes": 30864,
+        "networkSha256": "ca376d1c91613c5db37bffc3aee1297dc340f865f5aaa479ec4a3b444340af60",
+        "trainingBytes": 92464,
+        "trainingSha256": "b036b377c3008626f1534034973fc56474c5c62e95d6e76b6d50f49e34b281ca",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "session": {
+        "version": 1,
+        "id": "e6aa8069-cb05-4797-9de7-4ce31d7c9443",
+        "lineageId": "65907dc7-c479-3894-927f-bb9f1679d054",
+        "baseline": 128,
+        "target": 32,
+        "completed": 32,
+        "state": "COMPLETED"
+      },
+      "addedOptimizerSteps": 262144,
+      "generations": 32,
+      "trainingSamples": 4194304,
+      "validationSamples": 1048576,
+      "trainingVisits": 33554432,
+      "promotions": 14,
+      "first8": {
+        "trainingLoss": 0.09593629306184813,
+        "validationLoss": 0.10543284786745598,
+        "candidateMinusIncumbent": 8.079243135701922e-05
+      },
+      "last8": {
+        "trainingLoss": 0.09689286773228326,
+        "validationLoss": 0.10459527586827072,
+        "candidateMinusIncumbent": -0.00012479329433807626
+      },
+      "trainingSeconds": 188.273663,
+      "finalComparison": {
+        "samples": 32768,
+        "candidateLoss": 0.1046508563647746,
+        "bestLoss": 0.10444410367850329
+      },
+      "finalCursors": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 48533269,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 45458323
+      },
+      "originSha256": "0cfabf61641b0064c143d0f1bcdd27b874734b17e835ea2857b796c04ef368c6",
+      "generationMetrics": [
+        {
+          "generation": 129,
+          "trainingLoss": 0.097287875219738,
+          "validationLoss": 0.10290641813088683,
+          "incumbentLoss": 0.1030772876984612,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 130,
+          "trainingLoss": 0.09531924184413934,
+          "validationLoss": 0.10478632430892341,
+          "incumbentLoss": 0.1049581935630785,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 131,
+          "trainingLoss": 0.09930342674204218,
+          "validationLoss": 0.10635296790975338,
+          "incumbentLoss": 0.1054075799949669,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 132,
+          "trainingLoss": 0.09491760634048343,
+          "validationLoss": 0.10625456060837705,
+          "incumbentLoss": 0.10618766847256358,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 133,
+          "trainingLoss": 0.09844282306872745,
+          "validationLoss": 0.10650860003173117,
+          "incumbentLoss": 0.1066314159555876,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 134,
+          "trainingLoss": 0.0929983911278394,
+          "validationLoss": 0.10402475589750837,
+          "incumbentLoss": 0.10393049388341923,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 135,
+          "trainingLoss": 0.09666743519750809,
+          "validationLoss": 0.10617143033145515,
+          "incumbentLoss": 0.1067569016448819,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 136,
+          "trainingLoss": 0.09255354495430712,
+          "validationLoss": 0.10645772572101247,
+          "incumbentLoss": 0.10586690227583277,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 137,
+          "trainingLoss": 0.09764924537855843,
+          "validationLoss": 0.10955661467315639,
+          "incumbentLoss": 0.11066156536091777,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 138,
+          "trainingLoss": 0.0967463796972476,
+          "validationLoss": 0.10211854497824485,
+          "incumbentLoss": 0.10175300357000969,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 139,
+          "trainingLoss": 0.09330270564706548,
+          "validationLoss": 0.10660805903068524,
+          "incumbentLoss": 0.10652833553027907,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 140,
+          "trainingLoss": 0.09258374829096021,
+          "validationLoss": 0.10398576132459827,
+          "incumbentLoss": 0.10561155029725912,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 141,
+          "trainingLoss": 0.09655000343686118,
+          "validationLoss": 0.10186917030765427,
+          "incumbentLoss": 0.10130828069878745,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 142,
+          "trainingLoss": 0.09519776075096044,
+          "validationLoss": 0.10311104582995498,
+          "incumbentLoss": 0.10307246008857861,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 143,
+          "trainingLoss": 0.09630891408416122,
+          "validationLoss": 0.09980207864065878,
+          "incumbentLoss": 0.10020860841861141,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 144,
+          "trainingLoss": 0.0979921298404708,
+          "validationLoss": 0.10410886262063009,
+          "incumbentLoss": 0.10374138540611967,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 145,
+          "trainingLoss": 0.09619367906971413,
+          "validationLoss": 0.10444025171048389,
+          "incumbentLoss": 0.10470391013414389,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 146,
+          "trainingLoss": 0.09365867705276425,
+          "validationLoss": 0.10381810559867227,
+          "incumbentLoss": 0.1031933985173642,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 147,
+          "trainingLoss": 0.09727099449579199,
+          "validationLoss": 0.10552483323812749,
+          "incumbentLoss": 0.10494840370868827,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 148,
+          "trainingLoss": 0.09774336915113968,
+          "validationLoss": 0.10525106388362317,
+          "incumbentLoss": 0.10521932491502362,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 149,
+          "trainingLoss": 0.09752112975600787,
+          "validationLoss": 0.10545291466936338,
+          "incumbentLoss": 0.106452909509085,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 150,
+          "trainingLoss": 0.09725187461304335,
+          "validationLoss": 0.1077910528568534,
+          "incumbentLoss": 0.10712586236361295,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 151,
+          "trainingLoss": 0.09729072489966228,
+          "validationLoss": 0.10480704746397616,
+          "incumbentLoss": 0.10526799446748394,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 152,
+          "trainingLoss": 0.09276495791454882,
+          "validationLoss": 0.10614970649558676,
+          "incumbentLoss": 0.10561586500174167,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 153,
+          "trainingLoss": 0.09874378644403609,
+          "validationLoss": 0.10491390198976996,
+          "incumbentLoss": 0.10486240529293919,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 154,
+          "trainingLoss": 0.09525158794987304,
+          "validationLoss": 0.10017113580186737,
+          "incumbentLoss": 0.10063607864673302,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 155,
+          "trainingLoss": 0.09859302703603251,
+          "validationLoss": 0.10583006749348857,
+          "incumbentLoss": 0.10506415441160104,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 156,
+          "trainingLoss": 0.09750633260456154,
+          "validationLoss": 0.10686990188433738,
+          "incumbentLoss": 0.1075509126241004,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 157,
+          "trainingLoss": 0.09526986687815989,
+          "validationLoss": 0.10348906807545274,
+          "incumbentLoss": 0.10354221374021123,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 158,
+          "trainingLoss": 0.09547921734289963,
+          "validationLoss": 0.10705001661399434,
+          "incumbentLoss": 0.1080052636362669,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 159,
+          "trainingLoss": 0.09668709619594361,
+          "validationLoss": 0.10378725872248078,
+          "incumbentLoss": 0.10365542127051529,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 160,
+          "trainingLoss": 0.09761202740675971,
+          "validationLoss": 0.1046508563647746,
+          "incumbentLoss": 0.10444410367850329,
+          "decision": "RETAIN_INCUMBENT"
+        }
+      ]
+    },
+    {
+      "name": "W7-BRE-CONTROL-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\d945d1bd-91c4-370c-91f3-8b14226bfff1",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave7",
+        "arm": {
+          "name": "W7-BRE-CONTROL-LR001",
+          "source": {
+            "candidate": "W6-BRE-CONTROL-LR001",
+            "root": "E:\\SeedV6-Networks\\BRN-Pair2\\065d3f01-1bd6-3207-9c26-454dbfa683f3",
+            "checkpoint": "g000128-s002801664-f314e41639dbee698870825cc848d1ee57627c0616689ecc7e937ebcb3634cbe",
+            "networkSha256": "376b36cb9def3277f9ca9d229522aa1ad2e329f189e2171bb61c6fbb74835b79",
+            "trainingSha256": "5363c46ada36496af0d4800adf95113c13de12ed0679c94eb756d94e16199688",
+            "generation": 128,
+            "seed": 1,
+            "positionsPerGeneration": 131072,
+            "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+          },
+          "rate": 0.001,
+          "projection": "exact"
+        },
+        "sourceLedgerSha256": "6489086e2687a724ffdad39c3f64820e1dc4dcd58e13b1f9ab733fe29aeaea15",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000128-s002801664-a8f7cdc93ae5232d78fa21c10a94b01efb8b875c59c50585fb2293e1003eb192",
+        "networkSha256": "376b36cb9def3277f9ca9d229522aa1ad2e329f189e2171bb61c6fbb74835b79",
+        "trainingSha256": "5363c46ada36496af0d4800adf95113c13de12ed0679c94eb756d94e16199688",
+        "inheritedStep": 2801664
+      },
+      "initial": {
+        "id": "g000128-s002801664-a8f7cdc93ae5232d78fa21c10a94b01efb8b875c59c50585fb2293e1003eb192",
+        "generation": 128,
+        "optimizerStep": 2801664,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 795032,
+        "networkSha256": "376b36cb9def3277f9ca9d229522aa1ad2e329f189e2171bb61c6fbb74835b79",
+        "trainingBytes": 2731424,
+        "trainingSha256": "5363c46ada36496af0d4800adf95113c13de12ed0679c94eb756d94e16199688",
+        "architecture": "BRN_PAIR2"
+      },
+      "latest": {
+        "id": "g000160-s003063808-54726e9dc33906a097242113f4884b2d229fb151c50d9ee6026f36f326e13679",
+        "generation": 160,
+        "optimizerStep": 3063808,
+        "trainingDepth": 4,
+        "parentId": "g000159-s003055616-4600cf34481838e21962c892c473d25c66c41aad11c71386c3308446b5186927",
+        "networkBytes": 795032,
+        "networkSha256": "b83832f93b28e6c3e197e12a720477c07fdfc03ee174499219b1a3d9ba894d3b",
+        "trainingBytes": 2731424,
+        "trainingSha256": "e31cbe5bee563da686166d6d1f99059f5559d7d0587fc2e2b69e0ba9032647a7",
+        "architecture": "BRN_PAIR2"
+      },
+      "best": {
+        "id": "g000158-s003047424-3e1df21f11f880475523fed34a4eb831e3cd4ed08762c69019794149aee6683c",
+        "generation": 158,
+        "optimizerStep": 3047424,
+        "trainingDepth": 4,
+        "parentId": "g000157-s003039232-35859764b44505a9d26329f14f5d2946802892f5fb644d99006042badcc70904",
+        "networkBytes": 795032,
+        "networkSha256": "d822690477609d2d3fe9d1658bcd1b910b2f7879f298c182c9b93eb2cfe3300a",
+        "trainingBytes": 2731424,
+        "trainingSha256": "77bd002ebc5ff269f02de0d28916d99e6a9e0b819d620529f40f221ad261cecf",
+        "architecture": "BRN_PAIR2"
+      },
+      "session": {
+        "version": 1,
+        "id": "df261c7e-5470-409b-a6ba-e4e9a97a0f14",
+        "lineageId": "d945d1bd-91c4-370c-91f3-8b14226bfff1",
+        "baseline": 128,
+        "target": 32,
+        "completed": 32,
+        "state": "COMPLETED"
+      },
+      "addedOptimizerSteps": 262144,
+      "generations": 32,
+      "trainingSamples": 4194304,
+      "validationSamples": 1048576,
+      "trainingVisits": 33554432,
+      "promotions": 18,
+      "first8": {
+        "trainingLoss": 0.09054201280898735,
+        "validationLoss": 0.10257121118510924,
+        "candidateMinusIncumbent": -4.652322517388098e-05
+      },
+      "last8": {
+        "trainingLoss": 0.0924730816721248,
+        "validationLoss": 0.10963890506916588,
+        "candidateMinusIncumbent": 0.0012185231745778374
+      },
+      "trainingSeconds": 423.5314215,
+      "finalComparison": {
+        "samples": 32768,
+        "candidateLoss": 0.11465787119581725,
+        "bestLoss": 0.11278979661507778
+      },
+      "finalCursors": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 16043278,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 15327663
+      },
+      "originSha256": "4f3c49a31533e9dcc0a38ed34ec5735ee4c71ff93515d5add60011e3d4dc12cc",
+      "generationMetrics": [
+        {
+          "generation": 129,
+          "trainingLoss": 0.0917931090959874,
+          "validationLoss": 0.10800160999040112,
+          "incumbentLoss": 0.10742309922068664,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 130,
+          "trainingLoss": 0.093023317059979,
+          "validationLoss": 0.1073913669568587,
+          "incumbentLoss": 0.10845785511180375,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 131,
+          "trainingLoss": 0.09165797486192706,
+          "validationLoss": 0.09967995200178509,
+          "incumbentLoss": 0.09926413694609014,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 132,
+          "trainingLoss": 0.09150436621580009,
+          "validationLoss": 0.09803714381821603,
+          "incumbentLoss": 0.09684702702511015,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 133,
+          "trainingLoss": 0.09146551812512678,
+          "validationLoss": 0.10689768349943514,
+          "incumbentLoss": 0.106878639289345,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 134,
+          "trainingLoss": 0.08956024686309988,
+          "validationLoss": 0.09713416032128411,
+          "incumbentLoss": 0.09722841826969504,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 135,
+          "trainingLoss": 0.08586729680744033,
+          "validationLoss": 0.10669555347250052,
+          "incumbentLoss": 0.10677225836876214,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 136,
+          "trainingLoss": 0.0894642734425383,
+          "validationLoss": 0.09673221942039319,
+          "incumbentLoss": 0.09807044105077208,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 137,
+          "trainingLoss": 0.09411517595091687,
+          "validationLoss": 0.10825839884181923,
+          "incumbentLoss": 0.10954227171901444,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 138,
+          "trainingLoss": 0.09326973413032273,
+          "validationLoss": 0.10091390122642183,
+          "incumbentLoss": 0.10087723809354976,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 139,
+          "trainingLoss": 0.09050924334587866,
+          "validationLoss": 0.10310233678098472,
+          "incumbentLoss": 0.10401417263700276,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 140,
+          "trainingLoss": 0.09418966912908389,
+          "validationLoss": 0.10951359812503979,
+          "incumbentLoss": 0.10971123516152093,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 141,
+          "trainingLoss": 0.08909398784344144,
+          "validationLoss": 0.09761065048375409,
+          "incumbentLoss": 0.10001056368129407,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 142,
+          "trainingLoss": 0.0955655340422252,
+          "validationLoss": 0.10415891468369212,
+          "incumbentLoss": 0.10705916923240663,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 143,
+          "trainingLoss": 0.08345671244492554,
+          "validationLoss": 0.10348928232256469,
+          "incumbentLoss": 0.1103151736780544,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 144,
+          "trainingLoss": 0.09561461898351452,
+          "validationLoss": 0.10506155543825504,
+          "incumbentLoss": 0.10499063277185558,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 145,
+          "trainingLoss": 0.09338215700739554,
+          "validationLoss": 0.10081943825165217,
+          "incumbentLoss": 0.1019175603645148,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 146,
+          "trainingLoss": 0.08735471165543157,
+          "validationLoss": 0.10611298296529789,
+          "incumbentLoss": 0.10483855732796046,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 147,
+          "trainingLoss": 0.09012411284942798,
+          "validationLoss": 0.10169756467060884,
+          "incumbentLoss": 0.10277409835740528,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 148,
+          "trainingLoss": 0.08712171484794631,
+          "validationLoss": 0.10483838163191884,
+          "incumbentLoss": 0.10551180666830429,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 149,
+          "trainingLoss": 0.09371272215217091,
+          "validationLoss": 0.10879686008699989,
+          "incumbentLoss": 0.10903821936031814,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 150,
+          "trainingLoss": 0.08973013282669842,
+          "validationLoss": 0.09683955713439654,
+          "incumbentLoss": 0.09994640165655072,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 151,
+          "trainingLoss": 0.09502998875536962,
+          "validationLoss": 0.10758251390909694,
+          "incumbentLoss": 0.10690229157118941,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 152,
+          "trainingLoss": 0.09020380673334093,
+          "validationLoss": 0.10365255785571652,
+          "incumbentLoss": 0.10423770879995307,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 153,
+          "trainingLoss": 0.08964521078502469,
+          "validationLoss": 0.11054474109128808,
+          "incumbentLoss": 0.10715975385301198,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 154,
+          "trainingLoss": 0.09313942751547243,
+          "validationLoss": 0.10445777112283118,
+          "incumbentLoss": 0.10352713780590754,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 155,
+          "trainingLoss": 0.09130210116758021,
+          "validationLoss": 0.10794364315211187,
+          "incumbentLoss": 0.10580411682500171,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 156,
+          "trainingLoss": 0.09116808041707593,
+          "validationLoss": 0.10879075841106953,
+          "incumbentLoss": 0.10838131022260632,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 157,
+          "trainingLoss": 0.09253981411778028,
+          "validationLoss": 0.11046859064834962,
+          "incumbentLoss": 0.11140686867233615,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 158,
+          "trainingLoss": 0.09220160864240293,
+          "validationLoss": 0.11348965672608065,
+          "incumbentLoss": 0.11448034065150071,
+          "decision": "PROMOTE"
+        },
+        {
+          "generation": 159,
+          "trainingLoss": 0.09848968784790026,
+          "validationLoss": 0.10675820820577882,
+          "incumbentLoss": 0.1038137305112621,
+          "decision": "RETAIN_INCUMBENT"
+        },
+        {
+          "generation": 160,
+          "trainingLoss": 0.09129872288376163,
+          "validationLoss": 0.11465787119581725,
+          "incumbentLoss": 0.11278979661507778,
+          "decision": "RETAIN_INCUMBENT"
+        }
+      ]
+    }
+  ],
+  "pairedComparisons": [
+    {
+      "left": "W7-RESQUAD-R4-LR001",
+      "right": "W7-RESCUBIC-R4-LR001",
+      "identicalDataThroughGeneration": 160,
+      "leftValidationWins": 8,
+      "meanLeftMinusRight": 0.0001704221130244335,
+      "last8LeftMinusRight": 0.0003251121701475807
+    }
+  ],
+  "limitations": [
+    "Codec/runtime parity is verified separately by BrnLineageAudit.",
+    "Sequential generations use different validation examples; raw temporal means are descriptive.",
+    "Best is a sequential held-out promotion decision, not the global minimum on a fixed panel.",
+    "Data matches between residual arms; BRE raw ranges/splits and historical exposure differ. Quadratic inherits cubic-trained embeddings/Adam.",
+    "WDL Loss GUI label does not change the recorded half-squared target-error objective.",
+    "No chess strength conclusion follows from these losses."
+  ]
+}

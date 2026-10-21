@@ -27,7 +27,7 @@ def main(directory,output):
                     ce=metric.cross_entropy(mapped,phase,row['target'])
                     grouped[(name,gain,split,'all')].append((ce,mapped,raw-base))
                     if valid==0:grouped[(name,gain,split,'valid')].append((ce,mapped,raw-base))
-                if name.startswith('W6-') and '-correction' not in name:
+                if name.startswith(('W6-', 'W7-')) and '-correction' not in name:
                     half=base+.5*(raw-base);mapped=material+.25*(half-material)
                     ce=metric.cross_entropy(mapped,phase,row['target'])
                     grouped[(name+'-half',.25,split,'all')].append((ce,mapped,half-base))
@@ -45,11 +45,11 @@ def main(directory,output):
             statuses=dict(status),maximumBaseTrainerVsCompiledError=base_error,metrics=measured))
     assert max_error<1e-12,max_error
     with output.open('x',encoding='utf-8',newline='\n') as f:
-        json.dump(dict(id='wave6-fixed-panel-diagnostics-v1',directory=str(directory),maximumJavaMeanError=max_error,
+        json.dump(dict(id=java['plan']+'-diagnostics-v1',directory=str(directory),maximumJavaMeanError=max_error,
             sources=results,limitations=['Both panels were consumed previously; no independent generalization/strength claim.',
              'Second half is evaluation partition of these diagnostic panels; status-valid sensitivity does not prove reachability.',
              'Half-change quarter mapping fixed from earlier waves; full/raw metrics separate objective effects.',
-             'Quadratic/unary/cubic-only inference ablations have no adaptation; trained Q16 is the adapted degree control.',
+             'Quadratic/unary/cubic-only inference ablations have no adaptation; separately trained quadratic lineages are the adapted degree controls.',
              'BRE raw trainer values differ slightly from float-folded runtime; actual match hashes/caches separately verified.']),f,indent=2);f.write('\n')
     print('Independent Java metric reproduction maximum error',max_error)
 

@@ -1,4 +1,4 @@
-"""Verify retained G6 bootstrap/attempt bytes and freeze audited owner stores.
+"""Verify retained G6/G7 bootstrap/attempt bytes and freeze audited owner stores.
 
 Exclusive evidence destinations; never writes into an owner store. Requires the
 complete Java codec audit and audit-brn-wave6-training.py report first.
@@ -9,6 +9,7 @@ import io
 import json
 import shutil
 import struct
+import sys
 from pathlib import Path
 
 BASE = Path('docs/research/brn-successor-cglhw')
@@ -35,15 +36,19 @@ def attempt(path):
     assert not stream.read()
     return result
 
-def main():
+def main(wave=6):
+    assert wave in (6, 7)
+    raw = BASE/f'raw/wave{wave}'
+    start, end = (96, 128) if wave == 6 else (128, 160)
+    source_wire, target_wire, retained = (5, 7, 13073) if wave == 6 else (6, 8, 3845)
     spec = importlib.util.spec_from_file_location('projection', Path(__file__).with_name('audit-brn-degree-projection.py'))
     projection = importlib.util.module_from_spec(spec); spec.loader.exec_module(projection)
-    report = read(BASE/'wave6-trained-checkpoints.json')
-    inventory = read(RAW/'trained-before-01.json')['files']
-    prep = read(RAW/'owner-preparation-01.json')
-    initial_inventory = read(RAW/'owner-before-gui-01.json')['files']
-    stores = read(RAW/'trained-audit-01/stores.json')
-    destination = RAW/'trained-frozen-01'
+    report = read(BASE/f'wave{wave}-trained-checkpoints.json')
+    inventory = read(raw/'trained-before-01.json')['files']
+    prep = read(raw/'owner-preparation-01.json')
+    initial_inventory = read(raw/'owner-before-gui-01.json')['files']
+    stores = read(raw/'trained-audit-01/stores.json')
+    destination = raw/'trained-frozen-01'
     assert not destination.exists()
     checks = []
     for row, store, prepared in zip(report['lineages'], stores[1:], prep['entries']):
@@ -55,8 +60,8 @@ def main():
             after = projection.payload(root,origin['bootstrap'],pattern)
             assert projection.sha(before) == source[key] and projection.sha(after) == origin[key]
             if origin['arm']['projection'] == 'quadratic':
-                old, new = projection.decode(before,is_state,5),projection.decode(after,is_state,7)
-                assert all(n == o[:13073*8] for n,o in zip(new,old))
+                old, new = projection.decode(before,is_state,source_wire),projection.decode(after,is_state,target_wire)
+                assert all(n == o[:retained*8] for n,o in zip(new,old))
                 if is_state: assert before[68:84] == after[68:84]
             else: assert before == after
         for relative in ['training-data/sources.json','training-data/configuration.json']:
@@ -65,7 +70,7 @@ def main():
         # Training extends seek indexes; require the inherited points unchanged.
         old_ledger = read(Path(source['root'])/'training-data/cursors.json')
         ledger = read(root/'training-data/cursors.json')
-        assert ledger['reservations'][:96] == old_ledger['reservations']
+        assert ledger['reservations'][:start] == old_ledger['reservations']
         seek = {}
         for p in (root/'training-data/seek').glob('*.json'):
             old = read(Path(source['root'])/'training-data/seek'/p.name); new = read(p)
@@ -77,7 +82,7 @@ def main():
             seek[p.name] = dict(sha256=sha(p),inheritedPoints=len(old['points']),currentPoints=len(new['points']))
         assert seek
         a = attempt(root/'generation-attempt.bin')
-        assert a['generation'] == 128 and a['parent'] == row['latest']['parentId']
+        assert a['generation'] == end and a['parent'] == row['latest']['parentId']
         assert a['incumbent'] == store['history']['records'][-1]['incumbent']
         # TrainerService's normal incremental path persists this format even
         # after settlement; the attempt is not itself unfinished model state.
@@ -85,11 +90,11 @@ def main():
         assert not list(root.rglob('*partial*'))
         assert not list((root/'staging').iterdir())
         checks.append(dict(name=row['name'],retainedAttempt=a,seek=seek,
-                           initialProjectionVerified=True,sourcePrefixReservations=96))
+                           initialProjectionVerified=True,sourcePrefixReservations=start))
     for path, expected in inventory.items():
         p=Path(path); assert p.stat().st_size==expected['bytes'] and sha(p)==expected['sha256'],path
     destination.mkdir()
-    models = [read(BASE/'wave6-model-plan.json')['models'][0]]
+    models = [read(BASE/f'wave{wave}-model-plan.json')['models'][0]]
     for row in report['lineages']:
         root = Path(row['root']); frozen = destination/row['name']
         shutil.copytree(root,frozen)
@@ -98,15 +103,15 @@ def main():
         model = dict(name=row['name'],root=frozen.as_posix(),checkpoint=row['latest']['id'],networkSha256=row['latest']['networkSha256'])
         if 'RESCUBIC' in row['name']: model['cubicDeltaCache']=True
         models.append(model)
-    write(BASE/'wave6-trained-model-plan.json',dict(id='wave6-trained-latest128-v1',models=models))
-    write(BASE/'wave6-trained-admission.json',dict(status='passed',ownerInventory=str(RAW/'trained-before-01.json'),
+    write(BASE/f'wave{wave}-trained-model-plan.json',dict(id=f'wave{wave}-trained-latest{end}-v1',models=models))
+    write(BASE/f'wave{wave}-trained-admission.json',dict(status='passed',ownerInventory=str(raw/'trained-before-01.json'),
         ownerFilesUnchanged=len(inventory),freeze=str(destination),checks=checks,
-        selection='Latest128 prospectively selected in WAVE6; Best equals Latest in all four stores.',
-        limitations=['Retained final attempt describes settled Gen128; no partial optimizer state exists.',
+        selection=f'Latest{end} prospectively selected in WAVE{wave}; Best identities remain separately audited.',
+        limitations=[f'Retained final attempt describes settled Gen{end}; no partial optimizer state exists.',
           'No observed persisted restart notice or incomplete generation; uninterrupted wall-clock execution cannot be proved.',
-          'Quadratic inherits cubic-trained embedding/moments; shared retained values exact at Gen96, no fresh initialization.',
+          f'Quadratic inherits cubic-trained embedding/moments; shared retained values exact at Gen{start}, no fresh initialization.',
           'BRE has distinct historical exposure, source cursors/split and sparse optimizer semantics.',
-          'Initial admission script assumed immutable seek files and INDEPENDENT attempts; both checks failed before freeze. Corrected against SourceReaders/TrainerService: indexes append, normal attempts are INCREMENTAL. No product defect or owner mutation.']))
+          'Seek indexes append during training; normal settled attempts are INCREMENTAL. These facts were established during G6 admission.']))
     print('Verified and froze',len(models)-1,'trained lineages;',len(inventory),'owner files unchanged')
 
-if __name__=='__main__': main()
+if __name__=='__main__': main(int(sys.argv[1]) if len(sys.argv)>1 else 6)
