@@ -26,8 +26,9 @@ protocols. Do not stop merely at this audit. Historical G6 preparation instructi
 below are fulfilled and superseded for next-action selection.
 
 Current assessment: degree-node32 is closed (C16 vs trained Q16 53.125%,10/14/8;
-descriptive95 39.8-66.5%,5184 legal moves; inconclusive). Degree-clock32 is active,
-followed by compact-node16,compact-clock16,bre-clock48,reference-clock64 per the
+descriptive95 39.8-66.5%,5184 legal moves; inconclusive). Degree-clock32 is closed
+(C16 39.0625%,9/7/16; descriptive95 22.95-55.17%,4475 legal moves).
+Compact-node16/compact-clock16 are active next, then bre-clock48,reference-clock64 per the
 fixed208-game admission. Use unique bounded launch logs and verify actual receipt
 counts/processes before resuming. Fitting/cost/strata evidence is recorded in
 WAVE6-ASSESSMENT; no new architecture or human gate has yet been selected.
@@ -48,6 +49,9 @@ WAVE6-ASSESSMENT; no new architecture or human gate has yet been selected.
 | W4-BRE-CONTROL-LR001 / LR003 | Both completed64 and Best64; original failed LR001 session successfully resumed |
 | W5-RESCUBIC-R4-LR001 / R16-LR001 | Completed96; Best93/95 respectively; exact compact/full bootstrap continuation verified |
 | W5-BRE-CONTROL-LR001 / LR003 | Completed96; Best95/94 respectively; expected optimizer/data continuation verified |
+| W6-RESQUAD-R16-LR001 | Latest/Best128; exact degree2 projection from C16 Latest96, then32 verified generations; additive pairwise control |
+| W6-RESCUBIC-R16-LR001 / R4-LR001 | Latest/Best128 in both; exact W5 Latest96 payload/Adam continuation; matched residual data |
+| W6-BRE-CONTROL-LR001 | Latest/Best128; exact W5 BRE001 Latest96 continuation; distinct historical data/split remains a confound |
 
 All managed roots are under E:/SeedV6-Networks. Exact checkpoint IDs, hashes and
 sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`, `wave3-trained-checkpoints.json`, `wave4-owner-readiness.json`, `wave4-trained-checkpoints.json`, `wave5-owner-readiness.json`. Frozen reference

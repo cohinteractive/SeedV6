@@ -131,8 +131,18 @@ pair95 19.172-87.078%. Sixteen reversed-colour pairs, development only. Paired-r
 C16/Q16 median elapsed ratio1.12457 (NPS .88929), same first move10/16, mean depth
 difference-.0625. No clear cubic advantage is established; neither is equivalence.
 This adapted control is materially different from the W5 untrained ablation.
-The fixed equal-time counterpart is active; no additional games are appended to
-this completed node protocol to seek significance.
+The fixed equal-time counterpart is also complete; no additional games are appended
+to either degree protocol to seek significance.
+
+`wave6-degree-clock-results.json`:32 games/4475 legal moves, no failure/cap/fallback.
+C16 scores39.0625% against trained Q16 (9/7/16); descriptive95 22.954-55.171%,
+bounded pair95 5.110-73.015%. Paired-root C16/Q16 NPS .92636, node ratio .92630,
+elapsed ratio .99996; same first move8/16, mean depth difference-.0625. This is
+consistent with a practical cost disadvantage but does not identify its causal
+share of the score change or establish inferiority/equivalence. Opening dependence
+and sampling noise remain large. Trained Q16 has removed the clear need to assume
+that W5's unadapted-ablation point score represented indispensable cubic quality.
+It remains a control, not an eligible higher-order success candidate.
 
 The fixed prior piece bins (2-12,13-24,25+) do not identify a consistent selective
 cubic-use region across both consumed panels/sources. C16 minus trained-Q mapped
@@ -141,3 +151,27 @@ aggregate mapped CE in all four panel/source combinations, but this is an
 unadapted inference intervention and raw-objective/strength effects differ.
 `wave6-degree-strata.json` preserves both trained and unadapted comparisons.
 No phase-routing or cubic-removal implementation is justified by these diagnostics.
+
+## Frontier background, not an admitted replacement
+
+The primary [Stockfish trainer documentation](https://github.com/official-stockfish/nnue-pytorch/blob/9d1702fd04c2328d620fcc3ae96c95c40bdb1aa8/docs/nnue.md#full_threats-feature-set)
+describes attack-conditioned piece pairs as supplemental inputs and stresses their
+update/memory cost. Some threat features are redundant. This motivates examining
+cheap occupancy-dependent local features while retaining BRE's additive backbone;
+it does not transfer Stockfish strength evidence to SeedV6. The source is pinned in
+`wave6-frontier-source.json`; no source implementation was copied.
+
+Our hypothesis: local blocker/visibility structure may be easier to optimize than
+asking a small global factorization to discover it. Such features can depend on
+three or more pieces despite a linear output head. Before any admission, require
+an explicit non-pairwise witness, measured extraction/search cost, exact zero-head
+baseline parity and a credible matched-training/ablation design. Current games
+remain the priority. No ray/threat architecture, G7 lineage or training request has
+been selected. Objective/mapping alignment and efficient cubic execution remain
+competing explanations and options, not settled diagnoses.
+
+`wave6-cost-strata.json` adds descriptive timing on the16 existing oracle roots,
+two warmed passes at32768 nodes, grouped by the fixed piece-count bins. Sequential
+probe C16/Q16 median paired elapsed ratio1.0640; C4/C16 .8741. Costs vary by root,
+and C4's isolated-inference saving is not proportional to whole-search saving.
+Do not combine these observations with practical-clock roots as independent trials.

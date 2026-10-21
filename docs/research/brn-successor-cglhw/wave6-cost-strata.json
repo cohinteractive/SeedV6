@@ -1,0 +1,115 @@
+{
+  "id": "wave6-cost-strata-v1",
+  "rootSource": "docs\\research\\brn-successor-cglhw\\raw\\wave2\\data-01\\bt4-fresh-positions.jsonl",
+  "rootSourceSha256": "68793d927055fee9fc2161b2276d8f6071f1afcebb5ab5d521cd9bae237d4ff8",
+  "selection": "Existing oracle roots at row128*i, i=0..15; passes1,2; half-correction cache implementation.",
+  "models": [
+    {
+      "model": "q16",
+      "probe": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\half-cache-q16-01.json",
+      "sha256": "759be8131bd3846d4ab490db3f5155081a9db88432a40d759b0bdd833c5ede27",
+      "strata": [
+        {
+          "pieceBin": "13-24",
+          "observations": 10,
+          "medianMillis": 24.06435,
+          "minMillis": 21.7777,
+          "maxMillis": 39.7591
+        },
+        {
+          "pieceBin": "2-12",
+          "observations": 12,
+          "medianMillis": 18.0175,
+          "minMillis": 15.4432,
+          "maxMillis": 23.7357
+        },
+        {
+          "pieceBin": "25+",
+          "observations": 10,
+          "medianMillis": 27.56535,
+          "minMillis": 25.7863,
+          "maxMillis": 36.1348
+        }
+      ]
+    },
+    {
+      "model": "c16",
+      "probe": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\half-cache-c16-01.json",
+      "sha256": "866977726b89f0c4d55591b305b26f5c7657ed44be702cb6a75fa76e16d86aa7",
+      "strata": [
+        {
+          "pieceBin": "13-24",
+          "observations": 10,
+          "medianMillis": 25.86705,
+          "minMillis": 23.7435,
+          "maxMillis": 29.2303
+        },
+        {
+          "pieceBin": "2-12",
+          "observations": 12,
+          "medianMillis": 19.2143,
+          "minMillis": 15.7467,
+          "maxMillis": 23.9226
+        },
+        {
+          "pieceBin": "25+",
+          "observations": 10,
+          "medianMillis": 28.9477,
+          "minMillis": 27.26,
+          "maxMillis": 34.3493
+        }
+      ]
+    },
+    {
+      "model": "c4",
+      "probe": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\half-cache-c4-01.json",
+      "sha256": "08e53985a2119895c123da569593c2b551136a252a0cbf186f1a0ac66f0848c1",
+      "strata": [
+        {
+          "pieceBin": "13-24",
+          "observations": 10,
+          "medianMillis": 22.1121,
+          "minMillis": 20.8008,
+          "maxMillis": 24.6487
+        },
+        {
+          "pieceBin": "2-12",
+          "observations": 12,
+          "medianMillis": 16.8067,
+          "minMillis": 14.985,
+          "maxMillis": 23.1921
+        },
+        {
+          "pieceBin": "25+",
+          "observations": 10,
+          "medianMillis": 26.82505,
+          "minMillis": 23.0702,
+          "maxMillis": 30.9254
+        }
+      ]
+    }
+  ],
+  "pairedRatios": [
+    {
+      "left": "c16",
+      "right": "q16",
+      "observations": 32,
+      "medianElapsedRatio": 1.064036804671845,
+      "min": 0.6321219544708004,
+      "max": 1.2511685443276375
+    },
+    {
+      "left": "c4",
+      "right": "c16",
+      "observations": 32,
+      "medianElapsedRatio": 0.8741223351525804,
+      "min": 0.7621611820610804,
+      "max": 1.109477648982452
+    }
+  ],
+  "limitations": [
+    "Separate sequential probe processes, no replicated timing claim. Same roots/node budget, different evaluator-dependent trees.",
+    "Fixed bins inherited from W5; few roots per stratum. Individual root/pass observations are not independent.",
+    "Practical clock matches remain the strength/cost criterion."
+  ]
+}

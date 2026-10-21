@@ -1,0 +1,11 @@
+{
+  "id": "wave6-feature-frontier-primary-source-v1",
+  "retrievedUtc": "2026-10-21T07:48:46.318910+00:00",
+  "repository": "official-stockfish/nnue-pytorch",
+  "commit": "9d1702fd04c2328d620fcc3ae96c95c40bdb1aa8",
+  "path": "docs/nnue.md",
+  "url": "https://github.com/official-stockfish/nnue-pytorch/blob/9d1702fd04c2328d620fcc3ae96c95c40bdb1aa8/docs/nnue.md#full_threats-feature-set",
+  "sha256": "9e9533b4571084bad870d90526ca4bed21fc10b2d27c77e3944b9ab841d63d6a",
+  "bytes": 157963,
+  "use": "Background hypothesis only; no transferred Elo claim, code copy, or training evidence for SeedV6."
+}
