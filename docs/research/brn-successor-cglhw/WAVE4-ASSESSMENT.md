@@ -653,3 +653,10 @@ All64 BRE full-versus-half games are closed,8970 legal moves, no failure/cap/fal
 All three selected hybrid ablations pass6333-position and48 root/pass canonical/cache search oracles (packed adds same-base dense). Maximum raw errors below2.7e-15. A dedicated read-only probe wrapper now fails closed on runtime hash/capability mismatch, shares the tournament lease, rejects orphan diagnostic/match processes, and caps a probe at300seconds. Active-lease and incompatible-runtime negative checks plus three normal probes pass; forced timeout was not exercised. The batch wrapper also recognizes orphan diagnostic processes. No search/model/optimizer change, no application bump. See wave4-selected-hybrid-ablation-readiness.json.
 
 STATE has been consolidated to remove superseded current-action prose; historical findings remain here, in the manifests and Git history.
+
+
+Phase sensitivity: informative negative refinement
+
+A fixed piece-count stratification of the existing panels shows the largest CUBIC full CP maturity deterioration in17-24-piece positions: CE rises about.033 at either rate,306/1024 evaluation rows. It is not simply an endgame failure; low-rate1-8-piece CP improves by.029. Half correction largely suppresses the midgame deterioration. All76 weighted group totals reproduce the original Java CE within1e-12. See wave4-phase-sensitivity.json and its verification.
+
+A bounded fit-only phase grid0/.25/.5/1 on the low-rate means selects GATE full everywhere, CUBIC full except25-32 pieces half, and BRE half except17-24 pieces full. The selective CUBIC loses.01420 CE on the CP evaluation half against uniform half; the additive selective control loses on both sources. No new phase-routing implementation or games are justified from this diagnostic. Preserve the negative result in wave4-phase-grid-diagnostic.json; existing hybrid protocols remain unchanged. Consumed data and repeated choices remain limitations.

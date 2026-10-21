@@ -1,0 +1,8 @@
+{
+  "id": "wave4-phase-diagnostic-validation-v1",
+  "weightedCEChecks": 76,
+  "maximumOriginalJavaCEError": 1.3322676295501878e-15,
+  "phaseReportSha256": "6fa87558109aa6174a73bfc28eb8e9458dfcdd2716e719af0ffdf4a9133b49a6",
+  "scriptSha256": "a69da4ccb56f73491093472da55746323e333547cad9a59daeb7da2f3fb0e999",
+  "conclusion": "All row counts and weighted stratified losses reproduce the original verified unstratified Java measurements. No new generalization or strength evidence."
+}

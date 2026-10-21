@@ -170,6 +170,9 @@ for nonlinear models. Exact loaders, cache/search oracles and smoke pass. The fi
 average diagnostic's unretained executable identity remains unknown; the separately
 frozen33535b4 replay exactly reproduces its numerical result. CUBIC maturity is mixed:
 full CP worsens fromW3 toW4, while half calibration improves. No generic maturity cure.
+Fixed phase strata locate most full-CUBIC CP maturity degradation in17-24-piece
+positions. A fit-only phase scale grid fails to improve both evaluation sources;
+no phase-routing implementation is justified. See wave4-phase-grid-diagnostic.json.
 
 Explicit continued-base hybrid APIs are implemented in583310e/build52. Formula:
 Gen32 + .5*(BRE64-Gen32) + .5*(residual mean-Gen32). One compiled additive base,

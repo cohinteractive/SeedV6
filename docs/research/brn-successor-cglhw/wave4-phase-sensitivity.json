@@ -1,0 +1,1405 @@
+{
+  "id": "wave4-phase-sensitivity-v1",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\maturity-average-01\\bt4-predictions.jsonl": "f3e5317fd540a89b392826aedbc289f2dd2b9608ce55ee0658c850d4d5b3f7a4",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\average-diagnostic-02\\bt4-predictions.jsonl": "9e89c4ab705db8caeb96cb43281b8e00178bc13f930e72ea059b1cc776cecb1b",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\maturity-average-01\\cp-predictions.jsonl": "3cfe2c31a04517377f7ac670914a6da37b3dceccbabf5c19a3f55223ed149cae",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\average-diagnostic-02\\cp-predictions.jsonl": "ece2861a1e06ef003995c221feaa7673fa912f1ded4b579d4de1b6c1c1764523"
+  },
+  "rows": [
+    {
+      "source": "bt4",
+      "partition": "evaluation",
+      "pieces": [
+        1,
+        8
+      ],
+      "count": 161,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.46735689144418713,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.44028010006118246,
+          "deltaRmsPawns": 0.5014704112797628
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.4413047430989179,
+          "deltaRmsPawns": 0.4694111581761593
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.4393314536016078,
+          "deltaRmsPawns": 0.4785780843192822
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.4484347197812914,
+          "deltaRmsPawns": 0.2507352056398814
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.4506535974364826,
+          "deltaRmsPawns": 0.23470557908807965
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.4491651522515433,
+          "deltaRmsPawns": 0.2392890421596411
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.4420374433789532,
+          "deltaRmsPawns": 0.4093230027981938
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.43659873301274627,
+          "deltaRmsPawns": 0.43804507684557287
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.4387169498251143,
+          "deltaRmsPawns": 0.4450986213436013
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.44995398896163574,
+          "deltaRmsPawns": 0.2046615013990969
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.4474980620955186,
+          "deltaRmsPawns": 0.21902253842278643
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.4493289333100551,
+          "deltaRmsPawns": 0.22254931067180062
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.4589948490865462,
+          "deltaRmsPawns": 0.31261677805450366
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.45626846066419224,
+          "deltaRmsPawns": 0.28419701249195023
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.4566955976442366,
+          "deltaRmsPawns": 0.28140518149960225
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.46053495187777377,
+          "deltaRmsPawns": 0.15630838902725183
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.45998568842920234,
+          "deltaRmsPawns": 0.14209850624597511
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.45997423939806154,
+          "deltaRmsPawns": 0.14070259074980113
+        }
+      }
+    },
+    {
+      "source": "bt4",
+      "partition": "evaluation",
+      "pieces": [
+        9,
+        16
+      ],
+      "count": 270,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.6505812527504976,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.6424345458759209,
+          "deltaRmsPawns": 0.4247841514057116
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.6308152514475871,
+          "deltaRmsPawns": 0.4190650364375236
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.6314600518826189,
+          "deltaRmsPawns": 0.4160567433167882
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.6395226425957086,
+          "deltaRmsPawns": 0.2123920757028558
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.635214707718485,
+          "deltaRmsPawns": 0.2095325182187618
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.6347418046659785,
+          "deltaRmsPawns": 0.2080283716583941
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.6313427347823841,
+          "deltaRmsPawns": 0.41905117332588115
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.6243270234184964,
+          "deltaRmsPawns": 0.5028189533726447
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.6270623827171397,
+          "deltaRmsPawns": 0.496594194760746
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.6330446525722565,
+          "deltaRmsPawns": 0.20952558666294058
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.6313805912055829,
+          "deltaRmsPawns": 0.2514094766863223
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.6330407926793055,
+          "deltaRmsPawns": 0.248297097380373
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.6426274187940406,
+          "deltaRmsPawns": 0.37338226568758165
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.6369244220853942,
+          "deltaRmsPawns": 0.33653725140541696
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.6365241839832824,
+          "deltaRmsPawns": 0.3367406970799232
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.6401629808686611,
+          "deltaRmsPawns": 0.18669113284379082
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.6397370662295747,
+          "deltaRmsPawns": 0.16826862570270848
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.6392196282056998,
+          "deltaRmsPawns": 0.1683703485399616
+        }
+      }
+    },
+    {
+      "source": "bt4",
+      "partition": "evaluation",
+      "pieces": [
+        17,
+        24
+      ],
+      "count": 229,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.6859197364747839,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.6715234731942759,
+          "deltaRmsPawns": 0.3870062626951132
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.6647933876608041,
+          "deltaRmsPawns": 0.3442530713387652
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.667356289019639,
+          "deltaRmsPawns": 0.3323232482549108
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.6700357035703728,
+          "deltaRmsPawns": 0.1935031313475566
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.6691296848731895,
+          "deltaRmsPawns": 0.1721265356693826
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.6707025778686763,
+          "deltaRmsPawns": 0.1661616241274554
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.6718756406726587,
+          "deltaRmsPawns": 0.37955281402232427
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.6763927763505698,
+          "deltaRmsPawns": 0.4491193665510061
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.6831558814817544,
+          "deltaRmsPawns": 0.43178719611885796
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.6713838415635066,
+          "deltaRmsPawns": 0.18977640701116213
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.6695375348869986,
+          "deltaRmsPawns": 0.22455968327550305
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.6710343546458583,
+          "deltaRmsPawns": 0.21589359805942898
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.6816446583556584,
+          "deltaRmsPawns": 0.3674499602541152
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.6770477142213992,
+          "deltaRmsPawns": 0.35796106079077133
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.6805386942850015,
+          "deltaRmsPawns": 0.36830810942222947
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.6777073325072839,
+          "deltaRmsPawns": 0.1837249801270576
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.6729447196640884,
+          "deltaRmsPawns": 0.17898053039538567
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.6742510295978177,
+          "deltaRmsPawns": 0.18415405471111473
+        }
+      }
+    },
+    {
+      "source": "bt4",
+      "partition": "evaluation",
+      "pieces": [
+        25,
+        32
+      ],
+      "count": 364,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.6879338664015081,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.6834380327447409,
+          "deltaRmsPawns": 0.2877756670437149
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.6839852162437232,
+          "deltaRmsPawns": 0.2806370286793917
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.6861093367958828,
+          "deltaRmsPawns": 0.2721441397150029
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.6824330293701726,
+          "deltaRmsPawns": 0.14388783352185744
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.6831154415092687,
+          "deltaRmsPawns": 0.14031851433969586
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.6838594481574749,
+          "deltaRmsPawns": 0.13607206985750145
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.6806533405249519,
+          "deltaRmsPawns": 0.32196936677740273
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.683545134939362,
+          "deltaRmsPawns": 0.32618479499783914
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.6841954296900926,
+          "deltaRmsPawns": 0.2814737441328908
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.679770444987224,
+          "deltaRmsPawns": 0.16098468338870137
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.6810128507475415,
+          "deltaRmsPawns": 0.16309239749891957
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.683021358392021,
+          "deltaRmsPawns": 0.1407368720664454
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.6801717552386857,
+          "deltaRmsPawns": 0.3383741824617656
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.6822827670716345,
+          "deltaRmsPawns": 0.3004728064928888
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.6822608108540913,
+          "deltaRmsPawns": 0.2892572039325906
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.6796682952580322,
+          "deltaRmsPawns": 0.1691870912308828
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.6808818165997101,
+          "deltaRmsPawns": 0.1502364032464444
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.6809451094011721,
+          "deltaRmsPawns": 0.1446286019662953
+        }
+      }
+    },
+    {
+      "source": "bt4",
+      "partition": "fit",
+      "pieces": [
+        1,
+        8
+      ],
+      "count": 157,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.5592436658678145,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.5336229591680713,
+          "deltaRmsPawns": 0.504104026457055
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.535425083974473,
+          "deltaRmsPawns": 0.49036250219743815
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.5333130321125867,
+          "deltaRmsPawns": 0.5195629571741415
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.5382594468464812,
+          "deltaRmsPawns": 0.2520520132285275
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.5418911974613128,
+          "deltaRmsPawns": 0.24518125109871908
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.5403208825895539,
+          "deltaRmsPawns": 0.25978147858707074
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.5316459905313037,
+          "deltaRmsPawns": 0.360419110047797
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.5324437148301606,
+          "deltaRmsPawns": 0.4301357158299841
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.5334865817399218,
+          "deltaRmsPawns": 0.42550369020827655
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.5382676248006465,
+          "deltaRmsPawns": 0.1802095550238985
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.5382909874375806,
+          "deltaRmsPawns": 0.21506785791499206
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.5398591764571727,
+          "deltaRmsPawns": 0.21275184510413828
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.5411302795720516,
+          "deltaRmsPawns": 0.3149839030848448
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.5459309405583485,
+          "deltaRmsPawns": 0.2766831048665496
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.5433527234381585,
+          "deltaRmsPawns": 0.2880345742215224
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.548064014607762,
+          "deltaRmsPawns": 0.1574919515424224
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.5487374653373052,
+          "deltaRmsPawns": 0.1383415524332748
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.547888480253348,
+          "deltaRmsPawns": 0.1440172871107612
+        }
+      }
+    },
+    {
+      "source": "bt4",
+      "partition": "fit",
+      "pieces": [
+        9,
+        16
+      ],
+      "count": 257,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.6486271266778936,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.6323966774515365,
+          "deltaRmsPawns": 0.4091298449879215
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.6239518928251178,
+          "deltaRmsPawns": 0.4131229323532043
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.6236410424119171,
+          "deltaRmsPawns": 0.42531426111666776
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.6316091988440292,
+          "deltaRmsPawns": 0.20456492249396074
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.6283424699944536,
+          "deltaRmsPawns": 0.20656146617660212
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.6289945550537148,
+          "deltaRmsPawns": 0.21265713055833388
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.6389937600460036,
+          "deltaRmsPawns": 0.4252084080690216
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.6247237522753346,
+          "deltaRmsPawns": 0.4659831766028273
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.6329647963619937,
+          "deltaRmsPawns": 0.4359042371852284
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.6339977750072436,
+          "deltaRmsPawns": 0.2126042040345108
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.6247633732796479,
+          "deltaRmsPawns": 0.23299158830141364
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.6321446824157216,
+          "deltaRmsPawns": 0.2179521185926142
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.6335645593369765,
+          "deltaRmsPawns": 0.3866693872390662
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.6369143076668236,
+          "deltaRmsPawns": 0.3570044561724412
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.6363559949887957,
+          "deltaRmsPawns": 0.35510280900789526
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.6359143956319522,
+          "deltaRmsPawns": 0.19333469361953312
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.635821537276945,
+          "deltaRmsPawns": 0.1785022280862206
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.6347083689172639,
+          "deltaRmsPawns": 0.17755140450394763
+        }
+      }
+    },
+    {
+      "source": "bt4",
+      "partition": "fit",
+      "pieces": [
+        17,
+        24
+      ],
+      "count": 210,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.6963447262029049,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.6787183725293703,
+          "deltaRmsPawns": 0.3460678117089072
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.6763323216371219,
+          "deltaRmsPawns": 0.3153716314462771
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.679677255577087,
+          "deltaRmsPawns": 0.3287938363389348
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.6804385149488993,
+          "deltaRmsPawns": 0.1730339058544536
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.6799566554666325,
+          "deltaRmsPawns": 0.15768581572313856
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.679972775433387,
+          "deltaRmsPawns": 0.1643969181694674
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.6728435357045942,
+          "deltaRmsPawns": 0.3961865458120434
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.6707135436665033,
+          "deltaRmsPawns": 0.4152320053174169
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.6702365565369589,
+          "deltaRmsPawns": 0.3886444903931049
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.6763886785231582,
+          "deltaRmsPawns": 0.1980932729060217
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.6741893537252132,
+          "deltaRmsPawns": 0.20761600265870844
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.6746758820182321,
+          "deltaRmsPawns": 0.19432224519655245
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.6805966916806576,
+          "deltaRmsPawns": 0.3753735008590543
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.6769697780944822,
+          "deltaRmsPawns": 0.3704339494931241
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.681442903267954,
+          "deltaRmsPawns": 0.3816326270285794
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.6817539381197708,
+          "deltaRmsPawns": 0.18768675042952715
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.6797798095529548,
+          "deltaRmsPawns": 0.18521697474656204
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.681766012433003,
+          "deltaRmsPawns": 0.1908163135142897
+        }
+      }
+    },
+    {
+      "source": "bt4",
+      "partition": "fit",
+      "pieces": [
+        25,
+        32
+      ],
+      "count": 400,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.7014798343938212,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.6887112945914213,
+          "deltaRmsPawns": 0.285498660487902
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.6910505472105115,
+          "deltaRmsPawns": 0.28793284706435923
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.6913891898030893,
+          "deltaRmsPawns": 0.2711923179234456
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.6924589197883734,
+          "deltaRmsPawns": 0.142749330243951
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.6933823063912611,
+          "deltaRmsPawns": 0.14396642353217962
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.6935452688390928,
+          "deltaRmsPawns": 0.1355961589617228
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.6916105846801613,
+          "deltaRmsPawns": 0.30137942858491323
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.6897927792289714,
+          "deltaRmsPawns": 0.3117090262122646
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.6910292213246618,
+          "deltaRmsPawns": 0.2775008088085462
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.6930069652921199,
+          "deltaRmsPawns": 0.15068971429245662
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.6924235815917497,
+          "deltaRmsPawns": 0.1558545131061323
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.6935143264777719,
+          "deltaRmsPawns": 0.1387504044042731
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.6859009048105924,
+          "deltaRmsPawns": 0.33257577373863517
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.6853046480296016,
+          "deltaRmsPawns": 0.30007033124554494
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.6851391619781341,
+          "deltaRmsPawns": 0.29598298344581364
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.6896826743055684,
+          "deltaRmsPawns": 0.16628788686931759
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.6892119770336943,
+          "deltaRmsPawns": 0.15003516562277247
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.6891335770525007,
+          "deltaRmsPawns": 0.14799149172290682
+        }
+      }
+    },
+    {
+      "source": "cp",
+      "partition": "evaluation",
+      "pieces": [
+        1,
+        8
+      ],
+      "count": 119,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.4053305818702247,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.4409532924742129,
+          "deltaRmsPawns": 0.5911302227918649
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.42930703319156077,
+          "deltaRmsPawns": 0.6174071807236174
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.42694486102064133,
+          "deltaRmsPawns": 0.6396537581107286
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.417583169077167,
+          "deltaRmsPawns": 0.2955651113959324
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.41072255674091074,
+          "deltaRmsPawns": 0.3087035903618087
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.4087929075743045,
+          "deltaRmsPawns": 0.3198268790553643
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.4667862337523947,
+          "deltaRmsPawns": 0.4028319396795244
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.4376294982212521,
+          "deltaRmsPawns": 0.4847415442699115
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.4676595626490209,
+          "deltaRmsPawns": 0.538515842280422
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.43077785180649797,
+          "deltaRmsPawns": 0.2014159698397622
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.4167800078932551,
+          "deltaRmsPawns": 0.24237077213495578
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.4297784294855085,
+          "deltaRmsPawns": 0.269257921140211
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.42791504136256747,
+          "deltaRmsPawns": 0.3253592787472395
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.4221602600929652,
+          "deltaRmsPawns": 0.31112648498579937
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.4251670294530188,
+          "deltaRmsPawns": 0.3154389622421784
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.4130229566105229,
+          "deltaRmsPawns": 0.16267963937361976
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.41156097127248276,
+          "deltaRmsPawns": 0.15556324249289968
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.4127717484234477,
+          "deltaRmsPawns": 0.1577194811210892
+        }
+      }
+    },
+    {
+      "source": "cp",
+      "partition": "evaluation",
+      "pieces": [
+        9,
+        16
+      ],
+      "count": 188,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.5018259074505549,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.5079596666951336,
+          "deltaRmsPawns": 0.5889007917006966
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.5003859813800122,
+          "deltaRmsPawns": 0.5927825540724928
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.49682723458308475,
+          "deltaRmsPawns": 0.6142748872093754
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.49417487469284105,
+          "deltaRmsPawns": 0.2944503958503483
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.4906002815585052,
+          "deltaRmsPawns": 0.2963912770362464
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.49008530274905704,
+          "deltaRmsPawns": 0.3071374436046877
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.4908380679630515,
+          "deltaRmsPawns": 0.3926878249715636
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.5052516272971177,
+          "deltaRmsPawns": 0.5218673297880708
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.48846582259847504,
+          "deltaRmsPawns": 0.5151688730015598
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.49120782663115253,
+          "deltaRmsPawns": 0.1963439124857818
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.49024438524227215,
+          "deltaRmsPawns": 0.2609336648940354
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.48603591912476196,
+          "deltaRmsPawns": 0.25758443650077983
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.5186694452621842,
+          "deltaRmsPawns": 0.39812136110421453
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.5034192050599425,
+          "deltaRmsPawns": 0.3654734692172555
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.5096889412436063,
+          "deltaRmsPawns": 0.38040173664269067
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.5047218542482921,
+          "deltaRmsPawns": 0.19906068055210727
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.49761600737009454,
+          "deltaRmsPawns": 0.18273673460862774
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.4996896199599904,
+          "deltaRmsPawns": 0.19020086832134533
+        }
+      }
+    },
+    {
+      "source": "cp",
+      "partition": "evaluation",
+      "pieces": [
+        17,
+        24
+      ],
+      "count": 306,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.6312509642379585,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.5967138772812628,
+          "deltaRmsPawns": 0.41095143440427717
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.585652129319035,
+          "deltaRmsPawns": 0.4166944077409758
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.5807708462216888,
+          "deltaRmsPawns": 0.44679633910073807
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.6097791418376132,
+          "deltaRmsPawns": 0.20547571720213859
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.606640774754742,
+          "deltaRmsPawns": 0.20834720387048788
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.603324646806109,
+          "deltaRmsPawns": 0.22339816955036904
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.6010128244169304,
+          "deltaRmsPawns": 0.6383464385672627
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.6348594725512263,
+          "deltaRmsPawns": 0.7308444362568183
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.634189525128168,
+          "deltaRmsPawns": 0.7057745298015861
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.6112340709957311,
+          "deltaRmsPawns": 0.31917321928363135
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.6046671085534466,
+          "deltaRmsPawns": 0.36542221812840914
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.6114571122920317,
+          "deltaRmsPawns": 0.35288726490079303
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.6519672347997373,
+          "deltaRmsPawns": 0.40209362934228454
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.6318462763595807,
+          "deltaRmsPawns": 0.34632218072750026
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.6259907180185335,
+          "deltaRmsPawns": 0.38981158780310887
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.6365565738501948,
+          "deltaRmsPawns": 0.20104681467114224
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.6272890034641676,
+          "deltaRmsPawns": 0.1731610903637501
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.6220700363533913,
+          "deltaRmsPawns": 0.19490579390155444
+        }
+      }
+    },
+    {
+      "source": "cp",
+      "partition": "evaluation",
+      "pieces": [
+        25,
+        32
+      ],
+      "count": 411,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.6736194684498434,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.6566217419467821,
+          "deltaRmsPawns": 0.3340343941964572
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.6531749174117332,
+          "deltaRmsPawns": 0.3169265346890425
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.6518510848434621,
+          "deltaRmsPawns": 0.31186984265354095
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.6619400058994271,
+          "deltaRmsPawns": 0.1670171970982286
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.6607770499499485,
+          "deltaRmsPawns": 0.15846326734452126
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.6601616082371374,
+          "deltaRmsPawns": 0.15593492132677048
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.6544662742625412,
+          "deltaRmsPawns": 0.3198233448379553
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.6631613523019496,
+          "deltaRmsPawns": 0.3628263498034521
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.653718480671841,
+          "deltaRmsPawns": 0.3343459528697357
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.6603272647280838,
+          "deltaRmsPawns": 0.15991167241897766
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.6640360085323223,
+          "deltaRmsPawns": 0.18141317490172604
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.660170926106347,
+          "deltaRmsPawns": 0.16717297643486784
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.6646913097053762,
+          "deltaRmsPawns": 0.3616139488945806
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.6632134665806377,
+          "deltaRmsPawns": 0.3184547651546577
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.6632748319012736,
+          "deltaRmsPawns": 0.32737836204687915
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.6634158384857471,
+          "deltaRmsPawns": 0.1808069744472903
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.6642235190695719,
+          "deltaRmsPawns": 0.15922738257732885
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.6641543978423046,
+          "deltaRmsPawns": 0.16368918102343957
+        }
+      }
+    },
+    {
+      "source": "cp",
+      "partition": "fit",
+      "pieces": [
+        1,
+        8
+      ],
+      "count": 107,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.2905828641467514,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.27396183086422937,
+          "deltaRmsPawns": 0.6539803991754407
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.28128794401662827,
+          "deltaRmsPawns": 0.6731526103747817
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.27668370123155567,
+          "deltaRmsPawns": 0.6886811299050986
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.27739215065451034,
+          "deltaRmsPawns": 0.3269901995877204
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.28030801097568103,
+          "deltaRmsPawns": 0.3365763051873909
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.27793284716295874,
+          "deltaRmsPawns": 0.3443405649525493
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.28784460607147205,
+          "deltaRmsPawns": 0.5034255060797965
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.2800937832960168,
+          "deltaRmsPawns": 0.5867349868851375
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.27732389537463115,
+          "deltaRmsPawns": 0.6104084341181694
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.2846938205578222,
+          "deltaRmsPawns": 0.2517127530398983
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.28181476262759525,
+          "deltaRmsPawns": 0.29336749344256874
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.2791649726637446,
+          "deltaRmsPawns": 0.3052042170590847
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.2946021891416931,
+          "deltaRmsPawns": 0.30342620842698426
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.3072307550200252,
+          "deltaRmsPawns": 0.26529430790252606
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.306695945585621,
+          "deltaRmsPawns": 0.2735642569131345
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.28865291809377336,
+          "deltaRmsPawns": 0.15171310421349213
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.29510576087950896,
+          "deltaRmsPawns": 0.13264715395126303
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.2949687993478153,
+          "deltaRmsPawns": 0.13678212845656726
+        }
+      }
+    },
+    {
+      "source": "cp",
+      "partition": "fit",
+      "pieces": [
+        9,
+        16
+      ],
+      "count": 180,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.5890838543133422,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.548340196643131,
+          "deltaRmsPawns": 0.5221657282972784
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.5383505283183854,
+          "deltaRmsPawns": 0.5201635497240732
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.5374289808273297,
+          "deltaRmsPawns": 0.5235366508440915
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.5632434212249302,
+          "deltaRmsPawns": 0.2610828641486392
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.5583278674168429,
+          "deltaRmsPawns": 0.26008177486203665
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.5569221014630791,
+          "deltaRmsPawns": 0.2617683254220458
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.5216730720959738,
+          "deltaRmsPawns": 0.438861079527602
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.5198968624169433,
+          "deltaRmsPawns": 0.5571090781831941
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.5393062790031623,
+          "deltaRmsPawns": 0.5717252171073957
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.5496309135630656,
+          "deltaRmsPawns": 0.219430539763801
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.545754003866442,
+          "deltaRmsPawns": 0.278554539091597
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.552804832648908,
+          "deltaRmsPawns": 0.28586260855369783
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.6228638697933385,
+          "deltaRmsPawns": 0.3721630881080938
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.5952160216377433,
+          "deltaRmsPawns": 0.3727312086123238
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.5921328838521901,
+          "deltaRmsPawns": 0.3881063794936267
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.6007350053651571,
+          "deltaRmsPawns": 0.1860815440540469
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.582958526825313,
+          "deltaRmsPawns": 0.18636560430616192
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.5801228853730601,
+          "deltaRmsPawns": 0.19405318974681335
+        }
+      }
+    },
+    {
+      "source": "cp",
+      "partition": "fit",
+      "pieces": [
+        17,
+        24
+      ],
+      "count": 295,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.6070032168843605,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.6015477167589934,
+          "deltaRmsPawns": 0.4546884123055235
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.6005463857113074,
+          "deltaRmsPawns": 0.4654961665476366
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.5956345355522736,
+          "deltaRmsPawns": 0.495514361382139
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.5959443389548897,
+          "deltaRmsPawns": 0.22734420615276174
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.5975385259867884,
+          "deltaRmsPawns": 0.23274808327381827
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.5939599077583666,
+          "deltaRmsPawns": 0.2477571806910695
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.5773707642716481,
+          "deltaRmsPawns": 0.4232727927897843
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.5670490535664688,
+          "deltaRmsPawns": 0.46341169888038447
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.6049483794793381,
+          "deltaRmsPawns": 0.4792810344580676
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.5877284367284118,
+          "deltaRmsPawns": 0.21163639639489215
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.5782975678619272,
+          "deltaRmsPawns": 0.23170584944019224
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.5936277055383103,
+          "deltaRmsPawns": 0.2396405172290338
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.6174388294687813,
+          "deltaRmsPawns": 0.3664875929450806
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.5935023286891361,
+          "deltaRmsPawns": 0.3705058790172813
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.6076739754300088,
+          "deltaRmsPawns": 0.38815226364370875
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.6088716856472467,
+          "deltaRmsPawns": 0.1832437964725403
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.5910644550891127,
+          "deltaRmsPawns": 0.18525293950864066
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.5956357517936506,
+          "deltaRmsPawns": 0.19407613182185438
+        }
+      }
+    },
+    {
+      "source": "cp",
+      "partition": "fit",
+      "pieces": [
+        25,
+        32
+      ],
+      "count": 442,
+      "metrics": {
+        "Gen32": {
+          "crossEntropy": 0.6688633277823433,
+          "deltaRmsPawns": 0.0
+        },
+        "W3-RESGATE-average8": {
+          "crossEntropy": 0.6541807628229132,
+          "deltaRmsPawns": 0.3078932262451328
+        },
+        "W4-RESGATE-LR001-average8": {
+          "crossEntropy": 0.6558949954799824,
+          "deltaRmsPawns": 0.2954245938980551
+        },
+        "W4-RESGATE-LR003-average8": {
+          "crossEntropy": 0.6564147962383718,
+          "deltaRmsPawns": 0.29761624432576606
+        },
+        "W3-RESGATE-average8-half": {
+          "crossEntropy": 0.6577753158634978,
+          "deltaRmsPawns": 0.1539466131225664
+        },
+        "W4-RESGATE-LR001-average8-half": {
+          "crossEntropy": 0.658546634951041,
+          "deltaRmsPawns": 0.14771229694902754
+        },
+        "W4-RESGATE-LR003-average8-half": {
+          "crossEntropy": 0.6582483449482297,
+          "deltaRmsPawns": 0.14880812216288303
+        },
+        "W3-RESCUBIC-average8": {
+          "crossEntropy": 0.6495540686401958,
+          "deltaRmsPawns": 0.3258248440664264
+        },
+        "W4-RESCUBIC-LR001-average8": {
+          "crossEntropy": 0.6592559667030188,
+          "deltaRmsPawns": 0.36741898086477753
+        },
+        "W4-RESCUBIC-LR003-average8": {
+          "crossEntropy": 0.6617454940344838,
+          "deltaRmsPawns": 0.3216997494894167
+        },
+        "W3-RESCUBIC-average8-half": {
+          "crossEntropy": 0.6543032998525736,
+          "deltaRmsPawns": 0.1629124220332132
+        },
+        "W4-RESCUBIC-LR001-average8-half": {
+          "crossEntropy": 0.656402637616011,
+          "deltaRmsPawns": 0.18370949043238877
+        },
+        "W4-RESCUBIC-LR003-average8-half": {
+          "crossEntropy": 0.6582230701274315,
+          "deltaRmsPawns": 0.16084987474470835
+        },
+        "W3-BRE-CONTROL-average8": {
+          "crossEntropy": 0.6693948976787225,
+          "deltaRmsPawns": 0.34638951787683026
+        },
+        "W4-BRE-CONTROL-LR001-average8": {
+          "crossEntropy": 0.6749194641600391,
+          "deltaRmsPawns": 0.30134733116455475
+        },
+        "W4-BRE-CONTROL-LR003-average8": {
+          "crossEntropy": 0.67026312926464,
+          "deltaRmsPawns": 0.3063896236086158
+        },
+        "W3-BRE-CONTROL-average8-half": {
+          "crossEntropy": 0.6633553259475553,
+          "deltaRmsPawns": 0.17319475893841513
+        },
+        "W4-BRE-CONTROL-LR001-average8-half": {
+          "crossEntropy": 0.6670473614663739,
+          "deltaRmsPawns": 0.15067366558227738
+        },
+        "W4-BRE-CONTROL-LR003-average8-half": {
+          "crossEntropy": 0.6652542008505994,
+          "deltaRmsPawns": 0.1531948118043079
+        }
+      }
+    }
+  ],
+  "protocol": "Fixed piece-count bins1-8,9-16,17-24,25-32 including kings. Retain existing first1024 fit/last1024 evaluation partitions. All original positions retained.",
+  "limitations": "Consumed panels and post-result diagnostic. Small bin sizes, no independent generalization, no phase calibration fitted, no strength or causal claim."
+}

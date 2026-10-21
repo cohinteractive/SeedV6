@@ -1,0 +1,81 @@
+{
+  "id": "wave4-phase-grid-diagnostic-v1",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\average-diagnostic-02\\bt4-predictions.jsonl": "9e89c4ab705db8caeb96cb43281b8e00178bc13f930e72ea059b1cc776cecb1b",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave4\\average-diagnostic-02\\cp-predictions.jsonl": "ece2861a1e06ef003995c221feaa7673fa912f1ded4b579d4de1b6c1c1764523"
+  },
+  "question": "Does the descriptive phase pattern warrant a selective correction hypothesis?",
+  "protocol": "Fixed piece bins1-8/9-16/17-24/25-32, grid0/.25/.5/1. Within each bin minimize equal-source mean CE on first1024/source, ties lower scale. Report last1024/source, retain original rows. Low-rate fixed-window means only, additive mean control included. No engine/model mutation.",
+  "selections": [
+    {
+      "family": "RESGATE",
+      "scales": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "evaluation": [
+        {
+          "source": "bt4",
+          "selectedCE": 0.6275180527507946,
+          "uniformHalfCE": 0.6308085144693348,
+          "difference": -0.003290461718540194
+        },
+        {
+          "source": "cp",
+          "selectedCE": 0.5789302188252784,
+          "uniformHalfCE": 0.5842971501851048,
+          "difference": -0.005366931359826355
+        }
+      ]
+    },
+    {
+      "family": "RESCUBIC",
+      "scales": [
+        1,
+        1,
+        1,
+        0.5
+      ],
+      "evaluation": [
+        {
+          "source": "bt4",
+          "selectedCE": 0.6266048005804998,
+          "uniformHalfCE": 0.628645235140736,
+          "difference": -0.0020404345602361706
+        },
+        {
+          "source": "cp",
+          "selectedCE": 0.5998545061793426,
+          "uniformHalfCE": 0.585654003993148,
+          "difference": 0.014200502186194508
+        }
+      ]
+    },
+    {
+      "family": "BRE-CONTROL",
+      "scales": [
+        0.5,
+        0.5,
+        1,
+        0.5
+      ],
+      "evaluation": [
+        {
+          "source": "bt4",
+          "selectedCE": 0.6344449331231267,
+          "uniformHalfCE": 0.633527368910603,
+          "difference": 0.0009175642125236472
+        },
+        {
+          "source": "cp",
+          "selectedCE": 0.5945980389361611,
+          "uniformHalfCE": 0.5932361976217115,
+          "difference": 0.0013618413144496078
+        }
+      ]
+    }
+  ],
+  "limitations": "Post-result hypothesis diagnostic on consumed panels, not independent validation. Multiple bin/rate/model choices. Does not amend any admitted match plan. No search implementation, latency or strength claim."
+}
