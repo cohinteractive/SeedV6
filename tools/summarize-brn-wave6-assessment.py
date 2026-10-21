@@ -1,6 +1,6 @@
 """Verify and close the fixed G6 development admission without pooling strength.
 
-Usage: python -B tools/summarize-brn-wave6-assessment.py RESEARCH_DIR NEW_REPORT
+Usage: python -B tools/summarize-brn-wave6-assessment.py RESEARCH_DIR NEW_REPORT [--followup]
 Requires all admitted games and independently replayed evidence to remain local.
 """
 import hashlib
@@ -17,13 +17,15 @@ def load(path):
     return json.loads(Path(path).read_text(encoding="utf-8-sig"))
 
 
-def summarize(directory, output):
+def summarize(directory, output, mode=None):
+    assert mode in (None, "--followup")
+    followup = mode == "--followup"
     directory, output = Path(directory), Path(output)
     if output.exists():
         raise ValueError("Preserve completed report")
-    admission_path = directory / "wave6-assessment-protocol.json"
+    admission_path = directory / ("wave6-followup-admission.json" if followup else "wave6-assessment-protocol.json")
     admission = load(admission_path)
-    assert admission["id"] == "wave6-development-assessment-v1"
+    assert admission["id"] == ("wave6-cost-and-compact-degree-followup-v1" if followup else "wave6-development-assessment-v1")
     rows = []
     for protocol in admission["protocols"]:
         name, games = protocol["label"], protocol["games"]
@@ -50,7 +52,7 @@ def summarize(directory, output):
                          models=result["models"], sameRootSearch=result["sameRootSearch"],
                          peakWorkingSetMiB=result["maximumSampledWorkingSetMiB"],
                          engineCpuSeconds=result["totalEngineCpuSeconds"]))
-    report = dict(id="wave6-trained-development-assessment-v1",
+    report = dict(id="wave6-trained-development-followup-v1" if followup else "wave6-trained-development-assessment-v1",
                   admission=str(admission_path), admissionSha256=digest(admission_path),
                   protocols=rows, totalGames=sum(x["games"] for x in rows),
                   validatedMoves=sum(x["validatedMoves"] for x in rows),
@@ -62,7 +64,9 @@ def summarize(directory, output):
                       "Normal intervals are descriptive; bounded intervals still assume independent opening pairs.",
                       "Distinct budgets/opponents answer distinct questions; fixed budgets completed without favorable optional stopping.",
                       "Q16 is adaptation-trained on identical G6 residual reservations; BRE retains different historical data, split and optimizer semantics."])
-    assert report["totalGames"] == admission["totalGames"] == 208
+    assert report["totalGames"] == admission["totalGames"] == (80 if followup else 208)
+    if followup:
+        report["limitations"].append("Compact degree mask is unadapted and retains cubic cache cost; no adapted Q4 strength conclusion.")
     with output.open("x", encoding="utf-8", newline="\n") as stream:
         json.dump(report, stream, indent=2)
         stream.write("\n")

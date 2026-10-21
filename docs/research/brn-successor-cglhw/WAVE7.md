@@ -69,3 +69,20 @@ Record exact source/bootstrap IDs, hashes, generation targets, resume behaviour,
 preservation checks, validation results and the ready executable here and in STATE.
 No substantive Codex training. There is no human action to perform at this
 preparation stage; the final consolidated G7 gate is not yet ready.
+
+
+## Implementation checkpoint
+
+305b8d6 introduces wire8 Q4 and the source-preserving W7 continuation preparer in
+build57. Existing W6 identities and wire layouts remain unchanged. The159 targeted
+JUnit invocations pass with zero failures/skips: explicit forward/finite differences,
+exact masked-update projection, Adam serialization, special moves and guarded cache
+search parity, isolated preparation and interrupted corpus continuation, and all15
+Play-catalog architecture selections. See wave7-implementation-validation.json.
+No full-suite, owner training or native readiness is claimed at this checkpoint.
+
+BRE-node was deliberately paused between bounded batches for those tests, with no
+active match during build/test work, then resumed unchanged on frozen runtime56.
+The first PowerShell wrapper rejected benign JAVA_TOOL_OPTIONS stderr after execution;
+all XML is retained, and a structured-process retry reports BUILD SUCCESSFUL with31
+tasks up-to-date. This did not change game protocols or owner artifacts.
