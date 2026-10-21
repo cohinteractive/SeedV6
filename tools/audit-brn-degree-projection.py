@@ -1,0 +1,109 @@
+"""Read-only independent audit of a prepared degree-control continuation.
+
+Checks exact retained parameter/Adam bytes, step/rate, source bindings and data
+inheritance. Run before owner training; output is exclusive and never rewrites stores.
+Java's separate lineage audit verifies codecs, references and runtime/optimizer parity.
+"""
+import argparse
+import hashlib
+import json
+import struct
+import zlib
+from pathlib import Path
+
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def payload(root, checkpoint, pattern):
+    files = list((Path(root) / 'checkpoints' / checkpoint).glob(pattern))
+    assert len(files) == 1, files
+    return files[0].read_bytes()
+
+
+def decode(data, state, wire):
+    count = {5: 13089, 7: 13073}[wire]
+    assert struct.unpack('>Q7i', data[:36]) == (
+        0x53364E5853543031 if state else 0x53364E5852543031,
+        1, wire, count, 16, 1, 1, 64)
+    assert data[36:68].hex() == '5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7'
+    offset, arrays = (84, 3) if state else (68, 1)
+    assert len(data) == offset + arrays * count * 8 + 4
+    assert zlib.crc32(data[:-4]) == struct.unpack('>I', data[-4:])[0]
+    return [data[offset+a*count*8:offset+(a+1)*count*8] for a in range(arrays)]
+
+
+def audit(report):
+    assert report['wave'] == 'brn-successor-2026-10-21-wave6'
+    rows = []
+    for entry in report['entries']:
+        origin = entry['origin']; arm = origin['arm']; source = arm['source']
+        root, old_root = Path(entry['root']), Path(source['root'])
+        assert root.resolve() != old_root.resolve()
+        assert entry['latest'] == origin['bootstrap'] and entry['latestGeneration'] == source['generation'] == 96
+        assert entry['additionalGenerations'] == 32
+        row = dict(candidate=entry['candidate'], root=str(root), checkpoint=entry['latest'],
+                   architecture=entry['architecture'], projection=arm['projection'])
+        for state, pattern, key in [(False, 'network.*', 'networkSha256'),
+                                    (True, 'training.state', 'trainingSha256')]:
+            before = payload(old_root, source['checkpoint'], pattern)
+            after = payload(root, entry['latest'], pattern)
+            assert sha(before) == source[key] and sha(after) == origin[key]
+            if arm['projection'] == 'quadratic':
+                assert entry['architecture'] == 'BRN_GEN32_QUADRATIC'
+                old, new = decode(before, state, 5), decode(after, state, 7)
+                assert all(n == o[:13073*8] for n, o in zip(new, old))
+                if state:
+                    assert before[68:84] == after[68:84]
+                    step, rate = struct.unpack('>qd', after[68:84])
+                    assert step == origin['inheritedStep'] == 786432 and rate == arm['rate'] == .001
+                    row.update(step=step, rate=rate, exactRetainedWeightAndMomentValues=3*13073)
+            else:
+                assert arm['projection'] == 'exact' and before == after
+            row[key] = sha(after)
+            row['stateBytes' if state else 'modelBytes'] = len(after)
+        inherited = {}
+        for name in ['sources.json', 'cursors.json', 'configuration.json']:
+            old = (old_root/'training-data'/name).read_bytes()
+            new = (root/'training-data'/name).read_bytes()
+            assert old == new
+            inherited[name] = sha(new)
+        assert inherited['cursors.json'] == origin['sourceLedgerSha256']
+        assert inherited['sources.json'] == origin['selectionSha256']
+        assert inherited['configuration.json'] == source['corpusConfigurationSha256']
+        selection = json.loads((root/'training-data/sources.json').read_text(encoding='utf-8-sig'))
+        ledger = json.loads((root/'training-data/cursors.json').read_text(encoding='utf-8-sig'))
+        assert ledger['next'] == entry['sourceOffsets']
+        assert len(ledger['reservations']) == 96 and all(r['status'] == 'COMPLETED' for r in ledger['reservations'])
+        seek = {}
+        for item in selection['sources']:
+            if item['format'] == 'LICHESS_PZSTD' and ledger['next'].get(item['identity'], 0) > 0:
+                relative = Path('training-data/seek') / (item['identity']+'.json')
+                old, new = (old_root/relative).read_bytes(), (root/relative).read_bytes()
+                assert old == new
+                seek[str(relative)] = sha(new)
+        assert seek, 'The admitted source mix must inherit its CP seek index'
+        assert not (root/'training-session.json').exists()
+        assert not (root/'generation-attempt.bin').exists()
+        assert not list(root.rglob('*partial*'))
+        assert not list((root/'history').glob('*'))
+        assert len(list((root/'checkpoints').iterdir())) == 1
+        row.update(inheritedMetadata=inherited, inheritedSeek=seek, generation=96,
+                   addedGenerations=0, nextGeneration=97, targetGeneration=128)
+        rows.append(row)
+    return dict(status='passed', scope='Independent exact byte/CRC/layout projection and source/data inheritance audit',
+                entries=rows, limitations=['No substantive training or strength verification.',
+                    'GUI settings, checkpoint references and source readiness are verified separately by Java/native checks.'])
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('report', type=Path); parser.add_argument('new_output', type=Path)
+    args = parser.parse_args()
+    result = audit(json.loads(args.report.read_text(encoding='utf-8-sig')))
+    result['preparationReport'] = str(args.report)
+    result['preparationReportSha256'] = sha(args.report.read_bytes())
+    with args.new_output.open('x', encoding='utf-8', newline='\n') as out:
+        json.dump(result, out, indent=2); out.write('\n')
+    print(result['status'])

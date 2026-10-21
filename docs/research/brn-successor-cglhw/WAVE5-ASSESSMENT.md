@@ -330,3 +330,16 @@ or native/owner readiness claim. See degree-control-implementation-validation.js
 The new application capability qualifies build56; W5 matches remain on build55.
 Resume the remaining frozen clocks, depth and marginal-degree budgets before selecting
 the consolidated next training gate. No owner store has yet been created or trained.
+
+The full R16 correction closes its fast-unary clock control at 7/5/4 = 59.375%
+(descriptive pair-normal95 41-77.75%). Its paired-root NPS ratio is .69327. This is
+aggregate interaction evidence, not an isolated third-degree contribution. R4
+cubic-only scores 50% versus full and43.75% versus unary at32768 nodes, then37.5%
+versus full at200ms (6/0/10; descriptive95 6.79-68.21%). Its lower mapped prediction
+loss has not produced an obvious practical gain. The fixed cubic-only/unary clock,
+deeper-node and marginal-degree protocols remain pending; no optional stopping.
+
+A separate read-only preparation auditor is ready for the eventual degree-control
+gate. It independently checks wire7 CRC/layout, every retained parameter/moment byte,
+step/rate and exact cursor/source/configuration/CP-seek inheritance. Parser validation
+has passed; actual owner-projection validation remains pending, not inferred.

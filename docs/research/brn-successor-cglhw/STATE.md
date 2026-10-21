@@ -97,25 +97,18 @@ eight fresh development opening pairs, common search and fixed half-change calib
 Four actual trained cubic cache probes pass6333 positions and48 search root passes
 each, with zero integer/search differences. Use ONLY preserved `wave5-runtime.json`.
 The root started clean b43b761/build55. Read-only audit/freeze preserved owner models.
-Primary 256 and direct 144 games are closed. Resume the remaining direct R16/unary
-clock 16 and cubic-only 64 with their original frozen runtimes and fixed plans.
-The active finite tail driver is build/research/w5-assessment-tail-v3.ps1; never
-launch a competing runner or rerun a one-off driver from the top. Both quadratic
-oracles now pass 6333 placements and 48 search root passes each. The separate
-degree2 cost prototype passes 15 tests and all three fixed replications; modest
-isolated savings do not establish search benefit. Both diagnostic pauses are preserved.
-After the tail closes, run build/research/w5-final-discriminators.ps1: the admitted
-depth 32 and marginal-degree3 32 games, using the original wave5-runtime.json.
-Their plans/admissions, completed reports and per-game receipts are authoritative.
-Inspect first incomplete plan and choose unused log prefixes after interruption.
-The distinct wire7 rank16 quadratic control is implemented and passes 126 targeted
-tests, including exact continuation and search parity. Implementation build56 is
-separate from every frozen build55 W5 match runtime. Owner lineages, actual-payload
-oracles and native package/GUI readiness are still pending; no human gate is admitted.
-Preserve the completed implementation-QA pause and resume the two cubic-only clock
-plans at their existing receipts, then depth32 and marginal-degree3 32. Never use
-the newly built application runtime to alter these frozen comparisons.
-No human action currently required.
+Primary 256, direct 160, cubic-only node32 and cubic-only/full clock16 games are
+closed. Finish the fixed16-game cubic-only/unary clock protocol, then admitted
+depth32 and marginal-degree3 32. All W5 games use
+their original frozen build55 runtimes, even though the application is now build56.
+The finite driver is build/research/w5-complete-frozen-assessment.ps1, calling
+tail-v4 and final-discriminators. Inspect receipts and first missing completion report
+before any recovery; never rerun a one-off driver from the top or use duplicate logs.
+Both quadratic oracles and the isolated cost prototype are complete and preserved.
+The new wire7 quadratic control implementation is committed as7e28740/build56 and
+passes126 targeted tests. No owner lineage, actual projected payload, native package
+or GUI readiness is yet claimed. Finish W5 interpretation before admitting the
+consolidated next human-training gate. No human action currently required.
 Next: finish fixed primary counts, independently replay receipts, compare R4/R16,
 both continued BRE rates, endpoint selection and cost. Admit focused direct/maturity/
 mechanism controls based on evidence, without a predetermined new training gate.

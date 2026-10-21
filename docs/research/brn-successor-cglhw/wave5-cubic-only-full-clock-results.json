@@ -1,0 +1,286 @@
+{
+  "id": "wave5-cubic-only-full-clock-v1-completed",
+  "status": "Closed fixed-budget development experiment",
+  "plan": "docs\\research\\brn-successor-cglhw\\wave5-cubic-only-full-clock-plan.json",
+  "receipts": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cubic-only-full-clock-01",
+  "analysis": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cubic-only-full-clock-analysis-01.json",
+  "runtime": "docs\\research\\brn-successor-cglhw\\wave5-cubic-only-runtime.json",
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\wave5-cubic-only-full-clock-plan.json": "aae913deaa0164c7829d3d5c4ec6eace7357e2bf7737b37bb04865581fc787fc",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cubic-only-full-clock-analysis-01.json": "eccad0d1fb293ab1887b377830058aacf65e9e748b0cce4c4ca7b583ee305a3e",
+    "docs\\research\\brn-successor-cglhw\\wave5-cubic-only-runtime.json": "f7f952b9657e197cbaf04f9562edc4b974006d6eb43431186c8f439c2196197d",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cubic-only-full-clock-01\\model-bindings.json": "658c22ce86440f0d6fb13c6afbe80b77623e0ba1ba535bb255a67d974e1aa7f3"
+  },
+  "games": 16,
+  "validatedMoves": 2368,
+  "models": [
+    {
+      "name": "W5-RESCUBIC-R4-LR001-g96-half-cubic-only",
+      "wins": 6,
+      "draws": 0,
+      "losses": 10,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.375,
+      "pairStandardError": 0.15669579263200217,
+      "descriptiveNormal95": [
+        0.06787624644127577,
+        0.6821237535587242
+      ],
+      "pairScores": [
+        0.0,
+        0.5,
+        0.0,
+        1.0,
+        0.0,
+        0.5,
+        0.0,
+        1.0
+      ],
+      "boundedPair95": [
+        0,
+        0.8551613956599604
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        0.8551613956599604
+      ]
+    }
+  ],
+  "modelBindings": [
+    {
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "effectiveNetworkSha256": "66d1bd24d900d803aa6db92300804aa6ba015efa6c05eca6e19210745ee4b8c6",
+      "originalManifest": {
+        "id": "g000096-s000786432-014449a8d5676d1a4569501219355fad6f5c7182a02537397d526db6e31ea35a",
+        "generation": 96,
+        "optimizerStep": 786432,
+        "trainingDepth": 4,
+        "parentId": "g000095-s000778240-e44abd3cf0617c304869dddf06783705a97c8c7c37866ac6b1345b318c71723d",
+        "networkBytes": 30864,
+        "networkSha256": "a831c9beea3889351b92fea09039ab7eabd8eb9ee6f648807336dfaa9684c158",
+        "trainingBytes": 92464,
+        "trainingSha256": "00f32dc27648a4e7ce5ffc24ea5c430f67059317b59818437b9ca1a9f99ff630",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "name": "W5-RESCUBIC-R4-LR001-g96-half",
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "effectiveNetworkSha256": "5102c879343e04d9b3fbd083c4b781252bbfd21ca68b3b86cdb7d2a167178e13",
+      "originalManifest": {
+        "id": "g000096-s000786432-014449a8d5676d1a4569501219355fad6f5c7182a02537397d526db6e31ea35a",
+        "generation": 96,
+        "optimizerStep": 786432,
+        "trainingDepth": 4,
+        "parentId": "g000095-s000778240-e44abd3cf0617c304869dddf06783705a97c8c7c37866ac6b1345b318c71723d",
+        "networkBytes": 30864,
+        "networkSha256": "a831c9beea3889351b92fea09039ab7eabd8eb9ee6f648807336dfaa9684c158",
+        "trainingBytes": 92464,
+        "trainingSha256": "00f32dc27648a4e7ce5ffc24ea5c430f67059317b59818437b9ca1a9f99ff630",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "name": "W5-RESCUBIC-R4-LR001-g96-half-cubic-only",
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5,
+      "correctionAblation": "cubic-only"
+    }
+  ],
+  "sameRootSearch": [
+    {
+      "name": "W5-RESCUBIC-R4-LR001-g96-half-cubic-only",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 6,
+      "meanDepthDifference": 0,
+      "lessEqualMoreDepth": [
+        0,
+        8,
+        0
+      ],
+      "medianNodeRatio": 0.9826431276059413,
+      "medianElapsedRatio": 1.0000077482201581,
+      "medianNpsRatio": 0.9826371668978404
+    }
+  ],
+  "telemetry": {
+    "W5-RESCUBIC-R4-LR001-g96-half-cubic-only": {
+      "moves": 1183,
+      "nodes": 353501131,
+      "elapsedNanos": 227355000200,
+      "sumDepth": 12478,
+      "fallbacks": 0,
+      "maximumMoveNanos": 215314300
+    },
+    "g000096-s000786432-014449a8d5676d1a4569501219355fad6f5c7182a02537397d526db6e31ea35a": {
+      "moves": 1185,
+      "nodes": 355269805,
+      "elapsedNanos": 227941002800,
+      "sumDepth": 12494,
+      "fallbacks": 0,
+      "maximumMoveNanos": 200275900
+    }
+  },
+  "commonOpponentContrasts": [],
+  "openingPrefixSensitivity": [
+    {
+      "plies": 4,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 8,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 12,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 16,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    }
+  ],
+  "processReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cubic-only-full-clock-resume-v3-batch-000.process.json",
+      "sha256": "9cd5d7475e60b908b17bdb6c7bfa4d96ee7923ef13fc0708ec6d0bfb35532dbc",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T04:42:56.6525864Z",
+      "sampledPeakWorkingSetBytes": 597827584,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-cubic-only-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 275.65625,
+      "plan": "docs/research/brn-successor-cglhw/wave5-cubic-only-full-clock-plan.json",
+      "processId": 48776,
+      "startedUtc": "2026-10-21T04:38:23.1734594Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cubic-only-full-clock-resume-v4-batch-000.process.json",
+      "sha256": "b892e1bd1c1173e30080de08d25c11c4c746727deebae32feb602da55271c543",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T04:53:15.7107976Z",
+      "sampledPeakWorkingSetBytes": 488771584,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-cubic-only-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 186.453125,
+      "plan": "docs/research/brn-successor-cglhw/wave5-cubic-only-full-clock-plan.json",
+      "processId": 20436,
+      "startedUtc": "2026-10-21T04:50:11.0174801Z"
+    }
+  ],
+  "separateDiagnosticProcessReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\build-tests-01.process.json",
+      "sha256": "20b9d48dd2af92d3926c9ce5f7b2d4e268307d51ce932b8b911ece8f36540521",
+      "entrypoint": "separate-bounded-gradle-qa",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cache-0-01.process.json",
+      "sha256": "aa6109ebcae8a1bd62a1c6e58a13ec1ec4ece2ead472ef30fd7ed8236af0bfb7",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cache-1-01.process.json",
+      "sha256": "06ce0b26f4d4639010f228678d521e09cad76bebc467ddd2dd31472f4db343cd",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cache-2-01.process.json",
+      "sha256": "9af56c9e2cfc03246d3b1ca054b232797f23d986e63d4ae54ac5637b792f839e",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cubic-only-cache-01.process.json",
+      "sha256": "162b59248538717bf32982c352636e28eec941bf030c1d5e2a12cf3dd88acf3e",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\quadratic-cache-1-01.process.json",
+      "sha256": "3dd353b703c77ed43e9112507430107ae0cc31a7ef80b7724a1328a9da992241",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\quadratic-cache-2-01.process.json",
+      "sha256": "6562037767b80c2419b94033cb314cf9b84dcd21fff831272baf81d62ad8572c",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-cache-0-01.process.json",
+      "sha256": "dbeda4367e506b8a657cede3c45694d4ddb92ca31bb183a2cb3db11fd49f6f77",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-cache-1-01.process.json",
+      "sha256": "4117f8522f4e039cb1877eb63a78d8e13a826e7f63c8a9454b92cb87d59c95ac",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-cache-2-01.process.json",
+      "sha256": "1ee3b147bbcf0df3ac32f511999ee7a3ec128f1eca922db59d39292acf63ea0c",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-cache-3-01.process.json",
+      "sha256": "1076690c54667019e34ce5cd37ad89e62a3fc10a18edb360de2215aae27015fa",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\unary-cache-1-01.process.json",
+      "sha256": "6c4b6e4042d1268c1f15eac079a06cc745969df60e198d9b75ffce50a6ccc5fb",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\unary-cache-2-01.process.json",
+      "sha256": "a0909b77f7d3b52e2d2777dee53d6acf568bd5c3ca2fcc67e6f68f4ccb72a996",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    }
+  ],
+  "maximumSampledWorkingSetMiB": 570.1328125,
+  "totalEngineCpuSeconds": 462.109375,
+  "limitations": [
+    "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims.",
+    "Paired differences on shared complete opening pairs against the same reference. Positive favours left. Descriptive, unadjusted, not direct head-to-head strength or architectural causation.",
+    "Fresh search/TT at identical opening roots; different evaluator-dependent trees. Clock protocols warm up; node protocols do not. Descriptive cost/behaviour, not causal latency or strength.",
+    "Move-prefix grouping is a descriptive dependence warning, not ECO/source-game classification or proof of independent opening families. Pair intervals are unadjusted.",
+    "Hoeffding intervals assume independent bounded opening-pair scores; within-plan union bound covers only this plan, not prior candidate selection or repeated protocols. Independence remains unverified.",
+    "No final strength claim, selection-adjusted confirmation, or architectural causation inferred."
+  ]
+}
