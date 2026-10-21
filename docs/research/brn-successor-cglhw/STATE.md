@@ -110,20 +110,29 @@ continued-base/nonlinear compositions. The research frontier is evidence-driven:
    `wave4-hybrid-direct-budget-amendment.json`. Same intended131072-node limit and
    internal2-second safety; zero games were discarded or replayed.
    Three selected nonlinear ablations pass actual cache/search oracles; see
-   `wave4-selected-hybrid-ablation-readiness.json`. No ablation matches yet.
-4. **Next active protocol:** `wave4-hybrid-followup-admission.json`,128 fixed games.
+   `wave4-selected-hybrid-ablation-readiness.json`. Their admitted controls follow below.
+4. **Active protocol:** `wave4-hybrid-followup-admission.json`,128 fixed games.
    GATE versus fast constant gates at nodes/time; CUBIC versus quadratic at nodes
    and compiled unary at time; CUBIC versus Gen32 and BRE003 at time on16 pairs.
-   Use ONLY `wave4-constant-compiled-runtime.json`. Node controls first, then clocks.
+   Use ONLY `wave4-constant-compiled-runtime.json`. The32 node controls are closed:
+   GATE versus constant gates50%,CUBIC versus quadratic34.375%, both uncertain.
+   The32 internal clock controls are also closed: GATE versus fast constant gates
+   31.25%,CUBIC versus compiled unary50%. External comparator clocks remain active.
    Do not optimize the quadratic-clock result by assumption: no such match is admitted.
 5. Any promising hybrid must face both BRE rates, frozen Gen32 and an expressive
    ablation. It combines two post-reference training streams; matched additional
    BRE training/data diversity may remain a human gate before causal conclusions.
    No new substantive training or human gate is admitted yet.
-   If hybrids show value, investigate fast additive ablations: unary terms fit the
-   existing BRE table; constant GATE contains four additional physical pair relations
-   and cannot be silently folded into the unchanged table. Static finding in
-   WAVE4-ASSESSMENT; no compiled-control performance claim.
+   Fast additive ablations are implemented and verified: unary terms fit the
+   existing BRE table; constant GATE retains four additional physical pair relations
+   in an explicitly bounded research layout. Actual parity/cost and the first
+   strength controls are recorded in WAVE4-ASSESSMENT; neither is a trained successor.
+
+Source-exposure bounds now quantify the previously known cursor/split confound in
+`wave4-source-exposure-bounds.json`. All BRE64 continuation ordinals lie inside
+Gen32's scanned source intervals;908694..983040 residual training ordinals lie beyond
+them. This is not exact selected-record/FEN overlap. Matching aggregate hybrid steps
+alone cannot isolate expressiveness from source coverage or optimization behaviour.
 
 Before launch, inspect active Java research processes and preserved receipts. Never
 start a competing runner, change frozen plans/runtimes, enlarge closed protocols or

@@ -702,3 +702,39 @@ The298-relation constant-gate control passes6333 positions and48 canonical/compi
 The original hybrid96-game screen is closed: clock48/6326 legal moves, no failures/caps/fallbacks. GATE5/1/10=34.375%,CUBIC6/6/4=56.25%,packed rank4 CUBIC4/6/6=43.75%. Same-root warmed NPS ratios.624/.727/.803; all confidence intervals remain broad. GATE quality at nodes has not translated into practical speed-limited gains; it remains a mechanism/cost question, not a discarded expressive family.
 
 The fixed128-game follow-up is admitted in wave4-hybrid-followup-admission.json. Advance full CUBIC to Gen32 and BRE003 on16 development pairs, retain GATE for optimized conditional-gating ablation at nodes/time, and compare CUBIC with quadratic at nodes and compiled unary at time. This separates extra additive learning, cubic/conditional value and cost. No quadratic clock comparison is admitted until its computation is appropriately optimized. No final selection-adjusted confirmation or new human training gate is claimed.
+
+The two node mechanism controls are closed: GATE versus compiled constant gates
+5/6/5=50% over16 games/2071 legal moves; full CUBIC versus quadratic4/3/9=34.375%
+over16 games/2399 legal moves. Both have8 complete reversed-colour pairs, no failures,
+caps or fallbacks. Descriptive normal intervals are31.48-68.52% and9.98-58.77%.
+Conditional/cubic chess value remains unestablished; this is neither proof of no
+benefit nor evidence that a separately trained ablation would behave identically.
+See the two `wave4-hybrid-followup-*-node-results.json` records.
+
+`wave4-source-exposure-bounds.json` sharpens the previously documented W3 data
+overlap limitation using frozen audited ledgers only. Gen32 scanned raw BT4 ordinals
+0..17166401 and CP0..16392586. Both BRE continuation streams through64 remain
+entirely inside those intervals; the residual streams extend to19418349/18383761.
+Of8388608 post-reference residual training samples,908694..983040 have ordinals
+outside Gen32's scanned ranges;5530795..5636096 lie outside the BRE64 continuation
+stream's scanned ranges. These are rigorous interval/count bounds, not exact
+selected-record intersections or FEN/game-disjoint claims. Inside an old scanned
+range does not prove prior training on the record. The frozen base may have seen
+correction holdout, as already documented in WAVE3. No source cursor was altered.
+Matching summed hybrid updates alone would leave this coverage/diversity confound.
+
+The internal follow-up clocks are also closed: full GATE versus fast constant gates
+3/4/9=31.25% over16 games/2149 legal moves; full CUBIC versus compiled unary
+4/8/4=50% over16 games/2424 moves. Both8-pair intervals include50%, with no failures,
+caps or fallbacks. Same-root NPS ratios are.606 and.689. Neither mechanism has yet
+earned an established practical advantage over its additive ablation. The two
+external comparator clocks retain their fixed32-game budgets and remain active.
+
+Operational evidence: the first clock batch completed12 games with process exit0,
+but its outer shell incorrectly checked stale `$LASTEXITCODE` and stopped the loop.
+No game failed or was replayed. The corrected finite loop checks the recorded child
+exit code and resumed with a new log prefix. Four subsequently stalled read-only
+PowerShell shells were identified by exact commands and stopped; unrelated shells,
+the existing match loop and Java processes were preserved. Diagnostics are local
+`raw/wave4/process-stall-01.json`; new reads/analysis use CMD or filesystem tools.
+This is an environment/tooling limitation, not evidence of evaluator failure.

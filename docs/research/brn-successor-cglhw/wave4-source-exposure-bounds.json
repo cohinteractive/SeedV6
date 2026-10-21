@@ -1,0 +1,323 @@
+{
+  "id": "wave4-source-exposure-bounds-v1",
+  "source": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\trained-audit-01\\stores.json",
+  "sourceSha256": "926f1e1604d21fc6134ef171290f8e2afd1e201c8b0de44c76502e6081637311",
+  "frozenGen32ScannedRanges": {
+    "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": [
+      [
+        0,
+        17166401
+      ]
+    ],
+    "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": [
+      [
+        0,
+        16392586
+      ]
+    ]
+  },
+  "lineages": [
+    {
+      "name": "W4-RESGATE-LR001",
+      "scannedRanges": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": [
+          [
+            0,
+            19418349
+          ]
+        ],
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": [
+          [
+            0,
+            18383761
+          ]
+        ]
+      },
+      "againstFrozenGen32ScannedRanges": {
+        "training": {
+          "selected": 8388608,
+          "selectedOrdinalsInsideOtherScannedRanges": [
+            7405568,
+            7479914
+          ],
+          "selectedOrdinalsOutsideOtherScannedRanges": [
+            908694,
+            983040
+          ]
+        },
+        "validation": {
+          "selected": 2097152,
+          "selectedOrdinalsInsideOtherScannedRanges": [
+            1851392,
+            1876586
+          ],
+          "selectedOrdinalsOutsideOtherScannedRanges": [
+            220566,
+            245760
+          ]
+        }
+      }
+    },
+    {
+      "name": "W4-RESGATE-LR003",
+      "scannedRanges": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": [
+          [
+            0,
+            19418349
+          ]
+        ],
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": [
+          [
+            0,
+            18383761
+          ]
+        ]
+      },
+      "againstFrozenGen32ScannedRanges": {
+        "training": {
+          "selected": 8388608,
+          "selectedOrdinalsInsideOtherScannedRanges": [
+            7405568,
+            7479914
+          ],
+          "selectedOrdinalsOutsideOtherScannedRanges": [
+            908694,
+            983040
+          ]
+        },
+        "validation": {
+          "selected": 2097152,
+          "selectedOrdinalsInsideOtherScannedRanges": [
+            1851392,
+            1876586
+          ],
+          "selectedOrdinalsOutsideOtherScannedRanges": [
+            220566,
+            245760
+          ]
+        }
+      }
+    },
+    {
+      "name": "W4-RESCUBIC-LR001",
+      "scannedRanges": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": [
+          [
+            0,
+            19418349
+          ]
+        ],
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": [
+          [
+            0,
+            18383761
+          ]
+        ]
+      },
+      "againstFrozenGen32ScannedRanges": {
+        "training": {
+          "selected": 8388608,
+          "selectedOrdinalsInsideOtherScannedRanges": [
+            7405568,
+            7479914
+          ],
+          "selectedOrdinalsOutsideOtherScannedRanges": [
+            908694,
+            983040
+          ]
+        },
+        "validation": {
+          "selected": 2097152,
+          "selectedOrdinalsInsideOtherScannedRanges": [
+            1851392,
+            1876586
+          ],
+          "selectedOrdinalsOutsideOtherScannedRanges": [
+            220566,
+            245760
+          ]
+        }
+      }
+    },
+    {
+      "name": "W4-RESCUBIC-LR003",
+      "scannedRanges": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": [
+          [
+            0,
+            19418349
+          ]
+        ],
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": [
+          [
+            0,
+            18383761
+          ]
+        ]
+      },
+      "againstFrozenGen32ScannedRanges": {
+        "training": {
+          "selected": 8388608,
+          "selectedOrdinalsInsideOtherScannedRanges": [
+            7405568,
+            7479914
+          ],
+          "selectedOrdinalsOutsideOtherScannedRanges": [
+            908694,
+            983040
+          ]
+        },
+        "validation": {
+          "selected": 2097152,
+          "selectedOrdinalsInsideOtherScannedRanges": [
+            1851392,
+            1876586
+          ],
+          "selectedOrdinalsOutsideOtherScannedRanges": [
+            220566,
+            245760
+          ]
+        }
+      }
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR001",
+      "scannedRanges": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": [
+          [
+            0,
+            6418156
+          ]
+        ],
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": [
+          [
+            0,
+            6163329
+          ]
+        ]
+      },
+      "againstFrozenGen32ScannedRanges": {
+        "training": {
+          "selected": 8388608,
+          "selectedOrdinalsInsideOtherScannedRanges": [
+            8388608,
+            8388608
+          ],
+          "selectedOrdinalsOutsideOtherScannedRanges": [
+            0,
+            0
+          ]
+        },
+        "validation": {
+          "selected": 2097152,
+          "selectedOrdinalsInsideOtherScannedRanges": [
+            2097152,
+            2097152
+          ],
+          "selectedOrdinalsOutsideOtherScannedRanges": [
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "W4-BRE-CONTROL-LR003",
+      "scannedRanges": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": [
+          [
+            0,
+            6418156
+          ]
+        ],
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": [
+          [
+            0,
+            6163329
+          ]
+        ]
+      },
+      "againstFrozenGen32ScannedRanges": {
+        "training": {
+          "selected": 8388608,
+          "selectedOrdinalsInsideOtherScannedRanges": [
+            8388608,
+            8388608
+          ],
+          "selectedOrdinalsOutsideOtherScannedRanges": [
+            0,
+            0
+          ]
+        },
+        "validation": {
+          "selected": 2097152,
+          "selectedOrdinalsInsideOtherScannedRanges": [
+            2097152,
+            2097152
+          ],
+          "selectedOrdinalsOutsideOtherScannedRanges": [
+            0,
+            0
+          ]
+        }
+      }
+    }
+  ],
+  "residualAgainstContinuedBreScannedRanges": {
+    "training": {
+      "selected": 8388608,
+      "selectedOrdinalsInsideOtherScannedRanges": [
+        2752512,
+        2857813
+      ],
+      "selectedOrdinalsOutsideOtherScannedRanges": [
+        5530795,
+        5636096
+      ]
+    },
+    "validation": {
+      "selected": 2097152,
+      "selectedOrdinalsInsideOtherScannedRanges": [
+        688128,
+        720896
+      ],
+      "selectedOrdinalsOutsideOtherScannedRanges": [
+        1376256,
+        1409024
+      ]
+    }
+  },
+  "continuedBreAgainstResidualScannedRanges": {
+    "training": {
+      "selected": 8388608,
+      "selectedOrdinalsInsideOtherScannedRanges": [
+        8388608,
+        8388608
+      ],
+      "selectedOrdinalsOutsideOtherScannedRanges": [
+        0,
+        0
+      ]
+    },
+    "validation": {
+      "selected": 2097152,
+      "selectedOrdinalsInsideOtherScannedRanges": [
+        2097152,
+        2097152
+      ],
+      "selectedOrdinalsOutsideOtherScannedRanges": [
+        0,
+        0
+      ]
+    }
+  },
+  "limitations": [
+    "Raw ordinal intervals are not exact selected training-position intersections.",
+    "Inside a previously scanned interval does not prove that the earlier model trained on that record.",
+    "Outside a scanned interval proves different source ordinals, not different FENs, geometries or games.",
+    "All post-reference streams restarted at zero in W3 by design; W4 inherited and continued them.",
+    "Whole-model validation independence was never established: the frozen base can have seen correction holdout.",
+    "An inference hybrid combines two optimization streams; matching summed updates alone does not match data diversity or sparse/dense optimization."
+  ]
+}
