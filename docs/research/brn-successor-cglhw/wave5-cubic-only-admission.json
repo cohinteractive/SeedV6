@@ -1,0 +1,39 @@
+{
+  "id": "wave5-cubic-degree-mechanism-v1",
+  "recordedUtc": "2026-10-21T03:05:37.732172+00:00",
+  "question": "Does keeping degree3 while dropping degree2 recover useful R4 strength beyond unary, and improve on the complete correction?",
+  "motivation": "R4 cubic-only improves fixed-half quarter-mapped CE over full/unary on both old and newly acquired BT4/CP panels. Full interaction ablation can conceal competing degree contributions.",
+  "games": 64,
+  "plans": [
+    {
+      "file": "wave5-cubic-only-full-node-plan.json",
+      "games": 16,
+      "sha256": "1872df06daff3849b2b55b55a00da131d6b9e1de283fdafd55d6f899d8a4db50"
+    },
+    {
+      "file": "wave5-cubic-only-unary-node-plan.json",
+      "games": 16,
+      "sha256": "1bb5565ae4dda1f2a23d1aba6d5470ff735f33dd0a5b495433533c0cfa49dbbc"
+    },
+    {
+      "file": "wave5-cubic-only-full-clock-plan.json",
+      "games": 16,
+      "sha256": "aae913deaa0164c7829d3d5c4ec6eace7357e2bf7737b37bb04865581fc787fc"
+    },
+    {
+      "file": "wave5-cubic-only-unary-clock-plan.json",
+      "games": 16,
+      "sha256": "648ac717659349677b7e309424d5aff8d1843e6cdc5aaf42ba520ea9081f00d8"
+    }
+  ],
+  "activation": "After actual cubic-only score/search oracle and research variant tests pass; after primary and direct protocols complete. No selection from cubic-only games.",
+  "runtime": "wave5-cubic-only-runtime.json (to freeze after validated research-tool commit)",
+  "openingRange": "Previously unused development roots17..24, colour reversed; same roots across conditions/comparators.",
+  "scope": "Inference intervention zeroing quadratic heads in memory; no checkpoint/optimizer/source modification or substantive training.",
+  "stopRule": "Finish all fixed64 games without significance-dependent selection; stop affected run on failure/resource issues.",
+  "limitations": [
+    "Selected posthoc diagnostic after panel inspection; not final independent confirmation.",
+    "Runtime cost remains cubic recurrence; fewer active heads do not imply proportional speedup.",
+    "Inference ablation is not a separately optimized degree3-only architecture."
+  ]
+}

@@ -28,6 +28,10 @@ if (Test-Path -LiteralPath 'build/research/brn-successor-batches.pause') {
 }
 $binding=Get-Content -LiteralPath $RuntimeManifest -Raw -Encoding UTF8 | ConvertFrom-Json
 $configuration=Get-Content -LiteralPath $Plan -Raw -Encoding UTF8 | ConvertFrom-Json
+if (@($configuration.models | Where-Object { $_.correctionAblation -eq 'cubic-only' }).Count -ne 0 `
+        -and @($binding.modelFeatures) -notcontains 'brn-cubic-only-ablation-v1') {
+    throw 'This plan requires explicit cubic-only ablation capability.'
+}
 if (($configuration.nodes -gt 0) -eq ($configuration.moveMillis -gt 0)) {
     throw 'Choose exactly one positive node or clock budget; node safety is internal to the runner.'
 }

@@ -10,6 +10,30 @@ import org.junit.jupiter.params.provider.EnumSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BrnSuccessorVariantsTest {
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_CUBIC","GEN32_CUBIC_R4"})
+    void cubicOnlyRetainsThirdDegreeAndUnaryWithExplicitScaling(BrnNextArchitecture kind) {
+        var random=new SplittableRandom(117);double[] weights=new double[kind.parameters()];
+        for(int i=0;i<weights.length;i++)weights[i]=random.nextDouble(-.7,.7);
+        var source=new BrnNextModel(kind,weights);
+        var unary=BrnSuccessorVariants.correction(source,1,"unary",null);
+        var quadratic=BrnSuccessorVariants.correction(source,1,"quadratic",null);
+        for(double scale:new double[]{0,.5,1}) {
+            var cubic=BrnSuccessorVariants.correction(source,scale,"cubic-only",null);
+            for(var board:BrnSuccessorAudit.boards()) {
+                double base=BrnNextBase.model().newWorkspace().evaluatePawns(board);
+                double expected=base+scale*(source.rawPawns(board,source.newWorkspace())
+                        -quadratic.rawPawns(board,quadratic.newWorkspace())+unary.rawPawns(board,unary.newWorkspace())-base);
+                assertEquals(expected,cubic.rawPawns(board,cubic.newWorkspace()),1e-12);
+            }
+            for(int r=0;r<kind.width();r++) {
+                assertEquals(0,cubic.weight(kind.head()+r));
+                assertEquals(scale*weights[kind.head()+kind.width()+r],cubic.weight(kind.head()+kind.width()+r));
+            }
+        }
+        for(int i=0;i<weights.length;i++)assertEquals(weights[i],source.weight(i));
+        var gate=new BrnNextTrainer(BrnNextArchitecture.GEN32_GATED,1,.001).snapshot();
+        assertThrows(IllegalArgumentException.class,()->BrnSuccessorVariants.correction(gate,1,"cubic-only",null));
+    }
     @org.junit.jupiter.api.Test
     void additiveAverageMatchesIndependentFunctionEnsembleWithoutExtraRuntimeStorage() throws Exception {
         var trainer=new com.ohinteractive.seedv6.core.brnpair2.BrnPair2Trainer(.003);

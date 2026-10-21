@@ -29,6 +29,8 @@ try {
     }
     if($EntryPoint -in @('BrnGatedCacheProbe','BrnHybridProbe')) {
         $plan=Get-Content -LiteralPath $ProbeArguments[0] -Raw -Encoding UTF8 | ConvertFrom-Json
+        if(@($plan.models | Where-Object {$_.correctionAblation -eq 'cubic-only'}).Count -ne 0 `
+                -and @($binding.modelFeatures) -notcontains 'brn-cubic-only-ablation-v1'){throw 'Plan requires cubic-only capability'}
         if(@($plan.models | Where-Object {$null -ne $_.hybridBase}).Count -ne 0 `
                 -and @($binding.modelFeatures) -notcontains 'brn-hybrid-raw-v1'){throw 'Plan requires hybrid capability'}
         if(@($plan.models | Where-Object {$_.packedCubicCache -eq $true}).Count -ne 0 `

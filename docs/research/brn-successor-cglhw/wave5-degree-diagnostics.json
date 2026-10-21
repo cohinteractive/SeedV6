@@ -1,0 +1,1595 @@
+{
+  "id": "wave5-posthoc-degree-diagnostics-v1",
+  "question": "Do degree2 and degree3 contributions cancel, and is their value uniform across piece counts?",
+  "sources": [
+    {
+      "panel": "trained-predictions-02",
+      "source": "bt4",
+      "sha256": "9e8bb76c9d9c2a882a4ba2109bd3fdd38865e7f43839f547ff135cd98c3505e5",
+      "statusCounts": {
+        "0": 2048
+      },
+      "uniquePlacements": 2035,
+      "metrics": {
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 0.820840428413777,
+          "quadraticRms": 0.6922548233496602,
+          "cubicRms": 0.2044328834611848
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:full": {
+          "n": 343,
+          "ce": 0.9631245059792958,
+          "quadraticRms": 0.6575893500779063,
+          "cubicRms": 0.19556912573496318
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 0.817562338695435,
+          "quadraticRms": 0.6922548233496602,
+          "cubicRms": 0.2044328834611848
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:unary": {
+          "n": 343,
+          "ce": 0.9599818318145764,
+          "quadraticRms": 0.6575893500779063,
+          "cubicRms": 0.19556912573496318
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 0.8214526188253344,
+          "quadraticRms": 0.6922548233496602,
+          "cubicRms": 0.2044328834611848
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:quadratic": {
+          "n": 343,
+          "ce": 0.9647380793571039,
+          "quadraticRms": 0.6575893500779063,
+          "cubicRms": 0.19556912573496318
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 0.8162933562678037,
+          "quadraticRms": 0.6922548233496602,
+          "cubicRms": 0.2044328834611848
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 343,
+          "ce": 0.957139379189139,
+          "quadraticRms": 0.6575893500779063,
+          "cubicRms": 0.19556912573496318
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 0.8215915341705077,
+          "quadraticRms": 0.7615152716642207,
+          "cubicRms": 0.10934999428312933
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:full": {
+          "n": 343,
+          "ce": 0.9621330491245746,
+          "quadraticRms": 0.6577640701722254,
+          "cubicRms": 0.11446259383639078
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 0.8186817426392886,
+          "quadraticRms": 0.7615152716642207,
+          "cubicRms": 0.10934999428312933
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:unary": {
+          "n": 343,
+          "ce": 0.9618595859519288,
+          "quadraticRms": 0.6577640701722254,
+          "cubicRms": 0.11446259383639078
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 0.8218657142701552,
+          "quadraticRms": 0.7615152716642207,
+          "cubicRms": 0.10934999428312933
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:quadratic": {
+          "n": 343,
+          "ce": 0.9629481249654335,
+          "quadraticRms": 0.6577640701722254,
+          "cubicRms": 0.11446259383639078
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 0.8181576516570295,
+          "quadraticRms": 0.7615152716642207,
+          "cubicRms": 0.10934999428312933
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 343,
+          "ce": 0.9605290918802675,
+          "quadraticRms": 0.6577640701722254,
+          "cubicRms": 0.11446259383639078
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:full": {
+          "n": 400,
+          "ce": 0.7361899982582591,
+          "quadraticRms": 0.8508906539155285,
+          "cubicRms": 0.2625450616175574
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:unary": {
+          "n": 400,
+          "ce": 0.7339649701466555,
+          "quadraticRms": 0.8508906539155285,
+          "cubicRms": 0.2625450616175574
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:quadratic": {
+          "n": 400,
+          "ce": 0.7361296859864271,
+          "quadraticRms": 0.8508906539155285,
+          "cubicRms": 0.2625450616175574
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:cubic-only": {
+          "n": 400,
+          "ce": 0.7335251733361539,
+          "quadraticRms": 0.8508906539155285,
+          "cubicRms": 0.2625450616175574
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:full": {
+          "n": 400,
+          "ce": 0.7374641904762383,
+          "quadraticRms": 0.977743424271512,
+          "cubicRms": 0.12976142157937487
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:unary": {
+          "n": 400,
+          "ce": 0.7345678944879004,
+          "quadraticRms": 0.977743424271512,
+          "cubicRms": 0.12976142157937487
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:quadratic": {
+          "n": 400,
+          "ce": 0.7374702784843852,
+          "quadraticRms": 0.977743424271512,
+          "cubicRms": 0.12976142157937487
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:cubic-only": {
+          "n": 400,
+          "ce": 0.7344412104218069,
+          "quadraticRms": 0.977743424271512,
+          "cubicRms": 0.12976142157937487
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:full": {
+          "n": 281,
+          "ce": 0.7676615439199485,
+          "quadraticRms": 0.43343629387848526,
+          "cubicRms": 0.08655217363531971
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:unary": {
+          "n": 281,
+          "ce": 0.7627191404023616,
+          "quadraticRms": 0.43343629387848526,
+          "cubicRms": 0.08655217363531971
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:quadratic": {
+          "n": 281,
+          "ce": 0.7680087048508362,
+          "quadraticRms": 0.43343629387848526,
+          "cubicRms": 0.08655217363531971
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 281,
+          "ce": 0.7621904641348571,
+          "quadraticRms": 0.43343629387848526,
+          "cubicRms": 0.08655217363531971
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:full": {
+          "n": 281,
+          "ce": 0.7697950852326529,
+          "quadraticRms": 0.4736102896336014,
+          "cubicRms": 0.0601099425576497
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:unary": {
+          "n": 281,
+          "ce": 0.7636480736155153,
+          "quadraticRms": 0.4736102896336014,
+          "cubicRms": 0.0601099425576497
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:quadratic": {
+          "n": 281,
+          "ce": 0.7697906517997906,
+          "quadraticRms": 0.4736102896336014,
+          "cubicRms": 0.0601099425576497
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 281,
+          "ce": 0.7635426071642124,
+          "quadraticRms": 0.4736102896336014,
+          "cubicRms": 0.0601099425576497
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 0.7797773616295433,
+          "quadraticRms": 0.6846214273361341,
+          "cubicRms": 0.2094476554469838
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:full": {
+          "n": 364,
+          "ce": 0.784250812057793,
+          "quadraticRms": 0.8514830289958802,
+          "cubicRms": 0.2705448572519024
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 0.7775036259740646,
+          "quadraticRms": 0.6846214273361341,
+          "cubicRms": 0.2094476554469838
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:unary": {
+          "n": 364,
+          "ce": 0.7792018022417355,
+          "quadraticRms": 0.8514830289958802,
+          "cubicRms": 0.2705448572519024
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 0.7803613848211856,
+          "quadraticRms": 0.6846214273361341,
+          "cubicRms": 0.2094476554469838
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:quadratic": {
+          "n": 364,
+          "ce": 0.7838054004824415,
+          "quadraticRms": 0.8514830289958802,
+          "cubicRms": 0.2705448572519024
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 0.776307402661536,
+          "quadraticRms": 0.6846214273361341,
+          "cubicRms": 0.2094476554469838
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:cubic-only": {
+          "n": 364,
+          "ce": 0.7791935218461011,
+          "quadraticRms": 0.8514830289958802,
+          "cubicRms": 0.2705448572519024
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 0.7797533379638523,
+          "quadraticRms": 0.755400884320175,
+          "cubicRms": 0.11323042852810575
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:full": {
+          "n": 364,
+          "ce": 0.7845959071646313,
+          "quadraticRms": 0.982535677411846,
+          "cubicRms": 0.133658523779622
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 0.7780350874219079,
+          "quadraticRms": 0.755400884320175,
+          "cubicRms": 0.11323042852810575
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:unary": {
+          "n": 364,
+          "ce": 0.7800448796870051,
+          "quadraticRms": 0.982535677411846,
+          "cubicRms": 0.133658523779622
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 0.7805504515744928,
+          "quadraticRms": 0.755400884320175,
+          "cubicRms": 0.11323042852810575
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:quadratic": {
+          "n": 364,
+          "ce": 0.784959017334366,
+          "quadraticRms": 0.982535677411846,
+          "cubicRms": 0.133658523779622
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 0.7770129338504471,
+          "quadraticRms": 0.755400884320175,
+          "cubicRms": 0.11323042852810575
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:cubic-only": {
+          "n": 364,
+          "ce": 0.7796136259217645,
+          "quadraticRms": 0.982535677411846,
+          "cubicRms": 0.133658523779622
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:full": {
+          "n": 376,
+          "ce": 0.894325188573402,
+          "quadraticRms": 0.6721710520223523,
+          "cubicRms": 0.2058311710731334
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:unary": {
+          "n": 376,
+          "ce": 0.8925908240716358,
+          "quadraticRms": 0.6721710520223523,
+          "cubicRms": 0.2058311710731334
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:quadratic": {
+          "n": 376,
+          "ce": 0.8955856328285411,
+          "quadraticRms": 0.6721710520223523,
+          "cubicRms": 0.2058311710731334
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 376,
+          "ce": 0.8903269463543931,
+          "quadraticRms": 0.6721710520223523,
+          "cubicRms": 0.2058311710731334
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:full": {
+          "n": 376,
+          "ce": 0.8913738028979817,
+          "quadraticRms": 0.6813112002671731,
+          "cubicRms": 0.12019659644725676
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:unary": {
+          "n": 376,
+          "ce": 0.8926691113821299,
+          "quadraticRms": 0.6813112002671731,
+          "cubicRms": 0.12019659644725676
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:quadratic": {
+          "n": 376,
+          "ce": 0.8925403385711271,
+          "quadraticRms": 0.6813112002671731,
+          "cubicRms": 0.12019659644725676
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 376,
+          "ce": 0.8910745895637935,
+          "quadraticRms": 0.6813112002671731,
+          "cubicRms": 0.12019659644725676
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:full": {
+          "n": 284,
+          "ce": 0.6223889148451284,
+          "quadraticRms": 0.4031780471530686,
+          "cubicRms": 0.09093725140386415
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:unary": {
+          "n": 284,
+          "ce": 0.6229581236989977,
+          "quadraticRms": 0.4031780471530686,
+          "cubicRms": 0.09093725140386415
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:quadratic": {
+          "n": 284,
+          "ce": 0.623396811048429,
+          "quadraticRms": 0.4031780471530686,
+          "cubicRms": 0.09093725140386415
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 284,
+          "ce": 0.6216528399442965,
+          "quadraticRms": 0.4031780471530686,
+          "cubicRms": 0.09093725140386415
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:full": {
+          "n": 284,
+          "ce": 0.625767457666964,
+          "quadraticRms": 0.45344957964027827,
+          "cubicRms": 0.06483909963912483
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:unary": {
+          "n": 284,
+          "ce": 0.6236901670221231,
+          "quadraticRms": 0.45344957964027827,
+          "cubicRms": 0.06483909963912483
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:quadratic": {
+          "n": 284,
+          "ce": 0.6266317352106604,
+          "quadraticRms": 0.45344957964027827,
+          "cubicRms": 0.06483909963912483
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 284,
+          "ce": 0.6226684463075678,
+          "quadraticRms": 0.45344957964027827,
+          "cubicRms": 0.06483909963912483
+        }
+      }
+    },
+    {
+      "panel": "trained-predictions-02",
+      "source": "cp",
+      "sha256": "b415810da007abc14533afa160889e7a46dcf5d4de0dc08ee7ce93bd477a618b",
+      "statusCounts": {
+        "0": 2027,
+        "256": 19,
+        "72": 2
+      },
+      "uniquePlacements": 2048,
+      "metrics": {
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 1.2134895745379641,
+          "quadraticRms": 0.753953873686184,
+          "cubicRms": 0.22275613451698967
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:full": {
+          "n": 442,
+          "ce": 1.0717646142038175,
+          "quadraticRms": 0.865395225334289,
+          "cubicRms": 0.26119531428403786
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 1.2035947734333634,
+          "quadraticRms": 0.753953873686184,
+          "cubicRms": 0.22275613451698967
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:unary": {
+          "n": 442,
+          "ce": 1.0572392917212894,
+          "quadraticRms": 0.865395225334289,
+          "cubicRms": 0.26119531428403786
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 1.2154664853215418,
+          "quadraticRms": 0.753953873686184,
+          "cubicRms": 0.22275613451698967
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:quadratic": {
+          "n": 442,
+          "ce": 1.0724975087058017,
+          "quadraticRms": 0.865395225334289,
+          "cubicRms": 0.26119531428403786
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 1.2009347050325034,
+          "quadraticRms": 0.753953873686184,
+          "cubicRms": 0.22275613451698967
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:cubic-only": {
+          "n": 442,
+          "ce": 1.0557610261620245,
+          "quadraticRms": 0.865395225334289,
+          "cubicRms": 0.26119531428403786
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 1.2111532026404885,
+          "quadraticRms": 0.8221881409116611,
+          "cubicRms": 0.13298037286320263
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:full": {
+          "n": 442,
+          "ce": 1.0723844065107782,
+          "quadraticRms": 0.9384434682768399,
+          "cubicRms": 0.1481147705153001
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 1.206620409645393,
+          "quadraticRms": 0.8221881409116611,
+          "cubicRms": 0.13298037286320263
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:unary": {
+          "n": 442,
+          "ce": 1.0604900019930807,
+          "quadraticRms": 0.9384434682768399,
+          "cubicRms": 0.1481147705153001
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 1.2138117505193295,
+          "quadraticRms": 0.8221881409116611,
+          "cubicRms": 0.13298037286320263
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:quadratic": {
+          "n": 442,
+          "ce": 1.0743916086696572,
+          "quadraticRms": 0.9384434682768399,
+          "cubicRms": 0.1481147705153001
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 1.203664405001558,
+          "quadraticRms": 0.8221881409116611,
+          "cubicRms": 0.13298037286320263
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:cubic-only": {
+          "n": 442,
+          "ce": 1.058253327691175,
+          "quadraticRms": 0.9384434682768399,
+          "cubicRms": 0.1481147705153001
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:full": {
+          "n": 186,
+          "ce": 0.466045543241009,
+          "quadraticRms": 0.5432479683478074,
+          "cubicRms": 0.09518949532466477
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:unary": {
+          "n": 186,
+          "ce": 0.46203736047519506,
+          "quadraticRms": 0.5432479683478074,
+          "cubicRms": 0.09518949532466477
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:quadratic": {
+          "n": 186,
+          "ce": 0.4659638875160623,
+          "quadraticRms": 0.5432479683478074,
+          "cubicRms": 0.09518949532466477
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 186,
+          "ce": 0.46188958637615063,
+          "quadraticRms": 0.5432479683478074,
+          "cubicRms": 0.09518949532466477
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:full": {
+          "n": 186,
+          "ce": 0.4641030710654889,
+          "quadraticRms": 0.6292523164959507,
+          "cubicRms": 0.06886295911675218
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:unary": {
+          "n": 186,
+          "ce": 0.46240833227677297,
+          "quadraticRms": 0.6292523164959507,
+          "cubicRms": 0.06886295911675218
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:quadratic": {
+          "n": 186,
+          "ce": 0.4634025405165017,
+          "quadraticRms": 0.6292523164959507,
+          "cubicRms": 0.06886295911675218
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 186,
+          "ce": 0.4629509609030543,
+          "quadraticRms": 0.6292523164959507,
+          "cubicRms": 0.06886295911675218
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:full": {
+          "n": 396,
+          "ce": 1.7227497318332332,
+          "quadraticRms": 0.7038483899623673,
+          "cubicRms": 0.21887722308038748
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:unary": {
+          "n": 396,
+          "ce": 1.7152584141579996,
+          "quadraticRms": 0.7038483899623673,
+          "cubicRms": 0.21887722308038748
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:quadratic": {
+          "n": 396,
+          "ce": 1.727082068291179,
+          "quadraticRms": 0.7038483899623673,
+          "cubicRms": 0.21887722308038748
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 396,
+          "ce": 1.7100992457669313,
+          "quadraticRms": 0.7038483899623673,
+          "cubicRms": 0.21887722308038748
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:full": {
+          "n": 396,
+          "ce": 1.7169287894139278,
+          "quadraticRms": 0.7609637148838928,
+          "cubicRms": 0.13789148923818215
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:unary": {
+          "n": 396,
+          "ce": 1.7192797191728812,
+          "quadraticRms": 0.7609637148838928,
+          "cubicRms": 0.13789148923818215
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:quadratic": {
+          "n": 396,
+          "ce": 1.7218920933427668,
+          "quadraticRms": 0.7609637148838928,
+          "cubicRms": 0.13789148923818215
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 396,
+          "ce": 1.7138775281669898,
+          "quadraticRms": 0.7609637148838928,
+          "cubicRms": 0.13789148923818215
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 1.3314008249846836,
+          "quadraticRms": 0.8923269363343201,
+          "cubicRms": 0.40160831758776727
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:full": {
+          "n": 418,
+          "ce": 1.5482556755152195,
+          "quadraticRms": 1.060950993741838,
+          "cubicRms": 0.5657523303482029
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 1.3206520886269146,
+          "quadraticRms": 0.8923269363343201,
+          "cubicRms": 0.40160831758776727
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:unary": {
+          "n": 418,
+          "ce": 1.5437995984744926,
+          "quadraticRms": 1.060950993741838,
+          "cubicRms": 0.5657523303482029
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 1.333493055446744,
+          "quadraticRms": 0.8923269363343201,
+          "cubicRms": 0.40160831758776727
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:quadratic": {
+          "n": 418,
+          "ce": 1.5538510153530365,
+          "quadraticRms": 1.060950993741838,
+          "cubicRms": 0.5657523303482029
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 1.3179325472995502,
+          "quadraticRms": 0.8923269363343201,
+          "cubicRms": 0.40160831758776727
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 418,
+          "ce": 1.5374559992776151,
+          "quadraticRms": 1.060950993741838,
+          "cubicRms": 0.5657523303482029
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 1.3305010129098336,
+          "quadraticRms": 0.946157763652208,
+          "cubicRms": 0.15687028682219037
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:full": {
+          "n": 418,
+          "ce": 1.5488116409635595,
+          "quadraticRms": 1.1031032339060045,
+          "cubicRms": 0.18466812543612232
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 1.325080202793258,
+          "quadraticRms": 0.946157763652208,
+          "cubicRms": 0.15687028682219037
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:unary": {
+          "n": 418,
+          "ce": 1.5502042411848855,
+          "quadraticRms": 1.1031032339060045,
+          "cubicRms": 0.18466812543612232
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 1.332436556866195,
+          "quadraticRms": 0.946157763652208,
+          "cubicRms": 0.15687028682219037
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:quadratic": {
+          "n": 418,
+          "ce": 1.5530031243042073,
+          "quadraticRms": 1.1031032339060045,
+          "cubicRms": 0.18466812543612232
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 1.322905900646244,
+          "quadraticRms": 0.946157763652208,
+          "cubicRms": 0.15687028682219037
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 418,
+          "ce": 1.5457353951581387,
+          "quadraticRms": 1.1031032339060045,
+          "cubicRms": 0.18466812543612232
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:full": {
+          "n": 195,
+          "ce": 1.120046625023658,
+          "quadraticRms": 0.4626947036858656,
+          "cubicRms": 0.09812021912449274
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:unary": {
+          "n": 195,
+          "ce": 1.1174950168972284,
+          "quadraticRms": 0.4626947036858656,
+          "cubicRms": 0.09812021912449274
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:quadratic": {
+          "n": 195,
+          "ce": 1.1214036515245551,
+          "quadraticRms": 0.4626947036858656,
+          "cubicRms": 0.09812021912449274
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 195,
+          "ce": 1.116107705929023,
+          "quadraticRms": 0.4626947036858656,
+          "cubicRms": 0.09812021912449274
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:full": {
+          "n": 195,
+          "ce": 1.118444377232057,
+          "quadraticRms": 0.5482821279269174,
+          "cubicRms": 0.06167779056925852
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:unary": {
+          "n": 195,
+          "ce": 1.1187954512052614,
+          "quadraticRms": 0.5482821279269174,
+          "cubicRms": 0.06167779056925852
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:quadratic": {
+          "n": 195,
+          "ce": 1.1185986463900273,
+          "quadraticRms": 0.5482821279269174,
+          "cubicRms": 0.06167779056925852
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 195,
+          "ce": 1.118643198186588,
+          "quadraticRms": 0.5482821279269174,
+          "cubicRms": 0.06167779056925852
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:full": {
+          "n": 411,
+          "ce": 1.2111301229667666,
+          "quadraticRms": 0.8587640945560803,
+          "cubicRms": 0.26787059117129297
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:unary": {
+          "n": 411,
+          "ce": 1.1900924046147523,
+          "quadraticRms": 0.8587640945560803,
+          "cubicRms": 0.26787059117129297
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:quadratic": {
+          "n": 411,
+          "ce": 1.2100083997873678,
+          "quadraticRms": 0.8587640945560803,
+          "cubicRms": 0.26787059117129297
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:cubic-only": {
+          "n": 411,
+          "ce": 1.1904265646728391,
+          "quadraticRms": 0.8587640945560803,
+          "cubicRms": 0.26787059117129297
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:full": {
+          "n": 411,
+          "ce": 1.209083011524697,
+          "quadraticRms": 0.9220762445074168,
+          "cubicRms": 0.15755359211457612
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:unary": {
+          "n": 411,
+          "ce": 1.193994262433061,
+          "quadraticRms": 0.9220762445074168,
+          "cubicRms": 0.15755359211457612
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:quadratic": {
+          "n": 411,
+          "ce": 1.2095693241502914,
+          "quadraticRms": 0.9220762445074168,
+          "cubicRms": 0.15755359211457612
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:cubic-only": {
+          "n": 411,
+          "ce": 1.193194217613789,
+          "quadraticRms": 0.9220762445074168,
+          "cubicRms": 0.15755359211457612
+        }
+      }
+    },
+    {
+      "panel": "fresh-predictions-01",
+      "source": "bt4",
+      "sha256": "00aad166db9d9b74a472b920d3aaf5949ec8852518cd339e34ba5d8100dbcff3",
+      "statusCounts": {
+        "0": 2048
+      },
+      "uniquePlacements": 1993,
+      "metrics": {
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 0.8141105521302636,
+          "quadraticRms": 0.6679120305369755,
+          "cubicRms": 0.19656150648684328
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:full": {
+          "n": 347,
+          "ce": 0.8586901882086794,
+          "quadraticRms": 0.8361314443027493,
+          "cubicRms": 0.26425570834980067
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 0.8093329588053588,
+          "quadraticRms": 0.6679120305369755,
+          "cubicRms": 0.19656150648684328
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:unary": {
+          "n": 347,
+          "ce": 0.8543625298782485,
+          "quadraticRms": 0.8361314443027493,
+          "cubicRms": 0.26425570834980067
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 0.8140627603846395,
+          "quadraticRms": 0.6679120305369755,
+          "cubicRms": 0.19656150648684328
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:quadratic": {
+          "n": 347,
+          "ce": 0.8581220393335277,
+          "quadraticRms": 0.8361314443027493,
+          "cubicRms": 0.26425570834980067
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 0.8087474878611258,
+          "quadraticRms": 0.6679120305369755,
+          "cubicRms": 0.19656150648684328
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:cubic-only": {
+          "n": 347,
+          "ce": 0.8542645563839122,
+          "quadraticRms": 0.8361314443027493,
+          "cubicRms": 0.26425570834980067
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 0.8142672596202711,
+          "quadraticRms": 0.7326432564561699,
+          "cubicRms": 0.11458571990886178
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:full": {
+          "n": 347,
+          "ce": 0.8581654971527349,
+          "quadraticRms": 0.9555425046707524,
+          "cubicRms": 0.13998695858302074
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 0.8103163389582732,
+          "quadraticRms": 0.7326432564561699,
+          "cubicRms": 0.11458571990886178
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:unary": {
+          "n": 347,
+          "ce": 0.8547932326419865,
+          "quadraticRms": 0.9555425046707524,
+          "cubicRms": 0.13998695858302074
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 0.814713644711621,
+          "quadraticRms": 0.7326432564561699,
+          "cubicRms": 0.11458571990886178
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:quadratic": {
+          "n": 347,
+          "ce": 0.8586863556270242,
+          "quadraticRms": 0.9555425046707524,
+          "cubicRms": 0.13998695858302074
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 0.8096229655250137,
+          "quadraticRms": 0.7326432564561699,
+          "cubicRms": 0.11458571990886178
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:cubic-only": {
+          "n": 347,
+          "ce": 0.8540302498012766,
+          "quadraticRms": 0.9555425046707524,
+          "cubicRms": 0.13998695858302074
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:full": {
+          "n": 398,
+          "ce": 0.8449762911873878,
+          "quadraticRms": 0.6463169965210372,
+          "cubicRms": 0.1810806858730519
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:unary": {
+          "n": 398,
+          "ce": 0.8401527740467318,
+          "quadraticRms": 0.6463169965210372,
+          "cubicRms": 0.1810806858730519
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:quadratic": {
+          "n": 398,
+          "ce": 0.8454617462938451,
+          "quadraticRms": 0.6463169965210372,
+          "cubicRms": 0.1810806858730519
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 398,
+          "ce": 0.8388914359982329,
+          "quadraticRms": 0.6463169965210372,
+          "cubicRms": 0.1810806858730519
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:full": {
+          "n": 398,
+          "ce": 0.8433673551742428,
+          "quadraticRms": 0.6607030524415135,
+          "cubicRms": 0.11991902568914918
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:unary": {
+          "n": 398,
+          "ce": 0.8411153163326334,
+          "quadraticRms": 0.6607030524415135,
+          "cubicRms": 0.11991902568914918
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:quadratic": {
+          "n": 398,
+          "ce": 0.8445392584471333,
+          "quadraticRms": 0.6607030524415135,
+          "cubicRms": 0.11991902568914918
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 398,
+          "ce": 0.8396614733931067,
+          "quadraticRms": 0.6607030524415135,
+          "cubicRms": 0.11991902568914918
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:full": {
+          "n": 279,
+          "ce": 0.7146349325462288,
+          "quadraticRms": 0.4146296162760482,
+          "cubicRms": 0.09043522827604741
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:unary": {
+          "n": 279,
+          "ce": 0.7093632540442152,
+          "quadraticRms": 0.4146296162760482,
+          "cubicRms": 0.09043522827604741
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:quadratic": {
+          "n": 279,
+          "ce": 0.7144736342659014,
+          "quadraticRms": 0.4146296162760482,
+          "cubicRms": 0.09043522827604741
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 279,
+          "ce": 0.7091356092375578,
+          "quadraticRms": 0.4146296162760482,
+          "cubicRms": 0.09043522827604741
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:full": {
+          "n": 279,
+          "ce": 0.7181578458057708,
+          "quadraticRms": 0.46016143076073074,
+          "cubicRms": 0.05747380895190818
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:unary": {
+          "n": 279,
+          "ce": 0.7110637400219152,
+          "quadraticRms": 0.46016143076073074,
+          "cubicRms": 0.05747380895190818
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:quadratic": {
+          "n": 279,
+          "ce": 0.7174766377066791,
+          "quadraticRms": 0.46016143076073074,
+          "cubicRms": 0.05747380895190818
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 279,
+          "ce": 0.711541769197543,
+          "quadraticRms": 0.46016143076073074,
+          "cubicRms": 0.05747380895190818
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 0.767441319114381,
+          "quadraticRms": 0.6937913705290426,
+          "cubicRms": 0.20670058618314135
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:full": {
+          "n": 253,
+          "ce": 0.7910954678395794,
+          "quadraticRms": 0.42035028863991,
+          "cubicRms": 0.09324703624313468
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 0.767285789852249,
+          "quadraticRms": 0.6937913705290426,
+          "cubicRms": 0.20670058618314135
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:unary": {
+          "n": 253,
+          "ce": 0.7849804610736907,
+          "quadraticRms": 0.42035028863991,
+          "cubicRms": 0.09324703624313468
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 0.7680415162300972,
+          "quadraticRms": 0.6937913705290426,
+          "cubicRms": 0.20670058618314135
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:quadratic": {
+          "n": 253,
+          "ce": 0.7903130399179997,
+          "quadraticRms": 0.42035028863991,
+          "cubicRms": 0.09324703624313468
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 0.7661366387849328,
+          "quadraticRms": 0.6937913705290426,
+          "cubicRms": 0.20670058618314135
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 253,
+          "ce": 0.7855217512413069,
+          "quadraticRms": 0.42035028863991,
+          "cubicRms": 0.09324703624313468
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 0.7677230610210444,
+          "quadraticRms": 0.7870945408646755,
+          "cubicRms": 0.120508389327841
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:full": {
+          "n": 253,
+          "ce": 0.7920909177669339,
+          "quadraticRms": 0.4589046243994523,
+          "cubicRms": 0.07026356982385808
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 0.7663525677563414,
+          "quadraticRms": 0.7870945408646755,
+          "cubicRms": 0.120508389327841
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:unary": {
+          "n": 253,
+          "ce": 0.7833873779986814,
+          "quadraticRms": 0.4589046243994523,
+          "cubicRms": 0.07026356982385808
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 0.7681667929990313,
+          "quadraticRms": 0.7870945408646755,
+          "cubicRms": 0.120508389327841
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:quadratic": {
+          "n": 253,
+          "ce": 0.7916722938864128,
+          "quadraticRms": 0.4589046243994523,
+          "cubicRms": 0.07026356982385808
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 0.7656746448358895,
+          "quadraticRms": 0.7870945408646755,
+          "cubicRms": 0.120508389327841
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 253,
+          "ce": 0.7836876712693215,
+          "quadraticRms": 0.4589046243994523,
+          "cubicRms": 0.07026356982385808
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:full": {
+          "n": 387,
+          "ce": 0.7859011285602511,
+          "quadraticRms": 0.8507291575193129,
+          "cubicRms": 0.26449652138025936
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:unary": {
+          "n": 387,
+          "ce": 0.7831192944670976,
+          "quadraticRms": 0.8507291575193129,
+          "cubicRms": 0.26449652138025936
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:quadratic": {
+          "n": 387,
+          "ce": 0.7858711088865014,
+          "quadraticRms": 0.8507291575193129,
+          "cubicRms": 0.26449652138025936
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:cubic-only": {
+          "n": 387,
+          "ce": 0.782655115735096,
+          "quadraticRms": 0.8507291575193129,
+          "cubicRms": 0.26449652138025936
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:full": {
+          "n": 387,
+          "ce": 0.7861722784446512,
+          "quadraticRms": 1.0268242810032293,
+          "cubicRms": 0.1416886379526062
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:unary": {
+          "n": 387,
+          "ce": 0.7832313599335343,
+          "quadraticRms": 1.0268242810032293,
+          "cubicRms": 0.1416886379526062
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:quadratic": {
+          "n": 387,
+          "ce": 0.7866451265762103,
+          "quadraticRms": 1.0268242810032293,
+          "cubicRms": 0.1416886379526062
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:cubic-only": {
+          "n": 387,
+          "ce": 0.7824661870650756,
+          "quadraticRms": 1.0268242810032293,
+          "cubicRms": 0.1416886379526062
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:full": {
+          "n": 384,
+          "ce": 0.7332526579606651,
+          "quadraticRms": 0.6616497848779606,
+          "cubicRms": 0.19416483434257117
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:unary": {
+          "n": 384,
+          "ce": 0.7396703781205534,
+          "quadraticRms": 0.6616497848779606,
+          "cubicRms": 0.19416483434257117
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:quadratic": {
+          "n": 384,
+          "ce": 0.735398943701275,
+          "quadraticRms": 0.6616497848779606,
+          "cubicRms": 0.19416483434257117
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 384,
+          "ce": 0.7367171491204122,
+          "quadraticRms": 0.6616497848779606,
+          "cubicRms": 0.19416483434257117
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:full": {
+          "n": 384,
+          "ce": 0.7330748451365499,
+          "quadraticRms": 0.6713358178423527,
+          "cubicRms": 0.12345365260137023
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:unary": {
+          "n": 384,
+          "ce": 0.7381184543087224,
+          "quadraticRms": 0.6713358178423527,
+          "cubicRms": 0.12345365260137023
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:quadratic": {
+          "n": 384,
+          "ce": 0.7340574002415423,
+          "quadraticRms": 0.6713358178423527,
+          "cubicRms": 0.12345365260137023
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 384,
+          "ce": 0.7368839611630946,
+          "quadraticRms": 0.6713358178423527,
+          "cubicRms": 0.12345365260137023
+        }
+      }
+    },
+    {
+      "panel": "fresh-predictions-01",
+      "source": "cp",
+      "sha256": "039a6220a13f83a2de9daf6f1697719943dcb701599aa2faa6f7ed043afb0983",
+      "statusCounts": {
+        "0": 2034,
+        "256": 13,
+        "192": 1
+      },
+      "uniquePlacements": 2048,
+      "metrics": {
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 1.4324432351724832,
+          "quadraticRms": 2.5418725294613846,
+          "cubicRms": 4.938841715469115
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:full": {
+          "n": 468,
+          "ce": 1.3068385469023822,
+          "quadraticRms": 0.7739420340331007,
+          "cubicRms": 0.2626792036998169
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 1.4612956404012796,
+          "quadraticRms": 2.5418725294613846,
+          "cubicRms": 4.938841715469115
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:unary": {
+          "n": 468,
+          "ce": 1.2959271013596443,
+          "quadraticRms": 0.7739420340331007,
+          "cubicRms": 0.2626792036998169
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 1.5006780246183646,
+          "quadraticRms": 2.5418725294613846,
+          "cubicRms": 4.938841715469115
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:quadratic": {
+          "n": 468,
+          "ce": 1.3091709749213691,
+          "quadraticRms": 0.7739420340331007,
+          "cubicRms": 0.2626792036998169
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 1.3924582810918478,
+          "quadraticRms": 2.5418725294613846,
+          "cubicRms": 4.938841715469115
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 468,
+          "ce": 1.2928264388264306,
+          "quadraticRms": 0.7739420340331007,
+          "cubicRms": 0.2626792036998169
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 1.147241758449606,
+          "quadraticRms": 2.107748659807288,
+          "cubicRms": 24.380707254012734
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:full": {
+          "n": 468,
+          "ce": 1.295710124828526,
+          "quadraticRms": 0.8139462644818503,
+          "cubicRms": 0.15507463510600392
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 1.464060677813088,
+          "quadraticRms": 2.107748659807288,
+          "cubicRms": 24.380707254012734
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:unary": {
+          "n": 468,
+          "ce": 1.300724295167576,
+          "quadraticRms": 0.8139462644818503,
+          "cubicRms": 0.15507463510600392
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 1.4875107704270918,
+          "quadraticRms": 2.107748659807288,
+          "cubicRms": 24.380707254012734
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:quadratic": {
+          "n": 468,
+          "ce": 1.2995017158798907,
+          "quadraticRms": 0.8139462644818503,
+          "cubicRms": 0.15507463510600392
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 1.1235258152054595,
+          "quadraticRms": 2.107748659807288,
+          "cubicRms": 24.380707254012734
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 468,
+          "ce": 1.296627200045662,
+          "quadraticRms": 0.8139462644818503,
+          "cubicRms": 0.15507463510600392
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:full": {
+          "n": 172,
+          "ce": 0.6959486414451416,
+          "quadraticRms": 0.696194150828486,
+          "cubicRms": 0.18686443575283987
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:unary": {
+          "n": 172,
+          "ce": 0.7009269176580865,
+          "quadraticRms": 0.696194150828486,
+          "cubicRms": 0.18686443575283987
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:quadratic": {
+          "n": 172,
+          "ce": 0.6971306190575064,
+          "quadraticRms": 0.696194150828486,
+          "cubicRms": 0.18686443575283987
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 172,
+          "ce": 0.6993893205730973,
+          "quadraticRms": 0.696194150828486,
+          "cubicRms": 0.18686443575283987
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:full": {
+          "n": 172,
+          "ce": 0.6967849609665343,
+          "quadraticRms": 0.8500895204858041,
+          "cubicRms": 0.11615365585654525
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:unary": {
+          "n": 172,
+          "ce": 0.7010585780471328,
+          "quadraticRms": 0.8500895204858041,
+          "cubicRms": 0.11615365585654525
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:quadratic": {
+          "n": 172,
+          "ce": 0.697779025430193,
+          "quadraticRms": 0.8500895204858041,
+          "cubicRms": 0.11615365585654525
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 172,
+          "ce": 0.6996884538237199,
+          "quadraticRms": 0.8500895204858041,
+          "cubicRms": 0.11615365585654525
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:full": {
+          "n": 384,
+          "ce": 1.9154121524420407,
+          "quadraticRms": 4.035161577983725,
+          "cubicRms": 8.058909269738765
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:unary": {
+          "n": 384,
+          "ce": 2.0034203710869947,
+          "quadraticRms": 4.035161577983725,
+          "cubicRms": 8.058909269738765
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:quadratic": {
+          "n": 384,
+          "ce": 2.0939995168440455,
+          "quadraticRms": 4.035161577983725,
+          "cubicRms": 8.058909269738765
+        },
+        "fit:W5-RESCUBIC-R4-LR001-g96:pieces-25+:cubic-only": {
+          "n": 384,
+          "ce": 1.8243217274185155,
+          "quadraticRms": 4.035161577983725,
+          "cubicRms": 8.058909269738765
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:full": {
+          "n": 384,
+          "ce": 1.168063044131256,
+          "quadraticRms": 3.273503456422201,
+          "cubicRms": 39.81308425711397
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:unary": {
+          "n": 384,
+          "ce": 2.00488825134914,
+          "quadraticRms": 3.273503456422201,
+          "cubicRms": 39.81308425711397
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:quadratic": {
+          "n": 384,
+          "ce": 2.0703808164363537,
+          "quadraticRms": 3.273503456422201,
+          "cubicRms": 39.81308425711397
+        },
+        "fit:W5-RESCUBIC-R16-LR001-g96:pieces-25+:cubic-only": {
+          "n": 384,
+          "ce": 1.1024023205503666,
+          "quadraticRms": 3.273503456422201,
+          "cubicRms": 39.81308425711397
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 0.97375346258837,
+          "quadraticRms": 0.7299068113077611,
+          "cubicRms": 0.21803878417709865
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:full": {
+          "n": 428,
+          "ce": 0.9684214214098533,
+          "quadraticRms": 0.6933780652788382,
+          "cubicRms": 0.19772514518807333
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 0.9733246798685167,
+          "quadraticRms": 0.7299068113077611,
+          "cubicRms": 0.21803878417709865
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:unary": {
+          "n": 428,
+          "ce": 0.9652088538126752,
+          "quadraticRms": 0.6933780652788382,
+          "cubicRms": 0.19772514518807333
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 0.97597045096593,
+          "quadraticRms": 0.7299068113077611,
+          "cubicRms": 0.21803878417709865
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:quadratic": {
+          "n": 428,
+          "ce": 0.9709676540658815,
+          "quadraticRms": 0.6933780652788382,
+          "cubicRms": 0.19772514518807333
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 0.9703266528288621,
+          "quadraticRms": 0.7299068113077611,
+          "cubicRms": 0.21803878417709865
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 428,
+          "ce": 0.961659635409345,
+          "quadraticRms": 0.6933780652788382,
+          "cubicRms": 0.19772514518807333
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:full": {
+          "n": 1024,
+          "ce": 0.9704223079036854,
+          "quadraticRms": 0.8099767411430671,
+          "cubicRms": 0.14293223039961495
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:full": {
+          "n": 428,
+          "ce": 0.9615070597612646,
+          "quadraticRms": 0.729809958772576,
+          "cubicRms": 0.12669173812527393
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:unary": {
+          "n": 1024,
+          "ce": 0.9761447533609875,
+          "quadraticRms": 0.8099767411430671,
+          "cubicRms": 0.14293223039961495
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:unary": {
+          "n": 428,
+          "ce": 0.969125492825756,
+          "quadraticRms": 0.729809958772576,
+          "cubicRms": 0.12669173812527393
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:quadratic": {
+          "n": 1024,
+          "ce": 0.9729568857206194,
+          "quadraticRms": 0.8099767411430671,
+          "cubicRms": 0.14293223039961495
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:quadratic": {
+          "n": 428,
+          "ce": 0.9632750845870707,
+          "quadraticRms": 0.729809958772576,
+          "cubicRms": 0.12669173812527393
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:all:cubic-only": {
+          "n": 1024,
+          "ce": 0.9730947329669443,
+          "quadraticRms": 0.8099767411430671,
+          "cubicRms": 0.14293223039961495
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-13-24:cubic-only": {
+          "n": 428,
+          "ce": 0.9666322403671962,
+          "quadraticRms": 0.729809958772576,
+          "cubicRms": 0.12669173812527393
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:full": {
+          "n": 400,
+          "ce": 1.0502165694542656,
+          "quadraticRms": 0.8494104160192298,
+          "cubicRms": 0.273113328355008
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:unary": {
+          "n": 400,
+          "ce": 1.0490055192807362,
+          "quadraticRms": 0.8494104160192298,
+          "cubicRms": 0.273113328355008
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:quadratic": {
+          "n": 400,
+          "ce": 1.05258238707893,
+          "quadraticRms": 0.8494104160192298,
+          "cubicRms": 0.273113328355008
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-25+:cubic-only": {
+          "n": 400,
+          "ce": 1.045817410663089,
+          "quadraticRms": 0.8494104160192298,
+          "cubicRms": 0.273113328355008
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:full": {
+          "n": 400,
+          "ce": 1.047303008750647,
+          "quadraticRms": 0.971424447464229,
+          "cubicRms": 0.18015534565846453
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:unary": {
+          "n": 400,
+          "ce": 1.0515908949670885,
+          "quadraticRms": 0.971424447464229,
+          "cubicRms": 0.18015534565846453
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:quadratic": {
+          "n": 400,
+          "ce": 1.0512101943269934,
+          "quadraticRms": 0.971424447464229,
+          "cubicRms": 0.18015534565846453
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-25+:cubic-only": {
+          "n": 400,
+          "ce": 1.047257121940337,
+          "quadraticRms": 0.971424447464229,
+          "cubicRms": 0.18015534565846453
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:full": {
+          "n": 196,
+          "ce": 0.8293497425784053,
+          "quadraticRms": 0.5110022245744004,
+          "cubicRms": 0.10382426007563425
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:unary": {
+          "n": 196,
+          "ce": 0.8365963012308245,
+          "quadraticRms": 0.5110022245744004,
+          "cubicRms": 0.10382426007563425
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:quadratic": {
+          "n": 196,
+          "ce": 0.8305440358027711,
+          "quadraticRms": 0.5110022245744004,
+          "cubicRms": 0.10382426007563425
+        },
+        "evaluation:W5-RESCUBIC-R4-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 196,
+          "ce": 0.8351898177363241,
+          "quadraticRms": 0.5110022245744004,
+          "cubicRms": 0.10382426007563425
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:full": {
+          "n": 196,
+          "ce": 0.8329909092617036,
+          "quadraticRms": 0.5819529556762469,
+          "cubicRms": 0.07381074437265167
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:unary": {
+          "n": 196,
+          "ce": 0.8375008088030214,
+          "quadraticRms": 0.5819529556762469,
+          "cubicRms": 0.07381074437265167
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:quadratic": {
+          "n": 196,
+          "ce": 0.8343981481829121,
+          "quadraticRms": 0.5819529556762469,
+          "cubicRms": 0.07381074437265167
+        },
+        "evaluation:W5-RESCUBIC-R16-LR001-g96:pieces-2-12:cubic-only": {
+          "n": 196,
+          "ce": 0.835854892371715,
+          "quadraticRms": 0.5819529556762469,
+          "cubicRms": 0.07381074437265167
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Posthoc exploratory algebra from already acquired predictions, including fresh panel now consumed.",
+    "No model training, no search measurement, no optimal scale/phase claim. Cubic-only means full minus quadratic plus unary; finite reassociation is diagnostic.",
+    "Piece-count bins fixed here for mechanism exploration; correlated rows cannot be treated as independent games."
+  ]
+}

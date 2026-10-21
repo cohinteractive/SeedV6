@@ -79,6 +79,10 @@ final class BrnSuccessorVariants {
                 if(kind.correctionKind()!=CUBIC)throw new IllegalArgumentException("Cubic correction required");
                 Arrays.fill(w,kind.head()+kind.width(),w.length,0);
             }
+            case "cubic-only" -> {
+                if(kind.correctionKind()!=CUBIC)throw new IllegalArgumentException("Cubic correction required");
+                Arrays.fill(w,kind.head(),kind.head()+kind.width(),0);
+            }
             case "constant-gates" -> {
                 if(kind.correctionKind()!=GATED_PAIRS||meanGates==null||meanGates.length!=kind.width())
                     throw new IllegalArgumentException("Gated correction and explicit mean weights required");

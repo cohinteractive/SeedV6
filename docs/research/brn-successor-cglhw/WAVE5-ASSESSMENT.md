@@ -141,3 +141,25 @@ R16, both versus BRE001, and each versus its own compiled unary at32768nodes and
 Latest96 is selected for equal exposure before primary clock closure; all scales remain
 .5. Previously unused development roots9..16 are colour reversed. Finish primary clock
 first, then these fixed budgets; do not extend a favourable result to seek significance.
+
+## Degree-specific refinement admitted
+
+Posthoc decomposition shows that R4 unary+degree3, dropping degree2, improves CE over
+both full and unary on all four old/fresh source panels. For fresh evaluation halves:
+BT4 .766137 versus .767441 full/.767286 unary; CP .970327 versus .973753/.973325.
+R16 degree3-only also beats unary everywhere, but its full correction is better on
+fresh CP (.970422 versus .973095). Therefore the all-interaction ablation can mask
+opposing contributions. This is an exploratory prediction finding, not chess evidence.
+See wave5-degree-diagnostics.json and tools/analyze-brn-wave5-degrees.py.
+
+A small inference-only cubic-only variant zeroes quadratic heads while retaining
+unary, embeddings and third-degree heads. It does not change owner checkpoints or
+training. The64-game follow-up is frozen in wave5-cubic-only-admission.json, contingent
+on targeted tests and actual score/search parity, and starts only after the existing
+primary/direct budgets finish. R4 cubic-only faces full R4 and its compiled unary
+control at equal nodes/time on development roots17..24. No new human training gate
+is yet justified or requested. A bounded build pause preserves ongoing primary games.
+
+The unary readiness summary was reduced to compact identity/cost/parity aggregates;
+all detailed search rows remain intact in its hash-bound local raw files. No protocol
+or research result changed.
