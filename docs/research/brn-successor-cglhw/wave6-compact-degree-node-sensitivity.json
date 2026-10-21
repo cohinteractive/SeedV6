@@ -1,0 +1,27 @@
+{
+  "id": "wave6-compact-degree-node-pair-sensitivity-v1",
+  "input": "docs\\research\\brn-successor-cglhw\\wave6-compact-degree-node-results.json",
+  "sha256": "3fa173a97de1456be938819620de0f18fb56c676f798e8ac5eea810de79656e1",
+  "pairScores": [
+    0.5,
+    0.75,
+    0.75,
+    0.5,
+    0.5,
+    0.5,
+    0.75,
+    0.5
+  ],
+  "positivePairs": 3,
+  "tiedPairs": 5,
+  "negativePairs": 0,
+  "signAssignments": 256,
+  "oneSidedSignFlipTail": 0.125,
+  "twoSidedSignFlipTail": 0.25,
+  "formula": "Enumerate all2^8 sign changes of opening-pair score minus0.5; include ties and the observed assignment.",
+  "interpretation": "The descriptive normal95 lower bound50.409% is not robust evidence of superiority: only three informative positive pairs. Under sign-exchangeability, tail probabilities are0.125/0.25.",
+  "limitations": [
+    "Post-selection reused development roots; sign-exchangeability and opening independence are assumptions, not verified randomization.",
+    "This sensitivity is not an independent confirmatory p-value and does not replace the predeclared bounded interval."
+  ]
+}

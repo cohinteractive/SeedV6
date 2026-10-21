@@ -41,7 +41,8 @@ See wave6-followup-admission.json. The untrained visibility feasibility probe pa
 independent feature/symmetry checks but establishes no efficiency or fitting gain.
 Use unique bounded launch logs and verify actual receipt
 counts/processes before resuming. Fitting/cost/strata evidence is recorded in
-WAVE6-ASSESSMENT; no new architecture or human gate has yet been selected.
+WAVE6-ASSESSMENT. Compact Q4 degree-control preparation is now admitted in WAVE7;
+remaining G6 matches and readiness checks precede any human-training request.
 
 ## Candidate registry and preserved reference
 
