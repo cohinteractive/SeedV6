@@ -1,0 +1,29 @@
+{
+  "id": "wave5-degree3-marginal-admission-v1",
+  "recordedUtc": "2026-10-21T04:14:03.078383+00:00",
+  "question": "Does degree3 add useful shallow-node evaluation quality conditional on the same learned unary and degree2 correction?",
+  "motivation": "Full versus unary removes both degree2 and degree3. Its positive shallow-node scores cannot by themselves establish higher-order cubic value. Prior W4 degree3 evidence was negative/inconclusive; G5 training warrants a new bounded checkpoint-specific test.",
+  "games": 32,
+  "plans": [
+    {
+      "file": "wave5-degree3-r4-node-plan.json",
+      "games": 16,
+      "sha256": "0f4b9cd6cfdab6252a561fc9496124330f64cfae93dbad47742f7eebb3857646"
+    },
+    {
+      "file": "wave5-degree3-r16-node-plan.json",
+      "games": 16,
+      "sha256": "a28dd82d0f556e465fd0737bf8ffbe736625bfb44fa282b6c999c53dc84fae51"
+    }
+  ],
+  "runtime": "wave5-runtime.json",
+  "openingRange": "Development roots25..32, shared with the depth discriminator; not independent confirmation.",
+  "activation": "After actual quadratic canonical/cache score and search oracles pass, and after current fixed direct/cubic-only games finish. Execute depth32 then these32.",
+  "scope": "Inference-only head ablation, no training or model writes. Equal nodes only: existing cache still computes unused third moments, so its latency cannot establish an optimized quadratic cost.",
+  "stopRule": "Finish fixed32 games. No favourable-result extension. Failures stop the affected batch with all evidence preserved.",
+  "limitations": [
+    "Only8 opening pairs per comparison; prior selection, shared roots and joint parameter adaptation.",
+    "Quadratic ablation is not a separately optimized quadratic architecture. A serious practical expressive-value claim may require that control and a cost-efficient quadratic implementation.",
+    "No final strength claim from this mechanism diagnostic."
+  ]
+}

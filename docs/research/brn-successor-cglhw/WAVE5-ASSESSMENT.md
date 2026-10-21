@@ -251,3 +251,14 @@ roots25..32. It follows the existing budgets and keeps all resource limits. The
 measured primary clock effort is6–9 times the shallow32768-node screen, so a deeper
 control can distinguish practical-depth quality from throughput. This is a new
 question supported by measured effort, not an extension seeking significance.
+
+The frontier explicitly distinguishes aggregate interactions from degree3. Full-versus-
+unary wins can arise from the learned quadratic terms; cubic-only-versus-unary does
+not measure their marginal value conditional on quadratic terms. A32-game shallow-node
+degree3 control is prospectively admitted (wave5-degree3-admission.json): each full
+Latest96 correction versus its own quadratic-only ablation on roots25..32, after
+actual score/search parity. It follows the existing budgets and depth32. Existing
+quadratic cache arithmetic retains unused third moments, so this is a quality test,
+not an optimized quadratic throughput comparison. No trained quadratic baseline or
+higher-order success is inferred. A later human gate must address this distinction
+if the evidence warrants it, rather than assume cubic complexity is intrinsically useful.
