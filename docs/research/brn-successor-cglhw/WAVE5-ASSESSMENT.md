@@ -173,3 +173,18 @@ before probes: archive comparison found only generated source-revision metadata
 changed in engine-core; all core classes, training and dependency content are unchanged.
 The new runtime manifest preserves this finding and exact hashes. Primary/direct
 matches retain the original runtime. Both build pauses and all prior games are preserved.
+
+## Calibration interpretation: do not infer defective quadratic training
+
+The degree ranking reverses under the actual raw training objective. On fresh
+evaluation rows, R4 full CE is .655495 BT4/.553846 CP, versus cubic-only
+.779969/.682996 and unary .890168/.789209. Full is also much better on both old
+sources. Independent Python reproduces64 Java metric aggregates within1e-12.
+See wave5-degree-calibration-diagnostics.json and its reproducible analysis tool.
+
+Thus dropping quadratic heads is not evidence of a gradient/implementation defect
+or a better raw-objective training architecture. The existing material+.25 residual
+search mapping and half-change intervention create a substantially different operating
+point. Cubic-only chess tests remain useful, but a later training wave must consider
+objective/mapping alignment and retain controls rather than blindly deleting useful
+quadratic capacity. No production mapping or training objective has been changed.

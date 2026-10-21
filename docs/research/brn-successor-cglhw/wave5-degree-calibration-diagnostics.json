@@ -1,0 +1,1066 @@
+{
+  "id": "wave5-degree-calibration-diagnostic-v1",
+  "sources": [
+    {
+      "panel": "trained-predictions-02",
+      "source": "bt4",
+      "input": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-predictions-02\\bt4-predictions.jsonl",
+      "sha256": "9e8bb76c9d9c2a882a4ba2109bd3fdd38865e7f43839f547ff135cd98c3505e5",
+      "rows": [
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7797773616295433
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6302203258390608
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7805718209777854
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6287010045244285
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7775036259740646
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6879395645235047
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7776831346855241
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.8552214086933861
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7803613848211856
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6341923457562965
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7815660767959948
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6352851098432598
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.776307402661536
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.66656682373437
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7741104515144894
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.7523251780556458
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7797533379638523
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6273697429128741
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7807878752415938
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6301955539363467
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7780350874219079
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6745090539933964
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7779600361482034
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.7946208621032009
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7805504515744928
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6287882616843761
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.782252895806274
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6315104915739654
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7770129338504471
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6668921975195105
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7755382764327382
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.7627264803847761
+        }
+      ]
+    },
+    {
+      "panel": "trained-predictions-02",
+      "source": "cp",
+      "input": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-predictions-02\\cp-predictions.jsonl",
+      "sha256": "b415810da007abc14533afa160889e7a46dcf5d4de0dc08ee7ce93bd477a618b",
+      "rows": [
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.3314008249846836
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.5888851130915878
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.332086428909501
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.5909841553156969
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.3206520886269146
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6271510772053734
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.3129674608771105
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.7802201805015165
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.333493055446744
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.5945242965825602
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.3360919810571417
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6396614882353152
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.3179325472995502
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6089077872823574
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.3064864151147006
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6881606201824817
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.3305010129098336
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.5997383217259508
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.3309551059201932
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6524578679153235
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.325080202793258
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6171625882944508
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.321016822812199
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.7181228465903475
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.332436556866195
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.5990181962293745
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.334716000368321
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6656528128568914
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.322905900646244
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6119577151414508
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 1.3163351595568968
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6929052821586097
+        }
+      ]
+    },
+    {
+      "panel": "fresh-predictions-01",
+      "source": "bt4",
+      "input": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\fresh-predictions-01\\bt4-predictions.jsonl",
+      "sha256": "00aad166db9d9b74a472b920d3aaf5949ec8852518cd339e34ba5d8100dbcff3",
+      "rows": [
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.767441319114381
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6527962075605466
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.768451750187014
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6554948406979818
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.767285789852249
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.7057612900052852
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7695610724965716
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.8901680316068589
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7680415162300972
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6559484906835406
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.769442548753842
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6619468148085911
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7661366387849328
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.685316980353824
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7663381225180814
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.7799689692494145
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7677230610210444
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6516352696635761
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7694577514677912
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6601177944370061
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7663525677563414
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6899585218399796
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.767166728517463
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.8248243542251263
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7681667929990313
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6521695550666153
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7701924402802033
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6611300705731592
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7656746448358895
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.683001923074507
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.7655569805167993
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.7928560838074556
+        }
+      ]
+    },
+    {
+      "panel": "fresh-predictions-01",
+      "source": "cp",
+      "input": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\fresh-predictions-01\\cp-predictions.jsonl",
+      "sha256": "039a6220a13f83a2de9daf6f1697719943dcb701599aa2faa6f7ed043afb0983",
+      "rows": [
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.97375346258837
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.5604471954077884
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.9681697444045856
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.5538454514329416
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.9733246798685167
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6212055632917461
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.9691969060031834
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.7892085283887078
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.97597045096593
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.5625988597433239
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.9721538531939122
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.557190230676789
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.9703266528288621
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.5980171237863025
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.9620131328849237
+        },
+        {
+          "model": "W5-RESCUBIC-R4-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6829954574046179
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.9704223079036854
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.5571686453704946
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.962933455006495
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "full",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.5556186827796384
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.9761447533609875
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6100144109290679
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.9740224250528469
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "unary",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.7251953218478665
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.9729568857206194
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.5572941548336412
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.967540178629975
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "quadratic",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.5548894490007301
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.9730947329669443
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 0.5,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6013443550847117
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 0.25,
+          "count": 1024,
+          "crossEntropy": 0.9674150709265814
+        },
+        {
+          "model": "W5-RESCUBIC-R16-LR001-g96",
+          "variant": "cubic-only",
+          "correctionScale": 1,
+          "materialResidualGain": 1,
+          "count": 1024,
+          "crossEntropy": 0.6903536861050655
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Posthoc reused prediction rows; no chess-strength conclusion or calibrated model selection.",
+    "Raw gain1/full correction is the trained objective function; gain.25/half correction is the fixed strength-screen mapping.",
+    "Source partition/base overlap and correlated observations remain; no significance inference."
+  ]
+}
