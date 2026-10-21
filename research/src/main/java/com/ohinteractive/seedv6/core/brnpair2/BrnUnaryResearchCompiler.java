@@ -11,7 +11,7 @@ import static com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.*;
 public final class BrnUnaryResearchCompiler {
     public static BrnPair2Model compile(BrnPair2Model base,BrnNextModel unary) throws IOException {
         Objects.requireNonNull(base);Objects.requireNonNull(unary);
-        if(!unary.architecture().frozenBase())throw new IllegalArgumentException("Frozen-base correction required");
+        if(!unary.architecture().frozenBase()||unary.architecture().calibratedHeads())throw new IllegalArgumentException("Ordinary frozen-base correction required");
         for(int i=EMBEDDING;i<unary.architecture().parameters();i++)
             if(unary.weight(i)!=0)throw new IllegalArgumentException("Explicit unary-only correction required");
         var keys=new TreeSet<Integer>();

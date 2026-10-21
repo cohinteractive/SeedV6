@@ -120,6 +120,8 @@ public final class SearchEvaluation {
     private SearchEvaluation(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model, boolean blockCache, boolean rollingDelta,
                              com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model residualBase,boolean packedCubic) {
         this.packedCubic=packedCubic;
+        if(model.architecture().calibratedHeads()&&(rollingDelta||packedCubic||residualBase!=null))
+            throw new IllegalArgumentException("Calibrated heads own their fixed base and guarded composition cache");
         if(packedCubic&&(!rollingDelta||!blockCache||!model.architecture().frozenCubic()))
             throw new IllegalArgumentException("Packed cache requires a guarded frozen-base cubic correction");
         blend = null; this.rollingDelta = rollingDelta;
@@ -385,16 +387,19 @@ public final class SearchEvaluation {
         private final com.ohinteractive.seedv6.core.brnnext.BrnCubicDeltaAccumulator cubicDelta;
         private final com.ohinteractive.seedv6.core.brnnext.BrnQuadraticAccumulator quadratic;
         private final com.ohinteractive.seedv6.core.brnnext.BrnCubicPackedAccumulator packed;
+        private final com.ohinteractive.seedv6.core.brnnext.BrnCalibratedAccumulator calibrated;
         NextState(SearchEvaluation definition) {
             this.definition = definition;
-            quadratic = definition.incremental && definition.next.architecture().quadratic()
+            boolean composed=definition.next.architecture().calibratedHeads();
+            calibrated=definition.incremental&&composed?new com.ohinteractive.seedv6.core.brnnext.BrnCalibratedAccumulator(definition.next):null;
+            quadratic = definition.incremental && !composed && definition.next.architecture().quadratic()
                     ? new com.ohinteractive.seedv6.core.brnnext.BrnQuadraticAccumulator(definition.next,
                     definition.residualBase == null ? com.ohinteractive.seedv6.core.brnnext.BrnNextBase.model() : definition.residualBase) : null;
             workspace = definition.incremental ? null : definition.residualBase == null
                     ? definition.next.newWorkspace() : definition.next.newResearchWorkspace(definition.residualBase);
             accumulator = definition.incremental && !definition.rollingDelta && definition.next.architecture().correctionKind() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GATED_PAIRS
                     ? new com.ohinteractive.seedv6.core.brnnext.BrnGatedAccumulator(definition.next) : null;
-            cubic = definition.incremental && !definition.rollingDelta && definition.next.architecture().correctionKind() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.CUBIC
+            cubic = definition.incremental && !composed && !definition.rollingDelta && definition.next.architecture().correctionKind() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.CUBIC
                     ? new com.ohinteractive.seedv6.core.brnnext.BrnCubicAccumulator(definition.next) : null;
             delta = definition.rollingDelta && definition.next.architecture().correctionKind() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GATED_PAIRS
                     ? definition.residualBase == null ? new com.ohinteractive.seedv6.core.brnnext.BrnGatedDeltaAccumulator(definition.next)
@@ -411,7 +416,7 @@ public final class SearchEvaluation {
             if (!(source instanceof NextState other) || definition != other.definition) throw new IllegalArgumentException("Evaluator mismatch.");
         }
         @Override public int evaluate(long[] board, int ply) {
-            return quadratic != null ? quadratic.score(board) : packed != null ? packed.score(board) : cubicDelta != null ? cubicDelta.score(board) : delta != null ? delta.score(board) : accumulator != null ? accumulator.score(board)
+            return calibrated != null ? calibrated.score(board) : quadratic != null ? quadratic.score(board) : packed != null ? packed.score(board) : cubicDelta != null ? cubicDelta.score(board) : delta != null ? delta.score(board) : accumulator != null ? accumulator.score(board)
                     : cubic != null ? cubic.score(board) : definition.next.score(board, workspace);
         }
     }

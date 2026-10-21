@@ -20,7 +20,7 @@ public final class BrnCubicAccumulator {
     private final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.Workspace base;
     long recomputedRanks;
     public BrnCubicAccumulator(BrnNextModel model) {
-        if(model.architecture().correctionKind()!=CUBIC)throw new IllegalArgumentException("CUBIC model required");
+        if(model.architecture().correctionKind()!=CUBIC||model.architecture().calibratedHeads())throw new IllegalArgumentException("Ordinary CUBIC model required");
         this.model=model;
         width=model.architecture().width();head=model.architecture().head();
         one=new double[2][8*width];two=new double[2][8*width];three=new double[2][8*width];

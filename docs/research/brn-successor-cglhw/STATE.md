@@ -31,6 +31,8 @@ small amounts on all four status-valid panels; quadratic is mixed. Best cubic
 coefficients differ markedly from Latest; optimization stability is an unresolved
 hypothesis, not evidence of corruption. No playing-strength conclusion follows.
 
+WAVE9.md records the implemented calibration-aware fixed-basis experiment:241 final targeted tests, independent actual projection, five payload/state audits and three cache/search probes pass. Build59 implementation boundary is prepared; native packaging and G8 closure remain required before creating owner lineages or activating G9.
+
 Current autonomous unit: complete frozen wave8-assessment-protocol.json,176 games
 at common Policy4/QXRAY and prior half-change/quarter mapping: cubic versus quad
 at nodes/time, cubic versus exact zero-C3 Q4 anchor at nodes/time, both versus

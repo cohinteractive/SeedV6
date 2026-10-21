@@ -73,13 +73,37 @@ public final class BrnNextTrainer {
         System.arraycopy(weights, 0, target.weights, 0, weights.length);
         return target;
     }
+    /** New calibrated-head experiment from a settled fixed-cubic source. Only its
+     * immutable Q4 anchor survives; old cubic heads/moments are not inherited. */
+    public BrnNextTrainer calibrateFixedBasis(BrnNextArchitecture kind) {
+        if(architecture!=GEN32_FIXED_CUBIC_R4||!kind.calibratedHeads())
+            throw new IllegalArgumentException("Fixed cubic source and calibrated target required");
+        var target=new BrnNextTrainer(kind,0,rate);
+        System.arraycopy(weights,0,target.weights,0,kind.affineHead());
+        return target;
+    }
     public void setLearningRate(double rate) { new BrnAdamConfig(rate); this.rate = rate; }
     public BrnNextModel snapshot() { return new BrnNextModel(architecture, weights); }
     public double predictPawns(long[] board) { return workspace.forward(weights, board, architecture); }
-    public double predictOutcome(long[] board) { return Brn3Objective.outcome(predictPawns(board), board); }
+    public double objectivePawns(long[] board) {
+        double raw=predictPawns(board);
+        return architecture.calibratedHeads()?workspace.material+.25*(raw-workspace.material):raw;
+    }
+    public double predictOutcome(long[] board) { return Brn3Objective.outcome(objectivePawns(board), board); }
 
     /** Adds the analytic derivative of the raw pawn value. Forward must precede this. */
     void backward(double derivative) {
+        if(architecture.calibratedHeads()) {
+            // Only trainable derivatives are required for this explicitly frozen basis.
+            int a=architecture.affineHead();double d=.5*derivative;
+            gradient[a]+=d;gradient[a+1]+=d*(workspace.material/8);
+            gradient[a+2]+=d*((workspace.baseRaw-workspace.material)/4);
+            gradient[a+3]+=d*workspace.anchorResidual;
+            if(architecture!=GEN32_CAL_AFFINE_R4)for(int r=0;r<architecture.width();r++)
+                gradient[architecture.extraHead()+r]+=d*(architecture==GEN32_CAL_CUBIC_R4
+                        ?workspace.third[r]*DEGREE3_NORM:workspace.second[r]*DEGREE2_NORM);
+            return;
+        }
         gradient[0] += derivative;
         int width = architecture.width(), head = architecture.head();
         for (int i = 0; i < workspace.count; i++) gradient[UNARY + workspace.features[i]] += derivative * PIECE_NORM;
@@ -138,8 +162,8 @@ public final class BrnNextTrainer {
         if (step == Long.MAX_VALUE) throw new ArithmeticException("Optimizer step exhausted");
         Arrays.fill(gradient, 0); double loss = 0;
         for (int i = 0; i < count; i++) {
-            double[] objective = Brn3Objective.crossEntropy(predictPawns(boards[i]), NnueCorpusTargets.material(boards[i]), targets[i]);
-            loss += objective[0]; backward(objective[1]);
+            double[] objective = Brn3Objective.crossEntropy(objectivePawns(boards[i]), NnueCorpusTargets.material(boards[i]), targets[i]);
+            loss += objective[0]; backward(objective[1]*(architecture.calibratedHeads()?.25:1));
         }
         // Validate the entire gradient before touching optimizer state.
         for (double g : gradient) if (!Double.isFinite(g)) throw new ArithmeticException("Nonfinite BRN-next gradient");

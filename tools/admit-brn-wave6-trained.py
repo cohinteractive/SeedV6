@@ -37,15 +37,15 @@ def attempt(path):
     return result
 
 def main(wave=6):
-    assert wave in (6, 7, 8)
+    assert wave in (6, 7, 8, 9)
     raw = BASE/f'raw/wave{wave}'
-    start, end = (96, 128) if wave == 6 else (128, 160) if wave == 7 else (160, 168)
+    start, end = (96, 128) if wave == 6 else (128, 160) if wave == 7 else (160, 168) if wave == 8 else (168, 176)
     source_wire, target_wire, retained = (5, 7, 13073) if wave == 6 else (6, 8, 3845)
     spec = importlib.util.spec_from_file_location('projection', Path(__file__).with_name('audit-brn-degree-projection.py'))
     projection = importlib.util.module_from_spec(spec); spec.loader.exec_module(projection)
     report = read(BASE/f'wave{wave}-trained-checkpoints.json')
     inventory = read(raw/'trained-before-01.json')['files']
-    prep = read(BASE/'wave8-owner-readiness.json') if wave == 8 else read(raw/'owner-preparation-01.json')
+    prep = read(BASE/f'wave{wave}-owner-readiness.json') if wave >= 8 else read(raw/'owner-preparation-01.json')
     stores = read(raw/'trained-audit-01/stores.json')
     destination = raw/'trained-frozen-01'
     assert not destination.exists()
@@ -62,6 +62,14 @@ def main(wave=6):
                 old, new = projection.decode(before,is_state,source_wire),projection.decode(after,is_state,target_wire)
                 assert all(n == o[:retained*8] for n,o in zip(new,old))
                 if is_state: assert before[68:84] == after[68:84]
+            elif wave == 9 and origin['arm']['projection'].startswith('calibrated-'):
+                kind = origin['arm']['projection'].removeprefix('calibrated-')
+                old = projection.decode(before,is_state,10)
+                new = projection.decode(after,is_state,dict(affine=11,quadratic=12,cubic=13)[kind])
+                assert new[0] == old[0][:3845*8]+bytes((4 if kind=='affine' else 8)*8)
+                if is_state:
+                    assert all(a == bytes(len(a)) for a in new[1:])
+                    assert row['initial']['optimizerStep'] == 0
             elif wave == 8 and origin['arm']['projection'].startswith('fixed-'):
                 cubic = origin['arm']['projection'] == 'fixed-cubic-heads'
                 old = projection.decode(before,is_state,8)
@@ -101,7 +109,7 @@ def main(wave=6):
     for path, expected in inventory.items():
         p=Path(path); assert p.stat().st_size==expected['bytes'] and sha(p)==expected['sha256'],path
     destination.mkdir()
-    models = [read(BASE/('wave7-trained-model-plan.json' if wave == 8 else f'wave{wave}-model-plan.json'))['models'][0]]
+    models = [read(BASE/(f'wave{wave-1}-trained-model-plan.json' if wave >= 8 else f'wave{wave}-model-plan.json'))['models'][0]]
     for row in report['lineages']:
         root = Path(row['root']); frozen = destination/row['name']
         shutil.copytree(root,frozen)
@@ -116,7 +124,7 @@ def main(wave=6):
         selection=f'Latest{end} prospectively selected in WAVE{wave}; Best identities remain separately audited.',
         limitations=[f'Retained final attempt describes settled Gen{end}; no partial optimizer state exists.',
           'No observed persisted restart notice or incomplete generation; uninterrupted wall-clock execution cannot be proved.',
-          'Fixed heads share exact Q4 function with fresh zero Adam; only four coefficients train.' if wave == 8 else f'Quadratic inherits cubic-trained embedding/moments; shared retained values exact at Gen{start}, no fresh initialization.',
+          'Calibrated heads share the same frozen Q4 anchor with fresh Adam and common search-pawn objective; affine4 or affine+degree8 coefficients train.' if wave == 9 else 'Fixed heads share exact Q4 function with fresh zero Adam; only four coefficients train.' if wave == 8 else f'Quadratic inherits cubic-trained embedding/moments; shared retained values exact at Gen{start}, no fresh initialization.',
           'BRE has distinct historical exposure, source cursors/split and sparse optimizer semantics.',
           'Seek indexes append during training; normal settled attempts are INCREMENTAL. These facts were established during G6 admission.']))
     print('Verified and froze',len(models)-1,'trained lineages;',len(inventory),'owner files unchanged')

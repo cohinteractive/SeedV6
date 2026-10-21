@@ -85,3 +85,16 @@ Degree-node closes32 games: cubic12 wins/8 draws/12 losses,50%, descriptive95%
 33.87..66.13, bounded16.05..83.95.4308 moves independently replayed; no failures.
 Paired-root cubic/quadratic NPS.94514. This establishes no degree advantage.
 Remaining fixed protocols continue without an outcome-dependent budget change.
+
+Degree-clock closes32 games: cubic10 wins/9 draws/13 losses,45.3125%,
+descriptive95%34.16..56.47, bounded11.36..79.27.4085 moves independently
+replayed; no failures. Paired-root cubic/quadratic NPS.91074. These small
+comparisons do not establish useful cubic strength or its absence.
+
+The joint calibration diagnostic (wave8-calibrated-degree-admission/results)
+fits affine4, affine+quadratic8 and affine+cubic8 on identical2043 consumed
+fit rows with128 updates/arm. Both joint models improve mapped CE beyond
+matched affine on all four consumed evaluation panels; cubic beats quadratic
+on only fresh BT4. This supports a matched calibration-aware follow-up, not
+cubic preference or generalization/strength claims. WAVE9 describes provisional
+implementation preparation, with the G8 assessment still required to finish.

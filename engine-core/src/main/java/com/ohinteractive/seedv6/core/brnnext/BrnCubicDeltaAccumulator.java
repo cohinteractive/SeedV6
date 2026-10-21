@@ -23,7 +23,7 @@ public final class BrnCubicDeltaAccumulator {
     }
     /** Explicit research composition; no source model, base or codec is changed. */
     public BrnCubicDeltaAccumulator(BrnNextModel model,com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model frozenBase) {
-        if(!model.architecture().frozenCubic())throw new IllegalArgumentException("Frozen CUBIC required");
+        if(!model.architecture().frozenCubic()||model.architecture().calibratedHeads())throw new IllegalArgumentException("Ordinary frozen CUBIC required");
         width=model.architecture().width();head=model.architecture().head();
         first=new double[2][width];second=new double[2][width];third=new double[2][width];
         base=java.util.Objects.requireNonNull(frozenBase).newWorkspace();

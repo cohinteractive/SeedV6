@@ -1,0 +1,9 @@
+{
+  "id": "wave9-development-runtime-metadata-erratum-v1",
+  "manifest": "docs\\research\\brn-successor-cglhw\\wave9-development-runtime.json",
+  "manifestSha256": "c46934a7fe2dbbf44379aa2a19fd36dcf43dcfa1711e1a42e1adb09121ea777c",
+  "recordedUtc": "2026-10-21T19:17:17.061072+00:00",
+  "correction": "createdUtc was inherited from the W8 template and is not the creation time of this W9 development runtime. Runtime jars, source commit/worktree hashes, inherited build58 and probe bindings are correct and remain unchanged.",
+  "observedManifestMtimeUtc": "2026-10-21T19:15:13.856261+00:00",
+  "scope": "Metadata-only correction; completed probes and their manifest are preserved."
+}

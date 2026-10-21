@@ -55,6 +55,15 @@ public final class BrnResidualAssessment {
                 // semantics, not historical display aliases, so their ablations remain auditable.
                 if(!model.architecture().frozenBase())continue;
                 var kind=model.architecture();
+                if(kind.calibratedHeads()) {
+                    double[] w=weights(model);Arrays.fill(w,kind.trainableStart(),w.length,0);
+                    add(predictors,spec.name()+"-zero-heads",new BrnNextModel(kind,w));
+                    if(kind!=GEN32_CAL_AFFINE_R4) {
+                        w=weights(model);Arrays.fill(w,kind.extraHead(),w.length,0);
+                        add(predictors,spec.name()+"-affine-only",new BrnNextModel(kind,w));
+                    }
+                    continue;
+                }
                 for(double alpha:new double[]{0,.25,.5,1.5})
                     add(predictors,spec.name()+"-correction"+alpha,BrnSuccessorVariants.correction(model,alpha,null,null));
                 double[] w=weights(model);Arrays.fill(w,EMBEDDING,w.length,0);

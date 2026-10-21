@@ -36,7 +36,7 @@ public final class HeldOutLoss {
             throw new IllegalArgumentException("Cannot compare held-out losses across material NNUE outcome recipes.");
         return compare(predictor(candidate), predictor(best), samples, target, progress);
     }
-    // Both actors traverse the same immutable list, in the same order. No search or score mapping.
+    // Both actors traverse the same immutable list, in the same order, without search.
     public static Comparison compare(ToDoubleFunction<long[]> candidate, ToDoubleFunction<long[]> best, List<Sample> samples) {
         return compare(candidate, best, samples, Sample::target);
     }
@@ -94,7 +94,8 @@ public final class HeldOutLoss {
             }
             case NetworkModel.BrnNext b -> {
                 var workspace = b.model().newWorkspace();
-                yield board -> com.ohinteractive.seedv6.core.brn3.Brn3Objective.outcome(b.model().rawPawns(board, workspace), board);
+                yield board -> com.ohinteractive.seedv6.core.brn3.Brn3Objective.outcome(b.model().architecture().calibratedHeads()
+                        ? b.model().searchPawns(board, workspace) : b.model().rawPawns(board, workspace), board);
             }
             case NetworkModel.Brn3 b -> {
                 var workspace=b.model().newWorkspace();

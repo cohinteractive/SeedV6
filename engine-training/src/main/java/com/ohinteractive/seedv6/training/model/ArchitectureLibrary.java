@@ -49,7 +49,13 @@ public final class ArchitectureLibrary {
         new Descriptor("Fixed Basis + Quadratic-4 Heads (control)", TrainingArchitecture.BRN_GEN32_FIXED_QUADRATIC_R4, Status.RESEARCH,
             List.of("W8-FIXED-QUAD-R4"), "Four trainable quadratic heads; frozen unary terms and embeddings; Policy4"),
         new Descriptor("Fixed Basis + Cubic-4 Heads (research)", TrainingArchitecture.BRN_GEN32_FIXED_CUBIC_R4, Status.RESEARCH,
-            List.of("W8-FIXED-CUBIC-R4"), "Four trainable cubic heads; frozen quadratic anchor and embeddings; Policy4"));
+            List.of("W8-FIXED-CUBIC-R4"), "Four trainable cubic heads; frozen quadratic anchor and embeddings; Policy4"),
+        new Descriptor("Search-aligned Affine-4 (control)", TrainingArchitecture.BRN_GEN32_CAL_AFFINE_R4, Status.RESEARCH,
+            List.of("W9-CAL-AFFINE-R4"), "Frozen Q4; four affine coefficients; search-aligned objective; Policy4"),
+        new Descriptor("Search-aligned Affine + Quadratic-4 (control)", TrainingArchitecture.BRN_GEN32_CAL_QUADRATIC_R4, Status.RESEARCH,
+            List.of("W9-CAL-QUAD-R4"), "Frozen Q4; affine and degree2 heads; search-aligned objective; Policy4"),
+        new Descriptor("Search-aligned Affine + Cubic-4 (research)", TrainingArchitecture.BRN_GEN32_CAL_CUBIC_R4, Status.RESEARCH,
+            List.of("W9-CAL-CUBIC-R4"), "Frozen Q4; affine and degree3 heads; search-aligned objective; Policy4"));
     public static List<Descriptor> entries() { return ENTRIES; }
     public static Descriptor describe(TrainingArchitecture architecture) {
         return ENTRIES.stream().filter(e -> e.implementation() == architecture).findFirst().orElseThrow();

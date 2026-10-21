@@ -1,0 +1,184 @@
+{
+  "id": "wave9-final-targeted-validation-v2",
+  "suites": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\engine-core\\TEST-com.ohinteractive.seedv6.core.brnnext.BrnCalibratedAccumulatorTest.xml",
+      "sha256": "5a24aea707aebb16c08c7c4afa1cf885aa25b6b4ca83bebcd677d25d877b2193",
+      "name": "com.ohinteractive.seedv6.core.brnnext.BrnCalibratedAccumulatorTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\engine-core\\TEST-com.ohinteractive.seedv6.core.brnnext.BrnCubicDeltaAccumulatorTest.xml",
+      "sha256": "e9988609842f312e6bf0c01cf701e6e0a83ce62c7518bc60bf6816915710cfca",
+      "name": "com.ohinteractive.seedv6.core.brnnext.BrnCubicDeltaAccumulatorTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\engine-core\\TEST-com.ohinteractive.seedv6.core.brnnext.BrnGen32ResidualTest.xml",
+      "sha256": "653e67734f59c784ba38b8a479e839efabe1be417f7f543787934a154e14661b",
+      "name": "com.ohinteractive.seedv6.core.brnnext.BrnGen32ResidualTest",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\engine-core\\TEST-com.ohinteractive.seedv6.core.brnnext.BrnNextRuntimeTest.xml",
+      "sha256": "3fcc531c5e37a7aa9247a579ff7e11926bd137b286509dcc34984f6445f2d516",
+      "name": "com.ohinteractive.seedv6.core.brnnext.BrnNextRuntimeTest",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\engine-core\\TEST-com.ohinteractive.seedv6.core.brnnext.BrnQuadraticAccumulatorTest.xml",
+      "sha256": "f4901b7bb745d5cac0c5444ba0c8d5940f0e9150d111beb4bcf6ff9b58c6e875",
+      "name": "com.ohinteractive.seedv6.core.brnnext.BrnQuadraticAccumulatorTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\engine-core\\TEST-com.ohinteractive.seedv6.core.brnnext.BrnResidualHybridTest.xml",
+      "sha256": "7f81c7132d964195dee7d4283d4482b610ab3484551eb172e6cdc97d6dab914c",
+      "name": "com.ohinteractive.seedv6.core.brnnext.BrnResidualHybridTest",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\engine-training\\TEST-com.ohinteractive.seedv6.core.brnnext.BrnCalibratedTrainingTest.xml",
+      "sha256": "ba48bd3e0f1f4c158d552bb79dec99404b5375e655199883ed0cdd415965d370",
+      "name": "com.ohinteractive.seedv6.core.brnnext.BrnCalibratedTrainingTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\engine-training\\TEST-com.ohinteractive.seedv6.core.brnnext.BrnFixedBasisTest.xml",
+      "sha256": "57200ce6affc6befd814aee8f151f827fccf9015d8143e103748d0c2d5f326e1",
+      "name": "com.ohinteractive.seedv6.core.brnnext.BrnFixedBasisTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\engine-training\\TEST-com.ohinteractive.seedv6.core.brnnext.BrnNextMathTest.xml",
+      "sha256": "fcaded57fae37367e6e8ad3d858e50b2dede7b55bed807e8d579923fc4232dc1",
+      "name": "com.ohinteractive.seedv6.core.brnnext.BrnNextMathTest",
+      "tests": 34,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\engine-training\\TEST-com.ohinteractive.seedv6.core.brnnext.BrnQuadraticProjectionTest.xml",
+      "sha256": "5de5b3788173d87d3a756e4b7676bf160d1b357f33bdeaa21283fb318a2cc63c",
+      "name": "com.ohinteractive.seedv6.core.brnnext.BrnQuadraticProjectionTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\research\\TEST-com.ohinteractive.seedv6.tools.eval.BrnSuccessorVariantsTest.xml",
+      "sha256": "e87a542f11ad11f0c158b3b69ddd5186225244e01f32f7ac851d396fdc066948",
+      "name": "com.ohinteractive.seedv6.tools.eval.BrnSuccessorVariantsTest",
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\app-gui\\TEST-com.ohinteractive.seedv6.gui.BrnCalibratedWaveTest.xml",
+      "sha256": "5246cc9d52c2b85abb64f1f4f28adfdd709e8db3602d8ddec37e5bd1954549a0",
+      "name": "com.ohinteractive.seedv6.gui.BrnCalibratedWaveTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\app-gui\\TEST-com.ohinteractive.seedv6.gui.BrnDegreeControlWaveTest.xml",
+      "sha256": "cdfe243aebbc559e84c1ccdf875db26cbb128a47fc051e7b375caf6b41f66a59",
+      "name": "com.ohinteractive.seedv6.gui.BrnDegreeControlWaveTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\app-gui\\TEST-com.ohinteractive.seedv6.gui.BrnFixedHeadWaveTest.xml",
+      "sha256": "a3ded90d9bc5324a1aabdd77352a93bcd8289cfd5f3df44d745db68fded7100b",
+      "name": "com.ohinteractive.seedv6.gui.BrnFixedHeadWaveTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\integration\\TEST-com.ohinteractive.seedv6.gui.BrnStoreRemediationTest.xml",
+      "sha256": "c17b05e901b98820b5a4912cd537871426a39a63fab0c046bf6c8ae98b7880d2",
+      "name": "com.ohinteractive.seedv6.gui.BrnStoreRemediationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\integration\\TEST-com.ohinteractive.seedv6.gui.HumanEngineSelectionTest.xml",
+      "sha256": "b4967807f60a83b42e68d7a44bedcffbfc54811d5fe9ff03131ab50b7aaa26a2",
+      "name": "com.ohinteractive.seedv6.gui.HumanEngineSelectionTest",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\integration\\TEST-com.ohinteractive.seedv6.training.selfplay.ResumableTrainingTest.xml",
+      "sha256": "b9085ad0d67f0cc6c8354eb4f308c084c894664b26f50c8421f7e8cc4388c965",
+      "name": "com.ohinteractive.seedv6.training.selfplay.ResumableTrainingTest",
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\integration\\TEST-com.ohinteractive.seedv6.training.service.BrnNextCorpusTrainingTest.xml",
+      "sha256": "c654093afd036a9b2f4292bd99ab51389b5790a5fef9c5cddc00dac56ec09307",
+      "name": "com.ohinteractive.seedv6.training.service.BrnNextCorpusTrainingTest",
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06\\integration\\TEST-com.ohinteractive.seedv6.training.service.TrainingRecipeTest.xml",
+      "sha256": "36e920c7976fffe87eff8cc8f78c1871cdfab3b2c40859e05e2ac00ab25f83d3",
+      "name": "com.ohinteractive.seedv6.training.service.TrainingRecipeTest",
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "totalTests": 241,
+  "failures": 0,
+  "skipped": 0,
+  "fullSuiteRun": false,
+  "execution": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\implementation-tests-06.execution.json",
+  "executionSha256": "d33f4345777f65feb8e1bdd0355dcc8b2f5bbcd2d48732ffac5e03484228f270",
+  "correction": "New calibrated-family HeldOutLoss now uses canonical searchPawns; trainer/checkpoint outcomes agree for all13 BRN-next families. No change to wire1..10 objectives.",
+  "previousEvidence": "wave9-implementation-validation.json"
+}

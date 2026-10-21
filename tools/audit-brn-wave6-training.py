@@ -1,4 +1,4 @@
-"""Read-only W6/W7/W8 history/ancestry audit after BrnLineageAudit's codec checks.
+"""Read-only W6..W9 history/ancestry audit after BrnLineageAudit's codec checks.
 
 Usage: python -B tools/audit-brn-wave6-training.py AUDIT_DIRECTORY NEW_REPORT
 The report binds live evidence, but never changes a training store.
@@ -20,11 +20,12 @@ def main():
     assert not output.exists(), "Preserve prior evidence"
     stores = json.loads((audit / 'stores.json').read_text())
     wave = json.loads((Path(stores[1]['root']) / 'degree-continuation-origin.json').read_text())['wave']
-    assert wave in ('brn-successor-2026-10-21-wave6', 'brn-successor-2026-10-21-wave7', 'brn-successor-2026-10-22-wave8')
+    assert wave in ('brn-successor-2026-10-21-wave6', 'brn-successor-2026-10-21-wave7', 'brn-successor-2026-10-22-wave8', 'brn-successor-2026-10-22-wave9')
+    calibrated = wave.endswith('wave9')
     fixed = wave.endswith('wave8')
     compact = wave.endswith('wave7')
-    number, start = (8, 160) if fixed else (7, 128) if compact else (6, 96)
-    additional = 8 if fixed else 32
+    number, start = (9, 168) if calibrated else (8, 160) if fixed else (7, 128) if compact else (6, 96)
+    additional = 8 if fixed or calibrated else 32
     end = start + additional
     assert len(stores) == (4 if compact or fixed else 5)
     results = []
@@ -41,13 +42,19 @@ def main():
             expected_architecture = 'BRN_GEN32_QUADRATIC_R4'
         if fixed:
             expected_architecture = 'BRN_GEN32_FIXED_CUBIC_R4' if 'FIXED-CUBIC' in name else 'BRN_GEN32_FIXED_QUADRATIC_R4' if 'FIXED-QUAD' in name else 'BRN_PAIR2'
+        if calibrated:
+            expected_architecture = ('BRN_GEN32_CAL_AFFINE_R4' if 'CAL-AFFINE' in name else
+                                    'BRN_GEN32_CAL_QUADRATIC_R4' if 'CAL-QUAD' in name else
+                                    'BRN_GEN32_CAL_CUBIC_R4' if 'CAL-CUBIC' in name else 'BRN_PAIR2')
         assert all(c['architecture'] == expected_architecture for c in chain)
         projection = ('fixed-cubic-heads' if 'FIXED-CUBIC' in name else 'fixed-quadratic-heads' if 'FIXED-QUAD' in name else 'exact') if fixed else ('quadratic' if 'RESQUAD' in name else 'exact')
+        if calibrated:
+            projection = ('calibrated-affine' if 'CAL-AFFINE' in name else 'calibrated-quadratic' if 'CAL-QUAD' in name else 'calibrated-cubic' if 'CAL-CUBIC' in name else 'exact')
         assert origin['arm']['projection'] == projection
         assert origin['bootstrap'] == initial['id'] == store['initializer']['initialCheckpoint']
         assert initial['parentId'] == ''
-        if fixed and projection != 'exact':
-            assert origin['inheritedStep'] == 1310720 and initial['optimizerStep'] == 0
+        if (fixed or calibrated) and projection != 'exact':
+            assert origin['inheritedStep'] == (65536 if calibrated else 1310720) and initial['optimizerStep'] == 0
         else:
             assert origin['inheritedStep'] == initial['optimizerStep']
         assert origin['arm']['rate'] == rate
@@ -61,16 +68,19 @@ def main():
             assert current['optimizerStep'] == previous['optimizerStep'] + 8192
         assert store['latestTraining'] == chain[-1]['id']
         assert len(store['checkpoints']) == additional + 1
-        if fixed and projection != 'exact':
+        if (fixed or calibrated) and projection != 'exact':
             import importlib.util
             spec = importlib.util.spec_from_file_location('degree', Path(__file__).with_name('audit-brn-degree-projection.py'))
             codec = importlib.util.module_from_spec(spec); spec.loader.exec_module(codec)
             cubic = projection == 'fixed-cubic-heads'
             wire, frozen_values = (10, 3845) if cubic else (9, 3841)
+            if calibrated:
+                wire = {'calibrated-affine':11, 'calibrated-quadratic':12, 'calibrated-cubic':13}[projection]
+                frozen_values = 3845
             baseline = codec.decode(codec.payload(root, initial['id'], 'network.*'), False, wire)[0]
             source = origin['arm']['source']
-            source_weights = codec.decode(codec.payload(source['root'], source['checkpoint'], 'network.*'), False, 8)[0]
-            assert baseline == source_weights + (bytes(32) if cubic else b'')
+            source_weights = codec.decode(codec.payload(source['root'], source['checkpoint'], 'network.*'), False, 10 if calibrated else 8)[0]
+            assert baseline == (source_weights[:3845*8]+bytes((4 if wire==11 else 8)*8) if calibrated else source_weights+(bytes(32) if cubic else b''))
             for c in chain:
                 network = codec.decode(codec.payload(root, c['id'], 'network.*'), False, wire)[0]
                 state = codec.decode(codec.payload(root, c['id'], 'training.state'), True, wire)
@@ -121,6 +131,8 @@ def main():
             assert all(math.isfinite(v) for v in [row['loss'], comparison['candidateLoss'], comparison['bestLoss']])
             assert row['wins'] == row['draws'] == row['losses'] == 0
             settings = row['regime']['effectiveSettings']
+            if calibrated and projection != 'exact':
+                assert 'HALF_ANCHOR_AFFINE_SEARCH_OBJECTIVE_V1' in settings
             for part in ['threads=1', 'epochs=8', 'minibatchSize=128', 'shuffle=true',
                          'learningRate=' + str(rate), 'validation=WDL Loss', 'masterSeed=1',
                          'BRN3_SOURCE_OUTCOME_V1', 'finalLossObjective=half-squared target error']:
@@ -144,13 +156,13 @@ def main():
                             generationMetrics=[dict(generation=r['generation'], trainingLoss=r['loss'],
                                 validationLoss=r['bootstrap']['comparison']['candidateLoss'],
                                 incumbentLoss=r['bootstrap']['comparison']['bestLoss'], decision=r['decision']) for r in rows]))
-        if fixed:
+        if fixed or calibrated:
             result = results[-1]
             result.pop('first8'); result.pop('last8')
             result.update(first4=means(rows[:4]), last4=means(rows[-4:]),
                           optimizerSemantics='New zero head-only Adam' if projection != 'exact' else 'Exact inherited full Adam')
     comparisons = []
-    for left, right in ([(stores[1],stores[2])] if compact or fixed else [(stores[1],stores[2]), (stores[3],stores[2])]):
+    for left, right in ([(stores[1],stores[2]), (stores[3],stores[2])] if calibrated else [(stores[1],stores[2])] if compact or fixed else [(stores[1],stores[2]), (stores[3],stores[2])]):
         lrows, rrows = left['history']['records'], right['history']['records']
         for l, r in zip(left['ledger']['reservations'], right['ledger']['reservations']):
             for key in ['generation','mix','ranges','trainingHash','validationHash','status']:
@@ -170,6 +182,8 @@ def main():
                     'No chess strength conclusion follows from these losses.'])
     if fixed:
         report['limitations'][3] = 'Residual arms share data and exact initial Q4 function; only four heads train with new Adam. BRE retains different historical data/split/full optimizer.'
+    if calibrated:
+        report['limitations'][3] = 'Three head arms share frozen Q4 anchor, data and new Adam; train/validation use the explicit search pawn function. BRE retains different historical data/split/full optimizer and raw objective; losses are not directly comparable across that objective boundary.'
     output.write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(dict(lineages=len(results), verifiedCheckpointPairs=1+(additional+1)*len(results), pairedComparisons=comparisons)))
 

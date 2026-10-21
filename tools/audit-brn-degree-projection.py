@@ -23,8 +23,8 @@ def payload(root, checkpoint, pattern):
 
 
 def decode(data, state, wire):
-    count = {5: 13089, 6: 3849, 7: 13073, 8: 3845, 9: 3845, 10: 3849}[wire]
-    width = 4 if wire in (6, 8, 9, 10) else 16
+    count = {5: 13089, 6: 3849, 7: 13073, 8: 3845, 9: 3845, 10: 3849, 11: 3849, 12: 3853, 13: 3853}[wire]
+    width = 4 if wire in (6, 8, 9, 10, 11, 12, 13) else 16
     assert struct.unpack('>Q7i', data[:36]) == (
         0x53364E5853543031 if state else 0x53364E5852543031,
         1, wire, count, width, 1, 1, 64)
@@ -36,11 +36,12 @@ def decode(data, state, wire):
 
 
 def audit(report):
-    assert report['wave'] in ('brn-successor-2026-10-21-wave6', 'brn-successor-2026-10-21-wave7', 'brn-successor-2026-10-22-wave8')
+    assert report['wave'] in ('brn-successor-2026-10-21-wave6', 'brn-successor-2026-10-21-wave7', 'brn-successor-2026-10-22-wave8', 'brn-successor-2026-10-22-wave9')
+    calibrated = report['wave'].endswith('wave9')
     fixed = report['wave'].endswith('wave8')
     compact = report['wave'].endswith('wave7')
-    generation, step_expected = (160, 1310720) if fixed else (128, 1048576) if compact else (96, 786432)
-    additional = 8 if fixed else 32
+    generation, step_expected = (168, 65536) if calibrated else (160, 1310720) if fixed else (128, 1048576) if compact else (96, 786432)
+    additional = 8 if fixed or calibrated else 32
     source_wire, target_wire, retained = (6, 8, 3845) if compact else (5, 7, 13073)
     architecture = 'BRN_GEN32_QUADRATIC_R4' if compact else 'BRN_GEN32_QUADRATIC'
     rows = []
@@ -57,7 +58,22 @@ def audit(report):
             before = payload(old_root, source['checkpoint'], pattern)
             after = payload(root, entry['latest'], pattern)
             assert sha(before) == source[key] and sha(after) == origin[key]
-            if fixed and arm['projection'].startswith('fixed-'):
+            if calibrated and arm['projection'].startswith('calibrated-'):
+                kind = arm['projection'].removeprefix('calibrated-')
+                wire = dict(affine=11, quadratic=12, cubic=13)[kind]
+                assert entry['architecture'] == 'BRN_GEN32_CAL_'+kind.upper()+'_R4'
+                old, new = decode(before, state, 10), decode(after, state, wire)
+                assert new[0] == old[0][:3845*8] + bytes((4 if kind=='affine' else 8)*8)
+                if state:
+                    assert all(a == bytes(len(a)) for a in new[1:])
+                    source_step, source_rate = struct.unpack('>qd', before[68:84])
+                    step, rate = struct.unpack('>qd', after[68:84])
+                    assert source_step == origin['inheritedStep'] == step_expected
+                    assert step == 0 and source_rate == rate == arm['rate'] == .001
+                    row.update(step=step, sourceStep=source_step, rate=rate, exactRetainedWeights=3845,
+                               optimizer='New zero calibrated-head Adam; source cubic heads omitted and source store preserved',
+                               zeroMomentValues=sum(len(a)//8 for a in new[1:]))
+            elif fixed and arm['projection'].startswith('fixed-'):
                 cubic = arm['projection'] == 'fixed-cubic-heads'
                 assert arm['projection'] in ('fixed-cubic-heads', 'fixed-quadratic-heads')
                 assert entry['architecture'] == ('BRN_GEN32_FIXED_CUBIC_R4' if cubic else 'BRN_GEN32_FIXED_QUADRATIC_R4')

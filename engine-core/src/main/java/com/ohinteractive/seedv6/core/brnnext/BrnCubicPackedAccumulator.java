@@ -27,7 +27,7 @@ public final class BrnCubicPackedAccumulator {
     }
     public BrnCubicPackedAccumulator(BrnNextModel model,com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model frozenBase) {
         base=java.util.Objects.requireNonNull(frozenBase).newWorkspace();
-        if(!model.architecture().frozenCubic())throw new IllegalArgumentException("Frozen CUBIC required");
+        if(!model.architecture().frozenCubic()||model.architecture().calibratedHeads())throw new IllegalArgumentException("Ordinary frozen CUBIC required");
         width=model.architecture().width();head=model.architecture().head();
         this.model=model;
         double embedding=0,unaryMagnitude=Math.abs(model.weight(0)),head2=0,head3=0;

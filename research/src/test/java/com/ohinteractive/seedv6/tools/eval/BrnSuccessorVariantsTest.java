@@ -10,6 +10,13 @@ import org.junit.jupiter.params.provider.EnumSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BrnSuccessorVariantsTest {
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_CAL_AFFINE_R4","GEN32_CAL_QUADRATIC_R4","GEN32_CAL_CUBIC_R4"})
+    void calibratedObjectiveCannotSilentlyReceiveLegacyScaling(BrnNextArchitecture kind) {
+        var model=new BrnNextModel(kind,new double[kind.parameters()]);
+        assertSame(model,BrnSuccessorVariants.correction(model,1,null,null));
+        assertThrows(IllegalArgumentException.class,()->BrnSuccessorVariants.correction(model,.5,null,null));
+        assertThrows(IllegalArgumentException.class,()->BrnSuccessorVariants.correction(model,1,"quadratic",null));
+    }
     @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_QUADRATIC","GEN32_QUADRATIC_R4"})
     void quadraticControlScalesItsHeadsWithoutInventingThirdDegreeParameters(BrnNextArchitecture kind) {
         var random=new SplittableRandom(179);double[] weights=new double[kind.parameters()];

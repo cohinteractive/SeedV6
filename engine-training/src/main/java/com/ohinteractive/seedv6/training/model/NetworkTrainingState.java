@@ -38,7 +38,7 @@ public sealed interface NetworkTrainingState {
             case BRN2 -> new Brn2(new Brn2Trainer(learningRate));
             case BRN3 -> new Brn3(new Brn3Trainer(seed, new BrnAdamConfig(learningRate)));
             case BRN_PAIR2 -> new BrnPair2(new BrnPair2Trainer(learningRate));
-            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC, BRN_GEN32_QUADRATIC_R4, BRN_GEN32_FIXED_QUADRATIC_R4, BRN_GEN32_FIXED_CUBIC_R4 -> new BrnNext(new com.ohinteractive.seedv6.core.brnnext.BrnNextTrainer(architecture.nextKind(), seed, learningRate));
+            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC, BRN_GEN32_QUADRATIC_R4, BRN_GEN32_FIXED_QUADRATIC_R4, BRN_GEN32_FIXED_CUBIC_R4, BRN_GEN32_CAL_AFFINE_R4, BRN_GEN32_CAL_QUADRATIC_R4, BRN_GEN32_CAL_CUBIC_R4 -> new BrnNext(new com.ohinteractive.seedv6.core.brnnext.BrnNextTrainer(architecture.nextKind(), seed, learningRate));
         };
         state.setLearningRate(learningRate); return state;
     }
@@ -144,7 +144,7 @@ public sealed interface NetworkTrainingState {
             case BRN2 -> new Brn2(Brn2TrainingCodec.readTraining(input));
             case BRN3 -> new Brn3(Brn3TrainingCodec.readTraining(input));
             case BRN_PAIR2 -> new BrnPair2(BrnPair2TrainingCodec.readTraining(input));
-            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC, BRN_GEN32_QUADRATIC_R4, BRN_GEN32_FIXED_QUADRATIC_R4, BRN_GEN32_FIXED_CUBIC_R4 -> new BrnNext(com.ohinteractive.seedv6.core.brnnext.BrnNextTrainer.read(architecture.nextKind(), input));
+            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC, BRN_GEN32_QUADRATIC_R4, BRN_GEN32_FIXED_QUADRATIC_R4, BRN_GEN32_FIXED_CUBIC_R4, BRN_GEN32_CAL_AFFINE_R4, BRN_GEN32_CAL_QUADRATIC_R4, BRN_GEN32_CAL_CUBIC_R4 -> new BrnNext(com.ohinteractive.seedv6.core.brnnext.BrnNextTrainer.read(architecture.nextKind(), input));
         };
     }
 }

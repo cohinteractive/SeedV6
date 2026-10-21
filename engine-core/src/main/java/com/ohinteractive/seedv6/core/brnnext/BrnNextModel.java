@@ -26,14 +26,16 @@ public final class BrnNextModel {
     /** Explicit inference composition, never a change to this component's codec or optimizer.
      * Callers must bind both immutable components as a distinct research function. */
     public Workspace newResearchWorkspace(com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model frozenBase) {
-        if (!architecture.frozenBase()) throw new IllegalArgumentException("Frozen-base correction required");
+        if (!architecture.frozenBase()||architecture.calibratedHeads()) throw new IllegalArgumentException("Ordinary frozen-base correction required");
         return new Workspace(architecture, Objects.requireNonNull(frozenBase));
     }
     public double rawPawns(long[] board, Workspace workspace) { return workspace.forward(weights, board, architecture); }
-    public int score(long[] board, Workspace workspace) {
+    /** Canonical search value before integer conversion; no rounding or saturation. */
+    public double searchPawns(long[] board, Workspace workspace) {
         double raw = rawPawns(board, workspace);
-        return Brn3Model.score(workspace.material + RESIDUAL_GAIN * (raw - workspace.material));
+        return workspace.material + RESIDUAL_GAIN * (raw - workspace.material);
     }
+    public int score(long[] board, Workspace workspace) { return Brn3Model.score(searchPawns(board,workspace)); }
 
     /** Private per worker. Full canonical refresh is deterministic and allocation-free.
      * No floating rolling cache is claimed; the independent reference precedes optimization. */
@@ -43,7 +45,7 @@ public final class BrnNextModel {
         final double[] first, second, third, output, gates;
         private final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.Workspace base;
         int count;
-        double material;
+        double material, anchorResidual, baseRaw;
         public Workspace(BrnNextArchitecture architecture) {
             this(architecture, architecture.frozenBase() ? BrnNextBase.model() : null);
         }
@@ -54,6 +56,11 @@ public final class BrnNextModel {
             int width = architecture.width();
             first = new double[width]; second = new double[width]; third = new double[width];
             output = new double[width]; gates = new double[width];
+        }
+        /** Primitive workspace payload, excluding object headers and shared immutable weights. */
+        public long primitiveBytes() {
+            return 4L*(features.length+codes.length+pairs.length)+8L*(first.length+second.length+third.length+output.length+gates.length)
+                    +28+(base==null?0:base.primitiveBytes());
         }
         double forward(double[] weights, long[] board, BrnNextArchitecture expected) {
             if (architecture != expected) throw new IllegalArgumentException("BRN-next workspace mismatch");
@@ -83,6 +90,19 @@ public final class BrnNextModel {
                 }
             }
             switch (architecture) {
+                case GEN32_CAL_AFFINE_R4, GEN32_CAL_QUADRATIC_R4, GEN32_CAL_CUBIC_R4 -> {
+                    for (int r=0;r<width;r++) residual+=weights[head+r]*second[r]*DEGREE2_NORM;
+                    anchorResidual=residual; baseRaw=base.evaluatePawns(board);
+                    int a=architecture.affineHead();
+                    double adjustment=weights[a]+weights[a+1]*(material/8)
+                            +weights[a+2]*((baseRaw-material)/4)+weights[a+3]*anchorResidual;
+                    if(architecture!=GEN32_CAL_AFFINE_R4)for(int r=0;r<width;r++)
+                        adjustment+=weights[architecture.extraHead()+r]*(architecture==GEN32_CAL_CUBIC_R4
+                                ?third[r]*DEGREE3_NORM:second[r]*DEGREE2_NORM);
+                    double value=baseRaw+.5*(anchorResidual+adjustment);
+                    if(!Double.isFinite(value))throw new ArithmeticException("Nonfinite calibrated-head evaluation");
+                    return value;
+                }
                 case GEN32_QUADRATIC, GEN32_QUADRATIC_R4, GEN32_FIXED_QUADRATIC_R4 -> {
                     for (int r = 0; r < width; r++) residual += weights[head + r] * second[r] * DEGREE2_NORM;
                 }

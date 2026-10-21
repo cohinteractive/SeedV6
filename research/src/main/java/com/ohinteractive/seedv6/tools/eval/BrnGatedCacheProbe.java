@@ -42,7 +42,7 @@ public final class BrnGatedCacheProbe {
         if(hybridBase!=null&&!(spec.cubicDeltaCache()||spec.gatedDeltaCache()||packed||compiledUnary!=null))
             throw new IllegalArgumentException("Hybrid probe requires guarded delta cache");
         var full=hybridBase==null?SearchEvaluation.brnNext(model):SearchEvaluation.brnResidualHybridFullResearch(model,hybridBase);
-        var cached=compiledUnary!=null?SearchEvaluation.brnPair2(compiledUnary):
+        var cached=model.architecture().calibratedHeads()?SearchEvaluation.brnGen32Residual(model):compiledUnary!=null?SearchEvaluation.brnPair2(compiledUnary):
                 packed?(hybridBase==null?SearchEvaluation.brnCubicPackedResearch(model):SearchEvaluation.brnCubicPackedHybridResearch(model,hybridBase)):
                 hybridBase!=null?SearchEvaluation.brnResidualHybridResearch(model,hybridBase):spec.cubicDeltaCache()?SearchEvaluation.brnCubicDeltaResearch(model):spec.gatedDeltaCache()?SearchEvaluation.brnGatedDeltaResearch(model):
                 quadratic?SearchEvaluation.brnGen32Residual(model):cubic?SearchEvaluation.brnCubicIncrementalResearch(model):SearchEvaluation.brnGatedIncrementalResearch(model);
@@ -191,6 +191,17 @@ public final class BrnGatedCacheProbe {
     }
     private static Cache cache(BrnNextModel model,boolean delta,boolean packed,com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model hybridBase,
                                com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model compiledUnary) {
+        if(model.architecture().calibratedHeads()) {
+            if(delta||packed||hybridBase!=null||compiledUnary!=null)throw new IllegalArgumentException("Calibrated cache owns composition");
+            var value=new BrnCalibratedAccumulator(model);
+            return new Cache() {
+                public double rawPawns(long[] board){return value.rawPawns(board);}
+                public int score(long[] board){return value.score(board);}
+                public long primitiveBytes(){return value.primitiveBytes();}
+                public Map<String,Object> details(){return Map.of("kind","calibrated-fixed-head-composition-v1",
+                        "derivedModelPrimitiveBytes",value.derivedModelPrimitiveBytes(),"roundingFallbacks",value.roundingFallbacks);}
+            };
+        }
         if(compiledUnary!=null) {
             var value=compiledUnary.newWorkspace();
             return new Cache() {

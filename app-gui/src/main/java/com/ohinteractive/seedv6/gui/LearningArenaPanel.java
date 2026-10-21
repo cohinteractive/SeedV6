@@ -243,7 +243,7 @@ final class LearningArenaPanel extends JPanel {
     }
     private final class CompetitorFields extends JPanel {
         final JTextField name, seed;
-        final JComboBox<TrainingArchitecture> architecture = new JComboBox<>(new TrainingArchitecture[]{TrainingArchitecture.NNUE_MATERIAL, TrainingArchitecture.NNUE, TrainingArchitecture.BRN3, TrainingArchitecture.BRN_PAIR2, TrainingArchitecture.BRN_GATED, TrainingArchitecture.BRN_CUBIC, TrainingArchitecture.BRN_POOLED, TrainingArchitecture.BRN_GEN32_GATED, TrainingArchitecture.BRN_GEN32_CUBIC, TrainingArchitecture.BRN_GEN32_CUBIC_R4, TrainingArchitecture.BRN_GEN32_QUADRATIC, TrainingArchitecture.BRN_GEN32_QUADRATIC_R4, TrainingArchitecture.BRN_GEN32_FIXED_QUADRATIC_R4, TrainingArchitecture.BRN_GEN32_FIXED_CUBIC_R4});
+        final JComboBox<TrainingArchitecture> architecture = new JComboBox<>(new TrainingArchitecture[]{TrainingArchitecture.NNUE_MATERIAL, TrainingArchitecture.NNUE, TrainingArchitecture.BRN3, TrainingArchitecture.BRN_PAIR2, TrainingArchitecture.BRN_GATED, TrainingArchitecture.BRN_CUBIC, TrainingArchitecture.BRN_POOLED, TrainingArchitecture.BRN_GEN32_GATED, TrainingArchitecture.BRN_GEN32_CUBIC, TrainingArchitecture.BRN_GEN32_CUBIC_R4, TrainingArchitecture.BRN_GEN32_QUADRATIC, TrainingArchitecture.BRN_GEN32_QUADRATIC_R4, TrainingArchitecture.BRN_GEN32_FIXED_QUADRATIC_R4, TrainingArchitecture.BRN_GEN32_FIXED_CUBIC_R4, TrainingArchitecture.BRN_GEN32_CAL_AFFINE_R4, TrainingArchitecture.BRN_GEN32_CAL_QUADRATIC_R4, TrainingArchitecture.BRN_GEN32_CAL_CUBIC_R4});
         final JSpinner batch;
         final JLabel recipe = new JLabel();
         final JSpinner rate = new JSpinner(new SpinnerNumberModel(.001, Double.MIN_VALUE, Double.MAX_VALUE, .0001));

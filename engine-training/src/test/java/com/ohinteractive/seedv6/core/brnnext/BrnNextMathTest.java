@@ -26,8 +26,9 @@ class BrnNextMathTest {
         for (long[] board : BOARDS) assertEquals(reference(kind, trainer.weights, board), trainer.predictPawns(board), 1e-11);
         trainer.predictPawns(BOARDS[0]); trainer.backward(1);
         double[] analytic = trainer.gradient.clone();
-        // All addresses, including inactive features and every expert table, not just head weights.
+        // Every address; calibrated families explicitly mask the immutable anchor.
         for (int i = 0; i < trainer.weights.length; i++) {
+            if(kind.calibratedHeads() && i<kind.trainableStart()) { assertEquals(0,analytic[i]); continue; }
             double original = trainer.weights[i], epsilon = 1e-5;
             trainer.weights[i] = original + epsilon; double plus = trainer.predictPawns(BOARDS[0]);
             trainer.weights[i] = original - epsilon; double minus = trainer.predictPawns(BOARDS[0]);
@@ -37,7 +38,7 @@ class BrnNextMathTest {
     }
 
     @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,mode=EnumSource.Mode.EXCLUDE,
-            names={"GEN32_FIXED_QUADRATIC_R4","GEN32_FIXED_CUBIC_R4"})
+            names={"GEN32_FIXED_QUADRATIC_R4","GEN32_FIXED_CUBIC_R4","GEN32_CAL_AFFINE_R4","GEN32_CAL_QUADRATIC_R4","GEN32_CAL_CUBIC_R4"})
     void materialInitializationBoundedFitAndExactStateContinuation(BrnNextArchitecture kind) throws Exception {
         var trainer = new BrnNextTrainer(kind, 71, .003);
         for (var board : BOARDS) assertEquals(initial(kind, board), trainer.predictPawns(board));
@@ -73,6 +74,8 @@ class BrnNextMathTest {
         var trainer = new BrnNextTrainer(kind, 7, .003);
         trainer.trainBatch(BOARDS, new double[]{.6, -.4, .2}, 3);
         var model = trainer.snapshot(); var workspace = model.newWorkspace();
+        var heldOut=com.ohinteractive.seedv6.training.validation.HeldOutLoss.predictor(new com.ohinteractive.seedv6.training.model.NetworkModel.BrnNext(model));
+        for(var board:BOARDS)assertEquals(trainer.predictOutcome(board),heldOut.applyAsDouble(board));
         var a = Board.fromFen("4k3/8/3p4/2n5/4B3/3P4/8/4K3 w - - 0 1");
         var flipped = Board.fromFen("4k3/8/3p4/4b3/2N5/3P4/8/4K3 b - - 0 1");
         assertEquals(model.rawPawns(a, workspace), model.rawPawns(flipped, workspace), 1e-14);
@@ -116,13 +119,16 @@ class BrnNextMathTest {
         double sum = initial(kind, board) + w[0];
         for (int feature : active) sum += w[UNARY + feature] / Math.sqrt(32);
         int width = kind.width(), h = kind.head(); double[] gate = new double[width], expert = new double[width];
+        double extra=0;
         for (int r = 0; r < width; r++) {
             if (kind.polynomial()) {
                 for (int i = 0; i < active.size(); i++) for (int j = i + 1; j < active.size(); j++) {
                     double pair = w[EMBEDDING + active.get(i) * width + r] * w[EMBEDDING + active.get(j) * width + r];
                     sum += w[h + r] * pair / Math.sqrt(496);
+                    if(kind==GEN32_CAL_QUADRATIC_R4)extra+=w[kind.extraHead()+r]*pair/Math.sqrt(496);
                     for (int k = j + 1; kind.correctionKind() == CUBIC && k < active.size(); k++)
-                        sum += w[h + width + r] * pair * w[EMBEDDING + active.get(k) * width + r] / Math.sqrt(4960);
+                        if(kind.calibratedHeads())extra+=w[kind.extraHead()+r]*pair*w[EMBEDDING+active.get(k)*width+r]/Math.sqrt(4960);
+                        else sum += w[h + width + r] * pair * w[EMBEDDING + active.get(k) * width + r] / Math.sqrt(4960);
                 }
             } else {
                 double projection = w[h + r];
@@ -142,6 +148,10 @@ class BrnNextMathTest {
         if (kind.correctionKind() == GATED_PAIRS) {
             double total = Arrays.stream(gate).sum();
             for (int r = 0; r < width; r++) sum += gate[r] * expert[r] / total;
+        }
+        if(kind.calibratedHeads()) {
+            double g=initial(kind,board),m=BrnPair2Features.material(board),r=sum-g;int a=kind.affineHead();
+            return g+.5*(r+w[a]+w[a+1]*m/8+w[a+2]*(g-m)/4+w[a+3]*r+extra);
         }
         return sum;
     }

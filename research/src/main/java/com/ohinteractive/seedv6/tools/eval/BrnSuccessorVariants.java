@@ -72,7 +72,10 @@ final class BrnSuccessorVariants {
         if(meanGates!=null&&!"constant-gates".equals(ablation))
             throw new IllegalArgumentException("Mean gates require the constant-gates ablation");
         var kind=source.architecture();double[] w=new double[kind.parameters()];
+        if(kind.calibratedHeads() && (scale!=1 || ablation!=null))
+            throw new IllegalArgumentException("Calibrated heads own their scale; legacy ablations are incompatible");
         for(int i=0;i<w.length;i++)w[i]=source.weight(i);
+        if(kind.calibratedHeads())return source;
         if(ablation!=null) switch(ablation) {
             case "unary" -> Arrays.fill(w,EMBEDDING,w.length,0);
             case "quadratic" -> {

@@ -1,0 +1,30 @@
+{
+  "id": "wave9-isolated-audit-v2",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304"
+    },
+    {
+      "name": "W9-CAL-AFFINE-R4-LR001",
+      "root": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-library-01\\BRN-GEN32-CAL-AFFINE-R4\\ef6b7d2e-a8d3-397f-b66e-6f93d123d57e",
+      "initialCheckpoint": "g000168-s000000000-191791f2dc359e702f9a4fd5c13f3044247f068e16cfdaf0a8533ecd669540c7"
+    },
+    {
+      "name": "W9-CAL-QUAD-R4-LR001",
+      "root": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-library-01\\BRN-GEN32-CAL-QUADRATIC-R4\\741f4848-b98f-3b26-9263-5f5adb4d20b1",
+      "initialCheckpoint": "g000168-s000000000-39fb2a306f1fb72924aaa5eb00764051a8b41cea1e128dc51b7ed3bdf23276c6"
+    },
+    {
+      "name": "W9-CAL-CUBIC-R4-LR001",
+      "root": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-library-01\\BRN-GEN32-CAL-CUBIC-R4\\d3694155-fb64-3037-a247-b5bf804b8d79",
+      "initialCheckpoint": "g000168-s000000000-4294923477e1a39688d5942fdd34bc7c7841696b4864570d5bff26bbbf92eb8a"
+    },
+    {
+      "name": "W9-BRE-CONTROL-LR001",
+      "root": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-library-01\\BRN-Pair2\\b6135d13-24a9-3d5f-8cc3-63e1880e323e",
+      "initialCheckpoint": "g000168-s003129344-eecb3b3370c98fecff98fd7a9c7357d78e9950c9748674a1087ffeba427ff566"
+    }
+  ]
+}

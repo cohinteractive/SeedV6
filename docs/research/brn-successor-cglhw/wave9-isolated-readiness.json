@@ -1,0 +1,205 @@
+{
+  "id": "wave9-isolated-readiness-v1",
+  "status": "passed; no substantive training",
+  "auditFiles": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-audit-02\\complete.json": "18f06b524cbfa1864a13175fa469c8451aff1c9a97a32dcaf6c3dc3e7a8fc547",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-audit-02\\stores.json": "8dfbc396330a69fb179944b8f8c895a7ed20719ecacadab3e37f3fbcfef0e9e7"
+  },
+  "verifiedPayloadStatePairs": 5,
+  "scoreParityBoards": 24,
+  "initialHeadsShareScores": true,
+  "probes": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-cache-affine-01.json",
+      "sha256": "f77b5a15036e847a49107629d45220df364432ecc3040c1b4f5bdf1827be364e",
+      "kind": "affine",
+      "positions": 4340,
+      "maximumRawError": 2.0816681711721685e-15,
+      "maximumFreshRawError": 1.0880185641326534e-14,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "searchPairs": 48,
+      "workspacePrimitiveBytes": 8205,
+      "cacheDetails": {
+        "kind": "calibrated-fixed-head-composition-v1",
+        "derivedModelPrimitiveBytes": 30760,
+        "roundingFallbacks": 0
+      },
+      "combinedPayloadBytes": 825896,
+      "transitionLatency": [
+        {
+          "name": "QUADRATIC-full",
+          "medianNanos": 556.362,
+          "passNanos": [
+            27818100,
+            28260100,
+            27865800,
+            26990200,
+            28093300,
+            26826100,
+            26760900
+          ],
+          "evaluationsPerPass": 50000
+        },
+        {
+          "name": "QUADRATIC-cache",
+          "medianNanos": 204.122,
+          "passNanos": [
+            11520300,
+            14531500,
+            10206100,
+            10079300,
+            10363300,
+            10011500,
+            9987400
+          ],
+          "evaluationsPerPass": 50000
+        },
+        {
+          "name": "Gen32",
+          "medianNanos": 132.904,
+          "passNanos": [
+            6901800,
+            6549000,
+            6567700,
+            6850700,
+            6653300,
+            6645200,
+            6638600
+          ],
+          "evaluationsPerPass": 50000
+        }
+      ]
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-cache-quad-01.json",
+      "sha256": "4a3b073b45d7af38c5e992a9c43ca7e33cd618d699fb72c875ff973c619fa9b2",
+      "kind": "quad",
+      "positions": 4340,
+      "maximumRawError": 2.0816681711721685e-15,
+      "maximumFreshRawError": 1.0880185641326534e-14,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "searchPairs": 48,
+      "workspacePrimitiveBytes": 8205,
+      "cacheDetails": {
+        "roundingFallbacks": 0,
+        "derivedModelPrimitiveBytes": 30760,
+        "kind": "calibrated-fixed-head-composition-v1"
+      },
+      "combinedPayloadBytes": 825928,
+      "transitionLatency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            29278300,
+            28713300,
+            28406400,
+            27647000,
+            27528000,
+            27417400,
+            27459100
+          ],
+          "medianNanos": 552.94,
+          "name": "QUADRATIC-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            11189300,
+            13375800,
+            10136000,
+            10169500,
+            9930100,
+            9945700,
+            9971700
+          ],
+          "medianNanos": 202.72,
+          "name": "QUADRATIC-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            6962500,
+            6809000,
+            6626700,
+            6615800,
+            6395300,
+            6383900,
+            6613600
+          ],
+          "medianNanos": 132.316,
+          "name": "Gen32"
+        }
+      ]
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-cache-cubic-01.json",
+      "sha256": "7a9e9accec7a3575acf5c71f684e15629fbcd61ef3480db256a112cd5a985b10",
+      "kind": "cubic",
+      "positions": 4340,
+      "maximumRawError": 2.0816681711721685e-15,
+      "maximumFreshRawError": 1.0880185641326534e-14,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "searchPairs": 48,
+      "workspacePrimitiveBytes": 8269,
+      "cacheDetails": {
+        "kind": "calibrated-fixed-head-composition-v1",
+        "roundingFallbacks": 0,
+        "derivedModelPrimitiveBytes": 30792
+      },
+      "combinedPayloadBytes": 825928,
+      "transitionLatency": [
+        {
+          "name": "CUBIC-full",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            31327200,
+            31131400,
+            31034600,
+            29823300,
+            30880000,
+            30014300,
+            29856600
+          ],
+          "medianNanos": 617.6
+        },
+        {
+          "name": "CUBIC-cache",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            14476800,
+            12648600,
+            10829600,
+            10699500,
+            10763200,
+            10701500,
+            10781600
+          ],
+          "medianNanos": 215.632
+        },
+        {
+          "name": "Gen32",
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            7295800,
+            7266400,
+            7135400,
+            7061000,
+            6812700,
+            7055600,
+            6994900
+          ],
+          "medianNanos": 141.22
+        }
+      ]
+    }
+  ],
+  "crossHeadSearchResults": 48,
+  "limitations": [
+    "Initial zero-head functions only; no learned W9 strength or throughput claim.",
+    "Random nonzero coefficients, half-score rounding, colour/special moves and gradients are covered by targeted tests.",
+    "Sequential timing is descriptive; CPU/JIT variation remains. Per-worker derived-model payload is additional to workspace and original immutable weights."
+  ]
+}

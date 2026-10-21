@@ -18,6 +18,9 @@ final class BrnNextConfigurationPanel extends JPanel {
             case BRN_GEN32_QUADRATIC_R4 -> "An additive pairwise control: frozen Gen32 plus four two-piece components, without cubic terms.";
             case BRN_GEN32_FIXED_QUADRATIC_R4 -> "Four quadratic coefficients learn on fixed unary terms and embeddings. Additive pairwise control.";
             case BRN_GEN32_FIXED_CUBIC_R4 -> "Four cubic coefficients learn while the complete quadratic anchor and embeddings stay fixed.";
+            case BRN_GEN32_CAL_AFFINE_R4 -> "Four affine coefficients adjust a frozen Q4 anchor. Additive control; training uses the search pawn function.";
+            case BRN_GEN32_CAL_QUADRATIC_R4 -> "Affine calibration and four quadratic coefficients learn on a frozen Q4 basis. Additive control.";
+            case BRN_GEN32_CAL_CUBIC_R4 -> "Affine calibration and four cubic coefficients learn on a frozen Q4 basis. Extra expressiveness is unproven.";
             default -> throw new IllegalArgumentException("Not a BRN successor");
         };
         JPanel body = padded(new BorderLayout(), 14);
@@ -30,6 +33,8 @@ final class BrnNextConfigurationPanel extends JPanel {
                 + (fixed ? "Defaults: head-only Adam 0.001, batch 128, 8 epochs; CP / BT4 Q Training Data.\n"
                          : "Defaults: Adam 0.003, batch 128, 8 epochs; compatible CP / BT4 Q Training Data.\n")
                 + "Stop / Resume retains weights, moments, seed identity and source progress.\n"
+                + (architecture.trainingArchitecture().nextKind().calibratedHeads()
+                        ? "Training/validation use the same half-correction, quarter-residual pawn function as Play.\n" : "")
                 + (architecture.trainingArchitecture().nextKind().frozenBase()
                         ? "Play uses Gen32's quarter calibration and Policy4; improvement is unproven.\n"
                         : "Play initially uses one quarter of the residual; strength is not yet established.\n")

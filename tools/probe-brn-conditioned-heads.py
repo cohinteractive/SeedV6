@@ -22,8 +22,9 @@ basis=module('basis','probe-brn-fixed-basis-heads.py')
 
 def main(admission_path,output):
     admission_path,output=Path(admission_path),Path(output);assert not output.exists()
-    admission=json.loads(admission_path.read_text());assert admission['id'] in ('wave8-phase-head-feasibility-v1','wave8-affine-head-control-v1')
+    admission=json.loads(admission_path.read_text());assert admission['id'] in ('wave8-phase-head-feasibility-v1','wave8-affine-head-control-v1','wave8-calibrated-degree-control-v1')
     affine = admission['id']=='wave8-affine-head-control-v1'
+    joint = admission['id']=='wave8-calibrated-degree-control-v1'
     anchor=admission['anchor'];raw=basis.codec.payload(anchor['root'],anchor['checkpoint'],'network.*')
     assert basis.codec.sha(raw)==anchor['networkSha256']
     data=basis.codec.decode(raw,False,8)[0];weights=struct.unpack('>3845d',data)
@@ -43,22 +44,28 @@ def main(admission_path,output):
                 phase=phase,material=material,target=row['target'],base=base,zero=zero,
                 quadratic=q,cubic=c,phaseQuadratic=[x*context for x in q],
                 affine=[1.0,material/8,(zero-material)/4,base-zero]))
+    for row in rows:
+        row['affineQuadratic']=row['affine']+row['quadratic']
+        row['affineCubic']=row['affine']+row['cubic']
     assert forward_error<1e-9
     fitting=[r for r in rows if r['fit']];assert len(fitting)==2043
     reports=[]
-    for mode,objective in itertools.product(('affine',) if affine else ('quadratic','cubic','phaseQuadratic'),('raw','search-half')):
+    modes=('affine','affineQuadratic','affineCubic') if joint else ('affine',) if affine else ('quadratic','cubic','phaseQuadratic')
+    objectives=('search-half',) if joint else ('raw','search-half')
+    for mode,objective in itertools.product(modes,objectives):
         def mapped(row,mapping):
             if mapping=='raw':return row['base'],1
             return row['material']+.25*(row['zero']+.5*(row['base']-row['zero'])-row['material']),.125
-        delta=[0.0]*4;first=[0.0]*4;second=[0.0]*4;rng=random.Random(2026102208);step=0;curve=[]
+        size=len(fitting[0][mode])
+        delta=[0.0]*size;first=[0.0]*size;second=[0.0]*size;rng=random.Random(2026102208);step=0;curve=[]
         for epoch in range(8):
             order=list(range(len(fitting)));rng.shuffle(order);losses=[]
             for begin in range(0,len(order),128):
-                ids=order[begin:begin+128];gradient=[0.0]*4
+                ids=order[begin:begin+128];gradient=[0.0]*size
                 for ix in ids:
                     row=fitting[ix];offset,gain=mapped(row,objective);v=row[mode]
                     loss,d=basis.fitlib.objective(offset+gain*sum(a*x for a,x in zip(delta,v)),row['phase'],row['target']);losses.append(loss)
-                    for k in range(4):gradient[k]+=d*gain*v[k]/len(ids)
+                    for k in range(size):gradient[k]+=d*gain*v[k]/len(ids)
                 step+=1;c1=1-.9**step;c2=1-.999**step
                 for k,g in enumerate(gradient):
                     first[k]=.9*first[k]+.1*g;second[k]=.999*second[k]+.001*g*g
@@ -74,7 +81,7 @@ def main(admission_path,output):
                 changes.append(basis.fitlib.objective(offset+change,row['phase'],row['target'])[0]-basis.fitlib.objective(offset,row['phase'],row['target'])[0]);squares.append(change*change)
             measurements.append(dict(panel=panel,source=source,mapping=mapping,count=len(selected),
                 meanCrossEntropyChange=statistics.mean(changes),standardError=statistics.stdev(changes)/math.sqrt(len(changes)),changeRmsPawns=math.sqrt(statistics.mean(squares))))
-        reports.append(dict(mode=mode,objective=objective,parameters=4,fitRows=len(fitting),steps=step,headDelta=delta,epochLoss=curve,metrics=measurements))
+        reports.append(dict(mode=mode,objective=objective,parameters=size,fitRows=len(fitting),steps=step,headDelta=delta,epochLoss=curve,metrics=measurements))
     with output.open('x',encoding='utf-8',newline='\n') as f:
         json.dump(dict(id=admission['id']+'-results',admission=str(admission_path),admissionSha256=basis.codec.sha(admission_path.read_bytes()),inputs=bindings,
             maximumJavaForwardError=forward_error,arms=reports,limitations=[
