@@ -80,7 +80,7 @@ verified before execution; no application implementation changed for this audit.
 `wave6-trained-cache-validation.json` and `wave6-cost-summary.json` bind results.
 
 Full-correction cached inference: Q16 272.212ns, C16 309.944ns, C4 209.052ns;
-concurrent-in-probe Gen32 controls146.866/141.112/136.114ns respectively. These are
+Gen32 controls in the same probes146.866/141.112/136.114ns respectively. These are
 sequential single-process measurements, not a universal ratio. Primitive workspace
 4073/4329/3753 bytes; parameters13073/13089/3849; combined base+residual payload
 899688/899816/825896 bytes. Half-correction guarded cache search cost against the
@@ -121,3 +121,23 @@ including rejection of a match disguised as a diagnostic. No strength evidence
 is gained from that tooling change. CRLF protocol bytes are preserved exactly;
 Git whitespace verification uses `core.whitespace=cr-at-eol` for those Windows
 outputs rather than rewriting frozen hashes after admission.
+
+## Trained degree comparison: equal nodes complete
+
+`wave6-degree-node-results.json`: all32 games/5184 legal moves complete, no failed
+attempt, cap or fallback. C16 versus trained Q16 at262144 nodes scores53.125%
+(10 wins,14 draws,8 losses), descriptive normal95 interval39.799-66.451%; bounded
+pair95 19.172-87.078%. Sixteen reversed-colour pairs, development only. Paired-root
+C16/Q16 median elapsed ratio1.12457 (NPS .88929), same first move10/16, mean depth
+difference-.0625. No clear cubic advantage is established; neither is equivalence.
+This adapted control is materially different from the W5 untrained ablation.
+The fixed equal-time counterpart is active; no additional games are appended to
+this completed node protocol to seek significance.
+
+The fixed prior piece bins (2-12,13-24,25+) do not identify a consistent selective
+cubic-use region across both consumed panels/sources. C16 minus trained-Q mapped
+CE changes sign across sources/bins. Removing only C16's cubic heads improves
+aggregate mapped CE in all four panel/source combinations, but this is an
+unadapted inference intervention and raw-objective/strength effects differ.
+`wave6-degree-strata.json` preserves both trained and unadapted comparisons.
+No phase-routing or cubic-removal implementation is justified by these diagnostics.

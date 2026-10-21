@@ -25,6 +25,13 @@ credible investigation. Preserve frozen runtime56, all checkpoints and completed
 protocols. Do not stop merely at this audit. Historical G6 preparation instructions
 below are fulfilled and superseded for next-action selection.
 
+Current assessment: degree-node32 is closed (C16 vs trained Q16 53.125%,10/14/8;
+descriptive95 39.8-66.5%,5184 legal moves; inconclusive). Degree-clock32 is active,
+followed by compact-node16,compact-clock16,bre-clock48,reference-clock64 per the
+fixed208-game admission. Use unique bounded launch logs and verify actual receipt
+counts/processes before resuming. Fitting/cost/strata evidence is recorded in
+WAVE6-ASSESSMENT; no new architecture or human gate has yet been selected.
+
 ## Candidate registry and preserved reference
 
 | Candidate | Identity / state |
