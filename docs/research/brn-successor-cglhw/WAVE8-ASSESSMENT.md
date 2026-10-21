@@ -107,3 +107,12 @@ remain much wider. Both point estimates are positive, preserving a plausible
 cubic signal, but neither interval excludes50%; adapted quadratic still matches
 or exceeds cubic in the direct degree comparisons. Do not pool distinct budgets
 or treat this selected developmental evidence as an independent expressive gain.
+
+The continued-BRE clock controls close32 games: quadratic5/5/6,46.875%,
+descriptive95%23.38..70.37; cubic5/3/8,40.625%,20.05..61.20.4178 moves
+independently replayed, no failures. Same-root NPS relative to BRE is.86714
+for quadratic and.84884 for cubic. These results establish neither superiority
+nor architectural inferiority. Only the frozen-reference48-game unit remains.
+One premature batch04 launch was rejected at the exclusive worktree lease before
+starting an engine or writing receipts; batch03 finished normally before resume.
+The observation is retained at raw/wave8/bre-clock-launch-observation-01.json.
