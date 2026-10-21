@@ -69,6 +69,8 @@ desktop.ini
 !/docs/research/brn-successor-cglhw/wave6-development-openings.pgn
 # Frozen W7 development INPUT; excludes previous roots, reserves confirmation.
 !/docs/research/brn-successor-cglhw/wave7-development-openings.pgn
+# Frozen W8 development INPUT; prior roots excluded, confirmation untouched.
+!/docs/research/brn-successor-cglhw/wave8-development-openings.pgn
 
 # Generated Search observations; retain JSON summaries, manifests and configs,
 # compact integrity/oracle/witness JSONL, and analytical CSV/TSV tables.

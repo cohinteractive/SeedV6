@@ -1,0 +1,148 @@
+{
+  "id": "wave8-fixed-window-stability-v1",
+  "reference": {
+    "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/Gen32",
+    "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+    "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+  },
+  "groups": [
+    {
+      "name": "W8-FIXED-CUBIC-R4-LR001",
+      "members": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-CUBIC-R4-LR001",
+          "checkpoint": "g000161-s000008192-0f1c65fa1fd133c58c9c82190c72fa6c3ae6636876730d80899306b4258c7856",
+          "networkSha256": "d74b4833421b37c1ce498249836df8bd9b95af5c423027b7c56c149b5e91e0ea"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-CUBIC-R4-LR001",
+          "checkpoint": "g000162-s000016384-ff1b3387ce46d8bb0699109360f206bea3444d56257cfb161ac87370adc1fcf5",
+          "networkSha256": "f72c347935256a6580418b5b64a002cac8d41f8846afb34831d7ea458b3a4c61"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-CUBIC-R4-LR001",
+          "checkpoint": "g000163-s000024576-f716d9d1ce94f6733e68d9130067c630198677a670222ab64175c5f48675aab3",
+          "networkSha256": "b069996aecfbecdfc2690efe268508eb03648d8a15454a0f00182302d28d8e88"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-CUBIC-R4-LR001",
+          "checkpoint": "g000164-s000032768-3c561670320e0ed471fc220b35d0d073959763951f47e505c8507ba3abc0172d",
+          "networkSha256": "25e6b94e6e7b30ad34f38d68a615f93db180d59963d07fbf8bd0358437142a97"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-CUBIC-R4-LR001",
+          "checkpoint": "g000165-s000040960-bb85e17c32e383c2965e7d65e016dea8e9834389ba89ef0adfa71db5bb4ca731",
+          "networkSha256": "9bf1dd57ff860232c07768c4bdc47f32c3bd3980ab8b1587d49d100348af1e4a"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-CUBIC-R4-LR001",
+          "checkpoint": "g000166-s000049152-209c973355a53c4c0405479a4fdb5403976101e1630593ad0c101955cb89964a",
+          "networkSha256": "aeb622aca4cd602067eb374b5dccdda89fdecd65e4b9276d5d545f57d99e27c1"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-CUBIC-R4-LR001",
+          "checkpoint": "g000167-s000057344-db698f87f59cf2023dc654bb3a7b7824a2811e3dbca077f6c96196a71f56dfe0",
+          "networkSha256": "ad0a04b5a45a12b1693ad45e070c1fecb63b0114301412791aaa506d370a5623"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-CUBIC-R4-LR001",
+          "checkpoint": "g000168-s000065536-28a1c5695b6c0bc41dd95d3ba4f3f7cb479354305fe053a9910b189d17df2c73",
+          "networkSha256": "c1ecc378294bfee8b06ac957e6115ce07a71b4a10fce63e69bc561dd6d0115c4"
+        }
+      ]
+    },
+    {
+      "name": "W8-FIXED-QUAD-R4-LR001",
+      "members": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-QUAD-R4-LR001",
+          "checkpoint": "g000161-s000008192-647c0cf09c3a04783020865865c3d4a2c52b221c382123c97dfaf24737642a72",
+          "networkSha256": "4b5748d044c41aeb4a54dc1cbbaf91294aebf8d31d50da5afab20d1542fa56fe"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-QUAD-R4-LR001",
+          "checkpoint": "g000162-s000016384-b414377a919acc57ba62930ae40f5d2fa9279ee9c605ab660c224c9fc9480b39",
+          "networkSha256": "fe87aaf12ee275b4cec38c80ee347d000e0aeeed41eb486534df71ba2f059057"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-QUAD-R4-LR001",
+          "checkpoint": "g000163-s000024576-3ef7615051127e5d70e18724813246c08dd9bd780458aa9b11497a9ab1a079a6",
+          "networkSha256": "d839c100de30335c7f223b6fe9c54ac2958006e2375c7017136cf333f1710888"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-QUAD-R4-LR001",
+          "checkpoint": "g000164-s000032768-90eb890c9d279259ccdeaf699f536363394dedf433ae616a79b22a6ae97bab26",
+          "networkSha256": "d39505c3d1d89b953224dd680c0c0a75b2db42e5e088f170d97f39863549e245"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-QUAD-R4-LR001",
+          "checkpoint": "g000165-s000040960-039cecc181f0a1f7600657fbf1cad426a4788689473cfd44021cdc0c0e25602c",
+          "networkSha256": "2394a80fb7070497b6e1474dbc930fc5eadb3770176b0dd044dfb212f1e74d1e"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-QUAD-R4-LR001",
+          "checkpoint": "g000166-s000049152-742a62d1f39259a87bf36014d3e60deef09c80bf7a4e15b6f3297abc80037e0a",
+          "networkSha256": "69d3bb046efcece997c0fb4e8314788d8e5654d7e0cc6b1066359537493c1d81"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-QUAD-R4-LR001",
+          "checkpoint": "g000167-s000057344-6d1577cdfd1db18cd18d201422a0b1e58095bb5f94013e31822e5ef15f3be42b",
+          "networkSha256": "ecddd5f7839677574a4729a21331b3286186067ddb76203309e0fce316418b90"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-FIXED-QUAD-R4-LR001",
+          "checkpoint": "g000168-s000065536-1715df0e06ba6c3177bef8230ce7db2c78b5235541ee0d7b1c8419d1d074745b",
+          "networkSha256": "5dea364a4fc055564ff50f3a892b06c2a7a302cf3a5fbd296f39cbdc6268f2df"
+        }
+      ]
+    },
+    {
+      "name": "W8-BRE-CONTROL-LR001",
+      "members": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-BRE-CONTROL-LR001",
+          "checkpoint": "g000161-s003072000-59daa956e3221a12942b31784aea127d8b152686d15a76bc86cb9c3d264d4c81",
+          "networkSha256": "44f67548edda3107482d0f131f727ad619c2452eaa17fff8171d2f7a4a58dc61"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-BRE-CONTROL-LR001",
+          "checkpoint": "g000162-s003080192-2b77b6c646ad8d9eb7e9517db3df9cc9bc1111cbdfd2866a7919a606cd994f67",
+          "networkSha256": "fac64b9d670842fc73341025546192ea0939031a91b1e4d2cd5d53dec3503da6"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-BRE-CONTROL-LR001",
+          "checkpoint": "g000163-s003088384-95fd3aec7858bf880e3451b60b1a36cbfe86c9485ff9a1cc9f21b7bc9a5be588",
+          "networkSha256": "b3d3d45e03dfd81979531b565f4c1297a1eea479ee8a0d63d08dec6aa8493bd9"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-BRE-CONTROL-LR001",
+          "checkpoint": "g000164-s003096576-eab5b09157759c84bf1a6f10aa9082b3c285f55d93d4e22e9b139ba45437f19b",
+          "networkSha256": "0ba96e9c1aa6f4208defbe3e8a7bf71235f1aef604b590ca921f2d391f76dd63"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-BRE-CONTROL-LR001",
+          "checkpoint": "g000165-s003104768-571dc68ecbff529ce4e8af93d2906061a11620bda8283ef0800d81fd6a396468",
+          "networkSha256": "9977103da17ccd157de7ec739cf898c575833a294026b9d31c0196754c4f9226"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-BRE-CONTROL-LR001",
+          "checkpoint": "g000166-s003112960-21e49ec5f560ed06adf15b59606f560489ccbcce8c3dcd0b08bc7462a3531333",
+          "networkSha256": "c26157745d72ee7fe2210fabfb21f576260a4bfed1dc79fe9602b43452653935"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-BRE-CONTROL-LR001",
+          "checkpoint": "g000167-s003121152-7e4de84e81da36d30c067651d38f0fc673d0f3d9c9fb7ce44d99be6fec426ab9",
+          "networkSha256": "a2b5423e1a3173674575d2f8c0701378437db4cd8358561c328eeae08aed426d"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave8/trained-frozen-01/W8-BRE-CONTROL-LR001",
+          "checkpoint": "g000168-s003129344-a60d5bba9a7ad33bdfed01c1ab879d91fda072a09a7ddad0a711a2d54a79dfbf",
+          "networkSha256": "f19d3dd3b7fa9bc3adff21f0bef7f7b2b7d62ff3621d518098486a5ef77b932e"
+        }
+      ]
+    }
+  ],
+  "question": "Does uniform averaging of all eight fixed-head checkpoints reduce endpoint variability without a selected window?",
+  "scope": "Read-only consumed-panel diagnostic, no optimizer changes or owner writes. All three arms and both data panels reported.",
+  "selection": "No match admission implied. Compare full/raw and half-quarter scores with Latest168 and original Q4; preserve negative findings. Unlike changing-basis models, head averaging should equal function averaging up to floating error."
+}

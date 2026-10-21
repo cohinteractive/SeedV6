@@ -27,7 +27,7 @@ def main(directory,output):
                     ce=metric.cross_entropy(mapped,phase,row['target'])
                     grouped[(name,gain,split,'all')].append((ce,mapped,raw-base))
                     if valid==0:grouped[(name,gain,split,'valid')].append((ce,mapped,raw-base))
-                if name.startswith(('W6-', 'W7-')) and '-correction' not in name:
+                if name.startswith(('W6-', 'W7-', 'W8-')) and '-correction' not in name:
                     half=base+.5*(raw-base);mapped=material+.25*(half-material)
                     ce=metric.cross_entropy(mapped,phase,row['target'])
                     grouped[(name+'-half',.25,split,'all')].append((ce,mapped,half-base))

@@ -1,0 +1,51 @@
+{
+  "id": "wave8-development-assessment-v1",
+  "protocols": [
+    {
+      "label": "degree-node",
+      "plan": "docs/research/brn-successor-cglhw/wave8-degree-node-plan.json",
+      "sha256": "7bca4fbf7f8cbbb3c54b62cb7da16b54f94bbf84eec203b82df98fc91536d412",
+      "games": 32
+    },
+    {
+      "label": "degree-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave8-degree-clock-plan.json",
+      "sha256": "52eed3b2695c20deae94590d11ef3179354e1ac3092eff4b21aaf8ef10c25e50",
+      "games": 32
+    },
+    {
+      "label": "anchor-node",
+      "plan": "docs/research/brn-successor-cglhw/wave8-anchor-node-plan.json",
+      "sha256": "d5328ae24f0da6bb9838d7ebfc3ac130cab8477678de5b1f10a07512a145a787",
+      "games": 16
+    },
+    {
+      "label": "anchor-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave8-anchor-clock-plan.json",
+      "sha256": "02466696c3cd4d2f52f3eb51307bf955ca457b237506d7c4a86ea65f57173d93",
+      "games": 16
+    },
+    {
+      "label": "bre-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave8-bre-clock-plan.json",
+      "sha256": "ba15612ad552a075961e146efd0d1b65bee26ce60b578ad9f1dbc429a3584036",
+      "games": 32
+    },
+    {
+      "label": "reference-clock",
+      "plan": "docs/research/brn-successor-cglhw/wave8-reference-clock-plan.json",
+      "sha256": "2c97d4b8020c7398bacdede2624bee3eae7b121813afd41b0d7e8f5e7dbb9e4c",
+      "games": 48
+    }
+  ],
+  "totalGames": 176,
+  "runtime": "wave8-runtime.json",
+  "selection": "Latest168 prospectively specified before training. Head Best167 and BRE Best168 audited; no retrospective Best match substitution.",
+  "mapping": "Common Policy4/QXRAY; material plus quarter residual, half learned change from Gen32. Raw/full/half fixed-panel diagnostics remain separate. No G8 calibration fit.",
+  "purpose": "Fixed cubic versus fixed quadratic at nodes/time; exact zero-cubic Q4 anchor at nodes/time; continued BRE and frozen Gen32 at time.",
+  "stopping": "Complete fixed budgets except correctness/resource failure. No favorable stopping or unchanged extensions.",
+  "statistics": "Opening-pair descriptive and bounded intervals; roots reused across conditions, unknown family dependence and repeated candidate selection. Development only.",
+  "resource": "One game, one worker per engine, no pondering,64MiB TT,768MiB heap,ActiveProcessorCount1,BelowNormal;12games/240sec per launch.",
+  "confirmation": "Partition1 remains reserved. No confirmation candidate selected.",
+  "causalLimits": "Exact anchor differs only by four learned cubic coefficients and cubic runtime cost. Fixed Q heads change the lower-degree function; neither control establishes shared-embedding interference. BRE has different historical data and optimizer."
+}

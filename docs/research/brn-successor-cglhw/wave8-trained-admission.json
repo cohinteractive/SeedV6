@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "ownerInventory": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\trained-before-01.json",
+  "ownerFilesUnchanged": 1876,
+  "freeze": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\trained-frozen-01",
+  "checks": [
+    {
+      "name": "W8-FIXED-CUBIC-R4-LR001",
+      "retainedAttempt": {
+        "parent": "g000167-s000057344-db698f87f59cf2023dc654bb3a7b7824a2811e3dbca077f6c96196a71f56dfe0",
+        "incumbent": "g000167-s000057344-db698f87f59cf2023dc654bb3a7b7824a2811e3dbca077f6c96196a71f56dfe0",
+        "generation": 168,
+        "sourceMode": "TRAINING_DATA",
+        "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-FIXED-CUBIC-R4\\606c30bf-7392-3872-bf62-806ff2e6df3e\\training-data",
+        "settings": "SelfPlayConfig[games=64, depth=4, threads=1, seed=-1859752944698938950, minimumOpeningPlies=0, maximumOpeningPlies=8, maximumSamplesPerGame=32, maximumPlies=1024, scoreMapping=NnueScoreMapping[scale=32511.0], nodesPerMove=-1, millisPerMove=-1]|Config[epochs=8, minibatchSize=128, shuffle=true, shuffleSeed=1388608354040679200]|6399518450194073103|rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1|corpus-outcome-v1:131072:1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5:BRN3_SOURCE_OUTCOME_V1|learningRate=0.001|validation=HELD_OUT|supervision=BrnSupervision[mode=WDL, teacherWeight=0.0]|teacher=",
+        "format": "INCREMENTAL",
+        "notice": ""
+      },
+      "seek": {
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": {
+          "sha256": "b40dcab76e09e0eac96dc911023811148ccb17cfe010dfdac65ceb39aa52e767",
+          "inheritedPoints": 11571,
+          "currentPoints": 12141
+        }
+      },
+      "initialProjectionVerified": true,
+      "sourcePrefixReservations": 160
+    },
+    {
+      "name": "W8-FIXED-QUAD-R4-LR001",
+      "retainedAttempt": {
+        "parent": "g000167-s000057344-6d1577cdfd1db18cd18d201422a0b1e58095bb5f94013e31822e5ef15f3be42b",
+        "incumbent": "g000167-s000057344-6d1577cdfd1db18cd18d201422a0b1e58095bb5f94013e31822e5ef15f3be42b",
+        "generation": 168,
+        "sourceMode": "TRAINING_DATA",
+        "sourceRoot": "E:\\SeedV6-Networks\\BRN-GEN32-FIXED-QUADRATIC-R4\\1070bed1-b29c-3c21-9bba-ddb992a87ce7\\training-data",
+        "settings": "SelfPlayConfig[games=64, depth=4, threads=1, seed=-1859752944698938950, minimumOpeningPlies=0, maximumOpeningPlies=8, maximumSamplesPerGame=32, maximumPlies=1024, scoreMapping=NnueScoreMapping[scale=32511.0], nodesPerMove=-1, millisPerMove=-1]|Config[epochs=8, minibatchSize=128, shuffle=true, shuffleSeed=1388608354040679200]|6399518450194073103|rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1|corpus-outcome-v1:131072:1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5:BRN3_SOURCE_OUTCOME_V1|learningRate=0.001|validation=HELD_OUT|supervision=BrnSupervision[mode=WDL, teacherWeight=0.0]|teacher=",
+        "format": "INCREMENTAL",
+        "notice": ""
+      },
+      "seek": {
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": {
+          "sha256": "b40dcab76e09e0eac96dc911023811148ccb17cfe010dfdac65ceb39aa52e767",
+          "inheritedPoints": 11571,
+          "currentPoints": 12141
+        }
+      },
+      "initialProjectionVerified": true,
+      "sourcePrefixReservations": 160
+    },
+    {
+      "name": "W8-BRE-CONTROL-LR001",
+      "retainedAttempt": {
+        "parent": "g000167-s003121152-7e4de84e81da36d30c067651d38f0fc673d0f3d9c9fb7ce44d99be6fec426ab9",
+        "incumbent": "g000165-s003104768-571dc68ecbff529ce4e8af93d2906061a11620bda8283ef0800d81fd6a396468",
+        "generation": 168,
+        "sourceMode": "TRAINING_DATA",
+        "sourceRoot": "E:\\SeedV6-Networks\\BRN-Pair2\\3addbfce-b83a-35b5-9a82-14734ccb61c8\\training-data",
+        "settings": "SelfPlayConfig[games=64, depth=4, threads=1, seed=-1859752944698938950, minimumOpeningPlies=0, maximumOpeningPlies=8, maximumSamplesPerGame=32, maximumPlies=1024, scoreMapping=NnueScoreMapping[scale=32511.0], nodesPerMove=-1, millisPerMove=-1]|Config[epochs=8, minibatchSize=128, shuffle=true, shuffleSeed=1388608354040679200]|6399518450194073103|rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1|corpus-outcome-v1:131072:1cfa6dd2a74bb8f6e1f421c3fa10824ec03291cde92f0dfe293f60438f9e65f5:BRN3_SOURCE_OUTCOME_V1|learningRate=0.001|validation=HELD_OUT|supervision=BrnSupervision[mode=WDL, teacherWeight=0.0]|teacher=",
+        "format": "INCREMENTAL",
+        "notice": ""
+      },
+      "seek": {
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": {
+          "sha256": "e09b073d09ea2707c5c78707ab3ed70fd0ec80f5daa309be464a6f090d5f4e82",
+          "inheritedPoints": 3917,
+          "currentPoints": 4110
+        }
+      },
+      "initialProjectionVerified": true,
+      "sourcePrefixReservations": 160
+    }
+  ],
+  "selection": "Latest168 prospectively selected in WAVE8; Best identities remain separately audited.",
+  "limitations": [
+    "Retained final attempt describes settled Gen168; no partial optimizer state exists.",
+    "No observed persisted restart notice or incomplete generation; uninterrupted wall-clock execution cannot be proved.",
+    "Fixed heads share exact Q4 function with fresh zero Adam; only four coefficients train.",
+    "BRE has distinct historical exposure, source cursors/split and sparse optimizer semantics.",
+    "Seek indexes append during training; normal settled attempts are INCREMENTAL. These facts were established during G6 admission."
+  ]
+}

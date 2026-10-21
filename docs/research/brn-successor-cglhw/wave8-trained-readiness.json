@@ -1,0 +1,168 @@
+{
+  "id": "wave8-trained-readiness-v1",
+  "runtime": "wave8-runtime.json",
+  "probes": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\trained-cache-cubic-half-01.json",
+      "sha256": "4fef106b2628dc40c4989a37c5976b60d15decb028f65725cfc6adbb0ffe1813",
+      "candidate": "W8-FIXED-CUBIC-R4-LR001",
+      "summary": {
+        "plan": "brn-successor-wave3-cache-oracle-v2",
+        "modelPlanId": "wave8-half-change-latest168-v1",
+        "effectiveNetworkSha256": "ad6d690d87fc760111bcfab07a8bec01a8f8574f8b94630236ad23f2a81e7c32",
+        "maximumCompositionRawError": 0.0,
+        "correctionScale": 0.5,
+        "candidateWeightBytes": 30792,
+        "baseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "combinedPayloadBytes": 825896,
+        "combinedImmutablePrimitiveBytes": 830480,
+        "modelPlanHash": "50cea6eef495dbc7cff8afc161202fcfff0de25b6f893789d4dc8ac58b6dcdff",
+        "candidateName": "W8-FIXED-CUBIC-R4-LR001",
+        "positions": 6333,
+        "maximumRawError": 2.220446049250313e-15,
+        "maximumFreshRawError": 8.881784197001252e-15,
+        "freshIntegerDifferences": 0,
+        "integerDifferences": 0,
+        "accumulatorPrimitiveBytes": 3753,
+        "cacheDetails": {
+          "correctionErrorBound": 3.2140311508326145e-06,
+          "rebuilds": 125,
+          "roundingFallbacks": 2,
+          "updates": 6210,
+          "kind": "polynomial-period64-canonical-rounding-guard-v1"
+        },
+        "transitionLatency": [
+          {
+            "name": "CUBIC-full",
+            "medianNanos": 639.664,
+            "passNanos": [
+              38898000,
+              30618000,
+              32236200,
+              31189000,
+              31983200,
+              34835200,
+              31661500
+            ],
+            "evaluationsPerPass": 50000
+          },
+          {
+            "name": "CUBIC-cache",
+            "medianNanos": 255.552,
+            "passNanos": [
+              19822300,
+              11567900,
+              12777600,
+              11111200,
+              11242700,
+              14417100,
+              12797100
+            ],
+            "evaluationsPerPass": 50000
+          },
+          {
+            "name": "Gen32",
+            "medianNanos": 151.404,
+            "passNanos": [
+              8978100,
+              7735800,
+              7160400,
+              7114000,
+              7901600,
+              7107100,
+              7570200
+            ],
+            "evaluationsPerPass": 50000
+          }
+        ],
+        "zeroCorrectionReferenceSearchOracle": false,
+        "completed": true,
+        "java": "21+35-2513",
+        "activeProcessors": 1
+      }
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\trained-cache-quad-half-01.json",
+      "sha256": "353a64a2651b4107722d0f6b5cf735086857357f2161455775e37583cc9e0dc5",
+      "candidate": "W8-FIXED-QUAD-R4-LR001",
+      "summary": {
+        "plan": "brn-successor-wave3-cache-oracle-v2",
+        "modelPlanId": "wave8-half-change-latest168-v1",
+        "effectiveNetworkSha256": "3803814e02d1f3a76c75e5c97b1e4edf6b6d47ce3d8a6d8df968afbe5d0c871c",
+        "maximumCompositionRawError": 0.0,
+        "correctionScale": 0.5,
+        "candidateWeightBytes": 30760,
+        "baseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "combinedPayloadBytes": 825864,
+        "combinedImmutablePrimitiveBytes": 830448,
+        "modelPlanHash": "50cea6eef495dbc7cff8afc161202fcfff0de25b6f893789d4dc8ac58b6dcdff",
+        "candidateName": "W8-FIXED-QUAD-R4-LR001",
+        "positions": 6333,
+        "maximumRawError": 1.7763568394002505e-15,
+        "maximumFreshRawError": 8.548717289613705e-15,
+        "freshIntegerDifferences": 0,
+        "integerDifferences": 0,
+        "accumulatorPrimitiveBytes": 3689,
+        "cacheDetails": {
+          "rebuilds": 124,
+          "correctionErrorBound": 5.706979164280198e-08,
+          "kind": "quadratic-period64-canonical-rounding-guard-v1",
+          "updates": 6209,
+          "roundingFallbacks": 0
+        },
+        "transitionLatency": [
+          {
+            "medianNanos": 555.986,
+            "name": "QUADRATIC-full",
+            "evaluationsPerPass": 50000,
+            "passNanos": [
+              31893000,
+              27799300,
+              28693800,
+              27167600,
+              27056500,
+              27507000,
+              28873300
+            ]
+          },
+          {
+            "medianNanos": 204.704,
+            "name": "QUADRATIC-cache",
+            "evaluationsPerPass": 50000,
+            "passNanos": [
+              12865200,
+              13864500,
+              11190800,
+              10206600,
+              9948900,
+              10122300,
+              10235200
+            ]
+          },
+          {
+            "medianNanos": 137.04,
+            "name": "Gen32",
+            "evaluationsPerPass": 50000,
+            "passNanos": [
+              7743400,
+              7225700,
+              8043700,
+              6852000,
+              6756400,
+              6758600,
+              6718200
+            ]
+          }
+        ],
+        "zeroCorrectionReferenceSearchOracle": false,
+        "completed": true,
+        "java": "21+35-2513",
+        "activeProcessors": 1
+      }
+    }
+  ],
+  "limitations": [
+    "Sequential host/JIT measurements; infer search throughput separately.",
+    "Half-change research mapping/guarded cubic cache, not ordinary GUI Arena performance."
+  ]
+}
