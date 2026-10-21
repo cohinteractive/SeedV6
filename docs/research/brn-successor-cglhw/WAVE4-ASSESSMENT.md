@@ -738,3 +738,27 @@ PowerShell shells were identified by exact commands and stopped; unrelated shell
 the existing match loop and Java processes were preserved. Diagnostics are local
 `raw/wave4/process-stall-01.json`; new reads/analysis use CMD or filesystem tools.
 This is an environment/tooling limitation, not evidence of evaluator failure.
+
+The external follow-up clocks now close the fixed128-game protocol: CUBIC hybrid
+versus frozen Gen32 scores14/7/11=54.6875% over32 games/4113 legal moves; versus
+BRE003 half18/10/4=71.875% over32 games/3881 moves. Each has16 complete colour
+pairs, no failures/caps/fallbacks. Descriptive normal intervals are41.11-68.27%
+and60.15-83.60%; bounded-pair intervals include50%, and neither accounts for prior
+candidate selection or opening dependence. Same-root NPS ratios are.731/.687.
+The exact records are `wave4-hybrid-followup-cubic-*-clock-results.json`.
+
+All admitted W4 strength protocols are now closed:1344 games,181195 independently
+replayed legal moves across distinct development protocols. These are not a pooled
+independent strength sample. Confirmation partition1 remains unused. The strongest
+hybrid's advantage over one trained BRE comparator is encouraging, but its uncertain
+Gen32 result and50% against compiled unary do not establish useful cubic chess value.
+No success, adoption or match extension seeking significance is authorized by closure.
+
+The next admitted intervention is [WAVE5](WAVE5.md): retrain an explicitly projected
+four-component cubic state alongside its exact full16 source continuation and both
+BRE-rate controls. Post-hoc pruning was trained in a larger model, so its quality
+loss does not establish the compact formulation's optimized limit. This intervention
+has measured cost support and a same-data cubic control; it does not eliminate the
+historical BRE/residual data or aggregate hybrid-exposure confounds. G5 readiness
+requires implementation, actual source projection/continuation checks and native GUI
+verification. No substantive training or owner-store preparation has happened yet.

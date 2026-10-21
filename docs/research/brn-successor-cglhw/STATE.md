@@ -89,8 +89,9 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
 persisted evidence. Do not repeat training or historical Gen33 recovery instructions.
 The original objective remains open; no successor or production adoption is established.
 
-Current unit: finish the controlled trained-W4 assessment, then test complementary
-continued-base/nonlinear compositions. The research frontier is evidence-driven:
+Current unit: prepare the admitted compact-cubic retraining intervention in
+[WAVE5](WAVE5.md). G5 is not yet ready; no owner training is requested yet.
+All admitted W4 games are closed. The research frontier is evidence-driven:
 
 1. **Closed:** all64 BRE full-versus-half calibration controls,8970 legal moves.
    Both node scores are50%; full clock scores37.5% atLR001 and34.375% atLR003
@@ -111,18 +112,24 @@ continued-base/nonlinear compositions. The research frontier is evidence-driven:
    internal2-second safety; zero games were discarded or replayed.
    Three selected nonlinear ablations pass actual cache/search oracles; see
    `wave4-selected-hybrid-ablation-readiness.json`. Their admitted controls follow below.
-4. **Active protocol:** `wave4-hybrid-followup-admission.json`,128 fixed games.
+4. **Closed protocol:** `wave4-hybrid-followup-admission.json`,128 fixed games/17037 legal moves.
    GATE versus fast constant gates at nodes/time; CUBIC versus quadratic at nodes
    and compiled unary at time; CUBIC versus Gen32 and BRE003 at time on16 pairs.
    Use ONLY `wave4-constant-compiled-runtime.json`. The32 node controls are closed:
    GATE versus constant gates50%,CUBIC versus quadratic34.375%, both uncertain.
    The32 internal clock controls are also closed: GATE versus fast constant gates
-   31.25%,CUBIC versus compiled unary50%. External comparator clocks remain active.
+   31.25%,CUBIC versus compiled unary50%. External clocks close32 games each:
+   CUBIC versus Gen32 54.6875% and versus BRE003 half71.875%. No failures/caps/fallbacks.
+   Development selection,16 reused opening pairs and the unresolved exposure/ablation
+   controls prevent a confirmation or architectural-success claim.
    Do not optimize the quadratic-clock result by assumption: no such match is admitted.
 5. Any promising hybrid must face both BRE rates, frozen Gen32 and an expressive
    ablation. It combines two post-reference training streams; matched additional
    BRE training/data diversity may remain a human gate before causal conclusions.
-   No new substantive training or human gate is admitted yet.
+   W5 preparation is admitted to test whether retraining can recover compact cubic
+   quality. Distinct rank4 projection, full rank16 continuation and both BRE-rate
+   controls start from actual Latest64, retain optimizer state and add32 generations
+   only after G5 readiness is verified. No substantive training has begun.
    Fast additive ablations are implemented and verified: unary terms fit the
    existing BRE table; constant GATE retains four additional physical pair relations
    in an explicitly bounded research layout. Actual parity/cost and the first
