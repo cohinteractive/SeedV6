@@ -1,0 +1,63 @@
+{
+  "id": "wave5-direct-mechanisms-v1",
+  "recordedUtc": "2026-10-21T03:01:42.702521+00:00",
+  "totalGames": 160,
+  "plans": [
+    {
+      "file": "wave5-direct-r4-r16-node-plan.json",
+      "sha256": "ddccaba3cedcf2ce14af02bea7e23ed1cd002f63decf1346f2c5bd0e721477ef",
+      "games": 16
+    },
+    {
+      "file": "wave5-direct-r4-r16-clock-plan.json",
+      "sha256": "62a06215dbcd443f6ed04c2687135a869027b35cd5b05a33e3231d109c4cd578",
+      "games": 16
+    },
+    {
+      "file": "wave5-direct-bre001-node-plan.json",
+      "sha256": "bce6d0a774845290a1cda022298c51cb1da67c19957273d42ef26d7c53adcd67",
+      "games": 32
+    },
+    {
+      "file": "wave5-direct-bre001-clock-plan.json",
+      "sha256": "63cf8f5864425c1e72398b7e8fa77180fd66d0d6fd253770cd1f85d5b3a249c3",
+      "games": 32
+    },
+    {
+      "file": "wave5-direct-r4-unary-node-plan.json",
+      "sha256": "403f820a81fb83b4328291340bd50536027460f9bf8b2694fe673f4e037b1595",
+      "games": 16
+    },
+    {
+      "file": "wave5-direct-r4-unary-clock-plan.json",
+      "sha256": "52bee9c0ba4af411cc447aebbed169627827e245c2731cd9a642832c6a7f9b52",
+      "games": 16
+    },
+    {
+      "file": "wave5-direct-r16-unary-node-plan.json",
+      "sha256": "74ac55ee71ec52535006b25a8e18ab143dd5d1d5f54aae5b4b565b46ca06e56f",
+      "games": 16
+    },
+    {
+      "file": "wave5-direct-r16-unary-clock-plan.json",
+      "sha256": "b9096915fe80a5420ad2f2be1ffd51ec41f4321c3a5f44c13c61cea7a55f4c68",
+      "games": 16
+    }
+  ],
+  "selection": "Latest96 for equal effective new exposure. Selected after node128 and fresh fitting diagnostics, before closed clock results. No Best or per-arm calibration selection.",
+  "questions": [
+    "R4 versus R16: retained quality and actual speed.",
+    "Both cubic models versus continued BRE001: value beyond additional ordinary training.",
+    "Each full correction versus its fast compiled unary-only ablation: aggregate interaction contribution."
+  ],
+  "openingRange": "Previously unused development roots9..16 of frozen32; reused within these comparisons, not final confirmation.",
+  "calibration": "Fixed prior .5 change for every candidate/control, normal quarter-material-residual mapping; common QXRAY search.",
+  "runtime": "wave5-runtime.json",
+  "readiness": "Both actual unary controls pass6333 integer/fresh positions and48 canonical/compiled search root passes. Full cubic probes already pass. Game runner validates exact hashes.",
+  "stopRule": "Fixed complete counts, no significance-dependent extension/stopping. Failed/resource-invalid games stop affected batch for investigation; preserve all evidence.",
+  "limitations": [
+    "Eight correlated opening pairs per direct comparison, family data/optimizer confounds, prior selection and multiple tests.",
+    "Post-training unary ablation is not an independently optimized additive architecture.",
+    "Development screening, not evidence sufficient for final programme success."
+  ]
+}

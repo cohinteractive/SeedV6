@@ -113,3 +113,31 @@ Original receipts are unchanged. No failed game was excluded or replayed.
 The primary clock runner paused at a batch boundary after22 games for the bounded
 source probe/build. Its original plan/runtime and every game remain intact; resume
 to128 games with new log prefixes after diagnostics, without score-dependent changes.
+
+## Fresh reserved-source diagnostic and direct admission
+
+The bounded probe acquired2048 rows each from BT4 ordinals29121292..29146791
+and CP27458246..27478103, examining25500/19858 records. All source navigation used
+verified copied indexes/prepared chunks; no owner cursor was modified and no training
+occurred. New runtime and execution hashes: wave5-data-runtime.json and local
+raw/wave5/fresh-probe-execution-01. One targeted Java integration test passes; no
+application change/build bump. Matches retain their original frozen runtime.
+
+Fresh evaluation-half CE at half correction: R4 BT4 .768612->.767441, CP .979018->.973753
+from64->96; R16 .768296->.767723 and .969053->.970422. R4 recovered much of the gap,
+but R16 remains better on CP. R4 unary CE .767286/.973325 improves both marginally;
+R16 unary .766353/.976145 improves BT4 but worsens CP. Thus the consumed-panel
+interaction disadvantage is not universal. Cubic degree-three improves over quadratic
+on both new sources. New source ordinals/reserved geometry do not establish game/FEN
+independence or exclude historical base overlap. See wave5-fresh-fitting-diagnostics.json.
+
+Both latest compiled unary controls pass6333 placements and48 search root passes,
+zero integer/search differences. Their ordinary BRE-size payload makes a practical
+ablation possible without charging it for unused cubic arithmetic. These are inference
+interventions, not separately optimized unary training controls.
+
+The160-game direct protocol is now frozen in wave5-direct-admission.json: R4 versus
+R16, both versus BRE001, and each versus its own compiled unary at32768nodes and200ms.
+Latest96 is selected for equal exposure before primary clock closure; all scales remain
+.5. Previously unused development roots9..16 are colour reversed. Finish primary clock
+first, then these fixed budgets; do not extend a favourable result to seek significance.

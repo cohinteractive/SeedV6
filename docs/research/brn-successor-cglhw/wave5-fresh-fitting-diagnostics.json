@@ -1,0 +1,2743 @@
+{
+  "id": "wave5-fixed-panel-maturity-calibration-v1",
+  "panelStatus": "fresh-ordinal-reserved",
+  "maximumJavaReproductionError": 2.4424906541753444e-15,
+  "sources": [
+    {
+      "source": "bt4",
+      "sha256": "00aad166db9d9b74a472b920d3aaf5949ec8852518cd339e34ba5d8100dbcff3",
+      "maximumGen32TrainerVersusFrozenRuntimeRawDifference": 5.176894417591171e-07,
+      "metrics": {
+        "Gen32:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8128116215297341,
+          "changeRmsPawns": 1.1560150750568663e-07,
+          "mappedMin": -13.182723473073883,
+          "mappedMax": 13.283818455372211
+        },
+        "W5-RESCUBIC-R4-LR001-g64:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8156003216933833,
+          "changeRmsPawns": 0.21181263333841427,
+          "mappedMin": -13.233719205433095,
+          "mappedMax": 13.411933811835333
+        },
+        "W5-RESCUBIC-R4-LR001-g64:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8204161619089946,
+          "changeRmsPawns": 0.42362526667682854,
+          "mappedMin": -13.284714923972526,
+          "mappedMax": 13.540049168966554
+        },
+        "W5-RESCUBIC-R4-LR001-g64-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8107967505219974,
+          "changeRmsPawns": 0.2503737402645298,
+          "mappedMin": -13.211954382856055,
+          "mappedMax": 13.273902098379919
+        },
+        "W5-RESCUBIC-R4-LR001-g64-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8099061918373508,
+          "changeRmsPawns": 0.5007474805290596,
+          "mappedMin": -13.241185278818445,
+          "mappedMax": 13.263985742055727
+        },
+        "W5-RESCUBIC-R4-LR001-g64-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8163261014627076,
+          "changeRmsPawns": 0.20161957149469326,
+          "mappedMin": -13.229741670579465,
+          "mappedMax": 13.403847711807026
+        },
+        "W5-RESCUBIC-R4-LR001-g64-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.821589502385364,
+          "changeRmsPawns": 0.4032391429893865,
+          "mappedMin": -13.276759854265267,
+          "mappedMax": 13.523876968909942
+        },
+        "W5-RESCUBIC-R4-LR001-g72:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.813742293254665,
+          "changeRmsPawns": 0.18731274693310096,
+          "mappedMin": -13.236513913541033,
+          "mappedMax": 13.433146118637426
+        },
+        "W5-RESCUBIC-R4-LR001-g72:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8161355013296152,
+          "changeRmsPawns": 0.3746254938662019,
+          "mappedMin": -13.290304340188404,
+          "mappedMax": 13.582473782570741
+        },
+        "W5-RESCUBIC-R4-LR001-g72-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.809925164712168,
+          "changeRmsPawns": 0.26320289197908947,
+          "mappedMin": -13.22355845066356,
+          "mappedMax": 13.297729856935922
+        },
+        "W5-RESCUBIC-R4-LR001-g72-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8083761665330311,
+          "changeRmsPawns": 0.5264057839581789,
+          "mappedMin": -13.264393414433458,
+          "mappedMax": 13.311641259167732
+        },
+        "W5-RESCUBIC-R4-LR001-g72-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8143176953376364,
+          "changeRmsPawns": 0.1655815579763368,
+          "mappedMin": -13.230508198818022,
+          "mappedMax": 13.423217017055629
+        },
+        "W5-RESCUBIC-R4-LR001-g72-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8169514479636608,
+          "changeRmsPawns": 0.3311631159526736,
+          "mappedMin": -13.278292910742381,
+          "mappedMax": 13.562615579407147
+        },
+        "W5-RESCUBIC-R4-LR001-g80:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8140580119769926,
+          "changeRmsPawns": 0.216053072870041,
+          "mappedMin": -13.246704528580715,
+          "mappedMax": 13.4448266501372
+        },
+        "W5-RESCUBIC-R4-LR001-g80:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8168096093866453,
+          "changeRmsPawns": 0.432106145740082,
+          "mappedMin": -13.310685570267767,
+          "mappedMax": 13.605834845570289
+        },
+        "W5-RESCUBIC-R4-LR001-g80-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8099203381626661,
+          "changeRmsPawns": 0.2758529257458193,
+          "mappedMin": -13.21330537155529,
+          "mappedMax": 13.298863939362944
+        },
+        "W5-RESCUBIC-R4-LR001-g80-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8086178225481603,
+          "changeRmsPawns": 0.5517058514916386,
+          "mappedMin": -13.243887256216915,
+          "mappedMax": 13.313909424021777
+        },
+        "W5-RESCUBIC-R4-LR001-g80-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8144002103066684,
+          "changeRmsPawns": 0.18895605688272538,
+          "mappedMin": -13.249814072455013,
+          "mappedMax": 13.424191979743462
+        },
+        "W5-RESCUBIC-R4-LR001-g80-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8171619974802118,
+          "changeRmsPawns": 0.37791211376545075,
+          "mappedMin": -13.316904658016362,
+          "mappedMax": 13.564565504782815
+        },
+        "W5-RESCUBIC-R4-LR001-g88:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8137478769737929,
+          "changeRmsPawns": 0.18834836147470788,
+          "mappedMin": -13.207082317639436,
+          "mappedMax": 13.475514139110388
+        },
+        "W5-RESCUBIC-R4-LR001-g88:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8161259805346364,
+          "changeRmsPawns": 0.37669672294941575,
+          "mappedMin": -13.231441148385208,
+          "mappedMax": 13.667209823516666
+        },
+        "W5-RESCUBIC-R4-LR001-g88-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8098881634973261,
+          "changeRmsPawns": 0.2755394923703045,
+          "mappedMin": -13.225551627474607,
+          "mappedMax": 13.312867433759855
+        },
+        "W5-RESCUBIC-R4-LR001-g88-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8085483270228535,
+          "changeRmsPawns": 0.551078984740609,
+          "mappedMin": -13.26837976805555,
+          "mappedMax": 13.3419164128156
+        },
+        "W5-RESCUBIC-R4-LR001-g88-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8133903930593486,
+          "changeRmsPawns": 0.17186392292657807,
+          "mappedMin": -13.212096331370152,
+          "mappedMax": 13.447250805541746
+        },
+        "W5-RESCUBIC-R4-LR001-g88-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8150868488354021,
+          "changeRmsPawns": 0.34372784585315613,
+          "mappedMin": -13.24146917584664,
+          "mappedMax": 13.61068315637938
+        },
+        "W5-RESCUBIC-R4-LR001-g93:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.813612177550511,
+          "changeRmsPawns": 0.20257829748443706,
+          "mappedMin": -13.188985364049337,
+          "mappedMax": 13.430231275660503
+        },
+        "W5-RESCUBIC-R4-LR001-g93:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.815810483158671,
+          "changeRmsPawns": 0.40515659496887413,
+          "mappedMin": -13.195247241205012,
+          "mappedMax": 13.576644096616894
+        },
+        "W5-RESCUBIC-R4-LR001-g93-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8094146837765691,
+          "changeRmsPawns": 0.30089887239410984,
+          "mappedMin": -13.215644612240116,
+          "mappedMax": 13.317682837218104
+        },
+        "W5-RESCUBIC-R4-LR001-g93-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8079494430189881,
+          "changeRmsPawns": 0.6017977447882197,
+          "mappedMin": -13.248565737586565,
+          "mappedMax": 13.3515472197321
+        },
+        "W5-RESCUBIC-R4-LR001-g93-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8133708639877394,
+          "changeRmsPawns": 0.17965173236460777,
+          "mappedMin": -13.188460204585855,
+          "mappedMax": 13.416281247230101
+        },
+        "W5-RESCUBIC-R4-LR001-g93-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8149525059558318,
+          "changeRmsPawns": 0.35930346472921554,
+          "mappedMin": -13.194196922278046,
+          "mappedMax": 13.548744039756091
+        },
+        "W5-RESCUBIC-R4-LR001-g96:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8141105521302636,
+          "changeRmsPawns": 0.19529879697916838,
+          "mappedMin": -13.134233760295997,
+          "mappedMax": 13.465044824564394
+        },
+        "W5-RESCUBIC-R4-LR001-g96:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8168747042069232,
+          "changeRmsPawns": 0.39059759395833676,
+          "mappedMin": -13.08574403369833,
+          "mappedMax": 13.64627119442468
+        },
+        "W5-RESCUBIC-R4-LR001-g96-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8093329588053588,
+          "changeRmsPawns": 0.3372122835237685,
+          "mappedMin": -13.180028099202453,
+          "mappedMax": 13.310446753874402
+        },
+        "W5-RESCUBIC-R4-LR001-g96-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8083713103917534,
+          "changeRmsPawns": 0.674424567047537,
+          "mappedMin": -13.17733271151124,
+          "mappedMax": 13.33707505304469
+        },
+        "W5-RESCUBIC-R4-LR001-g96-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8140627603846395,
+          "changeRmsPawns": 0.17234479922257112,
+          "mappedMin": -13.126068147725258,
+          "mappedMax": 13.433878407795824
+        },
+        "W5-RESCUBIC-R4-LR001-g96-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.816367279875948,
+          "changeRmsPawns": 0.34468959844514224,
+          "mappedMin": -13.069412808556852,
+          "mappedMax": 13.583938360887537
+        },
+        "W5-RESCUBIC-R16-LR001-g64:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8146163063838154,
+          "changeRmsPawns": 0.22736605293264017,
+          "mappedMin": -13.191635833881373,
+          "mappedMax": 13.436880132397297
+        },
+        "W5-RESCUBIC-R16-LR001-g64:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8185304412481466,
+          "changeRmsPawns": 0.45473210586528034,
+          "mappedMin": -13.200548180869081,
+          "mappedMax": 13.589941810090483
+        },
+        "W5-RESCUBIC-R16-LR001-g64-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8107967505219974,
+          "changeRmsPawns": 0.2503737402645298,
+          "mappedMin": -13.211954382856055,
+          "mappedMax": 13.273902098379919
+        },
+        "W5-RESCUBIC-R16-LR001-g64-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8099061918373508,
+          "changeRmsPawns": 0.5007474805290596,
+          "mappedMin": -13.241185278818445,
+          "mappedMax": 13.263985742055727
+        },
+        "W5-RESCUBIC-R16-LR001-g64-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8150157523710486,
+          "changeRmsPawns": 0.22233091929295462,
+          "mappedMin": -13.178197407917326,
+          "mappedMax": 13.420247141461815
+        },
+        "W5-RESCUBIC-R16-LR001-g64-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.819035292366573,
+          "changeRmsPawns": 0.44466183858590924,
+          "mappedMin": -13.173671328940989,
+          "mappedMax": 13.556675828219516
+        },
+        "W5-RESCUBIC-R16-LR001-g72:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8130567517263262,
+          "changeRmsPawns": 0.21327021287114817,
+          "mappedMin": -13.269323149961227,
+          "mappedMax": 13.437997039456214
+        },
+        "W5-RESCUBIC-R16-LR001-g72:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8150612554847597,
+          "changeRmsPawns": 0.4265404257422964,
+          "mappedMin": -13.35592281302879,
+          "mappedMax": 13.592175624208316
+        },
+        "W5-RESCUBIC-R16-LR001-g72-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8109206275842425,
+          "changeRmsPawns": 0.2466748892596379,
+          "mappedMin": -13.243081647145246,
+          "mappedMax": 13.27725715595471
+        },
+        "W5-RESCUBIC-R16-LR001-g72-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8101816883716124,
+          "changeRmsPawns": 0.4933497785192758,
+          "mappedMin": -13.30343980739683,
+          "mappedMax": 13.270695857205308
+        },
+        "W5-RESCUBIC-R16-LR001-g72-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8133427780791391,
+          "changeRmsPawns": 0.20058606384600036,
+          "mappedMin": -13.261022826806956,
+          "mappedMax": 13.42879484107109
+        },
+        "W5-RESCUBIC-R16-LR001-g72-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8153214641843354,
+          "changeRmsPawns": 0.4011721276920007,
+          "mappedMin": -13.339322166720248,
+          "mappedMax": 13.573771227438069
+        },
+        "W5-RESCUBIC-R16-LR001-g80:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8140256172503944,
+          "changeRmsPawns": 0.23695075574359134,
+          "mappedMin": -13.247156512843205,
+          "mappedMax": 13.454894781713172
+        },
+        "W5-RESCUBIC-R16-LR001-g80:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8169831380973711,
+          "changeRmsPawns": 0.4739015114871827,
+          "mappedMin": -13.311589538792743,
+          "mappedMax": 13.625971108722235
+        },
+        "W5-RESCUBIC-R16-LR001-g80-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.810577844822994,
+          "changeRmsPawns": 0.26586228290786196,
+          "mappedMin": -13.20952948077494,
+          "mappedMax": 13.276697497382342
+        },
+        "W5-RESCUBIC-R16-LR001-g80-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8095642806308534,
+          "changeRmsPawns": 0.5317245658157239,
+          "mappedMin": -13.236335474656215,
+          "mappedMax": 13.269576540060573
+        },
+        "W5-RESCUBIC-R16-LR001-g80-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8140689237688389,
+          "changeRmsPawns": 0.2144277042719333,
+          "mappedMin": -13.243548301472472,
+          "mappedMax": 13.436491950300264
+        },
+        "W5-RESCUBIC-R16-LR001-g80-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8167364233291944,
+          "changeRmsPawns": 0.4288554085438666,
+          "mappedMin": -13.304373116051279,
+          "mappedMax": 13.589165445896416
+        },
+        "W5-RESCUBIC-R16-LR001-g88:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8137524311569894,
+          "changeRmsPawns": 0.2230603986750042,
+          "mappedMin": -13.244325761176515,
+          "mappedMax": 13.440185450863503
+        },
+        "W5-RESCUBIC-R16-LR001-g88:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8167035333688053,
+          "changeRmsPawns": 0.4461207973500084,
+          "mappedMin": -13.305928035459367,
+          "mappedMax": 13.596552447022892
+        },
+        "W5-RESCUBIC-R16-LR001-g88-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8110480752506086,
+          "changeRmsPawns": 0.2611845777782424,
+          "mappedMin": -13.248827367611817,
+          "mappedMax": 13.28422964230969
+        },
+        "W5-RESCUBIC-R16-LR001-g88-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8104799488896156,
+          "changeRmsPawns": 0.5223691555564848,
+          "mappedMin": -13.314931248329968,
+          "mappedMax": 13.284640829915269
+        },
+        "W5-RESCUBIC-R16-LR001-g88-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8131740311640554,
+          "changeRmsPawns": 0.21050747673920536,
+          "mappedMin": -13.245477913993524,
+          "mappedMax": 13.42646638019644
+        },
+        "W5-RESCUBIC-R16-LR001-g88-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8152798462113301,
+          "changeRmsPawns": 0.4210149534784107,
+          "mappedMin": -13.308232341093383,
+          "mappedMax": 13.569114305688768
+        },
+        "W5-RESCUBIC-R16-LR001-g95:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.814238479044578,
+          "changeRmsPawns": 0.22035383183273544,
+          "mappedMin": -13.15157756668406,
+          "mappedMax": 13.464684884156911
+        },
+        "W5-RESCUBIC-R16-LR001-g95:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8174757312640226,
+          "changeRmsPawns": 0.4407076636654709,
+          "mappedMin": -13.120431646474454,
+          "mappedMax": 13.645551313609712
+        },
+        "W5-RESCUBIC-R16-LR001-g95-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8099562196901428,
+          "changeRmsPawns": 0.3078924895368404,
+          "mappedMin": -13.187882458561345,
+          "mappedMax": 13.292639034330183
+        },
+        "W5-RESCUBIC-R16-LR001-g95-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8089086171040218,
+          "changeRmsPawns": 0.6157849790736808,
+          "mappedMin": -13.193041430229028,
+          "mappedMax": 13.301459613956254
+        },
+        "W5-RESCUBIC-R16-LR001-g95-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8141347637077835,
+          "changeRmsPawns": 0.20344181708568349,
+          "mappedMin": -13.147985405270733,
+          "mappedMax": 13.454031945146902
+        },
+        "W5-RESCUBIC-R16-LR001-g95-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8169325646888569,
+          "changeRmsPawns": 0.40688363417136697,
+          "mappedMin": -13.113247323647803,
+          "mappedMax": 13.62424543558969
+        },
+        "W5-RESCUBIC-R16-LR001-g96:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8142672596202711,
+          "changeRmsPawns": 0.22882706690893403,
+          "mappedMin": -13.154436263455105,
+          "mappedMax": 13.495533053559665
+        },
+        "W5-RESCUBIC-R16-LR001-g96:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8180105323049276,
+          "changeRmsPawns": 0.45765413381786807,
+          "mappedMin": -13.126149040016546,
+          "mappedMax": 13.707247652415221
+        },
+        "W5-RESCUBIC-R16-LR001-g96-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8103163389582732,
+          "changeRmsPawns": 0.3004374353502332,
+          "mappedMin": -13.17740836261838,
+          "mappedMax": 13.291903768715523
+        },
+        "W5-RESCUBIC-R16-LR001-g96-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8095700130534937,
+          "changeRmsPawns": 0.6008748707004664,
+          "mappedMin": -13.172093238343093,
+          "mappedMax": 13.299989082726935
+        },
+        "W5-RESCUBIC-R16-LR001-g96-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.814713644711621,
+          "changeRmsPawns": 0.2178989529414179,
+          "mappedMin": -13.145983217997639,
+          "mappedMax": 13.475230500247473
+        },
+        "W5-RESCUBIC-R16-LR001-g96-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.818570525316003,
+          "changeRmsPawns": 0.4357979058828358,
+          "mappedMin": -13.109242949101612,
+          "mappedMax": 13.666642545790838
+        },
+        "W5-BRE-CONTROL-LR001-g64:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8153163869310853,
+          "changeRmsPawns": 0.16879748693325936,
+          "mappedMin": -13.223842459610538,
+          "mappedMax": 13.25654504698172
+        },
+        "W5-BRE-CONTROL-LR001-g64:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8187841606846246,
+          "changeRmsPawns": 0.3375949738665187,
+          "mappedMin": -13.26496143232741,
+          "mappedMax": 13.229271639259332
+        },
+        "W5-BRE-CONTROL-LR001-g72:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8134166444330967,
+          "changeRmsPawns": 0.17383655044028787,
+          "mappedMin": -13.256325947150188,
+          "mappedMax": 13.286822502666581
+        },
+        "W5-BRE-CONTROL-LR001-g72:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8150188948706893,
+          "changeRmsPawns": 0.34767310088057574,
+          "mappedMin": -13.329928407406715,
+          "mappedMax": 13.289826550629051
+        },
+        "W5-BRE-CONTROL-LR001-g80:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.814126486092203,
+          "changeRmsPawns": 0.21107607076253226,
+          "mappedMin": -13.207951809430519,
+          "mappedMax": 13.23422410418551
+        },
+        "W5-BRE-CONTROL-LR001-g80:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.817324039880249,
+          "changeRmsPawns": 0.42215214152506453,
+          "mappedMin": -13.233180131967375,
+          "mappedMax": 13.184629753666908
+        },
+        "W5-BRE-CONTROL-LR001-g88:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8141563724212012,
+          "changeRmsPawns": 0.22602796931485486,
+          "mappedMin": -13.246305886498115,
+          "mappedMax": 13.260992278454362
+        },
+        "W5-BRE-CONTROL-LR001-g88:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8178999256591507,
+          "changeRmsPawns": 0.4520559386297097,
+          "mappedMin": -13.309888286102566,
+          "mappedMax": 13.238166102204612
+        },
+        "W5-BRE-CONTROL-LR001-g95:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8148123737998232,
+          "changeRmsPawns": 0.18900981257171792,
+          "mappedMin": -13.218959746542646,
+          "mappedMax": 13.243849096332054
+        },
+        "W5-BRE-CONTROL-LR001-g95:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8182400790431127,
+          "changeRmsPawns": 0.37801962514343584,
+          "mappedMin": -13.255196006191628,
+          "mappedMax": 13.203879737959998
+        },
+        "W5-BRE-CONTROL-LR001-g96:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8137639523962323,
+          "changeRmsPawns": 0.19008835926585801,
+          "mappedMin": -13.277901401807119,
+          "mappedMax": 13.261312992535961
+        },
+        "W5-BRE-CONTROL-LR001-g96:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8161936872253985,
+          "changeRmsPawns": 0.38017671853171603,
+          "mappedMin": -13.373079316720574,
+          "mappedMax": 13.238807530367811
+        },
+        "W5-BRE-CONTROL-LR003-g64:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8162026041589099,
+          "changeRmsPawns": 0.2108580491870499,
+          "mappedMin": -13.24410112021512,
+          "mappedMax": 13.218252983025367
+        },
+        "W5-BRE-CONTROL-LR003-g64:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8209766326876742,
+          "changeRmsPawns": 0.4217160983740998,
+          "mappedMin": -13.305478753536578,
+          "mappedMax": 13.152687511346624
+        },
+        "W5-BRE-CONTROL-LR003-g72:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8126934286634246,
+          "changeRmsPawns": 0.18593249774262324,
+          "mappedMin": -13.222135821027285,
+          "mappedMax": 13.284630577028775
+        },
+        "W5-BRE-CONTROL-LR003-g72:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8137356024298138,
+          "changeRmsPawns": 0.3718649954852465,
+          "mappedMin": -13.261548155160906,
+          "mappedMax": 13.28544269935344
+        },
+        "W5-BRE-CONTROL-LR003-g80:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.813860189088035,
+          "changeRmsPawns": 0.24696567712283735,
+          "mappedMin": -13.214926858067802,
+          "mappedMax": 13.207778496721488
+        },
+        "W5-BRE-CONTROL-LR003-g80:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8174308246540388,
+          "changeRmsPawns": 0.4939313542456747,
+          "mappedMin": -13.24713022924194,
+          "mappedMax": 13.131738538738865
+        },
+        "W5-BRE-CONTROL-LR003-g88:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8140987265932468,
+          "changeRmsPawns": 0.2315691249789206,
+          "mappedMin": -13.228308864977413,
+          "mappedMax": 13.256639312700187
+        },
+        "W5-BRE-CONTROL-LR003-g88:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8180056156628956,
+          "changeRmsPawns": 0.4631382499578412,
+          "mappedMin": -13.273894243061163,
+          "mappedMax": 13.229460170696266
+        },
+        "W5-BRE-CONTROL-LR003-g94:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8147951968728963,
+          "changeRmsPawns": 0.20137306329445614,
+          "mappedMin": -13.142037151545317,
+          "mappedMax": 13.255496311744746
+        },
+        "W5-BRE-CONTROL-LR003-g94:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.818304594135588,
+          "changeRmsPawns": 0.4027461265889123,
+          "mappedMin": -13.101350816196971,
+          "mappedMax": 13.227174168785382
+        },
+        "W5-BRE-CONTROL-LR003-g96:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8128765162681486,
+          "changeRmsPawns": 0.19935640327754386,
+          "mappedMin": -13.256139594687559,
+          "mappedMax": 13.253760102960218
+        },
+        "W5-BRE-CONTROL-LR003-g96:1:fit": {
+          "count": 1024,
+          "crossEntropy": 0.8146577371978004,
+          "changeRmsPawns": 0.39871280655508773,
+          "mappedMin": -13.329555702481455,
+          "mappedMax": 13.223701751216323
+        },
+        "Gen32:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7674759687349086,
+          "changeRmsPawns": 1.2190321248767605e-07,
+          "mappedMin": -17.600582426531787,
+          "mappedMax": 15.161135563962194
+        },
+        "W5-RESCUBIC-R4-LR001-g64:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7686116684895158,
+          "changeRmsPawns": 0.19509540518579715,
+          "mappedMin": -17.500582666081357,
+          "mappedMax": 15.33592786784312
+        },
+        "W5-RESCUBIC-R4-LR001-g64:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.770909073683487,
+          "changeRmsPawns": 0.3901908103715943,
+          "mappedMin": -17.400582917553876,
+          "mappedMax": 15.510720159294797
+        },
+        "W5-RESCUBIC-R4-LR001-g64-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7672132351046677,
+          "changeRmsPawns": 0.27219061434063213,
+          "mappedMin": -17.587977860166255,
+          "mappedMax": 15.137438337655334
+        },
+        "W5-RESCUBIC-R4-LR001-g64-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7681649973161003,
+          "changeRmsPawns": 0.5443812286812643,
+          "mappedMin": -17.57537330572367,
+          "mappedMax": 15.113741098919226
+        },
+        "W5-RESCUBIC-R4-LR001-g64-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7692570650047272,
+          "changeRmsPawns": 0.183912513750159,
+          "mappedMin": -17.475399586303638,
+          "mappedMax": 15.321631949522292
+        },
+        "W5-RESCUBIC-R4-LR001-g64-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7719641527311613,
+          "changeRmsPawns": 0.367825027500318,
+          "mappedMin": -17.350216757998435,
+          "mappedMax": 15.482128322653141
+        },
+        "W5-RESCUBIC-R4-LR001-g72:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.768932615332915,
+          "changeRmsPawns": 0.17245442203252456,
+          "mappedMin": -17.561122878796333,
+          "mappedMax": 15.231031181395918
+        },
+        "W5-RESCUBIC-R4-LR001-g72:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7714185067503461,
+          "changeRmsPawns": 0.3449088440650491,
+          "mappedMin": -17.521663342983825,
+          "mappedMax": 15.300926786400392
+        },
+        "W5-RESCUBIC-R4-LR001-g72-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7677143060633862,
+          "changeRmsPawns": 0.28479496527811904,
+          "mappedMin": -17.614088214474553,
+          "mappedMax": 15.131736498990335
+        },
+        "W5-RESCUBIC-R4-LR001-g72-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7693141701113525,
+          "changeRmsPawns": 0.5695899305562381,
+          "mappedMin": -17.627594014340268,
+          "mappedMax": 15.102337421589228
+        },
+        "W5-RESCUBIC-R4-LR001-g72-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7697483603817346,
+          "changeRmsPawns": 0.15204164118109273,
+          "mappedMin": -17.5479917547182,
+          "mappedMax": 15.240974609112364
+        },
+        "W5-RESCUBIC-R4-LR001-g72-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7727971852492342,
+          "changeRmsPawns": 0.30408328236218546,
+          "mappedMin": -17.495401094827564,
+          "mappedMax": 15.320813641833283
+        },
+        "W5-RESCUBIC-R4-LR001-g80:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7689260573838058,
+          "changeRmsPawns": 0.1923284051489917,
+          "mappedMin": -17.503340655803623,
+          "mappedMax": 15.288278005043598
+        },
+        "W5-RESCUBIC-R4-LR001-g80:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.771876766298591,
+          "changeRmsPawns": 0.3846568102979834,
+          "mappedMin": -17.406098896998408,
+          "mappedMax": 15.41542043369575
+        },
+        "W5-RESCUBIC-R4-LR001-g80-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7674530704430391,
+          "changeRmsPawns": 0.30077191806075776,
+          "mappedMin": -17.61285255432783,
+          "mappedMax": 15.161736815513628
+        },
+        "W5-RESCUBIC-R4-LR001-g80-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7690767345488934,
+          "changeRmsPawns": 0.6015438361215155,
+          "mappedMin": -17.625122694046823,
+          "mappedMax": 15.16233805463581
+        },
+        "W5-RESCUBIC-R4-LR001-g80-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.769249367310599,
+          "changeRmsPawns": 0.16592535151547258,
+          "mappedMin": -17.48621601122445,
+          "mappedMax": 15.284664423031789
+        },
+        "W5-RESCUBIC-R4-LR001-g80-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7721155683236488,
+          "changeRmsPawns": 0.33185070303094516,
+          "mappedMin": -17.371849607840062,
+          "mappedMax": 15.408193269672132
+        },
+        "W5-RESCUBIC-R4-LR001-g88:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7698647332702774,
+          "changeRmsPawns": 0.17135272053897874,
+          "mappedMin": -17.483446301361553,
+          "mappedMax": 15.264404588907073
+        },
+        "W5-RESCUBIC-R4-LR001-g88:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7730923953654265,
+          "changeRmsPawns": 0.3427054410779575,
+          "mappedMin": -17.36631018811427,
+          "mappedMax": 15.367673601422704
+        },
+        "W5-RESCUBIC-R4-LR001-g88-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7682078704588229,
+          "changeRmsPawns": 0.30275927988956697,
+          "mappedMin": -17.580357739962245,
+          "mappedMax": 15.15508764109582
+        },
+        "W5-RESCUBIC-R4-LR001-g88-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7706700467740079,
+          "changeRmsPawns": 0.6055185597791339,
+          "mappedMin": -17.56013306531565,
+          "mappedMax": 15.149039705800195
+        },
+        "W5-RESCUBIC-R4-LR001-g88-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7695570526573828,
+          "changeRmsPawns": 0.16193448367322738,
+          "mappedMin": -17.47360916007996,
+          "mappedMax": 15.26337048893792
+        },
+        "W5-RESCUBIC-R4-LR001-g88-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7723531786283362,
+          "changeRmsPawns": 0.32386896734645476,
+          "mappedMin": -17.346635905551082,
+          "mappedMax": 15.365605401484398
+        },
+        "W5-RESCUBIC-R4-LR001-g93:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.768462303346695,
+          "changeRmsPawns": 0.1814389840877754,
+          "mappedMin": -17.368520721710183,
+          "mappedMax": 15.245882165073668
+        },
+        "W5-RESCUBIC-R4-LR001-g93:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7704388376111806,
+          "changeRmsPawns": 0.3628779681755508,
+          "mappedMin": -17.13645902881153,
+          "mappedMax": 15.330628753755892
+        },
+        "W5-RESCUBIC-R4-LR001-g93-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.767513815464821,
+          "changeRmsPawns": 0.32936987099285453,
+          "mappedMin": -17.575280540688443,
+          "mappedMax": 15.170207070457401
+        },
+        "W5-RESCUBIC-R4-LR001-g93-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.769503070320606,
+          "changeRmsPawns": 0.6587397419857091,
+          "mappedMin": -17.549978666768048,
+          "mappedMax": 15.179278564523358
+        },
+        "W5-RESCUBIC-R4-LR001-g93-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.768380583069177,
+          "changeRmsPawns": 0.16193310401566113,
+          "mappedMin": -17.365075039306856,
+          "mappedMax": 15.250892656577392
+        },
+        "W5-RESCUBIC-R4-LR001-g93-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7701162918140593,
+          "changeRmsPawns": 0.32386620803132227,
+          "mappedMin": -17.129567664004874,
+          "mappedMax": 15.34064973676334
+        },
+        "W5-RESCUBIC-R4-LR001-g96:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.767441319114381,
+          "changeRmsPawns": 0.1794101838580762,
+          "mappedMin": -17.36706972940527,
+          "mappedMax": 15.276735577669493
+        },
+        "W5-RESCUBIC-R4-LR001-g96:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.768451750187014,
+          "changeRmsPawns": 0.3588203677161524,
+          "mappedMin": -17.133557044201698,
+          "mappedMax": 15.392335578947542
+        },
+        "W5-RESCUBIC-R4-LR001-g96-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.767285789852249,
+          "changeRmsPawns": 0.36652816200371446,
+          "mappedMin": -17.601173548516936,
+          "mappedMax": 15.186943568627875
+        },
+        "W5-RESCUBIC-R4-LR001-g96-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7695610724965716,
+          "changeRmsPawns": 0.7330563240074289,
+          "mappedMin": -17.601764682425035,
+          "mappedMax": 15.212751560864307
+        },
+        "W5-RESCUBIC-R4-LR001-g96-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7680415162300972,
+          "changeRmsPawns": 0.15971365519382155,
+          "mappedMin": -17.377786982544777,
+          "mappedMax": 15.274686989628815
+        },
+        "W5-RESCUBIC-R4-LR001-g96-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.769442548753842,
+          "changeRmsPawns": 0.3194273103876431,
+          "mappedMin": -17.154991550480712,
+          "mappedMax": 15.38823840286619
+        },
+        "W5-RESCUBIC-R16-LR001-g64:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7682955590770498,
+          "changeRmsPawns": 0.20463574618654157,
+          "mappedMin": -17.46075553080793,
+          "mappedMax": 15.311902489931011
+        },
+        "W5-RESCUBIC-R16-LR001-g64:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7703147822191991,
+          "changeRmsPawns": 0.40927149237308313,
+          "mappedMin": -17.320928647007015,
+          "mappedMax": 15.462669403470581
+        },
+        "W5-RESCUBIC-R16-LR001-g64-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7672132351046677,
+          "changeRmsPawns": 0.27219061434063213,
+          "mappedMin": -17.587977860166255,
+          "mappedMax": 15.137438337655334
+        },
+        "W5-RESCUBIC-R16-LR001-g64-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7681649973161003,
+          "changeRmsPawns": 0.5443812286812643,
+          "mappedMin": -17.57537330572367,
+          "mappedMax": 15.113741098919226
+        },
+        "W5-RESCUBIC-R16-LR001-g64-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7688556352216209,
+          "changeRmsPawns": 0.19640277406476356,
+          "mappedMin": -17.432652232743017,
+          "mappedMax": 15.298553843729616
+        },
+        "W5-RESCUBIC-R16-LR001-g64-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7712797159029435,
+          "changeRmsPawns": 0.3928055481295271,
+          "mappedMin": -17.2647220508772,
+          "mappedMax": 15.435972111067787
+        },
+        "W5-RESCUBIC-R16-LR001-g72:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7687925643061889,
+          "changeRmsPawns": 0.20378807914251146,
+          "mappedMin": -17.589667230809518,
+          "mappedMax": 15.243293581004302
+        },
+        "W5-RESCUBIC-R16-LR001-g72:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7714638696418796,
+          "changeRmsPawns": 0.4075761582850229,
+          "mappedMin": -17.578752047010195,
+          "mappedMax": 15.32545158561716
+        },
+        "W5-RESCUBIC-R16-LR001-g72-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7672663539131271,
+          "changeRmsPawns": 0.2663141550845341,
+          "mappedMin": -17.61067352897865,
+          "mappedMax": 15.130574265202899
+        },
+        "W5-RESCUBIC-R16-LR001-g72-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.768279293727071,
+          "changeRmsPawns": 0.5326283101690682,
+          "mappedMin": -17.62076464334846,
+          "mappedMax": 15.100012954014355
+        },
+        "W5-RESCUBIC-R16-LR001-g72-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7691616014626511,
+          "changeRmsPawns": 0.1936709059839381,
+          "mappedMin": -17.559491969140794,
+          "mappedMax": 15.238420586651559
+        },
+        "W5-RESCUBIC-R16-LR001-g72-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7719592804232773,
+          "changeRmsPawns": 0.3873418119678762,
+          "mappedMin": -17.51840152367275,
+          "mappedMax": 15.315705596911673
+        },
+        "W5-RESCUBIC-R16-LR001-g80:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7686990148504291,
+          "changeRmsPawns": 0.21983377933618833,
+          "mappedMin": -17.46293808235717,
+          "mappedMax": 15.315604493337922
+        },
+        "W5-RESCUBIC-R16-LR001-g80:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7716272909526171,
+          "changeRmsPawns": 0.43966755867237667,
+          "mappedMin": -17.3252937501055,
+          "mappedMax": 15.4700734102844
+        },
+        "W5-RESCUBIC-R16-LR001-g80-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7668949576273103,
+          "changeRmsPawns": 0.2900862317586675,
+          "mappedMin": -17.605837494312148,
+          "mappedMax": 15.15050187541419
+        },
+        "W5-RESCUBIC-R16-LR001-g80-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7676618819926294,
+          "changeRmsPawns": 0.580172463517335,
+          "mappedMin": -17.61109257401545,
+          "mappedMax": 15.139868174436938
+        },
+        "W5-RESCUBIC-R16-LR001-g80-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7687497907062592,
+          "changeRmsPawns": 0.19319660232476465,
+          "mappedMin": -17.430855851393755,
+          "mappedMax": 15.30478326974271
+        },
+        "W5-RESCUBIC-R16-LR001-g80-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7713366444777568,
+          "changeRmsPawns": 0.3863932046495293,
+          "mappedMin": -17.261129288178672,
+          "mappedMax": 15.448430963093976
+        },
+        "W5-RESCUBIC-R16-LR001-g88:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7698373815338272,
+          "changeRmsPawns": 0.21717297796791657,
+          "mappedMin": -17.45458372915097,
+          "mappedMax": 15.197247630196921
+        },
+        "W5-RESCUBIC-R16-LR001-g88:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.773508930640255,
+          "changeRmsPawns": 0.43434595593583314,
+          "mappedMin": -17.308585043693096,
+          "mappedMax": 15.233359684002398
+        },
+        "W5-RESCUBIC-R16-LR001-g88-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7672445477680699,
+          "changeRmsPawns": 0.2884576540395541,
+          "mappedMin": -17.61483942519377,
+          "mappedMax": 15.131061419198096
+        },
+        "W5-RESCUBIC-R16-LR001-g88-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7684122978116985,
+          "changeRmsPawns": 0.5769153080791082,
+          "mappedMin": -17.629096435778706,
+          "mappedMax": 15.100987262004749
+        },
+        "W5-RESCUBIC-R16-LR001-g88-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7695443885668416,
+          "changeRmsPawns": 0.20142367477159184,
+          "mappedMin": -17.43031949200666,
+          "mappedMax": 15.20099728274136
+        },
+        "W5-RESCUBIC-R16-LR001-g88-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7727895381546367,
+          "changeRmsPawns": 0.4028473495431837,
+          "mappedMin": -17.26005656940448,
+          "mappedMax": 15.240858989091278
+        },
+        "W5-RESCUBIC-R16-LR001-g95:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7685474803917139,
+          "changeRmsPawns": 0.21467959995724287,
+          "mappedMin": -17.434952742429445,
+          "mappedMax": 15.21855457046982
+        },
+        "W5-RESCUBIC-R16-LR001-g95:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7710075695951131,
+          "changeRmsPawns": 0.42935919991448573,
+          "mappedMin": -17.269323070250053,
+          "mappedMax": 15.275973564548195
+        },
+        "W5-RESCUBIC-R16-LR001-g95-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7667390178888299,
+          "changeRmsPawns": 0.3433749486136406,
+          "mappedMin": -17.588019587146484,
+          "mappedMax": 15.154053345413313
+        },
+        "W5-RESCUBIC-R16-LR001-g95-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7680586982185976,
+          "changeRmsPawns": 0.6867498972272812,
+          "mappedMin": -17.57545675968413,
+          "mappedMax": 15.146971114435182
+        },
+        "W5-RESCUBIC-R16-LR001-g95-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7687585349564547,
+          "changeRmsPawns": 0.19390703500219972,
+          "mappedMin": -17.399611153551675,
+          "mappedMax": 15.225316699215528
+        },
+        "W5-RESCUBIC-R16-LR001-g95-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7712211070031357,
+          "changeRmsPawns": 0.38781407000439944,
+          "mappedMin": -17.198639892494512,
+          "mappedMax": 15.289497822039612
+        },
+        "W5-RESCUBIC-R16-LR001-g96:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7677230610210444,
+          "changeRmsPawns": 0.21889010991624,
+          "mappedMin": -17.39090893947331,
+          "mappedMax": 15.25907061656688
+        },
+        "W5-RESCUBIC-R16-LR001-g96:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7694577514677912,
+          "changeRmsPawns": 0.43778021983247994,
+          "mappedMin": -17.18123546433778,
+          "mappedMax": 15.357005656742317
+        },
+        "W5-RESCUBIC-R16-LR001-g96-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7663525677563414,
+          "changeRmsPawns": 0.3318922955541004,
+          "mappedMin": -17.610043382515617,
+          "mappedMax": 15.175817408386402
+        },
+        "W5-RESCUBIC-R16-LR001-g96-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.767166728517463,
+          "changeRmsPawns": 0.6637845911082008,
+          "mappedMin": -17.619504350422396,
+          "mappedMax": 15.19049924038136
+        },
+        "W5-RESCUBIC-R16-LR001-g96-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7681667929990313,
+          "changeRmsPawns": 0.20375749781951932,
+          "mappedMin": -17.364772698761413,
+          "mappedMax": 15.26016416608244
+        },
+        "W5-RESCUBIC-R16-LR001-g96-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7701924402802033,
+          "changeRmsPawns": 0.40751499563903865,
+          "mappedMin": -17.128962982913986,
+          "mappedMax": 15.359192755773439
+        },
+        "W5-BRE-CONTROL-LR001-g64:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7674437318575019,
+          "changeRmsPawns": 0.1699701020456485,
+          "mappedMin": -17.585192800819062,
+          "mappedMax": 15.12235959630995
+        },
+        "W5-BRE-CONTROL-LR001-g64:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7682834075038258,
+          "changeRmsPawns": 0.339940204091297,
+          "mappedMin": -17.569803187029287,
+          "mappedMax": 15.083583616228456
+        },
+        "W5-BRE-CONTROL-LR001-g72:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7687733404180618,
+          "changeRmsPawns": 0.17344864580711208,
+          "mappedMin": -17.619272703440807,
+          "mappedMax": 15.099871970540972
+        },
+        "W5-BRE-CONTROL-LR001-g72:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7708394254167181,
+          "changeRmsPawns": 0.34689729161422417,
+          "mappedMin": -17.63796299227277,
+          "mappedMax": 15.0386083646905
+        },
+        "W5-BRE-CONTROL-LR001-g80:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7673685404649101,
+          "changeRmsPawns": 0.20502914409479894,
+          "mappedMin": -17.569586895838725,
+          "mappedMax": 15.050043230818197
+        },
+        "W5-BRE-CONTROL-LR001-g80:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7684798909522914,
+          "changeRmsPawns": 0.4100582881895979,
+          "mappedMin": -17.538591377068606,
+          "mappedMax": 14.93895088524495
+        },
+        "W5-BRE-CONTROL-LR001-g88:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7669873534780378,
+          "changeRmsPawns": 0.22473465292395625,
+          "mappedMin": -17.630691163053246,
+          "mappedMax": 15.04540430950415
+        },
+        "W5-BRE-CONTROL-LR001-g88:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7679087074315506,
+          "changeRmsPawns": 0.4494693058479125,
+          "mappedMin": -17.66079991149765,
+          "mappedMax": 14.929673042616855
+        },
+        "W5-BRE-CONTROL-LR001-g95:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7670455365735618,
+          "changeRmsPawns": 0.19685872231335122,
+          "mappedMin": -17.606244473914884,
+          "mappedMax": 15.075864885977722
+        },
+        "W5-BRE-CONTROL-LR001-g95:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7677003442837207,
+          "changeRmsPawns": 0.39371744462670244,
+          "mappedMin": -17.611906533220925,
+          "mappedMax": 14.990594195563999
+        },
+        "W5-BRE-CONTROL-LR001-g96:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7673008369522847,
+          "changeRmsPawns": 0.1963184988220948,
+          "mappedMin": -17.628631232679673,
+          "mappedMax": 15.076033336010157
+        },
+        "W5-BRE-CONTROL-LR001-g96:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7684389083382288,
+          "changeRmsPawns": 0.3926369976441896,
+          "mappedMin": -17.656680050750506,
+          "mappedMax": 14.99093109562887
+        },
+        "W5-BRE-CONTROL-LR003-g64:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7678556850826895,
+          "changeRmsPawns": 0.20889633514632966,
+          "mappedMin": -17.629565373387887,
+          "mappedMax": 15.137972298081987
+        },
+        "W5-BRE-CONTROL-LR003-g64:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7695369613653863,
+          "changeRmsPawns": 0.4177926702926593,
+          "mappedMin": -17.658548332166937,
+          "mappedMax": 15.11480901977253
+        },
+        "W5-BRE-CONTROL-LR003-g72:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7685096509314989,
+          "changeRmsPawns": 0.19353142784663843,
+          "mappedMin": -17.61971393766922,
+          "mappedMax": 15.107844547162417
+        },
+        "W5-BRE-CONTROL-LR003-g72:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7704583358556631,
+          "changeRmsPawns": 0.38706285569327686,
+          "mappedMin": -17.638845460729605,
+          "mappedMax": 15.05455351793339
+        },
+        "W5-BRE-CONTROL-LR003-g80:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7680280645851834,
+          "changeRmsPawns": 0.23958699360459343,
+          "mappedMin": -17.583870754312883,
+          "mappedMax": 15.042309022215454
+        },
+        "W5-BRE-CONTROL-LR003-g80:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7701984144292372,
+          "changeRmsPawns": 0.47917398720918686,
+          "mappedMin": -17.567159094016926,
+          "mappedMax": 14.923482468039463
+        },
+        "W5-BRE-CONTROL-LR003-g88:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7672762216415103,
+          "changeRmsPawns": 0.23549009790067982,
+          "mappedMin": -17.60831574857432,
+          "mappedMax": 15.029809372891322
+        },
+        "W5-BRE-CONTROL-LR003-g88:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7685690742779695,
+          "changeRmsPawns": 0.47098019580135964,
+          "mappedMin": -17.616049082539796,
+          "mappedMax": 14.898483169391199
+        },
+        "W5-BRE-CONTROL-LR003-g94:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7672752883758119,
+          "changeRmsPawns": 0.20605050904290717,
+          "mappedMin": -17.58391268738859,
+          "mappedMax": 15.038254354701596
+        },
+        "W5-BRE-CONTROL-LR003-g94:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7682541005850662,
+          "changeRmsPawns": 0.41210101808581434,
+          "mappedMin": -17.567242960168343,
+          "mappedMax": 14.915373133011748
+        },
+        "W5-BRE-CONTROL-LR003-g96:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7675911858093349,
+          "changeRmsPawns": 0.20371489668340445,
+          "mappedMin": -17.6472103466032,
+          "mappedMax": 15.116487712508864
+        },
+        "W5-BRE-CONTROL-LR003-g96:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.7691712132529921,
+          "changeRmsPawns": 0.4074297933668089,
+          "mappedMin": -17.693838278597557,
+          "mappedMax": 15.071839848626285
+        }
+      }
+    },
+    {
+      "source": "cp",
+      "sha256": "039a6220a13f83a2de9daf6f1697719943dcb701599aa2faa6f7ed043afb0983",
+      "maximumGen32TrainerVersusFrozenRuntimeRawDifference": 4.949220113736885e-07,
+      "metrics": {
+        "Gen32:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4766023967172768,
+          "changeRmsPawns": 1.2306794610972792e-07,
+          "mappedMin": -122.28645062675665,
+          "mappedMax": 25.71080441497259
+        },
+        "W5-RESCUBIC-R4-LR001-g64:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.0588833906631463,
+          "changeRmsPawns": 22.696288844792832,
+          "mappedMin": -80.75709855088716,
+          "mappedMax": 59.26531410735731
+        },
+        "W5-RESCUBIC-R4-LR001-g64:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.063798914376255,
+          "changeRmsPawns": 45.392577689585664,
+          "mappedMin": -79.42867993207487,
+          "mappedMax": 240.81707890477065
+        },
+        "W5-RESCUBIC-R4-LR001-g64-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4693253898702852,
+          "changeRmsPawns": 0.2929654156931945,
+          "mappedMin": -121.33628964393942,
+          "mappedMax": 25.74654281492309
+        },
+        "W5-RESCUBIC-R4-LR001-g64-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4634578620271248,
+          "changeRmsPawns": 0.585930831386389,
+          "mappedMin": -120.38612859782285,
+          "mappedMax": 25.782281229475764
+        },
+        "W5-RESCUBIC-R4-LR001-g64-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5007461151979677,
+          "changeRmsPawns": 0.8557080284603529,
+          "mappedMin": -127.23507698149136,
+          "mappedMax": 26.113786519407846
+        },
+        "W5-RESCUBIC-R4-LR001-g64-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5256700330501272,
+          "changeRmsPawns": 1.7114160569207058,
+          "mappedMin": -132.18370327292672,
+          "mappedMax": 26.51676863844529
+        },
+        "W5-RESCUBIC-R4-LR001-g72:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.0541275852196128,
+          "changeRmsPawns": 16.756057404451326,
+          "mappedMin": -81.48590872908807,
+          "mappedMax": 26.206071648880698
+        },
+        "W5-RESCUBIC-R4-LR001-g72:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.054049731005365,
+          "changeRmsPawns": 33.51211480890265,
+          "mappedMin": -80.88630028847668,
+          "mappedMax": 145.7712370944115
+        },
+        "W5-RESCUBIC-R4-LR001-g72-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4664891143583738,
+          "changeRmsPawns": 0.32581939000483007,
+          "mappedMin": -121.18799109314845,
+          "mappedMax": 25.7419127151584
+        },
+        "W5-RESCUBIC-R4-LR001-g72-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4581966353349218,
+          "changeRmsPawns": 0.6516387800096601,
+          "mappedMin": -120.08953149624092,
+          "mappedMax": 25.77302102994639
+        },
+        "W5-RESCUBIC-R4-LR001-g72-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5146242058054784,
+          "changeRmsPawns": 1.452568502193794,
+          "mappedMin": -132.71280728889366,
+          "mappedMax": 26.014308155727765
+        },
+        "W5-RESCUBIC-R4-LR001-g72-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5532132662835476,
+          "changeRmsPawns": 2.9051370043875884,
+          "mappedMin": -143.13916388773134,
+          "mappedMax": 26.317811911085123
+        },
+        "W5-RESCUBIC-R4-LR001-g80:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4931917311825835,
+          "changeRmsPawns": 0.6356851261587187,
+          "mappedMin": -126.64713556978589,
+          "mappedMax": 26.217465402066537
+        },
+        "W5-RESCUBIC-R4-LR001-g80:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5105735145180157,
+          "changeRmsPawns": 1.2713702523174375,
+          "mappedMin": -131.00782044951578,
+          "mappedMax": 26.724126403762668
+        },
+        "W5-RESCUBIC-R4-LR001-g80-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4658264094781372,
+          "changeRmsPawns": 0.35204666044557575,
+          "mappedMin": -120.96775522688156,
+          "mappedMax": 25.76154105067204
+        },
+        "W5-RESCUBIC-R4-LR001-g80-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4568718079676795,
+          "changeRmsPawns": 0.7040933208911516,
+          "mappedMin": -119.64905976370713,
+          "mappedMax": 25.812277700973674
+        },
+        "W5-RESCUBIC-R4-LR001-g80-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5135261328701213,
+          "changeRmsPawns": 1.3807816831092325,
+          "mappedMin": -132.17573632704872,
+          "mappedMax": 26.05161605668357
+        },
+        "W5-RESCUBIC-R4-LR001-g80-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5510371435325356,
+          "changeRmsPawns": 2.761563366218465,
+          "mappedMin": -142.06502196404145,
+          "mappedMax": 26.392427712996735
+        },
+        "W5-RESCUBIC-R4-LR001-g88:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.7439257222243236,
+          "changeRmsPawns": 9.539330005245352,
+          "mappedMin": -198.47343223971762,
+          "mappedMax": 26.098800584931183
+        },
+        "W5-RESCUBIC-R4-LR001-g88:1:fit": {
+          "count": 1024,
+          "crossEntropy": 2.0119390007133724,
+          "changeRmsPawns": 19.078660010490704,
+          "mappedMin": -274.6604137893793,
+          "mappedMax": 26.486796769491956
+        },
+        "W5-RESCUBIC-R4-LR001-g88-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.464549542031004,
+          "changeRmsPawns": 0.36219680306768337,
+          "mappedMin": -120.81201368438994,
+          "mappedMax": 25.73193403781402
+        },
+        "W5-RESCUBIC-R4-LR001-g88-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4545580010385513,
+          "changeRmsPawns": 0.7243936061353664,
+          "mappedMin": -119.3375766787239,
+          "mappedMax": 25.75306367525763
+        },
+        "W5-RESCUBIC-R4-LR001-g88-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5114840999938004,
+          "changeRmsPawns": 1.3698478973499881,
+          "mappedMin": -131.89218229391363,
+          "mappedMax": 25.935679395958147
+        },
+        "W5-RESCUBIC-R4-LR001-g88-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.546979470858423,
+          "changeRmsPawns": 2.7396957946999767,
+          "mappedMin": -141.4979138977713,
+          "mappedMax": 26.160554391545883
+        },
+        "W5-RESCUBIC-R4-LR001-g93:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.576312354586258,
+          "changeRmsPawns": 3.623630395836604,
+          "mappedMin": -150.77569824082127,
+          "mappedMax": 26.084426944318004
+        },
+        "W5-RESCUBIC-R4-LR001-g93:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.6767739847412018,
+          "changeRmsPawns": 7.247260791673207,
+          "mappedMin": -179.2649457915865,
+          "mappedMax": 26.4580494882656
+        },
+        "W5-RESCUBIC-R4-LR001-g93-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.461957057075864,
+          "changeRmsPawns": 0.391829001122541,
+          "mappedMin": -120.69815550866389,
+          "mappedMax": 25.737120968765314
+        },
+        "W5-RESCUBIC-R4-LR001-g93-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.449579394046581,
+          "changeRmsPawns": 0.783658002245082,
+          "mappedMin": -119.10986032727179,
+          "mappedMax": 25.763437537160222
+        },
+        "W5-RESCUBIC-R4-LR001-g93-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4952693074116876,
+          "changeRmsPawns": 1.0079802631177708,
+          "mappedMin": -127.61382616850179,
+          "mappedMax": 25.959664083552944
+        },
+        "W5-RESCUBIC-R4-LR001-g93-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5144301685250947,
+          "changeRmsPawns": 2.0159605262355416,
+          "mappedMin": -132.94120164694758,
+          "mappedMax": 26.208523766735485
+        },
+        "W5-RESCUBIC-R4-LR001-g96:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4324432351724832,
+          "changeRmsPawns": 1.63512292403277,
+          "mappedMin": -109.56436277801026,
+          "mappedMax": 26.35512105070551
+        },
+        "W5-RESCUBIC-R4-LR001-g96:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.388970090370838,
+          "changeRmsPawns": 3.27024584806554,
+          "mappedMin": -96.84227486596453,
+          "mappedMax": 26.99943770104061
+        },
+        "W5-RESCUBIC-R4-LR001-g96-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4612956404012796,
+          "changeRmsPawns": 0.43497220400968173,
+          "mappedMin": -120.66703609270363,
+          "mappedMax": 25.770923070171435
+        },
+        "W5-RESCUBIC-R4-LR001-g96-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4490818416424098,
+          "changeRmsPawns": 0.8699444080193632,
+          "mappedMin": -119.04762149535127,
+          "mappedMax": 25.831041739972463
+        },
+        "W5-RESCUBIC-R4-LR001-g96-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5006780246183646,
+          "changeRmsPawns": 1.0791245832308856,
+          "mappedMin": -129.05179947945564,
+          "mappedMax": 26.078208204094466
+        },
+        "W5-RESCUBIC-R4-LR001-g96-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5252643150024523,
+          "changeRmsPawns": 2.1582491664617716,
+          "mappedMin": -135.81714826885528,
+          "mappedMax": 26.44561200781853
+        },
+        "W5-RESCUBIC-R16-LR001-g64:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.0489782752663885,
+          "changeRmsPawns": 27.637350792678113,
+          "mappedMin": -80.86672755844455,
+          "mappedMax": 98.79547847518919
+        },
+        "W5-RESCUBIC-R16-LR001-g64:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.044129552610491,
+          "changeRmsPawns": 55.274701585356226,
+          "mappedMin": -79.64793794718963,
+          "mappedMax": 319.8774076404344
+        },
+        "W5-RESCUBIC-R16-LR001-g64-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4693253898702852,
+          "changeRmsPawns": 0.2929654156931945,
+          "mappedMin": -121.33628964393942,
+          "mappedMax": 25.74654281492309
+        },
+        "W5-RESCUBIC-R16-LR001-g64-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4634578620271248,
+          "changeRmsPawns": 0.585930831386389,
+          "mappedMin": -120.38612859782285,
+          "mappedMax": 25.782281229475764
+        },
+        "W5-RESCUBIC-R16-LR001-g64-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4824512020268379,
+          "changeRmsPawns": 0.677022430299084,
+          "mappedMin": -124.84977675248038,
+          "mappedMax": 26.0595227011629
+        },
+        "W5-RESCUBIC-R16-LR001-g64-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4892908446483273,
+          "changeRmsPawns": 1.354044860598168,
+          "mappedMin": -127.41310281490478,
+          "mappedMax": 26.408241001955393
+        },
+        "W5-RESCUBIC-R16-LR001-g72:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.173544985927509,
+          "changeRmsPawns": 10.717413431997613,
+          "mappedMin": -80.3934657098251,
+          "mappedMax": 26.128077807934595
+        },
+        "W5-RESCUBIC-R16-LR001-g72:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.044876598410665,
+          "changeRmsPawns": 21.434826863995227,
+          "mappedMin": -78.70141424995072,
+          "mappedMax": 49.08457009351247
+        },
+        "W5-RESCUBIC-R16-LR001-g72-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4682119651443748,
+          "changeRmsPawns": 0.2953865977032778,
+          "mappedMin": -121.1853380509013,
+          "mappedMax": 25.73891945103216
+        },
+        "W5-RESCUBIC-R16-LR001-g72-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.461274361580049,
+          "changeRmsPawns": 0.5907731954065557,
+          "mappedMin": -120.08422541174659,
+          "mappedMax": 25.767034501693914
+        },
+        "W5-RESCUBIC-R16-LR001-g72-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4974892976842251,
+          "changeRmsPawns": 1.098712090533401,
+          "mappedMin": -129.37643790145614,
+          "mappedMax": 25.925923633357563
+        },
+        "W5-RESCUBIC-R16-LR001-g72-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5193773910174222,
+          "changeRmsPawns": 2.1974241810668023,
+          "mappedMin": -136.4664251128563,
+          "mappedMax": 26.14104286634472
+        },
+        "W5-RESCUBIC-R16-LR001-g80:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.2090298819695258,
+          "changeRmsPawns": 9.610278013263864,
+          "mappedMin": -79.8009535583059,
+          "mappedMax": 26.128862112599478
+        },
+        "W5-RESCUBIC-R16-LR001-g80:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.0542172042837068,
+          "changeRmsPawns": 19.220556026527728,
+          "mappedMin": -77.51638994691235,
+          "mappedMax": 31.32193395686241
+        },
+        "W5-RESCUBIC-R16-LR001-g80-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4674399683953194,
+          "changeRmsPawns": 0.32109399877277334,
+          "mappedMin": -121.01997717231049,
+          "mappedMax": 25.739373891730988
+        },
+        "W5-RESCUBIC-R16-LR001-g80-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4597643507134517,
+          "changeRmsPawns": 0.6421879975455467,
+          "mappedMin": -119.75350365456501,
+          "mappedMax": 25.76794338309157
+        },
+        "W5-RESCUBIC-R16-LR001-g80-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4966728221548706,
+          "changeRmsPawns": 0.9842382210116596,
+          "mappedMin": -128.24146901104461,
+          "mappedMax": 25.97068400941449
+        },
+        "W5-RESCUBIC-R16-LR001-g80-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5176688073054891,
+          "changeRmsPawns": 1.9684764420233196,
+          "mappedMin": -134.19648733203326,
+          "mappedMax": 26.23056361845858
+        },
+        "W5-RESCUBIC-R16-LR001-g88:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4865533105293376,
+          "changeRmsPawns": 0.7332294500595374,
+          "mappedMin": -125.54570156255852,
+          "mappedMax": 26.050932046251702
+        },
+        "W5-RESCUBIC-R16-LR001-g88:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4979167815244943,
+          "changeRmsPawns": 1.4664589001190749,
+          "mappedMin": -128.80495243506104,
+          "mappedMax": 26.39105969213299
+        },
+        "W5-RESCUBIC-R16-LR001-g88-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.467331933620252,
+          "changeRmsPawns": 0.32413772558515036,
+          "mappedMin": -120.88957254421325,
+          "mappedMax": 25.719231986406978
+        },
+        "W5-RESCUBIC-R16-LR001-g88-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4596188819854627,
+          "changeRmsPawns": 0.6482754511703006,
+          "mappedMin": -119.49269439837052,
+          "mappedMax": 25.727659572443546
+        },
+        "W5-RESCUBIC-R16-LR001-g88-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5000626543131668,
+          "changeRmsPawns": 1.1742523498012958,
+          "mappedMin": -129.7114781675392,
+          "mappedMax": 25.953346116829447
+        },
+        "W5-RESCUBIC-R16-LR001-g88-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.5247298751768106,
+          "changeRmsPawns": 2.348504699602592,
+          "mappedMin": -137.13650564502242,
+          "mappedMax": 26.195887833288488
+        },
+        "W5-RESCUBIC-R16-LR001-g95:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.1301468131477042,
+          "changeRmsPawns": 12.369798347211525,
+          "mappedMin": -78.65539215079556,
+          "mappedMax": 26.221570828174915
+        },
+        "W5-RESCUBIC-R16-LR001-g95:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.0497300017888478,
+          "changeRmsPawns": 24.73959669442305,
+          "mappedMin": -75.22526713189167,
+          "mappedMax": 75.44130839660087
+        },
+        "W5-RESCUBIC-R16-LR001-g95-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4635257932481178,
+          "changeRmsPawns": 0.3893743119481503,
+          "mappedMin": -120.76229019107025,
+          "mappedMax": 25.729843902310694
+        },
+        "W5-RESCUBIC-R16-LR001-g95-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4528367412618732,
+          "changeRmsPawns": 0.7787486238963007,
+          "mappedMin": -119.23812969208451,
+          "mappedMax": 25.74888340425098
+        },
+        "W5-RESCUBIC-R16-LR001-g95-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.486154949313297,
+          "changeRmsPawns": 0.8733111116781191,
+          "mappedMin": -125.65562450009303,
+          "mappedMax": 26.049734427995332
+        },
+        "W5-RESCUBIC-R16-LR001-g95-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4967191210953772,
+          "changeRmsPawns": 1.746622223356238,
+          "mappedMin": -129.02479831013005,
+          "mappedMax": 26.38866445562026
+        },
+        "W5-RESCUBIC-R16-LR001-g96:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.147241758449606,
+          "changeRmsPawns": 11.65392619731279,
+          "mappedMin": -79.48584797022654,
+          "mappedMax": 26.27557933704092
+        },
+        "W5-RESCUBIC-R16-LR001-g96:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.0443750624101924,
+          "changeRmsPawns": 23.30785239462558,
+          "mappedMin": -76.88617877075363,
+          "mappedMax": 64.02604920951791
+        },
+        "W5-RESCUBIC-R16-LR001-g96-unary:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.464060677813088,
+          "changeRmsPawns": 0.38334608323854397,
+          "mappedMin": -120.753529071635,
+          "mappedMax": 25.741118652421136
+        },
+        "W5-RESCUBIC-R16-LR001-g96-unary:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4538323021275747,
+          "changeRmsPawns": 0.7666921664770879,
+          "mappedMin": -119.22060745321401,
+          "mappedMax": 25.77143290447186
+        },
+        "W5-RESCUBIC-R16-LR001-g96-quadratic:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4875107704270916,
+          "changeRmsPawns": 0.8865421563723058,
+          "mappedMin": -126.61996819764605,
+          "mappedMax": 26.10950143505736
+        },
+        "W5-RESCUBIC-R16-LR001-g96-quadratic:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.49961907072088,
+          "changeRmsPawns": 1.7730843127446119,
+          "mappedMin": -130.95348570523612,
+          "mappedMax": 26.50819846974431
+        },
+        "W5-BRE-CONTROL-LR001-g64:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.474534333803264,
+          "changeRmsPawns": 0.19364012258316513,
+          "mappedMin": -121.58477335320029,
+          "mappedMax": 25.715400296538036
+        },
+        "W5-BRE-CONTROL-LR001-g64:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4729788769448864,
+          "changeRmsPawns": 0.38728024516633025,
+          "mappedMin": -120.88309601634458,
+          "mappedMax": 25.719996192705665
+        },
+        "W5-BRE-CONTROL-LR001-g72:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4766813067368687,
+          "changeRmsPawns": 0.20129968184658634,
+          "mappedMin": -121.66210022749362,
+          "mappedMax": 25.68730532465206
+        },
+        "W5-BRE-CONTROL-LR001-g72:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.477391947516581,
+          "changeRmsPawns": 0.4025993636931727,
+          "mappedMin": -121.03774976493125,
+          "mappedMax": 25.66380624893371
+        },
+        "W5-BRE-CONTROL-LR001-g80:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.479514352538379,
+          "changeRmsPawns": 0.22276499983886902,
+          "mappedMin": -121.69575467673329,
+          "mappedMax": 25.680489460965596
+        },
+        "W5-BRE-CONTROL-LR001-g80:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4832726033417374,
+          "changeRmsPawns": 0.44552999967773804,
+          "mappedMin": -121.1050586634106,
+          "mappedMax": 25.650174521560785
+        },
+        "W5-BRE-CONTROL-LR001-g88:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4816040936701382,
+          "changeRmsPawns": 0.2520249226477776,
+          "mappedMin": -121.57460261597741,
+          "mappedMax": 25.656549225644543
+        },
+        "W5-BRE-CONTROL-LR001-g88:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4878539033270244,
+          "changeRmsPawns": 0.5040498452955553,
+          "mappedMin": -120.86275454189882,
+          "mappedMax": 25.60229405091868
+        },
+        "W5-BRE-CONTROL-LR001-g95:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4766410157121417,
+          "changeRmsPawns": 0.21001213787394993,
+          "mappedMin": -121.60962771204275,
+          "mappedMax": 25.736304804347522
+        },
+        "W5-BRE-CONTROL-LR001-g95:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4773103123182796,
+          "changeRmsPawns": 0.4200242757478997,
+          "mappedMin": -120.93280473402952,
+          "mappedMax": 25.76180520832464
+        },
+        "W5-BRE-CONTROL-LR001-g96:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4750810824315639,
+          "changeRmsPawns": 0.22107664172226252,
+          "mappedMin": -121.62652235869675,
+          "mappedMax": 25.70390648380966
+        },
+        "W5-BRE-CONTROL-LR001-g96:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4743055392774984,
+          "changeRmsPawns": 0.44215328344452487,
+          "mappedMin": -120.96659402733752,
+          "mappedMax": 25.69700856724892
+        },
+        "W5-BRE-CONTROL-LR003-g64:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4793462023456172,
+          "changeRmsPawns": 0.22470850864540853,
+          "mappedMin": -121.63466490985773,
+          "mappedMax": 25.69687535541156
+        },
+        "W5-BRE-CONTROL-LR003-g64:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4831147177974897,
+          "changeRmsPawns": 0.4494170172908172,
+          "mappedMin": -120.98287912965947,
+          "mappedMax": 25.682946310452714
+        },
+        "W5-BRE-CONTROL-LR003-g72:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4748242504543385,
+          "changeRmsPawns": 0.2122919562889556,
+          "mappedMin": -121.78412375263514,
+          "mappedMax": 25.698615892195864
+        },
+        "W5-BRE-CONTROL-LR003-g72:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4736425445413113,
+          "changeRmsPawns": 0.42458391257791106,
+          "mappedMin": -121.2817968152143,
+          "mappedMax": 25.68642738402132
+        },
+        "W5-BRE-CONTROL-LR003-g80:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4823850591514516,
+          "changeRmsPawns": 0.2572868510247381,
+          "mappedMin": -121.86781606673996,
+          "mappedMax": 25.676297850111993
+        },
+        "W5-BRE-CONTROL-LR003-g80:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4894005537053927,
+          "changeRmsPawns": 0.5145737020494762,
+          "mappedMin": -121.44918144342394,
+          "mappedMax": 25.64179129985358
+        },
+        "W5-BRE-CONTROL-LR003-g88:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4822201883862995,
+          "changeRmsPawns": 0.2693142760024148,
+          "mappedMin": -121.63445820665454,
+          "mappedMax": 25.64455994824563
+        },
+        "W5-BRE-CONTROL-LR003-g88:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.489018869943494,
+          "changeRmsPawns": 0.5386285520048294,
+          "mappedMin": -120.9824657232531,
+          "mappedMax": 25.57831549612085
+        },
+        "W5-BRE-CONTROL-LR003-g94:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.475464834628528,
+          "changeRmsPawns": 0.2316502053837002,
+          "mappedMin": -121.7103726641704,
+          "mappedMax": 25.746314559276033
+        },
+        "W5-BRE-CONTROL-LR003-g94:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4752651454980714,
+          "changeRmsPawns": 0.4633004107674003,
+          "mappedMin": -121.13429463828481,
+          "mappedMax": 25.781824718181657
+        },
+        "W5-BRE-CONTROL-LR003-g96:0.5:fit": {
+          "count": 1024,
+          "crossEntropy": 1.4754397566024173,
+          "changeRmsPawns": 0.22938193594165046,
+          "mappedMin": -121.8286276268766,
+          "mappedMax": 25.747807818876183
+        },
+        "W5-BRE-CONTROL-LR003-g96:1:fit": {
+          "count": 1024,
+          "crossEntropy": 1.475026567622296,
+          "changeRmsPawns": 0.4587638718833008,
+          "mappedMin": -121.37080456369719,
+          "mappedMax": 25.784811237381962
+        },
+        "Gen32:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9807684817611262,
+          "changeRmsPawns": 1.2848648713925854e-07,
+          "mappedMin": -16.115624469123542,
+          "mappedMax": 18.291009752281095
+        },
+        "W5-RESCUBIC-R4-LR001-g64:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9790178251237512,
+          "changeRmsPawns": 0.23538350947513095,
+          "mappedMin": -16.02242961506817,
+          "mappedMax": 18.472405959641137
+        },
+        "W5-RESCUBIC-R4-LR001-g64:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9790361131115939,
+          "changeRmsPawns": 0.4707670189502619,
+          "mappedMin": -15.929234754038099,
+          "mappedMax": 18.653802132582875
+        },
+        "W5-RESCUBIC-R4-LR001-g64-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.97680520669143,
+          "changeRmsPawns": 0.25385654810890845,
+          "mappedMin": -16.100491753885223,
+          "mappedMax": 18.291908868379636
+        },
+        "W5-RESCUBIC-R4-LR001-g64-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.974426005180567,
+          "changeRmsPawns": 0.5077130962178169,
+          "mappedMin": -16.085359031672212,
+          "mappedMax": 18.29280795005988
+        },
+        "W5-RESCUBIC-R4-LR001-g64-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9816488533742702,
+          "changeRmsPawns": 0.22003276735238886,
+          "mappedMin": -16.038441933530255,
+          "mappedMax": 18.49630130831886
+        },
+        "W5-RESCUBIC-R4-LR001-g64-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9838748545583653,
+          "changeRmsPawns": 0.4400655347047777,
+          "mappedMin": -15.961259390962272,
+          "mappedMax": 18.701592829938328
+        },
+        "W5-RESCUBIC-R4-LR001-g72:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9755528435709344,
+          "changeRmsPawns": 0.20730503639241488,
+          "mappedMin": -16.015330664318554,
+          "mappedMax": 18.42556949888154
+        },
+        "W5-RESCUBIC-R4-LR001-g72:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.971456476809317,
+          "changeRmsPawns": 0.41461007278482975,
+          "mappedMin": -15.915036852538874,
+          "mappedMax": 18.56012921106369
+        },
+        "W5-RESCUBIC-R4-LR001-g72-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9761772588213578,
+          "changeRmsPawns": 0.28044579218579485,
+          "mappedMin": -16.08867330890181,
+          "mappedMax": 18.29647032170901
+        },
+        "W5-RESCUBIC-R4-LR001-g72-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9736270767258849,
+          "changeRmsPawns": 0.5608915843715897,
+          "mappedMin": -16.06172214170539,
+          "mappedMax": 18.301930856718627
+        },
+        "W5-RESCUBIC-R4-LR001-g72-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9785050127739274,
+          "changeRmsPawns": 0.18409496877204565,
+          "mappedMin": -16.043168279792038,
+          "mappedMax": 18.452120186611364
+        },
+        "W5-RESCUBIC-R4-LR001-g72-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9770024107460469,
+          "changeRmsPawns": 0.3681899375440913,
+          "mappedMin": -15.970712083485841,
+          "mappedMax": 18.613230586523333
+        },
+        "W5-RESCUBIC-R4-LR001-g80:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9762911452508636,
+          "changeRmsPawns": 0.22641896818487184,
+          "mappedMin": -16.040603456342353,
+          "mappedMax": 18.484614275043405
+        },
+        "W5-RESCUBIC-R4-LR001-g80:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9731902595224531,
+          "changeRmsPawns": 0.4528379363697437,
+          "mappedMin": -15.965582436586473,
+          "mappedMax": 18.678218763387417
+        },
+        "W5-RESCUBIC-R4-LR001-g80-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9758455844169175,
+          "changeRmsPawns": 0.2924889911268142,
+          "mappedMin": -16.099279329367683,
+          "mappedMax": 18.30810405942317
+        },
+        "W5-RESCUBIC-R4-LR001-g80-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9731163434667213,
+          "changeRmsPawns": 0.5849779822536284,
+          "mappedMin": -16.082934182637125,
+          "mappedMax": 18.325198332146947
+        },
+        "W5-RESCUBIC-R4-LR001-g80-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.978020988189231,
+          "changeRmsPawns": 0.20275938812707842,
+          "mappedMin": -16.055602864613817,
+          "mappedMax": 18.4828782537612
+        },
+        "W5-RESCUBIC-R4-LR001-g80-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9763593567705873,
+          "changeRmsPawns": 0.40551877625415683,
+          "mappedMin": -15.995581253129401,
+          "mappedMax": 18.674746720823006
+        },
+        "W5-RESCUBIC-R4-LR001-g88:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9779502024669027,
+          "changeRmsPawns": 0.20457328474767245,
+          "mappedMin": -16.03441987107458,
+          "mappedMax": 18.478218475141613
+        },
+        "W5-RESCUBIC-R4-LR001-g88:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.976175413454197,
+          "changeRmsPawns": 0.4091465694953449,
+          "mappedMin": -15.953215266050922,
+          "mappedMax": 18.665427163583836
+        },
+        "W5-RESCUBIC-R4-LR001-g88-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.97640734849414,
+          "changeRmsPawns": 0.2944030383031826,
+          "mappedMin": -16.07980614977681,
+          "mappedMax": 18.29701437907397
+        },
+        "W5-RESCUBIC-R4-LR001-g88-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.974266288488715,
+          "changeRmsPawns": 0.5888060766063652,
+          "mappedMin": -16.043987823455385,
+          "mappedMax": 18.303018971448548
+        },
+        "W5-RESCUBIC-R4-LR001-g88-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9773982284546846,
+          "changeRmsPawns": 0.18977755323769674,
+          "mappedMin": -16.03759725708131,
+          "mappedMax": 18.45687145116651
+        },
+        "W5-RESCUBIC-R4-LR001-g88-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9748471124824909,
+          "changeRmsPawns": 0.3795551064753935,
+          "mappedMin": -15.959570038064381,
+          "mappedMax": 18.622733115633626
+        },
+        "W5-RESCUBIC-R4-LR001-g93:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.976440073785422,
+          "changeRmsPawns": 0.21669477562478368,
+          "mappedMin": -16.04323249599767,
+          "mappedMax": 18.459095077243184
+        },
+        "W5-RESCUBIC-R4-LR001-g93:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9734862499679136,
+          "changeRmsPawns": 0.43338955124956735,
+          "mappedMin": -15.970840515897109,
+          "mappedMax": 18.627180367786973
+        },
+        "W5-RESCUBIC-R4-LR001-g93-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9754403608482516,
+          "changeRmsPawns": 0.3196316909732987,
+          "mappedMin": -16.06858307222058,
+          "mappedMax": 18.3050902688496
+        },
+        "W5-RESCUBIC-R4-LR001-g93-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.972670872145297,
+          "changeRmsPawns": 0.6392633819465974,
+          "mappedMin": -16.021541668342923,
+          "mappedMax": 18.319170750999806
+        },
+        "W5-RESCUBIC-R4-LR001-g93-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9769291113753837,
+          "changeRmsPawns": 0.19467070453719332,
+          "mappedMin": -16.05105439649051,
+          "mappedMax": 18.45440704459614
+        },
+        "W5-RESCUBIC-R4-LR001-g93-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9740824344243477,
+          "changeRmsPawns": 0.38934140907438664,
+          "mappedMin": -15.986484316882782,
+          "mappedMax": 18.617804302492893
+        },
+        "W5-RESCUBIC-R4-LR001-g96:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.97375346258837,
+          "changeRmsPawns": 0.22483271458454904,
+          "mappedMin": -16.03462147523088,
+          "mappedMax": 18.469447634092113
+        },
+        "W5-RESCUBIC-R4-LR001-g96:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9681697444045856,
+          "changeRmsPawns": 0.4496654291690981,
+          "mappedMin": -15.953618474363529,
+          "mappedMax": 18.647885481484835
+        },
+        "W5-RESCUBIC-R4-LR001-g96-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9733246798685167,
+          "changeRmsPawns": 0.36661819475617213,
+          "mappedMin": -16.067175072914218,
+          "mappedMax": 18.319962996691324
+        },
+        "W5-RESCUBIC-R4-LR001-g96-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9691969060031834,
+          "changeRmsPawns": 0.7332363895123443,
+          "mappedMin": -16.0187256697302,
+          "mappedMax": 18.348916206683253
+        },
+        "W5-RESCUBIC-R4-LR001-g96-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.97597045096593,
+          "changeRmsPawns": 0.19980773394944443,
+          "mappedMin": -16.051150239094188,
+          "mappedMax": 18.4694308563403
+        },
+        "W5-RESCUBIC-R4-LR001-g96-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9721538531939122,
+          "changeRmsPawns": 0.39961546789888885,
+          "mappedMin": -15.986676002090139,
+          "mappedMax": 18.647851925981204
+        },
+        "W5-RESCUBIC-R16-LR001-g64:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9690529901852422,
+          "changeRmsPawns": 0.2626798372876858,
+          "mappedMin": -16.040457012262475,
+          "mappedMax": 18.50571360888807
+        },
+        "W5-RESCUBIC-R16-LR001-g64:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9596115013129558,
+          "changeRmsPawns": 0.5253596745753716,
+          "mappedMin": -15.965289548426714,
+          "mappedMax": 18.720417431076747
+        },
+        "W5-RESCUBIC-R16-LR001-g64-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.97680520669143,
+          "changeRmsPawns": 0.25385654810890845,
+          "mappedMin": -16.100491753885223,
+          "mappedMax": 18.291908868379636
+        },
+        "W5-RESCUBIC-R16-LR001-g64-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.974426005180567,
+          "changeRmsPawns": 0.5077130962178169,
+          "mappedMin": -16.085359031672212,
+          "mappedMax": 18.29280795005988
+        },
+        "W5-RESCUBIC-R16-LR001-g64-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9715740550697767,
+          "changeRmsPawns": 0.250893598025041,
+          "mappedMin": -16.05878046567875,
+          "mappedMax": 18.523275727403302
+        },
+        "W5-RESCUBIC-R16-LR001-g64-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9642356028479484,
+          "changeRmsPawns": 0.501787196050082,
+          "mappedMin": -16.001936455259266,
+          "mappedMax": 18.75554166810721
+        },
+        "W5-RESCUBIC-R16-LR001-g72:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9707010474633753,
+          "changeRmsPawns": 0.26038777585926015,
+          "mappedMin": -16.036061042735774,
+          "mappedMax": 18.453527119774602
+        },
+        "W5-RESCUBIC-R16-LR001-g72:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9628775462460937,
+          "changeRmsPawns": 0.5207755517185203,
+          "mappedMin": -15.956497609373315,
+          "mappedMax": 18.61604445284981
+        },
+        "W5-RESCUBIC-R16-LR001-g72-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9778291947715932,
+          "changeRmsPawns": 0.24896611201127056,
+          "mappedMin": -16.101741839531506,
+          "mappedMax": 18.280180952836346
+        },
+        "W5-RESCUBIC-R16-LR001-g72-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9764738382959443,
+          "changeRmsPawns": 0.4979322240225411,
+          "mappedMin": -16.08785920296478,
+          "mappedMax": 18.269352118973302
+        },
+        "W5-RESCUBIC-R16-LR001-g72-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9726073672009289,
+          "changeRmsPawns": 0.2420289258717191,
+          "mappedMin": -16.056767650509713,
+          "mappedMax": 18.468199348537823
+        },
+        "W5-RESCUBIC-R16-LR001-g72-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9660324218465894,
+          "changeRmsPawns": 0.4840578517434382,
+          "mappedMin": -15.997910824921192,
+          "mappedMax": 18.64538891037625
+        },
+        "W5-RESCUBIC-R16-LR001-g80:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.972037849336066,
+          "changeRmsPawns": 0.26750868465444005,
+          "mappedMin": -16.05206590669451,
+          "mappedMax": 18.461289997999664
+        },
+        "W5-RESCUBIC-R16-LR001-g80:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9656178841333324,
+          "changeRmsPawns": 0.5350173693088801,
+          "mappedMin": -15.988507337290784,
+          "mappedMax": 18.63157020929993
+        },
+        "W5-RESCUBIC-R16-LR001-g80-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9777181630922624,
+          "changeRmsPawns": 0.2627623314354227,
+          "mappedMin": -16.12261387293736,
+          "mappedMax": 18.294698585018658
+        },
+        "W5-RESCUBIC-R16-LR001-g80-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9763069444799384,
+          "changeRmsPawns": 0.5255246628708454,
+          "mappedMin": -16.12960326977648,
+          "mappedMax": 18.298387383337925
+        },
+        "W5-RESCUBIC-R16-LR001-g80-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9734489067338722,
+          "changeRmsPawns": 0.2439525229872943,
+          "mappedMin": -16.066321215008116,
+          "mappedMax": 18.466466280739954
+        },
+        "W5-RESCUBIC-R16-LR001-g80-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9679239350947465,
+          "changeRmsPawns": 0.4879050459745886,
+          "mappedMin": -16.017017953918,
+          "mappedMax": 18.641922774780518
+        },
+        "W5-RESCUBIC-R16-LR001-g88:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9731349625450684,
+          "changeRmsPawns": 0.2543476749358524,
+          "mappedMin": -16.062610782299682,
+          "mappedMax": 18.492781944106643
+        },
+        "W5-RESCUBIC-R16-LR001-g88:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9675257040057742,
+          "changeRmsPawns": 0.5086953498717048,
+          "mappedMin": -16.009597088501128,
+          "mappedMax": 18.694554101513894
+        },
+        "W5-RESCUBIC-R16-LR001-g88-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9791614675213568,
+          "changeRmsPawns": 0.25907803192036766,
+          "mappedMin": -16.114046090060757,
+          "mappedMax": 18.289127701267972
+        },
+        "W5-RESCUBIC-R16-LR001-g88-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9793098850718615,
+          "changeRmsPawns": 0.5181560638407353,
+          "mappedMin": -16.112467704023278,
+          "mappedMax": 18.287245615836547
+        },
+        "W5-RESCUBIC-R16-LR001-g88-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9727857365852766,
+          "changeRmsPawns": 0.2441233051392122,
+          "mappedMin": -16.06190263569693,
+          "mappedMax": 18.47367237782318
+        },
+        "W5-RESCUBIC-R16-LR001-g88-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9667601990377493,
+          "changeRmsPawns": 0.4882466102784244,
+          "mappedMin": -16.008180795295626,
+          "mappedMax": 18.656334968946968
+        },
+        "W5-RESCUBIC-R16-LR001-g95:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9744621840632417,
+          "changeRmsPawns": 0.2652193925143227,
+          "mappedMin": -16.087475149123193,
+          "mappedMax": 18.445567245600245
+        },
+        "W5-RESCUBIC-R16-LR001-g95:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9707083103051833,
+          "changeRmsPawns": 0.5304387850286454,
+          "mappedMin": -16.059325822148146,
+          "mappedMax": 18.60012470450109
+        },
+        "W5-RESCUBIC-R16-LR001-g95-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9770412955555349,
+          "changeRmsPawns": 0.3228806515547303,
+          "mappedMin": -16.098302951449,
+          "mappedMax": 18.301478988758838
+        },
+        "W5-RESCUBIC-R16-LR001-g95-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9757504730544707,
+          "changeRmsPawns": 0.6457613031094606,
+          "mappedMin": -16.080981426799767,
+          "mappedMax": 18.311948190818278
+        },
+        "W5-RESCUBIC-R16-LR001-g95-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9763973236443818,
+          "changeRmsPawns": 0.2420325564674894,
+          "mappedMin": -16.10943074046753,
+          "mappedMax": 18.463593812862324
+        },
+        "W5-RESCUBIC-R16-LR001-g95-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9738521615962435,
+          "changeRmsPawns": 0.4840651129349788,
+          "mappedMin": -16.103237004836828,
+          "mappedMax": 18.636177839025255
+        },
+        "W5-RESCUBIC-R16-LR001-g96:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9704223079036854,
+          "changeRmsPawns": 0.27825261530040146,
+          "mappedMin": -16.084917862672285,
+          "mappedMax": 18.484715328806075
+        },
+        "W5-RESCUBIC-R16-LR001-g96:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.962933455006495,
+          "changeRmsPawns": 0.5565052306008029,
+          "mappedMin": -16.054211249246332,
+          "mappedMax": 18.678420870912756
+        },
+        "W5-RESCUBIC-R16-LR001-g96-unary:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9761447533609875,
+          "changeRmsPawns": 0.31405281312753874,
+          "mappedMin": -16.08880828110738,
+          "mappedMax": 18.317659012504322
+        },
+        "W5-RESCUBIC-R16-LR001-g96-unary:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9740224250528469,
+          "changeRmsPawns": 0.6281056262550775,
+          "mappedMin": -16.06199208611652,
+          "mappedMax": 18.344308238309253
+        },
+        "W5-RESCUBIC-R16-LR001-g96-quadratic:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9729568857206194,
+          "changeRmsPawns": 0.25861897329919886,
+          "mappedMin": -16.101492320479878,
+          "mappedMax": 18.49233104721831
+        },
+        "W5-RESCUBIC-R16-LR001-g96-quadratic:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.967540178629975,
+          "changeRmsPawns": 0.5172379465983977,
+          "mappedMin": -16.087360164861515,
+          "mappedMax": 18.693652307737228
+        },
+        "W5-BRE-CONTROL-LR001-g64:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9802225468399414,
+          "changeRmsPawns": 0.17774297178245457,
+          "mappedMin": -16.12005231551447,
+          "mappedMax": 18.298381232433933
+        },
+        "W5-BRE-CONTROL-LR001-g64:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9807297105295103,
+          "changeRmsPawns": 0.35548594356490915,
+          "mappedMin": -16.12448015493071,
+          "mappedMax": 18.30575267816847
+        },
+        "W5-BRE-CONTROL-LR001-g72:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9786834345273978,
+          "changeRmsPawns": 0.18828821426764672,
+          "mappedMin": -16.150975182478504,
+          "mappedMax": 18.31852946657015
+        },
+        "W5-BRE-CONTROL-LR001-g72:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9776508597453925,
+          "changeRmsPawns": 0.37657642853529344,
+          "mappedMin": -16.186325888858768,
+          "mappedMax": 18.346049146440908
+        },
+        "W5-BRE-CONTROL-LR001-g80:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9811928743984211,
+          "changeRmsPawns": 0.22472240265619584,
+          "mappedMin": -16.169793258128507,
+          "mappedMax": 18.257977058550217
+        },
+        "W5-BRE-CONTROL-LR001-g80:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9833489253404828,
+          "changeRmsPawns": 0.44944480531239167,
+          "mappedMin": -16.22396204015878,
+          "mappedMax": 18.224944330401037
+        },
+        "W5-BRE-CONTROL-LR001-g88:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9823803086015586,
+          "changeRmsPawns": 0.24032985697411752,
+          "mappedMin": -16.181507190969597,
+          "mappedMax": 18.28241739706013
+        },
+        "W5-BRE-CONTROL-LR001-g88:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9857776420384629,
+          "changeRmsPawns": 0.48065971394823503,
+          "mappedMin": -16.24738990584096,
+          "mappedMax": 18.273825007420868
+        },
+        "W5-BRE-CONTROL-LR001-g95:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9787974689744192,
+          "changeRmsPawns": 0.21165443944209172,
+          "mappedMin": -16.166306822243026,
+          "mappedMax": 18.251765866041584
+        },
+        "W5-BRE-CONTROL-LR001-g95:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9785060366632639,
+          "changeRmsPawns": 0.42330887888418345,
+          "mappedMin": -16.216989168387812,
+          "mappedMax": 18.212521945383774
+        },
+        "W5-BRE-CONTROL-LR001-g96:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.979228615399581,
+          "changeRmsPawns": 0.21318033403343786,
+          "mappedMin": -16.17489526767438,
+          "mappedMax": 18.281246638262576
+        },
+        "W5-BRE-CONTROL-LR001-g96:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9792103109240885,
+          "changeRmsPawns": 0.4263606680668757,
+          "mappedMin": -16.234166059250526,
+          "mappedMax": 18.271483489825755
+        },
+        "W5-BRE-CONTROL-LR003-g64:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9824442414598155,
+          "changeRmsPawns": 0.22346212733939352,
+          "mappedMin": -16.12316892325364,
+          "mappedMax": 18.298045071100624
+        },
+        "W5-BRE-CONTROL-LR003-g64:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9857463201183714,
+          "changeRmsPawns": 0.44692425467878705,
+          "mappedMin": -16.13071337040904,
+          "mappedMax": 18.30508035550185
+        },
+        "W5-BRE-CONTROL-LR003-g72:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9793282149409391,
+          "changeRmsPawns": 0.20567580836284427,
+          "mappedMin": -16.137930904454358,
+          "mappedMax": 18.302795361118374
+        },
+        "W5-BRE-CONTROL-LR003-g72:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9792149865113107,
+          "changeRmsPawns": 0.41135161672568854,
+          "mappedMin": -16.160237332810482,
+          "mappedMax": 18.314580935537357
+        },
+        "W5-BRE-CONTROL-LR003-g80:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9818568249362749,
+          "changeRmsPawns": 0.2625586661603005,
+          "mappedMin": -16.145718548338994,
+          "mappedMax": 18.22532226660013
+        },
+        "W5-BRE-CONTROL-LR003-g80:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9854209218657467,
+          "changeRmsPawns": 0.525117332320601,
+          "mappedMin": -16.17581262057975,
+          "mappedMax": 18.159634746500867
+        },
+        "W5-BRE-CONTROL-LR003-g88:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9818355858109684,
+          "changeRmsPawns": 0.2518153523086776,
+          "mappedMin": -16.17904066510257,
+          "mappedMax": 18.27199638088641
+        },
+        "W5-BRE-CONTROL-LR003-g88:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9846802612848325,
+          "changeRmsPawns": 0.5036307046173552,
+          "mappedMin": -16.2424568541069,
+          "mappedMax": 18.252982975073422
+        },
+        "W5-BRE-CONTROL-LR003-g94:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9796641196168324,
+          "changeRmsPawns": 0.22970443623382775,
+          "mappedMin": -16.1104415049927,
+          "mappedMax": 18.272638594704155
+        },
+        "W5-BRE-CONTROL-LR003-g94:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9801337052417848,
+          "changeRmsPawns": 0.4594088724676555,
+          "mappedMin": -16.105258533887167,
+          "mappedMax": 18.25426740270892
+        },
+        "W5-BRE-CONTROL-LR003-g96:0.5:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.9792613724503056,
+          "changeRmsPawns": 0.22501057078815773,
+          "mappedMin": -16.16739273504394,
+          "mappedMax": 18.28938284556753
+        },
+        "W5-BRE-CONTROL-LR003-g96:1:evaluation": {
+          "count": 1024,
+          "crossEntropy": 0.979532721767767,
+          "changeRmsPawns": 0.45002114157631545,
+          "mappedMin": -16.219160993989647,
+          "mappedMax": 18.28775590443567
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "New source ordinals beyond G5 cursors, reserved geometry partition; game/FEN overlap and historical base exposure not excluded. This probe consumes the panel for development, not final confirmation.",
+    "Fixed .5/1 change and quarter material residual; no per-position selection or filtering.",
+    "Unary/quadratic ablations are post-training interventions, not separately optimized architectures.",
+    "Cubic predictors use compiled frozen base. Gen32/BRE predictors from the inherited assessment tool use binary64 trainer functions before float folding; match runtimes use verified compiled snapshots. Recorded tiny baseline raw differences must not be called exact function equality."
+  ]
+}
