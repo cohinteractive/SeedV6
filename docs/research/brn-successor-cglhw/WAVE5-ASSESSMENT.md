@@ -286,3 +286,19 @@ The current tail stopped normally at the explicit pause after direct R4/unary cl
 closed. Fifteen targeted JUnit tests pass (two quadratic parity/rejection cases and
 thirteen variant tests), zero failures/skips. The aggregate assessment tool rejects
 the still-incomplete budget without writing a completion report. No app build bump.
+
+Quadratic readiness is complete: both actual ablated checkpoints pass 6333 placements
+and 48 canonical/cache search root passes each, with zero integer/search differences.
+The separate degree2 prototype preserves exact core-cache raw bits and canonical
+scores in all three fixed replications. It saves 2.9-7.7% isolated time for R4 and
+7.5-12.3% for R16, with 64/256 fewer workspace bytes. This is a modest potential
+cost advantage, not an end-to-end speed or trained-quality claim. See the quadratic
+runtime-validation and cost-results manifests. Matches resume on their original
+runtimes; the completed pause remains preserved. No new training gate is selected.
+
+The full R4 correction ties its fast unary-only control at 200ms: 7/2/7 = 50%,
+descriptive pair-normal 95% 40.74-59.26%, after its 78.125% shallow-node score.
+The bounded-pair interval remains 1.98-98.02%, and eight reused development pairs
+do not establish equivalence or absence of expressive value. Full R4's paired root
+NPS is .67135 of the compiled unary control in this comparison. Cost/depth and
+interaction quality remain separate hypotheses.

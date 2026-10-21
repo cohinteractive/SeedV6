@@ -97,24 +97,18 @@ eight fresh development opening pairs, common search and fixed half-change calib
 Four actual trained cubic cache probes pass6333 positions and48 search root passes
 each, with zero integer/search differences. Use ONLY preserved `wave5-runtime.json`.
 The root started clean b43b761/build55. Read-only audit/freeze preserved owner models.
-Primary 256, direct node 80, R4/R16 clock 16 and BRE001 clock 32 are closed. Vector feasibility is
-complete: exact parity, R4 regression, R16 isolated gain 11.8-13.3%; no search-speed
-claim or application change. Its pause is preserved under raw/wave5. Resume remaining
-direct unary clock 32 and cubic-only 64 with their original frozen runtimes and plans.
-Then execute the newly frozen depth32 discriminator at262144 nodes versus BRE001
-on roots25..32 (wave5-depth-admission.json), followed by degree3 marginal32 at32768
-nodes (wave5-degree3-admission.json). First run the2 actual quadratic cache/search
-oracles on wave5-quadratic-model-plan.json. A research-only quadratic cost prototype
-is prepared for targeted tests and three fixed replications after the tail ends
-(wave5-quadratic-cost-admission.json); it has not yet been built or measured.
-These additions are not in the active tail driver.
-A temporary quadratic-cost build/probe pause is requested at the next batch boundary.
-Wait for the current child to finish before any build/probe, validate the prepared
-prototype, preserve the pause file, then resume the first incomplete tail protocol.
-The finite tail driver was build/research/w5-assessment-tail-v2.ps1; never
-launch a competing runner or rerun a completed one-off driver from the top.
-Inspect completed result manifests and resume first incomplete plan with unused
-log prefixes after interruption. No human action currently required.
+Primary 256 and direct 144 games are closed. Resume the remaining direct R16/unary
+clock 16 and cubic-only 64 with their original frozen runtimes and fixed plans.
+The active finite tail driver is build/research/w5-assessment-tail-v3.ps1; never
+launch a competing runner or rerun a one-off driver from the top. Both quadratic
+oracles now pass 6333 placements and 48 search root passes each. The separate
+degree2 cost prototype passes 15 tests and all three fixed replications; modest
+isolated savings do not establish search benefit. Both diagnostic pauses are preserved.
+After the tail closes, run build/research/w5-final-discriminators.ps1: the admitted
+depth 32 and marginal-degree3 32 games, using the original wave5-runtime.json.
+Their plans/admissions, completed reports and per-game receipts are authoritative.
+Inspect first incomplete plan and choose unused log prefixes after interruption.
+No human action currently required.
 Next: finish fixed primary counts, independently replay receipts, compare R4/R16,
 both continued BRE rates, endpoint selection and cost. Admit focused direct/maturity/
 mechanism controls based on evidence, without a predetermined new training gate.

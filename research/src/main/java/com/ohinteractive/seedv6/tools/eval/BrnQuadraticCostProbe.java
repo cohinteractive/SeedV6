@@ -66,4 +66,3 @@ public final class BrnQuadraticCostProbe {
         long total=0;for(int i=0;i<count;i++)total+=function.applyAsInt(boards.get(i%boards.size()));sink=total;
     }
 }
-

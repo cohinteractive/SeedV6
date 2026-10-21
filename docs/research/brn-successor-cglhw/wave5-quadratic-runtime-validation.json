@@ -1,0 +1,69 @@
+{
+  "id": "wave5-quadratic-runtime-validation-v1",
+  "runtime": "wave5-runtime.json",
+  "modelPlan": "wave5-quadratic-model-plan.json",
+  "modelPlanSha256": "680778b9bfd778cfe81793dd7b620b688a9e13e7aaf89d000d29390781b2e434",
+  "models": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\quadratic-cache-1-01.json",
+      "sha256": "bb18e07d8956d2f548f369f3e7292254a50831998ff92e6927ef3d0dd9707668",
+      "candidate": "W5-RESCUBIC-R4-LR001-g96-half-quadratic",
+      "manifest": {
+        "id": "g000096-s000786432-014449a8d5676d1a4569501219355fad6f5c7182a02537397d526db6e31ea35a",
+        "generation": 96,
+        "optimizerStep": 786432,
+        "trainingDepth": 4,
+        "parentId": "g000095-s000778240-e44abd3cf0617c304869dddf06783705a97c8c7c37866ac6b1345b318c71723d",
+        "networkBytes": 30864,
+        "networkSha256": "a831c9beea3889351b92fea09039ab7eabd8eb9ee6f648807336dfaa9684c158",
+        "trainingBytes": 92464,
+        "trainingSha256": "00f32dc27648a4e7ce5ffc24ea5c430f67059317b59818437b9ca1a9f99ff630",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "effectiveNetworkSha256": "7b5ed98716db9f995cddf7e2408b691a5d728e71610d58e0c89528f10f8bb378",
+      "positions": 6333,
+      "maximumRawError": 3.552713678800501e-15,
+      "integerDifferences": 0,
+      "searchParityRootPasses": 48,
+      "searchDifferences": 0,
+      "cache": {
+        "kind": "polynomial-period64-canonical-rounding-guard-v1",
+        "updates": 6209,
+        "roundingFallbacks": 0,
+        "rebuilds": 124,
+        "correctionErrorBound": 4.509073628100175e-08
+      }
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\quadratic-cache-2-01.json",
+      "sha256": "f20ca0f36f4e3127049f4de74c53a47fdbf58f42d0a10b7b340cf513c01c9244",
+      "candidate": "W5-RESCUBIC-R16-LR001-g96-half-quadratic",
+      "manifest": {
+        "id": "g000096-s000786432-f4c32fa4e682d031c65def888ef238210184540017bdce382c0c967d477b89b4",
+        "generation": 96,
+        "optimizerStep": 786432,
+        "trainingDepth": 4,
+        "parentId": "g000095-s000778240-af578b860a2d492795f6bdce34c5f5d6739953bf5d490daed85a4ba94ee6ecc8",
+        "networkBytes": 104784,
+        "networkSha256": "14e72d384c4a18ec80b2db2d55df6a3c9ae69f671c9c0b9688fac3e3fb8c1218",
+        "trainingBytes": 314224,
+        "trainingSha256": "66a1e1415dae680f1b065a16bb85e9b38f0a845a17daa2d9248f6fa98647eb0e",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "effectiveNetworkSha256": "00e8708e3846cd487aecb2d89f9b4fbbf30a3aa647ec5456b96a418318e817d5",
+      "positions": 6333,
+      "maximumRawError": 3.1086244689504383e-15,
+      "integerDifferences": 0,
+      "searchParityRootPasses": 48,
+      "searchDifferences": 0,
+      "cache": {
+        "correctionErrorBound": 9.171471319130762e-08,
+        "kind": "polynomial-period64-canonical-rounding-guard-v1",
+        "updates": 6209,
+        "roundingFallbacks": 0,
+        "rebuilds": 124
+      }
+    }
+  ],
+  "scope": "Actual original-runtime quadratic inference ablations ready for the frozen marginal-degree3 node plans. Original cache retains degree3 arithmetic; cost prototype is separate."
+}

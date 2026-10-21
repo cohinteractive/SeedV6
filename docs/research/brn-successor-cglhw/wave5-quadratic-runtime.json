@@ -1,0 +1,37 @@
+{
+  "id": "wave5-quadratic-cost-runtime-v1",
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave5\\quadratic-runtime-55-05\\lib",
+  "createdUtc": "2026-10-21T04:28:14.359775+00:00",
+  "sourceCommit": "195541021620bb64c1260b669a7f709480ae6b46",
+  "build": 55,
+  "modelFeatures": [
+    "brn-hybrid-raw-v1",
+    "brn-cubic-packed-v1",
+    "brn-unary-compiled-v1",
+    "brn-constant-gates-compiled-v1",
+    "brn-cubic-r4-v1",
+    "brn-cubic-only-ablation-v1",
+    "brn-cubic-vector-prototype-v1",
+    "brn-quadratic-cost-prototype-v1"
+  ],
+  "jars": {
+    "engine-core.jar": "346dd49e811fae8f283c3200e7794512ff73ec36975f442a831d56cf0885be81",
+    "engine-training.jar": "8df5eb8e96b52bf9db97eca39c5e573937bcffdfe0e72e8608acfebf3b16fa20",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "af5415a068de7483e30e14065909c6b2ba60342ea9b9bbaef84464470cde6e9c",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "java": "C:/java/jdk-21/bin/java.exe",
+  "heapMiB": 768,
+  "activeProcessors": 1,
+  "metadataOnlyCoreDifferencesFromVectorRuntime": {
+    "engine-core.jar": {
+      "com/ohinteractive/seedv6/application-version.properties": {
+        "before": "major=0\nminor=0\npatch=0\nbuild=55\nsourceRevision=2ee2e6d54763 (uncommitted changes)\nversionUpdated=2026-10-21\nplatform=Portable Java 21 (runtime platform reported separately)\n",
+        "after": "major=0\nminor=0\npatch=0\nbuild=55\nsourceRevision=c21db1473f0d (uncommitted changes)\nversionUpdated=2026-10-21\nplatform=Portable Java 21 (runtime platform reported separately)\n"
+      }
+    }
+  }
+}
