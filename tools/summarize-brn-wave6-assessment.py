@@ -18,9 +18,9 @@ def load(path):
 
 
 def summarize(directory, output, mode=None):
-    assert mode in (None, "--followup", "--wave7")
+    assert mode in (None, "--followup", "--wave7", "--wave8")
     followup = mode == "--followup"
-    wave = 7 if mode == "--wave7" else 6
+    wave = 8 if mode == "--wave8" else 7 if mode == "--wave7" else 6
     directory, output = Path(directory), Path(output)
     if output.exists():
         raise ValueError("Preserve completed report")
@@ -65,7 +65,9 @@ def summarize(directory, output, mode=None):
                       "Normal intervals are descriptive; bounded intervals still assume independent opening pairs.",
                       "Distinct budgets/opponents answer distinct questions; fixed budgets completed without favorable optional stopping.",
                       f"Quadratic is adaptation-trained on identical G{wave} residual reservations; BRE retains different historical data, split and optimizer semantics."])
-    assert report["totalGames"] == admission["totalGames"] == (80 if followup else 176 if wave == 7 else 208)
+    assert report["totalGames"] == admission["totalGames"] == (80 if followup else 176 if wave in (7, 8) else 208)
+    if wave == 8:
+        report['limitations'][-1] = 'Fixed heads have identical initial Q4 function/data and new head-only Adam; BRE retains distinct historical data and optimizer. Exact Q4 anchor isolates zero cubic terms plus lower runtime cost.'
     if followup:
         report["limitations"].append("Compact degree mask is unadapted and retains cubic cache cost; no adapted Q4 strength conclusion.")
     with output.open("x", encoding="utf-8", newline="\n") as stream:

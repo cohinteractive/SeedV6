@@ -44,3 +44,30 @@ are in the protocol. Results pending; do not infer strength from fitting.
 Next: complete admitted comparisons and actual cache/cost measurements; investigate
 optimization stability as evidence warrants; select the next useful research unit.
 Human actions required after this prompt: None while autonomous assessment proceeds.
+
+## Bounded follow-up diagnostics
+
+Uniform161..168 averaging is inference-only and equals functional averaging to
+roundoff on fixed bases. It reduces the tiny cubic signal and is worse than
+Latest168 on all four mapped valid evaluation panels; no cubic-average match
+is admitted. Quadratic/BRE averages improve their Latest mapped losses, but
+neither establishes additional expressive value. Exact figures and integer-score
+impact: wave8-head-impact.json. Latest cubic changes about23..30% of mapped
+integer scores, mean absolute0.23..0.30 score units, RMS0.0033..0.0039 pawns.
+This is a small signal relative to its measured cost, not proof it cannot matter.
+
+A separately admitted six-arm,128-update diagnostic compares quadratic, cubic
+and material-phase-times-quadratic fixed bases under raw and search-mapped
+objectives.2043 status-valid consumed fit rows, same nominal Adam.001 and seed,
+no owner writes/model export. Phase conditioning has no consistent advantage
+and is not selected for implementation. Search-mapped fitting improves mapped
+loss more strongly; raw losses often worsen. It remains unclear whether this is
+useful nonlinear information or ordinary calibration. A matched affine control
+is the next discriminating diagnostic, before any objective/architecture gate.
+See wave8-phase-head-admission/results.json. No substantial training occurred.
+
+The head-impact analyzer initially compared BRE trainer binary64 predictions
+with the averaging tool's compiled runtime predictions as if byte-identical.
+The corrected analysis separates that known representation difference (maximum
+metric delta2.89e-9) from exact same-representation checks (1.12e-15). No model,
+training, source or match correction was required; original raw outputs remain.

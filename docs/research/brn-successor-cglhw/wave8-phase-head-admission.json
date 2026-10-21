@@ -1,0 +1,50 @@
+{
+  "id": "wave8-phase-head-feasibility-v1",
+  "anchor": {
+    "name": "Q4",
+    "root": "docs/research/brn-successor-cglhw/raw/wave7/trained-frozen-01/W7-RESQUAD-R4-LR001",
+    "checkpoint": "g000160-s001310720-b5d40cc7a3cd74a4eab18f6e274676b7c58d094896d931d5f40f06828a4ed338",
+    "networkSha256": "fd6c2fc1ec2549bced72ab5d3bf245ff4a56abf6d779ba36a921040bd4dd70bd",
+    "width": 4,
+    "wire": 8,
+    "predictor": "W7-RESQUAD-R4-LR001-g160",
+    "predictions": {
+      "fresh5": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-predictions-fresh5-01",
+      "old": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-predictions-old-01"
+    }
+  },
+  "question": "Can a cheap material-phase interaction with the retained quadratic basis provide a more useful correction than global e3 on that same basis?",
+  "formula": "q_r * (2*min(24,N+B+2R+4Q)/24-1), both colours counted; four new zero heads, Q4 function frozen.",
+  "arms": [
+    "quadratic",
+    "cubic",
+    "phaseQuadratic"
+  ],
+  "objectives": [
+    "raw",
+    "search-half"
+  ],
+  "budget": {
+    "fitRows": 2043,
+    "epochs": 8,
+    "batch": 128,
+    "stepsPerArm": 128,
+    "rate": 0.001,
+    "seed": 2026102208
+  },
+  "admission": "Report every arm and both objectives across both consumed panels/sources; no automatic architecture or match admission. Compare signs/size versus baseline and matched four-head controls; losses alone cannot establish value.",
+  "resource": "One bounded BelowNormal process between match batches, timeout300seconds; no owner writes or model export.",
+  "rationale": "G8 cubic perturbations are small after search mapping and cache costs higher; phase times quadratic could express conditional interactions without tracking third moments. Feature value and speed are unverified hypotheses.",
+  "references": [
+    {
+      "url": "https://github.com/official-stockfish/Stockfish/blob/master/src/nnue/network.cpp",
+      "scope": "Primary example of context-dependent neural evaluation, not evidence this SeedV6 formulation succeeds."
+    },
+    {
+      "url": "https://github.com/official-stockfish/Stockfish/blob/master/src/evaluate.cpp",
+      "scope": "Primary example of total-material-dependent output scaling; no Stockfish code or constants copied."
+    }
+  ],
+  "script": "tools\\probe-brn-conditioned-heads.py",
+  "scriptSha256": "89b7e1ba780208638c4c6fe8e78d2282aa951413e4c431aa1260ad331d3240ec"
+}
