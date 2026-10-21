@@ -32,10 +32,12 @@ public final class BrnGatedCacheProbe {
         boolean cubic=model.architecture().correctionKind()==BrnNextArchitecture.CUBIC;
         if(!cubic&&model.architecture().correctionKind()!=BrnNextArchitecture.GATED_PAIRS)throw new IllegalArgumentException("Unsupported cache");
         var hybridBase=BrnSuccessorMatch.loadHybridBase(spec);
-        if(hybridBase!=null&&!(spec.cubicDeltaCache()||spec.gatedDeltaCache()))
+        boolean packed=spec.packedCubicCacheEnabled();
+        if(hybridBase!=null&&!(spec.cubicDeltaCache()||spec.gatedDeltaCache()||packed))
             throw new IllegalArgumentException("Hybrid probe requires guarded delta cache");
         var full=hybridBase==null?SearchEvaluation.brnNext(model):SearchEvaluation.brnResidualHybridFullResearch(model,hybridBase);
-        var cached=hybridBase!=null?SearchEvaluation.brnResidualHybridResearch(model,hybridBase):spec.cubicDeltaCache()?SearchEvaluation.brnCubicDeltaResearch(model):spec.gatedDeltaCache()?SearchEvaluation.brnGatedDeltaResearch(model):
+        var cached=packed?(hybridBase==null?SearchEvaluation.brnCubicPackedResearch(model):SearchEvaluation.brnCubicPackedHybridResearch(model,hybridBase)):
+                hybridBase!=null?SearchEvaluation.brnResidualHybridResearch(model,hybridBase):spec.cubicDeltaCache()?SearchEvaluation.brnCubicDeltaResearch(model):spec.gatedDeltaCache()?SearchEvaluation.brnGatedDeltaResearch(model):
                 cubic?SearchEvaluation.brnCubicIncrementalResearch(model):SearchEvaluation.brnGatedIncrementalResearch(model);
         var base=plan.models().getFirst();
         var referenceModel=CheckpointStore.readSnapshot(Path.of(base.root()),base.checkpoint()).model();
@@ -49,7 +51,7 @@ public final class BrnGatedCacheProbe {
                 for(var move:receipt.moves())boards.add(Board.fromFen(move.fenAfter()));
             }
         }
-        var accumulator=cache(model,spec.gatedDeltaCache()||spec.cubicDeltaCache(),hybridBase);
+        var accumulator=cache(model,spec.gatedDeltaCache()||spec.cubicDeltaCache(),packed,hybridBase);
         var workspace=hybridBase==null?model.newWorkspace():model.newResearchWorkspace(hybridBase);
         var ordinary=model.newWorkspace();var gen32=BrnNextBase.model().newWorkspace();
         var replacement=hybridBase==null?null:hybridBase.newWorkspace();
@@ -61,7 +63,7 @@ public final class BrnGatedCacheProbe {
                     (model.rawPawns(board,ordinary)-gen32.evaluatePawns(board)+replacement.evaluatePawns(board))));
             if(model.score(board,workspace)!=accumulator.score(board))differences++;
             if(i%97==0) {
-                var fresh=cache(model,spec.gatedDeltaCache()||spec.cubicDeltaCache(),hybridBase);double independent=fresh.rawPawns(board);
+                var fresh=cache(model,spec.gatedDeltaCache()||spec.cubicDeltaCache(),packed,hybridBase);double independent=fresh.rawPawns(board);
                 maximumFreshError=Math.max(maximumFreshError,Math.abs(actual-independent));
                 if(accumulator.score(board)!=fresh.score(board))freshIntegerDifferences++;
                 if(!model.architecture().frozenBase()&&Double.doubleToLongBits(actual)!=Double.doubleToLongBits(independent))
@@ -74,6 +76,7 @@ public final class BrnGatedCacheProbe {
         result.put("modelPlanId",plan.id());
         if(spec.averagedInputs()!=null)result.put("averagedInputs",spec.averagedInputs());
         if(spec.retainedCubicRanks()!=null)result.put("retainedCubicRanks",spec.retainedCubicRanks());
+        if(packed)result.put("packedCubicCache","packed-polynomial-period64-canonical-rounding-guard-v1");
         var effectiveBytes=new ByteArrayOutputStream();BrnNextCodec.writeModel(model,effectiveBytes);
         result.put("effectiveNetworkSha256",HexFormat.of().formatHex(DataFiles.digest().digest(effectiveBytes.toByteArray())));
         if(hybridBase!=null)result.put("hybrid",BrnSuccessorMatch.hybridBinding(spec,hybridBase,(String)result.get("effectiveNetworkSha256")));
@@ -98,6 +101,11 @@ public final class BrnGatedCacheProbe {
         String label=cubic?"CUBIC":"GATE";
         var names=new ArrayList<>(List.of(label+"-full",label+"-cache",hybridBase==null?"Gen32":"HybridBase"));
         var states=new ArrayList<>(List.of(full.newState(2),cached.newState(2),reference.newState(2)));
+        var dense=packed?(hybridBase==null?SearchEvaluation.brnCubicDeltaResearch(model):SearchEvaluation.brnResidualHybridResearch(model,hybridBase)):null;
+        if(packed) {
+            names.add(label+"-same-base-dense");
+            states.add(dense.newState(2));
+        }
         if(hybridBase!=null) {
             names.add(label+"-original-base-cache");
             states.add((cubic?SearchEvaluation.brnCubicDeltaResearch(model):SearchEvaluation.brnGatedDeltaResearch(model)).newState(2));
@@ -134,20 +142,24 @@ public final class BrnGatedCacheProbe {
         int firstOutput=model.architecture().head()+(cubic?0:model.architecture().width());
         for(int i=0;i<model.architecture().parameters();i++)
             if((i<BrnNextArchitecture.EMBEDDING||i>=firstOutput)&&model.weight(i)!=0)sameAsBase=false;
-        int implementations=sameAsBase?3:2;result.put("zeroCorrectionReferenceSearchOracle",sameAsBase);
+        var searchEvaluations=new ArrayList<>(List.of(full,cached));
+        var searchNames=new ArrayList<>(List.of(names.get(0),names.get(1)));
+        if(packed) {searchEvaluations.add(dense);searchNames.add(label+"-same-base-dense");}
+        if(sameAsBase) {searchEvaluations.add(reference);searchNames.add(hybridBase==null?"Gen32":"HybridBase");}
+        int implementations=searchEvaluations.size();result.put("zeroCorrectionReferenceSearchOracle",sameAsBase);
         var searches=new ArrayList<Object>();
         for(int pass=0;pass<3;pass++)for(int i=0;i<roots.size();i++) {
             var board=roots.get(i);SearchResult expected=null;
             for(int offset=0;offset<implementations;offset++) {
                 int implementation=(offset+pass+i)%implementations;
-                try(var driver=new SearchDriver(BrnSuccessorAudit.common(implementation==0?full:implementation==1?cached:reference))) {
+                try(var driver=new SearchDriver(BrnSuccessorAudit.common(searchEvaluations.get(implementation)))) {
                     var control=SearchControl.controlled(32768,System.nanoTime(),2_000_000_000L,TimeSource.SYSTEM);
                     var outcome=driver.search(new SearchRequest(board,GameHistory.initial(board),64,control));
                     if(outcome.lastCompletedResult()==null||control.termination()!=SearchTermination.NODE_LIMIT)
                         throw new IllegalStateException("Search probe failed");
                     if(expected!=null&&!expected.equals(outcome.lastCompletedResult()))throw new IllegalStateException("Search parity failed");
                     expected=outcome.lastCompletedResult();
-                    searches.add(Map.of("pass",pass,"root",i,"implementation",names.get(implementation),
+                    searches.add(Map.of("pass",pass,"root",i,"implementation",searchNames.get(implementation),
                             "elapsedNanos",control.elapsedNanos(),"nodes",control.nodes(),"result",expected));
                 }
             }
@@ -162,7 +174,18 @@ public final class BrnGatedCacheProbe {
         long primitiveBytes();
         default Map<String,Object> details() { return Map.of(); }
     }
-    private static Cache cache(BrnNextModel model,boolean delta,com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model hybridBase) {
+    private static Cache cache(BrnNextModel model,boolean delta,boolean packed,com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model hybridBase) {
+        if(packed) {
+            var value=hybridBase==null?new BrnCubicPackedAccumulator(model):new BrnCubicPackedAccumulator(model,hybridBase);
+            return new Cache() {
+                public double rawPawns(long[] board){return value.rawPawns(board);}
+                public int score(long[] board){return value.score(board);}
+                public long primitiveBytes(){return value.primitiveBytes();}
+                public Map<String,Object> details(){return Map.of("kind","packed-polynomial-period64-canonical-rounding-guard-v1",
+                        "activeComponents",value.activeComponents(),"correctionErrorBound",value.correctionErrorBound(),
+                        "roundingFallbacks",value.roundingFallbacks,"rebuilds",value.rebuilds,"updates",value.updates);}
+            };
+        }
         if(delta && model.architecture()==BrnNextArchitecture.GEN32_CUBIC) {
             var value=hybridBase==null?new BrnCubicDeltaAccumulator(model):new BrnCubicDeltaAccumulator(model,hybridBase);
             return new Cache() {

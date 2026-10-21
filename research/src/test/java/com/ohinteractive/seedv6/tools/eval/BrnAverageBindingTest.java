@@ -78,6 +78,7 @@ class BrnAverageBindingTest {
         input.put("networkSha256",manifest.networkSha256());input.put("changeScale",.5);
         var map=new HashMap<String,Object>();map.put("name","hybrid");map.put("hybridBase",input);map.put("gatedDeltaCache",true);
         var model=BrnSuccessorMatch.loadHybridBase(spec(map));
+        map.put("packedCubicCache",true);assertThrows(RuntimeException.class,()->spec(map));map.remove("packedCubicCache");
         var binding=BrnSuccessorMatch.hybridBinding(spec(map),model,"correction-a");
         assertNotEquals(binding.get("functionSha256"),BrnSuccessorMatch.hybridBinding(spec(map),model,"correction-b").get("functionSha256"));
         input.put("changeScale",1.0);var other=BrnSuccessorMatch.loadHybridBase(spec(map));

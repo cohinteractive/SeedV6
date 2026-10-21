@@ -288,3 +288,6 @@ previous cross-run timing ambiguity; it does not authorize pruning adoption or
 infer chess quality from speed. Next implementation question: promote an explicit packed research cache, then
 verify actual search parity/throughput at a batch boundary. Keep existing clocks
 on their frozen runtime and do not infer pruned chess quality from this speed gain.
+
+
+The selected full-clock32 is now closed (both full corrections43.75% vsBRE003 half; see results). Packed cache research implementation passes21 targeted tests and its old-runtime rejection. Freeze its build53 jars and execute the actual four-model score/search plan before any packed games. Then finish the existing64 BRE calibration and32 deeper-node controls using the original averaging runtime. No human gate or action is yet required.

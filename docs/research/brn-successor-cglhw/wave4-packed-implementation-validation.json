@@ -1,0 +1,49 @@
+{
+  "id": "wave4-packed-implementation-validation-v1",
+  "createdUtc": "2026-10-20T23:59:35.967640+00:00",
+  "sourceBase": "beea763a078a7ecb8ea898f1041db19cf5f4edc4",
+  "change": "Explicit packed research cache; unchanged source model/codec/optimizer/default evaluator. New functions retain dense periodic rebuild/rounding safeguards and support explicit immutable hybrid bases.",
+  "tests": [
+    {
+      "suite": "com.ohinteractive.seedv6.core.brnnext.BrnCubicDeltaAccumulatorTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.core.brnnext.BrnCubicPackedAccumulatorTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.core.brnnext.BrnResidualHybridTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.evaluation.ResearchBlendTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.tools.eval.BrnAverageBindingTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "rawEvidence": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\packed-core-tests-01",
+  "buildLog": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\packed-core-validation-01.log",
+  "actualRuntimePending": true,
+  "limitations": [
+    "No default/GUI adoption, native packaging or playing strength claim. Actual-model cache/search verification follows the frozen implementation build."
+  ]
+}

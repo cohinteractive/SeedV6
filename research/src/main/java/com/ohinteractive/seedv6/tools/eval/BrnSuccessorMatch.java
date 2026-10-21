@@ -30,15 +30,19 @@ public final class BrnSuccessorMatch {
     record Model(String name, String root, String checkpoint, String networkSha256, Double residualGain,
                  boolean gatedCache, boolean cubicCache, Double blendCandidateWeight,
                  Double correctionScale, String correctionAblation, double[] constantGates, boolean gatedDeltaCache, boolean cubicDeltaCache,
-                 List<AverageInput> averagedInputs, List<Integer> retainedCubicRanks, HybridBase hybridBase) {
+                 List<AverageInput> averagedInputs, List<Integer> retainedCubicRanks, HybridBase hybridBase,
+                 Boolean packedCubicCache) {
         Model {
             if(constantGates!=null&&!"constant-gates".equals(correctionAblation))
                 throw new IllegalArgumentException("Explicit constant-gates ablation required");
             if(cubicDeltaCache&&(gatedCache||cubicCache||gatedDeltaCache))throw new IllegalArgumentException("Choose one cache");
             if(gatedDeltaCache&&(gatedCache||cubicCache))throw new IllegalArgumentException("Choose one cache");
+            if(Boolean.TRUE.equals(packedCubicCache)&&(gatedCache||cubicCache||gatedDeltaCache||cubicDeltaCache))
+                throw new IllegalArgumentException("Choose one cache");
             if(hybridBase!=null&&(residualGain!=null||blendCandidateWeight!=null||gatedCache||cubicCache))
                 throw new IllegalArgumentException("Hybrid requires explicit correction scaling and canonical or delta evaluation");
         }
+        boolean packedCubicCacheEnabled() { return Boolean.TRUE.equals(packedCubicCache); }
     }
     static com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model loadHybridBase(Model spec) throws Exception {
         if(spec.hybridBase()==null)return null;
@@ -141,7 +145,11 @@ public final class BrnSuccessorMatch {
             SearchEvaluation evaluation;
             var hybridBase=loadHybridBase(spec);
             if(spec.gatedCache()&&spec.cubicCache())throw new IllegalArgumentException("Choose one cache");
-            if(hybridBase!=null) {
+            if(spec.packedCubicCacheEnabled()) {
+                if(!(model instanceof NetworkModel.BrnNext n))throw new IllegalArgumentException("Packed cubic requires a frozen correction");
+                evaluation=hybridBase==null?SearchEvaluation.brnCubicPackedResearch(n.model())
+                        :SearchEvaluation.brnCubicPackedHybridResearch(n.model(),hybridBase);
+            } else if(hybridBase!=null) {
                 if(!(model instanceof NetworkModel.BrnNext n)||!n.model().architecture().frozenBase())
                     throw new IllegalArgumentException("Hybrid requires a frozen-base correction");
                 if(spec.gatedDeltaCache()&&n.model().architecture()!=com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GEN32_GATED
@@ -179,9 +187,12 @@ public final class BrnSuccessorMatch {
             }
             if(spec.retainedCubicRanks()!=null) {
                 modelBinding.put("retainedCubicRanks",spec.retainedCubicRanks());
-                modelBinding.put("rankMask","Both omitted output heads zeroed after averaging, before correction scaling; dense verified cache, no claimed speedup");
+                modelBinding.put("rankMask",spec.packedCubicCacheEnabled()
+                        ?"Both omitted output heads zeroed after averaging, before correction scaling; explicit packed cache"
+                        :"Both omitted output heads zeroed after averaging, before correction scaling; dense verified cache, no claimed speedup");
             }
             if(spec.cubicDeltaCache())modelBinding.put("cubicDeltaCache","polynomial-period64-canonical-rounding-guard-v1");
+            if(spec.packedCubicCacheEnabled())modelBinding.put("packedCubicCache","packed-polynomial-period64-canonical-rounding-guard-v1");
             if(spec.gatedDeltaCache())modelBinding.put("gatedDeltaCache","period64-canonical-rounding-guard-v1");
             if(model instanceof NetworkModel.BrnNext n && n.model().architecture().frozenBase()) {
                 modelBinding.put("nativeResidualCache",true);

@@ -29,6 +29,10 @@ if (@($configuration.models | Where-Object { $null -ne $_.hybridBase }).Count -n
         -and @($binding.modelFeatures) -notcontains 'brn-hybrid-raw-v1') {
     throw 'This plan requires explicit hybrid component binding; the frozen runtime does not declare that capability.'
 }
+if (@($configuration.models | Where-Object { $_.packedCubicCache -eq $true }).Count -ne 0 `
+        -and @($binding.modelFeatures) -notcontains 'brn-cubic-packed-v1') {
+    throw 'This plan requires the packed cubic cache; the frozen runtime does not declare that capability.'
+}
 if ($configuration.batchGames -gt 12 -or $configuration.batchSeconds -gt 240) {
     throw 'Batch exceeds the admitted resource envelope.'
 }

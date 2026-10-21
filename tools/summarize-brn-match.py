@@ -44,6 +44,9 @@ def summarize(plan_file, receipts, analysis_file, runtime_file, output):
         assert spec["name"] == bound["name"]
         assert spec["checkpoint"] == bound["originalManifest"]["id"]
         assert spec["networkSha256"] == bound["originalManifest"]["networkSha256"]
+        if spec.get("packedCubicCache"):
+            assert "brn-cubic-packed-v1" in runtime["modelFeatures"]
+            assert bound["packedCubicCache"] == "packed-polynomial-period64-canonical-rounding-guard-v1"
         if spec.get("hybridBase") is not None:
             assert "brn-hybrid-raw-v1" in runtime["modelFeatures"]
             hybrid = bound["hybrid"]

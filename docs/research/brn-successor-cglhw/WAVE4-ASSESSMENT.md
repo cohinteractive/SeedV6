@@ -623,3 +623,10 @@ results and all match-process bindings reproduce exactly. No timed match overlap
 any of the16 newly recorded diagnostic processes. Initial failed summary/regression
 setup attempts remain preserved in wave4-process-summary-validation.json; no engine
 or match result changed.
+
+
+Packed cache implementation and remaining controls
+
+The selected full-correction direct clock screen is closed:32 games,4528 legal moves; GATE003 and CUBIC003 each6/2/8 (43.75%) against BRE003 half. Both pair intervals include50%; no consistent recovery of the full-node gain, no conclusive rejection. See wave4-direct-full-clock-results.json. The admitted64 BRE scale and32 deeper-node controls remain next.
+
+The same-JVM layout finding now has an explicit core research implementation, preserving the immutable model and ordinary evaluator defaults. Zero-head components are packed per worker; nonfinite error bounds retain all components. Same periodic rebuild and canonical rounding guard, explicit hybrid base, exclusive loader flag and fail-closed runtime capability binding.21 targeted tests pass (6 packed,4 dense,6 hybrid,2 blend,3 binding), including zero/partial/full widths, huge finite overflow, special moves, rounding boundaries, independent owners and search parity. Two summary classifier tests pass; an incompatible old runtime is rejected before engine launch. Actual-model/search oracles remain pending at this implementation boundary. See wave4-packed-implementation-validation.json and wave4-packed-model-plan.json. This core addition qualifies build53; no native GUI packaging/adoption or strength claim.
