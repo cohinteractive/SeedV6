@@ -96,13 +96,18 @@ continued-base/nonlinear compositions. The research frontier is evidence-driven:
    Both node scores are50%; full clock scores37.5% atLR001 and34.375% atLR003
    against their half variants. Small selected screens, not proof of optimal scaling.
    Use `wave4-bre-scale-admission.json` and frozen `wave4-average-runtime.json`.
-2. **Active:** the admitted32-game depth control at131072 nodes, unchanged GATE001
-   and CUBIC001 half means versus BRE001 half. See `wave4-depth-admission.json`.
-   This separates absolute search depth from the earlier time/node cost contrast.
-3. **Then:** prospectively fixed96 hybrid games in `wave4-hybrid-direct-admission.json`:
+2. **Closed:** the32-game depth control,4555 legal moves. GATE00143.75%,CUBIC001
+   53.125% versus BRE001 half at131072 nodes, below their shallow point scores.
+   Pair uncertainty includes no change; throughput alone is not an adequate explanation.
+   See `wave4-depth-node-results.json` and the activation record.
+3. **Active:** prospectively fixed96 hybrid games in `wave4-hybrid-direct-admission.json`:
    full GATE001, full CUBIC001 and packed rank4 CUBIC001 on the same BRE001 half
    base, each16 games at131072 nodes and16 at100ms. Use ONLY
-   `wave4-packed-core-runtime.json`. No hybrid strength games have begun.
+   `wave4-packed-core-runtime.json`. Node-v2 then clock, four bounded batches each.
+   The original node plan was rejected before model/game execution for two positive
+   budgets; preserve it and use `wave4-hybrid-direct-node-v2-plan.json` under
+   `wave4-hybrid-direct-budget-amendment.json`. Same intended131072-node limit and
+   internal2-second safety; zero games were discarded or replayed.
    Three selected nonlinear ablations pass actual cache/search oracles; see
    `wave4-selected-hybrid-ablation-readiness.json`. No ablation matches yet.
 4. Any promising hybrid must face both BRE rates, frozen Gen32 and an expressive

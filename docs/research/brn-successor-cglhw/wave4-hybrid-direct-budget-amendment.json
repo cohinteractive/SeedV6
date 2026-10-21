@@ -1,0 +1,13 @@
+{
+  "id": "wave4-hybrid-direct-budget-amendment-v1",
+  "createdUtc": "2026-10-21T00:21:27.126746+00:00",
+  "originalPlan": "docs\\research\\brn-successor-cglhw\\wave4-hybrid-direct-node-plan.json",
+  "originalPlanSha256": "55f3edab8a2f174a637ef9c8b5a00a2c23e9473ee0d2482f4888335c00fc25de",
+  "replacementPlan": "docs\\research\\brn-successor-cglhw\\wave4-hybrid-direct-node-v2-plan.json",
+  "replacementPlanSha256": "d4b7fd54211cb3aa5c3d967744281668f069b133d45c1f43a5b9f287e7aad1c3",
+  "cause": "Prospective node plan mistakenly set moveMillis2000 as if it specified the safety cap. Runner correctly requires exactly one positive node or clock budget and internally supplies the2-second node safety cap. Rejected during plan parsing before output directory/model loading/game execution.",
+  "failedProcess": "raw/wave4/hybrid-direct-node-01.process.json",
+  "completedGamesInRejectedPlan": 0,
+  "decision": "Preserve original plan/admission/failure. Replacement changes only plan ID and moveMillis to0; same131072 nodes,internal2-second safety,48-game budget,models,openings,resources/runtime. Clock plan remains unchanged. No discarded or replayed game.",
+  "prevention": "Batch wrapper now checks the exclusive budget before launch; original invalid plan is a preserved negative fixture."
+}

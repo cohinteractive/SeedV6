@@ -1,0 +1,32 @@
+{
+  "id": "wave4-hybrid-direct-activation-v1",
+  "createdUtc": "2026-10-21T00:20:48.369963+00:00",
+  "admission": "wave4-hybrid-direct-admission.json",
+  "admissionSha256": "f52f089e3568cfeb664f24bfb9fc93b97a81c136177b7059a68caa4388d14a4f",
+  "prerequisites": [
+    "wave4-bre-scale-node-LR001-results.json",
+    "wave4-bre-scale-node-LR003-results.json",
+    "wave4-bre-scale-clock-LR001-results.json",
+    "wave4-bre-scale-clock-LR003-results.json",
+    "wave4-depth-node-results.json"
+  ],
+  "depthContrasts": [
+    {
+      "name": "W4-RESGATE-LR001-average8-half",
+      "deepMinusShallow": -0.1875,
+      "descriptiveNormal95": [
+        -0.5549999999999999,
+        0.17999999999999994
+      ]
+    },
+    {
+      "name": "W4-RESCUBIC-LR001-average8-half",
+      "deepMinusShallow": -0.21875,
+      "descriptiveNormal95": [
+        -0.5179181174523783,
+        0.08041811745237826
+      ]
+    }
+  ],
+  "decision": "All calibration/depth controls closed without failures. Half BRE remains suitable; deeper equal-node residual scores weaken the throughput-only explanation. Proceed with the unchanged96-game hybrid mechanism screen, retain all uncertainty and exposure confounds. No new training or programme success."
+}
