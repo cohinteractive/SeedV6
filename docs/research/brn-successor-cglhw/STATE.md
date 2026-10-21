@@ -2,7 +2,7 @@
 
 Updated21 October2026. **G4 is complete and verified. All six arms reached64,
 with exact expected continuation and preserved starting payloads. Wave4 trained
-assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; G6 is complete and verified through128; Wave6 trained assessment is closed; G7 preparation is active.
+assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; G6 is complete and verified through128; Wave6 trained assessment is closed; G7 is prepared and awaits owner training.
 No programme success is claimed.** This remains the original
 CGLHW. Current evidence/protocol: [WAVE6-ASSESSMENT](WAVE6-ASSESSMENT.md).
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
@@ -12,38 +12,56 @@ Objective: statistically credible practical chess improvement over frozen BRE-Pa
 Gen32 through useful additional expressiveness, with measured costs and compatible
 search. Architectural complexity or lower validation loss alone is insufficient.
 
-## Current restart point (21 October2026, G6 verified)
+## Current restart point (21 October2026, G7 human gate)
 
-G6 owner action is evidenced, not pending. Four sessions completed97..128; all
-Latest/Best are128, 133 checkpoint/state pairs pass runtime parity, and941 owner
-files are unchanged by audit/freeze. See wave6-trained-checkpoints.json and
-wave6-trained-admission.json for exact identities. No retraining is requested.
-Trained Q16/C16/C4 have identical source reservations; BRE historical/split
-confounds remain. Actual trained cache checks, fitting diagnostics and all208
-primary development games are complete. The separately admitted80 follow-up games are also closed. Next: finish actual
-G7 owner preparation, payload/cache/GUI/native readiness, then stop at its training gate.
-Preserve frozen runtime56, all checkpoints and completed
-protocols. Do not stop merely at this audit. Historical G6 preparation instructions
-below are fulfilled and superseded for next-action selection.
+G6 is completed and verified: four sessions97..128, Latest/Best128 in all four,
+133 checkpoint/state pairs verified. Exact identities, trajectories and caveats are
+in wave6-trained-checkpoints.json and WAVE6-ASSESSMENT. No G6 retraining is needed.
+W6 assessment is closed at288 development games/41642 legal moves, with no match
+failure/cap/fallback. No independent strength superiority or useful cubic benefit
+is established. Frozen build56 and all protocols/receipts remain preserved.
 
-Current assessment: degree-node32 is closed (C16 vs trained Q16 53.125%,10/14/8;
-descriptive95 39.8-66.5%,5184 legal moves; inconclusive). Degree-clock32 is closed
-(C16 39.0625%,9/7/16; descriptive95 22.95-55.17%,4475 legal moves).
-Compact-node16/compact-clock16 are closed (C4 versus C16:50%/65.625%; both uncertain).
-The fixed last-eight average fails the residual eligibility criterion; only BRE
-passes, with no average match selected. BRE-clock48 is closed (Q16/C16/C4 versus BRE:
-62.5%/46.875%/53.125%, all uncertain). Reference-clock64 is closed (Q16/C16/C4/BRE
-versus Gen32:50%/50%/59.375%/56.25%, all uncertain). Primary total208 games/30637
-legal moves, no failure/cap/fallback; no confirmation candidate selected.
-Actual masked-C4 oracle passes6333 positions and48 search pairs. Compact-degree
-node16 and clock16 are closed (59.375%/56.25%, both uncertain); BRE-node48 is closed (Q16/C16/C4:75%/62.5%/34.375%, uncertain).
-See wave6-followup-admission.json. The untrained visibility feasibility probe passes
-independent feature/symmetry checks but establishes no efficiency or fitting gain.
-Use unique bounded launch logs and verify actual receipt
-counts/processes before resuming. Fitting/cost/strata evidence is recorded in
-WAVE6-ASSESSMENT. Compact Q4 degree-control preparation is now admitted in WAVE7;
-readiness checks precede any human-training request. All288 games/41642 legal moves
-are complete; compact depth-sensitive weakness remains unresolved, with no success.
+Trained C16 versus Q16 scores53.125% at equal nodes and39.0625% at equal time.
+C4 versus C16 scores50%/65.625%, with roughly10% faster paired-root search.
+Against continued BRE, Q16/C16/C4 score75%/62.5%/34.375% at equal nodes and
+62.5%/46.875%/53.125% at equal time. Against frozen Gen32 their clock scores are
+50%/50%/59.375%; continued BRE scores56.25%. All are selected development screens
+with reused openings and substantial uncertainty, not independent confirmation.
+C4's same-checkpoint cubic mask scores59.375%/56.25% (node/time), unadapted.
+The low-rank/depth weakness is not explained solely by throughput; do not infer
+transitive rankings or discard the preserved full-capacity models.
+
+**Next admissible action: owner GUI training at G7; dependent research is blocked.**
+W7-RESQUAD-R4-LR001, W7-RESCUBIC-R4-LR001 and W7-BRE-CONTROL-LR001 are fully prepared
+at128. Train32 additional generations129..160 at.001, batch128, eight epochs,
+131072 positions/generation, seed1, one worker, held-out WDL and inherited sources.
+Exact instructions, interruption semantics, identities and evidence are in WAVE7
+and wave7-owner-readiness.json. Use native build57:
+`dist/windows/candidates/candidate-20261021T095502-65efe5a1/SeedV6-GUI/SeedV6-GUI.exe`.
+Do not create replacements, reset the lineage, change its source/recipe, or repeat G6.
+
+Implementation305b8d6/build57 passes159 targeted tests. Actual owner projection,
+source/seek inheritance, four-payload runtime audit,6333-position cache probes,
+96 exact Q4/masked-C4 search rows,48 legal smoke plies and packaged/relocated native
+GUI checks pass.4035 inventoried W3/frozen/W4/W5/W6/W7 files retain their hashes.
+W1 untouched, not newly rehashed. No substantive Codex training or full-suite claim.
+All research game/probe/GUI processes are stopped; the runner gate pause is active.
+
+After the owner reports G7 completion, verify actual histories/settings/Latest/Best
+and expected final optimizer steps1310720 (Q4/C4),3063808 (BRE). Only then archive
+the pause, freeze endpoints and admit trained rank4 degree/cost/strength controls.
+Latest160 is the prospective primary endpoint; Best is audited, not assumed160.
+Human actions required after this prompt: blocking ? complete the three G7 GUI runs,
+close the GUI and report completion/anomalies. No manual Arena or non-blocking action.
+
+Active frontier: (1) adapted rank4 quadratic versus cubic value, (2) capacity and
+search-depth interaction versus ordinary BRE, (3) mapping/calibration alignment,
+(4) selective or local-blocker corrections if compact degree lacks useful value.
+The visibility prototype has verified non-pairwise capability but no fitting or
+whole-search advantage; it is deferred. Residual last-eight averaging failed its
+predeclared diagnostic criterion. R16 remains preserved and viable, with further
+training deferred for this narrow question. No unchanged-match significance hunting.
+The reserved independent confirmation opening partition remains untouched.
 
 ## Candidate registry and preserved reference
 
@@ -159,7 +177,7 @@ endpoints, then admit bounded trained Q16/C16 and continued-BRE comparisons at
 practical depth and equal time. Human gate completion cannot be inferred from a
 later prompt. No G5 retraining, manual Arena or other human action is required.
 
-Active frontier: (1) trained Q16/C16 degree contribution, (2) R4 maturity versus
+Historical G6 frontier (superseded by the current frontier above): (1) trained Q16/C16 degree contribution, (2) R4 maturity versus
 capacity and practical cost, (3) training/search mapping alignment, (4) selective or
 new corrections if these mechanisms lack value. R16 vector integration is deferred:
 isolated11.8-13.3% savings do not establish search gains; R4 vector was slower.

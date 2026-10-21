@@ -1,0 +1,212 @@
+{
+  "id": "wave7-compact-degree-owner-readiness-v1",
+  "status": "Ready for G7 human training; zero new generations completed",
+  "build": 57,
+  "implementationCommit": "305b8d6",
+  "packagingSourceCommit": "89422ed27c82",
+  "nativeCandidate": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T095502-65efe5a1",
+  "nativeExecutable": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T095502-65efe5a1\\SeedV6-GUI\\SeedV6-GUI.exe",
+  "entries": [
+    {
+      "candidate": "W7-RESQUAD-R4-LR001",
+      "architecture": "BRN_GEN32_QUADRATIC_R4",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-QUADRATIC-R4\\91af04c6-dec5-39f9-a70a-02e58b38d856",
+      "lineageId": "91af04c6-dec5-39f9-a70a-02e58b38d856",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave7",
+        "arm": {
+          "name": "W7-RESQUAD-R4-LR001",
+          "source": {
+            "candidate": "W6-RESCUBIC-R4-LR001",
+            "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC-R4\\dd1c701f-ff67-38da-97e3-40f41605ec98",
+            "checkpoint": "g000128-s001048576-e466f76a69ab9cd0c4a9703972ad7072b777a46cae8c5aa0d8a16bdc25b1e771",
+            "networkSha256": "f583b20bd181eb044999a1ad07f2432911374793051bfd15ecc376e5ff3ddb16",
+            "trainingSha256": "7f8f65263a642d0b3aa93ed7a8c855530afd001f5e4269272d7dd325559ffc43",
+            "generation": 128,
+            "seed": 1,
+            "positionsPerGeneration": 131072,
+            "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+          },
+          "rate": 0.001,
+          "projection": "quadratic"
+        },
+        "sourceLedgerSha256": "fb2057062c46b139020b7f534b59ddc8193a3122e1312614d12c1edb37a1c8c9",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000128-s001048576-82d4969a16ecc7e7921b45d4af453b59f096188677b37c168b8437f7e6b089d0",
+        "networkSha256": "7033f6611765e959a5c1e1aa027c3e1aace72773bd56b5fa0bd3922f3f7e777a",
+        "trainingSha256": "b8f64ac9ad13004a256b9f763e1d3daf7397c92eb9e190b9af67401dfaba7412",
+        "inheritedStep": 1048576
+      },
+      "latest": "g000128-s001048576-82d4969a16ecc7e7921b45d4af453b59f096188677b37c168b8437f7e6b089d0",
+      "latestGeneration": 128,
+      "recipe": {
+        "learningRate": 0.001,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "additionalGenerations": 32,
+      "sourceOffsets": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 38822953,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 36477332
+      },
+      "partition": "brn-next-geometry-sha256-8train-1validation-1sealed-v1"
+    },
+    {
+      "candidate": "W7-RESCUBIC-R4-LR001",
+      "architecture": "BRN_GEN32_CUBIC_R4",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC-R4\\65907dc7-c479-3894-927f-bb9f1679d054",
+      "lineageId": "65907dc7-c479-3894-927f-bb9f1679d054",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave7",
+        "arm": {
+          "name": "W7-RESCUBIC-R4-LR001",
+          "source": {
+            "candidate": "W6-RESCUBIC-R4-LR001",
+            "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC-R4\\dd1c701f-ff67-38da-97e3-40f41605ec98",
+            "checkpoint": "g000128-s001048576-e466f76a69ab9cd0c4a9703972ad7072b777a46cae8c5aa0d8a16bdc25b1e771",
+            "networkSha256": "f583b20bd181eb044999a1ad07f2432911374793051bfd15ecc376e5ff3ddb16",
+            "trainingSha256": "7f8f65263a642d0b3aa93ed7a8c855530afd001f5e4269272d7dd325559ffc43",
+            "generation": 128,
+            "seed": 1,
+            "positionsPerGeneration": 131072,
+            "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+          },
+          "rate": 0.001,
+          "projection": "exact"
+        },
+        "sourceLedgerSha256": "fb2057062c46b139020b7f534b59ddc8193a3122e1312614d12c1edb37a1c8c9",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000128-s001048576-f86c64d4205ff58b87449aa07192c1a3eb793177c9bd1618860d68e7a436f8ab",
+        "networkSha256": "f583b20bd181eb044999a1ad07f2432911374793051bfd15ecc376e5ff3ddb16",
+        "trainingSha256": "7f8f65263a642d0b3aa93ed7a8c855530afd001f5e4269272d7dd325559ffc43",
+        "inheritedStep": 1048576
+      },
+      "latest": "g000128-s001048576-f86c64d4205ff58b87449aa07192c1a3eb793177c9bd1618860d68e7a436f8ab",
+      "latestGeneration": 128,
+      "recipe": {
+        "learningRate": 0.001,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "additionalGenerations": 32,
+      "sourceOffsets": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 38822953,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 36477332
+      },
+      "partition": "brn-next-geometry-sha256-8train-1validation-1sealed-v1"
+    },
+    {
+      "candidate": "W7-BRE-CONTROL-LR001",
+      "architecture": "BRN_PAIR2",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\d945d1bd-91c4-370c-91f3-8b14226bfff1",
+      "lineageId": "d945d1bd-91c4-370c-91f3-8b14226bfff1",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave7",
+        "arm": {
+          "name": "W7-BRE-CONTROL-LR001",
+          "source": {
+            "candidate": "W6-BRE-CONTROL-LR001",
+            "root": "E:\\SeedV6-Networks\\BRN-Pair2\\065d3f01-1bd6-3207-9c26-454dbfa683f3",
+            "checkpoint": "g000128-s002801664-f314e41639dbee698870825cc848d1ee57627c0616689ecc7e937ebcb3634cbe",
+            "networkSha256": "376b36cb9def3277f9ca9d229522aa1ad2e329f189e2171bb61c6fbb74835b79",
+            "trainingSha256": "5363c46ada36496af0d4800adf95113c13de12ed0679c94eb756d94e16199688",
+            "generation": 128,
+            "seed": 1,
+            "positionsPerGeneration": 131072,
+            "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+          },
+          "rate": 0.001,
+          "projection": "exact"
+        },
+        "sourceLedgerSha256": "6489086e2687a724ffdad39c3f64820e1dc4dcd58e13b1f9ab733fe29aeaea15",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000128-s002801664-a8f7cdc93ae5232d78fa21c10a94b01efb8b875c59c50585fb2293e1003eb192",
+        "networkSha256": "376b36cb9def3277f9ca9d229522aa1ad2e329f189e2171bb61c6fbb74835b79",
+        "trainingSha256": "5363c46ada36496af0d4800adf95113c13de12ed0679c94eb756d94e16199688",
+        "inheritedStep": 2801664
+      },
+      "latest": "g000128-s002801664-a8f7cdc93ae5232d78fa21c10a94b01efb8b875c59c50585fb2293e1003eb192",
+      "latestGeneration": 128,
+      "recipe": {
+        "learningRate": 0.001,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "additionalGenerations": 32,
+      "sourceOffsets": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 12834357,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 12286546
+      },
+      "partition": "Existing Pair2 sequential train/validation acquisition"
+    }
+  ],
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\wave7-continuation-plan.json": "ff5df97b9750578e530ab4cf3cc34252282e1d594e2e688c34b8852b8f0d4eaf",
+    "docs\\research\\brn-successor-cglhw\\wave7-runtime.json": "3cfbd499fd74089890b52a4ccc265463d34c1c2a2dddbc600a8c57ff9843a677",
+    "docs\\research\\brn-successor-cglhw\\wave7-audit-plan.json": "52d751faa9180d8fcb764556e1647ac90d916d2915e1ff20cd55be909d13f4cc",
+    "docs\\research\\brn-successor-cglhw\\wave7-model-plan.json": "31d9f5fc50ef8bf95d6da6d822e81cf64072fa06546a2bddd95e4501a606f58d",
+    "docs\\research\\brn-successor-cglhw\\wave7-smoke-plan.json": "23af7d0495c3f708d01c45a7e084a6de0476c763cd9c07b49e86d0bfb5a53981",
+    "docs\\research\\brn-successor-cglhw\\wave7-implementation-validation.json": "840110f289841f9ab092c31331dd22962bd76577bdfaaaf7ecd6c4b3b378f394",
+    "docs\\research\\brn-successor-cglhw\\wave7-projection-verification.json": "eb24a5a5d480aa11ca5ddda458263e5b41b65152ca619106765a13107e894abc",
+    "docs\\research\\brn-successor-cglhw\\wave7-cache-readiness.json": "d8aa9d2cdef7881ec12e28842f2e807785c2b0aac1fa5078d23685bdfb58038a",
+    "docs\\research\\brn-successor-cglhw\\wave7-preservation.json": "ad5ef4f27c17e056efd2b9b4581987ea0f3a0f42b61bc6a9e921bca94fd387af",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\owner-preparation-01.json": "8e3ff2c065ae7f97612ae0fa8045dad14752aa01534ea451757df9449eed0cdf",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\owner-audit-01\\complete.json": "af605ced6793a7108253ec06f8f94cadbe7a2695fb1086c15bff30d63a78e212",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\owner-audit-01\\stores.json": "020340c39ad10e0df01ffbb10de905c787fc5697233e774ad4dae1255471a6bb",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\native-package-01.process.json": "a45723c6f2a389b13d68aecc0a520a8d15c3de331b5360c3c19af9954380bf73",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\owner-preparation-process-01.process.json": "b724406d73275de4a6f959637541059ace45647c04784c7bc4b340746008ecd1",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\native-gui-01.execution.json": "840f91048cd7d80e4faa61ad8e0155a53fab80df9531054ae969c28905860959",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\native-gui-01.stdout": "877a3ae0c37ff98cf988b172f14e22f51b05249c1dd9de4fc29b049adbf3d9e6",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\native-gui-request-01.json": "2d0b077a71853ba75b6f2992723b8b6bed125c399fe96132c17320ff66476581",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\native-compile-request-01.json": "3917e43091bd1e5ec54a49eee6ec14812490db557636ae17a27e3907fabf68b7",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\PackagedDegreeProbe.java": "c7e5623d2d93b4a4dd72e9dabb9792d9264c5daf14341e7b3692194be29d57ce",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\run-bounded-process.py": "8153559bd45c5046840c6191cdcabad680659f3cc349988d444b23d296515aa3",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\native-relocation-01\\verification.json": "b43f89a62dc4db4ef103cdce19878b11fe8915923a250b610588b1dc89e4ed3f",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\packaged-native-01\\build\\brn-successor-native\\W7-BRE-CONTROL-LR001-owner-recipe.png": "5bc9c97d23dc0b882bdd492a8eda5e035b097c3025b448fae51db66570a521f5",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\packaged-native-01\\build\\brn-successor-native\\W7-BRE-CONTROL-LR001-owner.png": "1a6608327de21f963fe8766687df14a1ad1569579419664fa848fc0f0727109d",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\packaged-native-01\\build\\brn-successor-native\\W7-RESCUBIC-R4-LR001-owner-recipe.png": "3e163384f56e575dcd2e633e3bca5e823c9e4d2978b1a3d094778dcc3c32667b",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\packaged-native-01\\build\\brn-successor-native\\W7-RESCUBIC-R4-LR001-owner.png": "1317f6d91db1ddc2e4e49263695435ee6460ec8d4735bb3f35ceaa5f7dfdf65d",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\packaged-native-01\\build\\brn-successor-native\\W7-RESQUAD-R4-LR001-owner-recipe.png": "55ac70bcf73d8af7943a4cc73eced3e035e54249f928625036bed174be89faad",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\packaged-native-01\\build\\brn-successor-native\\W7-RESQUAD-R4-LR001-owner.png": "953b6730562fb05534e71642554b191b085a5d9f619482cb85f3a8a6bab6bd95"
+  },
+  "nativeCandidateReceiptSha256": "47fceb29e6e2f454eee25330267eecf1a27282bcb6b13c0e6fd1c415ffc44b1a",
+  "tests": {
+    "distinctTargetedJUnitInvocations": 159,
+    "failures": 0,
+    "skipped": 0,
+    "packagedGuiLineagesLoadedWithoutTraining": 3,
+    "capturedImages": 6,
+    "visuallyInspectedImages": 4
+  },
+  "gate": {
+    "startingGeneration": 128,
+    "additionalGenerations": 32,
+    "nextGeneration": 129,
+    "targetGeneration": 160,
+    "learningRate": 0.001,
+    "minibatchSize": 128,
+    "epochs": 8,
+    "trainingPositionsPerGeneration": 131072,
+    "seed": 1,
+    "workers": 1,
+    "validation": "HELD_OUT",
+    "supervision": "WDL",
+    "sources": "Inherited unchanged; source/cursor/CP seek metadata verified",
+    "primaryEndpoint": "Latest160; audit Best identity separately",
+    "expectedFinalOptimizerSteps": {
+      "Q4": 1310720,
+      "C4": 1310720,
+      "BRE": 3063808
+    }
+  },
+  "limitations": [
+    "No substantive owner training executed; G7 remains blocking until completion evidenced.",
+    "No full-suite or independent strength confirmation.",
+    "Q4 is pairwise-only and cannot itself satisfy the higher-order successor objective.",
+    "BRE historical data, partition and sparse optimizer semantics remain different.",
+    "Sequential timing probes do not establish universal performance ratios."
+  ]
+}

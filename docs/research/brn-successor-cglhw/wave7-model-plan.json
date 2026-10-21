@@ -1,0 +1,38 @@
+{
+  "id": "wave7-actual-bootstrap-parity-v1",
+  "models": [
+    {
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/Gen32",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "name": "Gen32"
+    },
+    {
+      "name": "W7-RESQUAD-R4-LR001",
+      "root": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\frozen-01\\W7-RESQUAD-R4-LR001",
+      "checkpoint": "g000128-s001048576-82d4969a16ecc7e7921b45d4af453b59f096188677b37c168b8437f7e6b089d0",
+      "networkSha256": "7033f6611765e959a5c1e1aa027c3e1aace72773bd56b5fa0bd3922f3f7e777a"
+    },
+    {
+      "name": "W7-RESCUBIC-R4-LR001",
+      "root": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\frozen-01\\W7-RESCUBIC-R4-LR001",
+      "checkpoint": "g000128-s001048576-f86c64d4205ff58b87449aa07192c1a3eb793177c9bd1618860d68e7a436f8ab",
+      "networkSha256": "f583b20bd181eb044999a1ad07f2432911374793051bfd15ecc376e5ff3ddb16",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W7-BRE-CONTROL-LR001",
+      "root": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\frozen-01\\W7-BRE-CONTROL-LR001",
+      "checkpoint": "g000128-s002801664-a8f7cdc93ae5232d78fa21c10a94b01efb8b875c59c50585fb2293e1003eb192",
+      "networkSha256": "376b36cb9def3277f9ca9d229522aa1ad2e329f189e2171bb61c6fbb74835b79"
+    },
+    {
+      "name": "W7-C4-unadapted-quadratic",
+      "root": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\frozen-01\\W7-RESCUBIC-R4-LR001",
+      "checkpoint": "g000128-s001048576-f86c64d4205ff58b87449aa07192c1a3eb793177c9bd1618860d68e7a436f8ab",
+      "networkSha256": "f583b20bd181eb044999a1ad07f2432911374793051bfd15ecc376e5ff3ddb16",
+      "cubicDeltaCache": true,
+      "correctionAblation": "quadratic"
+    }
+  ]
+}

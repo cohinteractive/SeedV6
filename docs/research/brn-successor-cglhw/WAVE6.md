@@ -6,7 +6,8 @@ games are complete. No successor or independent strength superiority is establis
 **G6 completed and verified21 October2026. All four Latest/Best endpoints are128.**
 See [WAVE6-ASSESSMENT](WAVE6-ASSESSMENT.md), wave6-trained-checkpoints.json and
 wave6-trained-admission.json. The preparation and GUI instructions below are preserved
-as history; no repeat training is requested. Trained assessment is now active.
+as history; no repeat training is requested. Trained assessment is closed at288 development games; see WAVE6-ASSESSMENT.
+The current blocking owner gate is G7 in WAVE7.md.
 
 ## Question and evidence for admission
 

@@ -1,0 +1,84 @@
+{
+  "status": "passed",
+  "scope": "Independent exact byte/CRC/layout projection and source/data inheritance audit",
+  "entries": [
+    {
+      "candidate": "W7-RESQUAD-R4-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-QUADRATIC-R4\\91af04c6-dec5-39f9-a70a-02e58b38d856",
+      "checkpoint": "g000128-s001048576-82d4969a16ecc7e7921b45d4af453b59f096188677b37c168b8437f7e6b089d0",
+      "architecture": "BRN_GEN32_QUADRATIC_R4",
+      "projection": "quadratic",
+      "networkSha256": "7033f6611765e959a5c1e1aa027c3e1aace72773bd56b5fa0bd3922f3f7e777a",
+      "modelBytes": 30832,
+      "step": 1048576,
+      "rate": 0.001,
+      "exactRetainedWeightAndMomentValues": 11535,
+      "trainingSha256": "b8f64ac9ad13004a256b9f763e1d3daf7397c92eb9e190b9af67401dfaba7412",
+      "stateBytes": 92368,
+      "inheritedMetadata": {
+        "sources.json": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "cursors.json": "fb2057062c46b139020b7f534b59ddc8193a3122e1312614d12c1edb37a1c8c9",
+        "configuration.json": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      },
+      "inheritedSeek": {
+        "training-data\\seek\\d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": "894689deaa59b2a1714c487f8466e17cb5224a9e9385b3a29169e7938c94e857"
+      },
+      "generation": 128,
+      "addedGenerations": 0,
+      "nextGeneration": 129,
+      "targetGeneration": 160
+    },
+    {
+      "candidate": "W7-RESCUBIC-R4-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC-R4\\65907dc7-c479-3894-927f-bb9f1679d054",
+      "checkpoint": "g000128-s001048576-f86c64d4205ff58b87449aa07192c1a3eb793177c9bd1618860d68e7a436f8ab",
+      "architecture": "BRN_GEN32_CUBIC_R4",
+      "projection": "exact",
+      "networkSha256": "f583b20bd181eb044999a1ad07f2432911374793051bfd15ecc376e5ff3ddb16",
+      "modelBytes": 30864,
+      "trainingSha256": "7f8f65263a642d0b3aa93ed7a8c855530afd001f5e4269272d7dd325559ffc43",
+      "stateBytes": 92464,
+      "inheritedMetadata": {
+        "sources.json": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "cursors.json": "fb2057062c46b139020b7f534b59ddc8193a3122e1312614d12c1edb37a1c8c9",
+        "configuration.json": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      },
+      "inheritedSeek": {
+        "training-data\\seek\\d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": "894689deaa59b2a1714c487f8466e17cb5224a9e9385b3a29169e7938c94e857"
+      },
+      "generation": 128,
+      "addedGenerations": 0,
+      "nextGeneration": 129,
+      "targetGeneration": 160
+    },
+    {
+      "candidate": "W7-BRE-CONTROL-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\d945d1bd-91c4-370c-91f3-8b14226bfff1",
+      "checkpoint": "g000128-s002801664-a8f7cdc93ae5232d78fa21c10a94b01efb8b875c59c50585fb2293e1003eb192",
+      "architecture": "BRN_PAIR2",
+      "projection": "exact",
+      "networkSha256": "376b36cb9def3277f9ca9d229522aa1ad2e329f189e2171bb61c6fbb74835b79",
+      "modelBytes": 795032,
+      "trainingSha256": "5363c46ada36496af0d4800adf95113c13de12ed0679c94eb756d94e16199688",
+      "stateBytes": 2731424,
+      "inheritedMetadata": {
+        "sources.json": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "cursors.json": "6489086e2687a724ffdad39c3f64820e1dc4dcd58e13b1f9ab733fe29aeaea15",
+        "configuration.json": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      },
+      "inheritedSeek": {
+        "training-data\\seek\\d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842.json": "ecc83c51f1baa4d95647ca6d1592875b0622a26a9d945a2546df2ba55294abcc"
+      },
+      "generation": 128,
+      "addedGenerations": 0,
+      "nextGeneration": 129,
+      "targetGeneration": 160
+    }
+  ],
+  "limitations": [
+    "No substantive training or strength verification.",
+    "GUI settings, checkpoint references and source readiness are verified separately by Java/native checks."
+  ],
+  "preparationReport": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\owner-preparation-01.json",
+  "preparationReportSha256": "8e3ff2c065ae7f97612ae0fa8045dad14752aa01534ea451757df9449eed0cdf"
+}

@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "recordedUtc": "2026-10-21T09:59:09.630053+00:00",
+  "inventories": [
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\seek-remediation-before-01.json",
+      "sha256": "f5e13f5b44347494e38059040337c10b60e55fb78c7cd0f327ec8c4a62a058b7",
+      "verifiedUnchangedFiles": 710
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\trained-before-01.json",
+      "sha256": "8884401cc5b60b82e1715c1504be28c5daca8496e902581885eb17f7bb4ebad7",
+      "verifiedUnchangedFiles": 1405
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-before-01.json",
+      "sha256": "f5ca8fc5833dc2179b31baacb54c63b6e2a76921456de327893a9cc8c97a5fa9",
+      "verifiedUnchangedFiles": 925
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-before-01.json",
+      "sha256": "9ad0e9e99320ed2fa24ba1f3fd210a4c28f6355e854e4e7a8c569d8a5b18c541",
+      "verifiedUnchangedFiles": 941
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\owner-before-gui-01.json",
+      "sha256": "bc891c65f1aa23fcf561ac3b43e26e548e090890c13c935a2d308b3b2ef636cf",
+      "verifiedUnchangedFiles": 54
+    }
+  ],
+  "totalVerifiedFiles": 4035,
+  "runtimeBindingsUnchanged": [
+    "wave6-runtime.json",
+    "wave7-runtime.json"
+  ],
+  "limitations": [
+    "W1 stores were not written or newly rehashed in this gate.",
+    "Historical inventory verification covers recorded files; legitimate later unrelated owner artifacts are not inferred from older inventories."
+  ]
+}

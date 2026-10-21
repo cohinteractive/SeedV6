@@ -1,0 +1,29 @@
+{
+  "id": "wave7-compact-degree-runtime-v1",
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave7\\runtime-57-01\\lib",
+  "createdUtc": "2026-10-21T09:56:37.539121+00:00",
+  "sourceCommit": "89422ed27c826127a4549720587c6a4ef91938b2",
+  "build": 57,
+  "modelFeatures": [
+    "brn-hybrid-raw-v1",
+    "brn-cubic-packed-v1",
+    "brn-unary-compiled-v1",
+    "brn-constant-gates-compiled-v1",
+    "brn-cubic-r4-v1",
+    "brn-cubic-only-ablation-v1",
+    "brn-gen32-quadratic-v1",
+    "brn-gen32-quadratic-r4-v1"
+  ],
+  "jars": {
+    "engine-core.jar": "b4f1132c163b5cf28cafaa6a29a14fc23d1586ebbccf9ea584c07c6e903f39ca",
+    "engine-training.jar": "56538b286ea8f0926c4b7ea1ed4c4b1e6c4cd8519a54f5cd9f8e9d4750298ef4",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "da6c5e8ccab361773d3907ab39b4adb94636c43e057f03b24a6c7acdc4b6129a",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "java": "C:/java/jdk-21/bin/java.exe",
+  "heapMiB": 768,
+  "activeProcessors": 1
+}

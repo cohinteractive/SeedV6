@@ -1,0 +1,220 @@
+{
+  "status": "passed",
+  "probes": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\cache-q4-01.json",
+      "sha256": "eac780f7fdd25a0baf201cfe6be6b24682f97db3e8665209075d60c67d94f623",
+      "positions": 6333,
+      "searchPairs": 48,
+      "maximumRawError": 4.218847493575595e-15,
+      "maximumFreshRawError": 9.547918011776346e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "workspacePrimitiveBytes": 3689,
+      "combinedPayloadBytes": 825864,
+      "transitionLatency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            29872700,
+            28769100,
+            29154800,
+            28825300,
+            28470600,
+            28226000,
+            29880900
+          ],
+          "medianNanos": 576.506,
+          "name": "QUADRATIC-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            13210800,
+            14589800,
+            11177800,
+            9710600,
+            9680800,
+            10162400,
+            9885400
+          ],
+          "medianNanos": 203.248,
+          "name": "QUADRATIC-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            7522200,
+            7196500,
+            7008400,
+            7213900,
+            6869400,
+            7132800,
+            7486800
+          ],
+          "medianNanos": 143.93,
+          "name": "Gen32"
+        }
+      ]
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\cache-masked-c4-01.json",
+      "sha256": "1586ebc4ea59ce149ecdfaf30c6a238c170296c33e3ceee23e324db1c9b18529",
+      "positions": 6333,
+      "searchPairs": 48,
+      "maximumRawError": 4.218847493575595e-15,
+      "maximumFreshRawError": 9.547918011776346e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "workspacePrimitiveBytes": 3753,
+      "combinedPayloadBytes": 825896,
+      "transitionLatency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            32237400,
+            35470000,
+            34248400,
+            40398500,
+            34383000,
+            30319800,
+            30745300
+          ],
+          "medianNanos": 684.968,
+          "name": "CUBIC-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            26051600,
+            15938700,
+            20170100,
+            14037800,
+            14412900,
+            10700700,
+            10724100
+          ],
+          "medianNanos": 288.258,
+          "name": "CUBIC-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            8978100,
+            9869300,
+            7180700,
+            7886700,
+            7294900,
+            7286400,
+            7501200
+          ],
+          "medianNanos": 150.024,
+          "name": "Gen32"
+        }
+      ]
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\cache-c4-01.json",
+      "sha256": "461ee2dffa5babc05ad2a38be022d65c61e00ab1c771afeff91d0a9697f1268c",
+      "positions": 6333,
+      "searchPairs": 48,
+      "maximumRawError": 5.88418203051333e-15,
+      "maximumFreshRawError": 9.880984919163893e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "workspacePrimitiveBytes": 3753,
+      "combinedPayloadBytes": 825896,
+      "transitionLatency": [
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            32041400,
+            34657900,
+            33029000,
+            29611100,
+            29356000,
+            31037300,
+            30452500
+          ],
+          "medianNanos": 620.746,
+          "name": "CUBIC-full"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            13286700,
+            12931900,
+            12669100,
+            11761000,
+            11389700,
+            13629300,
+            13749000
+          ],
+          "medianNanos": 258.638,
+          "name": "CUBIC-cache"
+        },
+        {
+          "evaluationsPerPass": 50000,
+          "passNanos": [
+            7694000,
+            7250100,
+            9244700,
+            7492800,
+            6780100,
+            6821600,
+            10060000
+          ],
+          "medianNanos": 149.856,
+          "name": "Gen32"
+        }
+      ]
+    }
+  ],
+  "projectedQ4VersusMaskedC4ExactSearchRows": 96,
+  "sameFunctionWarmSearchCostRatioMedian": 0.890982551262228,
+  "sameFunctionWarmSearchRatios": [
+    0.8716859089343467,
+    0.9358147439983004,
+    0.9244081458101883,
+    0.926084467104725,
+    0.9581061637427655,
+    1.001069986050967,
+    0.9757353379050028,
+    0.9608271540469974,
+    0.9136624461523482,
+    0.7553795043855014,
+    0.8416432438940877,
+    0.946330119883503,
+    0.7159394509419045,
+    0.8475827023525124,
+    0.7895253095577947,
+    0.665367882094372,
+    0.8794659972615244,
+    0.8657097796581896,
+    0.88238338302032,
+    0.9152328997062527,
+    0.7387039254276656,
+    0.9179662338084129,
+    0.8890253439217544,
+    0.8608175837295781,
+    0.8585002993287394,
+    0.9014765814421372,
+    0.765477994110787,
+    0.902193470637956,
+    0.8588720558189739,
+    0.8929397586027018,
+    0.8974779303729069,
+    0.9246499754759888
+  ],
+  "smoke": {
+    "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\legal-smoke-analysis-01.json",
+    "sha256": "9595f383edfe2acb342999f0ebc99a9abdd2282d607b02e4c2948cd17dd471bc",
+    "legalPlies": 48,
+    "intentional8PlyCaps": 6,
+    "scope": "Loader/legal-play only, excluded from strength results"
+  },
+  "limitations": [
+    "Sequential single-process costs are not universal NPS ratios.",
+    "Q4 is not yet adaptation-trained; no strength claim."
+  ]
+}
