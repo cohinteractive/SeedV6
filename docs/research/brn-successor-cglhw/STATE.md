@@ -33,6 +33,8 @@ hypothesis, not evidence of corruption. No playing-strength conclusion follows.
 
 WAVE9.md records the implemented calibration-aware fixed-basis experiment:241 final targeted tests, independent actual projection, five payload/state audits and three cache/search probes pass. Build59 implementation boundary is prepared; native packaging and G8 closure remain required before creating owner lineages or activating G9.
 
+Closed G8 units: degree-node32, degree-clock32, anchor-node16 and anchor-clock16. Cubic scores50%/45.3125% against trained quad and56.25%/65.625% against unchanged Q4 anchor, all uncertain. Remaining fixed units: bre-clock32 and reference-clock48. Build59/e804482 is packaged and validated; no G9 owner lineage exists or training is requested.
+
 Current autonomous unit: complete frozen wave8-assessment-protocol.json,176 games
 at common Policy4/QXRAY and prior half-change/quarter mapping: cubic versus quad
 at nodes/time, cubic versus exact zero-C3 Q4 anchor at nodes/time, both versus

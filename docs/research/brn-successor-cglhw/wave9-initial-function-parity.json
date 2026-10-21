@@ -1,0 +1,15 @@
+{
+  "id": "wave9-initial-function-parity-v1",
+  "positions": 4096,
+  "maximumRawDifference": 8.881784197001252e-16,
+  "expected": "Compiled Gen32 + .5*(original W7 Q4 Latest160 raw minus compiled Gen32)",
+  "result": "All three projected heads reproduce the intended common initial function",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\initial-function-01\\bt4-predictions.jsonl": "58289e6296d46e6e21f4e9af1b3e69d3791d645b4581f5eb07a572f96bdcc498",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\initial-function-01\\cp-predictions.jsonl": "be1d5d80018a52e4aced83880ca8e70b6ee65761a86e04fca97a0ece92e12a66"
+  },
+  "limitations": [
+    "Consumed positions, no learning or strength claim.",
+    "Uses canonical zero-correction Q4 runtime for Gen32 to avoid trainer-versus-compiled Pair2 representation differences."
+  ]
+}

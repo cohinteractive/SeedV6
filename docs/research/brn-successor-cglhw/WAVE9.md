@@ -104,3 +104,46 @@ source hashes; its copied timestamp is corrected in the separate runtime erratum
 Application implementation is ready for the build59 commit and native packaging.
 This does not activate G9: finish G8, interpret its full evidence, then validate
 the packaged owner lineages before requesting any training.
+
+## Interpretation limits and intended post-training assessment
+
+The changed objective may improve prediction yet harm pruning, ordering or actual
+strength; historical quarter calibration is empirically useful and is not proved
+optimal by the consumed-panel fit. Preserve ordinary BRE's established optimizer
+and raw training objective as a practical control. Its GUI losses are therefore
+not directly comparable to the three new search-objective losses. The matched
+head arms, not the BRE loss table, isolate degree effects after shared calibration.
+
+Prospective primary checkpoints are Latest176 for all four arms, regardless of
+Best. Audit Best separately and do not substitute after favourable games. Compare
+cubic against trained affine+quadratic and affine-only at equal time and targeted
+equal nodes; inspect learned coefficient scale, validation and independent score
+panels before candidate selection. Compare promising candidates with continued
+BRE and frozen Gen32. These new models already contain half-anchor composition
+and quarter search mapping: do not apply the legacy correctionScale=.5 again.
+Their ordinary runtime uses the guarded composition cache. BRE's established
+half-change research control remains a distinct explicitly bound inference
+variant; no manual Arena result is required. Preserve fresh confirmation evidence
+until a candidate demonstrates value beyond its adapted additive controls.
+
+If cubic again lacks evidence beyond the calibrated additive arms, prioritize a
+different information basis or selective expressive mechanism over an unchanged
+extension of these heads. A negative result will concern this fixed rank-four
+basis and objective, not all higher-order chess relationships.
+
+Native GUI build59 is packaged at
+`dist/windows/candidates/candidate-20261021T192119-a567d46b/SeedV6-GUI/SeedV6-GUI.exe`.
+Its compiled core classes equal the tested development runtime, and its core/
+training jars match wave9-runtime.json. Native packaging selfchecks pass; actual
+owner-lineage GUI preview remains pending. All4096 consumed initial-function
+positions agree with the intended compiled Gen32 plus half-Q4 function within
+8.89e-16, independently of the legacy Pair2 trainer representation.
+See wave9-native-package-validation and wave9-initial-function-parity.
+
+Equal parameter counts do not make the two eight-head feature spaces nested:
+affine+quadratic can independently adjust the four existing Q directions, while
+affine+cubic adds four degree3 directions and can rescale the anchor through its
+affine term. Affine-only is their common adapted control. Use both trained
+controls and suitable post-training masks; an unadapted mask alone cannot prove
+architectural causation. This experiment does not claim cubic is a strict
+superset of every optimized additive competitor.

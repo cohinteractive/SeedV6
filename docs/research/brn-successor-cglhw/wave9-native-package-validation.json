@@ -1,0 +1,19 @@
+{
+  "id": "wave9-native-package-validation-v1",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T192119-a567d46b",
+  "executable": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T192119-a567d46b\\SeedV6-GUI\\SeedV6-GUI.exe",
+  "build": 59,
+  "implementationCommit": "e804482157d6e9064077dbbeb0c4c9a7d9ca06ce",
+  "packageEvidence": {
+    "dist\\windows\\candidates\\candidate-20261021T192119-a567d46b\\candidate.json": "d2209aa39bf741763fafde559a28a2280ce3afbc1b3f9e4644bfe251cecd4604"
+  },
+  "execution": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\native-package-01.execution.json",
+  "validatedCoreClassesIdenticalToDevelopmentRuntime": true,
+  "trainingAndResearchJarsIdenticalToDevelopmentRuntime": true,
+  "packagedCoreAndTrainingMatchFrozenRuntime": true,
+  "wrapperNote": "The local packaging wrapper had a copied BOM encoding error on its ErrorActionPreference assignment. The explicit guards and Gradle invocation ran; exit0 and native packaging VERIFIED_LOCAL_CANDIDATE evidence independently confirm success. Original wrapper preserved.",
+  "limitations": [
+    "Actual prepared-owner GUI preview remains pending G8 closure/owner lineage creation.",
+    "Only GUI native package requested; no fresh native UCI distribution claim."
+  ]
+}

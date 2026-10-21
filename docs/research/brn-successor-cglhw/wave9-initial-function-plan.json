@@ -1,0 +1,41 @@
+{
+  "id": "wave9-initial-function-anchor-parity-v1",
+  "models": [
+    {
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/Gen32",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "name": "Gen32"
+    },
+    {
+      "name": "W9-CAL-AFFINE-R4-LR001",
+      "root": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-library-01\\BRN-GEN32-CAL-AFFINE-R4\\ef6b7d2e-a8d3-397f-b66e-6f93d123d57e",
+      "checkpoint": "g000168-s000000000-191791f2dc359e702f9a4fd5c13f3044247f068e16cfdaf0a8533ecd669540c7",
+      "networkSha256": "1f38d934d124dd520daff43284294b63176a67121f9d1ed0671ea9e7be0ee22e"
+    },
+    {
+      "name": "W9-CAL-QUAD-R4-LR001",
+      "root": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-library-01\\BRN-GEN32-CAL-QUADRATIC-R4\\741f4848-b98f-3b26-9263-5f5adb4d20b1",
+      "checkpoint": "g000168-s000000000-39fb2a306f1fb72924aaa5eb00764051a8b41cea1e128dc51b7ed3bdf23276c6",
+      "networkSha256": "cf89fd6caccc1f39be1875203774ecf8cc979980c1d76410a04cd62e978179a2"
+    },
+    {
+      "name": "W9-CAL-CUBIC-R4-LR001",
+      "root": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-library-01\\BRN-GEN32-CAL-CUBIC-R4\\d3694155-fb64-3037-a247-b5bf804b8d79",
+      "checkpoint": "g000168-s000000000-4294923477e1a39688d5942fdd34bc7c7841696b4864570d5bff26bbbf92eb8a",
+      "networkSha256": "e696c32709fcf8c29fb66d56414a98099ec25c5767de559bf8050b0f35bc5f7a"
+    },
+    {
+      "name": "W9-BRE-CONTROL-LR001",
+      "root": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave9\\isolated-library-01\\BRN-Pair2\\b6135d13-24a9-3d5f-8cc3-63e1880e323e",
+      "checkpoint": "g000168-s003129344-eecb3b3370c98fecff98fd7a9c7357d78e9950c9748674a1087ffeba427ff566",
+      "networkSha256": "f19d3dd3b7fa9bc3adff21f0bef7f7b2b7d62ff3621d518098486a5ef77b932e"
+    },
+    {
+      "name": "W7-Q4-anchor-g160-full",
+      "root": "docs/research/brn-successor-cglhw/raw/wave7/trained-frozen-01/W7-RESQUAD-R4-LR001",
+      "checkpoint": "g000160-s001310720-b5d40cc7a3cd74a4eab18f6e274676b7c58d094896d931d5f40f06828a4ed338",
+      "networkSha256": "fd6c2fc1ec2549bced72ab5d3bf245ff4a56abf6d779ba36a921040bd4dd70bd"
+    }
+  ]
+}

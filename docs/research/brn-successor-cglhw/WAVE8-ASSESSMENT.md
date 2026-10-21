@@ -98,3 +98,12 @@ matched affine on all four consumed evaluation panels; cubic beats quadratic
 on only fresh BT4. This supports a matched calibration-aware follow-up, not
 cubic preference or generalization/strength claims. WAVE9 describes provisional
 implementation preparation, with the G8 assessment still required to finish.
+
+The exact-anchor controls close16 games each. Cubic scores56.25% equal nodes
+(7/4/5, descriptive95%36.07..76.43) and65.625% equal time (8/5/3,
+47.25..84.00). Independently replayed2439/2082 moves; no failures. NPS ratios
+against unchanged Q4 anchor are.95225/.93884. The paired bounded intervals
+remain much wider. Both point estimates are positive, preserving a plausible
+cubic signal, but neither interval excludes50%; adapted quadratic still matches
+or exceeds cubic in the direct degree comparisons. Do not pool distinct budgets
+or treat this selected developmental evidence as an independent expressive gain.
