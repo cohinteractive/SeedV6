@@ -1,0 +1,112 @@
+{
+  "id": "wave6-trained-cost-summary-v1",
+  "observations": [
+    {
+      "candidate": "q16",
+      "scale": 1,
+      "input": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-cache-q16-01.json",
+      "sha256": "493cb8f25e64eb3b623b88c90c5b62f5fd15447e56ca4f485e50c3a5a85bd259",
+      "searchParityRootPasses": 48,
+      "warmedObservations": 32,
+      "medianCacheVsCanonicalCost": 0.8002813153452082,
+      "latency": {
+        "QUADRATIC-full": 816.126,
+        "QUADRATIC-cache": 272.212,
+        "Gen32": 146.866
+      },
+      "workspaceBytes": 4073,
+      "parameters": 13073,
+      "combinedPayloadBytes": 899688
+    },
+    {
+      "candidate": "c16",
+      "scale": 1,
+      "input": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-cache-c16-01.json",
+      "sha256": "cf6fb6986b8ce44ea9b9ad11889757f8f60af68a704490035057b5adf3079ab4",
+      "searchParityRootPasses": 48,
+      "warmedObservations": 32,
+      "medianCacheVsCanonicalCost": 0.8001804587095456,
+      "latency": {
+        "CUBIC-full": 874.996,
+        "CUBIC-cache": 309.944,
+        "Gen32": 141.112
+      },
+      "workspaceBytes": 4329,
+      "parameters": 13089,
+      "combinedPayloadBytes": 899816
+    },
+    {
+      "candidate": "c4",
+      "scale": 1,
+      "input": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-cache-c4-01.json",
+      "sha256": "cf0d11e68eff8addf6b5f1c107d3a690a82df2a428bf20d52212a45b779ade58",
+      "searchParityRootPasses": 48,
+      "warmedObservations": 32,
+      "medianCacheVsCanonicalCost": 0.8265545085368411,
+      "latency": {
+        "CUBIC-full": 559.162,
+        "CUBIC-cache": 209.052,
+        "Gen32": 136.114
+      },
+      "workspaceBytes": 3753,
+      "parameters": 3849,
+      "combinedPayloadBytes": 825896
+    },
+    {
+      "candidate": "q16",
+      "scale": 0.5,
+      "input": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\half-cache-q16-01.json",
+      "sha256": "759be8131bd3846d4ab490db3f5155081a9db88432a40d759b0bdd833c5ede27",
+      "searchParityRootPasses": 48,
+      "warmedObservations": 32,
+      "medianCacheVsCanonicalCost": 0.7753398266078261,
+      "latency": {
+        "QUADRATIC-full": 742.868,
+        "QUADRATIC-cache": 253.962,
+        "Gen32": 142.552
+      },
+      "workspaceBytes": 4073,
+      "parameters": 13073,
+      "combinedPayloadBytes": 899688
+    },
+    {
+      "candidate": "c16",
+      "scale": 0.5,
+      "input": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\half-cache-c16-01.json",
+      "sha256": "866977726b89f0c4d55591b305b26f5c7657ed44be702cb6a75fa76e16d86aa7",
+      "searchParityRootPasses": 48,
+      "warmedObservations": 32,
+      "medianCacheVsCanonicalCost": 0.7881265284732379,
+      "latency": {
+        "CUBIC-full": 821.456,
+        "CUBIC-cache": 291.476,
+        "Gen32": 138.568
+      },
+      "workspaceBytes": 4329,
+      "parameters": 13089,
+      "combinedPayloadBytes": 899816
+    },
+    {
+      "candidate": "c4",
+      "scale": 0.5,
+      "input": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\half-cache-c4-01.json",
+      "sha256": "08e53985a2119895c123da569593c2b551136a252a0cbf186f1a0ac66f0848c1",
+      "searchParityRootPasses": 48,
+      "warmedObservations": 32,
+      "medianCacheVsCanonicalCost": 0.8306761157321079,
+      "latency": {
+        "CUBIC-full": 581.51,
+        "CUBIC-cache": 211.456,
+        "Gen32": 138.022
+      },
+      "workspaceBytes": 3753,
+      "parameters": 3849,
+      "combinedPayloadBytes": 825896
+    }
+  ],
+  "limitations": [
+    "Canonical/cache timings are paired within the same function; implementations rotate order and are grouped by label, never row order.",
+    "Single process per model/scale; not replicated machine-general timing.",
+    "Different models search different trees; direct practical NPS measured separately in matches."
+  ]
+}

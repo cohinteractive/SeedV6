@@ -70,3 +70,54 @@ Next: actual trained cache/search checks, fixed-panel predictions, bounded games
 then interpret trained degree benefit, practical cost and the next credible unit.
 No human action currently blocks assessment; substantive further training remains
 owner-only. Preserve all raw outputs, including failures and negative evidence.
+
+## Actual trained correctness and cost
+
+Six probes (Q16/C16/C4, full and half correction) pass6333 preserved positions and
+48 same-function search root passes each, with zero integer/fresh-cache/search
+result differences. Raw errors remain below1.2e-14. Frozen build56 hashes are
+verified before execution; no application implementation changed for this audit.
+`wave6-trained-cache-validation.json` and `wave6-cost-summary.json` bind results.
+
+Full-correction cached inference: Q16 272.212ns, C16 309.944ns, C4 209.052ns;
+concurrent-in-probe Gen32 controls146.866/141.112/136.114ns respectively. These are
+sequential single-process measurements, not a universal ratio. Primitive workspace
+4073/4329/3753 bytes; parameters13073/13089/3849; combined base+residual payload
+899688/899816/825896 bytes. Half-correction guarded cache search cost against the
+same canonical function has warmed median ratios0.77534/0.78813/0.83068 over32
+root/pass observations each. Group by implementation label: probe execution order
+rotates. Different architectures' tree-dependent NPS is assessed separately.
+
+## Fixed-panel maturity and calibration
+
+`wave6-maturity-model-plan.json` binds the actual96 bootstrap and128 endpoints.
+Predictions are preserved in `raw/wave6/trained-predictions-{old,fresh5}-01`.
+Independent Python reproduces Java aggregate cross-entropy to2.89e-15 maximum.
+Training/runtime raw functions agree. Both panels were consumed in prior waves;
+the formerly fresh W5 ordinals are now behind G6 cursors. No fresh generalization
+or chess claim follows. Invalid-position sensitivity is recorded separately and
+does not reverse the current mapped ranking.
+
+Second-half cross-entropy at fixed half change and quarter mapping,96 to128:
+
+| Arm | Old BT4 | Old CP | W5 fresh BT4 | W5 fresh CP |
+| --- | --- | --- | --- | --- |
+| Q16 | .780550 to .779787 | 1.332437 to1.331841 | .768167 to.768870 | .972957 to.974510 |
+| C16 | .779753 to .779689 | 1.330501 to1.332868 | .767723 to.769264 | .970422 to.974305 |
+| C4 | .779777 to .781095 | 1.331401 to1.334590 | .767441 to.768884 | .973753 to.977399 |
+| BRE | .780032 to .779104 | 1.336329 to1.336331 | .767301 to.767667 | .979229 to.981334 |
+
+Q16 recovers much of the removed-degree fitting gap; C16 retains a small same-data
+validation advantage late in G6. C4 does not show consistent further recovery on
+fixed panels. Raw-objective and mapped trends differ: e.g. C16 old-CP raw CE
+.652458 to.622691 improves while mapped CE deteriorates. This motivates investigating
+objective/search mapping alignment if strength evidence warrants it; it does not
+prove a trainer defect or justify changing the already frozen match calibration.
+All-source detailed metrics and status sensitivity are in `wave6-fitting-*.json`.
+
+The summary tool now explicitly recognizes bounded read-only lineage/prediction
+process receipts separately from games. Four targeted classifier tests pass,
+including rejection of a match disguised as a diagnostic. No strength evidence
+is gained from that tooling change. CRLF protocol bytes are preserved exactly;
+Git whitespace verification uses `core.whitespace=cr-at-eol` for those Windows
+outputs rather than rewriting frozen hashes after admission.

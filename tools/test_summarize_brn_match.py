@@ -9,6 +9,20 @@ spec.loader.exec_module(summary)
 
 
 class DiagnosticProcessTest(unittest.TestCase):
+    def test_read_only_audit_receipt_requires_bounded_known_entrypoint(self):
+        record = dict(args=["java.exe", "-Xmx768m", "-XX:ActiveProcessorCount=1",
+                            "--add-modules=jdk.incubator.vector", "-cp", "frozen/*",
+                            "com.ohinteractive.seedv6.tools.eval.BrnLineageAudit", "plan", "output"],
+                      runtimeSha256="a"*64, priority="BelowNormal", heapMiB=768,
+                      activeProcessors=1, exitCode=0, startedUtc="2026-10-21T07:00:00+00:00",
+                      completedUtc="2026-10-21T07:00:01+00:00")
+        self.assertEqual(record["args"][6], summary.diagnostic_entrypoint(record))
+        for changed in ({"activeProcessors": 8}, {"args": record["args"][:6]+[
+                "com.ohinteractive.seedv6.tools.eval.BrnSuccessorMatch", "plan", "output"]},
+                {"args": record["args"] + ["unexpected"]}):
+            with self.subTest(changed=changed), self.assertRaises(AssertionError):
+                summary.diagnostic_entrypoint({**record, **changed})
+
     def test_bounded_gradle_qa_is_separate_and_unknown_work_fails_closed(self):
         record = dict(started="2026-10-21T01:00:00+00:00", ended="2026-10-21T01:01:00+00:00",
                       exitCode=0, args=["cmd.exe", "/d", "/c", "gradlew.bat",

@@ -12,6 +12,23 @@ import sys
 
 def diagnostic_entrypoint(record):
     """Recognize explicitly separate diagnostic receipts; malformed match records fail closed."""
+    if "args" in record and "runtimeSha256" in record:
+        # Read-only lineage/prediction audits have a distinct subprocess receipt.
+        # Classify only their exact bounded launch shape; never treat them as games.
+        from datetime import datetime
+        args = record["args"]
+        assert isinstance(args, list) and all(isinstance(x, str) for x in args)
+        assert args[1:5] == ["-Xmx768m", "-XX:ActiveProcessorCount=1",
+                             "--add-modules=jdk.incubator.vector", "-cp"]
+        entry = args[6]
+        counts = {"com.ohinteractive.seedv6.tools.eval.BrnLineageAudit": 9,
+                  "com.ohinteractive.seedv6.tools.eval.BrnResidualAssessment": 11}
+        assert entry in counts and len(args) == counts[entry]
+        assert record["priority"] == "BelowNormal" and record["heapMiB"] == 768
+        assert record["activeProcessors"] == 1 and isinstance(record["exitCode"], int)
+        assert len(record["runtimeSha256"]) == 64
+        assert datetime.fromisoformat(record["completedUtc"]) >= datetime.fromisoformat(record["startedUtc"])
+        return entry
     if set(record) == {"started", "ended", "exitCode", "args"}:
         # Historical bounded Gradle QA shares the evidence directory with games.
         # Require its explicit launcher and finite, recognized task set; do not
