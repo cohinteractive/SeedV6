@@ -42,7 +42,7 @@ class BrnResidualHybridTest {
     private static byte[] encoded(BrnPair2Model model) throws IOException {
         var out=new ByteArrayOutputStream();BrnPair2Codec.writeModel(model,out);return out.toByteArray();
     }
-    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC","GEN32_CUBIC_R4","GEN32_QUADRATIC"})
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC","GEN32_CUBIC_R4","GEN32_QUADRATIC","GEN32_QUADRATIC_R4"})
     void zeroCorrectionPreservesSuppliedBaseAndDoesNotClaimOriginalDispatch(BrnNextArchitecture kind) throws Exception {
         var base=base(17);var model=new BrnNextModel(kind,new double[kind.parameters()]);
         byte[] originalBase=encoded(base),originalModel=encoded(model);
@@ -63,7 +63,7 @@ class BrnResidualHybridTest {
         assertThrows(IllegalArgumentException.class,()->w1.newResearchWorkspace(base));
         assertThrows(IllegalArgumentException.class,()->SearchEvaluation.brnResidualHybridResearch(w1,base));
     }
-    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC","GEN32_CUBIC_R4","GEN32_QUADRATIC"})
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC","GEN32_CUBIC_R4","GEN32_QUADRATIC","GEN32_QUADRATIC_R4"})
     void canonicalCompositionDeltaTransitionsAndSearchAgree(BrnNextArchitecture kind) throws Exception {
         var random=new SplittableRandom(91);double[] weights=new double[kind.parameters()];
         for(int i=0;i<weights.length;i++)weights[i]=random.nextDouble(-.2,.2);
@@ -90,7 +90,7 @@ class BrnResidualHybridTest {
             }
         }
     }
-    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC","GEN32_CUBIC_R4","GEN32_QUADRATIC"})
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC","GEN32_CUBIC_R4","GEN32_QUADRATIC","GEN32_QUADRATIC_R4"})
     void hybridRoundingBoundariesRetainCanonicalScore(BrnNextArchitecture kind) {
         var positions=boards().subList(0,91);var last=positions.getLast();var base=base(41);
         double material=BrnPair2Features.material(last);

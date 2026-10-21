@@ -14,10 +14,11 @@ import java.util.*;
 /** Explicit degree-control continuation preparation. Source stores are locked and read, never trained or rewritten. */
 public final class BrnDegreeControlWave {
     static final String WAVE="brn-successor-2026-10-21-wave6",ORIGIN="degree-continuation-origin.json";
+    static final String COMPACT_WAVE="brn-successor-2026-10-21-wave7";
     public record Arm(String name,BrnContinuationWave.Source source,double rate,String projection) {
         public Arm {
-            if(name==null||!name.startsWith("W6-")||source==null||rate!=.001&&rate!=.003)
-                throw new IllegalArgumentException("Explicit W6 arm required");
+            if(name==null||!(name.startsWith("W6-")||name.startsWith("W7-"))||source==null||rate!=.001&&rate!=.003)
+                throw new IllegalArgumentException("Explicit W6 or W7 arm required");
             if(projection==null||!Set.of("exact","quadratic").contains(projection))
                 throw new IllegalArgumentException("Explicit exact or quadratic projection required");
         }
@@ -29,23 +30,25 @@ public final class BrnDegreeControlWave {
                         String latest,long latestGeneration,TrainingRecipe recipe,long additionalGenerations,
                         Map<String,Long> sourceOffsets,String partition) {}
     public record Report(String wave,String recorded,String library,List<Entry> entries) {}
+    static String wave(Arm arm) { return arm.name().startsWith("W6-")?WAVE:COMPACT_WAVE; }
     static UUID id(Arm arm) {
-        return UUID.nameUUIDFromBytes((WAVE+":"+arm.name()+":"+arm.source().checkpoint()+":"+arm.rate()+":"+arm.projection())
+        return UUID.nameUUIDFromBytes((wave(arm)+":"+arm.name()+":"+arm.source().checkpoint()+":"+arm.rate()+":"+arm.projection())
                 .getBytes(StandardCharsets.UTF_8));
     }
     static String hash(byte[] bytes) { return BrnContinuationWave.hash(bytes); }
     static NetworkTrainingState project(NetworkTrainingState source,Arm arm) throws IOException {
         if(source.hyperparameters().learningRate()!=arm.rate())throw new IOException("Source rate differs; no silent optimizer change");
         if(arm.projection().equals("exact"))return source;
-        if(!(source instanceof NetworkTrainingState.BrnNext n)
-                ||source.architecture()!=TrainingArchitecture.BRN_GEN32_CUBIC)
-            throw new IOException("Quadratic projection requires the explicit rank16 residual source");
+        var expected=wave(arm).equals(WAVE)?TrainingArchitecture.BRN_GEN32_CUBIC:TrainingArchitecture.BRN_GEN32_CUBIC_R4;
+        if(!(source instanceof NetworkTrainingState.BrnNext n)||source.architecture()!=expected)
+            throw new IOException("Quadratic projection requires the wave's explicitly bound cubic rank");
         return new NetworkTrainingState.BrnNext(n.trainer().projectQuadratic());
     }
     static List<Entry> prepare(Path library,List<Arm> arms) throws IOException {
         library=library.toAbsolutePath().normalize();
         if(!Files.isDirectory(library,LinkOption.NOFOLLOW_LINKS)||Files.isSymbolicLink(library))throw new IOException("Existing unlinked library required");
         if(arms.isEmpty()||arms.stream().map(Arm::name).distinct().count()!=arms.size())throw new IOException("Distinct explicit arms required");
+        if(arms.stream().map(BrnDegreeControlWave::wave).distinct().count()!=1)throw new IOException("Mixed degree-control waves refused");
         var entries=new ArrayList<Entry>();
         for(var arm:arms) {
             var source=arm.source();Path original=Path.of(source.root()).toAbsolutePath().normalize();
@@ -56,8 +59,10 @@ public final class BrnDegreeControlWave {
                 var manifest=CheckpointStore.readSnapshot(original,source.checkpoint()).manifest();
                 if(manifest.generation()!=source.generation()||!manifest.networkSha256().equals(source.networkSha256())
                         ||!manifest.trainingSha256().equals(source.trainingSha256()))throw new IOException("Source checkpoint identity differs");
-                if(!Set.of(TrainingArchitecture.BRN_GEN32_CUBIC,TrainingArchitecture.BRN_GEN32_CUBIC_R4,TrainingArchitecture.BRN_PAIR2).contains(manifest.architecture()))
-                    throw new IOException("W6 source architecture differs");
+                var allowed=wave(arm).equals(WAVE)
+                        ?Set.of(TrainingArchitecture.BRN_GEN32_CUBIC,TrainingArchitecture.BRN_GEN32_CUBIC_R4,TrainingArchitecture.BRN_PAIR2)
+                        :Set.of(TrainingArchitecture.BRN_GEN32_CUBIC_R4,TrainingArchitecture.BRN_PAIR2);
+                if(!allowed.contains(manifest.architecture()))throw new IOException("Degree-control source architecture differs");
                 if(TrainingSession.read(original).filter(s->s.state()==TrainingSession.State.ACTIVE).isPresent()
                         ||GenerationAttempt.inspect(original).filter(a->a.generation()>manifest.generation()).isPresent()
                         ||PartialGeneration.inspect(original).isPresent())
@@ -90,7 +95,7 @@ public final class BrnDegreeControlWave {
                     Files.createDirectories(parent);Files.createDirectory(root);
                     var settings=BrnContinuationWave.settings(root,architecture,arm.rate(),corpus,source.seed());
                     var lineage=new TrainingLineage(id(arm),arm.name(),state.architecture(),Instant.now(),LineageConfiguration.encode(settings),
-                            WAVE+": "+(arm.projection().equals("exact")?"exact continuation":"explicit degree2 projection; third-degree heads and moments omitted")+" of "+source.checkpoint());
+                            wave(arm)+": "+(arm.projection().equals("exact")?"exact continuation":"explicit degree2 projection; third-degree heads and moments omitted")+" of "+source.checkpoint());
                     try(var store=new CheckpointStore(root,state.architecture())) {
                         store.requireEmptyForBootstrap();store.writeLineage(lineage);store.writeTrainingSource(settings.source());
                         Files.createDirectories(DataSources.directory(root));
@@ -103,22 +108,22 @@ public final class BrnDegreeControlWave {
                         Files.write(DataSources.directory(root).resolve("cursors.json"),ledgerBytes,StandardOpenOption.CREATE_NEW);
                         Files.write(DataSources.directory(root).resolve("configuration.json"),configBytes,StandardOpenOption.CREATE_NEW);
                         ContinuationSeek.inherit(selection,ledger.state().next(),data.resolve("seek"),DataSources.directory(root).resolve("seek"));
-                        DataFiles.write(root.resolve(ORIGIN),new Origin(1,WAVE,arm,hash(ledgerBytes),hash(selectionBytes),bootstrap.manifest().id(),
+                        DataFiles.write(root.resolve(ORIGIN),new Origin(1,wave(arm),arm,hash(ledgerBytes),hash(selectionBytes),bootstrap.manifest().id(),
                                 bootstrap.manifest().networkSha256(),bootstrap.manifest().trainingSha256(),state.step()));
                     }
                 }
                 var origin=DataFiles.read(root.resolve(ORIGIN),Origin.class);
-                var lineage=TrainingLineage.read(root).orElseThrow(()->new IOException("Missing W6 identity"));
-                var provenance=LineageProvenance.read(root).orElseThrow(()->new IOException("Missing W6 provenance"));
-                if(origin.version()!=1||!origin.wave().equals(WAVE)||!origin.arm().equals(arm)||!lineage.id().equals(id(arm))
+                var lineage=TrainingLineage.read(root).orElseThrow(()->new IOException("Missing degree-control identity"));
+                var provenance=LineageProvenance.read(root).orElseThrow(()->new IOException("Missing degree-control provenance"));
+                if(origin.version()!=1||!origin.wave().equals(wave(arm))||!origin.arm().equals(arm)||!lineage.id().equals(id(arm))
                         ||!origin.sourceLedgerSha256().equals(hash(ledgerBytes))||!origin.selectionSha256().equals(hash(selectionBytes))
                         ||!origin.trainingSha256().equals(hash(stateBytes))||!origin.networkSha256().equals(expectedNetworkHash)
                         ||!provenance.initialCheckpoint().equals(origin.bootstrap()))
-                    throw new IOException("Foreign or incomplete W6 destination; preserved");
+                    throw new IOException("Foreign or incomplete degree-control destination; preserved");
                 var initial=CheckpointStore.readSnapshot(root,origin.bootstrap()).manifest();
                 if(!initial.networkSha256().equals(origin.networkSha256())||!initial.trainingSha256().equals(origin.trainingSha256())
                         ||initial.generation()!=source.generation()||initial.optimizerStep()!=state.step()||initial.architecture()!=state.architecture())
-                    throw new IOException("W6 bootstrap identity differs");
+                    throw new IOException("Degree-control bootstrap identity differs");
                 var currentLedger=new SourceLedger(root).state();
                 if(currentLedger.reservations().size()<ledger.state().reservations().size()
                         ||!currentLedger.reservations().subList(0,ledger.state().reservations().size()).equals(ledger.state().reservations()))
@@ -139,11 +144,13 @@ public final class BrnDegreeControlWave {
     public static void main(String[] args) throws Exception {
         if(args.length!=3||!args[0].equals("--create"))throw new IllegalArgumentException("--create PLAN NEW_REPORT");
         var plan=DataFiles.read(Path.of(args[1]),Plan.class);Path report=Path.of(args[2]);
-        if(!plan.id().equals(WAVE)||Files.exists(report))throw new IOException("Explicit W6 plan and new report required");
+        if(!Set.of(WAVE,COMPACT_WAVE).contains(plan.id())||plan.arms().isEmpty()
+                ||plan.arms().stream().anyMatch(arm->!wave(arm).equals(plan.id()))||Files.exists(report))
+            throw new IOException("Explicit matching degree-control plan and new report required");
         Path library=Path.of(plan.library()).toAbsolutePath().normalize();
         String configured=TrainingSettings.preferences().get("baseTrainingRoot","");
         if(configured.isBlank()||!Path.of(configured).toAbsolutePath().normalize().equals(library))throw new IOException("GUI library differs");
-        DataFiles.write(report,new Report(WAVE,Instant.now().toString(),library.toString(),prepare(library,plan.arms())));
+        DataFiles.write(report,new Report(plan.id(),Instant.now().toString(),library.toString(),prepare(library,plan.arms())));
         System.out.println("Prepared/verified degree-control continuation lineages; no training: "+report);
     }
     private BrnDegreeControlWave() {}

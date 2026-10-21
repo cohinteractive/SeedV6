@@ -33,7 +33,7 @@ class TrainingRecipeTest {
             case BRN2 -> new NetworkTrainingState.Brn2(new Brn2Trainer(.001));
             case BRN3 -> new NetworkTrainingState.Brn3(new Brn3Trainer(71));
             case BRN_PAIR2 -> NetworkTrainingState.initialized(com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN_PAIR2,1,.01);
-            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC -> NetworkTrainingState.initialized(architecture, 71, .003);
+            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC, BRN_GEN32_QUADRATIC_R4 -> NetworkTrainingState.initialized(architecture, 71, .003);
         };
     }
     static void trainOne(NetworkTrainingState state) {

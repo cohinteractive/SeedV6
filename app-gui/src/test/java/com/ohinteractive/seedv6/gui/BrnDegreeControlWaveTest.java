@@ -8,6 +8,8 @@ import java.nio.file.*;
 import java.time.Duration;
 import java.util.*;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.api.io.TempDir;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,17 +17,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class BrnDegreeControlWaveTest {
     @TempDir Path temporary;
     BrnContinuationWaveTest fixture;
-    List<BrnDegreeControlWave.Arm> arms() throws Exception {
+    List<BrnDegreeControlWave.Arm> arms(boolean compact) throws Exception {
         fixture=new BrnContinuationWaveTest();fixture.temporary=temporary;
-        var sources=fixture.sources();var cubic=sources.get(1);var bre=sources.get(2);
+        var sources=fixture.sources(List.of(compact?NetworkArchitecture.BRN_GEN32_CUBIC_R4:NetworkArchitecture.BRN_GEN32_CUBIC,NetworkArchitecture.BRN_PAIR2));
+        var cubic=sources.get(0);var bre=sources.get(1);var prefix=compact?"W7-":"W6-";
         // Tiny fixtures deliberately use their actual .003 and generation32 state.
-        // Owner preparation remains separately bound to the selected Gen96 identities.
-        return List.of(new BrnDegreeControlWave.Arm("W6-fixture-Q16",cubic,.003,"quadratic"),
-                new BrnDegreeControlWave.Arm("W6-fixture-R16",cubic,.003,"exact"),
-                new BrnDegreeControlWave.Arm("W6-fixture-BRE",bre,.003,"exact"));
+        // Owner preparation remains separately bound to the selected Gen96/128 identities.
+        return List.of(new BrnDegreeControlWave.Arm(prefix+"fixture-Q",cubic,.003,"quadratic"),
+                new BrnDegreeControlWave.Arm(prefix+"fixture-C",cubic,.003,"exact"),
+                new BrnDegreeControlWave.Arm(prefix+"fixture-BRE",bre,.003,"exact"));
     }
-    @Test void projectedAndExactArmsContinueSameDataWithoutChangingSources() throws Exception {
-        var arms=arms();var entries=BrnDegreeControlWave.prepare(fixture.library,arms);
+    @ParameterizedTest @ValueSource(booleans={false,true})
+    void projectedAndExactArmsContinueSameDataWithoutChangingSources(boolean compact) throws Exception {
+        var arms=arms(compact);var entries=BrnDegreeControlWave.prepare(fixture.library,arms);
         assertEquals(3,entries.size());SourceLedger.Reservation cubicRange=null;
         for(var entry:entries) {
             var arm=entry.origin().arm();Path original=Path.of(arm.source().root()),root=Path.of(entry.root());
@@ -63,8 +67,9 @@ class BrnDegreeControlWaveTest {
             assertEquals(33,entry.latestGeneration());assertEquals(1,entry.additionalGenerations());
         }
     }
-    @Test void sourceRateMissingSeekAndForeignDestinationFailWithoutReplacement() throws Exception {
-        var arm=arms().getFirst();Path original=Path.of(arm.source().root());
+    @ParameterizedTest @ValueSource(booleans={false,true})
+    void sourceRateMissingSeekAndForeignDestinationFailWithoutReplacement(boolean compact) throws Exception {
+        var arm=arms(compact).getFirst();Path original=Path.of(arm.source().root());
         var wrongRate=new BrnDegreeControlWave.Arm(arm.name(),arm.source(),.001,arm.projection());
         assertThrows(java.io.IOException.class,()->BrnDegreeControlWave.prepare(fixture.library,List.of(wrongRate)));
         try(var channel=java.nio.channels.FileChannel.open(original.resolve("store.lock"),StandardOpenOption.WRITE);var lock=channel.lock()) {
@@ -75,18 +80,27 @@ class BrnDegreeControlWaveTest {
         byte[] bytes=Files.readAllBytes(index);Files.delete(index);
         assertThrows(java.io.IOException.class,()->BrnDegreeControlWave.prepare(fixture.library,List.of(arm)));
         Files.write(index,bytes);
-        Path destination=fixture.library.resolve(NetworkArchitecture.BRN_GEN32_QUADRATIC.folderName()).resolve(BrnDegreeControlWave.id(arm).toString());
+        Path destination=fixture.library.resolve((compact?NetworkArchitecture.BRN_GEN32_QUADRATIC_R4:NetworkArchitecture.BRN_GEN32_QUADRATIC).folderName()).resolve(BrnDegreeControlWave.id(arm).toString());
         assertFalse(Files.exists(destination));Files.createDirectories(destination);
         Path marker=destination.resolve("owner.txt");Files.writeString(marker,"preserve");
         assertThrows(java.io.IOException.class,()->BrnDegreeControlWave.prepare(fixture.library,List.of(arm)));
         try(var paths=Files.list(destination)){assertEquals(List.of(marker),paths.toList());}
     }
-    @Test void activeSourcePreventsAnyDestinationCreation() throws Exception {
-        var arm=arms().getFirst();Path original=Path.of(arm.source().root());
+    @Test void mixedWavesAndWrongProjectionRankFailBeforeCreatingOutput() throws Exception {
+        var arms=arms(true);var compact=arms.getFirst();
+        var wrong=new BrnDegreeControlWave.Arm("W6-wrong-rank",compact.source(),compact.rate(),"quadratic");
+        assertThrows(java.io.IOException.class,()->BrnDegreeControlWave.prepare(fixture.library,List.of(compact,wrong)));
+        assertThrows(java.io.IOException.class,()->BrnDegreeControlWave.prepare(fixture.library,List.of(wrong)));
+        assertFalse(Files.exists(fixture.library.resolve(NetworkArchitecture.BRN_GEN32_QUADRATIC_R4.folderName())));
+        assertFalse(Files.exists(fixture.library.resolve(NetworkArchitecture.BRN_GEN32_QUADRATIC.folderName())));
+    }
+    @ParameterizedTest @ValueSource(booleans={false,true})
+    void activeSourcePreventsAnyDestinationCreation(boolean compact) throws Exception {
+        var arm=arms(compact).getFirst();Path original=Path.of(arm.source().root());
         var lineage=TrainingLineage.read(original).orElseThrow();
         var session=new TrainingSession(1,UUID.randomUUID(),lineage.id(),32,32,0,TrainingSession.State.ACTIVE);session.save(original);
         assertThrows(java.io.IOException.class,()->BrnDegreeControlWave.prepare(fixture.library,List.of(arm)));
         assertEquals(session,TrainingSession.read(original).orElseThrow());
-        assertFalse(Files.exists(fixture.library.resolve(NetworkArchitecture.BRN_GEN32_QUADRATIC.folderName()).resolve(BrnDegreeControlWave.id(arm).toString())));
+        assertFalse(Files.exists(fixture.library.resolve((compact?NetworkArchitecture.BRN_GEN32_QUADRATIC_R4:NetworkArchitecture.BRN_GEN32_QUADRATIC).folderName()).resolve(BrnDegreeControlWave.id(arm).toString())));
     }
 }

@@ -10,9 +10,8 @@ import org.junit.jupiter.params.provider.EnumSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BrnSuccessorVariantsTest {
-    @org.junit.jupiter.api.Test
-    void quadraticControlScalesItsHeadsWithoutInventingThirdDegreeParameters() {
-        var kind=BrnNextArchitecture.GEN32_QUADRATIC;
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_QUADRATIC","GEN32_QUADRATIC_R4"})
+    void quadraticControlScalesItsHeadsWithoutInventingThirdDegreeParameters(BrnNextArchitecture kind) {
         var random=new SplittableRandom(179);double[] weights=new double[kind.parameters()];
         for(int i=0;i<weights.length;i++)weights[i]=random.nextDouble(-.7,.7);
         var source=new BrnNextModel(kind,weights);

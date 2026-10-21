@@ -387,7 +387,7 @@ public final class SearchEvaluation {
         private final com.ohinteractive.seedv6.core.brnnext.BrnCubicPackedAccumulator packed;
         NextState(SearchEvaluation definition) {
             this.definition = definition;
-            quadratic = definition.incremental && definition.next.architecture() == com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GEN32_QUADRATIC
+            quadratic = definition.incremental && definition.next.architecture().quadratic()
                     ? new com.ohinteractive.seedv6.core.brnnext.BrnQuadraticAccumulator(definition.next,
                     definition.residualBase == null ? com.ohinteractive.seedv6.core.brnnext.BrnNextBase.model() : definition.residualBase) : null;
             workspace = definition.incremental ? null : definition.residualBase == null

@@ -105,7 +105,7 @@ final class TrainingFolders {
             case BRN2 -> "checkpointRoot.brn2";
             case BRN3 -> "checkpointRoot.brn3";
             case BRN_PAIR2 -> "checkpointRoot.brnPair2";
-            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC -> "checkpointRoot." + architecture.name();
+            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC, BRN_GEN32_QUADRATIC_R4 -> "checkpointRoot." + architecture.name();
         };
     }
 

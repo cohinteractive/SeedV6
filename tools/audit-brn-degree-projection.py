@@ -23,10 +23,11 @@ def payload(root, checkpoint, pattern):
 
 
 def decode(data, state, wire):
-    count = {5: 13089, 7: 13073}[wire]
+    count = {5: 13089, 6: 3849, 7: 13073, 8: 3845}[wire]
+    width = 4 if wire in (6, 8) else 16
     assert struct.unpack('>Q7i', data[:36]) == (
         0x53364E5853543031 if state else 0x53364E5852543031,
-        1, wire, count, 16, 1, 1, 64)
+        1, wire, count, width, 1, 1, 64)
     assert data[36:68].hex() == '5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7'
     offset, arrays = (84, 3) if state else (68, 1)
     assert len(data) == offset + arrays * count * 8 + 4
@@ -35,13 +36,17 @@ def decode(data, state, wire):
 
 
 def audit(report):
-    assert report['wave'] == 'brn-successor-2026-10-21-wave6'
+    assert report['wave'] in ('brn-successor-2026-10-21-wave6', 'brn-successor-2026-10-21-wave7')
+    compact = report['wave'].endswith('wave7')
+    generation, step_expected = (128, 1048576) if compact else (96, 786432)
+    source_wire, target_wire, retained = (6, 8, 3845) if compact else (5, 7, 13073)
+    architecture = 'BRN_GEN32_QUADRATIC_R4' if compact else 'BRN_GEN32_QUADRATIC'
     rows = []
     for entry in report['entries']:
         origin = entry['origin']; arm = origin['arm']; source = arm['source']
         root, old_root = Path(entry['root']), Path(source['root'])
         assert root.resolve() != old_root.resolve()
-        assert entry['latest'] == origin['bootstrap'] and entry['latestGeneration'] == source['generation'] == 96
+        assert entry['latest'] == origin['bootstrap'] and entry['latestGeneration'] == source['generation'] == generation
         assert entry['additionalGenerations'] == 32
         row = dict(candidate=entry['candidate'], root=str(root), checkpoint=entry['latest'],
                    architecture=entry['architecture'], projection=arm['projection'])
@@ -51,14 +56,14 @@ def audit(report):
             after = payload(root, entry['latest'], pattern)
             assert sha(before) == source[key] and sha(after) == origin[key]
             if arm['projection'] == 'quadratic':
-                assert entry['architecture'] == 'BRN_GEN32_QUADRATIC'
-                old, new = decode(before, state, 5), decode(after, state, 7)
-                assert all(n == o[:13073*8] for n, o in zip(new, old))
+                assert entry['architecture'] == architecture
+                old, new = decode(before, state, source_wire), decode(after, state, target_wire)
+                assert all(n == o[:retained*8] for n, o in zip(new, old))
                 if state:
                     assert before[68:84] == after[68:84]
                     step, rate = struct.unpack('>qd', after[68:84])
-                    assert step == origin['inheritedStep'] == 786432 and rate == arm['rate'] == .001
-                    row.update(step=step, rate=rate, exactRetainedWeightAndMomentValues=3*13073)
+                    assert step == origin['inheritedStep'] == step_expected and rate == arm['rate'] == .001
+                    row.update(step=step, rate=rate, exactRetainedWeightAndMomentValues=3*retained)
             else:
                 assert arm['projection'] == 'exact' and before == after
             row[key] = sha(after)
@@ -75,7 +80,7 @@ def audit(report):
         selection = json.loads((root/'training-data/sources.json').read_text(encoding='utf-8-sig'))
         ledger = json.loads((root/'training-data/cursors.json').read_text(encoding='utf-8-sig'))
         assert ledger['next'] == entry['sourceOffsets']
-        assert len(ledger['reservations']) == 96 and all(r['status'] == 'COMPLETED' for r in ledger['reservations'])
+        assert len(ledger['reservations']) == generation and all(r['status'] == 'COMPLETED' for r in ledger['reservations'])
         seek = {}
         for item in selection['sources']:
             if item['format'] == 'LICHESS_PZSTD' and ledger['next'].get(item['identity'], 0) > 0:
@@ -89,8 +94,8 @@ def audit(report):
         assert not list(root.rglob('*partial*'))
         assert not list((root/'history').glob('*'))
         assert len(list((root/'checkpoints').iterdir())) == 1
-        row.update(inheritedMetadata=inherited, inheritedSeek=seek, generation=96,
-                   addedGenerations=0, nextGeneration=97, targetGeneration=128)
+        row.update(inheritedMetadata=inherited, inheritedSeek=seek, generation=generation,
+                   addedGenerations=0, nextGeneration=generation+1, targetGeneration=generation+32)
         rows.append(row)
     return dict(status='passed', scope='Independent exact byte/CRC/layout projection and source/data inheritance audit',
                 entries=rows, limitations=['No substantive training or strength verification.',

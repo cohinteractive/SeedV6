@@ -83,7 +83,7 @@ public final class BrnNextModel {
                 }
             }
             switch (architecture) {
-                case GEN32_QUADRATIC -> {
+                case GEN32_QUADRATIC, GEN32_QUADRATIC_R4 -> {
                     for (int r = 0; r < width; r++) residual += weights[head + r] * second[r] * DEGREE2_NORM;
                 }
                 case CUBIC, GEN32_CUBIC_R4, GEN32_CUBIC -> {

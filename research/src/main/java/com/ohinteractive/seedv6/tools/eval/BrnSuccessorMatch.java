@@ -230,7 +230,7 @@ public final class BrnSuccessorMatch {
             }
             if(spec.gatedDeltaCache())modelBinding.put("gatedDeltaCache","period64-canonical-rounding-guard-v1");
             if(model instanceof NetworkModel.BrnNext n && n.model().architecture().frozenBase()) {
-                if(n.model().architecture()==com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GEN32_QUADRATIC
+                if(n.model().architecture().quadratic()
                         &&compiledUnary==null&&compiledConstant==null&&hybridBase==null)
                     modelBinding.put("quadraticCache","quadratic-period64-canonical-rounding-guard-v1");
                 if(compiledUnary==null&&compiledConstant==null)modelBinding.put("nativeResidualCache",true);

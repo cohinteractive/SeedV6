@@ -14,7 +14,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BrnGen32ResidualTest {
-    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC","GEN32_CUBIC_R4","GEN32_QUADRATIC"})
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC","GEN32_CUBIC_R4","GEN32_QUADRATIC","GEN32_QUADRATIC_R4"})
     void repeatedPlacementAndNullPerspectiveReuseCorrectMaterial(BrnNextArchitecture kind) {
         var random=new SplittableRandom(221);var weights=new double[kind.parameters()];
         for(int i=0;i<weights.length;i++)weights[i]=random.nextDouble(-.2,.2);
@@ -33,7 +33,7 @@ class BrnGen32ResidualTest {
             board[3]^=~(board[0]|board[1]|board[2]);
         }
     }
-    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC","GEN32_CUBIC_R4","GEN32_QUADRATIC"})
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC","GEN32_CUBIC_R4","GEN32_QUADRATIC","GEN32_QUADRATIC_R4"})
     void zeroHeadPreservesActualReferenceAndProductionSearch(BrnNextArchitecture kind) throws Exception {
         var random=new SplittableRandom(71);var weights=new double[kind.parameters()];
         for(int i=BrnNextArchitecture.EMBEDDING;i<kind.head();i++)weights[i]=random.nextDouble(-.5,.5);
@@ -64,7 +64,7 @@ class BrnGen32ResidualTest {
             }
         }
     }
-    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC","GEN32_CUBIC_R4","GEN32_QUADRATIC"})
+    @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_GATED","GEN32_CUBIC","GEN32_CUBIC_R4","GEN32_QUADRATIC","GEN32_QUADRATIC_R4"})
     void nonzeroCorrectionMatchesScalarAndBaseBindingCannotBeReinterpreted(BrnNextArchitecture kind) throws Exception {
         var random=new SplittableRandom(97);var weights=new double[kind.parameters()];
         for(int i=0;i<weights.length;i++)weights[i]=random.nextDouble(-1,1);

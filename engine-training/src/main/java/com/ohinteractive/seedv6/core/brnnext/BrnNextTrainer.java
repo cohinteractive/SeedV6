@@ -54,9 +54,9 @@ public final class BrnNextTrainer {
      * its Adam moments, rate and step; omit only degree3 heads and their moments.
      * This is an explicit function projection into a distinct wire schema. */
     public BrnNextTrainer projectQuadratic() {
-        if (architecture != GEN32_CUBIC)
-            throw new IllegalArgumentException("Rank16 frozen cubic source required");
-        var target = new BrnNextTrainer(GEN32_QUADRATIC, 0, rate);
+        if (!architecture.frozenCubic())
+            throw new IllegalArgumentException("Frozen rank16 or rank4 cubic source required");
+        var target = new BrnNextTrainer(architecture == GEN32_CUBIC ? GEN32_QUADRATIC : GEN32_QUADRATIC_R4, 0, rate);
         target.step = step;
         System.arraycopy(weights, 0, target.weights, 0, target.weights.length);
         System.arraycopy(first, 0, target.first, 0, target.first.length);
@@ -74,7 +74,7 @@ public final class BrnNextTrainer {
         int width = architecture.width(), head = architecture.head();
         for (int i = 0; i < workspace.count; i++) gradient[UNARY + workspace.features[i]] += derivative * PIECE_NORM;
         switch (architecture) {
-            case GEN32_QUADRATIC -> {
+            case GEN32_QUADRATIC, GEN32_QUADRATIC_R4 -> {
                 for (int r = 0; r < width; r++) {
                     gradient[head + r] += derivative * workspace.second[r] * DEGREE2_NORM;
                     for (int i = 0; i < workspace.count; i++) {

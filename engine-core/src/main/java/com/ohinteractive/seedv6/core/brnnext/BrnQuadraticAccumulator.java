@@ -23,7 +23,7 @@ public final class BrnQuadraticAccumulator {
     }
     /** Explicit research composition; no source model, base or codec is changed. */
     public BrnQuadraticAccumulator(BrnNextModel model,com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model frozenBase) {
-        if(model.architecture()!=GEN32_QUADRATIC)throw new IllegalArgumentException("Quadratic control schema required");
+        if(!model.architecture().quadratic())throw new IllegalArgumentException("Quadratic control schema required");
         width=model.architecture().width();head=model.architecture().head();
         first=new double[2][width];second=new double[2][width];
         base=java.util.Objects.requireNonNull(frozenBase).newWorkspace();

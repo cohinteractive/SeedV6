@@ -17,6 +17,9 @@ class BrnContinuationWaveTest {
     @TempDir Path temporary;
     Path library;
     List<BrnContinuationWave.Source> sources() throws Exception {
+        return sources(BrnResidualWave.ARCHITECTURES);
+    }
+    List<BrnContinuationWave.Source> sources(List<NetworkArchitecture> architectures) throws Exception {
         library=temporary.resolve("library");Files.createDirectories(library);
         Path file=temporary.resolve("source.jsonl");var text=new StringBuilder();
         for(int i=0;i<12000;i++) {
@@ -36,7 +39,7 @@ class BrnContinuationWaveTest {
         Files.writeString(file,text);
         var selection=new DataSources(1,List.of(DataSource.register("fixture",file,1)),false);
         var result=new ArrayList<BrnContinuationWave.Source>();
-        for(var architecture:BrnResidualWave.ARCHITECTURES) {
+        for(var architecture:architectures) {
             Path root=library.resolve(architecture.folderName()).resolve(UUID.randomUUID().toString());
             var corpus=new CorpusTrainingConfig(12,selection.identity()).forArchitecture(architecture.trainingArchitecture());
             var configured=BrnContinuationWave.settings(root,architecture,.003,corpus,71);

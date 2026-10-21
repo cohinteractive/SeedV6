@@ -29,7 +29,7 @@ public final class BrnGatedCacheProbe {
         if(spec.correctionScale()!=null||spec.correctionAblation()!=null)
             model=BrnSuccessorVariants.correction(model,spec.correctionScale()==null?1:spec.correctionScale(),
                     spec.correctionAblation(),spec.constantGates());
-        boolean quadratic=model.architecture()==BrnNextArchitecture.GEN32_QUADRATIC;
+        boolean quadratic=model.architecture().quadratic();
         boolean cubic=model.architecture().polynomial();
         if(!cubic&&model.architecture().correctionKind()!=BrnNextArchitecture.GATED_PAIRS)throw new IllegalArgumentException("Unsupported cache");
         var hybridBase=BrnSuccessorMatch.loadHybridBase(spec);
@@ -212,7 +212,7 @@ public final class BrnGatedCacheProbe {
                         "roundingFallbacks",value.roundingFallbacks,"rebuilds",value.rebuilds,"updates",value.updates);}
             };
         }
-        if(model.architecture()==BrnNextArchitecture.GEN32_QUADRATIC) {
+        if(model.architecture().quadratic()) {
             var value=hybridBase==null?new BrnQuadraticAccumulator(model):new BrnQuadraticAccumulator(model,hybridBase);
             return new Cache() {
                 public double rawPawns(long[] board){return value.rawPawns(board);}
