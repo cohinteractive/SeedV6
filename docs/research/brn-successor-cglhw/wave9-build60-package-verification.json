@@ -1,0 +1,26 @@
+{
+  "id": "wave9-build60-package-verification-v1",
+  "candidate": "dist\\windows\\candidates\\candidate-20261021T223248-4d9b2058",
+  "receiptSha256": "c86a2eb267687d7c58c9d1dccfde9049b028c634a62c8eeafe9891958c208d9a",
+  "manifestSha256": "6792ccc3a0d6ff8409ac4c880664ab17ee1d836f2716510c265c2cf9e631bcf2",
+  "coreJarSha256": "bf82b1c1bcf4fd3f3d99cc5acb0cc4f1826ed6c3019c1e03b07e07fda41fc714",
+  "archiveSha256": "2f908a3c5d4ee750acfe38dfe93d16f931c8450ab01177dd660a6d09e89a0d22",
+  "sourceCommit": "57dde44ba45f627de6c887c6c1f9985d6b39571f",
+  "sourceFiles": {
+    "engine-core/src/main/java/com/ohinteractive/seedv6/core/brnpair2/BrnPair2Model.java": "a4e3bc010250ded4de47584646fb46fd002727d99860f07a6ca4d343ac0c9a4b",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/core/brnnext/BrnCalibratedAccumulator.java": "72d2c9867a49b4d5a9d906063a9a79f5c74fcf753e681a7b5630a52d6ca4027b",
+    "VERSION_STATE.txt": "c311561ae40f586050dd865b5f5f6e8b8f0d3343503825629cd2969faf148628"
+  },
+  "runtimeProperties": "major=0\nminor=0\npatch=0\nbuild=60\nsourceRevision=57dde44ba45f (uncommitted changes)\nversionUpdated=2026-10-22\nplatform=Portable Java 21 (runtime platform reported separately)\n",
+  "prototypeCoreDifference": [
+    "com/ohinteractive/seedv6/application-version.properties"
+  ],
+  "checks": "Project boundaries, installResearchWorkspace and native GUI packaging, original/extracted headless resources/JNI/model selfchecks passed. All class bytes match the sixty-test/nine-probe prototype.",
+  "interactiveGui": "Not run in this root: core cache-only change, no GUI/training flow change or new training gate; no visual acceptance claim.",
+  "limitations": [
+    "Local candidate with truthful uncommitted research/environment source status; no installed shortcut replacement or release.",
+    "Frozen tournaments continue original build59; build60 is not substituted.",
+    "Initial extra-entry assertion expected desktop metadata in core; direct ZIP inspection confirms core has no added entry, only application-version properties differ.",
+    "No full-suite or substantive training claim."
+  ]
+}

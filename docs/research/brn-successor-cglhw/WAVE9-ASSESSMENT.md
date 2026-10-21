@@ -1,7 +1,9 @@
 # Wave 9 assessment: matched calibration
 
 22 October2026. Existing CGLHW, contract revision2. G9 is verified complete;
-assessment is active. No independent strength or programme success claim.
+the incomplete assessment is **SUSPENDED BY OWNER DECISION**. No independent
+strength or programme success claim. Historical admissions and planned budgets
+below are preserved, not permission to continue. See the final suspension section.
 
 ## Admission
 
@@ -265,3 +267,87 @@ continue on their original build59 jars. See wave9-cache-reuse-admission,
 runtime and results records. The initial probe argument-index error failed before
 model loading; its request and failure evidence are preserved alongside corrected
 v2 runs. No substantive training or full-suite claim.
+
+## Owner suspension: exact preserved boundary
+
+At22:41:42UTC on21 October2026 (22 October locally), inspection found the
+scaled-BRE-clock second bounded launch active. The owner superseded open-ended
+research authority and directed suspension in favor of conventional NNUE and
+Search Phase3. This preserves the long-term objective and all findings; it does
+not declare failure of nonlinear evaluation generally, completion or abandonment.
+
+The existing launch pause was written immediately. The owned waiting dispatcher
+27900 was stopped non-recursively to prevent its queued reference-clock command;
+its child batch supervisor28736 and engine10040 remained supervised. The frozen
+runner has no per-game graceful-stop interface: it checks its12-game/240-second
+launch limit between games and persists complete receipts. Killing it during a
+game or racing its writes was avoided. The already running bounded launch closed
+normally at22:44:15.0763277UTC, exit0, after its current game. Both supervisors
+then exited. No next batch/reference match, experiment, training or wave started.
+The dispatcher's interrupted shell exit is not a failed or discarded game.
+
+There are **229 preserved G9 development games**, including208 games in eight
+closed protocols. The primary programme is160/192, with reference-clock32 never
+started. The scale programme is69/80: three16-game protocols are closed and
+scaled-BRE-clock has21/32 complete game receipts, including one unpaired game.
+Its next missing receipt is p005-m1-c1.json. The11 remaining scale games and32
+reference games are suspended, not cancelled, retrospectively shortened or
+reported as completed. No combined programme summary or independent confirmation
+is claimed. Preservation-only replay validates all2,801 moves in those21 partial
+protocol games without failure. See wave9-suspension-preservation.json.
+
+The last newly closed comparison was scaled cubic versus equally scaled affine:
+9/3/4 W/D/L,65.625%, descriptive95%52.74..78.51%, bounded95%17.61..100%, eight
+development pairs. NPS ratio.960. Selection, reused roots, small samples and
+uncertain independence prevent superiority claims. Partial scaled-BRE outcomes
+remain in raw evidence and are not promoted to a closed strength result.
+
+Two additional feasibility diagnostics completed before suspension. Clipped
+piece-sum pooling beat matched linear pooling on five of six consumed prediction
+panels, but joint affine recalibration worsened some panels against frozen BRE.
+The head-only follow-up froze calibration on Gen32/BRE176: clipping helped CP
+more than linear pooling, but did not consistently help BT4. Four128-update
+arms per diagnostic, analytic finite differences and a third mixed-difference
+witness passed. These are small post-hoc fitting experiments, not convergence or
+chess strength. No model/optimizer export, production pooling architecture,
+cache integration, owner lineage or G10 training gate was created. Preserve
+wave9-clipped-pool-admission/results.json and
+wave9-frozen-calibration-pool-admission/results.json and their reusable scripts.
+Any contemplated cost prototype or larger architecture remained unimplemented.
+
+Build60 implementation57dde44 was committed before suspension. Its native GUI
+candidate is dist/windows/candidates/candidate-20261021T223248-4d9b2058.
+Project-boundary/install checks and original/extracted headless native resource,
+JNI and model checks passed. Packaged core class bytes exactly match the tested
+cache-reuse prototype; only version properties differ. No interactive GUI check,
+full-suite test, installed shortcut replacement or production evaluator change
+is claimed. See wave9-build60-package-verification.json. Earlier prose marking
+packaging pending describes the historical sequence, now resolved by this record.
+
+STATE.md is the suspended work-selection mechanism. No new research selection is
+authorized. If deliberately reactivated, first verify live-store inactivity,
+checkpoint/runtime hashes, local evidence and the owner-preservation record;
+reconcile any intervening engine changes. Explicitly archive the pause only then.
+Resume the same missing scaled-BRE receipts with frozen projection runtime59 and
+the unchanged plan, then complete the untouched primary reference protocol with
+its original runtime59, unless a documented owner-authorized amendment supersedes
+them. Do not rerun completed games, substitute build60 or infer that partial
+scores establish cubic value. Interpretation, optional masked/confirmation work
+and the mixed clipping hypothesis remain unresolved and require renewed authority.
+
+The repository's tracked production manifest already binds frozen BRE-Pair2
+Gen32 for GUI/UCI packaging. This is known baseline provenance, not a new evaluator
+selection or proof of current operational/performance suitability. A separate
+stabilization operation must verify actual launch/configuration behavior and
+relevant evidence. No stabilization, NNUE or Search Phase3 work occurred here.
+
+Suspension verification rehashes6,858 unique historical/current owner files with
+no differences and confirms the complete G9/live-reference file sets unchanged.
+All three preserved G9 runtime manifests pass their jar hashes; the frozen
+production Gen32 payload is unchanged. No `.failed` game artifact or missing
+completed receipt was found. W1 and source datasets were untouched but not fully
+rehashed afresh. The existing batch lease is released and the launch pause remains.
+No workstream process, associated scheduled task or host goal remains. Four
+preexisting VSCode/Gradle Java services remain; their unrelated IDE output is
+preserved, not claimed inactive. See wave9-suspension-execution.json. Raw evidence
+is still local-only; future resume requires checking its availability.

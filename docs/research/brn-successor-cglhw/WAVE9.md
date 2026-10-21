@@ -1,8 +1,11 @@
 # Wave 9: calibrated fixed-basis controls
 
 22 October 2026. This continues the original CGLHW under contract revision 2.
-G8 training and its 176-game development assessment are closed. **G9 is verified complete through Gen176. Trained assessment is active; see
-WAVE9-ASSESSMENT.md. No research success or independent strength superiority is claimed.**
+G8 training and its176-game development assessment are closed. **G9 is verified
+complete through Gen176. The CGLHW and incomplete trained assessment are
+SUSPENDED BY OWNER DECISION as of22 October2026; see STATE.md and
+WAVE9-ASSESSMENT.md. No research success or independent strength superiority is
+claimed. Historical restart instructions below require deliberate owner reactivation.**
 
 ## Question and decision
 

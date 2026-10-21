@@ -1,5 +1,14 @@
 # BRN evaluator successor CGLHW
 
+**SUSPENDED BY OWNER DECISION — 22 October 2026.** The owner has prioritized
+conventional NNUE development and Search Phase3 because a strong, stable evaluator
+is needed and BRN/BRE experimentation has not demonstrated sufficient practical
+strength improvement to remain the current development priority. This is neither
+completion, abandonment nor research success. The objective and contract below
+are preserved. Autonomous continuation clauses are inactive while suspended;
+only a deliberate owner reactivation authorizes further research. See STATE.md
+and the suspension section of WAVE9-ASSESSMENT.md for the exact preserved boundary.
+
 Revision 2, 20 October 2026 (Pacific/Auckland). Authority: the owner's launch
 request to establish and execute a GUI-trained evaluator research programme against
 BRE-Pair 2 Gen 32. Start at [STATE](STATE.md); initial decisions and challenged

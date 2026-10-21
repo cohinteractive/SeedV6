@@ -2,7 +2,7 @@
 
 Updated22 October2026. **G4 is complete and verified. All six arms reached64,
 with exact expected continuation and preserved starting payloads. Wave4 trained
-assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; G6 is complete and verified through128; Wave6 trained assessment is closed; G7 is complete and verified through160; Wave7 assessment is closed; G8 is verified complete through Gen168; Wave8 assessment is closed; G9 is verified complete through Gen176; its trained assessment is active.
+assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; G6 is complete and verified through128; Wave6 trained assessment is closed; G7 is complete and verified through160; Wave7 assessment is closed; G8 is verified complete through Gen168; Wave8 assessment is closed; G9 is verified complete through Gen176; its incomplete trained assessment is SUSPENDED BY OWNER DECISION.
 No programme success is claimed.** This remains the original
 CGLHW. Current assessment: [WAVE9-ASSESSMENT](WAVE9-ASSESSMENT.md); completed gate: [WAVE9](WAVE9.md).
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
@@ -12,7 +12,58 @@ Objective: statistically credible practical chess improvement over frozen BRE-Pa
 Gen32 through useful additional expressiveness, with measured costs and compatible
 search. Architectural complexity or lower validation loss alone is insufficient.
 
-## Current restart point (22 October 2026: G9 trained assessment active)
+## Current status: SUSPENDED BY OWNER DECISION
+
+Owner-directed suspension,22 October2026. **Not completed, not abandoned and not
+successfully concluded.** Conventional NNUE development and Search Phase3 now
+have priority because the engine needs a strong, stable evaluator and BRN/BRE
+experimentation has not demonstrated sufficient practical strength improvement
+to justify continuing as the current development priority. The long-term objective,
+contract, trained artifacts, accepted findings and unresolved hypotheses remain.
+No new research, tournament, training gate or wave is authorized without a
+deliberate owner reactivation. No NNUE/stabilization work is part of this suspension.
+
+Execution is quiescent after the active bounded launch exited normally at
+2026-10-21T22:44:15.0763277Z. The waiting dispatcher was stopped separately to
+prevent its queued reference comparison. The existing sentinel
+build/research/brn-successor-batches.pause remains active; no new hook/automation
+was installed. See WAVE9-ASSESSMENT.md's suspension section and
+wave9-suspension-preservation.json for verified receipts and artifact hashes.
+Final preservation verifies6,858 unique owner files unchanged and the complete
+G9/live-reference file sets unchanged. Frozen runtime hashes pass. The batch
+lease is released; no associated research process, scheduled task or host goal
+remains. Exact execution evidence: wave9-suspension-execution.json.
+
+G9's four owner lineages remain verified Latest176, head Best175 and BRE Best176.
+There are229 preserved development games:208 in closed protocols,21 in the
+incomplete scaled-BRE-clock32 protocol. Primary reference-clock32 is unstarted.
+The next missing scale receipt is p005-m1-c1.json;43 total scheduled games remain
+unplayed. This owner stop is independent of outcomes, not favorable optional
+stopping or a closed fixed-budget result. No independent strength gain is established.
+
+Implementation57dde44/build60 is committed and native packaging is verified;
+core cache reuse passed60 targeted tests and nine actual-model probes. New clipped
+pooling/frozen-calibration feasibility scripts are complete but only bounded
+prediction diagnostics. No new production architecture, lineage or G10 gate exists.
+Frozen tournament jars remain build59. Full hashes and limitations are in the
+existing manifests; source datasets and all owner checkpoints remain preserved.
+
+**Reactivation point:** only after a deliberate owner decision, verify inactivity,
+local evidence, checkpoint/runtime hashes and intervening repository changes.
+Then explicitly archive the pause and resume the unchanged scaled-BRE-clock plan
+for its11 missing games, followed by the untouched32-game primary reference plan,
+or record an authorized amendment. Preserve all completed games. Interpret the
+remaining calibration/expressiveness comparisons before selecting further work.
+The clipped threshold, data-domain and search-calibration hypotheses remain open;
+they have not been accepted as a new training programme.
+
+No action is required to maintain suspension. Separate authorization is required
+for engine stabilization; deliberate owner reactivation is required for CGLHW work.
+Unattributed bin/,engine-core/bin/,engine-training/bin/ outputs remain preserved
+and excluded from research commits. Existing VSCode/Gradle processes are unrelated
+and must not be stopped as part of research suspension.
+
+## Pre-suspension working notes (historical; no continuation authority)
 
 The owner reports all four G9 GUI runs complete; actual persisted evidence verifies
 Gen169..176, correct settings and ancestry, 65,536 new updates per arm, and no
@@ -53,7 +104,9 @@ The affine-node32 games are closed (Q31.25%,C21.875%, both uncertain);
 BRE-clock48 closes A43.75%,Q18.75%,C21.875%; degree-node16 closes C62.5%
 against Q. Affine-clock32 closes Q46.875%,C28.125% versus affine;
 degree-clock32 closes C40.625% versus Q. Primary reference-clock32 remains.
-The fixed scale-node follow-up is active before that last primary comparison;
+The fixed scale-node and scale-clock follow-ups are closed at16 games each,
+scoring56.25% and59.375% for quarter-scaled cubic against its native function,
+with wide uncertainty. Scaled-degree-clock is active before the final controls;
 all original192 and separate80 budgets remain mandatory and unchanged.
 Separately admitted80 scale-sensitivity games are fixed in
 wave9-scale-followup-admission.json; use ONLY wave9-calibrated-projection-runtime.json
@@ -89,8 +142,16 @@ Never extend these matches merely for significance. If calibrated cubic adds no
 useful value, investigate a different information basis or selective mechanism
 rather than another unchanged head extension. No substantive autonomous training.
 
-Implementation remains build59/e804482; current research starts at2673400.
-No application changes or new human gate yet. Original contract and all earlier
+Original assessment runtimes remain build59/e804482; research provenance6d2ab08
+adds only projection/diagnostics. Implementation57dde44/build60 removes a duplicate
+private BRE cache evaluation in calibrated inference. Sixty targeted tests and
+nine actual-model probes pass; four paired median search-time changes are small
+(.979,.974,.998,.983 new/old). Native build60 packaging is pending. The temporary
+wave9-build60-pause.json preserves completed games for serial packaging and a
+bounded four-arm clipped-pool feasibility diagnostic; finish the current batch,
+run those jobs, archive the pause and resume the unchanged fixed programme.
+Quiet-stratum/warm-start diagnostics are mixed or negative and do not admit a new
+training gate. No new human gate yet. Original contract and all earlier
 findings remain. Human actions required after this prompt: None at this active
 assessment stage; report any later genuine gate explicitly.
 Untracked bin/,engine-core/bin/,engine-training/bin/ appeared during this root;
@@ -172,9 +233,9 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
    they do not establish an optimal rate or guarantee improvement. G4 is verified complete. Lower rate improves same-data held-out loss in32/32
    residual generations and31/32 BRE generations, with lower training fit at.001.
    This is an optimization result, not strength. See WAVE4-ASSESSMENT.
-9. **Current G9 frontier.** Training is verified through176. Matched calibration
-   explains most fitting improvement; actual degree/control strength comparisons
-   are active under the fixed192-game protocol. Distinguish learned scale from
+9. **Suspended G9 frontier.** Training is verified through176. Matched calibration
+   explains most fitting improvement; degree/control strength comparisons are
+   preserved incomplete under the original fixed192-game protocol and80-game follow-up. Distinguish learned scale from
    new information and practical cost. No useful cubic chess gain or independent
    success is established. Do not repeat the completed owner action.
 10. **Deferred.** Selective feature/attack/blocker
@@ -402,7 +463,7 @@ findings remain in WAVE1..WAVE4-ASSESSMENT, manifests and Git history; this stat
 consolidation removes superseded current-action prose, not accepted evidence.
 Turn completion, implementation completion and research acceptance are distinct.
 No statistically credible positive strength improvement or useful-expression
-causation has yet been established. Continue at the active frontier above.
+causation has yet been established. The frontier above is suspended; owner reactivation is required.
 
 Compiled unary controls are implemented in2d04ae8/build53 (research-only, no bump) and pass18 targeted tests plus actual2x6333-position/48-root-pass score/search oracles,4096-row prediction reproduction and32 legal smoke plies. See wave4-unary-compiled-readiness.json. Their payload/cache size is ordinary BRE, and they save35%/26% search time against evaluating the same unary ablation with the residual caches. The admitted control strength games are now closed above.
 

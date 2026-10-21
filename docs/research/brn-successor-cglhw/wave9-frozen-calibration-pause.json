@@ -1,0 +1,11 @@
+{
+  "id": "wave9-frozen-calibration-pause-v1",
+  "completedReceipts": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-bre-clock\\p000-m1-c0.json": "8d34036045131f536bc8aa19bdc78d4219c847031c4355048dc6a11705fc1861",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-bre-clock\\p000-m1-c1.json": "05385eeefafcb0314bf8b2b5049885349a2fd06a21489c6e6c06ed28399bf83b",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-bre-clock\\p000-m2-c0.json": "bae415523c389fd6e901fd715be6f0c44d9f4eaf90365d50829a5c5979081ed8",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-bre-clock\\p000-m2-c1.json": "6d9591559ac922d30634d90f28a1d316a9e7d184b6a0711e34377a53074d4ab8",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-bre-clock\\p001-m1-c0.json": "000e1d56a20a976cc7ff55bdaf5bda286c19367a560282c42f13405cea63a6c8"
+  },
+  "purpose": "One bounded four-arm head-only diagnostic after current batch. No protocol change; archive and resume32 after completion."
+}

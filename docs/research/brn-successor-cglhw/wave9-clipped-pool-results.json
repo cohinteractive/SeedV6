@@ -1,0 +1,631 @@
+{
+  "id": "wave9-clipped-pool-feasibility-v1-results",
+  "admission": "docs\\research\\brn-successor-cglhw\\wave9-clipped-pool-admission.json",
+  "admissionSha256": "33f210dd9d2d706496a022f8a1c431e43772b30b07f345427c915a461e891366",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\bt4-predictions.jsonl": "878b43c6223e3f6ea9824669569d5e9b87b4ce3bbc8abcf1e74f7f1a626e8c1a",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\cp-predictions.jsonl": "c903e919a76bd64c28a5486defe023f9ed60758df65751bea26414e3c7228395",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\bt4-predictions.jsonl": "5327d60cac2c766f95ad6f890e22d79db2075957d4cb7d1a839c4c396c573b25",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\cp-predictions.jsonl": "56781da22ad2083b54b08d4a3d2add8490aabcf2ea2c82eeb086eae577434832",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01\\bt4-predictions.jsonl": "548b61629780a90c34c2ee816e7db38154921beb614a7b6ed71031f3f06929b9",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01\\cp-predictions.jsonl": "5eb30a8177035663b8c5ae37d21fa54d2e86281ff951f8e3af00f463e5416b6f"
+  },
+  "maximumFiniteDifferenceError": 1.1355049387741512e-10,
+  "thirdMixedDifference": {
+    "False": 2.7755575615628914e-17,
+    "True": -0.20000000000000007
+  },
+  "featureCenters": [
+    1.418455392345285,
+    1.4430119924105547,
+    -2.095402652445404,
+    0.8202011033856957
+  ],
+  "featureWidths": [
+    9.697185869763995,
+    7.64960390539006,
+    8.792352315438137,
+    7.801679852149978
+  ],
+  "arms": [
+    {
+      "clipped": false,
+      "adaptive": false,
+      "trainableParameters": 7,
+      "steps": 128,
+      "heads": [
+        0.203454833741079,
+        0.033471838857501296,
+        -0.11628139563952672,
+        -0.056282260560982074,
+        0.022542240655797834,
+        0.09374876275837933,
+        -0.0358158109934277
+      ],
+      "epochLoss": [
+        0.6140850806777147,
+        0.612926827450657,
+        0.6123516507970075,
+        0.6120190300241514,
+        0.6121786675482417,
+        0.6121791794860109,
+        0.6119808393658427,
+        0.611721323021779
+      ],
+      "embeddingChangeRms": 0.0,
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": -0.00023500420409650703,
+          "descriptiveRowSE": 0.0011478946379927764,
+          "unadaptedPoolMaskDifference": -1.4054807570724022e-05,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0007213044532087472,
+          "descriptiveRowSE": 0.0005921069215940671,
+          "unadaptedPoolMaskDifference": -0.0003575575758868447,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.0010772685162231896,
+          "descriptiveRowSE": 0.00205566368433955,
+          "unadaptedPoolMaskDifference": 0.0009712646733917275,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.0016811164491339374,
+          "descriptiveRowSE": 0.001074660395913379,
+          "unadaptedPoolMaskDifference": -0.0007755819640045325,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": 0.0015355879324332347,
+          "descriptiveRowSE": 0.0013590141595936215,
+          "unadaptedPoolMaskDifference": 0.0009413325667803463,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.001292133745709244,
+          "descriptiveRowSE": 0.0006284530984357874,
+          "unadaptedPoolMaskDifference": -0.00046615744138055583,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.003907226381219193,
+          "descriptiveRowSE": 0.0029934613741896513,
+          "unadaptedPoolMaskDifference": -0.0016839183995898239,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.002309305351873669,
+          "descriptiveRowSE": 0.0014626498988965563,
+          "unadaptedPoolMaskDifference": -0.0015060870091162123,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 2048,
+          "crossEntropyChange": 0.0015395468454495421,
+          "descriptiveRowSE": 0.0010235171498895505,
+          "unadaptedPoolMaskDifference": 0.0004661896366373382,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 2048,
+          "crossEntropyChange": 0.001742933477702503,
+          "descriptiveRowSE": 0.0005763711031260033,
+          "unadaptedPoolMaskDifference": -0.0003972078508431554,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 2029,
+          "crossEntropyChange": 0.001150908712863856,
+          "descriptiveRowSE": 0.0019169578664121178,
+          "unadaptedPoolMaskDifference": 7.717399860118334e-05,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 2029,
+          "crossEntropyChange": 0.003305633794468812,
+          "descriptiveRowSE": 0.001036479979837552,
+          "unadaptedPoolMaskDifference": -0.0006437127635694549,
+          "activeDerivativeFraction": 1.0
+        }
+      ]
+    },
+    {
+      "clipped": false,
+      "adaptive": true,
+      "trainableParameters": 3079,
+      "steps": 128,
+      "heads": [
+        0.19564518550044638,
+        0.0348513547481524,
+        -0.11798528201371747,
+        -0.05872552378018103,
+        0.03158285313600064,
+        0.10257276631420423,
+        -0.031567663385551434
+      ],
+      "epochLoss": [
+        0.6140851688867393,
+        0.612903240864735,
+        0.6123225755247682,
+        0.6119931893736661,
+        0.612152187702436,
+        0.6121486039334633,
+        0.6119436812225653,
+        0.6116816729526582
+      ],
+      "embeddingChangeRms": 0.004372206608870864,
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": -0.00022328844466117478,
+          "descriptiveRowSE": 0.00115405288928519,
+          "unadaptedPoolMaskDifference": 8.311823933397985e-05,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0007057649199900958,
+          "descriptiveRowSE": 0.0005950620359468921,
+          "unadaptedPoolMaskDifference": -0.0004426566168653752,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.0009888232861993919,
+          "descriptiveRowSE": 0.002068362447683835,
+          "unadaptedPoolMaskDifference": 0.0010786108094914583,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.0016335631411119262,
+          "descriptiveRowSE": 0.001085978493990609,
+          "unadaptedPoolMaskDifference": -0.00104361543816292,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": 0.0015922349112753686,
+          "descriptiveRowSE": 0.001368157988404401,
+          "unadaptedPoolMaskDifference": 0.0011300559813245965,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0012626275113499013,
+          "descriptiveRowSE": 0.0006333239709950683,
+          "unadaptedPoolMaskDifference": -0.0005650278330421585,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.003981806393832821,
+          "descriptiveRowSE": 0.0030177196084910343,
+          "unadaptedPoolMaskDifference": -0.002013650509212202,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.0022410161238757467,
+          "descriptiveRowSE": 0.0014816248622611962,
+          "unadaptedPoolMaskDifference": -0.0019319729853674071,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 2048,
+          "crossEntropyChange": 0.0015704583458159471,
+          "descriptiveRowSE": 0.0010346131182305141,
+          "unadaptedPoolMaskDifference": 0.0006228897760018462,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 2048,
+          "crossEntropyChange": 0.0017079774983057192,
+          "descriptiveRowSE": 0.0005814081527546848,
+          "unadaptedPoolMaskDifference": -0.000540751467191955,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 2029,
+          "crossEntropyChange": 0.0011676678935677515,
+          "descriptiveRowSE": 0.00192917119892615,
+          "unadaptedPoolMaskDifference": -5.2791694602693454e-06,
+          "activeDerivativeFraction": 1.0
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 2029,
+          "crossEntropyChange": 0.0032602075515835265,
+          "descriptiveRowSE": 0.0010474765771231755,
+          "unadaptedPoolMaskDifference": -0.0010506471471830947,
+          "activeDerivativeFraction": 1.0
+        }
+      ]
+    },
+    {
+      "clipped": true,
+      "adaptive": false,
+      "trainableParameters": 7,
+      "steps": 128,
+      "heads": [
+        0.19378890832170245,
+        0.025279511490926092,
+        -0.11044645459012702,
+        -0.08422697822398241,
+        0.05206738111801951,
+        0.023710679521345708,
+        0.06701500084741557
+      ],
+      "epochLoss": [
+        0.6140067901617385,
+        0.6128704795095798,
+        0.6123769659826072,
+        0.6120726337531529,
+        0.6122580194790235,
+        0.6122218186352666,
+        0.6120561851732642,
+        0.6118063753971611
+      ],
+      "embeddingChangeRms": 0.0,
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": -0.00024923603635150184,
+          "descriptiveRowSE": 0.0012496360349810761,
+          "unadaptedPoolMaskDifference": 5.418383501153845e-05,
+          "activeDerivativeFraction": 0.737060546875
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0004860279387037958,
+          "descriptiveRowSE": 0.0006232715685297523,
+          "unadaptedPoolMaskDifference": -0.00044679090368026004,
+          "activeDerivativeFraction": 0.737060546875
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.0012865015940925753,
+          "descriptiveRowSE": 0.0019736736689435503,
+          "unadaptedPoolMaskDifference": 0.0007193933462960687,
+          "activeDerivativeFraction": 0.6913793103448276
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.0013740674940032234,
+          "descriptiveRowSE": 0.0009212197015583424,
+          "unadaptedPoolMaskDifference": -0.0007496011454464456,
+          "activeDerivativeFraction": 0.6913793103448276
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": 0.0013062131519485864,
+          "descriptiveRowSE": 0.0013273589185271255,
+          "unadaptedPoolMaskDifference": 0.0007941092723442565,
+          "activeDerivativeFraction": 0.7294921875
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0011957498140776446,
+          "descriptiveRowSE": 0.0006662883585014325,
+          "unadaptedPoolMaskDifference": -0.0003648637896121025,
+          "activeDerivativeFraction": 0.7294921875
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.00381627150596143,
+          "descriptiveRowSE": 0.0028431276852465912,
+          "unadaptedPoolMaskDifference": -0.0014099946225287884,
+          "activeDerivativeFraction": 0.6866995073891625
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.0018531901061464146,
+          "descriptiveRowSE": 0.001342849305946005,
+          "unadaptedPoolMaskDifference": -0.001430909199345131,
+          "activeDerivativeFraction": 0.6866995073891625
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 2048,
+          "crossEntropyChange": 0.0013478760879983814,
+          "descriptiveRowSE": 0.001010507683699075,
+          "unadaptedPoolMaskDifference": 0.0003963159398932322,
+          "activeDerivativeFraction": 0.717041015625
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 2048,
+          "crossEntropyChange": 0.0012762245863044335,
+          "descriptiveRowSE": 0.0005816327673672224,
+          "unadaptedPoolMaskDifference": -0.0006117792917801224,
+          "activeDerivativeFraction": 0.717041015625
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 2029,
+          "crossEntropyChange": 0.00014465581331875787,
+          "descriptiveRowSE": 0.0016724723379238971,
+          "unadaptedPoolMaskDifference": -0.0006625885148328551,
+          "activeDerivativeFraction": 0.6965253819615574
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 2029,
+          "crossEntropyChange": 0.002161175482374774,
+          "descriptiveRowSE": 0.0008765450419228583,
+          "unadaptedPoolMaskDifference": -0.001250706915487405,
+          "activeDerivativeFraction": 0.6965253819615574
+        }
+      ]
+    },
+    {
+      "clipped": true,
+      "adaptive": true,
+      "trainableParameters": 3079,
+      "steps": 128,
+      "heads": [
+        0.18554370695836284,
+        0.026344930645056382,
+        -0.11168214095435554,
+        -0.08872739982908966,
+        0.06329868737094894,
+        0.028552544005125115,
+        0.07892082871981607
+      ],
+      "epochLoss": [
+        0.6140056106782754,
+        0.612846585879837,
+        0.6123437590284734,
+        0.6120384810392346,
+        0.612221157454897,
+        0.6121790989930881,
+        0.6120098096322443,
+        0.6117605810795108
+      ],
+      "embeddingChangeRms": 0.004566010405461187,
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": -0.00023934355283152705,
+          "descriptiveRowSE": 0.0012661325109590172,
+          "unadaptedPoolMaskDifference": 0.00014666466371549824,
+          "activeDerivativeFraction": 0.739501953125
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.00045797778219027775,
+          "descriptiveRowSE": 0.0006315615561679613,
+          "unadaptedPoolMaskDifference": -0.0005363243345284482,
+          "activeDerivativeFraction": 0.739501953125
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.0012242708116870788,
+          "descriptiveRowSE": 0.001992711392841403,
+          "unadaptedPoolMaskDifference": 0.000794414045546413,
+          "activeDerivativeFraction": 0.69064039408867
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.0013321363060435861,
+          "descriptiveRowSE": 0.0009275479240192197,
+          "unadaptedPoolMaskDifference": -0.0009911732763807552,
+          "activeDerivativeFraction": 0.69064039408867
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "crossEntropyChange": 0.001376776928019738,
+          "descriptiveRowSE": 0.0013462419451987133,
+          "unadaptedPoolMaskDifference": 0.0009941956494859253,
+          "activeDerivativeFraction": 0.73095703125
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 1024,
+          "crossEntropyChange": 0.0011685864830982002,
+          "descriptiveRowSE": 0.0006753600331106668,
+          "unadaptedPoolMaskDifference": -0.00045055294281364584,
+          "activeDerivativeFraction": 0.73095703125
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "crossEntropyChange": -0.003917959330720355,
+          "descriptiveRowSE": 0.0028712505148301383,
+          "unadaptedPoolMaskDifference": -0.0017573372389880397,
+          "activeDerivativeFraction": 0.6876847290640394
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 1015,
+          "crossEntropyChange": 0.001779803891608479,
+          "descriptiveRowSE": 0.0013600953889325031,
+          "unadaptedPoolMaskDifference": -0.001828553751377589,
+          "activeDerivativeFraction": 0.6876847290640394
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 2048,
+          "crossEntropyChange": 0.0013798577271978201,
+          "descriptiveRowSE": 0.0010236175420524026,
+          "unadaptedPoolMaskDifference": 0.0005540744437755541,
+          "activeDerivativeFraction": 0.71875
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "mapping": "quarter-search",
+          "count": 2048,
+          "crossEntropyChange": 0.0012298597608586738,
+          "descriptiveRowSE": 0.0005901472540346519,
+          "unadaptedPoolMaskDifference": -0.0007523813332400103,
+          "activeDerivativeFraction": 0.71875
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 2029,
+          "crossEntropyChange": 0.00011834648028460054,
+          "descriptiveRowSE": 0.0016780368363489308,
+          "unadaptedPoolMaskDifference": -0.0007747666406478639,
+          "activeDerivativeFraction": 0.700837851158206
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "mapping": "quarter-search",
+          "count": 2029,
+          "crossEntropyChange": 0.002087032275812658,
+          "descriptiveRowSE": 0.0008818075269006871,
+          "unadaptedPoolMaskDifference": -0.0016524109576890643,
+          "activeDerivativeFraction": 0.700837851158206
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Post-hoc mechanism selection; all six evaluation panels are consumed development data, not independent strength.",
+    "128 updates per arm, fit-only normalization and fresh moments; not convergence or production optimizer continuation.",
+    "Same four retained Q4 embedding directions in every arm; adaptive arms add3072 parameters. Linear pooled correction remains additive.",
+    "Raw objective on frozen BRE176; quarter-search metrics report different deployment mapping. Masks are unadapted.",
+    "No model/optimizer export, source replacement or owner writes. No automatic architecture or training-gate admission."
+  ]
+}

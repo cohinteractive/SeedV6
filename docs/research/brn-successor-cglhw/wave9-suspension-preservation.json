@@ -1,0 +1,626 @@
+{
+  "id": "wave9-owner-suspension-preservation-v1",
+  "recordedUtc": "2026-10-21T22:45:41.408968+00:00",
+  "status": "passed",
+  "inventories": [
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\trained-before-01.json",
+      "sha256": "8884401cc5b60b82e1715c1504be28c5daca8496e902581885eb17f7bb4ebad7",
+      "verifiedFiles": 1405,
+      "filterLineageIds": null
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-before-01.json",
+      "sha256": "f5ca8fc5833dc2179b31baacb54c63b6e2a76921456de327893a9cc8c97a5fa9",
+      "verifiedFiles": 925,
+      "filterLineageIds": null
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-before-01.json",
+      "sha256": "9ad0e9e99320ed2fa24ba1f3fd210a4c28f6355e854e4e7a8c569d8a5b18c541",
+      "verifiedFiles": 941,
+      "filterLineageIds": null
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-before-01.json",
+      "sha256": "ca539c9c5ae69d6b1740be8b1f62137525e5c69ff076a7c4e29839ecf3d226b0",
+      "verifiedFiles": 695,
+      "filterLineageIds": null
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\trained-before-01.json",
+      "sha256": "875b429a9e33abdc22a00028a11851c5fd120a115f38e2cb1007b35fad21f515",
+      "verifiedFiles": 1876,
+      "filterLineageIds": null
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-before-01.json",
+      "sha256": "4b13b17159e0ca6a25ba62a97a69dcb7f8fe20b4083e36f9d39b46ad8f67acf2",
+      "verifiedFiles": 1960,
+      "filterLineageIds": null
+    },
+    {
+      "inventory": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\seek-remediation-before-01.json",
+      "sha256": "f5e13f5b44347494e38059040337c10b60e55fb78c7cd0f327ec8c4a62a058b7",
+      "verifiedFiles": 710,
+      "filterLineageIds": [
+        "22b42be6-15c4-3f36-a376-3776aa1931f2",
+        "e6b6775d-39cd-392b-bd18-5e964a445f62",
+        "ed0750a3-3163-3979-9f26-2e466c49c771",
+        "235d0688-e060-44e3-8f1e-119c39bc8017"
+      ]
+    }
+  ],
+  "uniqueVerifiedFiles": 6858,
+  "g9AndLiveReferenceFileSetUnchanged": true,
+  "failures": [],
+  "protocols": [
+    {
+      "label": "affine-node",
+      "plannedGames": 32,
+      "persistedGames": 32,
+      "closed": true,
+      "plan": "docs/research/brn-successor-cglhw/wave9-affine-node-plan.json",
+      "planSha256": "28a0d608aa5d676fade891c6ba17f6144f04f8368a1afcbb57aa52653f5156bf",
+      "receiptDirectory": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\affine-node",
+      "receiptHashes": {
+        "p000-m1-c0.json": "22ddcb798f44f116d53d77b23d15f13e76611f324974364eeda926775d9626cd",
+        "p000-m1-c1.json": "23cf949cd09f84f229f00197cb9ce5a3ae5e578ad34fa3861f08c4184ebe1428",
+        "p000-m2-c0.json": "bbbd140d0c70c0e03882a26dba1b3454dc069e3f6a8c025ede992e4cd5b7a108",
+        "p000-m2-c1.json": "d25ea0f541bf39e5774355360ee671955fdd8aca9a776c6135090431792b46fc",
+        "p001-m1-c0.json": "67cfdea91c7812d0b7823bfe73ad6eb26bec81f1e910fbb0f7e7c8449a124b16",
+        "p001-m1-c1.json": "535233c2f880b70c574a6c5bfe4f489534eeb85b16f6c16af8d1028633b87f13",
+        "p001-m2-c0.json": "20cb86fa04c9816e31f5f701365a17bf1922b2848de78bc11b74f99488054f36",
+        "p001-m2-c1.json": "e89260dade0f9cb2c0c874448cec445340a4fed679c83a1fcc764e611f10a6b7",
+        "p002-m1-c0.json": "91c35247ab342ed5f8b36f1667ef01ef77e13dd7a33c886a1ae092099113096a",
+        "p002-m1-c1.json": "0aafaac2218ddce3597237cd377e7864c1191a66cf90d8a86451447b0575a3b1",
+        "p002-m2-c0.json": "13e779af1de077b22fd87be03b664e29301e70070d4a434c91e07273da2c5035",
+        "p002-m2-c1.json": "abac5e73e23642077433f0b2f6698d1bffb1ca704d3609c265c4455dfb6cdbeb",
+        "p003-m1-c0.json": "6fb315ea069b9feeaab7ba2df8c01a962f313f863453d99e8631b99eb1840da2",
+        "p003-m1-c1.json": "fd3d4ca7885339931b4956efaa2ada05816a85c47a5aa0f5472fc5dd29b833ee",
+        "p003-m2-c0.json": "2a82137f00162eee3ab2117703819cc6c8d8ca24e543955fd70be9d03b364997",
+        "p003-m2-c1.json": "09177409acede8b869f0c946f783e1d647e3c21cfbcc6a1656c0ff0483295e71",
+        "p004-m1-c0.json": "4fb1bce8adb669725f02bc6ef2a790e4032394057bacc83ac74890c90dbcd6a3",
+        "p004-m1-c1.json": "688dcbdb0b06e09ff6e1bc9122bc4c5684c911f76151bca088edafbb27e5554a",
+        "p004-m2-c0.json": "ef80f367f6d398c6c914c920ab075d14f5a9278ec6aeb9ef463e0b8944ed56e3",
+        "p004-m2-c1.json": "474f2cbf05f0b2ef06e90be8aa8701d426c67507975514c1681e6fb132f4e919",
+        "p005-m1-c0.json": "456102118c29c199e87a16cb07a73746e888cfac5c9573432871dca781a14c3a",
+        "p005-m1-c1.json": "3add80a0e6ebba21c55b9cd42dd193e818647aa2d21a0ba15319672abfe9d450",
+        "p005-m2-c0.json": "d3e7fafa3c664b58fa2912e25446359a6c5de387a772b162a7d9db3a6f69a5cd",
+        "p005-m2-c1.json": "e704661df7536771cb31ee2a0f8616b8074797b97d555bf8172539e24c1ce378",
+        "p006-m1-c0.json": "d0138a0a619409387e9b12ab3235d9697a76635042e74fa357847755cb14a993",
+        "p006-m1-c1.json": "d43630ad489623f08ba133618f61ab35df74b5d177cfd706762e3a36f0f8fb01",
+        "p006-m2-c0.json": "42fde0ad9146108213b4220b24271857bd4071886854349aa83c30c2970d0577",
+        "p006-m2-c1.json": "003467b19aacf6b12c6ccb56032faff4ccad8364e574472af49d1a0368085ce3",
+        "p007-m1-c0.json": "324e13e93351b89aa650c50a00cd93b601bbb5b8e785371c6f636dc868e7d7e9",
+        "p007-m1-c1.json": "8010f6422d75cb37bd31f8dda1ae86ebe022473c8b36976d3e21ef430fdd2b17",
+        "p007-m2-c0.json": "072aa69f8a7c19c2096e93251fa323680684011d4a272b314d3e30668e6f6c64",
+        "p007-m2-c1.json": "dac7fcbe6b1e1b9e7aeff3c0addea4f16b0b7c9208645b269d4af04aef5cab23"
+      },
+      "report": "docs\\research\\brn-successor-cglhw\\wave9-affine-node-results.json",
+      "processReceipts": [
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\affine-node-batch01.process.json",
+          "sha256": "16da7e895a6dcf528b5d188a229e2e5b0333d00963499c4c717cfa6174ff28e3",
+          "startedUtc": "2026-10-21T20:57:07.9774933Z",
+          "completedUtc": "2026-10-21T21:01:10.7418815Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\affine-node-batch02.process.json",
+          "sha256": "8fe357d5900e20b2b7bee132dc73d07a80118dfe3796749a3fcd0e6d0973b06c",
+          "startedUtc": "2026-10-21T21:01:47.4600984Z",
+          "completedUtc": "2026-10-21T21:05:25.9833329Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\affine-node-batch03.process.json",
+          "sha256": "8fcb3986c9976b6dea1d31c952ddfbe7157797dcb304c3d7f4eed99c09aa9727",
+          "startedUtc": "2026-10-21T21:05:26.6627317Z",
+          "completedUtc": "2026-10-21T21:08:24.7141151Z",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "label": "degree-node",
+      "plannedGames": 16,
+      "persistedGames": 16,
+      "closed": true,
+      "plan": "docs/research/brn-successor-cglhw/wave9-degree-node-plan.json",
+      "planSha256": "a699d05cb762fcdd7f72eff2f123ce545b52ceb19aaa400c9249ee8f90900abe",
+      "receiptDirectory": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\degree-node",
+      "receiptHashes": {
+        "p000-m1-c0.json": "59460c7581c9ccaa55b79f04a4bd9464926ca60a3c8718b44b6507fbb6ab77a1",
+        "p000-m1-c1.json": "c404010cdb56cc993284f64aa00a4290d56f9c9c2f4909113e913f0664c7a900",
+        "p001-m1-c0.json": "86c57888a8abae40255ca0e05382452bb3f8834cf0f522d2a1abc1836f5134b4",
+        "p001-m1-c1.json": "e5f15d9b22e882e81eae51e00fabae6bd7331834ab5d2c13f5fdb8b752c97c05",
+        "p002-m1-c0.json": "76688f7088009671de73df919d69881d4afe4307cf01b930816e2a4156a167d2",
+        "p002-m1-c1.json": "a50d6d701481d2d5c33495b1568cb103ce3760d9a94b986a5eaf39dcc1c12e63",
+        "p003-m1-c0.json": "922a0de964923c7cbf8283538b20b8111d25fda257fccc5de7f4d2427cb5d280",
+        "p003-m1-c1.json": "801f348308a6dfdc7472c6fbf5f8070900992debe1202884a7e2d9a6264741e9",
+        "p004-m1-c0.json": "107c7760f92f4745ed89ade2e8983bbdac1dcf3c5e43c7b7f326a07d947ea0da",
+        "p004-m1-c1.json": "bfe30190fa4095bc9b404e25221be4ad58fc2f50649c0fc1402bb23b35a30f0f",
+        "p005-m1-c0.json": "7bff9da8afb56bde397067ab18963211f4f306215fc7107b0fc4ef2b8af43e18",
+        "p005-m1-c1.json": "8a60240875296bb329e7975d5882d0915960241af40db50d9878c3e22ed4d993",
+        "p006-m1-c0.json": "27b99494142409fd921672592b22818be671355e49017900c2e5cb6b9eb5417b",
+        "p006-m1-c1.json": "37d5cdb1fd4317ba3b505647bd472da6bb21499563cd1b69607c332cc409d098",
+        "p007-m1-c0.json": "0fe3bd8de203f2c1f0359fea7fb50643bfab721bcf66afb7b456b8b2d08641b0",
+        "p007-m1-c1.json": "0fc30143f5b0bc7ca73c6091e96e41232e510e85fd3436e84817d13e9e04acf3"
+      },
+      "report": "docs\\research\\brn-successor-cglhw\\wave9-degree-node-results.json",
+      "processReceipts": [
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\degree-node-batch01.process.json",
+          "sha256": "f88604ddb351d3b05e217b34a4488bed20fc143693bef04538c24661f7bace1a",
+          "startedUtc": "2026-10-21T21:32:38.7227455Z",
+          "completedUtc": "2026-10-21T21:36:22.5763941Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\degree-node-batch02.process.json",
+          "sha256": "a92580953e64b4d52ea3005c04e5ea23c016543b0a8b6f010e3f3b967209e7be",
+          "startedUtc": "2026-10-21T21:36:23.2364295Z",
+          "completedUtc": "2026-10-21T21:37:41.2208857Z",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "label": "affine-clock",
+      "plannedGames": 32,
+      "persistedGames": 32,
+      "closed": true,
+      "plan": "docs/research/brn-successor-cglhw/wave9-affine-clock-plan.json",
+      "planSha256": "e3bfba953600153e58d2a1662d7d3961ae9b4bb1bae2c33bc5bbd842606e70b8",
+      "receiptDirectory": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\affine-clock",
+      "receiptHashes": {
+        "p000-m1-c0.json": "fa10b276d23b1f352b9a1d660556f65dcecdcde6c8cb2a8ebdb92d8fb2443e64",
+        "p000-m1-c1.json": "af820262f8e297f0a3909b62cd2df21b092b82ebc3654919512adb5a418145f5",
+        "p000-m2-c0.json": "b90fe3dacfa0c4aca8e17c82205096b83455f348ce7e1203dbff077f298948ba",
+        "p000-m2-c1.json": "4ee292cb25e6f1f3bf082617f26df14c35ae6bbcc03cc8130058b87d19e6202f",
+        "p001-m1-c0.json": "fbd8262d61caf2e398d932fefce4afd4f186dfadd79ba1ca1f58c43638efa90c",
+        "p001-m1-c1.json": "b21dc3d120aa70e02b641ea10ca21ed0dcdda64cad4725a16d9f4c73858b5305",
+        "p001-m2-c0.json": "e9f05c21c60908035eea10226c7352a320aa43684a4160157ee19a1aa05635eb",
+        "p001-m2-c1.json": "53d57e471255a25fce982dbd50e20c6ca80f2b6d0a26bc3c3d3f326f4d9210cb",
+        "p002-m1-c0.json": "ca33f9e04dfba577454777e3b5b6216c0f46d6a6e7a4d51f476166dcf58603a3",
+        "p002-m1-c1.json": "218183bbc3b992b22f47739e16a70235f29a59851901320b5019aa474aac26f9",
+        "p002-m2-c0.json": "d92d5029ce5cf9057c105c7179a5fb65b3714d0d71fed2c42eba97e330fbb254",
+        "p002-m2-c1.json": "6f50d2e15a5ba1d93069a2973f30205a8ca4ae730219c6a706eb1bb949223010",
+        "p003-m1-c0.json": "bf0f79d2b73d396313cb88eed00a66e9322a9d26c7abffcf5c9f89ad3d813ed1",
+        "p003-m1-c1.json": "b7d95b5e0e1c27599b944ec4af20ccaac106720f41e7fe2d490cb70140b050a4",
+        "p003-m2-c0.json": "d678f7b01142d5d4fe9c5fe5e96836dde0c1c96ab28aaea144b791ea03be340f",
+        "p003-m2-c1.json": "bc3c467922ad8e7b0f33e0819e3d4bdca3ac3573703b18e51721e9d3adf0fdd9",
+        "p004-m1-c0.json": "a3feb5a68a611842f7b6473e0a896faa213502e9ef75d43d5ae0757e1151fa73",
+        "p004-m1-c1.json": "5c6f5d99fb07176600c206e5dd74929483d893171c3cb88dfdb90220ed9a3526",
+        "p004-m2-c0.json": "bc60913c4fe3ca166822071c2ee860887d6ec4d2e9f6cc6f706023515d48d5a5",
+        "p004-m2-c1.json": "1407e012ee0f0b0b2682089799a20f63c0d83033af785804d6c1175311faac8f",
+        "p005-m1-c0.json": "c150f1ad7cec1ab8eb00c017d73642dcdec65229a093354495f733bc7bacb00b",
+        "p005-m1-c1.json": "fe52fa895971f414de2e55f7daa1e7653255dde20f8cd4ae720dc53a6afbeef3",
+        "p005-m2-c0.json": "ed223727ca2537489b0e255ab75f5014fdd68da4751938defb9fd697ce5ebfbd",
+        "p005-m2-c1.json": "c1c314bef812cfddb4faf3afc04424fe07eb10abb208e350acac941aaa8d227d",
+        "p006-m1-c0.json": "f4915683f3023d7523c0b12bb44761c3dbc58c287763aacf6ebe30a2efd81cf3",
+        "p006-m1-c1.json": "77d25d7365f8a1e1f5e40546a1ee520d153b444dd05ff0c4da9a22632745cd77",
+        "p006-m2-c0.json": "3eafe086f82cf667b77668e662a3b11086ffca5775f3608b9805a8d04ed25123",
+        "p006-m2-c1.json": "6739866113661a8964b4e0defebf016f9409d9bff9e447459cd2117423892bdb",
+        "p007-m1-c0.json": "16a1ea1276340af6874c95610e9b488875cc349237ffd7278d316121f2a55e4e",
+        "p007-m1-c1.json": "fb79448deb6bb6bea41fc43c1182690db99d2ab20808266a8fcbf3da3e115d76",
+        "p007-m2-c0.json": "b9dea69aacb08ba4c5aec7252894f561bd2fc7e27bb6c6c3b5637f778565e3cc",
+        "p007-m2-c1.json": "e5046fd051a578ca827cfa851628490a8395820fb3b56931376ecc538dc03573"
+      },
+      "report": "docs\\research\\brn-successor-cglhw\\wave9-affine-clock-results.json",
+      "processReceipts": [
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\affine-clock-batch01.process.json",
+          "sha256": "7ee689e05fc069ac69547a164c38cdb7cb258eec2824732485e2fb72136f7a9d",
+          "startedUtc": "2026-10-21T21:37:59.1060815Z",
+          "completedUtc": "2026-10-21T21:42:16.2625727Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\affine-clock-batch02.process.json",
+          "sha256": "d70519c65e6bbc88c8abdf7eb337647e2c50f7812bb49b3ef8cd8dcb1325401e",
+          "startedUtc": "2026-10-21T21:42:45.3366923Z",
+          "completedUtc": "2026-10-21T21:46:48.1448625Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\affine-clock-batch03.process.json",
+          "sha256": "6c7cea5eaab4ed781b25e449a476968a9a4d049e057ea8f599dca5806ef848c5",
+          "startedUtc": "2026-10-21T21:46:48.7842019Z",
+          "completedUtc": "2026-10-21T21:50:43.6787645Z",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "label": "degree-clock",
+      "plannedGames": 32,
+      "persistedGames": 32,
+      "closed": true,
+      "plan": "docs/research/brn-successor-cglhw/wave9-degree-clock-plan.json",
+      "planSha256": "7dfe91360048f7dee180d2adea87dccde5342cbc58a4b7e5f966e142d7dbcbee",
+      "receiptDirectory": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\degree-clock",
+      "receiptHashes": {
+        "p000-m1-c0.json": "e7b1d0aef7b5bee84d21c1fdc9bad0d842605b199f622ed1b358d244041c82dc",
+        "p000-m1-c1.json": "378bd48871f4416efeba4ecd3b146599a811704296d62f4792e18b561de8e8e0",
+        "p001-m1-c0.json": "31ebe481ad9d32471b19530b5d1fbde3be8e1626b815f95b899764b600f0e835",
+        "p001-m1-c1.json": "b9da30105a6258ed08076fa17c91f09234b5ae0ae63d915cca18f6c4d6136840",
+        "p002-m1-c0.json": "f5daa990da9317bdd69f14a1c92310eec0723987a6ba487ac186b01b94feb457",
+        "p002-m1-c1.json": "2120491533855eb92ab67790efa3450f73fb507a2aa10ea52f36416000b39954",
+        "p003-m1-c0.json": "3093893bf8374e1c05eba7dd743dc6b2689d1e8b936801b5ba3cf14cf9546c7e",
+        "p003-m1-c1.json": "2b123f387e917a69fb1879a2d35b94de608f105644f4d5a17edfe8f889929039",
+        "p004-m1-c0.json": "b1e169fdc863c6a7ecacb510d7a5d29917b5fe17f3ad34dea2a47d29e9ca2a3a",
+        "p004-m1-c1.json": "a21bf956f5538967539d53e3a64f59107904ed615c1e29bda50c07aac0179081",
+        "p005-m1-c0.json": "24908eb27f6ca5a0eed726de24963b335061eef7e91f852cd6906f7056f61770",
+        "p005-m1-c1.json": "158734e71ed5c5aa3f60115519f2387189a9367d9e8600cdf407b038f59f103f",
+        "p006-m1-c0.json": "6dd3da268600c93c9d8319e18302feac0102a4e7cfe817af75810c0f33b6eb0e",
+        "p006-m1-c1.json": "f3278d2ed454aba0f6fbc83134fb55df159bb67d77f0fdd9bbc1163a8a6dfe43",
+        "p007-m1-c0.json": "089a99bcf74fe42e5cdf4e5924c0aa88f0f9706d79d24c1bff3dad250445d8f0",
+        "p007-m1-c1.json": "795f66f6cb56882e9fd20c260b3771e7c0dfb61ce64052239ab9974c7a70c110",
+        "p008-m1-c0.json": "7936c7b8641b2baa43092af3861f7741eb61593f00cf68bdf86c6a208662dbaf",
+        "p008-m1-c1.json": "9e4a814e3b263bb50effb19d54021fb7628e8720db5e6896bb4d8a1778fe9ae6",
+        "p009-m1-c0.json": "42aa1c8784fa90949dbf889985aa3dab88c79e595f5850f31cab958b5aa3f689",
+        "p009-m1-c1.json": "3af611b3844d9e314f35db59e332ec92bf85cbb3389b226e8a609a631631b2d4",
+        "p010-m1-c0.json": "9f9e6325ec4f560e7d6309ad0e328be6d8d2400bea1d91ff4f22e0d6b85716e2",
+        "p010-m1-c1.json": "12c093f07655017e2ac5577d53bd1274b2745ded10b0a57d9c10c24791bb3034",
+        "p011-m1-c0.json": "0dbed9471801754dd20e553a55be826e933f339f557d2d5bafd865558c6b878e",
+        "p011-m1-c1.json": "77a706b1465656e5a7b5a97c91889650e836f4f1d47501f1de584b62a0847fc6",
+        "p012-m1-c0.json": "256af6c30b53e420525887fc0e2e096b89e8bc5d034ad700fcd5b1acebb495ed",
+        "p012-m1-c1.json": "0c521b1d8ac528ed8d48f5edb45a07539532859086ed2399b9216366c3879af5",
+        "p013-m1-c0.json": "45ced2a4c4e2ed01edf9b82e33cc307f983a6c4340af3f1cf5f706210c05f247",
+        "p013-m1-c1.json": "7a6526c22517b4859269f928ce711e5cb6f5d38954bb5690d0790ca6e7c6c115",
+        "p014-m1-c0.json": "79ad0bfbd1ef6764203a9abd2144680e540d12bf02687ed31d71412ca2f74af0",
+        "p014-m1-c1.json": "b95ed880323569b3c3390a5350b023a45ce23d628b31064b5f5db46104842010",
+        "p015-m1-c0.json": "d2c351feb8676572795c5be5e8016312003a7c29c927dabf7ca7b382815a7bc4",
+        "p015-m1-c1.json": "5c66636a9a9553be0976039e30fe808f02fbc839dd271bdcc223faeb8d26a868"
+      },
+      "report": "docs\\research\\brn-successor-cglhw\\wave9-degree-clock-results.json",
+      "processReceipts": [
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\degree-clock-batch01.process.json",
+          "sha256": "96667beebeb2bea9f8aafdcfb21ac241f5a9bd4b78566a70f86cd1acbd713424",
+          "startedUtc": "2026-10-21T21:51:03.3877420Z",
+          "completedUtc": "2026-10-21T21:55:06.9184200Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\degree-clock-batch02.process.json",
+          "sha256": "87a34acb5cbc4aa9fd62fa579d648f7518ed67d8738ea28de985dc6edab8900e",
+          "startedUtc": "2026-10-21T21:55:25.5775219Z",
+          "completedUtc": "2026-10-21T22:00:13.5934174Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\degree-clock-batch03.process.json",
+          "sha256": "fae56f8848fc7e9bd680282bf0e93280d7e646486c8ba2ae04bb83cdf78c0d4d",
+          "startedUtc": "2026-10-21T22:00:14.3054204Z",
+          "completedUtc": "2026-10-21T22:04:02.2437546Z",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "label": "bre-clock",
+      "plannedGames": 48,
+      "persistedGames": 48,
+      "closed": true,
+      "plan": "docs/research/brn-successor-cglhw/wave9-bre-clock-plan.json",
+      "planSha256": "3db369bd9bddc0b7f4ca90c808e4e2c836581ae91d1216c1e41fe6b55678d526",
+      "receiptDirectory": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\bre-clock",
+      "receiptHashes": {
+        "p000-m1-c0.json": "61dcc9296d72f4de2f41c002e90e3327c29043bc190c053457dcc69737b13cc7",
+        "p000-m1-c1.json": "fb5d0c4ec71d1e9bf7d77bbcb5af6850bc2a9d054d5279070b53322657fe9fed",
+        "p000-m2-c0.json": "f5810b42d6d9ed3b9b5ba6a3e22950dac5d461103ecb827f00bf5d34abd897f1",
+        "p000-m2-c1.json": "f7071040b2634325a32bf7ee4254207c6b3348f23c7bbd8db0cce3240a65e688",
+        "p000-m3-c0.json": "0be9441f9eb627113b73d2b5c0564d54654946b2f7f48975840cc45da7d39e22",
+        "p000-m3-c1.json": "96ff42da5c367aa396b024df4d0f0ba06c74f522bc87ac9e36ad04775445860c",
+        "p001-m1-c0.json": "e2d59676b53ee3e74b7368151441cb35cb1c92a5550ca6cb0dcec547031e5dfa",
+        "p001-m1-c1.json": "5f014b0ecc07a0fd88aa03c8dafab3b25f7b7f22033e44480f84e6254b4e773c",
+        "p001-m2-c0.json": "b32ca3f3f87d802b56a0d9179d367e25580265eb201b96ec0073463340a1313c",
+        "p001-m2-c1.json": "8b1c78933e44e163c13b36e2d75b1f198248eddf08fdf88f985c9343d4be39e0",
+        "p001-m3-c0.json": "e8e1fbe24daf468d72998136507b6decd027ff28a2bd342a1970eaf8d923c3ac",
+        "p001-m3-c1.json": "27fea9c9b40a5acc518b0843c2a0c61ca587e6654b27bace5c530abf6e65c14c",
+        "p002-m1-c0.json": "71961eebfcff7fb08a85552f6e7e267de99d9b7bbfcb9df84d247a613e4716dd",
+        "p002-m1-c1.json": "3d1c6d5e256da567df5fad44374c39c5453200b948274ec403c8c2104a1b404a",
+        "p002-m2-c0.json": "4b19232b630e77c93f890d015955eb4471dce2bb57a38b6576b381fd10189d42",
+        "p002-m2-c1.json": "20438550214a93ab0a28db3ef70a88cdd3cb196a0e277d0815ecacd933fcbbe5",
+        "p002-m3-c0.json": "63f5aa4031a2675469e6debcef767139d95ca91efe5d58532dfb3189e7fb1915",
+        "p002-m3-c1.json": "06423871d3ef2aa61d36f9dc71fd38f67f37921c531108d1d8fabc6a967dcbe3",
+        "p003-m1-c0.json": "1cbebdb5a214a4666714b4465025c9eafdb1a8a761d3709251efd33faa81b1fd",
+        "p003-m1-c1.json": "c68f832ce54c4b55bd7ceb3c19a67d7d3f5749c907624bd08e1dcab449c105d5",
+        "p003-m2-c0.json": "b867116d6fe7f79067197ec5fc4a91aa5e39ac1ca019080f21a627965980d863",
+        "p003-m2-c1.json": "a36aef63ff2d8c09002b674548ed720de11c6434a8078ac6a873bba76876973d",
+        "p003-m3-c0.json": "cb7f4af17fbd4e41ad7652c7988b3b6def6cee0f1c123daa6ef3bfaabf1c7a0c",
+        "p003-m3-c1.json": "109fd9888d7ccafd742b704d9e0328db437a71a29650fb2d3292a4ca53ebe555",
+        "p004-m1-c0.json": "a9293987289f8da37ac50f47ee9c23be829126b562b3ac347c59484ab77db604",
+        "p004-m1-c1.json": "744a81321632a3cd0e0aa5bd1a9f25c2920961220be1bde4c8e70f493945a999",
+        "p004-m2-c0.json": "57087e0c2a4bd4decb98a84ff77cc24b6752b35b500878d0c157fd3b1a4beb6e",
+        "p004-m2-c1.json": "08893fb5beff60ebd0615a9330d0a3fea2c27529d5c2ed3da122034be4d79e02",
+        "p004-m3-c0.json": "5d1efe921aa9c937a0596dbcc622d75dad72e31fdb78874085563c94c40d92ed",
+        "p004-m3-c1.json": "79ef0179138fc2becd9dd7facaf5137a1b1a52247a11445ef01511ec39a66a6c",
+        "p005-m1-c0.json": "ff1cc68238773bac5590f3f68eac361e04213a6650049418b43b70394bf278bd",
+        "p005-m1-c1.json": "b1508845b1dac3f5a706f6709d2bca4d07f3542b974c9b3eefd226a68a021f33",
+        "p005-m2-c0.json": "97657cb56dcec5b2ca7c7923f82ef06ae2a35ee1500776d15dc6a2e6905d707a",
+        "p005-m2-c1.json": "2394612d8066ec7420e580673462effccfcca940779fd9409dd638363b374c83",
+        "p005-m3-c0.json": "12669965a8453ca0fbac8fb6a52b30ef5be25c7dd17534bc4a2a79ad94b7dea5",
+        "p005-m3-c1.json": "afd13f7b33a3aa790039fd95cec8407873a8d14353347f6922b7e7656c1067d3",
+        "p006-m1-c0.json": "7e64f94ab1b3744e726b9f2f064874ec06f0c790d43750c75a1c97ddd33b9742",
+        "p006-m1-c1.json": "0c46b0744ecb86d9332ec56a1f8cc0a9c95fce799b44d93262ff60ef13c44479",
+        "p006-m2-c0.json": "513291ac99ccc12fcb74a5cf15378f21e2f12bbce2158738015ce09453e82b65",
+        "p006-m2-c1.json": "575c39c1d0efdbc4db88bc053e539c12ad0ba567d82a3a05cdb1779558425abb",
+        "p006-m3-c0.json": "68c1654729e0d54d837007d90fd1bd0649dd983048e729dcdac70083ffceff17",
+        "p006-m3-c1.json": "0428fb17726edba1813b7a1fabb4290c6fb22f649867b5398be2727850ec3761",
+        "p007-m1-c0.json": "0e773dd143212326683acdedb71eee821f44323ac68f4ab886966d6a3814371b",
+        "p007-m1-c1.json": "bbb0b448906acbdbf5c3e1b62463d954fc423a8bc90a9ac9703fbf438d9529f7",
+        "p007-m2-c0.json": "62dbae72155dac9dfdc2b3b9953b7df329a95b83b90d66de5c736ec36c0c4515",
+        "p007-m2-c1.json": "a8f114af5cfd98698e5fc7f0e7ab7ffcbb98ad53f9763c14b3313c4021082006",
+        "p007-m3-c0.json": "f14a8b8860681b5667795f97a8fa125715934bee652318123198c52df13a9f68",
+        "p007-m3-c1.json": "0b3d7359a830156444b12a936f468d21437b6196aa7631c6b5f5ed4ea2bf68d8"
+      },
+      "report": "docs\\research\\brn-successor-cglhw\\wave9-bre-clock-results.json",
+      "processReceipts": [
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\bre-clock-batch01.process.json",
+          "sha256": "bea998c26b7f9e4273a5328070074164ee3af547c9b6a8146923df64f4fb54bf",
+          "startedUtc": "2026-10-21T21:12:35.2961368Z",
+          "completedUtc": "2026-10-21T21:16:28.2872882Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\bre-clock-batch02.process.json",
+          "sha256": "064fbc6bb111f9cdcd31fc913110885847c636e79ea8bac64406cc3d1bc49e8b",
+          "startedUtc": "2026-10-21T21:16:28.9240290Z",
+          "completedUtc": "2026-10-21T21:20:42.7192492Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\bre-clock-batch03.process.json",
+          "sha256": "fef57e45455c691cacd038d4bc6005c30afb709dd1f77230fef7de9cbc29ac8d",
+          "startedUtc": "2026-10-21T21:20:43.3575175Z",
+          "completedUtc": "2026-10-21T21:24:55.8535642Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\bre-clock-batch04.process.json",
+          "sha256": "f5ef9584ca2eaff30a781808707662e2f888b923617ed1d727434a5b2cf15436",
+          "startedUtc": "2026-10-21T21:26:27.9639971Z",
+          "completedUtc": "2026-10-21T21:29:48.0661901Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\bre-clock-batch05.process.json",
+          "sha256": "e29cbe1ee2bec08a999e6c35ad7a3ec5e6443c8c217992e78bfdb26acc846466",
+          "startedUtc": "2026-10-21T21:29:48.7077331Z",
+          "completedUtc": "2026-10-21T21:30:34.6521289Z",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "label": "reference-clock",
+      "plannedGames": 32,
+      "persistedGames": 0,
+      "closed": false,
+      "plan": "docs/research/brn-successor-cglhw/wave9-reference-clock-plan.json",
+      "planSha256": "7da2983b3b62c0e7345e8f8063122084d8e84fb35a1cb8a445602ec5542fc303",
+      "receiptDirectory": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\reference-clock",
+      "receiptHashes": {},
+      "report": null,
+      "processReceipts": []
+    },
+    {
+      "label": "scale-node",
+      "plannedGames": 16,
+      "persistedGames": 16,
+      "closed": true,
+      "plan": "docs\\research\\brn-successor-cglhw\\wave9-scale-node-plan.json",
+      "planSha256": "fe0e450a96fc64ac1c7750090a4be76fa11e74b754774cdbb15989ef3056bcd6",
+      "receiptDirectory": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scale-node",
+      "receiptHashes": {
+        "p000-m1-c0.json": "55ff22e7f42199d3a86e9c028a9bef910277891532d860984f712fc59e02d900",
+        "p000-m1-c1.json": "efe951b0919d40029bbeca78f943ec56c9b3cef5f909aeb3c56b9a3f7f327419",
+        "p001-m1-c0.json": "2b1e3cec82aaefb1c8d317fa3df3b9c2a26dd532661f91548bf737a58f3488ec",
+        "p001-m1-c1.json": "d09b672ac626b59d706102f48f4c3934d6ec6b9c7f3ea9230360ce182e0ac575",
+        "p002-m1-c0.json": "d50204218ef8254e56661ba5df7f35a57a70d597fec413533ef1600603a317ac",
+        "p002-m1-c1.json": "07329dc6d29c42cc57c4ac44a9d691a472f30990fc76125f2b57bc0d0d7638ca",
+        "p003-m1-c0.json": "859e8437618ba5ba029b48f26c3a6aeb0c7ff1c703ed1eac9622d6d8d456fca2",
+        "p003-m1-c1.json": "20ad68dae32b0e8495da31bbf82e724083146dea0f2c81b980f9c396d9f5876a",
+        "p004-m1-c0.json": "dbc67e55103f16425ddd3f7fcf923dfd93a67eb7369006102ed048f5c959acbe",
+        "p004-m1-c1.json": "ffda570146b1c513f730e4c16a053afb1f94cee01311ae71d0982ed82cda42ec",
+        "p005-m1-c0.json": "ee77ff27e2f39683cf19645b0bc9cbe025d2210bc59f8ea47a0f177a3aa9201f",
+        "p005-m1-c1.json": "cdef68bce52e8e434f6dcc8d2d3ea16dad37e2e03b33bb27bfcb636df3693f2c",
+        "p006-m1-c0.json": "db8427e81097a58f096baecc141fcfa6a6ba503796eaeb555cd784e1d62b5224",
+        "p006-m1-c1.json": "381af09fdfcfd2cbe9c9c840c2744991660856ba3c2a404a7157303536dfd14c",
+        "p007-m1-c0.json": "1e042ee08e968c9d056ad61a71ef7127759d90472a14baae654f1c1306d3cf77",
+        "p007-m1-c1.json": "c5483e6057425bdd1244ceb6e5f211a599fa2473ed95d257eb50e2c6410782bc"
+      },
+      "report": "docs\\research\\brn-successor-cglhw\\wave9-scale-node-results.json",
+      "processReceipts": [
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scale-node-batch01.process.json",
+          "sha256": "5aa7d0e301e882ddac39bc70016e986fc9316a2afc27d88b2c4033bdb8a8f832",
+          "startedUtc": "2026-10-21T22:05:03.6679285Z",
+          "completedUtc": "2026-10-21T22:08:22.4699558Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scale-node-batch02.process.json",
+          "sha256": "2401d9bbf0e7c4bdab2597b344d1757322b9646e5f7e4bdc0dbb61d5e510fe82",
+          "startedUtc": "2026-10-21T22:08:23.1109773Z",
+          "completedUtc": "2026-10-21T22:09:30.9736443Z",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "label": "scale-clock",
+      "plannedGames": 16,
+      "persistedGames": 16,
+      "closed": true,
+      "plan": "docs\\research\\brn-successor-cglhw\\wave9-scale-clock-plan.json",
+      "planSha256": "2fca0e9876680c5690a15519ca0b96e2dd0b9bfe7a7cf710ee9f1b7b3515b74a",
+      "receiptDirectory": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scale-clock",
+      "receiptHashes": {
+        "p000-m1-c0.json": "adaa4450e16b5064ecd4ef15e651314d0633647b4ecacea1b7b41e272ec34122",
+        "p000-m1-c1.json": "c21e2bd624db7e6486e5132af9ec9d898870024faf0bd9d3bcd0ff07f04bea5b",
+        "p001-m1-c0.json": "fc0c648391e7c104f5811eea8ce169be19b4db6b995b01290eb585de9d1b0dc9",
+        "p001-m1-c1.json": "c3cb03a13c4355e1f2197c66f863c39c8be1c5a39c6555cfd2db34b14a4a5142",
+        "p002-m1-c0.json": "0bbfc7f30390eb05e32a209e69a7f12f347f7c1ff2f23bddeb166a556cf25895",
+        "p002-m1-c1.json": "09001a8300f7aeb6f2c5063f5ccc851c753109d82f673d96cf1b2272dcc7ca06",
+        "p003-m1-c0.json": "1d0930117153abed7ec7b70bf49c432f7df89eb602ffa5e2005f3a0fca942e82",
+        "p003-m1-c1.json": "103b52394939250dbd114737640998a26b7923d333703832e34cd29272feb346",
+        "p004-m1-c0.json": "bade8d540ac12baf76730747395ad00b2c488346b9d0f8ef3f757902f7ca77fd",
+        "p004-m1-c1.json": "7f168c80ea4cdb50b724f33d115f33581242a3c32c88f3f4d00ec00a587352b6",
+        "p005-m1-c0.json": "3267d2cd4e94b1b3fd1aafc12d3dde34f531c2c8817bd53e1cb4b47bdabe8551",
+        "p005-m1-c1.json": "f845873b23af50b98a544cc0f6db4b7119b8242c6214f16d92cb79cd7ff1f803",
+        "p006-m1-c0.json": "1e3d7386571ecfda4c7ec402eee32df647584b7dad87ca83fff3682955d92147",
+        "p006-m1-c1.json": "e17811a1b07dbddfa3dca7efe21d3633d6835ca8500a300cf2f5fb1d885aa6a2",
+        "p007-m1-c0.json": "7f62513ab9abf193587181703b207e3eb02691ac7d877e5b1ecdd7cce65e0f99",
+        "p007-m1-c1.json": "de0cc3d90b4ed02bf4169b0ea1ceb8fa00cae14ecd80645cf592dd43713c2e68"
+      },
+      "report": "docs\\research\\brn-successor-cglhw\\wave9-scale-clock-results.json",
+      "processReceipts": [
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scale-clock-batch01.process.json",
+          "sha256": "4d8c8b3b6c0f472999cc941bde53b15f63a22071e6dda52bde8adb37695015ce",
+          "startedUtc": "2026-10-21T22:09:48.2732874Z",
+          "completedUtc": "2026-10-21T22:13:12.2018793Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scale-clock-batch02.process.json",
+          "sha256": "3b6ffca490080bb5a0f418f5c81fc9dcb0d26bd32e911217b021a04764819dd9",
+          "startedUtc": "2026-10-21T22:13:12.8554346Z",
+          "completedUtc": "2026-10-21T22:16:10.0411997Z",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "label": "scaled-degree-clock",
+      "plannedGames": 16,
+      "persistedGames": 16,
+      "closed": true,
+      "plan": "docs\\research\\brn-successor-cglhw\\wave9-scaled-degree-clock-plan.json",
+      "planSha256": "ccd221309921248b5d85b4250acca566a3b40048e4d6738346c9ee9ef0106ac6",
+      "receiptDirectory": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-degree-clock",
+      "receiptHashes": {
+        "p000-m1-c0.json": "fde954ea0e27b9fc723d6217a56b54d3a014008857404f80657d72b74bdd0f8a",
+        "p000-m1-c1.json": "6bf9da60743a0851612017aff3079fab7186312f18fedf527df6ac2817ce9936",
+        "p001-m1-c0.json": "8090894db39c0958a308e60ef565b9670c3812519ff72b9cd1b7bbd53b2a4a80",
+        "p001-m1-c1.json": "08b48262cd933e55d125d85d3dce9f1aebfe68531dc35182a8b355cc4edd22a4",
+        "p002-m1-c0.json": "29ec247bfdb7faaa7c8353f9b87ae144f8807dc04e3b1240c584f4ef4234c6a5",
+        "p002-m1-c1.json": "f1efb40a29e8f2831b8c9e1a98bbafe7f0c1d1c328f5d27d0922dfc0b3a7da40",
+        "p003-m1-c0.json": "6149ae4d085705c04a1ee67ffa94262e0b31506590ce46074985d2655c41b541",
+        "p003-m1-c1.json": "3f548dfaa73db713e21a5c7f6ca7be819af5b0706fed739264dbb38995047a51",
+        "p004-m1-c0.json": "42a060e02f4e83b01559293331f8772afa442f36599868aaeb9f67e4b89a86b1",
+        "p004-m1-c1.json": "bc29cf7e0f47a0ba880ece6b054ddaccfcad772c76c9d981046aded67008f833",
+        "p005-m1-c0.json": "36ac3dfb83dd7f7c1cd9fc54ae6871df708b34e225ffaaec7c6c50389639467a",
+        "p005-m1-c1.json": "47a0eb14b42ee5419663a604400b5f653cf8314fa05e4b39d7f7c8c641ed0fd3",
+        "p006-m1-c0.json": "3d60cc9dd60068153077996c066eb8e1eb6738203463d9cd6fc818baa6330dcb",
+        "p006-m1-c1.json": "a50734b5ccdc373bb821e3dec10fc4bad982dde791daecb3e77bc88db862fe81",
+        "p007-m1-c0.json": "543c2aa40d79c4a8fba57d71c08b8ef974264c657ce1094b7310615f4da21fd3",
+        "p007-m1-c1.json": "a459a5aacfc7a7e9cbe662193aab34b6a2eb3604dd126356d3263bdc395c527c"
+      },
+      "report": "docs\\research\\brn-successor-cglhw\\wave9-scaled-degree-clock-results.json",
+      "processReceipts": [
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-degree-clock-batch01.process.json",
+          "sha256": "a081decbd71d9f124d34ec25ebf7531df84f9cf16a5ed0e38487e9b70573457d",
+          "startedUtc": "2026-10-21T22:24:34.2573174Z",
+          "completedUtc": "2026-10-21T22:28:49.3985498Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-degree-clock-batch02.process.json",
+          "sha256": "2e7cb1362b5b74e247bba868043e3fccc7492770eeaa8d3167bc4c2c55425436",
+          "startedUtc": "2026-10-21T22:28:50.0290669Z",
+          "completedUtc": "2026-10-21T22:32:27.2759873Z",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "label": "scaled-bre-clock",
+      "plannedGames": 32,
+      "persistedGames": 21,
+      "closed": false,
+      "plan": "docs\\research\\brn-successor-cglhw\\wave9-scaled-bre-clock-plan.json",
+      "planSha256": "927811c5af3c376c3c2af53ece4b15a955bc18ccb0f4367c8eb8a5e0cb40ba31",
+      "receiptDirectory": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-bre-clock",
+      "receiptHashes": {
+        "p000-m1-c0.json": "8d34036045131f536bc8aa19bdc78d4219c847031c4355048dc6a11705fc1861",
+        "p000-m1-c1.json": "05385eeefafcb0314bf8b2b5049885349a2fd06a21489c6e6c06ed28399bf83b",
+        "p000-m2-c0.json": "bae415523c389fd6e901fd715be6f0c44d9f4eaf90365d50829a5c5979081ed8",
+        "p000-m2-c1.json": "6d9591559ac922d30634d90f28a1d316a9e7d184b6a0711e34377a53074d4ab8",
+        "p001-m1-c0.json": "000e1d56a20a976cc7ff55bdaf5bda286c19367a560282c42f13405cea63a6c8",
+        "p001-m1-c1.json": "8992a2326b58939e11d15626e07564863961cf4de6e5d2bcdc523337e53a341a",
+        "p001-m2-c0.json": "aa7be0e512f152851f50ce9ed247b33110d52df8e4440d16ccd683890fbef8f7",
+        "p001-m2-c1.json": "e2e998337e9ac8e1e98ab5808d3cb29465cb795ec619f9b1005200b67216815d",
+        "p002-m1-c0.json": "79ad6ead0050c1d6ff0c8499433176cc2d8fdcee9566410d50206a60b3523a4e",
+        "p002-m1-c1.json": "ca421dc6910b5f53fd0f9a869ac46bc63bb91e348fe10020e3e6a10fdb8ec65a",
+        "p002-m2-c0.json": "1b1960fa2d5600ec38367e6246d5909ed11da01da8db126d44d6f0ae6cc15f69",
+        "p002-m2-c1.json": "e821099a0166b529a6169a6f81f854de28c708b7812b9578d8534daf08edc9cd",
+        "p003-m1-c0.json": "1cbd42a05af9e8dd9299a4fa5b31206606d44e6b7d022e4f73396d07ef5d8101",
+        "p003-m1-c1.json": "23b20b6ea6da4f2fcbf2a917bf34879c35166110f6586947da13ad628015b023",
+        "p003-m2-c0.json": "3ae81dddb21ff3e5e09e264242a584238480754e686d005dafe38158a25eaa5a",
+        "p003-m2-c1.json": "4de9aa3571e7e0b45d1a0dedd741935ffbb8bbada7b4707f0003411635a8a131",
+        "p004-m1-c0.json": "8d2a76431dd0ff81455a6c035fdde1a3901bc48eef59720b2c133d5bff281882",
+        "p004-m1-c1.json": "d70a00e70f48993e463075e0124dd5274dfd14923d2ca22d0335ba946f20d716",
+        "p004-m2-c0.json": "6a63371addd1f383b83cb814968e871ff4fb412be0a596c1f82c90e8b8bf158f",
+        "p004-m2-c1.json": "3c9d1e341c9cf853d3214e504dd010d1a28f1922c298e90afa7617691c804286",
+        "p005-m1-c0.json": "b38175f93da3d8c142c75a79e9c13c89d1410c3cf04e88c83a4d1c9d65427ada"
+      },
+      "report": null,
+      "processReceipts": [
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-bre-clock-batch01.process.json",
+          "sha256": "c931ed3f26e2748fb0dd53f7c806ec20c8e03b9a7edf0343607b76c85877b89c",
+          "startedUtc": "2026-10-21T22:34:19.1877531Z",
+          "completedUtc": "2026-10-21T22:38:25.0829662Z",
+          "exitCode": 0
+        },
+        {
+          "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-bre-clock-batch02.process.json",
+          "sha256": "1435d540cecdd3c5207ed3db84a20b5fb2a8213fb4dd33b262cb913599029ad3",
+          "startedUtc": "2026-10-21T22:39:14.3969710Z",
+          "completedUtc": "2026-10-21T22:44:15.0763277Z",
+          "exitCode": 0
+        }
+      ]
+    }
+  ],
+  "totalPersistedGames": 229,
+  "closedProtocolGames": 208,
+  "partialReplay": {
+    "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\suspension-partial-analysis-01.json",
+    "sha256": "285b8e07190acd47cc7bb1f6ed36d8524290b838cb5d44c377ebb93db830ea38",
+    "validatedMoves": 2801,
+    "failures": []
+  },
+  "runtimes": [
+    {
+      "manifest": "docs\\research\\brn-successor-cglhw\\wave9-runtime.json",
+      "sha256": "888756bce145ddfa4de5494318e04f98d3d9347d96383b21ec835f4892b4374c",
+      "jarsVerified": 8
+    },
+    {
+      "manifest": "docs\\research\\brn-successor-cglhw\\wave9-calibrated-projection-runtime.json",
+      "sha256": "245651b88155463b873ae33f4d67a111762a0dbd36f7df6bd2df2c7eacc3a543",
+      "jarsVerified": 8
+    },
+    {
+      "manifest": "docs\\research\\brn-successor-cglhw\\wave9-cache-reuse-runtime.json",
+      "sha256": "90143729f9faa5bbb192dabad1a10bab68328ea71e41c5ad0b9ff2bd24f2aaab",
+      "jarsVerified": 8
+    }
+  ],
+  "referenceSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+  "limitations": [
+    "W1 and source datasets were untouched; no fresh complete W1 or source-data rehash.",
+    "Owner suspension ends execution independently of outcomes. Incomplete protocols are not closed or strength-confirmed.",
+    "Local ignored evidence remains on disk; fresh checkout alone cannot reconstruct these artifacts.",
+    "This is preservation/replay verification, not a new experiment, full-suite test or interactive GUI acceptance."
+  ]
+}

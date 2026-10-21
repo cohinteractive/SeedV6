@@ -1,0 +1,17 @@
+{
+  "id": "wave9-build60-between-batch-pause-v1",
+  "startedUtc": "2026-10-21T22:29:44.456830+00:00",
+  "completedReceipts": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-degree-clock\\p000-m1-c0.json": "fde954ea0e27b9fc723d6217a56b54d3a014008857404f80657d72b74bdd0f8a",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-degree-clock\\p000-m1-c1.json": "6bf9da60743a0851612017aff3079fab7186312f18fedf527df6ac2817ce9936",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-degree-clock\\p001-m1-c0.json": "8090894db39c0958a308e60ef565b9670c3812519ff72b9cd1b7bbd53b2a4a80",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-degree-clock\\p001-m1-c1.json": "08b48262cd933e55d125d85d3dce9f1aebfe68531dc35182a8b355cc4edd22a4",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-degree-clock\\p002-m1-c0.json": "29ec247bfdb7faaa7c8353f9b87ae144f8807dc04e3b1240c584f4ef4234c6a5",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-degree-clock\\p002-m1-c1.json": "f1efb40a29e8f2831b8c9e1a98bbafe7f0c1d1c328f5d27d0922dfc0b3a7da40",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-degree-clock\\p003-m1-c0.json": "6149ae4d085705c04a1ee67ffa94262e0b31506590ce46074985d2655c41b541",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-degree-clock\\p003-m1-c1.json": "3f548dfaa73db713e21a5c7f6ca7be819af5b0706fed739264dbb38995047a51",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-degree-clock\\p004-m1-c0.json": "42a060e02f4e83b01559293331f8772afa442f36599868aaeb9f67e4b89a86b1"
+  },
+  "purpose": "Serial build60 native packaging and one bounded four-arm clipped-pool diagnostic. No game interruption, result discard or protocol change.",
+  "resume": "Archive pause after jobs; preserve receipts and resume fixed scaled-degree-clock16."
+}

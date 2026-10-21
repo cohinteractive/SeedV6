@@ -1,0 +1,46 @@
+{
+  "id": "wave9-clipped-pool-feasibility-v1",
+  "question": "Does a cheap clipped piece-sum threshold add useful nonlinear information beyond matched linear pooling, with fixed/adaptive basis controls, after polynomial and hand-crafted pilots were mixed?",
+  "anchor": {
+    "name": "W9-CAL-AFFINE-R4-LR001",
+    "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-AFFINE-R4-LR001",
+    "checkpoint": "g000176-s000065536-16a82f32ff52b872fd12a2dd8ddfa3ede57e292c9e2f29974ac42f7fa57cb762",
+    "networkSha256": "df813617b4404ea826ea7f6b076fabbd12b4120f6b9e7e536e91a4c0fe7fbf21"
+  },
+  "predictions": {
+    "fresh5": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01",
+    "old": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01",
+    "new": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01"
+  },
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\bt4-predictions.jsonl": "878b43c6223e3f6ea9824669569d5e9b87b4ce3bbc8abcf1e74f7f1a626e8c1a",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\cp-predictions.jsonl": "c903e919a76bd64c28a5486defe023f9ed60758df65751bea26414e3c7228395",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\bt4-predictions.jsonl": "5327d60cac2c766f95ad6f890e22d79db2075957d4cb7d1a839c4c396c573b25",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\cp-predictions.jsonl": "56781da22ad2083b54b08d4a3d2add8490aabcf2ea2c82eeb086eae577434832",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01\\bt4-predictions.jsonl": "548b61629780a90c34c2ee816e7db38154921beb614a7b6ed71031f3f06929b9",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01\\cp-predictions.jsonl": "5eb30a8177035663b8c5ae37d21fa54d2e86281ff951f8e3af00f463e5416b6f"
+  },
+  "budget": {
+    "fitRows": 2043,
+    "epochs": 8,
+    "batch": 128,
+    "stepsPerArm": 128,
+    "headRate": 0.01,
+    "embeddingRate": 0.001,
+    "l2": 0.001,
+    "seed": 2026102209
+  },
+  "arms": [
+    "linear/fixed",
+    "linear/adaptive",
+    "clipped/fixed",
+    "clipped/adaptive"
+  ],
+  "initialization": "All four Q4 embedding directions, identical fit-only centers and widths; zero affine3/pool4 heads and fresh moments. Fixed/adaptive linear versus clipped-linear [0,1] threshold.",
+  "selection": "Four fixed128-update arms, all panels, finite differences and third mixed difference. No automatic architecture/training admission.",
+  "resource": "One BelowNormal process <=300seconds between matches, no model export or owner writes.",
+  "script": "tools/probe-brn-clipped-pool.py",
+  "scriptSha256": "455dcdd4c9c43593f686de48d39dc9d0331810f5ac29d64d9446e7ae73a23119",
+  "objective": "Frozen BRE176 raw CE plus half correction, report raw and quarter-search metrics on all six panels; no fit on new window.",
+  "trigger": "Direct cubic calibration and modest cache savings do not explain practical weakness; tests a different cheap activation mechanism rather than another polynomial dose."
+}

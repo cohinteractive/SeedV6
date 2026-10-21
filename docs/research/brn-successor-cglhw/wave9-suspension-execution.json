@@ -1,0 +1,73 @@
+{
+  "id": "wave9-owner-suspension-execution-v1",
+  "status": "SUSPENDED BY OWNER DECISION",
+  "firstObservedUtc": "2026-10-21T22:41:42.1086750Z",
+  "quiescentUtc": "2026-10-21T22:44:15.0763277Z",
+  "finalProcessObservationUtc": "2026-10-21T22:47:21.9496061Z",
+  "activeAtInstruction": "Bounded scaled-BRE-clock batch02; dispatcher queued primary reference-clock after completion. No active build/test/training.",
+  "boundary": "Existing bounded launch finishes its current game and persists receipts, then exits0. No per-game graceful-stop interface. Waiting dispatcher27900 stopped non-recursively; child supervisor and engine allowed normal exit.",
+  "ownedProcessIdsAbsent": [
+    27900,
+    27416,
+    28736,
+    10040
+  ],
+  "batchLeaseReleased": true,
+  "pauseFile": "build/research/brn-successor-batches.pause",
+  "pauseSha256": "30f698ed5f4c869f6011a1d8c5a47353056fe62c08565270e1e44e6e7a547c64",
+  "associatedScheduledTasks": 0,
+  "activeHostGoal": null,
+  "remainingJavaProcessIds": [
+    2012,
+    13096,
+    19044,
+    21052
+  ],
+  "remainingProcessScope": "Preexisting VSCode Java/Gradle services2012,13096,19044,21052 preserved. May write IDE bin outputs; not research engines or training.",
+  "rawEvidence": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\suspension-processes-before-01.json": "6557cd00d05a9b86e9167518356c45265d1992bd61e8fe04f8736b8e6c3c3384",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\suspension-processes-after-01.json": "bb4d9cd34dcbe54256c7a1eec6ee2e8b321b4b8205b8f305a955253300efae2b",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\suspension-scheduled-tasks-01.json": "3bfd4ab4b6f3a73e8611485c5ed82bc1e1e632110869360886b45ff5428d60aa",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\suspension-replay-01.execution.json": "0e2e76e840c10caad55b52d1cf311a9e6f29224bc56def8960e1a5ad4e521515",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\suspension-audit-01.execution.json": "43323db93bd5ddc8077362f1a6de28d6674cd1e3e957a951e8af5037f519e457",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\scaled-bre-clock-batch02.process.json": "1435d540cecdd3c5207ed3db84a20b5fb2a8213fb4dd33b262cb913599029ad3"
+  },
+  "preservationReport": "docs\\research\\brn-successor-cglhw\\wave9-suspension-preservation.json",
+  "preservationSha256": "3439d50ee652829b2d50259029ce57c1956e681eb08d6cee8c8077c23c325903",
+  "gitAtSuspension": "57dde44ba45f627de6c887c6c1f9985d6b39571f",
+  "build": 60,
+  "uncommittedBeforePreservation": "STATE and completed research diagnostics/manifests/scripts only; no uncommitted core/trainer/GUI implementation. Unattributed bin directories excluded.",
+  "incomplete": "Primary reference-clock0/32; scaled-BRE-clock21/32; no G10 implementation or gate. No independent confirmation.",
+  "resume": "Deliberate owner reactivation only, followed by state/identity/process audit. Resume exact missing receipts with original frozen runtimes unless explicitly amended.",
+  "baselineKnown": "Tracked production manifest binds frozen BRE-Pair2 Gen32 for GUI/UCI packaging. This operation does not select or operationally certify a baseline.",
+  "humanActionsForSuspension": "None",
+  "futureAuthority": "Separate authorization before stabilization; deliberate owner reactivation before research.",
+  "preservedTestXml": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-test-xml-01\\engine-core-TEST-com.ohinteractive.seedv6.core.brnnext.BrnCalibratedAccumulatorTest.xml",
+      "sha256": "aaf687bf30ad99961c733a293d149c43c6f98204789225ffb4498c723b554d81",
+      "tests": 9
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-test-xml-01\\engine-core-TEST-com.ohinteractive.seedv6.core.brnnext.BrnCubicDeltaAccumulatorTest.xml",
+      "sha256": "4ae1333769c67e88030358af44f7870349674d3bb02f3be6d981a1237002372c",
+      "tests": 12
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-test-xml-01\\engine-core-TEST-com.ohinteractive.seedv6.core.brnnext.BrnQuadraticAccumulatorTest.xml",
+      "sha256": "9d029b0e960188ca93ef7d183adb9a9319e89265ea468171d43d7f09c95e5e60",
+      "tests": 12
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-test-xml-01\\engine-core-TEST-com.ohinteractive.seedv6.core.brnpair2.BrnPair2RuntimeBoundaryTest.xml",
+      "sha256": "1c49e74d14c2352c01b5d65d269b7e10ad876abb1781f5f4413467eb9dcb597a",
+      "tests": 3
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-test-xml-01\\research-TEST-com.ohinteractive.seedv6.tools.eval.BrnSuccessorVariantsTest.xml",
+      "sha256": "697f81e350db42a25a9714e927496c42133755b8c8f474bb92de086a888646ac",
+      "tests": 24
+    }
+  ],
+  "preservedTestCount": 60
+}
