@@ -1,0 +1,20 @@
+{
+  "id": "wave7-bounded-training-source-health-v1",
+  "records": 16384,
+  "sources": [
+    {
+      "name": "cp-g129",
+      "selection": "E:\\SeedV6-Networks\\BRN-GEN32-QUADRATIC-R4\\91af04c6-dec5-39f9-a70a-02e58b38d856\\training-data\\sources.json",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "seek": "E:\\SeedV6-Networks\\BRN-GEN32-QUADRATIC-R4\\91af04c6-dec5-39f9-a70a-02e58b38d856\\training-data\\seek",
+      "start": 36477332
+    },
+    {
+      "name": "cp-g160",
+      "selection": "E:\\SeedV6-Networks\\BRN-GEN32-QUADRATIC-R4\\91af04c6-dec5-39f9-a70a-02e58b38d856\\training-data\\sources.json",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "seek": "E:\\SeedV6-Networks\\BRN-GEN32-QUADRATIC-R4\\91af04c6-dec5-39f9-a70a-02e58b38d856\\training-data\\seek",
+      "start": 45179201
+    }
+  ]
+}

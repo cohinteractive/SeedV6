@@ -1,0 +1,14 @@
+{
+  "id": "wave8-packaging-v1",
+  "build": 58,
+  "implementationCommit": "b4453ad646a462732538a30083cbf25e3ce97bc8",
+  "manifest": "dist\\windows\\candidates\\candidate-20261021T111458-afa96ee7\\candidate.json",
+  "manifestSha256": "98fccd7e0eab72af755684315e9668b79f0c6920dc2aa8a353930f7873bb8cbd",
+  "candidate": "candidate-20261021T111458-afa96ee7",
+  "archiveSha256": "b927ea64891a62521db96e4eed73cb1a6cc2afc82f586d3a9f6fe35cf21e3251",
+  "coreJarSha256": "0d9c34544ba07298a80b1755c8f7c09aced8125e7e857340ea274c38c1b76f44",
+  "imageChecks": "headless-resources-jni-passed",
+  "extractedChecks": "headless-resources-jni-passed",
+  "interactiveGui": "Pending actual prepared-lineage preview; no owner action requested yet.",
+  "execution": "raw/wave8/native-package-01.execution.json"
+}

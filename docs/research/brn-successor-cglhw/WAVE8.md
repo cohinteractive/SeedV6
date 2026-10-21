@@ -57,10 +57,41 @@ be audited separately. Existing checkpoints and independent openings remain froz
 Build58 implementation passes195 targeted tests in15 suites: finite-difference
 gradients, independent masked-Adam updates, frozen-prefix preservation, exact
 serialization/resume, cache/search parity, source/seek inheritance and GUI-service
-continuation. See wave8-implementation-validation.json. Native packaged and actual
-owner-lineage checks remain pending. An initial synthetic preparation failed the
+continuation. See wave8-implementation-validation.json. Native package58 passes headless image/archive checks; actual
+owner-lineage and native GUI checks remain pending. An initial synthetic preparation failed the
 existing200-character initializer-description bound; its text was shortened and
 all affected validation passed on retry. The integrity bound was not changed. Pause bounded tournaments between batches before Gradle, cache probes
 or packaging, then resume unchanged frozen57 protocols. Complete Wave7 assessment
 before the final gate decision. If practical results change the expected value of
 this proposal, revise the decision explicitly and preserve its diagnostic evidence.
+
+## Data-quality sensitivity before gate admission
+
+The post-pilot audit finds five nonstandard CP fit positions account for91.59%
+of initial absolute cubic-head gradient. One has dozens of queens; corpus syntax
+and king-count validation admits it. Original all-row results remain preserved.
+This weakens the small diagnostic rationale and is not proof of a full-training
+causal effect. The bounded status-valid refit admission tests both Q4 head controls
+on2043 fit rows,128 updates each, all original status-valid evaluation panels.
+Do not admit the human gate before interpreting this sensitivity and closed G7
+matches. No source files, training eligibility policy or old histories are changed.
+See wave7-fixed-head-sensitivity.json and wave7-fixed-head-valid-admission.json.
+
+The valid-only refit improves mapped CE in both controls, but quadratic heads improve
+more in all four panels. Cubic raw CE improves on fresh BT4 and old CP, worsens on
+fresh CP and old BT4. The original apparent cubic separation is not robust; do not
+cite it as positive evidence of expressive value. Both extreme prior pilot records
+are SEALED and were excluded from ordinary residual training. A bounded32768-record
+check of actual Gen129/160 CP ranges finds100/56 eligible TRAIN records with bad
+orthodox castling rights, but no material-count anomalies. Their counts are at
+most32. This does not justify a training-policy change or explain full-wave strength.
+All source/cursor/optimizer artifacts remain unchanged. Exact evidence is in
+wave7-fixed-head-valid-results.json and wave7-data-health-results.json.
+
+The remaining fixed-basis question is causal optimizer isolation, not a claim that
+the cubic pilot beats its quadratic control. Initial functions are identical;
+training only new cubic heads versus existing quadratic heads can distinguish
+useful higher-degree adjustment from ordinary recalibration after broader fitting.
+The raw/mapped and source disagreements mean loss alone cannot decide chess value.
+Gate admission still requires completed G7 strength results and explicit expected
+value review; implementation availability is not sufficient justification.

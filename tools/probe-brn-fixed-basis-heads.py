@@ -40,7 +40,9 @@ def features(board,weights,width):
 
 def main(admission_path,output):
     admission_path,output=Path(admission_path),Path(output);assert not output.exists()
-    admission=json.loads(admission_path.read_text());assert admission['id']=='wave7-fixed-basis-head-diagnostic-v1'
+    admission=json.loads(admission_path.read_text())
+    assert admission['id'] in ('wave7-fixed-basis-head-diagnostic-v1','wave7-fixed-basis-valid-head-diagnostic-v1')
+    valid_only=admission['id']=='wave7-fixed-basis-valid-head-diagnostic-v1'
     sources={};bindings={};reports=[];forward_error=0;basis_error=0
     for anchor in admission['anchors']:
         raw=codec.payload(anchor['root'],anchor['checkpoint'],'network.*');assert codec.sha(raw)==anchor['networkSha256']
@@ -59,11 +61,12 @@ def main(admission_path,output):
                     unary,q,c,e=features(board,weights,width);basis_error=max(basis_error,e)
                     values=row['predictions'];zero=values[anchor['predictor']+'-correction0.0'];base=values[anchor['predictor']]
                     forward_error=max(forward_error,abs(base-(zero+unary+sum(weights[head+r]*q[r] for r in range(width)))))
-                    rows.append(dict(source=source,panel=panel,fit=panel=='fresh5' and i<1024,phase=phase,material=material,
+                    rows.append(dict(source=source,panel=panel,fit=panel=='fresh5' and i<1024,valid=board.is_valid(),phase=phase,material=material,
                         target=row['target'],base=base,zero=zero,q=q,c=c))
         assert forward_error<1e-9 and basis_error<1e-8,(forward_error,basis_error)
-        fitting=[row for row in rows if row['fit']];assert len(fitting)==2048
-        for mode in ('quadratic','cubic','both'):
+        fitting=[row for row in rows if row['fit'] and (not valid_only or row['valid'])]
+        assert len(fitting)==(2043 if valid_only else 2048)
+        for mode in (('quadratic','cubic') if valid_only else ('quadratic','cubic','both')):
             def vector(row):return row['q'] if mode=='quadratic' else row['c'] if mode=='cubic' else row['q']+row['c']
             size=width*(2 if mode=='both' else 1);delta=[0.0]*size;first=[0.0]*size;second=[0.0]*size
             step=0;rng=random.Random(2026102107);curve=[]
@@ -74,7 +77,7 @@ def main(admission_path,output):
                     for index in order[begin:begin+128]:
                         row=fitting[index];v=vector(row);raw=row['base']+sum(d*x for d,x in zip(delta,v))
                         loss,g=fitlib.objective(raw,row['phase'],row['target']);losses.append(loss)
-                        for k in range(size):gradient[k]+=g*v[k]/128
+                        for k in range(size):gradient[k]+=g*v[k]/len(order[begin:begin+128])
                     step+=1;c1=1-.9**step;c2=1-.999**step
                     for k,g in enumerate(gradient):
                         first[k]=.9*first[k]+.1*g;second[k]=.999*second[k]+.001*g*g
@@ -83,7 +86,7 @@ def main(admission_path,output):
             assert step==128
             measurements=[]
             for panel,source in itertools.product(('fresh5','old'),('bt4','cp')):
-                selected=[row for row in rows if not row['fit'] and row['panel']==panel and row['source']==source]
+                selected=[row for row in rows if not row['fit'] and row['panel']==panel and row['source']==source and (not valid_only or row['valid'])]
                 for mapping in ('raw','search-half'):
                     losses=[];changes=[]
                     for row in selected:
@@ -92,10 +95,10 @@ def main(admission_path,output):
                         else:base=row['material']+.25*(row['zero']+.5*(row['base']-row['zero'])-row['material']);gain=.125
                         losses.append(fitlib.objective(base+gain*change,row['phase'],row['target'])[0]-fitlib.objective(base,row['phase'],row['target'])[0]);changes.append(change*change)
                     measurements.append(dict(panel=panel,source=source,mapping=mapping,count=len(selected),meanCrossEntropyChange=statistics.mean(losses),standardError=statistics.stdev(losses)/math.sqrt(len(losses)),changeRmsPawns=math.sqrt(statistics.mean(changes))))
-            reports.append(dict(anchor=anchor['name'],mode=mode,parameters=size,steps=step,headDelta=delta,epochLoss=curve,metrics=measurements))
+            reports.append(dict(anchor=anchor['name'],mode=mode,parameters=size,steps=step,fitRows=len(fitting),statusValidOnly=valid_only,headDelta=delta,epochLoss=curve,metrics=measurements))
     with output.open('x',encoding='utf-8',newline='\n') as f:
         json.dump(dict(id=admission['id']+'-results',admission=str(admission_path),admissionSha256=hashlib.sha256(admission_path.read_bytes()).hexdigest(),inputs=bindings,maximumJavaForwardError=forward_error,maximumThirdMomentIdentityError=basis_error,arms=reports,
             limitations=['Consumed data; fixed bounded diagnostic, not independent generalization or chess strength.','Only new head deltas optimized; anchors, embeddings, original optimizer states and owner artifacts unchanged.','Ranks have different ancestry and maturity; causal comparisons are within each anchor.','New zero moments/step for diagnostic head deltas, not continuation of inherited Adam.','Only128 updates per arm; no conclusion about optimized convergence.']),f,indent=2);f.write('\n')
-    print('Six fixed-basis arms completed; forward/basis errors',forward_error,basis_error)
+    print(len(reports),'fixed-basis arms completed; forward/basis errors',forward_error,basis_error)
 
 if __name__=='__main__':main(*sys.argv[1:])

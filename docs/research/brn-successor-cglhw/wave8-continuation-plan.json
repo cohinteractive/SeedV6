@@ -1,0 +1,54 @@
+{
+  "id": "brn-successor-2026-10-22-wave8",
+  "library": "E:/SeedV6-Networks",
+  "arms": [
+    {
+      "name": "W8-FIXED-CUBIC-R4-LR001",
+      "source": {
+        "candidate": "W7-RESQUAD-R4-LR001",
+        "root": "E:\\SeedV6-Networks\\BRN-GEN32-QUADRATIC-R4\\91af04c6-dec5-39f9-a70a-02e58b38d856",
+        "checkpoint": "g000160-s001310720-b5d40cc7a3cd74a4eab18f6e274676b7c58d094896d931d5f40f06828a4ed338",
+        "networkSha256": "fd6c2fc1ec2549bced72ab5d3bf245ff4a56abf6d779ba36a921040bd4dd70bd",
+        "trainingSha256": "683b146e2911126c40dca6e7e36fcb9aa447f9def00138c51a52c5559757faf8",
+        "generation": 160,
+        "seed": 1,
+        "positionsPerGeneration": 131072,
+        "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      },
+      "rate": 0.001,
+      "projection": "fixed-cubic-heads"
+    },
+    {
+      "name": "W8-FIXED-QUAD-R4-LR001",
+      "source": {
+        "candidate": "W7-RESQUAD-R4-LR001",
+        "root": "E:\\SeedV6-Networks\\BRN-GEN32-QUADRATIC-R4\\91af04c6-dec5-39f9-a70a-02e58b38d856",
+        "checkpoint": "g000160-s001310720-b5d40cc7a3cd74a4eab18f6e274676b7c58d094896d931d5f40f06828a4ed338",
+        "networkSha256": "fd6c2fc1ec2549bced72ab5d3bf245ff4a56abf6d779ba36a921040bd4dd70bd",
+        "trainingSha256": "683b146e2911126c40dca6e7e36fcb9aa447f9def00138c51a52c5559757faf8",
+        "generation": 160,
+        "seed": 1,
+        "positionsPerGeneration": 131072,
+        "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      },
+      "rate": 0.001,
+      "projection": "fixed-quadratic-heads"
+    },
+    {
+      "name": "W8-BRE-CONTROL-LR001",
+      "source": {
+        "candidate": "W7-BRE-CONTROL-LR001",
+        "root": "E:\\SeedV6-Networks\\BRN-Pair2\\d945d1bd-91c4-370c-91f3-8b14226bfff1",
+        "checkpoint": "g000160-s003063808-54726e9dc33906a097242113f4884b2d229fb151c50d9ee6026f36f326e13679",
+        "networkSha256": "b83832f93b28e6c3e197e12a720477c07fdfc03ee174499219b1a3d9ba894d3b",
+        "trainingSha256": "e31cbe5bee563da686166d6d1f99059f5559d7d0587fc2e2b69e0ba9032647a7",
+        "generation": 160,
+        "seed": 1,
+        "positionsPerGeneration": 131072,
+        "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      },
+      "rate": 0.001,
+      "projection": "exact"
+    }
+  ]
+}

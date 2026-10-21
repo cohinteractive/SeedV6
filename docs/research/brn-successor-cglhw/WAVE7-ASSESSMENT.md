@@ -136,3 +136,25 @@ receipts. Their exact preserved hashes and nonmatch provenance are now explicitl
 classified in wave7-historical-process-classification.json. Unknown/changed records
 still fail closed; none contributes match CPU, game counts or success evidence.
 This was an evidence-tool schema issue, not an engine failure or replayed game.
+
+## Further closed controls and sensitivity
+
+C4 versus Q4 at200ms closes32 games/4840 legal moves:15 wins,7 draws,10 losses,
+57.8125%, descriptive95%43.17..72.46. Paired-root NPS ratio1.0032. Direction
+reverses the equal-node estimate; neither establishes superiority or a budget
+interaction. The32-game equal-node BRE comparison gives Q4 and C4 each53.125%
+(6/5/5 and5/7/4 W/D/L),4439 legal moves. With only8 root pairs each, narrow-looking
+normal intervals are unreliable; bounded intervals remain very wide. Exact
+outputs: wave7-degree-clock-results.json and wave7-bre-node-results.json.
+
+Fixed-head post-pilot sensitivity changes the interpretation. Five nonstandard fit
+positions contribute91.59% of initial absolute cubic gradient, led by a63-piece
+position. Those extreme diagnostic records are SEALED, not evidence they entered
+ordinary residual training. The valid-only128-update refit gives small mapped
+improvements in both heads, with quadratic better on all four panels. Raw results
+are mixed. Thus original cubic separation is not robust and is not positive
+expressive-value evidence. See wave7-fixed-head-sensitivity.json and the separately
+admitted valid-refit records. A read-only32768-record actual Gen129/160 source
+sample finds only bad castling-right status among eligible TRAIN anomalies, no
+excess-piece case. No data-policy change is warranted by that sample. Full corpus
+prevalence and historical optimization effects remain unknown.

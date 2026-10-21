@@ -1,0 +1,37 @@
+{
+  "id": "wave7-fixed-basis-valid-head-diagnostic-v1",
+  "question": "Does the fixed-basis Q4 cubic pilot signal survive excluding the five nonstandard-status fit positions responsible for91.59% of initial absolute cubic gradient?",
+  "anchors": [
+    {
+      "name": "Q4",
+      "root": "docs/research/brn-successor-cglhw/raw/wave7/trained-frozen-01/W7-RESQUAD-R4-LR001",
+      "checkpoint": "g000160-s001310720-b5d40cc7a3cd74a4eab18f6e274676b7c58d094896d931d5f40f06828a4ed338",
+      "networkSha256": "fd6c2fc1ec2549bced72ab5d3bf245ff4a56abf6d779ba36a921040bd4dd70bd",
+      "width": 4,
+      "wire": 8,
+      "predictor": "W7-RESQUAD-R4-LR001-g160",
+      "predictions": {
+        "fresh5": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-predictions-fresh5-01",
+        "old": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-predictions-old-01"
+      }
+    }
+  ],
+  "script": "tools\\probe-brn-fixed-basis-heads.py",
+  "scriptSha256": "e8dcf7acbe4cbc1576308da78166235d25f85745d8c055f558ae8237c2dfcbdf",
+  "armsPerAnchor": [
+    "quadratic-head delta",
+    "zero-initialized cubic heads"
+  ],
+  "budget": {
+    "fitRows": 2043,
+    "epochs": 8,
+    "batch": 128,
+    "updatesPerArm": 128,
+    "rate": 0.001,
+    "seed": 2026102107,
+    "newAdamMoments": true
+  },
+  "selection": "Report both arms, raw and mapped outcomes on status-valid evaluation subsets of every original panel. Same seed/budget; no positive score stopping. No data pipeline change. This post-diagnostic sensitivity is not independent confirmation.",
+  "resource": "Sequential BelowNormal bounded diagnostic between game batches, no owner model/checkpoint/training state changes.",
+  "rationale": "Original all-row diagnostic remains frozen. Its gradient concentration weakens gate evidence; valid-only refit must be inspected before admission."
+}

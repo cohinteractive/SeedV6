@@ -1,0 +1,142 @@
+{
+  "id": "wave7-bounded-training-source-health-v1-results",
+  "raw": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\training-source-health-01",
+  "planSha256": "be62a9820edcdbaa8a3df36a4a0fb563d1944503b074c69909ce0fed7c72f319",
+  "probeSourceSha256": "744eea73122d3c16742eca1f492148499a07c2d527f13ba9b27bc368f23a1575",
+  "reports": [
+    {
+      "name": "cp-g129",
+      "rows": 16384,
+      "sha256": "d69c0e64309991ecc9ec3f53755b80cd34e97442d63f56af4f2f7f558bb43e04",
+      "counts": [
+        {
+          "group": "eligible-SEALED",
+          "status": 0,
+          "count": 1479
+        },
+        {
+          "group": "eligible-SEALED",
+          "status": 256,
+          "count": 16
+        },
+        {
+          "group": "eligible-TRAIN",
+          "status": 0,
+          "count": 11597
+        },
+        {
+          "group": "eligible-TRAIN",
+          "status": 256,
+          "count": 100
+        },
+        {
+          "group": "eligible-VALIDATION",
+          "status": 0,
+          "count": 1424
+        },
+        {
+          "group": "eligible-VALIDATION",
+          "status": 256,
+          "count": 14
+        },
+        {
+          "group": "excluded-target",
+          "status": 0,
+          "count": 1749
+        },
+        {
+          "group": "excluded-target",
+          "status": 64,
+          "count": 5
+        }
+      ],
+      "trainNonstandardCount": 100,
+      "maximumNonstandardPieceCount": 32,
+      "representativeExamples": [
+        {
+          "ordinal": 36477551,
+          "fen": "3qr1k1/p5pp/5p2/4B3/2PP4/5P1b/P4RnP/R2Q2K1 w Q - 0 1",
+          "status": 256,
+          "pieces": 19,
+          "target": 14
+        },
+        {
+          "ordinal": 36477660,
+          "fen": "r1b2rk1/2ppqppp/p1n2n2/1p4B1/3Pp3/1B3N2/PPP2PPP/R2Q1RK1 w q - 0 1",
+          "status": 256,
+          "pieces": 29,
+          "target": 0
+        }
+      ]
+    },
+    {
+      "name": "cp-g160",
+      "rows": 16384,
+      "sha256": "4d9c45df504e76e0609813c0513d796fdad4e57ef8909c76c9c3b4cd9ca58af2",
+      "counts": [
+        {
+          "group": "eligible-SEALED",
+          "status": 0,
+          "count": 1426
+        },
+        {
+          "group": "eligible-SEALED",
+          "status": 256,
+          "count": 10
+        },
+        {
+          "group": "eligible-TRAIN",
+          "status": 0,
+          "count": 11772
+        },
+        {
+          "group": "eligible-TRAIN",
+          "status": 256,
+          "count": 56
+        },
+        {
+          "group": "eligible-VALIDATION",
+          "status": 0,
+          "count": 1409
+        },
+        {
+          "group": "eligible-VALIDATION",
+          "status": 256,
+          "count": 13
+        },
+        {
+          "group": "excluded-target",
+          "status": 0,
+          "count": 1698
+        }
+      ],
+      "trainNonstandardCount": 56,
+      "maximumNonstandardPieceCount": 32,
+      "representativeExamples": [
+        {
+          "ordinal": 45179525,
+          "fen": "rr4k1/8/7p/pp1Pp1p1/1b2P1P1/6N1/PP5R/2K1R3 w q - 0 1",
+          "status": 256,
+          "pieces": 18,
+          "target": 229
+        },
+        {
+          "ordinal": 45179660,
+          "fen": "3r1knr/1p4pp/pN1b1p2/3B3b/P7/N7/5PPP/R4RK1 b Qk - 0 1",
+          "status": 256,
+          "pieces": 21,
+          "target": -69
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Two bounded contiguous source windows, not a whole-corpus prevalence estimate.",
+    "TRAIN-label-eligible records in these initial ranges precede the65536-example training cutoff; residual pipeline admits them.",
+    "Python-chess status is a sensitivity label, not a changed training policy or complete retrograde legality test.",
+    "The extreme prior diagnostic positions are SEALED, not evidence of actual residual-training ingestion."
+  ],
+  "rawAnalysis": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\training-source-health-01\\status-analysis.json",
+  "rawAnalysisSha256": "635d4e474fc3fbf70b8cb7cec8d300ab620c2f03dad170e72547b42995b6ced0",
+  "interpretation": "Eligible TRAIN anomalies in these windows are exclusively status256 (bad orthodox castling rights), with at most32 pieces. No material-count outlier reproduces the sealed pilot anomaly. This does not justify changing the training data policy."
+}

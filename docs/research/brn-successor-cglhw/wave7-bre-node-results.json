@@ -1,0 +1,377 @@
+{
+  "id": "wave7-bre-node-v1-completed",
+  "status": "Closed fixed-budget development experiment",
+  "plan": "docs\\research\\brn-successor-cglhw\\wave7-bre-node-plan.json",
+  "receipts": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\bre-node",
+  "analysis": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\bre-node-analysis-01",
+  "runtime": "docs\\research\\brn-successor-cglhw\\wave7-runtime.json",
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\wave7-bre-node-plan.json": "ddc786d6305eecd711ddc55388717edf526ea17221a077b2fcc75098f1a1d5ae",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\bre-node-analysis-01": "68257f6bc81f3f8d8d70db1cac623a7f1e7c2fc3ccdecb968e33c2b5628109ea",
+    "docs\\research\\brn-successor-cglhw\\wave7-runtime.json": "3cfbd499fd74089890b52a4ccc265463d34c1c2a2dddbc600a8c57ff9843a677",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\bre-node\\model-bindings.json": "1d1f1b3013a9f8e46c29bd8ec56fde0078953758d4f28ce0d392df0e4cdb175b",
+    "docs/research/brn-successor-cglhw/wave7-historical-process-classification.json": "06f9e7506e2359dd6d672ca2db8a0d60cb5fae110d4cdb836dc386e82fff0dcd"
+  },
+  "games": 32,
+  "validatedMoves": 4439,
+  "models": [
+    {
+      "name": "W7-RESQUAD-R4-LR001-g160-half",
+      "wins": 6,
+      "draws": 5,
+      "losses": 5,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.53125,
+      "pairStandardError": 0.08759561102834189,
+      "descriptiveNormal95": [
+        0.3595626023844499,
+        0.7029373976155501
+      ],
+      "pairScores": [
+        0.5,
+        0.75,
+        0.25,
+        1.0,
+        0.5,
+        0.25,
+        0.5,
+        0.5
+      ],
+      "boundedPair95": [
+        0.051088604340039645,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.007917730149269775,
+        1
+      ]
+    },
+    {
+      "name": "W7-RESCUBIC-R4-LR001-g160-half",
+      "wins": 5,
+      "draws": 7,
+      "losses": 4,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.53125,
+      "pairStandardError": 0.03125,
+      "descriptiveNormal95": [
+        0.47,
+        0.5925
+      ],
+      "pairScores": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.75,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "boundedPair95": [
+        0.051088604340039645,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.007917730149269775,
+        1
+      ]
+    }
+  ],
+  "modelBindings": [
+    {
+      "originalManifest": {
+        "id": "g000160-s003063808-54726e9dc33906a097242113f4884b2d229fb151c50d9ee6026f36f326e13679",
+        "generation": 160,
+        "optimizerStep": 3063808,
+        "trainingDepth": 4,
+        "parentId": "g000159-s003055616-4600cf34481838e21962c892c473d25c66c41aad11c71386c3308446b5186927",
+        "networkBytes": 795032,
+        "networkSha256": "b83832f93b28e6c3e197e12a720477c07fdfc03ee174499219b1a3d9ba894d3b",
+        "trainingBytes": 2731424,
+        "trainingSha256": "e31cbe5bee563da686166d6d1f99059f5559d7d0587fc2e2b69e0ba9032647a7",
+        "architecture": "BRN_PAIR2"
+      },
+      "name": "W7-BRE-CONTROL-LR001-g160-half",
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "effectiveNetworkSha256": "70d50f4ed965e988c4b639826302c9a4c63c56d3fce21b6daefd08b5b29769c2",
+      "correctionScale": 0.5,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "additiveMapping": "Gen32 compiled tables + scale * (continued compiled tables - Gen32 tables)"
+    },
+    {
+      "originalManifest": {
+        "id": "g000160-s001310720-b5d40cc7a3cd74a4eab18f6e274676b7c58d094896d931d5f40f06828a4ed338",
+        "generation": 160,
+        "optimizerStep": 1310720,
+        "trainingDepth": 4,
+        "parentId": "g000159-s001302528-5f0fb29eab78eda811e5c087698ade7dcd126281fe56b0674ec8a17a5e1d2ed8",
+        "networkBytes": 30832,
+        "networkSha256": "fd6c2fc1ec2549bced72ab5d3bf245ff4a56abf6d779ba36a921040bd4dd70bd",
+        "trainingBytes": 92368,
+        "trainingSha256": "683b146e2911126c40dca6e7e36fcb9aa447f9def00138c51a52c5559757faf8",
+        "architecture": "BRN_GEN32_QUADRATIC_R4"
+      },
+      "name": "W7-RESQUAD-R4-LR001-g160-half",
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "effectiveNetworkSha256": "9b0f0b93857e2ea197df35a731e2f3373367970eeafd6824bce82c6b529365c7",
+      "quadraticCache": "quadratic-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "originalManifest": {
+        "id": "g000160-s001310720-8c3cb384f9307517f76bb3b67072209060e26c3d2a89cca357e9eb5498ba543c",
+        "generation": 160,
+        "optimizerStep": 1310720,
+        "trainingDepth": 4,
+        "parentId": "g000159-s001302528-03e692f0f42e770e00abf4fbc6a9ff52091be1ad2ab47f7072450c60fc933af8",
+        "networkBytes": 30864,
+        "networkSha256": "a93290ed92737aaaa377a361239e30228f44a6e154d8a0927737a682caa77cab",
+        "trainingBytes": 92464,
+        "trainingSha256": "e7e76292b1da57d18c653e8f8b710561e92195eab0567fb88de19e9f7b41c6ef",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "name": "W7-RESCUBIC-R4-LR001-g160-half",
+      "gatedCache": false,
+      "residualGain": 0.25,
+      "effectiveNetworkSha256": "9a3985ff867b673243e8b02220447ba6b078e2d71f0acfd3a40a07404267742e",
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    }
+  ],
+  "sameRootSearch": [
+    {
+      "name": "W7-RESQUAD-R4-LR001-g160-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 5,
+      "meanDepthDifference": 0.125,
+      "lessEqualMoreDepth": [
+        0,
+        7,
+        1
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.2801867642510119,
+      "medianNpsRatio": 0.7813067378309387
+    },
+    {
+      "name": "W7-RESCUBIC-R4-LR001-g160-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 3,
+      "meanDepthDifference": 0.125,
+      "lessEqualMoreDepth": [
+        0,
+        7,
+        1
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.2443369716309463,
+      "medianNpsRatio": 0.8039991569957641
+    }
+  ],
+  "telemetry": {
+    "W7-RESQUAD-R4-LR001-g160-half": {
+      "moves": 882,
+      "nodes": 222867728,
+      "elapsedNanos": 144050743700,
+      "sumDepth": 8806,
+      "fallbacks": 0,
+      "maximumMoveNanos": 561480500
+    },
+    "g000160-s003063808-54726e9dc33906a097242113f4884b2d229fb151c50d9ee6026f36f326e13679": {
+      "moves": 2219,
+      "nodes": 565759061,
+      "elapsedNanos": 299476117900,
+      "sumDepth": 21348,
+      "fallbacks": 0,
+      "maximumMoveNanos": 429608400
+    },
+    "W7-RESCUBIC-R4-LR001-g160-half": {
+      "moves": 1338,
+      "nodes": 343158803,
+      "elapsedNanos": 211583671900,
+      "sumDepth": 12588,
+      "fallbacks": 0,
+      "maximumMoveNanos": 395014300
+    }
+  },
+  "commonOpponentContrasts": [
+    {
+      "left": "W7-RESQUAD-R4-LR001-g160-half",
+      "right": "W7-RESCUBIC-R4-LR001-g160-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.0,
+      "pairStandardError": 0.0944911182523068,
+      "descriptiveNormal95": [
+        -0.18520259177452134,
+        0.18520259177452134
+      ]
+    }
+  ],
+  "openingPrefixSensitivity": [
+    {
+      "plies": 4,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 8,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 12,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 16,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    }
+  ],
+  "processReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\bre-node-batch-01.process.json",
+      "sha256": "eca489d9e6aaf6e35424b8bb1af9df5ab1497b9ffd7eb4d549facb4c7150d995",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T11:20:08.3160805Z",
+      "sampledPeakWorkingSetBytes": 596877312,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave7-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 255.921875,
+      "plan": "docs/research/brn-successor-cglhw/wave7-bre-node-plan.json",
+      "processId": 46532,
+      "startedUtc": "2026-10-21T11:15:57.8697273Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\bre-node-batch-02.process.json",
+      "sha256": "92dd358afb71bc3a89b7a220ad54c1e38f1e29a3da511147f63f7b7a35650a10",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T11:24:03.1770998Z",
+      "sampledPeakWorkingSetBytes": 601395200,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave7-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 240.6875,
+      "plan": "docs/research/brn-successor-cglhw/wave7-bre-node-plan.json",
+      "processId": 32996,
+      "startedUtc": "2026-10-21T11:20:08.4960786Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\bre-node-batch-03.process.json",
+      "sha256": "0c87b9ddcdbaecab01f3ee9a3c0c7da4bd9ffca1aebc2fb37b60b442dddedc91",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T11:27:09.5440291Z",
+      "sampledPeakWorkingSetBytes": 581767168,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave7-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 177.96875,
+      "plan": "docs/research/brn-successor-cglhw/wave7-bre-node-plan.json",
+      "processId": 54916,
+      "startedUtc": "2026-10-21T11:24:16.6488391Z"
+    }
+  ],
+  "separateDiagnosticProcessReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\cache-c4-01.process.json",
+      "sha256": "4ff4457c81975191c69f7a682e56a0d3bcef264a009162e5e1b9c61d64c291b0",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\cache-masked-c4-01.process.json",
+      "sha256": "f3c7f4bf1d8b7ce0194b5fcc686255df5f76118cd58f20254cbcb84465710c4f",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\cache-q4-01.process.json",
+      "sha256": "6750e3866ff3e211944ada4ccaf4981db51202a783d6e670e4f65a34595705fd",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\implementation-tests-02.process.json",
+      "sha256": "7e6f4d6a511e82fdb1115dadb9d4a870221ffc8b945836df51f92d688062cd0a",
+      "entrypoint": "historical-implementation-tests",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\native-package-01.process.json",
+      "sha256": "a45723c6f2a389b13d68aecc0a520a8d15c3de331b5360c3c19af9954380bf73",
+      "entrypoint": "historical-native-package",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\owner-preparation-process-01.process.json",
+      "sha256": "b724406d73275de4a6f959637541059ace45647c04784c7bc4b340746008ecd1",
+      "entrypoint": "historical-owner-preparation",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-cache-cubic-full-01.process.json",
+      "sha256": "62a71277d73c13edaaafa8416b20db3356d2646159cc35cfe56e17c72e05d280",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-cache-cubic-half-01.process.json",
+      "sha256": "c591097f2b5ac15da6967ab732c38962a73cf5fe52d71f72e530c4619e9b1b47",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-cache-quad-full-01.process.json",
+      "sha256": "082920ca4eb7ee86adfe0cea877d47e4c1391eecc39921d41ae85bf1bb6d6682",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-cache-quad-half-01.process.json",
+      "sha256": "506c4cc4bb232cb958e33e948be5d4f434f23e15cfc1b388c187f51ac1f1304c",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    }
+  ],
+  "maximumSampledWorkingSetMiB": 573.53515625,
+  "totalEngineCpuSeconds": 674.578125,
+  "limitations": [
+    "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims.",
+    "Paired differences on shared complete opening pairs against the same reference. Positive favours left. Descriptive, unadjusted, not direct head-to-head strength or architectural causation.",
+    "Fresh search/TT at identical opening roots; different evaluator-dependent trees. Clock protocols warm up; node protocols do not. Descriptive cost/behaviour, not causal latency or strength.",
+    "Move-prefix grouping is a descriptive dependence warning, not ECO/source-game classification or proof of independent opening families. Pair intervals are unadjusted.",
+    "Hoeffding intervals assume independent bounded opening-pair scores; within-plan union bound covers only this plan, not prior candidate selection or repeated protocols. Independence remains unverified.",
+    "No final strength claim, selection-adjusted confirmation, or architectural causation inferred."
+  ],
+  "historicalDiagnosticClassification": "docs/research/brn-successor-cglhw/wave7-historical-process-classification.json"
+}
