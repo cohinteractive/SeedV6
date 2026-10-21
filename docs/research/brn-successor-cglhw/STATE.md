@@ -98,9 +98,11 @@ Four actual trained cubic cache probes pass6333 positions and48 search root pass
 each, with zero integer/search differences. Use ONLY preserved `wave5-runtime.json`.
 The root started clean b43b761/build55. Read-only audit/freeze preserved owner models.
 Primary256, direct node80 and R4/R16 clock16 are closed. Vector feasibility is
-complete: exact parity, R4 regression, R16 isolated gain11.8–13.3%; no search-speed
+complete: exact parity, R4 regression, R16 isolated gain11.8â€“13.3%; no search-speed
 claim or application change. Its pause is preserved under raw/wave5. Resume remaining
 direct clock64 and cubic-only64 with their original frozen runtimes and plans.
+Then execute the newly frozen depth32 discriminator at262144 nodes versus BRE001
+on roots25..32 (wave5-depth-admission.json); it is not in the active tail driver.
 The active finite tail driver is build/research/w5-assessment-tail-v2.ps1; never
 launch a competing runner or rerun a completed one-off driver from the top.
 Inspect completed result manifests and resume first incomplete plan with unused

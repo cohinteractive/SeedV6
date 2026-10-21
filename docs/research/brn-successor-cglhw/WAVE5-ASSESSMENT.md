@@ -244,3 +244,10 @@ or NPS benefit is claimed. The core/UCI module boundary and application remain u
 R16 integration is deferred pending strength/depth evidence because isolated gains
 can shrink substantially end to end; this is an optional optimization, not a proven bug.
 The build pause is preserved; remaining fixed direct/cubic-only matches resume unchanged.
+
+A final focused depth discriminator is prospectively frozen in wave5-depth-admission.json:
+32 games at262144 nodes, both latest cubic candidates versus BRE001, on unused
+roots25..32. It follows the existing budgets and keeps all resource limits. The
+measured primary clock effort is6–9 times the shallow32768-node screen, so a deeper
+control can distinguish practical-depth quality from throughput. This is a new
+question supported by measured effort, not an extension seeking significance.

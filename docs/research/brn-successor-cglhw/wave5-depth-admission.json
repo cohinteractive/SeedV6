@@ -1,0 +1,20 @@
+{
+  "id": "wave5-depth-discriminator-admission-v1",
+  "recordedUtc": "2026-10-21T04:07:19.379541+00:00",
+  "question": "Do the R4/R16 equal-node advantages over continued BRE persist near the search effort of the practical clock games?",
+  "evidence": "Primary clock Gen32 median opening295315 nodes, cubic207622/224371; existing node screens32768. Clock and shallow-node differences mix depth and throughput. Direct shallow-node R4/R16 versus BRE001 scores62.5/78.125%.",
+  "games": 32,
+  "models": [
+    "W5-BRE-CONTROL-LR001-g96-half",
+    "W5-RESCUBIC-R4-LR001-g96-half",
+    "W5-RESCUBIC-R16-LR001-g96-half"
+  ],
+  "nodes": 262144,
+  "openingRange": "Unused development roots25..32 of frozen32; eight colour-reversed pairs per candidate, no final confirmation.",
+  "plan": "wave5-depth-bre001-node-plan.json",
+  "planSha256": "624471d297ccdde78093514bf3d28371d051a970248b6fdc79a6b9b7fc161b99",
+  "runtime": "wave5-runtime.json",
+  "activation": "After the already frozen primary/direct/cubic-only budgets complete; complete all32 without score-dependent stopping.",
+  "resourceLimits": "Unchanged one game/worker, no ponder,64MiBTT,768MiB heap, one active processor, BelowNormal,12games/240seconds per batch.",
+  "interpretation": "More directly separates evaluation/search quality at practical depth from speed. It is not equal-time strength, candidate-selection correction, game-family independence or proof of architectural causation."
+}
