@@ -1,0 +1,640 @@
+{
+  "id": "wave6-trained-development-assessment-v1",
+  "admission": "docs\\research\\brn-successor-cglhw\\wave6-assessment-protocol.json",
+  "admissionSha256": "72654d8233eb8543df47c4920492aaa18aec166c98e0da246fb3bf10f42d59f5",
+  "protocols": [
+    {
+      "protocol": "degree-node",
+      "report": "docs\\research\\brn-successor-cglhw\\wave6-degree-node-results.json",
+      "sha256": "241a8a108ef536558773ef4eb207e825998b78b484854b76bf9bb161690038cc",
+      "games": 32,
+      "validatedMoves": 5184,
+      "models": [
+        {
+          "name": "W6-RESCUBIC-R16-LR001-g128-half",
+          "wins": 10,
+          "draws": 14,
+          "losses": 8,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.53125,
+          "pairStandardError": 0.06798820363366967,
+          "descriptiveNormal95": [
+            0.3979931208780074,
+            0.6645068791219926
+          ],
+          "pairScores": [
+            0.75,
+            0.5,
+            0.25,
+            0.75,
+            0.25,
+            0.0,
+            0.75,
+            0.25,
+            1.0,
+            0.75,
+            0.5,
+            0.75,
+            0.75,
+            0.5,
+            0.5,
+            0.25
+          ],
+          "boundedPair95": [
+            0.1917246210648451,
+            0.8707753789351549
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.1917246210648451,
+            0.8707753789351549
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W6-RESCUBIC-R16-LR001-g128-half",
+          "usablePairedRoots": 16,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 10,
+          "meanDepthDifference": -0.0625,
+          "lessEqualMoreDepth": [
+            1,
+            15,
+            0
+          ],
+          "medianNodeRatio": 1.0,
+          "medianElapsedRatio": 1.1245731958107403,
+          "medianNpsRatio": 0.8892872222336827
+        }
+      ],
+      "peakWorkingSetMiB": 570.51171875,
+      "engineCpuSeconds": 990.953125
+    },
+    {
+      "protocol": "degree-clock",
+      "report": "docs\\research\\brn-successor-cglhw\\wave6-degree-clock-results.json",
+      "sha256": "183dd66b5437fc6ab90ac1adb4d401369cc3db835e8f9ef0f936989a911480ed",
+      "games": 32,
+      "validatedMoves": 4475,
+      "models": [
+        {
+          "name": "W6-RESCUBIC-R16-LR001-g128-half",
+          "wins": 9,
+          "draws": 7,
+          "losses": 16,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.390625,
+          "pairStandardError": 0.08218611373989324,
+          "descriptiveNormal95": [
+            0.22954021706980926,
+            0.5517097829301907
+          ],
+          "pairScores": [
+            0.0,
+            0.75,
+            0.5,
+            0.5,
+            0.25,
+            0.0,
+            0.5,
+            0.0,
+            0.0,
+            0.25,
+            0.5,
+            0.5,
+            1.0,
+            0.0,
+            0.75,
+            0.75
+          ],
+          "boundedPair95": [
+            0.05109962106484511,
+            0.7301503789351549
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.05109962106484511,
+            0.7301503789351549
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W6-RESCUBIC-R16-LR001-g128-half",
+          "usablePairedRoots": 16,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 8,
+          "meanDepthDifference": -0.0625,
+          "lessEqualMoreDepth": [
+            2,
+            13,
+            1
+          ],
+          "medianNodeRatio": 0.9263011050802283,
+          "medianElapsedRatio": 0.9999605115665982,
+          "medianNpsRatio": 0.926358723573304
+        }
+      ],
+      "peakWorkingSetMiB": 572.69140625,
+      "engineCpuSeconds": 883.71875
+    },
+    {
+      "protocol": "compact-node",
+      "report": "docs\\research\\brn-successor-cglhw\\wave6-compact-node-results.json",
+      "sha256": "c8e583b003db6bf3715cf99dffe1107303125892d410d780e76e422c328bce9e",
+      "games": 16,
+      "validatedMoves": 2414,
+      "models": [
+        {
+          "name": "W6-RESCUBIC-R4-LR001-g128-half",
+          "wins": 5,
+          "draws": 6,
+          "losses": 5,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.5,
+          "pairStandardError": 0.0944911182523068,
+          "descriptiveNormal95": [
+            0.31479740822547864,
+            0.6852025917745214
+          ],
+          "pairScores": [
+            0.25,
+            0.25,
+            0.25,
+            0.75,
+            1.0,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "boundedPair95": [
+            0.019838604340039645,
+            0.9801613956599604
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.019838604340039645,
+            0.9801613956599604
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W6-RESCUBIC-R4-LR001-g128-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 6,
+          "meanDepthDifference": 0.125,
+          "lessEqualMoreDepth": [
+            1,
+            5,
+            2
+          ],
+          "medianNodeRatio": 1.0,
+          "medianElapsedRatio": 0.9060778614589691,
+          "medianNpsRatio": 1.1046070071145224
+        }
+      ],
+      "peakWorkingSetMiB": 546.04296875,
+      "engineCpuSeconds": 474.1875
+    },
+    {
+      "protocol": "compact-clock",
+      "report": "docs\\research\\brn-successor-cglhw\\wave6-compact-clock-results.json",
+      "sha256": "2c008bbdc96460875fa53dabd39f597b4c3e0cb7b7a1cc15b4338a7e5d4d7647",
+      "games": 16,
+      "validatedMoves": 2480,
+      "models": [
+        {
+          "name": "W6-RESCUBIC-R4-LR001-g128-half",
+          "wins": 8,
+          "draws": 5,
+          "losses": 3,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.65625,
+          "pairStandardError": 0.11512318712703239,
+          "descriptiveNormal95": [
+            0.43060855323101654,
+            0.8818914467689835
+          ],
+          "pairScores": [
+            0.75,
+            0.75,
+            0.75,
+            0.5,
+            1.0,
+            0.5,
+            1.0,
+            0.0
+          ],
+          "boundedPair95": [
+            0.17608860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.17608860434003965,
+            1
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W6-RESCUBIC-R4-LR001-g128-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 3,
+          "meanDepthDifference": 0,
+          "lessEqualMoreDepth": [
+            2,
+            4,
+            2
+          ],
+          "medianNodeRatio": 1.1005737357668195,
+          "medianElapsedRatio": 1.0000902283094726,
+          "medianNpsRatio": 1.1004724259723555
+        }
+      ],
+      "peakWorkingSetMiB": 565.109375,
+      "engineCpuSeconds": 488.765625
+    },
+    {
+      "protocol": "bre-clock",
+      "report": "docs\\research\\brn-successor-cglhw\\wave6-bre-clock-results.json",
+      "sha256": "9347076b4cf5c59d118425d709fc1ff9484b7501fb45abf0a5973254b92fc13c",
+      "games": 48,
+      "validatedMoves": 6938,
+      "models": [
+        {
+          "name": "W6-RESQUAD-R16-LR001-g128-half",
+          "wins": 7,
+          "draws": 6,
+          "losses": 3,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.625,
+          "pairStandardError": 0.0944911182523068,
+          "descriptiveNormal95": [
+            0.43979740822547864,
+            0.8102025917745214
+          ],
+          "pairScores": [
+            1.0,
+            0.75,
+            0.5,
+            1.0,
+            0.25,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "boundedPair95": [
+            0.14483860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.07799155954969228,
+            1
+          ]
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001-g128-half",
+          "wins": 6,
+          "draws": 3,
+          "losses": 7,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.46875,
+          "pairStandardError": 0.1288470508005519,
+          "descriptiveNormal95": [
+            0.21620978043091832,
+            0.7212902195690817
+          ],
+          "pairScores": [
+            0.25,
+            0.5,
+            0.0,
+            0.5,
+            1.0,
+            0.75,
+            0.75,
+            0.0
+          ],
+          "boundedPair95": [
+            0,
+            0.9489113956599604
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0,
+            1
+          ]
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001-g128-half",
+          "wins": 8,
+          "draws": 1,
+          "losses": 7,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.53125,
+          "pairStandardError": 0.15263679461856033,
+          "descriptiveNormal95": [
+            0.23208188254762174,
+            0.8304181174523783
+          ],
+          "pairScores": [
+            0.5,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.25,
+            0.5,
+            1.0
+          ],
+          "boundedPair95": [
+            0.051088604340039645,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0,
+            1
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W6-RESQUAD-R16-LR001-g128-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 5,
+          "meanDepthDifference": -0.25,
+          "lessEqualMoreDepth": [
+            2,
+            6,
+            0
+          ],
+          "medianNodeRatio": 0.7922681679549586,
+          "medianElapsedRatio": 0.9999722576353882,
+          "medianNpsRatio": 0.7912306315418232
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001-g128-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 4,
+          "meanDepthDifference": -0.25,
+          "lessEqualMoreDepth": [
+            2,
+            6,
+            0
+          ],
+          "medianNodeRatio": 0.7543688548140275,
+          "medianElapsedRatio": 0.9999752564119966,
+          "medianNpsRatio": 0.7543205726782085
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001-g128-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 7,
+          "meanDepthDifference": -0.625,
+          "lessEqualMoreDepth": [
+            5,
+            3,
+            0
+          ],
+          "medianNodeRatio": 0.801906578701093,
+          "medianElapsedRatio": 0.9999815051404471,
+          "medianNpsRatio": 0.8022029681271845
+        }
+      ],
+      "peakWorkingSetMiB": 574.4453125,
+      "engineCpuSeconds": 1369.234375
+    },
+    {
+      "protocol": "reference-clock",
+      "report": "docs\\research\\brn-successor-cglhw\\wave6-reference-clock-results.json",
+      "sha256": "8bc684d69467da6cbdabda698e5112db69b4ce7243e98e972ee666097b05d7dc",
+      "games": 64,
+      "validatedMoves": 9146,
+      "models": [
+        {
+          "name": "W6-RESQUAD-R16-LR001-g128-half",
+          "wins": 5,
+          "draws": 6,
+          "losses": 5,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.5,
+          "pairStandardError": 0.11572751247156893,
+          "descriptiveNormal95": [
+            0.2731740755557249,
+            0.7268259244442751
+          ],
+          "pairScores": [
+            0.25,
+            0.5,
+            0.0,
+            0.5,
+            0.25,
+            1.0,
+            0.75,
+            0.75
+          ],
+          "boundedPair95": [
+            0.019838604340039645,
+            0.9801613956599604
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0,
+            1
+          ]
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001-g128-half",
+          "wins": 5,
+          "draws": 6,
+          "losses": 5,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.5,
+          "pairStandardError": 0.10564428184106457,
+          "descriptiveNormal95": [
+            0.2929372075915134,
+            0.7070627924084866
+          ],
+          "pairScores": [
+            0.5,
+            0.5,
+            0.5,
+            0.75,
+            0.25,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "boundedPair95": [
+            0.019838604340039645,
+            0.9801613956599604
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0,
+            1
+          ]
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001-g128-half",
+          "wins": 8,
+          "draws": 3,
+          "losses": 5,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.59375,
+          "pairStandardError": 0.12444071307827102,
+          "descriptiveNormal95": [
+            0.3498462023665888,
+            0.8376537976334112
+          ],
+          "pairScores": [
+            0.75,
+            1.0,
+            0.25,
+            1.0,
+            0.5,
+            0.0,
+            0.75,
+            0.5
+          ],
+          "boundedPair95": [
+            0.11358860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.030546339276710577,
+            1
+          ]
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001-g128-half",
+          "wins": 8,
+          "draws": 2,
+          "losses": 6,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.5625,
+          "pairStandardError": 0.10296930888098925,
+          "descriptiveNormal95": [
+            0.3606801545932611,
+            0.7643198454067389
+          ],
+          "pairScores": [
+            1.0,
+            0.25,
+            0.5,
+            0.5,
+            1.0,
+            0.5,
+            0.5,
+            0.25
+          ],
+          "boundedPair95": [
+            0.08233860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0,
+            1
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W6-RESQUAD-R16-LR001-g128-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 6,
+          "meanDepthDifference": -0.125,
+          "lessEqualMoreDepth": [
+            2,
+            5,
+            1
+          ],
+          "medianNodeRatio": 0.7173306662815824,
+          "medianElapsedRatio": 0.9999535144297784,
+          "medianNpsRatio": 0.7171008592464192
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001-g128-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 6,
+          "meanDepthDifference": 0,
+          "lessEqualMoreDepth": [
+            0,
+            8,
+            0
+          ],
+          "medianNodeRatio": 0.7665566811461131,
+          "medianElapsedRatio": 1.0000224911951838,
+          "medianNpsRatio": 0.766578124784193
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001-g128-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 5,
+          "meanDepthDifference": 0.125,
+          "lessEqualMoreDepth": [
+            0,
+            7,
+            1
+          ],
+          "medianNodeRatio": 0.8176307045354192,
+          "medianElapsedRatio": 1.0000052487612923,
+          "medianNpsRatio": 0.8175335399762962
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001-g128-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 5,
+          "meanDepthDifference": 0.125,
+          "lessEqualMoreDepth": [
+            0,
+            7,
+            1
+          ],
+          "medianNodeRatio": 1.0374522691982904,
+          "medianElapsedRatio": 0.9999350230919175,
+          "medianNpsRatio": 1.0377998264561343
+        }
+      ],
+      "peakWorkingSetMiB": 576.24609375,
+      "engineCpuSeconds": 1802.859375
+    }
+  ],
+  "totalGames": 208,
+  "validatedMoves": 30637,
+  "maximumSampledWorkingSetMiB": 576.24609375,
+  "totalEngineCpuSeconds": 6009.71875,
+  "limitations": [
+    "Development only; no pooled strength score, independent confirmation or success claim.",
+    "Eight or sixteen reversed-colour opening pairs per comparison; roots reused across related protocols, unknown opening-family dependence and prior candidate selection.",
+    "Normal intervals are descriptive; bounded intervals still assume independent opening pairs.",
+    "Distinct budgets/opponents answer distinct questions; fixed budgets completed without favorable optional stopping.",
+    "Q16 is adaptation-trained on identical G6 residual reservations; BRE retains different historical data, split and optimizer semantics."
+  ]
+}

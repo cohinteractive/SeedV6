@@ -1,0 +1,16 @@
+{
+  "id": "wave6-compact-degree-readiness-v1",
+  "status": "passed",
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\compact-degree-cache-01.json": "34877d1ba8bf880b3e8c02864c93886046aa9ccfd938594f823e135772f789fb",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\compact-degree-cache-01.process.json": "084c04ef7a7f2d002880a5ab4a55862139c16cbd1e4f3808319b05f472f7456d",
+    "docs\\research\\brn-successor-cglhw\\wave6-compact-degree-model-plan.json": "81ad652674f685a611bdf309251eefd6c2121bd1c1354f77b009476609176e29"
+  },
+  "positions": 6333,
+  "searchPairs": 48,
+  "integerDifferences": 0,
+  "maximumRawError": 2.1094237467877974e-15,
+  "maximumFreshRawError": 8.770761894538737e-15,
+  "effectiveNetworkSha256": "6a60ef8c61b18b368a984782b49086796fae19cad38d2b23b49cde7485ad3202",
+  "interpretation": "Only current C4 cubic heads masked; unchanged retained weights and cubic cache. Not an adaptation-trained quadratic architecture."
+}

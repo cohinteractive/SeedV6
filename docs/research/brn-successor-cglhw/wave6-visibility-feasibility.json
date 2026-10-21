@@ -1,0 +1,117 @@
+{
+  "id": "wave6-local-blocker-feasibility-v1",
+  "status": "verified-untrained-prototype",
+  "positions": 2048,
+  "parameters": 2688,
+  "coefficientBytes": 21504,
+  "prototypeFeatureBufferBytes": 16384,
+  "latency": [
+    {
+      "maximumActiveFeatures": 35,
+      "meanActiveFeatures": 13.79296875,
+      "evaluationsPerPass": 100000,
+      "passNanos": [
+        18610700,
+        18220900,
+        17066800,
+        17790200,
+        16751200,
+        18088800,
+        16790500
+      ],
+      "medianNanos": 177.902,
+      "mode": "visible"
+    },
+    {
+      "maximumActiveFeatures": 75,
+      "meanActiveFeatures": 28.5166015625,
+      "evaluationsPerPass": 100000,
+      "passNanos": [
+        26680400,
+        27609000,
+        26895200,
+        26657500,
+        26702300,
+        26133200,
+        27136200
+      ],
+      "medianNanos": 267.023,
+      "mode": "geometry"
+    }
+  ],
+  "thirdDifference": {
+    "visible": -1,
+    "geometry": 0
+  },
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\visibility-diagnostics-02\\binding.json": "758afd91b21947bfeb4190bd31fca6cfb8fcf8adb19f470318281bf072edff0a",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\visibility-diagnostics-02\\probe.json": "5fa509370edb8f6c0ba15c1a5730c8f1702e273d2cd5ceef63deb6397593ec1e",
+    "docs\\research\\brn-successor-cglhw\\wave6-visibility-verification.json": "cc8d132132132f2e30ede73965f817a8617dc66a9c98b3a8da9f356abe661762",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\tools\\eval\\BrnVisibilityFeatureProbe.java": "79d56c344aaf5e65d5c1c44aac34e1d3d7ebfe0848b7dd7ea9e5b543537e1116",
+    "tools\\verify-brn-visibility-features.py": "9ec4e30c0bfa74f037f8c87aa3d6eccec309ae840300613d869e20cb79279a5d",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\run-visibility-02.ps1": "492a9f9bcb42aa1dad9dad7ec204e8772f0daf1fd74577bfbdb942e517e66314"
+  },
+  "processReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\visibility-diagnostics-02\\compile.process.json",
+      "sha256": "8af88fecddf0d20ce3850fa6a91eb4e6efc2ae702d1ea257b6ebbf7ec6f8d8d2",
+      "startedUtc": "2026-10-21T09:12:16.3246058Z",
+      "activeProcessors": 1,
+      "completedUtc": "2026-10-21T09:12:17.1656512Z",
+      "timedOut": false,
+      "cpuSeconds": 1.578125,
+      "heapMiB": 384,
+      "sampledPeakWorkingSetBytes": 0,
+      "arguments": [
+        "-J-Xmx384m",
+        "-J-XX:ActiveProcessorCount=1",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave6\\runtime-56-01\\lib/*",
+        "-d",
+        "docs/research/brn-successor-cglhw/raw/wave6/visibility-diagnostics-02/classes",
+        "research/src/main/java/com/ohinteractive/seedv6/tools/eval/BrnVisibilityFeatureProbe.java"
+      ],
+      "exitCode": 0,
+      "priority": "BelowNormal",
+      "program": "C:/java/jdk-21/bin/javac.exe"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\visibility-diagnostics-02\\probe.process.json",
+      "sha256": "e5313a7c30c67ad6d6192d785798c4e40fc52d31358afc8c8fb83f3f86b59c79",
+      "startedUtc": "2026-10-21T09:12:17.2460638Z",
+      "activeProcessors": 1,
+      "completedUtc": "2026-10-21T09:12:18.2418177Z",
+      "timedOut": false,
+      "cpuSeconds": 1.5625,
+      "heapMiB": 512,
+      "sampledPeakWorkingSetBytes": 0,
+      "arguments": [
+        "-Xmx512m",
+        "-XX:ActiveProcessorCount=1",
+        "-cp",
+        "docs/research/brn-successor-cglhw/raw/wave6/visibility-diagnostics-02/classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave6\\runtime-56-01\\lib/*",
+        "com.ohinteractive.seedv6.tools.eval.BrnVisibilityFeatureProbe",
+        "docs/research/brn-successor-cglhw/raw/wave6/trained-predictions-fresh5-01/bt4-predictions.jsonl",
+        "docs/research/brn-successor-cglhw/raw/wave6/visibility-diagnostics-02/probe.json",
+        "docs/research/brn-successor-cglhw/raw/wave6/visibility-diagnostics-02/features.jsonl"
+      ],
+      "exitCode": 0,
+      "priority": "BelowNormal",
+      "program": "C:/java/jdk-21/bin/java.exe"
+    }
+  ],
+  "preservedFailedCompile": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\visibility-diagnostics-01\\compile.process.json": "60307991c9ce60ed847131579e4f67e355d9030ffbdee569d9bf0305ef71fae4",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\visibility-diagnostics-01\\compile.stderr": "01645cf6d5a1e62ffce38fcbd066f1edf6655ae426eb02b83cd349ef00ffbeee",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\visibility-diagnostics-01\\compile.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\visibility-diagnostics-01\\source.failed.java": "6c519e8921ad82c23768cb556938309144f890caef675a22bdef861761baad1c"
+  },
+  "failedCompileReason": "Missing closing parenthesis in new research prototype, corrected before any execution; failed source and logs preserved. No owner artifact or frozen runtime modified.",
+  "decision": "Keep local conditional features as a plausible frontier option, not a selected architecture or training gate. Full extraction alone costs177.902ns before canonicalization, base evaluation and search; efficiency is not established.",
+  "limitations": [
+    "Untrained random-weight extraction cost on canonical preconverted boards; excludes canonicalization, BRE base, search and incremental maintenance.",
+    "Both friendly and opposing nearest ray occupants included; geometric control ignores intervening occupancy. No legal-move, pin or teacher feature.",
+    "No fitting, model checkpoint, training gate or strength claim.",
+    "No fitting evidence or incremental/search measurement. Comparing this extraction-only prototype directly with complete residual-evaluator latency is invalid."
+  ]
+}

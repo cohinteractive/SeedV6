@@ -19,9 +19,10 @@ Latest/Best are128, 133 checkpoint/state pairs pass runtime parity, and941 owner
 files are unchanged by audit/freeze. See wave6-trained-checkpoints.json and
 wave6-trained-admission.json for exact identities. No retraining is requested.
 Trained Q16/C16/C4 have identical source reservations; BRE historical/split
-confounds remain. Next: finish actual trained cache checks, fixed208-game
-development assessment and fitting diagnostics, interpret and select the next
-credible investigation. Preserve frozen runtime56, all checkpoints and completed
+confounds remain. Actual trained cache checks, fitting diagnostics and all208
+primary development games are complete. Next: complete the separately admitted80
+cost/compact-degree games, interpret and select the next credible investigation.
+Preserve frozen runtime56, all checkpoints and completed
 protocols. Do not stop merely at this audit. Historical G6 preparation instructions
 below are fulfilled and superseded for next-action selection.
 
@@ -31,10 +32,14 @@ descriptive95 39.8-66.5%,5184 legal moves; inconclusive). Degree-clock32 is clos
 Compact-node16/compact-clock16 are closed (C4 versus C16:50%/65.625%; both uncertain).
 The fixed last-eight average fails the residual eligibility criterion; only BRE
 passes, with no average match selected. BRE-clock48 is closed (Q16/C16/C4 versus BRE:
-62.5%/46.875%/53.125%, all uncertain); reference-clock64 is active under the
-fixed208-game admission. After its closure, the separate80-game cost/compact-degree
-follow-up is admitted, gated on actual masked-C4 cache/search parity. See
-wave6-followup-admission.json. Use unique bounded launch logs and verify actual receipt
+62.5%/46.875%/53.125%, all uncertain). Reference-clock64 is closed (Q16/C16/C4/BRE
+versus Gen32:50%/50%/59.375%/56.25%, all uncertain). Primary total208 games/30637
+legal moves, no failure/cap/fallback; no confirmation candidate selected.
+Actual masked-C4 oracle passes6333 positions and48 search pairs. Compact-degree
+node16 then clock16 are active, with BRE-node48 next under the separate follow-up.
+See wave6-followup-admission.json. The untrained visibility feasibility probe passes
+independent feature/symmetry checks but establishes no efficiency or fitting gain.
+Use unique bounded launch logs and verify actual receipt
 counts/processes before resuming. Fitting/cost/strata evidence is recorded in
 WAVE6-ASSESSMENT; no new architecture or human gate has yet been selected.
 

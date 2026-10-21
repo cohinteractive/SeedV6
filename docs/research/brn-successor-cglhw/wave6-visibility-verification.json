@@ -1,0 +1,21 @@
+{
+  "id": "wave6-visibility-independent-oracle-v1",
+  "positions": 2048,
+  "checks": {
+    "validPositions": 2048,
+    "visibleActiveFeatures": 28248,
+    "geometryActiveFeatures": 58402
+  },
+  "thirdDifference": {
+    "visible": -1,
+    "geometry": 0
+  },
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\visibility-diagnostics-02\\probe.json": "5fa509370edb8f6c0ba15c1a5730c8f1702e273d2cd5ceef63deb6397593ec1e",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\visibility-diagnostics-02\\features.jsonl": "97182d06df872d25eebe2b948a78fb045d5b4a40796666bc740f28410164d235"
+  },
+  "limitations": [
+    "Feature identity and colour/rank symmetry only; no trained model or chess strength.",
+    "Third difference is nonzero on eight valid boards with fixed kings; geometric control is pairwise."
+  ]
+}

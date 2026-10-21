@@ -66,8 +66,8 @@ budgets; no favorable optional stopping. Pair-level descriptive and bounded
 intervals do not remove selection/opening-family dependence. Further experiments
 need a new documented discriminating question. These are not final confirmation.
 
-Next: actual trained cache/search checks, fixed-panel predictions, bounded games,
-then interpret trained degree benefit, practical cost and the next credible unit.
+The initial cache/search checks, fixed-panel predictions and208 games below are
+now complete. The separately admitted cost/compact-degree follow-up is active.
 No human action currently blocks assessment; substantive further training remains
 owner-only. Preserve all raw outputs, including failures and negative evidence.
 
@@ -287,3 +287,62 @@ exclude no cost silently, and claim neither search speed nor incremental efficie
 The probe only answers whether a compact non-pairwise local feature is well-defined
 and worth further cost/fitting investigation. Primary and follow-up match identities
 remain unchanged. No substantive training is performed.
+
+## Primary assessment closed
+
+All 208 fixed primary games and 30,637 legal moves are independently verified,
+without game failures, caps or fallbacks. `wave6-assessment-results.json` verifies
+every protocol hash, completed receipt, analysis and bounded process record.
+Maximum sampled game-process working set was 576.25 MiB. Frozen build56 and
+one-game/one-worker/no-ponder limits were maintained. No application code changed.
+
+The final frozen-Gen32 clock comparison closes64 games/9146 legal moves:
+
+| Arm | W/D/L | Score | Descriptive95 interval | Paired-root NPS/Gen32 |
+| --- | --- | --- | --- | --- |
+| Q16 | 5/6/5 | 50% | 27.317-72.683% | .71710 |
+| C16 | 5/6/5 | 50% | 29.294-70.706% | .76658 |
+| C4 | 8/3/5 | 59.375% | 34.985-83.765% | .81753 |
+| BRE | 8/2/6 | 56.25% | 36.068-76.432% | 1.03780 |
+
+Bounded pair and within-plan simultaneous intervals are wider. No independent
+superiority, candidate selection adjustment, or useful cubic advantage is claimed.
+The different Q16/C16 NPS ordering on these roots versus the BRE comparison also
+shows why isolated latency cannot stand in for whole-search measurements. Changing
+openings between W5 and W6 prevents attributing point-score changes to G6 training.
+
+C4 remains a credible compact candidate, with weaker same-data validation but a
+better measured practical trade-off than C16 in this development screen. This is
+insufficient to select independent confirmation now: its edge over continued BRE
+is small and uncertain, and its cubic contribution remains unresolved. Complete
+the already admitted cost and degree controls before choosing further training.
+
+Actual masked-C4 verification passes6333 positions, zero integer/fresh differences,
+maximum raw/fresh error2.11e-15/8.78e-15 and48 paired canonical/cache search results.
+`wave6-compact-degree-readiness.json` binds the oracle and effective payload.
+The degree node and clock protocols run first, followed by BRE-node48; this changes
+no plan, checkpoint, opening, budget or stopping rule.
+
+## Alternative-feature feasibility result
+
+The research-only visibility prototype and independent python-chess oracle agree
+on all2048 valid BT4 positions and colour/rank transforms. The explicit eight-board
+third finite difference is-1 for visibility and0 for geometric pairs. Thus the
+chosen local blocker feature is genuinely non-pairwise; this is a mathematical
+capability result, not evidence of useful chess information.
+
+The2688 coefficients use21,504 primitive bytes. Random-weight full extraction on
+preconverted canonical boards takes177.902ns (visibility) or267.023ns (geometry)
+in this single-process probe, with mean13.79/28.52 active features. The prototype
+also uses a16KiB feature buffer. These timings exclude canonicalization, BRE base,
+incremental maintenance and search: practical efficiency is unestablished. Do not
+compare them as complete evaluators against the earlier C4/C16 timings. No fitting,
+optimizer, model checkpoint or human training gate was created.
+
+`wave6-visibility-feasibility.json` and `wave6-visibility-verification.json` bind
+source, compiled classes, frozen dependencies, commands and raw evidence. The first
+compile failed on a missing closing parenthesis; its source/logs remain under
+`raw/wave6/visibility-diagnostics-01`. Corrected compile/execution and independent
+verification pass under `visibility-diagnostics-02`, with no owner or frozen-runtime
+mutation. Keep this as a plausible frontier option requiring incremental/cost and
+matched geometric-control fitting evidence before architecture admission.
