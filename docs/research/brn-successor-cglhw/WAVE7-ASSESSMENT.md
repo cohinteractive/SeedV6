@@ -1,7 +1,7 @@
 # Wave7 trained rank-four assessment
 
 21 October2026. Existing CGLHW, contract revision2. G7 is verified complete;
-the assessment is active. No research success or independent superiority is claimed.
+all176 admitted development games are closed. No research success or independent superiority is claimed.
 
 ## Verification and endpoint selection
 
@@ -105,15 +105,15 @@ not run concurrent heavy probes/builds/training. Raw output is local-only eviden
 
 After closing the assessment, select a discriminating follow-up using the current
 STATE frontier. Do not automatically request another32 generations or stop at this
-documentation boundary. Human actions currently required: None.
+documentation boundary. At admission no human action was required; the current G8 gate is specified in WAVE8.
 
-## Active findings after the first closed comparison
+## Findings recorded during the active assessment
 
 Equal-node C4 versus Q4 closes32 games/3991 legally replayed moves:12 wins,
 4 draws,16 losses,43.75%, descriptive95%26.14..61.36. Paired-root C4 NPS/Q4
 is.9642; fixed-node throughput therefore does not explain a decisive architecture
 result. All32 outcomes remain in evidence; no result-dependent budget change.
-Other admitted comparisons are still running. See wave7-degree-node-results.json.
+Other admitted comparisons were still running at that stage. See wave7-degree-node-results.json.
 
 The bounded visibility pilot (four128-update arms,2048 fit rows) fails to improve
 both evaluation sources versus zero. Raw fitting worsens held-out loss; mapped
@@ -165,5 +165,56 @@ The32-game equal-time BRE comparison closes4514 legal moves. Q4 scores56.25%
 no independent significance. Paired-root Q4/C4 NPS relative to BRE is.8508/.7930,
 with mean completed-depth differences-.125/-.375. Throughput contributes to the
 practical setting but is not an isolated explanation: both equal-node scores
-are53.125%, also inconclusive. Frozen-reference comparisons are still underway.
+are53.125%, also inconclusive. Frozen-reference comparisons were still underway at that stage.
 See wave7-bre-clock-results.json.
+
+Cost/integration scope: the admitted matches use explicitly bound research half-
+change variants and the guarded cubic delta cache. Ordinary GUI loading retains
+full model coefficients and its existing block-cache path; training still uses
+the raw objective. Function/cache parity supports compatibility but does not make
+these costs or scores an ordinary GUI Arena claim. Any eventual selected successor
+needs explicit production calibration/cache integration and renewed verification;
+no production search-policy change is made to improve these development results.
+
+## Closed assessment and next decision
+
+All176 fixed games close with25024 independent legal move replays, no game failure,
+cap or legal fallback. Peak sampled process working set581.653MiB. One game/worker,
+no ponder,64MiB TT,768MiB heap, BelowNormal throughout; exact per-launch receipts
+and frozen build57 hashes are checked by wave7-assessment-results.json. No protocol
+was extended or endpoint substituted after outcomes.
+
+| Comparison, candidate score | Equal nodes262144 | Equal time200ms |
+| --- | --- | --- |
+| C4 versus Q4 |43.75%,32 games|57.8125%,32 games|
+| Q4 versus continued BRE |53.125%,16 games|56.25%,16 games|
+| C4 versus continued BRE |53.125%,16 games|37.50%,16 games|
+| Q4 versus frozen Gen32 |Not admitted|71.875%,16 games|
+| C4 versus frozen Gen32 |Not admitted|59.375%,16 games|
+| Continued BRE versus frozen Gen32 |Not admitted|65.625%,16 games|
+
+The final reference comparison has7240 legal moves. Q4's descriptive normal95%
+interval is60.77..82.98, but its small8-pair bounded interval is23.86..100;
+C4 normal38.80..79.95, BRE43.06..88.19. These are selected development conditions,
+with reused roots across comparisons, unknown opening-family/training overlap,
+and repeated research. No independent significance or programme success follows,
+including from Q4's apparently narrow normal interval. Q4 is additive pairwise,
+so even a confirmed Q4 improvement alone would not meet the expressiveness objective.
+Same-root NPS relative to Gen32 is.8521 Q4,.8109 C4,1.0045 BRE. Differences in
+score distributions/search paths prevent a pure latency interpretation.
+
+Q4 is a credible preserved development anchor; no reliable cubic benefit is
+established. C4's changing point estimates against different opponents/budgets
+also do not prove inherent cubic unsuitability. No candidate currently justifies
+an independent expressive-success confirmation protocol. Reserved opening
+partition1 remains untouched. Do not reopen or extend these176 games for significance.
+
+Admit W8's bounded fixed-basis degree experiment: four new cubic heads versus four
+quadratic-head adjustments on exactly the same Q4 function, with continued BRE.
+This is an unresolved causal-degree question, not a positive pilot result or a
+claim that prior failures were caused by embedding interference. The original
+pilot's cubic separation failed status-valid sensitivity; that negative finding
+is retained. Eight additional generations, prospective Latest168, unchanged data,
+and explicit new head Adam provide a smaller adaptation test than another32-
+generation full-network programme. See wave8-gate-admission.json and WAVE8.
+The native actual-owner gate is ready; the research programme remains incomplete.

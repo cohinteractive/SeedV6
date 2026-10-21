@@ -1,0 +1,34 @@
+{
+  "id": "wave8-fixed-basis-eight-generation-admission-v1",
+  "recordedUtc": "2026-10-21T12:09:34.403947+00:00",
+  "assessmentSha256": "2ee38dbd45a5842a887abe0860f9165ae59c38ff7abcb7e8576223d08f692890",
+  "continuationPlanSha256": "b7d03b1a3a3ba394a56dee22bc3fd5bd13baa422513cea63560a72ec0c5b8de7",
+  "decision": "Admit preparation of three fixed-budget owner lineages; human gate opens only after actual readiness and native GUI verification.",
+  "question": "Can four cubic heads add practical value on a preserved trained Q4 basis beyond matched quadratic-head adjustment and ordinary BRE continuation?",
+  "rationale": [
+    "Q4 has a useful development anchor:71.875% versus frozen reference and56.25% versus continued BRE at time; these are not independent strength claims.",
+    "Jointly trained C4 does not demonstrate a reliable advantage over adapted Q4 or continued BRE. Throughput and small samples remain confounds.",
+    "Fixed heads retain the exact initial Q4 function and restrict new optimization to four coefficients; this tests degree contribution without moving the anchor.",
+    "The initial apparent cubic fitting advantage fails the status-valid control. Raw cubic refit results are mixed; loss alone does not settle practical chess value. This is a bounded unresolved hypothesis, not positive expressive-value evidence.",
+    "The tiny pilot changed quickly; eight diverse generations are a shorter adaptation/stability test, not an automatic32-generation continuation."
+  ],
+  "baselineGeneration": 160,
+  "additionalGenerations": 8,
+  "targetGeneration": 168,
+  "expectedHeadSteps": 65536,
+  "expectedBreSteps": 3129344,
+  "endpointSelection": "Latest168 primary selected now before training; Best separately audited, not retrospectively selected from games.",
+  "optimizer": "Both head variants reset Adam step/moments to zero; original source optimizer preserved. BRE retains exact full Adam.",
+  "data": "Same inherited source selection/cursors/seek; no data filtering or label/search-policy change. Residual arms share future reservations; BRE historical ranges/split remain distinct.",
+  "futureAssessment": [
+    "Verify all eight generations, immutable frozen prefixes, excluded zero moments, inherited metadata, final steps and Latest/Best.",
+    "Compare fixed cubic against fixed quadratic and its exact zero-cubic Q4 anchor; include continued BRE and frozen Gen32 at time, targeted nodes and calibration controls.",
+    "Only a candidate with practical degree value merits prespecified independent confirmation on untouched openings. Do not extend unchanged training or matches merely to seek a favorable result."
+  ],
+  "limitations": [
+    "No causal proof that shared-embedding interference caused prior results; no matched jointly trained restart in this gate.",
+    "Equal nominal settings do not guarantee equal effective optimization or optimized rates.",
+    "No independent strength confirmation or successor success."
+  ],
+  "humanTraining": "Reserved to owner; no substantive autonomous training."
+}

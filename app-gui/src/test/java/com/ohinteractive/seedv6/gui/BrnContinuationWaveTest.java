@@ -204,7 +204,7 @@ class BrnContinuationWaveTest {
                     BrnResidualWaveTest.named(frame,"trainingViews",javax.swing.JTabbedPane.class).setSelectedIndex(1);
                     assertEquals(entry.recipe().learningRate(),((Number)BrnResidualWaveTest.named(frame,"recipeLearningRate",javax.swing.JSpinner.class).getValue()).doubleValue());
                     assertFalse(BrnResidualWaveTest.named(frame,"inheritLearningRate",javax.swing.JCheckBox.class).isSelected());
-                    assertEquals(32,((Number)BrnResidualWaveTest.named(frame,"trainingGenerations",javax.swing.JSpinner.class).getValue()).longValue());
+                    assertEquals(entry.additionalGenerations(),((Number)BrnResidualWaveTest.named(frame,"trainingGenerations",javax.swing.JSpinner.class).getValue()).longValue());
                     assertEquals(128,((Number)BrnResidualWaveTest.named(frame,"trainingMinibatch",javax.swing.JSpinner.class).getValue()).intValue());
                     assertEquals(8,((Number)BrnResidualWaveTest.named(frame,"trainingEpochs",javax.swing.JSpinner.class).getValue()).intValue());
                     assertEquals(selected.settings().corpusTraining().positionsPerGeneration(),

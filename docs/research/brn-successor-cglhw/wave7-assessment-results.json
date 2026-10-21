@@ -1,0 +1,531 @@
+{
+  "id": "wave7-trained-development-assessment-v1",
+  "admission": "docs\\research\\brn-successor-cglhw\\wave7-assessment-protocol.json",
+  "admissionSha256": "60865ff8b9b561dbf066f07e3df037e2a8b20745c01b9126fa35587e77208412",
+  "protocols": [
+    {
+      "protocol": "degree-node",
+      "report": "docs\\research\\brn-successor-cglhw\\wave7-degree-node-results.json",
+      "sha256": "dd1901e606e1c77c0130b3fc26fc613e386c80c2b9154bd6f26179d911885439",
+      "games": 32,
+      "validatedMoves": 3991,
+      "models": [
+        {
+          "name": "W7-RESCUBIC-R4-LR001-g160-half",
+          "wins": 12,
+          "draws": 4,
+          "losses": 16,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.4375,
+          "pairStandardError": 0.08984941105353261,
+          "descriptiveNormal95": [
+            0.2613951543350761,
+            0.6136048456649239
+          ],
+          "pairScores": [
+            0.75,
+            0.5,
+            0.5,
+            0.5,
+            0.0,
+            0.25,
+            0.0,
+            0.25,
+            0.5,
+            1.0,
+            0.25,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            0.5
+          ],
+          "boundedPair95": [
+            0.09797462106484511,
+            0.7770253789351549
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.09797462106484511,
+            0.7770253789351549
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W7-RESCUBIC-R4-LR001-g160-half",
+          "usablePairedRoots": 16,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 9,
+          "meanDepthDifference": -0.125,
+          "lessEqualMoreDepth": [
+            2,
+            14,
+            0
+          ],
+          "medianNodeRatio": 1.0,
+          "medianElapsedRatio": 1.0373176484173117,
+          "medianNpsRatio": 0.9641915245253362
+        }
+      ],
+      "peakWorkingSetMiB": 581.65234375,
+      "engineCpuSeconds": 653.8125
+    },
+    {
+      "protocol": "degree-clock",
+      "report": "docs\\research\\brn-successor-cglhw\\wave7-degree-clock-results.json",
+      "sha256": "f3d3825b0951b3f77a6a136c5ca631e1ca6b2741176b03cf01ad9ec7b5d66044",
+      "games": 32,
+      "validatedMoves": 4840,
+      "models": [
+        {
+          "name": "W7-RESCUBIC-R4-LR001-g160-half",
+          "wins": 15,
+          "draws": 7,
+          "losses": 10,
+          "validPairs": 16,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.578125,
+          "pairStandardError": 0.07471734933512207,
+          "descriptiveNormal95": [
+            0.4316789953031608,
+            0.7245710046968392
+          ],
+          "pairScores": [
+            0.5,
+            0.25,
+            1.0,
+            0.75,
+            0.5,
+            0.5,
+            0.5,
+            0.75,
+            0.5,
+            0.0,
+            1.0,
+            0.25,
+            0.75,
+            0.25,
+            0.75,
+            1.0
+          ],
+          "boundedPair95": [
+            0.2385996210648451,
+            0.9176503789351549
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.2385996210648451,
+            0.9176503789351549
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W7-RESCUBIC-R4-LR001-g160-half",
+          "usablePairedRoots": 16,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 10,
+          "meanDepthDifference": -0.0625,
+          "lessEqualMoreDepth": [
+            2,
+            13,
+            1
+          ],
+          "medianNodeRatio": 1.0031184416916183,
+          "medianElapsedRatio": 0.9999767556689905,
+          "medianNpsRatio": 1.00318516407523
+        }
+      ],
+      "peakWorkingSetMiB": 568.17578125,
+      "engineCpuSeconds": 961.375
+    },
+    {
+      "protocol": "bre-node",
+      "report": "docs\\research\\brn-successor-cglhw\\wave7-bre-node-results.json",
+      "sha256": "84788b4b8b8357afdbca885eef2117c52f6f5b6c899f79825fdd0422b35c0c4e",
+      "games": 32,
+      "validatedMoves": 4439,
+      "models": [
+        {
+          "name": "W7-RESQUAD-R4-LR001-g160-half",
+          "wins": 6,
+          "draws": 5,
+          "losses": 5,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.53125,
+          "pairStandardError": 0.08759561102834189,
+          "descriptiveNormal95": [
+            0.3595626023844499,
+            0.7029373976155501
+          ],
+          "pairScores": [
+            0.5,
+            0.75,
+            0.25,
+            1.0,
+            0.5,
+            0.25,
+            0.5,
+            0.5
+          ],
+          "boundedPair95": [
+            0.051088604340039645,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.007917730149269775,
+            1
+          ]
+        },
+        {
+          "name": "W7-RESCUBIC-R4-LR001-g160-half",
+          "wins": 5,
+          "draws": 7,
+          "losses": 4,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.53125,
+          "pairStandardError": 0.03125,
+          "descriptiveNormal95": [
+            0.47,
+            0.5925
+          ],
+          "pairScores": [
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.75,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "boundedPair95": [
+            0.051088604340039645,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.007917730149269775,
+            1
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W7-RESQUAD-R4-LR001-g160-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 5,
+          "meanDepthDifference": 0.125,
+          "lessEqualMoreDepth": [
+            0,
+            7,
+            1
+          ],
+          "medianNodeRatio": 1.0,
+          "medianElapsedRatio": 1.2801867642510119,
+          "medianNpsRatio": 0.7813067378309387
+        },
+        {
+          "name": "W7-RESCUBIC-R4-LR001-g160-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 3,
+          "meanDepthDifference": 0.125,
+          "lessEqualMoreDepth": [
+            0,
+            7,
+            1
+          ],
+          "medianNodeRatio": 1.0,
+          "medianElapsedRatio": 1.2443369716309463,
+          "medianNpsRatio": 0.8039991569957641
+        }
+      ],
+      "peakWorkingSetMiB": 573.53515625,
+      "engineCpuSeconds": 674.578125
+    },
+    {
+      "protocol": "bre-clock",
+      "report": "docs\\research\\brn-successor-cglhw\\wave7-bre-clock-results.json",
+      "sha256": "f79238e603f29f0b585a8807e2756b0a71951b4bf57d299bc609105a493fc0a5",
+      "games": 32,
+      "validatedMoves": 4514,
+      "models": [
+        {
+          "name": "W7-RESQUAD-R4-LR001-g160-half",
+          "wins": 7,
+          "draws": 4,
+          "losses": 5,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.5625,
+          "pairStandardError": 0.13152607020228782,
+          "descriptiveNormal95": [
+            0.3047089024035159,
+            0.8202910975964841
+          ],
+          "pairScores": [
+            1.0,
+            1.0,
+            0.5,
+            0.75,
+            0.75,
+            0.25,
+            0.0,
+            0.25
+          ],
+          "boundedPair95": [
+            0.08233860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.039167730149269775,
+            1
+          ]
+        },
+        {
+          "name": "W7-RESCUBIC-R4-LR001-g160-half",
+          "wins": 5,
+          "draws": 2,
+          "losses": 9,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.375,
+          "pairStandardError": 0.1336306209562122,
+          "descriptiveNormal95": [
+            0.11308398292582411,
+            0.6369160170741759
+          ],
+          "pairScores": [
+            0.5,
+            0.0,
+            0.25,
+            0.75,
+            0.5,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "boundedPair95": [
+            0,
+            0.8551613956599604
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0,
+            0.8983322698507302
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W7-RESQUAD-R4-LR001-g160-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 5,
+          "meanDepthDifference": -0.125,
+          "lessEqualMoreDepth": [
+            1,
+            7,
+            0
+          ],
+          "medianNodeRatio": 0.8509098354811074,
+          "medianElapsedRatio": 1.0000282432860972,
+          "medianNpsRatio": 0.8508152695336506
+        },
+        {
+          "name": "W7-RESCUBIC-R4-LR001-g160-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 1,
+          "meanDepthDifference": -0.375,
+          "lessEqualMoreDepth": [
+            4,
+            3,
+            1
+          ],
+          "medianNodeRatio": 0.7929076421943632,
+          "medianElapsedRatio": 0.9999920020434929,
+          "medianNpsRatio": 0.7929542184674544
+        }
+      ],
+      "peakWorkingSetMiB": 570.0859375,
+      "engineCpuSeconds": 896.328125
+    },
+    {
+      "protocol": "reference-clock",
+      "report": "docs\\research\\brn-successor-cglhw\\wave7-reference-clock-results.json",
+      "sha256": "aafc3b44284617a56abb834cf61b8901a1b14f9a00dd547bab531bfc1a65f3cb",
+      "games": 48,
+      "validatedMoves": 7240,
+      "models": [
+        {
+          "name": "W7-RESQUAD-R4-LR001-g160-half",
+          "wins": 8,
+          "draws": 7,
+          "losses": 1,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.71875,
+          "pairStandardError": 0.05664543544843536,
+          "descriptiveNormal95": [
+            0.6077249465210667,
+            0.8297750534789333
+          ],
+          "pairScores": [
+            0.5,
+            0.75,
+            0.75,
+            0.75,
+            0.75,
+            0.5,
+            0.75,
+            1.0
+          ],
+          "boundedPair95": [
+            0.23858860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.17174155954969228,
+            1
+          ]
+        },
+        {
+          "name": "W7-RESCUBIC-R4-LR001-g160-half",
+          "wins": 7,
+          "draws": 5,
+          "losses": 4,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.59375,
+          "pairStandardError": 0.10498192871700757,
+          "descriptiveNormal95": [
+            0.38798541971466516,
+            0.7995145802853348
+          ],
+          "pairScores": [
+            0.5,
+            0.5,
+            0.25,
+            0.25,
+            1.0,
+            0.5,
+            0.75,
+            1.0
+          ],
+          "boundedPair95": [
+            0.11358860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.04674155954969228,
+            1
+          ]
+        },
+        {
+          "name": "W7-BRE-CONTROL-LR001-g160-half",
+          "wins": 9,
+          "draws": 3,
+          "losses": 4,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.65625,
+          "pairStandardError": 0.11512318712703239,
+          "descriptiveNormal95": [
+            0.43060855323101654,
+            0.8818914467689835
+          ],
+          "pairScores": [
+            0.5,
+            0.75,
+            0.75,
+            1.0,
+            0.75,
+            1.0,
+            0.5,
+            0.0
+          ],
+          "boundedPair95": [
+            0.17608860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.10924155954969228,
+            1
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W7-RESQUAD-R4-LR001-g160-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 5,
+          "meanDepthDifference": -0.125,
+          "lessEqualMoreDepth": [
+            2,
+            5,
+            1
+          ],
+          "medianNodeRatio": 0.8520640277496372,
+          "medianElapsedRatio": 0.9999785105149817,
+          "medianNpsRatio": 0.8520855182736933
+        },
+        {
+          "name": "W7-RESCUBIC-R4-LR001-g160-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 2,
+          "meanDepthDifference": -0.5,
+          "lessEqualMoreDepth": [
+            4,
+            4,
+            0
+          ],
+          "medianNodeRatio": 0.8109878316331576,
+          "medianElapsedRatio": 1.0001532085563998,
+          "medianNpsRatio": 0.8108636184412799
+        },
+        {
+          "name": "W7-BRE-CONTROL-LR001-g160-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 3,
+          "meanDepthDifference": 0.125,
+          "lessEqualMoreDepth": [
+            1,
+            5,
+            2
+          ],
+          "medianNodeRatio": 1.0044431323876477,
+          "medianElapsedRatio": 0.9999867533978568,
+          "medianNpsRatio": 1.0045121719256054
+        }
+      ],
+      "peakWorkingSetMiB": 530.9375,
+      "engineCpuSeconds": 1448.09375
+    }
+  ],
+  "totalGames": 176,
+  "validatedMoves": 25024,
+  "maximumSampledWorkingSetMiB": 581.65234375,
+  "totalEngineCpuSeconds": 4634.1875,
+  "limitations": [
+    "Development only; no pooled strength score, independent confirmation or success claim.",
+    "Eight or sixteen reversed-colour opening pairs per comparison; roots reused across related protocols, unknown opening-family dependence and prior candidate selection.",
+    "Normal intervals are descriptive; bounded intervals still assume independent opening pairs.",
+    "Distinct budgets/opponents answer distinct questions; fixed budgets completed without favorable optional stopping.",
+    "Quadratic is adaptation-trained on identical G7 residual reservations; BRE retains different historical data, split and optimizer semantics."
+  ]
+}

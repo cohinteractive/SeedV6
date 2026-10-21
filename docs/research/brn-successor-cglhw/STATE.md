@@ -1,10 +1,10 @@
 # BRN successor workstream state
 
-Updated21 October2026. **G4 is complete and verified. All six arms reached64,
+Updated22 October2026. **G4 is complete and verified. All six arms reached64,
 with exact expected continuation and preserved starting payloads. Wave4 trained
-assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; G6 is complete and verified through128; Wave6 trained assessment is closed; G7 is complete and verified through160; trained Wave7 assessment is active.
+assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; G6 is complete and verified through128; Wave6 trained assessment is closed; G7 is complete and verified through160; Wave7 assessment is closed; G8 is prepared and awaits human training through168.
 No programme success is claimed.** This remains the original
-CGLHW. Current evidence/protocol: [WAVE6-ASSESSMENT](WAVE6-ASSESSMENT.md).
+CGLHW. Current assessment: [WAVE7-ASSESSMENT](WAVE7-ASSESSMENT.md); active gate: [WAVE8](WAVE8.md).
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
 [completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md), and [completed G4 training gate](WAVE4.md).
 
@@ -12,47 +12,77 @@ Objective: statistically credible practical chess improvement over frozen BRE-Pa
 Gen32 through useful additional expressiveness, with measured costs and compatible
 search. Architectural complexity or lower validation loss alone is insufficient.
 
-## Current restart point (21 October2026, trained G7 assessment)
+## Current restart point (22 October2026, active human gate G8)
 
-G7 is completed and verified: three sessions129..160, 32 expected generations each,
-100 checkpoint/state pairs pass codec/runtime checks. Q4 Latest/Best160; C4 and BRE
-Latest160, Best158. Exact identities/hashes, recipes, parents, optimizer steps and
-source continuity are in wave7-trained-checkpoints.json and wave7-trained-admission.json.
-All695 inventoried owner files retain their hashes. No G7 retraining is needed.
+G7 is complete and verified through160; all176 fixed Wave7 development games are
+closed,25024 moves independently replayed, no game failure/cap/fallback. Exact
+checkpoints/hashes/settings: wave7-trained-checkpoints.json. Q4 Latest/Best160;
+C4 and BRE Latest160, Best158. Do not repeat G7 training or reopen closed matches.
+Assessment/protocol closure: WAVE7-ASSESSMENT and wave7-assessment-results.json.
 
-Next admissible work: complete the fixed Wave7 development assessment, then select
-and execute the highest-value discriminating follow-up. See WAVE7-ASSESSMENT and
-wave7-assessment-protocol.json. Latest160 was selected prospectively before training;
-Best158 remains separately audited, not substituted after match outcomes. Use ONLY
-frozen build57 wave7-runtime.json. The G7 pause is archived at raw/wave7/g7-completed-pause.txt.
-One game, one worker, no ponder,64MiB TT,768MiB heap, BelowNormal; bounded launches,
-no heavy concurrent jobs. Inspect active processes/receipts before each launch.
+C4 versus Q4 scores43.75% nodes/57.8125% time (32 games each). Against continued
+BRE, Q4/C4 score53.125%/53.125% nodes and56.25%/37.50% time (16 each). Against
+frozen Gen32 at time, Q4/C4/BRE score71.875%/59.375%/65.625% (16 each). These are
+selected development results with small, correlated/reused opening sets. Q4's
+normal interval excludes50% but bounded and selection-aware interpretation does
+not establish independent superiority. Q4 remains additive pairwise. No useful
+cubic chess advantage, independent confirmation or programme success is established.
 
-All four trained Q4/C4 full/half cache probes pass6333 positions and48 paired searches
-each. Fixed consumed panels show small, mixed prediction changes; no strength claim.
-BRE late per-generation validation rise is not reproduced as a general fixed-panel
-collapse. Prior data/split/exposure and cubic-trained projection confounds remain.
-No independent superiority or useful cubic chess advantage is established.
+G8 is fully prepared and verified in three distinct owner lineages:
+- W8-FIXED-CUBIC-R4-LR001: exact W7 Q4 Latest160 function; new zero cubic heads,
+  four trainable parameters, fresh Adam step0; all Q4 weights frozen.
+- W8-FIXED-QUAD-R4-LR001: same initial Q4 function; four existing quadratic heads
+  train with fresh Adam step0; other weights frozen.
+- W8-BRE-CONTROL-LR001: exact W7 BRE Latest160 payload/full Adam continuation.
 
-Implementation preparation: WAVE8 records a fixed-basis four-head hypothesis supported
-by an initially promising but sensitivity-dependent bounded diagnostic. Build58
-passes195 targeted tests and native package image/archive checks; actual owner
-and native GUI checks remain pending. The valid-only pilot favours quadratic heads
-on mapped prediction, so cubic expressive value remains unestablished. A32768-row
-training-source health sample does not reproduce extreme material outliers from
-the sealed diagnostic panel; no data-policy change is justified. No W8 owner stores or training gate exist yet. Finish frozen57 Wave7 games
-and inspect the full assessment before final gate admission.
+Read WAVE8 and wave8-owner-readiness.json for exact roots/IDs/full hashes and GUI
+instructions. All are at starting Gen160, with zero new generations. Train EIGHT
+additional generations161..168, rate.001,batch128,eight epochs,131072 positions,
+seed1,one worker,held-out WDL,inherited sources. Both head arms deliberately reset
+Adam only in their new lineages; original source states are preserved. BRE retains
+step3063808. Expected final steps65536 for heads and3129344 for BRE. Latest168 is
+prospectively primary; audit Best independently. Preserve every existing artifact.
 
-Active frontier: (1) adapted rank4 degree/value versus continued BRE, (2) practical
-cost and depth interaction, (3) training/search mapping alignment, (4) selective or
-local-blocker corrections if compact degree lacks useful value. Q4 is an additive
-pairwise control, not an eligible higher-order successor by itself. The visibility
-prototype remains feasibility evidence, not an admitted architecture. No automatic
-extra32-generation gate or unchanged-match significance hunting. Reserved confirmation
-partition1 is untouched. Preserve all previous Wave6 evidence and closed288 games.
+Build58 implementation b4453ad passes195 targeted tests, native package checks,
+actual packaged GUI previews, six actual payload/state audits, and independent
+projection/source/seek checks. Actual owner payloads exactly match isolated fixtures
+whose four full/half cache probes pass6333 positions/48 search pairs each. Final
+preservation:4676 existing files plus54 new W8 files unchanged. W1 untouched, not
+freshly rehashed. No full-suite or substantive G8 training claim. Native executable:
+dist/windows/candidates/candidate-20261021T111458-afa96ee7/SeedV6-GUI/SeedV6-GUI.exe.
 
-Human actions required after this prompt: None at this active assessment checkpoint.
-The owner-completed G7 action is verified; substantive future training remains reserved.
+Next admissible action is the owner training below. After reported completion,
+use wave8-trained-audit-plan.json with frozen wave8-runtime.json and BrnLineageAudit
+into a NEW output directory, then tools/audit-brn-wave6-training.py on that audit.
+The auditor explicitly supports G8's eight generations and checks frozen weights,
+excluded zero Adam moments, source ancestry, recipes, histories and exact steps.
+Expect9 checkpoint/state pairs per arm and8 history rows. Resolve material anomalies
+before freezing endpoints or matches. New runtime helpers must preserve the frozen
+build57 Wave7 evidence. Archive the current runner pause only after G8 is evidenced.
+
+The bounded pilot's original cubic fitting separation failed status-valid sensitivity;
+quadratic heads improved more on all four mapped valid panels. That negative result
+is retained. Extreme sealed diagnostic records did not establish actual training
+contamination; a32768-record training-source sample found no material-count anomaly.
+No data-policy change was made. G8 tests degree contribution on a fixed basis, not
+a causal claim that shared-embedding interference explains earlier failures.
+
+Frontier after G8: degree value versus fixed quadratic and exact zero-C3 anchor;
+continued BRE/frozen Gen32 at time and targeted nodes; calibration and throughput;
+then evidence-supported refinement or a different feature direction. No automatic
+unchanged training extension or significance-seeking games. Visibility pilot is
+negative/inconclusive, not a discarded architecture proof. Reserved confirmation
+opening partition1 remains untouched. Ordinary GUI full/block-cache behavior is
+not the same test condition as research half-change/guarded-cubic-cache matches;
+eventual production integration needs explicit verification before a success claim.
+
+All research engines and GUI previews have exited. The pause at
+build/research/brn-successor-batches.pause remains active for G8.
+Human actions required after this prompt: BLOCKING - train the three prepared W8
+lineages for8 additional generations through168 using saved settings, close GUI,
+and report completion/anomalies. This blocks trained G8 assessment. If interrupted,
+resume the same session and target168; do not add another8 after partial completion.
+No G7 retraining, manual Arena, export or separate non-blocking action is required.
 
 ## Candidate registry and preserved reference
 
@@ -73,6 +103,8 @@ The owner-completed G7 action is verified; substantive future training remains r
 | W6-RESQUAD-R16-LR001 | Latest/Best128; exact degree2 projection from C16 Latest96, then32 verified generations; additive pairwise control |
 | W6-RESCUBIC-R16-LR001 / R4-LR001 | Latest/Best128 in both; exact W5 Latest96 payload/Adam continuation; matched residual data |
 | W6-BRE-CONTROL-LR001 | Latest/Best128; exact W5 BRE001 Latest96 continuation; distinct historical data/split remains a confound |
+| W7 Q4 / C4 / BRE001 | Verified Latest160; Best160/158/158; all176 development games closed |
+| W8 fixed C3 heads / fixed Q heads / BRE001 | Prepared at160, target168; head steps0, BRE3063808; zero new generations |
 
 All managed roots are under E:/SeedV6-Networks. Exact checkpoint IDs, hashes and
 sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`, `wave3-trained-checkpoints.json`, `wave4-owner-readiness.json`, `wave4-trained-checkpoints.json`, `wave5-owner-readiness.json`. Frozen reference

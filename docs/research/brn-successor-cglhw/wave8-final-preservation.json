@@ -1,0 +1,58 @@
+{
+  "id": "wave8-human-gate-preservation-v1",
+  "recordedUtc": "2026-10-21T12:11:50.025528+00:00",
+  "inventories": [
+    {
+      "inventory": "raw/wave7/trained-before-01.json",
+      "inventorySha256": "ca539c9c5ae69d6b1740be8b1f62137525e5c69ff076a7c4e29839ecf3d226b0",
+      "verifiedFiles": 695,
+      "verifiedBytes": 128133878,
+      "unchanged": true,
+      "scope": "Entire recorded inventory"
+    },
+    {
+      "inventory": "raw/wave6/trained-before-01.json",
+      "inventorySha256": "9ad0e9e99320ed2fa24ba1f3fd210a4c28f6355e854e4e7a8c569d8a5b18c541",
+      "verifiedFiles": 941,
+      "verifiedBytes": 152323733,
+      "unchanged": true,
+      "scope": "Entire recorded inventory"
+    },
+    {
+      "inventory": "raw/wave5/trained-before-01.json",
+      "inventorySha256": "f5ca8fc5833dc2179b31baacb54c63b6e2a76921456de327893a9cc8c97a5fa9",
+      "verifiedFiles": 925,
+      "verifiedBytes": 253613522,
+      "unchanged": true,
+      "scope": "Entire recorded inventory"
+    },
+    {
+      "inventory": "raw/wave4/trained-before-01.json",
+      "inventorySha256": "8884401cc5b60b82e1715c1504be28c5daca8496e902581885eb17f7bb4ebad7",
+      "verifiedFiles": 1405,
+      "verifiedBytes": 277948482,
+      "unchanged": true,
+      "scope": "Entire recorded inventory"
+    },
+    {
+      "inventory": "raw/wave4/seek-remediation-before-01.json",
+      "inventorySha256": "f5e13f5b44347494e38059040337c10b60e55fb78c7cd0f327ec8c4a62a058b7",
+      "verifiedFiles": 710,
+      "verifiedBytes": 141906195,
+      "unchanged": true,
+      "scope": "Selected immutable W3/frozen roots only; old W4 pretraining entries excluded"
+    },
+    {
+      "inventory": "raw/wave8/owner-ready-inventory-01.json",
+      "inventorySha256": "5435fce1c1012b5ea9de8e475eb83cc3e59ce6fbf54b9cac3bd1e5c95d25611e",
+      "verifiedFiles": 54,
+      "verifiedBytes": 6748445,
+      "unchanged": true,
+      "scope": "Entire recorded inventory"
+    }
+  ],
+  "limitations": [
+    "W1 models untouched; no fresh full W1 rehash.",
+    "Dataset sources were read, never overwritten; this is not a new whole-dataset hash."
+  ]
+}
