@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "scope": "Independent byte/CRC/layout and exact parameter/moment projection; unchanged controls",
+  "entries": [
+    {
+      "candidate": "W5-RESCUBIC-R4-LR001",
+      "checkpoint": "g000064-s000524288-50b88e15725392cf5c63e72b9477e8d95209d582b3dba3a46f6a4340d3b3f71e",
+      "networkSha256": "0d4740db66991f3454c19ff9121592f582999db2aaacb7d6e81325c1784b1a12",
+      "modelBytes": 30864,
+      "step": 524288,
+      "rate": 0.001,
+      "exactMappedValues": 11547,
+      "trainingSha256": "a61db08d5b0a69fd2a15a85457fd7572c575cb7b786e0e7e42910243bcedd4b4",
+      "stateBytes": 92464
+    },
+    {
+      "candidate": "W5-RESCUBIC-R16-LR001",
+      "checkpoint": "g000064-s000524288-d0a345a8e3b094c1ddb67c579999fff1ed5cd28e2fd88b788249045f04185db5",
+      "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc",
+      "modelBytes": 104784,
+      "trainingSha256": "3c8d6ed2cb7884ac661de8bcbd1f8d6332ddac2788c272747ab2787808b682a8",
+      "stateBytes": 314224
+    },
+    {
+      "candidate": "W5-BRE-CONTROL-LR001",
+      "checkpoint": "g000064-s002277376-106cadb4ac5474fd8d8193b801dfeb10e723e6e4c5a33ee72831eaefa8500441",
+      "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+      "modelBytes": 795032,
+      "trainingSha256": "19aa0beffaf653c5b8ba4dca89f5b4b4a3f0eb31440e297acf7f0969b0485502",
+      "stateBytes": 2731424
+    },
+    {
+      "candidate": "W5-BRE-CONTROL-LR003",
+      "checkpoint": "g000064-s002277376-a1b29b6a66cee4b9484194f26401ca1e4252587f64ebc668cce191b050d1d05d",
+      "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050",
+      "modelBytes": 795032,
+      "trainingSha256": "4c23665148d475c44c7e24f903c011407128f17272e5cbba197ce3d642fa883a",
+      "stateBytes": 2731424
+    }
+  ]
+}
