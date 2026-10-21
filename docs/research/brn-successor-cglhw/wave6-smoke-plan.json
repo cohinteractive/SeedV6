@@ -1,0 +1,66 @@
+{
+  "id": "wave6-actual-bootstrap-legal-smoke-v1",
+  "models": [
+    {
+      "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/Gen32",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "name": "Gen32"
+    },
+    {
+      "name": "W6-RESQUAD-R16-LR001",
+      "root": "docs/research/brn-successor-cglhw/raw/wave6/frozen-01/W6-RESQUAD-R16-LR001",
+      "checkpoint": "g000096-s000786432-006248e7403c0722ad39b9985a64720e6e7a674bbce03641b534d95445d4c9e5",
+      "networkSha256": "5a29ac78062f06db7b733fe378828249a7608a917822c6410b0583bdd8ecce97"
+    },
+    {
+      "name": "W6-RESCUBIC-R16-LR001",
+      "root": "docs/research/brn-successor-cglhw/raw/wave6/frozen-01/W6-RESCUBIC-R16-LR001",
+      "checkpoint": "g000096-s000786432-95c41228cf754917df732dfb49d8607607dc1f2255158bde009310319e0e1abf",
+      "networkSha256": "14e72d384c4a18ec80b2db2d55df6a3c9ae69f671c9c0b9688fac3e3fb8c1218",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W6-RESCUBIC-R4-LR001",
+      "root": "docs/research/brn-successor-cglhw/raw/wave6/frozen-01/W6-RESCUBIC-R4-LR001",
+      "checkpoint": "g000096-s000786432-f1dc29a86ad4b3ace69bb4842a54e0c5003c08c91f0e03693a1d30acd5860c79",
+      "networkSha256": "a831c9beea3889351b92fea09039ab7eabd8eb9ee6f648807336dfaa9684c158",
+      "cubicDeltaCache": true
+    },
+    {
+      "name": "W6-BRE-CONTROL-LR001",
+      "root": "docs/research/brn-successor-cglhw/raw/wave6/frozen-01/W6-BRE-CONTROL-LR001",
+      "checkpoint": "g000096-s002539520-ac1fd502f9fff4e3cd5f04d9326c5f7104113a601e63c3d03460d9c103b3fa0e",
+      "networkSha256": "303d94b16ad1fb24a10070db9113704cee4c33aa25b2a92f43b3e76741642a94"
+    }
+  ],
+  "pairs": 1,
+  "seed": 2026102106,
+  "nodes": 32768,
+  "moveMillis": 0,
+  "maximumPlies": 8,
+  "batchGames": 8,
+  "batchSeconds": 60,
+  "openingMoves": [
+    [
+      "d2d4",
+      "d7d5",
+      "c2c4",
+      "c7c6",
+      "c4d5",
+      "c6d5",
+      "b1c3",
+      "g8f6",
+      "g1f3",
+      "c8f5",
+      "d1b3",
+      "f5c8",
+      "c1f4",
+      "e7e6",
+      "c3b5",
+      "b8a6"
+    ]
+  ],
+  "legalFallback": false,
+  "scope": "Eight intentionally capped 8-ply games: actual four starts versus Gen32. Loader/legal-play smoke only, never strength evidence."
+}

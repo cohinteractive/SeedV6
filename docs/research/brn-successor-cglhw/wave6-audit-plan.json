@@ -1,0 +1,30 @@
+{
+  "id": "wave6-pre-training-audit-v1",
+  "models": [
+    {
+      "name": "Gen32",
+      "root": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+      "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304"
+    },
+    {
+      "name": "W6-RESQUAD-R16-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-QUADRATIC\\23022fb7-f9fc-349d-ad69-60088a84d740",
+      "initialCheckpoint": "g000096-s000786432-006248e7403c0722ad39b9985a64720e6e7a674bbce03641b534d95445d4c9e5"
+    },
+    {
+      "name": "W6-RESCUBIC-R16-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\ce533b4e-83a8-3ac5-b9e0-546f1ce414cd",
+      "initialCheckpoint": "g000096-s000786432-95c41228cf754917df732dfb49d8607607dc1f2255158bde009310319e0e1abf"
+    },
+    {
+      "name": "W6-RESCUBIC-R4-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC-R4\\dd1c701f-ff67-38da-97e3-40f41605ec98",
+      "initialCheckpoint": "g000096-s000786432-f1dc29a86ad4b3ace69bb4842a54e0c5003c08c91f0e03693a1d30acd5860c79"
+    },
+    {
+      "name": "W6-BRE-CONTROL-LR001",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\065d3f01-1bd6-3207-9c26-454dbfa683f3",
+      "initialCheckpoint": "g000096-s002539520-ac1fd502f9fff4e3cd5f04d9326c5f7104113a601e63c3d03460d9c103b3fa0e"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 Updated21 October2026. **G4 is complete and verified. All six arms reached64,
 with exact expected continuation and preserved starting payloads. Wave4 trained
-assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; Wave6 degree-control preparation is active.
+assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; G6 is prepared and verified; human training is blocking.
 No programme success is claimed.** This remains the original
 CGLHW. Current evidence/protocol: [WAVE5-ASSESSMENT](WAVE5-ASSESSMENT.md).
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
@@ -88,25 +88,40 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
 
 ## Current action and exact resume point
 
-**Human actions required after this prompt: None.** G5 is complete and verified;
-all544 fixed W5 development games are closed, with71731 independent legal move
-replays, no game failure/cap/fallback and maximum sampled engine working set589.23MiB.
-No independent strength confirmation or useful cubic chess advantage is established.
-See WAVE5-ASSESSMENT and wave5-assessment-results.json. Do not restart those games.
+**Human actions required after this prompt: blocking ? complete G6 in [WAVE6](WAVE6.md).**
+G5 is complete and verified. All544 fixed W5 development games are closed, with
+71731 independent legal move replays and no game failure/cap/fallback. No independent
+strength confirmation or useful cubic chess advantage is established. See
+WAVE5-ASSESSMENT and wave5-assessment-results.json. Do not restart those games.
 
-Current unit: prepare the four explicitly admitted W6 continuations in [WAVE6](WAVE6.md)
-and wave6-continuation-plan.json. Full R16 beats its untrained quadratic ablation
-62.5% in16 games, with broad uncertainty; a separately adapted quadratic control
-is needed. Q16/C16 share the exact W5 C16 Latest96 state/data; C4 and BRE001 continue
-their own exact Latest96. All rates.001, intended32 additional generations97..128.
-This is a new experiment within this programme, not a new contract or success claim.
+Four distinct W6 owner lineages are ready: W6-RESQUAD-R16-LR001,
+W6-RESCUBIC-R16-LR001, W6-RESCUBIC-R4-LR001 and W6-BRE-CONTROL-LR001.
+All begin at explicitly bound W5 Latest96, rate.001,32 additional generations97..128.
+Q16/C16 share exact source state/data except the explicit removal of degree3 heads
+and moments in Q16. Q16 is an additive pairwise control, not an eligible higher-order
+success claim. Exact roots, IDs/hashes and recipes: wave6-owner-readiness.json.
 
-Implementation7e28740/build56 passes126 targeted tests. Next create the distinct
-owner stores, run independent actual byte/Adam/seek and Java codec audits, actual
-cache/search/legal-play checks, native packaging and GUI previews, and preservation
-rehashes. Activate the consolidated G6 human gate only after readiness passes.
-No substantive training has been run by Codex. Source checkpoints and W5 Best
-pointers remain protected. All W5 games used their originally frozen build55 runtimes.
+Implementation7e28740/build56 passes141 targeted tests including the actual native
+owner GUI preview. Independent actual projection verifies39219 retained values and
+source/cursor/seek inheritance; five actual payload/state pairs pass24-board scores.
+Four cache probes pass6333 positions and48 search root passes each; projected Q16
+matches its masked C16 source on all96 search results.64 legal smoke plies and
+packaged/relocated native GUI checks pass. No full-suite or substantive training claim.
+Build56 executable: dist/windows/candidates/candidate-20261021T051743-83f14ec3/
+SeedV6-GUI/SeedV6-GUI.exe (packaging source4faba8d5a79d).
+
+Final preservation rehash passes710 historical W3/frozen,1405 W4,925 trained W5
+and72 new W6 files; W1 untouched, not freshly rehashed. All research engines/GUI
+preview processes have exited. The existing runner pause is active at
+build/research/brn-successor-batches.pause. No new owner lineage has been trained.
+
+Exact resume: after the owner reports G6, verify actual histories, recipes, parent
+chains, optimizer steps and Latest/Best; expected final128 with1048576 residual or
+2801664 BRE steps. Resolve material anomalies before games. Archive the pause as
+raw/wave6/g6-completed-pause.txt only when completion is evidenced. Freeze actual
+endpoints, then admit bounded trained Q16/C16 and continued-BRE comparisons at
+practical depth and equal time. Human gate completion cannot be inferred from a
+later prompt. No G5 retraining, manual Arena or other human action is required.
 
 Active frontier: (1) trained Q16/C16 degree contribution, (2) R4 maturity versus
 capacity and practical cost, (3) training/search mapping alignment, (4) selective or

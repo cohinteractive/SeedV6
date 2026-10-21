@@ -163,3 +163,10 @@ persisted-evidence audit verifies that report. No repeated training is requested
 The pause sentinel is preserved at `raw/wave5/g5-completed-pause.txt`; matches now
 follow the frozen admission in WAVE5-ASSESSMENT and current STATE. Check actual
 receipts before resuming any batch. This completed gate does not establish success.
+
+
+The post-training W5 assessment is now closed:544 development games,71731 legal
+move replays, no independent superiority claim. See WAVE5-ASSESSMENT and its
+aggregate manifest. All925 trained W5 inventoried files remain unchanged through
+the final rehash. The next active owner gate is G6 in WAVE6.md, using distinct
+new Gen96 forks; do not repeat G5 or train the original W5 stores.

@@ -1,0 +1,192 @@
+{
+  "status": "passed",
+  "runtime": {
+    "path": "docs\\research\\brn-successor-cglhw\\wave6-runtime.json",
+    "sha256": "ae1059e72e8aa285eb9890765b6ea6270b99a0f0bc48d1cec2d40349ae51664c"
+  },
+  "models": [
+    {
+      "evidence": {
+        "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-1-01.json",
+        "sha256": "4768d491bf0b1e60da745c801d390146e512b09b09dd9fb7ffc6349643b5363f"
+      },
+      "process": {
+        "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-1-01.process.json",
+        "sha256": "b75e84775efe914c9fe825aeeeadfe2d315506a7254768c6a8414b7dff067b18"
+      },
+      "candidateName": "W6-RESQUAD-R16-LR001",
+      "manifest": {
+        "id": "g000096-s000786432-006248e7403c0722ad39b9985a64720e6e7a674bbce03641b534d95445d4c9e5",
+        "generation": 96,
+        "optimizerStep": 786432,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 104656,
+        "networkSha256": "5a29ac78062f06db7b733fe378828249a7608a917822c6410b0583bdd8ecce97",
+        "trainingBytes": 313840,
+        "trainingSha256": "d30a71b8af47dd158226e27c29593fe46ba1007ffc4f2b1b2ede647482d1ec85",
+        "architecture": "BRN_GEN32_QUADRATIC"
+      },
+      "positions": 6333,
+      "maximumRawError": 5.995204332975845e-15,
+      "maximumFreshRawError": 8.326672684688674e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "combinedPayloadBytes": 899688,
+      "accumulatorPrimitiveBytes": 4073,
+      "cacheDetails": {
+        "kind": "quadratic-period64-canonical-rounding-guard-v1",
+        "correctionErrorBound": 1.8342942638261524e-07,
+        "rebuilds": 124,
+        "roundingFallbacks": 0,
+        "updates": 6209
+      },
+      "searchRootPasses": 48,
+      "searchDifferences": 0,
+      "transitionMedianNanos": {
+        "QUADRATIC-full": 791.558,
+        "QUADRATIC-cache": 276.714,
+        "Gen32": 142.522
+      }
+    },
+    {
+      "evidence": {
+        "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-2-01.json",
+        "sha256": "7860c87913a6ced8460259458301452be11679d13981376c5bf4e210681364b0"
+      },
+      "process": {
+        "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-2-01.process.json",
+        "sha256": "a8215d8568b8d4cc0ade90fd9f41b9fd7b4c807ac2a13bc9aca8fe94c4797423"
+      },
+      "candidateName": "W6-RESCUBIC-R16-LR001",
+      "manifest": {
+        "id": "g000096-s000786432-95c41228cf754917df732dfb49d8607607dc1f2255158bde009310319e0e1abf",
+        "generation": 96,
+        "optimizerStep": 786432,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 104784,
+        "networkSha256": "14e72d384c4a18ec80b2db2d55df6a3c9ae69f671c9c0b9688fac3e3fb8c1218",
+        "trainingBytes": 314224,
+        "trainingSha256": "66a1e1415dae680f1b065a16bb85e9b38f0a845a17daa2d9248f6fa98647eb0e",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "positions": 6333,
+      "maximumRawError": 6.661338147750939e-15,
+      "maximumFreshRawError": 7.549516567451064e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "combinedPayloadBytes": 899816,
+      "accumulatorPrimitiveBytes": 4329,
+      "cacheDetails": {
+        "rebuilds": 132,
+        "correctionErrorBound": 2.4302348795552735e-05,
+        "kind": "polynomial-period64-canonical-rounding-guard-v1",
+        "updates": 6212,
+        "roundingFallbacks": 11
+      },
+      "searchRootPasses": 48,
+      "searchDifferences": 0,
+      "transitionMedianNanos": {
+        "CUBIC-full": 912.542,
+        "CUBIC-cache": 326.346,
+        "Gen32": 146.118
+      }
+    },
+    {
+      "evidence": {
+        "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-3-01.json",
+        "sha256": "a939fe01571c89db1620579260aa20486bb5ba686e718b14cc9dcb663a321343"
+      },
+      "process": {
+        "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-3-01.process.json",
+        "sha256": "5790150d922fc40ef2b933c2086f921564bfbc7c4ec4e4993f5973fb6cae5bbc"
+      },
+      "candidateName": "W6-RESCUBIC-R4-LR001",
+      "manifest": {
+        "id": "g000096-s000786432-f1dc29a86ad4b3ace69bb4842a54e0c5003c08c91f0e03693a1d30acd5860c79",
+        "generation": 96,
+        "optimizerStep": 786432,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 30864,
+        "networkSha256": "a831c9beea3889351b92fea09039ab7eabd8eb9ee6f648807336dfaa9684c158",
+        "trainingBytes": 92464,
+        "trainingSha256": "00f32dc27648a4e7ce5ffc24ea5c430f67059317b59818437b9ca1a9f99ff630",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "positions": 6333,
+      "maximumRawError": 6.217248937900877e-15,
+      "maximumFreshRawError": 7.105427357601002e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "combinedPayloadBytes": 825896,
+      "accumulatorPrimitiveBytes": 3753,
+      "cacheDetails": {
+        "roundingFallbacks": 0,
+        "rebuilds": 124,
+        "correctionErrorBound": 1.860685516369472e-05,
+        "kind": "polynomial-period64-canonical-rounding-guard-v1",
+        "updates": 6209
+      },
+      "searchRootPasses": 48,
+      "searchDifferences": 0,
+      "transitionMedianNanos": {
+        "CUBIC-full": 676.344,
+        "CUBIC-cache": 256.79,
+        "Gen32": 172.298
+      }
+    },
+    {
+      "evidence": {
+        "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-5-01.json",
+        "sha256": "319177ad9598430a7f97894e63e218db6bd683981f406f608a409cad994989b1"
+      },
+      "process": {
+        "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-5-01.process.json",
+        "sha256": "1bca740c99ad023064ca2392652550b0418e2c5aecc7007c5d65c0a6fa86a519"
+      },
+      "candidateName": "W6-R16-quadratic-ablation",
+      "manifest": {
+        "id": "g000096-s000786432-95c41228cf754917df732dfb49d8607607dc1f2255158bde009310319e0e1abf",
+        "generation": 96,
+        "optimizerStep": 786432,
+        "trainingDepth": 4,
+        "parentId": "",
+        "networkBytes": 104784,
+        "networkSha256": "14e72d384c4a18ec80b2db2d55df6a3c9ae69f671c9c0b9688fac3e3fb8c1218",
+        "trainingBytes": 314224,
+        "trainingSha256": "66a1e1415dae680f1b065a16bb85e9b38f0a845a17daa2d9248f6fa98647eb0e",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "positions": 6333,
+      "maximumRawError": 5.995204332975845e-15,
+      "maximumFreshRawError": 8.326672684688674e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "combinedPayloadBytes": 899816,
+      "accumulatorPrimitiveBytes": 4329,
+      "cacheDetails": {
+        "rebuilds": 124,
+        "roundingFallbacks": 0,
+        "updates": 6209,
+        "kind": "polynomial-period64-canonical-rounding-guard-v1",
+        "correctionErrorBound": 1.8342942638261524e-07
+      },
+      "searchRootPasses": 48,
+      "searchDifferences": 0,
+      "transitionMedianNanos": {
+        "CUBIC-full": 903.574,
+        "CUBIC-cache": 330.186,
+        "Gen32": 155.864
+      }
+    }
+  ],
+  "projectedVersusAblatedSearchResultsExact": 96,
+  "warmedSameFunctionCostRatio": 0.9559218230724764,
+  "sameFunctionCostObservations": 32,
+  "limitations": [
+    "Single sequential bounded cost run; 32 warmed root-pass ratios, not independent replications or tournament NPS.",
+    "Compare new quadratic with masked cubic only for identical-function cost. Full cubic evaluates a different function. No trained Q strength evidence."
+  ]
+}

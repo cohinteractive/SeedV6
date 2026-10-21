@@ -1,0 +1,42 @@
+{
+  "recordedUtc": "2026-10-21T05:24:11.568896+00:00",
+  "status": "passed",
+  "unchangedFiles": {
+    "historicalW3AndFrozen": 710,
+    "trainedW4": 1405,
+    "trainedW5": 925,
+    "preparedW6": 72
+  },
+  "changed": [],
+  "inventories": [
+    {
+      "name": "historicalW3AndFrozen",
+      "evidence": {
+        "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\seek-remediation-before-01.json",
+        "sha256": "f5e13f5b44347494e38059040337c10b60e55fb78c7cd0f327ec8c4a62a058b7"
+      }
+    },
+    {
+      "name": "trainedW4",
+      "evidence": {
+        "path": "docs\\research\\brn-successor-cglhw\\raw\\wave4\\trained-before-01.json",
+        "sha256": "8884401cc5b60b82e1715c1504be28c5daca8496e902581885eb17f7bb4ebad7"
+      }
+    },
+    {
+      "name": "trainedW5",
+      "evidence": {
+        "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-before-01.json",
+        "sha256": "f5ca8fc5833dc2179b31baacb54c63b6e2a76921456de327893a9cc8c97a5fa9"
+      }
+    },
+    {
+      "name": "preparedW6",
+      "evidence": {
+        "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\owner-before-gui-01.json",
+        "sha256": "68a8d1d94c19f6bfd268ec0bffcd9a341e4d3168b2411ddbef4c3526b8b15773"
+      }
+    }
+  ],
+  "scope": "Every inventoried W3/frozen, W4, W5 and newly prepared W6 byte unchanged. W1 untouched, not freshly rehashed. No substantive owner training."
+}

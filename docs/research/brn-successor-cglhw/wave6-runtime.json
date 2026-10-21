@@ -1,0 +1,28 @@
+{
+  "id": "wave6-degree-control-runtime-v1",
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave6\\runtime-56-01\\lib",
+  "createdUtc": "2026-10-21T05:19:22.518870+00:00",
+  "sourceCommit": "4faba8d5a79d92db35288073b69c7fa9d528aed3",
+  "build": 56,
+  "modelFeatures": [
+    "brn-hybrid-raw-v1",
+    "brn-cubic-packed-v1",
+    "brn-unary-compiled-v1",
+    "brn-constant-gates-compiled-v1",
+    "brn-cubic-r4-v1",
+    "brn-cubic-only-ablation-v1",
+    "brn-gen32-quadratic-v1"
+  ],
+  "jars": {
+    "engine-core.jar": "067117a1ab8fa49c7755705b273cb9e600eeda3b85710e344f3db63c18d52b4b",
+    "engine-training.jar": "b444ca50900cec975c3d4b6794e09abb783bcf59e2b7a72743d828e5f184a446",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "639d50230afdd81c0bb16f57428ef8d1f9f7454762368a38ead460aae6c261e3",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "java": "C:/java/jdk-21/bin/java.exe",
+  "heapMiB": 768,
+  "activeProcessors": 1
+}
