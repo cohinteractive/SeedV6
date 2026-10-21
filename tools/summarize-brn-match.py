@@ -1,6 +1,6 @@
 """Compact provenance-bound completion summary, after independent legal replay.
 
-Usage: python summarize-brn-match.py PLAN RECEIPTS ANALYSIS RUNTIME NEW_OUTPUT
+Usage: python summarize-brn-match.py PLAN RECEIPTS ANALYSIS RUNTIME NEW_OUTPUT [HISTORICAL_DIAGNOSTICS]
 Does not run engines, alter protocols, select candidates or claim confirmation.
 """
 import hashlib
@@ -54,7 +54,28 @@ def diagnostic_entrypoint(record):
     return entries[0]
 
 
-def summarize(plan_file, receipts, analysis_file, runtime_file, output):
+def historical_classification(manifest, parent):
+    """Explicit byte-bound classification for old abbreviated nonmatch QA receipts."""
+    from datetime import datetime
+    classification = json.loads(Path(manifest).read_text(encoding='utf-8-sig'))
+    assert classification['id'] == 'brn-historical-nonmatch-process-classification-v1'
+    classified = {}
+    for entry in classification['records']:
+        path = Path(entry['path'])
+        assert path.resolve().parent == Path(parent).resolve()
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == entry['sha256']
+        assert entry['kind'] in ('implementation-tests', 'native-package', 'owner-preparation')
+        record = json.loads(path.read_text(encoding='utf-8-sig'))
+        assert set(record) in ({'activeProcessors','exitCode','completedUtc'},
+                               {'activeProcessors','exitCode','completedUtc','purpose'})
+        assert record['activeProcessors'] == 1 and record['exitCode'] == 0
+        assert datetime.fromisoformat(record['completedUtc']).tzinfo is not None
+        assert path.resolve() not in classified
+        classified[path.resolve()] = entry
+    return classified
+
+
+def summarize(plan_file, receipts, analysis_file, runtime_file, output, historical_diagnostics=None):
     plan_file, receipts, analysis_file, runtime_file, output = map(
         Path, (plan_file, receipts, analysis_file, runtime_file, output))
     if output.exists():
@@ -119,10 +140,13 @@ def summarize(plan_file, receipts, analysis_file, runtime_file, output):
         assert digest(Path(runtime["runtime"]) / name) == expected
     processes = []
     separate_diagnostics = []
+    classified = (historical_classification(historical_diagnostics, receipts.parent)
+                  if historical_diagnostics is not None else {})
     for path in sorted(receipts.parent.glob("*.process.json")):
         record = read(path)
         if "plan" not in record:
-            entry = diagnostic_entrypoint(record)
+            entry = ('historical-'+classified[path.resolve()]['kind'] if path.resolve() in classified
+                     else diagnostic_entrypoint(record))
             separate_diagnostics.append(dict(path=str(path), sha256=digest(path), entrypoint=entry,
                                              exitCode=record["exitCode"]))
             continue
@@ -153,6 +177,9 @@ def summarize(plan_file, receipts, analysis_file, runtime_file, output):
                      analysis.get("openingPrefixLimit"),
                      "Hoeffding intervals assume independent bounded opening-pair scores; within-plan union bound covers only this plan, not prior candidate selection or repeated protocols. Independence remains unverified.",
                      "No final strength claim, selection-adjusted confirmation, or architectural causation inferred."])
+    if historical_diagnostics is not None:
+        report['historicalDiagnosticClassification'] = str(historical_diagnostics)
+        report['evidenceSha256'][str(historical_diagnostics)] = digest(Path(historical_diagnostics))
     with output.open("x", encoding="utf-8", newline="\n") as stream:
         json.dump(report, stream, indent=2)
         stream.write("\n")

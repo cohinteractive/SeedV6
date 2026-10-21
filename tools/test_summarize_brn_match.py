@@ -2,6 +2,9 @@
 import importlib.util
 from pathlib import Path
 import unittest
+import hashlib
+import json
+import tempfile
 
 spec = importlib.util.spec_from_file_location("summary", Path(__file__).with_name("summarize-brn-match.py"))
 summary = importlib.util.module_from_spec(spec)
@@ -9,6 +12,25 @@ spec.loader.exec_module(summary)
 
 
 class DiagnosticProcessTest(unittest.TestCase):
+    def test_historical_classification_binds_bytes_location_and_nonmatch_shape(self):
+        with tempfile.TemporaryDirectory() as directory:
+            parent = Path(directory); receipt = parent/'qa.process.json'; manifest = parent/'classification.json'
+            record = dict(activeProcessors=1, exitCode=0, completedUtc='2026-10-21T09:00:00Z')
+            def write(value, **changes):
+                receipt.write_text(json.dumps(value))
+                entry = dict(path=str(receipt), sha256=hashlib.sha256(receipt.read_bytes()).hexdigest(), kind='native-package')
+                entry.update(changes)
+                manifest.write_text(json.dumps(dict(id='brn-historical-nonmatch-process-classification-v1', records=[entry])))
+            write(record)
+            self.assertEqual('native-package', summary.historical_classification(manifest,parent)[receipt.resolve()]['kind'])
+            with self.assertRaises(AssertionError): summary.historical_classification(manifest,parent/'different')
+            for changed in ({'sha256':'0'*64},{'kind':'match'}):
+                write(record,**changed)
+                with self.subTest(changed=changed), self.assertRaises(AssertionError): summary.historical_classification(manifest,parent)
+            for changed in ({'plan':'game-plan.json'},{'args':['BrnSuccessorMatch']},{'activeProcessors':8},{'exitCode':1}):
+                write({**record,**changed})
+                with self.subTest(changed=changed), self.assertRaises(AssertionError): summary.historical_classification(manifest,parent)
+
     def test_read_only_audit_receipt_requires_bounded_known_entrypoint(self):
         record = dict(args=["java.exe", "-Xmx768m", "-XX:ActiveProcessorCount=1",
                             "--add-modules=jdk.incubator.vector", "-cp", "frozen/*",

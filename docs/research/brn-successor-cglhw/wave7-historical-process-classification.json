@@ -1,0 +1,22 @@
+{
+  "id": "brn-historical-nonmatch-process-classification-v1",
+  "records": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\implementation-tests-02.process.json",
+      "sha256": "7e6f4d6a511e82fdb1115dadb9d4a870221ffc8b945836df51f92d688062cd0a",
+      "kind": "implementation-tests"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\native-package-01.process.json",
+      "sha256": "a45723c6f2a389b13d68aecc0a520a8d15c3de331b5360c3c19af9954380bf73",
+      "kind": "native-package"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\owner-preparation-process-01.process.json",
+      "sha256": "b724406d73275de4a6f959637541059ace45647c04784c7bc4b340746008ecd1",
+      "kind": "owner-preparation"
+    }
+  ],
+  "reason": "Three G7 preparation receipts from the preceding root have abbreviated successful QA metadata without argv. WAVE7 and wave7-owner-readiness.json identify their build/test/owner-preparation context. They predate current games and are never counted as match evidence. Original bytes preserved. Unknown or hash-changed records remain fatal.",
+  "trigger": "First degree-node summarization rejected an unclassified historical receipt after successful legal replay; no game or model defect, replay or discarded outcome."
+}

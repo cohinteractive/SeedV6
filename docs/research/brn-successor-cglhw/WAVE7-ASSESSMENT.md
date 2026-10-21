@@ -106,3 +106,33 @@ not run concurrent heavy probes/builds/training. Raw output is local-only eviden
 After closing the assessment, select a discriminating follow-up using the current
 STATE frontier. Do not automatically request another32 generations or stop at this
 documentation boundary. Human actions currently required: None.
+
+## Active findings after the first closed comparison
+
+Equal-node C4 versus Q4 closes32 games/3991 legally replayed moves:12 wins,
+4 draws,16 losses,43.75%, descriptive95%26.14..61.36. Paired-root C4 NPS/Q4
+is.9642; fixed-node throughput therefore does not explain a decisive architecture
+result. All32 outcomes remain in evidence; no result-dependent budget change.
+Other admitted comparisons are still running. See wave7-degree-node-results.json.
+
+The bounded visibility pilot (four128-update arms,2048 fit rows) fails to improve
+both evaluation sources versus zero. Raw fitting worsens held-out loss; mapped
+fitting helps CP but hurts BT4. This limited-data negative result does not prove
+feature unsuitability, but does not justify implementation or a training gate.
+See wave7-visibility-fit-results.json and its frozen admission.
+
+A separate six-arm fixed-basis diagnostic verifies quadratic forward values against
+Java within2.85e-14 and third-moment identities within1.40e-9. It fits only4..32
+head deltas,128 updates each, leaving anchors/embeddings/owner Adam unchanged.
+Q4 cubic-only heads improve the four consumed search-mapped evaluation panels by
+.0000591,.0001022,.0000356,.0002402 CE and outperform matched quadratic-head
+changes; raw results remain mixed. Q16 lacks consistent mapped improvement.
+This supports investigating shared-parameter interference, not a strength claim,
+convergence claim or automatic architecture admission. Exact settings and all
+negative arms: wave7-fixed-head-admission.json and wave7-fixed-head-results.json.
+
+Initial match summarization rejected three abbreviated historical G7 preparation
+receipts. Their exact preserved hashes and nonmatch provenance are now explicitly
+classified in wave7-historical-process-classification.json. Unknown/changed records
+still fail closed; none contributes match CPU, game counts or success evidence.
+This was an evidence-tool schema issue, not an engine failure or replayed game.
