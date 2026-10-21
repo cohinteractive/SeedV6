@@ -1,0 +1,75 @@
+{
+  "id": "brn-successor-2026-10-21-wave5",
+  "library": "E:/SeedV6-Networks",
+  "arms": [
+    {
+      "name": "W5-RESCUBIC-R4-LR001",
+      "source": {
+        "candidate": "W4-RESCUBIC-LR001",
+        "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\4e693253-bfdd-38b1-b8e2-be30ac620568",
+        "checkpoint": "g000064-s000524288-452b71fa8b42d6da3a6ec06e6991d08ff4adcd4cc7d4a88a7c8228fc5c36b75f",
+        "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc",
+        "trainingSha256": "3c8d6ed2cb7884ac661de8bcbd1f8d6332ddac2788c272747ab2787808b682a8",
+        "generation": 64,
+        "seed": 1,
+        "positionsPerGeneration": 131072,
+        "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      },
+      "rate": 0.001,
+      "components": [
+        2,
+        3,
+        5,
+        9
+      ]
+    },
+    {
+      "name": "W5-RESCUBIC-R16-LR001",
+      "source": {
+        "candidate": "W4-RESCUBIC-LR001",
+        "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\4e693253-bfdd-38b1-b8e2-be30ac620568",
+        "checkpoint": "g000064-s000524288-452b71fa8b42d6da3a6ec06e6991d08ff4adcd4cc7d4a88a7c8228fc5c36b75f",
+        "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc",
+        "trainingSha256": "3c8d6ed2cb7884ac661de8bcbd1f8d6332ddac2788c272747ab2787808b682a8",
+        "generation": 64,
+        "seed": 1,
+        "positionsPerGeneration": 131072,
+        "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      },
+      "rate": 0.001,
+      "components": []
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR001",
+      "source": {
+        "candidate": "W4-BRE-CONTROL-LR001",
+        "root": "E:\\SeedV6-Networks\\BRN-Pair2\\d1a2e220-c1a0-3953-ad2c-2e001af93e7d",
+        "checkpoint": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+        "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+        "trainingSha256": "19aa0beffaf653c5b8ba4dca89f5b4b4a3f0eb31440e297acf7f0969b0485502",
+        "generation": 64,
+        "seed": 1,
+        "positionsPerGeneration": 131072,
+        "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      },
+      "rate": 0.001,
+      "components": []
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR003",
+      "source": {
+        "candidate": "W4-BRE-CONTROL-LR003",
+        "root": "E:\\SeedV6-Networks\\BRN-Pair2\\819e0f58-6726-3479-8709-bfa7079ad2d0",
+        "checkpoint": "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1",
+        "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050",
+        "trainingSha256": "4c23665148d475c44c7e24f903c011407128f17272e5cbba197ce3d642fa883a",
+        "generation": 64,
+        "seed": 1,
+        "positionsPerGeneration": 131072,
+        "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+      },
+      "rate": 0.003,
+      "components": []
+    }
+  ]
+}

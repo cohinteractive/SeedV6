@@ -120,7 +120,7 @@ public final class SearchEvaluation {
     private SearchEvaluation(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model, boolean blockCache, boolean rollingDelta,
                              com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model residualBase,boolean packedCubic) {
         this.packedCubic=packedCubic;
-        if(packedCubic&&(!rollingDelta||!blockCache||model.architecture()!=com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GEN32_CUBIC))
+        if(packedCubic&&(!rollingDelta||!blockCache||!model.architecture().frozenCubic()))
             throw new IllegalArgumentException("Packed cache requires a guarded frozen-base cubic correction");
         blend = null; this.rollingDelta = rollingDelta;
         this.residualBase = residualBase;
@@ -151,7 +151,7 @@ public final class SearchEvaluation {
     }
     /** Explicit W3 research control; does not change ordinary model loading. */
     public static SearchEvaluation brnCubicDeltaResearch(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model) {
-        if (model.architecture() != com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GEN32_CUBIC)
+        if (!model.architecture().frozenCubic())
             throw new IllegalArgumentException("Delta cache requires W3 CUBIC");
         return new SearchEvaluation(model, true, true);
     }

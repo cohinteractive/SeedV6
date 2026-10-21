@@ -9,10 +9,10 @@ import static com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.*;
  * Ordinary application loading keeps the fixed-order rank cache. Separate owners are required. */
 public final class BrnCubicDeltaAccumulator {
     final BrnNextModel model;
-    final int width=CUBIC.width(),head=CUBIC.head();
+    final int width,head;
     final long[] previous=new long[4];
     final int[][] codes=new int[2][64];
-    final double[][] first=new double[2][width],second=new double[2][width],third=new double[2][width];
+    final double[][] first,second,third;
     final double[] unary=new double[2],last=new double[2],material=new double[2];
     final boolean[] valid=new boolean[2],canonical=new boolean[2];
     private final double correctionErrorBound;
@@ -23,7 +23,9 @@ public final class BrnCubicDeltaAccumulator {
     }
     /** Explicit research composition; no source model, base or codec is changed. */
     public BrnCubicDeltaAccumulator(BrnNextModel model,com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model frozenBase) {
-        if(model.architecture()!=GEN32_CUBIC)throw new IllegalArgumentException("W3 CUBIC only");
+        if(!model.architecture().frozenCubic())throw new IllegalArgumentException("Frozen CUBIC required");
+        width=model.architecture().width();head=model.architecture().head();
+        first=new double[2][width];second=new double[2][width];third=new double[2][width];
         base=java.util.Objects.requireNonNull(frozenBase).newWorkspace();
         this.model=model;
         double embedding=0,unaryMagnitude=Math.abs(model.weight(0)),head2=0,head3=0;
@@ -48,7 +50,7 @@ public final class BrnCubicDeltaAccumulator {
     }
     public double correctionErrorBound() { return correctionErrorBound; }
     /** Primitive payload; excludes headers, references and alignment. */
-    public long primitiveBytes() { return 1409+base.primitiveBytes(); }
+    public long primitiveBytes() { return 641+48L*width+base.primitiveBytes(); }
     int category(long[] board,int physical,int side) {
         int code=Board.getSquare(board[0],board[1],board[2],board[3],physical),type=code&7;
         if(type==7)throw new IllegalArgumentException("Invalid category");

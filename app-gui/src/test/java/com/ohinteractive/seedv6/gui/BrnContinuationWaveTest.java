@@ -161,8 +161,17 @@ class BrnContinuationWaveTest {
     @Test void nativeWindowLoadsEachContinuationWithoutStartingTraining() throws Exception {
         Assumptions.assumeFalse(java.awt.GraphicsEnvironment.isHeadless(),"Native Swing required");
         String ownerReport=System.getProperty("seedv6.continuationWaveGuiReport");
+        String compactReport=System.getProperty("seedv6.compactWaveGuiReport");
         List<BrnContinuationWave.Entry> entries;
-        if(ownerReport==null) {var input=sources();entries=BrnContinuationWave.prepare(library,input);}
+        if(compactReport!=null) {
+            assertNull(ownerReport,"Choose one owner wave for native verification");
+            // Shared visual assertions need only the prepared GUI entry fields,
+            // not either wave's distinct immutable origin record.
+            entries=DataFiles.read(Path.of(compactReport),BrnCompactContinuationWave.Report.class).entries().stream()
+                    .map(e->new BrnContinuationWave.Entry(e.candidate(),e.architecture(),e.root(),e.lineageId(),null,
+                            e.latest(),e.latestGeneration(),e.recipe(),e.additionalGenerations(),e.sourceOffsets(),e.partition())).toList();
+        }
+        else if(ownerReport==null) {var input=sources();entries=BrnContinuationWave.prepare(library,input);}
         else entries=DataFiles.read(Path.of(ownerReport),BrnContinuationWave.Report.class).entries();
         for(var entry:entries) {
             var architecture=NetworkArchitecture.valueOf(entry.architecture());
@@ -195,14 +204,14 @@ class BrnContinuationWaveTest {
                     assertEquals(1,((Number)BrnResidualWaveTest.named(frame,"trainingThreads",javax.swing.JSpinner.class).getValue()).intValue());
                     assertEquals(ValidationMethod.HELD_OUT,BrnResidualWaveTest.named(frame,"trainingValidationMethod",javax.swing.JComboBox.class).getSelectedItem());
                     String summary=BrnResidualWaveTest.named(frame,"trainingLineageSummary",javax.swing.JTextArea.class).getText();
-                    assertTrue(summary.contains(entry.candidate()));assertTrue(summary.contains("Gen 32 (Starting checkpoint)"));
-                    assertEquals(savedAttempt.isPresent()?"Resume Generation 33":"Start Training",
+                    assertTrue(summary.contains(entry.candidate()));assertTrue(summary.contains("Gen "+entry.latestGeneration()+" (Starting checkpoint)"));
+                    assertEquals(savedAttempt.isPresent()?"Resume Generation "+(entry.latestGeneration()+1):"Start Training",
                             BrnResidualWaveTest.named(frame,"startTraining",javax.swing.JButton.class).getText());
                     frame.validate();Path output=Path.of("build/brn-successor-native");Files.createDirectories(output);
                     var image=new java.awt.image.BufferedImage(frame.getWidth(),frame.getHeight(),java.awt.image.BufferedImage.TYPE_INT_RGB);
                     var graphics=image.createGraphics();frame.paintAll(graphics);graphics.dispose();
-                    javax.imageio.ImageIO.write(image,"png",output.resolve(entry.candidate()+(ownerReport==null?"-fixture.png":"-owner.png")).toFile());
-                    if(ownerReport!=null) {
+                    javax.imageio.ImageIO.write(image,"png",output.resolve(entry.candidate()+(ownerReport==null&&compactReport==null?"-fixture.png":"-owner.png")).toFile());
+                    if(ownerReport!=null||compactReport!=null) {
                         BrnResidualWaveTest.named(frame,"trainingViews",javax.swing.JTabbedPane.class).setSelectedIndex(2);
                         frame.validate();graphics=image.createGraphics();frame.paintAll(graphics);graphics.dispose();
                         javax.imageio.ImageIO.write(image,"png",output.resolve(entry.candidate()+"-owner-recipe.png").toFile());

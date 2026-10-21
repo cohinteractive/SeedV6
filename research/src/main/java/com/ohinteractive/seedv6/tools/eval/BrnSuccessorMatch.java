@@ -180,7 +180,7 @@ public final class BrnSuccessorMatch {
                 if(!(model instanceof NetworkModel.BrnNext n)||!n.model().architecture().frozenBase())
                     throw new IllegalArgumentException("Hybrid requires a frozen-base correction");
                 if(spec.gatedDeltaCache()&&n.model().architecture()!=com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GEN32_GATED
-                        ||spec.cubicDeltaCache()&&n.model().architecture()!=com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.GEN32_CUBIC)
+                        ||spec.cubicDeltaCache()&&!n.model().architecture().frozenCubic())
                     throw new IllegalArgumentException("Hybrid cache architecture mismatch");
                 evaluation=spec.gatedDeltaCache()||spec.cubicDeltaCache()
                         ?SearchEvaluation.brnResidualHybridResearch(n.model(),hybridBase)

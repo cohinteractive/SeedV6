@@ -91,7 +91,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     double initialLearningRate() {
         return switch (architecture) {
             case NNUE, NNUE_MATERIAL -> .001;
-            case BRN3, BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC -> .003;
+            case BRN3, BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4 -> .003;
             case BRN_PAIR2 -> .01;
             case BRN -> brnLearningRate;
             case BRN1 -> brn1LearningRate;

@@ -28,6 +28,28 @@ public final class BrnNextTrainer {
     public BrnNextArchitecture architecture() { return architecture; }
     public double rate() { return rate; }
     public long step() { return step; }
+    /** New, explicitly smaller lineage: preserve retained parameters, moments and step.
+     * This projects the function; it does not claim equivalence to the unpruned source.
+     * The source remains unchanged and callers must record its identity and component map. */
+    public BrnNextTrainer projectCubicFour(int... components) {
+        if (architecture != GEN32_CUBIC || components.length != 4)
+            throw new IllegalArgumentException("Rank16 frozen cubic source and four components required");
+        for (int r = 0; r < components.length; r++)
+            if (components[r] < 0 || components[r] >= architecture.width()
+                    || r > 0 && components[r] <= components[r-1])
+                throw new IllegalArgumentException("Strictly increasing component map required");
+        var target = new BrnNextTrainer(GEN32_CUBIC_R4, 0, rate);
+        target.step = step;
+        double[][] from = {weights, first, second}, to = {target.weights, target.first, target.second};
+        for (int a = 0; a < from.length; a++) {
+            System.arraycopy(from[a], 0, to[a], 0, EMBEDDING);
+            for (int feature = 0; feature < FEATURES; feature++) for (int r = 0; r < 4; r++)
+                to[a][EMBEDDING + feature*4 + r] = from[a][EMBEDDING + feature*architecture.width() + components[r]];
+            for (int degree = 0; degree < 2; degree++) for (int r = 0; r < 4; r++)
+                to[a][GEN32_CUBIC_R4.head() + degree*4 + r] = from[a][architecture.head() + degree*architecture.width() + components[r]];
+        }
+        return target;
+    }
     public void setLearningRate(double rate) { new BrnAdamConfig(rate); this.rate = rate; }
     public BrnNextModel snapshot() { return new BrnNextModel(architecture, weights); }
     public double predictPawns(long[] board) { return workspace.forward(weights, board, architecture); }
@@ -39,7 +61,7 @@ public final class BrnNextTrainer {
         int width = architecture.width(), head = architecture.head();
         for (int i = 0; i < workspace.count; i++) gradient[UNARY + workspace.features[i]] += derivative * PIECE_NORM;
         switch (architecture) {
-            case CUBIC, GEN32_CUBIC -> {
+            case CUBIC, GEN32_CUBIC_R4, GEN32_CUBIC -> {
                 for (int r = 0; r < width; r++) {
                     gradient[head + r] += derivative * workspace.second[r] * DEGREE2_NORM;
                     gradient[head + width + r] += derivative * workspace.third[r] * DEGREE3_NORM;

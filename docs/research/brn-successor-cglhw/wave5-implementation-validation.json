@@ -1,0 +1,50 @@
+{
+  "id": "wave5-compact-implementation-validation-v1",
+  "recordedUtc": "2026-10-21T01:25:20.090Z",
+  "status": "Implementation and isolated continuation validated; actual owner preparation, native GUI and actual-weight probes still required",
+  "tests": {
+    "distinctPassing": 87,
+    "failed": 0,
+    "skipped": 0,
+    "core": 38,
+    "trainingMathAndProjection": 20,
+    "continuationFactory": 3,
+    "integrationResumeAndCorpus": 26
+  },
+  "evidence": [
+    {
+      "path": "raw/wave5/build-tests-01.log",
+      "sha256": "818c77b10b43ca234630dfb6db349829ec418d0cbe4d489ff0ebf86e07f78187"
+    },
+    {
+      "path": "raw/wave5/tests-01.json",
+      "sha256": "ac1bc986f47b613ec2595d60f152c2d71ee2c78f97a50030d67aa6ef917c4b69"
+    },
+    {
+      "path": "raw/wave5/factory-tests-02.log",
+      "sha256": "b3adf39d4721334e260e456ddf426f2a18e53ed25e7c76415207687ca45bb358"
+    },
+    {
+      "path": "raw/wave5/continuation-test-results.json",
+      "sha256": "fe0ae881378f556b90ca6e02fe46aaec9329d04cb6ba6c3d4f92581d3215ff2f"
+    },
+    {
+      "path": "raw/wave5/integration-tests-01.log",
+      "sha256": "123b1c32f03ea9bd4c96231a08196fdee42c3ad48e97b906bc1d0df630cba0a3"
+    }
+  ],
+  "scope": [
+    "Wire6 GEN32_CUBIC_R4 retains the immutable Gen32 base and four trainable quadratic/cubic components. Old wire IDs/codecs unchanged.",
+    "Every retained weight, first moment, second moment, step and rate is projected by the same increasing component map; source serialization unchanged.",
+    "Independent explicit polynomial forward and every-parameter finite differences pass; tiny fixtures only.",
+    "Serialized optimizer and shuffle cursor reproduce uninterrupted updates, including the new architecture.",
+    "Canonical, block, guarded delta, worker ownership, zero-head production search and hybrid parity regressions pass.",
+    "Factory fixtures preserve source stores and seek/cursor inheritance, reject active writers/sessions, wrong rates, missing indexes and foreign destinations, and preserve edited/trained destinations on replay.",
+    "Cubic fixture arms consume identical ranges and training/validation hashes after projection."
+  ],
+  "limitations": [
+    "Not evidence of substantive training convergence or strength.",
+    "No actual owner lineage created yet; no native GUI acceptance yet.",
+    "Four-component cache actual-weight cost/parity must be measured before G5 readiness."
+  ]
+}

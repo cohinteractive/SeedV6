@@ -482,7 +482,7 @@ public final class TrainerService implements AutoCloseable {
             var bootstrap = store.initialize(initial, new CheckpointManifest.Metadata(0, config.selfPlay().depth(), ""));
             if (initializedFromConfig) {
                 Long initializationSeed = switch (config.architecture()) {
-                    case NNUE, NNUE_MATERIAL, BRN3, BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC -> config.masterSeed();
+                    case NNUE, NNUE_MATERIAL, BRN3, BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4 -> config.masterSeed();
                     case BRN1 -> com.ohinteractive.seedv6.core.brn1.Brn1Model.INITIALIZATION_SEED;
                     case BRN2 -> com.ohinteractive.seedv6.core.brn2.Brn2Model.INITIALIZATION_SEED;
                     case BRN, BRN_PAIR2 -> null;

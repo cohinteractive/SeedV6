@@ -117,7 +117,7 @@ public sealed interface NetworkModel {
             case BRN2 -> new Brn2(Brn2Codec.readModel(input));
             case BRN3 -> new Brn3(Brn3Codec.readModel(input));
             case BRN_PAIR2 -> new BrnPair2(BrnPair2Codec.readModel(input));
-            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC -> new BrnNext(com.ohinteractive.seedv6.core.brnnext.BrnNextCodec.readModel(architecture.nextKind(), input));
+            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4 -> new BrnNext(com.ohinteractive.seedv6.core.brnnext.BrnNextCodec.readModel(architecture.nextKind(), input));
         };
     }
 }

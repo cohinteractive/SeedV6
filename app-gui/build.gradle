@@ -57,5 +57,18 @@ tasks.withType(Test).configureEach {
     if (project.hasProperty('waveGuiReport')) systemProperty 'seedv6.waveGuiReport', rootProject.file(project.property('waveGuiReport')).absolutePath
     if (project.hasProperty('residualWaveGuiReport')) systemProperty 'seedv6.residualWaveGuiReport', rootProject.file(project.property('residualWaveGuiReport')).absolutePath
     if (project.hasProperty('continuationWaveGuiReport')) systemProperty 'seedv6.continuationWaveGuiReport', rootProject.file(project.property('continuationWaveGuiReport')).absolutePath
+    if (project.hasProperty('compactWaveGuiReport')) systemProperty 'seedv6.compactWaveGuiReport', rootProject.file(project.property('compactWaveGuiReport')).absolutePath
     maxHeapSize = '2g'
+}
+
+tasks.register('brnCompactContinuationWave', JavaExec) {
+    group = 'verification'
+    description = 'Prepares the explicit compact-cubic continuation and mature controls without training.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.gui.BrnCompactContinuationWave'
+    jvmArgs '--add-modules=jdk.incubator.vector', '-Xmx768m', '-XX:ActiveProcessorCount=1', '-Djava.awt.headless=true'
+    if (project.hasProperty('compactWavePlan') && project.hasProperty('compactWaveReport'))
+        args '--create', rootProject.file(project.property('compactWavePlan')).absolutePath,
+                rootProject.file(project.property('compactWaveReport')).absolutePath
+    else doFirst { throw new GradleException('Supply compactWavePlan and compactWaveReport') }
 }

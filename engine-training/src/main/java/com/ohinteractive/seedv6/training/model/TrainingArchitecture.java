@@ -29,7 +29,8 @@ public enum TrainingArchitecture {
     BRN_CUBIC(BrnNextArchitecture.CUBIC),
     BRN_POOLED(BrnNextArchitecture.POOLED),
     BRN_GEN32_GATED(BrnNextArchitecture.GEN32_GATED),
-    BRN_GEN32_CUBIC(BrnNextArchitecture.GEN32_CUBIC);
+    BRN_GEN32_CUBIC(BrnNextArchitecture.GEN32_CUBIC),
+    BRN_GEN32_CUBIC_R4(BrnNextArchitecture.GEN32_CUBIC_R4);
 
     private final String schemaId, networkFile;
     private final int schemaVersion;
@@ -45,7 +46,7 @@ public enum TrainingArchitecture {
                 BrnNextCodec.modelBytes(kind), BrnNextCodec.trainingBytes(kind));
     }
     public boolean brnNext() { return this == BRN_GATED || this == BRN_CUBIC || this == BRN_POOLED
-            || this == BRN_GEN32_GATED || this == BRN_GEN32_CUBIC; }
+            || this == BRN_GEN32_GATED || this == BRN_GEN32_CUBIC || this == BRN_GEN32_CUBIC_R4; }
     public BrnNextArchitecture nextKind() {
         return switch (this) {
             case BRN_GATED -> BrnNextArchitecture.GATED_PAIRS;
@@ -53,6 +54,7 @@ public enum TrainingArchitecture {
             case BRN_POOLED -> BrnNextArchitecture.POOLED;
             case BRN_GEN32_GATED -> BrnNextArchitecture.GEN32_GATED;
             case BRN_GEN32_CUBIC -> BrnNextArchitecture.GEN32_CUBIC;
+            case BRN_GEN32_CUBIC_R4 -> BrnNextArchitecture.GEN32_CUBIC_R4;
             default -> throw new IllegalStateException("Not a BRN successor architecture");
         };
     }
@@ -60,6 +62,7 @@ public enum TrainingArchitecture {
         return switch (kind) {
             case GATED_PAIRS -> BRN_GATED; case CUBIC -> BRN_CUBIC; case POOLED -> BRN_POOLED;
             case GEN32_GATED -> BRN_GEN32_GATED; case GEN32_CUBIC -> BRN_GEN32_CUBIC;
+            case GEN32_CUBIC_R4 -> BRN_GEN32_CUBIC_R4;
         };
     }
     public boolean corpusOnly() { return this == BRN3 || this == BRN_PAIR2 || brnNext(); }
@@ -78,6 +81,7 @@ public enum TrainingArchitecture {
             case BRN_POOLED -> "BRN Pooled-16 (control)";
             case BRN_GEN32_GATED -> "Gen32 + Gated Residual (research)";
             case BRN_GEN32_CUBIC -> "Gen32 + Cubic Residual (research)";
+            case BRN_GEN32_CUBIC_R4 -> "Gen32 + Cubic-4 Residual (research)";
             default -> throw new AssertionError();
         };
         return this == BRN_PAIR2 ? "BRE-Pair 2" : this == NNUE ? "NNUE (legacy, no material)" : this == NNUE_MATERIAL ? "NNUE (material parity)"

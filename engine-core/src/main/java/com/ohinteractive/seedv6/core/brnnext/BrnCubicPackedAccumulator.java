@@ -10,7 +10,7 @@ import static com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.*;
  * The immutable source model/codec remains intact; packed arrays belong to this worker. */
 public final class BrnCubicPackedAccumulator {
     final BrnNextModel model;
-    final int width=CUBIC.width(),head=CUBIC.head();
+    final int width,head;
     final long[] previous=new long[4];
     final int[][] codes=new int[2][64];
     final double[][] first,second,third;
@@ -27,7 +27,8 @@ public final class BrnCubicPackedAccumulator {
     }
     public BrnCubicPackedAccumulator(BrnNextModel model,com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model frozenBase) {
         base=java.util.Objects.requireNonNull(frozenBase).newWorkspace();
-        if(model.architecture()!=GEN32_CUBIC)throw new IllegalArgumentException("W3 CUBIC only");
+        if(!model.architecture().frozenCubic())throw new IllegalArgumentException("Frozen CUBIC required");
+        width=model.architecture().width();head=model.architecture().head();
         this.model=model;
         double embedding=0,unaryMagnitude=Math.abs(model.weight(0)),head2=0,head3=0;
         for(int i=UNARY;i<EMBEDDING;i++)unaryMagnitude=Math.max(unaryMagnitude,Math.abs(PIECE_NORM*model.weight(i)));

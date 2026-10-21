@@ -9,14 +9,12 @@ import static com.ohinteractive.seedv6.core.brnnext.BrnNextArchitecture.*;
 /** Fixed-order products of rank polynomials; dirty ranks never depend on old floating sums. */
 public final class BrnCubicAccumulator {
     private final BrnNextModel model;
-    private final int width=CUBIC.width(),head=CUBIC.head();
+    private final int width,head;
     private final long[] previous=new long[4];
     private final int[][] codes=new int[2][64];
     private final int[] dirty={255,255};
-    private final double[][] unary=new double[2][8],one=new double[2][8*width],
-            two=new double[2][8*width],three=new double[2][8*width];
-    private final double[] first=new double[width],second=new double[width],third=new double[width],
-            lastRaw=new double[2],lastMaterial=new double[2];
+    private final double[][] unary=new double[2][8],one,two,three;
+    private final double[] first,second,third,lastRaw=new double[2],lastMaterial=new double[2];
     private final boolean[] valid=new boolean[2];
     private boolean initialized;
     private final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.Workspace base;
@@ -24,6 +22,9 @@ public final class BrnCubicAccumulator {
     public BrnCubicAccumulator(BrnNextModel model) {
         if(model.architecture().correctionKind()!=CUBIC)throw new IllegalArgumentException("CUBIC model required");
         this.model=model;
+        width=model.architecture().width();head=model.architecture().head();
+        one=new double[2][8*width];two=new double[2][8*width];three=new double[2][8*width];
+        first=new double[width];second=new double[width];third=new double[width];
         base=model.architecture().frozenBase()?BrnNextBase.model().newWorkspace():null;
     }
     public long primitiveBytes() { return 8L*(4+2*8+6*8*width+3*width+4)+4L*(2*64+2)+2+(base==null?0:base.primitiveBytes()); }

@@ -19,7 +19,7 @@ class ResumableTrainingTest {
             case BRN2 -> new NetworkTrainingState.Brn2(new com.ohinteractive.seedv6.core.brn2.Brn2Trainer(.001));
             case BRN3 -> new NetworkTrainingState.Brn3(new com.ohinteractive.seedv6.core.brn3.Brn3Trainer(17));
             case BRN_PAIR2 -> NetworkTrainingState.initialized(com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN_PAIR2,1,.01);
-            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC -> NetworkTrainingState.initialized(a, 17, .003);
+            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4 -> NetworkTrainingState.initialized(a, 17, .003);
         };
     }
     Optional<SelfPlayTraining.Statistics> train(NetworkTrainingState state, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> progress) {

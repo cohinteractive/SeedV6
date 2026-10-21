@@ -64,7 +64,7 @@ final class LearningArenaTraining {
             case NNUE -> "existing-nnue-initializer-adam-v1:" + com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping.V1_ID;
             case NNUE_MATERIAL -> com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.TRAINING_ID + ":" + com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping.V1_ID;
             case BRN_PAIR2 -> "c02-zero-initializer-masked-adam-v1:" + com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.CALIBRATION_ID;
-            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC -> architecture.nextKind().configurationId() + ":zero-head-dense-adam-v1:" + com.ohinteractive.seedv6.core.brnnext.BrnNextModel.CALIBRATION_ID;
+            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4 -> architecture.nextKind().configurationId() + ":zero-head-dense-adam-v1:" + com.ohinteractive.seedv6.core.brnnext.BrnNextModel.CALIBRATION_ID;
             case BRN3 -> "existing-brn3-initializer-masked-adam-v1:" + com.ohinteractive.seedv6.core.brn3.Brn3SearchCalibration.ID;
             default -> throw new IllegalArgumentException("Unsupported architecture");
         };

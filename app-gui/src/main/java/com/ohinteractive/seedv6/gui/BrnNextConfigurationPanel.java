@@ -13,6 +13,7 @@ final class BrnNextConfigurationPanel extends JPanel {
             case BRN_POOLED -> "A small pooled tanh network controls for generic nonlinear capacity.";
             case BRN_GEN32_GATED -> "A frozen Gen32 evaluator plus a learned context-gated correction.";
             case BRN_GEN32_CUBIC -> "A frozen Gen32 evaluator plus learned rank16 quadratic/cubic corrections.";
+            case BRN_GEN32_CUBIC_R4 -> "A frozen Gen32 evaluator plus four learned quadratic/cubic components.";
             default -> throw new IllegalArgumentException("Not a BRN successor");
         };
         JPanel body = padded(new BorderLayout(), 14);

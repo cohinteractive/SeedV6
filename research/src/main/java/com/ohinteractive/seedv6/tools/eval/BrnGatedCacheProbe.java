@@ -211,7 +211,7 @@ public final class BrnGatedCacheProbe {
                         "roundingFallbacks",value.roundingFallbacks,"rebuilds",value.rebuilds,"updates",value.updates);}
             };
         }
-        if(delta && model.architecture()==BrnNextArchitecture.GEN32_CUBIC) {
+        if(delta && model.architecture().frozenCubic()) {
             var value=hybridBase==null?new BrnCubicDeltaAccumulator(model):new BrnCubicDeltaAccumulator(model,hybridBase);
             return new Cache() {
                 public double rawPawns(long[] board){return value.rawPawns(board);}
