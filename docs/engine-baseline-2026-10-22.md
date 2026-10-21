@@ -3,8 +3,9 @@
 22 October 2026 (Pacific/Auckland). Bounded post-suspension stabilization;
 not evaluator research, NNUE implementation, Search development or strength acceptance.
 Starting revision: `e23745d0f4b6df810a7ca2070ed6966d067d905c`, build 60.
-Stabilized revision: the commit containing this record, **0.0.0 build 61**;
-locate it with `git log -1 --format=fuller -- docs/engine-baseline-2026-10-22.md`.
+Stabilized application revision: `b4367ea221f3502c92546581fb52d80a9e833261`,
+**0.0.0 build 61**. The subsequent evidence-only documentation commit does not
+change application code or increment the build.
 Build increases once with the GUI application change. No finalizer is involved.
 
 ## Selected evaluator and actual entry points
@@ -103,9 +104,15 @@ The reusable regression tests are committed; no bulk output is force-added.
 - Native GUI packaging verified dependency/JNI resources, model loading,
   checksums and ZIP extraction/relocation. The candidate
   `baseline-20261022-precommit` supplied interactive verification of the changed
-  application at build 60. Final build-61 distribution identity/relaunch evidence
-  is recorded separately in `final-*` local evidence files; precommit evidence
-  is not relabelled as a clean committed artifact.
+  application at build 60. The final `baseline-20261022-build61` native GUI
+  candidate and both Java distributions rebuilt successfully from `b4367ea`.
+  Fresh final UCI repeated all five searches/stop/quit; fresh native GUI selected
+  Gen32 and About displayed build 61 / `b4367ea221f3`. Both GUI and UCI contain
+  identical core jar SHA-256
+  `90fd5a076c85fd6094629d24111dc05ea72d728d061ee07b080d753db9739caa`.
+  Final evidence is retained in `final-*` files. The embedded revision includes
+  `(uncommitted changes)` because the version generator counts inherited untracked
+  `bin/` output; tracked application sources were clean at final packaging.
 - The actual packaged GUI was operated through native Windows controls using the
   existing isolated-preferences fixture and an empty model-library path. Fresh
   startup selected Policy 4 / Pair-2 g32. `e2e4` received book reply `d7d6`.
