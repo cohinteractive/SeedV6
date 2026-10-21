@@ -175,3 +175,22 @@ two warmed passes at32768 nodes, grouped by the fixed piece-count bins. Sequenti
 probe C16/Q16 median paired elapsed ratio1.0640; C4/C16 .8741. Costs vary by root,
 and C4's isolated-inference saving is not proportional to whole-search saving.
 Do not combine these observations with practical-clock roots as independent trials.
+
+## Admitted inexpensive diagnostic after compact matches
+
+Before changing architecture or requesting more training, test the existing fixed
+last-eight parameter average (121..128) for all four arms on both consumed panels.
+The mechanism and eight-checkpoint window are reused unchanged from W4; no window
+search. `wave6-average-diagnostic-plan.json` binds all32 source payloads. This asks
+whether endpoint noise explains some Gen128 deterioration at unchanged inference
+size/cost. Function ensembles are an algebra diagnostic only, not search candidates;
+no averaged optimizer/checkpoint or owner-store change is permitted.
+
+Run only between engine workloads using frozen runtime56. Consider a further
+development match only for a mean improving fixed half-change/quarter-mapped CE
+on both BT4 and CP fit halves in both panels, with all four fixed evaluation halves
+then supporting that improvement and no reversal in standard-valid sensitivity.
+Otherwise retain the
+negative finding and continue the frontier. This is candidate selection using
+consumed data, not independent validation. The admitted208 primary games continue
+with their original Latest128 identities regardless of this diagnostic.

@@ -1,0 +1,190 @@
+{
+  "id": "wave6-fixed-last-eight-diagnostic-v1",
+  "reference": {
+    "root": "docs/research/brn-successor-cglhw/raw/wave4/frozen-01/Gen32",
+    "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+    "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+  },
+  "groups": [
+    {
+      "name": "W6-RESQUAD-R16-LR001",
+      "members": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESQUAD-R16-LR001",
+          "checkpoint": "g000121-s000991232-15365bd5e0cc94605eb1081905cf7e103dcfacfb32a85c07bd2b07d0aed491bc",
+          "networkSha256": "eb878be0fe38abdc10f2b2d588a57314fbfad14ff5f420f0b0ffe8262946830f"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESQUAD-R16-LR001",
+          "checkpoint": "g000122-s000999424-51f6ee0230239a2948a825037650c3fa5302db02a4eece5c2eef940251f82de1",
+          "networkSha256": "225c0c63c2b3b3062573d850b4fb2e8d8f31e3bd6670ef48c7ab56878028b40b"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESQUAD-R16-LR001",
+          "checkpoint": "g000123-s001007616-4c5dfe67346f025cdf6240b4d55270f6298b300077a1583d38556f2d5237a93c",
+          "networkSha256": "d0c9abaaec5525b442553f33ac2ab6412783265808a0c2619ceba8a6808dbf9f"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESQUAD-R16-LR001",
+          "checkpoint": "g000124-s001015808-b6df29c2d89271919883a0c746e6af14f66abf7d8ce5c8f648360cfff979b3f4",
+          "networkSha256": "1695ebb6eff9605145ba691d6f8c4b1779b3d060a38c3538abe4ab729f11000e"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESQUAD-R16-LR001",
+          "checkpoint": "g000125-s001024000-44bc7e916749099a9d0e3bcb55fbbf40b2d9282ecc30cd2d8e98e5d13b3a745f",
+          "networkSha256": "63d95fbf8c68512b878f14da0d6b76dc06b36de3996e978879f1cb02d4146b6d"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESQUAD-R16-LR001",
+          "checkpoint": "g000126-s001032192-48e59b0fea519ded909863ee1e8a6ac781c452e7e929b4a952e2e01e662e3d0a",
+          "networkSha256": "e9a87b914db6361bf76eb1d25aa2024356531ed3fbe8f7f64f37428b2d64189b"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESQUAD-R16-LR001",
+          "checkpoint": "g000127-s001040384-c2ada98f4e9f0c74964394f027c0f9b27923bbf543ddbbba89b0adc0258e4706",
+          "networkSha256": "8e85e20305997f89a5dfe4bc573ef9ad40a37038e7d04c7aed58c8a90c42450c"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESQUAD-R16-LR001",
+          "checkpoint": "g000128-s001048576-5c68e5b6ddb85d57572759914698c4ee60be2be0a359a7823981585a1ba56d77",
+          "networkSha256": "da7d7af04c1b48aa01c42eca3fac354022bf3114dfaba690982093a7bf263213"
+        }
+      ]
+    },
+    {
+      "name": "W6-RESCUBIC-R16-LR001",
+      "members": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R16-LR001",
+          "checkpoint": "g000121-s000991232-6bbdf32637382b11ebbd92cf5c4a2fe8d4dbf6215ad83ff72d9275f0426015b2",
+          "networkSha256": "d815f6286a352581692aca4957c18210916ccbab8a2727df86f86b3be2c38d63"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R16-LR001",
+          "checkpoint": "g000122-s000999424-e953e84e2853e52edcba27abcadf898fd4f9878f58fb5efb7897fd4ce00a822b",
+          "networkSha256": "a91b20a452c59bbc1d539ad3a50fbcd34490d003c597b7c21207c8976dedd5e2"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R16-LR001",
+          "checkpoint": "g000123-s001007616-6a1240dbd577d7efe0d562354d98ea9006930c2fe2c2cd48416c80e61023021d",
+          "networkSha256": "6cb8391c7438f910c53bef2d253c91b7b01364fd343137ab291455c3b51b90fe"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R16-LR001",
+          "checkpoint": "g000124-s001015808-f3b89ddc979190cf8397116b845f5f213ad76e38f7927dd0c59982ba57939a9b",
+          "networkSha256": "96f2fb9a3f88100cec8fdcebb33d47dd3c29a2b926ce1f90895d24cf25022c0b"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R16-LR001",
+          "checkpoint": "g000125-s001024000-ea1e603390b815b803d046a25828108b90d306563602e806c2a5d147c93bad89",
+          "networkSha256": "4991627e07dbcd91c38fafb7d36f7b5d75dfed5725a64e3038cf13a7150a0142"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R16-LR001",
+          "checkpoint": "g000126-s001032192-52b6b4a8a94aa1ed10e21b45e9c0afa77169485651c0d8e60cb3214577a82bf4",
+          "networkSha256": "abdc63cd4938f2d65acdbb6a6da1c2826725e621d99cff8a984342561cc46101"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R16-LR001",
+          "checkpoint": "g000127-s001040384-67caafba9464c14c6cab1a1e1634bf7b50ca4773f9635ab7e62ec684bf29f6df",
+          "networkSha256": "8040c08f5c976001719da66db582dbf9adbdd197fa4acebbe55f670bb4baf257"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R16-LR001",
+          "checkpoint": "g000128-s001048576-c048359bba80c6284a66bf44c8043dcbe769b1269326b058136e091b541454f8",
+          "networkSha256": "11670784a614d08e1f3742252243f8aaa4a059912058587c2c77fd6950c1a3d9"
+        }
+      ]
+    },
+    {
+      "name": "W6-RESCUBIC-R4-LR001",
+      "members": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R4-LR001",
+          "checkpoint": "g000121-s000991232-4846be42ff86c57c515d072d658e97e1df0c26f55e3415745af2d3f636a57ba2",
+          "networkSha256": "0ff8984f70656c78981b7975571c54e61fd3af27fa7dd90064504228aad2470f"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R4-LR001",
+          "checkpoint": "g000122-s000999424-6365fcd765dcfa089ddfbf0c36024a36f4aac6e22adb53c777256b25fc23d150",
+          "networkSha256": "ceed3cc2d931b724fd3255b905d4129501cfe1e9dd07f1174c4601e72ba30f8d"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R4-LR001",
+          "checkpoint": "g000123-s001007616-76f7ddc512d49524226f53564b3cda3d4f6199e643bfecb5848adce9e0b0f561",
+          "networkSha256": "aee49a6277360c9f3abc256492586d76773b043306fdb7c65001feb6d818884c"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R4-LR001",
+          "checkpoint": "g000124-s001015808-f1036bf394805ec043f0c8d5a68302cd6a14c6c01c66afd8784adbd13b0009a6",
+          "networkSha256": "11c837513da32eec640e0b0ce71da007a38f2141a1914e7b8fc4fb69bd39ae73"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R4-LR001",
+          "checkpoint": "g000125-s001024000-f42efa82ad79685183fcf775e47c8b48d268762842d564ef4d5e1d970a49a9ec",
+          "networkSha256": "2b021db734bfb2d693b2821e7f902619d5f6836ebf500c566acd8a54376ab82f"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R4-LR001",
+          "checkpoint": "g000126-s001032192-f829cd4b6a9d7f7e4ea7be759610dfdf131f532063c44a9987175b2d6f16ccf7",
+          "networkSha256": "175426a6cabf7a7dfd3be15c416232e79e7d330208ab806762fa5dbf7ba61dbe"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R4-LR001",
+          "checkpoint": "g000127-s001040384-aba8b94797e1327196a94b8db246ea29055b05c709b1d2d1d6749b988d6613b1",
+          "networkSha256": "7770f1cba806724028bdfdf7e79dad3b40a55679e0a432fb6d68068589f69c3d"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESCUBIC-R4-LR001",
+          "checkpoint": "g000128-s001048576-e466f76a69ab9cd0c4a9703972ad7072b777a46cae8c5aa0d8a16bdc25b1e771",
+          "networkSha256": "f583b20bd181eb044999a1ad07f2432911374793051bfd15ecc376e5ff3ddb16"
+        }
+      ]
+    },
+    {
+      "name": "W6-BRE-CONTROL-LR001",
+      "members": [
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-BRE-CONTROL-LR001",
+          "checkpoint": "g000121-s002744320-c347f4e8683dfbb13f3453595f9f0d3a1cdea062e9a19297c9cffc390c3a5f49",
+          "networkSha256": "a2fbafc7887a0f2babab23aa142efb848973b07d8026da06c60df2ee26deb2d2"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-BRE-CONTROL-LR001",
+          "checkpoint": "g000122-s002752512-b0547136be6a01d754b302e3736f3f5510cc9028906480782e75e4e4c84411c8",
+          "networkSha256": "73db61d21aee89426884c9ba3a56e250d6d4f3c46490331e016412d73402a0e3"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-BRE-CONTROL-LR001",
+          "checkpoint": "g000123-s002760704-6c07cbff8819aa9289cb2a2d2bdda79ddb253fed604a390ba953ec3519492981",
+          "networkSha256": "9f47b51197151b3cae1a1881dd804d4f04cc3a239f44a11006eef72fe66ff37c"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-BRE-CONTROL-LR001",
+          "checkpoint": "g000124-s002768896-85704e19d1436e28e60a5f86454a4140e2c6664265b65fa51b9de89902f38ff8",
+          "networkSha256": "73076aad8d67fed1d4c67a56020e305a5e56e7edbcd816a4f6f13c79493fc38c"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-BRE-CONTROL-LR001",
+          "checkpoint": "g000125-s002777088-81d3fe44b63a45817f759cf5c23e1e41cdd75a7de4e5446639bc7a4105dcf7a4",
+          "networkSha256": "217e8647c088eb9ea4f8631e5163c9d8582555fd4d5c41101c9ea61f3d8c43db"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-BRE-CONTROL-LR001",
+          "checkpoint": "g000126-s002785280-39212de0de93eb6e47416f4da06dc72213ae966de39ffe4bfeb49b563e1b3f95",
+          "networkSha256": "9c43ecacb50a34fbd89844c0c3b37ee3ee817da38bc7ec20465283deca100759"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-BRE-CONTROL-LR001",
+          "checkpoint": "g000127-s002793472-71775af16867e28066ad03746494a512ebbee694dd89a0b68e7b66e12901847b",
+          "networkSha256": "f4143c993877d31aed33745c68224a8f9d705003791a1bcdd68278777a90cfa6"
+        },
+        {
+          "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-BRE-CONTROL-LR001",
+          "checkpoint": "g000128-s002801664-f314e41639dbee698870825cc848d1ee57627c0616689ecc7e937ebcb3634cbe",
+          "networkSha256": "376b36cb9def3277f9ca9d229522aa1ad2e329f189e2171bb61c6fbb74835b79"
+        }
+      ]
+    }
+  ]
+}
