@@ -97,11 +97,13 @@ eight fresh development opening pairs, common search and fixed half-change calib
 Four actual trained cubic cache probes pass6333 positions and48 search root passes
 each, with zero integer/search differences. Use ONLY preserved `wave5-runtime.json`.
 The root started clean b43b761/build55. Read-only audit/freeze preserved owner models.
-G5 pause is preserved at raw/wave5/g5-completed-pause.txt. Primary nodes128 are
-complete; clock42 games are preserved. A temporary cubic-only research-build pause
-is active. Finish its tests/oracles, preserve the pause and resume primary clock
-to128 using original wave5-runtime.json. Then execute frozen direct160 and contingent
-cubic-only64 protocols in their admissions. No new human action. See the assessment.
+G5 and two bounded diagnostic pauses are preserved under raw/wave5; no pause sentinel
+is active. Primary nodes128 are complete; clock resumes from42 to128 with the
+original wave5-runtime.json. Then run direct160 on that runtime, followed by the
+validated cubic-only64 on wave5-cubic-only-runtime.json. Fixed plans/admissions and
+per-game receipts govern resume. The finite local driver is build/research/w5-assessment-remaining.ps1;
+never start a competing runner. Each closure runs independent legal replay and writes
+a new compact result. No human action currently required. See the assessment.
 Next: finish fixed primary counts, independently replay receipts, compare R4/R16,
 both continued BRE rates, endpoint selection and cost. Admit focused direct/maturity/
 mechanism controls based on evidence, without a predetermined new training gate.

@@ -163,3 +163,13 @@ is yet justified or requested. A bounded build pause preserves ongoing primary g
 The unary readiness summary was reduced to compact identity/cost/parity aggregates;
 all detailed search rows remain intact in its hash-bound local raw files. No protocol
 or research result changed.
+
+Cubic-only readiness is verified:19 JUnit tests,8192 prediction rows (maximum algebra
+error1.43e-14 pawn),6333 score placements and48 search root passes with zero integer
+or search differences. The old runtime rejects the capability before launch. Its cache
+latency218ns is similar to full R4; no speed gain from dropping heads is claimed.
+See wave5-cubic-only-readiness.json. Initial whole-JAR equality assertion stopped
+before probes: archive comparison found only generated source-revision metadata
+changed in engine-core; all core classes, training and dependency content are unchanged.
+The new runtime manifest preserves this finding and exact hashes. Primary/direct
+matches retain the original runtime. Both build pauses and all prior games are preserved.

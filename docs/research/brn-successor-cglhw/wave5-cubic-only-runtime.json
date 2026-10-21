@@ -1,0 +1,36 @@
+{
+  "id": "wave5-cubic-only-runtime-v1",
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave5\\cubic-only-runtime-55-03\\lib",
+  "createdUtc": "2026-10-21T03:09:44.058477+00:00",
+  "sourceCommit": "1d1fcc1b1d0c9b67f5e595fa75fe89f3cbcb77a3",
+  "build": 55,
+  "modelFeatures": [
+    "brn-hybrid-raw-v1",
+    "brn-cubic-packed-v1",
+    "brn-unary-compiled-v1",
+    "brn-constant-gates-compiled-v1",
+    "brn-cubic-r4-v1",
+    "brn-cubic-only-ablation-v1"
+  ],
+  "jars": {
+    "engine-core.jar": "082f168ef60f670ab24b08a21dad930f7afbe4c6371fa88bd676ec0e6341b6e3",
+    "engine-training.jar": "8df5eb8e96b52bf9db97eca39c5e573937bcffdfe0e72e8608acfebf3b16fa20",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "4943fa1954088e9b005f94cd751bfd6649e7bfb1899a11db59c817b9f8038f20",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "java": "C:/java/jdk-21/bin/java.exe",
+  "heapMiB": 768,
+  "activeProcessors": 1,
+  "nonResearchArchiveDifferences": {
+    "engine-core.jar": {
+      "com/ohinteractive/seedv6/application-version.properties": {
+        "before": "major=0\nminor=0\npatch=0\nbuild=55\nsourceRevision=82331a52ca77\nversionUpdated=2026-10-21\nplatform=Portable Java 21 (runtime platform reported separately)\n",
+        "after": "major=0\nminor=0\npatch=0\nbuild=55\nsourceRevision=e47cba52c784 (uncommitted changes)\nversionUpdated=2026-10-21\nplatform=Portable Java 21 (runtime platform reported separately)\n"
+      }
+    }
+  },
+  "freezeNote": "Initial strict whole-JAR equality check failed before any launch; investigation proves core class/resource entries identical except generated application-version source-commit/dirty metadata. Training and dependency JAR hashes match. Research classes changed as committed."
+}

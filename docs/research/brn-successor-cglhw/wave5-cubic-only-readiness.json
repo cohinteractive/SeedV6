@@ -1,0 +1,46 @@
+{
+  "id": "wave5-cubic-only-readiness-v1",
+  "implementationCommit": "1d1fcc1",
+  "build": 55,
+  "runtime": "wave5-cubic-only-runtime.json",
+  "tests": [
+    {
+      "file": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cubic-only-tests-01\\TEST-com.ohinteractive.seedv6.tools.eval.BrnAverageBindingTest.xml",
+      "sha256": "eae1381ab1e4cd0823a7f605a5992165d4b4a6ae91e532770217ceb4509fb3a6",
+      "tests": 5
+    },
+    {
+      "file": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cubic-only-tests-01\\TEST-com.ohinteractive.seedv6.tools.eval.BrnSuccessorDataProbeTest.xml",
+      "sha256": "4117605fb2238a8e1bb91614d1d8f3a14899f1251c275a7e3a253ba021626582",
+      "tests": 1
+    },
+    {
+      "file": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cubic-only-tests-01\\TEST-com.ohinteractive.seedv6.tools.eval.BrnSuccessorVariantsTest.xml",
+      "sha256": "ecbdbc5f809e7f5bf8cdfa3e1334d8b93eb656ca9db931c38c4dd5fdb149f055",
+      "tests": 13
+    }
+  ],
+  "testCount": 19,
+  "predictionRows": 8192,
+  "maximumIndependentDegreeAlgebraError": 1.4210854715202004e-14,
+  "cache": {
+    "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cubic-only-cache-01.json",
+    "sha256": "f77720f8f8fba9685e7eb08f0683d0f792364a664fe54350deb9ff683fc03364",
+    "positions": 6333,
+    "integerDifferences": 0,
+    "searchParityRootPasses": 48,
+    "searchDifferences": 0,
+    "maximumRawError": 4.440892098500626e-15,
+    "maximumFreshRawError": 7.93809462606987e-15,
+    "transitionMedianNanos": {
+      "CUBIC-full": 601.392,
+      "CUBIC-cache": 218.494,
+      "Gen32": 138.568
+    }
+  },
+  "limitations": [
+    "Inference-only variant, no original model/optimizer changes.",
+    "No cheaper third-only recurrence claimed; all polynomial moments remain evaluated.",
+    "Initial runtime equality assumption failed before launch; manifest records verified metadata-only core archive difference."
+  ]
+}
