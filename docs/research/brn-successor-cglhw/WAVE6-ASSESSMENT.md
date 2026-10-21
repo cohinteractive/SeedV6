@@ -194,3 +194,38 @@ Otherwise retain the
 negative finding and continue the frontier. This is candidate selection using
 consumed data, not independent validation. The admitted208 primary games continue
 with their original Latest128 identities regardless of this diagnostic.
+
+## Compact trade-off and averaging results
+
+Both compact protocols are closed. At262144 nodes C4 versus C16 scores50%
+(5 wins,6 draws,5 losses), descriptive95 31.480-68.520%, bounded pair95
+1.984-98.016%. All16 games/2414 legal moves pass. Paired-root elapsed ratio
+.90608 and NPS1.10461; six of eight first moves agree. At200ms C4 scores65.625%
+(8/5/3), descriptive95 43.061-88.189%, bounded pair95 17.609-100%. All16 games/
+2480 legal moves pass, without failure/cap/fallback. Paired-root NPS1.10047,
+node ratio1.10057 and elapsed1.00009; three of eight first moves agree.
+`wave6-compact-{node,clock}-results.json` binds all receipts and configurations.
+This supports retaining compact C4 as a practical candidate despite worse fitting;
+the small selected development sample establishes neither superiority nor parity.
+
+`wave6-budget-interaction.json` compares the same opening-pair scores across
+budgets, without pooling games. Clock-minus-node score is-14.0625 percentage
+points for C16 versus Q16 (descriptive95 -34.051 to5.926), and+15.625 points for
+C4 versus C16 (-12.059 to43.309). Neither contrast excludes zero. Different actual
+search work, runtime variation and opening dependence prevent a pure causal
+latency interpretation. No protocol is extended to resolve these intervals.
+
+The fixed121..128 parameter-average diagnostic is complete. Independent Python
+reproduces Java aggregate CE within1.89e-15. Q16/C16/C4 improve14/13/12 of the16
+required source/panel/partition/validity cells; none meets the predeclared all-cell
+criterion. BRE improves all16. Parameter averaging differs materially from a
+function ensemble for nonlinear models; the latter remains diagnostic only.
+`wave6-average-diagnostic-results.json` binds raw outputs under
+`raw/wave6/average-diagnostics-01`. No owner artifact or optimizer changed.
+
+Decision: retain all original Latest128 match identities. Endpoint averaging does
+not provide a consistent residual remedy on these consumed panels. BRE averaging
+is eligible for consideration as an optimized control, but a BRE-only match is
+deferred until it answers a useful architectural question; fitting eligibility
+alone does not justify expanding the tournament. Continue the admitted BRE and
+frozen-reference comparisons before choosing the next research unit.

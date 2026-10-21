@@ -1,0 +1,662 @@
+{
+  "id": "wave6-last-eight-diagnostic-result-v1",
+  "maximumIndependentJavaError": 1.887379141862766e-15,
+  "sources": [
+    {
+      "panel": "old",
+      "source": "bt4",
+      "predictionsSha256": "c8c1e5158151d932912ff022cf68ce3f3bd10a5d15a8c81a0fb7dfff322bdf9c",
+      "parameterVsFunctionMeanRawMaximum": {
+        "W6-BRE-CONTROL-LR001": 1.7763568394002505e-15,
+        "W6-RESCUBIC-R16-LR001": 0.08033404581471423,
+        "W6-RESCUBIC-R4-LR001": 0.05283322535912305,
+        "W6-RESQUAD-R16-LR001": 0.08452269594782022
+      },
+      "comparisons": [
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 0.8225675080387486,
+          "average8": 0.8215021123213669,
+          "ensemble8": 0.8214897920944154,
+          "averageMinusLatest": -0.001065395717381623
+        },
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 0.8225675080387486,
+          "average8": 0.8215021123213669,
+          "ensemble8": 0.8214897920944154,
+          "averageMinusLatest": -0.001065395717381623
+        },
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 0.7797874766160695,
+          "average8": 0.7794384103739159,
+          "ensemble8": 0.7793360161097851,
+          "averageMinusLatest": -0.00034906624215358395
+        },
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 0.7797874766160695,
+          "average8": 0.7794384103739159,
+          "ensemble8": 0.7793360161097851,
+          "averageMinusLatest": -0.00034906624215358395
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 0.8229154390795457,
+          "average8": 0.8220522770797908,
+          "ensemble8": 0.8220689225299141,
+          "averageMinusLatest": -0.0008631619997548912
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 0.8229154390795457,
+          "average8": 0.8220522770797908,
+          "ensemble8": 0.8220689225299141,
+          "averageMinusLatest": -0.0008631619997548912
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 0.7796885415981575,
+          "average8": 0.7793363095828378,
+          "ensemble8": 0.7793538725970812,
+          "averageMinusLatest": -0.0003522320153196423
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 0.7796885415981575,
+          "average8": 0.7793363095828378,
+          "ensemble8": 0.7793538725970812,
+          "averageMinusLatest": -0.0003522320153196423
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 0.821866403728368,
+          "average8": 0.8211864344014985,
+          "ensemble8": 0.8212270336277918,
+          "averageMinusLatest": -0.0006799693268694229
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 0.821866403728368,
+          "average8": 0.8211864344014985,
+          "ensemble8": 0.8212270336277918,
+          "averageMinusLatest": -0.0006799693268694229
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 0.7810952904139052,
+          "average8": 0.7804302336231137,
+          "ensemble8": 0.7804623135641735,
+          "averageMinusLatest": -0.0006650567907915406
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 0.7810952904139052,
+          "average8": 0.7804302336231137,
+          "ensemble8": 0.7804623135641735,
+          "averageMinusLatest": -0.0006650567907915406
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 0.8217104559336721,
+          "average8": 0.8206261946396559,
+          "ensemble8": 0.8206261946396559,
+          "averageMinusLatest": -0.0010842612940161755
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 0.8217104559336721,
+          "average8": 0.8206261946396559,
+          "ensemble8": 0.8206261946396559,
+          "averageMinusLatest": -0.0010842612940161755
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 0.7791043914008433,
+          "average8": 0.778149572022104,
+          "ensemble8": 0.778149572022104,
+          "averageMinusLatest": -0.0009548193787393133
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 0.7791043914008433,
+          "average8": 0.778149572022104,
+          "ensemble8": 0.778149572022104,
+          "averageMinusLatest": -0.0009548193787393133
+        }
+      ]
+    },
+    {
+      "panel": "old",
+      "source": "cp",
+      "predictionsSha256": "d89e4f8212d1d41b97386ed730bee1ff83eb02185c34ef85db455221bc8b47ea",
+      "parameterVsFunctionMeanRawMaximum": {
+        "W6-BRE-CONTROL-LR001": 1.7763568394002505e-15,
+        "W6-RESCUBIC-R16-LR001": 0.23056837816732134,
+        "W6-RESCUBIC-R4-LR001": 0.13179877525340444,
+        "W6-RESQUAD-R16-LR001": 0.1403460806972645
+      },
+      "comparisons": [
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 1.210301611985194,
+          "average8": 1.2098604041066372,
+          "ensemble8": 1.2098731685988757,
+          "averageMinusLatest": -0.0004412078785567264
+        },
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 1.1926014687726743,
+          "average8": 1.192086478923297,
+          "ensemble8": 1.1921095316876629,
+          "averageMinusLatest": -0.0005149898493772564
+        },
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 1.3318407692961889,
+          "average8": 1.331749056696553,
+          "ensemble8": 1.3317995174766357,
+          "averageMinusLatest": -9.171259963580702e-05
+        },
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 1.3071287778681229,
+          "average8": 1.3069695413435902,
+          "ensemble8": 1.3070129662327783,
+          "averageMinusLatest": -0.00015923652453264658
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 1.209948058477421,
+          "average8": 1.2103503403212257,
+          "ensemble8": 1.2102508502196734,
+          "averageMinusLatest": 0.0004022818438047526
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 1.192206679734911,
+          "average8": 1.192608326443858,
+          "ensemble8": 1.1924937592616416,
+          "averageMinusLatest": 0.0004016467089471565
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 1.3328677503190913,
+          "average8": 1.3322163026364655,
+          "ensemble8": 1.3322279729647915,
+          "averageMinusLatest": -0.0006514476826258164
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 1.3082118052428093,
+          "average8": 1.3074094260164186,
+          "ensemble8": 1.3074188886655138,
+          "averageMinusLatest": -0.0008023792263907037
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 1.2134987415348106,
+          "average8": 1.2129216523278932,
+          "ensemble8": 1.213035570236403,
+          "averageMinusLatest": -0.0005770892069174582
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 1.1962817646037085,
+          "average8": 1.1954522235415095,
+          "ensemble8": 1.1955568970957973,
+          "averageMinusLatest": -0.0008295410621990129
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 1.334589712413707,
+          "average8": 1.3331755128593534,
+          "ensemble8": 1.3332826635425785,
+          "averageMinusLatest": -0.0014141995543535124
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 1.309830752318654,
+          "average8": 1.3082082671432629,
+          "ensemble8": 1.3083097620295023,
+          "averageMinusLatest": -0.0016224851753912084
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 1.2153736472664378,
+          "average8": 1.2145182552329008,
+          "ensemble8": 1.2145182552329008,
+          "averageMinusLatest": -0.0008553920335370169
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 1.1973710203748773,
+          "average8": 1.1963922760504937,
+          "ensemble8": 1.1963922760504937,
+          "averageMinusLatest": -0.000978744324383607
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 1.3363305493698239,
+          "average8": 1.3351285782876259,
+          "ensemble8": 1.3351285782876259,
+          "averageMinusLatest": -0.0012019710821979945
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 1.3116385988930925,
+          "average8": 1.3104024326454748,
+          "ensemble8": 1.3104024326454748,
+          "averageMinusLatest": -0.0012361662476176871
+        }
+      ]
+    },
+    {
+      "panel": "fresh5",
+      "source": "bt4",
+      "predictionsSha256": "f2ad57bbba1010df16c0b6d42fe1366ad1363044c21e9fb0400ce29248fdfdac",
+      "parameterVsFunctionMeanRawMaximum": {
+        "W6-BRE-CONTROL-LR001": 1.3322676295501878e-15,
+        "W6-RESCUBIC-R16-LR001": 0.09910758081971927,
+        "W6-RESCUBIC-R4-LR001": 0.07643816360036557,
+        "W6-RESQUAD-R16-LR001": 0.06859117774243637
+      },
+      "comparisons": [
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 0.81389196482479,
+          "average8": 0.8132041846320716,
+          "ensemble8": 0.8132561525036562,
+          "averageMinusLatest": -0.0006877801927184235
+        },
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 0.81389196482479,
+          "average8": 0.8132041846320716,
+          "ensemble8": 0.8132561525036562,
+          "averageMinusLatest": -0.0006877801927184235
+        },
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 0.7688703451654038,
+          "average8": 0.7682639079722261,
+          "ensemble8": 0.7682359228587383,
+          "averageMinusLatest": -0.0006064371931776558
+        },
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 0.7688703451654038,
+          "average8": 0.7682639079722261,
+          "ensemble8": 0.7682359228587383,
+          "averageMinusLatest": -0.0006064371931776558
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 0.8141195835694239,
+          "average8": 0.8131505253497451,
+          "ensemble8": 0.8132889637576041,
+          "averageMinusLatest": -0.0009690582196788533
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 0.8141195835694239,
+          "average8": 0.8131505253497451,
+          "ensemble8": 0.8132889637576041,
+          "averageMinusLatest": -0.0009690582196788533
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 0.769264353106231,
+          "average8": 0.7687101357536538,
+          "ensemble8": 0.7687264740488119,
+          "averageMinusLatest": -0.0005542173525772132
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 0.769264353106231,
+          "average8": 0.7687101357536538,
+          "ensemble8": 0.7687264740488119,
+          "averageMinusLatest": -0.0005542173525772132
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 0.8147613247774245,
+          "average8": 0.8136285851551355,
+          "ensemble8": 0.8137370241972924,
+          "averageMinusLatest": -0.0011327396222889918
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 0.8147613247774245,
+          "average8": 0.8136285851551355,
+          "ensemble8": 0.8137370241972924,
+          "averageMinusLatest": -0.0011327396222889918
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 0.7688844573332495,
+          "average8": 0.7686197232058477,
+          "ensemble8": 0.7686175673604333,
+          "averageMinusLatest": -0.0002647341274018
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 0.7688844573332495,
+          "average8": 0.7686197232058477,
+          "ensemble8": 0.7686175673604333,
+          "averageMinusLatest": -0.0002647341274018
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 0.8144352616384004,
+          "average8": 0.813350263044286,
+          "ensemble8": 0.813350263044286,
+          "averageMinusLatest": -0.0010849985941143725
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 0.8144352616384004,
+          "average8": 0.813350263044286,
+          "ensemble8": 0.813350263044286,
+          "averageMinusLatest": -0.0010849985941143725
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 0.7676668347953503,
+          "average8": 0.767315569206397,
+          "ensemble8": 0.767315569206397,
+          "averageMinusLatest": -0.00035126558895326454
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 0.7676668347953503,
+          "average8": 0.767315569206397,
+          "ensemble8": 0.767315569206397,
+          "averageMinusLatest": -0.00035126558895326454
+        }
+      ]
+    },
+    {
+      "panel": "fresh5",
+      "source": "cp",
+      "predictionsSha256": "01f1ac5d24c40d06553fcbe14a668255af43c1258bac1c972a80c65d60eae376",
+      "parameterVsFunctionMeanRawMaximum": {
+        "W6-BRE-CONTROL-LR001": 1.4210854715202004e-14,
+        "W6-RESCUBIC-R16-LR001": 0.4227769189805368,
+        "W6-RESCUBIC-R4-LR001": 4.080566628727524,
+        "W6-RESQUAD-R16-LR001": 2.5815692498253213
+      },
+      "comparisons": [
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 1.495286673342612,
+          "average8": 1.4971813566010932,
+          "ensemble8": 1.4961264125730218,
+          "averageMinusLatest": 0.001894683258481189
+        },
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 1.0537306178361625,
+          "average8": 1.0546537354106331,
+          "ensemble8": 1.054720406509035,
+          "averageMinusLatest": 0.000923117574470611
+        },
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 0.9745103835338761,
+          "average8": 0.9734411628480155,
+          "ensemble8": 0.9736093480536524,
+          "averageMinusLatest": -0.0010692206858605724
+        },
+        {
+          "name": "W6-RESQUAD-R16-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 0.9783680898360788,
+          "average8": 0.9772977531441722,
+          "ensemble8": 0.97746729382957,
+          "averageMinusLatest": -0.0010703366919065926
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 1.3984105959299715,
+          "average8": 1.3860558194604409,
+          "ensemble8": 1.3859880609031787,
+          "averageMinusLatest": -0.012354776469530648
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 1.052946296609536,
+          "average8": 1.054385098313642,
+          "ensemble8": 1.0543630725745794,
+          "averageMinusLatest": 0.0014388017041060408
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 0.9743051674964552,
+          "average8": 0.9738729986115285,
+          "ensemble8": 0.9739564530899953,
+          "averageMinusLatest": -0.000432168884926698
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 0.9781625927473399,
+          "average8": 0.9777332966089981,
+          "ensemble8": 0.977817590930955,
+          "averageMinusLatest": -0.0004292961383417504
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 1.5944134001185715,
+          "average8": 1.5988369480889992,
+          "ensemble8": 1.6007039267333585,
+          "averageMinusLatest": 0.004423547970427766
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 1.0564280732647966,
+          "average8": 1.0576313234303398,
+          "ensemble8": 1.057729009865929,
+          "averageMinusLatest": 0.0012032501655432348
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 0.977399328944779,
+          "average8": 0.9776268481734993,
+          "ensemble8": 0.9775344233168637,
+          "averageMinusLatest": 0.00022751922872032981
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 0.9812944225440202,
+          "average8": 0.981525861914314,
+          "ensemble8": 0.9814326570421261,
+          "averageMinusLatest": 0.00023143937029379558
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "fit",
+          "validity": "all",
+          "latest": 1.479440664451653,
+          "average8": 1.4784476105769297,
+          "ensemble8": 1.4784476105769297,
+          "averageMinusLatest": -0.0009930538747231488
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "fit",
+          "validity": "valid",
+          "latest": 1.0621663877652483,
+          "average8": 1.0610846452518234,
+          "ensemble8": 1.0610846452518234,
+          "averageMinusLatest": -0.0010817425134248548
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "evaluation",
+          "validity": "all",
+          "latest": 0.9813337347629473,
+          "average8": 0.9803446359305393,
+          "ensemble8": 0.9803446359305393,
+          "averageMinusLatest": -0.000989098832407942
+        },
+        {
+          "name": "W6-BRE-CONTROL-LR001",
+          "partition": "evaluation",
+          "validity": "valid",
+          "latest": 0.985266305344031,
+          "average8": 0.984267140185936,
+          "ensemble8": 0.984267140185936,
+          "averageMinusLatest": -0.0009991651580950611
+        }
+      ]
+    }
+  ],
+  "eligibility": {
+    "W6-RESQUAD-R16-LR001": {
+      "passedCells": 14,
+      "requiredCells": 16,
+      "eligible": false
+    },
+    "W6-RESCUBIC-R16-LR001": {
+      "passedCells": 13,
+      "requiredCells": 16,
+      "eligible": false
+    },
+    "W6-RESCUBIC-R4-LR001": {
+      "passedCells": 12,
+      "requiredCells": 16,
+      "eligible": false
+    },
+    "W6-BRE-CONTROL-LR001": {
+      "passedCells": 16,
+      "requiredCells": 16,
+      "eligible": true
+    }
+  },
+  "criterion": "Lower fixed half-change/quarter-mapped CE than Latest128 in all four fit and all four evaluation source/panel cells, also in standard-valid sensitivity; fixed121..128 window only.",
+  "limitations": [
+    "Consumed panels, selection diagnostic only; not independent validation or chess strength.",
+    "Parameter mean differs from function ensemble in nonlinear models; ensemble is not a search candidate.",
+    "No optimizer average, trainable checkpoint export or owner-store write."
+  ]
+}

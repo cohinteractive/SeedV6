@@ -1,0 +1,285 @@
+{
+  "id": "wave6-compact-node-v1-completed",
+  "status": "Closed fixed-budget development experiment",
+  "plan": "docs\\research\\brn-successor-cglhw\\wave6-compact-node-plan.json",
+  "receipts": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\compact-node-01",
+  "analysis": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\compact-node-analysis-01.json",
+  "runtime": "docs\\research\\brn-successor-cglhw\\wave6-runtime.json",
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\wave6-compact-node-plan.json": "9c9585c12e827218ad3f092b256bf808ddc3a4ab619f1cd6e163127233d9a1aa",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\compact-node-analysis-01.json": "b7558755abafa5ec8a5c20b0fadeccf29314c056f40fbe918bb44e996ed711e6",
+    "docs\\research\\brn-successor-cglhw\\wave6-runtime.json": "ae1059e72e8aa285eb9890765b6ea6270b99a0f0bc48d1cec2d40349ae51664c",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\compact-node-01\\model-bindings.json": "fd24f233c0755257e1f5dd9512143770ac33cbb4e6213f52754a9d5c36c28f9a"
+  },
+  "games": 16,
+  "validatedMoves": 2414,
+  "models": [
+    {
+      "name": "W6-RESCUBIC-R4-LR001-g128-half",
+      "wins": 5,
+      "draws": 6,
+      "losses": 5,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.5,
+      "pairStandardError": 0.0944911182523068,
+      "descriptiveNormal95": [
+        0.31479740822547864,
+        0.6852025917745214
+      ],
+      "pairScores": [
+        0.25,
+        0.25,
+        0.25,
+        0.75,
+        1.0,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "boundedPair95": [
+        0.019838604340039645,
+        0.9801613956599604
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.019838604340039645,
+        0.9801613956599604
+      ]
+    }
+  ],
+  "modelBindings": [
+    {
+      "name": "W6-RESCUBIC-R16-LR001-g128-half",
+      "originalManifest": {
+        "id": "g000128-s001048576-c048359bba80c6284a66bf44c8043dcbe769b1269326b058136e091b541454f8",
+        "generation": 128,
+        "optimizerStep": 1048576,
+        "trainingDepth": 4,
+        "parentId": "g000127-s001040384-67caafba9464c14c6cab1a1e1634bf7b50ca4773f9635ab7e62ec684bf29f6df",
+        "networkBytes": 104784,
+        "networkSha256": "11670784a614d08e1f3742252243f8aaa4a059912058587c2c77fd6950c1a3d9",
+        "trainingBytes": 314224,
+        "trainingSha256": "5cccd3aaea24bfa962bd3ad1339821633b1d0a87a8ce9bdb94182f1eb5eb7de4",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "effectiveNetworkSha256": "9e2a2a655b00660fe44b9a9fb0f6fd7ac5f516cc767128ffb3b4fe3f441c2bfd",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "name": "W6-RESCUBIC-R4-LR001-g128-half",
+      "originalManifest": {
+        "id": "g000128-s001048576-e466f76a69ab9cd0c4a9703972ad7072b777a46cae8c5aa0d8a16bdc25b1e771",
+        "generation": 128,
+        "optimizerStep": 1048576,
+        "trainingDepth": 4,
+        "parentId": "g000127-s001040384-aba8b94797e1327196a94b8db246ea29055b05c709b1d2d1d6749b988d6613b1",
+        "networkBytes": 30864,
+        "networkSha256": "f583b20bd181eb044999a1ad07f2432911374793051bfd15ecc376e5ff3ddb16",
+        "trainingBytes": 92464,
+        "trainingSha256": "7f8f65263a642d0b3aa93ed7a8c855530afd001f5e4269272d7dd325559ffc43",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "effectiveNetworkSha256": "5a7d6dec86e735032880b9b87ed02ffdbe03bc57bcaad9cb45372528dd2ca1b1",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    }
+  ],
+  "sameRootSearch": [
+    {
+      "name": "W6-RESCUBIC-R4-LR001-g128-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 6,
+      "meanDepthDifference": 0.125,
+      "lessEqualMoreDepth": [
+        1,
+        5,
+        2
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 0.9060778614589691,
+      "medianNpsRatio": 1.1046070071145224
+    }
+  ],
+  "telemetry": {
+    "W6-RESCUBIC-R4-LR001-g128-half": {
+      "moves": 1207,
+      "nodes": 308575686,
+      "elapsedNanos": 221861264700,
+      "sumDepth": 11728,
+      "fallbacks": 0,
+      "maximumMoveNanos": 610167300
+    },
+    "g000128-s001048576-c048359bba80c6284a66bf44c8043dcbe769b1269326b058136e091b541454f8": {
+      "moves": 1207,
+      "nodes": 308949084,
+      "elapsedNanos": 250197832500,
+      "sumDepth": 11660,
+      "fallbacks": 0,
+      "maximumMoveNanos": 486445200
+    }
+  },
+  "commonOpponentContrasts": [],
+  "openingPrefixSensitivity": [
+    {
+      "plies": 4,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 8,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 12,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 16,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    }
+  ],
+  "processReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\compact-node-batch-01.process.json",
+      "sha256": "e0a88f584fe508b82e4382f7fb6f9151052bd9c59da54caec7eaa2b153e9b025",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T08:05:45.3994850Z",
+      "sampledPeakWorkingSetBytes": 572567552,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave6-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 269.03125,
+      "plan": "docs/research/brn-successor-cglhw/wave6-compact-node-plan.json",
+      "processId": 49528,
+      "startedUtc": "2026-10-21T08:01:15.2454963Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\compact-node-batch-02.process.json",
+      "sha256": "649e5ec5ed79e4b25d5cbe5a544b184dd45a2fa78add33e164610daccbc418fd",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T08:09:09.2632919Z",
+      "sampledPeakWorkingSetBytes": 446795776,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave6-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 205.15625,
+      "plan": "docs/research/brn-successor-cglhw/wave6-compact-node-plan.json",
+      "processId": 45072,
+      "startedUtc": "2026-10-21T08:05:45.6387544Z"
+    }
+  ],
+  "separateDiagnosticProcessReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-1-01.process.json",
+      "sha256": "b75e84775efe914c9fe825aeeeadfe2d315506a7254768c6a8414b7dff067b18",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-2-01.process.json",
+      "sha256": "a8215d8568b8d4cc0ade90fd9f41b9fd7b4c807ac2a13bc9aca8fe94c4797423",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-3-01.process.json",
+      "sha256": "5790150d922fc40ef2b933c2086f921564bfbc7c4ec4e4993f5973fb6cae5bbc",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-5-01.process.json",
+      "sha256": "1bca740c99ad023064ca2392652550b0418e2c5aecc7007c5d65c0a6fa86a519",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\half-cache-c16-01.process.json",
+      "sha256": "c594ef4a06ab2c63e2a1624dd7c6155f06e8f804c3fa1dab4091ebc61cdad202",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\half-cache-c4-01.process.json",
+      "sha256": "0b75ab14550110908919e5e392e7f010d9653aa9fec69cc6190355d03af5bf9f",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\half-cache-q16-01.process.json",
+      "sha256": "c1abc361eece8be3f16cf5582b502a0026bb828a782aff4c1df933b4c4f963e3",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\predictions-fresh5-01.process.json",
+      "sha256": "87220803bdf2ae2523062d461530cbc12d7f321c25615f874570a6f0ba868e21",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnResidualAssessment",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\predictions-old-01.process.json",
+      "sha256": "5328832873e521ffacfa5085640c2c17537c324c535cf33784c4c5dfd22635ee",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnResidualAssessment",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-audit-01.process.json",
+      "sha256": "e6c44ccda70e08c5ce5ed1f863515c07b1d3fd2c10b2c73abec99fdd88eddbc2",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnLineageAudit",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-cache-c16-01.process.json",
+      "sha256": "1830d34d39ffff355f3bd696273bd66752523697aabf4b113e987d50d186b31d",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-cache-c4-01.process.json",
+      "sha256": "152f61c819ce714252b9cb9923994381fc9d8625f6afe3e2fb82614fac258277",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-cache-q16-01.process.json",
+      "sha256": "e71fde3c0becbeb353b34129cf45e72890ee04bbdec65a94ee65b547ea46fbbd",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    }
+  ],
+  "maximumSampledWorkingSetMiB": 546.04296875,
+  "totalEngineCpuSeconds": 474.1875,
+  "limitations": [
+    "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims.",
+    "Paired differences on shared complete opening pairs against the same reference. Positive favours left. Descriptive, unadjusted, not direct head-to-head strength or architectural causation.",
+    "Fresh search/TT at identical opening roots; different evaluator-dependent trees. Clock protocols warm up; node protocols do not. Descriptive cost/behaviour, not causal latency or strength.",
+    "Move-prefix grouping is a descriptive dependence warning, not ECO/source-game classification or proof of independent opening families. Pair intervals are unadjusted.",
+    "Hoeffding intervals assume independent bounded opening-pair scores; within-plan union bound covers only this plan, not prior candidate selection or repeated protocols. Independence remains unverified.",
+    "No final strength claim, selection-adjusted confirmation, or architectural causation inferred."
+  ]
+}

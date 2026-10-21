@@ -28,7 +28,9 @@ below are fulfilled and superseded for next-action selection.
 Current assessment: degree-node32 is closed (C16 vs trained Q16 53.125%,10/14/8;
 descriptive95 39.8-66.5%,5184 legal moves; inconclusive). Degree-clock32 is closed
 (C16 39.0625%,9/7/16; descriptive95 22.95-55.17%,4475 legal moves).
-Compact-node16/compact-clock16 are active next, then bre-clock48,reference-clock64 per the
+Compact-node16/compact-clock16 are closed (C4 versus C16:50%/65.625%; both uncertain).
+The fixed last-eight average fails the residual eligibility criterion; only BRE
+passes, with no average match selected. BRE-clock48 is active, then reference-clock64 per the
 fixed208-game admission. Use unique bounded launch logs and verify actual receipt
 counts/processes before resuming. Fitting/cost/strata evidence is recorded in
 WAVE6-ASSESSMENT; no new architecture or human gate has yet been selected.

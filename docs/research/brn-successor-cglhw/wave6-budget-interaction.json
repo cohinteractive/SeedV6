@@ -1,0 +1,73 @@
+{
+  "id": "wave6-budget-interaction-v1",
+  "comparisons": [
+    {
+      "comparison": "degree",
+      "candidate": "W6-RESCUBIC-R16-LR001-g128-half",
+      "reference": "W6-RESQUAD-R16-LR001-g128-half",
+      "pairs": 16,
+      "clockMinusNode": -0.140625,
+      "descriptiveNormal95": [
+        -0.3405103186829888,
+        0.05926031868298881
+      ],
+      "pairDifferences": [
+        -0.75,
+        0.25,
+        0.25,
+        -0.25,
+        0.0,
+        0.0,
+        -0.25,
+        -0.25,
+        -1.0,
+        -0.5,
+        0.0,
+        -0.25,
+        0.25,
+        -0.5,
+        0.25,
+        0.5
+      ],
+      "inputs": {
+        "docs\\research\\brn-successor-cglhw\\wave6-degree-node-plan.json": "86aa0f3c14e5a281608af5d38c51b907c1ea47fa1a181cf405065c8ac1e5e87f",
+        "docs\\research\\brn-successor-cglhw\\wave6-degree-node-results.json": "241a8a108ef536558773ef4eb207e825998b78b484854b76bf9bb161690038cc",
+        "docs\\research\\brn-successor-cglhw\\wave6-degree-clock-plan.json": "9618f467e5f34463c10e1a032d6b3cb40ac39db39d83edeed9398fff254930a6",
+        "docs\\research\\brn-successor-cglhw\\wave6-degree-clock-results.json": "183dd66b5437fc6ab90ac1adb4d401369cc3db835e8f9ef0f936989a911480ed"
+      }
+    },
+    {
+      "comparison": "compact",
+      "candidate": "W6-RESCUBIC-R4-LR001-g128-half",
+      "reference": "W6-RESCUBIC-R16-LR001-g128-half",
+      "pairs": 8,
+      "clockMinusNode": 0.15625,
+      "descriptiveNormal95": [
+        -0.12058761034223653,
+        0.43308761034223653
+      ],
+      "pairDifferences": [
+        0.5,
+        0.5,
+        0.5,
+        -0.25,
+        0.0,
+        0.0,
+        0.5,
+        -0.5
+      ],
+      "inputs": {
+        "docs\\research\\brn-successor-cglhw\\wave6-compact-node-plan.json": "9c9585c12e827218ad3f092b256bf808ddc3a4ab619f1cd6e163127233d9a1aa",
+        "docs\\research\\brn-successor-cglhw\\wave6-compact-node-results.json": "c8e583b003db6bf3715cf99dffe1107303125892d410d780e76e422c328bce9e",
+        "docs\\research\\brn-successor-cglhw\\wave6-compact-clock-plan.json": "37fc197668049fab79c02e8489b6ec943a597e3adc1ae3a8cfe7dc2f1a413e93",
+        "docs\\research\\brn-successor-cglhw\\wave6-compact-clock-results.json": "2c008bbdc96460875fa53dabd39f597b4c3e0cb7b7a1cc15b4338a7e5d4d7647"
+      }
+    }
+  ],
+  "formula": "Per opening: clock pair score minus node pair score; mean +/-1.96*sampleSD/sqrt(number of pairs).",
+  "limitations": [
+    "Matched roots/models, but budgets differ in actual work and runtime variability. Not a pure causal latency intervention.",
+    "Descriptive unadjusted small-sample opening-pair contrasts; family dependence and repeated development testing remain.",
+    "No pooling of the protocols into a single strength score."
+  ]
+}
