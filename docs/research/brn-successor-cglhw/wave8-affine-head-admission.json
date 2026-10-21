@@ -1,0 +1,37 @@
+{
+  "anchor": {
+    "name": "Q4",
+    "root": "docs/research/brn-successor-cglhw/raw/wave7/trained-frozen-01/W7-RESQUAD-R4-LR001",
+    "checkpoint": "g000160-s001310720-b5d40cc7a3cd74a4eab18f6e274676b7c58d094896d931d5f40f06828a4ed338",
+    "networkSha256": "fd6c2fc1ec2549bced72ab5d3bf245ff4a56abf6d779ba36a921040bd4dd70bd",
+    "width": 4,
+    "wire": 8,
+    "predictor": "W7-RESQUAD-R4-LR001-g160",
+    "predictions": {
+      "fresh5": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-predictions-fresh5-01",
+      "old": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-predictions-old-01"
+    }
+  },
+  "objectives": [
+    "raw",
+    "search-half"
+  ],
+  "budget": {
+    "fitRows": 2043,
+    "epochs": 8,
+    "batch": 128,
+    "stepsPerArm": 128,
+    "rate": 0.001,
+    "seed": 2026102208
+  },
+  "resource": "One bounded BelowNormal process between match batches, timeout300seconds; no owner writes or model export.",
+  "id": "wave8-affine-head-control-v1",
+  "question": "Do four additive calibration coefficients explain the mapped fitting improvement attributed to interaction heads?",
+  "formula": "[1,material/8,(Gen32raw-material)/4,Q4raw-Gen32raw]; four new zero coefficients, fixed source function, still additive pairwise.",
+  "arms": [
+    "affine"
+  ],
+  "selection": "Report raw and mapped fits for every original panel/source; no search or model export. Compare against already preserved head diagnostics, accounting for unequal feature conditioning. No new grid or chosen dataset.",
+  "script": "tools\\probe-brn-conditioned-heads.py",
+  "scriptSha256": "19d081d9f9276ceb979c848ba3c46f80e3a2b11e9fa1971918ed1934f4d85b32"
+}

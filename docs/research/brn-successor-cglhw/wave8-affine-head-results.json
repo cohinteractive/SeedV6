@@ -1,0 +1,217 @@
+{
+  "id": "wave8-affine-head-control-v1-results",
+  "admission": "docs\\research\\brn-successor-cglhw\\wave8-affine-head-admission.json",
+  "admissionSha256": "52c41df18782a1a757d1dd92fc95a08049485528b437f141b7f16745e309115a",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-predictions-fresh5-01\\bt4-predictions.jsonl": "43b86d67aa18c73236965894fcae32d9c58e6d82aa2fe11ca4f203ea579f1f9d",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-predictions-fresh5-01\\cp-predictions.jsonl": "315688116a91b82b0dc65d21ecee163e3b88deef6a10163e6e74f3d0fc558eec",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-predictions-old-01\\bt4-predictions.jsonl": "82c50486e1caf88bfa001b4c92b883d30c403d9183e9ab6bc668c44876aeb169",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-predictions-old-01\\cp-predictions.jsonl": "58b8c46f20d0c97a258ee5bf891018221cbc57e5f1622dce3a0ce7e8e2fc3dac"
+  },
+  "maximumJavaForwardError": 7.105427357601002e-15,
+  "arms": [
+    {
+      "mode": "affine",
+      "objective": "raw",
+      "parameters": 4,
+      "fitRows": 2043,
+      "steps": 128,
+      "headDelta": [
+        0.015654015616596566,
+        0.030829462411486406,
+        -0.03068336154428809,
+        -0.044703795170236746
+      ],
+      "epochLoss": [
+        0.6410054370544002,
+        0.640366157331299,
+        0.6396371741835017,
+        0.6388970865613565,
+        0.6382006409365678,
+        0.6376654980935776,
+        0.6368379435128682,
+        0.636185719137192
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "meanCrossEntropyChange": -0.0008658118686918577,
+          "standardError": 0.000393345231843178,
+          "changeRmsPawns": 0.03330755726736949
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "search-half",
+          "count": 1024,
+          "meanCrossEntropyChange": 0.00043945723025815687,
+          "standardError": 9.67007222094974e-05,
+          "changeRmsPawns": 0.004163444658421186
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "meanCrossEntropyChange": -0.0007863038910939922,
+          "standardError": 0.0006030044235083274,
+          "changeRmsPawns": 0.03894503592888958
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "search-half",
+          "count": 1015,
+          "meanCrossEntropyChange": 0.0014493668860513932,
+          "standardError": 0.00021847236250080256,
+          "changeRmsPawns": 0.004868129491111197
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 2048,
+          "meanCrossEntropyChange": -0.0005282150938161272,
+          "standardError": 0.00024348757626106563,
+          "changeRmsPawns": 0.03360482643847827
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "search-half",
+          "count": 2048,
+          "meanCrossEntropyChange": 0.0005379081499904484,
+          "standardError": 7.45569270170477e-05,
+          "changeRmsPawns": 0.004200603304809784
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 2027,
+          "meanCrossEntropyChange": 0.001097420885677752,
+          "standardError": 0.0008013832248911518,
+          "changeRmsPawns": 0.042937418545968574
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "search-half",
+          "count": 2027,
+          "meanCrossEntropyChange": 0.001814996207880269,
+          "standardError": 0.00019175620186924643,
+          "changeRmsPawns": 0.005367177318246072
+        }
+      ]
+    },
+    {
+      "mode": "affine",
+      "objective": "search-half",
+      "parameters": 4,
+      "fitRows": 2043,
+      "steps": 128,
+      "headDelta": [
+        0.10351335685157508,
+        -0.1185073243547559,
+        0.11868413448568979,
+        -0.009345911607624059
+      ],
+      "epochLoss": [
+        0.9338717324055764,
+        0.9331346738284657,
+        0.9324404345173137,
+        0.9316787959375409,
+        0.9309857923104509,
+        0.9302673874164392,
+        0.9295346931850291,
+        0.9288559578360193
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 1024,
+          "meanCrossEntropyChange": 0.006694196182460899,
+          "standardError": 0.0019583426409461187,
+          "changeRmsPawns": 0.15193656047296267
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "mapping": "search-half",
+          "count": 1024,
+          "meanCrossEntropyChange": -0.0023020052368894024,
+          "standardError": 0.0004500768298549188,
+          "changeRmsPawns": 0.018992070059120333
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 1015,
+          "meanCrossEntropyChange": 0.005280886171888558,
+          "standardError": 0.0034398613894857217,
+          "changeRmsPawns": 0.18638382852205462
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "mapping": "search-half",
+          "count": 1015,
+          "meanCrossEntropyChange": -0.006585158170001898,
+          "standardError": 0.0009970188646870192,
+          "changeRmsPawns": 0.023297978565256828
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "raw",
+          "count": 2048,
+          "meanCrossEntropyChange": 0.004992496854807547,
+          "standardError": 0.0011268394879268197,
+          "changeRmsPawns": 0.15382437707776056
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "mapping": "search-half",
+          "count": 2048,
+          "meanCrossEntropyChange": -0.0029254508053626273,
+          "standardError": 0.00036179838990662287,
+          "changeRmsPawns": 0.01922804713472007
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "raw",
+          "count": 2027,
+          "meanCrossEntropyChange": -0.003994157906676178,
+          "standardError": 0.0030442937395601713,
+          "changeRmsPawns": 0.19668095222882934
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "mapping": "search-half",
+          "count": 2027,
+          "meanCrossEntropyChange": -0.010360366886103832,
+          "standardError": 0.0008493961650530457,
+          "changeRmsPawns": 0.024585119028603667
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Previously consumed status-valid panels; no independent generalization, optimized convergence or strength claim.",
+    "Same four-parameter budget, but basis conditioning differs; nominal optimization is not equal effective optimization.",
+    "Both objectives reported; raw trains the current function, search-half is a diagnostic only and changes the objective.",
+    "No checkpoint or optimizer exported; no owner/source artifacts changed."
+  ],
+  "rawEvidence": "docs\\research\\brn-successor-cglhw\\raw\\wave8\\affine-head-pilot-01.json",
+  "rawSha256": "190b49b57de932ea7b3cad747de96f753de46aa7255237b96f9197d76aef65b2",
+  "decision": "Affine mapped-objective control improves all four consumed mapped panels more than phase/quadratic/cubic-only pilots. Those pilot improvements do not isolate expressive value. Investigate cubic value after a matched calibrated additive baseline, not a phase architecture."
+}

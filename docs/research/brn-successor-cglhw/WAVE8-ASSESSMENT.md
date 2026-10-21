@@ -71,3 +71,17 @@ with the averaging tool's compiled runtime predictions as if byte-identical.
 The corrected analysis separates that known representation difference (maximum
 metric delta2.89e-9) from exact same-representation checks (1.12e-15). No model,
 training, source or match correction was required; original raw outputs remain.
+
+The matched four-coefficient affine control produces larger mapped CE reductions
+than every interaction-only pilot on all four panels. Affine raw fitting helps
+three raw panels but worsens all mapped panels. Hence the apparent mapped-head
+fitting benefit does not isolate expressive value; ordinary calibration is a
+strong confound. Preserve this negative control. The next useful question is
+whether cubic terms add value *after* matched calibration, rather than comparing
+an uncalibrated additive baseline with a differently fitted nonlinear function.
+No architecture/training gate is admitted solely from these small diagnostics.
+
+Degree-node closes32 games: cubic12 wins/8 draws/12 losses,50%, descriptive95%
+33.87..66.13, bounded16.05..83.95.4308 moves independently replayed; no failures.
+Paired-root cubic/quadratic NPS.94514. This establishes no degree advantage.
+Remaining fixed protocols continue without an outcome-dependent budget change.

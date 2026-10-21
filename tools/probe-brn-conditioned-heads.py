@@ -22,7 +22,8 @@ basis=module('basis','probe-brn-fixed-basis-heads.py')
 
 def main(admission_path,output):
     admission_path,output=Path(admission_path),Path(output);assert not output.exists()
-    admission=json.loads(admission_path.read_text());assert admission['id']=='wave8-phase-head-feasibility-v1'
+    admission=json.loads(admission_path.read_text());assert admission['id'] in ('wave8-phase-head-feasibility-v1','wave8-affine-head-control-v1')
+    affine = admission['id']=='wave8-affine-head-control-v1'
     anchor=admission['anchor'];raw=basis.codec.payload(anchor['root'],anchor['checkpoint'],'network.*')
     assert basis.codec.sha(raw)==anchor['networkSha256']
     data=basis.codec.decode(raw,False,8)[0];weights=struct.unpack('>3845d',data)
@@ -40,11 +41,12 @@ def main(admission_path,output):
             forward_error=max(forward_error,abs(base-(zero+unary+sum(weights[3841+r]*q[r] for r in range(4)))))
             rows.append(dict(panel=panel,source=source,fit=panel=='fresh5' and i<1024,
                 phase=phase,material=material,target=row['target'],base=base,zero=zero,
-                quadratic=q,cubic=c,phaseQuadratic=[x*context for x in q]))
+                quadratic=q,cubic=c,phaseQuadratic=[x*context for x in q],
+                affine=[1.0,material/8,(zero-material)/4,base-zero]))
     assert forward_error<1e-9
     fitting=[r for r in rows if r['fit']];assert len(fitting)==2043
     reports=[]
-    for mode,objective in itertools.product(('quadratic','cubic','phaseQuadratic'),('raw','search-half')):
+    for mode,objective in itertools.product(('affine',) if affine else ('quadratic','cubic','phaseQuadratic'),('raw','search-half')):
         def mapped(row,mapping):
             if mapping=='raw':return row['base'],1
             return row['material']+.25*(row['zero']+.5*(row['base']-row['zero'])-row['material']),.125
@@ -80,6 +82,6 @@ def main(admission_path,output):
             'Same four-parameter budget, but basis conditioning differs; nominal optimization is not equal effective optimization.',
             'Both objectives reported; raw trains the current function, search-half is a diagnostic only and changes the objective.',
             'No checkpoint or optimizer exported; no owner/source artifacts changed.']),f,indent=2);f.write('\n')
-    print('Six bounded conditioned-head arms completed; maximum forward error',forward_error)
+    print(len(reports),'bounded conditioned-head arms completed; maximum forward error',forward_error)
 
 if __name__=='__main__':main(*sys.argv[1:])
