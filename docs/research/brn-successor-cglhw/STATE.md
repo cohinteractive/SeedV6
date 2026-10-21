@@ -97,7 +97,10 @@ eight fresh development opening pairs, common search and fixed half-change calib
 Four actual trained cubic cache probes pass6333 positions and48 search root passes
 each, with zero integer/search differences. Use ONLY preserved `wave5-runtime.json`.
 The root started clean b43b761/build55. Read-only audit/freeze preserved owner models.
-G5 pause is preserved at `raw/wave5/g5-completed-pause.txt`; current sentinel removed.
+G5 pause is preserved at raw/wave5/g5-completed-pause.txt. A separate temporary
+probe/build pause is active; primary nodes128 are complete and clock22 are preserved.
+Finish the bounded fresh-source probe/oracles, preserve that pause under raw/wave5,
+and resume the unchanged primary clock plan to128. See the assessment for evidence.
 Next: finish fixed primary counts, independently replay receipts, compare R4/R16,
 both continued BRE rates, endpoint selection and cost. Admit focused direct/maturity/
 mechanism controls based on evidence, without a predetermined new training gate.
@@ -284,4 +287,4 @@ Compiled unary controls are implemented in2d04ae8/build53 (research-only, no bum
 
 Hybrid node-v2 scores against the identical BRE001 base: GATE71.875% (8/7/1),CUBIC59.375% (8/3/5),packed rank4 CUBIC50% (5/6/5). Small selected development evidence, not a confirmation. The fixed clock48 is now complete; its follow-up selection is frozen separately.
 
-The complete constant-gate additive control is implemented in a6c4a9c/build54 and passes17 targeted tests,6333 actual positions/48 triple search root passes,4096 prediction rows and16 legal smoke plies. It retains all210 GATE relations in298 total compiled pairs, adds10880 immutable primitive bytes to BRE, and saves37% paired search cost versus the slow identical ablation. Ordinary Pair2 checkpoint export rejects this research layout. See wave4-constant-compiled-readiness.json. The historical bounded build pause is preserved in raw/wave4/constant-build-pause-01.txt. G5 is now ready; its training pause sentinel is active.
+The complete constant-gate additive control is implemented in a6c4a9c/build54 and passes17 targeted tests,6333 actual positions/48 triple search root passes,4096 prediction rows and16 legal smoke plies. It retains all210 GATE relations in298 total compiled pairs, adds10880 immutable primitive bytes to BRE, and saves37% paired search cost versus the slow identical ablation. Ordinary Pair2 checkpoint export rejects this research layout. See wave4-constant-compiled-readiness.json. The historical bounded build pause is preserved in raw/wave4/constant-build-pause-01.txt. That G5 preparation gate is historical and fulfilled; follow the current action above.

@@ -1,0 +1,167 @@
+{
+  "id": "wave5-trained-runtime-validation-v1",
+  "runtime": "wave5-runtime.json",
+  "models": [
+    {
+      "name": "W5-RESCUBIC-R4-LR001-g93-half",
+      "network": {
+        "id": "g000093-s000761856-a882e34ac665bbc8d1ab96f8d8bc1e5d6751d24c1eac0143308b09db0215df8e",
+        "generation": 93,
+        "optimizerStep": 761856,
+        "trainingDepth": 4,
+        "parentId": "g000092-s000753664-d0ba7da5aff42ab47f4d0469f882bd2b41ca9053ab2fbba40b54a8bf1bd899ef",
+        "networkBytes": 30864,
+        "networkSha256": "8ee2f2c880ff3f9a856e871e35582632cc43b57dcb9ec3395c7280581debc523",
+        "trainingBytes": 92464,
+        "trainingSha256": "428fb9553419a1f5a194989727579acfaf89506548e5748d86bb1680e7f0c6aa",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "positions": 6333,
+      "maximumRawError": 2.4424906541753444e-15,
+      "integerDifferences": 0,
+      "searchParityRootPasses": 48,
+      "searchDifferences": 0,
+      "parameterBytes": 30792,
+      "combinedPayloadBytes": 825896,
+      "combinedImmutablePrimitiveBytes": 830480,
+      "workspacePrimitiveBytes": 3753,
+      "cache": {
+        "kind": "polynomial-period64-canonical-rounding-guard-v1",
+        "updates": 6210,
+        "roundingFallbacks": 2,
+        "rebuilds": 125,
+        "correctionErrorBound": 5.739843843891478e-06
+      },
+      "transitionMedianNanos": {
+        "CUBIC-full": 604.252,
+        "CUBIC-cache": 222.194,
+        "Gen32": 144.462
+      },
+      "cacheSearchCostVsCanonical": 0.7996090179586058,
+      "evidence": "raw/wave5/trained-cache-0-01.json",
+      "sha256": "fc116b0000f1d3d20d07c0d345eddb5bf168b1f185334d0911566c5f1a590e2b"
+    },
+    {
+      "name": "W5-RESCUBIC-R4-LR001-g96-half",
+      "network": {
+        "id": "g000096-s000786432-014449a8d5676d1a4569501219355fad6f5c7182a02537397d526db6e31ea35a",
+        "generation": 96,
+        "optimizerStep": 786432,
+        "trainingDepth": 4,
+        "parentId": "g000095-s000778240-e44abd3cf0617c304869dddf06783705a97c8c7c37866ac6b1345b318c71723d",
+        "networkBytes": 30864,
+        "networkSha256": "a831c9beea3889351b92fea09039ab7eabd8eb9ee6f648807336dfaa9684c158",
+        "trainingBytes": 92464,
+        "trainingSha256": "00f32dc27648a4e7ce5ffc24ea5c430f67059317b59818437b9ca1a9f99ff630",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "positions": 6333,
+      "maximumRawError": 3.3306690738754696e-15,
+      "integerDifferences": 0,
+      "searchParityRootPasses": 48,
+      "searchDifferences": 0,
+      "parameterBytes": 30792,
+      "combinedPayloadBytes": 825896,
+      "combinedImmutablePrimitiveBytes": 830480,
+      "workspacePrimitiveBytes": 3753,
+      "cache": {
+        "updates": 6209,
+        "roundingFallbacks": 2,
+        "rebuilds": 126,
+        "correctionErrorBound": 9.30342758184736e-06,
+        "kind": "polynomial-period64-canonical-rounding-guard-v1"
+      },
+      "transitionMedianNanos": {
+        "CUBIC-full": 572.876,
+        "CUBIC-cache": 208.364,
+        "Gen32": 135.664
+      },
+      "cacheSearchCostVsCanonical": 0.811930256370021,
+      "evidence": "raw/wave5/trained-cache-1-01.json",
+      "sha256": "ea4979f0d983330fc269e42332fb81ef62a40934a5b74db6a8bab8af5a172137"
+    },
+    {
+      "name": "W5-RESCUBIC-R16-LR001-g95-half",
+      "network": {
+        "id": "g000095-s000778240-af578b860a2d492795f6bdce34c5f5d6739953bf5d490daed85a4ba94ee6ecc8",
+        "generation": 95,
+        "optimizerStep": 778240,
+        "trainingDepth": 4,
+        "parentId": "g000094-s000770048-69912f314b230681f73cc4ba905debd772da632a6a34956cd397313bf5d1e38f",
+        "networkBytes": 104784,
+        "networkSha256": "1c6d5410f5161568b8bc3b70d5b74bc98919101ffc3f70e3c88fcda9c508c077",
+        "trainingBytes": 314224,
+        "trainingSha256": "ac3a44229531668d29d054b74769bb56c5886e04b2c3e252278e9b64a2339dbb",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "positions": 6333,
+      "maximumRawError": 3.219646771412954e-15,
+      "integerDifferences": 0,
+      "searchParityRootPasses": 48,
+      "searchDifferences": 0,
+      "parameterBytes": 104712,
+      "combinedPayloadBytes": 899816,
+      "combinedImmutablePrimitiveBytes": 904400,
+      "workspacePrimitiveBytes": 4329,
+      "cache": {
+        "kind": "polynomial-period64-canonical-rounding-guard-v1",
+        "correctionErrorBound": 1.1844960484189196e-05,
+        "rebuilds": 129,
+        "roundingFallbacks": 6,
+        "updates": 6210
+      },
+      "transitionMedianNanos": {
+        "CUBIC-full": 806.906,
+        "CUBIC-cache": 290.414,
+        "Gen32": 138.916
+      },
+      "cacheSearchCostVsCanonical": 0.7844148391073289,
+      "evidence": "raw/wave5/trained-cache-2-01.json",
+      "sha256": "45e135f8d1ad7b824e2c5fedaa4e816f6e02cd29e2d16dca80b18df37dc07de1"
+    },
+    {
+      "name": "W5-RESCUBIC-R16-LR001-g96-half",
+      "network": {
+        "id": "g000096-s000786432-f4c32fa4e682d031c65def888ef238210184540017bdce382c0c967d477b89b4",
+        "generation": 96,
+        "optimizerStep": 786432,
+        "trainingDepth": 4,
+        "parentId": "g000095-s000778240-af578b860a2d492795f6bdce34c5f5d6739953bf5d490daed85a4ba94ee6ecc8",
+        "networkBytes": 104784,
+        "networkSha256": "14e72d384c4a18ec80b2db2d55df6a3c9ae69f671c9c0b9688fac3e3fb8c1218",
+        "trainingBytes": 314224,
+        "trainingSha256": "66a1e1415dae680f1b065a16bb85e9b38f0a845a17daa2d9248f6fa98647eb0e",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "positions": 6333,
+      "maximumRawError": 3.1086244689504383e-15,
+      "integerDifferences": 0,
+      "searchParityRootPasses": 48,
+      "searchDifferences": 0,
+      "parameterBytes": 104712,
+      "combinedPayloadBytes": 899816,
+      "combinedImmutablePrimitiveBytes": 904400,
+      "workspacePrimitiveBytes": 4329,
+      "cache": {
+        "correctionErrorBound": 1.2151174397776368e-05,
+        "kind": "polynomial-period64-canonical-rounding-guard-v1",
+        "updates": 6210,
+        "roundingFallbacks": 1,
+        "rebuilds": 124
+      },
+      "transitionMedianNanos": {
+        "CUBIC-full": 849.034,
+        "CUBIC-cache": 302.648,
+        "Gen32": 146.65
+      },
+      "cacheSearchCostVsCanonical": 0.7788128599910593,
+      "evidence": "raw/wave5/trained-cache-3-01.json",
+      "sha256": "68907a51c1a12b2a0440d1cc1275a6c9a4f0ce81776f381360ea45c7639e3ed4"
+    }
+  ],
+  "limitations": [
+    "Sequential single-process diagnostic; no match-strength conclusion.",
+    "Full versus cached search compares identical functions; cross-model R4/R16 trees need actual match NPS and equal-time assessment.",
+    "Primitive byte counts exclude object headers/references/alignment."
+  ]
+}

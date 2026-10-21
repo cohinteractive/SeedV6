@@ -9,6 +9,17 @@ spec.loader.exec_module(summary)
 
 
 class DiagnosticProcessTest(unittest.TestCase):
+    def test_bounded_gradle_qa_is_separate_and_unknown_work_fails_closed(self):
+        record = dict(started="2026-10-21T01:00:00+00:00", ended="2026-10-21T01:01:00+00:00",
+                      exitCode=0, args=["cmd.exe", "/d", "/c", "gradlew.bat",
+                                        ":engine-core:test", "--offline", "--max-workers=1"])
+        self.assertEqual("separate-bounded-gradle-qa", summary.diagnostic_entrypoint(record))
+        for token in (":research:unknown", "com.ohinteractive.seedv6.tools.eval.BrnSuccessorMatch"):
+            with self.subTest(token=token), self.assertRaises(AssertionError):
+                summary.diagnostic_entrypoint({**record, "args": record["args"] + [token]})
+        with self.assertRaises(AssertionError):
+            summary.diagnostic_entrypoint({**record, "args": record["args"][:-1]})
+
     def test_known_diagnostic_is_classified_without_claiming_it_is_a_match(self):
         entry = "com.ohinteractive.seedv6.tools.eval.BrnHybridProbe"
         self.assertEqual(entry, summary.diagnostic_entrypoint(dict(arguments=["-Xmx768m", entry, "plan.json"], exitCode=0)))

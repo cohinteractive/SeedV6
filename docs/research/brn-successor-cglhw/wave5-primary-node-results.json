@@ -1,0 +1,1273 @@
+{
+  "id": "wave5-primary-node-v1-completed",
+  "status": "Closed fixed-budget development experiment",
+  "plan": "docs\\research\\brn-successor-cglhw\\wave5-primary-node-plan.json",
+  "receipts": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-01",
+  "analysis": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-analysis-01.json",
+  "runtime": "docs\\research\\brn-successor-cglhw\\wave5-runtime.json",
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\wave5-primary-node-plan.json": "00d5879c8fe87850bdf2c18d7f48c0475c27a7d53664725c7b8390c20b241091",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-analysis-01.json": "bb97146e3b994da56f993017b74e8421de5968368c071920b00a85962859fa13",
+    "docs\\research\\brn-successor-cglhw\\wave5-runtime.json": "25cf0f09d2af4ff520ecfa8f4eeb150d1c2c91358b05d4010aeb7a7e5c1df7dd",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-01\\model-bindings.json": "7aa8ad07b4d27f822d52745b2803f5e76d5282143ee29d3def1a7a1231a07cab"
+  },
+  "games": 128,
+  "validatedMoves": 16501,
+  "models": [
+    {
+      "name": "W5-RESCUBIC-R4-LR001-g93-half",
+      "wins": 12,
+      "draws": 0,
+      "losses": 4,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.75,
+      "pairStandardError": 0.0944911182523068,
+      "descriptiveNormal95": [
+        0.5647974082254786,
+        0.9352025917745214
+      ],
+      "pairScores": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "boundedPair95": [
+        0.26983860434003965,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.1495667712083959,
+        1
+      ]
+    },
+    {
+      "name": "W5-RESCUBIC-R4-LR001-g96-half",
+      "wins": 11,
+      "draws": 3,
+      "losses": 2,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.78125,
+      "pairStandardError": 0.08759561102834189,
+      "descriptiveNormal95": [
+        0.6095626023844499,
+        0.9529373976155501
+      ],
+      "pairScores": [
+        0.75,
+        0.5,
+        1.0,
+        0.5,
+        1.0,
+        0.5,
+        1.0,
+        1.0
+      ],
+      "boundedPair95": [
+        0.30108860434003965,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.1808167712083959,
+        1
+      ]
+    },
+    {
+      "name": "W5-RESCUBIC-R16-LR001-g95-half",
+      "wins": 7,
+      "draws": 5,
+      "losses": 4,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.59375,
+      "pairStandardError": 0.08097480869293328,
+      "descriptiveNormal95": [
+        0.43503937496185074,
+        0.7524606250381493
+      ],
+      "pairScores": [
+        0.25,
+        0.5,
+        1.0,
+        0.75,
+        0.75,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "boundedPair95": [
+        0.11358860434003965,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "W5-RESCUBIC-R16-LR001-g96-half",
+      "wins": 12,
+      "draws": 2,
+      "losses": 2,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.8125,
+      "pairStandardError": 0.07834789631600109,
+      "descriptiveNormal95": [
+        0.6589381232206379,
+        0.9660618767793621
+      ],
+      "pairScores": [
+        0.5,
+        1.0,
+        0.5,
+        1.0,
+        1.0,
+        0.75,
+        0.75,
+        1.0
+      ],
+      "boundedPair95": [
+        0.33233860434003965,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.2120667712083959,
+        1
+      ]
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR001-g95-half",
+      "wins": 7,
+      "draws": 3,
+      "losses": 6,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.53125,
+      "pairStandardError": 0.1451407875625791,
+      "descriptiveNormal95": [
+        0.246774056377345,
+        0.8157259436226549
+      ],
+      "pairScores": [
+        0.75,
+        0.0,
+        1.0,
+        0.5,
+        0.75,
+        0.0,
+        1.0,
+        0.25
+      ],
+      "boundedPair95": [
+        0.051088604340039645,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR001-g96-half",
+      "wins": 11,
+      "draws": 2,
+      "losses": 3,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.75,
+      "pairStandardError": 0.08183170883849714,
+      "descriptiveNormal95": [
+        0.5896098506765456,
+        0.9103901493234544
+      ],
+      "pairScores": [
+        0.5,
+        1.0,
+        0.5,
+        0.75,
+        0.75,
+        0.5,
+        1.0,
+        1.0
+      ],
+      "boundedPair95": [
+        0.26983860434003965,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.1495667712083959,
+        1
+      ]
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR003-g94-half",
+      "wins": 7,
+      "draws": 3,
+      "losses": 6,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.53125,
+      "pairStandardError": 0.1288470508005519,
+      "descriptiveNormal95": [
+        0.2787097804309183,
+        0.7837902195690817
+      ],
+      "pairScores": [
+        0.5,
+        0.0,
+        0.25,
+        0.75,
+        1.0,
+        1.0,
+        0.25,
+        0.5
+      ],
+      "boundedPair95": [
+        0.051088604340039645,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR003-g96-half",
+      "wins": 7,
+      "draws": 3,
+      "losses": 6,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.53125,
+      "pairStandardError": 0.13723594775838746,
+      "descriptiveNormal95": [
+        0.2622675423935606,
+        0.8002324576064395
+      ],
+      "pairScores": [
+        0.75,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "boundedPair95": [
+        0.051088604340039645,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        1
+      ]
+    }
+  ],
+  "modelBindings": [
+    {
+      "name": "Gen32",
+      "originalManifest": {
+        "id": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+        "generation": 32,
+        "optimizerStep": 1753088,
+        "trainingDepth": 4,
+        "parentId": "g000031-s001228800-3b52a75c2077c9b9a44edcee222201e0b3a0b76dc8b9cef5ae99804fa5549c78",
+        "networkBytes": 795032,
+        "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "trainingBytes": 2731424,
+        "trainingSha256": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+        "architecture": "BRN_PAIR2"
+      },
+      "effectiveNetworkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "residualGain": 0.25,
+      "gatedCache": false
+    },
+    {
+      "name": "W5-RESCUBIC-R4-LR001-g93-half",
+      "originalManifest": {
+        "id": "g000093-s000761856-a882e34ac665bbc8d1ab96f8d8bc1e5d6751d24c1eac0143308b09db0215df8e",
+        "generation": 93,
+        "optimizerStep": 761856,
+        "trainingDepth": 4,
+        "parentId": "g000092-s000753664-d0ba7da5aff42ab47f4d0469f882bd2b41ca9053ab2fbba40b54a8bf1bd899ef",
+        "networkBytes": 30864,
+        "networkSha256": "8ee2f2c880ff3f9a856e871e35582632cc43b57dcb9ec3395c7280581debc523",
+        "trainingBytes": 92464,
+        "trainingSha256": "428fb9553419a1f5a194989727579acfaf89506548e5748d86bb1680e7f0c6aa",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "effectiveNetworkSha256": "f1bcd28b2806df5fe18eeb105cf6daa9c299aec968e24d30340ba8a29780ca07",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "name": "W5-RESCUBIC-R4-LR001-g96-half",
+      "originalManifest": {
+        "id": "g000096-s000786432-014449a8d5676d1a4569501219355fad6f5c7182a02537397d526db6e31ea35a",
+        "generation": 96,
+        "optimizerStep": 786432,
+        "trainingDepth": 4,
+        "parentId": "g000095-s000778240-e44abd3cf0617c304869dddf06783705a97c8c7c37866ac6b1345b318c71723d",
+        "networkBytes": 30864,
+        "networkSha256": "a831c9beea3889351b92fea09039ab7eabd8eb9ee6f648807336dfaa9684c158",
+        "trainingBytes": 92464,
+        "trainingSha256": "00f32dc27648a4e7ce5ffc24ea5c430f67059317b59818437b9ca1a9f99ff630",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "effectiveNetworkSha256": "66d1bd24d900d803aa6db92300804aa6ba015efa6c05eca6e19210745ee4b8c6",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "name": "W5-RESCUBIC-R16-LR001-g95-half",
+      "originalManifest": {
+        "id": "g000095-s000778240-af578b860a2d492795f6bdce34c5f5d6739953bf5d490daed85a4ba94ee6ecc8",
+        "generation": 95,
+        "optimizerStep": 778240,
+        "trainingDepth": 4,
+        "parentId": "g000094-s000770048-69912f314b230681f73cc4ba905debd772da632a6a34956cd397313bf5d1e38f",
+        "networkBytes": 104784,
+        "networkSha256": "1c6d5410f5161568b8bc3b70d5b74bc98919101ffc3f70e3c88fcda9c508c077",
+        "trainingBytes": 314224,
+        "trainingSha256": "ac3a44229531668d29d054b74769bb56c5886e04b2c3e252278e9b64a2339dbb",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "effectiveNetworkSha256": "fe28b40be13fdaed706585c18fcc62d453eea389ab79671dc0392bbb58420b6e",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "name": "W5-RESCUBIC-R16-LR001-g96-half",
+      "originalManifest": {
+        "id": "g000096-s000786432-f4c32fa4e682d031c65def888ef238210184540017bdce382c0c967d477b89b4",
+        "generation": 96,
+        "optimizerStep": 786432,
+        "trainingDepth": 4,
+        "parentId": "g000095-s000778240-af578b860a2d492795f6bdce34c5f5d6739953bf5d490daed85a4ba94ee6ecc8",
+        "networkBytes": 104784,
+        "networkSha256": "14e72d384c4a18ec80b2db2d55df6a3c9ae69f671c9c0b9688fac3e3fb8c1218",
+        "trainingBytes": 314224,
+        "trainingSha256": "66a1e1415dae680f1b065a16bb85e9b38f0a845a17daa2d9248f6fa98647eb0e",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "effectiveNetworkSha256": "a072f47985f2de46751f4cc4b963db2d3807f7db1438e33252bab8323dd6ddf5",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR001-g95-half",
+      "originalManifest": {
+        "id": "g000095-s002531328-93cd4df28d54a09df7168d9ad352e1d19e81d6e31244f5a0ea8a81a120c5838d",
+        "generation": 95,
+        "optimizerStep": 2531328,
+        "trainingDepth": 4,
+        "parentId": "g000094-s002523136-9ce30d48902e43e138c1c07c1d5001c0fc39a3cffe1eba46d5c3c15ee64f3513",
+        "networkBytes": 795032,
+        "networkSha256": "c9295198780b4a070d8ff3f26a0690fa888173ae0b930c9d36b8938242f6661e",
+        "trainingBytes": 2731424,
+        "trainingSha256": "033beb4383b7d0f5b2e16257d6265a6c5eeb79a16ef5baef7d9068ff93e261c4",
+        "architecture": "BRN_PAIR2"
+      },
+      "effectiveNetworkSha256": "253c2bbef0c4ff32c2ab261e7981c9b3bf5d5163b90befe44f5014f7b7ca2304",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "correctionScale": 0.5,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "additiveMapping": "Gen32 compiled tables + scale * (continued compiled tables - Gen32 tables)"
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR001-g96-half",
+      "originalManifest": {
+        "id": "g000096-s002539520-9b44587ab62305e69ee1952a5c30524ce08dafca1a893a155384218fe141cf02",
+        "generation": 96,
+        "optimizerStep": 2539520,
+        "trainingDepth": 4,
+        "parentId": "g000095-s002531328-93cd4df28d54a09df7168d9ad352e1d19e81d6e31244f5a0ea8a81a120c5838d",
+        "networkBytes": 795032,
+        "networkSha256": "303d94b16ad1fb24a10070db9113704cee4c33aa25b2a92f43b3e76741642a94",
+        "trainingBytes": 2731424,
+        "trainingSha256": "dcf5a417c7c7ff3adc176d9795e7b4cc658790008263b5c1e1301275877d3854",
+        "architecture": "BRN_PAIR2"
+      },
+      "effectiveNetworkSha256": "e26f58d9b7a87d2f60c5b4e5a7990ba89cbd5e1598b4e291cfa36482c01d4936",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "correctionScale": 0.5,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "additiveMapping": "Gen32 compiled tables + scale * (continued compiled tables - Gen32 tables)"
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR003-g94-half",
+      "originalManifest": {
+        "id": "g000094-s002523136-5661001d38668535c6a6ea26d293828b0924335af95130a87098d94f74be09bd",
+        "generation": 94,
+        "optimizerStep": 2523136,
+        "trainingDepth": 4,
+        "parentId": "g000093-s002514944-2505ea9166a7286d94f6408e5a9f2afda29a65114a208e4cca6def6779a074b6",
+        "networkBytes": 795032,
+        "networkSha256": "3a769c91fda579824fa72d0ccd728b59cc2cbda9b4ca89581a8de15c827882f1",
+        "trainingBytes": 2731424,
+        "trainingSha256": "a653fe05111cff864f750d880b238d397fd929a3423c8633774ecd2f6af6bbe4",
+        "architecture": "BRN_PAIR2"
+      },
+      "effectiveNetworkSha256": "1232ee78cb15a2db184236c06091c1c3e108dd66dcf2c9ee65ee078e68104e13",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "correctionScale": 0.5,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "additiveMapping": "Gen32 compiled tables + scale * (continued compiled tables - Gen32 tables)"
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR003-g96-half",
+      "originalManifest": {
+        "id": "g000096-s002539520-e8c98f1dc0b6c5ab2b6b25dc68a74396ab885fb2afbe556d10c6a195abb80348",
+        "generation": 96,
+        "optimizerStep": 2539520,
+        "trainingDepth": 4,
+        "parentId": "g000095-s002531328-d0b5da0ea62ca2cd978d379bd3b5da9a903fef889f137fe524a5952bb713b294",
+        "networkBytes": 795032,
+        "networkSha256": "4fb6f56b4a65828b12f93864753f0219d9db00b00fd0ebc26fe9de723129c1e5",
+        "trainingBytes": 2731424,
+        "trainingSha256": "400e2f8fe912337ddf6e98986eb4897bdab86e39dcf5be641993803f9d747b1a",
+        "architecture": "BRN_PAIR2"
+      },
+      "effectiveNetworkSha256": "217ff51152c2d61d056bb21d8bbc3ac09fea33dc8603521f67e16b2bbee8ad51",
+      "residualGain": 0.25,
+      "gatedCache": false,
+      "correctionScale": 0.5,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "additiveMapping": "Gen32 compiled tables + scale * (continued compiled tables - Gen32 tables)"
+    }
+  ],
+  "sameRootSearch": [
+    {
+      "name": "W5-RESCUBIC-R4-LR001-g93-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 5,
+      "meanDepthDifference": 0.125,
+      "lessEqualMoreDepth": [
+        0,
+        7,
+        1
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 4.241733518523557,
+      "medianNpsRatio": 0.2412402358749864
+    },
+    {
+      "name": "W5-RESCUBIC-R4-LR001-g96-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 5,
+      "meanDepthDifference": 0.125,
+      "lessEqualMoreDepth": [
+        0,
+        7,
+        1
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.2749642173725855,
+      "medianNpsRatio": 0.7844336489125323
+    },
+    {
+      "name": "W5-RESCUBIC-R16-LR001-g95-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 4,
+      "meanDepthDifference": 0,
+      "lessEqualMoreDepth": [
+        0,
+        8,
+        0
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.7715237416100291,
+      "medianNpsRatio": 0.5646962965903843
+    },
+    {
+      "name": "W5-RESCUBIC-R16-LR001-g96-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 3,
+      "meanDepthDifference": 0.125,
+      "lessEqualMoreDepth": [
+        0,
+        7,
+        1
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.3363773193758262,
+      "medianNpsRatio": 0.7485449859653
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR001-g95-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 3,
+      "meanDepthDifference": 0.25,
+      "lessEqualMoreDepth": [
+        0,
+        6,
+        2
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.0416503496394234,
+      "medianNpsRatio": 0.9608172659312477
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR001-g96-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 4,
+      "meanDepthDifference": 0.25,
+      "lessEqualMoreDepth": [
+        0,
+        6,
+        2
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.0007772723133435,
+      "medianNpsRatio": 0.9995072617724985
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR003-g94-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 4,
+      "meanDepthDifference": 0,
+      "lessEqualMoreDepth": [
+        0,
+        8,
+        0
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.0182259864759053,
+      "medianNpsRatio": 0.9821016101623877
+    },
+    {
+      "name": "W5-BRE-CONTROL-LR003-g96-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 5,
+      "meanDepthDifference": 0.25,
+      "lessEqualMoreDepth": [
+        0,
+        6,
+        2
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 0.9814901603695134,
+      "medianNpsRatio": 1.0195385519529934
+    }
+  ],
+  "telemetry": {
+    "W5-RESCUBIC-R4-LR001-g93-half": {
+      "moves": 957,
+      "nodes": 30309915,
+      "elapsedNanos": 22275981000,
+      "sumDepth": 7648,
+      "fallbacks": 0,
+      "maximumMoveNanos": 145257000
+    },
+    "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304": {
+      "moves": 8239,
+      "nodes": 263395233,
+      "elapsedNanos": 148902352100,
+      "sumDepth": 61429,
+      "fallbacks": 0,
+      "maximumMoveNanos": 132568800
+    },
+    "W5-RESCUBIC-R4-LR001-g96-half": {
+      "moves": 1349,
+      "nodes": 43312408,
+      "elapsedNanos": 27768323700,
+      "sumDepth": 9730,
+      "fallbacks": 0,
+      "maximumMoveNanos": 46030600
+    },
+    "W5-RESCUBIC-R16-LR001-g95-half": {
+      "moves": 1118,
+      "nodes": 35917411,
+      "elapsedNanos": 26572434000,
+      "sumDepth": 8058,
+      "fallbacks": 0,
+      "maximumMoveNanos": 143620200
+    },
+    "W5-RESCUBIC-R16-LR001-g96-half": {
+      "moves": 984,
+      "nodes": 31317157,
+      "elapsedNanos": 23378336600,
+      "sumDepth": 7810,
+      "fallbacks": 0,
+      "maximumMoveNanos": 58435000
+    },
+    "W5-BRE-CONTROL-LR001-g95-half": {
+      "moves": 809,
+      "nodes": 25728959,
+      "elapsedNanos": 15412453900,
+      "sumDepth": 6433,
+      "fallbacks": 0,
+      "maximumMoveNanos": 118984200
+    },
+    "W5-BRE-CONTROL-LR001-g96-half": {
+      "moves": 1066,
+      "nodes": 34033932,
+      "elapsedNanos": 19817155400,
+      "sumDepth": 7953,
+      "fallbacks": 0,
+      "maximumMoveNanos": 209261600
+    },
+    "W5-BRE-CONTROL-LR003-g94-half": {
+      "moves": 1117,
+      "nodes": 35780154,
+      "elapsedNanos": 20737492400,
+      "sumDepth": 8272,
+      "fallbacks": 0,
+      "maximumMoveNanos": 117965000
+    },
+    "W5-BRE-CONTROL-LR003-g96-half": {
+      "moves": 862,
+      "nodes": 27406854,
+      "elapsedNanos": 15395494100,
+      "sumDepth": 6634,
+      "fallbacks": 0,
+      "maximumMoveNanos": 44919800
+    }
+  },
+  "commonOpponentContrasts": [
+    {
+      "left": "W5-RESCUBIC-R4-LR001-g93-half",
+      "right": "W5-RESCUBIC-R4-LR001-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.03125,
+      "pairStandardError": 0.09952453932860693,
+      "descriptiveNormal95": [
+        -0.22631809708406958,
+        0.16381809708406958
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R4-LR001-g93-half",
+      "right": "W5-RESCUBIC-R16-LR001-g95-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.15625,
+      "pairStandardError": 0.1331076028203176,
+      "descriptiveNormal95": [
+        -0.10464090152782252,
+        0.4171409015278225
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R4-LR001-g93-half",
+      "right": "W5-RESCUBIC-R16-LR001-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.0625,
+      "pairStandardError": 0.10296930888098925,
+      "descriptiveNormal95": [
+        -0.2643198454067389,
+        0.13931984540673892
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R4-LR001-g93-half",
+      "right": "W5-BRE-CONTROL-LR001-g95-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.21875,
+      "pairStandardError": 0.1795175827043134,
+      "descriptiveNormal95": [
+        -0.13310446210045423,
+        0.5706044621004542
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R4-LR001-g93-half",
+      "right": "W5-BRE-CONTROL-LR001-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.0,
+      "pairStandardError": 0.10564428184106456,
+      "descriptiveNormal95": [
+        -0.20706279240848652,
+        0.20706279240848652
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R4-LR001-g93-half",
+      "right": "W5-BRE-CONTROL-LR003-g94-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.21875,
+      "pairStandardError": 0.119872514125871,
+      "descriptiveNormal95": [
+        -0.016200127686707144,
+        0.45370012768670714
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R4-LR001-g93-half",
+      "right": "W5-BRE-CONTROL-LR003-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.21875,
+      "pairStandardError": 0.1972891053034317,
+      "descriptiveNormal95": [
+        -0.1679366463947261,
+        0.605436646394726
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R4-LR001-g96-half",
+      "right": "W5-RESCUBIC-R16-LR001-g95-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.1875,
+      "pairStandardError": 0.10296930888098925,
+      "descriptiveNormal95": [
+        -0.014319845406738918,
+        0.3893198454067389
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R4-LR001-g96-half",
+      "right": "W5-RESCUBIC-R16-LR001-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.03125,
+      "pairStandardError": 0.1288470508005519,
+      "descriptiveNormal95": [
+        -0.2837902195690817,
+        0.22129021956908168
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R4-LR001-g96-half",
+      "right": "W5-BRE-CONTROL-LR001-g95-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.25,
+      "pairStandardError": 0.10564428184106456,
+      "descriptiveNormal95": [
+        0.04293720759151348,
+        0.4570627924084865
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R4-LR001-g96-half",
+      "right": "W5-BRE-CONTROL-LR001-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.03125,
+      "pairStandardError": 0.11016930963618808,
+      "descriptiveNormal95": [
+        -0.18468184688692862,
+        0.24718184688692862
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R4-LR001-g96-half",
+      "right": "W5-BRE-CONTROL-LR003-g94-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.25,
+      "pairStandardError": 0.16366341767699427,
+      "descriptiveNormal95": [
+        -0.07078029864690877,
+        0.5707802986469088
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R4-LR001-g96-half",
+      "right": "W5-BRE-CONTROL-LR003-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.25,
+      "pairStandardError": 0.16366341767699427,
+      "descriptiveNormal95": [
+        -0.07078029864690877,
+        0.5707802986469088
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R16-LR001-g95-half",
+      "right": "W5-RESCUBIC-R16-LR001-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.21875,
+      "pairStandardError": 0.11016930963618808,
+      "descriptiveNormal95": [
+        -0.4346818468869286,
+        -0.0028181531130713755
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R16-LR001-g95-half",
+      "right": "W5-BRE-CONTROL-LR001-g95-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.0625,
+      "pairStandardError": 0.13975424859373686,
+      "descriptiveNormal95": [
+        -0.21141832724372422,
+        0.3364183272437242
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R16-LR001-g95-half",
+      "right": "W5-BRE-CONTROL-LR001-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.15625,
+      "pairStandardError": 0.124440713078271,
+      "descriptiveNormal95": [
+        -0.40015379763341113,
+        0.08765379763341113
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R16-LR001-g95-half",
+      "right": "W5-BRE-CONTROL-LR003-g94-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.0625,
+      "pairStandardError": 0.14752421108802058,
+      "descriptiveNormal95": [
+        -0.22664745373252032,
+        0.3516474537325203
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R16-LR001-g95-half",
+      "right": "W5-BRE-CONTROL-LR003-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.0625,
+      "pairStandardError": 0.168700389532957,
+      "descriptiveNormal95": [
+        -0.2681527634845957,
+        0.3931527634845957
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R16-LR001-g96-half",
+      "right": "W5-BRE-CONTROL-LR001-g95-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.28125,
+      "pairStandardError": 0.1972891053034317,
+      "descriptiveNormal95": [
+        -0.10543664639472611,
+        0.667936646394726
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R16-LR001-g96-half",
+      "right": "W5-BRE-CONTROL-LR001-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.0625,
+      "pairStandardError": 0.0625,
+      "descriptiveNormal95": [
+        -0.06,
+        0.185
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R16-LR001-g96-half",
+      "right": "W5-BRE-CONTROL-LR003-g94-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.28125,
+      "pairStandardError": 0.1372359477583875,
+      "descriptiveNormal95": [
+        0.012267542393560538,
+        0.5502324576064395
+      ]
+    },
+    {
+      "left": "W5-RESCUBIC-R16-LR001-g96-half",
+      "right": "W5-BRE-CONTROL-LR003-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.28125,
+      "pairStandardError": 0.1915485531511155,
+      "descriptiveNormal95": [
+        -0.09418516417618633,
+        0.6566851641761864
+      ]
+    },
+    {
+      "left": "W5-BRE-CONTROL-LR001-g95-half",
+      "right": "W5-BRE-CONTROL-LR001-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": -0.21875,
+      "pairStandardError": 0.1795175827043134,
+      "descriptiveNormal95": [
+        -0.5706044621004542,
+        0.13310446210045423
+      ]
+    },
+    {
+      "left": "W5-BRE-CONTROL-LR001-g95-half",
+      "right": "W5-BRE-CONTROL-LR003-g94-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.0,
+      "pairStandardError": 0.2059386177619785,
+      "descriptiveNormal95": [
+        -0.40363969081347784,
+        0.40363969081347784
+      ]
+    },
+    {
+      "left": "W5-BRE-CONTROL-LR001-g95-half",
+      "right": "W5-BRE-CONTROL-LR003-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.0,
+      "pairStandardError": 0.2059386177619785,
+      "descriptiveNormal95": [
+        -0.40363969081347784,
+        0.40363969081347784
+      ]
+    },
+    {
+      "left": "W5-BRE-CONTROL-LR001-g96-half",
+      "right": "W5-BRE-CONTROL-LR003-g94-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.21875,
+      "pairStandardError": 0.1795175827043134,
+      "descriptiveNormal95": [
+        -0.13310446210045423,
+        0.5706044621004542
+      ]
+    },
+    {
+      "left": "W5-BRE-CONTROL-LR001-g96-half",
+      "right": "W5-BRE-CONTROL-LR003-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.21875,
+      "pairStandardError": 0.16662015720108503,
+      "descriptiveNormal95": [
+        -0.10782550811412667,
+        0.5453255081141266
+      ]
+    },
+    {
+      "left": "W5-BRE-CONTROL-LR003-g94-half",
+      "right": "W5-BRE-CONTROL-LR003-g96-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.0,
+      "pairStandardError": 0.25,
+      "descriptiveNormal95": [
+        -0.49,
+        0.49
+      ]
+    }
+  ],
+  "openingPrefixSensitivity": [
+    {
+      "plies": 4,
+      "uniquePrefixes": 7,
+      "largestGroup": 2
+    },
+    {
+      "plies": 8,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 12,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 16,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    }
+  ],
+  "processReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-batch-000.process.json",
+      "sha256": "4ba00d43d9b4e965fd5d304e30975df267f686c9277541059b89ab1d6155ac52",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "0ed3ce629c386fd3528c85e45e93c6fc16c2fb014f400e288a5767094d212ca5",
+      "completedUtc": "2026-10-21T02:40:44.8987627Z",
+      "sampledPeakWorkingSetBytes": 601493504,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 37.25,
+      "plan": "docs/research/brn-successor-cglhw/wave5-primary-node-plan.json",
+      "processId": 52064,
+      "startedUtc": "2026-10-21T02:40:12.0977088Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-batch-001.process.json",
+      "sha256": "d39802cd2c772aa77987b53d7d28f45a5822de61cf38ef5aa8794ce02bde5bd3",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "0ed3ce629c386fd3528c85e45e93c6fc16c2fb014f400e288a5767094d212ca5",
+      "completedUtc": "2026-10-21T02:41:21.3216821Z",
+      "sampledPeakWorkingSetBytes": 606613504,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 40.046875,
+      "plan": "docs/research/brn-successor-cglhw/wave5-primary-node-plan.json",
+      "processId": 49532,
+      "startedUtc": "2026-10-21T02:40:45.1150924Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-batch-002.process.json",
+      "sha256": "4b9dfca1fff838265fadccbfacaeb3a211bf7cafb004c8a15a6bfd2202d2d046",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "0ed3ce629c386fd3528c85e45e93c6fc16c2fb014f400e288a5767094d212ca5",
+      "completedUtc": "2026-10-21T02:41:49.2926840Z",
+      "sampledPeakWorkingSetBytes": 605974528,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 32.1875,
+      "plan": "docs/research/brn-successor-cglhw/wave5-primary-node-plan.json",
+      "processId": 44396,
+      "startedUtc": "2026-10-21T02:41:21.5046808Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-batch-003.process.json",
+      "sha256": "286b2194e5d2dd41d886e6a2e7bab535a8846a24fd2b1b94ea6af036d526ed4f",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "0ed3ce629c386fd3528c85e45e93c6fc16c2fb014f400e288a5767094d212ca5",
+      "completedUtc": "2026-10-21T02:42:21.6941242Z",
+      "sampledPeakWorkingSetBytes": 599498752,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 36.40625,
+      "plan": "docs/research/brn-successor-cglhw/wave5-primary-node-plan.json",
+      "processId": 52612,
+      "startedUtc": "2026-10-21T02:41:49.4566857Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-batch-004.process.json",
+      "sha256": "c1168bac7e043a316c7e80259b3336d88b6035b2a8533d04f571df217c0e26da",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "0ed3ce629c386fd3528c85e45e93c6fc16c2fb014f400e288a5767094d212ca5",
+      "completedUtc": "2026-10-21T02:42:54.0029719Z",
+      "sampledPeakWorkingSetBytes": 595816448,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 36.375,
+      "plan": "docs/research/brn-successor-cglhw/wave5-primary-node-plan.json",
+      "processId": 8220,
+      "startedUtc": "2026-10-21T02:42:21.8681296Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-batch-005.process.json",
+      "sha256": "fabda74ae933d526477ec37dfad85d997086415ff6a1c1994f652883e3b647e1",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "0ed3ce629c386fd3528c85e45e93c6fc16c2fb014f400e288a5767094d212ca5",
+      "completedUtc": "2026-10-21T02:43:23.2534241Z",
+      "sampledPeakWorkingSetBytes": 597860352,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 33.234375,
+      "plan": "docs/research/brn-successor-cglhw/wave5-primary-node-plan.json",
+      "processId": 51996,
+      "startedUtc": "2026-10-21T02:42:54.1739716Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-batch-006.process.json",
+      "sha256": "d7b0a3a87a12fe42f6605fdf0e1721494c313ba27022c5eb65a2836bdce54f65",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "0ed3ce629c386fd3528c85e45e93c6fc16c2fb014f400e288a5767094d212ca5",
+      "completedUtc": "2026-10-21T02:43:59.2181815Z",
+      "sampledPeakWorkingSetBytes": 598032384,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 40.09375,
+      "plan": "docs/research/brn-successor-cglhw/wave5-primary-node-plan.json",
+      "processId": 3184,
+      "startedUtc": "2026-10-21T02:43:23.4224245Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-batch-007.process.json",
+      "sha256": "4fc903915efc999260705738f5088ac6e561b58fea0471c799d4f5209c935de9",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "0ed3ce629c386fd3528c85e45e93c6fc16c2fb014f400e288a5767094d212ca5",
+      "completedUtc": "2026-10-21T02:44:44.4029579Z",
+      "sampledPeakWorkingSetBytes": 598364160,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 39.671875,
+      "plan": "docs/research/brn-successor-cglhw/wave5-primary-node-plan.json",
+      "processId": 36824,
+      "startedUtc": "2026-10-21T02:43:59.3921826Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-batch-008.process.json",
+      "sha256": "7d370cebd535903b9883455ccd6ee63fcb8754c00a79abe12c88859308897e44",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "0ed3ce629c386fd3528c85e45e93c6fc16c2fb014f400e288a5767094d212ca5",
+      "completedUtc": "2026-10-21T02:45:20.1594915Z",
+      "sampledPeakWorkingSetBytes": 592285696,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 37.578125,
+      "plan": "docs/research/brn-successor-cglhw/wave5-primary-node-plan.json",
+      "processId": 15860,
+      "startedUtc": "2026-10-21T02:44:44.6186006Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-batch-009.process.json",
+      "sha256": "c04f58c1d9b11d7ea6d1b838b2d000e497e23b4bdd81a3e4145d8c13d3b5dfdb",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "0ed3ce629c386fd3528c85e45e93c6fc16c2fb014f400e288a5767094d212ca5",
+      "completedUtc": "2026-10-21T02:45:46.2899349Z",
+      "sampledPeakWorkingSetBytes": 595513344,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 30.09375,
+      "plan": "docs/research/brn-successor-cglhw/wave5-primary-node-plan.json",
+      "processId": 45556,
+      "startedUtc": "2026-10-21T02:45:20.3906376Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\primary-node-batch-010.process.json",
+      "sha256": "41bacf4541d22acf246c54156a940ebd528d61402385572bf935724732c7b072",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "0ed3ce629c386fd3528c85e45e93c6fc16c2fb014f400e288a5767094d212ca5",
+      "completedUtc": "2026-10-21T02:45:59.3965825Z",
+      "sampledPeakWorkingSetBytes": 525692928,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave5-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 17.109375,
+      "plan": "docs/research/brn-successor-cglhw/wave5-primary-node-plan.json",
+      "processId": 15460,
+      "startedUtc": "2026-10-21T02:45:46.5126713Z"
+    }
+  ],
+  "separateDiagnosticProcessReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\build-tests-01.process.json",
+      "sha256": "20b9d48dd2af92d3926c9ce5f7b2d4e268307d51ce932b8b911ece8f36540521",
+      "entrypoint": "separate-bounded-gradle-qa",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cache-0-01.process.json",
+      "sha256": "aa6109ebcae8a1bd62a1c6e58a13ec1ec4ece2ead472ef30fd7ed8236af0bfb7",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cache-1-01.process.json",
+      "sha256": "06ce0b26f4d4639010f228678d521e09cad76bebc467ddd2dd31472f4db343cd",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\cache-2-01.process.json",
+      "sha256": "9af56c9e2cfc03246d3b1ca054b232797f23d986e63d4ae54ac5637b792f839e",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-cache-0-01.process.json",
+      "sha256": "dbeda4367e506b8a657cede3c45694d4ddb92ca31bb183a2cb3db11fd49f6f77",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-cache-1-01.process.json",
+      "sha256": "4117f8522f4e039cb1877eb63a78d8e13a826e7f63c8a9454b92cb87d59c95ac",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-cache-2-01.process.json",
+      "sha256": "1ee3b147bbcf0df3ac32f511999ee7a3ec128f1eca922db59d39292acf63ea0c",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-cache-3-01.process.json",
+      "sha256": "1076690c54667019e34ce5cd37ad89e62a3fc10a18edb360de2215aae27015fa",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    }
+  ],
+  "maximumSampledWorkingSetMiB": 578.51171875,
+  "totalEngineCpuSeconds": 380.046875,
+  "limitations": [
+    "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims.",
+    "Paired differences on shared complete opening pairs against the same reference. Positive favours left. Descriptive, unadjusted, not direct head-to-head strength or architectural causation.",
+    "Fresh search/TT at identical opening roots; different evaluator-dependent trees. Clock protocols warm up; node protocols do not. Descriptive cost/behaviour, not causal latency or strength.",
+    "Move-prefix grouping is a descriptive dependence warning, not ECO/source-game classification or proof of independent opening families. Pair intervals are unadjusted.",
+    "Hoeffding intervals assume independent bounded opening-pair scores; within-plan union bound covers only this plan, not prior candidate selection or repeated protocols. Independence remains unverified.",
+    "No final strength claim, selection-adjusted confirmation, or architectural causation inferred."
+  ]
+}

@@ -12,6 +12,22 @@ import sys
 
 def diagnostic_entrypoint(record):
     """Recognize explicitly separate diagnostic receipts; malformed match records fail closed."""
+    if set(record) == {"started", "ended", "exitCode", "args"}:
+        # Historical bounded Gradle QA shares the evidence directory with games.
+        # Require its explicit launcher and finite, recognized task set; do not
+        # treat a missing match plan or arbitrary process as a successful match.
+        from datetime import datetime
+        arguments = record["args"]
+        assert isinstance(arguments, list) and all(isinstance(x, str) for x in arguments)
+        assert arguments[:4] == ["cmd.exe", "/d", "/c", "gradlew.bat"]
+        tasks = [x for x in arguments[4:] if x.startswith(":")]
+        assert tasks and set(tasks) <= {":engine-core:test", ":engine-training:test",
+                                       ":app-gui:test", ":research:installResearch"}
+        assert not any("com.ohinteractive." in x for x in arguments)
+        assert "--max-workers=1" in arguments and "--offline" in arguments
+        assert datetime.fromisoformat(record["ended"]) >= datetime.fromisoformat(record["started"])
+        assert isinstance(record["exitCode"], int)
+        return "separate-bounded-gradle-qa"
     arguments = record.get("arguments")
     assert isinstance(arguments, list) and all(isinstance(x, str) for x in arguments)
     entries = [x for x in arguments if x.startswith("com.ohinteractive.seedv6.tools.eval.")]

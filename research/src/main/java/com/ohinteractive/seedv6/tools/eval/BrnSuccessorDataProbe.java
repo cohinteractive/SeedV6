@@ -16,7 +16,20 @@ import java.util.function.ToDoubleFunction;
 /** Frozen data diagnostics and destructive-in-memory-only ablations; never trains or writes a store. */
 public final class BrnSuccessorDataProbe {
     record Source(String name, String selection, String identity, String seek, long start, int stride, boolean sealed) {}
-    record Plan(String id, String modelPlan, int positions, List<Source> sources) {}
+    record Plan(String id, String modelPlan, int positions, Long maximumRawRecords, List<Source> sources) {
+        Plan {
+            if (positions < 1 || positions > 2048 || sources == null || sources.isEmpty() || sources.size() > 2)
+                throw new IllegalArgumentException("Bounded probe requires 1..2048 positions and 1..2 sources");
+            if (maximumRawRecords == null) maximumRawRecords = 1_000_000L;
+            if (maximumRawRecords < 1 || maximumRawRecords > 1_000_000)
+                throw new IllegalArgumentException("Raw record limit must be 1..1000000 per source");
+            for (var source : sources)
+                if (source.start() < 0 || source.stride() < 1 || !source.name().matches("[a-zA-Z0-9-]+"))
+                    throw new IllegalArgumentException("Invalid source start, stride or output name");
+            if (sources.stream().map(Source::name).distinct().count() != sources.size())
+                throw new IllegalArgumentException("Duplicate source output name");
+        }
+    }
     record Predictor(String name, ToDoubleFunction<long[]> raw) {}
     static final class Metrics {
         long count; double ce, squared, residualSquared, rawMin=Double.POSITIVE_INFINITY, rawMax=Double.NEGATIVE_INFINITY;
@@ -36,11 +49,13 @@ public final class BrnSuccessorDataProbe {
         Path output=Path.of(args[1]); Files.createDirectory(output);
         var predictors=new ArrayList<Predictor>(); predictors.add(new Predictor("material",BrnPair2Features::material));
         var parity=new LinkedHashMap<String,Double>();
+        var parityNames=new ArrayList<String>();
         for(var spec:modelPlan.models()) {
             var state=CheckpointStore.readTrainingSnapshot(Path.of(spec.root()),spec.checkpoint());
             if(state instanceof NetworkTrainingState.BrnPair2 p) {
                 predictors.add(new Predictor(spec.name(),p.trainer()::predictPawns));
             } else if(state instanceof NetworkTrainingState.BrnNext p) {
+                parityNames.add(spec.name());
                 var model=p.trainer().snapshot(); var workspace=model.newWorkspace();
                 predictors.add(new Predictor(spec.name(),p.trainer()::predictPawns));
                 predictors.add(new Predictor(spec.name()+"-runtime-raw",b->model.rawPawns(b,workspace)));
@@ -76,8 +91,11 @@ public final class BrnSuccessorDataProbe {
             try(var reader=SourceReaders.open(source,seek,request.start());
                 var rows=Files.newBufferedWriter(output.resolve(request.name()+"-positions.jsonl"))) {
                 PositionReader.Entry entry;
-                while(retained<plan.positions()&&(entry=reader.next())!=null) {
+                while(retained<plan.positions()) {
+                    if(examined>=plan.maximumRawRecords())throw new IllegalStateException("Raw record budget exceeded; preserve partial output");
                     if(System.nanoTime()>deadline)throw new IllegalStateException("Data probe budget exceeded; preserve partial output");
+                    entry=reader.next();
+                    if(entry==null)break;
                     examined++;end=reader.nextPosition();
                     if((entry.ordinal()-request.start())%request.stride()!=0||entry.position()==null)continue;
                     var position=entry.position();
@@ -98,7 +116,7 @@ public final class BrnSuccessorDataProbe {
                         predictions.put(predictor.name(),raw);
                         for(double gain:new double[]{.25,1}) metrics.get(predictor.name()+"@"+gain).add(material+gain*(raw-material),board,target);
                     }
-                    for(String name:List.of("W1-GATE","W1-CUBIC","W1-POOL"))
+                    for(String name:parityNames)
                         parity.merge(name,Math.abs(predictions.get(name)-predictions.get(name+"-runtime-raw")),Math::max);
                     rows.write(DataFiles.JSON.toJson(Map.of("ordinal",entry.ordinal(),"fen",Fen.fromBoard(board),
                             "target",target,"predictions",predictions)).replace("\n","")); rows.newLine();

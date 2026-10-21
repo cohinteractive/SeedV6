@@ -74,3 +74,42 @@ R4/R16, continued-BRE and additive/quadratic controls. Prefer Latest for equal-e
 controls when endpoint differences are inconclusive. No next-wave architecture or
 training gate is predetermined. G5's pause sentinel is preserved as
 `raw/wave5/g5-completed-pause.txt`; no additional human action is currently required.
+
+## Trained cost, fitting controls and closed node screen
+
+The 128-game primary node budget is complete: 16501 independently replayed legal
+moves, zero failures, caps or fallback. Results: wave5-primary-node-results.json.
+Latest R4/R16/BRE001 score78.125/81.25/75 percent against Gen32; their broad paired
+intervals overlap. Latest BRE003 scores53.125 percent. These eight opening pairs
+and eight selected endpoints establish neither superiority nor expressive value.
+Best is not a consistently better chess selector. Complete the fixed clock budget.
+
+Actual trained cubic cache/search oracles each pass6333 positions and48 search
+root passes without integer or search differences. R4 cached evaluation208–222ns,
+R16 290–303ns; compiled Gen32 baselines136–147ns across these runs. Workspace3753
+versus4329 bytes; total immutable payload825896 versus899816 bytes. These isolated
+costs are not cross-model end-to-end strength. See wave5-trained-runtime-validation.json.
+
+On consumed panels, both latest full corrections have higher quarter-mapped CE than
+their unary-only ablations at fixed half correction. Cubic degree-three helps versus
+quadratic-only, but combined interactions do not beat unary fitting here. Detailed
+fixed maturity/calibration results: wave5-fitting-diagnostics.json. Algebra reproduces
+Java means within1e-12 using the actual compiled frozen base. The old assessment
+BRE predictor uses binary64 trainer parameters before float snapshot folding; maximum
+baseline discrepancy is4.52e-7 pawn. This is recorded rather than claimed exact parity.
+
+A new bounded source diagnostic is prospectively admitted in wave5-fresh-data-plan.json.
+It begins at verified cubic G5 cursor endpoints, uses reserved geometry, and reads at
+most131072 raw records per source for2048 positions. Owner stores/cursors remain read-only.
+The data probe now supports arbitrary model aliases and an explicit raw-record bound;
+a tiny source/checkpoint integration test exercises successful collection and preserved
+partial evidence on budget exhaustion. This is research tooling only, no application bump.
+
+The match summarizer now recognizes the exact historical standalone bounded Gradle
+QA receipt schema rather than misclassifying it as a match. Three targeted classifier
+tests pass, including rejection of unknown/match arguments and missing worker limits.
+Original receipts are unchanged. No failed game was excluded or replayed.
+
+The primary clock runner paused at a batch boundary after22 games for the bounded
+source probe/build. Its original plan/runtime and every game remain intact; resume
+to128 games with new log prefixes after diagnostics, without score-dependent changes.

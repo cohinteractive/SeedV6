@@ -1,0 +1,40 @@
+{
+  "id": "wave5-fresh-ordinal-reserved-v1",
+  "modelPlan": "docs\\research\\brn-successor-cglhw\\wave5-fresh-data-model-plan.json",
+  "positions": 2048,
+  "maximumRawRecords": 131072,
+  "sources": [
+    {
+      "name": "bt4",
+      "selection": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-frozen-01\\W5-RESCUBIC-R4-LR001\\training-data\\sources.json",
+      "identity": "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+      "seek": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-frozen-01\\W5-RESCUBIC-R4-LR001\\training-data\\seek",
+      "start": 29121292,
+      "stride": 1,
+      "sealed": true
+    },
+    {
+      "name": "cp",
+      "selection": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-frozen-01\\W5-RESCUBIC-R4-LR001\\training-data\\sources.json",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "seek": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\trained-frozen-01\\W5-RESCUBIC-R4-LR001\\training-data\\seek",
+      "start": 27458246,
+      "stride": 1,
+      "sealed": true
+    }
+  ],
+  "admittedUtc": "2026-10-21T02:57:41.781642+00:00",
+  "question": "Does the unary versus full interaction fitting result persist beyond W5 source cursors on the reserved geometry partition?",
+  "limits": {
+    "seconds": 300,
+    "processors": 1,
+    "heapMiB": 768,
+    "training": false
+  },
+  "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+  "limitations": [
+    "No game or FEN disjointness guarantee. W1 source exposure may extend further but its reserved partition was excluded. Historical base overlap is not excluded.",
+    "These new diagnostic rows become consumed development evidence. No independent strength claim or fitted calibration selection.",
+    "Source bytes and owner cursors remain read-only; only a private seek-index copy may extend."
+  ]
+}
