@@ -1,0 +1,321 @@
+{
+  "id": "wave9-cache-reuse-results-v1",
+  "admissionSha256": "4367770d1a7beb0c3566228deda3166c269206474a852d63b7113a7ba0fbc4e0",
+  "runtimeSha256": "90143729f9faa5bbb192dabad1a10bab68328ea71e41c5ad0b9ff2bd24f2aaab",
+  "targetedTests": [
+    {
+      "file": "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.core.brnnext.BrnCalibratedAccumulatorTest.xml",
+      "sha256": "aaf687bf30ad99961c733a293d149c43c6f98204789225ffb4498c723b554d81",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.core.brnnext.BrnCubicDeltaAccumulatorTest.xml",
+      "sha256": "4ae1333769c67e88030358af44f7870349674d3bb02f3be6d981a1237002372c",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.core.brnnext.BrnQuadraticAccumulatorTest.xml",
+      "sha256": "9d029b0e960188ca93ef7d183adb9a9319e89265ea468171d43d7f09c95e5e60",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "engine-core\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.core.brnpair2.BrnPair2RuntimeBoundaryTest.xml",
+      "sha256": "1c49e74d14c2352c01b5d65d269b7e10ad876abb1781f5f4413467eb9dcb597a",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "research\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.tools.eval.BrnSuccessorVariantsTest.xml",
+      "sha256": "697f81e350db42a25a9714e927496c42133755b8c8f474bb92de086a888646ac",
+      "tests": 24,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "testCount": 60,
+  "runs": [
+    {
+      "index": 1,
+      "version": "old",
+      "arm": "affine",
+      "evidence": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-v2-01-old-affine.json",
+      "sha256": "556c6406080d91a1cb35cc5db4003f32a247ed019cdfc0b3c98f3ebefe52b542",
+      "executionSha256": "e4ff3464c1b18c16bb648ce9413eb1b606fa02fa326a732fdf2bf5348611ec77",
+      "positions": 4340,
+      "fullCacheSearchPairs": 48,
+      "maximumRawError": 4.8405723873656825e-14,
+      "transitionLatency": [
+        {
+          "name": "QUADRATIC-full",
+          "medianNanos": 573.098
+        },
+        {
+          "name": "QUADRATIC-cache",
+          "medianNanos": 209.416
+        },
+        {
+          "name": "Gen32",
+          "medianNanos": 138.456
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "version": "new",
+      "arm": "affine",
+      "evidence": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-v2-02-new-affine.json",
+      "sha256": "6ca89d87914ab65fe4befc05b455831a7c64f8e14edd6b0aeb7cc34cfd060da9",
+      "executionSha256": "cdabfb1929f61ae3f6d7af16f5567d0a1f81275a57c67c8098fad02de0263e6a",
+      "positions": 4340,
+      "fullCacheSearchPairs": 48,
+      "maximumRawError": 4.8405723873656825e-14,
+      "transitionLatency": [
+        {
+          "name": "QUADRATIC-full",
+          "medianNanos": 552.836
+        },
+        {
+          "name": "QUADRATIC-cache",
+          "medianNanos": 205.6
+        },
+        {
+          "name": "Gen32",
+          "medianNanos": 135.154
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "version": "old",
+      "arm": "cubic",
+      "evidence": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-v2-03-old-cubic.json",
+      "sha256": "b01c1d080e234ac76a6095a76f2d2280dc03b3d55eed319c02397478f67b007a",
+      "executionSha256": "748d4978cfa2edfb728834ba3196dddfb6253f4150b969d83259f6b26b8257d9",
+      "positions": 4340,
+      "fullCacheSearchPairs": 48,
+      "maximumRawError": 4.96269692007445e-14,
+      "transitionLatency": [
+        {
+          "name": "CUBIC-full",
+          "medianNanos": 563.106
+        },
+        {
+          "name": "CUBIC-cache",
+          "medianNanos": 228.316
+        },
+        {
+          "name": "Gen32",
+          "medianNanos": 137.552
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "version": "new",
+      "arm": "cubic",
+      "evidence": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-v2-04-new-cubic.json",
+      "sha256": "98767af70026c6b277aaa9fbcccc9217d55b2ff9b94e7a61e9aaf483e036d5fe",
+      "executionSha256": "944fcac7076ce4090b4470d1b43394e486534ea09d0853f5ca094cad6eca705d",
+      "positions": 4340,
+      "fullCacheSearchPairs": 48,
+      "maximumRawError": 4.96269692007445e-14,
+      "transitionLatency": [
+        {
+          "name": "CUBIC-full",
+          "medianNanos": 596.114
+        },
+        {
+          "name": "CUBIC-cache",
+          "medianNanos": 217.612
+        },
+        {
+          "name": "Gen32",
+          "medianNanos": 133.256
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "version": "new",
+      "arm": "affine",
+      "evidence": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-v2-05-new-affine.json",
+      "sha256": "c6c1fa792774073518009583c5d057e1525dee1a7455da41bfc75d50bc7e9c04",
+      "executionSha256": "9345f66e9874168a2b1f9b6a71802709e79313153fda122c709769b8a9b5c7ba",
+      "positions": 4340,
+      "fullCacheSearchPairs": 48,
+      "maximumRawError": 4.8405723873656825e-14,
+      "transitionLatency": [
+        {
+          "name": "QUADRATIC-full",
+          "medianNanos": 536.076
+        },
+        {
+          "name": "QUADRATIC-cache",
+          "medianNanos": 203.67
+        },
+        {
+          "name": "Gen32",
+          "medianNanos": 136.496
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "version": "old",
+      "arm": "affine",
+      "evidence": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-v2-06-old-affine.json",
+      "sha256": "e128ce4d5364544057b16748ec28ea22603fe45dee5f9dcc39f90ac402cdd296",
+      "executionSha256": "0c6d55ba409a182b65bb123af030732d4fd2b4dffcfad2d21c9b52ef9133e055",
+      "positions": 4340,
+      "fullCacheSearchPairs": 48,
+      "maximumRawError": 4.8405723873656825e-14,
+      "transitionLatency": [
+        {
+          "name": "QUADRATIC-full",
+          "medianNanos": 537.496
+        },
+        {
+          "name": "QUADRATIC-cache",
+          "medianNanos": 375.052
+        },
+        {
+          "name": "Gen32",
+          "medianNanos": 132.98
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "version": "new",
+      "arm": "cubic",
+      "evidence": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-v2-07-new-cubic.json",
+      "sha256": "c69a14e0bbd137a80e4babf9bc9d2a6d138a27f8fe63d14c8e026cda8268d82d",
+      "executionSha256": "fc21efaf6777f48a823e8b6705f578145455a5c1617fc354db5042173ace56e2",
+      "positions": 4340,
+      "fullCacheSearchPairs": 48,
+      "maximumRawError": 4.96269692007445e-14,
+      "transitionLatency": [
+        {
+          "name": "CUBIC-full",
+          "medianNanos": 619.412
+        },
+        {
+          "name": "CUBIC-cache",
+          "medianNanos": 222.09
+        },
+        {
+          "name": "Gen32",
+          "medianNanos": 134.694
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "version": "old",
+      "arm": "cubic",
+      "evidence": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-v2-08-old-cubic.json",
+      "sha256": "36a253045994bc5833d8ded4f79d0a1a8009218bfcb17beb62348efb3a515e12",
+      "executionSha256": "bf3f7fbe0aa7257a7e0ffec3ee7aeb1f21d2cd6de2a93230a78e2dc01f74ae9e",
+      "positions": 4340,
+      "fullCacheSearchPairs": 48,
+      "maximumRawError": 4.96269692007445e-14,
+      "transitionLatency": [
+        {
+          "name": "CUBIC-full",
+          "medianNanos": 597.582
+        },
+        {
+          "name": "CUBIC-cache",
+          "medianNanos": 223.984
+        },
+        {
+          "name": "Gen32",
+          "medianNanos": 136.718
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "version": "new",
+      "arm": "quad",
+      "evidence": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-v2-09-new-quad.json",
+      "sha256": "d7562ac2fdcf40134177838051c567ca8dcfed90429a9d6cb141542e97de3529",
+      "executionSha256": "b9d929a23d2d71c25fd1c92e76ba24962ad74c2655d929e2c5b0fee1543f0435",
+      "positions": 4340,
+      "fullCacheSearchPairs": 48,
+      "maximumRawError": 4.9682480351975755e-14,
+      "transitionLatency": [
+        {
+          "name": "QUADRATIC-full",
+          "medianNanos": 550.188
+        },
+        {
+          "name": "QUADRATIC-cache",
+          "medianNanos": 200.202
+        },
+        {
+          "name": "Gen32",
+          "medianNanos": 137.254
+        }
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "arm": "affine",
+      "oldRun": 1,
+      "newRun": 2,
+      "exactCrossRuntimeSearchResults": 96,
+      "warmedSearchPairs": 32,
+      "medianNewOverOldElapsed": 0.9792831451123322,
+      "sumNewOverOldElapsed": 0.9177931643807282
+    },
+    {
+      "arm": "affine",
+      "oldRun": 6,
+      "newRun": 5,
+      "exactCrossRuntimeSearchResults": 96,
+      "warmedSearchPairs": 32,
+      "medianNewOverOldElapsed": 0.9735269485777399,
+      "sumNewOverOldElapsed": 0.9462800492212438
+    },
+    {
+      "arm": "cubic",
+      "oldRun": 3,
+      "newRun": 4,
+      "exactCrossRuntimeSearchResults": 96,
+      "warmedSearchPairs": 32,
+      "medianNewOverOldElapsed": 0.9977821926403805,
+      "sumNewOverOldElapsed": 1.0101417469520844
+    },
+    {
+      "arm": "cubic",
+      "oldRun": 8,
+      "newRun": 7,
+      "exactCrossRuntimeSearchResults": 96,
+      "warmedSearchPairs": 32,
+      "medianNewOverOldElapsed": 0.9828155726939672,
+      "sumNewOverOldElapsed": 0.9715117316463723
+    }
+  ],
+  "decision": "Retain small exact-semantics reuse: all four paired median search elapsed ratios improve, but gains are modest and noisy. Build bump/native packaging still pending.",
+  "limitations": [
+    "Nine serial one-CPU BelowNormal probes; two repetitions per old/new affine/cubic, one new quadratic oracle. All fixed runs retained.",
+    "Old affine repetition2 cached375.052ns is an outlier; do not report its large apparent gain as representative.",
+    "Cubic warmed aggregate search elapsed worsens1.01x in one repetition despite tiny median improvement. No guaranteed whole-engine gain or strength improvement.",
+    "Initial runtime preflight found only the expected sourceRevision metadata change in addition to two classes. Initial probe launcher used the classpath argument as main class and failed before loading a model; v2 corrects the index and preserves first request/receipt.",
+    "Frozen tournament runtimes unchanged. No model, optimizer or search-policy change; no full-suite or new packaged-GUI claim yet."
+  ]
+}

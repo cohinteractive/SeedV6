@@ -1,0 +1,739 @@
+{
+  "id": "wave9-warm-quiet-head-feasibility-v1-results",
+  "admission": "docs\\research\\brn-successor-cglhw\\wave9-warm-quiet-admission.json",
+  "admissionSha256": "f823ccd5d1fd7649bbdf2d65e98033e93f32ac1f76f575d6325b26c7b2f82ca7",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\bt4-predictions.jsonl": "878b43c6223e3f6ea9824669569d5e9b87b4ce3bbc8abcf1e74f7f1a626e8c1a",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\cp-predictions.jsonl": "c903e919a76bd64c28a5486defe023f9ed60758df65751bea26414e3c7228395",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\bt4-predictions.jsonl": "5327d60cac2c766f95ad6f890e22d79db2075957d4cb7d1a839c4c396c573b25",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\cp-predictions.jsonl": "56781da22ad2083b54b08d4a3d2add8490aabcf2ea2c82eeb086eae577434832",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01\\bt4-predictions.jsonl": "548b61629780a90c34c2ee816e7db38154921beb614a7b6ed71031f3f06929b9",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01\\cp-predictions.jsonl": "5eb30a8177035663b8c5ae37d21fa54d2e86281ff951f8e3af00f463e5416b6f"
+  },
+  "maximumIndependentForwardError": 1.0913936421275139e-11,
+  "featureMeans": [
+    0,
+    -0.028983113069016152,
+    0.12472481026498115,
+    -0.1486542109036296,
+    -0.4689452988478612,
+    -0.3745779721600768,
+    1.034702766763352,
+    -0.1262196278791492
+  ],
+  "featureScales": [
+    1,
+    0.5013306418579341,
+    0.7480281722496034,
+    1.2122583326024778,
+    1.1081735771000993,
+    10.338918311432803,
+    7.455410465190917,
+    0.8260734220035821
+  ],
+  "arms": [
+    {
+      "mode": "affine",
+      "quietOnly": false,
+      "steps": 128,
+      "visitsPerSource": 8192,
+      "uniqueFitRows": {
+        "bt4": 1024,
+        "cp": 1019
+      },
+      "heads": [
+        0.24420761019371062,
+        0.3829997772228788,
+        -0.3031658360272729,
+        -0.25840359589578893
+      ],
+      "curve": [
+        {
+          "step": 16,
+          "batchCrossEntropy": 0.5959670403111385
+        },
+        {
+          "step": 32,
+          "batchCrossEntropy": 0.6205018211775208
+        },
+        {
+          "step": 48,
+          "batchCrossEntropy": 0.6213287802739914
+        },
+        {
+          "step": 64,
+          "batchCrossEntropy": 0.641294032989464
+        },
+        {
+          "step": 80,
+          "batchCrossEntropy": 0.8994867814708923
+        },
+        {
+          "step": 96,
+          "batchCrossEntropy": 0.5952821373648155
+        },
+        {
+          "step": 112,
+          "batchCrossEntropy": 0.6345630552118139
+        },
+        {
+          "step": 128,
+          "batchCrossEntropy": 0.6038587004381014
+        }
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "subset": "all",
+          "count": 1024,
+          "crossEntropyChange": -0.0006420929007841205,
+          "descriptiveRowSE": 0.0006111549086672219,
+          "changeRmsPawns": 0.06371001023373811,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "subset": "strict-quiet",
+          "count": 263,
+          "crossEntropyChange": 0.0012623235425664621,
+          "descriptiveRowSE": 0.0012997421519621967,
+          "changeRmsPawns": 0.08501798340157415,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "subset": "all",
+          "count": 1015,
+          "crossEntropyChange": -0.0021625202289658023,
+          "descriptiveRowSE": 0.0011890285053240547,
+          "changeRmsPawns": 0.08147787626641985,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "subset": "strict-quiet",
+          "count": 176,
+          "crossEntropyChange": -0.00028890449000755573,
+          "descriptiveRowSE": 0.003945073744026736,
+          "changeRmsPawns": 0.11438111809514168,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "subset": "all",
+          "count": 1024,
+          "crossEntropyChange": -0.0007847408284947349,
+          "descriptiveRowSE": 0.00060298406724673,
+          "changeRmsPawns": 0.06736248734666966,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "subset": "strict-quiet",
+          "count": 318,
+          "crossEntropyChange": -0.0011819766661287149,
+          "descriptiveRowSE": 0.0007501260710054409,
+          "changeRmsPawns": 0.0862498893856379,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "subset": "all",
+          "count": 1015,
+          "crossEntropyChange": 0.0031666863425273513,
+          "descriptiveRowSE": 0.0024992821194716043,
+          "changeRmsPawns": 0.0889414534672487,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "subset": "strict-quiet",
+          "count": 164,
+          "crossEntropyChange": 0.0018531134693263625,
+          "descriptiveRowSE": 0.0036623819844793285,
+          "changeRmsPawns": 0.14810278538521418,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "subset": "all",
+          "count": 2048,
+          "crossEntropyChange": -0.000603159470583999,
+          "descriptiveRowSE": 0.00035186032275499705,
+          "changeRmsPawns": 0.07858349246950587,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "subset": "strict-quiet",
+          "count": 633,
+          "crossEntropyChange": -0.00025520825533299334,
+          "descriptiveRowSE": 0.0006703424941080508,
+          "changeRmsPawns": 0.10860229057582726,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "subset": "all",
+          "count": 2029,
+          "crossEntropyChange": 0.003180868608864342,
+          "descriptiveRowSE": 0.0014730613697641868,
+          "changeRmsPawns": 0.07028711089330386,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "subset": "strict-quiet",
+          "count": 307,
+          "crossEntropyChange": -0.0005482996057338983,
+          "descriptiveRowSE": 0.0031433133725641948,
+          "changeRmsPawns": 0.09883489177502515,
+          "unadaptedDegreeMaskDifference": 0.0
+        }
+      ]
+    },
+    {
+      "mode": "affine",
+      "quietOnly": true,
+      "steps": 128,
+      "visitsPerSource": 8192,
+      "uniqueFitRows": {
+        "bt4": 306,
+        "cp": 148
+      },
+      "heads": [
+        -0.9039210746913958,
+        1.1395089994800187,
+        -1.1130537185013645,
+        0.5418580012758856
+      ],
+      "curve": [
+        {
+          "step": 16,
+          "batchCrossEntropy": 0.5332048096804168
+        },
+        {
+          "step": 32,
+          "batchCrossEntropy": 0.5420301986441921
+        },
+        {
+          "step": 48,
+          "batchCrossEntropy": 0.4918526839602391
+        },
+        {
+          "step": 64,
+          "batchCrossEntropy": 0.5283097488449191
+        },
+        {
+          "step": 80,
+          "batchCrossEntropy": 0.5261817465667514
+        },
+        {
+          "step": 96,
+          "batchCrossEntropy": 0.5096839034326454
+        },
+        {
+          "step": 112,
+          "batchCrossEntropy": 0.5083528644715868
+        },
+        {
+          "step": 128,
+          "batchCrossEntropy": 0.4743765454196333
+        }
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "subset": "all",
+          "count": 1024,
+          "crossEntropyChange": -9.754028392176994e-05,
+          "descriptiveRowSE": 0.002355891256223068,
+          "changeRmsPawns": 0.21061265680325444,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "subset": "strict-quiet",
+          "count": 263,
+          "crossEntropyChange": -0.005224040043569131,
+          "descriptiveRowSE": 0.002628582237263694,
+          "changeRmsPawns": 0.29013837360416644,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "subset": "all",
+          "count": 1015,
+          "crossEntropyChange": 0.0027765236116569993,
+          "descriptiveRowSE": 0.005971652201838264,
+          "changeRmsPawns": 0.2896154708874776,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "subset": "strict-quiet",
+          "count": 176,
+          "crossEntropyChange": -0.004999443308155129,
+          "descriptiveRowSE": 0.01433081236490502,
+          "changeRmsPawns": 0.390407083344512,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "subset": "all",
+          "count": 1024,
+          "crossEntropyChange": -0.0005685905346816746,
+          "descriptiveRowSE": 0.0023699080298327803,
+          "changeRmsPawns": 0.23058460105321554,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "subset": "strict-quiet",
+          "count": 318,
+          "crossEntropyChange": -0.004764847594711004,
+          "descriptiveRowSE": 0.0021222018505380486,
+          "changeRmsPawns": 0.28965376515668845,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "subset": "all",
+          "count": 1015,
+          "crossEntropyChange": 0.027081955885973,
+          "descriptiveRowSE": 0.009580383293263476,
+          "changeRmsPawns": 0.30313906952705316,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "subset": "strict-quiet",
+          "count": 164,
+          "crossEntropyChange": 0.0023608877016092706,
+          "descriptiveRowSE": 0.008582294893387821,
+          "changeRmsPawns": 0.4915473973891892,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "subset": "all",
+          "count": 2048,
+          "crossEntropyChange": -0.0002329965004324941,
+          "descriptiveRowSE": 0.0017908088265497486,
+          "changeRmsPawns": 0.26650918884906516,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "subset": "strict-quiet",
+          "count": 633,
+          "crossEntropyChange": 0.00030176795499074977,
+          "descriptiveRowSE": 0.002814245353305744,
+          "changeRmsPawns": 0.37069377138064424,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "subset": "all",
+          "count": 2029,
+          "crossEntropyChange": 0.017382758220356034,
+          "descriptiveRowSE": 0.0053952937127592915,
+          "changeRmsPawns": 0.2509114777785373,
+          "unadaptedDegreeMaskDifference": 0.0
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "subset": "strict-quiet",
+          "count": 307,
+          "crossEntropyChange": 0.005152436266455859,
+          "descriptiveRowSE": 0.015443405042300165,
+          "changeRmsPawns": 0.33247577820549923,
+          "unadaptedDegreeMaskDifference": 0.0
+        }
+      ]
+    },
+    {
+      "mode": "cubic",
+      "quietOnly": false,
+      "steps": 128,
+      "visitsPerSource": 8192,
+      "uniqueFitRows": {
+        "bt4": 1024,
+        "cp": 1019
+      },
+      "heads": [
+        0.2544264370954379,
+        0.37889706316182986,
+        -0.30027454437675294,
+        -0.25810081408005475,
+        -0.45341449220165436,
+        -0.2523772023873868,
+        -0.27144640344845555,
+        0.17889823985475614
+      ],
+      "curve": [
+        {
+          "step": 16,
+          "batchCrossEntropy": 0.5963232435078808
+        },
+        {
+          "step": 32,
+          "batchCrossEntropy": 0.6207241092407072
+        },
+        {
+          "step": 48,
+          "batchCrossEntropy": 0.6202476641361075
+        },
+        {
+          "step": 64,
+          "batchCrossEntropy": 0.6382251827234743
+        },
+        {
+          "step": 80,
+          "batchCrossEntropy": 0.8554601286204772
+        },
+        {
+          "step": 96,
+          "batchCrossEntropy": 0.5937662165150608
+        },
+        {
+          "step": 112,
+          "batchCrossEntropy": 0.6322567992640094
+        },
+        {
+          "step": 128,
+          "batchCrossEntropy": 0.6039718286315385
+        }
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "subset": "all",
+          "count": 1024,
+          "crossEntropyChange": -0.000484459348112492,
+          "descriptiveRowSE": 0.0008039847614896802,
+          "changeRmsPawns": 0.08248416171447266,
+          "unadaptedDegreeMaskDifference": 0.0001357999905893686
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "subset": "strict-quiet",
+          "count": 263,
+          "crossEntropyChange": -0.0001872090598354398,
+          "descriptiveRowSE": 0.0013486981222029248,
+          "changeRmsPawns": 0.09049625582721883,
+          "unadaptedDegreeMaskDifference": -0.0015348664960731279
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "subset": "all",
+          "count": 1015,
+          "crossEntropyChange": -0.003105733802541672,
+          "descriptiveRowSE": 0.0015736759641413749,
+          "changeRmsPawns": 0.10551808418003748,
+          "unadaptedDegreeMaskDifference": -0.0009372834720881768
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "subset": "strict-quiet",
+          "count": 176,
+          "crossEntropyChange": -4.154159592823563e-05,
+          "descriptiveRowSE": 0.0054251717348650415,
+          "changeRmsPawns": 0.12343851842946985,
+          "unadaptedDegreeMaskDifference": 0.000201847568898929
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "subset": "all",
+          "count": 1024,
+          "crossEntropyChange": -0.00040647738845846904,
+          "descriptiveRowSE": 0.0007939170009065993,
+          "changeRmsPawns": 0.08581566527203893,
+          "unadaptedDegreeMaskDifference": 0.0003519887012135334
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "subset": "strict-quiet",
+          "count": 318,
+          "crossEntropyChange": -0.001760214665597182,
+          "descriptiveRowSE": 0.0006748433095987903,
+          "changeRmsPawns": 0.09227944141417019,
+          "unadaptedDegreeMaskDifference": -0.0006313559904318475
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "subset": "all",
+          "count": 1015,
+          "crossEntropyChange": 0.004290218455270275,
+          "descriptiveRowSE": 0.0033270827868338774,
+          "changeRmsPawns": 0.11223184236523145,
+          "unadaptedDegreeMaskDifference": 0.001218491953701115
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "subset": "strict-quiet",
+          "count": 164,
+          "crossEntropyChange": 0.0006584307962594044,
+          "descriptiveRowSE": 0.003089369003210523,
+          "changeRmsPawns": 0.14952906909573518,
+          "unadaptedDegreeMaskDifference": -0.0012484440535655474
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "subset": "all",
+          "count": 2048,
+          "crossEntropyChange": -0.0012186924765741395,
+          "descriptiveRowSE": 0.0004103481902342735,
+          "changeRmsPawns": 0.09279081626361249,
+          "unadaptedDegreeMaskDifference": -0.0006475543793247441
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "subset": "strict-quiet",
+          "count": 633,
+          "crossEntropyChange": -0.0005684975233023284,
+          "descriptiveRowSE": 0.0006257219463555194,
+          "changeRmsPawns": 0.1079797567297898,
+          "unadaptedDegreeMaskDifference": -0.0003433132384486685
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "subset": "all",
+          "count": 2029,
+          "crossEntropyChange": 0.003997886863928075,
+          "descriptiveRowSE": 0.001867977414149327,
+          "changeRmsPawns": 0.10224543592003178,
+          "unadaptedDegreeMaskDifference": 0.0008415293497143136
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "subset": "strict-quiet",
+          "count": 307,
+          "crossEntropyChange": -0.000609342039138182,
+          "descriptiveRowSE": 0.003782172217817372,
+          "changeRmsPawns": 0.1064769351328478,
+          "unadaptedDegreeMaskDifference": -4.9134236923018795e-05
+        }
+      ]
+    },
+    {
+      "mode": "cubic",
+      "quietOnly": true,
+      "steps": 128,
+      "visitsPerSource": 8192,
+      "uniqueFitRows": {
+        "bt4": 306,
+        "cp": 148
+      },
+      "heads": [
+        -0.8610726767160714,
+        1.1407769809777015,
+        -1.108288944746989,
+        0.499276474777043,
+        -0.63836453536733,
+        -0.20532506507621953,
+        0.2980175613429624,
+        0.708167483204467
+      ],
+      "curve": [
+        {
+          "step": 16,
+          "batchCrossEntropy": 0.5319894339378615
+        },
+        {
+          "step": 32,
+          "batchCrossEntropy": 0.5405877479244922
+        },
+        {
+          "step": 48,
+          "batchCrossEntropy": 0.49162682988979645
+        },
+        {
+          "step": 64,
+          "batchCrossEntropy": 0.526130900799532
+        },
+        {
+          "step": 80,
+          "batchCrossEntropy": 0.5220117454149193
+        },
+        {
+          "step": 96,
+          "batchCrossEntropy": 0.5070581891543235
+        },
+        {
+          "step": 112,
+          "batchCrossEntropy": 0.5083076273812269
+        },
+        {
+          "step": 128,
+          "batchCrossEntropy": 0.4732645802866818
+        }
+      ],
+      "metrics": [
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "subset": "all",
+          "count": 1024,
+          "crossEntropyChange": 0.0005535837487524936,
+          "descriptiveRowSE": 0.0028530880734687018,
+          "changeRmsPawns": 0.23585494433196055,
+          "unadaptedDegreeMaskDifference": 0.0007318252123123122
+        },
+        {
+          "panel": "fresh5",
+          "source": "bt4",
+          "subset": "strict-quiet",
+          "count": 263,
+          "crossEntropyChange": -0.00724623419565817,
+          "descriptiveRowSE": 0.0030056216953321126,
+          "changeRmsPawns": 0.3135545314741109,
+          "unadaptedDegreeMaskDifference": -0.0022505618582425706
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "subset": "all",
+          "count": 1015,
+          "crossEntropyChange": 0.0031194386256777067,
+          "descriptiveRowSE": 0.006772365252063096,
+          "changeRmsPawns": 0.3239254223721729,
+          "unadaptedDegreeMaskDifference": 0.0005456424897076146
+        },
+        {
+          "panel": "fresh5",
+          "source": "cp",
+          "subset": "strict-quiet",
+          "count": 176,
+          "crossEntropyChange": -0.0019699514079011575,
+          "descriptiveRowSE": 0.01923822817825926,
+          "changeRmsPawns": 0.4173620179961237,
+          "unadaptedDegreeMaskDifference": 0.0028530946006444027
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "subset": "all",
+          "count": 1024,
+          "crossEntropyChange": 0.0011521204795699538,
+          "descriptiveRowSE": 0.002747527755614554,
+          "changeRmsPawns": 0.25688620664507794,
+          "unadaptedDegreeMaskDifference": 0.001803683041165684
+        },
+        {
+          "panel": "old",
+          "source": "bt4",
+          "subset": "strict-quiet",
+          "count": 318,
+          "crossEntropyChange": -0.004838111973128191,
+          "descriptiveRowSE": 0.002627225079583108,
+          "changeRmsPawns": 0.30795346232162524,
+          "unadaptedDegreeMaskDifference": -0.00011360712756502966
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "subset": "all",
+          "count": 1015,
+          "crossEntropyChange": 0.03356302774870288,
+          "descriptiveRowSE": 0.011281068339261497,
+          "changeRmsPawns": 0.3269607183997899,
+          "unadaptedDegreeMaskDifference": 0.0069707966487221815
+        },
+        {
+          "panel": "old",
+          "source": "cp",
+          "subset": "strict-quiet",
+          "count": 164,
+          "crossEntropyChange": 0.005565111459869789,
+          "descriptiveRowSE": 0.010012125188849781,
+          "changeRmsPawns": 0.4919414519158931,
+          "unadaptedDegreeMaskDifference": 0.0030115696711321303
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "subset": "all",
+          "count": 2048,
+          "crossEntropyChange": -0.00018706203590066609,
+          "descriptiveRowSE": 0.001970635200462664,
+          "changeRmsPawns": 0.2889144111850621,
+          "unadaptedDegreeMaskDifference": 0.00013100869127879476
+        },
+        {
+          "panel": "new",
+          "source": "bt4",
+          "subset": "strict-quiet",
+          "count": 633,
+          "crossEntropyChange": 0.0006812602662143271,
+          "descriptiveRowSE": 0.003008888413906338,
+          "changeRmsPawns": 0.38433908026884467,
+          "unadaptedDegreeMaskDifference": 0.00044967149386084893
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "subset": "all",
+          "count": 2029,
+          "crossEntropyChange": 0.024995868416026325,
+          "descriptiveRowSE": 0.006459580299168172,
+          "changeRmsPawns": 0.28470273436361143,
+          "unadaptedDegreeMaskDifference": 0.007824949589214668
+        },
+        {
+          "panel": "new",
+          "source": "cp",
+          "subset": "strict-quiet",
+          "count": 307,
+          "crossEntropyChange": 0.007792700511429822,
+          "descriptiveRowSE": 0.01729496547672141,
+          "changeRmsPawns": 0.35374194497603106,
+          "unadaptedDegreeMaskDifference": 0.0028476551784939533
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Post-hoc hypothesis selected after aggregate and quiet-stratum observations; all evaluation windows now consumed development evidence.",
+    "Only128 updates with fit-only normalization and new moments; not production optimizer continuation, convergence or strength.",
+    "Equal source visits but different unique pools and reuse rates. Quiet is a board property, not actual recursive-search leaf sampling.",
+    "Warm calibrated affine start differs from original G9 zero-head initialization. Degree masks are unadapted.",
+    "No model/optimizer export, owner writes, source replacement or automatic training-gate admission."
+  ]
+}

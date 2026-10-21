@@ -52,7 +52,10 @@ public final class BrnCalibratedAccumulator {
     public double rawPawns(long[] board) {
         double combined=quadratic!=null?quadratic.rawPawns(board):cubic.rawPawns(board);
         var base=quadratic!=null?quadratic.base:cubic.base;
-        double reference=base.evaluatePawns(board);material=base.materialPawns(Board.player((int)board[Board.STATUS]));
+        // The polynomial cache's valid placement also owns this private base.
+        // Reuse its exact sums instead of checking/copying the same board again.
+        int side=Board.player((int)board[Board.STATUS]);
+        double reference=base.cachedPawns(side);material=base.materialPawns(side);
         double correction=combined-reference;
         double shift=a0+a1*(material/8)+a2*((reference-material)/4);
         double value=reference+.5*(correction+shift);

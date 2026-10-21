@@ -1,0 +1,39 @@
+{
+  "id": "wave9-cache-reuse-prototype-runtime-v1",
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-successor-cglhw\\raw\\wave9\\runtime-cache-reuse-prototype-01\\lib",
+  "sourceCommit": "6d2ab083627ec097c5c3a140503246cd890cf18e",
+  "build": 59,
+  "modelFeatures": [
+    "brn-hybrid-raw-v1",
+    "brn-cubic-packed-v1",
+    "brn-unary-compiled-v1",
+    "brn-constant-gates-compiled-v1",
+    "brn-cubic-r4-v1",
+    "brn-cubic-only-ablation-v1",
+    "brn-gen32-quadratic-v1",
+    "brn-gen32-quadratic-r4-v1",
+    "brn-fixed-basis-r4-v1",
+    "brn-calibrated-fixed-head-r4-v1",
+    "brn-calibrated-search-projection-v1"
+  ],
+  "jars": {
+    "app-uci.jar": "7e903f8bdfdd487f1be9d7187628a39916d4e98e4cb174668570a7003ebecb7d",
+    "engine-core.jar": "6799c32011157b34fca3480fed9045d268ff066fc754c192deae2158e34420d3",
+    "engine-training.jar": "09526ddc81bbe54a01c0864c4b8a08adfd2c95c6602f373e4189de9d02a40432",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "01b5b11308c902f7ff44a831ca18e7d6516a0e509ca9de891209711ccf8095d1",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "java": "C:/java/jdk-21/bin/java.exe",
+  "heapMiB": 768,
+  "activeProcessors": 1,
+  "sourceScope": "Uncommitted cache-reuse prototype only; build59 identity, not an application release. Frozen projection research jar unchanged. See admission patch/source hashes.",
+  "changedCoreEntries": [
+    "com/ohinteractive/seedv6/core/brnnext/BrnCalibratedAccumulator.class",
+    "com/ohinteractive/seedv6/core/brnpair2/BrnPair2Model$Workspace.class",
+    "com/ohinteractive/seedv6/application-version.properties"
+  ],
+  "preflight": "Initial exact-class assertion also found expected sourceRevision property change; inspected both properties before admitting. No probe had started."
+}

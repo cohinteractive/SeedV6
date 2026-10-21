@@ -229,3 +229,39 @@ no game was interrupted. The pause is archived in wave9-new-window-pause.json.
 Run the already admitted scale-node comparison before reference-clock to resolve
 calibration sooner; this changes execution order only. All192 primary and80
 scale-follow-up games remain required. Application build59 is unchanged.
+
+The fixed scale-node and scale-clock comparisons each close16 games: scaled
+cubic scores56.25% and59.375% against native cubic, respectively. Both paired
+intervals are wide; these do not select an optimal scale or establish superiority.
+The equally scaled affine and native continued-BRE controls remain necessary.
+
+A post-hoc quiet-stratum analysis finds the cubic fitting effect depends on source
+and position type. On the new BT4 window cubic-minus-affine CE is+.000503 on633
+strict-quiet positions, versus-.000586 on1,340 positions with legal captures or
+promotions. New CP quiet positions favor cubic. These are board strata, not sampled
+search leaves. See wave9-quiet-strata-admission/results.json.
+
+The four-arm warm-start diagnostic starts from trained affine176 and tests affine
+versus cubic delta heads on all fit rows versus strict-quiet rows. Each has128
+updates with matched source visits, fresh moments and fit-only normalization.
+Quiet filtering uses306 BT4/148 CP unique rows versus1,024/1,019 unfiltered, hence
+more reuse. It harms the new CP window markedly; cubic-minus-affine is mixed even
+without filtering. No warm-start or quiet-filtered training gate is justified.
+All evaluation windows are now consumed development evidence. No exported model,
+optimizer or owner mutation. See wave9-warm-quiet-admission/results.json.
+
+Inspection found a redundant BRE placement check/copy in calibrated inference:
+the underlying polynomial cache had already updated its private BRE workspace.
+A guarded cached-value accessor removes that duplicate call without changing the
+normal BRE path, checkpoint semantics, score mapping or search policy. Sixty
+targeted tests pass. Nine actual-head probes each pass4,340 positions and48
+full/cache search pairs; all384 paired old/new search results are exact.
+Counterbalanced warmed median new/old search elapsed ratios are.979/.974 for
+affine and.998/.983 for cubic. One cubic aggregate is1.010, and the second old
+affine isolated latency is an outlier; retain all runs and do not claim a large
+or guaranteed engine speedup. This small exact-semantics optimization is retained
+in build60; native packaging validation remains pending. Frozen tournaments
+continue on their original build59 jars. See wave9-cache-reuse-admission,
+runtime and results records. The initial probe argument-index error failed before
+model loading; its request and failure evidence are preserved alongside corrected
+v2 runs. No substantive training or full-suite claim.

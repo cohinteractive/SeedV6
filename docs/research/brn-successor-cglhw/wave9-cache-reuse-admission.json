@@ -1,0 +1,18 @@
+{
+  "id": "wave9-calibrated-base-reuse-prototype-v1",
+  "question": "Does reusing the already evaluated BRE base remove measurable calibrated inference cost while preserving every score/search result?",
+  "sourceCommit": "6d2ab083627ec097c5c3a140503246cd890cf18e",
+  "sourceHashes": {
+    "engine-core/src/main/java/com/ohinteractive/seedv6/core/brnpair2/BrnPair2Model.java": "a4e3bc010250ded4de47584646fb46fd002727d99860f07a6ca4d343ac0c9a4b",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/core/brnnext/BrnCalibratedAccumulator.java": "72d2c9867a49b4d5a9d906063a9a79f5c74fcf753e681a7b5630a52d6ca4027b",
+    "engine-core/src/test/java/com/ohinteractive/seedv6/core/brnpair2/BrnPair2RuntimeBoundaryTest.java": "827edc414271d2a6181f74d24f3933ee5c0052bf52a0b72b88d99c9a987cd53d"
+  },
+  "sourcePatch": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\cache-reuse-prototype-01.patch",
+  "sourcePatchSha256": "e6a183525741c05936da5372c66886b823ab1efc236afd32d0988a8972f8d800",
+  "change": "Add guarded cachedPawns(side) accessor; calibrated wrapper reuses it after its private polynomial cache updates the placement. Normal BRE evaluation body and all checkpoint/trainer/search policies unchanged.",
+  "validation": "Targeted Pair2 runtime, calibrated/quadratic/cubic cache and research projection tests; actual trained head cache/search oracles and old/new cost comparisons before adoption.",
+  "costProtocol": "Two old/new cache-probe repetitions for affine and cubic plus one new quadratic oracle. Fixed played positions, counterbalanced order, unchanged model plan and resource limits. Report all runs; do not claim proportional NPS gains from isolated latency.",
+  "stopping": "No adoption unless correctness passes and measured savings justify shipping. Preserve prototype/negative result if reverted. No frozen tournament runtime changes.",
+  "resource": "One active processor,768MiB test/probe heaps,BelowNormal,only between games. Each job <=300seconds.",
+  "build": "Uncommitted prototype at build59; a qualifying retained application commit would increment build exactly once. No bump yet."
+}

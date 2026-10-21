@@ -1,0 +1,843 @@
+{
+  "id": "wave9-quiet-strata-diagnostic-v1-results",
+  "admission": "docs\\research\\brn-successor-cglhw\\wave9-quiet-strata-admission.json",
+  "admissionSha256": "d2b9aeadef0abd0e05c836e3cd68b89ce22ab29ea7bdc2ebc403e6f686fcd36b",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\bt4-predictions.jsonl": "878b43c6223e3f6ea9824669569d5e9b87b4ce3bbc8abcf1e74f7f1a626e8c1a",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\cp-predictions.jsonl": "c903e919a76bd64c28a5486defe023f9ed60758df65751bea26414e3c7228395",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\bt4-predictions.jsonl": "5327d60cac2c766f95ad6f890e22d79db2075957d4cb7d1a839c4c396c573b25",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\cp-predictions.jsonl": "56781da22ad2083b54b08d4a3d2add8490aabcf2ea2c82eeb086eae577434832",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01\\bt4-predictions.jsonl": "548b61629780a90c34c2ee816e7db38154921beb614a7b6ed71031f3f06929b9",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01\\cp-predictions.jsonl": "5eb30a8177035663b8c5ae37d21fa54d2e86281ff951f8e3af00f463e5416b6f"
+  },
+  "panels": [
+    {
+      "panel": "fresh5",
+      "source": "bt4",
+      "selectedRows": 1024,
+      "invalidRowsExcluded": 0,
+      "cells": [
+        {
+          "category": "capture-or-promotion",
+          "count": 734,
+          "meanPieces": 21.997275204359674,
+          "decisiveFraction": 0.1008174386920981,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.0004854244050728609,
+              "descriptiveRowSE": 0.0005329578166054888,
+              "scoreDifferenceRmsPawns": 0.06215632500733371
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.00050363063449724,
+              "descriptiveRowSE": 0.000536087546880747,
+              "scoreDifferenceRmsPawns": 0.06351742324328787
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.000989055039570101,
+              "descriptiveRowSE": 0.0007850293519765877,
+              "scoreDifferenceRmsPawns": 0.07578182582730403
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": 0.0021577588876078176,
+              "descriptiveRowSE": 0.001016658862762521,
+              "scoreDifferenceRmsPawns": 0.07380181100325944
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": 0.00029803862041813373,
+              "descriptiveRowSE": 0.00044606211130543725,
+              "scoreDifferenceRmsPawns": 0.06268197667702158
+            }
+          ]
+        },
+        {
+          "category": "in-check",
+          "count": 27,
+          "meanPieces": 14.185185185185185,
+          "decisiveFraction": 0.14814814814814814,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.007639817973174234,
+              "descriptiveRowSE": 0.007074047585291085,
+              "scoreDifferenceRmsPawns": 0.07275180703660578
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.0058549677185737664,
+              "descriptiveRowSE": 0.00568100879230184,
+              "scoreDifferenceRmsPawns": 0.05596793162396027
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.013494785691748001,
+              "descriptiveRowSE": 0.01068830222433664,
+              "scoreDifferenceRmsPawns": 0.07675879087277916
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.0031100084429295004,
+              "descriptiveRowSE": 0.0039776230539512415,
+              "scoreDifferenceRmsPawns": 0.05825182243692938
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": 0.006972636750755469,
+              "descriptiveRowSE": 0.006681063381589963,
+              "scoreDifferenceRmsPawns": 0.060199021740810155
+            }
+          ]
+        },
+        {
+          "category": "strict-quiet",
+          "count": 263,
+          "meanPieces": 16.23954372623574,
+          "decisiveFraction": 0.16730038022813687,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0005678485311221111,
+              "descriptiveRowSE": 0.0012439475478111203,
+              "scoreDifferenceRmsPawns": 0.0672829305520955
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.0005226607624432622,
+              "descriptiveRowSE": 0.0007683622335915993,
+              "scoreDifferenceRmsPawns": 0.061126301333777354
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.0010905092935653733,
+              "descriptiveRowSE": 0.0011193485471979738,
+              "scoreDifferenceRmsPawns": 0.06604868072459072
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": 0.001964509673112801,
+              "descriptiveRowSE": 0.0015005744765544168,
+              "scoreDifferenceRmsPawns": 0.08500357175377446
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": 0.0013771823685662862,
+              "descriptiveRowSE": 0.0008310988280603197,
+              "scoreDifferenceRmsPawns": 0.05785149663662837
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "panel": "fresh5",
+      "source": "cp",
+      "selectedRows": 1024,
+      "invalidRowsExcluded": 9,
+      "cells": [
+        {
+          "category": "capture-or-promotion",
+          "count": 759,
+          "meanPieces": 22.944664031620555,
+          "decisiveFraction": 0.4189723320158103,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": 9.069649898681534e-05,
+              "descriptiveRowSE": 0.0009715769113574421,
+              "scoreDifferenceRmsPawns": 0.06582589575926044
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.0012620896064989492,
+              "descriptiveRowSE": 0.0008958341196630465,
+              "scoreDifferenceRmsPawns": 0.07101716637509667
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.001171393107512134,
+              "descriptiveRowSE": 0.0012918516898519946,
+              "scoreDifferenceRmsPawns": 0.08698011085334385
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.0023911995170216548,
+              "descriptiveRowSE": 0.0011547218652645831,
+              "scoreDifferenceRmsPawns": 0.08133292989118103
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": 0.0006938691038795869,
+              "descriptiveRowSE": 0.0009729846579230878,
+              "scoreDifferenceRmsPawns": 0.0736125125662259
+            }
+          ]
+        },
+        {
+          "category": "in-check",
+          "count": 80,
+          "meanPieces": 14.05,
+          "decisiveFraction": 0.7,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -9.428258804066933e-05,
+              "descriptiveRowSE": 0.0037448922699681035,
+              "scoreDifferenceRmsPawns": 0.07042671075003927
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.005494566964097626,
+              "descriptiveRowSE": 0.0024827034675521274,
+              "scoreDifferenceRmsPawns": 0.05652288333090796
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.005400284376056956,
+              "descriptiveRowSE": 0.004802455109673051,
+              "scoreDifferenceRmsPawns": 0.08920460021148716
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.0023485508583822603,
+              "descriptiveRowSE": 0.004332515144080179,
+              "scoreDifferenceRmsPawns": 0.08461104307114695
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.005990146181093561,
+              "descriptiveRowSE": 0.00256574029829781,
+              "scoreDifferenceRmsPawns": 0.058152656330420854
+            }
+          ]
+        },
+        {
+          "category": "strict-quiet",
+          "count": 176,
+          "meanPieces": 13.113636363636363,
+          "decisiveFraction": 0.5681818181818182,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0035442210510293467,
+              "descriptiveRowSE": 0.0026651952427781144,
+              "scoreDifferenceRmsPawns": 0.06959353776373277
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.00026592510343420914,
+              "descriptiveRowSE": 0.002613205338209733,
+              "scoreDifferenceRmsPawns": 0.04613714411662685
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.0038101461544635556,
+              "descriptiveRowSE": 0.003111174788605606,
+              "scoreDifferenceRmsPawns": 0.07490370735358189
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.009560860914122499,
+              "descriptiveRowSE": 0.003941651321091479,
+              "scoreDifferenceRmsPawns": 0.10440830256399093
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.0013396436550603375,
+              "descriptiveRowSE": 0.0031826233653078095,
+              "scoreDifferenceRmsPawns": 0.04638744893183859
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "panel": "old",
+      "source": "bt4",
+      "selectedRows": 1024,
+      "invalidRowsExcluded": 0,
+      "cells": [
+        {
+          "category": "capture-or-promotion",
+          "count": 653,
+          "meanPieces": 21.819295558958654,
+          "decisiveFraction": 0.11179173047473201,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0006506184162591094,
+              "descriptiveRowSE": 0.0006572601666191593,
+              "scoreDifferenceRmsPawns": 0.0687570020381487
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0014045738974637577,
+              "descriptiveRowSE": 0.0005378565036159335,
+              "scoreDifferenceRmsPawns": 0.06416262929775314
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0007539554812046483,
+              "descriptiveRowSE": 0.0007876777610693632,
+              "scoreDifferenceRmsPawns": 0.08025150205359452
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.0010401511977618054,
+              "descriptiveRowSE": 0.0008264383151116202,
+              "scoreDifferenceRmsPawns": 0.07471058264106906
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.001215419297228106,
+              "descriptiveRowSE": 0.0005522643268244771,
+              "scoreDifferenceRmsPawns": 0.06532106391293607
+            }
+          ]
+        },
+        {
+          "category": "in-check",
+          "count": 53,
+          "meanPieces": 13.18867924528302,
+          "decisiveFraction": 0.22641509433962265,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.00342391295129082,
+              "descriptiveRowSE": 0.00886654805318914,
+              "scoreDifferenceRmsPawns": 0.07763222798269466
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.005066901057327411,
+              "descriptiveRowSE": 0.00599410211718678,
+              "scoreDifferenceRmsPawns": 0.05324789851209727
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.00849081400861823,
+              "descriptiveRowSE": 0.008463801052699635,
+              "scoreDifferenceRmsPawns": 0.08438173473459663
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": 0.011782247798153834,
+              "descriptiveRowSE": 0.010114742221035096,
+              "scoreDifferenceRmsPawns": 0.09155312820538217
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.004130407951869877,
+              "descriptiveRowSE": 0.004536643931527381,
+              "scoreDifferenceRmsPawns": 0.04695632043777568
+            }
+          ]
+        },
+        {
+          "category": "strict-quiet",
+          "count": 318,
+          "meanPieces": 15.040880503144654,
+          "decisiveFraction": 0.21069182389937108,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0010222323635597848,
+              "descriptiveRowSE": 0.0006552136946147479,
+              "scoreDifferenceRmsPawns": 0.06497042290985913
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0005966756529075225,
+              "descriptiveRowSE": 0.0004059106496606017,
+              "scoreDifferenceRmsPawns": 0.05587362211754068
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.0004255567106522622,
+              "descriptiveRowSE": 0.0007625653182566969,
+              "scoreDifferenceRmsPawns": 0.06522055644134833
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.00169256869732737,
+              "descriptiveRowSE": 0.0008719351455428157,
+              "scoreDifferenceRmsPawns": 0.0828473598256051
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.0003908991857329606,
+              "descriptiveRowSE": 0.0003774724055231381,
+              "scoreDifferenceRmsPawns": 0.05385849346775584
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "panel": "old",
+      "source": "cp",
+      "selectedRows": 1024,
+      "invalidRowsExcluded": 9,
+      "cells": [
+        {
+          "category": "capture-or-promotion",
+          "count": 765,
+          "meanPieces": 22.747712418300654,
+          "decisiveFraction": 0.4418300653594771,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0004500678140168062,
+              "descriptiveRowSE": 0.0013264317131206876,
+              "scoreDifferenceRmsPawns": 0.06990989021679897
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0007317681371460033,
+              "descriptiveRowSE": 0.0010976042000858976,
+              "scoreDifferenceRmsPawns": 0.069739477965049
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.00028170032312919714,
+              "descriptiveRowSE": 0.001478313283862379,
+              "scoreDifferenceRmsPawns": 0.0835224030008381
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.0025683245390113723,
+              "descriptiveRowSE": 0.0015628235208515185,
+              "scoreDifferenceRmsPawns": 0.08300358792326329
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.002042878433520575,
+              "descriptiveRowSE": 0.0012081082211406104,
+              "scoreDifferenceRmsPawns": 0.07259226987261522
+            }
+          ]
+        },
+        {
+          "category": "in-check",
+          "count": 86,
+          "meanPieces": 16.732558139534884,
+          "decisiveFraction": 0.627906976744186,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0056815753333809725,
+              "descriptiveRowSE": 0.00400187760862751,
+              "scoreDifferenceRmsPawns": 0.08030454584168113
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.004863853667527854,
+              "descriptiveRowSE": 0.0026636593601121034,
+              "scoreDifferenceRmsPawns": 0.05687758835940687
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.0008177216658531187,
+              "descriptiveRowSE": 0.0043833820626273095,
+              "scoreDifferenceRmsPawns": 0.08321736392732137
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.004923410416305736,
+              "descriptiveRowSE": 0.006146497419740177,
+              "scoreDifferenceRmsPawns": 0.08925809517207846
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.007533156625255213,
+              "descriptiveRowSE": 0.003528462764592159,
+              "scoreDifferenceRmsPawns": 0.060954220192421214
+            }
+          ]
+        },
+        {
+          "category": "strict-quiet",
+          "count": 164,
+          "meanPieces": 13.128048780487806,
+          "decisiveFraction": 0.5975609756097561,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0025343240598982948,
+              "descriptiveRowSE": 0.003044722304088709,
+              "scoreDifferenceRmsPawns": 0.1040388529836391
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0017660794921493077,
+              "descriptiveRowSE": 0.0009731313986687695,
+              "scoreDifferenceRmsPawns": 0.05824845378731923
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.000768244567748987,
+              "descriptiveRowSE": 0.0026660533679106024,
+              "scoreDifferenceRmsPawns": 0.11039572139189609
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.005498614146250846,
+              "descriptiveRowSE": 0.004468692919492902,
+              "scoreDifferenceRmsPawns": 0.11578361794437589
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.0028542677011331547,
+              "descriptiveRowSE": 0.0009829713761297708,
+              "scoreDifferenceRmsPawns": 0.05721496834406144
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "panel": "new",
+      "source": "bt4",
+      "selectedRows": 2048,
+      "invalidRowsExcluded": 0,
+      "cells": [
+        {
+          "category": "capture-or-promotion",
+          "count": 1340,
+          "meanPieces": 21.340298507462688,
+          "decisiveFraction": 0.12313432835820895,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0003327236625179866,
+              "descriptiveRowSE": 0.0004956962563685994,
+              "scoreDifferenceRmsPawns": 0.06594079426519424
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0005860972895008369,
+              "descriptiveRowSE": 0.00037943867817822837,
+              "scoreDifferenceRmsPawns": 0.0612703209965065
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0002533736269828503,
+              "descriptiveRowSE": 0.0005799751856496114,
+              "scoreDifferenceRmsPawns": 0.07805972485628655
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -4.235166716194966e-05,
+              "descriptiveRowSE": 0.0006658662884321098,
+              "scoreDifferenceRmsPawns": 0.07946745357576755
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.00034844281080690086,
+              "descriptiveRowSE": 0.0003513030147799187,
+              "scoreDifferenceRmsPawns": 0.062447442765009784
+            }
+          ]
+        },
+        {
+          "category": "in-check",
+          "count": 75,
+          "meanPieces": 13.986666666666666,
+          "decisiveFraction": 0.29333333333333333,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.003535356379155672,
+              "descriptiveRowSE": 0.002220910959314657,
+              "scoreDifferenceRmsPawns": 0.06976862799388923
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0004508990220949935,
+              "descriptiveRowSE": 0.002449374517607567,
+              "scoreDifferenceRmsPawns": 0.05373371986362457
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.003986255401250666,
+              "descriptiveRowSE": 0.002726944607568142,
+              "scoreDifferenceRmsPawns": 0.07164591972850518
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": 0.002499972297591322,
+              "descriptiveRowSE": 0.0022442781054198245,
+              "scoreDifferenceRmsPawns": 0.0738883580562606
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": 0.00012610513745282617,
+              "descriptiveRowSE": 0.0022536297749733516,
+              "scoreDifferenceRmsPawns": 0.052102669744443636
+            }
+          ]
+        },
+        {
+          "category": "strict-quiet",
+          "count": 633,
+          "meanPieces": 12.519747235387046,
+          "decisiveFraction": 0.2527646129541864,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.0029160849490824535,
+              "descriptiveRowSE": 0.001041504403189168,
+              "scoreDifferenceRmsPawns": 0.06704799186050771
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.0005025364246812509,
+              "descriptiveRowSE": 0.00023300150130857214,
+              "scoreDifferenceRmsPawns": 0.05383821853249788
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0024135485244012023,
+              "descriptiveRowSE": 0.000934438169748639,
+              "scoreDifferenceRmsPawns": 0.06307239997342635
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": 0.0024955466987805586,
+              "descriptiveRowSE": 0.0011716124433191143,
+              "scoreDifferenceRmsPawns": 0.09521265192557464
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": 0.0006577770665445953,
+              "descriptiveRowSE": 0.00025226769744829354,
+              "scoreDifferenceRmsPawns": 0.0519163577759826
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "panel": "new",
+      "source": "cp",
+      "selectedRows": 2048,
+      "invalidRowsExcluded": 19,
+      "cells": [
+        {
+          "category": "capture-or-promotion",
+          "count": 1547,
+          "meanPieces": 23.456367162249514,
+          "decisiveFraction": 0.40530058177117,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.00014776044887772024,
+              "descriptiveRowSE": 0.0006919745491159822,
+              "scoreDifferenceRmsPawns": 0.06560086441479791
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0016273834045864705,
+              "descriptiveRowSE": 0.0007112076743672325,
+              "scoreDifferenceRmsPawns": 0.0687568432645384
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0014796229557087503,
+              "descriptiveRowSE": 0.000770679983745993,
+              "scoreDifferenceRmsPawns": 0.07963437032297759
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.0017823189819341086,
+              "descriptiveRowSE": 0.0009164065381483802,
+              "scoreDifferenceRmsPawns": 0.08132496918640016
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.0025436213821939378,
+              "descriptiveRowSE": 0.0006997518501452693,
+              "scoreDifferenceRmsPawns": 0.07131571680231338
+            }
+          ]
+        },
+        {
+          "category": "in-check",
+          "count": 175,
+          "meanPieces": 17.64,
+          "decisiveFraction": 0.6628571428571428,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.008632913826736215,
+              "descriptiveRowSE": 0.0065134650601072494,
+              "scoreDifferenceRmsPawns": 0.0816459271678669
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.011675752836210841,
+              "descriptiveRowSE": 0.0040906514175039505,
+              "scoreDifferenceRmsPawns": 0.06873567852724165
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0030428390094746263,
+              "descriptiveRowSE": 0.007099589771584513,
+              "scoreDifferenceRmsPawns": 0.09256486554131858
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.01128303841418435,
+              "descriptiveRowSE": 0.009196960965975061,
+              "scoreDifferenceRmsPawns": 0.11043251877795099
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.01777023533532851,
+              "descriptiveRowSE": 0.0060438997830442355,
+              "scoreDifferenceRmsPawns": 0.07374297947467198
+            }
+          ]
+        },
+        {
+          "category": "strict-quiet",
+          "count": 307,
+          "meanPieces": 15.022801302931596,
+          "decisiveFraction": 0.5146579804560261,
+          "contrasts": [
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": 0.0017593593289621271,
+              "descriptiveRowSE": 0.0018149021863074757,
+              "scoreDifferenceRmsPawns": 0.06962750176229712
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-AFFINE-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0013215805449229017,
+              "descriptiveRowSE": 0.0007615516997088444,
+              "scoreDifferenceRmsPawns": 0.04869346726927369
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176",
+              "meanCrossEntropyDifference": -0.0030809398738850286,
+              "descriptiveRowSE": 0.002096132350135988,
+              "scoreDifferenceRmsPawns": 0.07693034111421099
+            },
+            {
+              "left": "W9-CAL-QUAD-R4-LR001-g176",
+              "right": "W9-CAL-QUAD-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": 0.00018837573337504929,
+              "descriptiveRowSE": 0.00266332307220123,
+              "scoreDifferenceRmsPawns": 0.09493278919977204
+            },
+            {
+              "left": "W9-CAL-CUBIC-R4-LR001-g176",
+              "right": "W9-CAL-CUBIC-R4-LR001-g176-affine-only",
+              "meanCrossEntropyDifference": -0.0017489371872774586,
+              "descriptiveRowSE": 0.0009278600005435047,
+              "scoreDifferenceRmsPawns": 0.05161152559662941
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Post-hoc source/board stratification, not independent hypothesis confirmation or strength.",
+    "Strict-quiet subset is not actual search-leaf sampling; captures may be pruned and search policies differ by context.",
+    "Row errors ignore source/game clustering; small strata and multiple comparisons are explicitly exploratory.",
+    "Degree masks are unadapted. No fitting, evaluator gating, search changes or owner writes."
+  ]
+}

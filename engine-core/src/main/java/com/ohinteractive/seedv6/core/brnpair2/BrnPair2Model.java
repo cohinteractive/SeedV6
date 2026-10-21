@@ -139,6 +139,16 @@ public final class BrnPair2Model {
             double raw=evaluatePawns(board),material=Board.player((int)board[4])==0?whiteMaterial:-whiteMaterial;
             return material+gain*(raw-material);
         }
+        /** Raw value for the placement most recently evaluated by this workspace.
+         * Like materialPawns, this performs no placement update. A composite
+         * evaluator may reuse it after its private base has evaluated that board. */
+        public double cachedPawns(int sideToMove) {
+            if(!initialized||(sideToMove&~1)!=0)throw new IllegalStateException("Evaluate a placement and use side 0 or 1");
+            double value=(sideToMove==0?whiteMaterial:-whiteMaterial)+bias
+                    +BrnPair2Geometry.NORM*(sideToMove==0?whiteSum:blackSum);
+            if(!Double.isFinite(value))throw new ArithmeticException("Nonfinite compiled tuple inference");
+            return value;
+        }
         /** Material of the placement most recently evaluated by this private workspace.
          * A residual evaluator can reuse it after evaluatePawns instead of rescanning all pieces. */
         public double materialPawns(int sideToMove) {

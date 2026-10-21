@@ -1,0 +1,22 @@
+{
+  "id": "wave9-assessment-source-provenance-v1",
+  "researchCommit": "6d2ab083627ec097c5c3a140503246cd890cf18e",
+  "frozenRuntime": "docs\\research\\brn-successor-cglhw\\wave9-calibrated-projection-runtime.json",
+  "runtimeSha256": "245651b88155463b873ae33f4d67a111762a0dbd36f7df6bd2df2c7eacc3a543",
+  "verifiedSourceHashes": {
+    "research/src/main/java/com/ohinteractive/seedv6/tools/eval/BrnSuccessorVariants.java": "957db786e1c3ad068fb254f7057ca60c2a73efa24b8a84019471fed231c75cdf",
+    "research/src/main/java/com/ohinteractive/seedv6/tools/eval/BrnSuccessorMatch.java": "eac5f751cd04d1315799bef86bf458f15117ac3ac6ccc3369255a58a8794020a",
+    "research/src/main/java/com/ohinteractive/seedv6/tools/eval/BrnGatedCacheProbe.java": "83f121a7bc4791c67b78c4128b804c3b8de3faf31d4d997569e6b45428373e2f",
+    "research/src/test/java/com/ohinteractive/seedv6/tools/eval/BrnSuccessorVariantsTest.java": "9ae89b4c824a9eaba5529f903ab4c01b929c0927ea83910c5b73c55930382365",
+    "tools/run-brn-successor-batch.ps1": "d6773be17826f54395d3397c11139528e3342ef22bf683df58c48c868924fc48",
+    "tools/summarize-brn-match.py": "0941ed07b8262117a2215b6e395cb90c0259cb267c2b37c8b60ea93fa9804054"
+  },
+  "scope": "All six runtime-recorded research source/tool hashes are now preserved in this commit. Runtime was built earlier; this does not claim every later research class is in that jar. Seven production/dependency jars remain build59-exact.",
+  "gitBytes": "All73 staged paths verified byte-identical to worktree; frozen CRLF inputs/reports preserved. Plain whitespace check flags CR endings; CRLF-aware git -c core.whitespace=cr-at-eol diff --cached --check passed.",
+  "build": 59,
+  "excludedUnattributed": [
+    "bin/",
+    "engine-core/bin/",
+    "engine-training/bin/"
+  ]
+}

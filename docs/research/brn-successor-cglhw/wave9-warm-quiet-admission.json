@@ -1,0 +1,43 @@
+{
+  "id": "wave9-warm-quiet-head-feasibility-v1",
+  "question": "Does a calibrated affine warm start and/or quiet-domain exposure make cubic heads more useful than an adapted affine control?",
+  "anchor": {
+    "name": "W9-CAL-AFFINE-R4-LR001",
+    "root": "docs/research/brn-successor-cglhw/raw/wave9/trained-frozen-01/W9-CAL-AFFINE-R4-LR001",
+    "checkpoint": "g000176-s000065536-16a82f32ff52b872fd12a2dd8ddfa3ede57e292c9e2f29974ac42f7fa57cb762",
+    "networkSha256": "df813617b4404ea826ea7f6b076fabbd12b4120f6b9e7e536e91a4c0fe7fbf21"
+  },
+  "predictor": "W9-CAL-AFFINE-R4-LR001-g176",
+  "predictions": {
+    "fresh5": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01",
+    "old": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01",
+    "new": "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01"
+  },
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\bt4-predictions.jsonl": "878b43c6223e3f6ea9824669569d5e9b87b4ce3bbc8abcf1e74f7f1a626e8c1a",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-fresh5-01\\cp-predictions.jsonl": "c903e919a76bd64c28a5486defe023f9ed60758df65751bea26414e3c7228395",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\bt4-predictions.jsonl": "5327d60cac2c766f95ad6f890e22d79db2075957d4cb7d1a839c4c396c573b25",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\trained-predictions-old-01\\cp-predictions.jsonl": "56781da22ad2083b54b08d4a3d2add8490aabcf2ea2c82eeb086eae577434832",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01\\bt4-predictions.jsonl": "548b61629780a90c34c2ee816e7db38154921beb614a7b6ed71031f3f06929b9",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave9\\predictions-new-window-01\\cp-predictions.jsonl": "5eb30a8177035663b8c5ae37d21fa54d2e86281ff951f8e3af00f463e5416b6f"
+  },
+  "budget": {
+    "stepsPerArm": 128,
+    "visitsPerSource": 8192,
+    "batch": 128,
+    "rate": 0.01,
+    "l2": 0.001,
+    "seed": 2026102209
+  },
+  "arms": [
+    "warm affine/all",
+    "warm affine/quiet",
+    "warm affine+cubic/all",
+    "warm affine+cubic/quiet"
+  ],
+  "initialization": "Identical verified G9 affine176 search function; four/eight new normalized delta heads start0 with new moments. All fit-only normalizers shared and computed from consumed fresh5 first halves, no new-window fitting.",
+  "selection": "Post-hoc domain hypothesis: cubic helps aggregate new BT4 but hurts its strict-quiet subset. Four fixed arms, balanced64 BT4+64CP per batch, all and strict-quiet metrics for every panel; no threshold/rate grid or automatic gate.",
+  "resource": "One serial BelowNormal job <=300seconds between games; no checkpoint/optimizer export or owner writes.",
+  "script": "tools\\probe-brn-warm-quiet-heads.py",
+  "scriptSha256": "ca0010b9c6910d9e9c4f2cff1b3ee379913aa2249f050003e31bd6b5b65da7bb"
+}
