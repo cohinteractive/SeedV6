@@ -1,0 +1,537 @@
+{
+  "id": "wave6-bre-node-v1-completed",
+  "status": "Closed fixed-budget development experiment",
+  "plan": "docs\\research\\brn-successor-cglhw\\wave6-bre-node-plan.json",
+  "receipts": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\bre-node-01",
+  "analysis": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\bre-node-analysis-01.json",
+  "runtime": "docs\\research\\brn-successor-cglhw\\wave6-runtime.json",
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\wave6-bre-node-plan.json": "75a6b35f2907507e3a65636af06d31002a90f2303c6fae67cb231966cbf50105",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\bre-node-analysis-01.json": "f358107348d0cd5be0e7f45613f9382825c1dc47815f92e21b0d7a27f722750b",
+    "docs\\research\\brn-successor-cglhw\\wave6-runtime.json": "ae1059e72e8aa285eb9890765b6ea6270b99a0f0bc48d1cec2d40349ae51664c",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave6\\bre-node-01\\model-bindings.json": "9ba5e6249e1219703a3725b64da526a9b47bc09da69c537dd167f545dad93dc0"
+  },
+  "games": 48,
+  "validatedMoves": 6572,
+  "models": [
+    {
+      "name": "W6-RESQUAD-R16-LR001-g128-half",
+      "wins": 10,
+      "draws": 4,
+      "losses": 2,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.75,
+      "pairStandardError": 0.0668153104781061,
+      "descriptiveNormal95": [
+        0.6190419914629121,
+        0.8809580085370879
+      ],
+      "pairScores": [
+        0.75,
+        1.0,
+        1.0,
+        0.5,
+        0.5,
+        0.75,
+        0.75,
+        0.75
+      ],
+      "boundedPair95": [
+        0.26983860434003965,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.20299155954969228,
+        1
+      ]
+    },
+    {
+      "name": "W6-RESCUBIC-R16-LR001-g128-half",
+      "wins": 9,
+      "draws": 2,
+      "losses": 5,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.625,
+      "pairStandardError": 0.11572751247156893,
+      "descriptiveNormal95": [
+        0.3981740755557249,
+        0.8518259244442751
+      ],
+      "pairScores": [
+        0.25,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.25,
+        1.0,
+        1.0
+      ],
+      "boundedPair95": [
+        0.14483860434003965,
+        1
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0.07799155954969228,
+        1
+      ]
+    },
+    {
+      "name": "W6-RESCUBIC-R4-LR001-g128-half",
+      "wins": 3,
+      "draws": 5,
+      "losses": 8,
+      "validPairs": 8,
+      "missingPairs": 0,
+      "incompletePairs": 0,
+      "score": 0.34375,
+      "pairStandardError": 0.09375,
+      "descriptiveNormal95": [
+        0.16,
+        0.5275
+      ],
+      "pairScores": [
+        0.25,
+        0.5,
+        0.5,
+        0.0,
+        0.5,
+        0.75,
+        0.0,
+        0.25
+      ],
+      "boundedPair95": [
+        0,
+        0.8239113956599604
+      ],
+      "withinPlanSimultaneousBoundedPair95": [
+        0,
+        0.8907584404503077
+      ]
+    }
+  ],
+  "modelBindings": [
+    {
+      "gatedCache": false,
+      "name": "W6-BRE-CONTROL-LR001-g128-half",
+      "originalManifest": {
+        "id": "g000128-s002801664-f314e41639dbee698870825cc848d1ee57627c0616689ecc7e937ebcb3634cbe",
+        "generation": 128,
+        "optimizerStep": 2801664,
+        "trainingDepth": 4,
+        "parentId": "g000127-s002793472-71775af16867e28066ad03746494a512ebbee694dd89a0b68e7b66e12901847b",
+        "networkBytes": 795032,
+        "networkSha256": "376b36cb9def3277f9ca9d229522aa1ad2e329f189e2171bb61c6fbb74835b79",
+        "trainingBytes": 2731424,
+        "trainingSha256": "5363c46ada36496af0d4800adf95113c13de12ed0679c94eb756d94e16199688",
+        "architecture": "BRN_PAIR2"
+      },
+      "effectiveNetworkSha256": "47a497ca96b3e8f1bc3de822adbc0173e355939ff69babfcbe8e5891f2c30e89",
+      "residualGain": 0.25,
+      "correctionScale": 0.5,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "additiveMapping": "Gen32 compiled tables + scale * (continued compiled tables - Gen32 tables)"
+    },
+    {
+      "gatedCache": false,
+      "name": "W6-RESQUAD-R16-LR001-g128-half",
+      "originalManifest": {
+        "id": "g000128-s001048576-5c68e5b6ddb85d57572759914698c4ee60be2be0a359a7823981585a1ba56d77",
+        "generation": 128,
+        "optimizerStep": 1048576,
+        "trainingDepth": 4,
+        "parentId": "g000127-s001040384-c2ada98f4e9f0c74964394f027c0f9b27923bbf543ddbbba89b0adc0258e4706",
+        "networkBytes": 104656,
+        "networkSha256": "da7d7af04c1b48aa01c42eca3fac354022bf3114dfaba690982093a7bf263213",
+        "trainingBytes": 313840,
+        "trainingSha256": "e4b6c9c882b135d08f50f5ccdad2b4e3dce0a79187966be641602bb26112aac7",
+        "architecture": "BRN_GEN32_QUADRATIC"
+      },
+      "effectiveNetworkSha256": "0f956a33a2ea81710d9497271e48d27c1136255cfe9b7e070f14a313f218369b",
+      "residualGain": 0.25,
+      "quadraticCache": "quadratic-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "gatedCache": false,
+      "name": "W6-RESCUBIC-R16-LR001-g128-half",
+      "originalManifest": {
+        "id": "g000128-s001048576-c048359bba80c6284a66bf44c8043dcbe769b1269326b058136e091b541454f8",
+        "generation": 128,
+        "optimizerStep": 1048576,
+        "trainingDepth": 4,
+        "parentId": "g000127-s001040384-67caafba9464c14c6cab1a1e1634bf7b50ca4773f9635ab7e62ec684bf29f6df",
+        "networkBytes": 104784,
+        "networkSha256": "11670784a614d08e1f3742252243f8aaa4a059912058587c2c77fd6950c1a3d9",
+        "trainingBytes": 314224,
+        "trainingSha256": "5cccd3aaea24bfa962bd3ad1339821633b1d0a87a8ce9bdb94182f1eb5eb7de4",
+        "architecture": "BRN_GEN32_CUBIC"
+      },
+      "effectiveNetworkSha256": "9e2a2a655b00660fe44b9a9fb0f6fd7ac5f516cc767128ffb3b4fe3f441c2bfd",
+      "residualGain": 0.25,
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    },
+    {
+      "gatedCache": false,
+      "name": "W6-RESCUBIC-R4-LR001-g128-half",
+      "originalManifest": {
+        "id": "g000128-s001048576-e466f76a69ab9cd0c4a9703972ad7072b777a46cae8c5aa0d8a16bdc25b1e771",
+        "generation": 128,
+        "optimizerStep": 1048576,
+        "trainingDepth": 4,
+        "parentId": "g000127-s001040384-aba8b94797e1327196a94b8db246ea29055b05c709b1d2d1d6749b988d6613b1",
+        "networkBytes": 30864,
+        "networkSha256": "f583b20bd181eb044999a1ad07f2432911374793051bfd15ecc376e5ff3ddb16",
+        "trainingBytes": 92464,
+        "trainingSha256": "7f8f65263a642d0b3aa93ed7a8c855530afd001f5e4269272d7dd325559ffc43",
+        "architecture": "BRN_GEN32_CUBIC_R4"
+      },
+      "effectiveNetworkSha256": "5a7d6dec86e735032880b9b87ed02ffdbe03bc57bcaad9cb45372528dd2ca1b1",
+      "residualGain": 0.25,
+      "cubicDeltaCache": "polynomial-period64-canonical-rounding-guard-v1",
+      "nativeResidualCache": true,
+      "frozenBaseSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "correctionScale": 0.5
+    }
+  ],
+  "sameRootSearch": [
+    {
+      "name": "W6-RESQUAD-R16-LR001-g128-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 5,
+      "meanDepthDifference": 0,
+      "lessEqualMoreDepth": [
+        0,
+        8,
+        0
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.3633896359783244,
+      "medianNpsRatio": 0.7337816674998061
+    },
+    {
+      "name": "W6-RESCUBIC-R16-LR001-g128-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 4,
+      "meanDepthDifference": -0.125,
+      "lessEqualMoreDepth": [
+        1,
+        7,
+        0
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.5680671939820103,
+      "medianNpsRatio": 0.6411740246049802
+    },
+    {
+      "name": "W6-RESCUBIC-R4-LR001-g128-half",
+      "usablePairedRoots": 8,
+      "excludedOrMissingRoots": 0,
+      "sameFirstMove": 5,
+      "meanDepthDifference": 0,
+      "lessEqualMoreDepth": [
+        1,
+        6,
+        1
+      ],
+      "medianNodeRatio": 1.0,
+      "medianElapsedRatio": 1.174353444206639,
+      "medianNpsRatio": 0.8515557976998291
+    }
+  ],
+  "telemetry": {
+    "W6-RESQUAD-R16-LR001-g128-half": {
+      "moves": 981,
+      "nodes": 248861077,
+      "elapsedNanos": 183930740800,
+      "sumDepth": 9704,
+      "fallbacks": 0,
+      "maximumMoveNanos": 614818000
+    },
+    "g000128-s002801664-f314e41639dbee698870825cc848d1ee57627c0616689ecc7e937ebcb3634cbe": {
+      "moves": 3284,
+      "nodes": 833966268,
+      "elapsedNanos": 464632692500,
+      "sumDepth": 32704,
+      "fallbacks": 0,
+      "maximumMoveNanos": 517260700
+    },
+    "W6-RESCUBIC-R16-LR001-g128-half": {
+      "moves": 1020,
+      "nodes": 257027932,
+      "elapsedNanos": 196483052000,
+      "sumDepth": 10609,
+      "fallbacks": 0,
+      "maximumMoveNanos": 531018600
+    },
+    "W6-RESCUBIC-R4-LR001-g128-half": {
+      "moves": 1287,
+      "nodes": 328844757,
+      "elapsedNanos": 216971437400,
+      "sumDepth": 12425,
+      "fallbacks": 0,
+      "maximumMoveNanos": 466761100
+    }
+  },
+  "commonOpponentContrasts": [
+    {
+      "left": "W6-RESQUAD-R16-LR001-g128-half",
+      "right": "W6-RESCUBIC-R16-LR001-g128-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.125,
+      "pairStandardError": 0.11572751247156893,
+      "descriptiveNormal95": [
+        -0.1018259244442751,
+        0.3518259244442751
+      ]
+    },
+    {
+      "left": "W6-RESQUAD-R16-LR001-g128-half",
+      "right": "W6-RESCUBIC-R4-LR001-g128-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.40625,
+      "pairStandardError": 0.09374999999999999,
+      "descriptiveNormal95": [
+        0.22250000000000003,
+        0.59
+      ]
+    },
+    {
+      "left": "W6-RESCUBIC-R16-LR001-g128-half",
+      "right": "W6-RESCUBIC-R4-LR001-g128-half",
+      "sharedCompletePairs": 8,
+      "scoreDifference": 0.28125,
+      "pairStandardError": 0.17318897090420377,
+      "descriptiveNormal95": [
+        -0.058200382972239395,
+        0.6207003829722394
+      ]
+    }
+  ],
+  "openingPrefixSensitivity": [
+    {
+      "plies": 4,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 8,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 12,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    },
+    {
+      "plies": 16,
+      "uniquePrefixes": 8,
+      "largestGroup": 1
+    }
+  ],
+  "processReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\bre-node-batch-01.process.json",
+      "sha256": "e04ebfcfca841daeb63891d6e6ee93b658bf5e08f1239b1bb5d9b68500433aeb",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T09:35:50.8826098Z",
+      "sampledPeakWorkingSetBytes": 603594752,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave6-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 254,
+      "plan": "docs/research/brn-successor-cglhw/wave6-bre-node-plan.json",
+      "processId": 49540,
+      "startedUtc": "2026-10-21T09:31:39.7687269Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\bre-node-batch-02.process.json",
+      "sha256": "f0b3b9f47e2e60c96de9540a9a5fcc2d01da35766c365a6031aa13ee3636d8d2",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T09:39:45.3544786Z",
+      "sampledPeakWorkingSetBytes": 600281088,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave6-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 239.03125,
+      "plan": "docs/research/brn-successor-cglhw/wave6-bre-node-plan.json",
+      "processId": 1324,
+      "startedUtc": "2026-10-21T09:35:51.1414090Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\bre-node-batch-03.process.json",
+      "sha256": "924096cda5b7fb78a78c193f71e7323f457bf27a3626e009138a646e0e785132",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T09:47:48.4504501Z",
+      "sampledPeakWorkingSetBytes": 607952896,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave6-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 247.390625,
+      "plan": "docs/research/brn-successor-cglhw/wave6-bre-node-plan.json",
+      "processId": 16180,
+      "startedUtc": "2026-10-21T09:43:46.3862494Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\bre-node-batch-04.process.json",
+      "sha256": "4ae973f5ab20c48177da4fac417d2c0e6d93254c00383b8f438503a3da3c77d0",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T09:51:39.9769798Z",
+      "sampledPeakWorkingSetBytes": 595439616,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave6-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 236.109375,
+      "plan": "docs/research/brn-successor-cglhw/wave6-bre-node-plan.json",
+      "processId": 54464,
+      "startedUtc": "2026-10-21T09:47:48.7033426Z"
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\bre-node-batch-05.process.json",
+      "sha256": "c95d48725288eb879ab4ded1c5c46abc5fa1e9199dffd871ca20175380551a78",
+      "workersPerEngine": 1,
+      "exitCode": 0,
+      "heapMiB": 768,
+      "launcherSha256": "df7bc7850162e33b72c3fe0fde9b719420c81bfc0abb68313634fa43229cf0e6",
+      "completedUtc": "2026-10-21T09:53:28.6213408Z",
+      "sampledPeakWorkingSetBytes": 491876352,
+      "pondering": false,
+      "concurrentGames": 1,
+      "priority": "BelowNormal",
+      "runtimeManifest": "docs/research/brn-successor-cglhw/wave6-runtime.json",
+      "activeProcessors": 1,
+      "cpuSeconds": 115.078125,
+      "plan": "docs/research/brn-successor-cglhw/wave6-bre-node-plan.json",
+      "processId": 56164,
+      "startedUtc": "2026-10-21T09:51:40.2074371Z"
+    }
+  ],
+  "separateDiagnosticProcessReceipts": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-1-01.process.json",
+      "sha256": "b75e84775efe914c9fe825aeeeadfe2d315506a7254768c6a8414b7dff067b18",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-2-01.process.json",
+      "sha256": "a8215d8568b8d4cc0ade90fd9f41b9fd7b4c807ac2a13bc9aca8fe94c4797423",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-3-01.process.json",
+      "sha256": "5790150d922fc40ef2b933c2086f921564bfbc7c4ec4e4993f5973fb6cae5bbc",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\cache-5-01.process.json",
+      "sha256": "1bca740c99ad023064ca2392652550b0418e2c5aecc7007c5d65c0a6fa86a519",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\compact-degree-cache-01.process.json",
+      "sha256": "084c04ef7a7f2d002880a5ab4a55862139c16cbd1e4f3808319b05f472f7456d",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\half-cache-c16-01.process.json",
+      "sha256": "c594ef4a06ab2c63e2a1624dd7c6155f06e8f804c3fa1dab4091ebc61cdad202",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\half-cache-c4-01.process.json",
+      "sha256": "0b75ab14550110908919e5e392e7f010d9653aa9fec69cc6190355d03af5bf9f",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\half-cache-q16-01.process.json",
+      "sha256": "c1abc361eece8be3f16cf5582b502a0026bb828a782aff4c1df933b4c4f963e3",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\predictions-fresh5-01.process.json",
+      "sha256": "87220803bdf2ae2523062d461530cbc12d7f321c25615f874570a6f0ba868e21",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnResidualAssessment",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\predictions-old-01.process.json",
+      "sha256": "5328832873e521ffacfa5085640c2c17537c324c535cf33784c4c5dfd22635ee",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnResidualAssessment",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-audit-01.process.json",
+      "sha256": "e6c44ccda70e08c5ce5ed1f863515c07b1d3fd2c10b2c73abec99fdd88eddbc2",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnLineageAudit",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-cache-c16-01.process.json",
+      "sha256": "1830d34d39ffff355f3bd696273bd66752523697aabf4b113e987d50d186b31d",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-cache-c4-01.process.json",
+      "sha256": "152f61c819ce714252b9cb9923994381fc9d8625f6afe3e2fb82614fac258277",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-cache-q16-01.process.json",
+      "sha256": "e71fde3c0becbeb353b34129cf45e72890ee04bbdec65a94ee65b547ea46fbbd",
+      "entrypoint": "com.ohinteractive.seedv6.tools.eval.BrnGatedCacheProbe",
+      "exitCode": 0
+    }
+  ],
+  "maximumSampledWorkingSetMiB": 579.7890625,
+  "totalEngineCpuSeconds": 1091.609375,
+  "limitations": [
+    "Paired descriptive normal intervals; small samples, candidate selection, reused development openings and repeated testing preclude confirmation claims.",
+    "Paired differences on shared complete opening pairs against the same reference. Positive favours left. Descriptive, unadjusted, not direct head-to-head strength or architectural causation.",
+    "Fresh search/TT at identical opening roots; different evaluator-dependent trees. Clock protocols warm up; node protocols do not. Descriptive cost/behaviour, not causal latency or strength.",
+    "Move-prefix grouping is a descriptive dependence warning, not ECO/source-game classification or proof of independent opening families. Pair intervals are unadjusted.",
+    "Hoeffding intervals assume independent bounded opening-pair scores; within-plan union bound covers only this plan, not prior candidate selection or repeated protocols. Independence remains unverified.",
+    "No final strength claim, selection-adjusted confirmation, or architectural causation inferred."
+  ]
+}

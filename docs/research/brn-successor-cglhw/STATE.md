@@ -2,7 +2,7 @@
 
 Updated21 October2026. **G4 is complete and verified. All six arms reached64,
 with exact expected continuation and preserved starting payloads. Wave4 trained
-assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; G6 is complete and verified through128; Wave6 trained assessment is active.
+assessment is closed; G5 is complete and verified. Wave5 trained assessment is closed; G6 is complete and verified through128; Wave6 trained assessment is closed; G7 preparation is active.
 No programme success is claimed.** This remains the original
 CGLHW. Current evidence/protocol: [WAVE6-ASSESSMENT](WAVE6-ASSESSMENT.md).
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
@@ -20,8 +20,8 @@ files are unchanged by audit/freeze. See wave6-trained-checkpoints.json and
 wave6-trained-admission.json for exact identities. No retraining is requested.
 Trained Q16/C16/C4 have identical source reservations; BRE historical/split
 confounds remain. Actual trained cache checks, fitting diagnostics and all208
-primary development games are complete. Next: complete the separately admitted80
-cost/compact-degree games, interpret and select the next credible investigation.
+primary development games are complete. The separately admitted80 follow-up games are also closed. Next: finish actual
+G7 owner preparation, payload/cache/GUI/native readiness, then stop at its training gate.
 Preserve frozen runtime56, all checkpoints and completed
 protocols. Do not stop merely at this audit. Historical G6 preparation instructions
 below are fulfilled and superseded for next-action selection.
@@ -36,13 +36,14 @@ passes, with no average match selected. BRE-clock48 is closed (Q16/C16/C4 versus
 versus Gen32:50%/50%/59.375%/56.25%, all uncertain). Primary total208 games/30637
 legal moves, no failure/cap/fallback; no confirmation candidate selected.
 Actual masked-C4 oracle passes6333 positions and48 search pairs. Compact-degree
-node16 and clock16 are closed (59.375%/56.25%, both uncertain); BRE-node48 is active under the separate follow-up.
+node16 and clock16 are closed (59.375%/56.25%, both uncertain); BRE-node48 is closed (Q16/C16/C4:75%/62.5%/34.375%, uncertain).
 See wave6-followup-admission.json. The untrained visibility feasibility probe passes
 independent feature/symmetry checks but establishes no efficiency or fitting gain.
 Use unique bounded launch logs and verify actual receipt
 counts/processes before resuming. Fitting/cost/strata evidence is recorded in
 WAVE6-ASSESSMENT. Compact Q4 degree-control preparation is now admitted in WAVE7;
-remaining G6 matches and readiness checks precede any human-training request.
+readiness checks precede any human-training request. All288 games/41642 legal moves
+are complete; compact depth-sensitive weakness remains unresolved, with no success.
 
 ## Candidate registry and preserved reference
 

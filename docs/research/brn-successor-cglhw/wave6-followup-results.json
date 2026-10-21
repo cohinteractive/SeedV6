@@ -1,0 +1,298 @@
+{
+  "id": "wave6-trained-development-followup-v1",
+  "admission": "docs\\research\\brn-successor-cglhw\\wave6-followup-admission.json",
+  "admissionSha256": "5393bf0c9a545d1946f6e7cd976993cebdee58423f3d7874cb42a9f52c2be995",
+  "protocols": [
+    {
+      "protocol": "bre-node",
+      "report": "docs\\research\\brn-successor-cglhw\\wave6-bre-node-results.json",
+      "sha256": "9e611f38718e5a8c3a73f6cafb8b914b9b740415c8af50573248fd17e64d9b26",
+      "games": 48,
+      "validatedMoves": 6572,
+      "models": [
+        {
+          "name": "W6-RESQUAD-R16-LR001-g128-half",
+          "wins": 10,
+          "draws": 4,
+          "losses": 2,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.75,
+          "pairStandardError": 0.0668153104781061,
+          "descriptiveNormal95": [
+            0.6190419914629121,
+            0.8809580085370879
+          ],
+          "pairScores": [
+            0.75,
+            1.0,
+            1.0,
+            0.5,
+            0.5,
+            0.75,
+            0.75,
+            0.75
+          ],
+          "boundedPair95": [
+            0.26983860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.20299155954969228,
+            1
+          ]
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001-g128-half",
+          "wins": 9,
+          "draws": 2,
+          "losses": 5,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.625,
+          "pairStandardError": 0.11572751247156893,
+          "descriptiveNormal95": [
+            0.3981740755557249,
+            0.8518259244442751
+          ],
+          "pairScores": [
+            0.25,
+            0.5,
+            1.0,
+            0.5,
+            0.5,
+            0.25,
+            1.0,
+            1.0
+          ],
+          "boundedPair95": [
+            0.14483860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.07799155954969228,
+            1
+          ]
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001-g128-half",
+          "wins": 3,
+          "draws": 5,
+          "losses": 8,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.34375,
+          "pairStandardError": 0.09375,
+          "descriptiveNormal95": [
+            0.16,
+            0.5275
+          ],
+          "pairScores": [
+            0.25,
+            0.5,
+            0.5,
+            0.0,
+            0.5,
+            0.75,
+            0.0,
+            0.25
+          ],
+          "boundedPair95": [
+            0,
+            0.8239113956599604
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0,
+            0.8907584404503077
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W6-RESQUAD-R16-LR001-g128-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 5,
+          "meanDepthDifference": 0,
+          "lessEqualMoreDepth": [
+            0,
+            8,
+            0
+          ],
+          "medianNodeRatio": 1.0,
+          "medianElapsedRatio": 1.3633896359783244,
+          "medianNpsRatio": 0.7337816674998061
+        },
+        {
+          "name": "W6-RESCUBIC-R16-LR001-g128-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 4,
+          "meanDepthDifference": -0.125,
+          "lessEqualMoreDepth": [
+            1,
+            7,
+            0
+          ],
+          "medianNodeRatio": 1.0,
+          "medianElapsedRatio": 1.5680671939820103,
+          "medianNpsRatio": 0.6411740246049802
+        },
+        {
+          "name": "W6-RESCUBIC-R4-LR001-g128-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 5,
+          "meanDepthDifference": 0,
+          "lessEqualMoreDepth": [
+            1,
+            6,
+            1
+          ],
+          "medianNodeRatio": 1.0,
+          "medianElapsedRatio": 1.174353444206639,
+          "medianNpsRatio": 0.8515557976998291
+        }
+      ],
+      "peakWorkingSetMiB": 579.7890625,
+      "engineCpuSeconds": 1091.609375
+    },
+    {
+      "protocol": "compact-degree-node",
+      "report": "docs\\research\\brn-successor-cglhw\\wave6-compact-degree-node-results.json",
+      "sha256": "3fa173a97de1456be938819620de0f18fb56c676f798e8ac5eea810de79656e1",
+      "games": 16,
+      "validatedMoves": 2372,
+      "models": [
+        {
+          "name": "W6-RESCUBIC-R4-LR001-g128-half",
+          "wins": 7,
+          "draws": 5,
+          "losses": 4,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.59375,
+          "pairStandardError": 0.045745315919462494,
+          "descriptiveNormal95": [
+            0.5040891807978535,
+            0.6834108192021465
+          ],
+          "pairScores": [
+            0.5,
+            0.75,
+            0.75,
+            0.5,
+            0.5,
+            0.5,
+            0.75,
+            0.5
+          ],
+          "boundedPair95": [
+            0.11358860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.11358860434003965,
+            1
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W6-RESCUBIC-R4-LR001-g128-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 6,
+          "meanDepthDifference": 0.25,
+          "lessEqualMoreDepth": [
+            1,
+            4,
+            3
+          ],
+          "medianNodeRatio": 1.0,
+          "medianElapsedRatio": 1.037245287732375,
+          "medianNpsRatio": 0.9644108450053275
+        }
+      ],
+      "peakWorkingSetMiB": 427.4765625,
+      "engineCpuSeconds": 401.90625
+    },
+    {
+      "protocol": "compact-degree-clock",
+      "report": "docs\\research\\brn-successor-cglhw\\wave6-compact-degree-clock-results.json",
+      "sha256": "c498bac83605e0216d6791c9ebe6ada030706e7f7d0c81f9568a92262b69d70c",
+      "games": 16,
+      "validatedMoves": 2061,
+      "models": [
+        {
+          "name": "W6-RESCUBIC-R4-LR001-g128-half",
+          "wins": 7,
+          "draws": 4,
+          "losses": 5,
+          "validPairs": 8,
+          "missingPairs": 0,
+          "incompletePairs": 0,
+          "score": 0.5625,
+          "pairStandardError": 0.12274756325774572,
+          "descriptiveNormal95": [
+            0.32191477601481844,
+            0.8030852239851816
+          ],
+          "pairScores": [
+            0.75,
+            0.5,
+            1.0,
+            0.5,
+            1.0,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "boundedPair95": [
+            0.08233860434003965,
+            1
+          ],
+          "withinPlanSimultaneousBoundedPair95": [
+            0.08233860434003965,
+            1
+          ]
+        }
+      ],
+      "sameRootSearch": [
+        {
+          "name": "W6-RESCUBIC-R4-LR001-g128-half",
+          "usablePairedRoots": 8,
+          "excludedOrMissingRoots": 0,
+          "sameFirstMove": 6,
+          "meanDepthDifference": 0.125,
+          "lessEqualMoreDepth": [
+            1,
+            5,
+            2
+          ],
+          "medianNodeRatio": 0.9982452458322849,
+          "medianElapsedRatio": 1.000011496924948,
+          "medianNpsRatio": 0.9981173605200677
+        }
+      ],
+      "peakWorkingSetMiB": 568.51171875,
+      "engineCpuSeconds": 406.46875
+    }
+  ],
+  "totalGames": 80,
+  "validatedMoves": 11005,
+  "maximumSampledWorkingSetMiB": 579.7890625,
+  "totalEngineCpuSeconds": 1899.984375,
+  "limitations": [
+    "Development only; no pooled strength score, independent confirmation or success claim.",
+    "Eight or sixteen reversed-colour opening pairs per comparison; roots reused across related protocols, unknown opening-family dependence and prior candidate selection.",
+    "Normal intervals are descriptive; bounded intervals still assume independent opening pairs.",
+    "Distinct budgets/opponents answer distinct questions; fixed budgets completed without favorable optional stopping.",
+    "Q16 is adaptation-trained on identical G6 residual reservations; BRE retains different historical data, split and optimizer semantics.",
+    "Compact degree mask is unadapted and retains cubic cache cost; no adapted Q4 strength conclusion."
+  ]
+}

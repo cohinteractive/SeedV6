@@ -366,3 +366,43 @@ An initial analysis invocation used the nonexistent receipt directory without it
 model bindings. That artifact is retained as `raw/wave6/compact-degree-clock-analysis.json`.
 The correct `compact-degree-clock-analysis-01.json` verifies all16 actual receipts.
 This was an analysis-path error, not a game or evaluator failure.
+
+
+## Final follow-up closure and research decision
+
+All80 separately admitted follow-up games close11005 legal moves, no failures,
+caps or fallbacks, peak sampled game working set579.79MiB. Together with the primary
+admission, W6 has288 development games and41642 legal moves. Do not pool their
+scores. All games used immutable runtime56 and the original budgets/openings.
+A deliberate between-batch pause allowed sequential implementation tests; no game
+was interrupted and no competing build ran during games.
+
+| Against continued BRE | Equal-node W/D/L | Score / descriptive95 | Equal-time score | Node root NPS/BRE |
+| --- | --- | --- | --- | --- |
+| Q16 | 10/4/2 | 75% / 61.904?88.096% | 62.5% | .73378 |
+| C16 | 9/2/5 | 62.5% / 39.817?85.183% | 46.875% | .64117 |
+| C4 | 3/5/8 | 34.375% / 16?52.75% | 53.125% | .85156 |
+
+Each row has eight reused reversed-colour pairs. Q16's bounded95 is26.984?100%,
+and within-plan simultaneous bound20.299?100%; a normal lower bound above50% does
+not establish independent superiority. Q16 is also an additive pairwise control,
+not an eligible higher-order successor. No expressive candidate qualifies for
+independent confirmation on this evidence. Source/data-history and search effects
+remain; W5 and W6 roots differ, preventing a causal training-improvement claim.
+
+The C4 node result materially weakens the preliminary compact-leader description.
+Its relative deficit is not explained solely by inference cost; low-rank capacity,
+optimization and depth-sensitive search interaction remain plausible. Conversely,
+its head-to-head C16 node score was50% on different roots. Do not infer transitive
+rankings or prematurely discard the preserved full model from those small samples.
+Trained Q16 closes much of the earlier unadapted quadratic deficit, so equivalent
+rank4 adaptation is the highest-value missing degree control. The weak deep C4
+result increases the risk of that direction but does not answer that question.
+
+Proceed with the prepared narrow G7 Q4/C4/BRE gate. It tests recovery after deleting
+four cubic heads with identical retained parameters, moments and data, while
+continuing the expressive arm and ordinary-BRE reference. This is not another
+claim that training alone will solve C4's deficit. Further repeated compact
+training is not a default successor step: reconcile adapted degree value and
+capacity/search evidence first. Preserve R16 as a viable full-capacity reference;
+local-blocker/selective-correction mechanisms remain deferred frontier alternatives.

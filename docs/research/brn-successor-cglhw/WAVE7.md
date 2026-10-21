@@ -1,13 +1,12 @@
 # Wave 7: compact degree adaptation
 
 Preparation admitted 21 October 2026 within the existing CONTRACT revision2.
-**Not yet a ready human-training gate.** G6 is completed and verified. Its primary
-208 games are closed; the fixed compact-degree clock and BRE-node follow-ups must
-finish and be reconciled before owner preparation is finalized. No success claim.
+**Owner preparation admitted; native readiness remains pending.** G6 is verified
+and all288 development games are closed. No success claim.
 
 ## Question and admission rationale
 
-C4 is the most credible compact expressive candidate in the G6 development screen:
+The preliminary compact trade-off motivated this preparation:
 50% against C16 at equal nodes,65.625% at equal time,53.125% against continued BRE,
 and59.375% against frozen Gen32. All are uncertain selected development results.
 Its paired-root search advantage over C16 is approximately10%, while it still
@@ -86,3 +85,15 @@ active match during build/test work, then resumed unchanged on frozen runtime56.
 The first PowerShell wrapper rejected benign JAVA_TOOL_OPTIONS stderr after execution;
 all XML is retained, and a structured-process retry reports BUILD SUCCESSFUL with31
 tasks up-to-date. This did not change game protocols or owner artifacts.
+
+
+## Admission after final G6 results
+
+The final equal-node BRE comparison scores Q16/C16/C4 at75%/62.5%/34.375%, with
+wide bounded uncertainty. C4's practical point-score advantage is therefore not a
+clear overall lead, and its weakness cannot be attributed solely to throughput.
+This increases the low-rank-capacity risk. It does not answer whether trained Q4
+can recover the current C4 degree-mask loss. Retain this small, matched adaptation
+experiment; defer further full-size training, without declaring R16 unsuitable.
+The purpose is discriminating degree value at rank4, not an assumption that another
+32 generations will produce a stronger successor. All prior models remain preserved.

@@ -1,0 +1,66 @@
+{
+  "comparisons": [
+    {
+      "name": "W6-RESQUAD-R16-LR001-g128-half",
+      "clockMinusNode": -0.125,
+      "descriptiveNormal95": [
+        -0.3518259244442751,
+        0.1018259244442751
+      ],
+      "pairDifferences": [
+        0.25,
+        -0.25,
+        -0.5,
+        0.5,
+        -0.25,
+        -0.25,
+        -0.25,
+        -0.25
+      ]
+    },
+    {
+      "name": "W6-RESCUBIC-R16-LR001-g128-half",
+      "clockMinusNode": -0.15625,
+      "descriptiveNormal95": [
+        -0.5592252628884309,
+        0.24672526288843089
+      ],
+      "pairDifferences": [
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.5,
+        0.5,
+        -0.25,
+        -1.0
+      ]
+    },
+    {
+      "name": "W6-RESCUBIC-R4-LR001-g128-half",
+      "clockMinusNode": 0.1875,
+      "descriptiveNormal95": [
+        -0.1431527634845957,
+        0.5181527634845957
+      ],
+      "pairDifferences": [
+        0.25,
+        -0.5,
+        0.5,
+        0.0,
+        0.5,
+        -0.5,
+        0.5,
+        0.75
+      ]
+    }
+  ],
+  "evidenceSha256": {
+    "docs\\research\\brn-successor-cglhw\\wave6-bre-node-results.json": "9e611f38718e5a8c3a73f6cafb8b914b9b740415c8af50573248fd17e64d9b26",
+    "docs\\research\\brn-successor-cglhw\\wave6-bre-clock-results.json": "9347076b4cf5c59d118425d709fc1ff9484b7501fb45abf0a5973254b92fc13c"
+  },
+  "limitations": [
+    "Matched roots/models, distinct budgets and trees; not a pure causal latency intervention.",
+    "Unadjusted development contrasts; no independent confirmation or pooling."
+  ]
+}
