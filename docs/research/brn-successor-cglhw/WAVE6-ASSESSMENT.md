@@ -262,3 +262,28 @@ an adapted quadratic control or proof of architectural value. A possible trained
 compact-degree control, a different correction, or no further polynomial training
 must be selected from the combined evidence, not assumed in advance. No G7 gate
 or new implementation is yet admitted. The frozen-reference64 programme is active.
+
+## Bounded alternative-feature feasibility question
+
+While the fixed matches run, prepare a research-only extraction probe for the
+existing local-blocker frontier. Run it only between engine workloads, at one CPU
+and below-normal priority, with no training or owner-store writes. This does not
+select a replacement architecture or admit a human gate.
+
+Freeze the candidate information: slider identity/relative ownership, target
+identity/relative ownership, ray direction and distance. Include both friendly and
+opposing nearest occupied ray squares; exclude targets behind another occupant.
+The paired geometric control includes all occupied collinear ray targets without
+blocker filtering. Both use2688 shared coefficients (two relative colours,16
+bishop/rook/queen direction slots,12 target categories, seven distances). No
+teacher, move generator, pin, king-safety score or hand-tuned value enters extraction.
+
+Require independent coordinate-walker versus existing-Magic extraction parity,
+python-chess pair/between-mask verification, colour/rank symmetry, and an explicit
+third finite difference on eight valid boards. Time random-weight extraction on
+the fixed2048-position W5-fresh BT4 panel after warmup, seven rotated100000-call
+passes. This is untrained full extraction on preconverted canonical boards:
+exclude no cost silently, and claim neither search speed nor incremental efficiency.
+The probe only answers whether a compact non-pairwise local feature is well-defined
+and worth further cost/fitting investigation. Primary and follow-up match identities
+remain unchanged. No substantive training is performed.
