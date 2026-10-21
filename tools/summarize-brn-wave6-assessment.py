@@ -18,19 +18,20 @@ def load(path):
 
 
 def summarize(directory, output, mode=None):
-    assert mode in (None, "--followup")
+    assert mode in (None, "--followup", "--wave7")
     followup = mode == "--followup"
+    wave = 7 if mode == "--wave7" else 6
     directory, output = Path(directory), Path(output)
     if output.exists():
         raise ValueError("Preserve completed report")
-    admission_path = directory / ("wave6-followup-admission.json" if followup else "wave6-assessment-protocol.json")
+    admission_path = directory / ("wave6-followup-admission.json" if followup else f"wave{wave}-assessment-protocol.json")
     admission = load(admission_path)
-    assert admission["id"] == ("wave6-cost-and-compact-degree-followup-v1" if followup else "wave6-development-assessment-v1")
+    assert admission["id"] == ("wave6-cost-and-compact-degree-followup-v1" if followup else f"wave{wave}-development-assessment-v1")
     rows = []
     for protocol in admission["protocols"]:
         name, games = protocol["label"], protocol["games"]
         assert digest(protocol["plan"]) == protocol["sha256"]
-        path = directory / f"wave6-{name}-results.json"
+        path = directory / f"wave{wave}-{name}-results.json"
         result = load(path)
         assert result["games"] == games
         assert result["status"] == "Closed fixed-budget development experiment"
@@ -52,7 +53,7 @@ def summarize(directory, output, mode=None):
                          models=result["models"], sameRootSearch=result["sameRootSearch"],
                          peakWorkingSetMiB=result["maximumSampledWorkingSetMiB"],
                          engineCpuSeconds=result["totalEngineCpuSeconds"]))
-    report = dict(id="wave6-trained-development-followup-v1" if followup else "wave6-trained-development-assessment-v1",
+    report = dict(id="wave6-trained-development-followup-v1" if followup else f"wave{wave}-trained-development-assessment-v1",
                   admission=str(admission_path), admissionSha256=digest(admission_path),
                   protocols=rows, totalGames=sum(x["games"] for x in rows),
                   validatedMoves=sum(x["validatedMoves"] for x in rows),
@@ -63,8 +64,8 @@ def summarize(directory, output, mode=None):
                       "Eight or sixteen reversed-colour opening pairs per comparison; roots reused across related protocols, unknown opening-family dependence and prior candidate selection.",
                       "Normal intervals are descriptive; bounded intervals still assume independent opening pairs.",
                       "Distinct budgets/opponents answer distinct questions; fixed budgets completed without favorable optional stopping.",
-                      "Q16 is adaptation-trained on identical G6 residual reservations; BRE retains different historical data, split and optimizer semantics."])
-    assert report["totalGames"] == admission["totalGames"] == (80 if followup else 208)
+                      f"Quadratic is adaptation-trained on identical G{wave} residual reservations; BRE retains different historical data, split and optimizer semantics."])
+    assert report["totalGames"] == admission["totalGames"] == (80 if followup else 176 if wave == 7 else 208)
     if followup:
         report["limitations"].append("Compact degree mask is unadapted and retains cubic cache cost; no adapted Q4 strength conclusion.")
     with output.open("x", encoding="utf-8", newline="\n") as stream:

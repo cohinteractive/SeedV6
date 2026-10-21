@@ -1,0 +1,51 @@
+{
+  "id": "wave7-fixed-basis-head-diagnostic-v1",
+  "question": "Can new cubic head coefficients add useful prediction without disturbing a trained quadratic anchor and its shared embeddings?",
+  "anchors": [
+    {
+      "name": "Q4",
+      "root": "docs/research/brn-successor-cglhw/raw/wave7/trained-frozen-01/W7-RESQUAD-R4-LR001",
+      "checkpoint": "g000160-s001310720-b5d40cc7a3cd74a4eab18f6e274676b7c58d094896d931d5f40f06828a4ed338",
+      "networkSha256": "fd6c2fc1ec2549bced72ab5d3bf245ff4a56abf6d779ba36a921040bd4dd70bd",
+      "width": 4,
+      "wire": 8,
+      "predictor": "W7-RESQUAD-R4-LR001-g160",
+      "predictions": {
+        "fresh5": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-predictions-fresh5-01",
+        "old": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-predictions-old-01"
+      }
+    },
+    {
+      "name": "Q16",
+      "root": "docs/research/brn-successor-cglhw/raw/wave6/trained-frozen-01/W6-RESQUAD-R16-LR001",
+      "checkpoint": "g000128-s001048576-5c68e5b6ddb85d57572759914698c4ee60be2be0a359a7823981585a1ba56d77",
+      "networkSha256": "da7d7af04c1b48aa01c42eca3fac354022bf3114dfaba690982093a7bf263213",
+      "width": 16,
+      "wire": 7,
+      "predictor": "W6-RESQUAD-R16-LR001-g128",
+      "predictions": {
+        "fresh5": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-predictions-fresh5-01",
+        "old": "docs\\research\\brn-successor-cglhw\\raw\\wave6\\trained-predictions-old-01"
+      }
+    }
+  ],
+  "script": "tools\\probe-brn-fixed-basis-heads.py",
+  "scriptSha256": "856574f5b62cddf690e9fb296a1e2e9f5dfd2ba3bc595b9f91402bba3b2eb36c",
+  "armsPerAnchor": [
+    "quadratic-head delta",
+    "zero-initialized cubic heads",
+    "quadratic plus cubic head deltas"
+  ],
+  "budget": {
+    "fitRows": 2048,
+    "epochs": 8,
+    "batch": 128,
+    "updatesPerArm": 128,
+    "rate": 0.001,
+    "seed": 2026102107,
+    "newAdamMoments": true
+  },
+  "selection": "Report all six arms on fixed remaining fresh5 halves and old panels, both raw and existing search-half mapping. Positive evidence must exceed the matched quadratic-head control, not merely zero updates. No strength or convergence claim. Ranks not matched in ancestry.",
+  "resource": "Sequential BelowNormal bounded diagnostic between game batches, no owner model/checkpoint/training state changes.",
+  "rationale": "Full cubic training and quadratic projection share embeddings. Fixed bases distinguish interference from absence of signal; four to32 head parameters reduce the small-panel overfit risk observed in the visibility pilot. This is a diagnostic, not a new architecture/gate admission."
+}

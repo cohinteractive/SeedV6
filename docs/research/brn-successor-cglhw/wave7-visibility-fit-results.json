@@ -1,0 +1,390 @@
+{
+  "id": "brn-visibility-bounded-fit-v1",
+  "inputs": {
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-predictions-fresh5-01\\bt4-predictions.jsonl": "43b86d67aa18c73236965894fcae32d9c58e6d82aa2fe11ca4f203ea579f1f9d",
+    "docs\\research\\brn-successor-cglhw\\raw\\wave7\\trained-predictions-fresh5-01\\cp-predictions.jsonl": "315688116a91b82b0dc65d21ecee163e3b88deef6a10163e6e74f3d0fc558eec"
+  },
+  "fitRows": 2048,
+  "evaluationRows": 2048,
+  "hyperparameters": {
+    "epochs": 8,
+    "batch": 128,
+    "rate": 0.01,
+    "l2": 0.001,
+    "seed": 2026102107,
+    "parameters": 2688
+  },
+  "gradientMaximumError": 4.4586556668946287e-10,
+  "arms": [
+    {
+      "basis": "visible",
+      "objectiveGain": 1.0,
+      "steps": 128,
+      "epochLoss": [
+        0.7587218696626579,
+        0.7016316265738425,
+        0.6741725433071291,
+        0.6312963631645758,
+        0.5975064272853889,
+        0.5617322540106237,
+        0.553021822401704,
+        0.5503125442140224
+      ],
+      "metrics": [
+        {
+          "split": "fit",
+          "source": "bt4",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": -0.027724540158390223,
+          "standardError": 0.0037473949806679243,
+          "correctionRmsPawns": 0.3501859402248734
+        },
+        {
+          "split": "fit",
+          "source": "bt4",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": -0.0029257880512222373,
+          "standardError": 0.0018026139805530379,
+          "correctionRmsPawns": 0.3501859402248734
+        },
+        {
+          "split": "fit",
+          "source": "cp",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": -0.40258508570083323,
+          "standardError": 0.28926150484426627,
+          "correctionRmsPawns": 3.1167163014011856
+        },
+        {
+          "split": "fit",
+          "source": "cp",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": -0.12284760522559335,
+          "standardError": 0.08451442197911098,
+          "correctionRmsPawns": 3.1167163014011856
+        },
+        {
+          "split": "evaluation",
+          "source": "bt4",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.0282769223706282,
+          "standardError": 0.0062145694396153715,
+          "correctionRmsPawns": 0.38747710963955506
+        },
+        {
+          "split": "evaluation",
+          "source": "bt4",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.0028845817733291986,
+          "standardError": 0.0018140970635703508,
+          "correctionRmsPawns": 0.38747710963955506
+        },
+        {
+          "split": "evaluation",
+          "source": "cp",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.01480820086380183,
+          "standardError": 0.007467068618572888,
+          "correctionRmsPawns": 0.42159135361657796
+        },
+        {
+          "split": "evaluation",
+          "source": "cp",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.004628093829407815,
+          "standardError": 0.003982019338467554,
+          "correctionRmsPawns": 0.42159135361657796
+        }
+      ],
+      "weightsSha256": "b98966b01d28480d1d192d0ac550e4954c130231c3b8021db71a51b98a499118"
+    },
+    {
+      "basis": "visible",
+      "objectiveGain": 0.25,
+      "steps": 128,
+      "epochLoss": [
+        1.1359721461488368,
+        1.0983744064812961,
+        1.0755484572845948,
+        1.0519327825542322,
+        1.0318016351608725,
+        1.0132107061360516,
+        1.0009274469635174,
+        0.982176009766483
+      ],
+      "metrics": [
+        {
+          "split": "fit",
+          "source": "bt4",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.80908252186419,
+          "standardError": 0.04814052821846685,
+          "correctionRmsPawns": 1.3028356071756573
+        },
+        {
+          "split": "fit",
+          "source": "bt4",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": -0.05113719420686241,
+          "standardError": 0.010767267952706496,
+          "correctionRmsPawns": 1.3028356071756573
+        },
+        {
+          "split": "fit",
+          "source": "cp",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.6257550146758671,
+          "standardError": 0.2963858002172415,
+          "correctionRmsPawns": 3.947378632925182
+        },
+        {
+          "split": "fit",
+          "source": "cp",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": -0.29013655891442486,
+          "standardError": 0.10090352372537052,
+          "correctionRmsPawns": 3.947378632925182
+        },
+        {
+          "split": "evaluation",
+          "source": "bt4",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.8832150812184231,
+          "standardError": 0.04957600995452991,
+          "correctionRmsPawns": 1.3154943618583772
+        },
+        {
+          "split": "evaluation",
+          "source": "bt4",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.011636283392635829,
+          "standardError": 0.005826762543503636,
+          "correctionRmsPawns": 1.3154943618583772
+        },
+        {
+          "split": "evaluation",
+          "source": "cp",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": 1.0646913357097874,
+          "standardError": 0.0654087688473528,
+          "correctionRmsPawns": 1.4908218558600452
+        },
+        {
+          "split": "evaluation",
+          "source": "cp",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": -0.03401041368316666,
+          "standardError": 0.012881303216418555,
+          "correctionRmsPawns": 1.4908218558600452
+        }
+      ],
+      "weightsSha256": "9504e369c34188f103d6bd10f06e51df73a386f2d966f0575523ed7002814e4a"
+    },
+    {
+      "basis": "geometry",
+      "objectiveGain": 1.0,
+      "steps": 128,
+      "epochLoss": [
+        0.7514257420849355,
+        0.6166534418222677,
+        0.568210704208349,
+        0.5590879862711319,
+        0.5517375522831226,
+        0.5455337636423164,
+        0.5416425771768466,
+        0.5386156505059326
+      ],
+      "metrics": [
+        {
+          "split": "fit",
+          "source": "bt4",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": -0.03287083997848481,
+          "standardError": 0.004038742373171188,
+          "correctionRmsPawns": 0.4077234891770965
+        },
+        {
+          "split": "fit",
+          "source": "bt4",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": -0.0030435928857524847,
+          "standardError": 0.001978937601689822,
+          "correctionRmsPawns": 0.4077234891770965
+        },
+        {
+          "split": "fit",
+          "source": "cp",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": -0.4217697589644211,
+          "standardError": 0.2892555942032914,
+          "correctionRmsPawns": 4.056110976322756
+        },
+        {
+          "split": "fit",
+          "source": "cp",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": -0.15520711029059275,
+          "standardError": 0.1107803777873689,
+          "correctionRmsPawns": 4.056110976322756
+        },
+        {
+          "split": "evaluation",
+          "source": "bt4",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.03040637807174432,
+          "standardError": 0.006460935550421447,
+          "correctionRmsPawns": 0.43330972580412097
+        },
+        {
+          "split": "evaluation",
+          "source": "bt4",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.004828085558213698,
+          "standardError": 0.0019247502430911633,
+          "correctionRmsPawns": 0.43330972580412097
+        },
+        {
+          "split": "evaluation",
+          "source": "cp",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.014417083353569492,
+          "standardError": 0.007873054884387266,
+          "correctionRmsPawns": 0.47887805309928944
+        },
+        {
+          "split": "evaluation",
+          "source": "cp",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.008565574981362872,
+          "standardError": 0.004417181928903673,
+          "correctionRmsPawns": 0.47887805309928944
+        }
+      ],
+      "weightsSha256": "7a2828bd21641993f47c339ca18fe899aa927dcc007d49c2dfac3e32532e8a91"
+    },
+    {
+      "basis": "geometry",
+      "objectiveGain": 0.25,
+      "steps": 128,
+      "epochLoss": [
+        1.1300292527034363,
+        1.0681471345450322,
+        1.0281875933699243,
+        0.9806021614767998,
+        0.9418920179128584,
+        0.9037477757777325,
+        0.8842342530524921,
+        0.8404759577408427
+      ],
+      "metrics": [
+        {
+          "split": "fit",
+          "source": "bt4",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.9298391354585763,
+          "standardError": 0.058100896164407445,
+          "correctionRmsPawns": 1.4261423633187378
+        },
+        {
+          "split": "fit",
+          "source": "bt4",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": -0.0610236338697288,
+          "standardError": 0.014075129232804025,
+          "correctionRmsPawns": 1.4261423633187378
+        },
+        {
+          "split": "fit",
+          "source": "cp",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.6698033261780711,
+          "standardError": 0.29798231549305254,
+          "correctionRmsPawns": 12.000732386679635
+        },
+        {
+          "split": "fit",
+          "source": "cp",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": -0.5758382061243829,
+          "standardError": 0.3291105845254025,
+          "correctionRmsPawns": 12.000732386679635
+        },
+        {
+          "split": "evaluation",
+          "source": "bt4",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.9319993610496892,
+          "standardError": 0.05466421877562471,
+          "correctionRmsPawns": 1.412916616063991
+        },
+        {
+          "split": "evaluation",
+          "source": "bt4",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": 0.011771563425993026,
+          "standardError": 0.005244450396968426,
+          "correctionRmsPawns": 1.412916616063991
+        },
+        {
+          "split": "evaluation",
+          "source": "cp",
+          "mapping": 1.0,
+          "count": 1024,
+          "meanCrossEntropyChange": 1.1172536915634166,
+          "standardError": 0.06841961321306732,
+          "correctionRmsPawns": 1.5853178819449987
+        },
+        {
+          "split": "evaluation",
+          "source": "cp",
+          "mapping": 0.25,
+          "count": 1024,
+          "meanCrossEntropyChange": -0.031144287829817305,
+          "standardError": 0.014964999285151841,
+          "correctionRmsPawns": 1.5853178819449987
+        }
+      ],
+      "weightsSha256": "de55ad5f661e423cd0ba92126a09fbd2b36fdd797efcea021748cb20c2b8b0ca"
+    }
+  ],
+  "limitations": [
+    "Consumed panels; row uncertainty ignores game/source correlation and prior research selection.",
+    "Feasibility only:128 updates per arm, no checkpoint, owner write or substantive training.",
+    "Equal parameter count does not imply identical optimization; fixed rate/regularization not optimized.",
+    "Frozen Gen32 trainer binary64 values; match runtime folding differs slightly.",
+    "Search-mapped and raw objectives tested separately; no inference/search/strength conclusion."
+  ],
+  "rawEvidence": "docs\\research\\brn-successor-cglhw\\raw\\wave7\\visibility-fit-01.json",
+  "rawSha256": "4dce502064b1fb417daa3daa0a37b7c76ffad1854d177ea65c389f95a00c0ab0",
+  "decision": "No consistent evaluation improvement over zero on both sources. Do not admit an architecture or training gate from this pilot. Preserve the limited-data/optimization caveat; mapped objective improves CP but worsens BT4 and raw quality, so do not switch objective blindly."
+}
