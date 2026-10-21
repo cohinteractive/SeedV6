@@ -58,6 +58,7 @@ tasks.withType(Test).configureEach {
     if (project.hasProperty('residualWaveGuiReport')) systemProperty 'seedv6.residualWaveGuiReport', rootProject.file(project.property('residualWaveGuiReport')).absolutePath
     if (project.hasProperty('continuationWaveGuiReport')) systemProperty 'seedv6.continuationWaveGuiReport', rootProject.file(project.property('continuationWaveGuiReport')).absolutePath
     if (project.hasProperty('compactWaveGuiReport')) systemProperty 'seedv6.compactWaveGuiReport', rootProject.file(project.property('compactWaveGuiReport')).absolutePath
+    if (project.hasProperty('degreeControlWaveGuiReport')) systemProperty 'seedv6.degreeControlWaveGuiReport', rootProject.file(project.property('degreeControlWaveGuiReport')).absolutePath
     maxHeapSize = '2g'
 }
 
@@ -71,4 +72,16 @@ tasks.register('brnCompactContinuationWave', JavaExec) {
         args '--create', rootProject.file(project.property('compactWavePlan')).absolutePath,
                 rootProject.file(project.property('compactWaveReport')).absolutePath
     else doFirst { throw new GradleException('Supply compactWavePlan and compactWaveReport') }
+}
+
+tasks.register('brnDegreeControlWave', JavaExec) {
+    group = 'verification'
+    description = 'Prepares explicitly bound quadratic/cubic continuation controls without training.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.gui.BrnDegreeControlWave'
+    jvmArgs '--add-modules=jdk.incubator.vector', '-Xmx768m', '-XX:ActiveProcessorCount=1', '-Djava.awt.headless=true'
+    if (project.hasProperty('degreeControlWavePlan') && project.hasProperty('degreeControlWaveReport'))
+        args '--create', rootProject.file(project.property('degreeControlWavePlan')).absolutePath,
+                rootProject.file(project.property('degreeControlWaveReport')).absolutePath
+    else doFirst { throw new GradleException('Supply degreeControlWavePlan and degreeControlWaveReport') }
 }

@@ -33,7 +33,7 @@ class LineageProvenanceTest {
         var provenance = LineageProvenance.read(root).orElseThrow();
         assertEquals(architecture, provenance.architecture()); assertEquals(731, provenance.firstRunSeed());
         Long expectedSeed = switch (architecture) {
-            case NNUE, NNUE_MATERIAL, BRN3, BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4 -> 731L;
+            case NNUE, NNUE_MATERIAL, BRN3, BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC -> 731L;
             case BRN1 -> com.ohinteractive.seedv6.core.brn1.Brn1Model.INITIALIZATION_SEED;
             case BRN2 -> com.ohinteractive.seedv6.core.brn2.Brn2Model.INITIALIZATION_SEED;
             case BRN, BRN_PAIR2 -> null;

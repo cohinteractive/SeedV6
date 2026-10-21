@@ -162,8 +162,15 @@ class BrnContinuationWaveTest {
         Assumptions.assumeFalse(java.awt.GraphicsEnvironment.isHeadless(),"Native Swing required");
         String ownerReport=System.getProperty("seedv6.continuationWaveGuiReport");
         String compactReport=System.getProperty("seedv6.compactWaveGuiReport");
+        String degreeReport=System.getProperty("seedv6.degreeControlWaveGuiReport");
         List<BrnContinuationWave.Entry> entries;
-        if(compactReport!=null) {
+        if(degreeReport!=null) {
+            assertNull(ownerReport,"Choose one owner wave for native verification");
+            assertNull(compactReport,"Choose one owner wave for native verification");
+            entries=DataFiles.read(Path.of(degreeReport),BrnDegreeControlWave.Report.class).entries().stream()
+                    .map(e->new BrnContinuationWave.Entry(e.candidate(),e.architecture(),e.root(),e.lineageId(),null,
+                            e.latest(),e.latestGeneration(),e.recipe(),e.additionalGenerations(),e.sourceOffsets(),e.partition())).toList();
+        } else if(compactReport!=null) {
             assertNull(ownerReport,"Choose one owner wave for native verification");
             // Shared visual assertions need only the prepared GUI entry fields,
             // not either wave's distinct immutable origin record.
@@ -210,8 +217,8 @@ class BrnContinuationWaveTest {
                     frame.validate();Path output=Path.of("build/brn-successor-native");Files.createDirectories(output);
                     var image=new java.awt.image.BufferedImage(frame.getWidth(),frame.getHeight(),java.awt.image.BufferedImage.TYPE_INT_RGB);
                     var graphics=image.createGraphics();frame.paintAll(graphics);graphics.dispose();
-                    javax.imageio.ImageIO.write(image,"png",output.resolve(entry.candidate()+(ownerReport==null&&compactReport==null?"-fixture.png":"-owner.png")).toFile());
-                    if(ownerReport!=null||compactReport!=null) {
+                    javax.imageio.ImageIO.write(image,"png",output.resolve(entry.candidate()+(ownerReport==null&&compactReport==null&&degreeReport==null?"-fixture.png":"-owner.png")).toFile());
+                    if(ownerReport!=null||compactReport!=null||degreeReport!=null) {
                         BrnResidualWaveTest.named(frame,"trainingViews",javax.swing.JTabbedPane.class).setSelectedIndex(2);
                         frame.validate();graphics=image.createGraphics();frame.paintAll(graphics);graphics.dispose();
                         javax.imageio.ImageIO.write(image,"png",output.resolve(entry.candidate()+"-owner-recipe.png").toFile());

@@ -953,6 +953,7 @@ public final class CheckpointStore implements AutoCloseable {
                 || absolute.getFileName().toString().equals(TrainingArchitecture.BRN_GEN32_GATED.networkFile())
                 || absolute.getFileName().toString().equals(TrainingArchitecture.BRN_GEN32_CUBIC.networkFile())
                 || absolute.getFileName().toString().equals(TrainingArchitecture.BRN_GEN32_CUBIC_R4.networkFile())
+                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN_GEN32_QUADRATIC.networkFile())
                 || absolute.getFileName().toString().equals(TrainingArchitecture.BRN_POOLED.networkFile())) && directory != null
                 && directory.getParent() != null && directory.getParent().getFileName() != null
                 && directory.getParent().getFileName().toString().equals("checkpoints")) {

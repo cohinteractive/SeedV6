@@ -116,11 +116,11 @@ class BrnNextMathTest {
         for (int feature : active) sum += w[UNARY + feature] / Math.sqrt(32);
         int width = kind.width(), h = kind.head(); double[] gate = new double[width], expert = new double[width];
         for (int r = 0; r < width; r++) {
-            if (kind.correctionKind() == CUBIC) {
+            if (kind.polynomial()) {
                 for (int i = 0; i < active.size(); i++) for (int j = i + 1; j < active.size(); j++) {
                     double pair = w[EMBEDDING + active.get(i) * width + r] * w[EMBEDDING + active.get(j) * width + r];
                     sum += w[h + r] * pair / Math.sqrt(496);
-                    for (int k = j + 1; k < active.size(); k++)
+                    for (int k = j + 1; kind.correctionKind() == CUBIC && k < active.size(); k++)
                         sum += w[h + width + r] * pair * w[EMBEDDING + active.get(k) * width + r] / Math.sqrt(4960);
                 }
             } else {

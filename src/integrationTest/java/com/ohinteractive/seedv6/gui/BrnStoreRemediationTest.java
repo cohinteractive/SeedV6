@@ -116,7 +116,7 @@ class BrnStoreRemediationTest {
             case BRN2 -> new NetworkTrainingState.Brn2(new Brn2Trainer(.001));
             case BRN3 -> new NetworkTrainingState.Brn3(new com.ohinteractive.seedv6.core.brn3.Brn3Trainer(1));
             case BRN_PAIR2 -> NetworkTrainingState.initialized(TrainingArchitecture.BRN_PAIR2,1,.01);
-            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4 -> NetworkTrainingState.initialized(architecture.trainingArchitecture(), 71, .003);
+            case BRN_GATED, BRN_CUBIC, BRN_POOLED, BRN_GEN32_GATED, BRN_GEN32_CUBIC, BRN_GEN32_CUBIC_R4, BRN_GEN32_QUADRATIC -> NetworkTrainingState.initialized(architecture.trainingArchitecture(), 71, .003);
         };
         try (var store = new CheckpointStore(root, architecture.trainingArchitecture())) {
             store.requireEmptyForBootstrap(); store.initialize(initial, new CheckpointManifest.Metadata(0, 1, ""));

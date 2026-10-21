@@ -108,6 +108,13 @@ After the tail closes, run build/research/w5-final-discriminators.ps1: the admit
 depth 32 and marginal-degree3 32 games, using the original wave5-runtime.json.
 Their plans/admissions, completed reports and per-game receipts are authoritative.
 Inspect first incomplete plan and choose unused log prefixes after interruption.
+The distinct wire7 rank16 quadratic control is implemented and passes 126 targeted
+tests, including exact continuation and search parity. Implementation build56 is
+separate from every frozen build55 W5 match runtime. Owner lineages, actual-payload
+oracles and native package/GUI readiness are still pending; no human gate is admitted.
+Preserve the completed implementation-QA pause and resume the two cubic-only clock
+plans at their existing receipts, then depth32 and marginal-degree3 32. Never use
+the newly built application runtime to alter these frozen comparisons.
 No human action currently required.
 Next: finish fixed primary counts, independently replay receipts, compare R4/R16,
 both continued BRE rates, endpoint selection and cost. Admit focused direct/maturity/

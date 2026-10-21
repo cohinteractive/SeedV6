@@ -29,7 +29,8 @@ public final class BrnGatedCacheProbe {
         if(spec.correctionScale()!=null||spec.correctionAblation()!=null)
             model=BrnSuccessorVariants.correction(model,spec.correctionScale()==null?1:spec.correctionScale(),
                     spec.correctionAblation(),spec.constantGates());
-        boolean cubic=model.architecture().correctionKind()==BrnNextArchitecture.CUBIC;
+        boolean quadratic=model.architecture()==BrnNextArchitecture.GEN32_QUADRATIC;
+        boolean cubic=model.architecture().polynomial();
         if(!cubic&&model.architecture().correctionKind()!=BrnNextArchitecture.GATED_PAIRS)throw new IllegalArgumentException("Unsupported cache");
         var hybridBase=BrnSuccessorMatch.loadHybridBase(spec);
         boolean packed=spec.packedCubicCacheEnabled();
@@ -44,7 +45,7 @@ public final class BrnGatedCacheProbe {
         var cached=compiledUnary!=null?SearchEvaluation.brnPair2(compiledUnary):
                 packed?(hybridBase==null?SearchEvaluation.brnCubicPackedResearch(model):SearchEvaluation.brnCubicPackedHybridResearch(model,hybridBase)):
                 hybridBase!=null?SearchEvaluation.brnResidualHybridResearch(model,hybridBase):spec.cubicDeltaCache()?SearchEvaluation.brnCubicDeltaResearch(model):spec.gatedDeltaCache()?SearchEvaluation.brnGatedDeltaResearch(model):
-                cubic?SearchEvaluation.brnCubicIncrementalResearch(model):SearchEvaluation.brnGatedIncrementalResearch(model);
+                quadratic?SearchEvaluation.brnGen32Residual(model):cubic?SearchEvaluation.brnCubicIncrementalResearch(model):SearchEvaluation.brnGatedIncrementalResearch(model);
         var base=plan.models().getFirst();
         var referenceModel=CheckpointStore.readSnapshot(Path.of(base.root()),base.checkpoint()).model();
         var reference=hybridBase==null?referenceModel.evaluation(NnueScoreMapping.V1):SearchEvaluation.brnPair2(hybridBase);
@@ -111,10 +112,10 @@ public final class BrnGatedCacheProbe {
         result.put("cacheDetails",compiledConstant==null?accumulator.details():Map.of("kind","brn-constant-gates-compiled-v1"));
         DataFiles.write(output,result);
         if(maximum>1e-9||maximumFreshError>1e-9||compositionError>1e-9||differences!=0||freshIntegerDifferences!=0)throw new IllegalStateException("Trained oracle mismatch; evidence preserved");
-        String label=cubic?"CUBIC":"GATE";
+        String label=quadratic?"QUADRATIC":cubic?"CUBIC":"GATE";
         var names=new ArrayList<>(List.of(label+"-full",label+"-cache",hybridBase==null?"Gen32":"HybridBase"));
         var states=new ArrayList<>(List.of(full.newState(2),cached.newState(2),reference.newState(2)));
-        var dense=packed||compiledUnary!=null?(hybridBase==null?(cubic?SearchEvaluation.brnCubicDeltaResearch(model):SearchEvaluation.brnGatedDeltaResearch(model)):
+        var dense=packed||compiledUnary!=null?(hybridBase==null?(quadratic?SearchEvaluation.brnGen32Residual(model):cubic?SearchEvaluation.brnCubicDeltaResearch(model):SearchEvaluation.brnGatedDeltaResearch(model)):
                 SearchEvaluation.brnResidualHybridResearch(model,hybridBase)):null;
         if(packed||compiledUnary!=null) {
             names.add(label+"-same-base-dense");
@@ -209,6 +210,17 @@ public final class BrnGatedCacheProbe {
                 public Map<String,Object> details(){return Map.of("kind","packed-polynomial-period64-canonical-rounding-guard-v1",
                         "activeComponents",value.activeComponents(),"correctionErrorBound",value.correctionErrorBound(),
                         "roundingFallbacks",value.roundingFallbacks,"rebuilds",value.rebuilds,"updates",value.updates);}
+            };
+        }
+        if(model.architecture()==BrnNextArchitecture.GEN32_QUADRATIC) {
+            var value=hybridBase==null?new BrnQuadraticAccumulator(model):new BrnQuadraticAccumulator(model,hybridBase);
+            return new Cache() {
+                public double rawPawns(long[] board){return value.rawPawns(board);}
+                public int score(long[] board){return value.score(board);}
+                public long primitiveBytes(){return value.primitiveBytes();}
+                public Map<String,Object> details(){return Map.of("kind","quadratic-period64-canonical-rounding-guard-v1",
+                        "correctionErrorBound",value.correctionErrorBound(),"roundingFallbacks",value.roundingFallbacks,
+                        "rebuilds",value.rebuilds,"updates",value.updates);}
             };
         }
         if(delta && model.architecture().frozenCubic()) {

@@ -302,3 +302,31 @@ The bounded-pair interval remains 1.98-98.02%, and eight reused development pair
 do not establish equivalence or absence of expressive value. Full R4's paired root
 NPS is .67135 of the compiled unary control in this comparison. Cost/depth and
 interaction quality remain separate hypotheses.
+
+## Separately trainable degree2 control preparation
+
+While the remaining frozen W5 protocols run, prepare a distinct rank16 quadratic
+control schema. The inference ablation does not let retained weights re-optimize;
+its performance cannot establish the value of degree3 relative to a trained pairwise
+alternative. Raw training loss uses quadratic terms strongly, and the bounded cost
+prototype supports a modest lower-degree saving. This makes a trained control a
+useful next experiment irrespective of the sign of the small ablation screen.
+
+Implementation preparation uses wire7, the same frozen Gen32 binding and feature
+semantics, and an explicit projection retaining unary/embedding/quadratic weights,
+both Adam moments, step and rate. Only third-degree heads/moments are omitted in a
+new object. Old payloads/caches remain unchanged. This remains an additive pairwise
+control and cannot itself satisfy the programme's higher-order objective. Require
+independent forward/gradients, projection/persistence, cache/search and GUI checks
+before creating any owner lineage. No substantive training or new human gate is
+yet requested; finish all admitted W5 games before selecting the consolidated gate.
+
+The degree2 implementation preparation passes 126 distinct targeted tests, including
+all-parameter finite differences, exact masked-update/state projection, score/search
+parity, source-preserving factory fixtures and interrupted GUI-service continuation.
+Two initial integration compile attempts exposed exhaustive historical test-fixture
+switches; those were extended and their failed logs remain preserved. No full-suite
+or native/owner readiness claim. See degree-control-implementation-validation.json.
+The new application capability qualifies build56; W5 matches remain on build55.
+Resume the remaining frozen clocks, depth and marginal-degree budgets before selecting
+the consolidated next training gate. No owner store has yet been created or trained.

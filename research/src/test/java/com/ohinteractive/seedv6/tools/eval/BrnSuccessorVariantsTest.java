@@ -10,6 +10,25 @@ import org.junit.jupiter.params.provider.EnumSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BrnSuccessorVariantsTest {
+    @org.junit.jupiter.api.Test
+    void quadraticControlScalesItsHeadsWithoutInventingThirdDegreeParameters() {
+        var kind=BrnNextArchitecture.GEN32_QUADRATIC;
+        var random=new SplittableRandom(179);double[] weights=new double[kind.parameters()];
+        for(int i=0;i<weights.length;i++)weights[i]=random.nextDouble(-.7,.7);
+        var source=new BrnNextModel(kind,weights);
+        for(double scale:new double[]{0,.5,1,2}) {
+            var variant=BrnSuccessorVariants.correction(source,scale,null,null);
+            for(var board:BrnSuccessorAudit.boards()) {
+                double base=BrnNextBase.model().newWorkspace().evaluatePawns(board);
+                assertEquals(base+scale*(source.rawPawns(board,source.newWorkspace())-base),
+                        variant.rawPawns(board,variant.newWorkspace()),1e-12);
+            }
+            for(int r=0;r<kind.width();r++)assertEquals(scale*weights[kind.head()+r],variant.weight(kind.head()+r));
+        }
+        assertEquals(kind.head()+kind.width(),kind.parameters());
+        assertThrows(IllegalArgumentException.class,()->BrnSuccessorVariants.correction(source,1,"cubic-only",null));
+        for(int i=0;i<weights.length;i++)assertEquals(weights[i],source.weight(i));
+    }
     @ParameterizedTest @EnumSource(value=BrnNextArchitecture.class,names={"GEN32_CUBIC","GEN32_CUBIC_R4"})
     void cubicOnlyRetainsThirdDegreeAndUnaryWithExplicitScaling(BrnNextArchitecture kind) {
         var random=new SplittableRandom(117);double[] weights=new double[kind.parameters()];

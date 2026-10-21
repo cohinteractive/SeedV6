@@ -50,6 +50,19 @@ public final class BrnNextTrainer {
         }
         return target;
     }
+    /** New degree2 control: retain every unary/embedding/quadratic parameter and
+     * its Adam moments, rate and step; omit only degree3 heads and their moments.
+     * This is an explicit function projection into a distinct wire schema. */
+    public BrnNextTrainer projectQuadratic() {
+        if (architecture != GEN32_CUBIC)
+            throw new IllegalArgumentException("Rank16 frozen cubic source required");
+        var target = new BrnNextTrainer(GEN32_QUADRATIC, 0, rate);
+        target.step = step;
+        System.arraycopy(weights, 0, target.weights, 0, target.weights.length);
+        System.arraycopy(first, 0, target.first, 0, target.first.length);
+        System.arraycopy(second, 0, target.second, 0, target.second.length);
+        return target;
+    }
     public void setLearningRate(double rate) { new BrnAdamConfig(rate); this.rate = rate; }
     public BrnNextModel snapshot() { return new BrnNextModel(architecture, weights); }
     public double predictPawns(long[] board) { return workspace.forward(weights, board, architecture); }
@@ -61,6 +74,16 @@ public final class BrnNextTrainer {
         int width = architecture.width(), head = architecture.head();
         for (int i = 0; i < workspace.count; i++) gradient[UNARY + workspace.features[i]] += derivative * PIECE_NORM;
         switch (architecture) {
+            case GEN32_QUADRATIC -> {
+                for (int r = 0; r < width; r++) {
+                    gradient[head + r] += derivative * workspace.second[r] * DEGREE2_NORM;
+                    for (int i = 0; i < workspace.count; i++) {
+                        int address = EMBEDDING + workspace.features[i] * width + r;
+                        gradient[address] += derivative * (weights[head + r]
+                                * (workspace.first[r] - weights[address]) * DEGREE2_NORM);
+                    }
+                }
+            }
             case CUBIC, GEN32_CUBIC_R4, GEN32_CUBIC -> {
                 for (int r = 0; r < width; r++) {
                     gradient[head + r] += derivative * workspace.second[r] * DEGREE2_NORM;

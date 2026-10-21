@@ -41,7 +41,9 @@ public final class ArchitectureLibrary {
         new Descriptor("Gen32 + Cubic Residual (research)", TrainingArchitecture.BRN_GEN32_CUBIC, Status.RESEARCH,
             List.of("W3-RESCUBIC"), "Frozen Gen32 plus rank16 cubic correction; corpus Adam; Policy4"),
         new Descriptor("Gen32 + Cubic-4 Residual (research)", TrainingArchitecture.BRN_GEN32_CUBIC_R4, Status.RESEARCH,
-            List.of("W5-RESCUBIC-R4"), "Frozen Gen32 plus four cubic components; corpus Adam; Policy4"));
+            List.of("W5-RESCUBIC-R4"), "Frozen Gen32 plus four cubic components; corpus Adam; Policy4"),
+        new Descriptor("Gen32 + Quadratic Residual (control)", TrainingArchitecture.BRN_GEN32_QUADRATIC, Status.RESEARCH,
+            List.of("GEN32-QUADRATIC-CONTROL"), "Additive pairwise control without cubic terms; corpus Adam; Policy4"));
     public static List<Descriptor> entries() { return ENTRIES; }
     public static Descriptor describe(TrainingArchitecture architecture) {
         return ENTRIES.stream().filter(e -> e.implementation() == architecture).findFirst().orElseThrow();

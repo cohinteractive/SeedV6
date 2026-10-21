@@ -64,7 +64,7 @@ public final class BrnResidualAssessment {
                     add(predictors,spec.name()+"-quadratic",new BrnNextModel(kind,w));
                     w=weights(model);Arrays.fill(w,kind.head(),kind.head()+kind.width(),0);
                     add(predictors,spec.name()+"-cubic-only",new BrnNextModel(kind,w));
-                } else {
+                } else if(kind.correctionKind()==GATED_PAIRS) {
                     double[] mean=new double[kind.width()];
                     for(var rows:datasets)for(int i=0;i<1024;i++) {
                         double[] g=BrnGatedContextProbe.gates(model,rows.get(i).board());

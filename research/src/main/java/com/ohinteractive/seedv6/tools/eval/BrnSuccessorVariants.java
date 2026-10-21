@@ -98,7 +98,7 @@ final class BrnSuccessorVariants {
             default -> throw new IllegalArgumentException("Unknown correction ablation");
         }
         for(int i=0;i<EMBEDDING;i++)w[i]*=scale;
-        for(int i=kind.head()+(kind.correctionKind()==CUBIC?0:kind.width());i<w.length;i++)w[i]*=scale;
+        for(int i=kind.head()+(kind.polynomial()?0:kind.width());i<w.length;i++)w[i]*=scale;
         return new BrnNextModel(kind,w);
     }
     static BrnNextModel gain(BrnNextModel source,double gain) {
