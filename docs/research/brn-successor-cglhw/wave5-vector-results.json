@@ -1,0 +1,475 @@
+{
+  "id": "wave5-vector-feasibility-results-v1",
+  "runtime": "wave5-vector-runtime.json",
+  "replicates": [
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\vector-execution-01\\probe-0.json",
+      "sha256": "5a1c78b69c80758601d3bff1adf670993c4d3f7cc947ffd60b7a2594f8d6dfb6",
+      "models": [
+        {
+          "memory": {
+            "scalar": 3753,
+            "prototype": 34545
+          },
+          "scalarVectorBitDifferences": 0,
+          "manifest": {
+            "id": "g000096-s000786432-014449a8d5676d1a4569501219355fad6f5c7182a02537397d526db6e31ea35a",
+            "generation": 96,
+            "optimizerStep": 786432,
+            "trainingDepth": 4,
+            "parentId": "g000095-s000778240-e44abd3cf0617c304869dddf06783705a97c8c7c37866ac6b1345b318c71723d",
+            "networkBytes": 30864,
+            "networkSha256": "a831c9beea3889351b92fea09039ab7eabd8eb9ee6f648807336dfaa9684c158",
+            "trainingBytes": 92464,
+            "trainingSha256": "00f32dc27648a4e7ce5ffc24ea5c430f67059317b59818437b9ca1a9f99ff630",
+            "architecture": "BRN_GEN32_CUBIC_R4"
+          },
+          "maximumCanonicalRawError": 3.3306690738754696e-15,
+          "positionsPerPass": 6333,
+          "candidate": "W5-RESCUBIC-R4-LR001-g96-half",
+          "timing": {
+            "prototypeOverScalar": 1.1176138388827426,
+            "evaluationsPerPass": 100000,
+            "medianNanos": [
+              216.029,
+              243.632,
+              241.437
+            ],
+            "implementations": [
+              "core-scalar",
+              "copied-scalar",
+              "vector"
+            ],
+            "passesNanos": [
+              [
+                22806400,
+                21899200,
+                21061700,
+                21969000,
+                21602900,
+                21144400,
+                21533700,
+                21833100,
+                21393200
+              ],
+              [
+                25688000,
+                25065000,
+                24722800,
+                24317500,
+                24399600,
+                24353000,
+                24292700,
+                24059400,
+                24363200
+              ],
+              [
+                24356800,
+                24450000,
+                24143700,
+                23602600,
+                24128700,
+                23566000,
+                23547900,
+                24818200,
+                24401600
+              ]
+            ],
+            "vectorOverCopiedScalar": 0.990990510277796
+          },
+          "integerDifferences": 0,
+          "parityPasses": 4
+        },
+        {
+          "memory": {
+            "scalar": 4329,
+            "prototype": 109041
+          },
+          "scalarVectorBitDifferences": 0,
+          "manifest": {
+            "id": "g000096-s000786432-f4c32fa4e682d031c65def888ef238210184540017bdce382c0c967d477b89b4",
+            "generation": 96,
+            "optimizerStep": 786432,
+            "trainingDepth": 4,
+            "parentId": "g000095-s000778240-af578b860a2d492795f6bdce34c5f5d6739953bf5d490daed85a4ba94ee6ecc8",
+            "networkBytes": 104784,
+            "networkSha256": "14e72d384c4a18ec80b2db2d55df6a3c9ae69f671c9c0b9688fac3e3fb8c1218",
+            "trainingBytes": 314224,
+            "trainingSha256": "66a1e1415dae680f1b065a16bb85e9b38f0a845a17daa2d9248f6fa98647eb0e",
+            "architecture": "BRN_GEN32_CUBIC"
+          },
+          "maximumCanonicalRawError": 3.1086244689504383e-15,
+          "positionsPerPass": 6333,
+          "candidate": "W5-RESCUBIC-R16-LR001-g96-half",
+          "timing": {
+            "prototypeOverScalar": 0.8823799987262138,
+            "evaluationsPerPass": 100000,
+            "medianNanos": [
+              282.622,
+              316.983,
+              249.38
+            ],
+            "implementations": [
+              "core-scalar",
+              "copied-scalar",
+              "vector"
+            ],
+            "passesNanos": [
+              [
+                28246600,
+                28348000,
+                28848600,
+                28225700,
+                28282400,
+                28103500,
+                28262200,
+                28944800,
+                28036700
+              ],
+              [
+                31698100,
+                31594500,
+                31698300,
+                31858600,
+                32610000,
+                31305000,
+                32900700,
+                31412600,
+                31882100
+              ],
+              [
+                26237500,
+                25347500,
+                24637000,
+                26360500,
+                25255400,
+                24725600,
+                24555900,
+                24938000,
+                24660600
+              ]
+            ],
+            "vectorOverCopiedScalar": 0.7867298877226854
+          },
+          "integerDifferences": 0,
+          "parityPasses": 4
+        }
+      ]
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\vector-execution-01\\probe-1.json",
+      "sha256": "ea2c13b7001a1483a38e7402dbafa76e40350c2861a553144faba66181be5fab",
+      "models": [
+        {
+          "memory": {
+            "scalar": 3753,
+            "prototype": 34545
+          },
+          "scalarVectorBitDifferences": 0,
+          "manifest": {
+            "id": "g000096-s000786432-014449a8d5676d1a4569501219355fad6f5c7182a02537397d526db6e31ea35a",
+            "generation": 96,
+            "optimizerStep": 786432,
+            "trainingDepth": 4,
+            "parentId": "g000095-s000778240-e44abd3cf0617c304869dddf06783705a97c8c7c37866ac6b1345b318c71723d",
+            "networkBytes": 30864,
+            "networkSha256": "a831c9beea3889351b92fea09039ab7eabd8eb9ee6f648807336dfaa9684c158",
+            "trainingBytes": 92464,
+            "trainingSha256": "00f32dc27648a4e7ce5ffc24ea5c430f67059317b59818437b9ca1a9f99ff630",
+            "architecture": "BRN_GEN32_CUBIC_R4"
+          },
+          "maximumCanonicalRawError": 3.3306690738754696e-15,
+          "positionsPerPass": 6333,
+          "candidate": "W5-RESCUBIC-R4-LR001-g96-half",
+          "timing": {
+            "prototypeOverScalar": 1.1149912993730782,
+            "evaluationsPerPass": 100000,
+            "medianNanos": [
+              209.755,
+              247.968,
+              233.875
+            ],
+            "implementations": [
+              "core-scalar",
+              "copied-scalar",
+              "vector"
+            ],
+            "passesNanos": [
+              [
+                22252300,
+                20838900,
+                20887600,
+                20958200,
+                21573000,
+                21229900,
+                20975500,
+                20745100,
+                21092000
+              ],
+              [
+                24211900,
+                24244500,
+                24085700,
+                26721900,
+                24796800,
+                24141100,
+                24857400,
+                25409100,
+                28996100
+              ],
+              [
+                22841200,
+                22542900,
+                23314700,
+                23656100,
+                23387500,
+                23607000,
+                23890200,
+                24734500,
+                22435200
+              ]
+            ],
+            "vectorOverCopiedScalar": 0.9431660536843464
+          },
+          "integerDifferences": 0,
+          "parityPasses": 4
+        },
+        {
+          "memory": {
+            "scalar": 4329,
+            "prototype": 109041
+          },
+          "scalarVectorBitDifferences": 0,
+          "manifest": {
+            "id": "g000096-s000786432-f4c32fa4e682d031c65def888ef238210184540017bdce382c0c967d477b89b4",
+            "generation": 96,
+            "optimizerStep": 786432,
+            "trainingDepth": 4,
+            "parentId": "g000095-s000778240-af578b860a2d492795f6bdce34c5f5d6739953bf5d490daed85a4ba94ee6ecc8",
+            "networkBytes": 104784,
+            "networkSha256": "14e72d384c4a18ec80b2db2d55df6a3c9ae69f671c9c0b9688fac3e3fb8c1218",
+            "trainingBytes": 314224,
+            "trainingSha256": "66a1e1415dae680f1b065a16bb85e9b38f0a845a17daa2d9248f6fa98647eb0e",
+            "architecture": "BRN_GEN32_CUBIC"
+          },
+          "maximumCanonicalRawError": 3.1086244689504383e-15,
+          "positionsPerPass": 6333,
+          "candidate": "W5-RESCUBIC-R16-LR001-g96-half",
+          "timing": {
+            "prototypeOverScalar": 0.8819039003026127,
+            "evaluationsPerPass": 100000,
+            "medianNanos": [
+              285.183,
+              317.577,
+              251.504
+            ],
+            "implementations": [
+              "core-scalar",
+              "copied-scalar",
+              "vector"
+            ],
+            "passesNanos": [
+              [
+                29023500,
+                28231900,
+                29121600,
+                28518300,
+                28041000,
+                29323300,
+                27886000,
+                28777000,
+                27916000
+              ],
+              [
+                31651000,
+                32056200,
+                31191100,
+                31757700,
+                31202900,
+                31168100,
+                32872600,
+                32090500,
+                33471300
+              ],
+              [
+                25626900,
+                25056600,
+                25150400,
+                25823600,
+                24953300,
+                25026500,
+                25309800,
+                26193900,
+                24962500
+              ]
+            ],
+            "vectorOverCopiedScalar": 0.7919465200565532
+          },
+          "integerDifferences": 0,
+          "parityPasses": 4
+        }
+      ]
+    },
+    {
+      "path": "docs\\research\\brn-successor-cglhw\\raw\\wave5\\vector-execution-01\\probe-2.json",
+      "sha256": "d0b0e29544d7664af4c29fddbd77298d587e75595dedf48adf7777c0a411f44a",
+      "models": [
+        {
+          "timing": {
+            "vectorOverCopiedScalar": 0.9244314868804665,
+            "passesNanos": [
+              [
+                23183300,
+                21815600,
+                21836900,
+                21885800,
+                21527300,
+                21666100,
+                21970600,
+                22192300,
+                21613900
+              ],
+              [
+                24867500,
+                24525300,
+                24919200,
+                25439600,
+                24943800,
+                24840700,
+                24660300,
+                24637300,
+                25259700
+              ],
+              [
+                23036400,
+                22947900,
+                22957200,
+                22823600,
+                23357200,
+                23065700,
+                22959100,
+                23202500,
+                22988300
+              ]
+            ],
+            "implementations": [
+              "core-scalar",
+              "copied-scalar",
+              "vector"
+            ],
+            "medianNanos": [
+              218.369,
+              248.675,
+              229.883
+            ],
+            "evaluationsPerPass": 100000,
+            "prototypeOverScalar": 1.0527272644010826
+          },
+          "candidate": "W5-RESCUBIC-R4-LR001-g96-half",
+          "positionsPerPass": 6333,
+          "maximumCanonicalRawError": 3.3306690738754696e-15,
+          "manifest": {
+            "id": "g000096-s000786432-014449a8d5676d1a4569501219355fad6f5c7182a02537397d526db6e31ea35a",
+            "generation": 96,
+            "optimizerStep": 786432,
+            "trainingDepth": 4,
+            "parentId": "g000095-s000778240-e44abd3cf0617c304869dddf06783705a97c8c7c37866ac6b1345b318c71723d",
+            "networkBytes": 30864,
+            "networkSha256": "a831c9beea3889351b92fea09039ab7eabd8eb9ee6f648807336dfaa9684c158",
+            "trainingBytes": 92464,
+            "trainingSha256": "00f32dc27648a4e7ce5ffc24ea5c430f67059317b59818437b9ca1a9f99ff630",
+            "architecture": "BRN_GEN32_CUBIC_R4"
+          },
+          "scalarVectorBitDifferences": 0,
+          "memory": {
+            "scalar": 3753,
+            "prototype": 34545
+          },
+          "parityPasses": 4,
+          "integerDifferences": 0
+        },
+        {
+          "timing": {
+            "vectorOverCopiedScalar": 0.7801132165342549,
+            "passesNanos": [
+              [
+                28496700,
+                28438800,
+                29977500,
+                29487800,
+                28490800,
+                30123900,
+                28516700,
+                30108700,
+                29457300
+              ],
+              [
+                31712200,
+                31658200,
+                33728400,
+                32751400,
+                31370100,
+                32373100,
+                33162400,
+                35233200,
+                33843800
+              ],
+              [
+                25788700,
+                25087900,
+                25463900,
+                26143100,
+                25098700,
+                25948400,
+                28804600,
+                25139700,
+                25549800
+              ]
+            ],
+            "implementations": [
+              "core-scalar",
+              "copied-scalar",
+              "vector"
+            ],
+            "medianNanos": [
+              294.573,
+              327.514,
+              255.498
+            ],
+            "evaluationsPerPass": 100000,
+            "prototypeOverScalar": 0.8673503681600147
+          },
+          "candidate": "W5-RESCUBIC-R16-LR001-g96-half",
+          "positionsPerPass": 6333,
+          "maximumCanonicalRawError": 3.1086244689504383e-15,
+          "manifest": {
+            "id": "g000096-s000786432-f4c32fa4e682d031c65def888ef238210184540017bdce382c0c967d477b89b4",
+            "generation": 96,
+            "optimizerStep": 786432,
+            "trainingDepth": 4,
+            "parentId": "g000095-s000778240-af578b860a2d492795f6bdce34c5f5d6739953bf5d490daed85a4ba94ee6ecc8",
+            "networkBytes": 104784,
+            "networkSha256": "14e72d384c4a18ec80b2db2d55df6a3c9ae69f671c9c0b9688fac3e3fb8c1218",
+            "trainingBytes": 314224,
+            "trainingSha256": "66a1e1415dae680f1b065a16bb85e9b38f0a845a17daa2d9248f6fa98647eb0e",
+            "architecture": "BRN_GEN32_CUBIC"
+          },
+          "scalarVectorBitDifferences": 0,
+          "memory": {
+            "scalar": 4329,
+            "prototype": 109041
+          },
+          "parityPasses": 4,
+          "integerDifferences": 0
+        }
+      ]
+    }
+  ],
+  "decision": "R4 vector path rejected for this implementation/hardware:5.3\u201311.8% slower. R16 isolated evaluation is11.8\u201313.3% cheaper; search integration remains deferred pending strength/depth interpretation, not claimed as a measured NPS benefit.",
+  "limitations": [
+    "Private coefficient copy adds30792/104712 primitive bytes per prototype workspace.",
+    "Core/UCI unchanged and have no vector-module dependency. No application build increment.",
+    "Nine rotated timing passes per JVM, three fixed replications, one machine; not a universal hardware claim.",
+    "Existing full-versus-delta same-function search results suggest isolated gains can shrink substantially end to end; no numerical search gain inferred."
+  ]
+}

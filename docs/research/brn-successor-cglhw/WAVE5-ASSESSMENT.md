@@ -233,3 +233,14 @@ memory cost is explicit. Require bit/score parity and useful repeatable speedup
 before any search integration. Core/UCI gain no vector-module dependency. Fifteen
 targeted tests pass (2 prototype parameterizations,13 variants); both initial and
 final control-enhanced build logs are preserved. This is build55 research tooling.
+
+Vector feasibility is complete: all3 fixed JVM replications preserve exact scalar
+raw bits and integer scores across4 passes of6333 actual positions per model.
+R4 core/copy-scalar/vector medians across runs are approximately210–218/244–249/
+230–241ns: vector is5.3–11.8% slower than the existing core. R16 is283–295/317–328/
+249–255ns: vector saves11.8–13.3% against core. Four vector lanes; the private copy
+adds30792/104712 workspace bytes. See wave5-vector-results.json. No search integration
+or NPS benefit is claimed. The core/UCI module boundary and application remain unchanged.
+R16 integration is deferred pending strength/depth evidence because isolated gains
+can shrink substantially end to end; this is an optional optimization, not a proven bug.
+The build pause is preserved; remaining fixed direct/cubic-only matches resume unchanged.
