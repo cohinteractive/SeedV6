@@ -1,0 +1,72 @@
+{
+  "status": "passed",
+  "entries": [
+    {
+      "candidateName": "W5-RESCUBIC-R4-LR001",
+      "positions": 6333,
+      "maximumRawError": 7.993605777301127e-15,
+      "maximumFreshRawError": 7.549516567451064e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "accumulatorPrimitiveBytes": 3753,
+      "combinedPayloadBytes": 825896,
+      "combinedImmutablePrimitiveBytes": 830480,
+      "evidence": "raw/wave5/cache-0-01.json",
+      "searchOraclePasses": 48,
+      "searchResultDifferences": 0,
+      "transitionMedianNanos": {
+        "CUBIC-full": 570.818,
+        "CUBIC-cache": 219.312,
+        "Gen32": 140.444
+      },
+      "geomeanSearchCostVsCanonical": 0.81151777628099
+    },
+    {
+      "candidateName": "W5-RESCUBIC-R16-LR001",
+      "positions": 6333,
+      "maximumRawError": 8.659739592076221e-15,
+      "maximumFreshRawError": 7.771561172376096e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "accumulatorPrimitiveBytes": 4329,
+      "combinedPayloadBytes": 899816,
+      "combinedImmutablePrimitiveBytes": 904400,
+      "evidence": "raw/wave5/cache-1-01.json",
+      "searchOraclePasses": 48,
+      "searchResultDifferences": 0,
+      "transitionMedianNanos": {
+        "CUBIC-full": 856.206,
+        "CUBIC-cache": 305.9,
+        "Gen32": 135.674
+      },
+      "geomeanSearchCostVsCanonical": 0.7756228394483564
+    },
+    {
+      "candidateName": "W5-R16-masked-four",
+      "positions": 6333,
+      "maximumRawError": 7.993605777301127e-15,
+      "maximumFreshRawError": 7.549516567451064e-15,
+      "integerDifferences": 0,
+      "freshIntegerDifferences": 0,
+      "accumulatorPrimitiveBytes": 28409,
+      "combinedPayloadBytes": 899816,
+      "combinedImmutablePrimitiveBytes": 904400,
+      "evidence": "raw/wave5/cache-2-01.json",
+      "searchOraclePasses": 48,
+      "searchResultDifferences": 0,
+      "transitionMedianNanos": {
+        "CUBIC-full": 846.33,
+        "CUBIC-cache": 227.254,
+        "Gen32": 145.384,
+        "CUBIC-same-base-dense": 293.022
+      },
+      "geomeanSearchCostVsCanonical": 0.7279560658412655
+    }
+  ],
+  "compactVsMaskedSearchDifferences": 0,
+  "compactVsMaskedGeomeanSearchCost": 0.9535482678800691,
+  "limitations": [
+    "One sequential controlled microbenchmark; cost estimates are not independent equal-time strength.",
+    "Rank4 and full rank16 have different functions/search trees. Same-function compact versus masked packed control does have identical search results."
+  ]
+}

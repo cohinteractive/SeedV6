@@ -1,0 +1,288 @@
+{
+  "id": "wave5-g5-owner-readiness-v1",
+  "recordedUtc": "2026-10-21T01:40:24.947053+00:00",
+  "status": "READY_FOR_HUMAN_TRAINING_NOT_TRAINED",
+  "build": 55,
+  "implementationCommit": "82331a5",
+  "packagingSource": "bd65091a3ac4f1789fe0f0b52279389622503c07",
+  "executable": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T013302-0f255e57\\SeedV6-GUI\\SeedV6-GUI.exe",
+  "nativeCandidate": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T013302-0f255e57",
+  "archiveSha256": "6ecf2ec3a3338af3ef7ca42e80cfd7903afad48baa58868c5411f18e825e1b5e",
+  "entries": [
+    {
+      "candidate": "W5-RESCUBIC-R4-LR001",
+      "architecture": "BRN_GEN32_CUBIC_R4",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC-R4\\a1f43385-af0a-31aa-adcc-4aaef1301c0d",
+      "lineageId": "a1f43385-af0a-31aa-adcc-4aaef1301c0d",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave5",
+        "arm": {
+          "name": "W5-RESCUBIC-R4-LR001",
+          "source": {
+            "candidate": "W4-RESCUBIC-LR001",
+            "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\4e693253-bfdd-38b1-b8e2-be30ac620568",
+            "checkpoint": "g000064-s000524288-452b71fa8b42d6da3a6ec06e6991d08ff4adcd4cc7d4a88a7c8228fc5c36b75f",
+            "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc",
+            "trainingSha256": "3c8d6ed2cb7884ac661de8bcbd1f8d6332ddac2788c272747ab2787808b682a8",
+            "generation": 64,
+            "seed": 1,
+            "positionsPerGeneration": 131072,
+            "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+          },
+          "rate": 0.001,
+          "components": [
+            2,
+            3,
+            5,
+            9
+          ]
+        },
+        "sourceLedgerSha256": "e858b5fb6c6af39a2e08b5987896d624105ea4f5b0771397b55309ae8776609e",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000064-s000524288-50b88e15725392cf5c63e72b9477e8d95209d582b3dba3a46f6a4340d3b3f71e",
+        "networkSha256": "0d4740db66991f3454c19ff9121592f582999db2aaacb7d6e81325c1784b1a12",
+        "trainingSha256": "a61db08d5b0a69fd2a15a85457fd7572c575cb7b786e0e7e42910243bcedd4b4",
+        "inheritedStep": 524288
+      },
+      "latest": "g000064-s000524288-50b88e15725392cf5c63e72b9477e8d95209d582b3dba3a46f6a4340d3b3f71e",
+      "latestGeneration": 64,
+      "recipe": {
+        "learningRate": 0.001,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "additionalGenerations": 32,
+      "sourceOffsets": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 19418349,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 18383761
+      },
+      "partition": "brn-next-geometry-sha256-8train-1validation-1sealed-v1"
+    },
+    {
+      "candidate": "W5-RESCUBIC-R16-LR001",
+      "architecture": "BRN_GEN32_CUBIC",
+      "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\26df2166-8a6d-3302-877f-a79b3f84549d",
+      "lineageId": "26df2166-8a6d-3302-877f-a79b3f84549d",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave5",
+        "arm": {
+          "name": "W5-RESCUBIC-R16-LR001",
+          "source": {
+            "candidate": "W4-RESCUBIC-LR001",
+            "root": "E:\\SeedV6-Networks\\BRN-GEN32-CUBIC\\4e693253-bfdd-38b1-b8e2-be30ac620568",
+            "checkpoint": "g000064-s000524288-452b71fa8b42d6da3a6ec06e6991d08ff4adcd4cc7d4a88a7c8228fc5c36b75f",
+            "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc",
+            "trainingSha256": "3c8d6ed2cb7884ac661de8bcbd1f8d6332ddac2788c272747ab2787808b682a8",
+            "generation": 64,
+            "seed": 1,
+            "positionsPerGeneration": 131072,
+            "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+          },
+          "rate": 0.001,
+          "components": []
+        },
+        "sourceLedgerSha256": "e858b5fb6c6af39a2e08b5987896d624105ea4f5b0771397b55309ae8776609e",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000064-s000524288-d0a345a8e3b094c1ddb67c579999fff1ed5cd28e2fd88b788249045f04185db5",
+        "networkSha256": "7b5214e92b1256fd1ad2c22de888a34ded5f118f112bcef245eaffdef6afebcc",
+        "trainingSha256": "3c8d6ed2cb7884ac661de8bcbd1f8d6332ddac2788c272747ab2787808b682a8",
+        "inheritedStep": 524288
+      },
+      "latest": "g000064-s000524288-d0a345a8e3b094c1ddb67c579999fff1ed5cd28e2fd88b788249045f04185db5",
+      "latestGeneration": 64,
+      "recipe": {
+        "learningRate": 0.001,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "additionalGenerations": 32,
+      "sourceOffsets": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 19418349,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 18383761
+      },
+      "partition": "brn-next-geometry-sha256-8train-1validation-1sealed-v1"
+    },
+    {
+      "candidate": "W5-BRE-CONTROL-LR001",
+      "architecture": "BRN_PAIR2",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\2d4a7efa-a94a-3a3c-bc8c-6ffe8476f03f",
+      "lineageId": "2d4a7efa-a94a-3a3c-bc8c-6ffe8476f03f",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave5",
+        "arm": {
+          "name": "W5-BRE-CONTROL-LR001",
+          "source": {
+            "candidate": "W4-BRE-CONTROL-LR001",
+            "root": "E:\\SeedV6-Networks\\BRN-Pair2\\d1a2e220-c1a0-3953-ad2c-2e001af93e7d",
+            "checkpoint": "g000064-s002277376-3226e9e3f208f037762348c337f07747eb5f2e78e3e0ccab6ff102a15d479385",
+            "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+            "trainingSha256": "19aa0beffaf653c5b8ba4dca89f5b4b4a3f0eb31440e297acf7f0969b0485502",
+            "generation": 64,
+            "seed": 1,
+            "positionsPerGeneration": 131072,
+            "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+          },
+          "rate": 0.001,
+          "components": []
+        },
+        "sourceLedgerSha256": "d64f9c4ba4cca66c8802a61c8b47ad777ed662f22b5a5e0b5652a4a680f7ba9a",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000064-s002277376-106cadb4ac5474fd8d8193b801dfeb10e723e6e4c5a33ee72831eaefa8500441",
+        "networkSha256": "5fbeaed609aafed302d3c5d5f2b9cc8a79bce13aed06464cf694f6ba8647c381",
+        "trainingSha256": "19aa0beffaf653c5b8ba4dca89f5b4b4a3f0eb31440e297acf7f0969b0485502",
+        "inheritedStep": 2277376
+      },
+      "latest": "g000064-s002277376-106cadb4ac5474fd8d8193b801dfeb10e723e6e4c5a33ee72831eaefa8500441",
+      "latestGeneration": 64,
+      "recipe": {
+        "learningRate": 0.001,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "additionalGenerations": 32,
+      "sourceOffsets": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 6418156,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 6163329
+      },
+      "partition": "Existing Pair2 sequential train/validation acquisition"
+    },
+    {
+      "candidate": "W5-BRE-CONTROL-LR003",
+      "architecture": "BRN_PAIR2",
+      "root": "E:\\SeedV6-Networks\\BRN-Pair2\\abf7825e-a5ad-34cd-9231-0f2eb8099fb3",
+      "lineageId": "abf7825e-a5ad-34cd-9231-0f2eb8099fb3",
+      "origin": {
+        "version": 1,
+        "wave": "brn-successor-2026-10-21-wave5",
+        "arm": {
+          "name": "W5-BRE-CONTROL-LR003",
+          "source": {
+            "candidate": "W4-BRE-CONTROL-LR003",
+            "root": "E:\\SeedV6-Networks\\BRN-Pair2\\819e0f58-6726-3479-8709-bfa7079ad2d0",
+            "checkpoint": "g000064-s002277376-94c5629f3cc60d12c6f63f0525ef630d87f19593e8dfcdcded5c76bbf5d29dc1",
+            "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050",
+            "trainingSha256": "4c23665148d475c44c7e24f903c011407128f17272e5cbba197ce3d642fa883a",
+            "generation": 64,
+            "seed": 1,
+            "positionsPerGeneration": 131072,
+            "corpusConfigurationSha256": "ad614cc41ba43a26cb2359a5fa3b58940aa76cb96851a4276c6af50b4175f6d1"
+          },
+          "rate": 0.003,
+          "components": []
+        },
+        "sourceLedgerSha256": "89a6ff7f1cc64fee6d6e0cd0d3a05710da5267306e6c56aa39f3756cc723e989",
+        "selectionSha256": "7634b2aa0ca682da5e8bf20278b3c339104d7466754d3fdebd4aa29adb6efb5e",
+        "bootstrap": "g000064-s002277376-a1b29b6a66cee4b9484194f26401ca1e4252587f64ebc668cce191b050d1d05d",
+        "networkSha256": "7abc553062bccce8855a5b7c7db07cec3e23984a808533c7c0751998a971f050",
+        "trainingSha256": "4c23665148d475c44c7e24f903c011407128f17272e5cbba197ce3d642fa883a",
+        "inheritedStep": 2277376
+      },
+      "latest": "g000064-s002277376-a1b29b6a66cee4b9484194f26401ca1e4252587f64ebc668cce191b050d1d05d",
+      "latestGeneration": 64,
+      "recipe": {
+        "learningRate": 0.003,
+        "minibatchSize": 128,
+        "epochs": 8
+      },
+      "additionalGenerations": 32,
+      "sourceOffsets": {
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1": 6418156,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842": 6163329
+      },
+      "partition": "Existing Pair2 sequential train/validation acquisition"
+    }
+  ],
+  "additionalGenerations": 32,
+  "targetGeneration": 96,
+  "firstGeneration": 65,
+  "settings": {
+    "batchSize": 128,
+    "epochs": 8,
+    "positionsPerGeneration": 131072,
+    "validationPositionsPerGeneration": 32768,
+    "validation": "Held-out WDL",
+    "seed": 1,
+    "workers": 1,
+    "sourceMode": "Training Data sources",
+    "sourceMix": "Inherited equal-weight BT4 Q and Stockfish CP; preserve original source selection, cursor, seek indexes and partition"
+  },
+  "tests": {
+    "distinctJUnitPassing": 88,
+    "failed": 0,
+    "skipped": 0,
+    "actualPayloadOptimizerPairs": 5,
+    "scoreParityBoardsPerPair": 24,
+    "actualCacheModels": 3,
+    "positionsPerCacheModel": 6333,
+    "searchOracleRootPassesPerModel": 48,
+    "legalSmokePlies": 64,
+    "intentionalEightPlyCaps": 8
+  },
+  "evidence": [
+    {
+      "path": "raw/wave5/owner-preparation-02.json",
+      "sha256": "f960644eb42fdef922d8f01606dc5a52f6f3f5766b8e11e98908a57cc3bdeab9"
+    },
+    {
+      "path": "raw/wave5/owner-audit-01/complete.json",
+      "sha256": "9228f4c4bc44e57694bde8625779027afe993345174f8fc4f4c081cc3a2321c8"
+    },
+    {
+      "path": "raw/wave5/native-package-01.log",
+      "sha256": "07780128b2b70a11d7fa3885763688cf466cdcf4d95fb4ef593593cf2bb9d0d1"
+    },
+    {
+      "path": "raw/wave5/native-gui-01.xml",
+      "sha256": "dc1e8bafe0e5c90d536a5206cf27622a63ea14d8ccd098d38be5c46dfa20befa"
+    },
+    {
+      "path": "raw/wave5/native-relocation-02/verification.json",
+      "sha256": "09f6e340ea721fbc3af8964ddad798edf1b8520abcbfdee973eba98a4a3f7fe3"
+    },
+    {
+      "path": "raw/wave5/packaged-native-01/packaged-native.log",
+      "sha256": "63f75b8d89df79eb158e26c2d60adcfb9e43cb1f35b1b841bb076d602e5877c3"
+    },
+    {
+      "path": "raw/wave5/legal-smoke-analysis-01.json",
+      "sha256": "f44c397c5eeb285763e645f1ec1645621ea79b9a38abccab55ce71f5e4f8d714"
+    },
+    {
+      "path": "raw/wave5/cache-0-01.json",
+      "sha256": "5ae428928919584607ca2ee40301d6a8d0abb9d2b44cd6e034811a97aba5981c"
+    },
+    {
+      "path": "raw/wave5/cache-0-01.process.json",
+      "sha256": "aa6109ebcae8a1bd62a1c6e58a13ec1ec4ece2ead472ef30fd7ed8236af0bfb7"
+    },
+    {
+      "path": "raw/wave5/cache-1-01.json",
+      "sha256": "4633d4189de0b7a19387da3f20504311488701a112f039923a897f8e75280d57"
+    },
+    {
+      "path": "raw/wave5/cache-1-01.process.json",
+      "sha256": "06ce0b26f4d4639010f228678d521e09cad76bebc467ddd2dd31472f4db343cd"
+    },
+    {
+      "path": "raw/wave5/cache-2-01.json",
+      "sha256": "e7c6800d79733248475d231fc374720ae4ba952c1c8aa8097690dfcc78cafc3a"
+    },
+    {
+      "path": "raw/wave5/cache-2-01.process.json",
+      "sha256": "9af56c9e2cfc03246d3b1ca054b232797f23d986e63d4ae54ac5637b792f839e"
+    }
+  ],
+  "preservation": "wave5-preservation-check.json",
+  "projection": "wave5-projection-audit.json",
+  "cache": "wave5-cache-validation.json",
+  "limitations": [
+    "No substantive G5 training, convergence or strength verified yet. Human training is blocking.",
+    "Native Swing covers actual owner selection/recipes/readiness, not completion of a large training run.",
+    "Microbenchmarks and smoke games are not playing-strength evidence.",
+    "Historical dataset coverage, holdout overlap, sparse/dense Adam and hybrid exposure remain confounds.",
+    "First relocation invocation used incompatible Java21 GA and safely failed before copying. Preserved native-relocation-01; supported packaging JDK21.0.12.1 passed in native-relocation-02."
+  ]
+}

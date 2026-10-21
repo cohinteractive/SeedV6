@@ -306,3 +306,8 @@ the owner's report and the persisted-evidence audit on21 October2026. Do not rep
 training or use the historical Resume instructions above. Assessment now proceeds
 under WAVE4-ASSESSMENT and STATE. Programme success, adoption and final user
 acceptance remain unestablished.
+
+All admitted W4 assessment protocols subsequently closed (1344 development games).
+The current blocking human action is the distinct G5 compact/full-cubic and BRE
+continuation batch in [WAVE5](WAVE5.md), prepared and verified with build55.
+This does not reopen G4 or authorize further training of the original W4 roots.

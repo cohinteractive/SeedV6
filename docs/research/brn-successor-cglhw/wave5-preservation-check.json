@@ -1,0 +1,16 @@
+{
+  "recordedUtc": "2026-10-21T01:37:00.861405+00:00",
+  "status": "passed",
+  "unchangedFiles": {
+    "historicalW3AndFrozen": 710,
+    "trainedW4": 1405,
+    "preparedW5": 72
+  },
+  "changed": [],
+  "scope": "Every inventoried W3/frozen and W4 byte unchanged; every new W5 file unchanged through native preview and frozen-copy probes. No original lineage writes or owner training. W1 untouched, not freshly rehashed.",
+  "inventories": [
+    "raw/wave4/seek-remediation-before-01.json",
+    "raw/wave4/trained-before-01.json",
+    "raw/wave5/owner-before-gui-01.json"
+  ]
+}

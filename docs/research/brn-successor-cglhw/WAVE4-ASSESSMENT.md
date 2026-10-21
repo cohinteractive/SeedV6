@@ -761,4 +761,7 @@ loss does not establish the compact formulation's optimized limit. This interven
 has measured cost support and a same-data cubic control; it does not eliminate the
 historical BRE/residual data or aggregate hybrid-exposure confounds. G5 readiness
 requires implementation, actual source projection/continuation checks and native GUI
-verification. No substantive training or owner-store preparation has happened yet.
+verification. This readiness is now complete in82331a5/build55: four distinct owner
+roots are prepared, all originals preserved, and the native packaged GUI verified.
+No substantive G5 training has begun. See WAVE5 and wave5-owner-readiness.json;
+the programme is paused at that blocking human gate.

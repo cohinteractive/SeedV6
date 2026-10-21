@@ -2,7 +2,8 @@
 
 Updated21 October2026. **G4 is complete and verified. All six arms reached64,
 with exact expected continuation and preserved starting payloads. Wave4 trained
-assessment is active; no programme success is claimed.** This remains the original
+assessment is closed; G5 compact-cubic retraining is ready and awaits human training.
+No programme success is claimed.** This remains the original
 CGLHW. Current evidence/protocol: [WAVE4-ASSESSMENT](WAVE4-ASSESSMENT.md).
 Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), [WAVE1](WAVE1.md),
 [completed investigations](WAVE2.md), and [implementation/training history](WAVE3.md), and [trained assessment](WAVE3-ASSESSMENT.md), and [completed G4 training gate](WAVE4.md).
@@ -25,9 +26,11 @@ search. Architectural complexity or lower validation loss alone is insufficient.
 | W4-RESGATE-LR001 / LR003 | Completed64; LR001 Best63, LR003 Best64; exact W3 latest32 ancestry |
 | W4-RESCUBIC-LR001 / LR003 | Completed64; both Best63; exact W3 latest32 ancestry; W3 Best31 preserved |
 | W4-BRE-CONTROL-LR001 / LR003 | Both completed64 and Best64; original failed LR001 session successfully resumed |
+| W5-RESCUBIC-R4-LR001 / R16-LR001 | Prepared Gen64, Latest=Best bootstrap; compact projected/full exact W4-CUBIC001 optimizer; G5 training64->96 pending |
+| W5-BRE-CONTROL-LR001 / LR003 | Prepared Gen64, Latest=Best exact-source bootstrap; G5 training64->96 pending |
 
 All managed roots are under E:/SeedV6-Networks. Exact checkpoint IDs, hashes and
-sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`, `wave3-trained-checkpoints.json`, `wave4-owner-readiness.json`, `wave4-trained-checkpoints.json`. Frozen reference
+sources: `wave2-trained-checkpoints.json`, `wave3-lineages.json`, `wave3-trained-checkpoints.json`, `wave4-owner-readiness.json`, `wave4-trained-checkpoints.json`, `wave5-owner-readiness.json`. Frozen reference
 network SHA256 is `5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7`.
 Original lineages/campaigns/checkpoints remain preserved. W1 human training is verified
 complete for investigation; it does not establish competitive maturity. Never resume
@@ -85,12 +88,20 @@ the user's paused Learning Arena campaign as an inferred authorization to train.
 
 ## Current action and exact resume point
 
-**Human actions required after this prompt: None.** G4 is complete, verified from
-persisted evidence. Do not repeat training or historical Gen33 recovery instructions.
+**Human actions required after this prompt: Blocking — complete G5 GUI training of
+W5-RESCUBIC-R4-LR001, W5-RESCUBIC-R16-LR001, W5-BRE-CONTROL-LR001 and
+W5-BRE-CONTROL-LR003, each32 additional generations from64 through96.** Use verified
+build55 and the exact settings/resume instructions in [WAVE5](WAVE5.md).
+G4 is complete; do not repeat training or historical Gen33 recovery instructions.
 The original objective remains open; no successor or production adoption is established.
 
-Current unit: prepare the admitted compact-cubic retraining intervention in
-[WAVE5](WAVE5.md). G5 is not yet ready; no owner training is requested yet.
+Current unit: G5 human gate. Actual new roots, source-preserving moment projection,
+continuation, seek inheritance, native packaged GUI and legal smoke are verified in
+[readiness](wave5-owner-readiness.json). No substantive G5 training has begun.
+Next admissible dependent action: on the owner's completion report, audit actual
+Latest/Best, histories, settings, optimizer/source continuity and anomalies, then
+freeze/evaluate versus full16, both BRE rates and Gen32 with mechanism/cost controls.
+Do not infer completion from a later invocation or mechanically reopen closed matches.
 All admitted W4 games are closed. The research frontier is evidence-driven:
 
 1. **Closed:** all64 BRE full-versus-half calibration controls,8970 legal moves.
@@ -129,7 +140,7 @@ All admitted W4 games are closed. The research frontier is evidence-driven:
    W5 preparation is admitted to test whether retraining can recover compact cubic
    quality. Distinct rank4 projection, full rank16 continuation and both BRE-rate
    controls start from actual Latest64, retain optimizer state and add32 generations
-   only after G5 readiness is verified. No substantive training has begun.
+   at the now-verified G5 gate. No substantive training has begun.
    Fast additive ablations are implemented and verified: unary terms fit the
    existing BRE table; constant GATE retains four additional physical pair relations
    in an explicitly bounded research layout. Actual parity/cost and the first
@@ -152,7 +163,7 @@ and bounded resources after the preserved runtime mislaunch below.
 Resources: one concurrent game, one worker/engine, no pondering,64MiB TT,768MiB
 JVM,ActiveProcessorCount1,BelowNormal,12games/240seconds per batch (finish current
 game). No concurrent heavy build/probe/training. The G4 pause sentinel was preserved
-at raw/wave4/g4-completed-pause.txt and removed after audit/admission. No pause sentinel is currently present; the temporary unary-build pause is preserved
+at raw/wave4/g4-completed-pause.txt and removed after audit/admission. The G5 human-training pause sentinel is active; the temporary unary-build pause is preserved
 at raw/wave4/unary-build-pause-01.txt. No game was interrupted. Substantive training remains exclusively the owner's GUI action.
 
 ## Completed W4 evidence and interpretation
@@ -237,9 +248,11 @@ evidence; do not infer correctness from the excluded outputs.
 ## Preservation, historical provenance and acceptance
 
 All1405 audited W4 live files and710 prior W3/frozen files were unchanged by the
-read-only G4 audit/freeze; no W1 artifact was touched. Continued work uses isolated
-frozen inputs and writes no owner model store. Final preservation recheck is still
-required at the stopping boundary. Source cursor/split, sparse BRE versus dense
+read-only G4 audit/freeze and final stopping-boundary recheck; no W1 artifact was touched.
+Four distinct W5 owner roots were prepared without changing any existing lineage.
+All72 W5 files remain unchanged after native previews/frozen-copy probes.
+See wave5-preservation-check.json for exact inventories and scope.
+Source cursor/split, sparse BRE versus dense
 residual Adam, sequential promotion validation and aggregate hybrid exposure remain
 comparison limitations. A displayed generation or Best pointer is not an identity.
 
@@ -253,7 +266,12 @@ packed c396945/build53. Later research tooling/reports do not bump the applicati
 No finalizer, push, deployment, default replacement or journal creation. Root
 CODEXLOG_CURRENT.md is absent. Inspect Git for later coherent evidence commits.
 
-Raw evidence is local-only under raw/wave1..wave4 and build paths; a fresh checkout
+Current compact implementation82331a5/build55 and packaging-sourcebd65091 are verified;
+88 distinct JUnit tests, actual5-payload audit,3 cache/search probes and64 smoke plies pass.
+Build55 native candidate: dist/windows/candidates/candidate-20261021T013302-0f255e57.
+Precise lineage IDs/checkpoint hashes/settings/resume actions are in WAVE5/readiness.
+
+Raw evidence is local-only under raw/wave1..wave5 and build paths; a fresh checkout
 lacks it. Verify availability before analysis. Tracked manifests/reports bind paths,
 identities/configurations/results and limitations. All historical detail and negative
 findings remain in WAVE1..WAVE4-ASSESSMENT, manifests and Git history; this state
@@ -262,8 +280,8 @@ Turn completion, implementation completion and research acceptance are distinct.
 No statistically credible positive strength improvement or useful-expression
 causation has yet been established. Continue at the active frontier above.
 
-Compiled unary controls are implemented in2d04ae8/build53 (research-only, no bump) and pass18 targeted tests plus actual2x6333-position/48-root-pass score/search oracles,4096-row prediction reproduction and32 legal smoke plies. See wave4-unary-compiled-readiness.json. Their payload/cache size is ordinary BRE, and they save35%/26% search time against evaluating the same unary ablation with the residual caches. No control strength games admitted yet.
+Compiled unary controls are implemented in2d04ae8/build53 (research-only, no bump) and pass18 targeted tests plus actual2x6333-position/48-root-pass score/search oracles,4096-row prediction reproduction and32 legal smoke plies. See wave4-unary-compiled-readiness.json. Their payload/cache size is ordinary BRE, and they save35%/26% search time against evaluating the same unary ablation with the residual caches. The admitted control strength games are now closed above.
 
 Hybrid node-v2 scores against the identical BRE001 base: GATE71.875% (8/7/1),CUBIC59.375% (8/3/5),packed rank4 CUBIC50% (5/6/5). Small selected development evidence, not a confirmation. The fixed clock48 is now complete; its follow-up selection is frozen separately.
 
-The complete constant-gate additive control is implemented in a6c4a9c/build54 and passes17 targeted tests,6333 actual positions/48 triple search root passes,4096 prediction rows and16 legal smoke plies. It retains all210 GATE relations in298 total compiled pairs, adds10880 immutable primitive bytes to BRE, and saves37% paired search cost versus the slow identical ablation. Ordinary Pair2 checkpoint export rejects this research layout. See wave4-constant-compiled-readiness.json. No pause sentinel remains; the last bounded build pause is preserved in raw/wave4/constant-build-pause-01.txt. No new human training gate yet.
+The complete constant-gate additive control is implemented in a6c4a9c/build54 and passes17 targeted tests,6333 actual positions/48 triple search root passes,4096 prediction rows and16 legal smoke plies. It retains all210 GATE relations in298 total compiled pairs, adds10880 immutable primitive bytes to BRE, and saves37% paired search cost versus the slow identical ablation. Ordinary Pair2 checkpoint export rejects this research layout. See wave4-constant-compiled-readiness.json. The historical bounded build pause is preserved in raw/wave4/constant-build-pause-01.txt. G5 is now ready; its training pause sentinel is active.
