@@ -1,6 +1,6 @@
 # Conventional NNUE CGLHW
 
-Established 22 October 2026 (Pacific/Auckland), revision 2. Authority: the owner's
+Established 22 October 2026 (Pacific/Auckland), revision 3. Authority: the owner's
 new conventional NNUE workstream request of that date, subordinate to applicable
 repository and higher-level instructions. Read STATE.md before acting. This is
 separate from `../nnue-cglhw`, BRN architecture and suspended BRN successor work.
@@ -60,6 +60,15 @@ match, at most two data-loader/build workers, low priority where available, boun
 heap/queue/batch sizes. Inspect available CPU/RAM/VRAM/disk. No all-core saturation.
 Measure before optimizing. Start with bounded batches and a manageable data sample;
 expansion needs decision-relevant benefit. No huge speculative downloads.
+
+Owner's overnight continuation steering (22 October2026) authorizes substantial
+local GPU training, dataset processing, benchmarking and justified conventional
+architecture refinements across successive work units without routine approvals.
+Higher GPU utilization is acceptable while the PC is available overnight; respect
+VRAM, stability/thermal limits, bounded CPU/RAM/disk use and limited tournaments.
+At least eight hours is available, not a deadline or automatic morning shutdown.
+NORMAL persists beyond that interval until explicit owner control changes it.
+The first256-unit architecture is not a constraint on evidence-supported alternatives.
 
 During active long operations report observed progress to the user at least every
 15 minutes (host instructions may require more frequent updates). Use observable,
@@ -140,8 +149,20 @@ or test set used to select candidates is not independent confirmation.
 State tracks dependency milestones and the next admissible action; no separate
 frontier is required. Each unit updates facts, decisions, evidence, failures and
 resume instructions. Challenge the programme before fixing choices. Do not stop at
-bootstrap. Continue until evidence gates are truthfully disposed or genuine blocked
-dependencies leave no safe useful work. Do not expand an indefinite architecture or
-hyperparameter search: failed/diminishing trials require a justified next decision.
-Closure must identify unmet criteria and preserve the best verified result. Technical
-completion, owner acceptance and operational deployment remain distinct.
+bootstrap. Diminishing returns ordinarily stop a particular experiment/configuration
+or technical direction, **not the CGLHW**. On rejection, record what the evidence
+shows and leaves unexplained, assess justified alternatives, select the strongest
+next hypothesis, and execute it. Do not repeat an unsuccessful recipe without a
+reason or create arbitrary experiments just to fill time. Completion of a work unit,
+training run, milestone, short batch or elapsed interval never closes the programme.
+
+Programme-level stopping is limited to genuine completion of the governing criteria;
+a blocker requiring human input with no independent admissible work; a material
+authority/safety boundary preventing further work; a broader evidence-supported
+assessment that no reasonable in-scope approach remains justified; or a real
+execution-environment/session limitation. Poor early candidates alone do not meet
+the broader-assessment condition. Continue while productive admissible work remains.
+If the execution environment interrupts progress, preserve exact restart state and
+report interruption, not acceptance or strategic completion. Closure must identify
+unmet criteria and preserve the best verified result. Technical completion, owner
+acceptance and operational deployment remain distinct.

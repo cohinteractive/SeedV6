@@ -1,0 +1,20 @@
+{
+  "name": "bt4-t80",
+  "format": "STOCKFISH_BINPACK_ZSTD",
+  "location": "E:\\SeedV6-Corpus\\incoming\\bt4-t80",
+  "identity": "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+  "weight": 1,
+  "labelProfile": "BT4_Q_V1",
+  "shards": [
+    {
+      "name": "test80-2024-01-jan-2tb7p.min-v2.v6.relabel.binpack.zst",
+      "fingerprint": "9825fe0fe17f27a5bf0c0fa171ce580541770c0fb4072626864cd81fa62d3a1f",
+      "bytes": 8381534064
+    },
+    {
+      "name": "test80-2024-02-feb-2tb7p.min-v2.v6.relabel.binpack.zst",
+      "fingerprint": "2e047d687747e6fa6bc91c12fc883fdd103a9ad5ebd2afac208a696087479baf",
+      "bytes": 7148752289
+    }
+  ]
+}

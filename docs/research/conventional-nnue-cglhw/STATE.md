@@ -1,9 +1,9 @@
 # Conventional NNUE state
 
-22 October 2026. **Initial bounded programme stopped on negative/diminishing evidence.
-A operational; B technically available as opt-in with negative strength limits;
-competitive C unmet. No production promotion or owner acceptance. NORMAL permission
-remains explicitly authorized; stopping this batch does not impose a compute hold.**
+22 October2026. **ACTIVE under explicit extended overnight authorization. NORMAL
+has no expiry. A operational; B available with weak-strength limits; C unmet. The
+owner corrected the earlier programme stop: reject failed directions, select the
+next justified approach and continue. No production promotion or owner acceptance.**
 Read CONTRACT.md, COMPUTE-CONTROL.md, E002.md and the current E003.md. This
 programme does not resume the historical `nnue-cglhw` or suspended BRN work.
 
@@ -120,20 +120,32 @@ C is **not achieved**. Three bounded coverage stages and the research search tri
 remain clearly weak in these small screens. The arithmetic optimization had no
 measured benefit and was removed. No architecture/parameter/data-size sweep follows.
 
-Stop the initial experimental batch under CONTRACT.md's diminishing-returns rule.
-No work/process remains active; current permission stays NORMAL unless owner control
-changes it. Do not mark the strategic strong-evaluator objective achieved, restart
-training, or silently promote an artifact. No human action is required to preserve
-or use the established opt-in result. Search Phase3's own acceptance remains separate.
+The owner superseded the previous initial-batch stopping interpretation. CONTRACT
+revision3 distinguishes experiment rejection from programme stopping. All E001..E004
+negative evidence remains unchanged. Substantial overnight local computation and
+reasonable conventional architecture refinements are authorized, without an8-hour
+expiry or routine approval gate. Honour later COMPUTE HOLD/FULL PAUSE exactly.
 
-A later continuation first needs a new bounded evidence-supported plan for data
-representativeness/target quality or independently measured JVM inference cost,
-using E001..E004 and M002 limitations. Do not repeat completed extraction/training or
-turn these possibilities into an automatic compute queue. Ordinary in-scope authority
-is unchanged; materially larger commitments still follow the existing contract.
-Always inspect actual nnue-control.cmd status and reconcile Git/checkpoints before
-new work. The latest verified training boundary is E003 checkpoint80, not a pending
-resume32 task. The fixed E003 experiment is complete and must not be extended in place.
+Current next work: diagnose training distribution/targets and convergence against
+maintained Bullet/established NNUE practices, prioritizing read-only investigation
+of existing BT4 data and its exact label profile. Also inspect existing loss/material/
+search evidence for errors rather than assuming the256-unit architecture is the cause.
+Then freeze a justified candidate/data/target plan and execute under the controller.
+Do not replay completed E003; preserve checkpoint80 and establish any continuation
+as a separately declared immutable experiment. Keep15-minute user-facing reports
+(or more frequent host updates); asynchronous tool sessions currently support them.
+No programme-level blocker has been established. Continue across unit boundaries.
+
+E005 is now selected: globally sampled BT4, correct Q-to-logit400 supervision,
+unchanged conventional256 architecture/search, fresh4096 batch and persisted
+StepLR(.001,.5 every128 global superbatches). Data preparation and verification
+passed; read E005.md, e005-data-manifest.json and e005-pretraining-evidence.json.
+Start/resume `nnue-control.cmd train docs/research/conventional-nnue-cglhw/e005-training-64-config.json`
+with local CUDA runtime PATH. Reuse completed segments; evaluate checkpoint64 with
+raw/e005-data/probes.fens and validation.txt, compare E003 MSE.036039 on that cohort,
+then correctness/runtime/UCI/development screen. Continue a justified next stage
+or alternative; do not stop the programme on a negative screen. Current owner
+permission remains NORMAL generation3 with no expiry.
 
 Raw tools/output: `build/conventional-nnue/`; upstream source clone:
 `build/conventional-nnue/upstream/bullet` at

@@ -20,6 +20,18 @@ MEASUREMENTS = []
 
 
 class Controls(unittest.TestCase):
+    def test_decay_recipe_is_immutable_and_old_constant_is_compatible(self):
+        old=dict(data_sha256='a',probes_sha256='b',seed=1,batch_size=1024,
+                 batches_per_superbatch=1024,learning_rate=.001,wdl=0)
+        explicit=dict(old,lr_drop_every=0,lr_gamma=1.0)
+        self.assertEqual(cc.recipe(old),cc.recipe(explicit))
+        decay=dict(old,lr_drop_every=128,lr_gamma=.5)
+        self.assertFalse(cc.initial_resume_compatible(decay,old))
+        self.assertFalse(cc.initial_resume_compatible(dict(decay,data_fork_reason='An explicit dataset fork'),old))
+        self.assertTrue(cc.initial_resume_compatible(dict(decay,data_sha256='c',data_fork_reason='An explicit dataset fork'),decay))
+        for field,value in [('lr_drop_every',64),('lr_gamma',.25)]:
+            self.assertFalse(cc.initial_resume_compatible(dict(decay,**{field:value}),decay))
+
     def setUp(self):
         self.folder = EVIDENCE / self._testMethodName
         self.control = cc.Control(self.folder / 'state')

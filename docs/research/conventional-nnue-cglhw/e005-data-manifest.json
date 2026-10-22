@@ -1,0 +1,4497 @@
+{
+  "schema": "seed-bt4-bullet-v1",
+  "source": {
+    "name": "bt4-t80",
+    "format": "STOCKFISH_BINPACK_ZSTD",
+    "location": "E:\\SeedV6-Corpus\\incoming\\bt4-t80",
+    "identity": "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+    "weight": 1,
+    "labelProfile": "BT4_Q_V1",
+    "shards": [
+      {
+        "name": "test80-2024-01-jan-2tb7p.min-v2.v6.relabel.binpack.zst",
+        "fingerprint": "9825fe0fe17f27a5bf0c0fa171ce580541770c0fb4072626864cd81fa62d3a1f",
+        "bytes": 8381534064
+      },
+      {
+        "name": "test80-2024-02-feb-2tb7p.min-v2.v6.relabel.binpack.zst",
+        "fingerprint": "2e047d687747e6fa6bc91c12fc883fdd103a9ad5ebd2afac208a696087479baf",
+        "bytes": 7148752289
+      }
+    ]
+  },
+  "prepared_identity": "f31d471fd96548318141b44498c18ebb9cd9d3acb6e6e56c70efe42bf6c65457",
+  "source_positions": 6670929023,
+  "seed": 20261022,
+  "train": 8388608,
+  "validation": 524288,
+  "proof_records": 17408,
+  "counts": {
+    "capture_or_special": 1789956,
+    "check": 518361,
+    "decoded": 16469634,
+    "duplicate_input": 199674,
+    "early_ply": 2016822,
+    "sentinel": 3031925,
+    "train_pieces_0": 157711,
+    "train_pieces_12": 1270022,
+    "train_pieces_16": 1096722,
+    "train_pieces_20": 1002620,
+    "train_pieces_24": 1038983,
+    "train_pieces_28": 992054,
+    "train_pieces_32": 191295,
+    "train_pieces_4": 1468226,
+    "train_pieces_8": 1170975,
+    "train_ply_0": 1226160,
+    "train_ply_128": 620731,
+    "train_ply_160": 415742,
+    "train_ply_192": 309596,
+    "train_ply_224": 228677,
+    "train_ply_256": 152464,
+    "train_ply_288": 90718,
+    "train_ply_32": 2300447,
+    "train_ply_320": 46858,
+    "train_ply_352": 21650,
+    "train_ply_384": 8439,
+    "train_ply_416": 1982,
+    "train_ply_448": 10,
+    "train_ply_64": 1854948,
+    "train_ply_96": 1110186,
+    "train_q_-1": 1323699,
+    "train_q_-10": 687988,
+    "train_q_-2": 491475,
+    "train_q_-3": 305186,
+    "train_q_-4": 216768,
+    "train_q_-5": 170414,
+    "train_q_-6": 146485,
+    "train_q_-7": 133639,
+    "train_q_-8": 127952,
+    "train_q_-9": 140674,
+    "train_q_0": 2227091,
+    "train_q_1": 504473,
+    "train_q_2": 301707,
+    "train_q_3": 209927,
+    "train_q_4": 161053,
+    "train_q_5": 134413,
+    "train_q_6": 120178,
+    "train_q_7": 114925,
+    "train_q_8": 124803,
+    "train_q_9": 745758,
+    "validation_pieces_0": 14203,
+    "validation_pieces_12": 80196,
+    "validation_pieces_16": 66672,
+    "validation_pieces_20": 62329,
+    "validation_pieces_24": 64154,
+    "validation_pieces_28": 60678,
+    "validation_pieces_32": 12056,
+    "validation_pieces_4": 91439,
+    "validation_pieces_8": 72561,
+    "validation_ply_0": 76963,
+    "validation_ply_128": 39665,
+    "validation_ply_160": 26768,
+    "validation_ply_192": 20576,
+    "validation_ply_224": 14984,
+    "validation_ply_256": 9682,
+    "validation_ply_288": 5958,
+    "validation_ply_32": 140960,
+    "validation_ply_320": 3064,
+    "validation_ply_352": 1476,
+    "validation_ply_384": 569,
+    "validation_ply_416": 127,
+    "validation_ply_64": 114077,
+    "validation_ply_96": 69419,
+    "validation_q_-1": 81275,
+    "validation_q_-10": 46490,
+    "validation_q_-2": 30390,
+    "validation_q_-3": 18720,
+    "validation_q_-4": 13285,
+    "validation_q_-5": 10520,
+    "validation_q_-6": 9098,
+    "validation_q_-7": 8214,
+    "validation_q_-8": 7952,
+    "validation_q_-9": 8770,
+    "validation_q_0": 135818,
+    "validation_q_1": 31052,
+    "validation_q_2": 18408,
+    "validation_q_3": 12799,
+    "validation_q_4": 9960,
+    "validation_q_5": 8404,
+    "validation_q_6": 7411,
+    "validation_q_7": 7105,
+    "validation_q_8": 7769,
+    "validation_q_9": 50848
+  },
+  "units": [
+    {
+      "accepted": 32768,
+      "decoded": 59573,
+      "unit": {
+        "shard": 1,
+        "chunk": 3667,
+        "start": 2903904458,
+        "count": 395569,
+        "offset": 3470344880,
+        "compressed": 947162,
+        "decoded": 1048698,
+        "hash": "caf300d556279cdd73d953491885fe8f8d11566b898db9c5113f1615234fef59"
+      },
+      "split": "validation",
+      "index": 7335
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59698,
+      "unit": {
+        "shard": 0,
+        "chunk": 757,
+        "start": 599376177,
+        "count": 394880,
+        "offset": 716176271,
+        "compressed": 944761,
+        "decoded": 1048723,
+        "hash": "404729427afff921702a8540dfbd17d8abd4d30168bc90244a4d9c2a4dda514c"
+      },
+      "split": "validation",
+      "index": 1514
+    },
+    {
+      "accepted": 32768,
+      "decoded": 58627,
+      "unit": {
+        "shard": 0,
+        "chunk": 6307,
+        "start": 4996084104,
+        "count": 397182,
+        "offset": 5968723286,
+        "compressed": 945924,
+        "decoded": 1048840,
+        "hash": "e33e110cce4f9f4bb2fb8a29dbbab159b690cbda6c087886f36d053d68cb6cf1"
+      },
+      "split": "validation",
+      "index": 12614
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59793,
+      "unit": {
+        "shard": 0,
+        "chunk": 7099,
+        "start": 5624105651,
+        "count": 396443,
+        "offset": 6718316024,
+        "compressed": 948259,
+        "decoded": 1048602,
+        "hash": "54df2fc61b3e801b3670b382407a9f7e3ed7e28dd1d1ac1d6fe32bfc7f60b6a1"
+      },
+      "split": "validation",
+      "index": 14198
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60511,
+      "unit": {
+        "shard": 1,
+        "chunk": 4042,
+        "start": 3201047285,
+        "count": 396949,
+        "offset": 3825288084,
+        "compressed": 947096,
+        "decoded": 1048797,
+        "hash": "d6eaf91e2291c33dca6a037e024b7cdd1f13c367a33e9df794913a40764029ab"
+      },
+      "split": "validation",
+      "index": 8085
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60185,
+      "unit": {
+        "shard": 0,
+        "chunk": 8489,
+        "start": 6522451337,
+        "count": 397363,
+        "offset": 8033977268,
+        "compressed": 946333,
+        "decoded": 1048669,
+        "hash": "453484913fa1899a8a51daa30a28e4d635d306616d74950b4fbfb387b976c357"
+      },
+      "split": "validation",
+      "index": 16464
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59619,
+      "unit": {
+        "shard": 0,
+        "chunk": 7688,
+        "start": 6091243862,
+        "count": 397198,
+        "offset": 7275818196,
+        "compressed": 945308,
+        "decoded": 1048731,
+        "hash": "8750b4950f21e16b49829d5031b256331aea9ace36ea607ea3397e87f7331f15"
+      },
+      "split": "validation",
+      "index": 15376
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59794,
+      "unit": {
+        "shard": 0,
+        "chunk": 5249,
+        "start": 4157273545,
+        "count": 396196,
+        "offset": 4967364113,
+        "compressed": 948066,
+        "decoded": 1049373,
+        "hash": "cbaa1dbd8d5182c095588085554d1c562c6a58ed226f914be6a63061353b24f4"
+      },
+      "split": "validation",
+      "index": 10498
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59589,
+      "unit": {
+        "shard": 1,
+        "chunk": 1706,
+        "start": 1350836896,
+        "count": 396649,
+        "offset": 1614341108,
+        "compressed": 947028,
+        "decoded": 1049078,
+        "hash": "2bfd5c37902cc5bd6a72ac68d119bc5735128793327f22f597d7749d06255337"
+      },
+      "split": "validation",
+      "index": 3413
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61137,
+      "unit": {
+        "shard": 1,
+        "chunk": 120,
+        "start": 95493689,
+        "count": 395744,
+        "offset": 113418735,
+        "compressed": 946224,
+        "decoded": 1048708,
+        "hash": "da66597511c05547a37e9b393e1f0d23bc92e41bec80f86667f215eb3a492d75"
+      },
+      "split": "validation",
+      "index": 241
+    },
+    {
+      "accepted": 32768,
+      "decoded": 58429,
+      "unit": {
+        "shard": 0,
+        "chunk": 7905,
+        "start": 6263402812,
+        "count": 396267,
+        "offset": 7481207508,
+        "compressed": 947189,
+        "decoded": 1048889,
+        "hash": "eb024a4ef0bc3993dd0cb178378b13b10a6e6120ada0cfc77d8854db59e44335"
+      },
+      "split": "validation",
+      "index": 15810
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59368,
+      "unit": {
+        "shard": 0,
+        "chunk": 70,
+        "start": 55475194,
+        "count": 395816,
+        "offset": 66168945,
+        "compressed": 945913,
+        "decoded": 1048876,
+        "hash": "6a005f7090244d776053b8c55ecae2f975ed87346f0a82348eb0d9b3930aa6fe"
+      },
+      "split": "validation",
+      "index": 140
+    },
+    {
+      "accepted": 32768,
+      "decoded": 57592,
+      "unit": {
+        "shard": 1,
+        "chunk": 6762,
+        "start": 5357251909,
+        "count": 397097,
+        "offset": 6399724879,
+        "compressed": 946062,
+        "decoded": 1048657,
+        "hash": "00a59250902f5917531aa20ded97c11993f6792be6fbb1f6eaaa1ae8c855756b"
+      },
+      "split": "validation",
+      "index": 13525
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60782,
+      "unit": {
+        "shard": 0,
+        "chunk": 8679,
+        "start": 6597825198,
+        "count": 396293,
+        "offset": 8213838220,
+        "compressed": 946343,
+        "decoded": 1048814,
+        "hash": "b5be08214b8dd4188ef804d8b175609a8f95c25e50792b42179eaabeaaa6927d"
+      },
+      "split": "validation",
+      "index": 16654
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59684,
+      "unit": {
+        "shard": 1,
+        "chunk": 1317,
+        "start": 1042977785,
+        "count": 397126,
+        "offset": 1246177931,
+        "compressed": 946431,
+        "decoded": 1048790,
+        "hash": "0ec578922644a7417a1e3bcb3e319ff6761ff390d0755d5e16d80417eb507d2e"
+      },
+      "split": "validation",
+      "index": 2635
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59530,
+      "unit": {
+        "shard": 0,
+        "chunk": 5430,
+        "start": 4300757284,
+        "count": 395812,
+        "offset": 5138682238,
+        "compressed": 947333,
+        "decoded": 1048941,
+        "hash": "d09846cfc6f3f145fb331784d842be8798984897e8c734831634d998414a776a"
+      },
+      "split": "validation",
+      "index": 10860
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61361,
+      "unit": {
+        "shard": 0,
+        "chunk": 2636,
+        "start": 2086786284,
+        "count": 396511,
+        "offset": 2494336789,
+        "compressed": 947230,
+        "decoded": 1049405,
+        "hash": "6a049b5885bf600d941a3763d3c7a05800bbf6d5b09e4a5ef803c13d8b421f81"
+      },
+      "split": "train",
+      "index": 5272
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59117,
+      "unit": {
+        "shard": 0,
+        "chunk": 8329,
+        "start": 6458995094,
+        "count": 397196,
+        "offset": 7882538037,
+        "compressed": 946032,
+        "decoded": 1048602,
+        "hash": "ff314fbf56cf072404970bea8198f26167de9e25f393f61b3ba7676daa514659"
+      },
+      "split": "train",
+      "index": 16304
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60440,
+      "unit": {
+        "shard": 0,
+        "chunk": 3264,
+        "start": 2584186858,
+        "count": 396022,
+        "offset": 3088689326,
+        "compressed": 946331,
+        "decoded": 1048799,
+        "hash": "93bf2652271c7913cdead8e49536a55f0652b357411f570073d895b98639c50f"
+      },
+      "split": "train",
+      "index": 6528
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60106,
+      "unit": {
+        "shard": 1,
+        "chunk": 5404,
+        "start": 4280552251,
+        "count": 396428,
+        "offset": 5114434633,
+        "compressed": 945459,
+        "decoded": 1049300,
+        "hash": "fa921e5ba01300e372cadee83566acc0f8b53747612334814b7ada469a10c0e3"
+      },
+      "split": "train",
+      "index": 10809
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59877,
+      "unit": {
+        "shard": 1,
+        "chunk": 7056,
+        "start": 5590400584,
+        "count": 394412,
+        "offset": 6678013363,
+        "compressed": 943752,
+        "decoded": 1048624,
+        "hash": "1480d0c5d41296e23fd0c11e36c40b59191571f8823083a238bb9cd482f5165a"
+      },
+      "split": "train",
+      "index": 14113
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60152,
+      "unit": {
+        "shard": 0,
+        "chunk": 4953,
+        "start": 3922681481,
+        "count": 396644,
+        "offset": 4687232798,
+        "compressed": 944741,
+        "decoded": 1048597,
+        "hash": "40f6326528c4fee5cdeec90aecd73b390ad3cd0f2bfbadac3e03d8db821c76aa"
+      },
+      "split": "train",
+      "index": 9906
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60818,
+      "unit": {
+        "shard": 0,
+        "chunk": 549,
+        "start": 434721315,
+        "count": 394982,
+        "offset": 519350358,
+        "compressed": 944919,
+        "decoded": 1048631,
+        "hash": "6894fdc0004cd852ccfb6d91a5bf2c6170a6b2f976bf7555e8c4637e7517553e"
+      },
+      "split": "train",
+      "index": 1098
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60008,
+      "unit": {
+        "shard": 0,
+        "chunk": 4460,
+        "start": 3531983121,
+        "count": 397824,
+        "offset": 4220620721,
+        "compressed": 949557,
+        "decoded": 1048676,
+        "hash": "2a6ce8e348fd3d5675bb359caf9f241b3460ec4b2cccbe2a12da132d8a109d55"
+      },
+      "split": "train",
+      "index": 8920
+    },
+    {
+      "accepted": 32768,
+      "decoded": 58597,
+      "unit": {
+        "shard": 0,
+        "chunk": 6674,
+        "start": 5287088989,
+        "count": 396567,
+        "offset": 6316089899,
+        "compressed": 946000,
+        "decoded": 1048608,
+        "hash": "b6479bcd9ab1447149d45586a63ce3e9712df0d0fa00cedca067b4a94c1993de"
+      },
+      "split": "train",
+      "index": 13348
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60153,
+      "unit": {
+        "shard": 0,
+        "chunk": 1929,
+        "start": 1526960545,
+        "count": 395649,
+        "offset": 1825257978,
+        "compressed": 946072,
+        "decoded": 1048740,
+        "hash": "79e146bf1b67b02de418a0875ffd6f5a32dce300dda3c0e729a5bd1b1c90d801"
+      },
+      "split": "train",
+      "index": 3858
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59363,
+      "unit": {
+        "shard": 0,
+        "chunk": 6524,
+        "start": 5168148849,
+        "count": 398595,
+        "offset": 6174114277,
+        "compressed": 947084,
+        "decoded": 1048778,
+        "hash": "14f240c43a1a60a14afc141fc1e84f0bb625b03ca651db76008aa9fdb8f995ea"
+      },
+      "split": "train",
+      "index": 13048
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60986,
+      "unit": {
+        "shard": 0,
+        "chunk": 5621,
+        "start": 4452204852,
+        "count": 396933,
+        "offset": 5319438053,
+        "compressed": 946042,
+        "decoded": 1048796,
+        "hash": "76bf63b6e6e45eac24c20782e1932e08cbaee242c7af905ff3ec1c69fdf8a2bb"
+      },
+      "split": "train",
+      "index": 11242
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60236,
+      "unit": {
+        "shard": 1,
+        "chunk": 5557,
+        "start": 4401859187,
+        "count": 396148,
+        "offset": 5259248892,
+        "compressed": 948596,
+        "decoded": 1048966,
+        "hash": "cac226e0200d2d20f68764a945b90ba1e105837e2509dbd93465ed17c9e88658"
+      },
+      "split": "train",
+      "index": 11115
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59907,
+      "unit": {
+        "shard": 0,
+        "chunk": 7344,
+        "start": 5818417066,
+        "count": 397375,
+        "offset": 6950198899,
+        "compressed": 946427,
+        "decoded": 1048623,
+        "hash": "4091d2f00e2f39b9d84f06ccf05b276ac5f94d4f98608be3c03e2616bcf410af"
+      },
+      "split": "train",
+      "index": 14688
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61594,
+      "unit": {
+        "shard": 1,
+        "chunk": 7398,
+        "start": 5861643946,
+        "count": 395286,
+        "offset": 7001715440,
+        "compressed": 944078,
+        "decoded": 1048652,
+        "hash": "5d3b2693c6a168736dd7f12073beef40f1fc7aa4b06b7e849e457e2890732aa2"
+      },
+      "split": "train",
+      "index": 14797
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60087,
+      "unit": {
+        "shard": 0,
+        "chunk": 5248,
+        "start": 4156480829,
+        "count": 396060,
+        "offset": 4966417988,
+        "compressed": 946125,
+        "decoded": 1048663,
+        "hash": "64c4e097ac538d7b3c73fb8651acc176cfc9a7c00405091d1b67360aa69dfcc9"
+      },
+      "split": "train",
+      "index": 10496
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61701,
+      "unit": {
+        "shard": 1,
+        "chunk": 5193,
+        "start": 4113269304,
+        "count": 396504,
+        "offset": 4914716024,
+        "compressed": 946009,
+        "decoded": 1048670,
+        "hash": "6b72370ff32f63ec30240e80a0ff19380f266ad36723e29c916128203b304ec8"
+      },
+      "split": "train",
+      "index": 10387
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59853,
+      "unit": {
+        "shard": 0,
+        "chunk": 2525,
+        "start": 1998875091,
+        "count": 396319,
+        "offset": 2389279955,
+        "compressed": 947121,
+        "decoded": 1048777,
+        "hash": "3450adb112b168de23ff198b68da9b3aaabed0997cd3dd0879290598d0339641"
+      },
+      "split": "train",
+      "index": 5050
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60504,
+      "unit": {
+        "shard": 1,
+        "chunk": 1440,
+        "start": 1140323029,
+        "count": 395765,
+        "offset": 1362598810,
+        "compressed": 946586,
+        "decoded": 1048641,
+        "hash": "762296465740141f51238cea1c7b6826b843fcc63ee73d590e47f78c0a11f45a"
+      },
+      "split": "train",
+      "index": 2881
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59805,
+      "unit": {
+        "shard": 1,
+        "chunk": 6270,
+        "start": 4967153064,
+        "count": 396948,
+        "offset": 5934053709,
+        "compressed": 946111,
+        "decoded": 1048722,
+        "hash": "4a79d6d3870783d986792555ddfb5433a55dad7e5373de5c9ab85cdf88d1ce42"
+      },
+      "split": "train",
+      "index": 12541
+    },
+    {
+      "accepted": 32768,
+      "decoded": 62051,
+      "unit": {
+        "shard": 1,
+        "chunk": 2426,
+        "start": 1920881159,
+        "count": 393894,
+        "offset": 2295836810,
+        "compressed": 944528,
+        "decoded": 1048835,
+        "hash": "d4d325f8490598f62fa0addbb545a7e1b4b8ce1265633edd7ab83879f8ceeae4"
+      },
+      "split": "train",
+      "index": 4853
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60265,
+      "unit": {
+        "shard": 0,
+        "chunk": 6143,
+        "start": 4866062945,
+        "count": 397609,
+        "offset": 5813508117,
+        "compressed": 947471,
+        "decoded": 1048786,
+        "hash": "eb20bc14e0c01487aaabdb0c85d3e26db53b765fd4c5f7c3984605d930cf8e42"
+      },
+      "split": "train",
+      "index": 12286
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59386,
+      "unit": {
+        "shard": 1,
+        "chunk": 2783,
+        "start": 2203589917,
+        "count": 396086,
+        "offset": 2633686419,
+        "compressed": 946376,
+        "decoded": 1048878,
+        "hash": "789e742c4b330c8ae77a9964c857e609960f1d5cce054bb7726c16af6afe5a2b"
+      },
+      "split": "train",
+      "index": 5567
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61279,
+      "unit": {
+        "shard": 0,
+        "chunk": 1935,
+        "start": 1531706420,
+        "count": 395303,
+        "offset": 1830932676,
+        "compressed": 945330,
+        "decoded": 1048617,
+        "hash": "4f1db2ce4663f1a684205b63da9a5fa0cf0999361f89453047437383b9ee7bf6"
+      },
+      "split": "train",
+      "index": 3870
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59903,
+      "unit": {
+        "shard": 0,
+        "chunk": 5562,
+        "start": 4405427306,
+        "count": 397440,
+        "offset": 5263593639,
+        "compressed": 947861,
+        "decoded": 1048711,
+        "hash": "b4a14d34150eed1a2863962aed977154e18f6524eedf45db94cdc997ad81e242"
+      },
+      "split": "train",
+      "index": 11124
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59249,
+      "unit": {
+        "shard": 1,
+        "chunk": 3482,
+        "start": 2757329749,
+        "count": 397031,
+        "offset": 3295249951,
+        "compressed": 944962,
+        "decoded": 1048753,
+        "hash": "1d5b7ad73f7a8d1806156449f49907a39a97b439a3d6817b038949f4abd8e9c8"
+      },
+      "split": "train",
+      "index": 6965
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61099,
+      "unit": {
+        "shard": 0,
+        "chunk": 6494,
+        "start": 5144366858,
+        "count": 396367,
+        "offset": 6145715911,
+        "compressed": 946524,
+        "decoded": 1048690,
+        "hash": "fcc3017152ed8f9315d9188a8c89777ff56a1d16e3f82265513be165f6a5fe7b"
+      },
+      "split": "train",
+      "index": 12988
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60517,
+      "unit": {
+        "shard": 0,
+        "chunk": 8150,
+        "start": 6388021244,
+        "count": 396396,
+        "offset": 7713115160,
+        "compressed": 944137,
+        "decoded": 1048835,
+        "hash": "a58780030d22689c4f623e31f0812bb32f4ed0b5226f1922286f65920e235612"
+      },
+      "split": "train",
+      "index": 16125
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61903,
+      "unit": {
+        "shard": 1,
+        "chunk": 3033,
+        "start": 2401604252,
+        "count": 395275,
+        "offset": 2870290544,
+        "compressed": 944772,
+        "decoded": 1049037,
+        "hash": "e2364b7e3e88ebc2246bd3462ef6fd20216ccd817dd248a3595bfce7c70c51fa"
+      },
+      "split": "train",
+      "index": 6067
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59964,
+      "unit": {
+        "shard": 0,
+        "chunk": 5210,
+        "start": 4126344588,
+        "count": 394838,
+        "offset": 4930446248,
+        "compressed": 945039,
+        "decoded": 1049026,
+        "hash": "967c42bdd2fa71c79ec15f847f492b4473e6185b8c03f18050a64db7a2266763"
+      },
+      "split": "train",
+      "index": 10420
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59951,
+      "unit": {
+        "shard": 1,
+        "chunk": 1182,
+        "start": 936112960,
+        "count": 396928,
+        "offset": 1118412473,
+        "compressed": 946448,
+        "decoded": 1048707,
+        "hash": "1157a9deb22043d5a4b31b9ffcf9ed4da5f85e4695dc341792f4421663273954"
+      },
+      "split": "train",
+      "index": 2365
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59600,
+      "unit": {
+        "shard": 0,
+        "chunk": 3563,
+        "start": 2821095193,
+        "count": 397289,
+        "offset": 3371667837,
+        "compressed": 947067,
+        "decoded": 1048638,
+        "hash": "298d910b5e0e89ea04559742ecc355693d874264dc53b3e1472ce5d3ad89a350"
+      },
+      "split": "train",
+      "index": 7126
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59005,
+      "unit": {
+        "shard": 0,
+        "chunk": 3795,
+        "start": 3004932358,
+        "count": 396241,
+        "offset": 3591234273,
+        "compressed": 947870,
+        "decoded": 1048722,
+        "hash": "12495bfdf3edc1f74d0f78c236d1a9ded9958e0501da6521ae530bc14e0c90da"
+      },
+      "split": "train",
+      "index": 7590
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60846,
+      "unit": {
+        "shard": 0,
+        "chunk": 2190,
+        "start": 1733629631,
+        "count": 395661,
+        "offset": 2072242436,
+        "compressed": 946463,
+        "decoded": 1048611,
+        "hash": "3023e3882c93c2935b40eb59a28761439d0c70ef0e1c6ee3f27d590b7cd8c10c"
+      },
+      "split": "train",
+      "index": 4380
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59546,
+      "unit": {
+        "shard": 0,
+        "chunk": 3485,
+        "start": 2759312732,
+        "count": 397437,
+        "offset": 3297856716,
+        "compressed": 947991,
+        "decoded": 1048614,
+        "hash": "60d43e40eb324702ae953d29201dc22fd0b014f9755911dc6b5f25584b522e7c"
+      },
+      "split": "train",
+      "index": 6970
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59811,
+      "unit": {
+        "shard": 1,
+        "chunk": 2512,
+        "start": 1988978239,
+        "count": 396882,
+        "offset": 2377215036,
+        "compressed": 946901,
+        "decoded": 1048964,
+        "hash": "9d70988d6ede0fde0485a00186d5326d28e56171a292648d53c3c49b028db779"
+      },
+      "split": "train",
+      "index": 5025
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61287,
+      "unit": {
+        "shard": 1,
+        "chunk": 6349,
+        "start": 5029777724,
+        "count": 398049,
+        "offset": 6008814176,
+        "compressed": 946444,
+        "decoded": 1048823,
+        "hash": "4cd8b1d657d5980487f40668e732786e17245855d9ee6818d7d26e0df5fcd238"
+      },
+      "split": "train",
+      "index": 12699
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60701,
+      "unit": {
+        "shard": 0,
+        "chunk": 5851,
+        "start": 4634537482,
+        "count": 395955,
+        "offset": 5537124919,
+        "compressed": 947844,
+        "decoded": 1048899,
+        "hash": "022c9b1e14289344157612d24cf1b4498910c54ab9031e2da6c6153788c66d41"
+      },
+      "split": "train",
+      "index": 11702
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60387,
+      "unit": {
+        "shard": 1,
+        "chunk": 5733,
+        "start": 4541387153,
+        "count": 392074,
+        "offset": 5425825450,
+        "compressed": 944972,
+        "decoded": 1048774,
+        "hash": "2ce2e124aad75471b6745496c4f66beaacaf067c0bd11758fb068ae8c3bf244a"
+      },
+      "split": "train",
+      "index": 11467
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61106,
+      "unit": {
+        "shard": 1,
+        "chunk": 1152,
+        "start": 912363939,
+        "count": 395801,
+        "offset": 1090025476,
+        "compressed": 945988,
+        "decoded": 1048816,
+        "hash": "4a323a206aaab64539b0c752f64f64838272ef049f0fe3ed4fa2da7d31222412"
+      },
+      "split": "train",
+      "index": 2305
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60498,
+      "unit": {
+        "shard": 0,
+        "chunk": 3906,
+        "start": 3092880940,
+        "count": 395966,
+        "offset": 3696279568,
+        "compressed": 946342,
+        "decoded": 1048651,
+        "hash": "c76a403a98e5de06b73e064a000d9f467ced93ee790948b40f4417b0c176e1d9"
+      },
+      "split": "train",
+      "index": 7812
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60279,
+      "unit": {
+        "shard": 0,
+        "chunk": 7952,
+        "start": 6300686132,
+        "count": 395902,
+        "offset": 7525694694,
+        "compressed": 945755,
+        "decoded": 1048622,
+        "hash": "db94ccd4de9a0a07a0fefee49eeb14041accf0c534847244695d701167a0127e"
+      },
+      "split": "train",
+      "index": 15904
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60489,
+      "unit": {
+        "shard": 1,
+        "chunk": 2770,
+        "start": 2193291497,
+        "count": 394779,
+        "offset": 2621389076,
+        "compressed": 945584,
+        "decoded": 1048587,
+        "hash": "cfc7813dbdacaac32596bb0f148ef4918de6614563f5c132423cddb8c18ee975"
+      },
+      "split": "train",
+      "index": 5541
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60058,
+      "unit": {
+        "shard": 0,
+        "chunk": 5053,
+        "start": 4001953640,
+        "count": 395531,
+        "offset": 4781869043,
+        "compressed": 946468,
+        "decoded": 1048856,
+        "hash": "0251e836d26a0d541adfa14f93f9cfe3859fbd1a44e13e66ce247cc17f74d539"
+      },
+      "split": "train",
+      "index": 10106
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59610,
+      "unit": {
+        "shard": 0,
+        "chunk": 4437,
+        "start": 3513734227,
+        "count": 397266,
+        "offset": 4198844747,
+        "compressed": 945801,
+        "decoded": 1048688,
+        "hash": "2f86907e0a0a267c0bfe0f0a60874b6390f25c94074a67da0bf0635a5cdd1943"
+      },
+      "split": "train",
+      "index": 8874
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60537,
+      "unit": {
+        "shard": 1,
+        "chunk": 7791,
+        "start": 6173348546,
+        "count": 396371,
+        "offset": 7373770575,
+        "compressed": 945915,
+        "decoded": 1048790,
+        "hash": "d237c822134913919bb80848804d7aa887ff11d820d92e6b535f0ad320c79d1a"
+      },
+      "split": "train",
+      "index": 15583
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59106,
+      "unit": {
+        "shard": 0,
+        "chunk": 2033,
+        "start": 1609311886,
+        "count": 396709,
+        "offset": 1923670728,
+        "compressed": 946764,
+        "decoded": 1048593,
+        "hash": "4f0784bd2b834757b456e73a0e449dec1ba1a3921f4c56237d0df6c5abed31f9"
+      },
+      "split": "train",
+      "index": 4066
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59908,
+      "unit": {
+        "shard": 1,
+        "chunk": 324,
+        "start": 257028687,
+        "count": 396091,
+        "offset": 306420820,
+        "compressed": 947357,
+        "decoded": 1048841,
+        "hash": "b5ffd8b57f2aa5f1789d6f5653139386ec8880c99be1dd9dc71cf4be4e0036cb"
+      },
+      "split": "train",
+      "index": 649
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60629,
+      "unit": {
+        "shard": 1,
+        "chunk": 7876,
+        "start": 6240795834,
+        "count": 394952,
+        "offset": 7454248537,
+        "compressed": 946585,
+        "decoded": 1049033,
+        "hash": "c775e61ec332f6bc2ce9569d36c97b8f16b726abfd68b85cecae1026c5a59185"
+      },
+      "split": "train",
+      "index": 15753
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60936,
+      "unit": {
+        "shard": 0,
+        "chunk": 2341,
+        "start": 1853187361,
+        "count": 395768,
+        "offset": 2215159747,
+        "compressed": 945675,
+        "decoded": 1048590,
+        "hash": "b19b88fa41e9b4ce3a6acd4a25a0017aa0086ab1604602b805f9e5c2b5dca979"
+      },
+      "split": "train",
+      "index": 4682
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60472,
+      "unit": {
+        "shard": 1,
+        "chunk": 1176,
+        "start": 931364089,
+        "count": 395136,
+        "offset": 1112734633,
+        "compressed": 946006,
+        "decoded": 1048759,
+        "hash": "1708fafc52d26d6e3db5072035106de93ce0560741f0e2720b96005e71702e3b"
+      },
+      "split": "train",
+      "index": 2353
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60810,
+      "unit": {
+        "shard": 0,
+        "chunk": 696,
+        "start": 551096693,
+        "count": 397291,
+        "offset": 658461052,
+        "compressed": 945668,
+        "decoded": 1048694,
+        "hash": "44c3c1c5a1905aa240aefffa9e2ceb38ad0aa637c60bab6bd780fd41c40b9580"
+      },
+      "split": "train",
+      "index": 1392
+    },
+    {
+      "accepted": 32768,
+      "decoded": 62131,
+      "unit": {
+        "shard": 0,
+        "chunk": 5283,
+        "start": 4184232875,
+        "count": 395780,
+        "offset": 4999546575,
+        "compressed": 944721,
+        "decoded": 1048650,
+        "hash": "8fd61fbf29192b1a4b37d823b5b8b11f7c618961b7e278f03eab7b34cd2c92a6"
+      },
+      "split": "train",
+      "index": 10566
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59629,
+      "unit": {
+        "shard": 0,
+        "chunk": 8472,
+        "start": 6515709686,
+        "count": 397751,
+        "offset": 8017890550,
+        "compressed": 944825,
+        "decoded": 1048884,
+        "hash": "a2e2d7dcb9537fc68be697db8de0a9d785ba6fe1a96fd83fc48447c66ceb5ae3"
+      },
+      "split": "train",
+      "index": 16447
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59779,
+      "unit": {
+        "shard": 1,
+        "chunk": 1114,
+        "start": 882288459,
+        "count": 394826,
+        "offset": 1054054232,
+        "compressed": 946959,
+        "decoded": 1048900,
+        "hash": "33e335982757640bb8eb313302d0500ee4643882e687ff701b88d199d44f3868"
+      },
+      "split": "train",
+      "index": 2229
+    },
+    {
+      "accepted": 32768,
+      "decoded": 58903,
+      "unit": {
+        "shard": 0,
+        "chunk": 3726,
+        "start": 2950270232,
+        "count": 396801,
+        "offset": 3525931683,
+        "compressed": 947956,
+        "decoded": 1048900,
+        "hash": "ac5aec9be466cc0bdd04c4f29d1cef9f1d0545a99b4c77bcdffb6621318d79b6"
+      },
+      "split": "train",
+      "index": 7452
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59635,
+      "unit": {
+        "shard": 0,
+        "chunk": 2577,
+        "start": 2040059677,
+        "count": 396334,
+        "offset": 2438495083,
+        "compressed": 945422,
+        "decoded": 1048677,
+        "hash": "17d8e3f64913bb09c09e610044f4624c4859b31a7ca06a410987ce3fc1ed546e"
+      },
+      "split": "train",
+      "index": 5154
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60490,
+      "unit": {
+        "shard": 0,
+        "chunk": 5437,
+        "start": 4306307422,
+        "count": 394362,
+        "offset": 5145309622,
+        "compressed": 945636,
+        "decoded": 1048710,
+        "hash": "b1b101333cdcac0281faa148e73155885b4fe4778ac790281cad7f2a9b766310"
+      },
+      "split": "train",
+      "index": 10874
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61330,
+      "unit": {
+        "shard": 1,
+        "chunk": 3659,
+        "start": 2897566196,
+        "count": 395744,
+        "offset": 3462770872,
+        "compressed": 945522,
+        "decoded": 1048762,
+        "hash": "123b64f2ce6ac68d89d057d87c6940b74c4f183e7c209740371bb8a3864b3bee"
+      },
+      "split": "train",
+      "index": 7319
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60667,
+      "unit": {
+        "shard": 0,
+        "chunk": 8663,
+        "start": 6591474305,
+        "count": 396609,
+        "offset": 8198690091,
+        "compressed": 946033,
+        "decoded": 1048919,
+        "hash": "d7e8e5cb38b0292b99f9c1b35f786669024d83448fc2f29a3174e603b1554775"
+      },
+      "split": "train",
+      "index": 16638
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60351,
+      "unit": {
+        "shard": 1,
+        "chunk": 3115,
+        "start": 2466551605,
+        "count": 398396,
+        "offset": 2947896120,
+        "compressed": 946961,
+        "decoded": 1048813,
+        "hash": "5b223d8ba736859fd6a0b9ef02df7e8195b4b26ae30efd7c166b08c1ee2d4ad3"
+      },
+      "split": "train",
+      "index": 6231
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60338,
+      "unit": {
+        "shard": 1,
+        "chunk": 2381,
+        "start": 1885256323,
+        "count": 395257,
+        "offset": 2253239034,
+        "compressed": 947388,
+        "decoded": 1048600,
+        "hash": "313da72e12392be40563078eb99d7aed6d79981a529ee5e781b53d604da724de"
+      },
+      "split": "train",
+      "index": 4763
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60755,
+      "unit": {
+        "shard": 0,
+        "chunk": 6538,
+        "start": 5179251817,
+        "count": 396384,
+        "offset": 6187366214,
+        "compressed": 946652,
+        "decoded": 1048674,
+        "hash": "ebf563a1581da73f12b3142dc6ad0629ef91770e261486e3c0156835614949fd"
+      },
+      "split": "train",
+      "index": 13076
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60771,
+      "unit": {
+        "shard": 0,
+        "chunk": 657,
+        "start": 520204818,
+        "count": 398106,
+        "offset": 621553425,
+        "compressed": 946084,
+        "decoded": 1048951,
+        "hash": "d243835199816326611fe48b9d73ec93d9c50c5eb8d8c21a8575284521738ba1"
+      },
+      "split": "train",
+      "index": 1314
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60971,
+      "unit": {
+        "shard": 0,
+        "chunk": 1491,
+        "start": 1180293907,
+        "count": 395542,
+        "offset": 1410786619,
+        "compressed": 946561,
+        "decoded": 1048611,
+        "hash": "4d69f8490e537c72073116e8c3891a6f121943c47b816416c90a00b726c8c324"
+      },
+      "split": "train",
+      "index": 2982
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61617,
+      "unit": {
+        "shard": 1,
+        "chunk": 1455,
+        "start": 1152191769,
+        "count": 394247,
+        "offset": 1376791320,
+        "compressed": 944230,
+        "decoded": 1048664,
+        "hash": "236f34f7e6f1cbc6a9a0d2cf2bc419fcfb0c10c92640a67df2ec0f169b55a951"
+      },
+      "split": "train",
+      "index": 2911
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59893,
+      "unit": {
+        "shard": 0,
+        "chunk": 2758,
+        "start": 2183386291,
+        "count": 396080,
+        "offset": 2609804599,
+        "compressed": 946971,
+        "decoded": 1048969,
+        "hash": "d2ad56e8ec0ac270000c38f3be00d270be1a4a34b8cce62b45a6f5217c53bd4f"
+      },
+      "split": "train",
+      "index": 5516
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59291,
+      "unit": {
+        "shard": 0,
+        "chunk": 8058,
+        "start": 6351527960,
+        "count": 396636,
+        "offset": 7626035235,
+        "compressed": 947235,
+        "decoded": 1048649,
+        "hash": "6f4aa37cb24d7c4bcc4ddd5704f68f06d0b8996f38e6a7f6c996c346336563fa"
+      },
+      "split": "train",
+      "index": 16033
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61275,
+      "unit": {
+        "shard": 1,
+        "chunk": 2757,
+        "start": 2182992627,
+        "count": 393664,
+        "offset": 2609083431,
+        "compressed": 946592,
+        "decoded": 1048953,
+        "hash": "6ffc8faf18d56a2f610c8b64eb8f4c3d8b454c4a16053cf831ab46cc94f7a2fd"
+      },
+      "split": "train",
+      "index": 5515
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59773,
+      "unit": {
+        "shard": 0,
+        "chunk": 5936,
+        "start": 4701935590,
+        "count": 395327,
+        "offset": 5617580931,
+        "compressed": 947690,
+        "decoded": 1048677,
+        "hash": "a3efdb96d00ab309cb2b5255d24ceeb588dd3d8d692051b0d82fe16eaf4b1e89"
+      },
+      "split": "train",
+      "index": 11872
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59681,
+      "unit": {
+        "shard": 1,
+        "chunk": 4674,
+        "start": 3701960452,
+        "count": 397806,
+        "offset": 4423502831,
+        "compressed": 947958,
+        "decoded": 1049301,
+        "hash": "bb4038c56c2a1f95aa2de0ee8f6da2b0e214c7e8cc8d0fe0d09040098afb47fb"
+      },
+      "split": "train",
+      "index": 9349
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60288,
+      "unit": {
+        "shard": 0,
+        "chunk": 7461,
+        "start": 5911206287,
+        "count": 396525,
+        "offset": 7060957890,
+        "compressed": 945614,
+        "decoded": 1048711,
+        "hash": "6e301c748b8b04dfbcd71d00c61a5ae9a7e969012a0e181fe9d4d1df205f5466"
+      },
+      "split": "train",
+      "index": 14922
+    },
+    {
+      "accepted": 32768,
+      "decoded": 58414,
+      "unit": {
+        "shard": 1,
+        "chunk": 7819,
+        "start": 6195573573,
+        "count": 397683,
+        "offset": 7400275875,
+        "compressed": 947458,
+        "decoded": 1048954,
+        "hash": "3f04c6fc11c9d116a38d339726e7f034cb9bb5f9b5d58bfa14b9bb294b1f8217"
+      },
+      "split": "train",
+      "index": 15639
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59460,
+      "unit": {
+        "shard": 1,
+        "chunk": 4591,
+        "start": 3636186538,
+        "count": 397486,
+        "offset": 4344925103,
+        "compressed": 949332,
+        "decoded": 1048697,
+        "hash": "80cfaa800b8d40902b7edd10c50c52c24827817716ed28cd49d3b3865bdd5e03"
+      },
+      "split": "train",
+      "index": 9183
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59609,
+      "unit": {
+        "shard": 0,
+        "chunk": 8425,
+        "start": 6497066625,
+        "count": 397439,
+        "offset": 7973396308,
+        "compressed": 947465,
+        "decoded": 1048703,
+        "hash": "2c16b2292b270cb9e283152cf8c4a5299b03c99ff92390ba81147a9c310283ba"
+      },
+      "split": "train",
+      "index": 16400
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60896,
+      "unit": {
+        "shard": 0,
+        "chunk": 6817,
+        "start": 5400483611,
+        "count": 397184,
+        "offset": 6451427035,
+        "compressed": 947309,
+        "decoded": 1048648,
+        "hash": "5bbe92adf4e8591433a0eee468439079df1059bdece9e155f393f11ae928b57c"
+      },
+      "split": "train",
+      "index": 13634
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59808,
+      "unit": {
+        "shard": 1,
+        "chunk": 7518,
+        "start": 5956819104,
+        "count": 396846,
+        "offset": 7115300040,
+        "compressed": 945223,
+        "decoded": 1048590,
+        "hash": "6f2eecf46eb445eed906d231b6fc87cd69cfd98b3b27bc82bd81e5fc44022edb"
+      },
+      "split": "train",
+      "index": 15037
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61261,
+      "unit": {
+        "shard": 1,
+        "chunk": 1913,
+        "start": 1514688071,
+        "count": 395924,
+        "offset": 1810257386,
+        "compressed": 947155,
+        "decoded": 1048833,
+        "hash": "8cb37629a1e74a5b7934af2d87cc895e22f8a0ce9f3c3406cf68bf891a183810"
+      },
+      "split": "train",
+      "index": 3827
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59760,
+      "unit": {
+        "shard": 0,
+        "chunk": 6622,
+        "start": 5245858007,
+        "count": 396441,
+        "offset": 6266876817,
+        "compressed": 944717,
+        "decoded": 1048654,
+        "hash": "2296b5d16df70b4eab2f07c346b1d9c2b3e0c9e9e128d97eb594d3d0e3dcf788"
+      },
+      "split": "train",
+      "index": 13244
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59327,
+      "unit": {
+        "shard": 0,
+        "chunk": 2249,
+        "start": 1780348456,
+        "count": 395400,
+        "offset": 2128085234,
+        "compressed": 946368,
+        "decoded": 1048907,
+        "hash": "9a0c5e569e5ce121b7e8e2dd139eaa2404e2b49543a514fa9680cac9874f3c59"
+      },
+      "split": "train",
+      "index": 4498
+    },
+    {
+      "accepted": 32768,
+      "decoded": 58580,
+      "unit": {
+        "shard": 0,
+        "chunk": 457,
+        "start": 361922231,
+        "count": 396209,
+        "offset": 432304226,
+        "compressed": 948171,
+        "decoded": 1048593,
+        "hash": "fc0d821d4aca18bf020ac1435b80eae729567a80f094d3c0f62c351666e853a2"
+      },
+      "split": "train",
+      "index": 914
+    },
+    {
+      "accepted": 32768,
+      "decoded": 58165,
+      "unit": {
+        "shard": 1,
+        "chunk": 7974,
+        "start": 6318538826,
+        "count": 63033,
+        "offset": 7547062079,
+        "compressed": 150251,
+        "decoded": 165037,
+        "hash": "d5dea5dfb6652a93089c604cdae8fb25f0608c8393dc6e7ca35062b4a76e3bba"
+      },
+      "split": "train",
+      "index": 15949
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59394,
+      "unit": {
+        "shard": 0,
+        "chunk": 8519,
+        "start": 6534357416,
+        "count": 394508,
+        "offset": 8062373036,
+        "compressed": 946773,
+        "decoded": 1048652,
+        "hash": "67c6751b6355ead6eb483feafe385ee7e2d39a3ba2b545e1a40f3b76381f04c4"
+      },
+      "split": "train",
+      "index": 16494
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59864,
+      "unit": {
+        "shard": 1,
+        "chunk": 5636,
+        "start": 4464494700,
+        "count": 395609,
+        "offset": 5334032486,
+        "compressed": 945668,
+        "decoded": 1048941,
+        "hash": "d5a2c455bc7964f0ca609b7dfe9ffb471de64bf4cd10d4d18911020c4395b842"
+      },
+      "split": "train",
+      "index": 11273
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61059,
+      "unit": {
+        "shard": 0,
+        "chunk": 2183,
+        "start": 1728087562,
+        "count": 394601,
+        "offset": 2065618979,
+        "compressed": 946303,
+        "decoded": 1049013,
+        "hash": "ce832f2318c6589f11c762bd0103dbe83bcfb91534872c2248421497b64b70fe"
+      },
+      "split": "train",
+      "index": 4366
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60349,
+      "unit": {
+        "shard": 0,
+        "chunk": 5518,
+        "start": 4370523704,
+        "count": 397706,
+        "offset": 5221949780,
+        "compressed": 945365,
+        "decoded": 1048699,
+        "hash": "67b66e1259b78b6f4df5f18ee008f50b2a10176cab0d87fd098320d6d3b0185d"
+      },
+      "split": "train",
+      "index": 11036
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59161,
+      "unit": {
+        "shard": 0,
+        "chunk": 8839,
+        "start": 6661347646,
+        "count": 398370,
+        "offset": 8365349785,
+        "compressed": 947314,
+        "decoded": 1048654,
+        "hash": "6b342f062a7506b8db1e0ac889a1fe3b8145ac6f4a0e7cf5e2fdd24b313986c6"
+      },
+      "split": "train",
+      "index": 16814
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60127,
+      "unit": {
+        "shard": 1,
+        "chunk": 2788,
+        "start": 2207545207,
+        "count": 397788,
+        "offset": 2638416334,
+        "compressed": 947514,
+        "decoded": 1048852,
+        "hash": "a3fff58c3e1d23acbd5b2481852027122e50a50d49e0c525c5081113ccc3954c"
+      },
+      "split": "train",
+      "index": 5577
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60475,
+      "unit": {
+        "shard": 0,
+        "chunk": 7709,
+        "start": 6107888999,
+        "count": 398545,
+        "offset": 7295696708,
+        "compressed": 945897,
+        "decoded": 1048610,
+        "hash": "8514a595624c994e6c1e2cf5d8efdadbd8779b362e643c1375c131c8c910a2ae"
+      },
+      "split": "train",
+      "index": 15418
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59200,
+      "unit": {
+        "shard": 0,
+        "chunk": 3622,
+        "start": 2867844240,
+        "count": 394727,
+        "offset": 3427506099,
+        "compressed": 944137,
+        "decoded": 1048678,
+        "hash": "418536c9e5da648aa5bf34aca0f26877d90a31152586cd9c2b4b2842d76779af"
+      },
+      "split": "train",
+      "index": 7244
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60781,
+      "unit": {
+        "shard": 0,
+        "chunk": 1424,
+        "start": 1127262731,
+        "count": 394360,
+        "offset": 1347383204,
+        "compressed": 946814,
+        "decoded": 1048740,
+        "hash": "8aaf5bc9abbb345ff4f56839e0ccefc6e61d50a963847d89f0d9e94e4764890b"
+      },
+      "split": "train",
+      "index": 2848
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61305,
+      "unit": {
+        "shard": 0,
+        "chunk": 5021,
+        "start": 3976592001,
+        "count": 398120,
+        "offset": 4751583110,
+        "compressed": 948287,
+        "decoded": 1048712,
+        "hash": "56394ac677e3e072f9fc065c5d224fdfc3a34124bf63bb79f092969146264742"
+      },
+      "split": "train",
+      "index": 10042
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61549,
+      "unit": {
+        "shard": 1,
+        "chunk": 4096,
+        "start": 3243847674,
+        "count": 396725,
+        "offset": 3876403665,
+        "compressed": 946353,
+        "decoded": 1048772,
+        "hash": "0c749caf4a7731c8fcd9cca281142a48319ed3120edb7a940a74e84ffd6820aa"
+      },
+      "split": "train",
+      "index": 8193
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60920,
+      "unit": {
+        "shard": 1,
+        "chunk": 1586,
+        "start": 1255875933,
+        "count": 396764,
+        "offset": 1500774636,
+        "compressed": 944706,
+        "decoded": 1048719,
+        "hash": "5919627b53d3313e76ba03b449dff1b5b92a378d3e249ffb7f600ada5af8357a"
+      },
+      "split": "train",
+      "index": 3173
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61016,
+      "unit": {
+        "shard": 0,
+        "chunk": 8075,
+        "start": 6358275388,
+        "count": 395784,
+        "offset": 7642123853,
+        "compressed": 946503,
+        "decoded": 1048586,
+        "hash": "bbd1664fc45042ba4ba7eafbae5e70e372372ab5a64e1d5f603751c5a221deb8"
+      },
+      "split": "train",
+      "index": 16050
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60798,
+      "unit": {
+        "shard": 1,
+        "chunk": 7335,
+        "start": 5811668199,
+        "count": 396279,
+        "offset": 6942084017,
+        "compressed": 946061,
+        "decoded": 1048733,
+        "hash": "e6a7820a42e72a1cde49cc5a83cb8cc7881d85eafc0eae561eef209d2f250e10"
+      },
+      "split": "train",
+      "index": 14671
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60487,
+      "unit": {
+        "shard": 1,
+        "chunk": 5863,
+        "start": 4644449456,
+        "count": 397043,
+        "offset": 5548875668,
+        "compressed": 946571,
+        "decoded": 1049044,
+        "hash": "0ec04def0cdc05bad30d7b4476433f1b3344d090c1862c9ffdde3ad0a605720a"
+      },
+      "split": "train",
+      "index": 11727
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60091,
+      "unit": {
+        "shard": 1,
+        "chunk": 7933,
+        "start": 6286016147,
+        "count": 399565,
+        "offset": 7508227413,
+        "compressed": 947260,
+        "decoded": 1049067,
+        "hash": "c1bbe4f97aa82d285c91eb9231820f686feb954e448ec1ae2da975585d1b077c"
+      },
+      "split": "train",
+      "index": 15867
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59360,
+      "unit": {
+        "shard": 0,
+        "chunk": 4972,
+        "start": 3937744848,
+        "count": 397469,
+        "offset": 4705212904,
+        "compressed": 947494,
+        "decoded": 1049275,
+        "hash": "50badcffdf6a87eae6520a63d518db56178588ad33561d794fead25c6564cd7a"
+      },
+      "split": "train",
+      "index": 9944
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60387,
+      "unit": {
+        "shard": 1,
+        "chunk": 2628,
+        "start": 2080844348,
+        "count": 395839,
+        "offset": 2486998232,
+        "compressed": 945270,
+        "decoded": 1048908,
+        "hash": "9986cc4da8946c02bbe25a6c970826be3c21748a18b9e6c88a44fb544053f036"
+      },
+      "split": "train",
+      "index": 5257
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60623,
+      "unit": {
+        "shard": 0,
+        "chunk": 2254,
+        "start": 1784312548,
+        "count": 396646,
+        "offset": 2132817156,
+        "compressed": 947189,
+        "decoded": 1048776,
+        "hash": "738873d9e05a27447fc13dc13b7894497afc85e899f286a1a25c88fca0007185"
+      },
+      "split": "train",
+      "index": 4508
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60872,
+      "unit": {
+        "shard": 1,
+        "chunk": 42,
+        "start": 33667048,
+        "count": 396250,
+        "offset": 39691577,
+        "compressed": 946349,
+        "decoded": 1048799,
+        "hash": "f880661cc5582e9ffd393e954ee28948681fc4125117db6d450dfd4f108f8a26"
+      },
+      "split": "train",
+      "index": 85
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61094,
+      "unit": {
+        "shard": 0,
+        "chunk": 2529,
+        "start": 2002044905,
+        "count": 396216,
+        "offset": 2393068803,
+        "compressed": 947909,
+        "decoded": 1048639,
+        "hash": "caec489d8023096e7607e66f993851bf64c87c0571502c6da1d984f5719e2923"
+      },
+      "split": "train",
+      "index": 5058
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61033,
+      "unit": {
+        "shard": 0,
+        "chunk": 5455,
+        "start": 4320581730,
+        "count": 396608,
+        "offset": 5162345269,
+        "compressed": 946241,
+        "decoded": 1048734,
+        "hash": "1a72ee8c5968c2e861c492b407ca45d3935ad5591839174ebc7413a0df03ca38"
+      },
+      "split": "train",
+      "index": 10910
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61001,
+      "unit": {
+        "shard": 0,
+        "chunk": 5351,
+        "start": 4238142472,
+        "count": 395945,
+        "offset": 5063900119,
+        "compressed": 948311,
+        "decoded": 1049417,
+        "hash": "f362ccf596421a8c02bbaa4cf1575d230c29a5a3c05526400bc43d932f0738e0"
+      },
+      "split": "train",
+      "index": 10702
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60418,
+      "unit": {
+        "shard": 0,
+        "chunk": 535,
+        "start": 423635558,
+        "count": 396372,
+        "offset": 506101013,
+        "compressed": 946360,
+        "decoded": 1048621,
+        "hash": "434c3ffcfc37d897c18dd57be8d66eb7c74b513637805eb2fbff3c37337fc76f"
+      },
+      "split": "train",
+      "index": 1070
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60596,
+      "unit": {
+        "shard": 1,
+        "chunk": 4997,
+        "start": 3957957613,
+        "count": 397307,
+        "offset": 4729209375,
+        "compressed": 946736,
+        "decoded": 1048936,
+        "hash": "f66d327182c7d56277e3d3a51e2ad0d3291ac81631fd2fc1c525fec3fa877c41"
+      },
+      "split": "train",
+      "index": 9995
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60112,
+      "unit": {
+        "shard": 1,
+        "chunk": 248,
+        "start": 196844890,
+        "count": 396030,
+        "offset": 234503108,
+        "compressed": 946088,
+        "decoded": 1049062,
+        "hash": "55ca3eea30ee75924909d63877f470a3090ac3de091479a6adf91e63aba1af8c"
+      },
+      "split": "train",
+      "index": 497
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61001,
+      "unit": {
+        "shard": 0,
+        "chunk": 8359,
+        "start": 6470881356,
+        "count": 396253,
+        "offset": 7910919851,
+        "compressed": 946056,
+        "decoded": 1048870,
+        "hash": "3a14a2c6b5b195cb8f7bb9ffcada6a6d44a665334b3d8c60fed05652dce3f5bd"
+      },
+      "split": "train",
+      "index": 16334
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60486,
+      "unit": {
+        "shard": 0,
+        "chunk": 1264,
+        "start": 1000613065,
+        "count": 396277,
+        "offset": 1195973314,
+        "compressed": 946083,
+        "decoded": 1048990,
+        "hash": "bddbc3f2e804f9a4c0da70e0c06ecd42cd465c93d7d053657fc7b7a24d882e58"
+      },
+      "split": "train",
+      "index": 2528
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59541,
+      "unit": {
+        "shard": 0,
+        "chunk": 2590,
+        "start": 2050351725,
+        "count": 395396,
+        "offset": 2450801425,
+        "compressed": 946002,
+        "decoded": 1048807,
+        "hash": "9bb8f8fcb8fb3fb04d05285b359b20f3628ea52aff37d21b0ad115f1cdf131b3"
+      },
+      "split": "train",
+      "index": 5180
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61340,
+      "unit": {
+        "shard": 1,
+        "chunk": 7561,
+        "start": 5990912696,
+        "count": 395159,
+        "offset": 7156004211,
+        "compressed": 946060,
+        "decoded": 1048876,
+        "hash": "948d990486f15ff187b1a63dcb78c6e627e6b81db539ca7ed15ff771ad8a187e"
+      },
+      "split": "train",
+      "index": 15123
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60312,
+      "unit": {
+        "shard": 0,
+        "chunk": 8739,
+        "start": 6621642583,
+        "count": 395978,
+        "offset": 8270654268,
+        "compressed": 944938,
+        "decoded": 1048735,
+        "hash": "a6171492c6411b6cbc230daabf2afedc275c1ca8a563c58a8ad2c5cfc66972bf"
+      },
+      "split": "train",
+      "index": 16714
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61138,
+      "unit": {
+        "shard": 0,
+        "chunk": 4339,
+        "start": 3436059413,
+        "count": 398146,
+        "offset": 4106096383,
+        "compressed": 945131,
+        "decoded": 1048932,
+        "hash": "f8d4b58a84b35e66888c18cdd7f0e8fd10a5c2077d0af4e5e269f31c8c79654d"
+      },
+      "split": "train",
+      "index": 8678
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60649,
+      "unit": {
+        "shard": 0,
+        "chunk": 564,
+        "start": 446597829,
+        "count": 394034,
+        "offset": 533548305,
+        "compressed": 945591,
+        "decoded": 1048652,
+        "hash": "9d53b7b24aa4cfe4018ec79f65a24eeb59b3c57194cc49e07f701983981f1b2a"
+      },
+      "split": "train",
+      "index": 1128
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59416,
+      "unit": {
+        "shard": 0,
+        "chunk": 5113,
+        "start": 4049488120,
+        "count": 396456,
+        "offset": 4838629278,
+        "compressed": 948394,
+        "decoded": 1048722,
+        "hash": "d1bf57c0229e249bd2d791c854b97b283aea291505f76942230abbaa3c279e54"
+      },
+      "split": "train",
+      "index": 10226
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61673,
+      "unit": {
+        "shard": 1,
+        "chunk": 336,
+        "start": 266533180,
+        "count": 395285,
+        "offset": 317780150,
+        "compressed": 945994,
+        "decoded": 1048696,
+        "hash": "c2026a9bab0876b2bab8ccecd6de06d8cbe684e85ec5416f8ea422f724b88c5b"
+      },
+      "split": "train",
+      "index": 673
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60493,
+      "unit": {
+        "shard": 0,
+        "chunk": 6705,
+        "start": 5311655116,
+        "count": 397191,
+        "offset": 6345429391,
+        "compressed": 946135,
+        "decoded": 1048727,
+        "hash": "7a612ab128447b5482cb066b70494f5a46096f67eee5af9d031c436feeb66d8b"
+      },
+      "split": "train",
+      "index": 13410
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61092,
+      "unit": {
+        "shard": 1,
+        "chunk": 6555,
+        "start": 5193128425,
+        "count": 396918,
+        "offset": 6203780942,
+        "compressed": 946381,
+        "decoded": 1048767,
+        "hash": "0d1c0ba38020c170e50ca8bdc22ff313a42b895c2690211e4c8725e54b77111c"
+      },
+      "split": "train",
+      "index": 13111
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59843,
+      "unit": {
+        "shard": 1,
+        "chunk": 5758,
+        "start": 4561194237,
+        "count": 396777,
+        "offset": 5449481025,
+        "compressed": 947033,
+        "decoded": 1048949,
+        "hash": "9b737285e20cb1f92e6c8ec9c84ec763c2e719402be8afc8fd5d2262a2a75b71"
+      },
+      "split": "train",
+      "index": 11517
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61848,
+      "unit": {
+        "shard": 0,
+        "chunk": 6912,
+        "start": 5475798344,
+        "count": 396622,
+        "offset": 6541324828,
+        "compressed": 946893,
+        "decoded": 1049213,
+        "hash": "51855fc40ab4996769adb2c8af5d033098d5cf229a328ad5e9fbeb2b689957d6"
+      },
+      "split": "train",
+      "index": 13824
+    },
+    {
+      "accepted": 32768,
+      "decoded": 62391,
+      "unit": {
+        "shard": 0,
+        "chunk": 3168,
+        "start": 2508155181,
+        "count": 395609,
+        "offset": 2997856099,
+        "compressed": 945692,
+        "decoded": 1048661,
+        "hash": "e0bf812f00eee8858c7b17178c77ba941552d6324f0ec9bb41e147ffeb92d11e"
+      },
+      "split": "train",
+      "index": 6336
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60081,
+      "unit": {
+        "shard": 1,
+        "chunk": 310,
+        "start": 245938734,
+        "count": 395369,
+        "offset": 293173932,
+        "compressed": 946572,
+        "decoded": 1048733,
+        "hash": "8119841c59b2a9d7ba1f5d034b5f31110e6b8df929d37358cda543370c888bea"
+      },
+      "split": "train",
+      "index": 621
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60428,
+      "unit": {
+        "shard": 1,
+        "chunk": 1398,
+        "start": 1107087486,
+        "count": 394615,
+        "offset": 1322841794,
+        "compressed": 946365,
+        "decoded": 1048805,
+        "hash": "d8c24077809cdca883d7ba773c659bbfa1cab4d1e1451ce1f65240978a81d194"
+      },
+      "split": "train",
+      "index": 2797
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60870,
+      "unit": {
+        "shard": 1,
+        "chunk": 7146,
+        "start": 5661781916,
+        "count": 396426,
+        "offset": 6763190604,
+        "compressed": 947875,
+        "decoded": 1048764,
+        "hash": "31ea9091b6e67a4ac1a5a863a9ec2fcfdcf04a8b8a63fc496eb362b65b0a7faa"
+      },
+      "split": "train",
+      "index": 14293
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60633,
+      "unit": {
+        "shard": 0,
+        "chunk": 7108,
+        "start": 5631253231,
+        "count": 395266,
+        "offset": 6726834092,
+        "compressed": 946429,
+        "decoded": 1048624,
+        "hash": "f6e04e4a46f721941eb0a47f839541f0d4181d5a31d71cf9416378be310d0225"
+      },
+      "split": "train",
+      "index": 14216
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60836,
+      "unit": {
+        "shard": 1,
+        "chunk": 1077,
+        "start": 853011668,
+        "count": 395195,
+        "offset": 1019040427,
+        "compressed": 948961,
+        "decoded": 1048941,
+        "hash": "513397d474544d0e2aa91c5f3db6ece796ffe640192598cfe0a4eb191c5e5343"
+      },
+      "split": "train",
+      "index": 2155
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60910,
+      "unit": {
+        "shard": 0,
+        "chunk": 2811,
+        "start": 2225357869,
+        "count": 397215,
+        "offset": 2659971520,
+        "compressed": 945750,
+        "decoded": 1048600,
+        "hash": "161918c0a26575dc7f9a0915c8c8109392b39d67b11cf45a0dfedfd38cedd85e"
+      },
+      "split": "train",
+      "index": 5622
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60651,
+      "unit": {
+        "shard": 0,
+        "chunk": 5884,
+        "start": 4660706810,
+        "count": 396814,
+        "offset": 5568360164,
+        "compressed": 949790,
+        "decoded": 1048883,
+        "hash": "c7d0d3cd9d578f9af8f3801431eb2d5aa58175c12ab2dad1269978083fa229a2"
+      },
+      "split": "train",
+      "index": 11768
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60516,
+      "unit": {
+        "shard": 1,
+        "chunk": 7951,
+        "start": 6300288352,
+        "count": 397780,
+        "offset": 7525271589,
+        "compressed": 945291,
+        "decoded": 1048750,
+        "hash": "75d869f150e8f9a805886c8fcd5ec8ae87f8fbf6c95e17ee2c3d354d55ca83a8"
+      },
+      "split": "train",
+      "index": 15903
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61074,
+      "unit": {
+        "shard": 1,
+        "chunk": 2579,
+        "start": 2042040772,
+        "count": 394095,
+        "offset": 2440623077,
+        "compressed": 945151,
+        "decoded": 1048723,
+        "hash": "d0489068e75a3931f94bb34c3108309c6182aca93dd2d81d9de4fa20263f3704"
+      },
+      "split": "train",
+      "index": 5159
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61165,
+      "unit": {
+        "shard": 1,
+        "chunk": 6690,
+        "start": 5300168571,
+        "count": 396234,
+        "offset": 6331574272,
+        "compressed": 944947,
+        "decoded": 1048763,
+        "hash": "79958d8fb38bfa6efa3d00cec7ea13da7f25e0614fb0a6513a3ca24c457c3319"
+      },
+      "split": "train",
+      "index": 13381
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59158,
+      "unit": {
+        "shard": 1,
+        "chunk": 6732,
+        "start": 5333465300,
+        "count": 395266,
+        "offset": 6371326602,
+        "compressed": 946101,
+        "decoded": 1048660,
+        "hash": "5968ba36d6f2101bc43629a5066324f2322c356000f9faeb0f89ca096277ffae"
+      },
+      "split": "train",
+      "index": 13465
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59685,
+      "unit": {
+        "shard": 1,
+        "chunk": 5536,
+        "start": 4385206326,
+        "count": 398589,
+        "offset": 5239376589,
+        "compressed": 946671,
+        "decoded": 1048658,
+        "hash": "c70703ef2a1d7d3b06a0f75f249e496c75f69952faac58e7e51b098eb7a61f35"
+      },
+      "split": "train",
+      "index": 11073
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59687,
+      "unit": {
+        "shard": 1,
+        "chunk": 4735,
+        "start": 3750302171,
+        "count": 397913,
+        "offset": 4481239704,
+        "compressed": 946741,
+        "decoded": 1048977,
+        "hash": "c88ba26cddf324c7dba9522327c933536df0bf99c8a710f10005c88de6a90474"
+      },
+      "split": "train",
+      "index": 9471
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59789,
+      "unit": {
+        "shard": 1,
+        "chunk": 4110,
+        "start": 3254947137,
+        "count": 393497,
+        "offset": 3889652250,
+        "compressed": 944979,
+        "decoded": 1048648,
+        "hash": "58ef93cb50566f4cbcd1c78532d070a9c80d06871e137926dd60e3d5794b28b6"
+      },
+      "split": "train",
+      "index": 8221
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61967,
+      "unit": {
+        "shard": 1,
+        "chunk": 5725,
+        "start": 4535054030,
+        "count": 395223,
+        "offset": 5418253277,
+        "compressed": 945517,
+        "decoded": 1048821,
+        "hash": "74209766999642bfe5e5b343fe42341b0412612a497111b464000e613f365fde"
+      },
+      "split": "train",
+      "index": 11451
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59918,
+      "unit": {
+        "shard": 1,
+        "chunk": 7967,
+        "start": 6312983362,
+        "count": 397011,
+        "offset": 7540423437,
+        "compressed": 949015,
+        "decoded": 1048772,
+        "hash": "169208e080206e2326baa03bd6a788d5f8d19bd58c6d4a447f62e1895692b432"
+      },
+      "split": "train",
+      "index": 15935
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60483,
+      "unit": {
+        "shard": 1,
+        "chunk": 1174,
+        "start": 929780488,
+        "count": 396854,
+        "offset": 1110842995,
+        "compressed": 945959,
+        "decoded": 1048769,
+        "hash": "603f25c473a186d772b5722cef6f18938d51e917179ab95bb2cf75332e9c72d2"
+      },
+      "split": "train",
+      "index": 2349
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60997,
+      "unit": {
+        "shard": 1,
+        "chunk": 4010,
+        "start": 3175700189,
+        "count": 396080,
+        "offset": 3795010225,
+        "compressed": 945255,
+        "decoded": 1048937,
+        "hash": "a86813e446ad753f70554b3210d8c6f363e659d4d1e52177f2f72b554212688f"
+      },
+      "split": "train",
+      "index": 8021
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61279,
+      "unit": {
+        "shard": 1,
+        "chunk": 1212,
+        "start": 959848242,
+        "count": 397811,
+        "offset": 1146799735,
+        "compressed": 947213,
+        "decoded": 1049108,
+        "hash": "bba0ac51ada1072501002cf87d31266fbd3464df4c23482b556e943c7101f201"
+      },
+      "split": "train",
+      "index": 2425
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60731,
+      "unit": {
+        "shard": 0,
+        "chunk": 6006,
+        "start": 4757425586,
+        "count": 397430,
+        "offset": 5683826658,
+        "compressed": 947424,
+        "decoded": 1048837,
+        "hash": "1da058d3bf41237cc747629a1c8c0305290c8bf60a4291f600e315a40acaa869"
+      },
+      "split": "train",
+      "index": 12012
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60976,
+      "unit": {
+        "shard": 0,
+        "chunk": 864,
+        "start": 684069121,
+        "count": 396284,
+        "offset": 817426547,
+        "compressed": 947920,
+        "decoded": 1048734,
+        "hash": "23e67611f738760b600ffdc69977f2991c32948b6db9601429266819d5f5cf02"
+      },
+      "split": "train",
+      "index": 1728
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61387,
+      "unit": {
+        "shard": 0,
+        "chunk": 5892,
+        "start": 4667055633,
+        "count": 397759,
+        "offset": 5575935622,
+        "compressed": 949400,
+        "decoded": 1049104,
+        "hash": "d9f9118b5576b1b207a32c5530234a9e0c3a30169f5294fcc5346b30e157cf41"
+      },
+      "split": "train",
+      "index": 11784
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59566,
+      "unit": {
+        "shard": 0,
+        "chunk": 3445,
+        "start": 2727615660,
+        "count": 397420,
+        "offset": 3259997201,
+        "compressed": 948503,
+        "decoded": 1048879,
+        "hash": "8bb04a9f55b35bc38a8532a9cf55d8644e3f335c273b8801d91647b997aa2ec2"
+      },
+      "split": "train",
+      "index": 6890
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61968,
+      "unit": {
+        "shard": 0,
+        "chunk": 4203,
+        "start": 3328250538,
+        "count": 397235,
+        "offset": 3977375706,
+        "compressed": 946656,
+        "decoded": 1048877,
+        "hash": "d057381d3529aaf7ef01a10bc981d8751ad52eacfe994ee4442ed4cd08d7ea3f"
+      },
+      "split": "train",
+      "index": 8406
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60077,
+      "unit": {
+        "shard": 0,
+        "chunk": 4407,
+        "start": 3489963492,
+        "count": 396272,
+        "offset": 4170459725,
+        "compressed": 947098,
+        "decoded": 1048832,
+        "hash": "8619ad9d44224669b47fe8524e59df25db178c870fbf31d5eaac484583d1a821"
+      },
+      "split": "train",
+      "index": 8814
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60124,
+      "unit": {
+        "shard": 1,
+        "chunk": 871,
+        "start": 690002894,
+        "count": 395917,
+        "offset": 824125415,
+        "compressed": 944822,
+        "decoded": 1048613,
+        "hash": "efa11ad2171dcefb71dcae73587f6da5da3ea1992cde36bf7e5ace3307fded01"
+      },
+      "split": "train",
+      "index": 1743
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59854,
+      "unit": {
+        "shard": 0,
+        "chunk": 8765,
+        "start": 6631969090,
+        "count": 395588,
+        "offset": 8295281305,
+        "compressed": 947887,
+        "decoded": 1048666,
+        "hash": "76a3b7527c5ed1b51cfdba953ac28b339522f9f05248ab4922fb654377e3cde2"
+      },
+      "split": "train",
+      "index": 16740
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61272,
+      "unit": {
+        "shard": 0,
+        "chunk": 6484,
+        "start": 5136439317,
+        "count": 396427,
+        "offset": 6136260875,
+        "compressed": 945049,
+        "decoded": 1048665,
+        "hash": "ef6399cebaf5da4a64e26fd1ae12befd3858459bd2c46ca1f680d648b9f06848"
+      },
+      "split": "train",
+      "index": 12968
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61576,
+      "unit": {
+        "shard": 0,
+        "chunk": 8248,
+        "start": 6426878070,
+        "count": 396056,
+        "offset": 7805859549,
+        "compressed": 945779,
+        "decoded": 1049283,
+        "hash": "f3bc297a1443566137bd730dd0082795099c31b86e9e424d969b8d80b16a2950"
+      },
+      "split": "train",
+      "index": 16223
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60039,
+      "unit": {
+        "shard": 0,
+        "chunk": 8555,
+        "start": 6548636260,
+        "count": 396495,
+        "offset": 8096451634,
+        "compressed": 946227,
+        "decoded": 1048596,
+        "hash": "84631e1f308b6eb02424b6bc3c734d05a8dc69056257361e539f26c5180a4210"
+      },
+      "split": "train",
+      "index": 16530
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61043,
+      "unit": {
+        "shard": 1,
+        "chunk": 4503,
+        "start": 3566455926,
+        "count": 395135,
+        "offset": 4261640219,
+        "compressed": 946098,
+        "decoded": 1049025,
+        "hash": "20fd4530f6b30e917c6d570787dcba3d58c02ccc0d66670076ad400808b94ce9"
+      },
+      "split": "train",
+      "index": 9007
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60372,
+      "unit": {
+        "shard": 1,
+        "chunk": 720,
+        "start": 570493078,
+        "count": 397098,
+        "offset": 681193351,
+        "compressed": 946427,
+        "decoded": 1048690,
+        "hash": "d8c208e8bdc5e6dde9ccfa684dc996f0428bf59f595d4af934e856723b3b0cc0"
+      },
+      "split": "train",
+      "index": 1441
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61405,
+      "unit": {
+        "shard": 1,
+        "chunk": 5205,
+        "start": 4122776970,
+        "count": 396098,
+        "offset": 4926071733,
+        "compressed": 946449,
+        "decoded": 1048795,
+        "hash": "250520deb17ad578e495d39b2167166395463fcd086e27801a2d85931c3eb850"
+      },
+      "split": "train",
+      "index": 10411
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60076,
+      "unit": {
+        "shard": 0,
+        "chunk": 2805,
+        "start": 2220612601,
+        "count": 396883,
+        "offset": 2654294661,
+        "compressed": 946818,
+        "decoded": 1048716,
+        "hash": "4c566f9c4ddb8b8f20f85ef298c84f2656bf58125a20942ba2535e954e7d41e5"
+      },
+      "split": "train",
+      "index": 5610
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61067,
+      "unit": {
+        "shard": 0,
+        "chunk": 3547,
+        "start": 2808414706,
+        "count": 394294,
+        "offset": 3356526943,
+        "compressed": 945246,
+        "decoded": 1048800,
+        "hash": "077180815952fec58cd52da6c58a95ea6c5d55ed6ce020ea5b52340518fae3bb"
+      },
+      "split": "train",
+      "index": 7094
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60829,
+      "unit": {
+        "shard": 0,
+        "chunk": 3234,
+        "start": 2560424180,
+        "count": 395064,
+        "offset": 3060303307,
+        "compressed": 945088,
+        "decoded": 1048687,
+        "hash": "fc2fe72a60aa52b3d2d5c81b5c827971d49cf3c118b2647615c7a55938ebb81c"
+      },
+      "split": "train",
+      "index": 6468
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60913,
+      "unit": {
+        "shard": 0,
+        "chunk": 4772,
+        "start": 3779228856,
+        "count": 395407,
+        "offset": 4515892980,
+        "compressed": 947998,
+        "decoded": 1048850,
+        "hash": "3708a56c4df9e548ab9c46f6b1dc2b34647f90659de1d399b40da26ea1656aa6"
+      },
+      "split": "train",
+      "index": 9544
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59715,
+      "unit": {
+        "shard": 1,
+        "chunk": 6435,
+        "start": 5097972835,
+        "count": 397353,
+        "offset": 6090218248,
+        "compressed": 947840,
+        "decoded": 1048644,
+        "hash": "0458921973f344c7bf81aaf029732c9e5fa8eb9dc673fd92b232282740e10e3e"
+      },
+      "split": "train",
+      "index": 12871
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60138,
+      "unit": {
+        "shard": 1,
+        "chunk": 821,
+        "start": 650438346,
+        "count": 394192,
+        "offset": 776793961,
+        "compressed": 948464,
+        "decoded": 1048624,
+        "hash": "5333699bb0fddfd52ac527751a2faaabb7cc9d67b4b33827cc48b30b28b2e88c"
+      },
+      "split": "train",
+      "index": 1643
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59913,
+      "unit": {
+        "shard": 0,
+        "chunk": 3328,
+        "start": 2634896960,
+        "count": 396724,
+        "offset": 3149253723,
+        "compressed": 946405,
+        "decoded": 1048634,
+        "hash": "44bd60933d60a289325caaf321728b247821458c60e35d64ac42a221f3c30c07"
+      },
+      "split": "train",
+      "index": 6656
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61081,
+      "unit": {
+        "shard": 0,
+        "chunk": 7550,
+        "start": 5981788774,
+        "count": 395981,
+        "offset": 7145203023,
+        "compressed": 946847,
+        "decoded": 1048733,
+        "hash": "3e00e2244cb3ffca0018083fe97c42493e9c73cebd3cb3460db52eb1942c2473"
+      },
+      "split": "train",
+      "index": 15100
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59770,
+      "unit": {
+        "shard": 1,
+        "chunk": 6370,
+        "start": 5046429162,
+        "count": 396525,
+        "offset": 6028690662,
+        "compressed": 948914,
+        "decoded": 1049022,
+        "hash": "ffe21f144e64cb9e7c792031510f8083cd5ace54f355a18dd15691c9bb4286f1"
+      },
+      "split": "train",
+      "index": 12741
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60410,
+      "unit": {
+        "shard": 0,
+        "chunk": 1065,
+        "start": 843129330,
+        "count": 394894,
+        "offset": 1007644201,
+        "compressed": 946246,
+        "decoded": 1048827,
+        "hash": "f6d7dd8abfb3b7d02c9de2fc82cc5823ba86474c914fa6dab80ac97a5869c272"
+      },
+      "split": "train",
+      "index": 2130
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60523,
+      "unit": {
+        "shard": 0,
+        "chunk": 5371,
+        "start": 4253993177,
+        "count": 397249,
+        "offset": 5082828473,
+        "compressed": 947581,
+        "decoded": 1048607,
+        "hash": "70775248de5685e908ad2456f493b89e5d281091911353fc27520d6d631743c7"
+      },
+      "split": "train",
+      "index": 10742
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59135,
+      "unit": {
+        "shard": 0,
+        "chunk": 4590,
+        "start": 3634997927,
+        "count": 396802,
+        "offset": 4343662223,
+        "compressed": 944592,
+        "decoded": 1048584,
+        "hash": "11cc574a32633eec49214ec5672949c32250f522e07a401f4852a19d8c2ae14a"
+      },
+      "split": "train",
+      "index": 9180
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60501,
+      "unit": {
+        "shard": 1,
+        "chunk": 3795,
+        "start": 3005328599,
+        "count": 396509,
+        "offset": 3591506817,
+        "compressed": 947917,
+        "decoded": 1048903,
+        "hash": "9025c0a86e2662723a8848ff70123684933e46ee7e26d6834e0bfab86453fa33"
+      },
+      "split": "train",
+      "index": 7591
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60511,
+      "unit": {
+        "shard": 0,
+        "chunk": 1604,
+        "start": 1269723374,
+        "count": 397080,
+        "offset": 1517722916,
+        "compressed": 946534,
+        "decoded": 1048892,
+        "hash": "57838f3430f735739bc7d57fefc11e8a97600dbf57c22f4e0dc34673ee6f6654"
+      },
+      "split": "train",
+      "index": 3208
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60988,
+      "unit": {
+        "shard": 1,
+        "chunk": 923,
+        "start": 731164623,
+        "count": 395523,
+        "offset": 873336149,
+        "compressed": 944549,
+        "decoded": 1048594,
+        "hash": "2789e7ecc47201c6832a47562e6e4365ec5212db34e2b006d440881386d5e89e"
+      },
+      "split": "train",
+      "index": 1847
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61471,
+      "unit": {
+        "shard": 1,
+        "chunk": 7432,
+        "start": 5888602471,
+        "count": 395992,
+        "offset": 7033902413,
+        "compressed": 946141,
+        "decoded": 1048647,
+        "hash": "4937d46f43bcf1e5ca796faf53d3ac05ce8bf2bae99af13f9c5cd31cf9f535ba"
+      },
+      "split": "train",
+      "index": 14865
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60344,
+      "unit": {
+        "shard": 0,
+        "chunk": 632,
+        "start": 500411720,
+        "count": 398265,
+        "offset": 597895246,
+        "compressed": 946507,
+        "decoded": 1048761,
+        "hash": "13e92df023e934180da5245bc670697bee665982e568a9309714647d1c33eb41"
+      },
+      "split": "train",
+      "index": 1264
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61336,
+      "unit": {
+        "shard": 0,
+        "chunk": 1254,
+        "start": 992700099,
+        "count": 395736,
+        "offset": 1186512834,
+        "compressed": 945412,
+        "decoded": 1048663,
+        "hash": "ded5fca88fdc666e9a9a48b5d0675e6fc0a425bfba3994f7d64c539978de6cba"
+      },
+      "split": "train",
+      "index": 2508
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60358,
+      "unit": {
+        "shard": 1,
+        "chunk": 1577,
+        "start": 1248749272,
+        "count": 394217,
+        "offset": 1492255671,
+        "compressed": 945913,
+        "decoded": 1048667,
+        "hash": "7f01d5a6fc6a0d12ddb6e3b742d68b2a33a9b34cdac2c3aab6ac76f0d582b895"
+      },
+      "split": "train",
+      "index": 3155
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61391,
+      "unit": {
+        "shard": 1,
+        "chunk": 4832,
+        "start": 3827176864,
+        "count": 395157,
+        "offset": 4573045960,
+        "compressed": 947409,
+        "decoded": 1048681,
+        "hash": "eeafdcb6678dcefb802514274d220af47f9a5688bbe8b1ab74e11dab55c5c749"
+      },
+      "split": "train",
+      "index": 9665
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60824,
+      "unit": {
+        "shard": 0,
+        "chunk": 7839,
+        "start": 6211055549,
+        "count": 395572,
+        "offset": 7418738862,
+        "compressed": 946325,
+        "decoded": 1048683,
+        "hash": "eb7caebbb12c1b69bd5bade81369479ef26bbc5f314c7ed0a0849707719fb354"
+      },
+      "split": "train",
+      "index": 15678
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61436,
+      "unit": {
+        "shard": 0,
+        "chunk": 5323,
+        "start": 4215942149,
+        "count": 394387,
+        "offset": 5037409492,
+        "compressed": 945184,
+        "decoded": 1048793,
+        "hash": "943dc1ea7cdc514d397aafe05175f1d98bcb0b2c9fc35e43590518a284f340c4"
+      },
+      "split": "train",
+      "index": 10646
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59200,
+      "unit": {
+        "shard": 0,
+        "chunk": 3192,
+        "start": 2527157978,
+        "count": 396520,
+        "offset": 3020559488,
+        "compressed": 947887,
+        "decoded": 1048671,
+        "hash": "3b8f24ad1e27916a03377f3648bf125301ea6314650f3cc447e0bf211dbaedb8"
+      },
+      "split": "train",
+      "index": 6384
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60687,
+      "unit": {
+        "shard": 0,
+        "chunk": 8042,
+        "start": 6345179410,
+        "count": 397966,
+        "offset": 7610886689,
+        "compressed": 946670,
+        "decoded": 1048760,
+        "hash": "27f4bfa4cbbf42aff3489d78f0359ef2f8172adba8b99a129c23e1690b26b255"
+      },
+      "split": "train",
+      "index": 16017
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61579,
+      "unit": {
+        "shard": 1,
+        "chunk": 6840,
+        "start": 5419116711,
+        "count": 395920,
+        "offset": 6473537413,
+        "compressed": 945761,
+        "decoded": 1048767,
+        "hash": "cd3bfc2d84f9b1e8e688417b22c9beb038d6524a2bf3d856526768877016d0cf"
+      },
+      "split": "train",
+      "index": 13681
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61847,
+      "unit": {
+        "shard": 0,
+        "chunk": 3048,
+        "start": 2413086699,
+        "count": 394866,
+        "offset": 2884267776,
+        "compressed": 945911,
+        "decoded": 1048635,
+        "hash": "076eb13b1d6eb94b4dc82f85c1e5dd263c8829a1b8d544fc66872c2396c04eba"
+      },
+      "split": "train",
+      "index": 6096
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60417,
+      "unit": {
+        "shard": 0,
+        "chunk": 7148,
+        "start": 5662973181,
+        "count": 397263,
+        "offset": 6764702255,
+        "compressed": 946654,
+        "decoded": 1048771,
+        "hash": "a8c3d2a658c3ac711c0695c8015812c2c1292761e07f47a9461a3ab23fa6f83d"
+      },
+      "split": "train",
+      "index": 14296
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61908,
+      "unit": {
+        "shard": 1,
+        "chunk": 1032,
+        "start": 817411589,
+        "count": 393817,
+        "offset": 976461569,
+        "compressed": 944663,
+        "decoded": 1048828,
+        "hash": "762411a6d1ca6a68c86300df6acf776c93d2aa33ba5ef0402d864b6bb700bf71"
+      },
+      "split": "train",
+      "index": 2065
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61805,
+      "unit": {
+        "shard": 0,
+        "chunk": 8778,
+        "start": 6637128967,
+        "count": 395243,
+        "offset": 8307590431,
+        "compressed": 944281,
+        "decoded": 1048612,
+        "hash": "0b9cb84c40e25473097a081a1877be8ec10ebd7f5823c670e0881869b3826d1e"
+      },
+      "split": "train",
+      "index": 16753
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61083,
+      "unit": {
+        "shard": 0,
+        "chunk": 6137,
+        "start": 4861304100,
+        "count": 396987,
+        "offset": 5807832421,
+        "compressed": 946060,
+        "decoded": 1048614,
+        "hash": "71fc0da23ce152a3dddda5dbeab2f068adfd23f5dc2894a19a06a520dc03b3f0"
+      },
+      "split": "train",
+      "index": 12274
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61082,
+      "unit": {
+        "shard": 1,
+        "chunk": 2838,
+        "start": 2247123584,
+        "count": 395536,
+        "offset": 2685737723,
+        "compressed": 946403,
+        "decoded": 1048596,
+        "hash": "ecded7885d35b9e14158a65e9987408ce0c1807ae7ad28dc0e7ca83af7ea903e"
+      },
+      "split": "train",
+      "index": 5677
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60074,
+      "unit": {
+        "shard": 1,
+        "chunk": 7405,
+        "start": 5867197487,
+        "count": 397000,
+        "offset": 7008341848,
+        "compressed": 946493,
+        "decoded": 1048755,
+        "hash": "3527e28c3624a547a0f3f27f70c162c4fdfa45e0b94a6d32faee55f592e46c53"
+      },
+      "split": "train",
+      "index": 14811
+    },
+    {
+      "accepted": 32768,
+      "decoded": 62213,
+      "unit": {
+        "shard": 0,
+        "chunk": 4101,
+        "start": 3247413672,
+        "count": 397733,
+        "offset": 3880836270,
+        "compressed": 947427,
+        "decoded": 1048664,
+        "hash": "3cd048a9497ff7fe3c8f4f36b627f7985cf26a5cee5a6fb6d9ff238791f31d05"
+      },
+      "split": "train",
+      "index": 8202
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61296,
+      "unit": {
+        "shard": 1,
+        "chunk": 5290,
+        "start": 4190177775,
+        "count": 398451,
+        "offset": 5006516808,
+        "compressed": 948809,
+        "decoded": 1048668,
+        "hash": "84329baccaa34bec59ece5baa545567aaafc2b2a034641d9e969a9e002aee601"
+      },
+      "split": "train",
+      "index": 10581
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60392,
+      "unit": {
+        "shard": 0,
+        "chunk": 2117,
+        "start": 1675830320,
+        "count": 396103,
+        "offset": 2003161389,
+        "compressed": 946557,
+        "decoded": 1048700,
+        "hash": "bb9fb737c91cd8a54b2278e443970b36f7298bd248b2762796ef7446668fd044"
+      },
+      "split": "train",
+      "index": 4234
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60759,
+      "unit": {
+        "shard": 0,
+        "chunk": 5382,
+        "start": 4262719415,
+        "count": 396184,
+        "offset": 5093244793,
+        "compressed": 944683,
+        "decoded": 1048805,
+        "hash": "935312993e64ae37176b1d9697301c900c8cef45c6f9be8b9b3f8a974436f4cb"
+      },
+      "split": "train",
+      "index": 10764
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60742,
+      "unit": {
+        "shard": 0,
+        "chunk": 3904,
+        "start": 3091298054,
+        "count": 396454,
+        "offset": 3694385725,
+        "compressed": 946538,
+        "decoded": 1048645,
+        "hash": "7a3b3aa092c8498f154f92ed2962c8e0891861f3a89e1504c4649f3e8f042ce9"
+      },
+      "split": "train",
+      "index": 7808
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60204,
+      "unit": {
+        "shard": 0,
+        "chunk": 8691,
+        "start": 6602581419,
+        "count": 397607,
+        "offset": 8225200671,
+        "compressed": 947003,
+        "decoded": 1048686,
+        "hash": "33fa55e89c11dce892b0729ef3eb81ee838cf307cd24199d1b84dac16848e43c"
+      },
+      "split": "train",
+      "index": 16666
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60927,
+      "unit": {
+        "shard": 1,
+        "chunk": 6123,
+        "start": 4850597887,
+        "count": 397005,
+        "offset": 5794950357,
+        "compressed": 947145,
+        "decoded": 1048802,
+        "hash": "ed39af4d1c5801cb2704ecca0fa771b637f6f9faca18ffa1b9238565fc0dd5db"
+      },
+      "split": "train",
+      "index": 12247
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61764,
+      "unit": {
+        "shard": 0,
+        "chunk": 8290,
+        "start": 6443533169,
+        "count": 395890,
+        "offset": 7845615433,
+        "compressed": 945817,
+        "decoded": 1049070,
+        "hash": "d7babe9049f214198727ce74fecda5ec55ec0e31d2c20d660a7b9c78974a26bf"
+      },
+      "split": "train",
+      "index": 16265
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60880,
+      "unit": {
+        "shard": 1,
+        "chunk": 3992,
+        "start": 3161434843,
+        "count": 395853,
+        "offset": 3777972658,
+        "compressed": 946952,
+        "decoded": 1048594,
+        "hash": "5b44b31637329ec3d2ca361c0a11c23e89e377489f2eddbd1541c4746330d911"
+      },
+      "split": "train",
+      "index": 7985
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60772,
+      "unit": {
+        "shard": 1,
+        "chunk": 5984,
+        "start": 4740386041,
+        "count": 397673,
+        "offset": 5663413897,
+        "compressed": 946422,
+        "decoded": 1048902,
+        "hash": "f323ba7cb33331dcf8309228ef3491dd9551b0665c571c777e96475d18bd844b"
+      },
+      "split": "train",
+      "index": 11969
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60855,
+      "unit": {
+        "shard": 1,
+        "chunk": 7055,
+        "start": 5589609439,
+        "count": 393454,
+        "offset": 6677067682,
+        "compressed": 945681,
+        "decoded": 1048598,
+        "hash": "7435977b4e84d4e919b6942e7f1190910b1b492b3c3cb2ddd05caaaeb67cdaf8"
+      },
+      "split": "train",
+      "index": 14111
+    },
+    {
+      "accepted": 32768,
+      "decoded": 58760,
+      "unit": {
+        "shard": 0,
+        "chunk": 5765,
+        "start": 4566349036,
+        "count": 397597,
+        "offset": 5455712311,
+        "compressed": 947884,
+        "decoded": 1048925,
+        "hash": "71f2334cbfb5dd6d62a5227985b14761047732938101f9d59af5e97fe06e7223"
+      },
+      "split": "train",
+      "index": 11530
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61139,
+      "unit": {
+        "shard": 1,
+        "chunk": 4189,
+        "start": 3317545575,
+        "count": 395875,
+        "offset": 3964434830,
+        "compressed": 946430,
+        "decoded": 1048598,
+        "hash": "efebf673541db8435ed7b00319e6dcc6d6127fe34f878db458c58d85894bf9d1"
+      },
+      "split": "train",
+      "index": 8379
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61189,
+      "unit": {
+        "shard": 0,
+        "chunk": 5000,
+        "start": 3959942045,
+        "count": 397225,
+        "offset": 4731706746,
+        "compressed": 945910,
+        "decoded": 1048644,
+        "hash": "c84a5c2a19a55dc68c20ef02613f4e4e65356b7faa6c5e3f8882de1a7eecbcf5"
+      },
+      "split": "train",
+      "index": 10000
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61870,
+      "unit": {
+        "shard": 1,
+        "chunk": 5663,
+        "start": 4485902012,
+        "count": 396494,
+        "offset": 5359579376,
+        "compressed": 945456,
+        "decoded": 1048588,
+        "hash": "262efa40aff2dcb898d224dd478ff6ec0b5d7ae0bd20d83f4a2340e43d055a7f"
+      },
+      "split": "train",
+      "index": 11327
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61638,
+      "unit": {
+        "shard": 1,
+        "chunk": 7566,
+        "start": 5994875704,
+        "count": 395256,
+        "offset": 7160735213,
+        "compressed": 945272,
+        "decoded": 1048653,
+        "hash": "d35b2253ea0febb6ee8b60749bd42bdac735defd7d300e74be1cf4023b95f204"
+      },
+      "split": "train",
+      "index": 15133
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61910,
+      "unit": {
+        "shard": 1,
+        "chunk": 2961,
+        "start": 2344572286,
+        "count": 395852,
+        "offset": 2802148885,
+        "compressed": 945478,
+        "decoded": 1048690,
+        "hash": "0b34a31924b21c450630cb32453bfb1567cab4c01460286f12c8f88729f9818e"
+      },
+      "split": "train",
+      "index": 5923
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60259,
+      "unit": {
+        "shard": 0,
+        "chunk": 8851,
+        "start": 6666107762,
+        "count": 396377,
+        "offset": 8376721195,
+        "compressed": 948645,
+        "decoded": 1048739,
+        "hash": "fea1bb2964b609e8071b640d961e2665b3d5d2c4c7317b3f4598fefcffa15e1d"
+      },
+      "split": "train",
+      "index": 16826
+    },
+    {
+      "accepted": 32768,
+      "decoded": 62375,
+      "unit": {
+        "shard": 0,
+        "chunk": 3504,
+        "start": 2774363400,
+        "count": 396325,
+        "offset": 3315838034,
+        "compressed": 946001,
+        "decoded": 1048814,
+        "hash": "58a5da207aec98fb7cd003ca1f49a4895b038c13891b45c9c059765da97b16e3"
+      },
+      "split": "train",
+      "index": 7008
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61311,
+      "unit": {
+        "shard": 1,
+        "chunk": 4951,
+        "start": 3921493505,
+        "count": 395655,
+        "offset": 4685671984,
+        "compressed": 947887,
+        "decoded": 1048654,
+        "hash": "bdd499b41d78adc715c1d16ec12ceccdfdb657030bb0dace45ae2249aa30df13"
+      },
+      "split": "train",
+      "index": 9903
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60611,
+      "unit": {
+        "shard": 0,
+        "chunk": 7763,
+        "start": 6150729776,
+        "count": 397932,
+        "offset": 7346808478,
+        "compressed": 944668,
+        "decoded": 1048692,
+        "hash": "2ab433fe9690be58aa7f3be08005131de123eee826556bb3a339d5726a31c603"
+      },
+      "split": "train",
+      "index": 15526
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59998,
+      "unit": {
+        "shard": 0,
+        "chunk": 3786,
+        "start": 2997801344,
+        "count": 397262,
+        "offset": 3582711794,
+        "compressed": 947809,
+        "decoded": 1048641,
+        "hash": "96bda3ff12b5bd306cb9ee3bb60e765a382bd4d1c0cbf80fdcd14d949fed83fc"
+      },
+      "split": "train",
+      "index": 7572
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60100,
+      "unit": {
+        "shard": 0,
+        "chunk": 6562,
+        "start": 5198276334,
+        "count": 396360,
+        "offset": 6210081833,
+        "compressed": 947457,
+        "decoded": 1048594,
+        "hash": "1cea793ded91440d75ad8c29b6d5b617b4d979ff1385167f937368c01a7110e3"
+      },
+      "split": "train",
+      "index": 13124
+    },
+    {
+      "accepted": 32768,
+      "decoded": 62513,
+      "unit": {
+        "shard": 0,
+        "chunk": 4699,
+        "start": 3721383468,
+        "count": 395036,
+        "offset": 4446810991,
+        "compressed": 945002,
+        "decoded": 1048954,
+        "hash": "a61fda87c491c3e9023ab06940ed342db8e6702d2a4c1f1adeb21479cc431c98"
+      },
+      "split": "train",
+      "index": 9398
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59840,
+      "unit": {
+        "shard": 0,
+        "chunk": 6602,
+        "start": 5229998154,
+        "count": 396446,
+        "offset": 6247941838,
+        "compressed": 946628,
+        "decoded": 1048921,
+        "hash": "9a22ced345bee8417d2a6506f922aa12e67491e5dcbd723a5558d8f28a2b9485"
+      },
+      "split": "train",
+      "index": 13204
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60698,
+      "unit": {
+        "shard": 1,
+        "chunk": 1343,
+        "start": 1063552105,
+        "count": 397233,
+        "offset": 1270781112,
+        "compressed": 947002,
+        "decoded": 1048594,
+        "hash": "733f9ee236eda95a0da55bb88e13856b7d7fbcb5b47785d0c5ef1c50d783552c"
+      },
+      "split": "train",
+      "index": 2687
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60201,
+      "unit": {
+        "shard": 1,
+        "chunk": 7608,
+        "start": 6028183176,
+        "count": 397247,
+        "offset": 7200506974,
+        "compressed": 947429,
+        "decoded": 1048665,
+        "hash": "9df2549c8c8ec276eb1266577843fc9357519cba5f03b8b15c655de00601c3e1"
+      },
+      "split": "train",
+      "index": 15217
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61142,
+      "unit": {
+        "shard": 0,
+        "chunk": 7017,
+        "start": 5559073361,
+        "count": 396226,
+        "offset": 6640695103,
+        "compressed": 945829,
+        "decoded": 1048674,
+        "hash": "80e8a049dfa965916a37d68e71418fa9513c958f8246d245eb9ed96eafd14d29"
+      },
+      "split": "train",
+      "index": 14034
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60439,
+      "unit": {
+        "shard": 1,
+        "chunk": 7593,
+        "start": 6016281866,
+        "count": 396869,
+        "offset": 7186298243,
+        "compressed": 946892,
+        "decoded": 1048688,
+        "hash": "ebc5a67d38da248bf65fc4fc29dca96300e1bed7d04246d3ff8d46b2c3c496e0"
+      },
+      "split": "train",
+      "index": 15187
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60501,
+      "unit": {
+        "shard": 1,
+        "chunk": 158,
+        "start": 125586244,
+        "count": 395116,
+        "offset": 149360753,
+        "compressed": 945267,
+        "decoded": 1048786,
+        "hash": "ca870d7005ffda0ad0acd5d7798e324cc58b47fa29c6331d53901ff1998855d8"
+      },
+      "split": "train",
+      "index": 317
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61377,
+      "unit": {
+        "shard": 1,
+        "chunk": 4594,
+        "start": 3638561620,
+        "count": 396859,
+        "offset": 4347762004,
+        "compressed": 946100,
+        "decoded": 1048674,
+        "hash": "3397724df1fe97dcf8ff8132d759d333363c5415aaf7345e6296b66f8e7859ca"
+      },
+      "split": "train",
+      "index": 9189
+    },
+    {
+      "accepted": 32768,
+      "decoded": 62357,
+      "unit": {
+        "shard": 0,
+        "chunk": 3628,
+        "start": 2872598962,
+        "count": 395115,
+        "offset": 3433179681,
+        "compressed": 944428,
+        "decoded": 1048760,
+        "hash": "940485ad93ef6b5785dea7ade51a256aa60d0c95fe243f20874976716dfd1cff"
+      },
+      "split": "train",
+      "index": 7256
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61465,
+      "unit": {
+        "shard": 1,
+        "chunk": 4892,
+        "start": 3874741273,
+        "count": 394895,
+        "offset": 4629838756,
+        "compressed": 944672,
+        "decoded": 1048844,
+        "hash": "9eb3b314e117fc237951a6524a02d212a0dd12257fda510087e97137b35760b6"
+      },
+      "split": "train",
+      "index": 9785
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60667,
+      "unit": {
+        "shard": 1,
+        "chunk": 2716,
+        "start": 2150534941,
+        "count": 396965,
+        "offset": 2570288550,
+        "compressed": 947329,
+        "decoded": 1048611,
+        "hash": "cf7a285bff087bb18f1cdfe7b7a1f77247292fe582f18e1bf8c7e99aa06d9469"
+      },
+      "split": "train",
+      "index": 5433
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60391,
+      "unit": {
+        "shard": 1,
+        "chunk": 654,
+        "start": 518223790,
+        "count": 395131,
+        "offset": 618730185,
+        "compressed": 946940,
+        "decoded": 1048844,
+        "hash": "6155b27a56de431af84a0418c595795a490b2cf4971da0f58fe0ebdaec0d9df9"
+      },
+      "split": "train",
+      "index": 1309
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60657,
+      "unit": {
+        "shard": 1,
+        "chunk": 302,
+        "start": 239606091,
+        "count": 395929,
+        "offset": 285602169,
+        "compressed": 945513,
+        "decoded": 1048715,
+        "hash": "9b07ca137201019220a993450e34651ad7223d16b5da26be0aae96ac781e36b3"
+      },
+      "split": "train",
+      "index": 605
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60653,
+      "unit": {
+        "shard": 0,
+        "chunk": 1416,
+        "start": 1120936603,
+        "count": 395353,
+        "offset": 1339812051,
+        "compressed": 946665,
+        "decoded": 1048737,
+        "hash": "4f72ccd3793f175c81af38ba1ab7767c9c397c8fd85481b2aa6d8be9573176b2"
+      },
+      "split": "train",
+      "index": 2832
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60481,
+      "unit": {
+        "shard": 1,
+        "chunk": 2565,
+        "start": 2030953674,
+        "count": 396482,
+        "offset": 2427374501,
+        "compressed": 947317,
+        "decoded": 1048873,
+        "hash": "cc29a93add1e9b932e575e4317213694c144461e5b357e41cdfb8ee006cd4040"
+      },
+      "split": "train",
+      "index": 5131
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60453,
+      "unit": {
+        "shard": 0,
+        "chunk": 2724,
+        "start": 2156467589,
+        "count": 396655,
+        "offset": 2577610121,
+        "compressed": 947898,
+        "decoded": 1048735,
+        "hash": "c28067123847bc288ef627153d6ef5123d3a47eb78196aa24314dcb420b2ca0a"
+      },
+      "split": "train",
+      "index": 5448
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61198,
+      "unit": {
+        "shard": 0,
+        "chunk": 7067,
+        "start": 5598720282,
+        "count": 397662,
+        "offset": 6688028251,
+        "compressed": 944771,
+        "decoded": 1048712,
+        "hash": "789b7a05f6c9d643ef24f51c0af21843dee8aac2a58cea6b58cad2d25cb07703"
+      },
+      "split": "train",
+      "index": 14134
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60998,
+      "unit": {
+        "shard": 1,
+        "chunk": 2719,
+        "start": 2152908588,
+        "count": 395749,
+        "offset": 2573129317,
+        "compressed": 946347,
+        "decoded": 1048818,
+        "hash": "4ab7452cacbeeec8db4abd08217a86e24dd098cfca666aaf97fd4492e0692b07"
+      },
+      "split": "train",
+      "index": 5439
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60978,
+      "unit": {
+        "shard": 0,
+        "chunk": 413,
+        "start": 327083543,
+        "count": 394844,
+        "offset": 390677968,
+        "compressed": 944466,
+        "decoded": 1048684,
+        "hash": "f43644bbf34b366e4de732fe2e97281cd9803947ab03466bb01bb676c8d5439a"
+      },
+      "split": "train",
+      "index": 826
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60828,
+      "unit": {
+        "shard": 0,
+        "chunk": 8672,
+        "start": 6595048008,
+        "count": 398543,
+        "offset": 8207209121,
+        "compressed": 947422,
+        "decoded": 1048868,
+        "hash": "ff33c253250703d2b0fed4e98cdf9661cb290065c486ffd74cf536522bfd069e"
+      },
+      "split": "train",
+      "index": 16647
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60801,
+      "unit": {
+        "shard": 0,
+        "chunk": 7823,
+        "start": 6198353717,
+        "count": 395929,
+        "offset": 7403596344,
+        "compressed": 944387,
+        "decoded": 1048590,
+        "hash": "7451958ce251301bae8c46b877c4537c70701fd342f2453c48bda54568d3bdf7"
+      },
+      "split": "train",
+      "index": 15646
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60299,
+      "unit": {
+        "shard": 1,
+        "chunk": 2817,
+        "start": 2230501764,
+        "count": 394714,
+        "offset": 2665863128,
+        "compressed": 943868,
+        "decoded": 1048727,
+        "hash": "f05b7c320ebe9a834d854d6a9c2f569771d216fc9b06e50c8548389ee5d27d4f"
+      },
+      "split": "train",
+      "index": 5635
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60165,
+      "unit": {
+        "shard": 0,
+        "chunk": 5747,
+        "start": 4552080632,
+        "count": 396396,
+        "offset": 5438677803,
+        "compressed": 946277,
+        "decoded": 1048617,
+        "hash": "f50f018b611bf79d8b248e821e615edc1b5781c68cee89174ca6395dbda50331"
+      },
+      "split": "train",
+      "index": 11494
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61888,
+      "unit": {
+        "shard": 0,
+        "chunk": 6714,
+        "start": 5318794618,
+        "count": 395697,
+        "offset": 6353948432,
+        "compressed": 946467,
+        "decoded": 1048665,
+        "hash": "3ba4209bb2839a83e8a7264bce31447ee7eab00a9dcbba57ec473417b0dfef47"
+      },
+      "split": "train",
+      "index": 13428
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61335,
+      "unit": {
+        "shard": 1,
+        "chunk": 862,
+        "start": 682879510,
+        "count": 397077,
+        "offset": 815606130,
+        "compressed": 947032,
+        "decoded": 1048840,
+        "hash": "9e9df19695dd0407ea82bb35bd99acdcc527539e646940a901f28bfe9514f847"
+      },
+      "split": "train",
+      "index": 1725
+    },
+    {
+      "accepted": 32768,
+      "decoded": 62453,
+      "unit": {
+        "shard": 0,
+        "chunk": 2484,
+        "start": 1966418962,
+        "count": 393394,
+        "offset": 2350487833,
+        "compressed": 944283,
+        "decoded": 1048702,
+        "hash": "ff7a17dfa5acf87e48f2bf52d198676cc2a70ffabf55b7a24db7c97d8199e5b2"
+      },
+      "split": "train",
+      "index": 4968
+    },
+    {
+      "accepted": 32768,
+      "decoded": 59709,
+      "unit": {
+        "shard": 0,
+        "chunk": 7404,
+        "start": 5866007187,
+        "count": 398380,
+        "offset": 7007002076,
+        "compressed": 947929,
+        "decoded": 1048726,
+        "hash": "2bde98a3f4241e4cb0d3fa6849511513d8480496071e6bd184a514c581bb59a4"
+      },
+      "split": "train",
+      "index": 14808
+    },
+    {
+      "accepted": 32768,
+      "decoded": 62447,
+      "unit": {
+        "shard": 0,
+        "chunk": 5353,
+        "start": 4239723452,
+        "count": 396614,
+        "offset": 5065795352,
+        "compressed": 943965,
+        "decoded": 1048633,
+        "hash": "07f51a9921448cf21ed087a571cb6f33aaae8b751aa1446a5a3ebe93fb6c7433"
+      },
+      "split": "train",
+      "index": 10706
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61976,
+      "unit": {
+        "shard": 1,
+        "chunk": 1011,
+        "start": 800793480,
+        "count": 396288,
+        "offset": 956599428,
+        "compressed": 944739,
+        "decoded": 1048678,
+        "hash": "4305875715ad6cae71540337dadaff2341334755ea2d6fc1fe937044c58c9ecc"
+      },
+      "split": "train",
+      "index": 2023
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60806,
+      "unit": {
+        "shard": 1,
+        "chunk": 3525,
+        "start": 2791391613,
+        "count": 396486,
+        "offset": 3335936043,
+        "compressed": 946515,
+        "decoded": 1048668,
+        "hash": "5a9a81b5edeb3a60ffdf23cbd69c961068bb45c59302ac9aa8a2ef4586a5cf1b"
+      },
+      "split": "train",
+      "index": 7051
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61897,
+      "unit": {
+        "shard": 0,
+        "chunk": 5830,
+        "start": 4617880780,
+        "count": 395628,
+        "offset": 5517242042,
+        "compressed": 944995,
+        "decoded": 1048647,
+        "hash": "cf2ae37a63300595f04e3bbae4f73d9833882ce3e0076ea333776ea35ad71d7c"
+      },
+      "split": "train",
+      "index": 11660
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60219,
+      "unit": {
+        "shard": 1,
+        "chunk": 5441,
+        "start": 4309873894,
+        "count": 396609,
+        "offset": 5149452517,
+        "compressed": 946308,
+        "decoded": 1048614,
+        "hash": "a63f594709f3ddb1b6c3418d3909d137956b062e8656ea99a33c6f2512b72514"
+      },
+      "split": "train",
+      "index": 10883
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61716,
+      "unit": {
+        "shard": 0,
+        "chunk": 6530,
+        "start": 5172909516,
+        "count": 397500,
+        "offset": 6179797299,
+        "compressed": 946957,
+        "decoded": 1049278,
+        "hash": "aa32e4d9ad16bea650cfc89c3a7879388e3b9376ba911a757fb9e664da70df8a"
+      },
+      "split": "train",
+      "index": 13060
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60552,
+      "unit": {
+        "shard": 1,
+        "chunk": 6742,
+        "start": 5341392825,
+        "count": 397198,
+        "offset": 6380793276,
+        "compressed": 947333,
+        "decoded": 1048878,
+        "hash": "49e8e793918bfb4c1f97c5f03352b34fb604ea32df164120e95fb74aa0f42fd6"
+      },
+      "split": "train",
+      "index": 13485
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61161,
+      "unit": {
+        "shard": 0,
+        "chunk": 4300,
+        "start": 3405143373,
+        "count": 394305,
+        "offset": 4069189102,
+        "compressed": 946147,
+        "decoded": 1049258,
+        "hash": "4aeb5e781ed584b53cf4b869ea5d23019c7486bc0da060e87393f087f587c8b9"
+      },
+      "split": "train",
+      "index": 8600
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61880,
+      "unit": {
+        "shard": 0,
+        "chunk": 8845,
+        "start": 6663728062,
+        "count": 395771,
+        "offset": 8371035697,
+        "compressed": 946894,
+        "decoded": 1048605,
+        "hash": "1e97b42ed5fb6a6a3c0b3a71978bbb776f000b7e0501021304a422f0f35d590e"
+      },
+      "split": "train",
+      "index": 16820
+    },
+    {
+      "accepted": 32768,
+      "decoded": 62034,
+      "unit": {
+        "shard": 1,
+        "chunk": 5777,
+        "start": 4576261544,
+        "count": 396704,
+        "offset": 5467471542,
+        "compressed": 946414,
+        "decoded": 1048682,
+        "hash": "69f9865609093bf930f220daa333b0e1e572fbf1764ed821159f11c3c411e417"
+      },
+      "split": "train",
+      "index": 11555
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60096,
+      "unit": {
+        "shard": 0,
+        "chunk": 126,
+        "start": 99841815,
+        "count": 396468,
+        "offset": 119118418,
+        "compressed": 945701,
+        "decoded": 1048745,
+        "hash": "79b64f9580ebb6435a2f39a663a76ccd1cdde815e3bc15904969d71cc1c7b3f6"
+      },
+      "split": "train",
+      "index": 252
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60448,
+      "unit": {
+        "shard": 1,
+        "chunk": 2248,
+        "start": 1779953464,
+        "count": 394992,
+        "offset": 2127350346,
+        "compressed": 947601,
+        "decoded": 1048785,
+        "hash": "75dbd714b4f0945efca2c9cba090f5d4a1973587b0db6d1fb7e7e615ee88a7ff"
+      },
+      "split": "train",
+      "index": 4497
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60822,
+      "unit": {
+        "shard": 0,
+        "chunk": 1786,
+        "start": 1413769682,
+        "count": 397875,
+        "offset": 1689948481,
+        "compressed": 946405,
+        "decoded": 1049012,
+        "hash": "880281c4cf3437e5a848428d40833bf6d96af57c1566baadfa70a93d1be32b70"
+      },
+      "split": "train",
+      "index": 3572
+    },
+    {
+      "accepted": 32768,
+      "decoded": 62175,
+      "unit": {
+        "shard": 0,
+        "chunk": 8007,
+        "start": 6331304297,
+        "count": 393563,
+        "offset": 7577754375,
+        "compressed": 943553,
+        "decoded": 1048653,
+        "hash": "eb13bf080ebd0b7045bb1031f186eee9e5435b763ced47db29db1e998303674b"
+      },
+      "split": "train",
+      "index": 15982
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60644,
+      "unit": {
+        "shard": 0,
+        "chunk": 4115,
+        "start": 3258507164,
+        "count": 397577,
+        "offset": 3894084660,
+        "compressed": 949543,
+        "decoded": 1048587,
+        "hash": "2e4c3af0d0c54f85f334964d279dcdd086c97e97fa568064a67b7a630715557a"
+      },
+      "split": "train",
+      "index": 8230
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61596,
+      "unit": {
+        "shard": 0,
+        "chunk": 4526,
+        "start": 3584287598,
+        "count": 394833,
+        "offset": 4283095077,
+        "compressed": 946430,
+        "decoded": 1048922,
+        "hash": "6dc61769eaadaf7f005d5d6583c0939a08aac1f35b6db8039a578523ee92610c"
+      },
+      "split": "train",
+      "index": 9052
+    },
+    {
+      "accepted": 32768,
+      "decoded": 60454,
+      "unit": {
+        "shard": 0,
+        "chunk": 796,
+        "start": 630251877,
+        "count": 397361,
+        "offset": 753082550,
+        "compressed": 946225,
+        "decoded": 1048707,
+        "hash": "d0e20b4d024fad245e05e4a80fa6af79904bde30e60613114465a8e1292fd88c"
+      },
+      "split": "train",
+      "index": 1592
+    },
+    {
+      "accepted": 32768,
+      "decoded": 62100,
+      "unit": {
+        "shard": 1,
+        "chunk": 31,
+        "start": 24946618,
+        "count": 396130,
+        "offset": 29299828,
+        "compressed": 944063,
+        "decoded": 1048805,
+        "hash": "55e0113a3fee7ab076a1f3f7682538a77c50ec967dae2b0b69ef40cc64fd224a"
+      },
+      "split": "train",
+      "index": 63
+    },
+    {
+      "accepted": 32768,
+      "decoded": 61324,
+      "unit": {
+        "shard": 0,
+        "chunk": 7167,
+        "start": 5678043751,
+        "count": 395601,
+        "offset": 6782674994,
+        "compressed": 944911,
+        "decoded": 1048691,
+        "hash": "d22ceeb785750a09f76ec58549b0b136294796e6b53c89cc41da8cad93dca487"
+      },
+      "split": "train",
+      "index": 14334
+    }
+  ],
+  "hashes": {
+    "probes.fens": "443f9ab3ac0dce46025a4e4dbd986de8fd5c92ae06c36a6ef1c6a923c8ae0ce7",
+    "proof-labels.jsonl": "1c88e9369b3f5174e9bf6f39bbb6c07e1b238a4d2ee47c894826ea1999cb3fd3",
+    "proof.data": "7f62ee903fa085baaf8bdadb27d7af309bee156ee94ccd3b3ae1503d826f7eb7",
+    "proof.txt": "ee8585bbde553a99f1ecdffe0f04f219f5f276f8421f0cfb7783905eb320d629",
+    "train-provenance.bin": "43ad17dea4fd2d8edbb5a17b2cb9d249e0ade358d9edd57050ff63d5b6e2c138",
+    "train.data": "e22e0296daa033cb24fc27adfc7fe110d37fa2b84f06dbc58a2db5a45bbc29ab",
+    "validation.txt": "1293de0195bd431d451791c6017b9f3a5819b7b5b9bd623b91509ad868c2cfe3"
+  },
+  "target": "BT4_Q_LOGIT400_V1: inverse publisher Q, p=clamp((Q+1)/2,.0001,.9999), round(400*logit(p)); stored STM; genuine STM WDL",
+  "selection": "Seeded shuffle of prepared unit indices; validation units first; first qualifying quota per unit; exact global placement+STM dedup; Fisher-Yates training shuffle",
+  "provenance": "12 LE bytes/record: unit index u32, unit raw ordinal u32, BT4 encoded i16, STM result i8, zero pad; aligned with shuffled train.data",
+  "limitations": [
+    "Unit-disjoint diagnostic validation; no proof of game or symmetry independence",
+    "Bounded prefixes within globally sampled chunks, not a uniform sample of all positions",
+    "Logit scores are link values, not original centipawns",
+    "Source identity uses sampled fingerprints; consumed prepared units have full SHA256 verification"
+  ],
+  "seconds": 34.2788509
+}

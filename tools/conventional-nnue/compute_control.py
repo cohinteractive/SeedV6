@@ -275,7 +275,8 @@ def verify_checkpoint(path):
 
 def recipe(config):
     return tuple(config[key] for key in ('data_sha256', 'probes_sha256', 'seed', 'batch_size',
-        'batches_per_superbatch', 'learning_rate', 'wdl'))
+        'batches_per_superbatch', 'learning_rate', 'wdl')) + (
+            config.get('lr_drop_every', 0), config.get('lr_gamma', 1.0))
 
 
 def initial_resume_compatible(request, previous):
@@ -308,7 +309,7 @@ def train(control, args):
             with plan.open('xb') as stream:
                 stream.write(requested_bytes); stream.flush(); os.fsync(stream.fileno())
             atomic(output / 'segmentation.json', dict(schema=1, created=utc(), bullet=PIN,
-                boundary='one superbatch per process; constant LR/WDL; complete optimizer continuation',
+                boundary='one superbatch per process; persisted global LR schedule/constant WDL; complete optimizer continuation',
                 requested_save_rate=request.get('save_rate', 1), effective_save_rate=1,
                 trainer_sha256=sha(args.trainer), config_sha256=sha(plan)))
         provenance = json.loads((output / 'segmentation.json').read_text())

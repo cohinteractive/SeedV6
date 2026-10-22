@@ -1,0 +1,109 @@
+{
+  "data_validation": {
+    "status": "PASS",
+    "training_records": 8388608,
+    "proof_records": 17408,
+    "all_training_links_and_results_verified": true,
+    "all_frozen_file_hashes_verified": true,
+    "proof_packing_identical_to_upstream": true,
+    "maximum_probability_error_over_encoding_range": 0.00031125306735640956,
+    "manifest_sha256": "e0f63c79b1e7fbd6c9f6fc573c7d2722c9af12e03adbcff596203111b73e34aa",
+    "trainer_sha256": "3e46d2db40822984ff25c8569235a070cd7bef80343706e85b142186d940727e",
+    "limitation": "All labels/provenance checked; source redecoding and board packing checked on distributed proof sample only"
+  },
+  "control": {
+    "hold_seconds": 3.239833500003442,
+    "kind": "graceful",
+    "held_after_superbatch": 2,
+    "observed_cuda_pid": 25048,
+    "owned_processes_after_hold": 0,
+    "cuda_pid_absent_after_hold": true,
+    "held_checkpoint": {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-control-validation\\segmented\\segments\\000002-b16d2c131b57\\run\\seed-cnnue-v1-2",
+      "completed_superbatch": 2,
+      "next_superbatch": 3,
+      "receipt_sha256": "618748c6572ccbdd92c750985c86e07a2e094d544ab1f99d6b2e456caadfd6f4",
+      "config_sha256": "619bb35c32ba968a9e73780427bfc027ddd1e257a9918cf38ed27f4eb752a459",
+      "verified_at": "2026-10-22T10:06:52+00:00"
+    },
+    "final_checkpoint": {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-control-validation\\segmented\\segments\\000004-d0117709bc6a\\run\\seed-cnnue-v1-4",
+      "completed_superbatch": 4,
+      "next_superbatch": 5,
+      "receipt_sha256": "8af1b1dab85f5ffaa157ab991dec948e495344603b1268e5bb9f65a24ce2b742",
+      "config_sha256": "34d2ff390c0a2536e3e476b71ebebbcc007d91238f6146a0ed301957ce6254f6",
+      "verified_at": "2026-10-22T10:07:00+00:00"
+    },
+    "reference_checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-control-validation\\reference\\seed-cnnue-v1-4",
+    "completed_segments_before_resume": 2,
+    "completed_segments_after_resume": 4,
+    "denied_fresh_process_exit": 2,
+    "full_pause_checked": true,
+    "original_recipe": {
+      "batch_size": 4096,
+      "batches_per_superbatch": 1024,
+      "superbatches": 4,
+      "learning_rate": 0.001,
+      "wdl": 0.0,
+      "lr_drop_every": 1,
+      "lr_gamma": 0.5
+    },
+    "limitations": "Single short local measurement; GPU continuation is not bitwise deterministic"
+  },
+  "schedule": {
+    "status": "PASS",
+    "segments": [
+      {
+        "step": 1,
+        "rate": 0.0010000000474974513,
+        "initializer_matches_previous": true
+      },
+      {
+        "step": 2,
+        "rate": 0.0005000000237487257,
+        "initializer_matches_previous": true
+      },
+      {
+        "step": 3,
+        "rate": 0.0002500000118743628,
+        "initializer_matches_previous": true
+      },
+      {
+        "step": 4,
+        "rate": 0.0001250000059371814,
+        "initializer_matches_previous": true
+      }
+    ],
+    "source": "Actual checkpoint schedule receipts and initializer optimizer SHA256 comparison"
+  },
+  "baselines": {
+    "e002": {
+      "payload_sha256": "7514a9d704f671072f5d234f7bd23042c0ba16cb4746bf5a60dd3853508910dc",
+      "positions": 524288,
+      "sigmoid_mse": 0.04037879209144919,
+      "zero_score_mse": 0.0659978710509739,
+      "cp_mae": 611.7321186065674
+    },
+    "e003": {
+      "positions": 524288,
+      "sigmoid_mse": 0.03603898494434573,
+      "zero_score_mse": 0.0659978710509739,
+      "cp_mae": 579.7511253356934,
+      "payload_sha256": "053f8d78d5f7be8f75b228cb079eee76d3b0847972870f5d5a62995ce988f259"
+    }
+  },
+  "sha256": {
+    "tools/conventional-nnue/PrepareBt4.java": "2598d2dd6124afcd2928c01d9e33c309bf7bb5072be136ee2eccf01c1fe85ddc",
+    "tools/conventional-nnue/verify_bt4.py": "bb93625b82f2cfa8430e79052ac31241d5ded847440a2342fb7030527619c46c",
+    "tools/conventional-nnue/trainer/src/main.rs": "e159f45771a01c17c75c7b8a3e3e7292aa9446e2d27f1df03736bd0b0144ded4",
+    "tools/conventional-nnue/compute_control.py": "e937ea5f2586c81ea7325c74fb9e71c550269ae998bc678695f3cb3cc19a11bb",
+    "build/conventional-nnue/cargo-target/release/seed-conventional-nnue.exe": "fd7cb13c0430ed725af2cf85f9464d12fc4ae5f14141265e15b37b2c3587b44a",
+    "research/build/install/research/lib/engine-training.jar": "09526ddc81bbe54a01c0864c4b8a08adfd2c95c6602f373e4189de9d02a40432",
+    "research/build/install/research/lib/engine-core.jar": "7e6d218f64c8fa3147e121280ddf300e8f7d0043bfbd24a9349deb78936c5bf7"
+  },
+  "frozen_trainer": "build\\conventional-nnue\\frozen-trainers\\fd7cb13c0430ed725af2cf85f9464d12fc4ae5f14141265e15b37b2c3587b44a.exe",
+  "unit_tests": "One targeted immutable-decay/legacy-constant recipe test passed",
+  "clarification": "Raw verification result limitation wording is overbroad: no independent source redecoding was performed. Existing tested BINP decoder was reused; all stored links/results and 17,408 upstream packed boards were independently checked.",
+  "application_build": 62,
+  "production_runtime_changed": false
+}

@@ -19,11 +19,13 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('output',type=Path);parser.add_argument('source_config',type=Path)
     parser.add_argument('--emergency',action='store_true')
+    parser.add_argument('--batch-size',type=int,default=1024)
+    parser.add_argument('--batches-per-superbatch',type=int,default=128)
     args=parser.parse_args();compute_gate.require()
     args.output.mkdir(parents=True,exist_ok=False)
     base=json.loads(args.source_config.read_text())
     base.update(output=str((args.output/'segmented').resolve()),start_superbatch=1,end_superbatch=4,
-                batch_size=1024,batches_per_superbatch=128,save_rate=1,resume=None)
+                batch_size=args.batch_size,batches_per_superbatch=args.batches_per_superbatch,save_rate=1,resume=None)
     config=args.output/'config.json';cc.atomic(config,base)
     control=cc.Control(args.output/'test-control');control.request('NORMAL')
     command=[sys.executable,'-B',str(Path(cc.__file__)),'--state-dir',str(control.directory),
@@ -85,7 +87,9 @@ def main():
             held_checkpoint=latest,final_checkpoint=final,reference_checkpoint=str(reference_path),
             completed_segments_before_resume=len(before),completed_segments_after_resume=len(after),
             denied_fresh_process_exit=denied.returncode,full_pause_checked=True,
-            original_recipe='1024 batch,128 batches/superbatch,4 superbatches,constant LR/WDL',
+            original_recipe=dict(batch_size=base['batch_size'],batches_per_superbatch=base['batches_per_superbatch'],
+                superbatches=4,learning_rate=base['learning_rate'],wdl=base['wdl'],
+                lr_drop_every=base.get('lr_drop_every',0),lr_gamma=base.get('lr_gamma',1.0)),
             limitations='Single short local measurement; GPU continuation is not bitwise deterministic'))
         print(json.dumps(json.loads((args.output/'summary.json').read_text()),indent=2))
     finally:

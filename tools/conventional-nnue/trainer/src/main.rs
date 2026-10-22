@@ -5,6 +5,7 @@ use bullet_lib::{
     value::{ValueTrainerBuilder, loader::DirectSequentialDataLoader},
 };
 use bulletformat::ChessBoard;
+use bullet_lib::trainer::schedule::lr::LrScheduler;
 use serde::Deserialize;
 use sha2::{Digest, Sha256};
 use std::{env, fs, io::{BufRead, BufReader, BufWriter, Write}, path::Path};
@@ -25,8 +26,13 @@ struct Config {
     #[serde(default = "one")]
     save_rate: usize,
     data_fork_reason: Option<String>,
+    #[serde(default)]
+    lr_drop_every: usize,
+    #[serde(default = "unit_gamma")]
+    lr_gamma: f32,
 }
 fn one()->usize {1}
+fn unit_gamma()->f32 {1.0}
 fn digest(path:impl AsRef<Path>)->String {format!("{:x}",Sha256::digest(fs::read(path).unwrap()))}
 
 fn compute_permitted() -> bool {
@@ -86,6 +92,8 @@ fn train(config_path: &str) {
     assert!(c.batches_per_superbatch > 0 && c.start_superbatch > 0 && c.end_superbatch >= c.start_superbatch);
     assert!(c.save_rate>0);
     assert!(c.learning_rate.is_finite() && c.learning_rate > 0.0 && c.learning_rate <= 0.01);
+    assert!(c.lr_gamma.is_finite() && c.lr_gamma > 0.0 && c.lr_gamma <= 1.0);
+    assert!(c.lr_drop_every > 0 || c.lr_gamma == 1.0,"Decay needs a global superbatch interval");
     assert!(c.wdl.is_finite() && (0.0..=1.0).contains(&c.wdl));
     assert!(!Path::new(&c.output).exists(), "Output directory must be new; preserve completed/failed runs");
     assert!(fs::metadata(&c.data).unwrap().len() >= (c.batch_size * 32) as u64);
@@ -106,6 +114,8 @@ fn train(config_path: &str) {
         assert_eq!((c.seed,c.batch_size,c.batches_per_superbatch,c.learning_rate,c.wdl),
             (previous.seed,previous.batch_size,previous.batches_per_superbatch,previous.learning_rate,previous.wdl),
             "Resume cannot change optimizer/schedule recipe");
+        assert_eq!((c.lr_drop_every,c.lr_gamma),(previous.lr_drop_every,previous.lr_gamma),
+            "Resume cannot change the persisted global learning-rate schedule");
         if (c.data_sha256.as_str(),c.probes_sha256.as_str())!=(previous.data_sha256.as_str(),previous.probes_sha256.as_str()) {
             assert!(c.data_fork_reason.as_ref().is_some_and(|s|s.trim().len()>=12),
                 "Dataset/probe change requires an explicit data_fork_reason; this is not exact continuation of the old stream");
@@ -148,7 +158,8 @@ fn train(config_path: &str) {
         steps: TrainingSteps {batch_size:c.batch_size,batches_per_superbatch:c.batches_per_superbatch,
             start_superbatch:c.start_superbatch,end_superbatch:c.end_superbatch},
         wdl_scheduler:wdl::ConstantWDL{value:c.wdl},
-        lr_scheduler:lr::StepLR{start:c.learning_rate,gamma:1.0,step:usize::MAX}, save_rate:c.save_rate,
+        lr_scheduler:lr::StepLR{start:c.learning_rate,gamma:c.lr_gamma,
+            step:if c.lr_drop_every==0 {usize::MAX} else {c.lr_drop_every}}, save_rate:c.save_rate,
     };
     let settings = LocalSettings {threads:1,test_set:None,output_directory:&c.output,batch_queue_size:2};
     trainer.run(&schedule,&settings,&DirectSequentialDataLoader::new(&[&c.data]));
@@ -167,6 +178,7 @@ fn train(config_path: &str) {
         receipt.write_all(&serde_json::to_vec_pretty(&serde_json::json!({
             "schema":"seed-bullet-checkpoint-v1","bullet":"579b78b37a694cacd6e9ede4706386c15c34837c",
             "completed_superbatch":step,"config_sha256":digest(config_path),"files":files,
+            "effective_learning_rate":schedule.lr_scheduler.lr(0,step),
             "reproducibility":"fixed recipe/data/seed; GPU float reductions are not bitwise deterministic"
         })).unwrap()).unwrap();
         receipt.sync_all().unwrap(); drop(receipt);

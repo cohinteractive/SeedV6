@@ -1,0 +1,18 @@
+{
+  "data": "docs\\research\\conventional-nnue-cglhw\\raw\\e005-data\\train.data",
+  "output": "docs\\research\\conventional-nnue-cglhw\\raw\\e005-decay-smoke",
+  "probes": "docs\\research\\conventional-nnue-cglhw\\raw\\e005-data\\probes.fens",
+  "seed": 20261022,
+  "batch_size": 4096,
+  "batches_per_superbatch": 4,
+  "start_superbatch": 1,
+  "end_superbatch": 3,
+  "learning_rate": 0.001,
+  "wdl": 0.0,
+  "resume": null,
+  "data_sha256": "e22e0296daa033cb24fc27adfc7fe110d37fa2b84f06dbc58a2db5a45bbc29ab",
+  "probes_sha256": "443f9ab3ac0dce46025a4e4dbd986de8fd5c92ae06c36a6ef1c6a923c8ae0ce7",
+  "save_rate": 1,
+  "lr_drop_every": 1,
+  "lr_gamma": 0.5
+}
