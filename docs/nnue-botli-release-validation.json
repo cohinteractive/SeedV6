@@ -1,0 +1,234 @@
+{
+  "status": "WINDOWS_OFFLINE_VERIFIED_PENDING_NATIVE_MAC_ACCEPTANCE",
+  "date_auckland": "2026-10-23",
+  "artifact": {
+    "candidate": "seedv6-nnue-cp64-e008-rc1-build65-4fa0f9f984ad",
+    "source_revision": "4fa0f9f984ad3822ba5260e1a431374cdc1ac262",
+    "image": "releases\\candidates\\portable-java21\\seedv6-nnue-cp64-e008-rc1-build65-4fa0f9f984ad\\seedv6-nnue-cp64-e008-rc1",
+    "archive": "releases\\candidates\\portable-java21\\seedv6-nnue-cp64-e008-rc1-build65-4fa0f9f984ad\\seedv6-nnue-cp64-e008-rc1-build65-4fa0f9f984ad.tar.gz",
+    "archive_sha256": "12622ab91395a0c85e851ee3e853e251eefb0c952d3cfc672bf17e4d05947bf2",
+    "manifest_sha256": "994f81c533b7af13cc0e23a2f7af148d709e91fa0a6a2be5267fe6433a758420",
+    "status": "PENDING_NATIVE_MAC_ACCEPTANCE"
+  },
+  "network": {
+    "candidate": "nnue-cp64-e008-rc1",
+    "checkpoint": 64,
+    "schema": "S6CNU002",
+    "output_heads": 8,
+    "input_king_buckets": 10,
+    "hidden_per_perspective": 256,
+    "activation": "SCReLU",
+    "quantization": {
+      "QA": 255,
+      "QB": 64,
+      "scale": 400
+    },
+    "bytes": 3940952,
+    "file_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "payload_sha256": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+    "source": "docs/research/conventional-nnue-cglhw/raw/e007-evaluation64/network.cnnue",
+    "qualification_handoff": "docs/research/conventional-nnue-cglhw/CANDIDATE-HANDOFF.md",
+    "qualification_commit": "859a619",
+    "frozen_runtime_build": 64,
+    "frozen_runtime_source": "6213630",
+    "search": "E008_QXRAY_LMR_WINDOW_EFFORT_HINTS",
+    "workers": 1,
+    "status": "dedicated release candidate; no global production promotion",
+    "fixture_source": "docs/research/conventional-nnue-cglhw/raw/e007-evaluation64/python.jsonl",
+    "fixture_source_sha256": "d0164f670a7064554909d9ba79001fc35b2328db5e18ebfd6f5d3004715617b6",
+    "fixture_positions": 259
+  },
+  "host": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "cpu": "AMD Ryzen 5 5500, 6 cores / 12 logical processors",
+    "ram_gib": 31.79,
+    "java": "OpenJDK 21+35-2513 Windows AMD64",
+    "python_chess": "1.11.2",
+    "psutil": "7.2.2"
+  },
+  "runtime_jars": {
+    "app-uci.jar": "07b3ed204a2f4f6a90fca95a9df9fdf498b1636cae9c66192ac28d26d39b080e",
+    "engine-core.jar": "2f2db48af1433b3dbfca86811840378b79d0f532f1958b2d08c86b4a8a4d7b10"
+  },
+  "engine_core_classes_identical_to_frozen_build64": 212,
+  "java_tests": [
+    {
+      "suite": "com.ohinteractive.seedv6.uci.ConstructionUciTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.uci.GoCommandParserTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.uci.NnueCandidateTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.uci.StandaloneBoundaryTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.uci.UciMoveParserTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetworkTest",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "java_test_modes": "19 UCI and 13 conventional NNUE tests passed in scalar and vector modes before freeze; 19 UCI tests rerun on clean build65 with vector module",
+  "validation": {
+    "offline_botli_api_plies": 16,
+    "long_sequence_plies": 160,
+    "scalar_vector_depth5_exact": true,
+    "frozen_e008_depth5_exact": true,
+    "frozen_equality_fields": [
+      "completed depth",
+      "score",
+      "nodes",
+      "PV",
+      "bestmove"
+    ],
+    "corrupt_asset_cases": [
+      "missing",
+      "truncated",
+      "corrupt",
+      "incompatible",
+      "different-valid-checksum"
+    ],
+    "uci_threads_min_default_max": 1,
+    "hash_mib_tested": [
+      32,
+      64,
+      256
+    ],
+    "no_client_files_or_runtime_mutation": true,
+    "clean_quit_eof_and_no_orphans": true,
+    "stop_ms": 0.5944000004092231,
+    "jlink_base_only_windows_and_posix_launchers": "passed",
+    "posix_with_vector_windows_git_bash": "passed; not native Mac",
+    "general_gen32_route": "passed with established pinned --model asset; production default unchanged",
+    "process_searches_total": 48,
+    "packaged_candidate_searches": 44,
+    "frozen_reference_searches": 4
+  },
+  "performance": {
+    "scope": "bounded local sample, not an Elo or M1 performance claim",
+    "stability_peak_process_tree_rss_mib": 444.4765625,
+    "movetime150_wall_ms_min_median_max": [
+      140.50480000150856,
+      143.64704999752576,
+      149.85309999610763
+    ],
+    "clock3000_inc100_wall_ms": [
+      171.10549999051727,
+      165.51999999501277
+    ],
+    "movetime1000_samples": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "go": "movetime 1000",
+        "move": "e2e4",
+        "wall_seconds": 0.9972936999984086,
+        "last_iteration": "info depth 9 score cp 106 nodes 436678 time 764 nps 570919 pv e2e4 e7e6 d2d4 d7d5 b1c3 d5e4 c3e4 g8f6 e4f6 d8f6"
+      },
+      {
+        "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+        "go": "movetime 1000",
+        "move": "e4d5",
+        "wall_seconds": 0.9906609000026947,
+        "last_iteration": "info depth 7 score cp 206 nodes 238432 time 542 nps 439295 pv e4d5 f6d5 d4e5 d5c3 d2c3 d7d5 e1g1"
+      }
+    ],
+    "startup_handshake_ms": [
+      634.7936999954982,
+      546.3692000048468,
+      796.0223999980371,
+      533.4934999991674,
+      491.19050000444986
+    ],
+    "head": "vector-256-long; scalar-long verified with forced scalar, java.base-only module limit and physically module-absent jlink runtime"
+  },
+  "botli_upstream": {
+    "commit": "6aa64359abb629039ba455605734fd11a2639432",
+    "files": [
+      "README.md",
+      "engine.py",
+      "config.py"
+    ],
+    "executable_selection": "os.path.join(dir,name), executable permission check, chess.engine.popen_uci(path)",
+    "supported_uci_options": [
+      "Threads",
+      "Hash",
+      "Clear Hash",
+      "UseBook",
+      "OwnBook"
+    ],
+    "installed_mac_config_inspected": false,
+    "live_network_connection": false
+  },
+  "known_validation_corrections": [
+    {
+      "evidence": "build/nnue-release/process-01.log",
+      "finding": "Initial verifier passed functional checks but manual log review found unsolicited info after Hash warned by python-chess. Candidate now stays quiet on option changes and verifier checks this."
+    },
+    {
+      "evidence": "build/nnue-release/launcher-02.log",
+      "finding": "Initial Git Bash launcher test failed because Windows JVM did not receive converted classpath. Added conventional cygpath handling; preserved failure and passed corrected and frozen-archive checks."
+    }
+  ],
+  "not_performed": [
+    "Native Mac ARM64 execution, Java/library validation, inference backend or throughput/RSS",
+    "Installed Mac BotLi version/settings/concurrency/book inspection",
+    "Live Lichess games, matchmaking or activation",
+    "New training or Elo tournaments",
+    "GUI, broad legacy integration suite, signed native package or bundled Mac JRE",
+    "Sustained M1 thermal and concurrent-game memory tests"
+  ],
+  "raw_evidence": {
+    "build/nnue-release/tests-01.log": "cacb19ed62fcf2cf01500d6fec7b9702bb528cf44c2a731787a92fa644b33a75",
+    "build/nnue-release/package-01.log": "6800ab27caefce8ed4ebbbfe885beddb4f9f39fa0fc6ad862cbd6f1027c1dd30",
+    "build/nnue-release/package-02.log": "5f7546a9d86a0871ea89c3d24bffdcc2928a66f2b055853c5ea20a78ac1944b5",
+    "build/nnue-release/package-03.log": "91a1574a47b9e1098986e1b8af5f237bec3a1e9f82654fcefcd2336699321285",
+    "build/nnue-release/clean-build65.log": "dfa4748362e108425af3ac513f2b7a3a95b98accbdc540e81d31ea765e4c7646",
+    "build/nnue-release/qualification-recheck.json": "9272fcfe6a21675fc3519557e561c6faadd2f2fbcf8375b97a0d85e415e79717",
+    "build/nnue-release/final-process/result.json": "ddf3a9a8005543c64ccefa1b4efff59ca00ef475232707a2df531b7ca447fe9a",
+    "build/nnue-release/final-process.log": "60dbd30c23d9b7aab9563ee4b51c3dddab4c64a29b2c19b89d0c196f0e7d1197",
+    "build/nnue-release/final-launchers/result.json": "dcadb0e5a5aef9b36acdc1dd2d921474797d45646f923a157097ac1e688355a9",
+    "build/nnue-release/final-launchers.log": "ed2821b15b00fb46eb23da00a5ebdb1529b8f1a36aea7173413bad75a6996611",
+    "build/nnue-release/launcher-03/result.json": "63a4f9678c9d0c5c9fa178493e09b4e8a4ff91efcb41bfa6b0f330dd7c0fe395"
+  },
+  "human_actions_required": [
+    {
+      "action": "Run native-Mac acceptance against the exact archive using docs/nnue-botli-release-validation.md and docs/nnue-botli-candidate.md",
+      "blocking": "Mac release acceptance and live trial"
+    },
+    {
+      "action": "Inspect installed BotLi engine selection, options, ponder and concurrency locally without exposing token; preserve old executable/config",
+      "blocking": "Live activation"
+    },
+    {
+      "action": "Explicitly authorize BotLi configuration change/start only after native acceptance; retain rollback",
+      "blocking": "Deployment/Lichess connection"
+    }
+  ]
+}
