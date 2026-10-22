@@ -3,7 +3,13 @@
 **/build/
 
 # IDE Java compiler output (including copied resources)
+/bin/
 /app/bin/
+/app-gui/bin/
+/app-uci/bin/
+/engine-core/bin/
+/engine-training/bin/
+/research/bin/
 
 # Independent native application snapshots (not removed by Gradle clean)
 /dist/windows/
