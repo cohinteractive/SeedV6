@@ -83,6 +83,33 @@ not a Lichess rating estimate or owner acceptance.
 
 ## Normal Windows-to-Mac source workflow
 
+### Native Mac package with bundled Java
+
+On an Apple Silicon Mac with a supported Java 21 packaging JDK:
+
+```sh
+./gradlew :app-uci:packageMac
+```
+
+The reported `releases/candidates/macos-arm64/<candidate>/SeedV6-UCI/` image
+contains two executables. `SeedV6-UCI` retains the Gen32 production default;
+`SeedV6-NNUE-CP64` runs this pinned checkpoint-64 / E008 candidate without extra
+arguments. Keep the complete image together. The NNUE launcher uses only its
+bundled runtime and explicitly resolves `jdk.incubator.vector`; no system Java,
+external weight file or checkout path is needed. The runtime contains exactly
+`java.base` and `jdk.incubator.vector`. `--scalar` remains available.
+
+Packaging verifies both executables and the independently extracted ZIP with an
+empty PATH and unrelated working directory. The NNUE checks cover the full
+checkpoint/search identity, legal short searches, equal normal/scalar/module-absent
+results, and clean quit/EOF. Windows native packaging uses the same module policy
+and adds `SeedV6-NNUE-CP64.exe` beside `SeedV6-UCI.exe`.
+
+This is local packaging validation, not live BotLi activation or a new strength
+qualification. The Java source distribution below is unchanged.
+
+### Source distribution using installed Java
+
 The release implementation and evidence are integrated into `main`. The original
 release branch and frozen build-65 archive remain preserved. See
 [integration verification](nnue-main-integration.md) for the tested commit and

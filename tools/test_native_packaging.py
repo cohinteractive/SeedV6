@@ -5,12 +5,14 @@ import io
 import json
 import os
 from pathlib import Path
+import shutil
 import tempfile
 import unittest
 from unittest.mock import patch
 import zipfile
 
 import native_packaging as p
+import native_package_checks as checks
 
 
 class PackagingSafety(unittest.TestCase):
@@ -118,6 +120,11 @@ class PackagingSafety(unittest.TestCase):
         self.assertIn('/usr/bin/dirname', text)
         self.assertNotIn('open -a', text)
         self.assertNotIn('JAVA_HOME/bin', text)
+        self.assertNotIn('--add-modules', text)  # Ordinary Gen32 remains quiet/default.
+        nnue = p.launcher_text(nnue=True)
+        self.assertIn('--add-modules=jdk.incubator.vector', nnue)
+        self.assertIn('-XX:ActiveProcessorCount=2', nnue)
+        self.assertIn(checks.NNUE_MAIN + ' "$@"', nnue)
         self.assertEqual((Path('SeedV6-GUI.app/Contents/app'), Path('SeedV6-GUI.app/Contents/runtime/Contents/Home'),
                           Path('SeedV6-GUI.app/Contents/MacOS/SeedV6-GUI')),
                          p.layouts(Path('SeedV6-GUI.app'), 'gui', 'macos'))
@@ -136,33 +143,87 @@ class PackagingSafety(unittest.TestCase):
         self.assertEqual('/usr/bin/iconutil', commands[-1][0])
         self.assertEqual(stage / 'seedv6.icns', icon)
 
-    def test_mac_uci_uses_only_base_runtime_and_direct_exec(self):
+    def build_uci(self, platform='macos', modules='java.base,jdk.incubator.vector'):
         stage = self.work / 'stage'; stage.mkdir()
         model = self.work / 'model'; model.write_bytes(b'fixture-only')
         jars = []
         for name in ('engine-core.jar', 'app-uci.jar'):
             jar = self.work / name; jar.write_bytes(b'fixture-only'); jars.append(jar)
-        context = {'platform': 'macos', 'model': str(model), 'modelSha256': p.sha(model), 'jdk': str(self.work / 'jdk'),
+        context = {'platform': platform, 'model': str(model), 'modelSha256': p.sha(model), 'jdk': str(self.work / 'jdk'),
                    'version': {'major': 0, 'minor': 0, 'patch': 0, 'build': 35}}
         identity = {'model.sha256': p.sha(model), 'version': '0.0.0', 'build': '35'}
         commands = []
         def native(command, **kwargs):
             commands.append(command)
-            if str(command[0]).endswith('jdeps'):
-                return 'java.base'
-            runtime = Path(command[-1]); (runtime / 'legal/java.base').mkdir(parents=True)
+            if 'jdeps' in Path(command[0]).name:
+                return modules
+            if 'jpackage' in Path(command[0]).name:
+                image = stage / 'SeedV6-UCI'
+                shutil.copytree(stage / 'input', image / 'app')
+                (image / 'SeedV6-UCI.exe').touch()
+                runtime = image / 'runtime'
+            else:
+                runtime = Path(command[-1])
+            (runtime / 'legal/java.base').mkdir(parents=True)
             (runtime / 'legal/java.base/LICENSE').write_text('fixture-only')
             return ''
         with patch.object(p, 'model_probe', return_value=identity), patch.object(p, 'run', side_effect=native), \
              patch.object(p, 'production_manifest', return_value={'identity': {'model.sha256': p.sha(model)}}):
             image, _ = p.build_image(context, 'uci', stage, jars)
+        return image, commands, model
+
+    def test_mac_uci_links_exact_modules_and_keeps_gen32_and_nnue_launchers(self):
+        image, commands, model = self.build_uci()
         self.assertEqual(p.launcher_text(), (image / 'SeedV6-UCI').read_text())
         self.assertEqual(p.launcher_text().encode('utf-8'), (image / 'SeedV6-UCI').read_bytes())
         if os.name != 'nt':
             self.assertEqual(0o755, (image / 'SeedV6-UCI').stat().st_mode & 0o777)
-        self.assertEqual('java.base', commands[1][commands[1].index('--add-modules') + 1])
+        self.assertEqual(p.launcher_text(nnue=True).encode('utf-8'), (image / checks.NNUE_LAUNCHER).read_bytes())
+        if os.name != 'nt':
+            self.assertEqual(0o755, (image / checks.NNUE_LAUNCHER).stat().st_mode & 0o777)
+        self.assertEqual('java.base,jdk.incubator.vector', commands[1][commands[1].index('--add-modules') + 1])
         self.assertEqual({'engine-core.jar', 'app-uci.jar'}, {f.name for f in (image / 'app').glob('*.jar')})
         self.assertEqual(p.sha(model), p.sha(image / 'models/baseline.brn-pair2'))
+        self.assertEqual(p.sha(p.ROOT / 'docs/nnue-botli-candidate.md'), p.sha(image / 'NNUE-CANDIDATE.md'))
+        self.assertEqual(p.sha(p.ROOT / 'build-assets/nnue-candidate/manifest.json'), p.sha(image / 'network-manifest.json'))
+
+    def test_windows_uci_links_same_modules_and_adds_nnue_console_launcher(self):
+        image, commands, _ = self.build_uci(platform='windows')
+        command = commands[1]
+        self.assertEqual('java.base,jdk.incubator.vector', command[command.index('--add-modules') + 1])
+        self.assertIn('--win-console', command)
+        self.assertEqual(p.APPS['uci'][1], command[command.index('--main-class') + 1])
+        name, properties = command[command.index('--add-launcher') + 1].split('=', 1)
+        self.assertEqual(checks.NNUE_LAUNCHER, name)
+        config = Path(properties).read_text()
+        self.assertIn('main-class=' + checks.NNUE_MAIN, config)
+        self.assertIn('--add-modules=jdk.incubator.vector', config)
+        self.assertIn('win-console=true', config)
+
+    def test_uci_jdeps_rejects_unexpected_desktop_dependency(self):
+        with self.assertRaisesRegex(RuntimeError, 'must require exactly'):
+            self.build_uci(modules='java.base,java.desktop,jdk.incubator.vector')
+        self.assertFalse((self.work / 'stage/SeedV6-UCI/runtime').exists())
+
+    def test_uci_jdeps_rejects_missing_vector_dependency(self):
+        with self.assertRaisesRegex(RuntimeError, 'must require exactly'):
+            self.build_uci(platform='windows', modules='java.base')
+        self.assertFalse((self.work / 'stage/SeedV6-UCI').exists())
+
+    def test_uci_runtime_rejects_missing_extra_modules_and_owner_leakage(self):
+        app = self.work / 'app'; app.mkdir()
+        for name in ('app-uci.jar', 'engine-core.jar'):
+            with zipfile.ZipFile(app / name, 'w') as jar:
+                jar.writestr(name + '.class', b'fixture')
+        modules = ['java.base@21', 'jdk.incubator.vector@21']
+        checks.verify_dependencies('uci', app, modules, 'macos')
+        for invalid in (modules[:1], modules + ['java.desktop@21'], modules + ['java.sql@21']):
+            with self.subTest(modules=invalid), self.assertRaisesRegex(RuntimeError, 'runtime must contain exactly'):
+                checks.verify_dependencies('uci', app, invalid, 'macos')
+        with zipfile.ZipFile(app / 'engine-core.jar', 'a') as jar:
+            jar.writestr('com/ohinteractive/seedv6/training/Leak.class', b'fixture')
+        with self.assertRaisesRegex(RuntimeError, 'UCI owner leakage'):
+            checks.verify_dependencies('uci', app, modules, 'macos')
 
     def test_tracked_model_and_negative_inputs(self):
         model = p.ROOT / 'build-assets/production' / p.production_manifest()['payload']

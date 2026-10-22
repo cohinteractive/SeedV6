@@ -2,10 +2,16 @@
 import os
 from pathlib import Path
 import queue
+import re
 import subprocess
 import threading
 import time
 import zipfile
+
+UCI_MODULES = ('java.base', 'jdk.incubator.vector')
+NNUE_LAUNCHER = 'SeedV6-NNUE-CP64'
+NNUE_MAIN = 'com.ohinteractive.seedv6.uci.NnueCandidateUciMain'
+VECTOR_WARNING = 'WARNING: Using incubator modules: jdk.incubator.vector'
 
 
 def check(ok, message):
@@ -27,7 +33,16 @@ def verify_dependencies(application, app, modules, target):
                else 'java-options=-Djava.awt.headless=true') in config, 'Missing packaged JVM options')
     if application == 'uci':
         check(names == {'engine-core.jar', 'app-uci.jar'}, 'UCI has forbidden/missing runtime JARs: ' + repr(names))
-        check(len(modules) == 1 and modules[0].startswith('java.base@'), 'UCI runtime must contain java.base only')
+        check({m.split('@', 1)[0] for m in modules} == set(UCI_MODULES),
+              'UCI runtime must contain exactly ' + ','.join(UCI_MODULES))
+        if target == 'windows':
+            config = (app / (NNUE_LAUNCHER + '.cfg')).read_text()
+            check('app.mainclass=' + NNUE_MAIN in config, 'Wrong NNUE packaged entry point')
+            for option in ('--add-modules=jdk.incubator.vector', '-XX:ActiveProcessorCount=2', '-Xmx768m', '-Djava.awt.headless=true'):
+                check('java-options=' + option in config, 'Missing NNUE JVM option ' + option)
+            classpath = [line.split('=', 1)[1].replace('\\', '/') for line in config.splitlines()
+                         if line.startswith('app.classpath=')]
+            check(set(classpath) == {'$APPDIR/' + name for name in names}, 'Wrong NNUE launcher classpath')
     else:
         required = {'engine-core.jar', 'engine-training.jar', 'app-gui.jar', 'desktop-package.jar',
                     'flatlaf-3.7.jar', 'jna-5.17.0.jar', 'jna-platform-5.17.0.jar', 'gson-2.11.0.jar',
@@ -61,17 +76,19 @@ def verify_dependencies(application, app, modules, target):
                               for e in entries for owner in ('gui', 'training', 'corpus')), 'UCI owner leakage')
     if target == 'windows':
         # Inspect PE subsystem without starting a window; GUI=2, console=3.
-        launcher = app.parent / ('SeedV6-' + application.upper() + '.exe')
-        data = launcher.read_bytes()
-        pe = int.from_bytes(data[0x3c:0x40], 'little')
-        check(data[pe:pe + 4] == b'PE\0\0', 'Missing PE launcher')
-        check(int.from_bytes(data[pe + 4:pe + 6], 'little') == 0x8664, 'Launcher is not x64')
-        subsystem = int.from_bytes(data[pe + 24 + 68:pe + 24 + 70], 'little')
-        check(subsystem == (2 if application == 'gui' else 3), 'Wrong Windows launcher subsystem')
+        launchers = ['SeedV6-' + application.upper()] + ([NNUE_LAUNCHER] if application == 'uci' else [])
+        for name in launchers:
+            data = (app.parent / (name + '.exe')).read_bytes()
+            pe = int.from_bytes(data[0x3c:0x40], 'little')
+            check(data[pe:pe + 4] == b'PE\0\0', 'Missing PE launcher')
+            check(int.from_bytes(data[pe + 4:pe + 6], 'little') == 0x8664, 'Launcher is not x64')
+            subsystem = int.from_bytes(data[pe + 24 + 68:pe + 24 + 70], 'little')
+            check(subsystem == (2 if application == 'gui' else 3), 'Wrong Windows launcher subsystem')
 
 
 class Engine:
-    def __init__(self, command, cwd, env):
+    def __init__(self, command, cwd, env, allowed_stderr=()):
+        self.allowed_stderr = allowed_stderr
         self.process = subprocess.Popen(list(map(str, command)), cwd=cwd, env=env,
             stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
             encoding='utf-8', errors='replace', bufsize=1)
@@ -111,7 +128,7 @@ class Engine:
             reader.join(timeout=2)
             check(not reader.is_alive(), 'UCI child retained protocol streams after termination')
         check(self.process.returncode == 0, 'UCI nonzero exit: ' + repr(self.errors))
-        check(not self.errors, 'Unexpected UCI stderr: ' + repr(self.errors))
+        check(all(line in self.allowed_stderr for line in self.errors), 'Unexpected UCI stderr: ' + repr(self.errors))
 
     def kill(self):
         # Closing stdin also drains a restarted JDK launcher child on failing tests.
@@ -251,4 +268,54 @@ def verify_uci(launcher, stage, env, model):
               'Invalid model did not fail cleanly: ' + name)
     checks.append('Missing/corrupt/incompatible model fails nonzero on stderr without protocol/fallback')
     return {'status': 'passed', 'searches': searches, 'checks': checks, 'transcripts': transcripts,
-            'externalJava': 'PATH empty; JAVA_HOME/JDK_HOME removed', 'guiTraining': 'absent; java.base-only runtime'}
+            'externalJava': 'PATH empty; JAVA_HOME/JDK_HOME removed', 'guiTraining': 'absent'}
+
+
+def verify_nnue(launcher, stage, env, java, app):
+    """Short native-image gate for the pinned E008 entry point and exact fallback."""
+    cwd = stage / 'unrelated NNUE client working directory'; cwd.mkdir(exist_ok=True)
+    roots = (
+        ('startpos', {f'{f}2{f}{r}' for f in 'abcdefgh' for r in '34'} | {'b1a3', 'b1c3', 'g1f3', 'g1h3'}),
+        ('fen 4k3/8/8/8/8/8/4P3/4K3 w - - 0 1', {'e1d1', 'e1f1', 'e1d2', 'e1f2', 'e2e3', 'e2e4'}),
+        ('fen 7k/P7/8/8/8/8/8/7K w - - 0 1', {'h1g1', 'h1g2', 'h1h2', 'a7a8q', 'a7a8r', 'a7a8b', 'a7a8n'}))
+    transcripts = []; signatures = []
+    base = [java, '--limit-modules=java.base', '-XX:ActiveProcessorCount=2', '-Xmx768m',
+            '-Djava.awt.headless=true', '-cp', str(app / '*'), NNUE_MAIN]
+    for mode, command in (('normal', [launcher]), ('scalar', [launcher, '--scalar']), ('module-absent', base)):
+        engine = Engine(command, cwd, env, allowed_stderr=(VECTOR_WARNING,))
+        try:
+            engine.send('uci'); handshake = engine.until('uciok')
+            identity = next((line for line in handshake if line.startswith('info string candidate=')), '')
+            for field in ('candidate=nnue-cp64-e008-rc1', 'evaluator=CONVENTIONAL_NNUE', 'checkpoint=64',
+                          'schema=S6CNU002', 'heads=8',
+                          'networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b',
+                          'payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6',
+                          'search=E008_QXRAY_LMR_WINDOW_EFFORT_HINTS', 'execution=recursive-pvs',
+                          'qsearch=QXRAY lmr=QUIET lmp=WINDOW reuse=EFFORT',
+                          'hints=completed_same_key history=invocation learning=all_searched',
+                          'aspiration=OFF futility=OFF reverseFutility=OFF nullMove=OFF extensions=OFF', 'workers=1'):
+                check(field in identity, 'Wrong native NNUE identity: missing ' + field)
+            check('option name Threads type spin default 1 min 1 max 1' in handshake, 'Wrong NNUE worker limit')
+            if mode != 'normal':
+                check('head=scalar-long' in identity, 'NNUE scalar fallback did not activate')
+            engine.send('isready'); engine.until('readyok')
+            results = []
+            for position, legal in roots:
+                engine.send('ucinewgame\nposition ' + position + '\ngo depth 3')
+                lines = engine.until('bestmove ')
+                check(lines[-1] in {'bestmove ' + move for move in legal}, 'Illegal NNUE bestmove: ' + repr(lines))
+                depth = [line for line in lines if line.startswith('info depth 3 ')]
+                check(len(depth) == 1, 'NNUE search did not complete depth 3')
+                results.append((re.sub(r' (?:time|nps) \d+', '', depth[0]), lines[-1]))
+            engine.close(eof=mode == 'module-absent')
+            if mode != 'module-absent':
+                check(engine.errors == [VECTOR_WARNING], 'NNUE launcher did not resolve Vector module')
+            else:
+                check(not engine.errors, 'Module-absent fallback emitted stderr')
+            signatures.append(results)
+            transcripts.append({'mode': mode, 'identity': identity, 'sent': engine.sent,
+                                'stdout': engine.lines, 'stderr': engine.errors, 'exitCode': engine.process.returncode})
+        finally:
+            engine.kill()
+    check(signatures[0] == signatures[1] == signatures[2], 'Native NNUE vector/scalar search mismatch')
+    return {'status': 'passed', 'searches': len(roots) * 3, 'scalarVectorEqual': True, 'transcripts': transcripts}

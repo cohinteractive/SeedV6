@@ -21,6 +21,7 @@ import uuid
 import zipfile
 
 import packaging_jdk
+from native_package_checks import UCI_MODULES, NNUE_LAUNCHER, NNUE_MAIN
 
 ROOT = Path(__file__).resolve().parents[1]
 APPS = {'gui': ('SeedV6-GUI', 'com.ohinteractive.seedv6.gui.SwingLauncher'),
@@ -166,13 +167,15 @@ def model_probe(context, stage, jars, model, kind='model', java=None):
     return properties(output)
 
 
-def launcher_text():
+def launcher_text(nnue=False):
+    options = '--add-modules=jdk.incubator.vector -XX:ActiveProcessorCount=2 ' if nnue else ''
+    main = NNUE_MAIN if nnue else APPS['uci'][1]
     return '''#!/bin/sh
 set -eu
 APP_HOME=$(CDPATH= cd -- "$(/usr/bin/dirname -- "$0")" && pwd)
 unset JAVA_HOME JDK_HOME CLASSPATH JAVA_TOOL_OPTIONS _JAVA_OPTIONS JDK_JAVA_OPTIONS
-exec "$APP_HOME/runtime/bin/java" -Xmx768m -Djava.awt.headless=true \\
-    -cp "$APP_HOME/app/*" com.ohinteractive.seedv6.uci.UciMain "$@"
+exec "$APP_HOME/runtime/bin/java" ''' + options + '''-Xmx768m -Djava.awt.headless=true \\
+    -cp "$APP_HOME/app/*" ''' + main + ''' "$@"
 '''
 
 
@@ -219,17 +222,22 @@ def build_image(context, application, stage, jars):
             archive.writestr('com/ohinteractive/seedv6/desktop-build.properties',
                              'builtAt=' + datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00', 'Z')
                              + '\nplatform=' + target + ' / ' + context['architecture'] + '\n')
+    if application == 'uci':
+        # The shared core now includes conventional NNUE's optional Vector kernel.
+        # Keep the headless boundary strict: no desktop/training or unknown modules.
+        modules = run([tool(context, 'jdeps'), '--multi-release', '21', '--print-module-deps',
+                       '--class-path', str(input_dir / '*'), input_dir / 'app-uci.jar', input_dir / 'engine-core.jar'])
+        require(set(modules.split(',')) == set(UCI_MODULES),
+                'Standalone UCI must require exactly ' + ','.join(UCI_MODULES) + ': ' + modules)
     if target == 'macos' and application == 'uci':
         image = stage / name; image.mkdir()
         shutil.copytree(input_dir, image / 'app')
-        modules = run([tool(context, 'jdeps'), '--multi-release', '21', '--print-module-deps',
-                       '--class-path', str(input_dir / '*'), input_dir / 'app-uci.jar', input_dir / 'engine-core.jar'])
-        require(modules == 'java.base', 'Standalone UCI must require java.base only: ' + modules)
-        run([tool(context, 'jlink'), '--add-modules', 'java.base', '--strip-debug', '--no-header-files', '--no-man-pages',
+        run([tool(context, 'jlink'), '--add-modules', ','.join(UCI_MODULES), '--strip-debug', '--no-header-files', '--no-man-pages',
              '--compress=zip-6', '--output', image / 'runtime'])
         # Write exact UTF-8/LF bytes without Python 3.10's write_text(newline=).
-        (image / name).write_bytes(launcher_text().encode('utf-8'))
-        (image / name).chmod(0o755)
+        for executable, nnue in ((name, False), (NNUE_LAUNCHER, True)):
+            (image / executable).write_bytes(launcher_text(nnue).encode('utf-8'))
+            (image / executable).chmod(0o755)
     else:
         command = [tool(context, 'jpackage'), '--type', 'app-image', '--name', name,
                    '--vendor', 'OH Interactive', '--input', input_dir, '--main-jar', f'app-{application}.jar',
@@ -246,8 +254,12 @@ def build_image(context, application, stage, jars):
                 resources, icon = mac_resources(context, stage)
                 command += ['--resource-dir', resources, '--icon', icon, '--mac-package-identifier', 'com.ohinteractive.seedv6.gui']
         else:
-            command += ['--win-console', '--add-modules', 'java.base', '--java-options', '-Xmx768m',
-                        '--java-options', '-Djava.awt.headless=true']
+            candidate = stage / 'nnue-launcher.properties'
+            candidate.write_text('main-jar=app-uci.jar\nmain-class=' + NNUE_MAIN
+                + '\njava-options=--add-modules=jdk.incubator.vector -XX:ActiveProcessorCount=2 -Xmx768m -Djava.awt.headless=true'
+                + '\nwin-console=true\n', encoding='utf-8')
+            command += ['--win-console', '--add-modules', ','.join(UCI_MODULES), '--java-options', '-Xmx768m',
+                        '--java-options', '-Djava.awt.headless=true', '--add-launcher', NNUE_LAUNCHER + '=' + str(candidate)]
         run(command)
         image = stage / (name + ('.app' if target == 'macos' else ''))
     app, runtime, launcher = layouts(image, application, target)
@@ -256,6 +268,10 @@ def build_image(context, application, stage, jars):
     model_target.parent.mkdir(); shutil.copy2(model, model_target)
     require(sha(model_target) == identity['model.sha256'], 'Packaged model mismatch.')
     require(launcher.is_file() and (runtime / 'legal/java.base/LICENSE').is_file(), 'Incomplete launcher/runtime/license.')
+    if application == 'uci':
+        # Carry the candidate's usage, attribution and frozen network provenance.
+        shutil.copy2(ROOT / 'docs/nnue-botli-candidate.md', image / 'NNUE-CANDIDATE.md')
+        shutil.copy2(ROOT / 'build-assets/nnue-candidate/manifest.json', image / 'network-manifest.json')
     # Every third-party JAR remains intact, including its bundled licenses/native payloads.
     (image / 'CANDIDATE.txt').write_text('SeedV6 local packaging candidate. Not an official release.\n'
         'Approved production model included; candidate publication is a separate owner action.\n'
@@ -335,7 +351,7 @@ def rename_exclusive(source, destination_path):
 
 
 def verify_runtime(context, application, image, stage):
-    from native_package_checks import verify_uci, verify_dependencies
+    from native_package_checks import verify_uci, verify_dependencies, verify_nnue
     app, runtime, launcher = layouts(image, application, context['platform'])
     java = runtime / 'bin' / ('java.exe' if context['platform'] == 'windows' else 'java')
     modules = run([java, '--list-modules'], env=environment(empty_path=True)).splitlines()
@@ -349,7 +365,11 @@ def verify_runtime(context, application, image, stage):
         require(result.get('gui.headlessResourcesAndJni') == 'passed', 'GUI headless native verification failed.')
         return {'status': 'headless-resources-jni-passed', 'interactiveGui': 'NOT RUN; owner gate',
                 'optionalSyzygy': result['gui.optionalSyzygy'], 'modules': modules}
-    return verify_uci(launcher, stage, environment(empty_path=True), app.parent / 'models/baseline.brn-pair2')
+    result = verify_uci(launcher, stage, environment(empty_path=True), app.parent / 'models/baseline.brn-pair2')
+    result['modules'] = modules
+    nnue = image / (NNUE_LAUNCHER + ('.exe' if context['platform'] == 'windows' else ''))
+    result['nnueCandidate'] = verify_nnue(nnue, stage, environment(empty_path=True), java, app)
+    return result
 
 
 def package(a):

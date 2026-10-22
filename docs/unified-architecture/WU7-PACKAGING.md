@@ -90,7 +90,7 @@ for current Mac evidence and acceptance limits.
 
 ### Production model identity and staging
 
-The only tracked payload is `build-assets/production/bre-pair2-g32.brn-pair2`
+The tracked Gen32 payload is `build-assets/production/bre-pair2-g32.brn-pair2`
 (795,032 bytes). Adjacent `manifest.json` describes generation 32, lineage,
 checkpoint, schema version 1, BRN_PAIR2 evaluator and unchanged quarter-residual
 calibration. SHA-256:
@@ -159,6 +159,15 @@ launchers are `SeedV6-GUI/SeedV6-GUI.exe` (windowed) and
 with `exec`, suitable for a subprocess without Finder. Keep the entire app image.
 Mac ZIP extraction must preserve executable permissions (e.g. `ditto -x -k`).
 
+23 October 2026: shared engine-core now includes conventional NNUE's optional
+Vector API kernel. Native UCI packaging checks and links exactly `java.base` and
+`jdk.incubator.vector`; the earlier base-only runtime assumption no longer applies
+to this JAR. The no-GUI/no-training JAR and class boundaries remain enforced.
+`SeedV6-UCI` still starts Gen32. The additional `SeedV6-NNUE-CP64` executable
+(`.exe` on Windows) selects the pinned checkpoint-64/eight-head E008 candidate
+and explicitly resolves Vector, retaining scalar fallback. Both launchers share
+the same two JARs and runtime. See the [candidate guide](../nnue-botli-candidate.md#native-mac-package-with-bundled-java).
+
 GUI includes app-gui, engine-core, engine-training, FlatLaf 3.7, JNA/platform
 5.17.0, Gson 2.11.0 and its existing annotations dependency, Zstandard JNI
 1.5.7-20 and SQLite JDBC 3.53.4.0. It uses the original SwingLauncher, artwork,
@@ -167,8 +176,8 @@ existing default jpackage module set plus jdk.incubator.vector, including
 java.desktop, java.sql and jdk.unsupported. Only a separate desktop-package.jar
 contains build timestamp/platform resources; engine-core.jar is never stamped.
 
-UCI contains **only app-uci.jar and engine-core.jar**, the pinned model, launcher,
-java.base-only runtime, licenses and candidate metadata. It has no GUI, training,
+UCI contains **only app-uci.jar and engine-core.jar**, the pinned models, launchers,
+base/Vector runtime, licenses and candidate metadata. It has no GUI, training,
 research or legacy implementation. Its default model is relative to the installed
 JAR, never the invoking cwd; `--model` retains explicit validated override behavior.
 GUI carries the same pinned payload for identity/inference verification but keeps
