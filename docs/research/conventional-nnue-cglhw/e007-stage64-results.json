@@ -1,0 +1,818 @@
+{
+  "final_checkpoint": {
+    "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-training-64\\segments\\000064-37ddad38acef\\run\\seed-cnnue-v1-64",
+    "completed_superbatch": 64,
+    "next_superbatch": 65,
+    "receipt_sha256": "4dac95eaa474801757df6488a8514c0432a29bc1d691a96f60155f3e22940af9",
+    "config_sha256": "83f9d1113948c252583e389123720ee6450c417295be2597918b37c593f95be3",
+    "verified_at": "2026-10-22T11:21:06+00:00",
+    "process_exit_code": 0,
+    "wall_seconds": 4.0929765999972005
+  },
+  "new_exposures": 251658240,
+  "total_exposures": 268435456,
+  "stage_process_seconds": 240.2016309000246,
+  "curve": [
+    {
+      "step": 8,
+      "loss": 0.01498
+    },
+    {
+      "step": 16,
+      "loss": 0.013691
+    },
+    {
+      "step": 24,
+      "loss": 0.013108
+    },
+    {
+      "step": 32,
+      "loss": 0.012761
+    },
+    {
+      "step": 40,
+      "loss": 0.012526
+    },
+    {
+      "step": 48,
+      "loss": 0.012354
+    },
+    {
+      "step": 56,
+      "loss": 0.012223
+    },
+    {
+      "step": 64,
+      "loss": 0.012117
+    }
+  ],
+  "parity": {
+    "status": "PASS",
+    "positions": 259,
+    "output_buckets": 8,
+    "exact_features": "Python / Java / pinned Bullet",
+    "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+    "gpu_float_max_abs_raw_error": 1.4548101248124112e-06,
+    "gpu_float_tolerance": 2e-05,
+    "quantization_max_abs_cp_error": 24.75208269284076,
+    "quantization_rms_cp_error": 7.38563862458531,
+    "limitation": "Quantization error is measured separately; no strength or calibration claim"
+  },
+  "validation": {
+    "sigmoid_mse": 0.016816835043699154,
+    "zero_score_mse": 0.0659978710509739,
+    "cp_mae": 358.82837295532227,
+    "payload_sha256": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+    "positions": 524288
+  },
+  "uci": {
+    "status": "PASS",
+    "workers": 1,
+    "network": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
+    "identity": [
+      "id name SeedV6 conventional NNUE opt-in 0.0.0 (build 63)",
+      "id author Charles Clark",
+      "option name Threads type spin default 1 min 1 max 16",
+      "option name Hash type spin default 64 min 1 max 1024",
+      "option name Clear Hash type button",
+      "option name UseBook type check default false",
+      "option name OwnBook type check default false",
+      "info string evaluator=CONVENTIONAL_NNUE schema=S6CNU002 payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 search=recursive-unpruned-qsearch workers=1 hashMiB=64 build=63 source=e54ec3b6d906 ttMiB=64",
+      "uciok"
+    ],
+    "searches": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "bestmove": "e2e4",
+        "last_info": "info depth 5 score cp 81 nodes 55708 time 207 nps 268537 pv e2e4 d7d5 e4d5 d8d5 d2d4"
+      },
+      {
+        "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+        "bestmove": "e4d5",
+        "last_info": "info depth 4 score cp 176 nodes 52464 time 124 nps 419906 pv e4d5 e6d5 c3d5 f6d5 f3e5 c6e5 d4e5"
+      },
+      {
+        "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+        "bestmove": "e1d2",
+        "last_info": "info depth 10 score cp 7 nodes 142490 time 200 nps 710324 pv e1d2 e8e7 d2d3 e7d7 d3c3 d7e7 c3d3 e7f7 d3e3 f7g8"
+      },
+      {
+        "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+        "bestmove": "h2h1q",
+        "last_info": "info depth 8 score cp 2112 nodes 152480 time 210 nps 724948 pv h2h1q e1e2 e8e7 e2f2 h1a8 f2e1 e7d6 e1d1 a8a7"
+      }
+    ],
+    "lifecycle": "stop/readiness/newgame/repeated search/quit passed"
+  },
+  "gen32_screen": {
+    "games": 16,
+    "completed": 16,
+    "wins": 5,
+    "draws": 4,
+    "losses": 7,
+    "censored": 0,
+    "all_game_score_bounds": [
+      0.4375,
+      0.4375
+    ],
+    "score": 0.4375,
+    "elo": -43.65778777002721,
+    "paired_bootstrap_95_score": [
+      0.21875,
+      0.65625
+    ],
+    "paired_bootstrap_95_elo": [
+      -221.1367874631123,
+      112.3306438302777
+    ],
+    "pairs": 8,
+    "uncertainty": "percentile bootstrap by opening; exploratory, unreliable at tiny n/boundaries; no sequential significance claim",
+    "elapsed_seconds": 65.80006599999615
+  },
+  "gen32_protocol": {
+    "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
+    "network_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "openings_sha256": "09e46f558260a4545b7f52fccad501b24953fc352ef8730845352a92340e2fc4",
+    "openings": [
+      {
+        "name": "Open game",
+        "moves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6"
+      },
+      {
+        "name": "Sicilian",
+        "moves": "e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6"
+      },
+      {
+        "name": "French",
+        "moves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6"
+      },
+      {
+        "name": "Caro Kann",
+        "moves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4"
+      },
+      {
+        "name": "Queens gambit",
+        "moves": "d2d4 d7d5 c2c4 e7e6 b1c3 g8f6"
+      },
+      {
+        "name": "Indian",
+        "moves": "d2d4 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6"
+      },
+      {
+        "name": "English",
+        "moves": "c2c4 e7e5 b1c3 g8f6 g1f3 b8c6"
+      },
+      {
+        "name": "Reti",
+        "moves": "g1f3 d7d5 g2g3 g8f6 f1g2 e7e6"
+      }
+    ],
+    "movetime_ms": 50,
+    "max_plies": 400,
+    "threads": 1,
+    "hash_mib": 32,
+    "use_book": false,
+    "ponder": false,
+    "concurrent_games": 1,
+    "commands": [
+      [
+        "C:/java/jdk-21/bin/java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+        "com.ohinteractive.seedv6.uci.UciMain",
+        "--nnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue"
+      ],
+      [
+        "C:/java/jdk-21/bin/java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+        "com.ohinteractive.seedv6.uci.UciMain",
+        "--model",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\production\\bre-pair2-g32.brn-pair2"
+      ]
+    ],
+    "jar_sha256": {
+      "app-uci.jar": "a0ef8f2b867b0b43f37881d8c9e976894578f1cfea3652259a49adb258a67395",
+      "engine-core.jar": "7e06d963624b1c5e162f0f8a6ca3ee752a5af54aaf4caf3e78ea5a1bda495041"
+    },
+    "baseline_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "purpose": "prospective development screen; different calibrated search policies; complete-engine comparison",
+    "outcome_policy": "python-chess formal endings including claimable draws; cap censored, no score adjudication"
+  },
+  "phase_diagnostics": {
+    "one_head": {
+      "payload_sha256": "960130eb80f0521181c7d1492ac70c6b966de9967f711a4ec1a3c6ae4cebb9d5",
+      "overall": {
+        "positions": 524288,
+        "sigmoid_mse": 0.016863991089775016,
+        "zero_score_mse": 0.0659978710509739,
+        "link_mae": 375.8773937225342,
+        "outcome_mse": 0.06386582530877204,
+        "teacher_outcome_mse": 0.04780544508068106,
+        "mean_prediction": 0.5024796370427009,
+        "mean_teacher": 0.5016495869410731,
+        "mean_outcome": 0.499908447265625
+      },
+      "material_buckets_2_to_5_through_30_to_32": [
+        {
+          "positions": 74620,
+          "sigmoid_mse": 0.0033543518332499007,
+          "zero_score_mse": 0.11872405560961442,
+          "link_mae": 595.3056017153579,
+          "outcome_mse": 0.003622703206072861,
+          "teacher_outcome_mse": 0.00022362379285608972,
+          "mean_prediction": 0.5258146009491439,
+          "mean_teacher": 0.524944366531629,
+          "mean_outcome": 0.5249396944518896
+        },
+        {
+          "positions": 66105,
+          "sigmoid_mse": 0.01702201364685657,
+          "zero_score_mse": 0.09178831428014016,
+          "link_mae": 575.8900385749944,
+          "outcome_mse": 0.03068457297105848,
+          "teacher_outcome_mse": 0.012507855376288358,
+          "mean_prediction": 0.505037558534906,
+          "mean_teacher": 0.504421349930139,
+          "mean_outcome": 0.5032599652068679
+        },
+        {
+          "positions": 78531,
+          "sigmoid_mse": 0.021185654034482297,
+          "zero_score_mse": 0.07430458475274761,
+          "link_mae": 436.0159172810737,
+          "outcome_mse": 0.047742718269899204,
+          "teacher_outcome_mse": 0.026360917186111988,
+          "mean_prediction": 0.4957570734179739,
+          "mean_teacher": 0.49647949281987047,
+          "mean_outcome": 0.4946581604716609
+        },
+        {
+          "positions": 73816,
+          "sigmoid_mse": 0.023508885499810093,
+          "zero_score_mse": 0.06423993248834171,
+          "link_mae": 368.58931667931074,
+          "outcome_mse": 0.060042428495959005,
+          "teacher_outcome_mse": 0.03740572672129158,
+          "mean_prediction": 0.4947168218435519,
+          "mean_teacher": 0.49521190351646316,
+          "mean_outcome": 0.49329413677251543
+        },
+        {
+          "positions": 63283,
+          "sigmoid_mse": 0.02503977204197333,
+          "zero_score_mse": 0.06070269319678488,
+          "link_mae": 334.19139421329584,
+          "outcome_mse": 0.07661627797365533,
+          "teacher_outcome_mse": 0.052257963542415374,
+          "mean_prediction": 0.4949291135880602,
+          "mean_teacher": 0.49364769694775024,
+          "mean_outcome": 0.4923360144114533
+        },
+        {
+          "positions": 62425,
+          "sigmoid_mse": 0.021485476401737938,
+          "zero_score_mse": 0.0464249400098761,
+          "link_mae": 263.3558510212255,
+          "outcome_mse": 0.09337272935978404,
+          "teacher_outcome_mse": 0.07438053514932137,
+          "mean_prediction": 0.49806177103445026,
+          "mean_teacher": 0.49522829797746076,
+          "mean_outcome": 0.49349619543452145
+        },
+        {
+          "positions": 65643,
+          "sigmoid_mse": 0.013507811927581206,
+          "zero_score_mse": 0.027633221832210196,
+          "link_mae": 174.52337644531787,
+          "outcome_mse": 0.11173722255025394,
+          "teacher_outcome_mse": 0.10086247193263397,
+          "mean_prediction": 0.5001639846013819,
+          "mean_teacher": 0.49838352378896644,
+          "mean_outcome": 0.4952546349191841
+        },
+        {
+          "positions": 39865,
+          "sigmoid_mse": 0.006383235134699,
+          "zero_score_mse": 0.01365696917900593,
+          "link_mae": 102.43762699109494,
+          "outcome_mse": 0.12522046031718295,
+          "teacher_outcome_mse": 0.1208541686587339,
+          "mean_prediction": 0.5048931486034902,
+          "mean_teacher": 0.5036904650836621,
+          "mean_outcome": 0.4998118650445253
+        }
+      ],
+      "teacher_probability_deciles": [
+        {
+          "positions": 55260,
+          "sigmoid_mse": 0.026731611025447875,
+          "zero_score_mse": 0.23296720221757589,
+          "link_mae": 1130.929080709374,
+          "outcome_mse": 0.036802377082661104,
+          "teacher_outcome_mse": 0.009851925469415466,
+          "mean_prediction": 0.12203840563398377,
+          "mean_teacher": 0.018120749934665135,
+          "mean_outcome": 0.017381469417300035
+        },
+        {
+          "positions": 16166,
+          "sigmoid_mse": 0.0422497586878349,
+          "zero_score_mse": 0.1229371183362838,
+          "link_mae": 386.5252381541507,
+          "outcome_mse": 0.10526390823936094,
+          "teacher_outcome_mse": 0.06449186768314041,
+          "mean_prediction": 0.3134018552626315,
+          "mean_teacher": 0.15057592481702,
+          "mean_outcome": 0.1518928615613015
+        },
+        {
+          "positions": 19776,
+          "sigmoid_mse": 0.02374326519641515,
+          "zero_score_mse": 0.061844971777734396,
+          "link_mae": 230.36306634304208,
+          "outcome_mse": 0.10443219771810235,
+          "teacher_outcome_mse": 0.08423282796681034,
+          "mean_prediction": 0.34697856385219245,
+          "mean_teacher": 0.2530180719335951,
+          "mean_outcome": 0.2639057443365696
+        },
+        {
+          "positions": 31847,
+          "sigmoid_mse": 0.014413609665336651,
+          "zero_score_mse": 0.021616892890711937,
+          "link_mae": 161.7826482871228,
+          "outcome_mse": 0.09736252114642356,
+          "teacher_outcome_mse": 0.08507287402881818,
+          "mean_prediction": 0.387033363570244,
+          "mean_teacher": 0.3557574180677448,
+          "mean_outcome": 0.36524633403460294
+        },
+        {
+          "positions": 111665,
+          "sigmoid_mse": 0.011496966687302603,
+          "zero_score_mse": 0.0018965909198838218,
+          "link_mae": 137.16630098956702,
+          "outcome_mse": 0.06964214617071694,
+          "teacher_outcome_mse": 0.058525023478075554,
+          "mean_prediction": 0.4509281598836559,
+          "mean_teacher": 0.46704111743831367,
+          "mean_outcome": 0.4696279048941029
+        },
+        {
+          "positions": 166870,
+          "sigmoid_mse": 0.009103380599637233,
+          "zero_score_mse": 0.0012979931600704514,
+          "link_mae": 114.43393659735123,
+          "outcome_mse": 0.049889089080816656,
+          "teacher_outcome_mse": 0.0410633085886976,
+          "mean_prediction": 0.5342677317629552,
+          "mean_teacher": 0.5226837662916933,
+          "mean_outcome": 0.5173787978666028
+        },
+        {
+          "positions": 31039,
+          "sigmoid_mse": 0.013913790572383705,
+          "zero_score_mse": 0.021519155785338032,
+          "link_mae": 157.66873932794226,
+          "outcome_mse": 0.09769871457914901,
+          "teacher_outcome_mse": 0.08593999795793308,
+          "mean_prediction": 0.6091737959889437,
+          "mean_teacher": 0.6439199511354463,
+          "mean_outcome": 0.6291923064531718
+        },
+        {
+          "positions": 18532,
+          "sigmoid_mse": 0.023200073554194352,
+          "zero_score_mse": 0.061709319818990575,
+          "link_mae": 223.39526224908266,
+          "outcome_mse": 0.10341778238279975,
+          "teacher_outcome_mse": 0.08387919757330638,
+          "mean_prediction": 0.6504217412026934,
+          "mean_teacher": 0.746705991195253,
+          "mean_outcome": 0.7323278653140514
+        },
+        {
+          "positions": 14516,
+          "sigmoid_mse": 0.04225338085460433,
+          "zero_score_mse": 0.12271691246463329,
+          "link_mae": 385.9188481675393,
+          "outcome_mse": 0.10557904212235007,
+          "teacher_outcome_mse": 0.06492419468480995,
+          "mean_prediction": 0.683141863768813,
+          "mean_teacher": 0.8491033264002471,
+          "mean_outcome": 0.8469619729953155
+        },
+        {
+          "positions": 58617,
+          "sigmoid_mse": 0.025159233767664185,
+          "zero_score_mse": 0.23556264534049784,
+          "link_mae": 1186.8270638210759,
+          "outcome_mse": 0.03411225584449066,
+          "teacher_outcome_mse": 0.009381450501395895,
+          "mean_prediction": 0.8881663991870697,
+          "mean_teacher": 0.9846502989648465,
+          "mean_outcome": 0.9836310285412082
+        }
+      ],
+      "stm_loss_draw_win": [
+        {
+          "positions": 118128,
+          "sigmoid_mse": 0.02199986462193946,
+          "zero_score_mse": 0.12840058078399197,
+          "link_mae": 627.1823022484085,
+          "outcome_mse": 0.12340834573471646,
+          "teacher_outcome_mse": 0.0927027151825198,
+          "mean_prediction": 0.2838393676413471,
+          "mean_teacher": 0.21430213439851067,
+          "mean_outcome": 0.0
+        },
+        {
+          "positions": 288128,
+          "sigmoid_mse": 0.012902505955420016,
+          "zero_score_mse": 0.012325943904805958,
+          "link_mae": 148.37907457796535,
+          "outcome_mse": 0.017019012821498283,
+          "teacher_outcome_mse": 0.012325943904805958,
+          "mean_prediction": 0.49966325093710484,
+          "mean_teacher": 0.499252495233312,
+          "mean_outcome": 0.5
+        },
+        {
+          "positions": 118032,
+          "sigmoid_mse": 0.0213943245602277,
+          "zero_score_mse": 0.13456298669290065,
+          "link_mae": 679.7143994848855,
+          "outcome_mse": 0.1186326642632577,
+          "teacher_outcome_mse": 0.08948069409981677,
+          "mean_prediction": 0.7281728171945415,
+          "mean_teacher": 0.7950822925934767,
+          "mean_outcome": 1.0
+        }
+      ],
+      "limits": "Diagnostic reused holdout; game independence unproven. Outcome MSE is not playing strength. Link scores are not source centipawns."
+    },
+    "eight_heads": {
+      "payload_sha256": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+      "overall": {
+        "positions": 524288,
+        "sigmoid_mse": 0.016816835043699154,
+        "zero_score_mse": 0.0659978710509739,
+        "link_mae": 358.82837295532227,
+        "outcome_mse": 0.0637856089693285,
+        "teacher_outcome_mse": 0.04780544508068106,
+        "mean_prediction": 0.5028266308741202,
+        "mean_teacher": 0.5016495869410731,
+        "mean_outcome": 0.499908447265625
+      },
+      "material_buckets_2_to_5_through_30_to_32": [
+        {
+          "positions": 74620,
+          "sigmoid_mse": 0.002664103962893799,
+          "zero_score_mse": 0.11872405560961442,
+          "link_mae": 570.6050254623425,
+          "outcome_mse": 0.00294180803920034,
+          "teacher_outcome_mse": 0.00022362379285608972,
+          "mean_prediction": 0.5255289412555209,
+          "mean_teacher": 0.524944366531629,
+          "mean_outcome": 0.5249396944518896
+        },
+        {
+          "positions": 66105,
+          "sigmoid_mse": 0.016987551046192147,
+          "zero_score_mse": 0.09178831428014016,
+          "link_mae": 523.4657287648438,
+          "outcome_mse": 0.03041564289112273,
+          "teacher_outcome_mse": 0.012507855376288358,
+          "mean_prediction": 0.5037110075180703,
+          "mean_teacher": 0.504421349930139,
+          "mean_outcome": 0.5032599652068679
+        },
+        {
+          "positions": 78531,
+          "sigmoid_mse": 0.020642270601826863,
+          "zero_score_mse": 0.07430458475274761,
+          "link_mae": 405.3424380181075,
+          "outcome_mse": 0.04726687928105544,
+          "teacher_outcome_mse": 0.026360917186111988,
+          "mean_prediction": 0.4978351433996998,
+          "mean_teacher": 0.49647949281987047,
+          "mean_outcome": 0.4946581604716609
+        },
+        {
+          "positions": 73816,
+          "sigmoid_mse": 0.023524653991773527,
+          "zero_score_mse": 0.06423993248834171,
+          "link_mae": 355.23168418770996,
+          "outcome_mse": 0.06018499392186161,
+          "teacher_outcome_mse": 0.03740572672129158,
+          "mean_prediction": 0.49706933766118666,
+          "mean_teacher": 0.49521190351646316,
+          "mean_outcome": 0.49329413677251543
+        },
+        {
+          "positions": 63283,
+          "sigmoid_mse": 0.025741004381236162,
+          "zero_score_mse": 0.06070269319678488,
+          "link_mae": 328.6111593950982,
+          "outcome_mse": 0.07702526841012815,
+          "teacher_outcome_mse": 0.052257963542415374,
+          "mean_prediction": 0.4944029505913986,
+          "mean_teacher": 0.49364769694775024,
+          "mean_outcome": 0.4923360144114533
+        },
+        {
+          "positions": 62425,
+          "sigmoid_mse": 0.02197388958895111,
+          "zero_score_mse": 0.0464249400098761,
+          "link_mae": 264.5393672406888,
+          "outcome_mse": 0.09439781949134951,
+          "teacher_outcome_mse": 0.07438053514932137,
+          "mean_prediction": 0.49644272641454495,
+          "mean_teacher": 0.49522829797746076,
+          "mean_outcome": 0.49349619543452145
+        },
+        {
+          "positions": 65643,
+          "sigmoid_mse": 0.013459425146630821,
+          "zero_score_mse": 0.027633221832210196,
+          "link_mae": 175.33403409350578,
+          "outcome_mse": 0.11156168008713957,
+          "teacher_outcome_mse": 0.10086247193263397,
+          "mean_prediction": 0.49994862850396327,
+          "mean_teacher": 0.49838352378896644,
+          "mean_outcome": 0.4952546349191841
+        },
+        {
+          "positions": 39865,
+          "sigmoid_mse": 0.006355154078375261,
+          "zero_score_mse": 0.01365696917900593,
+          "link_mae": 102.2102094569171,
+          "outcome_mse": 0.12459394078666675,
+          "teacher_outcome_mse": 0.1208541686587339,
+          "mean_prediction": 0.5074665517258257,
+          "mean_teacher": 0.5036904650836621,
+          "mean_outcome": 0.4998118650445253
+        }
+      ],
+      "teacher_probability_deciles": [
+        {
+          "positions": 55260,
+          "sigmoid_mse": 0.026515895497802387,
+          "zero_score_mse": 0.23296720221757589,
+          "link_mae": 1068.5916576185307,
+          "outcome_mse": 0.03653734549194449,
+          "teacher_outcome_mse": 0.009851925469415466,
+          "mean_prediction": 0.12089134060661935,
+          "mean_teacher": 0.018120749934665135,
+          "mean_outcome": 0.017381469417300035
+        },
+        {
+          "positions": 16166,
+          "sigmoid_mse": 0.04232892407519299,
+          "zero_score_mse": 0.1229371183362838,
+          "link_mae": 384.2179265124335,
+          "outcome_mse": 0.10593850605771403,
+          "teacher_outcome_mse": 0.06449186768314041,
+          "mean_prediction": 0.3125373017827092,
+          "mean_teacher": 0.15057592481702,
+          "mean_outcome": 0.1518928615613015
+        },
+        {
+          "positions": 19776,
+          "sigmoid_mse": 0.023922670390421678,
+          "zero_score_mse": 0.061844971777734396,
+          "link_mae": 228.6427993527508,
+          "outcome_mse": 0.10408478669730044,
+          "teacher_outcome_mse": 0.08423282796681034,
+          "mean_prediction": 0.34684139540345005,
+          "mean_teacher": 0.2530180719335951,
+          "mean_outcome": 0.2639057443365696
+        },
+        {
+          "positions": 31847,
+          "sigmoid_mse": 0.014766855765333512,
+          "zero_score_mse": 0.021616892890711937,
+          "link_mae": 164.09247338838824,
+          "outcome_mse": 0.09759672684150558,
+          "teacher_outcome_mse": 0.08507287402881818,
+          "mean_prediction": 0.388134608137634,
+          "mean_teacher": 0.3557574180677448,
+          "mean_outcome": 0.36524633403460294
+        },
+        {
+          "positions": 111665,
+          "sigmoid_mse": 0.011469379029137016,
+          "zero_score_mse": 0.0018965909198838218,
+          "link_mae": 136.57922357050106,
+          "outcome_mse": 0.06963496480722972,
+          "teacher_outcome_mse": 0.058525023478075554,
+          "mean_prediction": 0.4520321595432019,
+          "mean_teacher": 0.46704111743831367,
+          "mean_outcome": 0.4696279048941029
+        },
+        {
+          "positions": 166870,
+          "sigmoid_mse": 0.008932980432250002,
+          "zero_score_mse": 0.0012979931600704514,
+          "link_mae": 111.38248936297717,
+          "outcome_mse": 0.04967360180364302,
+          "teacher_outcome_mse": 0.0410633085886976,
+          "mean_prediction": 0.5344886220382822,
+          "mean_teacher": 0.5226837662916933,
+          "mean_outcome": 0.5173787978666028
+        },
+        {
+          "positions": 31039,
+          "sigmoid_mse": 0.01410114695212041,
+          "zero_score_mse": 0.021519155785338032,
+          "link_mae": 158.15474080994878,
+          "outcome_mse": 0.09751958593673411,
+          "teacher_outcome_mse": 0.08593999795793308,
+          "mean_prediction": 0.6089454986580669,
+          "mean_teacher": 0.6439199511354463,
+          "mean_outcome": 0.6291923064531718
+        },
+        {
+          "positions": 18532,
+          "sigmoid_mse": 0.02396794172204905,
+          "zero_score_mse": 0.061709319818990575,
+          "link_mae": 226.29036261601553,
+          "outcome_mse": 0.1038826505874774,
+          "teacher_outcome_mse": 0.08387919757330638,
+          "mean_prediction": 0.6493444009253118,
+          "mean_teacher": 0.746705991195253,
+          "mean_outcome": 0.7323278653140514
+        },
+        {
+          "positions": 14516,
+          "sigmoid_mse": 0.04224097629138891,
+          "zero_score_mse": 0.12271691246463329,
+          "link_mae": 383.6023009093414,
+          "outcome_mse": 0.10642486120134856,
+          "teacher_outcome_mse": 0.06492419468480995,
+          "mean_prediction": 0.684416954899095,
+          "mean_teacher": 0.8491033264002471,
+          "mean_outcome": 0.8469619729953155
+        },
+        {
+          "positions": 58617,
+          "sigmoid_mse": 0.02486528127130258,
+          "zero_score_mse": 0.23556264534049784,
+          "link_mae": 1102.270859989423,
+          "outcome_mse": 0.033814094564975215,
+          "teacher_outcome_mse": 0.009381450501395895,
+          "mean_prediction": 0.8894515772096508,
+          "mean_teacher": 0.9846502989648465,
+          "mean_outcome": 0.9836310285412082
+        }
+      ],
+      "stm_loss_draw_win": [
+        {
+          "positions": 118128,
+          "sigmoid_mse": 0.021965424588281653,
+          "zero_score_mse": 0.12840058078399197,
+          "link_mae": 597.8191707300556,
+          "outcome_mse": 0.12344789497200544,
+          "teacher_outcome_mse": 0.0927027151825198,
+          "mean_prediction": 0.2833828545126721,
+          "mean_teacher": 0.21430213439851067,
+          "mean_outcome": 0.0
+        },
+        {
+          "positions": 288128,
+          "sigmoid_mse": 0.0128382699563062,
+          "zero_score_mse": 0.012325943904805958,
+          "link_mae": 146.57404000999557,
+          "outcome_mse": 0.016947773241135607,
+          "teacher_outcome_mse": 0.012325943904805958,
+          "mean_prediction": 0.5001645659415961,
+          "mean_teacher": 0.499252495233312,
+          "mean_outcome": 0.5
+        },
+        {
+          "positions": 118032,
+          "sigmoid_mse": 0.02137613604494141,
+          "zero_score_mse": 0.13456298669290065,
+          "link_mae": 637.777399349329,
+          "outcome_mse": 0.11841067176403046,
+          "teacher_outcome_mse": 0.08948069409981677,
+          "mean_prediction": 0.7289472579829235,
+          "mean_teacher": 0.7950822925934767,
+          "mean_outcome": 1.0
+        }
+      ],
+      "limits": "Diagnostic reused holdout; game independence unproven. Outcome MSE is not playing strength. Link scores are not source centipawns."
+    }
+  },
+  "same_search_e006_screen": {
+    "games": 16,
+    "completed": 16,
+    "wins": 7,
+    "draws": 6,
+    "losses": 3,
+    "censored": 0,
+    "all_game_score_bounds": [
+      0.625,
+      0.625
+    ],
+    "score": 0.625,
+    "elo": 88.73949984654256,
+    "paired_bootstrap_95_score": [
+      0.4375,
+      0.8125
+    ],
+    "paired_bootstrap_95_elo": [
+      -43.65778777002721,
+      254.72883903486974
+    ],
+    "pairs": 8,
+    "uncertainty": "percentile bootstrap by opening; exploratory, unreliable at tiny n/boundaries; no sequential significance claim",
+    "elapsed_seconds": 64.2598691000021
+  },
+  "same_search_e006_protocol": {
+    "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
+    "network_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "openings_sha256": "09e46f558260a4545b7f52fccad501b24953fc352ef8730845352a92340e2fc4",
+    "openings": [
+      {
+        "name": "Open game",
+        "moves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6"
+      },
+      {
+        "name": "Sicilian",
+        "moves": "e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6"
+      },
+      {
+        "name": "French",
+        "moves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6"
+      },
+      {
+        "name": "Caro Kann",
+        "moves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4"
+      },
+      {
+        "name": "Queens gambit",
+        "moves": "d2d4 d7d5 c2c4 e7e6 b1c3 g8f6"
+      },
+      {
+        "name": "Indian",
+        "moves": "d2d4 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6"
+      },
+      {
+        "name": "English",
+        "moves": "c2c4 e7e5 b1c3 g8f6 g1f3 b8c6"
+      },
+      {
+        "name": "Reti",
+        "moves": "g1f3 d7d5 g2g3 g8f6 f1g2 e7e6"
+      }
+    ],
+    "movetime_ms": 50,
+    "max_plies": 400,
+    "threads": 1,
+    "hash_mib": 32,
+    "use_book": false,
+    "ponder": false,
+    "concurrent_games": 1,
+    "commands": [
+      [
+        "C:/java/jdk-21/bin/java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+        "com.ohinteractive.seedv6.uci.UciMain",
+        "--nnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue"
+      ],
+      [
+        "C:/java/jdk-21/bin/java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+        "com.ohinteractive.seedv6.uci.UciMain",
+        "--nnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-evaluation64\\network.cnnue"
+      ]
+    ],
+    "jar_sha256": {
+      "app-uci.jar": "a0ef8f2b867b0b43f37881d8c9e976894578f1cfea3652259a49adb258a67395",
+      "engine-core.jar": "7e06d963624b1c5e162f0f8a6ca3ee752a5af54aaf4caf3e78ea5a1bda495041"
+    },
+    "purpose": "prospective evaluator development comparison; both conventional NNUE with identical unpruned search",
+    "outcome_policy": "python-chess formal endings including claimable draws; cap censored, no score adjudication",
+    "opponent_network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-evaluation64\\network.cnnue",
+    "opponent_network_sha256": "58fe0d77540d04f95be4d9b83c5013325ec8e8d3d3e9ffdf849bfdaa96ad58f6"
+  }
+}

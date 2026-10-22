@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "workers": 1,
+  "network": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation4\\network.cnnue",
+  "identity": [
+    "id name SeedV6 conventional NNUE opt-in 0.0.0 (build 63)",
+    "id author Charles Clark",
+    "option name Threads type spin default 1 min 1 max 16",
+    "option name Hash type spin default 64 min 1 max 1024",
+    "option name Clear Hash type button",
+    "option name UseBook type check default false",
+    "option name OwnBook type check default false",
+    "info string evaluator=CONVENTIONAL_NNUE schema=S6CNU002 payload=5cb2fa4b5fc39ad325c40000cf5bf471359990a8375f3018076e57a503f3be93 search=recursive-unpruned-qsearch workers=1 hashMiB=64 build=63 source=e54ec3b6d906 ttMiB=64",
+    "uciok"
+  ],
+  "searches": [
+    {
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "bestmove": "d2d4",
+      "last_info": "info depth 5 score cp 78 nodes 56406 time 208 nps 270988 pv d2d4 d7d5 c2c4 c7c6 e2e3"
+    },
+    {
+      "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+      "bestmove": "e1c1",
+      "last_info": "info depth 4 score cp 131 nodes 77905 time 196 nps 396174 pv e1c1 f6e4 c3e4 d5e4 f3e5 c6e5 d4e5 d7d2 d1d2"
+    },
+    {
+      "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+      "bestmove": "e5d6",
+      "last_info": "info depth 10 score cp 0 nodes 72663 time 142 nps 509260 pv e5d6 e8d7 e1d1 d7d6"
+    },
+    {
+      "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+      "bestmove": "h2h1q",
+      "last_info": "info depth 8 score cp 1513 nodes 61249 time 98 nps 623817 pv h2h1q e1d2 e8d7 d2c2 h1a8 c2b1 d7c6 b1a2 a8a7 a2b1"
+    }
+  ],
+  "lifecycle": "stop/readiness/newgame/repeated search/quit passed"
+}

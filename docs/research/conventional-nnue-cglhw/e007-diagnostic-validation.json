@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "positions": 259,
+  "groups": 22,
+  "independent_reference": "Python scalar calculations from exact Java/Python parity rows, independent FEN piece count and explicit White-to-STM label/result inversion",
+  "source_sha256": "744a42a6869f1cd2a13cb546cc6efd54cce409fa832adc533dd93109c58dd2bd",
+  "fixture_path": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-diagnostic-fixture.txt",
+  "failed_attempts": "Initial javac invocation had unquoted PowerShell -J argument; preserved logs. Quoted retry compiled and passed."
+}

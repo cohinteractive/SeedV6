@@ -149,14 +149,17 @@ and measured inference cost. Re-exported legacy bytes and scores are unchanged.
 Read E007.md, e007-implementation-evidence.json and e007-probes.json. No strength
 acceptance follows these correctness checks. Production Gen32 is unchanged.
 
-Next: finish/reconcile the build63 implementation commit and install/verify its
-actual UCI metadata. Then start/resume e007-training-64-config.json through
-nnue-control.cmd train with local CUDA runtime PATH. It continues from the verified
-eight-head GPU-test checkpoint4 (same data, recipe, optimizer), global5..64.
-Do not repeat the completed first4 segments or any extraction. Evaluate64 on the
-unchanged BT4 holdout, validate actual UCI/runtime, then use Gen32 and same-search
-controls as needed. Continue the strongest justified next work; experiment
-rejection does not stop the programme.
+Implementation committed as e54ec3b, build63; installed UCI identity/lifecycle
+verified. E00764 completed with exact259-position parity, MSE.016816835, Gen32
+screen5W/4D/7L (development only). Material diagnostics show modest endgame gains
+and slightly weaker18..25-piece fit; teacher probabilities agree closely with real
+outcomes. Read e007-stage64-results.json and E007.md. Same-search E00664 screen
+completed7W/6D/3L, no caps; tiny reused development sample, not confirmation.
+Next start/resume e007-training-128-config.json (65..128, same optimizer/recipe),
+inspect heldout/correctness at128 before selecting129..256 lower-rate stage.
+Independently investigate measured SIMD inference feasibility before any width
+increase. Production default remains Gen32; C remains unmet. Continue justified
+work units autonomously; no programme stop follows a candidate rejection.
 
 Persisted owner permission remains NORMAL generation3 with no expiry at this
 update. Always reconcile nnue-control.cmd status on fresh entry; this prose never
