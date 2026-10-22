@@ -1,5 +1,11 @@
 # NNUE UCI release candidate handoff — build 65
 
+Historical frozen-archive receipt. Subsequent `main` integration and the normal
+Windows push / Mac pull / source-build workflow are recorded in
+[nnue-main-integration.md](nnue-main-integration.md) and the updated
+[candidate guide](nnue-botli-candidate.md). The original artifact evidence below
+remains unchanged; its branch state describes the time of that release.
+
 23 October 2026 (Auckland). **Windows offline release gates passed. Native Mac
 acceptance remains pending.** No BotLi configuration, existing executable, Lichess
 connection, matchmaking, remote repository or production default was changed.

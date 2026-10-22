@@ -33,9 +33,10 @@ JVM incubator warning goes to stderr, never the UCI stream.
 On `uci`, `info string` reports evaluator, checkpoint, file/payload hashes, head
 backend, search profile, settings, application build and embedded source revision.
 Send `uci` again after resource changes to inspect the effective identity; setting
-options itself stays quiet for BotLi/python-chess. `build-manifest.json`, `network-manifest.json`
-and `SHA256SUMS` bind the frozen distribution. The source and runtime network are
-also pinned by the tracked release inputs; no training store is consulted.
+options itself stays quiet for BotLi/python-chess. Every source distribution includes
+`network-manifest.json`; the optional archive-freezing step also adds
+`build-manifest.json` and `SHA256SUMS`. The source and runtime network are pinned
+by the tracked release inputs; no training store is consulted.
 
 ## Search configuration and qualification boundary
 
@@ -80,48 +81,107 @@ search evidence remain under `docs/research/conventional-nnue-cglhw/`. No traini
 or tournament is repeated. These results are platform/clock/sample specific,
 not a Lichess rating estimate or owner acceptance.
 
-## Build and freeze
+## Normal Windows-to-Mac source workflow
 
-Use the established Java 21 Gradle portable-UCI convention, with one build worker:
+The release implementation and evidence are integrated into `main`. The original
+release branch and frozen build-65 archive remain preserved. See
+[integration verification](nnue-main-integration.md) for the tested commit and
+clean-checkout evidence. Nothing is pushed automatically.
 
-```sh
-./gradlew --gradle-user-home build/migration/gradle-user-home --no-daemon --max-workers=1 :app-uci:installNnueCandidateDist :app-uci:nnueCandidateDistTar :app-uci:nnueCandidateDistZip
-python3 -B tools/package_nnue_candidate.py
+After reviewing the completed Windows work, the owner pushes normally:
+
+```powershell
+git push origin main
 ```
 
-On Windows use `gradlew.bat` and `python`; substantive local validation uses the
-existing `nnue-control.cmd run` wrapper where that worktree's compute policy applies.
-The freezing tool requires reviewed committed inputs and a fresh rebuild from that
-clean commit. It makes a new, non-overwriting directory under
-`releases/candidates/portable-java21/`, named for RC, build and source revision.
-The archive contains two runtime jars, launchers, network and build manifests,
-checksums, this guide and the offline verification script. It contains no training
-data, optimizer state, GPU tools, GUI or training runtime dependencies.
+On the Mac, enter the existing SeedV6 repository. Check for local work before
+switching or pulling; preserve it and resolve any divergence without reset/rebase.
+Use the established Java 21 Gradle portable-UCI convention:
+
+```sh
+git status --short
+git switch main
+git pull --ff-only origin main
+git log -1 --format='%H %s'
+export JAVA_HOME="$(/usr/libexec/java_home -v 21)"
+"$JAVA_HOME/bin/java" -version
+./gradlew --gradle-user-home build/migration/gradle-user-home --no-daemon --max-workers=1 :app-uci:installNnueCandidateDist :app-uci:nnueCandidateDistTar
+RC="$(pwd -P)/app-uci/build/install/seedv6-nnue-cp64-e008-rc1"
+test -x "$RC/bin/seedv6-nnue-cp64"
+```
+
+The exact executable is **`$RC/bin/seedv6-nnue-cp64`**. Keep the complete
+distribution directory together. This task builds only the dedicated UCI target;
+it does not change the ordinary Gen32 target or install/activate BotLi. Gradle and
+Maven downloads may be needed on a fresh machine; Java 21 must already be installed.
+On Windows use `gradlew.bat`; local substantial validation uses
+`nnue-control.cmd run` where that worktree's compute policy applies.
+
+The sole required inference payload is tracked at
+`build-assets/nnue-candidate/conventional-cp64.cnnue` (3,940,952 bytes), alongside
+its versioned manifest. Gradle embeds it as `models/conventional-cp64.cnnue` in
+`lib/app-uci.jar`. There is no Git LFS, NAS, ignored research file, Windows archive,
+or manual post-build network-copy dependency. The distribution has two runtime
+jars, launchers, network manifest, this guide and the offline verifier. It has no
+training data, optimizer state, GPU tools, GUI or training-service dependencies.
+
+For a stable BotLi trial location, copy the **whole built distribution** into a
+fresh directory after building, then run native acceptance against that copy:
+
+```sh
+mkdir -p "$HOME/SeedV6-candidates"
+# Pick a new name if this directory already exists. Do not replace the old engine.
+DEST="$HOME/SeedV6-candidates/nnue-cp64-e008-rc1-build65-$(git rev-parse --short=12 HEAD)"
+mkdir "$DEST"
+cp -R "$RC/." "$DEST/"
+RC="$DEST"
+```
+
+This optional local copy avoids later source builds replacing a running candidate.
+It is not a separate weight transfer. Alternatively, `python3 -B
+tools/package_nnue_candidate.py` freezes a fresh clean-commit build into a new
+non-overwriting directory and `.tar.gz` under `releases/candidates/portable-java21/`,
+with build manifest and checksums. Freezing or transferring an archive is **not
+required** for the normal push/pull/build workflow.
+
+### Network provenance and notices
+
+This is SeedV6's freshly initialized E007 model, trained with the E006 sample and
+exported at checkpoint 64; it is not a copy of a teacher network. Training data
+was obtained from [xushawn/test80-bt4-relabel](https://huggingface.co/datasets/xushawn/test80-bt4-relabel),
+which the publisher makes available under the
+[Open Database License (ODbL) 1.0](https://opendatacommons.org/licenses/odbl/1-0/).
+Retain this source attribution with the candidate. E005/E006/E007 records and
+their tracked manifests preserve sampling, transformations and training provenance;
+the dataset and intermediate checkpoints are not distributed here. The Bullet
+trainer's MIT notice is retained at
+`tools/conventional-nnue/trainer/UPSTREAM-NOTICE.txt`; the trainer is not a UCI
+runtime dependency. These notices do not assign a new license to SeedV6 code or
+the frozen weights, or claim that the source data is CC0.
 
 ## Native Mac acceptance (required before live trial)
 
-Transfer the **complete `.tar.gz`** and its recorded SHA-256 through the owner's
-normal file-transfer channel. There is no need to update/reset the Mac repository
-or copy a jar from an uncertain checkout. Do not extract over the old bot engine.
-Use a new directory under the home directory and substitute the actual delivered
-archive path and SHA-256 from the release receipt:
+Use `RC` from the source build (or complete local copy) above. No network transfer
+is required. For an optional frozen archive, first verify its recorded SHA-256,
+extract into a fresh directory, set `RC` to its application directory, and run
+`shasum -a 256 -c SHA256SUMS` there. Ordinary Gradle installs do not contain that
+additional checksum file. In either case:
 
 ```sh
-shasum -a 256 /path/to/delivered-candidate.tar.gz
-mkdir -p "$HOME/SeedV6-candidates"
-# Choose a fresh subdirectory; mkdir must succeed, without -p.
-mkdir "$HOME/SeedV6-candidates/nnue-cp64-e008-rc1"
-tar -xzf /path/to/delivered-candidate.tar.gz -C "$HOME/SeedV6-candidates/nnue-cp64-e008-rc1"
-RC="$HOME/SeedV6-candidates/nnue-cp64-e008-rc1/seedv6-nnue-cp64-e008-rc1"
-cd "$RC"
-shasum -a 256 -c SHA256SUMS
 test -x "$RC/bin/seedv6-nnue-cp64"
 uname -m
 export JAVA_HOME="$(/usr/libexec/java_home -v 21)"
 "$JAVA_HOME/bin/java" -version
 file "$JAVA_HOME/bin/java" "$JAVA_HOME/lib/server/libjvm.dylib"
 "$JAVA_HOME/bin/java" --list-modules
+printf 'uci\nisready\nquit\n' | "$RC/bin/seedv6-nnue-cp64"
 ```
+
+The UCI identity must show `checkpoint=64 schema=S6CNU002 heads=8`, the file hash
+above, `search=E008_QXRAY_LMR_WINDOW_EFFORT_HINTS`, `execution=recursive-pvs`,
+`workers=1`, build 65 and the source commit built on the Mac. Expect `uciok` and
+`readyok`; record the actual `head=` backend. The full offline gate below also
+checks the embedded network bytes independently of that identity string.
 
 Require native arm64/aarch64 Java 21 (not Rosetta), and retain those outputs.
 Historical Mac packaging passed on Temurin 21.0.12.1+1 / arm64 / macOS 26.4;
