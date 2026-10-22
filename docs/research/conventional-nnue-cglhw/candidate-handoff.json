@@ -1,0 +1,152 @@
+{
+  "candidate": "E00764_S6CNU002_VECTOR_E008_SELECTIVE",
+  "state": "Short-clock competitive gate passed; E009 longer-clock confirmation running",
+  "scope": "Research candidate for separately governed Search Phase3; no default/policy adoption or owner acceptance",
+  "network": {
+    "path": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
+    "sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "bytes": 3940952,
+    "payload_sha256": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+    "schema": "S6CNU002",
+    "export_manifest": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue.json"
+  },
+  "selected_training_checkpoint": {
+    "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-training-64\\segments\\000064-37ddad38acef\\run\\seed-cnnue-v1-64",
+    "completed_superbatch": 64,
+    "next_superbatch": 65,
+    "receipt_sha256": "4dac95eaa474801757df6488a8514c0432a29bc1d691a96f60155f3e22940af9",
+    "config_sha256": "83f9d1113948c252583e389123720ee6450c417295be2597918b37c593f95be3",
+    "verified_at": "2026-10-22T13:46:06+00:00"
+  },
+  "latest_preserved_lineage_checkpoint": {
+    "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-training-256\\segments\\000256-723e759f09ed\\run\\seed-cnnue-v1-256",
+    "completed_superbatch": 256,
+    "next_superbatch": 257,
+    "receipt_sha256": "a49c44fe25e4232efc073dcb63e020857f94c4b3e849e3a6db00bdcad3b137c2",
+    "config_sha256": "4e734c6b484f9c9d6b4a591ab1fefa282f28934c4e6dac764915da8a2812bd05",
+    "verified_at": "2026-10-22T13:46:06+00:00"
+  },
+  "training_resume_note": "65 is the selected64 checkpoint cursor;65..256 already completed. Resume unfinished E009 games first, not redundant training. Future justified training uses a new explicit immutable plan and preserved optimizer.",
+  "trainer": {
+    "path": "build\\conventional-nnue\\frozen-trainers\\f1b9c5d05a41c1a23a4a6d7555bcfae31b5f7d076549a2cfe08283b8efacbdea.exe",
+    "sha256": "f1b9c5d05a41c1a23a4a6d7555bcfae31b5f7d076549a2cfe08283b8efacbdea",
+    "bytes": 2161152
+  },
+  "bullet": "579b78b37a694cacd6e9ede4706386c15c34837c",
+  "runtime": {
+    "build": 64,
+    "application_source_commit": "6213630",
+    "files": [
+      {
+        "path": "build\\conventional-nnue\\frozen-runtime\\build64-e007-confirmation\\uci\\app-uci.jar",
+        "sha256": "13700633582996c46f62d70509c3742b256d32a973ca9e65aff7e8295bd276c8",
+        "bytes": 33707
+      },
+      {
+        "path": "build\\conventional-nnue\\frozen-runtime\\build64-e007-confirmation\\uci\\engine-core.jar",
+        "sha256": "066195fa7cabe27dc942833038b83e038739c1db2cd7acce6b23b24fe87c873b",
+        "bytes": 947646
+      },
+      {
+        "path": "build\\conventional-nnue\\frozen-runtime\\build64-e007-confirmation\\research\\engine-core.jar",
+        "sha256": "066195fa7cabe27dc942833038b83e038739c1db2cd7acce6b23b24fe87c873b",
+        "bytes": 947646
+      },
+      {
+        "path": "build\\conventional-nnue\\frozen-runtime\\build64-e007-confirmation\\research\\engine-training.jar",
+        "sha256": "09526ddc81bbe54a01c0864c4b8a08adfd2c95c6602f373e4189de9d02a40432",
+        "bytes": 842357
+      },
+      {
+        "path": "build\\conventional-nnue\\frozen-runtime\\build64-e007-confirmation\\research\\error_prone_annotations-2.27.0.jar",
+        "sha256": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+        "bytes": 19370
+      },
+      {
+        "path": "build\\conventional-nnue\\frozen-runtime\\build64-e007-confirmation\\research\\gson-2.11.0.jar",
+        "sha256": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+        "bytes": 298435
+      },
+      {
+        "path": "build\\conventional-nnue\\frozen-runtime\\build64-e007-confirmation\\research\\research.jar",
+        "sha256": "782d0f04d98455957e876ddd3c60f985270085934d780a7d53eee06176b485ac",
+        "bytes": 2115475
+      },
+      {
+        "path": "build\\conventional-nnue\\frozen-runtime\\build64-e007-confirmation\\research\\sqlite-jdbc-3.53.4.0.jar",
+        "sha256": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+        "bytes": 12002370
+      },
+      {
+        "path": "build\\conventional-nnue\\frozen-runtime\\build64-e007-confirmation\\research\\zstd-jni-1.5.7-20.jar",
+        "sha256": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+        "bytes": 6813089
+      }
+    ],
+    "launcher_source": {
+      "path": "tools/conventional-nnue/SeedNnueSelectiveResearch.java",
+      "sha256": "383de55b3d2a9e685b88ab5fbe4596e748c87305e3cae8dd1788d18cd6386a69",
+      "bytes": 3839
+    },
+    "launcher_classes": [
+      {
+        "path": "build\\conventional-nnue\\e008-classes\\SeedNnueSelectiveResearch$1.class",
+        "sha256": "5a4e0daed153015eb7a7d07c94a3c943bf6faf549e745b270b8842f1c7a915df",
+        "bytes": 3749
+      },
+      {
+        "path": "build\\conventional-nnue\\e008-classes\\SeedNnueSelectiveResearch.class",
+        "sha256": "af1ca54f4a074fa61e5d6ce49cfcf49103bde93d4c3c70c76f997038e01fdf2c",
+        "bytes": 5752
+      }
+    ],
+    "one_worker_only": true,
+    "vector_module": "jdk.incubator.vector",
+    "ordinary_nnue_route": "Unpruned comparison; not the E008 selective candidate"
+  },
+  "training_recipe": {
+    "data": "docs\\research\\conventional-nnue-cglhw\\raw\\e006-data\\train.data",
+    "probes": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-probes\\probes.fens",
+    "seed": 20261022,
+    "batch_size": 4096,
+    "batches_per_superbatch": 1024,
+    "start_superbatch": 64,
+    "end_superbatch": 64,
+    "learning_rate": 0.001,
+    "wdl": 0.0,
+    "data_sha256": "b9306efe0675a0e0c0c3bea9d64e4bccda856f35ebafe79ab5a87472ca5b9e2c",
+    "probes_sha256": "ad203156178b08943202514ed7a046dff1591e4059b8ae2c16eaa540e9299076",
+    "save_rate": 1,
+    "lr_drop_every": 128,
+    "lr_gamma": 0.5,
+    "output_buckets": 8
+  },
+  "data": {
+    "train": "docs\\research\\conventional-nnue-cglhw\\raw\\e006-data\\train.data",
+    "recorded_sha256": "b9306efe0675a0e0c0c3bea9d64e4bccda856f35ebafe79ab5a87472ca5b9e2c",
+    "bytes_now": 1073741824,
+    "positions": 33554432,
+    "validation_positions": 524288,
+    "evidence": "e006-data-manifest.json and e006-data-verification.json",
+    "verification_scope": "Checkpoint/config/optimizer,trainer,network and runtime rehashed now; dataset full checksum validation is prior recorded evidence, not repeated here."
+  },
+  "evidence_sha256": {
+    "e007-stage64-results.json": "7ddef3cc5dc5c12dc7dc3eb4bd9a305bbb59e329c75a843f7075d27584036110",
+    "e007-stage256-results.json": "950955dd7da9a2efc08df6cf3f964f13038e78c8a966fccef17271a97fc5a077",
+    "e007-implementation-evidence.json": "2438c3571b972b0a0b7b86185605960ae0a654123254a50bf53db6b48061f32a",
+    "m003-integrated-evidence.json": "9ba45ae832a7e6902f22e3cc0de22fc8271daeae8a2ae1e86059afa0df243ec8",
+    "m003-build64-uci.json": "5c8678963da7155e5c28592c00e89e3b65ac4da4c0710d672af6134397068ffe",
+    "e007-confirmation-results.json": "34027543bfe92aa72e706e58a170117c74c39b3ac11df0b1e35ccf6f70598408",
+    "e008-verification.json": "c326b22622bbc1b01ff7faa41a2aa06612cd94a5d7360409a2a9e08bbd91eaaa",
+    "e008-deep-verification.json": "abec9b61464e0049dce3d9af656c9e684dacac4dd9c99f8edcd3c7a750cb9905",
+    "e008-confirmation-results.json": "722002c8bd7c84a167d759169d8c1122ce71dd1754057c1fb567c24c9d7e72f6",
+    "e009-preflight.json": "fbd991fb9e50b4e5c8e3b04b0169dd44180946d01da6f41a5b39240eba06e685"
+  },
+  "limitations": [
+    "Hardware/JDK/clock/worker/opening-distribution specific strength.",
+    "Related-game/training-opening independence is not established.",
+    "Frozen inference/export are reproducible; GPU training continuation is not promised bitwise deterministic.",
+    "Raw datasets/checkpoints/models/runtime copies are local ignored evidence, absent from a fresh checkout.",
+    "E009 final outcome/audit and final handoff runtime smoke remain pending."
+  ]
+}

@@ -1,5 +1,6 @@
 """Bounded real UCI lifecycle check with independent python-chess move validation."""
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -16,15 +17,20 @@ def main():
     parser.add_argument('--workers',type=int,choices=(1,2),default=1)
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--selective-research-classes',type=Path)
+    parser.add_argument('--runtime-lib',type=Path,help='Frozen UCI jar directory; default is the installed application')
     parser.add_argument('--vector',action='store_true',help='Explicitly enable the optional Java Vector API module')
     args=parser.parse_args();args.output.mkdir(parents=True,exist_ok=False)
     root=Path(__file__).resolve().parents[2]
+    libs=(args.runtime_lib or root/'app-uci/build/install/seedv6-uci/lib').resolve()
+    jars=sorted(libs.glob('*.jar'))
+    if not jars:raise ValueError('UCI runtime directory contains no jars')
+    jar_hashes={jar.name:hashlib.sha256(jar.read_bytes()).hexdigest() for jar in jars}
     command=['C:/java/jdk-21/bin/java.exe','-XX:ActiveProcessorCount=2','-Xmx768m','-Djava.awt.headless=true',
-        '-cp',str(root/'app-uci/build/install/seedv6-uci/lib/*'),'com.ohinteractive.seedv6.uci.UciMain']
+        '-cp',str(libs/'*'),'com.ohinteractive.seedv6.uci.UciMain']
     command+=['--nnue',str(args.network.resolve())] if args.network else ['--model',str(root/'build-assets/production/bre-pair2-g32.brn-pair2')]
     if args.selective_research_classes:
         if not args.network or args.workers!=1:raise ValueError('Selective research needs network and one worker')
-        command=command[:5]+[str(root/'app-uci/build/install/seedv6-uci/lib/*')+os.pathsep+str(args.selective_research_classes.resolve()),
+        command=command[:5]+[str(libs/'*')+os.pathsep+str(args.selective_research_classes.resolve()),
             'SeedNnueSelectiveResearch',str(args.network.resolve())]
     if args.vector:command.insert(1,'--add-modules=jdk.incubator.vector')
     flags=(subprocess.CREATE_NO_WINDOW|subprocess.BELOW_NORMAL_PRIORITY_CLASS) if hasattr(subprocess,'CREATE_NO_WINDOW') else 0
@@ -65,7 +71,8 @@ def main():
         send('quit');assert p.wait(timeout=10)==0
         assert not any('exception' in line.lower() or 'error' in line.lower() for kind,line in transcript if kind=='err')
         summary=dict(status='PASS',workers=args.workers,network=str(args.network),identity=intro,
-            searches=results,lifecycle='stop/readiness/newgame/repeated search/quit passed')
+            searches=results,lifecycle='stop/readiness/newgame/repeated search/quit passed',command=command,
+            runtime_lib=str(libs),jar_sha256=jar_hashes)
         (args.output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary,indent=2))
     finally:
         if p.poll() is None:p.terminate();p.wait(timeout=10)

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "protocol_differences": [
+    "movetime_ms",
+    "openings",
+    "openings_sha256"
+  ],
+  "e008_protocol_sha256": "fc95ebcab98d00d64e3eb7c2e7613d899ae9a1201c2d8c840addcdefd3b9a114",
+  "e009_protocol_sha256": "159bae7a3f3a31e43a3d3404a606d792d4b846dcb4fc48ebb24fcadd1624ccdf",
+  "initial_durable_completed_games": 2,
+  "ledger_newlines": "LF",
+  "details_match_committed_records": true,
+  "opening_disjointness": "64 legal roots; disjoint from both actual E007/E008 confirmation sets",
+  "limits": "Launch consistency and initial atomic-record publication only; final legal replay/artifact/outcome audit remains pending"
+}

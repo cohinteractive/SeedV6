@@ -2,7 +2,7 @@
 
 23 October2026 Auckland. **ACTIVE under explicit extended overnight authorization. NORMAL
 has no expiry. A operational; B available; C passed at200ms with scoped evidence;
-independent longer-clock validation is next. The
+independent longer-clock validation is running. The
 owner corrected the earlier programme stop: reject failed directions, select the
 next justified approach and continue. No production promotion or owner acceptance.**
 Read CONTRACT.md, COMPUTE-CONTROL.md, E007-CONFIRMATION.md and E008-CONFIRMATION.md. This
@@ -210,9 +210,16 @@ Final paired endpoint only; no interim acceptance or optional extension. Continu
 justified work after reconciling the result. Maintain active owner-facing reports.
 E009's conditional activation is satisfied. The64 selected roots and source/output
 hashes are frozen in its selection manifest; disjointness from both actual E007/E008
-confirmation root sets was checked. No E009 games at this update. Its independent
+confirmation root sets was checked. E009 is now running under controller supervision;
+e009-preflight.json verifies the only protocol changes from E008 are the openings
+and movetime,plus initial atomic ledger publication. Its independent
 endpoint checks longer-clock readiness without model/search changes. Do not pool
 clock conditions or relabel old tuning evidence as independent confirmation.
+Prepared candidate-handoff.json re-verifies selected64/latest256 checkpoints,
+optimizer/configuration,trainer,network and frozen runtime copies. Read
+CANDIDATE-HANDOFF.md; its final frozen-runtime smoke is pending after E009 and
+uses the newly added optional --runtime-lib in uci_smoke.py. Keep this pending
+check explicit across session boundaries. Do not rebuild/modify the active runtime.
 Production default remains Gen32; C has scoped positive200ms evidence. Continue justified
 work units autonomously; no programme stop follows a candidate rejection.
 
