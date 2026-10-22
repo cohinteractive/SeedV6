@@ -1,5 +1,8 @@
 # E009 conditional longer-clock confirmation
 
+**COMPLETED:86W/33D/9L,no caps; statistical and full audit gates passed.**
+The prospective protocol below is preserved; final evidence is at the end.
+
 Prospective plan,23 October2026 Auckland, before any E009 games. Start only if the
 completed E008 fixed128-game confirmation passes its frozen statistical gate and
 full evidence audit. This is an independent longer-clock check of the selected
@@ -85,3 +88,36 @@ roots,12203 excluded source positions,28259 available. Selected opening file SHA
 c715626081a42a353d0071f1aaafbd91143b013dea747b38387bbeeb7dd7291f.
 Selection manifest records every exclusion source/hash. Commit these inputs before
 the first E009 game. This activation changes no candidate or inferential rule.
+
+## Completed endpoint and qualification
+
+86W/33D/9L,128 games/64 pairs,no caps,in11522.84s. Paired score.80078125,
+descriptive Elo+241.67. Paired bootstrap95% [+187.25,+303.47] and paired normal95%
+[+188.19,+307.46]; both frozen lower bounds exceed zero. The predeclared longer-clock
+statistical gate PASSED. Do not pool this result with E008 or infer a significant
+clock interaction from their different point estimates/opening samples.
+
+All128 games passed full legal replay,opening histories,colors,move details and
+outcome checks; all network,opening,jars,baseline and launcher-class hashes passed.
+95 checkmates,32 threefold draws,1 insufficient-material draw. No failed pending
+ledger writes remained. Read e009-confirmation-results.json and preserve
+raw/e009-confirmation plus its audit log. This is a complete-engine research result
+on the specified hardware/clock/worker/opening distribution,not universal Elo or
+isolated learned-weight causation. All owned match processes exited.
+
+The subsequent bounded UCI smoke using the exact frozen runtime copies PASSED:
+model/schema/vector identity,legal searches,stop/readiness/newgame/repeated search/
+quit,and jar hashes matching the tested runtime. Source,command,transcript/log hashes
+and results are in candidate-frozen-uci.json. The added --runtime-lib option is now
+runtime-verified. Controller status after completion showed NORMAL generation3,
+no active operation and zero owned processes; this historical observation never
+overrides a later owner hold.
+
+Together with the established training/resume,parity,resource and search correctness
+evidence,the contract's A/B/C technical gates are satisfied in the tested scope.
+The frozen candidate is ready for separately governed Search Phase3 evaluation.
+See CANDIDATE-HANDOFF.md and candidate-handoff.json. This technical qualification
+does not change production defaults,confer owner acceptance,or authorize unrelated
+Search work. No required technical check remains for this scoped handoff; the full
+repository suite,GUI packaging,other platforms,selective multiworker and external-
+engine/tournament-clock strength were not validated and are not claimed.

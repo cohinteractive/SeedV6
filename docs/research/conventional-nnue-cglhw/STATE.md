@@ -1,16 +1,16 @@
 # Conventional NNUE state
 
-23 October2026 Auckland. **ACTIVE under explicit extended overnight authorization. NORMAL
-has no expiry. A operational; B available; C passed at200ms with scoped evidence;
-independent longer-clock validation is running. The
-owner corrected the earlier programme stop: reject failed directions, select the
-next justified approach and continue. No production promotion or owner acceptance.**
-Read CONTRACT.md, COMPUTE-CONTROL.md, E007-CONFIRMATION.md and E008-CONFIRMATION.md. This
+23 October2026 Auckland. **A/B/C TECHNICAL QUALIFICATION COMPLETE in the tested
+scope. The frozen candidate is ready for separately governed Search Phase3
+evaluation. No production promotion or owner acceptance is inferred. NORMAL has
+no expiry; completion does not change compute permission. No required technical
+work remains for this scoped handoff.**
+Read CONTRACT.md, COMPUTE-CONTROL.md, CANDIDATE-HANDOFF.md and E009-ROBUSTNESS.md. This
 programme does not resume the historical `nnue-cglhw` or suspended BRN work.
 
 **First action in every fresh conversation:** run `.\nnue-control.cmd status`.
 Permission is operational state in `.git/seed-conventional-nnue/control.json`
-(resolve with Git for linked worktrees), not this document's ACTIVE label.
+(resolve with Git for linked worktrees), not this document's historical status.
 Read COMPUTE-CONTROL.md. Unknown/inconsistent permission blocks expensive work.
 Initial control integration retained NORMAL; never reset a later hold from this
 historical initialization statement.
@@ -31,14 +31,16 @@ with NORMAL; this historical observation does not override future permission sta
 5. Freeze a stable opt-in Search checkpoint; seek competitive confirmation only when
    screening supports it. Preserve the fallback if improvement is not established.
 
-Milestones 1..3 and stable opt-in availability B are technically verified. Current
+Milestones 1..5 and technical gates A/B/C are verified within the stated scope. Current
 candidate is E007 checkpoint64, S6CNU002/eight material heads, optional vector
 inference on frozen build64. Its unpruned independent confirmation was inconclusive
-(42W/42D/44L). E008 tests the identical network with an explicit research-only
+(42W/42D/44L). E008 tested the identical network with an explicit research-only
 selective composition; its fixed128-game confirmation finished84W/26D/18L,no caps,
-paired95% Elo roughly+142..+266. All game/artifact audits passed. E009 is the frozen
-independent1000ms follow-up. Do not substitute historical E002/E003 candidates
-or repeat finished training. Exact current start/resume instructions are at the end.
+paired95% Elo roughly+142..+266. E009's independent1000ms confirmation completed
+86W/33D/9L,no caps,paired95% Elo roughly+187..+307. Both final game/artifact audits
+and the frozen-copy UCI check passed. Do not substitute historical E002/E003
+candidates or repeat finished training/confirmations. Current handoff/re-entry
+instructions are at the end.
 No owner acceptance or production promotion is inferred.
 
 ## Preserved development history
@@ -197,31 +199,43 @@ matched score/move/PV/nodes/qnodes/provenance; completed-match resume launched n
 engines. Read e008-deep-verification.json. This is a complete-engine research gain;
 it does not establish pure evaluator causation,default promotion or Phase3 acceptance.
 
-Current next/start-resume: E009-ROBUSTNESS.md freezes128 games/64 new unused
-opening pairs at1000ms,800-ply censoring,one worker,32MiB,no book/ponder. Use
-raw/e007-evaluation64/network.cnnue,e009-confirmation-openings.json,output
-raw/e009-confirmation,and --vector --confirmation --selective-research-classes
-build/conventional-nnue/e008-classes. All repository-relative NNUE record paths
-are under this directory except the class path. Add --resume only for the same
-started protocol. Keep installed build64 jars and e008 classes frozen. Exact
-runtime copies are in e007-confirmation-runtime.json. The extended analyzer now
-rechecks launcher classes as well as all other artifacts and full game replay.
-Final paired endpoint only; no interim acceptance or optional extension. Continue
-justified work after reconciling the result. Maintain active owner-facing reports.
-E009's conditional activation is satisfied. The64 selected roots and source/output
-hashes are frozen in its selection manifest; disjointness from both actual E007/E008
-confirmation root sets was checked. E009 is now running under controller supervision;
-e009-preflight.json verifies the only protocol changes from E008 are the openings
-and movetime,plus initial atomic ledger publication. Its independent
-endpoint checks longer-clock readiness without model/search changes. Do not pool
-clock conditions or relabel old tuning evidence as independent confirmation.
-Prepared candidate-handoff.json re-verifies selected64/latest256 checkpoints,
-optimizer/configuration,trainer,network and frozen runtime copies. Read
-CANDIDATE-HANDOFF.md; its final frozen-runtime smoke is pending after E009 and
-uses the newly added optional --runtime-lib in uci_smoke.py. Keep this pending
-check explicit across session boundaries. Do not rebuild/modify the active runtime.
-Production default remains Gen32; C has scoped positive200ms evidence. Continue justified
-work units autonomously; no programme stop follows a candidate rejection.
+## Current qualification and re-entry
+
+E009 completed86W/33D/9L,no caps,in11522.84s at1000ms/move,one worker,32MiB,
+no book/ponder. Paired score.80078125,descriptive+241.67 Elo; bootstrap95%
+[+187.25,+303.47],normal95% [+188.19,+307.46]. Its frozen statistical gate and
+all128 legal game/history/color/outcome/detail and frozen-artifact checks passed.
+Read E009-ROBUSTNESS.md and e009-confirmation-results.json. Preserve the independent
+E007/E008 results; do not pool clocks or extend completed protocols post hoc.
+
+The final frozen-copy UCI smoke passed identity,legal searches,stop/readiness/
+newgame/repeated search/quit,and exact jar hashes. Read candidate-frozen-uci.json.
+The --runtime-lib option is now runtime-verified. No pending ledger writes remained;
+all owned match/smoke processes exited. No full-suite,GUI,other-platform,selective
+multiworker or external-engine/tournament-clock strength validation is claimed.
+
+CANDIDATE-HANDOFF.md and candidate-handoff.json identify the exact3,940,952-byte
+E00764 export,selected64 and latest256 optimizer checkpoints,frozen trainer/runtime,
+launcher source/classes,baseline,comparison commands and complete evidence links.
+Both checkpoint receipts/configurations/tensor geometries and all payload hashes
+were reverified.65..256 already completed; no training restart or repetition is
+needed. Keep build64 runtime copies and all raw evidence,including failed,
+negative and inconclusive experiments. Production remains Gen32/Policy4.
+
+The programme progressed through failed approaches to the contract's genuine
+A/B/C technical criteria; this is a scoped qualification handoff,not an experiment-
+failure/diminishing-returns stop or a claim that further improvements are impossible.
+Owner acceptance,production adoption and separately governed Search Phase3 work
+remain distinct. No pending required technical work or human action blocks this
+handoff. Do not launch an arbitrary new training queue merely to consume time.
+
+On fresh entry,inspect compute control first,then the handoff and actual local
+artifacts. E009 and its final smoke are complete; do not resume them as unfinished
+work. Use the frozen candidate for separately authorized downstream work within
+its authority. Any further NNUE experiment needs a reasoned new question and
+prospective comparison; retain all completed evidence and the fallback. The
+owner's experiment/programme stopping distinction in CONTRACT revision3 remains
+binding. A later hold always overrides the historical NORMAL observation below.
 
 Persisted owner permission remains NORMAL generation3 with no expiry at this
 update. Always reconcile nnue-control.cmd status on fresh entry; this prose never

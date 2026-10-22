@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "workers": 1,
+  "network": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
+  "identity": [
+    "WARNING: Using incubator modules: jdk.incubator.vector",
+    "id name SeedV6 NNUE SELECTIVE RESEARCH unaccepted",
+    "id author Charles Clark",
+    "option name Threads type spin default 1 min 1 max 16",
+    "option name Hash type spin default 64 min 1 max 1024",
+    "option name Clear Hash type button",
+    "option name UseBook type check default false",
+    "option name OwnBook type check default false",
+    "info string evaluator=CONVENTIONAL_NNUE payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 schema=S6CNU002 head=vector-256-long search=SELECTIVE_RESEARCH_QXRAY_LMR_WINDOW_EFFORT_HINTS workers=1 hashMiB=64 unaccepted=true ttMiB=64",
+    "uciok"
+  ],
+  "searches": [
+    {
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "bestmove": "d2d4",
+      "last_info": "info depth 5 score cp 49 nodes 4350 time 240 nps 18050 pv d2d4 d7d5 c2c4 g8f6 c4d5 d8d5"
+    },
+    {
+      "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+      "bestmove": "e4d5",
+      "last_info": "info depth 6 score cp 176 nodes 97673 time 228 nps 427603 pv e4d5 e6d5 c3d5 f6d5 f3e5 c6e5 d4e5"
+    },
+    {
+      "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+      "bestmove": "e1e2",
+      "last_info": "info depth 11 score cp 7 nodes 106794 time 169 nps 629440 pv e1e2 e8d7 e2d3 d7e7 d3c3 e7d7 c3d3 d7e7 d3e3 e7e6 e3d4"
+    },
+    {
+      "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+      "bestmove": "h2h1q",
+      "last_info": "info depth 9 score cp 2240 nodes 248138 time 280 nps 885581 pv h2h1q e1f2 h1a8 f2f1 e8e7 f1e2 a8a7 e2e1 e7e6"
+    }
+  ],
+  "lifecycle": "stop/readiness/newgame/repeated search/quit passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-XX:ActiveProcessorCount=2",
+    "-Xmx768m",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\frozen-runtime\\build64-e007-confirmation\\uci\\*;C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\e008-classes",
+    "SeedNnueSelectiveResearch",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue"
+  ],
+  "runtime_lib": "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\frozen-runtime\\build64-e007-confirmation\\uci",
+  "jar_sha256": {
+    "app-uci.jar": "13700633582996c46f62d70509c3742b256d32a973ca9e65aff7e8295bd276c8",
+    "engine-core.jar": "066195fa7cabe27dc942833038b83e038739c1db2cd7acce6b23b24fe87c873b"
+  },
+  "source_sha256": "2423a8a146bd6387f3301c54bdd0d84ffe48bb2f14042f2dd2f10b1e451742bb",
+  "transcript_sha256": "c9375b229c2f137fa2b327ec7270d0d2a8098f5f17c07baacef629fd0562fdc6",
+  "log_sha256": "accc5871960c77b21d8f4ea37a2663592bc0813379c718911a4f9467495741d5",
+  "frozen_runtime_hashes": "PASS",
+  "owned_processes_after_completion": 0,
+  "permission_observed": "NORMAL generation3, no expiry; historical observation, recheck current control status",
+  "limits": "One-worker selective research route on Windows/JDK21; no production/default adoption"
+}

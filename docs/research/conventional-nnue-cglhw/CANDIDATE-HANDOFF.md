@@ -1,8 +1,9 @@
 # Conventional NNUE candidate handoff
 
 23 October2026 Auckland. **E00764/vector/E008 selective is a research candidate
-with confirmed200ms complete-engine improvement. E009 independent1000ms validation
-is running. This is not final owner acceptance,production promotion or authorization
+with confirmed200ms and1000ms complete-engine improvement. A/B/C technical
+qualification is complete in the tested scope. This is not final owner acceptance,
+production promotion or authorization
 to change the independently governed Search Phase3 programme.**
 
 ## Candidate and evidence
@@ -38,9 +39,13 @@ paired bootstrap95% [+143,+264] and paired normal95% [+142,+266]. The frozen
 statistical gate and full game/artifact audit passed. This is a complete-engine
 replacement result, not a claim that a learned-weight change alone explains it.
 
-Read E008-CONFIRMATION.md and e008-confirmation-results.json. E009-ROBUSTNESS.md
-freezes the separate1000ms,128-game fresh-opening test; do not pool its clock
-condition with E008 or use interim results as acceptance.
+Read E008-CONFIRMATION.md and e008-confirmation-results.json. The separate fresh
+E0091000ms confirmation finished **86W/33D/9L**, no caps: descriptive+242 Elo,
+paired bootstrap95% [+187,+303] and paired normal95% [+188,+307]. Its frozen gate
+and full game/artifact audit passed. Read E009-ROBUSTNESS.md and its results JSON.
+Do not pool clock conditions or infer a significant clock effect from the point
+estimates; these are separate sampled opening sets. Both tests support improvement
+over the frozen Gen32 baseline within their stated conditions.
 
 ## Correctness, cost and scope
 
@@ -73,10 +78,11 @@ The launcher is `SeedNnueSelectiveResearch` in `build/conventional-nnue/e008-cla
 It intentionally identifies itself as unaccepted research pending separate policy
 adoption. Ordinary application `--nnue` selects the unpruned control, not this candidate.
 
-After the active E009 match ends, verify the frozen runtime copy with the bounded
-check below. The new `--runtime-lib` path and this exact handoff command still need
-their actual runtime check at this document's creation; do not claim it has run.
-Use fresh output/log paths on rerun; preserve previous results.
+The bounded check below PASSED on the frozen runtime copies. The actual command,
+identity,legal searches,stop/readiness/newgame/repeated-search/quit lifecycle and
+matching jar hashes are recorded in candidate-frozen-uci.json. The --runtime-lib
+option is runtime-verified. The displayed output/log paths now contain this completed
+check: use fresh paths on rerun and preserve previous results.
 
 ```powershell
 .\nnue-control.cmd status
@@ -102,9 +108,11 @@ seed,batch shape,output geometry and dataset hashes are immutable recipe fields.
 Training continued through256,1,073,741,824 exposures; that checkpoint and optimizer
 are also verified and preserved. Its held-out loss plateaued and its same-search
 screen against64 was near-tied4W/9D/3L. Selecting64 does not establish256 is inferior
-and does not erase or require repeating65..256. E009 is the current incomplete work
-unit. Resume its exact command with `--resume` after reconciling control state;
-completed games are skipped. Further training requires a justified new plan, not
+and does not erase or require repeating65..256. E009 and the handoff smoke are
+complete; do not restart them as unfinished work. If a separately authorized later
+match is interrupted,resume its exact frozen command with `--resume` after
+reconciling control state; completed games are skipped. Further training requires
+a justified new plan, not
 automatic continuation of an already-plateaued recipe.
 
 Frozen inference/export bytes are reproducible. GPU training continuation preserves

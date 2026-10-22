@@ -1,6 +1,6 @@
 {
   "candidate": "E00764_S6CNU002_VECTOR_E008_SELECTIVE",
-  "state": "Short-clock competitive gate passed; E009 longer-clock confirmation running",
+  "state": "A/B/C technical qualification passed in tested scope; frozen candidate ready for separately governed Search Phase3 evaluation",
   "scope": "Research candidate for separately governed Search Phase3; no default/policy adoption or owner acceptance",
   "network": {
     "path": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
@@ -140,14 +140,16 @@
     "e008-verification.json": "c326b22622bbc1b01ff7faa41a2aa06612cd94a5d7360409a2a9e08bbd91eaaa",
     "e008-deep-verification.json": "abec9b61464e0049dce3d9af656c9e684dacac4dd9c99f8edcd3c7a750cb9905",
     "e008-confirmation-results.json": "722002c8bd7c84a167d759169d8c1122ce71dd1754057c1fb567c24c9d7e72f6",
-    "e009-preflight.json": "fbd991fb9e50b4e5c8e3b04b0169dd44180946d01da6f41a5b39240eba06e685"
+    "e009-preflight.json": "fbd991fb9e50b4e5c8e3b04b0169dd44180946d01da6f41a5b39240eba06e685",
+    "e009-confirmation-results.json": "cdb37ee7c9f62b8085600ec270e1ee183394e7078c9af9ea671a3f84ce85d411",
+    "candidate-frozen-uci.json": "4831b92de8d7d7655015917c7a17688f999a894c0a4349091ec86e028f2530ee"
   },
   "limitations": [
     "Hardware/JDK/clock/worker/opening-distribution specific strength.",
     "Related-game/training-opening independence is not established.",
     "Frozen inference/export are reproducible; GPU training continuation is not promised bitwise deterministic.",
     "Raw datasets/checkpoints/models/runtime copies are local ignored evidence, absent from a fresh checkout.",
-    "E009 final outcome/audit and final handoff runtime smoke remain pending."
+    "Full repository suite,GUI packaging,selective multiworker and other-platform/external-engine strength were not validated; no claim beyond the frozen comparison settings."
   ],
   "baseline": {
     "path": "build-assets\\production\\bre-pair2-g32.brn-pair2",
@@ -259,5 +261,115 @@
       "opening_file": "docs\\research\\conventional-nnue-cglhw\\e009-confirmation-openings.json",
       "opening_pairs": 64
     }
+  },
+  "qualification": {
+    "A_operational": "PASS",
+    "B_stable_candidate": "PASS",
+    "C_competitive": "PASS at200ms and1000ms; separate128-game/64-pair independent endpoints",
+    "owner_acceptance": "Not inferred",
+    "production_default": "Gen32/Policy4 unchanged",
+    "remaining_required_technical_checks": []
+  },
+  "confirmation_results": {
+    "e008": {
+      "games": 128,
+      "completed": 128,
+      "wins": 84,
+      "draws": 26,
+      "losses": 18,
+      "censored": 0,
+      "all_game_score_bounds": [
+        0.7578125,
+        0.7578125
+      ],
+      "score": 0.7578125,
+      "elo": 198.16401617278888,
+      "paired_bootstrap_95_score": [
+        0.6953125,
+        0.8203125
+      ],
+      "paired_bootstrap_95_elo": [
+        143.33015984736542,
+        263.7845852209381
+      ],
+      "pairs": 64,
+      "uncertainty": "percentile bootstrap by opening; exploratory, unreliable at tiny n/boundaries; no sequential significance claim",
+      "protocol_sha256": "fc95ebcab98d00d64e3eb7c2e7613d899ae9a1201c2d8c840addcdefd3b9a114",
+      "games_sha256": "98f37b0e2d0b39b93d9123b121aa1de9d466df3b943ff4b4939ff71044fcaf52",
+      "audited_game_files": 256,
+      "legal_replay_and_outcome_audit": "PASS",
+      "frozen_artifact_recheck": "PASS",
+      "terminations": {
+        "CHECKMATE": 102,
+        "THREEFOLD_REPETITION": 24,
+        "FIFTY_MOVES": 2
+      },
+      "endpoint": "One predeclared final fixed-sample endpoint; no independent-game binomial interval",
+      "limits": "Hardware/clock/worker/opening-distribution specific; related opening-family dependence may remain. No automatic default promotion or owner acceptance.",
+      "paired_normal_95_score": [
+        0.6932781603846965,
+        0.8223468396153035
+      ],
+      "paired_normal_95_elo": [
+        141.66512759803487,
+        266.1928359510556
+      ],
+      "paired_sample_sd": 0.2634054678175654,
+      "competitive_statistical_gate": true,
+      "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e008-confirmation"
+    },
+    "e009": {
+      "games": 128,
+      "completed": 128,
+      "wins": 86,
+      "draws": 33,
+      "losses": 9,
+      "censored": 0,
+      "all_game_score_bounds": [
+        0.80078125,
+        0.80078125
+      ],
+      "score": 0.80078125,
+      "elo": 241.67347398312717,
+      "paired_bootstrap_95_score": [
+        0.74609375,
+        0.8515625
+      ],
+      "paired_bootstrap_95_elo": [
+        187.24800424194882,
+        303.46915879511783
+      ],
+      "pairs": 64,
+      "uncertainty": "percentile bootstrap by opening; exploratory, unreliable at tiny n/boundaries; no sequential significance claim",
+      "protocol_sha256": "159bae7a3f3a31e43a3d3404a606d792d4b846dcb4fc48ebb24fcadd1624ccdf",
+      "games_sha256": "4e6488b8e27cac15d535b32eb10e7832268b4868487215b92c81b5471857fb94",
+      "audited_game_files": 256,
+      "legal_replay_and_outcome_audit": "PASS",
+      "frozen_artifact_recheck": "PASS",
+      "terminations": {
+        "CHECKMATE": 95,
+        "THREEFOLD_REPETITION": 32,
+        "INSUFFICIENT_MATERIAL": 1
+      },
+      "endpoint": "One predeclared final fixed-sample endpoint; no independent-game binomial interval",
+      "limits": "Hardware/clock/worker/opening-distribution specific; related opening-family dependence may remain. No automatic default promotion or owner acceptance.",
+      "paired_normal_95_score": [
+        0.7471181004888934,
+        0.8544443995111066
+      ],
+      "paired_normal_95_elo": [
+        188.18860527828633,
+        307.4619548957556
+      ],
+      "paired_sample_sd": 0.2190332633106395,
+      "competitive_statistical_gate": true,
+      "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e009-confirmation"
+    }
+  },
+  "handoff_runtime_check": {
+    "record": "candidate-frozen-uci.json",
+    "status": "PASS",
+    "runtime_matches_frozen_comparison": true,
+    "owned_processes_after_completion": 0
   }
 }
