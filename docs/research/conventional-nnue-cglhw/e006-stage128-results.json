@@ -1,0 +1,31 @@
+{
+  "checkpoint": {
+    "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-128\\segments\\000128-bea933189740\\run\\seed-cnnue-v1-128",
+    "completed_superbatch": 128,
+    "next_superbatch": 129,
+    "receipt_sha256": "7bd12c01c46758511757134791ac878c7d36faaccbbe8d5c834d3b51affda302",
+    "config_sha256": "1c29756439931ac36ae8b4c3f49edf5da9f60a5c98d9368ad7c03c815a54d7b0",
+    "verified_at": "2026-10-22T10:40:04+00:00",
+    "process_exit_code": 0,
+    "wall_seconds": 3.8908740999977454
+  },
+  "validation": {
+    "cp_mae": 369.63806915283203,
+    "zero_score_mse": 0.0659978710509739,
+    "sigmoid_mse": 0.01699449526357228,
+    "positions": 524288,
+    "payload_sha256": "3115f5183e57399dc394869c8fe745f9e97bff97431900bbbb50838339428ca3"
+  },
+  "parity": {
+    "status": "PASS",
+    "positions": 128,
+    "exact_features": "Python / Java / pinned Bullet",
+    "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+    "gpu_float_max_abs_raw_error": 7.805931294124768e-07,
+    "gpu_float_tolerance": 2e-05,
+    "quantization_max_abs_cp_error": 20.80426919030718,
+    "quantization_rms_cp_error": 8.24886994037091,
+    "limitation": "Quantization error is measured separately; no strength or calibration claim"
+  },
+  "decision": "Heldout MSE flat .016864 to .016994; test originally frozen lower LR at129..256 before judging convergence. No128 strength screen or promotion."
+}

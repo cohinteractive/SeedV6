@@ -163,6 +163,12 @@ Gen32 screen2W/5D/9L. See e006-stage64-results.json. Next start/resume
 and optimizer. Evaluate128 on the unchanged holdout before selecting129..256
 (the frozen LR first halves at129). No architecture/search change or promotion.
 
+E006128 complete/parity passed, heldout MSE.016994 (flat versus64). Next/current
+training is `e006-training-256-config.json`,129..256 with the predeclared LR.0005.
+Evaluate256 before more training. E007 may prepare a separate eight-material-head
+conventional model while this frozen run proceeds; do not change E006's trainer
+binary or installed jars during its measurements. No production promotion.
+
 Raw tools/output: `build/conventional-nnue/`; upstream source clone:
 `build/conventional-nnue/upstream/bullet` at
 `579b78b37a694cacd6e9ede4706386c15c34837c`. These ignored paths are local evidence,
