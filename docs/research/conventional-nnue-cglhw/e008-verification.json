@@ -1,0 +1,57 @@
+{
+  "source_sha256": "383de55b3d2a9e685b88ab5fbe4596e748c87305e3cae8dd1788d18cd6386a69",
+  "classes_sha256": {
+    "SeedNnueSelectiveResearch$1.class": "5a4e0daed153015eb7a7d07c94a3c943bf6faf549e745b270b8842f1c7a915df",
+    "SeedNnueSelectiveResearch.class": "af1ca54f4a074fa61e5d6ce49cfcf49103bde93d4c3c70c76f997038e01fdf2c"
+  },
+  "oracle_positions": [
+    "PASS score/move/nodes depth3 721 rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "PASS score/move/nodes depth3 5103 r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+    "PASS score/move/nodes depth3 323 4k3/8/8/3n4/4P3/8/8/4K3 w - - 0 1",
+    "PASS score/move/nodes depth3 163 4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+    "PASS score/move/nodes depth3 582 4k2r/8/8/3pP3/8/8/8/R3K3 w - d6 0 1",
+    "PASS score/move/nodes depth3 103 7k/P7/8/8/8/8/8/7K w - - 0 1"
+  ],
+  "uci": {
+    "status": "PASS",
+    "workers": 1,
+    "network": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
+    "identity": [
+      "WARNING: Using incubator modules: jdk.incubator.vector",
+      "id name SeedV6 NNUE SELECTIVE RESEARCH unaccepted",
+      "id author Charles Clark",
+      "option name Threads type spin default 1 min 1 max 16",
+      "option name Hash type spin default 64 min 1 max 1024",
+      "option name Clear Hash type button",
+      "option name UseBook type check default false",
+      "option name OwnBook type check default false",
+      "info string evaluator=CONVENTIONAL_NNUE payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 schema=S6CNU002 head=vector-256-long search=SELECTIVE_RESEARCH_QXRAY_LMR_WINDOW_EFFORT_HINTS workers=1 hashMiB=64 unaccepted=true ttMiB=64",
+      "uciok"
+    ],
+    "searches": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "bestmove": "d2d4",
+        "last_info": "info depth 5 score cp 49 nodes 4350 time 245 nps 17752 pv d2d4 d7d5 c2c4 g8f6 c4d5 d8d5"
+      },
+      {
+        "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+        "bestmove": "e4d5",
+        "last_info": "info depth 6 score cp 176 nodes 97673 time 217 nps 449861 pv e4d5 e6d5 c3d5 f6d5 f3e5 c6e5 d4e5"
+      },
+      {
+        "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+        "bestmove": "e1e2",
+        "last_info": "info depth 11 score cp 7 nodes 106794 time 175 nps 608818 pv e1e2 e8d7 e2d3 d7e7 d3c3 e7d7 c3d3 d7e7 d3e3 e7e6 e3d4"
+      },
+      {
+        "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+        "bestmove": "h2h1q",
+        "last_info": "info depth 9 score cp 2240 nodes 248138 time 270 nps 917909 pv h2h1q e1f2 h1a8 f2f1 e8e7 f1e2 a8a7 e2e1 e7e6"
+      }
+    ],
+    "lifecycle": "stop/readiness/newgame/repeated search/quit passed"
+  },
+  "guards": "PASS: implicit policy mixing and changed-network policy comparison rejected before output/engine launch",
+  "limits": "Oracle checks evaluator state under selected semantics, not pruning correctness or Policy4 acceptance; one-worker research composition only"
+}

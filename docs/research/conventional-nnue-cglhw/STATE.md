@@ -174,15 +174,16 @@ runtime manifest e007-confirmation-runtime.json. Preserve the unused first and
 canonical-en-passant-normalized v2 opening selections; never reuse them as fresh
 independent confirmation. No opportunistic extension of the finished protocol.
 
-Current next work: E008.md controlled policy study. Hold E00764 weights/build64/
-vector inference fixed,compile the existing research selective launcher into a new
-e008-classes directory,verify five depth3 full-rebuild search oracles and actual
-one-worker UCI. Add explicit same-network policy-comparison support to the match
-harness while preserving its default evaluator-only guards. Then16 games on the
-original development opening pairs at200ms,800-ply censoring,one worker,32MiB.
-This tests a different question from the older weak-E003 selective trial. No new
-search margins/algorithm/default adoption. Reconcile outcomes and continue the
-strongest next justified approach; no programme stop follows this unit.
+E008 controlled same-network policy screen completed9W/5D/2L,no caps. Six
+independent selective search roots,actual one-worker vector UCI,and explicit
+same-network/implicit-mixing guards passed. Read E008.md,e008-verification.json
+and e008-policy-results.json. Exact installed build64 and e008-classes stay frozen.
+Current next/start-resume: Gen32 development screen using E00764 with the research
+selective launcher,original8 opening pairs,200ms,800-ply censoring,one worker,32MiB,
+--vector --selective-research-classes build/conventional-nnue/e008-classes.
+Output raw/e008-gen32-screen; preserve completed games and use --resume only on
+the identical protocol. Promising results justify new fresh-pair confirmation,
+not immediate production policy adoption. Continue the strongest justified work.
 Production default remains Gen32; C remains unmet. Continue justified
 work units autonomously; no programme stop follows a candidate rejection.
 

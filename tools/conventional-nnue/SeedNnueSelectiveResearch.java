@@ -28,6 +28,7 @@ public final class SeedNnueSelectiveResearch {
                 "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
                 "4k3/8/8/3n4/4P3/8/8/4K3 w - - 0 1",
                 "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+                "4k2r/8/8/3pP3/8/8/8/R3K3 w - d6 0 1",
                 "7k/P7/8/8/8/8/8/7K w - - 0 1"};
             for(String fen:fens) {
                 var board=Board.fromFen(fen);
@@ -52,6 +53,7 @@ public final class SeedNnueSelectiveResearch {
             public String name(){return "SeedV6 NNUE SELECTIVE RESEARCH unaccepted";}
             public String identity(int workers){return identity(workers,64);}
             public String identity(int workers,int hash){return "evaluator=CONVENTIONAL_NNUE payload="+net.payloadSha256()
+                +" schema="+net.schema()+" head="+net.headBackend()
                 +" search=SELECTIVE_RESEARCH_QXRAY_LMR_WINDOW_EFFORT_HINTS workers=1 hashMiB="+hash+" unaccepted=true";}
         };
         try(var engine=new UciEngine(System.in,System.out,System.err,config)){engine.run();}
