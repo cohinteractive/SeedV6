@@ -1,0 +1,112 @@
+{
+  "summary": {
+    "games": 16,
+    "completed": 16,
+    "wins": 12,
+    "draws": 1,
+    "losses": 3,
+    "censored": 0,
+    "all_game_score_bounds": [
+      0.78125,
+      0.78125
+    ],
+    "score": 0.78125,
+    "elo": 221.1367874631123,
+    "paired_bootstrap_95_score": [
+      0.625,
+      0.9375
+    ],
+    "paired_bootstrap_95_elo": [
+      88.73949984654256,
+      470.43650362227254
+    ],
+    "pairs": 8,
+    "uncertainty": "percentile bootstrap by opening; exploratory, unreliable at tiny n/boundaries; no sequential significance claim",
+    "elapsed_seconds": 283.4737191000022
+  },
+  "protocol": {
+    "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
+    "network_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "openings_sha256": "09e46f558260a4545b7f52fccad501b24953fc352ef8730845352a92340e2fc4",
+    "openings": [
+      {
+        "name": "Open game",
+        "moves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6"
+      },
+      {
+        "name": "Sicilian",
+        "moves": "e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6"
+      },
+      {
+        "name": "French",
+        "moves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6"
+      },
+      {
+        "name": "Caro Kann",
+        "moves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4"
+      },
+      {
+        "name": "Queens gambit",
+        "moves": "d2d4 d7d5 c2c4 e7e6 b1c3 g8f6"
+      },
+      {
+        "name": "Indian",
+        "moves": "d2d4 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6"
+      },
+      {
+        "name": "English",
+        "moves": "c2c4 e7e5 b1c3 g8f6 g1f3 b8c6"
+      },
+      {
+        "name": "Reti",
+        "moves": "g1f3 d7d5 g2g3 g8f6 f1g2 e7e6"
+      }
+    ],
+    "movetime_ms": 200,
+    "max_plies": 800,
+    "threads": 1,
+    "hash_mib": 32,
+    "use_book": false,
+    "ponder": false,
+    "concurrent_games": 1,
+    "commands": [
+      [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*;C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\e008-classes",
+        "SeedNnueSelectiveResearch",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue"
+      ],
+      [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+        "com.ohinteractive.seedv6.uci.UciMain",
+        "--model",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\production\\bre-pair2-g32.brn-pair2"
+      ]
+    ],
+    "jar_sha256": {
+      "app-uci.jar": "13700633582996c46f62d70509c3742b256d32a973ca9e65aff7e8295bd276c8",
+      "engine-core.jar": "066195fa7cabe27dc942833038b83e038739c1db2cd7acce6b23b24fe87c873b"
+    },
+    "baseline_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "purpose": "prospective development screen; different calibrated search policies; complete-engine comparison",
+    "outcome_policy": "python-chess formal endings including claimable draws; cap censored, no score adjudication",
+    "selective_research_classes_sha256": {
+      "SeedNnueSelectiveResearch$1.class": "5a4e0daed153015eb7a7d07c94a3c943bf6faf549e745b270b8842f1c7a915df",
+      "SeedNnueSelectiveResearch.class": "af1ca54f4a074fa61e5d6ce49cfcf49103bde93d4c3c70c76f997038e01fdf2c"
+    },
+    "candidate_policy": "Unaccepted NNUE research composition; no inherited Policy4 strength claim"
+  },
+  "baseline_control": "Same baseline command,network,jars,clock and resources as E007 confirmation; verified before screen completion",
+  "limits": "Eight reused development pairs; no independent confirmation or production acceptance"
+}

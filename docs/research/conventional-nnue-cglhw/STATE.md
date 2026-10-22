@@ -174,16 +174,22 @@ runtime manifest e007-confirmation-runtime.json. Preserve the unused first and
 canonical-en-passant-normalized v2 opening selections; never reuse them as fresh
 independent confirmation. No opportunistic extension of the finished protocol.
 
-E008 controlled same-network policy screen completed9W/5D/2L,no caps. Six
-independent selective search roots,actual one-worker vector UCI,and explicit
-same-network/implicit-mixing guards passed. Read E008.md,e008-verification.json
-and e008-policy-results.json. Exact installed build64 and e008-classes stay frozen.
-Current next/start-resume: Gen32 development screen using E00764 with the research
-selective launcher,original8 opening pairs,200ms,800-ply censoring,one worker,32MiB,
---vector --selective-research-classes build/conventional-nnue/e008-classes.
-Output raw/e008-gen32-screen; preserve completed games and use --resume only on
-the identical protocol. Promising results justify new fresh-pair confirmation,
-not immediate production policy adoption. Continue the strongest justified work.
+E008 controlled same-network policy screen completed9W/5D/2L; subsequent Gen32
+screen12W/1D/3L,all uncensored. Six independent selective search roots,actual UCI,
+and provenance guards passed. Read E008.md,e008-verification.json and both results.
+This is promising development evidence,not C. No training/network bytes changed.
+
+Current next/start-resume: E008-CONFIRMATION.md freezes128 games/64 new unused
+opening pairs at200ms,800-ply censoring,one worker,32MiB,no book/ponder. Use
+raw/e007-evaluation64/network.cnnue,e008-confirmation-openings.json,output
+raw/e008-confirmation,and --vector --confirmation --selective-research-classes
+build/conventional-nnue/e008-classes. All repository-relative NNUE record paths
+are under this directory except the class path. Add --resume only for the same
+started protocol. Keep installed build64 jars and e008 classes frozen. Exact
+runtime copies are in e007-confirmation-runtime.json. The extended analyzer now
+rechecks launcher classes as well as all other artifacts and full game replay.
+Final paired endpoint only; no interim acceptance or optional extension. Continue
+justified work after reconciling the result. Maintain active owner-facing reports.
 Production default remains Gen32; C remains unmet. Continue justified
 work units autonomously; no programme stop follows a candidate rejection.
 

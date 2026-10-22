@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 import statistics
 import chess
@@ -35,6 +36,13 @@ def main():
     assert sha(Path(protocol['network']))==protocol['network_sha256']
     jars=root/'app-uci/build/install/seedv6-uci/lib'
     assert {f.name:sha(f) for f in jars.glob('*.jar')}==protocol['jar_sha256']
+    if 'selective_research_classes_sha256' in protocol:
+        command=protocol['commands'][0];index=command.index('-cp')
+        assert command[index+2]=='SeedNnueSelectiveResearch'
+        directories=[Path(s) for s in command[index+1].split(os.pathsep)
+                     if (Path(s)/'SeedNnueSelectiveResearch.class').is_file()]
+        assert len(directories)==1,'Ambiguous research launcher classpath'
+        assert {f.name:sha(f) for f in directories[0].glob('*.class')}==protocol['selective_research_classes_sha256']
     if 'opponent_network' in protocol:assert sha(Path(protocol['opponent_network']))==protocol['opponent_network_sha256']
     else:assert sha(root/'build-assets/production/bre-pair2-g32.brn-pair2')==protocol['baseline_sha256']
     games=[json.loads(line) for line in (a.match/'games.jsonl').read_text().splitlines()]
