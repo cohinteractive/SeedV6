@@ -155,10 +155,11 @@ screen5W/4D/7L (development only). Material diagnostics show modest endgame gain
 and slightly weaker18..25-piece fit; teacher probabilities agree closely with real
 outcomes. Read e007-stage64-results.json and E007.md. Same-search E00664 screen
 completed7W/6D/3L, no caps; tiny reused development sample, not confirmation.
-Next start/resume e007-training-128-config.json (65..128, same optimizer/recipe),
-inspect heldout/correctness at128 before selecting129..256 lower-rate stage.
-Independently investigate measured SIMD inference feasibility before any width
-increase. Production default remains Gen32; C remains unmet. Continue justified
+Checkpoint128 passed parity with flat MSE.016996349. Current next/start-resume:
+e007-training-256-config.json,129..256 at LR.0005, preserving optimizer and recipe.
+M003 SIMD head prototype passed exact/hostile checks and measured about8.6x head
+speedup. Integrate optionally with scalar fallback and validate actual full cost
+before retaining. Do not rebuild installed runtime during a frozen active match. Production default remains Gen32; C remains unmet. Continue justified
 work units autonomously; no programme stop follows a candidate rejection.
 
 Persisted owner permission remains NORMAL generation3 with no expiry at this

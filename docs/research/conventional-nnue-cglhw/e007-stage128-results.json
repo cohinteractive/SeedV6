@@ -1,0 +1,34 @@
+{
+  "final_checkpoint": {
+    "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-training-128\\segments\\000128-177e2343b6ac\\run\\seed-cnnue-v1-128",
+    "completed_superbatch": 128,
+    "next_superbatch": 129,
+    "receipt_sha256": "015839f08f7fc8244b049e6a1bca05b7545b2ec1568adaf363fe67322d1f280d",
+    "config_sha256": "bb4919f7aada4adaea76593cac201b1e8a239c34e9a5fe12e4ec447e01458b3e",
+    "verified_at": "2026-10-22T11:30:48+00:00",
+    "process_exit_code": 0,
+    "wall_seconds": 4.2929324000069755
+  },
+  "process_seconds": 259.4945870999727,
+  "total_exposures": 536870912,
+  "parity": {
+    "status": "PASS",
+    "positions": 259,
+    "output_buckets": 8,
+    "exact_features": "Python / Java / pinned Bullet",
+    "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+    "gpu_float_max_abs_raw_error": 1.4665024856697073e-06,
+    "gpu_float_tolerance": 2e-05,
+    "quantization_max_abs_cp_error": 35.264215352186966,
+    "quantization_rms_cp_error": 8.126805066259067,
+    "limitation": "Quantization error is measured separately; no strength or calibration claim"
+  },
+  "validation": {
+    "positions": 524288,
+    "payload_sha256": "033a6cf278b1bda62183cb96c61d8907edd15f0c7501d993be6e92e6bceabb29",
+    "cp_mae": 354.47727394104004,
+    "zero_score_mse": 0.0659978710509739,
+    "sigmoid_mse": 0.016996349438686817
+  },
+  "decision": "Heldout essentially flat; perform predeclared LR .0005 stage129..256. No extra near-identical128 strength screen."
+}

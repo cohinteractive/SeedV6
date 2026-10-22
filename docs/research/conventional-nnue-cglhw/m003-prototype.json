@@ -1,0 +1,24 @@
+{
+  "payload": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+  "vector_bits": 256,
+  "network_positions": 259,
+  "hostile_trials": 10000,
+  "scalar_head_ns": [
+    937.0015,
+    918.869,
+    919.13,
+    921.7555,
+    920.7195
+  ],
+  "vector_head_ns": [
+    106.974,
+    109.3715,
+    106.6735,
+    106.8865,
+    106.077
+  ],
+  "vector_allocated_bytes_200000": 0,
+  "limits": "Head-only prototype with preexpanded int output weights; no integrated speed or strength claim, no application adoption.",
+  "source_sha256": "5e422ccf542bff599150a1e02e9dec20d54b02d40120414093374f899c77a07b",
+  "commands": "See controlled compile/run logs; installed JDK21, --add-modules jdk.incubator.vector, ActiveProcessorCount1, Xmx512m"
+}
