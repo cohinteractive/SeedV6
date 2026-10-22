@@ -26,8 +26,9 @@ emergency 0.166 seconds, no remaining owned process. No user action is required.
 5. Freeze a stable opt-in Search checkpoint; seek competitive confirmation only when
    screening supports it. Preserve the fallback if improvement is not established.
 
-Milestones 1..3 are technically verified; next is bounded data improvement and
-complete-engine screening. No owner acceptance is inferred from these results.
+Milestones 1..3 and stable opt-in availability B are technically verified. E002 is
+the current frozen opt-in checkpoint with negative strength limits; competitive C
+remains open. No owner acceptance or production promotion is inferred.
 
 Current evidence: cross-language export parity, checkpoint continuation and opt-in UCI.
 Baseline targeted tests/build and fresh UCI searches/stop/quit passed. Local CUDA
@@ -76,6 +77,16 @@ E001's large training/validation gap and losses; no architecture sweep. Verify e
 held-out loss/material behavior and the same development openings before deciding
 whether more data, a target/source change or another intervention is warranted.
 No human action currently blocks this. No unmonitored training/tournament.
+
+E002 has now completed:16 verified supervised segments,16,777,216 exposures.
+Expanded-cohort MSE.006115 versus pilot.014133 on the same104719 positions;
+old-prefix MSE.005685 versus pilot.005442. Material queen-removal response improves
+to about834cp. Exact128-position cross-language parity and actual one-/two-worker
+build62 UCI checks pass. Development screen2W/1D/13L, no caps; no promotion.
+Read E002.md and e002-*.json for frozen identity, costs, limitations and local paths.
+Next admissible decision is a single bounded4M coverage expansion with the same
+CC0 source/architecture/filters, proportional exposure, and explicit outcome review.
+First freeze its plan and verify resource headroom and current compute permission.
 
 Raw tools/output: `build/conventional-nnue/`; upstream source clone:
 `build/conventional-nnue/upstream/bullet` at

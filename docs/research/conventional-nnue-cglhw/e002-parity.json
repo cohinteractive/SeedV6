@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "positions": 128,
+  "exact_features": "Python / Java / pinned Bullet",
+  "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+  "gpu_float_max_abs_raw_error": 4.985135174592759e-07,
+  "gpu_float_tolerance": 2e-05,
+  "quantization_max_abs_cp_error": 10.52791632465847,
+  "quantization_rms_cp_error": 3.674917430713363,
+  "limitation": "Quantization error is measured separately; no strength or calibration claim",
+  "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e002-evaluation\\parity.json"
+}

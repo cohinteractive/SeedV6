@@ -1,0 +1,26 @@
+{
+  "games": 16,
+  "completed": 16,
+  "wins": 2,
+  "draws": 1,
+  "losses": 13,
+  "censored": 0,
+  "all_game_score_bounds": [
+    0.15625,
+    0.15625
+  ],
+  "score": 0.15625,
+  "elo": -292.9575039291874,
+  "paired_bootstrap_95_score": [
+    0.03125,
+    0.3125
+  ],
+  "paired_bootstrap_95_elo": [
+    -596.5446775337091,
+    -136.9690723288825
+  ],
+  "pairs": 8,
+  "uncertainty": "percentile bootstrap by opening; exploratory, unreliable at tiny n/boundaries; no sequential significance claim",
+  "elapsed_seconds": 52.18772020000324,
+  "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e002-screen\\summary.json"
+}

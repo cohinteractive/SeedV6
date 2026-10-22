@@ -1,0 +1,8 @@
+{
+  "positions": 13190,
+  "sigmoid_mse": 0.005684921506892034,
+  "zero_score_mse": 0.017539952936373553,
+  "cp_mae": 88.20841546626232,
+  "payload_sha256": "7514a9d704f671072f5d234f7bd23042c0ba16cb4746bf5a60dd3853508910dc",
+  "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e002-evaluation\\e002-on-pilot-validation-rerun.json"
+}

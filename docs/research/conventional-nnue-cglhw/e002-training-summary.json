@@ -1,0 +1,18 @@
+{
+  "segments": 16,
+  "total_segment_wall_seconds": 38.60620700001891,
+  "min_segment_seconds": 2.2850992000021506,
+  "max_segment_seconds": 2.4966691000008723,
+  "final_checkpoint": {
+    "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e002-training\\segments\\000016-82fbf9cba1be\\run\\seed-cnnue-v1-16",
+    "completed_superbatch": 16,
+    "next_superbatch": 17,
+    "receipt_sha256": "0710301cfd5c39fab3c3714d3e2d969ae382d1447bd28db3675c54f50ce167a2",
+    "config_sha256": "549b1822ed690d8fefc4fd16dddb50631e3f0d6745020f43914712f11466393a",
+    "verified_at": "2026-10-22T06:36:59+00:00",
+    "process_exit_code": 0,
+    "wall_seconds": 2.485657599994738
+  },
+  "raw_path": "docs\\research\\conventional-nnue-cglhw\\raw\\e002-training",
+  "sample_exposures": 16777216
+}

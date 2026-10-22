@@ -1,0 +1,13 @@
+{
+  "format": "S6CNU001",
+  "bullet_quantised_sha256": "dd56ef522930bc502d39e0580ba0311837426af76780498c4b92b1fe0a0a827b",
+  "payload_sha256": "7514a9d704f671072f5d234f7bd23042c0ba16cb4746bf5a60dd3853508910dc",
+  "file_sha256": "c5e8fc5e9c14ffd675b864b67acf9152fe0910008f806cb13bc408ebd0053048",
+  "bytes": 3933770,
+  "parameters": 1966849,
+  "source": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e002-training\\segments\\000016-82fbf9cba1be\\run\\seed-cnnue-v1-16\\quantised.bin",
+  "independent_quantization": "all parameters match merged optimizer weights with half-away rounding",
+  "layout": "LE i16: feature-major weights[7680][256], bias[256], STM/NTM head[512], output bias",
+  "arithmetic": "clamp 0..255 then square; long dot; trunc(dot/255); add bias; multiply400; trunc(/16320); clamp +-32511",
+  "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e002-evaluation\\network.cnnue.json"
+}

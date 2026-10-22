@@ -1,0 +1,44 @@
+{
+  "source": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+  "source_size": 22086532809,
+  "source_mtime_ns": 1790287765503165500,
+  "source_url": "https://database.lichess.org/#evals",
+  "license": "CC0",
+  "consumed_compressed_prefix_bytes": 147459375,
+  "consumed_compressed_prefix_sha256": "1184f0044504ffacf0e01630e5724b16030d828c5406bfe15f03487af673b8b0",
+  "counts": {
+    "read": 1766343,
+    "accepted": 1048576,
+    "no_cp": 277916,
+    "check_or_terminal": 86949,
+    "tactical_pv": 322384,
+    "extreme_score": 20513,
+    "invalid_position": 9424,
+    "duplicate": 313,
+    "shallow": 268
+  },
+  "train": 943857,
+  "validation": 104719,
+  "seed": 20261022,
+  "hashes": {
+    "probes.fens": "ec701ee7bcdbf9018cf8f1912b4d1acb620fd98ac793060e08b02d0f0a644309",
+    "train-provenance.jsonl": "d3331c44eb4b0663434ac4c2290e11202df69bdebfac0a5ecef533d07b851bcb",
+    "train.txt": "28dbb479eea78360b4d87b61b38ab9e2056f0f3a2f7faba3266f7fa161796c2b",
+    "validation-provenance.jsonl": "a2f44f5bf2a03e6a0969b9b04511647fe60001859633a72e1e1924a5e2fe9eb4",
+    "validation.txt": "69c7338bb4ae061457d7bf6870d32c74692bcafde24052a0bb5547ac2e1cbec7"
+  },
+  "targets": "white-relative CP; sigmoid(cp/400); wdl MUST equal 0; result field is unused placeholder",
+  "filters": "valid, nonterminal, not in check; highest-depth CP PV; depth>=12; abs(cp)<=3000; noncapture/nonpromotion PV",
+  "split": "90/10 SHA256 placement+STM; exact evaluator-input dedup; no game IDs available",
+  "limitations": [
+    "bounded source prefix, not a random sample of the complete archive",
+    "mixed Stockfish versions and CP calibration; no outcome labels",
+    "related-game and symmetry leakage cannot be ruled out; validation is diagnostic, not strength evidence"
+  ],
+  "elapsed_seconds": 164.0605082999973,
+  "binary_train_sha256": "67e897a4563aefb64f22f3bb09bb5cf1461da0141461380fb0aba0b83c0edfa7",
+  "binary_records": 943857,
+  "all_binary_targets_independently_verified": true,
+  "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e002-data",
+  "overlap": "E001 prefix included; stable hash partition keeps identical evaluator inputs in the same split; diagnostic validation only"
+}

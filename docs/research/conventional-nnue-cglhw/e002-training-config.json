@@ -1,0 +1,16 @@
+{
+  "data": "docs\\research\\conventional-nnue-cglhw\\raw\\e002-data\\train.data",
+  "output": "docs\\research\\conventional-nnue-cglhw\\raw\\e002-training",
+  "probes": "docs\\research\\conventional-nnue-cglhw\\raw\\e002-data\\probes.fens",
+  "seed": 20261022,
+  "batch_size": 1024,
+  "batches_per_superbatch": 1024,
+  "start_superbatch": 1,
+  "end_superbatch": 16,
+  "learning_rate": 0.001,
+  "wdl": 0.0,
+  "resume": null,
+  "data_sha256": "67e897a4563aefb64f22f3bb09bb5cf1461da0141461380fb0aba0b83c0edfa7",
+  "probes_sha256": "ec701ee7bcdbf9018cf8f1912b4d1acb620fd98ac793060e08b02d0f0a644309",
+  "save_rate": 1
+}

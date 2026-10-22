@@ -1,0 +1,23 @@
+{
+  "network": "7514a9d704f671072f5d234f7bd23042c0ba16cb4746bf5a60dd3853508910dc",
+  "load_ms": 81.1552,
+  "legal_transitions": 255,
+  "incremental_plus_head_ns_per_eval": [
+    1206.29,
+    1175.49,
+    1174.385
+  ],
+  "full_refresh_plus_head_ns_per_eval": [
+    4461.19,
+    4505.185,
+    4391.26
+  ],
+  "pair2_rolling_plus_head_ns_per_eval": [
+    92.285,
+    86.45,
+    86.895
+  ],
+  "incremental_allocated_bytes_20000": 0,
+  "limitation": "one deterministic legal walk; microbenchmark only; no NPS/Elo inference",
+  "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e002-evaluation\\benchmark.json"
+}
