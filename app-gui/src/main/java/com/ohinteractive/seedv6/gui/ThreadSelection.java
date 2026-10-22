@@ -9,7 +9,7 @@ import javax.swing.text.DefaultFormatterFactory;
 final class ThreadSelection {
     private ThreadSelection() {}
     static JSpinner spinner(int choice) {
-        var spinner = new JSpinner(new SpinnerNumberModel(0, 0, SearchThreads.available(), 1));
+        var spinner = new JSpinner(new SpinnerNumberModel(0, 0, com.ohinteractive.seedv6.search.exact.ParallelSearch.MAX_WORKERS, 1));
         var editor = new JSpinner.DefaultEditor(spinner);
         editor.getTextField().setEditable(true); editor.getTextField().setColumns(8);
         editor.getTextField().setFormatterFactory(new DefaultFormatterFactory(new JFormattedTextField.AbstractFormatter() {
@@ -21,10 +21,10 @@ final class ThreadSelection {
                 if (text.trim().equalsIgnoreCase("auto") || text.trim().toLowerCase(java.util.Locale.ROOT).startsWith("max")) return 0;
                 try {
                     int n = Integer.parseInt(text.trim());
-                    if (n < 0 || n > SearchThreads.available()) throw new NumberFormatException();
+                    if (n < 0 || n > com.ohinteractive.seedv6.search.exact.ParallelSearch.MAX_WORKERS) throw new NumberFormatException();
                     return n;
                 } catch (NumberFormatException invalid) {
-                    throw new ParseException("Choose Max or 1.." + SearchThreads.available(), 0);
+                    throw new ParseException("Choose Max or 1..16", 0);
                 }
             }
         }));
@@ -34,7 +34,7 @@ final class ThreadSelection {
     }
     static void setChoice(JSpinner spinner, int choice) {
         new SearchThreads(choice);
-        spinner.setValue(choice == 0 ? 0 : Math.min(choice, SearchThreads.available()));
+        spinner.setValue(choice);
     }
     static int resolved(JSpinner spinner) { return new SearchThreads(((Number) spinner.getValue()).intValue()).resolve(); }
 }

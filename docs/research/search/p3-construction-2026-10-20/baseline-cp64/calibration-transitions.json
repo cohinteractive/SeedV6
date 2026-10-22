@@ -1,0 +1,235 @@
+{
+  "status": "PASS",
+  "positions": 530,
+  "children_checked": 15433,
+  "head_crossings": 259,
+  "king_context_crossings": 1518,
+  "maximum_head_transition_delta": 2040,
+  "independent_reference_positions": 259,
+  "color_rank_mirrors": 259,
+  "heads": {
+    "0": {
+      "positions": 71,
+      "minimum": -4446,
+      "maximum": 6608,
+      "mean": 775.3661971830986
+    },
+    "1": {
+      "positions": 70,
+      "minimum": -1725,
+      "maximum": 2613,
+      "mean": -34.02857142857143
+    },
+    "2": {
+      "positions": 65,
+      "minimum": -1740,
+      "maximum": 3432,
+      "mean": 158.06153846153848
+    },
+    "3": {
+      "positions": 64,
+      "minimum": -4696,
+      "maximum": 1094,
+      "mean": -357.84375
+    },
+    "4": {
+      "positions": 64,
+      "minimum": -614,
+      "maximum": 513,
+      "mean": -92.15625
+    },
+    "5": {
+      "positions": 64,
+      "minimum": -1158,
+      "maximum": 968,
+      "mean": 54.96875
+    },
+    "6": {
+      "positions": 64,
+      "minimum": -732,
+      "maximum": 529,
+      "mean": 12.78125
+    },
+    "7": {
+      "positions": 68,
+      "minimum": -902,
+      "maximum": 1786,
+      "mean": 15.147058823529411
+    }
+  },
+  "curated": [
+    {
+      "name": "case-balanced-start",
+      "head": "7",
+      "hce": "0",
+      "brep2": "10",
+      "nnueCp": "49",
+      "constructionDepth4": "52",
+      "withoutMarginsDepth4": "52",
+      "childrenChecked": "20",
+      "headCrossings": "0",
+      "kingContextCrossings": "0",
+      "maximumHeadDelta": "0",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    },
+    {
+      "name": "case-balanced-castling",
+      "head": "7",
+      "hce": "0",
+      "brep2": "18",
+      "nnueCp": "79",
+      "constructionDepth4": "176",
+      "withoutMarginsDepth4": "176",
+      "childrenChecked": "37",
+      "headCrossings": "4",
+      "kingContextCrossings": "5",
+      "maximumHeadDelta": "550",
+      "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1"
+    },
+    {
+      "name": "case-queen-advantage",
+      "head": "7",
+      "hce": "1007",
+      "brep2": "728",
+      "nnueCp": "1786",
+      "constructionDepth4": "1768",
+      "withoutMarginsDepth4": "1768",
+      "childrenChecked": "20",
+      "headCrossings": "0",
+      "kingContextCrossings": "0",
+      "maximumHeadDelta": "0",
+      "fen": "rnb1kbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    },
+    {
+      "name": "case-rook-advantage",
+      "head": "7",
+      "hce": "-600",
+      "brep2": "-378",
+      "nnueCp": "-902",
+      "constructionDepth4": "-837",
+      "withoutMarginsDepth4": "-837",
+      "childrenChecked": "20",
+      "headCrossings": "0",
+      "kingContextCrossings": "0",
+      "maximumHeadDelta": "0",
+      "fen": "1nbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR b KQk - 0 1"
+    },
+    {
+      "name": "case-queen-versus-rook",
+      "head": "2",
+      "hce": "409",
+      "brep2": "320",
+      "nnueCp": "956",
+      "constructionDepth4": "2856",
+      "withoutMarginsDepth4": "2856",
+      "childrenChecked": "1",
+      "headCrossings": "1",
+      "kingContextCrossings": "1",
+      "maximumHeadDelta": "1457",
+      "fen": "6k1/5ppp/8/8/8/8/5PPP/3Q2Kr w - - 0 1"
+    },
+    {
+      "name": "case-passed-pawn",
+      "head": "0",
+      "hce": "1109",
+      "brep2": "104",
+      "nnueCp": "927",
+      "constructionDepth4": "3611",
+      "withoutMarginsDepth4": "3611",
+      "childrenChecked": "9",
+      "headCrossings": "0",
+      "kingContextCrossings": "3",
+      "maximumHeadDelta": "0",
+      "fen": "8/4P1k1/4K3/8/8/8/8/8 w - - 0 1"
+    },
+    {
+      "name": "case-pawn-ending",
+      "head": "0",
+      "hce": "384",
+      "brep2": "92",
+      "nnueCp": "22",
+      "constructionDepth4": "52",
+      "withoutMarginsDepth4": "52",
+      "childrenChecked": "6",
+      "headCrossings": "0",
+      "kingContextCrossings": "5",
+      "maximumHeadDelta": "0",
+      "fen": "4k3/8/8/8/4P3/8/8/4K3 w - - 0 1"
+    },
+    {
+      "name": "case-promotion",
+      "head": "0",
+      "hce": "1063",
+      "brep2": "107",
+      "nnueCp": "671",
+      "constructionDepth4": "2135",
+      "withoutMarginsDepth4": "2135",
+      "childrenChecked": "7",
+      "headCrossings": "0",
+      "kingContextCrossings": "3",
+      "maximumHeadDelta": "0",
+      "fen": "7k/P7/8/8/8/8/8/7K w - - 0 1"
+    },
+    {
+      "name": "case-en-passant",
+      "head": "0",
+      "hce": "29",
+      "brep2": "4",
+      "nnueCp": "-135",
+      "constructionDepth4": "31",
+      "withoutMarginsDepth4": "31",
+      "childrenChecked": "7",
+      "headCrossings": "0",
+      "kingContextCrossings": "5",
+      "maximumHeadDelta": "0",
+      "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1"
+    },
+    {
+      "name": "case-mate-in-one",
+      "head": "0",
+      "hce": "1131",
+      "brep2": "731",
+      "nnueCp": "2687",
+      "constructionDepth4": "32767",
+      "withoutMarginsDepth4": "32767",
+      "childrenChecked": "26",
+      "headCrossings": "0",
+      "kingContextCrossings": "0",
+      "maximumHeadDelta": "0",
+      "fen": "7k/5Q2/6K1/8/8/8/8/8 w - - 0 1"
+    },
+    {
+      "name": "case-checkmated",
+      "head": "0",
+      "hce": "-1150",
+      "brep2": "-700",
+      "nnueCp": "-2669",
+      "constructionDepth4": "-32768",
+      "withoutMarginsDepth4": "-32768",
+      "childrenChecked": "0",
+      "headCrossings": "0",
+      "kingContextCrossings": "0",
+      "maximumHeadDelta": "0",
+      "fen": "7k/6Q1/6K1/8/8/8/8/8 b - - 0 1"
+    },
+    {
+      "name": "case-stalemate",
+      "head": "0",
+      "hce": "-1131",
+      "brep2": "-726",
+      "nnueCp": "-2694",
+      "constructionDepth4": "0",
+      "withoutMarginsDepth4": "0",
+      "childrenChecked": "0",
+      "headCrossings": "0",
+      "kingContextCrossings": "0",
+      "maximumHeadDelta": "0",
+      "fen": "7k/5Q2/6K1/8/8/8/8/8 b - - 0 1"
+    }
+  ],
+  "scalar_vector_full_rebuild_incremental": "exact agreement",
+  "evidence": "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\calibration-02",
+  "reference_sha256": "47514ae43d5d48645a76423359f217ef527e868500ceef2d1881077e2ac88434",
+  "source_revision": "f75920dbce35f536564d25d575d31340d3a7072b",
+  "limits": "Static distribution and bounded depth-4 removal control; not empirical WDL calibration or isolated heuristic strength proof."
+}

@@ -13,6 +13,6 @@ public record SearchThreads(int requested) {
     }
     public int resolve() { return resolve(Runtime.getRuntime().availableProcessors()); }
     public int resolve(int logicalProcessors) {
-        return requested == MAX ? available(logicalProcessors) : Math.min(requested, available(logicalProcessors));
+        return requested == MAX ? available(logicalProcessors) : requested;
     }
 }

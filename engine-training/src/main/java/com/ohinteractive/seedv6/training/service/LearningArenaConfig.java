@@ -26,7 +26,17 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
         return new LearningArenaConfig(name, a, b, null, 0, 0, 0, seed, arena, Mode.MATCH_ONLY);
     }
     public enum Evaluator {
-        HCE, POLICY4_PAIR2, CONSTRUCTION_V1;
+        HCE, POLICY4_PAIR2, CONSTRUCTION_V1, HCE_CONSTRUCTION, BREP2_32, CONVENTIONAL_CP64;
+        public boolean competitive() { return this == HCE_CONSTRUCTION || this == BREP2_32 || this == CONVENTIONAL_CP64; }
+        public com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator baseline() {
+            return switch (this) {
+                case HCE_CONSTRUCTION -> com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.HCE;
+                case BREP2_32 -> com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.BREP2_32;
+                case CONVENTIONAL_CP64 -> com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.CONVENTIONAL_CP64;
+                default -> throw new IllegalArgumentException("Historical profile has no current baseline binding");
+            };
+        }
+        public String label() { return competitive() ? baseline().toString() : this == HCE ? "HCE" : policy().toString(); }
         public com.ohinteractive.seedv6.search.driver.PinnedSearch.Policy policy() {
             return switch (this) {
                 case POLICY4_PAIR2 -> com.ohinteractive.seedv6.search.driver.PinnedSearch.Policy.POLICY4;
@@ -52,14 +62,23 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
                           Double learningRate, InitialModel initialModel, String nnueObjective) {
             this(name, architecture, seed, minibatch, learningRate, initialModel, nnueObjective, null);
         }
-        public boolean isHandcrafted() { return evaluator == Evaluator.HCE; }
+        public boolean isHandcrafted() { return evaluator == Evaluator.HCE || evaluator == Evaluator.HCE_CONSTRUCTION; }
         public boolean isPinned() { return evaluator != null && !isHandcrafted(); }
         public boolean usesStore() { return evaluator == null; }
-        public String displayName() { return isPinned() ? evaluator.policy().toString() : isHandcrafted() ? "HCE" : architecture.displayName(); }
+        public String displayName() { return evaluator != null ? evaluator.label() : architecture.displayName(); }
         public static Competitor pinned(com.ohinteractive.seedv6.search.driver.PinnedSearch.Policy policy) {
             var evaluator = policy == com.ohinteractive.seedv6.search.driver.PinnedSearch.Policy.CONSTRUCTION_V1
                     ? Evaluator.CONSTRUCTION_V1 : Evaluator.POLICY4_PAIR2;
             return new Competitor(policy.toString(), TrainingArchitecture.BRN_PAIR2, 0, 1, null, null, null, evaluator);
+        }
+        public static Competitor competitive(com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator choice) {
+            var evaluator = switch (choice) {
+                case HCE -> Evaluator.HCE_CONSTRUCTION;
+                case BREP2_32 -> Evaluator.BREP2_32;
+                case CONVENTIONAL_CP64 -> Evaluator.CONVENTIONAL_CP64;
+            };
+            return new Competitor(evaluator.label(), choice == com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.BREP2_32
+                    ? TrainingArchitecture.BRN_PAIR2 : null, 0, 1, null, null, null, evaluator);
         }
         public static Competitor handcrafted() { return new Competitor("HCE", null, 0, 1, null, null, null, Evaluator.HCE); }
         public static Competitor fixed(com.ohinteractive.seedv6.training.model.ModelLibrary.Binding binding) {
@@ -75,7 +94,7 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
         public Competitor {
             if (name == null || name.isBlank() || minibatch < 1 || minibatch > 100000)
                 throw new IllegalArgumentException("Competitor needs a name and positive minibatch size");
-            if (evaluator == Evaluator.HCE) {
+            if (evaluator == Evaluator.HCE || evaluator == Evaluator.HCE_CONSTRUCTION || evaluator == Evaluator.CONVENTIONAL_CP64) {
                 if (architecture != null || initialModel != null || learningRate != null || nnueObjective != null)
                     throw new IllegalArgumentException("HCE has no network or training recipe");
             } else if (evaluator != null) {
@@ -122,9 +141,10 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
                 if (c.usesStore() && (c.initialModel() == null || c.learningRate() != null))
                     throw new IllegalArgumentException("Match-only networks require a fixed checkpoint and unchanged recipe");
         } else {
+            for (var c : new Competitor[]{a, b})
+                if (!c.usesStore()) throw new IllegalArgumentException("HCE and pinned gameplay require match-only Arena");
             Objects.requireNonNull(source);
             for (var c : new Competitor[]{a, b}) {
-                if (!c.usesStore()) throw new IllegalArgumentException("HCE and pinned gameplay require match-only Arena");
                 LearningArenaTraining.requireSupported(c.architecture());
                 CorpusTraining.targetPolicy(c.architecture(), source.labelProfile());
             }

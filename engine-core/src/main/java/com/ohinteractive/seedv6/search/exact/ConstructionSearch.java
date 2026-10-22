@@ -6,8 +6,7 @@ import com.ohinteractive.seedv6.search.driver.*;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.tt.TTable;
 
-/** Shared immutable composition for explicit experimental activation and research controls.
- * This factory does not change the production default. */
+/** Shared immutable Construction V1 composition and independent research controls. */
 public record ConstructionSearch(FlatSearchConfig mechanisms,int workers,int hashMiB,
                                  AspirationSearch.Policy aspiration) {
     public ConstructionSearch {
@@ -21,7 +20,8 @@ public record ConstructionSearch(FlatSearchConfig mechanisms,int workers,int has
     public SingleDepthSearch create(SearchEvaluation evaluation) {
         Objects.requireNonNull(evaluation,"evaluation");
         if((mechanisms.has(FlatSearchConfig.Feature.FUTILITY)||mechanisms.has(FlatSearchConfig.Feature.REVERSE_FUTILITY))
-                && !evaluation.isBrnPair2()) throw new IllegalArgumentException("Construction margins require fixed Pair-2 evaluation");
+                && !(evaluation.isBrnPair2() || evaluation.isConventional() || evaluation == SearchEvaluation.handcrafted()))
+            throw new IllegalArgumentException("Construction margins support HCE, Pair-2 and conventional NNUE only");
         var table=new TTable(hashMiB);
         if(workers==1) {
             var owner=ExactSearchAdapter.constructionResearch(evaluation,table,mechanisms);

@@ -48,6 +48,7 @@ def main():
     games=[json.loads(line) for line in (a.match/'games.jsonl').read_text().splitlines()]
     assert len(games)==2*len(openings),'Incomplete fixed sample'
     seen=set();pairs={};files={};terminations={}
+    resources={True:dict(moves=0,nodes=0,seconds=0.,depth_sum=0),False:dict(moves=0,nodes=0,seconds=0.,depth_sum=0)}
     for record in games:
         compute_gate.require();index=record['opening_index'];white=record['candidate_white'];identifier=(index,white)
         assert type(white) is bool and 0<=index<len(openings) and identifier not in seen
@@ -58,14 +59,19 @@ def main():
             game=chess.pgn.read_game(stream);assert game is not None and not game.errors
             assert chess.pgn.read_game(stream) is None
         board=game.board();assert board.fen()==chess.STARTING_FEN
-        opponent=('NNUE-'+protocol['opponent_network_sha256'][:12]) if 'opponent_network_sha256' in protocol else 'Gen32-Policy4'
-        assert game.headers['White']==('NNUE' if white else opponent)
-        assert game.headers['Black']==(opponent if white else 'NNUE')
+        opponent=protocol.get('opponent_name',('NNUE-'+protocol['opponent_network_sha256'][:12]) if 'opponent_network_sha256' in protocol else 'Gen32-Policy4')
+        candidate=protocol.get('candidate_name','NNUE')
+        assert game.headers['White']==(candidate if white else opponent)
+        assert game.headers['Black']==(opponent if white else candidate)
         moves=list(game.mainline_moves());history=[m.uci() for m in moves]
         prefix=openings[index]['moves'].split();assert history[:len(prefix)]==prefix
         details=json.loads(detail.read_text());assert details['result']==record
         assert [m['move'] for m in details['moves']]==history[len(prefix):]
         assert len(details['moves'])==record['plies']
+        for move_info in details['moves']:
+            resource=resources[move_info['candidate']];resource['moves']+=1
+            resource['nodes']+=move_info.get('nodes') or 0;resource['seconds']+=move_info.get('time') or 0
+            resource['depth_sum']+=move_info.get('depth') or 0
         for i,move in enumerate(moves):
             assert move in board.legal_moves
             if i>=len(prefix):assert details['moves'][i-len(prefix)]['candidate']==(board.turn==white)
@@ -90,6 +96,9 @@ def main():
         result.update(paired_normal_95_score=interval,paired_normal_95_elo=[elo(x) for x in interval],
             paired_sample_sd=statistics.stdev(values),competitive_statistical_gate=mean>.5 and interval[0]>.5 and result['paired_bootstrap_95_score'][0]>.5)
     else:result['competitive_statistical_gate']=False
+    result['resources']={('candidate' if side else 'opponent'):dict(**v,
+        nodes_per_second=v['nodes']/v['seconds'] if v['seconds'] else None,
+        mean_depth=v['depth_sum']/v['moves'] if v['moves'] else None) for side,v in resources.items()}
     result['local_evidence']=str(a.match);result['game_files_sha256']=files
     a.output.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps({k:v for k,v in result.items() if k!='game_files_sha256'},indent=2))

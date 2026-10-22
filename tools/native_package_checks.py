@@ -210,10 +210,10 @@ def verify_uci(launcher, stage, env, model):
     legal_start = {f'{file}2{file}{rank}' for file in 'abcdefgh' for rank in '34'} | {'b1a3', 'b1c3', 'g1f3', 'g1h3'}
     checks = []; transcripts = []; searches = 0
     for workers in (1, 4, 16):
-        engine = Engine([launcher], cwd, env)
+        engine = Engine([launcher], cwd, env, allowed_stderr=('WARNING: Using incubator modules: jdk.incubator.vector',))
         try:
             engine.send('uci'); handshake = engine.until('uciok')
-            check(any(line.startswith('id name SeedV6 UCI ') for line in handshake), 'Wrong UCI identity')
+            check(any(line.startswith('id name SeedV6 Construction V1 NNUE CP64 ') for line in handshake), 'Wrong UCI identity')
             for option in ('Threads', 'Hash', 'Clear Hash'):
                 check(any('option name ' + option + ' ' in line for line in handshake), 'Missing option ' + option)
             for option in ('UseBook', 'OwnBook'):
@@ -221,9 +221,10 @@ def verify_uci(launcher, stage, env, model):
             engine.send(f'setoption name Threads value {workers}\nsetoption name Hash value 8\nsetoption name Clear Hash\nisready')
             engine.until('readyok')
             engine.send('uci'); identity = '\n'.join(engine.until('uciok'))
-            check(f'workers={workers} ' in identity and 'futility=off' in identity and 'see=qxray' in identity,
-                  'Wrong accepted search identity')
-            check('concurrency=' + ('off' if workers == 1 else 'root_reuse') in identity, 'Worker policy differs')
+            check(f'workers={workers};hashMiB=8' in identity and 'search=construction-v1' in identity
+                  and 'checkpoint=64 schema=S6CNU002 heads=8' in identity and 'flags=262143' in identity
+                  and 'aspiration=WIDEN16' in identity, 'Wrong baseline search/evaluator identity')
+            check('parallel=' + ('OWNER' if workers == 1 else 'ROOT_REUSE') in identity, 'Worker policy differs')
             for go in ('depth 3', 'movetime 100', 'wtime 5000 btime 5000 winc 20 binc 20 movestogo 20'):
                 engine.send('ucinewgame\nposition startpos\ngo ' + go)
                 lines = engine.until('bestmove ')
@@ -242,7 +243,7 @@ def verify_uci(launcher, stage, env, model):
         finally:
             engine.kill()
     for termination in ('EOF', 'terminate'):
-        engine = Engine([launcher], cwd, env)
+        engine = Engine([launcher], cwd, env, allowed_stderr=('WARNING: Using incubator modules: jdk.incubator.vector',))
         try:
             engine.send('setoption name Threads value 4\nposition startpos\ngo infinite')
             engine.until('info depth 2')
@@ -269,6 +270,29 @@ def verify_uci(launcher, stage, env, model):
     checks.append('Missing/corrupt/incompatible model fails nonzero on stderr without protocol/fallback')
     return {'status': 'passed', 'searches': searches, 'checks': checks, 'transcripts': transcripts,
             'externalJava': 'PATH empty; JAVA_HOME/JDK_HOME removed', 'guiTraining': 'absent'}
+
+
+def verify_baseline_assets(stage, env, java, app):
+    """The ordinary default fails closed with damaged embedded CP64, even with valid BREP2 present."""
+    entry = 'models/conventional-cp64.cnnue'
+    for kind in ('missing', 'truncated', 'corrupt', 'incompatible'):
+        import tempfile
+        directory = Path(tempfile.mkdtemp(prefix='baseline-network-'+kind+'-',dir=stage))
+        for source in (app / 'engine-core.jar', app / 'app-uci.jar'):
+            with zipfile.ZipFile(source) as original, zipfile.ZipFile(directory/source.name, 'w') as changed:
+                for info in original.infolist():
+                    data = original.read(info.filename)
+                    if info.filename == entry:
+                        if kind == 'missing': continue
+                        if kind == 'truncated': data = data[:-1]
+                        else:
+                            data = bytearray(data); data[7 if kind == 'incompatible' else -1] ^= 1
+                    changed.writestr(info, data)
+        result = subprocess.run([str(java), '-cp', str(directory/'*'), 'com.ohinteractive.seedv6.uci.UciMain'],
+            cwd=directory, env=env, input='uci\n', capture_output=True, text=True, timeout=10)
+        check(result.returncode != 0 and not result.stdout and 'checkpoint-64 NNUE' in result.stderr,
+              'Default did not reject embedded network: ' + kind + ': ' + result.stderr)
+    return 'Missing, truncated, corrupt and incompatible embedded CP64 fail closed; no BREP2 fallback'
 
 
 def verify_nnue(launcher, stage, env, java, app):

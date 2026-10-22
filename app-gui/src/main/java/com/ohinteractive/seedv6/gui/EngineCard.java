@@ -53,17 +53,18 @@ final class EngineCard extends JPanel {
     }
 
     PlayScore showSearch(GameController.SearchInfo search, PlayEvaluator evaluator, int configuredWorkers) {
-        configured.setText(configuredLimits + (evaluator.conventional() == null ? "" : " · E008 uses 1 worker"));
+        configured.setText(configuredLimits);
         configuredWorkers = evaluator.effectiveWorkers(configuredWorkers);
         boolean tablebase = search.score().equals("tablebase win");
         boolean nnue = evaluator.neural();
         String modelName = evaluator.conventional() != null ? "Conventional NNUE"
                 : nnue ? NetworkArchitecture.valueOf(evaluator.architecture().name()).toString() : "";
-        PlayScore value = PlayScore.from(search, nnue);
+        boolean uncalibrated = nnue && evaluator.conventional() == null;
+        PlayScore value = PlayScore.from(search, uncalibrated);
         score.setFont(SeedTheme.font(tablebase ? 17 : 21, Font.BOLD));
         score.setText(value.text()); score.setForeground(value.available() ? SeedTheme.GREEN : SeedTheme.TEXT);
         scoreTitle.setText(nnue ? modelName + " \u00b7 White" : "Score · White");
-        score.setToolTipText(nnue ? "Uncalibrated " + modelName + " units, White perspective; not centipawns." : "Pawns, White perspective.");
+        score.setToolTipText(uncalibrated ? "Uncalibrated " + modelName + " units, White perspective; not centipawns." : "Searched score in pawns (centipawns / 100), White perspective; not a winning probability.");
         depth.setText(search.depth() == 0 ? "—" : Integer.toString(search.depth()));
         nodes.setText(search.depth() == 0 && search.nodes() == 0 ? "—" : compact(search.nodes()));
         nps.setText(search.nps() < 0 ? "—" : compact(search.nps()) + "/s");
@@ -80,11 +81,11 @@ final class EngineCard extends JPanel {
         String variation = search.pv().isEmpty() ? "—" : search.pv();
         if (!pv.getText().equals(variation)) { pv.setText(variation); pv.setCaretPosition(0); }
         variationTitle.setText(tablebase ? "Winning move" : "Principal variation (PV)");
-        termination.setText(nnue ? modelName + " units \u00b7 uncalibrated  |  " + search.termination() : "Centipawns / 100  |  " + search.termination());
+        termination.setText(uncalibrated ? modelName + " units \u00b7 uncalibrated  |  " + search.termination() : "Centipawns / 100  |  " + search.termination());
         if (search.depth() > 0) termination.setText(termination.getText() + "  |  "
                 + (search.scoreSide() == com.ohinteractive.seedv6.core.util.Value.WHITE ? "White" : "Black")
                 + " · " + (nnue ? PlayEvaluator.shortId(evaluator.checkpointId()) : "HCE"));
-        termination.setToolTipText(evaluator.identity());
+        termination.setToolTipText(evaluator.identity(configuredWorkers));
         if(search.termination().equals("BOOK")) {
             scoreTitle.setText("Opening book");
             score.setToolTipText("Repertoire choice; no searched evaluation.");

@@ -120,7 +120,7 @@ class PackagingSafety(unittest.TestCase):
         self.assertIn('/usr/bin/dirname', text)
         self.assertNotIn('open -a', text)
         self.assertNotIn('JAVA_HOME/bin', text)
-        self.assertNotIn('--add-modules', text)  # Ordinary Gen32 remains quiet/default.
+        self.assertIn('--add-modules=jdk.incubator.vector', text)  # Normal CP64 resolves its optional fast backend.
         nnue = p.launcher_text(nnue=True)
         self.assertIn('--add-modules=jdk.incubator.vector', nnue)
         self.assertIn('-XX:ActiveProcessorCount=2', nnue)
@@ -172,7 +172,7 @@ class PackagingSafety(unittest.TestCase):
             image, _ = p.build_image(context, 'uci', stage, jars)
         return image, commands, model
 
-    def test_mac_uci_links_exact_modules_and_keeps_gen32_and_nnue_launchers(self):
+    def test_mac_uci_links_exact_modules_and_keeps_baseline_and_e008_launchers(self):
         image, commands, model = self.build_uci()
         self.assertEqual(p.launcher_text(), (image / 'SeedV6-UCI').read_text())
         self.assertEqual(p.launcher_text().encode('utf-8'), (image / 'SeedV6-UCI').read_bytes())

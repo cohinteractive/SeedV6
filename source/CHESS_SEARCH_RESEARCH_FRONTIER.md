@@ -1,10 +1,45 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F012**
+Internal frontier revision: **P3-F013**
 
-Status: **Workstream 3 construction is technically complete, pending GPT/owner reconciliation and acceptance. Workstreams 1 and 2 are closed and owner-accepted. Recursive Policy 4 remains the unchanged production champion/default and fallback at 1-16 workers. No successor is launched.**
+Status: **The owner has selected full Construction V1 + Conventional NNUE CP64 as the production and Search Phase 3 baseline. Consolidation and technical qualification are in progress. The E008 comparison is informational and cannot veto this selection. Native macOS acceptance of this consolidation remains unperformed.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
+
+## Current baseline decision - 23 October 2026
+
+The owner's explicit consolidation launch supersedes the earlier non-promotion,
+Pair-2-principal-evaluator and pending Construction acceptance boundaries for this
+work. Full Construction V1 (all 18 controls, flags 262143, WIDEN16 aspiration) with
+Conventional NNUE S6CNU002 checkpoint 64, eight material heads, is the selected
+production and Phase 3 research baseline. Technical correctness and packaging
+remain qualification gates; strength relative to E008 is informational, not a
+promotion veto. No new CGLHW, training, network replacement, feature addition,
+external publication, live bot change or subsequent optimization is authorized.
+
+`engine-core/search/driver/BaselineEngine` owns the composition shared by GUI
+Play, ordinary Arena and standard UCI. HCE and frozen BREP2-32 are the two other
+normal competitive choices, with the same Construction controls and resource
+settings. Conventional CP64 is frozen and absent from training architectures.
+`ConventionalNnueEngine` / `NnueCandidateUciMain` preserve recursive E008; historical
+Policy 4 and original Construction/Pair-2 entry points remain independently usable.
+Historical results below retain their original evaluator, kernel and evidence.
+
+See the [existing construction record](../docs/research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026)
+for implementation, score semantics, qualification and comparison evidence.
+The network file SHA-256 is
+`8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b`.
+Mutable accumulators, histories and search state are private to each worker;
+only immutable network tables and the coherently synchronized request TT are shared.
+Explicit worker settings 1-16 are honored; Max is bounded by available processors.
+The default requested hash remains 64 MiB. No score rescaling or frozen-weight
+mutation is part of this consolidation.
+
+The 18-20 October authority and champion accounts below are historical scopes,
+not contradictory current defaults. The explicit current owner launch authorizes
+this work without waiting for manual Project Source refresh. Repository updates
+do not update those external mirrors; refresh both before future mirror-dependent
+GPT planning. Future independent search optimization retains the existing contract.
 
 ## Authority and current direction
 
@@ -42,7 +77,7 @@ near-equal-performance preference, with the recorded limits. The separately laun
 driver investigation is owner-accepted; the subsequently launched construction
 now has its technical handback, without automatic successor authorization.
 
-Production champion: **Policy 4**, cumulative Pair-2 **QXRAY + quiet LMR +
+Historical production champion before 23 October: **Policy 4**, cumulative Pair-2 **QXRAY + quiet LMR +
 WINDOW + completed legal TT hints**, with **EFFORT at one worker / ROOT_REUSE at 2-16**,
 requested default 64 MiB TT and the
 fixed generation-32 evaluator identity in the Contract. Other evaluators, independent

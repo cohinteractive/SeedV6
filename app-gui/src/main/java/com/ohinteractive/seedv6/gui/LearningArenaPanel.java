@@ -20,7 +20,7 @@ final class LearningArenaPanel extends JPanel {
     private final CompetitorFields b = new CompetitorFields("B", TrainingArchitecture.BRN3);
     private final JTextField name = field("arenaName", "Learning campaign");
     private final TrainingDataSelector source;
-    private final JComboBox<Mode> mode = new JComboBox<>(Mode.values());
+    private final JComboBox<Mode> mode = new JComboBox<>(new Mode[]{Mode.MATCH_ONLY, Mode.LEARNING});
     private final PlayEnginePanel fixedA, fixedB;
     private final JPanel participantA = new ParticipantSetup(), participantB = new ParticipantSetup();
     private final JPanel trainingProtocol = fields();
@@ -106,7 +106,7 @@ final class LearningArenaPanel extends JPanel {
         c.gridx = 1; setup.add(SeedTheme.card("Shared match protocol", null, arena), c);
         var opening = fields(); row(opening, 0, "Starting FEN", fen);
         c.gridx = 0; c.gridy = 2; c.gridwidth = 2; setup.add(opening, c);
-        var explanation = new JTextArea("Learning campaigns train both models on the same frozen records and targets after Round 0. Match only compares fixed HCE or network evaluators once, without training.\nDepth is a controlled comparison; time includes evaluator cost. One search thread is most reproducible. Ply-capped pairs are unscored.\nResume restores the saved configuration and completed games. A crash may recompute an unfinished game or unsaved training work.");
+        var explanation = new JTextArea("Learning campaigns train both models on the same frozen records and targets after Round 0. Match only compares HCE, BREP2-32 or Conventional NNUE CP64 over color-reversed game pairs, without training.\nDepth is a controlled comparison; time includes evaluator cost. One search thread is most reproducible. Ply-capped pairs are unscored.\nResume restores the saved configuration and completed games. A crash may recompute an unfinished game or unsaved training work.");
         explanation.setEditable(false); explanation.setLineWrap(true); explanation.setWrapStyleWord(true); explanation.setOpaque(false); explanation.setRows(4);
         c.gridy = 3; setup.add(explanation, c);
         setupScroll.setName("arenaSetupScroll"); setupScroll.setBorder(null); setupScroll.getVerticalScrollBar().setUnitIncrement(20);

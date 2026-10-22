@@ -54,7 +54,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         setLayout(new BorderLayout());
         getContentPane().setBackground(SeedTheme.BACKGROUND);
         depthSpinner.setName("playDepth"); threadsSpinner.setName("playThreads");
-        threadsSpinner.setToolTipText("Configured participants, including the main worker. Max follows available processors up to the supported search limit. E008 + Conventional NNUE always uses one worker; this limit still applies to other engines. Live Threads shows current participation.");
+        threadsSpinner.setToolTipText("Configured participants, including the main worker. Max follows available processors up to the supported search limit. Construction V1 uses this setting for all three evaluators. Live Threads shows current participation.");
         if (playPreferences != null) ThreadSelection.setChoice(threadsSpinner,
                 Math.max(0, Math.min(ParallelSearch.MAX_WORKERS, playPreferences.getInt("threads", ParallelSearch.DEFAULT_WORKERS))));
         restorePlaySettings();
@@ -78,7 +78,7 @@ final class ChessFrame extends JFrame implements GameController.View {
                 return this;
             }
         });
-        evaluatorBox.setToolTipText("Human vs Engine evaluator choices apply when Start Game is pressed. E008 + Conventional NNUE bundles checkpoint 64 and always uses one worker. Other network architectures come from the selected store.");
+        evaluatorBox.setToolTipText("Human vs Engine evaluator choices apply when Start Game is pressed. All three evaluators use Construction V1 and the configured workers. Frozen networks are bundled.");
         trainingPanel = new TrainingPanel(settings, folders);
         tabs.setName("workspaces");
         tabs.putClientProperty("JTabbedPane.leadingComponent", identity());
@@ -272,7 +272,8 @@ final class ChessFrame extends JFrame implements GameController.View {
     private final JButton stopButton = new JButton("Stop Search");
     private final JButton stopGameButton = new JButton("Stop Game");
     private final JButton resignButton = new JButton("Resign");
-    private final JComboBox<PlayEvaluator.Mode> evaluatorBox = new JComboBox<>(PlayEvaluator.Mode.values());
+    private String legacyEvaluator;
+    private final JComboBox<PlayEvaluator.Mode> evaluatorBox = new JComboBox<>(PlayEvaluator.Mode.competitiveChoices());
     private final JLabel pinnedLabel = new JLabel("Handcrafted evaluator");
     private final JComboBox<GameController.GameMode> modeBox = new JComboBox<>(GameController.GameMode.values());
     private final JComboBox<GameController.HumanSide> humanSideBox = new JComboBox<>(GameController.HumanSide.values());
@@ -434,7 +435,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         if (modeBox.getSelectedItem() == GameController.GameMode.ENGINE_VS_ENGINE)
             return (white ? whiteEngine : blackEngine).selectionDescription();
         var selected = (PlayEvaluator.Mode) evaluatorBox.getSelectedItem();
-        return selected == PlayEvaluator.Mode.BEST_NNUE ? opponentEngine.selectionDescription()
+        return selected == null ? "Saved evaluator unavailable: " + legacyEvaluator + "; select an evaluator" : selected == PlayEvaluator.Mode.BEST_NNUE ? opponentEngine.selectionDescription()
                 : selected == PlayEvaluator.Mode.HANDCRAFTED ? "Handcrafted evaluator" : selected.toString();
     }
 
@@ -452,7 +453,7 @@ final class ChessFrame extends JFrame implements GameController.View {
                             : PlayParticipants.Selection.singleEngine(opponentEngine.selectedRoot(), opponentEngine.selectedId(), opponentEngine.selectedLineageId()));
             } else controller.startGame();
         });
-        evaluatorBox.addActionListener(event -> { if (!updatingEvaluator) { rememberPlaySettings(); refreshPlaySetup(); } });
+        evaluatorBox.addActionListener(event -> { if (!updatingEvaluator) { legacyEvaluator = null; rememberPlaySettings(); refreshPlaySetup(); } });
         loadFenButton.addActionListener(event -> {
             final String fen = JOptionPane.showInputDialog(
                 this, "Enter a complete six-field FEN:", "Load FEN",
@@ -497,11 +498,19 @@ final class ChessFrame extends JFrame implements GameController.View {
     }
 
     private void restorePlaySettings() {
-        evaluatorBox.setSelectedItem(PlayEvaluator.Mode.POLICY4_PAIR2);
+        evaluatorBox.setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_CP64);
         if (playPreferences == null) return;
         restoreEnum(modeBox, GameController.GameMode.class, "mode");
         restoreEnum(humanSideBox, GameController.HumanSide.class, "humanSide");
-        restoreEnum(evaluatorBox, PlayEvaluator.Mode.class, "evaluator");
+        String saved = playPreferences.get("evaluator", PlayEvaluator.Mode.CONVENTIONAL_CP64.name());
+        try {
+            var selection = PlayEvaluator.Mode.valueOf(saved);
+            if (!selection.competitive()) throw new IllegalArgumentException();
+            evaluatorBox.setSelectedItem(selection);
+        } catch (IllegalArgumentException obsolete) {
+            legacyEvaluator = saved;
+            evaluatorBox.setSelectedIndex(-1);
+        }
         restoreEnum(limitKindBox, GameController.LimitKind.class, "limitKind");
         depthSpinner.setValue(Math.max(1, Math.min(256, playPreferences.getInt("depth", 4))));
         movetimeSpinner.setValue(Math.max(50L, Math.min(600_000L, playPreferences.getLong("movetimeMillis", 1_000L))));
@@ -514,7 +523,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         if (playPreferences == null) return;
         playPreferences.put("mode", ((GameController.GameMode) modeBox.getSelectedItem()).name());
         playPreferences.put("humanSide", ((GameController.HumanSide) humanSideBox.getSelectedItem()).name());
-        playPreferences.put("evaluator", ((PlayEvaluator.Mode) evaluatorBox.getSelectedItem()).name());
+        if (evaluatorBox.getSelectedItem() != null) playPreferences.put("evaluator", ((PlayEvaluator.Mode) evaluatorBox.getSelectedItem()).name());
         playPreferences.put("limitKind", ((GameController.LimitKind) limitKindBox.getSelectedItem()).name());
         playPreferences.putInt("depth", ((Number) depthSpinner.getValue()).intValue());
         playPreferences.putLong("movetimeMillis", ((Number) movetimeSpinner.getValue()).longValue());
@@ -593,7 +602,8 @@ final class ChessFrame extends JFrame implements GameController.View {
         ((CardLayout) participantSetup.getLayout()).show(participantSetup, engines ? "engines" : "opponent");
         whiteEngine.setEditable(editable); blackEngine.setEditable(editable); opponentEngine.setEditable(editable);
         swapSides.setEnabled(editable && engines && whiteEngine.validSelection() && blackEngine.validSelection());
-        startGameButton.setEnabled(enabled && controller != null && controller.canStartGame()
+        startGameButton.setToolTipText(legacyEvaluator == null ? null : "Saved evaluator " + legacyEvaluator + " is historical/unavailable. Choose an evaluator explicitly.");
+        startGameButton.setEnabled((engines || evaluatorBox.getSelectedItem() != null) && enabled && controller != null && controller.canStartGame()
                 && (!engines || whiteEngine.validSelection() && blackEngine.validSelection())
                 && (!opponent || opponentEngine.validSelection()));
         if (controller != null && !controller.gameStarted() && !controller.positionStatus().terminal()) controlState.setText("Prepared");

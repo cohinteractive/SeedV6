@@ -160,15 +160,14 @@ def model_probe(context, stage, jars, model, kind='model', java=None):
     work.mkdir(exist_ok=True)
     command = [java or tool(context, 'java'), '-Djava.awt.headless=true', '-Duser.home=' + str(work),
                '-Djava.io.tmpdir=' + str(work), '-Djna.tmpdir=' + str(work)]
-    if kind == 'gui':
-        command += ['--add-modules=jdk.incubator.vector']
+    command += ['--add-modules=jdk.incubator.vector']
     output = run(command + ['-cp', os.pathsep.join(map(str, [classes, *jars])), 'PackagingProbe', kind, model],
                  cwd=work, env=environment(empty_path=True))
     return properties(output)
 
 
 def launcher_text(nnue=False):
-    options = '--add-modules=jdk.incubator.vector -XX:ActiveProcessorCount=2 ' if nnue else ''
+    options = '--add-modules=jdk.incubator.vector ' + ('-XX:ActiveProcessorCount=2 ' if nnue else '')
     main = NNUE_MAIN if nnue else APPS['uci'][1]
     return '''#!/bin/sh
 set -eu
@@ -259,7 +258,7 @@ def build_image(context, application, stage, jars):
                 + '\njava-options=--add-modules=jdk.incubator.vector -XX:ActiveProcessorCount=2 -Xmx768m -Djava.awt.headless=true'
                 + '\nwin-console=true\n', encoding='utf-8')
             command += ['--win-console', '--add-modules', ','.join(UCI_MODULES), '--java-options', '-Xmx768m',
-                        '--java-options', '-Djava.awt.headless=true', '--add-launcher', NNUE_LAUNCHER + '=' + str(candidate)]
+                        '--java-options', '-Djava.awt.headless=true', '--java-options', '--add-modules=jdk.incubator.vector', '--add-launcher', NNUE_LAUNCHER + '=' + str(candidate)]
         run(command)
         image = stage / (name + ('.app' if target == 'macos' else ''))
     app, runtime, launcher = layouts(image, application, target)
@@ -351,7 +350,7 @@ def rename_exclusive(source, destination_path):
 
 
 def verify_runtime(context, application, image, stage):
-    from native_package_checks import verify_uci, verify_dependencies, verify_nnue
+    from native_package_checks import verify_uci, verify_dependencies, verify_nnue, verify_baseline_assets
     app, runtime, launcher = layouts(image, application, context['platform'])
     java = runtime / 'bin' / ('java.exe' if context['platform'] == 'windows' else 'java')
     modules = run([java, '--list-modules'], env=environment(empty_path=True)).splitlines()
@@ -366,6 +365,7 @@ def verify_runtime(context, application, image, stage):
         return {'status': 'headless-resources-jni-passed', 'interactiveGui': 'NOT RUN; owner gate',
                 'optionalSyzygy': result['gui.optionalSyzygy'], 'modules': modules}
     result = verify_uci(launcher, stage, environment(empty_path=True), app.parent / 'models/baseline.brn-pair2')
+    result['baselineAssets'] = verify_baseline_assets(stage, environment(empty_path=True), java, app)
     result['modules'] = modules
     nnue = image / (NNUE_LAUNCHER + ('.exe' if context['platform'] == 'windows' else ''))
     result['nnueCandidate'] = verify_nnue(nnue, stage, environment(empty_path=True), java, app)
@@ -394,9 +394,9 @@ def package(a):
         native = verify_runtime(context, a.application, image, stage)
         engine = {'model': identity, 'coreJarSha256': sha(app / 'engine-core.jar'),
                   'coreContent': core_content(app / 'engine-core.jar'),
-                  'productionSearch': {'accepted': 'SR-001/SR-029/SR-022/SR-005/SR-036/SR-024',
-                     'see': 'qxray', 'lmr': 'quiet', 'lmp': 'window', 'oneWorker': 'effort',
-                     'multiworker': 'root_reuse (2..16)', 'sr021': 'deferred; disabled'},
+                  'productionSearch': {'profile': 'construction-v1', 'flags': 262143,
+                     'evaluator': 'Conventional NNUE CP64', 'schema': 'S6CNU002', 'materialHeads': 8,
+                     'configuration': identity['baseline.identity']},
                   'coreInputs': {n: v for n, v in context['source']['files'].items()
                                   if n.startswith('engine-core/src/main/') or n in (
                                       'VERSION_STATE.txt', 'engine-core/build.gradle', 'gradle/java-conventions.gradle',

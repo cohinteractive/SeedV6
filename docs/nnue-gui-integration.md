@@ -1,5 +1,13 @@
 # Checkpoint-64 E008 in Play
 
+Current consolidation (23 October 2026): the normal competitive baseline is now
+Construction V1 + Conventional NNUE CP64; see the
+[construction qualification record](research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026).
+The E008-specific configuration, launchers and historical results below are
+preserved. Earlier ordinary-default/GUI-worker-limit statements describe the
+pre-consolidation state. Native Mac evidence below does not qualify this new build.
+
+
 23 October 2026 (Auckland). The Play workspace exposes
 **E008 + Conventional NNUE (Checkpoint 64)** in Human vs Engine and independently
 for White and Black in Engine vs Engine. Existing choices and the default

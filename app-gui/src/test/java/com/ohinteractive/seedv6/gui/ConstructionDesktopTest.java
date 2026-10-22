@@ -21,22 +21,22 @@ class ConstructionDesktopTest {
             edt(() -> {
                 frame.setVisible(true); frame.setSize(1440, 950);
                 named(frame, "gameMode", JComboBox.class).setSelectedItem(GameController.GameMode.ENGINE_VS_ENGINE);
-                named(frame, "whiteEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.CONSTRUCTION_V1);
-                named(frame, "blackEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.POLICY4_PAIR2);
+                named(frame, "whiteEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_CP64);
+                named(frame, "blackEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.BREP2_32);
                 named(frame, "playThreads", JSpinner.class).setValue(1);
                 named(frame, "playDepth", JSpinner.class).setValue(3);
                 assertTrue(named(frame, "startGame", JButton.class).isEnabled());
                 named(frame, "startGame", JButton.class).doClick(); return null;
             });
-            until(() -> edt(() -> named(frame, "whitePlayerNetwork", JTextArea.class).getText().contains("construction-v1")));
+            until(() -> edt(() -> named(frame, "whitePlayerNetwork", JTextArea.class).getText().contains("Conventional NNUE CP64")));
             until(() -> edt(() -> !named(frame, "principalVariation", JTextArea.class).getText().equals("—")
                     && named(frame, "engineDepth", JLabel.class).getText().equals("3")));
             edt(() -> { named(frame, "stopGame", JButton.class).doClick(); capture(frame, "play");
-                assertTrue(named(frame, "blackPlayerNetwork", JTextArea.class).getText().contains("Policy 4"));
+                assertTrue(named(frame, "blackPlayerNetwork", JTextArea.class).getText().contains("BREP2-32"));
                 named(frame, "workspaces", JTabbedPane.class).setSelectedIndex(2);
                 named(frame, "arenaMode", JComboBox.class).setSelectedItem(com.ohinteractive.seedv6.training.service.LearningArenaConfig.Mode.MATCH_ONLY);
-                named(frame, "arenaFixedAEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.CONSTRUCTION_V1);
-                named(frame, "arenaFixedBEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.POLICY4_PAIR2);
+                named(frame, "arenaFixedAEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_CP64);
+                named(frame, "arenaFixedBEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.BREP2_32);
                 assertTrue(named(frame, "arenaCreate", JButton.class).isEnabled());
                 named(frame, "learningArena", LearningArenaPanel.class).showSetupTop(); return null;
             });

@@ -19,7 +19,7 @@ class ThreadAndTerminationTest {
         var max = new SearchThreads(0);
         assertEquals(2, max.resolve(2)); assertEquals(12, max.resolve(12));
         assertEquals(ParallelSearch.MAX_WORKERS, max.resolve(100)); assertEquals(1, max.resolve(0));
-        assertEquals(2, new SearchThreads(8).resolve(2));
+        assertEquals(8, new SearchThreads(8).resolve(2));
         assertThrows(IllegalArgumentException.class, () -> new SearchThreads(100));
         var settings = new TrainingSettings(root, 1, 0, 2, 0, 0, 1, 1, 1, 2, 1, 8, 4).withTimeLimit(9);
         var restored = LineageConfiguration.decode(LineageConfiguration.encode(settings), root, settings.architecture());
@@ -39,7 +39,7 @@ class ThreadAndTerminationTest {
             assertTrue(field.getText().startsWith("Max"));
             assertEquals(SearchThreads.available(), ThreadSelection.resolved(spinner));
             field.setText("Auto"); assertDoesNotThrow(spinner::commitEdit); assertEquals(0, spinner.getValue());
-            assertEquals(SearchThreads.available(), ((SpinnerNumberModel) spinner.getModel()).getMaximum());
+            assertEquals(16, ((SpinnerNumberModel) spinner.getModel()).getMaximum());
             assertThrows(ParseException.class, () -> field.getFormatter().stringToValue("100"));
             field.setText("1"); assertDoesNotThrow(spinner::commitEdit); assertEquals(1, spinner.getValue());
         });

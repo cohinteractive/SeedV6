@@ -291,7 +291,11 @@ final class EngineSearchAdapter implements SearchGateway {
     interface LifecycleFactory {
         SearchLifecycleService create(int rootWorkers);
         default SearchLifecycleService create(int rootWorkers, PlayEvaluator binding) {
-            if (binding.conventional() != null) return binding.conventional().service(1, 64);
+            if (binding.baseline() != null) return binding.baseline().service(rootWorkers, 64);
+            if (binding.mode() == PlayEvaluator.Mode.HANDCRAFTED) return new SearchLifecycleService(
+                    com.ohinteractive.seedv6.search.common.TimeSource.SYSTEM,
+                    () -> com.ohinteractive.seedv6.search.driver.BaselineEngine.create(binding.evaluation(), rootWorkers, 64),
+                    com.ohinteractive.seedv6.search.tablebase.RootTablebase.NONE, com.ohinteractive.seedv6.book.Book.bundled());
             if (binding.pinned() != null) return new SearchLifecycleService(
                     com.ohinteractive.seedv6.search.common.TimeSource.SYSTEM, () -> binding.pinned().create(rootWorkers, 64),
                     com.ohinteractive.seedv6.search.tablebase.SyzygyNative.configured(), com.ohinteractive.seedv6.book.Book.bundled());

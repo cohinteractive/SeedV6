@@ -14,13 +14,13 @@ tasks.register('runUci', JavaExec) {
     group = 'application'
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'com.ohinteractive.seedv6.uci.UciMain'
-    jvmArgs '-Djava.awt.headless=true', '-Xmx768m'
+    jvmArgs '--add-modules=jdk.incubator.vector', '-Djava.awt.headless=true', '-Xmx768m'
     standardInput = System.in
 }
 tasks.register('startScripts', CreateStartScripts) {
     applicationName = 'seedv6-uci'
     mainClass = 'com.ohinteractive.seedv6.uci.UciMain'
-    defaultJvmOpts = ['-Djava.awt.headless=true', '-Xmx768m']
+    defaultJvmOpts = ['--add-modules=jdk.incubator.vector', '-Djava.awt.headless=true', '-Xmx768m']
     outputDir = layout.buildDirectory.dir('scripts').get().asFile
     classpath = files(tasks.named('jar'), configurations.runtimeClasspath)
     doLast {
@@ -41,7 +41,7 @@ tasks.named('assemble') { dependsOn tasks.named('distZip'), tasks.named('distTar
 tasks.register('constructionStartScripts', CreateStartScripts) {
     applicationName = 'seedv6-construction-v1'
     mainClass = 'com.ohinteractive.seedv6.uci.ConstructionUciMain'
-    defaultJvmOpts = ['-Djava.awt.headless=true', '-Xmx768m']
+    defaultJvmOpts = ['--add-modules=jdk.incubator.vector', '-Djava.awt.headless=true', '-Xmx768m']
     outputDir = layout.buildDirectory.dir('constructionScripts').get().asFile
     classpath = files(tasks.named('jar'), configurations.runtimeClasspath)
     doLast {

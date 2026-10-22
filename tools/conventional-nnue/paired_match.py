@@ -62,6 +62,7 @@ def summarize(games):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--construction-comparison',action='store_true',help='Informational Construction V1 versus frozen E008 with identical CP64 inference')
     p.add_argument('--network',type=Path,required=True);p.add_argument('--openings',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True);p.add_argument('--movetime-ms',type=int,default=50)
     p.add_argument('--max-plies',type=int,default=400)
@@ -73,6 +74,11 @@ def main():
     p.add_argument('--policy-comparison',action='store_true',help='Explicit selective-versus-unpruned comparison with byte-identical NNUE files')
     a=p.parse_args()
     compute_gate.require()
+    if a.construction_comparison:
+        if a.policy_comparison or a.selective_research_classes or a.opponent_network:
+            raise ValueError('Construction comparison has fixed entry points, not research overrides')
+        if sha(a.network) != '8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b':
+            raise ValueError('Construction comparison requires frozen CP64')
     if a.policy_comparison:
         if not a.opponent_network or not a.selective_research_classes:
             raise ValueError('Policy comparison requires both a research launcher and the same NNUE opponent')
@@ -93,6 +99,8 @@ def main():
         classes=a.selective_research_classes.resolve()
         if not (classes/'SeedNnueSelectiveResearch.class').is_file():raise ValueError('Missing research launcher')
         commands[0]=base[:5]+[str(jars/'*')+os.pathsep+str(classes),'SeedNnueSelectiveResearch',str(a.network.resolve())]
+    if a.construction_comparison:
+        commands=[base,base[:-1]+['com.ohinteractive.seedv6.uci.NnueCandidateUciMain','--network',str(a.network.resolve())]]
     if a.vector:
         for command in commands:command.insert(1,'--add-modules=jdk.incubator.vector')
     protocol=dict(network=str(a.network.resolve()),network_sha256=sha(a.network),openings_sha256=sha(a.openings),
@@ -114,6 +122,15 @@ def main():
         protocol['network_held_identical']=True
     if a.confirmation:
         protocol['purpose']='prospective fixed-sample paired confirmation; frozen candidates/settings/openings; final endpoint only'
+    if a.construction_comparison:
+        import platform
+        protocol.update(candidate_name='ConstructionV1-NNUE-CP64',opponent_name='E008-NNUE-CP64',
+            opponent_network=str(a.network.resolve()),opponent_network_sha256=sha(a.network),network_held_identical=True,
+            source_revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),
+            source_status=subprocess.check_output(['git','status','--porcelain'],cwd=root,text=True),
+            hardware=platform.platform()+' '+platform.processor(),
+            interpretation='Informational only; Construction V1 remains selected regardless of result')
+        protocol.pop('baseline_sha256',None)
     games=[]
     if a.resume:
         if json.loads((a.output/'protocol.json').read_text())!=protocol:
@@ -152,16 +169,19 @@ def main():
                         game=identifier,info=chess.engine.INFO_BASIC|chess.engine.INFO_SCORE)
                     if played.move not in board.legal_moves:raise RuntimeError('Illegal engine move')
                     observations.append(dict(move=played.move.uci(),candidate=candidate_turn,nodes=played.info.get('nodes'),
-                        time=played.info.get('time'),depth=played.info.get('depth')))
+                        time=played.info.get('time'),depth=played.info.get('depth'),
+                        score_cp=played.info['score'].pov(board.turn).score() if 'score' in played.info else None,
+                        score_mate=played.info['score'].pov(board.turn).mate() if 'score' in played.info else None))
                     board.push(played.move)
                 outcome=board.outcome(claim_draw=True)
                 score=None if outcome is None else .5 if outcome.winner is None else float(outcome.winner==candidate_white)
                 record=dict(opening_index=opening_index,opening=opening['name'],candidate_white=candidate_white,
                     score=score,termination='CAP' if outcome is None else outcome.termination.name,
                     elapsed_seconds=time.monotonic()-game_start,plies=len(observations))
-                opponent_name=('NNUE-'+protocol['opponent_network_sha256'][:12]) if a.opponent_network else 'Gen32-Policy4'
-                game=chess.pgn.Game.from_board(board);game.headers['White']='NNUE' if candidate_white else opponent_name
-                game.headers['Black']=opponent_name if candidate_white else 'NNUE'
+                opponent_name=protocol.get('opponent_name',('NNUE-'+protocol['opponent_network_sha256'][:12]) if a.opponent_network else 'Gen32-Policy4')
+                candidate_name=protocol.get('candidate_name','NNUE')
+                game=chess.pgn.Game.from_board(board);game.headers['White']=candidate_name if candidate_white else opponent_name
+                game.headers['Black']=opponent_name if candidate_white else candidate_name
                 game.headers['Result']='*' if outcome is None else outcome.result()
                 stem=f'{opening_index:03d}-'+('white' if candidate_white else 'black')
                 durable_text(a.output/(stem+'.pgn'),str(game)+'\n')

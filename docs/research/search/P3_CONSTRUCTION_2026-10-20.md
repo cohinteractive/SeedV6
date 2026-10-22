@@ -411,3 +411,161 @@ owner refreshes BOTH master mirrors and confirms synchronization (**blocking**
 dependent GPT planning/next launch); GPT/owner reconciles and accepts or rejects
 the technical handback (**blocking** acceptance and successor progression).
 No human action is required to finish the already completed technical construction.
+
+
+## Construction V1 + CP64 consolidation, 23 October 2026
+
+The owner now selects the complete Construction V1 search plus Conventional NNUE
+S6CNU002 CP64, eight material heads, as the intended GUI Play, ordinary Arena,
+packaged UCI and Search Phase 3 baseline. This decision supersedes this record's
+historical non-promotion boundary. It does not rewrite the frozen build-39
+Pair-2 experiments above or the separately qualified recursive E008 experiments.
+No new research contract or open-ended evaluator programme is created.
+
+Starting state was clean `main` at `f75920d`, build 66. Root CODEXLOG_CURRENT.md
+is absent. Root AGENTS.md's no-finalizer and commit-only build rules apply.
+No inherited changes, frozen-weight modifications, push, deployment or live BotLi
+changes are involved. Technical operational acceptance is not inferred from this
+owner baseline decision or from a finished Codex turn.
+
+### Shared implementation and exact configuration
+
+`BaselineEngine` in engine-core loads the strict bundled resource and constructs
+`ConstructionSearch.v1(workers, hashMiB, WIDEN16)`. GUI PlayEvaluator and Arena's
+competitive endpoints use it; UciMain defaults to BaselineUciConfiguration, a thin
+adapter to that same core binding. Runtime UCI identity and GUI diagnostics include
+profile, flags, effective workers/hash, checkpoint/schema/heads, network and payload
+hashes, backend and build/source identity. The BREP2 resource is also pinned.
+No training store, network transfer, repository-relative lookup or silent fallback
+is permitted for default CP64. `--model <pinned Gen32 file>` retains the documented
+historical Policy 4 UCI fallback. `NnueCandidateUciMain` and the dedicated
+`seedv6-nnue-cp64` / native `SeedV6-NNUE-CP64` launchers retain frozen E008.
+The existing ConstructionUciMain retains its historical Pair-2 identity.
+
+Verified active controls are QXRAY, quiet LMR, WINDOW LMP, EFFORT, completed legal
+TT hints, capture history, immediate continuation history, two killers,
+countermoves, nominal-only history learning, bad-tactical-last ordering,
+same-side improving relief, node-local CAUTION relief, forced-evasion extension,
+boundary recapture extension, quiet futility, reverse futility and positive-history
+protection. Flags are 262143; quiet-futility margin is 100*d, reverse is 200*d;
+extensions share a one-ply real-path cap. WIDEN16 aspiration widens failed bounds.
+Single-worker OWNER and multiworker ROOT_REUSE retain drained helpers and private
+mutable evaluator/history/board state. The unchanged TT policy suppresses ordinary
+proof when selective/extension dependencies make it inapplicable. The 31-subject
+disposition table above specifies retained inactive alternatives; no null move,
+IID/IIR, razoring, ProbCut, Multi-Cut, singular extension, qTT, pondering or tablebase
+score substitution has been added to this baseline.
+
+E008 has recursive PVS, QXRAY, quiet LMR, WINDOW LMP, EFFORT and completed hints;
+its all-searched history learning differs from Construction's nominal-only learning.
+It has no aspiration, new ordering memories, improving/CAUTION, extensions or new
+futility controls. It includes no independently missing heuristic that should be
+silently merged into Construction. Its one-worker qualification remains intact.
+
+### Competitive UI, settings and lifecycle
+
+Play (human opponent and independent White/Black) and match-only Arena expose
+exactly HCE, BREP2-32 and Conventional NNUE CP64; CP64 is the default. Arena opens
+in match-only mode, with color-reversed opening pairs and configurable even game
+counts. Training mode retains its own lineage/architecture selection and rejects
+frozen competitive endpoints. Historical implementations and stored campaigns
+remain readable. Unsupported saved Play selections produce a visible message and
+require explicit selection; they are not silently reinterpreted.
+
+All three normal choices use full Construction with the configured worker count,
+64 MiB GUI/Arena hash, the same depth/time limits and optional GUI book semantics.
+UCI exposes Hash 1-1024 MiB and Threads 1-16; its book defaults off. Explicit numeric
+thread choices no longer silently clamp to available processors; Max still follows
+available processors up to 16. Configuration describes allocated participants;
+small/terminal roots can correctly use fewer active workers. Each lifecycle owns
+its TT and search; each worker owns separate incremental accumulators. Network
+weights alone are shared read-only. Stop/reset/switch/close drain existing helpers.
+
+### Score semantics and bounded calibration
+
+The pinned network is unchanged: file SHA-256
+`8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b`, payload
+`5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6`.
+Bullet uses sigmoid squared error with eval_scale=400; inference emits a centipawn
+scale, not material accounting or an empirically fitted winning probability.
+With QA=255 and QB=64, the integer score is
+`clamp(((dot / QA) + outputBias[head]) * 400 / (QA * QB), -32511, 32511)`,
+using signed long intermediates and truncation toward zero. The head is
+`(pieceCount - 2) / 4`; features orient each side to its king bucket. Search and UCI
+are side-to-move; GUI converts once to White perspective. Search resolves terminal
+outcomes first and keeps the mate band separate from static evaluation.
+
+The GUI incorrectly described conventional CP64 as non-centipawn legacy NNUE
+units. That presentation defect is corrected in the live score and scoresheet:
+CP64 displays pawns (cp/100), with explicit searched-score/perspective semantics.
+The bounded advantage bar is not a probability. Historical neural mappings retain
+their own labels. No arbitrary scaling, network replacement or training occurred.
+
+[Calibration summary](p3-construction-2026-10-20/baseline-cp64/calibration.json):
+530 positions (259 independent pinned references, 259 color/rank mirrors and 12
+curated cases), all eight material heads, and 15,433 legal child transitions passed
+exact reference/rebuild/incremental/scalar/Vector agreement. Parent accumulators
+remain unchanged across children. Existing NNUE tests independently cover king
+bucket/mirror crossings, promotions, castling, EP, null transitions, material-head
+boundaries and extreme integer arithmetic. Curated start position is +49 static /
++52 depth 4; queen advantage +1786/+1768; passed pawn +927/+3611; promotion
++671/+2135. Material gain is not a prerequisite for a high score. Mate-in-one is
+32767, checkmate -32768 and stalemate 0, independent of their static outputs.
+
+The finite curated depth-4 margin-removal control had identical root scores in all
+12 cases. Original score-dependent guards, thresholds, real-path caches, original
+windows and proof restrictions were inspected. No arithmetic/perspective defect
+or demonstrated reason to rescale CP64 or tune Construction margins was found.
+This is not empirical WDL calibration, population pruning-error estimation or
+isolated heuristic strength proof. The corpus includes large winning/losing scores
+and is not a representative sample of ordinary match score frequencies. No claim
+is made about the user's unprovided game positions. Future search tuning belongs
+to Phase 3 and must retain separate configuration identity.
+
+### Qualification and informational comparison
+
+Focused core, frozen-E008, real Swing Play, Arena persistence/color-pair/lifecycle,
+worker settings and mate-domain tests pass at the recorded local stages. Test logs
+and preserved failed expectations are under `build/baseline-consolidation/`;
+calibration raw evidence is under `p3-construction-2026-10-20/baseline-cp64/raw/`.
+Failed desktop assertions expected historical menu/default/one-worker behavior;
+these were corrected to the new owner requirements before passing reruns.
+Windows precommit candidate `candidate-20261022T221732-bc1cbce0` passes both
+native images and extracted ZIPs. Standard UCI completes 1/4/16-worker lifecycle
+checks and rejects all four damaged embedded-CP64 cases without fallback; the
+historical E008 executable still passes. Eight packaged GUI/UCI comparisons at
+depth 5 (four positions, scalar/Vector) match score/move/nodes/PV exactly; six UCI
+terminal/mate checks pass. The post-commit build and native interactive smoke
+remain to be recorded. [Validation index](p3-construction-2026-10-20/baseline-cp64/validation.json).
+
+The [expanded transition audit](p3-construction-2026-10-20/baseline-cp64/calibration-transitions.json)
+additionally identifies 259 material-head crossings and 1,518 king-context changes,
+all exact. Head-changing captures can materially alter the score (largest observed
+same-perspective change 2040 cp); exact transition agreement is not a claim that
+separate learned heads form a smooth function or calibrated WDL curve. CP64's
+frozen training recipe has WDL weight 0.0, so the sigmoid target is score-derived,
+not a directly fitted game-outcome probability. No training was launched.
+
+Prospective informational protocol: 24 newly selected independent opening roots,
+color reversed (48 games) at each of 200 and 1000 ms/move; one active game, one
+worker per engine, Hash32, books/ponder off, same compiled revision, same CP64 and
+Vector semantics. Use the existing paired_match.py / analyze_confirmation.py
+harness with explicit `--construction-comparison`. Select openings without
+outcome/evaluator filtering, excluding recorded prior roots, seed 2026102307;
+selection/input hashes are in `baseline-cp64/openings.selection.json`. Freeze the
+sample before games; max 1000 plies, formal endings including claimable draws,
+cap censored rather than adjudicated. Report per-opening paired bootstrap and
+paired-normal uncertainty at the final endpoint, plus node/time diagnostics.
+No interim result changes the sample or the selected baseline. This sample may
+leave substantial uncertainty; non-significance is not equivalence, and +/-50
+Elo is an interpretation reference rather than an acceptance threshold.
+
+The prior macOS Vector-module packaging repair is present. This Windows host
+cannot establish native macOS acceptance for the new baseline. After checkout of
+the final source on macOS with installed JDK21 and Python3, run
+`./gradlew --offline --no-daemon --max-workers=1 packageMac`, launch the normal
+GUI and normal SeedV6-UCI from an unrelated directory, and verify the baseline
+identity, three selectors, a legal move and termination. The automated native
+image/extracted-ZIP gates must pass, including the retained E008 executable.
+Native macOS acceptance and both external Project Source refreshes must be
+reported separately; no current tool updates those mirrors.

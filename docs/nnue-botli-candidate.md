@@ -1,5 +1,13 @@
 # SeedV6 checkpoint-64 NNUE / E008 UCI candidate
 
+Current consolidation (23 October 2026): the normal competitive baseline is now
+Construction V1 + Conventional NNUE CP64; see the
+[construction qualification record](research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026).
+The E008-specific configuration, launchers and historical results below are
+preserved. Earlier ordinary-default/GUI-worker-limit statements describe the
+pre-consolidation state. Native Mac evidence below does not qualify this new build.
+
+
 23 October 2026 (Auckland). This is the dedicated `nnue-cp64-e008-rc1`
 candidate for an owner-controlled BotLi trial. General production remains Gen32 /
 Policy 4. Native Apple Silicon and the installed BotLi configuration require the

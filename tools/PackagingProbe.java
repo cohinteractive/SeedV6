@@ -10,6 +10,11 @@ public final class PackagingProbe {
     public static void main(String[] args) throws Exception {
         ProductionModel.load(Path.of(args[1]));
         var version = ApplicationVersion.load();
+        var baseline = com.ohinteractive.seedv6.search.driver.BaselineEngine.load();
+        System.out.println("baseline.identity=" + baseline.identity(1, 64));
+        // Load all supported competitive resources from the actual packaged core.
+        for (var choice : com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.values())
+            com.ohinteractive.seedv6.search.driver.BaselineEngine.load(choice);
         System.out.println("model.sha256=" + ProductionModel.SHA256);
         System.out.println("model.lineage=" + ProductionModel.LINEAGE);
         System.out.println("model.checkpoint=" + ProductionModel.CHECKPOINT);

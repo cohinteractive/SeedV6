@@ -19,7 +19,7 @@ class TrainingSearchThreadsTest {
             var threads = (JSpinner) named(panel, "trainingThreads");
             var model = (SpinnerNumberModel) threads.getModel();
             assertEquals(0, model.getMinimum());
-            assertEquals(com.ohinteractive.seedv6.search.exact.SearchThreads.available(), model.getMaximum());
+            assertEquals(16, model.getMaximum());
             assertEquals(1, model.getValue());
             assertTrue(threads.getToolTipText().contains("Max follows this machine"));
         });

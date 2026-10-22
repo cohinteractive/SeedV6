@@ -24,8 +24,8 @@ class ConventionalDesktopTest {
             edt(() -> {
                 frame.setVisible(true); frame.setSize(1500, 1000);
                 var choices = named(frame, "playEvaluator", JComboBox.class);
-                assertEquals(PlayEvaluator.Mode.POLICY4_PAIR2, choices.getSelectedItem());
-                assertEquals(5, choices.getItemCount());
+                assertEquals(PlayEvaluator.Mode.CONVENTIONAL_CP64, choices.getSelectedItem());
+                assertEquals(3, choices.getItemCount());
                 choices.setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_CP64);
                 named(frame, "gameSettings", JButton.class).doClick();
                 capture(frame, "selection");
@@ -40,7 +40,8 @@ class ConventionalDesktopTest {
             edt(() -> {
                 assertTrue(controller.evaluator().evaluation().isConventional());
                 assertEquals("3", named(frame, "engineDepth", JLabel.class).getText());
-                assertTrue(named(frame, "engineThreads", JLabel.class).getText().endsWith("/1"));
+                assertEquals(4, controller.workerCount());
+                assertTrue(named(frame, "engineThreads", JLabel.class).getText().endsWith("/4"));
                 assertTrue(named(frame, "searchTermination", JLabel.class).getToolTipText().contains("heads=8"));
                 // Human black king e8-d8 through the board's ordinary interaction port.
                 controller.squarePressed(60); controller.squareReleased(59); return null;
@@ -50,7 +51,7 @@ class ConventionalDesktopTest {
             until(() -> edt(controller::settingsEditable));
             edt(() -> {
                 assertTrue(controller.displayedMoves().isEmpty());
-                named(frame, "playEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.CONSTRUCTION_V1);
+                named(frame, "playEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.BREP2_32);
                 named(frame, "startGame", JButton.class).doClick(); return null;
             });
             until(() -> edt(controller::gameStarted));
@@ -58,7 +59,7 @@ class ConventionalDesktopTest {
             until(() -> edt(controller::settingsEditable));
             edt(() -> {
                 named(frame, "gameMode", JComboBox.class).setSelectedItem(GameController.GameMode.ENGINE_VS_ENGINE);
-                named(frame, "whiteEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.POLICY4_PAIR2);
+                named(frame, "whiteEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.BREP2_32);
                 named(frame, "blackEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_CP64);
                 assertTrue(controller.loadFen("4k3/8/8/8/4P3/8/8/4K3 b - - 0 1"));
                 named(frame, "startGame", JButton.class).doClick(); return null;
@@ -66,8 +67,8 @@ class ConventionalDesktopTest {
             until(() -> edt(() -> controller.displayedMoves().size() >= 2));
             edt(() -> {
                 named(frame, "stopGame", JButton.class).doClick();
-                assertTrue(named(frame, "whitePlayerNetwork", JTextArea.class).getText().contains("Policy 4"));
-                assertTrue(named(frame, "blackPlayerNetwork", JTextArea.class).getText().contains("Checkpoint 64"));
+                assertTrue(named(frame, "whitePlayerNetwork", JTextArea.class).getText().contains("BREP2-32"));
+                assertTrue(named(frame, "blackPlayerNetwork", JTextArea.class).getText().contains("CP64"));
                 capture(frame, "independent"); return null;
             });
             until(() -> edt(controller::settingsEditable));

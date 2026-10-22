@@ -40,7 +40,7 @@ public final class ConventionalGuiProbe {
     }
     static void require(boolean value, String message) { if (!value) throw new AssertionError(message); }
     public static void main(String[] args) throws Exception {
-        var adapter = edt(() -> new EngineSearchAdapter(4));
+        var adapter = edt(() -> new EngineSearchAdapter(1));
         try {
             String error = bind(adapter, PlayEvaluator.Mode.CONVENTIONAL_CP64, PlayParticipants.Selection.BEST);
             if (args.length > 0 && args[0].equals("failure")) {
@@ -50,7 +50,7 @@ public final class ConventionalGuiProbe {
                 require(bind(adapter, PlayEvaluator.Mode.POLICY4_PAIR2, PlayParticipants.Selection.BEST) == null, "Other engine unavailable");
             } else {
                 require(error == null, error);
-                System.out.println(adapter.evaluator().identity());
+                System.out.println(adapter.evaluator().identity(adapter.workerCount()));
             }
             String fen = args.length > 0 && !args[0].equals("failure") ? args[0] : Board.FEN_STARTING_POSITION;
             var board = Board.fromFen(fen);

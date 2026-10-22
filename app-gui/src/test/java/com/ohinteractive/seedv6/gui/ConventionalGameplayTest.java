@@ -23,10 +23,11 @@ class ConventionalGameplayTest {
         var white = edt(() -> new PlayEnginePanel("white", temporary, preferences, () -> {}));
         var black = edt(() -> new PlayEnginePanel("black", temporary, null, () -> {}));
         try {
-            assertEquals(PlayEvaluator.Mode.POLICY4_PAIR2, edt(white::selectedMode));
-            assertEquals(5, edt(() -> white.evaluator.getItemCount()));
+            assertEquals(PlayEvaluator.Mode.CONVENTIONAL_CP64, edt(white::selectedMode));
+            edt(() -> { black.evaluator.setSelectedItem(PlayEvaluator.Mode.BREP2_32); return null; });
+            assertEquals(3, edt(() -> white.evaluator.getItemCount()));
             edt(() -> { white.evaluator.setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_CP64); return null; });
-            assertEquals("E008 + Conventional NNUE (Checkpoint 64)", edt(white::selectionDescription));
+            assertEquals("Conventional NNUE CP64", edt(white::selectionDescription));
             assertTrue(edt(white::validSelection)); assertNull(edt(white::selectedRoot));
             assertEquals(PlayEvaluator.Mode.CONVENTIONAL_CP64.name(), preferences.get("evaluator", ""));
             var restored = edt(() -> new PlayEnginePanel("white", temporary, preferences, () -> {}));
@@ -35,17 +36,17 @@ class ConventionalGameplayTest {
             edt(() -> { white.swapWith(black); return null; });
             var selection = edt(() -> white.versus(black));
             assertEquals(PlayEvaluator.Mode.CONVENTIONAL_CP64, selection.blackMode());
-            assertEquals(PlayEvaluator.Mode.POLICY4_PAIR2, selection.whiteMode());
+            assertEquals(PlayEvaluator.Mode.BREP2_32, selection.whiteMode());
         } finally {
             edt(() -> { white.dispose(); black.dispose(); return null; }); preferences.removeNode();
         }
     }
 
     @Test void actualGuiServiceUsesQualifiedSearchAndFreshAccumulatorState() throws Exception {
-        var adapter = edt(() -> new EngineSearchAdapter(4));
+        var adapter = edt(() -> new EngineSearchAdapter(1));
         try {
             var selection = new PlayParticipants.Selection("", "", null, null, null, null,
-                    PlayEvaluator.Mode.CONVENTIONAL_CP64, PlayEvaluator.Mode.POLICY4_PAIR2);
+                    PlayEvaluator.Mode.CONVENTIONAL_CP64, PlayEvaluator.Mode.BREP2_32);
             assertNull(bind(adapter, PlayEvaluator.Mode.BEST_NNUE, selection));
             var binding = adapter.participants().white();
             assertTrue(binding.evaluation().isConventional());
@@ -53,20 +54,10 @@ class ConventionalGameplayTest {
             assertEquals(ConventionalNnueEngine.SHA256, binding.networkHash());
             assertEquals("S6CNU002", binding.conventional().model().schema());
             assertEquals(8, binding.conventional().model().outputBuckets());
-            assertEquals(4, adapter.workerCount()); assertEquals(1, binding.effectiveWorkers(4));
+            assertEquals(1, adapter.workerCount()); assertEquals(4, binding.effectiveWorkers(4));
             assertNotSame(field(adapter, "service"), field(adapter, "blackService"));
-            var exact = field(field(field(field(adapter, "service"), "search"), "exact"), "exact");
-            assertEquals(SeePolicy.QXRAY, field(exact, "seePolicy"));
-            assertEquals(ExactSearch.LMR_QUIET, field(exact, "lmrPolicy"));
-            assertEquals(ExactSearch.LMP_WINDOW, field(exact, "lmpPolicy"));
-            assertEquals(IterationReuse.EFFORT, field(field(exact, "iterationReuse"), "policy"));
-            assertEquals(true, field(exact, "completedHints"));
-            assertNull(field(exact, "construction")); assertNull(field(exact, "flatMainFrames"));
-            assertEquals(false, field(exact, "reverseFutility")); assertEquals(false, field(exact, "nullMovePruning"));
-            assertEquals(FutilityPolicy.OFF, field(exact, "futilityPolicy"));
-            assertEquals(NullMovePolicy.OFF, field(exact, "pairNull"));
-            assertEquals(ExactSearch.CHECK_OFF, field(exact, "checkPolicy"));
-            assertNull(field(exact, "historyLearning"));
+            assertTrue(binding.identity(1).contains("flags=262143"));
+            assertTrue(binding.identity(1).contains("aspiration=WIDEN16"));
             for (String fen : new String[]{Board.FEN_STARTING_POSITION,
                     "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
                     "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1", "7k/P7/8/8/8/8/8/7K w - - 0 1"}) {
@@ -76,7 +67,7 @@ class ConventionalGameplayTest {
                 assertNull(actual.failure()); assertTrue(actual.hasMove()); assertArrayEquals(before, board);
                 assertTrue(java.util.Arrays.stream(GameSession.fromFen(fen).legalMoves()).anyMatch(m -> m == actual.bestMove()));
                 try (var oracle = new SearchLifecycleService(TimeSource.SYSTEM,
-                        () -> ConventionalNnueEngine.search(SearchEvaluation.conventionalFullRebuild(binding.conventional().model()), 64),
+                        () -> com.ohinteractive.seedv6.search.driver.BaselineEngine.create(SearchEvaluation.conventionalFullRebuild(binding.conventional().model()), 1, 64),
                         com.ohinteractive.seedv6.search.tablebase.RootTablebase.NONE, com.ohinteractive.seedv6.book.Book.bundled())) {
                     var result = new CompletableFuture<ManagedSearchResult>();
                     oracle.setBookEnabled(false);
@@ -97,7 +88,7 @@ class ConventionalGameplayTest {
             assertTrue(retired.isTerminated());
             assertNull(bind(adapter, PlayEvaluator.Mode.CONVENTIONAL_CP64, PlayParticipants.Selection.BEST));
             edt(() -> { adapter.replaceWorkerCount(16); return null; });
-            assertEquals(1, adapter.evaluator().effectiveWorkers(adapter.workerCount()));
+            assertEquals(16, adapter.evaluator().effectiveWorkers(adapter.workerCount()));
             assertNull(search(adapter, Board.startingPosition(), new SearchLimits(100, -1, 150, false), false).failure());
             assertNull(search(adapter, Board.startingPosition(), new SearchLimits(3, -1, -1, false), false).failure());
         } finally { edt(adapter::beginShutdown).run(); }

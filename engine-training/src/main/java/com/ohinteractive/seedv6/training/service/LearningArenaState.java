@@ -35,23 +35,29 @@ public record LearningArenaState(int version, String id, String binding, Learnin
             this(checkpoint, generation, positions, exposure, training, null);
         }
         public static Endpoint handcrafted() { return new Endpoint("", 0, 0, 0, null, LearningArenaConfig.Evaluator.HCE); }
-        public boolean isHandcrafted() { return evaluator == LearningArenaConfig.Evaluator.HCE; }
+        public boolean isHandcrafted() { return evaluator == LearningArenaConfig.Evaluator.HCE || evaluator == LearningArenaConfig.Evaluator.HCE_CONSTRUCTION; }
         public boolean isPinned() { return evaluator != null && !isHandcrafted(); }
         public boolean usesStore() { return evaluator == null; }
         public static Endpoint pinned(LearningArenaConfig.Evaluator evaluator) {
             if (evaluator == null || evaluator == LearningArenaConfig.Evaluator.HCE) throw new IllegalArgumentException("Expected pinned profile");
-            return new Endpoint(com.ohinteractive.seedv6.core.brnpair2.ProductionModel.CHECKPOINT, 32, 0, 0, null, evaluator);
+            return evaluator == LearningArenaConfig.Evaluator.CONVENTIONAL_CP64
+                    ? new Endpoint("cp64-" + com.ohinteractive.seedv6.search.driver.ConventionalNnueEngine.SHA256, 64, 0, 0, null, evaluator)
+                    : new Endpoint(com.ohinteractive.seedv6.core.brnpair2.ProductionModel.CHECKPOINT, 32, 0, 0, null, evaluator);
         }
         public Endpoint(String checkpoint, long generation, long positions, long exposure) {
             this(checkpoint, generation, positions, exposure, null);
         }
         public Endpoint {
-            boolean hce = evaluator == LearningArenaConfig.Evaluator.HCE;
-            if (evaluator != null && !hce && (!com.ohinteractive.seedv6.core.brnpair2.ProductionModel.CHECKPOINT.equals(checkpoint)
+            boolean hce = evaluator == LearningArenaConfig.Evaluator.HCE || evaluator == LearningArenaConfig.Evaluator.HCE_CONSTRUCTION;
+            boolean conventional = evaluator == LearningArenaConfig.Evaluator.CONVENTIONAL_CP64;
+            if (conventional && (!("cp64-" + com.ohinteractive.seedv6.search.driver.ConventionalNnueEngine.SHA256).equals(checkpoint)
+                    || generation != 64 || positions != 0 || exposure != 0 || training != null))
+                throw new IllegalArgumentException("Invalid frozen CP64 endpoint");
+            if (evaluator != null && !hce && !conventional && (!com.ohinteractive.seedv6.core.brnpair2.ProductionModel.CHECKPOINT.equals(checkpoint)
                     || generation != 32 || positions != 0 || exposure != 0 || training != null))
                 throw new IllegalArgumentException("Invalid pinned generation-32 endpoint");
             if (checkpoint == null || (hce ? !checkpoint.isEmpty() || generation != 0 || positions != 0 || exposure != 0 || training != null
-                    : !checkpoint.matches("g[0-9]{6,19}-s[0-9]{9,19}-[0-9a-f]{64}"))
+                    : !conventional && !checkpoint.matches("g[0-9]{6,19}-s[0-9]{9,19}-[0-9a-f]{64}"))
                     || generation < 0 || positions < 0 || exposure < positions)
                 throw new IllegalArgumentException("Invalid campaign checkpoint/exposure");
         }

@@ -13,7 +13,8 @@ public final class UciMain {
             if (conventional && System.getProperty("seedv6.uci.model") != null)
                 throw new IllegalArgumentException("Do not combine --nnue with seedv6.uci.model");
             String selected = args.length == 2 ? args[1] : System.getProperty("seedv6.uci.model");
-            var configuration = conventional ? ConventionalUciConfiguration.load(java.nio.file.Path.of(selected))
+            var configuration = selected == null ? BaselineUciConfiguration.load()
+                    : conventional ? ConventionalUciConfiguration.load(java.nio.file.Path.of(selected))
                     : ProductionUciConfiguration.load(ProductionModel.resolve(selected));
             try (var engine = new UciEngine(System.in, System.out, System.err, configuration)) {
                 var shutdown = new Thread(engine::close, "seedv6-uci-shutdown");

@@ -1,0 +1,97 @@
+{
+  "status": "focused-checks-pass",
+  "latest_junit": [
+    {
+      "module": "engine-core",
+      "suite": "com.ohinteractive.seedv6.search.driver.BaselineEngineTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "module": "engine-training",
+      "suite": "com.ohinteractive.seedv6.training.service.BaselineArenaTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "module": "app-gui",
+      "suite": "com.ohinteractive.seedv6.gui.BaselineScoreTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "module": "app-gui",
+      "suite": "com.ohinteractive.seedv6.gui.ConventionalGameplayTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "module": "app-uci",
+      "suite": "com.ohinteractive.seedv6.uci.ConstructionUciTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "module": "app-uci",
+      "suite": "com.ohinteractive.seedv6.uci.NnueCandidateTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "module": "app-uci",
+      "suite": "com.ohinteractive.seedv6.uci.StandaloneBoundaryTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "module": "integration",
+      "suite": "com.ohinteractive.seedv6.gui.ThreadAndTerminationTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1
+    }
+  ],
+  "log_directory": "build/baseline-consolidation",
+  "passed_stages": [
+    "core-01.log",
+    "compile-02.log",
+    "tests-06.log",
+    "tests-07.log",
+    "tests-08.log",
+    "checks-09.log",
+    "package-02.log",
+    "parity-01.log"
+  ],
+  "preserved_failed_stages": [
+    "gui-03.log",
+    "tests-04.log",
+    "tests-05.log",
+    "package-01.log"
+  ],
+  "windows_precommit_candidate": "candidate-20261022T221732-bc1cbce0",
+  "packaged_parity": "raw/parity-01/result.json",
+  "calibration": "calibration-transitions.json",
+  "native_mac": "not available on Windows; exact handoff in parent construction record",
+  "skipped": [
+    "Full unrelated suite",
+    "Training",
+    "Native macOS execution",
+    "Live BotLi/deployment",
+    "External strong-engine WDL fit"
+  ]
+}

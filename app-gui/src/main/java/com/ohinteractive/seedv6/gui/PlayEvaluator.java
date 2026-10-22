@@ -1,6 +1,7 @@
 package com.ohinteractive.seedv6.gui;
 
 import java.io.IOException;
+import com.ohinteractive.seedv6.search.driver.BaselineEngine;
 import com.ohinteractive.seedv6.search.driver.ConventionalNnueEngine;
 import com.ohinteractive.seedv6.search.driver.PinnedSearch;
 import com.ohinteractive.seedv6.core.brnpair2.ProductionModel;
@@ -10,13 +11,15 @@ import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 
 /** Immutable game binding to HCE or a validated persisted network. */
-record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchEvaluation evaluation, com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture, com.ohinteractive.seedv6.training.model.ModelLibrary.Binding binding, PinnedSearch pinned, ConventionalNnueEngine conventional) {
+record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchEvaluation evaluation, com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture, com.ohinteractive.seedv6.training.model.ModelLibrary.Binding binding, PinnedSearch pinned, ConventionalNnueEngine conventional, BaselineEngine baseline) {
     PlayEvaluator {
         java.util.Objects.requireNonNull(mode);
         if ((mode == Mode.CONVENTIONAL_CP64) != (conventional != null)
                 || conventional != null && (evaluation != conventional.evaluation()
                 || !ConventionalNnueEngine.SHA256.equals(networkHash) || !"64".equals(checkpointId)))
-            throw new IllegalArgumentException("Conventional gameplay requires its verified checkpoint-64 E008 binding");
+            throw new IllegalArgumentException("Conventional gameplay requires its verified checkpoint-64 binding");
+        if (baseline != null && (!mode.competitive() || evaluation != baseline.evaluation()))
+            throw new IllegalArgumentException("Competitive gameplay requires its shared baseline evaluator");
         if (mode.pinned() != (pinned != null) || pinned != null && (pinned.policy() != mode.policy()
                 || evaluation != pinned.evaluation() || !ProductionModel.SHA256.equals(networkHash)
                 || !ProductionModel.CHECKPOINT.equals(checkpointId)
@@ -26,7 +29,7 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
     PlayEvaluator(Mode mode, String id, String hash, SearchEvaluation evaluation,
                   com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture,
                   com.ohinteractive.seedv6.training.model.ModelLibrary.Binding binding, PinnedSearch pinned) {
-        this(mode, id, hash, evaluation, architecture, binding, pinned, null);
+        this(mode, id, hash, evaluation, architecture, binding, pinned, null, null);
     }
     PlayEvaluator(Mode mode, String id, String hash, SearchEvaluation evaluation,
                   com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture,
@@ -55,10 +58,12 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
                 checkpoint.model().evaluation(TrainingSettings.SCORE_MAPPING), manifest.architecture(), binding);
     }
     enum Mode {
-        HANDCRAFTED("Handcrafted"), BEST_NNUE("Best NNUE"),
+        HANDCRAFTED("HCE"), BEST_NNUE("Best NNUE"),
         POLICY4_PAIR2("Policy 4 / Pair-2 g32"), CONSTRUCTION_V1("construction-v1 / Pair-2 g32 (experimental)"),
-        CONVENTIONAL_CP64("E008 + Conventional NNUE (Checkpoint 64)");
-        boolean bundled() { return pinned() || this == CONVENTIONAL_CP64; }
+        CONVENTIONAL_CP64("Conventional NNUE CP64"), BREP2_32("BREP2-32");
+        static Mode[] competitiveChoices() { return new Mode[]{HANDCRAFTED, BREP2_32, CONVENTIONAL_CP64}; }
+        boolean competitive() { return this == HANDCRAFTED || this == BREP2_32 || this == CONVENTIONAL_CP64; }
+        boolean bundled() { return pinned() || this == CONVENTIONAL_CP64 || this == BREP2_32; }
         boolean pinned() { return this == POLICY4_PAIR2 || this == CONSTRUCTION_V1; }
         PinnedSearch.Policy policy() {
             return switch (this) {
@@ -74,12 +79,15 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
 
     boolean neural() { return mode != Mode.HANDCRAFTED; }
     static PlayEvaluator bundled(Mode mode) throws IOException {
-        if (mode != Mode.CONVENTIONAL_CP64) return pinned(mode);
-        var engine = ConventionalNnueEngine.load();
-        return new PlayEvaluator(mode, "64", ConventionalNnueEngine.SHA256, engine.evaluation(),
-                null, null, null, engine);
+        if (!mode.competitive()) return pinned(mode);
+        var engine = BaselineEngine.load(mode == Mode.BREP2_32 ? BaselineEngine.Evaluator.BREP2_32
+                : BaselineEngine.Evaluator.CONVENTIONAL_CP64);
+        return new PlayEvaluator(mode, mode == Mode.BREP2_32 ? ProductionModel.CHECKPOINT : "64",
+                mode == Mode.BREP2_32 ? ProductionModel.SHA256 : ConventionalNnueEngine.SHA256, engine.evaluation(),
+                mode == Mode.BREP2_32 ? com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN_PAIR2 : null,
+                null, null, engine.conventional(), engine);
     }
-    int effectiveWorkers(int requested) { return conventional == null ? requested : 1; }
+    int effectiveWorkers(int requested) { return requested; }
     static PlayEvaluator pinned(Mode mode) throws IOException {
         var engine = PinnedSearch.load(mode.policy());
         return new PlayEvaluator(mode, ProductionModel.CHECKPOINT, ProductionModel.SHA256,
@@ -87,7 +95,10 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
     }
 
     static PlayEvaluator handcrafted() {
-        return new PlayEvaluator(Mode.HANDCRAFTED, "", "", SearchEvaluation.handcrafted());
+        try {
+            var engine = BaselineEngine.load(BaselineEngine.Evaluator.HCE);
+            return new PlayEvaluator(Mode.HANDCRAFTED, "", "", engine.evaluation(), null, null, null, null, engine);
+        } catch (IOException impossible) { throw new AssertionError(impossible); }
     }
 
     static PlayEvaluator loadBest(Path root) throws IOException {
@@ -123,12 +134,12 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
     }
 
     String identity() {
-        if (conventional != null) return conventional.identity(64);
+        if (baseline != null) return baseline.identity(1, 64);
         if (pinned != null) return mode + " | model.sha256=" + networkHash + " | Checkpoint: " + checkpointId;
         return mode == Mode.BEST_NNUE ? (binding == null ? "" : binding.description() + " | Lineage: " + binding.lineageId().map(Object::toString).orElse("not recorded") + " | ") + "Checkpoint: " + checkpointId + " | Network SHA-256: " + networkHash : description();
     }
 
-    String identity(int workers) { return pinned == null ? identity() : pinned.identity(workers, 64); }
+    String identity(int workers) { return baseline != null ? baseline.identity(workers, 64) : pinned == null ? identity() : pinned.identity(workers, 64); }
 
     static String shortId(String id) {
         if (id == null || id.isEmpty()) return "—";
