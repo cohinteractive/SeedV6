@@ -27,6 +27,7 @@ final class ConventionalUciConfiguration {
             public String identity(int workers){return identity(workers,64);}
             public String identity(int workers,int hashMiB){
                 return "evaluator=CONVENTIONAL_NNUE schema="+model.schema()+" payload="+model.payloadSha256()
+                    +" head="+model.headBackend()
                     +" search=recursive-unpruned-qsearch workers="+workers+" hashMiB="+hashMiB
                     +" build="+version.build()+" source="+version.sourceRevision();
             }

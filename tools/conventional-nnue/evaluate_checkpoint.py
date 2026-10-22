@@ -19,17 +19,22 @@ def main():
     p.add_argument('checkpoint',type=Path);p.add_argument('probes',type=Path)
     p.add_argument('validation',type=Path);p.add_argument('output',type=Path)
     p.add_argument('--material',type=Path)
+    p.add_argument('--vector',action='store_true',help='Verify the optional exact Vector API runtime')
     a=p.parse_args();compute_gate.require();receipt,_=verify_checkpoint(a.checkpoint)
     a.output.mkdir(parents=True,exist_ok=False)
     root=Path(__file__).resolve().parents[2];tools=root/'tools/conventional-nnue'
     network=a.output/'network.cnnue'
     commands=[];start=time.monotonic()
     def run(command,log):
-        compute_gate.require();commands.append(dict(command=command,output=str(log)))
-        with log.open('xb') as stream:subprocess.run(command,stdout=stream,stderr=subprocess.STDOUT,check=True)
+        compute_gate.require();errors=log.with_name(log.name+'.stderr')
+        commands.append(dict(command=command,output=str(log),stderr=str(errors)))
+        # Keep JVM/module diagnostics separate from machine-readable probe rows.
+        with log.open('xb') as stream,errors.open('xb') as error_stream:
+            subprocess.run(command,stdout=stream,stderr=error_stream,check=True)
     python=[sys.executable,'-B']
     java=['C:/java/jdk-21/bin/java.exe','-XX:ActiveProcessorCount=1','-Xmx512m',
           '-cp',str(root/'research/build/install/research/lib/*'),'com.ohinteractive.seedv6.tools.eval.ConventionalNnueProbe',str(network)]
+    if a.vector:java.insert(1,'--add-modules=jdk.incubator.vector')
     run(python+[str(tools/'export_network.py'),str(a.checkpoint/'quantised.bin'),str(network),
         '--fens',str(a.probes),'--reference',str(a.output/'python.jsonl')],a.output/'export.log')
     run([str(root/'build/conventional-nnue/cargo-target/release/seed-conventional-nnue.exe'),

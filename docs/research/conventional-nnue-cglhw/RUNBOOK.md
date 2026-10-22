@@ -114,3 +114,14 @@ continuation cannot change it, even via a dataset fork. Existing immutable plans
 must retain their frozen trainer hashes. Use E007's259 probes across all heads for
 new geometry. GPU checkpoints still use the historical seed-cnnue-v1 directory
 prefix; verify geometry from the recipe and tensor shapes, never directory names.
+
+Optional exact SIMD inference (M003): add `--add-modules=jdk.incubator.vector` to
+the Java command before `-cp`. Ordinary UCI still runs without the module and uses
+scalar-long. With the module resolved, NNUE uses the supported preferred vector
+width; identity reports the selected head backend. `-Dseed.nnue.scalar=true` forces
+the unchanged scalar arithmetic even with the module loaded. No machine-wide Java
+setting is required. The research `uci_smoke.py`, `paired_match.py` and
+`evaluate_checkpoint.py` accept explicit `--vector`; match protocols freeze the
+module flag for both engines. Existing frozen protocols must not be resumed with
+changed flags/jars. GPU training/checkpoints are unaffected. Only Windows/JDK21
+256-bit vector runtime has been measured here; scalar remains the portable fallback.

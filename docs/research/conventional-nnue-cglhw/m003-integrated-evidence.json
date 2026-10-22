@@ -1,0 +1,282 @@
+{
+  "scalar_tests": {
+    "engine-core": {
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "app-uci": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "vector_tests": {
+    "tests": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "benchmarks": {
+    "old-scalar": {
+      "network": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+      "load_ms": 69.7384,
+      "legal_transitions": 255,
+      "incremental_plus_head_ns_per_eval": [
+        1701.095,
+        1712.59,
+        1711.06
+      ],
+      "full_refresh_plus_head_ns_per_eval": [
+        4825.285,
+        4919.865,
+        4908.305
+      ],
+      "pair2_rolling_plus_head_ns_per_eval": [
+        92.305,
+        90.27,
+        86.495
+      ],
+      "incremental_allocated_bytes_20000": 0,
+      "limitation": "one deterministic legal walk; microbenchmark only; no NPS/Elo inference"
+    },
+    "new-scalar": {
+      "network": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+      "load_ms": 70.459,
+      "legal_transitions": 255,
+      "pair2_rolling_plus_head_ns_per_eval": [
+        86.935,
+        89.21,
+        85.625
+      ],
+      "incremental_plus_head_ns_per_eval": [
+        1744.66,
+        1651.115,
+        1640.86
+      ],
+      "full_refresh_plus_head_ns_per_eval": [
+        4892.14,
+        5046.61,
+        5009.665
+      ],
+      "incremental_allocated_bytes_20000": 0,
+      "limitation": "one deterministic legal walk; microbenchmark only; no NPS/Elo inference"
+    },
+    "new-vector": {
+      "network": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+      "load_ms": 73.6375,
+      "legal_transitions": 255,
+      "pair2_rolling_plus_head_ns_per_eval": [
+        88.175,
+        90.195,
+        86.545
+      ],
+      "full_refresh_plus_head_ns_per_eval": [
+        3854.565,
+        3961.065,
+        3964.79
+      ],
+      "incremental_plus_head_ns_per_eval": [
+        736.755,
+        718.765,
+        716.94
+      ],
+      "incremental_allocated_bytes_20000": 0,
+      "limitation": "one deterministic legal walk; microbenchmark only; no NPS/Elo inference"
+    }
+  },
+  "search_metrics": {
+    "scalar": {
+      "NNUE_UNPRUNED": {
+        "elapsed_ms": 760.1905,
+        "nodes": 393884
+      },
+      "GEN32_UNPRUNED": {
+        "elapsed_ms": 220.9831,
+        "nodes": 380056
+      },
+      "GEN32_POLICY4": {
+        "elapsed_ms": 64.7833,
+        "nodes": 72258
+      }
+    },
+    "vector": {
+      "NNUE_UNPRUNED": {
+        "elapsed_ms": 541.2523,
+        "nodes": 393884
+      },
+      "GEN32_UNPRUNED": {
+        "elapsed_ms": 239.808,
+        "nodes": 380056
+      },
+      "GEN32_POLICY4": {
+        "elapsed_ms": 68.8631,
+        "nodes": 72258
+      }
+    }
+  },
+  "search_scores_nodes_exact": true,
+  "one_and_eight_head_export_rows_and_holdout_identical": true,
+  "parity": {
+    "m003-vector-e00764-retry": {
+      "status": "PASS",
+      "positions": 259,
+      "output_buckets": 8,
+      "exact_features": "Python / Java / pinned Bullet",
+      "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+      "gpu_float_max_abs_raw_error": 1.4548101248124112e-06,
+      "gpu_float_tolerance": 2e-05,
+      "quantization_max_abs_cp_error": 24.75208269284076,
+      "quantization_rms_cp_error": 7.38563862458531,
+      "limitation": "Quantization error is measured separately; no strength or calibration claim"
+    },
+    "m003-vector-legacy-retry": {
+      "status": "PASS",
+      "positions": 128,
+      "output_buckets": 1,
+      "exact_features": "Python / Java / pinned Bullet",
+      "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+      "gpu_float_max_abs_raw_error": 5.026847177125315e-07,
+      "gpu_float_tolerance": 2e-05,
+      "quantization_max_abs_cp_error": 24.642180350928925,
+      "quantization_rms_cp_error": 9.580183409728281,
+      "limitation": "Quantization error is measured separately; no strength or calibration claim"
+    }
+  },
+  "uci": {
+    "scalar1": {
+      "status": "PASS",
+      "workers": 1,
+      "network": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
+      "identity": [
+        "id name SeedV6 conventional NNUE opt-in 0.0.0 (build 63)",
+        "id author Charles Clark",
+        "option name Threads type spin default 1 min 1 max 16",
+        "option name Hash type spin default 64 min 1 max 1024",
+        "option name Clear Hash type button",
+        "option name UseBook type check default false",
+        "option name OwnBook type check default false",
+        "info string evaluator=CONVENTIONAL_NNUE schema=S6CNU002 payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=scalar-long search=recursive-unpruned-qsearch workers=1 hashMiB=64 build=63 source=b8fade580ffc (uncommitted changes) ttMiB=64",
+        "uciok"
+      ],
+      "searches": [
+        {
+          "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+          "bestmove": "e2e4",
+          "last_info": "info depth 5 score cp 81 nodes 55708 time 205 nps 271070 pv e2e4 d7d5 e4d5 d8d5 d2d4"
+        },
+        {
+          "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+          "bestmove": "e4d5",
+          "last_info": "info depth 4 score cp 176 nodes 52464 time 133 nps 394130 pv e4d5 e6d5 c3d5 f6d5 f3e5 c6e5 d4e5"
+        },
+        {
+          "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+          "bestmove": "e1d2",
+          "last_info": "info depth 10 score cp 7 nodes 142490 time 213 nps 666014 pv e1d2 e8e7 d2d3 e7d7 d3c3 d7e7 c3d3 e7f7 d3e3 f7g8"
+        },
+        {
+          "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+          "bestmove": "h2h1q",
+          "last_info": "info depth 8 score cp 2112 nodes 152480 time 205 nps 741175 pv h2h1q e1e2 e8e7 e2f2 h1a8 f2e1 e7d6 e1d1 a8a7"
+        }
+      ],
+      "lifecycle": "stop/readiness/newgame/repeated search/quit passed"
+    },
+    "vector1": {
+      "status": "PASS",
+      "workers": 1,
+      "network": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
+      "identity": [
+        "WARNING: Using incubator modules: jdk.incubator.vector",
+        "id name SeedV6 conventional NNUE opt-in 0.0.0 (build 63)",
+        "id author Charles Clark",
+        "option name Threads type spin default 1 min 1 max 16",
+        "option name Hash type spin default 64 min 1 max 1024",
+        "option name Clear Hash type button",
+        "option name UseBook type check default false",
+        "option name OwnBook type check default false",
+        "info string evaluator=CONVENTIONAL_NNUE schema=S6CNU002 payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long search=recursive-unpruned-qsearch workers=1 hashMiB=64 build=63 source=b8fade580ffc (uncommitted changes) ttMiB=64",
+        "uciok"
+      ],
+      "searches": [
+        {
+          "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+          "bestmove": "g1f3",
+          "last_info": "info depth 4 score cp 52 nodes 7144 time 269 nps 26460 pv g1f3 d7d5 d2d4 g8f6"
+        },
+        {
+          "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+          "bestmove": "e4d5",
+          "last_info": "info depth 4 score cp 176 nodes 52464 time 119 nps 437323 pv e4d5 e6d5 c3d5 f6d5 f3e5 c6e5 d4e5"
+        },
+        {
+          "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+          "bestmove": "e1d2",
+          "last_info": "info depth 10 score cp 7 nodes 142490 time 174 nps 814584 pv e1d2 e8e7 d2d3 e7d7 d3c3 d7e7 c3d3 e7f7 d3e3 f7g8"
+        },
+        {
+          "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+          "bestmove": "h2h1q",
+          "last_info": "info depth 8 score cp 2112 nodes 152480 time 167 nps 912063 pv h2h1q e1e2 e8e7 e2f2 h1a8 f2e1 e7d6 e1d1 a8a7"
+        }
+      ],
+      "lifecycle": "stop/readiness/newgame/repeated search/quit passed"
+    },
+    "vector2": {
+      "status": "PASS",
+      "workers": 2,
+      "network": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
+      "identity": [
+        "WARNING: Using incubator modules: jdk.incubator.vector",
+        "id name SeedV6 conventional NNUE opt-in 0.0.0 (build 63)",
+        "id author Charles Clark",
+        "option name Threads type spin default 1 min 1 max 16",
+        "option name Hash type spin default 64 min 1 max 1024",
+        "option name Clear Hash type button",
+        "option name UseBook type check default false",
+        "option name OwnBook type check default false",
+        "info string evaluator=CONVENTIONAL_NNUE schema=S6CNU002 payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long search=recursive-unpruned-qsearch workers=1 hashMiB=64 build=63 source=b8fade580ffc (uncommitted changes) ttMiB=64",
+        "uciok"
+      ],
+      "searches": [
+        {
+          "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+          "bestmove": "g1f3",
+          "last_info": "info depth 3 score cp 68 nodes 2811 time 228 nps 12289 pv g1f3 d7d5 d2d4"
+        },
+        {
+          "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+          "bestmove": "e4d5",
+          "last_info": "info depth 4 score cp 176 nodes 95603 time 163 nps 585155 pv e4d5 e6d5 c3d5 f6d5 f3e5 c6e5 d4e5"
+        },
+        {
+          "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+          "bestmove": "e1d2",
+          "last_info": "info depth 10 score cp 7 nodes 283532 time 215 nps 1318418 pv e1d2 e8e7 d2d3 e7d7 d3c3 d7e7 c3d3 e7f7 d3e3 f7g8"
+        },
+        {
+          "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+          "bestmove": "h2h1q",
+          "last_info": "info depth 8 score cp 2112 nodes 303970 time 181 nps 1674289 pv h2h1q e1e2 e8e7 e2f2 h1a8 f2e1 e7d6 e1d1 a8a7"
+        }
+      ],
+      "lifecycle": "stop/readiness/newgame/repeated search/quit passed"
+    }
+  },
+  "precommit_runtime": {
+    "build\\conventional-nnue\\frozen-runtime\\m003-precommit-build63\\uci\\app-uci.jar": "13700633582996c46f62d70509c3742b256d32a973ca9e65aff7e8295bd276c8",
+    "build\\conventional-nnue\\frozen-runtime\\m003-precommit-build63\\uci\\engine-core.jar": "32c021b5ff63332850d21f7ca84cc76c0421b58a4f0d19eeb659a4ebc65b09e4",
+    "build\\conventional-nnue\\frozen-runtime\\m003-precommit-build63\\research\\engine-core.jar": "32c021b5ff63332850d21f7ca84cc76c0421b58a4f0d19eeb659a4ebc65b09e4",
+    "build\\conventional-nnue\\frozen-runtime\\m003-precommit-build63\\research\\engine-training.jar": "09526ddc81bbe54a01c0864c4b8a08adfd2c95c6602f373e4189de9d02a40432",
+    "build\\conventional-nnue\\frozen-runtime\\m003-precommit-build63\\research\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "build\\conventional-nnue\\frozen-runtime\\m003-precommit-build63\\research\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "build\\conventional-nnue\\frozen-runtime\\m003-precommit-build63\\research\\research.jar": "782d0f04d98455957e876ddd3c60f985270085934d780a7d53eee06176b485ac",
+    "build\\conventional-nnue\\frozen-runtime\\m003-precommit-build63\\research\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "build\\conventional-nnue\\frozen-runtime\\m003-precommit-build63\\research\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "failed_attempts": "Initial vector verification merged the JVM incubator stderr warning into JSON. Strict parser rejected it. Harness now captures stderr separately; failed outputs remain intact and fresh retry directories passed.",
+  "limits": "Measured Windows Ryzen5500/JDK21 preferred256-bit vectors only; optional module, scalar fallback retained. No packaged cross-platform or Elo claim. Tests used modified source with build63 metadata; qualifying commit64 and actual identity validation follow."
+}

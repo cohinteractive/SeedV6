@@ -155,11 +155,15 @@ screen5W/4D/7L (development only). Material diagnostics show modest endgame gain
 and slightly weaker18..25-piece fit; teacher probabilities agree closely with real
 outcomes. Read e007-stage64-results.json and E007.md. Same-search E00664 screen
 completed7W/6D/3L, no caps; tiny reused development sample, not confirmation.
-Checkpoint128 passed parity with flat MSE.016996349. Current next/start-resume:
-e007-training-256-config.json,129..256 at LR.0005, preserving optimizer and recipe.
-M003 SIMD head prototype passed exact/hostile checks and measured about8.6x head
-speedup. Integrate optionally with scalar fallback and validate actual full cost
-before retaining. Do not rebuild installed runtime during a frozen active match. Production default remains Gen32; C remains unmet. Continue justified
+E007256 completed (1,073,741,824 total exposures), exact parity passed on frozen
+build63 runtime, flat MSE.016866643. No further identical-recipe training selected.
+Read e007-stage256-results.json. M003 optional SIMD passed scalar/vector tests,
+legacy/eight-head parity, actual UCI and identical-node search checks; integrated
+cost~.72us versus~1.71us and measured fixed-root throughput1.40x. Preserve all raw
+failures/results and m003-integrated-evidence.json. Next finish build64 commit,
+install/verify actual metadata, then compare E007256 against64 with identical
+vector-enabled search before selecting the next strength screen/architecture work.
+Production default remains Gen32; C remains unmet. Continue justified
 work units autonomously; no programme stop follows a candidate rejection.
 
 Persisted owner permission remains NORMAL generation3 with no expiry at this

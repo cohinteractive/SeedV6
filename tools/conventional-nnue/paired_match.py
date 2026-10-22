@@ -52,6 +52,7 @@ def main():
     p.add_argument('--resume',action='store_true',help='Verify frozen protocol; skip completed games, replay any interrupted game')
     p.add_argument('--selective-research-classes',type=Path,help='Explicit unaccepted one-worker NNUE research launcher classes')
     p.add_argument('--opponent-network',type=Path,help='Frozen conventional NNUE opponent with the same unpruned search; evaluator comparison')
+    p.add_argument('--vector',action='store_true',help='Resolve optional Vector API equally for both engines; commands freeze this choice')
     a=p.parse_args()
     compute_gate.require()
     if a.opponent_network and a.selective_research_classes:
@@ -69,6 +70,8 @@ def main():
         classes=a.selective_research_classes.resolve()
         if not (classes/'SeedNnueSelectiveResearch.class').is_file():raise ValueError('Missing research launcher')
         commands[0]=base[:5]+[str(jars/'*')+os.pathsep+str(classes),'SeedNnueSelectiveResearch',str(a.network.resolve())]
+    if a.vector:
+        for command in commands:command.insert(1,'--add-modules=jdk.incubator.vector')
     protocol=dict(network=str(a.network.resolve()),network_sha256=sha(a.network),openings_sha256=sha(a.openings),
         openings=openings,movetime_ms=a.movetime_ms,max_plies=a.max_plies,threads=1,hash_mib=32,
         use_book=False,ponder=False,concurrent_games=1,commands=commands,

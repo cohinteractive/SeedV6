@@ -7,6 +7,12 @@ apply from: rootProject.file('gradle/application-version.gradle')
 
 description = 'Shared production board, rules, search, evaluation and runtime model inference.'
 
+// Compile the lazily loaded optional NNUE kernel; ordinary runtime needs no module flag.
+tasks.withType(JavaCompile).configureEach { options.compilerArgs += ['--add-modules', 'jdk.incubator.vector'] }
+tasks.withType(Test).configureEach {
+    if (project.hasProperty('conventionalVectorTests')) jvmArgs '--add-modules=jdk.incubator.vector'
+}
+
 apply from: rootProject.file('gradle/syzygy.gradle')
 
 // One tracked, checksum-verified runtime input for explicit pinned gameplay profiles.

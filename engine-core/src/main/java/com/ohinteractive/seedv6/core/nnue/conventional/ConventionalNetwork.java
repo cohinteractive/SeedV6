@@ -22,7 +22,9 @@ public final class ConventionalNetwork {
     public static final int PAYLOAD_BYTES = PARAMETERS * 2;
     public static final int HEADER_BYTES = 8 + 8 * 4 + 32;
     private static final byte[] MAGIC = {'S', '6', 'C', 'N', 'U', '0', '0', '1'};
-    private final short[] weights, bias, output, outputBias;
+    private final short[] weights, bias, outputBias;
+    private final int[] output;
+    private final Head vectorHead;
     private final int outputBuckets;
     private final String payloadSha256;
 
@@ -30,10 +32,16 @@ public final class ConventionalNetwork {
         this.outputBuckets = outputBuckets;
         var data = ByteBuffer.wrap(payload).order(ByteOrder.LITTLE_ENDIAN).asShortBuffer();
         weights = new short[ConventionalFeatures.COUNT * HIDDEN];
-        bias = new short[HIDDEN]; output = new short[2 * HIDDEN * outputBuckets];
+        bias = new short[HIDDEN]; output = new int[2 * HIDDEN * outputBuckets];
         outputBias = new short[outputBuckets];
-        data.get(weights); data.get(bias); data.get(output); data.get(outputBias);
+        data.get(weights); data.get(bias);
+        for (int i = 0; i < output.length; i++) output[i] = data.get();
+        data.get(outputBias);
         payloadSha256 = hash;
+        // Lazy linkage keeps the ordinary headless runtime independent of the optional module.
+        vectorHead = !Boolean.getBoolean("seed.nnue.scalar")
+                && ModuleLayer.boot().findModule("jdk.incubator.vector").isPresent()
+                && ConventionalVectorHead.supported() ? new ConventionalVectorHead() : null;
     }
 
     public static ConventionalNetwork load(Path path) throws IOException {
@@ -65,6 +73,11 @@ public final class ConventionalNetwork {
     public String payloadSha256() { return payloadSha256; }
     public int outputBuckets() { return outputBuckets; }
     public String schema() { return outputBuckets == 1 ? "S6CNU001" : "S6CNU002"; }
+    public String headBackend() { return vectorHead == null ? "scalar-long" : vectorHead.name(); }
+    interface Head {
+        long dot(int[] us, int[] them, int[] weights, int offset);
+        String name();
+    }
     int bucket(long[] board) {
         if (outputBuckets == 1) return 0;
         int pieces = Long.bitCount(board[0] | board[1] | board[2]);
@@ -84,6 +97,7 @@ public final class ConventionalNetwork {
     }
     int score(int[] us, int[] them, int bucket) {
         int offset = java.util.Objects.checkIndex(bucket, outputBuckets) * 2 * HIDDEN;
+        if (vectorHead != null) return scale(vectorHead.dot(us, them, output, offset), bucket);
         long sum = 0;
         for (int i = 0; i < HIDDEN; i++) {
             int a = Math.clamp(us[i], 0, QA), b = Math.clamp(them[i], 0, QA);

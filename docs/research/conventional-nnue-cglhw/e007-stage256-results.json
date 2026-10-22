@@ -1,0 +1,52 @@
+{
+  "final_checkpoint": {
+    "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-training-256\\segments\\000256-723e759f09ed\\run\\seed-cnnue-v1-256",
+    "completed_superbatch": 256,
+    "next_superbatch": 257,
+    "receipt_sha256": "a49c44fe25e4232efc073dcb63e020857f94c4b3e849e3a6db00bdcad3b137c2",
+    "config_sha256": "4e734c6b484f9c9d6b4a591ab1fefa282f28934c4e6dac764915da8a2812bd05",
+    "verified_at": "2026-10-22T11:41:40+00:00",
+    "process_exit_code": 0,
+    "wall_seconds": 4.1016896000001
+  },
+  "stage_process_seconds": 528.0048704000146,
+  "total_exposures": 1073741824,
+  "curve": [
+    {
+      "step": 160,
+      "loss": 0.010811
+    },
+    {
+      "step": 192,
+      "loss": 0.010783
+    },
+    {
+      "step": 224,
+      "loss": 0.010758
+    },
+    {
+      "step": 256,
+      "loss": 0.010734
+    }
+  ],
+  "parity": {
+    "status": "PASS",
+    "positions": 259,
+    "output_buckets": 8,
+    "exact_features": "Python / Java / pinned Bullet",
+    "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+    "gpu_float_max_abs_raw_error": 1.1033501756685382e-06,
+    "gpu_float_tolerance": 2e-05,
+    "quantization_max_abs_cp_error": 25.205315899986886,
+    "quantization_rms_cp_error": 8.21019271491036,
+    "limitation": "Quantization error is measured separately; no strength or calibration claim"
+  },
+  "validation": {
+    "payload_sha256": "94cdf5a166573f9ac1c8b81af18b167bf0a858aa34a8a1f96b530ae17da5ae77",
+    "positions": 524288,
+    "sigmoid_mse": 0.016866642734846594,
+    "zero_score_mse": 0.0659978710509739,
+    "cp_mae": 355.07272720336914
+  },
+  "evaluation_runtime": "Frozen e54ec3b build63 installed jars, e007-frozen-runtime.json; before SIMD rebuild"
+}

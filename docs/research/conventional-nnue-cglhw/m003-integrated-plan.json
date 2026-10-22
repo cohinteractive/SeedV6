@@ -1,0 +1,15 @@
+{
+  "network": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
+  "network_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "roots": "docs\\research\\conventional-nnue-cglhw\\raw\\m002-search-roots.fens",
+  "roots_sha256": "c67bbe6c46dec33190fa144764fc8a29f690b4ebd980e4ed440809d14a682da0",
+  "baseline_jars": "e007-frozen-runtime.json",
+  "variants": [
+    "frozen build63 scalar",
+    "new scalar without module",
+    "new vector with module"
+  ],
+  "primitive": "Existing ConventionalNnueBenchmark:255 legal transitions,5 warmup rounds,3x20000 measured,allocation counter",
+  "search": "Existing ConventionalSearchCostProbe:8 roots,one depth3 warmup,two rotated depth4 rounds,one worker,32MiB cold TT,250000node/1s bounds; require identical completed NNUE scores,nodes,qnodes",
+  "decision": "Retain only a material integrated improvement with scalar/legacy/parity/UCI/search guarantees. No Elo inference. All sequential under owner controller; preserve failures and exact identities."
+}

@@ -33,6 +33,41 @@ class ConventionalNetworkTest {
     }
     private static ConventionalNetwork network() throws Exception { return ConventionalNetwork.read(new ByteArrayInputStream(fixture(false))); }
 
+    @Test void optionalBackendPreservesModuleFreeAndForcedScalarLoading() throws Exception {
+        String previous=System.getProperty("seed.nnue.scalar");
+        try {
+            System.clearProperty("seed.nnue.scalar");
+            var automatic=network();
+            boolean vector=ModuleLayer.boot().findModule("jdk.incubator.vector").isPresent();
+            assertEquals(vector,automatic.headBackend().startsWith("vector-"));
+            System.setProperty("seed.nnue.scalar","true");
+            var scalar=network();assertEquals("scalar-long",scalar.headBackend());
+            var board=Board.startingPosition();var a=automatic.newAccumulator();var b=scalar.newAccumulator();
+            a.rebuild(board);b.rebuild(board);assertEquals(a.evaluate(board),b.evaluate(board));
+            assertEquals(automatic.payloadSha256(),scalar.payloadSha256());
+        } finally {
+            if(previous==null)System.clearProperty("seed.nnue.scalar");else System.setProperty("seed.nnue.scalar",previous);
+        }
+    }
+
+    @Test void optionalVectorRawDotMatchesBigIntegerBeforeSaturation() {
+        if(!ModuleLayer.boot().findModule("jdk.incubator.vector").isPresent())return;
+        var kernel=new ConventionalVectorHead();var random=new SplittableRandom(837126);
+        int[] us=new int[256],them=new int[256],weights=new int[4096];
+        for(int trial=0;trial<200;trial++) {
+            int offset=(trial%8)*512;java.math.BigInteger expected=java.math.BigInteger.ZERO;
+            for(int i=0;i<256;i++) {
+                us[i]=random.nextInt(-1_000_000,1_000_000);them[i]=random.nextInt(-1_000_000,1_000_000);
+                int a=Math.clamp(us[i],0,255),b=Math.clamp(them[i],0,255);
+                weights[offset+i]=trial<2?(trial==0?32767:-32768):random.nextInt(-32768,32768);
+                weights[offset+256+i]=trial<2?(trial==0?32767:-32768):random.nextInt(-32768,32768);
+                expected=expected.add(java.math.BigInteger.valueOf(a).pow(2).multiply(java.math.BigInteger.valueOf(weights[offset+i])))
+                        .add(java.math.BigInteger.valueOf(b).pow(2).multiply(java.math.BigInteger.valueOf(weights[offset+256+i])));
+            }
+            assertEquals(expected.longValueExact(),kernel.dot(us,them,weights,offset),"raw dot "+trial);
+        }
+    }
+
     @Test void eightHeadCodecAndEveryMaterialBoundaryAreExplicit() throws Exception {
         byte[] file=fixture(false,8);
         Arrays.fill(file,ConventionalNetwork.HEADER_BYTES,file.length,(byte)0);
