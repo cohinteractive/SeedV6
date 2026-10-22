@@ -1,0 +1,26 @@
+{
+  "network": "053f8d78d5f7be8f75b228cb079eee76d3b0847972870f5d5a62995ce988f259",
+  "load_ms": 65.2364,
+  "legal_transitions": 255,
+  "pair2_rolling_plus_head_ns_per_eval": [
+    87.43,
+    89.69,
+    85.925
+  ],
+  "full_refresh_plus_head_ns_per_eval": [
+    4290.675,
+    4364.78,
+    4399.495
+  ],
+  "incremental_plus_head_ns_per_eval": [
+    1217.845,
+    1263.02,
+    1227.125
+  ],
+  "incremental_allocated_bytes_20000": 0,
+  "limitation": "one deterministic legal walk; microbenchmark only; no NPS/Elo inference",
+  "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\m002-int-head-benchmark.json",
+  "prototype_patch_sha256": "b3b3eef001990b4d9e5a142a1581a57795f640e06b471a545f64f3bdf5dc1d62",
+  "prototype_patch": "docs\\research\\conventional-nnue-cglhw\\raw\\m002-int-head-prototype.patch",
+  "disposition": "Reject; no measured improvement over unchanged baseline"
+}

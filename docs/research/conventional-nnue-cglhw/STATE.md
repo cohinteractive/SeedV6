@@ -94,12 +94,17 @@ Expanded-cohort MSE.007528 versus E002.013029, but common E002 cohort regresses
 Frozen E003 file is `raw/e003-evaluation/network.cnnue`; E002 remains the existing
 stable opt-in handoff with negative strength limits. All historical evidence retained.
 
-Next admissible unit: exact Java output-head optimization with overflow proof and
-long fallback; independent full-rebuild long oracle unchanged. E003's measured
-incremental+head cost1.18..1.21us and safe head bound612,470,475 justify this bounded
-implementation/measurement. Keep weights/schema/search policy fixed, compare exact
-scores and before/after cost, retain only a supported improvement. Do not queue more
-data growth or hyperparameter runs from these negative development screens.
+M002 rejected an overflow-proven int head:24 focused tests passed but no measured
+speedup. Original long kernel restored/retested; no application change or build bump.
+A bounded same-root probe completed48 depth4 searches. Gen32's existing Policy4
+used3.46x less total time/5.26x fewer nodes than its unpruned control; NNUE's unpruned
+searches were slower again. Different evaluator trees prevent pure arithmetic claims.
+See M002.md and m002-*.json. No data-growth or architecture sweep is selected.
+
+Next admissible unit E004: research-only E003/selective composition through existing
+adapter controls; full-rebuild search correctness plus fixed development comparison.
+No changes to ProductionSearch/defaults, Search governance or existing acceptance.
+This directly tests the observed search selectivity gap before spending on more data.
 Permission remains operational state; current observed NORMAL was explicitly granted
 by the owner. Recheck before all expensive work and keep progress reports active.
 

@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "config": {
+    "roots": 8,
+    "measured_rounds": 2,
+    "depth": 4,
+    "threads": 1,
+    "hash_mib": 32,
+    "node_limit_per_root": 250000,
+    "time_limit_ms_per_root": 1000,
+    "warmup": "one unreported depth3 round"
+  },
+  "metrics": {
+    "NNUE_UNPRUNED": {
+      "completed": 16,
+      "median_elapsed_ms": 34.575649999999996,
+      "total_elapsed_ms": 681.7895,
+      "median_nodes": 21712.5,
+      "total_nodes": 420764,
+      "total_qnodes": 375798,
+      "aggregate_nodes_per_second": 617146.4946292074,
+      "repeated_node_and_score_results_exact": true
+    },
+    "GEN32_UNPRUNED": {
+      "completed": 16,
+      "median_elapsed_ms": 13.270150000000001,
+      "total_elapsed_ms": 244.9775,
+      "median_nodes": 19127.0,
+      "total_nodes": 380056,
+      "total_qnodes": 340972,
+      "aggregate_nodes_per_second": 1551391.4543172333,
+      "repeated_node_and_score_results_exact": true
+    },
+    "GEN32_POLICY4": {
+      "completed": 16,
+      "median_elapsed_ms": 3.4382,
+      "total_elapsed_ms": 70.8226,
+      "median_nodes": 4353.5,
+      "total_nodes": 72258,
+      "total_qnodes": 58984,
+      "aggregate_nodes_per_second": 1020267.5417169096,
+      "repeated_node_and_score_results_exact": true
+    }
+  },
+  "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\m002-search-cost.jsonl",
+  "raw_sha256": "15f934be11c2f002c74f44ad518d838882a59dfb2818f661d9c2add6282e8ed7",
+  "roots_sha256": "c67bbe6c46dec33190fa144764fc8a29f690b4ebd980e4ed440809d14a682da0",
+  "source_openings_sha256": "09e46f558260a4545b7f52fccad501b24953fc352ef8730845352a92340e2fc4",
+  "research_jar_sha256": "782d0f04d98455957e876ddd3c60f985270085934d780a7d53eee06176b485ac",
+  "limitation": "Diagnostic same roots, shallow fixed depth, bounded warm-up and tiny repeated sample. NNUE vs Gen32 has different trees; Gen32 policy comparison isolates existing search configuration, not evaluator. No strength claim."
+}

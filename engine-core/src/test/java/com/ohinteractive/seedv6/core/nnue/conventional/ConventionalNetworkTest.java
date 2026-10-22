@@ -133,6 +133,46 @@ class ConventionalNetworkTest {
         assertEquals(33*32767,a.raw(0,0));
     }
 
+    @Test void headAtIntBoundaryAndHostileSignedWeightsMatchIndependentArithmetic() throws Exception {
+        // 33025 * 255^2 fits int; 33026 * 255^2 does not. Exercise both kernels,
+        // signed-short minimum, cancellation and arbitrary unclipped accumulator values.
+        short[][] heads = new short[5][512];
+        heads[0][0]=32767; heads[0][256]=258;
+        heads[1][0]=32767; heads[1][256]=259;
+        heads[2][0]=Short.MIN_VALUE; heads[2][256]=-258;
+        heads[3][0]=32767; heads[3][256]=Short.MIN_VALUE;
+        Arrays.fill(heads[4],Short.MIN_VALUE);
+        var random=new SplittableRandom(88231);
+        for(short[] head:heads) {
+            byte[] file=fixture(false);
+            var bytes=ByteBuffer.wrap(file).order(ByteOrder.LITTLE_ENDIAN);
+            int offset=ConventionalNetwork.HEADER_BYTES+(7680*256+256)*2;
+            for(int i=0;i<head.length;i++)bytes.putShort(offset+2*i,head[i]);
+            bytes.putShort(file.length-2,(short)-123);
+            byte[] digest=MessageDigest.getInstance("SHA-256").digest(
+                    Arrays.copyOfRange(file,ConventionalNetwork.HEADER_BYTES,file.length));
+            System.arraycopy(digest,0,file,40,digest.length);
+            var net=ConventionalNetwork.read(new ByteArrayInputStream(file));
+            for(int trial=0;trial<40;trial++) {
+                int[] us=new int[256],them=new int[256];
+                java.math.BigInteger dot=java.math.BigInteger.ZERO;
+                for(int i=0;i<512;i++) {
+                    int raw=trial==0?Integer.MAX_VALUE:trial==1?Integer.MIN_VALUE:
+                            trial==2?255:random.nextInt(-1000,1001);
+                    if(i<256)us[i]=raw;else them[i-256]=raw;
+                    int clipped=Math.max(0,Math.min(255,raw));
+                    dot=dot.add(java.math.BigInteger.valueOf(clipped).pow(2)
+                            .multiply(java.math.BigInteger.valueOf(head[i])));
+                }
+                long cp=dot.divide(java.math.BigInteger.valueOf(255))
+                        .subtract(java.math.BigInteger.valueOf(123))
+                        .multiply(java.math.BigInteger.valueOf(400))
+                        .divide(java.math.BigInteger.valueOf(16320)).longValueExact();
+                assertEquals(Math.max(-32511,Math.min(32511,cp)),net.score(us,them));
+            }
+        }
+    }
+
     @Test void completeQsearchAndTwoPrivateWorkersMatchFullRebuildSearch() throws Exception {
         var net=network();
         for(String fen:new String[]{"4k3/8/8/3n4/4P3/8/8/4K3 w - - 0 1",
