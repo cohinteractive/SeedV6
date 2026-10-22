@@ -43,3 +43,21 @@ without expiry. Hold checks between moves preserve finished games and safely sto
 owned processes; use identical --resume invocation to continue an interrupted run.
 Active asynchronous monitoring supports user-facing reports at least every15min
 (and the host's more frequent updates); log files alone are not a reporting fallback.
+
+## Completed endpoint
+
+All128 games completed in2151.94s:42W/42D/44L,49.21875%,no caps. Paired-normal95%
+score interval.41428..57010; bootstrap.41406..57031. Descriptive Elo-5.43, intervals
+approximately-60..+49. The predeclared competitive gate is false. This is not a
+proof of equivalence,non-inferiority or weakness; an improvement is not established.
+Preserve E00764 as a materially improved development candidate and Gen32 as default.
+Do not extend this same confirmation opportunistically to chase significance.
+
+The completed analyzer replayed every PGN,checked all128 full opening histories,
+move/detail records,candidate colors,formal outcomes and256 game-file hashes,and
+reverified network/opening/installed-jar/baseline hashes. All passed. Results and
+exact paths are in e007-confirmation-results.json. Runtime copies are preserved in
+e007-confirmation-runtime.json. No full-suite or cross-platform claim follows.
+
+C remains unmet; this experimental outcome does not stop the programme. Activate
+E008's controlled same-network search-policy study, retaining this entire result.

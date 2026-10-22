@@ -166,14 +166,23 @@ retain64 as the development candidate. Vector-enabled64 versusGen32 completed
 8W/5D/3L on reused development openings, which justifies prospective confirmation
 but is not C. E007-CONFIRMATION.md freezes128 games/64 fresh pairs at200ms,800-ply
 censoring,one worker,32MiB,no book/ponder,unchanged build64 runtime and both artifacts.
-Use e007-confirmation-openings-v2.json; unused first selection is preserved.
-Next start/resume paired_match.py --network raw/e007-evaluation64/network.cnnue
---openings e007-confirmation-openings-v2.json --output raw/e007-confirmation
---movetime-ms200 --max-plies800 --vector --confirmation (all paths under this
-record directory; use spaces between option names and values). Add --resume only
-for the same previously started protocol. Keep installed jars frozen. Report to
-owner while monitoring; no interim acceptance/optional extension. See full protocol
-for final paired uncertainty and gates. Continue justified work after the result.
+Confirmation completed42W/42D/44L,no caps,in2151.94s. Paired95% Elo about-60..+49
+around-5.43; improvement/equivalence is not established and C remains unmet.
+Full128-game legal replay,outcome/history/color audit and frozen artifact recheck
+passed. Read e007-confirmation-results.json,E007-CONFIRMATION.md and exact frozen
+runtime manifest e007-confirmation-runtime.json. Preserve the unused first and
+canonical-en-passant-normalized v2 opening selections; never reuse them as fresh
+independent confirmation. No opportunistic extension of the finished protocol.
+
+Current next work: E008.md controlled policy study. Hold E00764 weights/build64/
+vector inference fixed,compile the existing research selective launcher into a new
+e008-classes directory,verify five depth3 full-rebuild search oracles and actual
+one-worker UCI. Add explicit same-network policy-comparison support to the match
+harness while preserving its default evaluator-only guards. Then16 games on the
+original development opening pairs at200ms,800-ply censoring,one worker,32MiB.
+This tests a different question from the older weak-E003 selective trial. No new
+search margins/algorithm/default adoption. Reconcile outcomes and continue the
+strongest next justified approach; no programme stop follows this unit.
 Production default remains Gen32; C remains unmet. Continue justified
 work units autonomously; no programme stop follows a candidate rejection.
 
