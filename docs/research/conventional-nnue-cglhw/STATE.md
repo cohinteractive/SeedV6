@@ -1,8 +1,9 @@
 # Conventional NNUE state
 
-22 October 2026. **NORMAL explicitly restored by owner at 21:34 NZDT (08:34 UTC).
-A operational; B technically available as E002 opt-in with negative strength limits;
-competitive C open. No production promotion.**
+22 October 2026. **Initial bounded programme stopped on negative/diminishing evidence.
+A operational; B technically available as opt-in with negative strength limits;
+competitive C unmet. No production promotion or owner acceptance. NORMAL permission
+remains explicitly authorized; stopping this batch does not impose a compute hold.**
 Read CONTRACT.md, COMPUTE-CONTROL.md, E002.md and the current E003.md. This
 programme does not resume the historical `nnue-cglhw` or suspended BRN work.
 
@@ -101,12 +102,38 @@ used3.46x less total time/5.26x fewer nodes than its unpruned control; NNUE's un
 searches were slower again. Different evaluator trees prevent pure arithmetic claims.
 See M002.md and m002-*.json. No data-growth or architecture sweep is selected.
 
-Next admissible unit E004: research-only E003/selective composition through existing
-adapter controls; full-rebuild search correctness plus fixed development comparison.
-No changes to ProductionSearch/defaults, Search governance or existing acceptance.
-This directly tests the observed search selectivity gap before spending on more data.
-Permission remains operational state; current observed NORMAL was explicitly granted
-by the owner. Recheck before all expensive work and keep progress reports active.
+E004 completed: research-only E003/selective composition, five independent depth3
+search oracle checks and one-worker UCI passed. Development screen1W/1D/14L, no
+caps; no confirmation/adoption justified. See E004.md and e004-*.json, including
+cross-screen jar identity limits and complete-game resume verification. Production
+runtime sources/defaults remain unchanged; all evidence and rejected work preserved.
+
+## Disposition and future continuation
+
+A is technically verified: local Bullet/GPU/optimizer continuation, controlled
+hold/resume, export, independent Java inference and CPU search integration.
+B is technically available: frozen E002 and E003 artifacts, actual lifecycle/cost
+and weak strength evidence. E002 remains the documented stable Search opt-in;
+neither is accepted as competitive or as a replacement for Gen32. Raw checkpoints
+are local-only; use frozen hashes for exact inference, not GPU regeneration promises.
+C is **not achieved**. Three bounded coverage stages and the research search trial
+remain clearly weak in these small screens. The arithmetic optimization had no
+measured benefit and was removed. No architecture/parameter/data-size sweep follows.
+
+Stop the initial experimental batch under CONTRACT.md's diminishing-returns rule.
+No work/process remains active; current permission stays NORMAL unless owner control
+changes it. Do not mark the strategic strong-evaluator objective achieved, restart
+training, or silently promote an artifact. No human action is required to preserve
+or use the established opt-in result. Search Phase3's own acceptance remains separate.
+
+A later continuation first needs a new bounded evidence-supported plan for data
+representativeness/target quality or independently measured JVM inference cost,
+using E001..E004 and M002 limitations. Do not repeat completed extraction/training or
+turn these possibilities into an automatic compute queue. Ordinary in-scope authority
+is unchanged; materially larger commitments still follow the existing contract.
+Always inspect actual nnue-control.cmd status and reconcile Git/checkpoints before
+new work. The latest verified training boundary is E003 checkpoint80, not a pending
+resume32 task. The fixed E003 experiment is complete and must not be extended in place.
 
 Raw tools/output: `build/conventional-nnue/`; upstream source clone:
 `build/conventional-nnue/upstream/bullet` at

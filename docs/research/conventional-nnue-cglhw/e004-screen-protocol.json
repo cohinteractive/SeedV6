@@ -1,0 +1,82 @@
+{
+  "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e003-evaluation\\network.cnnue",
+  "network_sha256": "e0438fe5d98d288c33c7922af4d3d8f295fa090a7df8ec95e76163e89914f893",
+  "openings_sha256": "09e46f558260a4545b7f52fccad501b24953fc352ef8730845352a92340e2fc4",
+  "openings": [
+    {
+      "name": "Open game",
+      "moves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6"
+    },
+    {
+      "name": "Sicilian",
+      "moves": "e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6"
+    },
+    {
+      "name": "French",
+      "moves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6"
+    },
+    {
+      "name": "Caro Kann",
+      "moves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4"
+    },
+    {
+      "name": "Queens gambit",
+      "moves": "d2d4 d7d5 c2c4 e7e6 b1c3 g8f6"
+    },
+    {
+      "name": "Indian",
+      "moves": "d2d4 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6"
+    },
+    {
+      "name": "English",
+      "moves": "c2c4 e7e5 b1c3 g8f6 g1f3 b8c6"
+    },
+    {
+      "name": "Reti",
+      "moves": "g1f3 d7d5 g2g3 g8f6 f1g2 e7e6"
+    }
+  ],
+  "movetime_ms": 50,
+  "max_plies": 400,
+  "threads": 1,
+  "hash_mib": 32,
+  "use_book": false,
+  "ponder": false,
+  "concurrent_games": 1,
+  "commands": [
+    [
+      "C:/java/jdk-21/bin/java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-Xmx512m",
+      "-Djava.awt.headless=true",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*;C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\e004-classes",
+      "SeedNnueSelectiveResearch",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e003-evaluation\\network.cnnue"
+    ],
+    [
+      "C:/java/jdk-21/bin/java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-Xmx512m",
+      "-Djava.awt.headless=true",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+      "com.ohinteractive.seedv6.uci.UciMain",
+      "--model",
+      "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\production\\bre-pair2-g32.brn-pair2"
+    ]
+  ],
+  "jar_sha256": {
+    "app-uci.jar": "40baa6a8df4379d0022ef58c4e0e25a7854072dd7cffbf0725bba37fa14cf2ac",
+    "engine-core.jar": "7e6d218f64c8fa3147e121280ddf300e8f7d0043bfbd24a9349deb78936c5bf7"
+  },
+  "baseline_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+  "purpose": "prospective development screen; different calibrated search policies; complete-engine comparison",
+  "outcome_policy": "python-chess formal endings including claimable draws; cap censored, no score adjudication",
+  "selective_research_classes_sha256": {
+    "SeedNnueSelectiveResearch$1.class": "876abfa86b98381768b15f5a9e6eae0dada26dd8ca7597c56a47908a5df6f0bd",
+    "SeedNnueSelectiveResearch.class": "d1d9ba9fa65ecb1036d810d26fc2da9407de518089ce6d21aa833a0f5bce3876"
+  },
+  "candidate_policy": "Unaccepted NNUE research composition; no inherited Policy4 strength claim",
+  "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e004-screen\\protocol.json"
+}

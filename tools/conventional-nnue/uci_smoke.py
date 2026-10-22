@@ -1,6 +1,7 @@
 """Bounded real UCI lifecycle check with independent python-chess move validation."""
 import argparse
 import json
+import os
 from pathlib import Path
 import queue
 import subprocess
@@ -14,11 +15,16 @@ def main():
     parser.add_argument('--network',type=Path)
     parser.add_argument('--workers',type=int,choices=(1,2),default=1)
     parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--selective-research-classes',type=Path)
     args=parser.parse_args();args.output.mkdir(parents=True,exist_ok=False)
     root=Path(__file__).resolve().parents[2]
     command=['C:/java/jdk-21/bin/java.exe','-XX:ActiveProcessorCount=2','-Xmx768m','-Djava.awt.headless=true',
         '-cp',str(root/'app-uci/build/install/seedv6-uci/lib/*'),'com.ohinteractive.seedv6.uci.UciMain']
     command+=['--nnue',str(args.network.resolve())] if args.network else ['--model',str(root/'build-assets/production/bre-pair2-g32.brn-pair2')]
+    if args.selective_research_classes:
+        if not args.network or args.workers!=1:raise ValueError('Selective research needs network and one worker')
+        command=command[:5]+[str(root/'app-uci/build/install/seedv6-uci/lib/*')+os.pathsep+str(args.selective_research_classes.resolve()),
+            'SeedNnueSelectiveResearch',str(args.network.resolve())]
     flags=(subprocess.CREATE_NO_WINDOW|subprocess.BELOW_NORMAL_PRIORITY_CLASS) if hasattr(subprocess,'CREATE_NO_WINDOW') else 0
     p=subprocess.Popen(command,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,creationflags=flags)
     q=queue.Queue();transcript=[];results=[]

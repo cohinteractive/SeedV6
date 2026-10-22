@@ -1,0 +1,15 @@
+{
+  "source": "tools/conventional-nnue/SeedNnueSelectiveResearch.java",
+  "source_sha256": "1c3426f877a1b53b04fc616d7b5498fd48140238ee94ae552cf52235ff8bab6e",
+  "classes": {
+    "SeedNnueSelectiveResearch$1.class": "876abfa86b98381768b15f5a9e6eae0dada26dd8ca7597c56a47908a5df6f0bd",
+    "SeedNnueSelectiveResearch.class": "d1d9ba9fa65ecb1036d810d26fc2da9407de518089ce6d21aa833a0f5bce3876"
+  },
+  "oracle_log": "build/conventional-nnue/e004-oracle.log",
+  "oracle": "PASS five depth3 score/bestmove/node equality comparisons",
+  "uci_summary": "docs\\research\\conventional-nnue-cglhw\\raw\\e004-uci\\summary.json",
+  "uci_status": "PASS",
+  "application_build": 62,
+  "application_runtime_changed": false,
+  "policy": "Research-only cumulative QXRAY/quiet LMR/WINDOW/EFFORT/completed legal hints; unaccepted for NNUE"
+}

@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 import random
 import subprocess
@@ -49,6 +50,7 @@ def main():
     p.add_argument('--output',type=Path,required=True);p.add_argument('--movetime-ms',type=int,default=50)
     p.add_argument('--max-plies',type=int,default=400)
     p.add_argument('--resume',action='store_true',help='Verify frozen protocol; skip completed games, replay any interrupted game')
+    p.add_argument('--selective-research-classes',type=Path,help='Explicit unaccepted one-worker NNUE research launcher classes')
     a=p.parse_args()
     compute_gate.require()
     if not 10<=a.movetime_ms<=1000 or not 100<=a.max_plies<=1000:raise ValueError('Unbounded match settings')
@@ -59,6 +61,10 @@ def main():
     base=['C:/java/jdk-21/bin/java.exe','-XX:ActiveProcessorCount=1','-Xmx512m','-Djava.awt.headless=true',
         '-cp',str(jars/'*'),'com.ohinteractive.seedv6.uci.UciMain']
     commands=[base+['--nnue',str(a.network.resolve())],base+['--model',str(root/'build-assets/production/bre-pair2-g32.brn-pair2')]]
+    if a.selective_research_classes:
+        classes=a.selective_research_classes.resolve()
+        if not (classes/'SeedNnueSelectiveResearch.class').is_file():raise ValueError('Missing research launcher')
+        commands[0]=base[:5]+[str(jars/'*')+os.pathsep+str(classes),'SeedNnueSelectiveResearch',str(a.network.resolve())]
     protocol=dict(network=str(a.network.resolve()),network_sha256=sha(a.network),openings_sha256=sha(a.openings),
         openings=openings,movetime_ms=a.movetime_ms,max_plies=a.max_plies,threads=1,hash_mib=32,
         use_book=False,ponder=False,concurrent_games=1,commands=commands,
@@ -66,6 +72,9 @@ def main():
         baseline_sha256=sha(root/'build-assets/production/bre-pair2-g32.brn-pair2'),
         purpose='prospective development screen; different calibrated search policies; complete-engine comparison',
         outcome_policy='python-chess formal endings including claimable draws; cap censored, no score adjudication')
+    if a.selective_research_classes:
+        protocol['selective_research_classes_sha256']={f.name:sha(f) for f in classes.glob('*.class')}
+        protocol['candidate_policy']='Unaccepted NNUE research composition; no inherited Policy4 strength claim'
     games=[]
     if a.resume:
         if json.loads((a.output/'protocol.json').read_text())!=protocol:

@@ -134,7 +134,7 @@ class ConventionalNetworkTest {
     }
 
     @Test void headAtIntBoundaryAndHostileSignedWeightsMatchIndependentArithmetic() throws Exception {
-        // 33025 * 255^2 fits int; 33026 * 255^2 does not. Exercise both kernels,
+        // 33025 * 255^2 fits int; 33026 * 255^2 does not. Cover both sides of the bound,
         // signed-short minimum, cancellation and arbitrary unclipped accumulator values.
         short[][] heads = new short[5][512];
         heads[0][0]=32767; heads[0][256]=258;
