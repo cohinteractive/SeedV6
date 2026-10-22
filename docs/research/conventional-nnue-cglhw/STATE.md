@@ -1,10 +1,10 @@
 # Conventional NNUE state
 
-22 October2026. **ACTIVE under explicit extended overnight authorization. NORMAL
-has no expiry. A operational; B available with weak-strength limits; C unmet. The
+23 October2026 Auckland. **ACTIVE under explicit extended overnight authorization. NORMAL
+has no expiry. A operational; B available; competitive confirmation is in progress. The
 owner corrected the earlier programme stop: reject failed directions, select the
 next justified approach and continue. No production promotion or owner acceptance.**
-Read CONTRACT.md, COMPUTE-CONTROL.md, E002.md and the current E003.md. This
+Read CONTRACT.md, COMPUTE-CONTROL.md, E007-CONFIRMATION.md and E008-CONFIRMATION.md. This
 programme does not resume the historical `nnue-cglhw` or suspended BRN work.
 
 **First action in every fresh conversation:** run `.\nnue-control.cmd status`.
@@ -30,11 +30,18 @@ with NORMAL; this historical observation does not override future permission sta
 5. Freeze a stable opt-in Search checkpoint; seek competitive confirmation only when
    screening supports it. Preserve the fallback if improvement is not established.
 
-Milestones 1..3 and stable opt-in availability B are technically verified. E002 is
-the current frozen opt-in checkpoint with negative strength limits; competitive C
-remains open. No owner acceptance or production promotion is inferred.
+Milestones 1..3 and stable opt-in availability B are technically verified. Current
+candidate is E007 checkpoint64, S6CNU002/eight material heads, optional vector
+inference on frozen build64. Its unpruned independent confirmation was inconclusive
+(42W/42D/44L). E008 tests the identical network with an explicit research-only
+selective composition; its fixed128-game confirmation is running. C remains open
+until the final audited endpoint. Do not substitute historical E002/E003 candidates
+or repeat finished training. Exact current start/resume instructions are at the end.
+No owner acceptance or production promotion is inferred.
 
-Current evidence: cross-language export parity, checkpoint continuation and opt-in UCI.
+## Preserved development history
+
+Initial evidence: cross-language export parity, checkpoint continuation and opt-in UCI.
 Baseline targeted tests/build and fresh UCI searches/stop/quit passed. Local CUDA
 13.0.2 libraries extracted/hash-verified without driver/admin/global changes. Pinned
 Bullet compiled with Rust1.89 and completed a real RTX4060 training smoke (8192
@@ -126,7 +133,8 @@ negative evidence remains unchanged. Substantial overnight local computation and
 reasonable conventional architecture refinements are authorized, without an8-hour
 expiry or routine approval gate. Honour later COMPUTE HOLD/FULL PAUSE exactly.
 
-Current continuation: E007 material output heads.
+Overnight development sequence: E005 data, E006 coverage, E007 material heads,
+M003 vector inference, then E008 controlled search composition.
 
 E005 used correctly transformed BT4 targets and improved the same-search E003
 screen to 11W/5D/0L. Its Gen32 screen remained weak, and more fixed-sample training
@@ -190,6 +198,10 @@ runtime copies are in e007-confirmation-runtime.json. The extended analyzer now
 rechecks launcher classes as well as all other artifacts and full game replay.
 Final paired endpoint only; no interim acceptance or optional extension. Continue
 justified work after reconciling the result. Maintain active owner-facing reports.
+E009-ROBUSTNESS.md freezes a conditional independent128-game/1000ms follow-up if
+E008 passes its final gate and audit; no E009 games or opening selection yet.
+This checks longer-clock readiness without model/search changes. Its fixed plan
+does not alter E008 stopping or imply an interim acceptance decision.
 Production default remains Gen32; C remains unmet. Continue justified
 work units autonomously; no programme stop follows a candidate rejection.
 

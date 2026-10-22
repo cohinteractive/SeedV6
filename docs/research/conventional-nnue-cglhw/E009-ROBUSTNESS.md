@@ -1,0 +1,76 @@
+# E009 conditional longer-clock confirmation
+
+Prospective plan,23 October2026 Auckland, before any E009 games. Start only if the
+completed E008 fixed128-game confirmation passes its frozen statistical gate and
+full evidence audit. This is an independent longer-clock check of the selected
+complete-engine candidate, not an extension of E007 or E008's finished endpoint.
+If E008 fails/inconclusive, preserve this unstarted plan and select justified work
+from that result. No candidate/model/search tuning is permitted within E009.
+
+## Question and fixed comparison
+
+Does the exact E00764/eight-head/vector/selective research candidate improve over
+the frozen Gen32/Policy4 baseline when each move has1000ms rather than200ms?
+This checks whether short-clock gains survive increased search time and reduces
+the relative influence of JVM startup/JIT. It does not establish tournament-clock,
+multiworker,external-engine or cross-platform strength.
+
+Use unchanged build64 jars recorded in e007-confirmation-runtime.json, unchanged
+e008-classes recorded in e008-verification.json, and exact network
+raw/e007-evaluation64/network.cnnue. The E008 protocol remains the composition
+reference. No new training or unrelated search changes enter this comparison.
+
+Freeze64 new color-reversed opening pairs/128 games from the same checksum-pinned
+legal16 book, using prepare_confirmation_openings.py,seed2026102303. Track
+e009-confirmation-openings.json and its selection manifest before launching games.
+Exclude every inspected tracked prior root, including both E007 selections and
+E008; explicitly verify disjointness from their actual confirmation roots. Use
+uniform selection without evaluator/outcome filtering. Unknown training/historical
+overlap and related opening-family dependence remain limitations.
+
+One engine worker,32MiB hash,no book/ponder,one active game,1000ms per move,
+800-ply cap censored,formal endings/claimable draws only. No score adjudication.
+Complete all128 games except owner controls or genuine correctness/process/resource/
+safety failure. No interim significance stop, optional extension or capped-game
+imputation. Interrupted current games restart; completed games are retained under
+the exact frozen protocol. Future harness invocations include the tested atomic
+completion-ledger publication from3fcc375.
+
+## Information value and endpoint
+
+The completed E00764-pair confirmation had paired score SD.318, giving an estimated
+95% half-width~.078 at64 pairs if that variability recurs; this is a planning
+assumption, not a promised interval. Resolving a material gain at a longer clock
+can change candidate/handoff readiness. At observed short-clock throughput, allow
+roughly2.5..4 hours for128 games; actual game lengths/search timing may differ.
+NORMAL has no expiry; this estimate is not a deadline or automatic compute hold.
+Use one active workload, bounded heaps and continuous owner-facing progress reports.
+
+Analyze only the predeclared final endpoint with analyze_confirmation.py: full
+legal PGN/history/color/outcome/detail replay and recheck every frozen network,
+opening,jars,baseline and launcher-class hash. Report paired mean/descriptive Elo,
+10000-resample paired bootstrap95% and paired normal95% (1.96*sampleSD/sqrt64).
+The longer-clock statistical gate requires all128 uncensored,mean>.5,and both
+lower score bounds>.5. Intervals assume the sampled opening pairs adequately
+represent this test distribution; they are not universal Elo guarantees.
+
+E007/E008 selection and earlier development games are excluded from E009 analysis.
+Do not pool clock conditions or erase earlier failed/inconclusive candidates.
+The frozen E009 result is independent evidence for the already-selected composition;
+no programme-wide familywise error or unique architectural causation is claimed.
+Positive results support a frozen candidate handoff, subject to correctness and
+resource evidence. Inconclusive/negative results restrict the strength claim and
+prompt diagnosis/next justified work, never automatic programme termination.
+Production selection and Search Phase3/Policy4 acceptance remain separate authority.
+
+## Exact run/resume
+
+From the repository root, after opening selection and frozen identity checks:
+
+```powershell
+.\nnue-control.cmd run --name 'E009 fixed128-game longer-clock confirmation' --resume-note 'Keep build64/E00764/e008 classes and E009 openings frozen; resume exact options with --resume' --log docs/research/conventional-nnue-cglhw/raw/e009-confirmation.log -- build/conventional-nnue/venv/Scripts/python.exe -B tools/conventional-nnue/paired_match.py --network docs/research/conventional-nnue-cglhw/raw/e007-evaluation64/network.cnnue --selective-research-classes build/conventional-nnue/e008-classes --vector --confirmation --openings docs/research/conventional-nnue-cglhw/e009-confirmation-openings.json --output docs/research/conventional-nnue-cglhw/raw/e009-confirmation --movetime-ms 1000 --max-plies 800
+```
+
+For an interrupted existing protocol, use the same options plus `--resume` and a
+fresh controller log path. Reconcile persisted control/processes first. Never
+silently restore NORMAL or rebuild the frozen runtime during unfinished games.
