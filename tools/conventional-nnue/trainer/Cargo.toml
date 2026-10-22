@@ -1,0 +1,15 @@
+[package]
+name = "seed-conventional-nnue"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+bullet_lib = { git = "https://github.com/jw1912/bullet", rev = "579b78b37a694cacd6e9ede4706386c15c34837c", features = ["cuda"] }
+bulletformat = "1.8.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+
+[profile.release]
+codegen-units = 1

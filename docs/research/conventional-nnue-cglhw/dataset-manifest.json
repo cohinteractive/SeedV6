@@ -1,0 +1,39 @@
+{
+  "source": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+  "source_size": 22086532809,
+  "source_mtime_ns": 1790287765503165500,
+  "source_url": "https://database.lichess.org/#evals",
+  "license": "CC0",
+  "consumed_compressed_prefix_bytes": 20840925,
+  "consumed_compressed_prefix_sha256": "362e98f495fdb89a1d2efac1f9aaf40be20fe6a2f543b42ccc4afbbf9ef51509",
+  "counts": {
+    "read": 224579,
+    "accepted": 131072,
+    "no_cp": 39796,
+    "check_or_terminal": 10226,
+    "tactical_pv": 39485,
+    "extreme_score": 2876,
+    "invalid_position": 1063,
+    "duplicate": 23,
+    "shallow": 38
+  },
+  "train": 117882,
+  "validation": 13190,
+  "seed": 20261022,
+  "hashes": {
+    "probes.fens": "ec701ee7bcdbf9018cf8f1912b4d1acb620fd98ac793060e08b02d0f0a644309",
+    "train-provenance.jsonl": "26350ad62c6df86382b5499498d31a2f84276566d0e5cd517668009c9cc08d4a",
+    "train.txt": "c907662f3b68cdfe07948337012fb25707d7333771edea1887a40b9a26eff601",
+    "validation-provenance.jsonl": "cc362797904b9051fb111b5d790965535d099c33690dc3a38e24c812a9f1d218",
+    "validation.txt": "3e9c4b796cebf13ee992559127c33c8e6fcd02eaa6322231b2682062d10aae50"
+  },
+  "targets": "white-relative CP; sigmoid(cp/400); wdl MUST equal 0; result field is unused placeholder",
+  "filters": "valid, nonterminal, not in check; highest-depth CP PV; depth>=12; abs(cp)<=3000; noncapture/nonpromotion PV",
+  "split": "90/10 SHA256 placement+STM; exact evaluator-input dedup; no game IDs available",
+  "limitations": [
+    "bounded source prefix, not a random sample of the complete archive",
+    "mixed Stockfish versions and CP calibration; no outcome labels",
+    "related-game and symmetry leakage cannot be ruled out; validation is diagnostic, not strength evidence"
+  ],
+  "elapsed_seconds": 22.38063069999771
+}

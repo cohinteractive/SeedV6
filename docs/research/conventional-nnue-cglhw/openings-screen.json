@@ -1,0 +1,10 @@
+[
+  {"name":"Open game", "moves":"e2e4 e7e5 g1f3 b8c6 f1b5 a7a6"},
+  {"name":"Sicilian", "moves":"e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6"},
+  {"name":"French", "moves":"e2e4 e7e6 d2d4 d7d5 b1c3 g8f6"},
+  {"name":"Caro Kann", "moves":"e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4"},
+  {"name":"Queens gambit", "moves":"d2d4 d7d5 c2c4 e7e6 b1c3 g8f6"},
+  {"name":"Indian", "moves":"d2d4 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6"},
+  {"name":"English", "moves":"c2c4 e7e5 b1c3 g8f6 g1f3 b8c6"},
+  {"name":"Reti", "moves":"g1f3 d7d5 g2g3 g8f6 f1g2 e7e6"}
+]

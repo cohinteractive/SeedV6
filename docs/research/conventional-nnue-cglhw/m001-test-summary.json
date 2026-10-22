@@ -1,0 +1,65 @@
+{
+  "com.ohinteractive.seedv6.core.brnpair2.ProductionBaselineTest": {
+    "tests": "1",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "time": "0.1"
+  },
+  "com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetworkTest": {
+    "tests": "7",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "time": "0.662"
+  },
+  "com.ohinteractive.seedv6.core.nnue.NnueAccumulatorTest": {
+    "tests": "14",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "time": "0.256"
+  },
+  "com.ohinteractive.seedv6.search.driver.ProductionSearchBoundaryTest": {
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "time": "0.225"
+  },
+  "com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest": {
+    "tests": "3",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "time": "0.132"
+  },
+  "com.ohinteractive.seedv6.uci.ConstructionUciTest": {
+    "tests": "1",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "time": "0.414"
+  },
+  "com.ohinteractive.seedv6.uci.GoCommandParserTest": {
+    "tests": "6",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "time": "0.029"
+  },
+  "com.ohinteractive.seedv6.uci.StandaloneBoundaryTest": {
+    "tests": "6",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "time": "0.202"
+  },
+  "com.ohinteractive.seedv6.uci.UciMoveParserTest": {
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "time": "0.005"
+  }
+}

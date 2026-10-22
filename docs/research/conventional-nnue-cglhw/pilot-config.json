@@ -1,0 +1,16 @@
+{
+  "data": "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\data\\pilot-131k\\train.data",
+  "output": "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\runs\\pilot-16",
+  "probes": "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\data\\pilot-131k\\probes.fens",
+  "seed": 20261022,
+  "batch_size": 1024,
+  "batches_per_superbatch": 128,
+  "start_superbatch": 1,
+  "end_superbatch": 16,
+  "learning_rate": 0.001,
+  "wdl": 0.0,
+  "resume": null,
+  "data_sha256": "f94e976b3a19d58e3b01fa749ebdc2d158c6c9be5ac43372612572e9ac53fcaa",
+  "probes_sha256": "ec701ee7bcdbf9018cf8f1912b4d1acb620fd98ac793060e08b02d0f0a644309",
+  "save_rate": 4
+}

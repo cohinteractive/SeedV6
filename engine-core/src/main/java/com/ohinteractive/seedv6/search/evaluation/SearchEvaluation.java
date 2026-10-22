@@ -1,6 +1,8 @@
 package com.ohinteractive.seedv6.search.evaluation;
 
 import java.util.Objects;
+import com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetwork;
+import com.ohinteractive.seedv6.core.nnue.conventional.ConventionalAccumulator;
 
 import com.ohinteractive.seedv6.core.Eval;
 import com.ohinteractive.seedv6.core.brn.BrnModel;
@@ -25,6 +27,7 @@ import com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap;
  */
 public final class SearchEvaluation {
     private static final SearchEvaluation HANDCRAFTED = new SearchEvaluation(null, null, false);
+    private final ConventionalNetwork conventional;
     private final NnueNetwork network;
     private final BrnModel brn;
     private final Brn1Model brn1;
@@ -53,7 +56,7 @@ public final class SearchEvaluation {
 
     private SearchEvaluation(NnueNetwork network, NnueScoreMapping mapping, boolean incremental,
                              boolean scalarOracle, boolean materialBootstrap) {
-        packedCubic = false; residualBase = null; blend = null; next = null; rollingDelta = false; this.materialBootstrap = materialBootstrap;
+        conventional = null; packedCubic = false; residualBase = null; blend = null; next = null; rollingDelta = false; this.materialBootstrap = materialBootstrap;
         this.brn = null; this.brn1 = null; this.brn2 = null; this.brn3 = null; pair2 = null;
         this.network = network;
         this.mapping = mapping;
@@ -62,13 +65,13 @@ public final class SearchEvaluation {
     }
 
     private SearchEvaluation(BrnModel model) {
-        packedCubic = false; residualBase = null; blend = null; next = null; rollingDelta = false;
+        conventional = null; packedCubic = false; residualBase = null; blend = null; next = null; rollingDelta = false;
         brn = Objects.requireNonNull(model, "BRN model"); brn1 = null; brn2 = null; brn3 = null; pair2 = null;
         network = null; mapping = null; incremental = false; scalarOracle = false; materialBootstrap = false;
     }
 
     private SearchEvaluation(Brn1Model model) {
-        packedCubic = false; residualBase = null; blend = null; next = null; rollingDelta = false;
+        conventional = null; packedCubic = false; residualBase = null; blend = null; next = null; rollingDelta = false;
         brn1 = Objects.requireNonNull(model, "BRN-1 model"); brn = null; brn2 = null; brn3 = null; pair2 = null;
         network = null; mapping = null; incremental = false; scalarOracle = false; materialBootstrap = false;
     }
@@ -76,7 +79,7 @@ public final class SearchEvaluation {
     public static SearchEvaluation brn1(Brn1Model model) { return new SearchEvaluation(model); }
 
     private SearchEvaluation(Brn2Model model, boolean incremental) {
-        packedCubic = false; residualBase = null; blend = null; next = null; rollingDelta = false;
+        conventional = null; packedCubic = false; residualBase = null; blend = null; next = null; rollingDelta = false;
         brn2 = Objects.requireNonNull(model, "BRN-2 model"); brn = null; brn1 = null; brn3 = null; pair2 = null;
         network = null; mapping = null; this.incremental = incremental; scalarOracle = false; materialBootstrap = false;
     }
@@ -88,7 +91,7 @@ public final class SearchEvaluation {
     public static SearchEvaluation brn(BrnModel model) { return new SearchEvaluation(model); }
 
     private SearchEvaluation(Brn3Model model, double residualGain) {
-        packedCubic = false; residualBase = null; blend = null; next = null; rollingDelta = false;
+        conventional = null; packedCubic = false; residualBase = null; blend = null; next = null; rollingDelta = false;
         if(!Double.isFinite(residualGain)||residualGain<0||residualGain>1)throw new IllegalArgumentException("BRN-3 residual gain must be in [0,1]");
         pair2=null; brn3=new Brn3Definition(Objects.requireNonNull(model,"BRN-3 model"),residualGain);brn=null;brn1=null;brn2=null;
         network=null;mapping=null;incremental=true;scalarOracle=false;materialBootstrap=false;
@@ -98,7 +101,7 @@ public final class SearchEvaluation {
     public static SearchEvaluation brn3Research(Brn3Model model,double residualGain){return new SearchEvaluation(model,residualGain);}
 
     private SearchEvaluation(com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model model) {
-        packedCubic = false; residualBase = null; blend = null; next = null; rollingDelta = false;
+        conventional = null; packedCubic = false; residualBase = null; blend = null; next = null; rollingDelta = false;
         pair2=Objects.requireNonNull(model);brn=null;brn1=null;brn2=null;brn3=null;
         network=null;mapping=null;incremental=true;scalarOracle=false;materialBootstrap=false;
     }
@@ -119,7 +122,7 @@ public final class SearchEvaluation {
     }
     private SearchEvaluation(com.ohinteractive.seedv6.core.brnnext.BrnNextModel model, boolean blockCache, boolean rollingDelta,
                              com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model residualBase,boolean packedCubic) {
-        this.packedCubic=packedCubic;
+        conventional = null; this.packedCubic=packedCubic;
         if(model.architecture().calibratedHeads()&&(rollingDelta||packedCubic||residualBase!=null))
             throw new IllegalArgumentException("Calibrated heads own their fixed base and guarded composition cache");
         if(packedCubic&&(!rollingDelta||!blockCache||!model.architecture().frozenCubic()))
@@ -183,7 +186,7 @@ public final class SearchEvaluation {
     }
     public boolean isBrnGen32Residual() { return next != null && next.architecture().frozenBase() && residualBase == null; }
     private SearchEvaluation(SearchEvaluation reference, SearchEvaluation candidate, double weight) {
-        packedCubic = false; residualBase = null; blend = new Blend(reference, candidate, weight); rollingDelta = false;
+        conventional = null; packedCubic = false; residualBase = null; blend = new Blend(reference, candidate, weight); rollingDelta = false;
         next = null; pair2 = null; brn = null; brn1 = null; brn2 = null; brn3 = null;
         network = null; mapping = null; incremental = false; scalarOracle = false; materialBootstrap = false;
     }
@@ -200,6 +203,7 @@ public final class SearchEvaluation {
 
     /** Immutable definition identity for composition at the production factory boundary. */
     public boolean isBrnPair2() { return pair2 != null; }
+    public boolean isConventional() { return conventional != null; }
 
     public static SearchEvaluation handcrafted() { return HANDCRAFTED; }
 
@@ -241,8 +245,24 @@ public final class SearchEvaluation {
                 Objects.requireNonNull(mapping, "mapping"), false);
     }
 
+    private SearchEvaluation(ConventionalNetwork model, boolean incremental) {
+        conventional = Objects.requireNonNull(model);
+        network = null; mapping = null; brn = null; brn1 = null; brn2 = null; brn3 = null;
+        pair2 = null; next = null; residualBase = null; blend = null;
+        this.incremental = incremental; rollingDelta = false; packedCubic = false;
+        scalarOracle = false; materialBootstrap = false;
+    }
+    /** Explicit conventional NNUE; does not inherit Pair-2-specific search policies. */
+    public static SearchEvaluation conventional(ConventionalNetwork model) {
+        return new SearchEvaluation(model, true);
+    }
+    public static SearchEvaluation conventionalFullRebuild(ConventionalNetwork model) {
+        return new SearchEvaluation(model, false);
+    }
+
     public State newState(int capacity) {
         if (capacity < 1) throw new IllegalArgumentException("State capacity must be positive.");
+        if (conventional != null) return new ConventionalState(this, capacity);
         if (blend != null) return new BlendState(this, capacity);
         if (next != null) return new NextState(this);
         if (pair2 != null) return new Pair2State(this);
@@ -264,6 +284,34 @@ public final class SearchEvaluation {
         public abstract void child(long[] parent, long[] child, int parentPly);
         public abstract void initializeFrom(long[] board, int ply, State source);
         public abstract int evaluate(long[] board, int ply);
+    }
+    private static final class ConventionalState extends State {
+        private final SearchEvaluation definition;
+        private final ConventionalAccumulator[] stack;
+        ConventionalState(SearchEvaluation definition, int capacity) {
+            this.definition = definition;
+            stack = new ConventionalAccumulator[capacity];
+            if (definition.incremental) for (int i = 0; i < capacity; i++) stack[i] = definition.conventional.newAccumulator();
+        }
+        @Override public void initialize(long[] board, int ply) {
+            Objects.checkIndex(ply, stack.length);
+            if (definition.incremental) stack[ply].rebuild(board);
+        }
+        @Override public void child(long[] parent, long[] child, int parentPly) {
+            Objects.checkIndex(parentPly, stack.length - 1);
+            if (definition.incremental) stack[parentPly + 1].update(parent, child, stack[parentPly]);
+        }
+        @Override public void initializeFrom(long[] board, int ply, State source) {
+            if (source == this || !(source instanceof ConventionalState other) || definition != other.definition)
+                throw new IllegalArgumentException("Evaluator/owner mismatch");
+            Objects.checkIndex(ply, stack.length);
+            Objects.checkIndex(ply, other.stack.length);
+            if (definition.incremental) stack[ply].copyFrom(board, other.stack[ply]);
+        }
+        @Override public int evaluate(long[] board, int ply) {
+            Objects.checkIndex(ply, stack.length);
+            return definition.incremental ? stack[ply].evaluate(board) : definition.conventional.fullRebuild(board);
+        }
     }
     private static final class BlendState extends State {
         private final SearchEvaluation definition;

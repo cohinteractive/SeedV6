@@ -244,6 +244,8 @@ public final class ParallelSearch implements SingleDepthSearch {
                 }
             };
             search = construction!=null ? ExactSearch.constructionResearch(observed,table,construction)
+                    : definition.isConventional() && policy == ConcurrencyPolicy.OFF
+                    ? ExactSearch.quiescencePvsResearch(observed, table, ExactSearch.QSEARCH_BASELINE)
                     : policy == ConcurrencyPolicy.OFF
                     ? ExactSearch.sharedWorker(observed, table, reservations, definition == SearchEvaluation.handcrafted())
                     : ExactSearch.sharedCumulativeWorker(observed, table, reservations,

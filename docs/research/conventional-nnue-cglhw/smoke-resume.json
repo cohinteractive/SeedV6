@@ -1,0 +1,44 @@
+{
+  "full_vs_resumed": {
+    "weights": {
+      "max_abs": 2.1979212760925293e-07,
+      "rms": 1.3260093483596976e-09,
+      "changed": 161470,
+      "count": 2163457
+    },
+    "momentum": {
+      "max_abs": 3.4924596548080444e-10,
+      "rms": 3.882288268992733e-13,
+      "changed": 291385,
+      "count": 2163457
+    },
+    "velocity": {
+      "max_abs": 2.842170943040401e-14,
+      "rms": 1.9887938392902013e-17,
+      "changed": 216620,
+      "count": 2163457
+    },
+    "quantised_equal": true
+  },
+  "resumed_repeat": {
+    "weights": {
+      "max_abs": 2.086162567138672e-07,
+      "rms": 1.187171154743869e-09,
+      "changed": 139960,
+      "count": 2163457
+    },
+    "momentum": {
+      "max_abs": 2.3283064365386963e-10,
+      "rms": 3.392105962892377e-13,
+      "changed": 264578,
+      "count": 2163457
+    },
+    "velocity": {
+      "max_abs": 2.842170943040401e-14,
+      "rms": 1.9804347089849638e-17,
+      "changed": 191194,
+      "count": 2163457
+    },
+    "quantised_equal": true
+  }
+}

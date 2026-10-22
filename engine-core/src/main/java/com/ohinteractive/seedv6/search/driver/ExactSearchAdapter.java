@@ -70,6 +70,11 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
         return new ExactSearchAdapter(ExactEvaluator.from(evaluation), new TTable(), false, policy);
     }
 
+    /** Unpruned quiescence with a caller-owned bounded table; no calibrated neural pruning. */
+    public static ExactSearchAdapter unprunedQuiescence(SearchEvaluation evaluation, TTable table) {
+        return new ExactSearchAdapter(ExactEvaluator.from(evaluation), table, false, ExactSearch.QSEARCH_BASELINE);
+    }
+
     /** Confirmed SR-001 composition; affected nominal proofs and all qTT stores stay disabled. */
     public static ExactSearchAdapter unprunedQuiescence(SearchEvaluation evaluation) {
         return quiescenceResearch(evaluation, ExactSearch.QSEARCH_BASELINE);

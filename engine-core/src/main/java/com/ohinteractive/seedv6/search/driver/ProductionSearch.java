@@ -41,6 +41,8 @@ public final class ProductionSearch {
                             .withCompletedHints(completedHints, null)
                     : new ParallelSearch(workers, evaluation, table, ConcurrencyPolicy.ROOT_REUSE)
                             .withSeeResearch(SeePolicy.QXRAY, null).withCompletedHints(completedHints, null);
+        if (evaluation.isConventional() && workers == 1)
+            return ExactSearchAdapter.unprunedQuiescence(evaluation, table);
         return workers == 1 ? new ExactSearchAdapter(evaluation, table)
                 : new ParallelSearch(workers, evaluation, table, ConcurrencyPolicy.OFF);
     }

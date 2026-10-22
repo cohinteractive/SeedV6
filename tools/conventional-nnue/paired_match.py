@@ -1,0 +1,108 @@
+"""One active game, one worker/engine; paired fixed-movetime diagnostic matches.
+
+Openings/configuration are frozen before games. Caps remain censored, never draws.
+Use fresh openings for confirmation; this screen is not conclusive strength proof.
+"""
+import argparse
+import hashlib
+import json
+import math
+from pathlib import Path
+import random
+import subprocess
+import time
+import chess
+import chess.engine
+import chess.pgn
+
+
+def sha(path):
+    with path.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
+
+
+def summarize(games):
+    completed=[g for g in games if g['score'] is not None]
+    score=sum(g['score'] for g in completed)
+    bounds=[score/len(games),(score+len(games)-len(completed))/len(games)] if games else [0,1]
+    result=dict(games=len(games),completed=len(completed),wins=sum(g['score']==1 for g in completed),
+        draws=sum(g['score']==.5 for g in completed),losses=sum(g['score']==0 for g in completed),
+        censored=len(games)-len(completed),all_game_score_bounds=bounds)
+    pairs={}
+    for g in games:pairs.setdefault(g['opening_index'],[]).append(g['score'])
+    values=[sum(scores)/2 for scores in pairs.values() if len(scores)==2 and None not in scores]
+    if len(completed)==len(games) and values and len(values)*2==len(games):
+        mean=sum(values)/len(values)
+        rng=random.Random(20261022)
+        samples=sorted(sum(rng.choice(values) for _ in values)/len(values) for _ in range(10000))
+        interval=[samples[249],samples[9749]]
+        def elo(p):return 400*math.log10(p/(1-p)) if 0<p<1 else None
+        result.update(score=mean,elo=elo(mean),paired_bootstrap_95_score=interval,
+            paired_bootstrap_95_elo=[elo(p) for p in interval],pairs=len(values),
+            uncertainty='percentile bootstrap by opening; exploratory, unreliable at tiny n/boundaries; no sequential significance claim')
+    return result
+
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--network',type=Path,required=True);p.add_argument('--openings',type=Path,required=True)
+    p.add_argument('--output',type=Path,required=True);p.add_argument('--movetime-ms',type=int,default=50)
+    p.add_argument('--max-plies',type=int,default=400)
+    a=p.parse_args()
+    if not 10<=a.movetime_ms<=1000 or not 100<=a.max_plies<=1000:raise ValueError('Unbounded match settings')
+    openings=json.loads(a.openings.read_text());assert 1<=len(openings)<=128
+    a.output.mkdir(parents=True,exist_ok=False)
+    root=Path(__file__).resolve().parents[2]
+    jars=root/'app-uci/build/install/seedv6-uci/lib'
+    base=['C:/java/jdk-21/bin/java.exe','-XX:ActiveProcessorCount=1','-Xmx512m','-Djava.awt.headless=true',
+        '-cp',str(jars/'*'),'com.ohinteractive.seedv6.uci.UciMain']
+    commands=[base+['--nnue',str(a.network.resolve())],base+['--model',str(root/'build-assets/production/bre-pair2-g32.brn-pair2')]]
+    protocol=dict(network=str(a.network.resolve()),network_sha256=sha(a.network),openings_sha256=sha(a.openings),
+        openings=openings,movetime_ms=a.movetime_ms,max_plies=a.max_plies,threads=1,hash_mib=32,
+        use_book=False,ponder=False,concurrent_games=1,commands=commands,
+        jar_sha256={f.name:sha(f) for f in jars.glob('*.jar')},
+        baseline_sha256=sha(root/'build-assets/production/bre-pair2-g32.brn-pair2'),
+        purpose='prospective development screen; different calibrated search policies; complete-engine comparison',
+        outcome_policy='python-chess formal endings including claimable draws; cap censored, no score adjudication')
+    (a.output/'protocol.json').write_text(json.dumps(protocol,indent=2)+'\n')
+    engines=[];games=[];start=time.monotonic()
+    flags=subprocess.CREATE_NO_WINDOW|subprocess.BELOW_NORMAL_PRIORITY_CLASS
+    try:
+        for cmd in commands:
+            engine=chess.engine.SimpleEngine.popen_uci(cmd,timeout=30,creationflags=flags)
+            engine.configure({'Threads':1,'Hash':32,'UseBook':False});engines.append(engine)
+        for opening_index,opening in enumerate(openings):
+            initial=chess.Board()
+            for move in opening['moves'].split():initial.push_uci(move)
+            for candidate_white in (True,False):
+                board=initial.copy();identifier=object();observations=[];game_start=time.monotonic()
+                while not board.is_game_over(claim_draw=True) and len(observations)<a.max_plies:
+                    candidate_turn=board.turn==candidate_white
+                    played=engines[0 if candidate_turn else 1].play(board,chess.engine.Limit(time=a.movetime_ms/1000),
+                        game=identifier,info=chess.engine.INFO_BASIC|chess.engine.INFO_SCORE)
+                    if played.move not in board.legal_moves:raise RuntimeError('Illegal engine move')
+                    observations.append(dict(move=played.move.uci(),candidate=candidate_turn,nodes=played.info.get('nodes'),
+                        time=played.info.get('time'),depth=played.info.get('depth')))
+                    board.push(played.move)
+                outcome=board.outcome(claim_draw=True)
+                score=None if outcome is None else .5 if outcome.winner is None else float(outcome.winner==candidate_white)
+                record=dict(opening_index=opening_index,opening=opening['name'],candidate_white=candidate_white,
+                    score=score,termination='CAP' if outcome is None else outcome.termination.name,
+                    elapsed_seconds=time.monotonic()-game_start,plies=len(observations))
+                game=chess.pgn.Game.from_board(board);game.headers['White']='NNUE' if candidate_white else 'Gen32-Policy4'
+                game.headers['Black']='Gen32-Policy4' if candidate_white else 'NNUE'
+                game.headers['Result']='*' if outcome is None else outcome.result()
+                stem=f'{opening_index:03d}-'+('white' if candidate_white else 'black')
+                (a.output/(stem+'.pgn')).write_text(str(game)+'\n')
+                (a.output/(stem+'.json')).write_text(json.dumps(dict(result=record,moves=observations),indent=2)+'\n')
+                games.append(record)
+                with (a.output/'games.jsonl').open('a') as out:out.write(json.dumps(record)+'\n')
+                print(json.dumps(dict(progress=f'{len(games)}/{len(openings)*2}',last=record,summary=summarize(games))),flush=True)
+        result=summarize(games);result['elapsed_seconds']=time.monotonic()-start
+        (a.output/'summary.json').write_text(json.dumps(result,indent=2)+'\n')
+    finally:
+        for engine in engines:
+            try:engine.quit()
+            except Exception:engine.close()
+
+
+if __name__=='__main__':main()

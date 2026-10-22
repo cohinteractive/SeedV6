@@ -20,6 +20,12 @@ records build 61: frozen BRE-Pair 2 Gen32 with production Policy 4 for standalon
 UCI and fresh desktop Play. It includes actual runtime evidence, launch paths,
 NNUE reuse boundaries and remaining Search Phase 3 acceptance requirements.
 
+The new [conventional NNUE workstream](docs/research/conventional-nnue-cglhw/STATE.md)
+provides pinned local Bullet GPU training, a distinct quantized Java evaluator and
+explicit `seedv6-uci --nnue <network.cnnue>` selection. Gen32 remains the default
+and comparison baseline. See its [contract](docs/research/conventional-nnue-cglhw/CONTRACT.md)
+and [runbook](docs/research/conventional-nnue-cglhw/RUNBOOK.md) for evidence and resume.
+
 For explicit **construction-v1** experimental gameplay in macOS BotLi or Windows
 Play/Arena, use the [construction-v1 activation guide](docs/construction-v1-gameplay.md).
 It selects the full flattened Search with the verified Pair-2 g32 model and
