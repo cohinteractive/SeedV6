@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "records": 3773996,
+  "binary_sha256": "a7b33bc85903e681b5eacebea9e50c34206c7aac19f4b8b5c89b31198cb81fdd",
+  "extraction_manifest_sha256": "2b4605e164c83c4c81bee619c900bcbd7efb5eea855afaeaeacc9d9391a715f0",
+  "all_extraction_hashes_verified": true,
+  "all_binary_target_scores_verified": true,
+  "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e003-data",
+  "limitation": "Checks recorded extraction identities and white-to-STM target conversion, not every packed board feature or source-label calibration"
+}

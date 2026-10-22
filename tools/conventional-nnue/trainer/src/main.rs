@@ -24,6 +24,7 @@ struct Config {
     wdl: f32, resume: Option<String>, data_sha256: String, probes_sha256: String,
     #[serde(default = "one")]
     save_rate: usize,
+    data_fork_reason: Option<String>,
 }
 fn one()->usize {1}
 fn digest(path:impl AsRef<Path>)->String {format!("{:x}",Sha256::digest(fs::read(path).unwrap()))}
@@ -102,9 +103,13 @@ fn train(config_path: &str) {
         }
         assert_eq!(manifest["files"].as_object().unwrap().len(),5,"Incomplete checkpoint receipt");
         assert_eq!(c.start_superbatch,step+1,"Resume must continue the checkpoint's next superbatch");
-        assert_eq!((c.data_sha256.as_str(),c.seed,c.batch_size,c.batches_per_superbatch,c.learning_rate,c.wdl),
-            (previous.data_sha256.as_str(),previous.seed,previous.batch_size,previous.batches_per_superbatch,previous.learning_rate,previous.wdl),
-            "Resume recipe/data change requires a separately labelled fork");
+        assert_eq!((c.seed,c.batch_size,c.batches_per_superbatch,c.learning_rate,c.wdl),
+            (previous.seed,previous.batch_size,previous.batches_per_superbatch,previous.learning_rate,previous.wdl),
+            "Resume cannot change optimizer/schedule recipe");
+        if (c.data_sha256.as_str(),c.probes_sha256.as_str())!=(previous.data_sha256.as_str(),previous.probes_sha256.as_str()) {
+            assert!(c.data_fork_reason.as_ref().is_some_and(|s|s.trim().len()>=12),
+                "Dataset/probe change requires an explicit data_fork_reason; this is not exact continuation of the old stream");
+        }
     }
     let mut trainer = ValueTrainerBuilder::default()
         .dual_perspective().seed(c.seed).optimiser(AdamW)

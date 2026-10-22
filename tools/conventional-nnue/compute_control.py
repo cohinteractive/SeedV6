@@ -278,6 +278,17 @@ def recipe(config):
         'batches_per_superbatch', 'learning_rate', 'wdl'))
 
 
+def initial_resume_compatible(request, previous):
+    """Only a prospectively labelled data fork may change dataset/probe identity.
+
+    Optimizer/schedule and model remain fixed. Subsequent segments still require
+    full recipe equality, so a declared initial fork cannot mask later mutation.
+    """
+    current, prior = recipe(request), recipe(previous)
+    reason = request.get('data_fork_reason')
+    return current == prior or (current[2:] == prior[2:] and isinstance(reason, str) and len(reason.strip()) >= 12)
+
+
 def train(control, args):
     source = Path(args.config).resolve(); requested_bytes = source.read_bytes()
     request = json.loads(requested_bytes); output = Path(request['output']).resolve()
@@ -306,7 +317,7 @@ def train(control, args):
         latest = None
         if request.get('resume'):
             latest, previous = verify_checkpoint(request['resume'])
-            if recipe(previous) != recipe(request) or latest['next_superbatch'] != request['start_superbatch']:
+            if not initial_resume_compatible(request, previous) or latest['next_superbatch'] != request['start_superbatch']:
                 raise ValueError('Original resume recipe mismatch')
         verified = {}
         for candidate in output.glob('segments/*/run/seed-cnnue-v1-*/seed-manifest.json'):

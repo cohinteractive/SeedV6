@@ -97,6 +97,19 @@ class Controls(unittest.TestCase):
         self.assertNotEqual(self.command('check').returncode,0)
         self.assertNotEqual(self.command('normal').returncode,0)
 
+    def test_data_fork_requires_label_and_preserves_optimizer_recipe(self):
+        original=dict(data_sha256='old',probes_sha256='probes',seed=1,batch_size=1024,
+                      batches_per_superbatch=1024,learning_rate=.001,wdl=0.)
+        self.assertTrue(cc.initial_resume_compatible(original,original))
+        changed=dict(original,data_sha256='new')
+        self.assertFalse(cc.initial_resume_compatible(changed,original))
+        changed['data_fork_reason']='E003 prospectively declared coverage expansion'
+        self.assertTrue(cc.initial_resume_compatible(changed,original))
+        for key,value in [('seed',2),('batch_size',512),('batches_per_superbatch',512),
+                          ('learning_rate',.002),('wdl',.5)]:
+            self.assertFalse(cc.initial_resume_compatible(dict(changed,**{key:value}),original),key)
+        self.assertFalse(cc.initial_resume_compatible(dict(changed,data_fork_reason=''),original))
+
     def test_cooperative_hold_and_repeat(self):
         self.control.request('NORMAL');process,pids=self.launch()
         started=time.monotonic();a=self.control.request('COMPUTE_HOLD')

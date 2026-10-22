@@ -1,0 +1,43 @@
+{
+  "source": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+  "source_size": 22086532809,
+  "source_mtime_ns": 1790287765503165500,
+  "source_url": "https://database.lichess.org/#evals",
+  "license": "CC0",
+  "consumed_compressed_prefix_bytes": 522727100,
+  "consumed_compressed_prefix_sha256": "af4f71533c30f573bbf4a34e5377cccf48ed7b8ce01e1e2abcb2ada06b715aaa",
+  "counts": {
+    "read": 7046013,
+    "accepted": 4194304,
+    "no_cp": 1028373,
+    "check_or_terminal": 400233,
+    "tactical_pv": 1302214,
+    "extreme_score": 75520,
+    "invalid_position": 41903,
+    "duplicate": 1874,
+    "shallow": 1592
+  },
+  "train": 3773996,
+  "validation": 420308,
+  "seed": 20261022,
+  "hashes": {
+    "probes.fens": "ec701ee7bcdbf9018cf8f1912b4d1acb620fd98ac793060e08b02d0f0a644309",
+    "train-provenance.jsonl": "6133a5eb89699836c3cfda325d31785d860ac19c379669fe488bce423695c931",
+    "train.txt": "e1a080e5629abdd7a3c2b525beb0842c19b9df8aacc27608ffb2db1d24919f0e",
+    "validation-provenance.jsonl": "f374fbf94f5bc518e21bbbef0fc220e923486e09a15b128a4ec19c0724e595fb",
+    "validation.txt": "97a62b28640be945b64700199e23f85e21cecc0330fe9e463a69ecfd2c79ed28"
+  },
+  "targets": "white-relative CP; sigmoid(cp/400); wdl MUST equal 0; result field is unused placeholder",
+  "filters": "valid, nonterminal, not in check; highest-depth CP PV; depth>=12; abs(cp)<=3000; noncapture/nonpromotion PV",
+  "split": "90/10 SHA256 placement+STM; exact evaluator-input dedup; no game IDs available",
+  "limitations": [
+    "bounded source prefix, not a random sample of the complete archive",
+    "mixed Stockfish versions and CP calibration; no outcome labels",
+    "related-game and symmetry leakage cannot be ruled out; validation is diagnostic, not strength evidence"
+  ],
+  "elapsed_seconds": 668.4351792000016,
+  "stopped_for_compute_hold": false,
+  "requested_positions": 4194304,
+  "completed_requested_sample": true,
+  "continuation": "Complete dataset is reusable; held partial extraction is evidence only. Restart extraction to a new path if needed."
+}

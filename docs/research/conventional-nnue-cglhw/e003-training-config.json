@@ -1,0 +1,17 @@
+{
+  "data": "docs\\research\\conventional-nnue-cglhw\\raw\\e003-data\\train.data",
+  "output": "docs\\research\\conventional-nnue-cglhw\\raw\\e003-training",
+  "probes": "docs\\research\\conventional-nnue-cglhw\\raw\\e003-data\\probes.fens",
+  "seed": 20261022,
+  "batch_size": 1024,
+  "batches_per_superbatch": 1024,
+  "start_superbatch": 17,
+  "end_superbatch": 80,
+  "learning_rate": 0.001,
+  "wdl": 0.0,
+  "resume": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e002-training\\segments\\000016-82fbf9cba1be\\run\\seed-cnnue-v1-16",
+  "data_sha256": "a7b33bc85903e681b5eacebea9e50c34206c7aac19f4b8b5c89b31198cb81fdd",
+  "probes_sha256": "ec701ee7bcdbf9018cf8f1912b4d1acb620fd98ac793060e08b02d0f0a644309",
+  "save_rate": 1,
+  "data_fork_reason": "E003 prospective CC0 coverage expansion from E002 checkpoint16; retain optimizer and constant schedule; new deterministic data cursor."
+}

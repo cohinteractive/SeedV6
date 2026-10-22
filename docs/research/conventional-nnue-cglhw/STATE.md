@@ -1,8 +1,9 @@
 # Conventional NNUE state
 
-22 October 2026. **ACTIVE: A technically operational; B/C open. Pilot16 is a
-verified pipeline checkpoint, NOT a strength-accepted model.** Read CONTRACT.md,
-M001-OPERATIONAL.md and E001.md. This new
+22 October 2026. **COMPUTE HOLD requested by owner and completed at 07:00:54 UTC.
+A operational; B technically available as E002 opt-in with negative strength limits;
+competitive C open. No production promotion.**
+Read CONTRACT.md, COMPUTE-CONTROL.md, E002.md and the current E003.md. This
 programme does not resume the historical `nnue-cglhw` or suspended BRN work.
 
 **First action in every fresh conversation:** run `.\nnue-control.cmd status`.
@@ -14,7 +15,9 @@ historical initialization statement.
 Control implementation and targeted checks are complete: see CONTROL-VALIDATION.md
 and compact control-*.json evidence. Twelve Windows control tests plus real GPU,
 dataset and UCI match hold/resume passed. Graceful GPU hold measured 1.627 seconds;
-emergency 0.166 seconds, no remaining owned process. No user action is required.
+emergency 0.166 seconds, no remaining owned process. The later actual owner hold
+also stopped safely at E003 checkpoint31. Explicit owner release is required before
+any further expensive operation; no action is needed to remain on hold.
 
 ## Dependency milestones
 
@@ -66,17 +69,9 @@ E002 extraction completed before control integration: 1,048,576 accepted from
 1,766,343 lines, 943,857 train / 104,719 validation, 164.06 seconds. Evidence:
 `raw/e002-data/manifest.json`. Consumed compressed prefix 147,459,375 bytes, SHA256
 `1184f0044504ffacf0e01630e5724b16030d828c5406bfe15f03487af673b8b0`.
-No training process was running at the safe integration boundary. Preserve
-hash partition/dedup/filters; document overlap with E001 and diagnostic validation.
-Train this same architecture/seed, batch1024, 1024 batches/superbatch, 16 superbatches,
-lr.001, wdl0 (16,777,216 exposures). Owner compute controls change save4 to every
-superbatch with supervised segmented continuation, preserving data order and the
-constant LR/WDL recipe. Controls are verified; training is the next admissible
-operation when observed permission permits. Expansion is justified by
-E001's large training/validation gap and losses; no architecture sweep. Verify export,
-held-out loss/material behavior and the same development openings before deciding
-whether more data, a target/source change or another intervention is warranted.
-No human action currently blocks this. No unmonitored training/tournament.
+No training process was running at the safe control-integration boundary. Owner
+controls changed save4 to every superbatch, preserving optimizer, data cursor and
+constant LR/WDL. Completed E002 evidence is below; do not rerun it unnecessarily.
 
 E002 has now completed:16 verified supervised segments,16,777,216 exposures.
 Expanded-cohort MSE.006115 versus pilot.014133 on the same104719 positions;
@@ -84,9 +79,27 @@ old-prefix MSE.005685 versus pilot.005442. Material queen-removal response impro
 to about834cp. Exact128-position cross-language parity and actual one-/two-worker
 build62 UCI checks pass. Development screen2W/1D/13L, no caps; no promotion.
 Read E002.md and e002-*.json for frozen identity, costs, limitations and local paths.
-Next admissible decision is a single bounded4M coverage expansion with the same
-CC0 source/architecture/filters, proportional exposure, and explicit outcome review.
-First freeze its plan and verify resource headroom and current compute permission.
+E003 extraction is complete:4,194,304 accepted from7,046,013 source lines in668.44s;
+3,773,996 train /420,308 validation. All frozen extraction hashes and every binary
+target conversion pass. Reuse raw/e003-data; do not repeat completed extraction.
+The narrowly declared data-fork guard is built/tested. Segment17 initializer bytes
+exactly match E002 checkpoint16 weights, momentum and velocity. Recipe stays fixed.
+
+E003 completed segments17..31 (15,728,640 additional exposures) before the actual
+owner COMPUTE HOLD. Checkpoint31 verifies; its optimizer, immutable plan, trainer
+hash and progress are preserved. Latest path:
+`raw/e003-training/segments/000031-33d794da5eeb/run/seed-cnnue-v1-31`.
+Owned job/process count is zero; trainer/controller PIDs and trainer CUDA PID were
+verified absent. See e003-hold-20261022.json and E003.md. No emergency stop was needed.
+Current permission persists in Git metadata; this historical record cannot release it.
+
+After explicit NORMAL authorization, inspect status and rerun the exact
+`nnue-control.cmd train docs/research/conventional-nnue-cglhw/e003-training-config.json`
+with the local CUDA environment from E003.md. It verifies/skips17..31 and resumes32;
+fixed endpoint80 remains unchanged. Do not rebuild/change the pinned trainer or
+immutable plan casually. After80: parity, common-cohort validation, UCI and the
+predeclared development screen. These checks have not yet run for E003. No useful
+independent lightweight work remains in this unit; end execution while held.
 
 Raw tools/output: `build/conventional-nnue/`; upstream source clone:
 `build/conventional-nnue/upstream/bullet` at

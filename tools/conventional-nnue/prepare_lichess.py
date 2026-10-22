@@ -43,7 +43,7 @@ def main():
     p.add_argument('--seed', type=int, default=20261022)
     args = p.parse_args()
     compute_gate.require()
-    if not 1024 <= args.positions <= 1048576 or not 1 <= args.max_lines <= 10000000:
+    if not 1024 <= args.positions <= 4194304 or not 1 <= args.max_lines <= 10000000:
         raise ValueError('Outside bounded extraction limits')
     args.output.mkdir(parents=True, exist_ok=False)
     before = args.source.stat()

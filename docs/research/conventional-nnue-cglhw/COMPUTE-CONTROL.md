@@ -94,8 +94,13 @@ Full export parity remains a separate acceptance check. Partial receipts are inv
 After NORMAL, reissue the same `train CONFIG`. It verifies the immutable plan,
 trainer, recipes, receipts and contiguous progress, skips completed superbatches,
 and makes a fresh directory for the next attempt. Interrupted files are retained.
-Trainer changes or ambiguous/corrupt evidence require reconciliation; a changed
-recipe is a separately recorded fork, never silently resumed as the same experiment.
+Trainer changes or ambiguous/corrupt evidence require reconciliation. E003 adds a
+narrow `data_fork_reason` declaration for a prospectively recorded data/probe change
+at an initial checkpoint import. It preserves weights/optimizer, seed, batch shape,
+LR/WDL and next-superbatch index; it does not claim the old data stream continues.
+Unlabelled data changes and optimizer/schedule changes are rejected. Subsequent
+segments require full equality with the new immutable recipe. This is separate
+from holding/resuming an unchanged experiment, which never needs a data fork.
 
 Superbatches are capped at 1024 batches. Holds are polled every 0.2 seconds and
 default to a 30-second grace interval. If the current process has not finished,
