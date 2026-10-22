@@ -65,7 +65,7 @@ public final class ConventionalAccumulator {
     public int evaluate(long[] board) {
         requirePlacement(board);
         int stm = Board.player((int) board[Board.STATUS]);
-        return network.score(values[stm], values[stm ^ 1]);
+        return network.score(values[stm], values[stm ^ 1], network.bucket(board));
     }
 
     public int raw(int perspective, int unit) {

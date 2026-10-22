@@ -106,3 +106,11 @@ with the selective-search launcher; evaluator and search changes remain separate
 Poll long-running process logs and report actual progress to the user at least
 every15 minutes; active host instructions require more frequent updates. Do not
 launch an unmonitored campaign or treat logs alone as user-facing progress.
+
+E007 adds S6CNU002/version2 with eight MaterialCount output heads, selected by
+(piece_count-2)/4. S6CNU001/version1 remains readable with identical arithmetic.
+The trainer/config field output_buckets defaults to1 and permits only1 or8;
+continuation cannot change it, even via a dataset fork. Existing immutable plans
+must retain their frozen trainer hashes. Use E007's259 probes across all heads for
+new geometry. GPU checkpoints still use the historical seed-cnnue-v1 directory
+prefix; verify geometry from the recipe and tensor shapes, never directory names.

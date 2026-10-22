@@ -1,0 +1,19 @@
+{
+  "source": "docs\\research\\conventional-nnue-cglhw\\raw\\e006-data\\proof.txt",
+  "source_sha256": "d89f7e9b9f69b2ad18d599353c694181af5553afc87a75dd9971d7e18c2ee0d7",
+  "seed": 20261022,
+  "selection": "Shuffle E006 distributed proof rows; first32 per material bucket, then3 explicit special-move roots",
+  "counts_per_bucket": [
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32
+  ],
+  "positions": 259,
+  "probes_sha256": "ad203156178b08943202514ed7a046dff1591e4059b8ae2c16eaa540e9299076",
+  "local_path": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-probes\\probes.fens"
+}

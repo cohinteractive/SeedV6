@@ -1,4 +1,4 @@
-"""Wrap Bullet's merged quantised.bin in the strictly versioned Seed S6CNU001 envelope.
+"""Wrap Bullet's merged quantised.bin in the strictly versioned Seed S6CNU001/2 envelope.
 
 No transformation of quantised weights. Independent integer reference inference
 and feature fixtures can be generated from the exported payload and FEN input.
@@ -16,7 +16,6 @@ import chess
 
 HIDDEN=256
 FEATURES=7680
-COUNT=FEATURES*HIDDEN+HIDDEN*3+1
 BUCKETS=(0,1,2,3,4,4,5,5,6,6,6,6,7,7,7,7,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9)
 
 
@@ -45,7 +44,9 @@ def checkpoint_weights(path):
         if len(values)!=count:raise ValueError('Truncated optimizer weights')
         if sys.byteorder!='little':values.byteswap()
         result[name]=values
-    expected={'l0w':FEATURES*HIDDEN,'l0f':768*HIDDEN,'l0b':HIDDEN,'l1w':2*HIDDEN,'l1b':1}
+    heads=len(result.get('l1b',[]))
+    if heads not in (1,8):raise ValueError('Unsupported output geometry')
+    expected={'l0w':FEATURES*HIDDEN,'l0f':768*HIDDEN,'l0b':HIDDEN,'l1w':2*HIDDEN*heads,'l1b':heads}
     if {k:len(v) for k,v in result.items()}!=expected:raise ValueError('Unexpected optimizer architecture')
     return result
 
@@ -54,15 +55,19 @@ def merged_weights(values):
     factor=values['l0f']
     # Round the sum to binary32, exactly as Bullet's export transform does.
     merged=array.array('f',(x+factor[i%len(factor)] for i,x in enumerate(values['l0w'])))
-    return merged+values['l0b']+values['l1w']+values['l1b']
+    heads=len(values['l1b'])
+    # Bullet affine tensors are column-major: input then output. Its saved
+    # transpose makes complete selected heads contiguous for CPU inference.
+    head=array.array('f',(values['l1w'][i*heads+b] for b in range(heads) for i in range(2*HIDDEN)))
+    return merged+values['l0b']+head+values['l1b']
 
 
 def verify_quantization(payload,checkpoint):
-    floats=merged_weights(checkpoint_weights(checkpoint))
+    values=checkpoint_weights(checkpoint);heads=len(values['l1b']);floats=merged_weights(values)
     quantised=array.array('h')
     split=(FEATURES+1)*HIDDEN
     for i,x in enumerate(floats):
-        scale=255 if i<split else 64 if i<COUNT-1 else 255*64
+        scale=255 if i<split else 64 if i<len(floats)-heads else 255*64
         value=x*scale
         if not math.isfinite(value):raise ValueError('Nonfinite weight')
         quantised.append(math.trunc(value+math.copysign(.5,value)))
@@ -74,14 +79,18 @@ def verify_quantization(payload,checkpoint):
 def evaluate(weights,board):
     biases=weights[FEATURES*HIDDEN:FEATURES*HIDDEN+HIDDEN]
     head=weights[FEATURES*HIDDEN+HIDDEN:]
+    heads=len(head)//(2*HIDDEN+1)
+    if heads not in (1,8):raise ValueError('Unsupported output geometry')
+    bucket=0 if heads==1 else (len(board.piece_map())-2)//4
+    if not 0<=bucket<heads:raise ValueError('Invalid material count')
     sums=[]; fs=[]
     total=0
     for side,white in enumerate((board.turn,not board.turn)):
         indices=features(board,white);fs.append(indices)
         acc=[biases[i]+sum(weights[f*HIDDEN+i] for f in indices) for i in range(HIDDEN)]
         sums.append(acc)
-        total+=sum(max(0,min(255,a))**2*head[side*HIDDEN+i] for i,a in enumerate(acc))
-    score=max(-32511,min(32511,trunc((trunc(total,255)+head[-1])*400,255*64)))
+        total+=sum(max(0,min(255,a))**2*head[bucket*2*HIDDEN+side*HIDDEN+i] for i,a in enumerate(acc))
+    score=max(-32511,min(32511,trunc((trunc(total,255)+head[heads*2*HIDDEN+bucket])*400,255*64)))
     return dict(score=score,features=fs,accumulators=sums)
 
 
@@ -90,19 +99,24 @@ def main():
     p.add_argument('quantised',type=Path);p.add_argument('output',type=Path)
     p.add_argument('--fens',type=Path);p.add_argument('--reference',type=Path)
     args=p.parse_args()
-    raw=args.quantised.read_bytes();payload=raw[:COUNT*2]
-    expected=(COUNT*2+63)//64*64
-    padding=(b'bullet'*11)[:expected-COUNT*2]
-    if len(raw)!=expected or raw[COUNT*2:]!=padding:raise ValueError('Unexpected Bullet length/padding')
+    values=checkpoint_weights(args.quantised.parent/'optimiser_state/weights.bin');heads=len(values['l1b'])
+    config=json.loads((args.quantised.parent.parent/'config.json').read_text())
+    if config.get('output_buckets',1)!=heads:raise ValueError('Config/model geometry mismatch')
+    count=(FEATURES+1)*HIDDEN+(2*HIDDEN+1)*heads
+    raw=args.quantised.read_bytes();payload=raw[:count*2]
+    expected=(count*2+63)//64*64
+    padding=(b'bullet'*11)[:expected-count*2]
+    if len(raw)!=expected or raw[count*2:]!=padding:raise ValueError('Unexpected Bullet length/padding')
     verify_quantization(payload,args.quantised.parent/'optimiser_state/weights.bin')
     digest=hashlib.sha256(payload).digest()
-    header=b'S6CNU001'+struct.pack('<8I',1,FEATURES,HIDDEN,10,255,64,400,len(payload))+digest
+    version=1 if heads==1 else 2;magic=f'S6CNU00{version}'.encode('ascii')
+    header=magic+struct.pack('<8I',version,FEATURES,HIDDEN,10,255,64,400,len(payload))+digest
     with args.output.open('xb') as out:out.write(header+payload)
-    metadata=dict(format='S6CNU001',bullet_quantised_sha256=hashlib.sha256(raw).hexdigest(),
+    metadata=dict(format=magic.decode(),output_buckets=heads,bullet_quantised_sha256=hashlib.sha256(raw).hexdigest(),
         payload_sha256=digest.hex(),file_sha256=hashlib.sha256(header+payload).hexdigest(),
-        bytes=len(header+payload),parameters=COUNT,source=str(args.quantised.resolve()),
+        bytes=len(header+payload),parameters=count,source=str(args.quantised.resolve()),
         independent_quantization='all parameters match merged optimizer weights with half-away rounding',
-        layout='LE i16: feature-major weights[7680][256], bias[256], STM/NTM head[512], output bias',
+        layout=f'LE i16: feature-major weights[7680][256], bias[256], heads[{heads}][512], output biases[{heads}]',
         arithmetic='clamp 0..255 then square; long dot; trunc(dot/255); add bias; multiply400; trunc(/16320); clamp +-32511')
     args.output.with_suffix(args.output.suffix+'.json').write_text(json.dumps(metadata,indent=2)+'\n')
     if args.fens:

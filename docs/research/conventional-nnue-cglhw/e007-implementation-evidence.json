@@ -1,0 +1,321 @@
+{
+  "java_tests": {
+    "engine-core": {
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "app-uci": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "recipe_test": "PASS: legacy defaults, immutable decay and immutable output geometry",
+  "gpu_control": {
+    "hold_seconds": 2.6136565999986487,
+    "kind": "graceful",
+    "held_after_superbatch": 2,
+    "observed_cuda_pid": 30968,
+    "owned_processes_after_hold": 0,
+    "cuda_pid_absent_after_hold": true,
+    "held_checkpoint": {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-control-validation\\segmented\\segments\\000002-94c0ad4429dd\\run\\seed-cnnue-v1-2",
+      "completed_superbatch": 2,
+      "next_superbatch": 3,
+      "receipt_sha256": "f497ae72bfb86347bc8a7b5c3e4775d816ccd4a4cc772ff123fe99c23f6d377a",
+      "config_sha256": "69e6c8d83edce090b6fff5a56f4b91fe2a563813c01e8a9fb7d8ad7cda1a8cac",
+      "verified_at": "2026-10-22T10:57:32+00:00"
+    },
+    "final_checkpoint": {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-control-validation\\segmented\\segments\\000004-5a5b48221117\\run\\seed-cnnue-v1-4",
+      "completed_superbatch": 4,
+      "next_superbatch": 5,
+      "receipt_sha256": "0cbd27f6986b98574a6c348c7b5feefdd7c2883b668758fd2ec2b523c90f7973",
+      "config_sha256": "eba241aabd37eac8f9125c0148cf3505341e2ed252bd6ed3afe26554c14c5f09",
+      "verified_at": "2026-10-22T10:57:39+00:00"
+    },
+    "reference_checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-control-validation\\reference\\seed-cnnue-v1-4",
+    "completed_segments_before_resume": 2,
+    "completed_segments_after_resume": 4,
+    "denied_fresh_process_exit": 2,
+    "full_pause_checked": true,
+    "original_recipe": {
+      "batch_size": 4096,
+      "batches_per_superbatch": 1024,
+      "superbatches": 4,
+      "learning_rate": 0.001,
+      "wdl": 0.0,
+      "lr_drop_every": 128,
+      "lr_gamma": 0.5
+    },
+    "limitations": "Single short local measurement; GPU continuation is not bitwise deterministic"
+  },
+  "optimizer_continuity": [
+    {
+      "step": 1,
+      "initializer_matches_previous": true
+    },
+    {
+      "step": 2,
+      "initializer_matches_previous": true
+    },
+    {
+      "step": 3,
+      "initializer_matches_previous": true
+    },
+    {
+      "step": 4,
+      "initializer_matches_previous": true
+    }
+  ],
+  "parity": {
+    "status": "PASS",
+    "positions": 259,
+    "output_buckets": 8,
+    "exact_features": "Python / Java / pinned Bullet",
+    "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+    "gpu_float_max_abs_raw_error": 6.750101650965235e-07,
+    "gpu_float_tolerance": 2e-05,
+    "quantization_max_abs_cp_error": 17.95675706097903,
+    "quantization_rms_cp_error": 7.036321549023886,
+    "limitation": "Quantization error is measured separately; no strength or calibration claim"
+  },
+  "validation4": {
+    "sigmoid_mse": 0.0171870183153212,
+    "positions": 524288,
+    "payload_sha256": "5cb2fa4b5fc39ad325c40000cf5bf471359990a8375f3018076e57a503f3be93",
+    "cp_mae": 382.4901428222656,
+    "zero_score_mse": 0.0659978710509739
+  },
+  "uci1": {
+    "status": "PASS",
+    "workers": 1,
+    "network": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation4\\network.cnnue",
+    "identity": [
+      "id name SeedV6 conventional NNUE opt-in 0.0.0 (build 62)",
+      "id author Charles Clark",
+      "option name Threads type spin default 1 min 1 max 16",
+      "option name Hash type spin default 64 min 1 max 1024",
+      "option name Clear Hash type button",
+      "option name UseBook type check default false",
+      "option name OwnBook type check default false",
+      "info string evaluator=CONVENTIONAL_NNUE schema=S6CNU002 payload=5cb2fa4b5fc39ad325c40000cf5bf471359990a8375f3018076e57a503f3be93 search=recursive-unpruned-qsearch workers=1 hashMiB=64 build=62 source=b782710dbb18 (uncommitted changes) ttMiB=64",
+      "uciok"
+    ],
+    "searches": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "bestmove": "d2d4",
+        "last_info": "info depth 5 score cp 78 nodes 56406 time 211 nps 266473 pv d2d4 d7d5 c2c4 c7c6 e2e3"
+      },
+      {
+        "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+        "bestmove": "e1c1",
+        "last_info": "info depth 4 score cp 131 nodes 77905 time 189 nps 412117 pv e1c1 f6e4 c3e4 d5e4 f3e5 c6e5 d4e5 d7d2 d1d2"
+      },
+      {
+        "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+        "bestmove": "e5d6",
+        "last_info": "info depth 10 score cp 0 nodes 72663 time 139 nps 520566 pv e5d6 e8d7 e1d1 d7d6"
+      },
+      {
+        "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+        "bestmove": "h2h1q",
+        "last_info": "info depth 8 score cp 1513 nodes 61249 time 105 nps 577897 pv h2h1q e1d2 e8d7 d2c2 h1a8 c2b1 d7c6 b1a2 a8a7 a2b1"
+      }
+    ],
+    "lifecycle": "stop/readiness/newgame/repeated search/quit passed"
+  },
+  "uci2": {
+    "status": "PASS",
+    "workers": 2,
+    "network": "docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation4\\network.cnnue",
+    "identity": [
+      "id name SeedV6 conventional NNUE opt-in 0.0.0 (build 62)",
+      "id author Charles Clark",
+      "option name Threads type spin default 1 min 1 max 16",
+      "option name Hash type spin default 64 min 1 max 1024",
+      "option name Clear Hash type button",
+      "option name UseBook type check default false",
+      "option name OwnBook type check default false",
+      "info string evaluator=CONVENTIONAL_NNUE schema=S6CNU002 payload=5cb2fa4b5fc39ad325c40000cf5bf471359990a8375f3018076e57a503f3be93 search=recursive-unpruned-qsearch workers=1 hashMiB=64 build=62 source=b782710dbb18 (uncommitted changes) ttMiB=64",
+      "uciok"
+    ],
+    "searches": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "bestmove": "d2d4",
+        "last_info": "info depth 5 score cp 78 nodes 111789 time 193 nps 577734 pv d2d4 d7d5 c2c4 c7c6 e2e3"
+      },
+      {
+        "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+        "bestmove": "e1c1",
+        "last_info": "info depth 4 score cp 131 nodes 146246 time 209 nps 696837 pv e1c1 f6e4 c3e4 d5e4 f3e5 c6e5 d4e5 d7d2 d1d2"
+      },
+      {
+        "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+        "bestmove": "e5d6",
+        "last_info": "info depth 10 score cp 0 nodes 144807 time 145 nps 993456 pv e5d6 e8d7 e1d1 d7d6"
+      },
+      {
+        "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+        "bestmove": "h2h1q",
+        "last_info": "info depth 8 score cp 1513 nodes 121386 time 122 nps 992971 pv h2h1q e1d2 e8d7 d2c2 h1a8 c2b1 d7c6 b1a2 a8a7 a2b1"
+      }
+    ],
+    "lifecycle": "stop/readiness/newgame/repeated search/quit passed"
+  },
+  "legacy_compatibility": {
+    "network_bytes_identical": true,
+    "parity": {
+      "status": "PASS",
+      "positions": 128,
+      "output_buckets": 1,
+      "exact_features": "Python / Java / pinned Bullet",
+      "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+      "gpu_float_max_abs_raw_error": 5.026847177125315e-07,
+      "gpu_float_tolerance": 2e-05,
+      "quantization_max_abs_cp_error": 24.642180350928925,
+      "quantization_rms_cp_error": 9.580183409728281,
+      "limitation": "Quantization error is measured separately; no strength or calibration claim"
+    },
+    "validation": {
+      "cp_mae": 386.8592128753662,
+      "payload_sha256": "abd77b6e21a8e35e87823b84281db1e86fb8f629f31f6f47a4f7c66853090a52",
+      "positions": 524288,
+      "sigmoid_mse": 0.016912051845256015,
+      "zero_score_mse": 0.0659978710509739
+    }
+  },
+  "cost": {
+    "e007-benchmark4": {
+      "network": "5cb2fa4b5fc39ad325c40000cf5bf471359990a8375f3018076e57a503f3be93",
+      "load_ms": 74.2153,
+      "legal_transitions": 255,
+      "incremental_plus_head_ns_per_eval": [
+        1838.92,
+        1812.765,
+        1835.505
+      ],
+      "full_refresh_plus_head_ns_per_eval": [
+        5032.17,
+        5098.995,
+        5106.715
+      ],
+      "pair2_rolling_plus_head_ns_per_eval": [
+        94.745,
+        93.22,
+        89.925
+      ],
+      "incremental_allocated_bytes_20000": 0,
+      "limitation": "one deterministic legal walk; microbenchmark only; no NPS/Elo inference"
+    },
+    "e007-legacy-benchmark": {
+      "network": "abd77b6e21a8e35e87823b84281db1e86fb8f629f31f6f47a4f7c66853090a52",
+      "load_ms": 60.7659,
+      "legal_transitions": 255,
+      "incremental_plus_head_ns_per_eval": [
+        1688.72,
+        1696.145,
+        1666.21
+      ],
+      "full_refresh_plus_head_ns_per_eval": [
+        4776.76,
+        4853.115,
+        4891.175
+      ],
+      "pair2_rolling_plus_head_ns_per_eval": [
+        93.22,
+        90.675,
+        86.235
+      ],
+      "incremental_allocated_bytes_20000": 0,
+      "limitation": "one deterministic legal walk; microbenchmark only; no NPS/Elo inference"
+    },
+    "e007-frozen-legacy-benchmark": {
+      "network": "abd77b6e21a8e35e87823b84281db1e86fb8f629f31f6f47a4f7c66853090a52",
+      "load_ms": 72.659,
+      "legal_transitions": 255,
+      "full_refresh_plus_head_ns_per_eval": [
+        4817.16,
+        4866.315,
+        4862.355
+      ],
+      "pair2_rolling_plus_head_ns_per_eval": [
+        93.355,
+        93.69,
+        88.915
+      ],
+      "incremental_plus_head_ns_per_eval": [
+        1674.605,
+        1633.105,
+        1629.505
+      ],
+      "incremental_allocated_bytes_20000": 0,
+      "limitation": "one deterministic legal walk; microbenchmark only; no NPS/Elo inference"
+    },
+    "e007-tiled-benchmark": {
+      "network": "bb5d24ca964aef4526c74a81a028dd2501c193fcdc333e9b6fde25eb421b6759",
+      "load_ms": 64.9139,
+      "legal_transitions": 255,
+      "incremental_plus_head_ns_per_eval": [
+        1738.65,
+        1704.57,
+        1707.86
+      ],
+      "full_refresh_plus_head_ns_per_eval": [
+        4865.84,
+        4940.425,
+        4943.955
+      ],
+      "pair2_rolling_plus_head_ns_per_eval": [
+        96.725,
+        95.16,
+        91.235
+      ],
+      "incremental_allocated_bytes_20000": 0,
+      "limitation": "one deterministic legal walk; microbenchmark only; no NPS/Elo inference"
+    }
+  },
+  "identical_function_control": {
+    "purpose": "Synthetic byte-replicated head cost control, not a trained candidate",
+    "source_sha256": "61d8e0226ca4587ae7f7e6d3195d66fbd7793db51bb2da86ffdc07d8facccd62",
+    "target_sha256": "7f5eca0fd3e4f10a4d9dee3dd0ec76771bb534fcf0b8522fd1a504fd8022930f",
+    "transformation": "Identical input weights/bias; repeat original512 head weights eight times, then repeat original bias eight times; only geometry and selection differ"
+  },
+  "control_259_rows_byte_identical": true,
+  "trainer_sha256": "f1b9c5d05a41c1a23a4a6d7555bcfae31b5f7d076549a2cfe08283b8efacbdea",
+  "frozen_trainer": "build\\conventional-nnue\\frozen-trainers\\f1b9c5d05a41c1a23a4a6d7555bcfae31b5f7d076549a2cfe08283b8efacbdea.exe",
+  "new_format": {
+    "format": "S6CNU002",
+    "output_buckets": 8,
+    "bullet_quantised_sha256": "3e031fa0e7a350f974afeb9915197568e072e7d2ff5d01b7c486fff678ec9771",
+    "payload_sha256": "5cb2fa4b5fc39ad325c40000cf5bf471359990a8375f3018076e57a503f3be93",
+    "file_sha256": "a964a462b6c0a40e6f72bcbafd4eae1639647980309b68a4e73492b382ec6e00",
+    "bytes": 3940952,
+    "parameters": 1970440,
+    "source": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-control-validation\\segmented\\segments\\000004-5a5b48221117\\run\\seed-cnnue-v1-4\\quantised.bin",
+    "independent_quantization": "all parameters match merged optimizer weights with half-away rounding",
+    "layout": "LE i16: feature-major weights[7680][256], bias[256], heads[8][512], output biases[8]",
+    "arithmetic": "clamp 0..255 then square; long dot; trunc(dot/255); add bias; multiply400; trunc(/16320); clamp +-32511"
+  },
+  "limits": [
+    "No strength acceptance; checkpoint4 is early training",
+    "Primitive cost uses one deterministic legal walk; no NPS/Elo claim",
+    "Precommit runtime tests used build62 with E007 source modifications; build63 distribution verification follows commit"
+  ],
+  "precommit_runtime_sha256": {
+    "build\\conventional-nnue\\frozen-runtime\\e007-precommit-build62\\uci\\app-uci.jar": "a0ef8f2b867b0b43f37881d8c9e976894578f1cfea3652259a49adb258a67395",
+    "build\\conventional-nnue\\frozen-runtime\\e007-precommit-build62\\uci\\engine-core.jar": "dbf42052dabaa6c3604d76bc72839be3eb309d1377e8d28d1b4b5e030c8aa92a",
+    "build\\conventional-nnue\\frozen-runtime\\e007-precommit-build62\\research\\engine-core.jar": "dbf42052dabaa6c3604d76bc72839be3eb309d1377e8d28d1b4b5e030c8aa92a",
+    "build\\conventional-nnue\\frozen-runtime\\e007-precommit-build62\\research\\engine-training.jar": "09526ddc81bbe54a01c0864c4b8a08adfd2c95c6602f373e4189de9d02a40432",
+    "build\\conventional-nnue\\frozen-runtime\\e007-precommit-build62\\research\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "build\\conventional-nnue\\frozen-runtime\\e007-precommit-build62\\research\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "build\\conventional-nnue\\frozen-runtime\\e007-precommit-build62\\research\\research.jar": "782d0f04d98455957e876ddd3c60f985270085934d780a7d53eee06176b485ac",
+    "build\\conventional-nnue\\frozen-runtime\\e007-precommit-build62\\research\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "build\\conventional-nnue\\frozen-runtime\\e007-precommit-build62\\research\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "final_checkpoint": {
+    "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-256\\segments\\000256-505fd827a8ce\\run\\seed-cnnue-v1-256",
+    "completed_superbatch": 256,
+    "next_superbatch": 257,
+    "receipt_sha256": "5dd30d5737798631692a7c06e68ed9d8ee074241bb1ba3fbffe1fb359d2ebd18",
+    "config_sha256": "4778981e3bc68c73cd196d2c12b85f716f2c4a9efe2f0a83972d1192dda7b7ff",
+    "verified_at": "2026-10-22T10:50:34+00:00",
+    "process_exit_code": 0,
+    "wall_seconds": 3.903108099999372
+  },
+  "stage129_256_process_seconds": 500.81821440003114,
+  "new_exposures": 536870912,
+  "total_lineage_exposures": 1073741824,
+  "curve": [
+    {
+      "step": 144,
+      "loss": 0.01101
+    },
+    {
+      "step": 160,
+      "loss": 0.010998
+    },
+    {
+      "step": 176,
+      "loss": 0.010978
+    },
+    {
+      "step": 192,
+      "loss": 0.01096
+    },
+    {
+      "step": 208,
+      "loss": 0.010944
+    },
+    {
+      "step": 224,
+      "loss": 0.010929
+    },
+    {
+      "step": 240,
+      "loss": 0.010914
+    },
+    {
+      "step": 256,
+      "loss": 0.010901
+    }
+  ],
+  "validation": {
+    "cp_mae": 386.8592128753662,
+    "payload_sha256": "abd77b6e21a8e35e87823b84281db1e86fb8f629f31f6f47a4f7c66853090a52",
+    "positions": 524288,
+    "sigmoid_mse": 0.016912051845256015,
+    "zero_score_mse": 0.0659978710509739
+  },
+  "parity": {
+    "status": "PASS",
+    "positions": 128,
+    "output_buckets": 1,
+    "exact_features": "Python / Java / pinned Bullet",
+    "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+    "gpu_float_max_abs_raw_error": 5.026847177125315e-07,
+    "gpu_float_tolerance": 2e-05,
+    "quantization_max_abs_cp_error": 24.642180350928925,
+    "quantization_rms_cp_error": 9.580183409728281,
+    "limitation": "Quantization error is measured separately; no strength or calibration claim"
+  },
+  "uci": {
+    "status": "PASS",
+    "workers": 1,
+    "network": "docs\\research\\conventional-nnue-cglhw\\raw\\e006-evaluation256\\network.cnnue",
+    "identity": [
+      "id name SeedV6 conventional NNUE opt-in 0.0.0 (build 62)",
+      "id author Charles Clark",
+      "option name Threads type spin default 1 min 1 max 16",
+      "option name Hash type spin default 64 min 1 max 1024",
+      "option name Clear Hash type button",
+      "option name UseBook type check default false",
+      "option name OwnBook type check default false",
+      "info string evaluator=CONVENTIONAL_NNUE schema=S6CNU001 payload=abd77b6e21a8e35e87823b84281db1e86fb8f629f31f6f47a4f7c66853090a52 search=recursive-unpruned-qsearch workers=1 hashMiB=64 build=62 source=c204e4082f91 (uncommitted changes) ttMiB=64",
+      "uciok"
+    ],
+    "searches": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "bestmove": "e2e4",
+        "last_info": "info depth 5 score cp 113 nodes 56367 time 217 nps 259121 pv e2e4 d7d5 e4d5 d8d5 d2d4"
+      },
+      {
+        "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+        "bestmove": "e4d5",
+        "last_info": "info depth 4 score cp 180 nodes 52923 time 149 nps 353810 pv e4d5 f6d5 f3e5 c6e5 d4e5 d5e3 d2e3"
+      },
+      {
+        "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+        "bestmove": "e5d6",
+        "last_info": "info depth 10 score cp 0 nodes 94477 time 150 nps 625726 pv e5d6 e8d7 e1d1 d7d6"
+      },
+      {
+        "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+        "bestmove": "h2h1q",
+        "last_info": "info depth 8 score cp 2430 nodes 135838 time 168 nps 805634 pv h2h1q e1e2 e8f7 e2f2 f7g6 f2e2 h1a1 e2f2 a1a7 f2f1"
+      }
+    ],
+    "lifecycle": "stop/readiness/newgame/repeated search/quit passed"
+  },
+  "screen": {
+    "games": 16,
+    "completed": 16,
+    "wins": 1,
+    "draws": 6,
+    "losses": 9,
+    "censored": 0,
+    "all_game_score_bounds": [
+      0.25,
+      0.25
+    ],
+    "score": 0.25,
+    "elo": -190.84850188786498,
+    "paired_bootstrap_95_score": [
+      0.125,
+      0.375
+    ],
+    "paired_bootstrap_95_elo": [
+      -338.0392160057027,
+      -88.73949984654256
+    ],
+    "pairs": 8,
+    "uncertainty": "percentile bootstrap by opening; exploratory, unreliable at tiny n/boundaries; no sequential significance claim",
+    "elapsed_seconds": 58.735470200001146
+  },
+  "protocol": {
+    "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-evaluation256\\network.cnnue",
+    "network_sha256": "61d8e0226ca4587ae7f7e6d3195d66fbd7793db51bb2da86ffdc07d8facccd62",
+    "openings_sha256": "09e46f558260a4545b7f52fccad501b24953fc352ef8730845352a92340e2fc4",
+    "openings": [
+      {
+        "name": "Open game",
+        "moves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6"
+      },
+      {
+        "name": "Sicilian",
+        "moves": "e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6"
+      },
+      {
+        "name": "French",
+        "moves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6"
+      },
+      {
+        "name": "Caro Kann",
+        "moves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4"
+      },
+      {
+        "name": "Queens gambit",
+        "moves": "d2d4 d7d5 c2c4 e7e6 b1c3 g8f6"
+      },
+      {
+        "name": "Indian",
+        "moves": "d2d4 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6"
+      },
+      {
+        "name": "English",
+        "moves": "c2c4 e7e5 b1c3 g8f6 g1f3 b8c6"
+      },
+      {
+        "name": "Reti",
+        "moves": "g1f3 d7d5 g2g3 g8f6 f1g2 e7e6"
+      }
+    ],
+    "movetime_ms": 50,
+    "max_plies": 400,
+    "threads": 1,
+    "hash_mib": 32,
+    "use_book": false,
+    "ponder": false,
+    "concurrent_games": 1,
+    "commands": [
+      [
+        "C:/java/jdk-21/bin/java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+        "com.ohinteractive.seedv6.uci.UciMain",
+        "--nnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-evaluation256\\network.cnnue"
+      ],
+      [
+        "C:/java/jdk-21/bin/java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+        "com.ohinteractive.seedv6.uci.UciMain",
+        "--model",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\production\\bre-pair2-g32.brn-pair2"
+      ]
+    ],
+    "jar_sha256": {
+      "app-uci.jar": "40baa6a8df4379d0022ef58c4e0e25a7854072dd7cffbf0725bba37fa14cf2ac",
+      "engine-core.jar": "7e6d218f64c8fa3147e121280ddf300e8f7d0043bfbd24a9349deb78936c5bf7"
+    },
+    "baseline_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "purpose": "prospective development screen; different calibrated search policies; complete-engine comparison",
+    "outcome_policy": "python-chess formal endings including claimable draws; cap censored, no score adjudication"
+  },
+  "decision": "Stop fixed one-head training after plateau; preserve all checkpoints. Continue E007 material heads; no programme stopping or production promotion."
+}

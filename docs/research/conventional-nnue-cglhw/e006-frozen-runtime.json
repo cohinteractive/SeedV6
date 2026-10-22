@@ -1,0 +1,15 @@
+{
+  "local_root": "build\\conventional-nnue\\frozen-runtime\\build62-e006",
+  "sha256": {
+    "build\\conventional-nnue\\frozen-runtime\\build62-e006\\uci\\app-uci.jar": "40baa6a8df4379d0022ef58c4e0e25a7854072dd7cffbf0725bba37fa14cf2ac",
+    "build\\conventional-nnue\\frozen-runtime\\build62-e006\\uci\\engine-core.jar": "7e6d218f64c8fa3147e121280ddf300e8f7d0043bfbd24a9349deb78936c5bf7",
+    "build\\conventional-nnue\\frozen-runtime\\build62-e006\\research\\engine-core.jar": "7e6d218f64c8fa3147e121280ddf300e8f7d0043bfbd24a9349deb78936c5bf7",
+    "build\\conventional-nnue\\frozen-runtime\\build62-e006\\research\\engine-training.jar": "09526ddc81bbe54a01c0864c4b8a08adfd2c95c6602f373e4189de9d02a40432",
+    "build\\conventional-nnue\\frozen-runtime\\build62-e006\\research\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "build\\conventional-nnue\\frozen-runtime\\build62-e006\\research\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "build\\conventional-nnue\\frozen-runtime\\build62-e006\\research\\research.jar": "782d0f04d98455957e876ddd3c60f985270085934d780a7d53eee06176b485ac",
+    "build\\conventional-nnue\\frozen-runtime\\build62-e006\\research\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "build\\conventional-nnue\\frozen-runtime\\build62-e006\\research\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "purpose": "Exact installed build62 runtime for E005/E006; preserved before E007 rebuild"
+}

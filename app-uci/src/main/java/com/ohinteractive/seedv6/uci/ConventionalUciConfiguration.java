@@ -26,7 +26,7 @@ final class ConventionalUciConfiguration {
             public String name(){return "SeedV6 conventional NNUE opt-in "+version.displayVersion();}
             public String identity(int workers){return identity(workers,64);}
             public String identity(int workers,int hashMiB){
-                return "evaluator=CONVENTIONAL_NNUE schema=S6CNU001 payload="+model.payloadSha256()
+                return "evaluator=CONVENTIONAL_NNUE schema="+model.schema()+" payload="+model.payloadSha256()
                     +" search=recursive-unpruned-qsearch workers="+workers+" hashMiB="+hashMiB
                     +" build="+version.build()+" source="+version.sourceRevision();
             }

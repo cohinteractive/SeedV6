@@ -126,48 +126,44 @@ negative evidence remains unchanged. Substantial overnight local computation and
 reasonable conventional architecture refinements are authorized, without an8-hour
 expiry or routine approval gate. Honour later COMPUTE HOLD/FULL PAUSE exactly.
 
-Current next work: diagnose training distribution/targets and convergence against
-maintained Bullet/established NNUE practices, prioritizing read-only investigation
-of existing BT4 data and its exact label profile. Also inspect existing loss/material/
-search evidence for errors rather than assuming the256-unit architecture is the cause.
-Then freeze a justified candidate/data/target plan and execute under the controller.
-Do not replay completed E003; preserve checkpoint80 and establish any continuation
-as a separately declared immutable experiment. Keep15-minute user-facing reports
-(or more frequent host updates); asynchronous tool sessions currently support them.
-No programme-level blocker has been established. Continue across unit boundaries.
+Current continuation: E007 material output heads.
 
-E005 completed 64 checkpoints/268,435,456 exposures. Same-search comparison with
-E003 improved to11W/5D/0L; production Gen32 still leads (2W/5D/9L at64). Held-out
-MSE worsened16/32/64=.021569/.022508/.023484 while training-sample MSE fell to.007045.
-All three parity checks passed. Saved checkpoint16's Gen32 screen was5W/2D/9L.
-These are small reused development screens, not competitive acceptance. Read E005.md
-and e005-stage-results.json. All checkpoints remain intact; no additional fixed-data
-E005 epochs are selected. E00516 is a research continuation point, not a replacement
-for the documented E002 opt-in handoff or production Gen32.
+E005 used correctly transformed BT4 targets and improved the same-search E003
+screen to 11W/5D/0L. Its Gen32 screen remained weak, and more fixed-sample training
+worsened held-out MSE. Saved checkpoint16 (5W/2D/9L against Gen32) was selected
+for E006's fourfold coverage expansion, with optimizer preserved. Read E005.md
+and e005-stage-results.json; all old checkpoints remain intact.
 
-E006 now selected: fourfold training coverage using the same shuffled BT4 chunk
-sequence and identical held-out cohort, unchanged256 architecture, teacher-only
-Q-logit400 target,4096 batch,1024 batches/checkpoint and global StepLR(.001,.5/128).
-Read E006.md. `raw/e006-data` is complete and verified:33,554,432 training/524,288
-validation; all stored labels/results plus66,560 upstream packing comparisons pass.
-E005 validation/probes are byte-identical. The labelled data-fork plan is
-`e006-training-64-config.json`, from E005 checkpoint16, global17..64, preserving
-weights/momentum/velocity. Next start/resume through `nnue-control.cmd train` with
-that config and the local CUDA runtime PATH; verify checkpoint64 on the unchanged
-BT4 holdout, then UCI/runtime/Gen32 screen if coherent. Continue justified work.
-Do not repeat extraction or completed E005 work. Owner NORMAL generation3, no expiry.
+E006 completed through256, with a predeclared LR reduction at129. Broader data
+improved held-out MSE from .021569 to .016864 at64, but128/256 stayed near .01699/
+.01691. Final Gen32 screen1W/6D/9L. Fixed one-head training stops at this plateau;
+the programme continues. Read E006.md and stage64/128/256 evidence. Preserve the
+33,554,432-position dataset and identical524,288-position holdout in raw/e006-data.
+Exact prior runtime jars are recorded in e006-frozen-runtime.json.
 
-E006 checkpoint64 completed and parity/UCI passed; fixed holdout MSE.016864,
-Gen32 screen2W/5D/9L. See e006-stage64-results.json. Next start/resume
-`e006-training-128-config.json` through the controller, global65..128, same recipe
-and optimizer. Evaluate128 on the unchanged holdout before selecting129..256
-(the frozen LR first halves at129). No architecture/search change or promotion.
+E007 adds eight material-count output heads under S6CNU002, retaining256 hidden
+units and exact S6CNU001 compatibility. Source implementation passed27 targeted
+Java tests, immutable-geometry recipe testing, actual GPU hold/resume (2.61s,
+owned CUDA PID gone),259-position parity across all buckets, actual1/2-worker UCI,
+and measured inference cost. Re-exported legacy bytes and scores are unchanged.
+Read E007.md, e007-implementation-evidence.json and e007-probes.json. No strength
+acceptance follows these correctness checks. Production Gen32 is unchanged.
 
-E006128 complete/parity passed, heldout MSE.016994 (flat versus64). Next/current
-training is `e006-training-256-config.json`,129..256 with the predeclared LR.0005.
-Evaluate256 before more training. E007 may prepare a separate eight-material-head
-conventional model while this frozen run proceeds; do not change E006's trainer
-binary or installed jars during its measurements. No production promotion.
+Next: finish/reconcile the build63 implementation commit and install/verify its
+actual UCI metadata. Then start/resume e007-training-64-config.json through
+nnue-control.cmd train with local CUDA runtime PATH. It continues from the verified
+eight-head GPU-test checkpoint4 (same data, recipe, optimizer), global5..64.
+Do not repeat the completed first4 segments or any extraction. Evaluate64 on the
+unchanged BT4 holdout, validate actual UCI/runtime, then use Gen32 and same-search
+controls as needed. Continue the strongest justified next work; experiment
+rejection does not stop the programme.
+
+Persisted owner permission remains NORMAL generation3 with no expiry at this
+update. Always reconcile nnue-control.cmd status on fresh entry; this prose never
+releases a later hold. Frozen trainers are retained by SHA256 for existing immutable
+plans; do not substitute a new binary into an old plan. Original1-head optimizer
+geometry cannot be silently resumed as8 heads. Preserve all evidence, fallback and
+15-minute user-facing reporting (active host updates are more frequent).
 
 Raw tools/output: `build/conventional-nnue/`; upstream source clone:
 `build/conventional-nnue/upstream/bullet` at

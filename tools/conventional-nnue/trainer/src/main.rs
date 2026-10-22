@@ -1,5 +1,5 @@
 use bullet_lib::{
-    game::inputs::{ChessBucketsMirrored, SparseInputType},
+    game::{inputs::{ChessBucketsMirrored, SparseInputType}, outputs::MaterialCount},
     nn::{InitSettings, Shape, optimiser::{AdamW, AdamWParams}},
     trainer::{save::SavedFormat, schedule::{TrainingSchedule, TrainingSteps, lr, wdl}, settings::LocalSettings},
     value::{ValueTrainerBuilder, loader::DirectSequentialDataLoader},
@@ -30,6 +30,8 @@ struct Config {
     lr_drop_every: usize,
     #[serde(default = "unit_gamma")]
     lr_gamma: f32,
+    #[serde(default = "one")]
+    output_buckets: usize,
 }
 fn one()->usize {1}
 fn unit_gamma()->f32 {1.0}
@@ -77,15 +79,22 @@ fn main() {
             }
             out.flush().unwrap(); println!("Converted {count} records");
         }
-        "train" => train(&args[2]),
+        "train" => {
+            let c:Config=serde_json::from_slice(&fs::read(&args[2]).unwrap()).unwrap();
+            match c.output_buckets {
+                1=>train::<1>(&args[2]),8=>train::<8>(&args[2]),
+                _=>panic!("Only one or eight output buckets are supported"),
+            }
+        },
         _ => panic!("Unknown operation"),
     }
 }
 
-fn train(config_path: &str) {
+fn train<const OUTPUTS:usize>(config_path: &str) {
     assert!(compute_permitted(),"Launch training through nnue-control.cmd train");
     let config_bytes = fs::read(config_path).unwrap();
     let c: Config = serde_json::from_slice(&config_bytes).unwrap();
+    assert_eq!(c.output_buckets,OUTPUTS);
     assert_eq!(format!("{:x}",Sha256::digest(fs::read(&c.data).unwrap())),c.data_sha256,"Dataset identity mismatch");
     assert_eq!(format!("{:x}",Sha256::digest(fs::read(&c.probes).unwrap())),c.probes_sha256,"Probe identity mismatch");
     assert!(c.batch_size > 0 && c.batch_size <= 4096);
@@ -116,6 +125,7 @@ fn train(config_path: &str) {
             "Resume cannot change optimizer/schedule recipe");
         assert_eq!((c.lr_drop_every,c.lr_gamma),(previous.lr_drop_every,previous.lr_gamma),
             "Resume cannot change the persisted global learning-rate schedule");
+        assert_eq!(c.output_buckets,previous.output_buckets,"Resume cannot change model geometry");
         if (c.data_sha256.as_str(),c.probes_sha256.as_str())!=(previous.data_sha256.as_str(),previous.probes_sha256.as_str()) {
             assert!(c.data_fork_reason.as_ref().is_some_and(|s|s.trim().len()>=12),
                 "Dataset/probe change requires an explicit data_fork_reason; this is not exact continuation of the old stream");
@@ -124,22 +134,23 @@ fn train(config_path: &str) {
     let mut trainer = ValueTrainerBuilder::default()
         .dual_perspective().seed(c.seed).optimiser(AdamW)
         .inputs(ChessBucketsMirrored::new(BUCKETS))
+        .output_buckets(MaterialCount::<OUTPUTS>)
         .save_format(&[
             SavedFormat::id("l0w").transform(|store, weights| {
                 let factoriser = store.get("l0f").values.f32().repeat(10);
                 weights.into_iter().zip(factoriser).map(|(a,b)| a+b).collect()
             }).round().quantise::<i16>(255),
             SavedFormat::id("l0b").round().quantise::<i16>(255),
-            SavedFormat::id("l1w").round().quantise::<i16>(64),
+            SavedFormat::id("l1w").round().quantise::<i16>(64).transpose(),
             SavedFormat::id("l1b").round().quantise::<i16>(255*64),
         ])
         .loss_fn(|output, target| output.sigmoid().squared_error(target))
-        .build(|builder, stm, ntm| {
+        .build(|builder, stm, ntm, buckets| {
             let factor = builder.new_weights("l0f", Shape::new(HIDDEN,768), InitSettings::Zeroed);
             let mut l0 = builder.new_affine("l0", 7680, HIDDEN);
             l0.weights = l0.weights + factor.repeat(10);
-            let l1 = builder.new_affine("l1", HIDDEN*2, 1);
-            l1.forward(l0.forward(stm).screlu().concat(l0.forward(ntm).screlu()))
+            let l1 = builder.new_affine("l1", HIDDEN*2, OUTPUTS);
+            l1.forward(l0.forward(stm).screlu().concat(l0.forward(ntm).screlu())).select(buckets)
         });
     let clipping = AdamWParams { max_weight: 0.99, min_weight: -0.99, ..Default::default() };
     trainer.optimiser.set_params_for_weight("l0w", clipping);

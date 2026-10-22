@@ -31,6 +31,9 @@ class Controls(unittest.TestCase):
         self.assertTrue(cc.initial_resume_compatible(dict(decay,data_sha256='c',data_fork_reason='An explicit dataset fork'),decay))
         for field,value in [('lr_drop_every',64),('lr_gamma',.25)]:
             self.assertFalse(cc.initial_resume_compatible(dict(decay,**{field:value}),decay))
+        self.assertEqual(cc.recipe(old),cc.recipe(dict(old,output_buckets=1)))
+        changed=dict(decay,output_buckets=8,data_fork_reason='Dataset fork cannot change architecture')
+        self.assertFalse(cc.initial_resume_compatible(changed,decay))
 
     def setUp(self):
         self.folder = EVIDENCE / self._testMethodName

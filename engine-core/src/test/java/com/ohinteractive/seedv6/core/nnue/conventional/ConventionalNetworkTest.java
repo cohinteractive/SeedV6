@@ -16,17 +16,83 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ConventionalNetworkTest {
     private static byte[] fixture(boolean extreme) throws Exception {
-        var payload = ByteBuffer.allocate(ConventionalNetwork.PAYLOAD_BYTES).order(ByteOrder.LITTLE_ENDIAN);
+        return fixture(extreme,1);
+    }
+    private static byte[] fixture(boolean extreme,int heads) throws Exception {
+        int parameters=7680*256+256+heads*513;
+        var payload = ByteBuffer.allocate(parameters*2).order(ByteOrder.LITTLE_ENDIAN);
         var random = new SplittableRandom(20261022);
-        for (int i = 0; i < ConventionalNetwork.PARAMETERS; i++)
+        for (int i = 0; i < parameters; i++)
             payload.putShort((short) (extreme ? Short.MAX_VALUE : random.nextInt(-32, 33)));
         var file = ByteBuffer.allocate(ConventionalNetwork.HEADER_BYTES + payload.capacity()).order(ByteOrder.LITTLE_ENDIAN);
-        file.put(new byte[]{'S','6','C','N','U','0','0','1'});
-        for (int n : new int[]{1,7680,256,10,255,64,400,payload.capacity()}) file.putInt(n);
+        int version=heads==1?1:2;
+        file.put(new byte[]{'S','6','C','N','U','0','0',(byte)('0'+version)});
+        for (int n : new int[]{version,7680,256,10,255,64,400,payload.capacity()}) file.putInt(n);
         file.put(MessageDigest.getInstance("SHA-256").digest(payload.array())).put(payload.array());
         return file.array();
     }
     private static ConventionalNetwork network() throws Exception { return ConventionalNetwork.read(new ByteArrayInputStream(fixture(false))); }
+
+    @Test void eightHeadCodecAndEveryMaterialBoundaryAreExplicit() throws Exception {
+        byte[] file=fixture(false,8);
+        Arrays.fill(file,ConventionalNetwork.HEADER_BYTES,file.length,(byte)0);
+        var bytes=ByteBuffer.wrap(file).order(ByteOrder.LITTLE_ENDIAN);
+        for(int b=0;b<8;b++)bytes.putShort(file.length-16+2*b,(short)((b-4)*1000));
+        System.arraycopy(MessageDigest.getInstance("SHA-256").digest(
+            Arrays.copyOfRange(file,ConventionalNetwork.HEADER_BYTES,file.length)),0,file,40,32);
+        var net=ConventionalNetwork.read(new ByteArrayInputStream(file));
+        assertEquals(8,net.outputBuckets());assertEquals("S6CNU002",net.schema());
+        assertEquals(1,network().outputBuckets());assertEquals("S6CNU001",network().schema());
+        for(int count=2;count<=32;count++) {
+            // Synthetic valid piece encoding isolates cardinality; no legal-search claim.
+            long[] board=new long[6];board[0]=1L|(1L<<63);board[3]=1L<<63;
+            for(int square=1;square<count-1;square++) {board[1]|=1L<<square;board[2]|=1L<<square;}
+            var acc=net.newAccumulator();acc.rebuild(board);
+            int expected=(((count-2)/4)-4)*1000*400/16320;
+            assertEquals(expected,acc.evaluate(board),"piece count="+count);
+            assertEquals(expected,net.fullRebuild(board));
+        }
+        for(int index:new int[]{0,7,8,12,16,20,24,28,32,36,40,72,file.length-1}) {
+            byte[] bad=file.clone();bad[index]^=1;
+            assertThrows(IOException.class,()->ConventionalNetwork.read(new ByteArrayInputStream(bad)));
+        }
+        for(int length:new int[]{71,file.length-1,file.length+1}) {
+            byte[] bad=Arrays.copyOf(file,length);
+            assertThrows(IOException.class,()->ConventionalNetwork.read(new ByteArrayInputStream(bad)));
+        }
+    }
+
+    @Test void eightHeadsFollowCapturePromotionNullUndoAndSiblings() throws Exception {
+        var net=ConventionalNetwork.read(new ByteArrayInputStream(fixture(false,8)));
+        String[][] positions={
+            {"4k2r/8/8/3n4/4P3/8/8/R3K3 w - - 0 1","e4d5","a1a2"},
+            {"4k2r/8/8/3pP3/8/8/8/R3K3 w - d6 0 1","e5d6","e5e6"},
+            {"1r5k/P7/8/8/8/8/3N1N2/4K3 w - - 0 1","a7a8q","a7b8q","a7b8n"}
+        };
+        for(var row:positions) {
+            long[] parent=Board.fromFen(row[0]);var a=net.newAccumulator();a.rebuild(parent);
+            assertEquals(1,net.bucket(parent));
+            for(int i=1;i<row.length;i++) {
+                long[] child=play(parent,row[i]);var b=net.newAccumulator();b.update(parent,child,a);
+                compare(net,child,b);compare(net,parent,a);
+                int expected=row[i].equals("e4d5")||row[i].equals("e5d6")||row[i].startsWith("a7b8")?0:1;
+                assertEquals(expected,net.bucket(child));
+                var undo=net.newAccumulator();undo.update(child,parent,b);compare(net,parent,undo);
+            }
+            long[] child=new long[6];Board.nullMoveInto(parent[0],parent[1],parent[2],parent[3],(int)parent[4],parent[5],child);
+            var b=net.newAccumulator();b.update(parent,child,a);compare(net,child,b);assertEquals(1,net.bucket(child));
+        }
+        var rng=new SplittableRandom(7719);long[] parent=Board.startingPosition();var a=net.newAccumulator();a.rebuild(parent);
+        for(int ply=0;ply<160;ply++) {
+            long[] moves=new long[256];int count=generate(parent,moves);if(count==0)break;
+            long[] selected=null;ConventionalAccumulator next=null;
+            for(int sibling=0;sibling<Math.min(3,count);sibling++) {
+                long[] child=make(parent,moves[rng.nextInt(count)]);var b=net.newAccumulator();b.update(parent,child,a);
+                compare(net,child,b);compare(net,parent,a);selected=child;next=b;
+            }
+            parent=selected;a=next;
+        }
+    }
 
     @Test void rejectsTruncationTrailingBytesBadHashAndEverySchemaField() throws Exception {
         byte[] file = fixture(false);
@@ -174,9 +240,18 @@ class ConventionalNetworkTest {
     }
 
     @Test void completeQsearchAndTwoPrivateWorkersMatchFullRebuildSearch() throws Exception {
-        var net=network();
+        checkSearch(network());
+    }
+    @Test void eightHeadSearchAndHostileWeightsStayExact() throws Exception {
+        checkSearch(ConventionalNetwork.read(new ByteArrayInputStream(fixture(false,8))));
+        var net=ConventionalNetwork.read(new ByteArrayInputStream(fixture(true,8)));
+        var acc=net.newAccumulator();var board=Board.startingPosition();acc.rebuild(board);
+        assertEquals(32511,acc.evaluate(board));assertEquals(32511,net.fullRebuild(board));
+    }
+    private static void checkSearch(ConventionalNetwork net) {
         for(String fen:new String[]{"4k3/8/8/3n4/4P3/8/8/4K3 w - - 0 1",
                 "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+                "4k2r/8/8/3pP3/8/8/8/R3K3 w - d6 0 1",
                 "7k/P7/8/8/8/8/8/7K w - - 0 1"}) {
             var board=Board.fromFen(fen);
             var request=new com.ohinteractive.seedv6.search.common.SearchRequest(board,
