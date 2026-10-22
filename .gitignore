@@ -22,6 +22,11 @@
 /build-assets/production/*
 !/build-assets/production/bre-pair2-g32.brn-pair2
 !/build-assets/production/manifest.json
+# Frozen runtime export for the explicit NNUE UCI candidate, not training output.
+!/build-assets/nnue-candidate/
+/build-assets/nnue-candidate/*
+!/build-assets/nnue-candidate/conventional-cp64.cnnue
+!/build-assets/nnue-candidate/manifest.json
 
 # Local archives and historical snapshots
 /archive/

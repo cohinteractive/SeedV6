@@ -10,4 +10,6 @@ public interface UciConfiguration {
     default String name() { return "SeedV6"; }
     default boolean standalone() { return false; }
     default boolean acceptsWorkers(int workers) { return true; }
+    default int maximumWorkers() { return 16; }
+    default boolean announcesResourceChanges() { return true; }
 }

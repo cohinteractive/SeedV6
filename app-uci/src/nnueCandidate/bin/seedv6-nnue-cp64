@@ -1,0 +1,21 @@
+#!/bin/sh
+# Dedicated portable UCI candidate. Keep bin/ and lib/ together when moving it.
+set -eu
+APP_HOME=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd -P)
+if [ -x "$APP_HOME/runtime/bin/java" ]; then
+    JAVA="$APP_HOME/runtime/bin/java"
+elif [ -n "${JAVA_HOME:-}" ]; then
+    JAVA="$JAVA_HOME/bin/java"
+elif [ "$(uname -s)" = Darwin ]; then
+    JAVA="$(/usr/libexec/java_home -v 21)/bin/java"
+else
+    JAVA=java
+fi
+MODULES=$("$JAVA" --list-modules) || { echo "SeedV6 requires Java 21; set JAVA_HOME to an installed JDK 21." >&2; exit 1; }
+VECTOR=
+case "$MODULES" in *jdk.incubator.vector@*) VECTOR=--add-modules=jdk.incubator.vector ;; esac
+# Like Gradle's portable start scripts, translate paths for a Windows JVM under Git Bash.
+case "$(uname -s)" in CYGWIN*|MINGW*|MSYS*) APP_HOME=$(cygpath --mixed "$APP_HOME") ;; esac
+# VECTOR is either empty or exactly the fixed module argument above.
+exec "$JAVA" $VECTOR -XX:ActiveProcessorCount=2 -Xmx768m -Djava.awt.headless=true \
+    -cp "$APP_HOME/lib/*" com.ohinteractive.seedv6.uci.NnueCandidateUciMain "$@"

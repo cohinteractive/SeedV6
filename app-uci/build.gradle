@@ -61,3 +61,23 @@ tasks.withType(Test).configureEach {
     systemProperty 'java.awt.headless', 'true'
     maxHeapSize = '768m'
 }
+
+// An explicit release candidate, independent of both standard Gen32 and construction-v1.
+tasks.named('processResources') {
+    from(rootProject.file('build-assets/nnue-candidate/conventional-cp64.cnnue')) { into 'models' }
+}
+distributions {
+    nnueCandidate {
+        distributionBaseName = 'seedv6-nnue-cp64-e008-rc1'
+        contents {
+            into('lib') { from tasks.named('jar'); from configurations.runtimeClasspath }
+            into('bin') { from 'src/nnueCandidate/bin'; filePermissions { unix('rwxr-xr-x') } }
+            from(rootProject.file('docs/nnue-botli-candidate.md')) { rename { 'README.md' } }
+            from(rootProject.file('build-assets/nnue-candidate/manifest.json')) { rename { 'network-manifest.json' } }
+            into('validation') { from rootProject.file('tools/verify_nnue_candidate.py') }
+        }
+    }
+}
+tasks.withType(Test).configureEach {
+    if (project.hasProperty('conventionalVectorTests')) jvmArgs '--add-modules=jdk.incubator.vector'
+}

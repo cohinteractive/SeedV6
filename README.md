@@ -26,6 +26,12 @@ explicit `seedv6-uci --nnue <network.cnnue>` selection. Gen32 remains the defaul
 and comparison baseline. See its [contract](docs/research/conventional-nnue-cglhw/CONTRACT.md)
 and [runbook](docs/research/conventional-nnue-cglhw/RUNBOOK.md) for evidence and resume.
 
+For the dedicated **checkpoint-64 NNUE / E008 BotLi release candidate**, use the
+[candidate and native-Mac handoff](docs/nnue-botli-candidate.md). Its separate
+`seedv6-nnue-cp64` executable embeds the frozen network and qualified one-worker
+selective search; no evaluator flags are needed. Native Mac acceptance and live
+activation remain explicit owner gates, and Gen32 stays the production default.
+
 For explicit **construction-v1** experimental gameplay in macOS BotLi or Windows
 Play/Arena, use the [construction-v1 activation guide](docs/construction-v1-gameplay.md).
 It selects the full flattened Search with the verified Pair-2 g32 model and

@@ -46,7 +46,7 @@ public final class UciEngine implements AutoCloseable {
             if (tokens.length == 1 && tokens[0].equals("uci")) {
                 uciOutput.line("id name " + configuration.name());
                 uciOutput.line("id author Charles Clark");
-                uciOutput.line("option name Threads type spin default 1 min 1 max 16");
+                uciOutput.line("option name Threads type spin default 1 min 1 max " + configuration.maximumWorkers());
                 if (configuration.standalone()) {
                     uciOutput.line("option name Hash type spin default 64 min 1 max 1024");
                     uciOutput.line("option name Clear Hash type button");
@@ -150,8 +150,10 @@ public final class UciEngine implements AutoCloseable {
         else if (configuration.standalone() && tokens[2].equalsIgnoreCase("Hash")) hash = Integer.parseInt(tokens[4]);
         else return;
         if (workers < ParallelSearch.MIN_WORKERS || workers > ParallelSearch.MAX_WORKERS
+                || workers > configuration.maximumWorkers()
                 || !configuration.acceptsWorkers(workers) || hash < 1 || hash > 1024)
-            throw new IllegalArgumentException("Unsupported Threads/Hash setting (Threads 1..16, Hash 1..1024 MiB)");
+            throw new IllegalArgumentException("Unsupported Threads/Hash setting (Threads 1.."
+                    + configuration.maximumWorkers() + ", Hash 1..1024 MiB)");
         if (workers == rootWorkers && hash == hashMiB) return;
         final SearchLifecycleService replacement;
         try {
@@ -168,7 +170,7 @@ public final class UciEngine implements AutoCloseable {
         rootWorkers = workers;
         hashMiB = hash;
         searches.setBookEnabled(ownBook);
-        identify();
+        if (configuration.announcesResourceChanges()) identify();
     }
 
     private void publishCompleted(Publication publication) {

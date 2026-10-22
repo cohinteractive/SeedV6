@@ -10,4 +10,6 @@
 # Binary files should be left untouched
 *.jar           binary
 /build-assets/production/bre-pair2-g32.brn-pair2 binary
+/build-assets/nnue-candidate/conventional-cp64.cnnue binary
+/app-uci/src/nnueCandidate/bin/seedv6-nnue-cp64 text eol=lf
 

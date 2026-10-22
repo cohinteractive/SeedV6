@@ -1,0 +1,28 @@
+{
+  "candidate": "nnue-cp64-e008-rc1",
+  "checkpoint": 64,
+  "schema": "S6CNU002",
+  "output_heads": 8,
+  "input_king_buckets": 10,
+  "hidden_per_perspective": 256,
+  "activation": "SCReLU",
+  "quantization": {
+    "QA": 255,
+    "QB": 64,
+    "scale": 400
+  },
+  "bytes": 3940952,
+  "file_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "payload_sha256": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+  "source": "docs/research/conventional-nnue-cglhw/raw/e007-evaluation64/network.cnnue",
+  "qualification_handoff": "docs/research/conventional-nnue-cglhw/CANDIDATE-HANDOFF.md",
+  "qualification_commit": "859a619",
+  "frozen_runtime_build": 64,
+  "frozen_runtime_source": "6213630",
+  "search": "E008_QXRAY_LMR_WINDOW_EFFORT_HINTS",
+  "workers": 1,
+  "status": "dedicated release candidate; no global production promotion",
+  "fixture_source": "docs/research/conventional-nnue-cglhw/raw/e007-evaluation64/python.jsonl",
+  "fixture_source_sha256": "d0164f670a7064554909d9ba79001fc35b2328db5e18ebfd6f5d3004715617b6",
+  "fixture_positions": 259
+}
