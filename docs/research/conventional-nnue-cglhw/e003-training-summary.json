@@ -1,0 +1,35 @@
+{
+  "segments": 64,
+  "completed_superbatches": [
+    17,
+    80
+  ],
+  "sample_exposures": 67108864,
+  "total_segment_wall_seconds": 170.12643359999493,
+  "min_segment_seconds": 2.2863857000047574,
+  "max_segment_seconds": 3.421083599998383,
+  "final_checkpoint": {
+    "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e003-training\\segments\\000080-d19a96b4e37a\\run\\seed-cnnue-v1-80",
+    "completed_superbatch": 80,
+    "next_superbatch": 81,
+    "receipt_sha256": "cc4876254fda3cba2359bf28d79e346803e7b6782adff3d20dfbadbc14fc9cd8",
+    "config_sha256": "5656f71b098fed099b3ec14ca3948b53196b658dfe1c9c87bb1463961b462210",
+    "verified_at": "2026-10-22T08:37:15+00:00",
+    "process_exit_code": 0,
+    "wall_seconds": 2.893357200002356
+  },
+  "raw_path": "docs\\research\\conventional-nnue-cglhw\\raw\\e003-training",
+  "owner_normal_restored": "2026-10-22T08:34:40+00:00",
+  "resumed_at_superbatch": 32,
+  "completed_segments_repeated": false,
+  "segment32_initial_optimizer_exactly_matches_checkpoint31": {
+    "weights.bin": "38c4d0a62395edcc43751c6115870a74cfb48ec39a12ba5b3717a7aaf9a81c19",
+    "momentum.bin": "781a9e781494fa90fb325451e0d6ea487a07816766e0d9eb15431ddfc79f0589",
+    "velocity.bin": "4b7a734cfcabb94668a1fac9b00b956b7d968aa7740057f8f9cce6f6c6d05303"
+  },
+  "training_logs": [
+    "build/conventional-nnue/e003-training.log",
+    "build/conventional-nnue/e003-training-resume-1.log"
+  ],
+  "final_reported_training_loss": 0.002747
+}

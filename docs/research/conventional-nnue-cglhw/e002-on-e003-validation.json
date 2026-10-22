@@ -1,0 +1,8 @@
+{
+  "payload_sha256": "7514a9d704f671072f5d234f7bd23042c0ba16cb4746bf5a60dd3853508910dc",
+  "cp_mae": 141.72532761689047,
+  "zero_score_mse": 0.02163001012502487,
+  "sigmoid_mse": 0.013028660978158165,
+  "positions": 420308,
+  "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e003-evaluation\\e002-on-expanded-validation.json"
+}

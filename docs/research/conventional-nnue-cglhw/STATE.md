@@ -1,6 +1,6 @@
 # Conventional NNUE state
 
-22 October 2026. **COMPUTE HOLD requested by owner and completed at 07:00:54 UTC.
+22 October 2026. **NORMAL explicitly restored by owner at 21:34 NZDT (08:34 UTC).
 A operational; B technically available as E002 opt-in with negative strength limits;
 competitive C open. No production promotion.**
 Read CONTRACT.md, COMPUTE-CONTROL.md, E002.md and the current E003.md. This
@@ -16,8 +16,8 @@ Control implementation and targeted checks are complete: see CONTROL-VALIDATION.
 and compact control-*.json evidence. Twelve Windows control tests plus real GPU,
 dataset and UCI match hold/resume passed. Graceful GPU hold measured 1.627 seconds;
 emergency 0.166 seconds, no remaining owned process. The later actual owner hold
-also stopped safely at E003 checkpoint31. Explicit owner release is required before
-any further expensive operation; no action is needed to remain on hold.
+also stopped safely at E003 checkpoint31. The owner subsequently released the hold
+with NORMAL; this historical observation does not override future permission state.
 
 ## Dependency milestones
 
@@ -85,21 +85,23 @@ target conversion pass. Reuse raw/e003-data; do not repeat completed extraction.
 The narrowly declared data-fork guard is built/tested. Segment17 initializer bytes
 exactly match E002 checkpoint16 weights, momentum and velocity. Recipe stays fixed.
 
-E003 completed segments17..31 (15,728,640 additional exposures) before the actual
-owner COMPUTE HOLD. Checkpoint31 verifies; its optimizer, immutable plan, trainer
-hash and progress are preserved. Latest path:
-`raw/e003-training/segments/000031-33d794da5eeb/run/seed-cnnue-v1-31`.
-Owned job/process count is zero; trainer/controller PIDs and trainer CUDA PID were
-verified absent. See e003-hold-20261022.json and E003.md. No emergency stop was needed.
-Current permission persists in Git metadata; this historical record cannot release it.
+E003 is complete after explicit NORMAL release and verified resume32 from31.
+All64 new segments17..80 completed (67,108,864 exposures); no completed work repeated.
+Final checkpoint: `raw/e003-training/segments/000080-d19a96b4e37a/run/seed-cnnue-v1-80`.
+Read E003.md and e003-*.json. Export/parity and actual one-/two-worker UCI pass.
+Expanded-cohort MSE.007528 versus E002.013029, but common E002 cohort regresses
+.006115 ->.006539. Fixed screen1W/4D/11L, no caps; no competitive gain/promotion.
+Frozen E003 file is `raw/e003-evaluation/network.cnnue`; E002 remains the existing
+stable opt-in handoff with negative strength limits. All historical evidence retained.
 
-After explicit NORMAL authorization, inspect status and rerun the exact
-`nnue-control.cmd train docs/research/conventional-nnue-cglhw/e003-training-config.json`
-with the local CUDA environment from E003.md. It verifies/skips17..31 and resumes32;
-fixed endpoint80 remains unchanged. Do not rebuild/change the pinned trainer or
-immutable plan casually. After80: parity, common-cohort validation, UCI and the
-predeclared development screen. These checks have not yet run for E003. No useful
-independent lightweight work remains in this unit; end execution while held.
+Next admissible unit: exact Java output-head optimization with overflow proof and
+long fallback; independent full-rebuild long oracle unchanged. E003's measured
+incremental+head cost1.18..1.21us and safe head bound612,470,475 justify this bounded
+implementation/measurement. Keep weights/schema/search policy fixed, compare exact
+scores and before/after cost, retain only a supported improvement. Do not queue more
+data growth or hyperparameter runs from these negative development screens.
+Permission remains operational state; current observed NORMAL was explicitly granted
+by the owner. Recheck before all expensive work and keep progress reports active.
 
 Raw tools/output: `build/conventional-nnue/`; upstream source clone:
 `build/conventional-nnue/upstream/bullet` at

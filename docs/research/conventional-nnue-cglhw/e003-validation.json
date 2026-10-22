@@ -1,0 +1,8 @@
+{
+  "positions": 420308,
+  "sigmoid_mse": 0.007527546342096702,
+  "zero_score_mse": 0.02163001012502487,
+  "cp_mae": 108.781909932716,
+  "payload_sha256": "053f8d78d5f7be8f75b228cb079eee76d3b0847972870f5d5a62995ce988f259",
+  "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e003-evaluation\\validation.json"
+}
