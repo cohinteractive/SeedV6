@@ -102,6 +102,15 @@ Unlabelled data changes and optimizer/schedule changes are rejected. Subsequent
 segments require full equality with the new immutable recipe. This is separate
 from holding/resuming an unchanged experiment, which never needs a data fork.
 
+E005 adds optional `lr_drop_every`/`lr_gamma` to that immutable recipe. Omitted
+fields preserve the old constant learning rate. Decay uses the global superbatch
+index and does not restart at each process; checkpoint receipts record the effective
+rate. Tested restart across four decay steps preserved weights/momentum/velocity.
+Original trainer binaries are retained by SHA256 under the ignored
+`build/conventional-nnue/frozen-trainers`; use `train --trainer PATH CONFIG` when
+resuming a plan whose recorded binary differs from the current build. Do not replace
+the plan's binary identity silently. See E005.md for the measured larger-batch hold.
+
 Superbatches are capped at 1024 batches. Holds are polled every 0.2 seconds and
 default to a 30-second grace interval. If the current process has not finished,
 the supervisor terminates its job and retains the last verified checkpoint. This
@@ -112,6 +121,10 @@ Dataset extraction checks every 1000 source lines and writes a marked partial
 manifest on hold. It cannot resume the compressed stream: reuse completed datasets,
 or preserve a partial extraction and restart to a new path when necessary.
 Conversion checks every 4096 records; partial binaries are regenerated to new paths.
+BT4 prepared-chunk extraction checks each chunk/every4096 records and every65536
+shuffle swaps. A hold leaves partial outputs without a completed manifest; they
+are evidence, not a usable dataset. Reuse verified finished datasets rather than
+extracting them again. The supervisor deadline still bounds uncooperative cleanup.
 Matches check between moves, preserve interrupted-game evidence and quit engines.
 `paired_match.py --resume` verifies its frozen protocol, skips completed games and
 restarts only the unfinished game from its opening. Torn game records require

@@ -1,0 +1,18 @@
+{
+  "data": "docs\\research\\conventional-nnue-cglhw\\raw\\e006-data\\train.data",
+  "output": "docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-128",
+  "probes": "docs\\research\\conventional-nnue-cglhw\\raw\\e006-data\\probes.fens",
+  "seed": 20261022,
+  "batch_size": 4096,
+  "batches_per_superbatch": 1024,
+  "start_superbatch": 65,
+  "end_superbatch": 128,
+  "learning_rate": 0.001,
+  "wdl": 0.0,
+  "resume": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000064-d4b915cecbe9\\run\\seed-cnnue-v1-64",
+  "data_sha256": "b9306efe0675a0e0c0c3bea9d64e4bccda856f35ebafe79ab5a87472ca5b9e2c",
+  "probes_sha256": "443f9ab3ac0dce46025a4e4dbd986de8fd5c92ae06c36a6ef1c6a923c8ae0ce7",
+  "save_rate": 1,
+  "lr_drop_every": 128,
+  "lr_gamma": 0.5
+}

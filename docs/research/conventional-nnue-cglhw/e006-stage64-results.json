@@ -1,0 +1,892 @@
+{
+  "rows": [
+    {
+      "step": 17,
+      "seconds": 4.303965300001437,
+      "loss": 0.016981,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000017-0da39405fc9a\\run\\seed-cnnue-v1-17",
+        "completed_superbatch": 17,
+        "next_superbatch": 18,
+        "receipt_sha256": "c0e602d986fcede74ccfd6b9e7acb50a5eefe2b13ae567407ec31aed49b4fa56",
+        "config_sha256": "40892750d84514a4b5f88ed1728c9d5c5bb8ba8dff57e092723b8809fe4df89f",
+        "verified_at": "2026-10-22T10:28:37+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.303965300001437
+      }
+    },
+    {
+      "step": 18,
+      "seconds": 4.107002800003102,
+      "loss": 0.015951,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000018-0664430cf8a2\\run\\seed-cnnue-v1-18",
+        "completed_superbatch": 18,
+        "next_superbatch": 19,
+        "receipt_sha256": "f1fee169c6c99a25c807fdd9b8ae7bf7f1bd0d17779bb82d5f7730874447536e",
+        "config_sha256": "742762a4e0ca062e091769a4c2678bdc1b14c72453f17c232d3d9e2ba8115ef1",
+        "verified_at": "2026-10-22T10:28:41+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.107002800003102
+      }
+    },
+    {
+      "step": 19,
+      "seconds": 3.89935360000527,
+      "loss": 0.015526,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000019-5e5046d6351d\\run\\seed-cnnue-v1-19",
+        "completed_superbatch": 19,
+        "next_superbatch": 20,
+        "receipt_sha256": "eed0f3bc07cdd5f6e2401e568291791f0fad14dfdbe93694664659b8353303bd",
+        "config_sha256": "5702459c98d845293308711822a5fd44cb28ff9cdd9550c9e0aca67f8cd38175",
+        "verified_at": "2026-10-22T10:28:45+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.89935360000527
+      }
+    },
+    {
+      "step": 20,
+      "seconds": 3.909950499997649,
+      "loss": 0.015223,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000020-2545ee752085\\run\\seed-cnnue-v1-20",
+        "completed_superbatch": 20,
+        "next_superbatch": 21,
+        "receipt_sha256": "904d9031eefc9fb5de64c7dc7492dca3edd76525143b475d3eb9a957b92d7d17",
+        "config_sha256": "1f984c29bd8418428b124cd0b1964d3ee31a7acaacdbd5b1aff4c2657a86c762",
+        "verified_at": "2026-10-22T10:28:49+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.909950499997649
+      }
+    },
+    {
+      "step": 21,
+      "seconds": 4.117936999995436,
+      "loss": 0.015018,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000021-5742a5d9bbf6\\run\\seed-cnnue-v1-21",
+        "completed_superbatch": 21,
+        "next_superbatch": 22,
+        "receipt_sha256": "46f4505f203ca7c78098e7fd46bbf763f4c8f02f97d65c4ba08fd7f9e43b55d2",
+        "config_sha256": "dffd5aa9085add4fcac5758dd7d581604efa4821534711d944309b523313d966",
+        "verified_at": "2026-10-22T10:28:53+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.117936999995436
+      }
+    },
+    {
+      "step": 22,
+      "seconds": 4.106828700001643,
+      "loss": 0.014882,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000022-45fb05bbbd06\\run\\seed-cnnue-v1-22",
+        "completed_superbatch": 22,
+        "next_superbatch": 23,
+        "receipt_sha256": "c01ba51940095b158aa8ef42e8506acefea07c224f39a9cdfc4de5aa1bb7727d",
+        "config_sha256": "58d124e779c45d36eb5148349da461d47e261137f2db586fe4f99e5c9e596191",
+        "verified_at": "2026-10-22T10:28:57+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.106828700001643
+      }
+    },
+    {
+      "step": 23,
+      "seconds": 4.107009200000903,
+      "loss": 0.014726,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000023-5bb204ebacd7\\run\\seed-cnnue-v1-23",
+        "completed_superbatch": 23,
+        "next_superbatch": 24,
+        "receipt_sha256": "7d8f226dee60a8945ac4e729884289391ff5bda7fa5d97cf6f1507d90e040d02",
+        "config_sha256": "b2303c9b1f9f4d7d9a74371e273338fa3420cdbbc47907c93616582ec8c3a6a0",
+        "verified_at": "2026-10-22T10:29:01+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.107009200000903
+      }
+    },
+    {
+      "step": 24,
+      "seconds": 4.103100199994515,
+      "loss": 0.014607,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000024-1a36e4f07ef7\\run\\seed-cnnue-v1-24",
+        "completed_superbatch": 24,
+        "next_superbatch": 25,
+        "receipt_sha256": "7b9956db0657a07e6b239dffecb58c15436e85fd51044cbab60104dfe805c003",
+        "config_sha256": "891f64db8abc7002c0a49411b7f6a7905f2e6ebf7332229b3672e64961c114d2",
+        "verified_at": "2026-10-22T10:29:05+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.103100199994515
+      }
+    },
+    {
+      "step": 25,
+      "seconds": 3.9237298000007286,
+      "loss": 0.014067,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000025-2fe743ed1465\\run\\seed-cnnue-v1-25",
+        "completed_superbatch": 25,
+        "next_superbatch": 26,
+        "receipt_sha256": "3ca92b301282f672981dc56304bf4e5ad70b0a1cbf028525d2d40f3a177d66ef",
+        "config_sha256": "884193ea8835c4d98b4d463a8029ff47036c371a61d81a42b59d2e8c5bc719da",
+        "verified_at": "2026-10-22T10:29:09+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.9237298000007286
+      }
+    },
+    {
+      "step": 26,
+      "seconds": 4.109581899996556,
+      "loss": 0.014002,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000026-88de2554c43e\\run\\seed-cnnue-v1-26",
+        "completed_superbatch": 26,
+        "next_superbatch": 27,
+        "receipt_sha256": "c0715247700d362a996aa3c286c21d83c75399414a72abc8ea7b1ff2b7fd1bd1",
+        "config_sha256": "8ba5286c68e159c0cdf482f2b7e657805e41d200d4987f38c6572f496287a8c8",
+        "verified_at": "2026-10-22T10:29:13+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.109581899996556
+      }
+    },
+    {
+      "step": 27,
+      "seconds": 4.12731850000273,
+      "loss": 0.013933,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000027-fc2b4c8dc4c3\\run\\seed-cnnue-v1-27",
+        "completed_superbatch": 27,
+        "next_superbatch": 28,
+        "receipt_sha256": "57e99764e599e88855eb7575569e83684ab32a2ba1866d4384a08214bf873eb6",
+        "config_sha256": "c9f646a1cb8e676c0b4c9347f74b16b90fe0f1c0ed41527f70d86e1e55f65d5c",
+        "verified_at": "2026-10-22T10:29:17+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.12731850000273
+      }
+    },
+    {
+      "step": 28,
+      "seconds": 4.127416200004518,
+      "loss": 0.013834,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000028-361fb489e506\\run\\seed-cnnue-v1-28",
+        "completed_superbatch": 28,
+        "next_superbatch": 29,
+        "receipt_sha256": "745a785fb9b98b0248e8047fa5787b7840d3540ed38622e9a71321de84bd5abc",
+        "config_sha256": "a6cf6efb63192307ac9539c8c074d1a2c1aeb813536179cc45680ce3324b3c0d",
+        "verified_at": "2026-10-22T10:29:22+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.127416200004518
+      }
+    },
+    {
+      "step": 29,
+      "seconds": 3.918573800001468,
+      "loss": 0.013781,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000029-39a94195cac9\\run\\seed-cnnue-v1-29",
+        "completed_superbatch": 29,
+        "next_superbatch": 30,
+        "receipt_sha256": "fca56ff4575f3deb0137f4837df7850cde5fb5c3ba108b54864acb27a1a4658a",
+        "config_sha256": "1e2b0ad14b0998153a1031cfd4ce3edad75ede41d759a262c84c982b8123c066",
+        "verified_at": "2026-10-22T10:29:26+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.918573800001468
+      }
+    },
+    {
+      "step": 30,
+      "seconds": 3.96923550000065,
+      "loss": 0.013759,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000030-40e735ee1b1f\\run\\seed-cnnue-v1-30",
+        "completed_superbatch": 30,
+        "next_superbatch": 31,
+        "receipt_sha256": "4fe345d4a958937f2420901c658355d800fb739e5451917d4af483bdba0ceba9",
+        "config_sha256": "7f903ad518bb1409d85e0aa1723d1e00bd590538e45676bec548cc73c2af55f4",
+        "verified_at": "2026-10-22T10:29:30+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.96923550000065
+      }
+    },
+    {
+      "step": 31,
+      "seconds": 3.908493399998406,
+      "loss": 0.013693,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000031-e676eccfbaa2\\run\\seed-cnnue-v1-31",
+        "completed_superbatch": 31,
+        "next_superbatch": 32,
+        "receipt_sha256": "ebe83b2a152a550225188793fc864569190575b68791009f2a2806a36b49016b",
+        "config_sha256": "5158611aa29dc097f8dd0a02ee82ef83fd66b1344a88b78873c495f58776804e",
+        "verified_at": "2026-10-22T10:29:34+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.908493399998406
+      }
+    },
+    {
+      "step": 32,
+      "seconds": 4.1754994000002625,
+      "loss": 0.013647,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000032-45b3a1ee2a13\\run\\seed-cnnue-v1-32",
+        "completed_superbatch": 32,
+        "next_superbatch": 33,
+        "receipt_sha256": "cf99915cc14525111f939f771cd52fe6143fc844ac89c593ee395ccb86d7eaea",
+        "config_sha256": "817c39cf70cb8c1d66990114c6725c1bce5b8549a24390f440733ab536a8b43b",
+        "verified_at": "2026-10-22T10:29:38+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.1754994000002625
+      }
+    },
+    {
+      "step": 33,
+      "seconds": 4.0956437999993796,
+      "loss": 0.013383,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000033-29261b345b4c\\run\\seed-cnnue-v1-33",
+        "completed_superbatch": 33,
+        "next_superbatch": 34,
+        "receipt_sha256": "55b226164535bed28dc16a39641deb3d50a918c8637846bc86093a2708af4f9a",
+        "config_sha256": "c7b936b614a1057ff79e084896155b9d490d656d50782bee2a654aa06d4de9ae",
+        "verified_at": "2026-10-22T10:29:42+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.0956437999993796
+      }
+    },
+    {
+      "step": 34,
+      "seconds": 3.8994893999988562,
+      "loss": 0.013339,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000034-7e20276ad725\\run\\seed-cnnue-v1-34",
+        "completed_superbatch": 34,
+        "next_superbatch": 35,
+        "receipt_sha256": "4b8073e93add841c99106c3f9861909fe7741e9bce60bb9bb068a66c2732a360",
+        "config_sha256": "23115cc89b3e5ba82837b09c3af0d3750a23bef329ded1b2000bd34072a5b652",
+        "verified_at": "2026-10-22T10:29:46+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.8994893999988562
+      }
+    },
+    {
+      "step": 35,
+      "seconds": 3.8962807999996585,
+      "loss": 0.013308,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000035-83a7125a08be\\run\\seed-cnnue-v1-35",
+        "completed_superbatch": 35,
+        "next_superbatch": 36,
+        "receipt_sha256": "6fea0ff01b27c18d1438a2bbb4531f1d56f23cad22df4274618f6ca4f3a53fb7",
+        "config_sha256": "1287e1745d9f5ae5c3083ab04e4d5e0cf1318e50dab3be4d82bd2452bb772dae",
+        "verified_at": "2026-10-22T10:29:50+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.8962807999996585
+      }
+    },
+    {
+      "step": 36,
+      "seconds": 3.896477499998582,
+      "loss": 0.013245,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000036-c0f4164a4660\\run\\seed-cnnue-v1-36",
+        "completed_superbatch": 36,
+        "next_superbatch": 37,
+        "receipt_sha256": "fb552e9bef109f01f6cc1786d431133e13ace3f8e9063360c1e75e62a8a34abb",
+        "config_sha256": "5387c2d104882b1fb537c76aec6b90fac51c88d323be2678bb5cb6655e00b85e",
+        "verified_at": "2026-10-22T10:29:54+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.896477499998582
+      }
+    },
+    {
+      "step": 37,
+      "seconds": 4.093993900001806,
+      "loss": 0.013225,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000037-861b2857e17d\\run\\seed-cnnue-v1-37",
+        "completed_superbatch": 37,
+        "next_superbatch": 38,
+        "receipt_sha256": "354ef345a4619df5a197bdc58cb51a739984e05de0658daaedecfe3cb9b2b156",
+        "config_sha256": "ec192ae159045a258deb24be37e8757cad99abb88c1f470636058301ffbc0b0d",
+        "verified_at": "2026-10-22T10:29:58+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.093993900001806
+      }
+    },
+    {
+      "step": 38,
+      "seconds": 4.09257730000536,
+      "loss": 0.013229,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000038-41e57b2b4cca\\run\\seed-cnnue-v1-38",
+        "completed_superbatch": 38,
+        "next_superbatch": 39,
+        "receipt_sha256": "abc43527448791d6d8b12c191bd2d094b88f37376bf24420143b7f34252e646f",
+        "config_sha256": "1ec78232d736a7577352ddc9cc1b0f7c0e5811d1292bb32c0dc16d3e82c3525a",
+        "verified_at": "2026-10-22T10:30:02+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.09257730000536
+      }
+    },
+    {
+      "step": 39,
+      "seconds": 4.09338790000038,
+      "loss": 0.013182,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000039-1b7fb80449ca\\run\\seed-cnnue-v1-39",
+        "completed_superbatch": 39,
+        "next_superbatch": 40,
+        "receipt_sha256": "0142b1473d36efd68453fac8604a89740b7da7537607cff368e1df2ba3a08c89",
+        "config_sha256": "95ad4377ff6298aa7b281914299d590af12dfe237e7270785dc618a99d219087",
+        "verified_at": "2026-10-22T10:30:06+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.09338790000038
+      }
+    },
+    {
+      "step": 40,
+      "seconds": 4.102885600004811,
+      "loss": 0.01316,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000040-ae35c3732606\\run\\seed-cnnue-v1-40",
+        "completed_superbatch": 40,
+        "next_superbatch": 41,
+        "receipt_sha256": "17affd7ca36f948ad5d31fbe11ec89fd1ebafd8b54bedbb65cf3c2312d0efa61",
+        "config_sha256": "e6449bfc06414a04566f503314bcc861adc0993ff7271f98513adb25161ac399",
+        "verified_at": "2026-10-22T10:30:10+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.102885600004811
+      }
+    },
+    {
+      "step": 41,
+      "seconds": 3.8931933999992907,
+      "loss": 0.012995,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000041-57e77d33008e\\run\\seed-cnnue-v1-41",
+        "completed_superbatch": 41,
+        "next_superbatch": 42,
+        "receipt_sha256": "6a7f1104276b8bd7ae93bebb81d7e91b7d00c745b14a7aad8233228ddea3cc74",
+        "config_sha256": "d34356cabe9b2d8c0d491aa0a45818542356040578084004c2412fa891b5edcf",
+        "verified_at": "2026-10-22T10:30:14+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.8931933999992907
+      }
+    },
+    {
+      "step": 42,
+      "seconds": 4.093021699998644,
+      "loss": 0.012961,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000042-82b7605a0a8f\\run\\seed-cnnue-v1-42",
+        "completed_superbatch": 42,
+        "next_superbatch": 43,
+        "receipt_sha256": "e60451956466f114af7b9aa6d9d58f6fa0961d23e95f831cb32400058dac6228",
+        "config_sha256": "6439f8ec9f22455b3e777a64b99e074f46da84fac56d2d089474baafab10458b",
+        "verified_at": "2026-10-22T10:30:18+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.093021699998644
+      }
+    },
+    {
+      "step": 43,
+      "seconds": 4.093895100006193,
+      "loss": 0.012946,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000043-e2eacbff9329\\run\\seed-cnnue-v1-43",
+        "completed_superbatch": 43,
+        "next_superbatch": 44,
+        "receipt_sha256": "c67731800cd49509f61c8287117637c8a8812d279ecce565f3c47d9c9e747950",
+        "config_sha256": "7094f4a3ceaf2a11160b6ca81ed693f633e36edcae06bbd61626d6920be5e2a0",
+        "verified_at": "2026-10-22T10:30:22+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.093895100006193
+      }
+    },
+    {
+      "step": 44,
+      "seconds": 4.096506699999736,
+      "loss": 0.012901,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000044-37e6c66e4568\\run\\seed-cnnue-v1-44",
+        "completed_superbatch": 44,
+        "next_superbatch": 45,
+        "receipt_sha256": "a74a82bf7c3763c252226f2eefe6f1646fcfa556a7c7952580e7d6165c16ebba",
+        "config_sha256": "18597e4b24ebb1241011bd6610418e3b618745a8f195c0f3b03fc4842a421650",
+        "verified_at": "2026-10-22T10:30:26+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.096506699999736
+      }
+    },
+    {
+      "step": 45,
+      "seconds": 4.096130999998422,
+      "loss": 0.012887,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000045-133e0ec00b42\\run\\seed-cnnue-v1-45",
+        "completed_superbatch": 45,
+        "next_superbatch": 46,
+        "receipt_sha256": "d7c534112b9c29c60857d0c6923ea484a3ed14ffedd93bd38aea071f8c776d1c",
+        "config_sha256": "c4402a233b7f84c7edcf126a45cf1e4dea8aeb82ef1f50d593e335ad2e96fea5",
+        "verified_at": "2026-10-22T10:30:30+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.096130999998422
+      }
+    },
+    {
+      "step": 46,
+      "seconds": 4.092204700005823,
+      "loss": 0.012908,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000046-4c3bf9434511\\run\\seed-cnnue-v1-46",
+        "completed_superbatch": 46,
+        "next_superbatch": 47,
+        "receipt_sha256": "1957e10dd9a8a13999ceaae16e72813b8470727effdd932cd16c502d34c2fe3f",
+        "config_sha256": "c1e2f4aa0e43f69bcd84a6ffb139f41260eb0db79eacb1faef9a9d89238755d3",
+        "verified_at": "2026-10-22T10:30:35+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.092204700005823
+      }
+    },
+    {
+      "step": 47,
+      "seconds": 4.1006452000001445,
+      "loss": 0.012869,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000047-00180b4183a7\\run\\seed-cnnue-v1-47",
+        "completed_superbatch": 47,
+        "next_superbatch": 48,
+        "receipt_sha256": "3536fdd6ee2d43f4c6e18387f84ee86010501d7546379be4ff76debd71138653",
+        "config_sha256": "132872e7fbaf7c81ffd635866ccbc6a10c62a5b2deee8889be5eb630b86fb5dd",
+        "verified_at": "2026-10-22T10:30:39+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.1006452000001445
+      }
+    },
+    {
+      "step": 48,
+      "seconds": 4.09265779999987,
+      "loss": 0.012855,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000048-fdba3156b76c\\run\\seed-cnnue-v1-48",
+        "completed_superbatch": 48,
+        "next_superbatch": 49,
+        "receipt_sha256": "f20f59be067754c0dd1a3314d2b7eb00c90ddd9126bf14ded5442d867c0be438",
+        "config_sha256": "7354d1462d7fd9cca5fd25c3b9e62b2fa179915e93ff95fcaef8bc579aa71f80",
+        "verified_at": "2026-10-22T10:30:43+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.09265779999987
+      }
+    },
+    {
+      "step": 49,
+      "seconds": 4.1039787999980035,
+      "loss": 0.012739,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000049-098fdb7e0cfa\\run\\seed-cnnue-v1-49",
+        "completed_superbatch": 49,
+        "next_superbatch": 50,
+        "receipt_sha256": "a4b83380c646dc61108814cb6e63de523142559a5dcc74aa0ad145ac77635266",
+        "config_sha256": "f319edea46fdeab1ac126ec738fdbf3047546524802c08c78ce9e97254b98aa8",
+        "verified_at": "2026-10-22T10:30:47+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.1039787999980035
+      }
+    },
+    {
+      "step": 50,
+      "seconds": 3.895586500002537,
+      "loss": 0.012708,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000050-1765edb69dab\\run\\seed-cnnue-v1-50",
+        "completed_superbatch": 50,
+        "next_superbatch": 51,
+        "receipt_sha256": "ac8aad3caaee0994ad1244c7aeed6a76e9cfd0920eff411ace8c8d05d57806c0",
+        "config_sha256": "ba9b73a25f342274cf12550c974268915d23502f29fff852e4e725ad981ac6da",
+        "verified_at": "2026-10-22T10:30:51+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.895586500002537
+      }
+    },
+    {
+      "step": 51,
+      "seconds": 4.095016100000066,
+      "loss": 0.012704,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000051-cf13244494e0\\run\\seed-cnnue-v1-51",
+        "completed_superbatch": 51,
+        "next_superbatch": 52,
+        "receipt_sha256": "22d97a71492a25590c90ee19f3efe370c0ceb41968046add17a8f0416ed5f5ff",
+        "config_sha256": "e6ef303dcf3a1ae796b774f76c2f90279c72abc34afb6dea87337d301bb8471a",
+        "verified_at": "2026-10-22T10:30:55+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.095016100000066
+      }
+    },
+    {
+      "step": 52,
+      "seconds": 4.09673009999824,
+      "loss": 0.012665,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000052-244bca3f7951\\run\\seed-cnnue-v1-52",
+        "completed_superbatch": 52,
+        "next_superbatch": 53,
+        "receipt_sha256": "b5611c014282445ccb8de57e04724d0416afea11373a4f52578e70e179487a4a",
+        "config_sha256": "62275e65c3a7ce6dd260b00d4c3533ee1cc732bdc0a5e9774cf7e227d000e9f8",
+        "verified_at": "2026-10-22T10:30:59+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.09673009999824
+      }
+    },
+    {
+      "step": 53,
+      "seconds": 4.092554499999096,
+      "loss": 0.012654,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000053-52f9c7166e93\\run\\seed-cnnue-v1-53",
+        "completed_superbatch": 53,
+        "next_superbatch": 54,
+        "receipt_sha256": "af665899a054a8d07a43d80169b9730f28aaa911829128a68d1887e751815fe4",
+        "config_sha256": "39fe920ec73bc504d4f61703a6858bf3c7aaa2a001dfc6eab7168af998184128",
+        "verified_at": "2026-10-22T10:31:03+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.092554499999096
+      }
+    },
+    {
+      "step": 54,
+      "seconds": 4.097246299999824,
+      "loss": 0.012687,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000054-9c43567db676\\run\\seed-cnnue-v1-54",
+        "completed_superbatch": 54,
+        "next_superbatch": 55,
+        "receipt_sha256": "26de13eaebdf4246b110a701630e054b403e498eed64ea5170cfae7fbbbe9acc",
+        "config_sha256": "02d2d367fc42c5f127d166737287de116ba260a35b854c8f2bfb62657c867914",
+        "verified_at": "2026-10-22T10:31:07+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.097246299999824
+      }
+    },
+    {
+      "step": 55,
+      "seconds": 4.109178699996846,
+      "loss": 0.012648,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000055-800cf049d7e7\\run\\seed-cnnue-v1-55",
+        "completed_superbatch": 55,
+        "next_superbatch": 56,
+        "receipt_sha256": "79474f949077774b3b763c781a29ef185e10f151d76a1c2bae5d7ca5c48929d3",
+        "config_sha256": "d07c3d7c648f6fbf4e52a4c32af426a3c2cc276985afeac1d084c4fe4d1c1792",
+        "verified_at": "2026-10-22T10:31:11+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.109178699996846
+      }
+    },
+    {
+      "step": 56,
+      "seconds": 3.9028219999963767,
+      "loss": 0.012642,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000056-c07c2c8137da\\run\\seed-cnnue-v1-56",
+        "completed_superbatch": 56,
+        "next_superbatch": 57,
+        "receipt_sha256": "7b22fafc56101b43f91582f86ad75c7abe9f11f7b002cc59036cdb711eca2595",
+        "config_sha256": "cfc768ce8f3698385b300ce382c895003510f1bd7edbd9c331f2fd5e6f50df2d",
+        "verified_at": "2026-10-22T10:31:15+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.9028219999963767
+      }
+    },
+    {
+      "step": 57,
+      "seconds": 4.1109919999944395,
+      "loss": 0.012553,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000057-a121aa811d04\\run\\seed-cnnue-v1-57",
+        "completed_superbatch": 57,
+        "next_superbatch": 58,
+        "receipt_sha256": "846a4dc59e7934c41ff47c230fed4a0725dd4ec8d1c057e12e2c33fa69395832",
+        "config_sha256": "61bae5adb2d9ac50c2ee995dd2620756df6e3d553b9a57b2f69454512120035e",
+        "verified_at": "2026-10-22T10:31:19+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.1109919999944395
+      }
+    },
+    {
+      "step": 58,
+      "seconds": 4.1283193999988725,
+      "loss": 0.012523,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000058-35300a680034\\run\\seed-cnnue-v1-58",
+        "completed_superbatch": 58,
+        "next_superbatch": 59,
+        "receipt_sha256": "3b8ead8f78bf215e0775992b2e69e27248e2434fc31e6ca547f3906b7659275f",
+        "config_sha256": "939065f5f8bc32514f15ec1026ab14e5a370f6b27ccb0b7f35d791b06c0dfa6f",
+        "verified_at": "2026-10-22T10:31:24+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.1283193999988725
+      }
+    },
+    {
+      "step": 59,
+      "seconds": 4.115686900004221,
+      "loss": 0.012525,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000059-4ae80835fa47\\run\\seed-cnnue-v1-59",
+        "completed_superbatch": 59,
+        "next_superbatch": 60,
+        "receipt_sha256": "aaf8e274b02c08b11a2ce2367df3baab506108400676401baf6cf4e38cce1f6b",
+        "config_sha256": "f7da79fc098698b6510eb41e94a2a3ac76c81b4f5c045890c3af527c93aeae3a",
+        "verified_at": "2026-10-22T10:31:28+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.115686900004221
+      }
+    },
+    {
+      "step": 60,
+      "seconds": 3.9009394999957294,
+      "loss": 0.012492,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000060-0af7c289662e\\run\\seed-cnnue-v1-60",
+        "completed_superbatch": 60,
+        "next_superbatch": 61,
+        "receipt_sha256": "b6e184da3b0208362e7766c77fd02396180c58cbc2a2bb012770bc4b2bee0077",
+        "config_sha256": "0a85ec933a39daac25c1e80edbdd5ef780fd1e8aad2226c4aea4d65c86674b64",
+        "verified_at": "2026-10-22T10:31:32+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.9009394999957294
+      }
+    },
+    {
+      "step": 61,
+      "seconds": 4.111054199995124,
+      "loss": 0.012483,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000061-809e94741c5f\\run\\seed-cnnue-v1-61",
+        "completed_superbatch": 61,
+        "next_superbatch": 62,
+        "receipt_sha256": "39b8973d505783b2602fc3656c646776710f8c6a881a156380340f92871f3b62",
+        "config_sha256": "dda69e9472a7083b4c2384b4f347886e05a105ffefe474c493051ede8666de4c",
+        "verified_at": "2026-10-22T10:31:36+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.111054199995124
+      }
+    },
+    {
+      "step": 62,
+      "seconds": 4.113607600003888,
+      "loss": 0.012522,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000062-85f918e3eb23\\run\\seed-cnnue-v1-62",
+        "completed_superbatch": 62,
+        "next_superbatch": 63,
+        "receipt_sha256": "549d2f989c0bcf8d0c58bd138211c0aca220fc798875335c0a05955cd51b592e",
+        "config_sha256": "a84014d78926db7cb3369ca92eb016aedc175fee18ca30ff302b7651bda4ee9b",
+        "verified_at": "2026-10-22T10:31:40+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 4.113607600003888
+      }
+    },
+    {
+      "step": 63,
+      "seconds": 3.9133500999960233,
+      "loss": 0.012488,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000063-5e80f0229c1b\\run\\seed-cnnue-v1-63",
+        "completed_superbatch": 63,
+        "next_superbatch": 64,
+        "receipt_sha256": "0b01c44fa9e4091a05789b3c6e3ae1f675b5821a68e75b25360558172cbe9e68",
+        "config_sha256": "ad7e4437abd85a6b970ce4df0634c798fb5b79f2d5aa80a59e38c61d3d19a0a5",
+        "verified_at": "2026-10-22T10:31:44+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.9133500999960233
+      }
+    },
+    {
+      "step": 64,
+      "seconds": 3.917157199997746,
+      "loss": 0.012482,
+      "checkpoint": {
+        "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-training-64\\segments\\000064-d4b915cecbe9\\run\\seed-cnnue-v1-64",
+        "completed_superbatch": 64,
+        "next_superbatch": 65,
+        "receipt_sha256": "f727b2b0770dbf353833a8cad0646c637f1fa4ac2391f7b9a17bd890bce11a4e",
+        "config_sha256": "6a4a1c9c5e23812724f0685f9a256d6de2fe7bfaa29d7d411f887ee3d87742dd",
+        "verified_at": "2026-10-22T10:31:48+00:00",
+        "process_exit_code": 0,
+        "wall_seconds": 3.917157199997746
+      }
+    }
+  ],
+  "additional_exposures": 201326592,
+  "initial_optimizer_hash_matches": {
+    "weights.bin": true,
+    "momentum.bin": true,
+    "velocity.bin": true
+  },
+  "validation": {
+    "zero_score_mse": 0.0659978710509739,
+    "cp_mae": 375.8773937225342,
+    "payload_sha256": "960130eb80f0521181c7d1492ac70c6b966de9967f711a4ec1a3c6ae4cebb9d5",
+    "positions": 524288,
+    "sigmoid_mse": 0.016863991089775016
+  },
+  "parity": {
+    "status": "PASS",
+    "positions": 128,
+    "exact_features": "Python / Java / pinned Bullet",
+    "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+    "gpu_float_max_abs_raw_error": 9.6623380058114e-07,
+    "gpu_float_tolerance": 2e-05,
+    "quantization_max_abs_cp_error": 20.608966970721042,
+    "quantization_rms_cp_error": 6.038107746721615,
+    "limitation": "Quantization error is measured separately; no strength or calibration claim"
+  },
+  "uci": {
+    "status": "PASS",
+    "workers": 1,
+    "network": "docs\\research\\conventional-nnue-cglhw\\raw\\e006-evaluation64\\network.cnnue",
+    "identity": [
+      "id name SeedV6 conventional NNUE opt-in 0.0.0 (build 62)",
+      "id author Charles Clark",
+      "option name Threads type spin default 1 min 1 max 16",
+      "option name Hash type spin default 64 min 1 max 1024",
+      "option name Clear Hash type button",
+      "option name UseBook type check default false",
+      "option name OwnBook type check default false",
+      "info string evaluator=CONVENTIONAL_NNUE schema=S6CNU001 payload=960130eb80f0521181c7d1492ac70c6b966de9967f711a4ec1a3c6ae4cebb9d5 search=recursive-unpruned-qsearch workers=1 hashMiB=64 build=62 source=c204e4082f91 (uncommitted changes) ttMiB=64",
+      "uciok"
+    ],
+    "searches": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "bestmove": "e2e4",
+        "last_info": "info depth 5 score cp 118 nodes 42149 time 180 nps 233632 pv e2e4 e7e6 b1c3 d7d5 g1f3 d5e4 c3e4"
+      },
+      {
+        "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+        "bestmove": "e4d5",
+        "last_info": "info depth 4 score cp 221 nodes 55189 time 146 nps 375699 pv e4d5 f6d5 f3e5 c6e5 d4e5"
+      },
+      {
+        "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+        "bestmove": "e1d2",
+        "last_info": "info depth 10 score cp 8 nodes 112244 time 173 nps 648086 pv e1d2 e8d7 d2d3 d7e7 d3e3 e7d7 e3d3 d7e7 d3e3 e7e6"
+      },
+      {
+        "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+        "bestmove": "h2h1q",
+        "last_info": "info depth 8 score cp 2041 nodes 77971 time 101 nps 770651 pv h2h1q e1d2 e8d7 d2c2 h1e4 c2b2 e4a4 b2b1 a4a7"
+      }
+    ],
+    "lifecycle": "stop/readiness/newgame/repeated search/quit passed"
+  },
+  "screen": {
+    "games": 16,
+    "completed": 16,
+    "wins": 2,
+    "draws": 5,
+    "losses": 9,
+    "censored": 0,
+    "all_game_score_bounds": [
+      0.28125,
+      0.28125
+    ],
+    "score": 0.28125,
+    "elo": -162.9941306313072,
+    "paired_bootstrap_95_score": [
+      0.09375,
+      0.46875
+    ],
+    "paired_bootstrap_95_elo": [
+      -394.11069727171747,
+      -21.74306492903708
+    ],
+    "pairs": 8,
+    "uncertainty": "percentile bootstrap by opening; exploratory, unreliable at tiny n/boundaries; no sequential significance claim",
+    "elapsed_seconds": 60.394720999996935
+  },
+  "protocol": {
+    "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-evaluation64\\network.cnnue",
+    "network_sha256": "58fe0d77540d04f95be4d9b83c5013325ec8e8d3d3e9ffdf849bfdaa96ad58f6",
+    "openings_sha256": "09e46f558260a4545b7f52fccad501b24953fc352ef8730845352a92340e2fc4",
+    "openings": [
+      {
+        "name": "Open game",
+        "moves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6"
+      },
+      {
+        "name": "Sicilian",
+        "moves": "e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6"
+      },
+      {
+        "name": "French",
+        "moves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6"
+      },
+      {
+        "name": "Caro Kann",
+        "moves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4"
+      },
+      {
+        "name": "Queens gambit",
+        "moves": "d2d4 d7d5 c2c4 e7e6 b1c3 g8f6"
+      },
+      {
+        "name": "Indian",
+        "moves": "d2d4 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6"
+      },
+      {
+        "name": "English",
+        "moves": "c2c4 e7e5 b1c3 g8f6 g1f3 b8c6"
+      },
+      {
+        "name": "Reti",
+        "moves": "g1f3 d7d5 g2g3 g8f6 f1g2 e7e6"
+      }
+    ],
+    "movetime_ms": 50,
+    "max_plies": 400,
+    "threads": 1,
+    "hash_mib": 32,
+    "use_book": false,
+    "ponder": false,
+    "concurrent_games": 1,
+    "commands": [
+      [
+        "C:/java/jdk-21/bin/java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+        "com.ohinteractive.seedv6.uci.UciMain",
+        "--nnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-evaluation64\\network.cnnue"
+      ],
+      [
+        "C:/java/jdk-21/bin/java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+        "com.ohinteractive.seedv6.uci.UciMain",
+        "--model",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\production\\bre-pair2-g32.brn-pair2"
+      ]
+    ],
+    "jar_sha256": {
+      "app-uci.jar": "40baa6a8df4379d0022ef58c4e0e25a7854072dd7cffbf0725bba37fa14cf2ac",
+      "engine-core.jar": "7e6d218f64c8fa3147e121280ddf300e8f7d0043bfbd24a9349deb78936c5bf7"
+    },
+    "baseline_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "purpose": "prospective development screen; different calibrated search policies; complete-engine comparison",
+    "outcome_policy": "python-chess formal endings including claimable draws; cap censored, no score adjudication"
+  },
+  "network_sha256": "58fe0d77540d04f95be4d9b83c5013325ec8e8d3d3e9ffdf849bfdaa96ad58f6",
+  "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e006-evaluation64",
+  "decision": "Continue frozen recipe65..128; generalization improves but production strength not established"
+}

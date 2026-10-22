@@ -157,6 +157,12 @@ that config and the local CUDA runtime PATH; verify checkpoint64 on the unchange
 BT4 holdout, then UCI/runtime/Gen32 screen if coherent. Continue justified work.
 Do not repeat extraction or completed E005 work. Owner NORMAL generation3, no expiry.
 
+E006 checkpoint64 completed and parity/UCI passed; fixed holdout MSE.016864,
+Gen32 screen2W/5D/9L. See e006-stage64-results.json. Next start/resume
+`e006-training-128-config.json` through the controller, global65..128, same recipe
+and optimizer. Evaluate128 on the unchanged holdout before selecting129..256
+(the frozen LR first halves at129). No architecture/search change or promotion.
+
 Raw tools/output: `build/conventional-nnue/`; upstream source clone:
 `build/conventional-nnue/upstream/bullet` at
 `579b78b37a694cacd6e9ede4706386c15c34837c`. These ignored paths are local evidence,

@@ -128,8 +128,9 @@ def main():
                 record=dict(opening_index=opening_index,opening=opening['name'],candidate_white=candidate_white,
                     score=score,termination='CAP' if outcome is None else outcome.termination.name,
                     elapsed_seconds=time.monotonic()-game_start,plies=len(observations))
-                game=chess.pgn.Game.from_board(board);game.headers['White']='NNUE' if candidate_white else 'Gen32-Policy4'
-                game.headers['Black']='Gen32-Policy4' if candidate_white else 'NNUE'
+                opponent_name=('NNUE-'+protocol['opponent_network_sha256'][:12]) if a.opponent_network else 'Gen32-Policy4'
+                game=chess.pgn.Game.from_board(board);game.headers['White']='NNUE' if candidate_white else opponent_name
+                game.headers['Black']=opponent_name if candidate_white else 'NNUE'
                 game.headers['Result']='*' if outcome is None else outcome.result()
                 stem=f'{opening_index:03d}-'+('white' if candidate_white else 'black')
                 (a.output/(stem+'.pgn')).write_text(str(game)+'\n')
