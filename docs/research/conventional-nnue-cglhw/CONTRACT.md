@@ -1,6 +1,6 @@
 # Conventional NNUE CGLHW
 
-Established 22 October 2026 (Pacific/Auckland), revision 1. Authority: the owner's
+Established 22 October 2026 (Pacific/Auckland), revision 2. Authority: the owner's
 new conventional NNUE workstream request of that date, subordinate to applicable
 repository and higher-level instructions. Read STATE.md before acting. This is
 separate from `../nnue-cglhw`, BRN architecture and suspended BRN successor work.
@@ -66,6 +66,54 @@ During active long operations report observed progress to the user at least ever
 bounded asynchronous processes and persistent logs/checkpoints; the active tool
 session can poll while reporting. No unattended campaign may outlive this reporting
 arrangement. If it cannot be maintained, do not launch; request an alternative.
+
+### Owner compute permission (22 October steering)
+
+The owner controls expensive computation independently of the research direction.
+At every fresh conversation/resumption, run `nnue-control.cmd status` and reconcile
+actual activity, checkpoint evidence and STATE.md. All CGLHW GPU training, dataset
+processing, tournaments, substantial builds/tests and CPU validation must run
+through `nnue-control.cmd train` or `run`. Alternate state directories are only
+for isolated validation, with actual compute supervised by the real owner control.
+
+- **NORMAL:** ordinary authorized autonomous work under existing resource limits.
+- **COMPUTE HOLD:** deny new expensive operations; finish a prompt safe boundary,
+  release owned resources, then do useful lightweight work. When none remains,
+  preserve state and end execution without waiting/polling/token consumption.
+- **FULL PAUSE:** finish a safe boundary, preserve checkpoints and workstream/Git
+  state, clean up owned processes, then end execution until explicitly resumed.
+
+Initial integration preserves NORMAL authorization. Subsequently missing, corrupt
+or inconsistent state is never fresh authorization. Holds persist across sessions,
+process/Windows restarts until explicitly released by the owner. An authorized
+NORMAL window may expire into COMPUTE HOLD, never automatically renew. Do not
+infer release from task needs, an idle GPU, elapsed time or a new session.
+
+Operational permission resides separately in this worktree's Git metadata.
+COMPUTE-CONTROL.md defines the local interface and recovery. Conversation controls
+map to those same commands; the owner can use them independently while Codex is
+busy. Stops remain latched across racing NORMAL requests. Report a hold completed
+only after no active operation and zero owned job processes are observed. Never
+infer ownership from GPU utilization, executable names or PID alone, or terminate
+unrelated applications.
+
+Use bounded single-superbatch training processes with verified weights, AdamW
+momentum/velocity, immutable recipe/data, schedule settings and progress. Weights
+alone are insufficient. GPU continuation is not promised bitwise deterministic.
+Measure safe-boundary latency; do not promise unverified interruption bounds.
+Default hold timeout is 30 seconds, then emergency termination of only the owned
+Windows job. This policy is not a hard real-time Windows/driver guarantee.
+`hold --now`/`pause --now` request immediate owned-job cleanup. Preserve partial
+outputs and disclose lost uncheckpointed work. Resume from the last verified
+checkpoint, never a partial write. Supervisor crashes close kill-on-close jobs;
+reconciliation requires explicit continuation. No service, permanent scheduler,
+process suspension as a hold mechanism, admin change or global installation.
+
+On explicit continuation, reverify evidence, skip completed segments/games and
+resume the established autonomous loop. Restart training from scratch only when
+technically necessary and documented. Compute control does not replace user-facing
+15-minute progress reports; logs alone are insufficient. If reporting cannot be
+maintained, do not start affected unattended work without an agreed alternative.
 
 Owner approval is required for research-direction departures, consequential system
 changes, admin/reboot/driver installation, paid/external compute, unresolved licensing

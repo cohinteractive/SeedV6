@@ -1,0 +1,11 @@
+{
+  "dataset_hold_seconds": 0.17381380000006175,
+  "dataset_accepted_before_hold": 3433,
+  "dataset_partial_marked": true,
+  "match_hold_seconds": 0.1707001000031596,
+  "completed_games_before_resume": 1,
+  "completed_games_after_resume": 4,
+  "completed_game_bytes_preserved": true,
+  "owned_processes_final": 0,
+  "local_evidence": "build/conventional-nnue/control-workloads-2/summary.json"
+}

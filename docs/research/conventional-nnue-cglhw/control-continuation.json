@@ -1,0 +1,22 @@
+{
+  "weights": {
+    "max_abs": 4.854053258895874e-05,
+    "rms": 3.2376988048668944e-07,
+    "changed": 1603905,
+    "count": 2163457
+  },
+  "momentum": {
+    "max_abs": 2.8812792152166367e-09,
+    "rms": 6.349861275080748e-12,
+    "changed": 1594562,
+    "count": 2163457
+  },
+  "velocity": {
+    "max_abs": 1.7053025658242404e-13,
+    "rms": 1.276514347403783e-16,
+    "changed": 1606965,
+    "count": 2163457
+  },
+  "quantised_equal": false,
+  "local_evidence": "build/conventional-nnue/control-gpu-1/continuation-comparison.json"
+}

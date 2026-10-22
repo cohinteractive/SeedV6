@@ -28,6 +28,20 @@ struct Config {
 fn one()->usize {1}
 fn digest(path:impl AsRef<Path>)->String {format!("{:x}",Sha256::digest(fs::read(path).unwrap()))}
 
+fn compute_permitted() -> bool {
+    // No implicit permission for direct invocations, missing state, or expired windows.
+    let read = || -> Option<bool> {
+        let path=env::var("SEED_NNUE_CONTROL").ok()?;
+        let operation=env::var("SEED_NNUE_OPERATION").ok()?;
+        let state:serde_json::Value=serde_json::from_slice(&fs::read(path).ok()?).ok()?;
+        let now=std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).ok()?.as_secs_f64();
+        Some(state["schema"]==1 && state["mode"]=="NORMAL" && state["active"]["id"]==operation
+            && state["active"]["stop_requested_at"].is_null()
+            && (state["expires_at"].is_null() || now<state["expires_at"].as_f64()?))
+    };
+    read().unwrap_or(false)
+}
+
 fn main() {
     let args: Vec<_> = env::args().collect();
     assert!(args.len() >= 3, "features <fen-file> | convert <text> <data> | train <config.json>");
@@ -43,10 +57,12 @@ fn main() {
             }
         }
         "convert" => {
+            assert!(compute_permitted(),"Launch expensive work through nnue-control.cmd run/train");
             assert_eq!(args.len(), 4);
             let mut out = BufWriter::new(fs::OpenOptions::new().write(true).create_new(true).open(&args[3]).unwrap());
             let mut count = 0;
             for line in BufReader::new(fs::File::open(&args[2]).unwrap()).lines() {
+                if count%4096==0 {assert!(compute_permitted(),"Compute hold; incomplete conversion preserved");}
                 let board: ChessBoard = line.unwrap().parse().unwrap();
                 // bulletformat explicitly defines a packed 32-byte native record.
                 let bytes = unsafe { std::slice::from_raw_parts((&board as *const ChessBoard).cast::<u8>(), std::mem::size_of::<ChessBoard>()) };
@@ -60,6 +76,7 @@ fn main() {
 }
 
 fn train(config_path: &str) {
+    assert!(compute_permitted(),"Launch training through nnue-control.cmd train");
     let config_bytes = fs::read(config_path).unwrap();
     let c: Config = serde_json::from_slice(&config_bytes).unwrap();
     assert_eq!(format!("{:x}",Sha256::digest(fs::read(&c.data).unwrap())),c.data_sha256,"Dataset identity mismatch");
@@ -137,11 +154,18 @@ fn train(config_path: &str) {
         for name in ["quantised.bin","raw.bin","optimiser_state/weights.bin","optimiser_state/momentum.bin","optimiser_state/velocity.bin"] {
             files.insert(name.into(),digest(path.join(name)).into());
         }
-        fs::write(path.join("seed-manifest.json"),serde_json::to_vec_pretty(&serde_json::json!({
+        // Publish the receipt last. A missing/partial receipt is never a resume point.
+        for name in ["quantised.bin","raw.bin","optimiser_state/weights.bin","optimiser_state/momentum.bin","optimiser_state/velocity.bin"] {
+            fs::OpenOptions::new().write(true).open(path.join(name)).unwrap().sync_all().unwrap();
+        }
+        let mut receipt=fs::OpenOptions::new().write(true).create_new(true).open(path.join("seed-manifest.json.tmp")).unwrap();
+        receipt.write_all(&serde_json::to_vec_pretty(&serde_json::json!({
             "schema":"seed-bullet-checkpoint-v1","bullet":"579b78b37a694cacd6e9ede4706386c15c34837c",
             "completed_superbatch":step,"config_sha256":digest(config_path),"files":files,
             "reproducibility":"fixed recipe/data/seed; GPU float reductions are not bitwise deterministic"
         })).unwrap()).unwrap();
+        receipt.sync_all().unwrap(); drop(receipt);
+        fs::rename(path.join("seed-manifest.json.tmp"),path.join("seed-manifest.json")).unwrap();
     }
     let mut out = BufWriter::new(fs::File::create(format!("{}/gpu-probes.jsonl",c.output)).unwrap());
     for line in BufReader::new(fs::File::open(&c.probes).unwrap()).lines() {

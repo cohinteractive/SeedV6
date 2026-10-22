@@ -1,0 +1,32 @@
+{
+  "hold_seconds": 0.16624629999569152,
+  "kind": "emergency",
+  "held_after_superbatch": 1,
+  "observed_cuda_pid": 5904,
+  "owned_processes_after_hold": 0,
+  "cuda_pid_absent_after_hold": true,
+  "held_checkpoint": {
+    "path": "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\control-gpu-emergency-1\\segmented\\segments\\000001-b7cdc937f5b8\\run\\seed-cnnue-v1-1",
+    "completed_superbatch": 1,
+    "next_superbatch": 2,
+    "receipt_sha256": "a0c861f36f1d55e27c104712773eb9b8dd0af63de1d87f3e5177fc82f3c9f8f7",
+    "config_sha256": "2ce1c2e86516ba8a14ab1cc911b5f6b283cca4c5cf0b50036236308078c83667",
+    "verified_at": "2026-10-22T06:30:17+00:00"
+  },
+  "final_checkpoint": {
+    "path": "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\control-gpu-emergency-1\\segmented\\segments\\000004-d4cb62959175\\run\\seed-cnnue-v1-4",
+    "completed_superbatch": 4,
+    "next_superbatch": 5,
+    "receipt_sha256": "f8dae8dd3f531adb12e162fd4cdc16485223484ffd27d9a721eb7bb423b0ebc7",
+    "config_sha256": "8f5b35738afcd06ced5c1553e7f97b6df8d4b65312eb9adbc79d8d4fb0fa1a88",
+    "verified_at": "2026-10-22T06:30:23+00:00"
+  },
+  "reference_checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\control-gpu-emergency-1\\reference\\seed-cnnue-v1-4",
+  "completed_segments_before_resume": 1,
+  "completed_segments_after_resume": 4,
+  "denied_fresh_process_exit": 2,
+  "full_pause_checked": true,
+  "original_recipe": "1024 batch,128 batches/superbatch,4 superbatches,constant LR/WDL",
+  "limitations": "Single short local measurement; GPU continuation is not bitwise deterministic",
+  "local_evidence": "build/conventional-nnue/control-gpu-emergency-1/summary.json"
+}

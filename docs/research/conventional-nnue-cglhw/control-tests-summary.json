@@ -1,0 +1,38 @@
+{
+  "tests": 12,
+  "failures": 0,
+  "errors": 0,
+  "measurements": [
+    {
+      "test": "test_cooperative_hold_and_repeat",
+      "stop_seconds": 0.16226610000012442,
+      "owned_processes": 0,
+      "result": "held"
+    },
+    {
+      "test": "test_emergency_stop",
+      "stop_seconds": 0.15681770000082906,
+      "owned_processes": 0,
+      "result": "held"
+    },
+    {
+      "test": "test_pause_cleans_children_without_stopping_unrelated",
+      "stop_seconds": 1.3580312000049162,
+      "owned_processes": 0,
+      "result": "held"
+    },
+    {
+      "test": "test_supervisor_crash_kills_owned_tree_and_reconciles",
+      "stop_seconds": 0.010451299996930175,
+      "owned_processes": 0,
+      "result": "interrupted-supervisor"
+    },
+    {
+      "test": "test_window_expiry_enforced_while_busy",
+      "stop_seconds": 1.1532493000049726,
+      "owned_processes": 0,
+      "result": "held"
+    }
+  ],
+  "local_evidence": "build/conventional-nnue/control-tests-c7aadebb1577/summary.json"
+}

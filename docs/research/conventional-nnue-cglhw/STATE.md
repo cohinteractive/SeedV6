@@ -5,6 +5,17 @@ verified pipeline checkpoint, NOT a strength-accepted model.** Read CONTRACT.md,
 M001-OPERATIONAL.md and E001.md. This new
 programme does not resume the historical `nnue-cglhw` or suspended BRN work.
 
+**First action in every fresh conversation:** run `.\nnue-control.cmd status`.
+Permission is operational state in `.git/seed-conventional-nnue/control.json`
+(resolve with Git for linked worktrees), not this document's ACTIVE label.
+Read COMPUTE-CONTROL.md. Unknown/inconsistent permission blocks expensive work.
+Initial control integration retained NORMAL; never reset a later hold from this
+historical initialization statement.
+Control implementation and targeted checks are complete: see CONTROL-VALIDATION.md
+and compact control-*.json evidence. Twelve Windows control tests plus real GPU,
+dataset and UCI match hold/resume passed. Graceful GPU hold measured 1.627 seconds;
+emergency 0.166 seconds, no remaining owned process. No user action is required.
+
 ## Dependency milestones
 
 1. Verify baseline/environment; challenge the initial design; pin Bullet and data.
@@ -50,11 +61,17 @@ labels independently match white->STM conversion; material probes have correct
 sign but weak amplitude (starting-position queen removal ~261cp). No export or
 perspective failure found. Initial data coverage/generalization is inadequate.
 
-Next admissible unit E002: extract at most 1,048,576 accepted positions / 2,000,000
-source lines from the same read-only CC0 archive into `raw/e002-data`. Preserve
+E002 extraction completed before control integration: 1,048,576 accepted from
+1,766,343 lines, 943,857 train / 104,719 validation, 164.06 seconds. Evidence:
+`raw/e002-data/manifest.json`. Consumed compressed prefix 147,459,375 bytes, SHA256
+`1184f0044504ffacf0e01630e5724b16030d828c5406bfe15f03487af673b8b0`.
+No training process was running at the safe integration boundary. Preserve
 hash partition/dedup/filters; document overlap with E001 and diagnostic validation.
 Train this same architecture/seed, batch1024, 1024 batches/superbatch, 16 superbatches,
-lr.001, wdl0, save4 (16,777,216 exposures). Bounded data expansion is justified by
+lr.001, wdl0 (16,777,216 exposures). Owner compute controls change save4 to every
+superbatch with supervised segmented continuation, preserving data order and the
+constant LR/WDL recipe. Controls are verified; training is the next admissible
+operation when observed permission permits. Expansion is justified by
 E001's large training/validation gap and losses; no architecture sweep. Verify export,
 held-out loss/material behavior and the same development openings before deciding
 whether more data, a target/source change or another intervention is warranted.

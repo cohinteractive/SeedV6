@@ -15,6 +15,7 @@ import random
 import time
 import chess
 import zstandard
+import compute_gate
 
 
 class HashedReader(io.RawIOBase):
@@ -41,17 +42,21 @@ def main():
     p.add_argument('--max-lines', type=int, default=1000000)
     p.add_argument('--seed', type=int, default=20261022)
     args = p.parse_args()
+    compute_gate.require()
     if not 1024 <= args.positions <= 1048576 or not 1 <= args.max_lines <= 10000000:
         raise ValueError('Outside bounded extraction limits')
     args.output.mkdir(parents=True, exist_ok=False)
     before = args.source.stat()
-    counts = Counter(); seen = set(); train = []; validation = []
+    counts = Counter(); seen = set(); train = []; validation = []; held = False
     reader = HashedReader(args.source)
     start = time.monotonic()
     try:
         with zstandard.ZstdDecompressor().stream_reader(reader, read_across_frames=True, closefd=False) as decoded:
             lines = io.TextIOWrapper(decoded, encoding='utf-8')
             for ordinal, line in enumerate(itertools.islice(lines,args.max_lines), 1):
+                if ordinal%1000==1 and not compute_gate.permitted():
+                    held = True
+                    break
                 counts['read'] += 1
                 entry = json.loads(line)
                 evaluations = [e for e in entry['evals'] if e.get('pvs') and 'cp' in e['pvs'][0]]
@@ -116,9 +121,12 @@ def main():
         limitations=['bounded source prefix, not a random sample of the complete archive',
             'mixed Stockfish versions and CP calibration; no outcome labels',
             'related-game and symmetry leakage cannot be ruled out; validation is diagnostic, not strength evidence'],
-        elapsed_seconds=time.monotonic()-start)
+        elapsed_seconds=time.monotonic()-start, stopped_for_compute_hold=held,
+        requested_positions=args.positions, completed_requested_sample=counts['accepted']>=args.positions,
+        continuation='Complete dataset is reusable; held partial extraction is evidence only. Restart extraction to a new path if needed.')
     (args.output/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     print(json.dumps(manifest,indent=2),flush=True)
+    if held: raise SystemExit(75)
 
 
 if __name__=='__main__':main()

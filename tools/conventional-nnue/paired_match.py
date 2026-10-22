@@ -14,6 +14,7 @@ import time
 import chess
 import chess.engine
 import chess.pgn
+import compute_gate
 
 
 def sha(path):
@@ -47,10 +48,12 @@ def main():
     p.add_argument('--network',type=Path,required=True);p.add_argument('--openings',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True);p.add_argument('--movetime-ms',type=int,default=50)
     p.add_argument('--max-plies',type=int,default=400)
+    p.add_argument('--resume',action='store_true',help='Verify frozen protocol; skip completed games, replay any interrupted game')
     a=p.parse_args()
+    compute_gate.require()
     if not 10<=a.movetime_ms<=1000 or not 100<=a.max_plies<=1000:raise ValueError('Unbounded match settings')
     openings=json.loads(a.openings.read_text());assert 1<=len(openings)<=128
-    a.output.mkdir(parents=True,exist_ok=False)
+    a.output.mkdir(parents=True,exist_ok=a.resume)
     root=Path(__file__).resolve().parents[2]
     jars=root/'app-uci/build/install/seedv6-uci/lib'
     base=['C:/java/jdk-21/bin/java.exe','-XX:ActiveProcessorCount=1','-Xmx512m','-Djava.awt.headless=true',
@@ -63,8 +66,20 @@ def main():
         baseline_sha256=sha(root/'build-assets/production/bre-pair2-g32.brn-pair2'),
         purpose='prospective development screen; different calibrated search policies; complete-engine comparison',
         outcome_policy='python-chess formal endings including claimable draws; cap censored, no score adjudication')
-    (a.output/'protocol.json').write_text(json.dumps(protocol,indent=2)+'\n')
-    engines=[];games=[];start=time.monotonic()
+    games=[]
+    if a.resume:
+        if json.loads((a.output/'protocol.json').read_text())!=protocol:
+            raise ValueError('Resume protocol/artifact mismatch; preserve evidence and reconcile')
+        if (a.output/'games.jsonl').exists():
+            games=[json.loads(line) for line in (a.output/'games.jsonl').read_text().splitlines()]
+    else:
+        (a.output/'protocol.json').write_text(json.dumps(protocol,indent=2)+'\n')
+    completed={(g['opening_index'],g['candidate_white']) for g in games}
+    if len(completed)!=len(games):raise ValueError('Duplicate completed game records')
+    if len(completed)==2*len(openings):
+        print('All frozen games already completed; no engines launched',flush=True)
+        return
+    engines=[];start=time.monotonic()
     flags=subprocess.CREATE_NO_WINDOW|subprocess.BELOW_NORMAL_PRIORITY_CLASS
     try:
         for cmd in commands:
@@ -74,8 +89,16 @@ def main():
             initial=chess.Board()
             for move in opening['moves'].split():initial.push_uci(move)
             for candidate_white in (True,False):
+                if (opening_index,candidate_white) in completed:continue
                 board=initial.copy();identifier=object();observations=[];game_start=time.monotonic()
                 while not board.is_game_over(claim_draw=True) and len(observations)<a.max_plies:
+                    if not compute_gate.permitted():
+                        stem=f'interrupted-{time.time_ns()}'
+                        (a.output/(stem+'.pgn')).write_text(str(chess.pgn.Game.from_board(board))+'\n')
+                        (a.output/(stem+'.json')).write_text(json.dumps(dict(opening_index=opening_index,
+                            candidate_white=candidate_white,moves=observations,
+                            continuation='Resume same protocol with --resume; completed games skipped; this unfinished game restarts from opening.'),indent=2)+'\n')
+                        raise SystemExit(75)
                     candidate_turn=board.turn==candidate_white
                     played=engines[0 if candidate_turn else 1].play(board,chess.engine.Limit(time=a.movetime_ms/1000),
                         game=identifier,info=chess.engine.INFO_BASIC|chess.engine.INFO_SCORE)
