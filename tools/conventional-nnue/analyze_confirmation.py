@@ -96,6 +96,9 @@ def main():
         result.update(paired_normal_95_score=interval,paired_normal_95_elo=[elo(x) for x in interval],
             paired_sample_sd=statistics.stdev(values),competitive_statistical_gate=mean>.5 and interval[0]>.5 and result['paired_bootstrap_95_score'][0]>.5)
     else:result['competitive_statistical_gate']=False
+    if 'interpretation' in protocol:
+        result['positive_difference_detected'] = result.pop('competitive_statistical_gate')
+        result['interpretation'] = protocol['interpretation']
     result['resources']={('candidate' if side else 'opponent'):dict(**v,
         nodes_per_second=v['nodes']/v['seconds'] if v['seconds'] else None,
         mean_depth=v['depth_sum']/v['moves'] if v['moves'] else None) for side,v in resources.items()}

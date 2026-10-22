@@ -59,7 +59,7 @@ final class EngineCard extends JPanel {
         boolean nnue = evaluator.neural();
         String modelName = evaluator.conventional() != null ? "Conventional NNUE"
                 : nnue ? NetworkArchitecture.valueOf(evaluator.architecture().name()).toString() : "";
-        boolean uncalibrated = nnue && evaluator.conventional() == null;
+        boolean uncalibrated = nnue && evaluator.baseline() == null;
         PlayScore value = PlayScore.from(search, uncalibrated);
         score.setFont(SeedTheme.font(tablebase ? 17 : 21, Font.BOLD));
         score.setText(value.text()); score.setForeground(value.available() ? SeedTheme.GREEN : SeedTheme.TEXT);

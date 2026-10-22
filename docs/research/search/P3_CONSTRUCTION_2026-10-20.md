@@ -497,7 +497,7 @@ outcomes first and keeps the mate band separate from static evaluation.
 
 The GUI incorrectly described conventional CP64 as non-centipawn legacy NNUE
 units. That presentation defect is corrected in the live score and scoresheet:
-CP64 displays pawns (cp/100), with explicit searched-score/perspective semantics.
+All three competitive evaluators display pawns (cp/100), with explicit searched-score/perspective semantics. BREP2-32 uses its existing material-plus-quarter-residual mapping, with 100 units per pawn; this is presentation consistency, not an empirical WDL claim.
 The bounded advantage bar is not a probability. Historical neural mappings retain
 their own labels. No arbitrary scaling, network replacement or training occurred.
 

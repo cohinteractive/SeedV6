@@ -15,7 +15,7 @@ record PlayedMove(String san, int side, int number, boolean human, long resultin
                  String evaluator, boolean neural) {
         static Score from(SearchResult result, int side, long key, PlayEvaluator evaluator) {
             return new Score(side == Value.WHITE ? result.score() : -result.score(), result.depth(),
-                    side, key, evaluator.description(), evaluator.neural() && evaluator.conventional() == null);
+                    side, key, evaluator.description(), evaluator.neural() && evaluator.baseline() == null);
         }
         String text() {
             if (TranspositionScores.isMateScore(whiteValue)) {
