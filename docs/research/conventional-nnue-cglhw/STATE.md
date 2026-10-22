@@ -160,9 +160,20 @@ build63 runtime, flat MSE.016866643. No further identical-recipe training select
 Read e007-stage256-results.json. M003 optional SIMD passed scalar/vector tests,
 legacy/eight-head parity, actual UCI and identical-node search checks; integrated
 cost~.72us versus~1.71us and measured fixed-root throughput1.40x. Preserve all raw
-failures/results and m003-integrated-evidence.json. Next finish build64 commit,
-install/verify actual metadata, then compare E007256 against64 with identical
-vector-enabled search before selecting the next strength screen/architecture work.
+failures/results and m003-integrated-evidence.json. Implementation committed6213630/build64; actual scalar/vector UCI identity and
+lifecycle passed (m003-build64-uci.json).256-versus64 was near-tied4W/9D/3L;
+retain64 as the development candidate. Vector-enabled64 versusGen32 completed
+8W/5D/3L on reused development openings, which justifies prospective confirmation
+but is not C. E007-CONFIRMATION.md freezes128 games/64 fresh pairs at200ms,800-ply
+censoring,one worker,32MiB,no book/ponder,unchanged build64 runtime and both artifacts.
+Use e007-confirmation-openings-v2.json; unused first selection is preserved.
+Next start/resume paired_match.py --network raw/e007-evaluation64/network.cnnue
+--openings e007-confirmation-openings-v2.json --output raw/e007-confirmation
+--movetime-ms200 --max-plies800 --vector --confirmation (all paths under this
+record directory; use spaces between option names and values). Add --resume only
+for the same previously started protocol. Keep installed jars frozen. Report to
+owner while monitoring; no interim acceptance/optional extension. See full protocol
+for final paired uncertainty and gates. Continue justified work after the result.
 Production default remains Gen32; C remains unmet. Continue justified
 work units autonomously; no programme stop follows a candidate rejection.
 

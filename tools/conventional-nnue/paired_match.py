@@ -53,6 +53,7 @@ def main():
     p.add_argument('--selective-research-classes',type=Path,help='Explicit unaccepted one-worker NNUE research launcher classes')
     p.add_argument('--opponent-network',type=Path,help='Frozen conventional NNUE opponent with the same unpruned search; evaluator comparison')
     p.add_argument('--vector',action='store_true',help='Resolve optional Vector API equally for both engines; commands freeze this choice')
+    p.add_argument('--confirmation',action='store_true',help='Identify a separately predeclared fixed-sample confirmation protocol')
     a=p.parse_args()
     compute_gate.require()
     if a.opponent_network and a.selective_research_classes:
@@ -86,6 +87,8 @@ def main():
         protocol.pop('baseline_sha256')
         protocol.update(opponent_network=str(a.opponent_network.resolve()),opponent_network_sha256=sha(a.opponent_network),
             purpose='prospective evaluator development comparison; both conventional NNUE with identical unpruned search')
+    if a.confirmation:
+        protocol['purpose']='prospective fixed-sample paired confirmation; frozen candidates/settings/openings; final endpoint only'
     games=[]
     if a.resume:
         if json.loads((a.output/'protocol.json').read_text())!=protocol:

@@ -48,5 +48,111 @@
     "zero_score_mse": 0.0659978710509739,
     "cp_mae": 355.07272720336914
   },
-  "evaluation_runtime": "Frozen e54ec3b build63 installed jars, e007-frozen-runtime.json; before SIMD rebuild"
+  "evaluation_runtime": "Frozen e54ec3b build63 installed jars, e007-frozen-runtime.json; before SIMD rebuild",
+  "same_search_vs64": {
+    "games": 16,
+    "completed": 16,
+    "wins": 4,
+    "draws": 9,
+    "losses": 3,
+    "censored": 0,
+    "all_game_score_bounds": [
+      0.53125,
+      0.53125
+    ],
+    "score": 0.53125,
+    "elo": 21.74306492903707,
+    "paired_bootstrap_95_score": [
+      0.5,
+      0.59375
+    ],
+    "paired_bootstrap_95_elo": [
+      0.0,
+      65.92409945839687
+    ],
+    "pairs": 8,
+    "uncertainty": "percentile bootstrap by opening; exploratory, unreliable at tiny n/boundaries; no sequential significance claim",
+    "elapsed_seconds": 68.68489979999868
+  },
+  "same_search_protocol": {
+    "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation256\\network.cnnue",
+    "network_sha256": "d896d7f2c7172ad54519471cd4a10d3078cfd2e50eb1d4f1ec25dd387cb07102",
+    "openings_sha256": "09e46f558260a4545b7f52fccad501b24953fc352ef8730845352a92340e2fc4",
+    "openings": [
+      {
+        "name": "Open game",
+        "moves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6"
+      },
+      {
+        "name": "Sicilian",
+        "moves": "e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6"
+      },
+      {
+        "name": "French",
+        "moves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6"
+      },
+      {
+        "name": "Caro Kann",
+        "moves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4"
+      },
+      {
+        "name": "Queens gambit",
+        "moves": "d2d4 d7d5 c2c4 e7e6 b1c3 g8f6"
+      },
+      {
+        "name": "Indian",
+        "moves": "d2d4 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6"
+      },
+      {
+        "name": "English",
+        "moves": "c2c4 e7e5 b1c3 g8f6 g1f3 b8c6"
+      },
+      {
+        "name": "Reti",
+        "moves": "g1f3 d7d5 g2g3 g8f6 f1g2 e7e6"
+      }
+    ],
+    "movetime_ms": 50,
+    "max_plies": 400,
+    "threads": 1,
+    "hash_mib": 32,
+    "use_book": false,
+    "ponder": false,
+    "concurrent_games": 1,
+    "commands": [
+      [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+        "com.ohinteractive.seedv6.uci.UciMain",
+        "--nnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation256\\network.cnnue"
+      ],
+      [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+        "com.ohinteractive.seedv6.uci.UciMain",
+        "--nnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue"
+      ]
+    ],
+    "jar_sha256": {
+      "app-uci.jar": "13700633582996c46f62d70509c3742b256d32a973ca9e65aff7e8295bd276c8",
+      "engine-core.jar": "066195fa7cabe27dc942833038b83e038739c1db2cd7acce6b23b24fe87c873b"
+    },
+    "purpose": "prospective evaluator development comparison; both conventional NNUE with identical unpruned search",
+    "outcome_policy": "python-chess formal endings including claimable draws; cap censored, no score adjudication",
+    "opponent_network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
+    "opponent_network_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+  },
+  "selection": "4W/9D/3L is a near tie in eight reused pairs. No persuasive gain from fourfold exposure; retain64 as existing development candidate with slightly lower heldout error. All checkpoints remain available; no claim256 is weaker."
 }
