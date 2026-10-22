@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 import random
 import subprocess
+import tempfile
 import time
 import chess
 import chess.engine
@@ -20,6 +21,21 @@ import compute_gate
 
 def sha(path):
     with path.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
+
+
+def durable_text(path, text):
+    """Publish a flushed complete file; retain failed pending writes as evidence.
+
+    The completion ledger is published last, after the PGN and move details.
+    This protects prior completed games from a killed append. It is not a promise
+    against hardware/filesystem failure or loss of an uncommitted current game.
+    """
+    fd, pending = tempfile.mkstemp(prefix=path.name+'.pending-', dir=path.parent)
+    with os.fdopen(fd, 'w', encoding='utf-8', newline='\n') as stream:
+        stream.write(text)
+        stream.flush()
+        os.fsync(stream.fileno())
+    os.replace(pending, path)
 
 
 def summarize(games):
@@ -105,7 +121,7 @@ def main():
         if (a.output/'games.jsonl').exists():
             games=[json.loads(line) for line in (a.output/'games.jsonl').read_text().splitlines()]
     else:
-        (a.output/'protocol.json').write_text(json.dumps(protocol,indent=2)+'\n')
+        durable_text(a.output/'protocol.json',json.dumps(protocol,indent=2)+'\n')
     completed={(g['opening_index'],g['candidate_white']) for g in games}
     if len(completed)!=len(games):raise ValueError('Duplicate completed game records')
     if len(completed)==2*len(openings):
@@ -126,8 +142,8 @@ def main():
                 while not board.is_game_over(claim_draw=True) and len(observations)<a.max_plies:
                     if not compute_gate.permitted():
                         stem=f'interrupted-{time.time_ns()}'
-                        (a.output/(stem+'.pgn')).write_text(str(chess.pgn.Game.from_board(board))+'\n')
-                        (a.output/(stem+'.json')).write_text(json.dumps(dict(opening_index=opening_index,
+                        durable_text(a.output/(stem+'.pgn'),str(chess.pgn.Game.from_board(board))+'\n')
+                        durable_text(a.output/(stem+'.json'),json.dumps(dict(opening_index=opening_index,
                             candidate_white=candidate_white,moves=observations,
                             continuation='Resume same protocol with --resume; completed games skipped; this unfinished game restarts from opening.'),indent=2)+'\n')
                         raise SystemExit(75)
@@ -148,13 +164,13 @@ def main():
                 game.headers['Black']=opponent_name if candidate_white else 'NNUE'
                 game.headers['Result']='*' if outcome is None else outcome.result()
                 stem=f'{opening_index:03d}-'+('white' if candidate_white else 'black')
-                (a.output/(stem+'.pgn')).write_text(str(game)+'\n')
-                (a.output/(stem+'.json')).write_text(json.dumps(dict(result=record,moves=observations),indent=2)+'\n')
+                durable_text(a.output/(stem+'.pgn'),str(game)+'\n')
+                durable_text(a.output/(stem+'.json'),json.dumps(dict(result=record,moves=observations),indent=2)+'\n')
                 games.append(record)
-                with (a.output/'games.jsonl').open('a') as out:out.write(json.dumps(record)+'\n')
+                durable_text(a.output/'games.jsonl',''.join(json.dumps(g)+'\n' for g in games))
                 print(json.dumps(dict(progress=f'{len(games)}/{len(openings)*2}',last=record,summary=summarize(games))),flush=True)
         result=summarize(games);result['elapsed_seconds']=time.monotonic()-start
-        (a.output/'summary.json').write_text(json.dumps(result,indent=2)+'\n')
+        durable_text(a.output/'summary.json',json.dumps(result,indent=2)+'\n')
     finally:
         for engine in engines:
             try:engine.quit()

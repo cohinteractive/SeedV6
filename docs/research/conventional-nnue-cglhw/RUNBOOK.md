@@ -101,8 +101,11 @@ below-normal process priority. Validation MSE is diagnostic, not chess strength.
 track the protocol/compact summary outside it. Caps are censored, not draws. Larger
 confirmation requires fresh predeclared openings/settings and uncertainty reporting.
 `--opponent-network FROZEN.cnnue` instead compares two conventional checkpoints
-with identical unpruned search and freezes both identities. It cannot be combined
-with the selective-search launcher; evaluator and search changes remain separate.
+with identical unpruned search and freezes both identities. Combining it with the
+selective-search launcher requires explicit `--policy-comparison` and byte-identical
+networks; this isolates search composition while holding the evaluator fixed.
+Different-network selective comparisons remain rejected. E008 records this guarded
+research route; it does not change production defaults or confer Policy4 acceptance.
 Poll long-running process logs and report actual progress to the user at least
 every15 minutes; active host instructions require more frequent updates. Do not
 launch an unmonitored campaign or treat logs alone as user-facing progress.

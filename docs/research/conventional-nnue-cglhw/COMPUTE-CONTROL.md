@@ -127,8 +127,15 @@ are evidence, not a usable dataset. Reuse verified finished datasets rather than
 extracting them again. The supervisor deadline still bounds uncooperative cleanup.
 Matches check between moves, preserve interrupted-game evidence and quit engines.
 `paired_match.py --resume` verifies its frozen protocol, skips completed games and
-restarts only the unfinished game from its opening. Torn game records require
-reconciliation. Generic build/validation resume notes explain safe rerunning.
+restarts only the unfinished game from its opening. Subsequent harness invocations
+publish flushed PGN/details first and atomically replace the complete game ledger
+last, protecting earlier games from an interrupted append. Failed `.pending-*`
+writes remain local evidence and are not completion records. Three local fault
+tests passed (0.079s): replacement/newlines, failed flush, failed publication/retry.
+This change does not retrofit the already-running E008 confirmation process.
+Malformed legacy records or storage corruption still require reconciliation;
+never infer completion from a partial file. Generic build/validation resume notes
+explain safe rerunning.
 
 If Codex ends while the supervisor remains alive, local commands still work. If
 the supervisor crashes, Windows kills its job; the next status records interruption
