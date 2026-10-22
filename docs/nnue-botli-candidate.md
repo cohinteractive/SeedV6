@@ -147,7 +147,9 @@ On Windows use `gradlew.bat`; local substantial validation uses
 The sole required inference payload is tracked at
 `build-assets/nnue-candidate/conventional-cp64.cnnue` (3,940,952 bytes), alongside
 its versioned manifest. Gradle embeds it as `models/conventional-cp64.cnnue` in
-`lib/app-uci.jar`. There is no Git LFS, NAS, ignored research file, Windows archive,
+`lib/engine-core.jar`. The shared core also supplies the explicit
+[GUI checkpoint-64 selection](nnue-gui-integration.md); earlier frozen build-65
+archives retain the resource in `app-uci.jar`. There is no Git LFS, NAS, ignored research file, Windows archive,
 or manual post-build network-copy dependency. The distribution has two runtime
 jars, launchers, network manifest, this guide and the offline verifier. It has no
 training data, optimizer state, GPU tools, GUI or training-service dependencies.

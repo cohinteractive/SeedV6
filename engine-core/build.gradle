@@ -15,9 +15,10 @@ tasks.withType(Test).configureEach {
 
 apply from: rootProject.file('gradle/syzygy.gradle')
 
-// One tracked, checksum-verified runtime input for explicit pinned gameplay profiles.
+// Tracked, checksum-verified runtime inputs for explicit pinned gameplay profiles.
 tasks.named('processResources') {
     from(rootProject.file('build-assets/production/bre-pair2-g32.brn-pair2')) { into 'models' }
+    from(rootProject.file('build-assets/nnue-candidate/conventional-cp64.cnnue')) { into 'models' }
 }
 
 tasks.withType(Test).configureEach {

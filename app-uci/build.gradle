@@ -63,9 +63,6 @@ tasks.withType(Test).configureEach {
 }
 
 // An explicit release candidate, independent of both standard Gen32 and construction-v1.
-tasks.named('processResources') {
-    from(rootProject.file('build-assets/nnue-candidate/conventional-cp64.cnnue')) { into 'models' }
-}
 distributions {
     nnueCandidate {
         distributionBaseName = 'seedv6-nnue-cp64-e008-rc1'

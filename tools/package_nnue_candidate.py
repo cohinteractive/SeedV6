@@ -44,7 +44,7 @@ def main():
         identity = jar.read('com/ohinteractive/seedv6/application-version.properties').decode()
     if 'sourceRevision=' + revision[:12] + '\n' not in identity or 'build=' + str(version['build']) + '\n' not in identity:
         raise RuntimeError('Rebuild the candidate from the clean commit before freezing it')
-    with zipfile.ZipFile(install / 'lib/app-uci.jar') as jar:
+    with zipfile.ZipFile(install / 'lib/engine-core.jar') as jar:
         if hashlib.sha256(jar.read('models/conventional-cp64.cnnue')).hexdigest() != NETWORK_SHA:
             raise RuntimeError('Wrong network in packaged JAR')
     if b'\r' in (install / 'bin/seedv6-nnue-cp64').read_bytes():

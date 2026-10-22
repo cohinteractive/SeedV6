@@ -29,6 +29,9 @@ final class PlayEnginePanel extends JPanel {
     PlayEnginePanel(String side, String title, Path fallback, TrainingFolders folders, Preferences preferences, Runnable changed) {
         super(new BorderLayout(0, SeedTheme.scale(5))); setOpaque(false); setName(side + "EngineSetup");
         this.preferences = preferences; this.changed = changed;
+        // This bounded integration exposes E008 in Play; persisted training arenas retain their schema.
+        if (!side.equals("white") && !side.equals("black") && !side.equals("opponent"))
+            evaluator.removeItem(PlayEvaluator.Mode.CONVENTIONAL_CP64);
         model = new ModelSelectionPanel(side, title, fallback, folders, preferences, changed, null, false,
                 side.equals("white") || side.equals("black") || side.equals("opponent"));
         model.setName(side + "ModelSetup");
@@ -59,7 +62,7 @@ final class PlayEnginePanel extends JPanel {
     }
     PlayEvaluator.Mode selectedMode() { return (PlayEvaluator.Mode) evaluator.getSelectedItem(); }
     boolean handcrafted() { return selectedMode() == PlayEvaluator.Mode.HANDCRAFTED; }
-    boolean preset() { return selectedMode().pinned(); }
+    boolean preset() { return selectedMode().bundled(); }
     boolean storedNetwork() { return !handcrafted() && !preset(); }
     boolean validSelection() { return !disposed && (!storedNetwork() || model.validSelection()); }
     Path selectedRoot() { return !storedNetwork() ? null : model.selectedRoot(); }
@@ -78,7 +81,9 @@ final class PlayEnginePanel extends JPanel {
         description.setVisible(fixedBinding != null || !storedNetwork());
         if (fixedBinding == null) description.setText(preset() ? selectedMode().toString() : "HCE does not use a checkpoint.");
         if (fixedBinding == null) description.setToolTipText(preset()
-                ? "Bundled, SHA-256 verified Pair-2 generation 32; Hash 64 MiB; aspiration OFF." : null);
+                ? selectedMode() == PlayEvaluator.Mode.CONVENTIONAL_CP64
+                    ? "Bundled checkpoint 64, eight material heads; E008; one worker regardless of Threads; Hash 64 MiB; aspiration OFF."
+                    : "Bundled, SHA-256 verified Pair-2 generation 32; Hash 64 MiB; aspiration OFF." : null);
         revalidate();
     }
     void dispose() { disposed = true; model.dispose(); }

@@ -54,7 +54,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         setLayout(new BorderLayout());
         getContentPane().setBackground(SeedTheme.BACKGROUND);
         depthSpinner.setName("playDepth"); threadsSpinner.setName("playThreads");
-        threadsSpinner.setToolTipText("Configured participants, including the main worker. Max follows available processors up to the supported search limit. Live Threads shows current participation.");
+        threadsSpinner.setToolTipText("Configured participants, including the main worker. Max follows available processors up to the supported search limit. E008 + Conventional NNUE always uses one worker; this limit still applies to other engines. Live Threads shows current participation.");
         if (playPreferences != null) ThreadSelection.setChoice(threadsSpinner,
                 Math.max(0, Math.min(ParallelSearch.MAX_WORKERS, playPreferences.getInt("threads", ParallelSearch.DEFAULT_WORKERS))));
         restorePlaySettings();
@@ -78,7 +78,7 @@ final class ChessFrame extends JFrame implements GameController.View {
                 return this;
             }
         });
-        evaluatorBox.setToolTipText("Human vs Engine evaluator choices apply when Start Game is pressed. Network architecture comes from the selected store.");
+        evaluatorBox.setToolTipText("Human vs Engine evaluator choices apply when Start Game is pressed. E008 + Conventional NNUE bundles checkpoint 64 and always uses one worker. Other network architectures come from the selected store.");
         trainingPanel = new TrainingPanel(settings, folders);
         tabs.setName("workspaces");
         tabs.putClientProperty("JTabbedPane.leadingComponent", identity());

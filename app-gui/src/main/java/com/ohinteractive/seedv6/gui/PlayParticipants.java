@@ -46,7 +46,7 @@ record PlayParticipants(PlayEvaluator white, PlayEvaluator black, Selection sele
 
     static PlayParticipants load(PlayEvaluator.Mode mode, Path root, Selection selection) throws IOException {
         if (mode == PlayEvaluator.Mode.HANDCRAFTED) return shared(PlayEvaluator.handcrafted());
-        if (mode.pinned()) return shared(PlayEvaluator.pinned(mode));
+        if (mode.bundled()) return shared(PlayEvaluator.bundled(mode));
         if (selection.independentStores()) return loadIndependent(selection);
         // Both Best choices resolve the same snapshot even if promotion occurs during construction.
         PlayEvaluator best = selection.whiteId().isEmpty() || selection.blackId().isEmpty()
@@ -65,10 +65,10 @@ record PlayParticipants(PlayEvaluator white, PlayEvaluator black, Selection sele
         // and search lifecycle; a common Best is read once even if promotion happens concurrently.
         var bests = new java.util.HashMap<Path, java.util.Map<String, com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.Checkpoint>>();
         PlayEvaluator white = selection.whiteMode() == PlayEvaluator.Mode.HANDCRAFTED ? PlayEvaluator.handcrafted()
-                : selection.whiteMode().pinned() ? PlayEvaluator.pinned(selection.whiteMode())
+                : selection.whiteMode().bundled() ? PlayEvaluator.bundled(selection.whiteMode())
                 : loadIndependentSide(selection.whiteRoot(), selection.whiteId(), selection.whiteLineageId(), "White", bests);
         PlayEvaluator black = selection.blackMode() == PlayEvaluator.Mode.HANDCRAFTED ? PlayEvaluator.handcrafted()
-                : selection.blackMode().pinned() ? PlayEvaluator.pinned(selection.blackMode())
+                : selection.blackMode().bundled() ? PlayEvaluator.bundled(selection.blackMode())
                 : loadIndependentSide(selection.blackRoot(), selection.blackId(), selection.blackLineageId(), "Black", bests);
         return new PlayParticipants(white, black, selection);
     }

@@ -222,7 +222,14 @@ def main():
     active = []
     try:
         check(set(report['jar_sha256']) == {'app-uci.jar', 'engine-core.jar'}, 'Unexpected runtime dependencies')
-        with zipfile.ZipFile(install / 'lib/app-uci.jar') as jar:
+        # Current shared-core and historical frozen UCI-only distributions are both verifiable.
+        network_jars = []
+        for path in (install / 'lib').glob('*.jar'):
+            with zipfile.ZipFile(path) as jar:
+                if 'models/conventional-cp64.cnnue' in jar.namelist():
+                    network_jars.append(path.name)
+        check(len(network_jars) == 1, 'Expected exactly one embedded checkpoint-64 resource')
+        with zipfile.ZipFile(install / 'lib' / network_jars[0]) as jar:
             network = jar.read('models/conventional-cp64.cnnue')
         check(hashlib.sha256(network).hexdigest() == SHA, 'Wrong packaged network')
         def open_engine(extra=(), cmd=None, environment=None):
@@ -310,7 +317,7 @@ def main():
                   'Invalid external asset/options did not fail closed')
         for case in ('missing', 'corrupt', 'incompatible', 'different-valid-checksum'):
             bad_install = out / ('asset-' + case); shutil.copytree(install, bad_install)
-            jar_path = bad_install / 'lib/app-uci.jar'
+            jar_path = bad_install / 'lib' / network_jars[0]
             with zipfile.ZipFile(jar_path) as jar:
                 entries = [(i, jar.read(i)) for i in jar.infolist() if i.filename != 'models/conventional-cp64.cnnue']
             if case != 'missing':

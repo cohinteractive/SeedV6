@@ -14,6 +14,7 @@ final class EngineCard extends JPanel {
     private final JLabel variationTitle = SeedTheme.label("Principal variation (PV)", 12, SeedTheme.SECONDARY);
     private final JLabel termination = SeedTheme.label("Ready", 11, SeedTheme.MUTED);
     private final JLabel configured = SeedTheme.label("", 12, SeedTheme.SECONDARY);
+    private String configuredLimits = "";
 
     EngineCard() {
         super(new BorderLayout()); setOpaque(false);
@@ -45,15 +46,19 @@ final class EngineCard extends JPanel {
     }
 
     void showConfiguration(GameController.LimitKind kind, int depth, long time, int choice, int workers) {
-        configured.setText("Configured · " + (kind == GameController.LimitKind.DEPTH ? "Depth " + depth : "Time " + time + " ms")
-                + " · Max Threads " + (choice == 0 ? "Max (" + workers + ")" : Integer.toString(workers)));
+        configuredLimits = "Configured · " + (kind == GameController.LimitKind.DEPTH ? "Depth " + depth : "Time " + time + " ms")
+                + " · Global thread limit " + (choice == 0 ? "Max (" + workers + ")" : Integer.toString(workers));
+        configured.setText(configuredLimits);
         configured.setToolTipText("Configured search limits; live progress appears above.");
     }
 
     PlayScore showSearch(GameController.SearchInfo search, PlayEvaluator evaluator, int configuredWorkers) {
+        configured.setText(configuredLimits + (evaluator.conventional() == null ? "" : " · E008 uses 1 worker"));
+        configuredWorkers = evaluator.effectiveWorkers(configuredWorkers);
         boolean tablebase = search.score().equals("tablebase win");
         boolean nnue = evaluator.neural();
-        String modelName = nnue ? NetworkArchitecture.valueOf(evaluator.architecture().name()).toString() : "";
+        String modelName = evaluator.conventional() != null ? "Conventional NNUE"
+                : nnue ? NetworkArchitecture.valueOf(evaluator.architecture().name()).toString() : "";
         PlayScore value = PlayScore.from(search, nnue);
         score.setFont(SeedTheme.font(tablebase ? 17 : 21, Font.BOLD));
         score.setText(value.text()); score.setForeground(value.available() ? SeedTheme.GREEN : SeedTheme.TEXT);
@@ -93,9 +98,9 @@ final class EngineCard extends JPanel {
             termination.setText("Game outcome  |  " + search.termination());
             termination.setToolTipText("Local tablebase decision");
         }
-        if (evaluator.pinned() != null) {
+        if (evaluator.mode().bundled()) {
             termination.setText(evaluator.mode() + " | " + termination.getText());
-            termination.setToolTipText(evaluator.pinned().identity(configuredWorkers, 64));
+            termination.setToolTipText(evaluator.identity(configuredWorkers));
         }
         return value;
     }
