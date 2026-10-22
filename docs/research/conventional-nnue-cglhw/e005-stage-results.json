@@ -1,0 +1,968 @@
+{
+  "status": "Development only; no promotion",
+  "training": {
+    "superbatches": 64,
+    "exposures": 268435456,
+    "process_seconds": 187.78772390002268,
+    "rows": [
+      {
+        "step": 1,
+        "seconds": 2.686548600002425,
+        "loss": 0.021252,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000001-3aacd2ed0f17\\run\\seed-cnnue-v1-1",
+        "receipt_sha256": "d646f1b3c9199b1448010c2e5a29637e7e6c61b353250f2d463b74745f1a7bb5"
+      },
+      {
+        "step": 2,
+        "seconds": 2.686188600004243,
+        "loss": 0.015824,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000002-9793ac1f8a9c\\run\\seed-cnnue-v1-2",
+        "receipt_sha256": "cc530337b9d8739728d3f2e63b96f34cec964eb6f252fdfcda4d89df5e4a39b1"
+      },
+      {
+        "step": 3,
+        "seconds": 2.8867456000007223,
+        "loss": 0.013537,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000003-b7e3fb40f1a8\\run\\seed-cnnue-v1-3",
+        "receipt_sha256": "b5da552dfff6b977df7e8997b6e9644875508785355d138b2f91812d64cb961a"
+      },
+      {
+        "step": 4,
+        "seconds": 2.684702300000936,
+        "loss": 0.012779,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000004-bc17109927b1\\run\\seed-cnnue-v1-4",
+        "receipt_sha256": "cab3e489466effcd43b4217b72679103f49e6942e81743ce007b2f78a7af7296"
+      },
+      {
+        "step": 5,
+        "seconds": 2.889129499999399,
+        "loss": 0.011859,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000005-c8b0fee3bc55\\run\\seed-cnnue-v1-5",
+        "receipt_sha256": "c677d87f2aa3142ae1aaf58362de257620cf7e627607fa60bdb0d7e24ec43bab"
+      },
+      {
+        "step": 6,
+        "seconds": 2.8859760999985156,
+        "loss": 0.011487,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000006-2bdefaa504b6\\run\\seed-cnnue-v1-6",
+        "receipt_sha256": "94560c10df2156ea5251044e7cfb011781921db003d87f34cdb44987e24cdf77"
+      },
+      {
+        "step": 7,
+        "seconds": 2.8847153000024264,
+        "loss": 0.010947,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000007-7e37a8aa641c\\run\\seed-cnnue-v1-7",
+        "receipt_sha256": "9700612b65811b05bc98e07f8ca79d72beeb9482b96d5923bb3c6af20b7a13c1"
+      },
+      {
+        "step": 8,
+        "seconds": 2.8871581999992486,
+        "loss": 0.010704,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000008-5353d0083cf4\\run\\seed-cnnue-v1-8",
+        "receipt_sha256": "416c781dfdede5838a295f6d6ce3add7b1b1b9b4e89bce07f0d78376e2f08ab9"
+      },
+      {
+        "step": 9,
+        "seconds": 2.6850055000031716,
+        "loss": 0.010331,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000009-14319f193b57\\run\\seed-cnnue-v1-9",
+        "receipt_sha256": "98339821c375d96ed5fa70717aae29b2d5fd945e4a977a60fe44cd8dd95ba997"
+      },
+      {
+        "step": 10,
+        "seconds": 2.6845548000055715,
+        "loss": 0.010152,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000010-65a3c3fc9ae0\\run\\seed-cnnue-v1-10",
+        "receipt_sha256": "5436fc73bd2dbefd8d0931255caf6ded85497c5c72027bdf812db2faa5b4ba8d"
+      },
+      {
+        "step": 11,
+        "seconds": 2.6847562000039034,
+        "loss": 0.009871,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000011-3f6f9d639e8d\\run\\seed-cnnue-v1-11",
+        "receipt_sha256": "03cf2cf1ff70dbe0469c2d97b39cb8fdb43b8deb1c1308fbc6c8a646283e74fa"
+      },
+      {
+        "step": 12,
+        "seconds": 2.6858883000022615,
+        "loss": 0.009733,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000012-ae73ecea0ec9\\run\\seed-cnnue-v1-12",
+        "receipt_sha256": "0ae80c9f7d7bff6fd100df863870d5dd878eb2b1cbb8e90b6b67465060549f80"
+      },
+      {
+        "step": 13,
+        "seconds": 2.8896144999962416,
+        "loss": 0.009509,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000013-3d81abf4d096\\run\\seed-cnnue-v1-13",
+        "receipt_sha256": "1b19e899a444a165a97cc93f468e683aebb1bfd992990f0e47373936f3f6c72d"
+      },
+      {
+        "step": 14,
+        "seconds": 2.8903055999981007,
+        "loss": 0.009399,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000014-02ff68760e23\\run\\seed-cnnue-v1-14",
+        "receipt_sha256": "f08c759fbd2d2e3b4da310ab1abf679316b66a908e5d6cf2354fc0cdc1fb1a7c"
+      },
+      {
+        "step": 15,
+        "seconds": 2.6885983999964083,
+        "loss": 0.009216,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000015-efcc366e62f0\\run\\seed-cnnue-v1-15",
+        "receipt_sha256": "bf62a0b0711938d4ffd15a681b7a863f10a3a9cef173fdbb47ee9c85f82c7083"
+      },
+      {
+        "step": 16,
+        "seconds": 2.692084500005876,
+        "loss": 0.009127,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000016-cef72ab6aa81\\run\\seed-cnnue-v1-16",
+        "receipt_sha256": "b922448c0eed6bc4c131825bc2c114a5939f5ba94a34bfa5d8141eca937b9abc"
+      },
+      {
+        "step": 17,
+        "seconds": 2.6839956999974675,
+        "loss": 0.008971,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000017-9d4083e21439\\run\\seed-cnnue-v1-17",
+        "receipt_sha256": "5afa05728febc2e6570a9bcaf676ed433e02d13fcce4325a40906735f445f287"
+      },
+      {
+        "step": 18,
+        "seconds": 2.6844783000051393,
+        "loss": 0.0089,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000018-fc2e2e9d42cf\\run\\seed-cnnue-v1-18",
+        "receipt_sha256": "98b9c6b5f55c0e201f46fb3d22c59ad4ce2a9432869347325451e915327e8d76"
+      },
+      {
+        "step": 19,
+        "seconds": 2.8848947000005865,
+        "loss": 0.008764,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000019-c0534a53c636\\run\\seed-cnnue-v1-19",
+        "receipt_sha256": "48650c71b721affa3f9d6288fd9836f8ab248673ccb4fae8ae88caa385d434ec"
+      },
+      {
+        "step": 20,
+        "seconds": 2.684485300000233,
+        "loss": 0.008708,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000020-82756fee6dff\\run\\seed-cnnue-v1-20",
+        "receipt_sha256": "e26bcb9ce2b893a5e3e22556ef56944d98027e3dccd742ccd94cfbd2892291a4"
+      },
+      {
+        "step": 21,
+        "seconds": 2.8870317000037176,
+        "loss": 0.00859,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000021-3d3b8e675172\\run\\seed-cnnue-v1-21",
+        "receipt_sha256": "8aa97a732d91d9730795d114366f4c950fef4f457f47aba7ac12b16e2e378d35"
+      },
+      {
+        "step": 22,
+        "seconds": 2.687119200003508,
+        "loss": 0.008544,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000022-6db251869386\\run\\seed-cnnue-v1-22",
+        "receipt_sha256": "3fcce261fe0aabd32b163f5659ca0facbfa636fcf8f78f7888ff6709e5e85f74"
+      },
+      {
+        "step": 23,
+        "seconds": 2.8857683000023826,
+        "loss": 0.00844,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000023-7859b53a0b55\\run\\seed-cnnue-v1-23",
+        "receipt_sha256": "c3b776ed15186be5a48c3c0bfc9244cb38cdd726414b24ec7e4392d0531b3b4a"
+      },
+      {
+        "step": 24,
+        "seconds": 2.6882932000007713,
+        "loss": 0.008403,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000024-86eaa566ba57\\run\\seed-cnnue-v1-24",
+        "receipt_sha256": "963f1cf6363ba0f8f15453568ef3717ff007007c87abbb985a68b9450a7f13a6"
+      },
+      {
+        "step": 25,
+        "seconds": 2.68771420000121,
+        "loss": 0.00831,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000025-338bde9348b5\\run\\seed-cnnue-v1-25",
+        "receipt_sha256": "fff1077a1ec97449591a29a7892e30fc0f8d15ea6b7ba75d84641882364b897a"
+      },
+      {
+        "step": 26,
+        "seconds": 2.6840087000018684,
+        "loss": 0.00828,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000026-223227edf54b\\run\\seed-cnnue-v1-26",
+        "receipt_sha256": "82b510438b8a430e15386c3f58e3b15c2eca5e920cabe1822533871e998d53d7"
+      },
+      {
+        "step": 27,
+        "seconds": 2.6868536999973003,
+        "loss": 0.008195,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000027-8d60ab79d054\\run\\seed-cnnue-v1-27",
+        "receipt_sha256": "2bd2af0db98161b16a183e8a84909524fb297a0eca099c6e34d78144dfba204d"
+      },
+      {
+        "step": 28,
+        "seconds": 2.6845304000016768,
+        "loss": 0.008171,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000028-8cf5fed4e7f4\\run\\seed-cnnue-v1-28",
+        "receipt_sha256": "61899afe2ffacf29f886f36c97bc727a918098559afc173b5b4f56ce32b266b2"
+      },
+      {
+        "step": 29,
+        "seconds": 2.6860803000017768,
+        "loss": 0.008093,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000029-9873ad27caf4\\run\\seed-cnnue-v1-29",
+        "receipt_sha256": "e5bf38a85d6a4fade95bb334810c6e452c4c2c389639f3d21bc114af93a3356e"
+      },
+      {
+        "step": 30,
+        "seconds": 2.886589499998081,
+        "loss": 0.008073,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000030-ba53e5ef471d\\run\\seed-cnnue-v1-30",
+        "receipt_sha256": "ae6bcc53f991e2b3c4ac72915215199288c52c79d19552003509c5feb98ef1c3"
+      },
+      {
+        "step": 31,
+        "seconds": 2.6854533000005176,
+        "loss": 0.008002,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000031-fbcdd1621e9c\\run\\seed-cnnue-v1-31",
+        "receipt_sha256": "e9228e314bcd7d082053a6e119cf03ed452e936ddadb0b8b116f11d7161da0b3"
+      },
+      {
+        "step": 32,
+        "seconds": 2.6883270000034827,
+        "loss": 0.007986,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000032-c833e71ff997\\run\\seed-cnnue-v1-32",
+        "receipt_sha256": "58b620c7e9719c59341cff874c34eb6630d2e639bc2cc714c3fef91ddf9edc08"
+      },
+      {
+        "step": 33,
+        "seconds": 2.6892305000001215,
+        "loss": 0.007921,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000033-7d3ea1d8a243\\run\\seed-cnnue-v1-33",
+        "receipt_sha256": "247bc53af042660b58b0de72f5affb45c816a51390052ebc91e2298e975c84a6"
+      },
+      {
+        "step": 34,
+        "seconds": 2.6859522000013385,
+        "loss": 0.007906,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000034-241a29cd242e\\run\\seed-cnnue-v1-34",
+        "receipt_sha256": "c8346ad6c6f7f14bc96c3de0d3433850c6d89bfae519a3802550c185bd0cdfb3"
+      },
+      {
+        "step": 35,
+        "seconds": 2.688093899996602,
+        "loss": 0.007845,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000035-119ec9d3d981\\run\\seed-cnnue-v1-35",
+        "receipt_sha256": "4f2345f509b6a271a599b91989e6c770a7f4b387138d759ae13fd37899be16c5"
+      },
+      {
+        "step": 36,
+        "seconds": 2.6869986999954563,
+        "loss": 0.007834,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000036-352d8cac2973\\run\\seed-cnnue-v1-36",
+        "receipt_sha256": "76f229826efb4ccfd6f0d6f66323cc2ba5c6b33ea7723935249689e7155384d4"
+      },
+      {
+        "step": 37,
+        "seconds": 2.690303399998811,
+        "loss": 0.007778,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000037-0a790cfb8007\\run\\seed-cnnue-v1-37",
+        "receipt_sha256": "d6edd12f90cfd284957362b89f9ca7e361dec53dd4724ba9a5e2db2ae699a15f"
+      },
+      {
+        "step": 38,
+        "seconds": 2.6855332999984967,
+        "loss": 0.007768,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000038-ae1f99a5cc9a\\run\\seed-cnnue-v1-38",
+        "receipt_sha256": "f91ab47419a60c67f535370eae7158dcea09f174948a9323d1c368c91a326edc"
+      },
+      {
+        "step": 39,
+        "seconds": 2.6883297999956994,
+        "loss": 0.007717,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000039-60c2bff1a0ab\\run\\seed-cnnue-v1-39",
+        "receipt_sha256": "9eb0499318590d3136f76784aca9aedec94122f5531f74285ecd561fe0b2409d"
+      },
+      {
+        "step": 40,
+        "seconds": 2.6860861999957706,
+        "loss": 0.007708,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000040-0815e1efcad9\\run\\seed-cnnue-v1-40",
+        "receipt_sha256": "33a531b754c9cebb9b833f33f5883c4c37c867dbc3b5559f565f69926f052913"
+      },
+      {
+        "step": 41,
+        "seconds": 3.125382600002922,
+        "loss": 0.00766,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000041-6528ea54e9a6\\run\\seed-cnnue-v1-41",
+        "receipt_sha256": "a15192f4a76ec169bb172103014fcaf3dcee59aec214760e85cb81891699d04a"
+      },
+      {
+        "step": 42,
+        "seconds": 3.5039876000009826,
+        "loss": 0.007652,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000042-dfc122b88e19\\run\\seed-cnnue-v1-42",
+        "receipt_sha256": "793792022c910935d195759ede70ecf57a96b5fcbc6d3c306e9742d4530fb1af"
+      },
+      {
+        "step": 43,
+        "seconds": 3.3100766999996267,
+        "loss": 0.007607,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000043-4e9304747bd6\\run\\seed-cnnue-v1-43",
+        "receipt_sha256": "2e5f8953c8b0c556350c15ad97652ee62c8deb9a14cee5755f252b48802fda0b"
+      },
+      {
+        "step": 44,
+        "seconds": 3.5134968999991543,
+        "loss": 0.0076,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000044-89a57b24a75f\\run\\seed-cnnue-v1-44",
+        "receipt_sha256": "f3f725a98ad851daf607ea549205acffa56e081e06df9e3b5f11f3c44c5da3fc"
+      },
+      {
+        "step": 45,
+        "seconds": 3.3109460000050603,
+        "loss": 0.007558,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000045-f027b69cd32e\\run\\seed-cnnue-v1-45",
+        "receipt_sha256": "48159600fb5b7f2833c9112eed51d83a0b66caf4edabb976b7c3e869196eb0f7"
+      },
+      {
+        "step": 46,
+        "seconds": 3.3040165999991586,
+        "loss": 0.007552,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000046-e48673fdd9f8\\run\\seed-cnnue-v1-46",
+        "receipt_sha256": "14484debb745697edbc3c9234268c4f9f66d7132ad47a15bceed4b6a875adf4c"
+      },
+      {
+        "step": 47,
+        "seconds": 3.099929999996675,
+        "loss": 0.007512,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000047-62cd08739b17\\run\\seed-cnnue-v1-47",
+        "receipt_sha256": "88bbb5f0116fed9d3d526fd419c673be2af44f57353663cd7c9a6362d50049a8"
+      },
+      {
+        "step": 48,
+        "seconds": 3.2912364000003436,
+        "loss": 0.007507,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000048-c9d4ca932824\\run\\seed-cnnue-v1-48",
+        "receipt_sha256": "e0f42eed829b4ef24cde2889471f8d0737d176e2ebc8a149d0f507d3ae87b42f"
+      },
+      {
+        "step": 49,
+        "seconds": 3.293869499997527,
+        "loss": 0.00747,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000049-51b673e59113\\run\\seed-cnnue-v1-49",
+        "receipt_sha256": "f2e6efd1635454c4a91d14b51e85a2382d23eb16e170915d3a0c4ebc890aa4c5"
+      },
+      {
+        "step": 50,
+        "seconds": 3.1290096000011545,
+        "loss": 0.007465,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000050-b547fcbc9c06\\run\\seed-cnnue-v1-50",
+        "receipt_sha256": "e3462e4c251b0eb2952113a8cf1d7c8ab6fbe0b15899931f9bd7c4088c1afed1"
+      },
+      {
+        "step": 51,
+        "seconds": 3.3089925999956904,
+        "loss": 0.00743,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000051-c93f88922117\\run\\seed-cnnue-v1-51",
+        "receipt_sha256": "58e05870fab6fad789f31a189fbc7c6c4f05124316e29b1c6d6d68b74a3027dc"
+      },
+      {
+        "step": 52,
+        "seconds": 3.1110380000027362,
+        "loss": 0.007426,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000052-e0d7afdaea9e\\run\\seed-cnnue-v1-52",
+        "receipt_sha256": "0643d708f9163f2a52ac00a067af3b2301add925a0f7f3c529e30e2e6b79c31f"
+      },
+      {
+        "step": 53,
+        "seconds": 3.101210799999535,
+        "loss": 0.007392,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000053-99c69e0a46d7\\run\\seed-cnnue-v1-53",
+        "receipt_sha256": "c54511e4c99785b54f99211a23e2f04e3872f3a68064f5b47039aaed5b0120dd"
+      },
+      {
+        "step": 54,
+        "seconds": 3.299614700001257,
+        "loss": 0.007388,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000054-5eba979d60df\\run\\seed-cnnue-v1-54",
+        "receipt_sha256": "180b150c4927998b1a78a29be91a352a743b0e436c155278a5810240d7dcfad2"
+      },
+      {
+        "step": 55,
+        "seconds": 3.3500886999972863,
+        "loss": 0.007357,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000055-77d421605753\\run\\seed-cnnue-v1-55",
+        "receipt_sha256": "204e2d2846da607dd8c286be29fece71fc21f2f37281408baa9b675ad96a8bb0"
+      },
+      {
+        "step": 56,
+        "seconds": 3.3059809999977006,
+        "loss": 0.007353,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000056-ea224bb71d2b\\run\\seed-cnnue-v1-56",
+        "receipt_sha256": "2eb8074800626a772856e04aaaa22e59f0f1311a5012c2a72fa068b6c0c1b62e"
+      },
+      {
+        "step": 57,
+        "seconds": 3.103016500004742,
+        "loss": 0.007323,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000057-84ccea947517\\run\\seed-cnnue-v1-57",
+        "receipt_sha256": "b6dab2239992acc621cca12ede148d008fb5140847f797a4309e737f90115b47"
+      },
+      {
+        "step": 58,
+        "seconds": 3.0889428000009502,
+        "loss": 0.00732,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000058-675e8118cd29\\run\\seed-cnnue-v1-58",
+        "receipt_sha256": "5bbe7b966f3d033e65179938f9684697028b685d3df73ea4f1bd4a9f6ad9a1e8"
+      },
+      {
+        "step": 59,
+        "seconds": 3.289754699995683,
+        "loss": 0.007293,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000059-1d328b74d438\\run\\seed-cnnue-v1-59",
+        "receipt_sha256": "985c656a9732082fca69cdf3346b7325e8498ec3161c7479b9c2a1fc678ecf85"
+      },
+      {
+        "step": 60,
+        "seconds": 3.2870091999939177,
+        "loss": 0.007288,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000060-f93b780bd603\\run\\seed-cnnue-v1-60",
+        "receipt_sha256": "0a626c3f6f2ba6d050deefe0e9805f61c2dfb9c6088a62a12f02ed94cff7f215"
+      },
+      {
+        "step": 61,
+        "seconds": 3.323241700003564,
+        "loss": 0.007262,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000061-59b7eac2411c\\run\\seed-cnnue-v1-61",
+        "receipt_sha256": "e2319f97175dc205c7a95c78925a761ee5eacac7171f2fb03d8fbcc32ba0b550"
+      },
+      {
+        "step": 62,
+        "seconds": 3.2921581999980845,
+        "loss": 0.007259,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000062-c34760849e13\\run\\seed-cnnue-v1-62",
+        "receipt_sha256": "70405d2d6e810734feea0899d581698291709e1776c4d3a81e0b26ba91371dba"
+      },
+      {
+        "step": 63,
+        "seconds": 3.087233700003708,
+        "loss": 0.007234,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000063-5fcf48dc2cec\\run\\seed-cnnue-v1-63",
+        "receipt_sha256": "7e9a714aa73af4d413e859188456507781c5c1b895449285aca245b24708c6d0"
+      },
+      {
+        "step": 64,
+        "seconds": 3.2893659000037587,
+        "loss": 0.00723,
+        "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-training-64\\segments\\000064-70333d09e639\\run\\seed-cnnue-v1-64",
+        "receipt_sha256": "6d8207152ff6f062cb12ae0ea0d4c8826e15355eef00958bfb6e37b257ea4566"
+      }
+    ]
+  },
+  "checkpoints": {
+    "16": {
+      "validation": {
+        "zero_score_mse": 0.0659978710509739,
+        "cp_mae": 422.0811653137207,
+        "payload_sha256": "e2797fadf4c8f27bd2218984b3d6dec6fc5ae35927313e46eac1b6c56bdd50cf",
+        "positions": 524288,
+        "sigmoid_mse": 0.021569241140976757
+      },
+      "parity": {
+        "status": "PASS",
+        "positions": 128,
+        "exact_features": "Python / Java / pinned Bullet",
+        "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+        "gpu_float_max_abs_raw_error": 7.205412604037453e-07,
+        "gpu_float_tolerance": 2e-05,
+        "quantization_max_abs_cp_error": 19.418842979369707,
+        "quantization_rms_cp_error": 7.227260664534239,
+        "limitation": "Quantization error is measured separately; no strength or calibration claim"
+      },
+      "evaluation_manifest_sha256": "604682a2003b758a63be2d7472aa6fa1bd251291ab879a7104180596c3646e34",
+      "network_sha256": "58c88f2bc2841525075b867a2d07bf73d8f16d2a29c2832ee7dcb54e6ff1b6bb",
+      "local_path": "docs\\research\\conventional-nnue-cglhw\\raw\\e005-evaluation16\\network.cnnue"
+    },
+    "32": {
+      "validation": {
+        "positions": 524288,
+        "payload_sha256": "b6ba683c1c2c175b59c7b43dea24d8d59659e23fea597458adf408117c4cbc0f",
+        "cp_mae": 418.2877025604248,
+        "zero_score_mse": 0.0659978710509739,
+        "sigmoid_mse": 0.022508051211661717
+      },
+      "parity": {
+        "status": "PASS",
+        "positions": 128,
+        "exact_features": "Python / Java / pinned Bullet",
+        "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+        "gpu_float_max_abs_raw_error": 7.496404876954077e-07,
+        "gpu_float_tolerance": 2e-05,
+        "quantization_max_abs_cp_error": 28.54645164285256,
+        "quantization_rms_cp_error": 9.618488914469172,
+        "limitation": "Quantization error is measured separately; no strength or calibration claim"
+      },
+      "evaluation_manifest_sha256": "00268592b6d349b3d047750651a87027dac42e26b63cfca8834987d806f79ce9",
+      "network_sha256": "cdcb0f702d6e0b292b12cbe065ac3f3012676cd2c14573eef6f804400dae006c",
+      "local_path": "docs\\research\\conventional-nnue-cglhw\\raw\\e005-evaluation32\\network.cnnue"
+    },
+    "64": {
+      "validation": {
+        "sigmoid_mse": 0.02348351059272455,
+        "zero_score_mse": 0.0659978710509739,
+        "cp_mae": 416.6970863342285,
+        "payload_sha256": "be7384bd55a0c0f0e3089d025fc358b7accb376395b68496eca9ef11bc839412",
+        "positions": 524288
+      },
+      "parity": {
+        "status": "PASS",
+        "positions": 128,
+        "exact_features": "Python / Java / pinned Bullet",
+        "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+        "gpu_float_max_abs_raw_error": 6.750986085712896e-07,
+        "gpu_float_tolerance": 2e-05,
+        "quantization_max_abs_cp_error": 20.516445804229704,
+        "quantization_rms_cp_error": 7.683779721642234,
+        "limitation": "Quantization error is measured separately; no strength or calibration claim"
+      },
+      "evaluation_manifest_sha256": "8787b5509741fdabecb236bbca9faa4ded27ed74a519108b283987b5c94b9937",
+      "network_sha256": "563fa66b4ffb0f0082e1dc381491dec880b2f5f27973e6d68e38aaa3322b7996",
+      "local_path": "docs\\research\\conventional-nnue-cglhw\\raw\\e005-evaluation64\\network.cnnue"
+    }
+  },
+  "screens": {
+    "e005-v-e003-64": {
+      "summary": {
+        "games": 16,
+        "completed": 16,
+        "wins": 11,
+        "draws": 5,
+        "losses": 0,
+        "censored": 0,
+        "all_game_score_bounds": [
+          0.84375,
+          0.84375
+        ],
+        "score": 0.84375,
+        "elo": 292.9575039291874,
+        "paired_bootstrap_95_score": [
+          0.71875,
+          0.96875
+        ],
+        "paired_bootstrap_95_elo": [
+          162.9941306313072,
+          596.5446775337091
+        ],
+        "pairs": 8,
+        "uncertainty": "percentile bootstrap by opening; exploratory, unreliable at tiny n/boundaries; no sequential significance claim",
+        "elapsed_seconds": 62.34230679999746
+      },
+      "protocol": {
+        "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-evaluation64\\network.cnnue",
+        "network_sha256": "563fa66b4ffb0f0082e1dc381491dec880b2f5f27973e6d68e38aaa3322b7996",
+        "openings_sha256": "09e46f558260a4545b7f52fccad501b24953fc352ef8730845352a92340e2fc4",
+        "openings": [
+          {
+            "name": "Open game",
+            "moves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6"
+          },
+          {
+            "name": "Sicilian",
+            "moves": "e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6"
+          },
+          {
+            "name": "French",
+            "moves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6"
+          },
+          {
+            "name": "Caro Kann",
+            "moves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4"
+          },
+          {
+            "name": "Queens gambit",
+            "moves": "d2d4 d7d5 c2c4 e7e6 b1c3 g8f6"
+          },
+          {
+            "name": "Indian",
+            "moves": "d2d4 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6"
+          },
+          {
+            "name": "English",
+            "moves": "c2c4 e7e5 b1c3 g8f6 g1f3 b8c6"
+          },
+          {
+            "name": "Reti",
+            "moves": "g1f3 d7d5 g2g3 g8f6 f1g2 e7e6"
+          }
+        ],
+        "movetime_ms": 50,
+        "max_plies": 400,
+        "threads": 1,
+        "hash_mib": 32,
+        "use_book": false,
+        "ponder": false,
+        "concurrent_games": 1,
+        "commands": [
+          [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-Xmx512m",
+            "-Djava.awt.headless=true",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+            "com.ohinteractive.seedv6.uci.UciMain",
+            "--nnue",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-evaluation64\\network.cnnue"
+          ],
+          [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-Xmx512m",
+            "-Djava.awt.headless=true",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+            "com.ohinteractive.seedv6.uci.UciMain",
+            "--nnue",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e003-evaluation\\network.cnnue"
+          ]
+        ],
+        "jar_sha256": {
+          "app-uci.jar": "40baa6a8df4379d0022ef58c4e0e25a7854072dd7cffbf0725bba37fa14cf2ac",
+          "engine-core.jar": "7e6d218f64c8fa3147e121280ddf300e8f7d0043bfbd24a9349deb78936c5bf7"
+        },
+        "purpose": "prospective evaluator development comparison; both conventional NNUE with identical unpruned search",
+        "outcome_policy": "python-chess formal endings including claimable draws; cap censored, no score adjudication",
+        "opponent_network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e003-evaluation\\network.cnnue",
+        "opponent_network_sha256": "e0438fe5d98d288c33c7922af4d3d8f295fa090a7df8ec95e76163e89914f893"
+      },
+      "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e005-v-e003-64"
+    },
+    "e005-v-gen32-64": {
+      "summary": {
+        "games": 16,
+        "completed": 16,
+        "wins": 2,
+        "draws": 5,
+        "losses": 9,
+        "censored": 0,
+        "all_game_score_bounds": [
+          0.28125,
+          0.28125
+        ],
+        "score": 0.28125,
+        "elo": -162.9941306313072,
+        "paired_bootstrap_95_score": [
+          0.125,
+          0.4375
+        ],
+        "paired_bootstrap_95_elo": [
+          -338.0392160057027,
+          -43.65778777002721
+        ],
+        "pairs": 8,
+        "uncertainty": "percentile bootstrap by opening; exploratory, unreliable at tiny n/boundaries; no sequential significance claim",
+        "elapsed_seconds": 58.946553299996594
+      },
+      "protocol": {
+        "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-evaluation64\\network.cnnue",
+        "network_sha256": "563fa66b4ffb0f0082e1dc381491dec880b2f5f27973e6d68e38aaa3322b7996",
+        "openings_sha256": "09e46f558260a4545b7f52fccad501b24953fc352ef8730845352a92340e2fc4",
+        "openings": [
+          {
+            "name": "Open game",
+            "moves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6"
+          },
+          {
+            "name": "Sicilian",
+            "moves": "e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6"
+          },
+          {
+            "name": "French",
+            "moves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6"
+          },
+          {
+            "name": "Caro Kann",
+            "moves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4"
+          },
+          {
+            "name": "Queens gambit",
+            "moves": "d2d4 d7d5 c2c4 e7e6 b1c3 g8f6"
+          },
+          {
+            "name": "Indian",
+            "moves": "d2d4 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6"
+          },
+          {
+            "name": "English",
+            "moves": "c2c4 e7e5 b1c3 g8f6 g1f3 b8c6"
+          },
+          {
+            "name": "Reti",
+            "moves": "g1f3 d7d5 g2g3 g8f6 f1g2 e7e6"
+          }
+        ],
+        "movetime_ms": 50,
+        "max_plies": 400,
+        "threads": 1,
+        "hash_mib": 32,
+        "use_book": false,
+        "ponder": false,
+        "concurrent_games": 1,
+        "commands": [
+          [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-Xmx512m",
+            "-Djava.awt.headless=true",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+            "com.ohinteractive.seedv6.uci.UciMain",
+            "--nnue",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-evaluation64\\network.cnnue"
+          ],
+          [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-Xmx512m",
+            "-Djava.awt.headless=true",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+            "com.ohinteractive.seedv6.uci.UciMain",
+            "--model",
+            "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\production\\bre-pair2-g32.brn-pair2"
+          ]
+        ],
+        "jar_sha256": {
+          "app-uci.jar": "40baa6a8df4379d0022ef58c4e0e25a7854072dd7cffbf0725bba37fa14cf2ac",
+          "engine-core.jar": "7e6d218f64c8fa3147e121280ddf300e8f7d0043bfbd24a9349deb78936c5bf7"
+        },
+        "baseline_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "purpose": "prospective development screen; different calibrated search policies; complete-engine comparison",
+        "outcome_policy": "python-chess formal endings including claimable draws; cap censored, no score adjudication"
+      },
+      "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e005-v-gen32-64"
+    },
+    "e005-v-gen32-16": {
+      "summary": {
+        "games": 16,
+        "completed": 16,
+        "wins": 5,
+        "draws": 2,
+        "losses": 9,
+        "censored": 0,
+        "all_game_score_bounds": [
+          0.375,
+          0.375
+        ],
+        "score": 0.375,
+        "elo": -88.73949984654256,
+        "paired_bootstrap_95_score": [
+          0.1875,
+          0.53125
+        ],
+        "paired_bootstrap_95_elo": [
+          -254.72883903486974,
+          21.74306492903707
+        ],
+        "pairs": 8,
+        "uncertainty": "percentile bootstrap by opening; exploratory, unreliable at tiny n/boundaries; no sequential significance claim",
+        "elapsed_seconds": 63.401482700006454
+      },
+      "protocol": {
+        "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-evaluation16\\network.cnnue",
+        "network_sha256": "58c88f2bc2841525075b867a2d07bf73d8f16d2a29c2832ee7dcb54e6ff1b6bb",
+        "openings_sha256": "09e46f558260a4545b7f52fccad501b24953fc352ef8730845352a92340e2fc4",
+        "openings": [
+          {
+            "name": "Open game",
+            "moves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6"
+          },
+          {
+            "name": "Sicilian",
+            "moves": "e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6"
+          },
+          {
+            "name": "French",
+            "moves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6"
+          },
+          {
+            "name": "Caro Kann",
+            "moves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4"
+          },
+          {
+            "name": "Queens gambit",
+            "moves": "d2d4 d7d5 c2c4 e7e6 b1c3 g8f6"
+          },
+          {
+            "name": "Indian",
+            "moves": "d2d4 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6"
+          },
+          {
+            "name": "English",
+            "moves": "c2c4 e7e5 b1c3 g8f6 g1f3 b8c6"
+          },
+          {
+            "name": "Reti",
+            "moves": "g1f3 d7d5 g2g3 g8f6 f1g2 e7e6"
+          }
+        ],
+        "movetime_ms": 50,
+        "max_plies": 400,
+        "threads": 1,
+        "hash_mib": 32,
+        "use_book": false,
+        "ponder": false,
+        "concurrent_games": 1,
+        "commands": [
+          [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-Xmx512m",
+            "-Djava.awt.headless=true",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+            "com.ohinteractive.seedv6.uci.UciMain",
+            "--nnue",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e005-evaluation16\\network.cnnue"
+          ],
+          [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-Xmx512m",
+            "-Djava.awt.headless=true",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+            "com.ohinteractive.seedv6.uci.UciMain",
+            "--model",
+            "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\production\\bre-pair2-g32.brn-pair2"
+          ]
+        ],
+        "jar_sha256": {
+          "app-uci.jar": "40baa6a8df4379d0022ef58c4e0e25a7854072dd7cffbf0725bba37fa14cf2ac",
+          "engine-core.jar": "7e6d218f64c8fa3147e121280ddf300e8f7d0043bfbd24a9349deb78936c5bf7"
+        },
+        "baseline_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "purpose": "prospective development screen; different calibrated search policies; complete-engine comparison",
+        "outcome_policy": "python-chess formal endings including claimable draws; cap censored, no score adjudication"
+      },
+      "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e005-v-gen32-16"
+    }
+  },
+  "benchmark64": {
+    "network": "be7384bd55a0c0f0e3089d025fc358b7accb376395b68496eca9ef11bc839412",
+    "load_ms": 67.9965,
+    "legal_transitions": 255,
+    "pair2_rolling_plus_head_ns_per_eval": [
+      90.395,
+      92.5,
+      87.305
+    ],
+    "full_refresh_plus_head_ns_per_eval": [
+      4643.07,
+      4730.955,
+      4674.32
+    ],
+    "incremental_plus_head_ns_per_eval": [
+      1523.73,
+      1497.48,
+      1486.895
+    ],
+    "incremental_allocated_bytes_20000": 0,
+    "limitation": "one deterministic legal walk; microbenchmark only; no NPS/Elo inference"
+  },
+  "train_sample64": {
+    "cp_mae": 303.71490478515625,
+    "payload_sha256": "be7384bd55a0c0f0e3089d025fc358b7accb376395b68496eca9ef11bc839412",
+    "positions": 16384,
+    "sigmoid_mse": 0.007044798853577375,
+    "zero_score_mse": 0.06217132857895576
+  },
+  "mixed_sample64": {
+    "sigmoid_mse": 0.008015022927072719,
+    "zero_score_mse": 0.06232009912577168,
+    "cp_mae": 309.0194738051471,
+    "payload_sha256": "be7384bd55a0c0f0e3089d025fc358b7accb376395b68496eca9ef11bc839412",
+    "positions": 17408
+  },
+  "uci16": {
+    "status": "PASS",
+    "workers": 1,
+    "network": "docs\\research\\conventional-nnue-cglhw\\raw\\e005-evaluation16\\network.cnnue",
+    "identity": [
+      "id name SeedV6 conventional NNUE opt-in 0.0.0 (build 62)",
+      "id author Charles Clark",
+      "option name Threads type spin default 1 min 1 max 16",
+      "option name Hash type spin default 64 min 1 max 1024",
+      "option name Clear Hash type button",
+      "option name UseBook type check default false",
+      "option name OwnBook type check default false",
+      "info string evaluator=CONVENTIONAL_NNUE schema=S6CNU001 payload=e2797fadf4c8f27bd2218984b3d6dec6fc5ae35927313e46eac1b6c56bdd50cf search=recursive-unpruned-qsearch workers=1 hashMiB=64 build=62 source=c204e4082f91 (uncommitted changes) ttMiB=64",
+      "uciok"
+    ],
+    "searches": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "bestmove": "e2e4",
+        "last_info": "info depth 5 score cp 52 nodes 34383 time 169 nps 203012 pv e2e4 e7e5 g1f3 g8f6 b1c3"
+      },
+      {
+        "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+        "bestmove": "e4d5",
+        "last_info": "info depth 4 score cp 219 nodes 59488 time 156 nps 380153 pv e4d5 e6d5 f3e5 c6e5 d4e5 d5g2 e5f6 g2h1 f6g7"
+      },
+      {
+        "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+        "bestmove": "e5d6",
+        "last_info": "info depth 10 score cp 0 nodes 75142 time 134 nps 558957 pv e5d6 e8d7 e1d1 d7d6"
+      },
+      {
+        "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+        "bestmove": "h2h1q",
+        "last_info": "info depth 8 score cp 1544 nodes 51998 time 67 nps 766953 pv h2h1q e1d2 h1a8 d2c2 e8d7 c2b2 d7e6 b2b1 a8a7"
+      }
+    ],
+    "lifecycle": "stop/readiness/newgame/repeated search/quit passed"
+  },
+  "uci64": {
+    "status": "PASS",
+    "workers": 1,
+    "network": "docs\\research\\conventional-nnue-cglhw\\raw\\e005-evaluation64\\network.cnnue",
+    "identity": [
+      "id name SeedV6 conventional NNUE opt-in 0.0.0 (build 62)",
+      "id author Charles Clark",
+      "option name Threads type spin default 1 min 1 max 16",
+      "option name Hash type spin default 64 min 1 max 1024",
+      "option name Clear Hash type button",
+      "option name UseBook type check default false",
+      "option name OwnBook type check default false",
+      "info string evaluator=CONVENTIONAL_NNUE schema=S6CNU001 payload=be7384bd55a0c0f0e3089d025fc358b7accb376395b68496eca9ef11bc839412 search=recursive-unpruned-qsearch workers=1 hashMiB=64 build=62 source=c204e4082f91 (uncommitted changes) ttMiB=64",
+      "uciok"
+    ],
+    "searches": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "bestmove": "g1f3",
+        "last_info": "info depth 5 score cp 56 nodes 35184 time 167 nps 209739 pv g1f3 g8f6 c2c4 e7e6 d2d4"
+      },
+      {
+        "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+        "bestmove": "e4d5",
+        "last_info": "info depth 4 score cp 204 nodes 58445 time 143 nps 406594 pv e4d5 e6d5 f3e5 c6e5 d4e5 d5g2"
+      },
+      {
+        "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+        "bestmove": "e5d6",
+        "last_info": "info depth 11 score cp 0 nodes 200318 time 265 nps 755753 pv e5d6 e8d7 e1d1 d7d6"
+      },
+      {
+        "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+        "bestmove": "h2h1q",
+        "last_info": "info depth 8 score cp 2011 nodes 83700 time 103 nps 809581 pv h2h1q e1e2 e8d7 e2f2 h1a8 f2g1 d7d6 g1h2 a8a7"
+      }
+    ],
+    "lifecycle": "stop/readiness/newgame/repeated search/quit passed"
+  },
+  "decision": "Stop additional epochs on fixed E005 sample; E006 expands coverage from selected checkpoint16, with identical heldout cohort and unchanged architecture/recipe. All E005 checkpoints preserved.",
+  "limits": [
+    "Development openings reused; not independent confirmation or conclusive Elo",
+    "Training-only diagnostic uses 16,384 distributed samples, not every training position",
+    "UCI one-worker runtime checked for new candidates; existing two-worker code unchanged",
+    "No production acceptance, full suite, GUI or new search policy"
+  ]
+}

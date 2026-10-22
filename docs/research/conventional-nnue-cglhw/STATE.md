@@ -136,16 +136,26 @@ as a separately declared immutable experiment. Keep15-minute user-facing reports
 (or more frequent host updates); asynchronous tool sessions currently support them.
 No programme-level blocker has been established. Continue across unit boundaries.
 
-E005 is now selected: globally sampled BT4, correct Q-to-logit400 supervision,
-unchanged conventional256 architecture/search, fresh4096 batch and persisted
-StepLR(.001,.5 every128 global superbatches). Data preparation and verification
-passed; read E005.md, e005-data-manifest.json and e005-pretraining-evidence.json.
-Start/resume `nnue-control.cmd train docs/research/conventional-nnue-cglhw/e005-training-64-config.json`
-with local CUDA runtime PATH. Reuse completed segments; evaluate checkpoint64 with
-raw/e005-data/probes.fens and validation.txt, compare E003 MSE.036039 on that cohort,
-then correctness/runtime/UCI/development screen. Continue a justified next stage
-or alternative; do not stop the programme on a negative screen. Current owner
-permission remains NORMAL generation3 with no expiry.
+E005 completed 64 checkpoints/268,435,456 exposures. Same-search comparison with
+E003 improved to11W/5D/0L; production Gen32 still leads (2W/5D/9L at64). Held-out
+MSE worsened16/32/64=.021569/.022508/.023484 while training-sample MSE fell to.007045.
+All three parity checks passed. Saved checkpoint16's Gen32 screen was5W/2D/9L.
+These are small reused development screens, not competitive acceptance. Read E005.md
+and e005-stage-results.json. All checkpoints remain intact; no additional fixed-data
+E005 epochs are selected. E00516 is a research continuation point, not a replacement
+for the documented E002 opt-in handoff or production Gen32.
+
+E006 now selected: fourfold training coverage using the same shuffled BT4 chunk
+sequence and identical held-out cohort, unchanged256 architecture, teacher-only
+Q-logit400 target,4096 batch,1024 batches/checkpoint and global StepLR(.001,.5/128).
+Read E006.md. `raw/e006-data` is complete and verified:33,554,432 training/524,288
+validation; all stored labels/results plus66,560 upstream packing comparisons pass.
+E005 validation/probes are byte-identical. The labelled data-fork plan is
+`e006-training-64-config.json`, from E005 checkpoint16, global17..64, preserving
+weights/momentum/velocity. Next start/resume through `nnue-control.cmd train` with
+that config and the local CUDA runtime PATH; verify checkpoint64 on the unchanged
+BT4 holdout, then UCI/runtime/Gen32 screen if coherent. Continue justified work.
+Do not repeat extraction or completed E005 work. Owner NORMAL generation3, no expiry.
 
 Raw tools/output: `build/conventional-nnue/`; upstream source clone:
 `build/conventional-nnue/upstream/bullet` at

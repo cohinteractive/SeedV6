@@ -51,8 +51,11 @@ def main():
     p.add_argument('--max-plies',type=int,default=400)
     p.add_argument('--resume',action='store_true',help='Verify frozen protocol; skip completed games, replay any interrupted game')
     p.add_argument('--selective-research-classes',type=Path,help='Explicit unaccepted one-worker NNUE research launcher classes')
+    p.add_argument('--opponent-network',type=Path,help='Frozen conventional NNUE opponent with the same unpruned search; evaluator comparison')
     a=p.parse_args()
     compute_gate.require()
+    if a.opponent_network and a.selective_research_classes:
+        raise ValueError('The NNUE comparison holds search fixed; omit selective research classes')
     if not 10<=a.movetime_ms<=1000 or not 100<=a.max_plies<=1000:raise ValueError('Unbounded match settings')
     openings=json.loads(a.openings.read_text());assert 1<=len(openings)<=128
     a.output.mkdir(parents=True,exist_ok=a.resume)
@@ -61,6 +64,7 @@ def main():
     base=['C:/java/jdk-21/bin/java.exe','-XX:ActiveProcessorCount=1','-Xmx512m','-Djava.awt.headless=true',
         '-cp',str(jars/'*'),'com.ohinteractive.seedv6.uci.UciMain']
     commands=[base+['--nnue',str(a.network.resolve())],base+['--model',str(root/'build-assets/production/bre-pair2-g32.brn-pair2')]]
+    if a.opponent_network:commands[1]=base+['--nnue',str(a.opponent_network.resolve())]
     if a.selective_research_classes:
         classes=a.selective_research_classes.resolve()
         if not (classes/'SeedNnueSelectiveResearch.class').is_file():raise ValueError('Missing research launcher')
@@ -75,6 +79,10 @@ def main():
     if a.selective_research_classes:
         protocol['selective_research_classes_sha256']={f.name:sha(f) for f in classes.glob('*.class')}
         protocol['candidate_policy']='Unaccepted NNUE research composition; no inherited Policy4 strength claim'
+    if a.opponent_network:
+        protocol.pop('baseline_sha256')
+        protocol.update(opponent_network=str(a.opponent_network.resolve()),opponent_network_sha256=sha(a.opponent_network),
+            purpose='prospective evaluator development comparison; both conventional NNUE with identical unpruned search')
     games=[]
     if a.resume:
         if json.loads((a.output/'protocol.json').read_text())!=protocol:

@@ -64,7 +64,7 @@ public final class PrepareBt4 {
         var manifest=PreparedBinpack.ready(source);var directory=PreparedBinpack.directory(source);
         int trainUnits=Integer.parseInt(args[2]),valUnits=Integer.parseInt(args[3]),quota=Integer.parseInt(args[4]);
         long seed=Long.parseLong(args[5]);
-        if(trainUnits<1||valUnits<1||quota<128||quota>65536||(long)trainUnits*quota>16777216)
+        if(trainUnits<1||valUnits<1||quota<128||quota>65536||(long)trainUnits*quota>33554432)
             throw new IllegalArgumentException("Outside bounded extraction limits");
         var out=Path.of(args[1]);Files.createDirectory(out);
         var indices=new ArrayList<Integer>();for(int i=0;i<manifest.units().size();i++)indices.add(i);

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "training_records": 33554432,
+  "proof_records": 66560,
+  "all_training_links_and_results_verified": true,
+  "all_frozen_file_hashes_verified": true,
+  "proof_packing_identical_to_upstream": true,
+  "maximum_probability_error_over_encoding_range": 0.00031125306735640956,
+  "manifest_sha256": "728691ec04d8b2e45749b6b04ea951f810ac00342c9907d39ce90116ea9fb0ba",
+  "trainer_sha256": "fd7cb13c0430ed725af2cf85f9464d12fc4ae5f14141265e15b37b2c3587b44a",
+  "limitation": "All stored labels/provenance checked; board packing compared with upstream on distributed proof sample. Reuses existing tested BINP decoder, without independent source redecoding.",
+  "validation_and_probes_identical_to_e005": true,
+  "validation_units_identical_to_e005": true,
+  "extractor_sha256": "43636dd6ce2ccccf753cf5615489aa84e4b1768a09508c95b4f01b131535c777",
+  "local_evidence": "docs\\research\\conventional-nnue-cglhw\\raw\\e006-data",
+  "sampling_manifest": "docs\\research\\conventional-nnue-cglhw\\e006-data-manifest.json"
+}
