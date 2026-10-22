@@ -148,5 +148,116 @@
     "Frozen inference/export are reproducible; GPU training continuation is not promised bitwise deterministic.",
     "Raw datasets/checkpoints/models/runtime copies are local ignored evidence, absent from a fresh checkout.",
     "E009 final outcome/audit and final handoff runtime smoke remain pending."
-  ]
+  ],
+  "baseline": {
+    "path": "build-assets\\production\\bre-pair2-g32.brn-pair2",
+    "sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "bytes": 795032
+  },
+  "frozen_comparisons": {
+    "e008": {
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
+      "network_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+      "openings_sha256": "888bfea5e2cac197ea0dceacf83a8f706e5854dc8580642efbbf59e3afe1f64d",
+      "movetime_ms": 200,
+      "max_plies": 800,
+      "threads": 1,
+      "hash_mib": 32,
+      "use_book": false,
+      "ponder": false,
+      "concurrent_games": 1,
+      "commands": [
+        [
+          "C:/java/jdk-21/bin/java.exe",
+          "--add-modules=jdk.incubator.vector",
+          "-XX:ActiveProcessorCount=1",
+          "-Xmx512m",
+          "-Djava.awt.headless=true",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*;C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\e008-classes",
+          "SeedNnueSelectiveResearch",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue"
+        ],
+        [
+          "C:/java/jdk-21/bin/java.exe",
+          "--add-modules=jdk.incubator.vector",
+          "-XX:ActiveProcessorCount=1",
+          "-Xmx512m",
+          "-Djava.awt.headless=true",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+          "com.ohinteractive.seedv6.uci.UciMain",
+          "--model",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\production\\bre-pair2-g32.brn-pair2"
+        ]
+      ],
+      "jar_sha256": {
+        "app-uci.jar": "13700633582996c46f62d70509c3742b256d32a973ca9e65aff7e8295bd276c8",
+        "engine-core.jar": "066195fa7cabe27dc942833038b83e038739c1db2cd7acce6b23b24fe87c873b"
+      },
+      "baseline_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "purpose": "prospective fixed-sample paired confirmation; frozen candidates/settings/openings; final endpoint only",
+      "outcome_policy": "python-chess formal endings including claimable draws; cap censored, no score adjudication",
+      "selective_research_classes_sha256": {
+        "SeedNnueSelectiveResearch$1.class": "5a4e0daed153015eb7a7d07c94a3c943bf6faf549e745b270b8842f1c7a915df",
+        "SeedNnueSelectiveResearch.class": "af1ca54f4a074fa61e5d6ce49cfcf49103bde93d4c3c70c76f997038e01fdf2c"
+      },
+      "candidate_policy": "Unaccepted NNUE research composition; no inherited Policy4 strength claim",
+      "protocol_sha256": "fc95ebcab98d00d64e3eb7c2e7613d899ae9a1201c2d8c840addcdefd3b9a114",
+      "opening_file": "docs\\research\\conventional-nnue-cglhw\\e008-confirmation-openings.json",
+      "opening_pairs": 64
+    },
+    "e009": {
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue",
+      "network_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+      "openings_sha256": "c715626081a42a353d0071f1aaafbd91143b013dea747b38387bbeeb7dd7291f",
+      "movetime_ms": 1000,
+      "max_plies": 800,
+      "threads": 1,
+      "hash_mib": 32,
+      "use_book": false,
+      "ponder": false,
+      "concurrent_games": 1,
+      "commands": [
+        [
+          "C:/java/jdk-21/bin/java.exe",
+          "--add-modules=jdk.incubator.vector",
+          "-XX:ActiveProcessorCount=1",
+          "-Xmx512m",
+          "-Djava.awt.headless=true",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*;C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\e008-classes",
+          "SeedNnueSelectiveResearch",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-evaluation64\\network.cnnue"
+        ],
+        [
+          "C:/java/jdk-21/bin/java.exe",
+          "--add-modules=jdk.incubator.vector",
+          "-XX:ActiveProcessorCount=1",
+          "-Xmx512m",
+          "-Djava.awt.headless=true",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\app-uci\\build\\install\\seedv6-uci\\lib\\*",
+          "com.ohinteractive.seedv6.uci.UciMain",
+          "--model",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\production\\bre-pair2-g32.brn-pair2"
+        ]
+      ],
+      "jar_sha256": {
+        "app-uci.jar": "13700633582996c46f62d70509c3742b256d32a973ca9e65aff7e8295bd276c8",
+        "engine-core.jar": "066195fa7cabe27dc942833038b83e038739c1db2cd7acce6b23b24fe87c873b"
+      },
+      "baseline_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "purpose": "prospective fixed-sample paired confirmation; frozen candidates/settings/openings; final endpoint only",
+      "outcome_policy": "python-chess formal endings including claimable draws; cap censored, no score adjudication",
+      "selective_research_classes_sha256": {
+        "SeedNnueSelectiveResearch$1.class": "5a4e0daed153015eb7a7d07c94a3c943bf6faf549e745b270b8842f1c7a915df",
+        "SeedNnueSelectiveResearch.class": "af1ca54f4a074fa61e5d6ce49cfcf49103bde93d4c3c70c76f997038e01fdf2c"
+      },
+      "candidate_policy": "Unaccepted NNUE research composition; no inherited Policy4 strength claim",
+      "protocol_sha256": "159bae7a3f3a31e43a3d3404a606d792d4b846dcb4fc48ebb24fcadd1624ccdf",
+      "opening_file": "docs\\research\\conventional-nnue-cglhw\\e009-confirmation-openings.json",
+      "opening_pairs": 64
+    }
+  }
 }
