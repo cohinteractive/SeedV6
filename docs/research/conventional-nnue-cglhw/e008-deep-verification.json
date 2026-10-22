@@ -1,0 +1,173 @@
+{
+  "status": "PASS",
+  "depth5_positions": [
+    {
+      "status": "PASS",
+      "depth": 5,
+      "score": 39,
+      "nodes": 12159,
+      "qnodes": 9793,
+      "selective": true,
+      "elapsed_ns": 1349756500,
+      "fen": "r1bqkbnr/1ppp1ppp/p1n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 4"
+    },
+    {
+      "status": "PASS",
+      "depth": 5,
+      "score": 62,
+      "nodes": 35619,
+      "qnodes": 30377,
+      "selective": true,
+      "elapsed_ns": 3064673000,
+      "fen": "rnbqkb1r/pp2pppp/3p1n2/8/3NP3/8/PPP2PPP/RNBQKB1R w KQkq - 1 5"
+    },
+    {
+      "status": "PASS",
+      "depth": 5,
+      "score": 198,
+      "nodes": 22172,
+      "qnodes": 19098,
+      "selective": true,
+      "elapsed_ns": 2062932300,
+      "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/3PP3/2N5/PPP2PPP/R1BQKBNR w KQkq - 2 4"
+    },
+    {
+      "status": "PASS",
+      "depth": 5,
+      "score": -145,
+      "nodes": 19530,
+      "qnodes": 15845,
+      "selective": true,
+      "elapsed_ns": 1705118200,
+      "fen": "rnbqkbnr/pp2pppp/2p5/8/3PN3/8/PPP2PPP/R1BQKBNR b KQkq - 0 4"
+    },
+    {
+      "status": "PASS",
+      "depth": 5,
+      "score": 47,
+      "nodes": 18247,
+      "qnodes": 15329,
+      "selective": true,
+      "elapsed_ns": 1625103200,
+      "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 2 4"
+    },
+    {
+      "status": "PASS",
+      "depth": 5,
+      "score": 127,
+      "nodes": 31284,
+      "qnodes": 26282,
+      "selective": true,
+      "elapsed_ns": 2747188100,
+      "fen": "rnbqk2r/ppp1ppbp/3p1np1/8/2PPP3/2N5/PP3PPP/R1BQKBNR w KQkq - 0 5"
+    },
+    {
+      "status": "PASS",
+      "depth": 5,
+      "score": 80,
+      "nodes": 12856,
+      "qnodes": 10365,
+      "selective": true,
+      "elapsed_ns": 1091332200,
+      "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p3/2P5/2N2N2/PP1PPPPP/R1BQKB1R w KQkq - 4 4"
+    },
+    {
+      "status": "PASS",
+      "depth": 5,
+      "score": 59,
+      "nodes": 9425,
+      "qnodes": 7044,
+      "selective": true,
+      "elapsed_ns": 791757000,
+      "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/8/5NP1/PPPPPPBP/RNBQK2R w KQkq - 0 4"
+    },
+    {
+      "status": "PASS",
+      "depth": 5,
+      "score": 81,
+      "nodes": 8080,
+      "qnodes": 6106,
+      "selective": true,
+      "elapsed_ns": 677883300,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    },
+    {
+      "status": "PASS",
+      "depth": 5,
+      "score": 176,
+      "nodes": 37472,
+      "qnodes": 33655,
+      "selective": true,
+      "elapsed_ns": 3388919500,
+      "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1"
+    },
+    {
+      "status": "PASS",
+      "depth": 5,
+      "score": 0,
+      "nodes": 556,
+      "qnodes": 397,
+      "selective": true,
+      "elapsed_ns": 30433900,
+      "fen": "4k3/8/8/3n4/4P3/8/8/4K3 w - - 0 1"
+    },
+    {
+      "status": "PASS",
+      "depth": 5,
+      "score": 7,
+      "nodes": 670,
+      "qnodes": 469,
+      "selective": true,
+      "elapsed_ns": 37700500,
+      "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1"
+    },
+    {
+      "status": "PASS",
+      "depth": 5,
+      "score": 1044,
+      "nodes": 6483,
+      "qnodes": 5090,
+      "selective": true,
+      "elapsed_ns": 438656700,
+      "fen": "4k2r/8/8/3pP3/8/8/8/R3K3 w - d6 0 1"
+    },
+    {
+      "status": "PASS",
+      "depth": 5,
+      "score": 2304,
+      "nodes": 2262,
+      "qnodes": 2041,
+      "selective": true,
+      "elapsed_ns": 117856400,
+      "fen": "7k/P7/8/8/8/8/8/7K w - - 0 1"
+    }
+  ],
+  "aggregate_nodes": 216815,
+  "aggregate_qnodes": 181891,
+  "combined_search_seconds": 19.1293108,
+  "oracle_source_sha256": "426bc01c4efa2fbc87aabf8dd0820bcd1c8abe65e8bb05765a7b66670fbc6aaf",
+  "oracle_class_sha256": "0b71cba6b9f072f4c1c8f479149bba70a2c6a8450b58fcedc8c62d5c36e56e37",
+  "oracle_log_sha256": "d8c671076981e9f362e34ec7a12bed041987dde567423b7c665074794bdfe2a9",
+  "roots_sha256": "c67bbe6c46dec33190fa144764fc8a29f690b4ebd980e4ed440809d14a682da0",
+  "unchanged_frozen_launcher_classes": {
+    "SeedNnueSelectiveResearch$1.class": "5a4e0daed153015eb7a7d07c94a3c943bf6faf549e745b270b8842f1c7a915df",
+    "SeedNnueSelectiveResearch.class": "af1ca54f4a074fa61e5d6ce49cfcf49103bde93d4c3c70c76f997038e01fdf2c"
+  },
+  "completed_resume": "All frozen games already completed; no engines launched",
+  "completed_resume_log_sha256": "1183c4f67414d7435c65e8cbd20109bf50f4f0b84e259618a830a087ecc756fd",
+  "opening_prefix_coverage": {
+    "4": {
+      "distinct_prefixes": 32,
+      "largest_group": 6
+    },
+    "8": {
+      "distinct_prefixes": 54,
+      "largest_group": 4
+    },
+    "12": {
+      "distinct_prefixes": 64,
+      "largest_group": 1
+    }
+  },
+  "limits": "Same selective search with independent full-rebuild inference; not mathematical exactness of pruning or independent proof every heuristic fired. Short-prefix family overlap remains despite distinct roots."
+}

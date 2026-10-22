@@ -74,3 +74,14 @@ From the repository root, after opening selection and frozen identity checks:
 For an interrupted existing protocol, use the same options plus `--resume` and a
 fresh controller log path. Reconcile persisted control/processes first. Never
 silently restore NORMAL or rebuild the frozen runtime during unfinished games.
+
+## Activation and frozen inputs
+
+E008 completed84W/26D/18L,no caps,gate passed; full game/artifact audit and14-root
+depth5 independent-inference comparison passed. Conditional activation is satisfied.
+The64 new roots are legal,nonterminal and explicitly disjoint from actual E007 and
+E008 confirmation roots. Seed2026102303;40462 source games,28862 recorded prior
+roots,12203 excluded source positions,28259 available. Selected opening file SHA256:
+c715626081a42a353d0071f1aaafbd91143b013dea747b38387bbeeb7dd7291f.
+Selection manifest records every exclusion source/hash. Commit these inputs before
+the first E009 game. This activation changes no candidate or inferential rule.

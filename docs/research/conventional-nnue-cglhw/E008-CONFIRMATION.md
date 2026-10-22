@@ -41,3 +41,30 @@ inconclusive endpoint triggers the next justified work,not programme termination
 Run through nnue-control.cmd with --vector --confirmation and the frozen selective
 research class directory. NORMAL has no expiry. Continue active user-facing reports;
 completed games survive hold and an interrupted game alone restarts on exact resume.
+
+## Completed endpoint
+
+84W/26D/18L,128 games/64 pairs,no caps,in2280.46s. Paired score.7578125,
+descriptive Elo+198.16. Paired bootstrap95% [+143.33,+263.78] and paired
+normal95% [+141.67,+266.19]; both frozen lower bounds exceed zero. The statistical
+gate PASSED for this complete-engine composition at200ms/one worker on this
+hardware/opening distribution. No universal Elo, pure evaluator-only gain,
+production selection or Search Phase3/owner acceptance follows.
+
+All128 games passed full legal replay,opening histories,colors,move details and
+outcome checks; all network,opening,jars,baseline and launcher-class hashes passed.
+102 checkmates,24 threefold draws,2 fifty-move draws. All owned match processes
+exited. Read e008-confirmation-results.json; preserve raw/e008-confirmation and
+its audit log. The original E00742W/42D/44L unpruned result remains unchanged.
+
+Additional targeted validation passed at14 depth5 roots (216815 nodes,181891
+qnodes): exact scores,moves,PV,nodes/qnodes and selective provenance matched
+independent full-rebuild inference. This broadens beyond depth3, where non-root
+LMR cannot run; it is not proof every heuristic fired or mathematical exactness
+of selective pruning. The frozen research launcher classes were unchanged.
+Completed-protocol resume with the atomic-ledger harness launched no engines.
+Read e008-deep-verification.json and SeedNnueSelectiveOracle.java.
+
+E009's already-frozen conditional longer-clock test is now eligible. Execute it
+without tuning this candidate; assess handoff readiness against that independent
+result. The programme continues through this validation, not a premature closeout.

@@ -1,7 +1,8 @@
 # Conventional NNUE state
 
 23 October2026 Auckland. **ACTIVE under explicit extended overnight authorization. NORMAL
-has no expiry. A operational; B available; competitive confirmation is in progress. The
+has no expiry. A operational; B available; C passed at200ms with scoped evidence;
+independent longer-clock validation is next. The
 owner corrected the earlier programme stop: reject failed directions, select the
 next justified approach and continue. No production promotion or owner acceptance.**
 Read CONTRACT.md, COMPUTE-CONTROL.md, E007-CONFIRMATION.md and E008-CONFIRMATION.md. This
@@ -34,8 +35,9 @@ Milestones 1..3 and stable opt-in availability B are technically verified. Curre
 candidate is E007 checkpoint64, S6CNU002/eight material heads, optional vector
 inference on frozen build64. Its unpruned independent confirmation was inconclusive
 (42W/42D/44L). E008 tests the identical network with an explicit research-only
-selective composition; its fixed128-game confirmation is running. C remains open
-until the final audited endpoint. Do not substitute historical E002/E003 candidates
+selective composition; its fixed128-game confirmation finished84W/26D/18L,no caps,
+paired95% Elo roughly+142..+266. All game/artifact audits passed. E009 is the frozen
+independent1000ms follow-up. Do not substitute historical E002/E003 candidates
 or repeat finished training. Exact current start/resume instructions are at the end.
 No owner acceptance or production promotion is inferred.
 
@@ -187,10 +189,18 @@ screen12W/1D/3L,all uncensored. Six independent selective search roots,actual UC
 and provenance guards passed. Read E008.md,e008-verification.json and both results.
 This is promising development evidence,not C. No training/network bytes changed.
 
-Current next/start-resume: E008-CONFIRMATION.md freezes128 games/64 new unused
-opening pairs at200ms,800-ply censoring,one worker,32MiB,no book/ponder. Use
-raw/e007-evaluation64/network.cnnue,e008-confirmation-openings.json,output
-raw/e008-confirmation,and --vector --confirmation --selective-research-classes
+E008 confirmation completed84W/26D/18L,no caps,in2280.46s; statistical gate passed
+at200ms,paired95% Elo roughly+142..+266. All128 game replays and frozen artifacts
+passed. All owned match processes exited. Preserve e008-confirmation-results.json
+and E008-CONFIRMATION.md. A separate14-root depth5 independent full-rebuild oracle
+matched score/move/PV/nodes/qnodes/provenance; completed-match resume launched no
+engines. Read e008-deep-verification.json. This is a complete-engine research gain;
+it does not establish pure evaluator causation,default promotion or Phase3 acceptance.
+
+Current next/start-resume: E009-ROBUSTNESS.md freezes128 games/64 new unused
+opening pairs at1000ms,800-ply censoring,one worker,32MiB,no book/ponder. Use
+raw/e007-evaluation64/network.cnnue,e009-confirmation-openings.json,output
+raw/e009-confirmation,and --vector --confirmation --selective-research-classes
 build/conventional-nnue/e008-classes. All repository-relative NNUE record paths
 are under this directory except the class path. Add --resume only for the same
 started protocol. Keep installed build64 jars and e008 classes frozen. Exact
@@ -198,11 +208,12 @@ runtime copies are in e007-confirmation-runtime.json. The extended analyzer now
 rechecks launcher classes as well as all other artifacts and full game replay.
 Final paired endpoint only; no interim acceptance or optional extension. Continue
 justified work after reconciling the result. Maintain active owner-facing reports.
-E009-ROBUSTNESS.md freezes a conditional independent128-game/1000ms follow-up if
-E008 passes its final gate and audit; no E009 games or opening selection yet.
-This checks longer-clock readiness without model/search changes. Its fixed plan
-does not alter E008 stopping or imply an interim acceptance decision.
-Production default remains Gen32; C remains unmet. Continue justified
+E009's conditional activation is satisfied. The64 selected roots and source/output
+hashes are frozen in its selection manifest; disjointness from both actual E007/E008
+confirmation root sets was checked. No E009 games at this update. Its independent
+endpoint checks longer-clock readiness without model/search changes. Do not pool
+clock conditions or relabel old tuning evidence as independent confirmation.
+Production default remains Gen32; C has scoped positive200ms evidence. Continue justified
 work units autonomously; no programme stop follows a candidate rejection.
 
 Persisted owner permission remains NORMAL generation3 with no expiry at this
