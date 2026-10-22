@@ -40,18 +40,20 @@ class PlayPresentationTest {
         assertTrue(PlayScore.from(info("cp 29999", Value.WHITE), false).whiteFraction() < 1);
     }
 
-    @Test void scoresheetKeepsCoordinateNotationAndBlackFirstFenAlignment() throws Exception {
+    @Test void scoresheetKeepsSanAndBlackFirstFenAlignment() throws Exception {
         edt(() -> {
             SeedTheme.initialize();
             MoveScoresheet sheet = new MoveScoresheet();
             JTable table = descendants(sheet, JTable.class);
-            var start = position("4k3/8/8/8/8/8/8/R3K3 b - - 0 17", List.of());
-            sheet.showPosition(start); assertEquals(0, table.getRowCount());
-            sheet.showPosition(position("3k4/8/8/8/8/8/8/R3K3 w - - 1 18", List.of("e8d8")));
-            assertEquals(17, table.getValueAt(0, 0)); assertEquals("", table.getValueAt(0, 1));
-            assertEquals("e8d8", table.getValueAt(0, 2));
-            sheet.showPosition(position("3k4/8/8/8/8/8/R7/4K3 b - - 2 18", List.of("e8d8", "a1a2")));
-            assertEquals(18, table.getValueAt(1, 0)); assertEquals("a1a2", table.getValueAt(1, 1));
+            GameSession session = GameSession.fromFen("4k3/8/8/8/8/8/8/R3K3 b - - 0 17");
+            sheet.showPosition(historyPosition(session, session.playedMoves())); assertEquals(0, table.getRowCount());
+            session.applyIntent(60, 59, com.ohinteractive.seedv6.core.move.MoveIntent.Promotion.NONE);
+            sheet.showPosition(historyPosition(session, session.playedMoves()));
+            assertEquals("17.", table.getValueAt(0, 0)); assertEquals("", table.getValueAt(0, 1));
+            assertEquals("Kd8", ((PlayedMove) table.getValueAt(0, 3)).san());
+            session.applyIntent(0, 8, com.ohinteractive.seedv6.core.move.MoveIntent.Promotion.NONE);
+            sheet.showPosition(historyPosition(session, session.playedMoves()));
+            assertEquals("18.", table.getValueAt(1, 0)); assertEquals("Ra2", ((PlayedMove) table.getValueAt(1, 1)).san());
             sheet.showPosition(position(Board.FEN_STARTING_POSITION, List.of())); assertEquals(0, table.getRowCount());
         });
     }
@@ -61,20 +63,31 @@ class PlayPresentationTest {
         final JScrollPane pane = edt(() -> descendants(sheet, JScrollPane.class));
         final JTable table = edt(() -> descendants(sheet, JTable.class));
         edt(() -> { pane.setSize(500, 180); pane.doLayout(); sheet.showPosition(position(Board.FEN_STARTING_POSITION, List.of())); });
-        edt(() -> sheet.showPosition(position(Board.FEN_STARTING_POSITION, java.util.Collections.nCopies(80, "e2e4"))));
+        edt(() -> sheet.showPosition(historyFixture(80)));
         edt(() -> {});
         edt(() -> {
             pane.doLayout(); pane.getViewport().doLayout();
             assertTrue(pane.getVerticalScrollBar().getValue() > 0, "New moves follow bottom");
             pane.getVerticalScrollBar().setValue(60);
-            sheet.showPosition(position(Board.FEN_STARTING_POSITION, java.util.Collections.nCopies(82, "e2e4")));
+            sheet.showPosition(historyFixture(82));
         });
         edt(() -> {});
         edt(() -> {
             assertEquals(60, pane.getVerticalScrollBar().getValue());
-            sheet.showPosition(position(Board.FEN_STARTING_POSITION, java.util.Collections.nCopies(82, "e2e4")));
+            sheet.showPosition(historyFixture(82));
             assertEquals(60, pane.getVerticalScrollBar().getValue()); assertEquals(41, table.getRowCount());
         });
+    }
+
+    private static GameController.PositionView historyFixture(int plies) {
+        // Presentation fixture only: the scroll test needs enough immutable entries to fill the viewport.
+        var moves = java.util.stream.IntStream.range(0, plies)
+                .mapToObj(i -> new PlayedMove("Nf3", i % 2, i / 2 + 1, true, 0, null)).toList();
+        return historyPosition(GameSession.startingPosition(), moves);
+    }
+    private static GameController.PositionView historyPosition(GameSession session, List<PlayedMove> moves) {
+        return new GameController.PositionView(session.boardSnapshot(), session.status(), session.moveHistory(),
+                -1, new int[0], -1, -1, -1, session.capturedPieces(), moves, 0, false);
     }
 
     private static GameController.SearchInfo info(String score, int side) {

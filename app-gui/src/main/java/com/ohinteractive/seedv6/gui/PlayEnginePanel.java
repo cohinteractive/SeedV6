@@ -29,7 +29,8 @@ final class PlayEnginePanel extends JPanel {
     PlayEnginePanel(String side, String title, Path fallback, TrainingFolders folders, Preferences preferences, Runnable changed) {
         super(new BorderLayout(0, SeedTheme.scale(5))); setOpaque(false); setName(side + "EngineSetup");
         this.preferences = preferences; this.changed = changed;
-        model = new ModelSelectionPanel(side, title, fallback, folders, preferences, changed);
+        model = new ModelSelectionPanel(side, title, fallback, folders, preferences, changed, null, false,
+                side.equals("white") || side.equals("black") || side.equals("opponent"));
         model.setName(side + "ModelSetup");
         architecture = model.architecture; lineage = model.lineage; generation = model.generation;
         var heading = SeedTheme.panel(new BorderLayout(0, SeedTheme.scale(5)));
@@ -65,6 +66,10 @@ final class PlayEnginePanel extends JPanel {
     UUID selectedLineageId() { return !storedNetwork() ? null : model.selectedLineageId(); }
     String selectedId() { return !storedNetwork() ? "" : model.selectedId(); }
     String error() { return !storedNetwork() ? "" : model.error(); }
+    String selectionDescription() {
+        return storedNetwork() ? model.validSelection() ? model.binding().description() : "Network unavailable — select a checkpoint"
+                : handcrafted() ? "Handcrafted evaluator" : selectedMode().toString();
+    }
     void selectStore(Path root) { model.selectStore(root); }
     void refresh(boolean preserve) { model.refresh(preserve); }
     void setEditable(boolean value) {

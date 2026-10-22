@@ -21,8 +21,6 @@ import javax.swing.JComponent;
 import javax.swing.JSplitPane;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
-import javax.swing.Scrollable;
-import javax.swing.Icon;
 import java.util.function.Consumer;
 
 import com.ohinteractive.seedv6.core.move.MoveIntent.Promotion;
@@ -44,7 +42,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         this(settings, backend, persist, new TrainingFolders(settings), null);
     }
 
-    private ChessFrame(TrainingSettings settings, TrainingController.Backend backend, Consumer<TrainingSettings> persist,
+    ChessFrame(TrainingSettings settings, TrainingController.Backend backend, Consumer<TrainingSettings> persist,
                        TrainingFolders folders, java.util.prefs.Preferences playPreferences) {
         super(SeedTheme.initialize());
         this.playPreferences = playPreferences;
@@ -59,12 +57,12 @@ final class ChessFrame extends JFrame implements GameController.View {
         threadsSpinner.setToolTipText("Configured participants, including the main worker. Max follows available processors up to the supported search limit. Live Threads shows current participation.");
         if (playPreferences != null) ThreadSelection.setChoice(threadsSpinner,
                 Math.max(0, Math.min(ParallelSearch.MAX_WORKERS, playPreferences.getInt("threads", ParallelSearch.DEFAULT_WORKERS))));
+        restorePlaySettings();
+        ((JSpinner.DefaultEditor) depthSpinner.getEditor()).getTextField().setHorizontalAlignment(javax.swing.JTextField.LEFT);
         evaluatorBox.setName("playEvaluator"); humanSideBox.setName("humanSide"); modeBox.setName("gameMode");
         pinnedLabel.setName("pinnedBest");
-        whiteDetail.setName("whitePlayerNetwork"); blackDetail.setName("blackPlayerNetwork");
-        controlHint.setName("playControlHint");
         limitKindBox.setName("searchLimit"); movetimeSpinner.setName("playMovetime");
-        newGameButton.setName("newGame"); stopButton.setName("stopSearch"); loadFenButton.setName("loadFen");
+        newGameButton.setName("newGame"); startGameButton.setName("startGame"); stopButton.setName("stopSearch"); loadFenButton.setName("loadFen");
         stopGameButton.setName("stopGame"); resignButton.setName("resign");
 
         whiteEngine = new PlayEnginePanel("white", "White Engine", settings.root(), folders, playPreferences == null ? null : playPreferences.node("white"), this::refreshPlaySetup);
@@ -80,7 +78,7 @@ final class ChessFrame extends JFrame implements GameController.View {
                 return this;
             }
         });
-        evaluatorBox.setToolTipText("Human vs Engine evaluator choices apply when New Game begins. Network architecture comes from the selected store.");
+        evaluatorBox.setToolTipText("Human vs Engine evaluator choices apply when Start Game is pressed. Network architecture comes from the selected store.");
         trainingPanel = new TrainingPanel(settings, folders);
         tabs.setName("workspaces");
         tabs.putClientProperty("JTabbedPane.leadingComponent", identity());
@@ -147,6 +145,9 @@ final class ChessFrame extends JFrame implements GameController.View {
         });
         trainingTimer.start();
         boardPanel.setInputListener(controller);
+        controller.setGameMode((GameController.GameMode) modeBox.getSelectedItem());
+        controller.setHumanSide((GameController.HumanSide) humanSideBox.getSelectedItem());
+        applySearchSettings();
         installActions();
         addWindowListener(new WindowAdapter() {
             @Override
@@ -159,9 +160,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         setSize(Math.min(getWidth(), usable.width), Math.min(getHeight(), usable.height));
         setLocationRelativeTo(null);
         controller.initialize();
-        // Ordinary Play starts from the bundled production model, without a training store.
-        evaluatorBox.setSelectedItem(PlayEvaluator.Mode.POLICY4_PAIR2);
-        controller.changeEvaluator(PlayEvaluator.Mode.POLICY4_PAIR2, false);
+        refreshPlaySetup();
     }
 
     @Override
@@ -171,6 +170,10 @@ final class ChessFrame extends JFrame implements GameController.View {
         refreshStatus();
         moves.showPosition(position);
         updatePlayers();
+        if (!searchRunning && !evaluatorChanging) {
+            String state = !controller.gameStarted() && !position.status().terminal() ? "Prepared" : position.status().displayText();
+            controlState.setText("●  " + state); controlState.setToolTipText(state);
+        }
         setControlsEnabled(!closing && !evaluatorChanging);
     }
     private void showStorageSettings() { trainingPanel.showStorageSettings(); }
@@ -181,7 +184,8 @@ final class ChessFrame extends JFrame implements GameController.View {
         var evaluator = participants.forSide(search.scoreSide());
         boardPanel.showScore(engineCard.showSearch(search, evaluator, controller.workerCount()), evaluator.neural());
         String state = controller.positionStatus().terminal() ? controller.positionStatus().displayText()
-                : search.state().equals("Idle") ? "Ready" : search.state();
+                : !controller.gameStarted() && !evaluatorChanging ? "Prepared"
+                : search.state().equals("Idle") ? controller.positionStatus().displayText() : search.state();
         controlState.setText("●  " + state);
         controlState.setToolTipText(state);
         activityTabs.update(0, controller.activity());
@@ -202,14 +206,7 @@ final class ChessFrame extends JFrame implements GameController.View {
     @Override public void showParticipants(PlayParticipants bindings, boolean changing) {
         requireEdt();
         participants = bindings;
-        PlayEvaluator evaluator = bindings.white();
         evaluatorChanging = changing;
-        // Human-vs-Engine setup belongs to the next game, independently of the active binding.
-        if (modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_HUMAN) {
-            updatingEvaluator = true;
-            evaluatorBox.setSelectedItem(evaluator.mode());
-            updatingEvaluator = false;
-        }
         updatePlayers();
         setControlsEnabled(!closing && !evaluatorChanging);
     }
@@ -257,13 +254,7 @@ final class ChessFrame extends JFrame implements GameController.View {
     private final JLabel statusLabel = new JLabel(" ");
     private final MoveScoresheet moves = new MoveScoresheet();
     private final EngineCard engineCard = new EngineCard();
-    private final JLabel blackIdentity = SeedTheme.label("SeedV6 (Engine)", 17, SeedTheme.TEXT);
-    private final JLabel whiteIdentity = SeedTheme.label("You (Human)", 17, SeedTheme.TEXT);
-    private final JLabel blackDetail = SeedTheme.label("Handcrafted evaluator", 12, SeedTheme.SECONDARY);
-    private final JLabel whiteDetail = SeedTheme.label("White", 12, SeedTheme.SECONDARY);
     private final JLabel controlState = SeedTheme.label("●  Ready", 12, SeedTheme.GREEN);
-    private final JLabel controlHint = SeedTheme.label("Engine turns start automatically", 11, SeedTheme.MUTED);
-    private final JLabel blackBadge = new JLabel(), whiteBadge = new JLabel();
     private final JLabel limitLabel = SeedTheme.label("Depth", 12, SeedTheme.SECONDARY);
     private final JPanel limitEditor = SeedTheme.panel(new CardLayout());
     private PlayParticipants participants = PlayParticipants.shared(PlayEvaluator.handcrafted());
@@ -272,8 +263,10 @@ final class ChessFrame extends JFrame implements GameController.View {
     private final JButton swapSides = new JButton("Swap Sides");
     private final JPanel participantSetup = SeedTheme.panel(new CardLayout());
     private final JLabel evaluatorLabel = SeedTheme.label("Evaluator", 12, SeedTheme.SECONDARY);
-    private JPanel boardCard;
     private JSplitPane playSplit, trainingSplit;
+    private final JPanel playViews = SeedTheme.panel(new CardLayout());
+    private final JButton settingsButton = new JButton(controlIcon(false)), closeSettingsButton = new JButton(controlIcon(true));
+    private final JButton startGameButton = new JButton("Start Game");
     private final JButton newGameButton = new JButton("New Game");
     private final JButton loadFenButton = new JButton("Load FEN");
     private final JButton stopButton = new JButton("Stop Search");
@@ -305,26 +298,20 @@ final class ChessFrame extends JFrame implements GameController.View {
         JPanel workspace = new JPanel(new BorderLayout()); workspace.setBackground(SeedTheme.BACKGROUND);
         SeedTheme.padding(workspace, 16, 20, 14, 20);
         JPanel board = new SeedTheme.Card(); board.setLayout(new BorderLayout());
-        boardCard = board;
-        board.add(player(blackBadge, blackIdentity, blackDetail, "BLACK"), BorderLayout.NORTH);
         board.add(boardPanel, BorderLayout.CENTER);
-        board.add(player(whiteBadge, whiteIdentity, whiteDetail, "WHITE"), BorderLayout.SOUTH);
-        board.setMinimumSize(new Dimension(SeedTheme.scale(400), 0));
-        JPanel cards = new WorkspaceCards();
-        GridBagConstraints c = new GridBagConstraints(); c.gridx = 0; c.weightx = 1; c.fill = GridBagConstraints.BOTH;
-        JPanel game = createGameCard(), controls = createControls();
-        engineCard.setMinimumSize(engineCard.getPreferredSize());
-        controls.setMinimumSize(controls.getPreferredSize());
-        c.gridy = 0; c.insets = new Insets(0, 0, SeedTheme.scale(12), 0); cards.add(game, c);
-        c.gridy = 1; cards.add(engineCard, c);
-        c.gridy = 2; c.weighty = 1; cards.add(moves, c);
-        c.gridy = 3; c.weighty = 0; c.insets = new Insets(0, 0, 0, 0); cards.add(controls, c);
-        cards.setPreferredSize(new Dimension(SeedTheme.scale(600), SeedTheme.scale(800)));
-        JScrollPane cardScroll = new JScrollPane(cards, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        cardScroll.setBorder(BorderFactory.createEmptyBorder()); cardScroll.setOpaque(false); cardScroll.getViewport().setOpaque(false);
-        cardScroll.setMinimumSize(new Dimension(SeedTheme.scale(560), 0));
-        cardScroll.getVerticalScrollBar().setUnitIncrement(SeedTheme.scale(24));
-        JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, board, cardScroll);
+        board.setMinimumSize(new Dimension(SeedTheme.scale(380), 0));
+        JPanel live = SeedTheme.panel(new BorderLayout(0, SeedTheme.scale(12)));
+        live.setName("playLiveView");
+        live.add(engineCard, BorderLayout.NORTH); live.add(moves, BorderLayout.CENTER);
+        JPanel settings = new SettingsView(); settings.add(createGameCard(), BorderLayout.NORTH);
+        JScrollPane settingsScroll = new JScrollPane(settings, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        settingsScroll.setBorder(BorderFactory.createEmptyBorder());
+        settingsScroll.getVerticalScrollBar().setUnitIncrement(SeedTheme.scale(24));
+        playViews.add(live, "live"); playViews.add(SeedTheme.card("Game settings", closeSettingsButton, settingsScroll), "settings");
+        playViews.setMinimumSize(new Dimension(SeedTheme.scale(510), 0));
+        playViews.setPreferredSize(new Dimension(SeedTheme.scale(600), SeedTheme.scale(800)));
+        workspace.add(createControls(), BorderLayout.NORTH);
+        JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, board, playViews);
         playSplit = split;
         split.setName("playSplit"); split.setBorder(BorderFactory.createEmptyBorder());
         split.setOpaque(false); split.setDividerSize(SeedTheme.scale(18)); split.setContinuousLayout(true);
@@ -332,20 +319,8 @@ final class ChessFrame extends JFrame implements GameController.View {
         workspace.add(split); return workspace;
     }
 
-    private static final class WorkspaceCards extends JPanel implements Scrollable {
-        WorkspaceCards() { super(new GridBagLayout()); setOpaque(false); }
-        @Override public Dimension getPreferredSize() {
-            Dimension size = super.getPreferredSize(); size.height = Math.max(size.height, getMinimumSize().height); return size;
-        }
-        public Dimension getPreferredScrollableViewportSize() { return getPreferredSize(); }
-        public int getScrollableUnitIncrement(Rectangle r, int orientation, int direction) { return SeedTheme.scale(24); }
-        public int getScrollableBlockIncrement(Rectangle r, int orientation, int direction) { return r.height - SeedTheme.scale(24); }
-        public boolean getScrollableTracksViewportWidth() { return true; }
-        public boolean getScrollableTracksViewportHeight() { return getParent() != null && getParent().getHeight() >= getMinimumSize().height; }
-    }
-
     private JPanel createGameCard() {
-        JPanel form = SeedTheme.panel(new GridLayout(1, 2, SeedTheme.scale(20), 0));
+        JPanel form = SeedTheme.panel(new GridLayout(0, 1, 0, SeedTheme.scale(10)));
         SeedTheme.padding(form, 8, 16, 12, 16);
         JPanel left = SeedTheme.panel(new GridBagLayout()), right = SeedTheme.panel(new GridBagLayout());
         row(left, 0, "Mode", modeBox); row(left, 1, "Human side", humanSideBox); row(left, 2, evaluatorLabel, evaluatorBox);
@@ -355,8 +330,8 @@ final class ChessFrame extends JFrame implements GameController.View {
         limitEditor.add(depthSpinner, "depth"); limitEditor.add(movetimeSpinner, "time");
         row(right, 0, "Search limit", limitKindBox); row(right, 1, limitLabel, limitEditor); row(right, 2, "Threads", threadsSpinner);
         form.add(left); form.add(right);
-        newGameButton.putClientProperty("FlatLaf.style", "background: #218f59; foreground: #ffffff; hoverBackground: #29a568; pressedBackground: #187547");
-        var models = SeedTheme.panel(new GridLayout(1, 2, SeedTheme.scale(16), 0));
+        startGameButton.putClientProperty("FlatLaf.style", "background: #218f59; foreground: #ffffff; hoverBackground: #29a568; pressedBackground: #187547");
+        var models = SeedTheme.panel(new GridLayout(0, 1, 0, SeedTheme.scale(16)));
         models.add(whiteEngine); models.add(blackEngine); engineSetup.add(models);
         var swapRow = SeedTheme.panel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
         swapSides.setName("swapSides"); swapSides.addActionListener(e -> whiteEngine.swapWith(blackEngine));
@@ -369,17 +344,61 @@ final class ChessFrame extends JFrame implements GameController.View {
         JPanel card = new JPanel(new BorderLayout()) {
             @Override public Dimension getMinimumSize() { return new Dimension(0, getPreferredSize().height); }
         };
-        card.setOpaque(false); card.add(SeedTheme.card("Game", newGameButton, body)); return card;
+        card.setOpaque(false); card.add(body); return card;
+    }
+
+    /** Only settings scroll as a whole; its close control stays outside this viewport. */
+    private static final class SettingsView extends JPanel implements javax.swing.Scrollable {
+        SettingsView() { super(new BorderLayout()); setOpaque(false); }
+        public Dimension getPreferredScrollableViewportSize() { return getPreferredSize(); }
+        public int getScrollableUnitIncrement(Rectangle r, int orientation, int direction) { return SeedTheme.scale(24); }
+        public int getScrollableBlockIncrement(Rectangle r, int orientation, int direction) { return Math.max(1, r.height - SeedTheme.scale(24)); }
+        public boolean getScrollableTracksViewportWidth() { return true; }
+        public boolean getScrollableTracksViewportHeight() { return false; }
+    }
+
+    private static javax.swing.Icon controlIcon(boolean close) {
+        return new javax.swing.Icon() {
+            public int getIconWidth() { return SeedTheme.scale(18); }
+            public int getIconHeight() { return SeedTheme.scale(18); }
+            public void paintIcon(Component c, Graphics graphics, int x, int y) {
+                Graphics2D g = (Graphics2D) graphics.create();
+                try {
+                    g.translate(x, y); g.scale(getIconWidth() / 18.0, getIconHeight() / 18.0);
+                    g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                    g.setColor(c.isEnabled() ? SeedTheme.TEXT : SeedTheme.MUTED); g.setStroke(new BasicStroke(1.7f));
+                    if (close) { g.drawLine(4, 4, 14, 14); g.drawLine(14, 4, 4, 14); }
+                    else {
+                        var path = new java.awt.geom.Path2D.Double();
+                        for (int i = 0; i < 32; i++) {
+                            double angle = i * Math.PI / 16, radius = i % 4 < 2 ? 8 : 6;
+                            double px = 9 + radius * Math.cos(angle), py = 9 + radius * Math.sin(angle);
+                            if (i == 0) path.moveTo(px, py); else path.lineTo(px, py);
+                        }
+                        path.closePath(); g.draw(path); g.drawOval(6, 6, 6, 6);
+                    }
+                } finally { g.dispose(); }
+            }
+        };
     }
 
     private JPanel createControls() {
-        JPanel body = SeedTheme.panel(new BorderLayout(SeedTheme.scale(12), 0)); SeedTheme.padding(body, 10, 16, 12, 16);
+        JPanel body = SeedTheme.panel(new BorderLayout(SeedTheme.scale(12), 0));
+        SeedTheme.padding(body, 0, 0, 12, 0);
         JPanel buttons = SeedTheme.panel(new FlowLayout(FlowLayout.LEFT, SeedTheme.scale(8), 0));
-        buttons.add(loadFenButton); buttons.add(stopButton); buttons.add(stopGameButton); buttons.add(resignButton);
-        body.add(buttons, BorderLayout.NORTH);
-        body.add(controlState, BorderLayout.EAST);
+        buttons.add(newGameButton); buttons.add(startGameButton); buttons.add(loadFenButton);
+        buttons.add(stopButton); buttons.add(stopGameButton); buttons.add(resignButton);
+        body.add(buttons, BorderLayout.WEST);
+        JPanel status = SeedTheme.panel(new FlowLayout(FlowLayout.RIGHT, SeedTheme.scale(8), 0));
+        status.add(controlState); status.add(settingsButton); body.add(status, BorderLayout.EAST);
+        settingsButton.setName("gameSettings"); closeSettingsButton.setName("closeGameSettings");
+        settingsButton.setToolTipText("Game settings"); closeSettingsButton.setToolTipText("Close game settings");
+        settingsButton.getAccessibleContext().setAccessibleName("Game settings");
+        closeSettingsButton.getAccessibleContext().setAccessibleName("Close game settings");
+        settingsButton.addActionListener(e -> ((CardLayout) playViews.getLayout()).show(playViews, "settings"));
+        closeSettingsButton.addActionListener(e -> ((CardLayout) playViews.getLayout()).show(playViews, "live"));
         stopButton.setEnabled(false);
-        return SeedTheme.card("Controls", controlHint, body);
+        return body;
     }
 
     private static JPanel identity() {
@@ -390,15 +409,6 @@ final class ChessFrame extends JFrame implements GameController.View {
         return panel;
     }
 
-    private static JPanel player(JLabel badge, JLabel name, JLabel detail, String side) {
-        JPanel row = SeedTheme.panel(new BorderLayout(SeedTheme.scale(14), 0)); SeedTheme.padding(row, 8, 24, 8, 24);
-        badge.setPreferredSize(new Dimension(SeedTheme.scale(40), SeedTheme.scale(40)));
-        row.add(badge, BorderLayout.WEST);
-        JPanel labels = SeedTheme.panel(new GridLayout(2, 1, 0, SeedTheme.scale(4)));
-        name.setFont(SeedTheme.font(17, Font.BOLD)); labels.add(name); labels.add(detail); row.add(labels);
-        row.add(SeedTheme.label(side, 11, SeedTheme.MUTED), BorderLayout.EAST); return row;
-    }
-
     private void updatePlayers() {
         GameController.GameMode mode = (GameController.GameMode) modeBox.getSelectedItem();
         boolean humanWhite = humanSideBox.getSelectedItem() == GameController.HumanSide.WHITE;
@@ -407,39 +417,30 @@ final class ChessFrame extends JFrame implements GameController.View {
         // A failed mode change retains the previous bindings, which may still be distinct.
         PlayEvaluator displayed = mode == GameController.GameMode.HUMAN_VS_ENGINE && humanWhite ? participants.black() : participants.white();
         boolean nnueActive = displayed.neural();
-        pinnedLabel.setText(evaluatorChanging ? "Loading evaluator…" : nnueActive
+        pinnedLabel.setText(evaluatorChanging ? "Loading evaluator…" : !controller.gameStarted() ? "Apply selection with Start Game" : nnueActive
                 ? (participants.selection().equals(PlayParticipants.Selection.BEST) ? "Pinned best: " : "Pinned network: ")
                     + displayed.description() : "Handcrafted evaluator");
-        pinnedLabel.setToolTipText(nnueActive ? displayed.identity(controller.workerCount()) : null);
-        blackIdentity.setText(blackEngine ? "SeedV6 (Engine)" : mode == GameController.GameMode.HUMAN_VS_HUMAN ? "Black (Human)" : "You (Human)");
-        whiteIdentity.setText(whiteEngine ? "SeedV6 (Engine)" : mode == GameController.GameMode.HUMAN_VS_HUMAN ? "White (Human)" : "You (Human)");
-        blackDetail.setText(blackEngine ? participants.black().description() : "Black pieces");
-        whiteDetail.setText(whiteEngine ? participants.white().description() : "White pieces");
-        blackDetail.setToolTipText(blackEngine ? participants.black().identity(controller.workerCount()) : null);
-        whiteDetail.setToolTipText(whiteEngine ? participants.white().identity(controller.workerCount()) : null);
-        blackBadge.setIcon(blackEngine ? ENGINE_BADGE : HUMAN_BADGE);
-        whiteBadge.setIcon(whiteEngine ? ENGINE_BADGE : HUMAN_BADGE);
-        controlHint.setText(mode == GameController.GameMode.HUMAN_VS_HUMAN ? "Move pieces on the board"
-                : mode == GameController.GameMode.ENGINE_VS_ENGINE ? "Configure both engines, then press Start Game" : "Engine turns start automatically");
-        controlHint.setToolTipText(null);
+        pinnedLabel.setToolTipText(controller.gameStarted() && nnueActive ? displayed.identity(controller.workerCount()) : null);
+        String black = blackEngine ? "SeedV6 (Engine) - " + playerDescription(false)
+                : mode == GameController.GameMode.HUMAN_VS_HUMAN ? "Black (Human)" : "You (Human)";
+        String white = whiteEngine ? "SeedV6 (Engine) - " + playerDescription(true)
+                : mode == GameController.GameMode.HUMAN_VS_HUMAN ? "White (Human)" : "You (Human)";
+        boardPanel.showPlayers(white, black, whiteEngine && controller.gameStarted() ? participants.white().identity(controller.workerCount()) : white,
+                blackEngine && controller.gameStarted() ? participants.black().identity(controller.workerCount()) : black);
     }
 
-    private static final Icon ENGINE_BADGE = new ScaledImageIcon(new ImageIcon(ApplicationIcons.windowImages().getLast()), 40, 40);
-    private static final Icon HUMAN_BADGE = new Icon() {
-        public int getIconWidth() { return SeedTheme.scale(40); }
-        public int getIconHeight() { return SeedTheme.scale(40); }
-        public void paintIcon(Component c, Graphics graphics, int x, int y) {
-            Graphics2D g = (Graphics2D) graphics.create(); g.translate(x, y);
-            g.scale(getIconWidth() / 40.0, getIconHeight() / 40.0);
-            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            g.setColor(SeedTheme.INSET); g.fillRoundRect(0, 0, 39, 39, 8, 8);
-            g.setColor(SeedTheme.LINE); g.drawRoundRect(0, 0, 39, 39, 8, 8);
-            g.setColor(SeedTheme.SECONDARY); g.fillOval(14, 8, 12, 12); g.fillArc(8, 23, 24, 20, 0, 180); g.dispose();
-        }
-    };
+    private String playerDescription(boolean white) {
+        if (controller.gameStarted()) return (white ? participants.white() : participants.black()).description();
+        if (modeBox.getSelectedItem() == GameController.GameMode.ENGINE_VS_ENGINE)
+            return (white ? whiteEngine : blackEngine).selectionDescription();
+        var selected = (PlayEvaluator.Mode) evaluatorBox.getSelectedItem();
+        return selected == PlayEvaluator.Mode.BEST_NNUE ? opponentEngine.selectionDescription()
+                : selected == PlayEvaluator.Mode.HANDCRAFTED ? "Handcrafted evaluator" : selected.toString();
+    }
 
     private void installActions() {
-        newGameButton.addActionListener(event -> {
+        newGameButton.addActionListener(event -> controller.newGame());
+        startGameButton.addActionListener(event -> {
             if (modeBox.getSelectedItem() == GameController.GameMode.ENGINE_VS_ENGINE) {
                 if (whiteEngine.validSelection() && blackEngine.validSelection()) controller.startEngineGame(
                         whiteEngine.versus(blackEngine));
@@ -449,20 +450,9 @@ final class ChessFrame extends JFrame implements GameController.View {
                     controller.startGame(evaluator, evaluator != PlayEvaluator.Mode.BEST_NNUE
                             ? PlayParticipants.Selection.BEST
                             : PlayParticipants.Selection.singleEngine(opponentEngine.selectedRoot(), opponentEngine.selectedId(), opponentEngine.selectedLineageId()));
-            } else controller.newGame();
+            } else controller.startGame();
         });
-        evaluatorBox.addActionListener(event -> {
-            if (!updatingEvaluator && modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_ENGINE) {
-                refreshPlaySetup();
-            } else if (!updatingEvaluator && modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_HUMAN) {
-                PlayEvaluator.Mode selected = (PlayEvaluator.Mode) evaluatorBox.getSelectedItem();
-                if (selected == PlayEvaluator.Mode.BEST_NNUE && !trainingController.state().active()
-                        && !trainingPanel.applySettings()) {
-                    showEvaluator(controller.evaluator(), false); return;
-                }
-                controller.changeEvaluator(selected, false);
-            }
-        });
+        evaluatorBox.addActionListener(event -> { if (!updatingEvaluator) { rememberPlaySettings(); refreshPlaySetup(); } });
         loadFenButton.addActionListener(event -> {
             final String fen = JOptionPane.showInputDialog(
                 this, "Enter a complete six-field FEN:", "Load FEN",
@@ -477,11 +467,12 @@ final class ChessFrame extends JFrame implements GameController.View {
             final GameController.GameMode mode = (GameController.GameMode) modeBox.getSelectedItem();
             humanSideBox.setEnabled(mode == GameController.GameMode.HUMAN_VS_ENGINE);
             controller.setGameMode(mode);
-            refreshPlaySetup();
+            rememberPlaySettings(); refreshPlaySetup();
         });
-        humanSideBox.addActionListener(event -> controller.setHumanSide(
-            (GameController.HumanSide) humanSideBox.getSelectedItem()
-        ));
+        humanSideBox.addActionListener(event -> {
+            controller.setHumanSide((GameController.HumanSide) humanSideBox.getSelectedItem());
+            rememberPlaySettings();
+        });
         limitKindBox.addActionListener(event -> {
             updateLimitControlState();
             applySearchSettings();
@@ -489,10 +480,9 @@ final class ChessFrame extends JFrame implements GameController.View {
         depthSpinner.addChangeListener(event -> applySearchSettings());
         movetimeSpinner.addChangeListener(event -> applySearchSettings());
         threadsSpinner.addChangeListener(event -> {
-            int requested = ((Number) threadsSpinner.getValue()).intValue();
             int resolved = ThreadSelection.resolved(threadsSpinner);
             if (resolved != controller.workerCount()) controller.setWorkerCount(resolved);
-            if (playPreferences != null) playPreferences.putInt("threads", requested);
+            rememberPlaySettings(); showConfiguredLimits();
         });
         updateLimitControlState();
     }
@@ -503,6 +493,37 @@ final class ChessFrame extends JFrame implements GameController.View {
             ((Number) depthSpinner.getValue()).intValue(),
             ((Number) movetimeSpinner.getValue()).longValue()
         ));
+        rememberPlaySettings(); showConfiguredLimits();
+    }
+
+    private void restorePlaySettings() {
+        evaluatorBox.setSelectedItem(PlayEvaluator.Mode.POLICY4_PAIR2);
+        if (playPreferences == null) return;
+        restoreEnum(modeBox, GameController.GameMode.class, "mode");
+        restoreEnum(humanSideBox, GameController.HumanSide.class, "humanSide");
+        restoreEnum(evaluatorBox, PlayEvaluator.Mode.class, "evaluator");
+        restoreEnum(limitKindBox, GameController.LimitKind.class, "limitKind");
+        depthSpinner.setValue(Math.max(1, Math.min(256, playPreferences.getInt("depth", 4))));
+        movetimeSpinner.setValue(Math.max(50L, Math.min(600_000L, playPreferences.getLong("movetimeMillis", 1_000L))));
+    }
+    private <E extends Enum<E>> void restoreEnum(JComboBox<E> box, Class<E> type, String key) {
+        try { box.setSelectedItem(Enum.valueOf(type, playPreferences.get(key, box.getItemAt(box.getSelectedIndex()).name()))); }
+        catch (IllegalArgumentException obsolete) { /* Retain the supported default. */ }
+    }
+    private void rememberPlaySettings() {
+        if (playPreferences == null) return;
+        playPreferences.put("mode", ((GameController.GameMode) modeBox.getSelectedItem()).name());
+        playPreferences.put("humanSide", ((GameController.HumanSide) humanSideBox.getSelectedItem()).name());
+        playPreferences.put("evaluator", ((PlayEvaluator.Mode) evaluatorBox.getSelectedItem()).name());
+        playPreferences.put("limitKind", ((GameController.LimitKind) limitKindBox.getSelectedItem()).name());
+        playPreferences.putInt("depth", ((Number) depthSpinner.getValue()).intValue());
+        playPreferences.putLong("movetimeMillis", ((Number) movetimeSpinner.getValue()).longValue());
+        playPreferences.putInt("threads", ((Number) threadsSpinner.getValue()).intValue());
+    }
+    private void showConfiguredLimits() {
+        engineCard.showConfiguration((GameController.LimitKind) limitKindBox.getSelectedItem(),
+                ((Number) depthSpinner.getValue()).intValue(), ((Number) movetimeSpinner.getValue()).longValue(),
+                ((Number) threadsSpinner.getValue()).intValue(), controller.workerCount());
     }
 
     private void updateLimitControlState() {
@@ -555,31 +576,35 @@ final class ChessFrame extends JFrame implements GameController.View {
         stopGameButton.setEnabled(enabled && controller != null && controller.canStopGame());
         resignButton.setVisible(modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_ENGINE);
         resignButton.setEnabled(enabled && controller != null && controller.canResign());
-        modeBox.setEnabled(enabled);
-        humanSideBox.setEnabled(enabled && modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_ENGINE);
-        limitKindBox.setEnabled(enabled && !searchRunning);
-        depthSpinner.setEnabled(enabled && !searchRunning
+        boolean editable = enabled && (controller == null || controller.settingsEditable());
+        modeBox.setEnabled(editable);
+        humanSideBox.setEnabled(editable && modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_ENGINE);
+        limitKindBox.setEnabled(editable && !searchRunning);
+        depthSpinner.setEnabled(editable && !searchRunning
             && limitKindBox.getSelectedItem() == GameController.LimitKind.DEPTH);
-        movetimeSpinner.setEnabled(enabled && !searchRunning
+        movetimeSpinner.setEnabled(editable && !searchRunning
             && limitKindBox.getSelectedItem() == GameController.LimitKind.MOVETIME);
-        threadsSpinner.setEnabled(enabled && !searchRunning);
+        threadsSpinner.setEnabled(editable && !searchRunning);
         boolean engines = modeBox.getSelectedItem() == GameController.GameMode.ENGINE_VS_ENGINE;
         boolean opponent = modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_ENGINE
                 && evaluatorBox.getSelectedItem() == PlayEvaluator.Mode.BEST_NNUE;
-        evaluatorBox.setEnabled(enabled && !engines); evaluatorBox.setVisible(!engines); evaluatorLabel.setVisible(!engines);
+        evaluatorBox.setEnabled(editable && !engines); evaluatorBox.setVisible(!engines); evaluatorLabel.setVisible(!engines);
         participantSetup.setVisible(engines || opponent);
         ((CardLayout) participantSetup.getLayout()).show(participantSetup, engines ? "engines" : "opponent");
-        whiteEngine.setEditable(enabled); blackEngine.setEditable(enabled); opponentEngine.setEditable(enabled);
-        swapSides.setEnabled(enabled && engines && whiteEngine.validSelection() && blackEngine.validSelection());
-        newGameButton.setText(engines ? "Start Game" : "New Game");
-        newGameButton.setName(engines ? "startGame" : "newGame");
-        newGameButton.setEnabled(enabled && (!engines || whiteEngine.validSelection() && blackEngine.validSelection())
+        whiteEngine.setEditable(editable); blackEngine.setEditable(editable); opponentEngine.setEditable(editable);
+        swapSides.setEnabled(editable && engines && whiteEngine.validSelection() && blackEngine.validSelection());
+        startGameButton.setEnabled(enabled && controller != null && controller.canStartGame()
+                && (!engines || whiteEngine.validSelection() && blackEngine.validSelection())
                 && (!opponent || opponentEngine.validSelection()));
+        if (controller != null && !controller.gameStarted() && !controller.positionStatus().terminal()) controlState.setText("Prepared");
+
     }
 
     private void refreshPlaySetup() {
         if (whiteEngine == null || blackEngine == null || opponentEngine == null) return;
-        setControlsEnabled(!closing && !evaluatorChanging); revalidate();
+        setControlsEnabled(!closing && !evaluatorChanging);
+        if (controller != null) updatePlayers();
+        revalidate();
     }
 
     private static void row(JPanel panel, int row, String title, JComponent field) {

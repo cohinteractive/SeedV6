@@ -21,7 +21,7 @@ class ProductionBaselineDesktopTest {
                 new TrainingController.Backend(), ignored -> {}));
         try {
             edt(() -> { frame.setVisible(true); return null; });
-            until(() -> edt(() -> named(frame, "blackPlayerNetwork", JLabel.class).getText().contains("Policy 4")));
+            until(() -> edt(() -> named(frame, "blackPlayerNetwork", JTextArea.class).getText().contains("Policy 4")));
             var controllerField = ChessFrame.class.getDeclaredField("controller");
             controllerField.setAccessible(true);
             var controller = (GameController) controllerField.get(frame);
@@ -34,11 +34,13 @@ class ProductionBaselineDesktopTest {
                 // Normal GUI enables its book; use a legal non-book position to require evaluation.
                 assertTrue(controller.loadFen("4k3/8/8/8/4P3/8/8/4K3 w - - 0 1"));
                 named(frame, "humanSide", JComboBox.class).setSelectedItem(GameController.HumanSide.BLACK);
+                assertTrue(controller.displayedMoves().isEmpty());
+                named(frame, "startGame", JButton.class).doClick();
                 return null;
             });
             until(() -> edt(() -> named(frame, "engineDepth", JLabel.class).getText().equals("3")));
             assertFalse(edt(() -> named(frame, "principalVariation", JTextArea.class).getText()).isBlank());
-            assertTrue(edt(() -> named(frame, "whitePlayerNetwork", JLabel.class).getText()).contains("Policy 4"));
+            assertTrue(edt(() -> named(frame, "whitePlayerNetwork", JTextArea.class).getText()).contains("Policy 4"));
             try (var files = Files.walk(temporary)) {
                 assertEquals(0, files.filter(Files::isRegularFile).count(), "Play must not create training artifacts");
             }

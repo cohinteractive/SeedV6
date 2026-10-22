@@ -31,18 +31,20 @@ class GameControllerLifecycleIntegrationTest {
             created.setGameMode(GameController.GameMode.ENGINE_VS_ENGINE);
             assertTrue(created.displayedMoves().isEmpty());
             created.newGame();
+            assertTrue(created.displayedMoves().isEmpty());
+            created.startGame();
             return created;
         });
         try {
             assertTrue(view.targetMoves.await(15L, TimeUnit.SECONDS));
-            onEdt(() -> controller.setGameMode(GameController.GameMode.HUMAN_VS_HUMAN));
+            onEdt(controller::stopGame);
             if(view.failure.get() != null) throw new AssertionError(view.failure.get());
 
             final int plies = onEdt(() -> controller.displayedMoves().size());
             // Fast book moves can finish between latch release and the queued stop; no ply cap was requested.
             assertTrue(plies >= 6, "plies=" + plies);
             assertEquals(plies + 1, onEdt(controller::historySize));
-            assertFalse(onEdt(controller::positionStatus).terminal());
+            assertEquals(PositionStatus.Outcome.STOPPED, onEdt(controller::positionStatus).outcome());
         } finally {
             final Runnable cleanup = onEdt(controller::beginShutdown);
             cleanup.run();

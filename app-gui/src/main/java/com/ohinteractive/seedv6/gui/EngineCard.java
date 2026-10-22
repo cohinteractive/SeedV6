@@ -13,20 +13,23 @@ final class EngineCard extends JPanel {
     private final JTextArea pv = new JTextArea(1, 10);
     private final JLabel variationTitle = SeedTheme.label("Principal variation (PV)", 12, SeedTheme.SECONDARY);
     private final JLabel termination = SeedTheme.label("Ready", 11, SeedTheme.MUTED);
+    private final JLabel configured = SeedTheme.label("", 12, SeedTheme.SECONDARY);
 
     EngineCard() {
         super(new BorderLayout()); setOpaque(false);
         state.setName("engineState"); termination.setName("searchTermination");
         JPanel body = SeedTheme.panel(new BorderLayout(0, SeedTheme.scale(12)));
         SeedTheme.padding(body, 14, 16, 12, 16);
-        JPanel metrics = SeedTheme.panel(new GridLayout(1, 6, SeedTheme.scale(8), 0));
+        JPanel metrics = SeedTheme.panel(new GridLayout(2, 3, SeedTheme.scale(12), SeedTheme.scale(12)));
         metrics.add(metricColumn(scoreTitle, score));
-        metrics.add(metricColumn(SeedTheme.label("Depth", 12, SeedTheme.SECONDARY), depth));
+        metrics.add(metricColumn(SeedTheme.label("Search depth", 12, SeedTheme.SECONDARY), depth));
         metrics.add(metricColumn(SeedTheme.label("Nodes", 12, SeedTheme.SECONDARY), nodes));
         metrics.add(metricColumn(SeedTheme.label("NPS", 12, SeedTheme.SECONDARY), nps));
         metrics.add(metricColumn(SeedTheme.label("Time", 12, SeedTheme.SECONDARY), time));
-        metrics.add(metricColumn(SeedTheme.label("Threads", 12, SeedTheme.SECONDARY), threads));
+        metrics.add(metricColumn(SeedTheme.label("Active threads", 12, SeedTheme.SECONDARY), threads));
         body.add(metrics, BorderLayout.NORTH);
+        configured.setName("configuredSearchLimits");
+        body.add(configured, BorderLayout.SOUTH);
         JPanel variation = SeedTheme.panel(new BorderLayout(0, SeedTheme.scale(6)));
         variation.add(variationTitle, BorderLayout.NORTH);
         pv.setName("principalVariation"); pv.setEditable(false); pv.setLineWrap(true); pv.setWrapStyleWord(true);
@@ -39,6 +42,12 @@ final class EngineCard extends JPanel {
         time.setToolTipText("Elapsed time at the last completed depth; no per-node polling.");
         depth.setToolTipText("Last fully completed search depth.");
         threads.setToolTipText("Live search participants / configured participants (owner + helpers). Queued and drained workers excluded. Sampled every 0.5 seconds.");
+    }
+
+    void showConfiguration(GameController.LimitKind kind, int depth, long time, int choice, int workers) {
+        configured.setText("Configured · " + (kind == GameController.LimitKind.DEPTH ? "Depth " + depth : "Time " + time + " ms")
+                + " · Max Threads " + (choice == 0 ? "Max (" + workers + ")" : Integer.toString(workers)));
+        configured.setToolTipText("Configured search limits; live progress appears above.");
     }
 
     PlayScore showSearch(GameController.SearchInfo search, PlayEvaluator evaluator, int configuredWorkers) {

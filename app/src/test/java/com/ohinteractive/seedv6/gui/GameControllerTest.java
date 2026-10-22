@@ -71,7 +71,7 @@ class GameControllerTest {
     @Test void humanResignationAwardsOpponentRegardlessOfWhoseTurnAndCannotContinue() throws Exception {
         for (var human : GameController.HumanSide.values()) {
             final Harness harness = onEdt(Harness::new);
-            onEdt(() -> harness.controller.setHumanSide(human));
+            onEdt(() -> { harness.controller.setHumanSide(human); harness.controller.startGame(); });
             if (human == GameController.HumanSide.WHITE) onEdt(() -> humanMove(harness.controller, "e2e4"));
             final FakeSearch.Pending old = harness.search.pending;
             final long[] board = onEdt(harness.controller::boardSnapshot);
@@ -90,7 +90,8 @@ class GameControllerTest {
             assertFalse(onEdt(harness.controller::positionStatus).terminal());
         }
         var harness = onEdt(Harness::new);
-        onEdt(harness.controller::resign); // Resigning on a human turn is also meaningful.
+        onEdt(() -> harness.controller.startGame());
+        onEdt(harness.controller::resign); // Resigning on a started human turn is also meaningful.
         assertEquals(PositionStatus.Outcome.WHITE_RESIGNED, onEdt(harness.controller::positionStatus).outcome());
     }
 
@@ -102,13 +103,16 @@ class GameControllerTest {
         onEdt(harness.controller::resign);
         assertFalse(onEdt(harness.controller::positionStatus).terminal());
         onEdt(harness.controller::newGame);
+        assertEquals(0, harness.search.starts);
+        onEdt(() -> harness.controller.startGame());
         final FakeSearch.Pending old = harness.search.pending;
         onEdt(harness.controller::stopGame);
         onEdt(() -> old.listener.onComplete(old.token, managed(firstLegal(old.board), SearchTermination.COMPLETED)));
         assertEquals(PositionStatus.Outcome.STOPPED, onEdt(harness.controller::positionStatus).outcome());
         assertTrue(onEdt(harness.controller::displayedMoves).isEmpty());
         assertEquals(1, harness.search.starts);
-        onEdt(harness.controller::newGame); assertEquals(2, harness.search.starts);
+        onEdt(harness.controller::newGame); assertEquals(1, harness.search.starts);
+        onEdt(() -> harness.controller.startGame()); assertEquals(2, harness.search.starts);
     }
 
     @Test void liveThreadSamplesUseSearchInfoAndClearOnTermination() throws Exception {
@@ -147,6 +151,9 @@ class GameControllerTest {
         onEdt(() -> harness.search.completeCurrent(managed(
                 resolve(harness.search.pending.board, "e7e5"), SearchTermination.COMPLETED)));
         onEdt(() -> harness.controller.setWorkerCount(2));
+        assertEquals(4, onEdt(harness.controller::workerCount), "Settings remain locked until the game ends");
+        onEdt(harness.controller::stopGame);
+        onEdt(() -> harness.controller.setWorkerCount(2));
         assertEquals(2, onEdt(harness.controller::workerCount));
         assertEquals("Idle", harness.view.search.state());
     }
@@ -156,7 +163,7 @@ class GameControllerTest {
         for(SearchTermination reason : new SearchTermination[]{SearchTermination.BOOK, SearchTermination.TABLEBASE, SearchTermination.TIME_ALLOCATION}) {
             final Harness harness = onEdt(Harness::new);
             assertTrue(onEdt(() -> harness.controller.loadFen("7k/8/8/8/8/8/8/KQ6 w - - 0 1")));
-            onEdt(() -> harness.controller.setHumanSide(GameController.HumanSide.BLACK));
+            onEdt(() -> { harness.controller.setHumanSide(GameController.HumanSide.BLACK); harness.controller.startGame(); });
             final long move = resolve(harness.search.pending.board, "b1g1");
             var tablebase = reason == SearchTermination.TABLEBASE
                 ? new com.ohinteractive.seedv6.search.tablebase.TablebaseWin(move, 13) : null;
@@ -261,6 +268,7 @@ class GameControllerTest {
 
         onEdt(() -> humanMove(harness.controller, "d2d4"));
         final FakeSearch.Pending modeObsolete = harness.search.pending;
+        onEdt(harness.controller::stopGame);
         onEdt(() -> harness.controller.setGameMode(GameController.GameMode.HUMAN_VS_HUMAN));
         onEdt(() -> modeObsolete.listener.onComplete(
             modeObsolete.token, managed(resolve(modeObsolete.board, "d7d5"), SearchTermination.COMPLETED)
@@ -292,7 +300,7 @@ class GameControllerTest {
         onEdt(() -> harness.controller.setSearchSettings(new GameController.SearchSettings(
             GameController.LimitKind.MOVETIME, 4, 250L
         )));
-        onEdt(() -> harness.controller.setHumanSide(GameController.HumanSide.BLACK));
+        onEdt(() -> { harness.controller.setHumanSide(GameController.HumanSide.BLACK); harness.controller.startGame(); });
         assertNotNull(harness.search.pending);
         assertEquals(SearchLimits.NO_DEPTH, harness.search.pending.limits.depth());
         assertEquals(240L, harness.search.pending.limits.timeMillis());
@@ -306,6 +314,7 @@ class GameControllerTest {
         onEdt(() -> harness.controller.setGameMode(GameController.GameMode.ENGINE_VS_ENGINE));
         assertEquals(0, harness.search.starts, "Mode selection is setup only");
         onEdt(harness.controller::newGame);
+        onEdt(() -> harness.controller.startGame());
         assertEquals(1, harness.search.starts);
         onEdt(harness.controller::stopSearch);
         final long move = firstLegal(harness.search.pending.board);
@@ -320,6 +329,7 @@ class GameControllerTest {
         onEdt(() -> harness.controller.setGameMode(GameController.GameMode.ENGINE_VS_ENGINE));
         assertEquals(0, harness.search.starts, "Mode selection is setup only");
         onEdt(harness.controller::newGame);
+        onEdt(() -> harness.controller.startGame());
         for(int ply = 0; ply < 8; ply ++) {
             final FakeSearch.Pending pending = harness.search.pending;
             assertNotNull(pending);
@@ -329,6 +339,7 @@ class GameControllerTest {
         assertEquals(9, onEdt(harness.controller::historySize));
         assertEquals(9, harness.search.starts);
         assertEquals(1, harness.search.maximumConcurrent);
+        onEdt(harness.controller::stopGame);
         onEdt(() -> harness.controller.setGameMode(GameController.GameMode.HUMAN_VS_HUMAN));
     }
 
@@ -473,6 +484,7 @@ class GameControllerTest {
     }
 
     private static void humanMove(GameController controller, String coordinate) {
+        if (controller.canStartGame()) controller.startGame();
         controller.squarePressed(square(coordinate.substring(0, 2)));
         controller.squareReleased(square(coordinate.substring(2, 4)));
     }

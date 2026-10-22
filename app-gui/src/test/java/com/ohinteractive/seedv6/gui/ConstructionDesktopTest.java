@@ -28,11 +28,11 @@ class ConstructionDesktopTest {
                 assertTrue(named(frame, "startGame", JButton.class).isEnabled());
                 named(frame, "startGame", JButton.class).doClick(); return null;
             });
-            until(() -> edt(() -> named(frame, "whitePlayerNetwork", JLabel.class).getText().contains("construction-v1")));
+            until(() -> edt(() -> named(frame, "whitePlayerNetwork", JTextArea.class).getText().contains("construction-v1")));
             until(() -> edt(() -> !named(frame, "principalVariation", JTextArea.class).getText().equals("—")
                     && named(frame, "engineDepth", JLabel.class).getText().equals("3")));
             edt(() -> { named(frame, "stopGame", JButton.class).doClick(); capture(frame, "play");
-                assertTrue(named(frame, "blackPlayerNetwork", JLabel.class).getText().contains("Policy 4"));
+                assertTrue(named(frame, "blackPlayerNetwork", JTextArea.class).getText().contains("Policy 4"));
                 named(frame, "workspaces", JTabbedPane.class).setSelectedIndex(2);
                 named(frame, "arenaMode", JComboBox.class).setSelectedItem(com.ohinteractive.seedv6.training.service.LearningArenaConfig.Mode.MATCH_ONLY);
                 named(frame, "arenaFixedAEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.CONSTRUCTION_V1);

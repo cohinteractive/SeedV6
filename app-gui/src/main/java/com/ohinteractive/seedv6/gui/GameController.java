@@ -109,16 +109,20 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         int lastFrom,
         int lastTo,
         int checkedKingSquare,
-        CapturedPieces captured
+        CapturedPieces captured,
+        List<PlayedMove> playedMoves,
+        long revision,
+        boolean humanInput
     ) {
         PositionView(long[] board, PositionStatus status, List<String> moves, int selectedSquare,
                      int[] legalTargets, int lastFrom, int lastTo, int checkedKingSquare) {
             this(board, status, moves, selectedSquare, legalTargets, lastFrom, lastTo, checkedKingSquare,
-                    CapturedPieces.empty(false));
+                    CapturedPieces.empty(false), List.of(), 0, false);
         }
         PositionView {
             board = board.clone();
             moves = List.copyOf(moves);
+            playedMoves = List.copyOf(playedMoves);
             legalTargets = legalTargets.clone();
         }
 
@@ -233,32 +237,42 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     }
 
     void newGame() {
-        requireEdt();
-        ensureOpen();
-        if (evaluatorChanging) return;
-        if (search.evaluator().mode() == PlayEvaluator.Mode.BEST_NNUE
-                || mode == GameMode.ENGINE_VS_ENGINE && networkSelection.independentStores()) {
-            startGame(PlayEvaluator.Mode.BEST_NNUE, mode == GameMode.ENGINE_VS_ENGINE
-                    ? networkSelection : search.participants().selection());
-            return;
-        }
-        resetGame();
+        requireEdt(); ensureOpen();
+        if (!evaluatorChanging) resetGame();
     }
 
-    /** Capture next-game setup; loading and installation use the same path in both engine modes. */
+    boolean gameStarted() { requireEdt(); return started; }
+    boolean settingsEditable() { requireEdt(); return (!started || session.status().terminal()) && !search.isBusy(); }
+    boolean canStartGame() {
+        requireEdt();
+        return !closing && !evaluatorChanging && !started && !session.status().terminal();
+    }
+
+    /** Starts the prepared board; never resets a loaded position or starts twice. */
+    void startGame() {
+        requireEdt(); ensureOpen();
+        if (!canStartGame()) return;
+        started = true;
+        selfPlayContinuous = mode == GameMode.ENGINE_VS_ENGINE;
+        publishPosition();
+        startEngineIfNeeded();
+    }
+
     void startGame(PlayEvaluator.Mode evaluator, PlayParticipants.Selection selection) {
         requireEdt(); ensureOpen();
-        if (evaluatorChanging) return;
-        if (evaluator == PlayEvaluator.Mode.HANDCRAFTED && search.participants().white().mode() == evaluator
+        if (!canStartGame()) return;
+        if (evaluator == PlayEvaluator.Mode.HANDCRAFTED
+                && search.participants().white().mode() == evaluator
                 && search.participants().black().mode() == evaluator) {
-            resetGame(); return;
+            startGame(); return;
         }
-        changeEvaluator(evaluator, true, true, Objects.requireNonNull(selection));
+        startAfterLoading = true;
+        changeEvaluator(evaluator, false, true, Objects.requireNonNull(selection));
     }
 
     void startEngineGame(PlayParticipants.Selection selection) {
         requireEdt(); ensureOpen();
-        if (mode != GameMode.ENGINE_VS_ENGINE || evaluatorChanging) return;
+        if (mode != GameMode.ENGINE_VS_ENGINE || !canStartGame()) return;
         if (!selection.independentStores()
                 || selection.whiteMode() == PlayEvaluator.Mode.BEST_NNUE && selection.whiteRoot() == null
                 || selection.blackMode() == PlayEvaluator.Mode.BEST_NNUE && selection.blackRoot() == null) {
@@ -274,7 +288,8 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         activeToken = null;
         positionRevision ++;
         session = GameSession.startingPosition();
-        selfPlayContinuous = mode == GameMode.ENGINE_VS_ENGINE;
+        started = false;
+        selfPlayContinuous = false;
         clearSelection();
         searchInfo = SearchInfo.idle();
         publishPosition();
@@ -338,7 +353,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
                                  PlayParticipants.Selection requested) {
         requireEdt();
         ensureOpen();
-        if (evaluatorChanging) return;
+        if (evaluatorChanging || started && !session.status().terminal()) return;
         // Re-selecting the current mode must not refresh a running game's pinned Best.
         if (!newGame && !force && mode == search.evaluator().mode()) return;
         evaluatorChanging = true;
@@ -354,10 +369,14 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
                 searchInfo = SearchInfo.idle();
                 view.showParticipants(search.participants(), false);
                 view.showSearch(searchInfo);
-                if (error != null) { selfPlayContinuous = false; view.showError("Unable to change evaluator", error); return; }
-                if (newGame) resetGame(); else startEngineIfNeeded();
+                boolean begin = startAfterLoading;
+                startAfterLoading = false;
+                if (error != null) { selfPlayContinuous = false; view.showError("Unable to change evaluator", error); publishPosition(); return; }
+                if (newGame) resetGame();
+                if (begin) startGame(); else publishPosition();
             });
         } catch (RuntimeException failure) {
+            startAfterLoading = false;
             evaluatorChanging = false;
             view.showParticipants(search.participants(), false);
             view.showError("Unable to change evaluator", TrainingController.concise(failure));
@@ -379,6 +398,8 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         activeToken = null;
         positionRevision ++;
         session = candidate;
+        started = false;
+        selfPlayContinuous = false;
         clearSelection();
         searchInfo = SearchInfo.idle();
         publishPosition();
@@ -391,7 +412,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     void setGameMode(GameMode requestedMode) {
         requireEdt();
         ensureOpen();
-        if (evaluatorChanging) return;
+        if (evaluatorChanging || !settingsEditable()) return;
         Objects.requireNonNull(requestedMode, "requestedMode");
         if(mode == requestedMode) return;
         search.invalidate(SearchTermination.POSITION_CHANGED);
@@ -415,7 +436,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     void setHumanSide(HumanSide requestedSide) {
         requireEdt();
         ensureOpen();
-        if (evaluatorChanging) return;
+        if (evaluatorChanging || !settingsEditable()) return;
         Objects.requireNonNull(requestedSide, "requestedSide");
         if(humanSide == requestedSide) return;
         search.invalidate(SearchTermination.POSITION_CHANGED);
@@ -431,7 +452,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         requireEdt();
         ensureOpen();
         Objects.requireNonNull(requestedSettings, "requestedSettings");
-        if(search.isBusy() || evaluatorChanging) {
+        if(search.isBusy() || evaluatorChanging || !settingsEditable()) {
             view.showError("Search active", "Search limits can be changed when the current search finishes or is invalidated.");
             return;
         }
@@ -441,7 +462,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     void setWorkerCount(int requestedWorkers) {
         requireEdt();
         ensureOpen();
-        if(search.isBusy() || evaluatorChanging) {
+        if(search.isBusy() || evaluatorChanging || !settingsEditable()) {
             view.showError("Search active", "Threads can be changed when no result is pending.");
             return;
         }
@@ -470,14 +491,14 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
 
     boolean canStopGame() {
         requireEdt();
-        return !closing && !evaluatorChanging && !session.status().terminal()
+        return started && !closing && !evaluatorChanging && !session.status().terminal()
                 && (mode != GameMode.ENGINE_VS_ENGINE || selfPlayContinuous || search.isSearching()
                     || !session.moveHistory().isEmpty());
     }
 
     boolean canResign() {
         requireEdt();
-        return !closing && !evaluatorChanging && mode == GameMode.HUMAN_VS_ENGINE && !session.status().terminal();
+        return started && !closing && !evaluatorChanging && mode == GameMode.HUMAN_VS_ENGINE && !session.status().terminal();
     }
 
     void stopGame() {
@@ -506,6 +527,11 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     /** Reuse the shell's existing 500 ms sampler and the same SearchInfo/view publication path. */
     void pollSearchTelemetry() {
         requireEdt();
+        boolean busy = search.isBusy();
+        if (!closing && busy != lastBusy) {
+            lastBusy = busy;
+            view.setSearchRunning(activeToken != null);
+        }
         if (closing || activeToken == null) return;
         int active = search.activeSearchThreads();
         if (active == searchInfo.activeThreads()) return;
@@ -545,7 +571,9 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
             return;
         }
 
-        final List<Promotion> promotions = session.promotionChoices(selectedSquare, square);
+        final long interactionRevision = positionRevision;
+        final int source = selectedSquare;
+        final List<Promotion> promotions = session.promotionChoices(source, square);
         final Promotion promotion;
         if(promotions.isEmpty()) {
             promotion = Promotion.NONE;
@@ -554,8 +582,9 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
             if(promotion == null) return;
         }
 
+        if (interactionRevision != positionRevision || !canHumanMove() || source != selectedSquare) return;
         try {
-            session.applyIntent(selectedSquare, square, promotion);
+            session.applyIntent(source, square, promotion);
         } catch(RuntimeException exception) {
             view.showError("Illegal move", exception.getMessage());
             publishPosition();
@@ -565,6 +594,10 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         clearSelection();
         publishPosition();
         startEngineIfNeeded();
+    }
+
+    @Override public void cancelInteraction() {
+        requireEdt(); clearSelection(); publishPosition();
     }
 
     @Override
@@ -597,7 +630,13 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         if(!isApplicableTermination(result.termination())) return;
 
         try {
-            session.applyGeneratedMove(result.bestMove());
+            SearchResult completed = result.lastCompletedResult();
+            PlayedMove.Score score = completed == null || !completed.completed() || completed.depth() < 1
+                    || !completed.hasMove() || completed.bestMove() != result.bestMove()
+                    || result.termination() == SearchTermination.BOOK || result.tablebaseWin() != null ? null
+                    : PlayedMove.Score.from(completed, session.status().sideToMove(), session.boardSnapshot()[Board.KEY],
+                            search.participants().forSide(session.status().sideToMove()));
+            session.applyGeneratedMove(result.bestMove(), false, score);
         } catch(RuntimeException exception) {
             view.showError("Rejected engine result", exception.getMessage());
             return;
@@ -640,6 +679,8 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     private int selectedSquare = -1;
     private int[] legalTargets = new int[0];
     private boolean selfPlayContinuous;
+    private boolean started, startAfterLoading;
+    private boolean lastBusy;
     private boolean closing;
     private boolean evaluatorChanging;
     private Path checkpointRoot = TrainingSettings.defaultRoot();
@@ -669,7 +710,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         view.showPosition(new PositionView(
             session.boardSnapshot(), status, session.moveHistory(),
             selectedSquare, legalTargets, session.lastFrom(), session.lastTo(),
-            status.checkedKingSquare(), session.capturedPieces()
+            status.checkedKingSquare(), session.capturedPieces(), session.playedMoves(), positionRevision, canHumanMove()
         ));
         if(status.terminal() && !search.isSearching()) {
             searchInfo = new SearchInfo(
@@ -706,7 +747,8 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     }
 
     private boolean shouldStartEngine() {
-        return !session.status().terminal()
+        return started && !session.status().terminal()
+            && activeToken == null
             && !search.isSearching()
             && isEngineControlledSide()
             && (mode != GameMode.ENGINE_VS_ENGINE || selfPlayContinuous);
@@ -721,14 +763,14 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     }
 
     private boolean canHumanMove() {
-        if(closing || evaluatorChanging || session.status().terminal() || search.isSearching()) return false;
+        if(!started || closing || evaluatorChanging || session.status().terminal() || search.isSearching()) return false;
         return mode == GameMode.HUMAN_VS_HUMAN
             || (mode == GameMode.HUMAN_VS_ENGINE
                 && session.status().sideToMove() == humanSide.player());
     }
 
     private boolean accepts(Object uiToken) {
-        if(closing || uiToken == null || uiToken != activeToken) return false;
+        if(!started || closing || uiToken == null || uiToken != activeToken) return false;
         final RequestIdentity identity = (RequestIdentity) uiToken;
         return identity.positionRevision == positionRevision
             && identity.mode == mode

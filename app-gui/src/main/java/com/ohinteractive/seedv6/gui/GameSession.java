@@ -62,6 +62,15 @@ final class GameSession {
         return List.copyOf(moveHistory);
     }
 
+    List<PlayedMove> playedMoves() { return List.copyOf(playedMoves); }
+
+    void scoreLastHumanPosition(PlayedMove.Score score) {
+        if (playedMoves.isEmpty()) return;
+        PlayedMove last = playedMoves.getLast();
+        if (last.human() && last.resultingKey() == score.positionKey())
+            playedMoves.set(playedMoves.size() - 1, last.withScore(score));
+    }
+
     int historySize() {
         return history.size();
     }
@@ -108,11 +117,15 @@ final class GameSession {
 
     long applyIntent(int fromSquare, int toSquare, Promotion promotion) {
         final long move = resolver.resolve(board, new MoveIntent(fromSquare, toSquare, promotion));
-        applyGeneratedMove(move);
+        applyGeneratedMove(move, true, null);
         return move;
     }
 
     void applyGeneratedMove(long move) {
+        applyGeneratedMove(move, false, null);
+    }
+
+    void applyGeneratedMove(long move, boolean human, PlayedMove.Score score) {
         if (status.terminal()) throw new IllegalStateException("Game has ended.");
         boolean generatedLegal = false;
         for(int index = 0; index < legalMoveCount; index ++) {
@@ -124,19 +137,28 @@ final class GameSession {
         if(!generatedLegal) {
             throw new IllegalArgumentException("Move is not an exact generated legal move: " + move);
         }
+        if (score != null && score.positionKey() != board[Board.KEY])
+            throw new IllegalArgumentException("Search score does not belong to the source position.");
 
+        final long[] sourceLegal = legalMoves();
+        final int side = status.sideToMove();
+        final int number = Board.fullMoveNumber((int) board[Board.STATUS]);
         final long[] child = new long[Board.MAX_BITBOARDS];
         Board.makeMoveInto(
             board[0], board[1], board[2], board[3],
             (int) board[Board.STATUS], board[Board.KEY], move, child
         );
         history.appendPosition(child);
+        if (!human && score != null) scoreLastHumanPosition(score);
         captured = captured.afterMove(move);
         board = child;
         moveHistory.add(Move.coordinate(move));
         lastFrom = Move.fromSquare(move);
         lastTo = Move.toSquare(move);
         refreshLegalAndStatus();
+        playedMoves.add(new PlayedMove(Move.notation(move, sourceLegal, sourceLegal.length,
+                status.inCheck(), status.outcome() == PositionStatus.Outcome.CHECKMATE),
+                side, number, human, board[Board.KEY], score));
     }
 
     private static final int MAX_MOVES = 256;
@@ -148,6 +170,7 @@ final class GameSession {
     private final long[] legalMoves = new long[MAX_MOVES];
     private final long[] generatorScratch = new long[Board.MAX_BITBOARDS];
     private final List<String> moveHistory = new ArrayList<>();
+    private final List<PlayedMove> playedMoves = new ArrayList<>();
     private long[] board;
     private CapturedPieces captured;
     private GameHistory.Builder history;

@@ -28,15 +28,23 @@ class ModelSelectionPanel extends JPanel {
     private String error = "";
     private final NetworkArchitecture requiredArchitecture;
     private final boolean bestOnly;
+    private final boolean strictSelection;
+    private Path requestedRoot;
+    private String requestedGeneration = "", requestedLineage = "";
 
     ModelSelectionPanel(String key, String title, Path fallback, TrainingFolders folders, Preferences preferences, Runnable changed) {
         this(key, title, fallback, folders, preferences, changed, null, false);
     }
     ModelSelectionPanel(String key, String title, Path fallback, TrainingFolders folders, Preferences preferences, Runnable changed,
                         NetworkArchitecture requiredArchitecture, boolean bestOnly) {
+        this(key, title, fallback, folders, preferences, changed, requiredArchitecture, bestOnly, false);
+    }
+    ModelSelectionPanel(String key, String title, Path fallback, TrainingFolders folders, Preferences preferences, Runnable changed,
+                        NetworkArchitecture requiredArchitecture, boolean bestOnly, boolean strictSelection) {
         super(new BorderLayout(0, SeedTheme.scale(5))); setOpaque(false);
         this.folders = folders; this.preferences = preferences; this.changed = changed;
         this.requiredArchitecture = requiredArchitecture; this.bestOnly = bestOnly;
+        this.strictSelection = strictSelection;
         if (requiredArchitecture != null) architecture.setModel(new DefaultComboBoxModel<>(new NetworkArchitecture[]{requiredArchitecture}));
         setName(key + "EngineSetup"); architecture.setName(key + "Architecture"); lineage.setName(key + "Lineage");
         generation.setName(key + "Network"); detail.setName(key + "StoreIdentity"); refresh.setName(key + "RefreshNetworks");
@@ -74,7 +82,7 @@ class ModelSelectionPanel extends JPanel {
             if (!updating && lineage.getSelectedItem() instanceof ModelLibrary.Entry selected)
                 load(selected.root(), "", false, selected.lineage().map(l -> l.id().toString()).orElse(""));
         });
-        generation.addActionListener(e -> { if (!updating) { remember(); setEditable(editing); changed.run(); } });
+        generation.addActionListener(e -> { if (!updating) { if (strictSelection) describeSelection(); remember(); setEditable(editing); changed.run(); } });
         details.addActionListener(e -> showDetails());
         refresh.addActionListener(e -> refresh(true));
         register.addActionListener(e -> FilePickers.choose(this, FilePickers.Purpose.ADOPT_CHECKPOINT,
@@ -120,6 +128,9 @@ class ModelSelectionPanel extends JPanel {
     void lockLineage() { lineageLocked = true; setEditable(editing); }
     void selectStore(Path root) { load(root, "", true, ""); }
     void refresh(boolean preserveSelection) {
+        if (strictSelection && snapshot == null) {
+            load(requestedRoot, requestedGeneration, false, requestedLineage); return;
+        }
         load(selectedRoot(), preserveSelection ? selectedId() : "", false,
                 selectedLineageId() == null ? "" : selectedLineageId().toString());
     }
@@ -127,6 +138,7 @@ class ModelSelectionPanel extends JPanel {
     private record Loaded(List<ModelLibrary.Entry> entries, ModelLibrary.Snapshot snapshot, String selection) {}
     private void load(Path root, String selected, boolean registerExisting, String expectedId) {
         if (disposed) return;
+        requestedRoot = root; requestedGeneration = selected; requestedLineage = expectedId;
         long ticket = ++request; loading = true; error = ""; setEditable(editing); changed.run();
         NetworkArchitecture requested = (NetworkArchitecture) architecture.getSelectedItem();
         Path base = folders.base(); detail.setText("Reading model library...");
@@ -143,7 +155,7 @@ class ModelSelectionPanel extends JPanel {
                 if (entry != null) {
                     var chosen = entry;
                     entries.removeIf(e -> e.root().equals(chosen.root())); entries.add(entry);
-                } else if (!entries.isEmpty()) entry = entries.getFirst();
+                } else if (!strictSelection && !entries.isEmpty()) entry = entries.getFirst();
                 if (entry == null) return new Loaded(entries, null, selected);
                 var found = ModelLibrary.browse(entry);
                 if (!expectedId.isEmpty() && !found.lineage().lineage().map(l -> l.id().toString()).orElse("").equals(expectedId))
@@ -179,11 +191,19 @@ class ModelSelectionPanel extends JPanel {
             if (!bestOnly && id.isEmpty() && value.publishOnly()) id = value.latest().map(ModelLibrary.Generation::id).orElse("");
         }
         choices.setSelectedItem(new ModelChoice(id)); generation.setModel(choices);
+        describeSelection();
+    }
+    private void describeSelection() {
+        var value = snapshot;
         if (value == null) { detail.setText("No lineages here. Create one in Network Training."); detail.setToolTipText(null); }
         else {
             detail.setText(value.generations().size() + " generations · Best " + value.best().map(g -> "Gen " + g.number()).orElse("not recorded")
                     + " · Latest " + value.latest().map(g -> "Gen " + g.number()).orElse("not recorded"));
             detail.setToolTipText(value.lineage().root() + (value.diagnostics().isEmpty() ? "" : " · " + String.join("; ", value.diagnostics())));
+            if (strictSelection && find(selectedId()).filter(g -> g.checkpoint().materialized()).isEmpty()) {
+                detail.setText("Selected checkpoint unavailable — choose an available generation.");
+                detail.setToolTipText(value.lineage().root() + " / " + (selectedId().isEmpty() ? "Best" : selectedId()));
+            }
         }
     }
     private void remember() {
