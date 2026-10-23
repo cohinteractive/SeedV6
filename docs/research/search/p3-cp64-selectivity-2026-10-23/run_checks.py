@@ -16,5 +16,5 @@ for project in ['research','engine-core','app-uci']:
         results.append({'path':str(target.relative_to(base)),'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),**ET.parse(f).getroot().attrib})
 record={'command':cmd,'exitCode':run.returncode,'elapsedSeconds':time.monotonic()-start,'suites':results,
         'totals':{k:sum(int(x[k]) for x in results) for k in ['tests','failures','errors','skipped']}}
-receipt.write_text(json.dumps(record,indent=2)+'\n');print(json.dumps({k:v for k,v in record.items() if k!='suites'}))
+receipt.write_text(json.dumps(record,indent=2)+'\n',encoding='utf8',newline='\n');print(json.dumps({k:v for k,v in record.items() if k!='suites'}))
 raise SystemExit(run.returncode)

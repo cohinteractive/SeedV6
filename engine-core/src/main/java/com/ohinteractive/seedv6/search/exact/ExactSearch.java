@@ -187,6 +187,12 @@ public final class ExactSearch {
     private FlatSearchConfig construction;
     private FlatSearchState constructionState;
     private ConstructionTrace constructionTrace;
+    private SelectivityTrace selectivityTrace;
+
+    public ExactSearch withSelectivityTrace(SelectivityTrace trace) {
+        if(active || requestActive || constructionState==null) throw new IllegalStateException("Idle rich construction owner required");
+        selectivityTrace=trace;return this;
+    }
 
     public ExactSearch withConstructionTrace(ConstructionTrace trace) {
         if(active || requestActive || construction==null) throw new IllegalStateException("Idle construction owner required");
@@ -1102,7 +1108,8 @@ public final class ExactSearch {
                     if(alpha<lower) alpha=lower;if(beta>upper) beta=upper;
                     entryEpoch=selectiveEpoch;
                     if(constructionState!=null && (flags&1)==0) {
-                        if(construction.has(FlatSearchConfig.Feature.IMPROVING)) constructionEval(board,ply);
+                        if(construction.has(FlatSearchConfig.Feature.IMPROVING)
+                                && !construction.has(FlatSearchConfig.Feature.LAZY_IMPROVING)) constructionEval(board,ply);
                         if(construction.has(FlatSearchConfig.Feature.REVERSE_FUTILITY) && ply>0 && depth<=2
                                 && originalBeta==originalAlpha+1 && originalBeta>=0
                                 && originalBeta<=MAX_STATIC_SCORE-construction.reverseMargin()*depth
@@ -1115,6 +1122,8 @@ public final class ExactSearch {
                             score=originalBeta;state=2;continue;
                         }
                     }
+                    if(selectivityTrace!=null) selectivityTrace.survivor(board,constructionState.pathMoves,ply,depth,
+                            originalAlpha,originalBeta,(flags&4)!=0,(flags&1)!=0,constructionState.rawEval[ply]);
                     if(construction!=null && construction.has(FlatSearchConfig.Feature.BAD_TACTICAL_LAST) && (flags&2)!=0) {
                         count=appendQuiets(board,legalMoves,count);flags&=~2;
                     }
@@ -1200,13 +1209,19 @@ public final class ExactSearch {
                     int reduction=lmrReduction(depth,ply,index+1,searchedQuiets,(flags&4)!=0,(flags&1)!=0,
                             move,hashMove,status,child,alpha,beta);
                     if(extension!=0) reduction=0;
+                    int baseReduction=reduction;
                     if(reduction>0 && constructionState!=null
                             && ((construction.has(FlatSearchConfig.Feature.CAUTION) && (flags&8)!=0)
-                                || (construction.has(FlatSearchConfig.Feature.IMPROVING) && ply>=2
-                                    && constructionState.rawEval[ply]!=Integer.MIN_VALUE
-                                    && constructionState.rawEval[ply-2]!=Integer.MIN_VALUE
-                                    && constructionState.rawEval[ply]>constructionState.rawEval[ply-2]))) {
+                                || (construction.has(FlatSearchConfig.Feature.IMPROVING) && constructionImproving(board,ply)))) {
                         reduction--;constructionState.relief++;
+                    }
+                    if(selectivityTrace!=null) {
+                        int context=ContinuationHistory.context(constructionState.pathMoves[ply]);
+                        int continuation=constructionState.continuation!=null && context>=0
+                                ?constructionState.continuation[ContinuationHistory.index(context,move)]:0;
+                        selectivityTrace.reduction(board,move,constructionState.pathMoves,ply,depth,index+1,searchedQuiets,
+                                alpha,beta,quietHistory[QuietHistory.index(move)],continuation,constructionState.rawEval[ply],
+                                ply>=2?constructionState.rawEval[ply-2]:Integer.MIN_VALUE,baseReduction,reduction,(flags&8)!=0);
                     }
                     if(reduction>0) {selectiveEpoch++;childDepth-=reduction;stage=2;
                         if(constructionState!=null) constructionState.reductions++;
@@ -1222,6 +1237,17 @@ public final class ExactSearch {
                 depth=childDepth;alpha=childAlpha;beta=childBeta;flags=childFlags;ply++;state=0;
             }
         } finally {while(history.size()>historySize) history.popRealPosition();}
+    }
+
+    private boolean constructionImproving(long[] board,int ply) {
+        // A live two-ply main ancestor has a saved frame. Checked ancestors had no
+        // eager static evaluation and must not acquire a new improving signal.
+        if(ply<2 || (flatMainFrames[8][ply-2]&1)!=0) return false;
+        if(construction.has(FlatSearchConfig.Feature.LAZY_IMPROVING))
+            return constructionEval(board,ply)>constructionEval(boards[ply-2],ply-2);
+        return constructionState.rawEval[ply]!=Integer.MIN_VALUE
+                && constructionState.rawEval[ply-2]!=Integer.MIN_VALUE
+                && constructionState.rawEval[ply]>constructionState.rawEval[ply-2];
     }
 
     private int constructionEval(long[] board,int ply) {

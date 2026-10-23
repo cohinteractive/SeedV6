@@ -186,3 +186,36 @@ Next useful work: preserve this research-only checkpoint in Git, then implement
 and qualify the bounded lazy-improving control/neutral observation needed to
 separate H1 costs and H2/H4/H5 opportunities. All initial runners are complete;
 no background study is left running. Neither promotion nor closeout is claimed.
+
+## Experimental H1 cost separation and observation seam
+
+After research-only checkpoint `009b9fb`, a new explicit `LAZY_IMPROVING` bit
+requires IMPROVING and remains absent from `FlatSearchConfig.candidate()` and
+BaselineEngine (still18 active controls/flags262143/ADAPTIVE16). It defers current
+and two-ply ancestor evaluation until eligible reduction relief needs it, preserves
+the checked-ancestor exclusion, and reads each worker's own existing accumulator.
+It does not alter the network, score mapping, mandatory verification or TT policy.
+A synchronous optional SelectivityTrace reads surviving-node and actual-reduction
+invocation facts without evaluation, storage, learning or proof authority. Ordinary
+production has no observer. The research Lab and UCI launcher own activation.
+
+`lazy-validation-v1-summary.json`:54 tests, no failures/errors/skips. Twelve
+full-history CP64 requests match eager score/PV/nodes/completion/aborted work while
+evaluation calls fall507281 ->264549. Independent full-rebuild CP64 comparisons,
+checked/tactical/EP/promotion cases, every1..16-worker budget/expiry/drain/reuse,
+existing Construction references, TT and UCI checks pass. This is semantic evidence,
+not a measured speed gain. A separate frozen-runtime baseline regression remains
+part of the next stage to check default behavior against the build70 evidence.
+
+The opportunity harness's first compile failed solely for a missing Piece import
+(`lab-build-v1-summary.json`); the corrected `lab-build-v2-summary.json` passes.
+No experiment ran on that failed build. Prior evidence bytes, including CRLF JSON
+receipts, remain preserved; use Git's `cr-at-eol` whitespace interpretation when
+checking them. The validation wrapper now explicitly emits LF for new receipts.
+
+This qualifying optional shared-runtime addition commits build70 ->71 under root
+AGENTS.md. Major/minor/patch and all production configuration choices are unchanged;
+this is a local research build, not promoted configuration or external deployment.
+Next: freeze build71 runtime, verify default parity and explicit UCI identities,
+then measure lazy/eager costs, no-improving fixed-node behavior and surviving
+history/reduction/null opportunities under a separate prospective stage.

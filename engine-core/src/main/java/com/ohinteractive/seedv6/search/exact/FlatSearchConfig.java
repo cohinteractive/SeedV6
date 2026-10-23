@@ -9,7 +9,8 @@ import java.util.stream.Stream;
 public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) {
     public enum Feature { QXRAY, LMR, LMP, EFFORT, COMPLETED_HINTS,
         CAPTURE_HISTORY, CONTINUATION, KILLERS, COUNTERMOVES, NOMINAL_HISTORY, BAD_TACTICAL_LAST,
-        IMPROVING, CAUTION, CHECK_EXTENSION, RECAPTURE_EXTENSION, FUTILITY, REVERSE_FUTILITY, HISTORY_PROTECTION }
+        IMPROVING, CAUTION, CHECK_EXTENSION, RECAPTURE_EXTENSION, FUTILITY, REVERSE_FUTILITY, HISTORY_PROTECTION,
+        LAZY_IMPROVING }
 
     public FlatSearchConfig(long flags) { this(flags,100,200); }
 
@@ -24,6 +25,8 @@ public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) 
         if((flags&(1L<<Feature.HISTORY_PROTECTION.ordinal()))!=0
                 && (flags&((1L<<Feature.LMP.ordinal())|(1L<<Feature.FUTILITY.ordinal())))==0)
             throw new IllegalArgumentException("History protection requires LMP or futility");
+        if((flags&(1L<<Feature.LAZY_IMPROVING.ordinal()))!=0 && (flags&(1L<<Feature.IMPROVING.ordinal()))==0)
+            throw new IllegalArgumentException("Lazy improving requires improving");
     }
     public boolean has(Feature feature) { return (flags&(1L<<feature.ordinal()))!=0; }
     public FlatSearchConfig with(Feature feature,boolean enabled) {
