@@ -1,0 +1,29 @@
+{
+  "supersedes": "Score-only eligibility labels in adaptive-clock-v1-summary.json; original outcomes remain unchanged.",
+  "priorSummarySha256": "11ecabd5e19cbc9b74b8e6eb0a3651de67af1f4f6dac659894f1bba44ca3a4fa",
+  "protocolSha256": "615513feabddb0a12366154be5105529004e15c522340d2ad431bedbd7fa51eb",
+  "domains": {
+    "1": {
+      "observedSeconds": 1670.055093,
+      "nonEngineAverageLogicalCores": 0.9608777319539602,
+      "aggregateNonIdleFraction": 0.16294066464578416,
+      "hostEvidence": {
+        "raw\\adaptive-clock-w1-v1-host-start.json": "2d964ca33ac0138db3335e2920008d460772c5b2c80c9513cdf96563f9f71e32",
+        "raw\\adaptive-clock-w1-v1-host-end.json": "45d9c67ee92106f7d49739b865572a6cb4133a2c057b9ef1c972529a67a30175"
+      },
+      "disposition": "Eligible for prospective fresh confirmation, with observed desktop-load limits; not a confirmed gain.",
+      "limits": "Partial-window observation, not a complete process attribution or isolation guarantee. The new1-core gate is prospective and is not retroactively imposed on this closed screen."
+    },
+    "4": {
+      "observedSeconds": 1679.5619,
+      "nonEngineAverageLogicalCores": 2.991786503968684,
+      "aggregateNonIdleFraction": 0.4326964374037717,
+      "hostEvidence": {
+        "raw\\adaptive-clock-w4-v1-host-start.json": "e9f4a8c983459e1f5f2cccbcf10a8afb1ae9927661df4d2878470fecbb65cf72",
+        "raw\\adaptive-clock-w4-v1-host-end.json": "0400c1d4be7dadbe10e5b04df718b950cf187e46fe72151ed869c4598aa669fc"
+      },
+      "disposition": "Score gate passes but resource qualification is incomplete. Not admitted to confirmation by the closed gate; fresh quiet-host development screen required.",
+      "limits": "Partial-window observation, not a complete process attribution or isolation guarantee. The new1-core gate is prospective and is not retroactively imposed on this closed screen."
+    }
+  }
+}

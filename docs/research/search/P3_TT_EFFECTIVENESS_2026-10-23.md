@@ -404,6 +404,8 @@ proof of isolation. W4's substantial unplanned load makes its clock strength
 screen resource-unqualified. The score-only selection in the generated summary
 did not enforce the protocol's resource condition; this explicit disposition
 corrects that omission. All original data, protocol and summary remain intact.
+The [host disposition receipt](p3-tt-effectiveness-2026-10-23/adaptive-clock-host-disposition-v1.json)
+binds both raw host windows and supersedes only the score-only eligibility labels.
 W1's background workload also limits generalization, though no comparable active
 gaming interval was observed. Fresh studies require a prospective resource gate.
 
