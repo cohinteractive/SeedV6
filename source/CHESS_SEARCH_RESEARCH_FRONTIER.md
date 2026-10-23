@@ -1,34 +1,38 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F017**
+Internal frontier revision: **P3-F018**
 
-Status: **Active owner-authorized TT Information Effectiveness and Reuse CGLHW, launched 23 October 2026. Build69 Construction V1 + frozen CP64 remains the selected production and research baseline. No TT authority change or production promotion is authorized. Existing packaged-Windows-GUI and native-macOS qualifications remain open and do not block headless research.**
+Status: **TT Information Effectiveness and Reuse CGLHW technically complete, awaiting GPT/owner reconciliation and acceptance. Build69 Construction V1 + frozen CP64/WIDEN16 remains the selected production and research baseline. No TT authority change, production promotion or successor launch follows. Existing packaged-Windows-GUI and native-macOS qualifications remain open.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
-## Active TT information-effectiveness objective
+## TT information-effectiveness disposition
 
 The owner confirmed P3-R016/P3-F014 mirrors and explicitly launched this objective
-on 23 October 2026. The Contract's active-objective section governs autonomy,
+on 23 October 2026. The Contract's completed-objective section records the scope,
 boundaries and completion; previous no-successor/acceptance-wait statements are
 historical and do not prohibit this work. Build69 Construction V1 + frozen CP64
 is the principal comparator, independent of the inconclusive E008 comparison.
 
-**Current work selection:** baseline qualification, lifecycle diagnostics,
-full-game retention and access profiling are complete. Completed legal hints
+**Current work selection:** no autonomous research unit remains; return the
+technically completed CGLHW for GPT/owner reconciliation. Baseline qualification,
+lifecycle diagnostics, full-game retention and access profiling are complete. Completed legal hints
 have measured mechanism value despite zero ordinary proof under full selectivity;
 no measured capacity/access concentration justifies a binding TT change.
 Full-window clock screens are inconclusive and below their frozen selection gate.
 Existing ADAPTIVE16 completed W1 independent128-pair confirmation:120/58/78 W/D/L,
 Elo+57.5, primary paired-normal97.5% interval+14.2 to+102.7. That supports a gain
 under the frozen primary assumptions; the conservative bounded interval crosses
-zero. CPU and peak memory are essentially unchanged at the fixed clock. W4 first
-needs fresh resource qualification because substantial desktop load overlapped
-its development games; that separate screen is now running. The owner
-instructed Codex to wait until the workstation is quiet, then continue. Frozen
-bounded block studies retain the existing confirmation clock and prospective
-resource/analysis gates. Production remains WIDEN16; workstream closure and
-acceptance remain outstanding. No binding TT decision is currently requested.
+zero. CPU and peak memory are essentially unchanged at the fixed clock. After
+the owner instructed Codex to wait for quiet resources, W4 completed a fresh
+resource-qualified32-pair screen:28/13/23 W/D/L,53.91%, Elo+27.2 with paired95%
+interval-51.3 to+108.7. It missed the frozen55% selection gate; no W4 confirmation
+was launched. Retain W4 as unconfirmed/inconclusive, not inferior or equivalent.
+Longer clocks, other workers/platforms and binding-policy alternatives remain
+deferred without extrapolating the W1 result. All selected avenues are dispositioned;
+further enumeration or another width sweep lacks current decision value.
+Production remains WIDEN16; acceptance remains outstanding. No binding TT decision
+is currently requested, and no successor is launched.
 The [focused record](../docs/research/search/P3_TT_EFFECTIVENESS_2026-10-23.md)
 is the subordinate dynamic hypothesis/experiment queue and recovery point.
 It spans SR-012 with consequential SR-003/005/006/007/014/016/022/029/031/036

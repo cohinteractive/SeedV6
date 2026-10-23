@@ -1,12 +1,12 @@
 # Phase 3: TT Information Effectiveness and Reuse
 
-Owner-authorized CGLHW, 23 October 2026 (Pacific/Auckland). **ACTIVE: adaptive W1
-gain supported by the primary confirmation test; W4 resource-qualified screen running.** This is subordinate evidence and continuity
-under [Contract P3-R017](../../../source/CHESS_SEARCH_CONTRACT.md) and
-[Frontier P3-F017](../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md), not a new
+Owner-authorized CGLHW, 23 October 2026 (Pacific/Auckland). **TECHNICALLY COMPLETE:
+awaiting GPT/owner reconciliation and acceptance; production remains WIDEN16.** This is subordinate evidence and continuity
+under [Contract P3-R018](../../../source/CHESS_SEARCH_CONTRACT.md) and
+[Frontier P3-F018](../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md), not a new
 contract or an acceptance/promotion authority.
 
-## Resume and current work selection
+## Final disposition and correct resume point
 
 Completed: diagnostic-v1, followup-v1 (aspiration reverse ablation and cross-request
 lifetime), deeper-v1 (different roots, W1/W4), full-window correctness and ordinary
@@ -25,12 +25,12 @@ terminal/history/request and lifecycle audits; neither is confirmation. Both
 pass the score-only 0.55 gate, but later host reconciliation identifies substantial
 non-engine load during W4. Its full resource gate is NOT passed. The original
 summary's automatic score-only eligibility label is superseded by the resource
-disposition below, without altering results or the closed protocol. W1 remains
-eligible with desktop-load limitations. W4 requires a fresh quiet-host development
-screen before admission to confirmation; no pooling or extension of closed data.
+disposition below, without altering results or the closed protocol. W1 subsequently
+completed fresh independent confirmation; W4 subsequently completed a separate
+quiet-host development screen, without pooling or extending closed data.
 Access-profile-v1 completed without an obvious TT access concentration. No TT
 policy change is justified. The CP64 block adaptation passed26 continuation,
-identity, process-fault and resource-gate tests. Four studies are now frozen in
+identity, process-fault and resource-gate tests. Four studies were frozen in
 [tt-session-v1-binding.json](p3-tt-effectiveness-2026-10-23/tt-session-v1-binding.json)
 under [the prospective protocol](p3-tt-effectiveness-2026-10-23/adaptive-confirmation-v1.md):
 two-block operational pilot; W1 128-pair confirmation; W4 fresh32-pair resource
@@ -39,33 +39,31 @@ The owner answered: **wait until the workstation is quiet, then continue**.
 The controller started at2026-10-23T05:49:12Z; its initial quiet-host check passed
 (0.59 busy logical cores). Both pilot blocks completed, including pause/resume,
 export, game and resource audits (other host load0.71/0.67 logical cores).
-W1 confirmation completed all128 pairs at2026-10-23T08:11:19Z, with a primary
+W1 confirmation completed all128 pairs by2026-10-23T08:11:19Z, with a primary
 pair-normal97.5% interval supporting a gain (details below). All four blocks pass
 resource/game audits; one failed pre-block admission caused a15min wait and no
-games were consumed or excluded. W4 requalification admission then began; its
-separate32-pair endpoint must pass before the controller admits W4 confirmation.
-It is proceeding through the frozen sequence.
-**Do not launch a duplicate.**
-Inspect the current raw study's session/receipt state and the existing controller
-process before resuming. Only after reconciling a stopped controller, run
-`continue_confirmation_v1.py` with `build/research/venv/Scripts/python.exe -B`.
-It waits15min after a
-failed30s admission, locks out competing controllers, starts one block at a time,
-and requires the pilot and W4 selection gates. `PAUSE` in the current raw study
-stops after the current complete block; the controller never clears it. Partial
-or resource-invalid blocks stop with preserved evidence; do not automatically
-replay/recreate studies. Reconcile any interruption before starting another copy.
-Never stop or reprioritize the owner's applications. No policy sweep or bespoke
-Search redesign. Raw inputs/plans are local-only and absent from a fresh checkout;
-reproduction requires the recorded source/runtime/model/book/tool identities.
-Absent completion never permits duplicating a live run; reconcile any
-interruption before retrying under a new name. Existing full-window remains a
-conditional CPU-saving configuration with strength unconfirmed; WIDEN16 remains
-the principal baseline. All failed checks
-remain recorded; do not replay or overwrite closed names or raw evidence.
-Runtime baseline and TT policy remain unchanged. No owner decision currently
-blocks this headless work. Inspect this record and its experiment summaries
-before resuming; completed protocols must not be extended or overwritten.
+games were consumed or excluded. The subsequent resource-qualified W4 screen
+finished28/13/23 W/D/L (53.91%), below its frozen55% selection gate. Its result is
+inconclusive, not a rejection or equivalence claim. W4 confirmation was therefore
+never launched; its frozen conditional inputs remain preserved. The controller
+exited successfully. There are no active research games or remaining automatic
+work units, and no need to rerun the controller.
+
+The next admissible action is **GPT/owner reconciliation of these findings**,
+not another experiment or production change. ADAPTIVE16 is a validated W1 research
+configuration under the primary test's assumptions; other worker/resource/clock/
+platform domains remain unconfirmed. Full-window remains a conditional CPU-saving
+configuration with strength unconfirmed. Further broad enumeration, width tuning,
+TT redesign or proof relaxation is not justified by current evidence. No binding
+TT owner decision is requested. Any production promotion or independent successor
+requires separate owner authorization; this record does not grant acceptance.
+
+All failed, negative, inconclusive and frozen evidence is preserved. Raw inputs,
+plans, games, JFR and other bulk outputs are local-only under `raw/` and absent from
+a fresh checkout. Check availability before reanalysis; use the tracked bindings,
+summaries and exact source/configuration/model/tool identities. Do not replay,
+overwrite or extend closed names/protocols. Runtime baseline, CP64 and TT policy
+remain unchanged. Both Project Source mirrors need the final revisions below.
 
 ## Verified bootstrap
 
@@ -134,10 +132,10 @@ Challenge decisions before substantial execution:
 | --- | --- | --- |
 | T1 | Completed hints materially reduce current CP64 request work despite no ordinary proof. | SUPPORTED mechanism value in diagnostic-v1: hints-off increases D6 work/time at W1/W4, despite slightly cheaper fixed-node requests. Not Elo evidence. |
 | T2 | Current capacity/replacement loses consequential guidance. | Full-trajectory check complete: maximum37.56% occupancy, no saturation demonstrated; retained work benefit concentrated early, later results nearly neutral/slightly adverse. No capacity/replacement redesign justified in tested domains; long clocks remain untested. |
-| T3 | Aspiration/PVS/iteration or root guidance consumes hints ineffectively. | Full-window reduces some request costs but clock gain is unconfirmed. ADAPTIVE16 diagnostics-OFF cost/completion gates pass W1/W4. Development scores are promising, conditional on resource qualification and fresh confirmation. No width sweep. |
+| T3 | Aspiration/PVS/iteration or root guidance consumes hints ineffectively. | Full-window reduces request costs but misses its strength-selection gate. Existing ADAPTIVE16 passes diagnostics-OFF cost gates and W1 primary independent confirmation; W4 remains inconclusive. Useful consumer improvement without a TT redesign; no width sweep. |
 | T4 | TT access/coordination costs consume the information benefit. | JFR observed 7/3764 W1 and 14/4552 W4 Java samples with TTable frames, no monitor-entry event above10ms. No obvious concentration; small/inlined costs and short waits remain unquantified. No locking/layout change justified. |
 | T5 | Producer depth/selective restrictions leave valuable proof or guidance unavailable. | Zero ordinary proof confirmed; completed hints provide value. No evidence yet justifies weakening proof restrictions or binding-policy experimentation. Empty proof probes/repeated writes are traffic observations, not permission to alter TT access/replacement. |
-| T6 | A promising integrated candidate improves practical strength. | Full-window inconclusive and below its selection gate. Adaptive W1 fresh128-pair confirmation supports a gain under the primary pair-normal test; conservative bounded sensitivity crosses zero. W4 needs its fresh resource-qualified screen before confirmation. No cross-domain extrapolation or promotion. |
+| T6 | A promising integrated candidate improves practical strength. | Adaptive W1 fresh128-pair confirmation supports a gain under the primary pair-normal test; conservative bounded sensitivity crosses zero. W4 fresh resource-qualified screen is inconclusive and below55%, so no confirmation launched. No cross-domain extrapolation or promotion. |
 
 Select the next question by expected decision value. Negative findings may close
 formulations; incomplete/resource-limited evidence stays inconclusive or deferred.
@@ -417,6 +415,80 @@ logical cores, within the frozen gate; no isolation or burst-bound claim follows
 This is a validated research configuration in the tested Windows/JDK21/CP64/W1/
 Hash64/10+0.1 domain. Owner acceptance and any production promotion are separate.
 
+### W4 resource-qualified screen and final selection
+
+The [fresh W4 endpoint](p3-tt-effectiveness-2026-10-23/tt-session-requal-w4-v1-summary.json)
+passes all64 game, identity, lifecycle and resource audits on32 new partition0
+opening pairs. ADAPTIVE16 scores28/13/23 W/D/L,53.90625%, descriptive Elo+27.20;
+paired-normal95% Elo[-51.34,+108.67], bounded95%[-148.03,+219.00]. It misses the
+frozen55% confirmation-selection gate. This supports an inconclusive/deferred
+W4 disposition, not inferiority, equivalence or a pooled result with the earlier
+resource-unqualified W4 screen. No W4 confirmation games were launched, and its
+unused alpha allocation is not transferred to W1. There is no further screen.
+
+Native game-engine CPU is1882.48s candidate /1870.27s baseline (ratio1.00653),
+peak working sets390.06/389.66MB, request elapsed825.37/824.24s and nodes872.40m/
+854.67m. Match wall is1656.38s (~27.6min), full owned-cohort CPU3766.27s. Other
+host load averages0.974 logical cores, passing the prospective gate. The earlier
+diagnostic savings again do not establish a clock CPU reduction. Confirmation
+would require a separately justified prospective decision; no retrospective
+extension, retuning or replacement is authorized by this result.
+
+### Closure rationale, limits and human actions
+
+The lifecycle account, independent controls, retention and access observations,
+two economical consumer formulations and fresh W1 confirmation answer the selected
+credible questions. The evidence supports useful existing legal hints and a
+domain-limited consumer improvement; it does not justify a TT-policy redesign.
+Longer clocks, higher retention pressure, other workers/platforms, small/inlined
+access costs and alternative binding proof policies remain explicit uncertainties.
+No current discriminator offers enough expected decision value to justify another
+width sweep or an automatic expensive study. These deferrals do not assert that
+no further improvement exists. Keep the selected build69/WIDEN16 baseline pending
+the owner's separate acceptance/promotion decision.
+
+No shipped application source or CP64 bytes changed. Research instrumentation,
+launchers, tooling, targeted tests, protocols, fixtures and reports are committed;
+build69 remains unchanged because these are research/test/documentation changes.
+Root CODEXLOG_CURRENT.md is absent and was not created. No finalizer was invoked.
+The initial worktree was clean; all work here is attributable to this CGLHW.
+No push, deployment, external publication or successor occurred.
+
+[Final reconciliation v2](p3-tt-effectiveness-2026-10-23/closeout-v2.json) verifies
+54 receipt-bound raw files, frozen block inputs/completed outputs and584 legal/
+terminal/history/request-audited games, including8 operational pilot games and
+256 independent W1 confirmation games. The earlier resource-unqualified W4 screen
+is included in cost/accounting totals, not promoted to qualified strength evidence.
+All recorded owned game processes drained; the conditional W4 confirmation has
+zero launched blocks. Clock matches total16095.71s wall (~4.47h) and22208.55
+game-engine CPU seconds (~6.17 CPU-hours). Diagnostic/profile JVMs add1269.67s
+wall and1715.84 CPU seconds. These are measured research costs, excluding Gradle/
+tests, selection/analysis overhead, uncounted preflights and idle availability waits;
+they are not total workstation time or a pooled performance/strength estimate.
+The preserved closeout-v1 cost sum omitted six Java Job-accounted receipts;
+v2 adds those verified receipts without changing experimental results or audits.
+
+Validation was scoped to affected Search semantics and research execution: the
+bootstrap suites and corrected stale HCE assertion; exact/TT-off references;
+CP64 incremental/rebuild and legal-PV cases; full-window/adaptive budgets,
+cancellation/reset/helper draining at supported1-16 workers; ordinary UCI baseline
+parity and1/4/16 profile identity; dependency boundaries; and26 block-continuation,
+immutable-input, resource-admission and native process-fault tests. Frozen game
+stages pass the audits specified in their receipts. This is not a claim to rerun
+every repository test or to complete packaged Windows GUI/native macOS acceptance;
+those inherited qualifications remain unchanged. Diagnostics-ON timing, JFR
+sampling, desktop load and statistical sensitivity limits remain recorded above.
+
+Human actions required after this prompt:
+
+- **Blocking acceptance only:** GPT/owner reconciles and accepts or dispositions
+  the completed CGLHW. No production promotion is implied; any such change needs
+  separate explicit authorization and its applicable validation.
+- **Blocking future mirror-dependent planning/next launch, non-blocking this
+  completed repository work:** replace both external Project Source mirrors with
+  Contract P3-R018 and Frontier P3-F018 and confirm synchronization. Codex has not
+  synchronized them. `PROJECT_SOURCE_REFRESH_REQUIRED: YES`.
+
 ### Adaptive development endpoint and host qualification
 
 The closed [adaptive clock summary](p3-tt-effectiveness-2026-10-23/adaptive-clock-v1-summary.json)
@@ -497,7 +569,7 @@ before results, never retune closed finalists, and account for selection effects
 Existing tournament machinery provides pair blocks and process accounting.
 
 W1 fresh confirmation supports a gain under the primary test, with conservative
-sensitivity and domain limits above. W4 remains unresolved; no candidate is
+sensitivity and domain limits above. W4 is inconclusive/deferred; no candidate is
 promoted. Both canon mirrors
-must be refreshed to P3-R017/P3-F017 before dependent external GPT planning;
+must be refreshed to P3-R018/P3-F018 before dependent external GPT planning;
 Codex has not synchronized them. Repository research is already authorized.

@@ -1,0 +1,72 @@
+{
+  "status": "passed",
+  "planSha256": "d4bbf4ec526a98410f5568402708480bb18d17b3c3bfa5ababa9280ec59af37f",
+  "rawPath": "raw\\tt-session-requal-w4-v1",
+  "stage": "requal-w4",
+  "pairs": 32,
+  "exportSha256": "884056cdd50a0734f9a710a92aa283b803696138eb286bb6dfc233621ca3be4f",
+  "wdl": [
+    28,
+    13,
+    23
+  ],
+  "resources": {
+    "baseline": {
+      "requests": 3684,
+      "nodes": 854665378,
+      "elapsedNanos": 824240156300
+    },
+    "candidate": {
+      "requests": 3688,
+      "nodes": 872402817,
+      "elapsedNanos": 825374942400
+    }
+  },
+  "assessorSha256": "fe69e1ae07d3e1762e4bd48a3b6856d5e9bc28a3f1f40e96532c012c55a18eb5",
+  "cpuSeconds": {
+    "baseline": 1870.265625,
+    "candidate": 1882.484375
+  },
+  "peakWorkingSetBytes": {
+    "baseline": 389660672,
+    "candidate": 390062080
+  },
+  "matchWallSeconds": 1656.3817477999983,
+  "ownedCpuSeconds": 3766.265625,
+  "hostOtherAverageLogicalCores": [
+    0.9741709144530415
+  ],
+  "candidateToBaselineCpu": 1.0065331629029968,
+  "statistics": {
+    "score": 0.5390625,
+    "pentanomial": [
+      4,
+      6,
+      9,
+      7,
+      6
+    ],
+    "pairStandardError": 0.05735845020113258,
+    "confidence": 0.95,
+    "normalScore": [
+      0.42664200339674596,
+      0.651482996603254
+    ],
+    "boundedScore": [
+      0.2989818021700198,
+      0.7791431978299802
+    ],
+    "logisticElo": 27.198831638044453,
+    "normalElo": [
+      -51.344905586125364,
+      108.67164562802667
+    ],
+    "boundedElo": [
+      -148.0338146675374,
+      219.00260154063554
+    ]
+  },
+  "eligibleForConfirmation": false,
+  "decision": "not selected; unpromising/inconclusive development, no further screen",
+  "limits": "Domain-specific, selected candidate; normal approximation/exchangeable opening-pair assumptions. Conservative bounded interval is sensitivity. No pooling, extension, owner acceptance or production promotion."
+}

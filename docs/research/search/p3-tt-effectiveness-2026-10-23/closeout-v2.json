@@ -1,0 +1,92 @@
+{
+  "status": "passed",
+  "verifiedUtc": "2026-10-23T08:45:40.903214+00:00",
+  "headBeforeCloseoutCommit": "007ae258b5b925b10f3d7f3f5cb17c8e3163ac87",
+  "branch": "main",
+  "runtimeSourceAnchor": "18f3c4f12a01417a48fb4c044ff3bde2c5b44b2d",
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 69
+  },
+  "versionSha256": "a1dbe35307fd6501bd66eade261a78a821cc3904e844433fe3fa62d17ebd2d03",
+  "networkSha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "journalPresent": false,
+  "executionReceipts": {
+    "access-profile-w1-v1-execution.json": "91f0f7573e4633bcacb73a5478ba2ac1d8f3acd4d9dd8146ac580139ac6d8e9e",
+    "access-profile-w4-v1-execution.json": "94da300b6f8068504bf04e2cebbbfc24261c2e7ed3e9eb9dc39718deee903b71",
+    "adaptive-clock-w1-v1-execution.json": "317e5cccc035271d9de61fe78988ca80c4934655a1852bae357c39dd12d1539a",
+    "adaptive-clock-w4-v1-execution.json": "b01b9dd49e1a92e8d89a9af05e65691103692a030fdcf1cdd43ec538c59a6c26",
+    "adaptive-d8-w1-v1-execution.json": "f09c2a56aae4d277e89c235638f7e829255b6ef4fd2875102efbf0faad0ce835",
+    "adaptive-d8-w4-v1-execution.json": "0e1d54591a0540f32ab81e310e331e4fdec3f2c311ac02501fbd36e7f5fb82c4",
+    "adaptive-n250k-w1-v1-execution.json": "28695cd66d6d14ce8643976bfb7a60af5736f98d2b15beb050d34e5d94b044fc",
+    "adaptive-n250k-w4-v1-execution.json": "8b4c137f6453efe6bb05c023f4f768ff440352f604047419b1ee0c79e02484aa",
+    "aspiration-d6-v1-execution.json": "164a2a76cfe58418d5cb250476ded2a80a49f9c183b6a85445ef211e3060bc9a",
+    "aspiration-n250k-v1-execution.json": "d7ef855d91a8a2fbaf69cd5fe1e08d774743178c05ae960f2257a913688ea32b",
+    "cost-d6-w1-v1-execution.json": "4afb6f86ed7168246c1990507579195eae7b42a90a8d9cbeed8ba21dd09d8a40",
+    "cost-d6-w4-v1-execution.json": "2632ae3c46ff96b47599395533960cd5d649765f345f42c625a14ddb9a1d55cf",
+    "cost-n250k-w1-v1-execution.json": "acf1b54e5f4b64b99a6b21a1e5dfc90146edf9608945f90a85b67ce12ff0f08d",
+    "cost-n250k-w4-v1-execution.json": "bf572f8b55a82ddae16e76c5f0577471c7c5bc9a1b3475cd037a18260aa6440e",
+    "deeper-w1-v1-execution.json": "4eb7d9e16960791a9f76c22ae01d2696bc4feceb09f10a3fbf5bd1c9500b1685",
+    "deeper-w4-v1-execution.json": "cafa8f600afc956808e4fa1ec26d1c112d7a5abbaf0d439ac57653bcf32bbc5a",
+    "development-clock-w1-v1-execution.json": "eb4f6b68c9ad43ff608dd84cd1b4e03a0fbca9e59a2ff61137e986652fb322b8",
+    "development-clock-w4-v1-execution.json": "63b3b15e77f033aaccf6d71fb893fbcdba30271a0c0d9d31b4a4da7500a391c4",
+    "lifetime-full-v1-execution.json": "5258a8587bd563463664b7e223aaa16d14cd32881ca9c11a9c4d4e5dccbd1456",
+    "lifetime-v1-execution.json": "560e92cb2105a1a4fa789ec5936d65b5f80505346d03f359b6a4a55ec82aaade",
+    "observe-v1-execution.json": "f71afc184d0421deb649e37d9d51611b6554955dee1c3d7dbb25979e8b806eb1"
+  },
+  "boundRawFilesVerified": 54,
+  "studies": {
+    "pilot": {
+      "status": "complete and reaudited",
+      "pairs": 2,
+      "summarySha256": "ebdd2f0a66bce14c21325e80ac01c9d7b36af5fa66bdb092c9cad278356ac7d8"
+    },
+    "w1": {
+      "status": "complete and reaudited",
+      "pairs": 128,
+      "summarySha256": "8dba596f093571313a67df7323b505195dd755c3306ac60762115a83a098ebd7"
+    },
+    "requal-w4": {
+      "status": "complete and reaudited",
+      "pairs": 32,
+      "summarySha256": "e642de981592fd170d71fc85092d278572e2fb5a577dd37783cc073087574767"
+    },
+    "w4": {
+      "status": "not selected; never launched",
+      "pairs": 0
+    }
+  },
+  "clockGamesAudited": 584,
+  "clockMatchWallSeconds": 16095.708082799998,
+  "clockEngineCpuSeconds": 22208.546875,
+  "diagnosticJvmWallSeconds": 1269.6694790999995,
+  "diagnosticJvmCpuSeconds": 1715.84375,
+  "limits": "584 legal/terminal/history/request-audited games include8 operational pilot games; the earlier adaptive W4 screen has a separately recorded resource concern. Totals measure research cost, not pooled strength.256 W1 games are independent confirmation. Diagnostic JVM totals exclude Gradle/tests, Python analysis, selection, preflight outside those JVMs and idle availability waits. No new statistical looks, functional tests, GUI/Mac verification, deployment or promotion in closeout.",
+  "canon": {
+    "CHESS_SEARCH_CONTRACT.md": {
+      "revision": "P3-R018",
+      "sha256": "261b2bdcc599726922425ddf96e9ea380b65a14b3461fcf035e7be725e408614"
+    },
+    "CHESS_SEARCH_RESEARCH_FRONTIER.md": {
+      "revision": "P3-F018",
+      "sha256": "072454f93a8f5ad95550637cfc9223128108c4b2ed42d497c19bc47893244701"
+    }
+  },
+  "closeoutScriptSha256": "b5930b6e3b106fa969f4b88355fee2c4833cbf0ef39246ae3460a8055e0ee2ec",
+  "corrects": {
+    "source": "closeout-v1.json",
+    "sha256": "854bb7c234f9698cbb0aa6bb2c0556184f608af11ee73a2326c00f144ccf3fe3",
+    "scope": "Diagnostic resource totals only. v1 verified these receipts/evidence but omitted their Windows Job CPU/wall fields. Clock counts/costs and all experimental outcomes are unchanged.",
+    "addedReceipts": [
+      "adaptive-d8-w1-v1-execution.json",
+      "adaptive-d8-w4-v1-execution.json",
+      "adaptive-n250k-w1-v1-execution.json",
+      "adaptive-n250k-w4-v1-execution.json",
+      "deeper-w1-v1-execution.json",
+      "deeper-w4-v1-execution.json"
+    ]
+  },
+  "correctionScriptSha256": "5b12fd15daf04ec96c23b89a959a79ea73681ddd18d7215856c15b5e2a5f91ad"
+}

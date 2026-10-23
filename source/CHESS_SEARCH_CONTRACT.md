@@ -1,12 +1,27 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R017**
+Internal revision: **P3-R018**
 
-Status: **Active owner-authorized TT Information Effectiveness and Reuse CGLHW, launched 23 October 2026. Build69 Construction V1 + frozen CP64 remains the selected production and research baseline. No TT authority change or production promotion is authorized. Existing packaged-Windows-GUI and native-macOS qualifications remain open and do not block headless research.**
+Status: **TT Information Effectiveness and Reuse CGLHW technically complete, awaiting GPT/owner reconciliation and acceptance. Build69 Construction V1 + frozen CP64/WIDEN16 remains the selected production and research baseline. No TT authority change, production promotion or successor launch follows. Existing packaged-Windows-GUI and native-macOS qualifications remain open.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
-## Active objective - TT information effectiveness and reuse
+## Completed objective - TT information effectiveness and reuse
+
+The 23 October investigation establishes useful completed legal-hint reuse despite
+zero ordinary proof under the selected full selective configuration. No measured
+retention/capacity or access-cost concentration justifies a binding TT redesign.
+The existing ADAPTIVE16 consumer configuration passes the primary W1 independent
+128-pair confirmation: Elo+57.5, paired-normal97.5% interval+14.2 to+102.7 at
+10+0.1/Hash64/CP64 on the recorded Windows host. The conservative bounded interval
+crosses zero; this is a domain-limited result under the primary assumptions.
+Clock CPU/memory are essentially unchanged. Full-window results are inconclusive;
+the fresh resource-qualified W4 adaptive screen is also inconclusive and misses
+its frozen confirmation-selection gate. No W4 confirmation or strength
+extrapolation is claimed. Detailed evidence, negative/deferred findings and
+correctness/resource qualifications are in the focused record below. All selected
+avenues have supported dispositions; no further automatic research is queued.
+Owner reconciliation/acceptance and any production decision remain separate.
 
 On 23 October 2026 the owner confirmed P3-R016/P3-F014 Project Source
 synchronization and explicitly launched this CGLHW. Earlier no-successor
