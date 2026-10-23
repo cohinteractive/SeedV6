@@ -831,11 +831,88 @@ The production commit advances only build 69 -> 70 (version 0.0.0), with source,
 tests and decision canon together. No finalizer is used. Root CODEXLOG_CURRENT.md
 is absent and is not created. Both masters advance once: **P3-R019 / P3-F019**,
 with the new header `ADAPTIVE16 production selection - 23 October 2026` and
-updated title metadata/status/current-baseline text. Local Windows packaging is
-the remaining execution step before this integration's artifact handback;
-interactive packaged GUI and native macOS acceptance are not claimed.
+updated title metadata/status/current-baseline text. At the production commit,
+local Windows packaging remained for the artifact handback below; interactive
+packaged GUI and native macOS acceptance are not claimed.
 
 **PROJECT_SOURCE_REFRESH_REQUIRED: YES.** The owner must replace both Project
 Source mirrors with these masters and confirm synchronization before dependent
 external GPT planning or a next launch. GPT/owner reconciliation remains separate,
 including acceptance of the preceding TT CGLHW. No successor is started.
+
+### Build 70 local artifacts and qualification
+
+Production source is clean commit `f71fe9a91ae6633bea1a5f2ee40515385f3ecd30`,
+version 0.0.0/build70. Existing `packageWindows` produces candidate
+`adaptive16-build70-20261023` using installed/bundled JDK 21.0.12.1. Both native
+images and their independently extracted ZIPs pass; source manifests record that
+clean commit. `package-windows.log` retains the command and results. No new
+packaging system, installer execution, push, release or external deployment occurs.
+
+| Artifact (repository-relative path) | SHA-256 |
+| --- | --- |
+| `dist/windows/candidates/adaptive16-build70-20261023/SeedV6-GUI-windows-x64.zip` | `fc0cfc6733e25de3d5b8196f2335c6251c9066e0792f936f2e6ba3ecb6d882ed` |
+| `releases/candidates/windows-x64/adaptive16-build70-20261023/SeedV6-UCI-windows-x64.zip` | `3475786a58922cc20be3af25f958c60841708aedfe14ba6fb6502df7388d177a` |
+| `app-uci/build/distributions/seedv6-uci.zip` (portable Java 21 distribution) | `b1334768eac76c28328614e6c195ac3a0547243a3c90168a15d7c6532d5c5021` |
+
+The Windows candidate directories also contain ready-to-run images at
+`SeedV6-GUI/SeedV6-GUI.exe` and `SeedV6-UCI/SeedV6-UCI.exe`, respectively.
+The standard UCI executable is the selected Construction/ADAPTIVE16 engine;
+`SeedV6-NNUE-CP64.exe` remains the historical one-worker E008 launcher.
+Preserve the entire image folder when copying/extracting: executable, `app/`
+and bundled `runtime/` belong together. BotLi may launch standard UCI without
+model arguments; Hash defaults to64 and Threads accepts1-16. No installed BotLi
+configuration was inspected or modified. The Java ZIP includes `bin/seedv6-uci`
+and `bin/seedv6-uci.bat` and requires an installed Java21 runtime; its built
+Windows launcher passes handshake/build/default identity and a four-worker
+node-budget request from an unrelated directory. Other native platforms are untested.
+
+The shared core JAR SHA-256 is
+`75b8f0c621aea46166e91e429e251700077536bf946767e64d493ebafd9b04df` in both
+native images and the Java ZIP. `core-byte-audit.json` compares it with the
+verified original build69 core: only `BaselineEngine.class` and the application
+version resource differ; all other217 classes and all bundled model bytes are
+identical. This verifies unchanged CP64 inference/mapping, TT, aspiration algorithm,
+other Construction controls, references and lifecycle implementation.
+`artifacts.json` binds archive/receipt hashes, clean source and Java smoke output.
+
+Standard native UCI passes63 requests per image/extracted-ZIP check, covering
+Threads1/4/16, handshake/readiness/Hash/clear, depth/timed/BotLi-style clocks,
+legal position setup, infinite/stop, book aliases and guarded fallback, new game,
+quit, plus active-search EOF/process termination and damaged-model failures.
+Four damaged embedded CP64 cases fail closed without BREP2 fallback; the separate
+E008 launcher passes its preserved scalar/Vector checks. GUI packages pass
+headless resource/JNI/classpath checks. `packaged-parity/result.json` records
+eight exact GUI-adapter/UCI/scalar/Vector depth-5 score/node/move/PV comparisons
+and six terminal/mate checks using the actual packaged JARs and bundled runtimes.
+These are correctness/compatibility checks, not additional playing-strength games.
+
+No native GUI window was launched or visually accepted for build70. One existing
+native-window test was skipped in headless mode; full packaged GUI interaction
+and native macOS build/runtime acceptance remain open. No real external BotLi
+installation/client session, online game or macOS packaging was performed.
+The final evidence-only documentation commit does not change shipped code/build70
+or the clean runtime source recorded in these artifacts. Frozen research directories,
+protocols, manifests and measurements remain untouched; local generated evidence
+and packages are ignored and were not staged.
+
+Human actions required after this prompt:
+
+- **Blocking external activation only; non-blocking repository completion:** the
+  owner manually copies/extracts the full selected GUI/UCI image and updates the
+  BotLi engine path to standard `SeedV6-UCI.exe` (or the Java launcher on a suitable
+  Java21 host). Validate the external client configuration after that manual change.
+- **Blocking packaged Windows GUI acceptance only:** launch build70 from an
+  unrelated directory; check HCE/BREP2-32/CP64 selection, a legal CP64 move,
+  `NNUE / 100` White-perspective display, configured workers (representative1/4/16),
+  zero active workers after stop, Arena selection and clean quit. Frozen CP64 must
+  remain excluded from training. Automated headless checks do not close this gate.
+- **Blocking mirror-dependent GPT planning/next launch only:** refresh both Project
+  Source mirrors to Contract P3-R019 and Frontier P3-F019, then confirm synchronization.
+  `PROJECT_SOURCE_REFRESH_REQUIRED: YES`; Codex has not changed the mirrors.
+- **Blocking acceptance only:** GPT/owner reconciles this integration handback and
+  separately dispositions the preceding TT CGLHW. This turn does not claim either
+  work unit finally accepted and launches no successor.
+- **Blocking native macOS qualification only; non-blocking Windows handoff:** if
+  macOS acceptance is needed, run the established native `packageMac` build and
+  its GUI/UCI checks on supported macOS arm64, following the earlier handoff.
