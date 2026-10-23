@@ -5,12 +5,14 @@ The production and Search Phase 3 baseline is full **Construction V1 +
 Conventional NNUE CP64** (S6CNU002, eight material heads). GUI Play, ordinary Arena
 and standalone UCI share `engine-core`'s `BaselineEngine` construction. One worker
 uses the flattened PVS owner; multiple workers use cooperative `ParallelSearch`.
-Both use `TTable` and the full Construction feature set with ADAPTIVE16 aspiration
-at all supported worker counts (1-16), selected explicitly by the owner. Independent
-strength confirmation is limited to one worker under its recorded primary assumptions;
-four-worker evidence is inconclusive and other counts are unconfirmed. Explicit
-WIDEN16 research/historical configurations remain available. See the
-[adoption record](docs/research/search/P3_CONSTRUCTION_2026-10-20.md#adaptive16-production-adoption-23-october-2026).
+Both use `TTable`, all original 18 Construction controls plus NOMINAL_FUTILITY and
+VERIFIED_NULL (**flags3407871**), with ADAPTIVE16 aspiration at all supported worker
+counts (1-16), selected explicitly by the owner. Independent strength confirmation
+for the complete selectivity configuration is limited to one worker under its
+recorded primary assumptions; conservative bounded sensitivity crosses equality
+and multiworker strength remains unconfirmed. Explicit flags262143, WIDEN16 and
+other research/historical configurations remain available. See the
+[adoption record](docs/research/search/P3_CP64_SELECTIVITY_2026-10-23.md#production-adoption---24-october-2026).
 
 **Arena** compares named model lineages on identical frozen records and targets,
 with paired games before training and after each campaign round. Start from a fresh
@@ -26,7 +28,8 @@ The [current baseline and qualification record](docs/research/search/P3_CONSTRUC
 records the owner's selection, complete search features, score semantics, worker
 checks, packaging and informational E008 comparison. Competitive GUI selectors
 offer exactly HCE, BREP2-32 and Conventional NNUE CP64, defaulting to CP64. All
-three use Construction V1 and honor the same search settings. Frozen conventional
+three use Construction V1 and honor the same resource settings; HCE and BREP2-32
+retain flags262143 without the CP64-calibrated additions. Frozen conventional
 NNUE is unavailable in Network Training or Arena learning mode.
 
 The [conventional NNUE programme](docs/research/conventional-nnue-cglhw/STATE.md)

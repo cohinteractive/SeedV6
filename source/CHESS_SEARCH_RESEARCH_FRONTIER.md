@@ -1,12 +1,42 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F027**
+Internal frontier revision: **P3-F028**
 
-Status: **TECHNICALLY COMPLETE: CP64-integrated Search selectivity reappraisal; GPT reconciliation and owner acceptance pending. Nominal futility plus verified null has positive independent W1 evidence under the frozen primary assumptions, with bounded sensitivity crossing equality. Build70 production choices remain unchanged; repository build73 contains default-OFF research controls. No promotion, TT-policy change, evaluator replacement, external deployment or successor is authorized. The preceding TT CGLHW is owner-accepted.**
+Status: **OWNER-ACCEPTED: completed CP64 selectivity reappraisal, GPT-reconciled. The owner authorizes flags3407871 production adoption at all supported workers 1-16 through shared BaselineEngine. Repository production integration is validated at build74; external deployment remains separate. W1 strength evidence is positive under the frozen primary assumptions; bounded sensitivity crosses equality and multiworker strength remains unconfirmed. No TT-policy change, evaluator replacement or successor is authorized.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
-## Completed work selection - CP64-integrated selectivity reappraisal
+## CP64 selectivity production adoption - 24 October 2026
+
+The owner confirms P3-R027/P3-F027 mirror synchronization, GPT reconciliation and
+explicit acceptance of the technically completed reappraisal, then authorizes this
+bounded production integration across **all workers1-16**. This supersedes the
+historical pending-acceptance and non-promotion boundaries for this integration;
+closed experiments, adverse witnesses and unused plans are preserved.
+
+The adopted CP64 default is **flags3407871: original18 + NOMINAL_FUTILITY +
+VERIFIED_NULL**, flattened PVS, ADAPTIVE16, frozen checkpoint64/eight heads with
+unchanged score mapping and requested Hash64. Shared `BaselineEngine` owns GUI
+Play, ordinary Arena, standard UCI/BotLi and other normal consumers; Max remains
+bounded by available processors and16. HCE/BREP2-32/unrelated conventional payloads
+keep flags262143. Explicit historical/research controls, WIDEN16/OFF, independent
+references and all binding TT policies remain intact.
+
+The complete configuration's independent W1/10+0.1 evidence is128 pairs/256 games,
+127W/57D/72L,60.74%, estimated+75.8 Elo; primary paired-normal97.5% interval
++32.9 to+121.1 supports improvement under frozen assumptions. Bounded sensitivity
+-16.3 to+180.1 crosses equality. Component contributions are not independently
+established. Multiworker playing strength has no independent confirmation; the
+owner knowingly authorizes broader adoption without another tournament.
+
+The [Contract](CHESS_SEARCH_CONTRACT.md#cp64-selectivity-production-adoption---24-october-2026)
+binds the production decision; the [focused integration addendum](../docs/research/search/P3_CP64_SELECTIVITY_2026-10-23.md#production-adoption---24-october-2026)
+records actual configuration-equivalence, correctness, worker/lifecycle and
+consumer validation. Repository integration is distinct from external GUI/BotLi
+installation, deployment and release, which are not performed. No successor or
+new CGLHW is launched. Both mirrors require refresh before dependent GPT planning.
+
+## Historical technical handback - CP64-integrated selectivity reappraisal
 
 The owner launches this separate bounded objective on 23 October2026, confirms
 GPT reconciliation/owner acceptance of the completed TT CGLHW and completion of
@@ -120,7 +150,10 @@ binding TT change or promotion follows automatically. Both external Project
 Source mirrors require refresh after canon edits; authorized repository research
 continues independently of that external refresh.
 
-## Current baseline decision - 23 October 2026
+## Historical baseline consolidation - 23 October 2026
+
+This section records the preceding original18 baseline; the CP64 selectivity
+adoption above is the current default decision and supersedes its narrower scope.
 
 The owner's explicit consolidation launch supersedes the earlier non-promotion,
 Pair-2-principal-evaluator and pending Construction acceptance boundaries for this

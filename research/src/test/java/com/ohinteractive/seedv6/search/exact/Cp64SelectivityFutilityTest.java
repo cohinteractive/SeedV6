@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Timeout(180)
 class Cp64SelectivityFutilityTest {
-    static final List<String> PROFILES=List.of("nominal-futility","reduction-futility","reduction-no-improving");
+    static final List<String> PROFILES=List.of("nominal-futility","reduction-futility","reduction-no-improving","nominal-verified-null");
     @Test void omittedMovesAreRealUnadmittedAndObservationIsNeutral() throws Exception {
         var model=ConventionalNnueEngine.load();
         var roots=P3HistoryStudy.roots(Path.of("../docs/research/search/p3-construction-2026-10-20/diagnostic-corpus.tsv"));
@@ -32,7 +32,7 @@ class Cp64SelectivityFutilityTest {
                             int raw,int h,int continuation,int assigned,int margin) {
                         events[0]++;assertTrue(d>=3 && d<=5 && ply>0);assertEquals(a+1,beta);
                         assertTrue(h<=0 && a>=0 && assigned>=1 && assigned<=2);assertTrue(raw+100*margin<=a);
-                        assertEquals(profile.equals("nominal-futility")?d:assigned,margin);
+                        assertEquals(config.mechanisms().has(NOMINAL_FUTILITY)?d:assigned,margin);
                         var replay=root.board();for(int i=1;i<=ply;i++)replay=ExhaustiveOracle.child(replay,path[i]);
                         assertArrayEquals(replay,b);assertFalse(QuiescenceOracle.inCheck(b));
                         assertFalse(QuiescenceOracle.tactical(b,move));assertFalse(QuiescenceOracle.inCheck(ExhaustiveOracle.child(b,move)));
@@ -77,7 +77,8 @@ class Cp64SelectivityFutilityTest {
                 driver.newGame();assertTrue(driver.search(new SearchRequest(b,2)).targetDepthCompleted());
             }
         }
-        assertEquals(262143,BaselineEngine.configuration(1,64).mechanisms().flags());
+        assertEquals(3407871,BaselineEngine.configuration(1,64).mechanisms().flags());
+        assertEquals(262143,Cp64SelectivityLab.configuration("baseline",1,64).mechanisms().flags());
         assertThrows(IllegalArgumentException.class,()->FlatSearchConfig.exact().with(REDUCTION_FUTILITY,true));
         assertThrows(IllegalArgumentException.class,()->FlatSearchConfig.candidate().with(REDUCTION_FUTILITY,true).with(NOMINAL_FUTILITY,true));
     }

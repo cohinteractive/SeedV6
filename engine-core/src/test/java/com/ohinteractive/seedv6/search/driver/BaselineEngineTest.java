@@ -6,16 +6,38 @@ import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.common.*;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
+import com.ohinteractive.seedv6.search.exact.ConstructionSearch;
+import com.ohinteractive.seedv6.search.exact.FlatSearchConfig;
 import com.ohinteractive.seedv6.search.manage.*;
 import java.util.concurrent.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Timeout(120)
 class BaselineEngineTest {
+    @Test void unrelatedConventionalPayloadDoesNotInheritCp64Selectivity() throws Exception {
+        byte[] bytes;
+        try (var input = getClass().getResourceAsStream(ConventionalNnueEngine.NETWORK)) {
+            bytes = input.readAllBytes();
+        }
+        // In-memory valid alternate weights, never a mutation of the frozen asset.
+        bytes[bytes.length - 1] ^= 1;
+        var payload = java.util.Arrays.copyOfRange(bytes,
+                com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetwork.HEADER_BYTES, bytes.length);
+        System.arraycopy(java.security.MessageDigest.getInstance("SHA-256").digest(payload), 0, bytes, 40, 32);
+        var model = com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetwork.read(new java.io.ByteArrayInputStream(bytes));
+        var evaluation = SearchEvaluation.conventional(model);
+        for (int workers = 1; workers <= 16; workers++)
+            assertEquals(262143, BaselineEngine.configuration(evaluation, workers, 1).mechanisms().flags());
+        try (var driver = new SearchDriver(BaselineEngine.create(evaluation, 4, 1))) {
+            assertTrue(driver.search(new SearchRequest(Board.startingPosition(), 3)).targetDepthCompleted());
+        }
+    }
     @Test void frozenCompositionAndAllCompetitiveEvaluatorsUseSameSettings() throws Exception {
         for (var choice : BaselineEngine.Evaluator.values()) {
             var engine = BaselineEngine.load(choice);
-            assertEquals(262143, BaselineEngine.configuration(4, 8).mechanisms().flags());
+            long flags = choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? 3407871 : 262143;
+            assertEquals(flags, BaselineEngine.configuration(engine.evaluation(), 4, 8).mechanisms().flags());
+            assertTrue(engine.identity(4, 8).contains("flags=" + flags));
             assertTrue(engine.identity(4, 8).contains("aspiration=ADAPTIVE16;parallel=ROOT_REUSE"));
             assertTrue(engine.identity(4, 8).contains("workers=4;hashMiB=8"));
             if (choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64)
@@ -82,6 +104,9 @@ class BaselineEngineTest {
             try (var driver = new SearchDriver(search)) {
                 assertEquals(AspirationSearch.Policy.ADAPTIVE16, field(search, "policy"));
                 var owner = field(search, "owner");
+                var kernel = workers == 1 ? field(owner, "exact") : owner;
+                assertEquals(3407871L, ((FlatSearchConfig)
+                        field(kernel, "construction")).flags());
                 if (workers > 1) assertEquals(workers, ((Object[]) field(owner, "workers")).length);
                 var completed = driver.search(new SearchRequest(board, 3));
                 assertTrue(completed.targetDepthCompleted(), "workers=" + workers);
@@ -100,8 +125,10 @@ class BaselineEngineTest {
         var engine = BaselineEngine.load();
         var board = Board.startingPosition();
         try (var actual = new SearchDriver(engine.create(1, 8));
-             var explicit = new SearchDriver(com.ohinteractive.seedv6.search.exact.ConstructionSearch
-                     .v1(1, 8, AspirationSearch.Policy.ADAPTIVE16).create(engine.evaluation()))) {
+             var explicit = new SearchDriver(new ConstructionSearch(FlatSearchConfig.candidate()
+                             .with(FlatSearchConfig.Feature.NOMINAL_FUTILITY, true)
+                             .with(FlatSearchConfig.Feature.VERIFIED_NULL, true),
+                             1, 8, AspirationSearch.Policy.ADAPTIVE16).create(engine.evaluation()))) {
             var a = actual.search(new SearchRequest(board, 6)).lastCompletedResult();
             var b = explicit.search(new SearchRequest(board, 6)).lastCompletedResult();
             assertEquals(b.score(), a.score()); assertEquals(b.bestMove(), a.bestMove());

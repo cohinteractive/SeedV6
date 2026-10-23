@@ -1,12 +1,47 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R027**
+Internal revision: **P3-R028**
 
-Status: **TECHNICALLY COMPLETE: CP64-integrated Search selectivity reappraisal; GPT reconciliation and owner acceptance pending. Nominal futility plus verified null has positive independent W1 evidence under the frozen primary assumptions, with bounded sensitivity crossing equality. Build70 production choices remain unchanged; repository build73 contains default-OFF research controls. No promotion, TT-policy change, evaluator replacement, external deployment or successor is authorized. The preceding TT CGLHW is owner-accepted.**
+Status: **OWNER-ACCEPTED: completed CP64 selectivity reappraisal, GPT-reconciled. The owner authorizes flags3407871 production adoption at all supported workers 1-16 through shared BaselineEngine. Repository production integration is validated at build74; external deployment remains separate. W1 strength evidence is positive under the frozen primary assumptions; bounded sensitivity crosses equality and multiworker strength remains unconfirmed. No TT-policy change, evaluator replacement or successor is authorized.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
-## Completed objective - CP64-integrated Search selectivity reappraisal
+## CP64 selectivity production adoption - 24 October 2026
+
+The owner confirms P3-R027/P3-F027 Project Source synchronization, GPT reconciliation
+and explicit acceptance of the completed selectivity reappraisal. The subsequent
+production authorization supersedes its pending-acceptance/non-promotion wording
+for this bounded integration only. Historical experimental records remain frozen;
+no new CGLHW, tournament, evaluator training or research programme is launched.
+
+Select **all original 18 Construction V1 controls + NOMINAL_FUTILITY + VERIFIED_NULL,
+flags3407871**, on the existing flattened PVS, with ADAPTIVE16 at every explicit
+worker count **1-16**. Retain frozen S6CNU002 checkpoint64/eight material heads,
+BT4_Q_LOGIT400_V1 evaluation mapping and requested default Hash64. Max retains
+its available-processor/16-worker bound. `BaselineEngine` owns this default for
+GUI Play, ordinary Arena, standard UCI (including BotLi) and other normal consumers.
+Selection is bound to the verified CP64 payload; HCE, BREP2-32 and unrelated
+conventional payloads retain original flags262143. Explicit Construction controls,
+WIDEN16/OFF, feature-off variants, Policy4, recursive E008 and independent references
+retain their identities and remain selectable. No mechanism implementation is copied.
+
+The owner knowingly extends adoption beyond the one-worker strength domain:
+128 pairs/256 games at10+0.1 give127W/57D/72L, score60.74%, estimated+75.8 Elo,
+primary paired-normal97.5% interval+32.9 to+121.1, bounded interval-16.3 to+180.1.
+This supports the complete configuration under frozen primary assumptions, not
+independent component gains. The bounded interval crosses equality. There is no
+independent multiworker strength confirmation; functional compatibility is not Elo
+evidence and another tournament is not a prerequisite for this owner decision.
+
+All binding TT identity/layout/locking/replacement/proof policies, selective
+provenance, nominal verification, history/mate/PV rules and private-worker/drain
+guarantees remain binding. The [focused record](../docs/research/search/P3_CP64_SELECTIVITY_2026-10-23.md#production-adoption---24-october-2026)
+records repository integration and executable qualification separately from the
+closed experiments. External GUI/BotLi copies, installation, deployment and release
+are outside this authorization. Refresh both mirrors before dependent external
+GPT planning; repository work does not establish external synchronization.
+
+## Historical technical handback - CP64-integrated Search selectivity reappraisal
 
 The owner explicitly launches this bounded CGLHW on 23 October 2026 and confirms
 acceptance of the completed TT investigation and its synchronization prerequisites.
@@ -170,7 +205,10 @@ manufacture experiments solely to obtain a positive result. Mirror refresh does
 not block this already-authorized repository work, but both mirrors must be
 refreshed before dependent external GPT planning or a subsequent launch.
 
-## Current baseline decision - 23 October 2026
+## Historical baseline consolidation - 23 October 2026
+
+This section records the preceding original18 baseline; the CP64 selectivity
+adoption above is the current default decision and supersedes its narrower scope.
 
 The owner's explicit consolidation launch supersedes the earlier non-promotion,
 Pair-2-principal-evaluator and pending Construction acceptance boundaries for this

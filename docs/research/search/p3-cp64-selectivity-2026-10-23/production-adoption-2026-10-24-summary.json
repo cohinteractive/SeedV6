@@ -1,0 +1,165 @@
+{
+  "objective": "Owner-authorized CP64 production adoption; not a new research CGLHW",
+  "date": "2026-10-24 Pacific/Auckland",
+  "starting_git": "dc3cdc2",
+  "starting_worktree": "clean main",
+  "version_before": 73,
+  "version_after": 74,
+  "configuration": {
+    "flags": 3407871,
+    "original_controls": 18,
+    "added": [
+      "NOMINAL_FUTILITY",
+      "VERIFIED_NULL"
+    ],
+    "aspiration": "ADAPTIVE16",
+    "workers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "default_hash_mib": 64,
+    "network_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "payload_sha256": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+    "mapping": "BT4_Q_LOGIT400_V1",
+    "max_workers": "min(available processors,16), at least 1"
+  },
+  "selection": "BaselineEngine configuration/create/service/identity share frozen-payload selection. HCE, Pair-2 and unrelated conventional payloads retain 262143.",
+  "test_attempts": [
+    {
+      "phase": "regression-v1",
+      "module": "engine-core",
+      "tests": 183,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "phase": "regression-v1",
+      "module": "research",
+      "tests": 694,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 11
+    },
+    {
+      "phase": "regression-v2",
+      "module": "engine-core",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "phase": "regression-v2",
+      "module": "research",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "phase": "regression-v2",
+      "module": "app-uci",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "phase": "regression-v2",
+      "module": "app-gui",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 2
+    },
+    {
+      "phase": "regression-v2",
+      "module": "engine-training",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "phase": "regression-v2",
+      "module": "integration",
+      "tests": 35,
+      "failures": 3,
+      "errors": 0,
+      "skipped": 1
+    }
+  ],
+  "latest_suite_results": {
+    "tests": 940,
+    "failures": 3,
+    "errors": 0,
+    "skipped": 14,
+    "passed": 923
+  },
+  "counting": "Latest complete suite replaces earlier execution of the same suite. Parameterized cases with duplicate display names remain separate cases.",
+  "initial_targeted_failures": [
+    "Post-abort counters intentionally clear: corrected test observes completed iterations.",
+    "Invalid zero-halfmove repetition fixture: replaced by legal knight cycles."
+  ],
+  "corrected_regression_assertions": [
+    "Pinned original18 control must not enable all 22 enum features.",
+    "Historical research baseline stays 262143 after production changes."
+  ],
+  "inherited_failures": [
+    {
+      "module": "integration",
+      "suite": "com.ohinteractive.seedv6.gui.EngineSearchAdapterTest",
+      "test": "productionReplacementUsesOneTwoAndFourTotalWorkersIncludingTheOwner()"
+    },
+    {
+      "module": "integration",
+      "suite": "com.ohinteractive.seedv6.gui.LearningArenaLifecycleTest",
+      "test": "startNewResetsEveryControlAndBothModelsToConstructorDefaults()"
+    },
+    {
+      "module": "integration",
+      "suite": "com.ohinteractive.seedv6.gui.LearningArenaLifecycleTest",
+      "test": "createAndRunCommitsDeliberateDraftEditsAndRemembersTheNewCampaign()"
+    }
+  ],
+  "inherited_failure_reproduction": "All three reproduce with original BaselineEngine and SearchEvaluation compiled from dc3cdc2, prepended to the unchanged integration test classpath. starting-core/binding.json binds the sources. No unrelated GUI remediation.",
+  "skips": "11 opt-in historical qsearch instrumentation cases; 3 native desktop cases in headless execution.",
+  "equivalence": "All workers at Hash1/64 equal the complete frozen Lab nominal-verified-null configuration. W1 full-history traversal over four roots twice at Hash1/64 and D8/100000-node bound matches scores, moves, PVs, nodes, completion and diagnostics exactly.",
+  "worker_validation": "Production W1..16 executes bounded search, drain/restart, legal PV and private state checks. W1/2/4/8/16 use 100000 nodes and observed null attempts. Composed null/futility tests cover guards, synthetic/verification cancellation, injected worker failure and restoration.",
+  "consumers": {
+    "gui": "Real headless Play W1/4/16; eight scalar/vector D5 GUI/UCI exact comparisons.",
+    "arena": "Actual ordinary service: HCE, BREP2-32 and CP64 against CP64 at W1/4/16; 36 four-ply fixture games (not strength evidence), persisted identities and resume.",
+    "uci": "No-argument distribution: W1..16, Hash1/64, invalid options preserve settings, legal PVs, terminal/mate/history, budgets, stop/reset/clear/quit/EOF."
+  },
+  "build_command": "gradlew.bat --max-workers=2 assemble :app-uci:installDist :app:installDist -Pheadless",
+  "build_results": "PASS at build73 and build74",
+  "precommit_runtime_properties": "major=0\nminor=0\npatch=0\nbuild=74\nsourceRevision=dc3cdc263308 (uncommitted changes)\nversionUpdated=Uncommitted version state (date unavailable)\nplatform=Portable Java 21 (runtime platform reported separately)\n",
+  "raw_evidence": "docs/research/search/p3-cp64-selectivity-2026-10-23/raw/production-adoption-2026-10-24",
+  "runtime_receipts": [
+    "uci-v1/result.json",
+    "parity-v1/result.json",
+    "uci-build74/result.json",
+    "precommit-build74-entries.json"
+  ],
+  "limitations": [
+    "No independent multiworker strength confirmation; no tournament.",
+    "Three inherited supplemental integration failures remain.",
+    "Native GUI acceptance/macOS packaging and external GUI/BotLi installation/deployment not performed.",
+    "Frozen evidence, TT policy and Search mechanism code remain unchanged."
+  ]
+}

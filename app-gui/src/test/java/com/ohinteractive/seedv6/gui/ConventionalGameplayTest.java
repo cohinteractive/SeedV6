@@ -56,7 +56,8 @@ class ConventionalGameplayTest {
             assertEquals(8, binding.conventional().model().outputBuckets());
             assertEquals(1, adapter.workerCount()); assertEquals(4, binding.effectiveWorkers(4));
             assertNotSame(field(adapter, "service"), field(adapter, "blackService"));
-            assertTrue(binding.identity(1).contains("flags=262143"));
+            assertTrue(binding.identity(1).contains("flags=3407871"));
+            assertTrue(adapter.participants().black().identity(1).contains("flags=262143"));
             assertTrue(binding.identity(1).contains("aspiration=ADAPTIVE16"));
             for (String fen : new String[]{Board.FEN_STARTING_POSITION,
                     "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
@@ -87,10 +88,13 @@ class ConventionalGameplayTest {
             assertNull(bind(adapter, PlayEvaluator.Mode.CONSTRUCTION_V1, PlayParticipants.Selection.BEST));
             assertTrue(retired.isTerminated());
             assertNull(bind(adapter, PlayEvaluator.Mode.CONVENTIONAL_CP64, PlayParticipants.Selection.BEST));
-            edt(() -> { adapter.replaceWorkerCount(16); return null; });
-            assertEquals(16, adapter.evaluator().effectiveWorkers(adapter.workerCount()));
-            assertNull(search(adapter, Board.startingPosition(), new SearchLimits(100, -1, 150, false), false).failure());
-            assertNull(search(adapter, Board.startingPosition(), new SearchLimits(3, -1, -1, false), false).failure());
+            for (int workers : new int[]{4, 16}) {
+                edt(() -> { adapter.replaceWorkerCount(workers); return null; });
+                assertEquals(workers, adapter.evaluator().effectiveWorkers(adapter.workerCount()));
+                assertTrue(adapter.evaluator().identity(workers).contains("flags=3407871"));
+                assertNull(search(adapter, Board.startingPosition(), new SearchLimits(100, -1, 150, false), false).failure());
+                assertNull(search(adapter, Board.startingPosition(), new SearchLimits(4, -1, -1, false), false).failure());
+            }
         } finally { edt(adapter::beginShutdown).run(); }
         assertTrue(((SearchLifecycleService) field(adapter, "service")).isTerminated());
         assertTrue(((SearchLifecycleService) field(adapter, "blackService")).isTerminated());

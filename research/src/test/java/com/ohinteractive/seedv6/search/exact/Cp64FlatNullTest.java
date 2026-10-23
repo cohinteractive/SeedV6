@@ -88,7 +88,7 @@ class Cp64FlatNullTest {
                     (SearchDriverOutcome)ConstructionTtAdaptiveStudy.request(rebuilt,root,8,100000).get("outcome"));
           }
         }
-        for(String domain:List.of("nullProbeActive","nullVerification")) {
+        for(boolean composed:new boolean[]{false,true}) for(String domain:List.of("nullProbeActive","nullVerification")) {
             var stop=new AtomicBoolean();var holder=new ExactSearch[1];var heldHistory=new SearchLineHistory[1];var delegate=ExactEvaluator.from(model.evaluation());
             var e=new ExactEvaluator(){
                 public void initialize(long[] b){delegate.initialize(b);}
@@ -98,7 +98,7 @@ class Cp64FlatNullTest {
                     stop.set(true);
                 }return delegate.evaluate(b,ply);}
             };
-            var owner=ExactSearch.constructionResearch(e,guarded(holder),config());holder[0]=owner;
+            var owner=ExactSearch.constructionResearch(e,guarded(holder),config().with(NOMINAL_FUTILITY,composed));holder[0]=owner;
             var r=owner.search(board,GameHistory.initial(board),8,stop::get);assertTrue(stop.get(),domain);assertFalse(r.completed());
             for(String f:List.of("nullProbeActive","nullVerification","constructionNullProbe","constructionNullVerify"))assertFalse(flag(owner,f));
             assertNull(Policy4ProductionTest.field(owner,"history"));assertEquals(1,heldHistory[0].currentOccurrences(board));
@@ -113,8 +113,9 @@ class Cp64FlatNullTest {
             if(r.lastCompletedResult()!=null)Phase2Oracle.legalPv(board,r.lastCompletedResult().principalVariation());
             driver.newGame();assertTrue(driver.search(new SearchRequest(board,2)).targetDepthCompleted());
         }
+        for(boolean composed:new boolean[]{false,true}) {
         var fail=new AtomicBoolean(true);
-        try(var owner=ParallelSearch.constructionResearch(4,model.evaluation(),new TTable(1),config(),i->{
+        try(var owner=ParallelSearch.constructionResearch(4,model.evaluation(),new TTable(1),config().with(NOMINAL_FUTILITY,composed),i->{
             var delegate=ExactEvaluator.from(model.evaluation());return new ExactEvaluator(){
                 public void initialize(long[] b){delegate.initialize(b);}
                 public void child(long[] p,long[] c,int ply){
@@ -129,7 +130,9 @@ class Cp64FlatNullTest {
             assertEquals(SearchTermination.FAILURE,control.termination());assertEquals(0,driver.activeSearchThreads());
             fail.set(false);driver.newGame();assertTrue(driver.search(new SearchRequest(board,3)).targetDepthCompleted());
         }
-        assertEquals(262143,BaselineEngine.configuration(1,64).mechanisms().flags());
+        }
+        assertEquals(3407871,BaselineEngine.configuration(1,64).mechanisms().flags());
+        assertEquals(262143,Cp64SelectivityLab.configuration("baseline",1,64).mechanisms().flags());
         assertThrows(IllegalArgumentException.class,()->FlatSearchConfig.exact().with(VERIFIED_NULL,true));
     }
 }

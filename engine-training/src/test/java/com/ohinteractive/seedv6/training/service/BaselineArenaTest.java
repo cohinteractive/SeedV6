@@ -12,12 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class BaselineArenaTest {
     @TempDir Path temporary;
     @Test void threeEvaluatorsPersistAndPlayRepeatedColorPairsWithoutTrainingStores() throws Exception {
-        for (var evaluator : BaselineEngine.Evaluator.values()) {
+        for (int workers : new int[]{1, 4, 16}) for (var evaluator : BaselineEngine.Evaluator.values()) {
             var a = Competitor.competitive(evaluator);
             var b = Competitor.competitive(BaselineEngine.Evaluator.CONVENTIONAL_CP64);
             var config = LearningArenaConfig.match("baseline lifecycle", a, b, 19,
-                    new Arena(4, Limit.DEPTH, 2, 1000, 2, 0, 0, 4, Board.FEN_STARTING_POSITION));
-            Path path = temporary.resolve(evaluator.name());
+                    new Arena(4, Limit.DEPTH, 2, 1000, workers, 0, 0, 4, Board.FEN_STARTING_POSITION));
+            Path path = temporary.resolve(evaluator.name() + "-w" + workers);
             var snapshots = new java.util.concurrent.ConcurrentLinkedQueue<com.ohinteractive.seedv6.training.telemetry.ActiveGameSnapshot>();
             try (var service = LearningArenaService.create(path, config, update -> {
                 if (update.liveGame() != null && update.liveGame().evaluation() != null) snapshots.add(update.liveGame());
@@ -31,10 +31,13 @@ class BaselineArenaTest {
                 for (var game : snapshots) {
                     assertEquals(game.gameInPair() == 1 ? evaluator : BaselineEngine.Evaluator.CONVENTIONAL_CP64, game.white().competitiveEvaluator());
                     assertEquals(game.gameInPair() == 1 ? BaselineEngine.Evaluator.CONVENTIONAL_CP64 : evaluator, game.black().competitiveEvaluator());
-                    assertTrue(game.white().searchProfile().contains("flags=262143"));
+                    for (var participant : java.util.List.of(game.white(), game.black())) {
+                        long flags = participant.competitiveEvaluator() == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? 3407871 : 262143;
+                        assertTrue(participant.searchProfile().contains("flags=" + flags));
+                    }
                     assertTrue(game.white().searchProfile().contains("aspiration=ADAPTIVE16"));
                     assertTrue(game.black().searchProfile().contains("aspiration=ADAPTIVE16"));
-                    assertTrue(game.black().searchProfile().contains("workers=2;hashMiB=64"));
+                    assertTrue(game.black().searchProfile().contains("workers=" + workers + ";hashMiB=64"));
                 }
             }
             assertFalse(Files.exists(path.resolve("A/checkpoints")));

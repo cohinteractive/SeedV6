@@ -13,7 +13,9 @@ class Cp64SelectivityStudyTest {
     @Test void observedAttemptsIncludeAbortedWorkAndDoNotChangeTraversal() throws Exception {
         var evaluation=BaselineEngine.load().evaluation();var board=Board.startingPosition();
         var root=new P3HistoryStudy.Root("start",board,GameHistory.initial(board));
-        assertEquals(BaselineEngine.configuration(1,64),Cp64SelectivityStudy.configuration("baseline",1));
+        assertEquals(ConstructionSearch.v1(1,64,AspirationSearch.Policy.ADAPTIVE16),
+                Cp64SelectivityStudy.configuration("baseline",1));
+        assertNotEquals(BaselineEngine.configuration(1,64),Cp64SelectivityStudy.configuration("baseline",1));
         for(String profile:Cp64SelectivityStudy.PROFILES) {
             var observed=Cp64SelectivityStudy.observed(evaluation,profile);
             try(var a=new SearchDriver(Cp64SelectivityStudy.configuration(profile,1).create(evaluation));

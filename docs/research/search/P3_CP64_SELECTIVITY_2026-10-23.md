@@ -952,3 +952,89 @@ Project Source mirrors. Human actions required after this prompt:
 
 There is no human action blocking this technical closeout. No binding TT decision,
 evaluator change, successor objective or external action is requested.
+
+
+## Production adoption - 24 October 2026
+
+The owner confirms P3-R027/P3-F027 Project Source synchronization, GPT reconciliation
+and explicit acceptance of the completed reappraisal, then authorizes production
+adoption for every supported worker count1-16 despite strength evidence being
+limited to W1. This subsequent decision supersedes the historical pending and
+non-promotion statements above for this bounded integration only. All preceding
+experimental evidence, including the adverse composition witness, remains unchanged.
+No tournament, new CGLHW, training, TT-policy change or external deployment occurs.
+
+`BaselineEngine` now selects original18 + NOMINAL_FUTILITY + VERIFIED_NULL,
+**flags3407871**, with unchanged ADAPTIVE16, CP64/eight heads, mapping and default
+requested Hash64. The complete composition equals the existing research Lab's
+`nominal-verified-null` configuration, including margins and the legal verifier's
+composition. Both mechanisms reuse the existing flattened kernel without edits.
+The small factory-boundary predicate matches the verified immutable CP64 payload;
+rolling and full-rebuild definitions agree. HCE, BREP2-32 and a deliberately distinct
+valid conventional payload retain262143. Identity uses the same selection as create.
+
+Normal Play bindings, ordinary Arena competitive factories and no-argument UCI all
+continue through shared `BaselineEngine`. Explicit counts1-16 and processor-bounded
+Max remain supported. Original262143, WIDEN16/OFF, individual features, historical
+Policy4/E008, other evaluator routes and independent references remain available.
+Binding TT identity/layout/locking/replacement/proof requirements are unchanged.
+
+[The compact validation summary](p3-cp64-selectivity-2026-10-23/production-adoption-2026-10-24-summary.json)
+binds configuration, commands, test attempts, limitations and local evidence under
+`p3-cp64-selectivity-2026-10-23/raw/production-adoption-2026-10-24/`. Raw transcripts,
+JUnit XML, failed attempts and original-core reproduction stay ignored/local.
+
+- Complete configuration equality at every worker count and Hash1/64; W1 actual
+  D8/100k-bounded full-history traversals over four roots, repeated at both Hash
+  settings, exactly match research scores, moves, PVs, nodes, completion and diagnostics.
+- Actual production1..16 budgets, legal PVs, drain/restart and private state pass.
+  Representative1/2/4/8/16 requests use100k nodes and require observed null attempts.
+  Composed tests cover omitted-move safeguards, nominal verification, synthetic
+  history/TT exclusion, cancellation in probe/verifier and injected worker failure.
+  Broad retained tests exercise exact references, terminal/history/mate/PV semantics,
+  TT proof/identity/replacement/concurrency and lifecycle behavior.
+- Headless real GUI Play services pass at1/4/16. Ordinary Arena passes HCE/BREP2-32/
+  CP64 choices against CP64 at1/4/16 with persisted identities and resume:36 four-ply
+  fixture games, not strength evidence. Standard distribution UCI passes all1..16,
+  Hash1/64, rejected invalid options with prior settings retained, legal moves/PVs,
+  terminal/mate/repetition, whole-request budgets, stop/reset/Clear Hash and quit/EOF.
+- Eight exact depth5 GUI/UCI comparisons cover four positions in scalar and Vector
+  modes; six additional terminal/mate UCI searches pass. Local `assemble`, UCI and
+  compatibility-GUI `installDist` builds pass. No native desktop or macOS acceptance
+  is inferred from these headless Java checks.
+
+Latest suite results, preserving parameterized cases: **923 passed,14 skipped,
+3 inherited supplemental integration failures** across940 cases. The11 optional
+historical qsearch instrumentation cases and3 native desktop cases were skipped.
+The adoption-specific gates pass. Initial new-test failures incorrectly read cleared
+post-abort counters and fabricated repetition with a zero halfmove clock; corrected
+completed-iteration observation and legal knight-cycle fixtures pass. Two stale
+regression assertions were corrected: original18 is not all22 enum features, and
+historical research262143 is no longer equal to the moving production default.
+
+The remaining failures are `EngineSearchAdapterTest`'s production-replacement case
+(book result lacks a searched depth), and `LearningArenaLifecycleTest`'s start-new
+reset and deliberate-draft-edit cases. All three reproduce with original
+`BaselineEngine` and `SearchEvaluation` compiled from starting commitdc3cdc2 and
+prepended to the unchanged integration test classpath; source hashes and outputs
+are retained. They do not arise from CP64 selection and do not block its dedicated
+GUI/Arena/Search gates. Their unrelated UI/test remediation is left outside this unit.
+
+The attributable production commit increments build73 to74 only; major/minor/patch
+stay0/0/0. The starting tree was clean main atdc3cdc2. The validated precommit74
+artifact truthfully embeds that source plus an uncommitted-changes marker, recorded
+in the summary; it is not silently relabelled as a clean-commit artifact. No push,
+external installation or release is performed. Root CODEXLOG_CURRENT.md is absent;
+none is created, and the repository's no-finalizer rule is followed.
+
+One-worker confirmation remains127W/57D/72L,60.74%,+75.8 Elo, primary97.5%
+interval+32.9 to+121.1 and bounded-16.3 to+180.1 crossing equality. It supports the
+complete configuration under frozen assumptions, not isolated contributions or
+multiworker Elo. No independent multiworker strength confirmation is claimed.
+
+Both revised master headers are **P3-R028 / P3-F028**.
+**PROJECT_SOURCE_REFRESH_REQUIRED: YES.** Human actions required after this prompt:
+refresh both Project Source mirrors and confirm synchronization, non-blocking for
+completed repository integration but blocking dependent external GPT planning.
+External deployment remains a separate owner action if desired; no deployment is
+required to complete this integration. No human action blocks repository completion.

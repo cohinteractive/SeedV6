@@ -204,6 +204,10 @@ public final class SearchEvaluation {
     /** Immutable definition identity for composition at the production factory boundary. */
     public boolean isBrnPair2() { return pair2 != null; }
     public boolean isConventional() { return conventional != null; }
+    /** Verified immutable payload identity, independent of rolling versus rebuild execution. */
+    public boolean matchesConventionalPayload(String sha256) {
+        return conventional != null && conventional.payloadSha256().equals(sha256);
+    }
 
     public static SearchEvaluation handcrafted() { return HANDCRAFTED; }
 

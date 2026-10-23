@@ -8,12 +8,15 @@ import com.ohinteractive.seedv6.search.common.SingleDepthSearch;
 import com.ohinteractive.seedv6.search.common.TimeSource;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.exact.ConstructionSearch;
+import com.ohinteractive.seedv6.search.exact.FlatSearchConfig;
 import com.ohinteractive.seedv6.search.manage.SearchLifecycleService;
 import com.ohinteractive.seedv6.search.tablebase.RootTablebase;
 
 /** Authoritative competitive engine composition. Mutable search state is per owner/worker.
  * Historical ProductionSearch, PinnedSearch and ConventionalNnueEngine retain their identities. */
 public final class BaselineEngine {
+    // Frozen S6CNU002 CP64 payload; unrelated conventional checkpoints retain original V1.
+    private static final String CP64_PAYLOAD_SHA256 = "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6";
     public enum Evaluator { HCE, BREP2_32, CONVENTIONAL_CP64 }
     private final Evaluator evaluator;
     private final SearchEvaluation evaluation;
@@ -35,11 +38,21 @@ public final class BaselineEngine {
             }
         };
     }
+    /** Selected frozen-CP64 default; evaluator-aware callers use the overload below. */
     public static ConstructionSearch configuration(int workers, int hashMiB) {
-        return ConstructionSearch.v1(workers, hashMiB, AspirationSearch.Policy.ADAPTIVE16);
+        return new ConstructionSearch(FlatSearchConfig.candidate()
+                .with(FlatSearchConfig.Feature.NOMINAL_FUTILITY, true)
+                .with(FlatSearchConfig.Feature.VERIFIED_NULL, true),
+                workers, hashMiB, AspirationSearch.Policy.ADAPTIVE16);
+    }
+    /** Calibrated production selection; explicit ConstructionSearch controls remain independent. */
+    public static ConstructionSearch configuration(SearchEvaluation evaluation, int workers, int hashMiB) {
+        return evaluation.matchesConventionalPayload(CP64_PAYLOAD_SHA256)
+                ? configuration(workers, hashMiB)
+                : ConstructionSearch.v1(workers, hashMiB, AspirationSearch.Policy.ADAPTIVE16);
     }
     public static SingleDepthSearch create(SearchEvaluation evaluation, int workers, int hashMiB) {
-        return configuration(workers, hashMiB).create(evaluation);
+        return configuration(evaluation, workers, hashMiB).create(evaluation);
     }
     public SingleDepthSearch create(int workers, int hashMiB) { return create(evaluation, workers, hashMiB); }
     public SearchLifecycleService service(int workers, int hashMiB) {
@@ -60,9 +73,10 @@ public final class BaselineEngine {
                     + " payload=" + conventional.model().payloadSha256() + " head=" + conventional.model().headBackend()
                     + " scoreMapping=" + ConventionalNnueEngine.SCORE_MAPPING;
         };
+        var configuration = configuration(evaluation, workers, hashMiB);
         return "baseline=construction-v1-" + (evaluator == Evaluator.CONVENTIONAL_CP64 ? "cp64" : evaluator.name())
-                + " search=construction-v1 flags=" + configuration(workers, hashMiB).mechanisms().flags()
-                + " configuration=" + configuration(workers, hashMiB).identity() + " " + model
+                + " search=construction-v1 flags=" + configuration.mechanisms().flags()
+                + " configuration=" + configuration.identity() + " " + model
                 + " score=side-to-move-cp build=" + version.build() + " source=" + version.sourceRevision();
     }
 }

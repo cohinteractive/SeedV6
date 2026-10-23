@@ -21,7 +21,10 @@ class PinnedSearchTest {
                 Object owner = workers == 1 ? field(search, "exact") : search;
                 var config = (FlatSearchConfig) field(owner, "construction");
                 assertEquals(262143L, config.flags());
-                for (var feature : FlatSearchConfig.Feature.values()) assertTrue(config.has(feature));
+                var original = java.util.EnumSet.range(FlatSearchConfig.Feature.QXRAY,
+                        FlatSearchConfig.Feature.HISTORY_PROTECTION);
+                for (var feature : FlatSearchConfig.Feature.values())
+                    assertEquals(original.contains(feature), config.has(feature), feature.name());
                 assertEquals(100, config.futilityMargin()); assertEquals(200, config.reverseMargin());
                 assertTrue(config.identity().contains("extensionCap=1"));
                 if (workers == 1) assertNotNull(field(owner, "flatMainFrames"));
