@@ -429,3 +429,54 @@ wrapper has not been launched and cannot bypass the same host limitation. The bo
 integration is selected but not yet implemented. Build72/HEAD2907f9b remain the
 latest committed runtime; uncommitted research-only H5 harnesses and evidence are
 attributable to this objective. MastersP3-R023/P3-F023 require Project Source refresh.
+
+## Integrated H5 implementation and qualification
+
+VERIFIED_NULL is a new default-OFF bit requiring the original18 controls. It uses
+the same flattened main/qsearch loops with bounded, non-nested re-entry at the
+actual ply; no per-move Java recursion or new production Search implementation is
+introduced. The synthetic domain retains its history barrier and real rule clock,
+uses no TT/hints/learning or ordering-memory reads, disables selective omissions,
+reductions/extensions, and keeps unpruned qsearch. LegalD-2 verification uses current
+selectivity and inherited legal context/ordering memory, with no learning or
+completed-hint participation. Scratch, PV, flags and history unwind on all exits.
+Only beta can be returned as a heuristic cutoff, with no invented child PV or mate
+value. Existing TT policy is applied to the newly admitted domains; TTable identity,
+layout, locking, replacement and proof-eligibility rules are not redesigned.
+
+`flat-null-validation-v3-summary.json`:67 tests, zero failures/errors/skips,93.5s.
+Observe-only isolation preserves main scores/PVs/ordinary node totals and all
+learned quiet/capture/continuation/killer/countermove tables across1461 probes;
+additional completed probe/verifier work is fully charged while excluded only from
+the observation control's private EFFORT ordering. Independent retained synthetic
+threshold comparisons, empty-cutoff-child-PV, TT exclusion/no ordinary proof stores,
+CP64 rolling/rebuild, cancellation inside both isolated domains, all1..16-worker
+budgets/drain/reuse and an injected synthetic worker failure pass. Existing recursive
+Pair-null, Construction, TT, ordinary UCI and baseline checks pass as well.
+`flat-null-composition-v2-summary.json` then passes all four targeted tests including
+the nominal-futility composition's rolling/rebuild comparison,33.8s.
+
+Failed checks are preserved: validation-v1 failed test compilation because a test
+omitted a checked-exception declaration; no tests ran. Its old wrapper copied39
+stale prior JUnit cases, so that total is not current validation. The wrapper now
+excludes results predating the command. Validation-v2 actually ran20 tests and had
+one test-harness failure: it dereferenced Search's correctly cleared history field
+after cancellation. Retaining the pre-unwind history object fixes that assertion;
+the successful v3 tests verify restoration and cleared ownership. Composition-v1
+failed compilation for a missing final brace in the new replay harness; the corrected
+v2 passes. No experiment or strength result comes from a failed build.
+
+`flat-null-v1.json` prospectively freezes whole-request observation, D8 and fixed-node
+comparisons of baseline, nominal futility, verified null and their composition.
+The composition also changes the legal verifier's futility consumer, so interpret
+it at configuration level. Independent nominal replays select the first integrated
+cutoff per root/depth/profile and retain caps/adverse resources. At most two later
+independent W1 finalists remain possible; unused frozen clock plans are not a
+compulsory feature/tournament queue. All three clock resource admissions failed
+without any game or owned match process; that branch remains resource-blocked.
+
+Current next step: commit the qualifying runtime work with build72 ->73, export
+and freeze runtime-v4, run `run_flat_null_v1.py`, its independent cutoff replay,
+`summarize_flat_null_v1.py` and actual UCI qualification. No measurement is claimed
+until its receipt passes. Do not overlap those stages or any future admitted clock
+match. Reassess finalists and the resource blocker from their completed evidence.

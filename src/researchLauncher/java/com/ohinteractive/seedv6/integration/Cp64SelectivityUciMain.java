@@ -16,7 +16,7 @@ import com.ohinteractive.seedv6.uci.*;
 public final class Cp64SelectivityUciMain {
     public static void main(String[] args) throws Exception {
         if(args.length!=4 || !args[0].equals("--network") || !args[2].equals("--profile")
-                || !Set.of("baseline","no-improving","lazy-improving","nominal-futility","reduction-futility","reduction-no-improving").contains(args[3]))
+                || !Set.of("baseline","no-improving","lazy-improving","nominal-futility","reduction-futility","reduction-no-improving","verified-null","nominal-verified-null").contains(args[3]))
             throw new IllegalArgumentException("--network <frozen CP64> --profile <explicit selectivity research profile>");
         var model=ConventionalNnueEngine.load(Path.of(args[1]));var evaluation=model.evaluation();String profile=args[3];
         int warmupWorkers=Integer.parseInt(System.getProperty("seedv6.selectivity.warmupWorkers","1"));

@@ -1,0 +1,66 @@
+{
+  "command": [
+    "cmd.exe",
+    "/c",
+    "gradlew.bat",
+    "--gradle-user-home",
+    "build/migration/gradle-user-home",
+    "--no-daemon",
+    "--max-workers=1",
+    ":research:test",
+    "--tests",
+    "*Cp64FlatNullTest",
+    "--tests",
+    "*PairNullMoveTest",
+    "--tests",
+    "*ConstructionDepthTest",
+    "installResearchWorkspace"
+  ],
+  "exitCode": 1,
+  "elapsedSeconds": 29.941156000000774,
+  "suites": [
+    {
+      "path": "raw\\flat-null-validation-v2-research-TEST-com.ohinteractive.seedv6.search.exact.ConstructionDepthTest.xml",
+      "sha256": "36299219b8432c9a399d611d41a481c763b7bab74360342cec010e0b6d291e84",
+      "name": "com.ohinteractive.seedv6.search.exact.ConstructionDepthTest",
+      "tests": "9",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-23T11:56:20",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "1.296"
+    },
+    {
+      "path": "raw\\flat-null-validation-v2-research-TEST-com.ohinteractive.seedv6.search.exact.Cp64FlatNullTest.xml",
+      "sha256": "767f53d6bff8b949acd53b3803f162f415ca3c11ab3f5c045aff23eaafa183fa",
+      "name": "com.ohinteractive.seedv6.search.exact.Cp64FlatNullTest",
+      "tests": "4",
+      "skipped": "0",
+      "failures": "1",
+      "errors": "0",
+      "timestamp": "2026-10-23T11:56:22",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "12.71"
+    },
+    {
+      "path": "raw\\flat-null-validation-v2-research-TEST-com.ohinteractive.seedv6.search.exact.PairNullMoveTest.xml",
+      "sha256": "241bd55fc16b1e2736ebd8d708597ad1e2e03669808b6f7a0b841134c8b4e6fb",
+      "name": "com.ohinteractive.seedv6.search.exact.PairNullMoveTest",
+      "tests": "7",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-23T11:56:34",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.147"
+    }
+  ],
+  "priorResultFilesExcluded": [],
+  "totals": {
+    "tests": 20,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0
+  }
+}

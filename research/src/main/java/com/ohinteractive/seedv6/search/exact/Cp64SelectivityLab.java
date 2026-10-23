@@ -15,7 +15,7 @@ import static com.ohinteractive.seedv6.search.exact.FlatSearchConfig.Feature.*;
 public final class Cp64SelectivityLab {
     public static ConstructionSearch configuration(String name,int workers,int hash) {
         var base=Cp64SelectivityStudy.configuration(switch(name) {
-            case "lazy-improving","reduction-futility","nominal-futility" -> "baseline";
+            case "lazy-improving","reduction-futility","nominal-futility","verified-null","nominal-verified-null" -> "baseline";
             case "reduction-no-improving" -> "no-improving";
             default -> name;
         },workers);
@@ -23,6 +23,8 @@ public final class Cp64SelectivityLab {
             case "lazy-improving" -> base.mechanisms().with(LAZY_IMPROVING,true);
             case "reduction-futility","reduction-no-improving" -> base.mechanisms().with(REDUCTION_FUTILITY,true);
             case "nominal-futility" -> base.mechanisms().with(NOMINAL_FUTILITY,true);
+            case "verified-null" -> base.mechanisms().with(VERIFIED_NULL,true);
+            case "nominal-verified-null" -> base.mechanisms().with(VERIFIED_NULL,true).with(NOMINAL_FUTILITY,true);
             default -> base.mechanisms();
         };
         return new ConstructionSearch(mechanisms,
@@ -38,6 +40,15 @@ public final class Cp64SelectivityLab {
         final List<Sample> samples=new ArrayList<>();
         final long[][] omissions=new long[17][3];
         final List<Map<String,Object>> omittedSamples=new ArrayList<>();
+        final long[][] nullEvents=new long[17][2];
+        final long[] completedNullWork=new long[2]; // completed probe/verifier nodes; request totals retain all aborts
+        final List<Map<String,Object>> nullSamples=new ArrayList<>();
+        void nullPrediction(long[] b,long[] path,int ply,int depth,int beta,int raw,int r,int prediction,boolean accepted) {
+            long n=++nullEvents[depth][accepted?1:0];
+            if(n==1 || n==8 || n==64 || n==512)nullSamples.add(Map.of("sample",
+                    new Sample("integrated-null",b.clone(),0,Arrays.copyOfRange(path,1,ply+1),ply,depth,beta-1,beta,raw,0,0,r),
+                    "prediction",prediction,"selectedCutoff",accepted,"event",n));
+        }
         @Override public void omission(long[] b,long move,long[] path,int ply,int depth,int alpha,int beta,
                 int raw,int history,int continuation,int assignedChildDepth,int marginDepth) {
             long n=++omissions[depth][Integer.signum(history)+1];
@@ -112,6 +123,16 @@ public final class Cp64SelectivityLab {
                     var config=configuration(profile,1,64);var observation=new Observation();
                     var adapter=ExactSearchAdapter.constructionResearch(model.evaluation(),new TTable(64),config.mechanisms());
                     var exact=exact(adapter);exact.withSelectivityTrace(observation);var attempts=new ArrayList<Map<String,Object>>();
+                    if(config.mechanisms().has(VERIFIED_NULL)) {
+                        var field=ExactSearch.class.getDeclaredField("constructionState");field.setAccessible(true);
+                        var state=(FlatSearchState)field.get(exact);
+                        exact.withFlatNullObservation(false,new NullMovePolicy.Diagnostics(){
+                            @Override public void probe(long[] b,int ply,int d,int beta,int raw,int r,int prediction,boolean accepted) {
+                                observation.nullPrediction(b,state.pathMoves,ply,d,beta,raw,r,prediction,accepted);
+                                observation.completedNullWork[0]=probeNodes;observation.completedNullWork[1]=verificationNodes;
+                            }
+                        });
+                    }
                     var owner=new AspirationSearch(adapter,config.aspiration(),(d,a,b,r,n)->attempts.add(
                             Map.of("depth",d,"alpha",a,"beta",b,"outcome",r,"mechanisms",exact.constructionCounters())));
                     try(var plain=new SearchDriver(config.create(model.evaluation()));var observed=new SearchDriver(owner)) {

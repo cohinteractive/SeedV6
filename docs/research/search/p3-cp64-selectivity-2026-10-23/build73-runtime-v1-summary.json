@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cmd.exe",
+    "/c",
+    "gradlew.bat",
+    "--gradle-user-home",
+    "build/migration/gradle-user-home",
+    "--no-daemon",
+    "--max-workers=1",
+    "installResearchWorkspace"
+  ],
+  "exitCode": 0,
+  "elapsedSeconds": 7.615410700003849,
+  "suites": [],
+  "priorResultFilesExcluded": [],
+  "totals": {
+    "tests": 0,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

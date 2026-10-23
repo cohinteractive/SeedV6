@@ -15,6 +15,7 @@ final class FlatSearchState {
     final long[] killers,counters;
     long captureUpdates,quietUpdates,filtered,orderingChanges;
     long reductions,verifications,fullRetries,refuted,relief,extensions,futilityOmissions,reverseCutoffs,protectedMoves,evaluations;
+    long nullAttempts,nullProbeNodes,nullVerificationNodes,nullCutoffs;
 
     FlatSearchState(FlatSearchConfig config) {
         this.config=config;
@@ -32,6 +33,7 @@ final class FlatSearchState {
         if(counters!=null) Arrays.fill(counters,0);
         captureUpdates=quietUpdates=filtered=orderingChanges=0;
         reductions=verifications=fullRetries=refuted=relief=extensions=futilityOmissions=reverseCutoffs=protectedMoves=evaluations=0;
+        nullAttempts=nullProbeNodes=nullVerificationNodes=nullCutoffs=0;
     }
     void order(long[] moves,int from,int count,int ep,long hash,int[] keys,int base,int ply,int[] history) {
         int context=ContinuationHistory.context(pathMoves[ply]);

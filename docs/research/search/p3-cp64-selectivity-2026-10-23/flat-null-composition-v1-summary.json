@@ -1,0 +1,38 @@
+{
+  "command": [
+    "cmd.exe",
+    "/c",
+    "gradlew.bat",
+    "--gradle-user-home",
+    "build/migration/gradle-user-home",
+    "--no-daemon",
+    "--max-workers=1",
+    ":research:test",
+    "--tests",
+    "*Cp64FlatNullTest",
+    "installResearchWorkspace"
+  ],
+  "exitCode": 1,
+  "elapsedSeconds": 13.507858199998736,
+  "suites": [],
+  "priorResultFilesExcluded": [
+    "research\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.exact.ConstructionDepthTest.xml",
+    "research\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.exact.ConstructionOrderingTest.xml",
+    "research\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.exact.ConstructionSearchTest.xml",
+    "research\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.exact.ConstructionTtAdaptiveTest.xml",
+    "research\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.exact.ConstructionTtFullWindowTest.xml",
+    "research\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.exact.ConstructionTtStudyTest.xml",
+    "research\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.exact.Cp64FlatNullTest.xml",
+    "research\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.exact.Cp64SelectivityFutilityTest.xml",
+    "research\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.exact.Cp64SelectivityLazyTest.xml",
+    "research\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.exact.Cp64SelectivityStudyTest.xml",
+    "research\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.exact.PairNullMoveTest.xml",
+    "research\\build\\test-results\\test\\TEST-com.ohinteractive.seedv6.search.exact.Policy4ProductionTest.xml"
+  ],
+  "totals": {
+    "tests": 0,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

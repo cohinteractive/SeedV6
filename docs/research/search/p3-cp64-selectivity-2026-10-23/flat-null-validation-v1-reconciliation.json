@@ -1,0 +1,7 @@
+{
+  "sourceReceiptSha256": "0d55f65d3f30411a623484a62649e6410ebd5ba8cb197faec14ba15ef56c59b0",
+  "logSha256": "46aa34a03e777b90c6791dec60a73abee9701c0fcc5bd1cacd0de47de38b407e",
+  "actualTestsExecuted": 0,
+  "oldReportedCases": 39,
+  "qualification": "Compilation failed before tests. Original receipt preserves stale previous JUnit XML copied by the former wrapper. No case in that total is evidence of validation-v1 execution. Wrapper now excludes XML predating command admission; successful validation-v3 has fresh67-case evidence."
+}
