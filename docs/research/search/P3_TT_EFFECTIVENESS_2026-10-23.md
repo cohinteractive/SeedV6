@@ -34,10 +34,15 @@ identity, process-fault and resource-gate tests. Four studies are now frozen in
 [tt-session-v1-binding.json](p3-tt-effectiveness-2026-10-23/tt-session-v1-binding.json)
 under [the prospective protocol](p3-tt-effectiveness-2026-10-23/adaptive-confirmation-v1.md):
 two-block operational pilot; W1 128-pair confirmation; W4 fresh32-pair resource
-requalification; conditional W4 128-pair confirmation. No games in them yet.
+requalification; conditional W4 128-pair confirmation.
 The owner answered: **wait until the workstation is quiet, then continue**.
-Next: run `continue_confirmation_v1.py` once, from the experiment directory using
-the existing `build/research/venv/Scripts/python.exe -B`. It waits15min after a
+The controller started at2026-10-23T05:49:12Z; its initial quiet-host check passed
+(0.59 busy logical cores), and pilot block0 completed with its resource audit.
+It is proceeding through its frozen sequence. **Do not launch a duplicate.**
+Inspect the current raw study's session/receipt state and the existing controller
+process before resuming. Only after reconciling a stopped controller, run
+`continue_confirmation_v1.py` with `build/research/venv/Scripts/python.exe -B`.
+It waits15min after a
 failed30s admission, locks out competing controllers, starts one block at a time,
 and requires the pilot and W4 selection gates. `PAUSE` in the current raw study
 stops after the current complete block; the controller never clears it. Partial
