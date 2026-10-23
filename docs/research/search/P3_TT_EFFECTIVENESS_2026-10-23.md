@@ -12,17 +12,18 @@ Completed: diagnostic-v1, followup-v1 (aspiration reverse ablation and cross-req
 lifetime), deeper-v1 (different roots, W1/W4), full-window correctness and ordinary
 UCI baseline parity. Their frozen protocols, bindings, receipts and summaries are
 in the linked experiment directory. Pilot-v1 passed all four operational games.
-The frozen 32-pair W1/W4 development protocol started W1 at
-2026-10-23T03:10:30Z; `run_development_clock_v1.py` waits for each owned match and
-then starts W4 serially. Inspect per-domain execution receipts and raw run status
-before taking further action; absent completion is not permission to duplicate a
-live run. Preserve partial output and reconcile any interruption before retrying
-under a new protocol/name. Next after both receipts pass: analyze fixed endpoints
-under development-clock-v1's selection rule. Before any further clock games, run
-the frozen lifetime-full-v1 protocol to distinguish initial-window pressure from
-full-game accumulation, using the existing fixtures/runtime. Then freeze fresh
-strength confirmation only where justified. Existing full-window all-controls CP64/Hash64 is a conditional candidate;
-WIDEN16 is the principal baseline. No strength evidence yet. All failed checks
+The frozen 32-pair W1/W4 development completed: full-window scored25/12/27 W/D/L
+at W1 and30/7/27 at W4, with broad intervals crossing zero. Neither meets its
+frozen0.55 confirmation-selection gate. `lifetime-full-v1` is running after clocks
+to measure full-trajectory accumulation; inspect its receipt before further work.
+Next after that receipt passes: qualify and execute the newly frozen adaptive-v1
+protocol, exactly one existing ADAPTIVE16 consumer alternative, selected because
+it retains narrow-window behavior while responding to CP64 score variation. No
+policy sweep or bespoke Search redesign. Preserve all closed protocols and failed
+checks. Absent completion never permits duplicating a live run; reconcile any
+interruption before retrying under a new name. Existing full-window remains a
+conditional CPU-saving configuration with strength unconfirmed; WIDEN16 remains
+the principal baseline. All failed checks
 remain recorded; do not replay or overwrite closed names or raw evidence.
 Runtime baseline and TT policy remain unchanged. No owner decision currently
 blocks this headless work. Inspect this record and its experiment summaries
@@ -95,10 +96,10 @@ Challenge decisions before substantial execution:
 | --- | --- | --- |
 | T1 | Completed hints materially reduce current CP64 request work despite no ordinary proof. | SUPPORTED mechanism value in diagnostic-v1: hints-off increases D6 work/time at W1/W4, despite slightly cheaper fixed-node requests. Not Elo evidence. |
 | T2 | Current capacity/replacement loses consequential guidance. | No redesign justified in tested early/middle domains. Fresh occupancy averages 1.1%; plies16..47 maximum16.6%. Older-generation hints are only4% of hits but retaining them helps. NEXT frozen full-trajectory retention check after clocks; initial-window data cannot establish late-game pressure. Long-clock saturation remains untested. |
-| T3 | Aspiration/PVS/iteration or root guidance consumes hints ineffectively. | Full-window control promising at D6 and deeper W1/W4; fixed-250k completed depths mixed. Hints help both drivers. NEXT clock test of the unchanged existing full-window composition, not a TT redesign. |
+| T3 | Aspiration/PVS/iteration or root guidance consumes hints ineffectively. | Full-window reduces some request costs but has inconclusive clock evidence and no confirmation admission. Hints help both drivers. NEXT exactly one existing ADAPTIVE16 control under frozen adaptive-v1; preserve narrow-window behavior while testing retry economics. No width sweep. |
 | T4 | TT access/coordination costs consume the information benefit. | Fixed-node hints-off is about 4-5% cheaper but completes less depth; D6 becomes 23-33% slower in aggregate. Retain whole-request economics, no locking/layout variant. Profiling only if decision value remains. |
 | T5 | Producer depth/selective restrictions leave valuable proof or guidance unavailable. | Zero ordinary proof confirmed; completed hints provide value. No evidence yet justifies weakening proof restrictions or binding-policy experimentation. Empty proof probes/repeated writes are traffic observations, not permission to alter TT access/replacement. |
-| T6 | A promising integrated candidate improves practical strength. | Full-window correctness qualified. NEXT operational pilot, then fixed paired clock development; fresh confirmation only if expected decision value warrants it. No universal game quota or automatic promotion. |
+| T6 | A promising integrated candidate improves practical strength. | Full-window W1/W4 clock results inconclusive, neither reaches frozen confirmation-selection gate. W4 CPU ratio0.789 is conditional resource evidence, not strength equivalence. Any adaptive screen requires its independent prospective diagnostic gate. No promotion. |
 
 Select the next question by expected decision value. Negative findings may close
 formulations; incomplete/resource-limited evidence stays inconclusive or deferred.
@@ -189,6 +190,15 @@ independent games. Lifetime timing lacks warmup, so node/depth/age comparisons
 are primary. Its peak working set, 876 MB, belongs to the six-owner diagnostic
 JVM and must not be represented as one production engine's memory. The three
 followup runs took 302.4 seconds wall, including 181.2 for lifetime-v1.
+
+Generation age is last-write age, not causal information age: an old hint may
+guide a completed search which refreshes it into the current generation. The 4%
+older-hit share therefore does not bound the benefit of cross-request information.
+The retained/cleared control is the relevant counterfactual. Source inspection of
+`ExactSearch.beginRequest/endRequest/newGame` shows that feedback and iteration
+guidance are already cleared per request; in this W1 composition `newGame` adds
+TT clearing. Rich Construction state is invocation-local. This supports the
+retention interpretation without asserting that every table hit was decisive.
 
 ## Candidate and clock qualification
 

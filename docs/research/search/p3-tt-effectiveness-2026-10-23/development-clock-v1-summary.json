@@ -1,0 +1,143 @@
+{
+  "status": "passed",
+  "protocolSha256": "904055e526899f88c1f3192fa82efaab203e0dd6e3f5dc8148f81f743f4fdc53",
+  "domains": {
+    "1": {
+      "rawPath": "raw\\development-clock-w1-v1",
+      "rawManifestSha256": "fb8a5cc8ec65ba360b1a5066c9de362a1d11e826364c26d6a6d1f625ac30a506",
+      "costSha256": "7862eef731b8cba75594d249bf475196ab0cf9295aea95fb65aae0cd904976ef",
+      "wdl": [
+        25,
+        12,
+        27
+      ],
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          7,
+          6,
+          7,
+          6,
+          6
+        ],
+        "score": 0.484375,
+        "logisticElo": -10.86089841744591,
+        "pairedHoeffding95Score": [
+          0.24429430217001982,
+          0.7244556978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -196.17574357324824,
+          167.92815902955456
+        ],
+        "pairScoreStandardError": 0.06343802141053795,
+        "pairedNormal95Score": [
+          0.3600387627848648,
+          0.6087112372151352
+        ],
+        "pairedNormal95Elo": [
+          -99.9217634756958,
+          76.76557735459134
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "terminations": {
+        "normal": 64
+      },
+      "resources": {
+        "baseline": {
+          "requests": 4155,
+          "nodes": 560279991,
+          "elapsedNanos": 889234724600
+        },
+        "candidate": {
+          "requests": 4155,
+          "nodes": 568234845,
+          "elapsedNanos": 888522014700
+        }
+      },
+      "wallSeconds": 1790.1049116000004,
+      "matchWallSeconds": 1786.0176376,
+      "cpuSeconds": {
+        "baseline": 897.6875,
+        "candidate": 896.90625
+      },
+      "candidateToBaselineCpu": 0.9991297082782149,
+      "peakWorkingSetBytes": {
+        "baseline": 380211200,
+        "candidate": 361730048
+      },
+      "ownedProcessesRemaining": 0,
+      "decision": "unpromising in this development domain"
+    },
+    "4": {
+      "rawPath": "raw\\development-clock-w4-v1",
+      "rawManifestSha256": "5b9c6d7f245634cf619ccb90c60e486543717a92a4489838cca5bb0a1d7dd84d",
+      "costSha256": "0722d66d3d95586fb3d9f85fcb0a4f898f8a20af0600e68e017a37653cd829bd",
+      "wdl": [
+        30,
+        7,
+        27
+      ],
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          5,
+          5,
+          12,
+          2,
+          8
+        ],
+        "score": 0.5234375,
+        "logisticElo": 16.297987076023777,
+        "pairedHoeffding95Score": [
+          0.2833568021700198,
+          0.7635181978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -161.1877361583477,
+          203.60866647563913
+        ],
+        "pairScoreStandardError": 0.06082366331579532,
+        "pairedNormal95Score": [
+          0.4042253104932511,
+          0.6426496895067488
+        ],
+        "pairedNormal95Elo": [
+          -67.38341827808803,
+          101.95205530579625
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "terminations": {
+        "normal": 64
+      },
+      "resources": {
+        "baseline": {
+          "requests": 3781,
+          "nodes": 881303569,
+          "elapsedNanos": 838966390467
+        },
+        "candidate": {
+          "requests": 3781,
+          "nodes": 761172967,
+          "elapsedNanos": 842141173778
+        }
+      },
+      "wallSeconds": 1691.1992695999998,
+      "matchWallSeconds": 1688.0542329999998,
+      "cpuSeconds": {
+        "baseline": 1945.296875,
+        "candidate": 1534.59375
+      },
+      "candidateToBaselineCpu": 0.788873806215311,
+      "peakWorkingSetBytes": {
+        "baseline": 390365184,
+        "candidate": 388079616
+      },
+      "ownedProcessesRemaining": 0,
+      "decision": "inconclusive/deferred under frozen resource selection rule"
+    }
+  },
+  "interpretation": "Development only, correlated openings across W1/W4; no pooled estimate, confirmation or production acceptance. Point estimates and intervals crossing zero do not establish gain."
+}

@@ -1,0 +1,26 @@
+{
+  "id":"P3-TT-ADAPTIVE-CONSUMER-v1",
+  "frozenBeforeExecution":true,
+  "hypothesis":"Existing ADAPTIVE16 may retain useful bounded-window/selective guidance while reducing the repeated failed-bound production cost seen under CP64 WIDEN16. Full-window's large diagnostic savings did not establish a clock gain, so complete window removal is not assumed sufficient.",
+  "candidate":"Existing AspirationSearch.Policy.ADAPTIVE16: initial half-width max(16,2*abs(previousScore-earlierScore)), capped512, existing widening/fallback and mate verification. All18 Construction controls, frozen CP64 and Hash64 unchanged. No parameter tuning or new policy implementation.",
+  "justification":"Current CP64 observation:29% nodes in completed failed aspiration bounds; different-root full-window D8 costs lower but clocks inconclusive. The historical Pair-2 construction had materially fewer retries and is not this evaluator domain. This narrowly reuses an existing control; it does not reopen or alter historical conclusions.",
+  "scope":"Exactly one balanced existing alternative, not an enumeration of ONE16/WIDE64/ALPHA16/PARITY16 or bespoke adaptive rules. Preserve full-window protocol/results and its failed confirmation gate. No binding TT decision changes.",
+  "profiles":["baseline","adaptive"],
+  "workers":[1,4],
+  "hashMiB":64,
+  "model":"build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "experiments":[
+    {"name":"adaptive-d8-w1-v1","workers":1,"corpus":"docs/research/search/p3-sr002-execution-2026-10-19/confirmation-corpus.tsv","depth":8,"nodes":2000000},
+    {"name":"adaptive-d8-w4-v1","workers":4,"corpus":"docs/research/search/p3-sr002-execution-2026-10-19/confirmation-corpus.tsv","depth":8,"nodes":2000000},
+    {"name":"adaptive-n250k-w1-v1","workers":1,"corpus":"docs/research/search/p3-construction-2026-10-20/diagnostic-corpus.tsv","depth":40,"nodes":250000},
+    {"name":"adaptive-n250k-w4-v1","workers":4,"corpus":"docs/research/search/p3-construction-2026-10-20/diagnostic-corpus.tsv","depth":40,"nodes":250000}
+  ],
+  "roots":12,
+  "warmups":1,
+  "rounds":2,
+  "measurement":"Ordinary TT and diagnostics OFF for measured costs; complete SearchDriver requests including retries/aborts/helper drain. Rotate profile order per root/round, newGame before roots, retain all caps. Native CPU/elapsed, per-request process CPU/heap, independent legal PV and exact admitted-node accounting. Historical development roots; no strength claim.",
+  "validation":"Existing all-policy aspiration correctness plus CP64 independent accumulator-rebuild and all1..16-worker budget/cancel/drain/reuse checks for ADAPTIVE16. W1 diagnostics-on/off result/node/PV neutrality checked separately; never compare diagnostics object equality across enabled/disabled modes.",
+  "analysis":"Separate W1/W4 and target-depth/fixed-node domains. All caps retained; no equal-completed-depth speed claim when completion differs. Compare total and paired elapsed/CPU/nodes and completed-depth distributions. Timing alone never proves quality.",
+  "selection":"A worker domain may receive one further economical paired clock development screen only if adaptive D8 elapsed and CPU totals are both<=0.90 of WIDEN16, target-depth completion count is no lower, and fixed250k completion depths are not uniformly worse. This is a resource-selection gate, not statistical acceptance. Otherwise close/defer this formulation without a parameter sweep. If clock screening is warranted, freeze it before games; account for the earlier full-window selection and use fresh independent confirmation only if warranted.",
+  "resources":"Run only after lifetime-full-v1 completes, with no overlapping research/JVM/clock benchmark. Sequential BelowNormal JVMs, ActiveProcessorCount4, Xms256m Xmx768m,20min watchdog each; estimated4-7min total. Preserve failures and no replay under the same names."
+}
