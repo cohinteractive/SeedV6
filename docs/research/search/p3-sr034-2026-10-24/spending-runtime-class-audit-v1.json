@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "jars": {
+    "engine-core.jar": {
+      "baselineSha256": "facac0db65c7f97a120083174ea4de20ef210daf3252a79a3fd5eb2cac99e6f7",
+      "candidateSha256": "54cb27641a4c4a7c0fcc61ec17da772011bee3a09dec0e691e0b038c5b357e9b",
+      "changedEntries": [
+        "com/ohinteractive/seedv6/application-version.properties",
+        "com/ohinteractive/seedv6/search/common/SearchControl.class",
+        "com/ohinteractive/seedv6/search/common/SingleDepthSearch.class",
+        "com/ohinteractive/seedv6/search/driver/SearchDriver.class"
+      ],
+      "addedEntries": [],
+      "removedEntries": []
+    },
+    "app-uci.jar": {
+      "baselineSha256": "1ba9d9bcf44fcf385c6495e909fc3c24bb2dea4d1a10ed4f0d48b75319f67a19",
+      "candidateSha256": "ce5a89a03724022c1acd106e9229eeb7bcef31e1d1dea92f4bccbd58278708d9",
+      "changedEntries": [
+        "com/ohinteractive/seedv6/uci/GoCommandParser.class",
+        "com/ohinteractive/seedv6/uci/UciConfiguration.class",
+        "com/ohinteractive/seedv6/uci/UciEngine.class"
+      ],
+      "addedEntries": [
+        "com/ohinteractive/seedv6/uci/GoCommandParser$ClockBudget.class"
+      ],
+      "removedEntries": []
+    }
+  }
+}

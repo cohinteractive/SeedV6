@@ -69,10 +69,10 @@ does not confirm W2-16 strength. Fresh independent confirmation remains 10+0.1.
 
 | Question | Current state | Cheapest next discriminating evidence |
 | --- | --- | --- |
-| H1 stability/economical stops | Mechanism and clock compatibility qualified; strength pending | Complete the two frozen whole-game comparisons; preserve shallow-stability counterexamples. |
+| H1 stability/economical stops | Both planned comparisons closed; neither qualifies for confirmation | HALF is resource-qualified but score .50 is below the frozen .55 selection rule; STABLE3_HALF is resource-unqualified. Retain uncertainty, no replay. |
 | H2 justified instability spending | UNSTABLE2/BOUNDARY2 correctness and fresh timing qualified | Execute the prospective paired comparison/control after HALF finishes; no production selection. |
 | H3 iteration economics | Large prediction tails; forecasting deprioritized | Use actual completed-boundary policies and complete-request cost; no guarantee inferred from predicted cost. |
-| H4 whole-game redistribution | Governing hypothesis; frozen development running | Finish both first-generation comparisons and their resource gates; no interim selection or confirmation reuse. |
+| H4 whole-game redistribution | Saving changes spending but has no demonstrated strength gain; spending family admitted | Finish both spending/control comparisons and their resource gates; no interim selection or confirmation reuse. |
 | Root-effort instrumentation | Neutral measurement complete; threshold consumer deprioritized | The expected discrimination fails at relevant depths and reverses with depth; retain evidence without fitting an opposite rule. |
 | Multiworker strength | Unconfirmed | Validate representative/all supported lifecycle compatibility; obtain separate strength confirmation before any multiworker claim. |
 
@@ -97,26 +97,28 @@ SearchDriver and generated version metadata (`clock-runtime-class-audit-v1.json`
 The 32 development openings and all executable inputs are frozen in
 `clock-development-v1-binding.json`. STABLE3_HALF is complete and
 **resource-unqualified**, as detailed below; never replay it or substitute a
-later post-check. HALF a01 failed prelaunch admission (3.328 other average
-logical cores); no games were started in that attempt. The fresh a02 pre-delivery
-and host admission passed, and HALF games launched at
-`2026-10-23T21:58:38Z`. Its owned wrapper is active; await its full completion and
-post-delivery checks, without interim score inspection or replay. No build,
-preflight or other computational experiment may overlap it. The source validation,
-root-effort observations and two spending-cost captures below are already complete.
-The new `spending-development-v1.json` and its preparation/wrapper/clock-audit
-scripts are prepared, but not yet bound or executed. After HALF completes with
-no unresolved correctness failure, run `prepare_spending_development_v1.py`
-serially to freeze build76 versus exact native build74 core+UCI and perform three
-actual preflights. Then execute UNSTABLE2 followed by BOUNDARY2 under their own
-fresh pre/post gates, regardless of score. New game protocols remain development;
-if a credible complete finalist emerges, freeze fresh independent confirmation
-before starting it. Root-effort thresholds and numerical forecasts remain
-deprioritized on the observed mechanism evidence, not universally rejected.
-No policy is selected for confirmation or production. The comparator uses the
-**exact accepted native build 74 core JAR**, with the same research launcher and
-startup warmup; the candidate uses the frozen build 75 runtime. New prepared
-source does not alter either frozen game installation. Production defaults
+later post-check. HALF a01 failed prelaunch admission; a02 subsequently completed
+all64 games and post-delivery checks with passing resource qualification. HALF's
+score .50 does not meet its frozen .55 development selection rule. Both first-
+generation comparisons are closed, not extended or replayed.
+`prepare_spending_development_v1.py` completed successfully after HALF, freezing
+build76 versus exact native build74 core+UCI and passing all three actual UCI
+preflights. `spending-development-v1-binding.json` binds the unchanged32 reused
+development openings, profiles, runtime classes, scripts and prior diagnostics.
+The UNSTABLE2 owned wrapper has started pre-delivery/admission; inspect its
+exclusive launch/completion receipts before any resumption. Do not restart a
+launched comparison, inspect interim scores or overlap computational work.
+After UNSTABLE2 completes without an unresolved correctness/clock failure, run
+BOUNDARY2 regardless of its score. Each has fresh pre/post resource checks and
+the prospectively frozen25 ms sampled hard-overrun gate. These are development
+comparisons; freeze fresh independent confirmation only if a credible complete
+finalist emerges. Root-effort thresholds and numerical forecasts remain
+deprioritized on the mechanism evidence, not universally rejected.
+No policy is selected for confirmation or production. The closed first family
+used the **exact accepted native build74 core JAR**, matched research launcher
+and startup warmup versus frozen build75 candidates. The spending family uses
+its separately frozen build76 installation and exact native core+UCI comparator.
+Later source does not alter either frozen installation. Production defaults
 remain the accepted baseline.
 Repository work does not await mirror refresh; dependent external GPT planning does.
 
@@ -398,3 +400,57 @@ fabricated; extension-specific aggregate value requires the matched control.
 `clock-initial-conservation-v1.json` independently verifies all8,874 closed first-
 comparison clock equations, including128 first searched moves at10100 ms, before
 using that initial-clock reconstruction in the new audit.
+
+
+A deterministic clock-accounting observation helps interpret conservation:
+for ordinary 10+0.1/default30 allocation above the reserve, base milliseconds
+are floor(S/30)+65. If the runner charges exactly that budget and then adds100,
+S_next=S-floor(S/30)+35. Its integer fixed points are1050-1079 ms (a simple500-
+move calculation starting at10100 reaches1079). Thus the baseline already
+retains about a second late in an ideal full-budget game; the observed first
+comparison's minimum post-increment clock is1079 ms. Factual early stops,
+protocol/scheduling cost and variable choices alter this simplified trajectory.
+This is an explanatory formula observation, not new runtime or strength evidence.
+It strengthens the reason to compare bounded use of the buffer with further
+conservation; it does not authorize changing the50 ms safety reserve.
+
+The opposing deterministic limiting case also matters: if every candidate move
+uses the entire doubled hard cap, the same500-move calculation ends at150 ms
+after increment, leaving exactly the50 ms reserve before increment. Completed-
+boundary stopping can prevent that path; it is not guaranteed to do so. Therefore
+new comparisons must report late-clock/reserve distributions and actual overrun
+tails, rather than infer safety or effective redistribution from average savings.
+This arithmetic was inspected before spending-game execution and changes no
+policy, threshold or frozen decision criterion.
+
+## Closed economical-stopping family and spending-family admission
+
+`clock-development-half-v1-compact.json` preserves the original full wrapper
+capture's hash/path; the original includes per-game headers and remains ignored
+at its original location. HALF a02 completed64 normal games:21 wins,22 draws,
+21 losses, score .50, estimated0 Elo, paired-normal95% [-57.7,+57.7] and bounded-
+pair95% [-181.8,+181.8]. Match host1.250 other average logical cores and all
+pre/post direct-delivery, memory and actor-asymmetry gates pass. This is qualified
+**inconclusive development evidence**, below the frozen .55 selection rule;
+it neither establishes equality nor a gain. STABLE3_HALF's failed post-host gate
+prevents a qualified inference about the value of stability conditioning from
+these two samples. Reused openings and wide intervals further limit that contrast.
+
+`clock-development-half-v1-clock-analysis-v2.json` checks all9,192 whole-request
+node annotations and9,064 noninitial clock-conservation equations. All64 games
+end normally. HALF has3,068 nonfactual soft stops,869.6 versus944.0 s search
+elapsed,888.0 versus956.5 native CPU-s and618.0 versus669.7 million nodes.
+Incomplete nodes are142.3 versus246.4 million. Minimum pre-increment reserves
+are1371 versus979 ms, with no response clock below500 ms. Sampled hard overruns
+are2.887 ms candidate and22.454 ms baseline. The latter is retained, not hidden
+by aggregate averages. Peak working sets are396.7/390.2 MB candidate/baseline.
+Mean spending on moves1-20 is289.0 versus351.1 ms; from61 onward it is126.8
+versus121.0 ms. The policy changes whole-game resource distribution, but no
+causal decision-quality or playing-strength improvement follows from those costs.
+
+The build76 spending-family freeze and actual baseline/UNSTABLE2/BOUNDARY2
+preflights pass. The accepted baseline uses exact native core **and UCI** JARs;
+the candidate class audit permits only the documented clock seams plus version
+metadata. Both new profiles remain research-only. The exclusive UNSTABLE2
+wrapper now owns the next pre-delivery/admission attempt; no new games or
+confirmation have been selected from partial outcomes.

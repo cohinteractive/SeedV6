@@ -1,0 +1,120 @@
+{
+  "status": "passed",
+  "bindingSha256": "7174c0b8550f53abf4ba6a6be0c6901f5a93650e11267788f1b4ce909f4a52e7",
+  "execution": {
+    "exitCode": 0,
+    "wallSeconds": 1827.3040271999926,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 10,
+    "totalOwnedCpuSeconds": 1858.390625
+  },
+  "resourceQualification": {
+    "start": {
+      "utc": "2026-10-23T21:58:38.353500+00:00",
+      "monotonic": 72781.1789032,
+      "ticks": [
+        7581887656250,
+        7888668750000,
+        845029218750
+      ],
+      "availableBytes": 14631960576,
+      "memoryLoadPercent": 57
+    },
+    "end": {
+      "utc": "2026-10-23T22:29:05.676268+00:00",
+      "monotonic": 74608.5016733,
+      "ticks": [
+        7759748125000,
+        8077502343750,
+        875474843750
+      ],
+      "availableBytes": 17278799872,
+      "memoryLoadPercent": 49
+    },
+    "elapsedSeconds": 1827.3227700999996,
+    "busyCpuSeconds": 4141.875,
+    "ownedCpuSeconds": 1858.390625,
+    "otherAverageLogicalCores": 1.2496338426708473,
+    "memoryEndpointsPass": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used.",
+    "legacyOneCoreGatePassed": false,
+    "passed": true,
+    "protocol": "SR034 economics-v1 current serial-W1 host plus direct delivery qualification"
+  },
+  "postDeliveryPassed": true,
+  "actorDelivery": {
+    "nativeCpuToSearchElapsed": {
+      "baseline": 1.0132802602251207,
+      "candidate": 1.0211614917514735
+    },
+    "absoluteDifference": 0.007881231526352783,
+    "passed": true
+  },
+  "results": {
+    "wdl": [
+      21,
+      22,
+      21
+    ],
+    "terminations": {
+      "normal": 64
+    },
+    "statistics": {
+      "pairs": 32,
+      "pentanomial": [
+        3,
+        4,
+        16,
+        8,
+        1
+      ],
+      "score": 0.5,
+      "logisticElo": 0.0,
+      "pairedHoeffding95Score": [
+        0.2599193021700198,
+        0.7400806978299802
+      ],
+      "pairedHoeffding95Elo": [
+        -181.77621804089128,
+        181.77621804089128
+      ],
+      "pairScoreStandardError": 0.04200134406451544,
+      "pairedNormal95Score": [
+        0.4176788783312746,
+        0.5823211216687254
+      ],
+      "pairedNormal95Elo": [
+        -57.72801159899675,
+        57.728011598996765
+      ],
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 4595,
+        "nodes": 669681062,
+        "elapsedNanos": 943979333800
+      },
+      "candidate": {
+        "requests": 4597,
+        "nodes": 618036300,
+        "elapsedNanos": 869567406500
+      }
+    }
+  },
+  "matchWallSeconds": 1822.0546885999938,
+  "evidence": {
+    "raw\\clock-development-half-v1\\baseline-uci.txt": "ce1327b840d18edc64362d33ec584a560dd6bf6a5837b6a27e3e6a0a0a34827f",
+    "raw\\clock-development-half-v1\\candidate-uci.txt": "14a05b0ab969db06c1048f62323f623825e74e384f0804162711a9afba49b340",
+    "raw\\clock-development-half-v1\\config.json": "bc3287ff4b762f26dcf2d1d2eeef64d7f30d00c4e11096f7a5559273c1c9f925",
+    "raw\\clock-development-half-v1\\games.pgn": "3e4e718629f56d737b0640102d771612a7351ec29c74415fe48acab092822bda",
+    "raw\\clock-development-half-v1\\process-cost.json": "003d19d700c7df06b51f5d20bb53d79ff39c81efe96ab8cbe22e25b461b1a784",
+    "raw\\clock-development-half-v1\\run.json": "a0525c2bfb8def5594d6a54f555ed29a16c7cbe2a873c1abfcf81b5149d97dc3",
+    "raw\\clock-development-half-v1\\runner.txt": "752ce9b96bddf3b22da325db965de10f4a33cab8743689681c7f4be85ee8b2e9"
+  },
+  "fullCapture": {
+    "path": "clock-development-half-v1-summary.json",
+    "sha256": "6fb3826b13d98c680b8e28aa175c5fa52bb01b1ad8945b0e2856451fb2fcacc1",
+    "reason": "Immutable original wrapper capture includes repeated per-game headers; preserved locally at its original path. Compact result and evidence hashes are tracked."
+  }
+}

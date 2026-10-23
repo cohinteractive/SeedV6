@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "bindingSha256": "665cf967aee860876bdb27159236ec507c57662243479028ec63e1aec2fb4fe0",
+  "profiles": {
+    "baseline": {
+      "identity": "mode=research experimental=true profile=baseline evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER clockPolicy=factual hardBudget=baseline-unchanged book=OFF tablebase=OFF warmupNodes=200000 warmupWorkers=1 ttMiB=64",
+      "requests": [
+        {
+          "nodes": 100000,
+          "elapsedNanos": 230747100,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 8 score cp 78 nodes 85443 time 190 nps 447995 pv e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+        },
+        {
+          "nodes": 100000,
+          "elapsedNanos": 185796300,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 8 score cp 78 nodes 85443 time 160 nps 531817 pv e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+        }
+      ]
+    },
+    "unstable2": {
+      "identity": "mode=research experimental=true profile=unstable2 evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER clockPolicy=unstable2-d6-v1 hardBudget=twice-baseline-reserve50 book=OFF tablebase=OFF warmupNodes=200000 warmupWorkers=1 ttMiB=64",
+      "requests": [
+        {
+          "nodes": 100000,
+          "elapsedNanos": 195162900,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 8 score cp 78 nodes 85443 time 160 nps 533514 pv e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+        },
+        {
+          "nodes": 100000,
+          "elapsedNanos": 209231800,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 8 score cp 78 nodes 85443 time 183 nps 465394 pv e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+        }
+      ]
+    },
+    "boundary2": {
+      "identity": "mode=research experimental=true profile=boundary2 evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER clockPolicy=boundary2-d6-v1 hardBudget=twice-baseline-reserve50 book=OFF tablebase=OFF warmupNodes=200000 warmupWorkers=1 ttMiB=64",
+      "requests": [
+        {
+          "nodes": 100000,
+          "elapsedNanos": 215407800,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 8 score cp 78 nodes 85443 time 186 nps 456919 pv e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+        },
+        {
+          "nodes": 100000,
+          "elapsedNanos": 172719200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 8 score cp 78 nodes 85443 time 147 nps 579823 pv e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+        }
+      ]
+    }
+  }
+}
