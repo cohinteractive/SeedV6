@@ -1,6 +1,6 @@
 # CP64-integrated Search selectivity reappraisal
 
-Owner-authorized 23 October 2026 (Pacific/Auckland). **ACTIVE; deeper-futility evidence complete, two clock screens frozen, and H5 selective-verification support merits a bounded integration investigation.** Governed by Phase 3 Contract P3-R023 / Frontier P3-F023. Current resume is the final section below; earlier execution paragraphs record completed stages.
+Owner-authorized 23 October 2026 (Pacific/Auckland). **ACTIVE; H5 integration and diagnostics complete; null and its nominal-futility interaction prioritized for fresh W1 clock development under a newly qualified resource protocol.** Governed by Phase 3 Contract P3-R024 / Frontier P3-F024. Current resume is the final section below; earlier execution paragraphs record completed stages.
 This is a focused research record and dynamic queue, not another master.
 
 ## Authority, identity and boundaries
@@ -64,11 +64,11 @@ external evidence belong in the bootstrap/evidence manifests.
 
 | ID | Question / expected decision value | Falsifier and next admissible evidence | State |
 | --- | --- | --- | --- |
-| H1 | Does raw two-ply improving relief justify eager CP64 evaluation and extra depth? SR009/029/033. | Fresh W1 clock screen for removal; lazy costs are modest despite exact W1 traversal. | Clock inputs frozen; first resource admission failed before launch |
+| H1 | Does raw two-ply improving relief justify eager CP64 evaluation and extra depth? SR009/029/033. | Fresh W1 clock screen for removal; lazy costs are modest despite exact W1 traversal. | Credible lower-priority unplayed plan; three old admissions failed before launch |
 | H2 | Do history protection and richer quiet memories add reliable decisions? SR016/023/022. | Simple removals mixed; negative/zero occurrences do not establish reliable failure. Inspect conditional deeper-consumer witnesses. | No pruning feature admitted; confidence unresolved |
-| H3 | Are shallow futility/RFP complementary and conservative under CP64? SR009/019/021/022. | RFP removal costly, shallow futility modest; guarded deeper nominal foundation saves cost with unchanged sampled moves and71 reference replays. | W1 clock screen frozen; resource qualification pending |
+| H3 | Are shallow futility/RFP complementary and conservative under CP64? SR009/019/021/022. | RFP removal costly; guarded nominal deeper futility saves cost alone and on null foundation. | Prioritize incremental clock screen on null if admitted; standalone plan unplayed |
 | H4 | Does actual reduction depth add information beyond nominal depth/count/history? SR029/033/023. | Additional decisions but no elapsed gain over nominal foundation; composition saves more but has unconfirmed supporting removal. | No separate reduction-margin clock screen; composition conditional |
-| H5 | Can adaptive verified null repay its cost after current selectivity? SR018/019/029. | Retained unpruned legal verification does not pay; selective legal verification materially improves opening and played-position costs. | Admit bounded flattened integration investigation; reliability and whole-request benefit still unproved |
+| H5 | Can adaptive verified null repay its cost after current selectivity? SR018/019/029. | Selective legal verification enables large whole-request diagnostic savings;96 selected actual cutoff references complete without false thresholds. | Integration qualified, fresh W1 clock development prioritized; strength unproved |
 
 Ordering is provisional, not a compulsory feature queue. Related qsearch/SEE,
 ordering and aspiration are explanatory controls only. No TT re-investigation or
@@ -480,3 +480,86 @@ and freeze runtime-v4, run `run_flat_null_v1.py`, its independent cutoff replay,
 `summarize_flat_null_v1.py` and actual UCI qualification. No measurement is claimed
 until its receipt passes. Do not overlap those stages or any future admitted clock
 match. Reassess finalists and the resource blocker from their completed evidence.
+
+## Integrated H5 results and resource-premise challenge
+
+Commit `2b4d537` carries the default-OFF integration and build72 ->73. Frozen
+`raw/runtime-v4`/`flat-null-v1-binding.json` bind its actual execution. Observation
+matches plain requests for both active profiles; all36 baseline D8 requests exactly
+reproduce runtime-v3. Twenty-four measured requests per profile give:
+
+| Profile | D8 elapsed / CPU / nodes vs full | D8 caps | N250k elapsed / CPU | N250k higher / lower completed depths | N250k changed moves |
+| --- | --- | --- | --- | --- | --- |
+| Full | 1 /1 /1 | 6 | 1 /1 | 0 /0 | 0 |
+| Nominal futility | .960 /.931 /.945 | 6 | 1.000 /.960 | 4 /0 | 0 |
+| Verified null | .494 /.478 /.545 | 0 | .927 /.870 | 4 /2 | 0 |
+| Nominal + null | .446 /.432 /.501 | 0 | .917 /.857 | 6 /0 | 2 |
+
+All D8 sampled best moves stay unchanged, but caps and reached horizons differ;
+these are diagnostic economics, not strength or semantic equivalence. Composition
+adds about9.7% elapsed savings over null in this D8 corpus. The independent actual
+cutoff audit completes48 nominal references per null profile, all96 supporting
+their threshold; about12.11M reference nodes total. Conditional/correlated samples
+do not estimate a population error rate. `flat-null-uci-qualification-v1.json`
+passes baseline/null/composition at1/4/16 and ordinary build73 baseline parity.
+Functional worker support is not multiworker strength evidence.
+
+`null-clock-development-v1.json` therefore prioritizes null versus full, then
+nominal+null versus null if the first fixed32-pair development score is at least.55.
+Its64 fresh frozen openings use partition0/seed2026102403 and exclude historical
+selection receipts and development-corpus prefixes. No games ran: the fully idle
+admission01 at12:18UTC still measured1.19269 other logical CPUs against its1.0
+limit. This is the fourth preserved failed prelaunch admission across clock plans.
+The never-executed `idle_clock_v1.py` remains an unused H1 retry plan.
+
+The Contract requires qualified contention, not an invariant1.0-core ceiling.
+Before any game outcomes, `cpu-delivery-v1.json` freezes an independent resource
+premise challenge: twelve played roots, three profiles, one warmup/two measured
+rounds,1M nodes, owner-thread CPU measured around synchronous W1 Search only.
+`cpu-delivery-build-v1-summary.json` records successful compilation/export, no tests
+claimed. The160s delivery run passes all frozen criteria: per-profile medians
+.99791/.99974/.99904, nearest-rank fifth percentiles .99007/.98900/.99119,
+minimum .98776, median spread .00184, other host CPU .4184, memory35%.
+No measured GC; small residual JIT is reported separately. Values slightly above1
+reflect CPU timer quantization. This demonstrates practical execution delivery in
+the sampled interval, not perfect isolation or the cause of earlier global load.
+
+`null-clock-development-v2.json` is a NEW protocol with identical never-played
+openings/configurations/analysis. It prospectively permits at most2 other average
+logical CPUs on the6physical/12logical host for one serial W1 game, retaining8GiB
+free/75% memory gates, BelowNormal and owned-job containment. It additionally
+requires passing pre/post owner-thread delivery and per-actor lifetimeCPU/Search
+elapsed in .90..1.25, with actor difference at most.10. Lifetime CPU includes
+startup/JIT/GC, so combined checks qualify practical contention without proving
+isolation. Old protocols and failures remain unchanged; resource-unqualified games
+cannot be relabeled strength failures or replaced based on outcomes. This routine
+experimental adjustment stays within owner-authorized scope and resource limits.
+
+### Current precise resume (P3-R024/P3-F024)
+
+`runtime-delivery-parity-v1.json` reconciles an initial whole-jar equality check:
+all existing executable class bytes match, with only the added research delivery
+class and generated version-provenance properties differing. Both carry build73.
+Frozen runtime-v4 was compiled before commit2b4d537 and embeds5e4dee7 plus an
+uncommitted-changes marker; its external binding records HEAD2b4d537. The calibration
+embeds2b4d537 plus uncommitted research changes. Preserve these actual identities.
+Frozen opening-source PGN/selection CRLF bytes trigger ordinary Git whitespace
+warnings; the CR-at-EOL-aware check passes. Do not normalize frozen inputs.
+
+All diagnostics above are complete; no clock game has yet launched. Prepared and
+bound new protocol: `null-clock-development-v2-binding.json`. Next run
+`build/research/venv/Scripts/python.exe -B docs/research/search/p3-cp64-selectivity-2026-10-23/run_null_clock_v2.py primary`.
+It first qualifies resources, then runs32 color-reversed pairs at10+0.1 with no
+interim outcome selection, performs post-delivery/integrity audit and writes an
+exclusive summary. Only a passed primary score>=.55 admits `increment`; all other
+outcomes require queue reassessment. No independent confirmation plan is yet
+frozen or run. H1 remains credible if null fails; at most two W1 finalist hypotheses
+may receive separately frozen fresh independent confirmation with prospective
+familywise allocation. Never infer strength from the diagnostic savings.
+
+Current runtime commit/build: `2b4d537`/73; subsequent changes are attributable
+research harnesses, protocols, evidence and canon. Production choices remain full
+original18/ADAPTIVE16/CP64. No external install, push or promotion. Both master
+headers are P3-R024/P3-F024; PROJECT_SOURCE_REFRESH_REQUIRED: YES. Mirror refresh
+is non-blocking for this authorized repository work and blocks dependent external
+GPT planning until owner synchronization is evidenced.

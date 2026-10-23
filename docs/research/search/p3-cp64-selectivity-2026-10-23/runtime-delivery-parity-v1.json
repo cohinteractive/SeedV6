@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "comparison": {
+    "lib\\engine-core.jar": {
+      "sha256Before": "893c07d528440fa09a636c42c70b0fc5ac54a0ebff1220511f23c78a23d0edbd",
+      "sha256After": "eec28a7d2ed1f3d14d96a1df4e04af2d28a412bf0993b6b713699ce0a0a16064",
+      "changedEntries": {
+        "com/ohinteractive/seedv6/application-version.properties": {
+          "before": "major=0\nminor=0\npatch=0\nbuild=73\nsourceRevision=5e4dee7a2010 (uncommitted changes)\nversionUpdated=Uncommitted version state (date unavailable)\nplatform=Portable Java 21 (runtime platform reported separately)\n",
+          "after": "major=0\nminor=0\npatch=0\nbuild=73\nsourceRevision=2b4d537df5ff (uncommitted changes)\nversionUpdated=2026-10-24\nplatform=Portable Java 21 (runtime platform reported separately)\n"
+        }
+      },
+      "addedEntries": []
+    },
+    "lib\\research.jar": {
+      "sha256Before": "87d8d1dfd450c34d8a7339b97874bf03c1d93b01172a324debd0fbedd1e95f14",
+      "sha256After": "d247c90e2a0ad90a07cb66efaba7e67a1f2cb361d5497168cd5b7fae31a760e3",
+      "changedEntries": {},
+      "addedEntries": [
+        "com/ohinteractive/seedv6/search/exact/Cp64CpuDelivery.class"
+      ]
+    }
+  },
+  "conclusion": "All existing executable class/resource bytes equal except version provenance properties; one research-only measurement class added. Both versions build73. Frozen runtime-v4 was compiled before commit2b4d537 and embeds prior5e4dee7 plus uncommitted-changes marker; its external manifest binds laterHEAD2b4d537. Do not rewrite that historical identity.",
+  "validationLimit": "Initial whole-file equality assertion failed on the two jars; this entry-level audit resolves the difference, not a claim the jars were byte-equal.",
+  "lineEndingReview": "git diff --cached --check flags CRLF in the frozen whole-opening source and selection receipt. git -c core.whitespace=cr-at-eol diff --cached --check passes. Preserve frozen CRLF bytes and hashes; no normalization."
+}

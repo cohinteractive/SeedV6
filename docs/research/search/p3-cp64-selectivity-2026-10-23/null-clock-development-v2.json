@@ -1,0 +1,43 @@
+{
+  "id": "P3-CP64-SELECTIVITY-INTEGRATED-NULL-CLOCK-DEVELOPMENT-v2",
+  "frozenBeforeExecution": true,
+  "priorityDecision": "Integrated null gives about.494 elapsed/.478CPU/.545 nodes versus full in D8 development, no caps or changed sampled root moves. Nominal+null gives.446/.432/.501 and improves fixed-node depth without lower depths in the sampled roots. All96 selected integrated cutoffs have complete independent nominal replays and no false threshold. These substantially improve expected decision value; prioritize null foundation and its nominal-futility consumer. Earlier improving-removal and standalone-futility clock protocols remain unplayed, lower-priority plans, not negative evidence or compulsory tournaments.",
+  "runtime": "Frozen build73 runtime-v4, source2b4d537; frozen S6CNU002 CP64/eight heads, ADAPTIVE16, requested Hash64, all original18 controls retained in every admitted null configuration. No production promotion.",
+  "stages": [
+    {
+      "name": "null-clock-primary-v2",
+      "baseline": "baseline",
+      "candidate": "verified-null",
+      "flags": [
+        262143,
+        2359295
+      ],
+      "question": "Does the complete verified-null configuration merit independent confirmation against accepted production choices?"
+    },
+    {
+      "name": "null-clock-increment-v2",
+      "baseline": "verified-null",
+      "candidate": "nominal-verified-null",
+      "flags": [
+        2359295,
+        3407871
+      ],
+      "question": "Does nominal deeper futility add practical value to the null foundation?",
+      "admission": "Run only if the primary stage passes integrity/resource gates and candidate score>=.55. Otherwise retain this unexecuted stage and reassess remaining credible opportunities."
+    }
+  ],
+  "domain": {
+    "workers": 1,
+    "concurrentGames": 1,
+    "pairsPerStage": 32,
+    "clock": "10+0.1",
+    "partition": 0,
+    "seed": 2026102403
+  },
+  "openings": "Reuse the exact never-played64 openings selected and split by null-clock-development-v1; source, partition, seed, exclusions and split unchanged. No new outcome information exists. Independent confirmation remains fresh partition1 excluding every development selection.",
+  "resourceAdmission": "New prospectively frozen qualification, supported by cpu-delivery-v1. No v1 result or limit is rewritten. Pre/post fixed72-request owner-thread delivery: each profile median>=.90 and nearest-rank fifth percentile>=.80; profile median spread<=.05. Preflight may reuse a passing identical calibration ending within15min. Idle30s and whole-owned-run global screens: <=2.0 other average logical CPUs,>=8GiB available,<=75% endpoint memory load. Native per-actor lifetimeCPU/whole-Search-request elapsed must each be .90..1.25 and absolute actor difference<=.10; acknowledge startup/JIT/GC contribution. All gates must pass. No computational overlap; only one W1 game. This practical qualification does not establish perfect isolation or rule out bursts.",
+  "execution": "One game at a time, BelowNormal, Xms256m Xmx512m, ActiveProcessorCount4,200k-node startup warmup per engine. Existing Windows owned Job containment, descendant drain, lifetime CPU/peak memory and independent PGN/legal/history/whole-request audit. Expected30min/stage,90min watchdog. No overlapping computational work; preserve every failure and interrupted game.",
+  "analysis": "One final look per fixed32-pair stage; no early outcome stopping, sample extension, retuning or exclusions. Report W/D/L, pair means, paired-normal95% approximation and bounded-pair95% sensitivity as development descriptions only. The increment stage compares against null, not original production. No Elo conclusion or adoption from a favorable point estimate.",
+  "decision": "If primary score>=.55 with all gates, consider an independent null-family finalist. If the admitted increment stage also scores>=.55 with all gates, prefer the composition as that finalist; otherwise prefer null alone. This is selection, not a strength conclusion. If primary fails its selection gate, do not automatically close the CGLHW while the previously admitted improving-removal avenue remains credible. At most two W1 finalist hypotheses can receive independent confirmation, with familywise alpha allocation fixed prospectively before confirmation; no unused allocation is transferred. No automatic W4 confirmation, production/default promotion, TT-policy/evaluator change, external install or successor.",
+  "resourcePremise": "Four old prelaunch admissions failed the investigator-selected1.0-core ceiling, including a fully idle check1.19269. cpu-delivery-v1 then passed frozen criteria: medians .99791/.99974/.99904, fifth percentiles>=.9890, median spread .00184, otherCPU .4184, memory35%. Reassessing a self-chosen gate before any game outcome is an authorized experimental decision; no Contract resource limit is changed. Preserve all old admissions, protocols and evidence. Failed new admission/postqualification is not a strength failure and cannot trigger outcome-dependent replacement."
+}

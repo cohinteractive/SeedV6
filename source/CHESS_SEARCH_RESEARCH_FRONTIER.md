@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F023**
+Internal frontier revision: **P3-F024**
 
 Status: **ACTIVE: owner-authorized CP64-integrated Search selectivity reappraisal. The preceding TT CGLHW is GPT-reconciled and owner-accepted, with acceptance/synchronization prerequisites confirmed. Build70 full Construction V1/ADAPTIVE16/frozen CP64 remains production; no automatic promotion, TT-policy change, evaluator replacement, external deployment or successor.**
 
@@ -19,17 +19,15 @@ SR-009,016,018,019,021,022,023,029,033. Existing O2/O3 questions now concern the
 frozen CP64 integrated configuration; they do not inherit Pair-2 thresholds or
 strength claims. Completed TT results are reference evidence, not reopened work.
 
-**Current selection:** H1 cost separation is complete; removing improving is
-admitted to a fresh W1 clock development screen, pending resource qualification.
-H3/H4 select the guarded nominal-margin foundation for one additional fresh W1
-clock screen; reduction-depth margins show no extra elapsed benefit, while the
-improving-off composition remains conditional. H5's cheaper selective legal
-verification survives an opening/played-position economic challenge; investigate
-one bounded flattened integration with existing synthetic isolation and no TT-policy
-change, retaining independent recursive references and original mandatory verification.
-H2 uses conditional history evidence from these consumers; no sparse/censored
-negative label is promoted to bound authority. No exhaustive switch sweep or new
-TT design is selected.
+**Current selection:** H5's bounded flattened integration passes semantic/lifecycle
+and independent-reference checks and materially improves whole-request diagnostic
+economics. Prioritize a fresh W1 clock development screen for verified null versus
+full, followed by nominal deeper futility on that foundation only if admitted.
+H1 improving removal remains a credible lower-priority unplayed alternative; H3's
+standalone clock plan is also unplayed. H4 reduction-depth margins add no elapsed
+benefit over the nominal foundation. H2 has no admitted confidence-pruning feature;
+sparse/censored history is not a bound. No exhaustive switch sweep, TT redesign,
+default promotion or universal worker-count strength claim is selected.
 
 The [focused record](../docs/research/search/P3_CP64_SELECTIVITY_2026-10-23.md)
 is the subordinate dynamic hypothesis/experiment queue and exact resume location.
@@ -39,16 +37,15 @@ only Phase3 masters. Production stays unchanged until separate accepted promotio
 fresh10+0.1 confirmation is required if a promising finalist warrants adoption.
 Functional1..16 support never establishes strength at every worker count.
 
-Reverse ablation, cost separation and guarded deeper-futility comparisons are
-complete. Improving removal and the nominal-depth deeper-futility foundation merit
-fresh W1 clock development screens; two host admissions failed before any game.
-Reduction-depth margins did not add elapsed benefit over the nominal foundation;
-composition remains conditional. Verified-null prospects materially improve when
-its legal verifier uses the current selectivity; an opening and played-position
-challenge supports one bounded flattened integration investigation. Build72 has
-default-OFF lazy/deeper-futility controls; production choices remain unchanged.
-Conditional reference samples are neither strength nor proof certification.
-The focused record preserves exact identities, resource failures and resume state.
+Build73 retains production choices and adds only default-OFF research controls.
+All96 selected integrated null cutoffs have complete nominal references without
+a false threshold; conditional samples are not proof or strength certification.
+Four failed prelaunch clock admissions remain frozen with no games. A prospective
+owner-thread CPU-delivery calibration passed and supports a new resource protocol
+with pre/post delivery, host/memory and per-engine accounting. This reappraises an
+investigator-selected gate before any outcome; it does not rewrite failed evidence
+or change the Contract's background-friendly limits. Exact protocols, costs,
+uncertainty, lower-priority alternatives and resume state are in the focused record.
 
 ## ADAPTIVE16 production selection - 23 October 2026
 

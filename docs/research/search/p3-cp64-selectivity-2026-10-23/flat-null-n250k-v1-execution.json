@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx1024m",
+    "-XX:ActiveProcessorCount=4",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\runtime-v4\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\runtime-v4\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.Cp64SelectivityLab",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr006-phase2-2026-10-10\\played-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\flat-null-n250k-v1.jsonl",
+    "1",
+    "1",
+    "2",
+    "40",
+    "250000",
+    "12",
+    "cost",
+    "baseline,nominal-futility,verified-null,nominal-verified-null"
+  ],
+  "bindingSha256": "c116d7f12174ae854d18438d873eadaea177c0e8dd47a0af44b5e2bca8bcfd06",
+  "priority": "BelowNormal",
+  "nativeAccountingSha256": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+  "startedUtc": "2026-10-23T12:08:21.350023+00:00",
+  "exitCode": 0,
+  "nativeLifetime": {
+    "creationTicks": 134372309013512530,
+    "createdUtc": "2026-10-23T12:08:21.351254+00:00",
+    "exitCode": 0,
+    "exitedUtc": "2026-10-23T12:09:38.000769+00:00",
+    "kernelCpuSeconds": 1.109375,
+    "userCpuSeconds": 87.515625,
+    "totalCpuSeconds": 88.625
+  },
+  "peakWorkingSetBytes": 496353280,
+  "wallSeconds": 76.71192029999656,
+  "evidence": {
+    "raw\\flat-null-n250k-v1.jsonl": "b1b2a5f018994b56618df53bc59ac05f463e3001c2d879535e7b14c40c8a9f7c",
+    "raw\\flat-null-n250k-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

@@ -1,6 +1,6 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R023**
+Internal revision: **P3-R024**
 
 Status: **ACTIVE: owner-authorized CP64-integrated Search selectivity reappraisal. The preceding TT CGLHW is GPT-reconciled and owner-accepted, with acceptance/synchronization prerequisites confirmed. Build70 full Construction V1/ADAPTIVE16/frozen CP64 remains production; no automatic promotion, TT-policy change, evaluator replacement, external deployment or successor.**
 
@@ -47,16 +47,19 @@ holds the dynamic hypothesis queue, frozen experiments and precise resume point.
 Repository execution does not wait for mirror refresh; dependent external GPT
 planning requires both revised masters refreshed and synchronization confirmed.
 
-Reverse ablation, cost separation and guarded deeper-futility comparisons are
-complete. Improving removal and the nominal-depth deeper-futility foundation merit
-fresh W1 clock development screens; two host admissions failed before any game.
-Reduction-depth margins did not add elapsed benefit over the nominal foundation;
-composition remains conditional. Verified-null prospects materially improve when
-its legal verifier uses the current selectivity; an opening and played-position
-challenge supports one bounded flattened integration investigation. Build72 has
-default-OFF lazy/deeper-futility controls; production choices remain unchanged.
-Conditional reference samples are neither strength nor proof certification.
-The focused record preserves exact identities, resource failures and resume state.
+Reverse ablation, cost separation and bounded flattened verified-null integration
+are complete. Build73 adds default-OFF research controls; ordinary production
+choices remain unchanged. Null with selective legal verification materially reduces
+whole-request diagnostic costs; nominal deeper futility adds incremental savings.
+All96 selected integrated cutoffs have complete independent nominal replays without
+a false threshold, but these conditional samples certify neither proof nor strength.
+Prioritize a fresh W1 clock development comparison of null versus full, then its
+nominal-futility interaction if admitted. Improving removal remains a credible
+lower-priority alternative; reduction-depth margins lack extra elapsed benefit.
+Four prelaunch admissions failed a self-chosen global-CPU gate; no games ran.
+A frozen owner-thread delivery calibration passed and supports a new prospective
+resource protocol with pre/post delivery and per-engine accounting. Preserve the
+old gates/failures unchanged. The focused record holds exact evidence and resume.
 
 ## ADAPTIVE16 production selection - 23 October 2026
 
