@@ -105,15 +105,17 @@ generation comparisons are closed, not extended or replayed.
 build76 versus exact native build74 core+UCI and passing all three actual UCI
 preflights. `spending-development-v1-binding.json` binds the unchanged32 reused
 development openings, profiles, runtime classes, scripts and prior diagnostics.
-The UNSTABLE2 owned wrapper has started pre-delivery/admission; inspect its
-exclusive launch/completion receipts before any resumption. Do not restart a
-launched comparison, inspect interim scores or overlap computational work.
-After UNSTABLE2 completes without an unresolved correctness/clock failure, run
-BOUNDARY2 regardless of its score. Each has fresh pre/post resource checks and
-the prospectively frozen25 ms sampled hard-overrun gate. These are development
-comparisons; freeze fresh independent confirmation only if a credible complete
-finalist emerges. Root-effort thresholds and numerical forecasts remain
-deprioritized on the mechanism evidence, not universally rejected.
+UNSTABLE2 a01 completed all64 games and post-delivery checks with every integrity,
+resource and clock gate passing. Its score .6015625 meets the frozen development
+selection rule, but is not independent confirmation. BOUNDARY2 a01 passed its
+pre-delivery/admission and launched at `2026-10-23T23:12:29Z`; its owned wrapper
+is active. Inspect exclusive launch/summary receipts before resuming. Run the prescribed control to completion regardless
+of UNSTABLE2's score; no interim score inspection or overlapping computation.
+After both are closed, select at most one qualified complete finalist using the
+whole programme's evidence and costs, then freeze fresh independent10+0.1
+confirmation. An outcome-driven extension or replay is not allowed. Root-effort
+thresholds and numerical forecasts remain deprioritized on mechanism evidence,
+not universally rejected.
 No policy is selected for confirmation or production. The closed first family
 used the **exact accepted native build74 core JAR**, matched research launcher
 and startup warmup versus frozen build75 candidates. The spending family uses
@@ -454,3 +456,37 @@ the candidate class audit permits only the documented clock seams plus version
 metadata. Both new profiles remain research-only. The exclusive UNSTABLE2
 wrapper now owns the next pre-delivery/admission attempt; no new games or
 confirmation have been selected from partial outcomes.
+
+## UNSTABLE2 development result
+
+`spending-development-unstable2-v1-summary.json` records64 normal games:30 wins,
+17 draws and17 losses, score .6015625, estimated+71.6 Elo. Paired-normal95%
+[-0.9,+150.9] and bounded-pair95% [-98.8,+290.2] both include equality. This is
+promising **development** evidence eligible for finalist consideration, not a
+positive confirmation or component attribution. The planned BOUNDARY2 control
+runs regardless of this result and must finish before finalist selection.
+
+Every integrity/resource/clock gate passes. Match host .803 other average logical
+cores; actor nativeCPU/SearchElapsed ratios1.01210/1.01223 and passing pre/post
+CPU delivery. All8,292 request-node and clock-conservation checks pass. Maximum
+sampled hard overrun12.573 ms (baseline); candidate maximum10.201 ms, both below
+the prospectively fixed25 ms ceiling. No flag or abnormal ending occurred.
+
+UNSTABLE2 versus baseline:956.2/888.3 s Search elapsed,967.9/899.1 native CPU-s,
+670.1/627.4 million nodes and114.2/224.8 million incomplete nodes. There are2,931
+nonfactual soft stops. Early moves1-20 average416.9/351.1 ms; moves61+ average
+120.7/120.4 ms. Minimum pre-increment reserve is50/999 ms, with131/0 post-increment
+responses below500 ms. Peak working sets390.6/406.8 MB. The larger early spending
+uses clock slack and sometimes reaches the safety reserve, so this measured
+clock-domain limitation must remain visible through any independent confirmation.
+No aggregate saving or remaining-clock statistic is a decision-quality label.
+
+Confirmation tooling is prepared, not yet executed or bound: one selected complete
+profile, four fixed32-pair blocks with deferred score inspection, exact accepted
+native comparator, outcome-blind per-block clock/resource receipts and one final
+128-pair assessment. Script syntax checks pass. The statistical and closed-fixture
+audit validation has not run; the finalist, protocol, fresh openings and binding
+must be frozen only after BOUNDARY2 is closed and finalist selection is recorded.
+No independent games have started. The prospective final analysis uses one
+hypothesis at two-sided alpha .05, with paired-normal primary inference and
+bounded-pair sensitivity; it cannot silently transfer evidence from development.
