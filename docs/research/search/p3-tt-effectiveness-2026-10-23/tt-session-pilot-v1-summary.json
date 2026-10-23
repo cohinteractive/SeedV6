@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "planSha256": "1e0b9e34895a4462abaeb151ab325fe0961d2297c7b3f9648eec4f64f1c207f0",
+  "rawPath": "raw\\tt-session-pilot-v1",
+  "stage": "pilot",
+  "pairs": 2,
+  "exportSha256": "d937e90f57351129b226afaf7b4178a62e14a9e946f8feb6be061b8fb3b7bf8f",
+  "wdl": [
+    2,
+    2,
+    0
+  ],
+  "resources": {
+    "baseline": {
+      "requests": 179,
+      "nodes": 24554970,
+      "elapsedNanos": 42868083900
+    },
+    "candidate": {
+      "requests": 179,
+      "nodes": 24512272,
+      "elapsedNanos": 42553575700
+    }
+  },
+  "assessorSha256": "fe69e1ae07d3e1762e4bd48a3b6856d5e9bc28a3f1f40e96532c012c55a18eb5",
+  "cpuSeconds": {
+    "baseline": 63.609375,
+    "candidate": 63.96875
+  },
+  "peakWorkingSetBytes": {
+    "baseline": 362618880,
+    "candidate": 353042432
+  },
+  "matchWallSeconds": 91.84879919999912,
+  "ownedCpuSeconds": 146.09375,
+  "hostOtherAverageLogicalCores": [
+    0.7121517910386751,
+    0.6728890329886804
+  ],
+  "candidateToBaselineCpu": 1.0056497175141244,
+  "decision": "operational pause/resume/export qualified; no strength interpretation",
+  "statisticsAssessed": false
+}

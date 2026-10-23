@@ -37,8 +37,11 @@ two-block operational pilot; W1 128-pair confirmation; W4 fresh32-pair resource
 requalification; conditional W4 128-pair confirmation.
 The owner answered: **wait until the workstation is quiet, then continue**.
 The controller started at2026-10-23T05:49:12Z; its initial quiet-host check passed
-(0.59 busy logical cores), and pilot block0 completed with its resource audit.
-It is proceeding through its frozen sequence. **Do not launch a duplicate.**
+(0.59 busy logical cores). Both pilot blocks completed, including pause/resume,
+export, game and resource audits (other host load0.71/0.67 logical cores).
+W1 confirmation admission began at2026-10-23T05:51:56Z; four32-pair blocks must
+finish before its strength endpoint. It is proceeding through the frozen sequence.
+**Do not launch a duplicate.**
 Inspect the current raw study's session/receipt state and the existing controller
 process before resuming. Only after reconciling a stopped controller, run
 `continue_confirmation_v1.py` with `build/research/venv/Scripts/python.exe -B`.
