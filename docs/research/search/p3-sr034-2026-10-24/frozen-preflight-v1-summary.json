@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "bindingSha256": "7174c0b8550f53abf4ba6a6be0c6901f5a93650e11267788f1b4ce909f4a52e7",
+  "profiles": {
+    "baseline": {
+      "identity": "mode=research experimental=true profile=baseline evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER clockPolicy=factual hardBudget=baseline-unchanged book=OFF tablebase=OFF warmupNodes=200000 warmupWorkers=1 ttMiB=64",
+      "requests": [
+        {
+          "nodes": 100000,
+          "elapsedNanos": 203710400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 8 score cp 78 nodes 85443 time 174 nps 489561 pv e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+        },
+        {
+          "nodes": 100000,
+          "elapsedNanos": 177296600,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 8 score cp 78 nodes 85443 time 150 nps 569194 pv e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+        }
+      ]
+    },
+    "candidate": {
+      "identity": "mode=research experimental=true profile=stable3-half evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER clockPolicy=stable3-half-d6-v1 hardBudget=baseline-unchanged book=OFF tablebase=OFF warmupNodes=200000 warmupWorkers=1 ttMiB=64",
+      "requests": [
+        {
+          "nodes": 100000,
+          "elapsedNanos": 199054600,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 8 score cp 78 nodes 85443 time 171 nps 498183 pv e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+        },
+        {
+          "nodes": 100000,
+          "elapsedNanos": 182766200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 8 score cp 78 nodes 85443 time 156 nps 545667 pv e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+        }
+      ]
+    }
+  }
+}

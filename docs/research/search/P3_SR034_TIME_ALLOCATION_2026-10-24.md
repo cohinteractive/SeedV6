@@ -89,11 +89,20 @@ Use one concurrent game and modest background priority by default.
 Evidence directory: `p3-sr034-2026-10-24/`. Bulk output belongs in ignored `raw/`;
 tracked protocols, scripts, summaries and manifests describe identities and limits.
 The native identity, initial trajectories and research-only HALF/STABLE3_HALF
-qualification below are complete. No strength experiment has started and no policy
-is selected for confirmation or production. Next: commit the bounded runtime seam
-and research controls with build75, export the corresponding runtime, freeze
-`clock-development-v1.json` inputs, then execute32-pair stable3-half and32-pair half
-comparisons in that order with pre/post CPU-delivery gates. The comparator uses
+qualification below are complete. Commit `2997b453a1f8` contains the bounded
+runtime seam and research controls at build75, with production selection unchanged.
+The build75 export and frozen baseline/candidate preflights pass; the only changed
+core entries versus accepted build74 are SearchControl, SingleDepthSearch,
+SearchDriver and generated version metadata (`clock-runtime-class-audit-v1.json`).
+The32 development openings and all executable inputs are frozen in
+`clock-development-v1-binding.json`. The stable3-half wrapper is active, initially
+performing `clock-development-stable3-half-v1-a01-pre-delivery`; it admits games
+only after the delivery and30s host checks pass. A `*-launch.json` receipt establishes
+that games actually started; a summary establishes completion. Do not restart it
+blindly or inspect interim game scores. Next, await its existing owned process,
+audit the final results/clock data, then run the prescribed32-pair HALF comparison
+regardless of the first score, with its own pre/post gates. No policy is selected
+for confirmation or production. The comparator uses
 the **exact accepted native build74 core JAR**, with the same research launcher
 and startup warmup; the candidate uses the new runtime. Production defaults remain
 the accepted baseline.

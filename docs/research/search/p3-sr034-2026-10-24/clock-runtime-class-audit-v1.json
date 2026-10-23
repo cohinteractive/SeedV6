@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "onlyChangedCoreEntries": [
+    "com/ohinteractive/seedv6/application-version.properties",
+    "com/ohinteractive/seedv6/search/common/SearchControl.class",
+    "com/ohinteractive/seedv6/search/common/SingleDepthSearch.class",
+    "com/ohinteractive/seedv6/search/driver/SearchDriver.class"
+  ],
+  "versionProperties": {
+    "baseline": "major=0\nminor=0\npatch=0\nbuild=74\nsourceRevision=d9a91cbe8b52 (uncommitted changes)\nversionUpdated=2026-10-24\nplatform=Portable Java 21 (runtime platform reported separately)\n",
+    "candidate": "major=0\nminor=0\npatch=0\nbuild=75\nsourceRevision=2997b453a1f8\nversionUpdated=2026-10-24\nplatform=Portable Java 21 (runtime platform reported separately)\n"
+  },
+  "jars": {
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-production-v1\\lib\\engine-core.jar": "facac0db65c7f97a120083174ea4de20ef210daf3252a79a3fd5eb2cac99e6f7",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-candidate-v1\\lib\\engine-core.jar": "6c7b5532aba24f219d1ccc8688a577887e801a5e9154ff228ba6180b341a057b"
+  }
+}
