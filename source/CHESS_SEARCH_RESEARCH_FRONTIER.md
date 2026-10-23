@@ -1,10 +1,34 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F014**
+Internal frontier revision: **P3-F015**
 
-Status: **The owner has selected full Construction V1 + Conventional NNUE CP64 as the production and Search Phase 3 baseline. Implementation, focused correctness tests, Windows image/ZIP checks and the informational E008 comparison are complete. The final packaged Windows GUI interaction was stopped with Escape; native macOS remains untested. These acceptance gates remain open; strength does not veto the selection.**
+Status: **Active owner-authorized TT Information Effectiveness and Reuse CGLHW, launched 23 October 2026. Build69 Construction V1 + frozen CP64 remains the selected production and research baseline. No TT authority change or production promotion is authorized. Existing packaged-Windows-GUI and native-macOS qualifications remain open and do not block headless research.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
+
+## Active TT information-effectiveness objective
+
+The owner confirmed P3-R016/P3-F014 mirrors and explicitly launched this objective
+on 23 October 2026. The Contract's active-objective section governs autonomy,
+boundaries and completion; previous no-successor/acceptance-wait statements are
+historical and do not prohibit this work. Build69 Construction V1 + frozen CP64
+is the principal comparator, independent of the inconclusive E008 comparison.
+
+**Current work selection:** bootstrap and qualify the actual baseline; challenge
+the programme; then measure useful hint production/consumption and retention on
+current PVS before choosing a candidate or requesting any binding TT change.
+The [focused record](../docs/research/search/P3_TT_EFFECTIVENESS_2026-10-23.md)
+is the subordinate dynamic hypothesis/experiment queue and recovery point.
+It spans SR-012 with consequential SR-003/005/006/007/014/016/022/029/031/036
+interactions; this is one objective, not reactivation of closed historical studies.
+No extra Frontier, new master, fixed enumeration or TT redesign is required.
+Older proof-reuse limitations motivate measurement, not a presumed current defect.
+
+Complete with supported dispositions and explicit uncertainties, return for
+GPT/owner acceptance, and retain the selected production baseline. No successor,
+binding TT change or promotion follows automatically. Both external Project
+Source mirrors require refresh after canon edits; authorized repository research
+continues independently of that external refresh.
 
 ## Current baseline decision - 23 October 2026
 
@@ -386,7 +410,7 @@ before production promotion; these follow-on investigations need not await promo
 Apply the Contract's resource, worker-domain, selection-bias and confirmation rules;
 do not extend closed studies post hoc or enumerate configurations exhaustively.
 
-**Current work selection:** reconcile the technically completed construction
+**Historical construction handback work selection:** reconcile the technically completed construction
 handback with GPT/owner, refresh both Project Source mirrors and obtain explicit
 acceptance/next-objective authority before dependent research. No in-scope technical
 blocker remains. Preserve the frozen candidate, controls and negative/resource

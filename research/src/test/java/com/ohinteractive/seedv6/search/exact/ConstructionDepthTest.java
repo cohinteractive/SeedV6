@@ -43,7 +43,8 @@ class ConstructionDepthTest {
         assertThrows(IllegalArgumentException.class,()->FlatSearchConfig.exact().with(CAUTION,true));
         assertThrows(IllegalArgumentException.class,()->FlatSearchConfig.exact().with(HISTORY_PROTECTION,true));
         assertThrows(IllegalArgumentException.class,()->new FlatSearchConfig(0,0,100));
-        assertThrows(IllegalArgumentException.class,()->new ConstructionSearch(FlatSearchConfig.candidate(),1,1,null).create(SearchEvaluation.handcrafted()));
+        // The selected build69 composition explicitly supports HCE alongside CP64 and Pair-2.
+        assertDoesNotThrow(()->new ConstructionSearch(FlatSearchConfig.candidate(),1,1,null).create(SearchEvaluation.handcrafted()).close());
     }
     @Test void historyProtectionHasObservableEffectBeyondItsGuardCounter() throws Exception {
         var root=P3HistoryStudy.roots(java.nio.file.Path.of("../docs/research/search/p3-construction-2026-10-20/diagnostic-corpus.tsv")).get(0);

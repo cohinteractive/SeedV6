@@ -1,0 +1,25 @@
+{
+  "id": "P3-TT-DIAGNOSTIC-v1",
+  "frozenBeforeExecution": true,
+  "purpose": "Distinguish useful completed hints, retention pressure and TT/request economics on selected Construction V1 + frozen CP64 without changing binding TT authority.",
+  "model": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "modelSha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "corpus": "docs/research/search/p3-construction-2026-10-20/diagnostic-corpus.tsv",
+  "sampling": "First 12 existing outcome-blind development roots, real supplied histories. Historical fixture reuse provides development diagnostics only; not independent strength confirmation.",
+  "runtime": "Frozen research workspace raw/runtime-v1; exact hashes in diagnostic-v1-binding.json. No production source change.",
+  "jvm": ["--add-modules=jdk.incubator.vector", "-Djava.awt.headless=true", "-Xms256m", "-Xmx768m", "-XX:ActiveProcessorCount=4"],
+  "experiments": [
+    {"name": "observe-v1", "mode": "observe", "workers": 1, "warmups": 0, "rounds": 1, "depth": 8, "nodeBudget": 250000, "roots": 12, "profiles": "baseline,hash1"},
+    {"name": "cost-d6-w1-v1", "mode": "cost", "workers": 1, "warmups": 1, "rounds": 3, "depth": 6, "nodeBudget": 1000000, "roots": 12, "profiles": "baseline,hints-off,hash1"},
+    {"name": "cost-d6-w4-v1", "mode": "cost", "workers": 4, "warmups": 1, "rounds": 3, "depth": 6, "nodeBudget": 1000000, "roots": 12, "profiles": "baseline,hints-off,hash1"},
+    {"name": "cost-n250k-w1-v1", "mode": "cost", "workers": 1, "warmups": 1, "rounds": 3, "depth": 40, "nodeBudget": 250000, "roots": 12, "profiles": "baseline,hints-off,hash1"},
+    {"name": "cost-n250k-w4-v1", "mode": "cost", "workers": 4, "warmups": 1, "rounds": 3, "depth": 40, "nodeBudget": 250000, "roots": 12, "profiles": "baseline,hints-off,hash1"}
+  ],
+  "controls": "baseline uses BaselineEngine.create, all flags 262143/WIDEN16/Hash64. hints-off uses existing COMPLETED_HINTS control only, flags 262127/Hash64. hash1 changes existing requested resource to 1 MiB, retaining baseline flags. Identical fixed CP64 and all other controls. These are controls, not selected candidates.",
+  "observation": "One worker only, read-only existing TTable array inspection plus delegated super calls; ordinary/hint traffic, hit depth/age, successful/rejected writes, occupancy and unchanged Construction counters at aspiration attempt boundaries. Each full request must match plain production/configuration score, move, PV, nodes, completion and diagnostics. Observation timings are not clean performance evidence. Collision misses do not establish the queried key was ever stored.",
+  "cost": "No observer/table subclass in cost arms. Rotated profile order per root and round; excluded warmup round; reusable private owners reset via newGame. Include all iterations, aspiration retries and aborted final work, helper drainage, elapsed/process CPU/live-thread allocation/JIT/GC/heap. Record reset separately; report with and without reset. Native lifetime CPU and peak working set in execution receipts; per-request live-thread allocation omits terminated threads and is not total allocation.",
+  "analysis": "Summarize aggregate totals and paired geometric ratios by root/round, completed-depth distribution, decisions and aspiration retries. Capped depth requests remain in report. No Elo or statistical strength claim. Costs are host/corpus-specific screens; clock games, independent confirmation and selection correction are conditional later work.",
+  "decisionRules": "First validate observation parity and zero ordinary proof stores/hits under full extensions. A semantic/cancellation failure stops dependent work. Use large or consistent hint/request effects to prioritize consumers; use capacity sensitivity plus occupancy/traffic to judge further retention study. No universal speed threshold; uncertain timing gets bounded follow-up only with decision value.",
+  "resources": "One BelowNormal JVM at a time, four available JVM processors, one or four Search workers, 768 MiB heap. Start after focused checks and frozen runtime. No overlapping research or clock games. Each request 60-second safety deadline; each JVM 20-minute operational watchdog. Failure/timeout preserves output and does not imply statistical rejection. Forecast 2-15 minutes overall, revise honestly from observed throughput without altering closed protocol. Blocking waits and completion receipts; no minute-by-minute process polling.",
+  "acceptance": "Development evidence only. No candidate promotion, TT policy change, frozen model change or baseline replacement. All failures and incomplete output preserved. Independent clock confirmation uses a separate prospective protocol if warranted."
+}

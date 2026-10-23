@@ -1,0 +1,152 @@
+{
+  "startingHead": "43b690fe272d49334578377eaa059a754c671470",
+  "branch": "main",
+  "initialWorktree": "clean",
+  "runtimeAnchor": "18f3c4f12a01417a48fb4c044ff3bde2c5b44b2d",
+  "runtimeDiffFromAnchor": "",
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 69
+  },
+  "versionSha256": "a1dbe35307fd6501bd66eade261a78a821cc3904e844433fe3fa62d17ebd2d03",
+  "rootJournalPresent": false,
+  "finalizer": "not invoked; repository owner instruction removes dependency",
+  "networkSha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "host": "Windows-11-10.0.26300-SP0",
+  "python": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
+  "tests": {
+    "bootstrap-tests-v1": [
+      {
+        "suite": "com.ohinteractive.seedv6.search.driver.BaselineEngineTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 6.739,
+        "sha256": "25f8830a341f9c4c9e3183bc7fc5285b1e5f68909d2713846abfee93c569bae6"
+      },
+      {
+        "suite": "com.ohinteractive.seedv6.search.exact.AspirationResearchTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 1.517,
+        "sha256": "60c3562d50a49ad56a24bac2112520fa10e67469aa95e9f4a74b8eda2a5a47da"
+      },
+      {
+        "suite": "com.ohinteractive.seedv6.search.exact.CompletedMoveHintsTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.277,
+        "sha256": "66cc10bc860d7989e8f22c692619dc2e36a73bb90251119a6a39f25c92e257b0"
+      },
+      {
+        "suite": "com.ohinteractive.seedv6.search.exact.ConstructionDepthTest",
+        "tests": 9,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 1.223,
+        "sha256": "5bcf78dfb479bb230ccf10927822501a0b6d0607f4646e8471a3e32afdba4739"
+      },
+      {
+        "suite": "com.ohinteractive.seedv6.search.exact.ConstructionOrderingTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.248,
+        "sha256": "18d8cd8a0bf1356a018f22e12b2e3206a555e859bbdabd590518423ad2dbf3f9"
+      },
+      {
+        "suite": "com.ohinteractive.seedv6.search.exact.ConstructionSearchTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.182,
+        "sha256": "c6f62f555dadb76a9f3fae9fccf68b4bb55e72ab05362866bae64f5430495ca3"
+      },
+      {
+        "suite": "com.ohinteractive.seedv6.search.exact.ExactSearchTTableTest",
+        "tests": 18,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.364,
+        "sha256": "6f75e63040e7b6d630e89341813e932838780b903bba07b1c4eb44ba2b5ce52f"
+      },
+      {
+        "suite": "com.ohinteractive.seedv6.search.exact.FlatExactSearchTest",
+        "tests": 21,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 2.255,
+        "sha256": "6eb54a0a73e1ca06dd5a67563d1b957e7145d54d430fa612b410d90c660cd160"
+      },
+      {
+        "suite": "com.ohinteractive.seedv6.search.tt.TTableHintsTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.019,
+        "sha256": "3b01af40c7e73ef25568efa00997692673fb42765e9f982e5e795b3917efc9bc"
+      },
+      {
+        "suite": "com.ohinteractive.seedv6.search.tt.TTableTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.017,
+        "sha256": "b2666c69b85f26bb3256a0b4ff8999a65e8dfea773456b1237aeed8704b3f576"
+      }
+    ],
+    "bootstrap-tests-v2": [
+      {
+        "suite": "com.ohinteractive.seedv6.search.exact.ConstructionDepthTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 1.651,
+        "sha256": "ce457809ef3d08868ba943f616e4127b58c924cc55980480569f7dad3039a75e"
+      },
+      {
+        "suite": "com.ohinteractive.seedv6.search.exact.ConstructionTtStudyTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.482,
+        "sha256": "b63c950b9e635dae3ee1593c561d67bbfcce7eeafe68256d01583795934369b4"
+      },
+      {
+        "suite": "com.ohinteractive.seedv6.uci.ConstructionUciTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.327,
+        "sha256": "75626bb4d45e8d1bbf0a1eca3d9c66a1059e5da8a0643506e7bb680aa97dd861"
+      }
+    ]
+  },
+  "rawAvailable": true,
+  "failedValidation": "v1: one stale HCE rejection assertion; supported HCE factory verified in source and BaselineEngineTest; assertion updated only, v2 passes",
+  "skipped": [
+    "Full unrelated suite",
+    "Packaged GUI interaction",
+    "Native macOS",
+    "Clock strength games at bootstrap"
+  ],
+  "projectBoundaries": "passed v1 and v2",
+  "runtimeChanged": false
+}

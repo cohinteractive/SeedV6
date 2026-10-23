@@ -1,10 +1,53 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R016**
+Internal revision: **P3-R017**
 
-Status: **The owner has selected full Construction V1 + Conventional NNUE CP64 as the production and Search Phase 3 baseline. Implementation, focused correctness tests, Windows image/ZIP checks and the informational E008 comparison are complete. The final packaged Windows GUI interaction was stopped with Escape; native macOS remains untested. These acceptance gates remain open; strength does not veto the selection.**
+Status: **Active owner-authorized TT Information Effectiveness and Reuse CGLHW, launched 23 October 2026. Build69 Construction V1 + frozen CP64 remains the selected production and research baseline. No TT authority change or production promotion is authorized. Existing packaged-Windows-GUI and native-macOS qualifications remain open and do not block headless research.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
+
+## Active objective - TT information effectiveness and reuse
+
+On 23 October 2026 the owner confirmed P3-R016/P3-F014 Project Source
+synchronization and explicitly launched this CGLHW. Earlier no-successor
+statements below describe preceding scopes and are superseded for this objective.
+Maximize practical whole-engine strength by investigating how the integrated
+Search produces, retains, retrieves and consumes useful TT information, including
+consequential ordering, iteration, PVS, aspiration, selectivity and worker effects.
+Neither a defect, a TT redesign nor a positive strength gain is presumed.
+
+The current comparator is full Construction V1, flags 262143, WIDEN16, frozen
+S6CNU002 CP64/eight heads, requested Hash64, supported workers 1-16, shared through
+BaselineEngine; build69 runtime source and network identity remain below.
+Historical Policy 4/Pair-2 and recursive E008 remain controls, not replacements.
+Independent exact/TT-off references and all binding technical requirements remain.
+Identity, layout, locking, replacement and proof eligibility are owner-reserved;
+even experimental changes need explicit authority. A supported proposal must state
+the restriction, modification, expected benefit, correctness/compatibility,
+resource/concurrency cost, verification and alternatives within current authority.
+Stop only that affected branch while independent authorized work can continue.
+
+Codex may autonomously select, instrument, implement and validate reversible
+in-scope experiments and consumers. Challenge hypotheses before substantial work;
+separate useful information from hit counts, proof from guidance, selective
+provenance from exactness, and current CP64 evidence from historical domains.
+Use economical discriminating screens, complete-request elapsed/CPU/memory and
+coordination accounting, observation controls, meaningful reverse ablations and
+frozen fresh confirmation at the existing clock standard when warranted.
+Production promotion, binding policy changes, evaluator/training programmes,
+unrelated optimization, external deployment and an automatic successor are excluded.
+
+The [focused research record](../docs/research/search/P3_TT_EFFECTIVENESS_2026-10-23.md)
+holds the challenged programme, dynamic hypotheses, experiments, evidence and
+precise resume state under this Contract; the Frontier indexes progression.
+Close when the lifecycle has a defensible evidence-based account and the most
+consequential credible affordable opportunities have supported dispositions,
+including negative/inconclusive/deferred or owner-gated findings. Technical
+completion is distinct from owner acceptance and production promotion. Preserve
+closed protocols and local raw evidence, and return for reconciliation; never
+manufacture experiments solely to obtain a positive result. Mirror refresh does
+not block this already-authorized repository work, but both mirrors must be
+refreshed before dependent external GPT planning or a subsequent launch.
 
 ## Current baseline decision - 23 October 2026
 
