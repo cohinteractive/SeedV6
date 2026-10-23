@@ -1,0 +1,9 @@
+{
+  "id":"P3-CP64-SELECTIVITY-H1-CPU-DELIVERY-v1",
+  "frozenBeforeMeasurement":true,
+  "question":"Qualify actual baseline/no-improving owner-thread delivery in the original frozen build71 runtime-v2 before a new resource-qualified H1 clock plan. Prior H1 admissions failed before any game; do not replace or rewrite them.",
+  "design":"Compile only the research measurement class against the immutable runtime-v2 jars into a separate ignored directory. All existing engine/launcher bytes remain unchanged. First12 full-history played roots,1warmup/2measured rounds, rotated two-profile order,1M nodes/D40,W1/Hash64/ADAPTIVE16/CP64.48 measured requests. Same synchronous SearchDriver threadCPU/elapsed bracket, legal PV/node-budget/drain checks, GC/JIT/process CPU records as cpu-delivery-v1. No build/test/diagnostic/game overlap; BelowNormal, Xms256m/Xmx1024m, ActiveProcessorCount4.",
+  "criteria":{"perProfileMedianOwnerCpuToElapsedMinimum":0.90,"perProfileNearestRankFifthPercentileMinimum":0.80,"maximumBetweenProfileMedianRange":0.05,"otherAverageLogicalCoresMaximum":2.0,"availableMemoryGiBMinimum":8,"endpointMemoryLoadPercentMaximum":75},
+  "decision":"All frozen tolerances must pass before the new H1 clock launch. Apply the same pre/post delivery, idle/whole-run global and actorCPU/Search-elapsed .90..1.25/maximum difference.10 criteria as null-clock-development-v2. No outcome-dependent retuning. This qualifies practical CPU delivery, not perfect isolation. Failed or capped checks remain evidence; no Elo from calibration.",
+  "scope":"Research-only measurement class; original build71 runtime-v2/no-improving and never-played H1 opening set retained exactly. No source or frozen runtime required by the ongoing null increment may change. Preparation/execution waits until that match and its post-delivery have completed."
+}

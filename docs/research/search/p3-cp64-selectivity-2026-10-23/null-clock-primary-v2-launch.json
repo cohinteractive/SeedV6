@@ -1,0 +1,30 @@
+{
+  "status": "running",
+  "stage": {
+    "name": "null-clock-primary-v2",
+    "baseline": "baseline",
+    "candidate": "verified-null",
+    "flags": [
+      262143,
+      2359295
+    ],
+    "question": "Does the complete verified-null configuration merit independent confirmation against accepted production choices?"
+  },
+  "preDelivery": {
+    "path": "cpu-delivery-v1-summary.json",
+    "sha256": "8eb6c3775a76d53cc842bc012f938275b9b6a54538105e5209873eec9844852f"
+  },
+  "bindingSha256": "91c781d22fdb5dddc31029de47e5d640f5ddd0290cb5ed5d25ea296caa76e063",
+  "admissionSha256": "916b6bab68c6c24ce779e530925f8d8190fe4b79262fe938303215b48002dbe1",
+  "hostStart": {
+    "utc": "2026-10-23T12:35:02.278905+00:00",
+    "monotonic": 38965.1043093,
+    "ticks": [
+      3938148281250,
+      4140117500000,
+      535650781250
+    ],
+    "availableBytes": 21887213568,
+    "memoryLoadPercent": 35
+  }
+}

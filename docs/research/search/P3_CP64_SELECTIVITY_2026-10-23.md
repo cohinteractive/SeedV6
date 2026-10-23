@@ -563,3 +563,97 @@ original18/ADAPTIVE16/CP64. No external install, push or promotion. Both master
 headers are P3-R024/P3-F024; PROJECT_SOURCE_REFRESH_REQUIRED: YES. Mirror refresh
 is non-blocking for this authorized repository work and blocks dependent external
 GPT planning until owner synchronization is evidenced.
+
+Live execution update: research-only commit `b250f62` preserves the above evidence
+without a build bump (still73). The v2 primary passed admission and launched at
+2026-10-23T12:35:02Z, recorded in `null-clock-primary-v2-launch.json`. Await its
+completion-driven wrapper and post-delivery check; do not start another match,
+build or diagnostic process, inspect interim scores, or rerun the started stage.
+An absent summary means running/interrupted/unclosed, never permission to replay.
+On restart, inspect ownership/completion and immutable raw evidence before deciding
+the next safe action. No clock outcome is claimed by this live update.
+
+### Primary clock development completed; increment selected
+
+`null-clock-primary-v2-summary.json` passes:32 pairs/64 normal, independently audited
+games, verified null29W/15D/20L, score .5703125. The paired-normal95% score interval
+is [.46426,.67636] and conservative bounded interval [.33023,.81039]; both cross
+equality. This passes the frozen .55 development-selection threshold, not independent
+strength confirmation. Whole-request totals: baseline558117818 nodes/903.505s,
+null595569926 nodes/902.694s. More nodes under a clock do not establish strength.
+Owned execution took1817.8s with1858.5 processCPU seconds; other global CPU .6481,
+memory35%, actorCPU/Search-elapsed1.02023 versus1.02357 (difference .00334).
+The frozen post-delivery criteria pass. All executable/configuration inputs remain
+stable; no game exclusion, early stopping, retuning or extension occurred.
+
+This admits `run_null_clock_v2.py increment` exactly as frozen: the disjoint second
+32-pair opening set compares nominal+null against null alone. Run serially with
+the same resource gates, then select null alone or the composition by the pre-set
+.55 incremental rule. No confirmation inputs or protocol have yet been frozen.
+Do not infer adoption from the primary development point estimate. H1 removal
+remains a credible unplayed alternative for the bounded queue.
+
+Increment execution is now launched under `null-clock-increment-v2-launch.json`.
+Await its existing wrapper and post-delivery receipt; do not rerun the stage or
+overlap computational work. Current worktree additions are the primary's successful
+admission/launch/result/post-delivery receipts and this operational update. Build73
+and all frozen executable inputs are unchanged.
+
+H1 follow-up preparation (unexecuted while the increment runs):
+`removal-cpu-v1.json`, `Cp64RemovalCpuDelivery.java`,
+`prepare_removal_clock_v2.py`, `removal_resource_v2.py` and
+`run_removal_clock_v2.py` retain the original frozen build71 runtime-v2 and its
+never-played32 openings, profiles and .55 selection rule. Only the prospective
+resource qualification changes to the supported v2 criteria, measuring the actual
+baseline/no-improving profiles with a separately compiled research class. Existing
+engine/launcher bytes will not change. The scripts parse, but no compilation,
+calibration or H1 game has run under this new plan. After the active increment and
+its post-delivery finish, execute preparation, inspect its immutable qualification,
+then launch the serial H1 screen if all gates pass. A positive null development
+result does not make the credible removal hypothesis disappear. At most two W1
+independent finalist hypotheses remain; no arbitrary additional tuning or sweep.
+
+Do not add H1's savings to H5's: eager improving already supplies raw static
+evaluation at many eligible null nodes, while lazy/removal changes that availability
+and marginal expense. VERIFIED_NULL intentionally requires the original18 controls
+in this frozen formulation. H1 is a separate complete-configuration comparison,
+not a tested null composition. A combined variant would need a new information-cost
+and correctness argument; it is not automatically admitted by two favorable screens.
+
+### Increment completed; composition selected for independent confirmation
+
+`null-clock-increment-v2-summary.json` passes all integrity/resource gates:
+32 pairs/64 normal games, nominal+null25W/21D/18L versus null alone, score .5546875.
+Paired-normal95% score interval [.47932,.63005] and bounded interval
+[.31461,.79477] both cross equality. The pre-frozen .55 rule therefore selects
+nominal+null (flags3407871) as the null-family finalist; this is selection, not
+independent confirmation or a proven incremental gain. Do not add its point
+estimate to the primary null estimate. Confirmation must compare the complete
+composition directly against full flags262143 on fresh data.
+
+Owned execution1780.7s/1821.2CPU seconds, other CPU .2888, memory35%; actorCPU/Search
+elapsed1.02157/1.02300, difference .00144. Whole-request nodes636505248/637853440
+and elapsed885.053/884.543s (null/composition). Post-delivery passes; every frozen
+input is stable. Both development stages are complete; no game or diagnostic
+process from them remains active. Their raw evidence and failure-free lifecycle
+receipts remain local and reproducible.
+
+Next: execute `prepare_removal_clock_v2.py` with the research venv, retaining the
+original H1 runtime/openings and qualifying actual baseline/no-improving delivery.
+Only after its new binding and gates pass, run `run_removal_clock_v2.py`. No
+independent confirmation game or final confirmation protocol has yet been run/frozen.
+
+H1 preparation now passes: `removal-cpu-v1-compile.json` records successful isolated
+measurement-class compilation (no tests claimed); all frozen runtime-v2 engine and
+launcher bytes remain unchanged. The48 measured requests give baseline/removal
+CPU-delivery medians .99789/.99939, fifth percentiles .99090/.98739, no GC, and all
+prospective gates pass. `removal-clock-v2-binding.json` freezes the unchanged H1
+runtime/openings and revised resource plan. Next launch its serial32-pair screen.
+
+`fixed-node-move-witness-v1.json` preserves every measured profile/round for the
+composition's only changed root, played-01: the two observations are repetitions,
+with full completingD7/score3062 and compositionD9/score3097 underN250k. Both PVs
+are legal; unequal horizons do not identify a missed resource. After the H1 clock
+and its post-delivery complete, perform a bounded matchedD7/D9 diagnosis before
+independent composition confirmation. This is a development-witness diagnosis,
+not new tuning, a strength substitute or permission to alter a frozen candidate.

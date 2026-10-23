@@ -1,0 +1,214 @@
+{
+  "source": "raw\\flat-null-n250k-v1.jsonl",
+  "sourceSha256": "b1b2a5f018994b56618df53bc59ac05f463e3001c2d879535e7b14c40c8a9f7c",
+  "selection": "Every measured root where the selected composition changes best move versus full atN250k; both repeated rounds and every compared profile retained.",
+  "distinctRoots": [
+    "played-01"
+  ],
+  "records": [
+    {
+      "id": "played-01",
+      "round": 0,
+      "profile": "nominal-futility",
+      "termination": "NODE_LIMIT",
+      "requestNodes": 250000,
+      "attemptedDepth": 9,
+      "lastCompleted": {
+        "bestMove": 722584,
+        "score": 3001,
+        "depth": 8,
+        "nodes": 246579,
+        "principalVariation": [
+          722584,
+          68722,
+          722522,
+          68785,
+          4917849,
+          11602546,
+          919990,
+          68265
+        ],
+        "selective": true
+      }
+    },
+    {
+      "id": "played-01",
+      "round": 0,
+      "profile": "verified-null",
+      "termination": "NODE_LIMIT",
+      "requestNodes": 250000,
+      "attemptedDepth": 10,
+      "lastCompleted": {
+        "bestMove": 722584,
+        "score": 3167,
+        "depth": 9,
+        "nodes": 230401,
+        "principalVariation": [
+          722584,
+          69362,
+          919072,
+          262569,
+          919852,
+          265222,
+          722650,
+          69307,
+          919925
+        ],
+        "selective": true
+      }
+    },
+    {
+      "id": "played-01",
+      "round": 0,
+      "profile": "nominal-verified-null",
+      "termination": "NODE_LIMIT",
+      "requestNodes": 250000,
+      "attemptedDepth": 10,
+      "lastCompleted": {
+        "bestMove": 722520,
+        "score": 3097,
+        "depth": 9,
+        "nodes": 234471,
+        "principalVariation": [
+          722520,
+          14944297,
+          723033,
+          262432,
+          592823,
+          68274,
+          722017,
+          68842,
+          592238
+        ],
+        "selective": true
+      }
+    },
+    {
+      "id": "played-01",
+      "round": 0,
+      "profile": "baseline",
+      "termination": "NODE_LIMIT",
+      "requestNodes": 250000,
+      "attemptedDepth": 8,
+      "lastCompleted": {
+        "bestMove": 722584,
+        "score": 3062,
+        "depth": 7,
+        "nodes": 99515,
+        "principalVariation": [
+          722584,
+          69362,
+          919072,
+          265257,
+          789415,
+          265840,
+          918552
+        ],
+        "selective": true
+      }
+    },
+    {
+      "id": "played-01",
+      "round": 1,
+      "profile": "verified-null",
+      "termination": "NODE_LIMIT",
+      "requestNodes": 250000,
+      "attemptedDepth": 10,
+      "lastCompleted": {
+        "bestMove": 722584,
+        "score": 3167,
+        "depth": 9,
+        "nodes": 230401,
+        "principalVariation": [
+          722584,
+          69362,
+          919072,
+          262569,
+          919852,
+          265222,
+          722650,
+          69307,
+          919925
+        ],
+        "selective": true
+      }
+    },
+    {
+      "id": "played-01",
+      "round": 1,
+      "profile": "nominal-verified-null",
+      "termination": "NODE_LIMIT",
+      "requestNodes": 250000,
+      "attemptedDepth": 10,
+      "lastCompleted": {
+        "bestMove": 722520,
+        "score": 3097,
+        "depth": 9,
+        "nodes": 234471,
+        "principalVariation": [
+          722520,
+          14944297,
+          723033,
+          262432,
+          592823,
+          68274,
+          722017,
+          68842,
+          592238
+        ],
+        "selective": true
+      }
+    },
+    {
+      "id": "played-01",
+      "round": 1,
+      "profile": "baseline",
+      "termination": "NODE_LIMIT",
+      "requestNodes": 250000,
+      "attemptedDepth": 8,
+      "lastCompleted": {
+        "bestMove": 722584,
+        "score": 3062,
+        "depth": 7,
+        "nodes": 99515,
+        "principalVariation": [
+          722584,
+          69362,
+          919072,
+          265257,
+          789415,
+          265840,
+          918552
+        ],
+        "selective": true
+      }
+    },
+    {
+      "id": "played-01",
+      "round": 1,
+      "profile": "nominal-futility",
+      "termination": "NODE_LIMIT",
+      "requestNodes": 250000,
+      "attemptedDepth": 9,
+      "lastCompleted": {
+        "bestMove": 722584,
+        "score": 3001,
+        "depth": 8,
+        "nodes": 246579,
+        "principalVariation": [
+          722584,
+          68722,
+          722522,
+          68785,
+          4917849,
+          11602546,
+          919990,
+          68265
+        ],
+        "selective": true
+      }
+    }
+  ],
+  "finding": "The two recorded composition move changes are repeated observations of played-01, with full completingD7 and compositionD9. This is an unequal-horizon selective comparison, not a demonstrated missed resource or correctness failure. Existing PV legality checks pass; no mathematical proof is claimed.",
+  "nextQuestion": "Before independent composition confirmation, compare full/nominal/null/composition at matchedD7 andD9 on this exact full-history root with a bounded budget. Retain caps and same-depth differences; do not tune the candidate from this witness."
+}

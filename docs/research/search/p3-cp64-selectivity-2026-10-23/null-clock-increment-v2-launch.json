@@ -1,0 +1,31 @@
+{
+  "status": "running",
+  "stage": {
+    "name": "null-clock-increment-v2",
+    "baseline": "verified-null",
+    "candidate": "nominal-verified-null",
+    "flags": [
+      2359295,
+      3407871
+    ],
+    "question": "Does nominal deeper futility add practical value to the null foundation?",
+    "admission": "Run only if the primary stage passes integrity/resource gates and candidate score>=.55. Otherwise retain this unexecuted stage and reassess remaining credible opportunities."
+  },
+  "preDelivery": {
+    "path": "null-clock-primary-v2-post-delivery-summary.json",
+    "sha256": "cde93e3e02ca9be267bb8d4382f0706ae4fd6ff246064ec29424be525320568d"
+  },
+  "bindingSha256": "91c781d22fdb5dddc31029de47e5d640f5ddd0290cb5ed5d25ea296caa76e063",
+  "admissionSha256": "5bf1db0857b12fdaaec8b49e1455650c4ed1ad01aa48d140febe69ee985fff5b",
+  "hostStart": {
+    "utc": "2026-10-23T13:09:26.020278+00:00",
+    "monotonic": 41028.8456803,
+    "ticks": [
+      4153012343750,
+      4363581718750,
+      559835312500
+    ],
+    "availableBytes": 21858844672,
+    "memoryLoadPercent": 35
+  }
+}
