@@ -1,0 +1,15 @@
+{
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\adaptive-clock-v1.json": "615513feabddb0a12366154be5105529004e15c522340d2ad431bedbd7fa51eb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\adaptive-clock-v1-openings.pgn": "7691441f5d56f92b151bc8bbb532fa9df31d481a590da6cb9ad6da464d89e3af",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\adaptive-clock-v1-openings.selection.json": "89e5bfe18febaa571d81bd2d6b92f4549bb905c7986390b8e77bbd870280b950",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\adaptive-v1-summary.json": "335f4534662d38f081aa4e1a60757f22851ec783e8142e5e3c1aa6121bcf9aa1",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\adaptive-uci-qualification-v1.json": "413198e6d92f07207265ecbf376738920d713ecc2a1c6d33d36a2b11e221c949",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p3-tt-match.py": "e8edda314920cb71ca1f58b035205f761a8bb4a7fa1a06696791ba0a3aaba0b7",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\tools\\fastchess.exe": "c6d7e4458a58025983c81bf38c524cb213e6f27559657dcfd72543392a431a71",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+  },
+  "runtimeBindingSha256": "ee5191bc12fddceaccc098612df221dd9c0adbda726a873bb506dedb08b603a4",
+  "selectionScriptSha256": "d6f17aee37b306caf51b556c398c7ff960d6bb5531b4766eb0037592c6fedff3",
+  "qualificationGate": "passed"
+}

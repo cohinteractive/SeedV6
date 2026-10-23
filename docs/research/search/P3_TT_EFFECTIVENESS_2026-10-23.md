@@ -16,11 +16,12 @@ The frozen 32-pair W1/W4 development completed: full-window scored 25/12/27 W/D/
 at W1 and 30/7/27 at W4, with broad intervals crossing zero. Neither meets its
 frozen 0.55 confirmation-selection gate. Lifetime-full-v1 is complete (390 neutral
 pairs), with maximum occupancy 37.56% and no justified retention-policy change.
-Adaptive-v1 passed 11 test methods and is running its four serial diagnostics-OFF
-cost domains. It tests exactly one existing ADAPTIVE16 consumer alternative which
-retains narrow-window behavior while responding to CP64 score variation. Next:
-reconcile all four receipts and apply its frozen cost/completion gate before any
-additional clock screen. No policy sweep or bespoke Search redesign.
+Adaptive-v1 passed 11 test methods and all four diagnostics-OFF cost domains.
+Both worker domains meet its frozen cost/completion gate. Next: the separate
+adaptive-clock-v1 protocol, 32 new paired openings per W1/W4 domain at 10+0.1,
+after clock-runtime-v2 identity/parity qualification and opening binding finish.
+Use `run_adaptive_clock_v1.py` once only; then reconcile its fixed endpoints under
+the frozen selection rule. No policy sweep or bespoke Search redesign.
 Absent completion never permits duplicating a live run; reconcile any
 interruption before retrying under a new name. Existing full-window remains a
 conditional CPU-saving configuration with strength unconfirmed; WIDEN16 remains
@@ -97,7 +98,7 @@ Challenge decisions before substantial execution:
 | --- | --- | --- |
 | T1 | Completed hints materially reduce current CP64 request work despite no ordinary proof. | SUPPORTED mechanism value in diagnostic-v1: hints-off increases D6 work/time at W1/W4, despite slightly cheaper fixed-node requests. Not Elo evidence. |
 | T2 | Current capacity/replacement loses consequential guidance. | Full-trajectory check complete: maximum37.56% occupancy, no saturation demonstrated; retained work benefit concentrated early, later results nearly neutral/slightly adverse. No capacity/replacement redesign justified in tested domains; long clocks remain untested. |
-| T3 | Aspiration/PVS/iteration or root guidance consumes hints ineffectively. | Full-window reduces some request costs but has inconclusive clock evidence and no confirmation admission. Hints help both drivers. NEXT exactly one existing ADAPTIVE16 control under frozen adaptive-v1; preserve narrow-window behavior while testing retry economics. No width sweep. |
+| T3 | Aspiration/PVS/iteration or root guidance consumes hints ineffectively. | Full-window reduces some request costs but clock gain is unconfirmed. ADAPTIVE16 cost/completion gates pass W1/W4 with diagnostics OFF; NEXT one frozen paired clock screen on fresh development openings. No width sweep. |
 | T4 | TT access/coordination costs consume the information benefit. | Fixed-node hints-off is about 4-5% cheaper but completes less depth; D6 becomes 23-33% slower in aggregate. Retain whole-request economics, no locking/layout variant. Profiling only if decision value remains. |
 | T5 | Producer depth/selective restrictions leave valuable proof or guidance unavailable. | Zero ordinary proof confirmed; completed hints provide value. No evidence yet justifies weakening proof restrictions or binding-policy experimentation. Empty proof probes/repeated writes are traffic observations, not permission to alter TT access/replacement. |
 | T6 | A promising integrated candidate improves practical strength. | Full-window W1/W4 clock results inconclusive, neither reaches frozen confirmation-selection gate. W4 CPU ratio0.789 is conditional resource evidence, not strength equivalence. Any adaptive screen requires its independent prospective diagnostic gate. No promotion. |
@@ -323,6 +324,31 @@ grid is introduced. [adaptive-v1](p3-tt-effectiveness-2026-10-23/adaptive-v1.jso
 freezes W1/W4 target-depth/fixed-node controls with diagnostics OFF and a modest
 cost/completion gate before any additional clock expenditure. Failed gates close
 or defer that formulation; they do not trigger an automatic width sweep.
+
+All four adaptive cost runs passed. In target-D8/2m-capped requests, adaptive
+finishes 22/24 versus baseline 20/24 at both W1/W4. Elapsed ratios are 0.764/0.754,
+CPU ratios 0.749/0.780 and nodes 19.56m/25.09m (W1), 18.73m/24.16m (W4). Selected
+moves agree on those roots; capped requests remain included. At fixed 250k nodes,
+W1 has two higher and two lower completed depths, with twenty equal; W4 has seven
+higher, seventeen equal, zero lower. Fixed-node elapsed ratios 0.973/1.034 and CPU
+0.951/0.971 show that cheaper target-depth work is not a uniform NPS gain. These
+are diagnostics-OFF complete-request costs, not playing-strength evidence.
+All 288 requests (96 warmups, 192 measured) satisfy accounting/legal-PV/drain
+checks; four JVMs total 230.7 wall /384.7 native CPU seconds. See
+[adaptive summary](p3-tt-effectiveness-2026-10-23/adaptive-v1-summary.json) and
+[validation](p3-tt-effectiveness-2026-10-23/adaptive-validation-v1.json).
+
+Both domains pass the prospectively frozen cost/completion gate, admitting the
+separate [adaptive clock screen](p3-tt-effectiveness-2026-10-23/adaptive-clock-v1.json)
+on 32 fresh partition0 openings. It retains the same 10+0.1 clock, one-game
+concurrency, CP64/Hash64, background priority, warmup and complete game audit.
+This is the only additional aspiration formulation; prior full-window selection
+and two worker domains remain exploratory multiple comparisons. New independent
+confirmation requires its frozen strength-selection gate; it is not automatic.
+The research launcher/adapter add only the existing adaptive activation. Exact
+closed v1 source bytes are preserved under `raw/clock-v1-source`, in
+[its source manifest](p3-tt-effectiveness-2026-10-23/clock-v1-source-preservation.json)
+and Git commit8e933ea; v1 runtime, protocols and results remain untouched.
 
 ## Validation and local evidence
 

@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx768m",
+    "-XX:ActiveProcessorCount=4",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\adaptive-v1-runtime\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\adaptive-v1-runtime\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.ConstructionTtAdaptiveStudy",
+    "build-assets/nnue-candidate/conventional-cp64.cnnue",
+    "docs/research/search/p3-sr002-execution-2026-10-19/confirmation-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\adaptive-d8-w1-v1.jsonl",
+    "1",
+    "1",
+    "2",
+    "8",
+    "2000000",
+    "12"
+  ],
+  "priority": "BelowNormal inherited",
+  "bindingSha256": "1c5e0334429933a24591e342b13c3f99f819b9ee0ad645875ffad839d72090aa",
+  "exitCode": 0,
+  "wallSeconds": 119.31727189999947,
+  "ownedProcessesRemaining": 0,
+  "totalOwnedProcesses": 1,
+  "totalOwnedCpuSeconds": 123.71875,
+  "evidence": {
+    "raw\\adaptive-d8-w1-v1.jsonl": "a90610201529edf4e1ca874ef8fa5df5250fea12795c064a868081bbae093496",
+    "raw\\adaptive-d8-w1-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

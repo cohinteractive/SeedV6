@@ -1,0 +1,265 @@
+{
+  "status": "passed",
+  "protocolSha256": "ec96a8734a47627ba7e2b6bc0dfc2aa4b621b3e405fe90ef4c4dcf29df5239e3",
+  "experiments": {
+    "adaptive-d8-w1-v1": {
+      "rawPath": "raw\\adaptive-d8-w1-v1.jsonl",
+      "rawSha256": "a90610201529edf4e1ca874ef8fa5df5250fea12795c064a868081bbae093496",
+      "wallSeconds": 119.31727189999947,
+      "nativeCpuSeconds": 123.71875,
+      "profiles": {
+        "baseline": {
+          "elapsedNanos": 44464681000,
+          "processCpuNanos": 44765625000,
+          "resetNanos": 28450400,
+          "gcCollections": 0,
+          "compilationMillis": 891,
+          "requests": 24,
+          "totalNodes": 25087052,
+          "completedDepths": {
+            "8": 20,
+            "7": 4
+          },
+          "capped": 4,
+          "differentMoves": 0,
+          "elapsedTotalRatio": 1.0,
+          "cpuTotalRatio": 1.0,
+          "pairedElapsedGeometricRatio": 1.0,
+          "heapUsedRange": [
+            228896384,
+            239382144
+          ]
+        },
+        "adaptive": {
+          "elapsedNanos": 33983329100,
+          "processCpuNanos": 33546875000,
+          "resetNanos": 28008900,
+          "gcCollections": 0,
+          "compilationMillis": 214,
+          "requests": 24,
+          "totalNodes": 19564768,
+          "completedDepths": {
+            "8": 22,
+            "7": 2
+          },
+          "capped": 2,
+          "differentMoves": 0,
+          "elapsedTotalRatio": 0.7642769122756103,
+          "cpuTotalRatio": 0.7493891797556719,
+          "pairedElapsedGeometricRatio": 0.7205668405771068,
+          "heapUsedRange": [
+            228896384,
+            240430720
+          ]
+        }
+      },
+      "depthPairCounts": {
+        "lower": 0,
+        "equal": 22,
+        "higher": 2
+      }
+    },
+    "adaptive-d8-w4-v1": {
+      "rawPath": "raw\\adaptive-d8-w4-v1.jsonl",
+      "rawSha256": "36dd84d16f426454de06580d176de453a095e85c06193d8f43a57c7940b73595",
+      "wallSeconds": 57.98913700000048,
+      "nativeCpuSeconds": 169.625,
+      "profiles": {
+        "baseline": {
+          "elapsedNanos": 21288131200,
+          "processCpuNanos": 60328125000,
+          "resetNanos": 29738700,
+          "gcCollections": 3,
+          "compilationMillis": 831,
+          "requests": 24,
+          "totalNodes": 24158966,
+          "completedDepths": {
+            "8": 20,
+            "7": 4
+          },
+          "capped": 4,
+          "differentMoves": 0,
+          "elapsedTotalRatio": 1.0,
+          "cpuTotalRatio": 1.0,
+          "pairedElapsedGeometricRatio": 1.0,
+          "heapUsedRange": [
+            161731832,
+            291750384
+          ]
+        },
+        "adaptive": {
+          "elapsedNanos": 16057604100,
+          "processCpuNanos": 47046875000,
+          "resetNanos": 29694500,
+          "gcCollections": 1,
+          "compilationMillis": 1242,
+          "requests": 24,
+          "totalNodes": 18730559,
+          "completedDepths": {
+            "8": 22,
+            "7": 2
+          },
+          "capped": 2,
+          "differentMoves": 0,
+          "elapsedTotalRatio": 0.754298437431652,
+          "cpuTotalRatio": 0.7798497798497799,
+          "pairedElapsedGeometricRatio": 0.7143938652637816,
+          "heapUsedRange": [
+            161726960,
+            292792824
+          ]
+        }
+      },
+      "depthPairCounts": {
+        "lower": 0,
+        "equal": 22,
+        "higher": 2
+      }
+    },
+    "adaptive-n250k-w1-v1": {
+      "rawPath": "raw\\adaptive-n250k-w1-v1.jsonl",
+      "rawSha256": "e14fa7b2309e7f9b64321d7b7b45aeea37d01cfbe8cca3dcb8360189c6f2ab00",
+      "wallSeconds": 34.10853209999914,
+      "nativeCpuSeconds": 38.125,
+      "profiles": {
+        "baseline": {
+          "elapsedNanos": 11165043500,
+          "processCpuNanos": 11687500000,
+          "resetNanos": 29008300,
+          "gcCollections": 0,
+          "compilationMillis": 588,
+          "requests": 24,
+          "totalNodes": 6000000,
+          "completedDepths": {
+            "7": 18,
+            "6": 4,
+            "8": 2
+          },
+          "capped": 24,
+          "differentMoves": 0,
+          "elapsedTotalRatio": 1.0,
+          "cpuTotalRatio": 1.0,
+          "pairedElapsedGeometricRatio": 1.0,
+          "heapUsedRange": [
+            171792384,
+            180180992
+          ]
+        },
+        "adaptive": {
+          "elapsedNanos": 10865454700,
+          "processCpuNanos": 11109375000,
+          "resetNanos": 28522600,
+          "gcCollections": 0,
+          "compilationMillis": 562,
+          "requests": 24,
+          "totalNodes": 6000000,
+          "completedDepths": {
+            "7": 14,
+            "6": 6,
+            "8": 4
+          },
+          "capped": 24,
+          "differentMoves": 4,
+          "elapsedTotalRatio": 0.9731672518785977,
+          "cpuTotalRatio": 0.9505347593582888,
+          "pairedElapsedGeometricRatio": 0.9770033052211987,
+          "heapUsedRange": [
+            171792384,
+            180180992
+          ]
+        }
+      },
+      "depthPairCounts": {
+        "lower": 2,
+        "equal": 20,
+        "higher": 2
+      }
+    },
+    "adaptive-n250k-w4-v1": {
+      "rawPath": "raw\\adaptive-n250k-w4-v1.jsonl",
+      "rawSha256": "922ac3c73f6af4c3e71e00b1e424ae58bfd2815b9b536faf8d6dc20eec9b54f9",
+      "wallSeconds": 19.261801099999502,
+      "nativeCpuSeconds": 53.21875,
+      "profiles": {
+        "baseline": {
+          "elapsedNanos": 5975334700,
+          "processCpuNanos": 16750000000,
+          "resetNanos": 30346400,
+          "gcCollections": 0,
+          "compilationMillis": 822,
+          "requests": 24,
+          "totalNodes": 6000000,
+          "completedDepths": {
+            "7": 17,
+            "5": 1,
+            "6": 6
+          },
+          "capped": 24,
+          "differentMoves": 0,
+          "elapsedTotalRatio": 1.0,
+          "cpuTotalRatio": 1.0,
+          "pairedElapsedGeometricRatio": 1.0,
+          "heapUsedRange": [
+            179839008,
+            272113696
+          ]
+        },
+        "adaptive": {
+          "elapsedNanos": 6177702000,
+          "processCpuNanos": 16265625000,
+          "resetNanos": 29697000,
+          "gcCollections": 0,
+          "compilationMillis": 1298,
+          "requests": 24,
+          "totalNodes": 6000000,
+          "completedDepths": {
+            "8": 4,
+            "7": 15,
+            "6": 5
+          },
+          "capped": 24,
+          "differentMoves": 0,
+          "elapsedTotalRatio": 1.0338671070592915,
+          "cpuTotalRatio": 0.9710820895522388,
+          "pairedElapsedGeometricRatio": 1.031951003141553,
+          "heapUsedRange": [
+            181936160,
+            273162272
+          ]
+        }
+      },
+      "depthPairCounts": {
+        "lower": 0,
+        "equal": 17,
+        "higher": 7
+      }
+    }
+  },
+  "domainDecisions": {
+    "1": {
+      "checks": {
+        "elapsedAtMost0.90": true,
+        "cpuAtMost0.90": true,
+        "targetCompletionsNoLower": true,
+        "nodeBudgetDepthNotUniformlyWorse": true
+      },
+      "clockScreenAdmitted": true,
+      "note": "A purely operational cost/depth selection gate. No strength acceptance; no width sweep on failure."
+    },
+    "4": {
+      "checks": {
+        "elapsedAtMost0.90": true,
+        "cpuAtMost0.90": true,
+        "targetCompletionsNoLower": true,
+        "nodeBudgetDepthNotUniformlyWorse": true
+      },
+      "clockScreenAdmitted": true,
+      "note": "A purely operational cost/depth selection gate. No strength acceptance; no width sweep on failure."
+    }
+  },
+  "limits": [
+    "Development only; no strength inference from nodes/depth/time.",
+    "Diagnostic counters OFF; repeated rounds are not independent roots.",
+    "Caps and selective move differences retained. Heap snapshots are not native process peak working set."
+  ]
+}

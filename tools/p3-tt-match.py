@@ -48,7 +48,7 @@ class MemoryCohort(c.Cohort):
 
 def command(args, side):
     profile = getattr(args, side + '_policy')
-    if profile not in ('baseline', 'full'):
+    if profile not in ('baseline', 'full', 'adaptive'):
         raise ValueError('Unknown TT research configuration')
     runtime = Path(getattr(args, side)).resolve()
     return [str(Path(args.java).resolve()), '--add-modules=jdk.incubator.vector',
@@ -73,7 +73,7 @@ def preflight(cmd, path, workers, policy, hash_mib=64):
                       'heads=8', 'flags=262143', 'networkSha256='+NETWORK_SHA256,
                       'warmupNodes=200000', 'warmupWorkers='+str(workers),
                       'workers='+str(workers)+';hashMiB='+str(hash_mib),
-                      'aspiration='+('WIDEN16' if policy=='baseline' else 'OFF')):
+                      'aspiration='+{'baseline':'WIDEN16','full':'OFF','adaptive':'ADAPTIVE16'}[policy]):
             if value not in identity: raise ValueError('Missing identity '+value+': '+identity)
         requests = []
         for _ in range(2):
@@ -164,7 +164,7 @@ if __name__ == '__main__':
     for name in ('baseline', 'candidate', 'network', 'runner', 'openings', 'out'): p.add_argument('--' + name, required=True)
     p.add_argument('--java', default='C:/java/jdk-21/bin/java.exe')
     for side in ('baseline', 'candidate'):
-        p.add_argument('--' + side + '-policy', choices=('baseline','full'), default='baseline' if side=='baseline' else 'full')
+        p.add_argument('--' + side + '-policy', choices=('baseline','full','adaptive'), default='baseline' if side=='baseline' else 'full')
         p.add_argument('--' + side + '-workers', type=int, choices=range(1,17), default=1)
     p.add_argument('--hash-mib', type=int, choices=range(1,1025), default=64)
     p.add_argument('--background', action='store_true')

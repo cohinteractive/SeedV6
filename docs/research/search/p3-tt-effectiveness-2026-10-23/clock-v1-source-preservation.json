@@ -1,0 +1,13 @@
+{
+  "reason": "Preserve exact closed v1 tool/launcher source before adding the distinct existing adaptive profile. Original runtime/protocol/results stay unchanged. Git commit8e933ea also retains these blobs.",
+  "files": {
+    "tools/p3-tt-match.py": {
+      "sha256": "7b99aab7c9e478ed468d89e6bf739658981d3406d118f87b42cbaa1c0c972f52",
+      "localFrozenCopy": "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-v1-source\\p3-tt-match.py"
+    },
+    "src/researchLauncher/java/com/ohinteractive/seedv6/integration/P3TtUciMain.java": {
+      "sha256": "5714d5b095b68fc03da597458dbee59170ea5f9e7aeb1c60ef3759eab2aabed3",
+      "localFrozenCopy": "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-v1-source\\P3TtUciMain.java"
+    }
+  }
+}

@@ -15,13 +15,15 @@ import com.ohinteractive.seedv6.uci.*;
 public final class P3TtUciMain {
     public static void main(String[] args) throws Exception {
         if(args.length!=4 || !args[0].equals("--network") || !args[2].equals("--profile")
-                || !(args[3].equals("baseline") || args[3].equals("full")))
-            throw new IllegalArgumentException("--network <frozen CP64> --profile baseline|full");
+                || !(args[3].equals("baseline") || args[3].equals("full") || args[3].equals("adaptive")))
+            throw new IllegalArgumentException("--network <frozen CP64> --profile baseline|full|adaptive");
         var model=ConventionalNnueEngine.load(Path.of(args[1]));var evaluation=model.evaluation();
         String profile=args[3];
+        var aspiration=profile.equals("baseline")?AspirationSearch.Policy.WIDEN16
+                :profile.equals("adaptive")?AspirationSearch.Policy.ADAPTIVE16:null;
         int warmupWorkers=Integer.parseInt(System.getProperty("seedv6.tt.warmupWorkers","1"));
         var warmupConfig=ConstructionSearch.v1(warmupWorkers,64,
-                profile.equals("baseline")?AspirationSearch.Policy.WIDEN16:null);
+                aspiration);
         try(var warmup=new SearchDriver(warmupConfig.create(evaluation))) {
             for(int i=0;i<2;i++) {
                 var board=Board.startingPosition();
@@ -34,7 +36,7 @@ public final class P3TtUciMain {
         }
         var configuration=new UciConfiguration() {
             ConstructionSearch config(int workers,int hash) {
-                return ConstructionSearch.v1(workers,hash,profile.equals("baseline")?AspirationSearch.Policy.WIDEN16:null);
+                return ConstructionSearch.v1(workers,hash,aspiration);
             }
             @Override public SearchLifecycleService service(int workers,int hash) {
                 return new SearchLifecycleService(TimeSource.SYSTEM,
