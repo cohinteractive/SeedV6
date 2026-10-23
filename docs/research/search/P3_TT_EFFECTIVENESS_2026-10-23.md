@@ -382,6 +382,7 @@ BelowNormal priority and modest process concurrency. Freeze costly protocols
 before results, never retune closed finalists, and account for selection effects.
 Existing tournament machinery provides pair blocks and process accounting.
 
-No new playing-strength evidence yet. No candidate promoted. Both canon mirrors
+Playing-strength evidence is development-only so far; no gain confirmed and no
+candidate promoted. Both canon mirrors
 must be refreshed to P3-R017/P3-F015 before dependent external GPT planning;
 Codex has not synchronized them. Repository research is already authorized.
