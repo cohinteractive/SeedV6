@@ -17,11 +17,14 @@ at W1 and 30/7/27 at W4, with broad intervals crossing zero. Neither meets its
 frozen 0.55 confirmation-selection gate. Lifetime-full-v1 is complete (390 neutral
 pairs), with maximum occupancy 37.56% and no justified retention-policy change.
 Adaptive-v1 passed 11 test methods and all four diagnostics-OFF cost domains.
-Both worker domains meet its frozen cost/completion gate. Next: the separate
+Both worker domains meet its frozen cost/completion gate. The separate
 adaptive-clock-v1 protocol, 32 new paired openings per W1/W4 domain at 10+0.1,
-after clock-runtime-v2 identity/parity qualification and opening binding finish.
-Use `run_adaptive_clock_v1.py` once only; then reconcile its fixed endpoints under
-the frozen selection rule. No policy sweep or bespoke Search redesign.
+passed clock-runtime-v2 identity/parity qualification and opening binding. Its
+serial executor started W1 at 2026-10-23T04:25:03Z and will start W4 only after
+W1 audits pass. Do not launch it again. Next: inspect both completion receipts,
+run `summarize_adaptive_clock_v1.py`, and apply the frozen strength-selection rule.
+Fresh confirmation is conditional, not automatic. No policy sweep or bespoke
+Search redesign. Passive host observers are read-only and do not affect stopping.
 Absent completion never permits duplicating a live run; reconcile any
 interruption before retrying under a new name. Existing full-window remains a
 conditional CPU-saving configuration with strength unconfirmed; WIDEN16 remains
