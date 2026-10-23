@@ -101,7 +101,10 @@ final class PlayEnginePanel extends JPanel {
     }
     void loadFixed(LearningArenaConfig.Competitor competitor) {
         fixedBinding = competitor;
-        evaluator.setSelectedItem(competitor.evaluator() != null && competitor.evaluator().competitive()
+        editing = false;
+        // A disabled saved binding may name a historical profile outside the three
+        // current choices. Preserve that displayed identity without adding a menu item.
+        evaluator.getModel().setSelectedItem(competitor.evaluator() != null && competitor.evaluator().competitive()
                 ? switch (competitor.evaluator()) {
                     case HCE_CONSTRUCTION -> PlayEvaluator.Mode.HANDCRAFTED;
                     case BREP2_32 -> PlayEvaluator.Mode.BREP2_32;
@@ -114,9 +117,16 @@ final class PlayEnginePanel extends JPanel {
         description.setText(competitor.isPinned() ? competitor.displayName() : competitor.isHandcrafted() ? "HCE does not use a checkpoint."
                 : competitor.displayName() + " · " + initial.name() + " · source Gen " + initial.generation());
         description.setToolTipText(initial == null ? null : initial.root() + " / " + initial.checkpoint());
+        if (competitor.evaluator() == null || !competitor.evaluator().competitive())
+            description.setText("Saved historical configuration: " + description.getText());
         setEditable(false);
     }
-    void clearFixed() { fixedBinding = null; description.setText("HCE does not use a checkpoint."); description.setToolTipText(null); setEditable(true); }
+    void clearFixed() {
+        fixedBinding = null;
+        if (!selectedMode().competitive()) evaluator.setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_CP64);
+        description.setToolTipText(null);
+        setEditable(true);
+    }
     void swapWith(PlayEnginePanel other) {
         if (!validSelection() || !other.validSelection()) throw new IllegalStateException("Choose both evaluators before swapping.");
         var mine = selectedMode(); var theirs = other.selectedMode();

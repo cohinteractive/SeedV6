@@ -78,6 +78,27 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
     }
 
     boolean neural() { return mode != Mode.HANDCRAFTED; }
+    String scoreUnits() {
+        if (baseline != null) return competitiveScoreUnits(baseline.evaluator());
+        return conventional != null ? "NNUE score / 100" : neural() && baseline == null
+                ? "uncalibrated network units" : "pawns (cp / 100)";
+    }
+    String scoreExplanation() {
+        if (baseline != null) return competitiveScoreExplanation(baseline.evaluator());
+        return conventional != null
+                ? "Searched NNUE link score / 100, White perspective. CP64 uses a teacher expected-score scale, not material pawns or a calibrated win probability."
+                : neural() && baseline == null
+                    ? "Uncalibrated network units, White perspective; not centipawns or a winning probability."
+                    : "Searched score in pawn units (centipawns / 100), White perspective; includes positional and tactical effects and is not a winning probability.";
+    }
+    static String competitiveScoreUnits(BaselineEngine.Evaluator choice) {
+        return choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? "NNUE score / 100" : "pawns (cp / 100)";
+    }
+    static String competitiveScoreExplanation(BaselineEngine.Evaluator choice) {
+        return choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64
+                ? "Searched NNUE link score / 100, White perspective. CP64 uses a teacher expected-score scale, not material pawns or a calibrated win probability."
+                : "Searched score in pawn units (centipawns / 100), White perspective; includes positional and tactical effects and is not a winning probability.";
+    }
     static PlayEvaluator bundled(Mode mode) throws IOException {
         if (!mode.competitive()) return pinned(mode);
         var engine = BaselineEngine.load(mode == Mode.BREP2_32 ? BaselineEngine.Evaluator.BREP2_32

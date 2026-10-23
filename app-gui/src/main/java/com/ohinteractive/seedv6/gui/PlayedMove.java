@@ -12,10 +12,10 @@ record PlayedMove(String san, int side, int number, boolean human, long resultin
     }
 
     record Score(int whiteValue, int depth, int searchingSide, long positionKey,
-                 String evaluator, boolean neural) {
+                 String evaluator, boolean neural, String units) {
         static Score from(SearchResult result, int side, long key, PlayEvaluator evaluator) {
             return new Score(side == Value.WHITE ? result.score() : -result.score(), result.depth(),
-                    side, key, evaluator.description(), evaluator.neural() && evaluator.baseline() == null);
+                    side, key, evaluator.description(), evaluator.neural() && evaluator.baseline() == null, evaluator.scoreUnits());
         }
         String text() {
             if (TranspositionScores.isMateScore(whiteValue)) {
@@ -27,7 +27,7 @@ record PlayedMove(String san, int side, int number, boolean human, long resultin
         }
         String description() {
             return "Completed search · White perspective · depth " + depth + " · " + evaluator
-                    + (neural ? " · uncalibrated network units" : " · pawns");
+                    + " · " + units;
         }
     }
 }

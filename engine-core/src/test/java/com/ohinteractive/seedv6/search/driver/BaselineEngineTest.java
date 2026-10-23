@@ -18,6 +18,8 @@ class BaselineEngineTest {
             assertEquals(262143, BaselineEngine.configuration(4, 8).mechanisms().flags());
             assertTrue(engine.identity(4, 8).contains("aspiration=WIDEN16;parallel=ROOT_REUSE"));
             assertTrue(engine.identity(4, 8).contains("workers=4;hashMiB=8"));
+            if (choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64)
+                assertTrue(engine.identity(4, 8).contains("scoreMapping=BT4_Q_LOGIT400_V1"));
             try (var service = engine.service(4, 8)) {
                 service.setBookEnabled(false);
                 var result = run(service, Board.startingPosition(), new SearchLimits(4, -1, -1, false));

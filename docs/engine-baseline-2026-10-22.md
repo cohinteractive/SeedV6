@@ -1,5 +1,10 @@
 # Verified temporary engine baseline
 
+Historical build-61 record. On 23 October 2026 the owner selected Construction V1
++ Conventional NNUE CP64 as the production and Search Phase 3 baseline. See the
+[current consolidation record](research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026).
+The evidence and identities below retain their original Gen32/Policy 4 meaning.
+
 22 October 2026 (Pacific/Auckland). Bounded post-suspension stabilization;
 not evaluator research, NNUE implementation, Search development or strength acceptance.
 Starting revision: `e23745d0f4b6df810a7ca2070ed6966d067d905c`, build 60.

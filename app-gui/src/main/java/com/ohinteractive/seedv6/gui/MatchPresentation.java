@@ -32,17 +32,20 @@ final class MatchPresentation {
             int moves = (com.ohinteractive.seedv6.search.tt.TranspositionScores.MATE_SCORE - Math.abs(raw) + 1) / 2;
             return new PlayScore((raw > 0 ? "+M" : "\u2212M") + moves, raw > 0 ? 1 : 0, true);
         }
-        if (game.searchingParticipant().role() == ActiveGameSnapshot.Role.HCE)
+        if (game.searchingParticipant().competitiveEvaluator() != null || game.searchingParticipant().role() == ActiveGameSnapshot.Role.HCE)
             return new PlayScore(String.format(java.util.Locale.ROOT, "%+.2f", raw / 100.0), .5 + .48 * Math.tanh(raw / 400.0), true);
         return new PlayScore(String.format(java.util.Locale.ROOT, "%+d", raw), architecture(game, fallback).evaluationBar(raw), true);
     }
     static String evaluationCaption(ActiveGameSnapshot game, NetworkArchitecture fallback) {
         var e = game.evaluation();
         if (e == null) return "Evaluation unavailable \u00b7 no completed search for this move";
-        String units = game.searchingParticipant().role() == ActiveGameSnapshot.Role.HCE ? "HCE pawns" : architecture(game, fallback).evaluationUnits();
+        var competitive = game.searchingParticipant().competitiveEvaluator();
+        String units = competitive != null ? PlayEvaluator.competitiveScoreUnits(competitive)
+                : game.searchingParticipant().role() == ActiveGameSnapshot.Role.HCE ? "HCE pawns" : architecture(game, fallback).evaluationUnits();
         return "Last move search \u00b7 White " + score(game, fallback).text() + " \u00b7 " + units + "\n"
                 + participant(game.searchingParticipant()) + " (" + (e.searchingSide() == Value.WHITE ? "White" : "Black")
-                + ") \u00b7 depth " + e.depth() + " \u00b7 before " + Move.coordinate(game.lastMove());
+                + ") \u00b7 depth " + e.depth() + " \u00b7 before " + Move.coordinate(game.lastMove())
+                + (competitive == null ? "" : "\n" + PlayEvaluator.competitiveScoreExplanation(competitive));
     }
     private MatchPresentation() {}
 }

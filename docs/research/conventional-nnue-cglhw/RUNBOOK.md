@@ -1,5 +1,9 @@
 # Resume and reproduce
 
+These are historical NNUE research reproduction commands. Normal GUI and UCI use
+the repository-bundled CP64 with Construction V1 and need no CUDA, Bullet files,
+training store or new training run. See the [current baseline record](../search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026).
+
 First run `.\nnue-control.cmd status`; obey persisted permission after every fresh
 conversation/reboot. Read COMPUTE-CONTROL.md for owner controls and safe recovery.
 Missing/corrupt state never authorizes expensive work. Wrap all expensive commands

@@ -1,5 +1,11 @@
 # WU7 unified native application packaging
 
+Current consolidation, 23 October 2026: normal GUI/UCI use Construction V1 +
+Conventional NNUE CP64. Windows native image/ZIP checks and interactive GUI evidence
+are recorded in the [baseline qualification](../research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026).
+Native Mac acceptance must be performed for this build; earlier Mac evidence does
+not qualify it. Historical WU7 permissions and results below retain their scope.
+
 16 October 2026 (Pacific/Auckland). The owner accepts WU0-WU6, including WU6
 `328531f672260cf4fd5e49b26724fee7329bb0d8`. Initial WU7 work belonged to the migration
 worktree/branch; the portable follow-up below uses the independent unified `main`.
@@ -163,9 +169,10 @@ Mac ZIP extraction must preserve executable permissions (e.g. `ditto -x -k`).
 Vector API kernel. Native UCI packaging checks and links exactly `java.base` and
 `jdk.incubator.vector`; the earlier base-only runtime assumption no longer applies
 to this JAR. The no-GUI/no-training JAR and class boundaries remain enforced.
-`SeedV6-UCI` still starts Gen32. The additional `SeedV6-NNUE-CP64` executable
-(`.exe` on Windows) selects the pinned checkpoint-64/eight-head E008 candidate
-and explicitly resolves Vector, retaining scalar fallback. Both launchers share
+The owner-selected standard `SeedV6-UCI` now starts full Construction V1 + CP64.
+The additional `SeedV6-NNUE-CP64` executable (`.exe` on Windows) preserves frozen
+checkpoint-64/eight-head E008 for comparison. Both explicitly resolve Vector,
+retaining exact scalar fallback. Both launchers share
 the same two JARs and runtime. See the [candidate guide](../nnue-botli-candidate.md#native-mac-package-with-bundled-java).
 
 GUI includes app-gui, engine-core, engine-training, FlatLaf 3.7, JNA/platform
@@ -178,10 +185,11 @@ contains build timestamp/platform resources; engine-core.jar is never stamped.
 
 UCI contains **only app-uci.jar and engine-core.jar**, the pinned models, launchers,
 base/Vector runtime, licenses and candidate metadata. It has no GUI, training,
-research or legacy implementation. Its default model is relative to the installed
-JAR, never the invoking cwd; `--model` retains explicit validated override behavior.
-GUI carries the same pinned payload for identity/inference verification but keeps
-the accepted user-selected evaluator/checkpoint workflow and preferences. A runtime
+research or legacy implementation. Default CP64 is embedded in engine-core.jar,
+never resolved from the invoking cwd. Missing/invalid CP64 fails without fallback.
+Explicit `--model <Gen32-file>` retains historical Policy 4. GUI carries both
+frozen payloads and offers HCE/BREP2-32/CP64 with shared Construction V1 settings.
+Historical saved competitive choices require an explicit visible replacement. A runtime
 payload is not a training checkpoint and cannot reconstruct optimizer state.
 
 JNI libraries stay inside their original dependency JARs and are loaded by the

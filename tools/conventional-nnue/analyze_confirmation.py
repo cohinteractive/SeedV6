@@ -26,6 +26,7 @@ def elo(p):return 400*math.log10(p/(1-p)) if 0<p<1 else None
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('match',type=Path);p.add_argument('openings',type=Path);p.add_argument('output',type=Path)
+    p.add_argument('--jars',type=Path,help='Optional preserved runtime directory; bytes must match the frozen protocol exactly')
     a=p.parse_args();compute_gate.require()
     if a.output.exists():raise ValueError('Preserve completed analysis')
     root=Path(__file__).resolve().parents[2]
@@ -34,7 +35,7 @@ def main():
     openings=json.loads(a.openings.read_text())
     assert sha(a.openings)==protocol['openings_sha256'] and openings==protocol['openings']
     assert sha(Path(protocol['network']))==protocol['network_sha256']
-    jars=root/'app-uci/build/install/seedv6-uci/lib'
+    jars=a.jars or root/'app-uci/build/install/seedv6-uci/lib'
     assert {f.name:sha(f) for f in jars.glob('*.jar')}==protocol['jar_sha256']
     if 'selective_research_classes_sha256' in protocol:
         command=protocol['commands'][0];index=command.index('-cp')

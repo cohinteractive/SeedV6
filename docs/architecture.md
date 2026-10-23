@@ -26,10 +26,10 @@ for current training ownership and dependency declarations. Java 21's applicatio
 `SwingLauncher` for `gui` and `UciEngine` otherwise. The application JAR contains legacy main output; legacy `installDist` and `packageLegacyWindows`/`packageLegacyMac`
 include its runtime dependencies, including `app-gui.jar`, `app-uci.jar`,
 `engine-core.jar` and `engine-training.jar`. The separate `:app-uci:installDist`
-contains only UCI and core JARs, with a Java launcher and an explicitly supplied,
-checksum-pinned production model. Native packages automatically stage the tracked
-`build-assets/production/bre-pair2-g32.brn-pair2`; the Java-only development launcher
-can select that same file with `--model`. Unified native candidates are documented in WU7 below.
+contains only UCI and core JARs, with a Java launcher and embedded, checksum-pinned
+CP64 weights. Both Java-only and native standard launchers need no model argument.
+Native packages also stage the tracked Gen32 model for the explicit historical
+`--model` fallback. Unified native candidates are documented in WU7 below.
 Training owns the unchanged Gson/SQLite/Zstandard dependencies, optional trainer-only
 BRN-3 vector kernels and binpack notice. Core owns the opening
 book and optional Syzygy native sources/resources/license. Shared headless ApplicationVersion and its generated identity resource now belong
@@ -44,20 +44,20 @@ No source set includes archive/docs. See [WU6](unified-architecture/WU6-RESEARCH
 ## Production search
 
 [`SearchDriver`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/SearchDriver.java)
-performs full-window completed iterations over
+publishes completed iterations over Construction's WIDEN16 `AspirationSearch`,
 [`ExactSearchAdapter`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java)
 and [`ExactSearch`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java).
-This is the sole production algorithm lineage, confirmed from construction sites
-and retained by the Phase 3 [contract](../source/CHESS_SEARCH_CONTRACT.md) and
+The latter owns the flattened Construction kernel as well as retained recursive
+controls. Their configuration identities are separated by the Phase 3 [contract](../source/CHESS_SEARCH_CONTRACT.md) and
 [frontier](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md).
 
-Normal TT-enabled search uses recursive nominal-depth PVS, legal hash moves,
-SEE/material/main quiet history, staged lazy generation and static leaves.
-HCE production enables the accepted calibrated static-null/null-move composition;
-explicit/neural evaluator facilities remain exact. Mate-domain, repetition and
-score-provenance contracts remain in force. `ExactSearch` retains explicit research
-factory seams for active tests; they are not application selection switches.
-Its existing name identifies the independent exact baseline and was retained.
+Normal competitive search uses `BaselineEngine`: full Construction V1 flattened
+PVS, all 18 controls (flags 262143), WIDEN16 aspiration and CP64 by default. HCE
+and frozen BREP2-32 use the same search controls and settings. No null-move pruning
+is enabled in this profile. See the [complete feature record](research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026).
+Mate-domain, repetition and score-provenance contracts remain in force.
+`ProductionSearch`, `PinnedSearch` and `ConventionalNnueEngine` retain historical
+training, Policy 4, original Pair-2 Construction and recursive E008 identities.
 
 [`ParallelSearch`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ParallelSearch.java)
 is the current same-depth cooperative coordinator, using private worker state and
@@ -69,15 +69,18 @@ are preserved.
 
 | Consumer | Confirmed construction path |
 | --- | --- |
-| Play | `SwingLauncher -> ChessFrame -> GameController -> EngineSearchAdapter -> SearchLifecycleService -> SearchDriver -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
-| Standalone / legacy UCI | `UciMain / Main -> UciEngine -> SearchLifecycleService -> SearchDriver -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
+| Play | `GameController -> EngineSearchAdapter -> BaselineEngine -> SearchLifecycleService -> SearchDriver -> AspirationSearch -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
+| Standalone UCI | `UciMain -> BaselineUciConfiguration -> BaselineEngine -> SearchLifecycleService -> SearchDriver -> AspirationSearch -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
+| Ordinary Arena | `LearningArenaService -> BaselineEngine / ConstructionSearch -> ValidationArena -> HeadlessGame -> SearchDriver -> AspirationSearch -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
+| Historical legacy UCI | `Main -> UciEngine -> SearchLifecycleService -> SearchDriver -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
 | Network Training | `TrainingController -> TrainerService -> Operations.generate -> SelfPlayBatch -> SelfPlayRunner -> SearchDriver -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
 | Candidate validation | `TrainerService -> Operations.validate -> ValidationArena -> SearchDriver -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
 | Developer strength arena | `ResearchTool -> StrengthArena -> SearchDriver -> ExactSearchAdapter -> ExactSearch` |
 | Score-mapping queries | `ScoreMappingStudy -> SearchDriver -> ExactSearchAdapter -> ExactSearch` |
 | Production training diagnostics | `ToolMain / brnDiagnostic -> BrnDiagnosticTraining -> TrainerService`, observing the same production drivers |
 
-Play/UCI, self-play and candidate validation share `ProductionSearch.create`:
+Competitive Play/ordinary Arena/standalone UCI share `BaselineEngine`, while
+training and historical callers retain their existing factories. In Construction,
 one worker uses `ExactSearchAdapter`; N workers use `ParallelSearch(N, ...)`,
 including the calling main worker and at most N-1 helpers. Training's Search threads
 setting applies to each individual search. Self-play games, validation games and

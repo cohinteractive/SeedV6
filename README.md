@@ -1,9 +1,11 @@
 # SeedV6
 
 SeedV6 is a Java 21 chess engine with UCI, desktop Play, and Network Training.
-The completed first search programme supplies one production search lineage:
-`SearchDriver -> ExactSearchAdapter -> ExactSearch`, with optional cooperative
-same-depth `ParallelSearch` for managed multi-thread requests. Its table is `TTable`.
+The production and Search Phase 3 baseline is full **Construction V1 +
+Conventional NNUE CP64** (S6CNU002, eight material heads). GUI Play, ordinary Arena
+and standalone UCI share `engine-core`'s `BaselineEngine` construction. One worker
+uses the flattened PVS owner; multiple workers use cooperative `ParallelSearch`.
+Both use `TTable` and the full Construction feature set with WIDEN16 aspiration.
 
 **Arena** compares named model lineages on identical frozen records and targets,
 with paired games before training and after each campaign round. Start from a fresh
@@ -15,27 +17,24 @@ including HCE vs HCE, without training. See the [Arena guide](docs/learning-aren
 Start with the [architecture and source boundaries](docs/architecture.md) and
 [operating guide](docs/guide.md).
 
-The [verified temporary engine baseline](docs/engine-baseline-2026-10-22.md)
-records build 61: frozen BRE-Pair 2 Gen32 with production Policy 4 for standalone
-UCI and fresh desktop Play. It includes actual runtime evidence, launch paths,
-NNUE reuse boundaries and remaining Search Phase 3 acceptance requirements.
+The [current baseline and qualification record](docs/research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026)
+records the owner's selection, complete search features, score semantics, worker
+checks, packaging and informational E008 comparison. Competitive GUI selectors
+offer exactly HCE, BREP2-32 and Conventional NNUE CP64, defaulting to CP64. All
+three use Construction V1 and honor the same search settings. Frozen conventional
+NNUE is unavailable in Network Training or Arena learning mode.
 
-The new [conventional NNUE workstream](docs/research/conventional-nnue-cglhw/STATE.md)
-provides pinned local Bullet GPU training, a distinct quantized Java evaluator and
-explicit `seedv6-uci --nnue <network.cnnue>` selection. Gen32 remains the default
-and comparison baseline. See its [contract](docs/research/conventional-nnue-cglhw/CONTRACT.md)
-and [runbook](docs/research/conventional-nnue-cglhw/RUNBOOK.md) for evidence and resume.
+The [conventional NNUE programme](docs/research/conventional-nnue-cglhw/STATE.md)
+preserves training and historical qualification evidence; no training store is
+needed to play. The [build-61 baseline](docs/engine-baseline-2026-10-22.md) and
+[Pair-2 construction activation](docs/construction-v1-gameplay.md) remain historical
+records. Their scores and experiments are not attributed to the new baseline.
 
-For the dedicated **checkpoint-64 NNUE / E008 BotLi release candidate**, use the
-[candidate and native-Mac handoff](docs/nnue-botli-candidate.md). Its separate
-`seedv6-nnue-cp64` executable embeds the frozen network and qualified one-worker
-selective search; no evaluator flags are needed. Native Mac acceptance and live
-activation remain explicit owner gates, and Gen32 stays the production default.
-
-For explicit **construction-v1** experimental gameplay in macOS BotLi or Windows
-Play/Arena, use the [construction-v1 activation guide](docs/construction-v1-gameplay.md).
-It selects the full flattened Search with the verified Pair-2 g32 model and
-aspiration OFF; ordinary standalone UCI continues to select production Policy 4.
+The separate `seedv6-nnue-cp64` / native `SeedV6-NNUE-CP64` launcher preserves
+**E008 + CP64**, with one worker, for reproducible comparison and historical use.
+See the [candidate guide](docs/nnue-botli-candidate.md). Standard `seedv6-uci` /
+`SeedV6-UCI` now starts Construction V1 + CP64 with no arguments. Native macOS
+acceptance remains a separate handoff; live BotLi activation is outside this work.
 
 The [unified architecture migration contract](docs/unified-architecture/CONTRACT.md)
 and [migration state](docs/unified-architecture/STATE.md) govern the staged move to
@@ -49,24 +48,26 @@ for launch instructions, compatibility profiles and the remaining acceptance gat
 ```powershell
 .\gradlew.bat :app:installDist
 .\app\build\install\seedv6\bin\seedv6.bat gui
-# Without gui this compatibility launcher uses HCE; use standalone UCI below for Gen32.
+# Without gui this compatibility launcher uses historical HCE; use standalone UCI for the baseline.
 ```
 
 On other platforms use `./gradlew` and the generated `seedv6` launcher.
 
-The standalone production UCI application uses the pinned generation-32 BRE-Pair 2
-model and only `engine-core`. Ordinary Git clones include the approved model at
-`build-assets/production/bre-pair2-g32.brn-pair2`, with its identity manifest.
+The standalone production UCI application uses only `engine-core` and the frozen
+CP64 payload embedded in its JAR. Ordinary Git clones include the approved asset
+at `build-assets/nnue-candidate/conventional-cp64.cnnue` and its identity manifest.
 For a Java-only development distribution:
 
 ```powershell
 $env:GRADLE_USER_HOME = "$PWD/build/migration/gradle-user-home"
 .\gradlew.bat :app-uci:installDist
-.\app-uci\build\install\seedv6-uci\bin\seedv6-uci.bat --model "$PWD/build-assets/production/bre-pair2-g32.brn-pair2"
+.\app-uci\build\install\seedv6-uci\bin\seedv6-uci.bat
 ```
 
-Native packaging automatically stages that model at `models/baseline.brn-pair2`
-inside each application. Missing or different model bytes fail explicitly.
+Native packaging bundles CP64 and the alternate Gen32 evaluator. Missing, corrupt
+or different CP64 bytes fail explicitly; there is no fallback to Gen32. Explicit
+`--model <Gen32-file>` retains the historical Policy 4 configuration; `--nnue`
+retains the older unpruned research path, neither being the normal launch.
 The legacy `seedv6` launcher retains its HCE evaluator. Both UCI launchers default
 to book disabled; `setoption name UseBook value true` (or the `OwnBook` alias)
 enables the shared bundled repertoire. No external book path is needed. See the
@@ -166,8 +167,8 @@ owner decision; the current production evaluator is unchanged.
 [BRE-Pair 2](docs/brn/BRN_PAIR2.md) supports independent normal
 training, exact resume, generations/Best, Play, Arena and model-selected search
 benchmarks. It preserves C02 compilation and keeps full training state separate
-from the runtime pair tables. The frozen Gen32 production binding and current
-Play defaults are recorded in the [baseline](docs/engine-baseline-2026-10-22.md).
+from the runtime pair tables. Frozen Gen32 remains the BREP2-32 competitive choice;
+historical training lineages remain available through the training workflows.
 
 [BRN successor research](docs/research/brn-successor-cglhw/STATE.md) is suspended
 by owner decision. Its implementations, checkpoints, unfinished G9 comparison

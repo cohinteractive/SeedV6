@@ -57,7 +57,8 @@ public final class BaselineEngine {
                     + " networkSha256=" + ProductionModel.SHA256 + " mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1";
             case CONVENTIONAL_CP64 -> "evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=" + conventional.model().schema()
                     + " heads=" + conventional.model().outputBuckets() + " networkSha256=" + ConventionalNnueEngine.SHA256
-                    + " payload=" + conventional.model().payloadSha256() + " head=" + conventional.model().headBackend();
+                    + " payload=" + conventional.model().payloadSha256() + " head=" + conventional.model().headBackend()
+                    + " scoreMapping=" + ConventionalNnueEngine.SCORE_MAPPING;
         };
         return "baseline=construction-v1-" + (evaluator == Evaluator.CONVENTIONAL_CP64 ? "cp64" : evaluator.name())
                 + " search=construction-v1 flags=" + configuration(workers, hashMiB).mechanisms().flags()

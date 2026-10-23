@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/** Immutable construction-time policy, available through explicit experimental selection.
+/** Immutable Construction policy shared by competitive bindings and explicit research controls.
  * Primitive flags are read directly by the shared flattened kernel. */
 public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) {
     public enum Feature { QXRAY, LMR, LMP, EFFORT, COMPLETED_HINTS,
@@ -17,7 +17,7 @@ public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) 
         long known=(1L<<Feature.values().length)-1;
         if((flags&~known)!=0) throw new IllegalArgumentException("Unknown Search mechanisms");
         if(futilityMargin<1 || futilityMargin>2000 || reverseMargin<1 || reverseMargin>2000)
-            throw new IllegalArgumentException("Margins must be 1..2000 Pair-2 units per nominal ply");
+            throw new IllegalArgumentException("Margins must be 1..2000 evaluation units per nominal ply");
         if((flags&((1L<<Feature.IMPROVING.ordinal())|(1L<<Feature.CAUTION.ordinal())))!=0
                 && (flags&(1L<<Feature.LMR.ordinal()))==0)
             throw new IllegalArgumentException("Reduction relief requires LMR");

@@ -182,7 +182,7 @@ final class ChessFrame extends JFrame implements GameController.View {
     public void showSearch(GameController.SearchInfo search) {
         requireEdt();
         var evaluator = participants.forSide(search.scoreSide());
-        boardPanel.showScore(engineCard.showSearch(search, evaluator, controller.workerCount()), evaluator.neural());
+        boardPanel.showScore(engineCard.showSearch(search, evaluator, controller.workerCount()), evaluator.scoreUnits());
         String state = controller.positionStatus().terminal() ? controller.positionStatus().displayText()
                 : !controller.gameStarted() && !evaluatorChanging ? "Prepared"
                 : search.state().equals("Idle") ? controller.positionStatus().displayText() : search.state();

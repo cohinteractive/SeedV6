@@ -147,10 +147,9 @@ final class BoardPanel extends JPanel {
         repaint();
     }
 
-    void showScore(PlayScore score, boolean nnue) {
+    void showScore(PlayScore score, String units) {
         this.score = score;
-        setToolTipText(nnue ? "Evaluation: uncalibrated NNUE units, White perspective. Bar is not a win probability."
-                : "Evaluation: White perspective. Click or drag pieces to move.");
+        setToolTipText("Searched evaluation: " + units + ", White perspective. Bar is not a win probability.");
         Rectangle bounds = boardBounds();
         repaint(bounds.x + bounds.width, 0, getWidth() - bounds.x - bounds.width, getHeight());
     }

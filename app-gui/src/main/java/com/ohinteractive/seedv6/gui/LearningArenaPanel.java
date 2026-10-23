@@ -182,7 +182,10 @@ final class LearningArenaPanel extends JPanel {
     private void load(Draft c) {
         mode.setSelectedItem(c.mode() == Mode.MATCH_ONLY ? Mode.MATCH_ONLY : Mode.LEARNING);
         name.setText(c.name());
-        if (matchOnly()) { fixedA.loadFixed(c.a()); fixedB.loadFixed(c.b()); }
+        if (matchOnly()) {
+            fixedA.loadFixed(c.a()); fixedB.loadFixed(c.b());
+            if (editable()) { fixedA.clearFixed(); fixedB.clearFixed(); }
+        }
         else { fixedA.clearFixed(); fixedB.clearFixed(); a.load(c.a()); b.load(c.b()); positions.setValue(c.positions()); epochs.setValue(c.epochs()); rounds.setValue(c.rounds()); }
         seed.setText(Long.toString(c.seed())); var v = c.arena(); games.setValue(v.games()); limit.setSelectedItem(v.limit()); depth.setValue(v.depth());
         millis.setValue((int) v.millis()); threads.setValue(v.threads()); openingMin.setValue(v.openingMin()); openingMax.setValue(v.openingMax()); cap.setValue(v.maximumPlies()); fen.setText(v.startingFen());

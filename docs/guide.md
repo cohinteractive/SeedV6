@@ -175,9 +175,9 @@ Performance will vary with position, hardware, JVM behaviour, system load, and w
 
 ## Search Architecture
 
-The completed search programme established `SearchDriver -> ExactSearchAdapter -> ExactSearch` as the sole production search lineage. Play and UCI own asynchronous jobs through `SearchLifecycleService`; managed Threads > 1 uses same-depth `ParallelSearch` workers. Network Training self-play and validation own synchronous drivers and use the same per-search thread setting.
+The production and Search Phase 3 baseline is full Construction V1 + Conventional NNUE CP64. `BaselineEngine` shares its construction between Play, ordinary Arena and standalone UCI: flattened PVS, all 18 Construction controls and WIDEN16 aspiration. Play and UCI own asynchronous jobs through `SearchLifecycleService`; Threads > 1 uses same-depth `ParallelSearch` workers. Historical training profiles retain their existing synchronous drivers.
 
-Each search owner has its own `TTable`, board/PV state and evaluator stack. Current TT-enabled search uses nominal-depth PVS, SEE/material/main-history ordering, staged lazy legal generation and static leaves. HCE alone enables the accepted calibrated static-null/null-move factories; neural evaluators remain exact. Full windows, repetition, mate-domain and tablebase boundaries are described in the [search contract](../source/CHESS_SEARCH_CONTRACT.md).
+Each search request owns its coherent `TTable`; each worker owns mutable board/PV, ordering and evaluator state. Immutable NNUE weights are shared. Competitive HCE, BREP2-32 and CP64 use the same Construction controls, without null-move pruning. See the [complete feature and qualification record](research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026) and [search contract](../source/CHESS_SEARCH_CONTRACT.md) for margins, extensions, repetition and mate-domain boundaries.
 
 See [architecture and source classification](architecture.md). The older alpha-beta/qsearch, flat-search and alternative-table comparisons remain in the verification source set. Their [historical architecture](history/legacy-search.md) does not describe production behavior.
 
@@ -187,18 +187,28 @@ Phase 3 is governed by the active [Contract](../source/CHESS_SEARCH_CONTRACT.md)
 and [Research Frontier](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). It seeks
 whole-engine playing strength through architectural improvements, integrated
 candidates, combinations, reverse ablation and champion promotion, preserving
-the accepted Pair-2 baseline and binding correctness guarantees. The complete
+the owner-selected Construction V1 + CP64 baseline and binding correctness guarantees. The complete
 Phase 1 [Contract R045](search-phase1/CHESS_SEARCH_CONTRACT.md) and
 [Frontier F052](search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md), final Phase 2
 [Contract P2-R049](search-phase2/CHESS_SEARCH_CONTRACT.md) and
 [Frontier P2-F053](search-phase2/CHESS_SEARCH_RESEARCH_FRONTIER.md), and
-[reports/evidence](research/search/) remain historical evidence. No Phase 3
-research objective is active at initialization; first selection follows
-GPT/owner reconciliation and confirmed replacement of both Project Source mirrors.
+[reports/evidence](research/search/) remain historical evidence. No further Phase 3
+optimization objective is authorized by the baseline consolidation itself;
+future mirror-dependent planning requires refresh of both Project Source mirrors.
 
 ## UCI and Search Lifecycle
 
-SeedV6 already contains a working UCI engine path.
+Ordinary `seedv6-uci` and native `SeedV6-UCI` start Construction V1 + CP64 without
+arguments or external model files. UCI identity reports the profile, flags,
+checkpoint/schema/heads, network hash, configured workers/hash and build/source.
+Competitive GUI scores use White's perspective. HCE/BREP2-32 use pawn units;
+CP64 displays NNUE score / 100 on its BT4_Q_LOGIT400_V1 teacher-link scale.
+UCI uses side-to-move `cp` as a reporting convention; CP64 values are not source
+centipawns or material pawns. Mate scores remain separate. None is an empirically
+fitted winning probability.
+The dedicated `SeedV6-NNUE-CP64` launcher preserves one-worker E008 comparison.
+Explicit `--model <Gen32-file>` retains historical Policy 4; the legacy `seedv6`
+launcher without `gui` retains its historical HCE profile.
 
 Normal Play uses the bundled opening repertoire before search. Standalone and
 legacy UCI advertise `UseBook` and `OwnBook` as check options, both defaulting to
@@ -223,10 +233,11 @@ selection weights are unchanged; no Chess960/variant support is added.
 On macOS, build `:app-uci:packageMac` on the supported arm64 host with the pinned
 model input described in [packaging](unified-architecture/WU7-PACKAGING.md).
 Keep the complete `SeedV6-UCI` image, including both JARs, its runtime and
-`models/baseline.brn-pair2`; point BotLi at its `SeedV6-UCI` executable launcher.
+`models/baseline.brn-pair2`; point a UCI client at its `SeedV6-UCI` executable launcher.
 Preserve executable permissions when extracting. Replacing only the launcher
-does not update engine code or book resources. The model is still a required,
-separately validated private input; optional-book fallback does not relax it.
+does not update engine code or book resources. Both frozen evaluators come from
+tracked assets; CP64 is embedded and strictly validated. No manual model transfer
+or training store is required. Missing/invalid CP64 never falls back to Gen32.
 
 Focused real-process verification (all paths below are local to Unified):
 
@@ -257,7 +268,7 @@ The search lifecycle includes support for concepts such as:
 - stale-result suppression,
 - and clean shutdown.
 
-This lifecycle is separate from future multi-threaded chess search. The engine can execute search asynchronously without yet using multiple workers to search the chess tree.
+The asynchronous job lifecycle is distinct from search parallelism. Current competitive search supports one to sixteen configured workers; cancellation and completion drain the helpers owned by each request.
 
 ## SeedV3 and the Feature Transplant
 
@@ -545,17 +556,20 @@ manual Move action, SAN conversion or historical position navigation were added.
 
 The Engine card consumes existing completed-iteration publications on the EDT.
 Depth, NPS and elapsed time describe the last completed iteration (time is not a
-live chess clock). Scores and the evaluation bar use White's perspective; NNUE
-V1 values remain explicitly uncalibrated units, not centipawns or win probabilities.
+live chess clock). Scores and the evaluation bar use White's perspective.
+HCE and BREP2-32 display pawn units; conventional CP64 displays NNUE score / 100
+with an explicit teacher-link-scale explanation. Historical NNUE V1 retains its
+own raw-unit labels. None is a fitted win probability.
 The bar uses a bounded presentation mapping and does no additional evaluation.
 There are no new engine callbacks, search polling loops or engine dependencies
 on GUI code. Training retains its independent lifecycle and 500 ms polling.
 
 Play, Training and Arena offer **Max**, resolving on the current machine to the
 lesser of its logical processor count and the engine's supported worker limit (16).
-Normal explicit values are bounded to that range. Max persists as a semantic choice,
-so another machine resolves it afresh. Legacy larger positive choices remain readable
-and are bounded at execution. These are maximum workers, including the main worker;
+Explicit values 1-16 are honored even above the detected processor count. Max
+persists as a semantic choice, so another machine resolves it afresh. Unsupported
+values outside 1-16 are bounded to the supported range. These are configured
+participants, including the main worker;
 small searches can use fewer. Play changes while idle govern the next search and
 remain disabled during active search/evaluator changes.
 
@@ -565,22 +579,20 @@ writes renderings to `app/build/gui-smoke/`. The slow `NnueGuiSmokeTest` also
 exercises evaluator changes, simultaneous Play/Training and safe shutdown.
 
 In Engine vs Engine, **White Engine** and **Black Engine** independently select
-**HCE (Handcrafted)** or **Network**. HCE needs no checkpoint; its network controls
-are hidden and disabled. HCE vs HCE and either orientation against any supported
-network architecture are available. Network uses the common
-**Lineage -> Generation** browser (architecture is derived from the lineage). Register an external store
-once without moving it, or choose a managed named lineage. **Swap Sides** transfers
-both complete bindings and freezes a Best alias to its displayed concrete snapshot.
-Start Game pins independent evaluators and search state even for identical weights.
-Changing selections affects the next game. A missing/stale payload fails visibly
-and preserves the prior board and participants, without fallback.
+exactly **HCE**, **BREP2-32** or **Conventional NNUE CP64**, defaulting to CP64.
+Both frozen networks are bundled. **Swap Sides** transfers the selections;
+Start Game pins separate evaluator/search state even for identical weights.
+All choices use Construction V1 and common limits. Changing selections affects
+the next game. Missing/invalid payloads fail visibly without fallback. A saved
+historical or unknown evaluator blocks Start with a visible explanation until
+an explicit supported choice is made.
 
-Human vs Engine offers **Handcrafted** or **Network**, with the same browser under
-**Engine Opponent** and an independent remembered selection. New Game resolves the
-snapshot for either human colour. Active labels identify the loaded architecture,
-lineage and generation, which subsequent promotion or pruning cannot replace.
+Human vs Engine offers the same three choices and its own remembered selection,
+for either human colour. Active diagnostics identify the effective profile,
+checkpoint, workers and build/source. Frozen CP64 is not a training lineage.
 
-Browsing reads bounded advisory metadata off the EDT; actual loading verifies payload
+Historical lineage browsing remains in training/library workflows, separate from
+normal competitive selectors. It reads bounded advisory metadata off the EDT; loading verifies payload
 identity. Valid historical manifests remain browsable and annotatable after pruning,
 but unavailable snapshots cannot load. Best and Latest are separate. A publish-only
 Arena store can expose Latest without Best; it never receives invented promotion

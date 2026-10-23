@@ -20,7 +20,11 @@ public record ActiveGameSnapshot(Phase phase, long generation, long gameId, long
     }
     public enum Phase { SELF_PLAY, VALIDATION, ARENA }
     public enum Role { LATEST_TRAINING, CANDIDATE, BEST, MODEL, HCE }
-    public record Participant(Role role, String checkpointId, com.ohinteractive.seedv6.training.model.ModelLibrary.Binding model, String searchProfile) {
+    public record Participant(Role role, String checkpointId, com.ohinteractive.seedv6.training.model.ModelLibrary.Binding model, String searchProfile,
+                              com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator competitiveEvaluator) {
+        public Participant(Role role, String checkpointId, com.ohinteractive.seedv6.training.model.ModelLibrary.Binding model, String searchProfile) {
+            this(role, checkpointId, model, searchProfile, null);
+        }
         public Participant(Role role, String checkpointId, com.ohinteractive.seedv6.training.model.ModelLibrary.Binding model) { this(role, checkpointId, model, null); }
         public Participant(Role role, String checkpointId) { this(role, checkpointId, null); }
         public Participant {

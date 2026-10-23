@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /** Real desktop controls and searches, with isolated settings and no training. */
 @Timeout(90)
 class ConventionalDesktopTest {
+    private static final Path CAPTURES = Path.of("build/nnue-gui/run-" + java.util.UUID.randomUUID());
     @TempDir Path temporary;
     @Test void playSwitchResetIndependentColoursAndClose() throws Exception {
         Assumptions.assumeFalse(GraphicsEnvironment.isHeadless(), "Native desktop required");
@@ -87,7 +88,7 @@ class ConventionalDesktopTest {
         }
     }
     private static void capture(JFrame frame, String name) throws Exception {
-        frame.validate(); var directory = Path.of("build/nnue-gui"); Files.createDirectories(directory);
+        frame.validate(); var directory = CAPTURES; Files.createDirectories(directory);
         var image = new java.awt.image.BufferedImage(frame.getWidth(), frame.getHeight(), java.awt.image.BufferedImage.TYPE_INT_RGB);
         var graphics = image.createGraphics(); frame.paintAll(graphics); graphics.dispose();
         javax.imageio.ImageIO.write(image, "png", directory.resolve(name + ".png").toFile());

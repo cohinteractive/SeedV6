@@ -1,4 +1,4 @@
-# Arena: learning campaigns
+# Arena: competitive matches and learning campaigns
 
 Learning Arena compares two learning trajectories at equal information and exposure.
 It uses the production evaluators, trainers, search and paired-game runner. It never
@@ -7,24 +7,29 @@ Play and Network Training retain their existing workflows and score behavior.
 
 ## Operation
 
-Choose **Arena > Setup > Mode > Match only** for a fixed comparison without training.
-Each participant independently selects **HCE (Handcrafted)** or **Network**. HCE
-needs no lineage, checkpoint or Training Data. Network uses the same Architecture /
-Lineage / Generation browser as Play, including all supported architectures; Best
-is frozen to a concrete checkpoint when Create and run is pressed. HCE vs HCE is
-supported. The shared match controls, reversed colours, scoring and ply caps apply.
+**Arena > Setup** defaults to **Match only**, without training. Each participant
+independently selects **HCE**, **BREP2-32** or **Conventional NNUE CP64**; CP64 is
+the default. All three use the shared Construction V1 search configuration and
+configured worker count. Frozen networks are bundled: no training lineage, dataset
+or checkpoint store is required for evaluator loading. The campaign output path
+still stores game receipts. Select an even game count for color-reversed pairs;
+multiple pairs, self-matches, common limits, results and ply caps are supported.
 
-Match-only runs copy network snapshots into their own stores and finish after one
-scheduled match (Round 0). They never train, select tranches, create Best or promote.
+Normal match-only runs record fixed bundled evaluator identities and finish after
+the configured games (Round 0). They never train, select tranches, create Best or promote.
 Pause, Resume, Open campaign, Live and History use the existing saved-game receipts;
 completed games are retained on resume. Copied snapshots can resume without their
 original source store. Saved setup is read-only. Choose Start new to configure
-another run; its default mode remains Learning campaign.
+another run; its default mode is Match only. Historical campaigns retain their
+stored evaluator/profile identities and remain readable; they are not remapped
+to the new competitive baseline.
 
-Open **Arena > Setup**. The default **Learning campaign** mode compares initial
+Choose **Arena > Setup > Mode > Learning campaign** to compare initial
 snapshots, train both on the same tranche, compare again, and repeat. Select each
 competitor's architecture, name and recipe independently. Supported trainers are
 **NNUE (material parity)**, **NNUE (legacy, no material)**, **BRN-3** and **BRE-Pair 2**.
+These are training lineages. Frozen conventional CP64 is not a trainable choice;
+it is distinct from the historical NNUE trainers.
 
 Choose **Fresh** with an initialization seed, or **Select model...** to use the
 common Architecture / Lineage / Generation browser. Best is frozen to its concrete
@@ -37,8 +42,8 @@ NNUE defaults to .001, BRN-3 to .003 and BRE-Pair 2 to .01. Minibatches remain c
 New campaign lineages have independent stable identities and appear in the model
 library once initialized. Generations start at campaign Gen 0, with the original
 source generation and binding preserved in campaign configuration. Campaign stores
-have Latest but no Best: they can be selected explicitly in Play and for new Arena
-experiments. Ordinary Training still requires its accepted bootstrap/Best lifecycle;
+have Latest but no Best: they remain available to training and research workflows,
+outside ordinary competitive selectors. Ordinary Training still requires its accepted bootstrap/Best lifecycle;
 registration never invents promotion evidence for a campaign store.
 
 Material-parity NNUE adds the same fixed STM material as BRN-3: P=1,N=3.2,B=3.3,
@@ -148,8 +153,9 @@ against power loss. Preserve the entire campaign directory when moving or backin
 
 Every arena uses the same starting FEN and seeded legal opening sequence across rounds.
 Each opening is played twice with A's colour reversed, through `ValidationArena` and
-`HeadlessGame`. Each colour has private evaluator/search state and the production
-`SearchDriver`/`ProductionSearch` implementation. Search threads apply per search;
+`HeadlessGame`. Each colour has private evaluator/search state. Normal competitive
+matches use `BaselineEngine`/Construction V1; historical and learning campaigns
+retain their recorded factories. Search threads apply per search;
 games run sequentially. One thread gives the strongest deterministic control.
 
 Depth mode completes the configured depth. Time mode uses a per-move deadline and

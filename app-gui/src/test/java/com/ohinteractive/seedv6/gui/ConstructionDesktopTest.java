@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /** Native Swing QA through the existing frame and controls; no training or strength testing. */
 @Timeout(90)
 class ConstructionDesktopTest {
+    private static final Path CAPTURES = Path.of("build/activation-gui/run-" + java.util.UUID.randomUUID());
     @TempDir Path temporary;
     @Test void nativePlayAndArenaControlsLaunchPinnedSearchAndShowIdentity() throws Exception {
         Assumptions.assumeFalse(GraphicsEnvironment.isHeadless(), "Native desktop required");
@@ -47,7 +48,7 @@ class ConstructionDesktopTest {
         }
     }
     private static void capture(JFrame frame, String name) throws Exception {
-        frame.validate(); Path folder = Path.of("build/activation-gui"); Files.createDirectories(folder);
+        frame.validate(); Path folder = CAPTURES; Files.createDirectories(folder);
         var image = new java.awt.image.BufferedImage(frame.getWidth(), frame.getHeight(), java.awt.image.BufferedImage.TYPE_INT_RGB);
         var graphics = image.createGraphics(); frame.paintAll(graphics); graphics.dispose();
         javax.imageio.ImageIO.write(image, "png", folder.resolve(name + ".png").toFile());

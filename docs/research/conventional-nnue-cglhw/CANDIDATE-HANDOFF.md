@@ -1,5 +1,10 @@
 # Conventional NNUE candidate handoff
 
+Subsequent owner decision, 23 October 2026: Construction V1 + frozen CP64 is the
+selected production and Search Phase 3 baseline. See the [consolidation record](../search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026).
+The qualification figures below belong to E008 + CP64. E008 remains separately
+selectable for comparison; its results are not Construction V1 qualification.
+
 23 October2026 Auckland. **E00764/vector/E008 selective is a research candidate
 with confirmed200ms and1000ms complete-engine improvement. A/B/C technical
 qualification is complete in the tested scope. This is not final owner acceptance,

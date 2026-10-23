@@ -255,6 +255,12 @@ public final class LearningArenaService implements AutoCloseable {
                 : store.load(endpoint.checkpoint()).model().evaluation(state.config().arena().matches(state.config().seed()).scoreMapping());
     }
     private com.ohinteractive.seedv6.training.telemetry.ActiveGameSnapshot.Participant participant(boolean first, Endpoint endpoint) throws IOException {
+        if (endpoint.evaluator() != null && endpoint.evaluator().competitive()) {
+            var binding = com.ohinteractive.seedv6.search.driver.BaselineEngine.load(endpoint.evaluator().baseline());
+            var match = state.config().arena().matches(state.config().seed());
+            return new ActiveGameSnapshot.Participant(endpoint.isHandcrafted() ? ActiveGameSnapshot.Role.HCE : ActiveGameSnapshot.Role.MODEL,
+                    endpoint.checkpoint(), null, binding.identity(match.threads(), 64), binding.evaluator());
+        }
         if (endpoint.isHandcrafted()) return new com.ohinteractive.seedv6.training.telemetry.ActiveGameSnapshot.Participant(
                 com.ohinteractive.seedv6.training.telemetry.ActiveGameSnapshot.Role.HCE, "");
         if (endpoint.isPinned()) return new ActiveGameSnapshot.Participant(ActiveGameSnapshot.Role.MODEL,

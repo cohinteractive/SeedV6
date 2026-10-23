@@ -1,5 +1,12 @@
 # Conventional NNUE state
 
+Subsequent owner decision, 23 October 2026: full Construction V1 + this frozen
+CP64 network is now the selected production and Search Phase 3 baseline. The
+[existing Construction record](../search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026)
+owns integration, technical qualification and the informational E008 comparison.
+This does not reopen NNUE development or transfer E008's measured gains to
+Construction V1. The programme handoff and results below retain their original scope.
+
 23 October2026 Auckland. **A/B/C TECHNICAL QUALIFICATION COMPLETE in the tested
 scope. The frozen candidate is ready for separately governed Search Phase3
 evaluation. No production promotion or owner acceptance is inferred. NORMAL has

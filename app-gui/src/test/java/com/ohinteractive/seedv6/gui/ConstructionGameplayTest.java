@@ -17,13 +17,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @Timeout(60)
 class ConstructionGameplayTest {
     @TempDir Path temporary;
-    @Test void selectorsBindPinnedProfilesWithoutStoresAndKeepIndependentOwnersAcrossThreadChanges() throws Exception {
+    @Test void retainedHistoricalProfilesKeepIndependentOwnersAcrossThreadChanges() throws Exception {
         var white = edt(() -> new PlayEnginePanel("white", temporary, null, () -> {}));
         var black = edt(() -> new PlayEnginePanel("black", temporary, null, () -> {}));
         var adapter = edt(() -> new EngineSearchAdapter(1));
         try {
-            edt(() -> { white.evaluator.setSelectedItem(PlayEvaluator.Mode.CONSTRUCTION_V1);
-                black.evaluator.setSelectedItem(PlayEvaluator.Mode.POLICY4_PAIR2); return null; });
+            edt(() -> { white.loadFixed(LearningArenaConfig.Competitor.pinned(com.ohinteractive.seedv6.search.driver.PinnedSearch.Policy.CONSTRUCTION_V1));
+                black.loadFixed(LearningArenaConfig.Competitor.pinned(com.ohinteractive.seedv6.search.driver.PinnedSearch.Policy.POLICY4)); return null; });
             assertTrue(edt(white::validSelection)); assertTrue(edt(black::validSelection));
             assertEquals(LearningArenaConfig.Evaluator.CONSTRUCTION_V1, edt(white::fixedCompetitor).evaluator());
             var selection = edt(() -> white.versus(black));
@@ -45,8 +45,8 @@ class ConstructionGameplayTest {
             }
             assertNull(search(adapter, 100, true).failure());
             assertNull(search(adapter, 2, false).failure());
-            edt(() -> { white.swapWith(black); return null; });
-            assertEquals(PlayEvaluator.Mode.CONSTRUCTION_V1, edt(black::selectedMode));
+            assertFalse(edt(() -> white.evaluator.isEnabled()));
+            assertFalse(edt(() -> black.evaluator.isEnabled()));
             var card = edt(EngineCard::new);
             edt(() -> { card.showSearch(new GameController.SearchInfo("Idle", 3, "cp 2", 1234, 1, "e2e4", "DEPTH"),
                     adapter.participants().white(), 16); return null; });
@@ -67,6 +67,14 @@ class ConstructionGameplayTest {
             edt(() -> { panel.loadFixed(LearningArenaConfig.Competitor.pinned(com.ohinteractive.seedv6.search.driver.PinnedSearch.Policy.CONSTRUCTION_V1)); return null; });
             assertEquals(PlayEvaluator.Mode.CONSTRUCTION_V1, edt(panel::selectedMode));
             assertFalse(edt(() -> panel.evaluator.isEnabled()));
+            assertEquals(3, edt(() -> panel.evaluator.getItemCount()));
+            assertTrue(edt(() -> ((javax.swing.JLabel) field(panel, "description")).getText()).startsWith("Saved historical configuration:"));
+            edt(() -> { panel.clearFixed(); return null; });
+            assertEquals(PlayEvaluator.Mode.CONVENTIONAL_CP64, edt(panel::selectedMode));
+            assertTrue(edt(() -> panel.evaluator.isEnabled()));
+            edt(() -> { panel.loadFixed(LearningArenaConfig.Competitor.competitive(com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.CONVENTIONAL_CP64));
+                panel.clearFixed(); panel.evaluator.setSelectedItem(PlayEvaluator.Mode.BREP2_32); return null; });
+            assertEquals("BREP2-32", edt(() -> ((javax.swing.JLabel) field(panel, "description")).getText()));
         } finally { edt(() -> { panel.dispose(); return null; }); }
     }
     private static ManagedSearchResult search(EngineSearchAdapter adapter, int depth, boolean stop) throws Exception {

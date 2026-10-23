@@ -24,6 +24,8 @@ public final class ConventionalNnueEngine {
     public static final int NETWORK_BYTES = 3_940_952;
     public static final String SHA256 = "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b";
     public static final String PROFILE = "E008_QXRAY_LMR_WINDOW_EFFORT_HINTS";
+    /** CP64's frozen teacher-link target scale; UCI cp is the reporting convention. */
+    public static final String SCORE_MAPPING = "BT4_Q_LOGIT400_V1";
     private final ConventionalNetwork model;
     private final SearchEvaluation evaluation;
 
@@ -74,7 +76,7 @@ public final class ConventionalNnueEngine {
     public String identity(int hashMiB) {
         return "evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=" + model.schema() + " heads=" + model.outputBuckets()
                 + " networkSha256=" + SHA256 + " payload=" + model.payloadSha256()
-                + " head=" + model.headBackend() + " search=" + PROFILE
+                + " head=" + model.headBackend() + " scoreMapping=" + SCORE_MAPPING + " search=" + PROFILE
                 + " execution=recursive-pvs qsearch=QXRAY lmr=QUIET lmp=WINDOW reuse=EFFORT"
                 + " hints=completed_same_key history=invocation learning=all_searched"
                 + " aspiration=OFF futility=OFF reverseFutility=OFF nullMove=OFF extensions=OFF"

@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /** Native Swing layout, persistence and bounded production-engine checks; no training. */
 @Timeout(90)
 class PlayRedesignDesktopTest {
+    private static final Path CAPTURES = Path.of("build/play-redesign/run-" + UUID.randomUUID());
     @TempDir Path temporary;
 
     @Test void settingsRoundTripViewsResizeAndActualEngineMove() throws Exception {
@@ -31,11 +32,11 @@ class PlayRedesignDesktopTest {
                 named(first, "gameSettings", JButton.class).doClick();
                 assertTrue(named(first, "gameMode", JComboBox.class).isShowing());
                 named(first, "gameMode", JComboBox.class).setSelectedItem(GameController.GameMode.ENGINE_VS_ENGINE);
-                named(first, "whiteEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.CONSTRUCTION_V1);
+                named(first, "whiteEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_CP64);
                 named(first, "blackEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.HANDCRAFTED);
                 named(first, "gameMode", JComboBox.class).setSelectedItem(GameController.GameMode.HUMAN_VS_ENGINE);
                 named(first, "humanSide", JComboBox.class).setSelectedItem(GameController.HumanSide.BLACK);
-                named(first, "playEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.CONSTRUCTION_V1);
+                named(first, "playEvaluator", JComboBox.class).setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_CP64);
                 named(first, "searchLimit", JComboBox.class).setSelectedItem(GameController.LimitKind.MOVETIME);
                 named(first, "playMovetime", JSpinner.class).setValue(150L);
                 named(first, "playDepth", JSpinner.class).setValue(2);
@@ -55,8 +56,8 @@ class PlayRedesignDesktopTest {
             edt(() -> {
                 assertEquals(GameController.GameMode.ENGINE_VS_ENGINE, named(restored, "gameMode", JComboBox.class).getSelectedItem());
                 assertEquals(GameController.HumanSide.BLACK, named(restored, "humanSide", JComboBox.class).getSelectedItem());
-                assertEquals(PlayEvaluator.Mode.CONSTRUCTION_V1, named(restored, "playEvaluator", JComboBox.class).getSelectedItem());
-                assertEquals(PlayEvaluator.Mode.CONSTRUCTION_V1, named(restored, "whiteEvaluator", JComboBox.class).getSelectedItem());
+                assertEquals(PlayEvaluator.Mode.CONVENTIONAL_CP64, named(restored, "playEvaluator", JComboBox.class).getSelectedItem());
+                assertEquals(PlayEvaluator.Mode.CONVENTIONAL_CP64, named(restored, "whiteEvaluator", JComboBox.class).getSelectedItem());
                 assertEquals(PlayEvaluator.Mode.HANDCRAFTED, named(restored, "blackEvaluator", JComboBox.class).getSelectedItem());
                 assertEquals(GameController.LimitKind.MOVETIME, named(restored, "searchLimit", JComboBox.class).getSelectedItem());
                 assertEquals(150L, named(restored, "playMovetime", JSpinner.class).getValue());
@@ -73,7 +74,7 @@ class PlayRedesignDesktopTest {
                 assertFalse(named(restored, "startGame", JButton.class).isEnabled());
                 assertFalse(named(restored, "gameMode", JComboBox.class).isEnabled());
                 assertTrue(named(restored, "configuredSearchLimits", JLabel.class).getText().contains("Time 150 ms"));
-                assertTrue(named(restored, "whitePlayerNetwork", JTextArea.class).getText().contains("construction-v1"));
+                assertTrue(named(restored, "whitePlayerNetwork", JTextArea.class).getText().contains("Conventional NNUE CP64"));
                 JTable history = named(restored, "moveHistory", JTable.class);
                 assertFalse(history.getValueAt(0, 2).toString().isBlank(), "Actual completed engine search must have a score");
                 assertNull(history.getTableHeader());
@@ -137,7 +138,7 @@ class PlayRedesignDesktopTest {
         } finally { close(frame); prefs.removeNode(); }
     }
 
-    @Test void checkpointSelectionsRestoreIndependentlyAndMissingCheckpointNeverFallsBack() throws Exception {
+    @Test void legacySelectionsNeedExplicitReplacementAndPreserveCheckpointInputs() throws Exception {
         var entry = TrainingLineages.create(temporary, NetworkArchitecture.BRN_PAIR2, "Persisted Play fixture");
         String checkpoint;
         try (var store = new CheckpointStore(entry.root(), TrainingArchitecture.BRN_PAIR2)) {
@@ -153,33 +154,26 @@ class PlayRedesignDesktopTest {
             white = edt(() -> new PlayEnginePanel("white", temporary, prefs.node("white"), () -> {}));
             black = edt(() -> new PlayEnginePanel("black", temporary, prefs.node("black"), () -> {}));
             PlayEnginePanel w = white, b = black;
-            until(() -> edt(w::validSelection));
-            assertEquals(checkpoint, edt(w::selectedId)); assertEquals(entry.root(), edt(w::selectedRoot));
-            assertEquals(PlayEvaluator.Mode.CONSTRUCTION_V1, edt(b::selectedMode));
-            var selection = edt(() -> w.versus(b));
-            var participants = PlayParticipants.load(PlayEvaluator.Mode.BEST_NNUE, temporary, selection);
-            assertEquals(checkpoint, participants.white().checkpointId());
-            assertEquals(PlayEvaluator.Mode.CONSTRUCTION_V1, participants.black().mode());
-            edt(() -> { w.dispose(); return null; });
-            // A saved generation absent from a valid store must stay selected and unavailable.
-            prefs.node("white").put("generation", "deleted-checkpoint");
-            white = edt(() -> new PlayEnginePanel("white", temporary, prefs.node("white"), () -> {}));
-            PlayEnginePanel missing = white;
-            until(() -> edt(() -> missing.generation.getSelectedItem() != null));
-            assertFalse(edt(missing::validSelection)); assertEquals("deleted-checkpoint", edt(missing::selectedId));
-            assertEquals("deleted-checkpoint", prefs.node("white").get("generation", ""));
-            edt(() -> { missing.refresh(true); return null; });
-            until(() -> edt(() -> missing.generation.isEnabled()));
-            assertFalse(edt(missing::validSelection)); assertEquals("deleted-checkpoint", edt(missing::selectedId));
-            edt(() -> { missing.dispose(); return null; });
-            prefs.node("white").put("store", temporary.resolve("deleted-store").toString());
-            white = edt(() -> new PlayEnginePanel("white", temporary, prefs.node("white"), () -> {}));
-            PlayEnginePanel absent = white;
-            until(() -> edt(() -> !absent.error().isEmpty()));
-            edt(() -> { absent.refresh(true); return null; });
-            until(() -> edt(() -> !absent.error().isEmpty()));
-            assertFalse(edt(absent::validSelection)); assertNull(edt(absent::selectedRoot));
-            assertEquals(temporary.resolve("deleted-store").toString(), prefs.node("white").get("store", ""));
+            assertFalse(edt(w::validSelection)); assertFalse(edt(b::validSelection));
+            assertTrue(edt(w::error).contains("BEST_NNUE"));
+            assertTrue(edt(b::error).contains("CONSTRUCTION_V1"));
+            assertEquals(checkpoint, prefs.node("white").get("generation", ""));
+            assertEquals(entry.root().toString(), prefs.node("white").get("store", ""));
+            // Hidden historical loading remains exact and never substitutes a missing model.
+            assertEquals(checkpoint, PlayEvaluator.load(entry.root(), checkpoint).checkpointId());
+            assertThrows(java.io.IOException.class, () -> PlayEvaluator.load(entry.root(), "deleted-checkpoint"));
+            assertThrows(java.io.IOException.class, () -> PlayEvaluator.load(temporary.resolve("deleted-store"), checkpoint));
+            edt(() -> { w.refresh(true); return null; });
+            assertFalse(edt(w::validSelection));
+            edt(() -> { w.evaluator.setSelectedItem(PlayEvaluator.Mode.BREP2_32);
+                b.evaluator.setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_CP64); return null; });
+            assertTrue(edt(w::validSelection)); assertTrue(edt(b::validSelection));
+            assertNull(edt(w::selectedRoot)); assertNull(edt(b::selectedRoot));
+            var participants = PlayParticipants.load(PlayEvaluator.Mode.BEST_NNUE, temporary, edt(() -> w.versus(b)));
+            assertEquals(PlayEvaluator.Mode.BREP2_32, participants.white().mode());
+            assertEquals(PlayEvaluator.Mode.CONVENTIONAL_CP64, participants.black().mode());
+            assertEquals(checkpoint, prefs.node("white").get("generation", ""));
+            assertEquals(entry.root().toString(), prefs.node("white").get("store", ""));
         } finally {
             PlayEnginePanel w = white, b = black;
             edt(() -> { if (w != null) w.dispose(); if (b != null) b.dispose(); return null; }); prefs.removeNode();
@@ -202,7 +196,7 @@ class PlayRedesignDesktopTest {
         until(() -> !edt(frame::isDisplayable));
     }
     private static void capture(JFrame frame, String name) throws Exception {
-        frame.validate(); Path output = Path.of("build/play-redesign"); Files.createDirectories(output);
+        frame.validate(); Path output = CAPTURES; Files.createDirectories(output);
         var image = new java.awt.image.BufferedImage(frame.getWidth(), frame.getHeight(), java.awt.image.BufferedImage.TYPE_INT_RGB);
         var graphics = image.createGraphics(); frame.paintAll(graphics); graphics.dispose();
         javax.imageio.ImageIO.write(image, "png", output.resolve(name + ".png").toFile());

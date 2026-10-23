@@ -1,0 +1,96 @@
+{
+  "selection": "Post-hoc: first event per game where the same side has searched cp >=500 and a rise >=200 from its previous turn, with unchanged material balance across those positions and its selected move.",
+  "material": "P=100,N=320,B=330,R=500,Q=900; diagnostic material balance only, not an evaluator",
+  "groups": [
+    {
+      "budget_ms": 200,
+      "games": 48,
+      "observations": 38,
+      "approximately_balanced_material": 12,
+      "wins": 31,
+      "draws": 5,
+      "losses": 2,
+      "censored": 0,
+      "protocol_sha256": "465ba2610dc52883cbb527e86d3e1aa2095827d0ece52705906ed97b938971a9",
+      "games_sha256": "22dc7fc26defa9c58ea0f60d5597779d5f78462cf59b5d647da0496ced029163"
+    },
+    {
+      "budget_ms": 1000,
+      "games": 48,
+      "observations": 34,
+      "approximately_balanced_material": 14,
+      "wins": 33,
+      "draws": 1,
+      "losses": 0,
+      "censored": 0,
+      "protocol_sha256": "ac211c7d824ede2ca9986bbc37726ddc08f2d37bc625b2ac1473ee4aa128a0b5",
+      "games_sha256": "14bd77b6f49cc9835d086d1229b5e50c733600da8b50df4cec1cb28716c5176e"
+    }
+  ],
+  "examples": [
+    {
+      "budget_ms": 200,
+      "game": "000-white",
+      "ply_after_opening": 90,
+      "engine": "ConstructionV1-NNUE-CP64",
+      "side": "White",
+      "previous_cp": 5376,
+      "searched_cp": 6232,
+      "material_balance_cp": 1000,
+      "move": "b3b4",
+      "fen": "8/8/8/2K5/4Q3/1P6/8/6k1 w - - 3 54",
+      "formal_score_for_observed_side": 1.0,
+      "termination": "CHECKMATE",
+      "local_game": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\match-200-v1\\000-white.pgn"
+    },
+    {
+      "budget_ms": 200,
+      "game": "000-black",
+      "ply_after_opening": 38,
+      "engine": "E008-NNUE-CP64",
+      "side": "White",
+      "previous_cp": 1376,
+      "searched_cp": 1618,
+      "material_balance_cp": 420,
+      "move": "c2c3",
+      "fen": "1r3r2/p3Npk1/4b1pR/2p3P1/1b2B3/1P1RBP2/P1PK4/8 w - - 5 28",
+      "formal_score_for_observed_side": 1.0,
+      "termination": "CHECKMATE",
+      "local_game": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\match-200-v1\\000-black.pgn"
+    },
+    {
+      "budget_ms": 200,
+      "game": "001-white",
+      "ply_after_opening": 102,
+      "engine": "ConstructionV1-NNUE-CP64",
+      "side": "White",
+      "previous_cp": 1982,
+      "searched_cp": 3485,
+      "material_balance_cp": 520,
+      "move": "d3c4",
+      "fen": "7k/8/4N1KP/6P1/8/3B4/1b6/8 w - - 3 60",
+      "formal_score_for_observed_side": 1.0,
+      "termination": "CHECKMATE",
+      "local_game": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\match-200-v1\\001-white.pgn"
+    },
+    {
+      "budget_ms": 200,
+      "game": "002-white",
+      "ply_after_opening": 42,
+      "engine": "ConstructionV1-NNUE-CP64",
+      "side": "White",
+      "previous_cp": 1008,
+      "searched_cp": 1248,
+      "material_balance_cp": 230,
+      "move": "d1b1",
+      "fen": "r6k/1p3r1q/3p1ppp/2pN4/n3PP2/7B/2PQ2PP/3RR1K1 w - - 2 30",
+      "formal_score_for_observed_side": 1.0,
+      "termination": "CHECKMATE",
+      "local_game": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\match-200-v1\\002-white.pgn"
+    }
+  ],
+  "local_evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\score-observations-01.json",
+  "evidence_sha256": "b2ed40388abfdbbf105cd4c0419195a556b73b8e1c9912c71da00579bc318882",
+  "score_mapping": "BT4_Q_LOGIT400_V1; cp fields are CP64 teacher-link units in UCI convention, not material centipawns",
+  "limits": "Conditional, post-hoc, small and opening-pair-correlated observations. Search scores, not static inference. Formal outcomes do not prove probability calibration, tactical correctness or cross-engine centipawn equivalence."
+}

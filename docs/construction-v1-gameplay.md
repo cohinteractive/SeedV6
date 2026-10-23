@@ -1,5 +1,11 @@
 # construction-v1 gameplay activation
 
+Historical Pair-2 activation guide. The ordinary GUI and UCI default is now
+Construction V1 + Conventional NNUE CP64 with WIDEN16 aspiration, as selected by
+the owner on 23 October 2026. See the [current baseline record](research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026).
+The separate launcher and aspiration-OFF Pair-2 experiments below keep their
+historical identities; they do not describe the new default.
+
 Owner-authorized experimental gameplay, 20 October 2026. This does not promote
 the candidate, accept Workstream 3, change Phase 3 canon or launch more research.
 Production Policy 4 remains available and remains the ordinary UCI default.

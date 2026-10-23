@@ -63,8 +63,9 @@ final class EngineCard extends JPanel {
         PlayScore value = PlayScore.from(search, uncalibrated);
         score.setFont(SeedTheme.font(tablebase ? 17 : 21, Font.BOLD));
         score.setText(value.text()); score.setForeground(value.available() ? SeedTheme.GREEN : SeedTheme.TEXT);
-        scoreTitle.setText(nnue ? modelName + " \u00b7 White" : "Score · White");
-        score.setToolTipText(uncalibrated ? "Uncalibrated " + modelName + " units, White perspective; not centipawns." : "Searched score in pawns (centipawns / 100), White perspective; not a winning probability.");
+        scoreTitle.setText(evaluator.conventional() != null ? "NNUE / 100 · White"
+                : nnue ? modelName + " \u00b7 White" : "Score · White");
+        score.setToolTipText(evaluator.scoreExplanation());
         depth.setText(search.depth() == 0 ? "—" : Integer.toString(search.depth()));
         nodes.setText(search.depth() == 0 && search.nodes() == 0 ? "—" : compact(search.nodes()));
         nps.setText(search.nps() < 0 ? "—" : compact(search.nps()) + "/s");
@@ -81,7 +82,7 @@ final class EngineCard extends JPanel {
         String variation = search.pv().isEmpty() ? "—" : search.pv();
         if (!pv.getText().equals(variation)) { pv.setText(variation); pv.setCaretPosition(0); }
         variationTitle.setText(tablebase ? "Winning move" : "Principal variation (PV)");
-        termination.setText(uncalibrated ? modelName + " units \u00b7 uncalibrated  |  " + search.termination() : "Centipawns / 100  |  " + search.termination());
+        termination.setText(evaluator.scoreUnits() + "  |  " + search.termination());
         if (search.depth() > 0) termination.setText(termination.getText() + "  |  "
                 + (search.scoreSide() == com.ohinteractive.seedv6.core.util.Value.WHITE ? "White" : "Black")
                 + " · " + (nnue ? PlayEvaluator.shortId(evaluator.checkpointId()) : "HCE"));

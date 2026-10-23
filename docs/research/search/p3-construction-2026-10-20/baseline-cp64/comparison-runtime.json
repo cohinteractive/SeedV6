@@ -1,0 +1,43 @@
+{
+  "source_revision": "b144a2bba7ba8f0e815845c1daa96f2bfc992ad0",
+  "source_status_at_freeze": "",
+  "build": 68,
+  "archived_at": "2026-10-23T00:24:57.250220+00:00",
+  "jars_sha256": {
+    "app-uci.jar": "1ba9d9bcf44fcf385c6495e909fc3c24bb2dea4d1a10ed4f0d48b75319f67a19",
+    "engine-core.jar": "5cbd1d70ef67877857ed4cf33f97b306e73518102be6c070a7cdaac760e357ae"
+  },
+  "network_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "network_schema": "S6CNU002",
+  "checkpoint": 64,
+  "material_heads": 8,
+  "hardware": {
+    "protocol": "Windows-11-10.0.26300-SP0 AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+    "processor": "AMD Ryzen 5 5500",
+    "physical_cores": 6,
+    "logical_processors": 12
+  },
+  "runtime": {
+    "java": "Oracle Corporation Java 21+35-2513",
+    "release_file": "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\runtime-build68\\java-release.txt",
+    "release_sha256": "a9235746dddd46fad22e9aa9918e7870d79b7064a409e59ee3b5bc22d4215e06",
+    "active_processor_count_per_engine": 1,
+    "head": "Vector (exact scalar fallback)",
+    "max_heap_mib": 512
+  },
+  "settings": {
+    "workers": 1,
+    "hash_mib": 32,
+    "book": false,
+    "ponder": false,
+    "active_games": 1,
+    "movetime_ms": [
+      200,
+      1000
+    ],
+    "pairs_per_budget": 24
+  },
+  "local_runtime": "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\runtime-build68\\lib",
+  "application_version": "major=0\nminor=0\npatch=0\nbuild=68\nsourceRevision=b144a2bba7ba\nversionUpdated=2026-10-23\nplatform=Portable Java 21 (runtime platform reported separately)\n",
+  "limits": "Ignored runtime bytes and raw games are local evidence, absent from fresh clones. Native packages use their separately validated bundled JDK; these strength measurements are runtime/hardware-specific."
+}

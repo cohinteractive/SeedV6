@@ -18,12 +18,22 @@ class BaselineArenaTest {
             var config = LearningArenaConfig.match("baseline lifecycle", a, b, 19,
                     new Arena(4, Limit.DEPTH, 2, 1000, 2, 0, 0, 4, Board.FEN_STARTING_POSITION));
             Path path = temporary.resolve(evaluator.name());
-            try (var service = LearningArenaService.create(path, config, ignored -> {})) {
+            var snapshots = new java.util.concurrent.ConcurrentLinkedQueue<com.ohinteractive.seedv6.training.telemetry.ActiveGameSnapshot>();
+            try (var service = LearningArenaService.create(path, config, update -> {
+                if (update.liveGame() != null && update.liveGame().evaluation() != null) snapshots.add(update.liveGame());
+            })) {
                 service.run();
                 assertEquals(LearningArenaState.Status.COMPLETE, service.state().status());
                 assertEquals(2, service.state().current().pairs().size());
                 assertEquals(a.evaluator(), service.state().current().a().evaluator());
                 assertEquals(Evaluator.CONVENTIONAL_CP64, service.state().current().b().evaluator());
+                assertFalse(snapshots.isEmpty(), "Actual move telemetry is required");
+                for (var game : snapshots) {
+                    assertEquals(game.gameInPair() == 1 ? evaluator : BaselineEngine.Evaluator.CONVENTIONAL_CP64, game.white().competitiveEvaluator());
+                    assertEquals(game.gameInPair() == 1 ? BaselineEngine.Evaluator.CONVENTIONAL_CP64 : evaluator, game.black().competitiveEvaluator());
+                    assertTrue(game.white().searchProfile().contains("flags=262143"));
+                    assertTrue(game.black().searchProfile().contains("workers=2;hashMiB=64"));
+                }
             }
             assertFalse(Files.exists(path.resolve("A/checkpoints")));
             assertFalse(Files.exists(path.resolve("B/checkpoints")));
