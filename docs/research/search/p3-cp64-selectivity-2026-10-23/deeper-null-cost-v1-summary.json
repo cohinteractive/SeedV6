@@ -1,0 +1,805 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx1024m",
+    "-XX:ActiveProcessorCount=4",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\runtime-v3\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\runtime-v3\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.Cp64SelectivityAudit",
+    "null-cost",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-construction-2026-10-20\\diagnostic-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\complement-probes-v1.jsonl",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\deeper-null-cost-v1.jsonl"
+  ],
+  "bindingSha256": "7246e26f0b81922234f5cd3b237e1d9f23c805beb49d23bf366050f2b3186ee3",
+  "exitCode": 0,
+  "defaultOutcomeParity": true,
+  "requests": 12,
+  "targets": 48,
+  "completed": 48,
+  "comparisons": [
+    {
+      "id": "opening-00",
+      "sampleIndex": 0,
+      "depth": 3,
+      "rawSurplus": 159,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 5,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 75,
+        "score": -96
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-00",
+      "sampleIndex": 4,
+      "depth": 4,
+      "rawSurplus": 120,
+      "nullFailHigh": true,
+      "verifiedFailHigh": true,
+      "probeNodes": 65,
+      "verificationNodes": 104,
+      "incumbent": {
+        "completed": true,
+        "nodes": 163,
+        "score": -96
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-00",
+      "sampleIndex": 6,
+      "depth": 5,
+      "rawSurplus": 126,
+      "nullFailHigh": true,
+      "verifiedFailHigh": true,
+      "probeNodes": 53,
+      "verificationNodes": 176,
+      "incumbent": {
+        "completed": true,
+        "nodes": 603,
+        "score": -80
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-00",
+      "sampleIndex": 10,
+      "depth": 6,
+      "rawSurplus": 61,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 41,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 1269,
+        "score": 2
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-01",
+      "sampleIndex": 0,
+      "depth": 3,
+      "rawSurplus": 102,
+      "nullFailHigh": true,
+      "verifiedFailHigh": true,
+      "probeNodes": 36,
+      "verificationNodes": 17,
+      "incumbent": {
+        "completed": true,
+        "nodes": 48,
+        "score": 40
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-01",
+      "sampleIndex": 2,
+      "depth": 4,
+      "rawSurplus": 48,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 78,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 1410,
+        "score": 32
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-01",
+      "sampleIndex": 6,
+      "depth": 5,
+      "rawSurplus": 44,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 84,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 2653,
+        "score": 36
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-01",
+      "sampleIndex": 10,
+      "depth": 6,
+      "rawSurplus": 57,
+      "nullFailHigh": true,
+      "verifiedFailHigh": true,
+      "probeNodes": 1074,
+      "verificationNodes": 2385,
+      "incumbent": {
+        "completed": true,
+        "nodes": 3735,
+        "score": 23
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-02",
+      "sampleIndex": 0,
+      "depth": 3,
+      "rawSurplus": 189,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 9,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 2186,
+        "score": -139
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-02",
+      "sampleIndex": 2,
+      "depth": 4,
+      "rawSurplus": 180,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 9,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 5176,
+        "score": -130
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-02",
+      "sampleIndex": 6,
+      "depth": 5,
+      "rawSurplus": 137,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 9,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 11065,
+        "score": -87
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-02",
+      "sampleIndex": 10,
+      "depth": 6,
+      "rawSurplus": 157,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 45,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 21231,
+        "score": -107
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-03",
+      "sampleIndex": 0,
+      "depth": 3,
+      "rawSurplus": 32,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 3,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 18,
+        "score": 35
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-03",
+      "sampleIndex": 2,
+      "depth": 4,
+      "rawSurplus": 19,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 7,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 207,
+        "score": 32
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-03",
+      "sampleIndex": 6,
+      "depth": 5,
+      "rawSurplus": 45,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 10,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 574,
+        "score": 6
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-03",
+      "sampleIndex": 8,
+      "depth": 6,
+      "rawSurplus": 55,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 41,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 2909,
+        "score": -4
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-04",
+      "sampleIndex": 0,
+      "depth": 3,
+      "rawSurplus": 14,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 3,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 71,
+        "score": 61
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-04",
+      "sampleIndex": 2,
+      "depth": 4,
+      "rawSurplus": 47,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 24,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 152,
+        "score": 56
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-04",
+      "sampleIndex": 6,
+      "depth": 5,
+      "rawSurplus": 88,
+      "nullFailHigh": true,
+      "verifiedFailHigh": true,
+      "probeNodes": 88,
+      "verificationNodes": 478,
+      "incumbent": {
+        "completed": true,
+        "nodes": 467,
+        "score": 27
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-04",
+      "sampleIndex": 10,
+      "depth": 6,
+      "rawSurplus": 175,
+      "nullFailHigh": true,
+      "verifiedFailHigh": true,
+      "probeNodes": 1050,
+      "verificationNodes": 32390,
+      "incumbent": {
+        "completed": true,
+        "nodes": 7000,
+        "score": 26
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-05",
+      "sampleIndex": 0,
+      "depth": 3,
+      "rawSurplus": 114,
+      "nullFailHigh": true,
+      "verifiedFailHigh": true,
+      "probeNodes": 14,
+      "verificationNodes": 23,
+      "incumbent": {
+        "completed": true,
+        "nodes": 127,
+        "score": -124
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-05",
+      "sampleIndex": 2,
+      "depth": 4,
+      "rawSurplus": 95,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 20,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 458,
+        "score": -105
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-05",
+      "sampleIndex": 6,
+      "depth": 5,
+      "rawSurplus": 61,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 19,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 1775,
+        "score": -71
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-05",
+      "sampleIndex": 10,
+      "depth": 6,
+      "rawSurplus": 35,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 120,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 2160,
+        "score": -155
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-06",
+      "sampleIndex": 0,
+      "depth": 3,
+      "rawSurplus": 139,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 6,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 115,
+        "score": -40
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-06",
+      "sampleIndex": 2,
+      "depth": 4,
+      "rawSurplus": 127,
+      "nullFailHigh": true,
+      "verifiedFailHigh": true,
+      "probeNodes": 39,
+      "verificationNodes": 37,
+      "incumbent": {
+        "completed": true,
+        "nodes": 487,
+        "score": -6
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-06",
+      "sampleIndex": 6,
+      "depth": 5,
+      "rawSurplus": 32,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 7,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 1182,
+        "score": 12
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-06",
+      "sampleIndex": 10,
+      "depth": 6,
+      "rawSurplus": 91,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 370,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 1967,
+        "score": 7
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-07",
+      "sampleIndex": 0,
+      "depth": 3,
+      "rawSurplus": 94,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 3,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 116,
+        "score": -50
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-07",
+      "sampleIndex": 2,
+      "depth": 4,
+      "rawSurplus": 134,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 6,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 1302,
+        "score": -92
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-07",
+      "sampleIndex": 6,
+      "depth": 5,
+      "rawSurplus": 86,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 6,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 2567,
+        "score": -44
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-07",
+      "sampleIndex": 10,
+      "depth": 6,
+      "rawSurplus": 110,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 37,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 2071,
+        "score": -68
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-08",
+      "sampleIndex": 0,
+      "depth": 3,
+      "rawSurplus": 162,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 5,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 57,
+        "score": 32
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-08",
+      "sampleIndex": 2,
+      "depth": 4,
+      "rawSurplus": 69,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 5,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 251,
+        "score": 57
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-08",
+      "sampleIndex": 6,
+      "depth": 5,
+      "rawSurplus": 81,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 5,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 2937,
+        "score": 44
+      },
+      "incumbentFailHigh": false
+    },
+    {
+      "id": "opening-08",
+      "sampleIndex": 10,
+      "depth": 6,
+      "rawSurplus": 57,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 41,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 6517,
+        "score": 68
+      },
+      "incumbentFailHigh": false
+    },
+    {
+      "id": "opening-09",
+      "sampleIndex": 0,
+      "depth": 3,
+      "rawSurplus": 107,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 6,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 324,
+        "score": -63
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-09",
+      "sampleIndex": 2,
+      "depth": 4,
+      "rawSurplus": 107,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 6,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 139,
+        "score": -63
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-09",
+      "sampleIndex": 6,
+      "depth": 5,
+      "rawSurplus": 99,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 22,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 3225,
+        "score": -47
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-09",
+      "sampleIndex": 10,
+      "depth": 6,
+      "rawSurplus": 11,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 74,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 4472,
+        "score": -11
+      },
+      "incumbentFailHigh": false
+    },
+    {
+      "id": "opening-10",
+      "sampleIndex": 0,
+      "depth": 3,
+      "rawSurplus": 114,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 6,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 720,
+        "score": -71
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-10",
+      "sampleIndex": 2,
+      "depth": 4,
+      "rawSurplus": 179,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 6,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 847,
+        "score": -91
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-10",
+      "sampleIndex": 6,
+      "depth": 5,
+      "rawSurplus": 126,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 136,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 2714,
+        "score": -91
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-10",
+      "sampleIndex": 10,
+      "depth": 6,
+      "rawSurplus": 163,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 36,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 11456,
+        "score": -75
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-11",
+      "sampleIndex": 0,
+      "depth": 3,
+      "rawSurplus": 31,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 3,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 123,
+        "score": 21
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-11",
+      "sampleIndex": 2,
+      "depth": 4,
+      "rawSurplus": 14,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 7,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 558,
+        "score": -13
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-11",
+      "sampleIndex": 6,
+      "depth": 5,
+      "rawSurplus": 27,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 7,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 1024,
+        "score": -26
+      },
+      "incumbentFailHigh": true
+    },
+    {
+      "id": "opening-11",
+      "sampleIndex": 10,
+      "depth": 6,
+      "rawSurplus": 149,
+      "nullFailHigh": false,
+      "verifiedFailHigh": false,
+      "probeNodes": 568,
+      "verificationNodes": 0,
+      "incumbent": {
+        "completed": true,
+        "nodes": 9923,
+        "score": -103
+      },
+      "incumbentFailHigh": true
+    }
+  ],
+  "allProbeNodes": 4314,
+  "verificationNodes": 35610,
+  "knownSavedIncumbentNodes": 12630,
+  "unknownAccepted": 0,
+  "economicLimit": "Conditional sample only. Probe includes its restricted legal parent overhead; verification is retained unpruned legalD-2. Incumbent costs are completed subtrees in original complete requests, not independent population or whole-tree counterfactual savings.",
+  "wallSeconds": 9.640132300002733,
+  "evidence": {
+    "raw\\deeper-null-cost-v1.jsonl": "416d066f60c7ce4cb38ceb13cef26653a0cebb1ee11d61a47dfef620c458b171",
+    "raw\\deeper-null-cost-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "originalBindingSha256": "bff49784b10e8fbbef3c0cba08824d10dab7344df5a58a221f9fdb19b4e80973",
+  "priorFailedAdmissionSha256": "1e8e73c1d8ba403fb3e238ce66e7556bbcb8b24d4bb4efea93955be89203d6d4",
+  "wrapperSha256": "8f5e796908c961861c305f45871eaf9025ca54457a96080253955b079428de67",
+  "reason": "No prior games launched. New time-only resource admission; same source/configuration/openings/sample/analysis and1.0-core gate."
+}

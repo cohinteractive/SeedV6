@@ -1,0 +1,31 @@
+{
+  "start": {
+    "utc": "2026-10-23T11:30:23.385646+00:00",
+    "monotonic": 35086.2110532,
+    "ticks": [
+      3521674531250,
+      3696724062500,
+      513576875000
+    ],
+    "availableBytes": 22298730496,
+    "memoryLoadPercent": 34
+  },
+  "end": {
+    "utc": "2026-10-23T11:30:53.386244+00:00",
+    "monotonic": 35116.2116523,
+    "ticks": [
+      3524905156250,
+      3700232343750,
+      513665781250
+    ],
+    "availableBytes": 22298128384,
+    "memoryLoadPercent": 34
+  },
+  "elapsedSeconds": 30.000599099999818,
+  "busyCpuSeconds": 36.65625,
+  "ownedCpuSeconds": 0,
+  "otherAverageLogicalCores": 1.2218505996435325,
+  "memoryEndpointsPass": true,
+  "passed": false,
+  "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used."
+}

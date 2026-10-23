@@ -1,0 +1,22 @@
+{
+  "id": "P3-CP64-SELECTIVITY-NOMINAL-CLOCK-DEVELOPMENT-v1",
+  "frozenBeforeExecution": true,
+  "question": "Does guarded nominal-depth deeper futility merit fresh independent confirmation after its incremental cost savings, unchanged sampled root choices and71 complete independent omission replays?",
+  "baseline": "build72 frozen runtime-v3, original18 controls flags262143, ADAPTIVE16, frozen CP64 eight heads, requested Hash64",
+  "candidate": "same runtime, nominal-futility flags1310719; all original18 controls retained, margin100*parent nominal depth under frozen deeper-v1 guards",
+  "domain": {
+    "workers": 1,
+    "concurrentGames": 1,
+    "pairs": 32,
+    "clock": "10+0.1",
+    "seed": 2026102402,
+    "partition": 0
+  },
+  "openings": "New32 paired/color-reversed eight-full-move openings; source, partition0 and exclusions as H1, additionally excluding its32 frozen openings. No evaluator filter. Exact identities frozen by prepare_clock_nominal_v1.py.",
+  "resourceAdmission": "30-second host availability interval: at most1 other average logical CPU, at least8GiB available RAM and at most75% load at endpoints. Same gate for whole run subtracting owned lifetime CPU; this is a prospective contention screen, not isolation or a short-burst guarantee.",
+  "execution": "One match only, BelowNormal priority, Xms256m Xmx512m and ActiveProcessorCount4 per JVM,200k-node startup warmup. Validated owned Job containment and PGN/legal/history/accounting audit. No simultaneous computational research. Expected30min,90min watchdog; interruption preserved, no replay. Launch only after fresh resource admission and no other match running.",
+  "analysis": "One final look after all32 pairs. Report W/D/L, pair means, approximate paired-normal95% interval and bounded-pair95% sensitivity; these are development descriptions, not confirmation. Retain every game and adverse ending. No outcome-dependent early stopping, extension, tuning or exclusions.",
+  "decision": "All integrity/resource gates must pass. Candidate score>=0.55 admits consideration for a separately frozen fresh independent confirmation, subject to complete programme evidence; otherwise nominal-futility is negative or inconclusive in this bounded screen and no further nominal-futility clock extension. A favorable point estimate alone cannot justify adoption. At most two W1 finalist hypotheses will receive independent confirmation in this programme with familywise alpha allocation frozen before those games; unused allocations are not transferred. W4 is not admitted by W1 results.",
+  "authority": "Development only. Production promotion, TT policy, evaluator and external installations unchanged. Clock standard remains10+0.1. No successor objective.",
+  "selectionRationale": "Nominal foundation saves about9%elapsed in D8 development, improves completed depth in4/24 fixed-node requests with no lower depth and no changed root move. Reduction-depth formulation gives no additional elapsed saving, eight fixed-node move changes and two lower depths. Composition with improving-off is economically promising but its supporting removal has no clock evidence yet. Choose this conservative standalone hypothesis, not the largest node reduction; this does not establish superiority or reject other formulations universally."
+}

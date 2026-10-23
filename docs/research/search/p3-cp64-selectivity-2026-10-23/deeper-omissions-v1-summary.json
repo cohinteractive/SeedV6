@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx1024m",
+    "-XX:ActiveProcessorCount=4",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\runtime-v3\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\runtime-v3\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.Cp64SelectivityAudit",
+    "omissions",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-construction-2026-10-20\\diagnostic-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\deeper-observe-v1.jsonl",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\deeper-omissions-v1.jsonl"
+  ],
+  "bindingSha256": "9e7a52f5ac97900e6b1232b75de0d1864bb3d2fa666df15b9e8ef3750740f99f",
+  "exitCode": 0,
+  "profiles": {
+    "nominal-futility": {
+      "samples": 71,
+      "reducedCompleted": 71,
+      "nominalCompleted": 71,
+      "reducedNodes": 3577,
+      "nominalNodes": 64663,
+      "quadrants": {
+        "reducedRaises=False;nominalRaises=False": 71
+      },
+      "adverse": [],
+      "historySigns": {
+        "zero": 35,
+        "negative": 36
+      }
+    },
+    "reduction-futility": {
+      "samples": 72,
+      "reducedCompleted": 72,
+      "nominalCompleted": 72,
+      "reducedNodes": 3440,
+      "nominalNodes": 84885,
+      "quadrants": {
+        "reducedRaises=False;nominalRaises=False": 72
+      },
+      "adverse": [],
+      "historySigns": {
+        "zero": 36,
+        "negative": 36
+      }
+    },
+    "reduction-no-improving": {
+      "samples": 71,
+      "reducedCompleted": 71,
+      "nominalCompleted": 71,
+      "reducedNodes": 4301,
+      "nominalNodes": 98071,
+      "quadrants": {
+        "reducedRaises=False;nominalRaises=False": 71
+      },
+      "adverse": [],
+      "historySigns": {
+        "zero": 35,
+        "negative": 36
+      }
+    }
+  },
+  "wallSeconds": 1.2284497000000556,
+  "evidence": {
+    "raw\\deeper-omissions-v1.jsonl": "4d63961f0a47f32c731d221d109d47808c2f40c4ed359e29f9b172c59e9d3142",
+    "raw\\deeper-omissions-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

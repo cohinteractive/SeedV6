@@ -1,6 +1,6 @@
 # CP64-integrated Search selectivity reappraisal
 
-Owner-authorized 23 October 2026 (Pacific/Auckland). **ACTIVE; ablation, cost separation and complementary probes complete; deeper controls under validation and H1 clock awaiting resource admission.** Governed by Phase 3 Contract P3-R022 / Frontier P3-F022. Current resume is the final section below; earlier execution paragraphs record completed stages.
+Owner-authorized 23 October 2026 (Pacific/Auckland). **ACTIVE; deeper-futility evidence complete, two clock screens frozen, and H5 selective-verification support merits a bounded integration investigation.** Governed by Phase 3 Contract P3-R023 / Frontier P3-F023. Current resume is the final section below; earlier execution paragraphs record completed stages.
 This is a focused research record and dynamic queue, not another master.
 
 ## Authority, identity and boundaries
@@ -66,9 +66,9 @@ external evidence belong in the bootstrap/evidence manifests.
 | --- | --- | --- | --- |
 | H1 | Does raw two-ply improving relief justify eager CP64 evaluation and extra depth? SR009/029/033. | Fresh W1 clock screen for removal; lazy costs are modest despite exact W1 traversal. | Clock inputs frozen; first resource admission failed before launch |
 | H2 | Do history protection and richer quiet memories add reliable decisions? SR016/023/022. | Simple removals mixed; negative/zero occurrences do not establish reliable failure. Inspect conditional deeper-consumer witnesses. | No pruning feature admitted; confidence unresolved |
-| H3 | Are shallow futility/RFP complementary and conservative under CP64? SR009/019/021/022. | RFP removal costly, shallow futility modest;96 samples no false threshold. Test guarded deeper foundation. | Default-OFF nominal-depth foundation under validation |
-| H4 | Does actual reduction depth add information beyond nominal depth/count/history? SR029/033/023. | Compare identical guards with nominal versus assigned margins and improving-off composition; preserve nominal verification. | Default-OFF reduction consumer under validation |
-| H5 | Can adaptive verified null repay its cost after current selectivity? SR018/019/029. |48 isolated probes yield8 accepted/verified predictions; compare their costs with actual incumbent subtrees before integration. | Opportunity exists; economic admission unresolved |
+| H3 | Are shallow futility/RFP complementary and conservative under CP64? SR009/019/021/022. | RFP removal costly, shallow futility modest; guarded deeper nominal foundation saves cost with unchanged sampled moves and71 reference replays. | W1 clock screen frozen; resource qualification pending |
+| H4 | Does actual reduction depth add information beyond nominal depth/count/history? SR029/033/023. | Additional decisions but no elapsed gain over nominal foundation; composition saves more but has unconfirmed supporting removal. | No separate reduction-margin clock screen; composition conditional |
+| H5 | Can adaptive verified null repay its cost after current selectivity? SR018/019/029. | Retained unpruned legal verification does not pay; selective legal verification materially improves opening and played-position costs. | Admit bounded flattened integration investigation; reliability and whole-request benefit still unproved |
 
 Ordering is provisional, not a compulsory feature queue. Related qsearch/SEE,
 ordering and aspiration are explanatory controls only. No TT re-investigation or
@@ -334,3 +334,98 @@ pruning feature is admitted from occurrence counts alone. The qualifying commit
 increments build only; major/minor/patch and production flags stay unchanged.
 Masters areP3-R022/P3-F022. Project Source
 refresh is required, without blocking this authorized repository execution.
+
+## Deeper results and updated admission decisions
+
+Commit2907f9b contains the guarded shared-runtime addition with build71 ->72.
+`deeper-v1-binding.json` freezes runtime-v3. `deeper-v1-summary.json` reconciles
+all observation/cost stages:70.4s/195.8s/74.9s wall. All36 plain/observed requests
+match;214 first-per-root/depth/history-sign omissions across the three new profiles
+have complete independent reduced and nominal replays, zero alpha-raising cases.
+Breakdown is nominal71, reduction72, composition71; both negative and zero main
+history occur in every formulation. This conditional sample cannot justify pruning
+on history alone. Selected omission callbacks occur before the final cancellation
+checkpoint, so an aborted attempt can include a selected decision that was not
+committed; they are not completed-result or population-frequency claims. No raw
+or completed protocol is rewritten by this qualification.
+
+| W1 D8/1M development profile | Elapsed / CPU / nodes vs full | Capped /24 | Changed moves /24 |
+| --- | --- | --- | --- |
+| Improving off | .758 /.730 /.799 | 4 | 0 |
+| Nominal deeper futility | .910 /.879 /.945 | 6 | 0 |
+| Reduction-depth futility | .924 /.894 /.924 | 6 | 0 |
+| Reduction + improving off | .675 /.651 /.692 | 2 | 0 |
+
+At fixed250k nodes, nominal gives.984 elapsed/.920CPU and four higher depths,
+zero lower or changed moves. Reduction gives.982/.923, four higher/two lower depths
+and eight changed moves. Composition gives.978/.918, four higher/two lower depths
+and two changed moves. Its D8 elapsed ratio versus improving-off is about.891,
+but it does not improve fixed-node elapsed versus that foundation and changes its
+decisions. Caps/horizons, repeated positions and diagnostic timings limit inference.
+All exact raw scores/moves/PVs remain available; changed moves were inspected and
+are selective finite-horizon differences, not illegal PVs or false mathematical proof.
+
+Decision: choose the more conservative nominal-depth foundation for the one
+additional deeper-study clock screen. Reduction depth adds omissions but no clear
+incremental elapsed benefit; no strength contribution is established. The composition
+is economically interesting, conditional on its supporting removal and fresh
+configuration-level strength evidence; do not attribute its savings to every control.
+`deeper-uci-qualification-v1.json` passes all three new profiles and baseline at
+1/4/16 workers, with ordinary build72 UCI baseline parity. `clock-nominal-v1.json`
+and its binding freeze32 new W1 paired openings, disjoint from the H1 selection,
+10+0.1, one concurrent game and one final55% selection gate. This is development,
+not confirmation. Neither clock protocol has produced any games as of the second
+H1 resource admission. That second receipt reports1.22185 other logical CPUs,
+above the unchanged1.0 gate. A read-only process-CPU diagnostic is inconclusive
+about system/inaccessible activity; no unrelated process was changed.
+
+### H5 supporting-consumer economics changed the premise
+
+`deeper-null-cost-v1-summary.json` reproduces all12 original baseline request
+outcomes and completes all48 original target subtrees. Original probes cost4314
+nodes; retained unpruned legal verification adds35610 against12630 incumbent nodes
+in the eight accepted targets. It is uneconomic in this sample, not a universal
+NMP rejection. `selective-null-verification-v1-summary.json` instead uses full
+Construction in the legalD-2 verifier:1842 charged verification nodes, still eight
+accepted predictions. Seven verifier directions change among48 total targets;
+the eight consumed directions do not. One accepted nominal reference remained
+capped at1M, so no blanket no-error claim was made.
+
+`null-followup-v1-summary.json` challenges this on the first12 full-history played
+roots:44 eligible selected targets, all captured and all nominal/actual incumbent
+subtrees complete. Plain/observed requests match. Nineteen null fail-highs survive
+both verifiers, with no false threshold among the completed nominal references.
+All probes cost4676 nodes; unpruned legal verification adds16985 versus19360
+incumbent nodes that accepted predictions could replace. Selective verification
+adds2391 instead. The former accepted unknown is separately resolved at2722564
+nominal nodes, score26, supporting its threshold; its original1M cap is preserved.
+The new whole stage took31.7s. These are correlated conditional samples and fresh
+verifiers do not recreate inherited ordering/extension/TT context; node differences
+do not establish actual whole-request economics or strength.
+
+This supporting verifier materially changes H5's prospects. Admission is now one
+bounded default-OFF flattened integration investigation, not a margin sweep or
+another Search implementation. Preserve the retained recursive references. Use
+the same flattened continuation loop for isolated probes/verification, with bounded
+non-nested re-entry at the real ply; preserve synthetic barriers, real clock,
+unpruned/unreduced synthetic subtree, no synthetic TT/history/hints, legal selective
+verification, truthful work/depth, no synthetic PV or learned labels, and mandatory
+ordinary LMR/PVS verification. Existing TT identity/layout/locking/replacement and
+proof eligibility remain unchanged; domain guards must enforce existing policy.
+Before admission to costs, require observe-only isolation parity, independent probe
+threshold checks, CP64 rebuild comparisons, exception/cancellation/drain/reuse and
+worker-private-state tests. If implementing this safely would require a binding
+TT-policy change, stop that branch and record the decision rather than making it.
+
+### Current precise resume
+
+All deeper and null diagnostic runners above are complete. No production promotion
+or strength result exists. The third H1 resource admission using
+`resume_clock_v1.py 3` at2026-10-23T11:45UTC failed:1.17602 other logical CPUs
+exceeds the same1.0 gate; memory passes. No match or owned worker launched.
+Clock-strength progression is resource-blocked; independent H5 work may continue.
+Do not overwrite receipts or silently relax the frozen gate. The nominal clock
+wrapper has not been launched and cannot bypass the same host limitation. The bounded H5
+integration is selected but not yet implemented. Build72/HEAD2907f9b remain the
+latest committed runtime; uncommitted research-only H5 harnesses and evidence are
+attributable to this objective. MastersP3-R023/P3-F023 require Project Source refresh.

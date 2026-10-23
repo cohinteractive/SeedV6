@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F022**
+Internal frontier revision: **P3-F023**
 
 Status: **ACTIVE: owner-authorized CP64-integrated Search selectivity reappraisal. The preceding TT CGLHW is GPT-reconciled and owner-accepted, with acceptance/synchronization prerequisites confirmed. Build70 full Construction V1/ADAPTIVE16/frozen CP64 remains production; no automatic promotion, TT-policy change, evaluator replacement, external deployment or successor.**
 
@@ -21,9 +21,12 @@ strength claims. Completed TT results are reference evidence, not reopened work.
 
 **Current selection:** H1 cost separation is complete; removing improving is
 admitted to a fresh W1 clock development screen, pending resource qualification.
-H3/H4 compare a guarded deeper nominal-margin foundation with actual assigned
-reduction depth, including composition with improving-off. H5 must compare isolated
-verified-null cost with the already selective incumbent before implementation.
+H3/H4 select the guarded nominal-margin foundation for one additional fresh W1
+clock screen; reduction-depth margins show no extra elapsed benefit, while the
+improving-off composition remains conditional. H5's cheaper selective legal
+verification survives an opening/played-position economic challenge; investigate
+one bounded flattened integration with existing synthetic isolation and no TT-policy
+change, retaining independent recursive references and original mandatory verification.
 H2 uses conditional history evidence from these consumers; no sparse/censored
 negative label is promoted to bound authority. No exhaustive switch sweep or new
 TT design is selected.
@@ -36,15 +39,16 @@ only Phase3 masters. Production stays unchanged until separate accepted promotio
 fresh10+0.1 confirmation is required if a promising finalist warrants adoption.
 Functional1..16 support never establishes strength at every worker count.
 
-Initial reverse ablation and cost separation are complete. Lazy improving preserves
-one-worker traversal but offers modest elapsed savings; removing improving changes
-selectivity and merits a fresh one-worker10+0.1 development screen. Its first
-resource admission failed before any game launched. Deeper surviving opportunities
-justify a guarded nominal-margin versus assigned-reduction-margin comparison and
-an actual selective-cost audit of verified-null predictions. Build71 adds explicit
-default-OFF research controls; accepted production choices remain unchanged.
-Conditional reference samples are diagnostic, not strength or proof certification.
-The focused record preserves precise protocols, failures, limitations and resume state.
+Reverse ablation, cost separation and guarded deeper-futility comparisons are
+complete. Improving removal and the nominal-depth deeper-futility foundation merit
+fresh W1 clock development screens; two host admissions failed before any game.
+Reduction-depth margins did not add elapsed benefit over the nominal foundation;
+composition remains conditional. Verified-null prospects materially improve when
+its legal verifier uses the current selectivity; an opening and played-position
+challenge supports one bounded flattened integration investigation. Build72 has
+default-OFF lazy/deeper-futility controls; production choices remain unchanged.
+Conditional reference samples are neither strength nor proof certification.
+The focused record preserves exact identities, resource failures and resume state.
 
 ## ADAPTIVE16 production selection - 23 October 2026
 

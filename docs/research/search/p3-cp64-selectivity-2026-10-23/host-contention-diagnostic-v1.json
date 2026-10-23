@@ -1,0 +1,54 @@
+{
+  "intervalSeconds": 30.318014899996342,
+  "topKnownProcesses": [
+    {
+      "process": "bash",
+      "cpuSeconds": 0.1875
+    },
+    {
+      "process": "nvcontainer",
+      "cpuSeconds": 0.0625
+    },
+    {
+      "process": "NVIDIA Overlay",
+      "cpuSeconds": 0.0625
+    },
+    {
+      "process": "OpenConsole",
+      "cpuSeconds": 0.0625
+    },
+    {
+      "process": "nvcontainer",
+      "cpuSeconds": 0.046875
+    },
+    {
+      "process": "SpotifyLauncher",
+      "cpuSeconds": 0.046875
+    },
+    {
+      "process": "NVIDIA Overlay",
+      "cpuSeconds": 0.03125
+    },
+    {
+      "process": "AcPowerNotification",
+      "cpuSeconds": 0.015625
+    },
+    {
+      "process": "AdobeCollabSync",
+      "cpuSeconds": 0.015625
+    },
+    {
+      "process": "asus_framework",
+      "cpuSeconds": 0.015625
+    },
+    {
+      "process": "asus_framework",
+      "cpuSeconds": 0.015625
+    },
+    {
+      "process": "Code",
+      "cpuSeconds": 0.015625
+    }
+  ],
+  "limits": "Read-only process CPU differences; exited/new and inaccessible processes absent. No process stopped, throttled or reconfigured."
+}

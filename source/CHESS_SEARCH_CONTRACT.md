@@ -1,6 +1,6 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R022**
+Internal revision: **P3-R023**
 
 Status: **ACTIVE: owner-authorized CP64-integrated Search selectivity reappraisal. The preceding TT CGLHW is GPT-reconciled and owner-accepted, with acceptance/synchronization prerequisites confirmed. Build70 full Construction V1/ADAPTIVE16/frozen CP64 remains production; no automatic promotion, TT-policy change, evaluator replacement, external deployment or successor.**
 
@@ -47,15 +47,16 @@ holds the dynamic hypothesis queue, frozen experiments and precise resume point.
 Repository execution does not wait for mirror refresh; dependent external GPT
 planning requires both revised masters refreshed and synchronization confirmed.
 
-Initial reverse ablation and cost separation are complete. Lazy improving preserves
-one-worker traversal but offers modest elapsed savings; removing improving changes
-selectivity and merits a fresh one-worker10+0.1 development screen. Its first
-resource admission failed before any game launched. Deeper surviving opportunities
-justify a guarded nominal-margin versus assigned-reduction-margin comparison and
-an actual selective-cost audit of verified-null predictions. Build71 adds explicit
-default-OFF research controls; accepted production choices remain unchanged.
-Conditional reference samples are diagnostic, not strength or proof certification.
-The focused record preserves precise protocols, failures, limitations and resume state.
+Reverse ablation, cost separation and guarded deeper-futility comparisons are
+complete. Improving removal and the nominal-depth deeper-futility foundation merit
+fresh W1 clock development screens; two host admissions failed before any game.
+Reduction-depth margins did not add elapsed benefit over the nominal foundation;
+composition remains conditional. Verified-null prospects materially improve when
+its legal verifier uses the current selectivity; an opening and played-position
+challenge supports one bounded flattened integration investigation. Build72 has
+default-OFF lazy/deeper-futility controls; production choices remain unchanged.
+Conditional reference samples are neither strength nor proof certification.
+The focused record preserves exact identities, resource failures and resume state.
 
 ## ADAPTIVE16 production selection - 23 October 2026
 

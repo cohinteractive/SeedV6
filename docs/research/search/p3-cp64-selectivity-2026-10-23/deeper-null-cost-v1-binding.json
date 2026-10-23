@@ -1,0 +1,10 @@
+{
+  "runtimeBindingSha256": "9db2ee28c439fcd6e13b7a142e4bc4efd40d8bf94227e9a04838184ca2ebc263",
+  "runnerSha256": "9082865579c8cf9f21547f55776fb6a15646d3e97eb493dcce9925cd02e4b70b",
+  "files": {
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\deeper-v1.json": "904b59cdb63752b98b1bb56dd40a2d0c29b3320dae82cc9b97838a1b512cd572",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\complement-probes-v1.jsonl": "9f1664ab9e548026fba4da0c1b22a8dffb07dc411a9bf80b07dd805172a82d3f",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\Cp64SelectivityAudit.java": "add80bd7b586d13c115315909901556a3dd17db097af5f0b10b5e0e14a21c913",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\Cp64SelectivityProbe.java": "db120d64c8abcb0129cbcdaf259797dccad376bbec75ff1660260501c708f383"
+  }
+}
