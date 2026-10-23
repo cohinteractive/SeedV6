@@ -1,0 +1,19 @@
+{
+  "id":"P3-TT-ACCESS-PROFILE-v1",
+  "frozenBeforeExecution":true,
+  "question":"Does sampling the unchanged selected baseline reveal an obvious TT access/contention cost concentration that would justify a bounded owner-gated investigation, rather than inferring a bottleneck from traffic counts?",
+  "purpose":"Close T4's remaining cost-attribution question economically. Ordinary/hint probes and refresh counts establish traffic, not CPU cost. Sampling may be unable to resolve small/inlined costs; report that limit instead of treating absence as proof of zero cost.",
+  "scope":"Read-only JDK21 JFR observation of ordinary default UCI BaselineEngine CP64 WIDEN16/flags262143/Hash64, diagnostics OFF. No TT/locking/layout/replacement/eligibility code or policy variant. No profiling result is strength evidence.",
+  "runtime":"raw/clock-runtime-v2",
+  "runtimeBinding":"clock-runtime-v2-binding.json",
+  "workers":[1,4],
+  "corpus":"docs/research/search/p3-sr002-execution-2026-10-19/confirmation-corpus.tsv",
+  "roots":12,
+  "rounds":2,
+  "nodesPerRequest":1000000,
+  "warmup":"Two200k-node startpos requests per JVM, then ucinewgame per measured root. Full supplied real histories, deterministic corpus order. Warmup/startup are included in process/JFR lifetime but not request totals.",
+  "recording":"Installed JDK21 profile.jfc settings, default sampling/monitor thresholds recorded verbatim from that file before execution. JFR dumponexit, separate native CPU, legal PV and exact whole-request node audit. Print only ExecutionSample, NativeMethodSample, JavaMonitorEnter and ThreadPark events into ignored raw JSON if available. No hidden threshold tuning after observation.",
+  "analysis":"Preserve raw JFR and JSON, exact command/JVM/settings/runtime hashes and all requests. Count sampled stack presence by broad categories TT, Search, evaluation and other, noting overlapping inclusive categories. Report TT method frames and contended-monitor classes/durations if recorded. Default thresholds miss short waits; compiled/inlined attribution and finite sampling limit small-cost conclusions. Do not present sample share as an exact CPU percentage or causal savings estimate. Candidate clock outcomes play no role in profile selection.",
+  "decision":"Only an obvious concentration supported by samples/contention evidence may motivate a bounded authority request with correctness/resource/verification alternatives. Otherwise retain duplicate probes/refreshes as unquantified micro-optimization opportunities; do not seek a TT redesign or launch a broad hot-path programme. No implementation of owner-reserved changes follows.",
+  "resources":"Run after both adaptive clock domains have completed, before any further clock confirmation. One BelowNormal JVM at a time,1or4workers, Xms256m Xmx512m ActiveProcessorCount4. Estimated1-3min, each UCI request60s safety. Never overlap with clocks or other benchmarks; preserve failures and raw output. JFR overhead is intentionally unestimated, so do not use profiled timing as production performance."
+}

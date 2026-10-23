@@ -23,7 +23,10 @@ passed clock-runtime-v2 identity/parity qualification and opening binding. Its
 serial executor started W1 at 2026-10-23T04:25:03Z and will start W4 only after
 W1 audits pass. Do not launch it again. Next: inspect both completion receipts,
 run `summarize_adaptive_clock_v1.py`, and apply the frozen strength-selection rule.
-Fresh confirmation is conditional, not automatic. No policy sweep or bespoke
+Before any further clocks, execute the frozen short access-profile-v1 observation
+of the unchanged baseline to distinguish traffic counts from an obvious access
+cost concentration. Sampling limitations must remain explicit; no TT change is
+authorized. Fresh confirmation is conditional, not automatic. No policy sweep or bespoke
 Search redesign. Passive host observers are read-only and do not affect stopping.
 Absent completion never permits duplicating a live run; reconcile any
 interruption before retrying under a new name. Existing full-window remains a
@@ -102,7 +105,7 @@ Challenge decisions before substantial execution:
 | T1 | Completed hints materially reduce current CP64 request work despite no ordinary proof. | SUPPORTED mechanism value in diagnostic-v1: hints-off increases D6 work/time at W1/W4, despite slightly cheaper fixed-node requests. Not Elo evidence. |
 | T2 | Current capacity/replacement loses consequential guidance. | Full-trajectory check complete: maximum37.56% occupancy, no saturation demonstrated; retained work benefit concentrated early, later results nearly neutral/slightly adverse. No capacity/replacement redesign justified in tested domains; long clocks remain untested. |
 | T3 | Aspiration/PVS/iteration or root guidance consumes hints ineffectively. | Full-window reduces some request costs but clock gain is unconfirmed. ADAPTIVE16 cost/completion gates pass W1/W4 with diagnostics OFF; NEXT one frozen paired clock screen on fresh development openings. No width sweep. |
-| T4 | TT access/coordination costs consume the information benefit. | Fixed-node hints-off is about 4-5% cheaper but completes less depth; D6 becomes 23-33% slower in aggregate. Retain whole-request economics, no locking/layout variant. Profiling only if decision value remains. |
+| T4 | TT access/coordination costs consume the information benefit. | Fixed-node hints-off is about4-5% cheaper but D6 becomes23-33% slower; this does not isolate ordinary-probe cost. NEXT short frozen access-profile-v1 sampling after adaptive clocks to seek an obvious cost concentration, with explicit finite-sampling/threshold limits. No locking/layout variant. |
 | T5 | Producer depth/selective restrictions leave valuable proof or guidance unavailable. | Zero ordinary proof confirmed; completed hints provide value. No evidence yet justifies weakening proof restrictions or binding-policy experimentation. Empty proof probes/repeated writes are traffic observations, not permission to alter TT access/replacement. |
 | T6 | A promising integrated candidate improves practical strength. | Full-window W1/W4 clock results inconclusive, neither reaches frozen confirmation-selection gate. W4 CPU ratio0.789 is conditional resource evidence, not strength equivalence. Any adaptive screen requires its independent prospective diagnostic gate. No promotion. |
 
