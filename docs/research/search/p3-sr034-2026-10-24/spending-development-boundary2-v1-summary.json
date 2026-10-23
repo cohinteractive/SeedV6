@@ -1,0 +1,120 @@
+{
+  "status": "passed",
+  "bindingSha256": "665cf967aee860876bdb27159236ec507c57662243479028ec63e1aec2fb4fe0",
+  "execution": {
+    "exitCode": 0,
+    "wallSeconds": 1723.8701449000073,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 10,
+    "totalOwnedCpuSeconds": 1745.53125
+  },
+  "resourceQualification": {
+    "start": {
+      "utc": "2026-10-23T23:12:29.383214+00:00",
+      "monotonic": 77212.2086181,
+      "ticks": [
+        8025080781250,
+        8352652968750,
+        912768750000
+      ],
+      "availableBytes": 18959740928,
+      "memoryLoadPercent": 44
+    },
+    "end": {
+      "utc": "2026-10-23T23:41:13.269927+00:00",
+      "monotonic": 78936.0953318,
+      "ticks": [
+        8204760625000,
+        8537277031250,
+        935011250000
+      ],
+      "availableBytes": 18878439424,
+      "memoryLoadPercent": 44
+    },
+    "elapsedSeconds": 1723.8867136999907,
+    "busyCpuSeconds": 2718.671875,
+    "ownedCpuSeconds": 1745.53125,
+    "otherAverageLogicalCores": 0.5645038141232269,
+    "memoryEndpointsPass": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used.",
+    "legacyOneCoreGatePassed": true,
+    "passed": true,
+    "protocol": "SR034 spending-economics-v1 current serial-W1 host plus direct delivery qualification"
+  },
+  "postDeliveryPassed": true,
+  "actorDelivery": {
+    "nativeCpuToSearchElapsed": {
+      "baseline": 1.010723250349401,
+      "candidate": 1.013410679620321
+    },
+    "absoluteDifference": 0.0026874292709200276,
+    "passed": true
+  },
+  "clockReliability": {
+    "clockReliabilityPassed": true,
+    "maximumRequestOverHardMillis": 7.309599999999989
+  },
+  "clockAnalysisSha256": "0e3c2d8c748397719a61c7182d3f3ac5e87447a9888d8a21349a445f600ef41a",
+  "results": {
+    "wdl": [
+      36,
+      17,
+      11
+    ],
+    "terminations": {
+      "normal": 64
+    },
+    "statistics": {
+      "pairs": 32,
+      "pentanomial": [
+        0,
+        5,
+        9,
+        6,
+        12
+      ],
+      "score": 0.6953125,
+      "logisticElo": 143.33015984736542,
+      "pairedHoeffding95Score": [
+        0.4552318021700198,
+        0.9353931978299802
+      ],
+      "pairedHoeffding95Elo": [
+        -31.19166107853574,
+        464.28638480555315
+      ],
+      "pairScoreStandardError": 0.049866726363232264,
+      "pairedNormal95Score": [
+        0.5975755123011508,
+        0.7930494876988492
+      ],
+      "pairedNormal95Elo": [
+        68.68335704721954,
+        233.37351323501588
+      ],
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 3706,
+        "nodes": 589789962,
+        "elapsedNanos": 831180790300
+      },
+      "candidate": {
+        "requests": 3719,
+        "nodes": 625877268,
+        "elapsedNanos": 881491105200
+      }
+    }
+  },
+  "matchWallSeconds": 1719.9402958000137,
+  "evidence": {
+    "raw\\spending-development-boundary2-v1\\baseline-uci.txt": "33f30b4a3fe9164f71154f3ea928a7fe7fa5c6e05cee0d7917b7fffc134163cd",
+    "raw\\spending-development-boundary2-v1\\candidate-uci.txt": "506f6d693af06fe67f34524316e6cd37581a89e4fda0933e95e1207995b96a45",
+    "raw\\spending-development-boundary2-v1\\config.json": "fe1c26988a540aa74e517d3723bc7e3898f7169e56de5a4d5eb20519882c69b7",
+    "raw\\spending-development-boundary2-v1\\games.pgn": "9e4160e5b472caa62c0c520a605b427a23d69c188778341b3eea882e51fa1dad",
+    "raw\\spending-development-boundary2-v1\\process-cost.json": "27fd1cee256e9f627a3e62ea198c19635ed22764d5987de98ff67d90b06e9a91",
+    "raw\\spending-development-boundary2-v1\\run.json": "75f3f481356dc62a517cc53579ebb137b0f6f57cd2fa74a4a205809872fac71d",
+    "raw\\spending-development-boundary2-v1\\runner.txt": "6fef15f9f35059f4a8d108919286d43b242c6629941e685fb544b2bf4e78866d"
+  }
+}

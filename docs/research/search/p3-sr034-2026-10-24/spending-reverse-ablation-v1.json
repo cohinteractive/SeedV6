@@ -1,0 +1,93 @@
+{
+  "status": "passed",
+  "pairs": 32,
+  "evidence": {
+    "spending-development-unstable2-v1-summary.json": "f6f62b7ad4313eb7f22231c7b5e50e95049a2aeb062f4b09e13b5bd7c9b34823",
+    "spending-development-boundary2-v1-summary.json": "5c33a816f1684e0cf492ff0da05eff358be8a41564af2f311339e8d20d1c6dd3"
+  },
+  "scriptSha256": "fee23a83d9c62279b07a016d057aafbf2efa708724a69c6877397fc5b8dd1b9c",
+  "pairMeans": {
+    "unstable2": [
+      0.5,
+      1.0,
+      0.5,
+      0.25,
+      0.75,
+      0.25,
+      0.75,
+      0.5,
+      0.5,
+      1.0,
+      0.75,
+      0.25,
+      0.0,
+      1.0,
+      1.0,
+      0.5,
+      0.75,
+      1.0,
+      0.25,
+      0.5,
+      0.0,
+      0.5,
+      0.5,
+      0.5,
+      1.0,
+      0.75,
+      1.0,
+      0.5,
+      0.75,
+      0.75,
+      0.25,
+      0.75
+    ],
+    "boundary2": [
+      0.5,
+      1.0,
+      1.0,
+      0.5,
+      0.25,
+      0.25,
+      0.75,
+      1.0,
+      0.25,
+      1.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      0.5,
+      0.25,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      1.0,
+      0.75,
+      0.75,
+      0.5,
+      0.75,
+      0.5,
+      0.5,
+      1.0,
+      1.0,
+      0.75,
+      1.0
+    ]
+  },
+  "boundaryMinusUnstableScore": 0.09375,
+  "pairedNormal95ScoreDifference": [
+    -0.03406568445754274,
+    0.22156568445754274
+  ],
+  "boundedPair95ScoreDifference": [
+    -0.38641139565996035,
+    0.5739113956599604
+  ],
+  "limits": [
+    "Descriptive development comparison against separate baseline games on the same32 openings; not a direct head-to-head Elo estimate.",
+    "Complete-policy effects and environmental/game-path differences remain; no independent component confirmation or causally valuable move labels.",
+    "Both intervals assume representative independent opening pairs; no correction can establish absent systematic bias."
+  ]
+}

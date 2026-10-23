@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "phase": "descriptive analysis before any confirmation",
+  "scriptSha256": "98599fa5b3150faedde01805626313f56b397726c361e05915084ce0eb1cc6bf",
+  "error": "digest(__file__) supplied str; helper requires pathlib.Path. Raised before writing the result.",
+  "impact": "No game/protocol/runtime/evidence changed; repair caller type and rerun derived analysis."
+}

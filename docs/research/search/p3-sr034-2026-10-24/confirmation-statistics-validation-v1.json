@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "checks": [
+    "Five script syntax checks",
+    "Single-finalist domain, fixed block/sample and alpha consistency",
+    "Closed-form variance and standard error",
+    "95% normal quantile",
+    "Permutation invariance",
+    "Zero-variance refusal",
+    "Elo transform",
+    "All8292 closed request/clock records reproduce the original audit exactly; confirmation output omits strength"
+  ],
+  "fixture": {
+    "files": {
+      "raw\\confirmation-clock-audit-fixture-v1\\games.pgn": "2ebcedac4196c93b13d741f487322b1c6e3a45ded5b8bb20aa53609d25ecf42c",
+      "raw\\confirmation-clock-audit-fixture-v1\\process-cost.json": "aaa087c6605ee0f6ec48ab2bd0629ba80875241b2ce7734f3921029f3ac212ad",
+      "raw\\confirmation-clock-audit-fixture-v1\\run.json": "1fb148b294abede8d3acb488add8f117e034516839eac4f9bf531ad36a866836"
+    },
+    "referencePath": "spending-development-unstable2-v1-clock-analysis-v1.json",
+    "referenceSha256": "65ca9251af910ec4ab7b73071a6257215fdbcbf23d59a85d7ae7ce9e5f504a11"
+  },
+  "files": {
+    "prepare_confirmation_v1.py": "abd6e6b7ca43057c4539d54156682e246f471c8ccfb49a3e62ddd397a17acf25",
+    "run_confirmation_block_v1.py": "2211ab9a0f1cfcd366d3fde7f940c82364c029f76311047b7df3e973264fd71f",
+    "audit_confirmation_clock_v1.py": "8fbbb2bdbd24964bab195eae0a9067f06c20c5ff05767226dcf669a2fb2a2e97",
+    "analyze_confirmation_v1.py": "081d847e46c8710e02a8661f5065180aff41c8e09a880a8daab81782f7aa7037",
+    "validate_confirmation_v1.py": "55b7014a7a6f786790807a4b4517f6595e521a4623072a8f2f86d225e193fb42",
+    "confirmation-v1.json": "f957627ed939b7db9f66a106d6363585163a0276df71f6001396903a1071ee10"
+  }
+}

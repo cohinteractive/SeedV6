@@ -1,0 +1,20 @@
+{
+  "selectedProfile": "boundary2",
+  "status": "selected_for_independent_confirmation_only",
+  "evidence": {
+    "clock-development-stable3-half-v1-compact.json": "33a91e2aa5aecf82e9dbcd01514cb5c6d5df1d18693a0fe753a24293fb8152d8",
+    "clock-development-half-v1-compact.json": "d92ea640bd631afe8eea031076f4eb872375ac2046e44254ef481ea461129664",
+    "spending-development-unstable2-v1-summary.json": "f6f62b7ad4313eb7f22231c7b5e50e95049a2aeb062f4b09e13b5bd7c9b34823",
+    "spending-development-boundary2-v1-summary.json": "5c33a816f1684e0cf492ff0da05eff358be8a41564af2f311339e8d20d1c6dd3",
+    "spending-reverse-ablation-v1.json": "220719c8d2e4e130e25f095ffb16c406bc446b8f1e8f3229f09816f829e956de"
+  },
+  "rationale": "All four planned comparisons closed. Both spending profiles pass all gates and the .55 development rule. BOUNDARY2 has higher development score (.6953125 versus .6015625), lower native CPU expansion (6.33% versus7.66%), fewer responses below500ms (37 versus131), and omits the extra-iteration trigger. Select the simpler complete profile without retuning.",
+  "componentLimit": "Matched opening-pair score difference BOUNDARY2 minus UNSTABLE2 is .09375, approximate95% [-.03407,+.22157]; component superiority is not independently established. No direct head-to-head Elo estimate.",
+  "notSelected": {
+    "stable3-half": "Resource-unqualified and below selection score; preserve, no replay.",
+    "half": "Qualified inconclusive .50; below selection rule.",
+    "unstable2": "Qualified promising .6015625; retained unconfirmed alternative, no second confirmation allocation."
+  },
+  "noProductionPromotion": true,
+  "noIndependentGamesYet": true
+}

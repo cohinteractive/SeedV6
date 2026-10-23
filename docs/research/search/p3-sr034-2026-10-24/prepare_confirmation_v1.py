@@ -6,6 +6,8 @@ from run_trajectory_v1 import HERE, ROOT, digest, write_new, module
 
 
 def main():
+    assert not (HERE/'confirmation-v1-binding.json').exists(), 'Never replace an existing confirmation binding'
+    assert not any(HERE.glob('sr034-confirmation-v1*')) and not any((HERE/'raw').glob('sr034-confirmation-v1*')), 'Inspect partial preparation; do not overwrite it'
     plan = json.loads((HERE/'confirmation-v1.json').read_text()); d = plan['domain']
     selected = plan['selectedProfile']; assert selected in ('unstable2','boundary2')
     decision = json.loads((HERE/'confirmation-selection-v1.json').read_text()); assert decision['selectedProfile'] == selected

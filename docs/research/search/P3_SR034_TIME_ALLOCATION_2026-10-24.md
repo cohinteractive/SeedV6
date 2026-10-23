@@ -70,9 +70,9 @@ does not confirm W2-16 strength. Fresh independent confirmation remains 10+0.1.
 | Question | Current state | Cheapest next discriminating evidence |
 | --- | --- | --- |
 | H1 stability/economical stops | Both planned comparisons closed; neither qualifies for confirmation | HALF is resource-qualified but score .50 is below the frozen .55 selection rule; STABLE3_HALF is resource-unqualified. Retain uncertainty, no replay. |
-| H2 justified instability spending | UNSTABLE2/BOUNDARY2 correctness and fresh timing qualified | Execute the prospective paired comparison/control after HALF finishes; no production selection. |
+| H2 justified instability spending | Both spending profiles qualify; simpler BOUNDARY2 selected for confirmation | Extra-iteration trigger has no demonstrated advantage; matched development contrast remains uncertain. Confirm the complete selected policy. |
 | H3 iteration economics | Large prediction tails; forecasting deprioritized | Use actual completed-boundary policies and complete-request cost; no guarantee inferred from predicted cost. |
-| H4 whole-game redistribution | Saving changes spending but has no demonstrated strength gain; spending family admitted | Finish both spending/control comparisons and their resource gates; no interim selection or confirmation reuse. |
+| H4 whole-game redistribution | Promising BOUNDARY2 development; fresh independent confirmation required | One frozen128-pair W1/10+0.1 assessment; no development pooling or automatic promotion. |
 | Root-effort instrumentation | Neutral measurement complete; threshold consumer deprioritized | The expected discrimination fails at relevant depths and reverses with depth; retain evidence without fitting an opposite rule. |
 | Multiworker strength | Unconfirmed | Validate representative/all supported lifecycle compatibility; obtain separate strength confirmation before any multiworker claim. |
 
@@ -105,18 +105,23 @@ generation comparisons are closed, not extended or replayed.
 build76 versus exact native build74 core+UCI and passing all three actual UCI
 preflights. `spending-development-v1-binding.json` binds the unchanged32 reused
 development openings, profiles, runtime classes, scripts and prior diagnostics.
-UNSTABLE2 a01 completed all64 games and post-delivery checks with every integrity,
-resource and clock gate passing. Its score .6015625 meets the frozen development
-selection rule, but is not independent confirmation. BOUNDARY2 a01 passed its
-pre-delivery/admission and launched at `2026-10-23T23:12:29Z`; its owned wrapper
-is active. Inspect exclusive launch/summary receipts before resuming. Run the prescribed control to completion regardless
-of UNSTABLE2's score; no interim score inspection or overlapping computation.
-After both are closed, select at most one qualified complete finalist using the
-whole programme's evidence and costs, then freeze fresh independent10+0.1
-confirmation. An outcome-driven extension or replay is not allowed. Root-effort
-thresholds and numerical forecasts remain deprioritized on mechanism evidence,
-not universally rejected.
-No policy is selected for confirmation or production. The closed first family
+Both spending-family comparisons completed with all correctness, resource and
+clock gates passing. BOUNDARY2 is selected as the single complete finalist:
+score .6953125 versus UNSTABLE2 .6015625, lower CPU expansion and fewer low-clock
+responses, with the extension trigger removed. The matched development contrast
+is uncertain; no component superiority or production adoption is inferred.
+`confirmation-selection-v1.json` and `confirmation-v1.json` freeze that decision
+and a fresh128-pair W1/10+0.1 study in four32-pair blocks, one final score look,
+alpha .05 paired-normal primary plus bounded-pair sensitivity. Statistical and
+closed-fixture audit validation pass. Next run `prepare_confirmation_v1.py` once
+to freeze all fresh exclusions/openings and executable bindings, then run blocks1-4
+serially using `run_confirmation_block_v1.py finalist <block>`. No interim score
+inspection, retuning, replay, replacement block or second finalist is allowed.
+Any correctness/resource/clock failure stops the affected confirmation; retain
+partial evidence and diagnose. Before resumption inspect launch/completion
+receipts, and never restart a launched block. Root-effort thresholds and numerical
+forecasts remain deprioritized; no unrelated successor is launched.
+BOUNDARY2 is selected for confirmation only. The closed first family
 used the **exact accepted native build74 core JAR**, matched research launcher
 and startup warmup versus frozen build75 candidates. The spending family uses
 its separately frozen build76 installation and exact native core+UCI comparator.
@@ -490,3 +495,36 @@ must be frozen only after BOUNDARY2 is closed and finalist selection is recorded
 No independent games have started. The prospective final analysis uses one
 hypothesis at two-sided alpha .05, with paired-normal primary inference and
 bounded-pair sensitivity; it cannot silently transfer evidence from development.
+
+## BOUNDARY2 selection and frozen independent confirmation
+
+BOUNDARY2 passes all gates in64 normal games:36 wins,17 draws,11 losses, score
+.6953125, estimated+143.3 Elo. Paired-normal95% [+68.7,+233.4] is positive, while
+bounded-pair95% [-31.2,+464.3] includes equality. This is selected development,
+not independent confirmation. Match host .565 other average logical cores and
+all pre/post delivery/memory/actor gates pass. All7,425 request-node and clock
+conservation checks pass; maximum sampled overrun7.310 ms is on baseline, versus
+.518 ms for candidate. No abnormal ending or flag. Candidate/baseline elapsed
+881.5/831.2 s, native CPU893.3/840.1 s, nodes625.9/589.8 million, incomplete
+nodes70.0/214.6 million, minimum pre-increment reserve95/1142 ms, low-clock
+responses37/0 and peak working set385.3/355.0 MB. Candidate soft stops:3,165.
+
+The matched32-opening descriptive reverse ablation gives BOUNDARY2 minus
+UNSTABLE2 score .09375, paired-normal95% [-.0341,+.2216]. This is not direct
+head-to-head Elo or an independent component result. Prefer BOUNDARY2's higher
+development score, lower CPU expansion (6.33% versus7.66%), fewer low-clock
+responses and simpler extension-off rule. Retain UNSTABLE2 as an unconfirmed
+alternative; no second finalist is admitted. A derived-analysis caller-type
+error raised before writing its result; the failed script hash/error is retained
+in `spending-contrast-analysis-a01-failure.json`, then the corrected analysis
+passed without changing any game, protocol or runtime.
+
+`confirmation-statistics-validation-v1.json` passes the closed-form pair variance,
+standard error,95% quantile, permutation, zero-variance and Elo checks. The new
+outcome-blind clock audit exactly reproduces all8,292 prior UNSTABLE2 request/
+clock records in an explicitly derived fixture, with strength removed from its
+output. That fixture is not confirmation data. The selection/protocol and scripts
+are ready for fresh input freezing; no independent game has started yet. Expected
+confirmation duration is about2h15 at the same background-friendly serial W1
+resources. All128 fresh pairs and four blocks are fixed before any play, with
+one final look, no early statistical stopping or retrospective extension.
