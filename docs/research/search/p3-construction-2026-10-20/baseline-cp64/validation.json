@@ -1,6 +1,45 @@
 {
-  "status": "focused-checks-pass",
-  "latest_junit": [
+  "status": "automated-windows-qualification-pass; final-native-GUI-interrupted; native-Mac-unavailable",
+  "log_directory": "build/baseline-consolidation",
+  "passed_stages": [
+    "core-01.log",
+    "compile-02.log",
+    "tests-06.log",
+    "tests-07.log",
+    "tests-08.log",
+    "checks-09.log",
+    "package-02.log",
+    "parity-01.log",
+    "scores-10.log",
+    "tests-11.log",
+    "package-67.log",
+    "package-68.log",
+    "package-69.log",
+    "parity-68.log",
+    "parity-69.log",
+    "comparison-01.log",
+    "archive-01.log",
+    "post-match-01.log"
+  ],
+  "preserved_failed_stages": [
+    "gui-03.log",
+    "tests-04.log",
+    "tests-05.log",
+    "package-01.log"
+  ],
+  "windows_precommit_candidate": "candidate-20261022T221732-bc1cbce0",
+  "packaged_parity": "raw/parity-01/result.json",
+  "calibration": "calibration-transitions.json",
+  "native_mac": "not available on Windows; exact handoff in parent construction record",
+  "skipped": [
+    "Full unrelated suite",
+    "Training",
+    "Native macOS execution",
+    "Live BotLi/deployment",
+    "External strong-engine WDL fit",
+    "Final build69 packaged GUI interaction: Computer Use physically stopped by user"
+  ],
+  "previous_junit": [
     {
       "module": "engine-core",
       "suite": "com.ohinteractive.seedv6.search.driver.BaselineEngineTest",
@@ -66,32 +105,181 @@
       "skipped": 1
     }
   ],
-  "log_directory": "build/baseline-consolidation",
-  "passed_stages": [
-    "core-01.log",
-    "compile-02.log",
-    "tests-06.log",
-    "tests-07.log",
-    "tests-08.log",
-    "checks-09.log",
-    "package-02.log",
-    "parity-01.log"
+  "latest_junit": [
+    {
+      "module": "engine-core",
+      "suite": "com.ohinteractive.seedv6.search.driver.BaselineEngineTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_xml": "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\test-results-final69\\engine-core\\TEST-com.ohinteractive.seedv6.search.driver.BaselineEngineTest.xml",
+      "sha256": "7c2be55141be0d804f4a622c71581f805f236bdd58ab9cc5406832a2c5a404df"
+    },
+    {
+      "module": "engine-training",
+      "suite": "com.ohinteractive.seedv6.training.service.BaselineArenaTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_xml": "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\test-results-final69\\engine-training\\TEST-com.ohinteractive.seedv6.training.service.BaselineArenaTest.xml",
+      "sha256": "54f527e4ec5ec1df201726b8570f734e5d6d4d2c47fe3e774b2a286ac4b91847"
+    },
+    {
+      "module": "app-gui",
+      "suite": "com.ohinteractive.seedv6.gui.BaselineScoreTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_xml": "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\test-results-final69\\app-gui\\TEST-com.ohinteractive.seedv6.gui.BaselineScoreTest.xml",
+      "sha256": "d1ad73972e6daf3801a9e62ce5a238358d35ebc8b62650bfe46cb79426776b3d"
+    },
+    {
+      "module": "app-gui",
+      "suite": "com.ohinteractive.seedv6.gui.ConstructionDesktopTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_xml": "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\test-results-final69\\app-gui\\TEST-com.ohinteractive.seedv6.gui.ConstructionDesktopTest.xml",
+      "sha256": "7cadf67b977ad591b7bde4ead18dd0e3e69517bd6e7ee0f9084e117787a1dd3b"
+    },
+    {
+      "module": "app-gui",
+      "suite": "com.ohinteractive.seedv6.gui.ConstructionGameplayTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_xml": "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\test-results-final69\\app-gui\\TEST-com.ohinteractive.seedv6.gui.ConstructionGameplayTest.xml",
+      "sha256": "d675001f43caab022f5e5eaac29a5549de62d62a3f01421c320f69b684b3325b"
+    },
+    {
+      "module": "app-gui",
+      "suite": "com.ohinteractive.seedv6.gui.ConventionalDesktopTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_xml": "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\test-results-final69\\app-gui\\TEST-com.ohinteractive.seedv6.gui.ConventionalDesktopTest.xml",
+      "sha256": "f175951c89cc35826339a6518b9448c4c034003a10d85afc8a628e4610f8fe1a"
+    },
+    {
+      "module": "app-gui",
+      "suite": "com.ohinteractive.seedv6.gui.ConventionalGameplayTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_xml": "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\test-results-final69\\app-gui\\TEST-com.ohinteractive.seedv6.gui.ConventionalGameplayTest.xml",
+      "sha256": "55cc6054a251ec5bd538c64247d8e465b86c1c47d7569846a30fba6e38934d32"
+    },
+    {
+      "module": "app-gui",
+      "suite": "com.ohinteractive.seedv6.gui.PlayRedesignDesktopTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_xml": "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\test-results-final69\\app-gui\\TEST-com.ohinteractive.seedv6.gui.PlayRedesignDesktopTest.xml",
+      "sha256": "5265c73ab4aa5b9db98400bbc82e66f783a382b30829be66fec23afdfd844813"
+    },
+    {
+      "module": "app-uci",
+      "suite": "com.ohinteractive.seedv6.uci.NnueCandidateTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_xml": "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\test-results-final69\\app-uci\\TEST-com.ohinteractive.seedv6.uci.NnueCandidateTest.xml",
+      "sha256": "2f4ad22150c4ff5f228131abe856ce4d5e6340363fdf82900d42b50c3f2f23e8"
+    },
+    {
+      "module": "app-uci",
+      "suite": "com.ohinteractive.seedv6.uci.StandaloneBoundaryTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_xml": "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\test-results-final69\\app-uci\\TEST-com.ohinteractive.seedv6.uci.StandaloneBoundaryTest.xml",
+      "sha256": "e6fa8c37979bff273ddcfe0c408171f321cadb989397ee68b7db1e7c4f272bd4"
+    }
   ],
-  "preserved_failed_stages": [
-    "gui-03.log",
-    "tests-04.log",
-    "tests-05.log",
-    "package-01.log"
+  "windows_build69": {
+    "candidate": "candidate-20261023T003420-389d695a",
+    "build": 69,
+    "source_revision": "18f3c4f12a01417a48fb4c044ff3bde2c5b44b2d",
+    "source_status_at_packaging": "clean",
+    "packaging_runtime": "Temurin 21.0.12.1",
+    "packages": {
+      "gui": {
+        "receipt": "dist\\windows\\candidates\\candidate-20261023T003420-389d695a\\candidate.json",
+        "receipt_sha256": "7396bdfcfa03e8faa45a20910fc64f2acb3f5040a15c94604dffc260ac14cd7f",
+        "archive": "dist\\windows\\candidates\\candidate-20261023T003420-389d695a\\SeedV6-GUI-windows-x64.zip",
+        "archive_sha256": "fb4b8b38e4cff8faaa045f6e59c6f7e27c17c3d03b1eb9b098d12b7e57cd5c62",
+        "core_jar_sha256": "a7dd735ddc875cfad7a6a6ebd2d24d6fe9bccc313253334dba119d2b5803fc91",
+        "manifest_sha256": "a1b2b46488b41cf8111526ba713d2fbfb76040d7b1d475aab316c36ef2d7aa2e",
+        "image_check": "headless-resources-jni-passed",
+        "extracted_zip_check": "headless-resources-jni-passed"
+      },
+      "uci": {
+        "receipt": "releases\\candidates\\windows-x64\\candidate-20261023T003420-389d695a\\candidate.json",
+        "receipt_sha256": "d475c3fb5f7c5e92e576008ef081aba70bc4967b7c9af76ee79bf66138c408b8",
+        "archive": "releases\\candidates\\windows-x64\\candidate-20261023T003420-389d695a\\SeedV6-UCI-windows-x64.zip",
+        "archive_sha256": "ccc48fe7f8f549c535534352f012a1bf08663a1e88e6c5b75fa6395f0eba5c05",
+        "core_jar_sha256": "a7dd735ddc875cfad7a6a6ebd2d24d6fe9bccc313253334dba119d2b5803fc91",
+        "manifest_sha256": "78ee20b02d2c29804fbaafd111c37f999d121b39a92f78f6666d9a9bcbbf5c68",
+        "image_check": "passed",
+        "extracted_zip_check": "passed",
+        "checks": [
+          "Threads=1: handshake/ready/hash/clear/depth/timed/clocks/stop/position/quit/book aliases and fallback",
+          "Threads=4: handshake/ready/hash/clear/depth/timed/clocks/stop/position/quit/book aliases and fallback",
+          "Threads=16: handshake/ready/hash/clear/depth/timed/clocks/stop/position/quit/book aliases and fallback",
+          "EOF during active multiworker search exits and closes pipes",
+          "terminate during active multiworker search exits and closes pipes",
+          "Missing/corrupt/incompatible model fails nonzero on stderr without protocol/fallback"
+        ],
+        "embedded_assets": "Missing, truncated, corrupt and incompatible embedded CP64 fail closed; no BREP2 fallback",
+        "e008_check": "passed",
+        "e008_scalar_vector_equal": true
+      }
+    },
+    "parity": {
+      "path": "build\\baseline-consolidation\\parity-69\\result.json",
+      "sha256": "278ca8c9d793ac77489c106b67f39c02c603f03fdba3605de762f9cdd4e30d9f",
+      "depth5_exact_cases": 8,
+      "terminal_mate_cases": 6
+    },
+    "runtime_comparison": {
+      "path": "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\runtime-class-audit69.json",
+      "sha256": "0c2838e19874647de8132c1e1ffd771eb617062a2964fc8abec9f1a5a6e25dfd",
+      "source_review": "Only factory identity strings, FlatSearchConfig validation text and build resource differ from frozen comparison; all other core/UCI class bytes and all network bytes match."
+    },
+    "interactive_gui": {
+      "status": "INTERRUPTED: physical Escape stopped Computer Use before final native window inspection",
+      "launch_log": "build/baseline-consolidation/native-gui-69.log",
+      "explicit_child_cwd": "C:/Windows/Temp",
+      "pending": "Verify three choices, CP64 move, NNUE / 100 label, configured/actual workers, stop and quit; close launched test app to release compute lease.",
+      "prior_evidence": "Build68 native GUI move/4-worker/stop checks and build69 real Swing tests passed. The build68 controller imposed repository cwd despite the invoking shell cwd; unrelated-cwd interactive portability was not verified then."
+    }
+  },
+  "score_observations": "score-observations.json",
+  "comparison": [
+    "comparison-200.json",
+    "comparison-1000.json",
+    "comparison-runtime.json"
   ],
-  "windows_precommit_candidate": "candidate-20261022T221732-bc1cbce0",
-  "packaged_parity": "raw/parity-01/result.json",
-  "calibration": "calibration-transitions.json",
-  "native_mac": "not available on Windows; exact handoff in parent construction record",
-  "skipped": [
-    "Full unrelated suite",
-    "Training",
-    "Native macOS execution",
-    "Live BotLi/deployment",
-    "External strong-engine WDL fit"
+  "evidence_limits": [
+    "Ignored local evidence is absent from fresh clones; preserve recorded raw paths.",
+    "Earlier fixed-name test screenshots were overwritten by later test runs before discovery; no reconstruction claimed. Final desktop tests now use unique run directories. Frozen weights, games and protocols were unaffected.",
+    "Native Mac and final packaged-GUI69 interactive acceptance remain outstanding; automated package status alone is not full acceptance.",
+    "No new independent strong-engine analysis or empirical search-score probability calibration; reused holdout and bounded corpus have stated limits."
+  ],
+  "final_swing_screenshots": [
+    "app-gui/build/nnue-gui/run-531a2632-e7a3-4c92-b90d-e1f6bb885a5a/human.png",
+    "app-gui/build/activation-gui/run-562d55e9-4bf5-478e-897f-a69bec2200b5/arena.png",
+    "app-gui/build/play-redesign/run-325004a8-dd7b-4dd2-a1d7-933f72976ce5/compact.png"
   ]
 }

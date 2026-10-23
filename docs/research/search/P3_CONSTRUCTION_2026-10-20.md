@@ -622,10 +622,10 @@ Clean build 68 (`b144a2bba7ba8f0e815845c1daa96f2bfc992ad0`) produced Windows
 candidate `candidate-20261022T222712-22584dcd`: native images and extracted ZIPs,
 standard UCI 1/4/16-worker lifecycle checks, four damaged embedded-CP64 rejection
 cases without fallback, retained E008, and eight exact GUI/UCI depth-5 cases plus
-six terminal/mate checks passed. Interactive native GUI play from an unrelated
-directory observed CP64 versus BREP2, 4/4 active workers then 0/4 after stop.
-Build 69's final labels/telemetry require the post-commit packaging check recorded
-below at closeout. [Validation index](p3-construction-2026-10-20/baseline-cp64/validation.json).
+six terminal/mate checks passed. Interactive native GUI play observed CP64 versus BREP2, 4/4 active workers then
+0/4 after stop. A later controller audit corrected its working-directory claim:
+the controller imposed the repository cwd despite the invoking shell location.
+Build 69's post-commit checks and outstanding interactive gate are recorded below. [Validation index](p3-construction-2026-10-20/baseline-cp64/validation.json).
 
 The fixed informational match completed at 2026-10-23T00:24:12Z. Both budgets use
 the same clean build-68 source, archived JARs, CP64 file, Windows Ryzen 5 5500
@@ -671,6 +671,55 @@ JSONs byte-for-byte. Raw games/protocols and exact JARs remain local-only under
 does not contain these ignored files. The reusable harness remains
 `paired_match.py --construction-comparison` and `analyze_confirmation.py --jars`
 for the archived runtime. Completed protocols and earlier experiments are intact.
+
+### Build 69 Windows qualification and remaining acceptance
+
+Runtime commit `18f3c4f12a01417a48fb4c044ff3bde2c5b44b2d`, build 69, was clean
+when `packageWindows` produced `candidate-20261023T003420-389d695a`. Both GUI
+and UCI native images and extracted ZIP gates pass. Their shared engine-core JAR
+SHA-256 is `a7dd735ddc875cfad7a6a6ebd2d24d6fe9bccc313253334dba119d2b5803fc91`.
+Standard UCI passes 1/4/16-worker depth/timed/clocks/stop/reset/quit and active-search
+EOF/termination checks; all four damaged embedded-CP64 cases fail without fallback.
+The separate E008 native launcher passes scalar/Vector checks. Packaged GUI/UCI
+match exactly in eight depth-5 score/move/nodes/PV cases and six terminal/mate
+checks. The final package uses bundled Temurin 21.0.12.1 and needs no network store.
+
+The class audit against archived build68 passes: all 23 UCI classes and all but
+three of 218 core classes are byte-identical. Source inspection confirms those
+three changes are score-mapping identity strings and a validation error message;
+the version resource also changes. No inference, search algorithm, threshold or
+weight changes separate the tournament engines from the final application search.
+GUI/Arena presentation and telemetry corrections are outside that match runtime.
+
+Final native GUI launch explicitly set child cwd `C:/Windows/Temp` and removed
+external Java environment variables. **The physical Escape key stopped Computer
+Use before final window inspection.** No further desktop interaction was attempted.
+The final packaged-GUI smoke therefore remains incomplete, despite passing real
+Swing tests and the prior build68 native smoke. Do not equate package automation
+with this missing interactive acceptance. The launched test app should be closed
+to release its compute lease; its wrapper has a 15-minute timeout.
+
+Windows GUI handoff: launch
+`dist/windows/candidates/candidate-20261023T003420-389d695a/SeedV6-GUI/SeedV6-GUI.exe`
+from an unrelated directory. Verify HCE/BREP2-32/CP64 choices, a CP64 legal move and
+`NNUE / 100` White-perspective label, four actual workers during a sufficiently
+large search, zero after stop, and clean quit. Network Training/Arena learning
+must exclude frozen CP64. The standard UCI image is under
+`releases/candidates/windows-x64/candidate-20261023T003420-389d695a/SeedV6-UCI`.
+The [validation index](p3-construction-2026-10-20/baseline-cp64/validation.json)
+records receipt/archive hashes, test XMLs, raw paths, limitations and prior checks.
+Earlier fixed-name test screenshots were overwritten before discovery; final tests
+now use unique run directories. No recovery of overwritten images is claimed.
+Frozen experimental protocols, outcomes, raw games and inference weights remain intact.
+
+The repository master revisions are **P3-R016 / P3-F014**. Exact changed headings
+are each document's title metadata/status and `Current baseline decision - 23
+October 2026`. Historical experiment/acceptance sections keep their original scope.
+**PROJECT_SOURCE_REFRESH_REQUIRED: YES**: refresh both
+`source/CHESS_SEARCH_CONTRACT.md` and `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`
+before future external-mirror-dependent GPT planning. Windows interactive and
+native Mac acceptance are pending; this evidence closeout is not full operational
+or owner acceptance. No push, deployment, training or live BotLi change occurred.
 
 ### Native macOS acceptance handoff
 

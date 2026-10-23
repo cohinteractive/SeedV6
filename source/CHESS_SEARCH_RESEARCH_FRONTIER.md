@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F013**
+Internal frontier revision: **P3-F014**
 
-Status: **The owner has selected full Construction V1 + Conventional NNUE CP64 as the production and Search Phase 3 baseline. Consolidation and technical qualification are in progress. The E008 comparison is informational and cannot veto this selection. Native macOS acceptance of this consolidation remains unperformed.**
+Status: **The owner has selected full Construction V1 + Conventional NNUE CP64 as the production and Search Phase 3 baseline. Implementation, focused correctness tests, Windows image/ZIP checks and the informational E008 comparison are complete. The final packaged Windows GUI interaction was stopped with Escape; native macOS remains untested. These acceptance gates remain open; strength does not veto the selection.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -34,6 +34,17 @@ only immutable network tables and the coherently synchronized request TT are sha
 Explicit worker settings 1-16 are honored; Max is bounded by available processors.
 The default requested hash remains 64 MiB. No score rescaling or frozen-weight
 mutation is part of this consolidation.
+
+Build69 runtime source is `18f3c4f12a01417a48fb4c044ff3bde2c5b44b2d`.
+CP64 uses BT4_Q_LOGIT400_V1 teacher-link units, displayed as NNUE score / 100;
+no numeric rescaling occurred. Play and Arena share explicit units/perspective.
+At one worker/Hash32, 24 color-reversed opening pairs per budget give Construction
+minus E008 Elo 0.0 (paired bootstrap 95% -65.9 to +65.9) at 200 ms and -51.0
+(-137.0 to +36.3) at 1000 ms. These results establish neither an advantage nor
+equivalence within +/-50 Elo. All 96 games are legally audited and uncensored.
+The comparison used clean build68; a class/source audit verifies unchanged
+search/inference in the final package. Exact protocols/runtime remain preserved.
+No future search-strengthening work is implicitly launched by this handback.
 
 The 18-20 October authority and champion accounts below are historical scopes,
 not contradictory current defaults. The explicit current owner launch authorizes
