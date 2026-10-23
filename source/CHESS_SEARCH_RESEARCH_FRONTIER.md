@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F016**
+Internal frontier revision: **P3-F017**
 
 Status: **Active owner-authorized TT Information Effectiveness and Reuse CGLHW, launched 23 October 2026. Build69 Construction V1 + frozen CP64 remains the selected production and research baseline. No TT authority change or production promotion is authorized. Existing packaged-Windows-GUI and native-macOS qualifications remain open and do not block headless research.**
 
@@ -19,9 +19,12 @@ full-game retention and access profiling are complete. Completed legal hints
 have measured mechanism value despite zero ordinary proof under full selectivity;
 no measured capacity/access concentration justifies a binding TT change.
 Full-window clock screens are inconclusive and below their frozen selection gate.
-Existing ADAPTIVE16 has promising development results, with no confirmed gain.
-W1 may proceed to fresh confirmation; W4 first needs fresh resource qualification
-because substantial desktop load overlapped its development games. The owner
+Existing ADAPTIVE16 completed W1 independent128-pair confirmation:120/58/78 W/D/L,
+Elo+57.5, primary paired-normal97.5% interval+14.2 to+102.7. That supports a gain
+under the frozen primary assumptions; the conservative bounded interval crosses
+zero. CPU and peak memory are essentially unchanged at the fixed clock. W4 first
+needs fresh resource qualification because substantial desktop load overlapped
+its development games; that separate screen is now running. The owner
 instructed Codex to wait until the workstation is quiet, then continue. Frozen
 bounded block studies retain the existing confirmation clock and prospective
 resource/analysis gates. Production remains WIDEN16; workstream closure and

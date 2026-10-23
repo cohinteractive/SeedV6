@@ -1,9 +1,9 @@
 # Phase 3: TT Information Effectiveness and Reuse
 
-Owner-authorized CGLHW, 23 October 2026 (Pacific/Auckland). **ACTIVE: diagnostics
-and development complete; adaptive confirmation awaits reliable host resources.** This is subordinate evidence and continuity
+Owner-authorized CGLHW, 23 October 2026 (Pacific/Auckland). **ACTIVE: adaptive W1
+gain supported by the primary confirmation test; W4 resource-qualified screen running.** This is subordinate evidence and continuity
 under [Contract P3-R017](../../../source/CHESS_SEARCH_CONTRACT.md) and
-[Frontier P3-F016](../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md), not a new
+[Frontier P3-F017](../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md), not a new
 contract or an acceptance/promotion authority.
 
 ## Resume and current work selection
@@ -39,8 +39,12 @@ The owner answered: **wait until the workstation is quiet, then continue**.
 The controller started at2026-10-23T05:49:12Z; its initial quiet-host check passed
 (0.59 busy logical cores). Both pilot blocks completed, including pause/resume,
 export, game and resource audits (other host load0.71/0.67 logical cores).
-W1 confirmation admission began at2026-10-23T05:51:56Z; four32-pair blocks must
-finish before its strength endpoint. It is proceeding through the frozen sequence.
+W1 confirmation completed all128 pairs at2026-10-23T08:11:19Z, with a primary
+pair-normal97.5% interval supporting a gain (details below). All four blocks pass
+resource/game audits; one failed pre-block admission caused a15min wait and no
+games were consumed or excluded. W4 requalification admission then began; its
+separate32-pair endpoint must pass before the controller admits W4 confirmation.
+It is proceeding through the frozen sequence.
 **Do not launch a duplicate.**
 Inspect the current raw study's session/receipt state and the existing controller
 process before resuming. Only after reconciling a stopped controller, run
@@ -133,7 +137,7 @@ Challenge decisions before substantial execution:
 | T3 | Aspiration/PVS/iteration or root guidance consumes hints ineffectively. | Full-window reduces some request costs but clock gain is unconfirmed. ADAPTIVE16 diagnostics-OFF cost/completion gates pass W1/W4. Development scores are promising, conditional on resource qualification and fresh confirmation. No width sweep. |
 | T4 | TT access/coordination costs consume the information benefit. | JFR observed 7/3764 W1 and 14/4552 W4 Java samples with TTable frames, no monitor-entry event above10ms. No obvious concentration; small/inlined costs and short waits remain unquantified. No locking/layout change justified. |
 | T5 | Producer depth/selective restrictions leave valuable proof or guidance unavailable. | Zero ordinary proof confirmed; completed hints provide value. No evidence yet justifies weakening proof restrictions or binding-policy experimentation. Empty proof probes/repeated writes are traffic observations, not permission to alter TT access/replacement. |
-| T6 | A promising integrated candidate improves practical strength. | Full-window inconclusive and below its selection gate. Adaptive W1 eligible for fresh confirmation; W4 score gate passes but resource qualification is incomplete. Retain conditional candidate; quiet-host W4 screen precedes any W4 confirmation. No gain confirmed or promotion. |
+| T6 | A promising integrated candidate improves practical strength. | Full-window inconclusive and below its selection gate. Adaptive W1 fresh128-pair confirmation supports a gain under the primary pair-normal test; conservative bounded sensitivity crosses zero. W4 needs its fresh resource-qualified screen before confirmation. No cross-domain extrapolation or promotion. |
 
 Select the next question by expected decision value. Negative findings may close
 formulations; incomplete/resource-limited evidence stays inconclusive or deferred.
@@ -384,6 +388,35 @@ and Git commit8e933ea; v1 runtime, protocols and results remain untouched.
 
 ## Validation and local evidence
 
+### W1 independent confirmation endpoint
+
+The [frozen W1 endpoint](p3-tt-effectiveness-2026-10-23/tt-session-w1-v1-summary.json)
+contains128 new partition1 opening pairs/256 games at10+0.1, W1/Hash64/CP64,
+one-game concurrency, diagnostics OFF and unchanged ADAPTIVE16 versus WIDEN16.
+All four32-pair blocks passed complete schedule/color, legal/terminal/history,
+request telemetry, source/runtime identity, native lifecycle and host audits.
+One failed resource admission paused before block1; it launched no games and
+did not remove or replace an outcome. No interim strength looks occurred.
+
+ADAPTIVE16 scored **120/58/78 W/D/L**,58.2031%, descriptive Elo **+57.52**.
+The prospectively primary paired-normal97.5% score interval is[0.520468,0.643595],
+Elo[+14.23,+102.67], supporting a gain under its normal/exchangeable-pair
+assumptions. Alpha0.025 is allocated to each worker domain, retaining the frozen
+two-domain familywise allocation even if W4 is not admitted. The conservative
+bounded-pair97.5% sensitivity interval is[0.451198,0.712864], Elo[-34.02,+157.97],
+and crosses zero. Report that sensitivity; do not present this as assumption-free
+proof or universal strength. No pooling with development, historical or W4 games.
+
+Native game-engine CPU is3666.66s candidate /3663.86s baseline (ratio1.00076),
+peak working sets392.22/392.59MB, complete request elapsed3621.80/3617.95s, and
+nodes2.29614b/2.27264b. Thus the clock gain is not a lower-CPU result; the cheaper
+target-depth diagnostic work does not translate to less CPU at fixed clocks.
+Whole owned cohort CPU including preflight/coordinator is7384.92s, match wall
+7270.50s (~121.2min). Non-owned mean host load per block is0.939/0.771/0.795/0.881
+logical cores, within the frozen gate; no isolation or burst-bound claim follows.
+This is a validated research configuration in the tested Windows/JDK21/CP64/W1/
+Hash64/10+0.1 domain. Owner acceptance and any production promotion are separate.
+
 ### Adaptive development endpoint and host qualification
 
 The closed [adaptive clock summary](p3-tt-effectiveness-2026-10-23/adaptive-clock-v1-summary.json)
@@ -463,7 +496,8 @@ BelowNormal priority and modest process concurrency. Freeze costly protocols
 before results, never retune closed finalists, and account for selection effects.
 Existing tournament machinery provides pair blocks and process accounting.
 
-Playing-strength evidence is development-only so far; no gain confirmed and no
-candidate promoted. Both canon mirrors
-must be refreshed to P3-R017/P3-F016 before dependent external GPT planning;
+W1 fresh confirmation supports a gain under the primary test, with conservative
+sensitivity and domain limits above. W4 remains unresolved; no candidate is
+promoted. Both canon mirrors
+must be refreshed to P3-R017/P3-F017 before dependent external GPT planning;
 Codex has not synchronized them. Repository research is already authorized.
