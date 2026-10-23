@@ -1,0 +1,20 @@
+{
+  "status": "running",
+  "preDelivery": {
+    "path": "removal-cpu-v1-summary.json",
+    "sha256": "87fa566a1d65512efebf3fc880c6a0432931f200861ea6649f6952d0d8939a2d"
+  },
+  "bindingSha256": "6e21f048d57ca93f5b80ee1fb79f85afa95b73f43b2b59071901e3c423073cb4",
+  "admissionSha256": "9eec2f5bd1b663c34a51e3dc32c1bd7b0dce88b5d0fdd5da0e73a5371518f74f",
+  "hostStart": {
+    "utc": "2026-10-23T13:47:53.330630+00:00",
+    "monotonic": 43336.1560308,
+    "ticks": [
+      4401897187500,
+      4616155468750,
+      584133281250
+    ],
+    "availableBytes": 21956857856,
+    "memoryLoadPercent": 35
+  }
+}

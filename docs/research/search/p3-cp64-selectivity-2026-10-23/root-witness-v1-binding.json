@@ -1,0 +1,12 @@
+{
+  "files": {
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\root-witness-v1.json": "efb9305342d69ae508a7ee4fa4b0431bbd91a8d79e5641a622cd2ccc8d5a34fd",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\run_root_witness_v1.py": "e9b79f056f945887e9b3281330d1a70335bf73b59bf1a074a7c26ed788741dd4",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\flat-null-v1-binding.json": "c116d7f12174ae854d18438d873eadaea177c0e8dd47a0af44b5e2bca8bcfd06",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\fixed-node-move-witness-v1.json": "83a3fec2301a70911a13d7ad282537c1a8150654786f1ab45ecfed3fae44045e",
+    "docs\\research\\search\\sr006-phase2-2026-10-10\\played-corpus.tsv": "9fd14828ebb357114496448d1c2e6dd3df81bb325723143a4b9326174f6170da",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\root-witness-v1-corpus.tsv": "a42f89d6ddb0e1389e26a28a15a90abb0bef6f46e8d74837e92cc513b225b549",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\root-witness-v1-selection.json": "decde408123d6bb6232bc0948df9f6436b4e1f27fca603a8d8ddc429394c8533"
+  },
+  "runtimeBindingSha256": "c116d7f12174ae854d18438d873eadaea177c0e8dd47a0af44b5e2bca8bcfd06"
+}

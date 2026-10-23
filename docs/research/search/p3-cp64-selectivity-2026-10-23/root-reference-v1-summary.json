@@ -1,0 +1,162 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx1024m",
+    "-XX:ActiveProcessorCount=4",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\root-reference-v1-classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\runtime-v4\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\runtime-v4\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.Cp64RootMoveReference",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\root-witness-v1-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\root-reference-v1.jsonl"
+  ],
+  "exitCode": 0,
+  "nativeLifetime": {
+    "creationTicks": 134372392031649621,
+    "createdUtc": "2026-10-23T14:26:43.164963+00:00",
+    "exitCode": 0,
+    "exitedUtc": "2026-10-23T14:27:01.078098+00:00",
+    "kernelCpuSeconds": 0.296875,
+    "userCpuSeconds": 19.609375,
+    "totalCpuSeconds": 19.90625
+  },
+  "references": [
+    {
+      "depth": 7,
+      "type": "reference",
+      "nodeBudget": 5000000,
+      "elapsedNanos": 533561700,
+      "rootMove": "a4c4",
+      "outcome": {
+        "requestedDepth": 7,
+        "completed": true,
+        "bestMove": 722584,
+        "score": 3062,
+        "principalVariation": [
+          722584,
+          69362,
+          919072,
+          265257,
+          789415,
+          265840,
+          918552
+        ],
+        "nodes": 260137,
+        "elapsedNanos": 531891600,
+        "qnodes": 240058,
+        "maximumQply": 3,
+        "selective": false,
+        "maximumExtensionPlies": 0
+      },
+      "reusePassed": true,
+      "id": "played-01",
+      "timeBudgetNanos": 30000000000
+    },
+    {
+      "depth": 7,
+      "type": "reference",
+      "nodeBudget": 5000000,
+      "elapsedNanos": 245357300,
+      "rootMove": "a4b4",
+      "outcome": {
+        "requestedDepth": 7,
+        "completed": true,
+        "bestMove": 722520,
+        "score": 2982,
+        "principalVariation": [
+          722520,
+          14944297,
+          723033,
+          262432,
+          723297,
+          262852,
+          592823
+        ],
+        "nodes": 238153,
+        "elapsedNanos": 245337400,
+        "qnodes": 216752,
+        "maximumQply": 3,
+        "selective": false,
+        "maximumExtensionPlies": 0
+      },
+      "reusePassed": true,
+      "id": "played-01",
+      "timeBudgetNanos": 30000000000
+    },
+    {
+      "depth": 9,
+      "type": "reference",
+      "nodeBudget": 10000000,
+      "elapsedNanos": 9314792700,
+      "rootMove": "a4c4",
+      "outcome": {
+        "requestedDepth": 9,
+        "completed": true,
+        "bestMove": 722584,
+        "score": 3272,
+        "principalVariation": [
+          722584,
+          68722,
+          919072,
+          262569,
+          918552,
+          263110,
+          918032,
+          264463,
+          721050
+        ],
+        "nodes": 9952642,
+        "elapsedNanos": 9314762900,
+        "qnodes": 9174450,
+        "maximumQply": 5,
+        "selective": false,
+        "maximumExtensionPlies": 0
+      },
+      "reusePassed": true,
+      "id": "played-01",
+      "timeBudgetNanos": 30000000000
+    },
+    {
+      "depth": 9,
+      "type": "reference",
+      "nodeBudget": 10000000,
+      "elapsedNanos": 7445143800,
+      "rootMove": "a4b4",
+      "outcome": {
+        "requestedDepth": 9,
+        "completed": true,
+        "bestMove": 722520,
+        "score": 3116,
+        "principalVariation": [
+          722520,
+          14944297,
+          722713,
+          68850,
+          592823,
+          264800,
+          592238,
+          262569,
+          919990
+        ],
+        "nodes": 8082160,
+        "elapsedNanos": 7445125400,
+        "qnodes": 7359321,
+        "maximumQply": 4,
+        "selective": false,
+        "maximumExtensionPlies": 0
+      },
+      "reusePassed": true,
+      "id": "played-01",
+      "timeBudgetNanos": 30000000000
+    }
+  ],
+  "wallSeconds": 17.96084449999762,
+  "evidence": {
+    "raw\\root-reference-v1.jsonl": "d96ac54477f433384c396377a1f90180f8a142e1ef98f4302af03c22b6e6bf15",
+    "raw\\root-reference-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

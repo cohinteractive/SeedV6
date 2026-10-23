@@ -1,6 +1,6 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R024**
+Internal revision: **P3-R026**
 
 Status: **ACTIVE: owner-authorized CP64-integrated Search selectivity reappraisal. The preceding TT CGLHW is GPT-reconciled and owner-accepted, with acceptance/synchronization prerequisites confirmed. Build70 full Construction V1/ADAPTIVE16/frozen CP64 remains production; no automatic promotion, TT-policy change, evaluator replacement, external deployment or successor.**
 
@@ -53,13 +53,19 @@ choices remain unchanged. Null with selective legal verification materially redu
 whole-request diagnostic costs; nominal deeper futility adds incremental savings.
 All96 selected integrated cutoffs have complete independent nominal replays without
 a false threshold, but these conditional samples certify neither proof nor strength.
-Prioritize a fresh W1 clock development comparison of null versus full, then its
-nominal-futility interaction if admitted. Improving removal remains a credible
-lower-priority alternative; reduction-depth margins lack extra elapsed benefit.
-Four prelaunch admissions failed a self-chosen global-CPU gate; no games ran.
-A frozen owner-thread delivery calibration passed and supports a new prospective
-resource protocol with pre/post delivery and per-engine accounting. Preserve the
-old gates/failures unchanged. The focused record holds exact evidence and resume.
+Fresh W1 clock development scores .5703 for null versus full and .5547 for nominal
+futility plus null versus null alone, each32 pairs with all integrity/resource gates
+passed. Both uncertainty intervals cross equality; do not add their point estimates.
+The frozen rule selects the composition for independent confirmation directly
+against full. Improving removal scores .4922 and fails development selection;
+its second alpha allocation stays unused. Matched-depth and independent references
+retain an adverse composition root-move interaction, with no observed correctness
+or lifecycle violation; do not erase it or retune the candidate. Current work is
+the frozen128-fresh-pair W1 composition confirmation, alpha.025 with primary
+paired-normal97.5% and bounded97.5% sensitivity, no interim outcome decisions.
+Its result remains pending. Four failed old prelaunch admissions remain unchanged;
+new protocols qualify pre/post owner-thread delivery, host/memory and per-engine
+accounting. Exact evidence, limits and safe resume remain in the focused record.
 
 ## ADAPTIVE16 production selection - 23 October 2026
 

@@ -1,0 +1,37 @@
+{
+  "status": "completed",
+  "decision": "eligible_for_confirmation",
+  "correctnessBlocker": false,
+  "knownAdverseSelectiveInteraction": true,
+  "evidence": {
+    "root-witness-v1.json": "efb9305342d69ae508a7ee4fa4b0431bbd91a8d79e5641a622cd2ccc8d5a34fd",
+    "root-witness-v1-binding.json": "8a70152f5844404851409b12a1a1d69f9ca751f7f65b9647c7cc4669f4a9fc8a",
+    "root-witness-v1-summary.json": "2ee31062b6601a5d52aba119f3db042e218d4a618cdadeef3ffd94c865bc82cd",
+    "root-witness-v1-selection.json": "decde408123d6bb6232bc0948df9f6436b4e1f27fca603a8d8ddc429394c8533",
+    "root-reference-v1.json": "6b24b2cb54369ff5503032b9db46f8df69628fb7e56903b120dfb217588e927f",
+    "root-reference-v1-binding.json": "effc67d2f9a3b545b81c6c7848346e3b339a5e14ca7aa6f45782d41899529b6b",
+    "root-reference-v1-summary.json": "b69688d9cf02812289a5c560a8a69a95d42f393ccdc34ab48c6bf71435a98ece",
+    "root-reference-v1-compile.json": "b989fb29f4580c62b3c036bf5930f90274f629dd226686dc3b4757c57974ec3a",
+    "fixed-node-move-witness-v1.json": "83a3fec2301a70911a13d7ad282537c1a8150654786f1ab45ecfed3fae44045e",
+    "flat-null-validation-v3-summary.json": "5aa083241aa21eaac91603a44dba2da7573e02c3ea812f696502f469440a8610",
+    "flat-null-composition-v2-summary.json": "5ea94d8d0a9e10d85433d42d589edd27450c5e5ff39d4377b76dea530aec00ab",
+    "assess_root_witness_v1.py": "9e46483cbaec28d28e5a6718d55dd77c43d0f2fe035ce020f0c6fe37ec8df307"
+  },
+  "referenceScoreAdvantageA4c4": {
+    "7": 80,
+    "9": 156
+  },
+  "observations": [
+    "All eight matched-depth requests and all four independent restricted-root references completed within frozen caps.",
+    "AtD9 full, nominal alone and null alone choose a4c4; composition chooses a4b4. Independent unpruned reference ranks a4c4 higher atD7/D9.",
+    "Every returned PV/legal root identity/root-preservation/reuse check passes. Selective outcomes are labeled selective; independent references use no TT or selective pruning.",
+    "The original unequal-horizon explanation is insufficient: same-depth selective disagreement persists, with an adverse composition interaction."
+  ],
+  "judgment": "Retain this adverse finite-horizon witness. The reference scores are CP64 restricted-root values, not proof of actual game outcome or full-root optimality. This identifies a selective accuracy tradeoff, not an observed illegal move, false mathematical proof, corrupted history, dishonest completion or ownership violation. Existing correctness/lifecycle and independent cutoff checks remain applicable. Continue the pre-selected complete-configuration clock confirmation without parameter changes; do not claim every active mechanism helps.",
+  "limitations": [
+    "No universal safety/error-rate claim from earlier96 conditional cutoff replays.",
+    "No root-score or depth result is strength confirmation.",
+    "The independent reference omits Construction extensions/heuristics by design.",
+    "No retuning, extra-budget retry, production promotion or external deployment."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "files": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\Cp64RootMoveReference.java": "4fb19c6d02d0acd3f02804eb2ef4df1b5f8058223cced675b00bdaec3b354d1c",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\run_root_reference_v1.py": "c7627f1700c1b620bd976c25b86b0be11e0ddad7c9e78e176de141821c15592a",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\root-reference-v1.json": "6b24b2cb54369ff5503032b9db46f8df69628fb7e56903b120dfb217588e927f",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\root-witness-v1-summary.json": "2ee31062b6601a5d52aba119f3db042e218d4a618cdadeef3ffd94c865bc82cd",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\root-witness-v1-corpus.tsv": "a42f89d6ddb0e1389e26a28a15a90abb0bef6f46e8d74837e92cc513b225b549",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\flat-null-v1-binding.json": "c116d7f12174ae854d18438d873eadaea177c0e8dd47a0af44b5e2bca8bcfd06",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\root-reference-v1-classes\\com\\ohinteractive\\seedv6\\search\\exact\\Cp64RootMoveReference.class": "b9c8293d502f4041f0c4f2f30698884eab5beed05f3bb5d433453ae1977137ee"
+  },
+  "runtimeBindingSha256": "c116d7f12174ae854d18438d873eadaea177c0e8dd47a0af44b5e2bca8bcfd06"
+}

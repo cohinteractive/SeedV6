@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\analyze_confirmation_v1.py",
+    "--self-test"
+  ],
+  "exitCode": 0,
+  "checks": [
+    "Four script syntax checks",
+    "Protocol block/sample/domain/alpha consistency",
+    "Closed-form pair variance/standard error",
+    "97.5% normal quantile",
+    "Permutation invariance",
+    "Zero-variance refusal",
+    "Elo transform"
+  ],
+  "files": {
+    "run_root_witness_v1.py": "e9b79f056f945887e9b3281330d1a70335bf73b59bf1a074a7c26ed788741dd4",
+    "prepare_confirmation_v1.py": "53c0873423edb9616e8568db366853c6640d3c6e8e1accc92894cd82d0aeaf2e",
+    "run_confirmation_block_v1.py": "839c90f4dc90ad27b3156fe40be17eb1cbbd4b3b33fee5a4b2533c32d0a41f18",
+    "analyze_confirmation_v1.py": "fdfc39e036c11116c19ad5338db25b5755faf776e9347783178d6a52425f5666",
+    "confirmation-v1.json": "151f3d1162854dc9661d8dc5f512b05736604e14538dca2ca2ce50b7ec94a15b"
+  },
+  "log": "raw\\confirmation-statistics-validation-v1.log",
+  "logSha256": "a87860bbc9ab926c77073c3ad388a8eb29ad1c5a820119b7cafda4f98a3a050b"
+}

@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F024**
+Internal frontier revision: **P3-F026**
 
 Status: **ACTIVE: owner-authorized CP64-integrated Search selectivity reappraisal. The preceding TT CGLHW is GPT-reconciled and owner-accepted, with acceptance/synchronization prerequisites confirmed. Build70 full Construction V1/ADAPTIVE16/frozen CP64 remains production; no automatic promotion, TT-policy change, evaluator replacement, external deployment or successor.**
 
@@ -19,15 +19,19 @@ SR-009,016,018,019,021,022,023,029,033. Existing O2/O3 questions now concern the
 frozen CP64 integrated configuration; they do not inherit Pair-2 thresholds or
 strength claims. Completed TT results are reference evidence, not reopened work.
 
-**Current selection:** H5's bounded flattened integration passes semantic/lifecycle
-and independent-reference checks and materially improves whole-request diagnostic
-economics. Prioritize a fresh W1 clock development screen for verified null versus
-full, followed by nominal deeper futility on that foundation only if admitted.
-H1 improving removal remains a credible lower-priority unplayed alternative; H3's
-standalone clock plan is also unplayed. H4 reduction-depth margins add no elapsed
-benefit over the nominal foundation. H2 has no admitted confidence-pruning feature;
-sparse/censored history is not a bound. No exhaustive switch sweep, TT redesign,
-default promotion or universal worker-count strength claim is selected.
+**Current selection:** H5 null and its H3 nominal-futility interaction both pass
+their frozen W1 development-selection gates, with uncertainty intervals crossing
+equality. Select nominal+null as the null-family finalist for fresh confirmation
+directly against full; do not add the two development estimates. The retained
+same-depth adverse root interaction has complete independent references and no
+observed correctness violation; no retuning is selected. H1 removal scores .4922
+and fails its selection gate, an inconclusive bounded disposition. Current work
+is only the frozen128-fresh-pair W1 composition confirmation, alpha.025 with both
+primary and bounded97.5% intervals; its result is pending. The unused H1 allocation
+is not transferred. H3's standalone plan stays unplayed; H4 reduction-depth margins
+add no elapsed benefit over nominal. H2 has no admitted confidence-pruning feature.
+No exhaustive switch sweep, TT redesign, default promotion or universal worker-count
+strength claim is selected.
 
 The [focused record](../docs/research/search/P3_CP64_SELECTIVITY_2026-10-23.md)
 is the subordinate dynamic hypothesis/experiment queue and exact resume location.
@@ -40,12 +44,12 @@ Functional1..16 support never establishes strength at every worker count.
 Build73 retains production choices and adds only default-OFF research controls.
 All96 selected integrated null cutoffs have complete nominal references without
 a false threshold; conditional samples are not proof or strength certification.
-Four failed prelaunch clock admissions remain frozen with no games. A prospective
-owner-thread CPU-delivery calibration passed and supports a new resource protocol
-with pre/post delivery, host/memory and per-engine accounting. This reappraises an
-investigator-selected gate before any outcome; it does not rewrite failed evidence
-or change the Contract's background-friendly limits. Exact protocols, costs,
-uncertainty, lower-priority alternatives and resume state are in the focused record.
+Four failed old prelaunch admissions remain frozen with no games. The new null
+development stages each complete64 normal games with qualified pre/post delivery,
+host/memory and per-engine accounting. H1 also completes64 normal, resource-qualified
+games using its original frozen runtime and opening selection.
+This changes no Contract resource limit or historical evidence. Exact protocols,
+costs, uncertainty, lower-priority alternatives and resume are in the focused record.
 
 ## ADAPTIVE16 production selection - 23 October 2026
 

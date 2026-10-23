@@ -1,0 +1,193 @@
+{
+  "status": "passed",
+  "depths": {
+    "7": {
+      "baseline": {
+        "targetDepthCompleted": true,
+        "attemptedDepth": 7,
+        "requestNodes": 99515,
+        "termination": "NONE",
+        "lastCompleted": {
+          "bestMove": 722584,
+          "score": 3062,
+          "depth": 7,
+          "nodes": 99515,
+          "principalVariation": [
+            722584,
+            69362,
+            919072,
+            265257,
+            789415,
+            265840,
+            918552
+          ],
+          "selective": true
+        }
+      },
+      "nominal-futility": {
+        "targetDepthCompleted": true,
+        "attemptedDepth": 7,
+        "requestNodes": 96284,
+        "termination": "NONE",
+        "lastCompleted": {
+          "bestMove": 722584,
+          "score": 3062,
+          "depth": 7,
+          "nodes": 96284,
+          "principalVariation": [
+            722584,
+            69362,
+            919072,
+            265257,
+            789415,
+            265840,
+            918552
+          ],
+          "selective": true
+        }
+      },
+      "verified-null": {
+        "targetDepthCompleted": true,
+        "attemptedDepth": 7,
+        "requestNodes": 28715,
+        "termination": "NONE",
+        "lastCompleted": {
+          "bestMove": 722520,
+          "score": 2982,
+          "depth": 7,
+          "nodes": 28715,
+          "principalVariation": [
+            722520,
+            14944297,
+            723033,
+            262432,
+            723297,
+            262852,
+            592823
+          ],
+          "selective": true
+        }
+      },
+      "nominal-verified-null": {
+        "targetDepthCompleted": true,
+        "attemptedDepth": 7,
+        "requestNodes": 25804,
+        "termination": "NONE",
+        "lastCompleted": {
+          "bestMove": 722520,
+          "score": 3055,
+          "depth": 7,
+          "nodes": 25804,
+          "principalVariation": [
+            722520,
+            14944297,
+            723033,
+            262880,
+            919852,
+            69298,
+            592823
+          ],
+          "selective": true
+        }
+      }
+    },
+    "9": {
+      "baseline": {
+        "targetDepthCompleted": true,
+        "attemptedDepth": 9,
+        "requestNodes": 1568374,
+        "termination": "NONE",
+        "lastCompleted": {
+          "bestMove": 722584,
+          "score": 3205,
+          "depth": 9,
+          "nodes": 1568374,
+          "principalVariation": [
+            722584,
+            68338,
+            919072,
+            262569,
+            918552,
+            263110,
+            919852,
+            68907,
+            722714
+          ],
+          "selective": true
+        }
+      },
+      "nominal-futility": {
+        "targetDepthCompleted": true,
+        "attemptedDepth": 9,
+        "requestNodes": 484233,
+        "termination": "NONE",
+        "lastCompleted": {
+          "bestMove": 722584,
+          "score": 3168,
+          "depth": 9,
+          "nodes": 484233,
+          "principalVariation": [
+            722584,
+            68722,
+            722522,
+            68785,
+            4917849,
+            11602546,
+            919990,
+            67753,
+            592823
+          ],
+          "selective": true
+        }
+      },
+      "verified-null": {
+        "targetDepthCompleted": true,
+        "attemptedDepth": 9,
+        "requestNodes": 230401,
+        "termination": "NONE",
+        "lastCompleted": {
+          "bestMove": 722584,
+          "score": 3167,
+          "depth": 9,
+          "nodes": 230401,
+          "principalVariation": [
+            722584,
+            69362,
+            919072,
+            262569,
+            919852,
+            265222,
+            722650,
+            69307,
+            919925
+          ],
+          "selective": true
+        }
+      },
+      "nominal-verified-null": {
+        "targetDepthCompleted": true,
+        "attemptedDepth": 9,
+        "requestNodes": 234471,
+        "termination": "NONE",
+        "lastCompleted": {
+          "bestMove": 722520,
+          "score": 3097,
+          "depth": 9,
+          "nodes": 234471,
+          "principalVariation": [
+            722520,
+            14944297,
+            723033,
+            262432,
+            592823,
+            68274,
+            722017,
+            68842,
+            592238
+          ],
+          "selective": true
+        }
+      }
+    }
+  }
+}

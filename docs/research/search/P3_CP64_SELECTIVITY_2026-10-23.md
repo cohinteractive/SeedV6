@@ -1,6 +1,6 @@
 # CP64-integrated Search selectivity reappraisal
 
-Owner-authorized 23 October 2026 (Pacific/Auckland). **ACTIVE; H5 integration and diagnostics complete; null and its nominal-futility interaction prioritized for fresh W1 clock development under a newly qualified resource protocol.** Governed by Phase 3 Contract P3-R024 / Frontier P3-F024. Current resume is the final section below; earlier execution paragraphs record completed stages.
+Owner-authorized 23 October 2026 (Pacific/Auckland). **ACTIVE; only nominal futility plus verified null selected for frozen independent W1 confirmation. Improving removal fails development selection; adverse selective interaction evidence is retained.** Governed by Phase 3 Contract P3-R026 / Frontier P3-F026. Current resume is the final section below; earlier execution paragraphs record completed stages.
 This is a focused research record and dynamic queue, not another master.
 
 ## Authority, identity and boundaries
@@ -64,11 +64,11 @@ external evidence belong in the bootstrap/evidence manifests.
 
 | ID | Question / expected decision value | Falsifier and next admissible evidence | State |
 | --- | --- | --- | --- |
-| H1 | Does raw two-ply improving relief justify eager CP64 evaluation and extra depth? SR009/029/033. | Fresh W1 clock screen for removal; lazy costs are modest despite exact W1 traversal. | Credible lower-priority unplayed plan; three old admissions failed before launch |
+| H1 | Does raw two-ply improving relief justify eager CP64 evaluation and extra depth? SR009/029/033. | Removal costs less in diagnostics but scores .4922 in32-pair development; intervals cross equality. Lazy has modest cost benefit despite exact W1 traversal. | No removal confirmation or extension; bounded inconclusive disposition; production control retained |
 | H2 | Do history protection and richer quiet memories add reliable decisions? SR016/023/022. | Simple removals mixed; negative/zero occurrences do not establish reliable failure. Inspect conditional deeper-consumer witnesses. | No pruning feature admitted; confidence unresolved |
-| H3 | Are shallow futility/RFP complementary and conservative under CP64? SR009/019/021/022. | RFP removal costly; guarded nominal deeper futility saves cost alone and on null foundation. | Prioritize incremental clock screen on null if admitted; standalone plan unplayed |
+| H3 | Are shallow futility/RFP complementary and conservative under CP64? SR009/019/021/022. | RFP removal costly; nominal deeper futility saves cost alone and on null foundation. | Increment screen .5547 selects composition, intervals cross equality; standalone plan unplayed |
 | H4 | Does actual reduction depth add information beyond nominal depth/count/history? SR029/033/023. | Additional decisions but no elapsed gain over nominal foundation; composition saves more but has unconfirmed supporting removal. | No separate reduction-margin clock screen; composition conditional |
-| H5 | Can adaptive verified null repay its cost after current selectivity? SR018/019/029. | Selective legal verification enables large whole-request diagnostic savings;96 selected actual cutoff references complete without false thresholds. | Integration qualified, fresh W1 clock development prioritized; strength unproved |
+| H5 | Can adaptive verified null repay its cost after current selectivity? SR018/019/029. | Selective legal verification enables large diagnostic savings;96 selected actual cutoff references complete without false thresholds. | Primary screen .5703 selects null family; composition finalist awaits fresh independent confirmation |
 
 Ordering is provisional, not a compulsory feature queue. Related qsearch/SEE,
 ordering and aspiration are explanatory controls only. No TT re-investigation or
@@ -657,3 +657,93 @@ are legal; unequal horizons do not identify a missed resource. After the H1 cloc
 and its post-delivery complete, perform a bounded matchedD7/D9 diagnosis before
 independent composition confirmation. This is a development-witness diagnosis,
 not new tuning, a strength substitute or permission to alter a frozen candidate.
+
+### Current precise resume (P3-R025/P3-F025)
+
+Research-only commit `799d05f` records the two completed null development stages,
+H1 qualification and preserved root witness; build remains73. H1 is now launched
+under `removal-clock-v2-launch.json`. Await its completion-driven wrapper and
+post-delivery result; no overlapping build, test or computational experiment.
+Do not replay a started stage or inspect interim outcomes. Afterwards run the
+bounded matched-depth witness diagnosis, then freeze exact finalist identities,
+fresh independent opening samples, analysis and stopping rules before confirmation.
+The null-family selection is nominal+null; H1 selection remains pending its fixed
+32-pair result. No confirmation game has run. Both master headers are now
+P3-R025/P3-F025; PROJECT_SOURCE_REFRESH_REQUIRED: YES, with the same external
+planning/owner synchronization boundary and no automatic production promotion.
+
+While H1 runs, the next bounded steps are prepared but unexecuted:
+`root-witness-v1.json`/`run_root_witness_v1.py` freeze eight matched-depth diagnostic
+requests; `confirmation-v1.json` and its preparation/block/final-analysis scripts
+specify128 fresh partition1 pairs per selected hypothesis in four32-pair blocks.
+The two allocations are fixed at alpha.025 each (primary paired-normal97.5% plus
+bounded97.5% sensitivity), with no unused transfer, interim-score inspection,
+sample extension, candidate substitution or automatic promotion. H1 admission is
+still conditional on its completed .55 screen. Before confirmation preparation,
+finish H1/post-delivery, run the root diagnosis, record its correctness assessment,
+validate the new statistical calculation and scripts, then freeze exact opening
+and executable bindings. No independent opening sample or game exists yet.
+
+H1 v2 is now complete and passes integrity/resources:24W/15D/25L, score .4921875
+over32 pairs. Paired-normal95% score interval [.37896,.60541] and bounded interval
+[.25211,.73227] cross equality. It fails the frozen .55 selection gate; no further
+H1 clock extension or independent confirmation is selected. Diagnostic cost savings
+did not establish strength improvement or absence of loss. The unused second
+alpha.025 allocation stays unused. This is an inconclusive bounded development
+disposition, not universal rejection of improving removal or proof that improving
+is independently beneficial in every configuration.
+
+All64 games terminate normally with stable inputs. Owned execution1886.7s/1923.9CPU
+seconds, otherCPU .2941, memory35%; actorCPU/Search-elapsed1.01967/1.01928, difference
+.00039, and post-delivery passes. Whole-request nodes657661606/669058473 and
+elapsed938.370/936.993s (full/removal). No H1 or null-development process remains
+active. Next run the new script/statistical validation and root-witness diagnosis;
+then assess the witness and prepare only the selected composition confirmation.
+
+Matched-depth diagnosis completes all eight requests within5M nodes. The difference
+is not merely unequal horizons: atD7 full/nominal choose a4c4, null/composition
+a4b4; atD9 full/nominal/null choose a4c4, composition a4b4. The four independent
+restricted-root references in `root-reference-v1-summary.json` all complete with
+real root ply and full history, TT off and unpruned SR-001A qsearch. AtD7 a4c4/a4b4
+score3062/2982; atD9 3272/3116. Thus the reference prefers a4c4 by80/156cp, and
+the composition has an adverse same-depth interaction in this witness. It consumed
+18.53M reference nodes,18.0s wall/19.9s nativeCPU. All PV/legal identity/root
+preservation/reuse checks pass; no cap is hidden.
+
+`root-witness-v1-assessment.json` retains the adverse case and admits confirmation
+without retuning. The completed reference is a restricted-root CP64 finite-horizon
+comparison, not proof of game outcome/full-root optimality; Construction extensions
+and selectivity intentionally differ. No illegal move, false proof publication,
+history corruption, dishonest completion or ownership violation was observed.
+Earlier96 conditional cutoff references are not universal safety certification.
+Whole-engine confirmation remains necessary, and a configuration-level result
+cannot establish that every mechanism helps. The new statistical/schema checks in
+`confirmation-statistics-validation-v1.json` pass; no independent games exist yet.
+
+### Current precise resume (P3-R026/P3-F026)
+
+`confirmation-v1-binding.json` now freezes107 input identities and admits only
+the null-family composition: full262143 versus nominal+null3407871 in unchanged
+runtime-v4/build73, CP64/Hash64/ADAPTIVE16/W1. Exactly128 fresh unique partition1
+openings (seed2026102404), excluding all recorded historical/current selections
+and development prefixes, are split prospectively into four32-pair blocks. The
+H1 allocation is explicitly unused, with no alpha transfer. No independent game
+has launched at this preparation point.
+
+Next run `build/research/venv/Scripts/python.exe -B docs/research/search/p3-cp64-selectivity-2026-10-23/run_confirmation_block_v1.py null 1`.
+After each complete qualified block, run the next ordinal2,3,4 with the same
+script. It exposes only integrity/resources and preserves raw outcomes unopened.
+Never replay a started block; any unclosed block or failed postqualification stops
+affected confirmation. A prelaunch-only resource failure may be revisited in a
+later window under the unchanged protocol. When all four blocks pass, run
+`analyze_confirmation_v1.py null` for the single final128-pair look. Do not inspect
+interim runner/game scores, extend the sample, substitute a candidate or promote
+defaults. Record the final outcome, reassess the bounded queue and close only with
+supported conclusions and remaining uncertainty. No successor objective is authorized.
+
+Both canon headers are P3-R026/P3-F026; PROJECT_SOURCE_REFRESH_REQUIRED: YES.
+Production choices and external installations remain unchanged. Subsequent work
+is research-only evidence/harness/canon; repository version stays73. The one-root
+TSV is an intentional compact input selected byte-for-byte from an existing tracked
+corpus; no new ignore exception is needed. Tournament PGNs, compiled shims and all
+raw measurements remain under ignored local `raw/` paths.

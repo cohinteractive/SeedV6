@@ -1,0 +1,9 @@
+{
+  "source": "docs\\research\\search\\sr006-phase2-2026-10-10\\played-corpus.tsv",
+  "sourceSha256": "9fd14828ebb357114496448d1c2e6dd3df81bb325723143a4b9326174f6170da",
+  "id": "played-01",
+  "sourceLine": 2,
+  "output": "root-witness-v1-corpus.tsv",
+  "outputSha256": "a42f89d6ddb0e1389e26a28a15a90abb0bef6f46e8d74837e92cc513b225b549",
+  "method": "Exact source line selected by id; bytes/history unchanged"
+}

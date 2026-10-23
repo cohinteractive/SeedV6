@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:/java/jdk-21/bin/javac.exe",
+    "--add-modules",
+    "jdk.incubator.vector",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\runtime-v4\\lib\\*",
+    "-d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\root-reference-v1-classes",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\Cp64RootMoveReference.java"
+  ],
+  "exitCode": 0,
+  "wallSeconds": 0.7774323000048753,
+  "log": "raw\\root-reference-v1-compile.log",
+  "logSha256": "f4c75f9fb60409630095c40c7677159bc43ac1242cfeb3d929de9df90df6235b",
+  "testsRun": 0
+}

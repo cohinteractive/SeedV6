@@ -1,0 +1,130 @@
+{
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx1024m",
+    "-XX:ActiveProcessorCount=4",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\runtime-v4\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\runtime-v4\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.Cp64SelectivityLab",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\root-witness-v1-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\root-witness-d7-v1.jsonl",
+    "1",
+    "0",
+    "1",
+    "7",
+    "5000000",
+    "1",
+    "cost",
+    "baseline,nominal-futility,verified-null,nominal-verified-null"
+  ],
+  "status": "passed",
+  "exitCode": 0,
+  "nativeLifetime": {
+    "creationTicks": 134372389815845777,
+    "createdUtc": "2026-10-23T14:23:01.584578+00:00",
+    "exitCode": 0,
+    "exitedUtc": "2026-10-23T14:23:02.820734+00:00",
+    "kernelCpuSeconds": 0.453125,
+    "userCpuSeconds": 2.625,
+    "totalCpuSeconds": 3.078125
+  },
+  "outcomes": {
+    "baseline": {
+      "targetDepthCompleted": true,
+      "attemptedDepth": 7,
+      "requestNodes": 99515,
+      "termination": "NONE",
+      "lastCompleted": {
+        "bestMove": 722584,
+        "score": 3062,
+        "depth": 7,
+        "nodes": 99515,
+        "principalVariation": [
+          722584,
+          69362,
+          919072,
+          265257,
+          789415,
+          265840,
+          918552
+        ],
+        "selective": true
+      }
+    },
+    "nominal-futility": {
+      "targetDepthCompleted": true,
+      "attemptedDepth": 7,
+      "requestNodes": 96284,
+      "termination": "NONE",
+      "lastCompleted": {
+        "bestMove": 722584,
+        "score": 3062,
+        "depth": 7,
+        "nodes": 96284,
+        "principalVariation": [
+          722584,
+          69362,
+          919072,
+          265257,
+          789415,
+          265840,
+          918552
+        ],
+        "selective": true
+      }
+    },
+    "verified-null": {
+      "targetDepthCompleted": true,
+      "attemptedDepth": 7,
+      "requestNodes": 28715,
+      "termination": "NONE",
+      "lastCompleted": {
+        "bestMove": 722520,
+        "score": 2982,
+        "depth": 7,
+        "nodes": 28715,
+        "principalVariation": [
+          722520,
+          14944297,
+          723033,
+          262432,
+          723297,
+          262852,
+          592823
+        ],
+        "selective": true
+      }
+    },
+    "nominal-verified-null": {
+      "targetDepthCompleted": true,
+      "attemptedDepth": 7,
+      "requestNodes": 25804,
+      "termination": "NONE",
+      "lastCompleted": {
+        "bestMove": 722520,
+        "score": 3055,
+        "depth": 7,
+        "nodes": 25804,
+        "principalVariation": [
+          722520,
+          14944297,
+          723033,
+          262880,
+          919852,
+          69298,
+          592823
+        ],
+        "selective": true
+      }
+    }
+  },
+  "wallSeconds": 1.297703600001114,
+  "evidence": {
+    "raw\\root-witness-d7-v1.jsonl": "aeade7e3d0d6fca52b6c77fb88b797a0fe3967fb734052897d3be6a5f28927ae",
+    "raw\\root-witness-d7-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}
