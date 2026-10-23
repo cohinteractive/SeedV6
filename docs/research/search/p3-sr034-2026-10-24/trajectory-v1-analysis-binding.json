@@ -1,0 +1,8 @@
+{
+  "files": {
+    "analyze_trajectory_v1.py": "af666fee63dff73d1e54b4d98f823b546041ac2e73ec52458132b50e38e1b8ef",
+    "trajectory-v1-summary.json": "a7a0bdb212319e854c3034f7197ab8ddf83bac56d5c4de173c3355dcab814095",
+    "trajectory-v1-binding.json": "51aeca23025630b84e589f2ec7a510192677118f0b342405a6252a5e7af9b1ba"
+  },
+  "scope": "Reproducible post-execution descriptive analysis, not frozen confirmatory inference; includes exploratory counterfactual policies."
+}

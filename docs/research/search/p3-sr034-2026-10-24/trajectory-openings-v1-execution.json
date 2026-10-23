@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx768m",
+    "-XX:ActiveProcessorCount=2",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-trajectory-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-trajectory-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.Cp64TimeTrajectory",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-construction-2026-10-20\\diagnostic-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\trajectory-openings-v1.jsonl",
+    "12",
+    "1000000",
+    "2",
+    "12"
+  ],
+  "bindingSha256": "51aeca23025630b84e589f2ec7a510192677118f0b342405a6252a5e7af9b1ba",
+  "priority": "BelowNormal",
+  "startedUtc": "2026-10-23T20:39:15.003547+00:00",
+  "exitCode": 0,
+  "nativeLifetime": {
+    "creationTicks": 134372615550047132,
+    "createdUtc": "2026-10-23T20:39:15.004713+00:00",
+    "exitCode": 0,
+    "exitedUtc": "2026-10-23T20:40:36.444645+00:00",
+    "kernelCpuSeconds": 1.875,
+    "userCpuSeconds": 84.90625,
+    "totalCpuSeconds": 86.78125
+  },
+  "peakWorkingSetBytes": 369639424,
+  "hostStart": {
+    "utc": "2026-10-23T20:39:15.003764+00:00",
+    "monotonic": 68017.8291627,
+    "ticks": [
+      7121803750000,
+      7397348281250,
+      764748281250
+    ],
+    "availableBytes": 17311748096,
+    "memoryLoadPercent": 49
+  },
+  "hostEnd": {
+    "utc": "2026-10-23T20:40:36.502049+00:00",
+    "monotonic": 68099.3274529,
+    "ticks": [
+      7130002343750,
+      7405867656250,
+      766007187500
+    ],
+    "availableBytes": 17406185472,
+    "memoryLoadPercent": 49
+  },
+  "wallSeconds": 81.49850640000659,
+  "evidence": {
+    "raw\\trajectory-openings-v1.jsonl": "c10017e5978f8f979ed41fbb29a45de6ba9203d3975cbf53b891967bee0a88dc",
+    "raw\\trajectory-openings-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

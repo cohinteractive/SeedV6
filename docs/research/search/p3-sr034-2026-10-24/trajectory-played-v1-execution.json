@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx768m",
+    "-XX:ActiveProcessorCount=2",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-trajectory-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-trajectory-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.Cp64TimeTrajectory",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr002-execution-2026-10-19\\confirmation-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\trajectory-played-v1.jsonl",
+    "12",
+    "1000000",
+    "2",
+    "20"
+  ],
+  "bindingSha256": "51aeca23025630b84e589f2ec7a510192677118f0b342405a6252a5e7af9b1ba",
+  "priority": "BelowNormal",
+  "startedUtc": "2026-10-23T20:40:36.510731+00:00",
+  "exitCode": 0,
+  "nativeLifetime": {
+    "creationTicks": 134372616365120248,
+    "createdUtc": "2026-10-23T20:40:36.512024+00:00",
+    "exitCode": 0,
+    "exitedUtc": "2026-10-23T20:42:43.517183+00:00",
+    "kernelCpuSeconds": 3.078125,
+    "userCpuSeconds": 128.6875,
+    "totalCpuSeconds": 131.765625
+  },
+  "peakWorkingSetBytes": 368541696,
+  "hostStart": {
+    "utc": "2026-10-23T20:40:36.510969+00:00",
+    "monotonic": 68099.3363691,
+    "ticks": [
+      7130003906250,
+      7405869218750,
+      766007343750
+    ],
+    "availableBytes": 17406672896,
+    "memoryLoadPercent": 49
+  },
+  "hostEnd": {
+    "utc": "2026-10-23T20:42:43.574149+00:00",
+    "monotonic": 68226.399552,
+    "ticks": [
+      7142413281250,
+      7418926250000,
+      768197343750
+    ],
+    "availableBytes": 17382531072,
+    "memoryLoadPercent": 49
+  },
+  "wallSeconds": 127.06342189999123,
+  "evidence": {
+    "raw\\trajectory-played-v1.jsonl": "22b5de50e303b599f2fd3cc7a9e747ff79df8d2eb8dafb9b76adc919b560b7fe",
+    "raw\\trajectory-played-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

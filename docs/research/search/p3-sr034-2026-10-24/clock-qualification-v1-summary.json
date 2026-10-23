@@ -1,0 +1,59 @@
+{
+  "status": "failed",
+  "bindingSha256": "7a549a11f7ab001c81f1bc915ed1572284671aeb6c0bbf649b99f8fd1c3aed75",
+  "failure": "ValueError('Illegal PV prefix: info depth 3 score cp 68 nodes 356 time 3 nps 117767 pv d2d4 d7d5 g1f3')",
+  "requests": 28,
+  "evidencePath": "docs\\research\\search\\p3-sr034-2026-10-24\\clock-qualification-v1.json",
+  "evidenceSha256": "4976418b918c84227c033843271a83154d1c43f0b298bf825846ed129c844930",
+  "scope": "Actual UCI per-request output is local-only; functional/mode/legal/lifecycle summary, not strength.",
+  "requestCounts": {
+    "('baseline', 'depth3')": 16,
+    "('baseline', 'depth 7')": 1,
+    "('baseline', 'nodes 100000')": 1,
+    "('baseline', 'movetime 50')": 1,
+    "('baseline', 'clock')": 8,
+    "('baseline', 'infinite-stop')": 1
+  },
+  "clockTerminationCounts": {
+    "('baseline', 'TIME_LIMIT')": 8
+  },
+  "maxClockOverrunMillis": 1.6865,
+  "nonclockSignatures": {
+    "baseline": [
+      {
+        "bestmove": "e2e4",
+        "nodes": 38758,
+        "termination": "COMPLETED",
+        "result": [
+          [
+            "7"
+          ],
+          [
+            "cp",
+            "78"
+          ],
+          [
+            "e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+          ]
+        ]
+      },
+      {
+        "bestmove": "e2e4",
+        "nodes": 100000,
+        "termination": "NODE_LIMIT",
+        "result": [
+          [
+            "8"
+          ],
+          [
+            "cp",
+            "78"
+          ],
+          [
+            "e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+          ]
+        ]
+      }
+    ]
+  }
+}

@@ -1,10 +1,54 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R028**
+Internal revision: **P3-R029**
 
-Status: **OWNER-ACCEPTED: completed CP64 selectivity reappraisal, GPT-reconciled. The owner authorizes flags3407871 production adoption at all supported workers 1-16 through shared BaselineEngine. Repository production integration is validated at build74; external deployment remains separate. W1 strength evidence is positive under the frozen primary assumptions; bounded sensitivity crosses equality and multiworker strength remains unconfirmed. No TT-policy change, evaluator replacement or successor is authorized.**
+Status: **ACTIVE: owner-launched SR-034 Search time allocation and instability-aware spending CGLHW. Accepted build74 CP64/flags3407871/ADAPTIVE16 remains production. Prior selectivity, packaging remediation and mirror prerequisites are owner-confirmed. Research is authorized; production promotion, TT-policy changes, evaluator replacement, deployment and a successor are excluded.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
+
+## Active SR-034 time allocation objective - 24 October 2026
+
+The owner accepts the preceding CP64 selectivity workstream and native-packaging
+identity remediation, confirms both Project Source mirrors synchronized and
+explicitly launches this bounded CGLHW. This supersedes earlier no-successor and
+pending-acceptance wording for this objective only. Verify technical baseline and
+executable identities independently; do not reopen the accepted packaging scope.
+
+Determine whether finite whole-game thinking time is better distributed using
+trustworthy completed-iteration best moves/scores, stability, instability, root
+effort and economical cost evidence. Investigate, combine, reject or reprioritize
+credible affordable hypotheses; neither positive improvement nor an exhaustive
+heuristic sweep is required. Prefer the smallest useful change to current clock
+management. Historical HCE/Pair-2 findings and reference-engine constants are
+evidence, not current CP64 calibration or production policy.
+
+Research may add explicitly selectable bounded soft allocation and justified
+spending while retaining independently enforced hard deadlines, overhead/reserve,
+node limits, explicit request-mode semantics, truthful completed results and
+private-worker/drain guarantees. Incomplete/bound-only aspiration observations
+are not comparable completed exact scores; selective estimates are not TT proof.
+Preserve frozen CP64 payload/mapping, all binding TT rules, mandatory nominal
+verification, original-window PVS, legal history/mate/PV semantics and controls.
+
+The governing test is complete clock-game strength/resource redistribution.
+Trajectory diagnostics, saved nodes, deeper completion and per-position speed
+alone do not establish gain. Use whole-request elapsed/CPU/memory, retries,
+abandoned/helper work, clock reserves, low-clock reliability and resource-qualified
+paired/color-reversed games. Fresh independent confirmation at10+0.1, frozen
+comparisons/identities/sampling/looks/stopping, separate development data and
+worker-domain limitations remain binding. A failed candidate does not close other
+credible affordable opportunities; lack of a positive result does not justify
+indefinite parameter sweeps. No production promotion, TT policy experiment,
+evaluator programme, independent Search redesign, pondering, external deployment
+or successor is authorized.
+
+The [focused record](../docs/research/search/P3_SR034_TIME_ALLOCATION_2026-10-24.md)
+holds challenged hypotheses, dynamic work selection, frozen protocols, local
+evidence availability, failures and a precise resume state. Close with supported
+positive/negative/inconclusive/deferred dispositions and actual validation limits;
+technical completion remains separate from GPT/owner acceptance and adoption.
+Repository execution need not await mirror refresh; both masters must be refreshed
+before dependent external GPT planning. Repository edits do not synchronize them.
 
 ## CP64 selectivity production adoption - 24 October 2026
 

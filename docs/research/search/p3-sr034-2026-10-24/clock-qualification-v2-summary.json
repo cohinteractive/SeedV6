@@ -1,0 +1,151 @@
+{
+  "status": "passed",
+  "bindingSha256": "7a549a11f7ab001c81f1bc915ed1572284671aeb6c0bbf649b99f8fd1c3aed75",
+  "qualifierSha256": "c13066759d74b8f4130ed98a440c15159be2ed27c1e223c155cc209606600ad9",
+  "ordinaryProductionParity": true,
+  "requests": 147,
+  "evidencePath": "docs\\research\\search\\p3-sr034-2026-10-24\\clock-qualification-v2.json",
+  "evidenceSha256": "c9591c989e9669a5b69705f58882b9d9d2674bb15d7bb4538a899aeaff7d5a60",
+  "scope": "Actual UCI per-request output is local-only; functional/mode/legal/lifecycle summary, not strength.",
+  "requestCounts": {
+    "('baseline', 'depth3')": 16,
+    "('baseline', 'depth 7')": 1,
+    "('baseline', 'nodes 100000')": 1,
+    "('baseline', 'movetime 50')": 1,
+    "('baseline', 'clock')": 24,
+    "('baseline', 'infinite-stop')": 3,
+    "('baseline', 'replace')": 3,
+    "('half', 'depth3')": 16,
+    "('half', 'depth 7')": 1,
+    "('half', 'nodes 100000')": 1,
+    "('half', 'movetime 50')": 1,
+    "('half', 'clock')": 24,
+    "('half', 'infinite-stop')": 3,
+    "('half', 'replace')": 3,
+    "('stable3-half', 'depth3')": 16,
+    "('stable3-half', 'depth 7')": 1,
+    "('stable3-half', 'nodes 100000')": 1,
+    "('stable3-half', 'movetime 50')": 1,
+    "('stable3-half', 'clock')": 24,
+    "('stable3-half', 'infinite-stop')": 3,
+    "('stable3-half', 'replace')": 3
+  },
+  "clockTerminationCounts": {
+    "('baseline', 'TIME_LIMIT')": 24,
+    "('half', 'TIME_LIMIT')": 16,
+    "('half', 'TIME_ALLOCATION')": 8,
+    "('stable3-half', 'TIME_LIMIT')": 21,
+    "('stable3-half', 'TIME_ALLOCATION')": 3
+  },
+  "maxClockOverrunMillis": 2.654199,
+  "nonclockSignatures": {
+    "baseline": [
+      {
+        "bestmove": "e2e4",
+        "nodes": 38758,
+        "termination": "COMPLETED",
+        "result": [
+          [
+            "7"
+          ],
+          [
+            "cp",
+            "78"
+          ],
+          [
+            "e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+          ]
+        ]
+      },
+      {
+        "bestmove": "e2e4",
+        "nodes": 100000,
+        "termination": "NODE_LIMIT",
+        "result": [
+          [
+            "8"
+          ],
+          [
+            "cp",
+            "78"
+          ],
+          [
+            "e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+          ]
+        ]
+      }
+    ],
+    "half": [
+      {
+        "bestmove": "e2e4",
+        "nodes": 38758,
+        "termination": "COMPLETED",
+        "result": [
+          [
+            "7"
+          ],
+          [
+            "cp",
+            "78"
+          ],
+          [
+            "e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+          ]
+        ]
+      },
+      {
+        "bestmove": "e2e4",
+        "nodes": 100000,
+        "termination": "NODE_LIMIT",
+        "result": [
+          [
+            "8"
+          ],
+          [
+            "cp",
+            "78"
+          ],
+          [
+            "e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+          ]
+        ]
+      }
+    ],
+    "stable3-half": [
+      {
+        "bestmove": "e2e4",
+        "nodes": 38758,
+        "termination": "COMPLETED",
+        "result": [
+          [
+            "7"
+          ],
+          [
+            "cp",
+            "78"
+          ],
+          [
+            "e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+          ]
+        ]
+      },
+      {
+        "bestmove": "e2e4",
+        "nodes": 100000,
+        "termination": "NODE_LIMIT",
+        "result": [
+          [
+            "8"
+          ],
+          [
+            "cp",
+            "78"
+          ],
+          [
+            "e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 e7e5"
+          ]
+        ]
+      }
+    ]
+  }
+}

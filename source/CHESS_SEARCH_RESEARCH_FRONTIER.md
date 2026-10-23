@@ -1,10 +1,35 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F028**
+Internal frontier revision: **P3-F029**
 
-Status: **OWNER-ACCEPTED: completed CP64 selectivity reappraisal, GPT-reconciled. The owner authorizes flags3407871 production adoption at all supported workers 1-16 through shared BaselineEngine. Repository production integration is validated at build74; external deployment remains separate. W1 strength evidence is positive under the frozen primary assumptions; bounded sensitivity crosses equality and multiworker strength remains unconfirmed. No TT-policy change, evaluator replacement or successor is authorized.**
+Status: **ACTIVE: owner-launched SR-034 Search time allocation and instability-aware spending CGLHW. Accepted build74 CP64/flags3407871/ADAPTIVE16 remains production. Prior selectivity, packaging remediation and mirror prerequisites are owner-confirmed. Research is authorized; production promotion, TT-policy changes, evaluator replacement, deployment and a successor are excluded.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
+
+## Active SR-034 time allocation progression - 24 October 2026
+
+Owner acceptance of CP64 selectivity and native-packaging remediation and both
+mirror refreshes are confirmed. The separate SR-034 launch admits one bounded
+whole-game resource-redistribution objective under the
+[Contract](CHESS_SEARCH_CONTRACT.md#active-sr-034-time-allocation-objective---24-october-2026).
+Build74 flattened flags3407871/ADAPTIVE16/frozen CP64/Hash64 is the comparator;
+technical identity must be verified before dependent experiments. No promotion.
+
+Completed stability, instability-aware spending and fallible iteration-cost
+prediction are related hypotheses, not mandatory standalone implementations.
+Challenge shallow stability, score provenance/scale, retries, heavy-tailed costs,
+root effort, worker coordination and host contention before selecting policies.
+Prioritize cheap matched trajectories, then the smallest supported clock-only
+candidate, correctness/resource/clock qualification, meaningful reverse ablation
+and fresh independent10+0.1 confirmation when justified. H4 whole-game strength
+governs; additional depth or saved time alone is insufficient. Multiworker strength
+needs separate evidence. Preserve historical negative and incomplete experiments.
+
+The [focused record](../docs/research/search/P3_SR034_TIME_ALLOCATION_2026-10-24.md)
+contains the dynamic hypothesis queue and restart point. Stop only affected
+owner-gated branches; continue useful authorized work. Technical closeout returns
+supported dispositions for GPT/owner reconciliation, without adoption or successor
+launch. Both revised masters require refresh before dependent external planning.
 
 ## CP64 selectivity production adoption - 24 October 2026
 
@@ -481,7 +506,7 @@ focused Phase 2 reports. This inventory does not duplicate their experimental re
 | SR-031 | Singular-extension family | Unadopted; P1 scoped REJECTED, policy-cache/anchor evidence retained. | TT anchors/exclusion, ordinary/double/multiple/negative extensions, restricted-result identity and cost-controlled probes. | O1/O3, SR-007/008/012/026/029/033; hint availability is not score-anchor proof. | [P1], [C1], [Bagatur] |
 | SR-032 | Other tactical/forced-line extensions | Unadopted, GPT-accepted P2 DEFERRED. RECAPTURE confirmation closed for futility; PROMOTION four-worker run interrupted before assessment. | Recapture, passed-pawn/promotion, one-reply, mate-threat/threat, history/hindsight, fractional extensions and total caps. | SR-001/010/011/017/029/030/031/033; retained default-OFF and partial evidence. | [R032], [P1] |
 | SR-033 | Adaptive/hindsight depth feedback | Unadopted, P2 DEFERRED; MOVE1 closed for futility, CAUTION4 inconclusive. | Previous-reduction/outcome feedback, static movement and confidence relief/adjustment; distinguish feedback from predictive shortening and censored failures. | O2/O3, SR-008/009/016/023/029; legitimate labels and unchanged nominal verification. | [R033], [P1], [Bagatur] |
-| SR-034 | Time management | Baseline bounded clocks with hard-stop/completed-iteration rules; forecast/stability policies unadopted. | Soft allocation, best-move/score stability, root effort, fail-high/low instability, easy moves, increment and resource redistribution. | SR-004/005/006/035/036; full trajectory/whole-game cost and hard-stop precedence. | [P1], [C1], [Bagatur] |
+| SR-034 | Time management | ACTIVE owner-launched24Oct CGLHW; build74 bounded factual-clock production retained, no adaptive policy adopted. | Completed stability/instability, fallible cost forecasts and bounded soft allocation, governed by whole-game resource redistribution. Dynamic queue in focused SR-034 record. | SR-004/005/006/035/036; hard-stop/completed-result precedence, frozen CP64, fresh10+0.1 and separate worker domains. | [P1], [C1], [Bagatur] |
 | SR-035 | Pondering and speculative opponent-turn Search | Pending opportunity; no pondering adoption. Historical nonterminal infinite-depth-ceiling concern remains unvalidated. | Predicted-move hit/miss reuse, protocol/cancellation, history/TT retention and resource scheduling; inspect old ceiling lead against current lifecycle before asserting a bug. | SR-005/010/012/034/036; immutable state transfer and drained ownership. | [P1], [P2], [R036] |
 | SR-036 | Parallel Search architecture | Baseline inherited same-depth coordinator plus accepted Pair-2 ROOT_REUSE2..16; default one worker. | Root splitting/YBWC, Jamboree/ABDADA, independent-depth Lazy SMP, DTS, diversification/voting, hint sharing and private/shared-history alternatives. | O1/O2, SR-005/012/014/016/034/035; coherent publication/budget/drain semantics. | [R036], [R024], [P1] |
 | SR-037 | Production Search hot-path mechanical optimization | Baseline primitive/reusable state and static-leaf legal-existence optimization. | Frame/move layout, branch/cache/JIT costs, incremental/reconstructed state, repeated SEE/eval/setup, justified prefetch alternatives and allocation removal. | SR-002/012/014/015/017; settled TT boundaries and independent semantic controls. | [P1], [C1], [Bagatur] |

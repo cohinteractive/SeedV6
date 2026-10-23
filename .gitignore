@@ -118,3 +118,8 @@ desktop.ini
 
 # Preserve already recorded SR-021 CHILD UCI raw transcripts at their evidence paths.
 /docs/research/search/sr021-phase2-2026-10-15/child-uci/*.txt
+
+# Preserve completed SR-034 qualification request captures at their recorded paths.
+# Compact summaries/manifests are tracked; future bulk captures use raw/.
+/docs/research/search/p3-sr034-2026-10-24/clock-qualification-v1.json
+/docs/research/search/p3-sr034-2026-10-24/clock-qualification-v2.json

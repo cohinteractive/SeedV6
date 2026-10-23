@@ -1,0 +1,1479 @@
+{
+  "status": "passed",
+  "inputs": {
+    "raw\\trajectory-openings-v1.jsonl": "c10017e5978f8f979ed41fbb29a45de6ba9203d3975cbf53b891967bee0a88dc",
+    "raw\\trajectory-played-v1.jsonl": "22b5de50e303b599f2fd3cc7a9e747ff79df8d2eb8dafb9b76adc919b560b7fe"
+  },
+  "uniqueRoots": 32,
+  "repeatStableRoots": 32,
+  "pairedRequests": 64,
+  "completedDepth": {
+    "n": 32,
+    "min": 7,
+    "p10": 8,
+    "median": 9.0,
+    "p90": 10,
+    "p95": 10,
+    "max": 12
+  },
+  "conditions": [
+    {
+      "depthRange": [
+        3,
+        5
+      ],
+      "condition": "all",
+      "n": 96,
+      "nextMoveChanges": 13,
+      "twoLaterN": 96,
+      "twoLaterChanges": 19,
+      "scoreRange3": {
+        "n": 96,
+        "min": 0,
+        "p10": 0,
+        "median": 40.5,
+        "p90": 244,
+        "p95": 288,
+        "max": 558
+      },
+      "nextNodeRatio": {
+        "n": 96,
+        "min": 0.29266281945589445,
+        "p10": 1.0339531123686339,
+        "median": 2.3937528668817816,
+        "p90": 6.716184519155591,
+        "p95": 10.239504473503096,
+        "max": 22.339966832504146
+      },
+      "nextTimeRatio": {
+        "n": 96,
+        "min": 0.27586820216046326,
+        "p10": 1.1017923594615993,
+        "median": 2.4436125668663364,
+        "p90": 6.771262294330799,
+        "p95": 9.13039844309826,
+        "max": 15.02257678292556
+      }
+    },
+    {
+      "depthRange": [
+        3,
+        5
+      ],
+      "condition": "stable3",
+      "n": 73,
+      "nextMoveChanges": 6,
+      "twoLaterN": 73,
+      "twoLaterChanges": 10,
+      "scoreRange3": {
+        "n": 73,
+        "min": 0,
+        "p10": 0,
+        "median": 35,
+        "p90": 244,
+        "p95": 301,
+        "max": 558
+      },
+      "nextNodeRatio": {
+        "n": 73,
+        "min": 0.29266281945589445,
+        "p10": 1.2880565583634176,
+        "median": 2.410524139356973,
+        "p90": 6.716184519155591,
+        "p95": 8.86349949815992,
+        "max": 22.339966832504146
+      },
+      "nextTimeRatio": {
+        "n": 73,
+        "min": 0.27586820216046326,
+        "p10": 1.1136630494077349,
+        "median": 2.5260370545118986,
+        "p90": 6.771262294330799,
+        "p95": 8.389729139110932,
+        "max": 15.02257678292556
+      }
+    },
+    {
+      "depthRange": [
+        3,
+        5
+      ],
+      "condition": "changedNow",
+      "n": 12,
+      "nextMoveChanges": 3,
+      "twoLaterN": 12,
+      "twoLaterChanges": 4,
+      "scoreRange3": {
+        "n": 12,
+        "min": 9,
+        "p10": 9,
+        "median": 84.5,
+        "p90": 115,
+        "p95": 150,
+        "max": 279
+      },
+      "nextNodeRatio": {
+        "n": 12,
+        "min": 0.998320311025554,
+        "p10": 1.0334057373979477,
+        "median": 1.935946554406121,
+        "p90": 3.189172370877411,
+        "p95": 3.303647534178336,
+        "max": 5.293547564396838
+      },
+      "nextTimeRatio": {
+        "n": 12,
+        "min": 0.9629687265349309,
+        "p10": 1.1017923594615993,
+        "median": 1.8543476934915373,
+        "p90": 3.0709719678023464,
+        "p95": 3.1594619043769536,
+        "max": 4.172765815451547
+      }
+    },
+    {
+      "depthRange": [
+        3,
+        5
+      ],
+      "condition": "scoreFell",
+      "n": 32,
+      "nextMoveChanges": 4,
+      "twoLaterN": 32,
+      "twoLaterChanges": 8,
+      "scoreRange3": {
+        "n": 32,
+        "min": 1,
+        "p10": 6,
+        "median": 40.5,
+        "p90": 134,
+        "p95": 268,
+        "max": 301
+      },
+      "nextNodeRatio": {
+        "n": 32,
+        "min": 0.29266281945589445,
+        "p10": 0.8107317073170732,
+        "median": 2.7770340017744335,
+        "p90": 4.726705796038151,
+        "p95": 5.293547564396838,
+        "max": 11.584347826086956
+      },
+      "nextTimeRatio": {
+        "n": 32,
+        "min": 0.27586820216046326,
+        "p10": 0.7886658245285648,
+        "median": 2.6933442077285967,
+        "p90": 4.111736615586961,
+        "p95": 5.129515191084253,
+        "max": 11.274714483607818
+      }
+    },
+    {
+      "depthRange": [
+        3,
+        5
+      ],
+      "condition": "noFallStable3",
+      "n": 47,
+      "nextMoveChanges": 3,
+      "twoLaterN": 47,
+      "twoLaterChanges": 5,
+      "scoreRange3": {
+        "n": 47,
+        "min": 0,
+        "p10": 0,
+        "median": 28,
+        "p90": 264,
+        "p95": 324,
+        "max": 558
+      },
+      "nextNodeRatio": {
+        "n": 47,
+        "min": 0.8901597783149579,
+        "p10": 1.4406995230524642,
+        "median": 2.3971036585365852,
+        "p90": 8.357670979667283,
+        "p95": 8.86349949815992,
+        "max": 22.339966832504146
+      },
+      "nextTimeRatio": {
+        "n": 47,
+        "min": 0.8808589747536946,
+        "p10": 1.3252971370061568,
+        "median": 2.4227082948079275,
+        "p90": 7.424527478283644,
+        "p95": 8.389729139110932,
+        "max": 15.02257678292556
+      }
+    },
+    {
+      "depthRange": [
+        3,
+        5
+      ],
+      "condition": "retries",
+      "n": 25,
+      "nextMoveChanges": 1,
+      "twoLaterN": 25,
+      "twoLaterChanges": 6,
+      "scoreRange3": {
+        "n": 25,
+        "min": 17,
+        "p10": 30,
+        "median": 96,
+        "p90": 268,
+        "p95": 301,
+        "max": 455
+      },
+      "nextNodeRatio": {
+        "n": 25,
+        "min": 0.29266281945589445,
+        "p10": 0.6895273401297498,
+        "median": 1.457288464649733,
+        "p90": 2.240934065934066,
+        "p95": 3.198981516408902,
+        "max": 5.0749767441860465
+      },
+      "nextTimeRatio": {
+        "n": 25,
+        "min": 0.27586820216046326,
+        "p10": 0.7146930310345553,
+        "median": 1.3252971370061568,
+        "p90": 2.3641739371879025,
+        "p95": 2.706565170472774,
+        "max": 4.8026006436935536
+      }
+    },
+    {
+      "depthRange": [
+        3,
+        5
+      ],
+      "condition": "noRetriesStable3",
+      "n": 56,
+      "nextMoveChanges": 6,
+      "twoLaterN": 56,
+      "twoLaterChanges": 6,
+      "scoreRange3": {
+        "n": 56,
+        "min": 0,
+        "p10": 0,
+        "median": 19.0,
+        "p90": 135,
+        "p95": 268,
+        "max": 558
+      },
+      "nextNodeRatio": {
+        "n": 56,
+        "min": 1.337163750326456,
+        "p10": 1.6517571884984026,
+        "median": 3.120988796492222,
+        "p90": 8.357670979667283,
+        "p95": 10.239504473503096,
+        "max": 22.339966832504146
+      },
+      "nextTimeRatio": {
+        "n": 56,
+        "min": 1.1136630494077349,
+        "p10": 1.6372462842526785,
+        "median": 3.0186667620105445,
+        "p90": 7.424527478283644,
+        "p95": 10.415867617428086,
+        "max": 15.02257678292556
+      }
+    },
+    {
+      "depthRange": [
+        6,
+        8
+      ],
+      "condition": "all",
+      "n": 85,
+      "nextMoveChanges": 11,
+      "twoLaterN": 60,
+      "twoLaterChanges": 8,
+      "scoreRange3": {
+        "n": 85,
+        "min": 0,
+        "p10": 17,
+        "median": 58,
+        "p90": 262,
+        "p95": 316,
+        "max": 399
+      },
+      "nextNodeRatio": {
+        "n": 85,
+        "min": 0.5330465564367971,
+        "p10": 0.8426018903712205,
+        "median": 2.495459655798668,
+        "p90": 5.712058162337973,
+        "p95": 7.513358947835082,
+        "max": 15.551196644460893
+      },
+      "nextTimeRatio": {
+        "n": 85,
+        "min": 0.5114337157594367,
+        "p10": 0.7876537592545423,
+        "median": 2.4362765661149504,
+        "p90": 5.140359289158448,
+        "p95": 7.233585418191703,
+        "max": 15.785004248270093
+      }
+    },
+    {
+      "depthRange": [
+        6,
+        8
+      ],
+      "condition": "stable3",
+      "n": 64,
+      "nextMoveChanges": 4,
+      "twoLaterN": 44,
+      "twoLaterChanges": 3,
+      "scoreRange3": {
+        "n": 64,
+        "min": 0,
+        "p10": 12,
+        "median": 57.0,
+        "p90": 262,
+        "p95": 301,
+        "max": 399
+      },
+      "nextNodeRatio": {
+        "n": 64,
+        "min": 0.5330465564367971,
+        "p10": 0.8719170403587444,
+        "median": 2.738694947858967,
+        "p90": 5.712058162337973,
+        "p95": 7.513358947835082,
+        "max": 15.551196644460893
+      },
+      "nextTimeRatio": {
+        "n": 64,
+        "min": 0.5114337157594367,
+        "p10": 0.7876537592545423,
+        "median": 2.5674932657870255,
+        "p90": 5.140359289158448,
+        "p95": 7.233585418191703,
+        "max": 15.785004248270093
+      }
+    },
+    {
+      "depthRange": [
+        6,
+        8
+      ],
+      "condition": "changedNow",
+      "n": 13,
+      "nextMoveChanges": 6,
+      "twoLaterN": 10,
+      "twoLaterChanges": 5,
+      "scoreRange3": {
+        "n": 13,
+        "min": 19,
+        "p10": 21,
+        "median": 62,
+        "p90": 189,
+        "p95": 260,
+        "max": 325
+      },
+      "nextNodeRatio": {
+        "n": 13,
+        "min": 0.6416407544099271,
+        "p10": 0.8024659942629777,
+        "median": 1.8929940627650552,
+        "p90": 2.3811385153555826,
+        "p95": 2.495459655798668,
+        "max": 8.011341199513497
+      },
+      "nextTimeRatio": {
+        "n": 13,
+        "min": 0.6031381093409046,
+        "p10": 0.7077993215612391,
+        "median": 1.7678220515373202,
+        "p90": 2.377249111061781,
+        "p95": 2.625708039927201,
+        "max": 7.798604463645334
+      }
+    },
+    {
+      "depthRange": [
+        6,
+        8
+      ],
+      "condition": "scoreFell",
+      "n": 36,
+      "nextMoveChanges": 3,
+      "twoLaterN": 24,
+      "twoLaterChanges": 4,
+      "scoreRange3": {
+        "n": 36,
+        "min": 8,
+        "p10": 22,
+        "median": 67.5,
+        "p90": 189,
+        "p95": 316,
+        "max": 399
+      },
+      "nextNodeRatio": {
+        "n": 36,
+        "min": 0.5330465564367971,
+        "p10": 0.6416407544099271,
+        "median": 2.2739033937844897,
+        "p90": 4.169522876883739,
+        "p95": 5.712058162337973,
+        "max": 6.4746375620500345
+      },
+      "nextTimeRatio": {
+        "n": 36,
+        "min": 0.5151551944595358,
+        "p10": 0.6603367792133168,
+        "median": 2.24444221276776,
+        "p90": 4.017047042849726,
+        "p95": 4.934074945331655,
+        "max": 6.164312368109721
+      }
+    },
+    {
+      "depthRange": [
+        6,
+        8
+      ],
+      "condition": "noFallStable3",
+      "n": 39,
+      "nextMoveChanges": 4,
+      "twoLaterN": 28,
+      "twoLaterChanges": 2,
+      "scoreRange3": {
+        "n": 39,
+        "min": 0,
+        "p10": 10,
+        "median": 43,
+        "p90": 247,
+        "p95": 294,
+        "max": 342
+      },
+      "nextNodeRatio": {
+        "n": 39,
+        "min": 0.5743125228482067,
+        "p10": 1.4809247877275544,
+        "median": 2.772473447936056,
+        "p90": 7.513358947835082,
+        "p95": 12.400142174479681,
+        "max": 15.551196644460893
+      },
+      "nextTimeRatio": {
+        "n": 39,
+        "min": 0.5114337157594367,
+        "p10": 1.4786756642117733,
+        "median": 2.571128220196309,
+        "p90": 7.233585418191703,
+        "p95": 13.167981524359679,
+        "max": 15.785004248270093
+      }
+    },
+    {
+      "depthRange": [
+        6,
+        8
+      ],
+      "condition": "retries",
+      "n": 30,
+      "nextMoveChanges": 5,
+      "twoLaterN": 22,
+      "twoLaterChanges": 3,
+      "scoreRange3": {
+        "n": 30,
+        "min": 12,
+        "p10": 17,
+        "median": 57.5,
+        "p90": 260,
+        "p95": 262,
+        "max": 364
+      },
+      "nextNodeRatio": {
+        "n": 30,
+        "min": 0.5330465564367971,
+        "p10": 0.6315165581376373,
+        "median": 1.5162449898189923,
+        "p90": 2.853705859526581,
+        "p95": 4.142585249801745,
+        "max": 5.0152308505739285
+      },
+      "nextTimeRatio": {
+        "n": 30,
+        "min": 0.5114337157594367,
+        "p10": 0.6031381093409046,
+        "median": 1.5174506894487338,
+        "p90": 2.8143109267648274,
+        "p95": 3.9667768351851307,
+        "max": 4.8929001843771385
+      }
+    },
+    {
+      "depthRange": [
+        6,
+        8
+      ],
+      "condition": "noRetriesStable3",
+      "n": 40,
+      "nextMoveChanges": 2,
+      "twoLaterN": 28,
+      "twoLaterChanges": 3,
+      "scoreRange3": {
+        "n": 40,
+        "min": 0,
+        "p10": 9,
+        "median": 57.5,
+        "p90": 262,
+        "p95": 301,
+        "max": 399
+      },
+      "nextNodeRatio": {
+        "n": 40,
+        "min": 1.3445328810020878,
+        "p10": 2.0984018674806966,
+        "median": 3.377723419073026,
+        "p90": 7.513358947835082,
+        "p95": 12.400142174479681,
+        "max": 15.551196644460893
+      },
+      "nextTimeRatio": {
+        "n": 40,
+        "min": 1.2870207329110783,
+        "p10": 1.8117134154434014,
+        "median": 3.2772899908286224,
+        "p90": 7.233585418191703,
+        "p95": 13.167981524359679,
+        "max": 15.785004248270093
+      }
+    },
+    {
+      "depthRange": [
+        9,
+        12
+      ],
+      "condition": "all",
+      "n": 9,
+      "nextMoveChanges": 0,
+      "twoLaterN": 2,
+      "twoLaterChanges": 0,
+      "scoreRange3": {
+        "n": 9,
+        "min": 21,
+        "p10": 21,
+        "median": 59,
+        "p90": 136,
+        "p95": 136,
+        "max": 175
+      },
+      "nextNodeRatio": {
+        "n": 9,
+        "min": 1.2853077196727143,
+        "p10": 1.2853077196727143,
+        "median": 1.6679793922458959,
+        "p90": 2.8421118461281893,
+        "p95": 2.8421118461281893,
+        "max": 4.352985894078892
+      },
+      "nextTimeRatio": {
+        "n": 9,
+        "min": 1.037737801410085,
+        "p10": 1.037737801410085,
+        "median": 1.6205226931463121,
+        "p90": 2.879513015467509,
+        "p95": 2.879513015467509,
+        "max": 4.566278791054609
+      }
+    },
+    {
+      "depthRange": [
+        9,
+        12
+      ],
+      "condition": "stable3",
+      "n": 9,
+      "nextMoveChanges": 0,
+      "twoLaterN": 2,
+      "twoLaterChanges": 0,
+      "scoreRange3": {
+        "n": 9,
+        "min": 21,
+        "p10": 21,
+        "median": 59,
+        "p90": 136,
+        "p95": 136,
+        "max": 175
+      },
+      "nextNodeRatio": {
+        "n": 9,
+        "min": 1.2853077196727143,
+        "p10": 1.2853077196727143,
+        "median": 1.6679793922458959,
+        "p90": 2.8421118461281893,
+        "p95": 2.8421118461281893,
+        "max": 4.352985894078892
+      },
+      "nextTimeRatio": {
+        "n": 9,
+        "min": 1.037737801410085,
+        "p10": 1.037737801410085,
+        "median": 1.6205226931463121,
+        "p90": 2.879513015467509,
+        "p95": 2.879513015467509,
+        "max": 4.566278791054609
+      }
+    },
+    {
+      "depthRange": [
+        9,
+        12
+      ],
+      "condition": "changedNow",
+      "n": 0,
+      "nextMoveChanges": 0,
+      "twoLaterN": 0,
+      "twoLaterChanges": 0,
+      "scoreRange3": {
+        "n": 0
+      },
+      "nextNodeRatio": {
+        "n": 0
+      },
+      "nextTimeRatio": {
+        "n": 0
+      }
+    },
+    {
+      "depthRange": [
+        9,
+        12
+      ],
+      "condition": "scoreFell",
+      "n": 3,
+      "nextMoveChanges": 0,
+      "twoLaterN": 0,
+      "twoLaterChanges": 0,
+      "scoreRange3": {
+        "n": 3,
+        "min": 21,
+        "p10": 21,
+        "median": 39,
+        "p90": 39,
+        "p95": 39,
+        "max": 136
+      },
+      "nextNodeRatio": {
+        "n": 3,
+        "min": 1.2853077196727143,
+        "p10": 1.2853077196727143,
+        "median": 1.3847225498494458,
+        "p90": 1.3847225498494458,
+        "p95": 1.3847225498494458,
+        "max": 1.6679793922458959
+      },
+      "nextTimeRatio": {
+        "n": 3,
+        "min": 1.037737801410085,
+        "p10": 1.037737801410085,
+        "median": 1.3905111387024147,
+        "p90": 1.3905111387024147,
+        "p95": 1.3905111387024147,
+        "max": 1.6205226931463121
+      }
+    },
+    {
+      "depthRange": [
+        9,
+        12
+      ],
+      "condition": "noFallStable3",
+      "n": 6,
+      "nextMoveChanges": 0,
+      "twoLaterN": 2,
+      "twoLaterChanges": 0,
+      "scoreRange3": {
+        "n": 6,
+        "min": 35,
+        "p10": 35,
+        "median": 63.5,
+        "p90": 71,
+        "p95": 71,
+        "max": 175
+      },
+      "nextNodeRatio": {
+        "n": 6,
+        "min": 1.3828722720812974,
+        "p10": 1.3828722720812974,
+        "median": 2.472460737794811,
+        "p90": 2.8421118461281893,
+        "p95": 2.8421118461281893,
+        "max": 4.352985894078892
+      },
+      "nextTimeRatio": {
+        "n": 6,
+        "min": 1.5163263304261771,
+        "p10": 1.5163263304261771,
+        "median": 2.596671755675303,
+        "p90": 2.879513015467509,
+        "p95": 2.879513015467509,
+        "max": 4.566278791054609
+      }
+    },
+    {
+      "depthRange": [
+        9,
+        12
+      ],
+      "condition": "retries",
+      "n": 3,
+      "nextMoveChanges": 0,
+      "twoLaterN": 1,
+      "twoLaterChanges": 0,
+      "scoreRange3": {
+        "n": 3,
+        "min": 21,
+        "p10": 21,
+        "median": 39,
+        "p90": 39,
+        "p95": 39,
+        "max": 68
+      },
+      "nextNodeRatio": {
+        "n": 3,
+        "min": 1.2853077196727143,
+        "p10": 1.2853077196727143,
+        "median": 1.3828722720812974,
+        "p90": 1.3828722720812974,
+        "p95": 1.3828722720812974,
+        "max": 1.3847225498494458
+      },
+      "nextTimeRatio": {
+        "n": 3,
+        "min": 1.037737801410085,
+        "p10": 1.037737801410085,
+        "median": 1.3905111387024147,
+        "p90": 1.3905111387024147,
+        "p95": 1.3905111387024147,
+        "max": 1.5706948579368565
+      }
+    },
+    {
+      "depthRange": [
+        9,
+        12
+      ],
+      "condition": "noRetriesStable3",
+      "n": 6,
+      "nextMoveChanges": 0,
+      "twoLaterN": 1,
+      "twoLaterChanges": 0,
+      "scoreRange3": {
+        "n": 6,
+        "min": 35,
+        "p10": 35,
+        "median": 65.0,
+        "p90": 136,
+        "p95": 136,
+        "max": 175
+      },
+      "nextNodeRatio": {
+        "n": 6,
+        "min": 1.640213081994892,
+        "p10": 1.640213081994892,
+        "median": 2.472460737794811,
+        "p90": 2.8421118461281893,
+        "p95": 2.8421118461281893,
+        "max": 4.352985894078892
+      },
+      "nextTimeRatio": {
+        "n": 6,
+        "min": 1.5163263304261771,
+        "p10": 1.5163263304261771,
+        "median": 2.596671755675303,
+        "p90": 2.879513015467509,
+        "p95": 2.879513015467509,
+        "max": 4.566278791054609
+      }
+    }
+  ],
+  "selectiveSamples": 190,
+  "ordinarySamples": 190,
+  "abandonedNodes": {
+    "n": 64,
+    "min": 0,
+    "p10": 100561,
+    "median": 316461.0,
+    "p90": 663848,
+    "p95": 682470,
+    "max": 781951
+  },
+  "abandonedFraction": {
+    "n": 64,
+    "min": 0.0,
+    "p10": 0.10056100000000001,
+    "median": 0.316461,
+    "p90": 0.663848,
+    "p95": 0.68247,
+    "max": 0.7819510000000001
+  },
+  "rawNextTimeRatio": {
+    "n": 380,
+    "min": 0.2734784210164878,
+    "p10": 0.9173256232088308,
+    "median": 2.411482745638067,
+    "p90": 6.421679365930237,
+    "p95": 8.452580516410304,
+    "max": 20.35021417339912
+  },
+  "parityNodePredictedActual": {
+    "n": 190,
+    "min": 0.04433918211531003,
+    "p10": 0.2612085071130663,
+    "median": 1.1385447909811002,
+    "p90": 3.936143595204144,
+    "p95": 4.520880560359107,
+    "max": 29.112662404150267
+  },
+  "parityTimePredictedActual": {
+    "n": 190,
+    "min": 0.04527670818415395,
+    "p10": 0.24205687933060172,
+    "median": 1.007594846261482,
+    "p90": 3.0463107662773883,
+    "p95": 4.02260230153938,
+    "max": 27.431061538397586
+  },
+  "parityFormula": "cost[d-1] * cost[d] / cost[d-2], predicts cost[d+1]; descriptive, not a lower bound",
+  "lastCostOverpredictsNext": 20,
+  "halfLastCostOverpredictsNext": 2,
+  "observedCleanElapsedRatio": {
+    "n": 64,
+    "min": 0.7574282550450618,
+    "p10": 0.9261205542162289,
+    "median": 0.992290438079005,
+    "p90": 1.035958264873912,
+    "p95": 1.041387929700969,
+    "max": 1.2199447588607184
+  },
+  "cleanTotalElapsedNanos": 102817689004,
+  "observedTotalElapsedNanos": 100774795102,
+  "cleanTotalProcessCpuNanos": 107500000000,
+  "resourceReceipts": [
+    {
+      "nativeLifetime": {
+        "creationTicks": 134372615550047132,
+        "createdUtc": "2026-10-23T20:39:15.004713+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-23T20:40:36.444645+00:00",
+        "kernelCpuSeconds": 1.875,
+        "userCpuSeconds": 84.90625,
+        "totalCpuSeconds": 86.78125
+      },
+      "hostStart": {
+        "utc": "2026-10-23T20:39:15.003764+00:00",
+        "monotonic": 68017.8291627,
+        "ticks": [
+          7121803750000,
+          7397348281250,
+          764748281250
+        ],
+        "availableBytes": 17311748096,
+        "memoryLoadPercent": 49
+      },
+      "hostEnd": {
+        "utc": "2026-10-23T20:40:36.502049+00:00",
+        "monotonic": 68099.3274529,
+        "ticks": [
+          7130002343750,
+          7405867656250,
+          766007187500
+        ],
+        "availableBytes": 17406185472,
+        "memoryLoadPercent": 49
+      },
+      "peakWorkingSetBytes": 369639424,
+      "wallSeconds": 81.49850640000659
+    },
+    {
+      "nativeLifetime": {
+        "creationTicks": 134372616365120248,
+        "createdUtc": "2026-10-23T20:40:36.512024+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-23T20:42:43.517183+00:00",
+        "kernelCpuSeconds": 3.078125,
+        "userCpuSeconds": 128.6875,
+        "totalCpuSeconds": 131.765625
+      },
+      "hostStart": {
+        "utc": "2026-10-23T20:40:36.510969+00:00",
+        "monotonic": 68099.3363691,
+        "ticks": [
+          7130003906250,
+          7405869218750,
+          766007343750
+        ],
+        "availableBytes": 17406672896,
+        "memoryLoadPercent": 49
+      },
+      "hostEnd": {
+        "utc": "2026-10-23T20:42:43.574149+00:00",
+        "monotonic": 68226.399552,
+        "ticks": [
+          7142413281250,
+          7418926250000,
+          768197343750
+        ],
+        "availableBytes": 17382531072,
+        "memoryLoadPercent": 49
+      },
+      "peakWorkingSetBytes": 368541696,
+      "wallSeconds": 127.06342189999123
+    }
+  ],
+  "nodeGrowthTailWitnesses": [
+    {
+      "root": [
+        "trajectory-openings-v1",
+        "opening-00"
+      ],
+      "depth": 5,
+      "stable3": true,
+      "selective": true,
+      "changedNow": false,
+      "scoreDelta": 0,
+      "scoreRange3": 14,
+      "retries": 0,
+      "nextChanged": false,
+      "twoLaterChanged": false,
+      "nextNodeRatio": 10.239504473503096,
+      "nextTimeRatio": 10.415867617428086,
+      "parityNodePredictedActual": 0.18205540358912609,
+      "parityTimePredictedActual": 0.15500650987547784,
+      "lastCostOverpredictsNext": false,
+      "halfLastCostOverpredictsNext": false
+    },
+    {
+      "root": [
+        "trajectory-openings-v1",
+        "opening-02"
+      ],
+      "depth": 3,
+      "stable3": false,
+      "selective": true,
+      "changedNow": false,
+      "scoreDelta": 0,
+      "scoreRange3": 24,
+      "retries": 0,
+      "nextChanged": false,
+      "twoLaterChanged": false,
+      "nextNodeRatio": 14.716234652114597,
+      "nextTimeRatio": 11.533160782080746,
+      "parityNodePredictedActual": 0.09012718444522688,
+      "parityTimePredictedActual": 0.11876606300688636,
+      "lastCostOverpredictsNext": false,
+      "halfLastCostOverpredictsNext": false
+    },
+    {
+      "root": [
+        "trajectory-openings-v1",
+        "opening-09"
+      ],
+      "depth": 5,
+      "stable3": true,
+      "selective": true,
+      "changedNow": false,
+      "scoreDelta": 0,
+      "scoreRange3": 70,
+      "retries": 0,
+      "nextChanged": true,
+      "twoLaterChanged": false,
+      "nextNodeRatio": 15.544048903272204,
+      "nextTimeRatio": 11.606564335256076,
+      "parityNodePredictedActual": 0.1826525930810191,
+      "parityTimePredictedActual": 0.23091443493259092,
+      "lastCostOverpredictsNext": false,
+      "halfLastCostOverpredictsNext": false
+    },
+    {
+      "root": [
+        "trajectory-played-v1",
+        "fresh-00-8"
+      ],
+      "depth": 3,
+      "stable3": true,
+      "selective": true,
+      "changedNow": false,
+      "scoreDelta": 0,
+      "scoreRange3": 0,
+      "retries": 0,
+      "nextChanged": false,
+      "twoLaterChanged": false,
+      "nextNodeRatio": 22.339966832504146,
+      "nextTimeRatio": 15.02257678292556,
+      "parityNodePredictedActual": 0.07995939904358466,
+      "parityTimePredictedActual": 0.07632465987030962,
+      "lastCostOverpredictsNext": false,
+      "halfLastCostOverpredictsNext": false
+    },
+    {
+      "root": [
+        "trajectory-played-v1",
+        "fresh-00-8"
+      ],
+      "depth": 4,
+      "stable3": true,
+      "selective": true,
+      "changedNow": false,
+      "scoreDelta": -128,
+      "scoreRange3": 128,
+      "retries": 3,
+      "nextChanged": false,
+      "twoLaterChanged": false,
+      "nextNodeRatio": 0.38393586222255216,
+      "nextTimeRatio": 0.38383754612356574,
+      "parityNodePredictedActual": 7.090631268560176,
+      "parityTimePredictedActual": 8.6293756196506,
+      "lastCostOverpredictsNext": true,
+      "halfLastCostOverpredictsNext": true
+    },
+    {
+      "root": [
+        "trajectory-played-v1",
+        "fresh-04-16"
+      ],
+      "depth": 3,
+      "stable3": false,
+      "selective": true,
+      "changedNow": false,
+      "scoreDelta": 0,
+      "scoreRange3": 163,
+      "retries": 0,
+      "nextChanged": true,
+      "twoLaterChanged": true,
+      "nextNodeRatio": 12.705061082024432,
+      "nextTimeRatio": 9.13039844309826,
+      "parityNodePredictedActual": 0.3969012030623405,
+      "parityTimePredictedActual": 0.35075889771063457,
+      "lastCostOverpredictsNext": false,
+      "halfLastCostOverpredictsNext": false
+    },
+    {
+      "root": [
+        "trajectory-played-v1",
+        "fresh-05-24"
+      ],
+      "depth": 7,
+      "stable3": true,
+      "selective": true,
+      "changedNow": false,
+      "scoreDelta": 0,
+      "scoreRange3": 247,
+      "retries": 0,
+      "nextChanged": false,
+      "twoLaterChanged": false,
+      "nextNodeRatio": 15.551196644460893,
+      "nextTimeRatio": 15.785004248270093,
+      "parityNodePredictedActual": 0.04433918211531003,
+      "parityTimePredictedActual": 0.04527670818415395,
+      "lastCostOverpredictsNext": false,
+      "halfLastCostOverpredictsNext": false
+    },
+    {
+      "root": [
+        "trajectory-played-v1",
+        "fresh-08-24"
+      ],
+      "depth": 5,
+      "stable3": true,
+      "selective": true,
+      "changedNow": false,
+      "scoreDelta": -5,
+      "scoreRange3": 5,
+      "retries": 0,
+      "nextChanged": false,
+      "twoLaterChanged": false,
+      "nextNodeRatio": 11.584347826086956,
+      "nextTimeRatio": 11.274714483607818,
+      "parityNodePredictedActual": 0.09697385785278159,
+      "parityTimePredictedActual": 0.09893821122124676,
+      "lastCostOverpredictsNext": false,
+      "halfLastCostOverpredictsNext": false
+    },
+    {
+      "root": [
+        "trajectory-played-v1",
+        "fresh-10-16"
+      ],
+      "depth": 7,
+      "stable3": true,
+      "selective": true,
+      "changedNow": false,
+      "scoreDelta": 6,
+      "scoreRange3": 40,
+      "retries": 0,
+      "nextChanged": false,
+      "twoLaterChanged": false,
+      "nextNodeRatio": 12.400142174479681,
+      "nextTimeRatio": 13.191777217749737,
+      "parityNodePredictedActual": 0.14801523579488107,
+      "parityTimePredictedActual": 0.14220316018034745,
+      "lastCostOverpredictsNext": false,
+      "halfLastCostOverpredictsNext": false
+    },
+    {
+      "root": [
+        "trajectory-played-v1",
+        "fresh-14-24"
+      ],
+      "depth": 5,
+      "stable3": true,
+      "selective": true,
+      "changedNow": false,
+      "scoreDelta": -301,
+      "scoreRange3": 301,
+      "retries": 4,
+      "nextChanged": false,
+      "twoLaterChanged": true,
+      "nextNodeRatio": 0.29266281945589445,
+      "nextTimeRatio": 0.27586820216046326,
+      "parityNodePredictedActual": 29.112662404150267,
+      "parityTimePredictedActual": 27.431061538397586,
+      "lastCostOverpredictsNext": true,
+      "halfLastCostOverpredictsNext": true
+    },
+    {
+      "root": [
+        "trajectory-played-v1",
+        "fresh-14-24"
+      ],
+      "depth": 6,
+      "stable3": true,
+      "selective": true,
+      "changedNow": false,
+      "scoreDelta": 0,
+      "scoreRange3": 301,
+      "retries": 0,
+      "nextChanged": true,
+      "twoLaterChanged": true,
+      "nextNodeRatio": 13.84748490945674,
+      "nextTimeRatio": 13.167981524359679,
+      "parityNodePredictedActual": 0.4650587352751307,
+      "parityTimePredictedActual": 0.5505919742405364,
+      "lastCostOverpredictsNext": false,
+      "halfLastCostOverpredictsNext": false
+    }
+  ],
+  "counterfactualStops": [
+    {
+      "budgetMillis": 50,
+      "policy": "half",
+      "eligibleTrajectories": 64,
+      "stops": 12,
+      "differentMoves": 0,
+      "savedFraction": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0.25228801999999995,
+        "p95": 0.39709399999999995,
+        "max": 0.48640399999999995
+      },
+      "lostCompletedDepth": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0
+      }
+    },
+    {
+      "budgetMillis": 50,
+      "policy": "half-last-forecast",
+      "eligibleTrajectories": 64,
+      "stops": 4,
+      "differentMoves": 0,
+      "savedFraction": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0.219874
+      },
+      "lostCompletedDepth": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0
+      }
+    },
+    {
+      "budgetMillis": 50,
+      "policy": "stable3-half",
+      "eligibleTrajectories": 64,
+      "stops": 12,
+      "differentMoves": 0,
+      "savedFraction": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0.25228801999999995,
+        "p95": 0.39709399999999995,
+        "max": 0.48640399999999995
+      },
+      "lostCompletedDepth": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0
+      }
+    },
+    {
+      "budgetMillis": 100,
+      "policy": "half",
+      "eligibleTrajectories": 64,
+      "stops": 38,
+      "differentMoves": 0,
+      "savedFraction": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.12358800000000003,
+        "p90": 0.40384699999999996,
+        "p95": 0.46211800999999997,
+        "max": 0.499448
+      },
+      "lostCompletedDepth": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0,
+        "p95": 0,
+        "max": 1
+      }
+    },
+    {
+      "budgetMillis": 100,
+      "policy": "half-last-forecast",
+      "eligibleTrajectories": 64,
+      "stops": 12,
+      "differentMoves": 0,
+      "savedFraction": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0.07722099999999998,
+        "p95": 0.10448500000000005,
+        "max": 0.17056298999999997
+      },
+      "lostCompletedDepth": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0
+      }
+    },
+    {
+      "budgetMillis": 100,
+      "policy": "stable3-half",
+      "eligibleTrajectories": 64,
+      "stops": 30,
+      "differentMoves": 0,
+      "savedFraction": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0.40384699999999996,
+        "p95": 0.46211800999999997,
+        "max": 0.499448
+      },
+      "lostCompletedDepth": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0,
+        "p95": 0,
+        "max": 1
+      }
+    },
+    {
+      "budgetMillis": 200,
+      "policy": "half",
+      "eligibleTrajectories": 64,
+      "stops": 42,
+      "differentMoves": 0,
+      "savedFraction": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.14970125250000005,
+        "p90": 0.40097399499999997,
+        "p95": 0.4071215,
+        "max": 0.47868999999999995
+      },
+      "lostCompletedDepth": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0
+      }
+    },
+    {
+      "budgetMillis": 200,
+      "policy": "half-last-forecast",
+      "eligibleTrajectories": 64,
+      "stops": 18,
+      "differentMoves": 0,
+      "savedFraction": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0.15031000000000005,
+        "p95": 0.16391100000000003,
+        "max": 0.26192099999999996
+      },
+      "lostCompletedDepth": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0
+      }
+    },
+    {
+      "budgetMillis": 200,
+      "policy": "stable3-half",
+      "eligibleTrajectories": 64,
+      "stops": 35,
+      "differentMoves": 0,
+      "savedFraction": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.08470525000000001,
+        "p90": 0.37009000000000003,
+        "p95": 0.4052335,
+        "max": 0.45826449999999996
+      },
+      "lostCompletedDepth": {
+        "n": 64,
+        "min": 0,
+        "p10": 0,
+        "median": 0.0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0
+      }
+    },
+    {
+      "budgetMillis": 400,
+      "policy": "half",
+      "eligibleTrajectories": 61,
+      "stops": 41,
+      "differentMoves": 1,
+      "savedFraction": {
+        "n": 61,
+        "min": 0,
+        "p10": 0,
+        "median": 0.24353749999999996,
+        "p90": 0.44891824999999996,
+        "p95": 0.4824304975,
+        "max": 0.49502875
+      },
+      "lostCompletedDepth": {
+        "n": 61,
+        "min": 0,
+        "p10": 0,
+        "median": 0,
+        "p90": 0,
+        "p95": 1,
+        "max": 1
+      }
+    },
+    {
+      "budgetMillis": 400,
+      "policy": "half-last-forecast",
+      "eligibleTrajectories": 61,
+      "stops": 12,
+      "differentMoves": 0,
+      "savedFraction": {
+        "n": 61,
+        "min": 0,
+        "p10": 0,
+        "median": 0,
+        "p90": 0.13528724999999997,
+        "p95": 0.21151450000000005,
+        "max": 0.25069049750000005
+      },
+      "lostCompletedDepth": {
+        "n": 61,
+        "min": 0,
+        "p10": 0,
+        "median": 0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0
+      }
+    },
+    {
+      "budgetMillis": 400,
+      "policy": "stable3-half",
+      "eligibleTrajectories": 61,
+      "stops": 25,
+      "differentMoves": 0,
+      "savedFraction": {
+        "n": 61,
+        "min": 0,
+        "p10": 0,
+        "median": 0,
+        "p90": 0.41224399749999996,
+        "p95": 0.4247772475,
+        "max": 0.49502875
+      },
+      "lostCompletedDepth": {
+        "n": 61,
+        "min": 0,
+        "p10": 0,
+        "median": 0,
+        "p90": 0,
+        "p95": 0,
+        "max": 1
+      }
+    }
+  ],
+  "limitations": [
+    "32 historical-development roots are not representative independent games.",
+    "Adjacent depths and repeated roots are dependent; no inferential p-values.",
+    "Resolved selective scores are heuristic evidence, not nominal proof or truth.",
+    "Deeper move changes are not automatically improvements; quality requires separate references/games.",
+    "One-million-node ceiling censors larger next iterations; forecast tails underrepresent extreme growth.",
+    "Wall times include observational overhead and host/JIT/GC variation; node evidence is separate.",
+    "No strength, clock reliability or multiworker claim."
+  ]
+}

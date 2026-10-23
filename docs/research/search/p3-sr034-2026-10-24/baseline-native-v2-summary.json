@@ -1,0 +1,16 @@
+{
+  "startedUtc": "2026-10-23T20:36:28.238759+00:00",
+  "files": {
+    "releases\\candidates\\windows-x64\\candidate-20261023T195552-c00e3315\\SeedV6-UCI\\SeedV6-UCI.exe": "bdbc9928255cf6a96ae6f3604007089121b4573198d11b628d51d62d572702af",
+    "releases\\candidates\\windows-x64\\candidate-20261023T195552-c00e3315\\SeedV6-UCI\\app\\engine-core.jar": "facac0db65c7f97a120083174ea4de20ef210daf3252a79a3fd5eb2cac99e6f7",
+    "releases\\candidates\\windows-x64\\candidate-20261023T195552-c00e3315\\SeedV6-UCI\\app\\app-uci.jar": "1ba9d9bcf44fcf385c6495e909fc3c24bb2dea4d1a10ed4f0d48b75319f67a19",
+    "build-assets\\nnue-candidate\\conventional-cp64.cnnue": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+  },
+  "head": "f32831a1ff237827234d199c3fe9b9c5bde822e3",
+  "status": "passed",
+  "identity": "info string baseline=construction-v1-cp64 search=construction-v1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 score=side-to-move-cp build=74 source=d9a91cbe8b52 (uncommitted changes) ttMiB=64",
+  "searches": 9,
+  "evidence": "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\baseline-native-v2.json",
+  "evidenceSha256": "b78458eb6db91f9ff0baeb05efb3ca441d34c76eb1d5bdad62b9fd7451866643",
+  "limitation": "Headless W1/W4/W16 smoke only; not fresh strength, GUI or macOS verification."
+}

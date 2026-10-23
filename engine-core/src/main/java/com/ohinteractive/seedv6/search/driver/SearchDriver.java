@@ -113,10 +113,13 @@ public final class SearchDriver implements AutoCloseable {
                 boolean terminal = !attempt.hasMove();
                 if(terminal || depth == request.depth())
                     return new SearchDriverOutcome(lastCompletedResult, true, terminal, attemptedDepth, false, nodes, lastDiagnostics);
-                // Clock-only decision facts, not a prediction from score/move stability.
+                // Clock-only facts or an explicitly supplied soft policy. Hard limits
+                // and cancellation are rechecked by completeClockAllocation().
                 // Keep the actual completed depth; the requested ceiling is not completed.
                 if(control.isClockManaged() && (attempt.legalRootMoves() == 1
-                        || attempt.score() == TranspositionScores.MATE_SCORE - 1)) {
+                        || attempt.score() == TranspositionScores.MATE_SCORE - 1
+                        || exact.clockAllocationComplete(lastCompletedResult,
+                                control.elapsedNanos(), control.timeBudgetNanos()))) {
                     control.completeClockAllocation();
                     break;
                 }

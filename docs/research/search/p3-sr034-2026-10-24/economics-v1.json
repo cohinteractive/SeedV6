@@ -1,0 +1,14 @@
+{
+  "id":"P3-SR034-ECONOMICS-v1",
+  "frozenBeforeExecution":true,
+  "purpose":"Actual timed-request saving/clock integrity and prospective serial-W1 CPU delivery. Development only, not strength.",
+  "profiles":["baseline","half-d6-v1","stable3-half-d6-v1"],
+  "configuration":"Same frozen CP64 flags3407871 ADAPTIVE16 W1 Hash64. HALF ends after completed ordinary depth>=6 and elapsed>=half hard allocation; STABLE3_HALF additionally requires three consecutive ordinary completed iterations choosing the same move. No hard cap increase or fixed-mode policy.",
+  "corpus":"docs/research/search/p3-sr002-execution-2026-10-19/confirmation-corpus.tsv",
+  "roots":12,
+  "method":"One unmeasured rotated million-node round, then two measured rounds. New game before each root. Clock mode rotates three profiles at hard budgets50/100/400ms; delivery mode uses one million nodes and40-depth ceiling. Original histories, legal PVs, exact global node accounting and helper drain checked. No detailed search diagnostics enabled.",
+  "resources":"Serial W1 BelowNormal process, Xms256m Xmx512m ActiveProcessorCount4,30min watchdog. Whole-process native CPU/peak memory and caller-thread CPU measured; JIT/GC/heap disclosed. No concurrent builds or games.",
+  "clockAnalysis":"Report paired elapsed/CPU/node/completed-depth differences, soft stops, incomplete work and actual-over-hard tails by budget. Scheduling-dependent move differences require attribution and are not quality ground truth. Qualify timing separately from functional correctness.",
+  "deliveryGate":"Use current prior-work serial-W1 qualification: median caller CPU/elapsed>=.90 and nearest-rank5th percentile>=.80 per profile; between-profile median range<=.05. Host<=2 other average logical CPUs,>=8GiB available RAM and<=75% memory load at endpoints. This builds on the prior CP64 selectivity clock_resource_v2 evidence and adds actual SR-034 profile delivery; no isolation/short-burst guarantee.",
+  "continuation":"The same immutable diagnostic may measure pre/post delivery at new exclusive names. Failed/resource-unqualified runs remain preserved and cannot be silently counted as valid. Fresh clock protocols freeze exact gates before games; no outcome-dependent replay."
+}

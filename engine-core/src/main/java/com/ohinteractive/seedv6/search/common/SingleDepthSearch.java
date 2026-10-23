@@ -17,6 +17,17 @@ public interface SingleDepthSearch extends AutoCloseable {
     default void beginRequest() {}
     default void endRequest() {}
 
+    /**
+     * Optional clock-only allocation decision at a completed, drained iteration.
+     * The driver calls this after terminal/requested-depth handling. Results retain
+     * their selective provenance; this decision supplies neither proof nor a new
+     * hard budget. Implementations own/reset any state inside begin/endRequest.
+     * Explicit non-clock modes never invoke it. The production default is inert.
+     */
+    default boolean clockAllocationComplete(SearchResult completed, long elapsedNanos, long hardBudgetNanos) {
+        return false;
+    }
+
     /** Schedule implementation-owned new-game state to be reset safely. */
     default void newGame() {}
 

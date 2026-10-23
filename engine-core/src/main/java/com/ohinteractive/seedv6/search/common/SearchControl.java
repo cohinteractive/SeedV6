@@ -51,6 +51,11 @@ public final class SearchControl {
         return timeBudgetNanos != NO_LIMIT;
     }
 
+    /** Immutable hard request budget; -1 when absent. Soft allocation cannot change it. */
+    public long timeBudgetNanos() {
+        return timeBudgetNanos;
+    }
+
     public boolean isClockManaged() {
         return clockManaged;
     }
