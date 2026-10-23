@@ -1,0 +1,94 @@
+{
+  "status": "passed",
+  "hypothesis": "null",
+  "block": 2,
+  "preDelivery": {
+    "path": "null-confirmation-v1-b01-post-delivery-summary.json",
+    "sha256": "b6fa0bc34d4f6e350486ac7ffe9bb4b2c87e9366edd404a81b72a90bdde646ab"
+  },
+  "bindingSha256": "6e290f298dc221e682e733acbfbbf4962a75dd8e40b68633df9b16186f069dfa",
+  "admissionSha256": "e7218ebe717e479a405f9212a135cfabb8f38aed81f9c5bc6a167f13f9e0177b",
+  "execution": {
+    "exitCode": 0,
+    "wallSeconds": 1898.6861548000015,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 10,
+    "totalOwnedCpuSeconds": 1938.71875
+  },
+  "resourceQualification": {
+    "start": {
+      "utc": "2026-10-23T15:10:06.914104+00:00",
+      "monotonic": 48269.7395048,
+      "ticks": [
+        4936955156250,
+        5158978906250,
+        633341718750
+      ],
+      "availableBytes": 21824241664,
+      "memoryLoadPercent": 36
+    },
+    "end": {
+      "utc": "2026-10-23T15:41:45.610013+00:00",
+      "monotonic": 50168.43542,
+      "ticks": [
+        5140083593750,
+        5365033593750,
+        655134375000
+      ],
+      "availableBytes": 22094901248,
+      "memoryLoadPercent": 35
+    },
+    "elapsedSeconds": 1898.6959151999981,
+    "busyCpuSeconds": 2471.890625,
+    "ownedCpuSeconds": 1938.71875,
+    "otherAverageLogicalCores": 0.28080951285126593,
+    "memoryEndpointsPass": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used.",
+    "legacyOneCoreGatePassed": true,
+    "passed": true,
+    "protocol": "null-clock-development-v2: at most2.0 other average logical CPUs; paired delivery and actor checks required"
+  },
+  "postDelivery": {
+    "path": "null-confirmation-v1-b02-post-delivery-summary.json",
+    "sha256": "dacf8a694223fd35e96f6a2b7961fcf240cacc73dfe3efd1333622c9f0a960f0"
+  },
+  "actorDelivery": {
+    "nativeCpuToSearchElapsed": {
+      "baseline": 1.0186057858449207,
+      "candidate": 1.0218288294964601
+    },
+    "absoluteDifference": 0.00322304365153947,
+    "passed": true,
+    "limits": "Native process CPU includes startup, JIT, GC and idle protocol handling; this coarse screen complements pre/post owner-thread delivery and host checks, not proof of isolation."
+  },
+  "matchWallSeconds": 1895.0723122999989,
+  "integrity": {
+    "terminations": {
+      "normal": 64
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 4630,
+        "nodes": 646822214,
+        "elapsedNanos": 942050534500
+      },
+      "candidate": {
+        "requests": 4632,
+        "nodes": 687256606,
+        "elapsedNanos": 945532017800
+      }
+    },
+    "inputsStable": true,
+    "scoreInspection": "Deferred until all four blocks complete; no score field copied into this receipt"
+  },
+  "evidence": {
+    "raw\\null-confirmation-v1-b02\\baseline-uci.txt": "d560d95bc8da0b4612c00da1292464f0fb623316555fa002ec832903ff5efec2",
+    "raw\\null-confirmation-v1-b02\\candidate-uci.txt": "b7b0066ea3a5f80050ba79923ab6d966b9f52949b5af1512355b3da87cc4b74c",
+    "raw\\null-confirmation-v1-b02\\config.json": "3f2c704dd8c51e87adcf5b550b63aeb7e67de6f255812db667c39337262b18b9",
+    "raw\\null-confirmation-v1-b02\\games.pgn": "98ac4c9ccd46c2b1ed7cf65aa0a33aa2386bbe3c0a973010f4dc158d70300c75",
+    "raw\\null-confirmation-v1-b02\\process-cost.json": "b3151f62764ea139ecb4eca6e421d229f42bd64144fcba1673b4f79aa0c66056",
+    "raw\\null-confirmation-v1-b02\\run.json": "fbc43d5b91326d08f91ffef2bdab7164d772a7ea0af44e8c8e6ab1776ac5d739",
+    "raw\\null-confirmation-v1-b02\\runner.txt": "bb3c79c02443e88db53290980227416b835863640f966c22c0f5819f22325b07",
+    "raw\\null-confirmation-v1-b02-worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

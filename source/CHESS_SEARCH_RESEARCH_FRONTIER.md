@@ -1,12 +1,12 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F026**
+Internal frontier revision: **P3-F027**
 
-Status: **ACTIVE: owner-authorized CP64-integrated Search selectivity reappraisal. The preceding TT CGLHW is GPT-reconciled and owner-accepted, with acceptance/synchronization prerequisites confirmed. Build70 full Construction V1/ADAPTIVE16/frozen CP64 remains production; no automatic promotion, TT-policy change, evaluator replacement, external deployment or successor.**
+Status: **TECHNICALLY COMPLETE: CP64-integrated Search selectivity reappraisal; GPT reconciliation and owner acceptance pending. Nominal futility plus verified null has positive independent W1 evidence under the frozen primary assumptions, with bounded sensitivity crossing equality. Build70 production choices remain unchanged; repository build73 contains default-OFF research controls. No promotion, TT-policy change, evaluator replacement, external deployment or successor is authorized. The preceding TT CGLHW is owner-accepted.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
-## Active work selection - CP64-integrated selectivity reappraisal
+## Completed work selection - CP64-integrated selectivity reappraisal
 
 The owner launches this separate bounded objective on 23 October2026, confirms
 GPT reconciliation/owner acceptance of the completed TT CGLHW and completion of
@@ -19,37 +19,44 @@ SR-009,016,018,019,021,022,023,029,033. Existing O2/O3 questions now concern the
 frozen CP64 integrated configuration; they do not inherit Pair-2 thresholds or
 strength claims. Completed TT results are reference evidence, not reopened work.
 
-**Current selection:** H5 null and its H3 nominal-futility interaction both pass
-their frozen W1 development-selection gates, with uncertainty intervals crossing
-equality. Select nominal+null as the null-family finalist for fresh confirmation
-directly against full; do not add the two development estimates. The retained
-same-depth adverse root interaction has complete independent references and no
-observed correctness violation; no retuning is selected. H1 removal scores .4922
-and fails its selection gate, an inconclusive bounded disposition. Current work
-is only the frozen128-fresh-pair W1 composition confirmation, alpha.025 with both
-primary and bounded97.5% intervals; its result is pending. The unused H1 allocation
-is not transferred. H3's standalone plan stays unplayed; H4 reduction-depth margins
-add no elapsed benefit over nominal. H2 has no admitted confidence-pruning feature.
-No exhaustive switch sweep, TT redesign, default promotion or universal worker-count
-strength claim is selected.
+**Final disposition:** H5 verified null plus H3 nominal deeper futility
+(flags3407871) completes fresh independent W1/10+0.1 confirmation against full:
+127W/57D/72L over128 pairs, score60.7422%, estimated +75.8 Elo. The frozen alpha.025
+paired-normal97.5% interval is +32.9 to +121.1 under its stated assumptions;
+bounded sensitivity is -16.3 to +180.1 and crosses equality. This supports separate
+adoption consideration for the complete W1 configuration, not isolated component
+attribution or an all-worker claim. The same-depth adverse composition witness
+remains intact, with no observed correctness/lifecycle violation and no retuning.
+
+H1 removal scores .4922 in development and fails selection; its alpha allocation
+remains unused. Lazy improving is mechanically equivalent in tested W1 traversals
+but has modest elapsed benefit. H3's standalone clock plan stays unplayed; its
+consumer was tested incrementally on null instead. H4 reduction-depth margins add
+no clear elapsed benefit over nominal; their removal-dependent composition lacks
+an admitted foundation. H2 has no reliable confidence-pruning or removal claim.
+These are bounded negative/inconclusive/deferred dispositions, not universal bans.
+No further parameter search, alternate finalist, TT redesign or tournament is
+selected. Multiworker/longer-clock confirmation is deferred for any broader
+adoption decision; functional compatibility at1..16 is not strength confirmation.
 
 The [focused record](../docs/research/search/P3_CP64_SELECTIVITY_2026-10-23.md)
 is the subordinate dynamic hypothesis/experiment queue and exact resume location.
 It distinguishes current implementation, historical outcomes, hypotheses, frozen
 protocols, findings and operating state. Existing Contract/Frontier remain the
 only Phase3 masters. Production stays unchanged until separate accepted promotion;
-fresh10+0.1 confirmation is required if a promising finalist warrants adoption.
+the selected W1 finalist has now completed its required fresh10+0.1 confirmation.
 Functional1..16 support never establishes strength at every worker count.
 
 Build73 retains production choices and adds only default-OFF research controls.
 All96 selected integrated null cutoffs have complete nominal references without
-a false threshold; conditional samples are not proof or strength certification.
-Four failed old prelaunch admissions remain frozen with no games. The new null
-development stages each complete64 normal games with qualified pre/post delivery,
-host/memory and per-engine accounting. H1 also completes64 normal, resource-qualified
-games using its original frozen runtime and opening selection.
-This changes no Contract resource limit or historical evidence. Exact protocols,
-costs, uncertainty, lower-priority alternatives and resume are in the focused record.
+a false threshold; conditional samples are not proof certification. All256
+confirmation games and192 development games pass legal/history and resource gates,
+with frozen executable identities and owned-process drain. Four old prelaunch
+failures remain preserved with no games; no Contract resource limit or historical
+evidence is rewritten. Exact protocols, costs, validation, uncertainty and the
+closed resume point are in the focused record. No admitted research unit remains;
+GPT reconciliation and owner acceptance are pending, with no automatic promotion
+or successor. Refresh both Project Source mirrors before dependent external planning.
 
 ## ADAPTIVE16 production selection - 23 October 2026
 

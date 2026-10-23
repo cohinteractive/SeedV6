@@ -1,0 +1,102 @@
+{
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx1024m",
+    "-XX:ActiveProcessorCount=4",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\runtime-cpu-delivery-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\runtime-cpu-delivery-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.Cp64CpuDelivery",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\sr006-phase2-2026-10-10\\played-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\null-confirmation-v1-b01-post-delivery.jsonl"
+  ],
+  "calibrationBindingSha256": "2026c3e210e46d96c62501a76f89baae230d334e29874e5a293c89623222d3ee",
+  "status": "passed",
+  "exitCode": 0,
+  "nativeLifetime": {
+    "creationTicks": 134372415316811656,
+    "createdUtc": "2026-10-23T15:05:31.681166+00:00",
+    "exitCode": 0,
+    "exitedUtc": "2026-10-23T15:08:07.203661+00:00",
+    "kernelCpuSeconds": 0.90625,
+    "userCpuSeconds": 167.296875,
+    "totalCpuSeconds": 168.203125
+  },
+  "hostInterval": {
+    "start": {
+      "utc": "2026-10-23T15:05:31.679676+00:00",
+      "monotonic": 47994.5050782,
+      "ticks": [
+        4906403281250,
+        5128008281250,
+        631286875000
+      ],
+      "availableBytes": 22064308224,
+      "memoryLoadPercent": 35
+    },
+    "end": {
+      "utc": "2026-10-23T15:08:07.219956+00:00",
+      "monotonic": 48150.0453601,
+      "ticks": [
+        4922970000000,
+        5144818125000,
+        633142968750
+      ],
+      "availableBytes": 22066794496,
+      "memoryLoadPercent": 35
+    },
+    "elapsedSeconds": 155.54028189999372,
+    "busyCpuSeconds": 209.921875,
+    "ownedCpuSeconds": 168.203125,
+    "otherAverageLogicalCores": 0.2682183000466948,
+    "memoryEndpointsPass": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used.",
+    "legacyOneCoreGatePassed": true,
+    "passed": true,
+    "protocol": "null-clock-development-v2: at most2.0 other average logical CPUs; paired delivery and actor checks required"
+  },
+  "profiles": {
+    "baseline": {
+      "requests": 24,
+      "median": 0.9974652659428307,
+      "fifthPercentileNearestRank": 0.9859898604207014,
+      "minimum": 0.9832390496652027,
+      "maximum": 1.0070247059711641,
+      "aggregate": 0.9963733419625767,
+      "processCpuToElapsed": 1.0303162026848895,
+      "gcCollections": 0,
+      "compilationMillis": 1229
+    },
+    "verified-null": {
+      "requests": 24,
+      "median": 0.9986496638288838,
+      "fifthPercentileNearestRank": 0.9847671490502591,
+      "minimum": 0.9766910119752599,
+      "maximum": 1.0085614965108298,
+      "aggregate": 0.9967686057311345,
+      "processCpuToElapsed": 1.000152398282113,
+      "gcCollections": 0,
+      "compilationMillis": 121
+    },
+    "nominal-verified-null": {
+      "requests": 24,
+      "median": 0.9994750626197579,
+      "fifthPercentileNearestRank": 0.9759534674996084,
+      "minimum": 0.9636901592740839,
+      "maximum": 1.0091905854352985,
+      "aggregate": 0.9964777643643418,
+      "processCpuToElapsed": 1.0003344755955537,
+      "gcCollections": 0,
+      "compilationMillis": 95
+    }
+  },
+  "betweenProfileMedianRange": 0.0020097966769272446,
+  "criteriaPassed": true,
+  "evidence": {
+    "raw\\null-confirmation-v1-b01-post-delivery.jsonl": "e60a1fa9267dbaf3c2d1380598bcae8814660721de78d0288db196665211d01f",
+    "raw\\null-confirmation-v1-b01-post-delivery.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

@@ -1,6 +1,6 @@
 # CP64-integrated Search selectivity reappraisal
 
-Owner-authorized 23 October 2026 (Pacific/Auckland). **ACTIVE; only nominal futility plus verified null selected for frozen independent W1 confirmation. Improving removal fails development selection; adverse selective interaction evidence is retained.** Governed by Phase 3 Contract P3-R026 / Frontier P3-F026. Current resume is the final section below; earlier execution paragraphs record completed stages.
+Owner-authorized 23 October 2026 (Pacific/Auckland). **TECHNICALLY COMPLETE; GPT reconciliation and owner acceptance pending. Nominal futility plus verified null has positive independent W1 evidence under the frozen primary assumptions; conservative bounded sensitivity crosses equality. No production promotion.** Governed by Phase 3 Contract P3-R027 / Frontier P3-F027. The final closeout and closed resume point are below; earlier execution paragraphs record their historical stages.
 This is a focused research record and dynamic queue, not another master.
 
 ## Authority, identity and boundaries
@@ -65,10 +65,10 @@ external evidence belong in the bootstrap/evidence manifests.
 | ID | Question / expected decision value | Falsifier and next admissible evidence | State |
 | --- | --- | --- | --- |
 | H1 | Does raw two-ply improving relief justify eager CP64 evaluation and extra depth? SR009/029/033. | Removal costs less in diagnostics but scores .4922 in32-pair development; intervals cross equality. Lazy has modest cost benefit despite exact W1 traversal. | No removal confirmation or extension; bounded inconclusive disposition; production control retained |
-| H2 | Do history protection and richer quiet memories add reliable decisions? SR016/023/022. | Simple removals mixed; negative/zero occurrences do not establish reliable failure. Inspect conditional deeper-consumer witnesses. | No pruning feature admitted; confidence unresolved |
-| H3 | Are shallow futility/RFP complementary and conservative under CP64? SR009/019/021/022. | RFP removal costly; nominal deeper futility saves cost alone and on null foundation. | Increment screen .5547 selects composition, intervals cross equality; standalone plan unplayed |
-| H4 | Does actual reduction depth add information beyond nominal depth/count/history? SR029/033/023. | Additional decisions but no elapsed gain over nominal foundation; composition saves more but has unconfirmed supporting removal. | No separate reduction-margin clock screen; composition conditional |
-| H5 | Can adaptive verified null repay its cost after current selectivity? SR018/019/029. | Selective legal verification enables large diagnostic savings;96 selected actual cutoff references complete without false thresholds. | Primary screen .5703 selects null family; composition finalist awaits fresh independent confirmation |
+| H2 | Do history protection and richer quiet memories add reliable decisions? SR016/023/022. | Simple removals mixed; negative/zero occurrences and conditional deeper-consumer replays do not establish calibrated failure confidence. | No pruning/removal finalist admitted; unresolved confidence is explicitly deferred |
+| H3 | Are shallow futility/RFP complementary and conservative under CP64? SR009/019/021/022. | RFP removal costly; nominal deeper futility saves cost alone and on null foundation. | Positive independent complete-composition evidence; isolated strength contribution remains unconfirmed; standalone plan unplayed |
+| H4 | Does actual reduction depth add information beyond nominal depth/count/history? SR029/033/023. | Additional decisions but no clear elapsed gain over nominal; its removal-dependent composition lacks an admitted foundation. | Bounded economic deferral, no reduction-margin clock screen or parameter sweep |
+| H5 | Can adaptive verified null repay its cost after current selectivity? SR018/019/029. | Selective legal verification enables large diagnostic savings;96 selected actual cutoff references complete without false thresholds. | Null alone has development evidence; nominal+null completes positive primary W1 confirmation, with bounded sensitivity crossing equality |
 
 Ordering is provisional, not a compulsory feature queue. Related qsearch/SEE,
 ordering and aspiration are explanatory controls only. No TT re-investigation or
@@ -747,3 +747,208 @@ is research-only evidence/harness/canon; repository version stays73. The one-roo
 TSV is an intentional compact input selected byte-for-byte from an existing tracked
 corpus; no new ignore exception is needed. Tournament PGNs, compiled shims and all
 raw measurements remain under ignored local `raw/` paths.
+
+Independent confirmation live update: research-only commit `79b6f0b` preserves
+the complete admission evidence, frozen sample and P3-R026/P3-F026 masters; build
+stays73. Block1 has passed fresh pre-delivery/admission and launched, recorded in
+`null-confirmation-v1-b01-launch.json`. Await its existing wrapper, then advance
+only on a complete resource-qualified summary. No interim score is opened. The
+four-block instructions above remain the exact resume path; an absent summary
+for this started block is not permission to replay it.
+
+Confirmation continuation: block1 is complete with all integrity/resource and
+post-delivery gates passed (`null-confirmation-v1-b01-summary.json`); scores remain
+unopened. Block2 is now launched under the unchanged binding and fixed sample;
+await its existing wrapper and qualified summary before block3. Use the
+most recent launch/summary receipts to distinguish active versus completed blocks;
+no outcome-based decision or candidate change is authorized between blocks.
+
+Confirmation continuation: block2 also passes every integrity/resource and
+post-delivery gate; both completed blocks' scores remain unopened. Block3 launched
+at2026-10-23T15:44:55Z with the same binding, reusing the qualified block2
+post-delivery receipt within15 minutes. Await the existing block3 wrapper and its
+qualified summary before launching block4. Only after all four pass may the single
+final analysis open results; no intermediate selection or sample change is permitted.
+
+Confirmation continuation: block3 passes every integrity/resource and post-delivery
+gate. Block4 is now launched with the same frozen inputs. All completed outcomes
+remain unopened. Await this final block's existing wrapper and qualified summary;
+then run the single `analyze_confirmation_v1.py null` analysis. A missing/failed
+block4 summary forbids claiming the planned128-pair result or replaying the block.
+
+## Technical closeout - 23 October 2026 UTC
+
+The bounded reappraisal is technically complete. Its recommendation is to consider
+the tested **nominal-verified-null** configuration for separate adoption in the
+**one-worker domain**. All production choices remain the original18 controls,
+ADAPTIVE16, CP64/eight heads and requested Hash64. GPT reconciliation, owner
+acceptance, production integration and external installation remain distinct and
+have not occurred for this objective. The preceding accepted TT study stays closed.
+
+### Independent strength result and exact identity
+
+`p3-cp64-selectivity-2026-10-23/null-confirmation-v1-summary.json` records the one
+final analysis after all four fixed blocks passed. There was no interim outcome
+inspection, sample extension, game exclusion, candidate substitution or retuning.
+The fresh partition1 sample uses128 unique openings, each color-reversed, at10+0.1,
+W1 and one concurrent game. Both actors use the same frozen build73 `raw/runtime-v4`,
+CP64 SHA-256 recorded above, ADAPTIVE16 and Hash64; full flags262143 versus
+nominal-verified-null flags3407871. The binding SHA-256 is
+`6e290f298dc221e682e733acbfbbf4962a75dd8e40b68633df9b16186f069dfa`.
+
+| Confirmation measure | Result |
+| --- | --- |
+| Candidate W / D / L | 127 / 57 / 72; all256 games normal and independently legally audited |
+| Candidate score | .607421875 (60.7422%) |
+| Opening-pair pentanomial (0, .25, .5, .75, 1) | 10 / 15 / 46 / 24 / 33 |
+| Primary paired-normal97.5% score interval | [.5472629831, .6675807669] |
+| Conditional logistic Elo estimate / primary interval | +75.8 / [+32.9, +121.1] |
+| Bounded Hoeffding97.5% score interval | [.4765888075, .7382549425] |
+| Bounded Elo sensitivity | [-16.3, +180.1], crossing equality |
+
+This is positive under the frozen primary assumptions: representative independent
+opening pairs and an adequate normal approximation for their mean. The pair, not
+the individual game or repeated diagnostic request, is the uncertainty unit. The
+conservative bounded sensitivity does not independently establish superiority.
+Neither method rules out systematic opening-family, persistent-process or clock
+effects. The second alpha.025 allocation was unused after H1 failed admission;
+it was not transferred. Development estimates were not pooled with confirmation
+or added to each other. This result says nothing quantitative about W4, other
+worker counts, longer clocks, other evaluators or platforms.
+
+### Answer to the governing questions and candidate dispositions
+
+The prospects of verified null have materially changed in this integrated
+configuration. Raw-evaluation-eligible scout work survives existing selectivity;
+an unpruned legal verifier remained uneconomic, while a selective legal verifier
+made useful cutoffs affordable. The flattened integration charged synthetic and
+verification work and retained existing proof restrictions. At D8 the null/full
+whole-request elapsed ratio was .494 and nominal+null/full .446, including capped
+requests; fixed-node results also improved cost. These are diagnostic economics,
+not the reason for the strength conclusion: independent clock confirmation now
+supports the complete composition. This study does not isolate CP64 as the sole
+cause of the changed prospect; ordering, aspiration and the integrated controls
+also differ from historical Pair-2 experiments.
+
+| Candidate / flags | Final supported disposition |
+| --- | --- |
+| Full original18 /262143 | Accepted production comparator retained |
+| Improving removal /260095 |32-pair development24W/15D/25L, score .4922; fails .55 selection, inconclusive rather than equivalent/inferior; no adoption or extension |
+| Lazy improving /524287 | Exact tested W1 traversal with fewer evaluations; modest elapsed benefit (.9915 at D8, .9834 fixed-node); mechanical opportunity retained, separate clock confirmation not justified here |
+| Nominal deeper futility /1310719 | Saves diagnostic cost; standalone frozen clock plan unplayed; incremental32-pair screen on null25W/21D/18L selects composition, without isolating a proven strength gain |
+| Reduction-depth futility /786431 | More omissions but no clear elapsed gain over nominal; no separate strength screen or arbitrary margin tuning |
+| Reduction-depth futility plus improving removal /784383 | Diagnostic savings depend on a removal foundation that failed selection; no independent strength/adoption claim |
+| Verified null alone /2359295 |32-pair development29W/15D/20L, score .5703; selects null family, not independently confirmed alone |
+| Nominal deeper futility plus verified null /3407871 | Positive primary independent W1 confirmation; recommend separate adoption consideration with stated limits |
+| History/continuation/refutation removals and confidence pruning | Weak/mixed removal economics and sparse/censored labels do not justify a finalist or pruning from sign alone |
+
+No active control is demonstrated to be globally redundant. RFP removal is
+especially costly in the diagnostic domain; CAUTION removal has adverse decisions.
+Configuration success does not prove that every original or added control helps.
+The nominal consumer saves about9.7% elapsed relative to null in the matched D8
+diagnostic, but its independent contribution to playing strength is unresolved.
+The retained played-01 witness demonstrates destructive same-depth interaction:
+at D9 each single mechanism selects a4c4, while their composition selects a4b4;
+the independent restricted-root reference prefers a4c4 by156 evaluation units
+(80 at D7). It remains a finite-horizon CP64 witness, not proof of game outcome
+or a false mathematical TT bound. No candidate was retuned to erase it.
+
+No further admitted formulation has enough incremental decision value to continue
+this bounded queue. History confidence would require a differentiated, independently
+supported label model; reduction-margin tuning lacks a demonstrated economic
+advantage; the removal foundation failed its prospective gate. Replaying closed
+plans or trying an alternate finalist after confirmation would add selection bias.
+No additional tournament is needed for this W1 recommendation. Multiworker or
+longer-clock confirmation may be worthwhile before broader adoption and remains
+explicitly deferred, not rejected or inferred from functional compatibility.
+
+### Correctness, validation and remaining limitations
+
+The latest broad regression ran67 tests with zero failures/errors/skips; four
+subsequent targeted composition tests also passed. These include independent
+recursive/exact and TT-off controls, original-window/nominal verification behavior,
+CP64 rolling/rebuild agreement, observe-only state and learning parity, synthetic
+history/TT exclusion, empty cutoff-child PV, cancellation in both isolated domains,
+worker failure, and1..16-worker budget/drain/reuse. Actual UCI qualification covers
+baseline/null/composition at1/4/16 and ordinary build73 baseline parity. The final
+`:research:classes` build passes in24.65s; it runs zero tests and is not counted as
+another regression run. No application runtime source changed after commit2b4d537.
+
+All96 selected integrated cutoff references and214 selected deeper-futility
+omission references complete without a false threshold/alpha raise, respectively.
+They are conditional samples, not population error-rate estimates or mathematical
+safety certification. The adverse root reference completes all four requests,
+including both D9 alternatives. Three early rejected-null nominal reference caps
+remain unknown; the separately accepted capped case was later resolved without
+rewriting its original cap. All448 clock games pass normal termination, legality,
+formal-history and whole-request accounting checks. Owned Job receipts report no
+remaining descendants after each match. No unresolved correctness/lifecycle failure
+or authority-blocked branch remains.
+
+Preserved failed checks include the early missing-import/checked-exception/brace
+compilations, the cancelled-history test-harness assertion, and a whole-jar parity
+assertion later resolved by an entry-level audit. A wrapper initially copied39
+stale JUnit cases after a compile failure; these were explicitly disclaimed and
+the wrapper fixed. Corrected checks pass, with no experiments from failed builds.
+Four old resource admissions failed before any game; a separately frozen protocol
+qualified actual owner-thread CPU delivery before any outcomes. Old gates, failures,
+protocols and negative evidence were not rewritten. No GUI/browser or native
+packaging/deployment acceptance was run or claimed for this research-only change.
+No W4/multiworker, longer-clock, lazy-only or nominal-only strength confirmation
+was run; no unused frozen plan is silently treated as completed.
+
+### Resource costs and provenance
+
+The independent confirmation's actual match wall time is7173.05s (1h59m33s), with
+7341.75 owned processCPU seconds. Engine CPU totals are3630.89s full versus3661.00s
+candidate; peak working sets are391905280 versus392495104 bytes (about373.8/374.3
+MiB), with no memory-read failures. Whole-request elapsed totals are3564.03/3579.48s
+and nodes2,442,498,010/2,600,309,547. Different games/requests preclude interpreting
+these as fixed-work speed measurements; more nodes are not the strength evidence.
+All four pre/post delivery, host/memory and actor checks pass. Other global CPU
+averages .272-.304 logical cores; actorCPU/Search-elapsed differences .0022-.0059.
+These practical gates qualify the domain without proving perfect isolation or
+excluding every short burst. One BelowNormal W1 game ran at a time; no build/test
+or computational experiment overlapped a clock block. Calibration, diagnostics
+and builds are additional costs retained in their own stage receipts.
+
+The complete clock programme is192 development plus256 independent games; its
+owned CPU and wall totals are reconciled in `closeout-v1.json`, separately from
+diagnostics and pre/post calibration. No12-hour disruptive run, CPU-saturation
+programme, external install or deployment occurred.
+
+Initial `main` was clean atd3d5919/build70. All task changes are attributable;
+runtime commits4125f1a,2907f9b,2b4d537 increment build70->71->72->73 exactly once
+each. Other commits are research evidence, harnesses and canon, with no bump.
+Major/minor/patch remain0/0/0. The frozen runtime-v4 was compiled before2b4d537,
+embeds5e4dee7 plus an uncommitted-changes marker, and is externally bound to2b4d537;
+its historical properties are preserved. The CPU-delivery runtime changes only
+version provenance and adds its measurement class; entry-level parity is recorded.
+BaselineEngine, CP64 bytes and binding TT identity/layout/locking/replacement/proof
+policies remain unchanged. No push, destructive Git action or external synchronization
+occurred. Root VERSION_STATE exists; CODEXLOG_CURRENT does not, so no journal is
+created. The repository's no-finalizer rule was followed throughout.
+
+### Closed resume point and human gates
+
+No experiment, child process or selected research unit remains running. Do not
+rerun a block, substitute a finalist, extend this confirmation or launch a successor.
+Read this closeout, `confirmation-v1.json`, its binding, the final summary and
+`closeout-v1.json` first. Detailed raw evidence remains local under the existing
+ignored `p3-cp64-selectivity-2026-10-23/raw/` paths; a fresh checkout contains the
+tracked identities/summaries but not that bulk evidence. Verify local availability
+before reanalysis. All failures, historical controls and unplayed plans are retained.
+
+Both authoritative masters now have exact headers **P3-R027** and **P3-F027**.
+**PROJECT_SOURCE_REFRESH_REQUIRED: YES.** Repository edits did not update external
+Project Source mirrors. Human actions required after this prompt:
+
+- Refresh both mirrors and confirm synchronization: non-blocking for this completed
+  repository work, blocking for dependent external GPT planning.
+- GPT reconciliation and owner acceptance: blocking for treating this CGLHW as
+  accepted. If adoption is desired, separately authorize its production integration
+  and worker domain; no adoption or external installation is automatic or required
+  to close the technical research.
+
+There is no human action blocking this technical closeout. No binding TT decision,
+evaluator change, successor objective or external action is requested.

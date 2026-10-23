@@ -1,12 +1,12 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R026**
+Internal revision: **P3-R027**
 
-Status: **ACTIVE: owner-authorized CP64-integrated Search selectivity reappraisal. The preceding TT CGLHW is GPT-reconciled and owner-accepted, with acceptance/synchronization prerequisites confirmed. Build70 full Construction V1/ADAPTIVE16/frozen CP64 remains production; no automatic promotion, TT-policy change, evaluator replacement, external deployment or successor.**
+Status: **TECHNICALLY COMPLETE: CP64-integrated Search selectivity reappraisal; GPT reconciliation and owner acceptance pending. Nominal futility plus verified null has positive independent W1 evidence under the frozen primary assumptions, with bounded sensitivity crossing equality. Build70 production choices remain unchanged; repository build73 contains default-OFF research controls. No promotion, TT-policy change, evaluator replacement, external deployment or successor is authorized. The preceding TT CGLHW is owner-accepted.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
-## Active objective - CP64-integrated Search selectivity reappraisal
+## Completed objective - CP64-integrated Search selectivity reappraisal
 
 The owner explicitly launches this bounded CGLHW on 23 October 2026 and confirms
 acceptance of the completed TT investigation and its synchronization prerequisites.
@@ -47,25 +47,37 @@ holds the dynamic hypothesis queue, frozen experiments and precise resume point.
 Repository execution does not wait for mirror refresh; dependent external GPT
 planning requires both revised masters refreshed and synchronization confirmed.
 
-Reverse ablation, cost separation and bounded flattened verified-null integration
-are complete. Build73 adds default-OFF research controls; ordinary production
-choices remain unchanged. Null with selective legal verification materially reduces
-whole-request diagnostic costs; nominal deeper futility adds incremental savings.
-All96 selected integrated cutoffs have complete independent nominal replays without
-a false threshold, but these conditional samples certify neither proof nor strength.
-Fresh W1 clock development scores .5703 for null versus full and .5547 for nominal
-futility plus null versus null alone, each32 pairs with all integrity/resource gates
-passed. Both uncertainty intervals cross equality; do not add their point estimates.
-The frozen rule selects the composition for independent confirmation directly
-against full. Improving removal scores .4922 and fails development selection;
-its second alpha allocation stays unused. Matched-depth and independent references
-retain an adverse composition root-move interaction, with no observed correctness
-or lifecycle violation; do not erase it or retune the candidate. Current work is
-the frozen128-fresh-pair W1 composition confirmation, alpha.025 with primary
-paired-normal97.5% and bounded97.5% sensitivity, no interim outcome decisions.
-Its result remains pending. Four failed old prelaunch admissions remain unchanged;
-new protocols qualify pre/post owner-thread delivery, host/memory and per-engine
-accounting. Exact evidence, limits and safe resume remain in the focused record.
+Reverse ablation, cost separation, bounded flattened integration and independent
+confirmation are complete. The selected configuration is the original18 controls
+plus NOMINAL_FUTILITY and VERIFIED_NULL (flags3407871), with unchanged ADAPTIVE16,
+CP64 and Hash64. At W1/10+0.1, 128 fresh color-reversed opening pairs give
+127 wins/57 draws/72 losses, score60.7422%, estimated +75.8 Elo. The prospectively
+allocated alpha.025 primary paired-normal97.5% interval is +32.9 to +121.1 Elo;
+this supports improvement under its representative independent-pair and normal
+approximation assumptions. The bounded97.5% sensitivity interval is -16.3 to +180.1
+and crosses equality. All256 games pass legal/history, frozen-identity, lifecycle
+and resource checks, with no interim score decisions, extension or exclusions.
+This is W1 evidence, not multiworker, longer-clock or universal strength proof.
+
+Selective legal verification changes null's practical economics; nominal futility
+adds diagnostic savings and passes its development-selection rule. Confirmation
+establishes the complete configuration's contribution, not an independent strength
+gain for each component. Improving removal fails its development gate; lazy
+improving, reduction-depth margins and history-confidence alternatives lack
+sufficient incremental evidence for further execution in this bounded queue.
+All96 conditional integrated cutoff replays complete without a false threshold,
+but an adverse same-depth composition root-move witness remains preserved. Neither
+sample certifies selective correctness as mathematical proof. Historical failures,
+caps, unplayed plans and changed resource-premise evidence remain intact.
+
+Recommend the tested composition for separate GPT/owner adoption consideration
+in the W1 domain. No configuration is promoted by this finding; all production
+choices and external installations remain unchanged. Other worker counts may
+merit confirmation before broader adoption, but are explicitly deferred without
+extrapolation. No research process or admitted work unit remains active. Return
+for reconciliation/acceptance, refresh both Project Source mirrors before dependent
+external planning, and launch no successor. Exact dispositions, costs, validation,
+provenance and the closed resume point are in the focused record.
 
 ## ADAPTIVE16 production selection - 23 October 2026
 

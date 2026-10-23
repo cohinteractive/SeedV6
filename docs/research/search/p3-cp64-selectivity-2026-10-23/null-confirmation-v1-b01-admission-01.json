@@ -1,0 +1,33 @@
+{
+  "start": {
+    "utc": "2026-10-23T14:35:38.891933+00:00",
+    "monotonic": 46201.7173351,
+    "ticks": [
+      4714240000000,
+      4933041718750,
+      611118906250
+    ],
+    "availableBytes": 22020263936,
+    "memoryLoadPercent": 35
+  },
+  "end": {
+    "utc": "2026-10-23T14:36:08.892752+00:00",
+    "monotonic": 46231.7181636,
+    "ticks": [
+      4717747812500,
+      4936592343750,
+      611154062500
+    ],
+    "availableBytes": 22029090816,
+    "memoryLoadPercent": 35
+  },
+  "elapsedSeconds": 30.000828500000353,
+  "busyCpuSeconds": 7.796875,
+  "ownedCpuSeconds": 0,
+  "otherAverageLogicalCores": 0.259888656074945,
+  "memoryEndpointsPass": true,
+  "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used.",
+  "legacyOneCoreGatePassed": true,
+  "passed": true,
+  "protocol": "null-clock-development-v2: at most2.0 other average logical CPUs; paired delivery and actor checks required"
+}

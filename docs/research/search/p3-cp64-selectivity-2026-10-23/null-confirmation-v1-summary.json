@@ -1,0 +1,268 @@
+{
+  "status": "passed",
+  "hypothesis": "null",
+  "candidate": "nominal-verified-null",
+  "flags": [
+    262143,
+    3407871
+  ],
+  "runtime": "raw/runtime-v4",
+  "bindingSha256": "6e290f298dc221e682e733acbfbbf4962a75dd8e40b68633df9b16186f069dfa",
+  "wdl": [
+    127,
+    57,
+    72
+  ],
+  "terminations": {
+    "normal": 256
+  },
+  "statistics": {
+    "pairs": 128,
+    "score": 0.607421875,
+    "pairVariance": 0.09220826156496063,
+    "pairScoreStandardError": 0.02683984060079819,
+    "alpha": 0.025,
+    "z": 2.2414027276049464,
+    "pairedNormal97_5Score": [
+      0.547262983068889,
+      0.667580766931111
+    ],
+    "pairedHoeffding97_5Score": [
+      0.47658880753731747,
+      0.7382549424626825
+    ],
+    "logisticElo": 75.82573264253945,
+    "pairedNormal97_5Elo": [
+      32.94002737510726,
+      121.1270691707997
+    ],
+    "pairedHoeffding97_5Elo": [
+      -16.27966651679326,
+      180.13114935889314
+    ],
+    "pentanomial": [
+      10,
+      15,
+      46,
+      24,
+      33
+    ]
+  },
+  "primaryDisposition": "positive_primary",
+  "boundedSensitivity": "crosses_equality",
+  "pairScores": [
+    0.75,
+    0.75,
+    0.75,
+    0.5,
+    0.5,
+    0.75,
+    0.5,
+    0.75,
+    0.25,
+    0.25,
+    0.75,
+    1.0,
+    1.0,
+    1.0,
+    0.5,
+    1.0,
+    0.75,
+    0.0,
+    1.0,
+    0.0,
+    0.5,
+    0.5,
+    1.0,
+    0.25,
+    0.5,
+    1.0,
+    0.5,
+    0.5,
+    1.0,
+    0.5,
+    0.5,
+    0.25,
+    0.25,
+    0.5,
+    0.5,
+    0.75,
+    0.5,
+    0.75,
+    0.5,
+    1.0,
+    1.0,
+    0.5,
+    0.5,
+    0.0,
+    0.5,
+    0.0,
+    0.25,
+    1.0,
+    1.0,
+    0.75,
+    1.0,
+    0.75,
+    0.75,
+    1.0,
+    0.25,
+    1.0,
+    0.25,
+    0.5,
+    0.25,
+    0.25,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    1.0,
+    1.0,
+    0.5,
+    0.25,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.25,
+    0.5,
+    0.75,
+    1.0,
+    1.0,
+    0.5,
+    0.75,
+    0.75,
+    1.0,
+    0.0,
+    0.25,
+    1.0,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
+    0.75,
+    0.5,
+    1.0,
+    1.0,
+    0.5,
+    0.75,
+    0.5,
+    0.75,
+    1.0,
+    0.5,
+    1.0,
+    0.75,
+    0.5,
+    0.75,
+    0.5,
+    1.0,
+    1.0,
+    0.75,
+    0.5,
+    1.0,
+    1.0,
+    0.5,
+    0.5,
+    1.0,
+    0.5,
+    0.5,
+    0.5,
+    0.25,
+    0.0,
+    0.75,
+    0.75,
+    0.5,
+    1.0,
+    1.0,
+    1.0,
+    0.0,
+    0.75,
+    0.25
+  ],
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 16804,
+      "nodes": 2442498010,
+      "elapsedNanos": 3564034563400
+    },
+    "candidate": {
+      "requests": 16830,
+      "nodes": 2600309547,
+      "elapsedNanos": 3579475915000
+    }
+  },
+  "resources": {
+    "ownedCpuSeconds": 7341.75,
+    "matchWallSeconds": 7173.0461362999995,
+    "engineCpuSeconds": {
+      "baseline": 3630.890625,
+      "candidate": 3661.0
+    },
+    "maximumEnginePeakWorkingSetBytes": {
+      "baseline": 391905280,
+      "candidate": 392495104
+    },
+    "memoryReadFailures": [],
+    "blockOtherAverageLogicalCores": [
+      0.2774623087958157,
+      0.28080951285126593,
+      0.27172495836625626,
+      0.3037482972785863
+    ],
+    "blockActorDelivery": [
+      {
+        "nativeCpuToSearchElapsed": {
+          "baseline": 1.0180258838927645,
+          "candidate": 1.0230290900207164
+        },
+        "absoluteDifference": 0.005003206127951909,
+        "passed": true,
+        "limits": "Native process CPU includes startup, JIT, GC and idle protocol handling; this coarse screen complements pre/post owner-thread delivery and host checks, not proof of isolation."
+      },
+      {
+        "nativeCpuToSearchElapsed": {
+          "baseline": 1.0186057858449207,
+          "candidate": 1.0218288294964601
+        },
+        "absoluteDifference": 0.00322304365153947,
+        "passed": true,
+        "limits": "Native process CPU includes startup, JIT, GC and idle protocol handling; this coarse screen complements pre/post owner-thread delivery and host checks, not proof of isolation."
+      },
+      {
+        "nativeCpuToSearchElapsed": {
+          "baseline": 1.0183870736710592,
+          "candidate": 1.0205608160156545
+        },
+        "absoluteDifference": 0.0021737423445953308,
+        "passed": true,
+        "limits": "Native process CPU includes startup, JIT, GC and idle protocol handling; this coarse screen complements pre/post owner-thread delivery and host checks, not proof of isolation."
+      },
+      {
+        "nativeCpuToSearchElapsed": {
+          "baseline": 1.0200809509584574,
+          "candidate": 1.0259238316394774
+        },
+        "absoluteDifference": 0.005842880681020013,
+        "passed": true,
+        "limits": "Native process CPU includes startup, JIT, GC and idle protocol handling; this coarse screen complements pre/post owner-thread delivery and host checks, not proof of isolation."
+      }
+    ]
+  },
+  "blockReceipts": {
+    "null-confirmation-v1-b01-summary.json": "ebf20f4956684f2d86c50aeb4332c01008230c6105176000944c87d072f0ba2e",
+    "null-confirmation-v1-b02-summary.json": "37a8db90eb16a5551414e61529b659bdf9269f91e64c76d8ca8b2ff9929d436f",
+    "null-confirmation-v1-b03-summary.json": "a06bcd6eadd97f4081237e69beb406be15651061e9bd36a651fbd227f7db801f",
+    "null-confirmation-v1-b04-summary.json": "45f0bffc7385c9445efd571f7ac702648db81acb137c22b543ed3afd28a9bc6c"
+  },
+  "combinedEvidence": {
+    "path": "raw\\null-confirmation-v1\\combined-games.pgn",
+    "sha256": "3b6f8f0c94d2248855f99df731c1f8eb616ad1968e3162a1ac619271573ee936"
+  },
+  "limits": [
+    "Fresh fixed128-pair W1 confirmation only; normal approximation and representative independent-pair assumptions apply.",
+    "Both uncertainty methods depend on the sampling/domain assumptions; neither rules out systematic opening-family or clock effects.",
+    "Conservative bounded sensitivity is reported separately, including any interval crossing equality.",
+    "No multiworker strength inference, automatic production promotion, external installation or successor objective."
+  ]
+}
