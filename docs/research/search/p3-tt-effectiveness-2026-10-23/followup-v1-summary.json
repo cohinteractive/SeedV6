@@ -1,0 +1,268 @@
+{
+  "status": "passed",
+  "protocolSha256": "d3a7986eeb887ac4f8b392d9fb13d2a5a52b599e9de52697bdc3c766ebd55d35",
+  "limits": [
+    "Development only; no Elo or strength confirmation.",
+    "Lifetime timing lacks warmup and independent trajectories; node/depth/age findings are primary.",
+    "Capped requests are retained; costs cannot be called equal completed-depth comparisons."
+  ],
+  "experiments": {
+    "aspiration-d6-v1": {
+      "rawPath": "raw\\aspiration-d6-v1.jsonl",
+      "rawSha256": "6df915a8edb5aa9ee31f8d8c71f5f1ee0d6dc2b61757bafddfc65683dd53480a",
+      "execution": "aspiration-d6-v1-execution.json",
+      "wallSeconds": 34.65117710000004,
+      "cpuSeconds": 40.59375,
+      "peakWorkingSetBytes": 488607744,
+      "profiles": {
+        "baseline": {
+          "requests": 36,
+          "totalNodes": 3261828,
+          "completedDepths": {
+            "6": 36
+          },
+          "capped": 0,
+          "differentMovesToBaseline": 0,
+          "elapsedNanos": 6178517500,
+          "processCpuNanos": 6484375000,
+          "liveThreadAllocatedBytes": 3276896,
+          "gcCollections": 0,
+          "compilationMillis": 203,
+          "elapsedNanosRatio": 1.0,
+          "processCpuNanosRatio": 1.0,
+          "pairedElapsedGeometricRatio": 1.0,
+          "pairedNodeGeometricRatio": 1.0
+        },
+        "hints-off": {
+          "requests": 36,
+          "totalNodes": 4104588,
+          "completedDepths": {
+            "6": 36
+          },
+          "capped": 0,
+          "differentMovesToBaseline": 9,
+          "elapsedNanos": 7461640800,
+          "processCpuNanos": 7718750000,
+          "liveThreadAllocatedBytes": 3340368,
+          "gcCollections": 0,
+          "compilationMillis": 66,
+          "elapsedNanosRatio": 1.2076749479142852,
+          "processCpuNanosRatio": 1.1903614457831326,
+          "pairedElapsedGeometricRatio": 1.1731695973959304,
+          "pairedNodeGeometricRatio": 1.2245900672522185
+        },
+        "full": {
+          "requests": 36,
+          "totalNodes": 2625123,
+          "completedDepths": {
+            "6": 36
+          },
+          "capped": 0,
+          "differentMovesToBaseline": 15,
+          "elapsedNanos": 4789537000,
+          "processCpuNanos": 5078125000,
+          "liveThreadAllocatedBytes": 2161392,
+          "gcCollections": 0,
+          "compilationMillis": 563,
+          "elapsedNanosRatio": 0.7751919453169793,
+          "processCpuNanosRatio": 0.7831325301204819,
+          "pairedElapsedGeometricRatio": 0.8636760774130338,
+          "pairedNodeGeometricRatio": 0.8801125114466315
+        },
+        "hints-off-full": {
+          "requests": 36,
+          "totalNodes": 3381363,
+          "completedDepths": {
+            "6": 36
+          },
+          "capped": 0,
+          "differentMovesToBaseline": 18,
+          "elapsedNanos": 6011156800,
+          "processCpuNanos": 6218750000,
+          "liveThreadAllocatedBytes": 2160496,
+          "gcCollections": 0,
+          "compilationMillis": 437,
+          "elapsedNanosRatio": 0.9729124826465249,
+          "processCpuNanosRatio": 0.9590361445783132,
+          "pairedElapsedGeometricRatio": 1.0867637495439122,
+          "pairedNodeGeometricRatio": 1.147196022782381
+        }
+      }
+    },
+    "aspiration-n250k-v1": {
+      "rawPath": "raw\\aspiration-n250k-v1.jsonl",
+      "rawSha256": "dedbac7b2328e268a3acfe06770fb07d440ba304c9f646526770450fed86febd",
+      "execution": "aspiration-n250k-v1-execution.json",
+      "wallSeconds": 86.50955270000031,
+      "cpuSeconds": 91.34375,
+      "peakWorkingSetBytes": 506171392,
+      "profiles": {
+        "baseline": {
+          "requests": 36,
+          "totalNodes": 9000000,
+          "completedDepths": {
+            "7": 27,
+            "6": 6,
+            "8": 3
+          },
+          "capped": 36,
+          "differentMovesToBaseline": 0,
+          "elapsedNanos": 16576809400,
+          "processCpuNanos": 17343750000,
+          "liveThreadAllocatedBytes": 4316792,
+          "gcCollections": 0,
+          "compilationMillis": 750,
+          "elapsedNanosRatio": 1.0,
+          "processCpuNanosRatio": 1.0,
+          "pairedElapsedGeometricRatio": 1.0,
+          "pairedNodeGeometricRatio": 1.0
+        },
+        "hints-off": {
+          "requests": 36,
+          "totalNodes": 9000000,
+          "completedDepths": {
+            "7": 18,
+            "5": 3,
+            "6": 15
+          },
+          "capped": 36,
+          "differentMovesToBaseline": 3,
+          "elapsedNanos": 15835115000,
+          "processCpuNanos": 16109375000,
+          "liveThreadAllocatedBytes": 4111816,
+          "gcCollections": 0,
+          "compilationMillis": 532,
+          "elapsedNanosRatio": 0.9552571075589492,
+          "processCpuNanosRatio": 0.9288288288288288,
+          "pairedElapsedGeometricRatio": 0.9578669823836463,
+          "pairedNodeGeometricRatio": 1.0
+        },
+        "full": {
+          "requests": 36,
+          "totalNodes": 9000000,
+          "completedDepths": {
+            "7": 24,
+            "6": 12
+          },
+          "capped": 36,
+          "differentMovesToBaseline": 9,
+          "elapsedNanos": 15781027300,
+          "processCpuNanos": 15843750000,
+          "liveThreadAllocatedBytes": 2673408,
+          "gcCollections": 0,
+          "compilationMillis": 56,
+          "elapsedNanosRatio": 0.9519942540933118,
+          "processCpuNanosRatio": 0.9135135135135135,
+          "pairedElapsedGeometricRatio": 0.955879611689584,
+          "pairedNodeGeometricRatio": 1.0
+        },
+        "hints-off-full": {
+          "requests": 36,
+          "totalNodes": 9000000,
+          "completedDepths": {
+            "7": 21,
+            "6": 15
+          },
+          "capped": 36,
+          "differentMovesToBaseline": 9,
+          "elapsedNanos": 15600835500,
+          "processCpuNanos": 15640625000,
+          "liveThreadAllocatedBytes": 2645640,
+          "gcCollections": 1,
+          "compilationMillis": 47,
+          "elapsedNanosRatio": 0.9411241405719487,
+          "processCpuNanosRatio": 0.9018018018018018,
+          "pairedElapsedGeometricRatio": 0.9445938223433988,
+          "pairedNodeGeometricRatio": 1.0
+        }
+      }
+    },
+    "lifetime-v1": {
+      "rawPath": "raw\\lifetime-v1.jsonl",
+      "rawSha256": "d66a9ee2e321f9516cf975ac5f5b3f14e504423af64dec4b0f0af8ce0e80f2ff",
+      "execution": "lifetime-v1-execution.json",
+      "wallSeconds": 181.2482031999998,
+      "cpuSeconds": 187.96875,
+      "peakWorkingSetBytes": 876306432,
+      "requests": 128,
+      "allObserverParity": true,
+      "tableTotals": {
+        "proofProbes": 6451856,
+        "proofHits": 0,
+        "proofStores": 0,
+        "hintProbes": 6451856,
+        "hintHits": 2685618,
+        "missingEmpty": 3492754,
+        "missingCollision": 273484,
+        "writes": 4733502,
+        "emptyWrites": 2085873,
+        "refreshWrites": 2491480,
+        "collisionWrites": 156149,
+        "sameMoveRefresh": 2464996,
+        "proofBlocked": 0,
+        "deeperBlocked": 100008,
+        "hitAge": {
+          "0": 2577440,
+          "1": 107965,
+          "2": 213
+        },
+        "hitDepth": {
+          "1": 1925446,
+          "2": 551172,
+          "3": 162813,
+          "4": 32291,
+          "5": 11965,
+          "6": 1777,
+          "7": 154
+        },
+        "storeDepth": {
+          "1": 3514182,
+          "2": 907975,
+          "3": 225357,
+          "4": 61900,
+          "5": 17789,
+          "6": 6040,
+          "7": 259
+        },
+        "occupiedDepth": {
+          "1": 14459034,
+          "2": 3834601,
+          "3": 790721,
+          "4": 269228,
+          "5": 48357,
+          "6": 35143,
+          "7": 962
+        }
+      },
+      "maxOccupancyFraction": 0.1658005714416504,
+      "olderHits": 108178,
+      "olderHitShare": 0.040280486651489526,
+      "profiles": {
+        "retained": {
+          "nodes": 33578088,
+          "completedDepths": {
+            "7": 105,
+            "6": 23
+          },
+          "capped": 23,
+          "elapsedNanos": 59810156500,
+          "processCpuNanos": 63453125000
+        },
+        "cleared": {
+          "nodes": 35250183,
+          "completedDepths": {
+            "7": 99,
+            "6": 28,
+            "5": 1
+          },
+          "capped": 29,
+          "elapsedNanos": 61491513100,
+          "processCpuNanos": 63375000000
+        }
+      },
+      "bothCompletedCount": 98,
+      "retainedToClearedNodesBothCompleted": 0.9608487201222015,
+      "differentMoves": 20
+    }
+  }
+}

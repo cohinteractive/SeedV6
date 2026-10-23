@@ -1,16 +1,27 @@
 # Phase 3: TT Information Effectiveness and Reuse
 
-Owner-authorized CGLHW, 23 October 2026 (Pacific/Auckland). **ACTIVE: bootstrap
-and current-baseline measurement.** This is subordinate evidence and continuity
+Owner-authorized CGLHW, 23 October 2026 (Pacific/Auckland). **ACTIVE: qualified
+full-window consumer candidate entering clock development.** This is subordinate evidence and continuity
 under [Contract P3-R017](../../../source/CHESS_SEARCH_CONTRACT.md) and
 [Frontier P3-F015](../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md), not a new
 contract or an acceptance/promotion authority.
 
 ## Resume and current work selection
 
-Next: execute the frozen [diagnostic-v1 protocol](p3-tt-effectiveness-2026-10-23/diagnostic-v1.json)
-using its research-owned whole-request probe, then analyze all results before
-selecting a candidate. Baseline qualification and observer tests now pass.
+Completed: diagnostic-v1, followup-v1 (aspiration reverse ablation and cross-request
+lifetime), deeper-v1 (different roots, W1/W4), full-window correctness and ordinary
+UCI baseline parity. Their frozen protocols, bindings, receipts and summaries are
+in the linked experiment directory. Pilot-v1 passed all four operational games.
+The frozen 32-pair W1/W4 development protocol started W1 at
+2026-10-23T03:10:30Z; `run_development_clock_v1.py` waits for each owned match and
+then starts W4 serially. Inspect per-domain execution receipts and raw run status
+before taking further action; absent completion is not permission to duplicate a
+live run. Preserve partial output and reconcile any interruption before retrying
+under a new protocol/name. Next after both receipts pass: analyze fixed endpoints
+under development-clock-v1's selection rule, then freeze fresh confirmation only
+where justified. Existing full-window all-controls CP64/Hash64 is a conditional candidate;
+WIDEN16 is the principal baseline. No strength evidence yet. All failed checks
+remain recorded; do not replay or overwrite closed names or raw evidence.
 Runtime baseline and TT policy remain unchanged. No owner decision currently
 blocks this headless work. Inspect this record and its experiment summaries
 before resuming; completed protocols must not be extended or overwritten.
@@ -26,7 +37,7 @@ before resuming; completed protocols must not be extended or overwritten.
 - Canon headers were P3-R016/P3-F014 as the owner stated. Launch supersedes earlier
   no-successor wording, preserving historical evidence. Baseline source inspection
   confirms BaselineEngine -> ConstructionSearch.v1, flags 262143/WIDEN16,
-  configurable 1-16 workers and requested default Hash64. Runtime QA remains next.
+  configurable 1-16 workers and requested default Hash64. Runtime QA is recorded below.
 - Actual frozen CP64 file is 3,940,952 bytes, SHA-256
   `8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b`.
   Loader checks length/hash, S6CNU002 and eight heads. Its manifest describes the
@@ -80,18 +91,133 @@ Challenge decisions before substantial execution:
 
 | ID | Hypothesis / discriminator | Current disposition and next gate |
 | --- | --- | --- |
-| T1 | Completed hints materially reduce current CP64 request work despite no ordinary proof. | FIRST: observation parity, baseline versus existing hints-off control, D6 and capped iterative requests; one worker first, representative multiworker next. |
-| T2 | Current capacity/replacement loses consequential guidance. | Inspect occupancy, collision/depth/age distributions, rejected stores and repeated probes; existing Hash1 pressure and Hash64 controls. A change in policy is owner-gated, resource controls are existing settings. |
-| T3 | Aspiration/PVS/iteration or root guidance consumes hints ineffectively. | Inspect existing retry and effort semantics; compare bounded existing controls only when T1 exposes decision value. Prefer consumer changes over speculative storage changes. |
-| T4 | TT access/coordination costs consume the information benefit. | Clean full-request elapsed/process CPU/allocation/memory and representative worker comparison; include retries/aborted work and observer overhead. No locking/layout variant without authority. |
-| T5 | Producer depth/selective restrictions leave valuable proof or guidance unavailable. | Document current restrictions and measured consequences. Preserve mathematical correctness; propose owner decision only if economically supported. |
-| T6 | A promising integrated candidate improves practical strength. | Conditional: correctness first, economical paired clock development, then freeze fresh confirmation under existing 10+0.1 standard with prospective analysis/stopping. No universal game quota or automatic promotion. |
+| T1 | Completed hints materially reduce current CP64 request work despite no ordinary proof. | SUPPORTED mechanism value in diagnostic-v1: hints-off increases D6 work/time at W1/W4, despite slightly cheaper fixed-node requests. Not Elo evidence. |
+| T2 | Current capacity/replacement loses consequential guidance. | No redesign justified in tested domains. Fresh occupancy averages 1.1%; multi-request maximum 16.6%. Older-generation hints are only 4% of hits but retaining them helps the bounded lifetime control. Long-clock saturation remains untested. |
+| T3 | Aspiration/PVS/iteration or root guidance consumes hints ineffectively. | Full-window control promising at D6 and deeper W1/W4; fixed-250k completed depths mixed. Hints help both drivers. NEXT clock test of the unchanged existing full-window composition, not a TT redesign. |
+| T4 | TT access/coordination costs consume the information benefit. | Fixed-node hints-off is about 4-5% cheaper but completes less depth; D6 becomes 23-33% slower in aggregate. Retain whole-request economics, no locking/layout variant. Profiling only if decision value remains. |
+| T5 | Producer depth/selective restrictions leave valuable proof or guidance unavailable. | Zero ordinary proof confirmed; completed hints provide value. No evidence yet justifies weakening proof restrictions or binding-policy experimentation. Empty proof probes/repeated writes are traffic observations, not permission to alter TT access/replacement. |
+| T6 | A promising integrated candidate improves practical strength. | Full-window correctness qualified. NEXT operational pilot, then fixed paired clock development; fresh confirmation only if expected decision value warrants it. No universal game quota or automatic promotion. |
 
 Select the next question by expected decision value. Negative findings may close
 formulations; incomplete/resource-limited evidence stays inconclusive or deferred.
 No unrelated evaluator/GUI/training/hot-path programme, MTD redevelopment or
 automatic successor. Closure requires a defensible lifecycle account and supported
 dispositions of credible affordable opportunities, not an arbitrary positive Elo.
+
+## Closed diagnostic-v1 findings
+
+Source/experiment bootstrap committed as `09e126a`; model and runtime hashes are
+in [diagnostic-v1-binding.json](p3-tt-effectiveness-2026-10-23/diagnostic-v1-binding.json).
+All 24 plain/observed full-request pairs match, including aborted work. All 576
+cost requests (144 warmups, 432 measured) pass accounting, PV and helper-drain
+checks. No production class/source policy changed; build69 remains selected.
+Ordinary proof probes/hits/stores in baseline observation: **765,161 / 0 / 0**.
+The second probe supplies **245,411 hints (32.07%)**. Hash64 stores 508,294 hints;
+1,845 collision writes versus Hash1's 81,216. Same-key refreshes overwhelmingly
+repeat the retained move (221,800/224,582), but replacement is owner-reserved and
+these counts alone cannot justify suppressing a write or changing retention.
+
+| Control / baseline | W1 D6 elapsed totals | W4 D6 elapsed totals | W1 D6 node geometric ratio | W4 D6 node geometric ratio |
+| --- | ---: | ---: | ---: | ---: |
+| Hints off | 1.233 | 1.327 | 1.225 | 1.317 |
+| Hash1 | 1.020 | 0.998 | 1.009 | 0.996 |
+
+D6 requests all complete. At 250k admitted nodes, hints-off elapsed totals fall
+to 0.957/0.949 of baseline (W1/W4), while completed depths shift down. This is a
+cost-benefit tradeoff, not proof of stronger play or a reason to remove hints.
+Hash1 reduces hint availability to 27.41%; bounded request depth changes are
+small and selective, not a default-memory recommendation. Multiworker process
+CPU ratios do not equal elapsed ratios; see the summary, including a 1.127 Hash1
+D6 CPU ratio despite nearly equal elapsed time. Requested Hash64 is unchanged.
+
+In the 12 baseline observation requests, 60/154 passes return completed failed
+aspiration bounds, consuming 863,603/2,979,366 nodes (28.99%); 11 further passes
+abort at the full-request cap. Failed passes produce reusable guidance, so the
+next controlled question is their net value, not simply reducing their count.
+The full five-run cost was 177.5 seconds wall / 293.2 process CPU seconds; peak
+working set is in per-run receipts. Instrumented plain-then-observed timing lacks
+warmup/order control and is not an overhead estimate. Existing Construction
+counters reset on abort; they omit aborted invocation mechanism counts, while
+table counters and whole-request nodes/time include that work. This limitation
+is retained rather than silently treating missing counters as zero work.
+
+No clock games, independent strength confirmation, new TT policy, candidate
+acceptance or production promotion follows from this diagnostic.
+
+## Closed followup-v1 and deeper-v1
+
+[Followup protocol](p3-tt-effectiveness-2026-10-23/followup-v1.json),
+[summary](p3-tt-effectiveness-2026-10-23/followup-v1-summary.json),
+[deeper protocol](p3-tt-effectiveness-2026-10-23/deeper-v1.json) and
+[summary](p3-tt-effectiveness-2026-10-23/deeper-v1-summary.json) retain all outcomes.
+At W1 D6, full-window uses 0.805 of baseline total nodes and 0.775 elapsed time.
+Hints-off costs more with both drivers: hints-off/full-window uses 3,381,363
+nodes versus full-window's 2,625,123. Thus the opportunity concerns consumer
+interaction, not simply removing information production. At a fixed 250k nodes,
+full-window completes fewer D7/D8 requests than WIDEN16; do not hide that negative
+depth result or generalize the shallow timing gain.
+
+On twelve different historical full-history development roots, target D8/2m cap,
+two measured rounds after one warmup, full-window completes all 24 requests at
+each of W1/W4; WIDEN16 completes 20/24 at each. Full-window/baseline elapsed totals
+are 0.602 (W1) and 0.719 (W4); process CPU ratios 0.592/0.583, nodes
+15.49m/25.09m and 14.98m/24.01m. All selected moves match on these roots. Capped
+requests remain included, so these are not equal-completed-depth speedups. No
+Elo inference follows. The two JVMs took 167.2 seconds wall in total.
+
+Lifetime-v1 replays four actual CP64 game trajectories from the prior baseline
+comparison, selected before measurement, 32 requests each at plies 16-47. All
+128 retained plain/observed requests match. Of 2,685,618 hint hits, 108,178 are
+older-generation (4.03%); maximum observed occupancy is 16.58%. Ordinary probes
+6,451,856, hits/stores zero. Retaining TT across requests completes D7 in 105/128
+requests versus 99/128 with per-request clearing; total nodes are 33.58m versus
+35.25m, including 23/29 caps. The 98 jointly completed cases use a 0.961 node
+ratio, a conditionally selected subset, not a universal speedup. Twenty selected
+moves differ; no playing-strength claim. These are four trajectories, not 128
+independent games. Lifetime timing lacks warmup, so node/depth/age comparisons
+are primary. Its peak working set, 876 MB, belongs to the six-owner diagnostic
+JVM and must not be represented as one production engine's memory. The three
+followup runs took 302.4 seconds wall, including 181.2 for lifetime-v1.
+
+## Candidate and clock qualification
+
+The candidate is existing `ConstructionSearch.v1(workers,64,null)`, full-window
+PVS with all 18 controls and frozen CP64. It changes no TT identity, layout,
+locking, replacement or proof rule. The research launcher lives in the existing
+root research seam and the adapter reuses established Fastchess, legal-history
+auditing and Windows owned-process/lifetime accounting. No production dependency
+on research or second Search implementation is introduced.
+
+`ConstructionTtFullWindowTest` passed independent CP64 accumulator rebuild/PV
+comparisons on six representative boards (including EP, promotion, mate and draw)
+and budget, cancellation, new-game, expiry, drainage and reuse checks for every
+worker count 1-16. These are two test methods with multiple cases, not two cases.
+`ConstructionTtStudyTest` passed three methods including legal replay of all four
+lifetime fixtures. Existing exact/TT-off/mate/history suites passed in bootstrap;
+no proof eligibility changed. Boundaries and research workspace build pass.
+
+UCI qualification v1 passed both profiles at W1/W4/W16 but its attempted parity
+check failed: `UciMain --nnue` activates the deliberately preserved historical
+recursive opt-in, not ordinary build69 Search. This was an experimental comparator
+error, not evidence of a baseline defect. Its script, runtime, transcripts and
+failed receipt are immutable evidence. [Qualification v2](p3-tt-effectiveness-2026-10-23/uci-qualification-v2.json)
+uses no-argument ordinary UCI; identity and node/score/depth/move/PV parity pass
+on startpos and two complete-history roots at 100k nodes. The frozen research
+launcher warms up its actual profile for 200k nodes before UCI handshake; clocks
+begin afterward and process lifetime CPU still includes startup/JIT/GC/drain.
+
+The [operational pilot](p3-tt-effectiveness-2026-10-23/pilot-v1-summary.json)
+passed all four games with independent legal/history/result and telemetry audit,
+stable inputs and clean exits. It is deliberately excluded from strength inference.
+It took 129.6 seconds match wall time, 76.3/76.7 lifetime CPU seconds and
+361.8/315.5 MB peak working set for baseline/candidate. The two engines do not
+search simultaneously in a one-game cohort. Pilot-scaled estimates are 34.6
+minutes per 32-pair development domain and 2.3 hours per 128-pair confirmation;
+game length/desktop availability can change these. The development protocol
+freezes both worker domains separately at 10+0.1, selects no intermediate result,
+and prospectively specifies the conditional confirmation gate. The new PGNs are
+frozen opening inputs covered by the existing narrow `*-openings.pgn` exception;
+generated tournament PGNs and runtime copies stay ignored under `raw/`.
 
 ## Evidence and resource discipline
 

@@ -1,0 +1,25 @@
+{
+  "selection": "First two scheduled opening pairs, white then black, of completed CP64 1000ms informational comparison. No result selection; retain all actual moves. Intentional compact replay fixture, not raw PGN output or independent confirmation.",
+  "sourceInputs": {
+    "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\match-1000-v1\\000-white.json": {
+      "sha256": "130cdf5f96d97e239492bb656e409de2720ca77bf96adc0492d3e1ea764a8d42",
+      "plies": 119
+    },
+    "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\match-1000-v1\\000-black.json": {
+      "sha256": "691432d5c6e5949ecfb35344a33ad40e2ecfc025baeae1bd142f042a40f7cc9f",
+      "plies": 74
+    },
+    "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\match-1000-v1\\001-white.json": {
+      "sha256": "d7601a39e57ace3b2856aeeb90fa6729b5df91d44339a210eccf1735e0d31950",
+      "plies": 129
+    },
+    "docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\raw\\match-1000-v1\\001-black.json": {
+      "sha256": "21d6d867df386cfc97a2bae0b1f8359691d85bb2034d6e688fa625ace57e3894",
+      "plies": 132
+    }
+  },
+  "fixture": "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\lifetime-lines.tsv",
+  "sha256": "1b8e50040a60612303693bea3eb28e69d5231b18cd46e2d427b9cd7e69ee3469",
+  "legality": "Original prior audit binds hashes; fresh Java legal replay required before measurements.",
+  "researchReason": "Current selected CP64 game trajectories test older-request hint survival under full actual histories, extending fresh-request diagnostic-v1."
+}

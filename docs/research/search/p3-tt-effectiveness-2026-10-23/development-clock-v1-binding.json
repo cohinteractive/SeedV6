@@ -1,0 +1,14 @@
+{
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\development-clock-v1.json": "904055e526899f88c1f3192fa82efaab203e0dd6e3f5dc8148f81f743f4fdc53",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\development-clock-v1-openings.pgn": "38a9499f8e4bb597d6b92df1f95ab86c63e31c5935aec1d3fcfb4350543d05c1",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\development-clock-v1-openings.selection.json": "abf8001d34a1ad9cc645b13c58f6b30453ab01a0162b15920bdbb083d7dd250d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\pilot-v1-summary.json": "39b36e7f9955df9ea1c1d087f6c9a0f3c75f313c43608fb76cac7be04bd29e1a",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p3-tt-match.py": "7b99aab7c9e478ed468d89e6bf739658981d3406d118f87b42cbaa1c0c972f52",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\tools\\fastchess.exe": "c6d7e4458a58025983c81bf38c524cb213e6f27559657dcfd72543392a431a71",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+  },
+  "runtimeBindingSha256": "45e2612e9e94a9f8ecb0b2d85fd04bcfa168f03a11e9207653b41d3703c029a5",
+  "selectionScriptSha256": "634e358fcf127bab934f4ac1b532cf015db753d5e9ed808aa342e70478fa915c",
+  "pilotGate": "passed"
+}

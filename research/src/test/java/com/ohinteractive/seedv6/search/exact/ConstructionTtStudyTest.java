@@ -10,6 +10,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Timeout(120)
 class ConstructionTtStudyTest {
+    @Test void currentCp64ReplayFixtureRetainsLegalCompleteHistories() throws Exception {
+        var lines=java.nio.file.Files.readAllLines(java.nio.file.Path.of("../docs/research/search/p3-tt-effectiveness-2026-10-23/lifetime-lines.tsv"));
+        assertEquals(4,lines.size());
+        for(String line:lines) {
+            var roots=ConstructionTtLifetimeStudy.prefixes(line);
+            assertTrue(roots.size()>48);
+            for(int ply=0;ply<roots.size();ply++) assertEquals(ply+1,roots.get(ply).history().size());
+        }
+    }
+
     @Test void observedRequestsMatchActualBaselineAcrossAbortHistoryAndReset() throws Exception {
         var e=BaselineEngine.load().evaluation();
         var table=new ConstructionTtStudy.ObservedTable(64);

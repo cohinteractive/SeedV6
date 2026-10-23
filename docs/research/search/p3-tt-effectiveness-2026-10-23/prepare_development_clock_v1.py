@@ -1,0 +1,32 @@
+"""Admit the frozen clock protocol only after successful operational qualification."""
+import importlib.util
+import json
+from run_diagnostic_v1 import digest, write_new, ROOT, HERE
+
+spec=importlib.util.spec_from_file_location('match',ROOT/'tools/p3-tt-match.py')
+m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+assert json.loads((HERE/'uci-qualification-v2.json').read_text())['status']=='passed'
+pilot=json.loads((HERE/'raw/pilot-v1/run.json').read_text());cost=json.loads((HERE/'raw/pilot-v1/process-cost.json').read_text())
+assert pilot['status']=='passed' and pilot['results']['terminations']=={'normal':4}
+assert cost['status']=='passed' and all(x['peakWorkingSetBytes']>0 for x in cost['processes'])
+binding=json.loads((HERE/'clock-runtime-v1-binding.json').read_text())
+assert all(digest(p)==sha for p,sha in binding['files'].items())
+assert digest(ROOT/'tools/p3-tt-match.py')==binding['adapterSha256']
+write_new(HERE/'pilot-v1-summary.json',{'status':'passed','protocolSha256':digest(HERE/'pilot-v1.json'),
+    'runSha256':digest(HERE/'raw/pilot-v1/run.json'),'rawPath':'raw/pilot-v1',
+    'noStrengthInference':True,'wallSeconds':pilot['wallSeconds'],'matchWallSeconds':pilot['matchWallSeconds'],
+    'terminations':pilot['results']['terminations'],'wholeRequestResources':pilot['results']['wholeRequestResources'],
+    'cpuSeconds':cost['cpuSeconds'],
+    'peakWorkingSetBytes':{p['actor']:p['peakWorkingSetBytes'] for p in cost['processes']},
+    'forecast32PairsSeconds':pilot['matchWallSeconds']*16,'forecast128PairsSeconds':pilot['matchWallSeconds']*64})
+book=ROOT.parent/'seedv6/app/build/search-baseline/tools/openings/sr021-bjbraams/legal16-v1.pgn'
+assert digest(book)=='eaf3c706dc6038d18a05c8608417a5ee2e3e43438487d73bbf2c7191183db42f'
+exclude=[HERE/'clock-development-exclusions.json',HERE/'pilot-v1-openings.selection.json',
+         ROOT/'docs/research/search/p3-construction-2026-10-20/baseline-cp64/openings.selection.json']
+m.b.select_openings(book,HERE/'development-clock-v1-openings.pgn',32,2026102302,0,exclude)
+files={str(p):digest(p) for p in [HERE/'development-clock-v1.json',HERE/'development-clock-v1-openings.pgn',
+       HERE/'development-clock-v1-openings.selection.json',HERE/'pilot-v1-summary.json',ROOT/'tools/p3-tt-match.py',
+       ROOT/'build/research/tools/fastchess.exe',ROOT/'build-assets/nnue-candidate/conventional-cp64.cnnue']}
+write_new(HERE/'development-clock-v1-binding.json',{'files':files,'runtimeBindingSha256':digest(HERE/'clock-runtime-v1-binding.json'),
+    'selectionScriptSha256':digest(__file__),'pilotGate':'passed'})
+print('Development protocol admitted',flush=True)

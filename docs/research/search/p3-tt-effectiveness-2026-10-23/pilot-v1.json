@@ -1,0 +1,20 @@
+{
+  "id":"P3-TT-CLOCK-PILOT-v1",
+  "frozenBeforeExecution":true,
+  "purpose":"Operational paired clock qualification and resource forecast; no strength selection or inference.",
+  "runtime":"raw/clock-runtime-v1",
+  "runtimeBinding":"clock-runtime-v1-binding.json",
+  "gate":"Corrected ordinary-default UCI parity qualification v2 must pass. v1 failed only because explicit historical --nnue was incorrectly selected as comparator; preserve all v1 evidence.",
+  "profiles":["baseline","full"],
+  "workers":1,
+  "hashMiB":64,
+  "pairs":2,
+  "clock":"10+0.1",
+  "concurrency":1,
+  "seed":2026102301,
+  "openings":"pilot-v1-openings.pgn",
+  "selection":"Two partition0 legal16 positions, seed 2026102301, excluding current diagnostic/deeper/lifetime roots and historical CP64 comparison openings. No evaluator or result filter.",
+  "resourcePolicy":"BelowNormal, one game at a time, fixed 2 pairs, 15-minute watchdog. Same frozen CP64/Hash64/heaps/JVM ergonomics. 200k-node startup warmup per engine outside game clocks, separately declared and included in lifetime CPU.",
+  "acceptance":"All four games retained, legally replayed with correct terminal/history results and whole-request telemetry. Both processes exit cleanly, lifetime CPU/peak memory recorded, frozen inputs unchanged. No score adjudication. No statistical inference; operational output only. Failures stay preserved and block clock promotion until resolved.",
+  "next":"If operational qualification passes, freeze one-/four-worker full versus WIDEN16 development on 32 new paired openings at 10+0.1; decide fresh confirmation only from that fixed endpoint. Do not tune candidate."
+}

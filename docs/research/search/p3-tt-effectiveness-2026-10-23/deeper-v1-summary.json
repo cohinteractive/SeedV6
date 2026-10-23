@@ -1,0 +1,117 @@
+{
+  "protocolSha256": "c5c247fb10c005bad3a866be8695450257623ab5d49b0473d5e0ee969342494f",
+  "status": "passed",
+  "experiments": {
+    "deeper-w1-v1": {
+      "rawPath": "raw\\deeper-w1-v1.jsonl",
+      "rawSha256": "7f32534d266a215119baeb1028c8c6b126a6f3aafedcc2558412e4e56ea70c54",
+      "receipt": "deeper-w1-v1-execution.json",
+      "wallSeconds": 109.93961180000042,
+      "profiles": {
+        "baseline": {
+          "elapsedNanos": 44584778206,
+          "processCpuNanos": 45171875000,
+          "liveThreadAllocatedBytes": 4015112,
+          "resetNanos": 30800999,
+          "gcCollections": 0,
+          "compilationMillis": 1125,
+          "requests": 24,
+          "totalNodes": 25087052,
+          "completedDepths": {
+            "8": 20,
+            "7": 4
+          },
+          "capped": 4,
+          "heapUsedRange": [
+            229425824,
+            239911584
+          ],
+          "differentMoves": 0,
+          "pairedElapsedGeometricRatio": 1.0,
+          "elapsedTotalRatio": 1.0,
+          "cpuTotalRatio": 1.0
+        },
+        "full": {
+          "elapsedNanos": 26828752198,
+          "processCpuNanos": 26734375000,
+          "liveThreadAllocatedBytes": 1881768,
+          "resetNanos": 30437297,
+          "gcCollections": 0,
+          "compilationMillis": 160,
+          "requests": 24,
+          "totalNodes": 15490054,
+          "completedDepths": {
+            "8": 24
+          },
+          "capped": 0,
+          "heapUsedRange": [
+            229425824,
+            239911584
+          ],
+          "differentMoves": 0,
+          "pairedElapsedGeometricRatio": 0.652713575966023,
+          "elapsedTotalRatio": 0.6017469028115412,
+          "cpuTotalRatio": 0.5918367346938775
+        }
+      }
+    },
+    "deeper-w4-v1": {
+      "rawPath": "raw\\deeper-w4-v1.jsonl",
+      "rawSha256": "8fad8d2f6b5f5431c19fc3fae89ac5eec79a27d4aba09b0a43a5ba68a4f919d4",
+      "receipt": "deeper-w4-v1-execution.json",
+      "wallSeconds": 57.294443100000535,
+      "profiles": {
+        "baseline": {
+          "elapsedNanos": 21305359499,
+          "processCpuNanos": 59921875000,
+          "liveThreadAllocatedBytes": 78442856,
+          "resetNanos": 28464305,
+          "gcCollections": 1,
+          "compilationMillis": 1166,
+          "requests": 24,
+          "totalNodes": 24012889,
+          "completedDepths": {
+            "8": 20,
+            "7": 4
+          },
+          "capped": 4,
+          "heapUsedRange": [
+            162951296,
+            288762304
+          ],
+          "differentMoves": 0,
+          "pairedElapsedGeometricRatio": 1.0,
+          "elapsedTotalRatio": 1.0,
+          "cpuTotalRatio": 1.0
+        },
+        "full": {
+          "elapsedNanos": 15324534594,
+          "processCpuNanos": 34937500000,
+          "liveThreadAllocatedBytes": 39908040,
+          "resetNanos": 30159799,
+          "gcCollections": 0,
+          "compilationMillis": 920,
+          "requests": 24,
+          "totalNodes": 14979707,
+          "completedDepths": {
+            "8": 24
+          },
+          "capped": 0,
+          "heapUsedRange": [
+            165048448,
+            285616576
+          ],
+          "differentMoves": 0,
+          "pairedElapsedGeometricRatio": 0.7601230389153559,
+          "elapsedTotalRatio": 0.7192807328465535,
+          "cpuTotalRatio": 0.5830508474576271
+        }
+      }
+    }
+  },
+  "limits": [
+    "Development roots, not independent playing-strength confirmation.",
+    "Capped requests retained; target-depth ratios are not equal completed-depth speedups.",
+    "Two rounds are repeated measurements, not independent positions."
+  ]
+}

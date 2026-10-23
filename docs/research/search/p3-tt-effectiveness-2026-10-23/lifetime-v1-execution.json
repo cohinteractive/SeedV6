@@ -1,0 +1,45 @@
+{
+  "experiment": "lifetime-v1",
+  "bindingSha256": "8ba61900fdb1baec989051030ae2f298a94b17fd057c1d335380a0b1fbc171a2",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx768m",
+    "-XX:ActiveProcessorCount=4",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\followup-v1-runtime\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\followup-v1-runtime\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.ConstructionTtLifetimeStudy",
+    "build-assets/nnue-candidate/conventional-cp64.cnnue",
+    "docs/research/search/p3-tt-effectiveness-2026-10-23/lifetime-lines.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\lifetime-v1.jsonl",
+    "7",
+    "500000",
+    "16",
+    "48"
+  ],
+  "startedUtc": "2026-10-23T02:44:31.181106+00:00",
+  "priority": "BelowNormal",
+  "nativeAccountingSource": "C:\\projects\\seed\\java\\seedv6-unified\\tools\\sr036-process-cost.py",
+  "nativeAccountingSha256": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+  "exitCode": 0,
+  "nativeLifetime": {
+    "creationTicks": 134371970711822928,
+    "createdUtc": "2026-10-23T02:44:31.182293+00:00",
+    "exitCode": 0,
+    "exitedUtc": "2026-10-23T02:47:32.398849+00:00",
+    "kernelCpuSeconds": 4.421875,
+    "userCpuSeconds": 183.546875,
+    "totalCpuSeconds": 187.96875
+  },
+  "peakWorkingSetBytes": 876306432,
+  "peakPagefileBytes": 961409024,
+  "status": "passed",
+  "elapsedSeconds": 181.2482031999998,
+  "finishedUtc": "2026-10-23T02:47:32.429520+00:00",
+  "evidence": {
+    "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\lifetime-v1.jsonl": "d66a9ee2e321f9516cf975ac5f5b3f14e504423af64dec4b0f0af8ce0e80f2ff",
+    "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\lifetime-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

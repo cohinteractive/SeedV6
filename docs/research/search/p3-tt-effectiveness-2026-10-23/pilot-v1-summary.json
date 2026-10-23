@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "protocolSha256": "a70c8e8590f26a97b1b3a936bca38db5976dcdce3b69cb4d4002e9228d94b493",
+  "runSha256": "9abe0b7f3c819ed5a7103f7f1fe0a6c13cc5b5280bbfedd688674c4208527f56",
+  "rawPath": "raw/pilot-v1",
+  "noStrengthInference": true,
+  "wallSeconds": 132.57125520000045,
+  "matchWallSeconds": 129.57746409999982,
+  "terminations": {
+    "normal": 4
+  },
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 309,
+      "nodes": 36704169,
+      "elapsedNanos": 62648820100
+    },
+    "candidate": {
+      "requests": 310,
+      "nodes": 37871990,
+      "elapsedNanos": 63596141600
+    }
+  },
+  "cpuSeconds": {
+    "baseline": 76.28125,
+    "candidate": 76.71875
+  },
+  "peakWorkingSetBytes": {
+    "baseline": 361783296,
+    "candidate": 315461632
+  },
+  "forecast32PairsSeconds": 2073.239425599997,
+  "forecast128PairsSeconds": 8292.957702399988
+}

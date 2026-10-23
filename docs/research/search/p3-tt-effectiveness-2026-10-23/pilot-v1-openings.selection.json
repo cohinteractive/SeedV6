@@ -1,0 +1,19 @@
+{
+  "source": "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\openings\\sr021-bjbraams\\legal16-v1.pgn",
+  "sourceSha256": "eaf3c706dc6038d18a05c8608417a5ee2e3e43438487d73bbf2c7191183db42f",
+  "seed": 2026102301,
+  "partition": 0,
+  "availableDistinctPositions": 20109,
+  "count": 2,
+  "outputSha256": "5b00f999570e3a9c13f0cfc614f50f0ff34a548a83d52f923e9c07f65cef87dd",
+  "positionKeys": [
+    "r1bq1rk1/ppp1npbp/3ppnp1/8/3P1B2/4PN1P/PPPNBPP1/R2Q1RK1 w - -",
+    "r3k2r/pp1qbppp/2npbn2/2p1p3/2B1P3/2NPN3/PPP2PPP/R1BQK2R w KQkq -"
+  ],
+  "excludedSelections": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\clock-development-exclusions.json": "5a18efc93241b36ec73aaccc9261b7f96fdc0d0ae7fe32e690247628d0570b14",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-construction-2026-10-20\\baseline-cp64\\openings.selection.json": "a306625ecd3b88b871f8d484084c0ac9d1c87b9b7c3a6dc8281c4e479e799700"
+  },
+  "excludedDistinctPositions": 438,
+  "selection": "sha256(final FEN first four fields) mod 2; sorted unique keys; Python random.sample"
+}

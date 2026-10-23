@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "correctedPremise": "No-argument standard UciMain is selected Construction V1. Explicit --nnue is preserved recursive historical opt-in.",
+  "priorFailedQualificationSha256": "e81223ef4b67c16dfab01114ed1fef981f4dc836256009d11d30fe345d00be9c",
+  "qualificationSha256": "8005ba9c2983b4884d19d6b7732189c07f737f899b96e7feda4c7ba85a12f23c",
+  "checks": {
+    "research": {
+      "identity": [
+        "id name SeedV6 TT effectiveness research baseline",
+        "id author Charles Clark",
+        "option name Threads type spin default 1 min 1 max 16",
+        "option name Hash type spin default 64 min 1 max 1024",
+        "option name Clear Hash type button",
+        "option name UseBook type check default false",
+        "option name OwnBook type check default false",
+        "info string mode=research experimental=true profile=baseline evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=262143 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=WIDEN16;parallel=OWNER book=OFF tablebase=OFF warmupNodes=200000 warmupWorkers=1 ttMiB=64",
+        "uciok"
+      ],
+      "requests": [
+        {
+          "nodes": 100000,
+          "elapsedNanos": 205519100,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 7 score cp 78 nodes 63457 time 135 nps 469214 pv e2e4 e7e5 g1f3 b8c6 d2d4 e5d4 f3d4 f8c5"
+        },
+        {
+          "nodes": 100000,
+          "elapsedNanos": 275343200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "c2c3",
+          "finalInfo": "info depth 6 score cp -64 nodes 79244 time 187 nps 421834 pv c2c3 e8g8 c3d4 e5d4 c1f4 e7c6"
+        },
+        {
+          "nodes": 100000,
+          "elapsedNanos": 293299500,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 6 score cp -36 nodes 24457 time 111 nps 220057 pv e2e4 e5f4 g3f4 c8g4 a3c2 f6h5"
+        }
+      ]
+    },
+    "ordinary": {
+      "identity": [
+        "id name SeedV6 Construction V1 NNUE CP64 0.0.0 (build 69)",
+        "id author Charles Clark",
+        "option name Threads type spin default 1 min 1 max 16",
+        "option name Hash type spin default 64 min 1 max 1024",
+        "option name Clear Hash type button",
+        "option name UseBook type check default false",
+        "option name OwnBook type check default false",
+        "info string baseline=construction-v1-cp64 search=construction-v1 flags=262143 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=WIDEN16;parallel=OWNER evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 score=side-to-move-cp build=69 source=09e126a49b43 (uncommitted changes) ttMiB=64",
+        "uciok"
+      ],
+      "requests": [
+        {
+          "nodes": 100000,
+          "elapsedNanos": 500844100,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 7 score cp 78 nodes 63457 time 421 nps 150408 pv e2e4 e7e5 g1f3 b8c6 d2d4 e5d4 f3d4 f8c5"
+        },
+        {
+          "nodes": 100000,
+          "elapsedNanos": 281311400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "c2c3",
+          "finalInfo": "info depth 6 score cp -64 nodes 79244 time 209 nps 377476 pv c2c3 e8g8 c3d4 e5d4 c1f4 e7c6"
+        },
+        {
+          "nodes": 100000,
+          "elapsedNanos": 226851400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 6 score cp -36 nodes 24457 time 87 nps 278350 pv e2e4 e5f4 g3f4 c8g4 a3c2 f6h5"
+        }
+      ]
+    }
+  },
+  "baselineParity": true,
+  "requestsPerActivation": 3
+}

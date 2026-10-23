@@ -1,0 +1,22 @@
+{
+  "id": "P3-TT-DEEPER-v1",
+  "frozenBeforeExecution": true,
+  "question": "Does the full-window consumer opportunity persist at deeper requests and four workers on different real-history development roots?",
+  "rationale": "Followup-v1 D6 full-window nodes were 0.805 of WIDEN16, but 250k-node requests did not complete more depth. This is mixed mechanism evidence, not a stronger candidate. Test depth/resource/worker interactions before substantial clock confirmation.",
+  "runtime": "raw/runtime-v1",
+  "runtimeBinding": "diagnostic-v1-binding.json",
+  "model": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "corpus": "docs/research/search/p3-sr002-execution-2026-10-19/confirmation-corpus.tsv",
+  "sampling": "First twelve roots in the historical SR-002 corpus, full supplied histories. Different from the current twelve opening roots; historical provenance is retained. This is fresh for this workstream but remains development, not independent strength confirmation.",
+  "experiments": [{"name":"deeper-w1-v1","workers":1},{"name":"deeper-w4-v1","workers":4}],
+  "depth": 8,
+  "nodeBudget": 2000000,
+  "roots": 12,
+  "warmups": 1,
+  "rounds": 2,
+  "profiles": "baseline,full",
+  "jvm": ["--add-modules=jdk.incubator.vector", "-Djava.awt.headless=true", "-Xms256m", "-Xmx768m", "-XX:ActiveProcessorCount=4"],
+  "analysis": "All measured/capped requests retained; paired root/round total and geometric ratios. Equal target depth does not imply equal searched tree or strength. If caps prevent completed-depth comparison, report separate completion and work, not a fake fixed-depth speedup. No retuning/sample extension. Selective score/move differences are retained with legal PV validation. Whole request nodes/CPU/time include retries, aborted work and drain.",
+  "resources": "Sequential BelowNormal owned Java processes, existing tournament-process ownership/wait helper. No concurrent benchmark/clock process. Per-JVM watchdog 20 minutes; per-request 60 seconds. Estimated 3-10 minutes, uncertain. Native owned-process CPU and Java heap/allocation captured; no new memory policy. Preserve failures.",
+  "decision": "A conditional full-window candidate warrants an economical paired clock development screen if it remains credible across relevant domains, even when diagnostics are mixed. Diagnostic superiority is never sufficient for strength acceptance. Binding TT decisions and production WIDEN16 remain unchanged."
+}

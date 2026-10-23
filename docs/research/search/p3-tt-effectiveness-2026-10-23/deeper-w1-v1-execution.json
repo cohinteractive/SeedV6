@@ -1,0 +1,35 @@
+{
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx768m",
+    "-XX:ActiveProcessorCount=4",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\runtime-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\runtime-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.ConstructionTtStudy",
+    "build-assets/nnue-candidate/conventional-cp64.cnnue",
+    "docs/research/search/p3-sr002-execution-2026-10-19/confirmation-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\deeper-w1-v1.jsonl",
+    "1",
+    "1",
+    "2",
+    "8",
+    "2000000",
+    "12",
+    "cost",
+    "baseline,full"
+  ],
+  "priority": "BelowNormal inherited from executor",
+  "status": "passed",
+  "exitCode": 0,
+  "wallSeconds": 109.93961180000042,
+  "ownedProcessesRemaining": 0,
+  "totalOwnedProcesses": 1,
+  "totalOwnedCpuSeconds": 116.125,
+  "evidence": {
+    "raw\\deeper-w1-v1.jsonl": "7f32534d266a215119baeb1028c8c6b126a6f3aafedcc2558412e4e56ea70c54",
+    "raw\\deeper-w1-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

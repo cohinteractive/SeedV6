@@ -1,0 +1,49 @@
+{
+  "experiment": "observe-v1",
+  "bindingSha256": "aa62937f485300d3b0ebbb9023111af1622ab1f5d516271cf3026b3a15eef8f3",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx768m",
+    "-XX:ActiveProcessorCount=4",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\runtime-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\runtime-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.ConstructionTtStudy",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-construction-2026-10-20\\diagnostic-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\observe-v1.jsonl",
+    "1",
+    "0",
+    "1",
+    "8",
+    "250000",
+    "12",
+    "observe",
+    "baseline,hash1"
+  ],
+  "startedUtc": "2026-10-23T02:32:39.003921+00:00",
+  "priority": "BelowNormal",
+  "nativeAccountingSource": "C:\\projects\\seed\\java\\seedv6-unified\\tools\\sr036-process-cost.py",
+  "nativeAccountingSha256": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+  "exitCode": 0,
+  "nativeLifetime": {
+    "creationTicks": 134371963590048819,
+    "createdUtc": "2026-10-23T02:32:39.004883+00:00",
+    "exitCode": 0,
+    "exitedUtc": "2026-10-23T02:33:04.069057+00:00",
+    "kernelCpuSeconds": 0.875,
+    "userCpuSeconds": 28.65625,
+    "totalCpuSeconds": 29.53125
+  },
+  "peakWorkingSetBytes": 542527488,
+  "peakPagefileBytes": 579731456,
+  "status": "passed",
+  "elapsedSeconds": 25.10018409999975,
+  "finishedUtc": "2026-10-23T02:33:04.104257+00:00",
+  "evidence": {
+    "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\observe-v1.jsonl": "9ad26271d12af7bd2402299795c6c5b3b765b1c92ffb8761a867adf76e33d5a1",
+    "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\observe-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

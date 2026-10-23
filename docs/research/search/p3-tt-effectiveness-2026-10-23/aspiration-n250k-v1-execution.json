@@ -1,0 +1,49 @@
+{
+  "experiment": "aspiration-n250k-v1",
+  "bindingSha256": "8ba61900fdb1baec989051030ae2f298a94b17fd057c1d335380a0b1fbc171a2",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx768m",
+    "-XX:ActiveProcessorCount=4",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\followup-v1-runtime\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\followup-v1-runtime\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.ConstructionTtStudy",
+    "build-assets/nnue-candidate/conventional-cp64.cnnue",
+    "docs/research/search/p3-construction-2026-10-20/diagnostic-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\aspiration-n250k-v1.jsonl",
+    "1",
+    "1",
+    "3",
+    "40",
+    "250000",
+    "12",
+    "cost",
+    "baseline,hints-off,full,hints-off-full"
+  ],
+  "startedUtc": "2026-10-23T02:43:04.668557+00:00",
+  "priority": "BelowNormal",
+  "nativeAccountingSource": "C:\\projects\\seed\\java\\seedv6-unified\\tools\\sr036-process-cost.py",
+  "nativeAccountingSha256": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+  "exitCode": 0,
+  "nativeLifetime": {
+    "creationTicks": 134371969846697181,
+    "createdUtc": "2026-10-23T02:43:04.669718+00:00",
+    "exitCode": 0,
+    "exitedUtc": "2026-10-23T02:44:31.152367+00:00",
+    "kernelCpuSeconds": 1.015625,
+    "userCpuSeconds": 90.328125,
+    "totalCpuSeconds": 91.34375
+  },
+  "peakWorkingSetBytes": 506171392,
+  "peakPagefileBytes": 587071488,
+  "status": "passed",
+  "elapsedSeconds": 86.50955270000031,
+  "finishedUtc": "2026-10-23T02:44:31.178319+00:00",
+  "evidence": {
+    "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\aspiration-n250k-v1.jsonl": "dedbac7b2328e268a3acfe06770fb07d440ba304c9f646526770450fed86febd",
+    "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\aspiration-n250k-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "scopes": {
+    "followup-tests-v1": [
+      {
+        "path": "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\followup-tests-v1\\TEST-com.ohinteractive.seedv6.search.exact.ConstructionTtStudyTest.xml",
+        "sha256": "c9daad1d2827bb918cff30a6f65694a647770f2ed2da6b6af0ba91b2667f5596",
+        "suite": {
+          "name": "com.ohinteractive.seedv6.search.exact.ConstructionTtStudyTest",
+          "tests": "3",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-10-23T02:41:25",
+          "hostname": "DESKTOP-TQLS4KP",
+          "time": "0.599"
+        }
+      }
+    ],
+    "full-window-tests-v1": [
+      {
+        "path": "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\full-window-tests-v1\\TEST-com.ohinteractive.seedv6.search.exact.ConstructionTtFullWindowTest.xml",
+        "sha256": "a090407ce1b1ca3ce826bf7d33acd959975fcdb4c2e002ed5ab076fdaff1e546",
+        "suite": {
+          "name": "com.ohinteractive.seedv6.search.exact.ConstructionTtFullWindowTest",
+          "tests": "2",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-10-23T02:51:18",
+          "hostname": "DESKTOP-TQLS4KP",
+          "time": "5.484"
+        }
+      }
+    ]
+  },
+  "limits": "Full-window correctness only; no proof change, no GUI/Mac acceptance or global unrelated test-suite claim. UCI v1 failed comparator qualification is preserved separately; v2 corrected activation passes.",
+  "buildLog": {
+    "path": "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\uci-build-v1.log",
+    "sha256": "3f4d2369321d7149b6d5da7850f217fdef0597a5e4bf8a998a69a45bc1f7e82e",
+    "result": "BUILD SUCCESSFUL; research workspace and boundaries verified, existing full-window tests up-to-date; actual prior XML retained above."
+  }
+}
