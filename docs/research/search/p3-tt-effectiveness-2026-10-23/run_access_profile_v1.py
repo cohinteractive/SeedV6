@@ -21,7 +21,9 @@ if not k.SetPriorityClass(k.GetCurrentProcess(),0x4000):raise ctypes.WinError(ct
 protocol=json.loads((HERE/'access-profile-v1.json').read_text())
 runtime=HERE/protocol['runtime'];prior=json.loads((HERE/protocol['runtimeBinding']).read_text())
 assert all(digest(p)==sha for p,sha in prior['files'].items())
-settings=HERE/'raw/access-profile-v1.jfc';shutil.copyfile('C:/java/jdk-21/lib/jfr/profile.jfc',settings)
+settings=HERE/'raw/access-profile-v1.jfc'
+assert not settings.exists(), 'No replay or overwrite of this profile protocol'
+shutil.copyfile('C:/java/jdk-21/lib/jfr/profile.jfc',settings)
 events=['jdk.ExecutionSample','jdk.NativeMethodSample','jdk.JavaMonitorEnter','jdk.ThreadPark']
 settingsValues={e.attrib['name']:{s.attrib['name']:s.text for s in e} for e in ET.parse(settings).getroot().findall('event') if e.attrib['name'] in events}
 jfr='C:/java/jdk-21/bin/jfr.exe';java='C:/java/jdk-21/bin/java.exe'
