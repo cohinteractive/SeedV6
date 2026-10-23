@@ -21,7 +21,7 @@ import uuid
 import zipfile
 
 import packaging_jdk
-from native_package_checks import UCI_MODULES, NNUE_LAUNCHER, NNUE_MAIN
+from native_package_checks import UCI_MODULES, NNUE_LAUNCHER, NNUE_MAIN, CP64_PRODUCTION_FLAGS, verify_baseline_identity
 
 ROOT = Path(__file__).resolve().parents[1]
 APPS = {'gui': ('SeedV6-GUI', 'com.ohinteractive.seedv6.gui.SwingLauncher'),
@@ -213,6 +213,7 @@ def build_image(context, application, stage, jars):
     require(identity['model.sha256'] == sha(model), 'Model differs from canonical engine-core identity.')
     require(all(identity.get(key) == value for key, value in production_manifest()['identity'].items()),
             'Production asset manifest differs from authoritative engine-core model identity.')
+    verify_baseline_identity(identity.get('baseline.identity', ''), 1, 64)
     require(identity['version'] == '.'.join(str(context['version'][n]) for n in ('major', 'minor', 'patch'))
             and identity['build'] == str(context['version']['build']), 'Embedded application version differs from authority.')
     # Keep stamps in a separate tiny resource JAR; never rewrite shared engine-core.jar.
@@ -394,7 +395,7 @@ def package(a):
         native = verify_runtime(context, a.application, image, stage)
         engine = {'model': identity, 'coreJarSha256': sha(app / 'engine-core.jar'),
                   'coreContent': core_content(app / 'engine-core.jar'),
-                  'productionSearch': {'profile': 'construction-v1', 'flags': 262143,
+                  'productionSearch': {'profile': 'construction-v1', 'flags': CP64_PRODUCTION_FLAGS,
                      'evaluator': 'Conventional NNUE CP64', 'schema': 'S6CNU002', 'materialHeads': 8,
                      'configuration': identity['baseline.identity']},
                   'coreInputs': {n: v for n, v in context['source']['files'].items()

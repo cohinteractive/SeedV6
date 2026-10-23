@@ -12,11 +12,48 @@ UCI_MODULES = ('java.base', 'jdk.incubator.vector')
 NNUE_LAUNCHER = 'SeedV6-NNUE-CP64'
 NNUE_MAIN = 'com.ohinteractive.seedv6.uci.NnueCandidateUciMain'
 VECTOR_WARNING = 'WARNING: Using incubator modules: jdk.incubator.vector'
+# Owner-accepted P3-R028/P3-F028 CP64 production configuration. These are verifier
+# expectations, independent of the candidate's output and embedded model manifest.
+# HCE, BREP2-32, unrelated conventional payloads and historical E008 are separate.
+CP64_PRODUCTION_FLAGS = 3407871
 
 
 def check(ok, message):
     if not ok:
         raise RuntimeError(message)
+
+
+def verify_baseline_identity(identity, workers, hash_mib):
+    configuration = ('flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,'
+                     'CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,'
+                     'CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,'
+                     'HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;'
+                     f'extensionCap=1;workers={workers};hashMiB={hash_mib};aspiration=ADAPTIVE16;'
+                     f'parallel={"OWNER" if workers == 1 else "ROOT_REUSE"}')
+    expected = {'baseline': 'construction-v1-cp64', 'search': 'construction-v1',
+                'flags': str(CP64_PRODUCTION_FLAGS), 'configuration': configuration,
+                'evaluator': 'CONVENTIONAL_NNUE', 'checkpoint': '64', 'schema': 'S6CNU002', 'heads': '8',
+                'networkSha256': '8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b',
+                'payload': '5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6',
+                'scoreMapping': 'BT4_Q_LOGIT400_V1', 'score': 'side-to-move-cp'}
+    # Exact, unique fields on one identity; substring matches could accept a wrong
+    # flag suffix or borrow an expected value from unrelated diagnostic output.
+    fields = [field.partition('=') for field in identity.split()]
+    for key, value in expected.items():
+        observed = [actual for name, separator, actual in fields if name == key and separator]
+        check(observed == [value], f'Wrong baseline search/evaluator identity: {key} '
+              f'expected {value!r}, observed {observed!r}')
+
+
+def verify_uci_identity(handshake, workers, hash_mib):
+    check(any(line.startswith('id name SeedV6 Construction V1 NNUE CP64 ') for line in handshake), 'Wrong UCI identity')
+    for option in ('Threads type spin default 1 min 1 max 16', 'Hash type spin default 64 min 1 max 1024',
+                   'Clear Hash type button', 'UseBook type check default false', 'OwnBook type check default false'):
+        check('option name ' + option in handshake, 'Wrong or missing UCI option ' + option)
+    identities = [line.removeprefix('info string ') for line in handshake
+                  if line.startswith('info string baseline=')]
+    check(len(identities) == 1, 'Expected exactly one baseline search/evaluator identity')
+    verify_baseline_identity(identities[0], workers, hash_mib)
 
 
 def verify_dependencies(application, app, modules, target):
@@ -213,18 +250,10 @@ def verify_uci(launcher, stage, env, model):
         engine = Engine([launcher], cwd, env, allowed_stderr=('WARNING: Using incubator modules: jdk.incubator.vector',))
         try:
             engine.send('uci'); handshake = engine.until('uciok')
-            check(any(line.startswith('id name SeedV6 Construction V1 NNUE CP64 ') for line in handshake), 'Wrong UCI identity')
-            for option in ('Threads', 'Hash', 'Clear Hash'):
-                check(any('option name ' + option + ' ' in line for line in handshake), 'Missing option ' + option)
-            for option in ('UseBook', 'OwnBook'):
-                check(f'option name {option} type check default false' in handshake, 'Missing book alias ' + option)
+            verify_uci_identity(handshake, 1, 64)  # Cold default, before any option can repair a bad selection.
             engine.send(f'setoption name Threads value {workers}\nsetoption name Hash value 8\nsetoption name Clear Hash\nisready')
             engine.until('readyok')
-            engine.send('uci'); identity = '\n'.join(engine.until('uciok'))
-            check(f'workers={workers};hashMiB=8' in identity and 'search=construction-v1' in identity
-                  and 'checkpoint=64 schema=S6CNU002 heads=8' in identity and 'flags=262143' in identity
-                  and 'aspiration=ADAPTIVE16' in identity, 'Wrong baseline search/evaluator identity')
-            check('parallel=' + ('OWNER' if workers == 1 else 'ROOT_REUSE') in identity, 'Worker policy differs')
+            engine.send('uci'); verify_uci_identity(engine.until('uciok'), workers, 8)
             for go in ('depth 3', 'movetime 100', 'wtime 5000 btime 5000 winc 20 binc 20 movestogo 20'):
                 engine.send('ucinewgame\nposition startpos\ngo ' + go)
                 lines = engine.until('bestmove ')

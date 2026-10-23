@@ -15,6 +15,32 @@ import native_packaging as p
 import native_package_checks as checks
 
 
+# Independent accepted CP64 fixture: never assembled from verifier constants or
+# from the runtime being checked. HCE/BREP2 and historical E008 are not this default.
+def cp64_identity(workers=1, hash_mib=64):
+    return ('baseline=construction-v1-cp64 search=construction-v1 flags=3407871 '
+            'configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,'
+            'CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,'
+            'CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,'
+            'HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;'
+            f'extensionCap=1;workers={workers};hashMiB={hash_mib};aspiration=ADAPTIVE16;'
+            f'parallel={"OWNER" if workers == 1 else "ROOT_REUSE"} '
+            'evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 '
+            'networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b '
+            'payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 '
+            'head=scalar-long scoreMapping=BT4_Q_LOGIT400_V1 score=side-to-move-cp build=74 source=fixture')
+
+
+def cp64_handshake(identity=None):
+    return ['id name SeedV6 Construction V1 NNUE CP64 0.0.0 (build 74)',
+            'option name Threads type spin default 1 min 1 max 16',
+            'option name Hash type spin default 64 min 1 max 1024',
+            'option name Clear Hash type button',
+            'option name UseBook type check default false',
+            'option name OwnBook type check default false',
+            'info string ' + (cp64_identity() if identity is None else identity), 'uciok']
+
+
 class PackagingSafety(unittest.TestCase):
     def setUp(self):
         root = p.ROOT / 'build/packaging/tests'; root.mkdir(parents=True, exist_ok=True)
@@ -23,6 +49,57 @@ class PackagingSafety(unittest.TestCase):
 
     def tearDown(self):
         self.temp.cleanup()
+
+    def test_cp64_identity_accepts_supported_workers_hash_and_backends(self):
+        for workers in range(1, 17):
+            for hash_mib in (1, 8, 64, 1024):
+                for backend in ('scalar-long', 'vector-128-long', 'vector-256-long'):
+                    checks.verify_baseline_identity(cp64_identity(workers, hash_mib).replace(
+                        'head=scalar-long', 'head=' + backend), workers, hash_mib)
+
+    def test_cp64_identity_rejects_stale_or_wrong_search_and_evaluator(self):
+        for old, new in (
+                ('flags=3407871', 'flags=262143'), ('flags=3407871', 'flags=34078710'),
+                ('baseline=construction-v1-cp64', 'baseline=construction-v1-BREP2_32'),
+                ('search=construction-v1', 'search=E008_QXRAY_LMR_WINDOW_EFFORT_HINTS'),
+                ('flat-pvs-v1[', 'recursive-pvs['), (',NOMINAL_FUTILITY', ''), (',VERIFIED_NULL', ''),
+                ('futility=100d', 'futility=101d'), ('aspiration=ADAPTIVE16', 'aspiration=WIDEN16'),
+                ('parallel=OWNER', 'parallel=ROOT_REUSE'), ('workers=1;', 'workers=4;'),
+                ('hashMiB=64;', 'hashMiB=8;'), ('evaluator=CONVENTIONAL_NNUE', 'evaluator=HCE'),
+                ('evaluator=CONVENTIONAL_NNUE', 'evaluator=BREP2_32'), ('checkpoint=64', 'checkpoint=32'),
+                ('schema=S6CNU002', 'schema=S6CNU001'), ('heads=8', 'heads=1'),
+                ('networkSha256=843', 'networkSha256=943'), ('payload=5da', 'payload=6da'),
+                ('scoreMapping=BT4_Q_LOGIT400_V1', 'scoreMapping=OTHER'),
+                ('score=side-to-move-cp', 'score=white-cp')):
+            with self.subTest(field=old), self.assertRaisesRegex(RuntimeError, 'baseline search/evaluator identity'):
+                checks.verify_baseline_identity(cp64_identity().replace(old, new), 1, 64)
+        for identity in (cp64_identity().replace('flags=3407871 ', ''), cp64_identity() + ' flags=262143'):
+            with self.assertRaisesRegex(RuntimeError, 'baseline search/evaluator identity'):
+                checks.verify_baseline_identity(identity, 1, 64)
+
+    def test_uci_identity_cannot_borrow_fields_from_other_protocol_lines(self):
+        checks.verify_uci_identity(cp64_handshake(), 1, 64)
+        bad = cp64_handshake(cp64_identity().replace('flags=3407871', 'flags=262143'))
+        bad.insert(-1, 'info string flags=3407871')
+        for lines in (bad, cp64_handshake() + ['info string ' + cp64_identity()],
+                      [line for line in cp64_handshake() if not line.startswith('info string baseline=')]):
+            with self.assertRaises(RuntimeError):
+                checks.verify_uci_identity(lines, 1, 64)
+        for option in ('Threads', 'Hash'):
+            bad = [line.replace('max 16', 'max 1') if option == 'Threads' else line.replace(
+                'default 64', 'default 8') for line in cp64_handshake()]
+            with self.assertRaisesRegex(RuntimeError, 'option'):
+                checks.verify_uci_identity(bad, 1, 64)
+
+    def test_native_gate_checks_cold_default_before_setting_options(self):
+        for identity in (cp64_identity().replace('flags=3407871', 'flags=262143'), cp64_identity(1, 8)):
+            with patch.object(checks, 'Engine') as engine_class:
+                engine = engine_class.return_value
+                engine.until.return_value = cp64_handshake(identity)
+                with self.assertRaisesRegex(RuntimeError, 'baseline search/evaluator identity'):
+                    checks.verify_uci(self.work / 'launcher', self.work, {}, self.work / 'model')
+                self.assertEqual([('uci',)], [call.args for call in engine.send.call_args_list])
+                engine.kill.assert_called_once()
 
     def test_sha256_vectors_and_chunk_boundaries(self):
         payload = self.work / 'hash input with spaces'
@@ -151,7 +228,8 @@ class PackagingSafety(unittest.TestCase):
             jar = self.work / name; jar.write_bytes(b'fixture-only'); jars.append(jar)
         context = {'platform': platform, 'model': str(model), 'modelSha256': p.sha(model), 'jdk': str(self.work / 'jdk'),
                    'version': {'major': 0, 'minor': 0, 'patch': 0, 'build': 35}}
-        identity = {'model.sha256': p.sha(model), 'version': '0.0.0', 'build': '35'}
+        identity = {'model.sha256': p.sha(model), 'version': '0.0.0', 'build': '35',
+                    'baseline.identity': cp64_identity()}
         commands = []
         def native(command, **kwargs):
             commands.append(command)
@@ -246,6 +324,18 @@ class PackagingSafety(unittest.TestCase):
         with patch.object(p, 'model_probe', return_value=identity):
             with self.assertRaisesRegex(RuntimeError, 'authoritative engine-core model identity'):
                 p.build_image(context, 'uci', self.work, [])
+
+    def test_gui_and_uci_reject_wrong_baseline_even_with_valid_legacy_model(self):
+        model = p.ROOT / 'build-assets/production' / p.production_manifest()['payload']
+        context = {'platform': 'windows', 'model': str(model), 'modelSha256': p.sha(model)}
+        for app in ('gui', 'uci'):
+            stage = self.work / app; stage.mkdir()
+            identity = dict(p.production_manifest()['identity'], **{
+                'baseline.identity': cp64_identity().replace('flags=3407871', 'flags=262143')})
+            with patch.object(p, 'model_probe', return_value=identity), patch.object(p, 'run') as native:
+                with self.assertRaisesRegex(RuntimeError, 'baseline search/evaluator identity'):
+                    p.build_image(context, app, stage, [])
+                native.assert_not_called()
 
 
 if __name__ == '__main__':

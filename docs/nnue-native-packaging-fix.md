@@ -1,5 +1,9 @@
 # Conventional NNUE native packaging repair
 
+The [24 October Build 74 identity repair](#build-74-production-identity-repair---24-october-2026)
+below records the subsequent CP64 selectivity packaging regression. Earlier
+platform results and version/acceptance statements retain their historical scope.
+
 Current consolidation (23 October 2026): the normal competitive baseline is now
 Construction V1 + Conventional NNUE CP64; see the
 [construction qualification record](research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026).
@@ -122,3 +126,119 @@ remain separate owner actions. No training, tournament, network activity,
 full-suite execution, fresh strength claim, installation replacement or live
 BotLi configuration change was performed. Review/commit is the remaining source
 integration step; keep the complete image together when using either executable.
+
+## Build 74 production identity repair - 24 October 2026
+
+Bounded remediation of accepted `d9a91cbe8b52caf6f3031e17d2ea5561c1064fa0`,
+starting from clean `main`, version 0.0.0 build 74. The owner reports both Project
+Source mirrors synchronized to P3-R028/P3-F028. No new research is admitted.
+
+### Diagnosis and correction
+
+`gradle/native-packaging.gradle:24-34` invokes `tools/native_packaging.py package`;
+line 34 propagates the Python exit, not the defect. In the starting revision,
+`native_package_checks.py:225` still required `flags=262143`, and
+`native_packaging.py:397` wrote the same obsolete `productionSearch.flags` into
+both manifests. These were packaging-local literals, not values supplied by
+Gradle, the production model manifest or the packaged engine.
+
+The exact unmodified `gradlew.bat packageWindows --console=plain` reproduced
+successful preflight, UCI failure `Wrong baseline search/evaluator identity`,
+and GUI `VERIFIED_LOCAL_CANDIDATE`. The retained failing candidate is
+`candidate-20261023T195311-29a5200e`; its failed UCI image is under
+`releases/candidates/windows-x64/.staging-candidate-20261023T195311-29a5200e-a765f92889e242258875d99fde9d23a6/`.
+
+Directly starting that image's `SeedV6-UCI.exe` with no arguments and empty PATH
+reported the correct default: `baseline=construction-v1-cp64`,
+`search=construction-v1`, **flags3407871**, flattened original18 plus
+NOMINAL_FUTILITY/VERIFIED_NULL, ADAPTIVE16, workers1/Hash64 (Hash8 after setting it),
+CONVENTIONAL_NNUE, checkpoint64, S6CNU002/eight heads, BT4_Q_LOGIT400_V1.
+Network SHA-256 is `8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b`;
+payload SHA-256 is `5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6`.
+
+The actual config selects `com.ohinteractive.seedv6.uci.UciMain` with exactly
+`app-uci.jar` and `engine-core.jar`. `UciMain:16` selects
+`BaselineUciConfiguration.load`, which delegates to `BaselineEngine.load`;
+`BaselineEngine:42-52` correctly binds adoption to frozen CP64. The companion
+`SeedV6-NNUE-CP64` remains the separate recursive E008 comparison launcher.
+`native_packaging.layouts` / `verify_runtime` select the ordinary launcher for
+both platforms and call the same `verify_uci` function. Thus macOS has the same
+stale assertion, although its reported failure was not executed on this Windows host.
+
+The correction is limited to the two Python packaging modules and their tests:
+
+- Pin flags3407871 and the complete accepted Search/evaluator identity independently
+  of candidate output. Require exact unique fields from one baseline identity,
+  including configuration, network/payload hashes and score mapping; diagnostics
+  cannot supply missing fields or conceal a different identity.
+- Check the actual UCI cold default before setting any options, then recheck
+  configured workers/Hash. Keep protocol, legal-move, lifecycle, dependency,
+  model rejection, archive and relocation gates intact.
+- Independently verify the baseline probe for GUI and UCI before assembly, and
+  write the same pinned production flags into both package manifests. The retained
+  BREP2 asset manifest is still checked separately, not relabelled as CP64.
+- Add five focused tests with independent accepted fixtures and negative changes
+  to flags, configuration, evaluator, network, mapping, options, duplicate/missing
+  fields, diagnostic contamination and cold defaults. Valid legacy model metadata
+  cannot authorize an obsolete baseline in either application.
+
+No Java source, mechanism, evaluator, TT policy, runtime closure or launcher
+recipe changed. HCE/BREP2-32/unrelated conventional payloads still use flags262143;
+explicit historical Construction and E008 identities remain separate.
+
+### Executed validation and evidence
+
+All new raw evidence is local under `build/packaging/identity-repair-20261024/`;
+these files and candidate paths were present and verified ignored before staging.
+They are not available from a fresh checkout. Failed evidence is retained.
+
+| Check | Result / evidence |
+| --- | --- |
+| Before repair | Exact Windows task fails as reported; `before-packageWindows.log`, `before-runtime.json`. |
+| Portable Python tests | 22 packaging + 10 JDK-selection tests pass on Python 3.13.4; `packaging-tests.log`, `jdk-tests.log`. New regression tests were also run before implementation (`regression-before.log`, failing). Windows and macOS assembly fixtures pass; Python 3.9 runtime was not available/executed. |
+| After repair | Exact `gradlew.bat packageWindows --console=plain` passes, including native preflight, both application tasks and coordinated identity comparison; `after-packageWindows.log`. |
+| Native UCI / extracted ZIP | Each passes 63 searches at workers1/4/16, cold Hash64, configured Hash8, depth/timed/clocks/stop/book/position/quit/EOF/termination and damaged-model rejection. Each companion E008 passes nine searches with normal/scalar/module-absent equivalence. |
+| All native worker options | 32 completed depth3 searches at every worker1-16 with Hash1 and Hash64; identities, legal starting moves, Clear Hash, stop/quit, and invalid Threads0/17 / Hash0/1025 rejection with prior settings retained pass. `verify-native-workers.py`, `native-all-workers.json`. |
+| Java/build | 183 engine-core + 20 UCI + four selected GUI + two selected Arena tests pass, no failures/skips. `assemble` and UCI `installDist` pass. `java-validation.log`, `java-test-summary.json`. |
+| GUI packaging | Original/extracted headless resources, JNI, module/classpath closure and baseline identity pass; no interactive GUI walkthrough. |
+| Preservation | Before/after core JAR entries differ only in generated `application-version.properties` (dirty-source provenance); Search classes and model bytes are identical. `candidate-summary.json`. |
+| macOS | Shared logic and portable assembly fixtures pass on Windows. No native macOS task or executable was run; independent Apple Silicon validation remains required. |
+
+Java command (worktree-local Gradle home, two workers, no downloads):
+
+```text
+gradlew.bat --gradle-user-home build/migration/gradle-user-home --offline --no-daemon --max-workers=2 --console=plain :engine-core:test :app-uci:test :app-gui:test --tests '*BaselineScoreTest' --tests '*ConstructionGameplayTest' :engine-training:test --tests '*BaselineArenaTest' --tests '*ConstructionArenaTest' assemble :app-uci:installDist -Pheadless -PconventionalVectorTests
+```
+
+The full root integration/research suite was not rerun for this packaging-only
+change. The adoption record's three inherited supplemental failures in
+EngineSearchAdapterTest/LearningArenaLifecycleTest are not remediated or claimed
+passing here. The optional `verify_cp64_production.py` distribution harness was
+not run (default Python lacks `chess`); native all-worker checks above and the
+Java UCI suite supply the relevant configuration coverage without that dependency.
+
+Successful coordinated candidate: **candidate-20261023T195552-c00e3315**.
+UCI image/archive/receipts are under `releases/candidates/windows-x64/` plus that
+ID; GUI equivalents are under `dist/windows/candidates/` plus that ID. Both
+core JAR hashes are `facac0db65c7f97a120083174ea4de20ef210daf3252a79a3fd5eb2cac99e6f7`.
+UCI archive SHA-256: `0e5ae5d3e66599aa172e1cbb503955904d6a860290985de1df422610ad95bf9d`.
+GUI archive SHA-256: `9bb3f9fefbad035149106bbf1339f31cbd4de8124a59f8b6fca552f59d8b80f4`.
+Manifests truthfully record d9a91cbe8b52 plus the three uncommitted tooling/test
+changes at packaging time. They are not relabelled as clean final-commit artifacts;
+this report was added afterward. Full receipts retain hashes and transcripts.
+
+### Completion boundary
+
+This is verification/metadata repair for the existing accepted application, with
+no new application build warranted: `VERSION_STATE.txt` remains byte-identical
+at **0.0.0 build74**. One attributable commit contains the tooling, tests and this
+record. No finalizer is used; root CODEXLOG_CURRENT.md is absent and not created.
+Neither Phase 3 master changes; **PROJECT_SOURCE_REFRESH_REQUIRED: NO**.
+No push, deployment, external GUI/BotLi installation or successor CGLHW occurs.
+
+Human actions required after this prompt:
+
+- Run `./gradlew packageMac` from the repair commit on supported Apple Silicon
+  macOS and retain its candidate receipts/transcripts. This blocks macOS runtime
+  acceptance only; it does not block completion of this Windows-validated repair.
+  Prior Mac packaging results above do not certify the repaired revision.
