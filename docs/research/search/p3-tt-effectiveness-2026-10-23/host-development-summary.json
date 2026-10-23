@@ -1,0 +1,57 @@
+{
+  "status": "recorded",
+  "files": {
+    "raw/host-cpu-development-start.json": "14ac2ac50f32576d4a3f507923865ad71fe42333d31a200035c845f08c984aa4",
+    "raw/host-cpu-development-mid.json": "4da8e25ec294a80bbd4d57bca99b969f630cda1a468e6afb384471e6b6d667d1",
+    "raw/host-cpu-w4-start.json": "8ebad499583f0ea348f4c9ceb767dd834113bebe55ac74c0ccdc06dfc6b83d52",
+    "raw/host-cpu-w4-end.json": "e5369e2bb683b5395a760eb3813a499463df6fb9c92f02ca694b909248ec1af5"
+  },
+  "w1MidWindow": {
+    "observedUtc": "2026-10-23T03:36:17Z",
+    "ticks100ns": {
+      "idle": 674877187500,
+      "kernelIncludingIdle": 706902031250,
+      "user": 89858750000
+    },
+    "startUtc": "2026-10-23T03:13:12Z",
+    "aggregateNonIdleFraction": 0.1539291683666083,
+    "coverage": "Mid-run sample, excludes initial minutes; aggregate logical CPU idle capacity does not prove immunity to localized contention or platform scheduling."
+  },
+  "w4LateWindow": {
+    "status": "passed",
+    "startUtc": "2026-10-23T03:51:57Z",
+    "endUtc": "2026-10-23T04:08:32Z",
+    "method": "Windows GetSystemTimes global counters at start and both retained validated engine handles exiting; GetProcessTimes delta for each engine; no outcome inspection.",
+    "ticks100ns": {
+      "idle": 852185000000,
+      "kernelIncludingIdle": 892934218750,
+      "user": 136049375000
+    },
+    "engineAtExit": {
+      "baseline": {
+        "creationTicks": 134372004245075885,
+        "createdUtc": "2026-10-23T03:40:24.507589+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-23T04:08:32.282911+00:00",
+        "kernelCpuSeconds": 28.125,
+        "userCpuSeconds": 1917.171875,
+        "totalCpuSeconds": 1945.296875
+      },
+      "candidate": {
+        "creationTicks": 134372004253553933,
+        "createdUtc": "2026-10-23T03:40:25.355392+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-23T04:08:32.390957+00:00",
+        "kernelCpuSeconds": 21.8125,
+        "userCpuSeconds": 1512.78125,
+        "totalCpuSeconds": 1534.59375
+      }
+    },
+    "aggregateNonIdleFraction": 0.25517855272803436,
+    "globalBusyCpuSeconds": 3045.875,
+    "engineCpuSecondsInWindow": 2015.984375,
+    "otherBusyCpuSecondsInWindow": 1029.890625,
+    "limits": "Partial late-W4 domain; includes assistant/desktop/system activity. Aggregate idle capacity does not rule out localized contention or establish affinity/isolation."
+  },
+  "interpretation": "No aggregate saturation in these partial windows; not proof of isolation, affinity, local scheduling immunity or universal workstation availability."
+}

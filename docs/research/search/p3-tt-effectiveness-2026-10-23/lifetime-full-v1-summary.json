@@ -1,0 +1,250 @@
+{
+  "status": "passed",
+  "protocolSha256": "3bf50b077cda81a1380148f2036e2f734c9f795e779779eda51165085efb03a4",
+  "rawPath": "raw\\lifetime-full-v1.jsonl",
+  "rawSha256": "78addcd9f4eba07cfc3208f021629b5eb4d18ef6e209ba1083b092b262e71d77",
+  "requests": 390,
+  "trajectories": 4,
+  "wallSeconds": 321.9367008999998,
+  "cpuSeconds": 332.96875,
+  "peakWorkingSetBytesSixOwnerDiagnosticJvm": 865267712,
+  "strata": {
+    "all": {
+      "requests": 390,
+      "tableTotals": {
+        "proofProbes": 13331657,
+        "proofHits": 0,
+        "proofStores": 0,
+        "hintProbes": 13331657,
+        "hintHits": 5803869,
+        "writes": 9987234,
+        "emptyWrites": 3937166,
+        "refreshWrites": 5427189,
+        "sameMoveRefresh": 5352356,
+        "collisionWrites": 622879,
+        "deeperBlocked": 228478
+      },
+      "hitAge": {
+        "0": 5586033,
+        "1": 217040,
+        "2": 796
+      },
+      "maxOccupancyFraction": 0.3756294250488281,
+      "profiles": {
+        "retained": {
+          "nodes": 64339458,
+          "capped": 28,
+          "completedDepths": {
+            "7": 362,
+            "6": 28
+          },
+          "elapsedNanos": 105906116499,
+          "processCpuNanos": 111156250000
+        },
+        "cleared": {
+          "nodes": 65936792,
+          "capped": 34,
+          "completedDepths": {
+            "7": 356,
+            "6": 33,
+            "5": 1
+          },
+          "elapsedNanos": 107806392598,
+          "processCpuNanos": 111125000000
+        }
+      },
+      "jointlyCompletedCount": 354,
+      "retainedToClearedNodesJointlyCompleted": 0.9863504339386887,
+      "differentMoves": 59
+    },
+    "initial16to47": {
+      "requests": 128,
+      "tableTotals": {
+        "proofProbes": 6451856,
+        "proofHits": 0,
+        "proofStores": 0,
+        "hintProbes": 6451856,
+        "hintHits": 2685618,
+        "writes": 4733502,
+        "emptyWrites": 2085873,
+        "refreshWrites": 2491480,
+        "sameMoveRefresh": 2464996,
+        "collisionWrites": 156149,
+        "deeperBlocked": 100008
+      },
+      "hitAge": {
+        "0": 2577440,
+        "1": 107965,
+        "2": 213
+      },
+      "maxOccupancyFraction": 0.1658005714416504,
+      "profiles": {
+        "retained": {
+          "nodes": 33578088,
+          "capped": 23,
+          "completedDepths": {
+            "7": 105,
+            "6": 23
+          },
+          "elapsedNanos": 58323381590,
+          "processCpuNanos": 62687500000
+        },
+        "cleared": {
+          "nodes": 35250183,
+          "capped": 29,
+          "completedDepths": {
+            "7": 99,
+            "6": 28,
+            "5": 1
+          },
+          "elapsedNanos": 60621248500,
+          "processCpuNanos": 63093750000
+        }
+      },
+      "jointlyCompletedCount": 98,
+      "retainedToClearedNodesJointlyCompleted": 0.9608487201222015,
+      "differentMoves": 20
+    },
+    "later48to79": {
+      "requests": 122,
+      "tableTotals": {
+        "proofProbes": 4265755,
+        "proofHits": 0,
+        "proofStores": 0,
+        "hintProbes": 4265755,
+        "hintHits": 1767710,
+        "writes": 3059137,
+        "emptyWrites": 1164697,
+        "refreshWrites": 1660428,
+        "sameMoveRefresh": 1631128,
+        "collisionWrites": 234012,
+        "deeperBlocked": 77364
+      },
+      "hitAge": {
+        "0": 1705322,
+        "1": 62103,
+        "2": 285
+      },
+      "maxOccupancyFraction": 0.2454538345336914,
+      "profiles": {
+        "retained": {
+          "nodes": 17961632,
+          "capped": 1,
+          "completedDepths": {
+            "7": 121,
+            "6": 1
+          },
+          "elapsedNanos": 29086208612,
+          "processCpuNanos": 29062500000
+        },
+        "cleared": {
+          "nodes": 17980606,
+          "capped": 1,
+          "completedDepths": {
+            "7": 121,
+            "6": 1
+          },
+          "elapsedNanos": 28836181900,
+          "processCpuNanos": 28953125000
+        }
+      },
+      "jointlyCompletedCount": 121,
+      "retainedToClearedNodesJointlyCompleted": 0.9989145685223956,
+      "differentMoves": 25
+    },
+    "late80plus": {
+      "requests": 140,
+      "tableTotals": {
+        "proofProbes": 2614046,
+        "proofHits": 0,
+        "proofStores": 0,
+        "hintProbes": 2614046,
+        "hintHits": 1350541,
+        "writes": 2194595,
+        "emptyWrites": 686596,
+        "refreshWrites": 1275281,
+        "sameMoveRefresh": 1256232,
+        "collisionWrites": 232718,
+        "deeperBlocked": 51106
+      },
+      "hitAge": {
+        "0": 1303271,
+        "1": 46972,
+        "2": 298
+      },
+      "maxOccupancyFraction": 0.3756294250488281,
+      "profiles": {
+        "retained": {
+          "nodes": 12799738,
+          "capped": 4,
+          "completedDepths": {
+            "7": 136,
+            "6": 4
+          },
+          "elapsedNanos": 18496526297,
+          "processCpuNanos": 19406250000
+        },
+        "cleared": {
+          "nodes": 12706003,
+          "capped": 4,
+          "completedDepths": {
+            "7": 136,
+            "6": 4
+          },
+          "elapsedNanos": 18348962198,
+          "processCpuNanos": 19078125000
+        }
+      },
+      "jointlyCompletedCount": 135,
+      "retainedToClearedNodesJointlyCompleted": 1.0153807257807652,
+      "differentMoves": 14
+    }
+  },
+  "limits": [
+    "Initial ply16..47 repeats prior data to establish retained state, not independent evidence.",
+    "Four trajectories; no strength inference, no warmup timing claim, no generalization to long clocks.",
+    "Collision writes do not themselves establish useful information lost. Occupancy is observed after requests."
+  ],
+  "lastRequestPerOwner": [
+    {
+      "id": "cp64-000-white-ply118",
+      "side": 0,
+      "occupancy": 0.28064775466918945
+    },
+    {
+      "id": "cp64-000-white-ply117",
+      "side": 1,
+      "occupancy": 0.1405963897705078
+    },
+    {
+      "id": "cp64-000-black-ply72",
+      "side": 0,
+      "occupancy": 0.1807856559753418
+    },
+    {
+      "id": "cp64-000-black-ply73",
+      "side": 1,
+      "occupancy": 0.24235200881958008
+    },
+    {
+      "id": "cp64-001-white-ply128",
+      "side": 0,
+      "occupancy": 0.3756294250488281
+    },
+    {
+      "id": "cp64-001-white-ply127",
+      "side": 1,
+      "occupancy": 0.21216106414794922
+    },
+    {
+      "id": "cp64-001-black-ply130",
+      "side": 0,
+      "occupancy": 0.19809293746948242
+    },
+    {
+      "id": "cp64-001-black-ply131",
+      "side": 1,
+      "occupancy": 0.24712181091308594
+    }
+  ]
+}

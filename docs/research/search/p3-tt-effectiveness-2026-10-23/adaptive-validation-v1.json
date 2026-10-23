@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "tests": [
+    {
+      "path": "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\adaptive-tests-v1\\TEST-com.ohinteractive.seedv6.search.exact.AspirationResearchTest.xml",
+      "sha256": "e62ef95a95b8fc1c6d5ddf63e1cce507d7bc1d14d2e4462a6674736dc0b24f94",
+      "suite": {
+        "name": "com.ohinteractive.seedv6.search.exact.AspirationResearchTest",
+        "tests": "9",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-23T04:14:53",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "1.42"
+      }
+    },
+    {
+      "path": "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\adaptive-tests-v1\\TEST-com.ohinteractive.seedv6.search.exact.ConstructionTtAdaptiveTest.xml",
+      "sha256": "e2c5e2d03005b4b983ff89b73d563e96763df5f5b908d3d5eab70a80baaa86e2",
+      "suite": {
+        "name": "com.ohinteractive.seedv6.search.exact.ConstructionTtAdaptiveTest",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-23T04:14:54",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "6.651"
+      }
+    }
+  ],
+  "logSha256": "9a02eb079520fd67629d055ceb8b8718ef014d9c91fa02467decf7aa0a8c80db",
+  "scope": "Existing all-policy aspiration correctness plus adaptive CP64 rebuild/diagnostics neutrality and worker1..16 lifecycle; boundaries and research workspace build."
+}

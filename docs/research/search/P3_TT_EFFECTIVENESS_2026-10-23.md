@@ -1,7 +1,7 @@
 # Phase 3: TT Information Effectiveness and Reuse
 
-Owner-authorized CGLHW, 23 October 2026 (Pacific/Auckland). **ACTIVE: qualified
-full-window consumer candidate entering clock development.** This is subordinate evidence and continuity
+Owner-authorized CGLHW, 23 October 2026 (Pacific/Auckland). **ACTIVE: full-window
+clock and full-game retention disposition; one existing adaptive control under study.** This is subordinate evidence and continuity
 under [Contract P3-R017](../../../source/CHESS_SEARCH_CONTRACT.md) and
 [Frontier P3-F015](../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md), not a new
 contract or an acceptance/promotion authority.
@@ -12,15 +12,16 @@ Completed: diagnostic-v1, followup-v1 (aspiration reverse ablation and cross-req
 lifetime), deeper-v1 (different roots, W1/W4), full-window correctness and ordinary
 UCI baseline parity. Their frozen protocols, bindings, receipts and summaries are
 in the linked experiment directory. Pilot-v1 passed all four operational games.
-The frozen 32-pair W1/W4 development completed: full-window scored25/12/27 W/D/L
-at W1 and30/7/27 at W4, with broad intervals crossing zero. Neither meets its
-frozen0.55 confirmation-selection gate. `lifetime-full-v1` is running after clocks
-to measure full-trajectory accumulation; inspect its receipt before further work.
-Next after that receipt passes: qualify and execute the newly frozen adaptive-v1
-protocol, exactly one existing ADAPTIVE16 consumer alternative, selected because
-it retains narrow-window behavior while responding to CP64 score variation. No
-policy sweep or bespoke Search redesign. Preserve all closed protocols and failed
-checks. Absent completion never permits duplicating a live run; reconcile any
+The frozen 32-pair W1/W4 development completed: full-window scored 25/12/27 W/D/L
+at W1 and 30/7/27 at W4, with broad intervals crossing zero. Neither meets its
+frozen 0.55 confirmation-selection gate. Lifetime-full-v1 is complete (390 neutral
+pairs), with maximum occupancy 37.56% and no justified retention-policy change.
+Adaptive-v1 passed 11 test methods and is running its four serial diagnostics-OFF
+cost domains. It tests exactly one existing ADAPTIVE16 consumer alternative which
+retains narrow-window behavior while responding to CP64 score variation. Next:
+reconcile all four receipts and apply its frozen cost/completion gate before any
+additional clock screen. No policy sweep or bespoke Search redesign.
+Absent completion never permits duplicating a live run; reconcile any
 interruption before retrying under a new name. Existing full-window remains a
 conditional CPU-saving configuration with strength unconfirmed; WIDEN16 remains
 the principal baseline. All failed checks
@@ -31,7 +32,7 @@ before resuming; completed protocols must not be extended or overwritten.
 
 ## Verified bootstrap
 
-- Clean starting main HEAD `43b690f` (full identity in bootstrap manifest to follow).
+- Clean starting main HEAD `43b690f` (full identity in bootstrap-validation.json).
   Runtime source matches `18f3c4f12a01417a48fb4c044ff3bde2c5b44b2d`: Git reports
   no changes since that anchor in engine-core, app-uci, app-gui or engine-training.
   Root VERSION_STATE.txt is 0.0.0 build 69; root CODEXLOG_CURRENT.md is absent.
@@ -95,7 +96,7 @@ Challenge decisions before substantial execution:
 | ID | Hypothesis / discriminator | Current disposition and next gate |
 | --- | --- | --- |
 | T1 | Completed hints materially reduce current CP64 request work despite no ordinary proof. | SUPPORTED mechanism value in diagnostic-v1: hints-off increases D6 work/time at W1/W4, despite slightly cheaper fixed-node requests. Not Elo evidence. |
-| T2 | Current capacity/replacement loses consequential guidance. | No redesign justified in tested early/middle domains. Fresh occupancy averages 1.1%; plies16..47 maximum16.6%. Older-generation hints are only4% of hits but retaining them helps. NEXT frozen full-trajectory retention check after clocks; initial-window data cannot establish late-game pressure. Long-clock saturation remains untested. |
+| T2 | Current capacity/replacement loses consequential guidance. | Full-trajectory check complete: maximum37.56% occupancy, no saturation demonstrated; retained work benefit concentrated early, later results nearly neutral/slightly adverse. No capacity/replacement redesign justified in tested domains; long clocks remain untested. |
 | T3 | Aspiration/PVS/iteration or root guidance consumes hints ineffectively. | Full-window reduces some request costs but has inconclusive clock evidence and no confirmation admission. Hints help both drivers. NEXT exactly one existing ADAPTIVE16 control under frozen adaptive-v1; preserve narrow-window behavior while testing retry economics. No width sweep. |
 | T4 | TT access/coordination costs consume the information benefit. | Fixed-node hints-off is about 4-5% cheaper but completes less depth; D6 becomes 23-33% slower in aggregate. Retain whole-request economics, no locking/layout variant. Profiling only if decision value remains. |
 | T5 | Producer depth/selective restrictions leave valuable proof or guidance unavailable. | Zero ordinary proof confirmed; completed hints provide value. No evidence yet justifies weakening proof restrictions or binding-policy experimentation. Empty proof probes/repeated writes are traffic observations, not permission to alter TT access/replacement. |
@@ -240,7 +241,90 @@ and prospectively specifies the conditional confirmation gate. The new PGNs are
 frozen opening inputs covered by the existing narrow `*-openings.pgn` exception;
 generated tournament PGNs and runtime copies stay ignored under `raw/`.
 
-## Evidence and resource discipline
+## Closed full-window clock development
+
+[Frozen protocol](p3-tt-effectiveness-2026-10-23/development-clock-v1.json) and
+[summary](p3-tt-effectiveness-2026-10-23/development-clock-v1-summary.json) cover
+32 opening pairs per worker domain at10+0.1, same frozen opening set with colors
+reversed, one game at a time. All128 games finish normally, independently replay
+with correct legal/terminal/history results and complete request telemetry, and
+all engine processes drain/exit. There is no interim stopping, selective replay,
+sample extension or adjudication. Opening pairs across worker domains are
+correlated and are not pooled.
+
+| Full-window minus WIDEN16 | W1 | W4 |
+| --- | ---: | ---: |
+| W / D / L | 25 / 12 / 27 | 30 / 7 / 27 |
+| Score | 48.44% | 52.34% |
+| Descriptive logistic Elo | -10.9 | +16.3 |
+| Approximate paired-normal95 Elo | [-99.9,+76.8] | [-67.4,+102.0] |
+| Conservative bounded-pair95 Elo | [-196.2,+167.9] | [-161.2,+203.6] |
+| Candidate/baseline process CPU | 0.999 | 0.789 |
+| Candidate/baseline request nodes | 568.23m /560.28m | 761.17m /881.30m |
+| Candidate/baseline peak working set | 361.7/380.2 MB | 388.1/390.4 MB |
+
+Both strength results are statistically inconclusive. Neither reaches the frozen
+0.55 resource-selection gate for substantial confirmation; that gate is not an
+inferiority or equivalence test. No independent confirmation was run and no gain,
+noninferiority or broad failure of full-window is claimed. W1 is unpromising for
+further expenditure under this screen; W4 remains a conditional CPU-saving
+configuration whose strength is uncertain. CPU falls about21% in W4 while equal
+clocks are held; equal-clock observations do not establish equal-compute strength.
+Different played positions/trees prevent treating the game node ratio as a
+fixed-position performance ratio. The diagnostic advantage did not become a
+demonstrated playing-strength advantage.
+
+Matches took1786.0/1688.1 seconds (57.9min combined). Full engine-lifetime CPU is
+897.7/896.9 seconds baseline/candidate at W1 and1945.3/1534.6 at W4, including
+startup/JIT/GC/aborted work/drain. Post-start read-only host samples observed
+15.4% aggregate non-idle logical CPU during W1 and25.5% during late W4. This does
+not establish isolation, affinity or freedom from localized contention; desktop
+activity remains a limitation. See local `raw/host-cpu-development-*.json` and
+`raw/host-cpu-w4-*.json`; initial minutes are outside those windows.
+
+## Closed full-trajectory retention
+
+[Lifetime-full protocol](p3-tt-effectiveness-2026-10-23/lifetime-full-v1.json)
+and [summary](p3-tt-effectiveness-2026-10-23/lifetime-full-v1-summary.json) cover
+all390 supplied game prefixes from ply16 through each actual game end. Every
+retained plain/observed pair matches exactly. The first128 requests reproduce the
+previous early/middle results; they are not additional independent samples.
+Maximum occupancy reaches37.56%, final per-owner occupancy14.06%-37.56%.
+13.33m ordinary probes still produce zero ordinary proof hits/stores; 5.80m
+table hints are available. Of9.99m writes,0.623m replace colliding keys and5.35m
+repeat the prior same-key move. Record-age1/2 hits total217,836 (3.75%). These
+are traffic/provenance diagnostics, not counts of decisive move improvements.
+
+| Request window | Retained / cleared total nodes | Target-D7 completions retained / cleared | Node ratio among jointly completed requests |
+| --- | ---: | ---: | ---: |
+| Plies16-47 (replayed) | 33.58m /35.25m | 105/99 of128 | 0.961 |
+| Plies48-79 | 17.96m /17.98m | 121/121 of122 | 0.999 |
+| Plies80+ | 12.80m /12.71m | 136/136 of140 | 1.015 |
+
+Across all prefixes, retention uses64.34m versus65.94m nodes with28 versus34
+caps, but measured request CPU is essentially equal (111.156/111.125 seconds).
+The retained benefit is concentrated early; later retention is nearly neutral
+or slightly adverse in this small selective-search sample. It is not uniformly
+beneficial and the59 differing selected moves have no quality adjudication.
+Four trajectories cannot establish a universal policy. Neither occupancy nor
+collision counts demonstrate a capacity bottleneck, and this evidence does not
+justify a binding retention change, table expansion, or clearing in production.
+Long-clock/higher-pressure domains remain untested. The complete six-owner
+diagnostic took321.9 wall/333.0 CPU seconds, peak working set865.3MB.
+
+## Remaining bounded adaptive formulation
+
+The full-window result does not close every aspiration formulation. The existing
+ADAPTIVE16 policy derives its initial width from the last two completed scores,
+retains bounded search, and preserves existing widening/mate verification. Current
+CP64 retry pressure provides a specific Phase3 reason to test this single control;
+historical Pair-2 costs had a different retry regime. No new TT policy or parameter
+grid is introduced. [adaptive-v1](p3-tt-effectiveness-2026-10-23/adaptive-v1.json)
+freezes W1/W4 target-depth/fixed-node controls with diagnostics OFF and a modest
+cost/completion gate before any additional clock expenditure. Failed gates close
+or defer that formulation; they do not trigger an automatic width sweep.
+
+## Validation and local evidence
 
 [Bootstrap validation](p3-tt-effectiveness-2026-10-23/bootstrap-validation.json)
 binds the actual tests. The first run executed 84 checks: 83 passed, one stale

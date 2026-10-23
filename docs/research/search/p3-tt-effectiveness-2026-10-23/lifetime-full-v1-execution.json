@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx768m",
+    "-XX:ActiveProcessorCount=4",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\followup-v1-runtime\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\followup-v1-runtime\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.ConstructionTtLifetimeStudy",
+    "build-assets/nnue-candidate/conventional-cp64.cnnue",
+    "docs/research/search/p3-tt-effectiveness-2026-10-23/lifetime-lines.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\lifetime-full-v1.jsonl",
+    "7",
+    "500000",
+    "16",
+    "1000"
+  ],
+  "startedUtc": "2026-10-23T04:08:43.312008+00:00",
+  "bindingSha256": "006fb4fd79bcafc5bdebfa14ea75792d3e3c3ceb1305a42328e09df43792b8f8",
+  "priority": "BelowNormal",
+  "nativeAccountingSha256": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+  "exitCode": 0,
+  "nativeLifetime": {
+    "creationTicks": 134372021233214039,
+    "createdUtc": "2026-10-23T04:08:43.321404+00:00",
+    "exitCode": 0,
+    "exitedUtc": "2026-10-23T04:14:05.167231+00:00",
+    "kernelCpuSeconds": 4.515625,
+    "userCpuSeconds": 328.453125,
+    "totalCpuSeconds": 332.96875
+  },
+  "peakWorkingSetBytes": 865267712,
+  "wallSeconds": 321.9367008999998,
+  "finishedUtc": "2026-10-23T04:14:05.257074+00:00",
+  "evidence": {
+    "raw\\lifetime-full-v1.jsonl": "78addcd9f4eba07cfc3208f021629b5eb4d18ef6e209ba1083b092b262e71d77",
+    "raw\\lifetime-full-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}
