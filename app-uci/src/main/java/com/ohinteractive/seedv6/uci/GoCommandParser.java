@@ -8,6 +8,15 @@ import com.ohinteractive.seedv6.search.manage.TimeManager;
 final class GoCommandParser {
 
     static SearchLimits parse(String[] tokens, int rootStatus) {
+        return parse(tokens, rootStatus, TimeManager::allocateClockMillis);
+    }
+
+    @FunctionalInterface
+    interface ClockBudget {
+        long allocate(long remainingMillis, long incrementMillis, int movesToGo);
+    }
+
+    static SearchLimits parse(String[] tokens, int rootStatus, ClockBudget clockBudget) {
         if(tokens.length < 2 || !tokens[0].equals("go")) {
             throw new IllegalArgumentException("A supported go limit is required.");
         }
@@ -91,10 +100,14 @@ final class GoCommandParser {
             }
             final long selectedIncrement = black ? blackIncrement : whiteIncrement;
             final long increment = selectedIncrement == SearchLimits.NO_LIMIT ? 0L : selectedIncrement;
-            timeBudget = TimeManager.allocateClockMillis(
+            timeBudget = clockBudget.allocate(
                 remaining, increment,
                 movesToGo == 0 ? TimeManager.DEFAULT_MOVES_TO_GO : movesToGo
             );
+            final long usable = Math.max(0L, remaining - TimeManager.CLOCK_RESERVE_MILLIS);
+            if(timeBudget < 0L || timeBudget > usable) {
+                throw new IllegalArgumentException("Clock allocation violates the remaining-time reserve.");
+            }
         } else {
             timeBudget = SearchLimits.NO_LIMIT;
         }

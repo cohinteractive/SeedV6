@@ -1,0 +1,454 @@
+{
+  "status": "passed",
+  "roots": 32,
+  "neutralComparisons": 32,
+  "inputs": {
+    "raw\\root-effort-openings-v1.jsonl": "f69ace0504b7c19769b9e7f23c18861572182a0652f1733bc1605bbe99bd4833",
+    "raw\\root-effort-played-v1.jsonl": "646605ab7a869d417a4e1027acd4d61cab6b378f05d0f7e053fc23fd4e7ccc73"
+  },
+  "analysisScriptSha256": "e651be32c004bfa03f572463579f0a8c4df70363e79218f46f1b3e68750c71e1",
+  "observedBoundaries": 286,
+  "availableBoundaries": 286,
+  "fullLegalRootCoverage": 286,
+  "rootEffortToAllAttemptNodes": {
+    "n": 286,
+    "min": 0.19744435284418796,
+    "q25": 0.8994473913117634,
+    "median": 1.0000742175129114,
+    "q75": 1.0008064516129032,
+    "max": 1.0952380952380953
+  },
+  "ordinarySamples": 190,
+  "selectiveSamples": 190,
+  "tables": [
+    {
+      "depthRange": [
+        3,
+        5
+      ],
+      "condition": "all",
+      "n": 96,
+      "distinctRoots": 32,
+      "nextChanged": 13,
+      "selectedShare": {
+        "n": 96,
+        "min": 0.05055292259083728,
+        "q25": 0.19566142067205444,
+        "median": 0.31344535865710854,
+        "q75": 0.46096654275092935,
+        "max": 0.7490482233502538
+      },
+      "selectedShareBeforeChanges": {
+        "n": 13,
+        "min": 0.0823017731682837,
+        "q25": 0.1877715704531347,
+        "median": 0.2629908300023513,
+        "q75": 0.3411345713558891,
+        "max": 0.5879450123369757
+      },
+      "selectedShareBeforeUnchanged": {
+        "n": 83,
+        "min": 0.05055292259083728,
+        "q25": 0.19606087735004477,
+        "median": 0.31806233571160347,
+        "q75": 0.47358490566037736,
+        "max": 0.7490482233502538
+      },
+      "lowSelectedShareAuc": 0.5764596848934198,
+      "lowConcentrationAuc": 0.5690454124189064,
+      "moveChangedNowAuc": 0.5611677479147359
+    },
+    {
+      "depthRange": [
+        3,
+        5
+      ],
+      "condition": "stable3",
+      "n": 73,
+      "distinctRoots": 28,
+      "nextChanged": 6,
+      "selectedShare": {
+        "n": 73,
+        "min": 0.05055292259083728,
+        "q25": 0.19566142067205444,
+        "median": 0.3155165536497806,
+        "q75": 0.46096654275092935,
+        "max": 0.7490482233502538
+      },
+      "selectedShareBeforeChanges": {
+        "n": 6,
+        "min": 0.0823017731682837,
+        "q25": 0.14865020103388857,
+        "median": 0.202300024708768,
+        "q75": 0.2168284789644013,
+        "max": 0.36466458658346335
+      },
+      "selectedShareBeforeUnchanged": {
+        "n": 67,
+        "min": 0.05055292259083728,
+        "q25": 0.19606087735004477,
+        "median": 0.3280475718533201,
+        "q75": 0.48223137024279594,
+        "max": 0.7490482233502538
+      },
+      "lowSelectedShareAuc": 0.7238805970149254,
+      "lowConcentrationAuc": 0.7587064676616916,
+      "moveChangedNowAuc": 0.5
+    },
+    {
+      "depthRange": [
+        3,
+        5
+      ],
+      "condition": "changedNow",
+      "n": 12,
+      "distinctRoots": 9,
+      "nextChanged": 3,
+      "selectedShare": {
+        "n": 12,
+        "min": 0.06337921070641016,
+        "q25": 0.20538763121284936,
+        "median": 0.34861758061740433,
+        "q75": 0.3837667454688731,
+        "max": 0.5633986928104575
+      },
+      "selectedShareBeforeChanges": {
+        "n": 3,
+        "min": 0.25243619489559166,
+        "q25": 0.25243619489559166,
+        "median": 0.3411345713558891,
+        "q75": 0.3411345713558891,
+        "max": 0.5633986928104575
+      },
+      "selectedShareBeforeUnchanged": {
+        "n": 9,
+        "min": 0.06337921070641016,
+        "q25": 0.20538763121284936,
+        "median": 0.35610058987891957,
+        "q75": 0.3837667454688731,
+        "max": 0.5619148936170213
+      },
+      "lowSelectedShareAuc": 0.4074074074074074,
+      "lowConcentrationAuc": 0.3333333333333333,
+      "moveChangedNowAuc": 0.5
+    },
+    {
+      "depthRange": [
+        6,
+        8
+      ],
+      "condition": "all",
+      "n": 85,
+      "distinctRoots": 32,
+      "nextChanged": 11,
+      "selectedShare": {
+        "n": 85,
+        "min": 0.05705548398057565,
+        "q25": 0.16426719910326468,
+        "median": 0.2511066398390342,
+        "q75": 0.4088299759941551,
+        "max": 0.7903771131339402
+      },
+      "selectedShareBeforeChanges": {
+        "n": 11,
+        "min": 0.15461513206308233,
+        "q25": 0.2511066398390342,
+        "median": 0.2883215712278375,
+        "q75": 0.4088299759941551,
+        "max": 0.5919114666378402
+      },
+      "selectedShareBeforeUnchanged": {
+        "n": 74,
+        "min": 0.05705548398057565,
+        "q25": 0.16036369994754326,
+        "median": 0.23843520794874784,
+        "q75": 0.3763886831580507,
+        "max": 0.7903771131339402
+      },
+      "lowSelectedShareAuc": 0.3476658476658477,
+      "lowConcentrationAuc": 0.2542997542997543,
+      "moveChangedNowAuc": 0.7254299754299754
+    },
+    {
+      "depthRange": [
+        6,
+        8
+      ],
+      "condition": "stable3",
+      "n": 64,
+      "distinctRoots": 28,
+      "nextChanged": 4,
+      "selectedShare": {
+        "n": 64,
+        "min": 0.0715445029488763,
+        "q25": 0.16307407874280433,
+        "median": 0.2475962292499001,
+        "q75": 0.4139463748028485,
+        "max": 0.7903771131339402
+      },
+      "selectedShareBeforeChanges": {
+        "n": 4,
+        "min": 0.2511066398390342,
+        "q25": 0.2511066398390342,
+        "median": 0.277797587881164,
+        "q75": 0.2864764368280656,
+        "max": 0.5919114666378402
+      },
+      "selectedShareBeforeUnchanged": {
+        "n": 60,
+        "min": 0.0715445029488763,
+        "q25": 0.16036369994754326,
+        "median": 0.23843520794874784,
+        "q75": 0.4139463748028485,
+        "max": 0.7903771131339402
+      },
+      "lowSelectedShareAuc": 0.325,
+      "lowConcentrationAuc": 0.15416666666666667,
+      "moveChangedNowAuc": 0.5
+    },
+    {
+      "depthRange": [
+        6,
+        8
+      ],
+      "condition": "changedNow",
+      "n": 13,
+      "distinctRoots": 8,
+      "nextChanged": 6,
+      "selectedShare": {
+        "n": 13,
+        "min": 0.05705548398057565,
+        "q25": 0.17845628197934899,
+        "median": 0.2644199272988689,
+        "q75": 0.4072190292118068,
+        "max": 0.496722775678461
+      },
+      "selectedShareBeforeChanges": {
+        "n": 6,
+        "min": 0.17845628197934899,
+        "q25": 0.2883215712278375,
+        "median": 0.397886288086544,
+        "q75": 0.4088299759941551,
+        "max": 0.496722775678461
+      },
+      "selectedShareBeforeUnchanged": {
+        "n": 7,
+        "min": 0.05705548398057565,
+        "q25": 0.12284931281036864,
+        "median": 0.2080835734870317,
+        "q75": 0.2601141120755144,
+        "max": 0.4072190292118068
+      },
+      "lowSelectedShareAuc": 0.14285714285714285,
+      "lowConcentrationAuc": 0.2857142857142857,
+      "moveChangedNowAuc": 0.5
+    },
+    {
+      "depthRange": [
+        9,
+        12
+      ],
+      "condition": "all",
+      "n": 9,
+      "distinctRoots": 7,
+      "nextChanged": 0,
+      "selectedShare": {
+        "n": 9,
+        "min": 0.10319520470231408,
+        "q25": 0.2387077832571147,
+        "median": 0.3802747515694057,
+        "q75": 0.4091383267264761,
+        "max": 0.5431215083798883
+      },
+      "selectedShareBeforeChanges": {
+        "n": 0
+      },
+      "selectedShareBeforeUnchanged": {
+        "n": 9,
+        "min": 0.10319520470231408,
+        "q25": 0.2387077832571147,
+        "median": 0.3802747515694057,
+        "q75": 0.4091383267264761,
+        "max": 0.5431215083798883
+      },
+      "lowSelectedShareAuc": null,
+      "lowConcentrationAuc": null,
+      "moveChangedNowAuc": null
+    },
+    {
+      "depthRange": [
+        9,
+        12
+      ],
+      "condition": "stable3",
+      "n": 9,
+      "distinctRoots": 7,
+      "nextChanged": 0,
+      "selectedShare": {
+        "n": 9,
+        "min": 0.10319520470231408,
+        "q25": 0.2387077832571147,
+        "median": 0.3802747515694057,
+        "q75": 0.4091383267264761,
+        "max": 0.5431215083798883
+      },
+      "selectedShareBeforeChanges": {
+        "n": 0
+      },
+      "selectedShareBeforeUnchanged": {
+        "n": 9,
+        "min": 0.10319520470231408,
+        "q25": 0.2387077832571147,
+        "median": 0.3802747515694057,
+        "q75": 0.4091383267264761,
+        "max": 0.5431215083798883
+      },
+      "lowSelectedShareAuc": null,
+      "lowConcentrationAuc": null,
+      "moveChangedNowAuc": null
+    },
+    {
+      "depthRange": [
+        9,
+        12
+      ],
+      "condition": "changedNow",
+      "n": 0,
+      "distinctRoots": 0,
+      "nextChanged": 0,
+      "selectedShare": {
+        "n": 0
+      },
+      "selectedShareBeforeChanges": {
+        "n": 0
+      },
+      "selectedShareBeforeUnchanged": {
+        "n": 0
+      },
+      "lowSelectedShareAuc": null,
+      "lowConcentrationAuc": null,
+      "moveChangedNowAuc": null
+    }
+  ],
+  "highSelectedShareThenChangedWitnesses": [
+    {
+      "source": "root-effort-openings-v1",
+      "root": "opening-01",
+      "depth": 7,
+      "selective": true,
+      "stable3": true,
+      "changedNow": false,
+      "nextChanged": true,
+      "selectedShare": 0.5919114666378402,
+      "largestShare": 0.5919114666378402,
+      "concentration": 0.3567539864165301,
+      "rootEffortToAllAttemptNodes": 0.8945160939407492,
+      "fullLegalRootCoverage": true
+    },
+    {
+      "source": "root-effort-played-v1",
+      "root": "fresh-11-24",
+      "depth": 7,
+      "selective": true,
+      "stable3": false,
+      "changedNow": true,
+      "nextChanged": true,
+      "selectedShare": 0.496722775678461,
+      "largestShare": 0.496722775678461,
+      "concentration": 0.27055168005460517,
+      "rootEffortToAllAttemptNodes": 1.0000549669511207,
+      "fullLegalRootCoverage": true
+    },
+    {
+      "source": "root-effort-openings-v1",
+      "root": "opening-06",
+      "depth": 6,
+      "selective": true,
+      "stable3": false,
+      "changedNow": true,
+      "nextChanged": true,
+      "selectedShare": 0.4315668297496197,
+      "largestShare": 0.4315668297496197,
+      "concentration": 0.20278268766564303,
+      "rootEffortToAllAttemptNodes": 0.6525985350540635,
+      "fullLegalRootCoverage": true
+    },
+    {
+      "source": "root-effort-played-v1",
+      "root": "fresh-04-16",
+      "depth": 6,
+      "selective": true,
+      "stable3": false,
+      "changedNow": true,
+      "nextChanged": true,
+      "selectedShare": 0.4088299759941551,
+      "largestShare": 0.4088299759941551,
+      "concentration": 0.18641290835403249,
+      "rootEffortToAllAttemptNodes": 0.3670107831682979,
+      "fullLegalRootCoverage": true
+    },
+    {
+      "source": "root-effort-openings-v1",
+      "root": "opening-09",
+      "depth": 6,
+      "selective": true,
+      "stable3": false,
+      "changedNow": true,
+      "nextChanged": true,
+      "selectedShare": 0.386942600178933,
+      "largestShare": 0.386942600178933,
+      "concentration": 0.21859618202976705,
+      "rootEffortToAllAttemptNodes": 0.491278800777274,
+      "fullLegalRootCoverage": true
+    },
+    {
+      "source": "root-effort-openings-v1",
+      "root": "opening-06",
+      "depth": 7,
+      "selective": true,
+      "stable3": false,
+      "changedNow": true,
+      "nextChanged": true,
+      "selectedShare": 0.2883215712278375,
+      "largestShare": 0.2883215712278375,
+      "concentration": 0.12304258948234449,
+      "rootEffortToAllAttemptNodes": 1.0004738662749373,
+      "fullLegalRootCoverage": true
+    },
+    {
+      "source": "root-effort-openings-v1",
+      "root": "opening-08",
+      "depth": 6,
+      "selective": true,
+      "stable3": true,
+      "changedNow": false,
+      "nextChanged": true,
+      "selectedShare": 0.2864764368280656,
+      "largestShare": 0.42607711583542157,
+      "concentration": 0.2691253356333261,
+      "rootEffortToAllAttemptNodes": 1.0008089960359194,
+      "fullLegalRootCoverage": true
+    },
+    {
+      "source": "root-effort-played-v1",
+      "root": "fresh-11-24",
+      "depth": 6,
+      "selective": true,
+      "stable3": true,
+      "changedNow": false,
+      "nextChanged": true,
+      "selectedShare": 0.26911873893426236,
+      "largestShare": 0.5219886915300702,
+      "concentration": 0.34834073454047426,
+      "rootEffortToAllAttemptNodes": 0.6418725713028814,
+      "fullLegalRootCoverage": true
+    }
+  ],
+  "limitations": [
+    "Development roots/adjacent depths are dependent and node-censored; descriptive AUC has no independent uncertainty claim.",
+    "A later different selective move is not a demonstrated better move.",
+    "Final-attempt inclusive root effort excludes earlier aspiration attempts; its ratio to all-attempt nodes is not an exact retry fraction.",
+    "Ordering and selective pruning affect effort/coverage; root fail-soft scores are not exact alternative scores.",
+    "No time-allocation policy or confidence threshold is selected, no whole-game or multiworker strength is established."
+  ]
+}

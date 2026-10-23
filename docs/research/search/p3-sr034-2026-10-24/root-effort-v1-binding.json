@@ -1,0 +1,52 @@
+{
+  "frozenUtc": "2026-10-23T21:42:18.753127+00:00",
+  "head": "60e88d8fd5018b11fd53bcb5364dce9d37fc4139",
+  "worktree": " M app-uci/src/main/java/com/ohinteractive/seedv6/uci/GoCommandParser.java\n M app-uci/src/main/java/com/ohinteractive/seedv6/uci/UciConfiguration.java\n M app-uci/src/main/java/com/ohinteractive/seedv6/uci/UciEngine.java\n M app-uci/src/test/java/com/ohinteractive/seedv6/uci/GoCommandParserTest.java\n M docs/research/search/P3_SR034_TIME_ALLOCATION_2026-10-24.md\n?? docs/research/search/p3-sr034-2026-10-24/clock-development-half-v1-a01-pre-delivery-summary.json\n?? docs/research/search/p3-sr034-2026-10-24/qualify_spending_v1.py\n?? docs/research/search/p3-sr034-2026-10-24/root-effort-v1.json\n?? docs/research/search/p3-sr034-2026-10-24/run_root_effort_v1.py\n?? docs/research/search/p3-sr034-2026-10-24/run_spending_economics_v1.py\n?? docs/research/search/p3-sr034-2026-10-24/spending-economics-v1.json\n?? docs/research/search/p3-sr034-2026-10-24/spending-qualification-v1-summary.json\n?? docs/research/search/p3-sr034-2026-10-24/spending-runtime-v1-binding.json\n?? docs/research/search/p3-sr034-2026-10-24/spending-validation-v1-summary.json\n?? docs/research/search/p3-sr034-2026-10-24/spending_match_v1.py\n?? research/src/main/java/com/ohinteractive/seedv6/search/exact/Cp64RootEffortTrajectory.java\n?? research/src/main/java/com/ohinteractive/seedv6/search/exact/Cp64SpendingEconomics.java\n?? research/src/main/java/com/ohinteractive/seedv6/search/exact/Cp64SpendingPolicy.java\n?? research/src/test/java/com/ohinteractive/seedv6/search/driver/SpendingPolicyTest.java\n?? src/researchLauncher/java/com/ohinteractive/seedv6/integration/Cp64SpendingUciMain.java\n",
+  "nativeCoreParity": {
+    "passed": true,
+    "onlyDifferingEntries": [
+      "com/ohinteractive/seedv6/application-version.properties",
+      "com/ohinteractive/seedv6/search/common/SearchControl.class",
+      "com/ohinteractive/seedv6/search/common/SingleDepthSearch.class",
+      "com/ohinteractive/seedv6/search/driver/SearchDriver.class"
+    ]
+  },
+  "files": {
+    "docs\\research\\search\\p3-sr034-2026-10-24\\root-effort-v1.json": "993b9c4dcccd8544f9e090f9a3c83754dcf6e5a1e35e404a8cfb0bf93982fc65",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\run_root_effort_v1.py": "637c8bfe116aafa1a33e39096737473bbf9e0d9ac977e2e0d40eaa8d36fecd70",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\verify_baseline_v1.py": "6452a2049705b2dedd4edf52f84e150a878e14ef3bf9489b3b6bf534871001e9",
+    "releases\\candidates\\windows-x64\\candidate-20261023T195552-c00e3315\\SeedV6-UCI\\app\\engine-core.jar": "facac0db65c7f97a120083174ea4de20ef210daf3252a79a3fd5eb2cac99e6f7",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\Cp64TimeTrajectory.java": "74fd473b86cd966e4e8344c138469c8a2cd35d041aa2e8614ab3df2dd1f273cc",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\Cp64RootEffortTrajectory.java": "53dd551ccad5bee2875e423763ccea513d9944f95edb505893f1c447f11cad0c",
+    "build-assets\\nnue-candidate\\conventional-cp64.cnnue": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "tools\\sr036-process-cost.py": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+    "tools\\p3-tt-session.py": "5af7effa7db258c3a134f6da383aec7316d5c30b781ca106a21b430a4b09f651",
+    "docs\\research\\search\\p3-construction-2026-10-20\\diagnostic-corpus.tsv": "14dbe5241c65344672aed0a32dbc506f72b2f43dea8b2aa3e9849f366a07a8e1",
+    "docs\\research\\search\\p3-sr002-execution-2026-10-19\\confirmation-corpus.tsv": "781bfbf5d55fec0aef380e2db8c44bb25553ef295c24cb5c5697dd50f2e4f131",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SelectivityUciMain$1.class": "45f381877ef7cdc00347e7624d2bbcedc60208044d9a259b0566d782c4c54735",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SelectivityUciMain.class": "815eea3def5cb2c760b46d6966c65dbafec04505620bae9269fafa3df780b16a",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SpendingUciMain$1.class": "43f6669023494549289802766e868b4f86270e66312ab735e9c60f2919e668cd",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SpendingUciMain.class": "79a69d9f176f2df9e86105d9c8addf24604717a7fd034ead2e0b11254c63888b",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\Cp64TimeUciMain$1.class": "bec1e65dc489733c8daaed5d9229b361de0e7e76aa03181fd49288cc8557602e",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\Cp64TimeUciMain.class": "a1fc70ca082556054c842a935fdad2c22dfcb9e016d8891c7764fdebfa77738c",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain$1.class": "58c3d4ebe21a2b8aa46a3114d1bc3e37a851860312fe330867a78d5708df6598",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain.class": "1c47b49bba3d0fb4a9349db23ac757778cd6c6f9d6e32a3911eb2f1613451735",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain$1.class": "1a0b995fb5c2046b1a4e18a5cec8b0bd1eeb949595e1b1c36a556e7514c45b14",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain.class": "b35ec2373bd5a0cf4e6d714d5e7b8e6c948fc33775b5b461af10696c539b84fd",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain$1.class": "a7e2f469e7b6976ec1897c05ec9428220e9ff4a97ec03ef894189b0ecd4e3bf3",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain.class": "1fb37318975ec761b2117db35602d72fd28113e678b17700752a1764156006ec",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain$1.class": "2b01438f9b77a8c89c9b153638b85841f2dad32f74b215d3749158ba8a980b17",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain.class": "119edde9b12440c661ae89495afc65511d76e003ff4f0da644d9f37e64755281",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain$1.class": "745f48127c0e35629ea731691b838b7cf0c51ddb732f7bec9b87bb171e0fe7d6",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain.class": "706958cf81282a7d9e4b130b92f36f80219d993f86547e40d2c2a16aff431141",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\lib\\app-uci.jar": "ce5a89a03724022c1acd106e9229eeb7bcef31e1d1dea92f4bccbd58278708d9",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\lib\\engine-core.jar": "fab774e98563c21b4ec417ac45aaa8efbe8a8db5c9b4800181d84156f29c86d8",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\lib\\research.jar": "3f769be1b3f0b41696c3f70b68cbf8b3021b77610c38ad16056c855f619bb6c3",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\research-launcher.properties": "a7c61ea7a9363040d74d62f8b3ce450305f0b833ef13cd5dc87a85425f5849e4"
+  }
+}

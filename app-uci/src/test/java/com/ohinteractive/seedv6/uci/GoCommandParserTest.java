@@ -70,6 +70,40 @@ class GoCommandParserTest {
     }
 
     @Test
+    void configuredAllocationGetsValidatedSideInputsAndKeepsExplicitModes() {
+        var calls = new java.util.concurrent.atomic.AtomicInteger();
+        GoCommandParser.ClockBudget allocation = (remaining, increment, moves) -> {
+            calls.incrementAndGet();
+            assertEquals(9000L, remaining); assertEquals(900L, increment); assertEquals(12, moves);
+            return 1200L;
+        };
+        var limits = GoCommandParser.parse(
+            "go wtime 3000 btime 9000 winc 100 binc 900 movestogo 12 depth 7 nodes 420".split("\\s+"),
+            (int) black()[Board.STATUS], allocation);
+        assertEquals(new SearchLimits(7, 420L, 1200L, false, true), limits);
+        assertEquals(1, calls.get());
+        GoCommandParser.ClockBudget forbidden = (r, i, m) -> { throw new AssertionError("Not an ordinary clock"); };
+        for(String command : new String[]{"go depth 4", "go nodes 100", "go infinite",
+                "go movetime 100 wtime 1 btime 2 winc 3 binc 4 movestogo 5"}) {
+            assertEquals(parse(command, white()), GoCommandParser.parse(command.split("\\s+"),
+                (int) white()[Board.STATUS], forbidden));
+        }
+    }
+
+    @Test
+    void configurationCannotViolateReserveOrReturnAnUnlimitedClock() {
+        for(long remaining : new long[]{0, 49, 50, 51, 3000, Long.MAX_VALUE}) {
+            String[] command = {"go", "wtime", Long.toString(remaining)};
+            long usable = Math.max(0L, remaining - TimeManager.CLOCK_RESERVE_MILLIS);
+            assertEquals(usable, GoCommandParser.parse(command, (int) white()[Board.STATUS], (r,i,m) -> usable).timeMillis());
+            assertThrows(IllegalArgumentException.class, () -> GoCommandParser.parse(command,
+                (int) white()[Board.STATUS], (r,i,m) -> -1));
+            assertThrows(IllegalArgumentException.class, () -> GoCommandParser.parse(command,
+                (int) white()[Board.STATUS], (r,i,m) -> usable + 1));
+        }
+    }
+
+    @Test
     void rejectsMalformedNegativeOverflowMissingAndContradictoryForms() {
         assertInvalid("go");
         assertInvalid("go depth 0");

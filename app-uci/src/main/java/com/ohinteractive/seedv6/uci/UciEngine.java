@@ -96,7 +96,7 @@ public final class UciEngine implements AutoCloseable {
 
     private void go(String[] tokens) {
         var position = session.snapshot();
-        var limits = GoCommandParser.parse(tokens, (int) position.board[Board.STATUS]);
+        var limits = GoCommandParser.parse(tokens, (int) position.board[Board.STATUS], configuration::clockBudgetMillis);
         long fallback = 0;
         if (configuration.standalone()) {
             long[] moves = new long[256];

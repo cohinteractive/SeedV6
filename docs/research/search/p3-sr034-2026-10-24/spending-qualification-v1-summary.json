@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checks": 147,
+  "failure": null,
+  "ordinaryProductionParity": true,
+  "maxClockOverrunMillis": 2.2784,
+  "prospectiveOverrunCeilingMillis": 25,
+  "bindingSha256": "f5d9240bacd4bc252acc212c6db6aec259e92913ecedb3c2b23c215c17660172",
+  "evidence": {
+    "raw\\spending-qualification-v1.json": "861fef741a2a41448201c2998018e5e462eccad9ade612310162b3a6382d9626"
+  }
+}

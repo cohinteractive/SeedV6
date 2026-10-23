@@ -97,13 +97,17 @@ SearchDriver and generated version metadata (`clock-runtime-class-audit-v1.json`
 The 32 development openings and all executable inputs are frozen in
 `clock-development-v1-binding.json`. STABLE3_HALF is complete and
 **resource-unqualified**, as detailed below; never replay it or substitute a
-later post-check. The prescribed HALF wrapper is now active, initially in its
-`clock-development-half-v1-a01-pre-delivery` admission. A launch receipt proves
-that games started; its final summary proves completion. Await the existing
-owned process; do not restart blindly or inspect interim scores. If prelaunch
+later post-check. HALF a01 failed prelaunch admission: host load was 3.328 other average
+logical cores, above 2.0; owner CPU ratios and memory passed. No HALF games
+started. Independent functional and root-effort work has now completed; the
+first additional-spending clock diagnostic also completed but failed its host
+timing gate. No experiment is currently running. Preserve a01; a fresh a02
+admission may be attempted after independent validation ends and the host is
+suitable. A launch receipt proves games started; a final summary proves completion. If prelaunch
 admission fails, preserve its attempt and use a fresh named attempt only after
-resource availability is suitable. New source validation/diagnostics remain
-queued until the first-generation comparisons and delivery checks finish.
+resource availability is suitable. Independent source validation and fixed-node diagnostics may proceed serially
+while the unlaunched HALF comparison awaits a suitable clock window. This
+prospective sequencing change does not alter a completed protocol or result.
 No policy is selected for confirmation or production. The comparator uses the
 **exact accepted native build 74 core JAR**, with the same research launcher and
 startup warmup; the candidate uses the frozen build 75 runtime. New prepared
@@ -237,11 +241,12 @@ production default remains TimeManager; explicit non-clock modes bypass it.
 SearchLimits, SearchControl deadlines, TT/evaluator behavior and per-node paths
 are unchanged by this second branch. A new launcher preserves frozen v1 inputs.
 
-These source changes are currently **uncommitted and untested**. The new
-`spending-economics-v1.json`, qualifier and tests are prepared; do not run them
-concurrently with either existing game comparison or its delivery checks. After
-both finish, run the targeted Gradle validation/export, real UCI qualifier and
-actual clock economics before deciding/finalizing any new game protocol. No
+These source changes are now **correctness-qualified, with clock-strength work outstanding**. The new
+`spending-economics-v1.json`, qualifier and tests have executed serially as
+recorded below; never overlap them with games or delivery checks. While HALF remains unlaunched after its failed resource admission, run the
+targeted Gradle validation/export, real UCI qualifier and independent diagnostics
+serially, before deciding/finalizing any new game protocol. Timing claims still
+require their frozen resource gates; no simultaneous experiments are allowed. No
 additional-spending games or confirmation have launched. A failed existing
 policy does not automatically reject this separately admitted opportunity.
 
@@ -258,7 +263,7 @@ The source manifest binds local inspected bytes and the runner hash. This is
 source verification of telemetry semantics, not an update to the runner or a
 substitute for real-clock qualification. No ongoing game scores were inspected.
 
-`root-effort-v1.json` admits one small diagnostic after the existing matches:
+`root-effort-v1.json` admits one small diagnostic, serial with all other work:
 the same 32 historical-development roots, one round, paired plain/observed
 million-node trajectories. `Cp64RootEffortTrajectory` reads already-collected
 private ordering arrays after resolved W1 aspiration iterations. Research-only
@@ -268,7 +273,7 @@ distinct from all-attempt iteration nodes and completed selective scores.
 Deterministic result neutrality, legal PV, accounting and drain must pass before
 analysis. Describe concentration and later move changes conditional on stability;
 do not convert a root effort fraction into proof or an uncalibrated confidence
-threshold. Source, runner and protocol are prepared but not yet executed.
+threshold. Source, runner and protocol have executed successfully as recorded below.
 
 
 ## First whole-game comparison: completed, resource-unqualified
@@ -305,3 +310,61 @@ The full immutable wrapper summary contains repeated game headers. It remains
 local at its original path with an explicit ignore entry; the compact tracked
 receipt binds its hash. HALF's equivalent full capture is prospectively ignored
 as well. Raw PGNs/logs/process captures remain in their original ignored paths.
+
+
+## Additional-spending and root-effort qualification
+
+`spending-validation-v1-summary.json` records 283 tests, zero failures/errors/skips,
+successful research export and dependency-boundary validation. The new tests
+cover ordinary-clock composition/reserve bounds, explicit-mode bypass, a single
+purchased iteration, mate-score handling, overflow and interrupted-extension
+publication. `spending-qualification-v1-summary.json` records 147 actual UCI
+checks passing, including all 16 workers and representative clock/lifecycle
+requests; fixed-node/depth and ordinary-production parity pass. Maximum sampled
+UCI clock overrun is 2.279 ms, not a worst-case deadline guarantee.
+
+`root-effort-v1-summary.json`: all 32 plain/observed fixed-node comparisons match
+exactly; all 286 observed boundaries expose all legal root entries and selected
+move effort. At depths 6-8, low selected-move effort share has descriptive AUC
+.348 for a next move change; low concentration has .254, while a just-changed
+move has .725. Within stable3, the corresponding effort/concentration AUCs are
+.325/.154 on only four subsequent changes in 64 dependent samples. At shallow
+depths 3-5 the relationship differs. This supplies no portable monotone
+confidence calibration and does not justify a root-effort threshold consumer.
+Do not invert/tune a rule to these sparse outcomes. Root effort is deprioritized
+for this workstream, not universally rejected; later move changes are not proven
+improvements and these are not independent statistical estimates.
+
+`root-effort-accounting-v1.json` records a material counter distinction:
+ExactSearch's internal root-effort differences count traversal entries, whereas
+public SearchControl/adapter nodes count admitted prepared transitions/reentries.
+The observed ratio can exceed one (maximum 1.09524) and also omits earlier
+aspiration attempts from its numerator. It is **not** a conserved request-work
+fraction or exact retry fraction. Within-root concentration uses a consistent
+counter; whole-request nodes/CPU remain separately measured. No accounting or
+Search implementation was changed to make these quantities agree.
+
+`spending-clock-cost-v1-summary.json`: all 216 timed requests are legal, accounted
+and drained, but the host average is 2.134 other logical cores, above 2.0, so
+**timing is unqualified**. The sample includes a 25.550 ms direct-driver overrun
+for UNSTABLE2 at hard100 ms; preserve and examine this tail, rather than treating
+the smaller UCI maximum as universal. At base50/100/400 ms, BOUNDARY2 and UNSTABLE2
+both sometimes finish extra iterations and select different moves from baseline.
+Their costs and move differences remain exploratory under this failed resource
+gate. A fresh exclusive diagnostic in a suitable window is required before
+qualified timing claims or new clock-game admission. No extra-spending games
+have started and no configuration is selected for confirmation or production.
+
+
+The largest direct-driver overrun was `fresh-08-24`, UNSTABLE2, round0,
+base50/hard100 ms: 125.550 ms elapsed, 78.125 ms owner CPU (ratio .622), zero
+GC collections and 6 ms compilation activity. Last completed depth is5 and
+attempted depth6 is incomplete with TIME_LIMIT. The extension trigger therefore
+had not executed. This is consistent with lost CPU delivery/JIT interference;
+no exact scheduling cause was measured. Preserve this tail and require a fresh
+qualified diagnostic; no deadline or numerical gate is weakened.
+
+Build 76 records the qualified ordinary-clock composition seam and research-only
+additional-spending/diagnostic code. Production selection remains unchanged.
+The diagnostic runtimes captured before this commit retain their truthful build75
+working-source provenance; a new export must supply any later game snapshot.

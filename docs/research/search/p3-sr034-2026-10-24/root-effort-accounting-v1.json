@@ -1,0 +1,12 @@
+{
+  "status": "source_interpretation",
+  "observation": "Root-effort/public-node ratios exceed1 on completed data (maximum1.09524); do not treat this as a retry fraction or conserved physical work.",
+  "rootEffortCounter": "ExactSearch rootResult receives differences of its internal nodes minus observationNodes around root moves. These count traversal entries, including repeated search entries.",
+  "publicNodeCounter": "ExactSearchAdapter reports nodes admitted by its evaluator child/reenter hooks. Its documented child accounting counts prepared transitions including probe work, not every repeated PVS entry.",
+  "consequence": "Normalize final-attempt root concentration only within the root-effort counter. Keep all-attempt admitted SearchControl nodes separately; do not subtract the two counters, sum them as physical CPU, or infer retry cost from their ratio. The actual request/node budget accounting remains unchanged and tested.",
+  "validation": "Static source interpretation plus observed ratios; paired fixed-node result/whole-node neutrality passes independently. No accounting implementation was changed.",
+  "sources": {
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java": "bccd5de14e88e4a9f13156ffd31090f0ff148891ee6ee1c712566a75434479e5",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java": "979e13d83f0ba554a03b04a474f12b0e39ba483c3b03760012de3943130fb5ea"
+  }
+}

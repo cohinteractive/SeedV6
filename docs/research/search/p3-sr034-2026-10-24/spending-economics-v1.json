@@ -1,0 +1,18 @@
+{
+  "id": "P3-SR034-SPENDING-ECONOMICS-v1",
+  "frozenBeforeExecution": true,
+  "purpose": "Qualify one bounded additional-spending contrast and its extension-off control before any new games. No production or strength claim.",
+  "profiles": [
+    "baseline",
+    "boundary2-d6-v1",
+    "unstable2-d6-v1"
+  ],
+  "configuration": "Accepted CP64 flags3407871 ADAPTIVE16 W1 Hash64. Experimental hard cap is min(twice baseline allocation, remaining minus50ms reserve), fixed before Search. Nominal is ceil(hard/2). From ordinary completed depth6: stable3 may stop at ceil(nominal/2); otherwise stop at the first completed boundary at/after nominal. UNSTABLE2 alone may continue for one additional completed iteration when the move has just changed at that boundary, still subject to the immutable hard cap. No score threshold, forecast, TT or evaluator change.",
+  "corpus": "docs/research/search/p3-sr002-execution-2026-10-19/confirmation-corpus.tsv",
+  "roots": 12,
+  "method": "One unmeasured rotated million-node round, then two measured rounds. New game before each root. Clock mode rotates three profiles at base allocations50/100/400ms, with hard=base for baseline and hard=2*base for both candidates. This driver-level experiment does not model reserve clipping; real UCI qualification covers that. Delivery mode uses one million nodes and40-depth ceiling. Legal PV, exact global accounting, helper drain and disabled detailed diagnostics checked.",
+  "resources": "Serial W1 BelowNormal, Xms256m Xmx512m ActiveProcessorCount4,30min watchdog. Whole-process native CPU/peak memory and owner-thread CPU, JIT/GC/heap disclosed. No overlapping builds, games or delivery checks. Independent diagnostics may run serially while unlaunched HALF awaits host admission; timing conclusions still require this protocol's frozen resource gates.",
+  "analysis": "Report elapsed/CPU/nodes/completed-depth and matched-move differences, incomplete work, soft stops and actual-over-profile-hard tails. Distinguish base from hard budgets. Later/different selective choices are not quality labels. Coarse factor2 is a bounded experimental contrast, not a calibrated optimum.",
+  "deliveryGate": "Unchanged current serial-W1 gates: median ownerCPU/elapsed>=.90, nearest-rank5th>=.80 each profile; median spread<=.05; host<=2 other average logical cores and RAM>=8GiB/load<=75% endpoints. No isolation claim.",
+  "continuation": "Exclusive new names and frozen runtime binding for every capture. Retain all failures. Subsequent game selection/protocol requires these outcomes; do not infer game authorization from this diagnostic protocol alone. Existing SR-034 owner authority permits an evidence-supported next experiment."
+}

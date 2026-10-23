@@ -1,0 +1,29 @@
+{
+  "id": "P3-SR034-ROOT-EFFORT-v1",
+  "frozenBeforeExecution": true,
+  "purpose": "Development mechanism observation, not strength or independent confirmation. Test whether existing root-effort data adds discriminating information beyond the already observed stability/retry trajectories.",
+  "baseline": "Accepted build74 CP64 Search composition flags3407871 ADAPTIVE16 W1 Hash64, in the new runtime with only the previously qualified inert clock seam and version metadata permitted to differ in core; no clock policy executes during these fixed-node requests.",
+  "model": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "depth": 12,
+  "nodes": 1000000,
+  "rounds": 1,
+  "experiments": [
+    {
+      "name": "root-effort-openings-v1",
+      "corpus": "docs/research/search/p3-construction-2026-10-20/diagnostic-corpus.tsv",
+      "roots": 12
+    },
+    {
+      "name": "root-effort-played-v1",
+      "corpus": "docs/research/search/p3-sr002-execution-2026-10-19/confirmation-corpus.tsv",
+      "roots": 20
+    }
+  ],
+  "method": "Four 100000-node warmups per plain/observed owner; rotated plain/no-diagnostics and callback/diagnostics requests; newGame before each root; original real histories; one matched round; every resolved PV checked for legality, node accounting and drained helpers; exact result/node equivalence required. The historically named confirmation corpus is development data here.",
+  "analysis": "Describe selected-root share, concentration and coverage, stratified by stability/depth and next completed move changes. Compare deterministic plain/observed signatures. Correlated diagnostic ranks are not independent strength evidence; no root-effort policy or threshold is selected by this protocol.",
+  "resources": "Serial processes, one Search worker, BelowNormal, ActiveProcessorCount=2, Xmx768m, 60s per-request operational cap, 30min per-corpus cap. Retain failures; no retry or outcome exclusion. Host cost recorded; noisy wall data cannot support calibration. No games launched by this protocol.",
+  "nextDecision": "Choose minimal supported bounded policies and controls, or reject unreliable signals with evidence; no coefficient sweep or production promotion. Freeze a new protocol before any further diagnostic or clock experiment.",
+  "question": "Does existing final-attempt root-effort concentration distinguish subsequent completed move changes beyond best-move stability? No proof or quality label is inferred.",
+  "observation": "Read-only research reflection after each resolved W1 aspiration iteration. Snapshot existing pending/effort/scores arrays without production mutation. Distinguish final-attempt inclusive root effort from total iteration effort across all aspiration attempts; root scores remain heuristic fail-soft observations. Empty/stale coverage must not masquerade as complete root evidence.",
+  "executionConstraint": "No overlapping builds, games or delivery checks. HALF a01 failed before launching games, so independent functional validation and this fixed-node observation may proceed serially while clock work awaits suitable host admission. No completed protocol/result is changed; this plan is not yet bound or executed. New frozen runtime/source binding and retained failures remain mandatory."
+}

@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx768m",
+    "-XX:ActiveProcessorCount=2",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-root-effort-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.Cp64RootEffortTrajectory",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr002-execution-2026-10-19\\confirmation-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\root-effort-played-v1.jsonl",
+    "12",
+    "1000000",
+    "1",
+    "20"
+  ],
+  "bindingSha256": "8726379899abf2ca8c0239f690b4b06403b8089fc7de7bfc2a1625a3c198990d",
+  "priority": "BelowNormal",
+  "startedUtc": "2026-10-23T21:43:02.423245+00:00",
+  "exitCode": 0,
+  "nativeLifetime": {
+    "creationTicks": 134372653824245311,
+    "createdUtc": "2026-10-23T21:43:02.424532+00:00",
+    "exitCode": 0,
+    "exitedUtc": "2026-10-23T21:44:09.142511+00:00",
+    "kernelCpuSeconds": 1.796875,
+    "userCpuSeconds": 70.578125,
+    "totalCpuSeconds": 72.375
+  },
+  "peakWorkingSetBytes": 368648192,
+  "hostStart": {
+    "utc": "2026-10-23T21:43:02.423466+00:00",
+    "monotonic": 71845.2488662,
+    "ticks": [
+      7489387031250,
+      7791213750000,
+      830171718750
+    ],
+    "availableBytes": 15067242496,
+    "memoryLoadPercent": 55
+  },
+  "hostEnd": {
+    "utc": "2026-10-23T21:44:09.204153+00:00",
+    "monotonic": 71912.0295569,
+    "ticks": [
+      7495757500000,
+      7797950937500,
+      831448281250
+    ],
+    "availableBytes": 15085961216,
+    "memoryLoadPercent": 55
+  },
+  "wallSeconds": 66.78091349999886,
+  "evidence": {
+    "raw\\root-effort-played-v1.jsonl": "646605ab7a869d417a4e1027acd4d61cab6b378f05d0f7e053fc23fd4e7ccc73",
+    "raw\\root-effort-played-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}
