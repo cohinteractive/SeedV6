@@ -1,0 +1,33 @@
+{
+  "start": {
+    "utc": "2026-10-23T21:52:18.528000+00:00",
+    "monotonic": 72401.3534057,
+    "ticks": [
+      7543830156250,
+      7848864687500,
+      839253906250
+    ],
+    "availableBytes": 14615207936,
+    "memoryLoadPercent": 57
+  },
+  "end": {
+    "utc": "2026-10-23T21:52:48.528818+00:00",
+    "monotonic": 72431.3542237,
+    "ticks": [
+      7547184062500,
+      7852316718750,
+      839401875000
+    ],
+    "availableBytes": 14654324736,
+    "memoryLoadPercent": 57
+  },
+  "elapsedSeconds": 30.000817999985884,
+  "busyCpuSeconds": 24.609375,
+  "ownedCpuSeconds": 0,
+  "otherAverageLogicalCores": 0.820290133422748,
+  "memoryEndpointsPass": true,
+  "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used.",
+  "legacyOneCoreGatePassed": true,
+  "passed": true,
+  "protocol": "SR034 spending-economics-v1 current serial-W1 host plus direct delivery qualification"
+}

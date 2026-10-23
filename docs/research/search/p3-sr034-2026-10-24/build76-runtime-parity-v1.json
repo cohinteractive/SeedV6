@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "jars": {
+    "engine-core.jar": {
+      "oldSha256": "fab774e98563c21b4ec417ac45aaa8efbe8a8db5c9b4800181d84156f29c86d8",
+      "newSha256": "54cb27641a4c4a7c0fcc61ec17da772011bee3a09dec0e691e0b038c5b357e9b",
+      "onlyChangedEntries": [
+        "com/ohinteractive/seedv6/application-version.properties"
+      ],
+      "versionProperties": "major=0\nminor=0\npatch=0\nbuild=76\nsourceRevision=614511ce9a75\nversionUpdated=2026-10-24\nplatform=Portable Java 21 (runtime platform reported separately)\n"
+    },
+    "app-uci.jar": {
+      "oldSha256": "ce5a89a03724022c1acd106e9229eeb7bcef31e1d1dea92f4bccbd58278708d9",
+      "newSha256": "ce5a89a03724022c1acd106e9229eeb7bcef31e1d1dea92f4bccbd58278708d9",
+      "onlyChangedEntries": []
+    },
+    "research.jar": {
+      "oldSha256": "3f769be1b3f0b41696c3f70b68cbf8b3021b77610c38ad16056c855f619bb6c3",
+      "newSha256": "3f769be1b3f0b41696c3f70b68cbf8b3021b77610c38ad16056c855f619bb6c3",
+      "onlyChangedEntries": []
+    }
+  },
+  "launcherClassesEqual": true
+}

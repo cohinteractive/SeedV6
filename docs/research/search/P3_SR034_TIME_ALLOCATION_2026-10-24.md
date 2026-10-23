@@ -70,10 +70,10 @@ does not confirm W2-16 strength. Fresh independent confirmation remains 10+0.1.
 | Question | Current state | Cheapest next discriminating evidence |
 | --- | --- | --- |
 | H1 stability/economical stops | Mechanism and clock compatibility qualified; strength pending | Complete the two frozen whole-game comparisons; preserve shallow-stability counterexamples. |
-| H2 justified instability spending | Recent move changes merit one bounded additional-spending contrast; score-only thresholds deprioritized | Qualify the prepared UNSTABLE2 and extension-off BOUNDARY2 controls after both existing matches finish. |
+| H2 justified instability spending | UNSTABLE2/BOUNDARY2 correctness and fresh timing qualified | Execute the prospective paired comparison/control after HALF finishes; no production selection. |
 | H3 iteration economics | Large prediction tails; forecasting deprioritized | Use actual completed-boundary policies and complete-request cost; no guarantee inferred from predicted cost. |
 | H4 whole-game redistribution | Governing hypothesis; frozen development running | Finish both first-generation comparisons and their resource gates; no interim selection or confirmation reuse. |
-| Root-effort instrumentation | Read-only boundary diagnostic prepared; no consumer selected | Measure existing final-attempt effort and its incremental discrimination beyond stability, with fixed-node observation neutrality. |
+| Root-effort instrumentation | Neutral measurement complete; threshold consumer deprioritized | The expected discrimination fails at relevant depths and reverses with depth; retain evidence without fitting an opposite rule. |
 | Multiworker strength | Unconfirmed | Validate representative/all supported lifecycle compatibility; obtain separate strength confirmation before any multiworker claim. |
 
 Do not exhaustively sweep constants or stop after a single failed heuristic.
@@ -97,17 +97,22 @@ SearchDriver and generated version metadata (`clock-runtime-class-audit-v1.json`
 The 32 development openings and all executable inputs are frozen in
 `clock-development-v1-binding.json`. STABLE3_HALF is complete and
 **resource-unqualified**, as detailed below; never replay it or substitute a
-later post-check. HALF a01 failed prelaunch admission: host load was 3.328 other average
-logical cores, above 2.0; owner CPU ratios and memory passed. No HALF games
-started. Independent functional and root-effort work has now completed; the
-first additional-spending clock diagnostic also completed but failed its host
-timing gate. No experiment is currently running. Preserve a01; a fresh a02
-admission may be attempted after independent validation ends and the host is
-suitable. A launch receipt proves games started; a final summary proves completion. If prelaunch
-admission fails, preserve its attempt and use a fresh named attempt only after
-resource availability is suitable. Independent source validation and fixed-node diagnostics may proceed serially
-while the unlaunched HALF comparison awaits a suitable clock window. This
-prospective sequencing change does not alter a completed protocol or result.
+later post-check. HALF a01 failed prelaunch admission (3.328 other average
+logical cores); no games were started in that attempt. The fresh a02 pre-delivery
+and host admission passed, and HALF games launched at
+`2026-10-23T21:58:38Z`. Its owned wrapper is active; await its full completion and
+post-delivery checks, without interim score inspection or replay. No build,
+preflight or other computational experiment may overlap it. The source validation,
+root-effort observations and two spending-cost captures below are already complete.
+The new `spending-development-v1.json` and its preparation/wrapper/clock-audit
+scripts are prepared, but not yet bound or executed. After HALF completes with
+no unresolved correctness failure, run `prepare_spending_development_v1.py`
+serially to freeze build76 versus exact native build74 core+UCI and perform three
+actual preflights. Then execute UNSTABLE2 followed by BOUNDARY2 under their own
+fresh pre/post gates, regardless of score. New game protocols remain development;
+if a credible complete finalist emerges, freeze fresh independent confirmation
+before starting it. Root-effort thresholds and numerical forecasts remain
+deprioritized on the observed mechanism evidence, not universally rejected.
 No policy is selected for confirmation or production. The comparator uses the
 **exact accepted native build 74 core JAR**, with the same research launcher and
 startup warmup; the candidate uses the frozen build 75 runtime. New prepared
@@ -368,3 +373,28 @@ Build 76 records the qualified ordinary-clock composition seam and research-only
 additional-spending/diagnostic code. Production selection remains unchanged.
 The diagnostic runtimes captured before this commit retain their truthful build75
 working-source provenance; a new export must supply any later game snapshot.
+
+
+`spending-clock-cost-v1-a02-summary.json` is a fresh exclusive repeat of the
+same immutable diagnostic after a passing idle-window screen. It passes timing
+qualification (1.750 other average logical cores); all 216 requests pass legality,
+accounting and drain, and maximum direct-driver overrun is 0.287 ms. At base
+50/100/400 ms, elapsed totals are baseline 1.203/2.403/9.603 s, BOUNDARY2
+1.701/2.566/11.075 s and UNSTABLE2 1.699/2.660/11.456 s. Each candidate changes
+0/2/2 matched baseline moves out of24 at those budgets; extra depth/changed moves
+are not quality labels. The extension control distinguishes common completed-
+boundary/cap effects from one additional iteration. The earlier unqualified
+capture and its 25.550 ms tail remain intact; the repeat does not rehabilitate it.
+
+`build76-runtime-parity-v1.json` verifies the fresh export is source
+`614511ce9a75`, build76. Core/app/research and launcher class bytes match the
+qualified runtime except generated core version metadata. The forthcoming
+spending comparison also requires a prospective sampled25 ms hard-overrun gate,
+chosen to retain half the50 ms reserve for residual clock/protocol risk; it is
+not a guarantee against arbitrary scheduling delays. Its audit reports unused
+hard cap separately from savings/spending against the original base allocation.
+PGN does not retain every policy trigger: no per-move extension/quality label is
+fabricated; extension-specific aggregate value requires the matched control.
+`clock-initial-conservation-v1.json` independently verifies all8,874 closed first-
+comparison clock equations, including128 first searched moves at10100 ms, before
+using that initial-clock reconstruction in the new audit.

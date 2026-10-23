@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "requests": 8874,
+  "firstSearchedMoves": 128,
+  "initialClockMillis": 10100,
+  "incrementMillis": 100,
+  "source": "Frozen fastchessf618e34 TimeControl and match loop",
+  "evidence": {
+    "raw\\clock-development-stable3-half-v1\\games.pgn": "9a64770cc61d77389f8edff7fbbc482ea97e7754dc0ad673c187b2f7df09beed"
+  },
+  "scope": "Independent full-clock ledger check on an already closed comparison, including first searched moves; no additional statistical look."
+}
