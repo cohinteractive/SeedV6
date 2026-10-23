@@ -1,0 +1,23 @@
+{
+  "id":"P3-TT-LIFETIME-FULL-v1",
+  "frozenBeforeExecution":true,
+  "hypothesis":"The early/middle-game retention window may understate full-game accumulation, aging and collision pressure. Establish the extent before treating Hash64 pressure as a low-value redesign target.",
+  "relationship":"Followup-v1 remains closed. This new full-trajectory protocol necessarily repeats its initial32 requests per game to establish the same retained state, then measures later requests. Repeated initial observations are not new independent evidence; all four trajectories remain development fixtures.",
+  "runtime":"raw/followup-v1-runtime",
+  "runtimeBinding":"followup-v1-binding.json",
+  "main":"com.ohinteractive.seedv6.search.exact.ConstructionTtLifetimeStudy",
+  "model":"build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "lines":"docs/research/search/p3-tt-effectiveness-2026-10-23/lifetime-lines.tsv",
+  "configuration":"Selected build69 CP64 all18 flags262143 WIDEN16 requestedHash64; independent white/black owners. No alternative retention/identity/proof rule.",
+  "workers":1,
+  "depth":7,
+  "nodeBudget":500000,
+  "startPly":16,
+  "endPly":1000,
+  "selection":"All available prefixes from ply16 to the end of each of the existing four actual CP64 games. The supplied endPly1000 is a ceiling, not generated/artificial moves. No result selection or trajectory extension.",
+  "controls":"Retained standard Search, identical retained single-worker read-only observed table, and standard Search with explicit newGame before each request. Alternate plain/cleared order within color. Observed outcome/nodes/score/PV/accounting must match plain every request.",
+  "analysis":"All requests and caps retained. Separate initial16..47 replay from fresh late48..79 and80+ ply windows; report occupancy maximum/end distribution, old-generation hits, replacement traffic, completed depths and whole-request nodes. Report jointly-completed subsets only as conditional, never hide caps. No Elo inference or causal claim from hit counts. No warmup: timing remains descriptive; six-owner diagnostic memory is not one engine. At most four trajectory units, not hundreds of independent samples.",
+  "stopping":"Fixed supplied trajectories, no result-driven extension/tuning. Preserve failed/partial output; no replay under same name. 20-minute JVM watchdog and existing60-second request safety.",
+  "resources":"One BelowNormal Java process, vector module, Xms256m Xmx768m ActiveProcessorCount4. Estimated9-12min from prior128-request181sec run. Run only after clock development completes and before any further clock games; do not overlap benchmarks with clock strength measurements.",
+  "decision":"If useful information remains economically retained despite later occupancy, close pressure-driven redesign as unsupported in this tested domain. If late pressure is material, quantify effect and consider admissible memory-budget control before any owner-reserved policy proposal. Neither low occupancy nor high collision rate alone establishes policy effectiveness or a defect."
+}

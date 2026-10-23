@@ -18,8 +18,10 @@ then starts W4 serially. Inspect per-domain execution receipts and raw run statu
 before taking further action; absent completion is not permission to duplicate a
 live run. Preserve partial output and reconcile any interruption before retrying
 under a new protocol/name. Next after both receipts pass: analyze fixed endpoints
-under development-clock-v1's selection rule, then freeze fresh confirmation only
-where justified. Existing full-window all-controls CP64/Hash64 is a conditional candidate;
+under development-clock-v1's selection rule. Before any further clock games, run
+the frozen lifetime-full-v1 protocol to distinguish initial-window pressure from
+full-game accumulation, using the existing fixtures/runtime. Then freeze fresh
+strength confirmation only where justified. Existing full-window all-controls CP64/Hash64 is a conditional candidate;
 WIDEN16 is the principal baseline. No strength evidence yet. All failed checks
 remain recorded; do not replay or overwrite closed names or raw evidence.
 Runtime baseline and TT policy remain unchanged. No owner decision currently
@@ -92,7 +94,7 @@ Challenge decisions before substantial execution:
 | ID | Hypothesis / discriminator | Current disposition and next gate |
 | --- | --- | --- |
 | T1 | Completed hints materially reduce current CP64 request work despite no ordinary proof. | SUPPORTED mechanism value in diagnostic-v1: hints-off increases D6 work/time at W1/W4, despite slightly cheaper fixed-node requests. Not Elo evidence. |
-| T2 | Current capacity/replacement loses consequential guidance. | No redesign justified in tested domains. Fresh occupancy averages 1.1%; multi-request maximum 16.6%. Older-generation hints are only 4% of hits but retaining them helps the bounded lifetime control. Long-clock saturation remains untested. |
+| T2 | Current capacity/replacement loses consequential guidance. | No redesign justified in tested early/middle domains. Fresh occupancy averages 1.1%; plies16..47 maximum16.6%. Older-generation hints are only4% of hits but retaining them helps. NEXT frozen full-trajectory retention check after clocks; initial-window data cannot establish late-game pressure. Long-clock saturation remains untested. |
 | T3 | Aspiration/PVS/iteration or root guidance consumes hints ineffectively. | Full-window control promising at D6 and deeper W1/W4; fixed-250k completed depths mixed. Hints help both drivers. NEXT clock test of the unchanged existing full-window composition, not a TT redesign. |
 | T4 | TT access/coordination costs consume the information benefit. | Fixed-node hints-off is about 4-5% cheaper but completes less depth; D6 becomes 23-33% slower in aggregate. Retain whole-request economics, no locking/layout variant. Profiling only if decision value remains. |
 | T5 | Producer depth/selective restrictions leave valuable proof or guidance unavailable. | Zero ordinary proof confirmed; completed hints provide value. No evidence yet justifies weakening proof restrictions or binding-policy experimentation. Empty proof probes/repeated writes are traffic observations, not permission to alter TT access/replacement. |
