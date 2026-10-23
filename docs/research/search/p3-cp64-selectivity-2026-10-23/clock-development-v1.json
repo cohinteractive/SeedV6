@@ -1,0 +1,14 @@
+{
+  "id": "P3-CP64-SELECTIVITY-H1-CLOCK-DEVELOPMENT-v1",
+  "frozenBeforeExecution": true,
+  "question": "Does removing improving merit fresh independent confirmation after its whole-request development savings and changed fixed-node decisions?",
+  "baseline": "build71 frozen runtime-v2, original18 controls flags262143, ADAPTIVE16, frozen CP64 eight heads, requested Hash64",
+  "candidate": "same runtime, no-improving flags260095; every other control and evaluator unchanged",
+  "domain": {"workers":1,"concurrentGames":1,"pairs":32,"clock":"10+0.1","seed":2026102401,"partition":0},
+  "openings": "New paired/color-reversed eight-full-move openings. Exclude existing tracked selection receipts and all ply16+ prefixes from the three current development corpora. No evaluator filter. Exact selection/source identities frozen by prepare_clock_v1.py before launch.",
+  "resourceAdmission": "30-second host availability interval: at most1 other average logical CPU, at least8GiB available RAM and at most75% load at endpoints. Same gate for whole run subtracting owned lifetime CPU; this is a prospective contention screen, not isolation or a short-burst guarantee.",
+  "execution": "One match only, BelowNormal priority, Xms256m Xmx512m and ActiveProcessorCount4 per JVM,200k-node startup warmup. Validated Windows owned Job containment and PGN/legal/history/accounting audit. No simultaneous build, tests or computational research. Expected30min,90min watchdog; failure/interruption preserved, no automatic replay.",
+  "analysis": "One final look after all32 pairs. Report W/D/L, pair means, approximate paired-normal95% interval and bounded-pair95% sensitivity; these are development descriptions, not confirmation. Retain every game and adverse ending. No outcome-dependent early stopping, extension, tuning or exclusions.",
+  "decision": "All integrity/resource gates must pass. Candidate score>=0.55 admits consideration for a separately frozen fresh independent confirmation, subject to complete programme evidence; otherwise no-improving is negative or inconclusive in this bounded screen and no further H1 clock extension. A favorable point estimate alone cannot justify adoption. At most two W1 finalist hypotheses will receive independent confirmation in this programme with familywise alpha allocation frozen before those games; unused allocations are not transferred. W4 is not admitted by W1 results.",
+  "authority": "Development only. Production promotion, TT policy, evaluator and external installations unchanged. Clock standard remains10+0.1. No successor objective."
+}

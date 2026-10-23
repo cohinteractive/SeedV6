@@ -10,7 +10,7 @@ public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) 
     public enum Feature { QXRAY, LMR, LMP, EFFORT, COMPLETED_HINTS,
         CAPTURE_HISTORY, CONTINUATION, KILLERS, COUNTERMOVES, NOMINAL_HISTORY, BAD_TACTICAL_LAST,
         IMPROVING, CAUTION, CHECK_EXTENSION, RECAPTURE_EXTENSION, FUTILITY, REVERSE_FUTILITY, HISTORY_PROTECTION,
-        LAZY_IMPROVING }
+        LAZY_IMPROVING, REDUCTION_FUTILITY, NOMINAL_FUTILITY }
 
     public FlatSearchConfig(long flags) { this(flags,100,200); }
 
@@ -27,6 +27,10 @@ public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) 
             throw new IllegalArgumentException("History protection requires LMP or futility");
         if((flags&(1L<<Feature.LAZY_IMPROVING.ordinal()))!=0 && (flags&(1L<<Feature.IMPROVING.ordinal()))==0)
             throw new IllegalArgumentException("Lazy improving requires improving");
+        long deeper=(1L<<Feature.REDUCTION_FUTILITY.ordinal())|(1L<<Feature.NOMINAL_FUTILITY.ordinal());
+        if((flags&deeper)!=0 && ((flags&(1L<<Feature.LMR.ordinal()))==0 || (flags&(1L<<Feature.FUTILITY.ordinal()))==0))
+            throw new IllegalArgumentException("Deeper futility research requires LMR and shallow futility");
+        if((flags&deeper)==deeper) throw new IllegalArgumentException("Choose one deeper futility margin model");
     }
     public boolean has(Feature feature) { return (flags&(1L<<feature.ordinal()))!=0; }
     public FlatSearchConfig with(Feature feature,boolean enabled) {

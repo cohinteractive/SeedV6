@@ -12,4 +12,11 @@ public interface SelectivityTrace {
     default void reduction(long[] board,long move,long[] path,int ply,int depth,int ordinal,int searchedQuiets,
             int alpha,int beta,int history,int continuation,int raw,int previousRaw,
             int baseReduction,int assignedReduction,boolean caution) {}
+    /** Experimental deeper quiet omission before child admission/evaluator/history effects.
+     * assignedChildDepth is the actual prospective depth after existing relief. */
+    default void omission(long[] board,long move,long[] path,int ply,int depth,int alpha,int beta,
+            int raw,int history,int continuation,int assignedChildDepth,int marginDepth) {}
+    /** Completed invocation only, before its caller's retry/verification handling.
+     * Cumulative nodes permit neutral subtree accounting; aborted invocations never call. */
+    default void completed(long[] board,long[] path,int ply,int depth,int score,long cumulativeNodes) {}
 }

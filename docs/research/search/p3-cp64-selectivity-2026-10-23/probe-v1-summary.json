@@ -1,0 +1,54 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx768m",
+    "-XX:ActiveProcessorCount=4",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.Cp64SelectivityProbe",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-construction-2026-10-20\\diagnostic-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\opportunity-d8-w1-v1.jsonl",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\complement-probes-v1.jsonl",
+    "1000000",
+    "200000"
+  ],
+  "bindingSha256": "2ae29136296546a2c91f20c86eb9e4a09829c8a0d5d132881b323fa9baec06c2",
+  "exitCode": 0,
+  "byMechanism": {
+    "null": {
+      "samples": 48,
+      "captured": 48,
+      "nullFailHigh": 8,
+      "verificationCompleted": 48,
+      "nominalCompleted": 44,
+      "verifiedFailHigh": 8,
+      "nullFalseThresholds": 0,
+      "verifiedFalseThresholds": 0,
+      "probeNodes": 4314,
+      "verificationNodesOnNullFailHigh": 35610,
+      "nominalNodes": 7142087
+    },
+    "reductionFutility": {
+      "samples": 35,
+      "reducedCompleted": 35,
+      "nominalCompleted": 35,
+      "quadrants": {
+        "reducedRaises=False;nominalRaises=False": 35
+      },
+      "adverse": [],
+      "alsoPassNominalChildMargin": 24,
+      "reducedNodes": 2102,
+      "nominalNodes": 42696
+    }
+  },
+  "wallSeconds": 14.219043999997666,
+  "evidence": {
+    "raw\\complement-probes-v1.jsonl": "9f1664ab9e548026fba4da0c1b22a8dffb07dc411a9bf80b07dd805172a82d3f",
+    "raw\\complement-probes-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

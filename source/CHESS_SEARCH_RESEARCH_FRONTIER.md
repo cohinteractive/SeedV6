@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F021**
+Internal frontier revision: **P3-F022**
 
 Status: **ACTIVE: owner-authorized CP64-integrated Search selectivity reappraisal. The preceding TT CGLHW is GPT-reconciled and owner-accepted, with acceptance/synchronization prerequisites confirmed. Build70 full Construction V1/ADAPTIVE16/frozen CP64 remains production; no automatic promotion, TT-policy change, evaluator replacement, external deployment or successor.**
 
@@ -19,11 +19,14 @@ SR-009,016,018,019,021,022,023,029,033. Existing O2/O3 questions now concern the
 frozen CP64 integrated configuration; they do not inherit Pair-2 thresholds or
 strength claims. Completed TT results are reference evidence, not reopened work.
 
-**Current selection:** first observation/ablation is complete; separate improving
-evaluation overhead from its selective relief, then measure surviving deeper
-pruning and history/reduction decisions. Choose further consumers/removals from
-observed opportunity, adverse resources, economics and expected decision value.
-No exhaustive switch sweep, mandatory feature list or new TT design is selected.
+**Current selection:** H1 cost separation is complete; removing improving is
+admitted to a fresh W1 clock development screen, pending resource qualification.
+H3/H4 compare a guarded deeper nominal-margin foundation with actual assigned
+reduction depth, including composition with improving-off. H5 must compare isolated
+verified-null cost with the already selective incumbent before implementation.
+H2 uses conditional history evidence from these consumers; no sparse/censored
+negative label is promoted to bound authority. No exhaustive switch sweep or new
+TT design is selected.
 
 The [focused record](../docs/research/search/P3_CP64_SELECTIVITY_2026-10-23.md)
 is the subordinate dynamic hypothesis/experiment queue and exact resume location.
@@ -33,13 +36,15 @@ only Phase3 masters. Production stays unchanged until separate accepted promotio
 fresh10+0.1 confirmation is required if a promising finalist warrants adoption.
 Functional1..16 support never establishes strength at every worker count.
 
-Initial development qualification and targeted reverse ablation are complete.
-Removing improving reduced sampled request cost substantially without changed root
-moves in the small development corpus; strength is unknown. Shallow pruning is
-active, and96 conditional independent replays found no false threshold. The next
-unit separates improving's evaluation cost from selective depth decisions and
-measures complementary history/reduction/deeper-node opportunities. Details and
-limitations are in the focused record; no production change or promotion follows.
+Initial reverse ablation and cost separation are complete. Lazy improving preserves
+one-worker traversal but offers modest elapsed savings; removing improving changes
+selectivity and merits a fresh one-worker10+0.1 development screen. Its first
+resource admission failed before any game launched. Deeper surviving opportunities
+justify a guarded nominal-margin versus assigned-reduction-margin comparison and
+an actual selective-cost audit of verified-null predictions. Build71 adds explicit
+default-OFF research controls; accepted production choices remain unchanged.
+Conditional reference samples are diagnostic, not strength or proof certification.
+The focused record preserves precise protocols, failures, limitations and resume state.
 
 ## ADAPTIVE16 production selection - 23 October 2026
 

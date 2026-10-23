@@ -1,0 +1,32 @@
+{
+  "head": "4125f1a21499ad7c433628462f9e9211b553fc2c",
+  "files": {
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\probe-v1.json": "5f5520cd2c0c30141cfb57ca958218831bcced5b41436a63f1ab24380ccd5d58",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\opportunity-d8-w1-v1.jsonl": "6fa8c47699f2c60bfe1694d712fcd232f164b74f218c2be8c777b33c4d53bc77",
+    "docs\\research\\search\\p3-construction-2026-10-20\\diagnostic-corpus.tsv": "14dbe5241c65344672aed0a32dbc506f72b2f43dea8b2aa3e9849f366a07a8e1",
+    "build-assets\\nnue-candidate\\conventional-cp64.cnnue": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\Cp64SelectivityProbe.java": "db120d64c8abcb0129cbcdaf259797dccad376bbec75ff1660260501c708f383",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SelectivityUciMain$1.class": "45f381877ef7cdc00347e7624d2bbcedc60208044d9a259b0566d782c4c54735",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SelectivityUciMain.class": "9500b1a058b35b0b11f5d7be1dbe2f8248748a4c22f74ef67a14cb84619ba5e6",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain$1.class": "58c3d4ebe21a2b8aa46a3114d1bc3e37a851860312fe330867a78d5708df6598",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain.class": "1c47b49bba3d0fb4a9349db23ac757778cd6c6f9d6e32a3911eb2f1613451735",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain$1.class": "1a0b995fb5c2046b1a4e18a5cec8b0bd1eeb949595e1b1c36a556e7514c45b14",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain.class": "b35ec2373bd5a0cf4e6d714d5e7b8e6c948fc33775b5b461af10696c539b84fd",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain$1.class": "a7e2f469e7b6976ec1897c05ec9428220e9ff4a97ec03ef894189b0ecd4e3bf3",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain.class": "1fb37318975ec761b2117db35602d72fd28113e678b17700752a1764156006ec",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain$1.class": "2b01438f9b77a8c89c9b153638b85841f2dad32f74b215d3749158ba8a980b17",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain.class": "119edde9b12440c661ae89495afc65511d76e003ff4f0da644d9f37e64755281",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain$1.class": "745f48127c0e35629ea731691b838b7cf0c51ddb732f7bec9b87bb171e0fe7d6",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain.class": "706958cf81282a7d9e4b130b92f36f80219d993f86547e40d2c2a16aff431141",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\lib\\app-uci.jar": "1ba9d9bcf44fcf385c6495e909fc3c24bb2dea4d1a10ed4f0d48b75319f67a19",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\lib\\engine-core.jar": "1259c74c4c5d8d415e9431c059811394c5f5c7e8b321df152280a3d6e9cb0106",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\lib\\research.jar": "cc816453f7b53a3e204c84829d30315684b552a9495ad76badc1afa881a37f45",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\probe-runtime-v1\\research-launcher.properties": "a7c61ea7a9363040d74d62f8b3ce450305f0b833ef13cd5dc87a85425f5849e4"
+  },
+  "runnerSha256": "06d19d1d799a2bf56bbd8c6e9425245e37279d4e7afcbcf42d1d544b8565bd71"
+}

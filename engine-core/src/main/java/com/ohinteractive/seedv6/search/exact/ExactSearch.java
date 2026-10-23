@@ -975,6 +975,8 @@ public final class ExactSearch {
         try {
             while(true) {
                 if(state==2) {
+                    if(selectivityTrace!=null) selectivityTrace.completed(boards[ply],constructionState.pathMoves,
+                            ply,depth,score,nodes);
                     if(ply==0) return score;
                     --ply;
                     depth=flatMainFrames[0][ply];alpha=flatMainFrames[1][ply];beta=flatMainFrames[2][ply];
@@ -1179,6 +1181,14 @@ public final class ExactSearch {
                     legalMoves[index]=legalMoves[--count];selectionKeys[keyBase+index]=selectionKeys[keyBase+count];
                     continue;
                 }
+                if(constructionState!=null && (construction.has(FlatSearchConfig.Feature.REDUCTION_FUTILITY)
+                        || construction.has(FlatSearchConfig.Feature.NOMINAL_FUTILITY))
+                        && constructionDeepFutility(board,child,move,hashMove,ply,depth,index,searchedQuiets,
+                                flags,status,originalAlpha,originalBeta,alpha,beta)) {
+                    checkpoint();selectiveEpoch++;constructionState.futilityOmissions++;best=Math.max(best,alpha);
+                    legalMoves[index]=legalMoves[--count];selectionKeys[keyBase+index]=selectionKeys[keyBase+count];
+                    continue;
+                }
                 rootNodesBefore=ply==0 && iterationReuse!=null?nodes-observationNodes:0;
                 if(iterationReuse!=null) iterationReuse.descend(ply,move);
                 int childDepth=depth-1;
@@ -1237,6 +1247,38 @@ public final class ExactSearch {
                 depth=childDepth;alpha=childAlpha;beta=childBeta;flags=childFlags;ply++;state=0;
             }
         } finally {while(history.size()>historySize) history.popRealPosition();}
+    }
+
+    /** Default-OFF CP64 research: compare a nominal margin foundation with the
+     * incremental information in assigned reduction depth. No child is admitted,
+     * evaluated, labelled, extended or published by an omission. */
+    private boolean constructionDeepFutility(long[] board,long[] child,long move,long hashMove,int ply,int depth,
+            int index,int searchedQuiets,int flags,int status,int originalAlpha,int originalBeta,int alpha,int beta) {
+        if(depth<3 || depth>5 || ply==0 || index==0 || searchedQuiets<3 || (flags&1)!=0
+                || originalBeta!=originalAlpha+1 || alpha<0 || beta>MAX_STATIC_SCORE
+                || CaptureHistory.isTactical(move,Board.enPassantSquare(status))
+                || ((move>>>Board.START_PIECE_SHIFT)&Piece.TYPE)==Piece.PAWN
+                || ((move>>>Board.START_PIECE_SHIFT)&Piece.TYPE)==Piece.KING
+                || Long.bitCount(board[0]|board[1]|board[2])<=6 || !hasNonPawnMaterial(board,status)
+                || quietHistory[QuietHistory.index(move)]>0) return false;
+        int reduction=lmrReduction(depth,ply,index+1,searchedQuiets+1,(flags&4)!=0,false,
+                move,hashMove,status,child,alpha,beta);
+        if(reduction==0) return false;
+        if((construction.has(FlatSearchConfig.Feature.CAUTION) && (flags&8)!=0)
+                || (construction.has(FlatSearchConfig.Feature.IMPROVING) && constructionImproving(board,ply))) reduction--;
+        int assigned=depth-1-reduction;
+        if(assigned>2) return false;
+        int marginDepth=construction.has(FlatSearchConfig.Feature.REDUCTION_FUTILITY)?assigned:depth;
+        int raw=constructionEval(board,ply);
+        if(raw+construction.futilityMargin()*marginDepth>alpha) return false;
+        if(selectivityTrace!=null) {
+            int context=ContinuationHistory.context(constructionState.pathMoves[ply]);
+            int continuation=constructionState.continuation!=null && context>=0
+                    ?constructionState.continuation[ContinuationHistory.index(context,move)]:0;
+            selectivityTrace.omission(board,move,constructionState.pathMoves,ply,depth,alpha,beta,raw,
+                    quietHistory[QuietHistory.index(move)],continuation,assigned,marginDepth);
+        }
+        return true;
     }
 
     private boolean constructionImproving(long[] board,int ply) {

@@ -1,0 +1,14 @@
+{
+  "status": "corrected-scope",
+  "rawPath": "raw\\baseline-observe-d8-v1.jsonl",
+  "rawSha256": "4d5f81b2ecf5e2d7596d77d9bcbfbb11210dc5c35464f454602d95c01b6fb0bf",
+  "reason": "ExactSearch.searchWindow resets constructionState on abort before the attempt observer reads counters. Completed-attempt counters exclude aborted work. External prediction and SelectivityTrace event captures survive abort; request nodes/time include all work.",
+  "abortedAttempts": 2,
+  "abortedNodes": 938843,
+  "actualPredictionEventsIncludingAborted": {
+    "reverse": 345365,
+    "futility": 1247383
+  },
+  "priorSummaryPreserved": true,
+  "impact": "No effect on measured total request time/CPU/nodes, move/cap results, source identity, observation neutrality or all96 reference replays. Counter totals are lower-bound completed-attempt incidence, not full-request counts. Lazy test507281/264549 values also cover completed attempts only; exact traversal validation still holds."
+}

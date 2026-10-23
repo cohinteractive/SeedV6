@@ -1,0 +1,642 @@
+{
+  "status": "passed",
+  "protocolSha256": "76287a6678924718d3822bf4e209b4ba6ee2d1834ce34ab70554baef928fd5f0",
+  "experiments": {
+    "baseline-regression-v1": {
+      "rawPath": "raw\\baseline-regression-v1.jsonl",
+      "rawSha256": "cfbc70fa58e2cca6ed5eadee680185f0cf0e4e7743c7f09e22be6b4f503d91c9",
+      "wallSeconds": 14.19024779999745,
+      "nativeLifetime": {
+        "creationTicks": 134372263953934841,
+        "createdUtc": "2026-10-23T10:53:15.393484+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-23T10:53:29.521963+00:00",
+        "kernelCpuSeconds": 0.65625,
+        "userCpuSeconds": 18.0,
+        "totalCpuSeconds": 18.65625
+      },
+      "peakWorkingSetBytes": 325353472,
+      "profiles": {
+        "baseline": {
+          "elapsedNanos": 13669557498,
+          "processCpuNanos": 17734375000,
+          "resetNanos": 16572503,
+          "gcCollections": 1,
+          "compilationMillis": 4297,
+          "requests": 12,
+          "nodes": 7685978,
+          "capped": 3,
+          "completedDepths": {
+            "8": 9,
+            "7": 3
+          },
+          "differentMoves": 0,
+          "elapsedRatio": 1.0,
+          "cpuRatio": 1.0,
+          "nodesRatio": 1.0,
+          "elapsedIncludingResetRatio": 1.0,
+          "geometricElapsedRatio": 1.0,
+          "depthPairCounts": {
+            "lower": 0,
+            "equal": 12,
+            "higher": 0
+          }
+        }
+      },
+      "build70DefaultRequestParity": true
+    },
+    "opportunity-d8-w1-v1": {
+      "rawPath": "raw\\opportunity-d8-w1-v1.jsonl",
+      "rawSha256": "6fa8c47699f2c60bfe1694d712fcd232f164b74f218c2be8c777b33c4d53bc77",
+      "wallSeconds": 35.77485380000144,
+      "nativeLifetime": {
+        "creationTicks": 134372264095866209,
+        "createdUtc": "2026-10-23T10:53:29.586620+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-23T10:54:05.278114+00:00",
+        "kernelCpuSeconds": 0.59375,
+        "userCpuSeconds": 40.203125,
+        "totalCpuSeconds": 40.796875
+      },
+      "peakWorkingSetBytes": 851628032,
+      "profiles": {
+        "baseline": {
+          "completedAttemptCounters": {
+            "captureUpdates": 285426,
+            "quietUpdates": 154491,
+            "filtered": 1931,
+            "orderingChanges": 3567452,
+            "reductions": 186875,
+            "verifications": 305,
+            "fullRetries": 526,
+            "refuted": 122,
+            "relief": 39242,
+            "extensions": 66225,
+            "futilityOmissions": 732169,
+            "reverseCutoffs": 239906,
+            "protectedMoves": 19398,
+            "evaluations": 811752
+          },
+          "abortedNodesExcludedFromThoseCounters": 1565075,
+          "traceCountsIncludingAborted": {
+            "survivingMainNodes": 852349,
+            "guardedDeepScoutNodes": 61473,
+            "rawAtLeastBetaNodes": 46565,
+            "laterSearchedMoves": 2009173,
+            "laterSearchedQuietMoves": 1674547,
+            "negativeHistoryQuiets": 334249,
+            "zeroHistoryQuiets": 589126,
+            "baseReductionMoves": 301100,
+            "reductionFutilityOpportunities": 68853
+          },
+          "deepScoutSurplusByDepth": {
+            "3": [
+              0,
+              10089,
+              6846,
+              13902,
+              6133,
+              11672
+            ],
+            "4": [
+              0,
+              3440,
+              1407,
+              1856,
+              693,
+              1314
+            ],
+            "5": [
+              0,
+              959,
+              595,
+              775,
+              211,
+              477
+            ],
+            "6": [
+              0,
+              364,
+              186,
+              244,
+              28,
+              6
+            ],
+            "7": [
+              0,
+              56,
+              120,
+              92,
+              8,
+              0
+            ]
+          },
+          "reductionDepthHistorySigns": {
+            "3/1": [
+              89913,
+              60323,
+              10695
+            ],
+            "3/2": [
+              20071,
+              10424,
+              2601
+            ],
+            "4/2": [
+              29303,
+              27601,
+              3599
+            ],
+            "4/3": [
+              9723,
+              6233,
+              1352
+            ],
+            "5/2": [
+              10568,
+              4559,
+              343
+            ],
+            "5/3": [
+              1298,
+              1214,
+              1065
+            ],
+            "5/4": [
+              40,
+              33,
+              135
+            ],
+            "6/3": [
+              4997,
+              2235,
+              255
+            ],
+            "6/4": [
+              643,
+              534,
+              648
+            ],
+            "6/5": [
+              26,
+              13,
+              68
+            ],
+            "7/4": [
+              342,
+              63,
+              53
+            ],
+            "7/5": [
+              73,
+              12,
+              39
+            ],
+            "7/6": [
+              2,
+              0,
+              4
+            ]
+          },
+          "samples": {
+            "null-opportunity": 118,
+            "reduction-futility-opportunity": 70
+          },
+          "surplusColumns": [
+            "notEvaluated",
+            "belowBeta",
+            "0..99",
+            "100..299",
+            "300..599",
+            "600+"
+          ],
+          "reductionKey": "nominalDepth/assignedChildDepth; negative,zero,positive main-history counts"
+        },
+        "lazy-improving": {
+          "completedAttemptCounters": {
+            "captureUpdates": 285426,
+            "quietUpdates": 154491,
+            "filtered": 1931,
+            "orderingChanges": 3567452,
+            "reductions": 186875,
+            "verifications": 305,
+            "fullRetries": 526,
+            "refuted": 122,
+            "relief": 39242,
+            "extensions": 66225,
+            "futilityOmissions": 732169,
+            "reverseCutoffs": 239906,
+            "protectedMoves": 19398,
+            "evaluations": 410780
+          },
+          "abortedNodesExcludedFromThoseCounters": 1565075,
+          "traceCountsIncludingAborted": {
+            "survivingMainNodes": 852349,
+            "guardedDeepScoutNodes": 61473,
+            "rawAtLeastBetaNodes": 0,
+            "laterSearchedMoves": 2009173,
+            "laterSearchedQuietMoves": 1674547,
+            "negativeHistoryQuiets": 334249,
+            "zeroHistoryQuiets": 589126,
+            "baseReductionMoves": 301100,
+            "reductionFutilityOpportunities": 68513
+          },
+          "deepScoutSurplusByDepth": {
+            "3": [
+              48642,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "4": [
+              8710,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "5": [
+              3017,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "6": [
+              828,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "7": [
+              276,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "reductionDepthHistorySigns": {
+            "3/1": [
+              89913,
+              60323,
+              10695
+            ],
+            "3/2": [
+              20071,
+              10424,
+              2601
+            ],
+            "4/2": [
+              29303,
+              27601,
+              3599
+            ],
+            "4/3": [
+              9723,
+              6233,
+              1352
+            ],
+            "5/2": [
+              10568,
+              4559,
+              343
+            ],
+            "5/3": [
+              1298,
+              1214,
+              1065
+            ],
+            "5/4": [
+              40,
+              33,
+              135
+            ],
+            "6/3": [
+              4997,
+              2235,
+              255
+            ],
+            "6/4": [
+              643,
+              534,
+              648
+            ],
+            "6/5": [
+              26,
+              13,
+              68
+            ],
+            "7/4": [
+              342,
+              63,
+              53
+            ],
+            "7/5": [
+              73,
+              12,
+              39
+            ],
+            "7/6": [
+              2,
+              0,
+              4
+            ]
+          },
+          "samples": {
+            "reduction-futility-opportunity": 70
+          },
+          "surplusColumns": [
+            "notEvaluated",
+            "belowBeta",
+            "0..99",
+            "100..299",
+            "300..599",
+            "600+"
+          ],
+          "reductionKey": "nominalDepth/assignedChildDepth; negative,zero,positive main-history counts"
+        }
+      },
+      "lazyTraversalParity": true
+    },
+    "lazy-cost-d8-w1-v1": {
+      "rawPath": "raw\\lazy-cost-d8-w1-v1.jsonl",
+      "rawSha256": "cd5ad7f92e68f62ec5a33a2943e3513fbdac147902b06925e7667f0a3a99a309",
+      "wallSeconds": 139.81553919999715,
+      "nativeLifetime": {
+        "creationTicks": 134372264453645938,
+        "createdUtc": "2026-10-23T10:54:05.364594+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-23T10:56:25.125179+00:00",
+        "kernelCpuSeconds": 0.578125,
+        "userCpuSeconds": 145.203125,
+        "totalCpuSeconds": 145.78125
+      },
+      "peakWorkingSetBytes": 387153920,
+      "profiles": {
+        "baseline": {
+          "elapsedNanos": 56027743594,
+          "processCpuNanos": 56750000000,
+          "resetNanos": 39666402,
+          "gcCollections": 0,
+          "compilationMillis": 756,
+          "requests": 36,
+          "nodes": 23057934,
+          "capped": 9,
+          "completedDepths": {
+            "8": 27,
+            "7": 9
+          },
+          "differentMoves": 0,
+          "elapsedRatio": 1.0,
+          "cpuRatio": 1.0,
+          "nodesRatio": 1.0,
+          "elapsedIncludingResetRatio": 1.0,
+          "geometricElapsedRatio": 1.0,
+          "depthPairCounts": {
+            "lower": 0,
+            "equal": 36,
+            "higher": 0
+          }
+        },
+        "lazy-improving": {
+          "elapsedNanos": 55553390905,
+          "processCpuNanos": 55515625000,
+          "resetNanos": 39743099,
+          "gcCollections": 0,
+          "compilationMillis": 127,
+          "requests": 36,
+          "nodes": 23057934,
+          "capped": 9,
+          "completedDepths": {
+            "8": 27,
+            "7": 9
+          },
+          "differentMoves": 0,
+          "elapsedRatio": 0.991533610697633,
+          "cpuRatio": 0.9782488986784141,
+          "nodesRatio": 1.0,
+          "elapsedIncludingResetRatio": 0.9915409684158081,
+          "geometricElapsedRatio": 0.9877856323825229,
+          "depthPairCounts": {
+            "lower": 0,
+            "equal": 36,
+            "higher": 0
+          },
+          "exactTraversalParity": true
+        }
+      }
+    },
+    "h1-n250k-w1-v1": {
+      "rawPath": "raw\\h1-n250k-w1-v1.jsonl",
+      "rawSha256": "3ad6381c148b8f91ec5c5086691fb69c5dd578f7ddba6845fe984b8b6c2fc4a4",
+      "wallSeconds": 60.69801849999931,
+      "nativeLifetime": {
+        "creationTicks": 134372265851831276,
+        "createdUtc": "2026-10-23T10:56:25.183128+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-23T10:57:25.821777+00:00",
+        "kernelCpuSeconds": 0.78125,
+        "userCpuSeconds": 68.296875,
+        "totalCpuSeconds": 69.078125
+      },
+      "peakWorkingSetBytes": 433221632,
+      "profiles": {
+        "baseline": {
+          "elapsedNanos": 13338934904,
+          "processCpuNanos": 14093750000,
+          "resetNanos": 27168002,
+          "gcCollections": 0,
+          "compilationMillis": 416,
+          "requests": 24,
+          "nodes": 6000000,
+          "capped": 24,
+          "completedDepths": {
+            "7": 10,
+            "9": 6,
+            "6": 4,
+            "8": 4
+          },
+          "differentMoves": 0,
+          "elapsedRatio": 1.0,
+          "cpuRatio": 1.0,
+          "nodesRatio": 1.0,
+          "elapsedIncludingResetRatio": 1.0,
+          "geometricElapsedRatio": 1.0,
+          "depthPairCounts": {
+            "lower": 0,
+            "equal": 24,
+            "higher": 0
+          }
+        },
+        "lazy-improving": {
+          "elapsedNanos": 13117190196,
+          "processCpuNanos": 13078125000,
+          "resetNanos": 27010600,
+          "gcCollections": 0,
+          "compilationMillis": 371,
+          "requests": 24,
+          "nodes": 6000000,
+          "capped": 24,
+          "completedDepths": {
+            "7": 10,
+            "9": 6,
+            "6": 4,
+            "8": 4
+          },
+          "differentMoves": 0,
+          "elapsedRatio": 0.9833761308833208,
+          "cpuRatio": 0.9279379157427938,
+          "nodesRatio": 1.0,
+          "elapsedIncludingResetRatio": 0.9833981444284415,
+          "geometricElapsedRatio": 0.9838334748675506,
+          "depthPairCounts": {
+            "lower": 0,
+            "equal": 24,
+            "higher": 0
+          },
+          "exactTraversalParity": true
+        },
+        "no-improving": {
+          "elapsedNanos": 13265441295,
+          "processCpuNanos": 13171875000,
+          "resetNanos": 27549497,
+          "gcCollections": 0,
+          "compilationMillis": 40,
+          "requests": 24,
+          "nodes": 6000000,
+          "capped": 24,
+          "completedDepths": {
+            "8": 8,
+            "9": 6,
+            "7": 6,
+            "6": 4
+          },
+          "differentMoves": 6,
+          "elapsedRatio": 0.9944902940505421,
+          "cpuRatio": 0.934589800443459,
+          "nodesRatio": 1.0,
+          "elapsedIncludingResetRatio": 0.9945300350809674,
+          "geometricElapsedRatio": 0.9943975035650491,
+          "depthPairCounts": {
+            "lower": 0,
+            "equal": 20,
+            "higher": 4
+          }
+        }
+      }
+    },
+    "h1-n250k-w4-v1": {
+      "rawPath": "raw\\h1-n250k-w4-v1.jsonl",
+      "rawSha256": "3849e4c5667cbe8d96a3f80704a0837b297a353da115b2f12ab039cafaec9440",
+      "wallSeconds": 29.230521299999964,
+      "nativeLifetime": {
+        "creationTicks": 134372266458840521,
+        "createdUtc": "2026-10-23T10:57:25.884052+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-23T10:57:55.056568+00:00",
+        "kernelCpuSeconds": 0.828125,
+        "userCpuSeconds": 72.46875,
+        "totalCpuSeconds": 73.296875
+      },
+      "peakWorkingSetBytes": 521043968,
+      "profiles": {
+        "baseline": {
+          "elapsedNanos": 6007599197,
+          "processCpuNanos": 13703125000,
+          "resetNanos": 30057903,
+          "gcCollections": 0,
+          "compilationMillis": 637,
+          "requests": 24,
+          "nodes": 6000000,
+          "capped": 24,
+          "completedDepths": {
+            "7": 9,
+            "8": 4,
+            "9": 6,
+            "6": 5
+          },
+          "differentMoves": 0,
+          "elapsedRatio": 1.0,
+          "cpuRatio": 1.0,
+          "nodesRatio": 1.0,
+          "elapsedIncludingResetRatio": 1.0,
+          "geometricElapsedRatio": 1.0,
+          "depthPairCounts": {
+            "lower": 0,
+            "equal": 24,
+            "higher": 0
+          }
+        },
+        "lazy-improving": {
+          "elapsedNanos": 5834181400,
+          "processCpuNanos": 12937500000,
+          "resetNanos": 30206398,
+          "gcCollections": 1,
+          "compilationMillis": 105,
+          "requests": 24,
+          "nodes": 6000000,
+          "capped": 24,
+          "completedDepths": {
+            "7": 11,
+            "9": 6,
+            "6": 5,
+            "8": 2
+          },
+          "differentMoves": 3,
+          "elapsedRatio": 0.971133594084206,
+          "cpuRatio": 0.9441277080957811,
+          "nodesRatio": 1.0,
+          "elapsedIncludingResetRatio": 0.9713018975522807,
+          "geometricElapsedRatio": 0.9872594146097423,
+          "depthPairCounts": {
+            "lower": 2,
+            "equal": 22,
+            "higher": 0
+          }
+        },
+        "no-improving": {
+          "elapsedNanos": 5390065903,
+          "processCpuNanos": 12937500000,
+          "resetNanos": 29891899,
+          "gcCollections": 0,
+          "compilationMillis": 601,
+          "requests": 24,
+          "nodes": 6000000,
+          "capped": 24,
+          "completedDepths": {
+            "7": 7,
+            "8": 5,
+            "9": 6,
+            "6": 6
+          },
+          "differentMoves": 10,
+          "elapsedRatio": 0.8972079738095085,
+          "cpuRatio": 0.9441277080957811,
+          "nodesRatio": 1.0,
+          "elapsedIncludingResetRatio": 0.8976922193875502,
+          "geometricElapsedRatio": 0.9201342613946101,
+          "depthPairCounts": {
+            "lower": 1,
+            "equal": 22,
+            "higher": 1
+          }
+        }
+      }
+    }
+  },
+  "limits": [
+    "Development only, no strength inference.",
+    "Repeated rounds and related positions are not independent samples.",
+    "Construction counters reset on abort and cover completed attempts; external opportunity trace includes aborted work.",
+    "Null surplus and reduction-futility opportunities are not calibrated prediction quality.",
+    "Multiworker scheduling prevents exact node/tree equivalence; heap/peak are cohort observations."
+  ]
+}

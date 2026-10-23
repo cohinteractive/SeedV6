@@ -1,6 +1,6 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R021**
+Internal revision: **P3-R022**
 
 Status: **ACTIVE: owner-authorized CP64-integrated Search selectivity reappraisal. The preceding TT CGLHW is GPT-reconciled and owner-accepted, with acceptance/synchronization prerequisites confirmed. Build70 full Construction V1/ADAPTIVE16/frozen CP64 remains production; no automatic promotion, TT-policy change, evaluator replacement, external deployment or successor.**
 
@@ -47,13 +47,15 @@ holds the dynamic hypothesis queue, frozen experiments and precise resume point.
 Repository execution does not wait for mirror refresh; dependent external GPT
 planning requires both revised masters refreshed and synchronization confirmed.
 
-Initial development qualification and targeted reverse ablation are complete.
-Removing improving reduced sampled request cost substantially without changed root
-moves in the small development corpus; strength is unknown. Shallow pruning is
-active, and96 conditional independent replays found no false threshold. The next
-unit separates improving's evaluation cost from selective depth decisions and
-measures complementary history/reduction/deeper-node opportunities. Details and
-limitations are in the focused record; no production change or promotion follows.
+Initial reverse ablation and cost separation are complete. Lazy improving preserves
+one-worker traversal but offers modest elapsed savings; removing improving changes
+selectivity and merits a fresh one-worker10+0.1 development screen. Its first
+resource admission failed before any game launched. Deeper surviving opportunities
+justify a guarded nominal-margin versus assigned-reduction-margin comparison and
+an actual selective-cost audit of verified-null predictions. Build71 adds explicit
+default-OFF research controls; accepted production choices remain unchanged.
+Conditional reference samples are diagnostic, not strength or proof certification.
+The focused record preserves precise protocols, failures, limitations and resume state.
 
 ## ADAPTIVE16 production selection - 23 October 2026
 

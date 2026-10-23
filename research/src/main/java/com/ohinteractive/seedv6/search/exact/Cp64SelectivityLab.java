@@ -14,8 +14,18 @@ import static com.ohinteractive.seedv6.search.exact.FlatSearchConfig.Feature.*;
 /** Bounded H1 cost separation and H2/H4/H5 opportunity observation, never production activation. */
 public final class Cp64SelectivityLab {
     public static ConstructionSearch configuration(String name,int workers,int hash) {
-        var base=Cp64SelectivityStudy.configuration(name.equals("lazy-improving")?"baseline":name,workers);
-        return new ConstructionSearch(name.equals("lazy-improving")?base.mechanisms().with(LAZY_IMPROVING,true):base.mechanisms(),
+        var base=Cp64SelectivityStudy.configuration(switch(name) {
+            case "lazy-improving","reduction-futility","nominal-futility" -> "baseline";
+            case "reduction-no-improving" -> "no-improving";
+            default -> name;
+        },workers);
+        var mechanisms=switch(name) {
+            case "lazy-improving" -> base.mechanisms().with(LAZY_IMPROVING,true);
+            case "reduction-futility","reduction-no-improving" -> base.mechanisms().with(REDUCTION_FUTILITY,true);
+            case "nominal-futility" -> base.mechanisms().with(NOMINAL_FUTILITY,true);
+            default -> base.mechanisms();
+        };
+        return new ConstructionSearch(mechanisms,
                 workers,hash,base.aspiration());
     }
     record Sample(String kind,long[] board,long move,long[] path,int ply,int depth,int alpha,int beta,
@@ -26,6 +36,16 @@ public final class Cp64SelectivityLab {
         final long[] counts=new long[9];
         final int[][] selected=new int[2][17];
         final List<Sample> samples=new ArrayList<>();
+        final long[][] omissions=new long[17][3];
+        final List<Map<String,Object>> omittedSamples=new ArrayList<>();
+        @Override public void omission(long[] b,long move,long[] path,int ply,int depth,int alpha,int beta,
+                int raw,int history,int continuation,int assignedChildDepth,int marginDepth) {
+            long n=++omissions[depth][Integer.signum(history)+1];
+            if(n==1 || n==8 || n==64 || n==512) omittedSamples.add(Map.of("sample",
+                    new Sample("deeper-futility-omission",b.clone(),move,Arrays.copyOfRange(path,1,ply+1),
+                            ply,depth,alpha,beta,raw,history,continuation,depth-1-assignedChildDepth),
+                    "assignedChildDepth",assignedChildDepth,"marginDepth",marginDepth,"event",n));
+        }
         static boolean material(long[] b,int status) {
             long occupied=b[0]|b[1]|b[2],kings=b[0]&~b[1]&~b[2],pawns=~b[0]&b[1]&b[2];
             long side=Board.player(status)==0?~b[3]:b[3];

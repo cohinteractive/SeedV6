@@ -1,0 +1,14 @@
+{
+  "id":"P3-CP64-SELECTIVITY-COMPLEMENT-PROBES-v1",
+  "frozenBeforeExecution":true,
+  "input":"raw/opportunity-d8-w1-v1.jsonl",
+  "corpus":"docs/research/search/p3-construction-2026-10-20/diagnostic-corpus.tsv",
+  "selection":"Baseline profile only, first captured sample per root/kind/nominal-depth: null depths3..6; reduction-futility depths3..5. Selection is determined by prior opportunity capture without probe outcomes; preserve every eligible sample including budget failures. Expected48 null and35 reduction-futility samples.",
+  "nominalBudget":1000000,
+  "probeBudget":200000,
+  "null":"Replay the original legal parent prefix and restrict its sole root branch to the sampled legal move with a scout window yielding the recorded child beta. Use retained isolated synthetic machinery: SHALLOW R2 atD3, ADAPTIVE R=min(d-2,2+d/4) atD4..6, unpruned synthetic qsearch, preserved real clock, no pass occurrence, no TT, history writes, nested null or LMR inside the probe. Capture the target callback, intentionally cancel before publishing any cutoff, and verify owner reuse. Separately run unpruned legalD-2 verification and unpruned nominalD reference, both original real history and the same unit window. Their conjunction is a hypothetical adaptive verified predicate, not an implemented flattened policy or exact proof.",
+  "futility":"Replay the omitted-candidate legal child at assigned reduced child depth and nominal child depth with independent recursive TT-off unpruned qsearch and the original alpha unit window. Classify reduced/nominal threshold disagreements and both raw+100*assignedChildDepth versus raw+100*nominalChildDepth predicates. This separates prospective extra information from already reduced failures; it does not replicate complete selective child context or prove whole-engine quality.",
+  "analysis":"Count captured/completed/capped cases, hypothetical null/verified false thresholds, reduction-futility adverse quadrants, whole probe/reduced/nominal nodes and elapsed. Include rejected probes/verification cost. Rerooted mate distances are not original distance claims; only ordinary-threshold direction is compared. Samples are conditional and correlated, not population error probabilities. Retain every adverse witness; no tuning, selective extension or automatic candidate implementation.",
+  "decision":"If useful complementary decisions with feasible cost survive, consider one guarded reversible formulation and meaningful supporting-control comparison. Otherwise retain a scoped negative/inconclusive/economic disposition. Missing authority for binding TT changes blocks only that branch; this experiment changes no TT policy.",
+  "resources":"One BelowNormal JVM, one Search worker, Xms256m Xmx768m, ActiveProcessorCount4; no concurrent research/build/game.30min operational watchdog; expected under5min, capped references remain unknown. This is diagnostic timing, not clean whole-request speed or strength."
+}

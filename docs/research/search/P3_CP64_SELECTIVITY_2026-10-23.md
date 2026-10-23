@@ -1,6 +1,6 @@
 # CP64-integrated Search selectivity reappraisal
 
-Owner-authorized 23 October 2026 (Pacific/Auckland). **ACTIVE; first observation/ablation and pruning replay complete.** Governed by Phase 3 Contract P3-R021 / Frontier P3-F021.
+Owner-authorized 23 October 2026 (Pacific/Auckland). **ACTIVE; ablation, cost separation and complementary probes complete; deeper controls under validation and H1 clock awaiting resource admission.** Governed by Phase 3 Contract P3-R022 / Frontier P3-F022. Current resume is the final section below; earlier execution paragraphs record completed stages.
 This is a focused research record and dynamic queue, not another master.
 
 ## Authority, identity and boundaries
@@ -64,11 +64,11 @@ external evidence belong in the bootstrap/evidence manifests.
 
 | ID | Question / expected decision value | Falsifier and next admissible evidence | State |
 | --- | --- | --- | --- |
-| H1 | Does raw two-ply improving relief justify eager CP64 evaluation and the extra searched depth? Can paid-eval-only evidence or removal help? SR009/029/033. | Compare full configuration with improving off, observe relief/evaluation/verification and complete requests; retain adverse decisions. Timing alone cannot establish gain. | First observation/ablation |
-| H2 | Do history protection and richer quiet memories add reliable decisions after completed hints and nominal-label filtering? SR016/023/022. | Targeted protection and continuation/refutation ablations; inspect sparse/censored evidence before any negative-history pruning. | First observation/ablation |
-| H3 | Are current shallow futility/RFP complementary and suitably conservative under CP64? SR009/019/021/022. | Individual removal, prefix/threshold occurrence and independent adverse replay; calibrate only if meaningful opportunity survives. | First observation/ablation |
-| H4 | Does reduction depth/history add incremental information beyond nominal depth/count, and does CAUTION still help in the full configuration? SR029/033/023. | CAUTION ablation and reduction-context diagnostics; no shortened mandatory nominal verification. | Observation, conditional variant |
-| H5 | Is there enough deeper surviving non-PV work for a guarded adaptive verified null probe to repay its cost? SR018/019/029. | Measure opportunity after existing shallow cuts/LMR; inspect historical witnesses and synthetic-domain costs before implementation. | Challenged, conditional on opportunity |
+| H1 | Does raw two-ply improving relief justify eager CP64 evaluation and extra depth? SR009/029/033. | Fresh W1 clock screen for removal; lazy costs are modest despite exact W1 traversal. | Clock inputs frozen; first resource admission failed before launch |
+| H2 | Do history protection and richer quiet memories add reliable decisions? SR016/023/022. | Simple removals mixed; negative/zero occurrences do not establish reliable failure. Inspect conditional deeper-consumer witnesses. | No pruning feature admitted; confidence unresolved |
+| H3 | Are shallow futility/RFP complementary and conservative under CP64? SR009/019/021/022. | RFP removal costly, shallow futility modest;96 samples no false threshold. Test guarded deeper foundation. | Default-OFF nominal-depth foundation under validation |
+| H4 | Does actual reduction depth add information beyond nominal depth/count/history? SR029/033/023. | Compare identical guards with nominal versus assigned margins and improving-off composition; preserve nominal verification. | Default-OFF reduction consumer under validation |
+| H5 | Can adaptive verified null repay its cost after current selectivity? SR018/019/029. |48 isolated probes yield8 accepted/verified predictions; compare their costs with actual incumbent subtrees before integration. | Opportunity exists; economic admission unresolved |
 
 Ordering is provisional, not a compulsory feature queue. Related qsearch/SEE,
 ordering and aspiration are explanatory controls only. No TT re-investigation or
@@ -219,3 +219,118 @@ this is a local research build, not promoted configuration or external deploymen
 Next: freeze build71 runtime, verify default parity and explicit UCI identities,
 then measure lazy/eager costs, no-improving fixed-node behavior and surviving
 history/reduction/null opportunities under a separate prospective stage.
+
+### Counter-scope correction
+
+`counter-scope-correction-v1.json` qualifies the initial counter interpretation.
+Existing construction counters reset on abort, so1.31M evaluations/276262
+reductions/60805 relief and the prior omission/cutoff sums cover completed attempts,
+not all work. Two incomplete attempts contain938843 nodes. External event capture,
+which survives cancellation, records actual1,247,383 futility omissions and345,365
+RFP cutoffs over the complete observed requests. The lazy test507281/264549 values
+also cover completed attempts. No raw output or prior summary was rewritten.
+Request cost/accounting, default/eager-lazy traversal parity, predictions and all96
+reference replays are unaffected. Future summaries label this distinction explicitly.
+
+## Completed cost separation and complementary probes
+
+`separation-v1-summary.json` binds five complete stages against frozen build71
+`raw/runtime-v2` at source4125f1a. Twelve baseline requests reproduce build70
+outcomes exactly, including nodes, scores, PV, completion and aborted work.
+The observed/plain and eager/lazy W1 traversals also match. The D8 lazy cost
+screen has36 requests/profile, nine capped each, identical outcomes; lazy/full
+elapsed ratio.9915, CPU.9783. W1 fixed250k-node requests give lazy/full.9834 elapsed,
+.9279 CPU; no-improving/full.9945 elapsed,.9346 CPU, six changed moves over24
+requests (three distinct roots), four higher completed depths and none lower.
+W4 fixed-node ratios are lazy.9711/.9441 and no-improving.8972/.9441 elapsed/CPU;
+three/ten changed moves and two/one lower completed depths respectively. Repeated
+rounds are not independent positions, and scheduling changes the multiworker tree.
+No strength or universal throughput inference follows. Lazy's modest elapsed gain
+does not explain the much larger initial improving-off selective savings; no
+separate lazy clock tournament is presently justified.
+
+Baseline opportunity observation covers852349 surviving main nodes,61473 guarded
+D3+ scout nodes,46565 with raw evaluation at least beta,301100 base reductions
+and68853 prospective assigned-depth futility decisions. Of1674547 later searched
+quiets,334249 have negative main history and589126 zero. These are correlated
+invocations, not confidence-calibrated labels. Lazy has the identical tree but
+zero raw-at-least-beta observations at node entry because the value is not yet
+paid for there; it does not eliminate null opportunity. Its68513 later futility
+observations similarly depend on raw-value availability. Foundation/consumer
+economics must account for when evaluation is actually available.
+
+`uci-qualification-v1.json` passes baseline/no-improving/lazy profiles at1/4/16
+workers, actual200k-node startup warmups and two100k-node requests each. The frozen
+explicit baseline matches ordinary build71 UCI atW1. No external installation is
+changed. The global Python lacks chess; the existing research virtual environment
+provides it and owns subsequent match execution.
+
+`probe-v1-summary.json` preserves83 outcome-blind selected counterfactual probes
+from the baseline opportunities:48 null and35 deeper-futility moves. All48 null
+targets are captured using retained isolated synthetic machinery and intentional
+cancellation before publishing a cutoff; owner reuse passes. Eight predictions
+fail high, all eight also fail high in independent unpruned legalD-2 verification.
+Nominal unpruned references complete44/48; capped cases remain unknown. No false
+threshold is observed among the accepted completed comparisons. Whole probe cost
+is4314 nodes; verification on the eight accepted predictions costs35610. The7.14M
+nominal reference nodes are not savings against full Construction. Next compare
+with actual selective incumbent subtree cost before admitting an NMP candidate.
+
+All35 futility moves fail to raise alpha at both assigned reduced and nominal
+child depths;2102 versus42696 reference nodes. Twenty-four also pass a nominal
+child-depth margin, so reduction information is not credited with every decision.
+These conditional deterministic samples neither certify the margin nor establish
+a population error probability. `probe-v1.json` freezes selection and limitations;
+raw paths, full histories, capped results and intentional incompletion survive.
+Execution took14.2s; no failure or timeout. This supports one bounded comparison,
+not automatic inclusion of a pruning rule.
+
+## Current implementation, operating state and exact resume
+
+H1: `clock-development-v1.json` freezes32 freshW1 paired openings at10+0.1,
+one concurrent game, BelowNormal and the same frozen runtime-v2. The opening
+input exception was reviewed; generated tournament PGNs remain ignored underraw/.
+`clock-development-v1-binding.json` binds inputs/tools/runtime. The selection
+excludes existing tracked selection receipts and every ply16+ prefix in the first
+12 roots of each current development corpus. Its single final55% selection gate
+is not strength acceptance; independent confirmation would be separately frozen.
+At most two W1 finalist hypotheses may receive allocated familywise confirmation;
+unused alpha is not transferred. No W4 confirmation is automatically admitted.
+
+`clock-development-v1-admission.json` failed before launch:1.00259 average other
+logical CPUs exceeds the prospectively frozen1.0 limit; RAM passed. No games or
+worker launch occurred, and no game results were inspected. Preserve this receipt.
+A new independent resource admission may reuse the unchanged match inputs after
+other work ends; do not overwrite the failed admission or silently relax its gate.
+
+H3/H4: current uncommitted default-OFF REDUCTION_FUTILITY and NOMINAL_FUTILITY
+controls share D3..5, original unit-window, non-root/non-check, positive-history,
+material, rule-clock, tactical/pawn/king/hash/checking-move protections. They apply
+only after at least three actually searched quiets and when existing LMR plus
+improving/CAUTION assigns a child depth at most2. The nominal foundation uses the
+existing margin times parent nominal depth; the reduction consumer uses assigned
+child depth. These are explicit experimental calibration hypotheses. Both omit
+before child admission, evaluator transition, formal history or labels, preserve
+selective proof suppression, and leave nominal verification/full retry unchanged.
+The no-improving composition tests interaction rather than crediting every control.
+New completion observations allow actual incumbent subtree cost accounting.
+
+`deeper-validation-v1-summary.json` passes56 tests, no failures/errors/skips,
+99.5s. This includes actual omission legality, original-window guards, no admitted
+child history or ordinary proof store, observed/plain parity, CP64 rolling/rebuild,
+limits/drain/reset at1/4/16 workers and retained independent references. The new
+audit harness compiles in `audit-build-v1-summary.json`; no runtime audit is claimed
+from compilation. The unchanged default baseline will be replayed again.
+
+Precise resume: commit the validated shared-runtime research addition with
+build71 ->72, export/freeze runtime-v3, then execute `deeper-v1.json` through
+`run_deeper_v1.py` and the separately bound actual-null-cost/omission audits.
+No match is running. Preserve the frozen build71 runtime-v2 clock comparison;
+its code/tool/input binding is not updated by this new research checkpoint.
+Update this queue with those results; retry clock resource admission only when
+computational research is idle. H2 confidence remains unresolved; simple history/
+continuation/refutation removals were weak or mixed, so no negative-history
+pruning feature is admitted from occurrence counts alone. The qualifying commit
+increments build only; major/minor/patch and production flags stay unchanged.
+Masters areP3-R022/P3-F022. Project Source
+refresh is required, without blocking this authorized repository execution.
