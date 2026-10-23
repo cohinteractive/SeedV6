@@ -143,6 +143,15 @@ counters reset on abort; they omit aborted invocation mechanism counts, while
 table counters and whole-request nodes/time include that work. This limitation
 is retained rather than silently treating missing counters as zero work.
 
+Cost-mode uses the ordinary uninstrumented TTable, but enables the existing
+worker diagnostics to reconcile all entered nodes. "Clean" in harness comments
+therefore means no observing table, not all diagnostics disabled. Its CPU/time
+ratios apply to that shared diagnostic setting, and diagnostic overhead was not
+independently estimated. Do not quote those ratios as a production-speed claim.
+Clock engines use default diagnostics OFF (`seedv6.searchDiagnostics` is absent,
+and the existing runner removes ambient JVM injection variables); game/request
+telemetry and native lifetime cost provide the independent practical domain.
+
 No clock games, independent strength confirmation, new TT policy, candidate
 acceptance or production promotion follows from this diagnostic.
 
