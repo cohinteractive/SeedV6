@@ -11,14 +11,14 @@ redistribute finite thinking time to improve complete clock games. Positive
 improvement is optional; supported negative/inconclusive dispositions are valid.
 The owner accepts the preceding CP64 selectivity and native packaging repair,
 confirms both Project Source mirrors synchronized, and authorizes this CGLHW.
-Those acceptance gates are satisfied; executable identity still needs measurement.
+Those acceptance gates are satisfied; independent executable verification is recorded below.
 
-Baseline: clean `f32831a`, build74, shared BaselineEngine, flattened Construction
-V1 flags3407871 (original18 + NOMINAL_FUTILITY + VERIFIED_NULL), ADAPTIVE16,
+Baseline: clean `f32831a`, build 74, shared BaselineEngine, flattened Construction
+V1 flags 3407871 (original 18 + NOMINAL_FUTILITY + VERIFIED_NULL), ADAPTIVE16,
 frozen S6CNU002 CP64/eight heads, BT4_Q_LOGIT400_V1, requested Hash64.
 Network SHA-256 `8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b`;
 payload `5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6`.
-HCE/BREP2-32/unrelated conventional payloads retain original flags262143.
+HCE/BREP2-32/unrelated conventional payloads retain original flags 262143.
 
 Research implementations, measurements, routine selection and safe Git work are
 authorized. Production promotion, evaluator changes, TT policy changes (including
@@ -30,11 +30,11 @@ does not confirm W2-16 strength. Fresh independent confirmation remains 10+0.1.
 ## Bootstrap challenge and inspected evidence
 
 - Current masters before launch are P3-R028/P3-F028; packaging did not advance
-  them. Root CODEXLOG_CURRENT.md is absent. VERSION_STATE.txt exists at74; the
+  them. Root CODEXLOG_CURRENT.md is absent. VERSION_STATE.txt exists at 74; the
   explicit repository rule prohibits finalizers and bumps only qualifying commits.
-- TimeManager allocates remaining/movesToGo (default30) plus rounded 75% of
-  increment, minus10ms overhead, capped at remaining-50ms reserve. Above reserve
-  it offers at least1ms. This is a **hard request budget**, not an existing soft
+- TimeManager allocates remaining/movesToGo (default 30) plus rounded 75% of
+  increment, minus 10 ms overhead, capped at remaining-50ms reserve. Above reserve
+  it offers at least 1 ms. This is a **hard request budget**, not an existing soft
   target. GoCommandParser currently discards raw remaining/increment after this
   normalization. Additional spending needs an explicit bounded research seam;
   it cannot be created by silently relaxing SearchControl's deadline.
@@ -46,19 +46,19 @@ does not confirm W2-16 strength. Fresh independent confirmation remains 10+0.1.
   nodes, elapsed time and aspiration retry counts. Root effort is retained privately
   for ordering; it is not a probability of correctness, and inclusive retry/helper
   work must be accounted separately from a selected move's effort.
-- The Phase1 SR-034 REPORT.txt and original local CSVs exist at
+- The Phase 1 SR-034 REPORT.txt and original local CSVs exist at
   `C:/Users/Central/Documents/SeedV6-SR034-2026-10-01/`. They document stable
   shallow choices missing deeper resources, forecast overestimation, occasional
   missed cheap mate proofs, modest timed savings without whole-game evidence,
   and wall-time outlier contamination. Their HCE thresholds and full-window
   recursive baseline do not transfer to current CP64/ADAPTIVE16/flattened Search.
-- Final Phase2 retains bounded SR-034 as baseline and leaves broader forecast,
+- Final Phase 2 retains bounded SR-034 as baseline and leaves broader forecast,
   stability/root-effort redistribution unresolved; it supplies no current CP64
-  strength evidence. Phase3 construction did not add a predictive time policy.
+  strength evidence. Phase 3 construction did not add a predictive time policy.
 - The accessible `../BAGATUR_SEARCH_FRONTIER_ARCHITECTURE_ANALYSIS.md` SR-034
   section distinguishes score/move updates (including some lower bounds) from
   comparable completed iterations. It motivates a consumer, not copied constants.
-- External primary sources inspected 24 October2026: [Stockfish search.cpp](https://github.com/official-stockfish/Stockfish/blob/master/src/search.cpp)
+- External primary sources inspected 24 October 2026: [Stockfish search.cpp](https://github.com/official-stockfish/Stockfish/blob/master/src/search.cpp)
   combines score deterioration, best-move change/stability and root effort with
   optimum/maximum budgets; [Ethereal timeman.c](https://github.com/AndyGrant/Ethereal/blob/master/src/timeman.c)
   uses separate ideal/max allocations and completed PV/score/root-node factors.
@@ -69,11 +69,11 @@ does not confirm W2-16 strength. Fresh independent confirmation remains 10+0.1.
 
 | Question | Current state | Cheapest next discriminating evidence |
 | --- | --- | --- |
-| H1 stability/economical stops | Admitted; shallow stability challenged | Matched completed trajectories, stratified by depth and score provenance; later move changes are diagnostic, not quality labels. |
-| H2 justified instability spending | Admitted; score scale uncalibrated | Compare next completed changes and costs after move changes, score falls and retries, against stable controls. |
-| H3 iteration economics | Admitted; predictions explicitly fallible | Paired warmed costs/node growth and over/underprediction tails; assess abandoned work. |
-| H4 whole-game redistribution | Governing hypothesis; untested | Small controlled paired clock screen of the smallest supported policy, with static-spending/reverse ablation controls; freeze fresh confirmation only if justified. |
-| Root-effort instrumentation | Conditional | First exploit existing observations; add a boundary-only readout only if needed to distinguish a credible policy. |
+| H1 stability/economical stops | Mechanism and clock compatibility qualified; strength pending | Complete the two frozen whole-game comparisons; preserve shallow-stability counterexamples. |
+| H2 justified instability spending | Recent move changes merit one bounded additional-spending contrast; score-only thresholds deprioritized | Qualify the prepared UNSTABLE2 and extension-off BOUNDARY2 controls after both existing matches finish. |
+| H3 iteration economics | Large prediction tails; forecasting deprioritized | Use actual completed-boundary policies and complete-request cost; no guarantee inferred from predicted cost. |
+| H4 whole-game redistribution | Governing hypothesis; frozen development running | Finish both first-generation comparisons and their resource gates; no interim selection or confirmation reuse. |
+| Root-effort instrumentation | Read-only boundary diagnostic prepared; no consumer selected | Measure existing final-attempt effort and its incremental discrimination beyond stability, with fixed-node observation neutrality. |
 | Multiworker strength | Unconfirmed | Validate representative/all supported lifecycle compatibility; obtain separate strength confirmation before any multiworker claim. |
 
 Do not exhaustively sweep constants or stop after a single failed heuristic.
@@ -90,22 +90,25 @@ Evidence directory: `p3-sr034-2026-10-24/`. Bulk output belongs in ignored `raw/
 tracked protocols, scripts, summaries and manifests describe identities and limits.
 The native identity, initial trajectories and research-only HALF/STABLE3_HALF
 qualification below are complete. Commit `2997b453a1f8` contains the bounded
-runtime seam and research controls at build75, with production selection unchanged.
-The build75 export and frozen baseline/candidate preflights pass; the only changed
-core entries versus accepted build74 are SearchControl, SingleDepthSearch,
+runtime seam and research controls at build 75, with production selection unchanged.
+The build 75 export and frozen baseline/candidate preflights pass; the only changed
+core entries versus accepted build 74 are SearchControl, SingleDepthSearch,
 SearchDriver and generated version metadata (`clock-runtime-class-audit-v1.json`).
-The32 development openings and all executable inputs are frozen in
-`clock-development-v1-binding.json`. The stable3-half wrapper is active, initially
-performing `clock-development-stable3-half-v1-a01-pre-delivery`; it admits games
-only after the delivery and30s host checks pass. A `*-launch.json` receipt establishes
-that games actually started; a summary establishes completion. Do not restart it
-blindly or inspect interim game scores. Next, await its existing owned process,
-audit the final results/clock data, then run the prescribed32-pair HALF comparison
-regardless of the first score, with its own pre/post gates. No policy is selected
-for confirmation or production. The comparator uses
-the **exact accepted native build74 core JAR**, with the same research launcher
-and startup warmup; the candidate uses the new runtime. Production defaults remain
-the accepted baseline.
+The 32 development openings and all executable inputs are frozen in
+`clock-development-v1-binding.json`. STABLE3_HALF is complete and
+**resource-unqualified**, as detailed below; never replay it or substitute a
+later post-check. The prescribed HALF wrapper is now active, initially in its
+`clock-development-half-v1-a01-pre-delivery` admission. A launch receipt proves
+that games started; its final summary proves completion. Await the existing
+owned process; do not restart blindly or inspect interim scores. If prelaunch
+admission fails, preserve its attempt and use a fresh named attempt only after
+resource availability is suitable. New source validation/diagnostics remain
+queued until the first-generation comparisons and delivery checks finish.
+No policy is selected for confirmation or production. The comparator uses the
+**exact accepted native build 74 core JAR**, with the same research launcher and
+startup warmup; the candidate uses the frozen build 75 runtime. New prepared
+source does not alter either frozen game installation. Production defaults
+remain the accepted baseline.
 Repository work does not await mirror refresh; dependent external GPT planning does.
 
 ## Bootstrap verification and first observations
@@ -117,37 +120,37 @@ packaging operation; its core hash is `facac0db65c7f97a120083174ea4de20ef210daf3
 No relabelling as a clean f32831a binary. v1 is a retained harness failure: unchanged
 resource options do not re-announce identity; v2 requests a new UCI handshake.
 This was not an engine identity defect. `baseline-validation-v1-summary.json`
-records271 tests, zero failures/errors/skips. Not the full root integration suite.
+records 271 tests, zero failures/errors/skips. Not the full root integration suite.
 
-`trajectory-v1.json`, binding, execution receipts and summary describe32 roots,
-two rounds and64 plain/observed comparisons (128 measured requests). All match
-exactly in completed moves, scores, PVs, nodes and selective provenance; all32
+`trajectory-v1.json`, binding, execution receipts and summary describe 32 roots,
+two rounds and 64 plain/observed comparisons (128 measured requests). All match
+exactly in completed moves, scores, PVs, nodes and selective provenance; all 32
 repeat deterministic work. Legal PV, accounting and helper drain checks pass.
 Frozen research core JAR entries match the native image except generated version
-provenance. Completed depth median9, range7-12. All190 ordinary analyzed samples
-are selective estimates. Median incomplete final work is31.65% of the node cap;
+provenance. Completed depth median 9, range7-12. All 190 ordinary analyzed samples
+are selective estimates. Median incomplete final work is 31.65% of the node cap;
 this is censored fixed-node work, not an estimate of whole-game waste.
 
-At depths6-8, three-iteration stable moves change next in4/64 cases; recently
-changed moves change again in6/13. Stability is useful discrimination here, not
-proof. Score deterioration alone changes next in3/36; retries in5/30. Neither
+At depths 6-8, three-iteration stable moves change next in 4/64 cases; recently
+changed moves change again in 6/13. Stability is useful discrimination here, not
+proof. Score deterioration alone changes next in 3/36; retries in 5/30. Neither
 earns a separate calibrated scalar or paid diagnostic consumer yet. Parity node
-predicted/actual cost ranges0.044-29.11 (median1.139); last elapsed-cost forecasts
-overpredict20/190 times, half-last cost2/190. Forecast certainty is rejected;
+predicted/actual cost ranges 0.044-29.11 (median 1.139); last elapsed-cost forecasts
+overpredict 20/190 times, half-last cost 2/190. Forecast certainty is rejected;
 forecast policies are deprioritized while a simpler observed-boundary policy is tested.
 
-Exploratory trajectory counterfactuals (minimum depth6, ordinary scores) suggest
+Exploratory trajectory counterfactuals (minimum depth 6, ordinary scores) suggest
 early completed-boundary savings without changed baseline-budget choices for
-STABLE3_HALF on this sample; unconditional HALF changes one choice at400ms.
+STABLE3_HALF on this sample; unconditional HALF changes one choice at 400 ms.
 These are correlated observational diagnostics with censored horizons, not fresh
 validation, quality ground truth, measured saved clock time or strength evidence.
-One process takes81.50s/86.78 CPU-s, the other127.06s/131.77 CPU-s; peak working
-sets below370MB. Applying the existing host screen retrospectively yields0.873
-and1.196 other average logical cores respectively. The latter exceeds the1-core
+One process takes 81.50 s/86.78 CPU-s, the other 127.06 s/131.77 CPU-s; peak working
+sets below 370 MB. Applying the existing host screen retrospectively yields 0.873
+and 1.196 other average logical cores respectively. The latter exceeds the 1-core
 clock qualification threshold: its wall-time calibration is **resource-unqualified**,
 while exact node/decision equivalence remains usable. No wall-speed claim follows.
 
-Selected next reversible experiment: from completed depth6 onward, end at/after
+Selected next reversible experiment: from completed depth 6 onward, end at/after
 half the unchanged hard allocation when the same ordinary best move has persisted
 for three completed iterations. The reverse control applies the same half-allocation
 threshold without move stability. Both preserve the hard budget and factual stops;
@@ -164,16 +167,16 @@ in research/researchLauncher. No per-node branch, instrumentation or new framewo
 
 ## Clock-policy functional and economic qualification
 
-`clock-policy-validation-v1-summary.json`:276 tests pass, no failures/errors/skips.
+`clock-policy-validation-v1-summary.json`: 276 tests pass, no failures/errors/skips.
 New cases exercise truthful completed depth, no fabricated next iteration, hard
 deadline/node/external-stop precedence, non-clock bypass, incomplete results,
 state reset, shallow/mate guards and overflow-safe allocation comparison.
 `economics-build-v1-summary.json` also passes project dependency boundaries.
 
-`clock-qualification-v2-summary.json`:147 real UCI checks pass across all16 worker settings,
+`clock-qualification-v2-summary.json`: 147 real UCI checks pass across all 16 worker settings,
 with W1/W4/W16 low-clock/reserve/increment/moves-to-go, movetime/depth/nodes,
 infinite-stop, replacement and stale-publication checks. Maximum sampled clock
-overrun is2.655ms (cooperative scheduling, not a worst-case guarantee). Fixed-node
+overrun is 2.655 ms (cooperative scheduling, not a worst-case guarantee). Fixed-node
 and fixed-depth W1 results are identical across policies and ordinary production.
 Retained v1 failure is a harness mistake: it mixed already-emitted old-position
 iteration lines with new-position output. The v2 position/isready fence separates
@@ -182,23 +185,123 @@ The two full `clock-qualification-v[12].json` captures remain local at their
 recorded paths with explicit ignore entries; tracked summaries bind their hashes.
 They were removed from staging before the first commit, without deleting evidence.
 
-`economics-v1.json` / `clock-cost-v1-summary.json`:216 measured clean W1 timed
-requests on12 history-bearing roots, two rotated rounds at50/100/400ms; all legal,
-accounted and drained. Baseline elapsed totals1203/2403/9603ms; stable3-half
-1090/1973/8467ms, with7/14/9 soft stops out of24 per budget. HALF gives1082/2060/8013ms
-and6/13/12 stops. Completed depth differs modestly, but neither policy changes
+`economics-v1.json` / `clock-cost-v1-summary.json`: 216 measured clean W1 timed
+requests on 12 history-bearing roots, two rotated rounds at 50/100/400 ms; all legal,
+accounted and drained. Baseline elapsed totals 1203/2403/9603 ms; stable3-half
+1090/1973/8467ms, with 7/14/9 soft stops out of 24 per budget. HALF gives1082/2060/8013ms
+and 6/13/12 stops. Completed depth differs modestly, but neither policy changes
 the selected move relative to its matched baseline in this sample. Maximum measured
-direct-driver overrun0.271ms. Full-process93.71s/101.31 CPU-s including warmups,
-peak409MB. Host1.057 other average logical cores passes the current prior-work
+direct-driver overrun 0.271 ms. Full-process 93.71 s/101.31 CPU-s including warmups,
+peak 409 MB. Host 1.057 other average logical cores passes the current prior-work
 two-core-plus-delivery framework; no independent strength conclusion follows.
 Windows thread-CPU resolution and scheduling prevent treating tiny per-request
 CPU differences as exact. Actual million-node CPU-delivery admission will precede
 and follow every development match; whole-game actor CPU/memory remains required.
 
-The development protocol uses fresh partition0 openings, excluding prior selections
-and all32 trajectory histories, paired colors,10+0.1/W1/Hash64, one concurrent
-game and matched JVM limits. Both32-pair comparisons run regardless of the first
+The development protocol uses fresh partition 0 openings, excluding prior selections
+and all 32 trajectory histories, paired colors,10+0.1/W1/Hash64, one concurrent
+game and matched JVM limits. Both 32-pair comparisons run regardless of the first
 score, with one final look each and no exclusions/extensions. A .55 development
 selection threshold admits consideration of fresh confirmation only; it is not
 a universal minimum gain or acceptance rule. Extended instability spending and
 root-effort hypotheses remain admitted conditional alternatives.
+
+
+## Additional-spending branch: admitted, prepared, not yet validated
+
+The post hoc `trajectory-exposure-v1-summary.json` retains four distinct
+stable-then-changed roots in both rounds. Only one root has a positive interval
+where a half-budget stop at that boundary could miss the next changed completed
+move; earlier eligible stops can preempt that boundary. Doubling hypothetical
+200/400 ms budgets changes the final move in 5/9 and 4/10 observations after a
+just-changed latest move, versus 4/43 and 0/32 after stable3. At 100 ms, none of
+the four just-changed observations gains a completion. These dependent,
+coverage-censored observations are not quality labels or calibrated timings;
+the played-root wall run remains resource-unqualified under its historical gate.
+They justify a bounded contrast, not a claim that extra computation helps.
+
+Prepared research profiles BOUNDARY2 and UNSTABLE2 fix their hard cap before
+Search at min(2 * baseline allocation, remaining - 50 ms reserve). Nominal is
+ceil(hard/2), so reserve clipping also reduces nominal at low clocks. From
+ordinary completed depth 6, stable3 may stop at ceil(nominal/2); otherwise the
+control stops at the first completed boundary at/after nominal. UNSTABLE2 alone
+can buy one further completed iteration when the best move has just changed at
+that boundary; the immutable hard cap can interrupt it. The shared boundary
+overshoot and increased cap are deliberate common factors, isolated by the
+extension-off control. A factor of two is a coarse experimental contrast,
+not a transplanted coefficient or calibrated optimum. No score threshold is added.
+
+The minimal UCI composition seam supplies ordinary-clock allocation before
+Search and independently rejects budgets outside the existing reserve. Its
+production default remains TimeManager; explicit non-clock modes bypass it.
+SearchLimits, SearchControl deadlines, TT/evaluator behavior and per-node paths
+are unchanged by this second branch. A new launcher preserves frozen v1 inputs.
+
+These source changes are currently **uncommitted and untested**. The new
+`spending-economics-v1.json`, qualifier and tests are prepared; do not run them
+concurrently with either existing game comparison or its delivery checks. After
+both finish, run the targeted Gradle validation/export, real UCI qualifier and
+actual clock economics before deciding/finalizing any new game protocol. No
+additional-spending games or confirmation have launched. A failed existing
+policy does not automatically reject this separately admitted opportunity.
+
+The runner clock audit is prepared as `analyze_clock_v2.py`, preserving v1.
+The frozen executable identifies fastchess alpha 1.8.2, commit
+`f618e34540f94f4719ad3817950618dabe441318`. Its inspected
+[TimeControl](https://github.com/Disservin/fastchess/blob/f618e34540f94f4719ad3817950618dabe441318/app/src/game/timecontrol/timecontrol.cpp)
+and [match loop](https://github.com/Disservin/fastchess/blob/f618e34540f94f4719ad3817950618dabe441318/app/src/matchmaking/match/match.cpp)
+show that PGN time-left includes the newly added increment and is the next go
+clock; output retains integer milliseconds. v2 checks per-color clock conservation
+and separately reports reserve before increment, charged runner time and request
+elapsed time. First searched moves remain excluded from inferred allocations.
+The source manifest binds local inspected bytes and the runner hash. This is
+source verification of telemetry semantics, not an update to the runner or a
+substitute for real-clock qualification. No ongoing game scores were inspected.
+
+`root-effort-v1.json` admits one small diagnostic after the existing matches:
+the same 32 historical-development roots, one round, paired plain/observed
+million-node trajectories. `Cp64RootEffortTrajectory` reads already-collected
+private ordering arrays after resolved W1 aspiration iterations. Research-only
+reflection adds no production counter/accessor and freezes exact field/source
+identity. Final-attempt root effort and heuristic fail-soft root scores remain
+distinct from all-attempt iteration nodes and completed selective scores.
+Deterministic result neutrality, legal PV, accounting and drain must pass before
+analysis. Describe concentration and later move changes conditional on stability;
+do not convert a root effort fraction into proof or an uncalibrated confidence
+threshold. Source, runner and protocol are prepared but not yet executed.
+
+
+## First whole-game comparison: completed, resource-unqualified
+
+`clock-development-stable3-half-v1-compact.json` and the v2 clock audit preserve
+the first 32 pairs / 64 games. Candidate W/D/L is **23/14/27**, score .46875,
+descriptive Elo -21.7, paired-normal 95% interval [-106.9, +60.9]; the conservative
+bounded interval is [-211.2, +154.6]. All game endings are normal and input hashes
+are unchanged. This is **not qualified strength evidence**, not proof of
+inferiority and not grounds to replay or extend the frozen sample.
+
+The match itself passes the frozen host gate (1.047 other average logical cores),
+memory gate and actor CPU/Search-elapsed ratios (1.0088 baseline, 1.0114 candidate).
+Its post-delivery owner CPU ratios also pass (medians .9913/.9911/.9878; fifth
+percentiles .8685/.8434/.9213; median spread .00347). However, the post-delivery
+**host** interval is 2.718 other average logical cores, exceeding the frozen 2.0
+limit. The required conjunction fails, so the completed comparison remains
+resource-unqualified regardless of other passing checks. No numerical gate is
+changed after seeing the result. HALF proceeds only under its own fresh admission.
+
+The descriptive clock audit passes all 8,874 request-node checks and 8,746
+per-color clock-conservation checks (first searched moves excluded). STABLE3_HALF
+has 1,770 nonfactual completed-boundary stops. Total request elapsed is 882.9 s
+versus 923.7 s, native CPU 892.9 versus 931.8 s, nodes 603.8 versus 629.2 million;
+peak working sets are 364.1 versus 356.6 MB. Incomplete work is 173.2 versus 230.5
+million nodes. Minimum reserve before increment is 1,166 versus 979 ms, with no
+responses below 500 ms remaining. Maximum sampled hard-stop overrun is 5.683
+versus 4.639 ms. At moves 1-20, mean request time is 313.4 versus 351.5 ms; at
+moves 61+, 122.4 versus 119.1 ms. These observations are consistent with some
+redistribution, but game paths differ and resource qualification failed: neither
+saved time nor deeper later work establishes improved decisions or strength.
+
+The full immutable wrapper summary contains repeated game headers. It remains
+local at its original path with an explicit ignore entry; the compact tracked
+receipt binds its hash. HALF's equivalent full capture is prospectively ignored
+as well. Raw PGNs/logs/process captures remain in their original ignored paths.

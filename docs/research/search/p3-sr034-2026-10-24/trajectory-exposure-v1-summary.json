@@ -1,0 +1,236 @@
+{
+  "status": "passed",
+  "inputs": {
+    "raw\\trajectory-openings-v1.jsonl": "c10017e5978f8f979ed41fbb29a45de6ba9203d3975cbf53b891967bee0a88dc",
+    "raw\\trajectory-played-v1.jsonl": "22b5de50e303b599f2fd3cc7a9e747ff79df8d2eb8dafb9b76adc919b560b7fe"
+  },
+  "analysisScriptSha256": "479f04463ed00c4ee5a9c58d7284f01985c087087c5974728c9defc9a73c8d22",
+  "stableThenChangedWitnesses": [
+    {
+      "source": "trajectory-openings-v1",
+      "root": "opening-01",
+      "round": 0,
+      "depth": 7,
+      "move": 395020,
+      "nextMove": 328336,
+      "score": -23,
+      "nextScore": -69,
+      "boundaryElapsedNanos": 169024800,
+      "nextBoundaryElapsedNanos": 692214200,
+      "hypotheticalHardBudgetExposureNanos": 0,
+      "exposureMeaning": "A half-budget stop here can miss the next changed completed move only when nextBoundary < hardBudget <= 2*boundary; earlier stops may preempt this boundary."
+    },
+    {
+      "source": "trajectory-openings-v1",
+      "root": "opening-08",
+      "round": 0,
+      "depth": 6,
+      "move": 131730,
+      "nextMove": 132178,
+      "score": -45,
+      "nextScore": -67,
+      "boundaryElapsedNanos": 40796301,
+      "nextBoundaryElapsedNanos": 147615800,
+      "hypotheticalHardBudgetExposureNanos": 0,
+      "exposureMeaning": "A half-budget stop here can miss the next changed completed move only when nextBoundary < hardBudget <= 2*boundary; earlier stops may preempt this boundary."
+    },
+    {
+      "source": "trajectory-openings-v1",
+      "root": "opening-01",
+      "round": 1,
+      "depth": 7,
+      "move": 395020,
+      "nextMove": 328336,
+      "score": -23,
+      "nextScore": -69,
+      "boundaryElapsedNanos": 169718499,
+      "nextBoundaryElapsedNanos": 704791400,
+      "hypotheticalHardBudgetExposureNanos": 0,
+      "exposureMeaning": "A half-budget stop here can miss the next changed completed move only when nextBoundary < hardBudget <= 2*boundary; earlier stops may preempt this boundary."
+    },
+    {
+      "source": "trajectory-openings-v1",
+      "root": "opening-08",
+      "round": 1,
+      "depth": 6,
+      "move": 131730,
+      "nextMove": 132178,
+      "score": -45,
+      "nextScore": -67,
+      "boundaryElapsedNanos": 44816999,
+      "nextBoundaryElapsedNanos": 167217800,
+      "hypotheticalHardBudgetExposureNanos": 0,
+      "exposureMeaning": "A half-budget stop here can miss the next changed completed move only when nextBoundary < hardBudget <= 2*boundary; earlier stops may preempt this boundary."
+    },
+    {
+      "source": "trajectory-played-v1",
+      "root": "fresh-11-24",
+      "round": 0,
+      "depth": 6,
+      "move": 12977874,
+      "nextMove": 132419,
+      "score": 93,
+      "nextScore": 282,
+      "boundaryElapsedNanos": 131433699,
+      "nextBoundaryElapsedNanos": 256811600,
+      "hypotheticalHardBudgetExposureNanos": 6055798,
+      "exposureMeaning": "A half-budget stop here can miss the next changed completed move only when nextBoundary < hardBudget <= 2*boundary; earlier stops may preempt this boundary."
+    },
+    {
+      "source": "trajectory-played-v1",
+      "root": "fresh-14-24",
+      "round": 0,
+      "depth": 6,
+      "move": 10815895,
+      "nextMove": 14812819,
+      "score": -51,
+      "nextScore": -127,
+      "boundaryElapsedNanos": 92277900,
+      "nextBoundaryElapsedNanos": 314216200,
+      "hypotheticalHardBudgetExposureNanos": 0,
+      "exposureMeaning": "A half-budget stop here can miss the next changed completed move only when nextBoundary < hardBudget <= 2*boundary; earlier stops may preempt this boundary."
+    },
+    {
+      "source": "trajectory-played-v1",
+      "root": "fresh-11-24",
+      "round": 1,
+      "depth": 6,
+      "move": 12977874,
+      "nextMove": 132419,
+      "score": 93,
+      "nextScore": 282,
+      "boundaryElapsedNanos": 122924001,
+      "nextBoundaryElapsedNanos": 245599101,
+      "hypotheticalHardBudgetExposureNanos": 248901,
+      "exposureMeaning": "A half-budget stop here can miss the next changed completed move only when nextBoundary < hardBudget <= 2*boundary; earlier stops may preempt this boundary."
+    },
+    {
+      "source": "trajectory-played-v1",
+      "root": "fresh-14-24",
+      "round": 1,
+      "depth": 6,
+      "move": 10815895,
+      "nextMove": 14812819,
+      "score": -51,
+      "nextScore": -127,
+      "boundaryElapsedNanos": 83863699,
+      "nextBoundaryElapsedNanos": 303242399,
+      "hypotheticalHardBudgetExposureNanos": 0,
+      "exposureMeaning": "A half-budget stop here can miss the next changed completed move only when nextBoundary < hardBudget <= 2*boundary; earlier stops may preempt this boundary."
+    }
+  ],
+  "doubleBudgetObservations": [
+    {
+      "budgetMillis": 50,
+      "condition": "all",
+      "n": 14,
+      "changedMoves": 0,
+      "gainedCompletedIterations": 8
+    },
+    {
+      "budgetMillis": 50,
+      "condition": "latestScoreFell",
+      "n": 6,
+      "changedMoves": 0,
+      "gainedCompletedIterations": 3
+    },
+    {
+      "budgetMillis": 50,
+      "condition": "stable3",
+      "n": 14,
+      "changedMoves": 0,
+      "gainedCompletedIterations": 8
+    },
+    {
+      "budgetMillis": 100,
+      "condition": "all",
+      "n": 44,
+      "changedMoves": 2,
+      "gainedCompletedIterations": 29
+    },
+    {
+      "budgetMillis": 100,
+      "condition": "latestMoveChanged",
+      "n": 4,
+      "changedMoves": 0,
+      "gainedCompletedIterations": 0
+    },
+    {
+      "budgetMillis": 100,
+      "condition": "latestScoreFell",
+      "n": 17,
+      "changedMoves": 0,
+      "gainedCompletedIterations": 12
+    },
+    {
+      "budgetMillis": 100,
+      "condition": "stable3",
+      "n": 36,
+      "changedMoves": 2,
+      "gainedCompletedIterations": 25
+    },
+    {
+      "budgetMillis": 200,
+      "condition": "all",
+      "n": 54,
+      "changedMoves": 9,
+      "gainedCompletedIterations": 37
+    },
+    {
+      "budgetMillis": 200,
+      "condition": "latestMoveChanged",
+      "n": 9,
+      "changedMoves": 5,
+      "gainedCompletedIterations": 11
+    },
+    {
+      "budgetMillis": 200,
+      "condition": "latestScoreFell",
+      "n": 19,
+      "changedMoves": 1,
+      "gainedCompletedIterations": 14
+    },
+    {
+      "budgetMillis": 200,
+      "condition": "stable3",
+      "n": 43,
+      "changedMoves": 4,
+      "gainedCompletedIterations": 26
+    },
+    {
+      "budgetMillis": 400,
+      "condition": "all",
+      "n": 50,
+      "changedMoves": 4,
+      "gainedCompletedIterations": 37
+    },
+    {
+      "budgetMillis": 400,
+      "condition": "latestMoveChanged",
+      "n": 10,
+      "changedMoves": 4,
+      "gainedCompletedIterations": 8
+    },
+    {
+      "budgetMillis": 400,
+      "condition": "latestScoreFell",
+      "n": 17,
+      "changedMoves": 2,
+      "gainedCompletedIterations": 16
+    },
+    {
+      "budgetMillis": 400,
+      "condition": "stable3",
+      "n": 32,
+      "changedMoves": 0,
+      "gainedCompletedIterations": 19
+    }
+  ],
+  "limitations": [
+    "Exploratory post hoc mechanism description; no confirmation evidence.",
+    "The played-root wall-time run failed the historical one-other-core screen; no qualified speed or calibrated threshold claim.",
+    "Observation overhead, JIT and host effects remain; repeated rounds and clock budgets are dependent.",
+    "A later selective move is not a demonstrated better move.",
+    "Node-limited coverage excludes the expensive tail; this is not a policy simulator or a whole-game cost estimate."
+  ]
+}

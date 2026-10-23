@@ -1,0 +1,448 @@
+{
+  "status": "passed",
+  "games": 64,
+  "resourceQualification": "resource-unqualified",
+  "clockSourceManifestSha256": "b0e0c6716b9afa5e53f169d769c464ec1084c74f6a4545d327f2d35f0833afa0",
+  "pgnSha256": "9a64770cc61d77389f8edff7fbbc482ea97e7754dc0ad673c187b2f7df09beed",
+  "completionSummarySha256": "7ab5fc6a9a2898b19552aecb7c8c7162835256707401933315017473d4cdcb3d",
+  "analysisScriptSha256": "90e66b2bdd65a4da3e909b5ee2871b2ec9a423895ff0b0b7bae52e38d7f91b5d",
+  "strength": {
+    "wdl": [
+      23,
+      14,
+      27
+    ],
+    "statistics": {
+      "pairs": 32,
+      "pentanomial": [
+        6,
+        8,
+        7,
+        6,
+        5
+      ],
+      "score": 0.46875,
+      "logisticElo": -21.74306492903708,
+      "pairedHoeffding95Score": [
+        0.22866930217001982,
+        0.7088306978299802
+      ],
+      "pairedHoeffding95Elo": [
+        -211.21309982380384,
+        154.55877278910938
+      ],
+      "pairScoreStandardError": 0.0601891340263233,
+      "pairedNormal95Score": [
+        0.35078146504775204,
+        0.5867185349522479
+      ],
+      "pairedNormal95Elo": [
+        -106.94170907157388,
+        60.873551922763895
+      ],
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "terminations": {
+      "normal": 64
+    }
+  },
+  "actors": {
+    "baseline": {
+      "requests": 4439,
+      "terminations": {
+        "TIME_LIMIT": 4294,
+        "TIME_ALLOCATION": 86,
+        "COMPLETED": 59
+      },
+      "nonfactualSoftStops": 0,
+      "remainingMillis": {
+        "n": 4439,
+        "min": 1079,
+        "p10": 1590,
+        "median": 3735,
+        "mean": 4337.825185852669,
+        "p90": 8192,
+        "p99": 9799,
+        "max": 9799
+      },
+      "reserveBeforeIncrementMillis": {
+        "n": 4439,
+        "min": 979,
+        "p10": 1490,
+        "median": 3635,
+        "mean": 4237.825185852669,
+        "p90": 8092,
+        "p99": 9699,
+        "max": 9699
+      },
+      "runnerChargedMillis": 922944,
+      "runnerChargeMinusRequestMillis": {
+        "n": 4439,
+        "min": -0.9276,
+        "p10": -0.2693999999999903,
+        "median": -0.1478010000000154,
+        "mean": -0.17002930637530986,
+        "p90": -0.13400000000001455,
+        "p99": -0.08770000000001232,
+        "max": 6.780099000000007
+      },
+      "requestMillis": {
+        "n": 4439,
+        "min": 0.0849,
+        "p10": 112.1392,
+        "median": 192.1534,
+        "mean": 208.08712775197117,
+        "p90": 346.1337,
+        "p99": 401.1394,
+        "max": 403.0069
+      },
+      "requestMinusInferredHardMillis": {
+        "n": 4375,
+        "min": -371.721,
+        "p10": 0.13170000000002346,
+        "median": 0.14690000000001646,
+        "mean": -4.6806427675428575,
+        "p90": 0.24619999999998754,
+        "p99": 0.4134999999999991,
+        "max": 4.63900000000001
+      },
+      "hardStopOverrunMillis": {
+        "n": 4230,
+        "min": 0.0742000000000047,
+        "p10": 0.13409999999998945,
+        "median": 0.14749999999997954,
+        "mean": 0.17234436973995282,
+        "p90": 0.25329999999999586,
+        "p99": 0.41440000000000055,
+        "max": 4.63900000000001
+      },
+      "inferredSoftSavedMillis": 0,
+      "incompleteNodes": 230463489,
+      "wholeNodes": 629167744,
+      "wholeRequestElapsedNanos": 923698760091,
+      "lowClockResponses": 0,
+      "byMoveNumber": [
+        {
+          "range": [
+            1,
+            20
+          ],
+          "requests": 768,
+          "remainingMillis": {
+            "n": 768,
+            "min": 7075,
+            "p10": 7287,
+            "median": 8434.0,
+            "mean": 8366.891927083334,
+            "p90": 9508,
+            "p99": 9799,
+            "max": 9799
+          },
+          "requestMillis": {
+            "n": 768,
+            "min": 0.279,
+            "p10": 315.1409,
+            "median": 351.6213,
+            "mean": 351.46824256510416,
+            "p90": 391.208,
+            "p99": 401.267399,
+            "max": 403.0069
+          },
+          "softStops": 0
+        },
+        {
+          "range": [
+            21,
+            40
+          ],
+          "requests": 1244,
+          "remainingMillis": {
+            "n": 1244,
+            "min": 4117,
+            "p10": 4331,
+            "median": 5350.0,
+            "mean": 5389.121382636656,
+            "p90": 6685,
+            "p99": 6879,
+            "max": 7155
+          },
+          "requestMillis": {
+            "n": 1244,
+            "min": 0.2124,
+            "p10": 212.1726,
+            "median": 248.13780000000003,
+            "mean": 246.61620644694534,
+            "p90": 294.131,
+            "p99": 301.1839,
+            "max": 310.1869
+          },
+          "softStops": 0
+        },
+        {
+          "range": [
+            41,
+            60
+          ],
+          "requests": 1122,
+          "remainingMillis": {
+            "n": 1122,
+            "min": 2615,
+            "p10": 2765,
+            "median": 3314.0,
+            "mean": 3317.657754010695,
+            "p90": 3917,
+            "p99": 4156,
+            "max": 4574
+          },
+          "requestMillis": {
+            "n": 1122,
+            "min": 0.100501,
+            "p10": 155.1903,
+            "median": 175.1957005,
+            "mean": 170.7203391969697,
+            "p90": 198.1449,
+            "p99": 206.1347,
+            "max": 221.2966
+          },
+          "softStops": 0
+        },
+        {
+          "range": [
+            61,
+            1000
+          ],
+          "requests": 1305,
+          "remainingMillis": {
+            "n": 1305,
+            "min": 1079,
+            "p10": 1191,
+            "median": 1843,
+            "mean": 1841.6505747126437,
+            "p90": 2466,
+            "p99": 2708,
+            "max": 2955
+          },
+          "requestMillis": {
+            "n": 1305,
+            "min": 0.0849,
+            "p10": 102.1354,
+            "median": 125.1328,
+            "mean": 119.10526314329502,
+            "p90": 148.1331,
+            "p99": 154.1366,
+            "max": 159.2605
+          },
+          "softStops": 0
+        }
+      ]
+    },
+    "candidate": {
+      "requests": 4435,
+      "terminations": {
+        "TIME_LIMIT": 2512,
+        "TIME_ALLOCATION": 1859,
+        "COMPLETED": 64
+      },
+      "nonfactualSoftStops": 1770,
+      "remainingMillis": {
+        "n": 4435,
+        "min": 1266,
+        "p10": 2174,
+        "median": 4518,
+        "mean": 4928.352198421646,
+        "p90": 8389,
+        "p99": 9799,
+        "max": 9990
+      },
+      "reserveBeforeIncrementMillis": {
+        "n": 4435,
+        "min": 1166,
+        "p10": 2074,
+        "median": 4418,
+        "mean": 4828.352198421646,
+        "p90": 8289,
+        "p99": 9699,
+        "max": 9890
+      },
+      "runnerChargedMillis": 881687,
+      "runnerChargeMinusRequestMillis": {
+        "n": 4435,
+        "min": -0.9344000000000108,
+        "p10": -0.6726999999999919,
+        "median": -0.16259999999999764,
+        "mean": -0.2703353930101465,
+        "p90": -0.11029999999999518,
+        "p99": 0.05489999999997508,
+        "max": 5.25139999999999
+      },
+      "requestMillis": {
+        "n": 4435,
+        "min": 0.0818,
+        "p10": 107.1512,
+        "median": 187.3955,
+        "mean": 199.07236470529875,
+        "p90": 324.393499,
+        "p99": 393.1517,
+        "max": 402.7486
+      },
+      "requestMinusInferredHardMillis": {
+        "n": 4371,
+        "min": -321.6328,
+        "p10": -108.055901,
+        "median": 0.13619899999997642,
+        "mean": -32.6161299304507,
+        "p90": 0.1880999999999915,
+        "p99": 0.38169999999999504,
+        "max": 5.682199999999995
+      },
+      "hardStopOverrunMillis": {
+        "n": 2480,
+        "min": 0.07570000000001187,
+        "p10": 0.13540000000000418,
+        "median": 0.148050000000012,
+        "mean": 0.17229709233870957,
+        "p90": 0.2446999999999946,
+        "p99": 0.4165010000000109,
+        "max": 5.682199999999995
+      },
+      "inferredSoftSavedMillis": 118619.453321,
+      "incompleteNodes": 173173420,
+      "wholeNodes": 603752733,
+      "wholeRequestElapsedNanos": 882885937468,
+      "lowClockResponses": 0,
+      "byMoveNumber": [
+        {
+          "range": [
+            1,
+            20
+          ],
+          "requests": 768,
+          "remainingMillis": {
+            "n": 768,
+            "min": 7112,
+            "p10": 7657,
+            "median": 8600.5,
+            "mean": 8631.822916666666,
+            "p90": 9694,
+            "p99": 9961,
+            "max": 9990
+          },
+          "requestMillis": {
+            "n": 768,
+            "min": 0.3672,
+            "p10": 210.041,
+            "median": 335.1193505,
+            "mean": 313.3841325403646,
+            "p90": 388.1462,
+            "p99": 401.1494,
+            "max": 402.7486
+          },
+          "softStops": 341
+        },
+        {
+          "range": [
+            21,
+            40
+          ],
+          "requests": 1244,
+          "remainingMillis": {
+            "n": 1244,
+            "min": 4493,
+            "p10": 4992,
+            "median": 5962.5,
+            "mean": 6006.453376205788,
+            "p90": 7125,
+            "p99": 7516,
+            "max": 8013
+          },
+          "requestMillis": {
+            "n": 1244,
+            "min": 0.0921,
+            "p10": 154.7648,
+            "median": 244.1333,
+            "mean": 234.5937970988746,
+            "p90": 300.149,
+            "p99": 320.2197,
+            "max": 332.148
+          },
+          "softStops": 534
+        },
+        {
+          "range": [
+            41,
+            60
+          ],
+          "requests": 1122,
+          "remainingMillis": {
+            "n": 1122,
+            "min": 2948,
+            "p10": 3456,
+            "median": 4058.0,
+            "mean": 4056.6301247771835,
+            "p90": 4673,
+            "p99": 4965,
+            "max": 5239
+          },
+          "requestMillis": {
+            "n": 1122,
+            "min": 0.0835,
+            "p10": 109.736999,
+            "median": 185.86455,
+            "mean": 170.32765660160428,
+            "p90": 218.141599,
+            "p99": 231.1494,
+            "max": 244.1714
+          },
+          "softStops": 455
+        },
+        {
+          "range": [
+            61,
+            1000
+          ],
+          "requests": 1301,
+          "remainingMillis": {
+            "n": 1301,
+            "min": 1266,
+            "p10": 1625,
+            "median": 2455,
+            "mean": 2463.0553420445813,
+            "p90": 3257,
+            "p99": 3626,
+            "max": 3904
+          },
+          "requestMillis": {
+            "n": 1301,
+            "min": 0.0818,
+            "p10": 75.2347,
+            "median": 130.148301,
+            "mean": 122.41707100614911,
+            "p90": 167.1457,
+            "p99": 183.149801,
+            "max": 189.1548
+          },
+          "softStops": 440
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "accountedRequests": 8874,
+    "clockConservation": 8746
+  },
+  "actorNativeCpuSeconds": {
+    "baseline": 931.828125,
+    "candidate": 892.921875
+  },
+  "peakWorkingSetBytes": {
+    "baseline": 356552704,
+    "candidate": 364077056
+  },
+  "limits": [
+    "Post-match descriptive audit; no new statistical look or selection rule.",
+    "Runner f618e34 stores integer millisecond clocks after adding the increment; these are the next go clocks. Allocation inference excludes first searched move per color. Clock conservation is checked independently. Engine request elapsed excludes some protocol/runner cost.",
+    "Reported savings are within-position allocation differences, not causal whole-game value.",
+    "Whole-game incomplete nodes use final completed-iteration node annotation; absent annotations remain disclosed.",
+    "Fixed32-pair development, W1/10+0.1 only; no independent confirmation or multiworker strength."
+  ]
+}

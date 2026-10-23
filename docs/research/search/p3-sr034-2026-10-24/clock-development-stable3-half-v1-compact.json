@@ -1,0 +1,120 @@
+{
+  "status": "resource-unqualified",
+  "bindingSha256": "7174c0b8550f53abf4ba6a6be0c6901f5a93650e11267788f1b4ce909f4a52e7",
+  "execution": {
+    "exitCode": 0,
+    "wallSeconds": 1819.4639860000025,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 9,
+    "totalOwnedCpuSeconds": 1838.625
+  },
+  "resourceQualification": {
+    "start": {
+      "utc": "2026-10-23T21:02:02.069059+00:00",
+      "monotonic": 69384.8944626,
+      "ticks": [
+        7257297656250,
+        7542720468750,
+        783423593750
+      ],
+      "availableBytes": 18119000064,
+      "memoryLoadPercent": 46
+    },
+    "end": {
+      "utc": "2026-10-23T21:32:21.562016+00:00",
+      "monotonic": 71204.3874198,
+      "ticks": [
+        7438192187500,
+        7732522812500,
+        811959531250
+      ],
+      "availableBytes": 17550716928,
+      "memoryLoadPercent": 48
+    },
+    "elapsedSeconds": 1819.4929571999965,
+    "busyCpuSeconds": 3744.375,
+    "ownedCpuSeconds": 1838.625,
+    "otherAverageLogicalCores": 1.0474071869630888,
+    "memoryEndpointsPass": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used.",
+    "legacyOneCoreGatePassed": false,
+    "passed": true,
+    "protocol": "SR034 economics-v1 current serial-W1 host plus direct delivery qualification"
+  },
+  "postDeliveryPassed": false,
+  "actorDelivery": {
+    "nativeCpuToSearchElapsed": {
+      "baseline": 1.008800883210235,
+      "candidate": 1.0113671960398212
+    },
+    "absoluteDifference": 0.0025663128295860815,
+    "passed": true
+  },
+  "results": {
+    "wdl": [
+      23,
+      14,
+      27
+    ],
+    "terminations": {
+      "normal": 64
+    },
+    "statistics": {
+      "pairs": 32,
+      "pentanomial": [
+        6,
+        8,
+        7,
+        6,
+        5
+      ],
+      "score": 0.46875,
+      "logisticElo": -21.74306492903708,
+      "pairedHoeffding95Score": [
+        0.22866930217001982,
+        0.7088306978299802
+      ],
+      "pairedHoeffding95Elo": [
+        -211.21309982380384,
+        154.55877278910938
+      ],
+      "pairScoreStandardError": 0.0601891340263233,
+      "pairedNormal95Score": [
+        0.35078146504775204,
+        0.5867185349522479
+      ],
+      "pairedNormal95Elo": [
+        -106.94170907157388,
+        60.873551922763895
+      ],
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 4439,
+        "nodes": 629167744,
+        "elapsedNanos": 923698760091
+      },
+      "candidate": {
+        "requests": 4435,
+        "nodes": 603752733,
+        "elapsedNanos": 882885937468
+      }
+    }
+  },
+  "matchWallSeconds": 1815.2177766000095,
+  "evidence": {
+    "raw\\clock-development-stable3-half-v1\\baseline-uci.txt": "491a9908831fa068d196f4e6a2dca8ab0b31ea85c1ea7403a454c18c38b3f7ca",
+    "raw\\clock-development-stable3-half-v1\\candidate-uci.txt": "d9e1f09e76345ab3748e32c736ee2c4fcfb4b76e7478a7af83cc10c2e91feb29",
+    "raw\\clock-development-stable3-half-v1\\config.json": "738f803ef9f8577f90b4b5a4739ed41bf561a5490113264a399852e1e1c7c175",
+    "raw\\clock-development-stable3-half-v1\\games.pgn": "9a64770cc61d77389f8edff7fbbc482ea97e7754dc0ad673c187b2f7df09beed",
+    "raw\\clock-development-stable3-half-v1\\process-cost.json": "aef73589b7abc169f7259df0d3b8f847fa4845eb1488727a640aea18265c16f5",
+    "raw\\clock-development-stable3-half-v1\\run.json": "d3ea6da5eb0c5af856204f5c68e7e46775c0cc675f353818174b723a36e00ee9",
+    "raw\\clock-development-stable3-half-v1\\runner.txt": "a41a4df475681592b2430c4cdd0f1fbab617824d21c074f8382714a7f5c5bad2"
+  },
+  "fullCapture": {
+    "path": "clock-development-stable3-half-v1-summary.json",
+    "sha256": "7ab5fc6a9a2898b19552aecb7c8c7162835256707401933315017473d4cdcb3d",
+    "reason": "Immutable original wrapper capture includes repeated per-game headers; preserved locally at its original path. Compact result and evidence hashes are tracked."
+  }
+}

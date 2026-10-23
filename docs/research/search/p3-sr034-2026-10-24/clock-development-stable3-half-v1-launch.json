@@ -1,0 +1,19 @@
+{
+  "status": "running",
+  "bindingSha256": "7174c0b8550f53abf4ba6a6be0c6901f5a93650e11267788f1b4ce909f4a52e7",
+  "hostStart": {
+    "utc": "2026-10-23T21:02:02.069059+00:00",
+    "monotonic": 69384.8944626,
+    "ticks": [
+      7257297656250,
+      7542720468750,
+      783423593750
+    ],
+    "availableBytes": 18119000064,
+    "memoryLoadPercent": 46
+  },
+  "profile": "stable3-half",
+  "admissionAttempt": 1,
+  "admissionSha256": "3d28ebdd8790ca3e13b5ebe9bfaaffdb85331e3b64db0887a7eb4fe8f6d1cf76",
+  "preDeliverySha256": "0188571a63515b2f9fa351c77937188f4c10258bcb0da50fa30a4944026c0fd4"
+}

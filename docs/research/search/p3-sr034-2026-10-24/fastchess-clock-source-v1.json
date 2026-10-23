@@ -1,0 +1,48 @@
+{
+  "binaryVersion": "alpha1.8.2 windows-latest20260726-f618e34 CI",
+  "commit": "f618e34540f94f4719ad3817950618dabe441318",
+  "purpose": "Verify recorded clock/increment timing, not update the frozen runner",
+  "files": {
+    "app/src/engine/uci_engine.cpp": {
+      "local": "raw\\fastchess-f618e34-source\\app_src_engine_uci_engine.cpp",
+      "sha256": "91427a66752da243233cb4c6a925481b38f4b6a3dbb401ce9e2a4d387fdb00f6"
+    },
+    "app/src/game/epd/epd_builder.hpp": {
+      "local": "raw\\fastchess-f618e34-source\\app_src_game_epd_epd_builder.hpp",
+      "sha256": "1d0e751017165209f0f0d5a0e26541ee745fd675abb6937385a41723e8d4ebb0"
+    },
+    "app/src/game/pgn/openings_data.cpp": {
+      "local": "raw\\fastchess-f618e34-source\\app_src_game_pgn_openings_data.cpp",
+      "sha256": "0afb1ca5aebb36c59adde1bea65b3c35ea2cfd3957be11e05eed3481d5b8d708"
+    },
+    "app/src/game/pgn/openings_data.hpp": {
+      "local": "raw\\fastchess-f618e34-source\\app_src_game_pgn_openings_data.hpp",
+      "sha256": "c0406f075530169618d19bca11d5a42d1b5f368a92fc725bf3a830249ef92a5f"
+    },
+    "app/src/game/pgn/pgn_builder.cpp": {
+      "local": "raw\\fastchess-f618e34-source\\app_src_game_pgn_pgn_builder.cpp",
+      "sha256": "66f1869a3fadb98cf3cce2785d11beb5618e8746de6b5ae47ed879b7456a24fb"
+    },
+    "app/src/game/pgn/pgn_builder.hpp": {
+      "local": "raw\\fastchess-f618e34-source\\app_src_game_pgn_pgn_builder.hpp",
+      "sha256": "7e97b36420f7ce57889e11b26f472810bb53d0146cb54d7a821fb34f7fb013da"
+    },
+    "app/src/game/pgn/pgn_gen.hpp": {
+      "local": "raw\\fastchess-f618e34-source\\app_src_game_pgn_pgn_gen.hpp",
+      "sha256": "c802d27551d48cb797a3395becf626e446046d65f2b9459dd3ca15bce0296646"
+    },
+    "app/src/game/timecontrol/timecontrol.cpp": {
+      "local": "raw\\fastchess-f618e34-source\\app_src_game_timecontrol_timecontrol.cpp",
+      "sha256": "ac9fd01ddc69d621b982a0e07e5e1639d6399af12a031f51eebc4ddc6b52106c"
+    },
+    "app/src/game/timecontrol/timecontrol.hpp": {
+      "local": "raw\\fastchess-f618e34-source\\app_src_game_timecontrol_timecontrol.hpp",
+      "sha256": "c749d67f6b9d5023f26446d7c4e1fa73c4768ee9af86e27b5a654c25fbf96609"
+    },
+    "app/src/matchmaking/match/match.cpp": {
+      "local": "raw\\fastchess-f618e34-source\\app_src_matchmaking_match_match.cpp",
+      "sha256": "aecb6ca2d1901795359a1c85d27ac6220d7ab6631b306166b4bf699c76e6e5e8"
+    }
+  },
+  "runnerSha256": "c6d7e4458a58025983c81bf38c524cb213e6f27559657dcfd72543392a431a71"
+}

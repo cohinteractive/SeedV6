@@ -1,0 +1,123 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms256m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-economics-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-economics-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.Cp64ClockEconomics",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr002-execution-2026-10-19\\confirmation-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\clock-development-stable3-half-v1-post-delivery.jsonl",
+    "delivery"
+  ],
+  "bindingSha256": "00b7c05f230fd4a7d5ff5520042ee459a5bd93d56b6ab4138decc8dacbc341e1",
+  "exitCode": 0,
+  "nativeLifetime": {
+    "creationTicks": 134372647416060151,
+    "createdUtc": "2026-10-23T21:32:21.606014+00:00",
+    "exitCode": 0,
+    "exitedUtc": "2026-10-23T21:35:23.676062+00:00",
+    "kernelCpuSeconds": 1.21875,
+    "userCpuSeconds": 180.140625,
+    "totalCpuSeconds": 181.359375
+  },
+  "peakWorkingSetBytes": 387850240,
+  "hostInterval": {
+    "start": {
+      "utc": "2026-10-23T21:32:21.604819+00:00",
+      "monotonic": 71204.4302208,
+      "ticks": [
+        7438196406250,
+        7732527656250,
+        811960156250
+      ],
+      "availableBytes": 17544343552,
+      "memoryLoadPercent": 48
+    },
+    "end": {
+      "utc": "2026-10-23T21:35:23.691090+00:00",
+      "monotonic": 71386.5164926,
+      "ticks": [
+        7453285156250,
+        7749288750000,
+        817050468750
+      ],
+      "availableBytes": 16220270592,
+      "memoryLoadPercent": 52
+    },
+    "elapsedSeconds": 182.08627179999894,
+    "busyCpuSeconds": 676.265625,
+    "ownedCpuSeconds": 181.359375,
+    "otherAverageLogicalCores": 2.7179767321701123,
+    "memoryEndpointsPass": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used.",
+    "legacyOneCoreGatePassed": false,
+    "passed": false,
+    "protocol": "SR034 economics-v1 current serial-W1 host plus direct delivery qualification"
+  },
+  "profiles": [
+    {
+      "profile": "baseline",
+      "budgetMillis": -1,
+      "requests": 24,
+      "medianCpuDelivery": 0.9912670273657811,
+      "fifthPercentileCpuDelivery": 0.8684909656814537,
+      "elapsedNanos": 40562577600,
+      "ownerCpuNanos": 39171875000,
+      "processCpuNanos": 40453125000,
+      "nodes": 24000000,
+      "softStops": 0,
+      "incompleteRequests": 24,
+      "completedDepthMean": 9.166666666666666,
+      "gcCollections": 0,
+      "compilationMillis": 1223,
+      "maxHeapUsed": 288323816
+    },
+    {
+      "profile": "half",
+      "budgetMillis": -1,
+      "requests": 24,
+      "medianCpuDelivery": 0.9910899741038977,
+      "fifthPercentileCpuDelivery": 0.8434322416441478,
+      "elapsedNanos": 41259414700,
+      "ownerCpuNanos": 39343750000,
+      "processCpuNanos": 39468750000,
+      "nodes": 24000000,
+      "softStops": 0,
+      "incompleteRequests": 24,
+      "completedDepthMean": 9.166666666666666,
+      "gcCollections": 1,
+      "compilationMillis": 131,
+      "maxHeapUsed": 288323816
+    },
+    {
+      "profile": "stable3-half",
+      "budgetMillis": -1,
+      "requests": 24,
+      "medianCpuDelivery": 0.9877938830023597,
+      "fifthPercentileCpuDelivery": 0.9212987043208801,
+      "elapsedNanos": 43796751500,
+      "ownerCpuNanos": 38875000000,
+      "processCpuNanos": 38984375000,
+      "nodes": 24000000,
+      "softStops": 0,
+      "incompleteRequests": 24,
+      "completedDepthMean": 9.166666666666666,
+      "gcCollections": 0,
+      "compilationMillis": 84,
+      "maxHeapUsed": 288323816
+    }
+  ],
+  "betweenProfileMedianRange": 0.0034731443634213877,
+  "criteriaPassed": false,
+  "wallSeconds": 182.14377490000334,
+  "evidence": {
+    "raw\\clock-development-stable3-half-v1-post-delivery.jsonl": "58c5587b18c23f20f599389230dab6b7499b8970cd3a3ecd800a9e703b7724cf",
+    "raw\\clock-development-stable3-half-v1-post-delivery.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}
