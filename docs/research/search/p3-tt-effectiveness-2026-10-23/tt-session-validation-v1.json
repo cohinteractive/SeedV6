@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "exitCode": 0,
+  "log": "raw\\tt-session-tests-v2.log",
+  "logSha256": "ea5ffe9f5e625e34e747953e15a2ee36cd4958b8cf96f4e7fea69e4bfe5e4828",
+  "tests": 26,
+  "files": {
+    "tools\\p3-tt-session.py": "5af7effa7db258c3a134f6da383aec7316d5c30b781ca106a21b430a4b09f651",
+    "tools\\test_p3_tt_session.py": "5a1f62364e7d3e3404727a32c64042ba9f68fed5cd519a6a0485fd5bbcca0a67"
+  },
+  "limits": "Adapted existing continuation and Windows process-fault tests, plus resource admission/qualification. Earlier25-test output is preserved; PowerShell returned1 because unittest wrote to stderr, despite its OK result. No chess pilot or confirmation claimed here."
+}

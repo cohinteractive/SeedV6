@@ -1,0 +1,26 @@
+{
+  "purpose": "confirmatory",
+  "adapter": "p3-tt-match.py",
+  "blockPairs": 32,
+  "blockLimitSeconds": 3600,
+  "assessmentProtocol": "adaptive-confirmation-v1.md",
+  "assessmentPlan": "adaptive-confirmation-v1.md; no interim strength looks. W4 confirmation requires quiet-host requalification.",
+  "arguments": {
+    "java": "C:/java/jdk-21/bin/java.exe",
+    "runner": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\tools\\fastchess.exe",
+    "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2",
+    "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2",
+    "network": "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\adaptive-confirmation-v1-openings.pgn",
+    "baseline_policy": "baseline",
+    "candidate_policy": "adaptive",
+    "baseline_workers": 4,
+    "candidate_workers": 4,
+    "concurrency": 1,
+    "hash_mib": 64,
+    "background": true,
+    "pairs": 128,
+    "tc": "10+0.1",
+    "seed": 2026102304
+  }
+}

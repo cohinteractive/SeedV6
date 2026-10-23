@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms256m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "-Djava.awt.headless=true",
+    "-XX:StartFlightRecording=filename=C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\access-profile-w4-v1.jfr,settings=C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\access-profile-v1.jfc,disk=true,dumponexit=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\lib\\*",
+    "com.ohinteractive.seedv6.uci.UciMain"
+  ],
+  "bindingSha256": "da8ead0452a3a065a8a4e3deaf10db55cfab83a4bd2f3901c0ba33cbf0c49bac",
+  "priority": "BelowNormal inherited",
+  "profileTimingNotPerformanceEvidence": true,
+  "identity": [
+    "[0.372s][info][jfr,startup] Started recording 1. No limit specified, using maxsize=250MB as default.",
+    "[0.372s][info][jfr,startup]",
+    "[0.372s][info][jfr,startup] Use jcmd 6092 JFR.dump name=1 to copy recording data to file.",
+    "id name SeedV6 Construction V1 NNUE CP64 0.0.0 (build 69)",
+    "id author Charles Clark",
+    "option name Threads type spin default 1 min 1 max 16",
+    "option name Hash type spin default 64 min 1 max 1024",
+    "option name Clear Hash type button",
+    "option name UseBook type check default false",
+    "option name OwnBook type check default false",
+    "info string baseline=construction-v1-cp64 search=construction-v1 flags=262143 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=WIDEN16;parallel=OWNER evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 score=side-to-move-cp build=69 source=baa11555e089 (uncommitted changes) ttMiB=64",
+    "uciok"
+  ],
+  "nativeLifetime": {
+    "creationTicks": 134372066422517489,
+    "createdUtc": "2026-10-23T05:24:02.251749+00:00",
+    "exitCode": 0,
+    "exitedUtc": "2026-10-23T05:24:24.693274+00:00",
+    "kernelCpuSeconds": 2.53125,
+    "userCpuSeconds": 60.03125,
+    "totalCpuSeconds": 62.5625
+  },
+  "requests": 24,
+  "requestNodes": 24000000,
+  "requestElapsedNanos": 20720207100,
+  "wallSeconds": 23.69765770000049,
+  "evidence": {
+    "raw\\access-profile-w4-v1.jfr": "092e29697733a0e0b4552a0ecbaab7b1ed4ae2109595e2550c4de2ddaa8cd667",
+    "raw\\access-profile-w4-v1-events.json": "7c67e9996d5bf1654cd59bcd8e25f7ee407aca3b05fac467b73da27f0217e15f",
+    "raw\\access-profile-w4-v1-uci.txt": "651980ae4761da7a47e6e86f114f6f2e48cbf51a60dc89dd873a5994a6d3f24b",
+    "raw\\access-profile-w4-v1-requests.json": "5ca00e3471ea2403269cd64b31fb6c867cf370673ec0b12c4837edd6feabd305"
+  }
+}

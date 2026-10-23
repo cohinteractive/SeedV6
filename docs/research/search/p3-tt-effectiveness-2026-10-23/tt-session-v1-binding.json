@@ -1,0 +1,55 @@
+{
+  "status": "prepared",
+  "studies": {
+    "pilot": {
+      "plan": "raw\\tt-session-pilot-v1\\plan.json",
+      "planSha256": "1e0b9e34895a4462abaeb151ab325fe0961d2297c7b3f9648eec4f64f1c207f0",
+      "identitySha256": "fb053dff2088e269a78e3b28051913027ae1c6665d97b5784c21ce0fb633aac6",
+      "configSha256": "4393f4dffa0122390b051569e066b2eab82e8c4b80f926cec7a7512b559f3ad0",
+      "pairs": 2,
+      "blocks": 2,
+      "frozenPayloadFiles": 49,
+      "status": "prepared; no games started"
+    },
+    "w1": {
+      "plan": "raw\\tt-session-w1-v1\\plan.json",
+      "planSha256": "5c423e2c07cac09b46a693015555fb9ceeaac2a4ea65af4394060a42b4da7d67",
+      "identitySha256": "6bc313e30756a13f3aee608e2f13e3efe8f328bbd025a07a146f9c3622269175",
+      "configSha256": "04e8be1fc1f855d853f461ac2b35d239506a2e83d2dcc7f050fe4e61675be6b2",
+      "pairs": 128,
+      "blocks": 4,
+      "frozenPayloadFiles": 52,
+      "status": "prepared; no games started"
+    },
+    "requal-w4": {
+      "plan": "raw\\tt-session-requal-w4-v1\\plan.json",
+      "planSha256": "d4bbf4ec526a98410f5568402708480bb18d17b3c3bfa5ababa9280ec59af37f",
+      "identitySha256": "3384d2f9e16ba674905c0fca131a1ab462dcfa310508f99fd3d1ee2a7ba45a18",
+      "configSha256": "7dedf22898c790682400ce6f8f7330ec08554fe46ee15f3379f02a1747672751",
+      "pairs": 32,
+      "blocks": 1,
+      "frozenPayloadFiles": 48,
+      "status": "prepared; no games started"
+    },
+    "w4": {
+      "plan": "raw\\tt-session-w4-v1\\plan.json",
+      "planSha256": "4f04f23d115c0f7130b5209610300338045d2677709876a9ce7c7047220f845d",
+      "identitySha256": "ab9f83d643e9f1eb4f8c456b665c435fa9be89ceab21ad24df1ed45664f08121",
+      "configSha256": "1d7060af89c20dc2e5715f5e3696d1f9748b503054d39f00024ad02e01fbd945",
+      "pairs": 128,
+      "blocks": 4,
+      "frozenPayloadFiles": 52,
+      "status": "prepared; no games started"
+    }
+  },
+  "protocol": "adaptive-confirmation-v1.md",
+  "protocolSha256": "4cecd8b6889b2e8b1ba6982f954a5e1af6bd06b907323233d671d6a196cb6f23",
+  "packagingSourceSha256": "5af7effa7db258c3a134f6da383aec7316d5c30b781ca106a21b430a4b09f651",
+  "preparerSha256": "a99f3aed54f32032050e09f3bcd8a4103d5ee035c73a587a22cf2645341545ba",
+  "runtimeBindingSha256": "ee5191bc12fddceaccc098612df221dd9c0adbda726a873bb506dedb08b603a4",
+  "selectionReceipts": {
+    "adaptive-confirmation-v1-openings.selection.json": "3ee71bb30f0ccf80a8a1b3bf7f30b9cc802f7046d9ae631aceb5df9e7d26906a",
+    "adaptive-requalification-v1-openings.selection.json": "09a5e08e6e05351628c18acbdc0417c9d799892a4ddbba53e01f182c24780a82"
+  },
+  "prerequisites": "Operational two-block pilot with pause/resume/export before research games. W4 confirmation also requires its fresh32-pair resource-qualified development score>=0.55. All studies enforce quiet-host admission; preparation does not authorize bypassing prerequisites."
+}

@@ -1,0 +1,55 @@
+{
+  "protocolSha256": "ed616a7c2535b6a8568675b50fb2ba21b6bca8342acd2a804b39a5cd0277d202",
+  "runnerSha256": "29986fe242ff946c10ea9f60cc6a556d4fe6c6685e759ad0e27ec274e5e899ac",
+  "runtimeBindingSha256": "ee5191bc12fddceaccc098612df221dd9c0adbda726a873bb506dedb08b603a4",
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\access-profile-v1.jfc": "d15370c8ebb18005dc1ed1e6ef028d238c39bfc1ddae3ed59084dc917fe4ed33",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr002-execution-2026-10-19\\confirmation-corpus.tsv": "781bfbf5d55fec0aef380e2db8c44bb25553ef295c24cb5c5697dd50f2e4f131",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\search-baseline.py": "f67b5c8ad6a88b5d94667b2ee8f12d1b454a0340592f781b70c139f491602678",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\sr036-process-cost.py": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+    "C:\\java\\jdk-21\\bin\\jfr.exe": "a1137ee343f1a9b1328c54a93da8e0ba38770a250e6a375faa6c956c9c0825d0",
+    "C:\\java\\jdk-21\\bin\\java.exe": "28b603f0fc719e06f020bcb99f2b5c01f27234adccb1f525b004850d506e1950"
+  },
+  "runtimeFiles": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\lib\\app-uci.jar": "1ba9d9bcf44fcf385c6495e909fc3c24bb2dea4d1a10ed4f0d48b75319f67a19",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\lib\\engine-core.jar": "3df6fbb54326bc71e4869485f7ad0700a64afcb6a58cb4a3ef4e86a33e87a803",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\lib\\research.jar": "a62eafc4928ee53f2b6048187356da1095d09fa4e3682fbfe801c062f24e6620",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\research-launcher.properties": "a7c61ea7a9363040d74d62f8b3ce450305f0b833ef13cd5dc87a85425f5849e4",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain$1.class": "58c3d4ebe21a2b8aa46a3114d1bc3e37a851860312fe330867a78d5708df6598",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain.class": "1c47b49bba3d0fb4a9349db23ac757778cd6c6f9d6e32a3911eb2f1613451735",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain$1.class": "1a0b995fb5c2046b1a4e18a5cec8b0bd1eeb949595e1b1c36a556e7514c45b14",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain.class": "b35ec2373bd5a0cf4e6d714d5e7b8e6c948fc33775b5b461af10696c539b84fd",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain$1.class": "a7e2f469e7b6976ec1897c05ec9428220e9ff4a97ec03ef894189b0ecd4e3bf3",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain.class": "1fb37318975ec761b2117db35602d72fd28113e678b17700752a1764156006ec",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain$1.class": "7c42bf4d1282b03cb9b2725144c4be291901bf8398a723a9964439f84db1aa39",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain.class": "432f4a78091d0f2e48699be7485130d4072327f95f81658669514b5e5347cce5",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain$1.class": "745f48127c0e35629ea731691b838b7cf0c51ddb732f7bec9b87bb171e0fe7d6",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\clock-runtime-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain.class": "706958cf81282a7d9e4b130b92f36f80219d993f86547e40d2c2a16aff431141"
+  },
+  "settings": {
+    "jdk.ThreadPark": {
+      "enabled": "true",
+      "stackTrace": "true",
+      "threshold": "10 ms"
+    },
+    "jdk.JavaMonitorEnter": {
+      "enabled": "true",
+      "stackTrace": "true",
+      "threshold": "10 ms"
+    },
+    "jdk.ExecutionSample": {
+      "enabled": "true",
+      "period": "10 ms"
+    },
+    "jdk.NativeMethodSample": {
+      "enabled": "true",
+      "period": "20 ms"
+    }
+  },
+  "jfrHelp": "Print contents of a recording file\n\n jfr print [--xml|--json]\n           [--categories <filter>]\n           [--events <filter>]\n           [--stack-depth <depth>]\n           <file>\n\n  --xml                   Print recording in XML format\n\n  --json                  Print recording in JSON format\n\n  --categories <filter>   Select events matching a category name.\n                          The filter is a comma-separated list of names,\n                          simple and/or qualified, and/or quoted glob patterns\n\n  --events <filter>       Select events matching an event name.\n                          The filter is a comma-separated list of names,\n                          simple and/or qualified, and/or quoted glob patterns\n\n  --stack-depth <depth>   Number of frames in stack traces, by default 5\n\n  <file>                  Location of the recording file (.jfr)\n\n\nExample usage:\n\n jfr print --events OldObjectSample recording.jfr\n\n jfr print --events CPULoad,GarbageCollection recording.jfr\n\n jfr print --categories \"GC,JVM,Java*\" recording.jfr\n\n jfr print --events \"jdk.*\" --stack-depth 64 recording.jfr\n\n jfr print --json --events CPULoad recording.jfr\n"
+}

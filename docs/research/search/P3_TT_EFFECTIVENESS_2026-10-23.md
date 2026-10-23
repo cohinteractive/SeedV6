@@ -1,9 +1,9 @@
 # Phase 3: TT Information Effectiveness and Reuse
 
-Owner-authorized CGLHW, 23 October 2026 (Pacific/Auckland). **ACTIVE: full-window
-clock and full-game retention disposition; one existing adaptive control under study.** This is subordinate evidence and continuity
+Owner-authorized CGLHW, 23 October 2026 (Pacific/Auckland). **ACTIVE: diagnostics
+and development complete; adaptive confirmation awaits reliable host resources.** This is subordinate evidence and continuity
 under [Contract P3-R017](../../../source/CHESS_SEARCH_CONTRACT.md) and
-[Frontier P3-F015](../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md), not a new
+[Frontier P3-F016](../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md), not a new
 contract or an acceptance/promotion authority.
 
 ## Resume and current work selection
@@ -19,15 +19,33 @@ pairs), with maximum occupancy 37.56% and no justified retention-policy change.
 Adaptive-v1 passed 11 test methods and all four diagnostics-OFF cost domains.
 Both worker domains meet its frozen cost/completion gate. The separate
 adaptive-clock-v1 protocol, 32 new paired openings per W1/W4 domain at 10+0.1,
-passed clock-runtime-v2 identity/parity qualification and opening binding. Its
-serial executor started W1 at 2026-10-23T04:25:03Z and will start W4 only after
-W1 audits pass. Do not launch it again. Next: inspect both completion receipts,
-run `summarize_adaptive_clock_v1.py`, and apply the frozen strength-selection rule.
-Before any further clocks, execute the frozen short access-profile-v1 observation
-of the unchanged baseline to distinguish traffic counts from an obvious access
-cost concentration. Sampling limitations must remain explicit; no TT change is
-authorized. Fresh confirmation is conditional, not automatic. No policy sweep or bespoke
-Search redesign. Passive host observers are read-only and do not affect stopping.
+passed clock-runtime-v2 identity/parity qualification and opening binding. Both
+domains finished: W1 30/19/15 and W4 28/18/18 W/D/L. All 128 games pass legal,
+terminal/history/request and lifecycle audits; neither is confirmation. Both
+pass the score-only 0.55 gate, but later host reconciliation identifies substantial
+non-engine load during W4. Its full resource gate is NOT passed. The original
+summary's automatic score-only eligibility label is superseded by the resource
+disposition below, without altering results or the closed protocol. W1 remains
+eligible with desktop-load limitations. W4 requires a fresh quiet-host development
+screen before admission to confirmation; no pooling or extension of closed data.
+Access-profile-v1 completed without an obvious TT access concentration. No TT
+policy change is justified. The CP64 block adaptation passed26 continuation,
+identity, process-fault and resource-gate tests. Four studies are now frozen in
+[tt-session-v1-binding.json](p3-tt-effectiveness-2026-10-23/tt-session-v1-binding.json)
+under [the prospective protocol](p3-tt-effectiveness-2026-10-23/adaptive-confirmation-v1.md):
+two-block operational pilot; W1 128-pair confirmation; W4 fresh32-pair resource
+requalification; conditional W4 128-pair confirmation. No games in them yet.
+The owner answered: **wait until the workstation is quiet, then continue**.
+Next: run `continue_confirmation_v1.py` once, from the experiment directory using
+the existing `build/research/venv/Scripts/python.exe -B`. It waits15min after a
+failed30s admission, locks out competing controllers, starts one block at a time,
+and requires the pilot and W4 selection gates. `PAUSE` in the current raw study
+stops after the current complete block; the controller never clears it. Partial
+or resource-invalid blocks stop with preserved evidence; do not automatically
+replay/recreate studies. Reconcile any interruption before starting another copy.
+Never stop or reprioritize the owner's applications. No policy sweep or bespoke
+Search redesign. Raw inputs/plans are local-only and absent from a fresh checkout;
+reproduction requires the recorded source/runtime/model/book/tool identities.
 Absent completion never permits duplicating a live run; reconcile any
 interruption before retrying under a new name. Existing full-window remains a
 conditional CPU-saving configuration with strength unconfirmed; WIDEN16 remains
@@ -104,10 +122,10 @@ Challenge decisions before substantial execution:
 | --- | --- | --- |
 | T1 | Completed hints materially reduce current CP64 request work despite no ordinary proof. | SUPPORTED mechanism value in diagnostic-v1: hints-off increases D6 work/time at W1/W4, despite slightly cheaper fixed-node requests. Not Elo evidence. |
 | T2 | Current capacity/replacement loses consequential guidance. | Full-trajectory check complete: maximum37.56% occupancy, no saturation demonstrated; retained work benefit concentrated early, later results nearly neutral/slightly adverse. No capacity/replacement redesign justified in tested domains; long clocks remain untested. |
-| T3 | Aspiration/PVS/iteration or root guidance consumes hints ineffectively. | Full-window reduces some request costs but clock gain is unconfirmed. ADAPTIVE16 cost/completion gates pass W1/W4 with diagnostics OFF; NEXT one frozen paired clock screen on fresh development openings. No width sweep. |
-| T4 | TT access/coordination costs consume the information benefit. | Fixed-node hints-off is about4-5% cheaper but D6 becomes23-33% slower; this does not isolate ordinary-probe cost. NEXT short frozen access-profile-v1 sampling after adaptive clocks to seek an obvious cost concentration, with explicit finite-sampling/threshold limits. No locking/layout variant. |
+| T3 | Aspiration/PVS/iteration or root guidance consumes hints ineffectively. | Full-window reduces some request costs but clock gain is unconfirmed. ADAPTIVE16 diagnostics-OFF cost/completion gates pass W1/W4. Development scores are promising, conditional on resource qualification and fresh confirmation. No width sweep. |
+| T4 | TT access/coordination costs consume the information benefit. | JFR observed 7/3764 W1 and 14/4552 W4 Java samples with TTable frames, no monitor-entry event above10ms. No obvious concentration; small/inlined costs and short waits remain unquantified. No locking/layout change justified. |
 | T5 | Producer depth/selective restrictions leave valuable proof or guidance unavailable. | Zero ordinary proof confirmed; completed hints provide value. No evidence yet justifies weakening proof restrictions or binding-policy experimentation. Empty proof probes/repeated writes are traffic observations, not permission to alter TT access/replacement. |
-| T6 | A promising integrated candidate improves practical strength. | Full-window W1/W4 clock results inconclusive, neither reaches frozen confirmation-selection gate. W4 CPU ratio0.789 is conditional resource evidence, not strength equivalence. Any adaptive screen requires its independent prospective diagnostic gate. No promotion. |
+| T6 | A promising integrated candidate improves practical strength. | Full-window inconclusive and below its selection gate. Adaptive W1 eligible for fresh confirmation; W4 score gate passes but resource qualification is incomplete. Retain conditional candidate; quiet-host W4 screen precedes any W4 confirmation. No gain confirmed or promotion. |
 
 Select the next question by expected decision value. Negative findings may close
 formulations; incomplete/resource-limited evidence stays inconclusive or deferred.
@@ -358,6 +376,56 @@ and Git commit8e933ea; v1 runtime, protocols and results remain untouched.
 
 ## Validation and local evidence
 
+### Adaptive development endpoint and host qualification
+
+The closed [adaptive clock summary](p3-tt-effectiveness-2026-10-23/adaptive-clock-v1-summary.json)
+records W1 30/19/15 (61.72%, descriptive Elo+83, pair-normal95% +17 to+156)
+and W4 28/18/18 (57.81%, +55, -17 to+131). Conservative bounded-pair intervals
+are much wider and include zero: W1 -87 to+311, W4 -117 to+261. These are selected
+development comparisons after full-window exploration, not independent gain
+confirmation. Two domains share openings; never pool their estimates. Candidate/
+baseline native CPU ratios are1.003 W1 and0.985 W4, with complete request elapsed
+876.0/873.7s and856.0/852.8s respectively. Candidate peak working sets353.1MB
+and390.3MB are in the receipts. Both complete128 games together took about58min.
+
+The passive host windows identify about0.96 other busy logical cores during W1
+and2.99 during W4. A subsequent read-only process sample finds the owner's game
+using2.33 cores. See [availability evidence](p3-tt-effectiveness-2026-10-23/post-development-host-check.json).
+The host sample is partial-window evidence, not a complete process attribution or
+proof of isolation. W4's substantial unplanned load makes its clock strength
+screen resource-unqualified. The score-only selection in the generated summary
+did not enforce the protocol's resource condition; this explicit disposition
+corrects that omission. All original data, protocol and summary remain intact.
+W1's background workload also limits generalization, though no comparable active
+gaming interval was observed. Fresh studies require a prospective resource gate.
+
+The closed adaptive-clock-v1 JSON has duplicate `selection` keys: the latter
+strength gate wins in ordinary JSON parsing. The former opening description is
+still visible in its immutable source, and actual openings/exclusions are bound
+by the separate selection receipt and binding. New protocols use distinct keys;
+no historical protocol or outcome is rewritten to conceal this metadata flaw.
+
+### Access profile and resulting disposition
+
+[Access profile v2 summary](p3-tt-effectiveness-2026-10-23/access-profile-v2-summary.json)
+is a corrected categorization of the same immutable JFR recordings. W1 and W4
+each use24 complete1m-node requests on12 full-history roots, plus400k startup
+warmup, ordinary default UCI/BaselineEngine, diagnostics OFF and frozen runtimev2.
+Java execution samples containing TTable frames number7/3764 and14/4552;
+including SearchKey changes W4 to17. No monitor-entry event exceeds the configured
+10ms threshold. ThreadPark has1/534 events; overlapping park durations are not
+lost CPU. JFR/default10ms Java and20ms native sampling can miss inlined/small costs;
+these counts are not CPU percentages, upper bounds, or proof of zero contention.
+Profile timing includes JFR and export overhead, not an uninstrumented speed test.
+
+The first summary/script incorrectly treated SearchKey as residing in `.tt`;
+v2 corrects the category to `.exact.SearchKey`, retaining v1 and its raw data.
+TTable counts are unchanged. The profiles took46.2s W1 and23.7s W4 wall including
+export. Repeated same-move writes and empty ordinary probes remain possible
+micro-cost hypotheses, but no evidence now justifies owner-reserved access,
+replacement, layout or locking changes. No separate optimization programme is
+opened. NNUE frames being common is not authority to optimize or change CP64.
+
 [Bootstrap validation](p3-tt-effectiveness-2026-10-23/bootstrap-validation.json)
 binds the actual tests. The first run executed 84 checks: 83 passed, one stale
 research assertion failed because it expected HCE rejection after build69 added
@@ -387,5 +455,5 @@ Existing tournament machinery provides pair blocks and process accounting.
 
 Playing-strength evidence is development-only so far; no gain confirmed and no
 candidate promoted. Both canon mirrors
-must be refreshed to P3-R017/P3-F015 before dependent external GPT planning;
+must be refreshed to P3-R017/P3-F016 before dependent external GPT planning;
 Codex has not synchronized them. Repository research is already authorized.

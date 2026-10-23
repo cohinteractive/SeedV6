@@ -1,0 +1,207 @@
+{
+  "status": "passed",
+  "protocolSha256": "ed616a7c2535b6a8568675b50fb2ba21b6bca8342acd2a804b39a5cd0277d202",
+  "domains": {
+    "1": {
+      "eventsSha256": "869b8589ca8066bee9c4353b19efe1873a719f12cb3fa42f11ca65a425557c6c",
+      "eventCounts": {
+        "jdk.NativeMethodSample": 2106,
+        "jdk.ExecutionSample": 3764,
+        "jdk.ThreadPark": 1
+      },
+      "requestNodes": 24000000,
+      "requests": 24,
+      "wallSecondsIncludingExport": 46.22195079999983,
+      "nativeProcessCpuSeconds": 54.28125,
+      "samples": {
+        "jdk.ExecutionSample": {
+          "count": 3764,
+          "missingStack": 0,
+          "truncatedStacks": 0,
+          "inclusiveStackCounts": {
+            "TTandSearchKeyInclusive": 7,
+            "TTable": 7,
+            "SearchInclusive": 3762,
+            "EvaluationInclusive": 2258,
+            "ParallelSearchInclusive": 0
+          },
+          "ttMethodsInclusive": {
+            "com.ohinteractive.seedv6.search.tt.TTable.probeHint": 5,
+            "com.ohinteractive.seedv6.search.tt.TTable.probe": 1,
+            "com.ohinteractive.seedv6.search.tt.TTable.clear": 1
+          },
+          "topLeafMethods": {
+            "com.ohinteractive.seedv6.core.nnue.conventional.ConventionalAccumulator.update": 886,
+            "com.ohinteractive.seedv6.core.nnue.conventional.ConventionalAccumulator.refresh": 814,
+            "com.ohinteractive.seedv6.core.nnue.conventional.ConventionalFeatures.context": 308,
+            "com.ohinteractive.seedv6.search.exact.ExactSearch.flatNegamax": 236,
+            "java.util.Objects.checkIndex": 231,
+            "com.ohinteractive.seedv6.search.exact.ExactSearch.tacticalMaterialValue": 123,
+            "com.ohinteractive.seedv6.search.exact.ExactSearch.flatQuiescence": 121,
+            "com.ohinteractive.seedv6.core.Board.makeMoveInto": 105,
+            "com.ohinteractive.seedv6.search.exact.ExactSearch.appendQuiets": 103,
+            "com.ohinteractive.seedv6.core.Gen.getPawnTactical": 101,
+            "com.ohinteractive.seedv6.core.Gen.getQueenTactical": 85,
+            "com.ohinteractive.seedv6.core.See.captureAtLeast": 79,
+            "com.ohinteractive.seedv6.core.See.atLeastGeneratedLegal": 78,
+            "com.ohinteractive.seedv6.search.exact.Sort.next": 44,
+            "com.ohinteractive.seedv6.core.Gen.getRookTactical": 40
+          },
+          "sampledJavaThreads": {
+            "main": 8,
+            "seedv6-search-worker": 3755,
+            "JFR Periodic Tasks": 1
+          },
+          "TTablePresenceFraction": 0.0018597236981934113
+        },
+        "jdk.NativeMethodSample": {
+          "count": 2106,
+          "missingStack": 0,
+          "truncatedStacks": 0,
+          "inclusiveStackCounts": {
+            "TTandSearchKeyInclusive": 0,
+            "TTable": 0,
+            "SearchInclusive": 3,
+            "EvaluationInclusive": 1,
+            "ParallelSearchInclusive": 0
+          },
+          "ttMethodsInclusive": {},
+          "topLeafMethods": {
+            "java.io.FileInputStream.readBytes": 2046,
+            "jdk.jfr.internal.JVM.emitEvent": 57,
+            "java.util.zip.Inflater.inflateBytesBytes": 2,
+            "java.lang.Class.isPrimitive": 1
+          },
+          "sampledJavaThreads": {
+            "main": 2048,
+            "seedv6-search-worker": 1,
+            "JFR Periodic Tasks": 57
+          },
+          "TTablePresenceFraction": 0.0
+        }
+      },
+      "jdk.JavaMonitorEnter": {
+        "count": 0,
+        "classCounts": {},
+        "overlappingRecordedDurationSeconds": {},
+        "TTableMonitorEvents": 0
+      },
+      "jdk.ThreadPark": {
+        "count": 1,
+        "classCounts": {
+          "java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject": 1
+        },
+        "overlappingRecordedDurationSeconds": {
+          "java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject": 0.5640622
+        },
+        "TTableMonitorEvents": 0
+      }
+    },
+    "4": {
+      "eventsSha256": "7c67e9996d5bf1654cd59bcd8e25f7ee407aca3b05fac467b73da27f0217e15f",
+      "eventCounts": {
+        "jdk.NativeMethodSample": 1046,
+        "jdk.ExecutionSample": 4552,
+        "jdk.ThreadPark": 534
+      },
+      "requestNodes": 24000000,
+      "requests": 24,
+      "wallSecondsIncludingExport": 23.69765770000049,
+      "nativeProcessCpuSeconds": 62.5625,
+      "samples": {
+        "jdk.ExecutionSample": {
+          "count": 4552,
+          "missingStack": 0,
+          "truncatedStacks": 0,
+          "inclusiveStackCounts": {
+            "TTandSearchKeyInclusive": 17,
+            "TTable": 14,
+            "SearchInclusive": 4552,
+            "EvaluationInclusive": 2683,
+            "ParallelSearchInclusive": 1811
+          },
+          "ttMethodsInclusive": {
+            "com.ohinteractive.seedv6.search.tt.TTable.probe": 8,
+            "com.ohinteractive.seedv6.search.exact.SearchKey.childHistory": 3,
+            "com.ohinteractive.seedv6.search.exact.SearchKey.append": 3,
+            "com.ohinteractive.seedv6.search.tt.TTable.clear": 3,
+            "com.ohinteractive.seedv6.search.tt.TTable.saveHint": 2,
+            "com.ohinteractive.seedv6.search.tt.TTable.probeHint": 1
+          },
+          "topLeafMethods": {
+            "com.ohinteractive.seedv6.core.nnue.conventional.ConventionalAccumulator.update": 1107,
+            "com.ohinteractive.seedv6.core.nnue.conventional.ConventionalAccumulator.refresh": 947,
+            "com.ohinteractive.seedv6.core.nnue.conventional.ConventionalFeatures.context": 338,
+            "com.ohinteractive.seedv6.search.exact.ExactSearch.flatNegamax": 314,
+            "java.util.Objects.checkIndex": 279,
+            "com.ohinteractive.seedv6.search.exact.FlatSearchState.order": 145,
+            "com.ohinteractive.seedv6.search.exact.ExactSearch.flatQuiescence": 133,
+            "com.ohinteractive.seedv6.core.Gen.getPawnTactical": 123,
+            "com.ohinteractive.seedv6.search.exact.ExactSearch.appendQuiets": 114,
+            "com.ohinteractive.seedv6.core.See.atLeastGeneratedLegal": 104,
+            "com.ohinteractive.seedv6.core.Board.makeMoveInto": 102,
+            "com.ohinteractive.seedv6.search.exact.Sort.next": 84,
+            "com.ohinteractive.seedv6.core.Gen.getQueenTactical": 83,
+            "com.ohinteractive.seedv6.core.See.captureAtLeast": 79,
+            "com.ohinteractive.seedv6.core.Gen.getRookTactical": 44
+          },
+          "sampledJavaThreads": {
+            "main": 2,
+            "seedv6-search-worker": 1812,
+            "seedv6-search-helper": 2738
+          },
+          "TTablePresenceFraction": 0.0030755711775043936
+        },
+        "jdk.NativeMethodSample": {
+          "count": 1046,
+          "missingStack": 0,
+          "truncatedStacks": 0,
+          "inclusiveStackCounts": {
+            "TTandSearchKeyInclusive": 0,
+            "TTable": 0,
+            "SearchInclusive": 1,
+            "EvaluationInclusive": 0,
+            "ParallelSearchInclusive": 0
+          },
+          "ttMethodsInclusive": {},
+          "topLeafMethods": {
+            "java.io.FileInputStream.readBytes": 1012,
+            "jdk.jfr.internal.JVM.emitEvent": 33,
+            "java.util.zip.Inflater.inflateBytesBytes": 1
+          },
+          "sampledJavaThreads": {
+            "main": 1013,
+            "JFR Periodic Tasks": 33
+          },
+          "TTablePresenceFraction": 0.0
+        }
+      },
+      "jdk.JavaMonitorEnter": {
+        "count": 0,
+        "classCounts": {},
+        "overlappingRecordedDurationSeconds": {},
+        "TTableMonitorEvents": 0
+      },
+      "jdk.ThreadPark": {
+        "count": 534,
+        "classCounts": {
+          "java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject": 530,
+          "java.util.concurrent.FutureTask": 4
+        },
+        "overlappingRecordedDurationSeconds": {
+          "java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject": 30.44874350000001,
+          "java.util.concurrent.FutureTask": 0.043979199999999996
+        },
+        "TTableMonitorEvents": 0
+      }
+    }
+  },
+  "classificationCorrection": "V1 grouped TT-package classes but SearchKey resides in search.exact; V2 explicitly includes that class. TTable counts and raw evidence are unchanged.",
+  "priorSummarySha256": "9cc1895065a702330332688a71feb4f3298292f5816059cf9eded31e5b337eed",
+  "limits": [
+    "Sampling includes startup, warmup and all requests; finite/inlined stack attribution is not an exact CPU or causal-savings estimate.",
+    "ExecutionSample and NativeMethodSample have different periods and are never pooled. Native samples can represent blocking native reads/parks.",
+    "Monitor/park threshold10ms misses shorter waits. Summed thread durations overlap and are not lost request/CPU time.",
+    "Profiled time includes unestimated JFR overhead and fixed-node-budget coordination; it is not production clock performance."
+  ]
+}

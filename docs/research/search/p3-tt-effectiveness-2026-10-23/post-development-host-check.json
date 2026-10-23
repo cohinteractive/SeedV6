@@ -1,0 +1,82 @@
+{
+  "seconds": 151.74565362930298,
+  "topPersistentProcesses": [
+    {
+      "pid": 3608,
+      "name": "Overwatch",
+      "cpuSeconds": 353.8125,
+      "averageLogicalCores": 2.331615380986943
+    },
+    {
+      "pid": 2060,
+      "name": "ChatGPT",
+      "cpuSeconds": 43.34375,
+      "averageLogicalCores": 0.28563421068970946
+    },
+    {
+      "pid": 12372,
+      "name": "Code",
+      "cpuSeconds": 12.0625,
+      "averageLogicalCores": 0.07949156836786435
+    },
+    {
+      "pid": 7476,
+      "name": "ChatGPT",
+      "cpuSeconds": 11.4375,
+      "averageLogicalCores": 0.07537283425553977
+    },
+    {
+      "pid": 25568,
+      "name": "Code",
+      "cpuSeconds": 7.859375,
+      "averageLogicalCores": 0.051793081462481565
+    },
+    {
+      "pid": 30612,
+      "name": "audiodg",
+      "cpuSeconds": 4.203125,
+      "averageLogicalCores": 0.027698486905382784
+    },
+    {
+      "pid": 22260,
+      "name": "Code",
+      "cpuSeconds": 2.515625,
+      "averageLogicalCores": 0.016577904802106424
+    },
+    {
+      "pid": 3184,
+      "name": "ChatGPT",
+      "cpuSeconds": 2.046875,
+      "averageLogicalCores": 0.013488854217862991
+    },
+    {
+      "pid": 2476,
+      "name": "Code",
+      "cpuSeconds": 1.921875,
+      "averageLogicalCores": 0.012665107395398075
+    },
+    {
+      "pid": 12340,
+      "name": "nvcontainer",
+      "cpuSeconds": 1.84375,
+      "averageLogicalCores": 0.012150265631357503
+    },
+    {
+      "pid": 13176,
+      "name": "steamwebhelper",
+      "cpuSeconds": 1.15625,
+      "averageLogicalCores": 0.007619658107800469
+    },
+    {
+      "pid": 11964,
+      "name": "bash",
+      "cpuSeconds": 1.125,
+      "averageLogicalCores": 0.00741372140218424
+    }
+  ],
+  "files": {
+    "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\host-process-cpu-start.json": "1e694ce29dce5dd1155c9aa0dadcb2929b4aa6cd1567836a162d6c4b6c67f06b",
+    "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\raw\\host-process-cpu-end.json": "7e5a34c6df95ad585268494a941a6277f5b8dd482c3048c32a44a878c360e34c"
+  },
+  "limits": "Post-clock sampled interval. Persistent PID/birth identities only; ended/new processes and system/kernel workload omitted. Read-only availability check, not complete system CPU accounting."
+}
