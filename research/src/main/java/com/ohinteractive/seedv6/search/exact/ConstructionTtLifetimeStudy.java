@@ -36,7 +36,7 @@ public final class ConstructionTtLifetimeStudy {
         var gson=new GsonBuilder().create();int count=0;
         try(var out=Files.newBufferedWriter(Path.of(args[2]),StandardOpenOption.CREATE_NEW)) {
             out.write(gson.toJson(Map.of("type","identity","arguments",args,"modelSha256",ConventionalNnueEngine.SHA256,
-                    "config",BaselineEngine.configuration(1,64).identity(),"games",games.size(),"allFixtureMovesLegallyReplayed",true)));
+                    "config",ConstructionTtStudy.configuration("baseline",1).identity(),"games",games.size(),"allFixtureMovesLegallyReplayed",true)));
             out.newLine();out.flush();
             for(var game:games) {
                 SearchDriver[] plain=new SearchDriver[2],observed=new SearchDriver[2],cleared=new SearchDriver[2];
@@ -46,8 +46,8 @@ public final class ConstructionTtLifetimeStudy {
                         tables[side]=new ConstructionTtStudy.ObservedTable(64);
                         var adapter=ExactSearchAdapter.constructionResearch(e,tables[side],FlatSearchConfig.candidate());
                         observed[side]=new SearchDriver(new AspirationSearch(adapter,AspirationSearch.Policy.WIDEN16));
-                        plain[side]=new SearchDriver(BaselineEngine.create(e,1,64));
-                        cleared[side]=new SearchDriver(BaselineEngine.create(e,1,64));
+                        plain[side]=new SearchDriver(ConstructionTtStudy.configuration("baseline",1).create(e));
+                        cleared[side]=new SearchDriver(ConstructionTtStudy.configuration("baseline",1).create(e));
                     }
                     for(int ply=start;ply<Math.min(end,game.size());ply++) {
                         var root=game.get(ply);int side=Board.player((int)root.board()[Board.STATUS]);

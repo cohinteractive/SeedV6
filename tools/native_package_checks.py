@@ -223,7 +223,7 @@ def verify_uci(launcher, stage, env, model):
             engine.send('uci'); identity = '\n'.join(engine.until('uciok'))
             check(f'workers={workers};hashMiB=8' in identity and 'search=construction-v1' in identity
                   and 'checkpoint=64 schema=S6CNU002 heads=8' in identity and 'flags=262143' in identity
-                  and 'aspiration=WIDEN16' in identity, 'Wrong baseline search/evaluator identity')
+                  and 'aspiration=ADAPTIVE16' in identity, 'Wrong baseline search/evaluator identity')
             check('parallel=' + ('OWNER' if workers == 1 else 'ROOT_REUSE') in identity, 'Worker policy differs')
             for go in ('depth 3', 'movetime 100', 'wtime 5000 btime 5000 winc 20 binc 20 movestogo 20'):
                 engine.send('ucinewgame\nposition startpos\ngo ' + go)

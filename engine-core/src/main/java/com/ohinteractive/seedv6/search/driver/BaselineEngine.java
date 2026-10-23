@@ -36,7 +36,7 @@ public final class BaselineEngine {
         };
     }
     public static ConstructionSearch configuration(int workers, int hashMiB) {
-        return ConstructionSearch.v1(workers, hashMiB, AspirationSearch.Policy.WIDEN16);
+        return ConstructionSearch.v1(workers, hashMiB, AspirationSearch.Policy.ADAPTIVE16);
     }
     public static SingleDepthSearch create(SearchEvaluation evaluation, int workers, int hashMiB) {
         return configuration(workers, hashMiB).create(evaluation);

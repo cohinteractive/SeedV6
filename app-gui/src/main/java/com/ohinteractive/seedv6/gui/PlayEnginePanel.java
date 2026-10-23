@@ -80,8 +80,8 @@ final class PlayEnginePanel extends JPanel {
         if (fixedBinding == null) description.setText(legacySelection != null ? error() : preset() ? selectedMode().toString() : "HCE does not use a checkpoint.");
         if (fixedBinding == null) description.setToolTipText(preset()
                 ? selectedMode() == PlayEvaluator.Mode.CONVENTIONAL_CP64
-                    ? "Bundled checkpoint 64, eight material heads; Construction V1; configured workers; Hash 64 MiB; WIDEN16 aspiration."
-                    : "Bundled, SHA-256 verified Pair-2 generation 32; Construction V1; configured workers; Hash 64 MiB; WIDEN16 aspiration." : null);
+                    ? "Bundled checkpoint 64, eight material heads; Construction V1; configured workers; Hash 64 MiB; ADAPTIVE16 aspiration."
+                    : "Bundled, SHA-256 verified Pair-2 generation 32; Construction V1; configured workers; Hash 64 MiB; ADAPTIVE16 aspiration." : null);
         revalidate();
     }
     void dispose() { disposed = true; model.dispose(); }

@@ -75,6 +75,13 @@ final class ArenaHistoryView extends JPanel {
                 : "\nExposure is cumulative sample visits per competitor; repeated epochs count.\nTraining metrics below belong to each trained model, regardless of the winner.\n");
         for (boolean a : new boolean[]{true, false}) {
             var endpoint = a ? round.a() : round.b(); var competitor = a ? config.a() : config.b();
+            if (competitor.evaluator() != null && competitor.evaluator().competitive()) {
+                text.append("\n").append(a ? "A" : "B").append(" | ").append(competitor.displayName())
+                    .append("\nCheckpoint: ").append(endpoint.isHandcrafted() ? "None (HCE)" : endpoint.checkpoint())
+                    .append("\nHash 64 MiB; workers ").append(config.arena().threads())
+                    .append("\nAspiration policy was not recorded in this campaign summary.\n");
+                continue;
+            }
             if (competitor.isPinned()) {
                 text.append("\n").append(a ? "A" : "B").append(" | ").append(competitor.displayName())
                     .append("\nBundled generation 32; SHA-256: ").append(com.ohinteractive.seedv6.core.brnpair2.ProductionModel.SHA256)

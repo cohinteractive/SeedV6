@@ -1,10 +1,31 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F018**
+Internal frontier revision: **P3-F019**
 
-Status: **TT Information Effectiveness and Reuse CGLHW technically complete, awaiting GPT/owner reconciliation and acceptance. Build69 Construction V1 + frozen CP64/WIDEN16 remains the selected production and research baseline. No TT authority change, production promotion or successor launch follows. Existing packaged-Windows-GUI and native-macOS qualifications remain open.**
+Status: **Owner-selected ADAPTIVE16 is the production aspiration default for Construction V1 + frozen CP64 at all supported workers 1-16. One-worker independent strength evidence is positive under its primary assumptions; four-worker evidence is inconclusive and other counts are unconfirmed. The preceding TT CGLHW still awaits GPT/owner reconciliation and acceptance. No TT policy change, external deployment or successor launch is authorized. Packaged Windows GUI and native macOS acceptance remain separate.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
+
+## ADAPTIVE16 production selection - 23 October 2026
+
+The owner confirms P3-R018/P3-F018 mirror synchronization and selects ADAPTIVE16
+as the production default through shared `BaselineEngine` at every explicit
+worker count 1-16, including GUI Play, ordinary Arena and standard UCI/BotLi.
+This supersedes the previous WIDEN16 production requirement. The owner knowingly
+accepts the strength-evidence limits: W1 independent confirmation is positive
+under the recorded primary assumptions (the conservative bounded interval
+crosses zero); W4 is inconclusive and below its frozen confirmation-selection
+gate; other counts have no independent confirmation. No additional tournament is
+required. Functional worker support is not universal strength confirmation.
+
+The [Contract](CHESS_SEARCH_CONTRACT.md#adaptive16-production-selection---23-october-2026)
+records the exact decision and protected composition; the
+[integration record](../docs/research/search/P3_CONSTRUCTION_2026-10-20.md#adaptive16-production-adoption-23-october-2026)
+records correctness/compatibility validation and local artifact qualifications.
+WIDEN16 stays an explicit historical/research comparison with frozen evidence.
+The TT CGLHW remains technically complete, awaiting separate GPT/owner
+reconciliation and acceptance. No TT/evaluator change, deployment, new research
+objective or successor launch follows. Next-direction coordination is separate.
 
 ## TT information-effectiveness disposition
 
@@ -31,7 +52,8 @@ was launched. Retain W4 as unconfirmed/inconclusive, not inferior or equivalent.
 Longer clocks, other workers/platforms and binding-policy alternatives remain
 deferred without extrapolating the W1 result. All selected avenues are dispositioned;
 further enumeration or another width sweep lacks current decision value.
-Production remains WIDEN16; acceptance remains outstanding. No binding TT decision
+Production now selects ADAPTIVE16 by the separate owner decision above; TT CGLHW
+acceptance remains outstanding. No binding TT decision
 is currently requested, and no successor is launched.
 The [focused record](../docs/research/search/P3_TT_EFFECTIVENESS_2026-10-23.md)
 is the subordinate dynamic hypothesis/experiment queue and recovery point.
@@ -50,7 +72,8 @@ continues independently of that external refresh.
 
 The owner's explicit consolidation launch supersedes the earlier non-promotion,
 Pair-2-principal-evaluator and pending Construction acceptance boundaries for this
-work. Full Construction V1 (all 18 controls, flags 262143, WIDEN16 aspiration) with
+work. The subsequent owner aspiration decision above selects ADAPTIVE16.
+Full Construction V1 (all 18 controls, flags 262143, ADAPTIVE16 aspiration) with
 Conventional NNUE S6CNU002 checkpoint 64, eight material heads, is the selected
 production and Phase 3 research baseline. Technical correctness and packaging
 remain qualification gates; strength relative to E008 is informational, not a
@@ -75,7 +98,7 @@ Explicit worker settings 1-16 are honored; Max is bounded by available processor
 The default requested hash remains 64 MiB. No score rescaling or frozen-weight
 mutation is part of this consolidation.
 
-Build69 runtime source is `18f3c4f12a01417a48fb4c044ff3bde2c5b44b2d`.
+The preceding WIDEN16 build69 runtime source is `18f3c4f12a01417a48fb4c044ff3bde2c5b44b2d`.
 CP64 uses BT4_Q_LOGIT400_V1 teacher-link units, displayed as NNUE score / 100;
 no numeric rescaling occurred. Play and Arena share explicit units/perspective.
 At one worker/Hash32, 24 color-reversed opening pairs per budget give Construction

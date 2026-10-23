@@ -7,7 +7,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import zipfile
-from native_package_checks import Engine, check, verify_uci_book
+from native_package_checks import Engine, check, verify_uci_book, VECTOR_WARNING
 
 SHA = '5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7'
 START = {f'{f}2{f}{r}' for f in 'abcdefgh' for r in '34'} | {'b1a3', 'b1c3', 'g1f3', 'g1h3'}
@@ -35,7 +35,7 @@ def main():
               'host': os.name, 'nativeMac': os.name == 'posix' and __import__('sys').platform == 'darwin'}
 
     def open_engine(extra=()):
-        engine = Engine([launcher, *extra], client, env)
+        engine = Engine([launcher, *extra], client, env, (VECTOR_WARNING,))
         report['sessions'].append({'sent': engine.sent, 'stdout': engine.lines, 'stderr': engine.errors})
         return engine
 

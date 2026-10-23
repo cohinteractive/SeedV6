@@ -151,7 +151,7 @@ public final class ConstructionTtStudy {
             out.write(gson.toJson(Map.of("type","identity","arguments",args,
                     "model",model.identity(64),"java",System.getProperty("java.runtime.version"),
                     "jvm",ManagementFactory.getRuntimeMXBean().getInputArguments(),
-                    "configuration",BaselineEngine.configuration(workers,64).identity(),
+                    "configuration",configuration("baseline",workers).identity(),
                     "modelIdentityNote","model.identity describes historical E008; configuration is authoritative Search composition")));
             out.newLine();out.flush();
             if (args[9].equals("observe")) {
@@ -168,8 +168,8 @@ public final class ConstructionTtStudy {
                         attempt.put("tableCumulative",table.snapshot(false));attempt.put("mechanisms",exact.constructionCounters());
                         attempts.add(attempt);
                     });
-                    // Baseline control goes through the actual production composition.
-                    var plain=profile.equals("baseline")?BaselineEngine.create(evaluation,1,64):config.create(evaluation);
+                    // Preserve the frozen WIDEN16 baseline independently of current production.
+                    var plain=config.create(evaluation);
                     try (var plainDriver=new SearchDriver(plain);var observedDriver=new SearchDriver(observed)) {
                         var a=request(plainDriver,root,depth,budget);var b=request(observedDriver,root,depth,budget);
                         same((SearchDriverOutcome)a.get("outcome"),(SearchDriverOutcome)b.get("outcome"));
@@ -184,8 +184,7 @@ public final class ConstructionTtStudy {
                 try {
                     for (int i=0;i<drivers.length;i++) {
                         String profile=profiles.get(i);long begin=System.nanoTime();
-                        drivers[i]=new SearchDriver(profile.equals("baseline")?BaselineEngine.create(evaluation,workers,64)
-                                :configuration(profile,workers).create(evaluation));
+                        drivers[i]=new SearchDriver(configuration(profile,workers).create(evaluation));
                         out.write(gson.toJson(Map.of("type","construction","profile",profile,
                                 "config",configuration(profile,workers).identity(),"elapsedNanos",System.nanoTime()-begin)));
                         out.newLine();

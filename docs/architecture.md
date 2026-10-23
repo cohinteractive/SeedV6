@@ -44,7 +44,7 @@ No source set includes archive/docs. See [WU6](unified-architecture/WU6-RESEARCH
 ## Production search
 
 [`SearchDriver`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/SearchDriver.java)
-publishes completed iterations over Construction's WIDEN16 `AspirationSearch`,
+publishes completed iterations over Construction's ADAPTIVE16 `AspirationSearch`,
 [`ExactSearchAdapter`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java)
 and [`ExactSearch`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java).
 The latter owns the flattened Construction kernel as well as retained recursive
@@ -52,7 +52,7 @@ controls. Their configuration identities are separated by the Phase 3 [contract]
 [frontier](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md).
 
 Normal competitive search uses `BaselineEngine`: full Construction V1 flattened
-PVS, all 18 controls (flags 262143), WIDEN16 aspiration and CP64 by default. HCE
+PVS, all 18 controls (flags 262143), ADAPTIVE16 aspiration and CP64 by default. HCE
 and frozen BREP2-32 use the same search controls and settings. No null-move pruning
 is enabled in this profile. See the [complete feature record](research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026).
 Mate-domain, repetition and score-provenance contracts remain in force.

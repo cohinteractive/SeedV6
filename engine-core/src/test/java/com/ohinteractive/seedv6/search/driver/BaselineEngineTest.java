@@ -16,7 +16,7 @@ class BaselineEngineTest {
         for (var choice : BaselineEngine.Evaluator.values()) {
             var engine = BaselineEngine.load(choice);
             assertEquals(262143, BaselineEngine.configuration(4, 8).mechanisms().flags());
-            assertTrue(engine.identity(4, 8).contains("aspiration=WIDEN16;parallel=ROOT_REUSE"));
+            assertTrue(engine.identity(4, 8).contains("aspiration=ADAPTIVE16;parallel=ROOT_REUSE"));
             assertTrue(engine.identity(4, 8).contains("workers=4;hashMiB=8"));
             if (choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64)
                 assertTrue(engine.identity(4, 8).contains("scoreMapping=BT4_Q_LOGIT400_V1"));
@@ -48,7 +48,7 @@ class BaselineEngineTest {
     }
     @Test void multiworkerReuseStopAndClose() throws Exception {
         var engine = BaselineEngine.load();
-        for (int workers : new int[]{1, 2, 4}) {
+        for (int workers : new int[]{1, 2, 4, 16}) {
             var service = engine.service(workers, 8);
             try {
                 var driver = field(field(service, "search"), "exact");
@@ -72,6 +72,50 @@ class BaselineEngineTest {
                 service.stop(); assertNull(completion.get(10, TimeUnit.SECONDS).failure());
             } finally { service.close(); }
             assertTrue(service.isTerminated());
+        }
+    }
+    @Test void effectiveAdaptiveDefaultAtEverySupportedWorkerCount() throws Exception {
+        var engine = BaselineEngine.load();
+        var board = Board.startingPosition(); var before = board.clone();
+        for (int workers = 1; workers <= 16; workers++) {
+            var search = engine.create(workers, 1);
+            try (var driver = new SearchDriver(search)) {
+                assertEquals(AspirationSearch.Policy.ADAPTIVE16, field(search, "policy"));
+                var owner = field(search, "owner");
+                if (workers > 1) assertEquals(workers, ((Object[]) field(owner, "workers")).length);
+                var completed = driver.search(new SearchRequest(board, 3));
+                assertTrue(completed.targetDepthCompleted(), "workers=" + workers);
+                assertTrue(completed.lastCompletedResult().hasMove());
+                assertEquals(0, driver.activeSearchThreads());
+                var control = SearchControl.controlled(1500, System.nanoTime(), 30_000_000_000L, TimeSource.SYSTEM);
+                var stopped = driver.search(new SearchRequest(board, GameHistory.initial(board), 40, control));
+                assertEquals(1500, stopped.nodes()); assertEquals(control.nodes(), stopped.nodes());
+                assertEquals(0, driver.activeSearchThreads()); assertArrayEquals(before, board);
+                driver.newGame();
+                assertTrue(driver.search(new SearchRequest(board, 3)).targetDepthCompleted());
+            }
+        }
+    }
+    @Test void productionMatchesExplicitAdaptiveAndKeepsWidenControl() throws Exception {
+        var engine = BaselineEngine.load();
+        var board = Board.startingPosition();
+        try (var actual = new SearchDriver(engine.create(1, 8));
+             var explicit = new SearchDriver(com.ohinteractive.seedv6.search.exact.ConstructionSearch
+                     .v1(1, 8, AspirationSearch.Policy.ADAPTIVE16).create(engine.evaluation()))) {
+            var a = actual.search(new SearchRequest(board, 6)).lastCompletedResult();
+            var b = explicit.search(new SearchRequest(board, 6)).lastCompletedResult();
+            assertEquals(b.score(), a.score()); assertEquals(b.bestMove(), a.bestMove());
+            assertEquals(b.nodes(), a.nodes()); assertArrayEquals(b.principalVariation(), a.principalVariation());
+        }
+        for (int workers : new int[]{1, 4, 16}) {
+            var config = com.ohinteractive.seedv6.search.exact.ConstructionSearch.v1(workers, 1, AspirationSearch.Policy.WIDEN16);
+            var search = config.create(engine.evaluation());
+            try (var driver = new SearchDriver(search)) {
+                assertEquals(AspirationSearch.Policy.WIDEN16, field(search, "policy"));
+                assertTrue(config.identity().contains("aspiration=WIDEN16"));
+                assertTrue(driver.search(new SearchRequest(board, 4)).targetDepthCompleted());
+                assertEquals(0, driver.activeSearchThreads());
+            }
         }
     }
     private static ManagedSearchResult run(SearchLifecycleService service, long[] board, SearchLimits limits) throws Exception {

@@ -175,7 +175,7 @@ Performance will vary with position, hardware, JVM behaviour, system load, and w
 
 ## Search Architecture
 
-The production and Search Phase 3 baseline is full Construction V1 + Conventional NNUE CP64. `BaselineEngine` shares its construction between Play, ordinary Arena and standalone UCI: flattened PVS, all 18 Construction controls and WIDEN16 aspiration. Play and UCI own asynchronous jobs through `SearchLifecycleService`; Threads > 1 uses same-depth `ParallelSearch` workers. Historical training profiles retain their existing synchronous drivers.
+The production and Search Phase 3 baseline is full Construction V1 + Conventional NNUE CP64. `BaselineEngine` shares its construction between Play, ordinary Arena and standalone UCI: flattened PVS, all 18 Construction controls and ADAPTIVE16 aspiration. Play and UCI own asynchronous jobs through `SearchLifecycleService`; Threads > 1 uses same-depth `ParallelSearch` workers. Historical training profiles retain their existing synchronous drivers.
 
 Each search request owns its coherent `TTable`; each worker owns mutable board/PV, ordering and evaluator state. Immutable NNUE weights are shared. Competitive HCE, BREP2-32 and CP64 use the same Construction controls, without null-move pruning. See the [complete feature and qualification record](research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026) and [search contract](../source/CHESS_SEARCH_CONTRACT.md) for margins, extensions, repetition and mate-domain boundaries.
 

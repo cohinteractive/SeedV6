@@ -57,7 +57,7 @@ class ConventionalGameplayTest {
             assertEquals(1, adapter.workerCount()); assertEquals(4, binding.effectiveWorkers(4));
             assertNotSame(field(adapter, "service"), field(adapter, "blackService"));
             assertTrue(binding.identity(1).contains("flags=262143"));
-            assertTrue(binding.identity(1).contains("aspiration=WIDEN16"));
+            assertTrue(binding.identity(1).contains("aspiration=ADAPTIVE16"));
             for (String fen : new String[]{Board.FEN_STARTING_POSITION,
                     "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
                     "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1", "7k/P7/8/8/8/8/8/7K w - - 0 1"}) {

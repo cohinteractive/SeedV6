@@ -20,12 +20,12 @@ class ConstructionTtStudyTest {
         }
     }
 
-    @Test void observedRequestsMatchActualBaselineAcrossAbortHistoryAndReset() throws Exception {
+    @Test void observedRequestsMatchFrozenBaselineAcrossAbortHistoryAndReset() throws Exception {
         var e=BaselineEngine.load().evaluation();
         var table=new ConstructionTtStudy.ObservedTable(64);
         var adapter=ExactSearchAdapter.constructionResearch(e,table,FlatSearchConfig.candidate());
         long[] board=Board.startingPosition(); var history=GameHistory.builder(board);
-        try (var plain=new SearchDriver(BaselineEngine.create(e,1,64));
+        try (var plain=new SearchDriver(ConstructionTtStudy.configuration("baseline",1).create(e));
              var observed=new SearchDriver(new AspirationSearch(adapter,AspirationSearch.Policy.WIDEN16))) {
             for (int index=0;index<4;index++) {
                 var root=new P3HistoryStudy.Root("test-"+index,board,history.snapshot());

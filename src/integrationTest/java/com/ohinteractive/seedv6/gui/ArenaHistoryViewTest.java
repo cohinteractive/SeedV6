@@ -71,6 +71,25 @@ class ArenaHistoryViewTest {
             assertEquals(SeedTheme.INSET.getRGB(), image.getRGB(ArenaScoreChart.barX(5) + 5, 52));
         });
     }
+    @Test void competitiveHistoryDoesNotRelabelSavedGamesWithCurrentAspiration() throws Exception {
+        var a = Competitor.competitive(com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.CONVENTIONAL_CP64);
+        var b = Competitor.competitive(com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.BREP2_32);
+        var config = LearningArenaConfig.match("Saved competitive match", a, b, 19,
+                new Arena(2, Limit.DEPTH, 2, 100, 4, 0, 0, 4, TrainerConfig.STANDARD_START));
+        var draw = new ValidationResult.Game(STALEMATE, 4);
+        var round = new Round(0, "", 0, Endpoint.pinned(a.evaluator()), Endpoint.pinned(b.evaluator()),
+                List.of(new ValidationResult.Pair("draw", draw, draw)), true);
+        var state = new LearningArenaState(1, UUID.randomUUID().toString(), config.identity(), config,
+                List.of(round), Status.COMPLETE, "Saved");
+        var view = edt(ArenaHistoryView::new);
+        edt(() -> { view.showState(state, temporary); return null; });
+        String details = edt(() -> view.detailsText(0));
+        assertTrue(details.contains(round.a().checkpoint()));
+        assertTrue(details.contains(round.b().checkpoint()));
+        assertTrue(details.contains("Aspiration policy was not recorded"));
+        assertFalse(details.contains("aspiration OFF"));
+        assertFalse(details.contains("ADAPTIVE16"));
+    }
     @Test void nativeSavedHistoryAndLiveWorkspaceRenderAtBothDesktopSizes() throws Exception {
         Assumptions.assumeFalse(GraphicsEnvironment.isHeadless()); var state = fixture();
         Path root = temporary.resolve("campaign"); Files.createDirectories(root); DataFiles.write(root.resolve("campaign.json"), state);

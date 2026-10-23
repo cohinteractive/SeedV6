@@ -32,6 +32,8 @@ class BaselineArenaTest {
                     assertEquals(game.gameInPair() == 1 ? evaluator : BaselineEngine.Evaluator.CONVENTIONAL_CP64, game.white().competitiveEvaluator());
                     assertEquals(game.gameInPair() == 1 ? BaselineEngine.Evaluator.CONVENTIONAL_CP64 : evaluator, game.black().competitiveEvaluator());
                     assertTrue(game.white().searchProfile().contains("flags=262143"));
+                    assertTrue(game.white().searchProfile().contains("aspiration=ADAPTIVE16"));
+                    assertTrue(game.black().searchProfile().contains("aspiration=ADAPTIVE16"));
                     assertTrue(game.black().searchProfile().contains("workers=2;hashMiB=64"));
                 }
             }

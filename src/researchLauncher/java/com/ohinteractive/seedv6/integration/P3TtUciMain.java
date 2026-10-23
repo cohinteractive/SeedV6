@@ -11,7 +11,7 @@ import com.ohinteractive.seedv6.search.manage.SearchLifecycleService;
 import com.ohinteractive.seedv6.search.tablebase.RootTablebase;
 import com.ohinteractive.seedv6.uci.*;
 
-/** TT-effectiveness research activation only; production factories are unchanged. */
+/** Frozen TT-effectiveness profiles; independent of subsequent production-default changes. */
 public final class P3TtUciMain {
     public static void main(String[] args) throws Exception {
         if(args.length!=4 || !args[0].equals("--network") || !args[2].equals("--profile")
@@ -40,7 +40,7 @@ public final class P3TtUciMain {
             }
             @Override public SearchLifecycleService service(int workers,int hash) {
                 return new SearchLifecycleService(TimeSource.SYSTEM,
-                        ()->profile.equals("baseline")?BaselineEngine.create(evaluation,workers,hash):config(workers,hash).create(evaluation),
+                        ()->config(workers,hash).create(evaluation),
                         RootTablebase.NONE,Book.EMPTY);
             }
             @Override public boolean standalone(){return true;}

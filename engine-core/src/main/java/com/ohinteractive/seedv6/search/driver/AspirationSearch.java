@@ -10,7 +10,7 @@ import com.ohinteractive.seedv6.search.exact.ExactSearch;
 import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.search.tt.TranspositionScores;
 
-/** SR-006 explicit research composition. No production factory selects it.
+/** Shared aspiration driver with explicitly selectable production/research policies.
  * Only resolved iterations leave this boundary; bounds remain invocation facts.
  * Mutable driver state belongs to the owner; parallel windows drain before return. */
 public final class AspirationSearch implements SingleDepthSearch {

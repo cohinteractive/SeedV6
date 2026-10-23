@@ -44,8 +44,7 @@ public final class ConstructionTtAdaptiveStudy {
             out.write(gson.toJson(Map.of("type","identity","arguments",args,"networkSha256",ConventionalNnueEngine.SHA256,
                 "diagnostics",false,"baseline",configuration(names[0],workers).identity(),"candidate",configuration(names[1],workers).identity())));
             out.newLine();out.flush();
-            for(int p=0;p<2;p++) drivers[p]=new SearchDriver(p==0?BaselineEngine.create(model.evaluation(),workers,64)
-                    :configuration(names[p],workers).create(model.evaluation()));
+            for(int p=0;p<2;p++) drivers[p]=new SearchDriver(configuration(names[p],workers).create(model.evaluation()));
             for(int round=-warmups;round<rounds;round++) for(int i=0;i<count;i++) for(int order=0;order<2;order++) {
                 int profile=Math.floorMod(round+i+order,2);var root=all.get(i);
                 var value=request(drivers[profile],root,depth,budget);value.put("type","request");

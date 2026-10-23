@@ -744,3 +744,98 @@ must identify Construction V1, flags 262143, S6CNU002, checkpoint64, eight heads
 BT4_Q_LOGIT400_V1 and the expected build/source. Record native platform, package
 manifests and outcomes. Native macOS is a blocking gate for cross-platform
 operational acceptance, not a reason to undo the selected baseline.
+
+## ADAPTIVE16 production adoption, 23 October 2026
+
+This is a separate owner-authorized production integration, starting from clean
+`main` at `028cc12`, build 69, after confirmed P3-R018/P3-F018 mirror refresh.
+It supersedes the preceding WIDEN16 production requirement without rewriting the
+Construction/TT experiments or marking the TT CGLHW owner-accepted. The owner
+selects ADAPTIVE16 at every explicit worker count 1-16 and requires no additional
+tournament. No successor, external installation, release or BotLi change is launched.
+
+The [closed TT evidence](P3_TT_EFFECTIVENESS_2026-10-23.md) remains authoritative:
+independent W1 128-pair/256-game confirmation, 120/58/78 W/D/L, +57.5 Elo,
+primary paired-normal 97.5% interval about +14.2 to +102.7, with conservative
+bounded sensitivity crossing zero and essentially unchanged CPU/peak memory.
+Fresh resource-qualified W4 32-pair/64-game screening is 28/13/23, +27.2 Elo,
+paired 95% interval about -51.3 to +108.7, below the frozen confirmation gate.
+W4 is inconclusive; other counts have no independent strength confirmation.
+Adoption across those domains is the owner's explicit choice, not new strength
+evidence. Original frozen protocols, identities, manifests and measurements stand.
+
+`BaselineEngine.configuration` now constructs existing
+`ConstructionSearch.v1(workers, hashMiB, ADAPTIVE16)`. GUI Play, competitive Arena
+and `BaselineUciConfiguration` consume this shared core factory; no second kernel
+or aspiration implementation is introduced. Effective identity derives from that
+same configuration. Play tooltips, current guides and native-package expectations
+follow it. Saved Arena summaries never recorded aspiration: their competitive
+branch now reports the stored checkpoint and missing policy fact instead of
+hardcoding OFF or retroactively assigning the new default. Campaign bytes/schema
+are unchanged; live telemetry continues to report the actual selected identity.
+
+The complete composition remains flattened PVS, flags 262143/all 18 controls,
+quiet futility 100*d, reverse futility 200*d, shared extension cap one, OWNER at
+W1 and ROOT_REUSE at W2-16, requested default Hash64, frozen S6CNU002 CP64/eight
+material heads with BT4_Q_LOGIT400_V1 mapping. CP64 SHA-256 remains
+`8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b`.
+No weight, inference/score mapping, TT identity/layout/replacement/locking/proof,
+other Construction mechanism, independent oracle or lifecycle algorithm changes.
+HCE/BREP2-32 competitive choices share the new aspiration selection; their
+availability does not inherit CP64 strength evidence.
+
+Historical WIDEN16 stays explicit through `ConstructionSearch.v1(..., WIDEN16)`,
+the Pair-2 `seedv6-construction-v1 --aspiration WIDEN16` launcher, and the CP64
+`P3TtUciMain --network <frozen CP64> --profile baseline` research launcher.
+The three TT study mains and that launcher now construct their already-declared
+WIDEN16 baseline directly, instead of calling the moving production default.
+This preserves original comparison meaning; exact old binaries and source hashes
+remain in their original frozen evidence locations. OFF, explicit historical
+Policy 4/model selections, recursive E008 and independent references are retained.
+
+Validation evidence for this integration is local-only under
+`build/adaptive16-adoption/`; a fresh checkout lacks those logs and artifacts.
+The first focused run executed 267 tests: 266 passed and the old TT observer
+comparison failed because its supposedly WIDEN16 plain side called the new
+production default. The original XML/log is preserved in `tests-1/` and
+`focused-tests-1.log`. Pinning the actual historical factory (and corresponding
+test) resolves that integration mismatch; no oracle or expected search result was
+changed to agree with selectivity.
+
+The corrected focused verification passes: latest results across the selected
+suites are 270 tests, 269 passed, zero failures/errors, one native-window test
+skipped in headless mode (`tests-2/summary.json`; unchanged successful suites
+retain their first-run XML). `focused-tests-2.log` records the affected reruns.
+Coverage includes actual instantiated default and budget/drain/reuse at each
+integer W1-16; 1/4/16 lifecycle/private-worker checks; core TT/history/mate/PV,
+independent exact/TT-off references, CP64 incremental/rebuild equivalence,
+aspiration retries, cancellation/reset/completed publication, real headless Swing
+Play and ordinary Arena, standard UCI configuration and protocol/session tests.
+The project dependency guard passes; 17 Python native-packaging safety tests pass.
+This is focused verification, not a rerun of every repository or training test.
+
+`profile-parity/result.json` verifies four W1 depth-5 score/node/move/PV cases
+exactly against the original build69 native core (hash verified), using the new
+explicit research WIDEN16 route. Four more cases equate ordinary production to
+explicit research ADAPTIVE16. All four process profiles also pass W4/W16 node
+budget checks. `historical-pair2-uci-3/result.json` passes the existing relocated
+Pair-2 launcher checks: explicit WIDEN16, preserved default OFF, 1/4/16, hash,
+clock/nodes/stop/reset/reuse, book aliases/fallback, quit/EOF and invalid options.
+The first invocation selected the standard distribution instead of the separately
+built Construction distribution; the second exposed its verifier's stale refusal
+of the existing Vector incubator warning. Both failed logs are preserved. The
+verifier now permits only the established warning, retaining other stderr checks.
+No closed research protocol was run or extended.
+
+The production commit advances only build 69 -> 70 (version 0.0.0), with source,
+tests and decision canon together. No finalizer is used. Root CODEXLOG_CURRENT.md
+is absent and is not created. Both masters advance once: **P3-R019 / P3-F019**,
+with the new header `ADAPTIVE16 production selection - 23 October 2026` and
+updated title metadata/status/current-baseline text. Local Windows packaging is
+the remaining execution step before this integration's artifact handback;
+interactive packaged GUI and native macOS acceptance are not claimed.
+
+**PROJECT_SOURCE_REFRESH_REQUIRED: YES.** The owner must replace both Project
+Source mirrors with these masters and confirm synchronization before dependent
+external GPT planning or a next launch. GPT/owner reconciliation remains separate,
+including acceptance of the preceding TT CGLHW. No successor is started.

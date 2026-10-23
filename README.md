@@ -5,7 +5,12 @@ The production and Search Phase 3 baseline is full **Construction V1 +
 Conventional NNUE CP64** (S6CNU002, eight material heads). GUI Play, ordinary Arena
 and standalone UCI share `engine-core`'s `BaselineEngine` construction. One worker
 uses the flattened PVS owner; multiple workers use cooperative `ParallelSearch`.
-Both use `TTable` and the full Construction feature set with WIDEN16 aspiration.
+Both use `TTable` and the full Construction feature set with ADAPTIVE16 aspiration
+at all supported worker counts (1-16), selected explicitly by the owner. Independent
+strength confirmation is limited to one worker under its recorded primary assumptions;
+four-worker evidence is inconclusive and other counts are unconfirmed. Explicit
+WIDEN16 research/historical configurations remain available. See the
+[adoption record](docs/research/search/P3_CONSTRUCTION_2026-10-20.md#adaptive16-production-adoption-23-october-2026).
 
 **Arena** compares named model lineages on identical frozen records and targets,
 with paired games before training and after each campaign round. Start from a fresh
