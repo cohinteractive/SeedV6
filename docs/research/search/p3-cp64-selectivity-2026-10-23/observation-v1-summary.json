@@ -1,0 +1,3783 @@
+{
+  "status": "passed",
+  "protocolSha256": "aa5b786b68dbc363701c3d4b0a509c67f2be7db12f0ab882710a6b7ab5ee58e7",
+  "experiments": {
+    "baseline-observe-d8-v1": {
+      "rawPath": "raw\\baseline-observe-d8-v1.jsonl",
+      "rawSha256": "4d5f81b2ecf5e2d7596d77d9bcbfbb11210dc5c35464f454602d95c01b6fb0bf",
+      "wallSeconds": 33.19070509999801,
+      "nativeLifetime": {
+        "creationTicks": 134372251443796305,
+        "createdUtc": "2026-10-23T10:32:24.379631+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-23T10:32:57.503445+00:00",
+        "kernelCpuSeconds": 0.4375,
+        "userCpuSeconds": 37.109375,
+        "totalCpuSeconds": 37.546875
+      },
+      "peakWorkingSetBytes": 658726912,
+      "roots": 12,
+      "neutral": true,
+      "counters": {
+        "captureUpdates": 492296,
+        "quietUpdates": 274824,
+        "filtered": 2788,
+        "orderingChanges": 7094465,
+        "reductions": 276262,
+        "verifications": 468,
+        "fullRetries": 655,
+        "refuted": 191,
+        "relief": 60805,
+        "extensions": 109185,
+        "futilityOmissions": 1097332,
+        "reverseCutoffs": 336484,
+        "protectedMoves": 55407,
+        "evaluations": 1312218
+      },
+      "attempts": 129,
+      "nodes": 6654343,
+      "predictionEvents": [
+        345365,
+        1247383
+      ],
+      "samples": 96,
+      "capped": 2,
+      "rootCounters": [
+        {
+          "id": "opening-00",
+          "counters": {
+            "orderingChanges": 292901,
+            "fullRetries": 30,
+            "evaluations": 89592,
+            "captureUpdates": 24334,
+            "quietUpdates": 17078,
+            "extensions": 7921,
+            "futilityOmissions": 63903,
+            "reverseCutoffs": 32057,
+            "reductions": 24883,
+            "verifications": 38,
+            "refuted": 12,
+            "relief": 1439,
+            "protectedMoves": 976,
+            "filtered": 82
+          }
+        },
+        {
+          "id": "opening-01",
+          "counters": {
+            "orderingChanges": 716677,
+            "fullRetries": 81,
+            "evaluations": 188427,
+            "captureUpdates": 42072,
+            "extensions": 14764,
+            "reverseCutoffs": 95396,
+            "quietUpdates": 23075,
+            "futilityOmissions": 23873,
+            "reductions": 30384,
+            "verifications": 71,
+            "relief": 9047,
+            "filtered": 330,
+            "refuted": 34,
+            "protectedMoves": 6276
+          }
+        },
+        {
+          "id": "opening-02",
+          "counters": {
+            "orderingChanges": 284166,
+            "fullRetries": 61,
+            "evaluations": 51615,
+            "captureUpdates": 24368,
+            "quietUpdates": 13985,
+            "extensions": 5080,
+            "futilityOmissions": 126816,
+            "reverseCutoffs": 1438,
+            "reductions": 16096,
+            "verifications": 15,
+            "refuted": 7,
+            "relief": 2910,
+            "filtered": 54,
+            "protectedMoves": 1036
+          }
+        },
+        {
+          "id": "opening-03",
+          "counters": {
+            "orderingChanges": 450232,
+            "evaluations": 64186,
+            "captureUpdates": 30565,
+            "quietUpdates": 16459,
+            "fullRetries": 31,
+            "extensions": 5882,
+            "futilityOmissions": 72359,
+            "reverseCutoffs": 6380,
+            "reductions": 9142,
+            "relief": 3694,
+            "filtered": 145,
+            "verifications": 17,
+            "protectedMoves": 1113,
+            "refuted": 6
+          }
+        },
+        {
+          "id": "opening-04",
+          "counters": {
+            "orderingChanges": 460846,
+            "fullRetries": 49,
+            "evaluations": 115114,
+            "captureUpdates": 23650,
+            "quietUpdates": 19843,
+            "reverseCutoffs": 57179,
+            "extensions": 6109,
+            "futilityOmissions": 31531,
+            "reductions": 30919,
+            "filtered": 348,
+            "verifications": 45,
+            "relief": 4883,
+            "refuted": 25,
+            "protectedMoves": 6862
+          }
+        },
+        {
+          "id": "opening-05",
+          "counters": {
+            "orderingChanges": 789860,
+            "fullRetries": 65,
+            "evaluations": 114804,
+            "captureUpdates": 43851,
+            "quietUpdates": 44376,
+            "extensions": 5661,
+            "futilityOmissions": 95831,
+            "reverseCutoffs": 7749,
+            "reductions": 27642,
+            "filtered": 178,
+            "verifications": 19,
+            "refuted": 12,
+            "relief": 5218,
+            "protectedMoves": 14275
+          }
+        },
+        {
+          "id": "opening-06",
+          "counters": {
+            "orderingChanges": 769085,
+            "evaluations": 141660,
+            "captureUpdates": 47594,
+            "quietUpdates": 28669,
+            "fullRetries": 81,
+            "extensions": 16551,
+            "futilityOmissions": 64077,
+            "reverseCutoffs": 44198,
+            "reductions": 26905,
+            "relief": 7439,
+            "filtered": 445,
+            "verifications": 86,
+            "refuted": 35,
+            "protectedMoves": 11807
+          }
+        },
+        {
+          "id": "opening-07",
+          "counters": {
+            "orderingChanges": 456342,
+            "fullRetries": 21,
+            "evaluations": 81631,
+            "captureUpdates": 53254,
+            "quietUpdates": 11801,
+            "extensions": 6753,
+            "futilityOmissions": 104751,
+            "reverseCutoffs": 5218,
+            "reductions": 11550,
+            "filtered": 54,
+            "verifications": 21,
+            "refuted": 6,
+            "relief": 3283,
+            "protectedMoves": 115
+          }
+        },
+        {
+          "id": "opening-08",
+          "counters": {
+            "orderingChanges": 179582,
+            "fullRetries": 63,
+            "evaluations": 87561,
+            "captureUpdates": 13840,
+            "quietUpdates": 8691,
+            "extensions": 2343,
+            "reverseCutoffs": 56319,
+            "futilityOmissions": 24221,
+            "reductions": 21164,
+            "verifications": 43,
+            "refuted": 21,
+            "relief": 4297,
+            "filtered": 226,
+            "protectedMoves": 855
+          }
+        },
+        {
+          "id": "opening-09",
+          "counters": {
+            "orderingChanges": 1272391,
+            "fullRetries": 66,
+            "evaluations": 168859,
+            "captureUpdates": 68947,
+            "quietUpdates": 53994,
+            "extensions": 12753,
+            "reverseCutoffs": 14443,
+            "futilityOmissions": 244930,
+            "reductions": 35623,
+            "filtered": 502,
+            "verifications": 67,
+            "refuted": 20,
+            "relief": 7904,
+            "protectedMoves": 4256
+          }
+        },
+        {
+          "id": "opening-10",
+          "counters": {
+            "orderingChanges": 407116,
+            "fullRetries": 35,
+            "evaluations": 63306,
+            "captureUpdates": 36313,
+            "quietUpdates": 9293,
+            "extensions": 11688,
+            "futilityOmissions": 116194,
+            "reverseCutoffs": 5980,
+            "filtered": 176,
+            "reductions": 15392,
+            "verifications": 21,
+            "refuted": 4,
+            "relief": 3963,
+            "protectedMoves": 786
+          }
+        },
+        {
+          "id": "opening-11",
+          "counters": {
+            "orderingChanges": 1015267,
+            "fullRetries": 72,
+            "evaluations": 145463,
+            "captureUpdates": 83508,
+            "quietUpdates": 27560,
+            "extensions": 13680,
+            "reverseCutoffs": 10127,
+            "protectedMoves": 7050,
+            "futilityOmissions": 128846,
+            "filtered": 248,
+            "reductions": 26562,
+            "verifications": 25,
+            "refuted": 9,
+            "relief": 6728
+          }
+        }
+      ]
+    },
+    "ablations-cost-d8-v1": {
+      "rawPath": "raw\\ablations-cost-d8-v1.jsonl",
+      "rawSha256": "ea46846102b9496830c67cea5f0065c30aac86e209ab045a106a5ae68d8540c4",
+      "wallSeconds": 386.477560299998,
+      "nativeLifetime": {
+        "creationTicks": 134372251775734579,
+        "createdUtc": "2026-10-23T10:32:57.573458+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-23T10:39:23.977642+00:00",
+        "kernelCpuSeconds": 1.296875,
+        "userCpuSeconds": 394.78125,
+        "totalCpuSeconds": 396.078125
+      },
+      "peakWorkingSetBytes": 710754304,
+      "profiles": {
+        "baseline": {
+          "elapsedNanos": 31707483300,
+          "processCpuNanos": 32250000000,
+          "resetNanos": 28700000,
+          "gcCollections": 0,
+          "compilationMillis": 715,
+          "requests": 24,
+          "totalNodes": 15371956,
+          "completedDepths": {
+            "8": 18,
+            "7": 6
+          },
+          "capped": 6,
+          "differentMoves": 0,
+          "differentScores": 0,
+          "elapsedTotalRatio": 1.0,
+          "cpuTotalRatio": 1.0,
+          "nodeTotalRatio": 1.0,
+          "elapsedIncludingResetRatio": 1.0,
+          "pairedElapsedGeometricRatio": 1.0,
+          "matchedTargetCompletedRequests": 18,
+          "matchedTargetElapsedRatio": 1.0,
+          "heapUsedRange": [
+            594717712,
+            629320720
+          ]
+        },
+        "no-improving": {
+          "elapsedNanos": 24637044900,
+          "processCpuNanos": 24656250000,
+          "resetNanos": 28439300,
+          "gcCollections": 0,
+          "compilationMillis": 11,
+          "requests": 24,
+          "totalNodes": 12283398,
+          "completedDepths": {
+            "8": 20,
+            "7": 4
+          },
+          "capped": 4,
+          "differentMoves": 0,
+          "differentScores": 12,
+          "elapsedTotalRatio": 0.7770104194929908,
+          "cpuTotalRatio": 0.7645348837209303,
+          "nodeTotalRatio": 0.7990783996519376,
+          "elapsedIncludingResetRatio": 0.7772038611838998,
+          "pairedElapsedGeometricRatio": 0.7482191436480745,
+          "matchedTargetCompletedRequests": 18,
+          "matchedTargetElapsedRatio": 0.6605934024136983,
+          "heapUsedRange": [
+            594717712,
+            629320720
+          ]
+        },
+        "no-caution": {
+          "elapsedNanos": 33202979700,
+          "processCpuNanos": 33312500000,
+          "resetNanos": 29358400,
+          "gcCollections": 0,
+          "compilationMillis": 133,
+          "requests": 24,
+          "totalNodes": 15703686,
+          "completedDepths": {
+            "8": 16,
+            "7": 8
+          },
+          "capped": 8,
+          "differentMoves": 2,
+          "differentScores": 4,
+          "elapsedTotalRatio": 1.04716540842584,
+          "cpuTotalRatio": 1.0329457364341086,
+          "nodeTotalRatio": 1.0215802074895348,
+          "elapsedIncludingResetRatio": 1.0471435013422046,
+          "pairedElapsedGeometricRatio": 1.0102461726774723,
+          "matchedTargetCompletedRequests": 16,
+          "matchedTargetElapsedRatio": 0.991222583843998,
+          "heapUsedRange": [
+            595766288,
+            630369296
+          ]
+        },
+        "no-history-protection": {
+          "elapsedNanos": 31609493000,
+          "processCpuNanos": 31625000000,
+          "resetNanos": 28226500,
+          "gcCollections": 0,
+          "compilationMillis": 6,
+          "requests": 24,
+          "totalNodes": 15374956,
+          "completedDepths": {
+            "8": 18,
+            "7": 6
+          },
+          "capped": 6,
+          "differentMoves": 0,
+          "differentScores": 4,
+          "elapsedTotalRatio": 0.9969095528940956,
+          "cpuTotalRatio": 0.9806201550387597,
+          "nodeTotalRatio": 1.000195160589843,
+          "elapsedIncludingResetRatio": 0.996897427801282,
+          "pairedElapsedGeometricRatio": 1.0072328057552615,
+          "matchedTargetCompletedRequests": 18,
+          "matchedTargetElapsedRatio": 0.9907377504782355,
+          "heapUsedRange": [
+            595766288,
+            630369296
+          ]
+        },
+        "no-futility": {
+          "elapsedNanos": 32396293400,
+          "processCpuNanos": 32343750000,
+          "resetNanos": 29377000,
+          "gcCollections": 0,
+          "compilationMillis": 6,
+          "requests": 24,
+          "totalNodes": 16090876,
+          "completedDepths": {
+            "8": 18,
+            "7": 6
+          },
+          "capped": 6,
+          "differentMoves": 0,
+          "differentScores": 10,
+          "elapsedTotalRatio": 1.0217238969577884,
+          "cpuTotalRatio": 1.002906976744186,
+          "nodeTotalRatio": 1.0467682837499666,
+          "elapsedIncludingResetRatio": 1.0217255834919508,
+          "pairedElapsedGeometricRatio": 1.0383098762404481,
+          "matchedTargetCompletedRequests": 18,
+          "matchedTargetElapsedRatio": 1.0373013713288097,
+          "heapUsedRange": [
+            595766288,
+            629320720
+          ]
+        },
+        "no-reverse": {
+          "elapsedNanos": 37847911900,
+          "processCpuNanos": 37812500000,
+          "resetNanos": 28758500,
+          "gcCollections": 0,
+          "compilationMillis": 31,
+          "requests": 24,
+          "totalNodes": 18235460,
+          "completedDepths": {
+            "8": 12,
+            "7": 12
+          },
+          "capped": 12,
+          "differentMoves": 2,
+          "differentScores": 10,
+          "elapsedTotalRatio": 1.1936586559678168,
+          "cpuTotalRatio": 1.1724806201550388,
+          "nodeTotalRatio": 1.1862810432192235,
+          "elapsedIncludingResetRatio": 1.1934853678514012,
+          "pairedElapsedGeometricRatio": 1.2800815011582736,
+          "matchedTargetCompletedRequests": 12,
+          "matchedTargetElapsedRatio": 1.293234907476782,
+          "heapUsedRange": [
+            595766288,
+            629320720
+          ]
+        },
+        "no-continuation": {
+          "elapsedNanos": 31136779600,
+          "processCpuNanos": 31125000000,
+          "resetNanos": 28950400,
+          "gcCollections": 0,
+          "compilationMillis": 34,
+          "requests": 24,
+          "totalNodes": 15641578,
+          "completedDepths": {
+            "8": 18,
+            "7": 6
+          },
+          "capped": 6,
+          "differentMoves": 0,
+          "differentScores": 6,
+          "elapsedTotalRatio": 0.9820009776682591,
+          "cpuTotalRatio": 0.9651162790697675,
+          "nodeTotalRatio": 1.017539862851546,
+          "elapsedIncludingResetRatio": 0.9820251447816662,
+          "pairedElapsedGeometricRatio": 1.0230616443906744,
+          "matchedTargetCompletedRequests": 18,
+          "matchedTargetElapsedRatio": 0.9933424929765495,
+          "heapUsedRange": [
+            595766288,
+            629320720
+          ]
+        },
+        "no-refutations": {
+          "elapsedNanos": 30963984100,
+          "processCpuNanos": 30968750000,
+          "resetNanos": 28893800,
+          "gcCollections": 0,
+          "compilationMillis": 56,
+          "requests": 24,
+          "totalNodes": 15252280,
+          "completedDepths": {
+            "8": 18,
+            "7": 6
+          },
+          "capped": 6,
+          "differentMoves": 0,
+          "differentScores": 8,
+          "elapsedTotalRatio": 0.9765513020076242,
+          "cpuTotalRatio": 0.9602713178294574,
+          "nodeTotalRatio": 0.9922146537499847,
+          "elapsedIncludingResetRatio": 0.9765786139759283,
+          "pairedElapsedGeometricRatio": 1.009139631632643,
+          "matchedTargetCompletedRequests": 18,
+          "matchedTargetElapsedRatio": 0.9569914848077269,
+          "heapUsedRange": [
+            595766288,
+            629320720
+          ]
+        }
+      },
+      "rootComparisons": [
+        {
+          "id": "fresh-00-8",
+          "round": 0,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 0,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 0,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 0,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 0,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 0,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 0,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 0,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 0,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 0,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 0,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 0,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 1,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 1,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 1,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 1,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 1,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 1,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 1,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 1,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 1,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 1,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 1,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 1,
+          "profile": "baseline",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "elapsedRatio": 1.0,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 0,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 0.5339805117042581,
+          "nodesRatio": 0.6327439041343453
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 0,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 0.9843016388854148,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 0,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -239,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 1.3976730022824777,
+          "nodesRatio": 1.4056642756900046
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 0,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 0.9107826348133563,
+          "nodesRatio": 0.7429874947935333
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 0,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 967,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 0.5706231597761616,
+          "nodesRatio": 0.5893697392233788
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 0,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 0.7997552844992131,
+          "nodesRatio": 0.8048522187094866
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 0,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 390,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 0.8871921708919496,
+          "nodesRatio": 0.898783
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 0,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1816,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 1.1176141013242078,
+          "nodesRatio": 1.176663253129311
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 0,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.0090418400403942,
+          "nodesRatio": 0.9121382644499083
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 0,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -125,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 0.537906087864818,
+          "nodesRatio": 0.5463493756989707
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 0,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 0.9223512727565162,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 0,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -48,
+            "bestMove": 12977874
+          },
+          "elapsedRatio": 0.189307841139644,
+          "nodesRatio": 0.1894700681859428
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 1,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 0.6300941225466709,
+          "nodesRatio": 0.6327439041343453
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 1,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 0.9946016433568918,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 1,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -239,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 1.3741143737432329,
+          "nodesRatio": 1.4056642756900046
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 1,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 0.7312702390687659,
+          "nodesRatio": 0.7429874947935333
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 1,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 967,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 0.5691380750507704,
+          "nodesRatio": 0.5893697392233788
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 1,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 0.789710686846151,
+          "nodesRatio": 0.8048522187094866
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 1,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 390,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 0.8969851491995583,
+          "nodesRatio": 0.898783
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 1,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1816,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 1.1723563489133064,
+          "nodesRatio": 1.176663253129311
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 1,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 0.9180594079084409,
+          "nodesRatio": 0.9121382644499083
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 1,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -125,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 0.5422124822905947,
+          "nodesRatio": 0.5463493756989707
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 1,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 1.1604084198972802,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 1,
+          "profile": "no-improving",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -48,
+            "bestMove": 12977874
+          },
+          "elapsedRatio": 0.1921249951914187,
+          "nodesRatio": 0.1894700681859428
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 0,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 0.8655658022680764,
+          "nodesRatio": 1.0000681179970528
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 0,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 1.0024921289022206,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 0,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 0.9849503674173296,
+          "nodesRatio": 0.9892600966786216
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 0,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 1.1889175458143115,
+          "nodesRatio": 0.9975454536648682
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 0,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 0.9948994627528492,
+          "nodesRatio": 0.993654880907556
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 0,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.0136701235774315,
+          "nodesRatio": 1.0292236222621511
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 0,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.0597579826906232,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 0,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 0.8606161126107935,
+          "nodesRatio": 0.9786301277114348
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 0,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.1588795971816621,
+          "nodesRatio": 1.0098568668774148
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 0,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -145,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 0.7406932242926031,
+          "nodesRatio": 0.7772906608032104
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 0,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 0.9640644516549578,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 0,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 282,
+            "bestMove": 132419
+          },
+          "elapsedRatio": 1.3160752420535307,
+          "nodesRatio": 1.2963106997485156
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 1,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 0.9759955779662408,
+          "nodesRatio": 1.0000681179970528
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 1,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 1.0171379441696111,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 1,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 0.9881523740056224,
+          "nodesRatio": 0.9892600966786216
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 1,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 1.0297032043609025,
+          "nodesRatio": 0.9975454536648682
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 1,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 1.0186605355778828,
+          "nodesRatio": 0.993654880907556
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 1,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.005968932694358,
+          "nodesRatio": 1.0292236222621511
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 1,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.005171378213201,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 1,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 0.9944742236538878,
+          "nodesRatio": 0.9786301277114348
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 1,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.0151907759022816,
+          "nodesRatio": 1.0098568668774148
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 1,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -145,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 0.771870377228571,
+          "nodesRatio": 0.7772906608032104
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 1,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 1.2694126048898207,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 1,
+          "profile": "no-caution",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 282,
+            "bestMove": 132419
+          },
+          "elapsedRatio": 1.219113867104774,
+          "nodesRatio": 1.2963106997485156
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 0,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 0.8633149083097252,
+          "nodesRatio": 0.9980287485750827
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 0,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 0.9976639726580309,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 0,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 1.0103821942710345,
+          "nodesRatio": 0.9980274442538594
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 0,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 1.02809790102696,
+          "nodesRatio": 1.042223233918072
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 0,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 1.0047301847167949,
+          "nodesRatio": 1.0024389355163912
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 0,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 0.9869067330018507,
+          "nodesRatio": 0.9982358928287124
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 0,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.0380425166092135,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 0,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1816,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 1.3113419160626607,
+          "nodesRatio": 1.2746684496051863
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 0,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.0993447224496642,
+          "nodesRatio": 1.0096727061624322
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 0,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -81,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 0.8391529411132354,
+          "nodesRatio": 0.8359378596399065
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 0,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 0.9749402583834368,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 0,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "elapsedRatio": 0.9369272147106791,
+          "nodesRatio": 1.00268077052708
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 1,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 1.0114928133346723,
+          "nodesRatio": 0.9980287485750827
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 1,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 1.0161241027987133,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 1,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 1.0031123678666996,
+          "nodesRatio": 0.9980274442538594
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 1,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 1.0529112561186027,
+          "nodesRatio": 1.042223233918072
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 1,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 0.9930245678730781,
+          "nodesRatio": 1.0024389355163912
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 1,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 0.9737338129449647,
+          "nodesRatio": 0.9982358928287124
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 1,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.005159316556973,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 1,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1816,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 1.2721289517576806,
+          "nodesRatio": 1.2746684496051863
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 1,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.0088797642696004,
+          "nodesRatio": 1.0096727061624322
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 1,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -81,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 0.8578100648482115,
+          "nodesRatio": 0.8359378596399065
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 1,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 1.0097421465516667,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 1,
+          "profile": "no-history-protection",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "elapsedRatio": 0.9960227633970088,
+          "nodesRatio": 1.00268077052708
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 0,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 0.88092580125422,
+          "nodesRatio": 1.044570022520644
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 0,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 0.9779493978930244,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 0,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 1.0534701916989981,
+          "nodesRatio": 1.0600888819585217
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 0,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 891,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 1.1594646108076248,
+          "nodesRatio": 1.1529935972567975
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 0,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 1117,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 0.9898783264230012,
+          "nodesRatio": 0.9952120100569651
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 0,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -2301,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.0227480483290914,
+          "nodesRatio": 1.0472087019810312
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 0,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.070794012935513,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 0,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 0.940183154611346,
+          "nodesRatio": 0.9814145585957667
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 0,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.133086392965362,
+          "nodesRatio": 1.0468024333606525
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 0,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -147,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 1.3715081149545685,
+          "nodesRatio": 1.3942073096430205
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 0,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 0.9630101980972253,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 0,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 174,
+            "bestMove": 12977874
+          },
+          "elapsedRatio": 0.9775951615381615,
+          "nodesRatio": 1.0259469549661664
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 1,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 1.033801667211538,
+          "nodesRatio": 1.044570022520644
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 1,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 0.9969218007097331,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 1,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 0.9950139404706012,
+          "nodesRatio": 1.0600888819585217
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 1,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 891,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 1.2187895123760215,
+          "nodesRatio": 1.1529935972567975
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 1,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 1117,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 0.9273711727502191,
+          "nodesRatio": 0.9952120100569651
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 1,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -2301,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 0.9335557139083493,
+          "nodesRatio": 1.0472087019810312
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 1,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 0.97836520066528,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 1,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 1.1534317108261927,
+          "nodesRatio": 0.9814145585957667
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 1,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.044700398247724,
+          "nodesRatio": 1.0468024333606525
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 1,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -147,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 1.4035574799177604,
+          "nodesRatio": 1.3942073096430205
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 1,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 0.9780065891371913,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 1,
+          "profile": "no-futility",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 174,
+            "bestMove": 12977874
+          },
+          "elapsedRatio": 0.897191828696187,
+          "nodesRatio": 1.0259469549661664
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 0,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 0.9633387737244068,
+          "nodesRatio": 1.0981149386938027
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 0,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4278,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 0.9911558311808208,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 0,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 2.316610411891272,
+          "nodesRatio": 2.321132855138001
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 0,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 1.0795019353812383,
+          "nodesRatio": 1.0586843864118485
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 0,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 1.1285865928774879,
+          "nodesRatio": 1.1219880725364686
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 0,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": -1936,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.4528962984764318,
+          "nodesRatio": 1.4215206859690221
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 0,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.1006500827711785,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 0,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 1.9714886177652136,
+          "nodesRatio": 1.8094822989750925
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 0,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 7,
+            "score": -120,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.3875385261296873,
+          "nodesRatio": 1.2196073839909456
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 0,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -81,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 1.4124264955447452,
+          "nodesRatio": 1.381675255149705
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 0,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 0.9981223592526521,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 0,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 282,
+            "bestMove": 132419
+          },
+          "elapsedRatio": 1.2566580904280247,
+          "nodesRatio": 1.2963106997485156
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 1,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 1.1275282315734299,
+          "nodesRatio": 1.0981149386938027
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 1,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4278,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 1.0168188127507984,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 1,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 2.2597848571586523,
+          "nodesRatio": 2.321132855138001
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 1,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 1.0712830768971524,
+          "nodesRatio": 1.0586843864118485
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 1,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 1.1198546655491306,
+          "nodesRatio": 1.1219880725364686
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 1,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": -1936,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.353443317561009,
+          "nodesRatio": 1.4215206859690221
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 1,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.013109142798005,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 1,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 1.9297212920640174,
+          "nodesRatio": 1.8094822989750925
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 1,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 7,
+            "score": -120,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.2747478725168755,
+          "nodesRatio": 1.2196073839909456
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 1,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -81,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 1.4471307810481744,
+          "nodesRatio": 1.381675255149705
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 1,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 0.9990769271772532,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 1,
+          "profile": "no-reverse",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 282,
+            "bestMove": 132419
+          },
+          "elapsedRatio": 1.1837356655312556,
+          "nodesRatio": 1.2963106997485156
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 0,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 0.8560197837582701,
+          "nodesRatio": 0.9968304278922345
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 0,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 0.9962309750804537,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 0,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 0.9993201891305398,
+          "nodesRatio": 1.0095509122095743
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 0,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 877,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 1.0018136371218052,
+          "nodesRatio": 1.0157211077423791
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 0,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 0.9863298550086501,
+          "nodesRatio": 1.0034009060985534
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 0,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -2301,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.0578116131033979,
+          "nodesRatio": 1.0198984465621943
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 0,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 0.8758206069615754,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 0,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1811,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 1.8914549546198482,
+          "nodesRatio": 1.9113467674365463
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 0,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.0056935751225566,
+          "nodesRatio": 1.0097434433907038
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 0,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 0.9941588362508917,
+          "nodesRatio": 1.0086300038181064
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 0,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 0.96528295612558,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 0,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "elapsedRatio": 0.9264653565446404,
+          "nodesRatio": 0.989979518290944
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 1,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 1.0089447701551137,
+          "nodesRatio": 0.9968304278922345
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 1,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 0.9794193114537727,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 1,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 0.7734876095249018,
+          "nodesRatio": 1.0095509122095743
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 1,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 877,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 0.9955591126209007,
+          "nodesRatio": 1.0157211077423791
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 1,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 0.9833182211174658,
+          "nodesRatio": 1.0034009060985534
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 1,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -2301,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 0.9836874696429482,
+          "nodesRatio": 1.0198984465621943
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 1,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 0.9913822310980335,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 1,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1811,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 1.8780927159063419,
+          "nodesRatio": 1.9113467674365463
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 1,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.0149804412659758,
+          "nodesRatio": 1.0097434433907038
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 1,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 1.00001876033121,
+          "nodesRatio": 1.0086300038181064
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 1,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 1.0062620426809878,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 1,
+          "profile": "no-continuation",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "elapsedRatio": 0.9358755720956244,
+          "nodesRatio": 0.989979518290944
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 0,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 0.8084294648790471,
+          "nodesRatio": 0.9642575138321239
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 0,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 0.9856051438848873,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 0,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 1.0547020294398997,
+          "nodesRatio": 1.0605566817402152
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 0,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 877,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 1.0578464409582586,
+          "nodesRatio": 1.0909770721737362
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 0,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 1117,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 0.9170372852548748,
+          "nodesRatio": 0.9520180733866952
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 0,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.037841556001302,
+          "nodesRatio": 0.9727508699706598
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 0,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 0.9320494806882476,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 0,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1777,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 1.6600108667927818,
+          "nodesRatio": 1.703936288158975
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 0,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.0880657487514362,
+          "nodesRatio": 1.0106215607071771
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 0,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -128,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 0.8721952744612379,
+          "nodesRatio": 0.8681534716336351
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 0,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 0.9832919675138372,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 0,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "elapsedRatio": 0.8862029596889255,
+          "nodesRatio": 0.8692087319488735
+        },
+        {
+          "id": "fresh-00-8",
+          "round": 1,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 214,
+            "bestMove": 13895564
+          },
+          "elapsedRatio": 0.938940449490161,
+          "nodesRatio": 0.9642575138321239
+        },
+        {
+          "id": "fresh-01-16",
+          "round": 1,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 4285,
+            "bestMove": 12913507
+          },
+          "elapsedRatio": 1.006916514805981,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-02-24",
+          "round": 1,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -132,
+            "bestMove": 132819
+          },
+          "elapsedRatio": 0.9861230639495883,
+          "nodesRatio": 1.0605566817402152
+        },
+        {
+          "id": "fresh-03-8",
+          "round": 1,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": 837,
+            "bestMove": 12717738
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 877,
+            "bestMove": 12717738
+          },
+          "elapsedRatio": 1.1176561531554399,
+          "nodesRatio": 1.0909770721737362
+        },
+        {
+          "id": "fresh-04-16",
+          "round": 1,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": 1059,
+            "bestMove": 10881177
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 1117,
+            "bestMove": 10881177
+          },
+          "elapsedRatio": 0.9279336615098202,
+          "nodesRatio": 0.9520180733866952
+        },
+        {
+          "id": "fresh-05-24",
+          "round": 1,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -2300,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 0.9352725176284334,
+          "nodesRatio": 0.9727508699706598
+        },
+        {
+          "id": "fresh-06-8",
+          "round": 1,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 551,
+            "bestMove": 14945711
+          },
+          "elapsedRatio": 1.1726855374312735,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-07-16",
+          "round": 1,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": -1742,
+            "bestMove": 13894914
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -1777,
+            "bestMove": 13894914
+          },
+          "elapsedRatio": 1.6563547701200647,
+          "nodesRatio": 1.703936288158975
+        },
+        {
+          "id": "fresh-08-24",
+          "round": 1,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -298,
+            "bestMove": 11865836
+          },
+          "elapsedRatio": 1.0059680574274563,
+          "nodesRatio": 1.0106215607071771
+        },
+        {
+          "id": "fresh-09-8",
+          "round": 1,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": -154,
+            "bestMove": 328844
+          },
+          "candidate": {
+            "depth": 8,
+            "score": -128,
+            "bestMove": 328844
+          },
+          "elapsedRatio": 0.8826866114464423,
+          "nodesRatio": 0.8681534716336351
+        },
+        {
+          "id": "fresh-10-16",
+          "round": 1,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "candidate": {
+            "depth": 7,
+            "score": 1511,
+            "bestMove": 12913955
+          },
+          "elapsedRatio": 1.0032797281965766,
+          "nodesRatio": 1.0
+        },
+        {
+          "id": "fresh-11-24",
+          "round": 1,
+          "profile": "no-refutations",
+          "baseline": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "candidate": {
+            "depth": 8,
+            "score": 186,
+            "bestMove": 12977874
+          },
+          "elapsedRatio": 0.7343559900961807,
+          "nodesRatio": 0.8692087319488735
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Development roots, not strength evidence.",
+    "Repeated rounds are not independent roots.",
+    "Selective trees differ; elapsed/node savings alone are not gains.",
+    "Guard-bypass protection counter overcounts actual protected eligible moves.",
+    "Per-request CPU has OS resolution limits; report aggregate and paired wall measurements."
+  ]
+}

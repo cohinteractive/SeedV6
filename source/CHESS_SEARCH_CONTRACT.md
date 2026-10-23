@@ -1,10 +1,59 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R019**
+Internal revision: **P3-R021**
 
-Status: **Owner-selected ADAPTIVE16 is the production aspiration default for Construction V1 + frozen CP64 at all supported workers 1-16. One-worker independent strength evidence is positive under its primary assumptions; four-worker evidence is inconclusive and other counts are unconfirmed. The preceding TT CGLHW still awaits GPT/owner reconciliation and acceptance. No TT policy change, external deployment or successor launch is authorized. Packaged Windows GUI and native macOS acceptance remain separate.**
+Status: **ACTIVE: owner-authorized CP64-integrated Search selectivity reappraisal. The preceding TT CGLHW is GPT-reconciled and owner-accepted, with acceptance/synchronization prerequisites confirmed. Build70 full Construction V1/ADAPTIVE16/frozen CP64 remains production; no automatic promotion, TT-policy change, evaluator replacement, external deployment or successor.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
+
+## Active objective - CP64-integrated Search selectivity reappraisal
+
+The owner explicitly launches this bounded CGLHW on 23 October 2026 and confirms
+acceptance of the completed TT investigation and its synchronization prerequisites.
+This supersedes pending TT acceptance and no-new-objective wording in historical
+sections below, without rewriting their protocols, results or source identities.
+The owner reports external GUI/BotLi installations updated; repository work does
+not verify or alter those installations. The completed TT investigation stays closed.
+
+Maximize practical whole-engine strength by reappraising historically unsuccessful,
+inactive and active selectivity under build70 full Construction V1 (flags262143),
+flattened PVS, ADAPTIVE16, frozen S6CNU002 CP64/eight heads and requested Hash64.
+Principal subjects are SR-009/016/018/019/021/022/023/029/033, with related ordering,
+qsearch/SEE and information consumers only where needed by an admitted hypothesis.
+This is one objective, not nine compulsory implementations. Preserve all38 identities.
+
+Use challenged hypotheses, current code and historical/external evidence, targeted
+observation, reverse ablation and justified interactions before costly variants.
+Measure complementary decisions, evaluator expense, censored history labels,
+mandatory verification and complete-request economics. Existing CP64 information
+may be calibrated for Search consumers; network, architecture, heads and mapping
+remain frozen. No imported HCE/Pair-2 margin is presumed calibrated for CP64.
+
+Reversible in-scope research, implementation, validation, routine selection and safe
+Git work are authorized autonomously. Keep correctness/ownership, independent
+references, TT identity/layout/locking/replacement/proof eligibility, 10+0.1 fresh
+confirmation and background-friendly resource rules. Stop only branches needing
+reserved authority while independent useful work continues. Production/default
+promotion, binding TT changes (including experiments), evaluator training/replacement,
+unrelated architecture, external deployment and a successor are not authorized.
+
+Close with an evidence-supported account of changed prospects, incremental value,
+interactions/removal candidates, negative/inconclusive/deferred/blocked alternatives
+and remaining uncertainty. No mandatory positive result or exhaustive sweep; one
+failed candidate does not close credible affordable remaining work. Technical
+completion, GPT reconciliation, owner acceptance and promotion remain distinct.
+The [focused record](../docs/research/search/P3_CP64_SELECTIVITY_2026-10-23.md)
+holds the dynamic hypothesis queue, frozen experiments and precise resume point.
+Repository execution does not wait for mirror refresh; dependent external GPT
+planning requires both revised masters refreshed and synchronization confirmed.
+
+Initial development qualification and targeted reverse ablation are complete.
+Removing improving reduced sampled request cost substantially without changed root
+moves in the small development corpus; strength is unknown. Shallow pruning is
+active, and96 conditional independent replays found no false threshold. The next
+unit separates improving's evaluation cost from selective depth decisions and
+measures complementary history/reduction/deeper-node opportunities. Details and
+limitations are in the focused record; no production change or promotion follows.
 
 ## ADAPTIVE16 production selection - 23 October 2026
 
@@ -53,8 +102,8 @@ its frozen confirmation-selection gate. No W4 confirmation or strength
 extrapolation is claimed. Detailed evidence, negative/deferred findings and
 correctness/resource qualifications are in the focused record below. All selected
 avenues have supported dispositions; no further automatic research is queued.
-TT research reconciliation/acceptance remains separate from the subsequent
-explicit production-selection decision above.
+The owner subsequently confirmed GPT reconciliation and explicit acceptance at
+the selectivity-reappraisal launch above; historical TT evidence remains unchanged.
 
 On 23 October 2026 the owner confirmed P3-R016/P3-F014 Project Source
 synchronization and explicitly launched this CGLHW. Earlier no-successor

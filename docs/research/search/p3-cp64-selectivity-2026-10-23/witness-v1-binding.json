@@ -1,0 +1,30 @@
+{
+  "head": "d3d59198341402956d671386198d3d078fc05917",
+  "files": {
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\witness-v1.json": "9eff5f8af6bbe66bc9eefa3d5234ed6115ce967c074f26d0c0a2945e414fbdd8",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\baseline-observe-d8-v1.jsonl": "4d5f81b2ecf5e2d7596d77d9bcbfbb11210dc5c35464f454602d95c01b6fb0bf",
+    "docs\\research\\search\\p3-construction-2026-10-20\\diagnostic-corpus.tsv": "14dbe5241c65344672aed0a32dbc506f72b2f43dea8b2aa3e9849f366a07a8e1",
+    "build-assets\\nnue-candidate\\conventional-cp64.cnnue": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\Cp64SelectivityWitness.java": "55a5dd26a772a46c53bc3a55dcd761555e4e219a359ca2c32a93b5832c41da8a",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain$1.class": "58c3d4ebe21a2b8aa46a3114d1bc3e37a851860312fe330867a78d5708df6598",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain.class": "1c47b49bba3d0fb4a9349db23ac757778cd6c6f9d6e32a3911eb2f1613451735",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain$1.class": "1a0b995fb5c2046b1a4e18a5cec8b0bd1eeb949595e1b1c36a556e7514c45b14",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain.class": "b35ec2373bd5a0cf4e6d714d5e7b8e6c948fc33775b5b461af10696c539b84fd",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain$1.class": "a7e2f469e7b6976ec1897c05ec9428220e9ff4a97ec03ef894189b0ecd4e3bf3",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain.class": "1fb37318975ec761b2117db35602d72fd28113e678b17700752a1764156006ec",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain$1.class": "2b01438f9b77a8c89c9b153638b85841f2dad32f74b215d3749158ba8a980b17",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain.class": "119edde9b12440c661ae89495afc65511d76e003ff4f0da644d9f37e64755281",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain$1.class": "745f48127c0e35629ea731691b838b7cf0c51ddb732f7bec9b87bb171e0fe7d6",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain.class": "706958cf81282a7d9e4b130b92f36f80219d993f86547e40d2c2a16aff431141",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\lib\\app-uci.jar": "1ba9d9bcf44fcf385c6495e909fc3c24bb2dea4d1a10ed4f0d48b75319f67a19",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\lib\\engine-core.jar": "c8239094e7c5cfeaa7e5796af1b27d4fd8cfd5e69ee310d9260fb813aa941d27",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\lib\\research.jar": "8725518a689747f012863a3a30c775ec357477a324c37735b95fc3934bc7ae59",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\research-launcher.properties": "a7c61ea7a9363040d74d62f8b3ce450305f0b833ef13cd5dc87a85425f5849e4"
+  },
+  "runnerSha256": "f3d8d16602f2bd2d315dc82addcddd2b363389736b92d6d71f9b842e648e24b3"
+}

@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Djava.awt.headless=true",
+    "-Xms256m",
+    "-Xmx768m",
+    "-XX:ActiveProcessorCount=4",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\witness-runtime-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.Cp64SelectivityWitness",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-construction-2026-10-20\\diagnostic-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\baseline-observe-d8-v1.jsonl",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\prediction-replay-v1.jsonl",
+    "1000000"
+  ],
+  "bindingSha256": "14440d85d180b9a019b6af5606769134883e9a0403605cfe13a9b42f655288e3",
+  "exitCode": 0,
+  "byMechanism": {
+    "futility": {
+      "samples": 48,
+      "completed": 48,
+      "falseThresholds": 0,
+      "nodes": 14011,
+      "adverse": []
+    },
+    "reverse": {
+      "samples": 48,
+      "completed": 48,
+      "falseThresholds": 0,
+      "nodes": 26055,
+      "adverse": []
+    }
+  },
+  "wallSeconds": 0.7510129000002053,
+  "evidence": {
+    "raw\\prediction-replay-v1.jsonl": "bd461d5fd982c86b7e2dcf6daeb4569eda151a8796e580403a34bf6e91f5141c",
+    "raw\\prediction-replay-v1.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

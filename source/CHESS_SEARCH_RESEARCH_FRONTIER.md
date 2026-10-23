@@ -1,10 +1,45 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F019**
+Internal frontier revision: **P3-F021**
 
-Status: **Owner-selected ADAPTIVE16 is the production aspiration default for Construction V1 + frozen CP64 at all supported workers 1-16. One-worker independent strength evidence is positive under its primary assumptions; four-worker evidence is inconclusive and other counts are unconfirmed. The preceding TT CGLHW still awaits GPT/owner reconciliation and acceptance. No TT policy change, external deployment or successor launch is authorized. Packaged Windows GUI and native macOS acceptance remain separate.**
+Status: **ACTIVE: owner-authorized CP64-integrated Search selectivity reappraisal. The preceding TT CGLHW is GPT-reconciled and owner-accepted, with acceptance/synchronization prerequisites confirmed. Build70 full Construction V1/ADAPTIVE16/frozen CP64 remains production; no automatic promotion, TT-policy change, evaluator replacement, external deployment or successor.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
+
+## Active work selection - CP64-integrated selectivity reappraisal
+
+The owner launches this separate bounded objective on 23 October2026, confirms
+GPT reconciliation/owner acceptance of the completed TT CGLHW and completion of
+its acceptance/synchronization prerequisites. Historical pending wording below is
+superseded; prior experiments remain frozen in their original domains. The owner
+reports external GUI/BotLi updates complete; this launch alters no installation.
+
+Start from build70 full Construction V1/ADAPTIVE16/CP64/Hash64. Principal subjects:
+SR-009,016,018,019,021,022,023,029,033. Existing O2/O3 questions now concern the
+frozen CP64 integrated configuration; they do not inherit Pair-2 thresholds or
+strength claims. Completed TT results are reference evidence, not reopened work.
+
+**Current selection:** first observation/ablation is complete; separate improving
+evaluation overhead from its selective relief, then measure surviving deeper
+pruning and history/reduction decisions. Choose further consumers/removals from
+observed opportunity, adverse resources, economics and expected decision value.
+No exhaustive switch sweep, mandatory feature list or new TT design is selected.
+
+The [focused record](../docs/research/search/P3_CP64_SELECTIVITY_2026-10-23.md)
+is the subordinate dynamic hypothesis/experiment queue and exact resume location.
+It distinguishes current implementation, historical outcomes, hypotheses, frozen
+protocols, findings and operating state. Existing Contract/Frontier remain the
+only Phase3 masters. Production stays unchanged until separate accepted promotion;
+fresh10+0.1 confirmation is required if a promising finalist warrants adoption.
+Functional1..16 support never establishes strength at every worker count.
+
+Initial development qualification and targeted reverse ablation are complete.
+Removing improving reduced sampled request cost substantially without changed root
+moves in the small development corpus; strength is unknown. Shallow pruning is
+active, and96 conditional independent replays found no false threshold. The next
+unit separates improving's evaluation cost from selective depth decisions and
+measures complementary history/reduction/deeper-node opportunities. Details and
+limitations are in the focused record; no production change or promotion follows.
 
 ## ADAPTIVE16 production selection - 23 October 2026
 
@@ -35,8 +70,8 @@ boundaries and completion; previous no-successor/acceptance-wait statements are
 historical and do not prohibit this work. Build69 Construction V1 + frozen CP64
 is the principal comparator, independent of the inconclusive E008 comparison.
 
-**Current work selection:** no autonomous research unit remains; return the
-technically completed CGLHW for GPT/owner reconciliation. Baseline qualification,
+**Completed TT work selection (historical handback):** no TT research unit remains.
+The owner has now accepted this completed investigation. Baseline qualification,
 lifecycle diagnostics, full-game retention and access profiling are complete. Completed legal hints
 have measured mechanism value despite zero ordinary proof under full selectivity;
 no measured capacity/access concentration justifies a binding TT change.
@@ -52,8 +87,8 @@ was launched. Retain W4 as unconfirmed/inconclusive, not inferior or equivalent.
 Longer clocks, other workers/platforms and binding-policy alternatives remain
 deferred without extrapolating the W1 result. All selected avenues are dispositioned;
 further enumeration or another width sweep lacks current decision value.
-Production now selects ADAPTIVE16 by the separate owner decision above; TT CGLHW
-acceptance remains outstanding. No binding TT decision
+Production selects ADAPTIVE16; subsequent owner acceptance of the TT CGLHW is
+recorded in the active-objective section above. No binding TT decision
 is currently requested, and no successor is launched.
 The [focused record](../docs/research/search/P3_TT_EFFECTIVENESS_2026-10-23.md)
 is the subordinate dynamic hypothesis/experiment queue and recovery point.

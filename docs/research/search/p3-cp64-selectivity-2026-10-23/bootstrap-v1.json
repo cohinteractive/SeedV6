@@ -1,0 +1,55 @@
+{
+  "initialHead": "d3d59198341402956d671386198d3d078fc05917",
+  "initialGit": "clean main before task edits",
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 70
+  },
+  "journalPresent": false,
+  "files": {
+    "AGENTS.md": "668aa2087ac7df37af306ffa5bc87f423eccc16df9eb2f6bbfe577038544f9f5",
+    "VERSION_STATE.txt": "178e8befa1233c37dada910a74eb444a452111d9bdaf8315ab4417cb095cebf5",
+    "build-assets/nnue-candidate/conventional-cp64.cnnue": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "source/CHESS_SEARCH_CONTRACT.md": "bfad958915f9bdc137266e43289e99a07b77b227ae14c45ade98df7520f79d68",
+    "source/CHESS_SEARCH_RESEARCH_FRONTIER.md": "d691d9fc9aae9d4593aae69ea570ae1a9ec405e4eefc629899cc0cab285ebcb4",
+    "docs/research/search/SR018_NULL_MOVE_PHASE2_2026-10-13.md": "5471b194eb30e55ca9467799e577aefdfa6f19b10a7c5d060625f508837ca281",
+    "docs/research/search/SR021_FUTILITY_PHASE2_2026-10-15.md": "6ac650b9bcd4ce4d8d554ed5fcd7355461e364de3a07e668db2bb86201ab34b2",
+    "docs/research/search/SR023_HISTORY_PHASE2_2026-10-12.md": "d470fa037690b05e80d642bfd95e57b439fd33b1ec2fd1255268b61a17b2c270",
+    "docs/research/search/SR029_LMR_PHASE2_2026-10-10.md": "4595d2bac33574585420bec0291d5dd555bfa4c34ed19948e901e0e5298e8bb4",
+    "docs/research/search/SR033_ADAPTIVE_DEPTH_PHASE2_2026-10-17.md": "342560abf319feefbea6a1be8771b109962ce530eff088bcd4dc4bd3f2f08731",
+    "docs/research/search/P3_CONSTRUCTION_2026-10-20.md": "d25e1386cfd0f4d7392f6334d7658d5057d186a9e433cfb7c35f473eed561770",
+    "docs/research/search/P3_TT_EFFECTIVENESS_2026-10-23.md": "b0110fd214dddece192851acee8d3e5c31ab47de50f9f5c06ec6303da2dda464",
+    "C:/projects/seed/java/BAGATUR_SEARCH_FRONTIER_ARCHITECTURE_ANALYSIS.md": "14623332ca2e0bd9ecbb3e1e5f7962626d96099cd1dd99d7c7dc4f1f455980e5"
+  },
+  "external": [
+    {
+      "repo": "official-stockfish/Stockfish",
+      "commit": "effdc3fd3f6de6e75fe1374a51a7a7eed66f880b",
+      "committed": "2026-10-17T11:25:09Z",
+      "path": "src/search.cpp",
+      "url": "https://github.com/official-stockfish/Stockfish/blob/effdc3fd3f6de6e75fe1374a51a7a7eed66f880b/src/search.cpp",
+      "sha256": "1a2fb447589e2c3f84b87c9d27efaf9e0feff1c52839cdecc6b95b4a7088222a",
+      "local": "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\reference-Stockfish-effdc3fd3f6d.cpp"
+    },
+    {
+      "repo": "AndyGrant/Ethereal",
+      "commit": "0e47e9b67f345c75eb965d9fb3e2493b6a11d09a",
+      "committed": "2024-06-11T19:50:35Z",
+      "path": "src/search.c",
+      "url": "https://github.com/AndyGrant/Ethereal/blob/0e47e9b67f345c75eb965d9fb3e2493b6a11d09a/src/search.c",
+      "sha256": "de379f886f81b410c589b6d6142397b9b59047d1ba3d95392e2b7fcb579fc0b2",
+      "local": "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\reference-Ethereal-0e47e9b67f34.c"
+    },
+    {
+      "repo": "codedeliveryservice/Reckless",
+      "commit": "ffe556dcfd38e1ac29f3c554137b69ee0ecf7904",
+      "committed": "2026-10-22T13:56:50Z",
+      "path": "src/search.rs",
+      "url": "https://github.com/codedeliveryservice/Reckless/blob/ffe556dcfd38e1ac29f3c554137b69ee0ecf7904/src/search.rs",
+      "sha256": "0ac128e062bae8d9829f7b3ef9f21c8cd7b850b9b640fe5cad7c88c1d1a26363",
+      "local": "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\raw\\reference-Reckless-ffe556dcfd38.rs"
+    }
+  ]
+}

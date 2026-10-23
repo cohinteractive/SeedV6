@@ -1,0 +1,17 @@
+{
+  "id": "P3-CP64-SELECTIVITY-OBSERVATION-v1",
+  "frozenBeforeExecution": true,
+  "question": "Which active evaluator/history/feedback controls change full CP64/ADAPTIVE16 requests, and which removals merit deeper quality or interaction work? This is a development mechanism/cost study, not strength confirmation.",
+  "model": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "baseline": "Build70 full Construction V1 flags262143, flattened PVS, ADAPTIVE16, frozen CP64 S6CNU002 eight heads, Hash64, one worker",
+  "profiles": ["baseline", "no-improving", "no-caution", "no-history-protection", "no-futility", "no-reverse", "no-continuation", "no-refutations"],
+  "profileMeaning": "Existing immutable switches only. no-refutations jointly disables killers and countermoves as one ordering hypothesis; no-continuation leaves main/other histories intact. All other mechanisms, margins100d/200d and extensionCap1 remain unchanged. No TT or runtime source modification.",
+  "experiments": [
+    {"name":"baseline-observe-d8-v1", "corpus":"docs/research/search/p3-construction-2026-10-20/diagnostic-corpus.tsv", "workers":1, "warmups":0, "rounds":1, "depth":8, "nodeBudget":1000000, "roots":12, "mode":"observe", "profiles":"baseline"},
+    {"name":"ablations-cost-d8-v1", "corpus":"docs/research/search/p3-sr002-execution-2026-10-19/confirmation-corpus.tsv", "workers":1, "warmups":1, "rounds":2, "depth":8, "nodeBudget":1000000, "roots":12, "mode":"cost", "profiles":"baseline,no-improving,no-caution,no-history-protection,no-futility,no-reverse,no-continuation,no-refutations"}
+  ],
+  "measurement": "Observe existing per-attempt counters and bounded first/8th/64th/512th pruning-event path samples. Verify exact whole-request score/PV/nodes/completion parity with ordinary table and no observer, including aborted work. Counter protectedMoves counts guard bypasses before all eligibility checks and is not effective omissions saved. Timings from observed arms are not clean costs. Cost uses diagnostics-OFF, rotated profile order per root/round, excludes warmup, records complete-request wall/processCPU/GC/JIT/heap and reset separately. Native JVM lifetime CPU and peak working set recorded. Different completed depths/caps remain visible; no equal-work speed claim when trees differ.",
+  "analysis": "Report per-profile total and paired cost ratios, completion/cap distribution, move/score changes and baseline mechanism incidence. Retain adverse root witnesses. Compare only matched completed requests for target-depth economics, while also reporting every capped request. No Elo inference, no selective exclusions, no runtime tuning during this frozen stage.",
+  "nextSelection": "Prioritize substantial repeatable effects, unexpectedly sparse mechanisms, adverse witnesses or strong mechanistic overlap. A promising removal requires quality evidence and fresh independent clock confirmation before recommendation. Marginal noisy timing alone does not admit a tournament. No forced winner or exhaustive parameter sweep. New stages need separate frozen protocols.",
+  "resources": "One BelowNormal Java21 JVM at a time, ActiveProcessorCount4, Xms256m Xmx1024m, one Search worker, Hash64 per profile. No overlapping research/tests/games.60sec per-request safety and30min process watchdog. Forecast2-12minutes total; preserve operational failures without statistical disposition. Native blocking process wait and completion receipts."
+}

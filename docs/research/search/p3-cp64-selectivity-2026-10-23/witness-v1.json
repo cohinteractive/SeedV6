@@ -1,0 +1,12 @@
+{
+  "id":"P3-CP64-SELECTIVITY-PRUNING-REPLAY-v1",
+  "frozenBeforeExecution":true,
+  "observations":"raw/baseline-observe-d8-v1.jsonl",
+  "corpus":"docs/research/search/p3-construction-2026-10-20/diagnostic-corpus.tsv",
+  "samples":96,
+  "sampling":"All previously frozen first/8th/64th/512th RFP and futility events per root, selected without reference outcomes. Conditional deterministic sample, not a calibrated population error rate.",
+  "reference":"Frozen CP64; independent recursive TT-off unpruned SR001A qtree at sampled nominal remaining depth, full window, original real game/path history, real-ply mate conversion. Futility replays its omitted legal child at depth-1. Production extensions/selective recurrence are intentionally not equated with this reference.",
+  "budgetPerSample":1000000,
+  "analysis":"All sampled paths must replay to the captured board legally. Record complete score/PV/nodes or explicit cap. A completed reverse result below beta or omitted child above alpha is an adverse threshold witness, not automatically a correctness failure or strength loss. Preserve every adverse/incomplete record. No threshold tuning, discarding or extra sample selection within this frozen replay.",
+  "resources":"One BelowNormal JVM, one worker, Xms256m Xmx768m, ActiveProcessorCount4; no overlapping research.20min watchdog, expected under3min. No games or production changes."
+}
