@@ -1,0 +1,20 @@
+{
+  "status": "failed",
+  "bindingSha256": "ad509a7adb360e001d1cc7e38f06f314f1ca363e08eeb7419dca89a07056f0c6",
+  "execution": {
+    "exitCode": 1,
+    "wallSeconds": 3.8531446999986656,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 5,
+    "totalOwnedCpuSeconds": 8.5
+  },
+  "failure": "AssertionError()",
+  "evidence": {
+    "raw\\persistent-v1-a01\\baseline-gc.log": "9492f3405ced38489135cb62d45321c5c8fa4e486787dbe5539b1b6107f0624f",
+    "raw\\persistent-v1-a01\\baseline-threads.txt": "6cd29f60fdaf3a733554dfea63b75c91734d5fceb67d776bf6d007bf2e78ecad",
+    "raw\\persistent-v1-a01\\baseline-uci.txt": "0c37b5ba6346f4dd01b5e4c3d6cfb0cdcfad558093d8fccbd22850a0a4c74dac",
+    "raw\\persistent-v1-a01\\baseline.jfr": "5d88c63bb283939336067ce66f4192f49413bbb54bc9b7fefd8a3810655ab9b5",
+    "raw\\persistent-v1-a01\\execution.json": "ca96964cacdbfa4eb83abfe6414935b41d385d20fbe7947ccbd34f2e713cfb66",
+    "raw\\persistent-v1-a01\\worker.log": "b4ebc9101b264f51022d0395e88bd20fe13add69ce3eba0263352f5504567478"
+  }
+}

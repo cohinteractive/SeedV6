@@ -70,7 +70,7 @@ No threshold relaxation or speculative engine patch is justified at bootstrap.
    integration and hand back for required acceptance. Otherwise retain production
    factual clocks and close/defer with evidence and precise limits.
 
-Current restart: execute/analyze `persistent-v1-a01` under the frozen persistent
+Current restart: execute/analyze `persistent-v1-a02` using `run_persistent_v2.py` under the frozen persistent
 diagnostic protocol. Do not repeat a started name. Check its summary, worker log,
 owned-process state and raw availability before resuming; a failed/incomplete
 capture remains evidence. No fresh strength game or production mutation is admitted.
@@ -121,3 +121,30 @@ historical preemption. Local source verifies Fastchess elapsed-millisecond charg
 before increment, including the initial10100ms clock. No source or rounding defect
 has been established. Python syntax and whitespace checks pass; no new application
 code, build increment or application integration test has yet been needed.
+
+Persistent attempt `persistent-v1-a01` failed before measured requests: JDK21
+prints decimal native thread IDs while the v1 parser expected hexadecimal.
+Ten baseline100k-node warmups completed; the setup failure drained all descendants
+(3.853s,8.5 owned CPU-s). Preserve its binding, thread dump, JFR/logs and receipt.
+`run_persistent_v2.py` accepts decimal or hexadecimal IDs and binds v1 as well;
+only parsing/provenance changes, not the frozen sample, clocks or runtime.
+
+The repaired `persistent-v1-a02` passed its30s resource admission and started
+measured requests after both actual identities,20 deterministic warmups and native
+worker handles were verified. Its completion receipt remains required; a running
+capture is not qualification. No builds/tests/games overlap it.
+
+## Consumer scope discovered during diagnosis
+
+Static consumer review: GUI `GameController.SearchSettings` exposes DEPTH and
+MOVETIME, constructing non-clock-managed limits. Ordinary Arena's
+`ValidationArena` uses depth or per-move `ValidationControl.beginSearch(millis)`.
+Both route competitive evaluation through `BaselineEngine`; neither currently
+supplies remaining game clocks/increments. Standard UCI does supply those via
+`GoCommandParser`, with the existing configuration allocation seam.
+
+Any later shared integration must preserve explicit depth/node/movetime/infinite
+semantics. Making BOUNDARY2 available through the shared owner is distinct from
+introducing new whole-game-clock UI/Arena controls, which this investigation has
+not implemented or presumed necessary. Report the actual activation domain;
+do not claim changed GUI/Arena clock behavior from an inert non-clock wrapper.
