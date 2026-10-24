@@ -1,0 +1,115 @@
+{
+  "id": "P3-BOUNDARY2-ADOPTION-CLOSEOUT-v1",
+  "status": "local_source_adoption_complete_ready_for_GPT_owner_reconciliation",
+  "observedUtc": "2026-10-24T07:30:30.026953+00:00",
+  "applicationCommit": "bafa9e7f796b1300c67a6ac6110a674499d33d9c",
+  "baselineCommit": "a17136aa0da0e06beb741884a3bed68655e3bbff",
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 77
+  },
+  "policy": "BOUNDARY2 production default; exact extension-off selected behavior",
+  "fallback": "FACTUAL through normal UCI ClockPolicy option, seedv6.clockPolicy startup property, explicit BaselineEngine API",
+  "testExecutionsLatestSuites": 287,
+  "testFailuresErrorsSkips": 0,
+  "nativeUciChecksPerRun": 230,
+  "nativeUciBuild77Receipt": "adoption-uci-build77-v1-a01-summary.json",
+  "build77Receipt": "adoption-build77-v1-summary.json",
+  "embeddedArtifacts": [
+    {
+      "path": "app\\build\\install\\seedv6\\lib\\engine-core.jar",
+      "sha256": "239646688960b2006fb20023f74f8f61c67e3215d4792670052ccf0b2b337379",
+      "embeddedVersion": {
+        "major": "0",
+        "minor": "0",
+        "patch": "0",
+        "build": "77",
+        "sourceRevision": "bafa9e7f796b",
+        "versionUpdated": "2026-10-24",
+        "platform": "Portable Java 21 (runtime platform reported separately)"
+      }
+    },
+    {
+      "path": "app-uci\\build\\install\\seedv6-uci\\lib\\engine-core.jar",
+      "sha256": "239646688960b2006fb20023f74f8f61c67e3215d4792670052ccf0b2b337379",
+      "embeddedVersion": {
+        "major": "0",
+        "minor": "0",
+        "patch": "0",
+        "build": "77",
+        "sourceRevision": "bafa9e7f796b",
+        "versionUpdated": "2026-10-24",
+        "platform": "Portable Java 21 (runtime platform reported separately)"
+      }
+    }
+  ],
+  "frozenBoundInputsVerifiedUnchanged": 311,
+  "scores": "Historical SR-034 and interrupted fresh confirmation remain unopened/unqualified; no strength analysis or new games",
+  "scope": "All normal managed-clock evaluator/configuration paths, GUI Play/Arena/BaselineEngine, standard UCI/BotLi model overrides, legacy HCE/checkpoint factories, explicit1-16 and existing boundedMax. Non-clock contracts and deliberate historical controls preserved.",
+  "limits": [
+    "No independent BOUNDARY2 strength confirmation; known baseline and candidate intermittent deadline excess remains causally unresolved and owner-accepted.",
+    "GUI/Arena currently use depth/per-move limits; no game-clock UI added.",
+    "Headless routing/functionality and local Windows Java21 artifacts verified; interactive GUI, arbitrary external checkpoint stores, external BotLi/GUI installations, live games, macOS and release/deployment not verified.",
+    "No push, deployment or successor research."
+  ],
+  "masters": {
+    "source/CHESS_SEARCH_CONTRACT.md": "P3-R034",
+    "source/CHESS_SEARCH_RESEARCH_FRONTIER.md": "P3-F034"
+  },
+  "PROJECT_SOURCE_REFRESH_REQUIRED": "YES",
+  "humanActions": {
+    "blockingLocalCompletion": [],
+    "nonBlockingLocalCompletion": [
+      "Owner refresh/confirm both Project Source mirrors before planning dependent on them. GPT/owner reconciliation and closeout remain with owner; no additional default-selection approval requested."
+    ]
+  },
+  "changedFiles": [
+    "VERSION_STATE.txt",
+    "app-gui/src/main/java/com/ohinteractive/seedv6/gui/EngineSearchAdapter.java",
+    "app-gui/src/test/java/com/ohinteractive/seedv6/gui/ConventionalGameplayTest.java",
+    "app-uci/src/main/java/com/ohinteractive/seedv6/uci/BaselineUciConfiguration.java",
+    "app-uci/src/main/java/com/ohinteractive/seedv6/uci/ConventionalUciConfiguration.java",
+    "app-uci/src/main/java/com/ohinteractive/seedv6/uci/ProductionUciConfiguration.java",
+    "app-uci/src/main/java/com/ohinteractive/seedv6/uci/UciConfiguration.java",
+    "app-uci/src/main/java/com/ohinteractive/seedv6/uci/UciEngine.java",
+    "app-uci/src/test/java/com/ohinteractive/seedv6/uci/ConstructionUciTest.java",
+    "app-uci/src/test/java/com/ohinteractive/seedv6/uci/ProductionClockTest.java",
+    "app/src/main/java/com/ohinteractive/seedv6/uci/LegacyUciEvaluation.java",
+    "app/src/test/java/com/ohinteractive/seedv6/uci/LegacyProductionConfigurationTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/uci/UciWindowsLauncherTest.java",
+    "docs/research/search/P3_BOUNDARY2_CONFIRMATION_2026-10-24.md",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/adoption-baseline-v1.json",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/adoption-build77-v1-summary.json",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/adoption-closeout-v1.json",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/adoption-consumers-v4-a01-summary.json",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/adoption-focused-v1-a01-summary.json",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/adoption-focused-v2-a01-summary.json",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/adoption-integration-v1.json",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/adoption-regression-v3-a01-summary.json",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/adoption-uci-build77-v1-a01-summary.json",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/adoption-uci-v1-a01-summary.json",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/run_adoption_validation_v1.py",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/run_adoption_validation_v2.py",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/run_adoption_validation_v3.py",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/run_adoption_validation_v4.py",
+    "docs/research/search/p3-boundary2-confirmation-2026-10-24/verify_adoption_uci_v1.py",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/common/SingleDepthSearch.java",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/BaselineEngine.java",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/manage/Boundary2ClockPolicy.java",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/manage/ClockPolicy.java",
+    "engine-core/src/test/java/com/ohinteractive/seedv6/search/driver/BaselineEngineTest.java",
+    "engine-core/src/test/java/com/ohinteractive/seedv6/search/manage/Boundary2ProductionTest.java",
+    "engine-training/src/test/java/com/ohinteractive/seedv6/training/service/BaselineArenaTest.java",
+    "research/src/main/java/com/ohinteractive/seedv6/search/exact/Cp64ClockEconomics.java",
+    "research/src/main/java/com/ohinteractive/seedv6/search/exact/Cp64SpendingEconomics.java",
+    "research/src/test/java/com/ohinteractive/seedv6/search/driver/Boundary2EquivalenceTest.java",
+    "research/src/test/java/com/ohinteractive/seedv6/search/exact/Cp64ProductionTest.java",
+    "source/CHESS_SEARCH_CONTRACT.md",
+    "source/CHESS_SEARCH_RESEARCH_FRONTIER.md",
+    "src/integrationTest/java/com/ohinteractive/seedv6/uci/UciProcessTest.java",
+    "src/researchLauncher/java/com/ohinteractive/seedv6/integration/Cp64SpendingUciMain.java",
+    "src/researchLauncher/java/com/ohinteractive/seedv6/integration/Cp64TimeUciMain.java"
+  ]
+}

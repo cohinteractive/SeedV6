@@ -104,15 +104,36 @@ color ownership, bounded depth games and resume, without strength inference.
 | adoption-consumers-v4-a01 | Exact new option/identity assertions, GUI fallback and legacy profile coverage:78 tests pass;70 owned processes drain. No protocol assertion weakened. |
 | adoption-uci-v1-a01 | 230 completed actual UCI requests in8.858s;5 profiles,12 owned processes drained. All explicit1-16 counts and representative1/4/16 clock/node/movetime checks; live policy replacement, stop and active quit; startup property fallback and subsequent explicit override. |
 
-The first native checks use the locally built production classpath, not test
-stubs or frozen research actors. The final build77 artifact verification follows
-the qualifying application commit and will be appended separately. Unit/integration
-logic was tested at build76 before the metadata increment. Source hashes in the
-receipts bind the tested Java; no runtime code changed after the passing checks.
+The native checks use the locally built production classpath, not test stubs or
+frozen research actors. Unit/integration logic was tested at build76 before the
+metadata increment. Source hashes bind the tested Java; no runtime code changed
+after passing checks. The build77 artifact verification below then passed against
+the committed implementation.
 There is no new tournament, strength analysis, general timing campaign or claim
 of a25ms timing bound. The only observed failures in this integration were test/
 receipt expectations, transparently corrected; no new engine correctness defect
 was found or accepted.
+
+### Final build77 artifact verification and exact file inventory
+
+Application commit `bafa9e7f796b1300c67a6ac6110a674499d33d9c` includes the single
+build76-to77 increment and validated production/test/research-isolation changes.
+`adoption-build77-v1-summary.json` records a clean-source local build of both
+application and standalone UCI distributions plus research-launcher compilation:
+12.437s,24 owned processes, zero remaining. Both embedded resources report
+version0.0.0/build77/source`bafa9e7f796b`; no dirty-source or inferred identity.
+
+`adoption-uci-build77-v1-a01-summary.json` repeats the same230 bounded real UCI
+checks on those build77 artifacts: all pass in8.668s,12 owned processes drain.
+This metadata/artifact verification does not add strength evidence or a timing
+risk estimate. Local build directories are not external installation or release.
+All311 frozen study bindings still verify unchanged; no historical score opened.
+
+[`adoption-closeout-v1.json`](p3-boundary2-confirmation-2026-10-24/adoption-closeout-v1.json)
+contains exact artifact identities and the complete45-file changed-path inventory
+for this adoption (production, tests, four research-isolation edits, version,
+canon and compact reproducibility evidence/scripts). The final follow-up commit
+contains only documentation/evidence and does not increment build77 again.
 
 ### Closeout limits and required follow-up
 
