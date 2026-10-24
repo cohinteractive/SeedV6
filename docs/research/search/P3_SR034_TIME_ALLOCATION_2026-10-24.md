@@ -120,7 +120,8 @@ its post-delivery check ended `2026-10-24T00:21:49Z`. The block2 owned wrapper
 is now active. Continue blocks3/4 only after each previous block passes, serially
 with `run_confirmation_block_v1.py finalist <block>`. Inspect the highest existing
 launch/completion receipt before any resumption; never duplicate a running block. After all four
-qualify, run `analyze_confirmation_v1.py finalist` exactly once. No interim score
+qualify, validate the recorded path-compatibility adapter, then run
+`analyze_confirmation_v2.py finalist` exactly once; v1 is preserved unchanged. No interim score
 inspection, retuning, replay, replacement block or second finalist is allowed.
 Any correctness/resource/clock failure stops the affected confirmation; retain
 partial evidence and diagnose. Before resumption inspect launch/completion
@@ -554,3 +555,13 @@ logical cores; actor CPU/SearchElapsed1.00847/1.00852; maximum sampled request-
 over-hard1.845 ms. Its score remains unopened. Block2 has started admission using
 the fresh qualified post-delivery check; blocks3/4 remain dependent on prior
 qualified completion. These operational block boundaries are not statistical looks.
+
+During score-blind block2 collection, static inspection found that the inherited
+v1 final analyzer passes external-file string keys to the local Path-only digest
+helper. No final analysis has run or score been opened. The frozen v1 source,
+protocol, runtime and bindings remain unchanged. `analyze_confirmation_v2.py`
+normalizes only that helper argument and delegates the entire analysis to v1.
+`confirmation-analysis-compatibility-v2.json` binds the pre-look discovery and
+adapter. Syntax passes; hash-equivalence and unchanged statistical self-tests
+must pass after collection before its single final invocation. This does not
+change sample, estimand, thresholds or decisions, and does not interrupt games.

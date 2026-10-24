@@ -1,0 +1,15 @@
+{
+  "status": "static_harness_defect_identified_adapter_pending_validation",
+  "scope": "Final-analysis external-file hashing only; current frozen game collection is unaffected.",
+  "finding": "v1 passes externalFiles string keys to digest; verify_baseline_v1.digest invokes path.read_bytes and requires pathlib.Path. The v1 file remains byte-for-byte frozen.",
+  "correction": "v2 imports the unchanged v1 module and wraps only digest argument conversion with Path. No interval, sample, candidate, input identity, outcome rule or report mutation.",
+  "beforeScoreInspection": true,
+  "files": {
+    "analyze_confirmation_v1.py": "081d847e46c8710e02a8661f5065180aff41c8e09a880a8daab81782f7aa7037",
+    "analyze_confirmation_v2.py": "1aa467ab15061ee557a44dad836eb422cbba33477ccbceb76e136fb157d6ebc7",
+    "confirmation-v1.json": "f957627ed939b7db9f66a106d6363585163a0276df71f6001396903a1071ee10",
+    "confirmation-v1-binding.json": "2e676210b90e93011bd48d048530f2a70bcca9c4b52fd909e1081ee1e1c873cc",
+    "verify_baseline_v1.py": "6452a2049705b2dedd4edf52f84e150a878e14ef3bf9489b3b6bf534871001e9"
+  },
+  "validation": "Syntax passed. Run path/string hash equivalence and unchanged v1 self-test after collection and before the one final score look."
+}
