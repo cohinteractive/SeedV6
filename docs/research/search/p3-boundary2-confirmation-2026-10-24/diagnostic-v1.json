@@ -1,0 +1,14 @@
+{
+  "id": "P3-BOUNDARY2-TIMING-DIAGNOSTIC-v1",
+  "purpose": "Outcome-free timing diagnosis and instrumentation challenge, not strength or historical replay rehabilitation.",
+  "actors": "Exact frozen native build74 core/UCI baseline and build76 BOUNDARY2 runtime from verified SR034 bindings; unchanged policy, payload, heap, workers and JVM ergonomics.",
+  "domain": {"workers": 1, "hashMiB": 64, "concurrentEngines": 1, "priority": "BelowNormal", "heap": "Xms256m/Xmx512m", "activeProcessorCount": 4},
+  "inputs": "Two published adverse-request full histories, then first12 existing SR002 confirmation-corpus histories. These are diagnostic/development roots, never fresh strength evidence. No historical PGN, score or result is opened.",
+  "cases": "Each process:14 deterministic100000-node controls, then14 roots x clocks[9799,2933,500,150,51,50]ms, increment100/default30. New game and isready before every request. Legal PV, accounting, consecutive completed depths and post-request fence; shutdown and owned drain required.",
+  "sequence": [["baseline",false],["boundary2",true],["boundary2",false],["baseline",true],["baseline",true],["boundary2",false],["boundary2",true],["baseline",false]],
+  "instrumentation": "On uses unchanged JDK21 default JFR plus unified gc/safepoint logs with UTC/uptimenanos. All processes capture external send-to-bestmove wall time and native process CPU before/after; raw request transcript retained. No per-node instrumentation or algorithm change. JFR events can explain JVM pauses/waits, not directly certify OS runnable preemption.",
+  "challenge": "Instrumentation must preserve exact node-control moves/scores/PV/node signatures. Compare paired fixed-node elapsed/processCPU costs and timed tails with instrument off/on, in balanced temporal order. A descriptive median elapsed ratio outside .95..1.05 warrants investigation before using instrumented timing as neutral; small samples cannot certify equivalence. Timed tree identity is not expected.",
+  "resources": "30s idle admission <=2 other average logical cores and memory>=8GiB/load<=75%; serial owned job, 15min watchdog. No overlapping builds/tests/games. Record host interval and native lifetime CPU; timing conclusions require resource qualification. Failure cannot be hidden by rerunning the same name.",
+  "analysis": "Report legal/lifecycle checks, complete request and external tail, native CPU, pause duration and request/deadline overlap. Retain all >25ms events under historical threshold as diagnostic witnesses only. No causal attribution from association alone; no score analysis or qualification-rule change.",
+  "nextGate": "Inspect evidence before choosing any follow-up diagnostic or prospective strength protocol. Inadequate discrimination calls for targeted measurement, not a speculative engine fix."
+}

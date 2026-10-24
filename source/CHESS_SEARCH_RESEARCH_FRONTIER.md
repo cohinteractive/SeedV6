@@ -1,10 +1,28 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F030**
+Internal frontier revision: **P3-F031**
 
-Status: **SR-034 TECHNICAL CLOSEOUT: inconclusive/deferred strength confirmation, pending GPT/owner reconciliation. BOUNDARY2 remains research-only; its independent study failed a frozen clock gate on two accepted-baseline requests. Accepted CP64/factual-clock production selection remains unchanged. No promotion, deployment or successor is authorized.**
+Status: **ACTIVE: separate BOUNDARY2 confirmation and conditional adoption CGLHW. Owner accepts SR-034's inconclusive/deferred closeout and confirms P3-R030/P3-F030 mirrors. Diagnose timing before any new confirmation; preserve closed scores unopened. CP64/factual-clock production remains unchanged; promotion still requires post-evidence GPT/owner acceptance.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
+
+## BOUNDARY2 confirmation and conditional adoption - 24 October 2026
+
+The owner accepts SR-034 and explicitly launches this separate bounded objective
+under the [Contract](CHESS_SEARCH_CONTRACT.md#boundary2-confirmation-and-conditional-adoption---24-october-2026).
+Historical no-successor/pending-acceptance wording below is superseded only for
+this launch. SR-034's frozen unqualified confirmation stays closed, with scores
+unopened and excluded from diagnosis, selection, protocol design and promotion.
+
+Progression: verify exact actors/evidence; diagnose request timing and validate
+instrumentation; establish fair qualification; freeze fresh 10+0.1 confirmation;
+execute and open only qualified analysis; conditionally qualify shared production
+integration and workers1-16. No alternative finalist or parameter search. The
+[focused record](../docs/research/search/P3_BOUNDARY2_CONFIRMATION_2026-10-24.md)
+is the subordinate dependency queue and restart point. Current unit is timing
+diagnosis; no fresh strength sample is admitted. Production remains factual-clock
+CP64/flags3407871/ADAPTIVE16/Hash64. Post-evidence GPT/owner acceptance still gates
+default activation; no external deployment or successor is authorized.
 
 ## SR-034 time allocation disposition - 24 October 2026
 

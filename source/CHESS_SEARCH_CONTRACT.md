@@ -1,10 +1,39 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R030**
+Internal revision: **P3-R031**
 
-Status: **SR-034 TECHNICAL CLOSEOUT: inconclusive/deferred strength confirmation, pending GPT/owner reconciliation. BOUNDARY2 remains research-only; its independent study failed a frozen clock gate on two accepted-baseline requests. Accepted CP64/factual-clock production selection remains unchanged. No promotion, deployment or successor is authorized.**
+Status: **ACTIVE: separate BOUNDARY2 confirmation and conditional adoption CGLHW. Owner accepts SR-034's inconclusive/deferred closeout and confirms P3-R030/P3-F030 mirrors. Diagnose timing before any new confirmation; preserve closed scores unopened. CP64/factual-clock production remains unchanged; promotion still requires post-evidence GPT/owner acceptance.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
+
+## BOUNDARY2 confirmation and conditional adoption - 24 October 2026
+
+The owner explicitly launches this separate bounded CGLHW and accepts the closed
+SR-034 inconclusive/deferred result. P3-R030/P3-F030 mirror synchronization is
+owner-confirmed. This supersedes historical pending-acceptance/no-successor wording
+for this objective only; the historical protocols, evidence and withheld scores
+remain frozen and unopened. The sole finalist is the exact build76 BOUNDARY2
+formulation, compared with the verified accepted factual-clock production identity.
+
+Diagnose clock-overrun qualification first, then freeze and execute defensible
+fresh independent 10+0.1 confirmation if admissible. No tuning, alternate finalist,
+retrospective historical gate change or unqualified strength analysis. Preserve
+the complete accepted CP64/flags3407871/ADAPTIVE16/Hash64 composition, evaluator,
+TT guarantees and shared production ownership. Both actors must qualify.
+
+Routine reversible diagnosis, measurement, experimental design, implementation,
+validation and coherent Git work are authorized. A supported positive result may
+lead to promotion-ready shared-BaselineEngine integration and proportionate
+consumer/worker1-16 qualification. Explicit post-evidence GPT/owner acceptance
+under the promotion section remains a gate before changing the production default;
+the launch is not acceptance of an unseen result. No external installation, live
+bot changes, push, deployment or release. Valid negative, inconclusive or deferred
+outcomes retain factual clocks and research-only BOUNDARY2.
+
+The [focused record](../docs/research/search/P3_BOUNDARY2_CONFIRMATION_2026-10-24.md)
+holds the challenged diagnosis, dependency queue, exact identities, protocols,
+measurements and restart point. Use that queue with the existing Frontier; no
+competing master is established. Repository progress does not synchronize mirrors.
 
 ## SR-034 time allocation technical closeout - 24 October 2026
 
