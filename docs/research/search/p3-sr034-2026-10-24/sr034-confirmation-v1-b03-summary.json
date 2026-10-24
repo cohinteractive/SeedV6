@@ -1,0 +1,101 @@
+{
+  "status": "passed",
+  "hypothesis": "finalist",
+  "block": 3,
+  "preDelivery": {
+    "path": "sr034-confirmation-v1-b02-post-delivery-summary.json",
+    "sha256": "d2e40011e79a7c3f00a33d1f445b9d33f2eaa3de2de50c2536af560bb4c15dd5"
+  },
+  "bindingSha256": "2e676210b90e93011bd48d048530f2a70bcca9c4b52fd909e1081ee1e1c873cc",
+  "admissionSha256": "cd93974eead4a4b028128a6aa30278b2b586398edfe539d1f30b7076b99db0db",
+  "execution": {
+    "exitCode": 0,
+    "wallSeconds": 1957.295465800009,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 10,
+    "totalOwnedCpuSeconds": 1990.125
+  },
+  "resourceQualification": {
+    "start": {
+      "utc": "2026-10-24T00:56:21.318514+00:00",
+      "monotonic": 83444.1439188,
+      "ticks": [
+        8671932187500,
+        9020024531250,
+        993229218750
+      ],
+      "availableBytes": 17503711232,
+      "memoryLoadPercent": 48
+    },
+    "end": {
+      "utc": "2026-10-24T01:28:58.624936+00:00",
+      "monotonic": 85401.4503437,
+      "ticks": [
+        8869693750000,
+        9224877812500,
+        1023252031250
+      ],
+      "availableBytes": 17100644352,
+      "memoryLoadPercent": 49
+    },
+    "elapsedSeconds": 1957.3064249000017,
+    "busyCpuSeconds": 3711.453125,
+    "ownedCpuSeconds": 1990.125,
+    "otherAverageLogicalCores": 0.8794372220425027,
+    "memoryEndpointsPass": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used.",
+    "legacyOneCoreGatePassed": true,
+    "passed": true,
+    "protocol": "SR034 spending-economics-v1 current serial-W1 host plus direct delivery qualification"
+  },
+  "postDelivery": {
+    "path": "sr034-confirmation-v1-b03-post-delivery-summary.json",
+    "sha256": "6cb4e0a7f2e0cf0612967139612e840a3af4d0db7f8dde11c88b2f090534c2e6"
+  },
+  "actorDelivery": {
+    "nativeCpuToSearchElapsed": {
+      "baseline": 1.016977374849562,
+      "candidate": 1.0155037755713372
+    },
+    "absoluteDifference": 0.0014735992782248797,
+    "passed": true
+  },
+  "clockReliability": {
+    "clockReliabilityPassed": true,
+    "maximumRequestOverHardMillis": 3.591700000000003
+  },
+  "clockAnalysis": {
+    "path": "sr034-confirmation-v1-b03-clock-analysis-v1.json",
+    "sha256": "fae237f211db641b229f437d8c964c1672afc10f2ae5aa6555598cf7e65576ac"
+  },
+  "matchWallSeconds": 1953.0846798999992,
+  "integrity": {
+    "terminations": {
+      "normal": 64
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 4568,
+        "nodes": 659838228,
+        "elapsedNanos": 943973802900
+      },
+      "candidate": {
+        "requests": 4578,
+        "nodes": 704136304,
+        "elapsedNanos": 1001042560800
+      }
+    },
+    "inputsStable": true,
+    "scoreInspection": "Deferred until all four blocks complete"
+  },
+  "evidence": {
+    "raw\\sr034-confirmation-v1-b03\\baseline-uci.txt": "a5b56b864ad2e82c9b07fcf14ad677027bd8cf59fa8973b819eab28c915c293f",
+    "raw\\sr034-confirmation-v1-b03\\candidate-uci.txt": "d326784ce192c265627b87914074a16c4f89ddca0694c2f372a555516911f871",
+    "raw\\sr034-confirmation-v1-b03\\config.json": "e1a750ae04ac07e22855fba7103ff2d6cd633835711fdc9ffa8e994ec6ee911a",
+    "raw\\sr034-confirmation-v1-b03\\games.pgn": "ecadaeb16a4f19ebc1dd6e2b5ddcd30e9e41a8ca03dfce6a92d5be4d326bd612",
+    "raw\\sr034-confirmation-v1-b03\\process-cost.json": "4a2f7f4dd56d90347b7fd98674f15a4a77f46e676ce8bcea1a28ecfdea528d55",
+    "raw\\sr034-confirmation-v1-b03\\run.json": "06078964d5f35ea74a92184a2b7bb3ed51aa29f3e9fccb74d2f85309c32e5e1c",
+    "raw\\sr034-confirmation-v1-b03\\runner.txt": "8e14216688e8be0004d08e37c863f4cb1d0a03352b9d38d616c9cbbd7342a32e",
+    "raw\\sr034-confirmation-v1-b03-worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

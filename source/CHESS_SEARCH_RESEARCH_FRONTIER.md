@@ -1,35 +1,60 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F029**
+Internal frontier revision: **P3-F030**
 
-Status: **ACTIVE: owner-launched SR-034 Search time allocation and instability-aware spending CGLHW. Accepted build74 CP64/flags3407871/ADAPTIVE16 remains production. Prior selectivity, packaging remediation and mirror prerequisites are owner-confirmed. Research is authorized; production promotion, TT-policy changes, evaluator replacement, deployment and a successor are excluded.**
+Status: **SR-034 TECHNICAL CLOSEOUT: inconclusive/deferred strength confirmation, pending GPT/owner reconciliation. BOUNDARY2 remains research-only; its independent study failed a frozen clock gate on two accepted-baseline requests. Accepted CP64/factual-clock production selection remains unchanged. No promotion, deployment or successor is authorized.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
-## Active SR-034 time allocation progression - 24 October 2026
+## SR-034 time allocation disposition - 24 October 2026
 
-Owner acceptance of CP64 selectivity and native-packaging remediation and both
-mirror refreshes are confirmed. The separate SR-034 launch admits one bounded
-whole-game resource-redistribution objective under the
-[Contract](CHESS_SEARCH_CONTRACT.md#active-sr-034-time-allocation-objective---24-october-2026).
-Build74 flattened flags3407871/ADAPTIVE16/frozen CP64/Hash64 is the comparator;
-technical identity must be verified before dependent experiments. No promotion.
+The owner-launched bounded CGLHW has an **inconclusive/deferred technical
+closeout**, pending GPT/owner reconciliation and acceptance. It is governed by
+[the Contract](CHESS_SEARCH_CONTRACT.md#sr-034-time-allocation-technical-closeout---24-october-2026).
+Research source is build 76; accepted CP64/factual-clock production selection is
+unchanged. Exact accepted native build 74 core/UCI JARs were the comparator.
 
-Completed stability, instability-aware spending and fallible iteration-cost
-prediction are related hypotheses, not mandatory standalone implementations.
-Challenge shallow stability, score provenance/scale, retries, heavy-tailed costs,
-root effort, worker coordination and host contention before selecting policies.
-Prioritize cheap matched trajectories, then the smallest supported clock-only
-candidate, correctness/resource/clock qualification, meaningful reverse ablation
-and fresh independent10+0.1 confirmation when justified. H4 whole-game strength
-governs; additional depth or saved time alone is insufficient. Multiworker strength
-needs separate evidence. Preserve historical negative and incomplete experiments.
+| Question | Evidence-supported disposition |
+| --- | --- |
+| H1 stability/economical stopping | HALF conserves resources but qualified 64-game development is 21/22/21, inconclusive. STABLE3_HALF's64 games are resource-unqualified. Shallow stability is not proof. |
+| H2 additional spending | UNSTABLE2 development 30/17/17 is promising. Simpler BOUNDARY2 gives36/17/11 and is the single finalist. Its matched score advantage over UNSTABLE2 has95% interval [-.0341,+.2216]; no independent extension/component advantage is established. |
+| H3 forecasts/root effort | Forecast tails and depth-dependent/contrary root-effort discrimination deprioritize new threshold consumers. Internal traversal effort is not conserved public request work or CPU. No universal rejection or cost guarantee. |
+| H4 whole-game redistribution | Fresh128-pair confirmation completed but is clock-unqualified. No final strength look, qualified gain or production recommendation. |
+
+The finalist BOUNDARY2 uses stable completed-iteration saving and a fixed
+reserve-capped double hard allowance, stopping at a completed boundary near the
+normal allocation, without an extra change-trigger iteration. Its development
+estimate is +143.3 Elo, paired-normal 95% [+68.7,+233.4], with conservative bounded
+sensitivity [-31.2,+464.3] crossing equality. This remains development evidence.
+All four development comparisons reuse32 openings; they are not independent
+replications or a pooled confirmation sample.
+
+Independent blocks 1-3 pass all gates; block 4 fails the frozen study-specific25 ms
+overrun ceiling on **baseline** requests of 25.7499/40.2846 ms. All 256 games end
+normally;34,032 request/clock checks, all resource checks and ownership drain pass.
+Candidate maximum overrun 2.326 ms does not waive the comparison gate. Candidate
+minimum pre-increment reserve 50 ms and765 clocks below 500 ms constrain robustness
+claims. Runtime cause is unresolved without request-level CPU/GC/scheduler traces.
+The final score analysis was not invoked, scores remain unopened, and the v1
+study is closed without replay, exclusion, substitution or threshold relaxation.
 
 The [focused record](../docs/research/search/P3_SR034_TIME_ALLOCATION_2026-10-24.md)
-contains the dynamic hypothesis queue and restart point. Stop only affected
-owner-gated branches; continue useful authorized work. Technical closeout returns
-supported dispositions for GPT/owner reconciliation, without adoption or successor
-launch. Both revised masters require refresh before dependent external planning.
+contains all identities, controls, failed admissions/harnesses, negative evidence,
+qualification receipts, exact adverse histories and truthful restart boundaries.
+Raw evidence remains local/ignored; tracked summaries bind its locations/hashes.
+Latest validation:283 relevant tests and147 real spending UCI checks pass, plus
+identity, trajectory neutrality and analysis checks. This is not full application
+or release QA. Multiworker/other-clock strength and individual components remain
+unconfirmed. No current evidence justifies a speculative runtime fix or another
+parameter sweep to obtain a positive result.
+
+BOUNDARY2 remains a research-only promising candidate requiring qualified fresh
+confirmation before any positive adoption recommendation. Future progression must
+address the baseline timing-tail qualification problem under a separate prospective
+plan; do not restart the frozen study or launch a fallback/successor automatically.
+No production promotion or deployment is authorized. Both revised masters require
+Project Source refresh before dependent external planning, and GPT/owner retains
+acceptance and subsequent-work authority.
 
 ## CP64 selectivity production adoption - 24 October 2026
 
@@ -506,7 +531,7 @@ focused Phase 2 reports. This inventory does not duplicate their experimental re
 | SR-031 | Singular-extension family | Unadopted; P1 scoped REJECTED, policy-cache/anchor evidence retained. | TT anchors/exclusion, ordinary/double/multiple/negative extensions, restricted-result identity and cost-controlled probes. | O1/O3, SR-007/008/012/026/029/033; hint availability is not score-anchor proof. | [P1], [C1], [Bagatur] |
 | SR-032 | Other tactical/forced-line extensions | Unadopted, GPT-accepted P2 DEFERRED. RECAPTURE confirmation closed for futility; PROMOTION four-worker run interrupted before assessment. | Recapture, passed-pawn/promotion, one-reply, mate-threat/threat, history/hindsight, fractional extensions and total caps. | SR-001/010/011/017/029/030/031/033; retained default-OFF and partial evidence. | [R032], [P1] |
 | SR-033 | Adaptive/hindsight depth feedback | Unadopted, P2 DEFERRED; MOVE1 closed for futility, CAUTION4 inconclusive. | Previous-reduction/outcome feedback, static movement and confidence relief/adjustment; distinguish feedback from predictive shortening and censored failures. | O2/O3, SR-008/009/016/023/029; legitimate labels and unchanged nominal verification. | [R033], [P1], [Bagatur] |
-| SR-034 | Time management | ACTIVE owner-launched24Oct CGLHW; build74 bounded factual-clock production retained, no adaptive policy adopted. | Completed stability/instability, fallible cost forecasts and bounded soft allocation, governed by whole-game resource redistribution. Dynamic queue in focused SR-034 record. | SR-004/005/006/035/036; hard-stop/completed-result precedence, frozen CP64, fresh10+0.1 and separate worker domains. | [P1], [C1], [Bagatur] |
+| SR-034 | Time management | Technically closed24Oct with inconclusive/deferred confirmation; BOUNDARY2 promising research-only, factual-clock production retained. | Four development controls completed; fresh 128-pair study clock-unqualified on two baseline tails. Scores unopened; no replay or relaxed gate. Forecast/root-effort consumers deprioritized. | SR-004/005/006/035/036; further qualified confirmation needs explicit progression/timing decision; no multiworker strength or adoption. | [P1], [C1], [Bagatur] |
 | SR-035 | Pondering and speculative opponent-turn Search | Pending opportunity; no pondering adoption. Historical nonterminal infinite-depth-ceiling concern remains unvalidated. | Predicted-move hit/miss reuse, protocol/cancellation, history/TT retention and resource scheduling; inspect old ceiling lead against current lifecycle before asserting a bug. | SR-005/010/012/034/036; immutable state transfer and drained ownership. | [P1], [P2], [R036] |
 | SR-036 | Parallel Search architecture | Baseline inherited same-depth coordinator plus accepted Pair-2 ROOT_REUSE2..16; default one worker. | Root splitting/YBWC, Jamboree/ABDADA, independent-depth Lazy SMP, DTS, diversification/voting, hint sharing and private/shared-history alternatives. | O1/O2, SR-005/012/014/016/034/035; coherent publication/budget/drain semantics. | [R036], [R024], [P1] |
 | SR-037 | Production Search hot-path mechanical optimization | Baseline primitive/reusable state and static-leaf legal-existence optimization. | Frame/move layout, branch/cache/JIT costs, incremental/reconstructed state, repeated SEE/eval/setup, justified prefetch alternatives and allocation removal. | SR-002/012/014/015/017; settled TT boundaries and independent semantic controls. | [P1], [C1], [Bagatur] |

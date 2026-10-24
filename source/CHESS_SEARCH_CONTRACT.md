@@ -1,54 +1,69 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R029**
+Internal revision: **P3-R030**
 
-Status: **ACTIVE: owner-launched SR-034 Search time allocation and instability-aware spending CGLHW. Accepted build74 CP64/flags3407871/ADAPTIVE16 remains production. Prior selectivity, packaging remediation and mirror prerequisites are owner-confirmed. Research is authorized; production promotion, TT-policy changes, evaluator replacement, deployment and a successor are excluded.**
+Status: **SR-034 TECHNICAL CLOSEOUT: inconclusive/deferred strength confirmation, pending GPT/owner reconciliation. BOUNDARY2 remains research-only; its independent study failed a frozen clock gate on two accepted-baseline requests. Accepted CP64/factual-clock production selection remains unchanged. No promotion, deployment or successor is authorized.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
-## Active SR-034 time allocation objective - 24 October 2026
+## SR-034 time allocation technical closeout - 24 October 2026
 
-The owner accepts the preceding CP64 selectivity workstream and native-packaging
-identity remediation, confirms both Project Source mirrors synchronized and
-explicitly launches this bounded CGLHW. This supersedes earlier no-successor and
-pending-acceptance wording for this objective only. Verify technical baseline and
-executable identities independently; do not reopen the accepted packaging scope.
+The owner-launched bounded CGLHW is technically closed with an
+**inconclusive/deferred strength conclusion**, not an accepted production change.
+The preceding CP64 selectivity and packaging/mirror prerequisites were owner-
+confirmed; their accepted scope was not reopened. Research build 75/76 adds
+explicit controls and inert/default-compatible clock composition seams. Normal
+production retains flattened flags3407871, ADAPTIVE16, frozen CP64/eight heads,
+BT4_Q_LOGIT400_V1 and factual clock allocation. HCE/BREP2-32/unrelated payload
+selection, binding TT policy, evaluator identity and request contracts are unchanged.
 
-Determine whether finite whole-game thinking time is better distributed using
-trustworthy completed-iteration best moves/scores, stability, instability, root
-effort and economical cost evidence. Investigate, combine, reject or reprioritize
-credible affordable hypotheses; neither positive improvement nor an exhaustive
-heuristic sweep is required. Prefer the smallest useful change to current clock
-management. Historical HCE/Pair-2 findings and reference-engine constants are
-evidence, not current CP64 calibration or production policy.
+Four prospective 64-game W1/10+0.1 development comparisons used the same 32 paired
+openings against the exact accepted native build 74 comparator. STABLE3_HALF is
+resource-unqualified; HALF is qualified/inconclusive at 21W/22D/21L. UNSTABLE2 is
+promising at 30/17/17. The simpler extension-off **BOUNDARY2** is selected at 36/17/11,
+estimated +143.3 Elo, paired-normal 95% [+68.7,+233.4], bounded 95% [-31.2,+464.3].
+These are selected development observations, not independent confirmation.
+BOUNDARY2 combines stable completed-iteration saving with a fixed reserve-capped
+double hard allowance and stopping at a completed boundary near the original
+allocation. It adds no change-trigger extra iteration. Component contributions
+remain unconfirmed; the matched control contrast includes equality.
 
-Research may add explicitly selectable bounded soft allocation and justified
-spending while retaining independently enforced hard deadlines, overhead/reserve,
-node limits, explicit request-mode semantics, truthful completed results and
-private-worker/drain guarantees. Incomplete/bound-only aspiration observations
-are not comparable completed exact scores; selective estimates are not TT proof.
-Preserve frozen CP64 payload/mapping, all binding TT rules, mandatory nominal
-verification, original-window PVS, legal history/mate/PV semantics and controls.
+The separately frozen fresh 128-pair/256-game confirmation finished all four
+blocks with normal legal endings,34,032 request-node/clock-conservation checks,
+all resource gates and owned-descendant drain passing. Blocks 1-3 pass their clock
+gates. Block 4 is **clock-unqualified**: two accepted-baseline requests exceeded
+hard allocation by 25.7499/40.2846 ms, above the study-specific25 ms ceiling.
+Runner charges corroborate the tail. Candidate maximum overrun is 2.326 ms, but
+that does not waive a rule applying to both actors. The all-four-qualified-block
+prerequisite was not met: the prescribed final strength analysis was not invoked,
+scores remain unopened, and no qualified gain, inferiority or adoption claim follows.
+No block/request was excluded, replayed or replaced; no gate was relaxed.
 
-The governing test is complete clock-game strength/resource redistribution.
-Trajectory diagnostics, saved nodes, deeper completion and per-position speed
-alone do not establish gain. Use whole-request elapsed/CPU/memory, retries,
-abandoned/helper work, clock reserves, low-clock reliability and resource-qualified
-paired/color-reversed games. Fresh independent confirmation at10+0.1, frozen
-comparisons/identities/sampling/looks/stopping, separate development data and
-worker-domain limitations remain binding. A failed candidate does not close other
-credible affordable opportunities; lack of a positive result does not justify
-indefinite parameter sweeps. No production promotion, TT policy experiment,
-evaluator programme, independent Search redesign, pondering, external deployment
-or successor is authorized.
+Request-level CPU/GC/scheduler evidence was not captured, so the baseline tail's
+cause is unresolved. Cooperative checkpoint source inspection is not a runtime
+cause diagnosis. Candidate minimum pre-increment reserve 50 ms and765 responses
+below 500 ms remain visible limitations. Aggregate resource qualification does not
+exclude short stalls. No speculative runtime fix or weakened guarantee is adopted.
+The frozen study is closed; later confirmation requires a separate prospective
+plan and an explicit progression decision addressing timing qualification.
 
 The [focused record](../docs/research/search/P3_SR034_TIME_ALLOCATION_2026-10-24.md)
-holds challenged hypotheses, dynamic work selection, frozen protocols, local
-evidence availability, failures and a precise resume state. Close with supported
-positive/negative/inconclusive/deferred dispositions and actual validation limits;
-technical completion remains separate from GPT/owner acceptance and adoption.
-Repository execution need not await mirror refresh; both masters must be refreshed
-before dependent external GPT planning. Repository edits do not synchronize them.
+and its frozen protocols/bindings, qualification disposition and adverse-request
+histories retain complete evidence, failures, actual validation and local paths.
+Forecast tails and root-effort discrimination do not justify further uncalibrated
+consumers; these alternatives are deprioritized, not universally rejected.
+The latest 283 relevant tests,147 real spending UCI checks, class/payload identity,
+clock-audit and mathematical checks pass. Basic workers 1-16 and representative
+W1/W4/W16 mode/lifecycle compatibility do not establish multiworker strength.
+Full root integration, GUI/BotLi/release/macOS QA and other-clock strength were
+not performed in this research. The analysis Path adapter was validated without
+changing the frozen statistical rules or opening strength results.
+
+Technical closeout remains separate from GPT/owner acceptance, production
+adoption and deployment. No successor is launched. Both Project Source mirrors
+must be refreshed to P3-R030/P3-F030 before dependent external planning; repository
+edits do not synchronize them. Any further confirmation/adoption depends on an
+explicit next-work decision and a defensible timing-qualification approach.
 
 ## CP64 selectivity production adoption - 24 October 2026
 

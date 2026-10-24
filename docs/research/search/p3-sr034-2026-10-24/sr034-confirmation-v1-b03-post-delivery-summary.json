@@ -1,0 +1,123 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms256m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-spending-economics-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\runtime-spending-economics-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.Cp64SpendingEconomics",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr002-execution-2026-10-19\\confirmation-corpus.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-sr034-2026-10-24\\raw\\sr034-confirmation-v1-b03-post-delivery.jsonl",
+    "delivery"
+  ],
+  "bindingSha256": "f3dd4e596c6afeabe921b6da4fb29bd591f702c7452ab58d2ef282f268800cd6",
+  "exitCode": 0,
+  "nativeLifetime": {
+    "creationTicks": 134372789386724019,
+    "createdUtc": "2026-10-24T01:28:58.672401+00:00",
+    "exitCode": 0,
+    "exitedUtc": "2026-10-24T01:31:41.079803+00:00",
+    "kernelCpuSeconds": 1.0,
+    "userCpuSeconds": 169.859375,
+    "totalCpuSeconds": 170.859375
+  },
+  "peakWorkingSetBytes": 420151296,
+  "hostInterval": {
+    "start": {
+      "utc": "2026-10-24T01:28:58.670924+00:00",
+      "monotonic": 85401.4963275,
+      "ticks": [
+        8869698437500,
+        9224882812500,
+        1023252656250
+      ],
+      "availableBytes": 17055088640,
+      "memoryLoadPercent": 50
+    },
+    "end": {
+      "utc": "2026-10-24T01:31:41.098409+00:00",
+      "monotonic": 85563.9238118,
+      "ticks": [
+        8885702031250,
+        9241555625000,
+        1026072031250
+      ],
+      "availableBytes": 18289000448,
+      "memoryLoadPercent": 46
+    },
+    "elapsedSeconds": 162.4274843000021,
+    "busyCpuSeconds": 348.859375,
+    "ownedCpuSeconds": 170.859375,
+    "otherAverageLogicalCores": 1.0958736495064814,
+    "memoryEndpointsPass": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used.",
+    "legacyOneCoreGatePassed": false,
+    "passed": true,
+    "protocol": "SR034 spending-economics-v1 current serial-W1 host plus direct delivery qualification"
+  },
+  "profiles": [
+    {
+      "profile": "baseline",
+      "budgetMillis": -1,
+      "requests": 24,
+      "medianCpuDelivery": 0.9998989864243045,
+      "fifthPercentileCpuDelivery": 0.9891868405354283,
+      "elapsedNanos": 35668813100,
+      "ownerCpuNanos": 35625000000,
+      "processCpuNanos": 37031250000,
+      "nodes": 24000000,
+      "softStops": 0,
+      "incompleteRequests": 24,
+      "completedDepthMean": 9.166666666666666,
+      "gcCollections": 0,
+      "compilationMillis": 1383,
+      "maxHeapUsed": 297783088
+    },
+    {
+      "profile": "boundary2",
+      "budgetMillis": -1,
+      "requests": 24,
+      "medianCpuDelivery": 0.9991594923166875,
+      "fifthPercentileCpuDelivery": 0.9930018641023829,
+      "elapsedNanos": 35198897400,
+      "ownerCpuNanos": 35156250000,
+      "processCpuNanos": 35312500000,
+      "nodes": 24000000,
+      "softStops": 0,
+      "incompleteRequests": 24,
+      "completedDepthMean": 9.166666666666666,
+      "gcCollections": 0,
+      "compilationMillis": 124,
+      "maxHeapUsed": 297783088
+    },
+    {
+      "profile": "unstable2",
+      "budgetMillis": -1,
+      "requests": 24,
+      "medianCpuDelivery": 0.997069846181633,
+      "fifthPercentileCpuDelivery": 0.9865436875984211,
+      "elapsedNanos": 35511639300,
+      "ownerCpuNanos": 35359375000,
+      "processCpuNanos": 35453125000,
+      "nodes": 24000000,
+      "softStops": 0,
+      "incompleteRequests": 24,
+      "completedDepthMean": 9.166666666666666,
+      "gcCollections": 0,
+      "compilationMillis": 82,
+      "maxHeapUsed": 297783088
+    }
+  ],
+  "betweenProfileMedianRange": 0.0028291402426715573,
+  "criteriaPassed": true,
+  "wallSeconds": 162.47517739998875,
+  "evidence": {
+    "raw\\sr034-confirmation-v1-b03-post-delivery.jsonl": "2be60406fc593e479e960741850cce6ced63fbd87cb44816fb10bbfe23e580d1",
+    "raw\\sr034-confirmation-v1-b03-post-delivery.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c"
+  }
+}

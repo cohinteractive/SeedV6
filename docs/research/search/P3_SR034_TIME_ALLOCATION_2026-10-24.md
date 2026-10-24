@@ -1,6 +1,7 @@
 # SR-034 Search time allocation and instability-aware spending
 
-Status: **ACTIVE**, explicitly owner-launched 24 October 2026. This focused
+Status: **TECHNICAL CLOSEOUT: inconclusive/deferred strength confirmation**, 24 October 2026.
+GPT/owner reconciliation and acceptance remain outstanding. This focused
 record is subordinate to `source/CHESS_SEARCH_CONTRACT.md` and the existing
 programme Frontier; it is not another authoritative contract or frontier.
 
@@ -69,12 +70,11 @@ does not confirm W2-16 strength. Fresh independent confirmation remains 10+0.1.
 
 | Question | Current state | Cheapest next discriminating evidence |
 | --- | --- | --- |
-| H1 stability/economical stops | Both planned comparisons closed; neither qualifies for confirmation | HALF is resource-qualified but score .50 is below the frozen .55 selection rule; STABLE3_HALF is resource-unqualified. Retain uncertainty, no replay. |
-| H2 justified instability spending | Both spending profiles qualify; simpler BOUNDARY2 selected for confirmation | Extra-iteration trigger has no demonstrated advantage; matched development contrast remains uncertain. Confirm the complete selected policy. |
-| H3 iteration economics | Large prediction tails; forecasting deprioritized | Use actual completed-boundary policies and complete-request cost; no guarantee inferred from predicted cost. |
-| H4 whole-game redistribution | Promising BOUNDARY2 development; fresh independent confirmation required | One frozen128-pair W1/10+0.1 assessment; no development pooling or automatic promotion. |
-| Root-effort instrumentation | Neutral measurement complete; threshold consumer deprioritized | The expected discrimination fails at relevant depths and reverses with depth; retain evidence without fitting an opposite rule. |
-| Multiworker strength | Unconfirmed | Validate representative/all supported lifecycle compatibility; obtain separate strength confirmation before any multiworker claim. |
+| H1 stability/economical stops | Conservation observed; strength not established | HALF's qualified score .50 misses the frozen .55 development rule. STABLE3_HALF is resource-unqualified. Shallow-stability counterexamples remain. |
+| H2 justified instability spending | Bounded completed-boundary spending is promising; extra change-trigger extension is unconfirmed | BOUNDARY2 is the retained development finalist. UNSTABLE2 has no demonstrated advantage in the matched reverse ablation. No retuning or fallback confirmation. |
+| H3 iteration economics | Forecast and root-effort consumers deprioritized | Large prediction tails and depth-dependent/contrary root-effort discrimination do not justify another threshold sweep or paid consumer. Neither is universally disproved. |
+| H4 whole-game redistribution | Independent confirmation is clock-unqualified; no qualified strength conclusion | All 256 games completed, but two baseline requests violate the frozen 25 ms gate. Scores remain unopened; v1 is closed without replay or relaxed criteria. |
+| Multiworker/other-clock strength | Unconfirmed | Functional mode/lifecycle compatibility is not strength evidence. Any broader claim needs separate evidence and authority. |
 
 Do not exhaustively sweep constants or stop after a single failed heuristic.
 Reprioritize using mechanism quality, complete-request economics, clock safety
@@ -86,54 +86,41 @@ Use one concurrent game and modest background priority by default.
 
 ## Execution and resume state
 
-Evidence directory: `p3-sr034-2026-10-24/`. Bulk output belongs in ignored `raw/`;
-tracked protocols, scripts, summaries and manifests describe identities and limits.
-The native identity, initial trajectories and research-only HALF/STABLE3_HALF
-qualification below are complete. Commit `2997b453a1f8` contains the bounded
-runtime seam and research controls at build 75, with production selection unchanged.
-The build 75 export and frozen baseline/candidate preflights pass; the only changed
-core entries versus accepted build 74 are SearchControl, SingleDepthSearch,
-SearchDriver and generated version metadata (`clock-runtime-class-audit-v1.json`).
-The 32 development openings and all executable inputs are frozen in
-`clock-development-v1-binding.json`. STABLE3_HALF is complete and
-**resource-unqualified**, as detailed below; never replay it or substitute a
-later post-check. HALF a01 failed prelaunch admission; a02 subsequently completed
-all64 games and post-delivery checks with passing resource qualification. HALF's
-score .50 does not meet its frozen .55 development selection rule. Both first-
-generation comparisons are closed, not extended or replayed.
-`prepare_spending_development_v1.py` completed successfully after HALF, freezing
-build76 versus exact native build74 core+UCI and passing all three actual UCI
-preflights. `spending-development-v1-binding.json` binds the unchanged32 reused
-development openings, profiles, runtime classes, scripts and prior diagnostics.
-Both spending-family comparisons completed with all correctness, resource and
-clock gates passing. BOUNDARY2 is selected as the single complete finalist:
-score .6953125 versus UNSTABLE2 .6015625, lower CPU expansion and fewer low-clock
-responses, with the extension trigger removed. The matched development contrast
-is uncertain; no component superiority or production adoption is inferred.
-`confirmation-selection-v1.json` and `confirmation-v1.json` freeze that decision
-and a fresh128-pair W1/10+0.1 study in four32-pair blocks, one final score look,
-alpha .05 paired-normal primary plus bounded-pair sensitivity. Statistical and
-closed-fixture audit validation pass. Input preparation completed and all128 fresh
-pairs, four splits and exact runtime bindings are frozen in commit51d24ed. Block1
-completed with all integrity/resource/clock gates passing and scores unopened;
-its post-delivery check ended `2026-10-24T00:21:49Z`. The block2 owned wrapper
-is now active. Continue blocks3/4 only after each previous block passes, serially
-with `run_confirmation_block_v1.py finalist <block>`. Inspect the highest existing
-launch/completion receipt before any resumption; never duplicate a running block. After all four
-qualify, validate the recorded path-compatibility adapter, then run
-`analyze_confirmation_v2.py finalist` exactly once; v1 is preserved unchanged. No interim score
-inspection, retuning, replay, replacement block or second finalist is allowed.
-Any correctness/resource/clock failure stops the affected confirmation; retain
-partial evidence and diagnose. Before resumption inspect launch/completion
-receipts, and never restart a launched block. Root-effort thresholds and numerical
-forecasts remain deprioritized; no unrelated successor is launched.
-BOUNDARY2 is selected for confirmation only. The closed first family
-used the **exact accepted native build74 core JAR**, matched research launcher
-and startup warmup versus frozen build75 candidates. The spending family uses
-its separately frozen build76 installation and exact native core+UCI comparator.
-Later source does not alter either frozen installation. Production defaults
-remain the accepted baseline.
-Repository work does not await mirror refresh; dependent external GPT planning does.
+**No experiment is running. The bounded SR-034 research unit is technically
+closed with an inconclusive/deferred strength result.** All four planned
+64-game development comparisons and all four independent 32-pair blocks finished.
+The independent study is **clock-unqualified**, not a valid positive or negative
+strength confirmation. Its prescribed final strength analysis was not invoked;
+scores remain unopened. Read `confirmation-v1-disposition.json` and
+`confirmation-clock-tail-v1.json` before any future work. Do not rerun preparation,
+a started block, the frozen confirmation, or a score analyzer to bypass its gate.
+
+Evidence directory: `p3-sr034-2026-10-24/`. Raw outputs, runtimes and the source
+book remain ignored at their recorded local paths; tracked scripts, protocols,
+compact summaries, selection receipts and bindings preserve identities and limits.
+They exist locally now; a fresh checkout does not contain ignored evidence.
+Build 75 commit 2997b453a1f8 introduced the inert completed-iteration seam and saving
+controls; build 76 commit 614511ce9a75 added bounded spending composition and
+research diagnostics. Candidate runtime classes match the qualified implementation;
+accepted native build 74 core/UCI JARs remain the comparator. Production selection,
+frozen CP64, TT policy and score mapping are unchanged. No deployment or push.
+
+BOUNDARY2 remains a **research-only promising finalist**, not an adopted policy.
+The original confirmation protocol and all results/failures remain immutable.
+There is no admitted replay, fallback finalist, retrospective extension, relaxed
+clock criterion or successor. Further confirmation requires an explicit next-work
+decision, a resolved approach to the baseline timing-tail qualification problem
+and a separate prospective protocol. No current evidence identifies a runtime
+fix or justifies changing allocation constants. Request-level CPU/GC/scheduler
+telemetry would be needed to distinguish causes; repeating isolated positions
+would not reconstruct the original process state or rehabilitate this study.
+
+The path-only hash-helper defect in the frozen v1 analyzer was repaired through
+an independently recorded v2 adapter without changing v1 or its statistical
+rules. Hash-equivalence and unchanged mathematical checks pass. The adapter was
+**not** used for strength analysis because confirmation qualification failed.
+Repository closeout does not establish GPT/owner acceptance. Both masters require
+Project Source refresh before dependent external planning.
 
 ## Bootstrap verification and first observations
 
@@ -565,3 +552,105 @@ normalizes only that helper argument and delegates the entire analysis to v1.
 adapter. Syntax passes; hash-equivalence and unchanged statistical self-tests
 must pass after collection before its single final invocation. This does not
 change sample, estimand, thresholds or decisions, and does not interrupt games.
+
+## Technical closeout: clock-unqualified confirmation
+
+The completed independent sample contains 128 fresh paired openings/256 normal
+games, with no replay, exclusion or score-based stopping. Blocks 1-3 pass all
+integrity/resource/clock gates. Block 4 passes integrity, resource and ownership
+checks but fails its prospectively fixed 25 ms request-over-hard ceiling.
+All 34,032 request-node and clock-conservation checks pass, every owned descendant
+is drained, and every game ends normally. No flag or dishonest completed-result
+publication was observed. The complete comparison remains **clock-unqualified**.
+The required all-four-block qualification condition was not met, so the planned
+primary/bounded strength assessment was not performed and scores remain unopened.
+There is no confirmation WDL, Elo interval, accepted gain or inferred inferiority.
+
+The score-blind adverse-request audit finds exactly two violations, both on the
+**accepted native baseline** in block 4. Game ordinal 28, ply 114: hard 162 ms,
+request 187.7499 ms, runner charge 187 ms, overrun 25.7499 ms, pre-increment reserve
+2746 ms. Game ordinal 29, ply 19: hard 391 ms, request 431.2846 ms, runner charge 431 ms,
+overrun 40.2846 ms, reserve 9368 ms. Both terminate TIME_LIMIT with incomplete work
+accounted. Exact histories/FENs are preserved in `confirmation-clock-tail-v1.json`.
+The independent runner charges corroborate the wall-time tail; it is not merely
+a formula or display inference. Source inspection finds cooperative cancellation
+checks through ExactSearch/ExactSearchAdapter/SearchControl, with no new baseline
+allocation policy. That static observation does not identify the runtime cause.
+No request-level CPU, GC, JFR or scheduling trace was captured. GC/scheduling
+interference is possible, not verified; do not attribute the events to BOUNDARY2.
+
+The candidate's maximum observed overrun across 17,034 requests is 2.326 ms,
+versus 40.285 ms across 16,998 baseline requests. Its minimum pre-increment reserve
+is 50 ms versus 988 ms, with 765 versus 0 post-increment clocks below 500 ms. Those
+candidate observations do not waive a gate applying to both actors. The original
+protocol cannot be reclassified or extended merely because the adverse actor is
+baseline. The frozen v1 study is closed as unqualified; future confirmation is
+an owner/GPT progression decision, not an automatic substitute sample.
+
+Operational costs across the entire unqualified study are still recorded with
+that limitation: BOUNDARY2/baseline Search elapsed 3818.8/3602.5 s, native CPU
+3865.5/3646.4 s (about 6.0% more), nodes 2711.1/2530.0 million and incomplete nodes
+346.4/933.8 million. Candidate nonfactual soft stops:14,110. Peak engine working
+sets 390.0/390.1 MB. Mean request time on moves 1-20 is 399.4/351.5 ms; from 61 onward
+123.7/121.0 ms. Mean late remaining clocks are 1180.6/1917.3 ms. These quantities
+locate expenditure and unfinished request work, not causal decision value; some
+incomplete work may still benefit retained Search information. All resource gates
+pass, with block host averages .617/.758/.879/.853 other logical cores. Aggregate
+availability and CPU delivery did not exclude the observed short timing tails.
+
+| Development profile | W/D/L (64 games) | Estimated Elo; paired-normal 95% | Disposition |
+| --- | --- | --- | --- |
+| STABLE3_HALF | 23/14/27 | -21.7; [-106.9,+60.9] | Resource-unqualified; no qualified strength inference. |
+| HALF | 21/22/21 | 0.0; [-57.7,+57.7] | Qualified inconclusive; below selection rule. |
+| UNSTABLE2 | 30/17/17 | +71.6; [-0.9,+150.9] | Qualified promising development; retained unconfirmed alternative. |
+| BOUNDARY2 | 36/17/11 | +143.3; [+68.7,+233.4] | Selected development; bounded 95% [-31.2,+464.3] crosses equality. Independent confirmation failed clock qualification. |
+
+All development rows reuse the same 32 opening pairs; do not pool them as
+independent samples or treat selection evidence as confirmation. The BOUNDARY2
+minus UNSTABLE2 matched score difference .09375 has paired 95% [-.0341,+.2216],
+so the extra change-trigger iteration has no demonstrated advantage, not proof
+of harm. The complete BOUNDARY2 rule permits completion beyond the original
+allocation within a fixed double cap, and retains stable3 saving; their separate
+contributions are not independently established.
+
+The bounded question has an **inconclusive/deferred** disposition: economical
+stopping can conserve resources; bounded spending has credible development
+promise; no configuration has qualified fresh evidence sufficient for a positive
+adoption recommendation. H1-H4, the meaningful controls, root-effort and forecast
+limitations have been investigated. More uncalibrated thresholds or a fallback
+candidate cannot resolve this comparator timing-qualification gap. Closing this
+unit is not rejection of all time allocation, proof of equivalence, acceptance
+of the research by GPT/owner, or authority to promote a default or launch another
+CGLHW. No positive result has been forced by replaying or relaxing the failed plan.
+
+Validation actually performed: the latest relevant 283 tests pass (no failures,
+errors or skips), research runtime export and project boundaries pass,147 real
+spending UCI checks cover all 16 basic worker settings and representative W1/W4/W16
+request modes/lifecycle, and frozen executable/class/payload identities pass.
+Original saving validation has276 tests and147 UCI checks. Trajectory neutrality
+passes64 comparisons and root-effort neutrality32. Statistical closed-form checks
+and the outcome-blind clock audit fixture pass; the v2 compatibility adapter's
+string/Path identity checks and unchanged self-test also pass. Final disposition
+rehashes all bound inputs and block evidence. These are scoped checks, not the
+full root integration suite, GUI, BotLi, release/packaging acceptance or macOS QA.
+There is no multiworker or other-time-control strength confirmation.
+
+Retained limitations/failures include the initial native-handshake and stale-line
+qualification harness errors, timing-unqualified trajectory/calibration captures,
+STABLE3_HALF's failed post-host gate, HALF's failed prelaunch admission, the first
+spending diagnostic's25.550 ms tail, the corrected descriptive-analysis Path-type
+error, and the pre-look final-analysis compatibility repair. Their original files
+and conclusions remain intact. The confirmation timing-tail cause is unresolved;
+no speculative runtime remediation or relaxed correctness guarantee was applied.
+
+Repository application build remains76, with major/minor/patch unchanged. All
+current-task runtime work is in the attributable build 75/76 commits; subsequent
+work is research evidence/documentation only. Root CODEXLOG_CURRENT.md is absent;
+none was created, and no finalizer or retired global worklog was used. Technical
+closeout is returned for GPT/owner reconciliation. P3-R030/P3-F030 record the
+status, SR-034 technical closeout/disposition and Frontier inventory change.
+**PROJECT_SOURCE_REFRESH_REQUIRED: YES.** Refresh both external Project Source
+mirrors before dependent external planning; repository edits did not synchronize
+them. Any further confirmation/adoption remains blocked on a new progression
+decision and a defensible timing-qualification approach; no production action is
+authorized by this research closeout.

@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "compatibilityRecordSha256": "a574e176a3559065ac5caab9061221442cf05e33765d9b0885bcce8c97ed1222",
+  "checks": [
+    "All recorded original and adapter source/plan/binding hashes unchanged",
+    "External Java executable string/Path hashes equal frozen identity",
+    "Local string/Path hash equivalence",
+    "Unchanged v1 closed-form statistical self-test"
+  ],
+  "strengthAnalysis": "Not invoked: block4 clock gate failed; no final score look or combined-game inference artifact produced."
+}

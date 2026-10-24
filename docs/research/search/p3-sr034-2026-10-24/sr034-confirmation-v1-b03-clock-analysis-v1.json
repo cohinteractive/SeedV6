@@ -1,0 +1,436 @@
+{
+  "status": "passed",
+  "games": 64,
+  "clockReliabilityPassed": true,
+  "maximumRequestOverHardMillis": 3.591700000000003,
+  "resourceQualification": "See final wrapper receipt",
+  "clockSourceManifestSha256": "b0e0c6716b9afa5e53f169d769c464ec1084c74f6a4545d327f2d35f0833afa0",
+  "pgnSha256": "ecadaeb16a4f19ebc1dd6e2b5ddcd30e9e41a8ca03dfce6a92d5be4d326bd612",
+  "analysisScriptSha256": "8fbbb2bdbd24964bab195eae0a9067f06c20c5ff05767226dcf669a2fb2a2e97",
+  "actors": {
+    "baseline": {
+      "requests": 4568,
+      "terminations": {
+        "TIME_LIMIT": 4400,
+        "COMPLETED": 70,
+        "TIME_ALLOCATION": 98
+      },
+      "nonfactualSoftStops": 0,
+      "remainingMillis": {
+        "n": 4568,
+        "min": 1108,
+        "p10": 1608,
+        "median": 3730.0,
+        "mean": 4313.99496497373,
+        "p90": 7954,
+        "p99": 9799,
+        "max": 9799
+      },
+      "reserveBeforeIncrementMillis": {
+        "n": 4568,
+        "min": 1008,
+        "p10": 1508,
+        "median": 3630.0,
+        "mean": 4213.99496497373,
+        "p90": 7854,
+        "p99": 9699,
+        "max": 9699
+      },
+      "runnerChargedMillis": 943218,
+      "runnerChargeMinusRequestMillis": {
+        "n": 4568,
+        "min": -0.9400999999999993,
+        "p10": -0.2481999999999971,
+        "median": -0.14400000000000546,
+        "mean": -0.16545597635726808,
+        "p90": -0.12520000000000664,
+        "p99": -0.08260000000001355,
+        "max": 6.052200000000028
+      },
+      "requestMillis": {
+        "n": 4568,
+        "min": 0.0846,
+        "p10": 112.1346,
+        "median": 192.1359,
+        "mean": 206.64925632661996,
+        "p90": 338.1867,
+        "p99": 401.1382,
+        "max": 402.9478
+      },
+      "requestMinusInferredHardMillis": {
+        "n": 4568,
+        "min": -362.4979,
+        "p10": 0.11650000000000205,
+        "median": 0.14289999999999736,
+        "mean": -5.213046650612959,
+        "p90": 0.21420000000000528,
+        "p99": 0.39109999999999445,
+        "max": 3.591700000000003
+      },
+      "hardStopOverrunMillis": {
+        "n": 4400,
+        "min": 0.06790000000000873,
+        "p10": 0.12549999999998818,
+        "median": 0.14340000000001396,
+        "mean": 0.16263736363636377,
+        "p90": 0.22059999999999036,
+        "p99": 0.39620000000002165,
+        "max": 3.591700000000003
+      },
+      "inferredSoftSavedMillis": 0,
+      "unusedHardCapMillisAtSoftStop": 0,
+      "requestMinusBaseMillis": {
+        "n": 4568,
+        "min": -362.4979,
+        "p10": 0.11650000000000205,
+        "median": 0.14289999999999736,
+        "mean": -5.213046650612959,
+        "p90": 0.21420000000000528,
+        "p99": 0.39109999999999445,
+        "max": 3.591700000000003
+      },
+      "aboveBaseMillis": 715.6044000000006,
+      "belowBaseMillis": 24528.8015,
+      "incompleteNodes": 246881190,
+      "wholeNodes": 659838228,
+      "wholeRequestElapsedNanos": 943973802900,
+      "lowClockResponses": 0,
+      "byMoveNumber": [
+        {
+          "range": [
+            1,
+            20
+          ],
+          "requests": 768,
+          "remainingMillis": {
+            "n": 768,
+            "min": 7075,
+            "p10": 7287,
+            "median": 8433.0,
+            "mean": 8367.619791666666,
+            "p90": 9508,
+            "p99": 9799,
+            "max": 9799
+          },
+          "requestMillis": {
+            "n": 768,
+            "min": 0.4709,
+            "p10": 315.1377,
+            "median": 351.64075,
+            "mean": 351.07308268229167,
+            "p90": 391.1738,
+            "p99": 401.2487,
+            "max": 402.9478
+          },
+          "softStops": 0
+        },
+        {
+          "range": [
+            21,
+            40
+          ],
+          "requests": 1280,
+          "remainingMillis": {
+            "n": 1280,
+            "min": 4116,
+            "p10": 4331,
+            "median": 5350.0,
+            "mean": 5379.3359375,
+            "p90": 6683,
+            "p99": 6879,
+            "max": 7170
+          },
+          "requestMillis": {
+            "n": 1280,
+            "min": 0.2396,
+            "p10": 213.0764,
+            "median": 248.12735,
+            "mean": 246.661874453125,
+            "p90": 294.1048,
+            "p99": 301.1971,
+            "max": 311.1381
+          },
+          "softStops": 0
+        },
+        {
+          "range": [
+            41,
+            60
+          ],
+          "requests": 1131,
+          "remainingMillis": {
+            "n": 1131,
+            "min": 2615,
+            "p10": 2780,
+            "median": 3314,
+            "mean": 3334.167992926614,
+            "p90": 3917,
+            "p99": 4217,
+            "max": 4581
+          },
+          "requestMillis": {
+            "n": 1131,
+            "min": 0.106,
+            "p10": 155.2003,
+            "median": 175.7735,
+            "mean": 170.62344049513706,
+            "p90": 198.1438,
+            "p99": 208.078,
+            "max": 221.1358
+          },
+          "softStops": 0
+        },
+        {
+          "range": [
+            61,
+            1000
+          ],
+          "requests": 1389,
+          "remainingMillis": {
+            "n": 1389,
+            "min": 1108,
+            "p10": 1251,
+            "median": 1923,
+            "mean": 1888.7710583153348,
+            "p90": 2490,
+            "p99": 2707,
+            "max": 3024
+          },
+          "requestMillis": {
+            "n": 1389,
+            "min": 0.0846,
+            "p10": 103.1261,
+            "median": 126.1334,
+            "mean": 119.25656220302376,
+            "p90": 148.1427,
+            "p99": 155.1481,
+            "max": 162.1306
+          },
+          "softStops": 0
+        }
+      ]
+    },
+    "candidate": {
+      "requests": 4578,
+      "terminations": {
+        "TIME_ALLOCATION": 3879,
+        "TIME_LIMIT": 619,
+        "COMPLETED": 80
+      },
+      "nonfactualSoftStops": 3807,
+      "remainingMillis": {
+        "n": 4578,
+        "min": 150,
+        "p10": 814,
+        "median": 2990.5,
+        "mean": 3631.193097422455,
+        "p90": 7636,
+        "p99": 9737,
+        "max": 9997
+      },
+      "reserveBeforeIncrementMillis": {
+        "n": 4578,
+        "min": 50,
+        "p10": 714,
+        "median": 2890.5,
+        "mean": 3531.193097422455,
+        "p90": 7536,
+        "p99": 9637,
+        "max": 9897
+      },
+      "runnerChargedMillis": 999255,
+      "runnerChargeMinusRequestMillis": {
+        "n": 4578,
+        "min": -0.9446999999999974,
+        "p10": -0.8114999999999952,
+        "median": -0.3582499999999982,
+        "mean": -0.39046762778505906,
+        "p90": -0.04259999999999309,
+        "p99": 0.06409999999999627,
+        "max": 6.1033999999999935
+      },
+      "requestMillis": {
+        "n": 4578,
+        "min": 0.0777,
+        "p10": 78.1104,
+        "median": 184.22435000000002,
+        "mean": 218.66373106159895,
+        "p90": 412.0565,
+        "p99": 714.1312,
+        "max": 802.2817
+      },
+      "requestMinusInferredHardMillis": {
+        "n": 4578,
+        "min": -739.7197,
+        "p10": -336.77750000000003,
+        "median": -141.05059999999997,
+        "mean": -159.93762324159022,
+        "p90": 0.1391999999999598,
+        "p99": 0.2674000000000092,
+        "max": 2.3259999999999934
+      },
+      "hardStopOverrunMillis": {
+        "n": 619,
+        "min": 0.07140000000001123,
+        "p10": 0.13179999999999836,
+        "median": 0.14670000000000982,
+        "mean": 0.1679042003231019,
+        "p90": 0.21649999999999636,
+        "p99": 0.431699999999978,
+        "max": 2.3259999999999934
+      },
+      "inferredSoftSavedMillis": 99831.6077,
+      "unusedHardCapMillisAtSoftStop": 699266.1652,
+      "requestMinusBaseMillis": {
+        "n": 4578,
+        "min": -369.7197,
+        "p10": -84.7738,
+        "median": 15.024199999999993,
+        "mean": 29.167444473569244,
+        "p90": 156.24689999999998,
+        "p99": 354.1658,
+        "max": 401.2817
+      },
+      "aboveBaseMillis": 248850.5608,
+      "belowBaseMillis": 115322.0,
+      "incompleteNodes": 86262045,
+      "wholeNodes": 704136304,
+      "wholeRequestElapsedNanos": 1001042560800,
+      "lowClockResponses": 256,
+      "byMoveNumber": [
+        {
+          "range": [
+            1,
+            20
+          ],
+          "requests": 768,
+          "remainingMillis": {
+            "n": 768,
+            "min": 5628,
+            "p10": 6653,
+            "median": 7988.5,
+            "mean": 8031.864583333333,
+            "p90": 9508,
+            "p99": 9952,
+            "max": 9997
+          },
+          "requestMillis": {
+            "n": 768,
+            "min": 0.2803,
+            "p10": 200.4289,
+            "median": 367.66915,
+            "mean": 396.3938671875,
+            "p90": 658.634,
+            "p99": 802.1318,
+            "max": 802.2817
+          },
+          "softStops": 681
+        },
+        {
+          "range": [
+            21,
+            40
+          ],
+          "requests": 1280,
+          "remainingMillis": {
+            "n": 1280,
+            "min": 2475,
+            "p10": 3376,
+            "median": 4618.5,
+            "mean": 4680.48125,
+            "p90": 6082,
+            "p99": 6867,
+            "max": 7401
+          },
+          "requestMillis": {
+            "n": 1280,
+            "min": 0.2964,
+            "p10": 125.8392,
+            "median": 235.013,
+            "mean": 257.342935390625,
+            "p90": 423.0839,
+            "p99": 544.2732,
+            "max": 602.2183
+          },
+          "softStops": 1157
+        },
+        {
+          "range": [
+            41,
+            60
+          ],
+          "requests": 1138,
+          "remainingMillis": {
+            "n": 1138,
+            "min": 1279,
+            "p10": 1884,
+            "median": 2546.0,
+            "mean": 2582.8031634446397,
+            "p90": 3336,
+            "p99": 3785,
+            "max": 4222
+          },
+          "requestMillis": {
+            "n": 1138,
+            "min": 0.0856,
+            "p10": 85.7625,
+            "median": 164.6228,
+            "mean": 175.3360464850615,
+            "p90": 292.1644,
+            "p99": 350.1665,
+            "max": 398.1418
+          },
+          "softStops": 957
+        },
+        {
+          "range": [
+            61,
+            1000
+          ],
+          "requests": 1392,
+          "remainingMillis": {
+            "n": 1392,
+            "min": 150,
+            "p10": 288,
+            "median": 1109.5,
+            "mean": 1095.462643678161,
+            "p90": 1809,
+            "p99": 2243,
+            "max": 2642
+          },
+          "requestMillis": {
+            "n": 1392,
+            "min": 0.0777,
+            "p10": 52.2675,
+            "median": 114.27025,
+            "mean": 120.46026767241379,
+            "p90": 208.0829,
+            "p99": 264.0999,
+            "max": 302.1353
+          },
+          "softStops": 1012
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "accountedRequests": 9146,
+    "clockConservation": 9146
+  },
+  "actorNativeCpuSeconds": {
+    "baseline": 960.0,
+    "candidate": 1016.5625
+  },
+  "peakWorkingSetBytes": {
+    "baseline": 390066176,
+    "candidate": 389574656
+  },
+  "limits": [
+    "Prospective clock-reliability gate and descriptive cost audit; no additional statistical look.",
+    "Runner f618e34 stores integer millisecond clocks after adding the increment; these are the next go clocks. Initial clock10100ms and each following clock are independently checked by conservation; candidate hard cap is twice base subject to reserve. Engine request elapsed excludes some protocol/runner cost.",
+    "Savings/expenditure are relative to that actor clock's original base allocation; unused doubled hard cap is reported separately. These are not causal whole-game value.",
+    "PGN retains final iteration data, not every policy trigger. Extension-specific aggregate value requires the matched extension-off control; no per-move trigger/quality labels are fabricated.",
+    "Whole-game incomplete nodes use final completed-iteration node annotation; absent annotations remain disclosed.",
+    "One fixed32-pair confirmation block; no interim strength output or multiworker inference."
+  ]
+}

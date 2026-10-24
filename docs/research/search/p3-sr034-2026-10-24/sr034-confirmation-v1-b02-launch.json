@@ -1,0 +1,23 @@
+{
+  "status": "running",
+  "hypothesis": "finalist",
+  "block": 2,
+  "preDelivery": {
+    "path": "sr034-confirmation-v1-b01-post-delivery-summary.json",
+    "sha256": "335295dc572bedd904bde40919d1c79c69e9fde6031a98e05f1ffd92f8002e63"
+  },
+  "bindingSha256": "2e676210b90e93011bd48d048530f2a70bcca9c4b52fd909e1081ee1e1c873cc",
+  "admissionSha256": "89eddfb5958044f785036951abb1c19073b8a7d067b1cb478c6c2bf04f0a7c7e",
+  "hostStart": {
+    "utc": "2026-10-24T00:22:48.843895+00:00",
+    "monotonic": 81431.6692993,
+    "ticks": [
+      8466181250000,
+      8806507656250,
+      965248281250
+    ],
+    "availableBytes": 18673774592,
+    "memoryLoadPercent": 45
+  },
+  "admissionAttempt": 1
+}

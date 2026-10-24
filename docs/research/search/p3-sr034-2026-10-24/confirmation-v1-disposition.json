@@ -1,0 +1,154 @@
+{
+  "status": "clock-unqualified",
+  "disposition": "inconclusive_no_qualified_strength_result",
+  "candidate": "boundary2",
+  "gamesCompleted": 256,
+  "pairsCompleted": 128,
+  "qualifiedBlocks": [
+    1,
+    2,
+    3
+  ],
+  "clockUnqualifiedBlocks": [
+    4
+  ],
+  "scores": "Unopened; the prescribed final strength analysis requires all four blocks to qualify and was not invoked.",
+  "clockGateMillis": 25,
+  "adverseRequestCount": 2,
+  "adverseActors": [
+    "baseline"
+  ],
+  "allResourceGatesPassed": true,
+  "allNormalEndings": true,
+  "allOwnedDescendantsDrained": true,
+  "integrity": {
+    "accountedRequests": 34032,
+    "clockConservation": 34032
+  },
+  "actors": {
+    "baseline": {
+      "requests": 16998,
+      "nodes": 2530013796,
+      "elapsedNanos": 3602518960600,
+      "maximumRequestOverHardMillis": 40.28460000000001,
+      "minimumReserveBeforeIncrementMillis": 988,
+      "responsesBelow500Millis": 0,
+      "nativeCpuSeconds": 3646.40625,
+      "maximumEnginePeakWorkingSetBytes": 390066176,
+      "incompleteNodes": 933801069,
+      "nonfactualSoftStops": 0,
+      "byMoveNumber": [
+        {
+          "range": [
+            1,
+            20
+          ],
+          "requests": 3072,
+          "meanRequestMillis": 351.4623176432292,
+          "meanRemainingMillis": 8365.665690104166
+        },
+        {
+          "range": [
+            21,
+            40
+          ],
+          "requests": 5074,
+          "meanRequestMillis": 245.972023630272,
+          "meanRemainingMillis": 5388.509657075286
+        },
+        {
+          "range": [
+            41,
+            60
+          ],
+          "requests": 4167,
+          "meanRequestMillis": 169.93325058795295,
+          "meanRemainingMillis": 3332.0309575233982
+        },
+        {
+          "range": [
+            61,
+            1000
+          ],
+          "requests": 4685,
+          "meanRequestMillis": 120.95044134471719,
+          "meanRemainingMillis": 1917.3169690501602
+        }
+      ]
+    },
+    "candidate": {
+      "requests": 17034,
+      "nodes": 2711141128,
+      "elapsedNanos": 3818753089100,
+      "maximumRequestOverHardMillis": 2.3259999999999934,
+      "minimumReserveBeforeIncrementMillis": 50,
+      "responsesBelow500Millis": 765,
+      "nativeCpuSeconds": 3865.546875,
+      "maximumEnginePeakWorkingSetBytes": 389980160,
+      "incompleteNodes": 346356809,
+      "nonfactualSoftStops": 14110,
+      "byMoveNumber": [
+        {
+          "range": [
+            1,
+            20
+          ],
+          "requests": 3072,
+          "meanRequestMillis": 399.38218291015625,
+          "meanRemainingMillis": 8010.825520833333
+        },
+        {
+          "range": [
+            21,
+            40
+          ],
+          "requests": 5074,
+          "meanRequestMillis": 252.6594027788727,
+          "meanRemainingMillis": 4704.626133228222
+        },
+        {
+          "range": [
+            41,
+            60
+          ],
+          "requests": 4192,
+          "meanRequestMillis": 173.91917559637403,
+          "meanRemainingMillis": 2644.255963740458
+        },
+        {
+          "range": [
+            61,
+            1000
+          ],
+          "requests": 4696,
+          "meanRequestMillis": 123.67717832197614,
+          "meanRemainingMillis": 1180.5804940374787
+        }
+      ]
+    }
+  },
+  "matchWallSeconds": 7451.052984900016,
+  "ownedCpuSeconds": 7564.390625,
+  "blockOtherAverageLogicalCores": [
+    0.6172405295538632,
+    0.7581297345888235,
+    0.8794372220425027,
+    0.8531167545338492
+  ],
+  "bindingSha256": "2e676210b90e93011bd48d048530f2a70bcca9c4b52fd909e1081ee1e1c873cc",
+  "evidence": {
+    "sr034-confirmation-v1-b01-summary.json": "0acce52fdde3793a256cda898143a579620696e612ddaf2c80988f83d246dbc9",
+    "sr034-confirmation-v1-b02-summary.json": "56cea7fe8b95bdf23871cd7f6a6482dae6fe0969315ab8e2d1df5d4e7d07a196",
+    "sr034-confirmation-v1-b03-summary.json": "51d4d6c72d30bed5b78989f35fe3ac9eeac8a2554c1c2a59cfa1578e2a0d028f",
+    "sr034-confirmation-v1-b04-summary.json": "778a99c0586483a5ab846e43e84aea15759faa5f9eda234c0f23d6818c7c2519",
+    "confirmation-clock-tail-v1.json": "f8bb493ef2f747803373b9aa33f3f80cdb4a3b2e5127c0ef45731f549db87a51"
+  },
+  "scriptSha256": "53b76f1b5f5536c35ee15dd376c7d979cd3783e545c371c3f848440548984a94",
+  "limits": [
+    "Operational resource observations across the entire clock-unqualified study; no strength estimate, positive claim or component inference.",
+    "Two actual baseline timing tails are corroborated by runner charges. Request-level CPU/GC/scheduler traces were unavailable; exact cause is unresolved.",
+    "Candidate maximum overrun2.326ms does not waive the comparison gate. Candidate minimum reserve50ms and765 responses below500ms remain limitations.",
+    "No replay, exclusion, substitution, relaxed gate, retuning or fallback finalist. The frozen v1 study is closed; any later confirmation needs a separate prospective plan and resolved timing-qualification approach.",
+    "No production adoption, multiworker strength claim, deployment or successor launch."
+  ]
+}
