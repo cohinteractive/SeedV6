@@ -1,12 +1,25 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R031**
+Internal revision: **P3-R032**
 
-Status: **ACTIVE: separate BOUNDARY2 confirmation and conditional adoption CGLHW. Owner accepts SR-034's inconclusive/deferred closeout and confirms P3-R030/P3-F030 mirrors. Diagnose timing before any new confirmation; preserve closed scores unopened. CP64/factual-clock production remains unchanged; promotion still requires post-evidence GPT/owner acceptance.**
+Status: **ACTIVE: fresh192-pair BOUNDARY2 confirmation frozen after outcome-blind timing diagnosis and current validation. Historical timing tails remain unexplained; both actors must independently pass unchanged reported25ms and added runner-charge25ms gates. Closed SR-034 scores stay unopened. CP64/factual-clock production remains unchanged; promotion still requires post-evidence GPT/owner acceptance.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
 ## BOUNDARY2 confirmation and conditional adoption - 24 October 2026
+
+Current progression:17,227 diagnostic requests, including64 actual development-
+opening games, do not reproduce a25ms reported overrun. This does not establish
+the historical cause or a universal latency guarantee. Current265 targeted and
+integrated tests pass after a test-only opening-book fixture correction. Exact
+uninstrumented actor CPU calibration passes. A new192-pair/six-block W1/10+0.1
+confirmation is prospectively frozen with311 bound inputs and disjoint openings.
+One final paired-normal95% look plus conservative Hoeffding sensitivity is admitted
+only after every integrity, lifecycle, resource and clock gate passes. Retain the
+historical25ms reported-over-hard ceiling and additionally require actual runner
+charge-over-hard<=25ms and nonnegative reserve. A started-block failure closes
+confirmation with scores unopened; no replay, relaxation or sample extension.
+No production activation or multiworker-strength inference follows this freeze.
 
 The owner explicitly launches this separate bounded CGLHW and accepts the closed
 SR-034 inconclusive/deferred result. P3-R030/P3-F030 mirror synchronization is

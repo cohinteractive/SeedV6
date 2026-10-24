@@ -73,13 +73,22 @@ No threshold relaxation or speculative engine patch is justified at bootstrap.
    integration and hand back for required acceptance. Otherwise retain production
    factual clocks and close/defer with evidence and precise limits.
 
-Current restart: freeze the new192-pair study using `prepare_fresh_v1.py`, then
-execute the six `run_fresh_block_v1.py` blocks in order, only while prior blocks
+Current restart: the new192-pair study is frozen; execute the six
+`run_fresh_block_v1.py` blocks in order, only while prior blocks
 qualify. The actual-game diagnostic, current265 tests, new56-request native
 calibration, mathematical self-tests and new complete-clock audit validation all
 pass. No strength game has begun. Check binding/launch/summary state before any
 resume; never replay a started name. Preserve every failed endpoint. Production
 remains unchanged; the final analyzer is gated behind all six qualified blocks.
+
+Freeze: `confirmation-v1-binding.json` binds311 inputs at source HEAD27fc053,
+including exact25-file runtime inventories, JDK VM/modules/tools, source book,
+protocol/analysis/runner/calibration bytes and validation receipts. Fresh selection
+uses seed2026102447/partition1:192 unique positions sampled from8,646 eligible,
+after30,043 distinct prior/diagnostic positions are excluded. The six consecutive
+32-pair input partitions are immutable. Historical selection receipts are exclusion
+inputs; historical unqualified game scores remain unopened. Masters P3-R032/F032
+record progression; their Project Source mirrors have not been refreshed by Codex.
 Evidence/scripts/compact manifests: `p3-boundary2-confirmation-2026-10-24/`.
 New bulk evidence: its ignored `raw/` directory. Check availability on every resume.
 The actual game-path diagnostic follows the completed persistent capture below.

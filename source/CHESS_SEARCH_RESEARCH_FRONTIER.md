@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F031**
+Internal frontier revision: **P3-F032**
 
-Status: **ACTIVE: separate BOUNDARY2 confirmation and conditional adoption CGLHW. Owner accepts SR-034's inconclusive/deferred closeout and confirms P3-R030/P3-F030 mirrors. Diagnose timing before any new confirmation; preserve closed scores unopened. CP64/factual-clock production remains unchanged; promotion still requires post-evidence GPT/owner acceptance.**
+Status: **ACTIVE: fresh192-pair BOUNDARY2 confirmation frozen after outcome-blind timing diagnosis and current validation. Historical timing tails remain unexplained; both actors must independently pass unchanged reported25ms and added runner-charge25ms gates. Closed SR-034 scores stay unopened. CP64/factual-clock production remains unchanged; promotion still requires post-evidence GPT/owner acceptance.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
@@ -19,8 +19,13 @@ instrumentation; establish fair qualification; freeze fresh 10+0.1 confirmation;
 execute and open only qualified analysis; conditionally qualify shared production
 integration and workers1-16. No alternative finalist or parameter search. The
 [focused record](../docs/research/search/P3_BOUNDARY2_CONFIRMATION_2026-10-24.md)
-is the subordinate dependency queue and restart point. Current unit is timing
-diagnosis; no fresh strength sample is admitted. Production remains factual-clock
+is the subordinate dependency queue and restart point. Timing diagnosis did not
+reproduce the historical tails and does not establish their cause. Current265 tests
+and exact-actor native CPU calibration pass. The new192-pair/six-block study is
+frozen and admitted under311 input bindings, independent openings, one final look
+and strict qualification of both actors; actual runner charges now also have the
+25ms-over-hard gate. Stop on a started-block failure without opening scores or
+replaying games. Production remains factual-clock
 CP64/flags3407871/ADAPTIVE16/Hash64. Post-evidence GPT/owner acceptance still gates
 default activation; no external deployment or successor is authorized.
 
