@@ -10,7 +10,9 @@ class ConstructionUciTest {
         assertTrue(configuration.identity(1).contains("hashMiB=64;aspiration=ADAPTIVE16"));
         for (int workers = 1; workers <= 16; workers++) try (var service = configuration.service(workers, 1)) {
             assertTrue(configuration.acceptsWorkers(workers));
-            var aspiration = field(field(service, "search"), "exact");
+            var clock = field(field(service, "search"), "exact");
+            assertInstanceOf(com.ohinteractive.seedv6.search.manage.Boundary2ClockPolicy.class, clock);
+            var aspiration = field(clock, "owner");
             assertEquals(com.ohinteractive.seedv6.search.driver.AspirationSearch.Policy.ADAPTIVE16,
                     field(aspiration, "policy"));
             var owner = field(aspiration, "owner");

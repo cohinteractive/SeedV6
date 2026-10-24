@@ -15,7 +15,7 @@ import com.ohinteractive.seedv6.uci.*;
 /** Explicit SR-034 research launcher. Production UCI and BaselineEngine defaults remain unchanged. */
 public final class Cp64TimeUciMain {
     static SingleDepthSearch engine(ConventionalNnueEngine model,String profile,int workers,int hash) {
-        var owner=BaselineEngine.create(model.evaluation(),workers,hash);
+        var owner=BaselineEngine.configuration(model.evaluation(),workers,hash).create(model.evaluation());
         return switch(profile) {
             case "baseline" -> owner;
             case "half" -> new Cp64ClockPolicy(owner,Cp64ClockPolicy.Policy.HALF);

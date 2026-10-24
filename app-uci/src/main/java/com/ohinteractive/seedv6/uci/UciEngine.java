@@ -16,6 +16,7 @@ import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchTermination;
 import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.search.manage.ManagedSearchResult;
+import com.ohinteractive.seedv6.search.manage.ClockPolicy;
 import com.ohinteractive.seedv6.search.manage.SearchLifecycleService;
 
 /** One protocol implementation; search execution and cancellation belong to engine-core. */
@@ -51,6 +52,9 @@ public final class UciEngine implements AutoCloseable {
                     uciOutput.line("option name Hash type spin default 64 min 1 max 1024");
                     uciOutput.line("option name Clear Hash type button");
                 }
+                if (configuration.clockPolicy() != null)
+                    uciOutput.line("option name ClockPolicy type combo default " + configuration.clockPolicy().name()
+                            + " var BOUNDARY2 var FACTUAL");
                 uciOutput.line("option name UseBook type check default false");
                 uciOutput.line("option name OwnBook type check default false");
                 identify();
@@ -90,6 +94,8 @@ public final class UciEngine implements AutoCloseable {
 
     private void identify() {
         String identity = configuration.identity(rootWorkers, hashMiB);
+        if (identity.isEmpty() && configuration.clockPolicy() != null)
+            uciOutput.line("info string clockPolicy=" + configuration.clockPolicy().identity());
         if (!identity.isEmpty()) uciOutput.line("info string " + identity
                 + (configuration.standalone() ? " ttMiB=" + hashMiB : ""));
     }
@@ -146,19 +152,22 @@ public final class UciEngine implements AutoCloseable {
         }
         if (tokens.length != 5 || !tokens[1].equals("name") || !tokens[3].equals("value")) return;
         int workers = rootWorkers, hash = hashMiB;
+        UciConfiguration selected = configuration;
         if (tokens[2].equalsIgnoreCase("Threads")) workers = Integer.parseInt(tokens[4]);
         else if (configuration.standalone() && tokens[2].equalsIgnoreCase("Hash")) hash = Integer.parseInt(tokens[4]);
+        else if (tokens[2].equalsIgnoreCase("ClockPolicy") && configuration.clockPolicy() != null)
+            selected = configuration.withClockPolicy(ClockPolicy.parse(tokens[4]));
         else return;
         if (workers < ParallelSearch.MIN_WORKERS || workers > ParallelSearch.MAX_WORKERS
                 || workers > configuration.maximumWorkers()
                 || !configuration.acceptsWorkers(workers) || hash < 1 || hash > 1024)
             throw new IllegalArgumentException("Unsupported Threads/Hash setting (Threads 1.."
                     + configuration.maximumWorkers() + ", Hash 1..1024 MiB)");
-        if (workers == rootWorkers && hash == hashMiB) return;
+        if (workers == rootWorkers && hash == hashMiB && selected.clockPolicy() == configuration.clockPolicy()) return;
         final SearchLifecycleService replacement;
         try {
             // Allocate first so failure retains the old settings and live service.
-            replacement = configuration.service(workers, hash);
+            replacement = selected.service(workers, hash);
         } catch (OutOfMemoryError exhausted) {
             uciOutput.error("SeedV6 UCI could not allocate Hash/Threads; retained previous settings. Reduce Hash or increase -Xmx.");
             return;
@@ -167,6 +176,7 @@ public final class UciEngine implements AutoCloseable {
         try { searches.close(); }
         catch (RuntimeException | Error failure) { replacement.close(); throw failure; }
         searches = replacement;
+        configuration = selected;
         rootWorkers = workers;
         hashMiB = hash;
         searches.setBookEnabled(ownBook);
@@ -207,7 +217,7 @@ public final class UciEngine implements AutoCloseable {
     private final BufferedReader reader;
     private final UciOutput uciOutput;
     private final UciSession session = new UciSession();
-    private final UciConfiguration configuration;
+    private UciConfiguration configuration;
     private final Object publicationLock = new Object();
     private Publication request;
     private SearchLifecycleService searches;

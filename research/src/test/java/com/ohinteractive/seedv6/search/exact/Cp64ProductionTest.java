@@ -131,6 +131,8 @@ class Cp64ProductionTest {
                 SearchControl.controlled(nodes, System.nanoTime(), 60_000_000_000L, TimeSource.SYSTEM), true));
     }
     private static ExactSearch[] kernels(SingleDepthSearch search) throws Exception {
+        if (search instanceof com.ohinteractive.seedv6.search.manage.Boundary2ClockPolicy)
+            search = (SingleDepthSearch) field(search, "owner");
         var owner = field(search, "owner");
         if (owner instanceof ExactSearchAdapter) return new ExactSearch[]{(ExactSearch)field(owner, "exact")};
         var workers = (Object[])field(owner, "workers");

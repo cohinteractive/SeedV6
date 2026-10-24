@@ -16,7 +16,7 @@ import com.ohinteractive.seedv6.uci.*;
 /** Separate SR-034 experiment; the frozen first-generation launcher remains reproducible. */
 public final class Cp64SpendingUciMain {
     static SingleDepthSearch engine(ConventionalNnueEngine model, String profile, int workers, int hash) {
-        var owner = BaselineEngine.create(model.evaluation(), workers, hash);
+        var owner = BaselineEngine.configuration(model.evaluation(), workers, hash).create(model.evaluation());
         return profile.equals("baseline") ? owner : new Cp64SpendingPolicy(owner, profile.equals("unstable2"));
     }
 

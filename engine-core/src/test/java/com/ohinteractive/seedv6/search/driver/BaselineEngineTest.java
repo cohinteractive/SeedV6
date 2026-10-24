@@ -73,7 +73,9 @@ class BaselineEngineTest {
         for (int workers : new int[]{1, 2, 4, 16}) {
             var service = engine.service(workers, 8);
             try {
-                var driver = field(field(service, "search"), "exact");
+                var clock = field(field(service, "search"), "exact");
+                assertInstanceOf(Boundary2ClockPolicy.class, clock);
+                var driver = field(clock, "owner");
                 var owner = field(driver, "owner");
                 if (workers > 1) {
                     var allocated = (Object[]) field(owner, "workers");
@@ -102,8 +104,10 @@ class BaselineEngineTest {
         for (int workers = 1; workers <= 16; workers++) {
             var search = engine.create(workers, 1);
             try (var driver = new SearchDriver(search)) {
-                assertEquals(AspirationSearch.Policy.ADAPTIVE16, field(search, "policy"));
-                var owner = field(search, "owner");
+                assertInstanceOf(Boundary2ClockPolicy.class, search);
+                var aspiration = field(search, "owner");
+                assertEquals(AspirationSearch.Policy.ADAPTIVE16, field(aspiration, "policy"));
+                var owner = field(aspiration, "owner");
                 var kernel = workers == 1 ? field(owner, "exact") : owner;
                 assertEquals(3407871L, ((FlatSearchConfig)
                         field(kernel, "construction")).flags());

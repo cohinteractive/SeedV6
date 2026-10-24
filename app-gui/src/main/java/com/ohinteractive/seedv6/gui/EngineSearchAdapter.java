@@ -299,8 +299,10 @@ final class EngineSearchAdapter implements SearchGateway {
             if (binding.pinned() != null) return new SearchLifecycleService(
                     com.ohinteractive.seedv6.search.common.TimeSource.SYSTEM, () -> binding.pinned().create(rootWorkers, 64),
                     com.ohinteractive.seedv6.search.tablebase.SyzygyNative.configured(), com.ohinteractive.seedv6.book.Book.bundled());
-            return binding.mode() == PlayEvaluator.Mode.HANDCRAFTED ? create(rootWorkers)
-                    : new SearchLifecycleService(rootWorkers, binding.evaluation());
+            var clocks = com.ohinteractive.seedv6.search.manage.ClockPolicy.configured();
+            return new SearchLifecycleService(com.ohinteractive.seedv6.search.common.TimeSource.SYSTEM,
+                    () -> clocks.apply(com.ohinteractive.seedv6.search.driver.ProductionSearch.create(rootWorkers, binding.evaluation())),
+                    com.ohinteractive.seedv6.search.tablebase.SyzygyNative.configured(), com.ohinteractive.seedv6.book.Book.bundled());
         }
     }
 

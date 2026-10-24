@@ -34,6 +34,7 @@ class BaselineArenaTest {
                     for (var participant : java.util.List.of(game.white(), game.black())) {
                         long flags = participant.competitiveEvaluator() == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? 3407871 : 262143;
                         assertTrue(participant.searchProfile().contains("flags=" + flags));
+                        assertTrue(participant.searchProfile().contains("clockPolicy=boundary2-d6-v1"));
                     }
                     assertTrue(game.white().searchProfile().contains("aspiration=ADAPTIVE16"));
                     assertTrue(game.black().searchProfile().contains("aspiration=ADAPTIVE16"));

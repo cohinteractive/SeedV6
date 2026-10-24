@@ -9,16 +9,23 @@ import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.manage.SearchLifecycleService;
 import com.ohinteractive.seedv6.search.tablebase.RootTablebase;
 import java.io.IOException;
+import com.ohinteractive.seedv6.search.manage.ClockPolicy;
 import java.nio.file.Path;
 
 /** Standalone product profile: fixed verified Pair-2, optional bundled book, no tablebase. */
 final class ProductionUciConfiguration implements UciConfiguration {
     static ProductionUciConfiguration load(Path model) throws IOException {
-        return new ProductionUciConfiguration(SearchEvaluation.brnPair2(ProductionModel.load(model)));
+        return new ProductionUciConfiguration(SearchEvaluation.brnPair2(ProductionModel.load(model)), ClockPolicy.configured());
     }
-    private ProductionUciConfiguration(SearchEvaluation evaluation) { this.evaluation = evaluation; }
+    private ProductionUciConfiguration(SearchEvaluation evaluation, ClockPolicy clocks) {
+        this.evaluation = evaluation; this.clocks = clocks;
+    }
+    @Override public ClockPolicy clockPolicy() { return clocks; }
+    @Override public UciConfiguration withClockPolicy(ClockPolicy policy) {
+        return new ProductionUciConfiguration(evaluation, policy);
+    }
     @Override public SearchLifecycleService service(int workers, int hashMiB) {
-        return new SearchLifecycleService(TimeSource.SYSTEM, () -> ProductionSearch.create(workers, evaluation, hashMiB),
+        return new SearchLifecycleService(TimeSource.SYSTEM, () -> clocks.apply(ProductionSearch.create(workers, evaluation, hashMiB)),
                 RootTablebase.NONE, OpeningBook.INSTANCE);
     }
     @Override public String name() { return "SeedV6 UCI " + version.displayVersion(); }
@@ -31,8 +38,9 @@ final class ProductionUciConfiguration implements UciConfiguration {
                 + " reuse=effort concurrency=" + (workers == 1 ? "off" : "root_reuse")
                 + " hints=completed_same_key history=" + (workers == 1 ? "invocation" : "root_seeded_private")
                 + " learning=all_searched"
-                + " workers=" + workers + " futility=off build=" + version.build() + " source=" + version.sourceRevision();
+                + " clockPolicy=" + clocks.identity() + " workers=" + workers + " futility=off build=" + version.build() + " source=" + version.sourceRevision();
     }
+    private final ClockPolicy clocks;
     private final SearchEvaluation evaluation;
     private final ApplicationVersion version = ApplicationVersion.load();
 

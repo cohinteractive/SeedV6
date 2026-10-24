@@ -27,7 +27,7 @@ public final class Cp64ClockEconomics {
                 "networkSha256",ConventionalNnueEngine.SHA256,"jvm",ManagementFactory.getRuntimeMXBean().getInputArguments())));
             out.newLine();out.flush();
             for(int p=0;p<3;p++) {
-                var owner=BaselineEngine.create(model.evaluation(),1,64);
+                var owner=BaselineEngine.configuration(model.evaluation(),1,64).create(model.evaluation());
                 drivers[p]=new SearchDriver(p==0?owner:new Cp64ClockPolicy(owner,
                     p==1?Cp64ClockPolicy.Policy.HALF:Cp64ClockPolicy.Policy.STABLE3_HALF));
             }

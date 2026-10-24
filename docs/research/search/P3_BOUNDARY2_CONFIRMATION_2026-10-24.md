@@ -1,12 +1,147 @@
 # BOUNDARY2 confirmation and conditional production adoption
 
-Status: **PAUSED — owner-directed suspension; confirmation interrupted and clock-unqualified**, 24 October 2026.
+Status: **PRODUCTION DEFAULT INTEGRATED; bounded technical qualification passed**, 24 October 2026.
 Subordinate focused record under `source/CHESS_SEARCH_CONTRACT.md` and
 `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`; not another governing master.
 
+## Production adoption - owner decision and implementation
+
+The24October2026 owner decision supersedes the suspension and optional-only
+recommendation below. Adopt exact BOUNDARY2 as the default for every normal
+managed-clock evaluator/configuration and workers1-16 through shared production
+ownership; retain factual fallback and explicit-limit semantics. The decision
+expressly waives independent-strength and timing qualification as vetoes on this
+bounded adoption, while preserving correctness/lifecycle invariants and all
+failed-study identities/results. No further tournament, general timing diagnosis,
+score opening, external installation or successor is authorized.
+
+The owner accepts unconfirmed strength, the old baseline timing anomalies and
+new candidate124.2323ms/runner125ms excess, unknown causes/frequencies/comparative
+risk, and potentially adverse strength/clock consequences; actual-game adverse
+behavior is grounds for prompt reconsideration. This is a production decision,
+not retrospective research qualification or an Elo claim. Masters P3-R034/F034
+record the authority. Prior mirror refresh is not presumed or needed as a veto
+on this directly authorized repository work; revised mirrors still require owner
+refresh before planning dependent on those external copies.
+
+Start: clean HEAD a17136aa0da0e06beb741884a3bed68655e3bbff, build76, no root
+CODEXLOG_CURRENT.md. `adoption-baseline-v1.json` records verified311 inputs,
+exact runtime membership and unopened historical evidence hashes before edits.
+Current source changes will be accounted against this baseline without rewriting
+frozen manifests; original source remains in Git and frozen runtime files remain
+unchanged. No finalizer is invoked.
+
+### Implemented composition and supported scope
+
+`ClockPolicy` in engine-core binds hard allocation and `Boundary2ClockPolicy`
+completed-iteration stopping. The production implementation matches the unchanged
+`Cp64SpendingPolicy(owner,false)` reference, including overflow-safe half ceilings,
+depth6/stable3 guards, mate/no-move handling, clipped hard cap and resets. There is
+no extra iteration, parameter tuning or change to SearchControl/SearchDriver stop
+logic. The wrapper delegates traversal and ownership, and has private per-owner
+state reset on request start/end, new game and close. Hard/node/external stops
+continue to dominate soft completion.
+
+| Normal composition | Production clock default and preserved configuration |
+| --- | --- |
+| Shared BaselineEngine CP64 | BOUNDARY2; flattened PVS, flags3407871, ADAPTIVE16, checkpoint64/eight heads, BT4_Q_LOGIT400_V1, requested Hash64 unchanged. |
+| Shared HCE/BREP2-32 and unrelated conventional payload | BOUNDARY2; existing flags262143/ADAPTIVE16 and evaluator/score identities unchanged. The default is not restricted by CP64 payload identity. |
+| GUI Play, independent white/black bindings | Shared normal competitive factory uses selected clocks; normal learned-model compatibility route also decorates its existing Search. Current depth/fixed-movetime UI remains non-clock-managed. Historical pinned controls stay explicit and unchanged. |
+| Ordinary Arena/other BaselineEngine consumers | Receive the same selected owner. Existing depth/per-move contracts remain unchanged; no fabricated remaining clock or new game-clock UI. |
+| Standard UCI/BotLi default | Shared CP64 composition; actual wtime/btime/increment/movestogo use BOUNDARY2 allocation. |
+| Standard UCI --model Pair-2 / --nnue conventional | Same shared clock policy at their existing configuration boundary; retained recursive/selective or recursive-unpruned kernel and evaluator identity, rather than a silent Search migration. |
+| Legacy UCI HCE/explicit checkpoint | BOUNDARY2 around the existing evaluator/ProductionSearch factory; retained model selection, score mapping, Hash64 and legacy quiet request reporting. Clock identity is announced by the handshake. |
+| All normal worker settings | Explicit1-16 supported; existing Max remains min(available processors,16). No worker/cohort/TT algorithm change. |
+
+Explicit `ConstructionUciMain`, pinned historical Search configurations,
+`NnueCandidateUciMain`, independent references and research controls do not inherit
+the production default. The four research spending/time launcher/economics call
+sites now explicitly create their original unwrapped Construction composition,
+preventing default leakage or double wrapping. Frozen reference policy, protocols,
+311 bound files, both25-file runtime directories and historical/partial evidence
+remain unchanged, verified by hashes and membership. No historical score is opened.
+
+### Factual fallback and configuration behavior
+
+- UCI/BotLi: `setoption name ClockPolicy value FACTUAL`; restore with
+  `setoption name ClockPolicy value BOUNDARY2`. `uci` advertises the combo and
+  reports the actual policy identity (`factual` or `boundary2-d6-v1`).
+- Process startup, including GUI/Arena: JVM option `-Dseedv6.clockPolicy=FACTUAL`
+  (for generated launchers it may be supplied through `JAVA_OPTS`). Absence selects
+  BOUNDARY2. Invalid policy strings fail explicitly; no silent fallback.
+- Core callers: `BaselineEngine.load(evaluator, ClockPolicy.FACTUAL)`, immutable
+  `withClockPolicy(FACTUAL)`, or the explicit static create overload. Existing
+  bindings snapshot the setting; switching one instance does not mutate another.
+
+UCI changes allocate a replacement before retiring the old service, suppress old
+publication, close/drain the old owner and preserve Threads/Hash/book selection.
+The allocator and completed-iteration wrapper change together. Existing explicit
+movetime overrides valid clock fields; pure depth/nodes/infinite do not acquire
+clock semantics. Combined real clocks plus depth/node ceilings retain both limits.
+No evaluator, TT layout/locking/replacement/generation/proof, history/repetition,
+mate/PV or selective-verification algorithm was changed.
+
+### Bounded qualification and retained failures
+
+`adoption-integration-v1.json` reconciles latest suite receipts: **287 JUnit test
+executions,0 failures/errors/skips**. This counts parameterized invocations, not
+unique display names, and does not sum repeated runs as independent evidence.
+Core/reference checks cover10000 selected-policy decision comparisons plus288
+allocation edge combinations, explicit factual equivalence, reserve/increment/
+overflow cases, incomplete versus completed publication, hard/node/external-stop
+precedence, all3 competitive evaluators x workers1-16 under both policies,
+representative1/4/16 real managed clocks, repeated requests/new games, cancellation,
+active replacement/shutdown and private-worker/TT/history regressions. Existing
+Max-bound coverage remains passing. GUI tests exercise real factories under both
+policies for all3 competitive evaluators; headless Arena validates identities,
+color ownership, bounded depth games and resume, without strength inference.
+
+| Receipt | Actual result |
+| --- | --- |
+| adoption-focused-v1-a01 | New equivalence test constructed an invalid no-move result with nonzero move; failed fixture retained. Collector also rejected stale XML from an unrun project. No engine failure identified. |
+| adoption-focused-v2-a01 | Corrected legal fixture and truthful stale/unrun accounting:45 tests pass;25 owned processes drain. |
+| adoption-regression-v3-a01 | 280 executions;2 legacy handshake assertions expected the old option list. Other stages pass;71 owned processes drain. Original failed XML/receipt retained. |
+| adoption-consumers-v4-a01 | Exact new option/identity assertions, GUI fallback and legacy profile coverage:78 tests pass;70 owned processes drain. No protocol assertion weakened. |
+| adoption-uci-v1-a01 | 230 completed actual UCI requests in8.858s;5 profiles,12 owned processes drained. All explicit1-16 counts and representative1/4/16 clock/node/movetime checks; live policy replacement, stop and active quit; startup property fallback and subsequent explicit override. |
+
+The first native checks use the locally built production classpath, not test
+stubs or frozen research actors. The final build77 artifact verification follows
+the qualifying application commit and will be appended separately. Unit/integration
+logic was tested at build76 before the metadata increment. Source hashes in the
+receipts bind the tested Java; no runtime code changed after the passing checks.
+There is no new tournament, strength analysis, general timing campaign or claim
+of a25ms timing bound. The only observed failures in this integration were test/
+receipt expectations, transparently corrected; no new engine correctness defect
+was found or accepted.
+
+### Closeout limits and required follow-up
+
+Local source default adoption is technically qualified under the owner's explicit
+risk acceptance. Independent BOUNDARY2 strength remains unconfirmed; both studies
+remain clock-unqualified and unopened. Historical baseline and candidate tails
+still have unknown cause, relative frequency and comparative risk. More spending
+can hurt clock use or strength; the owner accepts this and will reconsider adverse
+actual-game behavior. Finite tests do not bound rare host/JVM stalls or establish
+multiworker Elo. The50ms reserve is not a hard real-time scheduling guarantee.
+
+Interactive GUI appearance, external BotLi/GUI installations, macOS, live games,
+release/deployment and unrestricted full-system QA are not verified or performed.
+No external files or installations are changed, and nothing is pushed. Production
+build increments76 to77 once in the qualifying code commit; documentation/evidence
+closeout does not bump again. No finalizer or absent CODEXLOG file is created.
+
+Owner default-selection approval is already explicit; no second approval is
+required. GPT/owner retains reconciliation/closeout authority. Both masters now
+have headers `Internal revision: **P3-R034**` and
+`Internal frontier revision: **P3-F034**`.
+**PROJECT_SOURCE_REFRESH_REQUIRED: YES.** Mirror refresh/confirmation is a human
+action blocking only planning dependent on those external copies, not this local
+integration. External installation/release would be separately authorized work.
+No successor CGLHW is started. The suspension below remains historical evidence.
+
 ## Owner-directed suspension and findings handoff — 24 October 2026
 
-**Current authority: STOP.** The owner suspended confirmation and conditional
+**Historical suspension authority (superseded for adoption above): STOP.** The owner suspended confirmation and conditional
 production adoption for review of existing evidence and cost. No replacement
 experiment, later block, lengthy diagnostic, production integration or activation
 is authorized. The historical launch/queue below is retained as history and does

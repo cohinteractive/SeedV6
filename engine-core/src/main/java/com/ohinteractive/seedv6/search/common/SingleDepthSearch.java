@@ -22,7 +22,8 @@ public interface SingleDepthSearch extends AutoCloseable {
      * The driver calls this after terminal/requested-depth handling. Results retain
      * their selective provenance; this decision supplies neither proof nor a new
      * hard budget. Implementations own/reset any state inside begin/endRequest.
-     * Explicit non-clock modes never invoke it. The production default is inert.
+     * Explicit non-clock modes never invoke it. This uncomposed seam is inert;
+     * BaselineEngine supplies the selected production clock policy.
      */
     default boolean clockAllocationComplete(SearchResult completed, long elapsedNanos, long hardBudgetNanos) {
         return false;

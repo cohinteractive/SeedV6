@@ -1,6 +1,8 @@
 package com.ohinteractive.seedv6.search.driver;
 
 import java.io.IOException;
+import java.util.Objects;
+import com.ohinteractive.seedv6.search.manage.ClockPolicy;
 import com.ohinteractive.seedv6.ApplicationVersion;
 import com.ohinteractive.seedv6.book.Book;
 import com.ohinteractive.seedv6.core.brnpair2.ProductionModel;
@@ -18,23 +20,28 @@ public final class BaselineEngine {
     // Frozen S6CNU002 CP64 payload; unrelated conventional checkpoints retain original V1.
     private static final String CP64_PAYLOAD_SHA256 = "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6";
     public enum Evaluator { HCE, BREP2_32, CONVENTIONAL_CP64 }
+    private final ClockPolicy clockPolicy;
     private final Evaluator evaluator;
     private final SearchEvaluation evaluation;
     private final ConventionalNnueEngine conventional;
 
-    private BaselineEngine(Evaluator evaluator, SearchEvaluation evaluation, ConventionalNnueEngine conventional) {
+    private BaselineEngine(Evaluator evaluator, SearchEvaluation evaluation, ConventionalNnueEngine conventional, ClockPolicy clockPolicy) {
+        this.clockPolicy = Objects.requireNonNull(clockPolicy);
         this.evaluator = evaluator;
         this.evaluation = evaluation;
         this.conventional = conventional;
     }
     public static BaselineEngine load() throws IOException { return load(Evaluator.CONVENTIONAL_CP64); }
     public static BaselineEngine load(Evaluator evaluator) throws IOException {
+        return load(evaluator, ClockPolicy.configured());
+    }
+    public static BaselineEngine load(Evaluator evaluator, ClockPolicy clockPolicy) throws IOException {
         return switch (evaluator) {
-            case HCE -> new BaselineEngine(evaluator, SearchEvaluation.handcrafted(), null);
-            case BREP2_32 -> new BaselineEngine(evaluator, SearchEvaluation.brnPair2(ProductionModel.bundled()), null);
+            case HCE -> new BaselineEngine(evaluator, SearchEvaluation.handcrafted(), null, clockPolicy);
+            case BREP2_32 -> new BaselineEngine(evaluator, SearchEvaluation.brnPair2(ProductionModel.bundled()), null, clockPolicy);
             case CONVENTIONAL_CP64 -> {
                 var network = ConventionalNnueEngine.load();
-                yield new BaselineEngine(evaluator, network.evaluation(), network);
+                yield new BaselineEngine(evaluator, network.evaluation(), network, clockPolicy);
             }
         };
     }
@@ -52,12 +59,22 @@ public final class BaselineEngine {
                 : ConstructionSearch.v1(workers, hashMiB, AspirationSearch.Policy.ADAPTIVE16);
     }
     public static SingleDepthSearch create(SearchEvaluation evaluation, int workers, int hashMiB) {
-        return configuration(evaluation, workers, hashMiB).create(evaluation);
+        return create(evaluation, workers, hashMiB, ClockPolicy.configured());
     }
-    public SingleDepthSearch create(int workers, int hashMiB) { return create(evaluation, workers, hashMiB); }
+    public static SingleDepthSearch create(SearchEvaluation evaluation, int workers, int hashMiB, ClockPolicy clocks) {
+        return Objects.requireNonNull(clocks).apply(configuration(evaluation, workers, hashMiB).create(evaluation));
+    }
+    public SingleDepthSearch create(int workers, int hashMiB) { return create(evaluation, workers, hashMiB, clockPolicy); }
     public SearchLifecycleService service(int workers, int hashMiB) {
         return new SearchLifecycleService(TimeSource.SYSTEM, () -> create(workers, hashMiB),
                 RootTablebase.NONE, Book.bundled());
+    }
+    public ClockPolicy clockPolicy() { return clockPolicy; }
+    public long clockBudgetMillis(long remaining, long increment, int movesToGo) {
+        return clockPolicy.allocateClockMillis(remaining, increment, movesToGo);
+    }
+    public BaselineEngine withClockPolicy(ClockPolicy clocks) {
+        return new BaselineEngine(evaluator, evaluation, conventional, clocks);
     }
     public SearchEvaluation evaluation() { return evaluation; }
     public ConventionalNnueEngine conventional() { return conventional; }
@@ -77,6 +94,7 @@ public final class BaselineEngine {
         return "baseline=construction-v1-" + (evaluator == Evaluator.CONVENTIONAL_CP64 ? "cp64" : evaluator.name())
                 + " search=construction-v1 flags=" + configuration.mechanisms().flags()
                 + " configuration=" + configuration.identity() + " " + model
+                + " clockPolicy=" + clockPolicy.identity()
                 + " score=side-to-move-cp build=" + version.build() + " source=" + version.sourceRevision();
     }
 }

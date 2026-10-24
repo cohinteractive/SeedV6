@@ -1,15 +1,69 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R033**
+Internal revision: **P3-R034**
 
-Status: **PAUSED: owner-directed suspension of BOUNDARY2 confirmation/adoption. All experiment processes stopped. Fresh study interrupted after109 completed games/54 pairs; block2 also contains a candidate124.2323ms reported/125ms runner overrun above the frozen25ms gate. Both confirmation studies remain unqualified with scores unopened. Production retains CP64/factual clocks; no integration, activation or further experiment is authorized.**
+Status: **BOUNDARY2 PRODUCTION DEFAULT INTEGRATED under explicit owner acceptance of unconfirmed strength and unresolved timing risk. All normal managed-clock configurations and workers1-16 use the selected policy; factual fallback remains explicit. Bounded technical qualification passes; both independent studies remain unqualified and unopened. External installation/release is not performed.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 
+## BOUNDARY2 production-default adoption - 24 October 2026
+
+The owner reviewed the suspension and explicitly resumed this CGLHW for bounded
+production adoption. **BOUNDARY2 is the settled default-selection decision for
+all supported normal evaluator/configuration paths using managed game clocks,
+all consumers and explicit Search workers1-16**, including the existing bounded
+Max behavior. This supersedes the prior pause, non-default recommendation and
+independent-strength/timing prerequisites as vetoes on this adoption. No further
+owner selection approval or tournament is required. It does not qualify either
+failed study, revise frozen statistics, establish Elo improvement or weaken any
+technical invariant. No scores may be opened, games replayed or general timing
+investigation resumed.
+
+The owner accepts that the promising development result is not independently
+confirmed; historical SR-034 failed on baseline timing and the fresh interrupted
+study failed on candidate timing (784.2323ms against660ms, excess124.2323ms;
+runner excess125ms). Diagnostics did not reproduce those tails, which is no proof
+against recurrence. Cause, relative frequency and comparative risk remain unknown.
+Negative playing-strength or clock-management consequences cannot be quantified.
+The owner knowingly accepts this residual risk and will revisit adverse behavior
+promptly if observed in actual games.
+
+Implement the exact selected stable completed-iteration saving plus reserve-capped
+double hard allowance, with nominal=ceil(clipped hard/2), ordinary depth>=6,
+stable3 half-nominal saving, otherwise nominal-boundary stopping, and **no extra
+change-trigger iteration**. Shared engine-core/BaselineEngine owns production
+composition; retain an explicit factual fallback and isolate historical controls.
+Depth/node/fixed-movetime/infinite limits retain their own contracts. Other
+evaluators retain their existing Search selection and score identity; CP64 stays
+flags3407871, flattened PVS, ADAPTIVE16, S6CNU002/checkpoint64/eight heads,
+BT4_Q_LOGIT400_V1 and requested Hash64. TT, SearchKey/history/repetition, mate/PV,
+selective proof, publication, hard stops, cancellation, worker privacy and drainage
+remain binding. No production-to-research dependency or second Search engine.
+
+Local source integration and bounded qualification pass:287 latest JUnit test
+executions across core, research-reference, UCI, GUI, Arena and integration suites,
+plus230 actual UCI requests covering all16 worker counts and representative clock,
+stop/reconfiguration/shutdown behavior. All owned test processes drain. The exact
+shared production clock policy and factual allocator are selected together;
+`setoption name ClockPolicy value FACTUAL`, startup `-Dseedv6.clockPolicy=FACTUAL`
+and explicit core API selection retain rollback. Normal default UCI, its explicit
+Pair-2/conventional model profiles and legacy HCE/checkpoint paths are covered;
+their evaluator/Search choices remain intact. GUI/Arena depth and fixed-movetime
+modes retain their existing limits, with no new game-clock UI. Research/pinned
+controls and frozen runtime identities remain independent and unchanged.
+
+The [focused adoption record](../docs/research/search/P3_BOUNDARY2_CONFIRMATION_2026-10-24.md)
+holds exact configuration scope, test/repair receipts, residual risks and the
+build77 commit/verification closeout. Passing functional tests is not playing-
+strength evidence or a25ms latency guarantee. No external GUI/BotLi installation, push,
+publication, deployment, release or successor research is authorized. Refresh
+both Project Source mirrors before external planning dependent on them; repository
+updates do not perform synchronization. The following suspension remains history.
+
 ## BOUNDARY2 confirmation and conditional adoption - 24 October 2026
 
-Current owner directive supersedes the execution authorization below: **STOP for
-GPT/owner review**. The sequence was terminated at2026-10-24T06:21:19Z and all
+Historical suspension directive, superseded for production adoption above: **STOP
+for GPT/owner review**. The sequence was terminated at2026-10-24T06:21:19Z and all
 experiment processes were verified absent. Block1 completed64 games/32 pairs and
 qualified; block2 completed45 games/22 pairs, with game46 interrupted. Later blocks
 never started. The owner-requested outcome-blind preservation audit found one

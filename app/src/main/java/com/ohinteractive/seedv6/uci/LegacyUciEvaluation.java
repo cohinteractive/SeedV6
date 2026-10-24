@@ -3,6 +3,7 @@ package com.ohinteractive.seedv6.uci;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Properties;
+import com.ohinteractive.seedv6.search.manage.ClockPolicy;
 import com.ohinteractive.seedv6.ApplicationVersion;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model;
@@ -17,10 +18,18 @@ import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 
 /** Legacy checkpoint/HCE product composition. Experimental selection belongs to research. */
-public record LegacyUciEvaluation(SearchEvaluation evaluation, String identity) implements UciConfiguration {
+public record LegacyUciEvaluation(SearchEvaluation evaluation, String identity, ClockPolicy clockPolicy) implements UciConfiguration {
+    public LegacyUciEvaluation(SearchEvaluation evaluation, String identity) {
+        this(evaluation, identity, ClockPolicy.configured());
+    }
+    @Override public UciConfiguration withClockPolicy(ClockPolicy policy) {
+        return new LegacyUciEvaluation(evaluation, identity, policy);
+    }
+    @Override public boolean announcesResourceChanges() { return !identity.isEmpty(); }
     private static final String PREFIX = "seedv6.uci.";
 
     public static LegacyUciEvaluation load(Properties properties) {
+        var clocks = ClockPolicy.parse(properties.getProperty(ClockPolicy.PROPERTY, "BOUNDARY2"));
         for (String key : properties.stringPropertyNames())
             if (key.startsWith(PREFIX) && key.endsWith("Research"))
                 throw new IllegalArgumentException("Research policy is not a production option: " + key
@@ -34,7 +43,7 @@ public record LegacyUciEvaluation(SearchEvaluation evaluation, String identity) 
         if (store.isBlank()) {
             if (!checkpoint.isEmpty() || !hash.isEmpty() || !warmup.equals("0") || workers != 1)
                 throw new IllegalArgumentException("Explicit UCI evaluator options require pair2Store");
-            return new LegacyUciEvaluation(SearchEvaluation.handcrafted(), "");
+            return new LegacyUciEvaluation(SearchEvaluation.handcrafted(), "", clocks);
         }
         if (!hash.matches("[0-9a-f]{64}"))
             throw new IllegalArgumentException("Pair-2 UCI requires the expected networkSha256 (lowercase hex)");
@@ -61,7 +70,7 @@ public record LegacyUciEvaluation(SearchEvaluation evaluation, String identity) 
                     + " sha256=" + hash + " mapping=" + BrnPair2Model.CALIBRATION_ID
                     + " warmup=" + (depth == 0 ? "off" : "3x" + depth)
                     + " ttMiB=64 nmp=off reverseFutility=off"
-                    + " build=" + version.build() + " source=" + version.sourceRevision());
+                    + " build=" + version.build() + " source=" + version.sourceRevision(), clocks);
         } catch (IOException invalid) {
             throw new IllegalArgumentException("Cannot load requested BRE-Pair 2 checkpoint", invalid);
         }
@@ -69,12 +78,15 @@ public record LegacyUciEvaluation(SearchEvaluation evaluation, String identity) 
 
     @Override public SearchLifecycleService service(int workers, int hashMiB) {
         if (hashMiB != 64) throw new IllegalArgumentException("Legacy profile uses Hash=64");
-        return new SearchLifecycleService(workers, evaluation);
+        return new SearchLifecycleService(com.ohinteractive.seedv6.search.common.TimeSource.SYSTEM,
+                () -> clockPolicy.apply(ProductionSearch.create(workers, evaluation)),
+                com.ohinteractive.seedv6.search.tablebase.SyzygyNative.configured(),
+                com.ohinteractive.seedv6.book.Book.bundled());
     }
 
     @Override public String identity(int workers) {
         if (identity.isEmpty()) return identity;
-        return identity + " internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=" + workers
+        return identity + " clockPolicy=" + clockPolicy.identity() + " internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=" + workers
                 + " leaves=see_selective mode=production qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off"
                 + " hints=completed_same_key history=" + (workers == 1 ? "invocation" : "root_seeded_private")
                 + " learning=all_searched"

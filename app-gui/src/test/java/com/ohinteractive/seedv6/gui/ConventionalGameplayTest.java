@@ -57,6 +57,8 @@ class ConventionalGameplayTest {
             assertEquals(1, adapter.workerCount()); assertEquals(4, binding.effectiveWorkers(4));
             assertNotSame(field(adapter, "service"), field(adapter, "blackService"));
             assertTrue(binding.identity(1).contains("flags=3407871"));
+            assertTrue(binding.identity(1).contains("clockPolicy=boundary2-d6-v1"));
+            assertTrue(adapter.participants().black().identity(1).contains("clockPolicy=boundary2-d6-v1"));
             assertTrue(adapter.participants().black().identity(1).contains("flags=262143"));
             assertTrue(binding.identity(1).contains("aspiration=ADAPTIVE16"));
             for (String fen : new String[]{Board.FEN_STARTING_POSITION,
@@ -98,6 +100,29 @@ class ConventionalGameplayTest {
         } finally { edt(adapter::beginShutdown).run(); }
         assertTrue(((SearchLifecycleService) field(adapter, "service")).isTerminated());
         assertTrue(((SearchLifecycleService) field(adapter, "blackService")).isTerminated());
+    }
+    @Test void actualGuiFactoryUsesDefaultAndFactualFallbackForEveryCompetitiveEvaluator() throws Exception {
+        String previous = System.getProperty(ClockPolicy.PROPERTY);
+        try {
+            for (var clocks : ClockPolicy.values()) {
+                System.setProperty(ClockPolicy.PROPERTY, clocks.name());
+                for (var mode : PlayEvaluator.Mode.competitiveChoices()) {
+                    var binding = mode == PlayEvaluator.Mode.HANDCRAFTED ? PlayEvaluator.handcrafted() : PlayEvaluator.bundled(mode);
+                    assertEquals(clocks, binding.baseline().clockPolicy());
+                    EngineSearchAdapter.LifecycleFactory factory = workers -> { throw new AssertionError("Evaluator-aware route required"); };
+                    for (int workers : new int[]{1,4,16}) try (var service = factory.create(workers, binding)) {
+                        service.setBookEnabled(false);
+                        assertEquals(clocks == ClockPolicy.BOUNDARY2,
+                                field(field(service, "search"), "exact") instanceof Boundary2ClockPolicy);
+                        var done = new CompletableFuture<ManagedSearchResult>(); var board = Board.startingPosition();
+                        service.start(board, GameHistory.initial(board), new SearchLimits(2, -1, -1, false), done::complete);
+                        var result = done.get(10, TimeUnit.SECONDS);
+                        assertNull(result.failure()); assertEquals(2, result.lastCompletedResult().depth());
+                        assertEquals(SearchTermination.COMPLETED, result.termination());
+                    }
+                }
+            }
+        } finally { if (previous == null) System.clearProperty(ClockPolicy.PROPERTY); else System.setProperty(ClockPolicy.PROPERTY, previous); }
     }
     private static Object field(Object object, String name) throws Exception {
         var field = object.getClass().getDeclaredField(name); field.setAccessible(true); return field.get(object);

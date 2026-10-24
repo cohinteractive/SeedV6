@@ -1,0 +1,56 @@
+{
+  "scriptSha256": "41fb8e0643eb400b05874def850427cb46edd0bda9354943b2f54d7f005d7114",
+  "runtimeInputs": {
+    "app\\build\\install\\seedv6\\lib\\app-gui.jar": "fcaed48c7cb426217fd5dd9c86263e94b4dbb05f2c395e35ed59f0bd50630915",
+    "app\\build\\install\\seedv6\\lib\\app-uci.jar": "a24bc26e00dd1e5a988d4443ff509068862f7ae8ac3bbb5f221cac69846c19a3",
+    "app\\build\\install\\seedv6\\lib\\app.jar": "823203c0048e5437b9187676b2f42abe6300aeb18568e5bc75a298f7ab24024a",
+    "app\\build\\install\\seedv6\\lib\\checker-qual-3.42.0.jar": "ccaedd33af0b7894d9f2f3b644f4d19e43928e32902e61ac4d10777830f5aac7",
+    "app\\build\\install\\seedv6\\lib\\engine-core.jar": "70f69518571f468e9fc63e3bb1581e1d01c42bd6b03bf819bfa10189dadb2bfc",
+    "app\\build\\install\\seedv6\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "app\\build\\install\\seedv6\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "app\\build\\install\\seedv6\\lib\\failureaccess-1.0.2.jar": "8a8f81cf9b359e3f6dfa691a1e776985c061ef2f223c9b2c80753e1b458e8064",
+    "app\\build\\install\\seedv6\\lib\\flatlaf-3.7.jar": "1dc4f08cc0e01122f5bc6cebe1dcf253872c1fe8126208f43dab314d7deb0da2",
+    "app\\build\\install\\seedv6\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "app\\build\\install\\seedv6\\lib\\guava-33.2.1-jre.jar": "452b2d9787b7d366fa8cf5ed9a1c40404542d05effa7a598da03bbbbb76d9f31",
+    "app\\build\\install\\seedv6\\lib\\jna-5.17.0.jar": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0",
+    "app\\build\\install\\seedv6\\lib\\jna-platform-5.17.0.jar": "b7e3d46c87bad2eb409b0e704916bcd81206168e357312dfddd0e253679cd9e0",
+    "app\\build\\install\\seedv6\\lib\\jsr305-3.0.2.jar": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+    "app\\build\\install\\seedv6\\lib\\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
+    "app\\build\\install\\seedv6\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "app\\build\\install\\seedv6\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "buildStateSha256": "d4481b5e3a21c6edd64b712d62092178785e6ea2d4ba7ec5e3f61e5b56c959ba",
+  "execution": {
+    "exitCode": 0,
+    "wallSeconds": 8.858408100000815,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 12,
+    "totalOwnedCpuSeconds": 33.859375,
+    "postExitDrainCounts": [
+      0
+    ]
+  },
+  "status": "passed",
+  "requestCount": 230,
+  "profiles": [
+    "cp64",
+    "pair2",
+    "conventional",
+    "legacy-hce",
+    "property-fallback"
+  ],
+  "evidence": {
+    "raw\\adoption-uci-v1-a01\\checks.json": "ca91ba89bcde1fbca8d165b1f85b7ea060d820379634cb03fd2c07df8c18d392",
+    "raw\\adoption-uci-v1-a01\\worker.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw\\adoption-uci-v1-a01\\conventional\\stderr.txt": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c",
+    "raw\\adoption-uci-v1-a01\\conventional\\stdout.txt": "ee6a8d233fe5a8540b5f8aef9c1820c79b50323b8966331915bcb45a6c180be0",
+    "raw\\adoption-uci-v1-a01\\cp64\\stderr.txt": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c",
+    "raw\\adoption-uci-v1-a01\\cp64\\stdout.txt": "9d03ad43b044b6b345881561a8ce6f022b2bdd127a89681f046604ad7bc6e638",
+    "raw\\adoption-uci-v1-a01\\legacy-hce\\stderr.txt": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c",
+    "raw\\adoption-uci-v1-a01\\legacy-hce\\stdout.txt": "285ccfb7519048dbcf052c612446f52399d2a39487cbc1ea4cfc383926f401ed",
+    "raw\\adoption-uci-v1-a01\\pair2\\stderr.txt": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c",
+    "raw\\adoption-uci-v1-a01\\pair2\\stdout.txt": "5ce1cb61efd02debdfa2c5e1d97907b701ac6951870fbf7908ee1147fc2ae4b6",
+    "raw\\adoption-uci-v1-a01\\property-fallback\\stderr.txt": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c",
+    "raw\\adoption-uci-v1-a01\\property-fallback\\stdout.txt": "b3da5205d12292c496d3e5aed5e7daccb99dfee923ea6dbbc18ea0a7ffe499e6"
+  }
+}
