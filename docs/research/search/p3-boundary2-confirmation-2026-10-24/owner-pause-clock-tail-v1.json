@@ -1,0 +1,29 @@
+{
+  "id": "P3-BOUNDARY2-OWNER-PAUSE-CLOCK-WITNESS-v1",
+  "status": "frozen_25ms_clock_gate_failed_in_completed_game_before_owner_interruption",
+  "sourcePgn": "raw\\boundary2-fresh-v1-b02\\games.pgn",
+  "sourceSha256": "b548ac8ad4e0ae9c117fdc6f915530917721a0776cc48895c7f0d81a68568233",
+  "witnessPath": "raw\\owner-pause-v1\\adverse-clock-witness-v1.json",
+  "witnessSha256": "2720bbfc3b81813e55806314d0536b495c3c6dacda0fd6885a0f679be073b2ef",
+  "adverseRequest": {
+    "gameOrdinal": 39,
+    "ply": 28,
+    "actor": "candidate",
+    "remainingMillis": 7959,
+    "incrementMillis": 100,
+    "movesToGo": 30,
+    "baseAllocationMillis": 330,
+    "hardAllocationMillis": 660,
+    "elapsedNanos": 784232300,
+    "runnerChargedMillis": 785,
+    "reportedOverHardMillis": 124.23230000000001,
+    "runnerOverHardMillis": 125,
+    "remainingAfterIncrementMillis": 7274,
+    "reserveBeforeIncrementMillis": 7174,
+    "termination": "TIME_LIMIT",
+    "wholeNodes": 15738,
+    "rootFen": "r1bqk2r/4bppp/p3p3/1p1pP3/3B1P2/P1NQ4/1PP3PP/2KR3R b kq - 0 14",
+    "move": "b5b4"
+  },
+  "scope": "Outcome-blind extraction from preserved completed game only. No score or strength analysis. Both elapsed and actual runner clock charge corroborate a violation; no request-level JFR/owner CPU/scheduler capture was enabled in these exact uninstrumented confirmation actors. Cause unknown; no proof of same cause as historical SR-034 baseline events. This is additional disqualification independent of the owner interruption. No replay, exclusion, threshold relaxation or speculative implementation fix."
+}

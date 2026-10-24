@@ -1,0 +1,90 @@
+{
+  "id": "P3-BOUNDARY2-FRESH-CONFIRMATION-v1-OWNER-SUSPENSION",
+  "status": "owner_interrupted_unqualified_scores_unopened",
+  "observedUtc": "2026-10-24T06:23:35.486849+00:00",
+  "stopUtc": "2026-10-24T06:21:19.0402278Z",
+  "drainVerifiedUtc": "2026-10-24T06:21:42.2367971Z",
+  "ownedProcessesRemaining": 0,
+  "stoppedSequencePid": 6924,
+  "stoppedDescendantPids": [
+    28820,
+    20188,
+    20108,
+    10996,
+    20004
+  ],
+  "launcherExitedPid": 27724,
+  "stopMethod": "Verified experiment ancestry; terminated sequence owner to prevent later blocks. Windows kill-on-close Job terminated descendants; no unrelated process termination. Session92707 exited1. Initial broad observer match was PowerShell itself; executable-scoped follow-up found zero.",
+  "bindingSha256": "06aa683d38cb40fb22c2d674bfb45d1fd6cf833f388eb067ad9cdb0d9efb13d2",
+  "boundInputsReverified": 311,
+  "historicalEvidence": "All original bindings and raw hashes reverified without parsing historical outcomes. SR-034 unchanged and scores unopened.",
+  "qualifiedBlock1": {
+    "summarySha256": "311142e7d59a528261def18e7ff5a369b1efc96ec36d9cdc3a988831923eb4e7",
+    "games": 64,
+    "completePairs": 32,
+    "allQualificationReferencesReverified": true
+  },
+  "interruptedBlock2": {
+    "admission": "passed",
+    "launchReceiptSha256": "98e65c06a3ae1a68037dd699dc5c08404409cc5747aad8cb7e7b4331e93b8bca",
+    "startedGames": 46,
+    "completedGames": 45,
+    "completePairs": 22,
+    "unpairedCompletedGame": 45,
+    "interruptedGame": 46,
+    "unfinishedPair": 23,
+    "notStartedGames": 18,
+    "normalCompletedGames": 45,
+    "clockChecksCompletedGamesOnly": {
+      "baseline": {
+        "requests": 3044,
+        "maximumReportedOverHardMillis": 4.582400000000007,
+        "maximumRunnerChargeOverHardMillis": 8,
+        "minimumPreIncrementReserveMillis": 1017
+      },
+      "candidate": {
+        "requests": 3052,
+        "maximumReportedOverHardMillis": 124.23230000000001,
+        "maximumRunnerChargeOverHardMillis": 125,
+        "minimumPreIncrementReserveMillis": 50
+      }
+    },
+    "partialRequestChecks": 6096,
+    "missingCompletedNodeAnnotations": 0,
+    "clockGateAdverseCompletedRequests": 1,
+    "legalOpeningAndColorPairChecks": "passed on preserved completed records",
+    "failureMarkerLineCount": 0,
+    "qualification": "NOT QUALIFIED: interrupted; post-calibration, full resource/native CPU and complete-block receipt unavailable. Raw launch/run/process receipts retain running/attached states and are not rewritten. This separate receipt closes operational state.",
+    "unfinishedObservation": "Runner records game46 started with no finish; no game46 PGN record flushed. In-memory pending move/game state is unavailable, neither reconstructed nor replaced."
+  },
+  "total": {
+    "completedGames": 109,
+    "completePairs": 54,
+    "qualifiedGames": 64,
+    "qualifiedPairs": 32,
+    "startedGames": 110,
+    "interruptedGames": 1,
+    "unpairedCompletedGames": 1,
+    "blocksNotStarted": [
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "scores": "No W/D/L, pair score, Elo, score interval, component or interim inference computed. Final strength analyzer not invoked. Terminal-token presence only checked for completeness; result values not reported or aggregated.",
+  "restartability": "Frozen stopping rule closes this started interrupted attempt. Do not resume block2, replay/replace games, run later blocks or open partial strength. Artifacts remain reproducible inputs/evidence, not a restartable qualified192-pair confirmation. Any future research requires new explicit owner decision and prospective authorization.",
+  "scope": "Owner-requested operational preservation/count/legal/clock audit only, not a new experiment or strength look. Partial checks do not qualify a partial block. No timing/resource claim for interrupted game46 or missing final telemetry.",
+  "evidence": {
+    "raw\\boundary2-fresh-v1-b02\\baseline-uci.txt": "7561596707dba0ecd114e2419a6e6523adb3daf0d047106c9e02f4a5d49278b3",
+    "raw\\boundary2-fresh-v1-b02\\candidate-uci.txt": "fa5e9e20d316c127d34acd7c7720743eb38f83b8f72cd523cd471d6e286b253e",
+    "raw\\boundary2-fresh-v1-b02\\games.pgn": "b548ac8ad4e0ae9c117fdc6f915530917721a0776cc48895c7f0d81a68568233",
+    "raw\\boundary2-fresh-v1-b02\\process-cost.json": "4c5f371abdc7142edb1ec56183eeb53570fdfa76cffac49c5aad802c974c5e71",
+    "raw\\boundary2-fresh-v1-b02\\run.json": "46b4272a4deb25c81470c74cdb009b22b265a5421c8b505fdc43aef69e633ec4",
+    "raw\\boundary2-fresh-v1-b02\\runner.txt": "f7ba1ff2520a3be0b3e8501f00f5534e5f490c49c93eb1f7fe18efd5db5abaa2",
+    "raw\\owner-pause-v1\\after-stop.json": "e75ed7a7005378e4e27b3b99369c1fd5c665e42952fde68e3b3e719713ed5a9a",
+    "raw\\owner-pause-v1\\before-stop.json": "ca4e9a8f1df8b52aecd2913d27b4c818ca5b51b162ba744f336b088a43a5e5bc",
+    "raw\\owner-pause-v1\\drain-verification.json": "cec3985fb5f3feee022f236955d8b24855b4cdb785d1574429e28701fecc5fc3",
+    "raw\\owner-pause-v1\\preserve_state_v1.py": "f30186a96d18e32de9de41323ab0e8a31bb1487cad0e2479144ec634da72b44f"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "status": "running",
+  "block": 2,
+  "preDelivery": {
+    "path": "boundary2-fresh-v1-b01-post-delivery-summary.json",
+    "sha256": "98a1fa404e711f36b16085c7c5b790a3d3ac67fec65fb33b0ea7a9e0acbd2fde"
+  },
+  "bindingSha256": "06aa683d38cb40fb22c2d674bfb45d1fd6cf833f388eb067ad9cdb0d9efb13d2",
+  "admission": {
+    "path": "boundary2-fresh-v1-b02-admission-01.json",
+    "sha256": "94dabe2824d4df5dea2c39b9d4694a89e5c7d50650a8f4fe183849313c0de6c1"
+  },
+  "scores": "Unopened until all six blocks qualify",
+  "hostStart": {
+    "utc": "2026-10-24T05:59:07.080616+00:00",
+    "monotonic": 101609.9060193,
+    "ticks": [
+      10566770625000,
+      10991868281250,
+      1201275937500
+    ],
+    "availableBytes": 18486861824,
+    "memoryLoadPercent": 45
+  },
+  "attempt": 1
+}

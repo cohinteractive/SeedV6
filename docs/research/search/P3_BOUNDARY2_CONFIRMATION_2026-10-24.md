@@ -1,10 +1,264 @@
 # BOUNDARY2 confirmation and conditional production adoption
 
-Status: **ACTIVE — timing diagnosis before prospective confirmation**, 24 October 2026.
+Status: **PAUSED — owner-directed suspension; confirmation interrupted and clock-unqualified**, 24 October 2026.
 Subordinate focused record under `source/CHESS_SEARCH_CONTRACT.md` and
 `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`; not another governing master.
 
-## Authority and bounded objective
+## Owner-directed suspension and findings handoff — 24 October 2026
+
+**Current authority: STOP.** The owner suspended confirmation and conditional
+production adoption for review of existing evidence and cost. No replacement
+experiment, later block, lengthy diagnostic, production integration or activation
+is authorized. The historical launch/queue below is retained as history and does
+not authorize resumption. Phase 3 Contract P3-R033 and Frontier P3-F033 remain the
+masters. SR-034 remains closed and unchanged; its results stay unopened.
+
+### Safe stop, counts and evidence status
+
+At **2026-10-24T06:21:19.0402278Z**, the verified sequence owner PID6924 was
+terminated to prevent launch of later blocks. Its kill-on-close Windows Job
+terminated worker PIDs28820/20188, Fastchess20108 and engine JVMs10996/20004.
+Launcher27724 also exited; session92707 returned exit1. Independent executable-
+scoped observation at06:21:42.2367971Z found zero experiment processes. No unrelated
+process was terminated. The first broad observer predicate matched its own
+PowerShell command; that observation and its explicit correction are preserved.
+
+The design was **192 pairs /384 games**, not192 games. Preserved status:
+
+| Portion | Completed games | Complete pairs | Disposition |
+| --- | ---: | ---: | --- |
+| Block1 | 64 | 32 | Fully qualified; scores unopened |
+| Block2 | 45 | 22 | Interrupted and clock-unqualified; scores unopened |
+| Total | 109 | 54 | One additional completed game has no finished reverse-color mate |
+
+Block2 game46 (overall game110, second game of pair23) had started but did not
+finish. It has a runner start record and no flushed PGN game. Its in-memory
+observation is unavailable; it is not reconstructed, replayed or counted complete.
+Blocks3-6 never started. All45 preserved block2 games have normal terminal records,
+legal moves, exact frozen opening prefixes, and correct color pairing where both
+games finished. Counts were reconciled against the runner without aggregating
+results. No W/D/L, pair scores, Elo, confidence interval or interim strength look
+was computed. The prescribed final analyzer was not invoked.
+
+**New material timing failure found during this owner-requested operational
+handoff:** block2 game39, ply28, BOUNDARY2, remaining7959ms/increment100ms,
+base330ms/hard660ms, reported784.2323ms and runner charge785ms. Overruns are
+**124.2323ms reported /125ms charged**, both above the frozen25ms ceiling.
+Termination is TIME_LIMIT; pre-increment reserve7174ms. This completed-game
+failure precedes the owner kill and is independent grounds for disqualification.
+The full root/history/telemetry witness is preserved. It is not a flag loss or
+proof of an allocation arithmetic defect; causal attribution remains unknown.
+
+Block2's6096 retained requests pass the checked clock conservation, legal history
+and completed/whole-node accounting identities. Baseline maxima are4.5824ms
+reported/8ms charged; candidate maxima include the adverse event above. Minimum
+reserves are1017/50ms. Exactly one retained request breaches the clock gate.
+Runner failure-marker screening found no error/crash/illegal/timeout line, but
+this is not complete correctness certification. Admission passed (other host
+load.5880 average cores; memory endpoints passed), and block1's passing post-
+delivery calibration was the fresh block2 prerequisite. Block2 has no final
+native CPU/resource qualification or post-calibration; termination prevented
+those receipts. No resource-pass inference or unobserved-game timing claim.
+
+Block1's8821 requests passed both ceilings (max1.7845ms reported/7ms charged),
+legal/accounting/resource/identity checks and owned drain. Native CPU/reported
+elapsed ratios1.01171/1.01539 and post-calibration medians.99980/1.00132 passed.
+Only its64 games/32 pairs qualify operationally; they do not independently qualify
+the study or permit a partial strength conclusion.
+
+`owner-suspension-v1.json` binds completed counts, original launch/admission,
+process snapshots and partial raw evidence. `owner-pause-clock-tail-v1.json`
+binds the adverse witness. The original running/attached launch, run and CPU
+receipts are preserved verbatim; the separate suspension record supplies their
+terminal operational disposition. All311 frozen inputs, exact runtime membership,
+block1 qualification references and historical SR-034 evidence hashes were
+reverified. Raw evidence remains local under `raw/`, excluded from Git. A fresh
+checkout alone cannot reproduce this audit without the recorded local evidence.
+
+The frozen stopping rule closes a started interrupted/failed attempt. **Do not
+resume this study, finish block2, replace its game, run blocks3-6 or open partial
+scores.** Reproducible frozen inputs are preserved, but this is not a restartable
+qualified192-pair result. Any future experiment would require separate explicit
+owner authorization and prospective rules; none is proposed as an automatic next
+step. Historical SR-034 and this fresh confirmation's scores remain unopened and
+statistically inadmissible under their frozen protocols. Operational timing and
+integrity findings are legitimate; strength superiority or inferiority is not.
+
+### Timing investigation: findings, hypotheses and cost
+
+The completed diagnosis covered the two historical adverse histories,12 existing
+diagnostic roots, repeated persistent JVM requests at9799/2933/500/150ms clocks,
+and actual changing full-game histories. Instrumentation combined UCI reported
+wall time, independent send-to-bestmove timing, native owner-thread CPU/cycles,
+process CPU, JFR request/GC events, safepoint logs, monotonic/UTC comparison,
+Fastchess integer clock conservation, legal/node accounting and owned-process
+fences. Balanced instrumentation on/off runs and fixed-node signatures screened
+measurement perturbation. The game bridge's baseline median overhead was4.19%;
+it was therefore excluded from strength games. Detailed receipts below retain
+all unsuccessful setup and validation attempts.
+
+The17,227 measured diagnostic requests (17,003 clock-managed) did not reproduce
+a25ms reported overrun; their maximum was4.4495ms. **That statement is limited to
+the diagnostic captures. The later uninstrumented block2 now does reproduce a
+large deadline-accounting violation.** Failure to reproduce during diagnosis was
+never proof of impossibility; neither this event nor old baseline events establish
+that BOUNDARY2 caused the stall or share one historical mechanism.
+
+- Gross allocation/rounding errors and clock-conservation errors are unsupported
+  by the inspected formulas and measured identities. Hard/node/external limits
+  dominate cooperative soft completion in source and targeted tests. This weakens
+  a systematic arithmetic or stop-precedence defect; it does not prove every path.
+- Submission/owner scheduling, cooperative checkpoint spacing, unwind/drain,
+  publication and runner transport have distinct timing boundaries. The pilot
+  startup request's21ms actual over-hard versus3.645ms reported over-hard supported
+  checking both boundaries. The new event appears in both, so runner transport
+  alone cannot explain its engine-reported excess; no precise stall location is
+  established.
+- OS descheduling, GC/safepoints, JIT/persistent JVM state and lifecycle delay remain
+  plausible. Measured diagnostic pauses were small, and UTC/monotonic differences
+  were at most.0256ms in the persistent capture. This weakens clock-source drift
+  and large recorded pauses as explanations of those captures only. Neither old
+  adverse requests nor the uninstrumented new event has per-request scheduler/GC
+  evidence sufficient for causal identification. Aggregate host CPU cannot exclude
+  a brief stall; owner CPU deficit alone does not identify preemption.
+- Exact runtime/payload/classpath membership and matching fixed-node signatures
+  support actor identity and deterministic controls. Instrumentation perturbs
+  execution and the finite host-specific dependent sample supplies no rare-tail
+  probability bound or all-platform guarantee.
+
+No engine allocation, evaluator, TT, cancellation or publication implementation
+bug is established. Actual **harness/test defects** were found and transparently
+repaired: decimal-versus-hex native thread-ID parsing; a postcapture helper import;
+JAVA_TOOL_OPTIONS contaminating expected UCI stderr; missing explicit child stdout
+capture; an immediate descendant-drain assertion needing bounded observation;
+and a GUI replacement-factory fixture that failed to disable book. They are not
+proven explanations of historical or current game timing tails. Failed originals
+and separate repairs remain preserved. No runtime remediation was made.
+
+Further broad replay or another tournament has poor expected value for the
+present owner decision: substantial exposure did not localize the cause, and the
+new adverse event lacks causal instrumentation. A cause-finding project would
+need a separately justified targeted plan, not more of the same sample. Stop now;
+no speculative JVM/priority/engine change and no additional research requirement
+is imposed merely because the original CGLHW contemplated it.
+
+### Exact study and source identity
+
+Frozen protocol `P3-BOUNDARY2-FRESH-CONFIRMATION-v1`, source preparation HEAD
+`27fc0533dd3f546b5628db7697f4a09c112a7327`, freeze commit `6eaf435`; binding SHA256
+`06aa683d38cb40fb22c2d674bfb45d1fd6cf833f388eb067ad9cdb0d9efb13d2`.
+Six32-pair blocks; seed2026102447/partition1;192 unique held-out roots from8646
+eligible after30043 exclusions; eight-full-move histories and reversed colors.
+Block2 Fastchess seed2026102449. The study's311-file binding is the complete
+executable/source/input identity, not the current documentation commit.
+
+| Frozen actor artifact | SHA256 |
+| --- | --- |
+| Native accepted build74 core | `facac0db65c7f97a120083174ea4de20ef210daf3252a79a3fd5eb2cac99e6f7` |
+| Native accepted build74 UCI | `1ba9d9bcf44fcf385c6495e909fc3c24bb2dea4d1a10ed4f0d48b75319f67a19` |
+| Candidate build76 core (source614511ce9a75) | `54cb27641a4c4a7c0fcc61ec17da772011bee3a09dec0e691e0b038c5b357e9b` |
+| Candidate build76 UCI | `ce5a89a03724022c1acd106e9229eeb7bcef31e1d1dea92f4bccbd58278708d9` |
+| Matched research JAR | `3f769be1b3f0b41696c3f70b68cbf8b3021b77610c38ad16056c855f619bb6c3` |
+
+Both25-file runtime directories remain under SR-034's `raw/`. CP64 network SHA256
+`8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b`, payload
+`5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6`;
+S6CNU002/eight heads, BT4_Q_LOGIT400_V1, flags3407871, ADAPTIVE16, Hash64.
+Java21+35-2513 at `C:/java/jdk-21`, bound VM/modules/tools; one worker, one game,
+BelowNormal, Xms256m/Xmx512m, ActiveProcessorCount4;200k-node actor startup warmup.
+10+0.1, timemargin0, book/tablebaseOFF, no score adjudication, no JFR bridge.
+The unchanged BOUNDARY2 algorithm is described below; no alternate finalist,
+parameter retuning or clock-tolerance change occurred.
+
+### Adoption readiness and recommendation
+
+**Recommend available but non-default production configuration, only if the owner
+authorizes that separate implementation after this review.** This is an engineering
+availability recommendation, not a positive strength-adoption recommendation or a
+claim that the current candidate meets the frozen timing qualification. The new
+125ms tail materially strengthens the case against default activation on current
+evidence. No implementation or activation is performed in this suspension.
+
+1. **Available, default unchanged:** technically feasible and reversible through
+   shared BaselineEngine. Existing core clock-completion and UCI allocation seams
+   exist, but the policy class and launcher currently reside in research. A
+   production implementation must have no research dependency and must pair the
+   hard allocator with its completed-iteration policy under one explicit setting.
+   Offering an opt-in requires no claim of confirmed Elo and no further tournament
+   solely to establish that availability. Enabling it would carry explicitly
+   acknowledged unresolved timing/strength uncertainty.
+2. **Normal production default:** not authorized or supported by a qualified
+   independent BOUNDARY2 result. Choosing default adoption without one requires an
+   explicit informed owner revision/exception to the existing independent-strength
+   requirement, acknowledgment of both the new timing failure and unknown cause,
+   and post-evidence acceptance of bounded integration validation. This record
+   does not waive any requirement or deem the implementation accepted.
+3. **Independently confirmed improvement:** not established. Selected development
+   evidence is not independent confirmation. Both frozen confirmations are
+   unqualified and unopened. Neither optional availability nor an informed default
+   decision would establish an independently confirmed strength gain.
+
+Minimum work for the recommended optional path, under a later authorization:
+
+- Put the exact extension-off policy in the shared production composition, retain
+  the frozen research reference, add explicit factual/BOUNDARY2 configuration and
+  truthful identity reporting, and keep factual behavior the default. Match the
+  exact CP64 payload; preserve HCE/BREP2/unrelated payload behavior and all existing
+  selectivity, aspiration, evaluator and TT policies. Reset mutable policy history
+  per request/new game/owner replacement; never share it across workers/engines.
+- Verify policy equivalence and allocator rounding/saturation/reserve boundaries,
+  including0/50/51ms, increments/moves-to-go, ordinary/mate/no-move completions,
+  interrupted iterations and hard/node/external-stop precedence. Couple allocator
+  and soft policy so one cannot be enabled without the other.
+- Standard UCI/BotLi needs the shared setting wired through both service creation
+  and clock allocation, with option/identity and replacement/shutdown checks.
+  GUI Play and ordinary Arena currently submit depth/per-move limits, not remaining
+  game clocks. Verify shared routing and unchanged non-clock behavior; BOUNDARY2
+  cannot alter their current clock behavior merely by wrapping the engine.
+  Adding actual game-clock GUI/Arena controls would be a separate product decision.
+- Check explicit workers1-16 functionally and representative1/4/16 timing,
+  cancellation, repeated requests, reconfiguration and complete drain. Preserve
+  Max<=min(available processors,16), private mutable worker state and TT
+  identity/locking/generation/proof/history invariants. Existing CP64 worker tests
+  are useful prerequisites, not BOUNDARY2 multiworker qualification or Elo.
+
+The genuine risks are mispaired allocator/policy configuration, policy-state
+leakage between requests, evaluator scope mistakes, altered explicit-limit
+semantics, multiworker cancellation/drain latency and the **observed unexplained
+125ms deadline excess**. The algorithm makes no direct evaluator/TT change, but
+integration still must preserve their identities and ownership contracts. The50ms
+reserve and cooperative deadlines are not a guarantee against host/JVM pauses.
+A small bounded functional/integration verification is necessary before shipping
+an optional feature; another lengthy tournament is not. No claim of satisfying
+the25ms research gate or any strict latency guarantee follows from those tests.
+
+### Validation, repository state and owner actions
+
+Earlier work passed265 targeted/core/research/UCI/headless integration tests with
+zero failures/errors/skips after the test-only book fixture correction. No runtime
+source changed. Suspension validation consists of process exit/drain checks,
+outcome-blind completed-record accounting and clocks, frozen/historical hash and
+membership checks, and document/Git consistency checks. No new engines, games or
+lengthy tests were launched for the suspension. Full-suite, interactive GUI,
+external BotLi installation, BOUNDARY2 multiworker timing/strength and release QA
+are not claimed. Application build remains76; finalizer use remains prohibited.
+
+The suspension commit changes only this record, the two masters, compact pause/
+adverse/evidence records and the existing block2 admission/launch records.
+Earlier commits in this work unit contain diagnostic tools/evidence and the
+single integration-test fixture repair; they do not activate production BOUNDARY2.
+There is no root CODEXLOG_CURRENT.md, so no journal file is created. No push,
+installation, deployment or release is performed.
+
+**PROJECT_SOURCE_REFRESH_REQUIRED: YES.** Exact master headers are
+`Internal revision: **P3-R033**` and `Internal frontier revision: **P3-F033**`.
+Owner/GPT review and a new explicit scope decision block any resumed experiment
+or production integration/default change. Owner refresh/confirmation of both
+Project Source mirrors blocks planning dependent on those external copies.
+Neither action blocks completion of this safe suspension itself. Return control
+to the owner; no autonomous successor.
+
+## Historical launch authority and bounded objective
 
 The owner accepts SR-034's inconclusive/deferred technical closeout and confirms
 P3-R030/P3-F030 mirror synchronization. This separate launch supersedes historical
@@ -53,7 +307,7 @@ not necessarily causation; logging can perturb timing; passing a small sample do
 not certify all future requests. Neither actor's favorable timing excuses the other.
 No threshold relaxation or speculative engine patch is justified at bootstrap.
 
-## Dependency queue and exact restart point
+## Historical dependency queue — suspended, not an execution instruction
 
 1. Verify frozen executable/payload/tool bindings and local evidence availability
    without reading historical game outcomes. Preserve a compact verification receipt.
@@ -73,7 +327,7 @@ No threshold relaxation or speculative engine patch is justified at bootstrap.
    integration and hand back for required acceptance. Otherwise retain production
    factual clocks and close/defer with evidence and precise limits.
 
-Current restart: the new192-pair study is frozen; execute the six
+Pre-suspension restart instruction (superseded above): the new192-pair study is frozen; execute the six
 `run_fresh_block_v1.py` blocks in order, only while prior blocks
 qualify. The actual-game diagnostic, current265 tests, new56-request native
 calibration, mathematical self-tests and new complete-clock audit validation all

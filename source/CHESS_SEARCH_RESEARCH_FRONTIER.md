@@ -1,12 +1,48 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F032**
+Internal frontier revision: **P3-F033**
 
-Status: **ACTIVE: fresh192-pair BOUNDARY2 confirmation frozen after outcome-blind timing diagnosis and current validation. Historical timing tails remain unexplained; both actors must independently pass unchanged reported25ms and added runner-charge25ms gates. Closed SR-034 scores stay unopened. CP64/factual-clock production remains unchanged; promotion still requires post-evidence GPT/owner acceptance.**
+Status: **PAUSED: owner-directed suspension of BOUNDARY2 confirmation/adoption. All experiment processes stopped. Fresh study interrupted after109 completed games/54 pairs; block2 also contains a candidate124.2323ms reported/125ms runner overrun above the frozen25ms gate. Both confirmation studies remain unqualified with scores unopened. Production retains CP64/factual clocks; no integration, activation or further experiment is authorized.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 
 ## BOUNDARY2 confirmation and conditional adoption - 24 October 2026
+
+Current owner directive supersedes the execution authorization below: **STOP for
+GPT/owner review**. The sequence was terminated at2026-10-24T06:21:19Z and all
+experiment processes were verified absent. Block1 completed64 games/32 pairs and
+qualified; block2 completed45 games/22 pairs, with game46 interrupted. Later blocks
+never started. The owner-requested outcome-blind preservation audit found one
+completed block2 candidate request exceeding hard660ms by124.2323ms reported and
+125ms runner charge. This independently violates the frozen25ms gate. Earlier
+17,227 diagnostic requests did not reproduce that excess; its cause remains
+unknown, and non-reproduction did not establish immunity.
+
+Preserve every completed/partial observation, original receipt and frozen byte.
+The interrupted attempt is closed under its frozen stopping rule: no restart,
+replay, replacement, later block, partial strength look or sample extension. Both
+this study and historical SR-034 keep their scores unopened. No completed qualified
+confirmation, independently confirmed BOUNDARY2 gain or default acceptance exists.
+The [owner findings handoff](../docs/research/search/P3_BOUNDARY2_CONFIRMATION_2026-10-24.md#owner-directed-suspension-and-findings-handoff--24-october-2026)
+and compact suspension/adverse-witness receipts hold counts, identities, limits,
+risks and minimum potential integration work. They remain subordinate to canon.
+
+The engineering recommendation is a separately authorized **available but
+non-default** shared-BaselineEngine configuration, with bounded equivalence,
+consumer and worker/lifecycle validation; no tournament is imposed merely to offer
+that reversible option. This recommendation does not authorize implementation,
+claim timing qualification or waive independent-strength confirmation. Default
+adoption without qualified independent strength would require an explicit informed
+owner revision/exception to that requirement, acknowledgment of the observed timing
+failure/unknown cause, and explicit post-evidence acceptance. No such decision has
+been made. Production stays factual-clock CP64/flags3407871/ADAPTIVE16/Hash64.
+
+No further diagnostics, tournaments, integration or activation now. Owner review
+and a new explicit scope decision gate subsequent work. Both revised Project
+Source mirrors require refresh/confirmation before planning dependent on them;
+repository edits do not establish external synchronization.
+
+**Historical pre-suspension launch and progression (not current authorization):**
 
 The owner accepts SR-034 and explicitly launches this separate bounded objective
 under the [Contract](CHESS_SEARCH_CONTRACT.md#boundary2-confirmation-and-conditional-adoption---24-october-2026).
