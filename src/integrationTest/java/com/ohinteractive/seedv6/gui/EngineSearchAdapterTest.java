@@ -92,11 +92,21 @@ class EngineSearchAdapterTest {
 
     @Test
     void productionReplacementUsesOneTwoAndFourTotalWorkersIncludingTheOwner() throws Exception {
-        final EngineSearchAdapter adapter = onEdt(() -> new EngineSearchAdapter(1, SwingUtilities::invokeLater, workers -> {
-            var service = new SearchLifecycleService(workers);
-            service.setBookEnabled(false);
-            return service;
-        }));
+        final EngineSearchAdapter adapter = onEdt(() -> new EngineSearchAdapter(1, SwingUtilities::invokeLater,
+                new EngineSearchAdapter.LifecycleFactory() {
+                    @Override public SearchLifecycleService create(int workers) {
+                        var service = new SearchLifecycleService(workers);
+                        service.setBookEnabled(false);
+                        return service;
+                    }
+                    @Override public SearchLifecycleService create(int workers, PlayEvaluator binding) {
+                        // Replacement uses the evaluator-aware shared production factory.
+                        // Keep this Search-worker test out of the opening-book shortcut.
+                        var service = EngineSearchAdapter.LifecycleFactory.super.create(workers, binding);
+                        service.setBookEnabled(false);
+                        return service;
+                    }
+                }));
         try {
             for(int workers : List.of(1, 2, 4, 1)) {
                 onEdt(() -> adapter.replaceWorkerCount(workers));
@@ -116,6 +126,7 @@ class EngineSearchAdapterTest {
                 final ManagedSearchResult result = completed.get(10L, TimeUnit.SECONDS);
                 assertTrue(result.hasMove(), "workers=" + workers);
                 assertTrue(isGeneratedLegal(Board.startingPosition(), result.bestMove()), "workers=" + workers);
+                assertEquals(SearchTermination.COMPLETED, result.termination(), "Search completion required at workers=" + workers);
                 assertEquals(3, result.lastCompletedResult().depth());
                 // The fixed helper pool remains alive after publication: this observes
                 // the real production cohort without instrumenting search loops.

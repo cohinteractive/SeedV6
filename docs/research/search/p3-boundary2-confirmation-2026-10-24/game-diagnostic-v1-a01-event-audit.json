@@ -1,0 +1,70 @@
+{
+  "status": "passed",
+  "telemetryPassed": true,
+  "games": 64,
+  "clockConservationChecks": 8251,
+  "actors": {
+    "baseline": {
+      "requests": 4125,
+      "maximumOverrunMillis": 3.9706000000000046,
+      "over25Millis": 0,
+      "minimumReserveBeforeIncrementMillis": 1008,
+      "reportedSeconds": 884.2302434000001,
+      "ownerCpuSeconds": 875.921875,
+      "processCpuSeconds": 917.59375,
+      "maximumJvmPauseMillis": 4.4665
+    },
+    "candidate": {
+      "requests": 4126,
+      "maximumOverrunMillis": 0.6875,
+      "over25Millis": 0,
+      "minimumReserveBeforeIncrementMillis": 50,
+      "reportedSeconds": 929.9477005,
+      "ownerCpuSeconds": 922.0625,
+      "processCpuSeconds": 966.84375,
+      "maximumJvmPauseMillis": 3.2193
+    }
+  },
+  "adverseRequests": [
+    {
+      "actor": "baseline",
+      "gameOrdinal": 1,
+      "ply": 17,
+      "eventOrdinal": 1,
+      "beforeMillis": 10100,
+      "hardMillis": 401,
+      "reportedMillis": 404.6446,
+      "overrunMillis": 3.6446000000000254,
+      "runnerChargeMillis": 422,
+      "reserveBeforeIncrementMillis": 9678,
+      "ownerCpuMillis": 390.625,
+      "processCpuMillis": 1250.0,
+      "termination": "TIME_LIMIT",
+      "boundaryMillis": 413.0624,
+      "ownerCpuMinusReportedMillis": -14.0196,
+      "position": "position startpos moves e2e4 c7c6 d2d4 d7d5 e4d5 c6d5 f1d3 b8c6 c2c3 g8f6 g1f3 e7e6 c1g5 f8e7 b1d2 f6d7",
+      "command": "go wtime 10100 btime 10100 winc 100 binc 100",
+      "deadlineOverlappingPausesApprox": [],
+      "requestPausesApprox": [],
+      "requestOwnerWaitsApprox": []
+    }
+  ],
+  "jfrInputs": {
+    "baseline": "raw\\game-diagnostic-v1-a01\\events\\baseline-22848.jfr",
+    "candidate": "raw\\game-diagnostic-v1-a01\\events\\candidate-24300.jfr"
+  },
+  "scores": "Unopened; diagnostic only",
+  "receiptSha256": "9292d3ec5ad0ce0d54f6d6552122bd0548e05ea258700b60c423e7ca7cbd589b",
+  "analyzerSha256": "da7ab7dc66026d21753bd258aba878530f22b2dfd0bbae9c1a96bb1dc23ddb09",
+  "originalAnalyzerSha256": "d975779b0e2de62b081800a096fb25f437c8822090d6dbcc909925ffd64686f4",
+  "derivedEvidence": {
+    "raw\\game-diagnostic-v1-a01-event-audit-v2\\baseline.json": "94e75e3656122b98bf51b84b69693ec1e9d2e0150a4dbec1e4485ad3c0cbedb4",
+    "raw\\game-diagnostic-v1-a01-event-audit-v2\\candidate.json": "4dce7dfa330ff56e4449376998c9b9cd9b7a2a4adc49a06ac0315cadb6d82151"
+  },
+  "limits": [
+    "Approximate Publication/deadline bracketing; no direct first-checkpoint timestamp.",
+    "JFR UTC parsing is microsecond resolution and pause matching allows2ms tolerance.",
+    "Per-owner CPU has Windows granularity; a deficit alone is not an OS preemption diagnosis.",
+    "Diagnostic overhead/domain differs from uninstrumented production; no strength or historical-cause inference."
+  ]
+}

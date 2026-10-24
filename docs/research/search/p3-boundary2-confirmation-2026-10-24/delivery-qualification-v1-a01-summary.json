@@ -1,0 +1,65 @@
+{
+  "status": "passed",
+  "scriptSha256": "4cc14c800518be39e146ad431930388622cafb948c90af9152628cc33a30d7a0",
+  "method": "28 requests per exact actor:14 existing diagnostic roots x2 balanced rounds;400k nodes, native owner CPU, no JFR or wrapper;4x100k warmups plus unchanged launcher warmup.",
+  "execution": {
+    "exitCode": 0,
+    "wallSeconds": 36.13648830000602,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 8,
+    "totalOwnedCpuSeconds": 48.390625
+  },
+  "resources": {
+    "start": {
+      "utc": "2026-10-24T05:17:46.356997+00:00",
+      "monotonic": 99129.1824001,
+      "ticks": [
+        10306087343750,
+        10723407343750,
+        1172049531250
+      ],
+      "availableBytes": 18992107520,
+      "memoryLoadPercent": 44
+    },
+    "end": {
+      "utc": "2026-10-24T05:18:22.494896+00:00",
+      "monotonic": 99165.3203021,
+      "ticks": [
+        10309700000000,
+        10727145625000,
+        1172648906250
+      ],
+      "availableBytes": 19028844544,
+      "memoryLoadPercent": 44
+    },
+    "elapsedSeconds": 36.13790199998766,
+    "busyCpuSeconds": 72.5,
+    "ownedCpuSeconds": 48.390625,
+    "otherAverageLogicalCores": 0.6671492716984022,
+    "memoryEndpointsPass": true,
+    "passed": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used."
+  },
+  "actors": {
+    "baseline": {
+      "requests": 28,
+      "medianCpuDelivery": 0.9927812674216474,
+      "fifthPercentileCpuDelivery": 0.9578412808767461
+    },
+    "candidate": {
+      "requests": 28,
+      "medianCpuDelivery": 0.9985751281609977,
+      "fifthPercentileCpuDelivery": 0.9114661899820022
+    }
+  },
+  "medianSpread": 0.005793860739350287,
+  "criteriaPassed": true,
+  "evidence": {
+    "raw\\delivery-qualification-v1-a01\\baseline-threads.txt": "7219903427341c68c815b5db83c74d51476c69d168e5d387ee0c936b870bbf3a",
+    "raw\\delivery-qualification-v1-a01\\baseline-uci.txt": "f27edf69341e02ec0cdd385d02ab7d5cafedb4633ba658559cc4e8c127ea6c07",
+    "raw\\delivery-qualification-v1-a01\\candidate-threads.txt": "6331578f3087970867dbeec9c4a999f33d448af41a2b00054f413ff0c7338117",
+    "raw\\delivery-qualification-v1-a01\\candidate-uci.txt": "31ac5c3e2279d0ae9426f2a4927bbba324f40c4a9d6d85ecfe8869b4bc27bf5e",
+    "raw\\delivery-qualification-v1-a01\\requests.jsonl": "9989b3f3b6cc9bb527808e5ca702c9dcd3322f2caa4a089a3cfe6e59d5c03297",
+    "raw\\delivery-qualification-v1-a01\\worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

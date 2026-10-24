@@ -1,0 +1,13 @@
+{
+  "path": "raw\\validation-gui-diagnosis-v2-a01-xml\\TEST-com.ohinteractive.seedv6.gui.EngineSearchAdapterTest.xml",
+  "sha256": "738347a8b311c82bc7d50a03a86e896f372993c72aa6c6588d257d0ea6bcfc83",
+  "name": "com.ohinteractive.seedv6.gui.EngineSearchAdapterTest",
+  "tests": "1",
+  "skipped": "0",
+  "failures": "1",
+  "errors": "0",
+  "timestamp": "2026-10-24T05:13:11",
+  "hostname": "DESKTOP-TQLS4KP",
+  "time": "0.474",
+  "finding": "Test disabled book only on initial one-argument factory. Worker replacement uses evaluator-aware factory and returned BOOK at workers2. No Search depth result exists for book completion."
+}

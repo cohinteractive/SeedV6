@@ -73,12 +73,13 @@ No threshold relaxation or speculative engine patch is justified at bootstrap.
    integration and hand back for required acceptance. Otherwise retain production
    factual clocks and close/defer with evidence and precise limits.
 
-Current restart: execute `game-diagnostic-v1-a01 full` using
-`run_game_diagnostic_v1.py`, then join its events with `audit_game_events_v1.py`.
-The required `game-smoke-v1-a01` event audit passed. Do not repeat a started name.
-Check its summary, worker log, owned-process state and raw availability before
-resuming; a failed/incomplete capture remains evidence. Challenge the timing
-findings before any fresh strength protocol; no production mutation is admitted.
+Current restart: freeze the new192-pair study using `prepare_fresh_v1.py`, then
+execute the six `run_fresh_block_v1.py` blocks in order, only while prior blocks
+qualify. The actual-game diagnostic, current265 tests, new56-request native
+calibration, mathematical self-tests and new complete-clock audit validation all
+pass. No strength game has begun. Check binding/launch/summary state before any
+resume; never replay a started name. Preserve every failed endpoint. Production
+remains unchanged; the final analyzer is gated behind all six qualified blocks.
 Evidence/scripts/compact manifests: `p3-boundary2-confirmation-2026-10-24/`.
 New bulk evidence: its ignored `raw/` directory. Check availability on every resume.
 The actual game-path diagnostic follows the completed persistent capture below.
@@ -175,6 +176,103 @@ approximate (2ms matching tolerance), with no direct hard-checkpoint timestamp;
 native CPU granularity and incomplete OS scheduling observability remain limits.
 The old unqualified scores remain unopened; none of these diagnostics supplies
 independent promotion-strength evidence.
+
+Primary platform constraints checked during the game capture:
+[Windows scheduling priorities](https://learn.microsoft.com/en-us/windows/win32/procthread/scheduling-priorities)
+and [CPU analysis](https://learn.microsoft.com/en-us/windows-hardware/test/wpt/cpu-analysis)
+describe ready/waiting/running states, priority-based preemption and interrupt/DPC
+costs. [JDK21 G1](https://docs.oracle.com/en/java/javase/21/gctuning/garbage-first-g1-garbage-collector1.html)
+explicitly treats pause targets probabilistically rather than as real-time bounds.
+These establish plausible mechanisms, not their occurrence in either old adverse
+request. No JVM, process-priority, system setting or Search remediation follows
+from documentation alone. Broad host utilization cannot exclude short stalls;
+owner CPU deficit cannot, without scheduling events, identify a ready-thread delay.
+
+After the game capture and its event audit finish, `run_validation_v1.py` runs
+fresh selected core/research/UCI tests and headless integrated consumer tests,
+serially with four-processor JVM ergonomics and owned process cleanup. It includes
+SpendingPolicyTest, independent Search/TT/history checks, all-worker existing CP64
+functional coverage, clock/lifecycle tests and real UCI subprocess tests. It records
+fresh JUnit XML, exact command, native CPU and drain; it does not claim GUI visual
+QA, BOUNDARY2 multiworker timing qualification, or strength at workers2-16.
+
+### Completed game capture and challenged readiness decision
+
+All64 `game-diagnostic-v1-a01` games end normally;8,251 complete requests join
+exactly to JFR and runner clock conservation. The wrapper failed afterward on a
+missing historical helper import (`run_trajectory_v1`), before its clock audit.
+Original failed receipt/raw bytes are preserved. `complete_game_diagnostic_v1.py`
+separately revalidates bindings, directory membership and unchanged raw evidence,
+then uses the original arithmetic on this new capture. Its completion receipt
+passes; `audit_game_events_v2.py` changes only the receipt/derived-output paths
+from v1 and also passes. No games are replayed and no old score is opened.
+
+Baseline/BOUNDARY2 request counts4,125/4,126; maximum overruns3.9706/.6875ms;
+minimum pre-increment reserves1,008/50ms. Owner CPU875.922/922.063s versus
+reported884.230/929.948s; maximum JVM pauses4.467/3.219ms. Owned wall1,828.993s,
+CPU1,997.922s; all descendants drain. Other host load averages.662 logical cores;
+memory endpoints pass. One startup baseline request is charged422ms against
+hard401ms, versus reported404.645ms; no overlapping recorded pause establishes
+its cause. This illustrates the different accounting boundaries, not a defect.
+
+Combined short, persistent, bridge and game diagnostics contain17,227 measured
+requests (17,003 clock-managed), without reproducing a25ms reported overrun.
+This dependent, host-specific exposure supplies no universal rare-event bound.
+No calculation, hard-stop, lifecycle or publication correctness defect is established.
+Historical cause remains unknown: there is insufficient old per-request CPU/GC/
+scheduling evidence to identify it retrospectively. No speculative remediation.
+
+Decision: a new independently qualified attempt is scientifically admissible after
+current validation/calibration, while historical timing uncertainty remains explicit.
+It must retain the25ms reported-over-hard ceiling for both actors and add the same
+25ms gate on actual runner charge-over-hard, with nonnegative pre-increment reserve.
+Matched exact-actor native CPU calibration and per-block resource gates accompany
+uninstrumented strength games. Any started-block qualification failure closes the
+attempt with scores unopened; no replay, relaxation or causal forgiveness. This
+is a falsifiable prospective gate, not a claim that the old problem is fixed.
+
+The planned192 pairs arise from a worst bounded-pair variance.25 normal95% design
+target of approximately+/-50Elo precision near equality:189 pairs rounded to six
+complete32-pair blocks. Approximate80% power is around71Elo; neither is a minimum
+required gain or guaranteed power under correlated openings. One final look and
+Hoeffding sensitivity; no interim extension or transfer of old outcomes. Estimated
+serial execution is about3h15 with qualification, at low workstation occupancy.
+
+### Validation failures and repair
+
+`validation-v1-a01` retained265 fresh JUnit cases,17 failures, before strict owned
+drain bookkeeping failed. Sixteen UCI cases rejected stderr introduced by this
+harness's `JAVA_TOOL_OPTIONS`; it is removed rather than weakening protocol checks.
+The GUI replacement test had a separate stale fixture: only its initial factory
+disabled book. The evaluator-aware replacement factory legitimately returned BOOK
+at workers2, leaving no completed Search depth. An explicit completion assertion
+reproduced this in `validation-gui-diagnosis-v2-a01` (one failed test), whose XML,
+log and finding are preserved. The test now delegates to the real evaluator-aware
+factory, disables book on that path too, and requires COMPLETED before checking
+depth. No runtime behavior, oracle, Search configuration or default is changed.
+
+v1 also lacked explicit child stdout redirection. v2 captures output but the
+generic match owner's immediate post-exit accounting check still rejected a
+transient descendant count. v3 uses the same suspended-before-assignment owned
+Job and permits at most10s for the exact owned tree to reach zero after wrapper
+exit, recording every drain count. It does not change the frozen tournament tool.
+The full current rerun must pass before claiming integrated validation. All
+validation attempts remain separate; application build stays76 (test-only repair).
+
+`validation-v3-a01` passes265 tests with0 failures/errors/skips in157.751s,
+263.813 owned CPU-s. Its61 owned processes drain; the final descendant takes about
+4.2s after wrapper exit, within the explicit10s grace. The separate provenance
+receipt binds the tested fixture bytes observed after this rerun. Interactive GUI,
+external BotLi installation, release and BOUNDARY2 multiworker strength remain unrun.
+
+`delivery-qualification-v1-a01`:56 uninstrumented400k-node requests pass exact
+actor/root/repeat signatures, legality/PV/accounting and drainage. Median owner
+CPU delivery is.99278 baseline/.99858 candidate, fifth percentiles.95784/.91147,
+median spread.00579; resource/availability gates pass. Wall36.136s, owned CPU48.391s.
+`confirmation-v1-math-validation.json` checks the new192-pair arithmetic independently
+on synthetic inputs. Applying the new clock audit to the completed diagnostic
+reproduces8,251 checks and maximum actual runner-charge over hard21ms; both new
+25ms ceilings pass. These are admission evidence, not strength observations.
 
 ## Consumer scope discovered during diagnosis
 

@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "validationReceipt": "validation-v3-a01-summary.json",
+  "validationReceiptSha256": "090c054937877bcfcd8bd57c8e94a6774b3b9e2f57e9c26a9db4fafe8ba3e0a7",
+  "fixture": "src\\integrationTest\\java\\com\\ohinteractive\\seedv6\\gui\\EngineSearchAdapterTest.java",
+  "fixtureSha256": "d8b15d1eced61d68a49b7b45a14f4b4d0ab12c3527081ba3fc90af4b77bd5493",
+  "provenance": "Observed after the passing rerun; Codex authored the test fixture before launching v3 and made no further source changes during it. --rerun-tasks compiled all selected inputs. No production source change in this workstream.",
+  "applicationBuild": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 76
+  }
+}

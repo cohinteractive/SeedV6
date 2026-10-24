@@ -1,0 +1,91 @@
+{
+  "status": "passed",
+  "bindingSha256": "7adf229242caffd83c9e608d14d661f352889dd1fdcf082935390c6f2eafaf59",
+  "scores": "Unopened; timing diagnosis only",
+  "execution": {
+    "exitCode": 0,
+    "wallSeconds": 1828.993340999994,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 10,
+    "totalOwnedCpuSeconds": 1997.921875
+  },
+  "integrity": {
+    "terminations": {
+      "normal": 64
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 4125,
+        "nodes": 628620242,
+        "elapsedNanos": 884230243400
+      },
+      "candidate": {
+        "requests": 4126,
+        "nodes": 657574625,
+        "elapsedNanos": 929947700500
+      }
+    }
+  },
+  "resources": {
+    "start": {
+      "utc": "2026-10-24T04:35:15.971412+00:00",
+      "monotonic": 96578.7968161,
+      "ticks": [
+        10054298437500,
+        10456739375000,
+        1132671718750
+      ],
+      "availableBytes": 17287970816,
+      "memoryLoadPercent": 49
+    },
+    "end": {
+      "utc": "2026-10-24T05:05:44.974074+00:00",
+      "monotonic": 98407.7994791,
+      "ticks": [
+        10241695781250,
+        10650969375000,
+        1157922812500
+      ],
+      "availableBytes": 19287453696,
+      "memoryLoadPercent": 43
+    },
+    "elapsedSeconds": 1829.002662999992,
+    "busyCpuSeconds": 3208.375,
+    "ownedCpuSeconds": 1997.921875,
+    "otherAverageLogicalCores": 0.6618104770905986,
+    "memoryEndpointsPass": true,
+    "passed": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used."
+  },
+  "matchWallSeconds": 1822.951534199994,
+  "evidence": {
+    "raw\\game-diagnostic-v1-a01\\worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw\\game-diagnostic-v1-a01\\events\\baseline-22848-gc.log": "32a1180338dac56c6d05756bfad8b83f2d2e57a5764f81e3a76feafbe66ea999",
+    "raw\\game-diagnostic-v1-a01\\events\\baseline-22848.jfr": "bc29824eadba84936f9cab3d00fe19d3b2fb32260fd5870123ae04406da931df",
+    "raw\\game-diagnostic-v1-a01\\events\\baseline-9816-gc.log": "7cdfb7022371683e732b4c0b297a384fa79f2f5eb0dc7f6992363cee367be2e5",
+    "raw\\game-diagnostic-v1-a01\\events\\baseline-9816.jfr": "eea5e53e4b8575f6ce6dec0458346fc58245f716ebed6180ac71a3e6c4d974e5",
+    "raw\\game-diagnostic-v1-a01\\events\\candidate-24300-gc.log": "b0b96d7199f0aa542219d5cb002e57f0c59066a3a4903bca3869fc7d4918dcc2",
+    "raw\\game-diagnostic-v1-a01\\events\\candidate-24300.jfr": "2192c1dad02b7166527ae8aa28e972c667fd5adaadd9a97a6caf4d82231c9f08",
+    "raw\\game-diagnostic-v1-a01\\events\\candidate-24868-gc.log": "eb94d5d7bcb1e30ee67b0ff7369409840eb5a5ee2950f3c38e3b3de61a3f4827",
+    "raw\\game-diagnostic-v1-a01\\events\\candidate-24868.jfr": "8a74542a704d1715162dc645baed63b7fa4e560551c6946267aad301bf72fea2",
+    "raw\\game-diagnostic-v1-a01\\match\\baseline-uci.txt": "f218e49ed1fb741a035e4ed1848c6de6ffe156cd82b8f2c56c8eb53f1c51b4cd",
+    "raw\\game-diagnostic-v1-a01\\match\\candidate-uci.txt": "403b78f244a380fd967bc97ab61ed8901af82eb39702b2a532b9e0eb45c07130",
+    "raw\\game-diagnostic-v1-a01\\match\\config.json": "3ba5b222fcaf21364465e1f63750df5e01a408a3fd2def0a94bc9d965fd3eb0d",
+    "raw\\game-diagnostic-v1-a01\\match\\games.pgn": "201943a9f433828209452417b68305e2f823803d56eb521f7dec65e593f27795",
+    "raw\\game-diagnostic-v1-a01\\match\\process-cost.json": "7b33023d95b833b1a7e62482bdf87c4b8c20f45b608236223cd778b6bb56b02b",
+    "raw\\game-diagnostic-v1-a01\\match\\run.json": "3cccf8f1c23f8f0ea4df1eaae9deb2092b9128dd7098077d27888aab7179049b",
+    "raw\\game-diagnostic-v1-a01\\match\\runner.txt": "583a2324bc8a1e4be43daa5b1725b8626363c9e1b9be6c98f76ebc60f1ab4812"
+  },
+  "originalWrapperFailure": {
+    "path": "game-diagnostic-v1-a01-summary.json",
+    "sha256": "db2d3135eb717854d36d1f69ad31a5ee2aaa96426abd5aba65fead5f97d01adb",
+    "failure": "ModuleNotFoundError(\"No module named 'run_trajectory_v1'\")"
+  },
+  "clockReliability": {
+    "clockReliabilityPassed": true,
+    "maximumRequestOverHardMillis": 3.9706000000000046
+  },
+  "clockAuditSha256": "0ba75cdb937152c2fe14226c8939990b57ab0d465efdc295ddc5ff4395091a1b",
+  "completionAdapterSha256": "308c314e1e9b1e240fcbf5d9e5da1922ec8273cc99726459889159791beeab05",
+  "scope": "Separate post-capture validation of the unchanged complete experiment; original failed wrapper remains failed and preserved."
+}

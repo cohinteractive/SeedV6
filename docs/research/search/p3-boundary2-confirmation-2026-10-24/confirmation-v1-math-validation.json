@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "checks": "Closed-form variance/SE/z, permutation, zero-variance, Elo, conservative-bound ordering and prospective sample arithmetic",
+  "rawPrecisionPairs": 189,
+  "roundedPairs": 192,
+  "analyzerSha256": "252eea9165aaa8ae27c3981a95522789e92aafd523ecde468b8b8b8f79fca3d5"
+}

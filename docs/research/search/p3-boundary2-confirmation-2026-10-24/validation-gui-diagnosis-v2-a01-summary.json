@@ -1,0 +1,29 @@
+{
+  "command": [
+    "cmd.exe",
+    "/c",
+    "gradlew.bat",
+    "--gradle-user-home",
+    "build/migration/gradle-user-home",
+    "--no-daemon",
+    "--max-workers=1",
+    "--offline",
+    "--console=plain",
+    "--rerun-tasks",
+    "-PconventionalVectorTests",
+    "-Pheadless",
+    ":integrationTest",
+    "--tests",
+    "*gui.EngineSearchAdapterTest.productionReplacementUsesOneTwoAndFourTotalWorkersIncludingTheOwner"
+  ],
+  "scriptSha256": "403c0ebd435f6b213a24ae622d98f97e90576b3bc546a68dbcb34730f225327f",
+  "head": "c3fbe2f962f59cc27c57f731b010ff37e9161794",
+  "suites": [],
+  "scope": "Targeted Search correctness/clock/evaluator/TT/history/lifecycle and integrated UCI/GUI-adapter/Arena-worker routing; headless, not interactive GUI QA or all-worker strength.",
+  "status": "failed",
+  "failure": "RuntimeError('Worker exited with owned descendants still running')",
+  "evidence": {
+    "raw\\validation-gui-diagnosis-v2-a01\\command.json": "edf34d921dad2ebbc172cf6d2ed66aa5a155668edff3a42a026b2e3ba5b9d9d6",
+    "raw\\validation-gui-diagnosis-v2-a01\\gradle.log": "ce103f20ca891bb58f105187903637c6cc10d5a4549b04a644322bcb1de59563"
+  }
+}
