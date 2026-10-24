@@ -1,0 +1,65 @@
+{
+  "status": "passed",
+  "scriptSha256": "4cc14c800518be39e146ad431930388622cafb948c90af9152628cc33a30d7a0",
+  "method": "28 requests per exact actor:14 existing diagnostic roots x2 balanced rounds;400k nodes, native owner CPU, no JFR or wrapper;4x100k warmups plus unchanged launcher warmup.",
+  "execution": {
+    "exitCode": 0,
+    "wallSeconds": 37.67014709999785,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 8,
+    "totalOwnedCpuSeconds": 51.734375
+  },
+  "resources": {
+    "start": {
+      "utc": "2026-10-24T05:57:03.069355+00:00",
+      "monotonic": 101485.8947577,
+      "ticks": [
+        10553257500000,
+        10977967187500,
+        1200297031250
+      ],
+      "availableBytes": 18566586368,
+      "memoryLoadPercent": 45
+    },
+    "end": {
+      "utc": "2026-10-24T05:57:40.740821+00:00",
+      "monotonic": 101523.5662252,
+      "ticks": [
+        10557027500000,
+        10981860781250,
+        1200923593750
+      ],
+      "availableBytes": 18544422912,
+      "memoryLoadPercent": 45
+    },
+    "elapsedSeconds": 37.67146749999665,
+    "busyCpuSeconds": 75.015625,
+    "ownedCpuSeconds": 51.734375,
+    "otherAverageLogicalCores": 0.6180075145732528,
+    "memoryEndpointsPass": true,
+    "passed": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used."
+  },
+  "actors": {
+    "baseline": {
+      "requests": 28,
+      "medianCpuDelivery": 0.9998032701844084,
+      "fifthPercentileCpuDelivery": 0.9687727930709926
+    },
+    "candidate": {
+      "requests": 28,
+      "medianCpuDelivery": 1.0013217325262818,
+      "fifthPercentileCpuDelivery": 0.9745349386882927
+    }
+  },
+  "medianSpread": 0.0015184623418733612,
+  "criteriaPassed": true,
+  "evidence": {
+    "raw\\boundary2-fresh-v1-b01-post-delivery\\baseline-threads.txt": "a892bb2f844f0c98002dc958f783ac41207e54cf935d13021c2129e40ea9af1a",
+    "raw\\boundary2-fresh-v1-b01-post-delivery\\baseline-uci.txt": "d513516f11f29a5b6fbb64b46a960264812dc9c702ad2293a56923577f552883",
+    "raw\\boundary2-fresh-v1-b01-post-delivery\\candidate-threads.txt": "4e748eec80b25dd8557475651669e6e886fba5453fd5d741b04cad6aed7d71b2",
+    "raw\\boundary2-fresh-v1-b01-post-delivery\\candidate-uci.txt": "cec2dc53a361f458f83bbd07165b9ee64d54e5c68b813b474e50269825c384b6",
+    "raw\\boundary2-fresh-v1-b01-post-delivery\\requests.jsonl": "81d669ac47d3da4f6aa899bc2c63dc62d72a354eaa63db58f062730c69e6fb2a",
+    "raw\\boundary2-fresh-v1-b01-post-delivery\\worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

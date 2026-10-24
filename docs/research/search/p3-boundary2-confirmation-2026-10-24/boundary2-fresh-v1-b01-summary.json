@@ -1,0 +1,102 @@
+{
+  "status": "passed",
+  "block": 1,
+  "preDelivery": {
+    "path": "delivery-qualification-v1-a01-summary.json",
+    "sha256": "b51d5e17a9f72ea960058affafc5ec511bbd693e1c9e226a0ff6d7f1ea8e0929"
+  },
+  "bindingSha256": "06aa683d38cb40fb22c2d674bfb45d1fd6cf833f388eb067ad9cdb0d9efb13d2",
+  "admission": {
+    "path": "boundary2-fresh-v1-b01-admission-01.json",
+    "sha256": "19c422cd091d674b46e1a086d162bde73f17744fed9603c47a04e5000aeeca1b"
+  },
+  "scores": "Unopened until all six blocks qualify",
+  "execution": {
+    "exitCode": 0,
+    "wallSeconds": 1899.2991514000023,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 12,
+    "totalOwnedCpuSeconds": 1926.59375
+  },
+  "resourceQualification": {
+    "start": {
+      "utc": "2026-10-24T05:25:23.594373+00:00",
+      "monotonic": 99586.419777,
+      "ticks": [
+        10357323437500,
+        10775883125000,
+        1174442968750
+      ],
+      "availableBytes": 19111452672,
+      "memoryLoadPercent": 44
+    },
+    "end": {
+      "utc": "2026-10-24T05:57:02.902080+00:00",
+      "monotonic": 101485.7274892,
+      "ticks": [
+        10553239687500,
+        10977947968750,
+        1200295625000
+      ],
+      "availableBytes": 18567680000,
+      "memoryLoadPercent": 45
+    },
+    "elapsedSeconds": 1899.3077121999959,
+    "busyCpuSeconds": 3200.125,
+    "ownedCpuSeconds": 1926.59375,
+    "otherAverageLogicalCores": 0.6705239186992245,
+    "memoryEndpointsPass": true,
+    "passed": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used."
+  },
+  "postDelivery": {
+    "path": "boundary2-fresh-v1-b01-post-delivery-summary.json",
+    "sha256": "98a1fa404e711f36b16085c7c5b790a3d3ac67fec65fb33b0ea7a9e0acbd2fde"
+  },
+  "integrity": {
+    "terminations": {
+      "normal": 64
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 4408,
+        "nodes": 650066346,
+        "elapsedNanos": 916624455600
+      },
+      "candidate": {
+        "requests": 4413,
+        "nodes": 683348520,
+        "elapsedNanos": 970512554300
+      }
+    }
+  },
+  "actorDelivery": {
+    "nativeCpuToReportedElapsed": {
+      "baseline": 1.0117113604534729,
+      "candidate": 1.0153945156441342
+    },
+    "absoluteDifference": 0.0036831551906613136,
+    "passed": true
+  },
+  "clockAudit": {
+    "path": "boundary2-fresh-v1-b01-clock-audit.json",
+    "sha256": "610a61474ec4d0fab359fc14a68f009ce73e2344f13afbca9490f53e49402e46"
+  },
+  "clockReliability": {
+    "clockReliabilityPassed": true,
+    "completeClockPassed": true,
+    "maximumRequestOverHardMillis": 1.78449999999998,
+    "maximumRunnerChargeOverHardMillis": 7
+  },
+  "matchWallSeconds": 1895.0666628000035,
+  "evidence": {
+    "raw\\boundary2-fresh-v1-b01\\baseline-uci.txt": "9f6f66239bb5e0fb12ecb0aa93115482f7e96efb019745980ebfbf0fd3a04960",
+    "raw\\boundary2-fresh-v1-b01\\candidate-uci.txt": "55cfad7571dff405273f89347ccf327c0af48bcc491b742ecf75ad34c259f615",
+    "raw\\boundary2-fresh-v1-b01\\config.json": "daa2b35f4f959e940f5dd82398b61b80e16337814e7a8361985bc48e5b835c7d",
+    "raw\\boundary2-fresh-v1-b01\\games.pgn": "f4c022cc54082e88175d281af46bb68c9f94216868e5b58a4c2b26f98a4e7c05",
+    "raw\\boundary2-fresh-v1-b01\\process-cost.json": "f5f1cf64a25996623b1b6dcfa456eef836e9e288c00805baeb9eaaa974262979",
+    "raw\\boundary2-fresh-v1-b01\\run.json": "549399f802b6c17e3c2001d15e883ddf018f4bc37bdd4e4353eb874f39dcd2b0",
+    "raw\\boundary2-fresh-v1-b01\\runner.txt": "cff698eae036fb5c7634d3328ca38b10bfdea549dde24e5f6933460673441822",
+    "raw\\boundary2-fresh-v1-b01-worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

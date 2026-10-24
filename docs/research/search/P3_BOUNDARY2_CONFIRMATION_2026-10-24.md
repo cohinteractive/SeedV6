@@ -77,7 +77,7 @@ Current restart: the new192-pair study is frozen; execute the six
 `run_fresh_block_v1.py` blocks in order, only while prior blocks
 qualify. The actual-game diagnostic, current265 tests, new56-request native
 calibration, mathematical self-tests and new complete-clock audit validation all
-pass. No strength game has begun. Check binding/launch/summary state before any
+pass. Block1 qualifies; continue blocks2-6 only in order with the same gates. Check binding/launch/summary state before any
 resume; never replay a started name. Preserve every failed endpoint. Production
 remains unchanged; the final analyzer is gated behind all six qualified blocks.
 
@@ -89,6 +89,14 @@ after30,043 distinct prior/diagnostic positions are excluded. The six consecutiv
 32-pair input partitions are immutable. Historical selection receipts are exclusion
 inputs; historical unqualified game scores remain unopened. Masters P3-R032/F032
 record progression; their Project Source mirrors have not been refreshed by Codex.
+
+First fresh block:64 games complete normally with both clock gates passing
+(maximum reported overrun1.7845ms; maximum runner-charge overrun7ms). Native
+CPU/reported elapsed ratios1.01171/1.01539 and post-delivery owner medians
+.99980/1.00132 pass their fixed criteria; values slightly over1 reflect native
+accounting granularity and boundary differences. Integrity, resource and owned-
+drain checks pass. Scores remain unopened; this is qualification, not a strength
+look. Continue the remaining fixed blocks without reselection or interim inference.
 Evidence/scripts/compact manifests: `p3-boundary2-confirmation-2026-10-24/`.
 New bulk evidence: its ignored `raw/` directory. Check availability on every resume.
 The actual game-path diagnostic follows the completed persistent capture below.
