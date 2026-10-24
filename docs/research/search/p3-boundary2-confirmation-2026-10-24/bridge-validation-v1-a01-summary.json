@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "bindingSha256": "40698b0335e9e5ca371b124a0daec354555fc4d6f038bb44e77510b5aaa658fc",
+  "execution": {
+    "exitCode": 0,
+    "wallSeconds": 114.22000680000929,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 10,
+    "totalOwnedCpuSeconds": 167.546875
+  },
+  "resources": {
+    "start": {
+      "utc": "2026-10-24T04:19:05.816847+00:00",
+      "monotonic": 95608.6422481,
+      "ticks": [
+        9951418125000,
+        10349358125000,
+        1123635625000
+      ],
+      "availableBytes": 17031307264,
+      "memoryLoadPercent": 50
+    },
+    "end": {
+      "utc": "2026-10-24T04:21:00.045659+00:00",
+      "monotonic": 95722.8710628,
+      "ticks": [
+        9962102031250,
+        10360612343750,
+        1126088125000
+      ],
+      "availableBytes": 17100500992,
+      "memoryLoadPercent": 49
+    },
+    "elapsedSeconds": 114.22881469999265,
+    "busyCpuSeconds": 302.28125,
+    "ownedCpuSeconds": 167.546875,
+    "otherAverageLogicalCores": 1.17951302702267,
+    "memoryEndpointsPass": true,
+    "passed": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used."
+  },
+  "evidence": {
+    "raw\\bridge-validation-v1-a01\\01-baseline-off-uci.txt": "6af4b45c1ade1f2a297a025c3c6201af08a0caef2f457a1f8af9d607e1ae96d1",
+    "raw\\bridge-validation-v1-a01\\02-boundary2-on-gc.log": "96738a9c7c06af552d8495b86bc581693a484ff3b8b5c62d993d43868b8ccd03",
+    "raw\\bridge-validation-v1-a01\\02-boundary2-on-uci.txt": "76ff4fa56405387c2ac649cc6de817167103bf767c9e3e343ec1677a6b465a98",
+    "raw\\bridge-validation-v1-a01\\02-boundary2-on.jfr": "f148d5770a5d4916e4aec4be84b2a00636ce8ff35b9fb7a54e2da01b1d2c45bd",
+    "raw\\bridge-validation-v1-a01\\03-boundary2-off-uci.txt": "555f0ae804d1eb7d476274e87155ffe5d0b6c2b53ce1aa39934c540e183560bf",
+    "raw\\bridge-validation-v1-a01\\04-baseline-on-gc.log": "acf2a6991181a89a820e3b45454a754ef378b9d46fb2fdbe7201c8b1e0490ad4",
+    "raw\\bridge-validation-v1-a01\\04-baseline-on-uci.txt": "a90b2a0002b580b07016316dcd27d0552ebaec3d2006636a47837b1ef10a1026",
+    "raw\\bridge-validation-v1-a01\\04-baseline-on.jfr": "de7f306af0fb76a077df3dd8054008574a6386b9d1abefa632e9e67d2bf3af8f",
+    "raw\\bridge-validation-v1-a01\\05-baseline-on-gc.log": "47d3b73668b06cee9767533075025f10e588f1c4d81fa6b5f507ed07cbbf7214",
+    "raw\\bridge-validation-v1-a01\\05-baseline-on-uci.txt": "dcb18e5b2de1af8b090f8bfe14c87fb1297b680d0185640d8f76e5a5b5b8e488",
+    "raw\\bridge-validation-v1-a01\\05-baseline-on.jfr": "bc88784c7e5cad410b2ee5e4f2d0f7d2604822f9cdbe46b20ccdc7c2bcf4bbb9",
+    "raw\\bridge-validation-v1-a01\\06-boundary2-off-uci.txt": "cad30373cb189ea715e6347f6d95d7ec72f46d5ff9c351c51668bd259c1e4654",
+    "raw\\bridge-validation-v1-a01\\07-boundary2-on-gc.log": "f9b485255c4586ef262255ac1a2b70fcb45b50c9ee6f679a0cff6182754d0c5b",
+    "raw\\bridge-validation-v1-a01\\07-boundary2-on-uci.txt": "d9e7a7f177ab05915d6cfc527a36f1344a2992272645bd9f5b675ccbd7022448",
+    "raw\\bridge-validation-v1-a01\\07-boundary2-on.jfr": "62e465410b716eb14896d438786914a2c5ded92bf8178aae17d7f7986dc6b7fd",
+    "raw\\bridge-validation-v1-a01\\08-baseline-off-uci.txt": "35224a293a6c10cdee0a5bbab342bbd38ebc2b28fa5e9f27ff17c64f6d85d59e",
+    "raw\\bridge-validation-v1-a01\\execution.json": "27d22eb0af48a7ed6713072c9e3381f7b7d4f88e55ee2790f5843a72ea994a27",
+    "raw\\bridge-validation-v1-a01\\requests.jsonl": "98dcb7d5077473a7910c818d9331d189efd534b6d2097b05c097bedbb2b1874f",
+    "raw\\bridge-validation-v1-a01\\worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

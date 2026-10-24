@@ -1,0 +1,191 @@
+{
+  "status": "analyzed",
+  "captureStatus": "passed",
+  "requests": 784,
+  "deterministicControls": 112,
+  "clockRequests": 672,
+  "allControlSignaturesEqual": true,
+  "instrumentationCost": [
+    {
+      "profile": "baseline",
+      "pairedMedianInstrumentedElapsedRatio": 1.041869418015612,
+      "rootRatios": [
+        1.4181686437607657,
+        1.0190539806587118,
+        0.9822173689668443,
+        0.9912484832546061,
+        1.1039526049873134,
+        1.1239959359741283,
+        1.0595132565446188,
+        1.0933507357379846,
+        1.1405574655611106,
+        1.1103416416691827,
+        0.9646231459591106,
+        1.0037772475407758,
+        1.0209177478782239,
+        1.0242255794866053
+      ],
+      "descriptiveFivePercentScreenPassed": true
+    },
+    {
+      "profile": "boundary2",
+      "pairedMedianInstrumentedElapsedRatio": 0.998312889472037,
+      "rootRatios": [
+        1.054477998624721,
+        1.1520884479050302,
+        1.0245213379990266,
+        1.019543621505403,
+        0.9026661141197566,
+        1.0255973164238605,
+        1.0081479216762421,
+        0.9137590819166724,
+        0.8962231354033957,
+        0.9439746541548095,
+        0.9879026103822331,
+        1.0155135287622592,
+        0.9884778572678318,
+        0.9480778463893366
+      ],
+      "descriptiveFivePercentScreenPassed": true
+    }
+  ],
+  "timingGroups": [
+    {
+      "profile": "baseline",
+      "instrumented": false,
+      "requests": 168,
+      "maximumRequestOverrunMillis": 1.9417,
+      "maximumExternalOverrunMillis": 2.2308,
+      "over25MillisCount": 0,
+      "terminations": {
+        "TIME_LIMIT": 168
+      },
+      "wholeRequestNanos": 19827815400,
+      "nativeCpuSeconds": 23.25
+    },
+    {
+      "profile": "baseline",
+      "instrumented": true,
+      "requests": 168,
+      "maximumRequestOverrunMillis": 1.8375,
+      "maximumExternalOverrunMillis": 3.0738999999999947,
+      "over25MillisCount": 0,
+      "terminations": {
+        "TIME_LIMIT": 168
+      },
+      "wholeRequestNanos": 19833177100,
+      "nativeCpuSeconds": 23.4375
+    },
+    {
+      "profile": "boundary2",
+      "instrumented": false,
+      "requests": 168,
+      "maximumRequestOverrunMillis": 1.7594,
+      "maximumExternalOverrunMillis": 2.2385,
+      "over25MillisCount": 0,
+      "terminations": {
+        "TIME_ALLOCATION": 95,
+        "TIME_LIMIT": 73
+      },
+      "wholeRequestNanos": 21966795800,
+      "nativeCpuSeconds": 25.46875
+    },
+    {
+      "profile": "boundary2",
+      "instrumented": true,
+      "requests": 168,
+      "maximumRequestOverrunMillis": 1.7034,
+      "maximumExternalOverrunMillis": 2.0264,
+      "over25MillisCount": 0,
+      "terminations": {
+        "TIME_ALLOCATION": 94,
+        "TIME_LIMIT": 74
+      },
+      "wholeRequestNanos": 22393706500,
+      "nativeCpuSeconds": 27.953125
+    }
+  ],
+  "safepointSummary": {
+    "02-boundary2-on": {
+      "count": 27,
+      "maximumMillis": 4.9118,
+      "operations": {
+        "SetNotifyJvmtiEventsMode": 1,
+        "G1CollectForAllocation": 3,
+        "RedefineClasses": 1,
+        "JFRCheckpoint": 2,
+        "JFROldObject": 2,
+        "ClassLoaderStatsOperation": 2,
+        "PrintThreads": 2,
+        "FindDeadlocks": 2,
+        "G1TryInitiateConcMark": 2,
+        "G1PauseRemark": 1,
+        "G1PauseCleanup": 1,
+        "Cleanup": 8
+      }
+    },
+    "04-baseline-on": {
+      "count": 27,
+      "maximumMillis": 4.6962,
+      "operations": {
+        "SetNotifyJvmtiEventsMode": 1,
+        "G1CollectForAllocation": 3,
+        "RedefineClasses": 1,
+        "JFRCheckpoint": 2,
+        "JFROldObject": 2,
+        "ClassLoaderStatsOperation": 2,
+        "PrintThreads": 2,
+        "FindDeadlocks": 2,
+        "G1TryInitiateConcMark": 2,
+        "G1PauseRemark": 1,
+        "G1PauseCleanup": 1,
+        "Cleanup": 8
+      }
+    },
+    "05-baseline-on": {
+      "count": 25,
+      "maximumMillis": 4.8318,
+      "operations": {
+        "SetNotifyJvmtiEventsMode": 1,
+        "G1CollectForAllocation": 3,
+        "RedefineClasses": 1,
+        "JFRCheckpoint": 2,
+        "JFROldObject": 2,
+        "ClassLoaderStatsOperation": 2,
+        "PrintThreads": 2,
+        "FindDeadlocks": 2,
+        "G1TryInitiateConcMark": 2,
+        "G1PauseRemark": 1,
+        "G1PauseCleanup": 1,
+        "Cleanup": 6
+      }
+    },
+    "07-boundary2-on": {
+      "count": 28,
+      "maximumMillis": 4.5123,
+      "operations": {
+        "SetNotifyJvmtiEventsMode": 1,
+        "G1CollectForAllocation": 3,
+        "RedefineClasses": 1,
+        "JFRCheckpoint": 2,
+        "JFROldObject": 2,
+        "ClassLoaderStatsOperation": 2,
+        "PrintThreads": 2,
+        "FindDeadlocks": 2,
+        "G1TryInitiateConcMark": 2,
+        "G1PauseRemark": 1,
+        "G1PauseCleanup": 1,
+        "Cleanup": 9
+      }
+    }
+  },
+  "adverseOver5ms": [],
+  "receiptSha256": "d19315ae9d0938c51a3bcf571c7adf1cb6152aaf6513880d1813fb08d9492779",
+  "analyzerSha256": "261db706a679e301a29078fe04faf296023c225e8798a35184ccef247bdd4191",
+  "limits": [
+    "No games or strength inference; these requests cannot reconstruct historical JVM state.",
+    "Process CPU includes all JVM threads and has OS counter granularity; no owner-preemption claim.",
+    "Unified-log UTC is millisecond resolution; overlap is approximate with2ms tolerance, not causal proof.",
+    "Instrumentation5% screen is descriptive; neither small sample equivalence nor worst-case bound."
+  ]
+}

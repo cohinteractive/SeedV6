@@ -16,6 +16,8 @@ def analyze(name):
     rows=[json.loads(line) for line in (raw/'requests.jsonl').read_text().splitlines()]
     assert len(rows)==7168
     events={p:safepoints(raw/(p+'-gc.log')) for p in ('baseline','boundary2')}
+    wall_disagreement=max(abs((r['endEpochNanos']-r['startEpochNanos'])-r['externalElapsedNanos'])/1e6 for r in rows)
+    assert wall_disagreement<=2, 'UTC/monotonic disagreement invalidates pause correlation'
     summaries={}; adverse=[]
     for profile in ('baseline','boundary2'):
         selected=[r for r in rows if r['profile']==profile]; assert len(selected)==3584
@@ -47,6 +49,7 @@ def analyze(name):
             'interpretation':'JVM pause near deadline; inspect precise JFR and transport uncertainty before attributing'
                 if overlaps else 'No recorded JVM safepoint overlaps approximate deadline; scheduling/checkpoint/reporting remains unresolved'})
     result={'status':'analyzed','captureStatus':receipt['status'],'requests':len(rows),'actors':summaries,
+            'maximumUtcMonotonicIntervalDisagreementMillis':wall_disagreement,
             'adverseOver5ms':adverse,'receiptSha256':digest(receipt_path),'analyzerSha256':digest(__file__),
             'limits':['Outcome-free timing diagnostic, not strength evidence or reconstruction of historical failures.',
                       'OS native CPU granularity and process background work preclude exact per-request scheduling attribution.',

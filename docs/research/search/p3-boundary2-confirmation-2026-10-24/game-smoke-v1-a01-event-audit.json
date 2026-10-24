@@ -1,0 +1,69 @@
+{
+  "status": "passed",
+  "telemetryPassed": true,
+  "games": 2,
+  "clockConservationChecks": 240,
+  "actors": {
+    "baseline": {
+      "requests": 120,
+      "maximumOverrunMillis": 2.237700000000018,
+      "over25Millis": 0,
+      "minimumReserveBeforeIncrementMillis": 2030,
+      "reportedSeconds": 27.464369299999998,
+      "ownerCpuSeconds": 27.125,
+      "processCpuSeconds": 34.234375,
+      "maximumJvmPauseMillis": 2.6602
+    },
+    "candidate": {
+      "requests": 120,
+      "maximumOverrunMillis": 0.4741000000000213,
+      "over25Millis": 0,
+      "minimumReserveBeforeIncrementMillis": 892,
+      "reportedSeconds": 29.1359281,
+      "ownerCpuSeconds": 28.859375,
+      "processCpuSeconds": 37.125,
+      "maximumJvmPauseMillis": 3.1858
+    }
+  },
+  "adverseRequests": [
+    {
+      "actor": "baseline",
+      "gameOrdinal": 1,
+      "ply": 17,
+      "eventOrdinal": 1,
+      "beforeMillis": 10100,
+      "hardMillis": 401,
+      "reportedMillis": 403.2377,
+      "overrunMillis": 2.237700000000018,
+      "runnerChargeMillis": 417,
+      "reserveBeforeIncrementMillis": 9683,
+      "ownerCpuMillis": 390.625,
+      "processCpuMillis": 1296.875,
+      "termination": "TIME_LIMIT",
+      "boundaryMillis": 409.8596,
+      "ownerCpuMinusReportedMillis": -12.6127,
+      "position": "position startpos moves e2e4 c7c6 d2d4 d7d5 e4d5 c6d5 f1d3 b8c6 c2c3 g8f6 g1f3 e7e6 c1g5 f8e7 b1d2 f6d7",
+      "command": "go wtime 10100 btime 10100 winc 100 binc 100",
+      "deadlineOverlappingPausesApprox": [],
+      "requestPausesApprox": [],
+      "requestOwnerWaitsApprox": []
+    }
+  ],
+  "jfrInputs": {
+    "baseline": "raw\\game-smoke-v1-a01\\events\\baseline-18712.jfr",
+    "candidate": "raw\\game-smoke-v1-a01\\events\\candidate-19928.jfr"
+  },
+  "scores": "Unopened; diagnostic only",
+  "receiptSha256": "832fa455da0eb493e4b26f3d4647286b89d47d2afc4df1ce0b2ceb41901fa833",
+  "analyzerSha256": "d975779b0e2de62b081800a096fb25f437c8822090d6dbcc909925ffd64686f4",
+  "derivedEvidence": {
+    "raw\\game-smoke-v1-a01-event-audit-v1\\baseline.json": "1b5e4c356aa2b00638a16bbb49ca349c8a41ed5875084fa8a24e4bfc6d63eef5",
+    "raw\\game-smoke-v1-a01-event-audit-v1\\candidate.json": "b5b6b890a65f47a1657f8d8d1dc146bc5c2d588a0c3cc10b7a5d44120f7eaca9"
+  },
+  "limits": [
+    "Approximate Publication/deadline bracketing; no direct first-checkpoint timestamp.",
+    "JFR UTC parsing is microsecond resolution and pause matching allows2ms tolerance.",
+    "Per-owner CPU has Windows granularity; a deficit alone is not an OS preemption diagnosis.",
+    "Diagnostic overhead/domain differs from uninstrumented production; no strength or historical-cause inference."
+  ]
+}

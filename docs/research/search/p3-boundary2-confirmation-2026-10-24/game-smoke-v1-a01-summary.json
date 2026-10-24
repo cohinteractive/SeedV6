@@ -1,0 +1,79 @@
+{
+  "status": "passed",
+  "bindingSha256": "a446b55a82a26a847d7fb87a7f9736d837ed269743c66a18dc6372c3c3aa71b3",
+  "scores": "Unopened; timing diagnosis only",
+  "execution": {
+    "exitCode": 0,
+    "wallSeconds": 64.98599800000375,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 10,
+    "totalOwnedCpuSeconds": 105.0
+  },
+  "integrity": {
+    "terminations": {
+      "normal": 2
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 120,
+        "nodes": 17943545,
+        "elapsedNanos": 27464369300
+      },
+      "candidate": {
+        "requests": 120,
+        "nodes": 19341753,
+        "elapsedNanos": 29135928100
+      }
+    }
+  },
+  "resources": {
+    "start": {
+      "utc": "2026-10-24T04:28:04.090766+00:00",
+      "monotonic": 96146.9161711,
+      "ticks": [
+        10008581406250,
+        10408903750000,
+        1128682343750
+      ],
+      "availableBytes": 17181450240,
+      "memoryLoadPercent": 49
+    },
+    "end": {
+      "utc": "2026-10-24T04:29:09.085672+00:00",
+      "monotonic": 96211.9110758,
+      "ticks": [
+        10014550625000,
+        10415283593750,
+        1130102187500
+      ],
+      "availableBytes": 17216970752,
+      "memoryLoadPercent": 49
+    },
+    "elapsedSeconds": 64.99490469999728,
+    "busyCpuSeconds": 183.046875,
+    "ownedCpuSeconds": 105.0,
+    "otherAverageLogicalCores": 1.200815284832678,
+    "memoryEndpointsPass": true,
+    "passed": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used."
+  },
+  "matchWallSeconds": 60.3186149999965,
+  "evidence": {
+    "raw\\game-smoke-v1-a01\\worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw\\game-smoke-v1-a01\\events\\baseline-18712-gc.log": "5f731fde729973667b6836450d6ca469d8db44994965906059a2c95497d99961",
+    "raw\\game-smoke-v1-a01\\events\\baseline-18712.jfr": "ed5525426e2282aea77d1f7e48ce16e6a736cdd5bddce1e4ab3399305780c343",
+    "raw\\game-smoke-v1-a01\\events\\baseline-9544-gc.log": "53ee71ebb54538ed30aa63f5e9c484d034a81c5c20a143d09cbf60cce944aa2f",
+    "raw\\game-smoke-v1-a01\\events\\baseline-9544.jfr": "b29c049baa9ac1194445be3783e52fc2d8f0d35a666817663321249430e55944",
+    "raw\\game-smoke-v1-a01\\events\\candidate-19928-gc.log": "6a11c218865a3e3c2ec08701f894dbf6ee610cb0cdca4b860eda3cdcf5706b77",
+    "raw\\game-smoke-v1-a01\\events\\candidate-19928.jfr": "ac5b4294f6857b89bd587ac5ee17a63fbd3a51caab1a52bea53bc2a628bb6ee3",
+    "raw\\game-smoke-v1-a01\\events\\candidate-25612-gc.log": "96ea05bb30ca071b81edeaece3b1193b9b19685c2c3e9e5665189218e6d4d7e2",
+    "raw\\game-smoke-v1-a01\\events\\candidate-25612.jfr": "314968a7c3b6e0c44aed3324850fe5a506b9f23a8c1933e83ea63c06f96d84f2",
+    "raw\\game-smoke-v1-a01\\match\\baseline-uci.txt": "09231cc0eec8f32e8c67ddc11fbd60f3e3fedde364ddad714fbd3aaccebc2dcc",
+    "raw\\game-smoke-v1-a01\\match\\candidate-uci.txt": "90dae672b72c305c3c9b86b880c4a04441ecea7b6c130f1bfa681251eac3a23c",
+    "raw\\game-smoke-v1-a01\\match\\config.json": "ba435c5ddf16f99f65343e3e53d2393fc50c28284393ae73eb7619a1ea79ad5e",
+    "raw\\game-smoke-v1-a01\\match\\games.pgn": "dcf319d5d837a558d16c6c690f79a241315b0835ce21b60a12cd870211322245",
+    "raw\\game-smoke-v1-a01\\match\\process-cost.json": "24a7a2268d6bebc461df1a342e63fc64574b56bf31310b85235d795696d6c36b",
+    "raw\\game-smoke-v1-a01\\match\\run.json": "a2867f7cc8e0f773848b59775e092fb644b16bc49fcc6bfdc79baa17703183c6",
+    "raw\\game-smoke-v1-a01\\match\\runner.txt": "a67fadbd26838bf8eea3024e564be355cec99c7c9d1b80ff7ab263efc1ee064b"
+  }
+}

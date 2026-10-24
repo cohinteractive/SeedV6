@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "requestEvents": 392,
+  "runs": {
+    "02-boundary2-on": {
+      "events": 98,
+      "allClientFieldsMatch": true,
+      "maximumBoundaryMinusReportedMillis": 8.59,
+      "eventJsonSha256": "af1127673bec21ed56c65e0e90bb1cf9fa7f06c9f9e4a814d74b8effec6d2637"
+    },
+    "04-baseline-on": {
+      "events": 98,
+      "allClientFieldsMatch": true,
+      "maximumBoundaryMinusReportedMillis": 4.8584,
+      "eventJsonSha256": "1a9643b8644d4e545c83b65f0a370115d6568a6a00b0cf55af44e1b4fce43c65"
+    },
+    "05-baseline-on": {
+      "events": 98,
+      "allClientFieldsMatch": true,
+      "maximumBoundaryMinusReportedMillis": 5.1325,
+      "eventJsonSha256": "0a808581e700069808784df42e0e9c92a824c96ccc5eddef366d8c247f59322e"
+    },
+    "07-boundary2-on": {
+      "events": 98,
+      "allClientFieldsMatch": true,
+      "maximumBoundaryMinusReportedMillis": 6.0401,
+      "eventJsonSha256": "82cd67490ece8c34349ed49ec1459a6fca53c51bb7b1259b7adf4924c3542570"
+    }
+  },
+  "failures": [],
+  "analyzerSha256": "ea3a190c2109b76914bfdf7cb803accc3b9871965a797516b34ec3ebb72369d5",
+  "diagnosticAnalysisSha256": "f685584efc0b27238d9e9a5af5c3c5f65d0a40f4c43e8907d31b073e6a4cfa70",
+  "derivedEvidence": {
+    "raw\\bridge-validation-v1-a01-events-v1\\02-boundary2-on.json": "af1127673bec21ed56c65e0e90bb1cf9fa7f06c9f9e4a814d74b8effec6d2637",
+    "raw\\bridge-validation-v1-a01-events-v1\\04-baseline-on.json": "1a9643b8644d4e545c83b65f0a370115d6568a6a00b0cf55af44e1b4fce43c65",
+    "raw\\bridge-validation-v1-a01-events-v1\\05-baseline-on.json": "0a808581e700069808784df42e0e9c92a824c96ccc5eddef366d8c247f59322e",
+    "raw\\bridge-validation-v1-a01-events-v1\\07-boundary2-on.json": "82cd67490ece8c34349ed49ec1459a6fca53c51bb7b1259b7adf4924c3542570"
+  }
+}

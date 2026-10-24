@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "bindingSha256": "c510c830e15e9f9b47a46ada70e245aaf25d9c8abbdd046caec177194b3419b2",
+  "execution": {
+    "exitCode": 0,
+    "wallSeconds": 1337.2440175999945,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 8,
+    "totalOwnedCpuSeconds": 1464.234375
+  },
+  "resources": {
+    "start": {
+      "utc": "2026-10-24T03:52:15.447897+00:00",
+      "monotonic": 93998.2733029,
+      "ticks": [
+        9792916718750,
+        10181885156250,
+        1097864062500
+      ],
+      "availableBytes": 17311703040,
+      "memoryLoadPercent": 49
+    },
+    "end": {
+      "utc": "2026-10-24T04:14:32.693357+00:00",
+      "monotonic": 95335.5187616,
+      "ticks": [
+        9922123437500,
+        10318759375000,
+        1121459843750
+      ],
+      "availableBytes": 17308848128,
+      "memoryLoadPercent": 49
+    },
+    "elapsedSeconds": 1337.2454587000102,
+    "busyCpuSeconds": 3126.328125,
+    "ownedCpuSeconds": 1464.234375,
+    "otherAverageLogicalCores": 1.2429234582077309,
+    "memoryEndpointsPass": true,
+    "passed": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used."
+  },
+  "evidence": {
+    "raw\\persistent-v1-a02\\baseline-gc.log": "d8652f468e77bdb2257ea283d8638dbaaa2ccb32f0d82a13814e79a868c6c061",
+    "raw\\persistent-v1-a02\\baseline-threads.txt": "7eb95fcb22072421d0cc4b0457415feb37c4f36609715814b0797917d924db27",
+    "raw\\persistent-v1-a02\\baseline-uci.txt": "cc15166a7221a7c89580fae5ca0fbdeb83975389f3753a8575a126194351f13f",
+    "raw\\persistent-v1-a02\\baseline.jfr": "f6dda89a036c74137b29ec4174b03c8265c8a59b21787d14d5f8bf74adfa5d8c",
+    "raw\\persistent-v1-a02\\boundary2-gc.log": "3955c0830fd394644c73def9ffacd7ace8a3697000a5677f50cdef20b6601cae",
+    "raw\\persistent-v1-a02\\boundary2-threads.txt": "427214e01da4ff6369955aa958a34b98fee19e5f38c8c27b161b57fb8f60636f",
+    "raw\\persistent-v1-a02\\boundary2-uci.txt": "36e2c84fe51b33441dfdb9719a85599665a127b016d3fd66b431d7bc28cf2a57",
+    "raw\\persistent-v1-a02\\boundary2.jfr": "34ba8897d4ee6a4c0d128d534baa40c92e1f39997bb72e0760fa2131d836acbc",
+    "raw\\persistent-v1-a02\\execution.json": "44aec0abb0ac99ea5b95c911378ba527406409204194c929f55167341791ab2b",
+    "raw\\persistent-v1-a02\\requests.jsonl": "d8d6b2599cd7e5238f3bc1eb6c0992a5c3d6f3ddf04c7fef1cf9f275429fe1d7",
+    "raw\\persistent-v1-a02\\worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

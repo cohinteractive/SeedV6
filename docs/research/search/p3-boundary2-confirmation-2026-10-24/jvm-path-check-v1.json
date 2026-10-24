@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "-XX:StartFlightRecording=settings=default,filename=C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-boundary2-confirmation-2026-10-24\\raw\\jvm-path-check-v1\\probe-%p.jfr,dumponexit=true",
+    "-Xlog:gc,safepoint=info:file=\"C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p3-boundary2-confirmation-2026-10-24\\raw\\jvm-path-check-v1\\probe-%p.log\":utctime,level,tags:filecount=0",
+    "-version"
+  ],
+  "exitCode": 0,
+  "files": {
+    "output.txt": "7205da3a5a141b3d32e71d5ef6bd92adbbad9ba015c4956cfd5f9464b41fcbb0",
+    "probe-32180.jfr": "fc2d497df5ec860311c24d6efb61c9c0f54ee8f655ff40de2b211daab2d34fa2",
+    "probe-32180.log": "d2e0b9861d32e25c3c864d56cab9f36780430f587ce7408c021e892031e36061"
+  }
+}

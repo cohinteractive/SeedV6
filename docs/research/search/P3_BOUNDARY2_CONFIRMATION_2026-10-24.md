@@ -38,8 +38,11 @@ its exact build74 core and UCI JARs; source labels/build numbers alone are insuf
 Static inspection finds monotonic cooperative checks at traversal, iteration and
 allocation boundaries; hard limits dominate soft completion. UCI Publication starts
 before lifecycle submission; its reported elapsed includes owner scheduling,
-execution/unwind/drain and callback/report preparation. Runner charges additionally
-include command/pipe transport. The reported elapsed is not solely traversal time.
+execution/unwind/drain and callback/report preparation. Fastchess starts its timer
+after sending `go` and setting up its read, ending on `bestmove` receipt; response
+transport is included but the preceding command send/setup is not. The diagnostic
+send-to-bestmove interval starts earlier and is not an exact Fastchess charge.
+The reported UCI elapsed is not solely traversal time.
 TimeManager's 50ms reserve, 10ms overhead, default30 moves and increment rounding
 remain unchanged. These are source findings, not a diagnosis of historical stalls.
 
@@ -70,13 +73,15 @@ No threshold relaxation or speculative engine patch is justified at bootstrap.
    integration and hand back for required acceptance. Otherwise retain production
    factual clocks and close/defer with evidence and precise limits.
 
-Current restart: execute/analyze `persistent-v1-a02` using `run_persistent_v2.py` under the frozen persistent
-diagnostic protocol. Do not repeat a started name. Check its summary, worker log,
-owned-process state and raw availability before resuming; a failed/incomplete
-capture remains evidence. No fresh strength game or production mutation is admitted.
+Current restart: execute `game-diagnostic-v1-a01 full` using
+`run_game_diagnostic_v1.py`, then join its events with `audit_game_events_v1.py`.
+The required `game-smoke-v1-a01` event audit passed. Do not repeat a started name.
+Check its summary, worker log, owned-process state and raw availability before
+resuming; a failed/incomplete capture remains evidence. Challenge the timing
+findings before any fresh strength protocol; no production mutation is admitted.
 Evidence/scripts/compact manifests: `p3-boundary2-confirmation-2026-10-24/`.
 New bulk evidence: its ignored `raw/` directory. Check availability on every resume.
-The persistent diagnostic is selected for execution after the first capture below.
+The actual game-path diagnostic follows the completed persistent capture below.
 
 ## Validation and limitations
 
@@ -129,10 +134,47 @@ Ten baseline100k-node warmups completed; the setup failure drained all descendan
 `run_persistent_v2.py` accepts decimal or hexadecimal IDs and binds v1 as well;
 only parsing/provenance changes, not the frozen sample, clocks or runtime.
 
-The repaired `persistent-v1-a02` passed its30s resource admission and started
-measured requests after both actual identities,20 deterministic warmups and native
-worker handles were verified. Its completion receipt remains required; a running
-capture is not qualification. No builds/tests/games overlap it.
+The repaired `persistent-v1-a02` completed all7,168 measured requests after both
+actual identities,20 deterministic warmups and native worker handles were verified.
+All legality/PV/accounting/fence, resource and process-drain checks pass. Wall
+1,337.244s, owned CPU1,464.234s. Maximum overruns: baseline4.4495ms,
+BOUNDARY2 3.2466ms. Baseline owner CPU625.672s versus reported631.388s;
+candidate679.563s versus685.362s. Maximum recorded safepoints5.602/4.868ms;
+no request exceeds5ms. UTC/monotonic interval disagreement is at most.0256ms.
+This negative reproduction does not establish the historical cause or cover
+changing full-game histories and every persistent JVM condition.
+
+## Actual game-path timing diagnosis
+
+`Boundary2TimingMain.java` is an external diagnostic launcher delegating to the
+unchanged frozen UCI entry. It records JFR request events with original reported
+elapsed/nodes/termination, input position/clocks, delivered move, complete boundary
+time and owner/process CPU. It forwards original output before committing events.
+It is not application code or a production dependency. No allocation constant,
+reserve, algorithm or baseline identity is changed.
+
+`bridge-validation-v1-a01`:784 requests pass,112 deterministic signatures match,
+672 clock requests pass, and392 custom events match independent client records
+exactly. Maximum overrun1.942ms. Median instrument-on/off ratios1.04187 baseline
+and.99831 candidate pass the prospective descriptive5% screen. This asymmetric
+cost and the screen's limited precision preclude using the pilot for strength.
+All process/resource checks pass. JDK21 absolute Windows log quoting and `%p`
+filename expansion are separately verified in `jvm-path-check-v1.json`.
+
+`game-diagnostic-v1.json` freezes64 actual serial Fastchess games on the existing
+32 development openings, matched JFR/GC capture, W1/Hash64/10+0.1/BelowNormal,
+exact actor/runtime membership and strengthened JVM byte binding. No scores are
+opened or used. The first-opening two-game smoke is separate from the full sample.
+`game-smoke-v1-a01` passes240 request/event/clock-conservation joins, with maximum
+overrun2.238ms baseline/.474ms candidate and minimum pre-increment reserves
+2,030/892ms. All two games terminate normally and all descendants drain. Full
+diagnosis remains necessary: passing a smoke is not rare-tail qualification.
+
+Every25ms exceedance remains an adverse witness. JFR pause/deadline overlap is
+approximate (2ms matching tolerance), with no direct hard-checkpoint timestamp;
+native CPU granularity and incomplete OS scheduling observability remain limits.
+The old unqualified scores remain unopened; none of these diagnostics supplies
+independent promotion-strength evidence.
 
 ## Consumer scope discovered during diagnosis
 
@@ -148,3 +190,22 @@ semantics. Making BOUNDARY2 available through the shared owner is distinct from
 introducing new whole-game-clock UI/Arena controls, which this investigation has
 not implemented or presumed necessary. Report the actual activation domain;
 do not claim changed GUI/Arena clock behavior from an inert non-clock wrapper.
+
+Prospective application qualification, only if strength/timing gates justify it:
+
+| Domain | Required evidence before a production-scope claim |
+| --- | --- |
+| Exact configuration | Frozen policy equivalence; CP64 identity/flags/aspiration/Hash; explicit factual control; HCE/BREP2/unrelated payload isolation. |
+| UCI clocks | Remaining/increment/moves-to-go, clipped reserve, 0/50/51ms and late clocks, truthful completed iterations, hard/node/external-stop precedence. |
+| Shared consumers | Real factory routing for ordinary UCI, GUI Play and Arena; preserve non-clock semantics; no production-to-research dependency. |
+| Workers1-16 | Every explicit count functional, representative timing/cancellation/repeated-request/shutdown/drain; Max processor/16 bound. Functional checks are not multiworker Elo. |
+| Correctness | Independent references, legal/PV/history/repetition/mates, nominal/selective proof safeguards, TT identity/locking/generation and private mutable state. |
+| Acceptance | Evidence reconciliation and explicit GPT/owner acceptance before default activation; local integration distinct from external installation/release. |
+
+Additional runtime-directory inventory during persistent capture:25 files in each
+frozen production/candidate runtime, exactly matching the original binding's file
+set, with no missing or unbound files. Existing hash verification alone would not
+detect added classpath files; future freeze/revalidation must check both contents
+and membership. The present captures use the verified exact sets. JDK21 reports
+21+35-2513; strengthen the new confirmation's JVM identity with actual VM/modules/
+configuration hashes, not solely the historical java.exe digest.
