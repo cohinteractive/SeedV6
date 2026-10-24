@@ -113,9 +113,14 @@ is uncertain; no component superiority or production adoption is inferred.
 `confirmation-selection-v1.json` and `confirmation-v1.json` freeze that decision
 and a fresh128-pair W1/10+0.1 study in four32-pair blocks, one final score look,
 alpha .05 paired-normal primary plus bounded-pair sensitivity. Statistical and
-closed-fixture audit validation pass. Next run `prepare_confirmation_v1.py` once
-to freeze all fresh exclusions/openings and executable bindings, then run blocks1-4
-serially using `run_confirmation_block_v1.py finalist <block>`. No interim score
+closed-fixture audit validation pass. Input preparation completed and all128 fresh
+pairs, four splits and exact runtime bindings are frozen in commit51d24ed. Block1
+completed with all integrity/resource/clock gates passing and scores unopened;
+its post-delivery check ended `2026-10-24T00:21:49Z`. The block2 owned wrapper
+is now active. Continue blocks3/4 only after each previous block passes, serially
+with `run_confirmation_block_v1.py finalist <block>`. Inspect the highest existing
+launch/completion receipt before any resumption; never duplicate a running block. After all four
+qualify, run `analyze_confirmation_v1.py finalist` exactly once. No interim score
 inspection, retuning, replay, replacement block or second finalist is allowed.
 Any correctness/resource/clock failure stops the affected confirmation; retain
 partial evidence and diagnose. Before resumption inspect launch/completion
@@ -528,3 +533,24 @@ are ready for fresh input freezing; no independent game has started yet. Expecte
 confirmation duration is about2h15 at the same background-friendly serial W1
 resources. All128 fresh pairs and four blocks are fixed before any play, with
 one final look, no early statistical stopping or retrospective extension.
+
+The confirmation freeze is complete:128 fresh unique positions, four32-pair
+splits, all29,638 recorded excluded positions and exact source/runtime/script
+hashes. Binding `confirmation-v1-binding.json` is committed in51d24ed; runtime
+source remains614511ce9a75/build76. Block1 started at23:47:56 UTC on23 October,
+using the still-fresh passing BOUNDARY2 post-delivery receipt and a new30s host
+screen. Its results remain unopened; no build/test/other computational experiment
+may overlap confirmation. Future blocks require unchanged qualified receipts.
+
+The existing selector emits CRLF for the full parent opening PGN and selection
+receipt. Default `git diff --check` reported those CR characters as whitespace;
+the CRLF-aware check passes. Frozen bytes/checksums are preserved, not normalized
+after binding. Block PGNs use their explicitly declared LF convention. This is a
+formatting diagnostic, not a failed opening/legal/selection or runtime check.
+
+Confirmation block1 passes: all64 normal games, source/evidence integrity,
+pre/post delivery, memory, host and actor gates. Match host .617 other average
+logical cores; actor CPU/SearchElapsed1.00847/1.00852; maximum sampled request-
+over-hard1.845 ms. Its score remains unopened. Block2 has started admission using
+the fresh qualified post-delivery check; blocks3/4 remain dependent on prior
+qualified completion. These operational block boundaries are not statistical looks.

@@ -1,0 +1,23 @@
+{
+  "status": "running",
+  "hypothesis": "finalist",
+  "block": 1,
+  "preDelivery": {
+    "path": "spending-development-boundary2-v1-post-delivery-summary.json",
+    "sha256": "936e26f1610b40fdaf014564b8038a060e609152c41941f8d2982a757fe02ef8"
+  },
+  "bindingSha256": "2e676210b90e93011bd48d048530f2a70bcca9c4b52fd909e1081ee1e1c873cc",
+  "admissionSha256": "1589c276baa6f90dcc89632bcf9ffe9dcdca154ecc642a13ebf451465433e83f",
+  "hostStart": {
+    "utc": "2026-10-23T23:47:56.789867+00:00",
+    "monotonic": 79339.6152702,
+    "ticks": [
+      8248597500000,
+      8582318906250,
+      938391562500
+    ],
+    "availableBytes": 18801475584,
+    "memoryLoadPercent": 44
+  },
+  "admissionAttempt": 1
+}
