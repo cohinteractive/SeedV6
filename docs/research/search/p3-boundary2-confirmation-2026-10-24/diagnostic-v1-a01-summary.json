@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "bindingSha256": "38895d7534b8ad642da40ce1d397d601e062eb3cd526b8fe7f210bcfb76dff1c",
+  "execution": {
+    "exitCode": 0,
+    "wallSeconds": 114.71590349999315,
+    "ownedProcessesRemaining": 0,
+    "totalOwnedProcesses": 10,
+    "totalOwnedCpuSeconds": 166.828125
+  },
+  "resources": {
+    "start": {
+      "utc": "2026-10-24T03:43:41.147208+00:00",
+      "monotonic": 93483.9726104,
+      "ticks": [
+        9739406718750,
+        10125822812500,
+        1092210468750
+      ],
+      "availableBytes": 17555730432,
+      "memoryLoadPercent": 48
+    },
+    "end": {
+      "utc": "2026-10-24T03:45:35.873850+00:00",
+      "monotonic": 93598.6992527,
+      "ticks": [
+        9750233125000,
+        10137256250000,
+        1094543593750
+      ],
+      "availableBytes": 17739145216,
+      "memoryLoadPercent": 48
+    },
+    "elapsedSeconds": 114.72664229999646,
+    "busyCpuSeconds": 294.015625,
+    "ownedCpuSeconds": 166.828125,
+    "otherAverageLogicalCores": 1.108613461094938,
+    "memoryEndpointsPass": true,
+    "passed": true,
+    "limits": "Prospective availability screen, not isolation or a bound on short bursts; endpoint memory only. No outcomes used."
+  },
+  "evidence": {
+    "raw\\diagnostic-v1-a01\\01-baseline-off-uci.txt": "11cb9554e6e35ad6bb392aa778348f0f05cb28fe0f5487c11418ed62953411a4",
+    "raw\\diagnostic-v1-a01\\02-boundary2-on-gc.log": "62b233c902e1cb1fc2d5b9944825ca9a3a2e0d233898e664831be3eb98c2bb6d",
+    "raw\\diagnostic-v1-a01\\02-boundary2-on-uci.txt": "9c0733de5c1eb61f57038212d67400a52abbad74fad5521089490027b339b172",
+    "raw\\diagnostic-v1-a01\\02-boundary2-on.jfr": "f08c5c044d86ba443169ef38bc0842e1a74c17dd09a98ec0b4a7fe972e8285b3",
+    "raw\\diagnostic-v1-a01\\03-boundary2-off-uci.txt": "9ff761e8b49187af89f94ea26eafc6a799a08df8fe040c01def2e879f001f67f",
+    "raw\\diagnostic-v1-a01\\04-baseline-on-gc.log": "d08e6b27e655d0332798d8786333731443183ab9f768a431cb4ed5666e866a50",
+    "raw\\diagnostic-v1-a01\\04-baseline-on-uci.txt": "7555323b2eb5daad62a376fb895bf3bea1c14a2681ef53063024725f38ef044e",
+    "raw\\diagnostic-v1-a01\\04-baseline-on.jfr": "d90354452c92caf95baee4818458c6d2e9349cffa3947a308cd1bcfa5fd7a69c",
+    "raw\\diagnostic-v1-a01\\05-baseline-on-gc.log": "426156665f4d2c5e5e96821220b357780f14519f5feeeed4ff03b3604cd8bb1c",
+    "raw\\diagnostic-v1-a01\\05-baseline-on-uci.txt": "f8510b982b0712c540ffc5e2b73b21d41d84597115276806a6ada19bafeb4d30",
+    "raw\\diagnostic-v1-a01\\05-baseline-on.jfr": "4552a4622772cda344e61df69daa58928894718aee8897dbe2942a25d663e845",
+    "raw\\diagnostic-v1-a01\\06-boundary2-off-uci.txt": "05961620173555885024187af8f12b52455537010cf6c05e2b9425f865da4b1a",
+    "raw\\diagnostic-v1-a01\\07-boundary2-on-gc.log": "fd38d7b20b9e635623874aaaf26f2432aef2d5ce747c266dca2fbf4b581d74ab",
+    "raw\\diagnostic-v1-a01\\07-boundary2-on-uci.txt": "060e52b71785a5519f4c79626496f1d9e02568fa933cb079787ec931083667fa",
+    "raw\\diagnostic-v1-a01\\07-boundary2-on.jfr": "c632a7704c35d1637936efd89c4e268e7bf30d19cf1f00803a61425174ee92a0",
+    "raw\\diagnostic-v1-a01\\08-baseline-off-uci.txt": "abe41b5f38d1eaa12139a61d57d6bf88127ee1acbd9adef89cf588b77b131587",
+    "raw\\diagnostic-v1-a01\\execution.json": "7ecda80f2f3c20a7485ed75771008c9bf630d213eaa2bbd526df84144783ec14",
+    "raw\\diagnostic-v1-a01\\requests.jsonl": "d35717427853cbdeb79035afb86dd6c1fc30a5d320dcdbb999890f9a3e4a87e3",
+    "raw\\diagnostic-v1-a01\\worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

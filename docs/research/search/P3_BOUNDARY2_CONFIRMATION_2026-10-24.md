@@ -70,15 +70,54 @@ No threshold relaxation or speculative engine patch is justified at bootstrap.
    integration and hand back for required acceptance. Otherwise retain production
    factual clocks and close/defer with evidence and precise limits.
 
-Current restart: finish binding/evidence audit, then implement and freeze the first
-diagnostic capture. No fresh strength game or production mutation is admitted yet.
+Current restart: execute/analyze `persistent-v1-a01` under the frozen persistent
+diagnostic protocol. Do not repeat a started name. Check its summary, worker log,
+owned-process state and raw availability before resuming; a failed/incomplete
+capture remains evidence. No fresh strength game or production mutation is admitted.
 Evidence/scripts/compact manifests: `p3-boundary2-confirmation-2026-10-24/`.
 New bulk evidence: its ignored `raw/` directory. Check availability on every resume.
-No new experiment is running at this bootstrap checkpoint.
+The persistent diagnostic is selected for execution after the first capture below.
 
 ## Validation and limitations
 
-Initial Git/instruction/source inspection only; no fresh runtime test yet.
 Historical validation is reference evidence, not validation of new work. Historical
 clock-tail cause remains unknown. No fresh strength inference, multiworker strength,
 application adoption, owner acceptance of a new result or deployment is claimed.
+
+## First timing capture
+
+`bootstrap-input-audit-v1.json` verifies265 frozen inputs and34 historical evidence
+files by hash, including all four blocks' raw availability. No historical outcome
+was parsed. Exact native build74 core SHA256 is
+`facac0db65c7f97a120083174ea4de20ef210daf3252a79a3fd5eb2cac99e6f7`;
+candidate build76 core is
+`54cb27641a4c4a7c0fcc61ec17da772011bee3a09dec0e691e0b038c5b357e9b`.
+Their UCI, research, payload and launcher bytes remain bound in the receipt chain.
+
+`diagnostic-v1-a01-summary.json` and `-analysis.json`:784 actual UCI requests pass,
+112 fixed100k-node signatures agree exactly across actors/instrumentation,672
+clock requests pass legal/PV/completed-depth/accounting/fence checks. Every owned
+descendant drains. Runtime114.716s, owned CPU166.828s, host/memory screen passes.
+Maximum request-over-hard1.712ms; maximum external send-to-bestmove over-hard7.161ms.
+No25ms event is reproduced. Paired median instrument-on/off elapsed ratios are
+.97419 baseline/.98311 BOUNDARY2; both pass the frozen descriptive5% screen.
+Root-level ratios vary, so this is not a statistical equivalence guarantee.
+Maximum recorded safepoints are4.384-5.222ms across instrumented JVMs, including
+startup/shutdown. Short-process evidence cannot diagnose a rare persistent tail.
+
+Selected follow-up: `persistent-diagnostic-v1.json`,64 rounds x14 roots x4 clocks
+per actor (3,584 each), alternating only one active request across two persistent
+JVMs. Matched JFR/logging and native named-worker CPU/cycle counters distinguish
+request cost from JVM aggregate cost; retain all events and failures. No engine,
+clock constants, accepted comparator or statistical criterion changes.
+
+Primary technical references consulted24October2026:
+[JDK21 JFR configurations](https://docs.oracle.com/en/java/javase/21/jfapi/flight-recorder-configurations.html),
+[JDK21 unified logging](https://docs.oracle.com/en/java/javase/21/docs/specs/man/java.html),
+[Windows GetProcessTimes](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-getprocesstimes).
+JFR's documented typical low overhead is not substituted for the measured screen.
+Process CPU sums JVM threads; neither a CPU deficit nor generic literature proves
+historical preemption. Local source verifies Fastchess elapsed-millisecond charging
+before increment, including the initial10100ms clock. No source or rounding defect
+has been established. Python syntax and whitespace checks pass; no new application
+code, build increment or application integration test has yet been needed.
