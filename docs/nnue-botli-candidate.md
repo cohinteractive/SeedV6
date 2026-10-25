@@ -7,6 +7,13 @@ The E008-specific configuration, launchers and historical results below are
 preserved. Earlier ordinary-default/GUI-worker-limit statements describe the
 pre-consolidation state. Native Mac evidence below does not qualify this new build.
 
+For current multiworker BotLi use, select **`SeedV6-UCI`**, or `seedv6-uci` in
+the Java distribution. It uses Construction V1 with the same frozen CP64 network
+and supports Threads 1..16, default 1. **`SeedV6-NNUE-CP64` remains the historical
+single-worker E008 profile**, even when packaged in a current build; its Threads
+maximum of 1 is intentional. See the [25 October native verification and BotLi
+deployment record](botli-threads-2026-10-25.md).
+
 
 23 October 2026 (Auckland). This is the dedicated `nnue-cp64-e008-rc1`
 candidate for an owner-controlled BotLi trial. General production remains Gen32 /
