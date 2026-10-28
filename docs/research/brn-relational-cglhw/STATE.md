@@ -25,11 +25,12 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R030 completes32games/probes,zero caps/failures;ONE scores15.625%/12.5% vsCP64.
-No broader games/promotion. R031 prospectively tests one lower-rate warm-start
-against equal-exposure constant-rate controls,with moments and per-step shrink
-held fixed. Implement/test trainer and exact segmented continuation before four
-serial arms. Neural inference unchanged;no Pair-2 training or clock/GPU work.
+R031 correctness passes3 tests:CONTROL exact legacy,LOW independent Adam/shrink,
+parent preservation/identity and exact segmented continuation. Model class bytes
+match R028. Frozen r031-plan.json ready for four serial arms under nnue-control:
+`build/research/venv/Scripts/python.exe -B tools/brn-relational/run_objective.py docs/research/brn-relational-cglhw/r031-plan.json`.
+Each adds exactly one epoch to a frozen R028 ONE state;segment receipts preserve
+progress. No new games,architecture change,Pair training or clock/GPU work.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition

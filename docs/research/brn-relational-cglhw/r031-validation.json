@@ -1,0 +1,27 @@
+{
+  "tests": 3,
+  "failures": 0,
+  "skips": 0,
+  "test_path": "docs\\research\\brn-relational-cglhw\\raw\\r031-passed-tests.xml",
+  "test_sha256": "d085b115abf2d7758f7ad39a581074c9cbc8852eb474cfca325b4a5e5f3033ed",
+  "sources": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextualPieceFineTune.java": "89036071ad19bb101a45d9cec8fbcdbd5acc0ac7f65c1344d56b73b751713430",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextualPieceFineTuneDiagnostic.java": "c37896686610a331ee403b8f065ed59d8b83ac93fa8214c2d4c2d1c3076e45b4",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextualPieceFineTuneTest.java": "bb35b83cf4435d198ee021de4668103e708ea14245d37e1f6c94a9b7e72ded25",
+    "tools\\brn-relational\\run_objective.py": "a2e8ea720709d2a2dc39eb4fee8d022c8ca82f7a1ad51dd62298798564c5967b"
+  },
+  "inference_class_parity_with_r028": [
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualPieceNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualPieceNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualPieceNetwork.class"
+  ],
+  "runtime": {
+    "docs\\research\\brn-relational-cglhw\\raw\\r031-runtime\\lib\\engine-core.jar": "072198461f54918857a9cebc5a1359a7eed2f9d36a357678cdab9f0e5541b96e",
+    "docs\\research\\brn-relational-cglhw\\raw\\r031-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\brn-relational-cglhw\\raw\\r031-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\brn-relational-cglhw\\raw\\r031-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\brn-relational-cglhw\\raw\\r031-runtime\\lib\\research.jar": "35fee6586bc5bf83c9ccda7a2c1b1f25aa81009ba96ac7286498d6a147bf59df",
+    "docs\\research\\brn-relational-cglhw\\raw\\r031-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\brn-relational-cglhw\\raw\\r031-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  }
+}

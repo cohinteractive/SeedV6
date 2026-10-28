@@ -1,0 +1,12 @@
+{
+  "main_class": "ContextualPieceFineTuneDiagnostic",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r031-runtime\\lib",
+  "configs": [
+    "docs\\research\\brn-relational-cglhw\\r031-control-71.json",
+    "docs\\research\\brn-relational-cglhw\\r031-low-71.json",
+    "docs\\research\\brn-relational-cglhw\\r031-control-97.json",
+    "docs\\research\\brn-relational-cglhw\\r031-low-97.json"
+  ],
+  "max_seconds_per_arm": 180,
+  "summary": "docs\\research\\brn-relational-cglhw\\raw\\r031-execution.json"
+}
