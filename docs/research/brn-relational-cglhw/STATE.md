@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R021 neural optimizer-mechanism diagnosis**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R022 higher-order neural field composition**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,12 +25,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R021 correctness passes:two focused tests and unchanged R017 inference-class
-byte parity. r021-plan.json freezes two DENSE neural1M/1epoch pilots. Complete or
-verify them with run_objective.py under nnue-control after resource admission;
-never duplicate an active job. Then evaluate the fixed R021 gates. R020 completed
-and failed quality gates. No Pair-2 training,R010 continuation,search or production
-promotion is admitted.
+R021 complete:both dense pilots fail teacher improvement gate;no optimizer sweep.
+Read R022.md. Implement and test square-field-to-piece nonlinear composition,
+then freeze two bounded neural pilots only after correctness. Reuse R017 controls.
+No live empirical job remains. No Pair-2 training,R010 continuation,search or
+production promotion is admitted.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -65,7 +64,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R018 | Optimization-depth calibration on successful neural control | Complete;epoch8 teacher gain-1.02%/+.67% fails5% gate;no further same-recipe epochs |
 | R019 | Learned cross-channel transformation of attack fields | Complete;teacher gain-.51%/+.45% fails2%;no scaling/search |
 | R020 | Horizontal canonicalization control for neural field learning | Complete;exact invariance,but teacher loss worsens .10%/.51%;no scaling/search |
-| R021 | Dense versus masked neural adaptive updates | Prospective bounded optimizer-mechanism diagnosis;unchanged neural field |
+| R021 | Dense versus masked neural adaptive updates | Complete;teacher loss worsens .048%/.095%;no optimizer sweep |
+| R022 | Square-field to piece nonlinear composition | Prospective new learned relational path;correctness first |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

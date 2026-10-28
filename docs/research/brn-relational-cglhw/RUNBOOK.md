@@ -201,3 +201,7 @@ raw/r018-objective-runner.py preserves the prior runner before R019 dispatch.
 R020 complete:three tests,exact CP64 symmetry audit,two canonical pilots failing
 predictive gates. Raw audit and canonical runtimes are distinct and immutable.
 No failed arm is repeated or promoted. R021 tests a single optimizer mechanism.
+
+R021 complete:two optimizer tests and unchanged R017 inference-class parity;both
+dense pilots fail quality gate. Preserve optimizer-mode states and all raw receipts.
+Next R022 adds a distinct learned composition across controlled squares.
