@@ -216,3 +216,7 @@ quality gate failed. No scaling. R024 reuses frozen endpoints and R016 panel.
 R024 complete:one routing test,byte-identical model classes,8192-row predictions
 and exact R016 target parity. R025 is a separate playing-calibration protocol,
 not promotion or reversal of prior loss gates. No new training is queued.
+
+R025 integration passes21 focused tests;initial test SearchRequest package error
+is preserved and corrected. Build78 accompanies qualifying core extension. Freeze
+clean-source runtime and verify final-tested class manifest before fixed-node play.

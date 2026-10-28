@@ -1,0 +1,68 @@
+{
+  "tests": [
+    {
+      "module": "research",
+      "test": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.ResearchFieldEvaluationTest",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-28T22:59:31",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.163"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-tests\\research-TEST-com.ohinteractive.seedv6.core.brnpair2.ResearchFieldEvaluationTest.xml",
+      "sha256": "f1e4d235a977ed70d6d35e19f4b24ce4c355af84ab420c59aac34a6af76a82fe"
+    },
+    {
+      "module": "research",
+      "test": {
+        "name": "com.ohinteractive.seedv6.search.exact.ConstructionSearchTest",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-28T22:59:31",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.224"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-tests\\research-TEST-com.ohinteractive.seedv6.search.exact.ConstructionSearchTest.xml",
+      "sha256": "f008fbae6744386d530ed148d67b7b83fa3f87c80502aa2fda93b7a3a4263091"
+    },
+    {
+      "module": "engine-core",
+      "test": {
+        "name": "com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetworkTest",
+        "tests": "13",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-28T22:59:33",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.981"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-tests\\engine-core-TEST-com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetworkTest.xml",
+      "sha256": "c8fa8042ba2a32ae183b25e104293b001c883378af87c90cf63787f65a3dd738"
+    },
+    {
+      "module": "app",
+      "test": {
+        "name": "com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-28T22:59:48",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.229"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-tests\\app-TEST-com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest.xml",
+      "sha256": "974faaf13ad8c38ae35155d0c5f02f0617f6c13489676374e65c0bff72472b5a"
+    }
+  ],
+  "source_base": "622f6d4e",
+  "note": "20 focused tests pass with zero skips. Source text line endings normalized without semantic changes;tested class manifest pins executable before version-only resource rebuild.",
+  "tested_classes_path": "docs\\research\\brn-relational-cglhw\\raw\\r025-tested-class-manifest.json",
+  "tested_classes_sha256": "57436cbb55c45cbf469fb0a864f60a9de5f6c6f4b26a1f2764bef22c8273aee0"
+}

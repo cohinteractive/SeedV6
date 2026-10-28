@@ -1,0 +1,92 @@
+{
+  "tests": [
+    {
+      "module": "research",
+      "test": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.ResearchFieldEvaluationTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-28T23:03:04",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.195"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-final-tests\\research-TEST-com.ohinteractive.seedv6.core.brnpair2.ResearchFieldEvaluationTest.xml",
+      "sha256": "20ee3e2d6c9d79a6f02b5d674144ab7e5ee87728042cf80ce1c1ca18988ac8d3"
+    },
+    {
+      "module": "research",
+      "test": {
+        "name": "com.ohinteractive.seedv6.search.exact.ConstructionSearchTest",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-28T23:03:04",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.177"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-final-tests\\research-TEST-com.ohinteractive.seedv6.search.exact.ConstructionSearchTest.xml",
+      "sha256": "bf7a0b0793f0e542a000c087fe3a9bac9f101129330976bbebf9daa34c729535"
+    },
+    {
+      "module": "engine-core",
+      "test": {
+        "name": "com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetworkTest",
+        "tests": "13",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-28T23:03:06",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "1.035"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-final-tests\\engine-core-TEST-com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetworkTest.xml",
+      "sha256": "4d64219417777eeefd1262ddeeef1746fc171249a7dcd69c5239313fb919c74d"
+    },
+    {
+      "module": "app",
+      "test": {
+        "name": "com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-28T23:03:16",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.215"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-final-tests\\app-TEST-com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest.xml",
+      "sha256": "bd08e2558a9b6c4b01044c2db8f82d5691b94c007f6f32b9c6ca40a23a0392a6"
+    }
+  ],
+  "source_base": "622f6d4e",
+  "source_sha256": {
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/evaluation/SearchEvaluation.java": "20553d21e0ad6a7b09d970d504c0e22c75c9215c5b86537fed203c92858ba326",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ConstructionSearch.java": "9bdc7d6b28a46ea13f1136d4c8d40e8b5c077c936ea85cbb8592d14abe126862",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/ResearchFieldEvaluation.java": "f90f7526b9ae98feeda5da8b40785fd315a56977d75693ce91ce802b0189ade0",
+    "research/src/test/java/com/ohinteractive/seedv6/core/brnpair2/ResearchFieldEvaluationTest.java": "c911fb7e4780a29510751df6e82eecc9a905d3edfed62bfcb417620442fa0fc2",
+    "src/researchLauncher/java/com/ohinteractive/seedv6/integration/BrnRelationalUciMain.java": "e7b9e9534e1c3df4219597c9b5c42364ce1e3c710367f21471f8387a7f618073",
+    "tools/brn-relational/compare_neural.py": "e48ca8398c582bc185eca51b7b13d42fd207fa24a900fbcf935f55259ec730ee",
+    "VERSION_STATE.txt": "a7b740391f1654378e34f2aa8eaf53e0d580b7f86a859d4cbb2748880122d7bc"
+  },
+  "tested_class_manifest": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-final-tested-classes.json",
+    "sha256": "b7166d04737fbb8a745bb7c0b1c26f2a9cfffc0dc076850792db8a5752ae5fa8",
+    "classes": 1758
+  },
+  "previous_pass": "r025-pre-version-validation.json",
+  "failed_attempt": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-final-tests-launch.log",
+    "sha256": "3d9c8ae15e5ee18de6932f365b34adfcc431e00051a402e95923fba62175fd15",
+    "reason": "Test referenced SearchRequest in wrong package;corrected to existing search.common class;no candidate training/game failure."
+  },
+  "runner_validation": "Syntax compiled;game replay AST exactly equals previously used compare_pairs replay;actual startup/fixed-node probes precede each comparison.",
+  "build": {
+    "before": 77,
+    "after": 78,
+    "reason": "Qualifying shipped core research evaluator seam;same commit as code;no finalizer."
+  },
+  "limitations": "Focused checks only;no full application suite,GUI,clock or production promotion qualification."
+}

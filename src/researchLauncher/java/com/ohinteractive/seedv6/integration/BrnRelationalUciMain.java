@@ -21,8 +21,8 @@ import com.ohinteractive.seedv6.uci.UciEngine;
 /** Matched evaluator comparison; never packaged or selected as production. */
 public final class BrnRelationalUciMain {
     public static void main(String[] args) throws Exception {
-        if ((args.length != 2 && args.length != 3) || !(args[0].equals("cp64") || args[0].equals("brep2") || args[0].equals("pair")))
-            throw new IllegalArgumentException("cp64|brep2|pair FROZEN_MODEL [common|cp64-profile]");
+        if ((args.length != 2 && args.length != 3) || !(args[0].equals("cp64") || args[0].equals("brep2") || args[0].equals("pair") || args[0].equals("compose8")))
+            throw new IllegalArgumentException("cp64|brep2|pair|compose8 FROZEN_MODEL [common|cp64-profile]");
         String profile=args.length==3?args[2]:"common";
         if(!profile.equals("common")&&!profile.equals("cp64-profile"))throw new IllegalArgumentException("Search profile");
         if (System.getenv("SEED_NNUE_OPERATION") == null)
@@ -30,6 +30,7 @@ public final class BrnRelationalUciMain {
         var model = Path.of(args[1]);
         final SearchEvaluation evaluation;
         if(args[0].equals("cp64"))evaluation=ConventionalNnueEngine.load(model).evaluation();
+        else if(args[0].equals("compose8"))evaluation=com.ohinteractive.seedv6.core.brnpair2.ResearchFieldEvaluation.load(model);
         else if(args[0].equals("brep2"))evaluation=SearchEvaluation.brnPair2(ProductionModel.load(model));
         else try(var input=Files.newInputStream(model)){evaluation=SearchEvaluation.brnPair2(BrnPair2Codec.readModel(input));}
         String modelHash=HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(Files.readAllBytes(model)));

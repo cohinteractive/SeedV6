@@ -25,12 +25,12 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R024 complete:composition gains transfer across development panels;all neural
-models still trail played Pair24 in loss. R025.md defines a distinct32-game
-fixed-node calibration of both frozen R022 seeds against CP64. First implement
-and validate isolated full-recompute search integration,then freeze runtime and
-verify exact-node probes. No games before those checks. No new training,Pair-2
-optimization,R010 continuation or production evaluator promotion is admitted.
+R025 isolated integration passes21 focused tests (new lifecycle/score/search
+checks plus existing NNUE/Construction regressions). Initial test-only compile
+failure is preserved and corrected. Build78 belongs to the qualifying core seam
+commit. Next rebuild/freeze a clean-source runtime,verify tested class parity,
+freeze first8 R001B roots and32-game plan,then run actual model exact-node probes
+before games. No new training or production evaluator promotion is admitted.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -105,11 +105,11 @@ before any recovery; never rewrite completed bindings to accept changed tools.
 
 ## Validation and required action
 
-85 distinct focused tests have passed:23 baseline Java,52 research Java,
-10 Python. The selector's renamed import received syntax validation but no new
+85 previously recorded focused tests plus21 passing R025 checks (including
+repeated baseline regressions) are preserved with exact test identities. The selector's renamed import received syntax validation but no new
 runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,
-configs and reusable fixtures are tracked. Build77 unchanged;no push.
+configs and reusable fixtures are tracked. Build78 for the explicit core research seam;production evaluator unchanged;no push.
 
 Human actions required after this prompt: None while admitted autonomous work
 continues. Any actual resource/authority gate will replace this statement before
