@@ -1,115 +1,112 @@
-# BRN relational CGLHW — resume entry point
+# BRN neural relational CGLHW - resume entry point
 
-Workstream `seedv6-brn-relational-20261029`; 29 October 2026 Auckland.
-Status: **ACTIVE — R007 controlled CP64 distillation fork**. The owner continued
-after interrupting the same root; completed work is preserved. No architectural-success
-or strength claim. Read [CONTRACT](CONTRACT.md) revision2, [PRIORITY](PRIORITY.md), [BOOTSTRAP](BOOTSTRAP.md), then
-[BASELINE](BASELINE.md). This programme is distinct from the suspended successor.
+Workstream: `seedv6-brn-relational-20261029`.
+Status: **PAUSED_RESOURCE_GATE**. This is not programme completion or failure.
+Current gate: [RESOURCE-GATE.md](RESOURCE-GATE.md), with machine-readable evidence
+in r012-resource-gate.json. No research process or background queue remains.
+
+Read root instructions, [CONTRACT](CONTRACT.md) revision2, [PRIORITY](PRIORITY.md),
+[RESOURCE-GATE](RESOURCE-GATE.md), [BASELINE](BASELINE.md) and [R012](R012.md).
+The owner clarified that genuinely neural relational composition is the primary
+objective; additive pair tables are references/controls. This existing workstream
+continues without reopening the separately suspended BRN successor programme.
+All historical decisions and negative evidence remain preserved.
 
 Reusable instruction:
 
 > RESUME CGLHW seedv6-brn-relational-20261029 in C:\projects\seed\java\seedv6-unified.
 > Start at docs/research/brn-relational-cglhw/STATE.md and obey its current gate.
 
-On every resume inspect root instructions/Git state, exact root journal/version
-presence, this state and linked current protocol; run `./nnue-control.cmd status`.
-Verify inputs/checkpoints/frozen runtime and resource availability. Do not reset
-holds, restart old suspended work or assume raw evidence exists in a fresh clone.
+On RESUME inspect actual instructions/Git state, exact root journal/version file
+presence and `./nnue-control.cmd status`. No finalizer applies. Verify frozen
+inputs and current resources; NORMAL alone does not admit a workload. Missing raw
+artifacts in a fresh checkout must be restored or addressed as an explicit new
+reproduction, never silently invented. Do not reset a hold or restart old queues.
 
-## Hypothesis queue (selection is provisional, not a fixed architecture)
+## Exact next admissible operation
 
-| ID | Question | State / admission |
+After owner RESUME, run the R012 correctness command in RESOURCE-GATE.md with a
+fresh log. On2026-10-28T21:42:28Z CPU65.6863% exceeded the admission limit<60%;
+free memory16.374GiB passed>=8GiB. The retry stopped BEFORE Gradle launched.
+No availability retry occurred. Supervisor active:null and owned_processes:0.
+
+R012 compiled and passed3 of4 tests: independent forward equations,color/rank
+symmetry,special boards,disconnected remote response and nonlinear third-source
+interaction witness. Its gradient test failed a unary finite difference:
+absolute discrepancy1.256e-10 against1e-10 tolerance at step1e-4. A smaller step
+1e-5 is prepared with unchanged tolerance and per-family diagnostic errors.
+That change is UNVERIFIED. No model mathematics was changed to bypass the test.
+
+If admission still fails,record the gate and exit without waiting/retrying. If
+admitted,finish correctness first. If it passes,freeze a new R012 runtime and
+configs,add explicit AnchorDiagnostic/capability-audit runner dispatch while
+preserving R011 runner bytes,run the untrained64-case capability audit,then the
+prospective four-arm131k/8epoch neural pilot. No R012 training checkpoint or frozen
+pilot runtime/config currently exists. Do not claim a tested or trained candidate.
+
+## Experiment programme
+
+| ID | Question | Disposition |
 |---|---|---|
-| R000 | Authority, implementation and local evidence reconciliation | Bootstrap complete; continue updating factual discoveries |
-| R001 | CP64 vs Gen32 under identical search and fixed nodes | Complete:48 exact repeat probes,16 games,CP64 3W/7D/6L; inconclusive, no extension |
-| R001B | Does the million-position Pair-2 candidate compete under broader common-search fixed work? | All192 games complete:59.375% vs Gen32,25% vs CP64; CP64 scores68.75% vs Gen32; candidate fails confirmation admission |
-| R002 | Can matched BT4/logit400 improve relational learning compared with legacy WDL/quarter calibration? | Million-position stage complete; MSE gains>6%,R001B59.375% vsGen32 but25% vsCP64 |
-| R003 | Can conditional attack/defense graph energy add useful third-piece relationships? | Six8-epoch pilots complete; CONTEXT fails admission versus EDGE, no larger context allocation; full recomputation only |
-| R004 | Does factorized attack-message composition offer a better Pareto point? | Correctness/cost pass; four pilots complete,COMPOSE overfits and fails2% gate; no larger allocation for this recipe |
-| R005 | Fresh independent strength, replication and practical confirmation | Conditional protocol drafted but NOT ADMITTED after R001B failure; no final roots selected or games launched |
-| R006 | Can coverage and explicit weight bounds remedy factorized PAIR overfit? | Four arms complete; bounds improve matched loss~5%,but miss direct-Pair practical gate; no further allocation for this recipe |
-| R007 | Does CP64 distillation help more than equal added BT4 exposure? | Atomic teacher relabeling complete; four continuation arms prospectively frozen,epoch24→40 |
+| R000 | Authority,implementations,training provenance | Bootstrap and CP64/Gen32 characterization complete; factual discoveries retained in BASELINE |
+| R001 | Common-search exact-node CP64/Gen32 baseline |48 repeat probes and16 games complete;3W7D6L CP64,inconclusive |
+| R001B | Broader common-search20k-node comparison |192 games complete;Pair24 scores59.375% vsGen32 and25% vsCP64;CP64 scores68.75% vsGen32 |
+| R002 | Objective and coverage effects on Pair-2 control | Aligned targets help;1M epoch24 MSE .02367134/.02370566; preserved secondary controls |
+| R002-GAMES | Matched objective learning in play |64 games complete;aligned beats legacy point estimates,but mixed vsGen32 |
+| R003 | Direct attack/defense context energies | CONTEXT fails matched EDGE gate; six pilots preserved |
+| R004 | Learned local message composition |16k COMPOSE overfits more than PAIR; failed recipe preserved |
+| R005 | Fresh independent strength confirmation | NOT ADMITTED;no final roots selected or games run |
+| R006 | Neural PAIR coverage/regularization | Bounds improve matched loss about5%,but original practical gate fails |
+| R007 | CP64 distillation versus equal BT4 exposure | Four epoch40 arms complete;3.49%/3.28% teacher gains fail5% gate;no distilled games |
+| R007-BT4-GAMES | Longer original-target training helps play? |64 games complete;57.8%/48.4% vsparent24 fails both-seed50% gate |
+| R008 | Pair-table remote-interaction capacity |64 exact categorical cancellations;CP64 nonzero63/64,not correctness evidence |
+| R009 | King-conditioned direct pair tables | Four pilots complete;worse validation than SHARED/base;no further allocation |
+| R010 | Additional Pair-2 data coverage | PAUSED_BY_OWNER_PRIORITY at1,574,296 rows/cursor1,449,984;no training |
+| R011 | Neural composition generalization and support | Four COMPOSE arms complete;bounds help7.56%/8.12%,but trail matched PAIR;38/64 structural zeros |
+| R012 | Nonlinear two-pass king-anchor neural messages | Current priority;compiled prototype,resource-gated correctness retry;untrained |
 
-No output from old programmes is deleted or repurposed. No background queue.
-Current best reproducible relational baseline: frozen BREP2-32; target: CP64.
-Completed evidence: [R001](R001.md),r001-results.json,r001-inference-cost.json,
-[R002](R002.md),r002-results.json,r002-data-manifest.json and512-record independent
-binary-decoder parity.23 baseline Java tests,4 protocol tests,3 objective tests
-passed. CP64 incremental+head median769ns versus Pair2 rolling98ns on one255-move
-walk,zero hot CP64 allocation; no throughput-to-Elo inference. The first profiling
-CLI failed before JVM start (argument forwarding); Python argv rerun passed,
-both attempts retained. No GPU work.
+Each named protocol and rNNN-results.json links configurations,source/runtime/model
+hashes,local raw evidence,limitations and decisions. Completed stages need no
+repeat. R011 uses unchanged frozen R006 classes and all four completed PAIR
+controls. Its exact symbolic audit proves COMPOSE cannot express38/64 selected
+contrasts at any weights;CP64 is nonzero on37 of those38. This motivates global
+learned paths but does not establish that CP64's responses are correct or causal
+for strength. R012 has no CP64 or BREP2 inference backbone.
 
-R002 saved all four epoch4 optimizer/model checkpoints under
-`raw/r002-{legacy,aligned}-{71,97}/`. Aligned validation MSE.029305/.029302,
-legacy.032124/.032171,CP64.016369 on the consumed4096-position diagnostic subset.
-These immature students are not playing candidates. No completed training repeats.
-The interruption occurred during a bounded profile; it completed and supervisor
-status verifies no active/owned process. Decoder parity also completed.
+## Preserved controls and operational state
 
-R002 depth/coverage results are in r002-depth-results.json and
-r002-coverage-results.json. Small-data overfit rejected further identical exposure;
-nested131k training reduced aligned MSE to.025378/.025356,legacy.033112/.033116.
-All original checkpoints remain. Both depth and coverage runs completed; no need
-to resume them. Historical runner bytes are preserved under raw/r002-pilot-runner.py
-and raw/r002-depth-runner.py,hash-verified against original bindings. Current runner
-adds graph dispatch and must not silently substitute for a frozen older binding.
+CP64 remains the principal strength benchmark; selected checkpoint64 SHA256:
+`8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b`.
+Gen32 remains unchanged. Best played Pair-2 development control is seed71 epoch24:
+`raw/r002-scale-aligned-71/epoch-24.brn-pair2`,SHA256
+`ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627`.
+It is a secondary reference,not the primary architecture objective. No neural BRN
+has demonstrated CP64 competitiveness;no production model was changed/promoted.
+Fixed-node results are not equal-time Elo. No clock tournament or GPU work ran.
 
-R003's small EDGE improvement over UNARY did not translate into a positive CONTEXT
-result. All models/costs and failures are preserved in r003-results.json/R003.md.
+R010's SQLite checkpoint and release evidence are pinned by r010-checkpoint.json.
+Its240.80s tranche finished safely; no further extraction/Pair-2 optimization is
+queued. Reuse needs a separately justified neural data requirement. Original1M
+training data is complete and available. Executed extension bytes are preserved
+as raw/r010-selection-runner.py;maintained name prepare_coverage_extension.py.
+The older131k prepare_coverage.py was restored byte-for-byte from Git. Packed-data
+parity tests passed;no Pair-2 training is implied by that infrastructure.
 
-R002-GAMES closed all64 games with no caps/failures and zero remaining processes:
-aligned71/97 scored62.5%/75% against matched legacy,43.75%/53.125% against Gen32.
-Eight reused opening clusters; mixed Gen32 result is inconclusive. See
-[R002-GAMES](R002-GAMES.md),r002-games-results.json. No CP64 replacement claim.
-Five actual compiled payloads passed4096-position full/cache agreement (maximum
-~8e-15 pawn difference). No production/default changes,clock games or GPU work.
+Historical runner bindings are preserved in raw/r002-pilot-runner.py,
+raw/r002-depth-runner.py,raw/r002-games-runner.py,raw/r003-runner.py,
+raw/r007-objective-runner.py and raw/r009-objective-runner.py. Check recorded hashes
+before any recovery; never rewrite completed bindings to accept changed tools.
 
-R002-SCALE extraction is complete (1,048,576+4096 rows,SQLite quick_check and
-prefix/hash checks pass). Both epoch24 training endpoints are complete and bound
-under raw/r002-scale-aligned-{71,97}; MSE.02367134/.02370566,6.73%/6.51% gains.
-Do not repeat completed extraction or training. R004's graph/message tests passed,
-but COMPOSE validation.036639/.038369 versus PAIR.035229/.035877 rejects this
-unregularized composition recipe despite lower training losses. See R004.md.
+## Validation and required action
 
-R001B completed192 games,zero caps/failures and drained all owned engines.
-Candidate71 scored26W24D14L vs Gen32 and5W22D37L vs CP64; CP64 scored36W16D12L
-vs Gen32. See r001b-results.json. R005 is not admitted; no final roots selected.
-The optional CP64-profile research launcher passed48 repeated exact-node probes
-(r000-profile-results.json),not playing confirmation. Production remains unchanged.
+Before R012,50 distinct focused tests passed:23 baseline Java,19 research Java,
+8 Python. R012 adds3 passed tests and1 pending failed numerical test as described
+above. The selector's renamed import received syntax validation but no new runtime
+rerun during the resource gate. Full suite,GUI,GPU,clock and production deployment
+qualification are not claimed. Raw output stays local/ignored;compact evidence,
+configs and reusable fixtures are tracked. Build77 unchanged;no push.
 
-Exact next admissible operation: after owner RESUME,follow RESOURCE-GATE.md and
-re-run R012's pending correctness build with fresh resource admission and a unique
-log. At2026-10-28T21:42:28Z CPU65.6863% exceeded<60% admission;free memory16.374GiB.
-The retry never launched Gradle. No further availability check/retry was performed;
-supervisor active:null,owned_processes:0. Resource evidence/source hashes are in
-r012-resource-gate.json. This is not research failure or programme completion.
-
-R012 compiled and passed forward/color/special-board/remote/third-source tests.
-Its fourth test failed a unary finite-difference tolerance by1.256e-10 versus
-1e-10; smaller step1e-5 is prepared but UNVERIFIED. Do not call it fixed or start
-training. After tests pass,freeze runtime/configs,add explicit AnchorDiagnostic
-and capability-audit dispatch while preserving older runner bindings,run the
-untrained capability audit,then the prospectively bounded four-arm neural pilot.
-No R012 trained checkpoint exists. R011 is COMPLETE;do not repeat its controls.
-
-R010 selection is PAUSED_BY_OWNER_PRIORITY at1,574,296 rows,cursor1,449,984;
-r010-checkpoint.json pins the preserved SQLite and release evidence. Its240s
-tranche ended safely with zero owned processes. Do not start more extraction or
-Pair2 training automatically. The original1M data is complete and available for
-new neural experiments. All R007/R008/R009 evidence remains valid and preserved.
-Pair2 epoch24 remains a secondary research control,not the principal development
-objective. CP64 is the principal strength benchmark. No clocks,GPU,final roots or
-background queues. Current run_objective dispatch adds packed-data support;
-raw/r009-objective-runner.py preserves its prior frozen bytes.
-
-Validation now totals50 distinct focused tests:23 baseline Java,19 research Java
-and8 Python; latest completed R011 build/tests and earlier Python tests passed; R012 has the
-separate pending numerical test described above. No full-suite,
-GUI,GPU,clock or production qualification is claimed. No new model is promoted.
-All changes are attributable research work; build77 unchanged; no push. Git
-milestones are research boundaries,not owner acceptance or programme completion.
-
-Human actions required after this prompt: **Blocking ? invoke RESUME when conservative
-CPU work can coexist with normal use.** This blocks R012 validation/training. No
-non-blocking action,clock authorization,GPU access or production promotion is requested.
+Human actions required after this prompt: **Blocking: invoke RESUME when
+conservative CPU work can coexist with normal use.** This blocks R012 validation
+and training. No non-blocking action,GPU access,clock authorization or production
+promotion is requested. No completed experiment needs repetition.
