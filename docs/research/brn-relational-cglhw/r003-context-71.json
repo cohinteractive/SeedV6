@@ -1,0 +1,12 @@
+{
+  "mode": "CONTEXT",
+  "seed": 71,
+  "rate": 0.5,
+  "epochs": 8,
+  "train": "docs\\research\\brn-relational-cglhw\\raw\\r002-data\\train.tsv",
+  "validation": "docs\\research\\brn-relational-cglhw\\raw\\r002-data\\validation.tsv",
+  "train_sha256": "0e1be5d3f45f233b0a2dc30cabe4e6c0728b4f7d2d317b298e5c7f09ef1ddb7a",
+  "validation_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+  "cp64": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r003-context-71"
+}

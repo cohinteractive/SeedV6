@@ -1,0 +1,10 @@
+{
+  "records": 512,
+  "status": "PASS",
+  "source": "conventional-nnue-cglhw/raw/e006-data/proof.data and proof.txt",
+  "checks": [
+    "normalized piece placement",
+    "white/STM target conversion",
+    "king metadata"
+  ]
+}

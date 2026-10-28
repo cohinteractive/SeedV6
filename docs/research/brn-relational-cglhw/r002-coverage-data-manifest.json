@@ -1,0 +1,169 @@
+{
+  "schema": "brn-relational-nested-coverage-v1",
+  "train": 131072,
+  "validation": 4096,
+  "original_train_prefix": 16384,
+  "source": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-data\\train.data",
+  "source_sha256": "b9306efe0675a0e0c0c3bea9d64e4bccda856f35ebafe79ab5a87472ca5b9e2c",
+  "prior_manifest_sha256": "fd9400f0c9a510b653700efb4b5cb97f117e6932bb6b25cafd2ae3aeba3b7742",
+  "seed": 2026102902,
+  "files": {
+    "train.tsv": "d4f7f76448cedf6ee6a314db0796172dceeedc36348494ca4a799e91312cd1b8",
+    "validation.tsv": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+    "selected-indices.json": "a82541c8b614b317ec9552c0fc0ecf5a5413f9548571da970d38263590f05841"
+  },
+  "seconds": 32.60406199999852,
+  "resources": [
+    {
+      "cpu_percent": 16.145833333333336,
+      "available_gib": 15.883277893066406,
+      "utc": "2026-10-28T20:07:29Z"
+    },
+    {
+      "cpu_percent": 10.89108910891089,
+      "available_gib": 15.875755310058594,
+      "utc": "2026-10-28T20:07:33Z"
+    },
+    {
+      "cpu_percent": 20.3125,
+      "available_gib": 15.893657684326172,
+      "utc": "2026-10-28T20:07:34Z"
+    },
+    {
+      "cpu_percent": 16.666666666666664,
+      "available_gib": 15.890998840332031,
+      "utc": "2026-10-28T20:07:35Z"
+    },
+    {
+      "cpu_percent": 7.2916666666666625,
+      "available_gib": 15.894752502441406,
+      "utc": "2026-10-28T20:07:36Z"
+    },
+    {
+      "cpu_percent": 11.340206185567014,
+      "available_gib": 15.88916015625,
+      "utc": "2026-10-28T20:07:37Z"
+    },
+    {
+      "cpu_percent": 6.7708333333333375,
+      "available_gib": 16.002094268798828,
+      "utc": "2026-10-28T20:07:38Z"
+    },
+    {
+      "cpu_percent": 5.699481865284972,
+      "available_gib": 16.00371551513672,
+      "utc": "2026-10-28T20:07:39Z"
+    },
+    {
+      "cpu_percent": 6.666666666666665,
+      "available_gib": 16.005626678466797,
+      "utc": "2026-10-28T20:07:40Z"
+    },
+    {
+      "cpu_percent": 7.731958762886593,
+      "available_gib": 16.00775146484375,
+      "utc": "2026-10-28T20:07:41Z"
+    },
+    {
+      "cpu_percent": 20.3125,
+      "available_gib": 15.986270904541016,
+      "utc": "2026-10-28T20:07:42Z"
+    },
+    {
+      "cpu_percent": 10.9375,
+      "available_gib": 16.001808166503906,
+      "utc": "2026-10-28T20:07:43Z"
+    },
+    {
+      "cpu_percent": 4.591836734693877,
+      "available_gib": 16.00112533569336,
+      "utc": "2026-10-28T20:07:44Z"
+    },
+    {
+      "cpu_percent": 7.8947368421052655,
+      "available_gib": 16.000675201416016,
+      "utc": "2026-10-28T20:07:45Z"
+    },
+    {
+      "cpu_percent": 10.9375,
+      "available_gib": 16.082805633544922,
+      "utc": "2026-10-28T20:07:46Z"
+    },
+    {
+      "cpu_percent": 4.736842105263161,
+      "available_gib": 16.080642700195312,
+      "utc": "2026-10-28T20:07:47Z"
+    },
+    {
+      "cpu_percent": 7.446808510638303,
+      "available_gib": 16.077938079833984,
+      "utc": "2026-10-28T20:07:48Z"
+    },
+    {
+      "cpu_percent": 8.854166666666663,
+      "available_gib": 16.07802963256836,
+      "utc": "2026-10-28T20:07:49Z"
+    },
+    {
+      "cpu_percent": 6.25,
+      "available_gib": 16.078285217285156,
+      "utc": "2026-10-28T20:07:50Z"
+    },
+    {
+      "cpu_percent": 29.6875,
+      "available_gib": 15.969524383544922,
+      "utc": "2026-10-28T20:07:51Z"
+    },
+    {
+      "cpu_percent": 4.102564102564099,
+      "available_gib": 15.97043228149414,
+      "utc": "2026-10-28T20:07:52Z"
+    },
+    {
+      "cpu_percent": 8.465608465608465,
+      "available_gib": 15.9708251953125,
+      "utc": "2026-10-28T20:07:53Z"
+    },
+    {
+      "cpu_percent": 6.666666666666665,
+      "available_gib": 15.972171783447266,
+      "utc": "2026-10-28T20:07:54Z"
+    },
+    {
+      "cpu_percent": 7.2916666666666625,
+      "available_gib": 15.973255157470703,
+      "utc": "2026-10-28T20:07:55Z"
+    },
+    {
+      "cpu_percent": 3.7433155080213942,
+      "available_gib": 15.972785949707031,
+      "utc": "2026-10-28T20:07:56Z"
+    },
+    {
+      "cpu_percent": 6.25,
+      "available_gib": 15.967422485351562,
+      "utc": "2026-10-28T20:07:57Z"
+    },
+    {
+      "cpu_percent": 5.7291666666666625,
+      "available_gib": 15.968048095703125,
+      "utc": "2026-10-28T20:07:58Z"
+    },
+    {
+      "cpu_percent": 6.25,
+      "available_gib": 15.969497680664062,
+      "utc": "2026-10-28T20:07:59Z"
+    },
+    {
+      "cpu_percent": 5.820105820105825,
+      "available_gib": 16.06393814086914,
+      "utc": "2026-10-28T20:08:00Z"
+    },
+    {
+      "cpu_percent": 6.735751295336789,
+      "available_gib": 16.065258026123047,
+      "utc": "2026-10-28T20:08:01Z"
+    }
+  ],
+  "limitations": "Consumed development validation; nested training prefix; unknown game identity. Exact color/rank/file aliases purged. No final test."
+}

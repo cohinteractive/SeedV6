@@ -1,0 +1,271 @@
+{
+  "id": "R002-GAMES",
+  "comparisons": [
+    {
+      "id": "aligned-71-vs-legacy",
+      "summary": {
+        "completed_games": 16,
+        "expected_games": 16,
+        "scored": 16,
+        "wins": 7,
+        "draws": 6,
+        "losses": 3,
+        "censored": 0,
+        "full_allocation_score_bounds": [
+          0.625,
+          0.625
+        ],
+        "complete_pairs": 8,
+        "score": 0.625,
+        "paired_bootstrap_95": [
+          0.5,
+          0.71875
+        ],
+        "hoeffding_95": [
+          0.14483860434003965,
+          1
+        ],
+        "scope": "Training-method development screen; left-arm score; reused openings, no final or equal-time Elo claim"
+      },
+      "elapsed_seconds": 40.29160559998127,
+      "resources": {
+        "cpu_percent": 7.978723404255317,
+        "available_gib": 15.511837005615234,
+        "utc": "2026-10-28T20:19:48Z"
+      },
+      "games": {
+        "game-000-0.json": "851ce69f65fe4a8e2252d1810f0de951dd3477b4498f4eee110e9a20c0a1ff5b",
+        "game-000-1.json": "8ced8db607c8000af074b445260fdb6fe62d9343b8a2467a7a7d83929ff1aed7",
+        "game-001-0.json": "4c3ba9399b9a0a11cdee005bb136a4b36cb3db55bb6d318b297e822d694e99c9",
+        "game-001-1.json": "9eea8cedb1a8c0406df40ec241ce60499badc7fd51867f429e54fae153fc3252",
+        "game-002-0.json": "c1ec71467ccee32f9e9a917f3b44d879db75a49965e4f7dcd5d181371a684566",
+        "game-002-1.json": "46ea29b6ad2130b6079b8a9b7fa091a10b497bfd6a1fef99cc84e63493385041",
+        "game-003-0.json": "d42fc5cb130150fbbdf1119fc1a957d2536a504eb12cd92188b129c4f67bcd3c",
+        "game-003-1.json": "426d99bc67a5792276b0720c87107e524eb53f6c034043f928e6d8459c8bcbc9",
+        "game-004-0.json": "94803e77fcf9b3bcb3be8ab9f74f2f4c7a65c28122075959b30e3966ab3e3bac",
+        "game-004-1.json": "8fd9c2b88ffc38426496de328c5e2d93f4a245911b5a4a1393a79e523bc1f210",
+        "game-005-0.json": "833607d10a550f569d24a4fb11ae8863045c91ca988d610a5a6084e42ad6dcff",
+        "game-005-1.json": "2bc22dc89e75bb33d4ef5fa82238bf1cab5a35fef9eab2427e0b1ed334f55d3f",
+        "game-006-0.json": "a4f6890bb5c335890fe7967e78aaa4a286702d8bb0089d6fb477f9d362d5dd46",
+        "game-006-1.json": "cf0440d5d0e4fd9e0dfe2f6a059eb2e1ec529073f8c62a73eb49944359e91ada",
+        "game-007-0.json": "eb11a9546cb122f5c28d5f9c4615b5a876682547016119278b6903128d915c1d",
+        "game-007-1.json": "5d04b2e8feed363fed70e929d2ebf488b3036d5c3c498f410d2aa63f91b02961"
+      }
+    },
+    {
+      "id": "aligned-97-vs-legacy",
+      "summary": {
+        "completed_games": 16,
+        "expected_games": 16,
+        "scored": 16,
+        "wins": 9,
+        "draws": 6,
+        "losses": 1,
+        "censored": 0,
+        "full_allocation_score_bounds": [
+          0.75,
+          0.75
+        ],
+        "complete_pairs": 8,
+        "score": 0.75,
+        "paired_bootstrap_95": [
+          0.65625,
+          0.84375
+        ],
+        "hoeffding_95": [
+          0.26983860434003965,
+          1
+        ],
+        "scope": "Training-method development screen; left-arm score; reused openings, no final or equal-time Elo claim"
+      },
+      "elapsed_seconds": 34.94315700000152,
+      "resources": {
+        "cpu_percent": 12.105263157894742,
+        "available_gib": 15.930473327636719,
+        "utc": "2026-10-28T20:20:29Z"
+      },
+      "games": {
+        "game-000-0.json": "f29b29a1b0add5dcf4d4a2284ed2032fd160b4267243fa2f3f830651451a5cad",
+        "game-000-1.json": "3a44bddf8fec26ec60239e8eea627ee387f380bd859ca66f2c40d4b36b5585ea",
+        "game-001-0.json": "c31064eba6e008a7591d0ef63de04ccdaa36cc9f18525f2111bac85320d02b99",
+        "game-001-1.json": "7503f081fb4e85ada6030f619bc80f800e7ed58b1402bbe5fc8b2231f47ec98f",
+        "game-002-0.json": "8e310ce43ba2798a26827e530d77c7880569e2ddc4c40ceb433275d18f1bd6f0",
+        "game-002-1.json": "1f70a0fb5b2209868d8c0f02cdf0e70a8ca535294ca9774abfa8d0de551ab14b",
+        "game-003-0.json": "4e5ea883c5ecbf6b52304519d63904ea0133ce68971954bcc5463c45e381b083",
+        "game-003-1.json": "897a176a6a268b02c68fe2e2b15be5ab2cfcbcc70bbb1d86449bfbdb1e4e074f",
+        "game-004-0.json": "01538390329e615e874b646ff28c1940fd0e1ba25d01019781d7a1005f1b84d8",
+        "game-004-1.json": "d1fb9dd0ef92cef7016a828cbbe04efad25b73f738ef067fab9437d219eaf7ae",
+        "game-005-0.json": "9fbd85bf4a09fe62b0f8cf889471006559ebf9c626e66acb00d7e9b958f667f5",
+        "game-005-1.json": "8c53f7a43062c43884eb9837f7a67f0e9dde35ea683bfbaeabbdcc53cff3d31f",
+        "game-006-0.json": "4b0aa78b90d8fdfd58e503b61efd89b14581e63e8d61354eadbeafb662184e7d",
+        "game-006-1.json": "ea3612ee08fb3a19df03227461efe8ad9719597bad23c07c74005d70ad57c82f",
+        "game-007-0.json": "10fec026095fcd6e0401c9009db473135db550f4fa8d09765f37b4b8d208ab10",
+        "game-007-1.json": "422d6368734e58c8302e3fb2ce343e1a3a34f71dc06afb5422f8425fb7184011"
+      }
+    },
+    {
+      "id": "aligned-71-vs-gen32",
+      "summary": {
+        "completed_games": 16,
+        "expected_games": 16,
+        "scored": 16,
+        "wins": 3,
+        "draws": 8,
+        "losses": 5,
+        "censored": 0,
+        "full_allocation_score_bounds": [
+          0.4375,
+          0.4375
+        ],
+        "complete_pairs": 8,
+        "score": 0.4375,
+        "paired_bootstrap_95": [
+          0.34375,
+          0.5625
+        ],
+        "hoeffding_95": [
+          0,
+          0.9176613956599604
+        ],
+        "scope": "Training-method development screen; left-arm score; reused openings, no final or equal-time Elo claim"
+      },
+      "elapsed_seconds": 43.02127189998282,
+      "resources": {
+        "cpu_percent": 9.999999999999998,
+        "available_gib": 15.924629211425781,
+        "utc": "2026-10-28T20:21:04Z"
+      },
+      "games": {
+        "game-000-0.json": "63720ad80a2b7e7ceb8d3dff83ec6fb9ffcfddb3ead603c9ba1799edce8ba8a5",
+        "game-000-1.json": "fca6d4737ac7fa05b0ddf0cc1c960cc2cd5fb25dfb4d8379eb3d1b46f95c297c",
+        "game-001-0.json": "468b096c8dc50e8346b07bb5f15475c79a6d94c0e0a05f238a28a4133f57b186",
+        "game-001-1.json": "d34decb7f20af4e83712345d9f2fd968b91cc65c29fb1eea8e3db17e86eee8a5",
+        "game-002-0.json": "d2590f871e2a7ed125cb1708bde4c17f659606a903f91641335c8ec89c72bab2",
+        "game-002-1.json": "8f0e8fd153f8a35e3a5db413bd401bfa6dadaf59e088a9a8daca1f905bfe938f",
+        "game-003-0.json": "90e1c7d9c62b3c26be542778972cb0a51afe9c0a79c31fc13877ff9a14fa61d4",
+        "game-003-1.json": "0f17cdad0bede5df3e0f690d9a80a5363100e288fb1d2ce8363e293008bac56d",
+        "game-004-0.json": "3770d99164e8321b60d313ce844429aa44ac50d53b719247d2a6ea9657488631",
+        "game-004-1.json": "fbbaed9f12031d4589f6e89561cbe5225efae67405b230b4c8f97f22676120c8",
+        "game-005-0.json": "cab29aaa83ffec9dbfa995c0021f9e58e1dca61150fe123ccf5c69f99fcae822",
+        "game-005-1.json": "2c3b796ab6379e8f9301740904f6ba8a37863aeeb5e82a0b0d7f026ca8be1288",
+        "game-006-0.json": "f45971d9becf997f4805e6fcbe560ade925fce2bffc1e45eb56a8846843560dd",
+        "game-006-1.json": "7fb67ce97d3c9ebded2ab7ee89c014453704279ddccfcb6c8e85db04f29b8677",
+        "game-007-0.json": "f95456841817a132e130f46455e922552bab7d4caa2e76f8cd76dd3b3019798b",
+        "game-007-1.json": "797bd14de506a669ff5d8df88601630ad9e2d4f79104dd89d2541c320870f143"
+      }
+    },
+    {
+      "id": "aligned-97-vs-gen32",
+      "summary": {
+        "completed_games": 16,
+        "expected_games": 16,
+        "scored": 16,
+        "wins": 5,
+        "draws": 7,
+        "losses": 4,
+        "censored": 0,
+        "full_allocation_score_bounds": [
+          0.53125,
+          0.53125
+        ],
+        "complete_pairs": 8,
+        "score": 0.53125,
+        "paired_bootstrap_95": [
+          0.3125,
+          0.71875
+        ],
+        "hoeffding_95": [
+          0.051088604340039645,
+          1
+        ],
+        "scope": "Training-method development screen; left-arm score; reused openings, no final or equal-time Elo claim"
+      },
+      "elapsed_seconds": 43.71891980001237,
+      "resources": {
+        "cpu_percent": 11.979166666666663,
+        "available_gib": 16.047714233398438,
+        "utc": "2026-10-28T20:21:47Z"
+      },
+      "games": {
+        "game-000-0.json": "67d62edeb4c42a8e7d31e2560b438909d983d584358828cf9b345a154b6529e4",
+        "game-000-1.json": "dbceba9b431e09aca4454155353e54237fa03e67004a882b1d535aa8ef7ea058",
+        "game-001-0.json": "cbbf6c815fe7de5fc5c1ff8f6717e4dfe03102f4704043fabb437d15d249299d",
+        "game-001-1.json": "7d3511586025baf49fedfd8c37bf81a74823e1e34862d56c7b15d1de8b89c937",
+        "game-002-0.json": "00eb78e41456a2479f6ff69f0d4a7261957317457edcbd1924cc19cbff775fdd",
+        "game-002-1.json": "7c3df98dd41920ec73a08e1b75d19877004971f330d7fdba06441bdd2b456aa9",
+        "game-003-0.json": "636e646c4b67cef2affe2ecb5473d7b133998970817e0d98e00626ff9475c2ab",
+        "game-003-1.json": "1961a333ad736a43f3d89b26fad2690bc5108c187c091da3cf38cdf374fa5bc3",
+        "game-004-0.json": "a0649d8c14ebaee66b270ed6b92eb2f6b5573037a8a842dca04f85da48e7638b",
+        "game-004-1.json": "67507bedaa78c506754593dd8342286cb3dfa30af651e0713f25211f65e59f8e",
+        "game-005-0.json": "bef5912d55ff44abc9fe969d3630b34aaf1a6aae2e9a316bb19a3db1700796ce",
+        "game-005-1.json": "791e37964f602a8a31f929f3c087374d60f351624755c099e2b268739b9f9ad2",
+        "game-006-0.json": "3744ee4425f4dbc677e55ed9aca5a2cc0006630195b5f27d85eab0af8fbe7468",
+        "game-006-1.json": "bbd5a5490ae650f7fcf789d570d7ee81b78ca44aadbc35f28bdf98e97ea559cf",
+        "game-007-0.json": "3f0b9f90a6ca09b57d0cd3614c3a01d7f2e4b4c85b0eaa1f4834c96fb3c4e11f",
+        "game-007-1.json": "39b5848148de0d36aa8bc33b0c2b0b295b8c4bb3242e0e0951d25438a1296e89"
+      }
+    }
+  ],
+  "prediction_audit": [
+    {
+      "positions": 4096,
+      "validation_mse": 0.03383064842165796,
+      "sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "maximum_full_cache_error_pawns": 7.993605777301127e-15,
+      "model": "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\production\\bre-pair2-g32.brn-pair2"
+    },
+    {
+      "positions": 4096,
+      "validation_mse": 0.025378064606794672,
+      "sha256": "f2064ddd932e70588bc5b6c8cb81d929a76b3ebd77a43b7a41efb5ecbd4e985f",
+      "maximum_full_cache_error_pawns": 7.993605777301127e-15,
+      "model": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r002-coverage-aligned-71\\epoch-16.brn-pair2"
+    },
+    {
+      "positions": 4096,
+      "validation_mse": 0.025356409537770797,
+      "sha256": "abef12e2d0295a7de0338d9872229bc542b76200f16068f0a655fbce45f3d6c5",
+      "maximum_full_cache_error_pawns": 7.993605777301127e-15,
+      "model": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r002-coverage-aligned-97\\epoch-16.brn-pair2"
+    },
+    {
+      "positions": 4096,
+      "validation_mse": 0.033111686647386014,
+      "sha256": "f6661dc85803084c703c754677e4e17d113ee28b2c1ac7a8073c5304c40fde84",
+      "maximum_full_cache_error_pawns": 7.993605777301127e-15,
+      "model": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r002-coverage-legacy-71\\epoch-16.brn-pair2"
+    },
+    {
+      "positions": 4096,
+      "validation_mse": 0.03311563207122318,
+      "sha256": "7c4428e4615ce9f8abb1cde16bb8311466061c2de7e32e97f09dbccab1f72bfb",
+      "maximum_full_cache_error_pawns": 7.993605777301127e-15,
+      "model": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r002-coverage-legacy-97\\epoch-16.brn-pair2"
+    }
+  ],
+  "bindings": {
+    "docs\\research\\brn-relational-cglhw\\r002-games-plan.json": "2f65425566fffa07466594668c14ccf3012777027f75231d2aad8cb7203856bf",
+    "docs\\research\\brn-relational-cglhw\\raw\\r002-games\\binding.json": "4de2896fc19cf2bc898eb8efacb4e437a141ddec6431fa74e98e12508d86ff6a",
+    "docs\\research\\brn-relational-cglhw\\raw\\r002-games\\results.json": "36d09f07b81240755be06af119e55f718744e27414c1b4ee19890c23baa6cdd9",
+    "docs\\research\\brn-relational-cglhw\\raw\\r002-games\\prediction-audit.json": "ab625a0dd64e91cc12f94c4d8b288bdaa6283ac6bd8ff150d3419e3f58d260f4"
+  },
+  "release_receipts": [
+    {
+      "remaining": 0,
+      "errors": []
+    },
+    {
+      "remaining": 0,
+      "errors": []
+    },
+    {
+      "remaining": 0,
+      "errors": []
+    },
+    {
+      "remaining": 0,
+      "errors": []
+    }
+  ],
+  "decision": "Alignment improves both tiny matched-legacy screens; results against Gen32 are mixed and inconclusive. No promotion; admit one bounded data-coverage expansion."
+}

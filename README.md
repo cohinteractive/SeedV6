@@ -1,5 +1,10 @@
 # SeedV6
 
+The active [BRN relational evaluator research workstream](docs/research/brn-relational-cglhw/STATE.md)
+targets the strong CP64 NNUE with resource-bounded autonomous experiments and
+fixed-work comparisons. Its unique resume entry point preserves older completed
+and suspended programmes separately; it does not authorize production promotion.
+
 SeedV6 is a Java 21 chess engine with UCI, desktop Play, and Network Training.
 The production and Search Phase 3 baseline is full **Construction V1 +
 Conventional NNUE CP64** (S6CNU002, eight material heads). GUI Play, ordinary Arena

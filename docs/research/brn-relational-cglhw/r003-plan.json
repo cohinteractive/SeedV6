@@ -1,0 +1,14 @@
+{
+  "configs": [
+    "docs\\research\\brn-relational-cglhw\\r003-unary-71.json",
+    "docs\\research\\brn-relational-cglhw\\r003-unary-97.json",
+    "docs\\research\\brn-relational-cglhw\\r003-edge-71.json",
+    "docs\\research\\brn-relational-cglhw\\r003-edge-97.json",
+    "docs\\research\\brn-relational-cglhw\\r003-context-71.json",
+    "docs\\research\\brn-relational-cglhw\\r003-context-97.json"
+  ],
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r003-runtime",
+  "main_class": "GraphEnergyDiagnostic",
+  "max_seconds_per_arm": 300,
+  "summary": "docs\\research\\brn-relational-cglhw\\raw\\r003-executions.json"
+}

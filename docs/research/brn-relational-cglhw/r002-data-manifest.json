@@ -1,0 +1,25 @@
+{
+  "schema": "brn-relational-objective-sample-v1",
+  "source": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-data",
+  "source_hashes": {
+    "train.data": "b9306efe0675a0e0c0c3bea9d64e4bccda856f35ebafe79ab5a87472ca5b9e2c",
+    "validation.txt": "1293de0195bd431d451791c6017b9f3a5819b7b5b9bd623b91509ad868c2cfe3"
+  },
+  "source_manifest_sha256": "728691ec04d8b2e45749b6b04ea951f810ac00342c9907d39ce90116ea9fb0ba",
+  "seed": 20261029,
+  "train": 16384,
+  "validation": 4096,
+  "files": {
+    "train.tsv": "0e1be5d3f45f233b0a2dc30cabe4e6c0728b4f7d2d317b298e5c7f09ef1ddb7a",
+    "validation.tsv": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+    "selected-indices.json": "62d4bb483ea0e3014bc839f69b78295e3d11dc2501abcc26f34f83f12413d5b4"
+  },
+  "resources": {
+    "cpu_percent": 9.375,
+    "available_gib": 16.27713394165039,
+    "utc": "2026-10-28T19:58:48Z"
+  },
+  "grouping": "placement+STM plus color/rank and horizontal equivalents; validation first; unique within/across subset",
+  "target": "STM sigmoid(BT4 inverse-Q logit400 / 400); validation source CP was White-relative",
+  "limitations": "consumed development data, no game IDs; not independent of CP64 training/selection; train normalization discards rule state not used by evaluators"
+}

@@ -1,0 +1,17 @@
+{
+  "mode": "legacy",
+  "seed": 71,
+  "rate": 0.01,
+  "epochs": 64,
+  "train": "docs\\research\\brn-relational-cglhw\\raw\\r002-data\\train.tsv",
+  "validation": "docs\\research\\brn-relational-cglhw\\raw\\r002-data\\validation.tsv",
+  "train_sha256": "0e1be5d3f45f233b0a2dc30cabe4e6c0728b4f7d2d317b298e5c7f09ef1ddb7a",
+  "validation_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+  "cp64": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-legacy-71",
+  "initial_epoch": 4,
+  "initial_state": "docs\\research\\brn-relational-cglhw\\raw\\r002-legacy-71\\epoch-4.state",
+  "initial_state_sha256": "961db96259eb1f155d2e4bf4584c8ee8f42c0f2ac48b4eb7a638cfa9c303288e",
+  "parent_config": "docs\\research\\brn-relational-cglhw\\r002-legacy-71.json",
+  "parent_config_sha256": "61aab8514fe6fce0c4d4afef9a5ad890840f1ac84b83650c0d1a0cc8307f1db4"
+}

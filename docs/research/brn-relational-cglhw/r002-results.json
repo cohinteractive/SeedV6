@@ -1,0 +1,349 @@
+{
+  "id": "R002",
+  "stage": "four-epoch-pilot",
+  "arms": [
+    {
+      "cp64_validation_mse": 0.016369294278498755,
+      "scope": "development objective diagnostic; no strength claim; research checkpoint envelope required",
+      "validation_positions": 4096,
+      "train_positions": 16384,
+      "metrics": [
+        {
+          "validation_mse": 0.03223309952640551,
+          "epoch": 0
+        },
+        {
+          "model_sha256": "608c730f6e6166975a2f72ab091825d64c585901eba7c1aae0787063f3b48f1c",
+          "objective": "aligned",
+          "updates": 128,
+          "validation_mse": 0.030976758219913525,
+          "epoch": 1,
+          "train_mse": 0.03112433838535741,
+          "state_sha256": "e1ea4d957487b2881605787d95d4542cd82098453be4a618ec6adccfa02c5766",
+          "seconds": 0.3323335
+        },
+        {
+          "model_sha256": "c7ce2b47fa5d09f1066eec2c935a9eb110a02194749b56ea03db39a8110c322a",
+          "objective": "aligned",
+          "updates": 256,
+          "validation_mse": 0.03021193290034637,
+          "epoch": 2,
+          "train_mse": 0.029927034210617195,
+          "state_sha256": "6c9df306e185848abb3aa124214d76b4dc7595126bac40f57abf441cc738b953",
+          "seconds": 0.2314924
+        },
+        {
+          "model_sha256": "1c5ab2fa88b4922c1e12531e59edce15cbd80ca2c088f5e871b498eb17c4c11b",
+          "objective": "aligned",
+          "updates": 384,
+          "validation_mse": 0.029774212118863743,
+          "epoch": 3,
+          "train_mse": 0.02915475133989785,
+          "state_sha256": "ea60ced8015c1446de2b09c988146739e492a59de21a0bad3ca680f2b4e98e13",
+          "seconds": 0.225276
+        },
+        {
+          "model_sha256": "8f7ee1938fa7fcda001b884a3029567b2d84a32a375733c731fbad5207259c5b",
+          "objective": "aligned",
+          "updates": 512,
+          "validation_mse": 0.029305459885999377,
+          "epoch": 4,
+          "train_mse": 0.02837523024291051,
+          "state_sha256": "0b9ec9f29df50d26e683ecdf31ba019308e4fbe55357b4099ba32a393301467d",
+          "seconds": 0.2200151
+        }
+      ],
+      "mode": "aligned",
+      "seed": 71,
+      "seconds": 1.0994398,
+      "evidence_path": "docs\\research\\brn-relational-cglhw\\raw\\r002-aligned-71\\result.json",
+      "sha256": "fb680108e5f613ec97858e6842e74e1efc3f0ec67c99a51b8bbe71ba074921e4"
+    },
+    {
+      "mode": "aligned",
+      "metrics": [
+        {
+          "epoch": 0,
+          "validation_mse": 0.03223309952640551
+        },
+        {
+          "state_sha256": "85d014c3c87e39e8970710f82750fc31d3f5fd17f87358ea24871c87e6a66a4d",
+          "train_mse": 0.031136285564565453,
+          "epoch": 1,
+          "validation_mse": 0.031041383050477742,
+          "updates": 128,
+          "objective": "aligned",
+          "model_sha256": "a9e485274936a6af3a39bf94b1bde8502db2b64a74ec2c89437f09601a28d577",
+          "seconds": 0.3366229
+        },
+        {
+          "state_sha256": "ea174f333458984232031ade0a6471457ea5aeee8fef26e4ded9bf7424b713f6",
+          "train_mse": 0.029905421317136756,
+          "epoch": 2,
+          "validation_mse": 0.030171622613133647,
+          "updates": 256,
+          "objective": "aligned",
+          "model_sha256": "8c43ef7af0f696311fa7945a9392fbd265e423730e7676a05d0c78ed639a9234",
+          "seconds": 0.229492
+        },
+        {
+          "state_sha256": "ccac45403d9a2b0e190eeabbfa1d2e316bc7d57d38e07bbcb7a061d4cf8d9c82",
+          "train_mse": 0.029052367724753114,
+          "epoch": 3,
+          "validation_mse": 0.029661416559484656,
+          "updates": 384,
+          "objective": "aligned",
+          "model_sha256": "961f0219046210efd48d7aec6c7acb78c4dc9270b36c347e509190bf84c1b61e",
+          "seconds": 0.2209795
+        },
+        {
+          "state_sha256": "e019e1f1a9fb2ad2c34d73d210731945251d9cbf21f7175486abbebb20b0470a",
+          "train_mse": 0.028382142632324043,
+          "epoch": 4,
+          "validation_mse": 0.02930161076542412,
+          "updates": 512,
+          "objective": "aligned",
+          "model_sha256": "ebf6ab56f457f916c25528a47fea726751aa58399af7f394a82b13f8f1d52a84",
+          "seconds": 0.2434878
+        }
+      ],
+      "train_positions": 16384,
+      "validation_positions": 4096,
+      "scope": "development objective diagnostic; no strength claim; research checkpoint envelope required",
+      "cp64_validation_mse": 0.016369294278498755,
+      "seconds": 1.1203566,
+      "seed": 97,
+      "evidence_path": "docs\\research\\brn-relational-cglhw\\raw\\r002-aligned-97\\result.json",
+      "sha256": "d2d45b86691fbd64b16853029e3a8efa37f37d2eb863eba220474309c59ea131"
+    },
+    {
+      "cp64_validation_mse": 0.016369294278498755,
+      "seconds": 0.9660546,
+      "seed": 71,
+      "mode": "legacy",
+      "metrics": [
+        {
+          "epoch": 0,
+          "validation_mse": 0.03223309952640551
+        },
+        {
+          "model_sha256": "984387d7ab579ac0379e8f543c3a62dbfe0ced40e13244c5004eeddc7f056008",
+          "seconds": 0.2888447,
+          "state_sha256": "27b7d0c3aab9af6c4938b6d7cdb5344a526a98d8acdfcdc9bf9974c7eec88ada",
+          "train_mse": 0.03257792757263699,
+          "epoch": 1,
+          "validation_mse": 0.0321276031439305,
+          "updates": 128,
+          "objective": "legacy"
+        },
+        {
+          "model_sha256": "e3f6ca61222b76af0b28ff7a2e4014fe0efddcbbcd7bccfb324093b0a4feec22",
+          "seconds": 0.2081608,
+          "state_sha256": "8990c423b40d170f5b2175ba3ee1c0cbd003dc8b89026dafbf9318b5c46c0032",
+          "train_mse": 0.03250788444501388,
+          "epoch": 2,
+          "validation_mse": 0.03214105714890462,
+          "updates": 256,
+          "objective": "legacy"
+        },
+        {
+          "model_sha256": "a6e5a746b54cd69ac736b74409e7d22124ac8620d3a48fa19fe392c542cf17da",
+          "seconds": 0.1872335,
+          "state_sha256": "77af77a135d9921d68fff701f7df24c82eb06f053d8cbf09a51189ce8f5abf8a",
+          "train_mse": 0.03243932207139067,
+          "epoch": 3,
+          "validation_mse": 0.032131518337745926,
+          "updates": 384,
+          "objective": "legacy"
+        },
+        {
+          "model_sha256": "77cfeb573c3f97aff349a5986b5ea7651b8a45e6451c2f83fed7562aaff664c4",
+          "seconds": 0.1898189,
+          "state_sha256": "961db96259eb1f155d2e4bf4584c8ee8f42c0f2ac48b4eb7a638cfa9c303288e",
+          "train_mse": 0.03239833063194455,
+          "epoch": 4,
+          "validation_mse": 0.03212384376681606,
+          "updates": 512,
+          "objective": "legacy"
+        }
+      ],
+      "train_positions": 16384,
+      "validation_positions": 4096,
+      "scope": "development objective diagnostic; no strength claim; research checkpoint envelope required",
+      "evidence_path": "docs\\research\\brn-relational-cglhw\\raw\\r002-legacy-71\\result.json",
+      "sha256": "c3139cfa7cb29133fff91f8cf30b944b929b9b751e1eaeb1e346f62d63054a5f"
+    },
+    {
+      "cp64_validation_mse": 0.016369294278498755,
+      "scope": "development objective diagnostic; no strength claim; research checkpoint envelope required",
+      "validation_positions": 4096,
+      "train_positions": 16384,
+      "metrics": [
+        {
+          "validation_mse": 0.03223309952640551,
+          "epoch": 0
+        },
+        {
+          "model_sha256": "eafcc4c7cab5e9b06a8d0722f3e6b91a59b3bcc02806d168e6016b6e05c756c9",
+          "objective": "legacy",
+          "updates": 128,
+          "validation_mse": 0.032158245814897284,
+          "epoch": 1,
+          "train_mse": 0.03260056009973831,
+          "state_sha256": "81bc9f55648df485a4246668c2906094303525be769ad2a51aa5a0f502d9e625",
+          "seconds": 0.2734217
+        },
+        {
+          "model_sha256": "a591609aa6370300140ccdf0ea7ec60096ba71fb4e2c5f93aeb192863e22d6f9",
+          "objective": "legacy",
+          "updates": 256,
+          "validation_mse": 0.03213303844110922,
+          "epoch": 2,
+          "train_mse": 0.032503938547729365,
+          "state_sha256": "275581ba22a1db1982e4f3ad6f9031f4e0288a3f9065e8a1a94715260569ae21",
+          "seconds": 0.1970626
+        },
+        {
+          "model_sha256": "79f8b2a3834bab3647079b8b508e633a68b1501b6b5ebe71f12c467d1a0c877d",
+          "objective": "legacy",
+          "updates": 384,
+          "validation_mse": 0.03213705143014161,
+          "epoch": 3,
+          "train_mse": 0.03244622575930251,
+          "state_sha256": "7a0341e4f283295ccddd4d80cc16b26fb5a2c2225a0ed80829ad25ca490d9e27",
+          "seconds": 0.2282313
+        },
+        {
+          "model_sha256": "9276e7efd47f35bab8f36080b99828aba60b03cfb8b8f3ef444e75f38efdf664",
+          "objective": "legacy",
+          "updates": 512,
+          "validation_mse": 0.03217062703249124,
+          "epoch": 4,
+          "train_mse": 0.03243540770446271,
+          "state_sha256": "ba559a09216f5124e524b1e006a102fb2dc27845bdc9a53166cc9a06cd7703ca",
+          "seconds": 0.2278874
+        }
+      ],
+      "mode": "legacy",
+      "seed": 97,
+      "seconds": 1.0152251,
+      "evidence_path": "docs\\research\\brn-relational-cglhw\\raw\\r002-legacy-97\\result.json",
+      "sha256": "71af54a035cdc7ae65f66c633705997d208d0a0c01ac97d1aaa74e06f5cb9474"
+    }
+  ],
+  "decision": "Both aligned seeds exceed the 2% development-loss admission gate; admit a bounded learning-depth follow-up, no strength claim.",
+  "executions": {
+    "arms": [
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r002-legacy-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 2.117382300028112,
+        "resources": [
+          {
+            "cpu_percent": 45.3125,
+            "available_gib": 16.028247833251953,
+            "utc": "2026-10-28T20:00:37Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r002-runtime\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.PairObjectiveDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r002-legacy-71.json"
+        ],
+        "last_complete_epoch": 4,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r002-legacy-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 1.9950088000041433,
+        "resources": [
+          {
+            "cpu_percent": 26.041666666666664,
+            "available_gib": 16.126331329345703,
+            "utc": "2026-10-28T20:00:40Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r002-runtime\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.PairObjectiveDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r002-legacy-97.json"
+        ],
+        "last_complete_epoch": 4,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r002-aligned-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 2.084933700039983,
+        "resources": [
+          {
+            "cpu_percent": 33.86243386243386,
+            "available_gib": 16.08684539794922,
+            "utc": "2026-10-28T20:00:42Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r002-runtime\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.PairObjectiveDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r002-aligned-71.json"
+        ],
+        "last_complete_epoch": 4,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r002-aligned-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 2.130062700016424,
+        "resources": [
+          {
+            "cpu_percent": 16.84210526315789,
+            "available_gib": 16.10015869140625,
+            "utc": "2026-10-28T20:00:44Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r002-runtime\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.PairObjectiveDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r002-aligned-97.json"
+        ],
+        "last_complete_epoch": 4,
+        "process_absent": true
+      }
+    ]
+  },
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.PairObjectiveDiagnosticTest",
+    "tests": "3",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T19:59:25",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.232"
+  }
+}

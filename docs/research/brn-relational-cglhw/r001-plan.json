@@ -1,0 +1,33 @@
+{
+  "id": "R001",
+  "runtime": "docs/research/brn-relational-cglhw/raw/r001/runtime",
+  "output": "docs/research/brn-relational-cglhw/raw/r001",
+  "nodes": 10000,
+  "games": 16,
+  "max_plies": 640,
+  "openings": "docs/research/conventional-nnue-cglhw/openings-screen.json",
+  "models": {
+    "cp64": {
+      "path": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+      "sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+      "bytes": 3940952
+    },
+    "brep2": {
+      "path": "build-assets/production/bre-pair2-g32.brn-pair2",
+      "sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "bytes": 795032
+    }
+  },
+  "openings_sha256": "09e46f558260a4545b7f52fccad501b24953fc352ef8730845352a92340e2fc4",
+  "probe_nodes": [
+    1,
+    100,
+    10000
+  ],
+  "probe_fens": [
+    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+    "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+    "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1"
+  ]
+}

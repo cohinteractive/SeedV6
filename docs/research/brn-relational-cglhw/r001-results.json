@@ -1,0 +1,69 @@
+{
+  "id": "R001",
+  "status": "complete-development-inconclusive",
+  "preflight_requests": 48,
+  "preflight_seconds": 2.0174012999632396,
+  "match_seconds": 45.00306089996593,
+  "summary": {
+    "completed_games": 16,
+    "expected_games": 16,
+    "scored": 16,
+    "wins": 3,
+    "draws": 7,
+    "losses": 6,
+    "censored": 0,
+    "full_allocation_score_bounds": [
+      0.40625,
+      0.40625
+    ],
+    "complete_pairs": 8,
+    "score": 0.40625,
+    "paired_bootstrap_95": [
+      0.21875,
+      0.59375
+    ],
+    "hoeffding_95": [
+      0,
+      0.8864113956599604
+    ],
+    "scope": "reused development openings; tiny sample, no confirmation or equal-time Elo claim"
+  },
+  "files": {
+    "docs\\research\\brn-relational-cglhw\\r001-plan.json": "8ff200191edda6d19eff347fd8f6c8535582d2bff7baacd21286e1e7629d72f7",
+    "docs\\research\\brn-relational-cglhw\\raw\\r001\\preflight\\result.json": "be4c52cd937d0160ae69120dc09b2749a983019a2ba78b7ad21f9da9706f838f",
+    "docs\\research\\brn-relational-cglhw\\raw\\r001\\preflight\\binding.json": "b99b3030febdcca7c173ba7049ee25f0bd9fbea5c1c0496ab902cdf151ffe521",
+    "docs\\research\\brn-relational-cglhw\\raw\\r001\\match\\result.json": "78b330b29e19ea543140955763e2e311fd2bdc0927125dc9078e93614087e411",
+    "docs\\research\\brn-relational-cglhw\\raw\\r001\\match\\binding.json": "b99b3030febdcca7c173ba7049ee25f0bd9fbea5c1c0496ab902cdf151ffe521"
+  },
+  "game_sha256": {
+    "game-000-0.json": "bfed7569dd8c3c965613141d5a925744b07a70cea00f0ad71de793c21e2cdac2",
+    "game-000-1.json": "df57a46afd6670fe8e371ec44c25e8753a5a4b83c1e9869f60fa874bf2fdbd59",
+    "game-001-0.json": "075424f9bd24670d9ab0b310e7096534873cf2084adc969b5f21009ac629874e",
+    "game-001-1.json": "1e80d3f19c33ab748d51a0c269749175cc4d22f182a4e7559285e9f2baf6f4a7",
+    "game-002-0.json": "908e2a28f930912cf345d8877788490570765baceba7939c4f20ae7a25e65a7d",
+    "game-002-1.json": "5f1221bc557380f33d16ab5160eb61e337132415104def504008e58306ebaba7",
+    "game-003-0.json": "77b3458b60f1423cbaae5f6b1cd0524c557d07d7313a055312a7afa6f5ea17fd",
+    "game-003-1.json": "57a7c03dfe8b9d02ee12f301d794c9461e915bf130ec41e37220154b9953d2bc",
+    "game-004-0.json": "f86c7e1dc8994aef5c75268a8eef94fc992d08122b3d9d624d53657abf4f206a",
+    "game-004-1.json": "57dd9ba0de0c6a9b75fd296ebb864eb29af827660f8b40b2124fbd1b3ef55fc0",
+    "game-005-0.json": "3da1a1fdaa510d896f9e600cfb97d09794e320e18da8b4d556dcf3acd4eeb6db",
+    "game-005-1.json": "4dd95d20773cc9677cb65180eece114152f584acf1423aede89a81cb2294b431",
+    "game-006-0.json": "b9bca23e2541a0885a68d9198f7b29f33c6064d0740bd5087b2df49da48783aa",
+    "game-006-1.json": "6600a36a650da49bff2d32435bbda8af90bbe6b124f84c8db313fc6f9b0c4bc8",
+    "game-007-0.json": "05e731a26e8d7bd947187b14bf7bd6b80ae1269baa18fd522f02ae3f5178ae70",
+    "game-007-1.json": "830b70e60b08c9a4b32c6faa707bfbb953f69c3f0e84fcb06588cfe7c246d857"
+  },
+  "resources_at_admission": [
+    {
+      "cpu_percent": 19.270833333333336,
+      "available_gib": 16.53860092163086,
+      "utc": "2026-10-28T19:53:56Z"
+    },
+    {
+      "cpu_percent": 7.853403141361259,
+      "available_gib": 16.72861099243164,
+      "utc": "2026-10-28T19:54:19Z"
+    }
+  ],
+  "owned_processes_remaining": 0
+}

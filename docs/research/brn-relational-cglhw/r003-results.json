@@ -1,0 +1,615 @@
+{
+  "id": "R003",
+  "stage": "8-epoch-pilot",
+  "arms": [
+    {
+      "checksum": 392932,
+      "scope": "development pilot; no incremental/search/strength qualification",
+      "preparation_seconds": 0.5542423,
+      "parameters": 292369,
+      "seed": 71,
+      "metrics": [
+        {
+          "epoch": 0,
+          "validation_mse": 0.03223309952640551
+        },
+        {
+          "state_sha256": "314eea688e93d3b409effc77192067673903aa0be226a3b235b5d15d0bc15bbd",
+          "updates": 128,
+          "epoch": 1,
+          "train_mse": 0.03057970789977375,
+          "validation_mse": 0.03086040905353573
+        },
+        {
+          "state_sha256": "21a13d0b8901ae16291c5e6433f65c79ef31fc67a63c298ebe96957873219c48",
+          "updates": 256,
+          "epoch": 2,
+          "train_mse": 0.029223054364200297,
+          "validation_mse": 0.030263001593072603
+        },
+        {
+          "state_sha256": "34affe33b85fcde8ad9c2bbbe9f3aa04dd35187628108eb0934b16a3fc54f8b8",
+          "updates": 384,
+          "epoch": 3,
+          "train_mse": 0.028284890621130876,
+          "validation_mse": 0.029761708378977972
+        },
+        {
+          "state_sha256": "2ac72b7c3faf18dec565f369cba473732530aaa9723b2dbd22b0c564934cd340",
+          "updates": 512,
+          "epoch": 4,
+          "train_mse": 0.027562885377962743,
+          "validation_mse": 0.029513844387912148
+        },
+        {
+          "state_sha256": "77a2248046994fefe795962a8b08777769141c06c4388aa587384e1c8c98d9ab",
+          "updates": 640,
+          "epoch": 5,
+          "train_mse": 0.027015470732611176,
+          "validation_mse": 0.029259232085288293
+        },
+        {
+          "state_sha256": "de3f2329819a001224b550e36c0ff8d85fd54276690a4419d4caacecad82d296",
+          "updates": 768,
+          "epoch": 6,
+          "train_mse": 0.02653997019346529,
+          "validation_mse": 0.029095884346589128
+        },
+        {
+          "state_sha256": "30f6c2f846e212580514e26fbb705d0016a6fd260f4504e1653177bd81ca0d84",
+          "updates": 896,
+          "epoch": 7,
+          "train_mse": 0.026151163761505905,
+          "validation_mse": 0.028976134097609046
+        },
+        {
+          "state_sha256": "808d9c3438d64c04f9aa020f2bc7bca01d004ff4ce081790ee4da304237aac09",
+          "updates": 1024,
+          "epoch": 8,
+          "train_mse": 0.025818385111350643,
+          "validation_mse": 0.028864276479593838
+        }
+      ],
+      "mode": "CONTEXT",
+      "full_graph_inference_ns": 1483.5,
+      "optimization_checkpoint_seconds": 0.5153292,
+      "evidence_path": "docs\\research\\brn-relational-cglhw\\raw\\r003-context-71\\result.json",
+      "sha256": "f40e2349b6897e789026fb2c4b8caf12478d2c5b1f84a11cca8283650b341606"
+    },
+    {
+      "optimization_checkpoint_seconds": 0.5250609,
+      "full_graph_inference_ns": 984.665,
+      "mode": "CONTEXT",
+      "metrics": [
+        {
+          "epoch": 0,
+          "validation_mse": 0.03223309952640551
+        },
+        {
+          "epoch": 1,
+          "updates": 128,
+          "state_sha256": "24019d0409414a5972f51efb4d735f62800dc840b67072d2819985a9eae2d989",
+          "validation_mse": 0.030908427183254036,
+          "train_mse": 0.03056729140959179
+        },
+        {
+          "epoch": 2,
+          "updates": 256,
+          "state_sha256": "58ebfe53cb5b3b0fa45a4494904b10ed88941d8c594462e62f940da9a8f1cfd2",
+          "validation_mse": 0.030195408059224032,
+          "train_mse": 0.029212848095584044
+        },
+        {
+          "epoch": 3,
+          "updates": 384,
+          "state_sha256": "9b6f9b33c52a3ce39a328557a4f39f91558b9f9daefed2cc9a6fc5ebd2596938",
+          "validation_mse": 0.029786606382350554,
+          "train_mse": 0.028280433423590393
+        },
+        {
+          "epoch": 4,
+          "updates": 512,
+          "state_sha256": "e32f0a21b0860e5a8b0a397716cc7f1dd53b605cb3846495e33a147a11274f04",
+          "validation_mse": 0.029474014436420348,
+          "train_mse": 0.027558168145152624
+        },
+        {
+          "epoch": 5,
+          "updates": 640,
+          "state_sha256": "91a9f7e57671a86b85cfc928bdb34146ec382843f3b991519da791ae1277a677",
+          "validation_mse": 0.029336910950330353,
+          "train_mse": 0.027028446299015612
+        },
+        {
+          "epoch": 6,
+          "updates": 768,
+          "state_sha256": "6655b1e58ea5644c45a7c19025a8e6f167a779aa06cfcd6130f2e5369db59736",
+          "validation_mse": 0.02911583901958301,
+          "train_mse": 0.026546873144611974
+        },
+        {
+          "epoch": 7,
+          "updates": 896,
+          "state_sha256": "42a8ade7545fe3c8f01b2fbb0a16b7df1f76e76e4760a59360c8e77e94d94bcc",
+          "validation_mse": 0.029000764180040193,
+          "train_mse": 0.026152998017657664
+        },
+        {
+          "epoch": 8,
+          "updates": 1024,
+          "state_sha256": "9b34b47025121742d1c37d5ea3eb1d41fc230dc2e83a631aa54f19f9b950dc21",
+          "validation_mse": 0.028877467207398273,
+          "train_mse": 0.025809011397181773
+        }
+      ],
+      "seed": 97,
+      "parameters": 292369,
+      "preparation_seconds": 0.4608092,
+      "scope": "development pilot; no incremental/search/strength qualification",
+      "checksum": 392932,
+      "evidence_path": "docs\\research\\brn-relational-cglhw\\raw\\r003-context-97\\result.json",
+      "sha256": "b53fc48a3f0628c02e8c7c5ae622ff1af922dd684a72f8d7c18debf04d5bbe93"
+    },
+    {
+      "mode": "EDGE",
+      "metrics": [
+        {
+          "epoch": 0,
+          "validation_mse": 0.03223309952640551
+        },
+        {
+          "state_sha256": "ac9ab8b29764629a9723b68f39c01f1c37b5d602aaa178259b5f2268a6aba437",
+          "validation_mse": 0.030817346091565088,
+          "train_mse": 0.03060182291150736,
+          "epoch": 1,
+          "updates": 128
+        },
+        {
+          "state_sha256": "791ff76620a68770a2568607872af80dccb2562da7a68580629a4deb18caaa97",
+          "validation_mse": 0.030208062440067806,
+          "train_mse": 0.029328728349557607,
+          "epoch": 2,
+          "updates": 256
+        },
+        {
+          "state_sha256": "65416cb4f553be3f62e2ff267f2095b89aab99f714cd725c6082dd1f793d050a",
+          "validation_mse": 0.029689643798195317,
+          "train_mse": 0.028484349121032076,
+          "epoch": 3,
+          "updates": 384
+        },
+        {
+          "state_sha256": "639b86861421b5fb7418dadba596a6f689cfecc9cc274a5f5fcb004523bdafa4",
+          "validation_mse": 0.029430007673317278,
+          "train_mse": 0.027857149450667425,
+          "epoch": 4,
+          "updates": 512
+        },
+        {
+          "state_sha256": "6850203cc04e15f3d9f538b8f8db94ffbe9d90982334140c3aac92e700a6e02e",
+          "validation_mse": 0.02918049853017085,
+          "train_mse": 0.027407029963646867,
+          "epoch": 5,
+          "updates": 640
+        },
+        {
+          "state_sha256": "14933bd9bea4815b8869f0c3b6a514a652f1857f59b6e9e9fce9e74b3a1bd2b3",
+          "validation_mse": 0.029016021598535845,
+          "train_mse": 0.027027841345471343,
+          "epoch": 6,
+          "updates": 768
+        },
+        {
+          "state_sha256": "07030ef2f3068de9aed104e10e735fe0ee44e2241eebe9557da80a52ba4f94df",
+          "validation_mse": 0.02889073432870387,
+          "train_mse": 0.026731750139949752,
+          "epoch": 7,
+          "updates": 896
+        },
+        {
+          "state_sha256": "380d56674e4ae10945ebdf894d493d9abf5c5dceca93b2227db5417099005d0d",
+          "validation_mse": 0.028778931309445952,
+          "train_mse": 0.026500561343502656,
+          "epoch": 8,
+          "updates": 1024
+        }
+      ],
+      "seed": 71,
+      "parameters": 33169,
+      "preparation_seconds": 0.4783546,
+      "scope": "development pilot; no incremental/search/strength qualification",
+      "checksum": 392932,
+      "optimization_checkpoint_seconds": 0.2632008,
+      "full_graph_inference_ns": 1268.625,
+      "evidence_path": "docs\\research\\brn-relational-cglhw\\raw\\r003-edge-71\\result.json",
+      "sha256": "da6380f9162a7219c93048afec6eaf184f8e1b9d3258362e510223d43a40c7be"
+    },
+    {
+      "checksum": 392932,
+      "optimization_checkpoint_seconds": 0.2736819,
+      "full_graph_inference_ns": 891.935,
+      "mode": "EDGE",
+      "metrics": [
+        {
+          "validation_mse": 0.03223309952640551,
+          "epoch": 0
+        },
+        {
+          "validation_mse": 0.030870564198153566,
+          "train_mse": 0.030587598703649632,
+          "epoch": 1,
+          "updates": 128,
+          "state_sha256": "d630999c0835b3388bb30a43c2738b4fb818677df8ee1858b114d1a7c5b34705"
+        },
+        {
+          "validation_mse": 0.030132906976156237,
+          "train_mse": 0.029318105457279673,
+          "epoch": 2,
+          "updates": 256,
+          "state_sha256": "2b6dff4fa231209c83b74a8421c5f7b1114a536cd5a1f86b993c06606d550f71"
+        },
+        {
+          "validation_mse": 0.029717428227950465,
+          "train_mse": 0.028476588605267934,
+          "epoch": 3,
+          "updates": 384,
+          "state_sha256": "683b53bb2fbd561ac333deeedaa874f2469798553eca7ebf858d50bd83a1943a"
+        },
+        {
+          "validation_mse": 0.029399007007713866,
+          "train_mse": 0.027854561492986114,
+          "epoch": 4,
+          "updates": 512,
+          "state_sha256": "433db8bb0ff222973d39420413d6940be4fd4b770970c6094af69c3f90c46a00"
+        },
+        {
+          "validation_mse": 0.02925956853580036,
+          "train_mse": 0.027421767245614088,
+          "epoch": 5,
+          "updates": 640,
+          "state_sha256": "08c0d55ac0ab411093c5e13d64d78e25d7dc8f60aa47337aeefc4b31dec15415"
+        },
+        {
+          "validation_mse": 0.029031004830063416,
+          "train_mse": 0.027033693203851,
+          "epoch": 6,
+          "updates": 768,
+          "state_sha256": "44f3c377c3711ea1ce1da53e97738b83e45dcea9876e01e3781f003fd6cd19ee"
+        },
+        {
+          "validation_mse": 0.028923590493547372,
+          "train_mse": 0.02673632363950787,
+          "epoch": 7,
+          "updates": 896,
+          "state_sha256": "4e403bddd2c6f9ebbe4978642c1270547c3985328714c7a35a3f2e6e8df86a3e"
+        },
+        {
+          "validation_mse": 0.02880143800040205,
+          "train_mse": 0.026485299595090713,
+          "epoch": 8,
+          "updates": 1024,
+          "state_sha256": "d21413236d0c31805c721de077b63c782e700efbacd91eb4ab86a556bfc251de"
+        }
+      ],
+      "seed": 97,
+      "parameters": 33169,
+      "preparation_seconds": 0.532989,
+      "scope": "development pilot; no incremental/search/strength qualification",
+      "evidence_path": "docs\\research\\brn-relational-cglhw\\raw\\r003-edge-97\\result.json",
+      "sha256": "02b13f2da97a06bded130867cb6cd98f54e49c9326603f3b4f02ec9024736ed7"
+    },
+    {
+      "seed": 71,
+      "parameters": 769,
+      "preparation_seconds": 0.4982607,
+      "scope": "development pilot; no incremental/search/strength qualification",
+      "checksum": 392932,
+      "optimization_checkpoint_seconds": 0.1720757,
+      "full_graph_inference_ns": 325.58,
+      "mode": "UNARY",
+      "metrics": [
+        {
+          "epoch": 0,
+          "validation_mse": 0.03223309952640551
+        },
+        {
+          "state_sha256": "32a0b8cafca20b6d489ea38519f91349c910e6f256231d8a55a803e62972f1e5",
+          "validation_mse": 0.030962462068918728,
+          "train_mse": 0.030856865533965053,
+          "epoch": 1,
+          "updates": 128
+        },
+        {
+          "state_sha256": "74dab5ce003d03ee3836c4c67c7d9cdd7f16883893eeb430a2f3bd35c125d1b7",
+          "validation_mse": 0.03040822974411243,
+          "train_mse": 0.02975592593885318,
+          "epoch": 2,
+          "updates": 256
+        },
+        {
+          "state_sha256": "19a347463a548a0b486abb5f0c0a1e94c3af61f5bc9ff831801c5611cb2bb03f",
+          "validation_mse": 0.02995640008616533,
+          "train_mse": 0.029055975009210887,
+          "epoch": 3,
+          "updates": 384
+        },
+        {
+          "state_sha256": "07dfc652009542fb2c5a836d24e02aa59bf0f47329d299c558ce7007c7a00e50",
+          "validation_mse": 0.029746724558536695,
+          "train_mse": 0.02855366148972615,
+          "epoch": 4,
+          "updates": 512
+        },
+        {
+          "state_sha256": "fb632eb34caf4d97f16500d23f5ca9e7f059cdb55cabb334806c241fde70cdd6",
+          "validation_mse": 0.029524817873136502,
+          "train_mse": 0.028205714606890014,
+          "epoch": 5,
+          "updates": 640
+        },
+        {
+          "state_sha256": "cb504cdb16c49ca3c6700eede4e8a9b4e9dbf4744e03838fc3f4e4d52666c474",
+          "validation_mse": 0.029385665549460344,
+          "train_mse": 0.027925746175010722,
+          "epoch": 6,
+          "updates": 768
+        },
+        {
+          "state_sha256": "c7e5c3a69658f7a0ef7c1e5d3cc950e1d497e355f6daf509e0a994cff4252ec7",
+          "validation_mse": 0.029284793939575525,
+          "train_mse": 0.02772298002167654,
+          "epoch": 7,
+          "updates": 896
+        },
+        {
+          "state_sha256": "29da526e6199217063ace850a311cbce6324ddac7f4bf309778c239c2d5fbd4d",
+          "validation_mse": 0.029195312268154753,
+          "train_mse": 0.027566266786009364,
+          "epoch": 8,
+          "updates": 1024
+        }
+      ],
+      "evidence_path": "docs\\research\\brn-relational-cglhw\\raw\\r003-unary-71\\result.json",
+      "sha256": "fd73fef242e5925f2e4e3cc452aa6c28d71c5e3bf2187da26de005e330dc786b"
+    },
+    {
+      "metrics": [
+        {
+          "validation_mse": 0.03223309952640551,
+          "epoch": 0
+        },
+        {
+          "updates": 128,
+          "epoch": 1,
+          "train_mse": 0.030848775940419047,
+          "validation_mse": 0.03101193296633648,
+          "state_sha256": "1ba669d157046656c42dc69fb31121a16e08ea1afe88f00ad4f73df7036c2929"
+        },
+        {
+          "updates": 256,
+          "epoch": 2,
+          "train_mse": 0.029753922491292367,
+          "validation_mse": 0.03035063942176127,
+          "state_sha256": "8a9ef0efb37608c4cf2a2ce9cb769427d83249dc53eabe95d1bf2519e1c09bda"
+        },
+        {
+          "updates": 384,
+          "epoch": 3,
+          "train_mse": 0.029051143500977178,
+          "validation_mse": 0.029984676390935123,
+          "state_sha256": "0f65ae26c3a494b358a4dc111133cb9c2c011870eb4153a6bcf4eade8202b3a1"
+        },
+        {
+          "updates": 512,
+          "epoch": 4,
+          "train_mse": 0.028549775675801043,
+          "validation_mse": 0.02970747478267859,
+          "state_sha256": "10a5f15b44af403db5fb213944e66103a96307281db3b33970eace044094f713"
+        },
+        {
+          "updates": 640,
+          "epoch": 5,
+          "train_mse": 0.028220068487986152,
+          "validation_mse": 0.029598428091609084,
+          "state_sha256": "1bc8ed3e98389d68521fece908f39e31b3b7ddd0c19801b6d405731fbae893df"
+        },
+        {
+          "updates": 768,
+          "epoch": 6,
+          "train_mse": 0.0279363064630431,
+          "validation_mse": 0.029413234307948455,
+          "state_sha256": "509ad9f43d241addcd896f5980bf8b5ab7c90e451d79022fa0df353665aa0b88"
+        },
+        {
+          "updates": 896,
+          "epoch": 7,
+          "train_mse": 0.027722799729861556,
+          "validation_mse": 0.029312021641978898,
+          "state_sha256": "36d95ae17625dd6aaa689681f43ac4831a726465845bf8771ee326ba03ec4daa"
+        },
+        {
+          "updates": 1024,
+          "epoch": 8,
+          "train_mse": 0.0275514222563369,
+          "validation_mse": 0.029214070596473247,
+          "state_sha256": "3e5e9ecaea82c0e16cc3d5adb447f977d6c3ba4233d5747efdc9e73844304832"
+        }
+      ],
+      "mode": "UNARY",
+      "full_graph_inference_ns": 518.61,
+      "optimization_checkpoint_seconds": 0.1896093,
+      "checksum": 392932,
+      "scope": "development pilot; no incremental/search/strength qualification",
+      "preparation_seconds": 0.4539856,
+      "parameters": 769,
+      "seed": 97,
+      "evidence_path": "docs\\research\\brn-relational-cglhw\\raw\\r003-unary-97\\result.json",
+      "sha256": "587e12cfe222006a4f52f916c83654d7c3e6d1b14420e48b20ad96909bb78832"
+    }
+  ],
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.RelationalGraphEnergyTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T20:18:50",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.201"
+  },
+  "executions": {
+    "arms": [
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r003-unary-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 0.9116462000529282,
+        "resources": [
+          {
+            "cpu_percent": 26.80412371134021,
+            "available_gib": 15.551345825195312,
+            "utc": "2026-10-28T20:15:17Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r003-runtime\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.GraphEnergyDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r003-unary-71.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r003-unary-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 0.8810302999918349,
+        "resources": [
+          {
+            "cpu_percent": 16.145833333333336,
+            "available_gib": 15.576828002929688,
+            "utc": "2026-10-28T20:15:18Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r003-runtime\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.GraphEnergyDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r003-unary-97.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r003-edge-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 1.044368000002578,
+        "resources": [
+          {
+            "cpu_percent": 17.708333333333336,
+            "available_gib": 15.537586212158203,
+            "utc": "2026-10-28T20:15:19Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r003-runtime\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.GraphEnergyDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r003-edge-71.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r003-edge-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 1.0802680000197142,
+        "resources": [
+          {
+            "cpu_percent": 24.623115577889443,
+            "available_gib": 15.762351989746094,
+            "utc": "2026-10-28T20:15:20Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r003-runtime\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.GraphEnergyDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r003-edge-97.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r003-context-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 1.3481010999530554,
+        "resources": [
+          {
+            "cpu_percent": 11.458333333333337,
+            "available_gib": 15.720619201660156,
+            "utc": "2026-10-28T20:15:22Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r003-runtime\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.GraphEnergyDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r003-context-71.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r003-context-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 1.2962276000180282,
+        "resources": [
+          {
+            "cpu_percent": 23.958333333333336,
+            "available_gib": 15.706615447998047,
+            "utc": "2026-10-28T20:15:23Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r003-runtime\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.GraphEnergyDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r003-context-97.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      }
+    ]
+  },
+  "decision": "Context does not outperform EDGE in either order; no larger context allocation. EDGE has a small unary-relative gain, not established strength. Proceed to R002 playing diagnostic."
+}
