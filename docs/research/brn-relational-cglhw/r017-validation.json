@@ -1,0 +1,24 @@
+{
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.AttackFieldNetworkTest",
+    "tests": "4",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T22:19:42",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.309"
+  },
+  "raw_test": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r017-passed-tests.xml",
+    "sha256": "8d3d8ba52a360c51b34c1ca63237c9b9d39ecf689d4f592f51e3dca4fbb64557"
+  },
+  "source_sha256": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\AttackFieldCapacityAudit.java": "353b2abfde3875653a2530c23642b6c22a058a7702091535afdce927c3220f0b",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\AttackFieldDiagnostic.java": "ec0f5a357520814dcfce601f35cb9fc571e1864d2d2592c9e64290429980df7f",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\AttackFieldNetwork.java": "da9dab8e6c1b518d7e4658d8e14d4019b54fe87da9df8e0d7032f02c59f59602",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\AttackFieldNetworkTest.java": "ee492f40cb2cb6bce41a7694f976ebe4daddf6c066379dcdb0539150aa7d924e"
+  },
+  "source_base": "0530fb77",
+  "scope": "All9active parameter families,including empty-only families,nonzero gradients checked;geometry,symmetry,special successors,initialequality,CRC/state and tailbatch parity passed."
+}

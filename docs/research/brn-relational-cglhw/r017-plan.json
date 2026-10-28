@@ -1,0 +1,12 @@
+{
+  "main_class": "AttackFieldDiagnostic",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib",
+  "configs": [
+    "docs\\research\\brn-relational-cglhw\\r017-occupied-71.json",
+    "docs\\research\\brn-relational-cglhw\\r017-occupied-97.json",
+    "docs\\research\\brn-relational-cglhw\\r017-all-71.json",
+    "docs\\research\\brn-relational-cglhw\\r017-all-97.json"
+  ],
+  "max_seconds_per_arm": 180,
+  "summary": "docs\\research\\brn-relational-cglhw\\raw\\r017-execution.json"
+}

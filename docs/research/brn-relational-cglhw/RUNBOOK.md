@@ -183,3 +183,8 @@ predictions and selection keys are preserved. r016-results.json records source
 and class parity,descriptive paired-position uncertainty and input limitations.
 Future data expansion must purge R016 aliases;its source/index/alias checkpoint is
 raw/r016-data/selection.json. R010 itself remains unchanged and owner-paused.
+
+R017 complete:four tests,all64 remote witnesses with empty squares,four immutable
+one-epoch checkpoints;positive but below-gate prediction gains. R018 resumes only
+R015 LOCAL control checkpoints to calibrate bounded neural optimization depth.
+Historical runner bytes:raw/r015-objective-runner.py and raw/r016-prediction-runner.py.

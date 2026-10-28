@@ -1,0 +1,362 @@
+{
+  "arms": [
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r017-occupied-71.json",
+      "result": {
+        "scope": "Matched occupied/all-square neural attack field diagnosis; no search or strength qualification",
+        "load_seconds": 4.00815,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.01853872455107596
+          },
+          {
+            "epoch": 1,
+            "updates": 8192,
+            "train_mse": 0.013797960734019468,
+            "state_sha256": "b0111d6e2519cde10541c1fec50ed90b107fd94ba40554db0f6429b372383aca",
+            "unary_only_validation_mse": 0.01363261866129604,
+            "validation_mse": 0.01260819699518852,
+            "unary_only_train_mse": 0.015058605900242737
+          }
+        ],
+        "train_positions": 1048576,
+        "mode": "OCCUPIED",
+        "seed": 71,
+        "rate": 0.01,
+        "optimization_checkpoint_seconds": 8.4521245,
+        "full_inference_ns": 3305.815,
+        "parameters": 40777,
+        "active_parameters": 38449,
+        "original_bt4_validation_mse": 0.025517876238706327
+      },
+      "binding": {
+        "config_sha256": "244fde75c00630b74cd23d12c386c9fc0046f397bd76b0fa521b76270fe50165",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\engine-core.jar": "b656a7137b9d3b761794b92bdfc1f13695392217383b29b6f071f33d5d65b0a4",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\research.jar": "8df13a46a99b0d765426e1fc36ec9dbf053503a0ee8e2daa6242749185156206",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "cc74ababd1c976f8d2a554c23410d8a54761742aeed813816585a577e26aab80"
+      }
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r017-occupied-97.json",
+      "result": {
+        "optimization_checkpoint_seconds": 8.5767121,
+        "scope": "Matched occupied/all-square neural attack field diagnosis; no search or strength qualification",
+        "load_seconds": 3.8464159,
+        "metrics": [
+          {
+            "validation_mse": 0.01854018293560343,
+            "epoch": 0
+          },
+          {
+            "unary_only_train_mse": 0.015183067354893975,
+            "epoch": 1,
+            "updates": 8192,
+            "train_mse": 0.013817150523897127,
+            "state_sha256": "5084c1a825b54db13d48508656595ac26c7d8027ea8d450641ea0004fc8b6f9a",
+            "unary_only_validation_mse": 0.013597028154970863,
+            "validation_mse": 0.01246652677691575
+          }
+        ],
+        "train_positions": 1048576,
+        "mode": "OCCUPIED",
+        "seed": 97,
+        "rate": 0.01,
+        "full_inference_ns": 3189.13,
+        "parameters": 40777,
+        "active_parameters": 38449,
+        "original_bt4_validation_mse": 0.02540423439416495
+      },
+      "binding": {
+        "config_sha256": "d6175401a3f4b57651087f778a1f8595fe22f530e691459ad9ce035c37139892",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\engine-core.jar": "b656a7137b9d3b761794b92bdfc1f13695392217383b29b6f071f33d5d65b0a4",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\research.jar": "8df13a46a99b0d765426e1fc36ec9dbf053503a0ee8e2daa6242749185156206",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "cc74ababd1c976f8d2a554c23410d8a54761742aeed813816585a577e26aab80"
+      }
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r017-all-71.json",
+      "result": {
+        "rate": 0.01,
+        "seed": 71,
+        "mode": "ALL",
+        "train_positions": 1048576,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.01853872455107596
+          },
+          {
+            "validation_mse": 0.012435370862456352,
+            "unary_only_validation_mse": 0.014386719431919758,
+            "state_sha256": "dd02f4cf2ab8c25f7ce53924c499b61ee84a8d479233265131a2c43c86eb7514",
+            "train_mse": 0.013685328398224976,
+            "updates": 8192,
+            "epoch": 1,
+            "unary_only_train_mse": 0.015641610700488147
+          }
+        ],
+        "load_seconds": 3.8688545,
+        "scope": "Matched occupied/all-square neural attack field diagnosis; no search or strength qualification",
+        "optimization_checkpoint_seconds": 16.6508649,
+        "full_inference_ns": 4183.795,
+        "parameters": 40777,
+        "active_parameters": 40777,
+        "original_bt4_validation_mse": 0.025223770626241433
+      },
+      "binding": {
+        "config_sha256": "9bc89a007000c8ae1bc8a46bdbcf4123aa7e680f04fd0dacd8550892ec573fd0",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\engine-core.jar": "b656a7137b9d3b761794b92bdfc1f13695392217383b29b6f071f33d5d65b0a4",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\research.jar": "8df13a46a99b0d765426e1fc36ec9dbf053503a0ee8e2daa6242749185156206",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "cc74ababd1c976f8d2a554c23410d8a54761742aeed813816585a577e26aab80"
+      }
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r017-all-97.json",
+      "result": {
+        "rate": 0.01,
+        "seed": 97,
+        "mode": "ALL",
+        "train_positions": 1048576,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.01854018293560343
+          },
+          {
+            "validation_mse": 0.012414080936601462,
+            "unary_only_validation_mse": 0.013550265813420292,
+            "state_sha256": "3b14879bf2abaa37dfcc2fdface4d29ac34f0b4c17c847cc1692f440795a5ead",
+            "train_mse": 0.013726279956679873,
+            "updates": 8192,
+            "epoch": 1,
+            "unary_only_train_mse": 0.015144294316469027
+          }
+        ],
+        "load_seconds": 3.9165342,
+        "scope": "Matched occupied/all-square neural attack field diagnosis; no search or strength qualification",
+        "optimization_checkpoint_seconds": 16.7424552,
+        "full_inference_ns": 4221.915,
+        "parameters": 40777,
+        "active_parameters": 40777,
+        "original_bt4_validation_mse": 0.025336281667818615
+      },
+      "binding": {
+        "config_sha256": "362a66b51f49bf2b3a22d14ace29d2cb1054fab0399f39e4e222ce7ff83a2d74",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\engine-core.jar": "b656a7137b9d3b761794b92bdfc1f13695392217383b29b6f071f33d5d65b0a4",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\research.jar": "8df13a46a99b0d765426e1fc36ec9dbf053503a0ee8e2daa6242749185156206",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "cc74ababd1c976f8d2a554c23410d8a54761742aeed813816585a577e26aab80"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "seed": 71,
+      "teacher_gain": 0.013707442293146355,
+      "original_change": -0.011525473739024794,
+      "relation_path_gain": 0.13563540866265567,
+      "passes": false
+    },
+    {
+      "seed": 97,
+      "teacher_gain": 0.0042069327931338885,
+      "original_change": -0.002674858265437119,
+      "relation_path_gain": 0.08384963752471508,
+      "passes": false
+    }
+  ],
+  "advance": false,
+  "execution": {
+    "arms": [
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r017-occupied-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 12.958095400012098,
+        "resources": [
+          {
+            "cpu_percent": 4.8128342245989275,
+            "available_gib": 18.72576141357422,
+            "utc": "2026-10-28T22:20:22Z"
+          },
+          {
+            "cpu_percent": 11.734693877551017,
+            "available_gib": 18.513477325439453,
+            "utc": "2026-10-28T22:20:28Z"
+          },
+          {
+            "cpu_percent": 13.989637305699487,
+            "available_gib": 18.52008056640625,
+            "utc": "2026-10-28T22:20:33Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.AttackFieldDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r017-occupied-71.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r017-occupied-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 12.926208600052632,
+        "resources": [
+          {
+            "cpu_percent": 3.7234042553191515,
+            "available_gib": 18.754314422607422,
+            "utc": "2026-10-28T22:20:36Z"
+          },
+          {
+            "cpu_percent": 8.585858585858585,
+            "available_gib": 18.53133773803711,
+            "utc": "2026-10-28T22:20:41Z"
+          },
+          {
+            "cpu_percent": 21.53846153846154,
+            "available_gib": 18.49646759033203,
+            "utc": "2026-10-28T22:20:46Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.AttackFieldDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r017-occupied-97.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r017-all-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 21.137167899985798,
+        "resources": [
+          {
+            "cpu_percent": 2.1739130434782594,
+            "available_gib": 18.743751525878906,
+            "utc": "2026-10-28T22:20:49Z"
+          },
+          {
+            "cpu_percent": 12.244897959183676,
+            "available_gib": 18.520000457763672,
+            "utc": "2026-10-28T22:20:54Z"
+          },
+          {
+            "cpu_percent": 11.05263157894737,
+            "available_gib": 18.500118255615234,
+            "utc": "2026-10-28T22:20:59Z"
+          },
+          {
+            "cpu_percent": 9.895833333333337,
+            "available_gib": 18.506641387939453,
+            "utc": "2026-10-28T22:21:05Z"
+          },
+          {
+            "cpu_percent": 10.256410256410254,
+            "available_gib": 18.51726531982422,
+            "utc": "2026-10-28T22:21:10Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.AttackFieldDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r017-all-71.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r017-all-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 21.234650400001556,
+        "resources": [
+          {
+            "cpu_percent": 1.1695906432748537,
+            "available_gib": 18.746726989746094,
+            "utc": "2026-10-28T22:21:10Z"
+          },
+          {
+            "cpu_percent": 12.631578947368416,
+            "available_gib": 18.517627716064453,
+            "utc": "2026-10-28T22:21:15Z"
+          },
+          {
+            "cpu_percent": 13.157894736842103,
+            "available_gib": 18.514575958251953,
+            "utc": "2026-10-28T22:21:21Z"
+          },
+          {
+            "cpu_percent": 13.705583756345174,
+            "available_gib": 18.481433868408203,
+            "utc": "2026-10-28T22:21:26Z"
+          },
+          {
+            "cpu_percent": 17.647058823529417,
+            "available_gib": 18.496368408203125,
+            "utc": "2026-10-28T22:21:31Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r017-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.AttackFieldDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r017-all-97.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      }
+    ]
+  },
+  "scope": "Fixed1epoch neural pilot;no search,final validation or strength claim."
+}

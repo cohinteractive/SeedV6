@@ -1,0 +1,53 @@
+{
+  "raw_path": "docs\\research\\brn-relational-cglhw\\raw\\r017-capability.json",
+  "sha256": "668a11285191361efa154aeebb950ede4053b02bd4a572a1df203c41ecf3fcc7",
+  "summary": {
+    "occupied_king_context_changed_False": {
+      "n": 32,
+      "nonzero": 30,
+      "median_absolute_cp": 0.17821191518432045,
+      "max_absolute_cp": 4.689513694671064
+    },
+    "occupied_king_context_changed_True": {
+      "n": 32,
+      "nonzero": 31,
+      "median_absolute_cp": 0.1753920627319019,
+      "max_absolute_cp": 9.161220932612196
+    },
+    "all_king_context_changed_False": {
+      "n": 32,
+      "nonzero": 32,
+      "median_absolute_cp": 0.8023891732806447,
+      "max_absolute_cp": 7.955126206183024
+    },
+    "all_king_context_changed_True": {
+      "n": 32,
+      "nonzero": 32,
+      "median_absolute_cp": 0.7683799967121736,
+      "max_absolute_cp": 9.615384752757677
+    }
+  },
+  "binding": {
+    "plan_sha256": "d1f78c7e1dd30b8cd1bf507907025a1ddbe7c88b5e31166db65e867835ea4379",
+    "runner_sha256": "41e30ba869af046cbb4215f99b8b6e97c8cb750f8c599370e4250ed7038945ad",
+    "runtime": {
+      "engine-core.jar": "b656a7137b9d3b761794b92bdfc1f13695392217383b29b6f071f33d5d65b0a4",
+      "engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+      "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "research.jar": "8df13a46a99b0d765426e1fc36ec9dbf053503a0ee8e2daa6242749185156206",
+      "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+    }
+  },
+  "receipt": {
+    "sha256": "668a11285191361efa154aeebb950ede4053b02bd4a572a1df203c41ecf3fcc7",
+    "seconds": 0.3009309000335634,
+    "resources": {
+      "cpu_percent": 6.806282722513091,
+      "available_gib": 18.700138092041016,
+      "utc": "2026-10-28T22:20:16Z"
+    }
+  },
+  "scope": "Untrained parameter witnesses establish possible responses only; no teacher fit,chess quality or playing evidence"
+}
