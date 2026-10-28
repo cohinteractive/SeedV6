@@ -25,7 +25,7 @@ def main():
     for comparison in plan['comparisons']:
         for side in ('left','right'):
             spec=comparison[side]
-            if spec.get('evaluator','pair') not in ('pair','cp64','compose8'):raise ValueError('Unknown evaluator')
+            if spec.get('evaluator','pair') not in ('pair','cp64','compose8','piece1'):raise ValueError('Unknown evaluator')
             if sha(ROOT/spec['path'])!=spec['sha256']:raise ValueError('Model changed')
     if sha(ROOT/plan['prediction_evidence'])!=plan['prediction_evidence_sha256']:raise ValueError('Prediction evidence changed')
     openings=json.loads((ROOT/plan['openings']).read_text());summaries=[]

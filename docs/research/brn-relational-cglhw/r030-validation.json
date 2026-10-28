@@ -1,0 +1,32 @@
+{
+  "tests": [
+    {
+      "name": "ResearchPieceEvaluationTest",
+      "tests": 1,
+      "skips": 0,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r030-ResearchPieceEvaluationTest.xml",
+      "sha256": "f2401883f69c3b39cdcfc2554fb0dbec9a6776e1ad1aa49382c8428eb49a8926"
+    },
+    {
+      "name": "ResearchFieldEvaluationTest",
+      "tests": 3,
+      "skips": 0,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r030-ResearchFieldEvaluationTest.xml",
+      "sha256": "0e5e4b649e53776aff48b04163b9b3f35e494053810fb3bfcf61638eeb5b9efd"
+    }
+  ],
+  "passed": 4,
+  "new_tests": 1,
+  "skips": 0,
+  "sources": {
+    "src\\researchLauncher\\java\\com\\ohinteractive\\seedv6\\integration\\BrnRelationalUciMain.java": "b657b3fb50b1192a521ee340d883d1611de6fa4dbb8fe36c9997dfa3c4c5f71d",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ResearchPieceEvaluation.java": "a28a6bade82fbc38fbdd504e64016863a32926d25dd485d63cbcd06c7c8df634",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ResearchPieceEvaluationTest.java": "40aa29db5f15c2c64cb6070e6e7f4b595f6ee4ce9c35f5d9bfba29da7574a550",
+    "tools\\brn-relational\\compare_neural.py": "5b80b3e62605cbeee916f5a2b3e95589a4dc6f658cd18137d1a9ad590ece2660"
+  },
+  "tested_classes_path": "docs\\research\\brn-relational-cglhw\\raw\\r030-tested-classes.json",
+  "tested_classes_sha256": "25618c39d1f61c2a621f2d7401a6d23c3272427ddf2f3129b06f7d641134bb53",
+  "count": 1768,
+  "replay_ast_unchanged_from_r025": true,
+  "scope": "Research integration,source compile and targeted tests;no full suite/clock/production change"
+}
