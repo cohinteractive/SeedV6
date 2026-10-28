@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R031 bounded neural warm-start step-size diagnosis**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R032 context-dependent neural message routing**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,12 +25,12 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R031 correctness passes3 tests:CONTROL exact legacy,LOW independent Adam/shrink,
-parent preservation/identity and exact segmented continuation. Model class bytes
-match R028. Frozen r031-plan.json ready for four serial arms under nnue-control:
-`build/research/venv/Scripts/python.exe -B tools/brn-relational/run_objective.py docs/research/brn-relational-cglhw/r031-plan.json`.
-Each adds exactly one epoch to a frozen R028 ONE state;segment receipts preserve
-progress. No new games,architecture change,Pair training or clock/GPU work.
+R031 completes four arms/32segments:LOW worsens teacher2.4% versus CONTROL;
+no further rate/epoch allocation. R032 reviews historical global pair-mixture
+softmax and proposes receiver-dependent routing between contextual neural piece
+states. Read R032.md;implement/test GEOMETRY/DYNAMIC and exact UNIFORM legacy
+control before any training. No old successor queue is reopened. CP64 remains
+principal benchmark;no games or production changes currently admitted.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -75,7 +75,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R028 | Contextual all-piece neural messages | Complete;second pass fails matched2%;both modes improve~4% over R022 |
 | R029 | All-piece neural transfer | Complete;ONE gains3.25%/2.01%,passes transfer gate;no strength claim |
 | R030 | ONE fixed-node diagnostic versus CP64 | Complete32games;15.625%/12.5%,no consistent playing gain or promotion |
-| R031 | Neural warm-start step-size | Prospective one additional epoch,rate.01/.001,matched shrink/moments |
+| R031 | Neural warm-start step-size | Complete;LOW teacher2.4% worse than CONTROL,fails5%;no rate/epoch sweep |
+| R032 | Contextual neural routing | Prospective receiver-dependent attention versus geometry control;correctness first |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -111,9 +112,8 @@ before any recovery; never rewrite completed bindings to accept changed tools.
 
 ## Validation and required action
 
-85 previously recorded focused tests plus21 passing R025 checks (including
-repeated baseline regressions) and3 R027 scalar tests are preserved with exact
-test identities;counts across stages overlap. The selector's renamed import received syntax validation but no new
+Focused tests through R031 are preserved with exact identities in each validation
+manifest (including repeated baseline regressions);counts across stages overlap. The selector's renamed import received syntax validation but no new
 runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,
 configs and reusable fixtures are tracked. Build78 for the explicit core research seam;production evaluator unchanged;no push.

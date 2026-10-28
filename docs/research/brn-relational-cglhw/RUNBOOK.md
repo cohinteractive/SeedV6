@@ -249,3 +249,8 @@ R030 complete:4 integration tests,clean-source build78 runtime,32 deterministic
 probes/32legally replayed games;ONE remains uncompetitive by point estimates.
 All owned searches released. r030-results.json retains uncertainty and class/hash
 provenance. R031 is one bounded neural optimization intervention,not Pair training.
+
+R031 complete:3 tests,4 arms/32segments;lower-rate fixed-shrink intervention fails.
+Parents remain immutable;no further rate/epoch sweep. raw/r028-objective-runner.py
+preserves previous bindings. R032 is a new contextual routing hypothesis with
+explicit static-geometry control and content-use gate,not reopened old GATE work.
