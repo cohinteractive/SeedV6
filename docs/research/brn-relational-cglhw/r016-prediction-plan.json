@@ -1,0 +1,52 @@
+{
+  "main_class": "ContextualPredictionAudit",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r016-runtime\\lib",
+  "cases": "docs\\research\\brn-relational-cglhw\\raw\\r016-data\\validation.tsv",
+  "cases_sha256": "9f081229700b95849b0df0b0cc88434905ddc67a2f1243da1ef02c07069bd548",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r016-prediction.json",
+  "rows": 8192,
+  "models": [
+    {
+      "id": "r014-local-71",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r014-local-71\\epoch-1.state",
+      "state_sha256": "805888bb59b8e365e52e84418e4b77a38d87ad3c0f7a080200e4031662aa1df1"
+    },
+    {
+      "id": "r014-local-97",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r014-local-97\\epoch-1.state",
+      "state_sha256": "b6a3b333e56dd8487720593f53033af49c0d15aae231ffe0d9196e0311dc633f"
+    },
+    {
+      "id": "r014-global-71",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r014-global-71\\epoch-1.state",
+      "state_sha256": "b7a31dcfae9ecb25289991488ea622e165d4301f2a0ddceb3f896c8a902a2d2c"
+    },
+    {
+      "id": "r014-global-97",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r014-global-97\\epoch-1.state",
+      "state_sha256": "5de98edfb5c25f79d3ab565456460d0bc31236a4c21c548fe779aa38aab7e0b0"
+    },
+    {
+      "id": "r015-local-71",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r015-local-71\\epoch-1.state",
+      "state_sha256": "7f0d1150ad4a569689df70f74770355bf602d4564125ddb63de83361b279debe"
+    },
+    {
+      "id": "r015-local-97",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r015-local-97\\epoch-1.state",
+      "state_sha256": "173a7bde4ae071024c8d1b09020e69c2f7ad56951a9bd2e8f11d63e45e8a3429"
+    },
+    {
+      "id": "r015-global-71",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r015-global-71\\epoch-1.state",
+      "state_sha256": "7185e071350ae3ce4f082e17b66ba3755e6712bfa09819a430b98778da6bfc87"
+    },
+    {
+      "id": "r015-global-97",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r015-global-97\\epoch-1.state",
+      "state_sha256": "084d14add2a76968450a50047ff9ff75a1abd8a2d62952807944a07c74dd0829"
+    }
+  ],
+  "teacher": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "teacher_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+}

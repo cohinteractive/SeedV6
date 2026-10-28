@@ -1,0 +1,13 @@
+{
+  "source": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-data\\validation.txt",
+  "source_sha256": "1293de0195bd431d451791c6017b9f3a5819b7b5b9bd623b91509ad868c2cfe3",
+  "source_rows": 524288,
+  "exclusion_database": "docs\\research\\brn-relational-cglhw\\raw\\r010-data\\selection.sqlite",
+  "exclusion_sha256": "0a5c7afc24ed463146a0dfa8964e00eb24c208512d7b200d8f4ea48f61bb4972",
+  "excluded_training_rows": 1574296,
+  "seed": 2026102916,
+  "candidates": 32768,
+  "rows": 8192,
+  "max_seconds": 60,
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r016-data"
+}

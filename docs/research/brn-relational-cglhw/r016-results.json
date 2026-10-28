@@ -1,0 +1,181 @@
+{
+  "raw_path": "docs\\research\\brn-relational-cglhw\\raw\\r016-prediction.json",
+  "raw_sha256": "0a921732d7a7c5a76bfe215cfb2e5126b5056fc27a220a142e9929ced116b52f",
+  "plan_sha256": "9f92f8527c737154e93669704dd83be0849db7000fa3f2d002f2c705aff105a9",
+  "runner_sha256": "e7dc94970f307722eb195702b179174ae5996a955dadfd7d7eabff3db54f4c71",
+  "inference_helper_sha256": "532c838be10acde65032b0a33b1746b75d6ce6303efb9aea82d2c918d2e03aff",
+  "models": [
+    {
+      "global": false,
+      "updates": 8192,
+      "teacher_mse": 0.013741862080666512,
+      "bt4_mse": 0.026422027043441057,
+      "id": "r014-local-71",
+      "state_sha256": "805888bb59b8e365e52e84418e4b77a38d87ad3c0f7a080200e4031662aa1df1"
+    },
+    {
+      "global": false,
+      "updates": 8192,
+      "teacher_mse": 0.01415080885473379,
+      "bt4_mse": 0.026594769323538225,
+      "id": "r014-local-97",
+      "state_sha256": "b6a3b333e56dd8487720593f53033af49c0d15aae231ffe0d9196e0311dc633f"
+    },
+    {
+      "global": true,
+      "updates": 8192,
+      "teacher_mse": 0.013713121305043336,
+      "bt4_mse": 0.026399014882993118,
+      "id": "r014-global-71",
+      "state_sha256": "b7a31dcfae9ecb25289991488ea622e165d4301f2a0ddceb3f896c8a902a2d2c"
+    },
+    {
+      "global": true,
+      "updates": 8192,
+      "teacher_mse": 0.014080206449658496,
+      "bt4_mse": 0.026540004019925494,
+      "id": "r014-global-97",
+      "state_sha256": "5de98edfb5c25f79d3ab565456460d0bc31236a4c21c548fe779aa38aab7e0b0"
+    },
+    {
+      "global": false,
+      "updates": 8192,
+      "teacher_mse": 0.01294949184319535,
+      "bt4_mse": 0.02593390488662382,
+      "id": "r015-local-71",
+      "state_sha256": "7f0d1150ad4a569689df70f74770355bf602d4564125ddb63de83361b279debe"
+    },
+    {
+      "global": false,
+      "updates": 8192,
+      "teacher_mse": 0.013197069255638998,
+      "bt4_mse": 0.025988937589053088,
+      "id": "r015-local-97",
+      "state_sha256": "173a7bde4ae071024c8d1b09020e69c2f7ad56951a9bd2e8f11d63e45e8a3429"
+    },
+    {
+      "global": true,
+      "updates": 8192,
+      "teacher_mse": 0.01292974279445238,
+      "bt4_mse": 0.025928370309081045,
+      "id": "r015-global-71",
+      "state_sha256": "7185e071350ae3ce4f082e17b66ba3755e6712bfa09819a430b98778da6bfc87"
+    },
+    {
+      "global": true,
+      "updates": 8192,
+      "teacher_mse": 0.013138642231577544,
+      "bt4_mse": 0.025927493993588534,
+      "id": "r015-global-97",
+      "state_sha256": "084d14add2a76968450a50047ff9ff75a1abd8a2d62952807944a07c74dd0829"
+    }
+  ],
+  "target_gates": [
+    {
+      "mode": "local",
+      "seed": 71,
+      "teacher": {
+        "gain": 0.057661052979566585,
+        "descriptive_95_interval": [
+          0.04659108154941434,
+          0.06873102440971883
+        ]
+      },
+      "bt4": {
+        "gain": 0.018474061661307828,
+        "descriptive_95_interval": [
+          0.010078787681499819,
+          0.026869335641115835
+        ]
+      },
+      "passes": true
+    },
+    {
+      "mode": "local",
+      "seed": 97,
+      "teacher": {
+        "gain": 0.06739823913145115,
+        "descriptive_95_interval": [
+          0.05566726517370833,
+          0.07912921308919398
+        ]
+      },
+      "bt4": {
+        "gain": 0.022780108641472174,
+        "descriptive_95_interval": [
+          0.013913821922345943,
+          0.031646395360598406
+        ]
+      },
+      "passes": true
+    },
+    {
+      "mode": "global",
+      "seed": 71,
+      "teacher": {
+        "gain": 0.057126200021491824,
+        "descriptive_95_interval": [
+          0.04591288927799006,
+          0.06833951076499359
+        ]
+      },
+      "bt4": {
+        "gain": 0.01782811123816186,
+        "descriptive_95_interval": [
+          0.00930332098487026,
+          0.02635290149145346
+        ]
+      },
+      "passes": true
+    },
+    {
+      "mode": "global",
+      "seed": 97,
+      "teacher": {
+        "gain": 0.0668714781595956,
+        "descriptive_95_interval": [
+          0.055195514988705265,
+          0.07854744133048593
+        ]
+      },
+      "bt4": {
+        "gain": 0.023078746554716978,
+        "descriptive_95_interval": [
+          0.014351722426104762,
+          0.031805770683329196
+        ]
+      },
+      "passes": true
+    }
+  ],
+  "composition": {
+    "71": {
+      "gain": 0.001525082913060527,
+      "descriptive_95_interval": [
+        -0.0034467158695029483,
+        0.006496881695624002
+      ]
+    },
+    "97": {
+      "gain": 0.0044272726716551025,
+      "descriptive_95_interval": [
+        -0.00014594650380155873,
+        0.009000491847111764
+      ]
+    }
+  },
+  "composition_passes": false,
+  "independent_checks": {
+    "models": 8,
+    "positions_each": 64,
+    "max_abs_cp_error": 1.4432899320127035e-12,
+    "all_original_targets_exact": true
+  },
+  "resources": {
+    "cpu_percent": 17.910447761194025,
+    "available_gib": 18.420562744140625,
+    "utc": "2026-10-28T22:17:13Z"
+  },
+  "seconds": 0.5084999999962747,
+  "uncertainty": "Paired-position delta-method ratio intervals are descriptive only;unknown source-game correlations can make these intervals too narrow. Fresh BRN development,not independent CP64 validation,final evaluation or playing evidence."
+}

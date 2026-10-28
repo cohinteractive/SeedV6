@@ -1,0 +1,153 @@
+{
+  "manifest": {
+    "binding": {
+      "config_sha256": "78d0500366153c55a3e16c752939c4f5eac1a73efb6bbdeca749d99d5dc7a2ea",
+      "runner_sha256": "40f9b51249922896342438fc6d382bb44e7aba95e882608a7a14b142619009ad",
+      "alias_helper_sha256": "67931ca4447593c6189a56df09ddbb7d36a0816d3689442e391825a98cd50cb0"
+    },
+    "rows": 8192,
+    "cursor": 8307,
+    "files": {
+      "validation.tsv": "9f081229700b95849b0df0b0cc88434905ddc67a2f1243da1ef02c07069bd548",
+      "selection.json": "ef3c9a40f55e432d1012dcc3c1af1e703fd2d49cdd0d5ba5307e2b051ed7b37d"
+    },
+    "seconds": 9.3738633999601,
+    "resources": [
+      {
+        "cpu_percent": 4.145077720207258,
+        "available_gib": 18.71590805053711,
+        "utc": "2026-10-28T22:15:22Z"
+      },
+      {
+        "cpu_percent": 9.090909090909093,
+        "available_gib": 18.716045379638672,
+        "utc": "2026-10-28T22:15:23Z"
+      },
+      {
+        "cpu_percent": 13.586956521739136,
+        "available_gib": 18.76665496826172,
+        "utc": "2026-10-28T22:15:23Z"
+      },
+      {
+        "cpu_percent": 1.0928961748633892,
+        "available_gib": 18.763824462890625,
+        "utc": "2026-10-28T22:15:23Z"
+      },
+      {
+        "cpu_percent": 28.350515463917525,
+        "available_gib": 18.760032653808594,
+        "utc": "2026-10-28T22:15:23Z"
+      },
+      {
+        "cpu_percent": 2.824858757062143,
+        "available_gib": 18.769912719726562,
+        "utc": "2026-10-28T22:15:24Z"
+      },
+      {
+        "cpu_percent": 3.2258064516129004,
+        "available_gib": 18.763023376464844,
+        "utc": "2026-10-28T22:15:24Z"
+      },
+      {
+        "cpu_percent": 1.5789473684210575,
+        "available_gib": 18.769268035888672,
+        "utc": "2026-10-28T22:15:24Z"
+      },
+      {
+        "cpu_percent": 6.030150753768848,
+        "available_gib": 18.769824981689453,
+        "utc": "2026-10-28T22:15:25Z"
+      },
+      {
+        "cpu_percent": 9.782608695652172,
+        "available_gib": 18.764801025390625,
+        "utc": "2026-10-28T22:15:25Z"
+      },
+      {
+        "cpu_percent": 1.6393442622950838,
+        "available_gib": 18.764911651611328,
+        "utc": "2026-10-28T22:15:25Z"
+      },
+      {
+        "cpu_percent": 6.010928961748629,
+        "available_gib": 18.77621841430664,
+        "utc": "2026-10-28T22:15:26Z"
+      },
+      {
+        "cpu_percent": 8.333333333333337,
+        "available_gib": 18.762287139892578,
+        "utc": "2026-10-28T22:15:26Z"
+      },
+      {
+        "cpu_percent": 7.4074074074074066,
+        "available_gib": 18.777145385742188,
+        "utc": "2026-10-28T22:15:26Z"
+      },
+      {
+        "cpu_percent": 3.6363636363636376,
+        "available_gib": 18.780216217041016,
+        "utc": "2026-10-28T22:15:27Z"
+      },
+      {
+        "cpu_percent": 6.060606060606055,
+        "available_gib": 18.777294158935547,
+        "utc": "2026-10-28T22:15:27Z"
+      },
+      {
+        "cpu_percent": 3.93258426966292,
+        "available_gib": 18.779918670654297,
+        "utc": "2026-10-28T22:15:27Z"
+      },
+      {
+        "cpu_percent": 1.098901098901095,
+        "available_gib": 18.781757354736328,
+        "utc": "2026-10-28T22:15:28Z"
+      },
+      {
+        "cpu_percent": 0.5681818181818232,
+        "available_gib": 18.77674102783203,
+        "utc": "2026-10-28T22:15:28Z"
+      },
+      {
+        "cpu_percent": 2.1390374331550777,
+        "available_gib": 18.78009796142578,
+        "utc": "2026-10-28T22:15:29Z"
+      },
+      {
+        "cpu_percent": 3.7837837837837784,
+        "available_gib": 18.776817321777344,
+        "utc": "2026-10-28T22:15:29Z"
+      },
+      {
+        "cpu_percent": 3.076923076923077,
+        "available_gib": 18.776451110839844,
+        "utc": "2026-10-28T22:15:29Z"
+      },
+      {
+        "cpu_percent": 2.4242424242424288,
+        "available_gib": 18.77865219116211,
+        "utc": "2026-10-28T22:15:30Z"
+      },
+      {
+        "cpu_percent": 3.141361256544506,
+        "available_gib": 18.77484130859375,
+        "utc": "2026-10-28T22:15:30Z"
+      },
+      {
+        "cpu_percent": 1.0810810810810811,
+        "available_gib": 18.775611877441406,
+        "utc": "2026-10-28T22:15:31Z"
+      },
+      {
+        "cpu_percent": 8.376963350785338,
+        "available_gib": 18.74905014038086,
+        "utc": "2026-10-28T22:15:31Z"
+      }
+    ],
+    "scope": "Fresh BRN development only;CP64 previously selected on source pool;unknown source games. Later training expansion must exclude these canonical aliases. No R010 mutation."
+  },
+  "manifest_path": "docs\\research\\brn-relational-cglhw\\raw\\r016-data\\manifest.json",
+  "manifest_sha256": "a157b4493ee26bf67f9fa3966c972c91d506130a5d3986ee38fdf115bcb831a0",
+  "configuration_sha256": "78d0500366153c55a3e16c752939c4f5eac1a73efb6bbdeca749d99d5dc7a2ea",
+  "exclusion_database_unchanged": true
+}

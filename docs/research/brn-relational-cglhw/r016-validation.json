@@ -1,0 +1,27 @@
+{
+  "java_tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.ContextualPredictionAuditTest",
+    "tests": "1",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T22:16:31",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.018"
+  },
+  "model_class_parity": {
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualAttackNetwork$Features.class": "c58fe50a4bc9f723818c96c61af7a372ea12d9bb9b3aba104ff23b988278114e",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualAttackNetwork$Workspace.class": "1c3eb2f37d26e261eb672d0035dbdcb72509a6c33c9ca7b3005911b14f6f18a1",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualAttackNetwork.class": "f2bf7b99ceacfbe004571aca8bbd228f059f351e08be24d71878f5b543f13438"
+  },
+  "python_tests": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r016-selector-test-launch.log",
+    "sha256": "adc53ae1a3471f0c3c5ebd0e05294073e1404806e9311a481b7a2bbbf21d1a7d",
+    "tests": 2,
+    "failures": 0
+  },
+  "raw_java": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r016-passed-test.xml",
+    "sha256": "84d292d2faa9546fcf0755148b2394512b05101dea90d1b2ec70b9b0965d3e23"
+  }
+}

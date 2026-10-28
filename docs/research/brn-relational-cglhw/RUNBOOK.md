@@ -176,3 +176,10 @@ R014 complete: four tests plus independent full-development Java/Python parity;
 raw/r014-runtime retains trained executable. See r014-results.json for49.79s serial
 training,failed global-context gate,ablations and immutable optimizer hashes.
 R015 uses the same frozen runtime and existing R007 labels,not new production code.
+
+R015/R016 complete:neural CP64 target benefit confirmed on a fresh8192-row BRN
+panel;global-context composition gate still fails. All eight optimizer states,
+predictions and selection keys are preserved. r016-results.json records source
+and class parity,descriptive paired-position uncertainty and input limitations.
+Future data expansion must purge R016 aliases;its source/index/alias checkpoint is
+raw/r016-data/selection.json. R010 itself remains unchanged and owner-paused.

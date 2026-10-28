@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R015 neural teacher-supervision diagnosis**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R017 neural attack fields**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,16 +25,16 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-Run R015's four fresh CP64-target LOCAL/GLOBAL neural arms using frozen R014
-runtime,then audit all eight fixed R014/R015 endpoints against original and
-teacher development targets. Read R015.md and R014's completed diagnosis. Verify
-resource/input identities;no R010 extraction or Pair-2 training is admitted.
+Implement and verify R017's matched OCCUPIED/ALL learned attack fields,then freeze
+runtime/configs and run four bounded1M/1epoch CP64-supervised neural arms. Read
+R017.md and R016's confirmation. No R010 continuation,Pair-2 optimization or search
+promotion. R015/R016 confirm neural target-method benefits;global-composition
+advantage remains unproven. R017 tests explicit control of empty squares.
 
-R014 failed GLOBAL-vs-LOCAL gate (+.0026%/-.0786%). Global gates are active but
-held-out contributions mixed;its full relation path is useful versus unary.
-Capacity26/64 LOCAL versus61/64 GLOBAL;the other3 graphs have no occupied edges,
-provably disabling the contextual path. R015 isolates neural target quality before
-another representation change. No candidate is admitted to search or production.
+All later training-data expansion must exclude R016's8192 canonical aliases in
+raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
+to earlier reservations. The immutable R010 database was only read as exclusions.
+Both consumed development panels remain distinct from future final evaluation.
 
 ## Experiment programme
 
@@ -58,7 +58,9 @@ another representation change. No candidate is admitted to search or production.
 | R012 | Nonlinear two-pass king-anchor neural messages | Complete;capability passes,but training gate fails and relation-readout masking improves loss |
 | R013 | Coverage/rate diagnosis at matched8192 neural updates | Complete;coverage helps learned paths,but neither rate clears both-seed gate |
 | R014 | Global context conditioning of nonlinear attack messages | Complete;61/64 remote witnesses,but no reliable gain over LOCAL;full relation readout useful |
-| R015 | Neural CP64 supervision versus matched BT4 controls | Prospective four fresh1M/1epoch arms and dual-target prediction audit |
+| R015 | Neural CP64 supervision versus matched BT4 controls | Complete;teacher gains5-8% pass target-method gate;global composition still fails |
+| R016 | Fresh8192-position neural target confirmation | Complete;target gains5.7-6.7% confirmed;global architecture gate still fails |
+| R017 | Learned attack/control fields including empty squares | Prospective correctness and four matched neural pilots |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -94,8 +96,8 @@ before any recovery; never rewrite completed bindings to accept changed tools.
 
 ## Validation and required action
 
-59 distinct focused tests have passed:23 baseline Java,28 research Java,
-8 Python. The selector's renamed import received syntax validation but no new
+62 distinct focused tests have passed:23 baseline Java,29 research Java,
+10 Python. The selector's renamed import received syntax validation but no new
 runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,
 configs and reusable fixtures are tracked. Build77 unchanged;no push.
