@@ -1,0 +1,45 @@
+{
+  "groups": [
+    {
+      "mode": "linear",
+      "cases": 64,
+      "witnesses_above_1e_8_cp": 64,
+      "median_abs_cp": 2.5113295088176812,
+      "maximum_abs_cp": 10.744309253415736
+    },
+    {
+      "mode": "nonlinear",
+      "cases": 64,
+      "witnesses_above_1e_8_cp": 64,
+      "median_abs_cp": 2.108204897070575,
+      "maximum_abs_cp": 7.257120426143047
+    }
+  ],
+  "raw": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r012-capability.json",
+    "sha256": "351aca97a88c5930ba3e632697f1c2080d22ca27318a0e55f7f93e5b79d3bce8"
+  },
+  "binding": {
+    "plan_sha256": "d028941b2a298d6aa9b03e16f9a1187643d81cd0c558e4da33a6828c5587db9c",
+    "runner_sha256": "9c7d3bcdcd95ec21298f7627a55ebeeff9a3cae48a4b9e685f660a9d9bce2cb6",
+    "runtime": {
+      "engine-core.jar": "59f8996193812f3a94e617b3df8e1f565b8a42dcdc07d96bb11733bd5e88f5cd",
+      "engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+      "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "research.jar": "8d0392d22f37c4a78c67618aa442fd916442a475044df0f93a6a0fdcd6ca2f1d",
+      "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+    }
+  },
+  "receipt": {
+    "sha256": "351aca97a88c5930ba3e632697f1c2080d22ca27318a0e55f7f93e5b79d3bce8",
+    "seconds": 0.25740360002964735,
+    "resources": {
+      "cpu_percent": 10.71428571428571,
+      "available_gib": 17.63469696044922,
+      "utc": "2026-10-28T21:53:01Z"
+    }
+  },
+  "scope": "Untrained parameter witnesses establish possible responses only; no teacher fit,chess quality or playing evidence"
+}

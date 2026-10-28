@@ -1,9 +1,9 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **PAUSED_RESOURCE_GATE**. This is not programme completion or failure.
-Current gate: [RESOURCE-GATE.md](RESOURCE-GATE.md), with machine-readable evidence
-in r012-resource-gate.json. No research process or background queue remains.
+Status: **ACTIVE - R014 globally conditioned neural attack messages**. Owner RESUME cleared the prior resource
+gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
+RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
 Read root instructions, [CONTRACT](CONTRACT.md) revision2, [PRIORITY](PRIORITY.md),
 [RESOURCE-GATE](RESOURCE-GATE.md), [BASELINE](BASELINE.md) and [R012](R012.md).
@@ -25,24 +25,19 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-After owner RESUME, run the R012 correctness command in RESOURCE-GATE.md with a
-fresh log. On2026-10-28T21:42:28Z CPU65.6863% exceeded the admission limit<60%;
-free memory16.374GiB passed>=8GiB. The retry stopped BEFORE Gradle launched.
-No availability retry occurred. Supervisor active:null and owned_processes:0.
+Implement and verify R014's matched LOCAL/GLOBAL neural attack-message circuit,
+then freeze runtime/configs and run its prospective four1M/1epoch CPU arms. Read
+R014.md. No R010 dataset extension or Pair-2 training is admitted. Correctness,
+resource admission and full-inference cost must pass before any fitting.
 
-R012 compiled and passed3 of4 tests: independent forward equations,color/rank
-symmetry,special boards,disconnected remote response and nonlinear third-source
-interaction witness. Its gradient test failed a unary finite difference:
-absolute discrepancy1.256e-10 against1e-10 tolerance at step1e-4. A smaller step
-1e-5 is prepared with unchanged tolerance and per-family diagnostic errors.
-That change is UNVERIFIED. No model mathematics was changed to bypass the test.
-
-If admission still fails,record the gate and exit without waiting/retrying. If
-admitted,finish correctness first. If it passes,freeze a new R012 runtime and
-configs,add explicit AnchorDiagnostic/capability-audit runner dispatch while
-preserving R011 runner bytes,run the untrained64-case capability audit,then the
-prospective four-arm131k/8epoch neural pilot. No R012 training checkpoint or frozen
-pilot runtime/config currently exists. Do not claim a tested or trained candidate.
+R012/R013 are COMPLETE. R012 failed its gate and showed harmful relation-readout
+contributions on131k; R013 broader coverage at equal8192 updates improves both
+seeds and reverses that effect. LR.01 gives MSE .02618401/.02645157 and useful
+relation-path gains1.96%/2.00%,but the second seed's1.69% gain over R012 misses
+the2% criterion. LR.001 is worse. Neither recipe is admitted to unchanged scaling
+or search integration. Preserve these distinct positive findings and failed gates.
+R014 tests a new combination of local chess relations and learned global context;
+CP64 remains the principal strength benchmark and no neural strength win is claimed.
 
 ## Experiment programme
 
@@ -63,7 +58,9 @@ pilot runtime/config currently exists. Do not claim a tested or trained candidat
 | R009 | King-conditioned direct pair tables | Four pilots complete;worse validation than SHARED/base;no further allocation |
 | R010 | Additional Pair-2 data coverage | PAUSED_BY_OWNER_PRIORITY at1,574,296 rows/cursor1,449,984;no training |
 | R011 | Neural composition generalization and support | Four COMPOSE arms complete;bounds help7.56%/8.12%,but trail matched PAIR;38/64 structural zeros |
-| R012 | Nonlinear two-pass king-anchor neural messages | Current priority;compiled prototype,resource-gated correctness retry;untrained |
+| R012 | Nonlinear two-pass king-anchor neural messages | Complete;capability passes,but training gate fails and relation-readout masking improves loss |
+| R013 | Coverage/rate diagnosis at matched8192 neural updates | Complete;coverage helps learned paths,but neither rate clears both-seed gate |
+| R014 | Global context conditioning of nonlinear attack messages | Prospective implementation/correctness,then four1M/1epoch arms |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -99,14 +96,12 @@ before any recovery; never rewrite completed bindings to accept changed tools.
 
 ## Validation and required action
 
-Before R012,50 distinct focused tests passed:23 baseline Java,19 research Java,
-8 Python. R012 adds3 passed tests and1 pending failed numerical test as described
-above. The selector's renamed import received syntax validation but no new runtime
-rerun during the resource gate. Full suite,GUI,GPU,clock and production deployment
-qualification are not claimed. Raw output stays local/ignored;compact evidence,
+55 distinct focused tests have passed:23 baseline Java,24 research Java,
+8 Python. The selector's renamed import received syntax validation but no new
+runtime rerun;its unchanged clone function was previously tested. Full suite,
+GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,
 configs and reusable fixtures are tracked. Build77 unchanged;no push.
 
-Human actions required after this prompt: **Blocking: invoke RESUME when
-conservative CPU work can coexist with normal use.** This blocks R012 validation
-and training. No non-blocking action,GPU access,clock authorization or production
-promotion is requested. No completed experiment needs repetition.
+Human actions required after this prompt: None while admitted autonomous work
+continues. Any actual resource/authority gate will replace this statement before
+execution ends. No completed experiment needs repetition.

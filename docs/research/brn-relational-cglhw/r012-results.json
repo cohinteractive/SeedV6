@@ -1,0 +1,656 @@
+{
+  "arms": [
+    {
+      "mode": "linear",
+      "seed": 71,
+      "result": {
+        "seed": 71,
+        "parameters": 20257,
+        "preparation_seconds": 1.0392007,
+        "full_inference_ns": 2505.495,
+        "scope": "Neural relational development pilot; no incremental/search/strength qualification",
+        "checksum": 357056.3127128055,
+        "optimization_checkpoint_seconds": 4.4532178,
+        "mode": "LINEAR",
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.03223362833015501
+          },
+          {
+            "epoch": 1,
+            "unary_only_validation_mse": 0.027802028556699773,
+            "validation_mse": 0.02772454007954845,
+            "state_sha256": "88369351547d1e553aad45abee7fd9bab20651f04daf45c4434977fb95682c27",
+            "updates": 1024,
+            "train_mse": 0.02771717057570588
+          },
+          {
+            "epoch": 2,
+            "unary_only_validation_mse": 0.027821589789575232,
+            "validation_mse": 0.027765555481634698,
+            "state_sha256": "fb41e30829af5cb57c4ba2bb16fdac1c51d798ee6e491d1f56b030021a3ae262",
+            "updates": 2048,
+            "train_mse": 0.026081496547548474
+          },
+          {
+            "epoch": 3,
+            "unary_only_validation_mse": 0.027347180960413525,
+            "validation_mse": 0.02754821177127503,
+            "state_sha256": "7c86d5c318bba3cdf988bc6362b968dac1dd9433a43e20d672c39c2dc3921ca6",
+            "updates": 3072,
+            "train_mse": 0.024855008596295074
+          },
+          {
+            "epoch": 4,
+            "unary_only_validation_mse": 0.027188234015302182,
+            "validation_mse": 0.027575790732526976,
+            "state_sha256": "ec7e184392ec9a506bad21b3742e0a9716f4bc07735319d94ddb262f1ab182c0",
+            "updates": 4096,
+            "train_mse": 0.02392722011858328
+          },
+          {
+            "epoch": 5,
+            "unary_only_validation_mse": 0.027241811523679032,
+            "validation_mse": 0.027804934796802967,
+            "state_sha256": "bdabb1f2f05f429cb7b2a1f2299106cbd767e138eeae351bd137cf721bcd34ff",
+            "updates": 5120,
+            "train_mse": 0.02328514555589206
+          },
+          {
+            "epoch": 6,
+            "unary_only_validation_mse": 0.027142392854403903,
+            "validation_mse": 0.027795921372832735,
+            "state_sha256": "06932b41f795cb0f2e31e5ab1fb2d93a3da37e0a582553523c680a0ac7488edd",
+            "updates": 6144,
+            "train_mse": 0.023160172959828546
+          },
+          {
+            "epoch": 7,
+            "unary_only_validation_mse": 0.02679733118941114,
+            "validation_mse": 0.02735326045086429,
+            "state_sha256": "3757dae129aa7c8463c7d57bdf2c9ee59118e0133c1b31c64c7292dc0182d240",
+            "updates": 7168,
+            "train_mse": 0.022783919613240406
+          },
+          {
+            "epoch": 8,
+            "unary_only_validation_mse": 0.026987908647604492,
+            "validation_mse": 0.02778112432969802,
+            "state_sha256": "292c4bbb056113343d78e2497fba103df820c098cf7f932e624593d124c46dda",
+            "updates": 8192,
+            "train_mse": 0.0228801605330667
+          }
+        ]
+      },
+      "weight_families": {
+        "unary": {
+          "rms": 0.39268212846876765,
+          "maximum_abs": 0.9898020099,
+          "fraction_at_bound": 0.0
+        },
+        "E": {
+          "rms": 0.6227047304578208,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.016927083333333332
+        },
+        "R1": {
+          "rms": 0.6606122056818672,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.025555555555555557
+        },
+        "R2": {
+          "rms": 0.6660272045127049,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.02277777777777778
+        },
+        "O": {
+          "rms": 0.6237578515008345,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.01318359375
+        }
+      },
+      "checkpoint": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r012-linear-71\\epoch-8.state",
+        "sha256": "292c4bbb056113343d78e2497fba103df820c098cf7f932e624593d124c46dda"
+      },
+      "binding": {
+        "config_sha256": "8a1ae428b02df0baa7c45a672dbed903c01f284a541cb20efacb34c600d59de3",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\engine-core.jar": "59f8996193812f3a94e617b3df8e1f565b8a42dcdc07d96bb11733bd5e88f5cd",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\research.jar": "8d0392d22f37c4a78c67618aa442fd916442a475044df0f93a6a0fdcd6ca2f1d",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "f6cfbc0039e16e87bc28fb9ce6e1d2a331be658512b125296f355a80c678ae31"
+      }
+    },
+    {
+      "mode": "linear",
+      "seed": 97,
+      "result": {
+        "preparation_seconds": 0.8487428,
+        "full_inference_ns": 1237.79,
+        "scope": "Neural relational development pilot; no incremental/search/strength qualification",
+        "checksum": 357707.0797790782,
+        "optimization_checkpoint_seconds": 4.5192562,
+        "mode": "LINEAR",
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.03223345815206483
+          },
+          {
+            "epoch": 1,
+            "unary_only_validation_mse": 0.02808134471308764,
+            "validation_mse": 0.027932252895051888,
+            "state_sha256": "c09cb2fe839e1a079cdf0984c1cb75744190e8145b73a69ee3423c310c4f6dee",
+            "updates": 1024,
+            "train_mse": 0.02772895524007301
+          },
+          {
+            "epoch": 2,
+            "unary_only_validation_mse": 0.027801916857748788,
+            "validation_mse": 0.02767997983755113,
+            "state_sha256": "2e76b6e68d33b621474c0fb99b0830136c3536fc672ccf05fccfd52a87071534",
+            "updates": 2048,
+            "train_mse": 0.025924404358380605
+          },
+          {
+            "epoch": 3,
+            "unary_only_validation_mse": 0.02756268583845712,
+            "validation_mse": 0.027716127723636422,
+            "state_sha256": "45ae563822ba4af777518061195486590253e7da39ed97ece63b7aed2b9ba366",
+            "updates": 3072,
+            "train_mse": 0.024688266282198064
+          },
+          {
+            "epoch": 4,
+            "unary_only_validation_mse": 0.027387098622335727,
+            "validation_mse": 0.02796003066047765,
+            "state_sha256": "08919eeb474baf078f3f49e2ac535a331db65de45b14eec9f7bfc575cb9b7695",
+            "updates": 4096,
+            "train_mse": 0.024093668806839993
+          },
+          {
+            "epoch": 5,
+            "unary_only_validation_mse": 0.02686410425424872,
+            "validation_mse": 0.027370476228522254,
+            "state_sha256": "c2a327bc57b5f1d3efc3a3e7c874e247ec9e9f7592afe95dbc72dbd7798209d1",
+            "updates": 5120,
+            "train_mse": 0.023247935556166804
+          },
+          {
+            "epoch": 6,
+            "unary_only_validation_mse": 0.026724323274613958,
+            "validation_mse": 0.027535887987942168,
+            "state_sha256": "a2dc3a0c1e4be3c77e10f4dbe7b3000e212f9605f19690ec4f1a5925a90a14e6",
+            "updates": 6144,
+            "train_mse": 0.022913181203824486
+          },
+          {
+            "epoch": 7,
+            "unary_only_validation_mse": 0.026991490255430104,
+            "validation_mse": 0.027885602952229204,
+            "state_sha256": "cddbf7bf60230231838049bf3f0ea6fa30958833c796a59071dbdd61d765e1c7",
+            "updates": 7168,
+            "train_mse": 0.02262199236400271
+          },
+          {
+            "epoch": 8,
+            "unary_only_validation_mse": 0.02658811895969292,
+            "validation_mse": 0.02763874968386948,
+            "state_sha256": "0ce77fa4295c1c90162736844ad3e1ca4497fd036e0da9e3ff84a976930d7c5c",
+            "updates": 8192,
+            "train_mse": 0.022563468234115692
+          }
+        ],
+        "seed": 97,
+        "parameters": 20257
+      },
+      "weight_families": {
+        "unary": {
+          "rms": 0.39177590436021886,
+          "maximum_abs": 0.989901,
+          "fraction_at_bound": 0.0
+        },
+        "E": {
+          "rms": 0.6192474161612295,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.015950520833333332
+        },
+        "R1": {
+          "rms": 0.670995808403468,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.02638888888888889
+        },
+        "R2": {
+          "rms": 0.6661908428465804,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.028055555555555556
+        },
+        "O": {
+          "rms": 0.6230908247030659,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.013509114583333334
+        }
+      },
+      "checkpoint": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r012-linear-97\\epoch-8.state",
+        "sha256": "0ce77fa4295c1c90162736844ad3e1ca4497fd036e0da9e3ff84a976930d7c5c"
+      },
+      "binding": {
+        "config_sha256": "46b6ae533b7a8e87b549280be1733c77b5be53aa91ecc4a6315c54b8b452eaf0",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\engine-core.jar": "59f8996193812f3a94e617b3df8e1f565b8a42dcdc07d96bb11733bd5e88f5cd",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\research.jar": "8d0392d22f37c4a78c67618aa442fd916442a475044df0f93a6a0fdcd6ca2f1d",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "f6cfbc0039e16e87bc28fb9ce6e1d2a331be658512b125296f355a80c678ae31"
+      }
+    },
+    {
+      "mode": "nonlinear",
+      "seed": 71,
+      "result": {
+        "optimization_checkpoint_seconds": 4.6702659,
+        "checksum": 357063.15385622944,
+        "scope": "Neural relational development pilot; no incremental/search/strength qualification",
+        "full_inference_ns": 1348.825,
+        "preparation_seconds": 0.9979722,
+        "parameters": 20257,
+        "seed": 71,
+        "metrics": [
+          {
+            "validation_mse": 0.03223361753113803,
+            "epoch": 0
+          },
+          {
+            "state_sha256": "89be50c0c31a8c7413f10b615f0d7a903f5598608feb6f75abb49c93a3308e4f",
+            "validation_mse": 0.027741077584212792,
+            "unary_only_validation_mse": 0.02781899629477377,
+            "epoch": 1,
+            "train_mse": 0.027728666779621415,
+            "updates": 1024
+          },
+          {
+            "state_sha256": "5351819983f9c5c5c7c4781b01afa9365fa40aedc9b8a77c953bacfe0a44e14c",
+            "validation_mse": 0.027659546953108637,
+            "unary_only_validation_mse": 0.027841853420877298,
+            "epoch": 2,
+            "train_mse": 0.026258700509178782,
+            "updates": 2048
+          },
+          {
+            "state_sha256": "187657ca482d351f219bca5cefa7b1ddc0f755774d58ef43e164858783f83bd3",
+            "validation_mse": 0.027599467584135798,
+            "unary_only_validation_mse": 0.027367051886983206,
+            "epoch": 3,
+            "train_mse": 0.025193081973406237,
+            "updates": 3072
+          },
+          {
+            "state_sha256": "c67377f8621eb9f1eabf43d759b457463d1ae36a411f084c688db2af8874ca1b",
+            "validation_mse": 0.027557260423353304,
+            "unary_only_validation_mse": 0.027199038917509796,
+            "epoch": 4,
+            "train_mse": 0.024584185948063438,
+            "updates": 4096
+          },
+          {
+            "state_sha256": "7d2d196086a42d9b5716b38b17f88b8bf35fd971df57e3bda3806fce60813557",
+            "validation_mse": 0.027557590628364062,
+            "unary_only_validation_mse": 0.027161774424003318,
+            "epoch": 5,
+            "train_mse": 0.024077823911424028,
+            "updates": 5120
+          },
+          {
+            "state_sha256": "a68e0b66ccb1e6b40753dc7874afcaabbe19a5fd41bd6ca23380980eef1c23ef",
+            "validation_mse": 0.02759691796372172,
+            "unary_only_validation_mse": 0.027173157582258193,
+            "epoch": 6,
+            "train_mse": 0.023969205722633852,
+            "updates": 6144
+          },
+          {
+            "state_sha256": "cf5581e0d9d164d9b5eebeff941d1de5212f923e616e705b339246c2953f94ab",
+            "validation_mse": 0.02733639353068644,
+            "unary_only_validation_mse": 0.02670756397447211,
+            "epoch": 7,
+            "train_mse": 0.023702775330980023,
+            "updates": 7168
+          },
+          {
+            "state_sha256": "cb6b89b43077abf58dbb5e5b921c1eaf4a67c93a8dfa7538fd1f228114dbf6c7",
+            "validation_mse": 0.027656300757694784,
+            "unary_only_validation_mse": 0.02696332215142938,
+            "epoch": 8,
+            "train_mse": 0.02377568625380187,
+            "updates": 8192
+          }
+        ],
+        "mode": "NONLINEAR"
+      },
+      "weight_families": {
+        "unary": {
+          "rms": 0.39264225639820505,
+          "maximum_abs": 0.976907612476815,
+          "fraction_at_bound": 0.0
+        },
+        "E": {
+          "rms": 0.6341749792654419,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.01611328125
+        },
+        "R1": {
+          "rms": 0.6577123329748298,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.02666666666666667
+        },
+        "R2": {
+          "rms": 0.7203807805150424,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.0425
+        },
+        "O": {
+          "rms": 0.6905026787769896,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.02880859375
+        }
+      },
+      "checkpoint": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r012-nonlinear-71\\epoch-8.state",
+        "sha256": "cb6b89b43077abf58dbb5e5b921c1eaf4a67c93a8dfa7538fd1f228114dbf6c7"
+      },
+      "binding": {
+        "config_sha256": "09752fd4f74c38a3b6e6e2ef552c9ba2d418ee7960fdb913069854f9eda34353",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\engine-core.jar": "59f8996193812f3a94e617b3df8e1f565b8a42dcdc07d96bb11733bd5e88f5cd",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\research.jar": "8d0392d22f37c4a78c67618aa442fd916442a475044df0f93a6a0fdcd6ca2f1d",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "f6cfbc0039e16e87bc28fb9ce6e1d2a331be658512b125296f355a80c678ae31"
+      }
+    },
+    {
+      "mode": "nonlinear",
+      "seed": 97,
+      "result": {
+        "optimization_checkpoint_seconds": 4.7459047,
+        "mode": "NONLINEAR",
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.03223345040789523
+          },
+          {
+            "unary_only_validation_mse": 0.028068186802811704,
+            "validation_mse": 0.027871533816159567,
+            "state_sha256": "dc7bba740b24515f7317461858bb671f2a2ba8cb226e1767bfedc4dee61e28e7",
+            "updates": 1024,
+            "train_mse": 0.027794665616474878,
+            "epoch": 1
+          },
+          {
+            "unary_only_validation_mse": 0.027785550717440488,
+            "validation_mse": 0.02761771010167934,
+            "state_sha256": "15865ac4db60440abdd9a72e367f297667096c743056e1caa4ee23561df0c82e",
+            "updates": 2048,
+            "train_mse": 0.02623004507357086,
+            "epoch": 2
+          },
+          {
+            "unary_only_validation_mse": 0.02753599944882405,
+            "validation_mse": 0.027451288361469605,
+            "state_sha256": "b5e843c21c529f201965f70694cee788c2ed6144226ca9beba5d0cdf7ed8c356",
+            "updates": 3072,
+            "train_mse": 0.025172227130789107,
+            "epoch": 3
+          },
+          {
+            "unary_only_validation_mse": 0.02751548948432095,
+            "validation_mse": 0.027467383966859427,
+            "state_sha256": "2df9f46142e3593a7b1b012737f8065724e510c4f85ff37adfb26fb710191a69",
+            "updates": 4096,
+            "train_mse": 0.024741441534472934,
+            "epoch": 4
+          },
+          {
+            "unary_only_validation_mse": 0.026825079523527712,
+            "validation_mse": 0.026702089406033518,
+            "state_sha256": "82e7c20292094b11dae6949a5f029a34c1c0cf945ed50bff7cf1beeed989741c",
+            "updates": 5120,
+            "train_mse": 0.024122981482147716,
+            "epoch": 5
+          },
+          {
+            "unary_only_validation_mse": 0.026732077074055855,
+            "validation_mse": 0.026822046396802978,
+            "state_sha256": "7fc6a5cdd5a83a230933c8ebc7249f00cddd36157746d84cebf8641d604b67c9",
+            "updates": 6144,
+            "train_mse": 0.02382482360129525,
+            "epoch": 6
+          },
+          {
+            "unary_only_validation_mse": 0.02695097496273674,
+            "validation_mse": 0.027089719546426007,
+            "state_sha256": "9b794e61390de639ef3e993caa230a50b16a1ab9febf7c67cd34cab9cc94b63a",
+            "updates": 7168,
+            "train_mse": 0.023587487682826428,
+            "epoch": 7
+          },
+          {
+            "unary_only_validation_mse": 0.026433288792483717,
+            "validation_mse": 0.026905361752111417,
+            "state_sha256": "006c4e0e7dbf26c4297d11ab19c8c4e50d6e17942661a52938b0a08fe5202d7b",
+            "updates": 8192,
+            "train_mse": 0.023579399718019086,
+            "epoch": 8
+          }
+        ],
+        "seed": 97,
+        "parameters": 20257,
+        "preparation_seconds": 1.013992,
+        "full_inference_ns": 1998.16,
+        "scope": "Neural relational development pilot; no incremental/search/strength qualification",
+        "checksum": 357702.5304096739
+      },
+      "weight_families": {
+        "unary": {
+          "rms": 0.39220249420883485,
+          "maximum_abs": 0.989901,
+          "fraction_at_bound": 0.0
+        },
+        "E": {
+          "rms": 0.6318866833730387,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.018229166666666668
+        },
+        "R1": {
+          "rms": 0.6630443221433655,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.029166666666666667
+        },
+        "R2": {
+          "rms": 0.718397697540552,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.0375
+        },
+        "O": {
+          "rms": 0.6983284714612732,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.029296875
+        }
+      },
+      "checkpoint": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r012-nonlinear-97\\epoch-8.state",
+        "sha256": "006c4e0e7dbf26c4297d11ab19c8c4e50d6e17942661a52938b0a08fe5202d7b"
+      },
+      "binding": {
+        "config_sha256": "e9fa8ed6c9e333cdcaf1f04795824e62fe6227cc1ccccc925fd1a30067c12e3e",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\engine-core.jar": "59f8996193812f3a94e617b3df8e1f565b8a42dcdc07d96bb11733bd5e88f5cd",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\research.jar": "8d0392d22f37c4a78c67618aa442fd916442a475044df0f93a6a0fdcd6ca2f1d",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "f6cfbc0039e16e87bc28fb9ce6e1d2a331be658512b125296f355a80c678ae31"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "seed": 71,
+      "relative_nonlinear_gain": 0.004493107281111741,
+      "beats_prior_compose": false,
+      "passes": false
+    },
+    {
+      "seed": 97,
+      "relative_nonlinear_gain": 0.026534772381041627,
+      "beats_prior_compose": false,
+      "passes": false
+    }
+  ],
+  "admitted": false,
+  "decision": "Pilot fails gate;relational-path ablation improves validation in every arm. R013 admits only a matched-update coverage/learning-rate diagnosis;no search integration.",
+  "execution": {
+    "arms": [
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r012-linear-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 5.820746199984569,
+        "resources": [
+          {
+            "cpu_percent": 15.104166666666663,
+            "available_gib": 18.046554565429688,
+            "utc": "2026-10-28T21:53:12Z"
+          },
+          {
+            "cpu_percent": 11.675126903553302,
+            "available_gib": 17.84549331665039,
+            "utc": "2026-10-28T21:53:18Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.AnchorDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r012-linear-71.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r012-linear-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 5.668964299955405,
+        "resources": [
+          {
+            "cpu_percent": 13.829787234042556,
+            "available_gib": 18.08078384399414,
+            "utc": "2026-10-28T21:53:18Z"
+          },
+          {
+            "cpu_percent": 11.702127659574469,
+            "available_gib": 17.851905822753906,
+            "utc": "2026-10-28T21:53:24Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.AnchorDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r012-linear-97.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r012-nonlinear-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 5.968100600002799,
+        "resources": [
+          {
+            "cpu_percent": 10.63829787234043,
+            "available_gib": 18.08222198486328,
+            "utc": "2026-10-28T21:53:24Z"
+          },
+          {
+            "cpu_percent": 11.458333333333337,
+            "available_gib": 17.862060546875,
+            "utc": "2026-10-28T21:53:30Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.AnchorDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r012-nonlinear-71.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r012-nonlinear-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 6.072662900027353,
+        "resources": [
+          {
+            "cpu_percent": 6.17977528089888,
+            "available_gib": 18.100444793701172,
+            "utc": "2026-10-28T21:53:31Z"
+          },
+          {
+            "cpu_percent": 11.5,
+            "available_gib": 17.860111236572266,
+            "utc": "2026-10-28T21:53:36Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r012-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.AnchorDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r012-nonlinear-97.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      }
+    ]
+  }
+}

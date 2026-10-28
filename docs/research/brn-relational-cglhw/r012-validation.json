@@ -1,0 +1,27 @@
+{
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.AnchorNeuralNetworkTest",
+    "tests": "4",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T21:52:16",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.148"
+  },
+  "gradient_diagnostics": "nonlinear=false maximum gradient error by family=[6.686318165805005E-13, 4.502300698415934E-12, 3.9993784634273456E-12, 3.0746300331982923E-12, 3.5611776690784667E-12]\nnonlinear=true maximum gradient error by family=[3.75921516138078E-13, 2.2800067836872308E-12, 3.3433724064562027E-12, 3.4845343705727436E-12, 2.8190354069916167E-12]\n",
+  "evidence": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r012-passed-test.xml",
+    "sha256": "ac7980a1d2599bd7a610632ae384dbade48e71a86fb135656ea65272d969eb8f"
+  },
+  "runtime": {
+    "engine-core.jar": "59f8996193812f3a94e617b3df8e1f565b8a42dcdc07d96bb11733bd5e88f5cd",
+    "engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "8d0392d22f37c4a78c67618aa442fd916442a475044df0f93a6a0fdcd6ca2f1d",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "previous_failure": "raw/r012-initial-failed-test.xml; finite-difference step1e-4 failed by1.256e-10. Step1e-5 passes unchanged1e-10 tolerance; network math unchanged."
+}

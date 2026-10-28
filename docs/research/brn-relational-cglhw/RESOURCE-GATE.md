@@ -1,6 +1,11 @@
-# R012 resource pause — resume here after STATE
+# Historical R012 resource pause — resume here after STATE
 
-**PAUSED_RESOURCE_GATE**, observed2026-10-28T21:42:28Z (29 October Auckland).
+**CLEARED_BY_OWNER_RESUME on29 October2026**. The resource admission and pending
+correctness retry passed; all4 tests passed. See r012-validation.json and STATE.md
+for current work. The original gate/commands below are preserved as history and
+must not be interpreted as a new request to rerun completed validation.
+
+Original **PAUSED_RESOURCE_GATE**, observed2026-10-28T21:42:28Z (29 October Auckland).
 The existing CPU admission probe measured65.6863%,above the strict<60% limit;
 16.374GiB free memory passed the>=8GiB requirement. Gradle did not start.
 No availability retry occurred. Supervisor active:null,owned_processes:0;

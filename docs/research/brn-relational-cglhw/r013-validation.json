@@ -1,0 +1,25 @@
+{
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.AnchorCoverageDiagnosticTest",
+    "tests": "1",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T21:56:56",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.126"
+  },
+  "raw_test": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r013-passed-test.xml",
+    "sha256": "e01690662648c0bb316797e7f9b2e12b615c5fe23266d40f285b5f4ad4733260"
+  },
+  "neural_class_parity": {
+    "com/ohinteractive/seedv6/core/brnpair2/AnchorNeuralNetwork$Features.class": "086bdd888423634c6c5ec9e58b566b66581bfff42f8ebf2ceec225469c1ded7a",
+    "com/ohinteractive/seedv6/core/brnpair2/AnchorNeuralNetwork$Workspace.class": "3335ca51d6ede113c17bf72ca4ba7a956237d958517431e9c7550bb1a7e2be8d",
+    "com/ohinteractive/seedv6/core/brnpair2/AnchorNeuralNetwork.class": "7c50ca2e33fcf0dfb12bd268a898efaa46f5801d161064c0e92f5fdd8d342e11"
+  },
+  "prior_runner": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r012-objective-runner.py",
+    "sha256": "f6cfbc0039e16e87bc28fb9ce6e1d2a331be658512b125296f355a80c678ae31"
+  }
+}

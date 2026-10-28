@@ -155,3 +155,19 @@ supervisor's NORMAL state alone does not clear the resource gate.
 R010 extension now has the distinct prepare_coverage_extension.py filename;
 raw/r010-selection-runner.py preserves exactly executed bytes. The original
 prepare_coverage.py131k selector is restored from its committed bytes.
+
+## R012/R013 completed neural diagnostics
+
+Owner RESUME cleared the historical R012 resource gate. All4 anchor tests pass;
+r012-validation.json preserves the initial numerical-test failure and successful
+step refinement. R012 runtime/configs,64-case capability audit and all four8epoch
+arms are COMPLETE. R013 streaming encoding matches the original loop byte-exactly,
+including a tail batch and optimizer resume; its four1M/1epoch arms are COMPLETE.
+Neither prospective advancement gate passed. Do not repeat completed work.
+
+raw/r011-objective-runner.py and raw/r011-support-runner.py preserve exact prior
+runner bytes. raw/r012-objective-runner.py preserves the R012 training runner;
+current dispatch includes AnchorCoverageDiagnostic. Future modifications must
+preserve the R013 binding before editing. Raw states/receipts are the resume
+identity,not the supervisor's historical NNUE latest_checkpoint field. R014 is a
+new neural architectural hypothesis with its own correctness/cost gates.
