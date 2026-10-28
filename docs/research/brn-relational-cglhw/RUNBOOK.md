@@ -197,3 +197,7 @@ capacity from constant-rate optimization limits. New channel composition is R019
 R019 complete:exact fixed-transform control parity and4tests;two active learned
 MIX transforms fail2%teacher gate. All source/runtime/state hashes remain pinned.
 raw/r018-objective-runner.py preserves the prior runner before R019 dispatch.
+
+R020 complete:three tests,exact CP64 symmetry audit,two canonical pilots failing
+predictive gates. Raw audit and canonical runtimes are distinct and immutable.
+No failed arm is repeated or promoted. R021 tests a single optimizer mechanism.

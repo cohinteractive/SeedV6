@@ -1,0 +1,204 @@
+{
+  "arms": [
+    {
+      "result": {
+        "optimization_checkpoint_seconds": 16.4848532,
+        "rate": 0.01,
+        "seed": 71,
+        "mode": "CANONICAL",
+        "train_positions": 1048576,
+        "metrics": [
+          {
+            "validation_mse": 0.018538192950599608,
+            "epoch": 0
+          },
+          {
+            "unary_only_train_mse": 0.015043635970280179,
+            "validation_mse": 0.012448198531031697,
+            "unary_only_validation_mse": 0.013480963703522603,
+            "state_sha256": "b5597d605986d176fb4a5f2368a767eb4a0127669b16d313d74553342fcd1e9e",
+            "train_mse": 0.01367462144442613,
+            "updates": 8192,
+            "epoch": 1
+          }
+        ],
+        "load_seconds": 3.831142,
+        "scope": "Matched raw/canonical score-frame neural field diagnosis;canonicalization alone is not originality; no search or strength qualification",
+        "full_inference_ns": 4493.965,
+        "parameters": 40777,
+        "active_parameters": 40777,
+        "frame": "CANONICAL",
+        "original_bt4_validation_mse": 0.02514566240991089
+      },
+      "binding": {
+        "config_sha256": "e39a7cac95a0b080d52e4d1022a86c9bd4f803eaf9d731fc285f3ce08a431d37",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\engine-core.jar": "a1e3e6c3cef3b07c616be1385ebfd66e86c3a3858e5139e07d2091dee4c76958",
+          "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\research.jar": "b593741185a6fe9fbf53185551ec12e7a362e8f53c1cecdb3b29a68f4df38184",
+          "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "9d2eefeca31a2cfe3eba64a5b2409f27d909887aacae6bad636b6219a04611d6"
+      }
+    },
+    {
+      "result": {
+        "scope": "Matched raw/canonical score-frame neural field diagnosis;canonicalization alone is not originality; no search or strength qualification",
+        "load_seconds": 3.8579837,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.018540171276025506
+          },
+          {
+            "unary_only_train_mse": 0.015206458453422568,
+            "epoch": 1,
+            "updates": 8192,
+            "train_mse": 0.013699244469414508,
+            "state_sha256": "6b5b453393224c6a623f0d7029c3232223f3c2c02a06b400b5521698089924d7",
+            "unary_only_validation_mse": 0.013848018729061815,
+            "validation_mse": 0.012477716800793287
+          }
+        ],
+        "train_positions": 1048576,
+        "mode": "CANONICAL",
+        "seed": 97,
+        "rate": 0.01,
+        "optimization_checkpoint_seconds": 16.7381066,
+        "full_inference_ns": 4295.495,
+        "parameters": 40777,
+        "active_parameters": 40777,
+        "frame": "CANONICAL",
+        "original_bt4_validation_mse": 0.02561586128245705
+      },
+      "binding": {
+        "config_sha256": "adb158b308be930620508c0b88d5043bea4860f202d8bfc8e94a2c3590b5efd0",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\engine-core.jar": "a1e3e6c3cef3b07c616be1385ebfd66e86c3a3858e5139e07d2091dee4c76958",
+          "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\research.jar": "b593741185a6fe9fbf53185551ec12e7a362e8f53c1cecdb3b29a68f4df38184",
+          "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "9d2eefeca31a2cfe3eba64a5b2409f27d909887aacae6bad636b6219a04611d6"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "seed": 71,
+      "teacher_gain": -0.001031546925075899,
+      "original_change": -0.00309661142609996,
+      "path_gain": 0.07660915014711023,
+      "passes": false
+    },
+    {
+      "seed": 97,
+      "teacher_gain": -0.005126103536525317,
+      "original_change": 0.011034753177438406,
+      "path_gain": 0.098952922802796,
+      "passes": false
+    }
+  ],
+  "advance": false,
+  "execution": {
+    "arms": [
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r020-canonical-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 21.00928290002048,
+        "resources": [
+          {
+            "cpu_percent": 2.645502645502651,
+            "available_gib": 18.27968978881836,
+            "utc": "2026-10-28T22:41:37Z"
+          },
+          {
+            "cpu_percent": 27.604166666666664,
+            "available_gib": 18.027034759521484,
+            "utc": "2026-10-28T22:41:42Z"
+          },
+          {
+            "cpu_percent": 13.846153846153841,
+            "available_gib": 18.09042739868164,
+            "utc": "2026-10-28T22:41:48Z"
+          },
+          {
+            "cpu_percent": 13.157894736842103,
+            "available_gib": 18.086727142333984,
+            "utc": "2026-10-28T22:41:53Z"
+          },
+          {
+            "cpu_percent": 8.247422680412376,
+            "available_gib": 18.323795318603516,
+            "utc": "2026-10-28T22:41:58Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.CanonicalAttackFieldDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r020-canonical-71.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r020-canonical-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 21.169612500001676,
+        "resources": [
+          {
+            "cpu_percent": 2.2346368715083775,
+            "available_gib": 18.309215545654297,
+            "utc": "2026-10-28T22:41:58Z"
+          },
+          {
+            "cpu_percent": 13.989637305699487,
+            "available_gib": 18.098804473876953,
+            "utc": "2026-10-28T22:42:04Z"
+          },
+          {
+            "cpu_percent": 10.052910052910057,
+            "available_gib": 18.043441772460938,
+            "utc": "2026-10-28T22:42:09Z"
+          },
+          {
+            "cpu_percent": 12.698412698412698,
+            "available_gib": 18.033756256103516,
+            "utc": "2026-10-28T22:42:14Z"
+          },
+          {
+            "cpu_percent": 9.895833333333337,
+            "available_gib": 18.096221923828125,
+            "utc": "2026-10-28T22:42:19Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.CanonicalAttackFieldDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r020-canonical-97.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      }
+    ]
+  },
+  "decision": "Exact symmetry is established,but canonicalized learning fails predictive gate. Preserve frame invariance finding separately from quality. No scaling/search or architecture originality claim."
+}

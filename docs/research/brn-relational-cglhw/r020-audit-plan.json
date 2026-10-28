@@ -1,0 +1,22 @@
+{
+  "main_class": "HorizontalSymmetryAudit",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r020-runtime\\lib",
+  "cases": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-data\\validation.tsv",
+  "cases_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r020-symmetry.json",
+  "rows": 4096,
+  "models": [
+    {
+      "id": "r017-all-71",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r017-all-71\\epoch-1.state",
+      "state_sha256": "dd02f4cf2ab8c25f7ce53924c499b61ee84a8d479233265131a2c43c86eb7514"
+    },
+    {
+      "id": "r017-all-97",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r017-all-97\\epoch-1.state",
+      "state_sha256": "3b14879bf2abaa37dfcc2fdface4d29ac34f0b4c17c847cc1692f440795a5ead"
+    }
+  ],
+  "teacher": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "teacher_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+}

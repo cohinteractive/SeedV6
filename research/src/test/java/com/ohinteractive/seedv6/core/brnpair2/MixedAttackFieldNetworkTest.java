@@ -20,7 +20,7 @@ class MixedAttackFieldNetworkTest {
         }
         for(var row:h)for(int d=0;d<8;d++)row[d]/=1+Math.abs(row[d]);double sum=BrnPair2Features.material(b)/4+m.weights[768];
         for(int target=0;target<64;target++) {
-            
+
             int id=node(b,target),degree=0;double[] a=new double[8];if(squares.contains(target))sum+=m.weights[id];
             for(int source:squares)if(RelationalGraphEnergyTest.edge(b,source,target)) {
                 degree++;int sq=source^(stm*56),tq=target^(stm*56),rel=id/64*225+(tq/8-sq/8+7)*15+tq%8-sq%8+7;

@@ -1,0 +1,53 @@
+{
+  "scope": "Placement/STM score-view symmetry only;not castling legality,BT4 truth,learned relational originality or strength evidence",
+  "config_sha256": "f3f8240abfbad30d94dc2cba1b6f166363a853344cdbdf0939daf81b2750203e",
+  "maximum_teacher_mirror_cp": 0,
+  "rows": 4096,
+  "models": [
+    {
+      "maximum_mirror_cp": 397.0558299036026,
+      "id": "r017-all-71",
+      "state_sha256": "dd02f4cf2ab8c25f7ce53924c499b61ee84a8d479233265131a2c43c86eb7514",
+      "averaged_score_teacher_mse": 0.01230722303893456,
+      "reflected_teacher_mse": 0.0135721443626617,
+      "rms_mirror_cp": 92.14416508082019,
+      "original_teacher_mse": 0.012435370862456352
+    },
+    {
+      "maximum_mirror_cp": 374.9951016408667,
+      "id": "r017-all-97",
+      "state_sha256": "3b14879bf2abaa37dfcc2fdface4d29ac34f0b4c17c847cc1692f440795a5ead",
+      "averaged_score_teacher_mse": 0.012350388932880952,
+      "reflected_teacher_mse": 0.013831579238516963,
+      "rms_mirror_cp": 97.27139341536287,
+      "original_teacher_mse": 0.012414080936601462
+    }
+  ],
+  "admit_canonical_pilots": true,
+  "raw": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r020-symmetry.json",
+    "sha256": "d480745631d2045e6b12b7e61fafe3734797d18e3fdfd582ec373fb2bd02a899"
+  },
+  "binding": {
+    "plan_sha256": "f3f8240abfbad30d94dc2cba1b6f166363a853344cdbdf0939daf81b2750203e",
+    "runner_sha256": "0d9ea903d264cadde6245bc721419136d2cdd372286461d53c653e82ba7bf070",
+    "runtime": {
+      "engine-core.jar": "a1e3e6c3cef3b07c616be1385ebfd66e86c3a3858e5139e07d2091dee4c76958",
+      "engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+      "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "research.jar": "80b61af578100317a2a5e34098f529a4c2ca021f4c40e8fe34e4ced7c267c83f",
+      "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+    }
+  },
+  "receipt": {
+    "sha256": "d480745631d2045e6b12b7e61fafe3734797d18e3fdfd582ec373fb2bd02a899",
+    "seconds": 1.2692241999902762,
+    "resources": {
+      "cpu_percent": 2.564102564102566,
+      "available_gib": 18.330154418945312,
+      "utc": "2026-10-28T22:39:23Z"
+    }
+  }
+}

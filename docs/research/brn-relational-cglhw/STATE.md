@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R020 neural representation-symmetry audit**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R021 neural optimizer-mechanism diagnosis**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,12 +25,12 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-Implement/verify R020's read-only horizontal-symmetry audit on CP64 and frozen
-R017 ALL models. Read R020.md. Only its measured admission conditions allow the
-two bounded neural canonicalization pilots;there is no unconditional next training
-queue. R019 channel mixing failed2% gates and is not admitted to scaling/search.
-R018 failed unchanged-depth allocation;no more same-recipe epochs. Preserve all
-negative evidence. No Pair-2 training,R010 continuation or production promotion.
+R020 completed and failed predictive gates despite exact canonical symmetry.
+Read R021.md:implement and verify dense-versus-masked adaptive updates on the
+unchanged R017 ALL neural architecture,then freeze two1M/1epoch pilot configs.
+Reuse completed R017 masked controls. No live empirical job remains. Run admission
+inside nnue-control;do not duplicate completed work. No Pair-2 training,R010
+continuation,search or production promotion is admitted.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -64,7 +64,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R017 | Learned attack/control fields including empty squares | Complete;64/64 capacity,but1.37%/.42% teacher gains fail2% gate |
 | R018 | Optimization-depth calibration on successful neural control | Complete;epoch8 teacher gain-1.02%/+.67% fails5% gate;no further same-recipe epochs |
 | R019 | Learned cross-channel transformation of attack fields | Complete;teacher gain-.51%/+.45% fails2%;no scaling/search |
-| R020 | Horizontal canonicalization control for neural field learning | Prospective runtime symmetry audit;two pilots conditional on measured mismatch |
+| R020 | Horizontal canonicalization control for neural field learning | Complete;exact invariance,but teacher loss worsens .10%/.51%;no scaling/search |
+| R021 | Dense versus masked neural adaptive updates | Prospective bounded optimizer-mechanism diagnosis;unchanged neural field |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -100,7 +101,7 @@ before any recovery; never rewrite completed bindings to accept changed tools.
 
 ## Validation and required action
 
-71 distinct focused tests have passed:23 baseline Java,38 research Java,
+74 distinct focused tests have passed:23 baseline Java,41 research Java,
 10 Python. The selector's renamed import received syntax validation but no new
 runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,

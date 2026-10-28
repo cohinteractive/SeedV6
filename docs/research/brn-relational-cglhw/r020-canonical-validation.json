@@ -1,0 +1,24 @@
+{
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.CanonicalAttackFieldNetworkTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T22:41:07",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.3"
+  },
+  "raw_test": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r020-canonical-passed-tests.xml",
+    "sha256": "451b679aec24e45c7ca8a1137ac780a51d36696e75d4ed7974aa53e0417c2599"
+  },
+  "source_sha256": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\CanonicalAttackFieldDiagnostic.java": "1a4ce21cc0302a6b272ffbff8c4a527fbd5ffdf7add223da5b70dd0911b46411",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\CanonicalAttackFieldNetwork.java": "85b37c913d32bc06c81bd797928abc3ed124ba896ad65a3c3ec731e77c4af207",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\HorizontalScoreView.java": "aff532105db013d74f77e8ef983794443cc2aeb69ca5280ce90f6adaffd38cd3",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\CanonicalAttackFieldNetworkTest.java": "f04712bb32791f009f2037362c13bf296e0ea6dd438a472cdeb177046894aeea"
+  },
+  "source_base": "3a725eca",
+  "scope": "Raw-frame updater byte parity,canonical mirror/special successor scores,caller preservation,serialized-frame CRC/exact continuation."
+}

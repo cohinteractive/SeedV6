@@ -1,0 +1,22 @@
+{
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.HorizontalScoreViewTest",
+    "tests": "1",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T22:39:06",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.098"
+  },
+  "raw_test": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r020-passed-test.xml",
+    "sha256": "63c69b9fcf919e223441a57633f144c41f541dc3435445c69d8140744ba7114a"
+  },
+  "model_class_parity": {
+    "com/ohinteractive/seedv6/core/brnpair2/AttackFieldNetwork$Features.class": "a28d2ba3d199bc8dab9da8238c2c4af06b7f46fe2b2fdc2394eee4341c7852a0",
+    "com/ohinteractive/seedv6/core/brnpair2/AttackFieldNetwork$Workspace.class": "cf61c252997a83c2b0808822e738ba827dedb6fd217050b25e81f69cff35bb63",
+    "com/ohinteractive/seedv6/core/brnpair2/AttackFieldNetwork.class": "d7bb953444d52de816591b3d8c0580f7f7463a26c4643c9d53fa536a0612ecca"
+  },
+  "scope": "Score-view reflection involution,canonical mirror/color symmetry,input preservation and exact CP64 feature identity;runtime payload invariance not yet assumed."
+}
