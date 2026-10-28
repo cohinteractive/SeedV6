@@ -171,3 +171,8 @@ current dispatch includes AnchorCoverageDiagnostic. Future modifications must
 preserve the R013 binding before editing. Raw states/receipts are the resume
 identity,not the supervisor's historical NNUE latest_checkpoint field. R014 is a
 new neural architectural hypothesis with its own correctness/cost gates.
+
+R014 complete: four tests plus independent full-development Java/Python parity;
+raw/r014-runtime retains trained executable. See r014-results.json for49.79s serial
+training,failed global-context gate,ablations and immutable optimizer hashes.
+R015 uses the same frozen runtime and existing R007 labels,not new production code.

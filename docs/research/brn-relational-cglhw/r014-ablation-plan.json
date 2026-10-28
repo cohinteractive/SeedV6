@@ -1,0 +1,32 @@
+{
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r014-ablation.json",
+  "arms": [
+    {
+      "seed": 71,
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r014-global-71\\epoch-1.state",
+      "state_sha256": "b7a31dcfae9ecb25289991488ea622e165d4301f2a0ddceb3f896c8a902a2d2c",
+      "java_validation_mse": 0.02591348430249693
+    },
+    {
+      "seed": 97,
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r014-global-97\\epoch-1.state",
+      "state_sha256": "5de98edfb5c25f79d3ab565456460d0bc31236a4c21c548fe779aa38aab7e0b0",
+      "java_validation_mse": 0.026223449001356404
+    }
+  ],
+  "panels": [
+    {
+      "name": "train",
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-data\\train.tsv",
+      "sha256": "723f4ecc42a3a783fe0c86a31a68dbd55512e55f7a6dd86ce53f87cbd6c17153",
+      "rows": 4096
+    },
+    {
+      "name": "validation",
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-data\\validation.tsv",
+      "sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+      "rows": 4096
+    }
+  ],
+  "max_seconds": 120
+}

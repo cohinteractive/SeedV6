@@ -1,0 +1,530 @@
+{
+  "arms": [
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r014-local-71.json",
+      "result": {
+        "rate": 0.01,
+        "seed": 71,
+        "mode": "LOCAL",
+        "train_positions": 1048576,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.03223367724892977
+          },
+          {
+            "train_mse": 0.02647840398106719,
+            "updates": 8192,
+            "epoch": 1,
+            "unary_only_train_mse": 0.027628262437490198,
+            "validation_mse": 0.025914147141478126,
+            "unary_only_validation_mse": 0.026767145091645624,
+            "state_sha256": "805888bb59b8e365e52e84418e4b77a38d87ad3c0f7a080200e4031662aa1df1"
+          }
+        ],
+        "load_seconds": 3.9067811,
+        "scope": "Matched local/global neural attack diagnosis; no search or strength qualification",
+        "optimization_checkpoint_seconds": 6.6702521,
+        "full_inference_ns": 3399.625,
+        "parameters": 38449,
+        "active_parameters": 34657
+      },
+      "weight_families": {
+        "unary": {
+          "rms": 0.4024358993685458,
+          "at_bound": 0.0,
+          "max_abs": 0.9454832375408571
+        },
+        "source": {
+          "rms": 0.46373209228205703,
+          "at_bound": 0.00439453125,
+          "max_abs": 0.99
+        },
+        "local_geometry": {
+          "rms": 0.22012449168740852,
+          "at_bound": 0.0008796296296296296,
+          "max_abs": 0.99
+        },
+        "anchor_geometry": {
+          "rms": 0.04426842012050282,
+          "at_bound": 0.0,
+          "max_abs": 0.16488361909114957
+        },
+        "readout": {
+          "rms": 0.45369230192374155,
+          "at_bound": 0.006022135416666667,
+          "max_abs": 0.99
+        },
+        "gates": {
+          "rms": 0.0,
+          "at_bound": 0.0,
+          "max_abs": 0.0
+        }
+      },
+      "binding": {
+        "config_sha256": "33393deef9a714a9b595fa3711ac064bd3e8b5d78ee91a98017405a5fa5fd8df",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\engine-core.jar": "8c0d2536a51f030a7d6cfe6893cc263946f6e033d264bea4f0f4b24d0c64c215",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\research.jar": "275a89b5b432525878e1cda33753762011c02ccdc9e499585ee701cb499991e9",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "495f8b7637d7c8fa8d38d26ba4ffc9ef5679bbffc81cbea84afeb9da4cb0a030"
+      }
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r014-local-97.json",
+      "result": {
+        "optimization_checkpoint_seconds": 6.7281176,
+        "scope": "Matched local/global neural attack diagnosis; no search or strength qualification",
+        "load_seconds": 3.9939859,
+        "metrics": [
+          {
+            "validation_mse": 0.0322313706550338,
+            "epoch": 0
+          },
+          {
+            "unary_only_validation_mse": 0.027334107274546066,
+            "validation_mse": 0.026202859566311156,
+            "unary_only_train_mse": 0.02812309748392434,
+            "epoch": 1,
+            "updates": 8192,
+            "train_mse": 0.026701841937052676,
+            "state_sha256": "b6a3b333e56dd8487720593f53033af49c0d15aae231ffe0d9196e0311dc633f"
+          }
+        ],
+        "train_positions": 1048576,
+        "mode": "LOCAL",
+        "seed": 97,
+        "rate": 0.01,
+        "full_inference_ns": 3872.92,
+        "parameters": 38449,
+        "active_parameters": 34657
+      },
+      "weight_families": {
+        "unary": {
+          "rms": 0.40119990777558345,
+          "at_bound": 0.0,
+          "max_abs": 0.9412243776815458
+        },
+        "source": {
+          "rms": 0.46041650585375193,
+          "at_bound": 0.0037434895833333335,
+          "max_abs": 0.99
+        },
+        "local_geometry": {
+          "rms": 0.21613707240023528,
+          "at_bound": 0.0008333333333333334,
+          "max_abs": 0.99
+        },
+        "anchor_geometry": {
+          "rms": 0.04393661602102706,
+          "at_bound": 0.0,
+          "max_abs": 0.18002200662543758
+        },
+        "readout": {
+          "rms": 0.44361494077670116,
+          "at_bound": 0.0026041666666666665,
+          "max_abs": 0.99
+        },
+        "gates": {
+          "rms": 0.0,
+          "at_bound": 0.0,
+          "max_abs": 0.0
+        }
+      },
+      "binding": {
+        "config_sha256": "f4bcfe43879a1f08e5b7351150d766a361d010857ba8064c31780064633978b0",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\engine-core.jar": "8c0d2536a51f030a7d6cfe6893cc263946f6e033d264bea4f0f4b24d0c64c215",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\research.jar": "275a89b5b432525878e1cda33753762011c02ccdc9e499585ee701cb499991e9",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "495f8b7637d7c8fa8d38d26ba4ffc9ef5679bbffc81cbea84afeb9da4cb0a030"
+      }
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r014-global-71.json",
+      "result": {
+        "load_seconds": 3.8664289,
+        "metrics": [
+          {
+            "validation_mse": 0.03223367724892977,
+            "epoch": 0
+          },
+          {
+            "epoch": 1,
+            "updates": 8192,
+            "train_mse": 0.026411734778979623,
+            "state_sha256": "b7a31dcfae9ecb25289991488ea622e165d4301f2a0ddceb3f896c8a902a2d2c",
+            "unary_only_validation_mse": 0.026782122587352873,
+            "validation_mse": 0.02591348430249693,
+            "unary_only_train_mse": 0.027628079558818776
+          }
+        ],
+        "train_positions": 1048576,
+        "mode": "GLOBAL",
+        "seed": 71,
+        "rate": 0.01,
+        "optimization_checkpoint_seconds": 9.308162,
+        "scope": "Matched local/global neural attack diagnosis; no search or strength qualification",
+        "full_inference_ns": 3734.8,
+        "parameters": 38449,
+        "active_parameters": 38449
+      },
+      "weight_families": {
+        "unary": {
+          "rms": 0.40279378811232464,
+          "at_bound": 0.0,
+          "max_abs": 0.937782935313657
+        },
+        "source": {
+          "rms": 0.4752581001478351,
+          "at_bound": 0.0048828125,
+          "max_abs": 0.99
+        },
+        "local_geometry": {
+          "rms": 0.2186584774144582,
+          "at_bound": 0.000925925925925926,
+          "max_abs": 0.99
+        },
+        "anchor_geometry": {
+          "rms": 0.48549864042588187,
+          "at_bound": 0.008333333333333333,
+          "max_abs": 0.99
+        },
+        "readout": {
+          "rms": 0.45117637630254454,
+          "at_bound": 0.006673177083333333,
+          "max_abs": 0.99
+        },
+        "gates": {
+          "rms": 0.589428323517948,
+          "at_bound": 0.020833333333333332,
+          "max_abs": 0.99
+        }
+      },
+      "binding": {
+        "config_sha256": "17e8aaa2e396032fee487673df7162dcc3ebf2ef674dca7b069975578eac67a5",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\engine-core.jar": "8c0d2536a51f030a7d6cfe6893cc263946f6e033d264bea4f0f4b24d0c64c215",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\research.jar": "275a89b5b432525878e1cda33753762011c02ccdc9e499585ee701cb499991e9",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "495f8b7637d7c8fa8d38d26ba4ffc9ef5679bbffc81cbea84afeb9da4cb0a030"
+      }
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r014-global-97.json",
+      "result": {
+        "optimization_checkpoint_seconds": 9.4184465,
+        "scope": "Matched local/global neural attack diagnosis; no search or strength qualification",
+        "load_seconds": 3.9015592,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.0322313706550338
+          },
+          {
+            "unary_only_train_mse": 0.02811250341550836,
+            "epoch": 1,
+            "updates": 8192,
+            "train_mse": 0.026618534155685356,
+            "state_sha256": "5de98edfb5c25f79d3ab565456460d0bc31236a4c21c548fe779aa38aab7e0b0",
+            "unary_only_validation_mse": 0.02728340191812223,
+            "validation_mse": 0.026223449001356404
+          }
+        ],
+        "train_positions": 1048576,
+        "mode": "GLOBAL",
+        "seed": 97,
+        "rate": 0.01,
+        "full_inference_ns": 4136.64,
+        "parameters": 38449,
+        "active_parameters": 38449
+      },
+      "weight_families": {
+        "unary": {
+          "rms": 0.40144916446195106,
+          "at_bound": 0.0,
+          "max_abs": 0.9457504961533839
+        },
+        "source": {
+          "rms": 0.47306688655545576,
+          "at_bound": 0.006184895833333333,
+          "max_abs": 0.99
+        },
+        "local_geometry": {
+          "rms": 0.21805034398609216,
+          "at_bound": 0.0012037037037037038,
+          "max_abs": 0.99
+        },
+        "anchor_geometry": {
+          "rms": 0.4812524601926261,
+          "at_bound": 0.005833333333333334,
+          "max_abs": 0.99
+        },
+        "readout": {
+          "rms": 0.44473198591360363,
+          "at_bound": 0.004069010416666667,
+          "max_abs": 0.99
+        },
+        "gates": {
+          "rms": 0.5680860066378862,
+          "at_bound": 0.005208333333333333,
+          "max_abs": 0.99
+        }
+      },
+      "binding": {
+        "config_sha256": "8667b75b90aba57503f4905cdbbb54daabc46bc7d963b68f8e7063ad43d805cd",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\engine-core.jar": "8c0d2536a51f030a7d6cfe6893cc263946f6e033d264bea4f0f4b24d0c64c215",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\research.jar": "275a89b5b432525878e1cda33753762011c02ccdc9e499585ee701cb499991e9",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "495f8b7637d7c8fa8d38d26ba4ffc9ef5679bbffc81cbea84afeb9da4cb0a030"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "seed": 71,
+      "global_gain_over_local": 2.557826725213541e-05,
+      "global_gain_over_r013": 0.010331754131870818,
+      "global_gain_over_masked": 0.03243351164653896,
+      "passes": false
+    },
+    {
+      "seed": 97,
+      "global_gain_over_local": -0.0007857705374920698,
+      "global_gain_over_r013": 0.00862399393049107,
+      "global_gain_over_masked": 0.038849734353023746,
+      "passes": false
+    }
+  ],
+  "advance": false,
+  "execution": {
+    "arms": [
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r014-local-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 11.065232399967499,
+        "resources": [
+          {
+            "cpu_percent": 1.5873015873015928,
+            "available_gib": 18.807464599609375,
+            "utc": "2026-10-28T22:06:28Z"
+          },
+          {
+            "cpu_percent": 11.702127659574469,
+            "available_gib": 18.593578338623047,
+            "utc": "2026-10-28T22:06:33Z"
+          },
+          {
+            "cpu_percent": 10.416666666666663,
+            "available_gib": 18.659347534179688,
+            "utc": "2026-10-28T22:06:38Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.ContextualAttackDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r014-local-71.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r014-local-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 11.219665999989957,
+        "resources": [
+          {
+            "cpu_percent": 2.717391304347827,
+            "available_gib": 18.88623046875,
+            "utc": "2026-10-28T22:06:39Z"
+          },
+          {
+            "cpu_percent": 10.6951871657754,
+            "available_gib": 18.64017105102539,
+            "utc": "2026-10-28T22:06:44Z"
+          },
+          {
+            "cpu_percent": 18.041237113402065,
+            "available_gib": 18.669677734375,
+            "utc": "2026-10-28T22:06:50Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.ContextualAttackDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r014-local-97.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r014-global-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 13.659323999949265,
+        "resources": [
+          {
+            "cpu_percent": 2.352941176470591,
+            "available_gib": 18.906883239746094,
+            "utc": "2026-10-28T22:06:51Z"
+          },
+          {
+            "cpu_percent": 16.176470588235293,
+            "available_gib": 18.66397476196289,
+            "utc": "2026-10-28T22:06:56Z"
+          },
+          {
+            "cpu_percent": 18.134715025906733,
+            "available_gib": 18.671669006347656,
+            "utc": "2026-10-28T22:07:01Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.ContextualAttackDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r014-global-71.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r014-global-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 13.844449300027918,
+        "resources": [
+          {
+            "cpu_percent": 3.125,
+            "available_gib": 18.914451599121094,
+            "utc": "2026-10-28T22:07:05Z"
+          },
+          {
+            "cpu_percent": 11.578947368421055,
+            "available_gib": 18.67080307006836,
+            "utc": "2026-10-28T22:07:10Z"
+          },
+          {
+            "cpu_percent": 21.98952879581152,
+            "available_gib": 18.66989517211914,
+            "utc": "2026-10-28T22:07:15Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r014-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.ContextualAttackDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r014-global-97.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      }
+    ]
+  },
+  "decision": "No scaling/search admission for GLOBAL. Diagnose context path contribution and optimization before next architecture.",
+  "limitations": "Consumed development panel,2 seeds,1epoch,no independent validation or playing evidence.",
+  "context_ablation": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r014-ablation.json",
+    "sha256": "a35e8c9f7bc522055a8a678cfab87bc169c218ba2b479c04a385112d6dfe1365",
+    "results": [
+      {
+        "seed": 71,
+        "state": "docs\\research\\brn-relational-cglhw\\raw\\r014-global-71\\epoch-1.state",
+        "state_sha256": "b7a31dcfae9ecb25289991488ea622e165d4301f2a0ddceb3f896c8a902a2d2c",
+        "panels": {
+          "train": {
+            "rows": 4096,
+            "full_mse": 0.027072102455079444,
+            "context_off_mse": 0.02711943806723027,
+            "context_rms_cp": 8.481925622007756
+          },
+          "validation": {
+            "rows": 4096,
+            "full_mse": 0.02591348430249693,
+            "context_off_mse": 0.02585982272825171,
+            "context_rms_cp": 8.124893891060216
+          }
+        }
+      },
+      {
+        "seed": 97,
+        "state": "docs\\research\\brn-relational-cglhw\\raw\\r014-global-97\\epoch-1.state",
+        "state_sha256": "5de98edfb5c25f79d3ab565456460d0bc31236a4c21c548fe779aa38aab7e0b0",
+        "panels": {
+          "train": {
+            "rows": 4096,
+            "full_mse": 0.027229786215174082,
+            "context_off_mse": 0.027354117763402665,
+            "context_rms_cp": 7.869424679793654
+          },
+          "validation": {
+            "rows": 4096,
+            "full_mse": 0.02622344900135641,
+            "context_off_mse": 0.02624598300174977,
+            "context_rms_cp": 7.667288015383918
+          }
+        }
+      }
+    ],
+    "binding": {
+      "plan_sha256": "6c4c0d7d1c476058e63568a3ab802d8ae83c1e95d4b42159249d4aa35283c4d5",
+      "runner_sha256": "b5e66c16e46b1a8d2a16801b2f2561016164e323cdb30c1307dc6f2194cd5fd0"
+    },
+    "seconds": 12.882175500039011
+  },
+  "zero_witness_proof": {
+    "rows": [
+      4075,
+      2802,
+      2868
+    ],
+    "occupied_edges_each_quartet": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "reason": "All four graphs have no occupied-target edges. A=0 for every target at any weights; both modes reduce to unary/material,whose mixed contrast cancels. Independent python-chess edge counting agrees."
+  }
+}

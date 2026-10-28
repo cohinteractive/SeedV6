@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R014 globally conditioned neural attack messages**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R015 neural teacher-supervision diagnosis**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,19 +25,16 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-Implement and verify R014's matched LOCAL/GLOBAL neural attack-message circuit,
-then freeze runtime/configs and run its prospective four1M/1epoch CPU arms. Read
-R014.md. No R010 dataset extension or Pair-2 training is admitted. Correctness,
-resource admission and full-inference cost must pass before any fitting.
+Run R015's four fresh CP64-target LOCAL/GLOBAL neural arms using frozen R014
+runtime,then audit all eight fixed R014/R015 endpoints against original and
+teacher development targets. Read R015.md and R014's completed diagnosis. Verify
+resource/input identities;no R010 extraction or Pair-2 training is admitted.
 
-R012/R013 are COMPLETE. R012 failed its gate and showed harmful relation-readout
-contributions on131k; R013 broader coverage at equal8192 updates improves both
-seeds and reverses that effect. LR.01 gives MSE .02618401/.02645157 and useful
-relation-path gains1.96%/2.00%,but the second seed's1.69% gain over R012 misses
-the2% criterion. LR.001 is worse. Neither recipe is admitted to unchanged scaling
-or search integration. Preserve these distinct positive findings and failed gates.
-R014 tests a new combination of local chess relations and learned global context;
-CP64 remains the principal strength benchmark and no neural strength win is claimed.
+R014 failed GLOBAL-vs-LOCAL gate (+.0026%/-.0786%). Global gates are active but
+held-out contributions mixed;its full relation path is useful versus unary.
+Capacity26/64 LOCAL versus61/64 GLOBAL;the other3 graphs have no occupied edges,
+provably disabling the contextual path. R015 isolates neural target quality before
+another representation change. No candidate is admitted to search or production.
 
 ## Experiment programme
 
@@ -60,7 +57,8 @@ CP64 remains the principal strength benchmark and no neural strength win is clai
 | R011 | Neural composition generalization and support | Four COMPOSE arms complete;bounds help7.56%/8.12%,but trail matched PAIR;38/64 structural zeros |
 | R012 | Nonlinear two-pass king-anchor neural messages | Complete;capability passes,but training gate fails and relation-readout masking improves loss |
 | R013 | Coverage/rate diagnosis at matched8192 neural updates | Complete;coverage helps learned paths,but neither rate clears both-seed gate |
-| R014 | Global context conditioning of nonlinear attack messages | Prospective implementation/correctness,then four1M/1epoch arms |
+| R014 | Global context conditioning of nonlinear attack messages | Complete;61/64 remote witnesses,but no reliable gain over LOCAL;full relation readout useful |
+| R015 | Neural CP64 supervision versus matched BT4 controls | Prospective four fresh1M/1epoch arms and dual-target prediction audit |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -96,7 +94,7 @@ before any recovery; never rewrite completed bindings to accept changed tools.
 
 ## Validation and required action
 
-55 distinct focused tests have passed:23 baseline Java,24 research Java,
+59 distinct focused tests have passed:23 baseline Java,28 research Java,
 8 Python. The selector's renamed import received syntax validation but no new
 runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,

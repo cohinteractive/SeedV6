@@ -1,0 +1,24 @@
+{
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.ContextualAttackNetworkTest",
+    "tests": "4",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T22:06:03",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.25"
+  },
+  "raw_test": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r014-passed-tests.xml",
+    "sha256": "69f98b607abcfceee6024c0866bbf03860bd228020fcc05893d9ea49d583efca"
+  },
+  "source_sha256": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextualAttackCapacityAudit.java": "2887dfd14e2b1e2a5712950becbca08218a94aaa0b377ddba04850e63d138b83",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextualAttackDiagnostic.java": "dc65205dfec312ea3ff87c0e69d19e109014794fcf99ea40137cd7c98ba193d9",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextualAttackNetwork.java": "707db636681dc3c044d3d441f6733a691091f7e03ab377b9ade2cda5a2757ad6",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextualAttackNetworkTest.java": "2d11b7e4d371f0482c2ab686dd4c992b935f33f5e157b9721f06d976fb5c9a8f"
+  },
+  "source_base": "4a620bd2",
+  "scope": "4 tests; nonzero gradients each active family,independent equations over legal walk/special-move successors,color swap,finite/tinyfit/bounds,CRC/exact continuation,tail-batch parity,remote witness. No incremental/search integration."
+}
