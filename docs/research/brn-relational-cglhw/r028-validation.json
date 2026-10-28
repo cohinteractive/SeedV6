@@ -1,0 +1,32 @@
+{
+  "tests": 4,
+  "failures": 0,
+  "skips": 0,
+  "test_evidence": "docs\\research\\brn-relational-cglhw\\raw\\r028-passed-tests.xml",
+  "test_sha256": "7d897e5614fd9c2839f50d5a6bee6d3d2f3867d112a24f878433f2925a62c620",
+  "sources": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextualPieceCapacityAudit.java": "38b71061874315c5776007866ddc18abcbe396defa3d692e07256ff35444f78d",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextualPieceDiagnostic.java": "bc77d11cfe5ccb045af56cca0b8c8965c5c367504e9a39449e8f5065ccbc16ee",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextualPieceNetwork.java": "cf677ea0a7e46bf5fdb37d1d74dc1e6295e0ea7da0c565d0503345a9fba014cb",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextualPieceNetworkTest.java": "16366bbf83bb781200933b86dc294fd6d0e98ecf95fecc64b1a99900e0a3b988",
+    "tools\\brn-relational\\run_objective.py": "9ad144405530dcfd65dabc7f1e2de28cdb7d634883893e8de67940f385eae336",
+    "tools\\brn-relational\\run_message_audit.py": "c318283a4ab4a4cb0cc8f0cd9de56251cc377d8c7d481a216fedfab00daae43f"
+  },
+  "runtime": {
+    "docs\\research\\brn-relational-cglhw\\raw\\r028-runtime\\lib\\engine-core.jar": "674d92c65e7e6b1724070b60b60e666d7da2c745212a8f729f4fb179bafe1898",
+    "docs\\research\\brn-relational-cglhw\\raw\\r028-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\brn-relational-cglhw\\raw\\r028-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\brn-relational-cglhw\\raw\\r028-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\brn-relational-cglhw\\raw\\r028-runtime\\lib\\research.jar": "4ef9cd43309de3127fadcccfa4f90e1a93c0b0c70381398914d69823c7e587bf",
+    "docs\\research\\brn-relational-cglhw\\raw\\r028-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\brn-relational-cglhw\\raw\\r028-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "class_parity": {
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualPieceCapacityAudit.class": "020108809ef676fb67705b6d1853cc043ed49c288fd0e97d22c11590bc001704",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualPieceDiagnostic.class": "c9dc60b294089d548f3fbb10134324704f42ff147f288942219d6d4b44d95156",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualPieceNetwork$Features.class": "0ab7013d19a65a1f7e5a7048d3894d3945267dc23c163c4c0dbe22cb71c07b04",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualPieceNetwork$Workspace.class": "3345a431fbb650198c954a9a2b7688b9fb346e8686a5c38ae8497e3c92e831ad",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualPieceNetwork.class": "e74c64a7f50967d109014a58dfe2420fadf39b86c11dc92460100b4830e708cd"
+  },
+  "scope": "Focused research numerical/board/gradient/resume tests;no search/GPU/full-suite validation"
+}

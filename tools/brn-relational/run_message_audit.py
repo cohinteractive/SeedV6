@@ -11,7 +11,7 @@ from compute_control import atomic
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('plan',type=Path);args=parser.parse_args();plan=json.loads(args.plan.read_text())
     main_class=plan.get('main_class','MessageCapacityAudit')
-    if main_class not in ('MessageCapacityAudit','AnchorCapacityAudit','ContextualAttackCapacityAudit','ContextualPredictionAudit','AttackFieldCapacityAudit','HorizontalSymmetryAudit','FieldPredictionAudit','GamePositionPredictionAudit','NeuralScaleCalibrationAudit'):raise ValueError('Unknown neural audit')
+    if main_class not in ('MessageCapacityAudit','AnchorCapacityAudit','ContextualAttackCapacityAudit','ContextualPredictionAudit','AttackFieldCapacityAudit','HorizontalSymmetryAudit','FieldPredictionAudit','GamePositionPredictionAudit','NeuralScaleCalibrationAudit','ContextualPieceCapacityAudit'):raise ValueError('Unknown neural audit')
     resource=admit(initial=True);runtime=ROOT/plan['runtime'];out=ROOT/plan['output']
     if sha(ROOT/plan['cases'])!=plan['cases_sha256']:raise ValueError('Fixture changed')
     binding=dict(plan_sha256=sha(args.plan),runner_sha256=sha(Path(__file__)),runtime={p.name:sha(p) for p in runtime.glob('*.jar')})

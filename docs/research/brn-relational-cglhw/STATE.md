@@ -25,10 +25,12 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R027 is complete and fails its predeclared2% gate;no scalar games or tuning.
-R028 reviews earlier one-layer and attack-local message failures,then implements
-contextual all-piece neural messages with a matched one-pass control. Correctness,
-structural witnesses and cost precede training;see R028.md. No production change.
+R027 complete:failed scale gate,no further scalar tuning. R028 correctness passes
+4tests and both modes express64/64 untrained remote contrasts. Frozen runtime,
+configs and hashes are ready. Run under nnue-control:
+`build/research/venv/Scripts/python.exe -B tools/brn-relational/run_objective.py docs/research/brn-relational-cglhw/r028-plan.json`.
+One CPU,serial four arms,cost gate30us,300s/arm,segment checkpoints every131072.
+No games or production change. Verify completed segments before any resumption.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition

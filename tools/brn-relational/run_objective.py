@@ -12,7 +12,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('plan',type=Path);a=p.parse_args()
     plan=json.loads(a.plan.read_text());runtime=ROOT/plan['runtime'];receipts=[]
     main_class=plan.get('main_class','PairObjectiveDiagnostic')
-    if main_class not in ('PairObjectiveDiagnostic','GraphEnergyDiagnostic','MessageDiagnostic','ContextPairDiagnostic','PairCoverageDiagnostic','AnchorDiagnostic','AnchorCoverageDiagnostic','ContextualAttackDiagnostic','AttackFieldDiagnostic','ContextualContinuationDiagnostic','MixedAttackFieldDiagnostic','CanonicalAttackFieldDiagnostic','DenseAdamAttackFieldDiagnostic','ComposedAttackFieldDiagnostic','WideComposedAttackFieldDiagnostic'):raise ValueError('Unknown diagnostic')
+    if main_class not in ('PairObjectiveDiagnostic','GraphEnergyDiagnostic','MessageDiagnostic','ContextPairDiagnostic','PairCoverageDiagnostic','AnchorDiagnostic','AnchorCoverageDiagnostic','ContextualAttackDiagnostic','AttackFieldDiagnostic','ContextualContinuationDiagnostic','MixedAttackFieldDiagnostic','CanonicalAttackFieldDiagnostic','DenseAdamAttackFieldDiagnostic','ComposedAttackFieldDiagnostic','WideComposedAttackFieldDiagnostic','ContextualPieceDiagnostic'):raise ValueError('Unknown diagnostic')
     hashes={str(x.relative_to(ROOT)):sha(x) for x in sorted(runtime.glob('*.jar'))}
     if not hashes:raise ValueError('No frozen runtime')
     for config_path in plan['configs']:
@@ -56,6 +56,7 @@ def main():
                 except subprocess.TimeoutExpired:process.kill();process.wait(timeout=5)
             r=dict(config=str(config_path),status=status,error=error,elapsed_seconds=time.monotonic()-start,resources=samples,
                 command=command,last_complete_epoch=max([int(f.stem.split('-')[1]) for f in out.glob('epoch-*.json')],default=0),
+                last_complete_segment=max([int(f.stem.split('-')[1]) for f in out.glob('segment-*.json')],default=0),
                 process_absent=process is None or process.poll() is not None)
             atomic(out/('execution-'+str(time.time_ns())+'.json'),r);receipts.append(r)
             atomic(ROOT/plan['summary'],dict(arms=receipts))

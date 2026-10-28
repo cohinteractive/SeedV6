@@ -1,0 +1,22 @@
+{
+  "raw": "docs\\research\\brn-relational-cglhw\\raw\\r028-capability.json",
+  "sha256": "9968aedec3977389d9091a2a78c05ecefd2a4555d6085717ea608bba6491a773",
+  "plan_sha256": "5e7db087ae1f3581136de8d023f0d5fb8bc7b92fe0bfb5ceb3c792852518b955",
+  "counts_nonzero_above_1e_9": {
+    "one_pass_mixed_cp": 64,
+    "two_pass_mixed_cp": 64
+  },
+  "cases": 64,
+  "receipt": {
+    "sha256": "9968aedec3977389d9091a2a78c05ecefd2a4555d6085717ea608bba6491a773",
+    "seconds": 0.28025549999438226,
+    "resources": [
+      {
+        "cpu_percent": 4.3010752688172005,
+        "available_gib": 18.001434326171875,
+        "utc": "2026-10-28T23:25:46Z"
+      }
+    ]
+  },
+  "scope": "Untrained parameter witnesses only;not CP64 correctness or learned quality"
+}
