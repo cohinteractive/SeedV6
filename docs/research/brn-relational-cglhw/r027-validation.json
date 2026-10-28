@@ -1,0 +1,34 @@
+{
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.NeuralScaleCalibrationTest",
+    "tests": "3",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T23:15:16",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.022"
+  },
+  "raw_test": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r027-passed-tests.xml",
+    "sha256": "e184f1c84d4843cec26e89081c0ebd78db17c29350a5fc6390aef56230996add"
+  },
+  "source_base": "df6370ef",
+  "source_sha256": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\NeuralScaleCalibration.java": "eacb4c8011671917621f640c6aed8c19057e768b2477a90630d7be8d0d780d4d",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\NeuralScaleCalibrationAudit.java": "d08cebbd7818e35e220154c3e1fef7f0647f197eec15e0b5978824b15d1bf8d6",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\NeuralScaleCalibrationTest.java": "2fc9902cbc3aac43501b4a774761214da7021cb34ec0546263dbcca4771396c4"
+  },
+  "scorer_class_parity": [
+    "com/ohinteractive/seedv6/core/brnpair2/ComposedAttackFieldNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ComposedAttackFieldNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ComposedAttackFieldNetwork.class",
+    "com/ohinteractive/seedv6/core/brnpair2/FieldPredictionAudit.class"
+  ],
+  "failed_compile": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r027-tests-launch.log",
+    "sha256": "bb83e2a72a0ee4e3482144411e99fa05c68c7e472cff084084be89701f8984b0",
+    "reason": "Permission helper IOException declaration omitted;corrected before tests/fitting."
+  },
+  "scope": "Known scale/identity,boundary optimum,independent dense scan,finite/shape checks;unchanged neural scorer;bounded audit runner now samples resources every5s and drains child on failure."
+}

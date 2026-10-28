@@ -229,3 +229,8 @@ R026 complete:991 played roots,eight fixed endpoints,byte-identical scorer class
 and descriptive calibration analysis. R027 admits only a training-fitted scalar;
 no new games or neural-weight updates. Historical audit runner preserved at
 raw/r024-prediction-runner.py.
+
+R027 complete:3 tests,training-only scales fail quality gate,no games or state
+mutation. Monitored audit runner retains five-second resource checks and child
+drainage;raw/r026-prediction-runner.py preserves its predecessor. R028 is a new
+contextual neural message hypothesis;no earlier failed recipe is repeated.

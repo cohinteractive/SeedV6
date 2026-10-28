@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R027 bounded neural output-scale diagnosis**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R028 contextual all-piece neural messages**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,12 +25,10 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R026 complete:both R022 seeds show compression on both panels;played-root
-opposite-sign errors also rise and cannot be fixed by scaling. R027.md admits
-one bounded training-only positive scalar per frozen seed. Implement/test the
-scalar search before the short hash-bound fit;do not alter neural weights or
-fit to development/game positions. No games or production promotion admitted.
-All owned processes are released;R025 game/checkpoint evidence remains intact.
+R027 is complete and fails its predeclared2% gate;no scalar games or tuning.
+R028 reviews earlier one-layer and attack-local message failures,then implements
+contextual all-piece neural messages with a matched one-pass control. Correctness,
+structural witnesses and cost precede training;see R028.md. No production change.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -71,7 +69,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R024 | Frozen neural endpoints versus played reference losses | Complete;R022 transfer1.10%/1.33%,still behind Pair24;playing diagnostic justified |
 | R025 | First neural fixed-node playing calibration | Complete32games;R0229.375%/21.875% vsCP64 at10k nodes;no promotion |
 | R026 | Calibration and played-position distribution | Complete;compression gate passes,but played-root sign disagreements remain |
-| R027 | Training-only positive neural score scale | Prospective one-scalar bounded fit;correctness first,no games |
+| R027 | Training-only positive neural score scale | Complete;scales1.108/1.096 improve1.1-1.8%,fail2% gate;no games |
+| R028 | Contextual all-piece neural messages | Prospective two-pass versus matched one-pass;correctness/cost first |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -108,7 +107,8 @@ before any recovery; never rewrite completed bindings to accept changed tools.
 ## Validation and required action
 
 85 previously recorded focused tests plus21 passing R025 checks (including
-repeated baseline regressions) are preserved with exact test identities. The selector's renamed import received syntax validation but no new
+repeated baseline regressions) and3 R027 scalar tests are preserved with exact
+test identities;counts across stages overlap. The selector's renamed import received syntax validation but no new
 runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,
 configs and reusable fixtures are tracked. Build78 for the explicit core research seam;production evaluator unchanged;no push.

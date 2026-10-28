@@ -1,0 +1,37 @@
+{
+  "main_class": "NeuralScaleCalibrationAudit",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r027-runtime\\lib",
+  "cases": "docs\\research\\brn-relational-cglhw\\raw\\r007-teacher-data\\train\\data.tsv",
+  "cases_sha256": "b9e01e578c2765a77a906b818d8ba5595d7c3f64156674c4dccd2f80a5cde63a",
+  "rows": 1048576,
+  "validation": "docs\\research\\brn-relational-cglhw\\raw\\r007-teacher-data\\validation\\data.tsv",
+  "validation_sha256": "9e0c869225dc15c89cc1ce9181eefd12e0f3d9cbe2d259d4773a5208fd99ad73",
+  "original_validation": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-data\\validation.tsv",
+  "original_validation_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+  "teacher_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r027-scale-fit.json",
+  "models": [
+    {
+      "id": "r022-compose-71",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r022-compose-71\\epoch-1.state",
+      "state_sha256": "171aec95a2f82acb01e086f2a5510651adddab2f61ced4c726c090522d4c2c55",
+      "expected_train_mse": 0.013528682011963026,
+      "expected_validation_mse": 0.012251148392367005
+    },
+    {
+      "id": "r022-compose-97",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r022-compose-97\\epoch-1.state",
+      "state_sha256": "008ead748bd4b63c922a1eec181c1ebcfcec9ccee8be4623fa94481b7416fc22",
+      "expected_train_mse": 0.013568711715630618,
+      "expected_validation_mse": 0.012217090354396358
+    }
+  ],
+  "scale_bounds": [
+    0.5,
+    2
+  ],
+  "grid_points": 31,
+  "grid_step": 0.05,
+  "golden_iterations": 24,
+  "bias": 0
+}

@@ -1,0 +1,126 @@
+{
+  "raw_path": "docs\\research\\brn-relational-cglhw\\raw\\r027-scale-fit.json",
+  "raw_sha256": "3960be5d03e025cd4c69a853703033a7b6baf20975592cea58b50b484e5da0ce",
+  "plan_sha256": "832de277b5ce2577c1e38b4418db69bf3a2a25fa7a6aba941aa344be66902dc4",
+  "analysis_sha256": "f9e54978d2dcb53158809d4b53bdd47fbb0abbb0d8a0e0ead7c6c6923d009c7e",
+  "resources": {
+    "cpu_percent": 3.2432432432432434,
+    "available_gib": 17.970966339111328,
+    "utc": "2026-10-28T23:16:41Z"
+  },
+  "receipt": {
+    "sha256": "3960be5d03e025cd4c69a853703033a7b6baf20975592cea58b50b484e5da0ce",
+    "seconds": 15.492357500013895,
+    "resources": [
+      {
+        "cpu_percent": 4.6875,
+        "available_gib": 18.222942352294922,
+        "utc": "2026-10-28T23:16:16Z"
+      },
+      {
+        "cpu_percent": 11.05263157894737,
+        "available_gib": 18.03750228881836,
+        "utc": "2026-10-28T23:16:21Z"
+      },
+      {
+        "cpu_percent": 10.309278350515461,
+        "available_gib": 18.06420135498047,
+        "utc": "2026-10-28T23:16:26Z"
+      }
+    ]
+  },
+  "models": [
+    {
+      "fit": {
+        "id": "r022-compose-71",
+        "state_sha256": "171aec95a2f82acb01e086f2a5510651adddab2f61ced4c726c090522d4c2c55",
+        "scale": 1.1077538359506025,
+        "boundary": false,
+        "objective_evaluations": 57,
+        "baseline_training_mse": 0.013528682011963026,
+        "calibrated_training_mse": 0.013396777088690552,
+        "baseline_validation_mse": 0.012251148392367005,
+        "calibrated_validation_mse": 0.012080990030930622,
+        "baseline_bt4_mse": 0.02516651344420331,
+        "calibrated_bt4_mse": 0.024817178269232555
+      },
+      "panels": {
+        "r024_teacher": {
+          "baseline": 0.012703854169061295,
+          "calibrated": 0.012471571640545822,
+          "gain": 0.018284413960069634,
+          "rows": 8192
+        },
+        "r024_bt4": {
+          "baseline": 0.025595720321143715,
+          "calibrated": 0.025270213347427635,
+          "gain": 0.012717242165175113,
+          "rows": 8192
+        },
+        "r026_teacher": {
+          "baseline": 0.047861893917869824,
+          "calibrated": 0.04692148381666874,
+          "gain": 0.019648409710129933,
+          "rows": 876
+        }
+      }
+    },
+    {
+      "fit": {
+        "id": "r022-compose-97",
+        "state_sha256": "008ead748bd4b63c922a1eec181c1ebcfcec9ccee8be4623fa94481b7416fc22",
+        "scale": 1.0956613815784857,
+        "boundary": false,
+        "objective_evaluations": 57,
+        "baseline_training_mse": 0.013568711715630618,
+        "calibrated_training_mse": 0.013463361263809046,
+        "baseline_validation_mse": 0.012217090354396358,
+        "calibrated_validation_mse": 0.012080359536247545,
+        "baseline_bt4_mse": 0.02508753853409529,
+        "calibrated_bt4_mse": 0.02479074694678097
+      },
+      "panels": {
+        "r024_teacher": {
+          "baseline": 0.012928807752636513,
+          "calibrated": 0.012752648869582515,
+          "gain": 0.013625299905791644,
+          "rows": 8192
+        },
+        "r024_bt4": {
+          "baseline": 0.025573252899264553,
+          "calibrated": 0.025292999560864164,
+          "gain": 0.01095884592798313,
+          "rows": 8192
+        },
+        "r026_teacher": {
+          "baseline": 0.04869695599741865,
+          "calibrated": 0.04781032581353866,
+          "gain": 0.01820709663920239,
+          "rows": 876
+        }
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "r022-compose-71",
+      "old_teacher_gain": 0.01388917642548504,
+      "old_bt4_gain": 0.013880952391171153,
+      "larger_teacher_gain": 0.018284413960069634,
+      "larger_bt4_gain": 0.012717242165175113,
+      "played_noncheck_teacher_gain": 0.019648409710129933,
+      "passes": false
+    },
+    {
+      "id": "r022-compose-97",
+      "old_teacher_gain": 0.011191766139276305,
+      "old_bt4_gain": 0.011830239419900246,
+      "larger_teacher_gain": 0.013625299905791644,
+      "larger_bt4_gain": 0.01095884592798313,
+      "played_noncheck_teacher_gain": 0.01820709663920239,
+      "passes": false
+    }
+  ],
+  "advance": false,
+  "scope": "Scalar fitted only on training;diagnostic panels consumed;no weights changed,no automatic games or promotion;positive scaling cannot fix sign errors."
+}
