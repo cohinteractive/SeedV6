@@ -1,0 +1,1056 @@
+{
+  "arms": [
+    {
+      "experiment": "r006",
+      "mode": "PAIR",
+      "treatment": "unregularized",
+      "seed": 71,
+      "metrics": [
+        {
+          "epoch": 0,
+          "validation_mse": 0.03223163091171727
+        },
+        {
+          "train_mse": 0.027248562597927992,
+          "epoch": 1,
+          "updates": 1024,
+          "state_sha256": "13adeb609712eca5f86a11fe9fffd78404ee22f3c617d1a64d1525db204cdbe8",
+          "validation_mse": 0.027520803347019448
+        },
+        {
+          "train_mse": 0.025422606644899478,
+          "epoch": 2,
+          "updates": 2048,
+          "state_sha256": "bb6bd178d34586cc9125b911e0104a7c6d1f66e2f6f43de560e5c22f3c16fad6",
+          "validation_mse": 0.027552009524128635
+        },
+        {
+          "train_mse": 0.024223219909671106,
+          "epoch": 3,
+          "updates": 3072,
+          "state_sha256": "aea848d604185b983e65206e579cf39fc2f81c1152aa4fe01a55f4424d2113de",
+          "validation_mse": 0.02762927462710222
+        },
+        {
+          "train_mse": 0.02327584178201447,
+          "epoch": 4,
+          "updates": 4096,
+          "state_sha256": "7edd37a122c569e01ad3690496b13407631d919b1957bca75f7db861c5d8fbf6",
+          "validation_mse": 0.027902176197294334
+        },
+        {
+          "train_mse": 0.022628439826800194,
+          "epoch": 5,
+          "updates": 5120,
+          "state_sha256": "6f7b1ef684f2dee97f7848da094c175a3763121a49e761870388ae2831213515",
+          "validation_mse": 0.02801609761333292
+        },
+        {
+          "train_mse": 0.022156784716488322,
+          "epoch": 6,
+          "updates": 6144,
+          "state_sha256": "6a36656b011948b0412e270d963d3366fae3c81eff7686a7ccc146e45038f0cb",
+          "validation_mse": 0.027741884247792295
+        },
+        {
+          "train_mse": 0.021672335556664975,
+          "epoch": 7,
+          "updates": 7168,
+          "state_sha256": "8a8d7213d3bd5d55cbb70e941d40f20ea38d8dcd5b840e1cc2c8e92423bebaa9",
+          "validation_mse": 0.027920499168916257
+        },
+        {
+          "train_mse": 0.021693059419248577,
+          "epoch": 8,
+          "updates": 8192,
+          "state_sha256": "4b640eaf35edd7a077319d991155c9135e2bc5980e07d1aa037796969c1a6909",
+          "validation_mse": 0.028325101091599345
+        }
+      ],
+      "families": {
+        "unary": {
+          "rms": 0.5567523300339373,
+          "maximum_abs": 1.384805394553787,
+          "fraction_at_bound": 0.09362808842652796
+        },
+        "E": {
+          "rms": 1.0136307293611024,
+          "maximum_abs": 4.329934770655975,
+          "fraction_at_bound": 0.3045247395833333
+        },
+        "R": {
+          "rms": 0.5286795357919376,
+          "maximum_abs": 4.457370164834571,
+          "fraction_at_bound": 0.08518518518518518
+        },
+        "Q": {
+          "rms": 1.1124203002419801,
+          "maximum_abs": 4.605300296475383,
+          "fraction_at_bound": 0.3483072916666667
+        },
+        "C": {
+          "rms": 0.0,
+          "maximum_abs": 0.0,
+          "fraction_at_bound": 0.0
+        }
+      },
+      "full_graph_inference_ns": 1643.775,
+      "optimization_checkpoint_seconds": 2.5115119,
+      "checkpoint": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r006-unregularized-71\\epoch-8.state",
+        "sha256": "4b640eaf35edd7a077319d991155c9135e2bc5980e07d1aa037796969c1a6909"
+      },
+      "binding": {
+        "config_sha256": "1d36d475f95a755421462f55e6b78b45f83ccb78a1f8ed576420211f09dbb1b5",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-core.jar": "b983a40bac86600d487f2e6a86487f92ac28ae1ad3cb76fd140bca24ad355e54",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\research.jar": "e767f3c4bafc76beb2f27bc46d1d3e13c1549f6c67f9f243ecf8369db27cc85f",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "619ca13a0dd74844601b91b28f0018e7a61617a533230917b00e482f386aecc6"
+      }
+    },
+    {
+      "experiment": "r006",
+      "mode": "PAIR",
+      "treatment": "unregularized",
+      "seed": 97,
+      "metrics": [
+        {
+          "epoch": 0,
+          "validation_mse": 0.03223239014727966
+        },
+        {
+          "state_sha256": "a323676baa5329cab70f3ed4c400b5cc06a4227580922d975a78982f3b5b2b16",
+          "validation_mse": 0.027698624759659788,
+          "train_mse": 0.027365255047130856,
+          "epoch": 1,
+          "updates": 1024
+        },
+        {
+          "state_sha256": "53dc349b633b9ecf86ea4ee954348238259838176e7b7307abc7619af3abf026",
+          "validation_mse": 0.02739423110450886,
+          "train_mse": 0.025389523330852933,
+          "epoch": 2,
+          "updates": 2048
+        },
+        {
+          "state_sha256": "38b3afe5ef857de7186ab562f227565eb7323c6ae16d2986d5bbbdff744e05d5",
+          "validation_mse": 0.02794366057997923,
+          "train_mse": 0.024241170544369472,
+          "epoch": 3,
+          "updates": 3072
+        },
+        {
+          "state_sha256": "3ba268ea60202465191a4e4cbbc15b0add01b909cdadec1e87f04379d1a79bae",
+          "validation_mse": 0.02784808046756404,
+          "train_mse": 0.023402166783419266,
+          "epoch": 4,
+          "updates": 4096
+        },
+        {
+          "state_sha256": "9d9d431272308d15b03462dd4761ad1fe3868ebe61c3652317f88640d4b6e2ff",
+          "validation_mse": 0.02743751105636079,
+          "train_mse": 0.022641530255781608,
+          "epoch": 5,
+          "updates": 5120
+        },
+        {
+          "state_sha256": "c08ce24904579ed720bba0e7f684b690e96ca99e35290fb012f6ff37f8c38e90",
+          "validation_mse": 0.02774437264093987,
+          "train_mse": 0.022001547296354992,
+          "epoch": 6,
+          "updates": 6144
+        },
+        {
+          "state_sha256": "a4c45fabb94ab95734bbdad2c3cc946e330a28d327e1835ef1f99143e56106fd",
+          "validation_mse": 0.028051017000102426,
+          "train_mse": 0.021756087993449615,
+          "epoch": 7,
+          "updates": 7168
+        },
+        {
+          "state_sha256": "a939bfc87968ef743b4613732073163dd7e100daa8032b0f70540a61f4eda401",
+          "validation_mse": 0.027937784714643515,
+          "train_mse": 0.02163949349606098,
+          "epoch": 8,
+          "updates": 8192
+        }
+      ],
+      "families": {
+        "unary": {
+          "rms": 0.5553082974193279,
+          "maximum_abs": 1.3867540676741068,
+          "fraction_at_bound": 0.08842652795838751
+        },
+        "E": {
+          "rms": 1.0163177587535932,
+          "maximum_abs": 3.8715289066874674,
+          "fraction_at_bound": 0.3131510416666667
+        },
+        "R": {
+          "rms": 0.5257262431075193,
+          "maximum_abs": 3.6401287292298674,
+          "fraction_at_bound": 0.08481481481481482
+        },
+        "Q": {
+          "rms": 1.1134233718466697,
+          "maximum_abs": 4.771664167657237,
+          "fraction_at_bound": 0.3525390625
+        },
+        "C": {
+          "rms": 0.0,
+          "maximum_abs": 0.0,
+          "fraction_at_bound": 0.0
+        }
+      },
+      "full_graph_inference_ns": 2276.875,
+      "optimization_checkpoint_seconds": 2.5028729,
+      "checkpoint": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r006-unregularized-97\\epoch-8.state",
+        "sha256": "a939bfc87968ef743b4613732073163dd7e100daa8032b0f70540a61f4eda401"
+      },
+      "binding": {
+        "config_sha256": "f35a599391ec8c35a27b18e0c71e232bb6c7a96187b6e0df4b5cc69e63898efa",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-core.jar": "b983a40bac86600d487f2e6a86487f92ac28ae1ad3cb76fd140bca24ad355e54",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\research.jar": "e767f3c4bafc76beb2f27bc46d1d3e13c1549f6c67f9f243ecf8369db27cc85f",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "619ca13a0dd74844601b91b28f0018e7a61617a533230917b00e482f386aecc6"
+      }
+    },
+    {
+      "experiment": "r006",
+      "mode": "PAIR",
+      "treatment": "bounded",
+      "seed": 71,
+      "metrics": [
+        {
+          "validation_mse": 0.03223163091171727,
+          "epoch": 0
+        },
+        {
+          "updates": 1024,
+          "epoch": 1,
+          "train_mse": 0.02737632993775631,
+          "validation_mse": 0.02752734127166986,
+          "state_sha256": "ac70d24184e4811ee2e0a69963062bf870698dc134013d7d9258e2bbf94a34c4"
+        },
+        {
+          "updates": 2048,
+          "epoch": 2,
+          "train_mse": 0.026046632659203886,
+          "validation_mse": 0.027352921946788074,
+          "state_sha256": "83265338fa682d1f8f4b677ab1bfed0f6e5d76568f51aa87250a3716b6a33a6b"
+        },
+        {
+          "updates": 3072,
+          "epoch": 3,
+          "train_mse": 0.025329334427883918,
+          "validation_mse": 0.02708286025370181,
+          "state_sha256": "80fc9d00055a0d9a1b4252be2f868c3220f05fcadc81cc05899b1b723552d337"
+        },
+        {
+          "updates": 4096,
+          "epoch": 4,
+          "train_mse": 0.024734562797776048,
+          "validation_mse": 0.02700622696364042,
+          "state_sha256": "27419173a7e7fe69f336cbd3103302c0f1adad81f91116e86467074e51daafd7"
+        },
+        {
+          "updates": 5120,
+          "epoch": 5,
+          "train_mse": 0.024299884582233044,
+          "validation_mse": 0.026895748676709172,
+          "state_sha256": "315fd85e7d6d8892619dde0537c3532d0fe0a1fe5234dba7f8274cb7d49d5956"
+        },
+        {
+          "updates": 6144,
+          "epoch": 6,
+          "train_mse": 0.024209232370494813,
+          "validation_mse": 0.026613428481489808,
+          "state_sha256": "f12a8af1b4b5e8337b3b6e9dad0d4437dbf420c5632ec01c2dc039d06dacbeba"
+        },
+        {
+          "updates": 7168,
+          "epoch": 7,
+          "train_mse": 0.02391700495705771,
+          "validation_mse": 0.026481555436259574,
+          "state_sha256": "827e61e08ff18cccc3257448a11d883c6ecfc9cf56835f4bfd76254bc302ad2b"
+        },
+        {
+          "updates": 8192,
+          "epoch": 8,
+          "train_mse": 0.02409994125895489,
+          "validation_mse": 0.02691682863886481,
+          "state_sha256": "95d44984eaccedcc58a995e56292f67ba271bc9ad4dba0b2605aef4b871954fa"
+        }
+      ],
+      "families": {
+        "unary": {
+          "rms": 0.4026834709444187,
+          "maximum_abs": 0.9898020099,
+          "fraction_at_bound": 0.0
+        },
+        "E": {
+          "rms": 0.6610178570326576,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.01416015625
+        },
+        "R": {
+          "rms": 0.3459502308661705,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.005416666666666667
+        },
+        "Q": {
+          "rms": 0.688575803614084,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.023111979166666668
+        },
+        "C": {
+          "rms": 0.0,
+          "maximum_abs": 0.0,
+          "fraction_at_bound": 0.0
+        }
+      },
+      "full_graph_inference_ns": 2395.345,
+      "optimization_checkpoint_seconds": 2.624057,
+      "checkpoint": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r006-bounded-71\\epoch-8.state",
+        "sha256": "95d44984eaccedcc58a995e56292f67ba271bc9ad4dba0b2605aef4b871954fa"
+      },
+      "binding": {
+        "config_sha256": "8d0922f6836395501b7fbf3a430c6119343aae937d08c760439e0f491e0d90e3",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-core.jar": "b983a40bac86600d487f2e6a86487f92ac28ae1ad3cb76fd140bca24ad355e54",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\research.jar": "e767f3c4bafc76beb2f27bc46d1d3e13c1549f6c67f9f243ecf8369db27cc85f",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "619ca13a0dd74844601b91b28f0018e7a61617a533230917b00e482f386aecc6"
+      }
+    },
+    {
+      "experiment": "r006",
+      "mode": "PAIR",
+      "treatment": "bounded",
+      "seed": 97,
+      "metrics": [
+        {
+          "epoch": 0,
+          "validation_mse": 0.03223239014727966
+        },
+        {
+          "state_sha256": "ab008170ee4343c6f6d1ada427aaf5cef0755296696edaa3fe54ce431119f891",
+          "validation_mse": 0.027713291526112693,
+          "train_mse": 0.027484114798219047,
+          "epoch": 1,
+          "updates": 1024
+        },
+        {
+          "state_sha256": "dc2ba0cc469d1aecf2f4aa16ded00e66240bf338b214e42d4d07adbe293e9603",
+          "validation_mse": 0.0272477243609173,
+          "train_mse": 0.025965131253016898,
+          "epoch": 2,
+          "updates": 2048
+        },
+        {
+          "state_sha256": "d11d684a46f46ad63d69f2473c5601e8a2354f1d421a0db196160a82e84c7b2f",
+          "validation_mse": 0.027375293889866512,
+          "train_mse": 0.025291098543548537,
+          "epoch": 3,
+          "updates": 3072
+        },
+        {
+          "state_sha256": "cc9c302e91f6f1205f82b6946699fc97530b570fe321413da66524b5a777225a",
+          "validation_mse": 0.02701761059165074,
+          "train_mse": 0.024857358208356172,
+          "epoch": 4,
+          "updates": 4096
+        },
+        {
+          "state_sha256": "957b4713893dcdc368c8726097c4b8152e966e2001369b8547ded17f9515c2ef",
+          "validation_mse": 0.02643598481786991,
+          "train_mse": 0.024351985959578788,
+          "epoch": 5,
+          "updates": 5120
+        },
+        {
+          "state_sha256": "c2bf12131e28fbaf9ac9926f666476d4fb8f6f80c504dc26ba412269f4f56077",
+          "validation_mse": 0.02641655041750379,
+          "train_mse": 0.023941139459865066,
+          "epoch": 6,
+          "updates": 6144
+        },
+        {
+          "state_sha256": "707e6badd59f60c24b7b31c827137c86e6b96d05ebb35ff35924ee11883c8723",
+          "validation_mse": 0.02670700189984425,
+          "train_mse": 0.023871353856497485,
+          "epoch": 7,
+          "updates": 7168
+        },
+        {
+          "state_sha256": "85ec49c517ba5afb6d317e03110ed8216d7e385de59f79e04a2dbd15646f07c6",
+          "validation_mse": 0.026466575151267907,
+          "train_mse": 0.023928823831693258,
+          "epoch": 8,
+          "updates": 8192
+        }
+      ],
+      "families": {
+        "unary": {
+          "rms": 0.40162546748249217,
+          "maximum_abs": 0.9848488128787135,
+          "fraction_at_bound": 0.0
+        },
+        "E": {
+          "rms": 0.6660260011806182,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.015625
+        },
+        "R": {
+          "rms": 0.3470765940691151,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.00537037037037037
+        },
+        "Q": {
+          "rms": 0.6887565913286421,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.02392578125
+        },
+        "C": {
+          "rms": 0.0,
+          "maximum_abs": 0.0,
+          "fraction_at_bound": 0.0
+        }
+      },
+      "full_graph_inference_ns": 1907.045,
+      "optimization_checkpoint_seconds": 2.9095329,
+      "checkpoint": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r006-bounded-97\\epoch-8.state",
+        "sha256": "85ec49c517ba5afb6d317e03110ed8216d7e385de59f79e04a2dbd15646f07c6"
+      },
+      "binding": {
+        "config_sha256": "9a49c3a779009e2c7104ad24836e02870b5dc8775d6c5c701048d2b735c0c052",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-core.jar": "b983a40bac86600d487f2e6a86487f92ac28ae1ad3cb76fd140bca24ad355e54",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\research.jar": "e767f3c4bafc76beb2f27bc46d1d3e13c1549f6c67f9f243ecf8369db27cc85f",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "619ca13a0dd74844601b91b28f0018e7a61617a533230917b00e482f386aecc6"
+      }
+    },
+    {
+      "experiment": "r011",
+      "mode": "COMPOSE",
+      "treatment": "unregularized",
+      "seed": 71,
+      "metrics": [
+        {
+          "epoch": 0,
+          "validation_mse": 0.03223163091171727
+        },
+        {
+          "state_sha256": "91a2844eb572fbd9e49c709324bd07a8a0b1e8a90be07b5db95b5c30e3249daa",
+          "validation_mse": 0.02755061564066424,
+          "train_mse": 0.027218048291819102,
+          "epoch": 1,
+          "updates": 1024
+        },
+        {
+          "state_sha256": "86420b3c28b47be32eefc0b2a09aae59d23a8b3f2d916d697cdc5721d10b6825",
+          "validation_mse": 0.027568454760024664,
+          "train_mse": 0.0251743910186765,
+          "epoch": 2,
+          "updates": 2048
+        },
+        {
+          "state_sha256": "54951764014c1844a5a5585cdcd28b171f9055162af9c0012b89c85ded57d21e",
+          "validation_mse": 0.027723374374733545,
+          "train_mse": 0.023630150944120295,
+          "epoch": 3,
+          "updates": 3072
+        },
+        {
+          "state_sha256": "24ce19173cd500aff3313a7cbbe6b146044deffc1d9b37a55f36995127890acf",
+          "validation_mse": 0.02827685502697713,
+          "train_mse": 0.02238035578176792,
+          "epoch": 4,
+          "updates": 4096
+        },
+        {
+          "state_sha256": "5fe73f4a7607950e02adaf90d916eb7db4e0dd6c0bcd3140e2c09448c8c76b40",
+          "validation_mse": 0.028483928597475273,
+          "train_mse": 0.021480280642219032,
+          "epoch": 5,
+          "updates": 5120
+        },
+        {
+          "state_sha256": "0ebb9453fd93787e1e2049c8571af65276f7b1de0db2bc4aa1c3a1b13ac4cf08",
+          "validation_mse": 0.028621119850577116,
+          "train_mse": 0.02104056295299159,
+          "epoch": 6,
+          "updates": 6144
+        },
+        {
+          "state_sha256": "c5b4e6e1684eff3118b664665026998ca54f22c82e2a25efbdb45bc1d0282d7b",
+          "validation_mse": 0.02856293686700533,
+          "train_mse": 0.020340552040056803,
+          "epoch": 7,
+          "updates": 7168
+        },
+        {
+          "state_sha256": "bfac8685d2ca73f4a90f887e6278700ed2a2ad76b694728e35c4051a3792f6d4",
+          "validation_mse": 0.02933478315189187,
+          "train_mse": 0.020289446622590024,
+          "epoch": 8,
+          "updates": 8192
+        }
+      ],
+      "families": {
+        "unary": {
+          "rms": 0.5534018335005677,
+          "maximum_abs": 1.3892431651439927,
+          "fraction_at_bound": 0.08712613784135241
+        },
+        "E": {
+          "rms": 1.0274374971542524,
+          "maximum_abs": 4.3097509238722544,
+          "fraction_at_bound": 0.3245442708333333
+        },
+        "R": {
+          "rms": 0.5426739418602233,
+          "maximum_abs": 3.8611218203591022,
+          "fraction_at_bound": 0.09175925925925926
+        },
+        "Q": {
+          "rms": 1.0147529289726187,
+          "maximum_abs": 4.146907767541483,
+          "fraction_at_bound": 0.3058268229166667
+        },
+        "C": {
+          "rms": 1.2816119988848995,
+          "maximum_abs": 5.228896136045966,
+          "fraction_at_bound": 0.4344075520833333
+        }
+      },
+      "full_graph_inference_ns": 3049.765,
+      "optimization_checkpoint_seconds": 3.4822361,
+      "checkpoint": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r011-unregularized-71\\epoch-8.state",
+        "sha256": "bfac8685d2ca73f4a90f887e6278700ed2a2ad76b694728e35c4051a3792f6d4"
+      },
+      "binding": {
+        "config_sha256": "c3124ea7f7e36f576763863e7199bb7d27ad74574069b4960c5a2381868c1219",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-core.jar": "b983a40bac86600d487f2e6a86487f92ac28ae1ad3cb76fd140bca24ad355e54",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\research.jar": "e767f3c4bafc76beb2f27bc46d1d3e13c1549f6c67f9f243ecf8369db27cc85f",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "398d597bf5c8d6b45a9d705d2997250e4b355dc89b152a4680e8d6e9f3dbc063"
+      }
+    },
+    {
+      "experiment": "r011",
+      "mode": "COMPOSE",
+      "treatment": "unregularized",
+      "seed": 97,
+      "metrics": [
+        {
+          "epoch": 0,
+          "validation_mse": 0.03223239014727966
+        },
+        {
+          "train_mse": 0.027335021238601993,
+          "epoch": 1,
+          "updates": 1024,
+          "state_sha256": "7a869c49110dfe54f636bc15ea59775275a42126656cbf8b23ebb7139d9fee07",
+          "validation_mse": 0.027705841989520995
+        },
+        {
+          "train_mse": 0.025171639560598997,
+          "epoch": 2,
+          "updates": 2048,
+          "state_sha256": "46391d0dd5cb731190c30af50aae2f8dd33a130534714a96f0eed64ad970938b",
+          "validation_mse": 0.027436167443252318
+        },
+        {
+          "train_mse": 0.023692814660768422,
+          "epoch": 3,
+          "updates": 3072,
+          "state_sha256": "95e87b7c42c6b3ff199d315ed58e67d1c23c55b85d883c3369cc441d08b5cc8c",
+          "validation_mse": 0.028213011661712074
+        },
+        {
+          "train_mse": 0.02254334325336643,
+          "epoch": 4,
+          "updates": 4096,
+          "state_sha256": "1025ff0431d3ec7a8bbf7107c338888d6e0576cd22d83931090bbe9c148b61ef",
+          "validation_mse": 0.028282724170142576
+        },
+        {
+          "train_mse": 0.021592951925708655,
+          "epoch": 5,
+          "updates": 5120,
+          "state_sha256": "d03929527ef048fd9405484fba8cd2cf40f37a18cfcd9beaef21b2d15899a396",
+          "validation_mse": 0.028254700331095655
+        },
+        {
+          "train_mse": 0.020757854448663276,
+          "epoch": 6,
+          "updates": 6144,
+          "state_sha256": "c32c48b664fb5fe8d0e6632539639a19dac7387b18555369ffba1254d0a630ed",
+          "validation_mse": 0.028597148798439113
+        },
+        {
+          "train_mse": 0.020341822544744738,
+          "epoch": 7,
+          "updates": 7168,
+          "state_sha256": "e72ccc93aeb7e3e894a4c05fd888fca745242a55d963da8c8389b87fe2fd6917",
+          "validation_mse": 0.02936637262955063
+        },
+        {
+          "train_mse": 0.020104584097693765,
+          "epoch": 8,
+          "updates": 8192,
+          "state_sha256": "3f67a14e250a45d7eca96a3d87a56eca56a187c1178ecdc983d51d9fd05f6cf1",
+          "validation_mse": 0.029265907317157648
+        }
+      ],
+      "families": {
+        "unary": {
+          "rms": 0.5525842358453508,
+          "maximum_abs": 1.3754708262742101,
+          "fraction_at_bound": 0.08712613784135241
+        },
+        "E": {
+          "rms": 1.0270111237063198,
+          "maximum_abs": 4.734325674512558,
+          "fraction_at_bound": 0.3243815104166667
+        },
+        "R": {
+          "rms": 0.5424918700221808,
+          "maximum_abs": 3.5225742493575707,
+          "fraction_at_bound": 0.09226851851851851
+        },
+        "Q": {
+          "rms": 1.020133008203089,
+          "maximum_abs": 4.107696528214812,
+          "fraction_at_bound": 0.3028971354166667
+        },
+        "C": {
+          "rms": 1.2846848739358177,
+          "maximum_abs": 4.836111671734989,
+          "fraction_at_bound": 0.4295247395833333
+        }
+      },
+      "full_graph_inference_ns": 2552.565,
+      "optimization_checkpoint_seconds": 3.55034,
+      "checkpoint": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r011-unregularized-97\\epoch-8.state",
+        "sha256": "3f67a14e250a45d7eca96a3d87a56eca56a187c1178ecdc983d51d9fd05f6cf1"
+      },
+      "binding": {
+        "config_sha256": "9d1b5b28e46a54f992da8b9220d45be30ac930e9ccf126ff59384229959916c0",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-core.jar": "b983a40bac86600d487f2e6a86487f92ac28ae1ad3cb76fd140bca24ad355e54",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\research.jar": "e767f3c4bafc76beb2f27bc46d1d3e13c1549f6c67f9f243ecf8369db27cc85f",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "398d597bf5c8d6b45a9d705d2997250e4b355dc89b152a4680e8d6e9f3dbc063"
+      }
+    },
+    {
+      "experiment": "r011",
+      "mode": "COMPOSE",
+      "treatment": "bounded",
+      "seed": 71,
+      "metrics": [
+        {
+          "epoch": 0,
+          "validation_mse": 0.03223163091171727
+        },
+        {
+          "state_sha256": "654cf508d1a4d217b9d1d329665cf1e8f15fe61a065b9bc3d272deb12e4bceda",
+          "validation_mse": 0.0275461287587758,
+          "train_mse": 0.02735199412502666,
+          "epoch": 1,
+          "updates": 1024
+        },
+        {
+          "state_sha256": "82f6ae5f9c5b7e8239ded6bf062482926cb554c3ccb320f39b50c82516142d08",
+          "validation_mse": 0.027353360291296997,
+          "train_mse": 0.02589566603988759,
+          "epoch": 2,
+          "updates": 2048
+        },
+        {
+          "state_sha256": "1efb60c9e5cc3c41255a2e62d8aa53b01929cc86ed6f4fb45c6b9a0c454c2cfc",
+          "validation_mse": 0.02712284036077942,
+          "train_mse": 0.025018152745903986,
+          "epoch": 3,
+          "updates": 3072
+        },
+        {
+          "state_sha256": "cbed38ca342fc41484663519ea4d7327ac07f6bdbcebd46fbdd577a389a5fee2",
+          "validation_mse": 0.02707695488362886,
+          "train_mse": 0.024298039157809023,
+          "epoch": 4,
+          "updates": 4096
+        },
+        {
+          "state_sha256": "90e984c6a8f264987a22bd4154566cc8712d2166768a8482524747afca9b74a6",
+          "validation_mse": 0.02706969295920455,
+          "train_mse": 0.02376837443412198,
+          "epoch": 5,
+          "updates": 5120
+        },
+        {
+          "state_sha256": "1c495663147fc8c79b0792106170bfb4a5d0275469b2b8fb57ee4ab99b782bc8",
+          "validation_mse": 0.026821219288549147,
+          "train_mse": 0.023665007220390704,
+          "epoch": 6,
+          "updates": 6144
+        },
+        {
+          "state_sha256": "0b803abb26333ad655b701bb8b64ae0fb96e8a2f0b2a9f9c93f879e73b926ead",
+          "validation_mse": 0.02661797645357178,
+          "train_mse": 0.023221205368011817,
+          "epoch": 7,
+          "updates": 7168
+        },
+        {
+          "state_sha256": "d7041a8b8a92daa2664abf1a7c0a5c297294de01a71eed8d6a388871eb20a5b7",
+          "validation_mse": 0.02711846561601802,
+          "train_mse": 0.023450441216633505,
+          "epoch": 8,
+          "updates": 8192
+        }
+      ],
+      "families": {
+        "unary": {
+          "rms": 0.4022493902697876,
+          "maximum_abs": 0.9898020099,
+          "fraction_at_bound": 0.0
+        },
+        "E": {
+          "rms": 0.6877642859903834,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.021321614583333332
+        },
+        "R": {
+          "rms": 0.3580818930114358,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.0062037037037037035
+        },
+        "Q": {
+          "rms": 0.660029072793527,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.018391927083333332
+        },
+        "C": {
+          "rms": 0.7001706154486904,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.024739583333333332
+        }
+      },
+      "full_graph_inference_ns": 2485.945,
+      "optimization_checkpoint_seconds": 3.56213,
+      "checkpoint": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r011-bounded-71\\epoch-8.state",
+        "sha256": "d7041a8b8a92daa2664abf1a7c0a5c297294de01a71eed8d6a388871eb20a5b7"
+      },
+      "binding": {
+        "config_sha256": "e511af6aeb02b1ac8de7e8facd21c1f9797aec00f205d94a5f06b647dffd82eb",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-core.jar": "b983a40bac86600d487f2e6a86487f92ac28ae1ad3cb76fd140bca24ad355e54",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\research.jar": "e767f3c4bafc76beb2f27bc46d1d3e13c1549f6c67f9f243ecf8369db27cc85f",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "398d597bf5c8d6b45a9d705d2997250e4b355dc89b152a4680e8d6e9f3dbc063"
+      }
+    },
+    {
+      "experiment": "r011",
+      "mode": "COMPOSE",
+      "treatment": "bounded",
+      "seed": 97,
+      "metrics": [
+        {
+          "validation_mse": 0.03223239014727966,
+          "epoch": 0
+        },
+        {
+          "epoch": 1,
+          "train_mse": 0.027459555516546733,
+          "validation_mse": 0.02772520233624975,
+          "state_sha256": "91977dfc8629f3eb10e7624c49e5e6e71889f58ab10f2eab8eb8caf3023d0a5a",
+          "updates": 1024
+        },
+        {
+          "epoch": 2,
+          "train_mse": 0.025825446889857946,
+          "validation_mse": 0.027272522959908986,
+          "state_sha256": "e25752743098fcb4b7df2d3a1aaea765530ade1f858773247ca59259623fbc08",
+          "updates": 2048
+        },
+        {
+          "epoch": 3,
+          "train_mse": 0.02498034471755254,
+          "validation_mse": 0.02750821451320762,
+          "state_sha256": "5a139e2ddfccdfd03697bc588676df67f8331ae443b8cbb5046e06a7d5e41d34",
+          "updates": 3072
+        },
+        {
+          "epoch": 4,
+          "train_mse": 0.024446231853841767,
+          "validation_mse": 0.027239188118200676,
+          "state_sha256": "8b60ab5f63ddcd8e83ed30828f2928161a6b84a25404a9659b540453a0be088c",
+          "updates": 4096
+        },
+        {
+          "epoch": 5,
+          "train_mse": 0.023860945513030224,
+          "validation_mse": 0.02657938515963186,
+          "state_sha256": "6a3d305843b6c90f46cf3fcf5fb96309015530e27a1be0e61a24e51978ceee97",
+          "updates": 5120
+        },
+        {
+          "epoch": 6,
+          "train_mse": 0.023378586058894018,
+          "validation_mse": 0.026573335260684415,
+          "state_sha256": "850ad882cd06c73e6d1143d8cd7e2615bcaac4ed1431d558a5285afb35d91dcf",
+          "updates": 6144
+        },
+        {
+          "epoch": 7,
+          "train_mse": 0.02323500468714207,
+          "validation_mse": 0.027008623296289825,
+          "state_sha256": "eda6ccb5e65cda003a594e104b18fff86323b9c1a8db07e31d0308897d7aa033",
+          "updates": 7168
+        },
+        {
+          "epoch": 8,
+          "train_mse": 0.023365898198921094,
+          "validation_mse": 0.026890118245120005,
+          "state_sha256": "469dee2cfaa041e18c84ae8fa79cf6feb4184c313d7d56aff3115ac58ebbe763",
+          "updates": 8192
+        }
+      ],
+      "families": {
+        "unary": {
+          "rms": 0.40157710940177194,
+          "maximum_abs": 0.9835012775506966,
+          "fraction_at_bound": 0.0
+        },
+        "E": {
+          "rms": 0.6905773540382909,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.023111979166666668
+        },
+        "R": {
+          "rms": 0.3628196031818961,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.006435185185185185
+        },
+        "Q": {
+          "rms": 0.6681282220227426,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.018880208333333332
+        },
+        "C": {
+          "rms": 0.6988198087444372,
+          "maximum_abs": 0.99,
+          "fraction_at_bound": 0.028971354166666668
+        }
+      },
+      "full_graph_inference_ns": 2554.36,
+      "optimization_checkpoint_seconds": 3.5375125,
+      "checkpoint": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r011-bounded-97\\epoch-8.state",
+        "sha256": "469dee2cfaa041e18c84ae8fa79cf6feb4184c313d7d56aff3115ac58ebbe763"
+      },
+      "binding": {
+        "config_sha256": "38b6e975f20490b636a35e225b0541d2b41f7ac94b1b3d2a7f9c3bb653194174",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-core.jar": "b983a40bac86600d487f2e6a86487f92ac28ae1ad3cb76fd140bca24ad355e54",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\research.jar": "e767f3c4bafc76beb2f27bc46d1d3e13c1549f6c67f9f243ecf8369db27cc85f",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "398d597bf5c8d6b45a9d705d2997250e4b355dc89b152a4680e8d6e9f3dbc063"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "seed": 71,
+      "regularization_gain": 0.07555254539970635,
+      "composition_gain": -0.007491111967851571,
+      "admitted": false
+    },
+    {
+      "seed": 97,
+      "regularization_gain": 0.08117940941625257,
+      "composition_gain": -0.016002943011378168,
+      "admitted": false
+    }
+  ],
+  "admitted": false,
+  "execution": {
+    "arms": [
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r011-unregularized-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 5.350358799973037,
+        "resources": [
+          {
+            "cpu_percent": 42.1875,
+            "available_gib": 16.5772705078125,
+            "utc": "2026-10-28T21:36:24Z"
+          },
+          {
+            "cpu_percent": 20.833333333333336,
+            "available_gib": 16.2752685546875,
+            "utc": "2026-10-28T21:36:29Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.MessageDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r011-unregularized-71.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r011-unregularized-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 5.400464900012594,
+        "resources": [
+          {
+            "cpu_percent": 21.354166666666664,
+            "available_gib": 16.54410171508789,
+            "utc": "2026-10-28T21:36:29Z"
+          },
+          {
+            "cpu_percent": 29.6875,
+            "available_gib": 16.329296112060547,
+            "utc": "2026-10-28T21:36:35Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.MessageDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r011-unregularized-97.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r011-bounded-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 5.448969700024463,
+        "resources": [
+          {
+            "cpu_percent": 10.9375,
+            "available_gib": 16.631309509277344,
+            "utc": "2026-10-28T21:36:35Z"
+          },
+          {
+            "cpu_percent": 43.75,
+            "available_gib": 16.27780532836914,
+            "utc": "2026-10-28T21:36:40Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.MessageDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r011-bounded-71.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r011-bounded-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 5.396213300002273,
+        "resources": [
+          {
+            "cpu_percent": 22.3404255319149,
+            "available_gib": 16.55630111694336,
+            "utc": "2026-10-28T21:36:41Z"
+          },
+          {
+            "cpu_percent": 33.333333333333336,
+            "available_gib": 16.166202545166016,
+            "utc": "2026-10-28T21:36:46Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r006-runtime\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.MessageDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r011-bounded-97.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      }
+    ]
+  },
+  "decision": "Bounds improve COMPOSE generalization but composition still trails matched PAIR. Do not scale this local-wedge recipe; investigate global learned relation paths under R012."
+}

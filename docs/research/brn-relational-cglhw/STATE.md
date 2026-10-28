@@ -2,8 +2,8 @@
 
 Workstream `seedv6-brn-relational-20261029`; 29 October 2026 Auckland.
 Status: **ACTIVE — R007 controlled CP64 distillation fork**. The owner continued
-after interrupting the same root; completed work is preserved. No new architecture
-or strength claim. Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), then
+after interrupting the same root; completed work is preserved. No architectural-success
+or strength claim. Read [CONTRACT](CONTRACT.md) revision2, [PRIORITY](PRIORITY.md), [BOOTSTRAP](BOOTSTRAP.md), then
 [BASELINE](BASELINE.md). This programme is distinct from the suspended successor.
 
 Reusable instruction:
@@ -78,20 +78,38 @@ vs Gen32. See r001b-results.json. R005 is not admitted; no final roots selected.
 The optional CP64-profile research launcher passed48 repeated exact-node probes
 (r000-profile-results.json),not playing confirmation. Production remains unchanged.
 
-Exact next operation: implement/verify R010's bounded child selection and flat
-primitive-array trainer,then select4M nested positions through serial checkpointed
-foreground tranches. Read R010.md for matched exposure and the prospective gate.
-R009 is COMPLETE and fails both relative/absolute gates; no further allocation to
-its unregularized context recipe. R007 training,audits and64 games are COMPLETE;
-R008 is COMPLETE. None needs replay. Canonical development control remains seed71
-epoch24 (model SHA ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627);
-Gen32 remains the preserved historical baseline. No clocks,GPU or final roots queued.
+Exact next admissible operation: after owner RESUME,follow RESOURCE-GATE.md and
+re-run R012's pending correctness build with fresh resource admission and a unique
+log. At2026-10-28T21:42:28Z CPU65.6863% exceeded<60% admission;free memory16.374GiB.
+The retry never launched Gradle. No further availability check/retry was performed;
+supervisor active:null,owned_processes:0. Resource evidence/source hashes are in
+r012-resource-gate.json. This is not research failure or programme completion.
 
-Validation now totals44 distinct focused tests:23 baseline Java,14 research Java
-and7 Python; latest research build/tests and Python suite pass. No full-suite,
+R012 compiled and passed forward/color/special-board/remote/third-source tests.
+Its fourth test failed a unary finite-difference tolerance by1.256e-10 versus
+1e-10; smaller step1e-5 is prepared but UNVERIFIED. Do not call it fixed or start
+training. After tests pass,freeze runtime/configs,add explicit AnchorDiagnostic
+and capability-audit dispatch while preserving older runner bindings,run the
+untrained capability audit,then the prospectively bounded four-arm neural pilot.
+No R012 trained checkpoint exists. R011 is COMPLETE;do not repeat its controls.
+
+R010 selection is PAUSED_BY_OWNER_PRIORITY at1,574,296 rows,cursor1,449,984;
+r010-checkpoint.json pins the preserved SQLite and release evidence. Its240s
+tranche ended safely with zero owned processes. Do not start more extraction or
+Pair2 training automatically. The original1M data is complete and available for
+new neural experiments. All R007/R008/R009 evidence remains valid and preserved.
+Pair2 epoch24 remains a secondary research control,not the principal development
+objective. CP64 is the principal strength benchmark. No clocks,GPU,final roots or
+background queues. Current run_objective dispatch adds packed-data support;
+raw/r009-objective-runner.py preserves its prior frozen bytes.
+
+Validation now totals50 distinct focused tests:23 baseline Java,19 research Java
+and8 Python; latest completed R011 build/tests and earlier Python tests passed; R012 has the
+separate pending numerical test described above. No full-suite,
 GUI,GPU,clock or production qualification is claimed. No new model is promoted.
 All changes are attributable research work; build77 unchanged; no push. Git
 milestones are research boundaries,not owner acceptance or programme completion.
 
-Human actions required after this prompt: None at bootstrap; any actual gate will
-replace this operational statement before ending execution.
+Human actions required after this prompt: **Blocking ? invoke RESUME when conservative
+CPU work can coexist with normal use.** This blocks R012 validation/training. No
+non-blocking action,clock authorization,GPU access or production promotion is requested.

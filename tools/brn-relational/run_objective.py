@@ -12,7 +12,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('plan',type=Path);a=p.parse_args()
     plan=json.loads(a.plan.read_text());runtime=ROOT/plan['runtime'];receipts=[]
     main_class=plan.get('main_class','PairObjectiveDiagnostic')
-    if main_class not in ('PairObjectiveDiagnostic','GraphEnergyDiagnostic','MessageDiagnostic','ContextPairDiagnostic'):raise ValueError('Unknown diagnostic')
+    if main_class not in ('PairObjectiveDiagnostic','GraphEnergyDiagnostic','MessageDiagnostic','ContextPairDiagnostic','PairCoverageDiagnostic'):raise ValueError('Unknown diagnostic')
     hashes={str(x.relative_to(ROOT)):sha(x) for x in sorted(runtime.glob('*.jar'))}
     if not hashes:raise ValueError('No frozen runtime')
     for config_path in plan['configs']:
@@ -27,7 +27,7 @@ def main():
             for epoch in range(config.get('initial_epoch',0)+1,config['epochs']+1):
                 r=json.loads((out/f'epoch-{epoch}.json').read_text())
                 formats=[('state','state_sha256')]
-                if main_class=='PairObjectiveDiagnostic':formats.append(('brn-pair2','model_sha256'))
+                if main_class in ('PairObjectiveDiagnostic','PairCoverageDiagnostic'):formats.append(('brn-pair2','model_sha256'))
                 for ext,key in formats:
                     if sha(out/f'epoch-{epoch}.{ext}')!=r[key]:raise ValueError('Checkpoint corruption')
             receipts.append(dict(config=str(config_path),status='verified-complete',result_sha256=sha(out/'result.json')));continue

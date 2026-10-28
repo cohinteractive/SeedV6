@@ -1,0 +1,25 @@
+{
+  "status": "PAUSED_BY_OWNER_PRIORITY",
+  "checkpoint": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r010-data\\selection.sqlite",
+    "sha256": "0a5c7afc24ed463146a0dfa8964e00eb24c208512d7b200d8f4ea48f61bb4972"
+  },
+  "receipt": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r010-data\\execution-1793223220572241000.json",
+    "sha256": "e67520bfa985a4a13f875e729532ebf24e890ad1e5c3e0f0feebf33dd59570e5"
+  },
+  "selected_rows": 1574296,
+  "cursor": 1449984,
+  "resources": {
+    "max_cpu": 54.59183673469388,
+    "min_free_gib": 14.798210144042969
+  },
+  "reason": "Owner prioritizes neural relational architectures. Active240s tranche completed; no further extraction or Pair2 training admitted.",
+  "resume": "Only under a separately justified neural data requirement: inspect this checkpoint and original binding; original R010 extraction command can resume without repeating accepted rows. No automatic Pair2 continuation.",
+  "executed_selector": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r010-selection-runner.py",
+    "sha256": "a90b54ff43b1e5df2ff3515fcc249a295d636a14efcd502e7646b192d45f5a57",
+    "maintained_path": "tools\\brn-relational\\prepare_coverage_extension.py",
+    "note": "R010 initially reused the existing131k selector filename. Its executed bytes are preserved; original131k selector restored exactly from HEAD. Extension now has a distinct name; data/bindings unchanged."
+  }
+}

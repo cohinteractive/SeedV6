@@ -1,6 +1,6 @@
 # BRN relational evaluator CGLHW
 
-Revision 1, 29 October 2026 (Pacific/Auckland). Workstream ID:
+Revision 2, 29 October 2026 (Pacific/Auckland). Workstream ID:
 `seedv6-brn-relational-20261029`. Owner authority: the request to establish and
 autonomously execute BRN research against the strong NNUE. Entry point:
 [STATE.md](STATE.md). Stable requirements live here; hypotheses and operational
@@ -8,7 +8,7 @@ decisions live in STATE and prospective experiment records.
 
 ## Objective and authority
 
-Discover a self-contained, substantively relational evaluator with credible
+Discover a self-contained, genuinely neural and substantively relational evaluator with credible
 playing strength comparable to or greater than verified strong NNUE, practical
 consumer-hardware training and efficient Java inference. Relations between pieces,
 squares, attacks, defenses or structures must be central computational operations.
@@ -16,6 +16,19 @@ Renamed NNUE inputs, conventional NNUE with relational features, and a small NNU
 correction do not satisfy architectural success. Such controls are permissible
 diagnostics. Learned transforms, quantization and conventional optimization are
 allowed. No architecture is preselected. Rigorous negative closure is legitimate.
+
+Owner priority clarification of29 October2026 is preserved in [PRIORITY](PRIORITY.md).
+Primary experimental effort targets learned nonlinear relational composition,
+context-dependent transformations,higher-order interactions or other justified
+neural formulations. BREP2 and additive pair-table variants are controls and
+evidence sources. Further pair training requires a specific consequential bounded
+hypothesis serving neural BRN research; no open-ended Pair-2 optimization stream.
+Additional table conditioning or additive relational inputs alone do not meet the
+neural architectural objective. CP64 remains the principal strength benchmark.
+Investigate failed recipes' data,capacity,regularization and optimization confounds;
+do not generalize their failures to all relational architectures. Reuse existing
+assets and preserve every completed result. This clarification changes priorities,
+not resource protections,tournament rules,production boundaries or evidence status.
 
 Root AGENTS, module ownership, model compatibility and Search correctness canon
 retain their scope. This contract cannot override higher authority. This is a new,

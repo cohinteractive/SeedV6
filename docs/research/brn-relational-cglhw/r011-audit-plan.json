@@ -1,0 +1,6 @@
+{
+  "cases": "docs\\research\\brn-relational-cglhw\\r008-cases.json",
+  "cases_sha256": "271b3cba2b8e7803c8009ca338f7335584e0dba89e7f624a2014dfc8b389b6d4",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r011-audit-runtime\\lib",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r011-message-support.json"
+}

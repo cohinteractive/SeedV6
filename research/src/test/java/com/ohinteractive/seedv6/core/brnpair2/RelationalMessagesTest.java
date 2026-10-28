@@ -7,6 +7,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RelationalMessagesTest {
+    @Test void regularizedCompositionPreservesBoundsAndExactContinuation()throws Exception {
+        var model=new RelationalMessages(true,.01,71,true);var w=new RelationalMessages.Workspace();var f=w.encode(Board.startingPosition()).frozen();
+        Arrays.fill(model.weights,RelationalMessages.C,model.weights.length,1.5);
+        var batch=new RelationalMessages.Features[]{f};double[] target={.7};model.train(batch,target);
+        for(double value:model.weights)assertTrue(Double.isFinite(value)&&Math.abs(value)<=.99);
+        var bytes=new ByteArrayOutputStream();model.write(bytes);var restored=RelationalMessages.read(new ByteArrayInputStream(bytes.toByteArray()));
+        assertTrue(restored.compose&&restored.regularized);model.train(batch,target);restored.train(batch,target);
+        assertArrayEquals(model.weights,restored.weights);assertArrayEquals(model.first,restored.first);assertArrayEquals(model.second,restored.second);
+    }
     @Test void regularizerBoundsContinuationAndVersionOneCompatibility()throws Exception {
         var model=new RelationalMessages(false,.01,71,true);var w=new RelationalMessages.Workspace();var f=w.encode(Board.startingPosition()).frozen();
         Arrays.fill(model.weights,RelationalMessages.E,RelationalMessages.Q,1.5);

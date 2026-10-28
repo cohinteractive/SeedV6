@@ -1,0 +1,53 @@
+{
+  "tests": [
+    {
+      "name": "RelationalMessagesTest",
+      "result": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.RelationalMessagesTest",
+        "tests": "5",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-28T21:35:35",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.126"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r011-RelationalMessagesTest.xml",
+      "sha256": "9a659b66727d253b74737633dabc85e6842919cd8171e1a594669028dd15d3eb"
+    },
+    {
+      "name": "MessageCapacityAuditTest",
+      "result": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.MessageCapacityAuditTest",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-28T21:35:34",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.083"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r011-MessageCapacityAuditTest.xml",
+      "sha256": "0bd8faff9d236f9afe79558f61cf50b0645d47bba7277b933cace159bc1b7159"
+    },
+    {
+      "name": "PairCoverageDiagnosticTest",
+      "result": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.PairCoverageDiagnosticTest",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-28T21:35:34",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.241"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r011-PairCoverageDiagnosticTest.xml",
+      "sha256": "841693b52acfa67e93c454e43499615a150e47362a58fd4f87c443d2c15403a3"
+    }
+  ],
+  "frozen_r006_class_parity": {
+    "RelationalMessages": "e2137917459acbcd6b421dcfee0645ef71e26b4d5e167273fe8403c1a3da6aef",
+    "MessageDiagnostic": "83e5a30b4907b3d0695e2a4d66f67dcb319e3df518bc16b66a97a296c4d89f6b"
+  }
+}

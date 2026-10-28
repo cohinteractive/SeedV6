@@ -1,0 +1,50 @@
+{
+  "groups": [
+    {
+      "context_changed": null,
+      "n": 64,
+      "pair_identically_zero": 47,
+      "compose_identically_zero": 38,
+      "cp64_nonzero_but_compose_identically_zero": 37
+    },
+    {
+      "context_changed": false,
+      "n": 32,
+      "pair_identically_zero": 24,
+      "compose_identically_zero": 20,
+      "cp64_nonzero_but_compose_identically_zero": 19
+    },
+    {
+      "context_changed": true,
+      "n": 32,
+      "pair_identically_zero": 23,
+      "compose_identically_zero": 18,
+      "cp64_nonzero_but_compose_identically_zero": 18
+    }
+  ],
+  "raw_path": "docs\\research\\brn-relational-cglhw\\raw\\r011-message-support.json",
+  "raw_sha256": "51b39013d8fa829d00e33e8593a704c47e47316e588082398ebc9d2097dbef23",
+  "binding": {
+    "plan_sha256": "bf0e0f610c3515818f38bb6201dad4cda5843763ebd336f739598795209fdce6",
+    "runner_sha256": "062babecb1fd1615d0bd835614086ce347ad5554e213a7b631b8056afb2107d5",
+    "runtime": {
+      "engine-core.jar": "6e8033a59c2129fdb81b03347f321a30d8cf2b050810c0cb8683689317f8ed65",
+      "engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+      "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "research.jar": "a2d1f733f5889434f9e473cf29ca5cef009cb9e7a80f53456ee2bee7fe5859ee",
+      "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+    }
+  },
+  "receipt": {
+    "sha256": "51b39013d8fa829d00e33e8593a704c47e47316e588082398ebc9d2097dbef23",
+    "seconds": 0.328762800025288,
+    "resources": {
+      "cpu_percent": 28.125,
+      "available_gib": 16.34941864013672,
+      "utc": "2026-10-28T21:36:16Z"
+    }
+  },
+  "scope": "Exact board-function support,not learned response quality or playing strength"
+}

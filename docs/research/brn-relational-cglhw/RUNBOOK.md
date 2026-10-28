@@ -133,3 +133,25 @@ Its full optimizer states carry mode,geometry,rate,step,base SHA,weights,moments
 and CRC. The separate frozen Pair-2 base remains required; no standalone state
 may be treated as a deployable Pair-2 checkpoint. Full inference only; no search
 or incremental integration is claimed at this stage.
+
+## Owner neural-priority steering and R011
+
+Contract revision2/PRIORITY.md are active. R010's240.80s tranche safely checkpointed
+1,574,296 rows,cursor1,449,984; r010-checkpoint.json pins its immutable saved state.
+No automatic further extraction or Pair2 training. Packed-data parity tests passed
+and the implementation is retained for justified reuse,not as a queued Pair2 run.
+
+R011 four COMPOSE arms and symbolic support audit are COMPLETE. Reuse their
+results and matched completed R006 PAIR controls. r011-validation.json records
+byte-identical frozen neural class parity plus9 passing targeted tests. No old
+gate or conclusion is overwritten. R012 is the next neural architectural test.
+
+## Current resource pause
+
+RESOURCE-GATE.md is the current operational gate. Do not launch jobs or recheck
+availability until owner RESUME. It records a pending R012 numerical-test retry,
+not a trained model recovery. No GPU or clocks are authorized by RESUME. The
+supervisor's NORMAL state alone does not clear the resource gate.
+R010 extension now has the distinct prepare_coverage_extension.py filename;
+raw/r010-selection-runner.py preserves exactly executed bytes. The original
+prepare_coverage.py131k selector is restored from its committed bytes.

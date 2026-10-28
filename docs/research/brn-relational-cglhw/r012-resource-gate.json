@@ -1,0 +1,34 @@
+{
+  "status": "PAUSED_RESOURCE_GATE",
+  "observed_utc": "2026-10-28T21:42:28Z",
+  "cpu_percent": 65.68627450980392,
+  "available_gib": 16.37436294555664,
+  "required_cpu_percent_less_than": 60,
+  "required_available_gib_at_least": 8,
+  "operation": "R012 correctness retry; blocked before Gradle/JVM launch",
+  "owned_processes": 0,
+  "no_training_started": true,
+  "log": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r012-build-2-launch.log",
+    "sha256": "e2ac5ef962336ea8c8566e393e81f5ea1ac6dfb71072a2770f9f573f2a225f6c"
+  },
+  "release": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r012-resource-release.json",
+    "sha256": "f4e195d8e71cec65d52901f7c8eea37f3e20060bfe6b2f19d01e4be2371ebc49"
+  },
+  "saved_source": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\AnchorNeuralNetwork.java": "f04fc9d15f26e048bdcbd5e0baf3e91fbae596dbf176f2dcac28a45d10b674b5",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\AnchorDiagnostic.java": "6329243e1b0659679531757fd30df0fa7b7460cd4bbdfa5902efe991c46efa43",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\AnchorCapacityAudit.java": "91d463c46bea931763f2024b47541588a757495af2f86a7ee08aec1ab99bcbb1",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\AnchorNeuralNetworkTest.java": "4f7dae875e710be26287406235b516c441c7432bf398efdcaaa0f13b855da1df"
+  },
+  "validation": {
+    "initial": "Compiled;3/4 tests passed. Unary finite-difference discrepancy1.256e-10 exceeded1e-10 tolerance at step1e-4.",
+    "change": "Finite-difference step reduced to1e-5; tolerance unchanged, per-family errors recorded. This change remains UNVERIFIED; no model math altered.",
+    "evidence": {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r012-initial-failed-test.xml",
+      "sha256": "42f59b3859e40fe3cfe6d0028fab813c3fce8577d7642d44cb152e67cc0a05e9"
+    }
+  },
+  "resume": "Owner RESUME authorizes a fresh resource admission,not a waiver. Re-run the R012 correctness command in RESOURCE-GATE.md with a fresh log. If unavailable,stop again without retry. If it passes,freeze new runtime and configs,wire AnchorDiagnostic dispatch and run capability audit before training. Do not continue R010 Pair2 training."
+}
