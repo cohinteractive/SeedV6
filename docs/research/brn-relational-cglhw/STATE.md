@@ -25,11 +25,12 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R029 completes:ONE gains3.25%/2.01% on larger development,passes both transfer
-gates;no strength claim. R030 tests frozen ONE seeds against CP64 on exactly
-R025 fixed10000-node/8opening conditions. Implement explicit research-only ONE
-loader/selector,test full-score/state/search parity,freeze runtime,then32 games.
-No training,second-pass extension,clock testing or production promotion admitted.
+R030 integration passes4 targeted tests(1new,3regressions). Frozen clean-source
+build78 runtime matches every tested executable class;core/UCI classes match
+R025 and neural model classes match R028. r030-plan.json is ready. Execute under
+nnue-control `build/research/venv/Scripts/python.exe -B tools/brn-relational/compare_neural.py docs/research/brn-relational-cglhw/r030-plan.json`.
+32games,10000nodes,one active search worker;resume skips verified complete games.
+No training,second-pass extension,clocks or production promotion.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
