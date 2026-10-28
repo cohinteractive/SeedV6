@@ -260,3 +260,9 @@ raw/r031-objective-runner.py preserves the prior training runner. No automatic
 attention scaling. R033 independently diagnoses frozen mechanism and distribution
 effects before selecting another neural work unit. Free disk observed241.57GiB;
 no storage/resource gate was encountered by R032.
+
+R033 complete:2 tests,frozen class/teacher parity,activation/routing diagnosis.
+No attention tuning;R034 checks composition of played-distribution error first.
+Historical runner preserved at raw/r029-prediction-runner.py;current R033 binding
+includes RoutingMechanismAudit dispatch. Earlier consumed panels remain held out
+from all training;no reclassification or data collection is authorized yet.

@@ -1,0 +1,509 @@
+{
+  "raw_path": "docs\\research\\brn-relational-cglhw\\raw\\r033-mechanism.json",
+  "raw_sha256": "fd287be6ecd1f04127df3406b1b27095f2a1a1005908ad4e88e60ada405c1fcf",
+  "plan_sha256": "45a31389742668d4a9e63906152c536b780750f426e5d5758d68d6be9f67ca03",
+  "analysis_sha256": "5ae2e0cbb2414946de31f3302eee4fae59271b6cd4bdf1019d89a98f89b2a38e",
+  "analysis_resource": {
+    "cpu_percent": 19.17098445595855,
+    "available_gib": 18.489849090576172,
+    "utc": "2026-10-28T23:52:56Z"
+  },
+  "receipt": {
+    "sha256": "fd287be6ecd1f04127df3406b1b27095f2a1a1005908ad4e88e60ada405c1fcf",
+    "seconds": 2.46878920000745,
+    "resources": [
+      {
+        "cpu_percent": 3.703703703703709,
+        "available_gib": 18.817432403564453,
+        "utc": "2026-10-28T23:52:32Z"
+      }
+    ]
+  },
+  "models": [
+    {
+      "id": "r032-dynamic-71",
+      "state_sha256": "a339e18ce2e88c009586f0aec0938df0dddf4dfb71db5f8274759de4787475ec",
+      "panels": {
+        "old_development": {
+          "maximum_full_reconstruction_error": 1.7763568394002505e-15,
+          "static_content_teacher_mse": 0.011780994967573627,
+          "geometry_only_teacher_mse": 0.011772398265185847,
+          "maximum_geometry_reconstruction_error": 8.881784197001252e-16,
+          "rows": 4096,
+          "full_teacher_mse": 0.011802575193497216,
+          "routing_means": {
+            "geometry_centered_rms": 0.483609069692485,
+            "static_content_centered_rms": 0.06280670324577445,
+            "context_centered_rms": 0.03915934784455646,
+            "normalized_entropy": 0.9521155262441513,
+            "remove_all_content_attention_l1": 0.0645541419584314,
+            "remove_neighborhood_attention_l1": 0.03253749640391206,
+            "context_to_geometry_centered_rms_ratio": 0.08097314607738211
+          },
+          "activations": {
+            "first_preactivation": {
+              "mean": 0.003848400258065373,
+              "rms": 0.21829831187741428,
+              "minimum": -1.1103053256372117,
+              "maximum": 1.1627075002126221
+            },
+            "first_activation": {
+              "mean": 0.002770662686219021,
+              "rms": 0.1640680686510678,
+              "minimum": -0.5261349209275925,
+              "maximum": 0.5376166218031393
+            },
+            "first_softsign_derivative": {
+              "mean": 0.7525153701803774,
+              "rms": 0.7675338618367632,
+              "minimum": 0.2137983884327411,
+              "maximum": 0.9999964301042206
+            },
+            "second_preactivation": {
+              "mean": -0.0017772286407046632,
+              "rms": 0.11312242969564493,
+              "minimum": -0.712040103149189,
+              "maximum": 0.7127074869592903
+            },
+            "second_activation": {
+              "mean": -0.0014710823618218588,
+              "rms": 0.0951199701335342,
+              "minimum": -0.41590153282007614,
+              "maximum": 0.4161291361110462
+            },
+            "second_softsign_derivative": {
+              "mean": 0.8567844019595542,
+              "rms": 0.8628594735247798,
+              "minimum": 0.3409051856984333,
+              "maximum": 0.9999986323871978
+            },
+            "unary_logit": {
+              "mean": -0.034180360612483675,
+              "rms": 1.2703935216249729,
+              "minimum": -8.271273327655523,
+              "maximum": 7.285663328408707
+            },
+            "first_pass_logit_contribution": {
+              "mean": 0.02705788408739048,
+              "rms": 0.14290823608950726,
+              "minimum": -0.5986359758334856,
+              "maximum": 0.6701209650668268
+            },
+            "second_pass_logit_contribution": {
+              "mean": 0.016715414494285,
+              "rms": 0.09722494321212465,
+              "minimum": -0.3900720578027368,
+              "maximum": 0.4542239017422822
+            }
+          },
+          "full_gain_over_geometry_mask": -0.0025633628451571244,
+          "full_gain_over_neighborhood_mask": -0.0018317829676515185,
+          "weak_all_content_routing": false,
+          "weak_neighborhood_routing": false,
+          "weak_context_logit_relative_to_geometry": true
+        },
+        "played_all": {
+          "maximum_full_reconstruction_error": 8.881784197001252e-16,
+          "static_content_teacher_mse": 0.04361237304690713,
+          "geometry_only_teacher_mse": 0.04359836657357588,
+          "maximum_geometry_reconstruction_error": 4.440892098500626e-16,
+          "rows": 991,
+          "full_teacher_mse": 0.04374220395797312,
+          "routing_means": {
+            "geometry_centered_rms": 0.48895222023081947,
+            "static_content_centered_rms": 0.06209315870929533,
+            "context_centered_rms": 0.03952438592411294,
+            "normalized_entropy": 0.9540002984877511,
+            "remove_all_content_attention_l1": 0.0640294506031513,
+            "remove_neighborhood_attention_l1": 0.03282618983828921,
+            "context_to_geometry_centered_rms_ratio": 0.08083486338492273
+          },
+          "activations": {
+            "first_preactivation": {
+              "mean": 0.003794602291106632,
+              "rms": 0.22009414084025816,
+              "minimum": -1.0563685651250738,
+              "maximum": 1.078436207160415
+            },
+            "first_activation": {
+              "mean": 0.0027463038550651635,
+              "rms": 0.16532782713144767,
+              "minimum": -0.5137058516846287,
+              "maximum": 0.5188690436805793
+            },
+            "first_softsign_derivative": {
+              "mean": 0.7501852774320305,
+              "rms": 0.7652986002544148,
+              "minimum": 0.2314869971288403,
+              "maximum": 0.9999992785205395
+            },
+            "second_preactivation": {
+              "mean": -0.0023337120145299995,
+              "rms": 0.11355011665840173,
+              "minimum": -0.7273720565317929,
+              "maximum": 0.6743508002930819
+            },
+            "second_activation": {
+              "mean": -0.0018467246476256795,
+              "rms": 0.09560392942633417,
+              "minimum": -0.42108592285104235,
+              "maximum": 0.4027535927208576
+            },
+            "second_softsign_derivative": {
+              "mean": 0.8552671027582457,
+              "rms": 0.8612988637111224,
+              "minimum": 0.3351415087212293,
+              "maximum": 0.9999995019135036
+            },
+            "unary_logit": {
+              "mean": -0.2449089149729726,
+              "rms": 1.4711284335486663,
+              "minimum": -7.0655955111368,
+              "maximum": 7.217089696559312
+            },
+            "first_pass_logit_contribution": {
+              "mean": 0.029988966156977975,
+              "rms": 0.16639775742381416,
+              "minimum": -0.45625074246053554,
+              "maximum": 0.5587225489419378
+            },
+            "second_pass_logit_contribution": {
+              "mean": 0.000753848067334685,
+              "rms": 0.11224380637542386,
+              "minimum": -0.49817088664542775,
+              "maximum": 0.395663821900256
+            }
+          },
+          "full_gain_over_geometry_mask": -0.0032991461768296926,
+          "full_gain_over_neighborhood_mask": -0.002976928380538979,
+          "weak_all_content_routing": false,
+          "weak_neighborhood_routing": false,
+          "weak_context_logit_relative_to_geometry": true
+        },
+        "played_noncheck": {
+          "maximum_full_reconstruction_error": 8.881784197001252e-16,
+          "static_content_teacher_mse": 0.04160715221383886,
+          "geometry_only_teacher_mse": 0.04158179650313602,
+          "maximum_geometry_reconstruction_error": 4.440892098500626e-16,
+          "rows": 876,
+          "full_teacher_mse": 0.0417456614186809,
+          "routing_means": {
+            "geometry_centered_rms": 0.4896956188966494,
+            "static_content_centered_rms": 0.06204181763014959,
+            "context_centered_rms": 0.03957782658623204,
+            "normalized_entropy": 0.9540823229814993,
+            "remove_all_content_attention_l1": 0.06404699525564797,
+            "remove_neighborhood_attention_l1": 0.03286371064423528,
+            "context_to_geometry_centered_rms_ratio": 0.08082127970719086
+          },
+          "activations": {
+            "first_preactivation": {
+              "mean": 0.0033123722041384232,
+              "rms": 0.2199283457390111,
+              "minimum": -1.0241683163425848,
+              "maximum": 1.078436207160415
+            },
+            "first_activation": {
+              "mean": 0.0023724006712508407,
+              "rms": 0.16521499402729697,
+              "minimum": -0.505969937417619,
+              "maximum": 0.5188690436805793
+            },
+            "first_softsign_derivative": {
+              "mean": 0.7503580120732881,
+              "rms": 0.7654534966091249,
+              "minimum": 0.2314869971288403,
+              "maximum": 0.9999992785205395
+            },
+            "second_preactivation": {
+              "mean": -0.0024236973054759417,
+              "rms": 0.11387475891475109,
+              "minimum": -0.7273720565317929,
+              "maximum": 0.6743508002930819
+            },
+            "second_activation": {
+              "mean": -0.0019213994021122895,
+              "rms": 0.09583582316112427,
+              "minimum": -0.42108592285104235,
+              "maximum": 0.4027535927208576
+            },
+            "second_softsign_derivative": {
+              "mean": 0.8549222631507759,
+              "rms": 0.8609804418870616,
+              "minimum": 0.3351415087212293,
+              "maximum": 0.9999990980522558
+            },
+            "unary_logit": {
+              "mean": -0.19127493295625647,
+              "rms": 1.3983697785664604,
+              "minimum": -6.951684738289021,
+              "maximum": 7.217089696559312
+            },
+            "first_pass_logit_contribution": {
+              "mean": 0.036852145173976315,
+              "rms": 0.16950018220943533,
+              "minimum": -0.45625074246053554,
+              "maximum": 0.5587225489419378
+            },
+            "second_pass_logit_contribution": {
+              "mean": 0.0019322618518785404,
+              "rms": 0.11409282562413588,
+              "minimum": -0.49817088664542775,
+              "maximum": 0.395663821900256
+            }
+          },
+          "full_gain_over_geometry_mask": -0.0039407848944794654,
+          "full_gain_over_neighborhood_mask": -0.0033289758484353893,
+          "weak_all_content_routing": false,
+          "weak_neighborhood_routing": false,
+          "weak_context_logit_relative_to_geometry": true
+        }
+      },
+      "played_noncheck_to_development_loss": 3.536996014368222
+    },
+    {
+      "id": "r032-dynamic-97",
+      "state_sha256": "e52724a809e238b49ea8c86a79c6b2a98d379bf5507ed0fc6dcb5876f75db8f0",
+      "panels": {
+        "old_development": {
+          "maximum_full_reconstruction_error": 8.881784197001252e-16,
+          "static_content_teacher_mse": 0.011723603095517007,
+          "geometry_only_teacher_mse": 0.011722873223691557,
+          "maximum_geometry_reconstruction_error": 8.881784197001252e-16,
+          "rows": 4096,
+          "full_teacher_mse": 0.011724268224648877,
+          "routing_means": {
+            "geometry_centered_rms": 0.48621164874159384,
+            "static_content_centered_rms": 0.061432631224955334,
+            "context_centered_rms": 0.035178045059998136,
+            "normalized_entropy": 0.9504004104906559,
+            "remove_all_content_attention_l1": 0.05564979045827826,
+            "remove_neighborhood_attention_l1": 0.028498463045663287,
+            "context_to_geometry_centered_rms_ratio": 0.0723513004080537
+          },
+          "activations": {
+            "first_preactivation": {
+              "mean": 0.0010045072088252322,
+              "rms": 0.22086632100099787,
+              "minimum": -1.1408175359042225,
+              "maximum": 1.1809270608346474
+            },
+            "first_activation": {
+              "mean": 0.0006801350139030858,
+              "rms": 0.1652609920670557,
+              "minimum": -0.532888729081889,
+              "maximum": 0.5414793928884092
+            },
+            "first_softsign_derivative": {
+              "mean": 0.7514480577357685,
+              "rms": 0.76677378948964,
+              "minimum": 0.2102411471459819,
+              "maximum": 0.9999992620039619
+            },
+            "second_preactivation": {
+              "mean": -0.0002676534801748272,
+              "rms": 0.11714791179292533,
+              "minimum": -0.7357934027446963,
+              "maximum": 0.7538255734959748
+            },
+            "second_activation": {
+              "mean": -0.0002412824977593221,
+              "rms": 0.09777946575520174,
+              "minimum": -0.42389457269582564,
+              "maximum": 0.42981787065252014
+            },
+            "second_softsign_derivative": {
+              "mean": 0.8535127910683573,
+              "rms": 0.8599719195307839,
+              "minimum": 0.32510766062722635,
+              "maximum": 0.9999995715922981
+            },
+            "unary_logit": {
+              "mean": 0.029928312590903835,
+              "rms": 1.2720030080561024,
+              "minimum": -8.190205558814027,
+              "maximum": 7.648577711790029
+            },
+            "first_pass_logit_contribution": {
+              "mean": 0.01774365186040924,
+              "rms": 0.14475833461522003,
+              "minimum": -0.6523999832630278,
+              "maximum": 0.66012364062562
+            },
+            "second_pass_logit_contribution": {
+              "mean": 0.009010487602112295,
+              "rms": 0.09419621972589473,
+              "minimum": -0.3566267373048004,
+              "maximum": 0.49797172229398123
+            }
+          },
+          "full_gain_over_geometry_mask": -0.00011899821235816788,
+          "full_gain_over_neighborhood_mask": -5.6734190542861995e-05,
+          "weak_all_content_routing": false,
+          "weak_neighborhood_routing": false,
+          "weak_context_logit_relative_to_geometry": true
+        },
+        "played_all": {
+          "maximum_full_reconstruction_error": 8.881784197001252e-16,
+          "static_content_teacher_mse": 0.04661783868126232,
+          "geometry_only_teacher_mse": 0.046568237604479375,
+          "maximum_geometry_reconstruction_error": 8.881784197001252e-16,
+          "rows": 991,
+          "full_teacher_mse": 0.046572974474408564,
+          "routing_means": {
+            "geometry_centered_rms": 0.4917557504407241,
+            "static_content_centered_rms": 0.06413546108451877,
+            "context_centered_rms": 0.03644293289864831,
+            "normalized_entropy": 0.9520912241850111,
+            "remove_all_content_attention_l1": 0.05822763032649149,
+            "remove_neighborhood_attention_l1": 0.029422715596011905,
+            "context_to_geometry_centered_rms_ratio": 0.07410779206137848
+          },
+          "activations": {
+            "first_preactivation": {
+              "mean": 0.0013537104398784316,
+              "rms": 0.22104032278224123,
+              "minimum": -1.0135535133613476,
+              "maximum": 1.1603435426630666
+            },
+            "first_activation": {
+              "mean": 0.001111719928372714,
+              "rms": 0.16550867691765725,
+              "minimum": -0.5033655706867015,
+              "maximum": 0.5371106584431036
+            },
+            "first_softsign_derivative": {
+              "mean": 0.7506844883146031,
+              "rms": 0.7659639700846227,
+              "minimum": 0.21426654252697716,
+              "maximum": 0.9999962157654388
+            },
+            "second_preactivation": {
+              "mean": 0.00023748366065858668,
+              "rms": 0.11686874461209569,
+              "minimum": -0.7944735642117865,
+              "maximum": 0.7181192498863742
+            },
+            "second_activation": {
+              "mean": 0.00018861264019036318,
+              "rms": 0.09772106566355225,
+              "minimum": -0.44273350137690937,
+              "maximum": 0.4179682230636006
+            },
+            "second_softsign_derivative": {
+              "mean": 0.8529361179885848,
+              "rms": 0.8593040719732328,
+              "minimum": 0.310545950487639,
+              "maximum": 0.9999999698384634
+            },
+            "unary_logit": {
+              "mean": -0.1576432185131994,
+              "rms": 1.432008082849914,
+              "minimum": -7.136849724268148,
+              "maximum": 7.278378792199222
+            },
+            "first_pass_logit_contribution": {
+              "mean": 0.004683194659710466,
+              "rms": 0.16101360427218134,
+              "minimum": -0.5170749492772867,
+              "maximum": 0.45952375399706036
+            },
+            "second_pass_logit_contribution": {
+              "mean": 0.0026746008735290517,
+              "rms": 0.09913595247070542,
+              "minimum": -0.3700917205193328,
+              "maximum": 0.2586284274801825
+            }
+          },
+          "full_gain_over_geometry_mask": -0.00010171890053944921,
+          "full_gain_over_neighborhood_mask": 0.0009623828157393488,
+          "weak_all_content_routing": false,
+          "weak_neighborhood_routing": false,
+          "weak_context_logit_relative_to_geometry": true
+        },
+        "played_noncheck": {
+          "maximum_full_reconstruction_error": 8.881784197001252e-16,
+          "static_content_teacher_mse": 0.0442718182823717,
+          "geometry_only_teacher_mse": 0.044222440514138886,
+          "maximum_geometry_reconstruction_error": 8.881784197001252e-16,
+          "rows": 876,
+          "full_teacher_mse": 0.04422227096400408,
+          "routing_means": {
+            "geometry_centered_rms": 0.49181410304372597,
+            "static_content_centered_rms": 0.06406091541376364,
+            "context_centered_rms": 0.03644586396347263,
+            "normalized_entropy": 0.95234210048676,
+            "remove_all_content_attention_l1": 0.05824332832447999,
+            "remove_neighborhood_attention_l1": 0.029434259003905068,
+            "context_to_geometry_centered_rms_ratio": 0.07410495904431663
+          },
+          "activations": {
+            "first_preactivation": {
+              "mean": 0.0013382932826858703,
+              "rms": 0.22080154086032153,
+              "minimum": -1.0135535133613476,
+              "maximum": 1.1603435426630666
+            },
+            "first_activation": {
+              "mean": 0.001137488514591392,
+              "rms": 0.16537859464049676,
+              "minimum": -0.5033655706867015,
+              "maximum": 0.5371106584431036
+            },
+            "first_softsign_derivative": {
+              "mean": 0.7508524410234573,
+              "rms": 0.7661074628781284,
+              "minimum": 0.21426654252697716,
+              "maximum": 0.9999962157654388
+            },
+            "second_preactivation": {
+              "mean": 0.00029896711616610524,
+              "rms": 0.11683389342071213,
+              "minimum": -0.7944735642117865,
+              "maximum": 0.7181192498863742
+            },
+            "second_activation": {
+              "mean": 0.00023824566856263577,
+              "rms": 0.09770388726359976,
+              "minimum": -0.44273350137690937,
+              "maximum": 0.4179682230636006
+            },
+            "second_softsign_derivative": {
+              "mean": 0.8528977633578024,
+              "rms": 0.859254952104032,
+              "minimum": 0.310545950487639,
+              "maximum": 0.9999999698384634
+            },
+            "unary_logit": {
+              "mean": -0.1031219143582564,
+              "rms": 1.361521284884801,
+              "minimum": -6.828779091451638,
+              "maximum": 7.278378792199222
+            },
+            "first_pass_logit_contribution": {
+              "mean": 0.008221202992330291,
+              "rms": 0.16310234717013658,
+              "minimum": -0.5170749492772867,
+              "maximum": 0.45952375399706036
+            },
+            "second_pass_logit_contribution": {
+              "mean": 0.0025908354647445953,
+              "rms": 0.10039014011738404,
+              "minimum": -0.3700917205193328,
+              "maximum": 0.2586284274801825
+            }
+          },
+          "full_gain_over_geometry_mask": 3.83402934878152e-06,
+          "full_gain_over_neighborhood_mask": 0.0011191615860817183,
+          "weak_all_content_routing": false,
+          "weak_neighborhood_routing": false,
+          "weak_context_logit_relative_to_geometry": true
+        }
+      },
+      "played_noncheck_to_development_loss": 3.7718576645177753
+    }
+  ],
+  "search_distribution_experiment_justified": true,
+  "attention_tuning_authorized": false,
+  "scope": "Frozen consumed panels;per-position loss,per-node/channel activation and per-receiver routing statistics;no fitted ablation,causal strength claim or attention-family rejection."
+}

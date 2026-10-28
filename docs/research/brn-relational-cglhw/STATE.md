@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R033 frozen activation and routing diagnosis**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R034 matched played-distribution diagnosis**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,11 +25,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R032 completes four arms/32segments;DYNAMIC is slightly worse than GEOMETRY in
-both seeds and K-masking improves teacher loss. No attention extension admitted.
-R033 prospectively diagnoses frozen activation/routing effects and distribution
-sensitivity on existing4096/played panels. Implement independent reconstruction
-and ablation tests,then bounded read-only audit. No training,games or promotion.
+R033 complete:stable activations,active but unhelpful contextual routing,played
+teacher loss3.54-3.77x old development. No attention tuning. R034 prospectively
+matches piece-count/teacher-confidence strata before any new data allocation.
+Use frozen R028 ONE predictions on existing R026 played cases and R0298192 old
+panel;verify identities and prescribed coverage/ratio gates. No training or games.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -76,7 +76,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R030 | ONE fixed-node diagnostic versus CP64 | Complete32games;15.625%/12.5%,no consistent playing gain or promotion |
 | R031 | Neural warm-start step-size | Complete;LOW teacher2.4% worse than CONTROL,fails5%;no rate/epoch sweep |
 | R032 | Contextual neural routing | Complete;dynamic routing/use gates fail;no attention sweep |
-| R033 | Frozen neural mechanism diagnosis | Prospective activations/routing/played-distribution audit only |
+| R033 | Frozen neural mechanism diagnosis | Complete;no broad saturation,context active but unhelpful;played loss3.54-3.77x |
+| R034 | Matched played-distribution gap | Prospective piece-count/teacher-confidence diagnostic before new data |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

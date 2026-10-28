@@ -1,0 +1,26 @@
+{
+  "tests": 2,
+  "failures": 0,
+  "skips": 0,
+  "test_path": "docs\\research\\brn-relational-cglhw\\raw\\r033-passed-tests.xml",
+  "test_sha256": "67b25ae301922dd7eba993d6898b1f796b698965922f405f474f05a22b9f89b4",
+  "sources": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\RoutingMechanismAudit.java": "56b7aa6bcc85eba044e40e2f6334613084bf8eb2b6b7fd66fe29ba0e787c88a8",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\RoutingMechanismAuditTest.java": "7edfaa3cdecb5fa4660c79c04aa97eb75506a0baf0ceec4162a752df61c91f58",
+    "tools\\brn-relational\\run_message_audit.py": "e3750ceb5ef12bb19d381b0c46e5b701a80e05cb3ac73320256e6bf6dcda0633"
+  },
+  "model_class_parity_with_r032": [
+    "com/ohinteractive/seedv6/core/brnpair2/AttentivePieceNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/AttentivePieceNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/AttentivePieceNetwork.class"
+  ],
+  "runtime": {
+    "docs\\research\\brn-relational-cglhw\\raw\\r033-runtime\\lib\\engine-core.jar": "b5108fc586cab8b2f4ae84a99de5d5606b9da4891d09e2ea3130d646dc0a7d4a",
+    "docs\\research\\brn-relational-cglhw\\raw\\r033-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\brn-relational-cglhw\\raw\\r033-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\brn-relational-cglhw\\raw\\r033-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\brn-relational-cglhw\\raw\\r033-runtime\\lib\\research.jar": "ee9bf3253689d7fb983b2538740cdbd8f26972c2f48537578d0b4a75817155b6",
+    "docs\\research\\brn-relational-cglhw\\raw\\r033-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\brn-relational-cglhw\\raw\\r033-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  }
+}

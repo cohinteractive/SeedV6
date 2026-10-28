@@ -1,0 +1,25 @@
+{
+  "main_class": "RoutingMechanismAudit",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r033-runtime\\lib",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r033-mechanism.json",
+  "cases": "docs\\research\\brn-relational-cglhw\\raw\\r007-teacher-data\\validation\\data.tsv",
+  "played_cases": "docs\\research\\brn-relational-cglhw\\raw\\r026-data\\cases.json",
+  "played_prediction": "docs\\research\\brn-relational-cglhw\\raw\\r026-prediction.json",
+  "teacher": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "models": [
+    {
+      "id": "r032-dynamic-71",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r032-dynamic-71\\epoch-1.state",
+      "state_sha256": "a339e18ce2e88c009586f0aec0938df0dddf4dfb71db5f8274759de4787475ec"
+    },
+    {
+      "id": "r032-dynamic-97",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r032-dynamic-97\\epoch-1.state",
+      "state_sha256": "e52724a809e238b49ea8c86a79c6b2a98d379bf5507ed0fc6dcb5876f75db8f0"
+    }
+  ],
+  "cases_sha256": "9e0c869225dc15c89cc1ce9181eefd12e0f3d9cbe2d259d4773a5208fd99ad73",
+  "played_cases_sha256": "35a6382b538132367d59378038286c721c1d3945a466b084a01e8b2775f760f4",
+  "played_prediction_sha256": "b106f547e28342e659114a5e82e3301fa3271d7f53dd1b13cf8d20b3f6492106",
+  "teacher_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+}
