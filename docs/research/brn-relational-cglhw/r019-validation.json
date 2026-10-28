@@ -1,0 +1,23 @@
+{
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.MixedAttackFieldNetworkTest",
+    "tests": "4",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T22:31:11",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.481"
+  },
+  "raw_test": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r019-passed-tests.xml",
+    "sha256": "bb14580048130b3b2b900c56d062206ea7b16923b346e4f46c26384a290939e0"
+  },
+  "source_sha256": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\MixedAttackFieldDiagnostic.java": "f67f886e46c28eed79062589f9fe62114d8965fa9b161e82b4cf1e062123e3c6",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\MixedAttackFieldNetwork.java": "7658b0d740eab62f40744e537034ca0d4112bde90535eac4fe5644a11f8c698b",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\MixedAttackFieldNetworkTest.java": "1bdedcfaf8924c2e89137a72e3cc4cb63e869778318bf64f4a712c281282c701"
+  },
+  "source_base": "b68ffd3a",
+  "scope": "4tests;independent transformed equations,nonzero gradients11families,exactR017ALL fixed-transform weights/moments/step/predictions on257rows3epochs,CRC/resume,bounds,symmetry/specialmoves,tailbatch. D=0 recovers R017 ALL capacity witness;no new teacher fit."
+}

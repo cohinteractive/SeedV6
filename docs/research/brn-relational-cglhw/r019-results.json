@@ -1,0 +1,228 @@
+{
+  "arms": [
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r019-mix-71.json",
+      "result": {
+        "scope": "Matched fixed/learned channel transformation of neural attack fields; no search or strength qualification",
+        "load_seconds": 3.89096,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.01853872455107596
+          },
+          {
+            "unary_only_train_mse": 0.01523242769934906,
+            "epoch": 1,
+            "updates": 8192,
+            "train_mse": 0.01372230757660765,
+            "state_sha256": "7b02c6ab6f0ba98cbb19ff3abf7b6f705ca75ffcfcac13d1a378fc6124b43fea",
+            "unary_only_validation_mse": 0.013829075436497546,
+            "validation_mse": 0.012499209547061137
+          }
+        ],
+        "train_positions": 1048576,
+        "mode": "MIX",
+        "seed": 71,
+        "rate": 0.01,
+        "optimization_checkpoint_seconds": 30.3662345,
+        "full_inference_ns": 5294.88,
+        "parameters": 41609,
+        "active_parameters": 41609,
+        "original_bt4_validation_mse": 0.025237810371100615
+      },
+      "binding": {
+        "config_sha256": "13e52e96fdf588b00f39d2dd6ed3b254fe6f3b627528ea2831feecb838e013e9",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\engine-core.jar": "23ca94140bc25bee5884309c0f938104bb8816bd911fb4186101e86aba7b96eb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\research.jar": "192d5d9f1c82c661c59974092cc270f998b99644e3dc08e977a4d6e2ea7c246f",
+          "docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "3066d54912de9fcfe9c86368c9f32cae4ee9792ccedaf38cbb73649fa08ee87c"
+      },
+      "mix_rms": 0.35240097001178033,
+      "mix_at_bound": 0.0
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r019-mix-97.json",
+      "result": {
+        "rate": 0.01,
+        "seed": 97,
+        "mode": "MIX",
+        "train_positions": 1048576,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.01854018293560343
+          },
+          {
+            "state_sha256": "9fed259cef1343cd907dbeb0838cf2f1fe1131581b4537d97e93d6902c446835",
+            "train_mse": 0.013792897332705665,
+            "updates": 8192,
+            "epoch": 1,
+            "unary_only_train_mse": 0.015084134013293364,
+            "validation_mse": 0.012358314169707984,
+            "unary_only_validation_mse": 0.013517525345777683
+          }
+        ],
+        "load_seconds": 3.8751454,
+        "scope": "Matched fixed/learned channel transformation of neural attack fields; no search or strength qualification",
+        "optimization_checkpoint_seconds": 31.3662396,
+        "full_inference_ns": 6078.55,
+        "parameters": 41609,
+        "active_parameters": 41609,
+        "original_bt4_validation_mse": 0.025205283978450826
+      },
+      "binding": {
+        "config_sha256": "41f9b0ce6736cfe614e5e41e222a8acc0a7a7abe8f752cc065caf8c994cab653",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\engine-core.jar": "23ca94140bc25bee5884309c0f938104bb8816bd911fb4186101e86aba7b96eb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\research.jar": "192d5d9f1c82c661c59974092cc270f998b99644e3dc08e977a4d6e2ea7c246f",
+          "docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "3066d54912de9fcfe9c86368c9f32cae4ee9792ccedaf38cbb73649fa08ee87c"
+      },
+      "mix_rms": 0.3353593318923878,
+      "mix_at_bound": 0.004807692307692308
+    }
+  ],
+  "gates": [
+    {
+      "seed": 71,
+      "teacher_gain": -0.005133637372852329,
+      "original_change": 0.0005566076962568722,
+      "path_gain": 0.09616448297958091,
+      "passes": false
+    },
+    {
+      "seed": 97,
+      "teacher_gain": 0.004492218729544195,
+      "original_change": -0.005170359687553416,
+      "path_gain": 0.08575616811636222,
+      "passes": false
+    }
+  ],
+  "advance": false,
+  "execution": {
+    "arms": [
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r019-mix-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 34.94401769997785,
+        "resources": [
+          {
+            "cpu_percent": 15.384615384615385,
+            "available_gib": 18.518489837646484,
+            "utc": "2026-10-28T22:32:12Z"
+          },
+          {
+            "cpu_percent": 11.764705882352944,
+            "available_gib": 18.328285217285156,
+            "utc": "2026-10-28T22:32:18Z"
+          },
+          {
+            "cpu_percent": 10.416666666666663,
+            "available_gib": 18.36834716796875,
+            "utc": "2026-10-28T22:32:23Z"
+          },
+          {
+            "cpu_percent": 10.824742268041232,
+            "available_gib": 18.370891571044922,
+            "utc": "2026-10-28T22:32:28Z"
+          },
+          {
+            "cpu_percent": 9.743589743589743,
+            "available_gib": 18.376354217529297,
+            "utc": "2026-10-28T22:32:33Z"
+          },
+          {
+            "cpu_percent": 17.708333333333336,
+            "available_gib": 18.377635955810547,
+            "utc": "2026-10-28T22:32:39Z"
+          },
+          {
+            "cpu_percent": 11.05263157894737,
+            "available_gib": 18.374183654785156,
+            "utc": "2026-10-28T22:32:44Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.MixedAttackFieldDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r019-mix-71.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r019-mix-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 35.9375621000072,
+        "resources": [
+          {
+            "cpu_percent": 3.8461538461538436,
+            "available_gib": 18.604373931884766,
+            "utc": "2026-10-28T22:32:47Z"
+          },
+          {
+            "cpu_percent": 13.197969543147202,
+            "available_gib": 18.357784271240234,
+            "utc": "2026-10-28T22:32:53Z"
+          },
+          {
+            "cpu_percent": 9.045226130653262,
+            "available_gib": 18.3551025390625,
+            "utc": "2026-10-28T22:32:58Z"
+          },
+          {
+            "cpu_percent": 9.32642487046632,
+            "available_gib": 18.37866973876953,
+            "utc": "2026-10-28T22:33:03Z"
+          },
+          {
+            "cpu_percent": 12.371134020618557,
+            "available_gib": 18.376338958740234,
+            "utc": "2026-10-28T22:33:08Z"
+          },
+          {
+            "cpu_percent": 11.398963730569944,
+            "available_gib": 18.364299774169922,
+            "utc": "2026-10-28T22:33:14Z"
+          },
+          {
+            "cpu_percent": 9.424083769633507,
+            "available_gib": 18.36642074584961,
+            "utc": "2026-10-28T22:33:19Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r019-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.MixedAttackFieldDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r019-mix-97.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      }
+    ]
+  },
+  "decision": "Learned channel mixing fails fixed2% gate;no scaling/search. Matrices learned nonzero values but did not improve training loss;do not interpret as broad neural impossibility."
+}

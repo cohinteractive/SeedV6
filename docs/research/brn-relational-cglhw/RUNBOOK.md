@@ -193,3 +193,7 @@ R018 complete:exact continuation test and unchanged neural/updater class parity;
 every epoch2-8 state retained. Fixed endpoint fails5% teacher gain;no best-epoch
 selection or further same-recipe allocation. Neural curve alone does not separate
 capacity from constant-rate optimization limits. New channel composition is R019.
+
+R019 complete:exact fixed-transform control parity and4tests;two active learned
+MIX transforms fail2%teacher gate. All source/runtime/state hashes remain pinned.
+raw/r018-objective-runner.py preserves the prior runner before R019 dispatch.
