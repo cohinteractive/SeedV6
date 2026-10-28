@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R032 context-dependent neural message routing**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R033 frozen activation and routing diagnosis**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,12 +25,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R032 six correctness tests pass,including dynamic receiver ranking,third-piece
-routing effect,independent gradients and exact legacy/continuation controls.
-Frozen r032-plan.json ready. Execute under nnue-control:
-`build/research/venv/Scripts/python.exe -B tools/brn-relational/run_objective.py docs/research/brn-relational-cglhw/r032-plan.json`.
-Four serial one-epoch pilots;cost gate30us,300s/arm,131072-row segment checkpoints.
-No old successor queue,Pair training,games,GPU/clocks or production promotion.
+R032 completes four arms/32segments;DYNAMIC is slightly worse than GEOMETRY in
+both seeds and K-masking improves teacher loss. No attention extension admitted.
+R033 prospectively diagnoses frozen activation/routing effects and distribution
+sensitivity on existing4096/played panels. Implement independent reconstruction
+and ablation tests,then bounded read-only audit. No training,games or promotion.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -76,7 +75,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R029 | All-piece neural transfer | Complete;ONE gains3.25%/2.01%,passes transfer gate;no strength claim |
 | R030 | ONE fixed-node diagnostic versus CP64 | Complete32games;15.625%/12.5%,no consistent playing gain or promotion |
 | R031 | Neural warm-start step-size | Complete;LOW teacher2.4% worse than CONTROL,fails5%;no rate/epoch sweep |
-| R032 | Contextual neural routing | Prospective receiver-dependent attention versus geometry control;correctness first |
+| R032 | Contextual neural routing | Complete;dynamic routing/use gates fail;no attention sweep |
+| R033 | Frozen neural mechanism diagnosis | Prospective activations/routing/played-distribution audit only |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -95,6 +95,10 @@ Gen32 remains unchanged. Best played Pair-2 development control is seed71 epoch2
 `ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627`.
 It is a secondary reference,not the primary architecture objective. No neural BRN
 has demonstrated CP64 competitiveness;no production model was changed/promoted.
+R022 and R028 ONE are the played neural references:32games each versus CP64,
+point scores9.375%/21.875% and15.625%/12.5% respectively. No reliable neural
+strength winner is established. ONE has lower measured full-evaluation cost;
+TWO/attention variants remain preserved failed architectural controls.
 Fixed-node results are not equal-time Elo. No clock tournament or GPU work ran.
 
 R010's SQLite checkpoint and release evidence are pinned by r010-checkpoint.json.

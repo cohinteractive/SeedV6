@@ -254,3 +254,9 @@ R031 complete:3 tests,4 arms/32segments;lower-rate fixed-shrink intervention fai
 Parents remain immutable;no further rate/epoch sweep. raw/r028-objective-runner.py
 preserves previous bindings. R032 is a new contextual routing hypothesis with
 explicit static-geometry control and content-use gate,not reopened old GATE work.
+
+R032 complete:6 tests,4 arms/32segments;contextual-routing and quality gates fail.
+raw/r031-objective-runner.py preserves the prior training runner. No automatic
+attention scaling. R033 independently diagnoses frozen mechanism and distribution
+effects before selecting another neural work unit. Free disk observed241.57GiB;
+no storage/resource gate was encountered by R032.
