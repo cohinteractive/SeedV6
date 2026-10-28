@@ -1,0 +1,65 @@
+{
+  "arms": [
+    {
+      "seed": 71,
+      "teacher_mse_bt4": 0.011099388844020277,
+      "teacher_mse_distilled": 0.01071230632992751,
+      "teacher_relative_gain": 0.03487421870991614,
+      "bt4_mse_control": 0.02291124885915981,
+      "bt4_mse_distilled": 0.02291096160876798,
+      "passes_teacher_gate": false,
+      "passes_original_gate": true
+    },
+    {
+      "seed": 97,
+      "teacher_mse_bt4": 0.011050546568137075,
+      "teacher_mse_distilled": 0.010687556162933301,
+      "teacher_relative_gain": 0.032848185649967165,
+      "bt4_mse_control": 0.022835381649420814,
+      "bt4_mse_distilled": 0.02289132198351158,
+      "passes_teacher_gate": false,
+      "passes_original_gate": true
+    }
+  ],
+  "admitted": false,
+  "decision": "Reject pure CP64 distillation recipe: both seeds miss prospective 5% teacher-agreement gain. No distilled games allocated.",
+  "audits": {
+    "r007-prediction-teacher.json": {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r007-prediction-teacher.json",
+      "sha256": "041f2ca940b76db14fd8bed81592b9ddd4d5db8c5df37ea20142e07588a84112",
+      "binding": {
+        "plan_sha256": "773c0e0aadf5beee0b7ea7f30b1bbc22651e41e148c768414013774202467cc7",
+        "runner_sha256": "3839675c1cd3c6b4cf8e96c90b6e51033c4da8c48f9e7a60813e1a148ff7d717",
+        "runtime": {
+          "app-uci.jar": "a24bc26e00dd1e5a988d4443ff509068862f7ae8ac3bbb5f221cac69846c19a3",
+          "engine-core.jar": "b983a40bac86600d487f2e6a86487f92ac28ae1ad3cb76fd140bca24ad355e54",
+          "engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "research.jar": "e767f3c4bafc76beb2f27bc46d1d3e13c1549f6c67f9f243ecf8369db27cc85f",
+          "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        }
+      }
+    },
+    "r007-prediction-bt4.json": {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r007-prediction-bt4.json",
+      "sha256": "4e47f5314764fa41888048e917a23d65744cd6a66e2b1600cd7eac0c9e9c5605",
+      "binding": {
+        "plan_sha256": "ffecfb57f989a7cd96b5132967c30e109dc18422e644b14ec59d9aa2b3502977",
+        "runner_sha256": "3839675c1cd3c6b4cf8e96c90b6e51033c4da8c48f9e7a60813e1a148ff7d717",
+        "runtime": {
+          "app-uci.jar": "a24bc26e00dd1e5a988d4443ff509068862f7ae8ac3bbb5f221cac69846c19a3",
+          "engine-core.jar": "b983a40bac86600d487f2e6a86487f92ac28ae1ad3cb76fd140bca24ad355e54",
+          "engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "research.jar": "e767f3c4bafc76beb2f27bc46d1d3e13c1549f6c67f9f243ecf8369db27cc85f",
+          "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        }
+      }
+    }
+  },
+  "maximum_full_cache_error_pawns": 7.993605777301127e-15
+}

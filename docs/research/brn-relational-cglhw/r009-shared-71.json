@@ -1,0 +1,13 @@
+{
+  "mode": "SHARED",
+  "seed": 71,
+  "rate": 0.01,
+  "epochs": 8,
+  "train": "docs\\research\\brn-relational-cglhw\\raw\\r002-coverage-data\\train.tsv",
+  "train_sha256": "d4f7f76448cedf6ee6a314db0796172dceeedc36348494ca4a799e91312cd1b8",
+  "validation": "docs\\research\\brn-relational-cglhw\\raw\\r002-coverage-data\\validation.tsv",
+  "validation_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+  "base": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-aligned-71\\epoch-24.brn-pair2",
+  "base_sha256": "ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r009-shared-71"
+}

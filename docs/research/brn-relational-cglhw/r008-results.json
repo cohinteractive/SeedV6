@@ -1,0 +1,53 @@
+{
+  "groups": [
+    {
+      "context_changed": false,
+      "n": 32,
+      "nonzero": 31,
+      "median_abs_cp": 23.5,
+      "mean_abs_cp": 32.21875,
+      "max_abs_cp": 197,
+      "signed_mean_cp": -2.59375,
+      "count_abs_ge20": 18
+    },
+    {
+      "context_changed": true,
+      "n": 32,
+      "nonzero": 32,
+      "median_abs_cp": 34.0,
+      "mean_abs_cp": 54.78125,
+      "max_abs_cp": 340,
+      "signed_mean_cp": -2.84375,
+      "count_abs_ge20": 20
+    }
+  ],
+  "maximum_pair_mixed_cp": 9.094947017729282e-13,
+  "basis_checks": "64/64 exact integer cancellation PASS; both frozen Pair models cancel to floating precision",
+  "raw": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r008-audit.json",
+    "sha256": "33c1182d56d37d10249282bd20f02ac29d407675c92f9648f24371a23537586a"
+  },
+  "receipt": {
+    "sha256": "33c1182d56d37d10249282bd20f02ac29d407675c92f9648f24371a23537586a",
+    "seconds": 0.3949572999845259,
+    "resources": {
+      "cpu_percent": 32.8125,
+      "available_gib": 15.601264953613281,
+      "utc": "2026-10-28T21:20:25Z"
+    }
+  },
+  "binding": {
+    "plan_sha256": "0ef7b76dcc048104f042c555fa0cc36f46098dbf073cb6732031f914ec4ff0a1",
+    "runner_sha256": "21034c7035e4a788bb1087432f9958693de116c8b45e99d1eba6eeb49215b4a9",
+    "runtime": {
+      "engine-core.jar": "cae78b673233f6e749d547fc510a0afb34de453f42fcacc51c82b0f2e493138f",
+      "engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+      "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "research.jar": "9f8728315280aa1285feed8407f7aa494a702318f381c9f9d219a407fee2deb2",
+      "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+    }
+  },
+  "scope": "Value-free structural audit; nonlocal response capacity,not chess correctness or playing strength"
+}

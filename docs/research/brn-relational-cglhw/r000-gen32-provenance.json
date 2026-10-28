@@ -1,0 +1,37 @@
+{
+  "files": {
+    "manifest.bin": {
+      "path": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\manifest.bin",
+      "sha256": "a51513ddb6e23a8537cc38b8aeb7676af5723c3e3b6bb8151f265bb87ae83891",
+      "bytes": 449
+    },
+    "training-metadata.bin": {
+      "path": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\training-metadata.bin",
+      "sha256": "135fb61ed736f313158e5514f2a16a81eda6526c4f034d2232ff26f8ee4176e7",
+      "bytes": 191
+    },
+    "training.state": {
+      "path": "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\training.state",
+      "sha256": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+      "bytes": 2731424
+    }
+  },
+  "historical_accounting": "docs\\research\\search\\bre-pair2-baseline-2026-10-09\\accounting-original.json",
+  "scope": "Read-only identity verification; no owner-store mutation. Historical WAVE1 metadata interpretation is distinct from this checksum check.",
+  "decoded_metadata": {
+    "id": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+    "optimizer_step": 1753088,
+    "learning_rate": 0.01,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "epsilon": 1e-08,
+    "frame_sha256_valid": true
+  },
+  "historical_training_report": {
+    "source": "docs/research/brn-successor-cglhw/STATE.md",
+    "positions": 28049408,
+    "visits": 224395264,
+    "mix": "half BT4 / half CP",
+    "limitation": "Population and mix taken from prior verified report; current audit independently verifies frozen files and decodes optimizer metadata, not all original dataset batches."
+  }
+}

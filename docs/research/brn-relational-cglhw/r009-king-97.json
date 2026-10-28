@@ -1,0 +1,13 @@
+{
+  "mode": "KING",
+  "seed": 97,
+  "rate": 0.01,
+  "epochs": 8,
+  "train": "docs\\research\\brn-relational-cglhw\\raw\\r002-coverage-data\\train.tsv",
+  "train_sha256": "d4f7f76448cedf6ee6a314db0796172dceeedc36348494ca4a799e91312cd1b8",
+  "validation": "docs\\research\\brn-relational-cglhw\\raw\\r002-coverage-data\\validation.tsv",
+  "validation_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+  "base": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-aligned-97\\epoch-24.brn-pair2",
+  "base_sha256": "aad3b91cedc4a2e253587224491f0aef573dcca73fe83ce39c78fb4a5c8147a1",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r009-king-97"
+}

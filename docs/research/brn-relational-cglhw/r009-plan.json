@@ -1,0 +1,12 @@
+{
+  "main_class": "ContextPairDiagnostic",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib",
+  "max_seconds_per_arm": 300,
+  "configs": [
+    "docs\\research\\brn-relational-cglhw\\r009-shared-71.json",
+    "docs\\research\\brn-relational-cglhw\\r009-shared-97.json",
+    "docs\\research\\brn-relational-cglhw\\r009-king-71.json",
+    "docs\\research\\brn-relational-cglhw\\r009-king-97.json"
+  ],
+  "summary": "docs\\research\\brn-relational-cglhw\\raw\\r009-execution.json"
+}

@@ -1,0 +1,17 @@
+{
+  "source": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r002-data\\validation.tsv",
+  "source_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+  "script_sha256": "67c9044ce30303851352bf7e8f2341f44ea7474f8386f526b0af9a4afab0a07e",
+  "output_sha256": "271b3cba2b8e7803c8009ca338f7335584e0dba89e7f624a2014dfc8b389b6d4",
+  "seed": 2026102906,
+  "quartets": 64,
+  "context_changed": 32,
+  "context_unchanged": 32,
+  "physical_pairs": 294,
+  "resources": {
+    "cpu_percent": 9.547738693467334,
+    "available_gib": 16.220752716064453,
+    "utc": "2026-10-28T21:19:25Z"
+  },
+  "limits": "Consumed development positions; hypothetical same-side relocations with fixed STM, cleared EP; all four boards valid/noncheck and both relocation orders legal. No evaluator/outcome selection; not a strength test."
+}

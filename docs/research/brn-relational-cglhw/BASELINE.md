@@ -72,6 +72,16 @@ table sums. Fixed material+quarter residual,100cp/pawn. Original masked Adam.01,
 batch128,eight epochs,expected-score CE via Stockfish WDL. Training.state is needed
 for continuation; runtime tables cannot reconstruct optimizer state.
 
+Read-only recheck found the original owner-store Gen32 manifest,training metadata
+and optimizer state still match their recorded SHA256s; metadata frame checksum
+and fields independently decode step1,753,088,LR.01,beta.9/.999,epsilon1e-8.
+See r000-gen32-provenance.json. The prior verified successor report attributes
+28,049,408 training positions,224,395,264 visits and half-BT4/half-CP sampling.
+Those population/mix figures are historical provenance,not a new full dataset
+replay. CP64's268M exposures versus Gen32's224M are broadly comparable; the new
+small-data diagnostic candidates have much less exposure. Training methods,
+target mix and data populations still prevent an architecture-only attribution.
+
 Prior architecture programme tested energies,pair/triple tables,cubic products,
 edge functions,context/self pooling and bitboard circuits. Pair compilation was
 the practical winner at tested budgets; lower loss did not predict game strength.

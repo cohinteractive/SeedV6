@@ -1,0 +1,529 @@
+{
+  "rows": [
+    {
+      "seed": 71,
+      "base_mse": 0.023671339410345427,
+      "shared_mse": 0.023759254647405168,
+      "king_mse": 0.02402426736699634,
+      "relative_gain": -0.01115408389379402,
+      "admitted": false,
+      "arms": {
+        "shared": {
+          "full_inference_ns": 3002.06,
+          "parameters": 110527,
+          "scope": "Fixed-base direct relational energy development screen; no incremental/search/strength qualification",
+          "checksum": 1087.7851671067913,
+          "metrics": [
+            {
+              "validation_mse": 0.023671339410345427,
+              "epoch": 0
+            },
+            {
+              "updates": 1024,
+              "epoch": 1,
+              "train_mse": 0.023286333499330375,
+              "validation_mse": 0.02362190566149121,
+              "state_sha256": "c9a8b560a29bc366cc9c78a2d69548c24c7b629c914a942db55b1914a1e37086"
+            },
+            {
+              "updates": 2048,
+              "epoch": 2,
+              "train_mse": 0.023163316847617684,
+              "validation_mse": 0.023672722550593297,
+              "state_sha256": "c6f3932c0c89b52688eafc6fad3c212ac35566e324ef128d9f2424aed1698ce8"
+            },
+            {
+              "updates": 3072,
+              "epoch": 3,
+              "train_mse": 0.023054821477840198,
+              "validation_mse": 0.02365288657731503,
+              "state_sha256": "86e3112436797dcce8127b911e22376853dfecbc4a6ff97131b556e7a3c3ed0f"
+            },
+            {
+              "updates": 4096,
+              "epoch": 4,
+              "train_mse": 0.022975243432203446,
+              "validation_mse": 0.023700531073415916,
+              "state_sha256": "a9f37504e4e7b94e2d62b40dd8209b95530e6f148c3b22af990677a5a718bd7b"
+            },
+            {
+              "updates": 5120,
+              "epoch": 5,
+              "train_mse": 0.022928938902749784,
+              "validation_mse": 0.023711074845586825,
+              "state_sha256": "27d97c0b2176f79ae039933067a41a71567d22cdb8b5e427f584eadc68ce6ed2"
+            },
+            {
+              "updates": 6144,
+              "epoch": 6,
+              "train_mse": 0.022842484305554647,
+              "validation_mse": 0.02372467101127634,
+              "state_sha256": "7a97f2bd0848654f6e5396b77ebe0ec00f29c08b6c7956f37c39eabb0120d02a"
+            },
+            {
+              "updates": 7168,
+              "epoch": 7,
+              "train_mse": 0.022789644085751695,
+              "validation_mse": 0.023769926763227905,
+              "state_sha256": "608e63be707c72495f7b656f8d4434bca6aab704b46301c59319d7218cf2ce77"
+            },
+            {
+              "updates": 8192,
+              "epoch": 8,
+              "train_mse": 0.02273515043221706,
+              "validation_mse": 0.023759254647405168,
+              "state_sha256": "fd4265156c8fa2535a53b335a0457b46d3fcc4b8df8138a3e75e82d7fd7ba148"
+            }
+          ],
+          "mode": "SHARED",
+          "seed": 71,
+          "seconds": 11.0148505
+        },
+        "king": {
+          "mode": "KING",
+          "metrics": [
+            {
+              "epoch": 0,
+              "validation_mse": 0.023671339410345427
+            },
+            {
+              "state_sha256": "5a0714c3ce64840f2e7b3e98748d375281f8bd40c994a98b8a93086763604883",
+              "validation_mse": 0.02365913544980686,
+              "train_mse": 0.02287704414829116,
+              "epoch": 1,
+              "updates": 1024
+            },
+            {
+              "state_sha256": "50b268cae4e8e1d030c0d1565f34bd7348d5159f38b135ef4b3f1e2630a1ebce",
+              "validation_mse": 0.02373760156055931,
+              "train_mse": 0.022400921469211004,
+              "epoch": 2,
+              "updates": 2048
+            },
+            {
+              "state_sha256": "b1f33e9658eeb95d04875c91ef09fee17dc03d6bea6dc2eb9b9dcfd789ac22df",
+              "validation_mse": 0.023781212433790357,
+              "train_mse": 0.022009530175226562,
+              "epoch": 3,
+              "updates": 3072
+            },
+            {
+              "state_sha256": "79299456661e113c3d8befbfa771c1a91908c39e933e11c68bd9712c044fe5ad",
+              "validation_mse": 0.02389835795892754,
+              "train_mse": 0.021712500217391073,
+              "epoch": 4,
+              "updates": 4096
+            },
+            {
+              "state_sha256": "a9aaed087774dac9c4c156b1ca10ca8cc1bd00adb156b74565a3fceb4dfa3287",
+              "validation_mse": 0.023871316810715994,
+              "train_mse": 0.021434677505988604,
+              "epoch": 5,
+              "updates": 5120
+            },
+            {
+              "state_sha256": "680b8cedaa1f03a1588fb3310b415e6904184f0dd4d9930651549113aa700dc3",
+              "validation_mse": 0.023920974625348777,
+              "train_mse": 0.021225282679015745,
+              "epoch": 6,
+              "updates": 6144
+            },
+            {
+              "state_sha256": "f0f7fdc27af5f19c02a1ce5c62f6bd7840b624cfd3ccb8afe6dc5ac2b978d0e3",
+              "validation_mse": 0.023949421725873006,
+              "train_mse": 0.021001750906828272,
+              "epoch": 7,
+              "updates": 7168
+            },
+            {
+              "state_sha256": "28d4c35a04802b59bf6c203842fbd26306ba3e0763dde5f99a72d94dfb95ba49",
+              "validation_mse": 0.02402426736699634,
+              "train_mse": 0.020803901654966848,
+              "epoch": 8,
+              "updates": 8192
+            }
+          ],
+          "checksum": 1087.7851671067913,
+          "scope": "Fixed-base direct relational energy development screen; no incremental/search/strength qualification",
+          "parameters": 1105261,
+          "full_inference_ns": 3153.41,
+          "seconds": 19.9749616,
+          "seed": 71
+        }
+      }
+    },
+    {
+      "seed": 97,
+      "base_mse": 0.023705656951766827,
+      "shared_mse": 0.023739736635892524,
+      "king_mse": 0.02400845736946457,
+      "relative_gain": -0.011319448808280619,
+      "admitted": false,
+      "arms": {
+        "shared": {
+          "parameters": 110527,
+          "full_inference_ns": 2753.245,
+          "seconds": 9.7169056,
+          "seed": 97,
+          "mode": "SHARED",
+          "metrics": [
+            {
+              "epoch": 0,
+              "validation_mse": 0.023705656951766827
+            },
+            {
+              "train_mse": 0.02334103456107733,
+              "epoch": 1,
+              "updates": 1024,
+              "state_sha256": "ef19183cf2fa38c7a85931cf0b782bf507405caef0ba9b45cd1a6be1b91e5f1f",
+              "validation_mse": 0.023729786172793102
+            },
+            {
+              "train_mse": 0.023154155331216644,
+              "epoch": 2,
+              "updates": 2048,
+              "state_sha256": "0e11e526cafd13a6bdcf2e1cdfeec0056a01b655e5fd6c769676bf5eba8fe5e8",
+              "validation_mse": 0.023655615342311954
+            },
+            {
+              "train_mse": 0.023058368212919084,
+              "epoch": 3,
+              "updates": 3072,
+              "state_sha256": "fd606d5a5a5a3c2b101dd8860bb464eb10d6664d911d8c1ce385ff24aabe57c1",
+              "validation_mse": 0.023686230498187737
+            },
+            {
+              "train_mse": 0.022979876445446162,
+              "epoch": 4,
+              "updates": 4096,
+              "state_sha256": "4d2ded78e9dd737c5202425a6c93f641ea60321d233062d709004af58170a17f",
+              "validation_mse": 0.02370949001210194
+            },
+            {
+              "train_mse": 0.022908616515961037,
+              "epoch": 5,
+              "updates": 5120,
+              "state_sha256": "6ab923dc6e2d57ee64b91f910085c2e6279c0d400d5803e339c0248a36474421",
+              "validation_mse": 0.02370312606745451
+            },
+            {
+              "train_mse": 0.02284675531233943,
+              "epoch": 6,
+              "updates": 6144,
+              "state_sha256": "54ad2ecf90e2a956f46866ae607a482cee73a6f646d9bacd24b1627af6c1445d",
+              "validation_mse": 0.02371487028828533
+            },
+            {
+              "train_mse": 0.02280025614116866,
+              "epoch": 7,
+              "updates": 7168,
+              "state_sha256": "15a7953959545c7c30948fdec2f51a77ef0b2a2bee2a55ab983497569f0dc91d",
+              "validation_mse": 0.023785639052658833
+            },
+            {
+              "train_mse": 0.02274162830413236,
+              "epoch": 8,
+              "updates": 8192,
+              "state_sha256": "2cef7b3ba01c99e415e456eba09b039d02106de39f8aba8b022c7d88974d643a",
+              "validation_mse": 0.023739736635892524
+            }
+          ],
+          "checksum": 746.5757680680581,
+          "scope": "Fixed-base direct relational energy development screen; no incremental/search/strength qualification"
+        },
+        "king": {
+          "checksum": 746.5757680680581,
+          "scope": "Fixed-base direct relational energy development screen; no incremental/search/strength qualification",
+          "parameters": 1105261,
+          "full_inference_ns": 3233.24,
+          "seconds": 19.8868485,
+          "seed": 97,
+          "mode": "KING",
+          "metrics": [
+            {
+              "validation_mse": 0.023705656951766827,
+              "epoch": 0
+            },
+            {
+              "state_sha256": "390bd6745b145babb5dd190b4e9189639b06aad00616a267815920874ed728d3",
+              "validation_mse": 0.023711407210129178,
+              "train_mse": 0.022880748440037135,
+              "epoch": 1,
+              "updates": 1024
+            },
+            {
+              "state_sha256": "9aa9c06da340278746780e0fd8a8b401d582431c4b30d221de26aff146146414",
+              "validation_mse": 0.023728450149054506,
+              "train_mse": 0.02237774635327374,
+              "epoch": 2,
+              "updates": 2048
+            },
+            {
+              "state_sha256": "f0fe7c569945bbf4969f181c20cbafa384f36fe9a90dec1da156f4ccf277a602",
+              "validation_mse": 0.02377025854287895,
+              "train_mse": 0.02199807506308132,
+              "epoch": 3,
+              "updates": 3072
+            },
+            {
+              "state_sha256": "8d145ec71d1003c33e17741e268672c58c7d814d090b35c7e8f3b7ff6785820d",
+              "validation_mse": 0.023862927075812453,
+              "train_mse": 0.02171565712012429,
+              "epoch": 4,
+              "updates": 4096
+            },
+            {
+              "state_sha256": "3f746ced1bbf60163776800239f3da55a6e4b64402ed79b13cdac111d78a4967",
+              "validation_mse": 0.023912107570094265,
+              "train_mse": 0.021440452750799248,
+              "epoch": 5,
+              "updates": 5120
+            },
+            {
+              "state_sha256": "a1c8df9932b317e1f52b0248cd380484da6c0d5445e5cb10012efcd86e30783c",
+              "validation_mse": 0.02394628960176031,
+              "train_mse": 0.02121196797141176,
+              "epoch": 6,
+              "updates": 6144
+            },
+            {
+              "state_sha256": "db38b842731bd131e3e9b8059af6ffbcc218857fcaccd00ef74669cbf7476a0d",
+              "validation_mse": 0.024004931068097004,
+              "train_mse": 0.021005528646459524,
+              "epoch": 7,
+              "updates": 7168
+            },
+            {
+              "state_sha256": "9f61185747b00e799dcd8227c7e538cf9e294fcac14b0a1dd371589b75585cc5",
+              "validation_mse": 0.02400845736946457,
+              "train_mse": 0.02080519394697275,
+              "epoch": 8,
+              "updates": 8192
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "admitted": false,
+  "decision": "KING overfits; fails both relative and absolute gates in both seeds. No scaling/incremental integration for this recipe.",
+  "execution": {
+    "arms": [
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r009-shared-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 12.38091180002084,
+        "resources": [
+          {
+            "cpu_percent": 4.761904761904767,
+            "available_gib": 15.999431610107422,
+            "utc": "2026-10-28T21:25:45Z"
+          },
+          {
+            "cpu_percent": 25.90673575129534,
+            "available_gib": 15.797889709472656,
+            "utc": "2026-10-28T21:25:51Z"
+          },
+          {
+            "cpu_percent": 15.104166666666663,
+            "available_gib": 15.847633361816406,
+            "utc": "2026-10-28T21:25:56Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.ContextPairDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r009-shared-71.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r009-shared-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 11.046580700029153,
+        "resources": [
+          {
+            "cpu_percent": 16.48936170212766,
+            "available_gib": 16.074058532714844,
+            "utc": "2026-10-28T21:25:58Z"
+          },
+          {
+            "cpu_percent": 9.183673469387754,
+            "available_gib": 15.843708038330078,
+            "utc": "2026-10-28T21:26:03Z"
+          },
+          {
+            "cpu_percent": 39.175257731958766,
+            "available_gib": 15.847003936767578,
+            "utc": "2026-10-28T21:26:09Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.ContextPairDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r009-shared-97.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r009-king-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 21.378527499968186,
+        "resources": [
+          {
+            "cpu_percent": 5.978260869565222,
+            "available_gib": 16.05267333984375,
+            "utc": "2026-10-28T21:26:09Z"
+          },
+          {
+            "cpu_percent": 27.604166666666664,
+            "available_gib": 15.731433868408203,
+            "utc": "2026-10-28T21:26:15Z"
+          },
+          {
+            "cpu_percent": 16.75126903553299,
+            "available_gib": 15.755558013916016,
+            "utc": "2026-10-28T21:26:20Z"
+          },
+          {
+            "cpu_percent": 13.612565445026181,
+            "available_gib": 15.72677230834961,
+            "utc": "2026-10-28T21:26:25Z"
+          },
+          {
+            "cpu_percent": 13.471502590673579,
+            "available_gib": 15.698623657226562,
+            "utc": "2026-10-28T21:26:30Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.ContextPairDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r009-king-71.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r009-king-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 21.216892800002825,
+        "resources": [
+          {
+            "cpu_percent": 4.678362573099415,
+            "available_gib": 15.94683837890625,
+            "utc": "2026-10-28T21:26:31Z"
+          },
+          {
+            "cpu_percent": 26.041666666666664,
+            "available_gib": 15.680988311767578,
+            "utc": "2026-10-28T21:26:36Z"
+          },
+          {
+            "cpu_percent": 23.71134020618557,
+            "available_gib": 15.666511535644531,
+            "utc": "2026-10-28T21:26:42Z"
+          },
+          {
+            "cpu_percent": 11.111111111111116,
+            "available_gib": 15.648658752441406,
+            "utc": "2026-10-28T21:26:47Z"
+          },
+          {
+            "cpu_percent": 10.256410256410254,
+            "available_gib": 15.642379760742188,
+            "utc": "2026-10-28T21:26:52Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.ContextPairDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r009-king-97.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      }
+    ]
+  },
+  "raw_execution_sha256": "86ebf809d1ff7fbe0fa8d6efce3a3d853cc790cd8d0aa02aee7f0543dbb8b6e5",
+  "bindings": {
+    "r009-king-71": {
+      "config_sha256": "4f993212ed79796b3ee41b126249a737a727765d58271267562020ea746a87a8",
+      "runtime_sha256": {
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\engine-core.jar": "cae78b673233f6e749d547fc510a0afb34de453f42fcacc51c82b0f2e493138f",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\research.jar": "65ec791ab2a496c4ddc3ca866f909dbb61f2ba51a3660a3567b6c0535d28dcf7",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+      },
+      "runner_sha256": "4fbeac6beb65d2aeab494e4c9c04faca0084e3d5a90c272733fdeb65490d2401"
+    },
+    "r009-king-97": {
+      "config_sha256": "7b4ed26ead1d2e69f288273f1658756e88f55d3d8f67ac8e595a546251ca2d1a",
+      "runtime_sha256": {
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\engine-core.jar": "cae78b673233f6e749d547fc510a0afb34de453f42fcacc51c82b0f2e493138f",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\research.jar": "65ec791ab2a496c4ddc3ca866f909dbb61f2ba51a3660a3567b6c0535d28dcf7",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+      },
+      "runner_sha256": "4fbeac6beb65d2aeab494e4c9c04faca0084e3d5a90c272733fdeb65490d2401"
+    },
+    "r009-shared-71": {
+      "config_sha256": "33f1410efd2962cfda59f8e3098f0a0c333ab0144ae5382cdfc55439a3b5e641",
+      "runtime_sha256": {
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\engine-core.jar": "cae78b673233f6e749d547fc510a0afb34de453f42fcacc51c82b0f2e493138f",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\research.jar": "65ec791ab2a496c4ddc3ca866f909dbb61f2ba51a3660a3567b6c0535d28dcf7",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+      },
+      "runner_sha256": "4fbeac6beb65d2aeab494e4c9c04faca0084e3d5a90c272733fdeb65490d2401"
+    },
+    "r009-shared-97": {
+      "config_sha256": "6835db9c1d5888d67324c4e161a31a0f7d5459ff844e7d31f741803018ba6cb6",
+      "runtime_sha256": {
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\engine-core.jar": "cae78b673233f6e749d547fc510a0afb34de453f42fcacc51c82b0f2e493138f",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\research.jar": "65ec791ab2a496c4ddc3ca866f909dbb61f2ba51a3660a3567b6c0535d28dcf7",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+        "docs\\research\\brn-relational-cglhw\\raw\\r009-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+      },
+      "runner_sha256": "4fbeac6beb65d2aeab494e4c9c04faca0084e3d5a90c272733fdeb65490d2401"
+    }
+  }
+}

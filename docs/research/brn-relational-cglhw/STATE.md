@@ -23,7 +23,7 @@ holds, restart old suspended work or assume raw evidence exists in a fresh clone
 | R000 | Authority, implementation and local evidence reconciliation | Bootstrap complete; continue updating factual discoveries |
 | R001 | CP64 vs Gen32 under identical search and fixed nodes | Complete:48 exact repeat probes,16 games,CP64 3W/7D/6L; inconclusive, no extension |
 | R001B | Does the million-position Pair-2 candidate compete under broader common-search fixed work? | All192 games complete:59.375% vs Gen32,25% vs CP64; CP64 scores68.75% vs Gen32; candidate fails confirmation admission |
-| R002 | Can matched BT4/logit400 improve relational learning compared with legacy WDL/quarter calibration? | Million-position stage complete; both seeds improve MSE>6%,new playing evidence required before further scaling |
+| R002 | Can matched BT4/logit400 improve relational learning compared with legacy WDL/quarter calibration? | Million-position stage complete; MSE gains>6%,R001B59.375% vsGen32 but25% vsCP64 |
 | R003 | Can conditional attack/defense graph energy add useful third-piece relationships? | Six8-epoch pilots complete; CONTEXT fails admission versus EDGE, no larger context allocation; full recomputation only |
 | R004 | Does factorized attack-message composition offer a better Pareto point? | Correctness/cost pass; four pilots complete,COMPOSE overfits and fails2% gate; no larger allocation for this recipe |
 | R005 | Fresh independent strength, replication and practical confirmation | Conditional protocol drafted but NOT ADMITTED after R001B failure; no final roots selected or games launched |
@@ -78,20 +78,16 @@ vs Gen32. See r001b-results.json. R005 is not admitted; no final roots selected.
 The optional CP64-profile research launcher passed48 repeated exact-node probes
 (r000-profile-results.json),not playing confirmation. Production remains unchanged.
 
-Exact next operation: run/resume `run_objective.py r007-plan.json` through the
-supervisor after actual resource admission. Read R007.md and each immutable
-config first; four serial arms continue saved epoch24 to40,original BT4 versus
-pure CP64 targets. Verify binding and skip completed arms/epochs. Teacher labels
-are COMPLETE under raw/r007-teacher-data (16 training chunks+one validation chunk,
-78.15s observed,peak sampled CPU31.77%,minimum free16.70GiB). Their provenance is
-r007-teacher-results.json; do not repeat label generation. After training,audit
-all actual compiled endpoints on the teacher validation panel and apply R007's
-prospective two-seed gate before any new games. No workload is queued externally.
-Current code supports explicit pair/cp64 selection; raw/r002-games-runner.py and
-raw/r003-runner.py preserve the historical runner bindings. R001/R002 old games,
-CONTEXT and COMPOSE pilots are complete and receive no automatic extension.
+Exact next operation: implement/verify R010's bounded child selection and flat
+primitive-array trainer,then select4M nested positions through serial checkpointed
+foreground tranches. Read R010.md for matched exposure and the prospective gate.
+R009 is COMPLETE and fails both relative/absolute gates; no further allocation to
+its unregularized context recipe. R007 training,audits and64 games are COMPLETE;
+R008 is COMPLETE. None needs replay. Canonical development control remains seed71
+epoch24 (model SHA ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627);
+Gen32 remains the preserved historical baseline. No clocks,GPU or final roots queued.
 
-Validation now totals40 distinct focused tests:23 baseline Java,10 research Java
+Validation now totals44 distinct focused tests:23 baseline Java,14 research Java
 and7 Python; latest research build/tests and Python suite pass. No full-suite,
 GUI,GPU,clock or production qualification is claimed. No new model is promoted.
 All changes are attributable research work; build77 unchanged; no push. Git

@@ -110,3 +110,26 @@ runtime. raw/r002-games-runner.py preserves the old completed comparison runner.
 Do not substitute changed scripts into old binding files. The broader screen's
 own plan/checkpoint directories carry its identities. Same game recovery applies.
 No training or tournament is queued outside the foreground supervised command.
+
+## R007 through R009
+
+R007 teacher data and all four epoch40 continuation arms are complete; pure
+CP64 distillation failed the5% gate in both seeds. Prediction audits use
+run_prediction_audit.py and the two r007-prediction-*-plan.json files; completed
+outputs have binding and SHA receipts and need no repeat. Check local availability.
+The earlier run_objective.py bytes are preserved as raw/r007-objective-runner.py;
+current dispatch adds ContextPairDiagnostic and must not replace frozen bindings.
+
+R008's64 small counterfactual quartets are intentional tracked input fixtures,
+not bulk measured output; no new ignore exception is needed for JSON inputs.
+Its raw measured result stays ignored. run_interaction_audit.py r008-plan.json
+supports verified completed-output skip. A killed publication without its receipt
+requires preserving/inspecting partial evidence; do not overwrite it automatically.
+
+R007-BT4-GAMES uses r007-bt4-games-plan.json and compare_pairs.py. Its64 fixed games
+have the existing atomic-game recovery semantics. R009's prospective protocol
+must pass correctness before configs/runtime are frozen and training starts.
+Its full optimizer states carry mode,geometry,rate,step,base SHA,weights,moments
+and CRC. The separate frozen Pair-2 base remains required; no standalone state
+may be treated as a deployable Pair-2 checkpoint. Full inference only; no search
+or incremental integration is claimed at this stage.

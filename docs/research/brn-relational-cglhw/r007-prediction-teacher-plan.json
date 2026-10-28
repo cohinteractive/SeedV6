@@ -1,0 +1,37 @@
+{
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r000-profile-runtime\\lib",
+  "validation": "docs\\research\\brn-relational-cglhw\\raw\\r007-teacher-data\\validation\\data.tsv",
+  "validation_sha256": "9e0c869225dc15c89cc1ce9181eefd12e0f3d9cbe2d259d4773a5208fd99ad73",
+  "models": [
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r007-bt4-71\\epoch-40.brn-pair2",
+      "sha256": "ffee88ce2cb65746e3b62b0a65dabfa7e5286d77b94d04013f51568cfc4db33a"
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r007-bt4-97\\epoch-40.brn-pair2",
+      "sha256": "e2b9c23c4f9fb4aa7fec31e923d95699c3b2e577b3a5290c484f32019deefad9"
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r007-distilled-71\\epoch-40.brn-pair2",
+      "sha256": "39e087a10521372f9c77cc62d17320b4887ab22ad57b10cba55b7da1c813fe52"
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r007-distilled-97\\epoch-40.brn-pair2",
+      "sha256": "563a709c23fab4923cb1079ea2840f567c00cf9776a80f5cc8d260e21feac59e"
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-aligned-71\\epoch-24.brn-pair2",
+      "sha256": "ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627"
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-aligned-97\\epoch-24.brn-pair2",
+      "sha256": "aad3b91cedc4a2e253587224491f0aef573dcca73fe83ce39c78fb4a5c8147a1"
+    },
+    {
+      "path": "build-assets\\production\\bre-pair2-g32.brn-pair2",
+      "sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    }
+  ],
+  "positions": 4096,
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r007-prediction-teacher.json"
+}
