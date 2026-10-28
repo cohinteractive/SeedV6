@@ -1,0 +1,23 @@
+{
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.WideComposedAttackFieldNetworkTest",
+    "tests": "4",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T22:51:50",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.742"
+  },
+  "raw_test": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r023-passed-tests.xml",
+    "sha256": "7c872771e3a6af85da3f824ad35d30ff0e9c16b6332383a794df81009d5aa82c"
+  },
+  "source_sha256": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\WideComposedAttackFieldDiagnostic.java": "8b0fb6c1b5d531d5aaa7073101a0004195cb8ede2588c237b7ca48aff4bbc24d",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\WideComposedAttackFieldNetwork.java": "56680a23040658683b5aa9f98065046eb076604f946a4db787a0129da667499a",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\WideComposedAttackFieldNetworkTest.java": "7296569aaac3c3584ab513d4535afd0a0445060ada21e35f1ee61c34df5918b9"
+  },
+  "source_base": "92200a44351dde4bfd829ac89cf1b99d4d43888b",
+  "scope": "Independent width16 equations and legal-walk/special/color views,11 nonzero gradient families,tiny fit,bounds,width8 function containment,geometry rejection,CRC/resume and tail encoding."
+}

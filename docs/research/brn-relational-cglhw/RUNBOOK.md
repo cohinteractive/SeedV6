@@ -209,3 +209,6 @@ Next R022 adds a distinct learned composition across controlled squares.
 R022 complete:four tests and two full checkpoints;useful second path but below
 fixed improvement gate. R023 reviews accumulated evidence and isolates width.
 No previous experiment is reclassified or repeated.
+
+R023 complete:four tests and two width16 checkpoints;training fit improved but
+quality gate failed. No scaling. R024 reuses frozen endpoints and R016 panel.

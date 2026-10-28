@@ -1,0 +1,10 @@
+{
+  "main_class": "WideComposedAttackFieldDiagnostic",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib",
+  "configs": [
+    "docs\\research\\brn-relational-cglhw\\r023-wide-71.json",
+    "docs\\research\\brn-relational-cglhw\\r023-wide-97.json"
+  ],
+  "max_seconds_per_arm": 180,
+  "summary": "docs\\research\\brn-relational-cglhw\\raw\\r023-execution.json"
+}

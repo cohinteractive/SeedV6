@@ -1,0 +1,242 @@
+{
+  "arms": [
+    {
+      "result": {
+        "rate": 0.01,
+        "optimization_checkpoint_seconds": 36.6180512,
+        "scope": "Two-pass square-field composition diagnosis;width16 capacity diagnosis;no search or strength qualification",
+        "load_seconds": 3.8670342,
+        "metrics": [
+          {
+            "validation_mse": 0.01853952395443912,
+            "epoch": 0
+          },
+          {
+            "validation_mse": 0.012296891499034941,
+            "train_mse": 0.013354246963750553,
+            "epoch": 1,
+            "updates": 8192,
+            "unary_only_validation_mse": 0.013841265435296946,
+            "second_pass_masked_train_mse": 0.013815205684044419,
+            "second_pass_masked_validation_mse": 0.012636357700300168,
+            "unary_only_train_mse": 0.015229452872909612,
+            "state_sha256": "2a7301797e39f162eca2fe5e9abe5e4efe840aa406e844f9aa303a3c00018724"
+          }
+        ],
+        "train_positions": 1048576,
+        "mode": "COMPOSE",
+        "seed": 71,
+        "full_inference_ns": 7188.26,
+        "width": 16,
+        "parameters": 136273,
+        "active_parameters": 136273,
+        "original_bt4_validation_mse": 0.025070551278327073
+      },
+      "binding": {
+        "config_sha256": "c06c072de2fd62726664126acbb9328ff79bd9a0d533bd0aecbe0fae62ea8fd6",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\engine-core.jar": "71a10d2a8b2f249a44545d0eba927c96004a6b00bdf87a756fc84932e875f693",
+          "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\research.jar": "160dc411b9ffa387c5633b4d70252792900c48ab180a8751e3b3b90cb1e282db",
+          "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "eb13c8defce630487320532dd6cbcbb42c34bd5307b71c2ac4cf73671718e130"
+      }
+    },
+    {
+      "result": {
+        "seed": 97,
+        "mode": "COMPOSE",
+        "train_positions": 1048576,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.018539111018246512
+          },
+          {
+            "state_sha256": "b2e14ad0466b47a52dbc6c73ae2bf9b9aa6e226672b3dda14da1a84acae1618a",
+            "unary_only_train_mse": 0.015052935595266945,
+            "second_pass_masked_validation_mse": 0.012368159403204787,
+            "second_pass_masked_train_mse": 0.01376012588103579,
+            "unary_only_validation_mse": 0.013498319831802977,
+            "updates": 8192,
+            "epoch": 1,
+            "train_mse": 0.013372072267124557,
+            "validation_mse": 0.012069096092199338
+          }
+        ],
+        "load_seconds": 3.8859623,
+        "scope": "Two-pass square-field composition diagnosis;width16 capacity diagnosis;no search or strength qualification",
+        "optimization_checkpoint_seconds": 35.7366175,
+        "rate": 0.01,
+        "full_inference_ns": 6889.025,
+        "width": 16,
+        "parameters": 136273,
+        "active_parameters": 136273,
+        "original_bt4_validation_mse": 0.024965094404758803
+      },
+      "binding": {
+        "config_sha256": "bfc230a1ac1cf0eda2071812a14fa2f3a686b15e0ec353dcacfcbb48987322c6",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\engine-core.jar": "71a10d2a8b2f249a44545d0eba927c96004a6b00bdf87a756fc84932e875f693",
+          "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\research.jar": "160dc411b9ffa387c5633b4d70252792900c48ab180a8751e3b3b90cb1e282db",
+          "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "eb13c8defce630487320532dd6cbcbb42c34bd5307b71c2ac4cf73671718e130"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "seed": 71,
+      "teacher_gain": -0.0037337811283417732,
+      "train_gain": 0.012893720767346406,
+      "original_change": -0.0038130894090274703,
+      "path_gain": 0.11157751027038754,
+      "second_path_gain": 0.02686424437456081,
+      "passes": false
+    },
+    {
+      "seed": 97,
+      "teacher_gain": 0.012113707757245407,
+      "train_gain": 0.014492123690677317,
+      "original_change": -0.004880675287058489,
+      "path_gain": 0.1058816028522519,
+      "second_path_gain": 0.02418009836839241,
+      "passes": false
+    }
+  ],
+  "advance": false,
+  "execution": {
+    "arms": [
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r023-wide-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 41.18589920003433,
+        "resources": [
+          {
+            "cpu_percent": 8.602150537634412,
+            "available_gib": 18.74713897705078,
+            "utc": "2026-10-28T22:52:07Z"
+          },
+          {
+            "cpu_percent": 23.684210526315784,
+            "available_gib": 18.50510025024414,
+            "utc": "2026-10-28T22:52:12Z"
+          },
+          {
+            "cpu_percent": 14.948453608247425,
+            "available_gib": 18.522796630859375,
+            "utc": "2026-10-28T22:52:17Z"
+          },
+          {
+            "cpu_percent": 11.398963730569944,
+            "available_gib": 18.486835479736328,
+            "utc": "2026-10-28T22:52:23Z"
+          },
+          {
+            "cpu_percent": 17.1875,
+            "available_gib": 18.444225311279297,
+            "utc": "2026-10-28T22:52:28Z"
+          },
+          {
+            "cpu_percent": 9.278350515463918,
+            "available_gib": 18.46941375732422,
+            "utc": "2026-10-28T22:52:33Z"
+          },
+          {
+            "cpu_percent": 17.1875,
+            "available_gib": 18.488914489746094,
+            "utc": "2026-10-28T22:52:38Z"
+          },
+          {
+            "cpu_percent": 26.903553299492387,
+            "available_gib": 18.45404815673828,
+            "utc": "2026-10-28T22:52:44Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.WideComposedAttackFieldDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r023-wide-71.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r023-wide-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 40.349702499981504,
+        "resources": [
+          {
+            "cpu_percent": 3.7433155080213942,
+            "available_gib": 18.708080291748047,
+            "utc": "2026-10-28T22:52:48Z"
+          },
+          {
+            "cpu_percent": 13.089005235602091,
+            "available_gib": 18.483970642089844,
+            "utc": "2026-10-28T22:52:53Z"
+          },
+          {
+            "cpu_percent": 11.917098445595853,
+            "available_gib": 18.490901947021484,
+            "utc": "2026-10-28T22:52:59Z"
+          },
+          {
+            "cpu_percent": 11.956521739130432,
+            "available_gib": 18.50088882446289,
+            "utc": "2026-10-28T22:53:04Z"
+          },
+          {
+            "cpu_percent": 10.106382978723405,
+            "available_gib": 18.493175506591797,
+            "utc": "2026-10-28T22:53:09Z"
+          },
+          {
+            "cpu_percent": 9.452736318407961,
+            "available_gib": 18.496295928955078,
+            "utc": "2026-10-28T22:53:14Z"
+          },
+          {
+            "cpu_percent": 9.947643979057597,
+            "available_gib": 18.495044708251953,
+            "utc": "2026-10-28T22:53:20Z"
+          },
+          {
+            "cpu_percent": 9.405940594059404,
+            "available_gib": 18.49184799194336,
+            "utc": "2026-10-28T22:53:25Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r023-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.WideComposedAttackFieldDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r023-wide-97.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      }
+    ]
+  },
+  "decision": "Width16 fits training better in both seeds,but teacher development gains -.37%/+1.21% fail2% gate. No further width scaling or training allocation. Next cross-check frozen neural endpoints against played reference on larger BRN development panel;no historical gate change."
+}

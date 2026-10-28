@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R023 bounded neural channel-capacity test**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R024 frozen neural development cross-check**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,11 +25,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R022 complete:consistent useful added composition,but1.48%/1.59% teacher gains
-fail2% gate. R023.md records programme-level review and a separate width8-to16
-capacity hypothesis. Implement/verify the wider prototype before freezing pilots.
-No live empirical job remains. No Pair-2 training,R010 continuation,search or
-production promotion is admitted.
+R023 complete:training fits better,but teacher gains -.37%/+1.21% fail2% gate.
+R024.md specifies a read-only cross-check of frozen neural endpoints and played
+references on the8192-row BRN development panel. Implement/test predictor routing,
+freeze runtime/plan and run one bounded audit. No new training or games admitted.
+No live empirical job remains;Pair-2/R010 and production boundaries remain intact.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -66,7 +66,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R020 | Horizontal canonicalization control for neural field learning | Complete;exact invariance,but teacher loss worsens .10%/.51%;no scaling/search |
 | R021 | Dense versus masked neural adaptive updates | Complete;teacher loss worsens .048%/.095%;no optimizer sweep |
 | R022 | Square-field to piece nonlinear composition | Complete;useful second path,1.48%/1.59% teacher gains fail2% gate |
-| R023 | Programme review and latent channel capacity | Prospective width16 test with explicit cost trade-off |
+| R023 | Programme review and latent channel capacity | Complete;training fits improve,but teacher gains -.37%/+1.21% fail2% |
+| R024 | Frozen neural endpoints versus played reference losses | Prospective read-only8192-row cross-check;no training/games |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -102,7 +103,7 @@ before any recovery; never rewrite completed bindings to accept changed tools.
 
 ## Validation and required action
 
-80 distinct focused tests have passed:23 baseline Java,47 research Java,
+84 distinct focused tests have passed:23 baseline Java,51 research Java,
 10 Python. The selector's renamed import received syntax validation but no new
 runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,
