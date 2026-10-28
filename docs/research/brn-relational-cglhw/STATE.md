@@ -25,12 +25,12 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R020 completed and failed predictive gates despite exact canonical symmetry.
-Read R021.md:implement and verify dense-versus-masked adaptive updates on the
-unchanged R017 ALL neural architecture,then freeze two1M/1epoch pilot configs.
-Reuse completed R017 masked controls. No live empirical job remains. Run admission
-inside nnue-control;do not duplicate completed work. No Pair-2 training,R010
-continuation,search or production promotion is admitted.
+R021 correctness passes:two focused tests and unchanged R017 inference-class
+byte parity. r021-plan.json freezes two DENSE neural1M/1epoch pilots. Complete or
+verify them with run_objective.py under nnue-control after resource admission;
+never duplicate an active job. Then evaluate the fixed R021 gates. R020 completed
+and failed quality gates. No Pair-2 training,R010 continuation,search or production
+promotion is admitted.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -101,7 +101,7 @@ before any recovery; never rewrite completed bindings to accept changed tools.
 
 ## Validation and required action
 
-74 distinct focused tests have passed:23 baseline Java,41 research Java,
+76 distinct focused tests have passed:23 baseline Java,43 research Java,
 10 Python. The selector's renamed import received syntax validation but no new
 runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,

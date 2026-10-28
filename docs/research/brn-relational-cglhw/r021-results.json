@@ -1,0 +1,204 @@
+{
+  "arms": [
+    {
+      "result": {
+        "optimization_checkpoint_seconds": 17.8120085,
+        "scope": "Matched dense/masked adaptive update diagnosis;unchanged neural evaluator;no search or strength qualification",
+        "load_seconds": 3.8781068,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.01853872455107596
+          },
+          {
+            "unary_only_train_mse": 0.015216001131858664,
+            "epoch": 1,
+            "updates": 8192,
+            "train_mse": 0.013771415645627193,
+            "state_sha256": "95af613d79395ec9af24e15c1b4e0b8416c4a34145ba04366ac3e2d649f25367",
+            "unary_only_validation_mse": 0.013821329869730396,
+            "validation_mse": 0.012441330550784816
+          }
+        ],
+        "train_positions": 1048576,
+        "mode": "DENSE",
+        "seed": 71,
+        "rate": 0.01,
+        "full_inference_ns": 4808.55,
+        "parameters": 40777,
+        "active_parameters": 40777,
+        "optimizer": "DENSE",
+        "original_bt4_validation_mse": 0.025308741036581477
+      },
+      "binding": {
+        "config_sha256": "40f7a9919a915125f2ee814cc2e2354d42b8311b82c01e0c4fb449e35bebee74",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\engine-core.jar": "bdd46a4ac2ea469f2fff9c5d422f54215e66f17d6901ad1e0ddec98afed9319f",
+          "docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\research.jar": "66900f88aa19cac7b8f44dd7df5c5d51a09f8bb782f7ce28238ff3bf6ce168ce",
+          "docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "84d0d8b305596344ebc473d18faed2e36f2d6d53d0657eb51c5316d6ae09003f"
+      }
+    },
+    {
+      "result": {
+        "mode": "DENSE",
+        "seed": 97,
+        "rate": 0.01,
+        "optimization_checkpoint_seconds": 17.8159691,
+        "scope": "Matched dense/masked adaptive update diagnosis;unchanged neural evaluator;no search or strength qualification",
+        "load_seconds": 3.9210188,
+        "metrics": [
+          {
+            "validation_mse": 0.01854018293560343,
+            "epoch": 0
+          },
+          {
+            "train_mse": 0.01379066773906141,
+            "state_sha256": "f100680260ae5afa305f189ca16f818238539736f690a7219db4e37cfe09e0ad",
+            "unary_only_validation_mse": 0.013749136467748342,
+            "validation_mse": 0.012425830152922816,
+            "unary_only_train_mse": 0.015282227233649633,
+            "epoch": 1,
+            "updates": 8192
+          }
+        ],
+        "train_positions": 1048576,
+        "full_inference_ns": 4215.25,
+        "parameters": 40777,
+        "active_parameters": 40777,
+        "optimizer": "DENSE",
+        "original_bt4_validation_mse": 0.025374129079016025
+      },
+      "binding": {
+        "config_sha256": "4232d883f242f776da1e557f29276f13b51dc5991e92daa83452441a507f104b",
+        "runtime_sha256": {
+          "docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\engine-core.jar": "bdd46a4ac2ea469f2fff9c5d422f54215e66f17d6901ad1e0ddec98afed9319f",
+          "docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\research.jar": "66900f88aa19cac7b8f44dd7df5c5d51a09f8bb782f7ce28238ff3bf6ce168ce",
+          "docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        },
+        "runner_sha256": "84d0d8b305596344ebc473d18faed2e36f2d6d53d0657eb51c5316d6ae09003f"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "seed": 71,
+      "teacher_gain": -0.0004792529627288822,
+      "original_change": 0.0033686640906749332,
+      "path_gain": 0.0998456249834444,
+      "passes": false
+    },
+    {
+      "seed": 97,
+      "teacher_gain": -0.000946442703358974,
+      "original_change": 0.00149380290658363,
+      "path_gain": 0.09624650376622823,
+      "passes": false
+    }
+  ],
+  "advance": false,
+  "execution": {
+    "arms": [
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r021-dense-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 22.325950699974783,
+        "resources": [
+          {
+            "cpu_percent": 5.1724137931034475,
+            "available_gib": 18.745826721191406,
+            "utc": "2026-10-28T22:46:44Z"
+          },
+          {
+            "cpu_percent": 9.72972972972973,
+            "available_gib": 18.556377410888672,
+            "utc": "2026-10-28T22:46:49Z"
+          },
+          {
+            "cpu_percent": 23.560209424083766,
+            "available_gib": 18.593524932861328,
+            "utc": "2026-10-28T22:46:54Z"
+          },
+          {
+            "cpu_percent": 10.869565217391308,
+            "available_gib": 18.58570098876953,
+            "utc": "2026-10-28T22:46:59Z"
+          },
+          {
+            "cpu_percent": 11.229946524064172,
+            "available_gib": 18.594104766845703,
+            "utc": "2026-10-28T22:47:05Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.DenseAdamAttackFieldDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r021-dense-71.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r021-dense-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 22.330281899950933,
+        "resources": [
+          {
+            "cpu_percent": 10.81081081081081,
+            "available_gib": 18.81139373779297,
+            "utc": "2026-10-28T22:47:06Z"
+          },
+          {
+            "cpu_percent": 14.054054054054054,
+            "available_gib": 18.596580505371094,
+            "utc": "2026-10-28T22:47:11Z"
+          },
+          {
+            "cpu_percent": 12.631578947368416,
+            "available_gib": 18.58837890625,
+            "utc": "2026-10-28T22:47:17Z"
+          },
+          {
+            "cpu_percent": 12.95336787564767,
+            "available_gib": 18.578811645507812,
+            "utc": "2026-10-28T22:47:22Z"
+          },
+          {
+            "cpu_percent": 12.435233160621761,
+            "available_gib": 18.58196258544922,
+            "utc": "2026-10-28T22:47:27Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r021-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.DenseAdamAttackFieldDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r021-dense-97.json"
+        ],
+        "last_complete_epoch": 1,
+        "process_absent": true
+      }
+    ]
+  },
+  "decision": "Dense adaptive update mechanism does not clear both-seed improvement gate;do not scale or start optimizer sweep. Preserve optimization distinction and return to learned higher-order composition."
+}

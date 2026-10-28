@@ -1,0 +1,28 @@
+{
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.DenseAdamAttackFieldTrainerTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T22:46:29",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.332"
+  },
+  "raw_test": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r021-passed-tests.xml",
+    "sha256": "0461ee757ff72abbb06f0853448cb0a847f47c7eadf8f20059379feda7254650"
+  },
+  "source_sha256": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\DenseAdamAttackFieldDiagnostic.java": "eddb05e5051d08063325b27b5a7418c7309d17bd9083a1c556d4511f642c559e",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\DenseAdamAttackFieldTrainer.java": "4552bed37670bc60ebcc0878dd02ffda2d79cdd584a527446605829baaf1b097",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\DenseAdamAttackFieldTrainerTest.java": "e19dd25212681aeba37c236018b8793689b0cb327ebbc3f40399b0e9869f5072"
+  },
+  "source_base": "9ae75522dc1ddf0e22ae8c0e62a853b26ba81355",
+  "unchanged_model_classes": [
+    "com/ohinteractive/seedv6/core/brnpair2/AttackFieldNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/AttackFieldNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/AttackFieldNetwork.class"
+  ],
+  "scope": "Independent dense equations including untouched moments,finite bounds;exact masked legacy parity/tail and optimizer checkpoint continuation/CRC."
+}
