@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R018 bounded neural learning curve**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R019 learned neural channel composition**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,12 +25,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-Verify R018 exact neural continuation,then resume R015 LOCAL seeds71/97 from
-frozen epoch1 states to fixed endpoint8. Read R018.md. Record all per-epoch losses;
-no best-epoch selection or extension. R017 ALL failed its2% gate despite positive
-capacity/quality findings. R018 calibrates optimization depth using the R015/R016
-successful neural target control;it does not promote or revive a failed recipe.
-No Pair-2 training,R010 continuation,search or production promotion is admitted.
+Implement and verify R019's learned channel transformation on R017 ALL attack
+fields,including exact fixed-transform control parity. Then freeze and run two
+fresh1M/1epoch MIX arms with R017 ALL controls reused. Read R019.md. R018 endpoint8
+fails its optimization-depth gate;do not allocate more unchanged epochs. No
+Pair-2 training,R010 continuation,search or production promotion is admitted.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -62,7 +61,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R015 | Neural CP64 supervision versus matched BT4 controls | Complete;teacher gains5-8% pass target-method gate;global composition still fails |
 | R016 | Fresh8192-position neural target confirmation | Complete;target gains5.7-6.7% confirmed;global architecture gate still fails |
 | R017 | Learned attack/control fields including empty squares | Complete;64/64 capacity,but1.37%/.42% teacher gains fail2% gate |
-| R018 | Optimization-depth calibration on successful neural control | Prospective exact continuation,epochs2-8 only,two seeds |
+| R018 | Optimization-depth calibration on successful neural control | Complete;epoch8 teacher gain-1.02%/+.67% fails5% gate;no further same-recipe epochs |
+| R019 | Learned cross-channel transformation of attack fields | Prospective correctness,then two1M neural MIX pilots with frozen controls |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -98,7 +98,7 @@ before any recovery; never rewrite completed bindings to accept changed tools.
 
 ## Validation and required action
 
-66 distinct focused tests have passed:23 baseline Java,33 research Java,
+67 distinct focused tests have passed:23 baseline Java,34 research Java,
 10 Python. The selector's renamed import received syntax validation but no new
 runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,

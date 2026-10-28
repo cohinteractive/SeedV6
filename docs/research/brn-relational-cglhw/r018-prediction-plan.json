@@ -1,0 +1,32 @@
+{
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r018-prediction.json",
+  "arms": [
+    {
+      "seed": 71,
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r018-local-71\\epoch-8.state",
+      "state_sha256": "2cf62d1b96d5b4283c71220bf86487608bb0948dc6ccb52912d641033ab32e1f",
+      "java_validation_mse": 0.025425636496187513
+    },
+    {
+      "seed": 97,
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r018-local-97\\epoch-8.state",
+      "state_sha256": "281b2dc4d46f9ba0ebf383601285c2f567b8691b3501c59fdcee0af8d9259c80",
+      "java_validation_mse": 0.025400529956752058
+    }
+  ],
+  "panels": [
+    {
+      "name": "validation",
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-data\\validation.tsv",
+      "sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+      "rows": 4096
+    },
+    {
+      "name": "teacher",
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r007-teacher-data\\validation\\data.tsv",
+      "sha256": "9e0c869225dc15c89cc1ce9181eefd12e0f3d9cbe2d259d4773a5208fd99ad73",
+      "rows": 4096
+    }
+  ],
+  "max_seconds": 120
+}

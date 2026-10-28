@@ -1,0 +1,23 @@
+{
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.ContextualContinuationDiagnosticTest",
+    "tests": "1",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T22:24:29",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.287"
+  },
+  "raw_test": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r018-passed-test.xml",
+    "sha256": "977ff891637852ffce93279fca64fb119e44e96d981f7ae73aadc5dbd5a0eda5"
+  },
+  "model_and_updater_class_parity": {
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualAttackDiagnostic.class": "8310462bdf17a54bd6c5721e53f1683f95f9a52780143130b2ac1baddf83a704",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualAttackNetwork$Features.class": "c58fe50a4bc9f723818c96c61af7a372ea12d9bb9b3aba104ff23b988278114e",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualAttackNetwork$Workspace.class": "1c3eb2f37d26e261eb672d0035dbdcb72509a6c33c9ca7b3005911b14f6f18a1",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualAttackNetwork.class": "f2bf7b99ceacfbe004571aca8bbd228f059f351e08be24d71878f5b543f13438"
+  },
+  "source_base": "d02bebf1"
+}

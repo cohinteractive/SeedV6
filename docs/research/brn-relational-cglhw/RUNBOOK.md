@@ -188,3 +188,8 @@ R017 complete:four tests,all64 remote witnesses with empty squares,four immutabl
 one-epoch checkpoints;positive but below-gate prediction gains. R018 resumes only
 R015 LOCAL control checkpoints to calibrate bounded neural optimization depth.
 Historical runner bytes:raw/r015-objective-runner.py and raw/r016-prediction-runner.py.
+
+R018 complete:exact continuation test and unchanged neural/updater class parity;
+every epoch2-8 state retained. Fixed endpoint fails5% teacher gain;no best-epoch
+selection or further same-recipe allocation. Neural curve alone does not separate
+capacity from constant-rate optimization limits. New channel composition is R019.

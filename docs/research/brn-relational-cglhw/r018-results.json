@@ -1,0 +1,527 @@
+{
+  "prediction": {
+    "binding": {
+      "plan_sha256": "64d9edd19911ac8b9c6b0f0953d6ed467c034958822a8fb43401f67b46646910",
+      "runner_sha256": "532c838be10acde65032b0a33b1746b75d6ce6303efb9aea82d2c918d2e03aff"
+    },
+    "results": [
+      {
+        "seed": 71,
+        "global_context": false,
+        "state": "docs\\research\\brn-relational-cglhw\\raw\\r018-local-71\\epoch-8.state",
+        "state_sha256": "2cf62d1b96d5b4283c71220bf86487608bb0948dc6ccb52912d641033ab32e1f",
+        "panels": {
+          "validation": {
+            "rows": 4096,
+            "full_mse": 0.0254256364961875,
+            "context_off_mse": 0.0254256364961875,
+            "context_rms_cp": 0.0
+          },
+          "teacher": {
+            "rows": 4096,
+            "full_mse": 0.012765969598717435,
+            "context_off_mse": 0.012765969598717435,
+            "context_rms_cp": 0.0
+          }
+        }
+      },
+      {
+        "seed": 97,
+        "global_context": false,
+        "state": "docs\\research\\brn-relational-cglhw\\raw\\r018-local-97\\epoch-8.state",
+        "state_sha256": "281b2dc4d46f9ba0ebf383601285c2f567b8691b3501c59fdcee0af8d9259c80",
+        "panels": {
+          "validation": {
+            "rows": 4096,
+            "full_mse": 0.02540052995675206,
+            "context_off_mse": 0.02540052995675206,
+            "context_rms_cp": 0.0
+          },
+          "teacher": {
+            "rows": 4096,
+            "full_mse": 0.012451045281258365,
+            "context_off_mse": 0.012451045281258365,
+            "context_rms_cp": 0.0
+          }
+        }
+      }
+    ],
+    "resources": [
+      {
+        "cpu_percent": 3.7837837837837784,
+        "available_gib": 18.681865692138672,
+        "utc": "2026-10-28T22:27:39Z"
+      },
+      {
+        "cpu_percent": 3.57142857142857,
+        "available_gib": 18.678836822509766,
+        "utc": "2026-10-28T22:27:39Z"
+      },
+      {
+        "cpu_percent": 11.33004926108374,
+        "available_gib": 18.681621551513672,
+        "utc": "2026-10-28T22:27:39Z"
+      },
+      {
+        "cpu_percent": 15.42553191489362,
+        "available_gib": 18.668514251708984,
+        "utc": "2026-10-28T22:27:40Z"
+      },
+      {
+        "cpu_percent": 1.6393442622950838,
+        "available_gib": 18.669937133789062,
+        "utc": "2026-10-28T22:27:40Z"
+      },
+      {
+        "cpu_percent": 6.7708333333333375,
+        "available_gib": 18.66905975341797,
+        "utc": "2026-10-28T22:27:40Z"
+      },
+      {
+        "cpu_percent": 11.475409836065575,
+        "available_gib": 18.671340942382812,
+        "utc": "2026-10-28T22:27:41Z"
+      },
+      {
+        "cpu_percent": 10.824742268041232,
+        "available_gib": 18.66818618774414,
+        "utc": "2026-10-28T22:27:41Z"
+      },
+      {
+        "cpu_percent": 2.577319587628868,
+        "available_gib": 18.670551300048828,
+        "utc": "2026-10-28T22:27:41Z"
+      },
+      {
+        "cpu_percent": 17.708333333333336,
+        "available_gib": 18.657886505126953,
+        "utc": "2026-10-28T22:27:42Z"
+      },
+      {
+        "cpu_percent": 14.893617021276595,
+        "available_gib": 18.663307189941406,
+        "utc": "2026-10-28T22:27:42Z"
+      },
+      {
+        "cpu_percent": 11.05263157894737,
+        "available_gib": 18.65869140625,
+        "utc": "2026-10-28T22:27:43Z"
+      },
+      {
+        "cpu_percent": 3.7234042553191515,
+        "available_gib": 18.68671417236328,
+        "utc": "2026-10-28T22:27:43Z"
+      },
+      {
+        "cpu_percent": 4.123711340206182,
+        "available_gib": 18.67877197265625,
+        "utc": "2026-10-28T22:27:43Z"
+      },
+      {
+        "cpu_percent": 4.639175257731953,
+        "available_gib": 18.680461883544922,
+        "utc": "2026-10-28T22:27:44Z"
+      },
+      {
+        "cpu_percent": 0.588235294117645,
+        "available_gib": 18.680641174316406,
+        "utc": "2026-10-28T22:27:44Z"
+      },
+      {
+        "cpu_percent": 2.0408163265306145,
+        "available_gib": 18.67900848388672,
+        "utc": "2026-10-28T22:27:44Z"
+      },
+      {
+        "cpu_percent": 1.0752688172043001,
+        "available_gib": 18.677425384521484,
+        "utc": "2026-10-28T22:27:45Z"
+      },
+      {
+        "cpu_percent": 1.0204081632653073,
+        "available_gib": 18.67657470703125,
+        "utc": "2026-10-28T22:27:45Z"
+      },
+      {
+        "cpu_percent": 0.5376344086021501,
+        "available_gib": 18.67788314819336,
+        "utc": "2026-10-28T22:27:46Z"
+      },
+      {
+        "cpu_percent": 2.197802197802201,
+        "available_gib": 18.679805755615234,
+        "utc": "2026-10-28T22:27:46Z"
+      },
+      {
+        "cpu_percent": 8.854166666666663,
+        "available_gib": 18.680049896240234,
+        "utc": "2026-10-28T22:27:46Z"
+      },
+      {
+        "cpu_percent": 19.487179487179485,
+        "available_gib": 18.68587875366211,
+        "utc": "2026-10-28T22:27:47Z"
+      },
+      {
+        "cpu_percent": 2.631578947368418,
+        "available_gib": 18.686878204345703,
+        "utc": "2026-10-28T22:27:47Z"
+      },
+      {
+        "cpu_percent": 7.692307692307687,
+        "available_gib": 18.68429946899414,
+        "utc": "2026-10-28T22:27:47Z"
+      },
+      {
+        "cpu_percent": 2.1621621621621623,
+        "available_gib": 18.685287475585938,
+        "utc": "2026-10-28T22:27:48Z"
+      },
+      {
+        "cpu_percent": 3.141361256544506,
+        "available_gib": 18.696849822998047,
+        "utc": "2026-10-28T22:27:48Z"
+      },
+      {
+        "cpu_percent": 1.041666666666663,
+        "available_gib": 18.694637298583984,
+        "utc": "2026-10-28T22:27:48Z"
+      },
+      {
+        "cpu_percent": 1.1173184357541888,
+        "available_gib": 18.696949005126953,
+        "utc": "2026-10-28T22:27:49Z"
+      },
+      {
+        "cpu_percent": 1.5625,
+        "available_gib": 18.699031829833984,
+        "utc": "2026-10-28T22:27:49Z"
+      },
+      {
+        "cpu_percent": 6.451612903225811,
+        "available_gib": 18.69968032836914,
+        "utc": "2026-10-28T22:27:50Z"
+      },
+      {
+        "cpu_percent": 1.0582010582010581,
+        "available_gib": 18.70068359375,
+        "utc": "2026-10-28T22:27:50Z"
+      },
+      {
+        "cpu_percent": 2.659574468085102,
+        "available_gib": 18.701187133789062,
+        "utc": "2026-10-28T22:27:50Z"
+      }
+    ],
+    "seconds": 11.714640199963469,
+    "scope": "Independent Python equations match complete Java development validation MSE within1e-12; panels are consumed development or explicitly bounded training prefixes,not final quality/strength evidence."
+  },
+  "gates": [
+    {
+      "seed": 71,
+      "teacher_gain": -0.010199779976836298,
+      "original_bt4_gain": 0.00017332364911126774,
+      "passes": false
+    },
+    {
+      "seed": 97,
+      "teacher_gain": 0.006697679529536815,
+      "original_bt4_gain": 0.004211482415118928,
+      "passes": false
+    }
+  ],
+  "advance": false,
+  "arms": [
+    {
+      "scope": "Fixed-endpoint neural optimization-depth diagnosis;no architectural gate reversal or strength qualification",
+      "initial_epoch": 1,
+      "seed": 71,
+      "optimization_checkpoint_seconds": 47.0487929,
+      "metrics": [
+        {
+          "state_sha256": "f4915cb35d1e1402f39c8f57c9674a5c7bce213a19108af64f12356d4b3d1964",
+          "unary_only_validation_mse": 0.026848357436368434,
+          "validation_mse": 0.02541547335934184,
+          "unary_only_train_teacher_mse": 0.015313338014187773,
+          "train_teacher_mse": 0.014035971786288928,
+          "epoch": 2,
+          "updates": 16384
+        },
+        {
+          "state_sha256": "2eeda0714aabc10fa5dca39806f1b909d7510eb7a35824b74384cb72b8010e49",
+          "unary_only_validation_mse": 0.026434356945172505,
+          "validation_mse": 0.025141404276603666,
+          "unary_only_train_teacher_mse": 0.01500276788067011,
+          "train_teacher_mse": 0.013627052842466842,
+          "epoch": 3,
+          "updates": 24576
+        },
+        {
+          "state_sha256": "24ee192e0aa4e6f42b7096e9228505d6bb317bd977457914b78d48aaada0ffb5",
+          "unary_only_validation_mse": 0.026734353258500928,
+          "validation_mse": 0.025492034298476088,
+          "unary_only_train_teacher_mse": 0.015001361599386793,
+          "train_teacher_mse": 0.013593131191111512,
+          "epoch": 4,
+          "updates": 32768
+        },
+        {
+          "state_sha256": "d2de9fba7b9d716c6c376579b5a9ce6807ea1271a120b356690e1ea6789243bd",
+          "unary_only_validation_mse": 0.026677363436615777,
+          "validation_mse": 0.02538166234201873,
+          "unary_only_train_teacher_mse": 0.01499741675732024,
+          "train_teacher_mse": 0.013667721377119676,
+          "epoch": 5,
+          "updates": 40960
+        },
+        {
+          "state_sha256": "e5756cb45dc03aec0ada2646856a5d7d27636f16ad3343ecf6cb4fc35eac3671",
+          "unary_only_validation_mse": 0.02651931139943977,
+          "validation_mse": 0.02531802003414455,
+          "unary_only_train_teacher_mse": 0.015017414912858549,
+          "train_teacher_mse": 0.013715298787473969,
+          "epoch": 6,
+          "updates": 49152
+        },
+        {
+          "state_sha256": "38ea1881bf17666236fdd147a5c7050dab9aefebc41b843a8eaacbbc7f4f129c",
+          "unary_only_validation_mse": 0.026683051778709145,
+          "validation_mse": 0.0253728185332594,
+          "unary_only_train_teacher_mse": 0.01513805343345724,
+          "train_teacher_mse": 0.013638461824319523,
+          "epoch": 7,
+          "updates": 57344
+        },
+        {
+          "state_sha256": "2cf62d1b96d5b4283c71220bf86487608bb0948dc6ccb52912d641033ab32e1f",
+          "unary_only_validation_mse": 0.026708363607038463,
+          "validation_mse": 0.025425636496187513,
+          "unary_only_train_teacher_mse": 0.015153829021660658,
+          "train_teacher_mse": 0.013772910024381576,
+          "epoch": 8,
+          "updates": 65536
+        }
+      ],
+      "endpoint": 8,
+      "mode": "LOCAL"
+    },
+    {
+      "seed": 97,
+      "optimization_checkpoint_seconds": 46.918665,
+      "metrics": [
+        {
+          "train_teacher_mse": 0.013649286476058576,
+          "epoch": 2,
+          "updates": 16384,
+          "state_sha256": "1087923d14653bb6fa058349a4cc7ab27d53332934aec4175aee6ea9f2e7a312",
+          "unary_only_validation_mse": 0.02633372474137182,
+          "validation_mse": 0.02512203758964918,
+          "unary_only_train_teacher_mse": 0.014946661153873077
+        },
+        {
+          "train_teacher_mse": 0.013747488670313349,
+          "epoch": 3,
+          "updates": 24576,
+          "state_sha256": "1a76db382d102463a4c393f1173ce7c3ee935a4fc8cd397ea2ec493f90f216e8",
+          "unary_only_validation_mse": 0.0269039539143722,
+          "validation_mse": 0.02576475357301841,
+          "unary_only_train_teacher_mse": 0.014999441253665027
+        },
+        {
+          "train_teacher_mse": 0.013659895788068716,
+          "epoch": 4,
+          "updates": 32768,
+          "state_sha256": "08be300457794776649cb9e4d37940d0d58905832d768fe439a08ce58f83c966",
+          "unary_only_validation_mse": 0.0268613126137065,
+          "validation_mse": 0.02548338367033859,
+          "unary_only_train_teacher_mse": 0.015111371970967302
+        },
+        {
+          "train_teacher_mse": 0.013629824875142452,
+          "epoch": 5,
+          "updates": 40960,
+          "state_sha256": "ac030d47c0c532e9e062b67ab7d3c495c49f4b383fb2fd17f2dfef4bd4489ccb",
+          "unary_only_validation_mse": 0.026525571897078246,
+          "validation_mse": 0.025264035371390603,
+          "unary_only_train_teacher_mse": 0.015066431281224844
+        },
+        {
+          "train_teacher_mse": 0.013880430674130377,
+          "epoch": 6,
+          "updates": 49152,
+          "state_sha256": "af51faca3c110a7e3f4ba3bb6d32a5305b7d8adb9ff8952017e5234eb7eff4fd",
+          "unary_only_validation_mse": 0.02700147232030264,
+          "validation_mse": 0.025670980977811748,
+          "unary_only_train_teacher_mse": 0.015257597376603205
+        },
+        {
+          "train_teacher_mse": 0.013680274713348355,
+          "epoch": 7,
+          "updates": 57344,
+          "state_sha256": "ec4d5c0be9f9eda66f9f7cb9637f9e00da9fb75cef5d298924dcdc69ab26bfc6",
+          "unary_only_validation_mse": 0.02660798483940892,
+          "validation_mse": 0.025380989479524194,
+          "unary_only_train_teacher_mse": 0.015019394144580272
+        },
+        {
+          "train_teacher_mse": 0.013775444349971749,
+          "epoch": 8,
+          "updates": 65536,
+          "state_sha256": "281b2dc4d46f9ba0ebf383601285c2f567b8691b3501c59fdcee0af8d9259c80",
+          "unary_only_validation_mse": 0.02679906108520963,
+          "validation_mse": 0.025400529956752058,
+          "unary_only_train_teacher_mse": 0.015253956078797985
+        }
+      ],
+      "endpoint": 8,
+      "mode": "LOCAL",
+      "scope": "Fixed-endpoint neural optimization-depth diagnosis;no architectural gate reversal or strength qualification",
+      "initial_epoch": 1
+    }
+  ],
+  "execution": {
+    "arms": [
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r018-local-71.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 51.20505009999033,
+        "resources": [
+          {
+            "cpu_percent": 2.1164021164021163,
+            "available_gib": 18.592769622802734,
+            "utc": "2026-10-28T22:24:56Z"
+          },
+          {
+            "cpu_percent": 20.105820105820104,
+            "available_gib": 18.383529663085938,
+            "utc": "2026-10-28T22:25:01Z"
+          },
+          {
+            "cpu_percent": 10.256410256410254,
+            "available_gib": 18.38931655883789,
+            "utc": "2026-10-28T22:25:06Z"
+          },
+          {
+            "cpu_percent": 23.316062176165808,
+            "available_gib": 18.407135009765625,
+            "utc": "2026-10-28T22:25:12Z"
+          },
+          {
+            "cpu_percent": 9.042553191489366,
+            "available_gib": 18.418067932128906,
+            "utc": "2026-10-28T22:25:17Z"
+          },
+          {
+            "cpu_percent": 8.900523560209429,
+            "available_gib": 18.415420532226562,
+            "utc": "2026-10-28T22:25:22Z"
+          },
+          {
+            "cpu_percent": 12.02185792349727,
+            "available_gib": 18.423900604248047,
+            "utc": "2026-10-28T22:25:27Z"
+          },
+          {
+            "cpu_percent": 10.994764397905755,
+            "available_gib": 18.423152923583984,
+            "utc": "2026-10-28T22:25:33Z"
+          },
+          {
+            "cpu_percent": 10.63829787234043,
+            "available_gib": 18.411754608154297,
+            "utc": "2026-10-28T22:25:38Z"
+          },
+          {
+            "cpu_percent": 12.95336787564767,
+            "available_gib": 18.409828186035156,
+            "utc": "2026-10-28T22:25:43Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r018-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.ContextualContinuationDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r018-local-71.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      },
+      {
+        "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r018-local-97.json",
+        "status": "COMPLETE",
+        "error": null,
+        "elapsed_seconds": 51.10572759999195,
+        "resources": [
+          {
+            "cpu_percent": 25.654450261780106,
+            "available_gib": 18.656063079833984,
+            "utc": "2026-10-28T22:25:47Z"
+          },
+          {
+            "cpu_percent": 22.631578947368425,
+            "available_gib": 18.420249938964844,
+            "utc": "2026-10-28T22:25:53Z"
+          },
+          {
+            "cpu_percent": 29.166666666666664,
+            "available_gib": 18.435245513916016,
+            "utc": "2026-10-28T22:25:58Z"
+          },
+          {
+            "cpu_percent": 15.463917525773196,
+            "available_gib": 18.427734375,
+            "utc": "2026-10-28T22:26:03Z"
+          },
+          {
+            "cpu_percent": 10.362694300518138,
+            "available_gib": 18.443359375,
+            "utc": "2026-10-28T22:26:08Z"
+          },
+          {
+            "cpu_percent": 10.526315789473683,
+            "available_gib": 18.439266204833984,
+            "utc": "2026-10-28T22:26:14Z"
+          },
+          {
+            "cpu_percent": 10.994764397905755,
+            "available_gib": 18.44976043701172,
+            "utc": "2026-10-28T22:26:19Z"
+          },
+          {
+            "cpu_percent": 9.895833333333337,
+            "available_gib": 18.438663482666016,
+            "utc": "2026-10-28T22:26:24Z"
+          },
+          {
+            "cpu_percent": 9.677419354838712,
+            "available_gib": 18.448341369628906,
+            "utc": "2026-10-28T22:26:29Z"
+          },
+          {
+            "cpu_percent": 11.111111111111116,
+            "available_gib": 18.438232421875,
+            "utc": "2026-10-28T22:26:35Z"
+          }
+        ],
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "-XX:ActiveProcessorCount=1",
+          "-XX:+UseSerialGC",
+          "-Xmx512m",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r018-runtime\\lib\\*",
+          "com.ohinteractive.seedv6.core.brnpair2.ContextualContinuationDiagnostic",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r018-local-97.json"
+        ],
+        "last_complete_epoch": 8,
+        "process_absent": true
+      }
+    ]
+  },
+  "decision": "No further same-recipe epochs. Fixed endpoint8 fails5% teacher gain in both;not proof of intrinsic capacity ceiling. Investigate a learned cross-channel relational transformation at the1M pilot budget."
+}
