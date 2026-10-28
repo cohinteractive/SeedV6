@@ -1,0 +1,424 @@
+{
+  "raw_path": "docs\\research\\brn-relational-cglhw\\raw\\r029-prediction.json",
+  "raw_sha256": "306b79a0852bbdfb5cbfce8811e4e101037c04caf69474946de0feb4f4b43bda",
+  "plan_sha256": "2a5c6496acb2c7396931891ab611e6b4c3186f1d931833d7caec1f0c961f6a09",
+  "analysis_sha256": "51402e27f7a731376265bcdda455fd90fc2af128dd0058bf0071a5d57a1a2b3c",
+  "resources": {
+    "cpu_percent": 18.229166666666664,
+    "available_gib": 17.644821166992188,
+    "utc": "2026-10-28T23:29:52Z"
+  },
+  "receipt": {
+    "sha256": "306b79a0852bbdfb5cbfce8811e4e101037c04caf69474946de0feb4f4b43bda",
+    "seconds": 1.3557728999876417,
+    "resources": [
+      {
+        "cpu_percent": 7.978723404255317,
+        "available_gib": 17.930850982666016,
+        "utc": "2026-10-28T23:29:38Z"
+      }
+    ]
+  },
+  "reference_raw_sha256": "707f10975b784b3c8566a69d0222b53e2804274fc8a61664e8a4b8ce1226fac0",
+  "target_and_piece_parity": true,
+  "models": [
+    {
+      "bt4_mse": 0.02534155526026098,
+      "teacher_mse": 0.012290913313063492,
+      "id": "r028-one-71",
+      "kind": "PIECE_ONE",
+      "state_sha256": "555fba100a70371755894a9653b409d806eb6b725345fd76b4b23eb1b4d2fec1",
+      "phases": {
+        "2-10": {
+          "rows": 2442,
+          "teacher_mse": 0.011481431345974277,
+          "bt4_mse": 0.02014037204549342
+        },
+        "11-20": {
+          "rows": 2952,
+          "teacher_mse": 0.01615524460746689,
+          "bt4_mse": 0.032954733560539955
+        },
+        "21-32": {
+          "rows": 2798,
+          "teacher_mse": 0.008920380426198976,
+          "bt4_mse": 0.021848770080861127
+        }
+      }
+    },
+    {
+      "bt4_mse": 0.025564539640531708,
+      "teacher_mse": 0.012669095678777545,
+      "id": "r028-one-97",
+      "kind": "PIECE_ONE",
+      "state_sha256": "886128c090ef655f60c8bc9aa2d03d393f1e007881bdd0310ce0defa55024f76",
+      "phases": {
+        "2-10": {
+          "rows": 2442,
+          "teacher_mse": 0.011974716571763095,
+          "bt4_mse": 0.02040258321915716
+        },
+        "11-20": {
+          "rows": 2952,
+          "teacher_mse": 0.01665238093162292,
+          "bt4_mse": 0.033251496139365434
+        },
+        "21-32": {
+          "rows": 2798,
+          "teacher_mse": 0.009072603796336612,
+          "bt4_mse": 0.02195967973933044
+        }
+      }
+    },
+    {
+      "bt4_mse": 0.025281030392805534,
+      "teacher_mse": 0.012229741879143151,
+      "id": "r028-two-71",
+      "kind": "PIECE_TWO",
+      "state_sha256": "7dddd5ff34cefb9602fea2726ae427b0c5c5dbb6f22f09bbf97edb01271310df",
+      "phases": {
+        "2-10": {
+          "rows": 2442,
+          "teacher_mse": 0.01139387983270485,
+          "bt4_mse": 0.020019258816993856
+        },
+        "11-20": {
+          "rows": 2952,
+          "teacher_mse": 0.01617190494484519,
+          "bt4_mse": 0.03295333997438166
+        },
+        "21-32": {
+          "rows": 2798,
+          "teacher_mse": 0.00880011705693088,
+          "bt4_mse": 0.021778738864327907
+        }
+      }
+    },
+    {
+      "bt4_mse": 0.025426113596578884,
+      "teacher_mse": 0.012543870359308727,
+      "id": "r028-two-97",
+      "kind": "PIECE_TWO",
+      "state_sha256": "217e80417c52494379cb0a6f4f652f2c6f7cff82c4e62c4e315fa8e1bd23f92f",
+      "phases": {
+        "2-10": {
+          "rows": 2442,
+          "teacher_mse": 0.011831093001054067,
+          "bt4_mse": 0.020267765398897068
+        },
+        "11-20": {
+          "rows": 2952,
+          "teacher_mse": 0.016454080581590168,
+          "bt4_mse": 0.033079153458399804
+        },
+        "21-32": {
+          "rows": 2798,
+          "teacher_mse": 0.009040532879924516,
+          "bt4_mse": 0.021853887944914583
+        }
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "candidate": "r028-one-71",
+      "control": "r022-compose-71",
+      "teacher": {
+        "mean_loss_difference": -0.00041294085599779753,
+        "paired_position_95": [
+          -0.0005813323088880039,
+          -0.00024454940310759114
+        ],
+        "relative_gain": 0.03250516343327248
+      },
+      "bt4": {
+        "mean_loss_difference": -0.00025416506088269075,
+        "paired_position_95": [
+          -0.0004985930041350841,
+          -9.737117630297489e-06
+        ],
+        "relative_gain": 0.009929982735150111
+      }
+    },
+    {
+      "candidate": "r028-one-71",
+      "control": "pair24-71",
+      "teacher": {
+        "mean_loss_difference": 0.0005145338554644934,
+        "paired_position_95": [
+          0.00027422055859267476,
+          0.000754847152336312
+        ],
+        "relative_gain": -0.04369202413331519
+      },
+      "bt4": {
+        "mean_loss_difference": 0.0010967237059401238,
+        "paired_position_95": [
+          0.0007466861840737637,
+          0.001446761227806484
+        ],
+        "relative_gain": -0.045235360925601764
+      }
+    },
+    {
+      "candidate": "r028-one-71",
+      "control": "gen32",
+      "teacher": {
+        "mean_loss_difference": -0.008379489776662532,
+        "paired_position_95": [
+          -0.008875136469998591,
+          -0.007883843083326472
+        ],
+        "relative_gain": 0.40538589113569123
+      },
+      "bt4": {
+        "mean_loss_difference": -0.008805991536408897,
+        "paired_position_95": [
+          -0.009493570189821401,
+          -0.008118412882996393
+        ],
+        "relative_gain": 0.2578806491969625
+      }
+    },
+    {
+      "candidate": "r028-two-71",
+      "control": "r022-compose-71",
+      "teacher": {
+        "mean_loss_difference": -0.0004741122899181247,
+        "paired_position_95": [
+          -0.0006495766315328892,
+          -0.0002986479483033603
+        ],
+        "relative_gain": 0.037320350470707364
+      },
+      "bt4": {
+        "mean_loss_difference": -0.0003146899283381576,
+        "paired_position_95": [
+          -0.0005672877130791024,
+          -6.209214359721287e-05
+        ],
+        "relative_gain": 0.012294630680043883
+      }
+    },
+    {
+      "candidate": "r028-two-71",
+      "control": "pair24-71",
+      "teacher": {
+        "mean_loss_difference": 0.0004533624215441661,
+        "paired_position_95": [
+          0.00020935263009409772,
+          0.0006973722129942346
+        ],
+        "relative_gain": -0.03849760643128919
+      },
+      "bt4": {
+        "mean_loss_difference": 0.0010361988384846568,
+        "paired_position_95": [
+          0.0006845455013770016,
+          0.0013878521755923121
+        ],
+        "relative_gain": -0.042738958039903796
+      }
+    },
+    {
+      "candidate": "r028-two-71",
+      "control": "gen32",
+      "teacher": {
+        "mean_loss_difference": -0.008440661210582859,
+        "paired_position_95": [
+          -0.008943045567611184,
+          -0.007938276853554534
+        ],
+        "relative_gain": 0.4083452641897528
+      },
+      "bt4": {
+        "mean_loss_difference": -0.008866516403864365,
+        "paired_position_95": [
+          -0.009564390461675294,
+          -0.008168642346053436
+        ],
+        "relative_gain": 0.2596531006066014
+      }
+    },
+    {
+      "candidate": "r028-two-71",
+      "control": "r028-one-71",
+      "teacher": {
+        "mean_loss_difference": -6.117143392032719e-05,
+        "paired_position_95": [
+          -0.0001774619945831621,
+          5.511912674250771e-05
+        ],
+        "relative_gain": 0.0049769640678622995
+      },
+      "bt4": {
+        "mean_loss_difference": -6.052486745546688e-05,
+        "paired_position_95": [
+          -0.00023386103480888475,
+          0.00011281129989795098
+        ],
+        "relative_gain": 0.002388364361771367
+      }
+    },
+    {
+      "candidate": "r028-one-97",
+      "control": "r022-compose-97",
+      "teacher": {
+        "mean_loss_difference": -0.00025971207385890385,
+        "paired_position_95": [
+          -0.00043966671577483617,
+          -7.975743194297153e-05
+        ],
+        "relative_gain": 0.020087859517126883
+      },
+      "bt4": {
+        "mean_loss_difference": -8.713258732922038e-06,
+        "paired_position_95": [
+          -0.0002637744705342291,
+          0.00024634795306838496
+        ],
+        "relative_gain": 0.0003407176539974577
+      }
+    },
+    {
+      "candidate": "r028-one-97",
+      "control": "pair24-71",
+      "teacher": {
+        "mean_loss_difference": 0.0008927162211786057,
+        "paired_position_95": [
+          0.000640423491641181,
+          0.0011450089507160305
+        ],
+        "relative_gain": -0.07580566033837832
+      },
+      "bt4": {
+        "mean_loss_difference": 0.001319708086210729,
+        "paired_position_95": [
+          0.0009600527567804351,
+          0.001679363415641023
+        ],
+        "relative_gain": -0.05443255331569952
+      }
+    },
+    {
+      "candidate": "r028-one-97",
+      "control": "gen32",
+      "teacher": {
+        "mean_loss_difference": -0.00800130741094842,
+        "paired_position_95": [
+          -0.008499533218032766,
+          -0.007503081603864076
+        ],
+        "relative_gain": 0.3870900521976455
+      },
+      "bt4": {
+        "mean_loss_difference": -0.008583007156138292,
+        "paired_position_95": [
+          -0.009266413803951715,
+          -0.007899600508324868
+        ],
+        "relative_gain": 0.2513506228498765
+      }
+    },
+    {
+      "candidate": "r028-two-97",
+      "control": "r022-compose-97",
+      "teacher": {
+        "mean_loss_difference": -0.00038493739332779635,
+        "paired_position_95": [
+          -0.0005694774980292224,
+          -0.00020039728862637025
+        ],
+        "relative_gain": 0.029773618781615552
+      },
+      "bt4": {
+        "mean_loss_difference": -0.00014713930268571104,
+        "paired_position_95": [
+          -0.0004116886185299001,
+          0.00011741001315847803
+        ],
+        "relative_gain": 0.005753640464328358
+      }
+    },
+    {
+      "candidate": "r028-two-97",
+      "control": "pair24-71",
+      "teacher": {
+        "mean_loss_difference": 0.0007674909017097132,
+        "paired_position_95": [
+          0.0005192778197357735,
+          0.001015703983683653
+        ],
+        "relative_gain": -0.06517205941546589
+      },
+      "bt4": {
+        "mean_loss_difference": 0.00118128204225794,
+        "paired_position_95": [
+          0.0008202049752918818,
+          0.0015423591092239984
+        ],
+        "relative_gain": -0.048723045965952005
+      }
+    },
+    {
+      "candidate": "r028-two-97",
+      "control": "gen32",
+      "teacher": {
+        "mean_loss_difference": -0.008126532730417312,
+        "paired_position_95": [
+          -0.008625916647602408,
+          -0.007627148813232215
+        ],
+        "relative_gain": 0.3931482465601508
+      },
+      "bt4": {
+        "mean_loss_difference": -0.008721433200091082,
+        "paired_position_95": [
+          -0.009412063438915753,
+          -0.00803080296126641
+        ],
+        "relative_gain": 0.25540438532883414
+      }
+    },
+    {
+      "candidate": "r028-two-97",
+      "control": "r028-one-97",
+      "teacher": {
+        "mean_loss_difference": -0.0001252253194688925,
+        "paired_position_95": [
+          -0.0002521191256100834,
+          1.6684866722983794e-06
+        ],
+        "relative_gain": 0.009884313975042525
+      },
+      "bt4": {
+        "mean_loss_difference": -0.00013842604395278898,
+        "paired_position_95": [
+          -0.00031515348462610296,
+          3.8301396720525e-05
+        ],
+        "relative_gain": 0.005414767717284441
+      }
+    }
+  ],
+  "gates": [
+    {
+      "seed": 71,
+      "old_teacher_gain": 0.04271006284321688,
+      "old_bt4_gain": 0.01828082064068859,
+      "larger_teacher_gain": 0.03250516343327248,
+      "larger_bt4_gain": 0.009929982735150111,
+      "passes": true
+    },
+    {
+      "seed": 97,
+      "old_teacher_gain": 0.03666058464639199,
+      "old_bt4_gain": 0.006140009548599168,
+      "larger_teacher_gain": 0.020087859517126883,
+      "larger_bt4_gain": 0.0003407176539974577,
+      "passes": true
+    }
+  ],
+  "separate_one_pass_followup_justified": true,
+  "scope": "Consumed development;unknown game clustering;no reversal of R028 second-pass failure,no strength or promotion claim."
+}

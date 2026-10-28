@@ -35,6 +35,7 @@ public final class FieldPredictionAudit {
                 case "ALL" -> {var m=AttackFieldNetwork.read(input);if(!m.allSquares)throw new IllegalArgumentException("ALL mode required");var w=new AttackFieldNetwork.Workspace();yield b->m.logit(w.encode(b,true),w);}
                 case "COMPOSE8" -> {var m=ComposedAttackFieldNetwork.read(input);if(!m.compose)throw new IllegalArgumentException("COMPOSE mode required");var w=new ComposedAttackFieldNetwork.Workspace();yield b->m.logit(w.encode(b,true),w);}
                 case "COMPOSE16" -> {var m=WideComposedAttackFieldNetwork.read(input);if(!m.compose)throw new IllegalArgumentException("COMPOSE mode required");var w=new WideComposedAttackFieldNetwork.Workspace();yield b->m.logit(w.encode(b,true),w);}
+                case "PIECE_ONE", "PIECE_TWO" -> {var m=ContextualPieceNetwork.read(input);if(m.compose!=kind.equals("PIECE_TWO"))throw new IllegalArgumentException("Piece mode mismatch");var w=new ContextualPieceNetwork.Workspace();yield b->m.logit(w.encode(b),w);}
                 case "PAIR" -> {var m=BrnPair2Codec.readModel(input);var w=m.newWorkspace();yield b->w.evaluatePawns(b,.25)/4;}
                 default -> throw new IllegalArgumentException("Unknown neural/reference kind");
             };

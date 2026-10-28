@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R029 all-piece neural transfer cross-check**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R030 one-pass neural fixed-node diagnostic**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,12 +25,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R028 completes all four arms/32segments. Contextual second pass fails matched
-2% gate;no more second-pass training. Both all-piece modes improve roughly4%
-versus R022 on old development. R029 prospectively cross-checks all four frozen
-endpoints on R0168192,with existing R024 references. Implement mode-checked audit
-routing/test,freeze byte-identical model runtime,then execute bounded prediction.
-No games,neural updates or production promotion currently admitted.
+R029 completes:ONE gains3.25%/2.01% on larger development,passes both transfer
+gates;no strength claim. R030 tests frozen ONE seeds against CP64 on exactly
+R025 fixed10000-node/8opening conditions. Implement explicit research-only ONE
+loader/selector,test full-score/state/search parity,freeze runtime,then32 games.
+No training,second-pass extension,clock testing or production promotion admitted.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -73,7 +72,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R026 | Calibration and played-position distribution | Complete;compression gate passes,but played-root sign disagreements remain |
 | R027 | Training-only positive neural score scale | Complete;scales1.108/1.096 improve1.1-1.8%,fail2% gate;no games |
 | R028 | Contextual all-piece neural messages | Complete;second pass fails matched2%;both modes improve~4% over R022 |
-| R029 | All-piece neural transfer | Prospective frozen larger-panel diagnosis;no training/games |
+| R029 | All-piece neural transfer | Complete;ONE gains3.25%/2.01%,passes transfer gate;no strength claim |
+| R030 | ONE fixed-node diagnostic versus CP64 | Prospective32games under R025 conditions;integration correctness first |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

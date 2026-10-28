@@ -1,0 +1,27 @@
+{
+  "tests": 2,
+  "new_tests": 1,
+  "failures": 0,
+  "skips": 0,
+  "test_path": "docs\\research\\brn-relational-cglhw\\raw\\r029-passed-tests.xml",
+  "test_sha256": "6cece57ffd6f716c4b310920fd057b844a1ea757a3dffa64430decf82fb9954a",
+  "sources": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\FieldPredictionAudit.java": "ef0543005809b42c9102ecdb18ced55496907f731224055f2f24460af01cb62f",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\FieldPredictionAuditTest.java": "ebfe98cc0d9f81cce00c2bce197caf9c55f324d938ea8f1d6058d4b807bbca00"
+  },
+  "model_class_parity_with_r028": [
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualPieceNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualPieceNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextualPieceNetwork.class"
+  ],
+  "teacher_class_parity_with_r024": true,
+  "runtime": {
+    "docs\\research\\brn-relational-cglhw\\raw\\r029-runtime\\lib\\engine-core.jar": "9dd34a2bbdaadd7f1a043b1b9a3e086fac80f995dfb5ec671272dc942e23e36f",
+    "docs\\research\\brn-relational-cglhw\\raw\\r029-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\brn-relational-cglhw\\raw\\r029-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\brn-relational-cglhw\\raw\\r029-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\brn-relational-cglhw\\raw\\r029-runtime\\lib\\research.jar": "e281a892b273aaff9929f08d2b771ab6a3de521e2cdea2c0845a5ef2cb593c45",
+    "docs\\research\\brn-relational-cglhw\\raw\\r029-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\brn-relational-cglhw\\raw\\r029-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  }
+}

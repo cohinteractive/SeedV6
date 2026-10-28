@@ -239,3 +239,8 @@ R028 complete:4 tests,64/64 capability both modes,4 endpoints/32 segment states.
 Second-pass gate fails;R029 tests all-piece transfer without more fitting.
 Historical runners preserved at raw/r023-objective-runner.py and
 raw/r027-scale-runner.py. Current R028 checkpoints bind the maintained runner.
+
+R029 complete:2 routing checks,byte-identical inference classes,exact8192-panel
+reference parity. ONE passes separate transfer gate;R030 freezes small fixed-node
+play. No second-pass gate reversal or new training. R028 cost prose corrected
+from the original immutable measurement JSON.
