@@ -220,3 +220,7 @@ not promotion or reversal of prior loss gates. No new training is queued.
 R025 integration passes21 focused tests;initial test SearchRequest package error
 is preserved and corrected. Build78 accompanies qualifying core extension. Freeze
 clean-source runtime and verify final-tested class manifest before fixed-node play.
+
+R025 complete:clean build78 runtime,21 focused checks,32 deterministic probe
+requests and32 legally replayed games. Neural point estimates trail CP64 strongly.
+All children released;no clock/GPU work. R026 diagnoses saved positions only.
