@@ -1,0 +1,60 @@
+{
+  "main_class": "FieldPredictionAudit",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r024-runtime\\lib",
+  "cases": "docs\\research\\brn-relational-cglhw\\raw\\r016-data\\validation.tsv",
+  "cases_sha256": "9f081229700b95849b0df0b0cc88434905ddc67a2f1243da1ef02c07069bd548",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r024-prediction.json",
+  "rows": 8192,
+  "models": [
+    {
+      "id": "r017-all-71",
+      "kind": "ALL",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r017-all-71\\epoch-1.state",
+      "state_sha256": "dd02f4cf2ab8c25f7ce53924c499b61ee84a8d479233265131a2c43c86eb7514"
+    },
+    {
+      "id": "r017-all-97",
+      "kind": "ALL",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r017-all-97\\epoch-1.state",
+      "state_sha256": "3b14879bf2abaa37dfcc2fdface4d29ac34f0b4c17c847cc1692f440795a5ead"
+    },
+    {
+      "id": "r022-compose-71",
+      "kind": "COMPOSE8",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r022-compose-71\\epoch-1.state",
+      "state_sha256": "171aec95a2f82acb01e086f2a5510651adddab2f61ced4c726c090522d4c2c55"
+    },
+    {
+      "id": "r022-compose-97",
+      "kind": "COMPOSE8",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r022-compose-97\\epoch-1.state",
+      "state_sha256": "008ead748bd4b63c922a1eec181c1ebcfcec9ccee8be4623fa94481b7416fc22"
+    },
+    {
+      "id": "r023-wide-71",
+      "kind": "COMPOSE16",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r023-wide-71\\epoch-1.state",
+      "state_sha256": "2a7301797e39f162eca2fe5e9abe5e4efe840aa406e844f9aa303a3c00018724"
+    },
+    {
+      "id": "r023-wide-97",
+      "kind": "COMPOSE16",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r023-wide-97\\epoch-1.state",
+      "state_sha256": "b2e14ad0466b47a52dbc6c73ae2bf9b9aa6e226672b3dda14da1a84acae1618a"
+    },
+    {
+      "id": "pair24-71",
+      "kind": "PAIR",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-aligned-71\\epoch-24.brn-pair2",
+      "state_sha256": "ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627"
+    },
+    {
+      "id": "gen32",
+      "kind": "PAIR",
+      "state": "build-assets\\production\\bre-pair2-g32.brn-pair2",
+      "state_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"
+    }
+  ],
+  "teacher": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "teacher_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+}

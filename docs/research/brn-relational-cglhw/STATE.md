@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R024 frozen neural development cross-check**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R025 neural search integration and fixed-node calibration**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,11 +25,12 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R023 complete:training fits better,but teacher gains -.37%/+1.21% fail2% gate.
-R024.md specifies a read-only cross-check of frozen neural endpoints and played
-references on the8192-row BRN development panel. Implement/test predictor routing,
-freeze runtime/plan and run one bounded audit. No new training or games admitted.
-No live empirical job remains;Pair-2/R010 and production boundaries remain intact.
+R024 complete:composition gains transfer across development panels;all neural
+models still trail played Pair24 in loss. R025.md defines a distinct32-game
+fixed-node calibration of both frozen R022 seeds against CP64. First implement
+and validate isolated full-recompute search integration,then freeze runtime and
+verify exact-node probes. No games before those checks. No new training,Pair-2
+optimization,R010 continuation or production evaluator promotion is admitted.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -67,7 +68,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R021 | Dense versus masked neural adaptive updates | Complete;teacher loss worsens .048%/.095%;no optimizer sweep |
 | R022 | Square-field to piece nonlinear composition | Complete;useful second path,1.48%/1.59% teacher gains fail2% gate |
 | R023 | Programme review and latent channel capacity | Complete;training fits improve,but teacher gains -.37%/+1.21% fail2% |
-| R024 | Frozen neural endpoints versus played reference losses | Prospective read-only8192-row cross-check;no training/games |
+| R024 | Frozen neural endpoints versus played reference losses | Complete;R022 transfer1.10%/1.33%,still behind Pair24;playing diagnostic justified |
+| R025 | First neural fixed-node playing calibration | Prospective isolated integration/correctness before32 games |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -103,7 +105,7 @@ before any recovery; never rewrite completed bindings to accept changed tools.
 
 ## Validation and required action
 
-84 distinct focused tests have passed:23 baseline Java,51 research Java,
+85 distinct focused tests have passed:23 baseline Java,52 research Java,
 10 Python. The selector's renamed import received syntax validation but no new
 runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,

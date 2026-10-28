@@ -212,3 +212,7 @@ No previous experiment is reclassified or repeated.
 
 R023 complete:four tests and two width16 checkpoints;training fit improved but
 quality gate failed. No scaling. R024 reuses frozen endpoints and R016 panel.
+
+R024 complete:one routing test,byte-identical model classes,8192-row predictions
+and exact R016 target parity. R025 is a separate playing-calibration protocol,
+not promotion or reversal of prior loss gates. No new training is queued.

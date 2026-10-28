@@ -1,0 +1,539 @@
+{
+  "raw_path": "docs\\research\\brn-relational-cglhw\\raw\\r024-prediction.json",
+  "raw_sha256": "707f10975b784b3c8566a69d0222b53e2804274fc8a61664e8a4b8ce1226fac0",
+  "plan_sha256": "b52bf030a0db77e3111e37a520fcee53d6e4fa7d83bbff3d8b92f83a2704e61b",
+  "analysis_sha256": "725e4fb05cccaf30832adc2c3777aebc3f0e5ba6f0ef60fd041f77df3cdae2e9",
+  "resources": {
+    "cpu_percent": 25.25252525252525,
+    "available_gib": 18.28033447265625,
+    "utc": "2026-10-28T22:56:11Z"
+  },
+  "receipt": {
+    "sha256": "707f10975b784b3c8566a69d0222b53e2804274fc8a61664e8a4b8ce1226fac0",
+    "seconds": 2.048920499975793,
+    "resources": {
+      "cpu_percent": 7.978723404255317,
+      "available_gib": 18.642040252685547,
+      "utc": "2026-10-28T22:55:26Z"
+    }
+  },
+  "teacher_and_bt4_row_parity": true,
+  "models": [
+    {
+      "bt4_mse": 0.025776420017187093,
+      "state_sha256": "dd02f4cf2ab8c25f7ce53924c499b61ee84a8d479233265131a2c43c86eb7514",
+      "kind": "ALL",
+      "id": "r017-all-71",
+      "teacher_mse": 0.012845834038001606,
+      "phases": {
+        "2-10": {
+          "rows": 2442,
+          "teacher_mse": 0.011707107934692033,
+          "bt4_mse": 0.020255325223522663
+        },
+        "11-20": {
+          "rows": 2952,
+          "teacher_mse": 0.016795189350825808,
+          "bt4_mse": 0.033335257612332886
+        },
+        "21-32": {
+          "rows": 2798,
+          "teacher_mse": 0.00967295064301429,
+          "bt4_mse": 0.022620174450803353
+        }
+      }
+    },
+    {
+      "bt4_mse": 0.025801583015944374,
+      "state_sha256": "3b14879bf2abaa37dfcc2fdface4d29ac34f0b4c17c847cc1692f440795a5ead",
+      "kind": "ALL",
+      "id": "r017-all-97",
+      "teacher_mse": 0.013102901388826126,
+      "phases": {
+        "2-10": {
+          "rows": 2442,
+          "teacher_mse": 0.012065152698483125,
+          "bt4_mse": 0.020547913648552695
+        },
+        "11-20": {
+          "rows": 2952,
+          "teacher_mse": 0.017037862576765445,
+          "bt4_mse": 0.033202788250864985
+        },
+        "21-32": {
+          "rows": 2798,
+          "teacher_mse": 0.009857074682257449,
+          "bt4_mse": 0.02257824589717557
+        }
+      }
+    },
+    {
+      "bt4_mse": 0.025595720321143704,
+      "state_sha256": "171aec95a2f82acb01e086f2a5510651adddab2f61ced4c726c090522d4c2c55",
+      "kind": "COMPOSE8",
+      "id": "r022-compose-71",
+      "teacher_mse": 0.012703854169061278,
+      "phases": {
+        "2-10": {
+          "rows": 2442,
+          "teacher_mse": 0.01158002344965256,
+          "bt4_mse": 0.02006521673984638
+        },
+        "11-20": {
+          "rows": 2952,
+          "teacher_mse": 0.016634559593499413,
+          "bt4_mse": 0.0332973821372439
+        },
+        "21-32": {
+          "rows": 2798,
+          "teacher_mse": 0.009537646950996535,
+          "bt4_mse": 0.02229700125909953
+        }
+      }
+    },
+    {
+      "bt4_mse": 0.02557325289926462,
+      "state_sha256": "008ead748bd4b63c922a1eec181c1ebcfcec9ccee8be4623fa94481b7416fc22",
+      "kind": "COMPOSE8",
+      "id": "r022-compose-97",
+      "teacher_mse": 0.012928807752636525,
+      "phases": {
+        "2-10": {
+          "rows": 2442,
+          "teacher_mse": 0.011897705626581214,
+          "bt4_mse": 0.020362918333600488
+        },
+        "11-20": {
+          "rows": 2952,
+          "teacher_mse": 0.016840338105211784,
+          "bt4_mse": 0.032971448504363586
+        },
+        "21-32": {
+          "rows": 2798,
+          "teacher_mse": 0.009701900601465979,
+          "bt4_mse": 0.02231526990537581
+        }
+      }
+    },
+    {
+      "bt4_mse": 0.0254748567984724,
+      "state_sha256": "2a7301797e39f162eca2fe5e9abe5e4efe840aa406e844f9aa303a3c00018724",
+      "kind": "COMPOSE16",
+      "id": "r023-wide-71",
+      "teacher_mse": 0.012617842949456528,
+      "phases": {
+        "2-10": {
+          "rows": 2442,
+          "teacher_mse": 0.011480652410874842,
+          "bt4_mse": 0.019995366142785555
+        },
+        "11-20": {
+          "rows": 2952,
+          "teacher_mse": 0.016650977730950426,
+          "bt4_mse": 0.03315211456771319
+        },
+        "21-32": {
+          "rows": 2798,
+          "teacher_mse": 0.009355228732246437,
+          "bt4_mse": 0.022157362604901355
+        }
+      }
+    },
+    {
+      "bt4_mse": 0.025463154869813508,
+      "state_sha256": "b2e14ad0466b47a52dbc6c73ae2bf9b9aa6e226672b3dda14da1a84acae1618a",
+      "kind": "COMPOSE16",
+      "id": "r023-wide-97",
+      "teacher_mse": 0.012762772213230697,
+      "phases": {
+        "2-10": {
+          "rows": 2442,
+          "teacher_mse": 0.01192932953878301,
+          "bt4_mse": 0.020332696000813996
+        },
+        "11-20": {
+          "rows": 2952,
+          "teacher_mse": 0.016701603759439257,
+          "bt4_mse": 0.033005844250659465
+        },
+        "21-32": {
+          "rows": 2798,
+          "teacher_mse": 0.00933455072881096,
+          "bt4_mse": 0.021983012448741016
+        }
+      }
+    },
+    {
+      "bt4_mse": 0.024244831554320907,
+      "state_sha256": "ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627",
+      "kind": "PAIR",
+      "id": "pair24-71",
+      "teacher_mse": 0.011776379457599025,
+      "phases": {
+        "2-10": {
+          "rows": 2442,
+          "teacher_mse": 0.010680464210112551,
+          "bt4_mse": 0.019132396365414955
+        },
+        "11-20": {
+          "rows": 2952,
+          "teacher_mse": 0.015630934912137635,
+          "bt4_mse": 0.031618540655655065
+        },
+        "21-32": {
+          "rows": 2798,
+          "teacher_mse": 0.00866614976945171,
+          "bt4_mse": 0.020927239511493834
+        }
+      }
+    },
+    {
+      "bt4_mse": 0.03414754679666981,
+      "state_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "kind": "PAIR",
+      "id": "gen32",
+      "teacher_mse": 0.020670403089725904,
+      "phases": {
+        "2-10": {
+          "rows": 2442,
+          "teacher_mse": 0.022238467310178936,
+          "bt4_mse": 0.03215446056854759
+        },
+        "11-20": {
+          "rows": 2952,
+          "teacher_mse": 0.02529159967148843,
+          "bt4_mse": 0.04202729074949418
+        },
+        "21-32": {
+          "rows": 2798,
+          "teacher_mse": 0.014426305471531387,
+          "bt4_mse": 0.027573605560192994
+        }
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "candidate": "r022-compose-71",
+      "control": "r017-all-71",
+      "teacher": {
+        "mean_loss_difference": -0.0001419798689403801,
+        "paired_position_95": [
+          -0.00022952062724147784,
+          -5.443911063928236e-05
+        ],
+        "relative_gain": 0.011052600284291558
+      },
+      "bt4": {
+        "mean_loss_difference": -0.00018069969604339508,
+        "paired_position_95": [
+          -0.0003042369649191559,
+          -5.716242716763428e-05
+        ],
+        "relative_gain": 0.0070102712449172655
+      }
+    },
+    {
+      "candidate": "r023-wide-71",
+      "control": "r022-compose-71",
+      "teacher": {
+        "mean_loss_difference": -8.601121960480587e-05,
+        "paired_position_95": [
+          -0.00017418294176381336,
+          2.160502554201629e-06
+        ],
+        "relative_gain": 0.006770482285153867
+      },
+      "bt4": {
+        "mean_loss_difference": -0.00012086352267134579,
+        "paired_position_95": [
+          -0.00024798969912346686,
+          6.262653780775274e-06
+        ],
+        "relative_gain": 0.004722020757958689
+      }
+    },
+    {
+      "candidate": "r022-compose-97",
+      "control": "r017-all-97",
+      "teacher": {
+        "mean_loss_difference": -0.0001740936361896249,
+        "paired_position_95": [
+          -0.0002662389516585219,
+          -8.19483207207279e-05
+        ],
+        "relative_gain": 0.013286647821229014
+      },
+      "bt4": {
+        "mean_loss_difference": -0.00022833011667982596,
+        "paired_position_95": [
+          -0.00035738706283343596,
+          -9.927317052621596e-05
+        ],
+        "relative_gain": 0.00884946154422872
+      }
+    },
+    {
+      "candidate": "r023-wide-97",
+      "control": "r022-compose-97",
+      "teacher": {
+        "mean_loss_difference": -0.00016603553940581735,
+        "paired_position_95": [
+          -0.00025943393892359495,
+          -7.263713988803975e-05
+        ],
+        "relative_gain": 0.012842293162875662
+      },
+      "bt4": {
+        "mean_loss_difference": -0.00011009802945109117,
+        "paired_position_95": [
+          -0.00024221662625629044,
+          2.2020567354108107e-05
+        ],
+        "relative_gain": 0.004305202388009688
+      }
+    },
+    {
+      "candidate": "r017-all-71",
+      "control": "pair24-71",
+      "teacher": {
+        "mean_loss_difference": 0.0010694545804026709,
+        "paired_position_95": [
+          0.0008283081530055447,
+          0.001310601007799797
+        ],
+        "relative_gain": -0.09081352925602104
+      },
+      "bt4": {
+        "mean_loss_difference": 0.0015315884628662095,
+        "paired_position_95": [
+          0.001184799346987162,
+          0.001878377578745257
+        ],
+        "relative_gain": -0.06317175103628414
+      }
+    },
+    {
+      "candidate": "r017-all-71",
+      "control": "gen32",
+      "teacher": {
+        "mean_loss_difference": -0.007824569051724354,
+        "paired_position_95": [
+          -0.008314207624938707,
+          -0.0073349304785100015
+        ],
+        "relative_gain": 0.3785397419566269
+      },
+      "bt4": {
+        "mean_loss_difference": -0.008371126779482811,
+        "paired_position_95": [
+          -0.009043534553093181,
+          -0.007698719005872441
+        ],
+        "relative_gain": 0.24514577370164603
+      }
+    },
+    {
+      "candidate": "r017-all-97",
+      "control": "pair24-71",
+      "teacher": {
+        "mean_loss_difference": 0.0013265219312271345,
+        "paired_position_95": [
+          0.0010732659444058728,
+          0.001579777918048396
+        ],
+        "relative_gain": -0.11264259410146327
+      },
+      "bt4": {
+        "mean_loss_difference": 0.0015567514616234772,
+        "paired_position_95": [
+          0.001196926084311234,
+          0.0019165768389357203
+        ],
+        "relative_gain": -0.06420962167279032
+      }
+    },
+    {
+      "candidate": "r017-all-97",
+      "control": "gen32",
+      "teacher": {
+        "mean_loss_difference": -0.007567501700899891,
+        "paired_position_95": [
+          -0.008060101454692797,
+          -0.007074901947106985
+        ],
+        "relative_gain": 0.3661032476266137
+      },
+      "bt4": {
+        "mean_loss_difference": -0.008345963780725545,
+        "paired_position_95": [
+          -0.009020039422616125,
+          -0.0076718881388349635
+        ],
+        "relative_gain": 0.24440888332099597
+      }
+    },
+    {
+      "candidate": "r022-compose-71",
+      "control": "pair24-71",
+      "teacher": {
+        "mean_loss_difference": 0.0009274747114622908,
+        "paired_position_95": [
+          0.0006907328809166717,
+          0.00116421654200791
+        ],
+        "relative_gain": -0.07875720333245662
+      },
+      "bt4": {
+        "mean_loss_difference": 0.0013508887668228146,
+        "paired_position_95": [
+          0.0010066246113205736,
+          0.0016951529223250556
+        ],
+        "relative_gain": -0.05571862868158628
+      }
+    },
+    {
+      "candidate": "r022-compose-71",
+      "control": "gen32",
+      "teacher": {
+        "mean_loss_difference": -0.007966548920664734,
+        "paired_position_95": [
+          -0.008459045357826532,
+          -0.007474052483502936
+        ],
+        "relative_gain": 0.385408493781353
+      },
+      "bt4": {
+        "mean_loss_difference": -0.008551826475526207,
+        "paired_position_95": [
+          -0.009230439913846925,
+          -0.007873213037205489
+        ],
+        "relative_gain": 0.2504375065783697
+      }
+    },
+    {
+      "candidate": "r022-compose-97",
+      "control": "pair24-71",
+      "teacher": {
+        "mean_loss_difference": 0.0011524282950375094,
+        "paired_position_95": [
+          0.0009021319022974306,
+          0.0014027246877775883
+        ],
+        "relative_gain": -0.09785930380273844
+      },
+      "bt4": {
+        "mean_loss_difference": 0.001328421344943651,
+        "paired_position_95": [
+          0.0009693970738950746,
+          0.0016874456159922276
+        ],
+        "relative_gain": -0.05479193955079875
+      }
+    },
+    {
+      "candidate": "r022-compose-97",
+      "control": "gen32",
+      "teacher": {
+        "mean_loss_difference": -0.007741595337089516,
+        "paired_position_95": [
+          -0.008237309055503128,
+          -0.007245881618675903
+        ],
+        "relative_gain": 0.3745256105304198
+      },
+      "bt4": {
+        "mean_loss_difference": -0.00857429389740537,
+        "paired_position_95": [
+          -0.009253680943293959,
+          -0.007894906851516783
+        ],
+        "relative_gain": 0.25109545785120757
+      }
+    },
+    {
+      "candidate": "r023-wide-71",
+      "control": "pair24-71",
+      "teacher": {
+        "mean_loss_difference": 0.000841463491857485,
+        "paired_position_95": [
+          0.0006014370165825883,
+          0.0010814899671323817
+        ],
+        "relative_gain": -0.07145349679731217
+      },
+      "bt4": {
+        "mean_loss_difference": 0.0012300252441514688,
+        "paired_position_95": [
+          0.0008859786936102464,
+          0.0015740717946926912
+        ],
+        "relative_gain": -0.050733503402388136
+      }
+    },
+    {
+      "candidate": "r023-wide-71",
+      "control": "gen32",
+      "teacher": {
+        "mean_loss_difference": -0.008052560140269541,
+        "paired_position_95": [
+          -0.008548972021588356,
+          -0.007556148258950727
+        ],
+        "relative_gain": 0.3895695746868123
+      },
+      "bt4": {
+        "mean_loss_difference": -0.008672689998197553,
+        "paired_position_95": [
+          -0.009358366066461848,
+          -0.007987013929933258
+        ],
+        "relative_gain": 0.2539769562316939
+      }
+    },
+    {
+      "candidate": "r023-wide-97",
+      "control": "pair24-71",
+      "teacher": {
+        "mean_loss_difference": 0.0009863927556316922,
+        "paired_position_95": [
+          0.0007372358008047141,
+          0.0012355497104586703
+        ],
+        "relative_gain": -0.08376027277171305
+      },
+      "bt4": {
+        "mean_loss_difference": 0.00121832331549256,
+        "paired_position_95": [
+          0.0008655849292412909,
+          0.001571061701743829
+        ],
+        "relative_gain": -0.05025084677379121
+      }
+    },
+    {
+      "candidate": "r023-wide-97",
+      "control": "gen32",
+      "teacher": {
+        "mean_loss_difference": -0.007907630876495333,
+        "paired_position_95": [
+          -0.008402620666513134,
+          -0.007412641086477532
+        ],
+        "relative_gain": 0.38255813600585875
+      },
+      "bt4": {
+        "mean_loss_difference": -0.008684391926856461,
+        "paired_position_95": [
+          -0.009363343099049121,
+          -0.008005440754663801
+        ],
+        "relative_gain": 0.2543196434744579
+      }
+    }
+  ],
+  "separate_playing_calibration_protocol_justified": true,
+  "scope": "Consumed BRN development; paired-position intervals ignore unknown game correlation. No failed gate reversed, strength claim or automatic promotion."
+}

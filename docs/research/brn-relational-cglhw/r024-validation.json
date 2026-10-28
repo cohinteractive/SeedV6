@@ -1,0 +1,39 @@
+{
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.FieldPredictionAuditTest",
+    "tests": "1",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T22:55:06",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.23"
+  },
+  "raw_test": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r024-passed-tests.xml",
+    "sha256": "8428ebf25e220d91d9c996c924a78feadb23db87dc9a6379990d58f9d8ff369f"
+  },
+  "source_sha256": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\FieldPredictionAudit.java": "840fc828dd5ab851a4eb3d22bb3c085a91701675c0dc4d3d8caf17ee2c2cdc45",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\FieldPredictionAuditTest.java": "b3eee0ab451864bf4ca8ec16e5ad63d0e8e87c54f984d9fd28d2db3be09acbe8"
+  },
+  "source_base": "ce79937ad9e65574ae9d8b3f2450df784c45e2ac",
+  "model_class_parity": {
+    "r017": [
+      "com/ohinteractive/seedv6/core/brnpair2/AttackFieldNetwork$Features.class",
+      "com/ohinteractive/seedv6/core/brnpair2/AttackFieldNetwork$Workspace.class",
+      "com/ohinteractive/seedv6/core/brnpair2/AttackFieldNetwork.class"
+    ],
+    "r022": [
+      "com/ohinteractive/seedv6/core/brnpair2/ComposedAttackFieldNetwork$Features.class",
+      "com/ohinteractive/seedv6/core/brnpair2/ComposedAttackFieldNetwork$Workspace.class",
+      "com/ohinteractive/seedv6/core/brnpair2/ComposedAttackFieldNetwork.class"
+    ],
+    "r023": [
+      "com/ohinteractive/seedv6/core/brnpair2/WideComposedAttackFieldNetwork$Features.class",
+      "com/ohinteractive/seedv6/core/brnpair2/WideComposedAttackFieldNetwork$Workspace.class",
+      "com/ohinteractive/seedv6/core/brnpair2/WideComposedAttackFieldNetwork.class"
+    ]
+  },
+  "scope": "Exact routing scores/geometry;frozen trained inference classes unchanged."
+}
