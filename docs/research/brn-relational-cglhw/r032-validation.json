@@ -1,0 +1,30 @@
+{
+  "tests": 6,
+  "failures": 0,
+  "skips": 0,
+  "test_path": "docs\\research\\brn-relational-cglhw\\raw\\r032-passed-tests.xml",
+  "test_sha256": "94c2561402f9e7018da592b52ff09f7f88e77e46a66dd4e82b373fe0b03dafaf",
+  "sources": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\AttentivePieceDiagnostic.java": "7ada432ee35adb8dfcaf4e855400de472ceec59f66f7dd3d2e67b7554a824adf",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\AttentivePieceNetwork.java": "1afd8433c5c6773625803690034ae699a228c63a38ee656bd46829da45f5705e",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\AttentivePieceNetworkTest.java": "d6b37f9323a8b951de18575d3eded4d46eeefe2946a028b18b93890af02c92a4",
+    "tools\\brn-relational\\run_objective.py": "9ebb7d4d84d9207af06ee544d65344059ef155668dafb9bfe35725592de9e92e"
+  },
+  "tested_class_parity": {
+    "com/ohinteractive/seedv6/core/brnpair2/AttentivePieceDiagnostic.class": "4b2a45b2be3130dc4bc56303dfa9e4c1c6df0c748f49494f33e15d4b9c9a48d7",
+    "com/ohinteractive/seedv6/core/brnpair2/AttentivePieceNetwork$Features.class": "29a3868ef392109c55e55c7cbcf82a9e0a4f856c216e263b80f156c62dffa93d",
+    "com/ohinteractive/seedv6/core/brnpair2/AttentivePieceNetwork$Workspace.class": "93cf96f57ca7c6e615916ba5762256fbd13600a367ed830d8f2accba9738be55",
+    "com/ohinteractive/seedv6/core/brnpair2/AttentivePieceNetwork.class": "eef9d35eb24dc076cb25b1311e0968f5441abd0f9b633aee0f13f4e5dbb34313"
+  },
+  "runtime": {
+    "docs\\research\\brn-relational-cglhw\\raw\\r032-runtime\\lib\\engine-core.jar": "c3e010e0a33b197bc0ecefba3346e87d2d8ff30dd74e599a89f6e8e218664591",
+    "docs\\research\\brn-relational-cglhw\\raw\\r032-runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\brn-relational-cglhw\\raw\\r032-runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\brn-relational-cglhw\\raw\\r032-runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\brn-relational-cglhw\\raw\\r032-runtime\\lib\\research.jar": "0b5de0d144e28e79be8be5625d3aba454e9cb2f06a34427e45c02a507989e74a",
+    "docs\\research\\brn-relational-cglhw\\raw\\r032-runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\brn-relational-cglhw\\raw\\r032-runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "maximum_gradient_error": 4.906527960568195e-12,
+  "third_piece_routing_log_odds_change": 0.00016806030766798336
+}

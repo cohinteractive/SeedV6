@@ -1,0 +1,12 @@
+{
+  "main_class": "AttentivePieceDiagnostic",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r032-runtime\\lib",
+  "configs": [
+    "docs\\research\\brn-relational-cglhw\\r032-geometry-71.json",
+    "docs\\research\\brn-relational-cglhw\\r032-dynamic-71.json",
+    "docs\\research\\brn-relational-cglhw\\r032-geometry-97.json",
+    "docs\\research\\brn-relational-cglhw\\r032-dynamic-97.json"
+  ],
+  "max_seconds_per_arm": 300,
+  "summary": "docs\\research\\brn-relational-cglhw\\raw\\r032-execution.json"
+}

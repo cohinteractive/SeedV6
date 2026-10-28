@@ -25,12 +25,12 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R031 completes four arms/32segments:LOW worsens teacher2.4% versus CONTROL;
-no further rate/epoch allocation. R032 reviews historical global pair-mixture
-softmax and proposes receiver-dependent routing between contextual neural piece
-states. Read R032.md;implement/test GEOMETRY/DYNAMIC and exact UNIFORM legacy
-control before any training. No old successor queue is reopened. CP64 remains
-principal benchmark;no games or production changes currently admitted.
+R032 six correctness tests pass,including dynamic receiver ranking,third-piece
+routing effect,independent gradients and exact legacy/continuation controls.
+Frozen r032-plan.json ready. Execute under nnue-control:
+`build/research/venv/Scripts/python.exe -B tools/brn-relational/run_objective.py docs/research/brn-relational-cglhw/r032-plan.json`.
+Four serial one-epoch pilots;cost gate30us,300s/arm,131072-row segment checkpoints.
+No old successor queue,Pair training,games,GPU/clocks or production promotion.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
