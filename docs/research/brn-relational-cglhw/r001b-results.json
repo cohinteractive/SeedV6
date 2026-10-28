@@ -1,0 +1,392 @@
+{
+  "comparisons": [
+    {
+      "id": "scale71-vs-gen32",
+      "summary": {
+        "completed_games": 64,
+        "expected_games": 64,
+        "scored": 64,
+        "wins": 26,
+        "draws": 24,
+        "losses": 14,
+        "censored": 0,
+        "full_allocation_score_bounds": [
+          0.59375,
+          0.59375
+        ],
+        "complete_pairs": 32,
+        "score": 0.59375,
+        "paired_bootstrap_95": [
+          0.515625,
+          0.671875
+        ],
+        "hoeffding_95": [
+          0.3536693021700198,
+          0.8338306978299802
+        ],
+        "scope": "Training-method development screen; left-arm score; reused openings, no final or equal-time Elo claim"
+      },
+      "elapsed_seconds": 212.76960299996426,
+      "resources": {
+        "cpu_percent": 16.145833333333336,
+        "available_gib": 16.705326080322266,
+        "utc": "2026-10-28T20:41:48Z"
+      },
+      "games": {
+        "game-000-0.json": "149e712c17d930004a73a477ff89db821e36174c5b136c031c387cd2285dd44e",
+        "game-000-1.json": "d8965210fbeeed851368f9128bf3cdb0ced8abb901e7d38ab935bf5f62ab6e2a",
+        "game-001-0.json": "434cb0784c394514d6ff9b7fe6b41c8f02dfc0ccdd555ecb236cf5d7b7ff58af",
+        "game-001-1.json": "3ccca49b1c838a1e876e7a6b59d7c42697a755d2a46af33766097531941024f8",
+        "game-002-0.json": "62b13da88a71e2795d4c913537fe6268a5d43f6bb318ce846b9b17f055055921",
+        "game-002-1.json": "f854a1d6ef0402b5bf594d27c7818d0b71021e35e0984e3f2c514bb16e446832",
+        "game-003-0.json": "65a28b8dd6752630e1bf2d1bd6b6fe35cd2b5cd8558f2bac98612ee3089f57b5",
+        "game-003-1.json": "529e577cc799b47205fced26e2fb63c07b3bf17f92cf45d63b68752d22d82819",
+        "game-004-0.json": "41f265daa6c0bc36ac98a08a2aeecc1318284baf6e837d0d17464014f4960c63",
+        "game-004-1.json": "77ef6c5159d087a3c1baa4e80686c2ac4f42125aeb0f57d02dfcf81ec9506b7a",
+        "game-005-0.json": "e618ecb61018f5e5736b2146045d053c44e7bf806cede3679c31545e29588f63",
+        "game-005-1.json": "63c87c7d34784a85990555ce11ef09ed45026e4c0613f6881576aa95debfd008",
+        "game-006-0.json": "1b2ab861e133e1252bd9702ff4c45bbb129c21455c47f8b147e4aac528060253",
+        "game-006-1.json": "9d64f1fcea4c7dc665fd5fd46d39424312e3ad4331ad7fcd9c0d928f186f1981",
+        "game-007-0.json": "18700505a775ef6fa1d58d9f133f4a32bae59d7a4ca6e6dfaa8d5ca81ede43b9",
+        "game-007-1.json": "415e47c1fabb51e66db69f23b70047eabbbd194697caff06d1d3f9326a46448c",
+        "game-008-0.json": "442a6e6dedd15947199d2eac3cbac34ec70ec0a1d2957c100cd930255058c629",
+        "game-008-1.json": "7d70cfce55587b3109414df9fed8021fe4f9ccecbba522d8591cdc825e9130f8",
+        "game-009-0.json": "cbd1323bae982f4f7b1fc288772da25ffb5a45c9a97aaf64c92c2053bdf85f26",
+        "game-009-1.json": "12ba32a6b2fa5f10e0e05d3761d3ee2861b50b6ffe85850ca87b787821282877",
+        "game-010-0.json": "3911d3977011281f562f19f29ababc87ad2649399705058c046658ae47e09125",
+        "game-010-1.json": "99dea1e65598a4091c7e685ab83018eecb9b5993e92fe4697a6b8023ee3e6314",
+        "game-011-0.json": "16b1a54314bada14dcbbd51dbb0f3a78d622973488ba537d467d66b5381c328f",
+        "game-011-1.json": "69d621d12a5d80c6cba414fab3553d2925c5d4c1bf4031451b0a56d5b92e2dfd",
+        "game-012-0.json": "3bc09d62711b041afcdc333bd64e41cd4785d154c68bf197f6cc0fac72714e9b",
+        "game-012-1.json": "0a0bfd0015f1a1e71cc05eaa7c23d602c8b0ce187375e022cbbfe1c6cf128de2",
+        "game-013-0.json": "9c550049ffa4d622fe9c57fb8b771bb3c9f9fdd071849cd07f74c1b5d28f69f9",
+        "game-013-1.json": "de420950c30745218ba87a2fd23354c8ee05b9c17d70693694990aaba89dafc8",
+        "game-014-0.json": "79ba560e69eb012db3dee36e6a2c3a5a839bb767ed46588f7143f85b05cb78f9",
+        "game-014-1.json": "24480339c767b966a44e9d19a267721dc2b6b8b9353745ede1e8b68b2306e89f",
+        "game-015-0.json": "4f989587d19cbb6eb2a2d35aa76140f069dad14f61cc9ed2cadea34a2e498fef",
+        "game-015-1.json": "6c0994843d789d6d5c33964dd51a837457e71beeb8d2f66d72e89091a2ebf026",
+        "game-016-0.json": "58b803f7e5e0dd10c1dbab59da6da8b12d806b624c16fa80752faff215ed3f95",
+        "game-016-1.json": "1316e3fc1e56e6fcf4f3e6237ae701887459f4c834516cb94d7450256ccdd49b",
+        "game-017-0.json": "239586c6848e488f1d41362882773e4747e89192fb24cf79b8196a89cb029caf",
+        "game-017-1.json": "b9b0752b0fb51e88c069966db2d605f33ebde7ccf41bcffe8034ea376d9c8fa7",
+        "game-018-0.json": "ae9bf1c81d1c6ddd7348bd3b990ebf4e585e5e12b4ada40b68f8ef7df537e3c6",
+        "game-018-1.json": "72404077bfd54a081f9d2778e3e1f296c260447a568d165715301fb65c7f351d",
+        "game-019-0.json": "9e37bb2867000358f5c51579f900b363008e167210d6cc130d63074dddf53b7c",
+        "game-019-1.json": "7a4cf1e1b63b9a6d9f81b6ef8907c0e7b197b4f71d29698b9c126edf09a9cf32",
+        "game-020-0.json": "3f0c64ef1de704a6fbfdfbf225463a6dc33c1fd241b1ffb7e5e230277a250e24",
+        "game-020-1.json": "df13cceeb033ad66f7c720adc0b923734adbaf75b245e678cce6695b7914890b",
+        "game-021-0.json": "ce3be0525e2cc2312ff0011a1400809afd3ba4edf1f33453e8ba211c418b7a05",
+        "game-021-1.json": "3fa1773b25e23a2f9d6d3bb088e2c312c23fb911f524f49368007712d489b8a1",
+        "game-022-0.json": "2657fb2f8c3b3563b332e78ea53e78a18d1e6e85be592b43ca800bded4b17746",
+        "game-022-1.json": "4377c3b26c8e8c8c2bf51f57b40405c877f0298fcaf121fc543f623a132c4654",
+        "game-023-0.json": "55a99e1f6bff656cb74e4362ea34c78f4657a1b333b6d4eb805314c765b30ccf",
+        "game-023-1.json": "265e4495f5d59b5697bf0fa91b4a76f431e164b0daa9a48218ca1ab9bf765ae6",
+        "game-024-0.json": "2de540a9f0ee348f908d5e96ecec915b33345b4cecbb67023266df776bffc2e2",
+        "game-024-1.json": "6429b07610592f9131873edb620032cec03d381a2b7cdc93c06caa17bcf5d238",
+        "game-025-0.json": "27430560948ee6cbd791976ae9997fc0f22c28c8a335b4a36be430fa24ab0d9c",
+        "game-025-1.json": "4425dc21fcf5b39a3a728e5c552ed8bcdfa838b20850be5cc48b1f36f0e9f1a4",
+        "game-026-0.json": "f4270ee097398396232b4f052c067a051624b6ca98247ded7be90b665dcf765e",
+        "game-026-1.json": "a71c16d11193de3fef547c1ef0b01fac79df05cde72d35d805a7e839d0852ea3",
+        "game-027-0.json": "c27a654285e74a0c7d0bf422f85a3b57bdc9191146199737d4c6a16e19a2cb51",
+        "game-027-1.json": "efeff0096abe6e575b0080d8cb6b5af532ebc1dd269a07eca9c525279f1a36df",
+        "game-028-0.json": "125ddd4fec0153236e41b4c9576e9522e617882b63cccf6efbf99ef9b4b80d93",
+        "game-028-1.json": "aea3bda08004532e4f82b2317b9a78405af3838bfea19c549dc2dca613cf1cbf",
+        "game-029-0.json": "c8fc52b57cb88b4d03424ef9c98a136cf7fb88ffaf2968aa08d3067014f46b31",
+        "game-029-1.json": "240266b0378b6eb785031f13b03a82e987efe137bebd847574541e6d4d896f8e",
+        "game-030-0.json": "bded58cd4c6b7952070350aacef846d8a59db082745a260f054e52ed82c3339d",
+        "game-030-1.json": "91790cf71bffefe5c29f388b949b7e9d9b76df40ae1b40d9be1ea02eeb1c37fd",
+        "game-031-0.json": "d98d54f4f3fb1f997d3d25a3f638977b75f9cf2b50ab7d1b734356f19795eddd",
+        "game-031-1.json": "26a8ef4643d8c0d26dfc7a57275771086f6195381c76d812551fbc10d2f7703b"
+      }
+    },
+    {
+      "id": "scale71-vs-cp64",
+      "summary": {
+        "completed_games": 64,
+        "expected_games": 64,
+        "scored": 64,
+        "wins": 5,
+        "draws": 22,
+        "losses": 37,
+        "censored": 0,
+        "full_allocation_score_bounds": [
+          0.25,
+          0.25
+        ],
+        "complete_pairs": 32,
+        "score": 0.25,
+        "paired_bootstrap_95": [
+          0.171875,
+          0.328125
+        ],
+        "hoeffding_95": [
+          0.009919302170019823,
+          0.4900806978299802
+        ],
+        "scope": "Training-method development screen; left-arm score; reused openings, no final or equal-time Elo claim"
+      },
+      "elapsed_seconds": 231.661227900011,
+      "resources": {
+        "cpu_percent": 20.3125,
+        "available_gib": 16.708415985107422,
+        "utc": "2026-10-28T20:45:22Z"
+      },
+      "games": {
+        "game-000-0.json": "5f790a129620b619f13969c6ea9ebadc434deff13beb2f1a0ff823d2048621e1",
+        "game-000-1.json": "70be1cb84710db1802b6b2003ff886d71c972d58a322da9bd420d85e6ccf729b",
+        "game-001-0.json": "5749c807042980dca2ba78ab162d604e5dde828c5aee04d9d6e6fa6190129d0a",
+        "game-001-1.json": "fa6f565e9ba809eef8ad0d39df3fd81df44397eb188a7774c67ebb504da960e1",
+        "game-002-0.json": "00ff73e4f2ce95f60dfda2b372257ea88dbd5be2415ef56afadf5dff23d7a1d1",
+        "game-002-1.json": "7c3c9feb3dba4ee0eef624b9c9706059d07a88e1a9d64a024edb6cf2686e003c",
+        "game-003-0.json": "6d513354e3cdbb5c6e124242b01e54677ba306b5645dee95ce3bab4c3544392d",
+        "game-003-1.json": "3fb556288515cab318128d61a9aec5b0a74c98f133784765899596d76567b601",
+        "game-004-0.json": "4b4e735e56f42dfc755ed2b6fed057e0c38587482657c788355721242755d136",
+        "game-004-1.json": "6369e188c61dcdb11067e9836b80d10c250052ea46df9afa1ec76a2be5c85b0f",
+        "game-005-0.json": "0fb49c112442430e21cc900c9d0399e0066468a924b72de71ae1d7ea8a16bad9",
+        "game-005-1.json": "6208b380c0048fa0fff3bb203a6284489ed6eeb4db8c9d5c636803c805bf1065",
+        "game-006-0.json": "2549aefaaf95ada46f97f989afa8c27255a87b8822fde53b14b9689da12c0beb",
+        "game-006-1.json": "be5d997742592f25c69f2d475cc0a98996f51351611eb799a9c2f4a01ef10f52",
+        "game-007-0.json": "3a1d2a1d0aa0fba7adbdfe5f6f86031fbde70a11b8e82d2cca4a6d1a6f59401e",
+        "game-007-1.json": "ae1a602ef902171f3b7c458a5de6458876a5f2e21b69cb91397197432e4d969d",
+        "game-008-0.json": "082eee1f8dbf05d6d6254b0a5c8a77f31723a53829ef4837d5089b4de1687769",
+        "game-008-1.json": "4b4abf898085bfefff2d9915ea2bf12e7fba6cc5f145bc53060751a2aa61d8d6",
+        "game-009-0.json": "018cef7fc95e3d1d939b8907ce4b4c5f476379c65cb733603fccb119da201c57",
+        "game-009-1.json": "40cea81729675341d866a51ac0df8af50d02a108d6dca11abc99fba4d624d7be",
+        "game-010-0.json": "2a0d5c20ff814f238c5418c52f0b57d564bcf73344d5809ead617fabf3fa3ab0",
+        "game-010-1.json": "b29ec8883fb87f6cfb440260ad9ed3c28d2b36f98389041bc64a9ae8566ebcf3",
+        "game-011-0.json": "d1be72b46e7162a4ead8b4ac1d41d13e35ec6bd40a0a05b3ede97c6151e3aefc",
+        "game-011-1.json": "56a5071ea2aed15ea6f9fa60e30be2964fef59fe1e561f702e0e56b432ce6281",
+        "game-012-0.json": "21631a2aa3db2acbfcd18e85a14b685a364fe7e22d6d1557ecffff89665f3f33",
+        "game-012-1.json": "efdd90ed6656aa2c4d3ed0cc0391f642185f37e92f5524b1444c471bfc389872",
+        "game-013-0.json": "24b90efce8fffe4862678a85eb46ea88b17b6d28ed5c014e18dd74152bbdff23",
+        "game-013-1.json": "2b8dd2111dda2f5581b464484d6fc491cf57b530b248b195d1c3b473c39edd60",
+        "game-014-0.json": "a7cdbd0947610e69a57be7bb2e8ea243eac53d94e9c6b1ad3ed8d45360992fec",
+        "game-014-1.json": "702923d81e2bf28dab03b90d666c76015d9a27f3b69499f7a42c854d7ee283d4",
+        "game-015-0.json": "9ff2233ab316e3c3abbb5497bd0f33ff7954b5a0a93f107e28b1d74ce58b3fbc",
+        "game-015-1.json": "536eac983ec37e3e6e727298b25d61054d0c69f2b26480b10df36130fc1f6700",
+        "game-016-0.json": "97f26b7e7119d9f19442ce4cae4edfdc1ce424fe9976beb9bf19cf894eea92f6",
+        "game-016-1.json": "602014cf34babbd4f9d72d9987afc2bf734e40cf6fa56b5aa82845b47dfba679",
+        "game-017-0.json": "98423156abe18fb1844eb345856765f78e084cbd455976085cf0382bad10b417",
+        "game-017-1.json": "3d807ebce3801908dc7c5b0689f84da7a34b36069aa1105e2b15d610eb7db3aa",
+        "game-018-0.json": "d77e1ebbc7ba507c3e68de77a9f18e18034f412eb7f9c966a99f060d209907d6",
+        "game-018-1.json": "e798bec36472eedcc52e7bba755ab721bff95c12a5b9ac20e45564fd6e94e901",
+        "game-019-0.json": "296d91f39f4c0518032b1bd19d6aac47d768a483290a855526cfcdfa55142fa2",
+        "game-019-1.json": "bade7803ed199d5699776a7220fe2696a0a9075140bfe0f987556b609acefc7b",
+        "game-020-0.json": "bd5b6d5d91289d139d7d7648fbf6222cb5ccc1fb3d2b6dffd0a178aedf1c5220",
+        "game-020-1.json": "5070605817e5778a2bc1b8d09e20218ee259407533ca98c641ee009d6c6cda09",
+        "game-021-0.json": "1068fe678f64fb330537e7a50d4dee83e24e2529391c95dd536701a44c6b1189",
+        "game-021-1.json": "b8247ccac3d463c56170fcc5473ed2eb9024c3f72afbe187d7d29b9ab63afc5e",
+        "game-022-0.json": "c3ff4a6c28ca300fedd26151ec44b60544c41318fa77ceb5ea69a05c7344a4c5",
+        "game-022-1.json": "47789ba9ec19b224c2fdcb4fad82246ca98fecf9eb835fb4ded662c56867339e",
+        "game-023-0.json": "f15f1af498794ee8b29778f32d12a8655466e778f810fdd7419f0e3ba6151e5f",
+        "game-023-1.json": "2eb29cc290e5bbc8ef1dc84540111b6d6b62d8062a2bb18e0e4da5d5fb7e541d",
+        "game-024-0.json": "8e515fc7ce320e3c2b5a7fa430bf44cad1a8017dcc7d1359cf429a8b4d2b3222",
+        "game-024-1.json": "a0488f1e4e10c54d8ced2762cdbef770e13841a079f6108afc8783a79692b24e",
+        "game-025-0.json": "6981bbab57f3c8345d6649e86476a3eb1478a4ee19b6fc0bc90c740c5c47a800",
+        "game-025-1.json": "efb17d825b01145c8bdf5c841ad0ff7da732b6193a31ed93a20ef2276b874805",
+        "game-026-0.json": "f4201849b5d8fd8684d57926fd68cc5f6f1d4f86821a97459d31e09f2762977b",
+        "game-026-1.json": "f958779ab1a9b1637df960291c451e74ee96c7ac5c8252ac39ec492e023f3c24",
+        "game-027-0.json": "67fdf27fb58264269266674202dfe1207b8ed586380cd4e2305371842cb8d0a0",
+        "game-027-1.json": "64c3060d8c3c013b67209660728d63173f94a700b19988c325fd40d837bf6d62",
+        "game-028-0.json": "53275abdbbded48aad15fdfa40a6bad322eb7ae9057297a874ff326298a1ec23",
+        "game-028-1.json": "5f6ac0de6a5469c85cb46e2a5c2c152c5ab3a4e86848b48b22262c66a677a9a4",
+        "game-029-0.json": "d15a92f36f61bb1f78a8a1668148feb3f7335ca44e30f082e4384d23a1d28d05",
+        "game-029-1.json": "f71ce4651a865a3b59d693b2418a211587b469a2fab8ea33c438fd9ff1c56237",
+        "game-030-0.json": "22f0de303b07a03667a0efa0a9315a377b3cf5a19dbf647fab111ff3947aed0b",
+        "game-030-1.json": "c0ed38cf36983de66e2c6594567a822de0d7fe0eb8152975e49d2e7c56cc5830",
+        "game-031-0.json": "2e01ccbed8d7746071f58468ca913050273313c421b06db0811ece4170d5c6a6",
+        "game-031-1.json": "f47c8558506a0e6a7f2c076df2bce1863f8a9c015a2767551b86a09f38a28181"
+      }
+    },
+    {
+      "id": "cp64-vs-gen32",
+      "summary": {
+        "completed_games": 64,
+        "expected_games": 64,
+        "scored": 64,
+        "wins": 36,
+        "draws": 16,
+        "losses": 12,
+        "censored": 0,
+        "full_allocation_score_bounds": [
+          0.6875,
+          0.6875
+        ],
+        "complete_pairs": 32,
+        "score": 0.6875,
+        "paired_bootstrap_95": [
+          0.59375,
+          0.78125
+        ],
+        "hoeffding_95": [
+          0.4474193021700198,
+          0.9275806978299802
+        ],
+        "scope": "Training-method development screen; left-arm score; reused openings, no final or equal-time Elo claim"
+      },
+      "elapsed_seconds": 218.91977089998545,
+      "resources": {
+        "cpu_percent": 10.526315789473683,
+        "available_gib": 16.233165740966797,
+        "utc": "2026-10-28T20:49:14Z"
+      },
+      "games": {
+        "game-000-0.json": "385b68d11e4ddb7618bd1027c2f614e21684f51b3996437f0c7e8a551d925778",
+        "game-000-1.json": "b3583c5650272d7450c81fc8920fcd030459d01203f27f76965aca87096a4d30",
+        "game-001-0.json": "db1e5a73e4b909da463db3cf08a100db181011d86f6ef45283be8db2c04c2322",
+        "game-001-1.json": "9ab64676ab31adccbaf004513cad3ad57b5d35c165c85aa1b3bc477ac49bf6e1",
+        "game-002-0.json": "7fd6ffc07fabb89b52e6bcd47d5426b95a9c7464c723f6a68d64f09a9067f1be",
+        "game-002-1.json": "b09f577b8a9e1f0ecaecb0bd8368d2fd19e8c371f64b3c4ef8e0cb134a46ee3d",
+        "game-003-0.json": "de802588aa45f9ae255bfdfa09ae624e55c2a6db25817719f94cfe5b61bd1419",
+        "game-003-1.json": "554662df972fcee5609be55ff02f1f81b9512042839617478553c7201f8034ce",
+        "game-004-0.json": "2ff748b36793b10b3fb660df3334a98ff1b527bb166f07efb4af85df20dc3c9f",
+        "game-004-1.json": "534bec0e356a4e44c429d827abb240fcb489c141ff76197f9dfab7dbd45c94b0",
+        "game-005-0.json": "13dbf7ea146af139bd12b07f3dfd4bc8b6b9c2c04b8178490b589c91edef3732",
+        "game-005-1.json": "f247569dee32efb5ee750a4441b525f2cbe8157df6eafbdb03711ba1ada98e28",
+        "game-006-0.json": "94572fedf781a140b841cf799d2192f1d35cc31af126d7cd3001da4d3c4ff180",
+        "game-006-1.json": "62640a1be5db20f5b2665959d6f05aa029dc7fbaebbbf59c8ee54e2886730a8c",
+        "game-007-0.json": "93844319e13172fc033267e725a55cf6f1842c2618d3d165e4d1acf58dc68307",
+        "game-007-1.json": "3632003aeea60add33e5e0383bbc8a9a0e7ae8b41c0842e8fc62338872a1e98f",
+        "game-008-0.json": "c6686cda479745ff8476124059c99f6b7ef71d5fc6bb80e82031842b61a5da0f",
+        "game-008-1.json": "f135ce0bf5a89ed2f188aaece4f0868766f9ab6f1fa49e7de0ad36ccff8de6f6",
+        "game-009-0.json": "33ac0edde3f562a56e8f44756c924626a4a7355785dcaf15ea22143b894860cc",
+        "game-009-1.json": "73c457fca6a1257f02989d6d7df9305bc1fb0f8ca3a0ab1fc872b41cca95fa54",
+        "game-010-0.json": "abcb74a5693cebc879a64d594c57d76b2e478cf6264384c02593bab6962fac2a",
+        "game-010-1.json": "4ba23c6a97790a88209d54d27904cd6701245e6f797d457403521a5170876d90",
+        "game-011-0.json": "9332eec8ef0fed663a4c6345e48f1fddc77a569a6dd000a4088f5040d8ec86da",
+        "game-011-1.json": "667f92ab0c41d1a8da8b57dae0e01b53351a98713e7f742afcc44a91ec687aff",
+        "game-012-0.json": "c407f45aa40604d08f8b6d41d5e85f60fe18708b122e9cda6b679ddae0de8040",
+        "game-012-1.json": "9ddaf199ab334d6d8581dc242ff097c3260ea38ff9bcba8d73b0e0a3dadbae8a",
+        "game-013-0.json": "d2df81ac7f21ee6e7ba88ab67802d68636086b94680d67dc39bf0d4a8fa8aad0",
+        "game-013-1.json": "833617dec8ab682ed8553f4c982b1aba5d0799af32322ea887a39559ee2ed9bb",
+        "game-014-0.json": "e77771f3b7a5750b158c42c677b1b4c05b078d8c12d064ad8884fccfaa45358b",
+        "game-014-1.json": "5d3c335556ecf534250266234b1be70539e6611269a4b1666657dec2ceb8fe98",
+        "game-015-0.json": "45eb585a4c14c95b984bf8730e0d4d4414c5922a6030758c6251a71f91da20fe",
+        "game-015-1.json": "5098835771430a22bd0e58c81c5ba0f9adbdb232d4c0316faabcaac51fd348d3",
+        "game-016-0.json": "af6e8f658d319c53b95d3dd163c09d6a1d89fbb1e1a845194190fd18b1ae8369",
+        "game-016-1.json": "ee5e1de32a6e3cc732c33ab69459fec62605c511e8163a67ef97b55566071ef8",
+        "game-017-0.json": "a767ebd2d27c75f8291f793789776a24af6c3c49367a7e4a427e7e84de5c4469",
+        "game-017-1.json": "2d64adcb81d7d110740c3698896f04fb2983714ebbf7cc8b5f42d411ecb2ad51",
+        "game-018-0.json": "581c943fab7eb75ba2807ddf8a8fe5bbe28fd150e42978a3d928b07b78c36ed1",
+        "game-018-1.json": "b5efcbb2e11f77753951bd274326061be7fa6e705b955186ea961dd455e00557",
+        "game-019-0.json": "f2f8840f3dc0b4bbca2c9c7285e53250be1fbd1b95135181c8f0a7044f4163b0",
+        "game-019-1.json": "91d21ede462d7b8d1f0d8f728bc3f205e8f73def213f629b8a4c1d3f5876059f",
+        "game-020-0.json": "d52b07b20c5e59033edee5d1082691603305322109a6e713168e0b48f13afe99",
+        "game-020-1.json": "6de0d2ab9e3688b6a49b373cf1da16e4f062c8ab2bedf9bb47b722f0ca51163b",
+        "game-021-0.json": "f33a06e43776382817daa9fe063e14810ed9f485d2cd4a9dd0ff6deb8af6f835",
+        "game-021-1.json": "4328081cdf06cfd17ef3b5e9d75a5e5c766a2ce58c23f01e718806a4c9a392a9",
+        "game-022-0.json": "9939468a44afcf300e92f838ce7950cce444d5b05cf100150676e671950a662e",
+        "game-022-1.json": "ac17d93bbf1137a2a708358f988c53205cb95e965d8e68747d9fee5e7800df0d",
+        "game-023-0.json": "ed8a930144f4eb14abeb4df783bf6f5ec64453550a88d8b511c8e1cc3b1cc671",
+        "game-023-1.json": "78ea5825a3f7a47a9ddf4e6993bbf3cc188ea21fc51cec501c5a6de03a648a13",
+        "game-024-0.json": "34521d1b6c25d410f63b9446b5b50eeb96b254e7f86f57d1af12fe93b34ceda5",
+        "game-024-1.json": "6f37d892a529fced83311a296a01ad039f2f7cb2ac7e33148c7901a6a01bb919",
+        "game-025-0.json": "ff9ae46c028248fae4c02b8dc5a6d3bac2e9eee8af2d4ab3a5358668a94ca4fa",
+        "game-025-1.json": "e7cc618c18ff8029960520fdcf390ebfc5585059830526781bf9e4291adb6c02",
+        "game-026-0.json": "ecc52fd0f2e583c55e47df89ec81157e97fa75295f9c37f67cdeb58ba585a497",
+        "game-026-1.json": "e810f58c7ceb16440ad562897cf44ccc91bf605ed1720bd232330704dfe18912",
+        "game-027-0.json": "d0fbfc1d1c8b357cff547c3c07e9319ce8b9ff78e6e1677a63e7d506df1ef1a6",
+        "game-027-1.json": "cc55a9d39a157d8a1002b68b43e11291e90831a39518faa2d04c94ce530e4357",
+        "game-028-0.json": "c3d34c181f371a1fddb296776c53183e32398aeb3ebddb0218722931534ec688",
+        "game-028-1.json": "0cd399518fabb5c8e60ab33fcb49bd33def1bde6ff4a0efa4f00ff4bf9c1b84e",
+        "game-029-0.json": "cd5d5fe8013e98922556418e8cea38db05210419d935424e51de50f07d121bea",
+        "game-029-1.json": "cdac6099a6a8f35b592993b8b6ee11e95d5a512e2407786fdb29a74d6b5336b0",
+        "game-030-0.json": "bf977341f3bf43fea982bd24c4043c6177ffeb775b20d9a85cd42777e93ce044",
+        "game-030-1.json": "167d0989417fb249d72ed026f7d4332255799e544654d88b9ab3c9fdb3b5b2bc",
+        "game-031-0.json": "dbd98cdc6a10e3c212542a53e13ffb6fd17d667f2d62020a2ffea0bef533209b",
+        "game-031-1.json": "ab5050895f1670dd4614321da0ba27d83dc79ce5891f8f7a2db70d69955f3945"
+      }
+    }
+  ],
+  "binding": {
+    "plan_sha256": "48d8ee6a6aa71ffc928e77e3e5c9c1c0d1f7cd1f88835a1514a0174abc64dae3",
+    "runner_sha256": "26bc41fb4a1d7e1ce86f165615c52da2e4bee7a38d4f98110b2480839c6b002d",
+    "engine_helper_sha256": "04b121eaa9de0e897c94e5e40821466bab2fb38c50be5c05f93e1fd46eea3c81",
+    "runtime": {
+      "research-launcher.properties": "a7c61ea7a9363040d74d62f8b3ce450305f0b833ef13cd5dc87a85425f5849e4",
+      "lib\\app-uci.jar": "a24bc26e00dd1e5a988d4443ff509068862f7ae8ac3bbb5f221cac69846c19a3",
+      "lib\\engine-core.jar": "449d584272dd8095b692856592b5e0f37c2d3664f637f372fab4db4baffb87a0",
+      "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+      "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "lib\\research.jar": "87ff309cdebad1fbe7f07264937d55dbb57e0cdc429214a760fec4732f528fc1",
+      "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\BrnRelationalUciMain$1.class": "db31851254a6c3372f5600a98b043474409fb81057ee454c8f0041a97e79a273",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\BrnRelationalUciMain.class": "07dc003e6e5bcf711ad8a2c2adb9de42908d96f70474da2d7abb620b2031e436",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SelectivityUciMain$1.class": "45f381877ef7cdc00347e7624d2bbcedc60208044d9a259b0566d782c4c54735",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SelectivityUciMain.class": "815eea3def5cb2c760b46d6966c65dbafec04505620bae9269fafa3df780b16a",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SpendingUciMain$1.class": "43f6669023494549289802766e868b4f86270e66312ab735e9c60f2919e668cd",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SpendingUciMain.class": "3e638447a4065c89d0868e96cfff98da752107dafe791d27f4cfd51fbc6a32c4",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64TimeUciMain$1.class": "bec1e65dc489733c8daaed5d9229b361de0e7e76aa03181fd49288cc8557602e",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64TimeUciMain.class": "283e4f3cfe2f1c440760b9bc1f98f9f80d92fb248e4aff3d3d2a12a99bcbaf5b",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain$1.class": "58c3d4ebe21a2b8aa46a3114d1bc3e37a851860312fe330867a78d5708df6598",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain.class": "1c47b49bba3d0fb4a9349db23ac757778cd6c6f9d6e32a3911eb2f1613451735",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain$1.class": "1a0b995fb5c2046b1a4e18a5cec8b0bd1eeb949595e1b1c36a556e7514c45b14",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain.class": "b35ec2373bd5a0cf4e6d714d5e7b8e6c948fc33775b5b461af10696c539b84fd",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain$1.class": "a7e2f469e7b6976ec1897c05ec9428220e9ff4a97ec03ef894189b0ecd4e3bf3",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain.class": "1fb37318975ec761b2117db35602d72fd28113e678b17700752a1764156006ec",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain$1.class": "2b01438f9b77a8c89c9b153638b85841f2dad32f74b215d3749158ba8a980b17",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain.class": "119edde9b12440c661ae89495afc65511d76e003ff4f0da644d9f37e64755281",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain$1.class": "745f48127c0e35629ea731691b838b7cf0c51ddb732f7bec9b87bb171e0fe7d6",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain.class": "706958cf81282a7d9e4b130b92f36f80219d993f86547e40d2c2a16aff431141"
+    }
+  },
+  "prediction_audit": [
+    {
+      "positions": 4096,
+      "validation_mse": 0.03383064842165796,
+      "sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "maximum_full_cache_error_pawns": 7.993605777301127e-15,
+      "model": "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\production\\bre-pair2-g32.brn-pair2"
+    },
+    {
+      "positions": 4096,
+      "validation_mse": 0.023671339410345427,
+      "sha256": "ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627",
+      "maximum_full_cache_error_pawns": 7.993605777301127e-15,
+      "model": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r002-scale-aligned-71\\epoch-24.brn-pair2"
+    }
+  ],
+  "release_receipts": [
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r001b-games\\scale71-vs-gen32\\release-1793220322161343800.json",
+      "sha256": "4ea7610c0cccb19a0e8d0238452b2b4cb85ac51491f0d275c2cf9e0b128f8c9a",
+      "result": {
+        "remaining": 0,
+        "errors": []
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r001b-games\\scale71-vs-cp64\\release-1793220554544734500.json",
+      "sha256": "4ea7610c0cccb19a0e8d0238452b2b4cb85ac51491f0d275c2cf9e0b128f8c9a",
+      "result": {
+        "remaining": 0,
+        "errors": []
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r001b-games\\cp64-vs-gen32\\release-1793220774155057100.json",
+      "sha256": "4ea7610c0cccb19a0e8d0238452b2b4cb85ac51491f0d275c2cf9e0b128f8c9a",
+      "result": {
+        "remaining": 0,
+        "errors": []
+      }
+    }
+  ],
+  "observed_search_throughput": {
+    "pair": {
+      "nodes": 57395613,
+      "seconds": 44.2606589,
+      "moves": 2920,
+      "nps": 1296763.6367473959
+    },
+    "cp64": {
+      "nodes": 57521056,
+      "seconds": 94.376651,
+      "moves": 2934,
+      "nps": 609483.9707757802
+    }
+  },
+  "limitations": "Fresh development roots reused across three comparisons; original runner scope string is generic. Throughput uses each evaluator own searched trees, not a matched-position speed experiment. No equal-time Elo, final confirmation or production-profile claim."
+}

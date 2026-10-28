@@ -1,0 +1,18 @@
+{
+  "mode": "aligned",
+  "seed": 97,
+  "rate": 0.01,
+  "epochs": 40,
+  "train": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-data\\train.tsv",
+  "validation": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-data\\validation.tsv",
+  "train_sha256": "723f4ecc42a3a783fe0c86a31a68dbd55512e55f7a6dd86ce53f87cbd6c17153",
+  "validation_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+  "cp64": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r007-bt4-97",
+  "initial_epoch": 24,
+  "initial_state": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-aligned-97\\epoch-24.state",
+  "initial_state_sha256": "9873c92e8d37362e75c73f47e2d21fa84e5354bb06d3467b88d514561c102da0",
+  "parent_config": "docs\\research\\brn-relational-cglhw\\r002-scale-aligned-97.json",
+  "parent_config_sha256": "64621458e518d5bb861097e79066c9fc0e38ce5c5af4f443d31b2c20ac369d55",
+  "target_fork": "bt4"
+}

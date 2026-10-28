@@ -1,0 +1,36 @@
+{
+  "result": {
+    "seconds": 77.9063203,
+    "datasets": {
+      "train": {
+        "chunks": 16,
+        "sha256": "b9e01e578c2765a77a906b818d8ba5595d7c3f64156674c4dccd2f80a5cde63a",
+        "rows": 1048576,
+        "data": "docs\\research\\brn-relational-cglhw\\raw\\r007-teacher-data\\train\\data.tsv"
+      },
+      "validation": {
+        "chunks": 1,
+        "sha256": "9e0c869225dc15c89cc1ce9181eefd12e0f3d9cbe2d259d4773a5208fd99ad73",
+        "rows": 4096,
+        "data": "docs\\research\\brn-relational-cglhw\\raw\\r007-teacher-data\\validation\\data.tsv"
+      }
+    },
+    "config_sha256": "145c37a88c787aed2c78e0f8700f4b8b6f80dc9f5c6971f4f95a1942f41d002b",
+    "teacher_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+  },
+  "binding": {
+    "config_sha256": "145c37a88c787aed2c78e0f8700f4b8b6f80dc9f5c6971f4f95a1942f41d002b",
+    "runtime": {
+      "engine-core.jar": "b983a40bac86600d487f2e6a86487f92ac28ae1ad3cb76fd140bca24ad355e54",
+      "engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+      "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "research.jar": "9fb363f88b214a22daaad8dcdde83a87fef2e2ab56a80c2ff6eb89da7c816d4d",
+      "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+    },
+    "runner_sha256": "5530efa762c5cc0c03a7b1565097ddcf745bd6b09fe45b60b1427e753c8e981f"
+  },
+  "result_sha256": "6bf5d3572339e2fa8d8cfb3f89736689de9ca0ba9166c0e5396ac526d21bb75a",
+  "result_path": "docs\\research\\brn-relational-cglhw\\raw\\r007-teacher-data\\result.json"
+}

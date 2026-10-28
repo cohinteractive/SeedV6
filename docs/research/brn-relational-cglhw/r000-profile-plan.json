@@ -1,0 +1,27 @@
+{
+  "comparisons": [
+    {
+      "id": "scale71-vs-cp64",
+      "left": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-aligned-71\\epoch-24.brn-pair2",
+        "sha256": "ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627",
+        "evaluator": "pair"
+      },
+      "right": {
+        "path": "build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+        "sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+        "evaluator": "cp64"
+      }
+    }
+  ],
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r000-profile-runtime",
+  "qualification": "docs\\research\\brn-relational-cglhw\\raw\\r000-profile-qualification",
+  "search_profile": "cp64-profile",
+  "nodes": 20000,
+  "probe_fens": [
+    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+    "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+    "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1"
+  ]
+}

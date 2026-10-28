@@ -17,7 +17,8 @@ public final class MessageDiagnostic {
     public static void main(String[] args)throws Exception {
         PairObjectiveDiagnostic.permission();var config=JsonParser.parseString(Files.readString(Path.of(args[0]))).getAsJsonObject();
         String mode=config.get("mode").getAsString();if(!Set.of("PAIR","COMPOSE").contains(mode))throw new IllegalArgumentException("Mode");
-        long seed=config.get("seed").getAsLong();var model=new RelationalMessages(mode.equals("COMPOSE"),config.get("rate").getAsDouble(),seed);
+        long seed=config.get("seed").getAsLong();boolean regularized=config.has("regularized")&&config.get("regularized").getAsBoolean();
+        var model=new RelationalMessages(mode.equals("COMPOSE"),config.get("rate").getAsDouble(),seed,regularized);
         Path out=Path.of(config.get("output").getAsString());Files.createDirectories(out);
         Path trainPath=Path.of(config.get("train").getAsString()),valPath=Path.of(config.get("validation").getAsString());
         if(!PairObjectiveDiagnostic.sha(trainPath).equals(config.get("train_sha256").getAsString())||!PairObjectiveDiagnostic.sha(valPath).equals(config.get("validation_sha256").getAsString()))throw new IllegalArgumentException("Data identity");
@@ -55,7 +56,7 @@ public final class MessageDiagnostic {
                 "state_sha256",PairObjectiveDiagnostic.sha(state),"updates",model.step);
             Files.writeString(receipt,gson.toJson(r)+"\n",StandardOpenOption.CREATE_NEW);metrics.add(r);
         }
-        var result=Map.of("mode",mode,"seed",seed,"parameters",RelationalMessages.PARAMETERS,"metrics",metrics,
+        var result=Map.of("mode",mode,"seed",seed,"parameters",RelationalMessages.PARAMETERS,"metrics",metrics,"regularized",regularized,
             "preparation_seconds",prep,"optimization_checkpoint_seconds",(System.nanoTime()-start)/1e9,
             "full_graph_inference_ns",inferenceNs,"checksum",checksum,"scope","development pilot; no incremental/search/strength qualification");
         Files.writeString(out.resolve("result.json"),gson.toJson(result)+"\n",StandardOpenOption.CREATE_NEW);System.out.println(gson.toJson(result));

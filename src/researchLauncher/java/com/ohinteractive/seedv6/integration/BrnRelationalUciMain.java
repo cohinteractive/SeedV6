@@ -10,6 +10,7 @@ import java.util.HexFormat;
 import com.ohinteractive.seedv6.search.common.TimeSource;
 import com.ohinteractive.seedv6.search.driver.AspirationSearch;
 import com.ohinteractive.seedv6.search.driver.ConventionalNnueEngine;
+import com.ohinteractive.seedv6.search.driver.BaselineEngine;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.exact.ConstructionSearch;
 import com.ohinteractive.seedv6.search.manage.SearchLifecycleService;
@@ -20,8 +21,10 @@ import com.ohinteractive.seedv6.uci.UciEngine;
 /** Matched evaluator comparison; never packaged or selected as production. */
 public final class BrnRelationalUciMain {
     public static void main(String[] args) throws Exception {
-        if (args.length != 2 || !(args[0].equals("cp64") || args[0].equals("brep2") || args[0].equals("pair")))
-            throw new IllegalArgumentException("cp64|brep2|pair FROZEN_MODEL");
+        if ((args.length != 2 && args.length != 3) || !(args[0].equals("cp64") || args[0].equals("brep2") || args[0].equals("pair")))
+            throw new IllegalArgumentException("cp64|brep2|pair FROZEN_MODEL [common|cp64-profile]");
+        String profile=args.length==3?args[2]:"common";
+        if(!profile.equals("common")&&!profile.equals("cp64-profile"))throw new IllegalArgumentException("Search profile");
         if (System.getenv("SEED_NNUE_OPERATION") == null)
             throw new IllegalStateException("Use nnue-control.cmd run");
         var model = Path.of(args[1]);
@@ -33,7 +36,8 @@ public final class BrnRelationalUciMain {
         var configuration = new UciConfiguration() {
             public SearchLifecycleService service(int workers, int hash) {
                 if (workers != 1) throw new IllegalArgumentException("One worker only");
-                var search = ConstructionSearch.v1(1, hash, AspirationSearch.Policy.ADAPTIVE16);
+                var search = profile.equals("cp64-profile")?BaselineEngine.configuration(1,hash)
+                        :ConstructionSearch.v1(1, hash, AspirationSearch.Policy.ADAPTIVE16);
                 return new SearchLifecycleService(TimeSource.SYSTEM, () -> search.create(evaluation),
                         RootTablebase.NONE, Book.EMPTY);
             }
@@ -45,7 +49,9 @@ public final class BrnRelationalUciMain {
             public String identity(int workers, int hash) {
                 return "mode=research workstream=seedv6-brn-relational-20261029 evaluator=" + args[0]
                         + " modelSha256=" + modelHash
-                        + " configuration=" + ConstructionSearch.v1(1, hash, AspirationSearch.Policy.ADAPTIVE16).identity()
+                        + " profile=" + profile
+                        + " configuration=" + (profile.equals("cp64-profile")?BaselineEngine.configuration(1,hash)
+                            :ConstructionSearch.v1(1, hash, AspirationSearch.Policy.ADAPTIVE16)).identity()
                         + " book=OFF tablebase=OFF";
             }
         };

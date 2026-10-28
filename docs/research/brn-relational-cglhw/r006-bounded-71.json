@@ -1,0 +1,12 @@
+{
+  "mode": "PAIR",
+  "regularized": true,
+  "seed": 71,
+  "rate": 0.01,
+  "epochs": 8,
+  "train": "docs\\research\\brn-relational-cglhw\\raw\\r002-coverage-data\\train.tsv",
+  "validation": "docs\\research\\brn-relational-cglhw\\raw\\r002-coverage-data\\validation.tsv",
+  "train_sha256": "d4f7f76448cedf6ee6a314db0796172dceeedc36348494ca4a799e91312cd1b8",
+  "validation_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r006-bounded-71"
+}

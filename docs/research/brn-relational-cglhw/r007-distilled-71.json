@@ -1,0 +1,20 @@
+{
+  "mode": "aligned",
+  "seed": 71,
+  "rate": 0.01,
+  "epochs": 40,
+  "train": "docs\\research\\brn-relational-cglhw\\raw\\r007-teacher-data\\train\\data.tsv",
+  "validation": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-data\\validation.tsv",
+  "train_sha256": "b9e01e578c2765a77a906b818d8ba5595d7c3f64156674c4dccd2f80a5cde63a",
+  "validation_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+  "cp64": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r007-distilled-71",
+  "initial_epoch": 24,
+  "initial_state": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-aligned-71\\epoch-24.state",
+  "initial_state_sha256": "2053de545d3412bfcf703919d1c2c0002ee5896cc77fa9a96ae16afe558112f5",
+  "parent_config": "docs\\research\\brn-relational-cglhw\\r002-scale-aligned-71.json",
+  "parent_config_sha256": "342e0e41d100e7782a90be00dfe297a7b956923ea12dfa5f0a9a3c3f37bbdb77",
+  "target_fork": "distilled",
+  "teacher_manifest": "docs\\research\\brn-relational-cglhw\\raw\\r007-teacher-data\\result.json",
+  "teacher_manifest_sha256": "6bf5d3572339e2fa8d8cfb3f89736689de9ca0ba9166c0e5396ac526d21bb75a"
+}

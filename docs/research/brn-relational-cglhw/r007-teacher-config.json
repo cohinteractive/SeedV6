@@ -1,0 +1,15 @@
+{
+  "teacher": "build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+  "teacher_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r007-teacher-data",
+  "train": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-data\\train.tsv",
+    "sha256": "723f4ecc42a3a783fe0c86a31a68dbd55512e55f7a6dd86ce53f87cbd6c17153",
+    "rows": 1048576
+  },
+  "validation": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-data\\validation.tsv",
+    "sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+    "rows": 4096
+  }
+}

@@ -9,14 +9,18 @@ public final class RelationalMessages {
     static final int WIDTH=8, E=769, R=E+768*WIDTH, Q=R+2700*WIDTH,
             C=Q+768*WIDTH, PARAMETERS=C+768*WIDTH;
     final boolean compose;
+    final boolean regularized;
     final double rate;
     final double[] weights=new double[PARAMETERS],first=new double[PARAMETERS],second=new double[PARAMETERS],gradient=new double[PARAMETERS];
     final int[] stamps=new int[PARAMETERS],touched=new int[PARAMETERS];
     int serial,count;
     long step;
     public RelationalMessages(boolean compose,double rate,long seed) {
+        this(compose,rate,seed,false);
+    }
+    public RelationalMessages(boolean compose,double rate,long seed,boolean regularized) {
         if(!Double.isFinite(rate)||rate<=0)throw new IllegalArgumentException("Rate");
-        this.compose=compose;this.rate=rate;
+        this.compose=compose;this.rate=rate;this.regularized=regularized;
         var random=new Random(seed);for(int i=E;i<C;i++)weights[i]=.1*random.nextGaussian();
     }
     static final class Features {
@@ -84,25 +88,31 @@ public final class RelationalMessages {
     }
     double train(Features[] batch,double[] targets) {
         double loss=gradients(batch,targets);step++;double c1=1-Math.pow(.9,step),c2=1-Math.pow(.999,step);
+        if(regularized)for(int i=0;i<weights.length;i++)weights[i]*=1-rate*.01;
         for(int n=0;n<count;n++) {
             int i=touched[n];double g=gradient[i];first[i]=.9*first[i]+.1*g;second[i]=.999*second[i]+.001*g*g;
             weights[i]-=rate*(first[i]/c1)/(Math.sqrt(second[i]/c2)+1e-8);
             if(!Double.isFinite(weights[i]))throw new ArithmeticException("Nonfinite message parameter");
         }
+        if(regularized)for(int i=0;i<weights.length;i++)weights[i]=Math.max(-.99,Math.min(.99,weights[i]));
         return loss;
     }
     void write(OutputStream stream)throws IOException {
         var bytes=new ByteArrayOutputStream();var out=new DataOutputStream(bytes);
-        out.writeLong(0x42524e4d53473031L);out.writeInt(compose?1:0);out.writeInt(PARAMETERS);out.writeDouble(rate);out.writeLong(step);
+        out.writeLong(0x42524e4d53473032L);out.writeInt(compose?1:0);out.writeInt(PARAMETERS);out.writeDouble(rate);out.writeLong(step);out.writeInt(regularized?1:0);
         for(var array:new double[][]{weights,first,second})for(double value:array)out.writeDouble(value);
         out.flush();var crc=new java.util.zip.CRC32();crc.update(bytes.toByteArray());out.writeLong(crc.getValue());stream.write(bytes.toByteArray());
     }
     static RelationalMessages read(InputStream stream)throws IOException {
-        byte[] bytes=stream.readNBytes(40+24*PARAMETERS+1);if(bytes.length!=40+24*PARAMETERS)throw new IOException("Message state length");
+        byte[] bytes=stream.readNBytes(44+24*PARAMETERS+1);if(bytes.length!=40+24*PARAMETERS&&bytes.length!=44+24*PARAMETERS)throw new IOException("Message state length");
         var crc=new java.util.zip.CRC32();crc.update(bytes,0,bytes.length-8);var in=new DataInputStream(new ByteArrayInputStream(bytes));
-        if(in.readLong()!=0x42524e4d53473031L)throw new IOException("Message state magic");
+        long magic=in.readLong();if(magic!=0x42524e4d53473031L&&magic!=0x42524e4d53473032L)throw new IOException("Message state magic");
+        boolean version2=magic==0x42524e4d53473032L;
+        if(bytes.length!=(version2?44:40)+24*PARAMETERS)throw new IOException("Message version length");
         int mode=in.readInt();if(mode<0||mode>1||in.readInt()!=PARAMETERS)throw new IOException("Message geometry");
-        var model=new RelationalMessages(mode==1,in.readDouble(),0);model.step=in.readLong();if(model.step<0)throw new IOException("Message step");
+        double rate=in.readDouble();long step=in.readLong();int regularized=version2?in.readInt():0;
+        if(regularized<0||regularized>1||step<0)throw new IOException("Message optimizer");
+        var model=new RelationalMessages(mode==1,rate,0,regularized==1);model.step=step;
         for(var array:new double[][]{model.weights,model.first,model.second})for(int i=0;i<array.length;i++){
             array[i]=in.readDouble();if(!Double.isFinite(array[i]))throw new IOException("Message nonfinite");
         }

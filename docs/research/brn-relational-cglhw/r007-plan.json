@@ -1,0 +1,11 @@
+{
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime",
+  "configs": [
+    "docs\\research\\brn-relational-cglhw\\r007-bt4-71.json",
+    "docs\\research\\brn-relational-cglhw\\r007-bt4-97.json",
+    "docs\\research\\brn-relational-cglhw\\r007-distilled-71.json",
+    "docs\\research\\brn-relational-cglhw\\r007-distilled-97.json"
+  ],
+  "max_seconds_per_arm": 300,
+  "summary": "docs\\research\\brn-relational-cglhw\\raw\\r007-execution.json"
+}

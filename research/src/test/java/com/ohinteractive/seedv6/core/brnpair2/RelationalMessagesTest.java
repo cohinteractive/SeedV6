@@ -7,6 +7,24 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RelationalMessagesTest {
+    @Test void regularizerBoundsContinuationAndVersionOneCompatibility()throws Exception {
+        var model=new RelationalMessages(false,.01,71,true);var w=new RelationalMessages.Workspace();var f=w.encode(Board.startingPosition()).frozen();
+        Arrays.fill(model.weights,RelationalMessages.E,RelationalMessages.Q,1.5);
+        model.weights[RelationalMessages.C]=.5; // Inactive in PAIR, but dense decay still applies.
+        var batch=new RelationalMessages.Features[]{f};double[] target={.7};model.train(batch,target);
+        for(double value:model.weights)assertTrue(Math.abs(value)<=.99);
+        assertEquals(.5*(1-.01*.01),model.weights[RelationalMessages.C],0);
+        var bytes=new ByteArrayOutputStream();model.write(bytes);var restored=RelationalMessages.read(new ByteArrayInputStream(bytes.toByteArray()));assertTrue(restored.regularized);
+        model.train(batch,target);restored.train(batch,target);assertArrayEquals(model.weights,restored.weights);assertArrayEquals(model.first,restored.first);
+        // Independently emit the original R004 envelope, including its original CRC.
+        var original=new RelationalMessages(false,.01,97);original.train(batch,target);
+        var oldBytes=new ByteArrayOutputStream();var output=new DataOutputStream(oldBytes);
+        output.writeLong(0x42524e4d53473031L);output.writeInt(0);output.writeInt(RelationalMessages.PARAMETERS);output.writeDouble(original.rate);output.writeLong(original.step);
+        for(var array:new double[][]{original.weights,original.first,original.second})for(double value:array)output.writeDouble(value);
+        output.flush();var crc=new java.util.zip.CRC32();crc.update(oldBytes.toByteArray());output.writeLong(crc.getValue());
+        var imported=RelationalMessages.read(new ByteArrayInputStream(oldBytes.toByteArray()));assertFalse(imported.regularized);
+        original.train(batch,target);imported.train(batch,target);assertArrayEquals(original.weights,imported.weights);assertArrayEquals(original.second,imported.second);
+    }
     @Test void factorizedEdgesMatchIndependentOracleAndColorPerspective() {
         for(String fen:List.of("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1","r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1","4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1","4k3/P7/8/8/8/8/7p/4K3 b - - 0 1")) {
             long[] b=Board.fromFen(fen);var workspace=new RelationalMessages.Workspace();var f=workspace.encode(b);

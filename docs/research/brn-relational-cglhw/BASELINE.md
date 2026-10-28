@@ -51,6 +51,13 @@ separate128-game confirmations. Read CANDIDATE-HANDOFF/E008/E009 for assumptions
 and intervals. This supports a complete-engine result, not architecture-only Elo.
 Current production is Construction V1/flags3407871/ADAPTIVE16, with BOUNDARY2 only
 for managed clocks; this research will not revisit unopened failed clock studies.
+Source reinspection names the two extra CP64-specific flags: NOMINAL_FUTILITY
+and VERIFIED_NULL. BaselineEngine selects them only for the frozen CP64 payload;
+its BREP2/HCE path uses original262143. R001/R001B deliberately hold262143 fixed.
+Their results cannot establish strength against the deployed CP64 composition.
+Any promising candidate needs a separately frozen comparison using the deployed
+CP64 mechanism set,with evaluator/search factors stated explicitly; no Search
+policy or production default has been changed by this investigation.
 
 ## Relational baseline and surviving evidence
 
