@@ -1,0 +1,296 @@
+{
+  "plan_sha256": "8ab21a7453c673f8414b2cd0c1b89e73a5a40e7b61c6b96f2a543a862450f8f9",
+  "analysis_sha256": "e307faabf1ae97813b7cbc17f3721a52da8bd5095430ec3678bd66048e4291f8",
+  "resources": {
+    "cpu_percent": 13.756613756613756,
+    "available_gib": 18.386451721191406,
+    "utc": "2026-10-28T23:57:28Z"
+  },
+  "old_evidence": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r029-prediction.json",
+    "sha256": "306b79a0852bbdfb5cbfce8811e4e101037c04caf69474946de0feb4f4b43bda",
+    "receipt": {
+      "sha256": "306b79a0852bbdfb5cbfce8811e4e101037c04caf69474946de0feb4f4b43bda",
+      "seconds": 1.3557728999876417,
+      "resources": [
+        {
+          "cpu_percent": 7.978723404255317,
+          "available_gib": 17.930850982666016,
+          "utc": "2026-10-28T23:29:38Z"
+        }
+      ]
+    }
+  },
+  "played_evidence": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r034-prediction.json",
+    "sha256": "8845a08df1f41fe4debdfa49d6cea8d40c75518e33684ba3e2e9fafdf6f8de2e",
+    "receipt": {
+      "sha256": "8845a08df1f41fe4debdfa49d6cea8d40c75518e33684ba3e2e9fafdf6f8de2e",
+      "seconds": 0.5105489999987185,
+      "resources": [
+        {
+          "cpu_percent": 7.222222222222219,
+          "available_gib": 18.391948699951172,
+          "utc": "2026-10-28T23:57:25Z"
+        }
+      ]
+    }
+  },
+  "original_played_evidence": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r026-prediction.json",
+    "sha256": "b106f547e28342e659114a5e82e3301fa3271d7f53dd1b13cf8d20b3f6492106",
+    "receipt": {
+      "sha256": "b106f547e28342e659114a5e82e3301fa3271d7f53dd1b13cf8d20b3f6492106",
+      "seconds": 0.7856715000234544,
+      "resources": {
+        "cpu_percent": 5.2083333333333375,
+        "available_gib": 18.14410400390625,
+        "utc": "2026-10-28T23:11:15Z"
+      }
+    }
+  },
+  "target_and_metadata_parity": true,
+  "old_inverse_forward_parity": true,
+  "coverage": {
+    "old": 0.8690185546875,
+    "played_noncheck": 0.9885844748858448,
+    "old_retained": 7119,
+    "played_retained": 866
+  },
+  "cells": [
+    {
+      "id": 0,
+      "label": "pieces2-10|absCP0-199",
+      "old_count": 1061,
+      "played_count": 0,
+      "retained": false
+    },
+    {
+      "id": 1,
+      "label": "pieces2-10|absCP200-599",
+      "old_count": 439,
+      "played_count": 11,
+      "retained": true
+    },
+    {
+      "id": 2,
+      "label": "pieces2-10|absCP600-1599",
+      "old_count": 272,
+      "played_count": 26,
+      "retained": true
+    },
+    {
+      "id": 3,
+      "label": "pieces2-10|absCP1600+",
+      "old_count": 670,
+      "played_count": 64,
+      "retained": true
+    },
+    {
+      "id": 4,
+      "label": "pieces11-20|absCP0-199",
+      "old_count": 1244,
+      "played_count": 24,
+      "retained": true
+    },
+    {
+      "id": 5,
+      "label": "pieces11-20|absCP200-599",
+      "old_count": 1301,
+      "played_count": 32,
+      "retained": true
+    },
+    {
+      "id": 6,
+      "label": "pieces11-20|absCP600-1599",
+      "old_count": 298,
+      "played_count": 117,
+      "retained": true
+    },
+    {
+      "id": 7,
+      "label": "pieces11-20|absCP1600+",
+      "old_count": 109,
+      "played_count": 101,
+      "retained": true
+    },
+    {
+      "id": 8,
+      "label": "pieces21-32|absCP0-199",
+      "old_count": 1880,
+      "played_count": 200,
+      "retained": true
+    },
+    {
+      "id": 9,
+      "label": "pieces21-32|absCP200-599",
+      "old_count": 796,
+      "played_count": 176,
+      "retained": true
+    },
+    {
+      "id": 10,
+      "label": "pieces21-32|absCP600-1599",
+      "old_count": 110,
+      "played_count": 115,
+      "retained": true
+    },
+    {
+      "id": 11,
+      "label": "pieces21-32|absCP1600+",
+      "old_count": 12,
+      "played_count": 10,
+      "retained": false
+    }
+  ],
+  "models": [
+    {
+      "id": "r028-one-71",
+      "state_sha256": "555fba100a70371755894a9653b409d806eb6b725345fd76b4b23eb1b4d2fec1",
+      "cells": [
+        {
+          "id": 0,
+          "old_mse": 0.009941119997710305,
+          "played_mse": null
+        },
+        {
+          "id": 1,
+          "old_mse": 0.015240148872786373,
+          "played_mse": 0.05795367378293401
+        },
+        {
+          "id": 2,
+          "old_mse": 0.0278807337888538,
+          "played_mse": 0.0658494364378825
+        },
+        {
+          "id": 3,
+          "old_mse": 0.004800212065040447,
+          "played_mse": 0.012204645786687228
+        },
+        {
+          "id": 4,
+          "old_mse": 0.0074897506045114755,
+          "played_mse": 0.033434360208250885
+        },
+        {
+          "id": 5,
+          "old_mse": 0.019786019591399653,
+          "played_mse": 0.04495960658266071
+        },
+        {
+          "id": 6,
+          "old_mse": 0.040311203111477165,
+          "played_mse": 0.08555209631631318
+        },
+        {
+          "id": 7,
+          "old_mse": 0.005675984528429642,
+          "played_mse": 0.026106291442438527
+        },
+        {
+          "id": 8,
+          "old_mse": 0.004458646164403157,
+          "played_mse": 0.014198818720436943
+        },
+        {
+          "id": 9,
+          "old_mse": 0.015662341245333077,
+          "played_mse": 0.03698993879190465
+        },
+        {
+          "id": 10,
+          "old_mse": 0.03669657960612512,
+          "played_mse": 0.0773844118057699
+        },
+        {
+          "id": 11,
+          "old_mse": 0.006093521288992269,
+          "played_mse": 0.030486268297896885
+        }
+      ],
+      "raw_old_mse": 0.012290913313063498,
+      "raw_played_noncheck_mse": 0.04174908545866257,
+      "raw_ratio": 3.396743951833849,
+      "old_overlap_mse": 0.012651567816768875,
+      "played_overlap_mse": 0.04187914108407557,
+      "composition_matched_old_mse": 0.017518191775847996,
+      "residual_ratio": 2.390608666689764
+    },
+    {
+      "id": "r028-one-97",
+      "state_sha256": "886128c090ef655f60c8bc9aa2d03d393f1e007881bdd0310ce0defa55024f76",
+      "cells": [
+        {
+          "id": 0,
+          "old_mse": 0.010147686247335823,
+          "played_mse": null
+        },
+        {
+          "id": 1,
+          "old_mse": 0.016476545018056694,
+          "played_mse": 0.06849854321428003
+        },
+        {
+          "id": 2,
+          "old_mse": 0.02938867517996989,
+          "played_mse": 0.0678068734718768
+        },
+        {
+          "id": 3,
+          "old_mse": 0.004848716190960402,
+          "played_mse": 0.01412223703855387
+        },
+        {
+          "id": 4,
+          "old_mse": 0.007865902984553832,
+          "played_mse": 0.03666386568329385
+        },
+        {
+          "id": 5,
+          "old_mse": 0.020245968652340747,
+          "played_mse": 0.04428245464794148
+        },
+        {
+          "id": 6,
+          "old_mse": 0.041545859824851775,
+          "played_mse": 0.08367975294907362
+        },
+        {
+          "id": 7,
+          "old_mse": 0.005981410576740802,
+          "played_mse": 0.02964286243311202
+        },
+        {
+          "id": 8,
+          "old_mse": 0.004427954756846793,
+          "played_mse": 0.014060610521751348
+        },
+        {
+          "id": 9,
+          "old_mse": 0.016309070097420185,
+          "played_mse": 0.03549353534192413
+        },
+        {
+          "id": 10,
+          "old_mse": 0.03660669823806502,
+          "played_mse": 0.0833688554775293
+        },
+        {
+          "id": 11,
+          "old_mse": 0.004319489628687441,
+          "played_mse": 0.0436289350107021
+        }
+      ],
+      "raw_old_mse": 0.012669095678777609,
+      "raw_played_noncheck_mse": 0.04290457698237927,
+      "raw_ratio": 3.3865540264448426,
+      "old_overlap_mse": 0.01305895530503984,
+      "played_overlap_mse": 0.04289621257096676,
+      "composition_matched_old_mse": 0.017925015829393497,
+      "residual_ratio": 2.3930920329021643
+    }
+  ],
+  "search_distribution_training_experiment_justified": true,
+  "scope": "Prespecified descriptive matching on consumed development;unknown game clustering;CP64 reference is not ground truth;no holdout reclassification,training,collection or strength claim."
+}

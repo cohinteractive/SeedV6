@@ -266,3 +266,8 @@ No attention tuning;R034 checks composition of played-distribution error first.
 Historical runner preserved at raw/r029-prediction-runner.py;current R033 binding
 includes RoutingMechanismAudit dispatch. Earlier consumed panels remain held out
 from all training;no reclassification or data collection is authorized yet.
+
+R034 complete:exact frozen prediction/target parity,independent old-panel checks,
+fixed12-cell matching passes allocation gate. R035 separately authorizes bounded
+new data collection;no earlier holdouts reclassified. Existing frozen R030 search
+runtime is reused;research-only helpers do not change build78.

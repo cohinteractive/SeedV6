@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R034 matched played-distribution diagnosis**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R035 bounded neural search-distribution corpus**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,11 +25,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R033 complete:stable activations,active but unhelpful contextual routing,played
-teacher loss3.54-3.77x old development. No attention tuning. R034 prospectively
-matches piece-count/teacher-confidence strata before any new data allocation.
-Use frozen R028 ONE predictions on existing R026 played cases and R0298192 old
-panel;verify identities and prescribed coverage/ratio gates. No training or games.
+R034 complete:phase/confidence matching retains86.9%/98.9% and residual error
+ratios2.39 in both ONE seeds. R035 admits48 fixed-node data-generation games from
+24 fresh roots,grouped16 train/8 development before play. Freeze selection and
+run two24-game stages using unchanged R030 runtime,then purge prior aliases and
+check coverage before any separate training allocation. See R035.md.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -77,7 +77,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R031 | Neural warm-start step-size | Complete;LOW teacher2.4% worse than CONTROL,fails5%;no rate/epoch sweep |
 | R032 | Contextual neural routing | Complete;dynamic routing/use gates fail;no attention sweep |
 | R033 | Frozen neural mechanism diagnosis | Complete;no broad saturation,context active but unhelpful;played loss3.54-3.77x |
-| R034 | Matched played-distribution gap | Prospective piece-count/teacher-confidence diagnostic before new data |
+| R034 | Matched played-distribution gap | Complete;retained86.9%/98.9%,residual2.39x both seeds;data pilot justified |
+| R035 | Fresh neural search-distribution corpus | Prospective48 fixed-node games,root-grouped split and strict alias exclusions |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
