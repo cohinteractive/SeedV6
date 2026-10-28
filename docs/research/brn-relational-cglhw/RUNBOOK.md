@@ -205,3 +205,7 @@ No failed arm is repeated or promoted. R021 tests a single optimizer mechanism.
 R021 complete:two optimizer tests and unchanged R017 inference-class parity;both
 dense pilots fail quality gate. Preserve optimizer-mode states and all raw receipts.
 Next R022 adds a distinct learned composition across controlled squares.
+
+R022 complete:four tests and two full checkpoints;useful second path but below
+fixed improvement gate. R023 reviews accumulated evidence and isolates width.
+No previous experiment is reclassified or repeated.

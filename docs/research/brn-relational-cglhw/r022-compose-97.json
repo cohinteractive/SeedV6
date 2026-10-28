@@ -1,0 +1,23 @@
+{
+  "mode": "COMPOSE",
+  "seed": 97,
+  "rate": 0.01,
+  "epochs": 1,
+  "train_positions": 1048576,
+  "train": "docs\\research\\brn-relational-cglhw\\raw\\r007-teacher-data\\train\\data.tsv",
+  "validation": "docs\\research\\brn-relational-cglhw\\raw\\r007-teacher-data\\validation\\data.tsv",
+  "train_sha256": "b9e01e578c2765a77a906b818d8ba5595d7c3f64156674c4dccd2f80a5cde63a",
+  "validation_sha256": "9e0c869225dc15c89cc1ce9181eefd12e0f3d9cbe2d259d4773a5208fd99ad73",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r022-compose-97",
+  "width": 8,
+  "batch": 128,
+  "weight_decay": 0.01,
+  "weight_bound": 0.99,
+  "target_fork": "CP64-distilled",
+  "teacher_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "original_validation": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-data\\validation.tsv",
+  "original_validation_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+  "control": "docs\\research\\brn-relational-cglhw\\r017-all-97.json",
+  "control_sha256": "362a66b51f49bf2b3a22d14ace29d2cb1054fab0399f39e4e222ce7ff83a2d74",
+  "architecture": "square-field-to-piece-composition"
+}

@@ -1,0 +1,23 @@
+{
+  "tests": {
+    "name": "com.ohinteractive.seedv6.core.brnpair2.ComposedAttackFieldNetworkTest",
+    "tests": "4",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-28T22:49:04",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.487"
+  },
+  "raw_test": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r022-passed-tests.xml",
+    "sha256": "f49fee3201ca0c42fd32921255a0c850a812a70319016bf4091ddaba41b16667"
+  },
+  "source_sha256": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ComposedAttackFieldDiagnostic.java": "8155bd2bbf30f9d5c313fd29d526eec1f7d4783b850b8f73ad6291af1b4adb7c",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ComposedAttackFieldNetwork.java": "dad62fb20e0a49d7037e2de3234f055593d9f0daf6e99030b772322914c7a8cd",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ComposedAttackFieldNetworkTest.java": "5082e50a83c060e292d59aab972262ac4a3f58ad743f99b4dcf6acded2f14020"
+  },
+  "source_base": "636519c5a6aa04fcd7a74fa76272e6a561301cde",
+  "scope": "Independent two-pass equations and legal-walk/special/color views,11 nonzero gradient families,tiny fit,bounds,exact legacy disabled-pass updater parity,CRC/resume and tail encoding."
+}

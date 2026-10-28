@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R022 higher-order neural field composition**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R023 bounded neural channel-capacity test**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,9 +25,9 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R021 complete:both dense pilots fail teacher improvement gate;no optimizer sweep.
-Read R022.md. Implement and test square-field-to-piece nonlinear composition,
-then freeze two bounded neural pilots only after correctness. Reuse R017 controls.
+R022 complete:consistent useful added composition,but1.48%/1.59% teacher gains
+fail2% gate. R023.md records programme-level review and a separate width8-to16
+capacity hypothesis. Implement/verify the wider prototype before freezing pilots.
 No live empirical job remains. No Pair-2 training,R010 continuation,search or
 production promotion is admitted.
 
@@ -65,7 +65,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R019 | Learned cross-channel transformation of attack fields | Complete;teacher gain-.51%/+.45% fails2%;no scaling/search |
 | R020 | Horizontal canonicalization control for neural field learning | Complete;exact invariance,but teacher loss worsens .10%/.51%;no scaling/search |
 | R021 | Dense versus masked neural adaptive updates | Complete;teacher loss worsens .048%/.095%;no optimizer sweep |
-| R022 | Square-field to piece nonlinear composition | Prospective new learned relational path;correctness first |
+| R022 | Square-field to piece nonlinear composition | Complete;useful second path,1.48%/1.59% teacher gains fail2% gate |
+| R023 | Programme review and latent channel capacity | Prospective width16 test with explicit cost trade-off |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -101,7 +102,7 @@ before any recovery; never rewrite completed bindings to accept changed tools.
 
 ## Validation and required action
 
-76 distinct focused tests have passed:23 baseline Java,43 research Java,
+80 distinct focused tests have passed:23 baseline Java,47 research Java,
 10 Python. The selector's renamed import received syntax validation but no new
 runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,
