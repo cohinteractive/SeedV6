@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R026 neural calibration/distribution diagnosis**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R027 bounded neural output-scale diagnosis**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,13 +25,12 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R025 complete:all32 games legal and node-budget compliant;R022 seeds score9.375%
-and21.875% versus CP64 at10k nodes. No promotion or further match allocation.
-R026.md specifies read-only diagnosis:sample at most32 roots/game from immutable
-records,verify replay,then compare frozen endpoint scores/calibration against
-CP64 and the earlier8192-row panel. Implement the bounded selector/audit before
-running it. No training,clock work or production promotion is admitted. All owned
-processes are released;runtime/model/game evidence remains locally available.
+R026 complete:both R022 seeds show compression on both panels;played-root
+opposite-sign errors also rise and cannot be fixed by scaling. R027.md admits
+one bounded training-only positive scalar per frozen seed. Implement/test the
+scalar search before the short hash-bound fit;do not alter neural weights or
+fit to development/game positions. No games or production promotion admitted.
+All owned processes are released;R025 game/checkpoint evidence remains intact.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -71,7 +70,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R023 | Programme review and latent channel capacity | Complete;training fits improve,but teacher gains -.37%/+1.21% fail2% |
 | R024 | Frozen neural endpoints versus played reference losses | Complete;R022 transfer1.10%/1.33%,still behind Pair24;playing diagnostic justified |
 | R025 | First neural fixed-node playing calibration | Complete32games;R0229.375%/21.875% vsCP64 at10k nodes;no promotion |
-| R026 | Calibration and played-position distribution | Prospective read-only diagnosis;no new training/games |
+| R026 | Calibration and played-position distribution | Complete;compression gate passes,but played-root sign disagreements remain |
+| R027 | Training-only positive neural score scale | Prospective one-scalar bounded fit;correctness first,no games |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

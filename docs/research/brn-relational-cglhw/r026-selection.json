@@ -1,0 +1,209 @@
+{
+  "rows": 991,
+  "selected_before_dedup": 1021,
+  "cases": "docs\\research\\brn-relational-cglhw\\raw\\r026-data\\cases.json",
+  "cases_sha256": "35a6382b538132367d59378038286c721c1d3945a466b084a01e8b2775f760f4",
+  "source_evidence_sha256": "7239bca8992870bfc0a7b8b763ecf08e4d1b34c7c6a5edab4e2c80f53fbf5654",
+  "plan_sha256": "02514b7136a9e1b6412628168fdfd34b2ec2c07ac724fe49862b03c747a8c812",
+  "selector_sha256": "816fb3bc2cd865dbffaf9220c1676e47d4fff86099a6966f43aa1c7fb22c1852",
+  "resources": {
+    "cpu_percent": 19.999999999999996,
+    "available_gib": 18.010040283203125,
+    "utc": "2026-10-28T23:09:36Z"
+  },
+  "games": [
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-000-0.json",
+      "sha256": "8824c0a0bbd783b75ca25b34a1f283ca133726ace9a78b0b121b3d821aad6dcc",
+      "available_roots": 77,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-000-1.json",
+      "sha256": "1cc4b602efa95a8807cfa1415c39b5ce0683ed6bfecdb0ce96ff6fd9031ce4ab",
+      "available_roots": 140,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-001-0.json",
+      "sha256": "b0a28c032e5a61c723db730cb409bc398fbb43344b2a1e6b1e8239507fd0c353",
+      "available_roots": 63,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-001-1.json",
+      "sha256": "b1f378f5afc2e7e0998eafc163394efaff7cb6c956e64a26fc98be82c0b0ce3a",
+      "available_roots": 54,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-002-0.json",
+      "sha256": "8631878244641c38000ebf69f97c1a0fbe525b58a4271a25cdb03a8adeed00a2",
+      "available_roots": 45,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-002-1.json",
+      "sha256": "a4cdf25af395c4b8768c3d9e8b92cf8fb2752b3fac4d61c8215954b655f9da36",
+      "available_roots": 50,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-003-0.json",
+      "sha256": "7bc41c7d3ada311d58c6abf38e0fcdb3f92e528e74fbdb522f7097118f07fd67",
+      "available_roots": 59,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-003-1.json",
+      "sha256": "6889d98c71f4200edfe193499811ac9ba8d5f1100bf3dcc90901e7e6bf3d58cf",
+      "available_roots": 82,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-004-0.json",
+      "sha256": "9ecbf655da1febcc92d50c9507265462445d06e842279cdfac79743caf4b631a",
+      "available_roots": 65,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-004-1.json",
+      "sha256": "adf0ee4c6d7ba0441a04bc427ba66cb3dd0a7d373e8d4106b68ecdf20a273fe4",
+      "available_roots": 55,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-005-0.json",
+      "sha256": "16e56d4e8185dde51115d7d6879cc305e4c4f77848bd3643a8111974691e3eae",
+      "available_roots": 101,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-005-1.json",
+      "sha256": "47c943123f8acd79b92bfc752d3e4d1492c283a146bd41128c3357634a33f806",
+      "available_roots": 57,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-006-0.json",
+      "sha256": "3bef2838192ea3d3eb184bf23d69512fe229e6b428d4a792b9eca79224d43a3f",
+      "available_roots": 123,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-006-1.json",
+      "sha256": "00eea72ce9fbd6bb6b82cf29d36933f6091d38d8f39e8c1654b9736c3fe6ed0b",
+      "available_roots": 32,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-007-0.json",
+      "sha256": "5e6f3024bab22e341dfdbd286399881c183b69ac2d228c7afa19aaf522416af6",
+      "available_roots": 91,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose71-vs-cp64\\game-007-1.json",
+      "sha256": "19950d1239232737db5a4563cfc8d4dfede1eb5f933ec53ff8afa5af5188159a",
+      "available_roots": 70,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-000-0.json",
+      "sha256": "5473a5be8d8dbd5da5d90850b9eac04cf5c65d102b4d40a9f4c8dc846fb64442",
+      "available_roots": 100,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-000-1.json",
+      "sha256": "fcd9f5e7e91f6dab25f53db5d2e7c5ca9de3a5397820b532432e08d1a120a567",
+      "available_roots": 68,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-001-0.json",
+      "sha256": "a20be464630dd5def044644b0090c72369506a7b187114fa1bcf639720b12e3e",
+      "available_roots": 123,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-001-1.json",
+      "sha256": "57a9c7d7411e4e99c7043f157333e70e85546e6d6c8ac3765027309de074914c",
+      "available_roots": 98,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-002-0.json",
+      "sha256": "c833561ce43d7d622791fd7043d2251f55b91d6786b11f1ce57a45361f45e0ea",
+      "available_roots": 29,
+      "selected": 29
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-002-1.json",
+      "sha256": "ab69fc5334526f572b526b7a0243856929e7b4b9fd338f600e8266a7b840998a",
+      "available_roots": 92,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-003-0.json",
+      "sha256": "2d54e6dedfd1c0596d0c72c4bd983996fa8f73b7056e99d2d06a512ee4ced764",
+      "available_roots": 40,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-003-1.json",
+      "sha256": "832cae0336843a72a54ace0fce70b22364d83148c186d3c9e01afdc079ac3082",
+      "available_roots": 105,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-004-0.json",
+      "sha256": "e6e1d9a11b02abadee812dcf79ec29548f0b4c97335d10a6684ea1555bc33ef8",
+      "available_roots": 93,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-004-1.json",
+      "sha256": "257f7722e401d1ca3183120ffda3d1d444bca697f5667dbda654834afb29fecf",
+      "available_roots": 46,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-005-0.json",
+      "sha256": "4fc9ae4c02cb04e0e857d995b9c823de7289017d401e30fbbb53158cbec051fe",
+      "available_roots": 95,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-005-1.json",
+      "sha256": "dbb9e4604edecd1c59bbf7c3abf2a970c797dd9a6807289cbaf2d9a9cf75e611",
+      "available_roots": 122,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-006-0.json",
+      "sha256": "685b3eb460835fc2a9bb921e21938b443275366e692763423060659f756a914a",
+      "available_roots": 112,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-006-1.json",
+      "sha256": "0bc6abc8ce5aac0897ecd2da512723fb6bdded106123825cfa28ed48e2f9ca6b",
+      "available_roots": 54,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-007-0.json",
+      "sha256": "494cb6c37abb17070e64fb8557882c11142d95118c2881600309100d44b74c89",
+      "available_roots": 59,
+      "selected": 32
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r025-games\\compose97-vs-cp64\\game-007-1.json",
+      "sha256": "b8c409fd92a871ca80f545aacc3c6113d01bf273433277c2b58adc0a78ab4200",
+      "available_roots": 75,
+      "selected": 32
+    }
+  ],
+  "selection": "Lowest SHA256 r026:comparison:game:ply,32 per game;exact placement/STM dedup;no outcome/evaluation filter;diagnostic only"
+}

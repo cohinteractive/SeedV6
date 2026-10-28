@@ -1,0 +1,1066 @@
+{
+  "raw_path": "docs\\research\\brn-relational-cglhw\\raw\\r026-prediction.json",
+  "raw_sha256": "b106f547e28342e659114a5e82e3301fa3271d7f53dd1b13cf8d20b3f6492106",
+  "analysis_sha256": "07706fc96630036c7bd0e1af525d20a47b209f33f2481969eeace062b6a7161a",
+  "resources": {
+    "cpu_percent": 1.5789473684210575,
+    "available_gib": 18.22780990600586,
+    "utc": "2026-10-28T23:11:16Z"
+  },
+  "selection_sha256": "8f2ce64be077c419fc05ad779e60fbb3cf29e5c6d68102eb936e742f6556a085",
+  "receipt": {
+    "sha256": "b106f547e28342e659114a5e82e3301fa3271d7f53dd1b13cf8d20b3f6492106",
+    "seconds": 0.7856715000234544,
+    "resources": {
+      "cpu_percent": 5.2083333333333375,
+      "available_gib": 18.14410400390625,
+      "utc": "2026-10-28T23:11:15Z"
+    }
+  },
+  "panels": {
+    "development8192": {
+      "rows": 8192,
+      "noncheck_rows": 8192,
+      "models": [
+        {
+          "id": "r017-all-71",
+          "state_sha256": "dd02f4cf2ab8c25f7ce53924c499b61ee84a8d479233265131a2c43c86eb7514",
+          "groups": {
+            "all": {
+              "rows": 8192,
+              "teacher_mse": 0.012845834038001675,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": -1.3825090293263202,
+              "student_sd_cp": 217.0831732730228,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 1.3083904181448007,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.07092198581560284
+            },
+            "noncheck": {
+              "rows": 8192,
+              "teacher_mse": 0.012845834038001675,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": -1.3825090293263202,
+              "student_sd_cp": 217.0831732730228,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 1.3083904181448007,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.07092198581560284
+            },
+            "pieces2-10": {
+              "rows": 2442,
+              "teacher_mse": 0.011707107934692033,
+              "stable_rows": 1772,
+              "bias_student_minus_teacher_cp": 1.399505892103731,
+              "student_sd_cp": 291.4061663935213,
+              "teacher_sd_cp": 469.05844467549974,
+              "through_origin_slope": 1.310855134518443,
+              "strong_rows": 534,
+              "opposite_sign_vs_teacher": 0.052434456928838954
+            },
+            "pieces11-20": {
+              "rows": 2952,
+              "teacher_mse": 0.016795189350825808,
+              "stable_rows": 2843,
+              "bias_student_minus_teacher_cp": -7.377932285828327,
+              "student_sd_cp": 210.23744008262935,
+              "teacher_sd_cp": 385.4356253232815,
+              "through_origin_slope": 1.3786705172634526,
+              "strong_rows": 1070,
+              "opposite_sign_vs_teacher": 0.07757009345794393
+            },
+            "pieces21-32": {
+              "rows": 2798,
+              "teacher_mse": 0.00967295064301429,
+              "stable_rows": 2786,
+              "bias_student_minus_teacher_cp": 2.9661118886425086,
+              "student_sd_cp": 159.8904510307176,
+              "teacher_sd_cp": 262.1451637751772,
+              "through_origin_slope": 1.1780555985096393,
+              "strong_rows": 511,
+              "opposite_sign_vs_teacher": 0.07632093933463796
+            }
+          }
+        },
+        {
+          "id": "r017-all-97",
+          "state_sha256": "3b14879bf2abaa37dfcc2fdface4d29ac34f0b4c17c847cc1692f440795a5ead",
+          "groups": {
+            "all": {
+              "rows": 8192,
+              "teacher_mse": 0.013102901388826138,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": 1.9232393900571167,
+              "student_sd_cp": 218.6707068785105,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 1.2876634943046505,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.07328605200945626
+            },
+            "noncheck": {
+              "rows": 8192,
+              "teacher_mse": 0.013102901388826138,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": 1.9232393900571167,
+              "student_sd_cp": 218.6707068785105,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 1.2876634943046505,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.07328605200945626
+            },
+            "pieces2-10": {
+              "rows": 2442,
+              "teacher_mse": 0.012065152698483125,
+              "stable_rows": 1772,
+              "bias_student_minus_teacher_cp": 14.790694171896092,
+              "student_sd_cp": 291.4046827559189,
+              "teacher_sd_cp": 469.05844467549974,
+              "through_origin_slope": 1.3034737856147396,
+              "strong_rows": 534,
+              "opposite_sign_vs_teacher": 0.0449438202247191
+            },
+            "pieces11-20": {
+              "rows": 2952,
+              "teacher_mse": 0.017037862576765445,
+              "stable_rows": 2843,
+              "bias_student_minus_teacher_cp": -3.3620528179387867,
+              "student_sd_cp": 213.3559094156931,
+              "teacher_sd_cp": 385.4356253232815,
+              "through_origin_slope": 1.350581620426654,
+              "strong_rows": 1070,
+              "opposite_sign_vs_teacher": 0.08411214953271028
+            },
+            "pieces21-32": {
+              "rows": 2798,
+              "teacher_mse": 0.009857074682257449,
+              "stable_rows": 2786,
+              "bias_student_minus_teacher_cp": -0.8675158597943948,
+              "student_sd_cp": 162.45683613340583,
+              "teacher_sd_cp": 262.1451637751772,
+              "through_origin_slope": 1.143822203212902,
+              "strong_rows": 511,
+              "opposite_sign_vs_teacher": 0.08023483365949119
+            }
+          }
+        },
+        {
+          "id": "r022-compose-71",
+          "state_sha256": "171aec95a2f82acb01e086f2a5510651adddab2f61ced4c726c090522d4c2c55",
+          "groups": {
+            "all": {
+              "rows": 8192,
+              "teacher_mse": 0.012703854169061295,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": 0.30346118818853324,
+              "student_sd_cp": 218.2092249431396,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 1.30705699102399,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.0657210401891253
+            },
+            "noncheck": {
+              "rows": 8192,
+              "teacher_mse": 0.012703854169061295,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": 0.30346118818853324,
+              "student_sd_cp": 218.2092249431396,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 1.30705699102399,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.0657210401891253
+            },
+            "pieces2-10": {
+              "rows": 2442,
+              "teacher_mse": 0.01158002344965256,
+              "stable_rows": 1772,
+              "bias_student_minus_teacher_cp": -0.42708879070449696,
+              "student_sd_cp": 291.7939760349623,
+              "teacher_sd_cp": 469.05844467549974,
+              "through_origin_slope": 1.3109763151655516,
+              "strong_rows": 534,
+              "opposite_sign_vs_teacher": 0.04868913857677903
+            },
+            "pieces11-20": {
+              "rows": 2952,
+              "teacher_mse": 0.016634559593499413,
+              "stable_rows": 2843,
+              "bias_student_minus_teacher_cp": -7.753484481861868,
+              "student_sd_cp": 210.30273752833085,
+              "teacher_sd_cp": 385.4356253232815,
+              "through_origin_slope": 1.3850464118297017,
+              "strong_rows": 1070,
+              "opposite_sign_vs_teacher": 0.07289719626168224
+            },
+            "pieces21-32": {
+              "rows": 2798,
+              "teacher_mse": 0.009537646950996535,
+              "stable_rows": 2786,
+              "bias_student_minus_teacher_cp": 8.989904512866115,
+              "student_sd_cp": 162.52219212146235,
+              "teacher_sd_cp": 262.1451637751772,
+              "through_origin_slope": 1.1649517400623128,
+              "strong_rows": 511,
+              "opposite_sign_vs_teacher": 0.0684931506849315
+            }
+          }
+        },
+        {
+          "id": "r022-compose-97",
+          "state_sha256": "008ead748bd4b63c922a1eec181c1ebcfcec9ccee8be4623fa94481b7416fc22",
+          "groups": {
+            "all": {
+              "rows": 8192,
+              "teacher_mse": 0.012928807752636513,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": -0.7164110429859645,
+              "student_sd_cp": 219.61134294844706,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 1.2863474698129878,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.07092198581560284
+            },
+            "noncheck": {
+              "rows": 8192,
+              "teacher_mse": 0.012928807752636513,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": -0.7164110429859645,
+              "student_sd_cp": 219.61134294844706,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 1.2863474698129878,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.07092198581560284
+            },
+            "pieces2-10": {
+              "rows": 2442,
+              "teacher_mse": 0.011897705626581214,
+              "stable_rows": 1772,
+              "bias_student_minus_teacher_cp": 15.314630859863174,
+              "student_sd_cp": 291.36438113515334,
+              "teacher_sd_cp": 469.05844467549974,
+              "through_origin_slope": 1.306931709577593,
+              "strong_rows": 534,
+              "opposite_sign_vs_teacher": 0.04119850187265917
+            },
+            "pieces11-20": {
+              "rows": 2952,
+              "teacher_mse": 0.016840338105211784,
+              "stable_rows": 2843,
+              "bias_student_minus_teacher_cp": -3.3528272832002597,
+              "student_sd_cp": 214.77601239446977,
+              "teacher_sd_cp": 385.4356253232815,
+              "through_origin_slope": 1.347495103026056,
+              "strong_rows": 1070,
+              "opposite_sign_vs_teacher": 0.08130841121495327
+            },
+            "pieces21-32": {
+              "rows": 2798,
+              "teacher_mse": 0.009701900601465979,
+              "stable_rows": 2786,
+              "bias_student_minus_teacher_cp": -8.222396283804137,
+              "student_sd_cp": 164.31913386710247,
+              "teacher_sd_cp": 262.1451637751772,
+              "through_origin_slope": 1.1380961703917574,
+              "strong_rows": 511,
+              "opposite_sign_vs_teacher": 0.08023483365949119
+            }
+          }
+        },
+        {
+          "id": "r023-wide-71",
+          "state_sha256": "2a7301797e39f162eca2fe5e9abe5e4efe840aa406e844f9aa303a3c00018724",
+          "groups": {
+            "all": {
+              "rows": 8192,
+              "teacher_mse": 0.012617842949456488,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": -0.5003345582303661,
+              "student_sd_cp": 219.71546119802557,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 1.2990634751859527,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.07186761229314421
+            },
+            "noncheck": {
+              "rows": 8192,
+              "teacher_mse": 0.012617842949456488,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": -0.5003345582303661,
+              "student_sd_cp": 219.71546119802557,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 1.2990634751859527,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.07186761229314421
+            },
+            "pieces2-10": {
+              "rows": 2442,
+              "teacher_mse": 0.011480652410874842,
+              "stable_rows": 1772,
+              "bias_student_minus_teacher_cp": -1.2230557139521068,
+              "student_sd_cp": 293.96999649546177,
+              "teacher_sd_cp": 469.05844467549974,
+              "through_origin_slope": 1.3020459256788657,
+              "strong_rows": 534,
+              "opposite_sign_vs_teacher": 0.04307116104868914
+            },
+            "pieces11-20": {
+              "rows": 2952,
+              "teacher_mse": 0.016650977730950426,
+              "stable_rows": 2843,
+              "bias_student_minus_teacher_cp": -9.185439810898016,
+              "student_sd_cp": 211.48408675593203,
+              "teacher_sd_cp": 385.4356253232815,
+              "through_origin_slope": 1.3733458097803737,
+              "strong_rows": 1070,
+              "opposite_sign_vs_teacher": 0.08224299065420561
+            },
+            "pieces21-32": {
+              "rows": 2798,
+              "teacher_mse": 0.009355228732246437,
+              "stable_rows": 2786,
+              "bias_student_minus_teacher_cp": 8.82214071860849,
+              "student_sd_cp": 163.72469500074786,
+              "teacher_sd_cp": 262.1451637751772,
+              "through_origin_slope": 1.1655229080548006,
+              "strong_rows": 511,
+              "opposite_sign_vs_teacher": 0.08023483365949119
+            }
+          }
+        },
+        {
+          "id": "r023-wide-97",
+          "state_sha256": "b2e14ad0466b47a52dbc6c73ae2bf9b9aa6e226672b3dda14da1a84acae1618a",
+          "groups": {
+            "all": {
+              "rows": 8192,
+              "teacher_mse": 0.012762772213230696,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": 3.82794661460871,
+              "student_sd_cp": 219.95976664620284,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 1.2916504063885308,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.07234042553191489
+            },
+            "noncheck": {
+              "rows": 8192,
+              "teacher_mse": 0.012762772213230696,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": 3.82794661460871,
+              "student_sd_cp": 219.95976664620284,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 1.2916504063885308,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.07234042553191489
+            },
+            "pieces2-10": {
+              "rows": 2442,
+              "teacher_mse": 0.01192932953878301,
+              "stable_rows": 1772,
+              "bias_student_minus_teacher_cp": 18.301466357472844,
+              "student_sd_cp": 292.55545707202555,
+              "teacher_sd_cp": 469.05844467549974,
+              "through_origin_slope": 1.3019929823281107,
+              "strong_rows": 534,
+              "opposite_sign_vs_teacher": 0.04307116104868914
+            },
+            "pieces11-20": {
+              "rows": 2952,
+              "teacher_mse": 0.016701603759439257,
+              "stable_rows": 2843,
+              "bias_student_minus_teacher_cp": 1.4904968383056083,
+              "student_sd_cp": 214.65579813159917,
+              "teacher_sd_cp": 385.4356253232815,
+              "through_origin_slope": 1.3565273893430412,
+              "strong_rows": 1070,
+              "opposite_sign_vs_teacher": 0.08598130841121496
+            },
+            "pieces21-32": {
+              "rows": 2798,
+              "teacher_mse": 0.00933455072881096,
+              "stable_rows": 2786,
+              "bias_student_minus_teacher_cp": -2.992479541287029,
+              "student_sd_cp": 164.33881326304677,
+              "teacher_sd_cp": 262.1451637751772,
+              "through_origin_slope": 1.1574960961413248,
+              "strong_rows": 511,
+              "opposite_sign_vs_teacher": 0.07436399217221135
+            }
+          }
+        },
+        {
+          "id": "pair24-71",
+          "state_sha256": "ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627",
+          "groups": {
+            "all": {
+              "rows": 8192,
+              "teacher_mse": 0.011776379457599004,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": -0.9867461781782564,
+              "student_sd_cp": 224.2605018492561,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 1.30133340028116,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.0591016548463357
+            },
+            "noncheck": {
+              "rows": 8192,
+              "teacher_mse": 0.011776379457599004,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": -0.9867461781782564,
+              "student_sd_cp": 224.2605018492561,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 1.30133340028116,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.0591016548463357
+            },
+            "pieces2-10": {
+              "rows": 2442,
+              "teacher_mse": 0.010680464210112551,
+              "stable_rows": 1772,
+              "bias_student_minus_teacher_cp": 7.642328986356841,
+              "student_sd_cp": 304.28087969276544,
+              "teacher_sd_cp": 469.05844467549974,
+              "through_origin_slope": 1.2796647085130155,
+              "strong_rows": 534,
+              "opposite_sign_vs_teacher": 0.03932584269662921
+            },
+            "pieces11-20": {
+              "rows": 2952,
+              "teacher_mse": 0.015630934912137635,
+              "stable_rows": 2843,
+              "bias_student_minus_teacher_cp": -8.941143054908517,
+              "student_sd_cp": 215.6322886377793,
+              "teacher_sd_cp": 385.4356253232815,
+              "through_origin_slope": 1.3810055364850076,
+              "strong_rows": 1070,
+              "opposite_sign_vs_teacher": 0.06728971962616823
+            },
+            "pieces21-32": {
+              "rows": 2798,
+              "teacher_mse": 0.00866614976945171,
+              "stable_rows": 2786,
+              "bias_student_minus_teacher_cp": 1.6419792808985338,
+              "student_sd_cp": 163.9210861988459,
+              "teacher_sd_cp": 262.1451637751772,
+              "through_origin_slope": 1.2069277345325813,
+              "strong_rows": 511,
+              "opposite_sign_vs_teacher": 0.06262230919765166
+            }
+          }
+        },
+        {
+          "id": "gen32",
+          "state_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+          "groups": {
+            "all": {
+              "rows": 8192,
+              "teacher_mse": 0.02067040308972603,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": 15.031331184692966,
+              "student_sd_cp": 100.12799908755052,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 2.7126417750959826,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.08936170212765958
+            },
+            "noncheck": {
+              "rows": 8192,
+              "teacher_mse": 0.02067040308972603,
+              "stable_rows": 7401,
+              "bias_student_minus_teacher_cp": 15.031331184692966,
+              "student_sd_cp": 100.12799908755052,
+              "teacher_sd_cp": 368.4505553165227,
+              "through_origin_slope": 2.7126417750959826,
+              "strong_rows": 2115,
+              "opposite_sign_vs_teacher": 0.08936170212765958
+            },
+            "pieces2-10": {
+              "rows": 2442,
+              "teacher_mse": 0.022238467310178936,
+              "stable_rows": 1772,
+              "bias_student_minus_teacher_cp": 31.74999257215982,
+              "student_sd_cp": 146.37905335367506,
+              "teacher_sd_cp": 469.05844467549974,
+              "through_origin_slope": 2.5289209488716415,
+              "strong_rows": 534,
+              "opposite_sign_vs_teacher": 0.06367041198501873
+            },
+            "pieces11-20": {
+              "rows": 2952,
+              "teacher_mse": 0.02529159967148843,
+              "stable_rows": 2843,
+              "bias_student_minus_teacher_cp": 15.17691347360389,
+              "student_sd_cp": 93.6589050964111,
+              "teacher_sd_cp": 385.4356253232815,
+              "through_origin_slope": 3.0321728169399904,
+              "strong_rows": 1070,
+              "opposite_sign_vs_teacher": 0.09252336448598131
+            },
+            "pieces21-32": {
+              "rows": 2798,
+              "teacher_mse": 0.014426305471531387,
+              "stable_rows": 2786,
+              "bias_student_minus_teacher_cp": 4.249077621891451,
+              "student_sd_cp": 63.599190461425216,
+              "teacher_sd_cp": 262.1451637751772,
+              "through_origin_slope": 2.6250850998516055,
+              "strong_rows": 511,
+              "opposite_sign_vs_teacher": 0.1095890410958904
+            }
+          }
+        }
+      ]
+    },
+    "played_roots": {
+      "rows": 991,
+      "noncheck_rows": 876,
+      "models": [
+        {
+          "id": "r017-all-71",
+          "state_sha256": "dd02f4cf2ab8c25f7ce53924c499b61ee84a8d479233265131a2c43c86eb7514",
+          "groups": {
+            "all": {
+              "rows": 991,
+              "teacher_mse": 0.05090048809923054,
+              "stable_rows": 775,
+              "bias_student_minus_teacher_cp": 15.503444969343635,
+              "student_sd_cp": 272.02073842024265,
+              "teacher_sd_cp": 708.1297089646913,
+              "through_origin_slope": 1.4723586045502477,
+              "strong_rows": 438,
+              "opposite_sign_vs_teacher": 0.23515981735159816
+            },
+            "noncheck": {
+              "rows": 876,
+              "teacher_mse": 0.04863481701413778,
+              "stable_rows": 701,
+              "bias_student_minus_teacher_cp": -1.9033144661822827,
+              "student_sd_cp": 266.3478571366422,
+              "teacher_sd_cp": 687.5924449344624,
+              "through_origin_slope": 1.4753974982578526,
+              "strong_rows": 386,
+              "opposite_sign_vs_teacher": 0.23316062176165803
+            },
+            "pieces2-10": {
+              "rows": 112,
+              "teacher_mse": 0.03089993280684512,
+              "stable_rows": 40,
+              "bias_student_minus_teacher_cp": 17.266968141452246,
+              "student_sd_cp": 256.39097823465704,
+              "teacher_sd_cp": 959.6852736053628,
+              "through_origin_slope": 3.4740865287291425,
+              "strong_rows": 39,
+              "opposite_sign_vs_teacher": 0.0
+            },
+            "pieces11-20": {
+              "rows": 338,
+              "teacher_mse": 0.06170366898975368,
+              "stable_rows": 209,
+              "bias_student_minus_teacher_cp": -2.4235945290173193,
+              "student_sd_cp": 308.66497554824645,
+              "teacher_sd_cp": 987.1609314173845,
+              "through_origin_slope": 2.147731504023824,
+              "strong_rows": 163,
+              "opposite_sign_vs_teacher": 0.15337423312883436
+            },
+            "pieces21-32": {
+              "rows": 541,
+              "teacher_mse": 0.04829159170690216,
+              "stable_rows": 526,
+              "bias_student_minus_teacher_cp": 22.492437988874233,
+              "student_sd_cp": 257.00646598379456,
+              "teacher_sd_cp": 530.283302459991,
+              "through_origin_slope": 0.9485024047579509,
+              "strong_rows": 236,
+              "opposite_sign_vs_teacher": 0.3305084745762712
+            }
+          }
+        },
+        {
+          "id": "r017-all-97",
+          "state_sha256": "3b14879bf2abaa37dfcc2fdface4d29ac34f0b4c17c847cc1692f440795a5ead",
+          "groups": {
+            "all": {
+              "rows": 991,
+              "teacher_mse": 0.05187425066822103,
+              "stable_rows": 775,
+              "bias_student_minus_teacher_cp": 24.01141995921418,
+              "student_sd_cp": 269.0690365569863,
+              "teacher_sd_cp": 708.1297089646913,
+              "through_origin_slope": 1.4574255612979694,
+              "strong_rows": 438,
+              "opposite_sign_vs_teacher": 0.2146118721461187
+            },
+            "noncheck": {
+              "rows": 876,
+              "teacher_mse": 0.049302214864729806,
+              "stable_rows": 701,
+              "bias_student_minus_teacher_cp": 5.108560503476539,
+              "student_sd_cp": 263.3409448470273,
+              "teacher_sd_cp": 687.5924449344624,
+              "through_origin_slope": 1.476773636857468,
+              "strong_rows": 386,
+              "opposite_sign_vs_teacher": 0.21243523316062177
+            },
+            "pieces2-10": {
+              "rows": 112,
+              "teacher_mse": 0.03200591480930761,
+              "stable_rows": 40,
+              "bias_student_minus_teacher_cp": 31.19223576877448,
+              "student_sd_cp": 255.4817786735387,
+              "teacher_sd_cp": 959.6852736053628,
+              "through_origin_slope": 3.479205291548323,
+              "strong_rows": 39,
+              "opposite_sign_vs_teacher": 0.02564102564102564
+            },
+            "pieces11-20": {
+              "rows": 338,
+              "teacher_mse": 0.06254253123568312,
+              "stable_rows": 209,
+              "bias_student_minus_teacher_cp": -1.485543807297537,
+              "student_sd_cp": 306.80793135453723,
+              "teacher_sd_cp": 987.1609314173845,
+              "through_origin_slope": 2.1413220433174915,
+              "strong_rows": 163,
+              "opposite_sign_vs_teacher": 0.1165644171779141
+            },
+            "pieces21-32": {
+              "rows": 541,
+              "teacher_mse": 0.04932226320869444,
+              "stable_rows": 526,
+              "bias_student_minus_teacher_cp": 33.59627318130266,
+              "student_sd_cp": 253.31427997688704,
+              "teacher_sd_cp": 530.283302459991,
+              "through_origin_slope": 0.9100119482799734,
+              "strong_rows": 236,
+              "opposite_sign_vs_teacher": 0.3135593220338983
+            }
+          }
+        },
+        {
+          "id": "r022-compose-71",
+          "state_sha256": "171aec95a2f82acb01e086f2a5510651adddab2f61ced4c726c090522d4c2c55",
+          "groups": {
+            "all": {
+              "rows": 991,
+              "teacher_mse": 0.050224340997921134,
+              "stable_rows": 775,
+              "bias_student_minus_teacher_cp": 16.664354082310027,
+              "student_sd_cp": 271.171255267622,
+              "teacher_sd_cp": 708.1297089646913,
+              "through_origin_slope": 1.4941448890141518,
+              "strong_rows": 438,
+              "opposite_sign_vs_teacher": 0.21232876712328766
+            },
+            "noncheck": {
+              "rows": 876,
+              "teacher_mse": 0.047861893917869824,
+              "stable_rows": 701,
+              "bias_student_minus_teacher_cp": -0.5662660136604888,
+              "student_sd_cp": 265.069372009124,
+              "teacher_sd_cp": 687.5924449344624,
+              "through_origin_slope": 1.504342905531525,
+              "strong_rows": 386,
+              "opposite_sign_vs_teacher": 0.21243523316062177
+            },
+            "pieces2-10": {
+              "rows": 112,
+              "teacher_mse": 0.029597649271171356,
+              "stable_rows": 40,
+              "bias_student_minus_teacher_cp": 7.611289389118461,
+              "student_sd_cp": 257.6172923012707,
+              "teacher_sd_cp": 959.6852736053628,
+              "through_origin_slope": 3.4768406452962495,
+              "strong_rows": 39,
+              "opposite_sign_vs_teacher": 0.0
+            },
+            "pieces11-20": {
+              "rows": 338,
+              "teacher_mse": 0.06091265369169857,
+              "stable_rows": 209,
+              "bias_student_minus_teacher_cp": -3.4146097832275375,
+              "student_sd_cp": 308.73012821042556,
+              "teacher_sd_cp": 987.1609314173845,
+              "through_origin_slope": 2.159438912604149,
+              "strong_rows": 163,
+              "opposite_sign_vs_teacher": 0.1165644171779141
+            },
+            "pieces21-32": {
+              "rows": 541,
+              "teacher_mse": 0.047816835975553675,
+              "stable_rows": 526,
+              "bias_student_minus_teacher_cp": 25.330943503650357,
+              "student_sd_cp": 255.68030900385784,
+              "teacher_sd_cp": 530.283302459991,
+              "through_origin_slope": 0.9669611354309019,
+              "strong_rows": 236,
+              "opposite_sign_vs_teacher": 0.3135593220338983
+            }
+          }
+        },
+        {
+          "id": "r022-compose-97",
+          "state_sha256": "008ead748bd4b63c922a1eec181c1ebcfcec9ccee8be4623fa94481b7416fc22",
+          "groups": {
+            "all": {
+              "rows": 991,
+              "teacher_mse": 0.05135772439399487,
+              "stable_rows": 775,
+              "bias_student_minus_teacher_cp": 19.77701313505905,
+              "student_sd_cp": 271.1029901038356,
+              "teacher_sd_cp": 708.1297089646913,
+              "through_origin_slope": 1.4533473449589418,
+              "strong_rows": 438,
+              "opposite_sign_vs_teacher": 0.19863013698630136
+            },
+            "noncheck": {
+              "rows": 876,
+              "teacher_mse": 0.04869695599741865,
+              "stable_rows": 701,
+              "bias_student_minus_teacher_cp": 0.7249347090840561,
+              "student_sd_cp": 266.0839032057362,
+              "teacher_sd_cp": 687.5924449344624,
+              "through_origin_slope": 1.4703843087578043,
+              "strong_rows": 386,
+              "opposite_sign_vs_teacher": 0.19948186528497408
+            },
+            "pieces2-10": {
+              "rows": 112,
+              "teacher_mse": 0.03149877790407014,
+              "stable_rows": 40,
+              "bias_student_minus_teacher_cp": 37.53955390403014,
+              "student_sd_cp": 256.04918693922014,
+              "teacher_sd_cp": 959.6852736053628,
+              "through_origin_slope": 3.4877924994838523,
+              "strong_rows": 39,
+              "opposite_sign_vs_teacher": 0.02564102564102564
+            },
+            "pieces11-20": {
+              "rows": 338,
+              "teacher_mse": 0.06179691555078525,
+              "stable_rows": 209,
+              "bias_student_minus_teacher_cp": -1.3513105925063236,
+              "student_sd_cp": 306.19651732168023,
+              "teacher_sd_cp": 987.1609314173845,
+              "through_origin_slope": 2.165834187595324,
+              "strong_rows": 163,
+              "opposite_sign_vs_teacher": 0.09202453987730061
+            },
+            "pieces21-32": {
+              "rows": 541,
+              "teacher_mse": 0.048946921059200836,
+              "stable_rows": 526,
+              "bias_student_minus_teacher_cp": 26.821343987344832,
+              "student_sd_cp": 256.5796649356485,
+              "teacher_sd_cp": 530.283302459991,
+              "through_origin_slope": 0.9085207972416759,
+              "strong_rows": 236,
+              "opposite_sign_vs_teacher": 0.3008474576271186
+            }
+          }
+        },
+        {
+          "id": "r023-wide-71",
+          "state_sha256": "2a7301797e39f162eca2fe5e9abe5e4efe840aa406e844f9aa303a3c00018724",
+          "groups": {
+            "all": {
+              "rows": 991,
+              "teacher_mse": 0.049472836285590155,
+              "stable_rows": 775,
+              "bias_student_minus_teacher_cp": 17.500074597643888,
+              "student_sd_cp": 270.11091890839253,
+              "teacher_sd_cp": 708.1297089646913,
+              "through_origin_slope": 1.5216484239266055,
+              "strong_rows": 438,
+              "opposite_sign_vs_teacher": 0.2237442922374429
+            },
+            "noncheck": {
+              "rows": 876,
+              "teacher_mse": 0.04709651841854498,
+              "stable_rows": 701,
+              "bias_student_minus_teacher_cp": 0.3635709803736534,
+              "student_sd_cp": 264.14493302422005,
+              "teacher_sd_cp": 687.5924449344624,
+              "through_origin_slope": 1.531742212285335,
+              "strong_rows": 386,
+              "opposite_sign_vs_teacher": 0.22538860103626943
+            },
+            "pieces2-10": {
+              "rows": 112,
+              "teacher_mse": 0.028625578098234274,
+              "stable_rows": 40,
+              "bias_student_minus_teacher_cp": 16.01048913568388,
+              "student_sd_cp": 258.55372648558387,
+              "teacher_sd_cp": 959.6852736053628,
+              "through_origin_slope": 3.527554255032094,
+              "strong_rows": 39,
+              "opposite_sign_vs_teacher": 0.0
+            },
+            "pieces11-20": {
+              "rows": 338,
+              "teacher_mse": 0.05949382923260477,
+              "stable_rows": 209,
+              "bias_student_minus_teacher_cp": -5.150924821726957,
+              "student_sd_cp": 304.24708189329294,
+              "teacher_sd_cp": 987.1609314173845,
+              "through_origin_slope": 2.2451154242449607,
+              "strong_rows": 163,
+              "opposite_sign_vs_teacher": 0.12269938650306748
+            },
+            "pieces21-32": {
+              "rows": 541,
+              "teacher_mse": 0.047527914475780385,
+              "stable_rows": 526,
+              "bias_student_minus_teacher_cp": 26.61346299522356,
+              "student_sd_cp": 256.0287096998577,
+              "teacher_sd_cp": 530.283302459991,
+              "through_origin_slope": 0.9705262778708643,
+              "strong_rows": 236,
+              "opposite_sign_vs_teacher": 0.3305084745762712
+            }
+          }
+        },
+        {
+          "id": "r023-wide-97",
+          "state_sha256": "b2e14ad0466b47a52dbc6c73ae2bf9b9aa6e226672b3dda14da1a84acae1618a",
+          "groups": {
+            "all": {
+              "rows": 991,
+              "teacher_mse": 0.04998482507456073,
+              "stable_rows": 775,
+              "bias_student_minus_teacher_cp": 23.961903087773752,
+              "student_sd_cp": 266.8046889291267,
+              "teacher_sd_cp": 708.1297089646913,
+              "through_origin_slope": 1.539532962897498,
+              "strong_rows": 438,
+              "opposite_sign_vs_teacher": 0.20776255707762556
+            },
+            "noncheck": {
+              "rows": 876,
+              "teacher_mse": 0.047421965728587694,
+              "stable_rows": 701,
+              "bias_student_minus_teacher_cp": 5.208599641785417,
+              "student_sd_cp": 261.75127494787625,
+              "teacher_sd_cp": 687.5924449344624,
+              "through_origin_slope": 1.5517399977539885,
+              "strong_rows": 386,
+              "opposite_sign_vs_teacher": 0.20984455958549222
+            },
+            "pieces2-10": {
+              "rows": 112,
+              "teacher_mse": 0.03041241039355159,
+              "stable_rows": 40,
+              "bias_student_minus_teacher_cp": 31.191422453095914,
+              "student_sd_cp": 265.86773331081463,
+              "teacher_sd_cp": 959.6852736053628,
+              "through_origin_slope": 3.3781155009525237,
+              "strong_rows": 39,
+              "opposite_sign_vs_teacher": 0.07692307692307693
+            },
+            "pieces11-20": {
+              "rows": 338,
+              "teacher_mse": 0.061062965163019414,
+              "stable_rows": 209,
+              "bias_student_minus_teacher_cp": 4.1948809189212195,
+              "student_sd_cp": 304.7251954605272,
+              "teacher_sd_cp": 987.1609314173845,
+              "through_origin_slope": 2.2311688957266367,
+              "strong_rows": 163,
+              "opposite_sign_vs_teacher": 0.09202453987730061
+            },
+            "pieces21-32": {
+              "rows": 541,
+              "teacher_mse": 0.047115507319244625,
+              "stable_rows": 526,
+              "bias_student_minus_teacher_cp": 31.266326773472024,
+              "student_sd_cp": 249.93846302218446,
+              "teacher_sd_cp": 530.283302459991,
+              "through_origin_slope": 0.9849374429943798,
+              "strong_rows": 236,
+              "opposite_sign_vs_teacher": 0.3093220338983051
+            }
+          }
+        },
+        {
+          "id": "pair24-71",
+          "state_sha256": "ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627",
+          "groups": {
+            "all": {
+              "rows": 991,
+              "teacher_mse": 0.04451691385566169,
+              "stable_rows": 775,
+              "bias_student_minus_teacher_cp": 18.176277961553353,
+              "student_sd_cp": 281.53588170315624,
+              "teacher_sd_cp": 708.1297089646913,
+              "through_origin_slope": 1.604133695744114,
+              "strong_rows": 438,
+              "opposite_sign_vs_teacher": 0.17579908675799086
+            },
+            "noncheck": {
+              "rows": 876,
+              "teacher_mse": 0.04183644973706693,
+              "stable_rows": 701,
+              "bias_student_minus_teacher_cp": -3.6336059214573577,
+              "student_sd_cp": 274.24895978569094,
+              "teacher_sd_cp": 687.5924449344624,
+              "through_origin_slope": 1.6322231828310103,
+              "strong_rows": 386,
+              "opposite_sign_vs_teacher": 0.17616580310880828
+            },
+            "pieces2-10": {
+              "rows": 112,
+              "teacher_mse": 0.0267344173833162,
+              "stable_rows": 40,
+              "bias_student_minus_teacher_cp": 6.699916700291764,
+              "student_sd_cp": 270.63065669305405,
+              "teacher_sd_cp": 959.6852736053628,
+              "through_origin_slope": 3.323338071637938,
+              "strong_rows": 39,
+              "opposite_sign_vs_teacher": 0.02564102564102564
+            },
+            "pieces11-20": {
+              "rows": 338,
+              "teacher_mse": 0.0532454906395052,
+              "stable_rows": 209,
+              "bias_student_minus_teacher_cp": 1.2060617221942675,
+              "student_sd_cp": 339.53996723268926,
+              "teacher_sd_cp": 987.1609314173845,
+              "through_origin_slope": 2.1144031759629107,
+              "strong_rows": 163,
+              "opposite_sign_vs_teacher": 0.0736196319018405
+            },
+            "pieces21-32": {
+              "rows": 541,
+              "teacher_mse": 0.042744974210492725,
+              "stable_rows": 526,
+              "bias_student_minus_teacher_cp": 25.791923673485886,
+              "student_sd_cp": 255.6366030110062,
+              "teacher_sd_cp": 530.283302459991,
+              "through_origin_slope": 1.1131289193854874,
+              "strong_rows": 236,
+              "opposite_sign_vs_teacher": 0.2711864406779661
+            }
+          }
+        },
+        {
+          "id": "gen32",
+          "state_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+          "groups": {
+            "all": {
+              "rows": 991,
+              "teacher_mse": 0.060470222702814456,
+              "stable_rows": 775,
+              "bias_student_minus_teacher_cp": 51.09430040689226,
+              "student_sd_cp": 135.56460875257866,
+              "teacher_sd_cp": 708.1297089646913,
+              "through_origin_slope": 3.464104465741213,
+              "strong_rows": 438,
+              "opposite_sign_vs_teacher": 0.15296803652968036
+            },
+            "noncheck": {
+              "rows": 876,
+              "teacher_mse": 0.05743492398253108,
+              "stable_rows": 701,
+              "bias_student_minus_teacher_cp": 33.27273005603886,
+              "student_sd_cp": 131.13606677517677,
+              "teacher_sd_cp": 687.5924449344624,
+              "through_origin_slope": 3.580387686618597,
+              "strong_rows": 386,
+              "opposite_sign_vs_teacher": 0.13989637305699482
+            },
+            "pieces2-10": {
+              "rows": 112,
+              "teacher_mse": 0.05927498684970807,
+              "stable_rows": 40,
+              "bias_student_minus_teacher_cp": 46.54466449428345,
+              "student_sd_cp": 156.56266411178558,
+              "teacher_sd_cp": 959.6852736053628,
+              "through_origin_slope": 5.517685271822397,
+              "strong_rows": 39,
+              "opposite_sign_vs_teacher": 0.0
+            },
+            "pieces11-20": {
+              "rows": 338,
+              "teacher_mse": 0.08368363115834752,
+              "stable_rows": 209,
+              "bias_student_minus_teacher_cp": 39.19506155980773,
+              "student_sd_cp": 166.8754645774232,
+              "teacher_sd_cp": 987.1609314173845,
+              "through_origin_slope": 4.486475856954263,
+              "strong_rows": 163,
+              "opposite_sign_vs_teacher": 0.049079754601226995
+            },
+            "pieces21-32": {
+              "rows": 541,
+              "teacher_mse": 0.046214648502403616,
+              "stable_rows": 526,
+              "bias_student_minus_teacher_cp": 56.16830488511472,
+              "student_sd_cp": 118.38266690015907,
+              "teacher_sd_cp": 530.283302459991,
+              "through_origin_slope": 2.418520588632921,
+              "strong_rows": 236,
+              "opposite_sign_vs_teacher": 0.25
+            }
+          }
+        }
+      ]
+    }
+  },
+  "primary_calibration": [
+    {
+      "panel": "development8192",
+      "id": "r022-compose-71",
+      "rows": 8192,
+      "teacher_mse": 0.012703854169061295,
+      "stable_rows": 7401,
+      "bias_student_minus_teacher_cp": 0.30346118818853324,
+      "student_sd_cp": 218.2092249431396,
+      "teacher_sd_cp": 368.4505553165227,
+      "through_origin_slope": 1.30705699102399,
+      "strong_rows": 2115,
+      "opposite_sign_vs_teacher": 0.0657210401891253
+    },
+    {
+      "panel": "development8192",
+      "id": "r022-compose-97",
+      "rows": 8192,
+      "teacher_mse": 0.012928807752636513,
+      "stable_rows": 7401,
+      "bias_student_minus_teacher_cp": -0.7164110429859645,
+      "student_sd_cp": 219.61134294844706,
+      "teacher_sd_cp": 368.4505553165227,
+      "through_origin_slope": 1.2863474698129878,
+      "strong_rows": 2115,
+      "opposite_sign_vs_teacher": 0.07092198581560284
+    },
+    {
+      "panel": "played_roots",
+      "id": "r022-compose-71",
+      "rows": 876,
+      "teacher_mse": 0.047861893917869824,
+      "stable_rows": 701,
+      "bias_student_minus_teacher_cp": -0.5662660136604888,
+      "student_sd_cp": 265.069372009124,
+      "teacher_sd_cp": 687.5924449344624,
+      "through_origin_slope": 1.504342905531525,
+      "strong_rows": 386,
+      "opposite_sign_vs_teacher": 0.21243523316062177
+    },
+    {
+      "panel": "played_roots",
+      "id": "r022-compose-97",
+      "rows": 876,
+      "teacher_mse": 0.04869695599741865,
+      "stable_rows": 701,
+      "bias_student_minus_teacher_cp": 0.7249347090840561,
+      "student_sd_cp": 266.0839032057362,
+      "teacher_sd_cp": 687.5924449344624,
+      "through_origin_slope": 1.4703843087578043,
+      "strong_rows": 386,
+      "opposite_sign_vs_teacher": 0.19948186528497408
+    }
+  ],
+  "training_only_calibration_experiment_justified": true,
+  "scope": "Descriptive projection against CP64;no score transform fitted/applied,no truth/strength claim;played roots are not search leaves."
+}

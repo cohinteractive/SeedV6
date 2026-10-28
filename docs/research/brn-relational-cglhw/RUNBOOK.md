@@ -224,3 +224,8 @@ clean-source runtime and verify final-tested class manifest before fixed-node pl
 R025 complete:clean build78 runtime,21 focused checks,32 deterministic probe
 requests and32 legally replayed games. Neural point estimates trail CP64 strongly.
 All children released;no clock/GPU work. R026 diagnoses saved positions only.
+
+R026 complete:991 played roots,eight fixed endpoints,byte-identical scorer classes
+and descriptive calibration analysis. R027 admits only a training-fitted scalar;
+no new games or neural-weight updates. Historical audit runner preserved at
+raw/r024-prediction-runner.py.

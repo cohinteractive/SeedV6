@@ -1,0 +1,36 @@
+{
+  "source_revision": "73fab78132057af60fd044d15de5c7bed6618ab3",
+  "source_sha256": "0d0e43b189a08f389967796d68cfe66030dba0381281e05ffdf307915dc960b9",
+  "model_and_scorer_class_parity": {
+    "/AttackFieldNetwork": [
+      "com/ohinteractive/seedv6/core/brnpair2/AttackFieldNetwork$Features.class",
+      "com/ohinteractive/seedv6/core/brnpair2/AttackFieldNetwork$Workspace.class",
+      "com/ohinteractive/seedv6/core/brnpair2/AttackFieldNetwork.class"
+    ],
+    "/ComposedAttackFieldNetwork": [
+      "com/ohinteractive/seedv6/core/brnpair2/ComposedAttackFieldNetwork$Features.class",
+      "com/ohinteractive/seedv6/core/brnpair2/ComposedAttackFieldNetwork$Workspace.class",
+      "com/ohinteractive/seedv6/core/brnpair2/ComposedAttackFieldNetwork.class"
+    ],
+    "/WideComposedAttackFieldNetwork": [
+      "com/ohinteractive/seedv6/core/brnpair2/WideComposedAttackFieldNetwork$Features.class",
+      "com/ohinteractive/seedv6/core/brnpair2/WideComposedAttackFieldNetwork$Workspace.class",
+      "com/ohinteractive/seedv6/core/brnpair2/WideComposedAttackFieldNetwork.class"
+    ],
+    "/FieldPredictionAudit": [
+      "com/ohinteractive/seedv6/core/brnpair2/FieldPredictionAudit.class"
+    ],
+    "/nnue/conventional/": [
+      "com/ohinteractive/seedv6/core/nnue/conventional/ConventionalAccumulator.class",
+      "com/ohinteractive/seedv6/core/nnue/conventional/ConventionalFeatures.class",
+      "com/ohinteractive/seedv6/core/nnue/conventional/ConventionalNetwork$Head.class",
+      "com/ohinteractive/seedv6/core/nnue/conventional/ConventionalNetwork.class",
+      "com/ohinteractive/seedv6/core/nnue/conventional/ConventionalVectorHead.class"
+    ]
+  },
+  "build_log": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r026-build-launch.log",
+    "sha256": "70b6c7c9d72b0de0772beb56a9f160153b0edd4727ae58b171bad0a732e0183f"
+  },
+  "validation": "Compilation/module boundaries pass;no new numerical model path;reuse tested routing with byte-identical scorers;Python independently replayed source games and Java validates piece-count interpretation. No additional unit tests claimed."
+}
