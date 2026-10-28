@@ -25,12 +25,13 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R025 isolated integration passes21 focused tests (new lifecycle/score/search
-checks plus existing NNUE/Construction regressions). Initial test-only compile
-failure is preserved and corrected. Build78 belongs to the qualifying core seam
-commit. Next rebuild/freeze a clean-source runtime,verify tested class parity,
-freeze first8 R001B roots and32-game plan,then run actual model exact-node probes
-before games. No new training or production evaluator promotion is admitted.
+R025 integration passes21 focused checks. Clean source a2ecd98b/build78 runtime
+is frozen;every executable class matches tested bytes and both neural/CP64 model
+classes match their preserved originals. r025-plan.json freezes32 games on first8
+R001B roots,10k nodes,one active search. Run/continue compare_neural.py under
+nnue-control after admission. Each comparison first verifies deterministic actual
+model node probes. Completed games are immutable/replayed;only interrupted games
+repeat. No new training,clock work or production evaluator promotion is admitted.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition

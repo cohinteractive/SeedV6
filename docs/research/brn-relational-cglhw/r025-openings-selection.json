@@ -1,0 +1,16 @@
+{
+  "source": "r001b-openings.json",
+  "source_sha256": "c6bf2038c28d603ca6dd83a72cd35a42c76e62610639e91a30d3f43508aa3634",
+  "indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "selection": "First8 consumed R001B roots,no outcome/evaluator filtering",
+  "output_sha256": "494b3fda88e3f4e70e00ea28da50c81c52b6aad252bd4c6a485bcc93cf7e2dd9"
+}
