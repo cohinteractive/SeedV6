@@ -1,0 +1,238 @@
+[
+  {
+    "seed": 71,
+    "result": {
+      "cp64_validation_mse": 0.016369294278498755,
+      "seconds": 76.8373527,
+      "seed": 71,
+      "mode": "aligned",
+      "metrics": [
+        {
+          "epoch": 16,
+          "validation_mse": 0.025378064606794672
+        },
+        {
+          "validation_mse": 0.024846896288160367,
+          "updates": 24576,
+          "objective": "aligned",
+          "model_sha256": "1785487acb67833b539c428e0cc12e212492fdbccec93712f2cdcf5b70807ce8",
+          "seconds": 9.6693904,
+          "state_sha256": "5b3d3bc0fb506442f0b55dcd97771a989701f53af5aee808e016fb60d57d2828",
+          "train_mse": 0.025334090896561044,
+          "epoch": 17
+        },
+        {
+          "validation_mse": 0.024593066928968788,
+          "updates": 32768,
+          "objective": "aligned",
+          "model_sha256": "ccad181428a71957f25c021680808e581a3262544a80b297e712da65ffbd511a",
+          "seconds": 9.4117424,
+          "state_sha256": "c304d124ccb9c87b1d0c82ec8245553c0d94a483bd4effe71a574c7f5db3dddf",
+          "train_mse": 0.02501378514244562,
+          "epoch": 18
+        },
+        {
+          "validation_mse": 0.024375315602103008,
+          "updates": 40960,
+          "objective": "aligned",
+          "model_sha256": "9d5d82410debde5b113ef26a160d9f1263c7901a91ed75f292abbfcaf94670e5",
+          "seconds": 9.6699696,
+          "state_sha256": "4375565e763f5e396702238e19f68ac92556a97e0faeeae720c84b6dba2b47d6",
+          "train_mse": 0.02476112369702361,
+          "epoch": 19
+        },
+        {
+          "validation_mse": 0.02416697121467388,
+          "updates": 49152,
+          "objective": "aligned",
+          "model_sha256": "c74e0a93f0d82477ff88774e2ef9abfa2337ce82b208eabb4d4f895ee2e77b6f",
+          "seconds": 9.5209717,
+          "state_sha256": "1e4c04df6c7734c3468f869b2a136b329b92aa3ccedd0778558ce98101a875ea",
+          "train_mse": 0.024535353485134657,
+          "epoch": 20
+        },
+        {
+          "validation_mse": 0.02409016972988221,
+          "updates": 57344,
+          "objective": "aligned",
+          "model_sha256": "2d2ba384ec071890f09a280d71cd5d29eb062e397eb2b7c67729f3bbb1759ae0",
+          "seconds": 9.5087936,
+          "state_sha256": "b1b4d9f83c5c4780acc71350365ec84535b2166fe2be21650083be00e6c7a5e9",
+          "train_mse": 0.024363547275406426,
+          "epoch": 21
+        },
+        {
+          "validation_mse": 0.02394174436489434,
+          "updates": 65536,
+          "objective": "aligned",
+          "model_sha256": "c1364e8a81b51eb55955b6d59888578a99d74234409238f60307d9780e676449",
+          "seconds": 9.5167245,
+          "state_sha256": "f726aaffa915f2c0c3a07f6ab3099146ed810fdbe2b72f789f8945114812689d",
+          "train_mse": 0.024256078813267173,
+          "epoch": 22
+        },
+        {
+          "validation_mse": 0.023967134038393,
+          "updates": 73728,
+          "objective": "aligned",
+          "model_sha256": "e8a238fdfdff99e2361f1530211a254f12c38890dfdee510d978025184a1547a",
+          "seconds": 9.7348748,
+          "state_sha256": "fc76121fc3515d4427a520bbce595bc3dc446a01b8a5a42d8489fff9ec5ec252",
+          "train_mse": 0.02418966379881167,
+          "epoch": 23
+        },
+        {
+          "validation_mse": 0.023671339410345427,
+          "updates": 81920,
+          "objective": "aligned",
+          "model_sha256": "ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627",
+          "seconds": 9.6410755,
+          "state_sha256": "2053de545d3412bfcf703919d1c2c0002ee5896cc77fa9a96ae16afe558112f5",
+          "train_mse": 0.02398720982270515,
+          "epoch": 24
+        }
+      ],
+      "train_positions": 1048576,
+      "validation_positions": 4096,
+      "scope": "development objective diagnostic; no strength claim; research checkpoint envelope required"
+    },
+    "validation_relative_gain": 0.06725198406155408,
+    "result_path": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-aligned-71\\result.json",
+    "result_sha256": "bdaeb74a601b4c9a71dcc8354dcbd1f8a3c94151c79e8e2ed176b20b3120e6f2",
+    "binding": {
+      "config_sha256": "342e0e41d100e7782a90be00dfe297a7b956923ea12dfa5f0a9a3c3f37bbdb77",
+      "runtime_sha256": {
+        "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime\\engine-core.jar": "449d584272dd8095b692856592b5e0f37c2d3664f637f372fab4db4baffb87a0",
+        "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+        "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+        "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+        "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime\\research.jar": "101da288f63e0c4d4346145a0149ebdeebd4b6fc3875f89c470ee786306bd189",
+        "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+        "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+      },
+      "runner_sha256": "619ca13a0dd74844601b91b28f0018e7a61617a533230917b00e482f386aecc6"
+    },
+    "elapsed_seconds": 82.40744290000293,
+    "max_observed_cpu": 34.73684210526316,
+    "min_available_gib": 16.29617691040039,
+    "process_absent": true
+  },
+  {
+    "seed": 97,
+    "result": {
+      "seconds": 77.9558155,
+      "cp64_validation_mse": 0.016369294278498755,
+      "scope": "development objective diagnostic; no strength claim; research checkpoint envelope required",
+      "validation_positions": 4096,
+      "train_positions": 1048576,
+      "metrics": [
+        {
+          "validation_mse": 0.025356409537770797,
+          "epoch": 16
+        },
+        {
+          "seconds": 9.6576993,
+          "model_sha256": "4b59580032c0173edbb91e35d87cb30fbe8c7b7a3e4a4dc22d9ab83f7e9cdb51",
+          "objective": "aligned",
+          "updates": 24576,
+          "validation_mse": 0.024898402105717483,
+          "epoch": 17,
+          "train_mse": 0.025344927296231744,
+          "state_sha256": "a61412aaf00dd0b915024c4debb6279927de5dfe7bbb9ae7eaf1bfb65310c836"
+        },
+        {
+          "seconds": 10.2159816,
+          "model_sha256": "657f03f570f9c9372934a461bee6d829b9773109d5ebac89a2ddf873ebf7273f",
+          "objective": "aligned",
+          "updates": 32768,
+          "validation_mse": 0.02458282438302478,
+          "epoch": 18,
+          "train_mse": 0.02500791886808412,
+          "state_sha256": "033e38245dee12e0c898f2120c2b52f09b7ce20f193cf86bb9c509d2727f9570"
+        },
+        {
+          "seconds": 9.939167,
+          "model_sha256": "8bb777406eaf0baad954b82bba807cfec24a0fb1e0a6f3953155edd9c497b8cc",
+          "objective": "aligned",
+          "updates": 40960,
+          "validation_mse": 0.024347273984055128,
+          "epoch": 19,
+          "train_mse": 0.024742752781939836,
+          "state_sha256": "373871c231257ba1575018163b457001a8c327d8ee464665005bdc4d856587bf"
+        },
+        {
+          "seconds": 9.7869969,
+          "model_sha256": "6f23a1b0e02ebb0458151b4d99d7097aaf0cbc27100c480c38db2f7ec4dcd377",
+          "objective": "aligned",
+          "updates": 49152,
+          "validation_mse": 0.024211318211632218,
+          "epoch": 20,
+          "train_mse": 0.024545622524300877,
+          "state_sha256": "c499138559cf14551d07c829690ec949adab6cd5486181b0777657b8571ab576"
+        },
+        {
+          "seconds": 10.0325466,
+          "model_sha256": "c0eae0752a31c09cbc2beb0b6d7b1da14af1556dc912c45cc1754b3f0d42c8d6",
+          "objective": "aligned",
+          "updates": 57344,
+          "validation_mse": 0.024066953863669898,
+          "epoch": 21,
+          "train_mse": 0.024363674824589447,
+          "state_sha256": "828f2d4dbe1535b278fccc8041ecf206c6ef17031156deb8e6f157a262c4d9d7"
+        },
+        {
+          "seconds": 9.3400452,
+          "model_sha256": "1a1162320f01d7081d16fd61d399de1ad008078b5d9ce4d15e1d9656d580c7cc",
+          "objective": "aligned",
+          "updates": 65536,
+          "validation_mse": 0.0239709510115443,
+          "epoch": 22,
+          "train_mse": 0.024265512744772545,
+          "state_sha256": "e1aae98b5fc54a3f4433ab5822adb92acfd783e6064503171fd21dc3b8f369f6"
+        },
+        {
+          "seconds": 9.4348624,
+          "model_sha256": "5d3dd95e22fd59a14014cd3c90643d7e688eca6852a38ccbdd4e1cc5d9b6d117",
+          "objective": "aligned",
+          "updates": 73728,
+          "validation_mse": 0.023759619969851355,
+          "epoch": 23,
+          "train_mse": 0.024102322348611482,
+          "state_sha256": "7f9d4a3ddbca68f54a68c7fb2cf7eb1b466eccdc4fc77335be23b8fa54fceb7e"
+        },
+        {
+          "seconds": 9.3825799,
+          "model_sha256": "aad3b91cedc4a2e253587224491f0aef573dcca73fe83ce39c78fb4a5c8147a1",
+          "objective": "aligned",
+          "updates": 81920,
+          "validation_mse": 0.023705656951766827,
+          "epoch": 24,
+          "train_mse": 0.024014942503842812,
+          "state_sha256": "9873c92e8d37362e75c73f47e2d21fa84e5354bb06d3467b88d514561c102da0"
+        }
+      ],
+      "mode": "aligned",
+      "seed": 97
+    },
+    "validation_relative_gain": 0.06510198470903439,
+    "result_path": "docs\\research\\brn-relational-cglhw\\raw\\r002-scale-aligned-97\\result.json",
+    "result_sha256": "838377c89d234c684f0e1536775fea7cdf53af74342d697a9503db089525f9dc",
+    "binding": {
+      "config_sha256": "64621458e518d5bb861097e79066c9fc0e38ce5c5af4f443d31b2c20ac369d55",
+      "runtime_sha256": {
+        "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime\\engine-core.jar": "449d584272dd8095b692856592b5e0f37c2d3664f637f372fab4db4baffb87a0",
+        "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+        "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+        "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+        "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime\\research.jar": "101da288f63e0c4d4346145a0149ebdeebd4b6fc3875f89c470ee786306bd189",
+        "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+        "docs\\research\\brn-relational-cglhw\\raw\\r002-depth-runtime\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+      },
+      "runner_sha256": "619ca13a0dd74844601b91b28f0018e7a61617a533230917b00e482f386aecc6"
+    },
+    "elapsed_seconds": 83.50179180002306,
+    "max_observed_cpu": 38.541666666666664,
+    "min_available_gib": 16.339557647705078,
+    "process_absent": true
+  }
+]

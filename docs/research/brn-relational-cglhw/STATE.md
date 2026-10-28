@@ -1,7 +1,7 @@
 # BRN relational CGLHW — resume entry point
 
 Workstream `seedv6-brn-relational-20261029`; 29 October 2026 Auckland.
-Status: **ACTIVE — R002 million-position coverage admission**. The owner continued
+Status: **ACTIVE — R001B broader fixed-work development screen**. The owner continued
 after interrupting the same root; completed work is preserved. No new architecture
 or strength claim. Read [CONTRACT](CONTRACT.md), [BOOTSTRAP](BOOTSTRAP.md), then
 [BASELINE](BASELINE.md). This programme is distinct from the suspended successor.
@@ -22,9 +22,10 @@ holds, restart old suspended work or assume raw evidence exists in a fresh clone
 |---|---|---|
 | R000 | Authority, implementation and local evidence reconciliation | Bootstrap complete; continue updating factual discoveries |
 | R001 | CP64 vs Gen32 under identical search and fixed nodes | Complete:48 exact repeat probes,16 games,CP64 3W/7D/6L; inconclusive, no extension |
-| R002 | Can matched BT4/logit400 improve relational learning compared with legacy WDL/quarter calibration? | Pilot/depth/131k coverage and64 games complete; aligned improves matched legacy screens, Gen32 comparison inconclusive; one larger coverage stage admitted |
+| R001B | Does the million-position Pair-2 candidate compete under broader common-search fixed work? | Prospective192-game development screen on32 fresh paired roots; preparation active |
+| R002 | Can matched BT4/logit400 improve relational learning compared with legacy WDL/quarter calibration? | Million-position stage complete; both seeds improve MSE>6%,new playing evidence required before further scaling |
 | R003 | Can conditional attack/defense graph energy add useful third-piece relationships? | Six8-epoch pilots complete; CONTEXT fails admission versus EDGE, no larger context allocation; full recomputation only |
-| R004 | Does sparse attack/defense message composition offer a better Pareto point? | Deferred pending R002/R003 evidence; information audit/gradient/cost first |
+| R004 | Does factorized attack-message composition offer a better Pareto point? | Correctness/cost pass; four pilots complete,COMPOSE overfits and fails2% gate; no larger allocation for this recipe |
 | R005 | Fresh independent strength, replication and practical confirmation | Not admitted; preserve final data |
 
 No output from old programmes is deleted or repurposed. No background queue.
@@ -62,14 +63,26 @@ Eight reused opening clusters; mixed Gen32 result is inconclusive. See
 Five actual compiled payloads passed4096-position full/cache agreement (maximum
 ~8e-15 pawn difference). No production/default changes,clock games or GPU work.
 
-Exact next operation: implement and verify resumable nested1,048,576-position
-extraction from the existing hash-verified E006 training binary; retain the4096
-consumed diagnostic panel. Then continue aligned71/97 from coverage epoch16 for
-eight newly declared large-data epochs,with explicit data-fork provenance.
-Do not repeat legacy controls or CONTEXT pilots; do not repeat completed games.
-Use per-chunk extraction and per-epoch training checkpoints; recheck resource gates.
-All changes are attributable research work; build77 unchanged; no push. Git history
-records the milestone commit; it is not owner acceptance or programme completion.
+R002-SCALE extraction is complete (1,048,576+4096 rows,SQLite quick_check and
+prefix/hash checks pass). Both epoch24 training endpoints are complete and bound
+under raw/r002-scale-aligned-{71,97}; MSE.02367134/.02370566,6.73%/6.51% gains.
+Do not repeat completed extraction or training. R004's graph/message tests passed,
+but COMPOSE validation.036639/.038369 versus PAIR.035229/.035877 rejects this
+unregularized composition recipe despite lower training losses. See R004.md.
+
+Exact next operation: freeze R001B's32 fresh development openings and immutable
+plan,then run compare_pairs.py under the supervisor for candidate71 epoch24 vs
+Gen32,vs CP64,and CP64 vs Gen32. Read R001B.md before launch/resume. Verify actual
+status,bindings,models and completed game receipts; skip all completed games.
+Current code supports explicit pair/cp64 selection; raw/r002-games-runner.py and
+raw/r003-runner.py preserve the historical runner bindings. R001/R002 old games,
+CONTEXT and COMPOSE pilots are complete and receive no automatic extension.
+
+Validation now totals38 distinct focused tests:23 baseline Java,8 research Java
+and7 Python; latest research build/tests and Python suite pass. No full-suite,
+GUI,GPU,clock or production qualification is claimed. No new model is promoted.
+All changes are attributable research work; build77 unchanged; no push. Git
+milestones are research boundaries,not owner acceptance or programme completion.
 
 Human actions required after this prompt: None at bootstrap; any actual gate will
 replace this operational statement before ending execution.

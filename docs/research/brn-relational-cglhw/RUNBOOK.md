@@ -41,6 +41,7 @@ Targets: `:installResearchWorkspace :research:installResearch`; targeted tests:
 
 - `:engine-core:test --tests '*ConventionalNetworkTest' --tests '*BrnPair2RuntimeBoundaryTest' --tests '*BaselineEngineTest' --tests '*ProductionBaselineTest'`.
 - `:research:test --tests '*PairObjectiveDiagnosticTest' --tests '*RelationalGraphEnergyTest'`.
+- R004 additionally uses `--tests '*RelationalMessagesTest'`.
 - Python: `-B -m unittest discover -s tools/brn-relational -p 'test_*.py' -v`.
 
 Do not overwrite an experiment's frozen runtime with a rebuilt installation.
@@ -91,3 +92,21 @@ attempt subdirectory; never delete/replace a valid completed receipt or edit its
 hash. Malformed completed evidence or unexplained changes block dependent work.
 Document the diagnosis and smallest replay. No historical source reconstruction
 or broad cleanup is part of resumption.
+
+## Later completed stages and current screen
+
+R002-SCALE's data selection and both epoch24 endpoints are complete. The selection
+SQLite database checkpoints cursor and accepted rows transactionally; completed
+manifest publication pins TSV/ID hashes. Do not repeat it. Run configurations
+r002-scale-aligned-{71,97}.json explicitly bind coverage epoch16 optimizer states
+as a data fork. r002-scale-plan.json uses the frozen depth runtime.
+
+R004 uses r004-plan.json and raw/r004-runtime; all four8-epoch runs are complete.
+Its COMPOSE recipe failed admission. The new MessageDiagnostic dispatch does not
+change older graphs; raw/r003-runner.py matches their original runner binding.
+
+R001B uses compare_pairs.py with explicit evaluator types and the frozen R002 games
+runtime. raw/r002-games-runner.py preserves the old completed comparison runner.
+Do not substitute changed scripts into old binding files. The broader screen's
+own plan/checkpoint directories carry its identities. Same game recovery applies.
+No training or tournament is queued outside the foreground supervised command.

@@ -21,10 +21,15 @@ def main():
     else:atomic(out/'binding.json',binding)
     if sha(ROOT/plan['openings'])!=plan['openings_sha256']:raise ValueError('Openings changed')
     if sha(ROOT/plan['validation'])!=plan['validation_sha256']:raise ValueError('Prediction panel changed')
+    for comparison in plan['comparisons']:
+        for side in ('left','right'):
+            spec=comparison[side]
+            if spec.get('evaluator','pair') not in ('pair','cp64'):raise ValueError('Unknown evaluator')
+            if sha(ROOT/spec['path'])!=spec['sha256']:raise ValueError('Model changed')
     audit=out/'prediction-audit.json'
     if not audit.exists():
         admit(initial=True)
-        models=sorted({side['path'] for c in plan['comparisons'] for side in (c['left'],c['right'])})
+        models=sorted({side['path'] for c in plan['comparisons'] for side in (c['left'],c['right']) if side.get('evaluator','pair')=='pair'})
         command=['C:/java/jdk-21/bin/java.exe','-XX:ActiveProcessorCount=1','-XX:+UseSerialGC','-Xmx384m',
             '-cp',str(runtime/'lib/*'),'com.ohinteractive.seedv6.core.brnpair2.PairPredictionDiagnostic',str(ROOT/plan['validation'])]
         result=subprocess.run(command+[str(ROOT/m) for m in models],capture_output=True,text=True,timeout=60,
@@ -40,7 +45,7 @@ def main():
                 if sha(model)!=spec['sha256']:raise ValueError('Model changed')
                 command=['C:/java/jdk-21/bin/java.exe','--add-modules=jdk.incubator.vector','-XX:ActiveProcessorCount=1',
                     '-XX:+UseSerialGC','-Xmx384m','-cp',str(runtime/'classes')+os.pathsep+str(runtime/'lib/*'),
-                    'com.ohinteractive.seedv6.integration.BrnRelationalUciMain','pair',str(model)]
+                    'com.ohinteractive.seedv6.integration.BrnRelationalUciMain',spec.get('evaluator','pair'),str(model)]
                 engines[side]=Engine(command,directory/(side+'-'+str(time.time_ns())+'.log'))
                 if not any(spec['sha256'] in line for line in engines[side].identity):raise ValueError('UCI model identity')
                 # Actual model startup + special-position legal search before its games.

@@ -1,0 +1,12 @@
+{
+  "main_class": "MessageDiagnostic",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r004-runtime",
+  "configs": [
+    "docs\\research\\brn-relational-cglhw\\r004-pair-71.json",
+    "docs\\research\\brn-relational-cglhw\\r004-pair-97.json",
+    "docs\\research\\brn-relational-cglhw\\r004-compose-71.json",
+    "docs\\research\\brn-relational-cglhw\\r004-compose-97.json"
+  ],
+  "max_seconds_per_arm": 300,
+  "summary": "docs\\research\\brn-relational-cglhw\\raw\\r004-execution.json"
+}

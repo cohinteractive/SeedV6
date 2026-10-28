@@ -1,0 +1,23 @@
+{
+  "schema": "brn-relational-scale-sample-v1",
+  "binding": {
+    "source_sha256": "b9306efe0675a0e0c0c3bea9d64e4bccda856f35ebafe79ab5a87472ca5b9e2c",
+    "prior_manifest_sha256": "5b23f8303bb1ad4a75bfce1214c12e4c162d4bc8194476f18f4165ff94b54605",
+    "script_sha256": "ca35c2fe772bb88c8b03cedc917ab5588f139cea8c79624925130406bad2b7ac",
+    "target": 1048576,
+    "chunk": 4096,
+    "seed": 2026102903,
+    "multiplier": 7919
+  },
+  "train": 1048576,
+  "validation": 4096,
+  "original_train_prefix": 131072,
+  "source": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e006-data\\train.data",
+  "selection_cursor": 921600,
+  "files": {
+    "train.tsv": "723f4ecc42a3a783fe0c86a31a68dbd55512e55f7a6dd86ce53f87cbd6c17153",
+    "validation.tsv": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+    "selected-indices.json": "a1e5e01aee658e891ab0ad1e64382be9119b4d0f3dea74ad67861bb1d9ef4b1f"
+  },
+  "limitations": "Consumed development panel; unknown game identity; placement/color/rank/file aliases purged; affine permutation is deterministic, not iid random sampling."
+}
