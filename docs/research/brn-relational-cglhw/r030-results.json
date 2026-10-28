@@ -1,0 +1,890 @@
+{
+  "plan_sha256": "a75d192311dc432b6ef076484ec544fb70654cb9dfb94fd693f07c5f7d47f6a9",
+  "runtime_manifest_sha256": "46631aa738a87e7fac27de55f2986335469e1a39041cdb61c40a5f76d3027e5d",
+  "binding": {
+    "plan_sha256": "a75d192311dc432b6ef076484ec544fb70654cb9dfb94fd693f07c5f7d47f6a9",
+    "runner_sha256": "5b80b3e62605cbeee916f5a2b3e95589a4dc6f658cd18137d1a9ad590ece2660",
+    "engine_helper_sha256": "04b121eaa9de0e897c94e5e40821466bab2fb38c50be5c05f93e1fd46eea3c81",
+    "runtime": {
+      "research-launcher.properties": "a7c61ea7a9363040d74d62f8b3ce450305f0b833ef13cd5dc87a85425f5849e4",
+      "lib\\app-uci.jar": "a24bc26e00dd1e5a988d4443ff509068862f7ae8ac3bbb5f221cac69846c19a3",
+      "lib\\engine-core.jar": "25f84f47a9517c20a60a665d30920128ef20a7571acec5bc346ab00b894d85f8",
+      "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+      "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "lib\\research.jar": "47dd204882f0a884dbe3b05962b1cded288a8d7e6fa20caf27f51bbae0dadba0",
+      "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\BrnRelationalUciMain$1.class": "94580d4b0f90f2d0efc4bf8272dd3b010bf897190b6d0fd4843da2c06ef475f8",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\BrnRelationalUciMain.class": "2d816a804c301b5606dfee28ebfc05ac92efa55585aa0656714bada32a500580",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SelectivityUciMain$1.class": "45f381877ef7cdc00347e7624d2bbcedc60208044d9a259b0566d782c4c54735",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SelectivityUciMain.class": "815eea3def5cb2c760b46d6966c65dbafec04505620bae9269fafa3df780b16a",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SpendingUciMain$1.class": "43f6669023494549289802766e868b4f86270e66312ab735e9c60f2919e668cd",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SpendingUciMain.class": "3e638447a4065c89d0868e96cfff98da752107dafe791d27f4cfd51fbc6a32c4",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64TimeUciMain$1.class": "bec1e65dc489733c8daaed5d9229b361de0e7e76aa03181fd49288cc8557602e",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64TimeUciMain.class": "283e4f3cfe2f1c440760b9bc1f98f9f80d92fb248e4aff3d3d2a12a99bcbaf5b",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain$1.class": "58c3d4ebe21a2b8aa46a3114d1bc3e37a851860312fe330867a78d5708df6598",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain.class": "1c47b49bba3d0fb4a9349db23ac757778cd6c6f9d6e32a3911eb2f1613451735",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain$1.class": "1a0b995fb5c2046b1a4e18a5cec8b0bd1eeb949595e1b1c36a556e7514c45b14",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain.class": "b35ec2373bd5a0cf4e6d714d5e7b8e6c948fc33775b5b461af10696c539b84fd",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain$1.class": "a7e2f469e7b6976ec1897c05ec9428220e9ff4a97ec03ef894189b0ecd4e3bf3",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain.class": "1fb37318975ec761b2117db35602d72fd28113e678b17700752a1764156006ec",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain$1.class": "2b01438f9b77a8c89c9b153638b85841f2dad32f74b215d3749158ba8a980b17",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain.class": "119edde9b12440c661ae89495afc65511d76e003ff4f0da644d9f37e64755281",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain$1.class": "745f48127c0e35629ea731691b838b7cf0c51ddb732f7bec9b87bb171e0fe7d6",
+      "classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain.class": "706958cf81282a7d9e4b130b92f36f80219d993f86547e40d2c2a16aff431141"
+    }
+  },
+  "analysis_sha256": "32cd572b4316d9d3f26ae74d5f586fcb09db61bcf96e40ca7f84978ed9a032ff",
+  "analysis_resource": {
+    "cpu_percent": 3.7837837837837784,
+    "available_gib": 17.971290588378906,
+    "utc": "2026-10-28T23:34:05Z"
+  },
+  "comparisons": [
+    {
+      "id": "piece71-vs-cp64",
+      "summary": {
+        "completed_games": 16,
+        "expected_games": 16,
+        "scored": 16,
+        "wins": 0,
+        "draws": 5,
+        "losses": 11,
+        "censored": 0,
+        "full_allocation_score_bounds": [
+          0.15625,
+          0.15625
+        ],
+        "complete_pairs": 8,
+        "score": 0.15625,
+        "paired_bootstrap_95": [
+          0.0625,
+          0.28125
+        ],
+        "hoeffding_95": [
+          0,
+          0.6364113956599604
+        ],
+        "scope": "reused development openings; tiny sample, no confirmation or equal-time Elo claim"
+      },
+      "elapsed_seconds": 52.676907300017774,
+      "request_totals": {
+        "neural": {
+          "nodes": 6525785,
+          "elapsed_ns": 19486090100,
+          "requests": 661,
+          "observed_nodes_per_second": 334894.5307401612
+        },
+        "cp64": {
+          "nodes": 6542816,
+          "elapsed_ns": 10670981400,
+          "requests": 665,
+          "observed_nodes_per_second": 613140.9806411995
+        }
+      },
+      "probes": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r030-games\\piece71-vs-cp64\\probes-1793230334135189900.json",
+          "sha256": "d5a9dd6bbaa73c78a080f5b38e26eeb0d6575d115b765655f5a58f180d195ba8",
+          "requests": 16
+        }
+      ],
+      "releases": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r030-games\\piece71-vs-cp64\\release-1793230384963603700.json",
+          "sha256": "e90f7fe2501948e7a8a6862c2412418e6d5850fd304890986b642c73e450ea1f",
+          "remaining": 0,
+          "errors": [],
+          "resources": [
+            {
+              "cpu_percent": 30.000000000000004,
+              "available_gib": 17.922080993652344,
+              "utc": "2026-10-28T23:32:12Z"
+            },
+            {
+              "cpu_percent": 3.2432432432432434,
+              "available_gib": 17.630695343017578,
+              "utc": "2026-10-28T23:32:14Z"
+            },
+            {
+              "cpu_percent": 5.128205128205132,
+              "available_gib": 17.62948989868164,
+              "utc": "2026-10-28T23:32:14Z"
+            },
+            {
+              "cpu_percent": 10.106382978723405,
+              "available_gib": 17.547565460205078,
+              "utc": "2026-10-28T23:32:16Z"
+            },
+            {
+              "cpu_percent": 18.75,
+              "available_gib": 17.545719146728516,
+              "utc": "2026-10-28T23:32:17Z"
+            },
+            {
+              "cpu_percent": 8.42696629213483,
+              "available_gib": 17.59665298461914,
+              "utc": "2026-10-28T23:32:18Z"
+            },
+            {
+              "cpu_percent": 11.731843575419,
+              "available_gib": 17.624374389648438,
+              "utc": "2026-10-28T23:32:18Z"
+            },
+            {
+              "cpu_percent": 4.324324324324325,
+              "available_gib": 17.628952026367188,
+              "utc": "2026-10-28T23:32:18Z"
+            },
+            {
+              "cpu_percent": 1.5957446808510634,
+              "available_gib": 17.585304260253906,
+              "utc": "2026-10-28T23:32:20Z"
+            },
+            {
+              "cpu_percent": 20.94240837696335,
+              "available_gib": 17.588764190673828,
+              "utc": "2026-10-28T23:32:20Z"
+            },
+            {
+              "cpu_percent": 13.684210526315788,
+              "available_gib": 17.57378387451172,
+              "utc": "2026-10-28T23:32:20Z"
+            },
+            {
+              "cpu_percent": 5.434782608695654,
+              "available_gib": 17.56598663330078,
+              "utc": "2026-10-28T23:32:22Z"
+            },
+            {
+              "cpu_percent": 2.5252525252525304,
+              "available_gib": 17.605602264404297,
+              "utc": "2026-10-28T23:32:22Z"
+            },
+            {
+              "cpu_percent": 5.154639175257736,
+              "available_gib": 17.581871032714844,
+              "utc": "2026-10-28T23:32:23Z"
+            },
+            {
+              "cpu_percent": 10.67415730337079,
+              "available_gib": 17.6378173828125,
+              "utc": "2026-10-28T23:32:23Z"
+            },
+            {
+              "cpu_percent": 21.354166666666664,
+              "available_gib": 17.622547149658203,
+              "utc": "2026-10-28T23:32:24Z"
+            },
+            {
+              "cpu_percent": 1.025641025641022,
+              "available_gib": 17.61823272705078,
+              "utc": "2026-10-28T23:32:25Z"
+            },
+            {
+              "cpu_percent": 15.979381443298967,
+              "available_gib": 17.617332458496094,
+              "utc": "2026-10-28T23:32:25Z"
+            },
+            {
+              "cpu_percent": 3.125,
+              "available_gib": 17.58444595336914,
+              "utc": "2026-10-28T23:32:26Z"
+            },
+            {
+              "cpu_percent": 3.314917127071826,
+              "available_gib": 17.631290435791016,
+              "utc": "2026-10-28T23:32:27Z"
+            },
+            {
+              "cpu_percent": 5.405405405405405,
+              "available_gib": 17.624542236328125,
+              "utc": "2026-10-28T23:32:28Z"
+            },
+            {
+              "cpu_percent": 5.649717514124298,
+              "available_gib": 17.636817932128906,
+              "utc": "2026-10-28T23:32:29Z"
+            },
+            {
+              "cpu_percent": 0.0,
+              "available_gib": 17.633804321289062,
+              "utc": "2026-10-28T23:32:29Z"
+            },
+            {
+              "cpu_percent": 0.995024875621886,
+              "available_gib": 17.634925842285156,
+              "utc": "2026-10-28T23:32:30Z"
+            },
+            {
+              "cpu_percent": 2.7932960893854775,
+              "available_gib": 17.633926391601562,
+              "utc": "2026-10-28T23:32:31Z"
+            },
+            {
+              "cpu_percent": 1.6949152542372836,
+              "available_gib": 17.63311767578125,
+              "utc": "2026-10-28T23:32:32Z"
+            },
+            {
+              "cpu_percent": 1.6042780748663055,
+              "available_gib": 17.630908966064453,
+              "utc": "2026-10-28T23:32:32Z"
+            },
+            {
+              "cpu_percent": 1.0526315789473717,
+              "available_gib": 17.635547637939453,
+              "utc": "2026-10-28T23:32:34Z"
+            },
+            {
+              "cpu_percent": 4.069767441860462,
+              "available_gib": 17.643451690673828,
+              "utc": "2026-10-28T23:32:35Z"
+            },
+            {
+              "cpu_percent": 11.675126903553302,
+              "available_gib": 17.631912231445312,
+              "utc": "2026-10-28T23:32:36Z"
+            },
+            {
+              "cpu_percent": 22.777777777777775,
+              "available_gib": 17.617843627929688,
+              "utc": "2026-10-28T23:32:36Z"
+            },
+            {
+              "cpu_percent": 2.1505376344086002,
+              "available_gib": 17.559173583984375,
+              "utc": "2026-10-28T23:32:37Z"
+            },
+            {
+              "cpu_percent": 1.5873015873015928,
+              "available_gib": 17.59526824951172,
+              "utc": "2026-10-28T23:32:38Z"
+            },
+            {
+              "cpu_percent": 3.7433155080213942,
+              "available_gib": 17.629467010498047,
+              "utc": "2026-10-28T23:32:39Z"
+            },
+            {
+              "cpu_percent": 15.263157894736846,
+              "available_gib": 17.629749298095703,
+              "utc": "2026-10-28T23:32:39Z"
+            },
+            {
+              "cpu_percent": 2.645502645502651,
+              "available_gib": 17.620502471923828,
+              "utc": "2026-10-28T23:32:40Z"
+            },
+            {
+              "cpu_percent": 3.3707865168539297,
+              "available_gib": 17.619029998779297,
+              "utc": "2026-10-28T23:32:41Z"
+            },
+            {
+              "cpu_percent": 13.157894736842103,
+              "available_gib": 17.59952163696289,
+              "utc": "2026-10-28T23:32:42Z"
+            },
+            {
+              "cpu_percent": 10.362694300518138,
+              "available_gib": 17.61294174194336,
+              "utc": "2026-10-28T23:32:43Z"
+            },
+            {
+              "cpu_percent": 3.157894736842104,
+              "available_gib": 17.638172149658203,
+              "utc": "2026-10-28T23:32:44Z"
+            },
+            {
+              "cpu_percent": 7.5268817204301115,
+              "available_gib": 17.63085174560547,
+              "utc": "2026-10-28T23:32:45Z"
+            },
+            {
+              "cpu_percent": 4.918032786885251,
+              "available_gib": 17.633506774902344,
+              "utc": "2026-10-28T23:32:46Z"
+            },
+            {
+              "cpu_percent": 2.010050251256279,
+              "available_gib": 17.62828826904297,
+              "utc": "2026-10-28T23:32:46Z"
+            },
+            {
+              "cpu_percent": 12.154696132596687,
+              "available_gib": 17.165973663330078,
+              "utc": "2026-10-28T23:32:47Z"
+            },
+            {
+              "cpu_percent": 11.979166666666663,
+              "available_gib": 17.138275146484375,
+              "utc": "2026-10-28T23:32:48Z"
+            },
+            {
+              "cpu_percent": 28.421052631578945,
+              "available_gib": 17.18381118774414,
+              "utc": "2026-10-28T23:32:48Z"
+            },
+            {
+              "cpu_percent": 20.744680851063833,
+              "available_gib": 17.19023895263672,
+              "utc": "2026-10-28T23:32:49Z"
+            },
+            {
+              "cpu_percent": 13.068181818181824,
+              "available_gib": 17.2049560546875,
+              "utc": "2026-10-28T23:32:50Z"
+            },
+            {
+              "cpu_percent": 4.278074866310155,
+              "available_gib": 17.2056884765625,
+              "utc": "2026-10-28T23:32:50Z"
+            },
+            {
+              "cpu_percent": 15.025906735751294,
+              "available_gib": 17.212425231933594,
+              "utc": "2026-10-28T23:32:51Z"
+            },
+            {
+              "cpu_percent": 1.0928961748633892,
+              "available_gib": 17.204933166503906,
+              "utc": "2026-10-28T23:32:52Z"
+            },
+            {
+              "cpu_percent": 13.612565445026181,
+              "available_gib": 17.208938598632812,
+              "utc": "2026-10-28T23:32:53Z"
+            },
+            {
+              "cpu_percent": 13.089005235602091,
+              "available_gib": 17.213394165039062,
+              "utc": "2026-10-28T23:32:54Z"
+            },
+            {
+              "cpu_percent": 2.072538860103623,
+              "available_gib": 17.21536636352539,
+              "utc": "2026-10-28T23:32:54Z"
+            },
+            {
+              "cpu_percent": 9.72972972972973,
+              "available_gib": 17.440147399902344,
+              "utc": "2026-10-28T23:32:55Z"
+            },
+            {
+              "cpu_percent": 5.44554455445545,
+              "available_gib": 17.455963134765625,
+              "utc": "2026-10-28T23:32:56Z"
+            },
+            {
+              "cpu_percent": 2.197802197802201,
+              "available_gib": 17.450634002685547,
+              "utc": "2026-10-28T23:32:57Z"
+            },
+            {
+              "cpu_percent": 7.216494845360821,
+              "available_gib": 17.420944213867188,
+              "utc": "2026-10-28T23:32:58Z"
+            },
+            {
+              "cpu_percent": 2.659574468085102,
+              "available_gib": 17.446224212646484,
+              "utc": "2026-10-28T23:32:58Z"
+            },
+            {
+              "cpu_percent": 6.5573770491803245,
+              "available_gib": 17.446849822998047,
+              "utc": "2026-10-28T23:32:59Z"
+            },
+            {
+              "cpu_percent": 5.851063829787229,
+              "available_gib": 17.446571350097656,
+              "utc": "2026-10-28T23:33:00Z"
+            },
+            {
+              "cpu_percent": 3.703703703703709,
+              "available_gib": 17.452831268310547,
+              "utc": "2026-10-28T23:33:01Z"
+            },
+            {
+              "cpu_percent": 3.7634408602150504,
+              "available_gib": 17.441207885742188,
+              "utc": "2026-10-28T23:33:01Z"
+            },
+            {
+              "cpu_percent": 7.537688442211055,
+              "available_gib": 17.432518005371094,
+              "utc": "2026-10-28T23:33:02Z"
+            },
+            {
+              "cpu_percent": 15.083798882681565,
+              "available_gib": 17.421630859375,
+              "utc": "2026-10-28T23:33:03Z"
+            },
+            {
+              "cpu_percent": 2.051282051282055,
+              "available_gib": 17.508663177490234,
+              "utc": "2026-10-28T23:33:04Z"
+            }
+          ],
+          "interruption": null
+        }
+      ],
+      "games": {
+        "game-000-1.json": "8df7a0a55a289283c889950d1f53fe9c861d25fd2582ba06df52058af37ec6f2",
+        "game-000-0.json": "862032d9f66183478f1c491dc39d6e2f0058db9f12a98305d5e79286db388b15",
+        "game-001-1.json": "0c20aea419070f24f3a2183e2f4f8ec5b8c7bf5131fe2c37e56a0b27faffde46",
+        "game-001-0.json": "246143a2a72324771fdbc910ef5869bf3f8c650137f1ff8c1fea60d979b97bbc",
+        "game-002-1.json": "25e08854b8492e6bec16f5f8f803c36b566674d5d2e064bbd370a274b967b13f",
+        "game-002-0.json": "c00fa2e1aa3f792de7210188515161508a4901f1f91091286ce0a57d30ab8c18",
+        "game-003-1.json": "6ec8951b16e128c8a782cee163cf0ae1d62e8f94421b48dda43e3a2e0db17d7f",
+        "game-003-0.json": "af12cbb499b6d226c7a11fabd0ea0b90460dd29bef10a17fc6aa3e3117bcebbe",
+        "game-004-1.json": "a992beabef0d5da36b20b3d3b9478647ab5ed1021a9be0cd3662d8d5b36244ec",
+        "game-004-0.json": "af678dcc9f6264830af9a45a8028bb8e8b8c6b93a6939bc4dd2b5806d51ce713",
+        "game-005-1.json": "70a8b545340a49fcbf3e555c9b61e42bdfd1b2e9135964c1b8cc61529300a3e9",
+        "game-005-0.json": "2a4142ded0fa1878b925cb5d2bf0fbcf640b4495e849ef9515f55ca91ae9a5c3",
+        "game-006-1.json": "8786b803b9eca72d2629b1cf466c50f526bb6ca25abd551ad0aa34e475c04840",
+        "game-006-0.json": "d7b019686ffeabc5241d17f1997651e57a7a3d40169b277e3b25659e9035edc3",
+        "game-007-1.json": "f53d36a5693ea6986cbcbc5074a5bfcda07202a69ea6388094171d3fc8a3dc54",
+        "game-007-0.json": "d7ca3d0ce1aa267c146eb02066e1e7127f5ce9c3f96e8ffea5c5e2f826260b24"
+      }
+    },
+    {
+      "id": "piece97-vs-cp64",
+      "summary": {
+        "completed_games": 16,
+        "expected_games": 16,
+        "scored": 16,
+        "wins": 1,
+        "draws": 2,
+        "losses": 13,
+        "censored": 0,
+        "full_allocation_score_bounds": [
+          0.125,
+          0.125
+        ],
+        "complete_pairs": 8,
+        "score": 0.125,
+        "paired_bootstrap_95": [
+          0.03125,
+          0.25
+        ],
+        "hoeffding_95": [
+          0,
+          0.6051613956599604
+        ],
+        "scope": "reused development openings; tiny sample, no confirmation or equal-time Elo claim"
+      },
+      "elapsed_seconds": 54.05211769999005,
+      "request_totals": {
+        "neural": {
+          "nodes": 6324198,
+          "elapsed_ns": 20403023400,
+          "requests": 646,
+          "observed_nodes_per_second": 309963.7674287037
+        },
+        "cp64": {
+          "nodes": 6379251,
+          "elapsed_ns": 10332444000,
+          "requests": 652,
+          "observed_nodes_per_second": 617400.0072006197
+        }
+      },
+      "probes": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r030-games\\piece97-vs-cp64\\probes-1793230386897340100.json",
+          "sha256": "6f06b03a5768eb3e2bf6f040f16ebf62087d51e7fb956555dcbd0ea1a8d442f3",
+          "requests": 16
+        }
+      ],
+      "releases": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r030-games\\piece97-vs-cp64\\release-1793230439182732100.json",
+          "sha256": "0049d4bf9d5adb230faff57fefbc46bd8d577804fcd8bfccac73fed0b53bf65c",
+          "remaining": 0,
+          "errors": [],
+          "resources": [
+            {
+              "cpu_percent": 6.976744186046513,
+              "available_gib": 17.87649917602539,
+              "utc": "2026-10-28T23:33:05Z"
+            },
+            {
+              "cpu_percent": 8.808290155440412,
+              "available_gib": 17.55190658569336,
+              "utc": "2026-10-28T23:33:07Z"
+            },
+            {
+              "cpu_percent": 32.97872340425532,
+              "available_gib": 17.61254119873047,
+              "utc": "2026-10-28T23:33:07Z"
+            },
+            {
+              "cpu_percent": 14.28571428571429,
+              "available_gib": 17.544330596923828,
+              "utc": "2026-10-28T23:33:09Z"
+            },
+            {
+              "cpu_percent": 7.650273224043714,
+              "available_gib": 17.559036254882812,
+              "utc": "2026-10-28T23:33:10Z"
+            },
+            {
+              "cpu_percent": 1.025641025641022,
+              "available_gib": 17.597625732421875,
+              "utc": "2026-10-28T23:33:10Z"
+            },
+            {
+              "cpu_percent": 2.2346368715083775,
+              "available_gib": 17.564998626708984,
+              "utc": "2026-10-28T23:33:11Z"
+            },
+            {
+              "cpu_percent": 0.5102040816326481,
+              "available_gib": 17.56539535522461,
+              "utc": "2026-10-28T23:33:11Z"
+            },
+            {
+              "cpu_percent": 18.823529411764707,
+              "available_gib": 17.522666931152344,
+              "utc": "2026-10-28T23:33:13Z"
+            },
+            {
+              "cpu_percent": 2.7027027027026973,
+              "available_gib": 17.522933959960938,
+              "utc": "2026-10-28T23:33:14Z"
+            },
+            {
+              "cpu_percent": 4.891304347826086,
+              "available_gib": 17.520179748535156,
+              "utc": "2026-10-28T23:33:14Z"
+            },
+            {
+              "cpu_percent": 8.021390374331549,
+              "available_gib": 17.559444427490234,
+              "utc": "2026-10-28T23:33:15Z"
+            },
+            {
+              "cpu_percent": 5.235602094240843,
+              "available_gib": 17.592830657958984,
+              "utc": "2026-10-28T23:33:16Z"
+            },
+            {
+              "cpu_percent": 11.578947368421055,
+              "available_gib": 17.555644989013672,
+              "utc": "2026-10-28T23:33:16Z"
+            },
+            {
+              "cpu_percent": 4.046242774566478,
+              "available_gib": 17.556087493896484,
+              "utc": "2026-10-28T23:33:17Z"
+            },
+            {
+              "cpu_percent": 14.795918367346939,
+              "available_gib": 17.560073852539062,
+              "utc": "2026-10-28T23:33:18Z"
+            },
+            {
+              "cpu_percent": 3.2432432432432434,
+              "available_gib": 17.564960479736328,
+              "utc": "2026-10-28T23:33:19Z"
+            },
+            {
+              "cpu_percent": 2.1390374331550777,
+              "available_gib": 17.5648193359375,
+              "utc": "2026-10-28T23:33:19Z"
+            },
+            {
+              "cpu_percent": 2.5510204081632626,
+              "available_gib": 17.562191009521484,
+              "utc": "2026-10-28T23:33:20Z"
+            },
+            {
+              "cpu_percent": 5.128205128205132,
+              "available_gib": 17.603206634521484,
+              "utc": "2026-10-28T23:33:21Z"
+            },
+            {
+              "cpu_percent": 5.291005291005291,
+              "available_gib": 17.5859375,
+              "utc": "2026-10-28T23:33:22Z"
+            },
+            {
+              "cpu_percent": 16.93121693121693,
+              "available_gib": 17.540454864501953,
+              "utc": "2026-10-28T23:33:23Z"
+            },
+            {
+              "cpu_percent": 10.362694300518138,
+              "available_gib": 17.53921127319336,
+              "utc": "2026-10-28T23:33:23Z"
+            },
+            {
+              "cpu_percent": 1.0526315789473717,
+              "available_gib": 17.54174041748047,
+              "utc": "2026-10-28T23:33:24Z"
+            },
+            {
+              "cpu_percent": 1.6483516483516536,
+              "available_gib": 17.549579620361328,
+              "utc": "2026-10-28T23:33:25Z"
+            },
+            {
+              "cpu_percent": 12.432432432432428,
+              "available_gib": 17.615711212158203,
+              "utc": "2026-10-28T23:33:26Z"
+            },
+            {
+              "cpu_percent": 8.510638297872342,
+              "available_gib": 17.571189880371094,
+              "utc": "2026-10-28T23:33:27Z"
+            },
+            {
+              "cpu_percent": 15.508021390374328,
+              "available_gib": 17.561729431152344,
+              "utc": "2026-10-28T23:33:27Z"
+            },
+            {
+              "cpu_percent": 5.113636363636365,
+              "available_gib": 17.568878173828125,
+              "utc": "2026-10-28T23:33:27Z"
+            },
+            {
+              "cpu_percent": 4.145077720207258,
+              "available_gib": 17.553192138671875,
+              "utc": "2026-10-28T23:33:29Z"
+            },
+            {
+              "cpu_percent": 6.499999999999995,
+              "available_gib": 17.55331039428711,
+              "utc": "2026-10-28T23:33:30Z"
+            },
+            {
+              "cpu_percent": 8.994708994709,
+              "available_gib": 17.591629028320312,
+              "utc": "2026-10-28T23:33:31Z"
+            },
+            {
+              "cpu_percent": 6.707317073170726,
+              "available_gib": 17.578109741210938,
+              "utc": "2026-10-28T23:33:31Z"
+            },
+            {
+              "cpu_percent": 3.076923076923077,
+              "available_gib": 17.579593658447266,
+              "utc": "2026-10-28T23:33:31Z"
+            },
+            {
+              "cpu_percent": 31.25,
+              "available_gib": 17.56006622314453,
+              "utc": "2026-10-28T23:33:33Z"
+            },
+            {
+              "cpu_percent": 23.958333333333336,
+              "available_gib": 17.55368423461914,
+              "utc": "2026-10-28T23:33:33Z"
+            },
+            {
+              "cpu_percent": 3.703703703703709,
+              "available_gib": 17.561264038085938,
+              "utc": "2026-10-28T23:33:33Z"
+            },
+            {
+              "cpu_percent": 4.6875,
+              "available_gib": 17.572463989257812,
+              "utc": "2026-10-28T23:33:35Z"
+            },
+            {
+              "cpu_percent": 5.128205128205132,
+              "available_gib": 17.560161590576172,
+              "utc": "2026-10-28T23:33:36Z"
+            },
+            {
+              "cpu_percent": 2.0618556701030966,
+              "available_gib": 17.55809783935547,
+              "utc": "2026-10-28T23:33:36Z"
+            },
+            {
+              "cpu_percent": 4.469273743016755,
+              "available_gib": 17.545299530029297,
+              "utc": "2026-10-28T23:33:37Z"
+            },
+            {
+              "cpu_percent": 1.0152284263959421,
+              "available_gib": 17.540512084960938,
+              "utc": "2026-10-28T23:33:37Z"
+            },
+            {
+              "cpu_percent": 5.464480874316935,
+              "available_gib": 17.572250366210938,
+              "utc": "2026-10-28T23:33:39Z"
+            },
+            {
+              "cpu_percent": 2.590673575129532,
+              "available_gib": 17.572998046875,
+              "utc": "2026-10-28T23:33:40Z"
+            },
+            {
+              "cpu_percent": 4.145077720207258,
+              "available_gib": 17.582286834716797,
+              "utc": "2026-10-28T23:33:41Z"
+            },
+            {
+              "cpu_percent": 2.4390243902439046,
+              "available_gib": 17.59186553955078,
+              "utc": "2026-10-28T23:33:41Z"
+            },
+            {
+              "cpu_percent": 2.010050251256279,
+              "available_gib": 17.592105865478516,
+              "utc": "2026-10-28T23:33:42Z"
+            },
+            {
+              "cpu_percent": 16.84210526315789,
+              "available_gib": 17.553184509277344,
+              "utc": "2026-10-28T23:33:43Z"
+            },
+            {
+              "cpu_percent": 8.670520231213874,
+              "available_gib": 17.580589294433594,
+              "utc": "2026-10-28T23:33:43Z"
+            },
+            {
+              "cpu_percent": 5.128205128205132,
+              "available_gib": 17.58230209350586,
+              "utc": "2026-10-28T23:33:44Z"
+            },
+            {
+              "cpu_percent": 8.290155440414503,
+              "available_gib": 17.57683563232422,
+              "utc": "2026-10-28T23:33:45Z"
+            },
+            {
+              "cpu_percent": 2.604166666666663,
+              "available_gib": 17.578514099121094,
+              "utc": "2026-10-28T23:33:46Z"
+            },
+            {
+              "cpu_percent": 2.0618556701030966,
+              "available_gib": 17.585987091064453,
+              "utc": "2026-10-28T23:33:47Z"
+            },
+            {
+              "cpu_percent": 6.417112299465244,
+              "available_gib": 17.594757080078125,
+              "utc": "2026-10-28T23:33:47Z"
+            },
+            {
+              "cpu_percent": 17.647058823529417,
+              "available_gib": 17.60834503173828,
+              "utc": "2026-10-28T23:33:48Z"
+            },
+            {
+              "cpu_percent": 18.461538461538463,
+              "available_gib": 17.603225708007812,
+              "utc": "2026-10-28T23:33:49Z"
+            },
+            {
+              "cpu_percent": 2.072538860103623,
+              "available_gib": 17.60751724243164,
+              "utc": "2026-10-28T23:33:50Z"
+            },
+            {
+              "cpu_percent": 2.840909090909094,
+              "available_gib": 17.601600646972656,
+              "utc": "2026-10-28T23:33:51Z"
+            },
+            {
+              "cpu_percent": 2.941176470588236,
+              "available_gib": 17.59691619873047,
+              "utc": "2026-10-28T23:33:51Z"
+            },
+            {
+              "cpu_percent": 10.362694300518138,
+              "available_gib": 17.591327667236328,
+              "utc": "2026-10-28T23:33:52Z"
+            },
+            {
+              "cpu_percent": 1.6949152542372836,
+              "available_gib": 17.596176147460938,
+              "utc": "2026-10-28T23:33:53Z"
+            },
+            {
+              "cpu_percent": 9.999999999999998,
+              "available_gib": 17.581722259521484,
+              "utc": "2026-10-28T23:33:54Z"
+            },
+            {
+              "cpu_percent": 4.807692307692313,
+              "available_gib": 17.583248138427734,
+              "utc": "2026-10-28T23:33:54Z"
+            },
+            {
+              "cpu_percent": 1.4705882352941124,
+              "available_gib": 17.59066390991211,
+              "utc": "2026-10-28T23:33:55Z"
+            },
+            {
+              "cpu_percent": 3.8461538461538436,
+              "available_gib": 17.623538970947266,
+              "utc": "2026-10-28T23:33:56Z"
+            },
+            {
+              "cpu_percent": 0.5681818181818232,
+              "available_gib": 17.63287353515625,
+              "utc": "2026-10-28T23:33:57Z"
+            },
+            {
+              "cpu_percent": 3.825136612021862,
+              "available_gib": 17.632389068603516,
+              "utc": "2026-10-28T23:33:58Z"
+            }
+          ],
+          "interruption": null
+        }
+      ],
+      "games": {
+        "game-000-1.json": "55491bcf5335ffdf4973fbb7879a1dfdfff6c5f9cd50f202de4def4f5e96ba6a",
+        "game-000-0.json": "1229a214bc78a0193218383af011a12d7476759eb747b74627cd266ff62f8694",
+        "game-001-1.json": "ca9f0ce679f211965221f37c6b4466e389875d9f100c6077355091e9fd2c89b2",
+        "game-001-0.json": "71dd7d294094072345661a6a129494ee441e599934c01c76b83ec5f78f5a71cc",
+        "game-002-1.json": "336ac879f2557def3a65f6451762feb56ac6c6d3fcfef819bb2271dc1c61dba1",
+        "game-002-0.json": "8ea9845b7585184ccb87bb4feabb51a715dd0efcda70cdbfbbd5d9afcbde4dc8",
+        "game-003-1.json": "d4824a23f9c120f05b69786818a0ae76a6f41dbdb25b5b22f31e17669b1824e0",
+        "game-003-0.json": "e6b08f13eca851c00c80ed72c747e07beabb8bc8da5dafd1396d89a27db6672c",
+        "game-004-1.json": "aa1d421998bd83bd1745f054bc9317dafaf119eafcce03aebf545efade8f97da",
+        "game-004-0.json": "6969fade74e1b88b2f46b0729524a9c9b6df823ce627fba73d6347b5e63b9e1c",
+        "game-005-1.json": "feb017de61e9bee7da867afdf626ce8663b2c8a341b0f2590ff1f11ae6d31ba2",
+        "game-005-0.json": "3cec5059407d13e2a9f042e41663cc03c7fbb343c930022b172152a55808742e",
+        "game-006-1.json": "f2807509ad84d497199c0872f6648796197be7ed10742ae47bb49dc6d491f86d",
+        "game-006-0.json": "4de194811ccef5e68b4b860e9520aad19b872d77b07aab8f6d4c5477e767804e",
+        "game-007-1.json": "3a32d3cae73a8b34d4180d827023b15fb49c270e79c1775773a0b040bf87564a",
+        "game-007-0.json": "c803971f8cb1fe51063d324459339bc4c7f3495f9cf57477dd58fa0c2da24a1f"
+      }
+    }
+  ],
+  "descriptive_r025_point_comparison": [
+    {
+      "seed": 71,
+      "one_score": 0.15625,
+      "r022_score": 0.09375,
+      "difference": 0.0625
+    },
+    {
+      "seed": 97,
+      "one_score": 0.125,
+      "r022_score": 0.21875,
+      "difference": -0.09375
+    }
+  ],
+  "completed_games": 32,
+  "caps": 0,
+  "max_cpu_percent": 32.97872340425532,
+  "minimum_available_gib": 17.138275146484375,
+  "node_budget": 10000,
+  "source_revision": "de95ff9b37cc623bcd1c133462f145ba480d2017",
+  "build": 78,
+  "broader_confirmation_justified": false,
+  "limitations": "Eight consumed opening clusters;small diagnostic,unknown training-seed distribution;point-score differences do not establish improvement,noninferiority or equal-time Elo. No production promotion."
+}

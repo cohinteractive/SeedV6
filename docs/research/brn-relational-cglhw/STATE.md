@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R030 one-pass neural fixed-node diagnostic**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R031 bounded neural warm-start step-size diagnosis**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,12 +25,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R030 integration passes4 targeted tests(1new,3regressions). Frozen clean-source
-build78 runtime matches every tested executable class;core/UCI classes match
-R025 and neural model classes match R028. r030-plan.json is ready. Execute under
-nnue-control `build/research/venv/Scripts/python.exe -B tools/brn-relational/compare_neural.py docs/research/brn-relational-cglhw/r030-plan.json`.
-32games,10000nodes,one active search worker;resume skips verified complete games.
-No training,second-pass extension,clocks or production promotion.
+R030 completes32games/probes,zero caps/failures;ONE scores15.625%/12.5% vsCP64.
+No broader games/promotion. R031 prospectively tests one lower-rate warm-start
+against equal-exposure constant-rate controls,with moments and per-step shrink
+held fixed. Implement/test trainer and exact segmented continuation before four
+serial arms. Neural inference unchanged;no Pair-2 training or clock/GPU work.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -74,7 +73,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R027 | Training-only positive neural score scale | Complete;scales1.108/1.096 improve1.1-1.8%,fail2% gate;no games |
 | R028 | Contextual all-piece neural messages | Complete;second pass fails matched2%;both modes improve~4% over R022 |
 | R029 | All-piece neural transfer | Complete;ONE gains3.25%/2.01%,passes transfer gate;no strength claim |
-| R030 | ONE fixed-node diagnostic versus CP64 | Prospective32games under R025 conditions;integration correctness first |
+| R030 | ONE fixed-node diagnostic versus CP64 | Complete32games;15.625%/12.5%,no consistent playing gain or promotion |
+| R031 | Neural warm-start step-size | Prospective one additional epoch,rate.01/.001,matched shrink/moments |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

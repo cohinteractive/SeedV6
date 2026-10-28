@@ -244,3 +244,8 @@ R029 complete:2 routing checks,byte-identical inference classes,exact8192-panel
 reference parity. ONE passes separate transfer gate;R030 freezes small fixed-node
 play. No second-pass gate reversal or new training. R028 cost prose corrected
 from the original immutable measurement JSON.
+
+R030 complete:4 integration tests,clean-source build78 runtime,32 deterministic
+probes/32legally replayed games;ONE remains uncompetitive by point estimates.
+All owned searches released. r030-results.json retains uncertainty and class/hash
+provenance. R031 is one bounded neural optimization intervention,not Pair training.
