@@ -234,3 +234,8 @@ R027 complete:3 tests,training-only scales fail quality gate,no games or state
 mutation. Monitored audit runner retains five-second resource checks and child
 drainage;raw/r026-prediction-runner.py preserves its predecessor. R028 is a new
 contextual neural message hypothesis;no earlier failed recipe is repeated.
+
+R028 complete:4 tests,64/64 capability both modes,4 endpoints/32 segment states.
+Second-pass gate fails;R029 tests all-piece transfer without more fitting.
+Historical runners preserved at raw/r023-objective-runner.py and
+raw/r027-scale-runner.py. Current R028 checkpoints bind the maintained runner.

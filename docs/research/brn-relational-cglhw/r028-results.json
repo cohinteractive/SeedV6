@@ -1,0 +1,725 @@
+{
+  "plan_sha256": "ceb2206bb913ea2a08c4b1c2c666402df30093713232477628a63b79c7491db6",
+  "analysis_sha256": "e045b2ffac2b0606a532771471578271dd8f765ee996fcd2481ef88204685dd2",
+  "analysis_resource": {
+    "cpu_percent": 11.538461538461542,
+    "available_gib": 18.113025665283203,
+    "utc": "2026-10-28T23:27:58Z"
+  },
+  "records": [
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r028-one-71.json",
+      "config_sha256": "545b06e9aa5cee2aaa212e59aa1497d7d2a415fe2b08e6c44843d1344d408c94",
+      "result_sha256": "24fd6ca51804448335e459db32e24398c577924e6a6b352098f07c0487868f42",
+      "result": {
+        "mode": "ONE",
+        "train_positions": 1048576,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.018538843866214384
+          },
+          {
+            "state_sha256": "555fba100a70371755894a9653b409d806eb6b725345fd76b4b23eb1b4d2fec1",
+            "unary_only_train_mse": 0.015242717036186331,
+            "second_pass_masked_validation_mse": 0.011727901074627435,
+            "second_pass_masked_train_mse": 0.012898452834353097,
+            "unary_only_validation_mse": 0.013973239635402368,
+            "updates": 8192,
+            "epoch": 1,
+            "train_mse": 0.012898452834353097,
+            "validation_mse": 0.011727901074627435
+          }
+        ],
+        "load_seconds": 3.8671886,
+        "scope": "Contextual all-piece message diagnosis;no search or strength qualification",
+        "optimization_checkpoint_seconds": 16.1234577,
+        "rate": 0.01,
+        "seed": 71,
+        "full_inference_ns": 2841.0,
+        "parameters": 62401,
+        "active_parameters": 34657,
+        "original_bt4_validation_mse": 0.024706448925778352
+      },
+      "segments": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-71\\segment-1.state",
+          "updates": 1024,
+          "config_sha256": "545b06e9aa5cee2aaa212e59aa1497d7d2a415fe2b08e6c44843d1344d408c94",
+          "state_sha256": "27f1fa47febcc8a12e5c0e86b29ac5cd033613d597f5084175e4286d0f798677",
+          "completed_positions": 131072
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-71\\segment-2.state",
+          "updates": 2048,
+          "config_sha256": "545b06e9aa5cee2aaa212e59aa1497d7d2a415fe2b08e6c44843d1344d408c94",
+          "state_sha256": "c50f1031587edf31ef0410bde76eee77a192a9e1455548778cbf9cb7921d0278",
+          "completed_positions": 262144
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-71\\segment-3.state",
+          "updates": 3072,
+          "config_sha256": "545b06e9aa5cee2aaa212e59aa1497d7d2a415fe2b08e6c44843d1344d408c94",
+          "state_sha256": "ff60d161cefded9e2d02838f9e3f53b5d1986ec476dcc876fe8b2edcdb9018cb",
+          "completed_positions": 393216
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-71\\segment-4.state",
+          "updates": 4096,
+          "config_sha256": "545b06e9aa5cee2aaa212e59aa1497d7d2a415fe2b08e6c44843d1344d408c94",
+          "state_sha256": "d9fa44cabf11740d8b931e5de0e49a506815d0e9225d5fd13d2eaa22f903bf34",
+          "completed_positions": 524288
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-71\\segment-5.state",
+          "updates": 5120,
+          "config_sha256": "545b06e9aa5cee2aaa212e59aa1497d7d2a415fe2b08e6c44843d1344d408c94",
+          "state_sha256": "b83aefd8be9a6fadeb39ba2990d52cd22052359375875018d74261434b7c02c6",
+          "completed_positions": 655360
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-71\\segment-6.state",
+          "updates": 6144,
+          "config_sha256": "545b06e9aa5cee2aaa212e59aa1497d7d2a415fe2b08e6c44843d1344d408c94",
+          "state_sha256": "26493c7c4ff995bde6b70710fbf2cf76ecff7861db978de6b6dbf40e9a21bd84",
+          "completed_positions": 786432
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-71\\segment-7.state",
+          "updates": 7168,
+          "config_sha256": "545b06e9aa5cee2aaa212e59aa1497d7d2a415fe2b08e6c44843d1344d408c94",
+          "state_sha256": "19db07fb23ef1c3dc3bc6c1603583f0ab18c6e66fa888fbd0dbf04885a007c11",
+          "completed_positions": 917504
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-71\\segment-8.state",
+          "updates": 8192,
+          "config_sha256": "545b06e9aa5cee2aaa212e59aa1497d7d2a415fe2b08e6c44843d1344d408c94",
+          "state_sha256": "555fba100a70371755894a9653b409d806eb6b725345fd76b4b23eb1b4d2fec1",
+          "completed_positions": 1048576
+        }
+      ],
+      "parameter_diagnostics": {
+        "unary": {
+          "rms": 0.4449126409134696,
+          "clamped": 0.0
+        },
+        "source": {
+          "rms": 0.446596261704344,
+          "clamped": 0.005696614583333333
+        },
+        "first_relation": {
+          "rms": 0.45668629273741124,
+          "clamped": 0.005787037037037037
+        },
+        "first_readout": {
+          "rms": 0.4695795273657374,
+          "clamped": 0.00732421875
+        },
+        "second_relation": {
+          "rms": 0.04420123179901035,
+          "clamped": 0.0
+        },
+        "second_readout": {
+          "rms": 0.0,
+          "clamped": 0.0
+        }
+      },
+      "executions": [
+        {
+          "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r028-one-71.json",
+          "status": "COMPLETE",
+          "error": null,
+          "elapsed_seconds": 20.45838399999775,
+          "resources": [
+            {
+              "cpu_percent": 1.5873015873015928,
+              "available_gib": 18.031333923339844,
+              "utc": "2026-10-28T23:26:04Z"
+            },
+            {
+              "cpu_percent": 8.376963350785338,
+              "available_gib": 17.79540252685547,
+              "utc": "2026-10-28T23:26:09Z"
+            },
+            {
+              "cpu_percent": 11.458333333333337,
+              "available_gib": 17.81256103515625,
+              "utc": "2026-10-28T23:26:14Z"
+            },
+            {
+              "cpu_percent": 10.362694300518138,
+              "available_gib": 17.806255340576172,
+              "utc": "2026-10-28T23:26:20Z"
+            }
+          ],
+          "command": [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-XX:+UseSerialGC",
+            "-Xmx512m",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r028-runtime\\lib\\*",
+            "com.ohinteractive.seedv6.core.brnpair2.ContextualPieceDiagnostic",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r028-one-71.json"
+          ],
+          "last_complete_epoch": 1,
+          "last_complete_segment": 8,
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r028-two-71.json",
+      "config_sha256": "94de53317e23741e806d3d2df9e6acdc28f4aa0c571f22a114f169b89347bd1a",
+      "result_sha256": "0fb5b085a59c9edc4062ec839801dcc0e5d4a863411178d36e11dfda851cfc8b",
+      "result": {
+        "load_seconds": 3.8792183,
+        "metrics": [
+          {
+            "validation_mse": 0.018538843866214384,
+            "epoch": 0
+          },
+          {
+            "second_pass_masked_train_mse": 0.013293282815572105,
+            "second_pass_masked_validation_mse": 0.012162053263063381,
+            "unary_only_train_mse": 0.015426088674126157,
+            "state_sha256": "7dddd5ff34cefb9602fea2726ae427b0c5c5dbb6f22f09bbf97edb01271310df",
+            "validation_mse": 0.011728040634186958,
+            "train_mse": 0.012748009642365249,
+            "epoch": 1,
+            "updates": 8192,
+            "unary_only_validation_mse": 0.014192683559321422
+          }
+        ],
+        "train_positions": 1048576,
+        "mode": "TWO",
+        "seed": 71,
+        "rate": 0.01,
+        "optimization_checkpoint_seconds": 29.7588019,
+        "scope": "Contextual all-piece message diagnosis;no search or strength qualification",
+        "full_inference_ns": 4510.27,
+        "parameters": 62401,
+        "active_parameters": 62401,
+        "original_bt4_validation_mse": 0.024616953149652697
+      },
+      "segments": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-71\\segment-1.state",
+          "updates": 1024,
+          "completed_positions": 131072,
+          "state_sha256": "ea253c34846fed4ed741f175b545936df1508741e6047322cc92a8aa18ada492",
+          "config_sha256": "94de53317e23741e806d3d2df9e6acdc28f4aa0c571f22a114f169b89347bd1a"
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-71\\segment-2.state",
+          "updates": 2048,
+          "completed_positions": 262144,
+          "state_sha256": "e0d4f378b2fcb41b89cd13f8db37b3ee6c1c5904bd7b04baa5a8d8f9f825e6fc",
+          "config_sha256": "94de53317e23741e806d3d2df9e6acdc28f4aa0c571f22a114f169b89347bd1a"
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-71\\segment-3.state",
+          "updates": 3072,
+          "completed_positions": 393216,
+          "state_sha256": "429b88961f763b76ec1b818db40f925d17f101b5525791d6e781f95fe1cd6a16",
+          "config_sha256": "94de53317e23741e806d3d2df9e6acdc28f4aa0c571f22a114f169b89347bd1a"
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-71\\segment-4.state",
+          "updates": 4096,
+          "completed_positions": 524288,
+          "state_sha256": "857b4ad47e311504eaf83decacbb63ceb4cfb9c9c12facd560ef8fefc04a2abc",
+          "config_sha256": "94de53317e23741e806d3d2df9e6acdc28f4aa0c571f22a114f169b89347bd1a"
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-71\\segment-5.state",
+          "updates": 5120,
+          "completed_positions": 655360,
+          "state_sha256": "30fa37218ebe36bbbe7c0d26c21a5b8be55ae5b3fcdea140a0065c45cf4fff6b",
+          "config_sha256": "94de53317e23741e806d3d2df9e6acdc28f4aa0c571f22a114f169b89347bd1a"
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-71\\segment-6.state",
+          "updates": 6144,
+          "completed_positions": 786432,
+          "state_sha256": "b6d81aa3146833d24d00e6893d7653c7eee60532ebc6837247072b83c9edd741",
+          "config_sha256": "94de53317e23741e806d3d2df9e6acdc28f4aa0c571f22a114f169b89347bd1a"
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-71\\segment-7.state",
+          "updates": 7168,
+          "completed_positions": 917504,
+          "state_sha256": "a28ff49c21edfc90172c278c8bc592903dc2bdd55d99f0f70af721bf45ba7a92",
+          "config_sha256": "94de53317e23741e806d3d2df9e6acdc28f4aa0c571f22a114f169b89347bd1a"
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-71\\segment-8.state",
+          "updates": 8192,
+          "completed_positions": 1048576,
+          "state_sha256": "7dddd5ff34cefb9602fea2726ae427b0c5c5dbb6f22f09bbf97edb01271310df",
+          "config_sha256": "94de53317e23741e806d3d2df9e6acdc28f4aa0c571f22a114f169b89347bd1a"
+        }
+      ],
+      "parameter_diagnostics": {
+        "unary": {
+          "rms": 0.4463424480998257,
+          "clamped": 0.0
+        },
+        "source": {
+          "rms": 0.42815225906885446,
+          "clamped": 0.004720052083333333
+        },
+        "first_relation": {
+          "rms": 0.45010804150906425,
+          "clamped": 0.005462962962962963
+        },
+        "first_readout": {
+          "rms": 0.4502831674507446,
+          "clamped": 0.006998697916666667
+        },
+        "second_relation": {
+          "rms": 0.46645028286601325,
+          "clamped": 0.0059722222222222225
+        },
+        "second_readout": {
+          "rms": 0.44498174480964614,
+          "clamped": 0.005208333333333333
+        }
+      },
+      "executions": [
+        {
+          "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r028-two-71.json",
+          "status": "COMPLETE",
+          "error": null,
+          "elapsed_seconds": 34.17758779996075,
+          "resources": [
+            {
+              "cpu_percent": 10.439560439560436,
+              "available_gib": 18.05069351196289,
+              "utc": "2026-10-28T23:26:25Z"
+            },
+            {
+              "cpu_percent": 10.160427807486627,
+              "available_gib": 17.823467254638672,
+              "utc": "2026-10-28T23:26:30Z"
+            },
+            {
+              "cpu_percent": 29.01554404145078,
+              "available_gib": 17.58838653564453,
+              "utc": "2026-10-28T23:26:35Z"
+            },
+            {
+              "cpu_percent": 10.309278350515461,
+              "available_gib": 17.524208068847656,
+              "utc": "2026-10-28T23:26:40Z"
+            },
+            {
+              "cpu_percent": 10.052910052910057,
+              "available_gib": 17.836227416992188,
+              "utc": "2026-10-28T23:26:46Z"
+            },
+            {
+              "cpu_percent": 12.041884816753923,
+              "available_gib": 17.838783264160156,
+              "utc": "2026-10-28T23:26:51Z"
+            },
+            {
+              "cpu_percent": 14.65968586387435,
+              "available_gib": 17.835227966308594,
+              "utc": "2026-10-28T23:26:56Z"
+            }
+          ],
+          "command": [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-XX:+UseSerialGC",
+            "-Xmx512m",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r028-runtime\\lib\\*",
+            "com.ohinteractive.seedv6.core.brnpair2.ContextualPieceDiagnostic",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r028-two-71.json"
+          ],
+          "last_complete_epoch": 1,
+          "last_complete_segment": 8,
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r028-one-97.json",
+      "config_sha256": "99589ba8296a9e7c195305784910893f7bf56330017495d39d3e02a896c42cb6",
+      "result_sha256": "bdfb01a958e15a0178f3a66070ff206de4006fb2d31c935ab12ba149818e5c05",
+      "result": {
+        "optimization_checkpoint_seconds": 16.49377,
+        "rate": 0.01,
+        "seed": 97,
+        "mode": "ONE",
+        "train_positions": 1048576,
+        "metrics": [
+          {
+            "validation_mse": 0.01854004323123222,
+            "epoch": 0
+          },
+          {
+            "updates": 8192,
+            "epoch": 1,
+            "train_mse": 0.013053859897590045,
+            "validation_mse": 0.01176920467932639,
+            "state_sha256": "886128c090ef655f60c8bc9aa2d03d393f1e007881bdd0310ce0defa55024f76",
+            "unary_only_train_mse": 0.01527772969486003,
+            "second_pass_masked_validation_mse": 0.01176920467932639,
+            "second_pass_masked_train_mse": 0.013053859897590045,
+            "unary_only_validation_mse": 0.01383636584207664
+          }
+        ],
+        "load_seconds": 3.8361221,
+        "scope": "Contextual all-piece message diagnosis;no search or strength qualification",
+        "full_inference_ns": 2818.095,
+        "parameters": 62401,
+        "active_parameters": 34657,
+        "original_bt4_validation_mse": 0.024933500807945094
+      },
+      "segments": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-97\\segment-1.state",
+          "config_sha256": "99589ba8296a9e7c195305784910893f7bf56330017495d39d3e02a896c42cb6",
+          "state_sha256": "9e7e3c59fb2700afdc2529b9599b89255251f1cf3f9fee3b13464481c7d3419c",
+          "completed_positions": 131072,
+          "updates": 1024
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-97\\segment-2.state",
+          "config_sha256": "99589ba8296a9e7c195305784910893f7bf56330017495d39d3e02a896c42cb6",
+          "state_sha256": "e044018084f1a843b3780ba424103c106f74fb390f1c36f437398cdb5693cbd0",
+          "completed_positions": 262144,
+          "updates": 2048
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-97\\segment-3.state",
+          "config_sha256": "99589ba8296a9e7c195305784910893f7bf56330017495d39d3e02a896c42cb6",
+          "state_sha256": "6a0f287c0524fba13cfa05c1d8f35b2680b267b17e3a56dad2642ed8d1639cbb",
+          "completed_positions": 393216,
+          "updates": 3072
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-97\\segment-4.state",
+          "config_sha256": "99589ba8296a9e7c195305784910893f7bf56330017495d39d3e02a896c42cb6",
+          "state_sha256": "6748c932b9e43e920351c68fe8431df4465d4aa3227d0bbaf44f228a901ed476",
+          "completed_positions": 524288,
+          "updates": 4096
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-97\\segment-5.state",
+          "config_sha256": "99589ba8296a9e7c195305784910893f7bf56330017495d39d3e02a896c42cb6",
+          "state_sha256": "59614e065db97279955606353411232432d814f4c3c34776abe70e88b4ab326f",
+          "completed_positions": 655360,
+          "updates": 5120
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-97\\segment-6.state",
+          "config_sha256": "99589ba8296a9e7c195305784910893f7bf56330017495d39d3e02a896c42cb6",
+          "state_sha256": "984732ab85dcbfa0c05c3567e48692f3eb79ed6db88844b981b903dd8beb82e0",
+          "completed_positions": 786432,
+          "updates": 6144
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-97\\segment-7.state",
+          "config_sha256": "99589ba8296a9e7c195305784910893f7bf56330017495d39d3e02a896c42cb6",
+          "state_sha256": "6e30dba1b7dc67043a2d661bf4758c571e1571deb86ef6530b1b9754920383ab",
+          "completed_positions": 917504,
+          "updates": 7168
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-97\\segment-8.state",
+          "config_sha256": "99589ba8296a9e7c195305784910893f7bf56330017495d39d3e02a896c42cb6",
+          "state_sha256": "886128c090ef655f60c8bc9aa2d03d393f1e007881bdd0310ce0defa55024f76",
+          "completed_positions": 1048576,
+          "updates": 8192
+        }
+      ],
+      "parameter_diagnostics": {
+        "unary": {
+          "rms": 0.44515860716840194,
+          "clamped": 0.0013003901170351106
+        },
+        "source": {
+          "rms": 0.4467400794363378,
+          "clamped": 0.005859375
+        },
+        "first_relation": {
+          "rms": 0.4599262552090419,
+          "clamped": 0.007037037037037037
+        },
+        "first_readout": {
+          "rms": 0.4614426953091122,
+          "clamped": 0.0068359375
+        },
+        "second_relation": {
+          "rms": 0.044261015593660455,
+          "clamped": 0.0
+        },
+        "second_readout": {
+          "rms": 0.0,
+          "clamped": 0.0
+        }
+      },
+      "executions": [
+        {
+          "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r028-one-97.json",
+          "status": "COMPLETE",
+          "error": null,
+          "elapsed_seconds": 21.01085439999588,
+          "resources": [
+            {
+              "cpu_percent": 12.5,
+              "available_gib": 18.07345962524414,
+              "utc": "2026-10-28T23:26:59Z"
+            },
+            {
+              "cpu_percent": 13.157894736842103,
+              "available_gib": 17.834320068359375,
+              "utc": "2026-10-28T23:27:04Z"
+            },
+            {
+              "cpu_percent": 15.000000000000002,
+              "available_gib": 17.796192169189453,
+              "utc": "2026-10-28T23:27:09Z"
+            },
+            {
+              "cpu_percent": 19.90049751243781,
+              "available_gib": 17.4442138671875,
+              "utc": "2026-10-28T23:27:15Z"
+            },
+            {
+              "cpu_percent": 26.0,
+              "available_gib": 17.741397857666016,
+              "utc": "2026-10-28T23:27:20Z"
+            }
+          ],
+          "command": [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-XX:+UseSerialGC",
+            "-Xmx512m",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r028-runtime\\lib\\*",
+            "com.ohinteractive.seedv6.core.brnpair2.ContextualPieceDiagnostic",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r028-one-97.json"
+          ],
+          "last_complete_epoch": 1,
+          "last_complete_segment": 8,
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r028-two-97.json",
+      "config_sha256": "8b832382ffa6c2367fb7159644a8caf1adf1b5f0a5a85d7953768b60f540f40d",
+      "result_sha256": "2b0b4814ac330226ff910379bb9ac8a11da378b1c89d603812e987be395e25f8",
+      "result": {
+        "mode": "TWO",
+        "seed": 97,
+        "rate": 0.01,
+        "optimization_checkpoint_seconds": 29.85843,
+        "scope": "Contextual all-piece message diagnosis;no search or strength qualification",
+        "load_seconds": 3.8216408,
+        "metrics": [
+          {
+            "validation_mse": 0.01854004323123222,
+            "epoch": 0
+          },
+          {
+            "state_sha256": "217e80417c52494379cb0a6f4f652f2c6f7cff82c4e62c4e315fa8e1bd23f92f",
+            "validation_mse": 0.011748060345579564,
+            "train_mse": 0.012867559039193309,
+            "epoch": 1,
+            "updates": 8192,
+            "unary_only_validation_mse": 0.01382230752728943,
+            "second_pass_masked_train_mse": 0.01328777882107551,
+            "second_pass_masked_validation_mse": 0.012021742226821674,
+            "unary_only_train_mse": 0.015221489988687597
+          }
+        ],
+        "train_positions": 1048576,
+        "full_inference_ns": 4497.365,
+        "parameters": 62401,
+        "active_parameters": 62401,
+        "original_bt4_validation_mse": 0.0247847092197428
+      },
+      "segments": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-97\\segment-1.state",
+          "completed_positions": 131072,
+          "state_sha256": "7860318638e5aa331e4bd05fcd0343422d63c3e2166fd4638f4c512067379b9a",
+          "config_sha256": "8b832382ffa6c2367fb7159644a8caf1adf1b5f0a5a85d7953768b60f540f40d",
+          "updates": 1024
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-97\\segment-2.state",
+          "completed_positions": 262144,
+          "state_sha256": "7b869a0ea864a8dee33246010bc2b9cb530b6f46aea437f1503a21ffa6ed934f",
+          "config_sha256": "8b832382ffa6c2367fb7159644a8caf1adf1b5f0a5a85d7953768b60f540f40d",
+          "updates": 2048
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-97\\segment-3.state",
+          "completed_positions": 393216,
+          "state_sha256": "3476089e0807afbdb30686fa760c87e74c99954c986c0726a062997c18f1d1c2",
+          "config_sha256": "8b832382ffa6c2367fb7159644a8caf1adf1b5f0a5a85d7953768b60f540f40d",
+          "updates": 3072
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-97\\segment-4.state",
+          "completed_positions": 524288,
+          "state_sha256": "de473068cd1aceca4d399e8c2724b9afc0c529e870a59d714ac6f253c08aac6d",
+          "config_sha256": "8b832382ffa6c2367fb7159644a8caf1adf1b5f0a5a85d7953768b60f540f40d",
+          "updates": 4096
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-97\\segment-5.state",
+          "completed_positions": 655360,
+          "state_sha256": "4da12eb499996493506e5932f2798c79922cf15e135e08ddd0462242ed62f04d",
+          "config_sha256": "8b832382ffa6c2367fb7159644a8caf1adf1b5f0a5a85d7953768b60f540f40d",
+          "updates": 5120
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-97\\segment-6.state",
+          "completed_positions": 786432,
+          "state_sha256": "b64d23c77248e9d38f71c20a3a835d8fc193b4b2577d5ee04ad976dc34d283f6",
+          "config_sha256": "8b832382ffa6c2367fb7159644a8caf1adf1b5f0a5a85d7953768b60f540f40d",
+          "updates": 6144
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-97\\segment-7.state",
+          "completed_positions": 917504,
+          "state_sha256": "a733b1deaf3a9c2a050fb2211292dd2b29e3e5eb1648b376e59f76f0913b003b",
+          "config_sha256": "8b832382ffa6c2367fb7159644a8caf1adf1b5f0a5a85d7953768b60f540f40d",
+          "updates": 7168
+        },
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-two-97\\segment-8.state",
+          "completed_positions": 1048576,
+          "state_sha256": "217e80417c52494379cb0a6f4f652f2c6f7cff82c4e62c4e315fa8e1bd23f92f",
+          "config_sha256": "8b832382ffa6c2367fb7159644a8caf1adf1b5f0a5a85d7953768b60f540f40d",
+          "updates": 8192
+        }
+      ],
+      "parameter_diagnostics": {
+        "unary": {
+          "rms": 0.4470602181681693,
+          "clamped": 0.0
+        },
+        "source": {
+          "rms": 0.42922987514119293,
+          "clamped": 0.00341796875
+        },
+        "first_relation": {
+          "rms": 0.45075151158199206,
+          "clamped": 0.0061574074074074074
+        },
+        "first_readout": {
+          "rms": 0.44791385407307055,
+          "clamped": 0.005208333333333333
+        },
+        "second_relation": {
+          "rms": 0.46615020613157604,
+          "clamped": 0.0060648148148148145
+        },
+        "second_readout": {
+          "rms": 0.454854335166967,
+          "clamped": 0.006510416666666667
+        }
+      },
+      "executions": [
+        {
+          "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r028-two-97.json",
+          "status": "COMPLETE",
+          "error": null,
+          "elapsed_seconds": 34.26222139998572,
+          "resources": [
+            {
+              "cpu_percent": 20.833333333333336,
+              "available_gib": 17.73574447631836,
+              "utc": "2026-10-28T23:27:20Z"
+            },
+            {
+              "cpu_percent": 27.319587628865982,
+              "available_gib": 17.811683654785156,
+              "utc": "2026-10-28T23:27:26Z"
+            },
+            {
+              "cpu_percent": 8.629441624365485,
+              "available_gib": 17.807159423828125,
+              "utc": "2026-10-28T23:27:31Z"
+            },
+            {
+              "cpu_percent": 10.769230769230765,
+              "available_gib": 17.84097671508789,
+              "utc": "2026-10-28T23:27:36Z"
+            },
+            {
+              "cpu_percent": 15.463917525773196,
+              "available_gib": 17.838008880615234,
+              "utc": "2026-10-28T23:27:41Z"
+            },
+            {
+              "cpu_percent": 11.917098445595853,
+              "available_gib": 17.83783721923828,
+              "utc": "2026-10-28T23:27:47Z"
+            },
+            {
+              "cpu_percent": 8.629441624365485,
+              "available_gib": 17.89947509765625,
+              "utc": "2026-10-28T23:27:52Z"
+            }
+          ],
+          "command": [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-XX:+UseSerialGC",
+            "-Xmx512m",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r028-runtime\\lib\\*",
+            "com.ohinteractive.seedv6.core.brnpair2.ContextualPieceDiagnostic",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r028-two-97.json"
+          ],
+          "last_complete_epoch": 1,
+          "last_complete_segment": 8,
+          "process_absent": true
+        }
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "seed": 71,
+      "teacher_gain_over_one": -1.1899789965408303e-05,
+      "teacher_gain_over_r022": 0.04269867129402871,
+      "train_gain_over_one": 0.011663661829825367,
+      "bt4_gain_over_r022": 0.021836965846264156,
+      "full_gain_over_unary": 0.17365587803271665,
+      "second_path_gain": 0.035685802346758,
+      "reference_path": "docs\\research\\brn-relational-cglhw\\raw\\r022-compose-71\\result.json",
+      "reference_sha256": "77d3778e7523a2d53853f6495d38f066a727c6fcdbb0844204de085a975a0d1b",
+      "passes": false
+    },
+    {
+      "seed": 97,
+      "teacher_gain_over_one": 0.0017965813598235236,
+      "teacher_gain_over_r022": 0.038391302283199646,
+      "train_gain_over_one": 0.014271706595466838,
+      "bt4_gain_over_r022": 0.012070905798148734,
+      "full_gain_over_unary": 0.15006518829180093,
+      "second_path_gain": 0.02276557557784753,
+      "reference_path": "docs\\research\\brn-relational-cglhw\\raw\\r022-compose-97\\result.json",
+      "reference_sha256": "bc7cf8762b866171dd463f6063d4bda06316bfa5b293547c9c9dfd321373fffd",
+      "passes": false
+    }
+  ],
+  "advance": false,
+  "elapsed_seconds": 109.9090475999401,
+  "maximum_cpu_percent": 29.01554404145078,
+  "minimum_available_gib": 17.4442138671875,
+  "scope": "Fixed development endpoints;no seed/epoch selection,search or strength qualification;all segment checkpoints preserved."
+}
