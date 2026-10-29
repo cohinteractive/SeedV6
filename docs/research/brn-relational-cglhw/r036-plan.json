@@ -1,0 +1,10 @@
+{
+  "main_class": "ContextualPieceDistributionDiagnostic",
+  "runtime": "docs/research/brn-relational-cglhw/raw/r036-runtime/lib",
+  "configs": [
+    "docs\\research\\brn-relational-cglhw\\r036-mix-71.json",
+    "docs\\research\\brn-relational-cglhw\\r036-mix-97.json"
+  ],
+  "max_seconds_per_arm": 60,
+  "summary": "docs/research/brn-relational-cglhw/raw/r036-training-summary.json"
+}

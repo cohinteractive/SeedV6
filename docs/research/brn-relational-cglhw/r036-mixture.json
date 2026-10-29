@@ -1,0 +1,54 @@
+{
+  "schema": "root-grouped-neural-mixture-v1",
+  "rows": 1048576,
+  "old_rows": 524288,
+  "new_rows": 524288,
+  "seed": 2026102936,
+  "source_evidence_sha256": "4c1f7cc37830e8c5d0f67821556b36d5e423e045f3f23c1d9e48c7fd889fd1ca",
+  "old_path": "docs\\research\\brn-relational-cglhw\\raw\\r007-teacher-data\\train\\data.tsv",
+  "old_sha256": "b9e01e578c2765a77a906b818d8ba5595d7c3f64156674c4dccd2f80a5cde63a",
+  "new_path": "docs\\research\\brn-relational-cglhw\\raw\\r035-teacher-data\\train\\data.tsv",
+  "new_sha256": "8ea1fadd9642cc28696561d6d8347398cb63a0c8bfa36154b56a67d83ad2733f",
+  "new_positions_sha256": "b77dd2bccf2af360d3d1fd6db0e05e63609e0d27612b8a47d7bc8893fbb99198",
+  "validation_sha256": "b3b542217af2c6c3dca8b2906705417192541b66b81081fa6c1337a9ce744f0f",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r036-data\\train.tsv",
+  "output_sha256": "a388a271168b36a931fa3ac3849ddf8dccc8ac76b81c24dc5e2dec742421e583",
+  "draws": "docs\\research\\brn-relational-cglhw\\raw\\r036-data\\draws.json",
+  "draws_sha256": "b089dcbfad8b84f6dc083a577c5ce63d17102e1a2a592a1d9c7af449d576daec",
+  "root_counts": {
+    "(71, 0)": 32397,
+    "(71, 1)": 32545,
+    "(71, 2)": 32806,
+    "(71, 3)": 32803,
+    "(71, 4)": 32920,
+    "(71, 5)": 32849,
+    "(71, 6)": 32890,
+    "(71, 7)": 32724,
+    "(97, 0)": 32986,
+    "(97, 1)": 32565,
+    "(97, 2)": 32883,
+    "(97, 3)": 32742,
+    "(97, 4)": 32827,
+    "(97, 5)": 33026,
+    "(97, 6)": 32539,
+    "(97, 7)": 32786
+  },
+  "unique_new_aliases": 2065,
+  "minimum_alias_draws": 115,
+  "maximum_alias_draws": 414,
+  "selector_sha256": "3da517add6854133cfb7e097b3cd40e1fb38688b7aaeb8defe64d1216842cc8d",
+  "seconds": 5.7335618999786675,
+  "resources": [
+    {
+      "cpu_percent": 46.19289340101523,
+      "available_gib": 17.319488525390625,
+      "utc": "2026-10-29T00:05:33Z"
+    },
+    {
+      "cpu_percent": 44.270833333333336,
+      "available_gib": 17.038658142089844,
+      "utc": "2026-10-29T00:05:38Z"
+    }
+  ],
+  "verification": "Exact parity of every retained old row and all selected new labels;disjoint aliases;16 train roots;no validation draws."
+}
