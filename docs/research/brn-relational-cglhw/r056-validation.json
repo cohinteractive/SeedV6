@@ -1,0 +1,71 @@
+{
+  "tests": [
+    {
+      "name": "LowRankRelationNetworkTest",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.LowRankRelationNetworkTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T02:25:56",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.367"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r056-LowRankRelationNetworkTest.xml",
+      "sha256": "d8a0fd91a9cb5106d8a619b6a35de045a899eff82d0a509e7456e0722b33c07f"
+    },
+    {
+      "name": "MixedTiedPieceNetworkTest",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.MixedTiedPieceNetworkTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T02:25:57",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.635"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r056-MixedTiedPieceNetworkTest.xml",
+      "sha256": "14f6afc832eeb49a7d770d9d78967aa80151e94c0f7d34111eefd52a9351072f"
+    }
+  ],
+  "unchanged_baseline_classes": [
+    "com/ohinteractive/seedv6/core/brnpair2/ContextGatedPieceDiagnostic.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextGatedPieceNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextGatedPieceNetwork$Projection.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextGatedPieceNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextGatedPieceNetwork.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceDiagnostic.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork$Projection.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork.class"
+  ],
+  "tested_low_rank_classes": [
+    "com/ohinteractive/seedv6/core/brnpair2/LowRankRelationCapacityAudit.class",
+    "com/ohinteractive/seedv6/core/brnpair2/LowRankRelationDiagnostic.class",
+    "com/ohinteractive/seedv6/core/brnpair2/LowRankRelationNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/LowRankRelationNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/LowRankRelationNetwork.class"
+  ],
+  "unchanged_core_class_count": 222,
+  "sources": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\LowRankRelationCapacityAudit.java": "07e7b7c842d8e88522f51c6a664b19f40b83ebb27a8a207c58ca09e38653dd54",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\LowRankRelationDiagnostic.java": "2eb6f5ad3a0cd48f37050138d59a01f16e2e5eb1e1ff9384160b84e07a324d93",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\LowRankRelationNetwork.java": "09e213dd3fbefd1ab268bcb23057a21bf17a820239dd499ea38798921b9ea6c4",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\LowRankRelationNetworkTest.java": "3bc330c9d87045a3668cf3212117dfefcecef05866b8ca6740fd8466d68119f1"
+  },
+  "runtime": {
+    "lib\\engine-core.jar": "10036777c8b8f1edaa119301b1eb6f7a67a9865c065a98333a4de1f7e35e8b7c",
+    "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "lib\\research.jar": "242f31f9a551df847059b01fb23d862875591b727f25bdade475b628e6d859fe",
+    "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "build": 78,
+  "application_runtime_changed": false
+}

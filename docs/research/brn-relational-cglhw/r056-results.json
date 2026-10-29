@@ -1,0 +1,75 @@
+{
+  "experiment": "R056",
+  "status": "COMPLETE_COST_GATE_FAILED_NO_FITTING",
+  "source_parent": "da583170e33231274ab7e833a5944c968d9e57ac",
+  "code_identity": "r056-validation.json pins tested source and runtime bytes; commit records preservation after execution",
+  "evidence": {
+    "R056.md": "89d7182dc37d88c018c5a7fcba2046f8ec4e9499ad95fe20cd7ad8cf9fbc73e9",
+    "r056-validation.json": "6a4560012c75a7dfa95db1bb03a1a9810c00bc54f6a9f13a1595411cb3520bc3",
+    "r056-capacity-plan.json": "56ca7135d55f97ed6e9f8c44a34a29e34a07c32da57b70ea5b0d29cb8c281042",
+    "raw\\r056-capacity.json": "8dd3c7c40521831b9a4e1887b670a377c910a4f2c05c3e1e50197e914a6193b0",
+    "raw\\r056-capacity.receipt.json": "e923ffcd09519fa1b40c66e663c26394a86c57b241c19a43cd168d9a6e5249c7",
+    "raw\\r056-capacity.binding.json": "a3a6ab159751e4e2e370d0351b7139f67bbbfdad8e2090a9b70a56b7bb681d3c",
+    "raw\\r056-capacity-1793240837765686700.execution.json": "f151655530ebe9e65b884664b6d860b7448cd003a7ee965b1d7b544ef3ddc971"
+  },
+  "tests": {
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "scope": "Four low-rank checks and four unchanged MIX checks; completed before owner pause"
+  },
+  "models": [
+    {
+      "mode": "ONE",
+      "parameters": 25409,
+      "inference_weight_bytes": 203272,
+      "derived_cache_bytes": 0,
+      "full_inference_ns": 3848.035,
+      "update_128_ns": 3183245.0,
+      "nonzero_remote_contrasts": 64,
+      "inference_ratio_to_mix": 0.5362262999328329,
+      "update_ratio_to_mix": 0.3476368953816886,
+      "passes": true
+    },
+    {
+      "mode": "TWO",
+      "parameters": 25409,
+      "inference_weight_bytes": 203272,
+      "derived_cache_bytes": 0,
+      "full_inference_ns": 12216.2,
+      "update_128_ns": 8036595.0,
+      "nonzero_remote_contrasts": 64,
+      "inference_ratio_to_mix": 1.7023357961243788,
+      "update_ratio_to_mix": 0.8776631818286063,
+      "passes": false
+    }
+  ],
+  "reference": {
+    "checksum": 359166.3446670131,
+    "mode": "R045_MIX",
+    "full_inference_ns": 7176.14,
+    "update_128_ns": 9156810.0
+  },
+  "resources": {
+    "sha256": "8dd3c7c40521831b9a4e1887b670a377c910a4f2c05c3e1e50197e914a6193b0",
+    "seconds": 1.9244091999717057,
+    "resources": [
+      {
+        "cpu_percent": 14.583333333333337,
+        "available_gib": 16.578018188476562,
+        "utc": "2026-10-29T02:27:17Z"
+      }
+    ]
+  },
+  "required_two_mode_gate_passes": false,
+  "candidate_training_started": false,
+  "interrupted_experiment": null,
+  "decision": "Preserve prototype and negative cost result. No fitting admitted under R056. A ONE-only quality-cost test would require a new prospective protocol and explicit human continuation decision.",
+  "limitations": [
+    "Untrained models; thirty disposable training-prefix updates per mode measure cost only.",
+    "ONE/TWO share initial first path and zero V/M; equal structural witnesses do not demonstrate a learned second-pass advantage.",
+    "Fixed order ONE,TWO,MIX and short timing may include JIT/order/scheduling effects; not profiled further.",
+    "No candidate checkpoints, validation-quality result, search throughput or playing-strength result.",
+    "No research ran to prepare the assessment; this summarizes completed pre-pause evidence."
+  ]
+}
