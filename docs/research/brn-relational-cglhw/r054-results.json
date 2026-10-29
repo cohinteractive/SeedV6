@@ -1,0 +1,53 @@
+{
+  "validation_sha256": "9b58f4e77daf0db387689a02572c2872db32530642981f4e9631da293197d70f",
+  "plan_sha256": "cdda8d22a4889fd119ee4a71f44b42c81d86c09144793e3e0765a48661daef95",
+  "evidence": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r054-capacity.json",
+    "sha256": "98c940f4fb90c8c794efbf45f801debe9a9d8f51ff31c751f5a79df2566cafde",
+    "receipt": {
+      "sha256": "98c940f4fb90c8c794efbf45f801debe9a9d8f51ff31c751f5a79df2566cafde",
+      "seconds": 1.8652195000322536,
+      "resources": [
+        {
+          "cpu_percent": 8.854166666666663,
+          "available_gib": 17.07126235961914,
+          "utc": "2026-10-29T02:13:54Z"
+        }
+      ]
+    }
+  },
+  "models": [
+    {
+      "update_128_ns": 11195730.0,
+      "derived_cache_bytes": 1382400,
+      "microbenchmark_only_updates": 30,
+      "preliminary_cost_pass": true,
+      "checksum": 359166.3446670131,
+      "nonzero_remote_contrasts": 64,
+      "practical_10us_pass": true,
+      "parameters": 20481,
+      "seed": 71,
+      "full_inference_ns": 7436.73,
+      "mode": "CONTROL"
+    },
+    {
+      "update_128_ns": 7168335.0,
+      "derived_cache_bytes": 1382400,
+      "microbenchmark_only_updates": 30,
+      "preliminary_cost_pass": true,
+      "checksum": 359166.3446670131,
+      "nonzero_remote_contrasts": 64,
+      "practical_10us_pass": true,
+      "parameters": 20481,
+      "seed": 71,
+      "full_inference_ns": 9283.805,
+      "mode": "GATED"
+    }
+  ],
+  "gated_update_ratio": 0.6402740151825741,
+  "correctness_tests": 8,
+  "maximum_gradient_error": 4.711938386128475e-12,
+  "target_state_witness": 4.607589033378545e-05,
+  "training_protocol_justified": true,
+  "limitations": "Fixed-order short update microbenchmark ratio0.64 is an admission observation,not proof of faster learning;no candidate trained. Legacy raw key typed_update_ratio denotes GATED/CONTROL here."
+}

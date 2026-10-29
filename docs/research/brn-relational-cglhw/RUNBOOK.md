@@ -382,3 +382,12 @@ R053 complete:10tests,exact double factorization,1.14e-12cp stressed discrepancy
 Update1.656x/cache2.64MiB pass,but10.617us fails10us;no full fit or more cache
 tuning. R054 selects learned target-state message modulation as a new neural
 composition hypothesis;all typed negative results and runtimes preserved.
+
+R054 complete:8tests and9.284us prototype;R055 bounded matched training protocol
+fixed. New dispatcher checks pending. raw/r053-audit-runner.py preserves R051-R053;
+raw/r045-objective-runner.py preserves R045 fitting. No R045 training repeats.
+
+R05510checks pass;model classes match R054,all baseline/data identities verified.
+Exact fitting: nnue-control.cmd run --name brn-context-gated-training --resume-note "R055 fixed2seeds/2epochs;skip completed atomic segments" --log docs/research/brn-relational-cglhw/raw/r055-training-launch.log -- build/research/venv/Scripts/python.exe -B tools/brn-relational/run_objective.py docs/research/brn-relational-cglhw/r055-plan.json
+Then run analyze_context_gated.py under fresh supervised admission. On RESUME use
+a new launch log;the frozen config/runtime/runner bindings cannot change.

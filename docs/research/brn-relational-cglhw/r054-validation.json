@@ -1,0 +1,68 @@
+{
+  "tests": [
+    {
+      "name": "ContextGatedPieceNetworkTest",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.ContextGatedPieceNetworkTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T02:13:28",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.915"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r054-ContextGatedPieceNetworkTest.xml",
+      "sha256": "c7ca33b0306bd8211b5b0ef027670ce8837289afe2e132207dce3a7379e787b9"
+    },
+    {
+      "name": "MixedTiedPieceNetworkTest",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.MixedTiedPieceNetworkTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T02:13:29",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.785"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r054-MixedTiedPieceNetworkTest.xml",
+      "sha256": "0e8290e67bbbbf6be40d155bb9030562cbf5543af9c37a3e95199d56e5393975"
+    }
+  ],
+  "unchanged_mixed_classes": [
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceDiagnostic.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork$Projection.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork.class"
+  ],
+  "tested_context_gated_classes": [
+    "com/ohinteractive/seedv6/core/brnpair2/ContextGatedCapacityAudit.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextGatedPieceDiagnostic.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextGatedPieceNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextGatedPieceNetwork$Projection.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextGatedPieceNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/ContextGatedPieceNetwork.class"
+  ],
+  "unchanged_core_class_count": 222,
+  "sources": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextGatedCapacityAudit.java": "79ce4bb1e75f56676f10912ec90ed8bdcacbba61fef470e591bbd8006971474d",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextGatedPieceDiagnostic.java": "3f65d03a46060e13d38eea71050a46f27daa27221cbdeb14ce483a7be569c634",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextGatedPieceNetwork.java": "788e7e29af0acfadf8a2e510b0c38e9be9b33bda29f52b9e3d1b7ab2b224c647",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\ContextGatedPieceNetworkTest.java": "faa73824957247e30c4621c478b89cfbd523e86360e6cfc4a8f8705059cef7c4"
+  },
+  "runtime": {
+    "lib\\engine-core.jar": "7e1229df51f2dcb45a5a81b29cb65228954c6b41a7a60b9fcbea952d781e1628",
+    "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "lib\\research.jar": "21cf2d930863dbef651ce7fc236d5f744831198d676847343cfd0f784be4f576",
+    "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "build": 78,
+  "application_runtime_changed": false,
+  "limitations": "Eight focused checks;no candidate fit or strength result."
+}
