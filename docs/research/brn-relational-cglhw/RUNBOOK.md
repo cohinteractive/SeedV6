@@ -321,3 +321,10 @@ R044 complete:5tests,unchanged model/optimizer,4endpoints/32segments;both-seed g
 fails. raw/r041-objective-runner.py preserves previous bindings. No further rate/
 epoch allocation. R045 needs exact fixed-M control parity and practical cost before
 its bounded neural architecture pilot;all old holds/data exclusions remain.
+
+R045 six checks and7.298us cost pass;fitting paused at CPU84.375% active gate.
+Seed71 epoch1's8segments/state are intact,metrics pending;seed97 not started.
+No owned processes remain. Current RESOURCE-GATE.md is the next-operation authority;
+no autonomous retry. raw/r042-audit-runner.py preserves R041/R042 audit bindings;
+raw/r044-objective-runner.py preserves R044 fitting bindings. Exact resume skips
+all completed updates and repeats only bounded interrupted scoring.

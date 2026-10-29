@@ -1,3 +1,52 @@
+# Current R045 resource pause - resume through STATE
+
+**PAUSED_RESOURCE_GATE**,2026-10-29T00:54:02Z (29 October Auckland).
+SystemCPU84.375% exceeded active80% ceiling;free16.598GiB passed memory guard.
+The supervisor terminated only its owned Java/training children and completed
+release at00:54:03Z. Verified active:null,owned_processes:0. No resource-availability
+retry,queued training,GPU allocation or ongoing tournament. The runner's technical
+FAILED status describes resource interruption,not a negative architecture result.
+
+Six R045 correctness/dispatch tests pass;MIX full cost7.298us. Seed71 completed
+1,048,576 examples/8,192 optimizer steps and all8 atomic training segments. Both
+segment-8.state and epoch-1.state are byte-identical,CRC/mode/rate/step verified:
+`raw/r045-mix-71/epoch-1.state`,SHA256
+`019bf64d78c978784787a18143ef45a56c9b875840dc42703e888ca34a466485`.
+Epoch-end metrics were interrupted before publication;no epoch1 quality result is
+claimed. No epoch2 update or seed97 run started. r045-resource-gate.json pins every
+segment/receipt/config/runtime/runner and the execution/release evidence.
+
+**Required human action(blocking further empirical work):invoke RESUME when the
+computer can accommodate one conservative CPU worker.** Admission must freshly
+observeCPU<60%,free>=8GiB and existing supervisor permission. NORMAL alone is not
+admission. No request for GPU,clocks,production promotion or other action.
+If admission still fails,record the new gate and exit without waiting/retrying.
+
+After instructions/Git/local artifact and frozen binding verification,run:
+
+```powershell
+.\nnue-control.cmd run --name brn-relational-mixed-tied-training-resume --resume-note 'R045 resume: preserve seed71 segments1-8, complete interrupted epoch1 scoring, then remaining fixed schedule; no tuning.' --log docs/research/brn-relational-cglhw/raw/r045-training-resume-1-launch.log -- build/research/venv/Scripts/python.exe -B tools/brn-relational/run_objective.py docs/research/brn-relational-cglhw/r045-plan.json
+```
+
+Use another unique log if already present;never overwrite old logs/bindings.
+The runner performs fresh admission. It verifies/skips seed71 segments1-8 and
+reuses epoch-1.state,recomputes only interrupted bounded epoch1 scoring,then
+trains seed71 epoch2 and seed97 epochs1-2. One CPU BelowNormal,512MiB,max300s per
+arm,5s active monitoring. All completed training updates survive;data loading,
+preflight and partial endpoint scoring repeat. Do not repeat completed R012-R044
+experiments or resume R010 Pair optimization. After both endpoints complete,
+run analyze_mixed_tied.py under a new supervised admission,then reconcile R045's
+unchanged BOTH-seed gates. No automatic extra fitting,games or promotion.
+
+Reusable owner instruction:
+
+> RESUME CGLHW seedv6-brn-relational-20261029 in C:\projects\seed\java\seedv6-unified.
+> Start at docs/research/brn-relational-cglhw/STATE.md and obey its current gate.
+
+The following earlier gate and its clearance remain historical evidence.
+
+---
+
 # Historical R012 resource pause — resume here after STATE
 
 **CLEARED_BY_OWNER_RESUME on29 October2026**. The resource admission and pending

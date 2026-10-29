@@ -1,0 +1,110 @@
+{
+  "status": "PAUSED_RESOURCE_GATE",
+  "gate": {
+    "cpu_percent": 84.375,
+    "available_gib": 16.598167419433594,
+    "utc": "2026-10-29T00:54:02Z"
+  },
+  "active_stop_cpu_percent": 80,
+  "initial_admission_cpu_below": 60,
+  "initial_available_gib_at_least": 8,
+  "one_cpu": true,
+  "heap_mib": 512,
+  "process_priority": "BelowNormal",
+  "plan_path": "docs\\research\\brn-relational-cglhw\\r045-plan.json",
+  "plan_sha256": "126744b592a586a752bb5b02233eb2cee7c25e9b1b592e8cfa6c2b3e758dd762",
+  "config_path": "docs\\research\\brn-relational-cglhw\\r045-mix-71.json",
+  "config_sha256": "6283b2e6c4cc7a7afbe94dee4afd078975d0d1f2573435bafaee9089c88af51e",
+  "binding_path": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\binding.json",
+  "binding_sha256": "c9127d73120c325a3fa7d8b8c48630c911aa5f39ed15a898fe22bf70318cf017",
+  "runner_sha256": "15df1b05a461a044187ced1628de99aacfd2561980e02e0d06e4ec1e9c4457c9",
+  "execution_path": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\execution-1793235242960503300.json",
+  "execution_sha256": "0cedbcc53ce867f53096e409736b1a9b24657a105956b08e3867fa08e41b57f7",
+  "supervisor_release_path": "docs\\research\\brn-relational-cglhw\\raw\\r045-supervisor-release.json",
+  "supervisor_release_sha256": "d58fd5db0f1805ca8e97f3a6c1eea3c54c34c6b7d2e89c2ef5581f67941ba697",
+  "owned_processes": 0,
+  "epoch_state": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\epoch-1.state",
+  "epoch_state_sha256": "019bf64d78c978784787a18143ef45a56c9b875840dc42703e888ca34a466485",
+  "optimizer_steps": 8192,
+  "completed_examples": 1048576,
+  "segments": [
+    {
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-1.state",
+      "state_sha256": "4c9cbc0767ec3e44692852f632f382bd3d7573250406f474ce5ecca20910b0e9",
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-1.json",
+      "receipt_sha256": "98faba9bd3085238d2570bb7f2ea7479d16ac131eca706d1248837abcc036735",
+      "completed_positions": 131072,
+      "epoch": 1,
+      "updates": 1024
+    },
+    {
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-2.state",
+      "state_sha256": "2fdbd468ab5b5c4dd22218321c115e5f18b4a72427ad8aa7b5d5909d408ed900",
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-2.json",
+      "receipt_sha256": "173f4ce15f5ff888d37e2465c7d949842bb4d5b14dedeb57e42aa1f715086565",
+      "completed_positions": 262144,
+      "epoch": 1,
+      "updates": 2048
+    },
+    {
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-3.state",
+      "state_sha256": "d2ee53b81fab27af2dbcc861c292048d951191a707dc8777b7c16ffdbdf64823",
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-3.json",
+      "receipt_sha256": "bad831c15d9d3d0edb3fbff858d1b2e4e90783978141caba63da94e01ebc8716",
+      "completed_positions": 393216,
+      "epoch": 1,
+      "updates": 3072
+    },
+    {
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-4.state",
+      "state_sha256": "248b9050ba233b48ccee8915352a10ab6ba00e587226baca67963eed9e034b3a",
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-4.json",
+      "receipt_sha256": "dfb6e1e61435ce513fd63bdb6777bc99749a0cf00fdd49a650ae253880c3926f",
+      "completed_positions": 524288,
+      "epoch": 1,
+      "updates": 4096
+    },
+    {
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-5.state",
+      "state_sha256": "f5a0a29da0b2899252e40ec1428fe6fb8cb709e9f8f309658085931c1b9cd9b3",
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-5.json",
+      "receipt_sha256": "ef8901d91a9839dba829ce07b12b9f5dd3dbd416a9eff0ec5b038106a25003a2",
+      "completed_positions": 655360,
+      "epoch": 1,
+      "updates": 5120
+    },
+    {
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-6.state",
+      "state_sha256": "ed16526f0974db01932c3231c1c29ce9be4ffc7e412cab03cfc48ab8ead02abd",
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-6.json",
+      "receipt_sha256": "704d9f161a8c6dff8d670b66396b3a6c7ca89def7c70d148f6cfebd1bd91be48",
+      "completed_positions": 786432,
+      "epoch": 1,
+      "updates": 6144
+    },
+    {
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-7.state",
+      "state_sha256": "0a6a4cb8fe55ecb4d4b3657c59d75382b38166e6fa125a98ec4691595078f34a",
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-7.json",
+      "receipt_sha256": "4e92239c8569fdd56a0463f466531a31150aeb78058d932a36f9d128d47a106f",
+      "completed_positions": 917504,
+      "epoch": 1,
+      "updates": 7168
+    },
+    {
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-8.state",
+      "state_sha256": "019bf64d78c978784787a18143ef45a56c9b875840dc42703e888ca34a466485",
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\segment-8.json",
+      "receipt_sha256": "856979a90cc130d615a3255a0ca3e195956357791f5a287c4732a146b729f30a",
+      "completed_positions": 1048576,
+      "epoch": 1,
+      "updates": 8192
+    }
+  ],
+  "epoch_metrics_published": false,
+  "seed97_started": false,
+  "next_operation": "Fresh supervised admission; verify and skip seed71 segments1-8, recompute only interrupted epoch1 scoring, continue its epoch2, then seed97 two epochs. No completed updates repeated.",
+  "max_repetition": "Data reload and bounded epoch1 train/development scoring; all eight training segments retained.",
+  "source_revision": "71e317a65a23a53e9c0e2232276e16cc52f0b498",
+  "research_failure": false
+}

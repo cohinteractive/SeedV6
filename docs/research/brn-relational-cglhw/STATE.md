@@ -1,9 +1,12 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R045 cross-channel tied neural composition**. Owner RESUME cleared the prior resource
-gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
-RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
+Status: **PAUSED_RESOURCE_GATE - R045 cross-channel tied neural composition**.
+CPU84.375% at2026-10-29T00:54:02Z exceeded active80% ceiling. Seed71 epoch1
+training is checkpointed;metrics pending. All owned processes released;no retry,
+queue or background workload. Read current RESOURCE-GATE before any empirical
+work. Historical R012 gate was cleared by this root's owner RESUME and remains
+preserved. No GPU or clock authority was added.
 
 Read root instructions, [CONTRACT](CONTRACT.md) revision2, [PRIORITY](PRIORITY.md),
 [RESOURCE-GATE](RESOURCE-GATE.md), [BASELINE](BASELINE.md) and [R012](R012.md).
@@ -25,12 +28,14 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R044 complete:4endpoints/32segments;LOW improves both panels,but seed97 misses
-fixed5% old/2% played gains versus control. No R044 transfer/games/rate extension.
-R045 six checks and capacity/cost admission pass;MIX7.298us,exact fixed-M control
-history through both rates. Execute r045-plan.json with run_objective.py under
-nnue-control,skip completed epochs/segments;analyze both fixed epoch2 endpoints
-versus frozen R044 LOW. No further epochs,transfer or games without fixed gates.
+Wait for an explicit owner RESUME;then recheck instructions/Git/supervisor and
+frozen bindings through RESOURCE-GATE.md's exact command. No availability polling.
+R045 seed71 all8epoch1 segments/1,048,576examples/8,192optimizer steps are verified,
+including byte-identical segment8/epoch1 state. Complete interrupted epoch1 scoring,
+then remaining fixed training schedule;seed97 has not started. No completed update
+needs repetition. At fresh admissionCPU>=60% orfree<8GiB,record and exit again.
+After both endpoints finish,run analyze_mixed_tied.py under supervision and apply
+unchanged R045 gates. R044's failed advancement and all earlier findings stand.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -89,7 +94,7 @@ Both consumed development panels remain distinct from future final evaluation.
 | R042 | Frozen tied-recurrence transfer | Complete3tests;both transfer gates pass,8/8root gains;no strength claim |
 | R043 | Tied neural recurrence playing calibration | Complete5tests,32games;12.5%/34.375%,no broader games |
 | R044 | Tied neural proportional-decay continuation | Complete5tests/4arms;seed97 misses gates;positive gains preserved,no extension |
-| R045 | Cross-channel tied neural composition | Prospective correctness/cost,conditional2M-exposure MIX controls |
+| R045 | Cross-channel tied neural composition | PAUSED_RESOURCE_GATE;6tests/cost pass,seed71 epoch1 updates saved,metrics pending |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -135,6 +140,8 @@ runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,
 configs and reusable fixtures are tracked. Build78 for the explicit core research seam;production evaluator unchanged;no push.
 
-Human actions required after this prompt: None while admitted autonomous work
-continues. Any actual resource/authority gate will replace this statement before
-execution ends. No completed experiment needs repetition.
+Human actions required after this prompt: **Blocking - invoke the reusable RESUME
+when conservative CPU work can coexist with normal use.** This blocks further
+empirical work until fresh admission passes;no GPU/clock authorization requested.
+Non-blocking actions:None. Programme remains paused,not completed or failed.
+No completed training update or earlier experiment needs repetition.
