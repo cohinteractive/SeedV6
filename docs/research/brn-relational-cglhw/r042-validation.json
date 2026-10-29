@@ -1,0 +1,41 @@
+{
+  "loader_tests": 3,
+  "test_path": "docs\\research\\brn-relational-cglhw\\raw\\r042-loader-test.xml",
+  "test_sha256": "1248f19a192ea05b8b672dea3793dd02dae8d5ab102991178844f640bf76f6ff",
+  "model_class_parity": {
+    "SharedGeometryPieceNetwork": {
+      "prior": "r040",
+      "classes": [
+        "com/ohinteractive/seedv6/core/brnpair2/SharedGeometryPieceNetwork$Features.class",
+        "com/ohinteractive/seedv6/core/brnpair2/SharedGeometryPieceNetwork$Projection.class",
+        "com/ohinteractive/seedv6/core/brnpair2/SharedGeometryPieceNetwork$Workspace.class",
+        "com/ohinteractive/seedv6/core/brnpair2/SharedGeometryPieceNetwork.class"
+      ]
+    },
+    "TiedGeometryPieceNetwork": {
+      "prior": "r041",
+      "classes": [
+        "com/ohinteractive/seedv6/core/brnpair2/TiedGeometryPieceNetwork$Features.class",
+        "com/ohinteractive/seedv6/core/brnpair2/TiedGeometryPieceNetwork$Projection.class",
+        "com/ohinteractive/seedv6/core/brnpair2/TiedGeometryPieceNetwork$Workspace.class",
+        "com/ohinteractive/seedv6/core/brnpair2/TiedGeometryPieceNetwork.class"
+      ]
+    }
+  },
+  "engine_core_all_class_parity_r041": true,
+  "version_metadata_difference": {
+    "new": "major=0\nminor=0\npatch=0\nbuild=78\nsourceRevision=9d18f4ec543b (uncommitted changes)\nversionUpdated=2026-10-29\nplatform=Portable Java 21 (runtime platform reported separately)\n",
+    "prior": "major=0\nminor=0\npatch=0\nbuild=78\nsourceRevision=f2a6f90b1df2 (uncommitted changes)\nversionUpdated=2026-10-29\nplatform=Portable Java 21 (runtime platform reported separately)\n"
+  },
+  "runtime": {
+    "lib\\engine-core.jar": "0b35b5ba458c83df059bbbea941a0fc0ec99e3e733134610ac9f7c450d502306",
+    "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "lib\\research.jar": "f743a667ed89e1c6d0bb6e505e18517469edd184e033d9616e0bbcc3df7565c8",
+    "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "build": 78,
+  "application_runtime_changed": false
+}

@@ -36,6 +36,8 @@ public final class FieldPredictionAudit {
                 case "COMPOSE8" -> {var m=ComposedAttackFieldNetwork.read(input);if(!m.compose)throw new IllegalArgumentException("COMPOSE mode required");var w=new ComposedAttackFieldNetwork.Workspace();yield b->m.logit(w.encode(b,true),w);}
                 case "COMPOSE16" -> {var m=WideComposedAttackFieldNetwork.read(input);if(!m.compose)throw new IllegalArgumentException("COMPOSE mode required");var w=new WideComposedAttackFieldNetwork.Workspace();yield b->m.logit(w.encode(b,true),w);}
                 case "PIECE_ONE", "PIECE_TWO" -> {var m=ContextualPieceNetwork.read(input);if(m.compose!=kind.equals("PIECE_TWO"))throw new IllegalArgumentException("Piece mode mismatch");var w=new ContextualPieceNetwork.Workspace();yield b->m.logit(w.encode(b),w);}
+                case "SHARED_CONTEXT" -> {var m=SharedGeometryPieceNetwork.read(input);if(!m.context)throw new IllegalArgumentException("Shared context mode required");var w=new SharedGeometryPieceNetwork.Workspace();yield b->m.compiledLogit(w.encode(b),w);}
+                case "TIED", "TIED_MASK" -> {var m=TiedGeometryPieceNetwork.read(input);if(!m.compose)throw new IllegalArgumentException("Tied mode required");var w=new TiedGeometryPieceNetwork.Workspace();yield b->{double value=m.compiledLogit(w.encode(b),w);return kind.equals("TIED")?value:w.baseLogit;};}
                 case "PAIR" -> {var m=BrnPair2Codec.readModel(input);var w=m.newWorkspace();yield b->w.evaluatePawns(b,.25)/4;}
                 default -> throw new IllegalArgumentException("Unknown neural/reference kind");
             };

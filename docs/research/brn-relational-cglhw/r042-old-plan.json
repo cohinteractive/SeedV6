@@ -1,0 +1,48 @@
+{
+  "main_class": "FieldPredictionAudit",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r042-runtime\\lib",
+  "cases": "docs\\research\\brn-relational-cglhw\\raw\\r016-data\\validation.tsv",
+  "cases_sha256": "9f081229700b95849b0df0b0cc88434905ddc67a2f1243da1ef02c07069bd548",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r042-old-prediction.json",
+  "rows": 8192,
+  "models": [
+    {
+      "id": "r041-tied-71",
+      "kind": "TIED",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r041-tied-71\\epoch-1.state",
+      "state_sha256": "b943b46628b86ccd027a61c6e44311e68c471fb6dd8e73e13fb70a230dc6e498"
+    },
+    {
+      "id": "r041-mask-71",
+      "kind": "TIED_MASK",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r041-tied-71\\epoch-1.state",
+      "state_sha256": "b943b46628b86ccd027a61c6e44311e68c471fb6dd8e73e13fb70a230dc6e498"
+    },
+    {
+      "id": "r040-context-71",
+      "kind": "SHARED_CONTEXT",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r040-context-71\\epoch-1.state",
+      "state_sha256": "4e7bd3c6ec9d74a9f4ee3287151de72e3244425d9c71f6bb4e08c076fba81c30"
+    },
+    {
+      "id": "r041-tied-97",
+      "kind": "TIED",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r041-tied-97\\epoch-1.state",
+      "state_sha256": "8b0b425d81a09decde4170691b9d640914b4ee40907849d0f348e539191ea8dd"
+    },
+    {
+      "id": "r041-mask-97",
+      "kind": "TIED_MASK",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r041-tied-97\\epoch-1.state",
+      "state_sha256": "8b0b425d81a09decde4170691b9d640914b4ee40907849d0f348e539191ea8dd"
+    },
+    {
+      "id": "r040-context-97",
+      "kind": "SHARED_CONTEXT",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r040-context-97\\epoch-1.state",
+      "state_sha256": "38c426d7a9d59b9e1403223ab7d37c361156005bf14828d52c7d20afc9d4f254"
+    }
+  ],
+  "teacher": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "teacher_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+}

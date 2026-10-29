@@ -8,6 +8,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FieldPredictionAuditTest {
     @TempDir Path directory;
+    @Test void sharedTiedAndMaskedRoutesPreserveExplicitModelSemantics()throws Exception {
+        var shared=new SharedGeometryPieceNetwork(true,.01,71);var tied=new TiedGeometryPieceNetwork(true,.01,71);
+        java.util.Arrays.fill(tied.weights,TiedGeometryPieceNetwork.V,TiedGeometryPieceNetwork.PARAMETERS,.3);tied.invalidateProjections();
+        Path s=directory.resolve("shared.state"),t=directory.resolve("tied.state");try(var out=Files.newOutputStream(s)){shared.write(out);}try(var out=Files.newOutputStream(t)){tied.write(out);}
+        var ps=FieldPredictionAudit.load(s,"SHARED_CONTEXT");var pt=FieldPredictionAudit.load(t,"TIED");var pm=FieldPredictionAudit.load(t,"TIED_MASK");var masked=TiedGeometryTrainingDiagnostic.ablateComposition(tied);
+        for(String fen:new String[]{"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1","r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1","4k3/P7/8/8/8/8/7p/4K3 b - - 0 1","4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1"}) {
+            var board=Board.fromFen(fen);var saved=board.clone();assertEquals(shared.scoreCp(board,new SharedGeometryPieceNetwork.Workspace())/400,ps.applyAsDouble(board),1e-12);
+            assertEquals(tied.scoreCp(board,new TiedGeometryPieceNetwork.Workspace())/400,pt.applyAsDouble(board),1e-12);assertEquals(masked.scoreCp(board,new TiedGeometryPieceNetwork.Workspace())/400,pm.applyAsDouble(board),1e-12);assertArrayEquals(saved,board);
+        }
+        Path wrongS=directory.resolve("geometry.state"),wrongT=directory.resolve("one.state");try(var out=Files.newOutputStream(wrongS)){new SharedGeometryPieceNetwork(false,.01,71).write(out);}try(var out=Files.newOutputStream(wrongT)){new TiedGeometryPieceNetwork(false,.01,71).write(out);}
+        assertThrows(IllegalArgumentException.class,()->FieldPredictionAudit.load(wrongS,"SHARED_CONTEXT"));assertThrows(IllegalArgumentException.class,()->FieldPredictionAudit.load(wrongT,"TIED"));assertThrows(IllegalArgumentException.class,()->FieldPredictionAudit.load(wrongT,"TIED_MASK"));assertThrows(java.io.IOException.class,()->FieldPredictionAudit.load(t,"SHARED_CONTEXT"));assertThrows(java.io.IOException.class,()->FieldPredictionAudit.load(s,"TIED"));
+    }
     @Test void contextualPieceModesPreserveScoresAndRejectWrongMode()throws Exception {
         for(boolean compose:new boolean[]{false,true}) {
             var model=new ContextualPieceNetwork(compose,.01,71);java.util.Arrays.fill(model.weights,ContextualPieceNetwork.V,ContextualPieceNetwork.PARAMETERS,.3);
