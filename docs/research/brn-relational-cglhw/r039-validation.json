@@ -1,0 +1,32 @@
+{
+  "tests": [
+    {
+      "name": "SharedGeometryPieceNetworkTest",
+      "tests": 4,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r039-SharedGeometryPieceNetworkTest.xml",
+      "sha256": "f0ec0a526b61c3f9026f1ee9a9ce79b636d7537fa0e1177431a31b18ce17fd38",
+      "output": "Occupancy-conditioned fixed-endpoint change cp=2.1428571428571104\ncontext=false gradient errors=[2.0154156121776623E-12, 3.1741762267657042E-12, 4.437911653833518E-12, 4.0749467399036655E-12, 0.0]\ncontext=true gradient errors=[2.0154156121776623E-12, 3.1741762267657042E-12, 4.437911653833518E-12, 4.0749467399036655E-12, 4.349880373434589E-12]\n"
+    },
+    {
+      "name": "SharedGeometryCompilationTest",
+      "tests": 4,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r039-SharedGeometryCompilationTest.xml",
+      "sha256": "bb5d1f585e8a9eb1dac2d08d642eeb263f552c378cac29f604152a0fac129cca",
+      "output": "context=false compiled gradient maximum error=8.809142651444724E-19\ncontext=true compiled gradient maximum error=5.827586677109586E-19\n"
+    }
+  ],
+  "total": 8,
+  "runtime": {
+    "lib\\engine-core.jar": "d9a389f763eccc6aa4e2a5fd23abb78291cd59f1d1ed342d9982cd7b6a54042d",
+    "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "lib\\research.jar": "4565cefd55c968463e2e03baee51dc8247b7c58d2503aa0dc2786de6097beb07",
+    "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "build": 78,
+  "application_runtime_changed": false,
+  "state_format_unchanged": true,
+  "notes": "All finite relation/blocker gates match direct formulas;shared cache ownership/version tested;compiled derivative/gradient/update history and zero-gradient masks agree within1e-10;exact within-version segmented continuation."
+}

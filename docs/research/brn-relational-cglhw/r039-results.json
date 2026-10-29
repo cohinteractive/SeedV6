@@ -1,0 +1,179 @@
+{
+  "raw_path": "docs\\research\\brn-relational-cglhw\\raw\\r039-finite.json",
+  "raw_sha256": "65c02a548c79c971dc79ce9c6559111627538ac872d554b1dfb8fb2388bb96c1",
+  "plan_sha256": "7530c06dcfbf943123257ed00cd2deb6731ff3c9804c5e92775b7b2a5c3e2f69",
+  "validation_sha256": "1a172175444d5ad914d1404dbb950664aa243c4edb14536def7a8201910ae8aa",
+  "receipt": {
+    "sha256": "65c02a548c79c971dc79ce9c6559111627538ac872d554b1dfb8fb2388bb96c1",
+    "seconds": 2.8495019000256434,
+    "resources": [
+      {
+        "cpu_percent": 6.25,
+        "available_gib": 17.0081787109375,
+        "utc": "2026-10-29T00:20:16Z"
+      }
+    ]
+  },
+  "models": [
+    {
+      "mode": "GEOMETRY",
+      "ns_per_call": {
+        "encode": 1481.51,
+        "projection_preencoded": 6943.245,
+        "compiled_preencoded": 2902.505,
+        "projection_full": 8205.565,
+        "compiled_full": 4253.54
+      },
+      "full_speedup": 1.9291143377045945,
+      "maximum_forward_error_cp": 0.0,
+      "cold_compiled_call_ns": 4583400,
+      "cold_score": -0.3657571091940114,
+      "blocks": [
+        {
+          "calls": 10000,
+          "kind": "encode",
+          "nanoseconds": 14683100,
+          "checksum": 168949.3209108578
+        },
+        {
+          "calls": 10000,
+          "kind": "projection_preencoded",
+          "nanoseconds": 68966600,
+          "checksum": 302.7625343865504
+        },
+        {
+          "calls": 10000,
+          "kind": "compiled_preencoded",
+          "nanoseconds": 29435900,
+          "checksum": 302.7625343865504
+        },
+        {
+          "calls": 10000,
+          "kind": "projection_full",
+          "nanoseconds": 83608000,
+          "checksum": 121105.01375462068
+        },
+        {
+          "calls": 10000,
+          "kind": "compiled_full",
+          "nanoseconds": 42749300,
+          "checksum": 121105.01375462068
+        },
+        {
+          "calls": 10000,
+          "kind": "compiled_full",
+          "nanoseconds": 42321500,
+          "checksum": 121105.01375462068
+        },
+        {
+          "calls": 10000,
+          "kind": "projection_full",
+          "nanoseconds": 80503300,
+          "checksum": 121105.01375462068
+        },
+        {
+          "calls": 10000,
+          "kind": "compiled_preencoded",
+          "nanoseconds": 28614200,
+          "checksum": 302.7625343865504
+        },
+        {
+          "calls": 10000,
+          "kind": "projection_preencoded",
+          "nanoseconds": 69898300,
+          "checksum": 302.7625343865504
+        },
+        {
+          "calls": 10000,
+          "kind": "encode",
+          "nanoseconds": 14947100,
+          "checksum": 168949.3209108578
+        }
+      ],
+      "shared_linear_bytes": 172800,
+      "shared_gate_bytes": 172800,
+      "passes": true
+    },
+    {
+      "mode": "CONTEXT",
+      "ns_per_call": {
+        "encode": 1368.615,
+        "projection_preencoded": 13961.63,
+        "compiled_preencoded": 3441.085,
+        "projection_full": 15100.865,
+        "compiled_full": 4736.13
+      },
+      "full_speedup": 3.1884397176597767,
+      "maximum_forward_error_cp": 0.0,
+      "cold_compiled_call_ns": 2236300,
+      "cold_score": -0.3657571091940114,
+      "blocks": [
+        {
+          "calls": 10000,
+          "kind": "encode",
+          "nanoseconds": 13857000,
+          "checksum": 168949.3209108578
+        },
+        {
+          "calls": 10000,
+          "kind": "projection_preencoded",
+          "nanoseconds": 142493700,
+          "checksum": 302.7625343865504
+        },
+        {
+          "calls": 10000,
+          "kind": "compiled_preencoded",
+          "nanoseconds": 34556000,
+          "checksum": 302.7625343865504
+        },
+        {
+          "calls": 10000,
+          "kind": "projection_full",
+          "nanoseconds": 150544800,
+          "checksum": 121105.01375462068
+        },
+        {
+          "calls": 10000,
+          "kind": "compiled_full",
+          "nanoseconds": 48093400,
+          "checksum": 121105.01375462068
+        },
+        {
+          "calls": 10000,
+          "kind": "compiled_full",
+          "nanoseconds": 46629200,
+          "checksum": 121105.01375462068
+        },
+        {
+          "calls": 10000,
+          "kind": "projection_full",
+          "nanoseconds": 151472500,
+          "checksum": 121105.01375462068
+        },
+        {
+          "calls": 10000,
+          "kind": "compiled_preencoded",
+          "nanoseconds": 34265700,
+          "checksum": 302.7625343865504
+        },
+        {
+          "calls": 10000,
+          "kind": "projection_preencoded",
+          "nanoseconds": 136738900,
+          "checksum": 302.7625343865504
+        },
+        {
+          "calls": 10000,
+          "kind": "encode",
+          "nanoseconds": 13515300,
+          "checksum": 168949.3209108578
+        }
+      ],
+      "shared_linear_bytes": 172800,
+      "shared_gate_bytes": 1209600,
+      "passes": true
+    }
+  ],
+  "training_protocol_admissible": true,
+  "scope": "Fixed component/full-cost blocks;derived caches shared per model;no fitting,clock budget or strength claim;components do not necessarily add because JIT/cache effects differ"
+}

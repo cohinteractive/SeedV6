@@ -44,4 +44,20 @@ class SharedGeometryCompilationTest {
         int coefficient=A;assertTrue(a[coefficient]);assertEquals(0,model.gradient[coefficient]);
         model.updateFromGradients();reference.updateFromGradients();assertArrayEquals(reference.weights,model.weights);assertEquals(.018,model.first[coefficient],1e-16);
     }
+    @Test void finiteBlockerCacheIsSharedVersionedAndMatchesEveryDerivedCase() {
+        for(boolean context:new boolean[]{false,true}) {
+            var m=new SharedGeometryPieceNetwork(context,.01,71);var a=new Workspace();var b=new Workspace();
+            for(int p=A;p<PARAMETERS;p++)if((p-A)%12>=10)m.weights[p]=.25;
+            m.invalidateProjections();m.prepareProjection(a);m.prepareProjection(b);assertSame(a.gates,b.gates);assertSame(a.projection,b.projection);
+            assertEquals(context?7:1,a.gateStates);assertEquals(2700*a.gateStates*8,a.gates.length);
+            for(int relation=0;relation<2700;relation++)for(int blocks=0;blocks<a.gateStates;blocks++)for(int d=0;d<8;d++) {
+                double value=0;int parameter=A+(relation/225*8+d)*12;var x=GEOMETRY[relation%225];
+                for(int k=0;k<10;k++)value+=m.weights[parameter+k]*x[k];
+                if(context)value+=m.weights[parameter+10]*((x[7]+x[8]>0&&blocks==0)?1:0)+m.weights[parameter+11]*(blocks/7.0);
+                assertEquals(activate(value),a.gates[(relation*a.gateStates+blocks)*8+d]);
+            }
+            var old=a.gates;m.weights[A]+=.1;m.invalidateProjections();m.prepareProjection(a);assertNotSame(old,a.gates);m.prepareProjection(b);assertSame(a.gates,b.gates);
+            var other=new SharedGeometryPieceNetwork(context,.01,97);other.prepareProjection(b);assertNotSame(a.gates,b.gates);
+        }
+    }
 }

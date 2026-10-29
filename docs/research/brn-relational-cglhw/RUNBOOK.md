@@ -292,3 +292,8 @@ R038 complete:seven tests,exact forward,gradient discrepancy<1e-18;CONTEXT cost
 gate fails at11.05us. Preserve raw/r038-runtime and fixed blocks. Previous audit
 runner saved raw/r037-capacity-runner.py. R039 tests one finite-state compilation
 with shared immutable model cache;no large fitting yet.
+
+R039 complete:eight tests,shared finite-case caches,exact forward and4.25/4.74us;
+raw/r038-compilation-runner.py preserves previous audit binding. Frozen model
+classes at raw/r039-runtime must match R040 training runtime. R040 admits four
+serial1M-example arms;no new data,mixture training,games or production changes.
