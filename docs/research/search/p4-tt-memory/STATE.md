@@ -1,16 +1,17 @@
 # TT memory workstream ? resume here
 
 Status: **ACTIVE**, 30 October 2026. Objective [TT-R001](CONTRACT.md) is subordinate
-to Search P4-R001. Current programme master pair: **P4-R001 / P4-F006**.
+to Search P4-R001. Current programme master pair: **P4-R001 / P4-F007**.
 H1's W1/W4 development screens are promising but inconclusive. The first W1
 confirmation failed operationally after 112 completed games; it is not a completed
 strength comparison. No confirmed gain, acceptance, champion advancement or
 production promotion has occurred.
 
-**Selected next work:** qualify a narrowly audited scoreless-fallback runner path
-and explicit child-handle draining. The original strict protocol and partial run
-remain frozen. No match is currently active. Do not resume the failed tournament
-or execute its conditional champion block. H1 remains a72cc496/build81.
+**Selected next work:** an economical, instrumented H1 score-lifetime diagnostic
+across consecutive real-game requests, before selecting another costly strength
+comparison. Runner fallback/drain qualification is complete. No match is active.
+Do not resume the failed confirmation or execute its conditional champion block.
+H1 remains a72cc496/build81; no new candidate has been implemented.
 
 ## Identities and completed foundations
 
@@ -105,19 +106,42 @@ are not pooled into later samples, and do not open the conditional champion79 ga
 Do not modify its protocol, inputs, analysis or run. A later confirmation needs a
 new prospective claim allocation and independent inputs; it is not selected yet.
 
-Selected economical work: retain the pinned runner and unchanged engine clocks,
-but qualify a narrowly scoped alternative adapter mode that monitors warnings,
-stops on every other warning, and independently validates each missing-score
-response from full real-history UCI evidence. Require legal fallback, exactly one
-whole-request accounting line, clock termination and no completed Search info or
-failure. Preserve all warnings. Keep full PV, game/result, accounting, process and
-immutable-input gates. Explicitly wait on child process handles before final
-lifetime snapshots. No old protocol is weakened or retrospectively passed.
+[Runner qualification](runner-qualification-v1-summary.json) passed six tests
+(including 18 invalid-evidence subcases), a replay audit of 13,724 retained trace
+requests, and eight normal qualification games across W1/W4. Each live domain
+exercised two real scoreless fallbacks, passed all game/accounting/input checks,
+and explicitly drained both engine handles before successful lifetime snapshots.
+The first test run caught duplicate-clock-field acceptance and an unclosed file;
+failed logs/source copies remain in `raw/runner-qualification-v1`.
+
+Default strict mode is unchanged. The explicitly selected audited-fallback mode
+requires protocol declaration, monitors warning severities, stops/rejects other
+warnings/errors, and validates every missing-score warning against its unique
+real-history request: legal fallback, exactly one accounting line, clock termination,
+no completed Search info and no engine failure. No score is fabricated. Full PV,
+game/result, accounting and immutable-input gates remain. Live polling observes
+logged warnings; it is not a claim of zero detection latency. A completed old
+protocol is never retrospectively passed under these rules.
+
+The compatibility protocol's initial-zero-work prediction was false: actual
+Fastchess commands included the increment, starting at140ms rather than40ms.
+The real fallbacks did nonzero work; the requested compatibility path was still
+exercised. The frozen protocol and this deviation are retained. Qualification
+scores carry no playing-strength inference. No engine or clock policy changed.
+
+Select a cheap information-lifetime measurement before allocating another multi-
+hour confirmation. Current-generation H1 has established within-request reuse;
+its cross-request opportunity is unmeasured. Use fixed, result-unfiltered real
+game histories from completed development screens, preserved tables across each
+actor's consecutive requests, unchanged H1 and100k-node diagnostic limits. Measure
+stale/current score encounters, retained depths/bounds, hint replacement and legal
+request completion; timings remain instrumented. Freeze exact inputs and the
+protocol before running. Aged hits alone will not prove safe/useful cutoffs or
+strength. Do not implement an aging candidate before inspecting the evidence.
 
 W4 direct79/independent confirmation remains unresolved; no W1-to-W4 strength
-transfer is assumed. Review it after runner qualification. Conditional mechanism
-follow-up, not selected: measure score availability across consecutive real game
-requests before considering bounded age. Fresh-table diagnostics did not measure
+transfer is assumed. Review it after the selected lifetime diagnostic. Measure score availability
+across consecutive real game requests before considering bounded age. Fresh-table diagnostics did not measure
 that lifetime; new-generation hints convert old H1 scores to hint-only, so removing
 cutoff generation checks alone would not establish useful retention. Preserve
 history, hint legality, score-domain and coherence safeguards in any later revision.
@@ -151,6 +175,6 @@ CODEXLOG_CURRENT.md was absent; do not create it. Inspect current Git/file prese
 again on resume and preserve unrelated changes. No push/deployment/release is authorized.
 
 Human action: owner refresh of the separate Phase4 Project Frontier mirror to
-**P4-F006**, confirming **P4-R001 / P4-F006**. This is **non-blocking** for repository
+**P4-F007**, confirming **P4-R001 / P4-F007**. This is **non-blocking** for repository
 research and blocks only mirror-dependent Project planning. Prior mirror refreshes
 are not inferred complete. No owner action currently blocks the selected qualification.

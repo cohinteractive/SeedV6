@@ -1,0 +1,41 @@
+{
+  "id": "TT-RUNNER-QUAL-V1",
+  "status": "prospectively frozen",
+  "frozenUtc": "2026-10-29T23:26:15.586762+00:00",
+  "purpose": "Qualification only, no strength inference or confirmatory alpha expenditure. Exercise truthful scoreless clock fallbacks through the unchanged frozen engines, full trace audit, independent game audit and explicit engine-handle drain.",
+  "warningPolicy": "audited-fallback",
+  "runtimes": [
+    "runtime80-manifest.json",
+    "runtimeh1-v1-manifest.json"
+  ],
+  "workers": [
+    1,
+    4
+  ],
+  "pairsPerDomain": 2,
+  "tc": "0.04+0.1",
+  "clockRationale": "40ms starting clock is below the unchanged50ms engine reserve, deliberately creating first-request legal zero-work fallbacks.100ms increments permit later Search. This is a runner compatibility fixture, not clock optimization or playing-strength evidence.",
+  "settings": "Hash64,flags3407871/control and7602175/H1,CP64 pinned mapping,OWNER/ROOT_REUSE,BOUNDARY2 unchanged,one active game,restartoff,no book/tablebase/adjudication,full UCI trace,same frozen Java/JVM commands. No overlap with heavy work.",
+  "stopping": "Fixed4 games/domain or any unapproved warning,invalid fallback,legality/PV,terminal,accounting,input/process failure;600s hard limit. Preserve all failed evidence; no result-based filtering.",
+  "openingFile": "runner-qualification-v1-openings.pgn",
+  "openingSha256": "4dc064858d19c8b46635e530e6e28ce00d00408df30d3ceeb2f8bf6716685c01",
+  "selection": {
+    "source": "bridge-v1-openings.pgn",
+    "sourceSha256": "3a57e5e7062ac0acadefccde3a02a002d531698c3c52724ac81c4d52b2ebf954",
+    "indices": [
+      0,
+      1
+    ],
+    "reason": "First two existing development openings, chosen without outcomes for low-cost operational coverage; both colors."
+  },
+  "tools": {
+    "p4-tt-memory.py": "4b16d0d86770812af22670c89811f075f64cd5d72e6cc7082f1028c6cc0255dd",
+    "p4-tt-trace.py": "1e21217304125e4b293a043c09f674a6245dac4eb06d2ed05d43c37972825367",
+    "p4-tt-trace-test.py": "662b6811c315caa4c8ecf9c97fe79d2403ca31b2770cee671b3ff6bb9c69fd29"
+  },
+  "evidence": [
+    "raw/runner-qualification-v1",
+    "raw/runner-qualification-w1-v1",
+    "raw/runner-qualification-w4-v1"
+  ]
+}

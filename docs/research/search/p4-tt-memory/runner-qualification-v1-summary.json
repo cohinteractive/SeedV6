@@ -1,0 +1,103 @@
+{
+  "status": "qualified within declared W1/W4 runner domains",
+  "protocol": "runner-qualification-v1-protocol.json",
+  "protocolSha256": "ced1746f3f017b8022620bf6c35adfdc17bb35022cce29cd0f7c196954df7f4b",
+  "unitTests": {
+    "tests": 6,
+    "invalidEvidenceSubcases": 18,
+    "result": "passed after duplicate-clock and file-lifetime fixes",
+    "rawPassed": "raw/runner-qualification-v1/trace-tests-v2.txt",
+    "rawFailed": "raw/runner-qualification-v1/trace-tests-v1.txt",
+    "failedSourceCopies": "raw/runner-qualification-v1/before-fix-*.py"
+  },
+  "retainedFailureTraceAudit": {
+    "requests": 13724,
+    "qualifiedMissingScoreWarnings": 1,
+    "raw": "raw/runner-qualification-v1/retained-trace-audit.json",
+    "meaning": "Diagnostic only. The earlier strict confirmation remains failed and its alpha spent."
+  },
+  "liveRuns": [
+    {
+      "workers": 1,
+      "raw": "docs\\research\\search\\p4-tt-memory\\raw\\runner-qualification-w1-v1",
+      "runSha256": "7180a2b22f6e18968a6709739cddbdff87985564f31c4c43ad9e84506e4a72e6",
+      "normalGames": 4,
+      "traceRequests": 488,
+      "qualifiedFallbacks": 2,
+      "fallbacks": [
+        {
+          "actor": "baseline",
+          "traceLine": 92,
+          "positionCommand": "position startpos moves d2d4 g8f6 c2c4 e7e6 g1f3 d7d5 g2g3 f8e7 f1g2 e8g8 e1g1 c7c5 c4d5 e6d5 b1c3 f6e4",
+          "position": "rnbq1rk1/pp2bppp/8/2pp4/3Pn3/2N2NP1/PP2PPBP/R1BQ1RK1 w - - 2 9",
+          "request": "go wtime 140 btime 140 winc 100 binc 100",
+          "nodes": 32,
+          "elapsedNanos": 94505000,
+          "termination": "TIME_LIMIT",
+          "bestmove": "g1h1",
+          "completedDepthOrScoreReported": false
+        },
+        {
+          "actor": "candidate",
+          "traceLine": 114,
+          "positionCommand": "position startpos moves d2d4 g8f6 c2c4 e7e6 g1f3 d7d5 g2g3 f8e7 f1g2 e8g8 e1g1 c7c5 c4d5 e6d5 b1c3 f6e4 g1h1",
+          "position": "rnbq1rk1/pp2bppp/8/2pp4/3Pn3/2N2NP1/PP2PPBP/R1BQ1R1K b - - 3 9",
+          "request": "go wtime 137 btime 140 winc 100 binc 100",
+          "nodes": 34,
+          "elapsedNanos": 94126000,
+          "termination": "TIME_LIMIT",
+          "bestmove": "g8h8",
+          "completedDepthOrScoreReported": false
+        }
+      ],
+      "engineHandlesDrained": true,
+      "processLifetimeAudit": "passed",
+      "inputsStable": true
+    },
+    {
+      "workers": 4,
+      "raw": "docs\\research\\search\\p4-tt-memory\\raw\\runner-qualification-w4-v1",
+      "runSha256": "0db741e62ab097ed586842d730a03adda466b395658de22de9d8ebd9cde75258",
+      "normalGames": 4,
+      "traceRequests": 587,
+      "qualifiedFallbacks": 2,
+      "fallbacks": [
+        {
+          "actor": "baseline",
+          "traceLine": 93,
+          "positionCommand": "position startpos moves d2d4 g8f6 c2c4 e7e6 g1f3 d7d5 g2g3 f8e7 f1g2 e8g8 e1g1 c7c5 c4d5 e6d5 b1c3 f6e4",
+          "position": "rnbq1rk1/pp2bppp/8/2pp4/3Pn3/2N2NP1/PP2PPBP/R1BQ1RK1 w - - 2 9",
+          "request": "go wtime 140 btime 140 winc 100 binc 100",
+          "nodes": 29,
+          "elapsedNanos": 93559300,
+          "termination": "TIME_LIMIT",
+          "bestmove": "g1h1",
+          "completedDepthOrScoreReported": false
+        },
+        {
+          "actor": "candidate",
+          "traceLine": 115,
+          "positionCommand": "position startpos moves d2d4 g8f6 c2c4 e7e6 g1f3 d7d5 g2g3 f8e7 f1g2 e8g8 e1g1 c7c5 c4d5 e6d5 b1c3 f6e4 g1h1",
+          "position": "rnbq1rk1/pp2bppp/8/2pp4/3Pn3/2N2NP1/PP2PPBP/R1BQ1R1K b - - 3 9",
+          "request": "go wtime 139 btime 140 winc 100 binc 100",
+          "nodes": 21,
+          "elapsedNanos": 96165900,
+          "termination": "TIME_LIMIT",
+          "bestmove": "g8h8",
+          "completedDepthOrScoreReported": false
+        }
+      ],
+      "engineHandlesDrained": true,
+      "processLifetimeAudit": "passed",
+      "inputsStable": true
+    }
+  ],
+  "protocolDeviation": "The protocol predicted40ms initial clocks below the50ms reserve and zero-work first fallbacks. Actual Fastchess go commands start at140ms because the increment is included. First-request Search was nonzero; the intended missing-completion response path was nevertheless exercised and qualified. Preserve the original protocol; do not claim these matches validate zero-work behavior. The separate direct40ms fixture remains its own evidence.",
+  "safeguards": "Default strict mode remains. Explicit audited-fallback mode requires prospective protocol selection, monitors full-trace warning severities, rejects every other warning/error, and requires a unique legal clock-terminated response with full history, one accounting line, no Search failure and no completed info. Full game/PV/accounting/input gates remain. Explicitly wait for both engine handles before lifetime snapshot; retain runner/drain/cleanup failures separately.",
+  "strengthInference": "None: deliberately short compatibility clocks and four games/domain are qualification fixtures, not strength screens. No candidate, core, consumer clock or production default changed.",
+  "tools": {
+    "p4-tt-memory.py": "4b16d0d86770812af22670c89811f075f64cd5d72e6cc7082f1028c6cc0255dd",
+    "p4-tt-trace.py": "1e21217304125e4b293a043c09f674a6245dac4eb06d2ed05d43c37972825367",
+    "p4-tt-trace-test.py": "662b6811c315caa4c8ecf9c97fe79d2403ca31b2770cee671b3ff6bb9c69fd29"
+  }
+}

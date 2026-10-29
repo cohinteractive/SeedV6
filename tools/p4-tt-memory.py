@@ -26,6 +26,7 @@ def module(name, file):
 
 
 m = module('p4_match_support', 'p3-selectivity-null-match.py')
+trace_audit = module('p4_trace_audit', 'p4-tt-trace.py')
 b = m.b
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs/research/search/p4-tt-memory'
@@ -186,7 +187,7 @@ def match(args):
               'hardware':'Ryzen 5 5500, 6C/12T, 32 GiB; one active game unless specified',
               'javaVersion':subprocess.run([JAVA,'-version'],capture_output=True,text=True,check=True).stderr}
     frozen = {str(Path(p).resolve()):b.digest(p) for p in
-              [__file__, m.__file__, b.__file__, m.c.__file__, m.c.n.__file__, m.owned.__file__,
+              [__file__, trace_audit.__file__, m.__file__, b.__file__, m.c.__file__, m.c.n.__file__, m.owned.__file__,
                runner, JAVA, MODEL, args.openings, OUT/args.protocol]}
     for side in ('baseline','candidate'): frozen.update(b.installation_hashes(getattr(args,side)))
     report['filesBefore']=frozen
@@ -194,6 +195,9 @@ def match(args):
               for side in ('baseline','candidate')}
     report['commands']=commands; started=time.monotonic()
     try:
+        protocol = json.loads((OUT/args.protocol).read_text(encoding='utf-8'))
+        if protocol.get('warningPolicy', 'strict') != args.warning_policy:
+            raise ValueError('Warning policy must be prospectively declared in the protocol')
         if b.digest(MODEL)!=m.NETWORK_SHA256: raise ValueError('Frozen CP64 mismatch')
         for side,cmd in commands.items():
             report[side+'Preflight']=preflight(cmd,out/(side+'-uci.txt'),args.workers,getattr(args,side+'_policy'))
@@ -206,7 +210,8 @@ def match(args):
               '-openings','file='+str(Path(args.openings).resolve()),'format=pgn','order=sequential',
               '-pgnout','file='+str(out/'games.pgn'),'nodes=true','nps=true','pv=true','timeleft=true','latency=true',
               'match_line=^info string request ','-report','penta=true','-ratinginterval','2','-autosaveinterval','0',
-              '-strict','-log','file='+str(out/'uci-trace.log'),'level=trace','append=false','compress=false','realtime=false','engine=true']
+              '-log','file='+str(out/'uci-trace.log'),'level=trace','append=false','compress=false','realtime=false','engine=true']
+        if args.warning_policy == 'strict': cmd.append('-strict')
         report['runnerCommand']=cmd;b.save(out/'run.json',report);match_started=time.monotonic()
         with (out/'runner.txt').open('w',encoding='utf-8') as log:
             job=m.owned.OwnedJob();process=None;cohort=None
@@ -215,17 +220,35 @@ def match(args):
                     stderr=subprocess.STDOUT,creationflags=0x00000004|0x00004000)
                 job.assign(process);job.resume_initial_thread(process)
                 cohort=m.MemoryCohort(process.pid,args.concurrency,out/'process-cost.json');cohort.attach()
-                code=process.wait(timeout=args.timeout)
-            except BaseException:
+                if args.warning_policy == 'audited-fallback':
+                    report['deferredMissingScoreWarnings'] = []
+                    code=trace_audit.supervise(process,out/'uci-trace.log',args.timeout,
+                                               report['deferredMissingScoreWarnings'])
+                else:
+                    code=process.wait(timeout=args.timeout)
+                report['runnerExitCode']=code
+                # Runner exit alone is not evidence that both engine lifetimes
+                # ended. Wait before reading final FILETIME/CPU observations.
+                cohort.wait_for_exit()
+                report['engineHandlesDrained']=True
+            except BaseException as error:
+                report['runnerOrDrainFailure']=repr(error)
                 job.close()
                 if process is not None and process.poll() is None: process.kill();process.wait(timeout=10)
                 if cohort is not None:cohort.wait_for_exit()
                 raise
             finally:
                 try:
-                    if cohort is not None:cohort.close()
+                    try:
+                        if cohort is not None:cohort.close()
+                    except BaseException as error:
+                        report['cleanupFailure']=repr(error);raise
                 finally:job.close()
         report['matchWallSeconds']=time.monotonic()-match_started;report['runnerExitCode']=code
+        if args.warning_policy == 'audited-fallback':
+            report['traceAudit']=trace_audit.audit(out/'uci-trace.log')
+            if [r['actor'] for r in report['traceAudit']['fallbacks']] != report['deferredMissingScoreWarnings']:
+                raise ValueError('Live/full trace warning mismatch')
         report['results']=b.analyze(out/'games.pgn',args.openings,args.pairs,require_accounting=True,
                                     unordered=args.concurrency>1)
         if code!=0 or report['results']['terminations']!={'normal':args.pairs*2}:
@@ -260,6 +283,7 @@ if __name__ == '__main__':
     r.add_argument('--workers',type=int,choices=(1,4),required=True)
     r.add_argument('--pairs',type=int,required=True); r.add_argument('--tc',default='3+0.03')
     r.add_argument('--protocol',default='bridge-v1-protocol.json')
+    r.add_argument('--warning-policy',choices=('strict','audited-fallback'),default='strict')
     r.add_argument('--seed',type=int,default=20261030); r.add_argument('--concurrency',type=int,default=1)
     r.add_argument('--timeout',type=int,default=7200); r.set_defaults(func=match)
     args = p.parse_args()
