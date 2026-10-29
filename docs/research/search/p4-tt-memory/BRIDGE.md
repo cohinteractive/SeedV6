@@ -29,6 +29,9 @@ The candidate's shared UCI JAR is identical to80, and its core entry changes are
 confined to the intended H1 classes/version ([comparison](h1-jar-difference-summary.json)).
 The research launcher uses an empty book rather than a disabled bundled book and
 different identity announcements; actual evaluator, Search and clock paths agree.
+Both strength actors report `head=vector-256-long`. The optional exact SIMD head
+is in the shared core JAR and selected by the same resolved Java Vector module;
+the candidate's research classpath does not select a different evaluator backend.
 
 ## Paired game evidence
 

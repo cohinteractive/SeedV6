@@ -3,8 +3,8 @@
 Status: **ACTIVE**, 30 October 2026. Governing objective [TT-R001](CONTRACT.md),
 under Search P4-R001. Bootstrap and [comparison bridge](BRIDGE.md) complete;
 V1 match incomplete, V2 W1/W4 passed with wide uncertainty. H1 has passed
-technical/information-use and launcher qualification; W1 strength screen active,
-W4 screen next. No TT strength conclusion. Champion remains P4-BASELINE-001/build79.
+technical/information-use and launcher qualification. W1 H1 screen is promising
+but inconclusive; W4 screen active. No confirmed TT strength gain. Champion remains P4-BASELINE-001/build79.
 
 ## Bootstrap and challenge
 
@@ -51,6 +51,15 @@ Runtime versions and executable hashes belong in per-experiment manifests.
 3. **Selected:** H1 strength screen versus80; direct versus79 for any promising result;
    reverse ablations only for interpretation, independent confirmation only after
    credible screening and feasible precision/cost assessment.
+
+Conditional mechanism follow-up, not a selected revision: H1's initial diagnostic
+starts each root with a fresh table and does not characterize information lifetime
+across real consecutive game requests. A new-generation completed hint converts
+an old H1 score record to hint-only; merely removing cutoff generation checks
+would therefore not establish useful cross-request retention. If strength results
+justify another integrated candidate, first measure this availability on real
+history sequences, then consider bounded age with independent score/hint retention.
+Do not assume that longer-lived scores improve strength or relax history/coherence.
 
 ## Evidence and implementation in progress
 
@@ -145,13 +154,24 @@ Speed never answers strength. The additional explicit H1 legal-null-
 verifier witness passed (`h1-null-witness-v1-summary.json`).
 `h1-screen-v1-protocol.json` prospectively defines coarse W1/W4 strength screening
 against80, with independent confirmation/direct79 follow-up required for a
-promising result. W1 is now running at `raw/h1-screen-w1-v1/run.json`; inspect
-its status before resuming and never duplicate the active match. W4 H1 has not
-started. Do not overlap heavy work or edit frozen adapter/protocol/runtime inputs.
-Next command after W1 drains and its result is reviewed: `tools/p4-tt-memory.py
-match --name h1-screen-w4-v1`, baseline runtime80, candidate runtimeh1-v1,
-`--candidate-policy h1 --workers 4 --pairs 32`, bridge-v1-openings.pgn,
-`--tc 10+0.1 --protocol h1-screen-v1-protocol.json`. No H2 revision is selected.
+promising result. W1 completed all64 normal games and stable-input audit:
+30W/14D/20L,57.81%; paired normal95 48.63–67.00%, bounded Hoeffding95
+33.80–81.82%. This is promising but inconclusive exploratory evidence, not a
+confirmed gain. See `h1-screen-w1-v1-summary.json` and its raw run.
+W4 is now running at `raw/h1-screen-w4-v1/run.json`; inspect its status before
+resuming and never duplicate the active match. Do not overlap heavy work or edit
+frozen adapter/protocol/runtime inputs. Next: review both completed screens and
+freeze proportionate independent H1 confirmation/direct79 comparisons if still
+justified. H1 remains fixed; no H2 revision is selected. The positive W1 point
+estimate makes testing unchanged H1 more informative than premature tuning.
+Prepared prospective design: `h1-confirm-w1-v1-protocol.json`, selected from the
+completed W1 screen while W4 remains active. Bind128 independent partition1
+opening pairs after W4 drains, then confirm unchanged H1 versus80; direct79 is
+conditional on the prospective adjusted-interval gate. Expected cost about2h10m
+for the first block, another2h10m only if justified. Claim attempt1 reserves
+nominal alpha0.025, split between controls; future adaptive claims must not reset
+this expenditure. The protocol is not yet executable/frozen: opening selection,
+disjointness verification and hashes remain pending. No candidate tuning is selected.
 `launcher-control-v1-summary.json` passed39 requests: all11 W1 depth/node outcomes
 match across frozen80,81 ordinary UCI and81 research control. W4 accounting/PV
 checks passed. Source/artifact/configuration isolation is qualified in these
@@ -186,6 +206,11 @@ linked in their compact summaries/manifests; interrupted outputs stay preserved.
 Read this file, TT-R001 and current Phase 4 masters; inspect Git and available local
 evidence before continuing the selected item. Do not restart closed preparatory
 work or duplicate runs. Preserve exact runtime/protocol identities and failures.
+A `running` JSON status alone does not prove a process is still live: compare the
+run's process-cost PID/creation evidence with actual OS processes and commands.
+If interrupted, preserve the partial PGN, logs and manifests, record the outcome,
+and resolve the operational cause before a separately named prospective retry.
+Never overwrite a frozen run or interpret partial scores as completed evidence.
 Owner mirror refresh is non-blocking for repository research, blocking only
 planning that relies on the Phase 4 Project mirror. No production/champion action
 is authorized. No other owner action currently blocks execution.
