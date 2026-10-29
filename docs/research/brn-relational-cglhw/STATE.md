@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R044 tied neural continuation diagnosis**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R045 cross-channel tied neural composition**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,14 +25,12 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R043 complete:32games,32 deterministic probes,0caps/failures. TIED scores12.5%/
-34.375% against CP64 at10000nodes;no broader games or strength claim. R044 tests
-one proportional-decay low-rate continuation versus matched constant-rate controls
-from both frozen R041 parents. Five continuation/dispatch tests pass;model,updater,
-segment and metric classes match R041. Frozen runtime/configs committed183a02f1.
-Continue r044-plan.json through run_objective.py under nnue-control,verifying and
-skipping completed arms/segments;then run analyze_tied_continuation.py and reconcile
-fixed gates. No next training or games are automatically admitted.
+R044 complete:4endpoints/32segments;LOW improves both panels,but seed97 misses
+fixed5% old/2% played gains versus control. No R044 transfer/games/rate extension.
+R045 tests a learned64-parameter cross-channel transform before the useful tied
+second pass. Implement independent equations/gradients/control parity/resume and
+bounded capacity/cost audit first. Only passing cost/correctness admits two fixed
+two-stage MIX arms;reuse R044 LOW controls after exact history parity.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -90,7 +88,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R041 | Tied neural relation recurrence | Complete6tests,2arms;both mechanism/family gates pass,cost<10us;no games |
 | R042 | Frozen tied-recurrence transfer | Complete3tests;both transfer gates pass,8/8root gains;no strength claim |
 | R043 | Tied neural recurrence playing calibration | Complete5tests,32games;12.5%/34.375%,no broader games |
-| R044 | Tied neural proportional-decay continuation | Prospective4arms;one bounded distinct warm-start recipe |
+| R044 | Tied neural proportional-decay continuation | Complete5tests/4arms;seed97 misses gates;positive gains preserved,no extension |
+| R045 | Cross-channel tied neural composition | Prospective correctness/cost,conditional2M-exposure MIX controls |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

@@ -316,3 +316,8 @@ R043 complete:5integration checks,1795tested/246core-UCI class parity,32probes/
 32games,all children released. raw/r035-neural-games-runner.py preserves R030/R035
 bindings. Research tied2 selector is isolated;build78 unchanged. R044 requires
 fresh admission and exact parent/history guards before any continuation.
+
+R044 complete:5tests,unchanged model/optimizer,4endpoints/32segments;both-seed gate
+fails. raw/r041-objective-runner.py preserves previous bindings. No further rate/
+epoch allocation. R045 needs exact fixed-M control parity and practical cost before
+its bounded neural architecture pilot;all old holds/data exclusions remain.
