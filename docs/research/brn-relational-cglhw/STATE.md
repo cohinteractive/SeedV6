@@ -1,11 +1,10 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R055 matched target-state neural training**.
-Owner RESUME cleared the admission gate;four loader tests pass and frozen model/
-core/teacher executable classes match their references. R046 runtime and six-
-function plans are frozen. Historical resource gates remain preserved;no GPU or
-clock authority was added.
+Status: **ACTIVE - R056 factorized learned relational composition**.
+Owner RESUME cleared the historical admission gate. Completed stages and all
+negative findings remain preserved below;the exact current operation follows.
+No GPU or clock authority was added.
 
 Read root instructions, [CONTRACT](CONTRACT.md) revision2, [PRIORITY](PRIORITY.md),
 [RESOURCE-GATE](RESOURCE-GATE.md), [BASELINE](BASELINE.md) and [R012](R012.md).
@@ -27,13 +26,14 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R054 complete:eight tests,all8 gradient families<4.72e-12,exact MIX control
-history and target-state witness. GATED9.284us/cache1.32MiB passes practical
-prototype gate. R055 prospectively admits two GATED seeds with matched original
-1M/two-epoch recipe and frozen R045 MIX controls. Ten model/dispatch/baseline checks pass;model classes exactly match R054 and
-all data/control hashes are verified. Runtime/configs frozen in r055-validation.json
-and r055-plan.json. Run run_objective.py with that plan serially under nnue-control,
-then analyze_context_gated.py under fresh admission. No training has started.
+R055 complete:both16384-update endpoints/all32segments verified,218.24s,
+maxCPU25.64%/minfree16.72GiB,all released. Target-state modulation is used but
+oldteacher gains0.29%/1.16% and played-0.94%/+2.87% fail2%/5% BOTH-seed gate.
+No transfer,games or further same-recipe training. R056 is a new low-rank learned
+key/query relational operator with nonlinear per-piece states and tied second
+composition,using associative pooled contractions. Implement isolated prototype,
+independent quadratic/gradient/special-move/state checks and <=5us cost gate before
+any fitting. R056.md includes primary research and architectural limitations.
 
 All later training-data expansion must exclude R049's4096 parent/child aliases
 in raw/r049-data/selection.json (known parents already trained;future expansion
@@ -105,7 +105,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R052 | Typed neural compilation cost | Complete10checks;accurate float cache but11.747us/4.855x fails,no fitting |
 | R053 | Exact source/target projection factorization | Complete10checks;2.64MiB/1.656x improves,but10.617us fails;route untrained |
 | R054 | Target-state neural message modulation | Complete8checks;9.284us/cache1.32MiB pass;training protocol justified |
-| R055 | Matched target-state neural training | Prospective2seeds;dispatch/runtime checks before fitting |
+| R055 | Matched target-state neural training | Complete2arms/32segments;both quality gates fail,no transfer/games |
+| R056 | Factorized learned relational composition | Prospective implementation/correctness/cost only |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

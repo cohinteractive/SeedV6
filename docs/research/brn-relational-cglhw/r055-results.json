@@ -1,0 +1,761 @@
+{
+  "plan_sha256": "cab006182c59107e931c99f9f95c1888bb6d7b1bb02dd8ac4ce7f6ee9a4cbb3f",
+  "validation_sha256": "70dbed829336f9253cbce552300351d14fd9ead3d0e907a2bc11848ab0cc2292",
+  "control_evidence_sha256": "9068502bfd99cf0662ecc835e977a51279f72057e9a1a6780f166a9b7a356639",
+  "analysis_sha256": "3a6b5bd1301074e10744fc401fdb9af4f3fd01e38a4da5cd38ace348da66acee",
+  "analysis_resource": {
+    "cpu_percent": 3.68421052631579,
+    "available_gib": 17.005386352539062,
+    "utc": "2026-10-29T02:20:34Z"
+  },
+  "resource_interruptions": [],
+  "records": [
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r055-gated-71.json",
+      "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+      "result_path": "docs\\research\\brn-relational-cglhw\\raw\\r055-gated-71\\result.json",
+      "result_sha256": "fa6f53e54594fc87a82b6f4293206ba2c4dec60f7f9adaf8b258570d946376b1",
+      "result": {
+        "mode": "GATED",
+        "seed": 71,
+        "parameters": 20481,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.018539461318962495
+          },
+          {
+            "epoch": 1,
+            "updates": 8192,
+            "train_mse": 0.01216239053469582,
+            "state_sha256": "774a225155bcea64c37b52245d167eb8fb95222cc64c41b298158a104524bc42",
+            "unary_only_validation_mse": 0.0159502779632155,
+            "validation_mse": 0.011055486931855889,
+            "unary_only_train_mse": 0.017302365856012046
+          },
+          {
+            "epoch": 2,
+            "updates": 16384,
+            "train_mse": 0.010884504478344085,
+            "state_sha256": "d4c487a4dbad81d11b9fd9cc1a9c1e9da1b1586cbf2189c91be807c766e99a68",
+            "unary_only_validation_mse": 0.016140734821661788,
+            "validation_mse": 0.009877381502995275,
+            "unary_only_train_mse": 0.01737454065272029
+          }
+        ],
+        "load_seconds": 4.0052953,
+        "optimization_checkpoint_seconds": 103.5156258,
+        "preflight_inference_ns": 8637.76,
+        "full_inference_ns": 8705.395,
+        "original_bt4_validation_mse": 0.0226471604832651,
+        "played_validation_mse": 0.02921243906231011,
+        "played_unary_only_mse": 0.04013683392179454,
+        "gate_disabled_validation_mse": 0.010016608164702925,
+        "gate_disabled_played_validation_mse": 0.029216024380871588,
+        "scope": "Learned target-state gated relational recurrence;fixed epoch2;played development held out;no strength claim"
+      },
+      "by_root": {
+        "(97, 8)": {
+          "rows": 134,
+          "teacher_mse": 0.025053031095756642
+        },
+        "(71, 9)": {
+          "rows": 148,
+          "teacher_mse": 0.025970137390538515
+        },
+        "(71, 10)": {
+          "rows": 212,
+          "teacher_mse": 0.019155269528895857
+        },
+        "(97, 9)": {
+          "rows": 249,
+          "teacher_mse": 0.02571865739280396
+        },
+        "(71, 11)": {
+          "rows": 199,
+          "teacher_mse": 0.025911736091759292
+        },
+        "(97, 11)": {
+          "rows": 242,
+          "teacher_mse": 0.044093486741214896
+        },
+        "(71, 8)": {
+          "rows": 112,
+          "teacher_mse": 0.032498020183262574
+        },
+        "(97, 10)": {
+          "rows": 102,
+          "teacher_mse": 0.036339244542987786
+        }
+      },
+      "parameter_diagnostics": {
+        "unary": {
+          "rms": 0.3732129903665306,
+          "clamped": 0.0
+        },
+        "source": {
+          "rms": 0.4793820966089003,
+          "clamped": 0.006184895833333333
+        },
+        "readout": {
+          "rms": 0.512662664956389,
+          "clamped": 0.004720052083333333
+        },
+        "static_transform": {
+          "rms": 0.6098506018375753,
+          "clamped": 0.029166666666666667
+        },
+        "context_transform": {
+          "rms": 0.6117852456103742,
+          "clamped": 0.03125
+        },
+        "second_readout": {
+          "rms": 0.6061089276987055,
+          "clamped": 0.013834635416666666
+        },
+        "mixing": {
+          "rms": 0.6937493021358828,
+          "clamped": 0.09375
+        },
+        "target_modulation": {
+          "rms": 0.742868347141056,
+          "clamped": 0.03125
+        }
+      },
+      "segments": [
+        {
+          "completed_positions": 131072,
+          "state_sha256": "d51177f29807bb922925b58baf8201a43e2933095df093b2f810525ed381e162",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 1024,
+          "epoch": 1
+        },
+        {
+          "completed_positions": 262144,
+          "state_sha256": "615cba24c64d677f886742196fc339e4ad09da68b89ee541c8c88b4f1d934fc1",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 2048,
+          "epoch": 1
+        },
+        {
+          "completed_positions": 393216,
+          "state_sha256": "a52dc04f85d7be43c6d5391e77dbdb2b9781e310cbaaccf47d20322d1c46e468",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 3072,
+          "epoch": 1
+        },
+        {
+          "completed_positions": 524288,
+          "state_sha256": "3ff375e7ef010e313f97be7d19e8809257e96b75301ce808f81f2bb287b3f83f",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 4096,
+          "epoch": 1
+        },
+        {
+          "completed_positions": 655360,
+          "state_sha256": "03cc975d9f954258c757fc977e6efcc18112ffb8b76e57d750c44cbf0c8c202c",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 5120,
+          "epoch": 1
+        },
+        {
+          "completed_positions": 786432,
+          "state_sha256": "374eaa3299b6b226a70ddeb3f611aba324002ef9cd27af2786067c7e70d39661",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 6144,
+          "epoch": 1
+        },
+        {
+          "completed_positions": 917504,
+          "state_sha256": "b02501595a78a3ea835e409bf6b7dd9074625ae461e4725080de5a97f64117ec",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 7168,
+          "epoch": 1
+        },
+        {
+          "completed_positions": 1048576,
+          "state_sha256": "774a225155bcea64c37b52245d167eb8fb95222cc64c41b298158a104524bc42",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 8192,
+          "epoch": 1
+        },
+        {
+          "completed_positions": 1179648,
+          "state_sha256": "ae3c3e27a59910b7d150cd3c271f79442929476b6b2793eadcd9a631e7927ac7",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 9216,
+          "epoch": 2
+        },
+        {
+          "completed_positions": 1310720,
+          "state_sha256": "9d65f9a014d1a8ac1ab0a9381f7a34903018767efa4768f07e7395f4ff7f34b9",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 10240,
+          "epoch": 2
+        },
+        {
+          "completed_positions": 1441792,
+          "state_sha256": "91cda1b1b1a6efd571afd35b44e85bbb035f5be682c974b98b48d2711e6ced7d",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 11264,
+          "epoch": 2
+        },
+        {
+          "completed_positions": 1572864,
+          "state_sha256": "19e099be77ab214ec32b19bea2fce111e6ab0e7125b63e5b1cf3f01439458260",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 12288,
+          "epoch": 2
+        },
+        {
+          "completed_positions": 1703936,
+          "state_sha256": "a933545f86a637c662cf6098146f545282b8cc8b741a3da6a7be3d7d75884705",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 13312,
+          "epoch": 2
+        },
+        {
+          "completed_positions": 1835008,
+          "state_sha256": "b2ec3f26903a094ad42fb3c1175b1d05ef3ac968d4ca55fdfb52a7cea0ee930b",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 14336,
+          "epoch": 2
+        },
+        {
+          "completed_positions": 1966080,
+          "state_sha256": "aa3b5cdd04f9ca45182018f0912e90f71bfc1e1add57aa22791f77cf111b45df",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 15360,
+          "epoch": 2
+        },
+        {
+          "completed_positions": 2097152,
+          "state_sha256": "d4c487a4dbad81d11b9fd9cc1a9c1e9da1b1586cbf2189c91be807c766e99a68",
+          "config_sha256": "158a5795ae18a6ca08273923b28015e24d64bf346206a30019c5bd642843ea47",
+          "updates": 16384,
+          "epoch": 2
+        }
+      ],
+      "executions": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r055-gated-71\\execution-1793240314246510400.json",
+          "sha256": "ace9392c0e6627d1f7840dd283f6badfa13bf5857b7fbc2ee8f32c565825a307",
+          "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r055-gated-71.json",
+          "status": "COMPLETE",
+          "error": null,
+          "elapsed_seconds": 108.64067590003833,
+          "resources": [
+            {
+              "cpu_percent": 1.0471204188481686,
+              "available_gib": 17.024333953857422,
+              "utc": "2026-10-29T02:16:45Z"
+            },
+            {
+              "cpu_percent": 17.010309278350512,
+              "available_gib": 16.792057037353516,
+              "utc": "2026-10-29T02:16:50Z"
+            },
+            {
+              "cpu_percent": 22.22222222222222,
+              "available_gib": 16.885826110839844,
+              "utc": "2026-10-29T02:16:56Z"
+            },
+            {
+              "cpu_percent": 14.358974358974363,
+              "available_gib": 16.881744384765625,
+              "utc": "2026-10-29T02:17:01Z"
+            },
+            {
+              "cpu_percent": 12.121212121212121,
+              "available_gib": 16.876407623291016,
+              "utc": "2026-10-29T02:17:06Z"
+            },
+            {
+              "cpu_percent": 12.834224598930478,
+              "available_gib": 16.85602569580078,
+              "utc": "2026-10-29T02:17:11Z"
+            },
+            {
+              "cpu_percent": 17.525773195876294,
+              "available_gib": 16.872604370117188,
+              "utc": "2026-10-29T02:17:17Z"
+            },
+            {
+              "cpu_percent": 11.979166666666663,
+              "available_gib": 16.860626220703125,
+              "utc": "2026-10-29T02:17:22Z"
+            },
+            {
+              "cpu_percent": 10.416666666666663,
+              "available_gib": 16.861583709716797,
+              "utc": "2026-10-29T02:17:27Z"
+            },
+            {
+              "cpu_percent": 13.227513227513231,
+              "available_gib": 16.86762237548828,
+              "utc": "2026-10-29T02:17:32Z"
+            },
+            {
+              "cpu_percent": 14.795918367346939,
+              "available_gib": 16.865924835205078,
+              "utc": "2026-10-29T02:17:38Z"
+            },
+            {
+              "cpu_percent": 22.5130890052356,
+              "available_gib": 16.81536865234375,
+              "utc": "2026-10-29T02:17:43Z"
+            },
+            {
+              "cpu_percent": 10.552763819095478,
+              "available_gib": 16.851993560791016,
+              "utc": "2026-10-29T02:17:48Z"
+            },
+            {
+              "cpu_percent": 12.041884816753923,
+              "available_gib": 16.843730926513672,
+              "utc": "2026-10-29T02:17:53Z"
+            },
+            {
+              "cpu_percent": 16.753926701570677,
+              "available_gib": 16.845657348632812,
+              "utc": "2026-10-29T02:17:59Z"
+            },
+            {
+              "cpu_percent": 9.32642487046632,
+              "available_gib": 16.83242416381836,
+              "utc": "2026-10-29T02:18:04Z"
+            },
+            {
+              "cpu_percent": 11.675126903553302,
+              "available_gib": 16.85220718383789,
+              "utc": "2026-10-29T02:18:09Z"
+            },
+            {
+              "cpu_percent": 24.870466321243523,
+              "available_gib": 16.834117889404297,
+              "utc": "2026-10-29T02:18:14Z"
+            },
+            {
+              "cpu_percent": 12.834224598930478,
+              "available_gib": 16.845745086669922,
+              "utc": "2026-10-29T02:18:20Z"
+            },
+            {
+              "cpu_percent": 13.829787234042556,
+              "available_gib": 16.828887939453125,
+              "utc": "2026-10-29T02:18:25Z"
+            },
+            {
+              "cpu_percent": 9.183673469387754,
+              "available_gib": 16.82834243774414,
+              "utc": "2026-10-29T02:18:30Z"
+            }
+          ],
+          "command": [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-XX:+UseSerialGC",
+            "-Xmx512m",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r055-runtime\\lib\\*",
+            "com.ohinteractive.seedv6.core.brnpair2.ContextGatedTrainingDiagnostic",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r055-gated-71.json"
+          ],
+          "last_complete_epoch": 2,
+          "last_complete_segment": 16,
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r055-gated-97.json",
+      "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+      "result_path": "docs\\research\\brn-relational-cglhw\\raw\\r055-gated-97\\result.json",
+      "result_sha256": "f99a0fb6ea6a0aaaeaa71d27a9ad71db2df4e4f248222c344fbf62662212501d",
+      "result": {
+        "mode": "GATED",
+        "seed": 97,
+        "parameters": 20481,
+        "metrics": [
+          {
+            "validation_mse": 0.018540685154463554,
+            "epoch": 0
+          },
+          {
+            "train_mse": 0.012025620870874294,
+            "state_sha256": "d9815a6e13ad7ac3879f321dc8ca616a7efcd9992fcbc9cc1961ff83d6141e18",
+            "unary_only_validation_mse": 0.015631117442959645,
+            "validation_mse": 0.010692133390800624,
+            "unary_only_train_mse": 0.016908651455303028,
+            "epoch": 1,
+            "updates": 8192
+          },
+          {
+            "train_mse": 0.010657855931416466,
+            "state_sha256": "706f6880cba0e7eefc4dc5dd4c5902107c210c2519df4551ef18969862129662",
+            "unary_only_validation_mse": 0.01588094854377149,
+            "validation_mse": 0.009441077152270194,
+            "unary_only_train_mse": 0.016983151861793166,
+            "epoch": 2,
+            "updates": 16384
+          }
+        ],
+        "load_seconds": 4.0223366,
+        "optimization_checkpoint_seconds": 104.5030768,
+        "preflight_inference_ns": 8981.215,
+        "full_inference_ns": 8484.425,
+        "original_bt4_validation_mse": 0.021924755126415996,
+        "played_validation_mse": 0.028521875821522817,
+        "played_unary_only_mse": 0.04009938271021224,
+        "gate_disabled_validation_mse": 0.009490668869453388,
+        "gate_disabled_played_validation_mse": 0.02870850486474878,
+        "scope": "Learned target-state gated relational recurrence;fixed epoch2;played development held out;no strength claim"
+      },
+      "by_root": {
+        "(97, 8)": {
+          "rows": 134,
+          "teacher_mse": 0.02641649896027906
+        },
+        "(71, 9)": {
+          "rows": 148,
+          "teacher_mse": 0.02537934985287106
+        },
+        "(71, 10)": {
+          "rows": 212,
+          "teacher_mse": 0.01839286644132418
+        },
+        "(97, 9)": {
+          "rows": 249,
+          "teacher_mse": 0.02816634476596045
+        },
+        "(71, 11)": {
+          "rows": 199,
+          "teacher_mse": 0.021168404111631414
+        },
+        "(97, 11)": {
+          "rows": 242,
+          "teacher_mse": 0.0422239528996313
+        },
+        "(71, 8)": {
+          "rows": 112,
+          "teacher_mse": 0.02753213215625652
+        },
+        "(97, 10)": {
+          "rows": 102,
+          "teacher_mse": 0.040692278488975595
+        }
+      },
+      "parameter_diagnostics": {
+        "unary": {
+          "rms": 0.36683261611822415,
+          "clamped": 0.0
+        },
+        "source": {
+          "rms": 0.4840167912130139,
+          "clamped": 0.004557291666666667
+        },
+        "readout": {
+          "rms": 0.5057080029796165,
+          "clamped": 0.0048828125
+        },
+        "static_transform": {
+          "rms": 0.6052792643044276,
+          "clamped": 0.03229166666666667
+        },
+        "context_transform": {
+          "rms": 0.6023094483829105,
+          "clamped": 0.015625
+        },
+        "second_readout": {
+          "rms": 0.5926030315366173,
+          "clamped": 0.0205078125
+        },
+        "mixing": {
+          "rms": 0.7138466007547121,
+          "clamped": 0.203125
+        },
+        "target_modulation": {
+          "rms": 0.7616289244541219,
+          "clamped": 0.078125
+        }
+      },
+      "segments": [
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 1024,
+          "epoch": 1,
+          "completed_positions": 131072,
+          "state_sha256": "8715ba8d51501c73f398fa0cb5e09a396cdc227f849054ef55aec34fc2f8cd8a"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 2048,
+          "epoch": 1,
+          "completed_positions": 262144,
+          "state_sha256": "a3037d7cdd9350c4b85a28c837ceefc90f4f53cf9d71c3d8a63b622db1ff4932"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 3072,
+          "epoch": 1,
+          "completed_positions": 393216,
+          "state_sha256": "3af379b43e081ddb654d306b4cfbd252e9eeaab7a3991f75b08a73aae048a042"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 4096,
+          "epoch": 1,
+          "completed_positions": 524288,
+          "state_sha256": "13a03002fa68e11b543bf75eb10eb423dd2db36a67fd1517b508dc29db5a71bf"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 5120,
+          "epoch": 1,
+          "completed_positions": 655360,
+          "state_sha256": "d4cfba5f6ed7c9c21309211b2dd37dd41d43cd43d71cd67f6b08b4cb53232723"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 6144,
+          "epoch": 1,
+          "completed_positions": 786432,
+          "state_sha256": "b49e9b09acb169c8164a68b21bb04c72ba300caf30a5d217231b9a5f7ad9b605"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 7168,
+          "epoch": 1,
+          "completed_positions": 917504,
+          "state_sha256": "0003a05f30ae57d393285dc7a9682b3c45c288adb466fe2fdf1825f0b5fb167b"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 8192,
+          "epoch": 1,
+          "completed_positions": 1048576,
+          "state_sha256": "d9815a6e13ad7ac3879f321dc8ca616a7efcd9992fcbc9cc1961ff83d6141e18"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 9216,
+          "epoch": 2,
+          "completed_positions": 1179648,
+          "state_sha256": "aa9f4c51a98331c7fae9bc1f5daa41826fca0401a079b105403e3457c7769dec"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 10240,
+          "epoch": 2,
+          "completed_positions": 1310720,
+          "state_sha256": "b6f60dbaaff4a5d43ba3f8c0662bf86204ffb21ef7e0c688363fe5f56ea4a4b3"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 11264,
+          "epoch": 2,
+          "completed_positions": 1441792,
+          "state_sha256": "b624bd6ba74f55e56ad85fb77ac543895ff619797f180fde1207372cad36edbd"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 12288,
+          "epoch": 2,
+          "completed_positions": 1572864,
+          "state_sha256": "a07d7c963906a130abe5c8d1b793e10d28240d7587d04dc248f5ae898a431fda"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 13312,
+          "epoch": 2,
+          "completed_positions": 1703936,
+          "state_sha256": "c490e73fab16bb50c4baef5f29a268fb09d8028529a0cb259042f914d15121a3"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 14336,
+          "epoch": 2,
+          "completed_positions": 1835008,
+          "state_sha256": "bfaed53b7f4a6908303d44cc40acee4aa7f8f4fa92c58ba32ec0fafd3c88dc6e"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 15360,
+          "epoch": 2,
+          "completed_positions": 1966080,
+          "state_sha256": "7a003c45650330269545e5597b4c90531b19a41847eb1edc09978d2ee9a770e3"
+        },
+        {
+          "config_sha256": "9c2df4d4ecbaf96ffce610c14ae4851ccd01a2a9d02f3eeed5252c1b6caf8e2b",
+          "updates": 16384,
+          "epoch": 2,
+          "completed_positions": 2097152,
+          "state_sha256": "706f6880cba0e7eefc4dc5dd4c5902107c210c2519df4551ef18969862129662"
+        }
+      ],
+      "executions": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r055-gated-97\\execution-1793240424121296900.json",
+          "sha256": "ca47bd5a3a3a98bf7730752f3590ad5b27685b81166172a6b93baaf120db6a2a",
+          "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r055-gated-97.json",
+          "status": "COMPLETE",
+          "error": null,
+          "elapsed_seconds": 109.60233630001312,
+          "resources": [
+            {
+              "cpu_percent": 5.291005291005291,
+              "available_gib": 17.08197021484375,
+              "utc": "2026-10-29T02:18:34Z"
+            },
+            {
+              "cpu_percent": 25.64102564102564,
+              "available_gib": 16.796218872070312,
+              "utc": "2026-10-29T02:18:39Z"
+            },
+            {
+              "cpu_percent": 21.92513368983957,
+              "available_gib": 16.81515884399414,
+              "utc": "2026-10-29T02:18:45Z"
+            },
+            {
+              "cpu_percent": 13.541666666666663,
+              "available_gib": 16.832351684570312,
+              "utc": "2026-10-29T02:18:50Z"
+            },
+            {
+              "cpu_percent": 12.5,
+              "available_gib": 16.82883071899414,
+              "utc": "2026-10-29T02:18:55Z"
+            },
+            {
+              "cpu_percent": 10.945273631840791,
+              "available_gib": 16.81153106689453,
+              "utc": "2026-10-29T02:19:00Z"
+            },
+            {
+              "cpu_percent": 16.84210526315789,
+              "available_gib": 16.790470123291016,
+              "utc": "2026-10-29T02:19:06Z"
+            },
+            {
+              "cpu_percent": 9.644670050761416,
+              "available_gib": 16.81624984741211,
+              "utc": "2026-10-29T02:19:11Z"
+            },
+            {
+              "cpu_percent": 14.36170212765957,
+              "available_gib": 16.7603759765625,
+              "utc": "2026-10-29T02:19:16Z"
+            },
+            {
+              "cpu_percent": 10.994764397905755,
+              "available_gib": 16.760162353515625,
+              "utc": "2026-10-29T02:19:21Z"
+            },
+            {
+              "cpu_percent": 17.67955801104972,
+              "available_gib": 16.757678985595703,
+              "utc": "2026-10-29T02:19:27Z"
+            },
+            {
+              "cpu_percent": 11.398963730569944,
+              "available_gib": 16.741378784179688,
+              "utc": "2026-10-29T02:19:32Z"
+            },
+            {
+              "cpu_percent": 10.63829787234043,
+              "available_gib": 16.744770050048828,
+              "utc": "2026-10-29T02:19:37Z"
+            },
+            {
+              "cpu_percent": 23.076923076923073,
+              "available_gib": 16.71668243408203,
+              "utc": "2026-10-29T02:19:42Z"
+            },
+            {
+              "cpu_percent": 17.894736842105264,
+              "available_gib": 16.75574493408203,
+              "utc": "2026-10-29T02:19:48Z"
+            },
+            {
+              "cpu_percent": 11.111111111111116,
+              "available_gib": 16.76055908203125,
+              "utc": "2026-10-29T02:19:53Z"
+            },
+            {
+              "cpu_percent": 11.16751269035533,
+              "available_gib": 16.751251220703125,
+              "utc": "2026-10-29T02:19:58Z"
+            },
+            {
+              "cpu_percent": 13.366336633663368,
+              "available_gib": 16.738201141357422,
+              "utc": "2026-10-29T02:20:03Z"
+            },
+            {
+              "cpu_percent": 18.324607329842934,
+              "available_gib": 16.76104736328125,
+              "utc": "2026-10-29T02:20:09Z"
+            },
+            {
+              "cpu_percent": 10.880829015544046,
+              "available_gib": 16.75506591796875,
+              "utc": "2026-10-29T02:20:14Z"
+            },
+            {
+              "cpu_percent": 10.994764397905755,
+              "available_gib": 16.75750732421875,
+              "utc": "2026-10-29T02:20:19Z"
+            }
+          ],
+          "command": [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-XX:+UseSerialGC",
+            "-Xmx512m",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r055-runtime\\lib\\*",
+            "com.ohinteractive.seedv6.core.brnpair2.ContextGatedTrainingDiagnostic",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r055-gated-97.json"
+          ],
+          "last_complete_epoch": 2,
+          "last_complete_segment": 16,
+          "process_absent": true
+        }
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "seed": 71,
+      "old_teacher_gain": 0.002927236032339131,
+      "played_gain": -0.00942857480210657,
+      "bt4_gain": 0.001800019656779006,
+      "train_gain": 0.0003432712164339602,
+      "old_unary_gain": 0.3880463552539588,
+      "gate_used_old": true,
+      "gate_used_played": true,
+      "full_inference_ns": 8705.395,
+      "roots_improved": 3,
+      "passes": false
+    },
+    {
+      "seed": 97,
+      "old_teacher_gain": 0.011600575601172336,
+      "played_gain": 0.028707003593992697,
+      "bt4_gain": 0.006701431992236606,
+      "train_gain": 0.008144029106987416,
+      "old_unary_gain": 0.4055092410728208,
+      "gate_used_old": true,
+      "gate_used_played": true,
+      "full_inference_ns": 8484.425,
+      "roots_improved": 8,
+      "passes": false
+    }
+  ],
+  "transfer_followup_justified": false,
+  "elapsed_seconds": 218.24301220005145,
+  "maximum_cpu_percent": 25.64102564102564,
+  "minimum_available_gib": 16.71668243408203,
+  "scope": "Two fixed two-stage GATED endpoints versus exact frozen controls;consumed development,not final confirmation or playing strength."
+}

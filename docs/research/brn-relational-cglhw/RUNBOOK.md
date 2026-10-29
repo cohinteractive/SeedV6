@@ -391,3 +391,8 @@ R05510checks pass;model classes match R054,all baseline/data identities verified
 Exact fitting: nnue-control.cmd run --name brn-context-gated-training --resume-note "R055 fixed2seeds/2epochs;skip completed atomic segments" --log docs/research/brn-relational-cglhw/raw/r055-training-launch.log -- build/research/venv/Scripts/python.exe -B tools/brn-relational/run_objective.py docs/research/brn-relational-cglhw/r055-plan.json
 Then run analyze_context_gated.py under fresh supervised admission. On RESUME use
 a new launch log;the frozen config/runtime/runner bindings cannot change.
+
+R055 complete:both checkpoints/all32segments/4epoch receipts verified;no resource
+interruption. Both quality gates fail;no further same-recipe fit or games.
+R056 new learned low-rank relation prototype requires independent quadratic
+oracle/gradients and materially lower cost before any separately bounded training.
