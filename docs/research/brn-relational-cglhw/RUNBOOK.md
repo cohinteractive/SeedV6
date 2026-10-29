@@ -271,3 +271,9 @@ R034 complete:exact frozen prediction/target parity,independent old-panel checks
 fixed12-cell matching passes allocation gate. R035 separately authorizes bounded
 new data collection;no earlier holdouts reclassified. Existing frozen R030 search
 runtime is reused;research-only helpers do not change build78.
+
+R035 complete:48 fixed-node games,32 deterministic probes,400 prior games purged,
+2065/1398 novel aliases,16/8root split,exact static-teacher relabel parity. Existing
+TeacherDataset class matches R007. No current-workstream holdout reclassification.
+R035 development aliases and game roots now join all future exclusion reservations.
+R036 is one bounded neural mixture intervention;CONTROL reuse avoids repeat work.

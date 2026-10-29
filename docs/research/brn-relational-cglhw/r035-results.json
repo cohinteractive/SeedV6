@@ -1,0 +1,212 @@
+{
+  "selection_sha256": "a024e601b330ba5a62817b2dd2719ce435897cd91d771e35b8465cd4f2d3ccee",
+  "analysis_sha256": "cd111c851aa67af317a41c65660617872b3473db6f5ff8950b42023efb04b46e",
+  "analysis_resource": {
+    "cpu_percent": 11.764705882352944,
+    "available_gib": 17.476085662841797,
+    "utc": "2026-10-29T00:04:03Z"
+  },
+  "teacher_result_sha256": "03e9732110ba93f2b01eef76f5c0ca29a20e38373a721f0fd66e916cba99865b",
+  "prediction_path": "docs\\research\\brn-relational-cglhw\\raw\\r035-prediction.json",
+  "prediction_sha256": "b0af6302a4b2b3ce812e6accc88b6dacbfa7c3c76a26fcc67a18c665bfd8c8bc",
+  "comparisons": [
+    {
+      "seed": 71,
+      "plan_sha256": "03ba07678c8ad280c63ed648b7b3cf1e74af4b673854c28577e3c0ad649364e3",
+      "binding": {
+        "plan_sha256": "03ba07678c8ad280c63ed648b7b3cf1e74af4b673854c28577e3c0ad649364e3",
+        "runner_sha256": "5b80b3e62605cbeee916f5a2b3e95589a4dc6f658cd18137d1a9ad590ece2660",
+        "engine_helper_sha256": "04b121eaa9de0e897c94e5e40821466bab2fb38c50be5c05f93e1fd46eea3c81",
+        "runtime": {
+          "research-launcher.properties": "a7c61ea7a9363040d74d62f8b3ce450305f0b833ef13cd5dc87a85425f5849e4",
+          "lib\\app-uci.jar": "a24bc26e00dd1e5a988d4443ff509068862f7ae8ac3bbb5f221cac69846c19a3",
+          "lib\\engine-core.jar": "25f84f47a9517c20a60a665d30920128ef20a7571acec5bc346ab00b894d85f8",
+          "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "lib\\research.jar": "47dd204882f0a884dbe3b05962b1cded288a8d7e6fa20caf27f51bbae0dadba0",
+          "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\BrnRelationalUciMain$1.class": "94580d4b0f90f2d0efc4bf8272dd3b010bf897190b6d0fd4843da2c06ef475f8",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\BrnRelationalUciMain.class": "2d816a804c301b5606dfee28ebfc05ac92efa55585aa0656714bada32a500580",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SelectivityUciMain$1.class": "45f381877ef7cdc00347e7624d2bbcedc60208044d9a259b0566d782c4c54735",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SelectivityUciMain.class": "815eea3def5cb2c760b46d6966c65dbafec04505620bae9269fafa3df780b16a",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SpendingUciMain$1.class": "43f6669023494549289802766e868b4f86270e66312ab735e9c60f2919e668cd",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SpendingUciMain.class": "3e638447a4065c89d0868e96cfff98da752107dafe791d27f4cfd51fbc6a32c4",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64TimeUciMain$1.class": "bec1e65dc489733c8daaed5d9229b361de0e7e76aa03181fd49288cc8557602e",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64TimeUciMain.class": "283e4f3cfe2f1c440760b9bc1f98f9f80d92fb248e4aff3d3d2a12a99bcbaf5b",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain$1.class": "58c3d4ebe21a2b8aa46a3114d1bc3e37a851860312fe330867a78d5708df6598",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain.class": "1c47b49bba3d0fb4a9349db23ac757778cd6c6f9d6e32a3911eb2f1613451735",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain$1.class": "1a0b995fb5c2046b1a4e18a5cec8b0bd1eeb949595e1b1c36a556e7514c45b14",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain.class": "b35ec2373bd5a0cf4e6d714d5e7b8e6c948fc33775b5b461af10696c539b84fd",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain$1.class": "a7e2f469e7b6976ec1897c05ec9428220e9ff4a97ec03ef894189b0ecd4e3bf3",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain.class": "1fb37318975ec761b2117db35602d72fd28113e678b17700752a1764156006ec",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain$1.class": "2b01438f9b77a8c89c9b153638b85841f2dad32f74b215d3749158ba8a980b17",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain.class": "119edde9b12440c661ae89495afc65511d76e003ff4f0da644d9f37e64755281",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain$1.class": "745f48127c0e35629ea731691b838b7cf0c51ddb732f7bec9b87bb171e0fe7d6",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain.class": "706958cf81282a7d9e4b130b92f36f80219d993f86547e40d2c2a16aff431141"
+        }
+      },
+      "summary": {
+        "completed_games": 24,
+        "expected_games": 24,
+        "scored": 24,
+        "wins": 3,
+        "draws": 5,
+        "losses": 16,
+        "censored": 0,
+        "full_allocation_score_bounds": [
+          0.22916666666666666,
+          0.22916666666666666
+        ],
+        "complete_pairs": 12,
+        "score": 0.22916666666666666,
+        "paired_bootstrap_95": [
+          0.10416666666666667,
+          0.375
+        ],
+        "hoeffding_95": [
+          0,
+          0.6212168045165094
+        ],
+        "scope": "reused development openings; tiny sample, no confirmation or equal-time Elo claim"
+      },
+      "probes": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r035-71-games\\piece71-vs-cp64\\probes-1793232011173422000.json",
+          "sha256": "cc9afc536810d3e188ce1d7852998d0316c1ecaf57cf748b299d226136fb8d74",
+          "requests": 16
+        }
+      ],
+      "releases": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r035-71-games\\piece71-vs-cp64\\release-1793232091424358400.json",
+          "sha256": "c44f6160529d491d9ce3cf82b45afdc8e1d47cc0d105149d9fd1b94c542b6293"
+        }
+      ],
+      "elapsed_seconds": 82.05157190002501
+    },
+    {
+      "seed": 97,
+      "plan_sha256": "923973b4df16e10893579944d4485e9ee6fc65b298069156a09cfd68e28f8f74",
+      "binding": {
+        "plan_sha256": "923973b4df16e10893579944d4485e9ee6fc65b298069156a09cfd68e28f8f74",
+        "runner_sha256": "5b80b3e62605cbeee916f5a2b3e95589a4dc6f658cd18137d1a9ad590ece2660",
+        "engine_helper_sha256": "04b121eaa9de0e897c94e5e40821466bab2fb38c50be5c05f93e1fd46eea3c81",
+        "runtime": {
+          "research-launcher.properties": "a7c61ea7a9363040d74d62f8b3ce450305f0b833ef13cd5dc87a85425f5849e4",
+          "lib\\app-uci.jar": "a24bc26e00dd1e5a988d4443ff509068862f7ae8ac3bbb5f221cac69846c19a3",
+          "lib\\engine-core.jar": "25f84f47a9517c20a60a665d30920128ef20a7571acec5bc346ab00b894d85f8",
+          "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "lib\\research.jar": "47dd204882f0a884dbe3b05962b1cded288a8d7e6fa20caf27f51bbae0dadba0",
+          "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\BrnRelationalUciMain$1.class": "94580d4b0f90f2d0efc4bf8272dd3b010bf897190b6d0fd4843da2c06ef475f8",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\BrnRelationalUciMain.class": "2d816a804c301b5606dfee28ebfc05ac92efa55585aa0656714bada32a500580",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SelectivityUciMain$1.class": "45f381877ef7cdc00347e7624d2bbcedc60208044d9a259b0566d782c4c54735",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SelectivityUciMain.class": "815eea3def5cb2c760b46d6966c65dbafec04505620bae9269fafa3df780b16a",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SpendingUciMain$1.class": "43f6669023494549289802766e868b4f86270e66312ab735e9c60f2919e668cd",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SpendingUciMain.class": "3e638447a4065c89d0868e96cfff98da752107dafe791d27f4cfd51fbc6a32c4",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64TimeUciMain$1.class": "bec1e65dc489733c8daaed5d9229b361de0e7e76aa03181fd49288cc8557602e",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\Cp64TimeUciMain.class": "283e4f3cfe2f1c440760b9bc1f98f9f80d92fb248e4aff3d3d2a12a99bcbaf5b",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain$1.class": "58c3d4ebe21a2b8aa46a3114d1bc3e37a851860312fe330867a78d5708df6598",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain.class": "1c47b49bba3d0fb4a9349db23ac757778cd6c6f9d6e32a3911eb2f1613451735",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain$1.class": "1a0b995fb5c2046b1a4e18a5cec8b0bd1eeb949595e1b1c36a556e7514c45b14",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain.class": "b35ec2373bd5a0cf4e6d714d5e7b8e6c948fc33775b5b461af10696c539b84fd",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain$1.class": "a7e2f469e7b6976ec1897c05ec9428220e9ff4a97ec03ef894189b0ecd4e3bf3",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain.class": "1fb37318975ec761b2117db35602d72fd28113e678b17700752a1764156006ec",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain$1.class": "2b01438f9b77a8c89c9b153638b85841f2dad32f74b215d3749158ba8a980b17",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain.class": "119edde9b12440c661ae89495afc65511d76e003ff4f0da644d9f37e64755281",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain$1.class": "745f48127c0e35629ea731691b838b7cf0c51ddb732f7bec9b87bb171e0fe7d6",
+          "classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain.class": "706958cf81282a7d9e4b130b92f36f80219d993f86547e40d2c2a16aff431141"
+        }
+      },
+      "summary": {
+        "completed_games": 24,
+        "expected_games": 24,
+        "scored": 24,
+        "wins": 3,
+        "draws": 7,
+        "losses": 14,
+        "censored": 0,
+        "full_allocation_score_bounds": [
+          0.2708333333333333,
+          0.2708333333333333
+        ],
+        "complete_pairs": 12,
+        "score": 0.2708333333333333,
+        "paired_bootstrap_95": [
+          0.16666666666666666,
+          0.375
+        ],
+        "hoeffding_95": [
+          0,
+          0.662883471183176
+        ],
+        "scope": "reused development openings; tiny sample, no confirmation or equal-time Elo claim"
+      },
+      "probes": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r035-97-games\\piece97-vs-cp64\\probes-1793232099216960300.json",
+          "sha256": "94a741fce5d6e034a12c98cab2bdaea81c484321a26d522934128a9e0790ce23",
+          "requests": 16
+        }
+      ],
+      "releases": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r035-97-games\\piece97-vs-cp64\\release-1793232185537974200.json",
+          "sha256": "f3242e2c67933a726ffd934a37b0d732295842ca3a570fc1c223e4f2aa8aed92"
+        }
+      ],
+      "elapsed_seconds": 88.12961379997432
+    }
+  ],
+  "datasets": {
+    "train": {
+      "rows": 2065,
+      "roots": 16,
+      "positions": "docs\\research\\brn-relational-cglhw\\raw\\r035-data\\train-positions.json",
+      "positions_sha256": "b77dd2bccf2af360d3d1fd6db0e05e63609e0d27612b8a47d7bc8893fbb99198",
+      "unlabeled": "docs\\research\\brn-relational-cglhw\\raw\\r035-data\\train-unlabeled.tsv",
+      "unlabeled_sha256": "ac449be648b85b1a5089f2137d519144505bba38e5c38cfb736a7d4c38313ed1",
+      "placeholder_target": 0.5,
+      "labeled": "docs\\research\\brn-relational-cglhw\\raw\\r035-teacher-data\\train\\data.tsv",
+      "labeled_sha256": "8ea1fadd9642cc28696561d6d8347398cb63a0c8bfa36154b56a67d83ad2733f"
+    },
+    "validation": {
+      "rows": 1398,
+      "roots": 8,
+      "positions": "docs\\research\\brn-relational-cglhw\\raw\\r035-data\\validation-positions.json",
+      "positions_sha256": "504f21753e00eb6cf5ae706091757b47190d1f20d11a11412e165d8977a7df77",
+      "unlabeled": "docs\\research\\brn-relational-cglhw\\raw\\r035-data\\validation-unlabeled.tsv",
+      "unlabeled_sha256": "be3273f00e71f11c56b641368b4ca948b531d8e84af6b95bc89bf270c56ca86d",
+      "placeholder_target": 0.5,
+      "labeled": "docs\\research\\brn-relational-cglhw\\raw\\r035-teacher-data\\validation\\data.tsv",
+      "labeled_sha256": "b3b542217af2c6c3dca8b2906705417192541b66b81081fa6c1337a9ce744f0f"
+    }
+  },
+  "models": [
+    {
+      "teacher_mse": 0.03933124643664062,
+      "id": "r028-one-71",
+      "kind": "PIECE_ONE",
+      "state_sha256": "555fba100a70371755894a9653b409d806eb6b725345fd76b4b23eb1b4d2fec1"
+    },
+    {
+      "teacher_mse": 0.04055655137096415,
+      "id": "r028-one-97",
+      "kind": "PIECE_ONE",
+      "state_sha256": "886128c090ef655f60c8bc9aa2d03d393f1e007881bdd0310ce0defa55024f76"
+    }
+  ],
+  "completed_games": 48,
+  "caps": 0,
+  "exact_teacher_relabel_parity": true,
+  "unique_disjoint_partition_parity": true,
+  "training_allocation_justified": true,
+  "max_cpu_percent": 75.52083333333334,
+  "minimum_available_gib": 16.707027435302734,
+  "scope": "Data generation on24 prospectively grouped opening clusters;not final strength confirmation;CP64 is a reference;played roots do not cover search leaves;no training performed."
+}

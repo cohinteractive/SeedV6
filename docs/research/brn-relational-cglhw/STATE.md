@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R035 bounded neural search-distribution corpus**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R036 matched neural data intervention**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,11 +25,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R034 complete:phase/confidence matching retains86.9%/98.9% and residual error
-ratios2.39 in both ONE seeds. R035 admits48 fixed-node data-generation games from
-24 fresh roots,grouped16 train/8 development before play. Freeze selection and
-run two24-game stages using unchanged R030 runtime,then purge prior aliases and
-check coverage before any separate training allocation. See R035.md.
+R035 complete:48 fixed-node games,2065 novel train/1398 development aliases,
+16/8 disjoint roots,exact CP64 labels. Coverage gate passes. R036 prospectively
+tests a single50/50 old/new mixture from immutable R028 ONE parents;reuse R031
+CONTROL endpoints for equal exposure. Validate mixture/provenance and new runner,
+then two segmented CPU arms. No games,mixture sweep or holdout reclassification.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -78,7 +78,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R032 | Contextual neural routing | Complete;dynamic routing/use gates fail;no attention sweep |
 | R033 | Frozen neural mechanism diagnosis | Complete;no broad saturation,context active but unhelpful;played loss3.54-3.77x |
 | R034 | Matched played-distribution gap | Complete;retained86.9%/98.9%,residual2.39x both seeds;data pilot justified |
-| R035 | Fresh neural search-distribution corpus | Prospective48 fixed-node games,root-grouped split and strict alias exclusions |
+| R035 | Fresh neural search-distribution corpus | Complete48games;2065train/1398dev,16/8roots;coverage gate passes |
+| R036 | Matched neural search-distribution training | Prospective50/50 mixture,two warm-start arms,existing equal-exposure controls |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

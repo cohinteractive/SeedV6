@@ -29,13 +29,17 @@ def main():
     newer = folder/'raw/r016-data/selection.json';pin(newer)
     assert sha(newer) == 'ef3c9a40f55e432d1012dcc3c1af1e703fd2d49cdd0d5ba5307e2b051ed7b37d'
     reserved.update(row['alias'] for row in json.loads(newer.read_text())['state']['rows'])
+    structural=folder/'r008-cases.json';pin(structural)
+    assert sha(structural)=='271b3cba2b8e7803c8009ca338f7335584e0dba89e7f624a2014dfc8b389b6d4'
+    for quartet in json.loads(structural.read_text()):
+        reserved.update(alias(chess.Board(fen)) for fen in quartet['fens'])
     prior_games = 0
-    for experiment in ('r001','r001b','r002-games','r007-bt4-games','r025','r030'):
+    for experiment,count in (('r001',16),('r001b',192),('r002-games',64),('r007-bt4-games',64),('r025',32),('r030',32)):
         path = folder/(experiment+'-plan.json');pin(path);plan=json.loads(path.read_text())
         opening_path=ROOT/plan['openings'];pin(opening_path)
         openings=json.loads(opening_path.read_text())
         if 'openings_sha256' in plan:assert sha(opening_path)==plan['openings_sha256']
-        paths=sorted((ROOT/plan['output']).glob('**/game-*.json'));assert paths
+        paths=sorted((ROOT/plan['output']).glob('**/game-*.json'));assert len(paths)==count,(experiment,len(paths),count)
         for path in paths:
             pin(path);game=json.loads(path.read_text());board=chess.Board()
             for move in openings[game['opening']]['moves'].split()+game['moves']:

@@ -1,0 +1,5 @@
+{
+  "config": "docs\\research\\brn-relational-cglhw\\r035-teacher-config.json",
+  "runtime": "docs/research/brn-relational-cglhw/raw/r033-runtime/lib",
+  "max_seconds": 60
+}
