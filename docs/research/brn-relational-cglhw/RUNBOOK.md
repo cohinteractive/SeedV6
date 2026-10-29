@@ -282,3 +282,8 @@ R036 complete:five tests,two MIX endpoints/sixteen segments,all guards fail.
 R031 CONTROL results/checkpoints reused without mutation;raw/r032-objective-runner.py
 preserves old training bindings. R035 development aliases stay excluded. No more
 mixture work or games;R037 is a shared neural relation-function investigation.
+
+R037 complete:four tests;initial piece-order witness fixture failure retained and
+corrected. Frozen direct model runtime/profiles remain at raw/r037-runtime and
+raw/r037-capacity.json. raw/r033-mechanism-runner.py preserves R033-R036 audit
+bindings. R038 optimizes the same learned equations before any new training.

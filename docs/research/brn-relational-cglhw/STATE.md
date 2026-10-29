@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R037 shared neural relation prototype**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R038 invariant neural projection compilation**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,11 +25,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R036 complete:small played-corpus mixture memorizes training and fails both
-transfer/old-panel guards. No mixture tuning or more games. R037 prospectively
-tests shared neural geometric transforms with matched occupancy-dependent message
-conditioning. Implement isolated prototype,independent gradient/board/resume
-checks and bounded cost/capacity audit before admitting any new training.
+R037 complete:four tests,64/64 capacity,14,209-parameter shared neural geometry
+prototype. Direct16.8/29.5us cost misses practical10us target. R038 prospectively
+caches invariant projections between weight versions,retaining dynamic occupancy
+and uncached equations. Verify forward/gradient/update equivalence,ownership and
+resume before same-panel speed audit. No new fitting or games yet.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -80,7 +80,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R034 | Matched played-distribution gap | Complete;retained86.9%/98.9%,residual2.39x both seeds;data pilot justified |
 | R035 | Fresh neural search-distribution corpus | Complete48games;2065train/1398dev,16/8roots;coverage gate passes |
 | R036 | Matched neural search-distribution training | Complete;memorization and old-panel regression,both gates fail;no tuning |
-| R037 | Shared neural geometry/context messages | Prospective correctness/cost/capacity prototype;no training yet |
+| R037 | Shared neural geometry/context messages | Complete4tests,64/64 capacity;16.8/29.5us exceeds practical10us |
+| R038 | Invariant neural projection compilation | Prospective algebra/ownership/resume equivalence and cost gate |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

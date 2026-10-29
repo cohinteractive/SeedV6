@@ -1,0 +1,42 @@
+{
+  "raw_path": "docs\\research\\brn-relational-cglhw\\raw\\r037-capacity.json",
+  "raw_sha256": "1b79c6a3af37ba68cdc53e9d9443457833fd170e67fa782426a156dd811cd139",
+  "plan_sha256": "1165b6905339cb177f4ca23e0a3a28752e98f8998e912ec6f9fd5c65758e54b7",
+  "validation_sha256": "6fd7a30ca3e40bede627a36ca502635a9be738def9c439738e0a9120663aa0bb",
+  "receipt": {
+    "sha256": "1b79c6a3af37ba68cdc53e9d9443457833fd170e67fa782426a156dd811cd139",
+    "seconds": 1.8547098999843001,
+    "resources": [
+      {
+        "cpu_percent": 2.127659574468088,
+        "available_gib": 18.363189697265625,
+        "utc": "2026-10-29T00:13:29Z"
+      }
+    ]
+  },
+  "models": [
+    {
+      "preliminary_cost_pass": true,
+      "checksum": 359166.3446670131,
+      "nonzero_remote_contrasts": 64,
+      "practical_10us_pass": false,
+      "parameters": 14209,
+      "seed": 71,
+      "full_inference_ns": 16828.425,
+      "mode": "GEOMETRY"
+    },
+    {
+      "preliminary_cost_pass": true,
+      "checksum": 359166.3446670131,
+      "nonzero_remote_contrasts": 64,
+      "practical_10us_pass": false,
+      "parameters": 14209,
+      "seed": 71,
+      "full_inference_ns": 29538.17,
+      "mode": "CONTEXT"
+    }
+  ],
+  "correctness_pass": true,
+  "training_protocol_admissible": true,
+  "scope": "Capacity/cost only;no fitted model or strength evidence;practical10us goal distinct from30us preliminary ceiling."
+}

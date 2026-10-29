@@ -1,0 +1,24 @@
+{
+  "tests": 4,
+  "failures": 0,
+  "skipped": 0,
+  "test_path": "docs\\research\\brn-relational-cglhw\\raw\\r037-passed-test.xml",
+  "test_sha256": "601b5f2f29d8ce6bb1ab4546bcf861c7448cf44920a545a7955ae11f2c28e4d6",
+  "test_output": "Occupancy-conditioned fixed-endpoint change cp=2.1428571428571104\ncontext=false gradient errors=[2.0154156121776623E-12, 3.1741762267657042E-12, 4.437911653833518E-12, 3.0950645556670695E-12, 0.0]\ncontext=true gradient errors=[2.0154156121776623E-12, 3.1741762267657042E-12, 4.437911653833518E-12, 3.0950645556670695E-12, 4.3498804005396435E-12]\n",
+  "runtime": {
+    "lib\\engine-core.jar": "32ba3d03c3fe66cbcbb0d9ddc9d1a5c6f45cc360311956dd90f8eb31ae3a1383",
+    "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "lib\\research.jar": "b50def71b8ab4c25de7df0374f0900d74fbf7b7279b65baa3a6f52afd03f7a7a",
+    "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "initial_failure": {
+    "path": "docs/research/brn-relational-cglhw/raw/r037-initial-failed-test.xml",
+    "sha256": "af78f09d06e5cae8bc2567fdc85e056011ab14cf8e2ee93538d5ca3b90f18746",
+    "cause": "Constructed witness used conventional piece-order indices instead of Seed K,Q,R,B,N,P;model and independent oracle unchanged;fixture corrected to actual nodes and explicit type assertions."
+  },
+  "application_runtime_changed": false,
+  "build": 78
+}
