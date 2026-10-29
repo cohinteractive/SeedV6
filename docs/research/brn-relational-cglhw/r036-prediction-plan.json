@@ -1,0 +1,36 @@
+{
+  "main_class": "FieldPredictionAudit",
+  "runtime": "docs/research/brn-relational-cglhw/raw/r036-runtime/lib",
+  "cases": "docs\\research\\brn-relational-cglhw\\raw\\r035-teacher-data\\validation\\data.tsv",
+  "cases_sha256": "b3b542217af2c6c3dca8b2906705417192541b66b81081fa6c1337a9ce744f0f",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r036-prediction.json",
+  "rows": 1398,
+  "models": [
+    {
+      "id": "r031-control-71",
+      "kind": "PIECE_ONE",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r031-control-71\\epoch-2.state",
+      "state_sha256": "66dc44b615815e9eab3da5f9faa7133aa60ecd2b71c272a696cff78d85702a03"
+    },
+    {
+      "id": "r036-mix-71",
+      "kind": "PIECE_ONE",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r036-mix-71\\epoch-2.state",
+      "state_sha256": "953888449c51c3883301300e5b033356de0ba7e091b1ce4183b96db864929e03"
+    },
+    {
+      "id": "r031-control-97",
+      "kind": "PIECE_ONE",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r031-control-97\\epoch-2.state",
+      "state_sha256": "6a9fba877ab05d161af56f4996dcc7312e58453d44584b359a1b580f509534bf"
+    },
+    {
+      "id": "r036-mix-97",
+      "kind": "PIECE_ONE",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r036-mix-97\\epoch-2.state",
+      "state_sha256": "cf214de48c5796a2dd5d5e532be868e74dcc5ab1d376c168871f1296a057b50b"
+    }
+  ],
+  "teacher": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "teacher_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+}

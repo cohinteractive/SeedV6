@@ -277,3 +277,8 @@ R035 complete:48 fixed-node games,32 deterministic probes,400 prior games purged
 TeacherDataset class matches R007. No current-workstream holdout reclassification.
 R035 development aliases and game roots now join all future exclusion reservations.
 R036 is one bounded neural mixture intervention;CONTROL reuse avoids repeat work.
+
+R036 complete:five tests,two MIX endpoints/sixteen segments,all guards fail.
+R031 CONTROL results/checkpoints reused without mutation;raw/r032-objective-runner.py
+preserves old training bindings. R035 development aliases stay excluded. No more
+mixture work or games;R037 is a shared neural relation-function investigation.
