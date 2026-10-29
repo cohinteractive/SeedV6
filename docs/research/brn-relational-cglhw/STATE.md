@@ -28,8 +28,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 R043 complete:32games,32 deterministic probes,0caps/failures. TIED scores12.5%/
 34.375% against CP64 at10000nodes;no broader games or strength claim. R044 tests
 one proportional-decay low-rate continuation versus matched constant-rate controls
-from both frozen R041 parents. Implement parent/history/resume checks,freeze
-unchanged model/updater classes,then four serial1M-example arms within admission.
+from both frozen R041 parents. Five continuation/dispatch tests pass;model,updater,
+segment and metric classes match R041. Frozen runtime/configs committed183a02f1.
+Continue r044-plan.json through run_objective.py under nnue-control,verifying and
+skipping completed arms/segments;then run analyze_tied_continuation.py and reconcile
+fixed gates. No next training or games are automatically admitted.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
