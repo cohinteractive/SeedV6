@@ -1,0 +1,79 @@
+{
+  "id": "TT-H1-LIFETIME-V1",
+  "status": "prospectively frozen",
+  "frozenUtc": "2026-10-29T23:39:58.007181+00:00",
+  "purpose": "Measure whether unchanged current-generation H1 encounters and discards meaningful prior-request score information before choosing another integrated TT candidate or expensive strength comparison. Diagnostic only.",
+  "engine": "Frozen runtimeh1-v1, sourcea72cc496/build81, flags7602175, CP64 checkpoint64 S6CNU002 eight material heads BT4_Q_LOGIT400_V1, original18+NOMINAL_FUTILITY+VERIFIED_NULL, margins100/200 extensionCap1, ADAPTIVE16, OWNER W1/ROOT_REUSE W4. Production remains flags3407871.",
+  "memory": "Hash64:2097152 slots,50331648 bytes entry payload,three long arrays and32 coherent stripes. Instrumentation adds research counters/maps and synchronization overhead outside that payload.",
+  "consumer": "Research SearchDriver + existing BOUNDARY2 wrapper, explicit100000-node/targetdepth40 requests,60s safety deadline each; clock allocation is not active for the explicit-node diagnostic. Book/tablebase absent.",
+  "design": "Fresh table/driver per actor stream, persistent between consecutive own-side requests separated by two real plies. Each supplied root rebuilds the complete actual game history from startpos. W1 and W4 run sequentially. W1 additionally uses a clean persistent same-policy owner on every root and requires identical results/nodes/PVs/diagnostics. W4 instrumentation neutrality is not asserted. All requests require accounting,legalPV and full worker drain.",
+  "selection": {
+    "source": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\h1-screen-w1-v1\\games.pgn",
+    "sourceSha256": "e827f1c6c768b0cda535c60bab0055a71001f71e45dabc164729d3e8d6dfd99c",
+    "games": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "rule": "First four complete H1 W1 development-screen games, both sides, supplied-history prefixes16..41 every two plies; stop a stream before a terminal root. No outcome-based choice. No historical BOUNDARY2 evidence is accessed.",
+    "streams": [
+      {
+        "id": "g001-w",
+        "requests": 13,
+        "first": "g001-w:016",
+        "last": "g001-w:040"
+      },
+      {
+        "id": "g001-b",
+        "requests": 13,
+        "first": "g001-b:017",
+        "last": "g001-b:041"
+      },
+      {
+        "id": "g002-w",
+        "requests": 13,
+        "first": "g002-w:016",
+        "last": "g002-w:040"
+      },
+      {
+        "id": "g002-b",
+        "requests": 13,
+        "first": "g002-b:017",
+        "last": "g002-b:041"
+      },
+      {
+        "id": "g003-w",
+        "requests": 13,
+        "first": "g003-w:016",
+        "last": "g003-w:040"
+      },
+      {
+        "id": "g003-b",
+        "requests": 13,
+        "first": "g003-b:017",
+        "last": "g003-b:041"
+      },
+      {
+        "id": "g004-w",
+        "requests": 13,
+        "first": "g004-w:016",
+        "last": "g004-w:040"
+      },
+      {
+        "id": "g004-b",
+        "requests": 13,
+        "first": "g004-b:017",
+        "last": "g004-b:041"
+      }
+    ],
+    "requestsPerDomain": 104,
+    "corpus": "h1-lifetime-v1-roots.tsv",
+    "corpusSha256": "fb15e94aed2b32f8cab946f46bb8b75f959cb8939fb4265d5fa627c43be9b5b0"
+  },
+  "measurements": "Per-request score probes/hits by age/depth/window-bound label,root/stale-root encounters,unique stale nonroot keys,score admissions,stale same-key refresh and shallower refresh,stale collision displacement,hint demotion,completed-hint presence,actual heuristic cutoffs,post-drain occupancy by depth/bound/age. Counter age groups0=current,1=previous,2=older. Shared pre/post-write classification holds the existing reentrant stripe lock; counters are thread-private and merged after drain.",
+  "limitations": "A stale hit is availability, not validated cutoff eligibility: the table observer does not see requested depth/window/extension credit. Bound labels remain selective estimates. No strength, clean cost, general aging benefit or exhaustive proof claim. Short real-game prefixes and100k-node requests define the scope.",
+  "stopping": "Complete the fixed corpus in each domain or first operational,accounting,legality,neutrality,identity failure.30min process timeout/domain. Preserve all failure evidence; no result-filtered roots or extension of the corpus.",
+  "decision": "Inspect stale nonroot encounters,depths,bounds and replacement losses. If appreciable reusable information exists, consider a bounded-age retention candidate with separate score/hint freshness and unchanged safeguards. Otherwise deprioritize aging within this tested domain and reassess the best affordable related mechanism. No automatic subsystem expansion or promotion.",
+  "evidence": "raw/h1-lifetime-v1; tracked protocol,corpus,artifact manifest,compact summary. Initial compile overload error retained with source/log; fixed before experiments."
+}
