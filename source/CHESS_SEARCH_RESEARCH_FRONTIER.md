@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 4
 
-Internal frontier revision: **P4-F004**
+Internal frontier revision: **P4-F005**
 
-Status: **ACTIVE - 30 October 2026. Useful TT score memory for selective PVS CGLHW authorized and bootstrapped; build79/build80 bridge in progress, explicit H1 candidate in technical qualification. No champion advancement or production promotion.**
+Status: **ACTIVE - 30 October 2026. Useful TT score memory CGLHW: build79/build80 bridge characterized; opt-in H1/build81 qualified and screened in W1/W4 with promising but inconclusive results. Independent W1 confirmation selected. No champion advancement or production promotion.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 Governing [Contract P4-R001](CHESS_SEARCH_CONTRACT.md). This Frontier records
@@ -191,7 +191,7 @@ these findings establishes a SeedV6 playing-strength improvement.
 | C. Tactical coverage through verification and extensions | **Promising, dependent on reliable information and more expensive qualification.** Alternatives include TT-supported singular/forced-line verification and tactical ProbCut/qsearch cutoffs. Consider addition, substitution and reverse ablation through valid configurations. |
 | D. Iteration confidence, re-search and resource allocation | **Credible follow-on.** Aspiration recovery, iteration feedback, root effort, MTD and managed-time expenditure; driver comparisons must control TT information and state lifetime. Clock-policy research needs separate authorization. |
 | E. ROOT_REUSE cooperation and W2-16 information exchange | **Important, comparatively expensive and variable to qualify.** Shared useful TT information, selected history persistence/sharing, root-job ordering or overlapping Search structures; preserve concurrency, complete accounting, truthful completion, cancellation and draining. Stockfish-scale results do not transfer quantitatively by assumption. |
-| Active research | **Useful TT score memory for selective PVS**, owner-authorized 30 October 2026. [Objective TT-R001 and resume state](../docs/research/search/p4-tt-memory/STATE.md). Build79 champion preserved, build80 technical control frozen; H1 explicit opt-in implementation under qualification. No champion advancement. |
+| Active research | **Useful TT score memory for selective PVS**, owner-authorized 30 October 2026. [Objective TT-R001 and resume state](../docs/research/search/p4-tt-memory/STATE.md). Build79 champion and build80 technical control preserved; H1/build81 passed technical qualification and W1/W4 exploratory screens. Promising point estimates remain inconclusive; independent W1 confirmation is selected. No champion advancement. |
 
 These are connected relative priorities, **not an execution queue** or proven
 SeedV6 improvements. Optimize integrated configurations for practical playing
@@ -238,15 +238,34 @@ accounting bridge and the historical selectivity UCI adapter's absent current
 clock wrapper as material comparison dependencies. Current experiments bind
 BOUNDARY2 explicitly; frozen historical clock studies remain untouched.
 
-The bridge has passed 136 behavioral requests: W1 depth5 identity matched on nine
-repeated positions; W4 exhibited scheduling variation and a stable counted-work
-difference. This is not competitive equivalence. Exploratory 32-pair/domain
-3+0.03 comparisons are selected. H1 uses separate heuristic provenance, ordinary
-scores, current-generation sufficient-depth interior null-window eligibility and
-co-retained completed legal hints with unchanged physical TT capacity/coherence.
-It is explicitly selected, not production. Its initial 297-test technical rerun
-passed after restoring raw-evaluation compatibility; failed evidence is retained.
-No TT strength finding or research acceptance is claimed.
+The [comparison bridge](../docs/research/search/p4-tt-memory/BRIDGE.md) passed 136
+behavioral requests. W1 depth5 identity matched on nine repeated positions; W4
+showed scheduling variation and a stable counted-work difference. Complete
+32-pair/domain 10+0.1 comparisons gave build80 versus79 scores of 51.56% W1
+(paired normal95 41.99â€“61.14%) and 42.19% W4 (33.83â€“50.55%). Neither establishes
+difference or equivalence; W4's adverse point estimate reinforces the need for
+direct champion comparisons. The earlier 3+0.03 W1 attempt remains incomplete,
+with all failed evidence retained. No historical BOUNDARY2 study was reopened.
+
+[H1](../docs/research/search/p4-tt-memory/H1.md), source
+`a72cc496fd39aeddefea4382044bd2bf2e9f6cbb` / build81, is explicitly selected by
+flags7602175 and never the production default. It uses separate heuristic
+provenance, ordinary scores, current-generation sufficient-depth interior
+null-window eligibility and co-retained legal hints, with unchanged TT capacity
+and coherent access. Its 297-test technical rerun, additional reached-null-verifier
+witness and 39-request launcher isolation check passed. Failed raw-eval and
+harness attempts remain preserved. Information-use and clean-cost diagnostics
+support testability, not a strength conclusion.
+
+H1's complete 32-pair/domain 10+0.1 screens versus corrected80 scored 57.81% W1
+(30W/14D/20L; paired normal95 48.63â€“67.00%) and 57.03% W4 (25W/23D/16L;
+47.13â€“66.93%). Both are promising but inconclusive, with broader conservative
+intervals recorded in the objective evidence. The selected next unit freezes
+unchanged H1 and independent openings for 128 W1 pairs versus80; direct79
+confirmation is conditional on its prospective adjusted-interval gate. The
+objective protocol accounts for adaptive confirmation claims and keeps all
+development evidence separate. W4 improvement over champion79 remains untested.
+No confirmed TT gain, research acceptance or promotion is claimed.
 
 ## Lightweight progression and handback
 
@@ -274,9 +293,9 @@ become Phase 4 policy by reference; frozen evidence remains unchanged.
 The existing Phase 3 Project retains its owner-confirmed final mirrors, with no
 refresh required. The Phase 4 Project's **P4-R001 / P4-F002** mirror pair was
 already reconciled by GPT and the owner. The current repository master pair is
-**P4-R001 / P4-F004**; the Contract remains unchanged. F003's owner Frontier
-mirror refresh was pending and is not inferred complete. The owner must now
-refresh the separate Phase 4 Project Frontier mirror to **P4-F004**, confirming
-**P4-R001 / P4-F004** before mirror-dependent Project planning. This is non-blocking
+**P4-R001 / P4-F005**; the Contract remains unchanged. F003/F004 owner Frontier
+mirror refreshes were pending and are not inferred complete. The owner must now
+refresh the separate Phase 4 Project Frontier mirror to **P4-F005**, confirming
+**P4-R001 / P4-F005** before mirror-dependent Project planning. This is non-blocking
 for authorized repository research; repository edits synchronize neither Project.
 The active objective remains open, with no champion advancement or promotion.

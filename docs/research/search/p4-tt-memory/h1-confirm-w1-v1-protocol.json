@@ -1,6 +1,6 @@
 {
   "id": "TT-H1-CONFIRM-W1-V1",
-  "status": "prospective design; opening selection and hashes must be bound before execution",
+  "status": "prospectively frozen before confirmation games",
   "purpose": "Independently test the selected unchanged H1 configuration for a W1 practical-strength gain against corrected80, with a conditional direct79 anchor; no production or champion acceptance",
   "selection": "H1/build81 was selected using the technical/launcher qualification and the completed exploratory W1 screen:30W14D20L,57.81%, normal95 48.63-67.00%. This design is recorded while the fixed W4 screen is still running. W4 strength outcomes do not choose the primary domain or change this design. All bridge/screen evidence remains exploratory and is excluded from confirmation estimates.",
   "candidate": "P4-TT-H1-v1, a72cc496fd39aeddefea4382044bd2bf2e9f6cbb/build81, runtimeh1-v1-manifest.json, explicit h1 profile, flags7602175",
@@ -15,5 +15,25 @@
   "gate": "Execute control80 first. Only if its adjusted primary lower score bound is above0.5 does the planned128-pair direct79 confirmation execute. If not, record H1 as not independently confirmed, retain the full result, and reassess affordable connected mechanisms; do not rerun or extend this sample to chase significance. A supported joint W1 gain requires both executed adjusted primary lower bounds above0.5 and clean technical/operational qualification. The second comparison may remain unnecessary by this prospective gate; no champion-relative gain is then inferred.",
   "safetyAdmission": "Do not begin until the active W4 screen has drained and any material correctness/operational failure is resolved. An adverse W4 strength score alone does not invalidate this preselected W1 question; W4 remains a separately qualified domain. Preserve all prior failures, independent oracles, corrected verified-null accounting and frozen BOUNDARY2 studies.",
   "failuresAndSelection": "No pooling pilot and confirmation results, no opening reselection after outcomes, and no unspent-alpha replay after examining a failed/interrupted confirmation. Record any later confirmation as a new claim attempt with prospective error allocation and independent inputs unless an interruption occurred before any game evidence. A normal-approximation positive result does not become exact proof if the conservative interval crosses equality.",
-  "evidence": "Planned raw/h1-confirm-w1-v1-control80 and conditional raw/h1-confirm-w1-v1-champion79; tracked opening selection/protocol, runtime manifests, compact summaries and adjusted analyses. No H1 implementation changes during this confirmation; any change creates a new candidate identity."
+  "evidence": "Planned raw/h1-confirm-w1-v1-control80 and conditional raw/h1-confirm-w1-v1-champion79; tracked opening selection/protocol, runtime manifests, compact summaries and adjusted analyses. No H1 implementation changes during this confirmation; any change creates a new candidate identity.",
+  "frozenUtc": "2026-10-29T22:17:43.549480+00:00",
+  "openingFile": "h1-confirm-w1-v1-openings.pgn",
+  "openingSha256": "6ffa07898e355c614fb378e88adf040fed39753fbaa855c347c23a8e41b3426f",
+  "openingSelectionManifest": "h1-confirm-w1-v1-openings.selection.json",
+  "openingSelectionManifestSha256": "6515b1fbf98fe622e5f012bd626b86f683d5e597e45df4a2c92b67cf96d95117",
+  "developmentPositionOverlap": 0,
+  "analysisToolSha256": "9a0b2c39f6cd16e50e527df35280b8e89c9298d74ece7a90d0901d08f1b260b6",
+  "runtimeManifestSha256": {
+    "runtime79-manifest.json": "cd0caef366ac27cb2f398eaca0d48660584de66bac17b24002686ac1386b0ddd",
+    "runtime80-manifest.json": "30802d056659966500faaff493409f99237988c3a725d62ec98e74e3f24c9a33",
+    "runtimeh1-v1-manifest.json": "5d2170c69870d928b0e8e01cba25366acf5c87ff9552dfad512633c16219e1f7"
+  },
+  "verifiedHost": {
+    "processor": "AMD Ryzen 5 5500                               ",
+    "cores": 6,
+    "logical": 12,
+    "installedBytes": 34359738368,
+    "os": "Microsoft Windows 11 Pro",
+    "version": "10.0.26300"
+  }
 }

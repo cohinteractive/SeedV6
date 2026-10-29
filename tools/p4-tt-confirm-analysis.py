@@ -23,13 +23,16 @@ def analyze(side):
     protocol = json.loads(PROTOCOL.read_text())
     if protocol['status'] != 'prospectively frozen before confirmation games':
         raise ValueError('Protocol is not frozen')
+    if protocol['analysisToolSha256'] != digest(__file__):
+        raise ValueError('Prospectively bound analysis implementation changed')
     run_path = run_dir/'run.json'
     run = json.loads(run_path.read_text())
     args = run['arguments']
     stats = run['results']['statistics']
     expected_control = 'runtime80' if side == 'control80' else 'runtime79'
-    if (run['status'] != 'passed' or not run['inputsStable']
+    if (run['status'] != 'passed' or not run['inputsStable'] or run['runnerExitCode'] != 0
             or args['workers'] != 1 or args['pairs'] != 128 or args['tc'] != '10+0.1'
+            or args['concurrency'] != 1 or args['protocol'] != PROTOCOL.name
             or args['candidate_policy'] != 'h1' or args['baseline_policy'] != 'control'
             or Path(args['baseline']).name != expected_control
             or Path(args['candidate']).name != 'runtimeh1-v1'
@@ -39,6 +42,13 @@ def analyze(side):
         raise ValueError('Protocol changed after freezing')
     if run['filesBefore'][str((ROOT/args['openings']).resolve())] != protocol['openingSha256']:
         raise ValueError('Confirmation opening identity mismatch')
+    for name in (expected_control, 'runtimeh1-v1'):
+        path = OUT/(name+'-manifest.json')
+        if digest(path) != protocol['runtimeManifestSha256'][path.name]:
+            raise ValueError('Bound runtime manifest changed')
+        manifest = json.loads(path.read_text())
+        if any(run['filesBefore'].get(p) != h for p, h in manifest['files'].items()):
+            raise ValueError('Actual match artifact differs from the frozen source/executable identity')
     alpha = 0.0125
     mean, se = stats['score'], stats['pairScoreStandardError']
     if not math.isfinite(mean) or not math.isfinite(se) or not 0 <= mean <= 1 or se < 0:
