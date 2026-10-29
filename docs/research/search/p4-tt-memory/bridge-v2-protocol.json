@@ -1,0 +1,15 @@
+{
+  "id": "TT-BRIDGE-V2",
+  "status": "prospectively frozen before new match observations",
+  "purpose": "Bridge build79/build80 at the established 10+0.1 clock scale after V1 strict-runner interruption; exploratory, not equivalence proof",
+  "supersedesForNewExecutionOnly": "V1 is preserved failed/incomplete, never resumed or reclassified. It produced 51 completed games and stopped in game52 on missing score information. No complete strength result is inferred from it.",
+  "rationale": "3+0.03 was too aggressive as an economical qualification domain: 30ms increment is below the unchanged 50ms reserve, and zero-work legal fallback produces no invented score/PV. That is an established source behavior, not a verified explanation of the specific untraced V1 event. Use the prior relevant 10+0.1 scale and retain strict warning handling. Add full runner UCI tracing so any recurrence is attributable; do not change clock policy or fabricate info.",
+  "sources": "Frozen runtime79 / runtime80 manifests, CP64, flags3407871, ADAPTIVE16, Hash64 actual2097152 entries/50331648 payload bytes, BOUNDARY2, no book/tablebase",
+  "screen": {"workers": [1,4], "pairsPerDomain": 32, "clock": "10+0.1", "concurrency": 1, "openingFile": "bridge-v1-openings.pgn", "seed": 20261030, "maxWallSecondsPerDomain": 7200},
+  "selection": "Reuse every V1 opening in original order as an exploratory resource-domain comparison, without selection on partial outcomes. Colors reverse for every pair. No BOUNDARY2 historical-study inputs or scores are accessed.",
+  "sampleJustification": "Bridge characterization, not small-Elo inference. 32 independent pairs have worst-case normal95 half-width17.3 percentage points and bounded-pair95 half-width24.0 points. Unresolved equivalence requires direct champion comparisons for any promising TT candidate.",
+  "stopping": "Fixed32 pairs/domain; any strict warning, legality, clock, process, accounting or input-stability failure stops affected run. Preserve partial output. No outcome-dependent extension.",
+  "environment": "Same Windows Ryzen5500 Java21/JVM64MiB Hash/512MiB heap domains as V1; below-normal priority, no overlapping heavy builds/experiments. Runner trace logging is symmetric and declared; engine instrumentation disabled.",
+  "inference": "Report complete pair totals and paired normal/ bounded Hoeffding intervals only on complete validated runs. W1 and W4 remain exploratory separate domains. No correction neutrality, research acceptance or promotion implied. Node measurements are not equal-work claims.",
+  "evidence": "raw/bridge-w1-v2 and raw/bridge-w4-v2 with full UCI trace, PGNs, process resources and immutable-input hashes; summaries outside raw/"
+}

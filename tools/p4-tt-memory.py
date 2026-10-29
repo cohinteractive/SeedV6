@@ -12,7 +12,10 @@ import platform
 import re
 import shutil
 import subprocess
+import sys
 import time
+
+sys.dont_write_bytecode = True
 
 
 def module(name, file):
@@ -62,6 +65,8 @@ def configure(engine, workers, hash_mib=64, profile='control'):
             raise ValueError('Missing identity ' + token + ': ' + identity)
     if profile == 'control' and 'flags=3407871' not in identity:
         raise ValueError('Incorrect control flags')
+    if profile == 'h1' and ('flags=7602175' not in identity or 'ttPolicy=H1-current-sufficient-nonpv-normal' not in identity):
+        raise ValueError('Incorrect H1 flags/policy')
     return identity
 
 
@@ -171,25 +176,70 @@ def bridge(args):
 
 
 def match(args):
-    # Reuse established suspended-before-assignment Windows Job lifecycle, memory
-    # accounting, immutable-input verification and independent legal/history audit.
-    adapter_hash = b.digest(__file__)
-    m.command = lambda a, side: command(getattr(a, side), getattr(a, side+'_policy'),
-                                        getattr(a, side+'_workers'), side)
-    m.preflight = preflight
-    args.java = JAVA; args.network = str(MODEL)
-    args.runner = str(ROOT/'build/research/tools/fastchess.exe')
-    args.background = True; args.operational = False; args.hash_mib = 64
-    args.baseline_workers = args.candidate_workers = args.workers
-    args.out = str(OUT/'raw'/args.name)
-    m.run(args)
-    if b.digest(__file__) != adapter_hash:
-        raise ValueError('Phase 4 adapter changed during experiment')
-    report = json.loads((Path(args.out)/'run.json').read_text())
+    # Same suspended-before-assignment Windows Job ownership and independent audit
+    # as the accepted adapter. Trace logging retains the exact failing request if
+    # strict Fastchess rejects missing information or another protocol warning.
+    out = OUT/'raw'/args.name; out.mkdir(parents=True, exist_ok=False)
+    runner = ROOT/'build/research/tools/fastchess.exe'
+    report = {'status':'running', 'arguments':vars(args), 'platform':platform.platform(),
+              'logicalCpus':os.cpu_count(), 'model':b.digest(MODEL),
+              'hardware':'Ryzen 5 5500, 6C/12T, 32 GiB; one active game unless specified',
+              'javaVersion':subprocess.run([JAVA,'-version'],capture_output=True,text=True,check=True).stderr}
+    frozen = {str(Path(p).resolve()):b.digest(p) for p in
+              [__file__, m.__file__, b.__file__, m.c.__file__, m.c.n.__file__, m.owned.__file__,
+               runner, JAVA, MODEL, args.openings, OUT/args.protocol]}
+    for side in ('baseline','candidate'): frozen.update(b.installation_hashes(getattr(args,side)))
+    report['filesBefore']=frozen
+    commands={side:command(getattr(args,side),getattr(args,side+'_policy'),args.workers,side)
+              for side in ('baseline','candidate')}
+    report['commands']=commands; started=time.monotonic()
+    try:
+        if b.digest(MODEL)!=m.NETWORK_SHA256: raise ValueError('Frozen CP64 mismatch')
+        for side,cmd in commands.items():
+            report[side+'Preflight']=preflight(cmd,out/(side+'-uci.txt'),args.workers,getattr(args,side+'_policy'))
+        cmd=[str(runner)]
+        for side,engine in commands.items():
+            cmd+=['-engine','name='+side,'cmd='+engine[0],'args='+subprocess.list2cmdline(engine[1:]),
+                  'option.Threads='+str(args.workers)]
+        cmd+=['-each','proto=uci','tc='+args.tc,'timemargin=0','restart=off','option.OwnBook=false','option.Hash=64',
+              '-rounds',str(args.pairs),'-repeat','-concurrency',str(args.concurrency),'-srand',str(args.seed),
+              '-openings','file='+str(Path(args.openings).resolve()),'format=pgn','order=sequential',
+              '-pgnout','file='+str(out/'games.pgn'),'nodes=true','nps=true','pv=true','timeleft=true','latency=true',
+              'match_line=^info string request ','-report','penta=true','-ratinginterval','2','-autosaveinterval','0',
+              '-strict','-log','file='+str(out/'uci-trace.log'),'level=trace','append=false','compress=false','realtime=false']
+        report['runnerCommand']=cmd;b.save(out/'run.json',report);match_started=time.monotonic()
+        with (out/'runner.txt').open('w',encoding='utf-8') as log:
+            job=m.owned.OwnedJob();process=None;cohort=None
+            try:
+                process=subprocess.Popen(cmd,cwd=out,env=b.clean_environment(),stdout=log,
+                    stderr=subprocess.STDOUT,creationflags=0x00000004|0x00004000)
+                job.assign(process);job.resume_initial_thread(process)
+                cohort=m.MemoryCohort(process.pid,args.concurrency,out/'process-cost.json');cohort.attach()
+                code=process.wait(timeout=args.timeout)
+            except BaseException:
+                job.close()
+                if process is not None and process.poll() is None: process.kill();process.wait(timeout=10)
+                if cohort is not None:cohort.wait_for_exit()
+                raise
+            finally:
+                try:
+                    if cohort is not None:cohort.close()
+                finally:job.close()
+        report['matchWallSeconds']=time.monotonic()-match_started;report['runnerExitCode']=code
+        report['results']=b.analyze(out/'games.pgn',args.openings,args.pairs,require_accounting=True,
+                                    unordered=args.concurrency>1)
+        if code!=0 or report['results']['terminations']!={'normal':args.pairs*2}:
+            raise ValueError('Incomplete or operationally failed strict match')
+        if any(b.digest(p)!=h for p,h in frozen.items()):raise ValueError('Frozen inputs changed')
+        report.update(status='passed',inputsStable=True)
+    except BaseException as error:
+        report.update(status='failed',failure=repr(error));raise
+    finally:
+        report['wallSeconds']=time.monotonic()-started;b.save(out/'run.json',report)
     summary = {k:v for k,v in report.items() if k not in ('filesBefore','results')}
     summary['results'] = {k:v for k,v in report['results'].items() if k != 'games'}
-    summary['raw'] = args.out
-    summary['adapterSha256'] = adapter_hash
+    summary['raw'] = str(out)
+    summary['adapterSha256'] = frozen[str(Path(__file__).resolve())]
     summary['interpretation'] = 'Exploratory fixed-pair screen unless separately prospectively designated; no acceptance.'
     b.save(OUT/(args.name+'-summary.json'), summary)
 
@@ -209,6 +259,7 @@ if __name__ == '__main__':
     for side in ('baseline','candidate'): r.add_argument('--'+side+'-policy',default='control')
     r.add_argument('--workers',type=int,choices=(1,4),required=True)
     r.add_argument('--pairs',type=int,required=True); r.add_argument('--tc',default='3+0.03')
+    r.add_argument('--protocol',default='bridge-v1-protocol.json')
     r.add_argument('--seed',type=int,default=20261030); r.add_argument('--concurrency',type=int,default=1)
     r.add_argument('--timeout',type=int,default=7200); r.set_defaults(func=match)
     args = p.parse_args()

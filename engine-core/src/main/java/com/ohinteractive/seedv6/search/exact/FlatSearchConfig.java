@@ -10,7 +10,8 @@ public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) 
     public enum Feature { QXRAY, LMR, LMP, EFFORT, COMPLETED_HINTS,
         CAPTURE_HISTORY, CONTINUATION, KILLERS, COUNTERMOVES, NOMINAL_HISTORY, BAD_TACTICAL_LAST,
         IMPROVING, CAUTION, CHECK_EXTENSION, RECAPTURE_EXTENSION, FUTILITY, REVERSE_FUTILITY, HISTORY_PROTECTION,
-        LAZY_IMPROVING, REDUCTION_FUTILITY, NOMINAL_FUTILITY, VERIFIED_NULL }
+        LAZY_IMPROVING, REDUCTION_FUTILITY, NOMINAL_FUTILITY, VERIFIED_NULL,
+        HEURISTIC_TT_MEMORY }
 
     public FlatSearchConfig(long flags) { this(flags,100,200); }
 
@@ -33,6 +34,9 @@ public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) 
         if((flags&deeper)==deeper) throw new IllegalArgumentException("Choose one deeper futility margin model");
         if((flags&(1L<<Feature.VERIFIED_NULL.ordinal()))!=0 && (flags&262143L)!=262143L)
             throw new IllegalArgumentException("Verified-null research requires the full original Construction foundation");
+        if((flags&(1L<<Feature.HEURISTIC_TT_MEMORY.ordinal()))!=0
+                && (flags&(1L<<Feature.COMPLETED_HINTS.ordinal()))==0)
+            throw new IllegalArgumentException("Heuristic TT memory requires completed legal move guidance");
     }
     public boolean has(Feature feature) { return (flags&(1L<<feature.ordinal()))!=0; }
     public FlatSearchConfig with(Feature feature,boolean enabled) {

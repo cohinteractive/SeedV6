@@ -65,7 +65,7 @@ public class TTable {
         synchronized (locks[stripe]) {
             if(this.key[index] != key) return false;
             long data = this.data[index];
-            if((data & (VALID_MASK | HINT_MASK)) != VALID_MASK) return false;
+            if((data & (VALID_MASK | HINT_MASK | HEURISTIC_MASK)) != VALID_MASK) return false;
             entry.data = data;
             entry.hashMove = this.hashMove[index];
             return true;
@@ -92,7 +92,7 @@ public class TTable {
                 return;
             }
             long existingData = this.data[index];
-            if((existingData & (VALID_MASK | HINT_MASK)) == VALID_MASK) {
+            if((existingData & (VALID_MASK | HINT_MASK | HEURISTIC_MASK)) == VALID_MASK) {
                 long existingKey = this.key[index];
                 int existingDepth = (int) (existingData & DEPTH_BITS);
                 int existingType = (int) (existingData >>> TYPE_SHIFT & TYPE_BITS);
@@ -116,7 +116,8 @@ public class TTable {
     public long probeHint(long key) {
         int index=(int)key & indexMask;
         synchronized(locks[index & STRIPE_MASK]) {
-            return this.key[index]==key && (data[index] & (VALID_MASK | HINT_MASK))==(VALID_MASK | HINT_MASK)
+            return this.key[index]==key && (data[index] & VALID_MASK)!=0
+                    && (data[index] & (HINT_MASK | HEURISTIC_MASK))!=0
                     ? hashMove[index] : 0;
         }
     }
@@ -130,9 +131,25 @@ public class TTable {
         synchronized(locks[index & STRIPE_MASK]) {
             long old=data[index];
             if((old & VALID_MASK)!=0) {
-                if((old & HINT_MASK)==0) return false;
-                int oldGen=(int)(old>>>GENERATION_SHIFT & GENERATION_BITS);
-                if(oldGen==(generation & GENERATION_BITS) && (old & DEPTH_BITS)>depth) return false;
+                if((old & HEURISTIC_MASK)!=0) {
+                    int oldGen=(int)(old>>>GENERATION_SHIFT & GENERATION_BITS);
+                    if(oldGen==(generation & GENERATION_BITS)) {
+                        int hintDepth=(int)(old>>>HINT_DEPTH_SHIFT & DEPTH_BITS);
+                        if(this.key[index]==key) {
+                            if(depth<hintDepth) return false;
+                            data[index]=(old & ~(DEPTH_BITS<<HINT_DEPTH_SHIFT)) | ((long)depth<<HINT_DEPTH_SHIFT);
+                            hashMove[index]=move;
+                            return true;
+                        }
+                        if(depth<Math.max(hintDepth,(int)(old & DEPTH_BITS))) return false;
+                    }
+                    // Stale score eligibility is not refreshed by a newer hint.
+                    // A collision or new-generation hint becomes hint-only below.
+                } else {
+                    if((old & HINT_MASK)==0) return false;
+                    int oldGen=(int)(old>>>GENERATION_SHIFT & GENERATION_BITS);
+                    if(oldGen==(generation & GENERATION_BITS) && (old & DEPTH_BITS)>depth) return false;
+                }
             }
             this.key[index]=key;
             data[index]=VALID_MASK | HINT_MASK | ((long)(generation & GENERATION_BITS)<<GENERATION_SHIFT) | depth;
@@ -140,6 +157,64 @@ public class TTable {
             return true;
         }
     }
+
+    /** Explicit Phase 4 score domain. Never exposed by ordinary proof probes.
+     * Raw evaluation tables remain separate, with caller-managed validity.
+     * TYPE_EXACT here means an inside-window selective estimate, not exact minimax.
+     * Consumer eligibility is intentionally heuristic and must mark provenance. */
+    public boolean probeHeuristic(long key,TEntry entry) {
+        int index=(int)key & indexMask;
+        synchronized(locks[index & STRIPE_MASK]) {
+            long value=data[index];
+            if(this.key[index]!=key || (value & (VALID_MASK | HEURISTIC_MASK))!=(VALID_MASK | HEURISTIC_MASK)) return false;
+            entry.data=value;entry.hashMove=hashMove[index];return true;
+        }
+    }
+
+    /** Ordinary scores only, same physical arrays/locks. Preserve an independently
+     * depth-qualified completed move even when a score refresh is rejected.
+     * Current-generation deeper collision information survives. Same-key score
+     * refresh allows at most two plies of depth loss; this is a research policy. */
+    public boolean saveHeuristic(long key,int depth,int type,int score,long move) {
+        if(depth<1 || depth>255 || type<TYPE_EXACT || type>TYPE_UPPER
+                || score < -TranspositionScores.MAX_NORMAL_SCORE
+                || score > TranspositionScores.MAX_NORMAL_SCORE) return false;
+        int index=(int)key & indexMask;
+        synchronized(locks[index & STRIPE_MASK]) {
+            long old=data[index];int hintDepth=move==0?0:depth;long retainedMove=move;
+            if((old & VALID_MASK)!=0) {
+                boolean heuristic=(old & HEURISTIC_MASK)!=0;
+                if(!heuristic && (old & HINT_MASK)==0) return false;
+                int oldDepth=(int)(old & DEPTH_BITS);
+                int oldHintDepth=heuristic?(int)(old>>>HINT_DEPTH_SHIFT & DEPTH_BITS):oldDepth;
+                boolean current=((old>>>GENERATION_SHIFT)&GENERATION_BITS)==(generation & GENERATION_BITS);
+                if(this.key[index]==key) {
+                    if(move==0 || (current && oldHintDepth>hintDepth)) {
+                        retainedMove=hashMove[index];hintDepth=oldHintDepth;
+                    }
+                    if(heuristic && current && depth+2<oldDepth) {
+                        if(move!=0 && depth>=oldHintDepth) {
+                            data[index]=(old & ~(DEPTH_BITS<<HINT_DEPTH_SHIFT)) | ((long)depth<<HINT_DEPTH_SHIFT);
+                            hashMove[index]=move;
+                        }
+                        return false;
+                    }
+                } else if(current && depth<Math.max(oldDepth,oldHintDepth)) return false;
+            }
+            this.key[index]=key;
+            data[index]=((long)score<<SCORE_SHIFT) | VALID_MASK | HEURISTIC_MASK
+                    | ((long)(generation & GENERATION_BITS)<<GENERATION_SHIFT)
+                    | ((long)type<<TYPE_SHIFT) | depth | ((long)hintDepth<<HINT_DEPTH_SHIFT);
+            hashMove[index]=retainedMove;
+            return true;
+        }
+    }
+
+    /** Optional research observation; ordinary tables incur no counter updates. */
+    public void heuristicCutoff() {}
+
+    public int entryCapacity() { return key.length; }
+    public long entryPayloadBytes() { return 24L*key.length; }
 
     private static final long DEPTH_BITS = 0xffL;
     private static final int TYPE_SHIFT = 8;
@@ -149,6 +224,8 @@ public class TTable {
     private static final int VALID_SHIFT = 18;
     private static final long VALID_MASK = 1L << VALID_SHIFT;
     private static final long HINT_MASK = 1L << 19;
+    private static final long HEURISTIC_MASK = 1L << 20;
+    private static final int HINT_DEPTH_SHIFT = 21;
     private static final int SCORE_SHIFT = 32;
 
     private static final int DEFAULT_TABLE_SIZE_IN_MB = 64;

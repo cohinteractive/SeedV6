@@ -1111,6 +1111,31 @@ public final class ExactSearch {
                         }
                     }
                     if(ttReturn) continue;
+                    // Explicit H1 research: current-request ordinary estimates at
+                    // sufficient depth, only interior null windows. Synthetic and
+                    // legal null verification remain independent of heuristic TT.
+                    // The score is never represented as an exhaustive proof.
+                    if(heuristicMemory() && !nullProbeActive && !nullVerification && (ply!=0 || restrictedRootMove==0)
+                            && table.probeHeuristic(key,entry)) {
+                        long data=entry.data;
+                        hashMove=entry.hashMove;
+                        if((flags&2)!=0 && hashMove!=0 && !CaptureHistory.isTactical(hashMove,Board.enPassantSquare(status))) {
+                            count=appendQuiets(board,legalMoves,count);flags&=~2;
+                        }
+                        if(!containsMove(legalMoves,count,hashMove)) hashMove=0;
+                        int estimate=(int)(data>>32),type=(int)(data>>>8)&3;
+                        if(ply>0 && originalBeta==originalAlpha+1
+                                && originalAlpha>=-MAX_STATIC_SCORE && originalBeta<=MAX_STATIC_SCORE
+                                && (data&255)>=depth && ((data>>>10)&255)==generation
+                                && estimate>=-MAX_STATIC_SCORE && estimate<=MAX_STATIC_SCORE
+                                && hashMove!=0 && (type==TTable.TYPE_EXACT
+                                    || (type==TTable.TYPE_LOWER && estimate>=beta)
+                                    || (type==TTable.TYPE_UPPER && estimate<=alpha))) {
+                            checkpoint();selectiveEpoch++;table.heuristicCutoff();
+                            pv[ply][0]=hashMove;pvLength[ply]=1;score=estimate;continue;
+                        }
+                        ttPresent=hashMove!=0;
+                    }
                     if(completedHints && !ttPresent && !nullProbeActive && !nullVerification && (ply!=0 || restrictedRootMove==0)) {
                         if(hintDiagnostics!=null) hintDiagnostics.probes++;
                         hashMove=table.probeHint(key);
@@ -2625,6 +2650,12 @@ public final class ExactSearch {
             // R004 has eight depth bits; depth 256 must never alias depth zero.
             if(ply != 0) store(key, depth, ply, alpha, beta, score, move);
         }
+        if(heuristicMemory() && !nullProbeActive && !nullVerification
+                && (ply!=0 || restrictedRootMove==0)) {
+            checkpoint();
+            int type=score<=alpha?TTable.TYPE_UPPER:score>=beta?TTable.TYPE_LOWER:TTable.TYPE_EXACT;
+            table.saveHeuristic(key,depth,type,score,move);
+        }
         if((completedHints || hintDiagnostics!=null) && !nullProbeActive && !nullVerification
                 && (ply!=0 || restrictedRootMove==0) && move!=0 && depth>=1 && depth<=255) {
             checkpoint(); // The node, not an incomplete/cancelled ancestor, produced this legal move.
@@ -2635,6 +2666,10 @@ public final class ExactSearch {
             }
         }
         return score;
+    }
+
+    private boolean heuristicMemory() {
+        return table!=null && construction!=null && construction.has(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY);
     }
 
     private static boolean hasNonPawnMaterial(long[] board, int status) {

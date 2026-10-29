@@ -1,0 +1,54 @@
+{
+  "status": "passed",
+  "observations": [
+    {
+      "runtime": "runtime79",
+      "workers": 1,
+      "result": {
+        "nodes": 0,
+        "elapsedNanos": 4252300,
+        "termination": "TIME_LIMIT",
+        "bestmove": "b1a3",
+        "finalInfo": null
+      },
+      "identity": "info string baseline=construction-v1-cp64 search=construction-v1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=79 source=753367614b8a ttMiB=64"
+    },
+    {
+      "runtime": "runtime79",
+      "workers": 4,
+      "result": {
+        "nodes": 0,
+        "elapsedNanos": 3426000,
+        "termination": "TIME_LIMIT",
+        "bestmove": "b1a3",
+        "finalInfo": null
+      },
+      "identity": "info string baseline=construction-v1-cp64 search=construction-v1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=79 source=753367614b8a ttMiB=64"
+    },
+    {
+      "runtime": "runtime80",
+      "workers": 1,
+      "result": {
+        "nodes": 0,
+        "elapsedNanos": 4433100,
+        "termination": "TIME_LIMIT",
+        "bestmove": "b1a3",
+        "finalInfo": null
+      },
+      "identity": "info string baseline=construction-v1-cp64 search=construction-v1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=80 source=9fec1d2af379 (uncommitted changes) ttMiB=64"
+    },
+    {
+      "runtime": "runtime80",
+      "workers": 4,
+      "result": {
+        "nodes": 0,
+        "elapsedNanos": 4080700,
+        "termination": "TIME_LIMIT",
+        "bestmove": "b1a3",
+        "finalInfo": null
+      },
+      "identity": "info string baseline=construction-v1-cp64 search=construction-v1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=80 source=9fec1d2af379 (uncommitted changes) ttMiB=64"
+    }
+  ],
+  "interpretation": "Both controls truthfully publish legal fallback without score/depth/PV on zero allocation. This independently demonstrates runner strictness incompatibility; actual V1 game52 cause remains untraced."
+}

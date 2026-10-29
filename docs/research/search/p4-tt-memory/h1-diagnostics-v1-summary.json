@@ -1,0 +1,103 @@
+{
+  "status": "passed",
+  "protocol": "h1-diagnostics-v1-protocol.json",
+  "domains": {
+    "1": {
+      "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\h1-observe-w1-v1-retry1.jsonl",
+      "profiles": {
+        "control": {
+          "ordinaryStores": 0,
+          "scoreAttempts": 0,
+          "scoreAdmissions": 0,
+          "scoreRejected": 0,
+          "scoreProbes": 0,
+          "scoreHits": 0,
+          "heuristicCutoffs": 0,
+          "hintProbes": 158824,
+          "hintHits": 56530,
+          "heuristicMoveHits": 0,
+          "hintAttempts": 131387,
+          "hintAdmissions": 130280,
+          "occupiedHeuristic": 0,
+          "occupiedHintOnly": 78775,
+          "observations": 9,
+          "entriesPerTable": 2097152,
+          "payloadBytesPerTable": 50331648,
+          "attempts": 98
+        },
+        "h1": {
+          "ordinaryStores": 0,
+          "scoreAttempts": 115188,
+          "scoreAdmissions": 115064,
+          "scoreRejected": 124,
+          "scoreProbes": 159245,
+          "scoreHits": 50285,
+          "heuristicCutoffs": 18364,
+          "hintProbes": 108960,
+          "hintHits": 28,
+          "heuristicMoveHits": 50285,
+          "hintAttempts": 115188,
+          "hintAdmissions": 114537,
+          "occupiedHeuristic": 87725,
+          "occupiedHintOnly": 39,
+          "observations": 9,
+          "entriesPerTable": 2097152,
+          "payloadBytesPerTable": 50331648,
+          "attempts": 98
+        }
+      }
+    },
+    "4": {
+      "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\h1-observe-w4-v1-retry1.jsonl",
+      "profiles": {
+        "control": {
+          "ordinaryStores": 0,
+          "scoreAttempts": 0,
+          "scoreAdmissions": 0,
+          "scoreRejected": 0,
+          "scoreProbes": 0,
+          "scoreHits": 0,
+          "heuristicCutoffs": 0,
+          "hintProbes": 155559,
+          "hintHits": 59388,
+          "heuristicMoveHits": 0,
+          "hintAttempts": 131248,
+          "hintAdmissions": 130027,
+          "occupiedHeuristic": 0,
+          "occupiedHintOnly": 75638,
+          "observations": 9,
+          "entriesPerTable": 2097152,
+          "payloadBytesPerTable": 50331648,
+          "attempts": 98
+        },
+        "h1": {
+          "ordinaryStores": 0,
+          "scoreAttempts": 116565,
+          "scoreAdmissions": 116426,
+          "scoreRejected": 139,
+          "scoreProbes": 162771,
+          "scoreHits": 53503,
+          "heuristicCutoffs": 19601,
+          "hintProbes": 109268,
+          "hintHits": 35,
+          "heuristicMoveHits": 53503,
+          "hintAttempts": 116565,
+          "hintAdmissions": 115945,
+          "occupiedHeuristic": 87030,
+          "occupiedHintOnly": 54,
+          "observations": 9,
+          "entriesPerTable": 2097152,
+          "payloadBytesPerTable": 50331648,
+          "attempts": 99
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Instrumented fixed-node diagnostics, not playing strength or clean speed.",
+    "HintHit counts use different paths: H1 move guidance is carried in heuristic records; raw probeHint hit rate alone is misleading.",
+    "Occupancy recorded by retained depth; bound-class occupancy breakdown was not implemented in this first diagnostic.",
+    "W4 scheduling equality/neutrality not asserted."
+  ],
+  "decision": "H1 genuinely retains and consumes ordinary heuristic scores with completed guidance and unchanged capacity. Admit exploratory strength screen after bridge operational qualification. No strength improvement established."
+}

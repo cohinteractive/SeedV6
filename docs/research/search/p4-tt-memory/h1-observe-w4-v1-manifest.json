@@ -1,0 +1,35 @@
+{
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms256m",
+    "-Xmx768m",
+    "-XX:ActiveProcessorCount=4",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "build/research/runtime/classes;build/research/runtime/lib/*",
+    "com.ohinteractive.seedv6.search.exact.P4TtStudy",
+    "build-assets/nnue-candidate/conventional-cp64.cnnue",
+    "docs\\research\\search\\p4-tt-memory\\h1-diagnostic-roots.tsv",
+    "docs\\research\\search\\p4-tt-memory\\raw\\h1-observe-w4-v1-retry1.jsonl",
+    "4",
+    "100000"
+  ],
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib\\app-uci.jar": "a24bc26e00dd1e5a988d4443ff509068862f7ae8ac3bbb5f221cac69846c19a3",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib\\engine-core.jar": "0a0581fc453bfd0673d14e5fbed4e249a55e472ec59dbb9ec351e47d19e930f2",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib\\research.jar": "b066e70faacd198c0b810ddc0da2a1ddbe91de4d5cc2010b6fb50d85649b46a7",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "C:\\projects\\seed\\java\\seedv6-unified\\research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4TtStudy.java": "c42aae8e45d17adf9dfbf37adb477e2bde38c343962c0074fe082c55ef0f3e77",
+    "C:\\projects\\seed\\java\\seedv6-unified\\engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ExactSearch.java": "8615b8fc1aecf5b86489b05f9ec69a65d3fa29ffb4c753f82f520f24cf3ee8a8",
+    "C:\\projects\\seed\\java\\seedv6-unified\\engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\FlatSearchConfig.java": "78feed55fd88f6aa9c5e83cecc39a2970d8a8c559949fa11e789feb02428ebf4",
+    "C:\\projects\\seed\\java\\seedv6-unified\\engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\tt\\TTable.java": "e52385a3c75243f372f4c1f98b16a7eb799b890615efbbdc1ced58be96393b2e",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\h1-diagnostic-roots.tsv": "b2815c85298025ea353f9d4b2b5752d1a527978b27f0aa96eb7d5a6e2c1d0464"
+  },
+  "sourceBase": "9d8389e8a9fdbfbc926e217fb897f192cfb5b820",
+  "sourceState": "uncommitted H1 implementation; exact affected source hashes included; artifacts captured before experiment"
+}

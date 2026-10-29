@@ -1,0 +1,12 @@
+{
+  "id": "TT-H1-DIAGNOSTICS-V1",
+  "purpose": "Determine whether H1 actually produces, retains and consumes score estimates while preserving useful legal completed-move guidance; no strength inference",
+  "selection": "Start position plus first eight frozen bridge-v1 legal histories, without selecting on diagnostic or game results",
+  "resources": "Hash64, 2097152 direct-mapped entries, 50331648 entry bytes, same arrays/locks; 100000 admitted nodes per request, target depth40, 30s operational deadline; W1 and ROOT_REUSE W4",
+  "controls": "Current implementation with production flags3407871 and opt-in H1 flags7602175; identical CP64, ADAPTIVE16, extensions/null, histories and consumer SearchDriver. BOUNDARY2 wrapper selected but not active in explicit node requests.",
+  "observation": "Atomic diagnostic counters for shared stores/probes/admissions/cutoffs/hints; drained occupancy and bound-depth distribution; aspiration attempt boundaries; full request and process CPU/heap/GC/compilation telemetry. No claim that observer timings represent clean runtime.",
+  "neutrality": "W1 must match uninstrumented same-policy nodes, completion, result and legal PV on each root. W4 records scheduling-dependent behavior, accounting and draining without equality claims.",
+  "decision": "If H1 has meaningful retained scores and actual eligible cutoffs, correctness remains qualified, and hints survive, run a prospectively frozen exploratory playing-strength screen. If not, inspect the concrete admission/lifetime/consumption dependency before spending on games. No numerical hit-rate or NPS threshold substitutes for strength.",
+  "stopping": "All nine roots and both profiles per worker domain; first correctness/accounting failure stops affected execution and preserves partial raw output. No output overwrite.",
+  "evidence": "h1-diagnostic-roots.tsv, raw/h1-observe-w1-v1.jsonl, raw/h1-observe-w4-v1.jsonl and compact aggregate summaries/manifests"
+}

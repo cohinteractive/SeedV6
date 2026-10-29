@@ -2,8 +2,8 @@
 
 Status: **ACTIVE**, 30 October 2026. Governing objective [TT-R001](CONTRACT.md),
 under Search P4-R001. Bootstrap established; bridge diagnostics complete, bridge
-matches running. H1 is an uncommitted experimental implementation under technical
-qualification; no strength conclusion. Champion remains P4-BASELINE-001/build79.
+V1 match incomplete and V2 bridge selected. H1 has passed technical and
+information-use qualification; no strength conclusion. Champion remains P4-BASELINE-001/build79.
 
 ## Bootstrap and challenge
 
@@ -71,9 +71,11 @@ Runtime versions and executable hashes belong in per-experiment manifests.
   budgets; it does not establish the correction's causal effect on every W4 move.
   Request-limit, terminal and stop/reuse checks passed. Diagnostic elapsed times
   are not clean performance measurements (some development builds overlapped).
-- Bridge matches `raw/bridge-w1-v1`, then `raw/bridge-w4-v1` run sequentially with
-  no overlapping CPU-heavy research/build. Do not duplicate while active. See
-  each `run.json`; process ownership is the established Windows Job mechanism.
+- Bridge V1 `raw/bridge-w1-v1` stopped in game52 (51 complete) on strict missing-score
+  warning; W4 did not start. Partial scores are not a complete strength result.
+  [V2](bridge-v2-protocol.json) selects 10+0.1 and full UCI trace with strict gates
+  retained. Source/zero-allocation qualification is in [H1](H1.md); the exact
+  untraced event cause remains unknown. Check raw/V2 run.json before resuming.
 - H1 implementation: opt-in flag HEURISTIC_TT_MEMORY (flags7602175); separate
   heuristic marker; ordinary-score-only current-generation sufficient-depth
   interior null-window reuse, excluded from synthetic null and legal verifier.
@@ -82,7 +84,7 @@ Runtime versions and executable hashes belong in per-experiment manifests.
   erasing a useful score, and newer hints cannot renew an old score's eligibility.
   Same-key score refresh permits two plies of depth loss; this is an exploratory
   setting, not an externally validated Seed tuning constant. Production remains
-  flags3407871. Detailed mechanism diagnostics and strength screening are next.
+  flags3407871. Mechanism diagnostics passed; strength screening is next.
 - H1 test v1 caught an attempted raw-eval probe change that confused signed raw
   values with marker bits. Original raw-eval behavior was restored; separate raw
   evaluation tables retain caller-managed validity. Failed output is preserved in
@@ -96,8 +98,16 @@ Runtime versions and executable hashes belong in per-experiment manifests.
   1.11.2), preferably with `-B`. No global package installation was performed.
 
 No historical BOUNDARY2 scores were opened. Raw evidence is local-only under
-`raw/`; summaries/manifests stay outside it. Build remains80 until an attributable
-qualifying implementation commit; no default, champion or release changed.
+`raw/`; summaries/manifests stay outside it. H1 is P4-TT-H1-v1, committed as experimental build81 with the implementation;
+its frozen runtime manifest will bind the exact commit and executable hashes.
+No default, champion or release changed. Bootstrap commit: `9d8389e8`.
+
+[H1 technical report](H1.md) and [diagnostic summary](h1-diagnostics-v1-summary.json)
+record 18,364 W1 /19,601 W4 heuristic cutoffs across nine100k-node requests,
+unchanged capacity and clean/instrumented W1 equality. These are diagnostics only.
+Selected next: V2 bridge W1/W4, then prospective H1 strength screening versus80
+and direct79 comparisons if promising. Keep cheap mechanism reverse ablations
+conditional on what the integrated strength evidence needs to explain.
 
 ## Resume and human actions
 
