@@ -1,17 +1,17 @@
 # TT memory workstream ? resume here
 
 Status: **ACTIVE**, 30 October 2026. Objective [TT-R001](CONTRACT.md) is subordinate
-to Search P4-R001. Current programme master pair: **P4-R001 / P4-F007**.
+to Search P4-R001. Current programme master pair: **P4-R001 / P4-F008**.
 H1's W1/W4 development screens are promising but inconclusive. The first W1
 confirmation failed operationally after 112 completed games; it is not a completed
 strength comparison. No confirmed gain, acceptance, champion advancement or
 production promotion has occurred.
 
-**Selected next work:** an economical, instrumented H1 score-lifetime diagnostic
-across consecutive real-game requests, before selecting another costly strength
-comparison. Runner fallback/drain qualification is complete. No match is active.
-Do not resume the failed confirmation or execute its conditional champion block.
-H1 remains a72cc496/build81; no new candidate has been implemented.
+**Selected next work:** implement and qualify [H2 bounded-age retention](H2.md).
+The H1 cross-request lifetime diagnostic passed and supports this narrow
+hypothesis. H2 is not yet an executable candidate. No match or diagnostic is active.
+Do not resume the failed H1 confirmation or execute its conditional champion block.
+H1 remains frozen at a72cc496/build81.
 
 ## Identities and completed foundations
 
@@ -129,23 +129,29 @@ The real fallbacks did nonzero work; the requested compatibility path was still
 exercised. The frozen protocol and this deviation are retained. Qualification
 scores carry no playing-strength inference. No engine or clock policy changed.
 
-Select a cheap information-lifetime measurement before allocating another multi-
-hour confirmation. Current-generation H1 has established within-request reuse;
-its cross-request opportunity is unmeasured. Use fixed, result-unfiltered real
-game histories from completed development screens, preserved tables across each
-actor's consecutive requests, unchanged H1 and100k-node diagnostic limits. Measure
-stale/current score encounters, retained depths/bounds, hint replacement and legal
-request completion; timings remain instrumented. Freeze exact inputs and the
-protocol before running. Aged hits alone will not prove safe/useful cutoffs or
-strength. Do not implement an aging candidate before inspecting the evidence.
+[Lifetime diagnostic](h1-lifetime-v1-summary.json), harness b483d06c, completed
+104 instrumented H1 requests in each W1/W4 domain plus 104 clean persistent W1
+checks. All used100k nodes and passed legal-PV/accounting/drain checks; all W1
+results/nodes/PVs/diagnostics matched. Frozen engine/runtime stayed a72cc496/build81.
+Raw: `raw/h1-lifetime-v1`, including the initial compile failure and corrected run.
 
-W4 direct79/independent confirmation remains unresolved; no W1-to-W4 strength
-transfer is assumed. Review it after the selected lifetime diagnostic. Measure score availability
-across consecutive real game requests before considering bounded age. Fresh-table diagnostics did not measure
-that lifetime; new-generation hints convert old H1 scores to hint-only, so removing
-cutoff generation checks alone would not establish useful retention. Preserve
-history, hint legality, score-domain and coherence safeguards in any later revision.
-Do not close this CGLHW merely because the current turn or one comparison ends.
+Stale score hits were11.96% W1/11.10% W4; about98.9% were one request old. Per-request
+unique stale nonroot counts summed63,295/59,620, including5,739/4,989 at depth>=3.
+Stale same-key writes replaced deeper prior scores with shallower fresh scores
+15,874/14,865 times. No hint-only demotions appeared. Most stale scores were depth1-2.
+These are availability/replacement findings, not cutoff eligibility or strength;
+the observer lacks requested depth/window/extension-credit context. The eight
+actor streams came from the first four development games without result filtering.
+
+Selected [H2 hypothesis/design](H2.md): allow at most one prior request of heuristic
+score age, protect useful prior depth while refreshing hints independently, retain
+all H1 eligibility/provenance/coherence safeguards and physical capacity/payload.
+Implement explicit research selection, then focused and broader qualification and
+a distinct frozen candidate identity before any strength protocol. No aging
+implementation or gain is yet claimed. Do not tune a grid or add a major subsystem.
+W4 direct79/independent confirmation remains unresolved. Any later confirmation is
+a new claim attempt; H1 attempt1 alpha0.025 stays spent and its partial observations
+are excluded from the new independent sample. No champion advancement or promotion.
 
 ## Rebuild, resume and human actions
 
@@ -175,6 +181,6 @@ CODEXLOG_CURRENT.md was absent; do not create it. Inspect current Git/file prese
 again on resume and preserve unrelated changes. No push/deployment/release is authorized.
 
 Human action: owner refresh of the separate Phase4 Project Frontier mirror to
-**P4-F007**, confirming **P4-R001 / P4-F007**. This is **non-blocking** for repository
+**P4-F008**, confirming **P4-R001 / P4-F008**. This is **non-blocking** for repository
 research and blocks only mirror-dependent Project planning. Prior mirror refreshes
 are not inferred complete. No owner action currently blocks the selected qualification.

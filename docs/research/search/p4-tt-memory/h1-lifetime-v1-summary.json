@@ -1,0 +1,117 @@
+{
+  "status": "completed diagnostic; no strength inference",
+  "protocol": "h1-lifetime-v1-protocol.json",
+  "protocolSha256": "6e9cadb9333a3e13b85c43b91c51a8db428859579484ccfb4b32045c4ab3478e",
+  "manifest": "h1-lifetime-v1-manifest.json",
+  "manifestSha256": "aa51b3fd4954864b294d4cf9d2cd01300ebd50dc7c25053ac64fbee43d4075a5",
+  "runSha256": "6f498d8f5f62c889a973188680060a9e70118b0b3a7b9ad20c7c4367d782cea2",
+  "harnessCommit": "b483d06cd0b4f98e92e09524a7e8dffd312df6a8",
+  "engine": "H1/a72cc496/build81,unchanged",
+  "inputsStable": true,
+  "domains": [
+    {
+      "workers": 1,
+      "requests": 104,
+      "allExactly100000Nodes": true,
+      "cleanPersistentH1Equivalence": "all104 matched nodes/results/PVs/diagnostics",
+      "counts": {
+        "probes": 1912438,
+        "hits": 576303,
+        "rootHits": 1178,
+        "staleRootHits": 92,
+        "cutoffs": 179748,
+        "attempts": 1132843,
+        "admissions": 1129922,
+        "staleSameKeyRefresh": 62016,
+        "staleShallowerRefresh": 15874,
+        "staleCollisionReplacement": 16764,
+        "staleHintDemotion": 0,
+        "hintProbes": 1336135,
+        "hintHits": 592,
+        "hintAttempts": 1132843,
+        "hintAdmissions": 1127715,
+        "sumPerRequestUniqueStaleNonroot": 63295
+      },
+      "scoreHitsByAge": {
+        "0": 507370,
+        "1": 68175,
+        "2": 749,
+        "3": 9
+      },
+      "staleFractionOfScoreHits": 0.11961242610224136,
+      "ageOneFractionOfStaleHits": 0.9890038152989135,
+      "sumPerRequestUniqueStaleNonrootByDepth": {
+        "1": 42435,
+        "2": 15121,
+        "3": 4154,
+        "4": 1216,
+        "5": 313,
+        "6": 50,
+        "7": 6
+      },
+      "sumPerRequestUniqueStaleNonrootByBound": {
+        "inside-window-estimate": 379,
+        "lower": 46788,
+        "upper": 16128
+      },
+      "requestsWithStaleNonroot": 95,
+      "staleNonrootAtDepth3OrMore": 5739,
+      "raw": "docs\\research\\search\\p4-tt-memory\\raw\\h1-lifetime-v1\\w1.jsonl",
+      "rawSha256": "10f1ce4181f52521a38cb0b7e63933c8d0ec1b7a45b6174981ae63ad1bceb321"
+    },
+    {
+      "workers": 4,
+      "requests": 104,
+      "allExactly100000Nodes": true,
+      "cleanPersistentH1Equivalence": "not asserted for parallel scheduling",
+      "counts": {
+        "probes": 1928539,
+        "hits": 574637,
+        "rootHits": 346,
+        "staleRootHits": 91,
+        "cutoffs": 180689,
+        "attempts": 1141287,
+        "admissions": 1136083,
+        "staleSameKeyRefresh": 58459,
+        "staleShallowerRefresh": 14865,
+        "staleCollisionReplacement": 17178,
+        "staleHintDemotion": 0,
+        "hintProbes": 1353902,
+        "hintHits": 2357,
+        "hintAttempts": 1141287,
+        "hintAdmissions": 1136315,
+        "sumPerRequestUniqueStaleNonroot": 59620
+      },
+      "scoreHitsByAge": {
+        "0": 510828,
+        "1": 63127,
+        "2": 675,
+        "3": 7
+      },
+      "staleFractionOfScoreHits": 0.11104227538428608,
+      "ageOneFractionOfStaleHits": 0.9893118525599837,
+      "sumPerRequestUniqueStaleNonrootByDepth": {
+        "1": 39643,
+        "2": 14988,
+        "3": 3715,
+        "4": 970,
+        "5": 264,
+        "6": 38,
+        "7": 2
+      },
+      "sumPerRequestUniqueStaleNonrootByBound": {
+        "inside-window-estimate": 377,
+        "lower": 43865,
+        "upper": 15378
+      },
+      "requestsWithStaleNonroot": 92,
+      "staleNonrootAtDepth3OrMore": 4989,
+      "raw": "docs\\research\\search\\p4-tt-memory\\raw\\h1-lifetime-v1\\w4.jsonl",
+      "rawSha256": "bf0bc611e31e5ad6384e260da3e27fc1b1a33e1ffcd61491b9f5b4e4714da695"
+    }
+  ],
+  "limits": "Counts are instrumented encounters, not validated cutoff opportunities. The observer lacks requested depth/window/extension-credit context. Per-request unique counts can count a key again in another request. Eight actor streams from four development games,plies16..41,100k-node requests define the scope. No clean performance or playing-strength inference.",
+  "finding": "Prior-request scores are repeatedly encountered,almost all at age1. Most are nominaldepth1-2,but several thousand per domain are deeper. About one quarter of stale same-key score refreshes replace a deeper prior score with a shallower fresh score. No stale-score-to-hint-only demotions occurred in this corpus.",
+  "decision": "Select an integrated bounded-age H2 hypothesis: preserve useful score depth across at most one prior request while independently refreshing completed-move hints; retain all H1 cutoff/domain/provenance and concurrency safeguards. Same capacity/payload where safely representable. No tuning sweep or major TT subsystem. Freeze the exact candidate after focused/broader qualification, then choose controlled playing evidence. The failed H1 confirmation remains incomplete and alpha0.025 spent.",
+  "compileFailurePreserved": "raw/h1-lifetime-v1/compile-v1.log and compile-v1-source.java; overload type inference fixed before any diagnostic execution."
+}
