@@ -1,0 +1,49 @@
+{
+  "comparisons": [
+    {
+      "id": "tied71-vs-cp64",
+      "left": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r041-tied-71\\epoch-1.state",
+        "sha256": "b943b46628b86ccd027a61c6e44311e68c471fb6dd8e73e13fb70a230dc6e498",
+        "evaluator": "tied2"
+      },
+      "right": {
+        "path": "build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+        "sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+        "evaluator": "cp64"
+      }
+    },
+    {
+      "id": "tied97-vs-cp64",
+      "left": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r041-tied-97\\epoch-1.state",
+        "sha256": "8b0b425d81a09decde4170691b9d640914b4ee40907849d0f348e539191ea8dd",
+        "evaluator": "tied2"
+      },
+      "right": {
+        "path": "build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+        "sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+        "evaluator": "cp64"
+      }
+    }
+  ],
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r043-runtime",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r043-games",
+  "openings": "docs\\research\\brn-relational-cglhw\\r025-openings.json",
+  "openings_sha256": "494b3fda88e3f4e70e00ea28da50c81c52b6aad252bd4c6a485bcc93cf7e2dd9",
+  "nodes": 10000,
+  "max_plies": 640,
+  "probe_fens": [
+    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+    "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+    "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1"
+  ],
+  "validation": "docs\\research\\brn-relational-cglhw\\raw\\r002-data\\validation.tsv",
+  "validation_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+  "prediction_evidence": "docs\\research\\brn-relational-cglhw\\r042-results.json",
+  "prediction_evidence_sha256": "3d8d883f03f96254d34bf7c7334ce01dc741a1fdbb410a6f4f3d9750a38b3430",
+  "source_revision": "770cddeb39b07f7954168905afbe59dcb4cebc12",
+  "build": 78,
+  "scope": "32-game TIED neural calibration;common10000-node search;no clocks or promotion"
+}
