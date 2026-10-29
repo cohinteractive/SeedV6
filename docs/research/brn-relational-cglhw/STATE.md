@@ -1,12 +1,11 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **PAUSED_RESOURCE_GATE - R046 frozen cross-channel neural transfer**.
-AdmissionCPU65.6863% at2026-10-29T01:33:19Z exceeded strict<60% start limit.
-R046 Gradle/tests never started;new loader code remains unvalidated. All owned
-processes released,active:null/owned0;no retries or queued workload. R045 training
-and analysis COMPLETE after successful resource resume;both quality gates pass.
-No GPU or clock authority was added. Current RESOURCE-GATE has exact next command.
+Status: **ACTIVE - R046 frozen cross-channel neural transfer**.
+Owner RESUME cleared the admission gate;four loader tests pass and frozen model/
+core/teacher executable classes match their references. R046 runtime and six-
+function plans are frozen. Historical resource gates remain preserved;no GPU or
+clock authority was added.
 
 Read root instructions, [CONTRACT](CONTRACT.md) revision2, [PRIORITY](PRIORITY.md),
 [RESOURCE-GATE](RESOURCE-GATE.md), [BASELINE](BASELINE.md) and [R012](R012.md).
@@ -28,13 +27,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-Wait for explicit owner RESUME,then verify saved state/source bindings and freshly
-admit RESOURCE-GATE.md's focused FieldPredictionAuditTest/install command. Gradle
-did not start this attempt;all four planned checks are pending. After they pass,
-freeze R046 runtime,verify model/core/teacher class parity,create six-function
-8192/991 plans and run/verify frozen predictions per R046. No R045 training repeats.
-At CPU>=60% orfree<8GiB admission failure,record and exit without waiting/retry.
-No fitting,new games or promotion is admitted by this transfer stage.
+Execute r046-old-plan.json and r046-played-plan.json serially with
+run_message_audit.py under nnue-control;verify complete outputs/receipts rather
+than rerun. Then run analyze_mixed_transfer.py under supervision and apply R046's
+unchanged BOTH-seed gates. No fitting or games in this stage. New resource failure
+requires saved state,owned-process drainage and immediate exit without retry.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -94,7 +91,7 @@ Both consumed development panels remain distinct from future final evaluation.
 | R043 | Tied neural recurrence playing calibration | Complete5tests,32games;12.5%/34.375%,no broader games |
 | R044 | Tied neural proportional-decay continuation | Complete5tests/4arms;seed97 misses gates;positive gains preserved,no extension |
 | R045 | Cross-channel tied neural composition | Complete6tests/2arms after resource resume;both gates pass,cost<8us |
-| R046 | Frozen cross-channel neural transfer | PAUSED_RESOURCE_GATE before loader tests;code/protocol prepared,no predictions |
+| R046 | Frozen cross-channel neural transfer | ACTIVE;4loader tests and frozen class parity pass,prediction plans ready |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -143,7 +140,6 @@ runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,
 configs and reusable fixtures are tracked. Build78 for the explicit core research seam;production evaluator unchanged;no push.
 
-Human actions required after this prompt: **Blocking - invoke the reusable RESUME
-when conservative CPU work can coexist with normal use.** This blocks pending
-R046 validation/prediction until fresh admission passes. Non-blocking actions:None.
-No GPU/clock/promotion authorization requested. No completed training repeats.
+Human actions required after this prompt: None while admitted autonomous work
+continues. Any actual resource/authority gate will replace this statement before
+execution ends. No completed training or earlier experiment needs repetition.

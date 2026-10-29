@@ -1,3 +1,11 @@
+Current status: **R046 gate cleared by explicit owner RESUME29October2026**.
+Prepared source/protocol and both completed R045 checkpoints matched saved hashes.
+Fresh supervised admission passed;four loader tests passed and the runtime/model/
+core/teacher parity is frozen in r046-validation.json. STATE.md identifies current
+work. Earlier gate details below remain historical evidence,not a pending build.
+
+---
+
 # Current R046 resource pause - resume through STATE
 
 **PAUSED_RESOURCE_GATE**,2026-10-29T01:33:19Z (29 October Auckland).
