@@ -338,3 +338,8 @@ R046 prepared full/M-only inference routing and test;admissionCPU65.6863% preven
 Gradle from starting. New code is unvalidated. All owned processes released;no
 retry. Current RESOURCE-GATE.md/r046-resource-gate.json preserve the exact build
 and post-pass work. R045 is complete and must not be trained again.
+
+R046 resumed:4loader checks and frozen model/core parity pass;both six-function
+predictions/receipts preserve target metadata exactly and transfer gates pass.
+No more training;R047 needs isolated MIX search checks and a clean frozen runtime
+before its32game fixed allocation. Historical resource gates remain preserved.

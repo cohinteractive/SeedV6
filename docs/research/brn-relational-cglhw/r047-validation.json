@@ -1,0 +1,36 @@
+{
+  "tests": [
+    {
+      "name": "ResearchMixedTiedEvaluationTest",
+      "tests": 1,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r047-ResearchMixedTiedEvaluationTest.xml",
+      "sha256": "cc43b16592b505f3b54668ec4d3fe3107a9e12f0bb5fcdcd082286f7c5f615a2"
+    },
+    {
+      "name": "ResearchTiedEvaluationTest",
+      "tests": 1,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r047-ResearchTiedEvaluationTest.xml",
+      "sha256": "06c300d6fbfb4e8f37ba4e1083ad962b19a01c1456f6846604b7f9aa3154d1e9"
+    },
+    {
+      "name": "ResearchPieceEvaluationTest",
+      "tests": 1,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r047-ResearchPieceEvaluationTest.xml",
+      "sha256": "91ccbb366067f864bd1332710f8aca983c8b187f814316a0804cee895526c957"
+    },
+    {
+      "name": "ResearchFieldEvaluationTest",
+      "tests": 3,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r047-ResearchFieldEvaluationTest.xml",
+      "sha256": "aa8342fed667708767a4da29725290fe7c1f4766deae855199fb35d036ff0123"
+    }
+  ],
+  "passed": 6,
+  "new_tests": 1,
+  "skips": 0,
+  "tested_classes_path": "docs\\research\\brn-relational-cglhw\\raw\\r047-tested-classes.json",
+  "tested_classes_sha256": "2a6436ea88b036874fb1e3e4bac9fb2ef08db3cfbaa70803154e49bad52ea191",
+  "count": 1804,
+  "replay_ast_unchanged_from_r043": true,
+  "scope": "Research integration and focused checks;no full suite/clock/production change"
+}
