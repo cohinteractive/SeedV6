@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 4
 
-Internal frontier revision: **P4-F002**
+Internal frontier revision: **P4-F003**
 
-Status: **CONSOLIDATED - 30 October 2026. Inventory closed and accounting correction technically accepted; no active Phase 4 research objective, experimental candidate or champion advancement.**
+Status: **CONSOLIDATED - 30 October 2026. Externally informed research map completed, reconciled and accepted; no active Phase 4 research objective, experimental candidate or champion advancement.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 Governing [Contract P4-R001](CHESS_SEARCH_CONTRACT.md). This Frontier records
@@ -20,14 +20,14 @@ pins the configuration, evaluator hashes and qualifications.
 Shared BaselineEngine retains flattened PVS/ADAPTIVE16, frozen Conventional NNUE
 CP64/checkpoint64/S6CNU002/eight heads/BT4_Q_LOGIT400_V1, original18 plus
 NOMINAL_FUTILITY and VERIFIED_NULL (**flags3407871**), requested Hash64,
-workers1-16/default1/bounded Max and existing ROOT_REUSE. Existing production TT
+workers1-16/default1/bounded Max and ROOT_REUSE at W2-16. Existing production TT
 restrictions and completed legal hints remain. Managed clocks use BOUNDARY2 with
 explicit FACTUAL fallback; other evaluators and historical/research controls keep
 their separate configurations.
 
 Initialization on 29 October 2026 used focused static source/accepted-record
-inspection and CP64 file hashing. The subsequent inventory and correction below
-were separately authorized; neither redefines the immutable baseline. Build77
+inspection and CP64 file hashing. The subsequent inventory, correction and map
+below were separately authorized; none redefines the immutable baseline. Build77
 BOUNDARY2 integration receipts do not requalify build79 after the research
 evaluator seams. Both independent BOUNDARY2 studies remain **clock-unqualified,
 scores unopened**, with unresolved timing risk; do not reopen, execute, inspect
@@ -51,15 +51,28 @@ findings are preserved here:
   Their configuration globally suppresses ordinary TT score stores and cutoffs,
   even where no extension occurs. Completed legal move hints still affect ordering,
   hash-move protection from some pruning, reduction eligibility and cross-worker
-  information exchange. The production TT therefore primarily carries completed
-  move information. Other observed properties are history-rich SearchKey identity,
-  equal-depth/current-generation ordinary score reuse in eligible alternative
-  configurations, direct-mapped replacement, no production qTT or leaf TT, and no
-  separate ordinary TT selective-provenance field. See the
+  information exchange. A separate selective-subtree storage restriction remains:
+  removing extension-related suppression alone does not establish useful general
+  selective-score retention. The production TT primarily carries completed move
+  information. Other properties are history-rich SearchKey identity,
+  equal-depth/current-generation ordinary score admission in eligible configurations,
+  direct-mapped replacement with restrictions on certain same-key replacements,
+  coherent synchronized access, no production qTT or leaf TT, no separate ordinary
+  selective-provenance field, and no combined ordinary record of raw static
+  evaluation and searched score. See the
   [kernel](../engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java)
   and [table](../engine-core/src/main/java/com/ohinteractive/seedv6/search/tt/TTable.java).
   These are implementation findings, not evidence that relaxing restrictions gains
   strength or that TT effectiveness is an established strength bottleneck.
+- **Configuration and storage dependencies.** Current
+  [VERIFIED_NULL composition](../engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/FlatSearchConfig.java)
+  requires all original 18 Construction controls. Reverse ablations must use valid
+  configurations; silently disabling VERIFIED_NULL does not isolate removal of an
+  extension or history component. Requested Hash64 produces **2,097,152 entries in
+  three long arrays: 48 MiB of entry payload**, excluding JVM object, lock and other
+  overhead. This is a source-derived calculation, not runtime memory measurement;
+  future TT-layout comparisons must declare actual storage. These dependencies
+  were identified by the accepted external research-map investigation.
 - **Consumer identity matters.** GUI Play and built-in Arena primarily use depth or
   movetime limits; UCI game-clock requests activate managed-clock allocation.
   Explicit UCI evaluator/model routes can differ from competitive CP64. Future
@@ -109,66 +122,147 @@ Broader ROOT_REUSE ordering effects, runtime frequency, timing impact and playin
 strength remain unmeasured. Full-repository, native-platform, performance and
 strength qualification were not performed for the correction.
 
+Build80 is the qualified source-level accounting foundation for future technical
+controls, not a renamed champion. Candidate/control comparisons must explicitly
+identify the **build79/build80 bridge** and exact source/configuration used.
+
+## Accepted externally informed research map
+
+The separately authorized read-only investigation is **completed, reconciled and
+accepted by GPT as complete**. It examined actual Search implementations,
+information structures, TT/history/selectivity, drivers, parallel cooperation,
+time management and selected development records, comparing relevant mechanisms
+with current SeedV6 production source. The pinned external sources are:
+
+| Engine | Tag | Source revision |
+| --- | --- | --- |
+| Stockfish 19 | `sf_19` | [`edb0d9db6731067ec50ce619ff372b463bc4dd5d`](https://github.com/official-stockfish/Stockfish/tree/edb0d9db6731067ec50ce619ff372b463bc4dd5d) |
+| Bagatur 5.5c | `v5.5c` | [`56d1b3651f62bc770c7cde5f4c1b0360890b9bd5`](https://github.com/bagaturchess/Bagatur/tree/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5) |
+| Ethereal 14.00 | `v14.00` | [`96cde8d2f82a3ab0536bf33572405fda96f6e236`](https://github.com/AndyGrant/Ethereal/tree/96cde8d2f82a3ab0536bf33572405fda96f6e236) |
+
+No SeedV6 source changed, and no tests, runtime diagnostics, benchmarks, matches
+or experiments ran in that investigation. Implementation observations are distinct
+from author-reported empirical results and speculative SeedV6 transfer hypotheses.
+Individual external testing records were not independently audited against complete
+raw game evidence; inaccessible records do not become verified evidence. Stockfish's
+overall release improvement is not attributed to individual mechanisms. None of
+these findings establishes a SeedV6 playing-strength improvement.
+
+- **Information effectiveness.** External TT scores, bounds, static evaluation,
+  move hints, retention and histories interact in ordering, pruning, reductions,
+  extensions, driver recovery and parallel cooperation, beyond repeated-position
+  cutoffs. Investigate retention and consumption together: more storage or more
+  aggressive reuse is not automatically better. Preserve useful completed-move
+  guidance; race-tolerant external TT designs are not drop-in replacements for
+  SeedV6's coherence guarantees.
+- **Learning lifetime and effort.** SeedV6 already has capture and immediate
+  continuation history, killers, countermoves and nominal-history filtering. Some
+  learning resets at kernel invocation boundaries; ROOT_REUSE retains and seeds
+  selected quiet history differently. External examples motivate investigating
+  useful lifetime and signal quality together with graded history-informed LMR,
+  improving signals and compatible selective learning/protection. Bounded
+  correction history from search/static-evaluation differences is related but
+  separate: distinguish raw evaluation, corrected evaluation and searched bounds.
+- **Tactical coverage.** External singular extensions, ProbCut and selective
+  verification motivate distinct TT-supported forced-line and capture-ordering/
+  qsearch-supported tactical-cutoff packages. SeedV6 already has verified null,
+  extensions, LMR, futility and QXRAY; addition and substitution both merit later
+  consideration. Do not automatically combine the packages in a large first
+  experiment. Historical mate-finding, maximum-ply and perpetual-check failures
+  or reversions retain their specific scope and motivate qualification.
+- **Drivers, cooperation and time.** Bagatur retains an implemented MTD-style
+  alternative; Stockfish and Ethereal provide iteration-feedback, root-effort,
+  worker-cooperation, history-sharing and time-management examples. MTD depends
+  on supporting TT information and Search reset behavior. SeedV6 ADAPTIVE16 is
+  already substantial, and ROOT_REUSE consumes completed root/ordering information.
+  Sharing may trade NPS for better decisions; Search changes may alter BOUNDARY2
+  spending without clock-policy code changes. Clock-policy research requires
+  separate authorization; the frozen studies remain untouched and unqualified.
+
 ## Decisions, priorities and hypotheses
 
 | Kind | Current state and implications |
 | --- | --- |
 | Adopted programme decision | Strength-first, externally informed, dependency-led and configuration-oriented research under P4-R001. This is a research reset, not an engine reset. |
-| Baseline and correction | Immutable build79 baseline and research champion retained. The technically accepted build80 accounting correction is separate; no champion advancement or research-driven production promotion. |
-| Completed foundation | Fresh source-level inventory closed and accepted; bounded accounting investigation and correction technically complete. |
-| Planned foundation | Next intended activity: develop a fresh externally informed Search research map under separate authorization. It has not begun; do not recreate the historical 38-subject programme. |
-| Early research priority | TT information effectiveness: assess how stored information supports useful Search decisions and integrated playing strength. This priority is not an active objective or a proven bottleneck. |
-| Unvalidated hypothesis | Restrictive ordinary score reuse may limit useful information and driver effectiveness. The inventory establishes suppression, not a strength benefit from relaxing it. |
-| Active research | **None.** No experimental candidate, external-engine investigation, tournament or CGLHW is launched. |
+| Baseline and correction | Immutable build79 baseline/champion retained; build80 is the separate accounting-corrected technical foundation. No champion advancement or research-driven production promotion. |
+| Completed foundation | Inventory, accounting investigation/correction, P4-F002 consolidation and external research-map investigation are closed. The map is reconciled and accepted; Contract initialization statements describe historical sequencing, not unfinished work. |
+| A. Useful TT memory for selective PVS | **Highest initial priority.** Hypothesis: retained heuristic scores with suitable admission, selective provenance, bound interpretation, retention/replacement and preserved completed-move guidance may strengthen existing CP64/PVS. Interactions include extensions, selective pruning, aspiration and repeated-window work. |
+| B. Retained learning that allocates Search effort | **High priority; strongest competing first direction.** Hypothesis: useful history lifetime plus graded history-informed LMR and compatible learning/protection may improve strength. Build on existing history mechanisms. |
+| C. Tactical coverage through verification and extensions | **Promising, dependent on reliable information and more expensive qualification.** Alternatives include TT-supported singular/forced-line verification and tactical ProbCut/qsearch cutoffs. Consider addition, substitution and reverse ablation through valid configurations. |
+| D. Iteration confidence, re-search and resource allocation | **Credible follow-on.** Aspiration recovery, iteration feedback, root effort, MTD and managed-time expenditure; driver comparisons must control TT information and state lifetime. Clock-policy research needs separate authorization. |
+| E. ROOT_REUSE cooperation and W2-16 information exchange | **Important, comparatively expensive and variable to qualify.** Shared useful TT information, selected history persistence/sharing, root-job ordering or overlapping Search structures; preserve concurrency, complete accounting, truthful completion, cancellation and draining. Stockfish-scale results do not transfer quantitatively by assumption. |
+| Active research | **None.** No Phase 4 experimental candidate, active research objective, experiment, tournament or CGLHW; no champion advancement. |
 
-Potential dependencies include TT cutoff eligibility, depth/generation reuse,
-selective-score provenance, bound use, replacement/aging, capacity/layout and
-identity/history safeguards. Their interactions may involve **MTD(f), aspiration,
-PVS, selective pruning, reductions, extensions, move ordering and parallel Search**.
-For example, a driver investigation may need to understand what TT scores it can
-reuse before judging the driver. These are possible dependencies for future
-mapping, not validated improvements, adopted alternatives or a predetermined
-research sequence.
+These are connected relative priorities, **not an execution queue** or proven
+SeedV6 improvements. Optimize integrated configurations for practical playing
+strength without requiring every mechanism to win in isolation. Consider
+dependencies, complements, substitutions and reverse ablations; preserve negative
+evidence within its actual configuration/testing scope rather than making one
+bounded failure a universal prohibition. Do not blindly copy external code or
+tuning constants. Distinguish useful information from memory traffic or misleading
+heuristic cutoffs, preserving chess correctness, state/history integrity,
+mate/score domains, concurrency, lifecycle and truthful reporting.
 
-The planned map should be strength-first and configuration-oriented, grounded in
-the actual SeedV6 implementation and informed by Stockfish, Bagatur and other
-relevant strong engines. Attend to mechanism interactions, supporting conditions,
-safeguards and empirical evidence, with relevant source revisions. Consider
-dependencies, combinations, substitutions and reverse ablations. This direction
-does not select experiments or validate hypotheses. Within a later authorized
-coherent objective, follow consequential dependencies and revise priorities as
-evidence changes. Escalate material new objectives, safety/authority conflicts and
-disproportionate expansion under the Contract; do not erect subject-by-subject
-permission gates for routine work.
+Use reproducible source, evaluator, configuration, worker, actual memory, consumer
+and resource identities. Node budgets, movetime, game clocks and depth are not
+interchangeable; credible integrated playing-strength evidence takes priority
+over standalone NPS, depth or node reductions. Within a later authorized coherent
+objective, follow consequential dependencies and revise priorities with evidence;
+escalate material new objectives, safety/authority conflicts and disproportionate
+expansion under the Contract.
+
+## Recommended first objective - proposed, not authorized
+
+> Determine whether bounded heuristic TT score reuse, with useful retention and
+> preserved completed-move guidance, improves the practical strength of the
+> existing CP64 flattened-PVS configuration.
+
+The proposed initial formulation retains Conventional NNUE CP64, existing
+extensions, flattened PVS, ADAPTIVE16, ROOT_REUSE, current clock-policy selection,
+history-rich SearchKey identity initially and coherent TT access. It investigates
+connected admission, provenance, retention and consumption policies, permitting
+appropriate interacting mechanisms within a later authorized coherent objective.
+It does not automatically require clustered storage, qTT, correction history,
+singular extensions or MTD. Possible first-stage diagnostics ask whether scores
+are produced, admitted, retained, displaced and consumed while preserving useful
+completed-move guidance. The strongest competing first objective is retained
+Search history combined with graded history-informed reductions.
+
+This recommendation establishes no active work. Any objective requires **separate
+owner authorization and an explicit evaluation boundary**, including exact
+candidate/control identities and the build79/build80 bridge.
 
 ## Lightweight progression and handback
 
 Reconcile this consolidation with GPT/owner; completion of the documentation
-commit is not acceptance. Research-map development, new experiments, research
-objectives and implementation changes require separate authorization. This unit
+commit is not acceptance. New research, experiments, research objectives and
+implementation changes require separate owner authorization. This unit
 is not a CGLHW and launches none. In later authorized research, use economical
 diagnostics, controlled strength comparisons and independent confirmation where
 appropriate, preserving exact references and meaningful controls. Champion
-advancement requires credible integrated-strength evidence and explicit owner
-acceptance; production promotion requires separate authorization and acceptance
-under the Contract.
+advancement requires separate owner authorization, credible integrated-strength
+evidence and explicit owner acceptance; production promotion requires separate
+owner authorization and acceptance under the Contract.
 
 Keep current priorities, hypotheses, adopted decisions and active work distinct.
 Record material discoveries and dependencies here; focused reports/manifests hold
 detail. Do not create an exhaustive taxonomy, experiment diary or automatic queue.
 Each future CGLHW requires the complete current authoritative premade GPT prompt
-generator from the owner before prompt preparation, and a dedicated GPT
-conversation for the objective's complete coordination and closeout.
+generator from the owner before GPT prepares its execution prompt, and a dedicated
+GPT conversation for the objective's complete coordination and closeout. This
+documentation unit creates or substitutes no generator and authorizes no CGLHW.
 
 The [Phase 3 archive](../docs/search-phase3/README.md) contains the final
 P3-R035/P3-F035 historical authority and links to retained Phase 1/2 history and
 supporting reports. Historical restrictions and failed formulations do not
 become Phase 4 policy by reference; frozen evidence remains unchanged.
 The existing Phase 3 Project retains its owner-confirmed final mirrors, with no
-refresh required. The current repository master pair is **P4-R001 / P4-F002**;
-the Contract remains unchanged. After repository/GPT/owner reconciliation, the
-owner must refresh the separate Phase 4 Project's Frontier mirror to **P4-F002**
-and confirm both master identities before mirror-dependent Project planning.
-That human action is pending; repository edits synchronize neither Project.
+refresh required. The Phase 4 Project's **P4-R001 / P4-F002** mirror pair was
+already reconciled by GPT and the owner. The current repository master pair is
+**P4-R001 / P4-F003**; the Contract remains unchanged. After successful GPT/owner
+reconciliation of this consolidation, the owner must refresh the separate Phase 4
+Project's Frontier mirror to **P4-F003** and confirm **P4-R001 / P4-F003** before
+mirror-dependent Project planning. That human action is pending; repository edits
+synchronize neither Project.
 Consolidation ends here, with no active research objective, experimental candidate
 or champion advancement.
