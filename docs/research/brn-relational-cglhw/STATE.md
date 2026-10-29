@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R041 tied neural relation recurrence**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R042 frozen tied-recurrence transfer**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,11 +25,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R040 complete:four endpoints/32segments;modest5-8% played gains but all fixed
-mechanism/family gates fail. No transfer/games/promotion. R041 prospectively adds
-a second contextual message pass tied to the SAME learned geometry/occupancy
-transform. Verify independent gradients/board/resume/cost and exact ONE update
-parity with R040 before reusing its controls and training two TIED seeds.
+R041 complete:both TIED seeds pass mechanism/family gates;oldteacher3.6-4.0% and
+played5.4-5.7% better than exact ONE controls,second path useful;cost<10us. No
+strength claim. R042 adds mode-checked frozen loaders and predicts TIED/second-
+masked/ONE on existing8192 and991 panels. Verify exact reference/metadata and
+class parity,then apply fixed transfer gates before proposing any games.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -84,7 +84,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R038 | Invariant neural projection compilation | Complete7tests,exact forward;8.0/11.0us,CONTEXT fails10us |
 | R039 | Finite occupancy neural compilation | Complete8tests,exact forward,4.25/4.74us;both practical gates pass |
 | R040 | Shared neural geometry/context training | Complete4arms;5-8% played gains,all advancement gates fail;no games |
-| R041 | Tied neural relation recurrence | Prospective shared-transform second pass;correctness/cost before2 fitted arms |
+| R041 | Tied neural relation recurrence | Complete6tests,2arms;both mechanism/family gates pass,cost<10us;no games |
+| R042 | Frozen tied-recurrence transfer | Prospective8192/991 prediction and ablation gates;no refit |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

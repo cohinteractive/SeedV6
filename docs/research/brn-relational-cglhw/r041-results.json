@@ -1,0 +1,498 @@
+{
+  "plan_sha256": "23154140563ec132f9e229b2811b928ba2d2ed425792ee99af7b51eff3f5a24a",
+  "validation_sha256": "36a4f663c8e8aba4eaac573ba9241fc0c9e8807cb0d0ae58b76d0f9476898c72",
+  "analysis_sha256": "3c243abd5a064b5db0c76e07aa054aa48198a82f4db068d4f534b79ee28a243d",
+  "analysis_resource": {
+    "cpu_percent": 5.699481865284972,
+    "available_gib": 18.09823226928711,
+    "utc": "2026-10-29T00:34:48Z"
+  },
+  "records": [
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r041-tied-71.json",
+      "config_sha256": "d861aba5752457527f69bacb31a061eb3e417cee5b5c7c2eaaf05e612012029b",
+      "result_path": "docs\\research\\brn-relational-cglhw\\raw\\r041-tied-71\\result.json",
+      "result_sha256": "655b8a409cd5b244d2e27ce49ebc342ff4bff796bc65b6f72ee1d09a5393b2f9",
+      "result": {
+        "mode": "TIED",
+        "seed": 71,
+        "parameters": 20353,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.018539461318962495
+          },
+          {
+            "updates": 8192,
+            "epoch": 1,
+            "unary_only_train_mse": 0.015927709229747528,
+            "validation_mse": 0.011309600023526968,
+            "unary_only_validation_mse": 0.014609103016292925,
+            "state_sha256": "b943b46628b86ccd027a61c6e44311e68c471fb6dd8e73e13fb70a230dc6e498",
+            "train_mse": 0.012470813462631911
+          }
+        ],
+        "load_seconds": 4.1214614,
+        "optimization_checkpoint_seconds": 42.6038744,
+        "preflight_inference_ns": 6376.28,
+        "full_inference_ns": 7896.055,
+        "original_bt4_validation_mse": 0.024309175571303968,
+        "played_validation_mse": 0.03500754144270876,
+        "played_unary_only_mse": 0.03988704650038362,
+        "second_pass_disabled_validation_mse": 0.013051240590313361,
+        "second_pass_disabled_played_validation_mse": 0.03762671805463755,
+        "scope": "Tied shared neural relation recurrence;fixed endpoint;played development held out;no strength claim"
+      },
+      "by_root": {
+        "(97, 8)": {
+          "rows": 134,
+          "teacher_mse": 0.027998504565357154
+        },
+        "(71, 9)": {
+          "rows": 148,
+          "teacher_mse": 0.027505243019346284
+        },
+        "(71, 10)": {
+          "rows": 212,
+          "teacher_mse": 0.02410008151701183
+        },
+        "(97, 9)": {
+          "rows": 249,
+          "teacher_mse": 0.02735578799426295
+        },
+        "(71, 11)": {
+          "rows": 199,
+          "teacher_mse": 0.031318904270010724
+        },
+        "(97, 11)": {
+          "rows": 242,
+          "teacher_mse": 0.05351225143414148
+        },
+        "(71, 8)": {
+          "rows": 112,
+          "teacher_mse": 0.04289243416946574
+        },
+        "(97, 10)": {
+          "rows": 102,
+          "teacher_mse": 0.05108607296405124
+        }
+      },
+      "parameter_diagnostics": {
+        "unary": {
+          "rms": 0.40798782271302575,
+          "clamped": 0.0
+        },
+        "source": {
+          "rms": 0.48931869077577017,
+          "clamped": 0.010091145833333334
+        },
+        "readout": {
+          "rms": 0.5151993304180058,
+          "clamped": 0.007649739583333333
+        },
+        "static_transform": {
+          "rms": 0.5981108869458719,
+          "clamped": 0.020833333333333332
+        },
+        "context_transform": {
+          "rms": 0.6442556951183331,
+          "clamped": 0.026041666666666668
+        },
+        "second_readout": {
+          "rms": 0.5454748526831118,
+          "clamped": 0.016438802083333332
+        }
+      },
+      "segments": [
+        {
+          "updates": 1024,
+          "config_sha256": "d861aba5752457527f69bacb31a061eb3e417cee5b5c7c2eaaf05e612012029b",
+          "state_sha256": "e4b7d14a6cbf6d13d343095933e92be0221726e74befe17c46198085c2584553",
+          "completed_positions": 131072
+        },
+        {
+          "updates": 2048,
+          "config_sha256": "d861aba5752457527f69bacb31a061eb3e417cee5b5c7c2eaaf05e612012029b",
+          "state_sha256": "f8153a0ea9b9ea9e3a6666deeb04c8ab2ff7546ee1a303c687bee1777a5ac22f",
+          "completed_positions": 262144
+        },
+        {
+          "updates": 3072,
+          "config_sha256": "d861aba5752457527f69bacb31a061eb3e417cee5b5c7c2eaaf05e612012029b",
+          "state_sha256": "92bc780c5dadc1a5a4bf66822d45612fa25fa92defae79b5f41789057a28a2f4",
+          "completed_positions": 393216
+        },
+        {
+          "updates": 4096,
+          "config_sha256": "d861aba5752457527f69bacb31a061eb3e417cee5b5c7c2eaaf05e612012029b",
+          "state_sha256": "2b2e6aeb9ea2f1dbbaa77896d380094b7a9be628f0648e3c8afdf8ee15e330be",
+          "completed_positions": 524288
+        },
+        {
+          "updates": 5120,
+          "config_sha256": "d861aba5752457527f69bacb31a061eb3e417cee5b5c7c2eaaf05e612012029b",
+          "state_sha256": "c86b620671c2036efd26f8e017b4c9f2cbbba14b0525efdf1d8afda7358dfe5c",
+          "completed_positions": 655360
+        },
+        {
+          "updates": 6144,
+          "config_sha256": "d861aba5752457527f69bacb31a061eb3e417cee5b5c7c2eaaf05e612012029b",
+          "state_sha256": "cba1a0debe5df13b7e22128abfcac15c0b62b60e4973fb8c47dffae7492d868f",
+          "completed_positions": 786432
+        },
+        {
+          "updates": 7168,
+          "config_sha256": "d861aba5752457527f69bacb31a061eb3e417cee5b5c7c2eaaf05e612012029b",
+          "state_sha256": "06fbffbabaa7f9cb4aa120ffe956b66fe889c627fc930d83b8d196851c7131c8",
+          "completed_positions": 917504
+        },
+        {
+          "updates": 8192,
+          "config_sha256": "d861aba5752457527f69bacb31a061eb3e417cee5b5c7c2eaaf05e612012029b",
+          "state_sha256": "b943b46628b86ccd027a61c6e44311e68c471fb6dd8e73e13fb70a230dc6e498",
+          "completed_positions": 1048576
+        }
+      ],
+      "executions": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r041-tied-71\\execution-1793234019624561500.json",
+          "sha256": "0a8dae3360e04293d4806cd7d261c55b91e64f0b3627991cb557dfcc9b1c2803",
+          "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r041-tied-71.json",
+          "status": "COMPLETE",
+          "error": null,
+          "elapsed_seconds": 47.70938389998628,
+          "resources": [
+            {
+              "cpu_percent": 17.801047120418843,
+              "available_gib": 16.543121337890625,
+              "utc": "2026-10-29T00:32:51Z"
+            },
+            {
+              "cpu_percent": 23.4375,
+              "available_gib": 16.322063446044922,
+              "utc": "2026-10-29T00:32:57Z"
+            },
+            {
+              "cpu_percent": 20.833333333333336,
+              "available_gib": 16.36813735961914,
+              "utc": "2026-10-29T00:33:02Z"
+            },
+            {
+              "cpu_percent": 16.500000000000004,
+              "available_gib": 16.370468139648438,
+              "utc": "2026-10-29T00:33:07Z"
+            },
+            {
+              "cpu_percent": 22.27979274611399,
+              "available_gib": 17.953800201416016,
+              "utc": "2026-10-29T00:33:12Z"
+            },
+            {
+              "cpu_percent": 11.764705882352944,
+              "available_gib": 17.975021362304688,
+              "utc": "2026-10-29T00:33:18Z"
+            },
+            {
+              "cpu_percent": 10.63829787234043,
+              "available_gib": 17.992034912109375,
+              "utc": "2026-10-29T00:33:23Z"
+            },
+            {
+              "cpu_percent": 11.004784688995217,
+              "available_gib": 17.96710205078125,
+              "utc": "2026-10-29T00:33:28Z"
+            },
+            {
+              "cpu_percent": 24.0,
+              "available_gib": 17.973217010498047,
+              "utc": "2026-10-29T00:33:33Z"
+            },
+            {
+              "cpu_percent": 12.440191387559807,
+              "available_gib": 17.98035430908203,
+              "utc": "2026-10-29T00:33:39Z"
+            }
+          ],
+          "command": [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-XX:+UseSerialGC",
+            "-Xmx512m",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r041-runtime\\lib\\*",
+            "com.ohinteractive.seedv6.core.brnpair2.TiedGeometryTrainingDiagnostic",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r041-tied-71.json"
+          ],
+          "last_complete_epoch": 1,
+          "last_complete_segment": 8,
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r041-tied-97.json",
+      "config_sha256": "f7ffddf65e3a87e4a8b881dafd9b18f1cf5ccd3df8909d717235c5b14331f384",
+      "result_path": "docs\\research\\brn-relational-cglhw\\raw\\r041-tied-97\\result.json",
+      "result_sha256": "edb6efee77296d0046d36e481b34bece3ea594de228eb52948335ff29ffd1515",
+      "result": {
+        "mode": "TIED",
+        "seed": 97,
+        "parameters": 20353,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.018540685154463554
+          },
+          {
+            "state_sha256": "8b0b425d81a09decde4170691b9d640914b4ee40907849d0f348e539191ea8dd",
+            "train_mse": 0.012463825378859348,
+            "updates": 8192,
+            "epoch": 1,
+            "unary_only_train_mse": 0.015974078613325424,
+            "validation_mse": 0.011184701110581815,
+            "unary_only_validation_mse": 0.01468802383545946
+          }
+        ],
+        "load_seconds": 4.0019873,
+        "optimization_checkpoint_seconds": 42.7426696,
+        "preflight_inference_ns": 6382.03,
+        "full_inference_ns": 6515.29,
+        "original_bt4_validation_mse": 0.024057649526683687,
+        "played_validation_mse": 0.03555052720929806,
+        "played_unary_only_mse": 0.04039409263158595,
+        "second_pass_disabled_validation_mse": 0.012668470172090619,
+        "second_pass_disabled_played_validation_mse": 0.03793554014537061,
+        "scope": "Tied shared neural relation recurrence;fixed endpoint;played development held out;no strength claim"
+      },
+      "by_root": {
+        "(97, 8)": {
+          "rows": 134,
+          "teacher_mse": 0.03293768919766209
+        },
+        "(71, 9)": {
+          "rows": 148,
+          "teacher_mse": 0.02980012912152845
+        },
+        "(71, 10)": {
+          "rows": 212,
+          "teacher_mse": 0.020425296674380252
+        },
+        "(97, 9)": {
+          "rows": 249,
+          "teacher_mse": 0.03326597845494097
+        },
+        "(71, 11)": {
+          "rows": 199,
+          "teacher_mse": 0.02772372957640446
+        },
+        "(97, 11)": {
+          "rows": 242,
+          "teacher_mse": 0.056858309185019024
+        },
+        "(71, 8)": {
+          "rows": 112,
+          "teacher_mse": 0.030066651448005428
+        },
+        "(97, 10)": {
+          "rows": 102,
+          "teacher_mse": 0.05507821642373736
+        }
+      },
+      "parameter_diagnostics": {
+        "unary": {
+          "rms": 0.41165744522630876,
+          "clamped": 0.0
+        },
+        "source": {
+          "rms": 0.502461411927972,
+          "clamped": 0.008626302083333334
+        },
+        "readout": {
+          "rms": 0.5111199701581307,
+          "clamped": 0.008138020833333334
+        },
+        "static_transform": {
+          "rms": 0.5889391723621146,
+          "clamped": 0.036458333333333336
+        },
+        "context_transform": {
+          "rms": 0.6390315979943303,
+          "clamped": 0.036458333333333336
+        },
+        "second_readout": {
+          "rms": 0.5404356226532595,
+          "clamped": 0.017252604166666668
+        }
+      },
+      "segments": [
+        {
+          "updates": 1024,
+          "config_sha256": "f7ffddf65e3a87e4a8b881dafd9b18f1cf5ccd3df8909d717235c5b14331f384",
+          "state_sha256": "fd051a61249eef3a5a65d9db56248e3963f5ba88e3dab22c50eeb681c072785c",
+          "completed_positions": 131072
+        },
+        {
+          "updates": 2048,
+          "config_sha256": "f7ffddf65e3a87e4a8b881dafd9b18f1cf5ccd3df8909d717235c5b14331f384",
+          "state_sha256": "dd0519456e23c8a1f6d1a191bb6bdd3029c85d6a9e816d778df6e6b1a0249a3a",
+          "completed_positions": 262144
+        },
+        {
+          "updates": 3072,
+          "config_sha256": "f7ffddf65e3a87e4a8b881dafd9b18f1cf5ccd3df8909d717235c5b14331f384",
+          "state_sha256": "3287985911c9720135ee47ac871d0b400a8a0531ebf6aadf013a49bca02435ff",
+          "completed_positions": 393216
+        },
+        {
+          "updates": 4096,
+          "config_sha256": "f7ffddf65e3a87e4a8b881dafd9b18f1cf5ccd3df8909d717235c5b14331f384",
+          "state_sha256": "72274337b50eb44ff766eb900acb6f9a323a53d90bf221105d933a8f94b4ff1b",
+          "completed_positions": 524288
+        },
+        {
+          "updates": 5120,
+          "config_sha256": "f7ffddf65e3a87e4a8b881dafd9b18f1cf5ccd3df8909d717235c5b14331f384",
+          "state_sha256": "bc0b94a35931ad1587b324fd5cf375e1b482a9e4c0c2f251f983fe6a81344f9c",
+          "completed_positions": 655360
+        },
+        {
+          "updates": 6144,
+          "config_sha256": "f7ffddf65e3a87e4a8b881dafd9b18f1cf5ccd3df8909d717235c5b14331f384",
+          "state_sha256": "2b65cc467f360cfeaf1b6517daab51418078e99e20f5ec142b74f9289f623dd5",
+          "completed_positions": 786432
+        },
+        {
+          "updates": 7168,
+          "config_sha256": "f7ffddf65e3a87e4a8b881dafd9b18f1cf5ccd3df8909d717235c5b14331f384",
+          "state_sha256": "ee214270edce564fd3ae787e951343edc422c0926089ae394b75a03ec7037f9d",
+          "completed_positions": 917504
+        },
+        {
+          "updates": 8192,
+          "config_sha256": "f7ffddf65e3a87e4a8b881dafd9b18f1cf5ccd3df8909d717235c5b14331f384",
+          "state_sha256": "8b0b425d81a09decde4170691b9d640914b4ee40907849d0f348e539191ea8dd",
+          "completed_positions": 1048576
+        }
+      ],
+      "executions": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r041-tied-97\\execution-1793234067520388400.json",
+          "sha256": "b30d6dad61e5e868f4b55f955106c0662d8b38b8acd75cbc7b76804c31fab569",
+          "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r041-tied-97.json",
+          "status": "COMPLETE",
+          "error": null,
+          "elapsed_seconds": 47.62509299995145,
+          "resources": [
+            {
+              "cpu_percent": 7.182320441988955,
+              "available_gib": 18.21337890625,
+              "utc": "2026-10-29T00:33:39Z"
+            },
+            {
+              "cpu_percent": 21.354166666666664,
+              "available_gib": 17.958683013916016,
+              "utc": "2026-10-29T00:33:45Z"
+            },
+            {
+              "cpu_percent": 20.94240837696335,
+              "available_gib": 17.934993743896484,
+              "utc": "2026-10-29T00:33:50Z"
+            },
+            {
+              "cpu_percent": 9.84455958549223,
+              "available_gib": 17.925899505615234,
+              "utc": "2026-10-29T00:33:55Z"
+            },
+            {
+              "cpu_percent": 13.684210526315788,
+              "available_gib": 17.92263412475586,
+              "utc": "2026-10-29T00:34:00Z"
+            },
+            {
+              "cpu_percent": 12.5,
+              "available_gib": 17.93279266357422,
+              "utc": "2026-10-29T00:34:06Z"
+            },
+            {
+              "cpu_percent": 11.16751269035533,
+              "available_gib": 17.94155502319336,
+              "utc": "2026-10-29T00:34:11Z"
+            },
+            {
+              "cpu_percent": 14.73684210526316,
+              "available_gib": 17.92300796508789,
+              "utc": "2026-10-29T00:34:16Z"
+            },
+            {
+              "cpu_percent": 12.426035502958577,
+              "available_gib": 17.929527282714844,
+              "utc": "2026-10-29T00:34:21Z"
+            },
+            {
+              "cpu_percent": 10.606060606060607,
+              "available_gib": 17.942310333251953,
+              "utc": "2026-10-29T00:34:27Z"
+            }
+          ],
+          "command": [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-XX:+UseSerialGC",
+            "-Xmx512m",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r041-runtime\\lib\\*",
+            "com.ohinteractive.seedv6.core.brnpair2.TiedGeometryTrainingDiagnostic",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r041-tied-97.json"
+          ],
+          "last_complete_epoch": 1,
+          "last_complete_segment": 8,
+          "process_absent": true
+        }
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "seed": 71,
+      "old_teacher_gain_over_control": 0.03588026606576622,
+      "played_gain_over_control": 0.05740675440312659,
+      "bt4_gain_over_control": 0.017572515018762558,
+      "old_unary_gain": 0.2258525379064107,
+      "second_used_old": true,
+      "second_used_played": true,
+      "mechanism_pass": true,
+      "old_gain_over_r028": 0.035667170829521644,
+      "played_gain_over_r028": 0.10993053578652756,
+      "bt4_gain_over_r028": 0.016079743214731046,
+      "full_inference_ns": 7896.055,
+      "old_family_route": true,
+      "played_family_route": true,
+      "common_guards": true,
+      "roots_improved_over_control": 8
+    },
+    {
+      "seed": 97,
+      "old_teacher_gain_over_control": 0.04015371766266018,
+      "played_gain_over_control": 0.05404437770746262,
+      "bt4_gain_over_control": 0.02480409378590942,
+      "old_unary_gain": 0.23851559366482045,
+      "second_used_old": true,
+      "second_used_played": true,
+      "mechanism_pass": true,
+      "old_gain_over_r028": 0.049663812013678865,
+      "played_gain_over_r028": 0.12343318138361425,
+      "bt4_gain_over_r028": 0.035127489236582266,
+      "full_inference_ns": 6515.29,
+      "old_family_route": true,
+      "played_family_route": true,
+      "common_guards": true,
+      "roots_improved_over_control": 7
+    }
+  ],
+  "family_pass": true,
+  "transfer_followup_justified": true,
+  "elapsed_seconds": 95.33447689993773,
+  "maximum_cpu_percent": 24.0,
+  "minimum_available_gib": 16.322063446044922,
+  "scope": "Two fixed TIED endpoints versus frozen exact ONE controls;no new development fitting;two family screening routes are not confirmation;no strength claim."
+}

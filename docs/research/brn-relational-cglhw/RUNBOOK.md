@@ -302,3 +302,8 @@ R040 complete:two dispatch tests,unchanged R039 model classes,four endpoints/
 32segments;both mechanism and family routes fail. raw/r036-objective-runner.py
 preserves old fitting bindings. New R041 ties relation transforms across neural
 passes;R040 controls may be reused only after exact active-update parity tests.
+
+R041 complete:six tests,exact R040 ONE history,2TIED endpoints/16segments,both
+mechanism/family gates pass. raw/r040-objective-runner.py and raw/r039-finite-runner.py
+preserve earlier bindings. Freeze both seeds;R042 predicts only existing heldout
+panels before any separately bounded games. No default/production change.
