@@ -26,8 +26,8 @@ public final class TypedRelationPieceNetwork {
     final boolean context=true,compose=true,mix=true,typed;final double rate;
     final double[] weights=new double[PARAMETERS],first=new double[PARAMETERS],second=new double[PARAMETERS],gradient=new double[PARAMETERS];
     final int[] stamps=new int[PARAMETERS],touched=new int[PARAMETERS];int serial,count;long step;long projectionVersion;
-    private record Projection(long version,double[] linear,double[] gates,int states){}
-    private volatile Projection projectionCache;
+    private record Projection(long version,double[] linear,double[] gates,float[] typedGates,int states){}
+    private volatile Projection projectionCache,trainingProjectionCache;
     public TypedRelationPieceNetwork(boolean typed,double rate,long seed) {
         if(!Double.isFinite(rate)||rate<=0)throw new IllegalArgumentException("Rate");
         this.typed=typed;this.rate=rate;var random=new Random(seed);
@@ -43,7 +43,7 @@ public final class TypedRelationPieceNetwork {
     public static final class Workspace {
         final Features features=new Features();
         final double[] a=new double[256],h=new double[256],b=new double[256],message=new double[256],dm=new double[256],db=new double[256],dh=new double[256],edgePre=new double[8192],edgeGate=new double[8192];
-        double[] projection,gates;int gateStates;
+        double[] projection,gates;float[] typedGates;int gateStates;
         final double[] projectionGradient=new double[5400*WIDTH];
         final boolean[] projectionTouched=new boolean[5400];
         TypedRelationPieceNetwork projectionOwner;long projectionVersion;
@@ -99,34 +99,35 @@ public final class TypedRelationPieceNetwork {
     }
     /** Required after package-local research ablations; training invalidates automatically. */
     void invalidateProjections(){if(projectionVersion==Long.MAX_VALUE)throw new ArithmeticException("Projection version");projectionVersion++;}
-    private Projection projections() {
-        var cached=projectionCache;
+    private Projection projections(boolean finite) {
+        var cached=finite?projectionCache:trainingProjectionCache;
         if(cached!=null&&cached.version==projectionVersion)return cached;
         synchronized(this) {
-            cached=projectionCache;if(cached!=null&&cached.version==projectionVersion)return cached;
-            int states=context?7:1,relations=2700*(typed?12:1);double[] linear=new double[relations*WIDTH],gates=new double[relations*states*WIDTH];
+            cached=finite?projectionCache:trainingProjectionCache;if(cached!=null&&cached.version==projectionVersion)return cached;
+            int states=context?7:1,relations=2700*(typed?12:1);double[] linear=new double[relations*WIDTH],gates=finite&&!typed?new double[relations*states*WIDTH]:null;float[] typedGates=finite&&typed?new float[relations*states*WIDTH]:null;
             for(int relation=0;relation<relations;relation++) {
                 double[] geometry=GEOMETRY[relation%225];int base=A+(relation%2700/225)*WIDTH*INPUTS;
                 for(int d=0;d<WIDTH;d++) {
                     double value=0;for(int x=0;x<10;x++)value+=weights[base+d*INPUTS+x]*geometry[x];if(typed){int sb=B+(relation/2700*WIDTH+d)*INPUTS;for(int x=0;x<10;x++)value+=weights[sb+x]*geometry[x];}linear[relation*WIDTH+d]=value;
-                    for(int blocks=0;blocks<states;blocks++) {
+                    if(finite)for(int blocks=0;blocks<states;blocks++) {
                         double pre=value,clear=(geometry[7]+geometry[8]>0&&blocks==0)?1:0;
                         if(context)pre+=weights[base+d*INPUTS+10]*clear+weights[base+d*INPUTS+11]*(blocks/7.0);
                         if(typed){int sb=B+(relation/2700*WIDTH+d)*INPUTS;pre+=weights[sb+10]*clear+weights[sb+11]*(blocks/7.0);}
-                        gates[(relation*states+blocks)*WIDTH+d]=activate(pre);
+                        int index=(relation*states+blocks)*WIDTH+d;if(typed)typedGates[index]=(float)activate(pre);else gates[index]=activate(pre);
                     }
                 }
             }
-            cached=new Projection(projectionVersion,linear,gates,states);projectionCache=cached;return cached;
+            cached=new Projection(projectionVersion,linear,gates,typedGates,states);if(finite)projectionCache=cached;else trainingProjectionCache=cached;return cached;
         }
     }
-    void prepareProjection(Workspace w) {
-        if(w.projectionOwner==this&&w.projectionVersion==projectionVersion)return;
-        var cached=projections();w.projection=cached.linear;w.gates=cached.gates;w.gateStates=cached.states;
+    void prepareProjection(Workspace w){prepareProjection(w,true);}
+    void prepareProjection(Workspace w,boolean finite) {
+        if(w.projectionOwner==this&&w.projectionVersion==projectionVersion&&(!finite||w.gates!=null||w.typedGates!=null))return;
+        var cached=projections(finite);w.projection=cached.linear;w.gates=cached.gates;w.typedGates=cached.typedGates;w.gateStates=cached.states;
         w.projectionOwner=this;w.projectionVersion=projectionVersion;
     }
     double projectionLogit(Features f,Workspace w) {
-        prepareProjection(w);Arrays.fill(w.a,0);
+        prepareProjection(w,false);Arrays.fill(w.a,0);
         for(int j=0;j<f.size;j++)for(int i=0;i<f.size;i++)if(j!=i) {
             int edge=j*f.size+i,relation=f.relations[edge],base=A+(relation/225)*WIDTH*INPUTS,source=E+f.nodes[j]*WIDTH;
             double[] geometry=GEOMETRY[relation%225];double clear=(geometry[7]+geometry[8]>0&&f.blockers[edge]==0)?1:0,blocked=f.blockers[edge]/7.0;
@@ -146,7 +147,7 @@ public final class TypedRelationPieceNetwork {
         prepareProjection(w);Arrays.fill(w.a,0);
         for(int j=0;j<f.size;j++)for(int i=0;i<f.size;i++)if(j!=i) {
             int edge=j*f.size+i,gate=(((typed?f.nodes[j]/64*2700:0)+f.relations[edge])*w.gateStates+(context?f.blockers[edge]:0))*WIDTH,source=E+f.nodes[j]*WIDTH;
-            for(int d=0;d<WIDTH;d++){double value=w.gates[gate+d];w.edgeGate[edge*WIDTH+d]=value;w.a[i*WIDTH+d]+=f.norm*weights[source+d]*value;}
+            for(int d=0;d<WIDTH;d++){double value=typed?w.typedGates[gate+d]:w.gates[gate+d];w.edgeGate[edge*WIDTH+d]=value;w.a[i*WIDTH+d]+=f.norm*weights[source+d]*value;}
         }
         double value=unary(f);
         for(int i=0;i<f.size;i++)for(int d=0;d<WIDTH;d++){int k=i*WIDTH+d;w.h[k]=activate(w.a[k]);value+=weights[Q+f.nodes[i]*WIDTH+d]*w.h[k]/WIDTH;}
@@ -164,7 +165,7 @@ public final class TypedRelationPieceNetwork {
         if(++serial==0){Arrays.fill(stamps,0);serial=1;}count=0;double loss=0;var w=new Workspace();
         for(int row=0;row<batch.length;row++) {
             if(!Double.isFinite(targets[row])||targets[row]<0||targets[row]>1)throw new IllegalArgumentException("Target");
-            var f=batch[row];double p=PairObjectiveDiagnostic.sigmoid(compiled?compiledLogit(f,w):logit(f,w)),error=p-targets[row];loss+=error*error;
+            var f=batch[row];double p=PairObjectiveDiagnostic.sigmoid(compiled?(typed?projectionLogit(f,w):compiledLogit(f,w)):logit(f,w)),error=p-targets[row];loss+=error*error;
             double g=2*error*p*(1-p)/batch.length;add(768,g);for(int i=0;i<f.size;i++)add(f.nodes[i],g);
             for(int i=0;i<f.size;i++)for(int d=0;d<WIDTH;d++) {
                 int k=i*WIDTH+d,q=Q+f.nodes[i]*WIDTH+d;add(q,g*w.h[k]/WIDTH);

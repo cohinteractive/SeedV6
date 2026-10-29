@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R052 typed neural compilation investigation**.
+Status: **ACTIVE - R053 exact typed projection factorization**.
 Owner RESUME cleared the admission gate;four loader tests pass and frozen model/
 core/teacher executable classes match their references. R046 runtime and six-
 function plans are frozen. Historical resource gates remain preserved;no GPU or
@@ -27,13 +27,12 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R051 complete:eight tests,9gradient families max5.01e-12,exact MIX control
-history,64/64 remote contrasts. Typed11.343us and3.209x update cost fail10us/3x
-gates;cache15.82MiB is within20MiB. NO candidate training. Freeze R051 runtime/
-source and preserve failed initial compile/no-op launch. R052 is a separately
-bounded optimization of the SAME neural equations:avoid compiling full inference
-gates during training and test a smaller derived inference cache with explicit
-numerical-error bounds. Correctness/cost evidence must precede any training.
+R052 complete:ten checks,full-double gradient discrepancy6.51e-19,float
+inference maxerror0.000008cp. Cost remains11.747us/4.855x,failing10us/3x;
+NO full training. Preserve both R051/R052 runtimes and negative cost results.
+R053 next tests exact factorization of source/target geometry projections and
+finite occupancy preactivations,avoiding the32400-entry joint projection table.
+Correctness and unchanged cost gates precede any separately specified fitting.
 
 All later training-data expansion must exclude R049's4096 parent/child aliases
 in raw/r049-data/selection.json (known parents already trained;future expansion
@@ -102,7 +101,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R049 | Neural local move coherence | Complete4096pairs;restricted child error1.13x both fails1.5x;no local-data pilot |
 | R050 | Neural side-to-move consistency | Complete8192flips;2.94%/1.83% child gains fail5%;no constrained prototype |
 | R051 | Source-and-target neural relation transforms | Complete8tests;11.343us/3.209x fails cost gates,no candidate training |
-| R052 | Typed neural compilation cost | Selected;prospective optimization/correctness/cost gate,no training |
+| R052 | Typed neural compilation cost | Complete10checks;accurate float cache but11.747us/4.855x fails,no fitting |
+| R053 | Exact source/target projection factorization | Selected;bounded cost/correctness only |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

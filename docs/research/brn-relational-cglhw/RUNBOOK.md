@@ -372,3 +372,8 @@ compile error,corrected and all checks rerun. Logs/sources preserved locally.
 raw/r050-audit-runner.py preserves R046-R050 bindings. R051 runtime contains
 unchanged MIX/core classes;no app build bump or candidate training. R052 targets
 derived-cache cost only,with new numerical and training-history guards.
+
+R052 complete:10tests,gradient discrepancy6.51e-19,4096board float error<.0000081cp.
+Smaller cache did not improve cost;no full fitting. Failed compile source/log
+preserved;fixed compound-var declaration and reran all checks. R053 investigates
+exact factorization of duplicated joint projections;unchanged10us/3x gates.
