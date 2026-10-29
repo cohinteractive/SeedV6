@@ -1,0 +1,36 @@
+{
+  "tests": [
+    {
+      "name": "TiedGeometryContinuationDiagnosticTest",
+      "tests": 3,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r044-TiedGeometryContinuationDiagnosticTest.xml",
+      "sha256": "98d9099fe95dd2e1f07a48551fb030d54ce4c7be3d8569c8aef5a6f2f28cd96d"
+    },
+    {
+      "name": "TiedGeometryTrainingDiagnosticTest",
+      "tests": 2,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r044-TiedGeometryTrainingDiagnosticTest.xml",
+      "sha256": "ac6e72fb9acdceec4968e0313de83f22776ac6d666cda1722507ab37348ad5e9"
+    }
+  ],
+  "passed": 5,
+  "model_updater_segment_metric_classes_match_r041": [
+    "com/ohinteractive/seedv6/core/brnpair2/TiedGeometryPieceDiagnostic.class",
+    "com/ohinteractive/seedv6/core/brnpair2/TiedGeometryPieceNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/TiedGeometryPieceNetwork$Projection.class",
+    "com/ohinteractive/seedv6/core/brnpair2/TiedGeometryPieceNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/TiedGeometryPieceNetwork.class",
+    "com/ohinteractive/seedv6/core/brnpair2/TiedGeometryTrainingDiagnostic.class"
+  ],
+  "runtime": {
+    "lib\\engine-core.jar": "9dc8c87672cc27125dbb928bbe1a59d93b6905709feef0cb6d08a4dc8d8f1db0",
+    "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "lib\\research.jar": "7672d890d51480d2330f6c82d2a7e8df37ebad83bf8493407a582d9db0e81056",
+    "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "build": 78,
+  "application_runtime_changed": false
+}
