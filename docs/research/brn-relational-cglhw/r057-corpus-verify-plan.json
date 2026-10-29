@@ -1,0 +1,15 @@
+{
+  "stage": "corpus-verify",
+  "maximum_seconds": 90,
+  "sources": [
+    "tools/brn-relational/verify_one_corpus.py",
+    "tools/brn-relational/prepare_one_exclusions.py",
+    "tools/brn-relational/prepare_objective.py",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\corpus-merge\\result.json"
+  ],
+  "command": [
+    "build/research/venv/Scripts/python.exe",
+    "-B",
+    "tools/brn-relational/verify_one_corpus.py"
+  ]
+}

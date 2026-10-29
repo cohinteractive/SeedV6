@@ -1,0 +1,138 @@
+{
+  "purpose": "cost-only phase-balanced roots; targets not used; consumed CP64 development data",
+  "seed": 20261029057,
+  "source": "docs\\research\\conventional-nnue-cglhw\\raw\\e006-data\\validation.txt",
+  "source_sha256": "1293de0195bd431d451791c6017b9f3a5819b7b5b9bd623b91509ad868c2cfe3",
+  "selected": [
+    {
+      "index": 1363,
+      "fen": "8/N7/6Q1/5K2/2P5/8/5k2/8 w - - 4 1",
+      "pieces": 5
+    },
+    {
+      "index": 1457,
+      "fen": "8/6QN/8/8/8/7K/5k2/8 w - - 64 1",
+      "pieces": 4
+    },
+    {
+      "index": 4190,
+      "fen": "3k4/8/8/8/8/8/6KP/8 b - - 0 1",
+      "pieces": 3
+    },
+    {
+      "index": 431,
+      "fen": "4k3/8/1B3Qp1/6P1/8/5P1P/6K1/2R5 w - - 23 1",
+      "pieces": 9
+    },
+    {
+      "index": 1945,
+      "fen": "8/8/4k1p1/2p2pP1/2P5/2P5/1P3K2/8 b - - 7 1",
+      "pieces": 9
+    },
+    {
+      "index": 3421,
+      "fen": "8/5k2/5p1P/3K1P2/4P1R1/8/8/2r5 b - - 12 1",
+      "pieces": 8
+    },
+    {
+      "index": 213,
+      "fen": "8/5p2/5k2/1R6/p4NpP/P4b2/1P3P1K/1r6 b - - 4 1",
+      "pieces": 13
+    },
+    {
+      "index": 1160,
+      "fen": "4r3/1P3r2/8/8/2B4k/4N1pp/8/6RK b - - 0 1",
+      "pieces": 10
+    },
+    {
+      "index": 1327,
+      "fen": "1n6/1P6/3k2pp/5p2/1N1p1K2/5P1P/2P3P1/8 w - - 0 1",
+      "pieces": 13
+    },
+    {
+      "index": 98,
+      "fen": "R1br4/1p2k2p/1p2p1p1/1N6/2P2PPP/1n2K3/4B3/8 b - - 0 1",
+      "pieces": 17
+    },
+    {
+      "index": 1985,
+      "fen": "5k2/pQ4p1/2n1q2p/2P5/5P2/7P/P5P1/3B3K b - - 0 1",
+      "pieces": 14
+    },
+    {
+      "index": 3165,
+      "fen": "4bnk1/5ppp/1N6/r5P1/p3PP2/R7/5K2/5B2 b - - 2 1",
+      "pieces": 15
+    },
+    {
+      "index": 384,
+      "fen": "3r4/2n1k2p/2n3p1/qP1Bpp2/2P5/1RQ1P2P/5PP1/B5K1 w - - 1 1",
+      "pieces": 20
+    },
+    {
+      "index": 2736,
+      "fen": "7r/1pp1k3/p3n1pp/4p3/1P2N1Pn/P1P3NP/3R4/1K6 w - - 0 1",
+      "pieces": 19
+    },
+    {
+      "index": 4553,
+      "fen": "3q2k1/1b3p2/1p1n2p1/p2pr2p/P7/1P1BNQ1P/5PP1/2R3K1 w - - 0 1",
+      "pieces": 21
+    },
+    {
+      "index": 1183,
+      "fen": "2rq2k1/1pr2ppp/p3b3/3p4/2nN2P1/P3PB1P/1PP5/1K1RQ2R b - - 0 1",
+      "pieces": 24
+    },
+    {
+      "index": 2025,
+      "fen": "4rr2/1pqb1pk1/2pR2p1/p3R2p/4N3/P5QP/1PP2PP1/6K1 b - - 2 1",
+      "pieces": 22
+    },
+    {
+      "index": 3953,
+      "fen": "r1b1rqk1/5pp1/3bp2p/1N1n4/p2B4/6P1/2R1PPBP/Q2R2K1 b - - 1 1",
+      "pieces": 23
+    },
+    {
+      "index": 2016,
+      "fen": "r1b2rk1/1p3pb1/2p3p1/p1Nn1qBp/3p4/P5QP/BPP2PP1/2R1R1K1 b - - 1 1",
+      "pieces": 27
+    },
+    {
+      "index": 2306,
+      "fen": "r1b2rk1/2p2ppp/p1n3q1/bp1p4/3P4/Q1P1PN2/P3BPPP/RN3RK1 b - - 1 1",
+      "pieces": 28
+    },
+    {
+      "index": 5283,
+      "fen": "3rr1k1/1b1nqppp/p1pb4/3p4/N7/1P1BP3/PBQ2PPP/2R1R1K1 b - - 7 1",
+      "pieces": 26
+    },
+    {
+      "index": 5490,
+      "fen": "r1bq1r1k/2p1npb1/n2p2pp/pN1Pp3/P1Q1P3/2P2N1P/2B2PP1/1RB1R1K1 b - - 1 1",
+      "pieces": 30
+    },
+    {
+      "index": 7764,
+      "fen": "rn1q1rk1/1b2bppp/pp2pn2/3p4/1P6/P3PN1P/1BPNBPP1/R2Q1RK1 w - - 1 1",
+      "pieces": 30
+    },
+    {
+      "index": 8414,
+      "fen": "rnb2rk1/ppqp1pbp/4pnp1/8/3P4/1P3N2/PBP2PPP/RN1QKB1R w KQ - 3 1",
+      "pieces": 30
+    }
+  ],
+  "special_roots": [
+    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "r1bq1rk1/ppp2ppp/2np1n2/2b1p3/2B1P3/2NP1N2/PPP2PPP/R1BQ1RK1 w - - 4 7",
+    "r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1",
+    "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+    "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+    "6k1/8/8/3q4/4Q3/8/8/6K1 w - - 0 1"
+  ],
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r057\\phase-roots.fens",
+  "sha256": "3696ff9f0c504a68e2f76c492b6111cb724405477608a4a05a1e63763f3b24ca"
+}

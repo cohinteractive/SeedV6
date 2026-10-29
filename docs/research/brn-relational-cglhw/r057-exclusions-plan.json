@@ -1,0 +1,15 @@
+{
+  "stage": "exclusions",
+  "maximum_seconds": 180,
+  "sources": [
+    "tools/brn-relational/prepare_one_exclusions.py",
+    "docs/research/brn-relational-cglhw/r049-selection.json",
+    "docs/research/brn-relational-cglhw/r050-selection.json"
+  ],
+  "command": [
+    "build/research/venv/Scripts/python.exe",
+    "-B",
+    "tools/brn-relational/prepare_one_exclusions.py",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\exclusions"
+  ]
+}

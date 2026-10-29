@@ -1,0 +1,106 @@
+{
+  "tests": [
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\benchmark-build-research-TEST-com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest.xml",
+      "sha256": "4a7b10694fc5b6d4fa30b9d4181e1bc2c60fd16a3386235b9c2bd2e171934d87",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:36:21",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.362"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\benchmark-build-research-TEST-com.ohinteractive.seedv6.core.brnpair2.LowRankRelationNetworkTest.xml",
+      "sha256": "676637c0da056a6269b8b1d7c1eaa58fca49c915b8255bf5dcb5c19e0c73c812",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.LowRankRelationNetworkTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:36:21",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.3"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\benchmark-build-research-TEST-com.ohinteractive.seedv6.core.brnpair2.ResearchFieldEvaluationTest.xml",
+      "sha256": "de3c49c2489f25696d0657bd7a1afd79a2f0c849836720c1e8fb407985baf575",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.ResearchFieldEvaluationTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:36:22",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.126"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\benchmark-build-research-TEST-com.ohinteractive.seedv6.core.brnpair2.ResearchMixedTiedEvaluationTest.xml",
+      "sha256": "dfcf36306d6c1b3efade821116cebeb1c78297f6a746aa8bd6655c5db986c613",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.ResearchMixedTiedEvaluationTest",
+        "tests": "1",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:36:22",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.125"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\benchmark-build-engine-core-TEST-com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetworkTest.xml",
+      "sha256": "866b3be2876505373cc7618389d0fd179b76a73b5a8fb1471d87e7f63da67de2",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetworkTest",
+        "tests": "13",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:36:24",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "1.004"
+      }
+    }
+  ],
+  "sources": {
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/evaluation/SearchEvaluation.java": "44ca0f7810ee757b11cacea995f26d944a16f0716741d9c7c73df2cf0b6d9f6d",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ConstructionSearch.java": "8b028c291afafe49871875e21c53645b2d8a6b956ec0696815c65be3dabea82b",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/IncrementalOne.java": "53581b36b5abdc8569429f0a74b756c6445d4318973b05d157548b0f586e1efd",
+    "research/src/test/java/com/ohinteractive/seedv6/core/brnpair2/IncrementalOneTest.java": "4accc9c4ca07fdfd94b77252e3376dd8f644f4ee55587109f07c4c8f3401dabc",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/LowRankRelationNetwork.java": "09e213dd3fbefd1ab268bcb23057a21bf17a820239dd499ea38798921b9ea6c4",
+    "research/src/test/java/com/ohinteractive/seedv6/core/brnpair2/LowRankRelationNetworkTest.java": "3bc330c9d87045a3668cf3212117dfefcecef05866b8ca6740fd8466d68119f1",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/OneLifecycleAudit.java": "3a3034775839741f7a944ce436743111b644dcaff334d294a8bd30d3eb333a32"
+  },
+  "runtime": {
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v1\\lib\\engine-core.jar": "418f928fdd2b3fb130248ae6143201ba7a2801a1060c3fe640f866835eac3e05",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v1\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v1\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v1\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v1\\lib\\research.jar": "8b240408339a219a63ce6933c6b3859344108e7e6e260aa57600c6c7d9e096ca",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v1\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v1\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "data_integrity_result": {
+    "status": "PASS",
+    "training_records": 33554432,
+    "proof_records": 66560,
+    "all_training_links_and_results_verified": true,
+    "all_frozen_file_hashes_verified": true,
+    "proof_packing_identical_to_upstream": true,
+    "maximum_probability_error_over_encoding_range": 0.00031125306735640956,
+    "manifest_sha256": "728691ec04d8b2e45749b6b04ea951f810ac00342c9907d39ce90116ea9fb0ba",
+    "trainer_sha256": "f1b9c5d05a41c1a23a4a6d7555bcfae31b5f7d076549a2cfe08283b8efacbdea",
+    "limitation": "All stored labels/provenance checked; board packing compared with upstream on distributed proof sample. Reuses existing tested BINP decoder, without independent source redecoding."
+  },
+  "cp64_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "version_build": 78
+}

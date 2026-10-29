@@ -27,7 +27,9 @@ import com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap;
  */
 public final class SearchEvaluation {
     private static final SearchEvaluation HANDCRAFTED = new SearchEvaluation(null, null, false);
-    private final java.util.function.Supplier<java.util.function.ToDoubleFunction<long[]>> researchCpFactory;
+    private record ResearchDefinition(java.util.function.IntFunction<java.util.function.ToDoubleFunction<long[]>> factory,
+                                      boolean stateful) {}
+    private final ResearchDefinition researchCpFactory;
     private final ConventionalNetwork conventional;
     private final NnueNetwork network;
     private final BrnModel brn;
@@ -205,7 +207,8 @@ public final class SearchEvaluation {
     /** Immutable definition identity for composition at the production factory boundary. */
     public boolean isBrnPair2() { return pair2 != null; }
     public boolean isConventional() { return conventional != null; }
-    public boolean isResearchCentipawnsFullRecompute() { return researchCpFactory != null; }
+    public boolean isResearchCentipawnsFullRecompute() { return researchCpFactory != null && !researchCpFactory.stateful(); }
+    public boolean isResearchCentipawnsStateful() { return researchCpFactory != null && researchCpFactory.stateful(); }
     /** Verified immutable payload identity, independent of rolling versus rebuild execution. */
     public boolean matchesConventionalPayload(String sha256) {
         return conventional != null && conventional.payloadSha256().equals(sha256);
@@ -267,7 +270,11 @@ public final class SearchEvaluation {
     }
 
     private SearchEvaluation(java.util.function.Supplier<java.util.function.ToDoubleFunction<long[]>> factory) {
-        researchCpFactory = Objects.requireNonNull(factory); conventional = null;
+        this(capacity -> factory.get(), false);
+        Objects.requireNonNull(factory);
+    }
+    private SearchEvaluation(java.util.function.IntFunction<java.util.function.ToDoubleFunction<long[]>> factory, boolean stateful) {
+        researchCpFactory = new ResearchDefinition(Objects.requireNonNull(factory), stateful); conventional = null;
         network = null; mapping = null; brn = null; brn1 = null; brn2 = null; brn3 = null;
         pair2 = null; next = null; residualBase = null; blend = null;
         incremental = false; rollingDelta = false; packedCubic = false;
@@ -279,6 +286,22 @@ public final class SearchEvaluation {
     public static SearchEvaluation researchCentipawnsFullRecompute(
             java.util.function.Supplier<java.util.function.ToDoubleFunction<long[]>> factory) {
         return new SearchEvaluation(factory);
+    }
+
+    /** Explicit research lifecycle seam. Definitions own immutable model snapshots; each factory
+     * call must return separate worker/stack storage. Production factories never select this path. */
+    public interface ResearchCpLifecycle extends java.util.function.ToDoubleFunction<long[]> {
+        void initialize(long[] board, int ply);
+        void child(long[] parent, long[] child, int parentPly);
+        void initializeFrom(long[] board, int ply, ResearchCpLifecycle source);
+        double evaluate(long[] board, int ply);
+        @Override default double applyAsDouble(long[] board) {
+            throw new UnsupportedOperationException("Stateful evaluation requires a ply");
+        }
+    }
+    public static SearchEvaluation researchCentipawnsStateful(java.util.function.IntFunction<ResearchCpLifecycle> factory) {
+        Objects.requireNonNull(factory);
+        return new SearchEvaluation(factory::apply, true);
     }
 
     public State newState(int capacity) {
@@ -310,19 +333,22 @@ public final class SearchEvaluation {
     private static final class ResearchCpState extends State {
         private final SearchEvaluation definition;
         private final java.util.function.ToDoubleFunction<long[]> evaluator;
+        private final ResearchCpLifecycle lifecycle;
         private final int capacity;
         ResearchCpState(SearchEvaluation definition,int capacity) {
             this.definition=definition;this.capacity=capacity;
-            evaluator=Objects.requireNonNull(definition.researchCpFactory.get(),"Research evaluator");
+            evaluator=Objects.requireNonNull(definition.researchCpFactory.factory().apply(capacity),"Research evaluator");
+            lifecycle=definition.researchCpFactory.stateful() ? (ResearchCpLifecycle)evaluator : null;
         }
-        @Override public void initialize(long[] board,int ply){Objects.checkIndex(ply,capacity);}
-        @Override public void child(long[] parent,long[] child,int parentPly){Objects.checkIndex(parentPly,capacity-1);}
+        @Override public void initialize(long[] board,int ply){Objects.checkIndex(ply,capacity);if(lifecycle!=null)lifecycle.initialize(board,ply);}
+        @Override public void child(long[] parent,long[] child,int parentPly){Objects.checkIndex(parentPly,capacity-1);if(lifecycle!=null)lifecycle.child(parent,child,parentPly);}
         @Override public void initializeFrom(long[] board,int ply,State source) {
-            if(!(source instanceof ResearchCpState other)||other.definition!=definition)throw new IllegalArgumentException("Research definition mismatch");
-            initialize(board,ply);
+            if(source==this||!(source instanceof ResearchCpState other)||other.definition!=definition)throw new IllegalArgumentException("Research definition mismatch");
+            Objects.checkIndex(ply,capacity);Objects.checkIndex(ply,other.capacity);
+            if(lifecycle!=null)lifecycle.initializeFrom(board,ply,other.lifecycle);
         }
         @Override public int evaluate(long[] board,int ply) {
-            Objects.checkIndex(ply,capacity);double cp=evaluator.applyAsDouble(board);
+            Objects.checkIndex(ply,capacity);double cp=lifecycle==null?evaluator.applyAsDouble(board):lifecycle.evaluate(board,ply);
             if(!Double.isFinite(cp))throw new ArithmeticException("Nonfinite research centipawn score");
             int magnitude=(int)Math.round(Math.min(Math.abs(cp),com.ohinteractive.seedv6.search.tt.TranspositionScores.MAX_NORMAL_SCORE));
             return cp<0?-magnitude:magnitude;

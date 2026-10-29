@@ -1,3 +1,24 @@
+Current gate: **PAUSED_RESOURCE_GATE - R057 UNFINISHED**.
+2026-10-29T03:59:46Z: sampled CPU83.333% exceeded80%; free15.426GiB.
+Supplement build was stopped during compilation; no training started. Supervisor
+active:null/owned0 verified. No availability retries. The VSCode-owned Gradle
+daemon is unrelated and preserved. [R057 handoff](R057-RESOURCE-HANDOFF.md) and
+[r057-resource-gate.json](r057-resource-gate.json) bind completed evidence, pending
+source hashes and the exact resume command. Blocking human action: invoke RESUME
+when one conservative CPU worker can coexist with normal use.
+Broader programme remains PAUSED - AWAITING HUMAN RESEARCH DECISION; only unfinished
+R057 is authorized after fresh admission. Earlier gates below are historical.
+
+---
+
+Current authority: **R057 ONLY AUTHORIZED**, 29 October 2026. The explicit owner
+request admits the bounded ONE efficiency/full-scale training investigation.
+[STATE](STATE.md) and [R057](R057.md) govern current progress. Fresh supervisor and
+resource admission remain mandatory. Earlier pauses below are historical evidence;
+no previous queue, GPU workload or failed experiment is reopened.
+
+---
+
 Current status: **PAUSED - AWAITING HUMAN RESEARCH DECISION** (29 October 2026).
 This is the owner's deliberate research-review gate,not a resource failure.
 [STATE](STATE.md),[assessment](ASSESSMENT-20261029.md) and

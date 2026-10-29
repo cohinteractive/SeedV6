@@ -20,7 +20,8 @@ public record ConstructionSearch(FlatSearchConfig mechanisms,int workers,int has
     public SingleDepthSearch create(SearchEvaluation evaluation) {
         Objects.requireNonNull(evaluation,"evaluation");
         if((mechanisms.has(FlatSearchConfig.Feature.FUTILITY)||mechanisms.has(FlatSearchConfig.Feature.REVERSE_FUTILITY))
-                && !(evaluation.isBrnPair2() || evaluation.isConventional() || evaluation.isResearchCentipawnsFullRecompute() || evaluation == SearchEvaluation.handcrafted()))
+                && !(evaluation.isBrnPair2() || evaluation.isConventional() || evaluation.isResearchCentipawnsFullRecompute()
+                    || evaluation.isResearchCentipawnsStateful() || evaluation == SearchEvaluation.handcrafted()))
             throw new IllegalArgumentException("Construction margins require HCE, Pair-2, conventional NNUE or explicit research centipawns");
         var table=new TTable(hashMiB);
         if(workers==1) {

@@ -1,0 +1,29 @@
+{
+  "stage": "lifecycle-v2",
+  "maximum_seconds": 120,
+  "sources": [
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\engine-core.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\engine-training.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\error_prone_annotations-2.27.0.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\gson-2.11.0.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\research.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\sqlite-jdbc-3.53.4.0.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\zstd-jni-1.5.7-20.jar",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/OneLifecycleAudit.java",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/IncrementalOne.java",
+    "docs/research/brn-relational-cglhw/r057-cost-roots.json",
+    "docs/research/brn-relational-cglhw/raw/r057/phase-roots.fens",
+    "build-assets/nnue-candidate/conventional-cp64.cnnue"
+  ],
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "-XX:ActiveProcessorCount=1",
+    "-XX:+UseSerialGC",
+    "-Xmx512m",
+    "-cp",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\*",
+    "com.ohinteractive.seedv6.core.brnpair2.OneLifecycleAudit",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\lifecycle-v2",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\phase-roots.fens"
+  ]
+}

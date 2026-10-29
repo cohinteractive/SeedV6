@@ -8,6 +8,7 @@ dependencies {
     implementation project(':engine-core')
     implementation project(':engine-training')
     implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'com.github.luben:zstd-jni:1.5.7-20'
 }
 tasks.withType(JavaExec).configureEach {
     workingDir rootProject.projectDir

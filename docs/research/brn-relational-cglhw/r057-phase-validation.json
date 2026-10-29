@@ -1,0 +1,93 @@
+{
+  "tests": [
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\phase-build-research-TEST-com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest.xml",
+      "sha256": "2d4324fbb4bee99525863532b34f1f330a1a7b1039ae320d3e8b5dbacc35aa11",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest",
+        "tests": "6",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:40:11",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.413"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\phase-build-research-TEST-com.ohinteractive.seedv6.core.brnpair2.LowRankRelationNetworkTest.xml",
+      "sha256": "046cef6e950739e82bdb45aaa6bd77ed6497322e0663b0f8b3ccb814ff4b033d",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.LowRankRelationNetworkTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:40:11",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.295"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\phase-build-research-TEST-com.ohinteractive.seedv6.core.brnpair2.ResearchFieldEvaluationTest.xml",
+      "sha256": "a7252d931980efcfd24bc495e90351294130d68fe276923a7aafa444c70b76f2",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.ResearchFieldEvaluationTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:40:11",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.107"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\phase-build-research-TEST-com.ohinteractive.seedv6.core.brnpair2.ResearchMixedTiedEvaluationTest.xml",
+      "sha256": "c00b03138418a023978cb0539ca2140cf1afb3c7ff026e31d96c6132813718a9",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.ResearchMixedTiedEvaluationTest",
+        "tests": "1",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:40:11",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.118"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\phase-build-engine-core-TEST-com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetworkTest.xml",
+      "sha256": "866b3be2876505373cc7618389d0fd179b76a73b5a8fb1471d87e7f63da67de2",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetworkTest",
+        "tests": "13",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:36:24",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "1.004"
+      }
+    }
+  ],
+  "sources": {
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/evaluation/SearchEvaluation.java": "44ca0f7810ee757b11cacea995f26d944a16f0716741d9c7c73df2cf0b6d9f6d",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ConstructionSearch.java": "8b028c291afafe49871875e21c53645b2d8a6b956ec0696815c65be3dabea82b",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/IncrementalOne.java": "988398b1ff57ee00479a6b2f3156ecb196037092d2569eb575fd7e2f520c6a58",
+    "research/src/test/java/com/ohinteractive/seedv6/core/brnpair2/IncrementalOneTest.java": "8a8d8704b415dd767c9104ef06c8344edb0964ef9b1d5e2b2419a9bf257857a7",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/LowRankRelationNetwork.java": "09e213dd3fbefd1ab268bcb23057a21bf17a820239dd499ea38798921b9ea6c4",
+    "research/src/test/java/com/ohinteractive/seedv6/core/brnpair2/LowRankRelationNetworkTest.java": "3bc330c9d87045a3668cf3212117dfefcecef05866b8ca6740fd8466d68119f1",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/OneLifecycleAudit.java": "6f42750062690f95d54e472eccd252fef72093d727202fbf50b9a10d078cea3b"
+  },
+  "runtime": {
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\engine-core.jar": "418f928fdd2b3fb130248ae6143201ba7a2801a1060c3fe640f866835eac3e05",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\research.jar": "afd196c2817eb948c8143eaa0dd92afa9e8ffcc4de7c472c65139d1b4973b230",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-v2\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "version_build": 78
+}

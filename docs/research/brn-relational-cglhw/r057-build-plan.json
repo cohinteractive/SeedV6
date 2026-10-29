@@ -1,0 +1,35 @@
+{
+  "stage": "build",
+  "maximum_seconds": 180,
+  "sources": [
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/evaluation/SearchEvaluation.java",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ConstructionSearch.java",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/IncrementalOne.java",
+    "research/src/test/java/com/ohinteractive/seedv6/core/brnpair2/IncrementalOneTest.java",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/LowRankRelationNetwork.java",
+    "research/src/test/java/com/ohinteractive/seedv6/core/brnpair2/LowRankRelationNetworkTest.java"
+  ],
+  "environment": {
+    "GRADLE_USER_HOME": "C:\\projects\\seed\\java\\seedv6-unified\\build\\migration\\gradle-user-home",
+    "JAVA_TOOL_OPTIONS": "-XX:ActiveProcessorCount=1 -XX:+UseSerialGC"
+  },
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat",
+    "--offline",
+    "--no-daemon",
+    "--max-workers=1",
+    ":research:test",
+    "--tests",
+    "*IncrementalOneTest",
+    "--tests",
+    "*LowRankRelationNetworkTest",
+    "--tests",
+    "*ResearchFieldEvaluationTest",
+    "--tests",
+    "*ResearchMixedTiedEvaluationTest",
+    ":research:installResearch"
+  ]
+}

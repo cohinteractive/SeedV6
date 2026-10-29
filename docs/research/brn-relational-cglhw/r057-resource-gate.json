@@ -1,0 +1,241 @@
+{
+  "experiment": "R057",
+  "status": "PAUSED_RESOURCE_GATE_UNFINISHED",
+  "gate_utc": "2026-10-29T03:59:46Z",
+  "cpu_percent": 83.33333333333334,
+  "available_gib": 15.425823211669922,
+  "active_cpu_ceiling": 80,
+  "failure": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\supplement-build-1793246365691144900.execution.json",
+    "sha256": "aecfdb9741c406138029e5060fcab867261b8bc77996495116f19ceaf9b52d97",
+    "execution": {
+      "stage": "supplement-build",
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "gradlew.bat",
+        "--offline",
+        "--no-daemon",
+        "--max-workers=1",
+        ":research:test",
+        "--tests",
+        "*OneCorpusSupplementTest",
+        "--tests",
+        "*OneCorpusAuditTest",
+        ":research:installResearch"
+      ],
+      "seconds": 21.28467839991208,
+      "returncode": null,
+      "error": "RuntimeError('RESOURCE_GATE: {\"cpu_percent\": 83.33333333333334, \"available_gib\": 15.425823211669922, \"utc\": \"2026-10-29T03:59:46Z\"}')",
+      "resources": [
+        {
+          "cpu_percent": 27.083333333333336,
+          "available_gib": 16.51166534423828,
+          "utc": "2026-10-29T03:59:25Z"
+        },
+        {
+          "cpu_percent": 67.70833333333333,
+          "available_gib": 16.00625228881836,
+          "utc": "2026-10-29T03:59:31Z"
+        },
+        {
+          "cpu_percent": 53.29949238578679,
+          "available_gib": 15.869804382324219,
+          "utc": "2026-10-29T03:59:36Z"
+        },
+        {
+          "cpu_percent": 53.125,
+          "available_gib": 15.723342895507812,
+          "utc": "2026-10-29T03:59:41Z"
+        }
+      ],
+      "direct_child_absent": true,
+      "descendant_release": "Verify Job Object supervisor status after this runner exits"
+    }
+  },
+  "supervisor_release": {
+    "schema": 1,
+    "repository": "C:\\projects\\seed\\java\\seedv6-unified",
+    "mode": "NORMAL",
+    "generation": 3,
+    "expires_at": null,
+    "active": null,
+    "last_operation": {
+      "id": "4e71677cc1ad4879aaad443fac9688ad",
+      "job": "Local\\SeedNNUE-4e71677cc1ad4879aaad443fac9688ad",
+      "name": "brn-r057-supplement-build-retest",
+      "controller": {
+        "pid": 21948,
+        "created": 134377199653265280
+      },
+      "started": "2026-10-29T03:59:25+00:00",
+      "stop_requested_at": null,
+      "emergency": false,
+      "grace_seconds": 30,
+      "resume_note": "R057 add existing pinned zstd dependency to research compile scope; retest source supplement before extraction.",
+      "command": [
+        "build/research/venv/Scripts/python.exe",
+        "-B",
+        "tools/brn-relational/run_one_stage.py",
+        "docs/research/brn-relational-cglhw/r057-supplement-build-plan.json"
+      ],
+      "checkpoint": null,
+      "child_pid": null,
+      "log": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r057-supplement-build-retest-launch.log",
+      "child_started": "2026-10-29T03:59:25+00:00",
+      "child_exit_code": 1,
+      "owned_processes": 0,
+      "result": "failed",
+      "ended": "2026-10-29T03:59:47+00:00",
+      "error": null
+    },
+    "latest_checkpoint": {
+      "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-training-256\\segments\\000256-723e759f09ed\\run\\seed-cnnue-v1-256",
+      "completed_superbatch": 256,
+      "next_superbatch": 257,
+      "receipt_sha256": "a49c44fe25e4232efc073dcb63e020857f94c4b3e849e3a6db00bdcad3b137c2",
+      "config_sha256": "4e734c6b484f9c9d6b4a591ab1fefa282f28934c4e6dac764915da8a2812bd05",
+      "verified_at": "2026-10-22T11:41:40+00:00"
+    },
+    "reason": "Explicit owner control",
+    "updated": "2026-10-22T08:34:40+00:00",
+    "control_file": "C:\\projects\\seed\\java\\seedv6-unified\\.git\\seed-conventional-nnue\\control.json",
+    "owned_processes": 0,
+    "expensive_allowed": true,
+    "lightweight_allowed": true,
+    "hold_complete": false
+  },
+  "prepared_sources": {
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/evaluation/SearchEvaluation.java": "44ca0f7810ee757b11cacea995f26d944a16f0716741d9c7c73df2cf0b6d9f6d",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ConstructionSearch.java": "8b028c291afafe49871875e21c53645b2d8a6b956ec0696815c65be3dabea82b",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/IncrementalOne.java": "988398b1ff57ee00479a6b2f3156ecb196037092d2569eb575fd7e2f520c6a58",
+    "research/src/test/java/com/ohinteractive/seedv6/core/brnpair2/IncrementalOneTest.java": "8a8d8704b415dd767c9104ef06c8344edb0964ef9b1d5e2b2419a9bf257857a7",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/LowRankRelationNetwork.java": "09e213dd3fbefd1ab268bcb23057a21bf17a820239dd499ea38798921b9ea6c4",
+    "research/src/test/java/com/ohinteractive/seedv6/core/brnpair2/LowRankRelationNetworkTest.java": "3bc330c9d87045a3668cf3212117dfefcecef05866b8ca6740fd8466d68119f1",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/OneLifecycleAudit.java": "2be5c29b2b2e64dc4f4d805c547cd183ad94ad2e6178c3e6782054782d10bfac",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/OneCorpusAudit.java": "1095a11842468930b579e433bc48532d7b68e3ee4689a61556fe60c9c65ee67c",
+    "research/src/test/java/com/ohinteractive/seedv6/core/brnpair2/OneCorpusAuditTest.java": "140154eeaae7c022dd11a067de597f93e96f6a7ac2a98d140d14f2324b135c66",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/OneCorpusSupplement.java": "6a6a4ec3c55ffa04135a88104f84f9a033aa59c51e460785e80d8e07d9ed8054",
+    "research/src/test/java/com/ohinteractive/seedv6/core/brnpair2/OneCorpusSupplementTest.java": "a9ab14845709312a732d65088be6aca539fc5888ad2ff1d60320b499b66dc5f2",
+    "research/build.gradle": "378fa21f7f1fcb4bc6deff879aa11b96d48224cc943ab92b6f157262086a274e",
+    "tools/brn-relational/run_one_stage.py": "a3a2baf52c220deb4d143e8a5151d133b1e1fe229818601885421f5652b30ef3"
+  },
+  "process_inventory": "No R057 Java/Python/training workload remains. Gradle PID27412 is owned by VSCode GradleServer PID9796 (created before this root); its global Gradle home is not the research isolated home. Preserved as unrelated interactive tooling.",
+  "completed": [
+    "Small 8/4 incremental ONE correctness and primary vector-CP64 lifecycle comparison",
+    "Original CP64 full hashes/labels plus upstream proof packing",
+    "All32 exact canonical index shards, reserved aliases, full merge and independent 2560-row check"
+  ],
+  "pending": [
+    "Supplement compilation/test after adding existing pinned zstd dependency",
+    "Same-source 39396 replacement and fresh8192 validation extraction/parity",
+    "Final full-scale corpus and bounded capacity selection",
+    "268435456 main training exposures and predictive/fixed-node evaluations"
+  ],
+  "training": {
+    "samples": 0,
+    "exposures": 0,
+    "checkpoints": [],
+    "optimizer_state": null,
+    "data_cursor": null
+  },
+  "validation": [
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\phase-build-research-TEST-com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest.xml",
+      "sha256": "2d4324fbb4bee99525863532b34f1f330a1a7b1039ae320d3e8b5dbacc35aa11",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest",
+        "tests": "6",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:40:11",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.413"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\phase-build-research-TEST-com.ohinteractive.seedv6.core.brnpair2.LowRankRelationNetworkTest.xml",
+      "sha256": "046cef6e950739e82bdb45aaa6bd77ed6497322e0663b0f8b3ccb814ff4b033d",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.LowRankRelationNetworkTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:40:11",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.295"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\phase-build-research-TEST-com.ohinteractive.seedv6.core.brnpair2.ResearchFieldEvaluationTest.xml",
+      "sha256": "a7252d931980efcfd24bc495e90351294130d68fe276923a7aafa444c70b76f2",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.ResearchFieldEvaluationTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:40:11",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.107"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\phase-build-research-TEST-com.ohinteractive.seedv6.core.brnpair2.ResearchMixedTiedEvaluationTest.xml",
+      "sha256": "c00b03138418a023978cb0539ca2140cf1afb3c7ff026e31d96c6132813718a9",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.ResearchMixedTiedEvaluationTest",
+        "tests": "1",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:40:11",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.118"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\phase-build-engine-core-TEST-com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetworkTest.xml",
+      "sha256": "866b3be2876505373cc7618389d0fd179b76a73b5a8fb1471d87e7f63da67de2",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.nnue.conventional.ConventionalNetworkTest",
+        "tests": "13",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:36:24",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "1.004"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\index-build-TEST-com.ohinteractive.seedv6.core.brnpair2.OneCorpusAuditTest.xml",
+      "sha256": "910504c4c8cff4e89aba8b18de30d50cc1c4121095f448385c3f92faffc39053",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.OneCorpusAuditTest",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T03:44:11",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.013"
+      }
+    }
+  ],
+  "resources": {
+    "completed_and_failed_stage_wall_seconds": 385.51305259997025,
+    "stage_attempts": 22,
+    "minimum_sampled_available_gib": 15.120197296142578,
+    "maximum_successful_sample_cpu_percent": 67.70833333333333,
+    "failed_gate_cpu_percent": 83.33333333333334,
+    "gpu_training": false,
+    "scope": "Sum of supervised stage receipts, not total developer time or CPU seconds; failed gate captured separately."
+  },
+  "resume": "RESUME CGLHW seedv6-brn-relational-20261029 in C:\\projects\\seed\\java\\seedv6-unified. Start at docs/research/brn-relational-cglhw/STATE.md and obey its current gate.",
+  "next_operation": "Fresh admission, then run r057-supplement-build-plan.json with run_one_stage.py through nnue-control.cmd, unique launch log. No repeated completed index, merge, training or game stage.",
+  "human_action": "Blocking: invoke the existing RESUME instruction when one conservative CPU worker can coexist with normal use. No new architecture/GPU/clock/promotion authorization is requested."
+}

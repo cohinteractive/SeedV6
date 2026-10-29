@@ -1,0 +1,9 @@
+{
+  "original_manifest": "docs/research/conventional-nnue-cglhw/e006-data-manifest.json",
+  "merge_result": "docs\\research\\brn-relational-cglhw\\raw\\r057\\corpus-merge\\result.json",
+  "reserved_keys": "docs\\research\\brn-relational-cglhw\\raw\\r057\\exclusions\\reserved.keys",
+  "training_replacements": 39396,
+  "fresh_validation": 8192,
+  "seed": 20261029057,
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r057\\supplement"
+}

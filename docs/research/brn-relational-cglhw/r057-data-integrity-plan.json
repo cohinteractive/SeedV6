@@ -1,0 +1,15 @@
+{
+  "stage": "data-integrity",
+  "maximum_seconds": 180,
+  "sources": [
+    "tools/conventional-nnue/verify_bt4.py",
+    "docs/research/conventional-nnue-cglhw/e006-data-manifest.json"
+  ],
+  "command": [
+    "build/research/venv/Scripts/python.exe",
+    "-B",
+    "tools/conventional-nnue/verify_bt4.py",
+    "docs/research/conventional-nnue-cglhw/raw/e006-data",
+    "docs/research/brn-relational-cglhw/raw/r057/data-integrity"
+  ]
+}

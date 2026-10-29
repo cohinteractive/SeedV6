@@ -1,16 +1,18 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **PAUSED - AWAITING HUMAN RESEARCH DECISION**.
-Owner steering deliberately pauses experimentation for an evidence-based research
-assessment and continuation decision. This is neither programme completion nor a
-resource interruption. No new experiments,training,architectures,data generation
-or games may start. Goal status is paused;supervisor active:null/owned0 verified.
-The [comprehensive assessment](ASSESSMENT-20261029.md) is complete from saved
-evidence only. Recommendation: **SUSPEND further open-ended/substantial research**;
-this is a recommendation awaiting the owner, not permanent closure or acceptance.
-[Pause receipt](pause-20261029.json) and [evidence inventory](assessment-20261029-evidence.json)
-preserve process release, checkpoint identities and the reviewed results.
+Status: **PAUSED_RESOURCE_GATE - BOUNDED R057 UNFINISHED**.
+Broader programme: **PAUSED - AWAITING HUMAN RESEARCH DECISION**.
+Active CPU83.333% exceeded80% at2026-10-29T03:59:46Z; supervisor released all
+owned children. No retries or queued workload. See [resource handoff](R057-RESOURCE-HANDOFF.md)
+and [source/process receipt](r057-resource-gate.json). Existing R057 authorization
+continues only after explicit RESUME and fresh safe admission.
+The owner explicitly authorized incremental ONE efficiency and a CP64-scale
+training opportunity on 29 October 2026. [R057](R057.md) records the bounded scope,
+prospective stages, resource protections and completion decision pause. The broader
+BRN programme remains suspended; no previous queue or other family is admitted.
+The earlier [assessment](ASSESSMENT-20261029.md), [pause receipt](pause-20261029.json)
+and [evidence inventory](assessment-20261029-evidence.json) remain historical evidence.
 
 Read root instructions, [CONTRACT](CONTRACT.md) revision2, [PRIORITY](PRIORITY.md),
 [RESOURCE-GATE](RESOURCE-GATE.md), [BASELINE](BASELINE.md) and [R012](R012.md).
@@ -24,41 +26,36 @@ Reusable instruction:
 > RESUME CGLHW seedv6-brn-relational-20261029 in C:\projects\seed\java\seedv6-unified.
 > Start at docs/research/brn-relational-cglhw/STATE.md and obey its current gate.
 
-On RESUME first resolve this human decision gate. Inspect actual instructions/Git
-state, exact root journal/version presence and `./nnue-control.cmd status`.
-No finalizer applies. Only an explicitly admitted new operation proceeds to frozen
-input and resource checks; NORMAL alone does not admit a workload. Missing raw
-artifacts in a fresh checkout must be restored or addressed as an explicit new
-reproduction, never silently invented. Do not reset a hold or restart old queues.
+A bare RESUME now addresses the resource gate for unfinished R057 only; it does
+not lift the broader programme suspension. On RESUME inspect current instructions/Git, exact root journal/version presence and
+`./nnue-control.cmd status`; no finalizer applies. Resume only the unfinished R057
+stage below after fresh resource admission and frozen-identity checks. NORMAL alone
+does not admit work. Missing raw evidence must be restored or explicitly reproduced.
+Do not reset holds or repeat completed training segments.
 
 ## Exact next admissible operation
 
-HUMAN DECISION GATE. The requested evidence review and pause are complete.
-Do not execute the former research queue. R056's eight tests
-and cost audit finished BEFORE the owner pause;no training started. ONE3.848us
-passes its measured cost criteria,but TWO12.216us fails the required5us gate.
-Both64/64 structural contrasts are capacity observations only. Existing R055
-states and all32segments are complete;no interrupted experiment needs repetition.
-Bare RESUME does not bypass this deliberate decision gate. Await an explicit
-continuation/pivot/suspension decision after the assessment. Technical resumption
-must also recheck resource and frozen input/runtime identities.
+R057 small ONE incremental implementation and lifecycle measurements pass their
+measured criteria; see r057-efficiency-results.json and r057-phase-validation.json.
+R056 reference/oracle and CP64 remain preserved. Original CP64 dataset integrity
+passes; r057-data-discovery.json records exact samples/exposures and limitations.
+Exact canonical audit and independent checks are complete:33,164,045 unique
+aliases,390,387 duplicate samples,39,396 reserved samples excluded. See
+R057-DATA.md and r057-corpus-audit.json. Next validate/run the frozen same-source
+supplement (r057-supplement-config.json), verify its packing/labels, construct the
+33,554,432-sample corpus, then the bounded capacity stage. No training/games yet.
+The selected trained capacity still needs its own efficiency and strength checks.
+The supplement first failed compilation for a missing direct zstd compile dependency.
+The pinned dependency was added; the retry was interrupted during compilation.
+Supplement code/tests are UNVALIDATED. Exact first command and frozen source hashes
+are in R057-RESOURCE-HANDOFF.md/r057-resource-gate.json. No workload may restart
+until explicit RESUME. Capacity and main-training selection remain within R057.
+After a resource gate, stop execution and resume only through this entry point.
+After the bounded experiment, return to PAUSED - AWAITING HUMAN RESEARCH DECISION.
 
-- Keep paused / accept SUSPEND: record the owner decision and exit. No empirical
-  work, deletion or permanent programme closure is implied.
-- Explicitly authorize the assessment's bounded ONE-only PIVOT: first inspect
-  current Git/supervisor and frozen R056/MIX/data identities, then prepare a NEW
-  prospective R057 protocol with its quality/cost and stop criteria. No fitting
-  is admitted under R056's failed TWO gate. Fresh resource admission remains
-  required before the separately authorized pilot; no automatic sweeps or games.
-- Explicitly request CONTINUE on another hypothesis: record the decision and
-  prepare one discriminating prospective protocol informed by the assessment.
-  Previously failed gates and stopped queues do not reopen automatically.
-- Bare RESUME without a research decision: report this gate and remain paused.
-
-Technical continuity is ready locally; there is no interrupted experiment.
-R056 source preservation commit: a9091bc7 (tested bytes pinned in
-r056-validation.json); result: [r056-results.json](r056-results.json).
-R055 and MIX checkpoints include optimizer states and complete segment receipts.
+Technical continuity: R056's eight tests and cost audit completed before the prior
+pause (source a9091bc7, r056-validation.json/r056-results.json). R055's32segments
+are complete. No old experiment needs repetition. R057 does not change their gates.
 
 All later training-data expansion must exclude R049's4096 parent/child aliases
 in raw/r049-data/selection.json (known parents already trained;future expansion
@@ -185,7 +182,7 @@ raw/r002-depth-runner.py,raw/r002-games-runner.py,raw/r003-runner.py,
 raw/r007-objective-runner.py and raw/r009-objective-runner.py. Check recorded hashes
 before any recovery; never rewrite completed bindings to accept changed tools.
 
-## Validation and required action
+## Historical validation through R056 and prior review
 
 Focused tests through R056 are preserved with exact identities in each validation
 manifest (including repeated baseline regressions);counts across stages overlap. The selector's renamed import received syntax validation but no new
@@ -197,7 +194,7 @@ Pause review rehashed seven selected model/checkpoint identities and160 saved
 neural game files,reconciled their scores/colour pairs,and checked local evidence
 and process release. No new empirical work or full suite was run for the review.
 
-Human actions required after this prompt: None to retain the pause. An explicit
-owner research-continuation decision is BLOCKING any new experimentation.
-No completed experiment needs repetition;no workload is queued. There are no
-non-blocking human tasks required to preserve this state.
+Human actions required after this prompt: BLOCKING - invoke the existing RESUME
+instruction when one conservative CPU worker can coexist with normal use. This
+blocks the pending supplement build, data preparation, training and evaluation.
+No completed stage needs repetition; no GPU/clock/promotion approval is requested.

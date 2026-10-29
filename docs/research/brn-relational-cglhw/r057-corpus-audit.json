@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "sampled_rows": 2560,
+  "forced_excluded_sample": 512,
+  "seed": 2026102957,
+  "original_records": 33554432,
+  "exact_canonical_unique": 33164045,
+  "canonical_duplicate_samples": 390387,
+  "excluded_samples": 39396,
+  "remaining_samples": 33515036,
+  "remaining_unique": 33141070,
+  "mask_all_bits_counted": true,
+  "multiplicity_totals_exact": true,
+  "original_phase_totals_exact": true,
+  "merge_result_sha256": "53c64e4151ef041195e7b46f812025bd014bc9c87b31a9296423da5916247dc6",
+  "seconds": 1.038820100016892,
+  "limitations": "Java merge checks every source ID and sort order; Python independently checks canonical encoding/reservation membership on the frozen sample, not a second full 33M-row decode."
+}
