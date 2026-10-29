@@ -1,0 +1,9 @@
+{
+  "main_class": "MixedTiedCapacityAudit",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r045-capacity-runtime\\lib",
+  "cases": "docs/research/brn-relational-cglhw/r008-cases.json",
+  "cases_sha256": "271b3cba2b8e7803c8009ca338f7335584e0dba89e7f624a2014dfc8b389b6d4",
+  "validation": "docs/research/brn-relational-cglhw/raw/r007-teacher-data/validation/data.tsv",
+  "validation_sha256": "9e0c869225dc15c89cc1ce9181eefd12e0f3d9cbe2d259d4773a5208fd99ad73",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r045-capacity.json"
+}

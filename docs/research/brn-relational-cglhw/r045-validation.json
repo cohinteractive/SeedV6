@@ -1,0 +1,29 @@
+{
+  "dispatch_tests": 2,
+  "test_path": "docs\\research\\brn-relational-cglhw\\raw\\r045-dispatch-test.xml",
+  "test_sha256": "76269210639e22147fa74ff57c332b7bffb44d5167f1dd7bf2f18996e7e62a22",
+  "prior_model_tests_sha256": "e2c0b0939ae80ba64148a659c32bdc2b0293b86e096ade20e5310c5c6ed936ec",
+  "capacity_results_sha256": "67fe693cc682da9089324547c55be73457a6916ff489ededb5ddbf19dbc219a7",
+  "model_and_segment_class_parity": [
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceDiagnostic.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork$Projection.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork.class"
+  ],
+  "controls": {
+    "docs\\research\\brn-relational-cglhw\\raw\\r044-low-71\\epoch-2.state": "fbd6a5eff743e0502772a9f1e78490c513ad7018e7bd7f3bd6de76eec0573c2e",
+    "docs\\research\\brn-relational-cglhw\\raw\\r044-low-97\\epoch-2.state": "fe08f56deb4830c34a14960ba610d24626e4eb71549c299a4a6b31959c6b87a9"
+  },
+  "runtime": {
+    "lib\\engine-core.jar": "769ca284ac94aa888e91178d4470219f782ad8cb36738e6943e82553768b261b",
+    "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "lib\\research.jar": "8834c158b58a92a67352d6e2395d59fa6d4a5d1e0e230ca91827e3e9e36a88b5",
+    "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "build": 78,
+  "application_runtime_changed": false
+}

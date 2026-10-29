@@ -1,0 +1,17 @@
+{
+  "tests": 4,
+  "test_path": "docs\\research\\brn-relational-cglhw\\raw\\r045-model-test.xml",
+  "test_sha256": "6ed47ca461156fb9d6cea36b09d2d39ad2aa8f69b3ff4b78e280878ef29db86c",
+  "output": "Controlled off-diagonal logit path=0.0023543560707758315\ncompose=false gradient errors=[2.1836699115596048E-12, 2.7253881660152524E-12, 2.99463563348994E-12, 4.597235691628822E-12, 2.328167654052759E-12, 3.6355847396170662E-12, 0.0]\ncompose=true gradient errors=[8.777700788442644E-13, 3.67352123113035E-12, 3.3197429722721383E-12, 2.5422248941392445E-12, 3.5041869308593404E-12, 3.2926634915787442E-12, 3.630447330208456E-12]\n",
+  "runtime": {
+    "lib\\engine-core.jar": "769ca284ac94aa888e91178d4470219f782ad8cb36738e6943e82553768b261b",
+    "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "lib\\research.jar": "5bcf0f69bc6f4793e3fcae0401611126a20b88b24e405cf36e13e8d06d34a6da",
+    "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "build": 78,
+  "application_runtime_changed": false
+}

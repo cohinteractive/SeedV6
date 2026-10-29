@@ -27,10 +27,10 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 R044 complete:4endpoints/32segments;LOW improves both panels,but seed97 misses
 fixed5% old/2% played gains versus control. No R044 transfer/games/rate extension.
-R045 tests a learned64-parameter cross-channel transform before the useful tied
-second pass. Implement independent equations/gradients/control parity/resume and
-bounded capacity/cost audit first. Only passing cost/correctness admits two fixed
-two-stage MIX arms;reuse R044 LOW controls after exact history parity.
+R045 six checks and capacity/cost admission pass;MIX7.298us,exact fixed-M control
+history through both rates. Execute r045-plan.json with run_objective.py under
+nnue-control,skip completed epochs/segments;analyze both fixed epoch2 endpoints
+versus frozen R044 LOW. No further epochs,transfer or games without fixed gates.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition

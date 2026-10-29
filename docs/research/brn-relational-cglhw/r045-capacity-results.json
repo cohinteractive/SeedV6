@@ -1,0 +1,39 @@
+{
+  "path": "docs\\research\\brn-relational-cglhw\\raw\\r045-capacity.json",
+  "sha256": "fb735e46994a10634c9bd54104b55a88352d1be85c0e36a9a8da665bcd5c92a7",
+  "receipt": {
+    "sha256": "fb735e46994a10634c9bd54104b55a88352d1be85c0e36a9a8da665bcd5c92a7",
+    "seconds": 1.1591004999936558,
+    "resources": [
+      {
+        "cpu_percent": 17.801047120418843,
+        "available_gib": 16.338436126708984,
+        "utc": "2026-10-29T00:51:43Z"
+      }
+    ]
+  },
+  "validation_sha256": "e2c0b0939ae80ba64148a659c32bdc2b0293b86e096ade20e5310c5c6ed936ec",
+  "models": [
+    {
+      "nonzero_remote_contrasts": 64,
+      "practical_10us_pass": true,
+      "parameters": 20417,
+      "seed": 71,
+      "full_inference_ns": 6671.505,
+      "mode": "CONTROL",
+      "preliminary_cost_pass": true,
+      "checksum": 359166.3446670131
+    },
+    {
+      "nonzero_remote_contrasts": 64,
+      "practical_10us_pass": true,
+      "parameters": 20417,
+      "seed": 71,
+      "full_inference_ns": 7297.925,
+      "mode": "MIX",
+      "preliminary_cost_pass": true,
+      "checksum": 359166.3446670131
+    }
+  ],
+  "all_cost_gates_pass": true
+}
