@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R048 matched-training playing attribution**.
+Status: **ACTIVE - R049 local move-coherence diagnosis**.
 Owner RESUME cleared the admission gate;four loader tests pass and frozen model/
 core/teacher executable classes match their references. R046 runtime and six-
 function plans are frozen. Historical resource gates remain preserved;no GPU or
@@ -27,13 +27,14 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R047 complete:32games/32deterministic probe requests,0caps/failures;MIX43.75%/25%
-versus CP64,both fail broader-match45% threshold. R048 separately bounds32games
-for the frozen R044 LOW matched-training controls using the SAME R047 runtime/
-roots/node budgets. No new MIX games,fitting or promotion. Controls and all runtime files verified;r048-plan.json and validation frozen.
-Run compare_neural.py serially under nnue-control,skip complete games;after both
-comparisons finish,run analyze_training_attribution_games.py under fresh admission
-to replay and analyze paired root differences versus R047/R043.
+R048 complete:32matched-control games and32probes,0caps/failures. LOW scores
+21.875%/34.375% versus CP64;MIX-minus-LOW +21.875/-9.375pp,all paired95%
+intervals include0. No consistent playing contribution or more games justified.
+R049 prospectively selects4096 known-training-parent/unseen-child pairs,excluding
+all consumed development aliases. First run prepare_move_neighborhood.py under
+nnue-control;it checkpoints reservations/candidates and freezes eight1024-position
+plans. Then run unchanged run_message_audit.py on r049-00 through07 plans serially
+and analyze local move errors with all four frozen MIX/LOW models. No fitting.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -95,7 +96,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R045 | Cross-channel tied neural composition | Complete6tests/2arms after resource resume;both gates pass,cost<8us |
 | R046 | Frozen cross-channel neural transfer | Complete4tests;both transfer gates pass,7/8and8/8root gains |
 | R047 | Cross-channel neural playing calibration | Complete6tests,32games;43.75%/25%,no broader match |
-| R048 | Matched-training playing attribution | Prospective32frozen-control games;no extra MIX games or fitting |
+| R048 | Matched-training playing attribution | Complete32games;21.875%/34.375%,mixed effect intervals include0;no expansion |
+| R049 | Neural local move coherence | Prospective4096known-parent/unseen-child pairs;no fitting/games |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

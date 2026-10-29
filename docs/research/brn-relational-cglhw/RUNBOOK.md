@@ -348,3 +348,9 @@ R047 complete:6integration checks,1804tested/246core-UCI class parity,32probes/
 32games,all engines released;both expansion gates fail. raw/r043-neural-games-runner.py
 preserves prior runner bindings. R048 reuses the same clean runtime for an explicit
 matched-training attribution control;no extra MIX games or training/promotion.
+
+R048 complete:32control games,32probes,all released;no consistent architecture
+playing contribution. R049 selects legal move-neighborhood diagnostic only.
+Run: nnue-control.cmd run --name brn-local-move-selection --resume-note "R049 checkpointed known-parent/unseen-child selection" --log docs/research/brn-relational-cglhw/raw/r049-selection-launch.log -- build/research/venv/Scripts/python.exe -B tools/brn-relational/prepare_move_neighborhood.py
+Selection checkpoints exclude all544played games and old reservations. No old
+Pair queue resumes. R046 runtime/four frozen states suffice;no new Java build.
