@@ -1,0 +1,87 @@
+{
+  "status": "PAUSED_AWAITING_HUMAN_RESEARCH_DECISION",
+  "observed_utc": "2026-10-29T02:31:49Z",
+  "reason": "Explicit owner controlled-pause and assessment steering;not resource failure or programme closure",
+  "head_before_pause_commit": "da583170e33231274ab7e833a5944c968d9e57ac",
+  "supervisor": {
+    "mode": "NORMAL",
+    "active": null,
+    "owned_processes": 0,
+    "last_operation": "1798916a57f844ecbcc4e3fa9a3f9e8b",
+    "last_operation_result": "completed",
+    "ended": "2026-10-29T02:27:19+00:00"
+  },
+  "process_inspection": "CIM Java/Python command-line filter for BRN classes/workstream returned no matches",
+  "interrupted_experiment": null,
+  "smallest_required_repeat": "None for completed R055/R056;new work requires a human decision",
+  "external_global_checkpoint_note": "nnue-control latest_checkpoint belongs to a different conventional-NNUE workstream;it is not this BRN resume state",
+  "recommendation": "SUSPEND further open-ended or substantial research; owner decision pending, not programme closure",
+  "assessment": "ASSESSMENT-20261029.md",
+  "evidence_inventory": "assessment-20261029-evidence.json",
+  "technical_resumption_ready_locally": true,
+  "authorization_to_resume": false,
+  "source_preservation_revision": "a9091bc720e4fcb0db7d45af180fc7204f08e347",
+  "best_supported_neural_family": "R045 MIX; no proven strength winner",
+  "playing_evidence": {
+    "seed71": {
+      "games": 16,
+      "score": 0.4375
+    },
+    "seed97": {
+      "games": 16,
+      "score": 0.25
+    },
+    "combined_two_models": {
+      "games": 32,
+      "wins": 6,
+      "draws": 10,
+      "losses": 16,
+      "score": 0.34375
+    },
+    "source": "r047-results.json",
+    "conditions": "10000 whole-request nodes; common search flags262143; eight reused opening clusters; not equal-time strength"
+  },
+  "best_family_checkpoints": [
+    "raw/r045-mix-71/epoch-2.state",
+    "raw/r045-mix-97/epoch-2.state"
+  ],
+  "latest_complete_training_checkpoints": [
+    "raw/r055-gated-71/epoch-2.state",
+    "raw/r055-gated-97/epoch-2.state"
+  ],
+  "outstanding_uncertainties": [
+    "Small repeatedly consumed opening/validation panels and candidate selection",
+    "Unequal CP64/BRN capacity,data and exposures",
+    "No practical equal-time or full production-CP64 comparison",
+    "No trained low-rank candidate or efficient incremental neural implementation"
+  ],
+  "decision_operations": {
+    "keep_paused_or_suspend": "Record decision and exit; preserve artifacts; no permanent closure implied",
+    "explicit_bounded_one_pivot": "Read STATE; verify Git,supervisor and frozen R056/MIX/data identities; prepare new prospective R057 ONE-only protocol before any resource-admitted work",
+    "explicit_continue_different_direction": "Record decision; formulate one discriminating prospective protocol; do not reopen failed gates or old queues automatically",
+    "bare_resume": "Report pending human research decision and remain paused"
+  },
+  "human_actions": {
+    "to_keep_paused": "None",
+    "blocking_new_experimentation": "Explicit owner research-continuation decision",
+    "nonblocking": "None"
+  },
+  "final_process_verification": {
+    "observed_utc": "2026-10-29T02:44:59Z",
+    "supervisor_active": null,
+    "owned_processes": 0,
+    "matching_research_processes": 0,
+    "last_operation_unchanged": "1798916a57f844ecbcc4e3fa9a3f9e8b",
+    "goal_status": "paused",
+    "method": "nnue-control.cmd status plus CIM Java/Python command-line filter; no kill required"
+  },
+  "git": {
+    "branch": "main",
+    "implementation_preservation_commit": "a9091bc720e4fcb0db7d45af180fc7204f08e347",
+    "pause_records": "Committed together; use git log for the containing commit identity",
+    "application_build": 78,
+    "version_changed_for_pause": false,
+    "preexisting_unrelated_changes_found": false,
+    "push_or_deployment": false
+  }
+}

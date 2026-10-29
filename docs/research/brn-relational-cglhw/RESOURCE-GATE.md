@@ -1,4 +1,18 @@
-Current status: **R046 gate cleared by explicit owner RESUME29October2026**.
+Current status: **PAUSED - AWAITING HUMAN RESEARCH DECISION** (29 October 2026).
+This is the owner's deliberate research-review gate,not a resource failure.
+[STATE](STATE.md),[assessment](ASSESSMENT-20261029.md) and
+[pause receipt](pause-20261029.json) govern the next operation. No research process
+remains owned or matching the workstream. R055 and R056 are complete;no interrupted
+training/game needs recovery. No automatic resource probes,retries or old commands
+are admitted. Bare RESUME must retain the pause until the owner makes an explicit
+research-continuation decision. Fresh resource admission is still required AFTER
+that decision for any separately admitted empirical operation.
+
+All resource gates and their clearances below are historical evidence.
+
+---
+
+Historical status: **R046 gate cleared by explicit owner RESUME29October2026**.
 Prepared source/protocol and both completed R045 checkpoints matched saved hashes.
 Fresh supervised admission passed;four loader tests passed and the runtime/model/
 core/teacher parity is frozen in r046-validation.json. STATE.md identifies current

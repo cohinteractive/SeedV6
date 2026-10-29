@@ -1,10 +1,16 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R056 factorized learned relational composition**.
-Owner RESUME cleared the historical admission gate. Completed stages and all
-negative findings remain preserved below;the exact current operation follows.
-No GPU or clock authority was added.
+Status: **PAUSED - AWAITING HUMAN RESEARCH DECISION**.
+Owner steering deliberately pauses experimentation for an evidence-based research
+assessment and continuation decision. This is neither programme completion nor a
+resource interruption. No new experiments,training,architectures,data generation
+or games may start. Goal status is paused;supervisor active:null/owned0 verified.
+The [comprehensive assessment](ASSESSMENT-20261029.md) is complete from saved
+evidence only. Recommendation: **SUSPEND further open-ended/substantial research**;
+this is a recommendation awaiting the owner, not permanent closure or acceptance.
+[Pause receipt](pause-20261029.json) and [evidence inventory](assessment-20261029-evidence.json)
+preserve process release, checkpoint identities and the reviewed results.
 
 Read root instructions, [CONTRACT](CONTRACT.md) revision2, [PRIORITY](PRIORITY.md),
 [RESOURCE-GATE](RESOURCE-GATE.md), [BASELINE](BASELINE.md) and [R012](R012.md).
@@ -18,22 +24,41 @@ Reusable instruction:
 > RESUME CGLHW seedv6-brn-relational-20261029 in C:\projects\seed\java\seedv6-unified.
 > Start at docs/research/brn-relational-cglhw/STATE.md and obey its current gate.
 
-On RESUME inspect actual instructions/Git state, exact root journal/version file
-presence and `./nnue-control.cmd status`. No finalizer applies. Verify frozen
-inputs and current resources; NORMAL alone does not admit a workload. Missing raw
+On RESUME first resolve this human decision gate. Inspect actual instructions/Git
+state, exact root journal/version presence and `./nnue-control.cmd status`.
+No finalizer applies. Only an explicitly admitted new operation proceeds to frozen
+input and resource checks; NORMAL alone does not admit a workload. Missing raw
 artifacts in a fresh checkout must be restored or addressed as an explicit new
 reproduction, never silently invented. Do not reset a hold or restart old queues.
 
 ## Exact next admissible operation
 
-R055 complete:both16384-update endpoints/all32segments verified,218.24s,
-maxCPU25.64%/minfree16.72GiB,all released. Target-state modulation is used but
-oldteacher gains0.29%/1.16% and played-0.94%/+2.87% fail2%/5% BOTH-seed gate.
-No transfer,games or further same-recipe training. R056 is a new low-rank learned
-key/query relational operator with nonlinear per-piece states and tied second
-composition,using associative pooled contractions. Implement isolated prototype,
-independent quadratic/gradient/special-move/state checks and <=5us cost gate before
-any fitting. R056.md includes primary research and architectural limitations.
+HUMAN DECISION GATE. The requested evidence review and pause are complete.
+Do not execute the former research queue. R056's eight tests
+and cost audit finished BEFORE the owner pause;no training started. ONE3.848us
+passes its measured cost criteria,but TWO12.216us fails the required5us gate.
+Both64/64 structural contrasts are capacity observations only. Existing R055
+states and all32segments are complete;no interrupted experiment needs repetition.
+Bare RESUME does not bypass this deliberate decision gate. Await an explicit
+continuation/pivot/suspension decision after the assessment. Technical resumption
+must also recheck resource and frozen input/runtime identities.
+
+- Keep paused / accept SUSPEND: record the owner decision and exit. No empirical
+  work, deletion or permanent programme closure is implied.
+- Explicitly authorize the assessment's bounded ONE-only PIVOT: first inspect
+  current Git/supervisor and frozen R056/MIX/data identities, then prepare a NEW
+  prospective R057 protocol with its quality/cost and stop criteria. No fitting
+  is admitted under R056's failed TWO gate. Fresh resource admission remains
+  required before the separately authorized pilot; no automatic sweeps or games.
+- Explicitly request CONTINUE on another hypothesis: record the decision and
+  prepare one discriminating prospective protocol informed by the assessment.
+  Previously failed gates and stopped queues do not reopen automatically.
+- Bare RESUME without a research decision: report this gate and remain paused.
+
+Technical continuity is ready locally; there is no interrupted experiment.
+R056 source preservation commit: a9091bc7 (tested bytes pinned in
+r056-validation.json); result: [r056-results.json](r056-results.json).
+R055 and MIX checkpoints include optimizer states and complete segment receipts.
 
 All later training-data expansion must exclude R049's4096 parent/child aliases
 in raw/r049-data/selection.json (known parents already trained;future expansion
@@ -106,7 +131,7 @@ Both consumed development panels remain distinct from future final evaluation.
 | R053 | Exact source/target projection factorization | Complete10checks;2.64MiB/1.656x improves,but10.617us fails;route untrained |
 | R054 | Target-state neural message modulation | Complete8checks;9.284us/cache1.32MiB pass;training protocol justified |
 | R055 | Matched target-state neural training | Complete2arms/32segments;both quality gates fail,no transfer/games |
-| R056 | Factorized learned relational composition | Prospective implementation/correctness/cost only |
+| R056 | Factorized learned relational composition | Complete8checks;ONE3.848us,TWO12.216us;TWO gate fails,no fitting |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -129,10 +154,22 @@ R022 and R028 ONE are the played neural references:32games each versus CP64,
 point scores9.375%/21.875% and15.625%/12.5% respectively. R041 TIED now has32games at12.5%/34.375%;positive prediction gates do not
 establish consistent playing improvement. No reliable neural strength winner is established. ONE has lower measured full-evaluation cost;
 TWO/attention variants remain preserved failed architectural controls.
-R045 MIX is the strongest current predictive neural candidate by its matched
+R045 MIX is the best-supported predictive-and-played neural family by its matched
 development gates:oldteacher3.6-6.6% and played11.6-12.0% better than R044 LOW,
-with useful mixing and cost<8us. Both R046 transfer gates pass;R04732games score43.75%/25% versus CP64,
-failing broader-match admission. Predictive improvement has not established strength.
+with useful mixing and cost<8us. Both R046 transfer gates pass. R047 scores
+43.75% over16games for seed71 and25% over16 for seed97;combined6W10D16L,
+34.375% over32games across TWO checkpoints. Both fail broader-match admission.
+MIX search throughput was24.5%/26.9% of CP64 under common search settings.
+R048's matched LOW control shows opposite mixing effects across seeds,with both
+intervals including0. Predictive improvement has not established strength.
+R055 GATED seed97 has better single-endpoint static losses but its family failed
+quality gates;there is no transfer/game result and no strength promotion.
+MIX states: raw/r045-mix-71/epoch-2.state and raw/r045-mix-97/epoch-2.state.
+GATED states: raw/r055-gated-71/epoch-2.state and raw/r055-gated-97/epoch-2.state.
+All four identities and unchanged CP64/Gen32/Pair24 are verified in the assessment
+inventory. Main uncertainties: small reused opening panel and seed selection,
+unmatched CP64/BRN capacity/data/exposure,distribution generalization,inference
+cost and no production-search or equal-time confirmation.
 Fixed-node results are not equal-time Elo. No clock tournament or GPU work ran.
 
 R010's SQLite checkpoint and release evidence are pinned by r010-checkpoint.json.
@@ -150,12 +187,17 @@ before any recovery; never rewrite completed bindings to accept changed tools.
 
 ## Validation and required action
 
-Focused tests through R045 are preserved with exact identities in each validation
+Focused tests through R056 are preserved with exact identities in each validation
 manifest (including repeated baseline regressions);counts across stages overlap. The selector's renamed import received syntax validation but no new
 runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,
 configs and reusable fixtures are tracked. Build78 for the explicit core research seam;production evaluator unchanged;no push.
 
-Human actions required after this prompt: None while admitted autonomous work
-continues. Any actual resource/authority gate will replace this statement before
-execution ends. No completed training or earlier experiment needs repetition.
+Pause review rehashed seven selected model/checkpoint identities and160 saved
+neural game files,reconciled their scores/colour pairs,and checked local evidence
+and process release. No new empirical work or full suite was run for the review.
+
+Human actions required after this prompt: None to retain the pause. An explicit
+owner research-continuation decision is BLOCKING any new experimentation.
+No completed experiment needs repetition;no workload is queued. There are no
+non-blocking human tasks required to preserve this state.

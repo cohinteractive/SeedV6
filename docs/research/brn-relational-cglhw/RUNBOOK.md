@@ -1,5 +1,12 @@
 # Execution and recovery
 
+**PAUSED - AWAITING HUMAN RESEARCH DECISION (29 October 2026).**
+Read [STATE](STATE.md) and the [assessment](ASSESSMENT-20261029.md) before any
+command below. The owner stopped active experimentation. Bare RESUME does not
+authorize research; the exact decision branches are in STATE. Technical recovery
+is ready locally, but no empirical workload is currently admitted. Historical
+commands and stage transitions below are continuity evidence, not a live queue.
+
 Repository root: `C:/projects/seed/java/seedv6-unified`. Read STATE/CONTRACT first.
 Current local Java21: `C:/java/jdk-21/bin/java.exe`; chess-enabled Python:
 `build/research/venv/Scripts/python.exe`. No global environment changes required.
@@ -396,3 +403,17 @@ R055 complete:both checkpoints/all32segments/4epoch receipts verified;no resourc
 interruption. Both quality gates fail;no further same-recipe fit or games.
 R056 new learned low-rank relation prototype requires independent quadratic
 oracle/gradients and materially lower cost before any separately bounded training.
+
+R056 subsequently completed all8focused tests and its cost audit before the owner
+pause. ONE3.848us passes measured cost;TWO12.216us fails the required5us/75%-of-MIX
+gate. No candidate fitting began;no interrupted work needs repetition. Full source,
+runtime/test identities and negative result are in r056-validation.json and
+r056-results.json. The current audit runner supports LowRankRelationCapacityAudit;
+raw/r054-audit-runner.py preserves the earlier R054 binding. R056 is complete and
+must not be rerun merely because a session resumes.
+
+Controlled-pause review verified supervisor active:null/owned0 and no matching
+research process. It preserved seven selected payload/checkpoint identities and
+reconciled160existing neural games. No new builds,training or tournaments ran for
+the assessment. SUSPEND is the assessment recommendation,not owner acceptance.
+Only an explicit owner decision can reopen research under STATE's current gate.

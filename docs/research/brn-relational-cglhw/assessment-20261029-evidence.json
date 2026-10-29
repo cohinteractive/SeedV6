@@ -1,0 +1,642 @@
+{
+  "workstream": "seedv6-brn-relational-20261029",
+  "review_utc": "2026-10-29T02:43:31.977665+00:00",
+  "source_revision": "a9091bc720e4fcb0db7d45af180fc7204f08e347",
+  "method": "Read-only standard-library SHA-256 and arithmetic recount of existing JSON evidence; no model execution, training, new statistical test, legal replay or resource probe.",
+  "retained_models": [
+    {
+      "id": "CP64",
+      "path": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+      "bytes": 3940952,
+      "sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+      "identity_verified": true
+    },
+    {
+      "id": "Gen32",
+      "path": "build-assets/production/bre-pair2-g32.brn-pair2",
+      "bytes": 795032,
+      "sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "identity_verified": true
+    },
+    {
+      "id": "Pair24",
+      "path": "docs/research/brn-relational-cglhw/raw/r002-scale-aligned-71/epoch-24.brn-pair2",
+      "bytes": 795032,
+      "sha256": "ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627",
+      "identity_verified": true
+    },
+    {
+      "id": "r045-mix-71",
+      "path": "docs/research/brn-relational-cglhw/raw/r045-mix-71/epoch-2.state",
+      "bytes": 490048,
+      "sha256": "def9b515f0d5b1ee063cf4e783d82c87d16b6205ac900ce6630075097f9bd9bc",
+      "identity_verified": true
+    },
+    {
+      "id": "r045-mix-97",
+      "path": "docs/research/brn-relational-cglhw/raw/r045-mix-97/epoch-2.state",
+      "bytes": 490048,
+      "sha256": "0e3920f248e55f5205fcf17707e0dec5ab58ad058719601d4752d5328f95979b",
+      "identity_verified": true
+    },
+    {
+      "id": "r055-gated-71",
+      "path": "docs/research/brn-relational-cglhw/raw/r055-gated-71/epoch-2.state",
+      "bytes": 491584,
+      "sha256": "d4c487a4dbad81d11b9fd9cc1a9c1e9da1b1586cbf2189c91be807c766e99a68",
+      "identity_verified": true
+    },
+    {
+      "id": "r055-gated-97",
+      "path": "docs/research/brn-relational-cglhw/raw/r055-gated-97/epoch-2.state",
+      "bytes": 491584,
+      "sha256": "706f6880cba0e7eefc4dc5dd4c5902107c210c2519df4551ef18969862129662",
+      "identity_verified": true
+    }
+  ],
+  "input_availability": [
+    {
+      "config": "r045-mix-71.json",
+      "key": "train",
+      "path": "docs/research/brn-relational-cglhw/raw/r007-teacher-data/train/data.tsv",
+      "bytes": 73013807,
+      "recorded_sha256": "b9e01e578c2765a77a906b818d8ba5595d7c3f64156674c4dccd2f80a5cde63a",
+      "check": "Local presence and size only in this review; hashes were verified by frozen experiment runners and must be rechecked before resumed use."
+    },
+    {
+      "config": "r045-mix-71.json",
+      "key": "validation",
+      "path": "docs/research/brn-relational-cglhw/raw/r007-teacher-data/validation/data.tsv",
+      "bytes": 286254,
+      "recorded_sha256": "9e0c869225dc15c89cc1ce9181eefd12e0f3d9cbe2d259d4773a5208fd99ad73",
+      "check": "Local presence and size only in this review; hashes were verified by frozen experiment runners and must be rechecked before resumed use."
+    },
+    {
+      "config": "r045-mix-71.json",
+      "key": "original_validation",
+      "path": "docs/research/brn-relational-cglhw/raw/r002-scale-data/validation.tsv",
+      "bytes": 287427,
+      "recorded_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+      "check": "Local presence and size only in this review; hashes were verified by frozen experiment runners and must be rechecked before resumed use."
+    },
+    {
+      "config": "r045-mix-71.json",
+      "key": "played_validation",
+      "path": "docs/research/brn-relational-cglhw/raw/r035-teacher-data/validation/data.tsv",
+      "bytes": 100700,
+      "recorded_sha256": "b3b542217af2c6c3dca8b2906705417192541b66b81081fa6c1337a9ce744f0f",
+      "check": "Local presence and size only in this review; hashes were verified by frozen experiment runners and must be rechecked before resumed use."
+    },
+    {
+      "config": "r055-gated-71.json",
+      "key": "train",
+      "path": "docs/research/brn-relational-cglhw/raw/r007-teacher-data/train/data.tsv",
+      "bytes": 73013807,
+      "recorded_sha256": "b9e01e578c2765a77a906b818d8ba5595d7c3f64156674c4dccd2f80a5cde63a",
+      "check": "Local presence and size only in this review; hashes were verified by frozen experiment runners and must be rechecked before resumed use."
+    },
+    {
+      "config": "r055-gated-71.json",
+      "key": "validation",
+      "path": "docs/research/brn-relational-cglhw/raw/r007-teacher-data/validation/data.tsv",
+      "bytes": 286254,
+      "recorded_sha256": "9e0c869225dc15c89cc1ce9181eefd12e0f3d9cbe2d259d4773a5208fd99ad73",
+      "check": "Local presence and size only in this review; hashes were verified by frozen experiment runners and must be rechecked before resumed use."
+    },
+    {
+      "config": "r055-gated-71.json",
+      "key": "original_validation",
+      "path": "docs/research/brn-relational-cglhw/raw/r002-scale-data/validation.tsv",
+      "bytes": 287427,
+      "recorded_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+      "check": "Local presence and size only in this review; hashes were verified by frozen experiment runners and must be rechecked before resumed use."
+    },
+    {
+      "config": "r055-gated-71.json",
+      "key": "played_validation",
+      "path": "docs/research/brn-relational-cglhw/raw/r035-teacher-data/validation/data.tsv",
+      "bytes": 100700,
+      "recorded_sha256": "b3b542217af2c6c3dca8b2906705417192541b66b81081fa6c1337a9ce744f0f",
+      "check": "Local presence and size only in this review; hashes were verified by frozen experiment runners and must be rechecked before resumed use."
+    }
+  ],
+  "reviewed_reports": {
+    "BASELINE.md": "e467b5f0c4407355617df986a20b8f1ca18fe73cbd8e630a703ab4ce3af4d0ff",
+    "r000-profile-results.json": "f21be8be0cc031a449e5725d5952eb191768d25a9d2fdc873833bafb186a5caf",
+    "r001-results.json": "b4e48136f08c084d8af6ea004b6f2ac7b07921b82110283fba1369b8bbd6a729",
+    "R001.md": "bb7bc648cdb05d759ebd9ac082aefd80c478d5e41c8a8b1e83cf468c39cd8724",
+    "r001b-results.json": "33963a43f1e32da2a770a50541c71eafb9b97996803d72ba52eac5c9f65117d2",
+    "R001B.md": "59d48daea0ac431a2f85bedc901be9d052f38695f1e29ab1e4869662e51534dd",
+    "r002-coverage-results.json": "1d0d88e31ca8934c848e66253f4a9f6debc4a85ad2ddafb8b60782f882394cda",
+    "r002-depth-results.json": "47082929b3c6e2cd4005ec0eaa941a22e3348b9c44122627933803c7cddb9cff",
+    "r002-games-results.json": "38ecf2d38820ca3a0710ac1ee2c0e91e2926b112c12a508683b84096fa5002c4",
+    "R002-GAMES.md": "b3e28e04adef1d76494d5454ab58a85a382857037d833e05341c912f37de90d8",
+    "r002-results.json": "e943be1d69e48977d1e74b9eb2afacf614b6e4d1d69b2578ff643aaee0387342",
+    "r002-scale-results.json": "c03ace21a31091e6b1519cab5f5459855c15371abaae5e01f94f50b74cd608d2",
+    "R002-SCALE.md": "b88ca37770fd3eb1ac9e20effc3eb5b6b8278a6c2348f8a10be54dcab47401d4",
+    "R002.md": "7e18cf15cd8b92554a0418a4dc301263200da66cbcdb5bd347a7ec47e0dd33ec",
+    "r003-results.json": "ba8a1f3729647aeada67b8151e0e97c0c89fbb97c01495a02515332d2a4d25cf",
+    "R003.md": "7b2ce4571e7c48cdf4580aedacc07c090d466f649762613a967c1a9ece6d9f38",
+    "r004-results.json": "6135ef73d52dfe38ccb5985f9dbc6196d2c07583b9c4ffbf783cac269a7513da",
+    "R004.md": "4c48d917d60d9304835192f5d37dcab929acca9fadd7193f5184eb6312e274ba",
+    "R005.md": "e7be7439f743857d0ecdef8ce64c00dec7e6c6254e17fbc1579700a072bedf4f",
+    "r006-results.json": "5452ebe6eb7f1f1420551ec61062f5704c5c84d0af09e20817ff438ba19f0d18",
+    "R006.md": "e961263e1c4b4944bd6e94353538d7d856a72c2b5785285c4238a6237c5b92cc",
+    "r007-bt4-games-results.json": "c15964d15f70fe76758cf432760b1459f678a9130a72542e479db2562b6b7ee2",
+    "R007-BT4-GAMES.md": "c2c3770895d0ee4f7cff87279ac04a7806f50586f96404584abcbbcd5d728455",
+    "r007-gate-results.json": "eac6fdedb9785a14ca526e85ab3e8842a50030753492b579bedb5cb18df8cd92",
+    "r007-results.json": "e7962414738ce5074cebb7ef9c2712492c36c508846e5592f01386da89a18290",
+    "r007-teacher-results.json": "383b42dbc35e970d30c8b5b763246af9c7944c12c36ccd637f6dea1d7da2d1b2",
+    "R007.md": "b91f48c9c82aa0fd573e5cfa036fdb01f88b5e69ed013c9f21281703231d49c1",
+    "r008-results.json": "9fa3a5074d44d84d54684ef7697f381b89880f4e0531f368ad95b87fb647e3e7",
+    "R008.md": "6262ed171aaac8342696daa5930cd24410c303c9362c132ff5f9e819bedfbb68",
+    "r009-results.json": "f00364dc75e51a794e73c44278320285ac692a1f59f874cb3bc05f5e521fff90",
+    "R009.md": "282a4f72991001cbd58e8c910e997a9a6ed34683453a7534fdca80458450c4b4",
+    "R010.md": "b9c48a2035d0662337679cfbbd7073d3f48600cee6b75b3f8be0bd0a78a2e8aa",
+    "r011-results.json": "fead665039b2deca9831ce367b937a164eba948081db674f85680ed1c287ed43",
+    "r011-support-results.json": "bd94c0e10357a6b25826e9e604165deac4bbb9a7121824b9844cd1705b21eec1",
+    "R011.md": "03f0b0e29176feacb1ac93e81cf8b8b2e130b6c5cafc52bbcd8d98019e682139",
+    "r012-capability-results.json": "ecd71cfef7160cc9aba30122b438ae5b6c92d6c805e2248d4c3bbb015be44603",
+    "r012-results.json": "cf61e32975accec386f85a0b5a099ef03698e6a8aa96e001c975abb7438fc3e2",
+    "R012.md": "45d17cee971328407bdf9c5a718a925eec8d948686a1d66c3bf032d5846bea19",
+    "r013-results.json": "ed74a6eb6ff39c7e8ea72828149e438e26bdd0a1d056e5f7da2e977ec466e5af",
+    "R013.md": "dce9520c4c51ed5273fb55f5951883ed47ff633bf93b35796b44a12f43e659c8",
+    "r014-capability-results.json": "9012746d85e92a847018948cf215e56208d74578639516ab5a2a0137c70efbf9",
+    "r014-results.json": "56700713727c6f6ba0e82438986085f9782b91c0d5e52d578fbbf3fe0bc251a9",
+    "R014.md": "16295563ebc9ccf461574611be6bde0b59bcf137255be72b4b98416e5d1e6969",
+    "r015-results.json": "5d8ee8b41d9df5b25d379551b5f68deb777aafe5e10dfea5fc585449e659af22",
+    "R015.md": "38bcc7c39e19d6f9c86ba745a7d76bed49545a5fb2b74717d971a549c03d2cd2",
+    "r016-results.json": "e07421a3981cdc0cdf168a41434a7f2707fc123f1b92feca324f95e2d4843946",
+    "r016-selection-results.json": "66a97d045b92bcef2fe72a098121404ed16732a2f8970826eae1725209210fdc",
+    "R016.md": "2ac2d823e9a1310bd7f33f576a00b3a3124780086e90c4f5723d0c8c05ac2493",
+    "r017-capability-results.json": "1a4db8e2d083df2755d5d726b476f61adc56cec620e94c965fe094f03eac7136",
+    "r017-results.json": "ca8f8025bf9f314484bd8385314833b4b807e2903bfe95092639b76891492ba0",
+    "R017.md": "7e5f55ce7f5e7f9b8bbefe50108e3c3790e0383eedd95fee51b8067f3d06086b",
+    "r018-results.json": "e81390bb4c9d70da41d66a3310cf6ec3143dd7bf0cfa1a147617ef04dc1a4075",
+    "R018.md": "3bd098352dea0ab3bf8b7348509c07cd73a9783ed72949e5f7472c562342bab3",
+    "r019-results.json": "18c4ba886f3ad1b585d5eebbfc6808c362d906cb07489729f3f3cb207961539a",
+    "R019.md": "527a3a864c8f30cecc518bca361152910cb0c0a897b25fdfd1f7438d4cb0c216",
+    "r020-results.json": "782ee03210b22079ee281cd53c0120b9d2cb89454875e9865b716c835bd63cef",
+    "r020-symmetry-results.json": "a26ba73fe7c153eca796df52982d19240771ae62359bc5d40f05a1b36737b3ae",
+    "R020.md": "5278c096c973a88714a993ec2c87e637c0c34e673092b7cdf1e10677aed80721",
+    "r021-results.json": "7f1e70705b4c875304e9a7501c41a31f2d24cf153636566a248ac25d12a327a9",
+    "R021.md": "37cc21c7ab85cb521e3b3ea93e641faabef42dd90734fc370ac7790fdd15ee14",
+    "r022-results.json": "bff6aa78bdc8171933f8823cb2336c38316eee839b95fd25c41a62ed9b65f5be",
+    "R022.md": "6c431528cdeaadf90157c1b7a048c28add27a4ae97eec0915b03a267976160cf",
+    "r023-results.json": "435397a18c1091acf7244b8ccb4ba5678080c9c881bfdd4537645308f454c646",
+    "R023.md": "538089174bdbef8d55039520a6df09dc8c9133030b9fca16a2c192c5c6678ba3",
+    "r024-results.json": "ccbb1fb0fabaf205d2602d18b0545515066a42402542c1b42a33f5de73ccd0f9",
+    "R024.md": "8fd4ff3a9f24273ef397a608c741023c5e172588b179f1d8c194933b153e8c4c",
+    "r025-openings.json": "494b3fda88e3f4e70e00ea28da50c81c52b6aad252bd4c6a485bcc93cf7e2dd9",
+    "r025-results.json": "7239bca8992870bfc0a7b8b763ecf08e4d1b34c7c6a5edab4e2c80f53fbf5654",
+    "R025.md": "b387e0d25865c2fd703c48a35dac3c85ec06de73f32939512e4ae00c5da24c5b",
+    "r026-results.json": "976ecd57c010352209f7539f9c7317f7edb6426e02058e94031a4c2fc3b52a66",
+    "R026.md": "d8c15f0a01d318f6f12ca7a1c1e2f10c97a3a04991297516ed00c22148b012d9",
+    "r027-results.json": "c9d17c87521d9c74241856707b44963d11ab487ef2c48b17a6c80126034a4489",
+    "R027.md": "0fa9af268ffa6adcb5c89732b2d86b0b8efe720ba7867f84786b3f6b4575b2cd",
+    "r028-capability-results.json": "b1fe49a170af7b2d99da2d69427d24b8088c22c2efc159507676ffa4fde6e5e7",
+    "r028-results.json": "efbc6620957bba9bcf9c7f49d2bc0f68872d21b8ac4e816ac694fb0ce24043a5",
+    "R028.md": "852f2d95348e842ba8a23deb71ef0217b412d9a4678393009462608ef4e72597",
+    "r029-results.json": "76613587b5f73af4e8845551cd438d94c7dbfeee9bb767b23ce6628bf218937c",
+    "R029.md": "15d1e3dd692eb5c4498151e1805d6b1698488bda3db3ac7f2055c91ff2c239f2",
+    "r030-results.json": "6f4c0c712672076034a9453ed43ab76ebbebde1f54c714ef55fd5e4f0d3255d8",
+    "R030.md": "4a600c8e4f8b3784b4599bc5e74a6ca0e81fea2c15e68e0572a3b7cdbf404bf0",
+    "r031-results.json": "861f1e181265563e9e1c3ac594cc522048a7aef926b58f7bf5da08061c88dddc",
+    "R031.md": "2e65782c0466d052c4dfdd8b73a63a6bebbb6ef41333490b8e2c79b316437e5f",
+    "r032-results.json": "bf15a687dc97e564946c9d40abe86cd8ba0283df01072e43bd13bfd09942f4e9",
+    "R032.md": "e00837a387515d3afc61092093f558a7a0f64a4c155a91f44baeabeb58a7b803",
+    "r033-results.json": "f70ab062b76993e0e2fb282335e22625715cd33afd783cff2a3da5b0ec605474",
+    "R033.md": "125d7078f6ea0ac3b6346be6c147f008a5ce9c37031fcaecc67b5af87c7e0d29",
+    "r034-results.json": "cef33c868b8bf7fa96ab4be772b91746dd558ebf0267f82cd3d493c0d0a2177a",
+    "R034.md": "90d3d66647b2045a948e7c427d3d3fa2dac0abea93cbffe497944f5b34b3e85b",
+    "r035-results.json": "4c1f7cc37830e8c5d0f67821556b36d5e423e045f3f23c1d9e48c7fd889fd1ca",
+    "R035.md": "791ee72707765155fb380585358708aaaed2d68f1289c03bd74ad5b1937bad4d",
+    "r036-results.json": "72843d022c6dc4bd51f954f0115d20c35a160abbf60d6db5293e4bb2d00d8487",
+    "R036.md": "1838142ae282d30ac010d0d51ecfec7115766c6589c5e253769e05583007caac",
+    "r037-results.json": "2ff11981e8a5b849e246490cfd4a43db3f6a022fe92b2e9595b107678fda6144",
+    "R037.md": "bc37762a9c0a119ca4d11c427570bf78ed3f0916239d838a28240c3ca20e5384",
+    "r038-results.json": "298cbba26ce1e2ff241b726cfa2392285e42bd37212c60cee7bc7d05b10df2eb",
+    "R038.md": "f889c41e9ae1d72a91a16b3990a883140246969cc8bfba9f0616361fd251b8eb",
+    "r039-results.json": "3f6f4158ef82af8b668d3a81b044c84e9f5f5cbc9d5e2c91e1446517a1ef2d74",
+    "R039.md": "e6600cc6c104fb98a5fc1837bd649b078a0217746ab672cc204dec9de8603b08",
+    "r040-results.json": "8b2f27e5edf911dea6493b237a6c93a1963d36f97562dcc7338b380385304c4c",
+    "R040.md": "54d2753d32b1f08d5f31b735756caa52df22c3bd5b515dd76d81bd5245de1551",
+    "r041-capacity-results.json": "6f9a971a45cb0b093ec4991090994915765cf29f425472d9c63a203a9b2a53ce",
+    "r041-results.json": "97b6dad0dc436c1a6f61ba8cda59f502595505332ea68bd6c8e17468558a6a56",
+    "R041.md": "5953f073adbfeb8c886b4aa75ba4ba76fb03be3bd74aa9d1946a03ca32028727",
+    "r042-results.json": "3d8d883f03f96254d34bf7c7334ce01dc741a1fdbb410a6f4f3d9750a38b3430",
+    "R042.md": "d7dae8a4b0ad197350aa121e8ed6c902f9a80774f9e9c7484ff5dc123f480ec3",
+    "r043-results.json": "7136cfd40e773c357c03ebee0dc530c480c85e7078f7b6e5f58d4960ea94888f",
+    "R043.md": "e64efef99cba3cdd4c61ed0a1801cf628d62ebd6fe3118fa57c219b5596efd6d",
+    "r044-results.json": "151ab958a1dbaee4278330ceba4020dbd6d45837f1ce6021a37ead08ae095c8f",
+    "R044.md": "f5a73d95f87e2a9be85d96d92070578bf4b8facc8254e8a9038bab45852fbb45",
+    "r045-capacity-results.json": "67fe693cc682da9089324547c55be73457a6916ff489ededb5ddbf19dbc219a7",
+    "r045-results.json": "9068502bfd99cf0662ecc835e977a51279f72057e9a1a6780f166a9b7a356639",
+    "R045.md": "c694eda02f75fe932e6ad71029910c2758b7aead25ccdeba2f7be284bfe0972c",
+    "r046-results.json": "bbd65829063e9411818ac06e0581b248a1c044719f9d39986354ca9f12de30d3",
+    "R046.md": "be83f3cca8e0ce4b4490491df2f7c4cb83e7954d49c1639aeafd2ac433d2c2fb",
+    "r047-plan.json": "4b67c63f6817f3b31ab98ffcb2cfe7ab3f3cb4c2b33f8c13edd0dff6a8930a54",
+    "r047-results.json": "99f685758a514ea7ad7377d4dd2094e9cf84aaf37816ca22f9d1fcf6ee8725be",
+    "R047.md": "b38edba3eb9e2e2cccce93e5c4120e0e62480a23c09e0e655b8ee8f532d30b09",
+    "r048-plan.json": "12e6cd285ee040d45995d0e1b203d48fe4ed7322a7fbbc8e5fd770959a983805",
+    "r048-results.json": "c540fff5cfd97cc507c4c5f5347a972feee976d9bb3252c0afebe2d07a8ae5a7",
+    "R048.md": "77632b5fb102a0e1308801aeba1aea04df3aa66df0f505804bd69fd7b2429742",
+    "r049-results.json": "ef087c228d993f5eb749753ccac0b3295a1917b911006caa117840acd41c6033",
+    "R049.md": "a85db56e4329e202d2d1332522c439fa3696059a046c445e59934ce94ea3aaad",
+    "r050-results.json": "3fdeffc067ad5bac773fcb52a7a6fe4752268027149128f37224bd7de2d7d51e",
+    "R050.md": "b683ef2bb879ab1427f6c03662a15795d64ed533144c64f5770fcca83a80090e",
+    "r051-results.json": "1d1d391f7b9b06496758c4f5a38293ae000234ef4a13d36f64cde627b009baaf",
+    "R051.md": "38e82c055bc8a5a21e2e5361ba9903a9c30b1978790e67bcca7bcab0e0ee3fb0",
+    "r052-results.json": "cad6be51a17fdee853f1882a779edaa85bdd25d094f95c77fa8066e374b502fa",
+    "R052.md": "77f8df4166408d7fbe12dbfcaaa433b9571b6b28ba0c155e4fcda5fe59bee5e7",
+    "r053-results.json": "96fe0596d64bb229baa9cd17ac272a335dda12c9b9945a0a893f4e8be23c5b75",
+    "R053.md": "dc2766897471812592e35befd445bf7dbd8df80b6e8df7225b1472a410856b21",
+    "r054-results.json": "7e84e81b16d9e45b665b891a6d0844e29fc8abe206628b1705691ac623a42f04",
+    "R054.md": "2e6f8dabe1283b4272bbfc706584f967b5401ef0668d5dfdd3e4cb2ecd007256",
+    "r055-results.json": "8689d43e6349c5d12cba1e162aefb517a5dfb8116c8f672354ba74f9c1a12285",
+    "R055.md": "caa3650b5fd3209ef71ef9a4ec1994af10582c44e895b3dbd909ac74c7ddef56",
+    "r056-results.json": "9512fa40457cfe4fee3bee229ae1ee2564b0e01f3556605b147225f300a51724",
+    "r056-validation.json": "6a4560012c75a7dfa95db1bb03a1a9810c00bc54f6a9f13a1595411cb3520bc3",
+    "R056.md": "89d7182dc37d88c018c5a7fcba2046f8ec4e9499ad95fe20cd7ad8cf9fbc73e9"
+  },
+  "neural_match_reconciliation": [
+    {
+      "stage": "r025",
+      "source_revision": "a2ecd98bc5dc91280d1d9296ef0e4f9645de748d",
+      "nodes": 10000,
+      "arms": [
+        {
+          "id": "compose71-vs-cp64",
+          "games": 16,
+          "wdl": {
+            "losses": 14,
+            "draws": 1,
+            "wins": 1
+          },
+          "score": 0.09375,
+          "opening_clusters": 8,
+          "both_colours": true,
+          "recorded_pair_bootstrap_95": [
+            0.0,
+            0.21875
+          ],
+          "request_totals": {
+            "neural": {
+              "nodes": 5648488,
+              "elapsed_ns": 25748076400,
+              "requests": 579,
+              "observed_nodes_per_second": 219375.14524385985
+            },
+            "cp64": {
+              "nodes": 5694814,
+              "elapsed_ns": 9305342200,
+              "requests": 585,
+              "observed_nodes_per_second": 611994.0435935822
+            }
+          }
+        },
+        {
+          "id": "compose97-vs-cp64",
+          "games": 16,
+          "wdl": {
+            "draws": 7,
+            "losses": 9
+          },
+          "score": 0.21875,
+          "opening_clusters": 8,
+          "both_colours": true,
+          "recorded_pair_bootstrap_95": [
+            0.09375,
+            0.34375
+          ],
+          "request_totals": {
+            "neural": {
+              "nodes": 6450335,
+              "elapsed_ns": 29820579600,
+              "requests": 654,
+              "observed_nodes_per_second": 216304.81655695252
+            },
+            "cp64": {
+              "nodes": 6474606,
+              "elapsed_ns": 10634037400,
+              "requests": 657,
+              "observed_nodes_per_second": 608856.801650895
+            }
+          }
+        }
+      ],
+      "combined_wdl": {
+        "losses": 23,
+        "draws": 8,
+        "wins": 1
+      },
+      "combined_games": 32,
+      "combined_score": 0.15625,
+      "interpretation": "Descriptive aggregate across two different checkpoints on eight shared opening clusters; not single-model confirmation."
+    },
+    {
+      "stage": "r030",
+      "source_revision": "de95ff9b37cc623bcd1c133462f145ba480d2017",
+      "nodes": 10000,
+      "arms": [
+        {
+          "id": "piece71-vs-cp64",
+          "games": 16,
+          "wdl": {
+            "draws": 5,
+            "losses": 11
+          },
+          "score": 0.15625,
+          "opening_clusters": 8,
+          "both_colours": true,
+          "recorded_pair_bootstrap_95": [
+            0.0625,
+            0.28125
+          ],
+          "request_totals": {
+            "neural": {
+              "nodes": 6525785,
+              "elapsed_ns": 19486090100,
+              "requests": 661,
+              "observed_nodes_per_second": 334894.5307401612
+            },
+            "cp64": {
+              "nodes": 6542816,
+              "elapsed_ns": 10670981400,
+              "requests": 665,
+              "observed_nodes_per_second": 613140.9806411995
+            }
+          }
+        },
+        {
+          "id": "piece97-vs-cp64",
+          "games": 16,
+          "wdl": {
+            "losses": 13,
+            "wins": 1,
+            "draws": 2
+          },
+          "score": 0.125,
+          "opening_clusters": 8,
+          "both_colours": true,
+          "recorded_pair_bootstrap_95": [
+            0.03125,
+            0.25
+          ],
+          "request_totals": {
+            "neural": {
+              "nodes": 6324198,
+              "elapsed_ns": 20403023400,
+              "requests": 646,
+              "observed_nodes_per_second": 309963.7674287037
+            },
+            "cp64": {
+              "nodes": 6379251,
+              "elapsed_ns": 10332444000,
+              "requests": 652,
+              "observed_nodes_per_second": 617400.0072006197
+            }
+          }
+        }
+      ],
+      "combined_wdl": {
+        "draws": 7,
+        "losses": 24,
+        "wins": 1
+      },
+      "combined_games": 32,
+      "combined_score": 0.140625,
+      "interpretation": "Descriptive aggregate across two different checkpoints on eight shared opening clusters; not single-model confirmation."
+    },
+    {
+      "stage": "r043",
+      "source_revision": "770cddeb39b07f7954168905afbe59dcb4cebc12",
+      "nodes": 10000,
+      "arms": [
+        {
+          "id": "tied71-vs-cp64",
+          "games": 16,
+          "wdl": {
+            "losses": 13,
+            "draws": 2,
+            "wins": 1
+          },
+          "score": 0.125,
+          "opening_clusters": 8,
+          "both_colours": true,
+          "recorded_pair_bootstrap_95": [
+            0.0,
+            0.25
+          ],
+          "request_totals": {
+            "neural": {
+              "nodes": 6033090,
+              "elapsed_ns": 40755896400,
+              "requests": 616,
+              "observed_nodes_per_second": 148029.86887561134
+            },
+            "cp64": {
+              "nodes": 6082719,
+              "elapsed_ns": 11123959600,
+              "requests": 622,
+              "observed_nodes_per_second": 546812.3958307076
+            }
+          }
+        },
+        {
+          "id": "tied97-vs-cp64",
+          "games": 16,
+          "wdl": {
+            "wins": 3,
+            "draws": 5,
+            "losses": 8
+          },
+          "score": 0.34375,
+          "opening_clusters": 8,
+          "both_colours": true,
+          "recorded_pair_bootstrap_95": [
+            0.125,
+            0.59375
+          ],
+          "request_totals": {
+            "neural": {
+              "nodes": 7839751,
+              "elapsed_ns": 43959594600,
+              "requests": 794,
+              "observed_nodes_per_second": 178339.92945876712
+            },
+            "cp64": {
+              "nodes": 7827183,
+              "elapsed_ns": 13660161700,
+              "requests": 794,
+              "observed_nodes_per_second": 572993.4368200048
+            }
+          }
+        }
+      ],
+      "combined_wdl": {
+        "losses": 21,
+        "draws": 7,
+        "wins": 4
+      },
+      "combined_games": 32,
+      "combined_score": 0.234375,
+      "interpretation": "Descriptive aggregate across two different checkpoints on eight shared opening clusters; not single-model confirmation."
+    },
+    {
+      "stage": "r047",
+      "source_revision": "71d475f85e4ce6f5026322c2a2faf3e79f282291",
+      "nodes": 10000,
+      "arms": [
+        {
+          "id": "mix71-vs-cp64",
+          "games": 16,
+          "wdl": {
+            "draws": 6,
+            "losses": 6,
+            "wins": 4
+          },
+          "score": 0.4375,
+          "opening_clusters": 8,
+          "both_colours": true,
+          "recorded_pair_bootstrap_95": [
+            0.25,
+            0.625
+          ],
+          "request_totals": {
+            "neural": {
+              "nodes": 6350316,
+              "elapsed_ns": 47862983100,
+              "requests": 645,
+              "observed_nodes_per_second": 132676.978924032
+            },
+            "cp64": {
+              "nodes": 6351081,
+              "elapsed_ns": 11710178700,
+              "requests": 645,
+              "observed_nodes_per_second": 542355.6004316142
+            }
+          }
+        },
+        {
+          "id": "mix97-vs-cp64",
+          "games": 16,
+          "wdl": {
+            "draws": 4,
+            "losses": 10,
+            "wins": 2
+          },
+          "score": 0.25,
+          "opening_clusters": 8,
+          "both_colours": true,
+          "recorded_pair_bootstrap_95": [
+            0.125,
+            0.375
+          ],
+          "request_totals": {
+            "neural": {
+              "nodes": 7154377,
+              "elapsed_ns": 47307786800,
+              "requests": 727,
+              "observed_nodes_per_second": 151230.43126591583
+            },
+            "cp64": {
+              "nodes": 7158185,
+              "elapsed_ns": 12747967900,
+              "requests": 729,
+              "observed_nodes_per_second": 561515.7691132874
+            }
+          }
+        }
+      ],
+      "combined_wdl": {
+        "draws": 10,
+        "losses": 16,
+        "wins": 6
+      },
+      "combined_games": 32,
+      "combined_score": 0.34375,
+      "interpretation": "Descriptive aggregate across two different checkpoints on eight shared opening clusters; not single-model confirmation."
+    },
+    {
+      "stage": "r048",
+      "source_revision": "71d475f85e4ce6f5026322c2a2faf3e79f282291",
+      "nodes": 10000,
+      "arms": [
+        {
+          "id": "low71-vs-cp64",
+          "games": 16,
+          "wdl": {
+            "losses": 11,
+            "draws": 3,
+            "wins": 2
+          },
+          "score": 0.21875,
+          "opening_clusters": 8,
+          "both_colours": true,
+          "recorded_pair_bootstrap_95": [
+            0.0625,
+            0.40625
+          ],
+          "request_totals": {
+            "neural": {
+              "nodes": 7246012,
+              "elapsed_ns": 44454895400,
+              "requests": 737,
+              "observed_nodes_per_second": 162996.94183961573
+            },
+            "cp64": {
+              "nodes": 7273840,
+              "elapsed_ns": 12715277400,
+              "requests": 740,
+              "observed_nodes_per_second": 572055.1562642275
+            }
+          }
+        },
+        {
+          "id": "low97-vs-cp64",
+          "games": 16,
+          "wdl": {
+            "losses": 9,
+            "wins": 4,
+            "draws": 3
+          },
+          "score": 0.34375,
+          "opening_clusters": 8,
+          "both_colours": true,
+          "recorded_pair_bootstrap_95": [
+            0.125,
+            0.5625
+          ],
+          "request_totals": {
+            "neural": {
+              "nodes": 7795423,
+              "elapsed_ns": 44285350900,
+              "requests": 792,
+              "observed_nodes_per_second": 176027.1250328966
+            },
+            "cp64": {
+              "nodes": 7823389,
+              "elapsed_ns": 13667526200,
+              "requests": 795,
+              "observed_nodes_per_second": 572407.0973428974
+            }
+          }
+        }
+      ],
+      "combined_wdl": {
+        "losses": 20,
+        "draws": 6,
+        "wins": 6
+      },
+      "combined_games": 32,
+      "combined_score": 0.28125,
+      "interpretation": "Descriptive aggregate across two different checkpoints on eight shared opening clusters; not single-model confirmation."
+    }
+  ],
+  "limitations": [
+    "Bootstrap intervals copied from original protocols, not recomputed or multiplicity-adjusted.",
+    "All five stages reuse eight development roots; seeds are not independent opening samples.",
+    "Only selected checkpoint and match artifacts rehashed; not a full historical evidence audit."
+  ]
+}
