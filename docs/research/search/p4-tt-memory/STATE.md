@@ -1,10 +1,16 @@
 # TT memory workstream ? resume here
 
 Status: **ACTIVE**, 30 October 2026. Objective [TT-R001](CONTRACT.md) is subordinate
-to Search P4-R001. Current programme master pair: **P4-R001 / P4-F005**.
-H1's W1/W4 development screens are promising but inconclusive. Independent W1
-confirmation is frozen and selected. No confirmed gain, research acceptance,
-champion advancement or production promotion has occurred.
+to Search P4-R001. Current programme master pair: **P4-R001 / P4-F006**.
+H1's W1/W4 development screens are promising but inconclusive. The first W1
+confirmation failed operationally after 112 completed games; it is not a completed
+strength comparison. No confirmed gain, acceptance, champion advancement or
+production promotion has occurred.
+
+**Selected next work:** qualify a narrowly audited scoreless-fallback runner path
+and explicit child-handle draining. The original strict protocol and partial run
+remain frozen. No match is currently active. Do not resume the failed tournament
+or execute its conditional champion block. H1 remains a72cc496/build81.
 
 ## Identities and completed foundations
 
@@ -77,41 +83,39 @@ W4 and H1 traces include full UCI communications. Do not erase these limitations
 The zero-work fixture demonstrates truthful legal fallback, not the exact untraced
 V1 failure cause. Frozen historical BOUNDARY2 studies remain unopened and unchanged.
 
-## Selected work: independent unchanged-H1 W1 confirmation
+## Failed independent confirmation and selected qualification
 
-[h1-confirm-w1-v1-protocol.json](h1-confirm-w1-v1-protocol.json) is prospectively
-frozen before any confirmation games. It binds 128 new partition1 opening pairs
-(seed2026103002), with **zero** final-position overlap with the 32 development pairs,
-exact runtimes, host, analysis implementation and input hashes. Both H1 screens
-have drained and passed operational qualification. The selector output is
-`h1-confirm-w1-v1-openings.pgn` and its `.selection.json` manifest.
+The prospectively frozen [attempt1 protocol](h1-confirm-w1-v1-protocol.json)
+bound 128 partition1 opening pairs, exact runtimes and an adjusted analysis gate.
+It stopped during game113 after 112 completed normal games. The full trace proves
+that baseline80 returned a legal `g1h1` fallback with14 nodes,539316400ns and
+TIME_LIMIT, with no completed depth/score. Fastchess's blanket strict missing-score
+warning stopped the match. The cause of the low work during that elapsed time is
+unestablished; no engine defect or clock-policy correction is inferred.
 
-1. Execute `tools/p4-tt-memory.py match` with name `h1-confirm-w1-v1-control80`,
-   baseline `docs/research/search/p4-tt-memory/raw/runtime80`, candidate
-   `docs/research/search/p4-tt-memory/raw/runtimeh1-v1`, candidate-policy h1,
-   workers1, pairs128, tc10+0.1, timeout14400, the confirmation opening file and
-   protocol above. Use `build/research/venv/Scripts/python.exe -B`. Check the raw
-   run directory/status/process evidence first; never duplicate a live run.
-2. After the complete audited run, execute `tools/p4-tt-confirm-analysis.py control80`.
-   The adjusted primary lower bound must exceed 0.5 before the conditional direct79
-   block executes. A failed criterion is not permission to extend or pool samples.
-3. If the prospective gate passes, use the same 128 pairs and protocol for
-   `h1-confirm-w1-v1-champion79`, baseline runtime79, all other settings unchanged;
-   then run `tools/p4-tt-confirm-analysis.py champion79`. No claim against79 is
-   inferred from the80 result alone. Both fixed comparisons must be qualified for
-   the joint claim; owner/GPT acceptance stays separate.
+[Failure summary](h1-confirm-w1-v1-failure-summary.json) binds all raw files and
+verifies every frozen input unchanged after failure. Evidence remains at
+`raw/h1-confirm-w1-v1-control80`. The cleanup observer separately failed converting
+an exit timestamp; its call order permits an exit-time race. All owned match PIDs
+were absent in the post-failure OS inventory. Preserve the missing candidate CPU
+lifetime observation rather than reconstructing it.
 
-This is confirmatory claim attempt 1: nominal alpha 0.025 is reserved, split across
-controls to give 98.75% paired-normal primary intervals. Bounded sensitivity is
-reported explicitly; approximate inference never becomes exact proof. Future
-adaptive candidate/domain claims must retain this expenditure, using the protocol's
-prospective allocation rather than resetting it. The 128-pair block targets about
-six score points of precision at the pilot variance, not small-Elo resolution.
-Expected cost is about 2h10m per executed block. No optional within-run stopping,
-H1 changes, heavy overlapping work or mutation of frozen inputs is permitted.
+Attempt1's nominal alpha0.025 remains spent. Partial outcomes are not confirmation,
+are not pooled into later samples, and do not open the conditional champion79 gate.
+Do not modify its protocol, inputs, analysis or run. A later confirmation needs a
+new prospective claim allocation and independent inputs; it is not selected yet.
+
+Selected economical work: retain the pinned runner and unchanged engine clocks,
+but qualify a narrowly scoped alternative adapter mode that monitors warnings,
+stops on every other warning, and independently validates each missing-score
+response from full real-history UCI evidence. Require legal fallback, exactly one
+whole-request accounting line, clock termination and no completed Search info or
+failure. Preserve all warnings. Keep full PV, game/result, accounting, process and
+immutable-input gates. Explicitly wait on child process handles before final
+lifetime snapshots. No old protocol is weakened or retrospectively passed.
 
 W4 direct79/independent confirmation remains unresolved; no W1-to-W4 strength
-transfer is assumed. Review it after the selected W1 unit. Conditional mechanism
+transfer is assumed. Review it after runner qualification. Conditional mechanism
 follow-up, not selected: measure score availability across consecutive real game
 requests before considering bounded age. Fresh-table diagnostics did not measure
 that lifetime; new-generation hints convert old H1 scores to hint-only, so removing
@@ -147,6 +151,6 @@ CODEXLOG_CURRENT.md was absent; do not create it. Inspect current Git/file prese
 again on resume and preserve unrelated changes. No push/deployment/release is authorized.
 
 Human action: owner refresh of the separate Phase4 Project Frontier mirror to
-**P4-F005**, confirming **P4-R001 / P4-F005**. This is **non-blocking** for repository
+**P4-F006**, confirming **P4-R001 / P4-F006**. This is **non-blocking** for repository
 research and blocks only mirror-dependent Project planning. Prior mirror refreshes
-are not inferred complete. No owner action currently blocks the selected research.
+are not inferred complete. No owner action currently blocks the selected qualification.

@@ -1,0 +1,48 @@
+{
+  "status": "failed confirmation preserved; diagnostic audit complete",
+  "observedUtc": "2026-10-29T23:19:47.512970+00:00",
+  "claimAttempt": 1,
+  "nominalAlphaRemainsSpent": 0.025,
+  "protocol": "h1-confirm-w1-v1-protocol.json",
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\h1-confirm-w1-v1-control80",
+  "completedGameCountReportedByRunner": 112,
+  "pgnRecords": 112,
+  "pgnTerminations": {
+    "normal": 112
+  },
+  "originalStop": "Strict missing-score warning on baseline/build80 during game113; no completed strength inference and no conditional champion comparison",
+  "cleanupFailure": "OSError(22, 'Invalid argument')",
+  "cleanupInterpretation": "Native snapshot reads process times before exit code without first waiting for the engine handles after runner exit. A process can exit between these calls; an undefined pre-exit FILETIME can then be converted as an exit timestamp. Consistent with this failure; exact returned tick value was not retained. Add explicit child-handle drain before final snapshot.",
+  "frozenInputsUnchangedAtPostFailureAudit": true,
+  "traceFallbackAudit": {
+    "status": "passed",
+    "qualifiedMissingScoreWarnings": 1,
+    "fallbacks": [
+      {
+        "actor": "baseline",
+        "traceLine": 468175,
+        "positionCommand": "position startpos moves d2d4 g8f6 c2c4 e7e6 g1f3 c7c5 e2e3 f8e7 b1c3 e8g8 d4d5 e6d5 c4d5 d7d6 h2h3 b7b6 e3e4 f8e8 f1d3 c8a6 e1g1 a6d3 d1d3 b8d7 a2a4 a7a6 f3d2 d7e5 d3c2 g7g5 c3e2 f6h5 a1a3 e5g6 a3b3 f7f5 e4f5 g6h4 g2g3 e7f6 b3e3 h5f4 e3e8 d8e8",
+        "position": "r3q1k1/7p/pp1p1b2/2pP1Pp1/P4n1n/6PP/1PQNNP2/2B2RK1 w - - 0 23",
+        "request": "go wtime 5967 btime 4655 winc 100 binc 100",
+        "nodes": 14,
+        "elapsedNanos": 539316400,
+        "termination": "TIME_LIMIT",
+        "bestmove": "g1h1",
+        "completedDepthOrScoreReported": false
+      }
+    ],
+    "limits": "Validates the narrowly admitted missing-score warnings; does not replace full PV checks, game audit or process/input qualification."
+  },
+  "traceAuditToolSha256": "fdb4160f5f11137bfad5e3a4503bd40f9d15e2d24a67737d94d413384120c772",
+  "rawHashes": {
+    "baseline-uci.txt": "4d281f6d69faf6c75d8c83aa5aa3f4f1f2c8c95610757539b7f1ce9478530df5",
+    "candidate-uci.txt": "43abd7bfcab88327614c0703169e727be2293093cd284d3dab5cfc3784dfdc15",
+    "config.json": "266e7dec60744003407f377751e9b870c1b8dfa1f1bdcb00fb911db15b91e05d",
+    "games.pgn": "56419b8e2ce87268aa643f77a70db85379c8f62616dc4ebc370305421e872169",
+    "process-cost.json": "13c635493791f8d4dc88f4edfe303742be11a90876b5cffd64883dad4974bc11",
+    "run.json": "5873f4359c43bfccdc18703cd9d789ef4ebab17445784264b711edc4dfe96e4f",
+    "runner.txt": "4068c22ad9fd4bc7597f45c228cf4614f376881e5297e790bf70795f1cb227c4",
+    "uci-trace.log": "e61b17d22782e80de175bd76576a5266c78e0b8a2f9c5b19c383fc6afc6ba73f"
+  },
+  "limitations": "The cause of the 539ms/14-node interruption (scheduling, GC or other delay) is not established by the trace. Truthful fallback does not imply a Search defect. Partial outcomes remain raw, excluded from completed confirmation and from any future independent sample. No historical BOUNDARY2 study was inspected."
+}
