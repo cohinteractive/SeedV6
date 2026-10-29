@@ -1,0 +1,30 @@
+{
+  "tests": [
+    {
+      "name": "ResearchTiedEvaluationTest",
+      "tests": 1,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r043-ResearchTiedEvaluationTest.xml",
+      "sha256": "895e12944f9a1771b3e7cca09e2ab939552776762f5858a8a64977ff16121832"
+    },
+    {
+      "name": "ResearchPieceEvaluationTest",
+      "tests": 1,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r043-ResearchPieceEvaluationTest.xml",
+      "sha256": "4e0b2a13a27efbaaf6c3436221d98f3b3e1c450017257ab7602598a905e83d75"
+    },
+    {
+      "name": "ResearchFieldEvaluationTest",
+      "tests": 3,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r043-ResearchFieldEvaluationTest.xml",
+      "sha256": "7d82bf90eebce490a8e8d13c7bb45cc8211aba3b1dda227f3b6f1d3b68730aba"
+    }
+  ],
+  "passed": 5,
+  "new_tests": 1,
+  "skips": 0,
+  "tested_classes_path": "docs\\research\\brn-relational-cglhw\\raw\\r043-tested-classes.json",
+  "tested_classes_sha256": "dac5767ca0ead378a128e5eedf1f89f6e4cf89ff25d7c9cb38a459db8ec249be",
+  "count": 1795,
+  "replay_ast_unchanged_from_r035": true,
+  "scope": "Research integration and focused tests;no full suite/clock/production change"
+}

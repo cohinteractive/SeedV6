@@ -307,3 +307,7 @@ R041 complete:six tests,exact R040 ONE history,2TIED endpoints/16segments,both
 mechanism/family gates pass. raw/r040-objective-runner.py and raw/r039-finite-runner.py
 preserve earlier bindings. Freeze both seeds;R042 predicts only existing heldout
 panels before any separately bounded games. No default/production change.
+
+R042 complete:3loader tests,exact model/core class parity,target/metadata parity,
+both transfer gates pass. R043 freezes32games only after isolated integration QA;
+no training or production change. Existing audit runner requires no mutation.

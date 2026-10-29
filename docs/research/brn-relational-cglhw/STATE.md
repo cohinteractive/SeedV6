@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R042 frozen tied-recurrence transfer**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R043 tied-recurrence playing calibration**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,11 +25,10 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R041 complete:both TIED seeds pass mechanism/family gates;oldteacher3.6-4.0% and
-played5.4-5.7% better than exact ONE controls,second path useful;cost<10us. No
-strength claim. R042 adds mode-checked frozen loaders and predicts TIED/second-
-masked/ONE on existing8192 and991 panels. Verify exact reference/metadata and
-class parity,then apply fixed transfer gates before proposing any games.
+R042 complete:both frozen TIED transfer gates pass;8192 teacher3.5-3.6% and
+prior played noncheck7.0-9.2% gains over ONE,second path useful. R043 adds isolated
+tied2 research loading,checks full recomputation/search integration,freezes clean
+runtime and runs32 matched10000-node games against CP64. No clocks/promotion.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -85,7 +84,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R039 | Finite occupancy neural compilation | Complete8tests,exact forward,4.25/4.74us;both practical gates pass |
 | R040 | Shared neural geometry/context training | Complete4arms;5-8% played gains,all advancement gates fail;no games |
 | R041 | Tied neural relation recurrence | Complete6tests,2arms;both mechanism/family gates pass,cost<10us;no games |
-| R042 | Frozen tied-recurrence transfer | Prospective8192/991 prediction and ablation gates;no refit |
+| R042 | Frozen tied-recurrence transfer | Complete3tests;both transfer gates pass,8/8root gains;no strength claim |
+| R043 | Tied neural recurrence playing calibration | Prospective32fixed-node games after isolated integration checks |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

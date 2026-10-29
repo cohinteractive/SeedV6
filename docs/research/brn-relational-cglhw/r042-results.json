@@ -1,0 +1,1390 @@
+{
+  "old_evidence": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r042-old-prediction.json",
+    "sha256": "607fdf126e16e81bf234a9f553b86c181bd2007deb264523b99a48ecf7704856",
+    "receipt": {
+      "sha256": "607fdf126e16e81bf234a9f553b86c181bd2007deb264523b99a48ecf7704856",
+      "seconds": 1.744840800005477,
+      "resources": [
+        {
+          "cpu_percent": 7.179487179487176,
+          "available_gib": 16.866077423095703,
+          "utc": "2026-10-29T00:40:10Z"
+        }
+      ]
+    }
+  },
+  "played_evidence": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r042-played-prediction.json",
+    "sha256": "209fe746a7eeceb06b45084d155b15364217d5fbb60678bac96c6515e0f2612c",
+    "receipt": {
+      "sha256": "209fe746a7eeceb06b45084d155b15364217d5fbb60678bac96c6515e0f2612c",
+      "seconds": 0.7274523000232875,
+      "resources": [
+        {
+          "cpu_percent": 10.824742268041232,
+          "available_gib": 16.835983276367188,
+          "utc": "2026-10-29T00:40:16Z"
+        }
+      ]
+    }
+  },
+  "old_r028_reference": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r029-prediction.json",
+    "sha256": "306b79a0852bbdfb5cbfce8811e4e101037c04caf69474946de0feb4f4b43bda",
+    "receipt": {
+      "sha256": "306b79a0852bbdfb5cbfce8811e4e101037c04caf69474946de0feb4f4b43bda",
+      "seconds": 1.3557728999876417,
+      "resources": [
+        {
+          "cpu_percent": 7.978723404255317,
+          "available_gib": 17.930850982666016,
+          "utc": "2026-10-28T23:29:38Z"
+        }
+      ]
+    }
+  },
+  "played_r028_reference": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r034-prediction.json",
+    "sha256": "8845a08df1f41fe4debdfa49d6cea8d40c75518e33684ba3e2e9fafdf6f8de2e",
+    "receipt": {
+      "sha256": "8845a08df1f41fe4debdfa49d6cea8d40c75518e33684ba3e2e9fafdf6f8de2e",
+      "seconds": 0.5105489999987185,
+      "resources": [
+        {
+          "cpu_percent": 7.222222222222219,
+          "available_gib": 18.391948699951172,
+          "utc": "2026-10-28T23:57:25Z"
+        }
+      ]
+    }
+  },
+  "original_played_reference": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r026-prediction.json",
+    "sha256": "b106f547e28342e659114a5e82e3301fa3271d7f53dd1b13cf8d20b3f6492106",
+    "receipt": {
+      "sha256": "b106f547e28342e659114a5e82e3301fa3271d7f53dd1b13cf8d20b3f6492106",
+      "seconds": 0.7856715000234544,
+      "resources": {
+        "cpu_percent": 5.2083333333333375,
+        "available_gib": 18.14410400390625,
+        "utc": "2026-10-28T23:11:15Z"
+      }
+    }
+  },
+  "old_pair_reference": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r024-prediction.json",
+    "sha256": "707f10975b784b3c8566a69d0222b53e2804274fc8a61664e8a4b8ce1226fac0",
+    "receipt": {
+      "sha256": "707f10975b784b3c8566a69d0222b53e2804274fc8a61664e8a4b8ce1226fac0",
+      "seconds": 2.048920499975793,
+      "resources": {
+        "cpu_percent": 7.978723404255317,
+        "available_gib": 18.642040252685547,
+        "utc": "2026-10-28T22:55:26Z"
+      }
+    }
+  },
+  "validation_sha256": "4f4ea930ec10daeade9da6c7f6d55606a6adb58574e45651369feee375d46722",
+  "analysis_sha256": "d1b7f13d5d851898b0d972b2007974af46cd6a62c28f672027a3662e35607a0a",
+  "resources": {
+    "cpu_percent": 8.021390374331549,
+    "available_gib": 16.837120056152344,
+    "utc": "2026-10-29T00:40:18Z"
+  },
+  "target_and_metadata_parity": true,
+  "panels": {
+    "old": [
+      {
+        "kind": "TIED",
+        "state_sha256": "b943b46628b86ccd027a61c6e44311e68c471fb6dd8e73e13fb70a230dc6e498",
+        "bt4_mse": 0.024653069898210263,
+        "teacher_mse": 0.011701930486134502,
+        "id": "r041-tied-71",
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.01066276995220884
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.015290652851018565
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.008822631559296967
+          }
+        }
+      },
+      {
+        "kind": "TIED_MASK",
+        "state_sha256": "b943b46628b86ccd027a61c6e44311e68c471fb6dd8e73e13fb70a230dc6e498",
+        "bt4_mse": 0.026699471279779455,
+        "teacher_mse": 0.013458058885368189,
+        "id": "r041-mask-71",
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.011643041940456903
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.017510743048947522
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.010766403320174214
+          }
+        }
+      },
+      {
+        "kind": "SHARED_CONTEXT",
+        "state_sha256": "4e7bd3c6ec9d74a9f4ee3287151de72e3244425d9c71f6bb4e08c076fba81c30",
+        "bt4_mse": 0.02518377617386007,
+        "teacher_mse": 0.012142329584275533,
+        "id": "r040-context-71",
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.011093598347663788
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.016024464893930727
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.008961821451932507
+          }
+        }
+      },
+      {
+        "kind": "TIED",
+        "state_sha256": "8b0b425d81a09decde4170691b9d640914b4ee40907849d0f348e539191ea8dd",
+        "bt4_mse": 0.0248206035320573,
+        "teacher_mse": 0.01192532206136139,
+        "id": "r041-tied-97",
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.011193303226819606
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.015480816611467116
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.008813016872669227
+          }
+        }
+      },
+      {
+        "kind": "TIED_MASK",
+        "state_sha256": "8b0b425d81a09decde4170691b9d640914b4ee40907849d0f348e539191ea8dd",
+        "bt4_mse": 0.026423425098276658,
+        "teacher_mse": 0.013333091547445705,
+        "id": "r041-mask-97",
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.012063527060058957
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.017204816815524562
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.010356302228943298
+          }
+        }
+      },
+      {
+        "kind": "SHARED_CONTEXT",
+        "state_sha256": "38c426d7a9d59b9e1403223ab7d37c361156005bf14828d52c7d20afc9d4f254",
+        "bt4_mse": 0.02528527604957598,
+        "teacher_mse": 0.012358998404302702,
+        "id": "r040-context-97",
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.011571035451789025
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.016079289018766853
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.009121653027655148
+          }
+        }
+      },
+      {
+        "bt4_mse": 0.02534155526026098,
+        "teacher_mse": 0.012290913313063492,
+        "id": "r028-one-71",
+        "kind": "PIECE_ONE",
+        "state_sha256": "555fba100a70371755894a9653b409d806eb6b725345fd76b4b23eb1b4d2fec1",
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.011481431345974277
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.01615524460746689
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.008920380426198976
+          }
+        }
+      },
+      {
+        "bt4_mse": 0.025564539640531708,
+        "teacher_mse": 0.012669095678777545,
+        "id": "r028-one-97",
+        "kind": "PIECE_ONE",
+        "state_sha256": "886128c090ef655f60c8bc9aa2d03d393f1e007881bdd0310ce0defa55024f76",
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.011974716571763095
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.01665238093162292
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.009072603796336612
+          }
+        }
+      },
+      {
+        "bt4_mse": 0.025281030392805534,
+        "teacher_mse": 0.012229741879143151,
+        "id": "r028-two-71",
+        "kind": "PIECE_TWO",
+        "state_sha256": "7dddd5ff34cefb9602fea2726ae427b0c5c5dbb6f22f09bbf97edb01271310df",
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.01139387983270485
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.01617190494484519
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.00880011705693088
+          }
+        }
+      },
+      {
+        "bt4_mse": 0.025426113596578884,
+        "teacher_mse": 0.012543870359308727,
+        "id": "r028-two-97",
+        "kind": "PIECE_TWO",
+        "state_sha256": "217e80417c52494379cb0a6f4f652f2c6f7cff82c4e62c4e315fa8e1bd23f92f",
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.011831093001054067
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.016454080581590168
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.009040532879924516
+          }
+        }
+      },
+      {
+        "bt4_mse": 0.025776420017187093,
+        "state_sha256": "dd02f4cf2ab8c25f7ce53924c499b61ee84a8d479233265131a2c43c86eb7514",
+        "kind": "ALL",
+        "id": "r017-all-71",
+        "teacher_mse": 0.012845834038001606,
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.011707107934692033
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.016795189350825808
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.00967295064301429
+          }
+        }
+      },
+      {
+        "bt4_mse": 0.025801583015944374,
+        "state_sha256": "3b14879bf2abaa37dfcc2fdface4d29ac34f0b4c17c847cc1692f440795a5ead",
+        "kind": "ALL",
+        "id": "r017-all-97",
+        "teacher_mse": 0.013102901388826126,
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.012065152698483125
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.017037862576765445
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.009857074682257449
+          }
+        }
+      },
+      {
+        "bt4_mse": 0.025595720321143704,
+        "state_sha256": "171aec95a2f82acb01e086f2a5510651adddab2f61ced4c726c090522d4c2c55",
+        "kind": "COMPOSE8",
+        "id": "r022-compose-71",
+        "teacher_mse": 0.012703854169061278,
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.01158002344965256
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.016634559593499413
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.009537646950996535
+          }
+        }
+      },
+      {
+        "bt4_mse": 0.02557325289926462,
+        "state_sha256": "008ead748bd4b63c922a1eec181c1ebcfcec9ccee8be4623fa94481b7416fc22",
+        "kind": "COMPOSE8",
+        "id": "r022-compose-97",
+        "teacher_mse": 0.012928807752636525,
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.011897705626581214
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.016840338105211784
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.009701900601465979
+          }
+        }
+      },
+      {
+        "bt4_mse": 0.0254748567984724,
+        "state_sha256": "2a7301797e39f162eca2fe5e9abe5e4efe840aa406e844f9aa303a3c00018724",
+        "kind": "COMPOSE16",
+        "id": "r023-wide-71",
+        "teacher_mse": 0.012617842949456528,
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.011480652410874842
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.016650977730950426
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.009355228732246437
+          }
+        }
+      },
+      {
+        "bt4_mse": 0.025463154869813508,
+        "state_sha256": "b2e14ad0466b47a52dbc6c73ae2bf9b9aa6e226672b3dda14da1a84acae1618a",
+        "kind": "COMPOSE16",
+        "id": "r023-wide-97",
+        "teacher_mse": 0.012762772213230697,
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.01192932953878301
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.016701603759439257
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.00933455072881096
+          }
+        }
+      },
+      {
+        "bt4_mse": 0.024244831554320907,
+        "state_sha256": "ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627",
+        "kind": "PAIR",
+        "id": "pair24-71",
+        "teacher_mse": 0.011776379457599025,
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.010680464210112551
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.015630934912137635
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.00866614976945171
+          }
+        }
+      },
+      {
+        "bt4_mse": 0.03414754679666981,
+        "state_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "kind": "PAIR",
+        "id": "gen32",
+        "teacher_mse": 0.020670403089725904,
+        "phases": {
+          "pieces2-10": {
+            "rows": 2442,
+            "teacher_mse": 0.022238467310178936
+          },
+          "pieces11-20": {
+            "rows": 2952,
+            "teacher_mse": 0.02529159967148843
+          },
+          "pieces21-32": {
+            "rows": 2798,
+            "teacher_mse": 0.014426305471531387
+          }
+        }
+      }
+    ],
+    "played": [
+      {
+        "id": "r041-tied-71",
+        "teacher_mse": 0.03935189608526694,
+        "kind": "TIED",
+        "state_sha256": "b943b46628b86ccd027a61c6e44311e68c471fb6dd8e73e13fb70a230dc6e498",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.02671353324692422
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.04643137649065882
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.03464971947624012
+          }
+        },
+        "noncheck_teacher_mse": 0.0374198327328495,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.049176373589960756
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.03607268439369716
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.017194695903816996
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.04934394136260617
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.04015337986858025
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.0464736785983462
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.03757118332483686
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.02403157815993339
+          }
+        }
+      },
+      {
+        "id": "r041-mask-71",
+        "teacher_mse": 0.040903941813371446,
+        "kind": "TIED_MASK",
+        "state_sha256": "b943b46628b86ccd027a61c6e44311e68c471fb6dd8e73e13fb70a230dc6e498",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.0321605508551633
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.04756617456120974
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.0350393779205119
+          }
+        },
+        "noncheck_teacher_mse": 0.038625657310866916,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.046327955552713594
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.040212367880313696
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.0246874160386244
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.04228733060941694
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.04154279910888405
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.052341789473217014
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.03568694029188808
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.026635178046494255
+          }
+        }
+      },
+      {
+        "id": "r040-context-71",
+        "teacher_mse": 0.04327187525651965,
+        "kind": "SHARED_CONTEXT",
+        "state_sha256": "4e7bd3c6ec9d74a9f4ee3287151de72e3244425d9c71f6bb4e08c076fba81c30",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.02934069966774431
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.05226059182351026
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.037561282426210235
+          }
+        },
+        "noncheck_teacher_mse": 0.04121120470504031,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.049456233832209144
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.04065736532192841
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.019992078966718632
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.0530321059162012
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.044276243657733985
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.04841636323344026
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.04556516576607443
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.028752300361853937
+          }
+        }
+      },
+      {
+        "id": "r041-tied-97",
+        "teacher_mse": 0.04093329850381261,
+        "kind": "TIED",
+        "state_sha256": "8b0b425d81a09decde4170691b9d640914b4ee40907849d0f348e539191ea8dd",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.025551147687703914
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.048857213412470034
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.035808315640338706
+          }
+        },
+        "noncheck_teacher_mse": 0.03870720151516504,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.0463978891959873
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.03624746689709674
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.017305387681923
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.04495552196473178
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.04331990585338265
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.053791101938383844
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.04004217059079966
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.02864000419379489
+          }
+        }
+      },
+      {
+        "id": "r041-mask-97",
+        "teacher_mse": 0.04110759140341008,
+        "kind": "TIED_MASK",
+        "state_sha256": "8b0b425d81a09decde4170691b9d640914b4ee40907849d0f348e539191ea8dd",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.03280590777922799
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.05004731546998263
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.03421554458133984
+          }
+        },
+        "noncheck_teacher_mse": 0.03900496456590014,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.0468783303349195
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.041034677419969835
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.022724239312662087
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.03838356643733908
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.04486425807000761
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.055061372720554363
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.03555910169895221
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.028674488773400068
+          }
+        }
+      },
+      {
+        "id": "r040-context-97",
+        "teacher_mse": 0.043945441911146466,
+        "kind": "SHARED_CONTEXT",
+        "state_sha256": "38c426d7a9d59b9e1403223ab7d37c361156005bf14828d52c7d20afc9d4f254",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.03006638895351388
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.05311796693958055
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.037640021573954276
+          }
+        },
+        "noncheck_teacher_mse": 0.041608081089384776,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.04921089961221517
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.04250431454049879
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.019525138442771393
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.046902934090118927
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.04544798382460648
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.05823540117164257
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.041031173128059276
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.031169811504602296
+          }
+        }
+      },
+      {
+        "teacher_mse": 0.04413477881587199,
+        "id": "r028-one-71",
+        "state_sha256": "555fba100a70371755894a9653b409d806eb6b725345fd76b4b23eb1b4d2fec1",
+        "kind": "PIECE_ONE",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.030996763260843583
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.05433380569466459
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.03703405790839344
+          }
+        },
+        "noncheck_teacher_mse": 0.04174908545866257,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.052988919328893394
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.040993538842215675
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.018208015772052232
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.05449865085971087
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.041528055609922794
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.04822575002926222
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.047818943812882715
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.03010332114878616
+          }
+        }
+      },
+      {
+        "teacher_mse": 0.04503574672530856,
+        "id": "r028-one-97",
+        "state_sha256": "886128c090ef655f60c8bc9aa2d03d393f1e007881bdd0310ce0defa55024f76",
+        "kind": "PIECE_ONE",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.03386421639696361
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.05504172089751499
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.0380892056977082
+          }
+        },
+        "noncheck_teacher_mse": 0.04290457698237927,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.04979206941300804
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.042214495713111755
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.020816555586959117
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.05462180113283165
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.04511440900293133
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.0557521497254789
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.04335466423946514
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.03249560872384904
+          }
+        }
+      },
+      {
+        "state_sha256": "dd02f4cf2ab8c25f7ce53924c499b61ee84a8d479233265131a2c43c86eb7514",
+        "kind": "ALL",
+        "teacher_mse": 0.05090048809923054,
+        "id": "r017-all-71",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.032879196008888854
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.061332743792488084
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.044866525166357654
+          }
+        },
+        "noncheck_teacher_mse": 0.04863481701413778,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.06379635838531732
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.04277036753803086
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.02344311617434896
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.06424200808346078
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.0477896205925507
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.057388440700971335
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.04858068850266063
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.042203305561927945
+          }
+        }
+      },
+      {
+        "state_sha256": "3b14879bf2abaa37dfcc2fdface4d29ac34f0b4c17c847cc1692f440795a5ead",
+        "kind": "ALL",
+        "teacher_mse": 0.05187425066822104,
+        "id": "r017-all-97",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.03388883485544152
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.06203524426565988
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.045445730483658506
+          }
+        },
+        "noncheck_teacher_mse": 0.049302214864729806,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.06412370672325099
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.04593987857000623
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.023740820365228916
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.06373781765098327
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.05092959834064158
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.05965439507355602
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.04610830338337599
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.041589653569704906
+          }
+        }
+      },
+      {
+        "state_sha256": "171aec95a2f82acb01e086f2a5510651adddab2f61ced4c726c090522d4c2c55",
+        "kind": "COMPOSE8",
+        "teacher_mse": 0.050224340997921155,
+        "id": "r022-compose-71",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.031240387842491866
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.06086360772637531
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.04410201872841408
+          }
+        },
+        "noncheck_teacher_mse": 0.047861893917869824,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.062325247336308044
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.04205386665051697
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.022591212407101935
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.06296213441001196
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.047698565360945494
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.05772570804191818
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.04951275597855635
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.038993632231004084
+          }
+        }
+      },
+      {
+        "state_sha256": "008ead748bd4b63c922a1eec181c1ebcfcec9ccee8be4623fa94481b7416fc22",
+        "kind": "COMPOSE8",
+        "teacher_mse": 0.05135772439399488,
+        "id": "r022-compose-97",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.033153314727614056
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.06123246881412672
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.044974754912532916
+          }
+        },
+        "noncheck_teacher_mse": 0.04869695599741865,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.06333659284748773
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.046214434545456234
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.02328934356891054
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.06368875583867187
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.047949138493661454
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.05969176745220192
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.046658637982433276
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.03993402611059083
+          }
+        }
+      },
+      {
+        "state_sha256": "2a7301797e39f162eca2fe5e9abe5e4efe840aa406e844f9aa303a3c00018724",
+        "kind": "COMPOSE16",
+        "teacher_mse": 0.04947283628559023,
+        "id": "r023-wide-71",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.03045699148171739
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.059498657361808885
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.04366818738095072
+          }
+        },
+        "noncheck_teacher_mse": 0.04709651841854498,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.06268611797354245
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.0429299941039731
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.021796231550784077
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.0640755346864609
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.044769346763291536
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.05474437310240099
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.0488247042050893
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.0377355140418124
+          }
+        }
+      },
+      {
+        "state_sha256": "b2e14ad0466b47a52dbc6c73ae2bf9b9aa6e226672b3dda14da1a84acae1618a",
+        "kind": "COMPOSE16",
+        "teacher_mse": 0.04998482507456068,
+        "id": "r023-wide-97",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.03206772640813874
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.06031552478720907
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.04346576411043019
+          }
+        },
+        "noncheck_teacher_mse": 0.047421965728587694,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.06291539167493299
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.045138944031842015
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.022073750940331285
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.06100909645647088
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.047687276584087085
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.0568855948786822
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.04587563970390294
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.0389769382194397
+          }
+        }
+      },
+      {
+        "state_sha256": "ada3837188a2f1679e2b6c092ac8dc7bb74dce31c30e3e89376c7e3910cd9627",
+        "kind": "PAIR",
+        "teacher_mse": 0.04451691385566169,
+        "id": "pair24-71",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.02785869569659323
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.05216248211360908
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.03900694931174816
+          }
+        },
+        "noncheck_teacher_mse": 0.04183644973706693,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.0576004697948659
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.03373477175964814
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.015485330029271417
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.05443114341792308
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.04343817166492167
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.051741941383245844
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.04028453249620109
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.039623207853344174
+          }
+        }
+      },
+      {
+        "state_sha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "kind": "PAIR",
+        "teacher_mse": 0.060470222702814415,
+        "id": "gen32",
+        "phases": {
+          "pieces2-10": {
+            "rows": 101,
+            "teacher_mse": 0.06335789960559332
+          },
+          "pieces11-20": {
+            "rows": 274,
+            "teacher_mse": 0.082836889575784
+          },
+          "pieces21-32": {
+            "rows": 501,
+            "teacher_mse": 0.042348378851831306
+          }
+        },
+        "noncheck_teacher_mse": 0.05743492398253108,
+        "by_root": {
+          "3": {
+            "rows": 109,
+            "teacher_mse": 0.06576815632421663
+          },
+          "6": {
+            "rows": 110,
+            "teacher_mse": 0.057311974904137024
+          },
+          "5": {
+            "rows": 115,
+            "teacher_mse": 0.05224048235318928
+          },
+          "1": {
+            "rows": 110,
+            "teacher_mse": 0.05749111257037551
+          },
+          "4": {
+            "rows": 105,
+            "teacher_mse": 0.04653123614021819
+          },
+          "7": {
+            "rows": 107,
+            "teacher_mse": 0.07245857828835543
+          },
+          "0": {
+            "rows": 116,
+            "teacher_mse": 0.055802221222441155
+          },
+          "2": {
+            "rows": 104,
+            "teacher_mse": 0.051888114838118796
+          }
+        }
+      }
+    ]
+  },
+  "gates": [
+    {
+      "seed": 71,
+      "old_teacher_gain_over_control": 0.036269736798400176,
+      "old_bt4_gain_over_control": 0.021073339914794098,
+      "played_gain_over_control": 0.09199857173132109,
+      "second_used_old": true,
+      "second_used_played": true,
+      "old_teacher_gain_over_r028": 0.04792018395435316,
+      "old_bt4_gain_over_r028": 0.027168236320934902,
+      "played_gain_over_r028": 0.10369694756786074,
+      "passes": true,
+      "roots_improved_over_control": 8
+    },
+    {
+      "seed": 97,
+      "old_teacher_gain_over_control": 0.03508992628320695,
+      "old_bt4_gain_over_control": 0.01837719772595603,
+      "played_gain_over_control": 0.0697191386449163,
+      "second_used_old": true,
+      "second_used_played": true,
+      "old_teacher_gain_over_r028": 0.05870771176368084,
+      "old_bt4_gain_over_r028": 0.029100313126496635,
+      "played_gain_over_r028": 0.09783048248997006,
+      "passes": true,
+      "roots_improved_over_control": 8
+    }
+  ],
+  "playing_calibration_justified": true,
+  "scope": "Frozen consumed development;unknown old game correlation,eight earlier-played opening clusters;no refit,final confirmation or strength claim."
+}
