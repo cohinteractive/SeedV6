@@ -1,0 +1,59 @@
+{
+  "selector_sha256": "88f6b767c0835813aef785e57fbeb6e2d37f617e13ba9359a109db5fe77b5f24",
+  "protocol_sha256": "b683ef2bb879ab1427f6c03662a15795d64ed533144c64f5770fcca83a80090e",
+  "source_sha256": "95edcb1cd45f92f543eb31c72a70c128c1a912f77ef1d2cc868b1f40e7adc996",
+  "inputs": {
+    "docs\\research\\brn-relational-cglhw\\r049-00-plan.json": "874706f95a75c33c855f887a43ba6715b4935e3115c0116b5b1b50554d089483",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-00.json": "1fa9946ef5738dd94fa8ff4ee18812ac17826ea2774cbe37da29a80f10d4195b",
+    "docs\\research\\brn-relational-cglhw\\r049-01-plan.json": "32e0ca8c733e914888cf670db7ac1ec55928eb621853d9b6ea5b90453b750cad",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-01.json": "af0f03bb1fd0b834b6fe237bd14894426a27dc358be94aa7bfdb4b3038cbd6da",
+    "docs\\research\\brn-relational-cglhw\\r049-02-plan.json": "428643ff2f5ceac409eee792db3d26608454d450f11e21dffd3ecf4e9dba0a81",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-02.json": "d2b09079d78da7d38f4d4e42c241693e4845b67692a7d87770608a4615b5c197",
+    "docs\\research\\brn-relational-cglhw\\r049-03-plan.json": "9b090be30df44da6674c127ab2234edc1c6b9185c573513d7b538c636b71ded9",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-03.json": "f747d566e18f9b7530aaebdf016b69b56dba1355f0f4d8add958244da2782628",
+    "docs\\research\\brn-relational-cglhw\\r049-04-plan.json": "a38664c18a36ae03e4b2c218937bbbed5a1e55c1b6977af426b340edadf1eaa8",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-04.json": "474f252f1b33c951cd7d776d00947ef0be3d4e8b1997f8ad3f77a316cf9b3cc3",
+    "docs\\research\\brn-relational-cglhw\\r049-05-plan.json": "08f0b66049ee022e58aded262f3ec0a3cccff76e73062d906d6fb77406776fa6",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-05.json": "de03d7ce505d166b42fcf0c245e95828030fe4e3e2242bfa854977ebb98b919c",
+    "docs\\research\\brn-relational-cglhw\\r049-06-plan.json": "95d679c2281ac5e50d60bb59f0d5325c4092da93b7cc7496c67d34b9de2ae88a",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-06.json": "f0d563af0871fbf0ef2c7d299c58d95b666b5367686c4e26f447f47d04241ab5",
+    "docs\\research\\brn-relational-cglhw\\r049-07-plan.json": "3675c70027f9333e1bbbcd1a852174b8c7931bc99fe0dda4dc50acb9e03f3e39",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-07.json": "579eb003a8ee1fda76aa719a17d4fb96dd44d7d81991daeadc69f6b8085cdd23"
+  },
+  "files": {
+    "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\cases-00.json": "ca700796834961d7a695ce647aa4a5d43ca80a91b5c79ba354b1bdc111520e8a",
+    "docs\\research\\brn-relational-cglhw\\r050-00-plan.json": "717230d14e4ac66717c41041d4289e42c749ae16cf61c81abd2f11d4a5fb0655",
+    "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\cases-01.json": "321dfca3a415bf15b30866ff319c8a951b67bbecdcfa8dbfe2a7196d6641a4b2",
+    "docs\\research\\brn-relational-cglhw\\r050-01-plan.json": "da7ce16b6ecb40b166f473a38da6bda6eaf30f31bd4e41478a079a515734c00c",
+    "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\cases-02.json": "fbacb040910609592bf653764ef06ea3dc14b161e9dd2cbaef524e971e6d3669",
+    "docs\\research\\brn-relational-cglhw\\r050-02-plan.json": "6cf8a091e3d79181d51c99fb1c2cea506b2421538132f525bd0d1d8731e5633a",
+    "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\cases-03.json": "3b2151b5da9f14591b48e06f160ac8af2e66f1c3fcb7047fa7fbcbec2b63d795",
+    "docs\\research\\brn-relational-cglhw\\r050-03-plan.json": "81eef184f26ffb78c2f2b8f73bbe8c1fea157ae74ff757da8803c980333d2ccb",
+    "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\cases-04.json": "ddeed755c7ecdf87e9f614f045697f8e063ecefd783d69e1fc4dfdbae3b15fb1",
+    "docs\\research\\brn-relational-cglhw\\r050-04-plan.json": "bd7b78f597dc8c8180019339fedf1a00819b5c05964f811075b6a8127d4aeb9e",
+    "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\cases-05.json": "518756a8008fef4121fef3cf23d3aa2c72decee605a34049d05ce43af7c1487f",
+    "docs\\research\\brn-relational-cglhw\\r050-05-plan.json": "05cbf7b73dccbf5afe59c366296c2abd841d1b225dda71bd1886900a0cca0a91",
+    "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\cases-06.json": "284b0c0336b2f40dc50617a504236e00059daf8b5545a18e5bd6586504d9e1ff",
+    "docs\\research\\brn-relational-cglhw\\r050-06-plan.json": "4abe3528dbb11d265734e7080f1170a3c3a6cb4846664c6c3427847b4ba27da2",
+    "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\cases-07.json": "cca5053761b406bc6d3c7d3f990b1cbd90557db4966a915f4bc906ea4f7189dc",
+    "docs\\research\\brn-relational-cglhw\\r050-07-plan.json": "e93a88f8dba07a9011784fa96f76347f19a9ce8276fdd986764c6aecbc898de2"
+  },
+  "plans": [
+    "docs\\research\\brn-relational-cglhw\\r050-00-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r050-01-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r050-02-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r050-03-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r050-04-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r050-05-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r050-06-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r050-07-plan.json"
+  ],
+  "positions": 8192,
+  "resource": {
+    "cpu_percent": 23.958333333333336,
+    "available_gib": 17.559814453125,
+    "utc": "2026-10-29T01:58:43Z"
+  },
+  "seconds": 1.3168923999764957,
+  "scope": "Opposite-turn copies of R049,not played roots or independent validation;no fit."
+}
