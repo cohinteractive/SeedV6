@@ -1,0 +1,40 @@
+{
+  "raw_path": "docs\\research\\brn-relational-cglhw\\raw\\r041-capacity.json",
+  "raw_sha256": "efbd92e596f8d0155e758c47fcbc51e6131db4cd6fb4f91ae02e9e49eb4aba76",
+  "receipt": {
+    "sha256": "efbd92e596f8d0155e758c47fcbc51e6131db4cd6fb4f91ae02e9e49eb4aba76",
+    "seconds": 0.8718563999864273,
+    "resources": [
+      {
+        "cpu_percent": 6.25,
+        "available_gib": 16.463253021240234,
+        "utc": "2026-10-29T00:31:09Z"
+      }
+    ]
+  },
+  "models": [
+    {
+      "seed": 71,
+      "full_inference_ns": 4828.86,
+      "mode": "ONE",
+      "preliminary_cost_pass": true,
+      "checksum": 359166.3446670131,
+      "nonzero_remote_contrasts": 64,
+      "practical_10us_pass": true,
+      "parameters": 20353
+    },
+    {
+      "seed": 71,
+      "full_inference_ns": 6653.22,
+      "mode": "TIED",
+      "preliminary_cost_pass": true,
+      "checksum": 359166.3446670131,
+      "nonzero_remote_contrasts": 64,
+      "practical_10us_pass": true,
+      "parameters": 20353
+    }
+  ],
+  "conditional_training_admitted": true,
+  "model_validation_sha256": "7e1bf4e4be5a0e91fe347dc920720ed1fef230a243001426b61e711483be5d17",
+  "scope": "Untrained capacity/cost only;exact ONE parity permits R040 control reuse;no strength claim."
+}
