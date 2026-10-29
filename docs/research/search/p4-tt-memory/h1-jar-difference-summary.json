@@ -1,0 +1,30 @@
+{
+  "engine-core.jar": {
+    "onlyControl80": [],
+    "onlyH1": [],
+    "changed": [
+      "com/ohinteractive/seedv6/application-version.properties",
+      "com/ohinteractive/seedv6/search/exact/ExactSearch$Aborted.class",
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.class",
+      "com/ohinteractive/seedv6/search/exact/FlatSearchConfig$Feature.class",
+      "com/ohinteractive/seedv6/search/exact/FlatSearchConfig.class",
+      "com/ohinteractive/seedv6/search/tt/TTable.class"
+    ],
+    "identicalEntries": 224,
+    "jarSha256": {
+      "docs\\research\\search\\p4-tt-memory\\raw\\runtime80\\lib\\engine-core.jar": "d25f9ed48e714530704f0e7ed8141287ce12b6b1df64a7dc2e7c9dfad4050d01",
+      "docs\\research\\search\\p4-tt-memory\\raw\\runtimeh1-v1\\lib\\engine-core.jar": "bd0474ec0c0763f754e915f097d24a71aaf08d45dbc31f0c46e3193c3f92c370"
+    }
+  },
+  "app-uci.jar": {
+    "onlyControl80": [],
+    "onlyH1": [],
+    "changed": [],
+    "identicalEntries": 25,
+    "jarSha256": {
+      "docs\\research\\search\\p4-tt-memory\\raw\\runtime80\\lib\\app-uci.jar": "a24bc26e00dd1e5a988d4443ff509068862f7ae8ac3bbb5f221cac69846c19a3",
+      "docs\\research\\search\\p4-tt-memory\\raw\\runtimeh1-v1\\lib\\app-uci.jar": "a24bc26e00dd1e5a988d4443ff509068862f7ae8ac3bbb5f221cac69846c19a3"
+    }
+  },
+  "interpretation": "Artifact entry comparison, not runtime or strength verification. Expected H1 changes are ExactSearch, FlatSearchConfig and its Feature enum, TTable, and application version metadata; UCI shared implementation remains identical."
+}

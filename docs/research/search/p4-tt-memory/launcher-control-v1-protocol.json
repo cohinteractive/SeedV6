@@ -1,0 +1,10 @@
+{
+  "id": "TT-LAUNCHER-CONTROL-V1",
+  "status": "prospective; execute between strength matches",
+  "purpose": "Check candidate/control isolation: experimental research launcher with H1 disabled, ordinary UCI at the same candidate source, and exact frozen build80 control",
+  "identities": "runtime80-manifest.json and runtimeh1-v1-manifest.json; flags3407871, CP64 and mapping unchanged, Hash64, ADAPTIVE16, BOUNDARY2; explicit book/tablebase OFF",
+  "method": "tools/p4-tt-launcher-check.py. W1 depth5 on starting position plus first8 bridge opening histories, then20k/100k nodes on startpos; W4 both node caps. Fresh newGame each request. Compare complete deterministic W1 outcomes/nodes/scores/PVs after removing timing/NPS; validate legal PVs and whole-request caps in all39 requests. Do not assert W4 scheduling equality.",
+  "limits": "One observation per cell is an isolation regression check, not timing, strength or universal executable equivalence. Research launcher starts from the same BaselineEngine configuration and ConventionalNnueEngine, applies both clock allocation and wrapper; Book.EMPTY replaces a disabled bundled book, identity announcements differ. No production routing/default changes.",
+  "stopping": "Fixed cells or first identity, legality, accounting, W1 deterministic comparison or frozen-input failure; preserve all output, no oracle revision to match an unexpected result",
+  "evidence": "raw/launcher-control-v1 with full UCI conversations, observations, commands and hashes; compact summary outside raw/"
+}

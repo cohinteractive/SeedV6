@@ -20,5 +20,14 @@
     "only80": [],
     "changed": [],
     "identicalEntries": 25
+  },
+  "only80Qualification": {
+    "method": "javap -v on all three additional package-info.class records in frozen runtime80",
+    "observed": "Each has0 interfaces,0 fields,0 methods and exactly one SourceFile attribute; no runtime annotations or executable body. Sources contain documentation plus package declarations.",
+    "interpretation": "Benign build-output descriptors, not additional Search policy; preserve their artifact identity rather than claiming entire JAR byte equality.",
+    "runtimeEvidence": [
+      "runtime79-manifest.json",
+      "runtime80-manifest.json"
+    ]
   }
 }

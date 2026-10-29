@@ -1,9 +1,10 @@
 # TT memory workstream — resume here
 
 Status: **ACTIVE**, 30 October 2026. Governing objective [TT-R001](CONTRACT.md),
-under Search P4-R001. Bootstrap established; bridge diagnostics complete, bridge
-V1 match incomplete; V2 W1 passed and W4 selected. H1 has passed technical and
-information-use qualification; no strength conclusion. Champion remains P4-BASELINE-001/build79.
+under Search P4-R001. Bootstrap and [comparison bridge](BRIDGE.md) complete;
+V1 match incomplete, V2 W1/W4 passed with wide uncertainty. H1 has passed
+technical/information-use and launcher qualification; W1 strength screen active,
+W4 screen next. No TT strength conclusion. Champion remains P4-BASELINE-001/build79.
 
 ## Bootstrap and challenge
 
@@ -36,18 +37,18 @@ Runtime versions and executable hashes belong in per-experiment manifests.
 
 ## Selected work and decision queue
 
-1. **Selected: bridge/qualification.** Separate frozen build79/build80
+1. **Completed: bridge/qualification.** Separate frozen build79/build80
    runtimes; exercise W1 deterministic depth/nodes and W4 behavior/admission,
    request limits, legal PVs, cancellation/reuse. Use repeated W4 observations as
-   scheduling samples, not deterministic equality claims. Run bounded paired-clock
-   bridge screening after protocol/consumer qualification. This is exploratory,
-   not proof of equivalence or correction strength.
+   scheduling samples, not deterministic equality claims. Both32-pair clock
+   bridges completed. W4 build80 score42.19% (normal95 33.83–50.55%) is adverse
+   and uncertain; no equivalence assumed. Promising candidates need direct79.
 2. **Implemented: bounded integrated heuristic memory H1/build81.** Explicit research selection,
    separate selective provenance, ordinary-score-only heuristic reuse initially,
    conservative non-PV eligibility, useful retention without losing completed legal
    hints; exact controls and production defaults retained. Technical and
    information-use qualification passed; strength remains unmeasured.
-3. **Conditional:** strength screen versus80, direct versus79 as bridge warrants;
+3. **Selected:** H1 strength screen versus80; direct versus79 for any promising result;
    reverse ablations only for interpretation, independent confirmation only after
    credible screening and feasible precision/cost assessment.
 
@@ -105,7 +106,7 @@ No default, champion or release changed. Bootstrap commit: `9d8389e8`.
 [H1 technical report](H1.md) and [diagnostic summary](h1-diagnostics-v1-summary.json)
 record 18,364 W1 /19,601 W4 heuristic cutoffs across nine100k-node requests,
 unchanged capacity and clean/instrumented W1 equality. These are diagnostics only.
-Selected next: V2 bridge W1/W4, then prospective H1 strength screening versus80
+Selected now: prospective H1 strength screening versus80
 and direct79 comparisons if promising. Keep cheap mechanism reverse ablations
 conditional on what the integrated strength evidence needs to explain.
 
@@ -121,7 +122,9 @@ older diagnostic manifests even after the ordinary build directory was refreshed
 audited 32-pair10+0.1 W1 bridge: build80 scored27W/12D/25L,51.56%; paired normal95
 42.0–61.1%, bounded Hoeffding95 27.6–75.6%. All64 normal games and frozen inputs
 passed independent audit. This establishes neither difference nor equivalence.
-W4 V2 has not started. A protocol deviation was found during W1 execution: `level=trace`
+W4 V2 passed all64 normal games at `raw/bridge-w4-v2/run.json`; build80 scored
+15W/24D/25L,42.19%, with wide uncertainty. [BRIDGE](BRIDGE.md) records the
+comparison-design consequence. A protocol deviation was found during W1 execution: `level=trace`
 captures runner lifecycle, but this pinned Fastchess also requires `engine=true`
 for UCI communications. That switch was omitted. Preserve the frozen run; its
 strict warning gate and independent PGN/request audit still qualify a complete
@@ -142,12 +145,41 @@ Speed never answers strength. The additional explicit H1 legal-null-
 verifier witness passed (`h1-null-witness-v1-summary.json`).
 `h1-screen-v1-protocol.json` prospectively defines coarse W1/W4 strength screening
 against80, with independent confirmation/direct79 follow-up required for a
-promising result. It has not executed; finish W4 bridge qualification first.
-Selected next command: `tools/p4-tt-memory.py match --name bridge-w4-v2` with
-runtime79/runtime80, workers4,pairs32,bridge-v1-openings.pgn,tc10+0.1 and
-`--protocol bridge-w4-v2-execution.json`. Do not overlap heavy work or edit its
-frozen adapter, protocols or runtime inputs while active. Then run the H1 screen
-under its frozen protocol; no H2 revision is selected.
+promising result. W1 is now running at `raw/h1-screen-w1-v1/run.json`; inspect
+its status before resuming and never duplicate the active match. W4 H1 has not
+started. Do not overlap heavy work or edit frozen adapter/protocol/runtime inputs.
+Next command after W1 drains and its result is reviewed: `tools/p4-tt-memory.py
+match --name h1-screen-w4-v1`, baseline runtime80, candidate runtimeh1-v1,
+`--candidate-policy h1 --workers 4 --pairs 32`, bridge-v1-openings.pgn,
+`--tc 10+0.1 --protocol h1-screen-v1-protocol.json`. No H2 revision is selected.
+`launcher-control-v1-summary.json` passed39 requests: all11 W1 depth/node outcomes
+match across frozen80,81 ordinary UCI and81 research control. W4 accounting/PV
+checks passed. Source/artifact/configuration isolation is qualified in these
+bounded domains; strength and timing equivalence are not inferred.
+
+## Rebuild and evidence availability
+
+All frozen runtime manifests identify actual files; verify their existence and
+hashes before reuse. A fresh checkout lacks ignored evidence. Do not overwrite a
+frozen installation or assume a rebuild inherits its executable identity.
+
+- Build79: detached `753367614b8aa7e32dee337fd76b542737141ac1`,
+  `gradlew.bat :app-uci:installDist --console=plain`; original build log remains
+  `build/p4-tt/control79/build79-build.log`.
+- Build80 control: source `9fec1d2af379827d105d523c32162fd771905cb9`, same Gradle
+  task; original log `build/validation/p4-tt-control80-build.log`. Its Search
+  source is identical to correction commit0bfb4ea8; source metadata is distinct.
+- H1/build81: detached `a72cc496fd39aeddefea4382044bd2bf2e9f6cbb`,
+  `gradlew.bat installResearchWorkspace --console=plain`; original log
+  `build/validation/p4-tt-build81.log`. Output is `build/research/runtime`, with
+  separate launcher classes and runtime JARs; never a production distribution.
+
+Use Java21+35 identified in manifests and a checkout-local
+`GRADLE_USER_HOME=<checkout>/build/migration/gradle-user-home`. Freeze copies under
+new ignored paths with `tools/p4-tt-memory.py freeze`; generate new manifests and
+qualify rebuilt identities before comparisons. Ordinary UCI distributions come
+from `app-uci/build/install/app-uci`. Tests and diagnostic commands/evidence are
+linked in their compact summaries/manifests; interrupted outputs stay preserved.
 
 ## Resume and human actions
 
