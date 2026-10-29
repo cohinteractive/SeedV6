@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R050 neural side-to-move consistency**.
+Status: **ACTIVE - R052 typed neural compilation investigation**.
 Owner RESUME cleared the admission gate;four loader tests pass and frozen model/
 core/teacher executable classes match their references. R046 runtime and six-
 function plans are frozen. Historical resource gates remain preserved;no GPU or
@@ -27,17 +27,18 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R049 complete:4096legal pairs/8192positions,182captures,all parent teacher targets
-reproduced. Both MIX seeds have restricted child/parent loss1.13x,below1.5x
-allocation threshold;no local-data pilot. R050 now tests frozen opposite-turn
-scores and odd/even decomposition before a possible neural perspective constraint.
-Run prepare_turn_consistency.py under nnue-control,then unchanged
-run_message_audit.py on r050-00 through07 plans serially;analyze original R049
-and new flipped predictions with the prospective R050 gates. No fit/games.
+R051 complete:eight tests,9gradient families max5.01e-12,exact MIX control
+history,64/64 remote contrasts. Typed11.343us and3.209x update cost fail10us/3x
+gates;cache15.82MiB is within20MiB. NO candidate training. Freeze R051 runtime/
+source and preserve failed initial compile/no-op launch. R052 is a separately
+bounded optimization of the SAME neural equations:avoid compiling full inference
+gates during training and test a smaller derived inference cache with explicit
+numerical-error bounds. Correctness/cost evidence must precede any training.
 
 All later training-data expansion must exclude R049's4096 parent/child aliases
 in raw/r049-data/selection.json (known parents already trained;future expansion
-reserves this consumed diagnostic),as well as R016's8192 canonical aliases in
+reserves this consumed diagnostic),all R050 opposite-turn aliases in its frozen
+raw cases,and R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
 to earlier reservations. The immutable R010 database was only read as exclusions.
 Both consumed development panels remain distinct from future final evaluation.
@@ -99,7 +100,9 @@ Both consumed development panels remain distinct from future final evaluation.
 | R047 | Cross-channel neural playing calibration | Complete6tests,32games;43.75%/25%,no broader match |
 | R048 | Matched-training playing attribution | Complete32games;21.875%/34.375%,mixed effect intervals include0;no expansion |
 | R049 | Neural local move coherence | Complete4096pairs;restricted child error1.13x both fails1.5x;no local-data pilot |
-| R050 | Neural side-to-move consistency | Prospective frozen odd/even decomposition;no fit/games |
+| R050 | Neural side-to-move consistency | Complete8192flips;2.94%/1.83% child gains fail5%;no constrained prototype |
+| R051 | Source-and-target neural relation transforms | Complete8tests;11.343us/3.209x fails cost gates,no candidate training |
+| R052 | Typed neural compilation cost | Selected;prospective optimization/correctness/cost gate,no training |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

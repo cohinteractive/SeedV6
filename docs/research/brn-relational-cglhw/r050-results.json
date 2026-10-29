@@ -1,0 +1,655 @@
+{
+  "selection_sha256": "610011475c4cc9e3ccf402af29b2234799476185c0641a9f3dfc4feb1670a87f",
+  "analysis_sha256": "7ea0edf133c8ead3543908747d7dc2d53a1263d0ef519b0108a2367c56f0981e",
+  "interval_helper_sha256": "96e09d4e02a3f7fed1ba738ff1410bdf71e529a6dd54c4fe76e5982d6d7cb967",
+  "protocol_sha256": "b683ef2bb879ab1427f6c03662a15795d64ed533144c64f5770fcca83a80090e",
+  "teacher": {
+    "mean_even_cp": 21.97906494140625,
+    "rms_even_cp": 30.11655367766906,
+    "standard_deviation": 20.589499987162597,
+    "percentile5": -6.0,
+    "percentile95": 51.5
+  },
+  "models": {
+    "r045-mix-71": {
+      "all": {
+        "pairs": 4096,
+        "parent": {
+          "original_mse": 0.010952897689676324,
+          "projected_mse": 0.010886914827654144,
+          "relative_gain": 0.006024237958907719,
+          "mean_improvement": 6.59828620221802e-05,
+          "approximate_95": [
+            -5.6545297087257256e-05,
+            0.00018851102113161765
+          ]
+        },
+        "child": {
+          "original_mse": 0.012279487411863178,
+          "projected_mse": 0.011918384031696838,
+          "relative_gain": 0.029407040217124925,
+          "mean_improvement": 0.0003611033801663395,
+          "approximate_95": [
+            0.0002289576067378283,
+            0.0004932491535948507
+          ]
+        },
+        "delta_cp": {
+          "original_mse": 27147.681116160504,
+          "projected_mse": 24449.972205872433,
+          "relative_gain": 0.09937161478893963,
+          "mean_improvement": 2697.7089102880714,
+          "approximate_95": [
+            2083.015654902009,
+            3312.402165674134
+          ],
+          "original_rmse": 164.76553376286105,
+          "projected_rmse": 156.36486883527397
+        },
+        "substantial_teacher_deltas": 1786,
+        "original_sign_disagreement": 0.32418812989921614,
+        "projected_sign_disagreement": 0.2637178051511758
+      },
+      "restricted": {
+        "pairs": 3535,
+        "parent": {
+          "original_mse": 0.01041549116989833,
+          "projected_mse": 0.010340149659829425,
+          "relative_gain": 0.007233601261805944,
+          "mean_improvement": 7.534151006890303e-05,
+          "approximate_95": [
+            -5.363371672930902e-05,
+            0.00020431673686711508
+          ]
+        },
+        "child": {
+          "original_mse": 0.01176742190473776,
+          "projected_mse": 0.011430135370578484,
+          "relative_gain": 0.028662738269244814,
+          "mean_improvement": 0.0003372865341592755,
+          "approximate_95": [
+            0.00019816382746902392,
+            0.00047640924084952713
+          ]
+        },
+        "delta_cp": {
+          "original_mse": 17544.390883949156,
+          "projected_mse": 15340.257840811808,
+          "relative_gain": 0.12563177928017122,
+          "mean_improvement": 2204.133043137348,
+          "approximate_95": [
+            1678.577656570726,
+            2729.68842970397
+          ],
+          "original_rmse": 132.45524105881637,
+          "projected_rmse": 123.85579453869653
+        },
+        "substantial_teacher_deltas": 1419,
+        "original_sign_disagreement": 0.3093727977448908,
+        "projected_sign_disagreement": 0.266384778012685
+      },
+      "perspective_error_decomposition": {
+        "odd_cp_mse": 391834.73936969996,
+        "even_cp_mse": 1708.4409185190154,
+        "both_perspectives_cp_mse": 393543.1802882211,
+        "even_error_fraction": 0.004341177802313322,
+        "mean_even_cp": 0.30502359301137405
+      }
+    },
+    "r044-low-71": {
+      "all": {
+        "pairs": 4096,
+        "parent": {
+          "original_mse": 0.01133826816230573,
+          "projected_mse": 0.011362897348969335,
+          "relative_gain": -0.002172217688895861,
+          "mean_improvement": -2.462918666360461e-05,
+          "approximate_95": [
+            -0.00014140461479336048,
+            9.214624146615127e-05
+          ]
+        },
+        "child": {
+          "original_mse": 0.01274470554643495,
+          "projected_mse": 0.012410870285552742,
+          "relative_gain": 0.02619403482221605,
+          "mean_improvement": 0.00033383526088220716,
+          "approximate_95": [
+            0.00021317375749692178,
+            0.00045449676426749253
+          ]
+        },
+        "delta_cp": {
+          "original_mse": 27327.292353620403,
+          "projected_mse": 25107.886468192504,
+          "relative_gain": 0.08121572590172355,
+          "mean_improvement": 2219.4058854279006,
+          "approximate_95": [
+            1644.3750180549794,
+            2794.4367528008215
+          ],
+          "original_rmse": 165.30968620628497,
+          "projected_rmse": 158.4546826956922
+        },
+        "substantial_teacher_deltas": 1786,
+        "original_sign_disagreement": 0.32082866741321386,
+        "projected_sign_disagreement": 0.2788353863381859
+      },
+      "restricted": {
+        "pairs": 3535,
+        "parent": {
+          "original_mse": 0.010610525849311053,
+          "projected_mse": 0.010604584353107334,
+          "relative_gain": 0.000559962464452668,
+          "mean_improvement": 5.941496203719823e-06,
+          "approximate_95": [
+            -0.00011557447263392267,
+            0.0001274574650413623
+          ]
+        },
+        "child": {
+          "original_mse": 0.012008777972677466,
+          "projected_mse": 0.011707971020944051,
+          "relative_gain": 0.025048922747827884,
+          "mean_improvement": 0.00030080695173341536,
+          "approximate_95": [
+            0.00017475923493048584,
+            0.0004268546685363449
+          ]
+        },
+        "delta_cp": {
+          "original_mse": 17232.827224828678,
+          "projected_mse": 15598.336276475786,
+          "relative_gain": 0.09484752136306185,
+          "mean_improvement": 1634.4909483528909,
+          "approximate_95": [
+            1135.9179449526523,
+            2133.0639517531295
+          ],
+          "original_rmse": 131.27386344900754,
+          "projected_rmse": 124.89329956597265
+        },
+        "substantial_teacher_deltas": 1419,
+        "original_sign_disagreement": 0.30091613812544044,
+        "projected_sign_disagreement": 0.2755461592670895
+      },
+      "perspective_error_decomposition": {
+        "odd_cp_mse": 410646.4265303135,
+        "even_cp_mse": 1519.3777787046577,
+        "both_perspectives_cp_mse": 412165.8043090182,
+        "even_error_fraction": 0.0036863266258874683,
+        "mean_even_cp": 0.9836273208324852
+      }
+    },
+    "r045-mix-97": {
+      "all": {
+        "pairs": 4096,
+        "parent": {
+          "original_mse": 0.010810174846767365,
+          "projected_mse": 0.01070431157219366,
+          "relative_gain": 0.009792928983508697,
+          "mean_improvement": 0.00010586327457370465,
+          "approximate_95": [
+            -3.083407404201381e-05,
+            0.0002425606231894231
+          ]
+        },
+        "child": {
+          "original_mse": 0.012000590785920886,
+          "projected_mse": 0.011780734953146448,
+          "relative_gain": 0.018320417444145587,
+          "mean_improvement": 0.00021985583277443882,
+          "approximate_95": [
+            8.291426016885316e-05,
+            0.0003567974053800245
+          ]
+        },
+        "delta_cp": {
+          "original_mse": 26425.176883128035,
+          "projected_mse": 24255.93689189549,
+          "relative_gain": 0.08208989483122675,
+          "mean_improvement": 2169.2399912325436,
+          "approximate_95": [
+            1478.1358509660695,
+            2860.3441314990177
+          ],
+          "original_rmse": 162.55822613183264,
+          "projected_rmse": 155.74317606847336
+        },
+        "substantial_teacher_deltas": 1786,
+        "original_sign_disagreement": 0.3124300111982083,
+        "projected_sign_disagreement": 0.284434490481523
+      },
+      "restricted": {
+        "pairs": 3535,
+        "parent": {
+          "original_mse": 0.010286002911354923,
+          "projected_mse": 0.010202339755129653,
+          "relative_gain": 0.008133689728292093,
+          "mean_improvement": 8.36631562252714e-05,
+          "approximate_95": [
+            -6.212363355855222e-05,
+            0.000229449946009095
+          ]
+        },
+        "child": {
+          "original_mse": 0.011632950350977413,
+          "projected_mse": 0.011369437607463218,
+          "relative_gain": 0.02265227096856426,
+          "mean_improvement": 0.0002635127435141921,
+          "approximate_95": [
+            0.00011806574758037384,
+            0.00040895973944801034
+          ]
+        },
+        "delta_cp": {
+          "original_mse": 17200.556686238044,
+          "projected_mse": 15446.962515779105,
+          "relative_gain": 0.10194984978956922,
+          "mean_improvement": 1753.5941704589404,
+          "approximate_95": [
+            1150.1848462672374,
+            2357.0034946506435
+          ],
+          "original_rmse": 131.15089281525323,
+          "projected_rmse": 124.2858097925065
+        },
+        "substantial_teacher_deltas": 1419,
+        "original_sign_disagreement": 0.2959830866807611,
+        "projected_sign_disagreement": 0.2797744890768147
+      },
+      "perspective_error_decomposition": {
+        "odd_cp_mse": 383437.735169874,
+        "even_cp_mse": 1692.0889683201954,
+        "both_perspectives_cp_mse": 385129.82413819485,
+        "even_error_fraction": 0.004393554750288642,
+        "mean_even_cp": 4.282430174825019
+      }
+    },
+    "r044-low-97": {
+      "all": {
+        "pairs": 4096,
+        "parent": {
+          "original_mse": 0.011434810580812617,
+          "projected_mse": 0.011411097445375998,
+          "relative_gain": 0.002073767227627532,
+          "mean_improvement": 2.371313543661791e-05,
+          "approximate_95": [
+            -9.373361775469265e-05,
+            0.00014115988862792848
+          ]
+        },
+        "child": {
+          "original_mse": 0.012860355313438187,
+          "projected_mse": 0.012523352244974776,
+          "relative_gain": 0.026204802297434604,
+          "mean_improvement": 0.00033700306846341164,
+          "approximate_95": [
+            0.00021333965780561653,
+            0.0004606664791212068
+          ]
+        },
+        "delta_cp": {
+          "original_mse": 27339.39932469621,
+          "projected_mse": 25244.52452645124,
+          "relative_gain": 0.07662475584650563,
+          "mean_improvement": 2094.8747982449668,
+          "approximate_95": [
+            1503.2524196604227,
+            2686.497176829511
+          ],
+          "original_rmse": 165.3463012126253,
+          "projected_rmse": 158.88525584978376
+        },
+        "substantial_teacher_deltas": 1786,
+        "original_sign_disagreement": 0.34546472564389696,
+        "projected_sign_disagreement": 0.2777155655095185
+      },
+      "restricted": {
+        "pairs": 3535,
+        "parent": {
+          "original_mse": 0.010676563857601736,
+          "projected_mse": 0.010651505842311325,
+          "relative_gain": 0.00234701123176162,
+          "mean_improvement": 2.5058015290411298e-05,
+          "approximate_95": [
+            -9.632546681136483e-05,
+            0.00014644149739218742
+          ]
+        },
+        "child": {
+          "original_mse": 0.012167111719940645,
+          "projected_mse": 0.011814462395015686,
+          "relative_gain": 0.028983815801329582,
+          "mean_improvement": 0.000352649324924958,
+          "approximate_95": [
+            0.00022453599174473876,
+            0.00048076265810517726
+          ]
+        },
+        "delta_cp": {
+          "original_mse": 17719.387815836628,
+          "projected_mse": 15746.50016231123,
+          "relative_gain": 0.11134062158525238,
+          "mean_improvement": 1972.8876535253996,
+          "approximate_95": [
+            1451.394234759101,
+            2494.3810722916983
+          ],
+          "original_rmse": 133.1141908882619,
+          "projected_rmse": 125.48505951829975
+        },
+        "substantial_teacher_deltas": 1419,
+        "original_sign_disagreement": 0.33262861169837915,
+        "projected_sign_disagreement": 0.2776603241719521
+      },
+      "perspective_error_decomposition": {
+        "odd_cp_mse": 412280.8325256048,
+        "even_cp_mse": 1649.391015413712,
+        "both_perspectives_cp_mse": 413930.22354101634,
+        "even_error_fraction": 0.00398470786043067,
+        "mean_even_cp": -0.21614092600643978
+      }
+    }
+  },
+  "gates": [
+    {
+      "seed": 71,
+      "child_mse_gain": 0.029407040217124925,
+      "delta_cp_mse_gain": 0.09937161478893963,
+      "child_improvement_lower95": 0.0002289576067378283,
+      "passes": false
+    },
+    {
+      "seed": 97,
+      "child_mse_gain": 0.018320417444145587,
+      "delta_cp_mse_gain": 0.08208989483122675,
+      "child_improvement_lower95": 8.291426016885316e-05,
+      "passes": false
+    }
+  ],
+  "perspective_prototype_justified": false,
+  "evidence": [
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-00-plan.json",
+      "plan_sha256": "874706f95a75c33c855f887a43ba6715b4935e3115c0116b5b1b50554d089483",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-00.json",
+      "output_sha256": "00044e67f4d6a3f6de2d2bad2c4a16eea1575ece67a3a636ee1ee3edf99291b9",
+      "receipt": {
+        "sha256": "00044e67f4d6a3f6de2d2bad2c4a16eea1575ece67a3a636ee1ee3edf99291b9",
+        "seconds": 0.6491346000111662,
+        "resources": [
+          {
+            "cpu_percent": 11.458333333333337,
+            "available_gib": 17.538578033447266,
+            "utc": "2026-10-29T01:56:30Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r050-00-plan.json",
+      "plan_sha256": "717230d14e4ac66717c41041d4289e42c749ae16cf61c81abd2f11d4a5fb0655",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\prediction-00.json",
+      "output_sha256": "76105e3af320d5f4bdc9ac7be94d641edac0d095984fde061cdaa2907e84063b",
+      "receipt": {
+        "sha256": "76105e3af320d5f4bdc9ac7be94d641edac0d095984fde061cdaa2907e84063b",
+        "seconds": 0.6988378000096418,
+        "resources": [
+          {
+            "cpu_percent": 5.7291666666666625,
+            "available_gib": 17.177398681640625,
+            "utc": "2026-10-29T01:59:25Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-01-plan.json",
+      "plan_sha256": "32e0ca8c733e914888cf670db7ac1ec55928eb621853d9b6ea5b90453b750cad",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-01.json",
+      "output_sha256": "713526ae4185d0da0f997da9f0eaf5e3346f6741c8abe9997a463132e1a0516a",
+      "receipt": {
+        "sha256": "713526ae4185d0da0f997da9f0eaf5e3346f6741c8abe9997a463132e1a0516a",
+        "seconds": 0.6486049999948591,
+        "resources": [
+          {
+            "cpu_percent": 8.854166666666663,
+            "available_gib": 17.528507232666016,
+            "utc": "2026-10-29T01:56:31Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r050-01-plan.json",
+      "plan_sha256": "da7ce16b6ecb40b166f473a38da6bda6eaf30f31bd4e41478a079a515734c00c",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\prediction-01.json",
+      "output_sha256": "b2284b5ea1abb8f4918253e37b50316c5f59c44fac7d9a3529a7eee3bd8dc66a",
+      "receipt": {
+        "sha256": "b2284b5ea1abb8f4918253e37b50316c5f59c44fac7d9a3529a7eee3bd8dc66a",
+        "seconds": 0.6902370000025257,
+        "resources": [
+          {
+            "cpu_percent": 22.395833333333336,
+            "available_gib": 17.516353607177734,
+            "utc": "2026-10-29T01:59:26Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-02-plan.json",
+      "plan_sha256": "428643ff2f5ceac409eee792db3d26608454d450f11e21dffd3ecf4e9dba0a81",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-02.json",
+      "output_sha256": "70e10e455e517b229ea6bcf5040d249f889820f77fb4176e594611895b00bd56",
+      "receipt": {
+        "sha256": "70e10e455e517b229ea6bcf5040d249f889820f77fb4176e594611895b00bd56",
+        "seconds": 0.7004902000189759,
+        "resources": [
+          {
+            "cpu_percent": 25.38860103626943,
+            "available_gib": 17.531681060791016,
+            "utc": "2026-10-29T01:56:32Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r050-02-plan.json",
+      "plan_sha256": "6cf8a091e3d79181d51c99fb1c2cea506b2421538132f525bd0d1d8731e5633a",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\prediction-02.json",
+      "output_sha256": "79964ef3af44670ad010d28f81fbf216bd73b132803f65974fb3aa17b4eb0d84",
+      "receipt": {
+        "sha256": "79964ef3af44670ad010d28f81fbf216bd73b132803f65974fb3aa17b4eb0d84",
+        "seconds": 0.6514301999704912,
+        "resources": [
+          {
+            "cpu_percent": 5.7291666666666625,
+            "available_gib": 17.511058807373047,
+            "utc": "2026-10-29T01:59:27Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-03-plan.json",
+      "plan_sha256": "9b090be30df44da6674c127ab2234edc1c6b9185c573513d7b538c636b71ded9",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-03.json",
+      "output_sha256": "7d89c749a7eff94f8f36305a17e98da1d5e91fb13d6fad401bada4afdbbe7986",
+      "receipt": {
+        "sha256": "7d89c749a7eff94f8f36305a17e98da1d5e91fb13d6fad401bada4afdbbe7986",
+        "seconds": 0.6858490000013262,
+        "resources": [
+          {
+            "cpu_percent": 14.0625,
+            "available_gib": 17.537212371826172,
+            "utc": "2026-10-29T01:56:34Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r050-03-plan.json",
+      "plan_sha256": "81eef184f26ffb78c2f2b8f73bbe8c1fea157ae74ff757da8803c980333d2ccb",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\prediction-03.json",
+      "output_sha256": "0e0ccf5828da94e7e5e6a7d192724d2553b442e650a6a8ca993e717d9c5cc92d",
+      "receipt": {
+        "sha256": "0e0ccf5828da94e7e5e6a7d192724d2553b442e650a6a8ca993e717d9c5cc92d",
+        "seconds": 0.6187091000028886,
+        "resources": [
+          {
+            "cpu_percent": 5.181347150259064,
+            "available_gib": 17.503276824951172,
+            "utc": "2026-10-29T01:59:29Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-04-plan.json",
+      "plan_sha256": "a38664c18a36ae03e4b2c218937bbbed5a1e55c1b6977af426b340edadf1eaa8",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-04.json",
+      "output_sha256": "34c7f0d018fd04a8fbdc16ad6cb2cade0caf4590a2c592b981d54a9ebe40c7c5",
+      "receipt": {
+        "sha256": "34c7f0d018fd04a8fbdc16ad6cb2cade0caf4590a2c592b981d54a9ebe40c7c5",
+        "seconds": 0.6945354000199586,
+        "resources": [
+          {
+            "cpu_percent": 7.772020725388606,
+            "available_gib": 17.52877426147461,
+            "utc": "2026-10-29T01:56:35Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r050-04-plan.json",
+      "plan_sha256": "bd7b78f597dc8c8180019339fedf1a00819b5c05964f811075b6a8127d4aeb9e",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\prediction-04.json",
+      "output_sha256": "246709036604bafcc67254af4792f93287b674f88cd7826b4359c04224b3e3c7",
+      "receipt": {
+        "sha256": "246709036604bafcc67254af4792f93287b674f88cd7826b4359c04224b3e3c7",
+        "seconds": 0.6665168000035919,
+        "resources": [
+          {
+            "cpu_percent": 8.374384236453203,
+            "available_gib": 17.501083374023438,
+            "utc": "2026-10-29T01:59:30Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-05-plan.json",
+      "plan_sha256": "08f0b66049ee022e58aded262f3ec0a3cccff76e73062d906d6fb77406776fa6",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-05.json",
+      "output_sha256": "61efa028d0bfd7503793819fc1cab3af7acca252c712d45aed6313d0e8974434",
+      "receipt": {
+        "sha256": "61efa028d0bfd7503793819fc1cab3af7acca252c712d45aed6313d0e8974434",
+        "seconds": 0.6403032999951392,
+        "resources": [
+          {
+            "cpu_percent": 8.762886597938147,
+            "available_gib": 17.526283264160156,
+            "utc": "2026-10-29T01:56:36Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r050-05-plan.json",
+      "plan_sha256": "05cbf7b73dccbf5afe59c366296c2abd841d1b225dda71bd1886900a0cca0a91",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\prediction-05.json",
+      "output_sha256": "400d5f16b27d1e30eb742f643f75a4c8a2b472d814d45565f2f0cffa0e461546",
+      "receipt": {
+        "sha256": "400d5f16b27d1e30eb742f643f75a4c8a2b472d814d45565f2f0cffa0e461546",
+        "seconds": 0.6893189999973401,
+        "resources": [
+          {
+            "cpu_percent": 10.416666666666663,
+            "available_gib": 17.548114776611328,
+            "utc": "2026-10-29T01:59:31Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-06-plan.json",
+      "plan_sha256": "95d679c2281ac5e50d60bb59f0d5325c4092da93b7cc7496c67d34b9de2ae88a",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-06.json",
+      "output_sha256": "5d49f55c2b05b0051c0d79dbe80354f7a14974d38fd7b3f3635dbbf6d8b9b558",
+      "receipt": {
+        "sha256": "5d49f55c2b05b0051c0d79dbe80354f7a14974d38fd7b3f3635dbbf6d8b9b558",
+        "seconds": 0.6671204000012949,
+        "resources": [
+          {
+            "cpu_percent": 3.125,
+            "available_gib": 17.526256561279297,
+            "utc": "2026-10-29T01:56:37Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r050-06-plan.json",
+      "plan_sha256": "4abe3528dbb11d265734e7080f1170a3c3a6cb4846664c6c3427847b4ba27da2",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\prediction-06.json",
+      "output_sha256": "15d36117ea194bf2ad336d4696121257d1e0f3405e7e40297652a61faf9125c5",
+      "receipt": {
+        "sha256": "15d36117ea194bf2ad336d4696121257d1e0f3405e7e40297652a61faf9125c5",
+        "seconds": 0.6529480000026524,
+        "resources": [
+          {
+            "cpu_percent": 5.641025641025643,
+            "available_gib": 17.551990509033203,
+            "utc": "2026-10-29T01:59:32Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-07-plan.json",
+      "plan_sha256": "3675c70027f9333e1bbbcd1a852174b8c7931bc99fe0dda4dc50acb9e03f3e39",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-07.json",
+      "output_sha256": "68c25eb62f7aa1dc1e4539485e1bf6b35f8783fb83ff148402c72d8f63f8e26c",
+      "receipt": {
+        "sha256": "68c25eb62f7aa1dc1e4539485e1bf6b35f8783fb83ff148402c72d8f63f8e26c",
+        "seconds": 0.6284860000014305,
+        "resources": [
+          {
+            "cpu_percent": 5.7291666666666625,
+            "available_gib": 17.554763793945312,
+            "utc": "2026-10-29T01:56:38Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r050-07-plan.json",
+      "plan_sha256": "e93a88f8dba07a9011784fa96f76347f19a9ce8276fdd986764c6aecbc898de2",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r050-data\\prediction-07.json",
+      "output_sha256": "64848e96610aeb9e140bbffffa29557a15481221be88b69d130aa699906c4f62",
+      "receipt": {
+        "sha256": "64848e96610aeb9e140bbffffa29557a15481221be88b69d130aa699906c4f62",
+        "seconds": 0.6564033000031486,
+        "resources": [
+          {
+            "cpu_percent": 8.333333333333337,
+            "available_gib": 17.554656982421875,
+            "utc": "2026-10-29T01:59:33Z"
+          }
+        ]
+      }
+    }
+  ],
+  "seconds": 1.8520341999828815,
+  "resources": [
+    {
+      "cpu_percent": 8.854166666666663,
+      "available_gib": 17.563556671142578,
+      "utc": "2026-10-29T01:59:37Z"
+    }
+  ],
+  "limitations": "Frozen development mechanism diagnostic;random legal children,known fitted parents,unknown source-game correlations. CP64 tempo need not be zero;projection is not an engine promotion or strength result."
+}

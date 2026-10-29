@@ -1,0 +1,54 @@
+{
+  "validation_sha256": "e811fb334e65855dabbc19841ac7cf9c2d9b8cc262f1ea01378d2c761274e6ac",
+  "plan_sha256": "280c9d57cd25559a736189fbc90e1228a089b280d9ca35e67f5fe6d7322eff51",
+  "evidence": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r051-capacity.json",
+    "sha256": "fd09334728898072c6a81385dab41217cacb6c63e6e7b5cefb19c4025a7c9960",
+    "receipt": {
+      "sha256": "fd09334728898072c6a81385dab41217cacb6c63e6e7b5cefb19c4025a7c9960",
+      "seconds": 2.8043942999793217,
+      "resources": [
+        {
+          "cpu_percent": 13.541666666666663,
+          "available_gib": 17.320877075195312,
+          "utc": "2026-10-29T02:04:44Z"
+        }
+      ]
+    }
+  },
+  "models": [
+    {
+      "update_128_ns": 8811355.0,
+      "derived_cache_bytes": 1382400,
+      "microbenchmark_only_updates": 30,
+      "preliminary_cost_pass": true,
+      "mode": "CONTROL",
+      "full_inference_ns": 7295.745,
+      "seed": 71,
+      "parameters": 21569,
+      "practical_10us_pass": true,
+      "nonzero_remote_contrasts": 64,
+      "checksum": 359166.3446670131
+    },
+    {
+      "update_128_ns": 28275835.0,
+      "derived_cache_bytes": 16588800,
+      "microbenchmark_only_updates": 30,
+      "preliminary_cost_pass": false,
+      "mode": "TYPED",
+      "full_inference_ns": 11342.55,
+      "seed": 71,
+      "parameters": 21569,
+      "practical_10us_pass": false,
+      "nonzero_remote_contrasts": 64,
+      "checksum": 359166.3446670131
+    }
+  ],
+  "typed_update_ratio": 3.2090223353842853,
+  "correctness_tests": 8,
+  "maximum_gradient_error": 5.007326828567263e-12,
+  "source_transform_witness": 0.05169471776393664,
+  "training_admitted": false,
+  "reason": "Typed11.34255us exceeds10us and3.209x update ratio exceeds3x;no candidate fit.",
+  "next": "R052 exact training compilation plus bounded inference-cache precision audit;separate prospective gates."
+}

@@ -360,3 +360,15 @@ Both1.13x restricted loss ratios fail1.5x;no local-data training. Preserve all
 R049 aliases from future expansion. R050 prepare_turn_consistency.py under fresh
 admission creates8plans;run_message_audit.py reuses R046 runtime,then decompose
 original/opposite-turn predictions. No fitting or games.
+
+R050 complete:8flipped shards,exact odd/even algebra;child-loss gates fail.
+Reserve flipped aliases as consumed development. R051 isolated typed relation
+model/test/diagnostic/cost harness prepared;focused build pending. No training
+protocol or candidate fit exists. Existing MIX/core/model files unchanged.
+
+R051 complete:8tests and frozen runtime;typed inference/update gates fail.
+Initial multiline CMD launch ran only imports;actual build had test lambda
+compile error,corrected and all checks rerun. Logs/sources preserved locally.
+raw/r050-audit-runner.py preserves R046-R050 bindings. R051 runtime contains
+unchanged MIX/core classes;no app build bump or candidate training. R052 targets
+derived-cache cost only,with new numerical and training-history guards.
