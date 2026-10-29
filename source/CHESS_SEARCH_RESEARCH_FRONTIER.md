@@ -1,10 +1,51 @@
 # SeedV6 Search Research Frontier - Phase 3
 
-Internal frontier revision: **P3-F034**
+Internal frontier revision: **P3-F035**
 
-Status: **BOUNDARY2 PRODUCTION DEFAULT INTEGRATED under explicit owner acceptance of unconfirmed strength and unresolved timing risk. All normal managed-clock configurations and workers1-16 use the selected policy; factual fallback remains explicit. Bounded technical qualification passes; both independent studies remain unqualified and unopened. External installation/release is not performed.**
+Status: **CLOSED - 29 October 2026. All Phase 3 objectives are complete or dispositioned; no active Phase 3 research queue remains. Accepted production is unchanged, with all recorded qualifications preserved. Phase 4 is not initialized.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
+
+## Formal Phase 3 closeout - 29 October 2026
+
+Following GPT reconciliation and acceptance of the assessment, the owner closes
+Search Phase 3 through documentation alone. The [Contract closeout](CHESS_SEARCH_CONTRACT.md#formal-phase-3-closeout---29-october-2026)
+is authoritative for the final production identity, qualifications and authority
+boundary. Shared `BaselineEngine` retains flattened PVS/ADAPTIVE16, frozen CP64
+checkpoint64/S6CNU002/eight heads/BT4_Q_LOGIT400_V1, flags3407871, requested Hash64,
+workers 1-16/bounded Max, existing TT restrictions/completed legal hints and
+BOUNDARY2 managed clocks with explicit FACTUAL fallback. Other evaluator and
+historical control distinctions remain unchanged.
+
+| Objective | Final Phase 3 disposition |
+| --- | --- |
+| O1/O2 information retention and reuse | Complete and accepted; Policy4 promoted in its historical Pair-2 domain, retained as a control after later production decisions. |
+| SR-002 execution architecture | Complete and owner-accepted: flattened execution selected, without universal speed or strength superiority. |
+| SR-003/SR-004 root drivers | Complete and owner-accepted: retain PVS; tested MTD alternatives and adverse/inconclusive evidence preserved. |
+| Workstream 3 construction and CP64 consolidation | Technically complete; all 31 selected subjects dispositioned. Subsequent owner consolidation selected Construction V1 + CP64 for production and superseded the original pending/non-promotion boundary. |
+| TT information effectiveness and ADAPTIVE16 | Investigation complete and subsequently owner-accepted; useful legal-hint reuse established. ADAPTIVE16 adopted across workers 1-16 under explicit strength-domain limitations; no binding TT redesign adopted. |
+| CP64 selectivity | Complete, accepted and integrated: original 18 + NOMINAL_FUTILITY + VERIFIED_NULL, flags3407871. Positive independent primary W1 evidence; broader strength unconfirmed. |
+| SR-034 and BOUNDARY2 | SR-034 accepted as inconclusive/deferred; fresh confirmation closed unqualified. BOUNDARY2 default integrated under explicit informed owner acceptance of unconfirmed strength and unresolved timing risk. |
+| SR-013/035/037/038 | Broader tablebases, pondering, dedicated mechanical optimization and learned guidance remain deferred opportunities, not outstanding Phase 3 obligations. |
+
+All 38 subjects retain their historical accounting: 31 construction, 3 foundational
+and 4 deferred. No additional experiment is required for closure. Both BOUNDARY2
+studies remain clock-unqualified with scores unopened; timing causes/frequencies/
+comparative risks, limited strength domains, adverse selective witnesses and
+bounded QA remain as recorded. Build 77 integration receipts do not establish
+equivalent runtime validation of the build 79 source after research evaluator seam
+changes. No external installation, deployment or release is established.
+
+The dated accounts, inventory and programme tables below are retained history.
+Their earlier pending, research-only, recursive-default and factual-only wording
+does not describe the final production state or create an active execution queue.
+Frozen evidence and restrictions are preserved; closure does not repeal technical
+rules or initialize Phase 4. Phase 4 authority awaits its separately reconciled
+work unit; neither master is archived or relocated here.
+
+**PROJECT_SOURCE_REFRESH_REQUIRED: YES.** Refresh both master mirrors to
+**P3-R035/P3-F035** and confirm synchronization before dependent external planning
+or preparation of the next launch. Repository closeout does not perform that action.
 
 ## BOUNDARY2 production-default adoption - 24 October 2026
 
@@ -365,6 +406,9 @@ GPT planning. Future independent search optimization retains the existing contra
 
 ## Authority and current direction
 
+Historical 20 October direction follows. The formal closeout above is the current
+status; subsequent accepted production decisions supersede the earlier handback.
+
 **Current disposition, 20 October 2026:** Workstream 2 is closed and owner-accepted:
 **retain PVS** on the accepted flattened architecture. The owner confirms the
 P3-R012/P3-F010 mirrors and explicitly launches Workstream 3 construction.
@@ -594,6 +638,10 @@ their own launch and have not begun.
 
 ## Compact research inventory
 
+**Historical inventory:** the rows retain their earlier baselines and opportunity
+descriptions, including pre-adoption SR-002/SR-034 wording. Use the formal closeout
+above for final production and research dispositions; this table activates no work.
+
 **Production** means a retained accepted implementation, with scope stated.
 **Baseline** identifies inherited functionality, not a new strength claim.
 **Evidence only** is a conclusion without an adopted runtime mechanism.
@@ -651,6 +699,10 @@ focused Phase 2 reports. This inventory does not duplicate their experimental re
 | SR-038 | Learned or evaluator-assisted Search guidance | Pending opportunity; no generic learned policy/selectivity adopted. | Neural/policy ordering, learned uncertainty, evaluator-assisted confidence and RankCut conditional-support ideas when economical. | SR-008/009/014/016/028/029; core evaluator independence, labeling and held-out validation. | [P1], [P2] |
 
 ## Selection, combinations and progression
+
+**Historical programme:** this construction-era partition and progression text is
+preserved evidence. Its pending acceptance and former defaults are superseded by
+the final dispositions above; no unfinished mandatory Phase 3 work remains.
 
 The accepted first feature-rich programme accounts for **all 38 subjects: 31
 selected construction subjects, 3 preliminary/foundational subjects and 4 explicit

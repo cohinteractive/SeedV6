@@ -6,7 +6,7 @@ fixed-work comparisons. Its unique resume entry point preserves older completed
 and suspended programmes separately; it does not authorize production promotion.
 
 SeedV6 is a Java 21 chess engine with UCI, desktop Play, and Network Training.
-The production and Search Phase 3 baseline is full **Construction V1 +
+The unchanged production baseline at Search Phase 3 closure is **Construction V1 +
 Conventional NNUE CP64** (S6CNU002, eight material heads). GUI Play, ordinary Arena
 and standalone UCI share `engine-core`'s `BaselineEngine` construction. One worker
 uses the flattened PVS owner; multiple workers use cooperative `ParallelSearch`.
@@ -19,6 +19,13 @@ and multiworker strength remains unconfirmed. Explicit flags262143, WIDEN16 and
 other research/historical configurations remain available. See the
 [adoption record](docs/research/search/P3_CP64_SELECTIVITY_2026-10-23.md#production-adoption---24-october-2026).
 
+Normal managed-clock configurations use **BOUNDARY2**, with explicit **FACTUAL**
+fallback. Its independent studies remain clock-unqualified with scores unopened;
+adoption reflects informed owner acceptance of unconfirmed strength and unresolved
+timing risk. The [Phase 3 closeout](source/CHESS_SEARCH_CONTRACT.md#formal-phase-3-closeout---29-october-2026)
+records the final selection and qualifications, including build 77 integration
+evidence versus the absence of equivalent current-source runtime validation.
+
 **Arena** compares named model lineages on identical frozen records and targets,
 with paired games before training and after each campaign round. Start from a fresh
 initializer or copy an exact generation; each competitor keeps its own recipe and
@@ -29,10 +36,10 @@ including HCE vs HCE, without training. See the [Arena guide](docs/learning-aren
 Start with the [architecture and source boundaries](docs/architecture.md) and
 [operating guide](docs/guide.md).
 
-The [current baseline and qualification record](docs/research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026)
-records the owner's selection, complete search features, score semantics, worker
-checks, packaging and informational E008 comparison. Competitive GUI selectors
-offer exactly HCE, BREP2-32 and Conventional NNUE CP64, defaulting to CP64. All
+The [construction and CP64 consolidation record](docs/research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026)
+preserves the original composition, score semantics, worker checks, packaging and
+informational E008 comparison; the later selections are recorded above. Competitive
+GUI selectors offer exactly HCE, BREP2-32 and Conventional NNUE CP64, defaulting to CP64. All
 three use Construction V1 and honor the same resource settings; HCE and BREP2-32
 retain flags262143 without the CP64-calibrated additions. Frozen conventional
 NNUE is unavailable in Network Training or Arena learning mode.
@@ -110,7 +117,7 @@ preserves the original BINP chunks and never modifies the downloaded archives.
 - `src/integrationTest`: mixed application/training tests requiring research references.
 - `src/researchLauncher`: small explicit research-UCI adapter; excluded from production.
 - `app/src/test`: remaining production/legacy integration checks.
-- `source`: active Phase 3 Search Contract and Research Frontier.
+- `source`: closed Phase 3 Search Contract and Research Frontier, retained in place.
 - `docs`: architecture, operation, frozen Phase 1/2 search canon, historical reports and evidence.
 - `archive`: historical instrumentation, excluded from every source set.
 
@@ -132,15 +139,19 @@ The diagnostic command dispatcher is now `:app:developerTools`:
 # Frozen replay: use -PtoolArgs="frozen-wdl ..." with the explicit input paths.
 ```
 
-The active Phase 3 [Search Contract](source/CHESS_SEARCH_CONTRACT.md) and
-[Research Frontier](source/CHESS_SEARCH_RESEARCH_FRONTIER.md) govern the
-strength-focused, architecture-aware combination programme. The complete Phase 1
+Search Phase 3 is **formally CLOSED**. Its [Contract P3-R035](source/CHESS_SEARCH_CONTRACT.md)
+and [Frontier P3-F035](source/CHESS_SEARCH_RESEARCH_FRONTIER.md) retain the accepted
+production baseline, completed/deferred dispositions and historical qualifications.
+Phase 4 is authorized in principle but **not initialized**; its authority requires
+a separately reconciled work unit. Existing technical restrictions remain in force.
+The complete Phase 1
 [Contract R045](docs/search-phase1/CHESS_SEARCH_CONTRACT.md) and
 [Frontier F052](docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md) are frozen
 historical archives. Final Phase 2 [Contract P2-R049](docs/search-phase2/CHESS_SEARCH_CONTRACT.md)
 and [Frontier P2-F053](docs/search-phase2/CHESS_SEARCH_RESEARCH_FRONTIER.md)
 are also frozen byte-for-byte; historical active and handback statements are not
-current instructions. Phase 3 has no active research objective at initialization.
+current instructions. No active Phase 3 research queue remains; deferred subjects
+are historical opportunities rather than unfinished closure obligations.
 [Search reports](docs/research/search/) and
 [BRN reports](docs/research/brn/) preserve the supporting research; their historical
 measurements do not establish current performance or strength.

@@ -1,10 +1,79 @@
 # SeedV6 Search Contract - Phase 3
 
-Internal revision: **P3-R034**
+Internal revision: **P3-R035**
 
-Status: **BOUNDARY2 PRODUCTION DEFAULT INTEGRATED under explicit owner acceptance of unconfirmed strength and unresolved timing risk. All normal managed-clock configurations and workers1-16 use the selected policy; factual fallback remains explicit. Bounded technical qualification passes; both independent studies remain unqualified and unopened. External installation/release is not performed.**
+Status: **CLOSED - 29 October 2026. Phase 3 research and production-integration objectives are complete or dispositioned under owner-authorized documentation closeout. The accepted production selection and its qualifications remain unchanged. Phase 4 is not initialized.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
+
+## Formal Phase 3 closeout - 29 October 2026
+
+The owner authorizes formal closure after GPT reconciled and accepted the read-only
+closeout assessment. **Search Phase 3 is CLOSED.** No further Phase 3 experiment
+or implementation obligation remains. The [Frontier closeout](CHESS_SEARCH_RESEARCH_FRONTIER.md#formal-phase-3-closeout---29-october-2026)
+records the final objective dispositions; deferred opportunities are historical
+dispositions, not mandatory unfinished work. This closes the research programme,
+not universal correctness, all-domain strength, platform QA or external release.
+
+The unchanged production selection is shared `BaselineEngine` for normal GUI Play,
+ordinary Arena and standard no-argument UCI: flattened PVS, ADAPTIVE16, frozen
+Conventional NNUE CP64/checkpoint64/S6CNU002/eight material heads and existing
+BT4_Q_LOGIT400_V1 score mapping. CP64 selects the original 18 controls plus
+NOMINAL_FUTILITY and VERIFIED_NULL, **flags3407871**, requested default Hash64,
+workers 1-16 (default 1; ROOT_REUSE for multiple workers), and Max bounded by available
+processors and 16. Competitive HCE/BREP2-32 and unrelated conventional payloads
+retain flags262143; explicit model routes and historical Policy4/E008/Construction
+controls retain their distinct factories and identities.
+
+BOUNDARY2 remains the default managed-clock policy across normal configurations,
+with explicit FACTUAL fallback through UCI `ClockPolicy`, JVM
+`-Dseedv6.clockPolicy=FACTUAL` or core API selection. Other request-limit contracts
+are unchanged. Existing TT identity/layout/locking/replacement, NO_LEAF_TT and
+no-production-qTT policies remain: equal-depth/current-generation ordinary score
+admission, cutoff-only bounds and conservative selective-proof suppression are
+retained. The selected extension-enabled composition suppresses ordinary score
+stores/reuse while completed legal TT hints remain active. No Search, evaluator,
+clock, worker, proof or ownership rule is changed by this closeout.
+
+Qualifications retained for all future use of this baseline:
+
+- Both independent BOUNDARY2 studies remain **clock-unqualified, scores unopened**.
+  Historical baseline overruns were 25.7499/40.2846 ms; the later candidate overrun
+  was 124.2323 ms (784.2323 ms against 660 ms; runner excess 125 ms). Causes, frequencies
+  and comparative risks remain unresolved. Non-reproduction does not bound rare
+  stalls. Adoption reflects explicit informed owner risk acceptance, not independent
+  strength confirmation or timing qualification. See the [SR-034 closeout](../docs/research/search/P3_SR034_TIME_ALLOCATION_2026-10-24.md#technical-closeout-clock-unqualified-confirmation)
+  and [BOUNDARY2 adoption limits](../docs/research/search/P3_BOUNDARY2_CONFIRMATION_2026-10-24.md#closeout-limits-and-required-follow-up).
+- Selected CP64 selectivity has positive W1/10+0.1 confirmation under its frozen
+  primary assumptions; conservative bounded sensitivity crosses equality. ADAPTIVE16
+  W4 screening is inconclusive, and broader multiworker/clock/platform strength
+  remains unconfirmed. Configuration gains do not establish isolated component
+  gains. The [selectivity record](../docs/research/search/P3_CP64_SELECTIVITY_2026-10-23.md#correctness-validation-and-remaining-limitations)
+  retains adverse interaction witnesses, capped unknowns and bounded correctness
+  evidence. Prior supplemental failures/skips and native GUI/macOS/client gates
+  are not erased by bounded integration passes.
+- BOUNDARY2 integration qualification belongs to build 77 (`bafa9e7`): 287 recorded
+  passing test executions and 230 UCI checks; the 230 UCI checks were repeated on
+  build 77 artifacts. The assessed source is
+  `a0cd7ee3bb851c5e083fc4be38921e4b55c60f84`, build 79; builds 78/79
+  added explicit research evaluator seams in `SearchEvaluation`/`ConstructionSearch`.
+  Static inspection retains the production selection, but equivalent current-HEAD
+  runtime validation was not performed for the assessment or this closeout.
+  External installation, deployment and release are not established by integration.
+
+Dated launches, pending handbacks and former production descriptions below retain
+their historical scope; they do not reopen acceptance or override this final state.
+All frozen studies, protocols, negative/adverse findings, unopened scores and
+Phase 1/2 archives remain preserved. Existing technical restrictions and
+owner-reserved decisions are not repealed. Phase 4 is authorized in principle only;
+its authority requires a separately reconciled initialization work unit. These
+masters remain in place; no Phase 4 canon, inventory or research is initialized.
+
+This documentation-only closeout leaves version 0.0.0/build 79 unchanged. Both
+Project Source mirrors require replacement with **P3-R035/P3-F035** and owner
+confirmation before mirror-dependent planning or the next launch is prepared.
+**PROJECT_SOURCE_REFRESH_REQUIRED: YES.** Repository changes do not synchronize
+external Project Sources.
 
 ## BOUNDARY2 production-default adoption - 24 October 2026
 
@@ -447,6 +516,10 @@ do not update those external mirrors; refresh both before future mirror-dependen
 GPT planning. Future independent search optimization retains the existing contract.
 
 ## Authority and objective
+
+The dated construction launch below is historical; current programme status is
+the formal closeout above. Its earlier pending/non-promotion scope is superseded
+by the recorded later production decisions, without repealing technical rules.
 
 On 20 October 2026 the owner accepted Workstream 2's **retain PVS** decision and
 explicitly launched Workstream 3 as one autonomous construction objective across

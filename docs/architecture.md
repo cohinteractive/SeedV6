@@ -51,10 +51,17 @@ The latter owns the flattened Construction kernel as well as retained recursive
 controls. Their configuration identities are separated by the Phase 3 [contract](../source/CHESS_SEARCH_CONTRACT.md) and
 [frontier](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md).
 
-Normal competitive search uses `BaselineEngine`: full Construction V1 flattened
-PVS, all 18 controls (flags 262143), ADAPTIVE16 aspiration and CP64 by default. HCE
-and frozen BREP2-32 use the same search controls and settings. No null-move pruning
-is enabled in this profile. See the [complete feature record](research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026).
+Normal competitive search uses `BaselineEngine`: flattened PVS, ADAPTIVE16 and
+Conventional NNUE CP64 by default (checkpoint64, S6CNU002, eight material heads,
+BT4_Q_LOGIT400_V1 score mapping). The verified CP64 payload selects the original 18
+Construction controls plus NOMINAL_FUTILITY and VERIFIED_NULL, **flags3407871**.
+Competitive HCE, frozen BREP2-32 and unrelated conventional payloads retain
+original 18/flags262143. Requested default Hash is 64 MiB; explicit workers 1-16 are
+supported, with default 1 and Max bounded by available processors and 16.
+Normal managed-clock paths use BOUNDARY2; UCI `ClockPolicy FACTUAL`, JVM
+`-Dseedv6.clockPolicy=FACTUAL` and explicit core selection retain factual fallback.
+Depth/node/fixed-movetime/infinite contracts remain separate. See the
+[final Phase 3 baseline and qualifications](../source/CHESS_SEARCH_CONTRACT.md#formal-phase-3-closeout---29-october-2026).
 Mate-domain, repetition and score-provenance contracts remain in force.
 `ProductionSearch`, `PinnedSearch` and `ConventionalNnueEngine` retain historical
 training, Policy 4, original Pair-2 Construction and recursive E008 identities.
@@ -125,6 +132,11 @@ promotion, score calibration, evaluator or training mathematics is changed.
 [`TTable`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/tt/TTable.java) is the
 accepted and used production table. Adapters own it, requests share one generation
 across iterations, and `ParallelSearch` shares it within its drained worker cohort.
+Existing identity, striped locking, replacement, NO_LEAF_TT and no-production-qTT
+policies remain. Ordinary scores require equal depth/current generation with
+cutoff-only bound use and conservative selective-proof suppression. The selected
+extension-enabled Construction configuration suppresses ordinary score stores/reuse;
+completed legal hints remain active in the same table, separate from score proof.
 `TranspositionScores` remains production score-domain support. The older
 `TranspositionTable` belongs exclusively to verification and cannot enter production.
 `Magic` remains production: `Move` still uses its sliding attacks. It was not
