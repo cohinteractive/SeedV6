@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R043 tied-recurrence playing calibration**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R044 tied neural continuation diagnosis**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,10 +25,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R042 complete:both frozen TIED transfer gates pass;8192 teacher3.5-3.6% and
-prior played noncheck7.0-9.2% gains over ONE,second path useful. R043 adds isolated
-tied2 research loading,checks full recomputation/search integration,freezes clean
-runtime and runs32 matched10000-node games against CP64. No clocks/promotion.
+R043 complete:32games,32 deterministic probes,0caps/failures. TIED scores12.5%/
+34.375% against CP64 at10000nodes;no broader games or strength claim. R044 tests
+one proportional-decay low-rate continuation versus matched constant-rate controls
+from both frozen R041 parents. Implement parent/history/resume checks,freeze
+unchanged model/updater classes,then four serial1M-example arms within admission.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -85,7 +86,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R040 | Shared neural geometry/context training | Complete4arms;5-8% played gains,all advancement gates fail;no games |
 | R041 | Tied neural relation recurrence | Complete6tests,2arms;both mechanism/family gates pass,cost<10us;no games |
 | R042 | Frozen tied-recurrence transfer | Complete3tests;both transfer gates pass,8/8root gains;no strength claim |
-| R043 | Tied neural recurrence playing calibration | Prospective32fixed-node games after isolated integration checks |
+| R043 | Tied neural recurrence playing calibration | Complete5tests,32games;12.5%/34.375%,no broader games |
+| R044 | Tied neural proportional-decay continuation | Prospective4arms;one bounded distinct warm-start recipe |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -105,8 +107,8 @@ Gen32 remains unchanged. Best played Pair-2 development control is seed71 epoch2
 It is a secondary reference,not the primary architecture objective. No neural BRN
 has demonstrated CP64 competitiveness;no production model was changed/promoted.
 R022 and R028 ONE are the played neural references:32games each versus CP64,
-point scores9.375%/21.875% and15.625%/12.5% respectively. No reliable neural
-strength winner is established. ONE has lower measured full-evaluation cost;
+point scores9.375%/21.875% and15.625%/12.5% respectively. R041 TIED now has32games at12.5%/34.375%;positive prediction gates do not
+establish consistent playing improvement. No reliable neural strength winner is established. ONE has lower measured full-evaluation cost;
 TWO/attention variants remain preserved failed architectural controls.
 Fixed-node results are not equal-time Elo. No clock tournament or GPU work ran.
 
@@ -125,7 +127,7 @@ before any recovery; never rewrite completed bindings to accept changed tools.
 
 ## Validation and required action
 
-Focused tests through R031 are preserved with exact identities in each validation
+Focused tests through R043 are preserved with exact identities in each validation
 manifest (including repeated baseline regressions);counts across stages overlap. The selector's renamed import received syntax validation but no new
 runtime rerun;its unchanged clone function was previously tested. Full suite,
 GUI,GPU,clock and production deployment qualification are not claimed. Raw output stays local/ignored;compact evidence,

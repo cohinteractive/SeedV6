@@ -311,3 +311,8 @@ panels before any separately bounded games. No default/production change.
 R042 complete:3loader tests,exact model/core class parity,target/metadata parity,
 both transfer gates pass. R043 freezes32games only after isolated integration QA;
 no training or production change. Existing audit runner requires no mutation.
+
+R043 complete:5integration checks,1795tested/246core-UCI class parity,32probes/
+32games,all children released. raw/r035-neural-games-runner.py preserves R030/R035
+bindings. Research tied2 selector is isolated;build78 unchanged. R044 requires
+fresh admission and exact parent/history guards before any continuation.
