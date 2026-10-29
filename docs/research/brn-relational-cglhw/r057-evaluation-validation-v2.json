@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "tests": [
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\evaluation-build-2-TEST-com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest.xml",
+      "sha256": "b7a311bfd4c3fd0268ed8dce2859e03ff9bbd7d25f641cecd39fd7942842425a",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest",
+        "tests": "6",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T05:37:20",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.377"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\evaluation-build-2-TEST-com.ohinteractive.seedv6.core.brnpair2.OneTrainingCorpusTest.xml",
+      "sha256": "f07b384994712150c1abc9544c2c54e9fd920a9fb043694440b75088b56f4700",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.OneTrainingCorpusTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T05:37:20",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.16"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\evaluation-build-2-TEST-com.ohinteractive.seedv6.core.brnpair2.ResearchOneEvaluationTest.xml",
+      "sha256": "31501d283717bf1bd825cbf0afeb3584610ba7abe95b0d821a80e9db5c67a234",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.ResearchOneEvaluationTest",
+        "tests": "1",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T05:37:21",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.056"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\evaluation-build-2-TEST-com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest.xml",
+      "sha256": "c8797b58d6fbf7861964bb5317e8b194cf5c1b0c6a2582e348fc2fb0070b46ff",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T05:37:21",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.168"
+      }
+    }
+  ],
+  "runtime": {
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\research-launcher.properties": "a7c61ea7a9363040d74d62f8b3ce450305f0b833ef13cd5dc87a85425f5849e4",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\lib\\app-uci.jar": "a24bc26e00dd1e5a988d4443ff509068862f7ae8ac3bbb5f221cac69846c19a3",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\lib\\engine-core.jar": "3d4196d927458e058f7bc38a04f63fe0c984259caefd8f5af437d3f4c3a30be8",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\lib\\research.jar": "72e29051d8f4fcf516199ca70441b71e801297aa255908dd061f6e3c0974a3d3",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\BrnRelationalUciMain$1.class": "4d180b06d2c4e5905dbb2e2f73364581f2b8391c4f69dcfb91b4258c72aff859",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\BrnRelationalUciMain.class": "52cd4f8d3c5884652382e431b15577bd03a998cbadc9156d7042ad540da883c3",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SelectivityUciMain$1.class": "45f381877ef7cdc00347e7624d2bbcedc60208044d9a259b0566d782c4c54735",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SelectivityUciMain.class": "815eea3def5cb2c760b46d6966c65dbafec04505620bae9269fafa3df780b16a",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SpendingUciMain$1.class": "43f6669023494549289802766e868b4f86270e66312ab735e9c60f2919e668cd",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\Cp64SpendingUciMain.class": "3e638447a4065c89d0868e96cfff98da752107dafe791d27f4cfd51fbc6a32c4",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\Cp64TimeUciMain$1.class": "bec1e65dc489733c8daaed5d9229b361de0e7e76aa03181fd49288cc8557602e",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\Cp64TimeUciMain.class": "283e4f3cfe2f1c440760b9bc1f98f9f80d92fb248e4aff3d3d2a12a99bcbaf5b",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain$1.class": "58c3d4ebe21a2b8aa46a3114d1bc3e37a851860312fe330867a78d5708df6598",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3ConstructionUciMain.class": "1c47b49bba3d0fb4a9349db23ac757778cd6c6f9d6e32a3911eb2f1613451735",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain$1.class": "1a0b995fb5c2046b1a4e18a5cec8b0bd1eeb949595e1b1c36a556e7514c45b14",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3DriverUciMain.class": "b35ec2373bd5a0cf4e6d714d5e7b8e6c948fc33775b5b461af10696c539b84fd",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain$1.class": "a7e2f469e7b6976ec1897c05ec9428220e9ff4a97ec03ef894189b0ecd4e3bf3",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3InformationUciMain.class": "1fb37318975ec761b2117db35602d72fd28113e678b17700752a1764156006ec",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain$1.class": "2b01438f9b77a8c89c9b153638b85841f2dad32f74b215d3749158ba8a980b17",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\P3TtUciMain.class": "119edde9b12440c661ae89495afc65511d76e003ff4f0da644d9f37e64755281",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain$1.class": "745f48127c0e35629ea731691b838b7cf0c51ddb732f7bec9b87bb171e0fe7d6",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-evaluation-v2\\classes\\com\\ohinteractive\\seedv6\\integration\\ResearchUciMain.class": "706958cf81282a7d9e4b130b92f36f80219d993f86547e40d2c2a16aff431141"
+  },
+  "scope": "Final per-evaluation lifecycle audit compiled; focused tests passed; principal runtime evaluation follows."
+}

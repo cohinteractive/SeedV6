@@ -1,0 +1,204 @@
+{
+  "experiment": "R057",
+  "status": "EFFICIENCY_MEASURED",
+  "untrained": false,
+  "source": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-lifecycle\\result.json",
+  "source_sha256": "e0252b1b06bd14e372224be22b1b9c47526a9b0912741cfd1b78bcbd8890d71c",
+  "source_model_sha256": "7f081bab949139d768147ea736d68d26b16a8f33593823e209e34e20cc63c1c2",
+  "trace_sha256": "0c0734d48c5adbeb14fbbe54801ba9ccde12ad709752e3fbb02d440094ea62bb",
+  "trace_events": 84741,
+  "trace_counts": [
+    175,
+    45000,
+    0,
+    39566
+  ],
+  "cp64_backend": "vector-256-long",
+  "metrics": {
+    "R057_ONE_FULL": {
+      "full_evaluation": {
+        "median_ns": 2527.5390625,
+        "min_ns": 2477.7587890625,
+        "max_ns": 2707.5439453125,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "complete_search_trace": {
+        "median_ns": 2438.7378304604963,
+        "min_ns": 2411.8384724258203,
+        "max_ns": 2483.685487539807,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "search": {
+        "requests": 90,
+        "actual_nodes": 880035,
+        "search_seconds": 2.496722308,
+        "aggregate_nps": 352476.12326777034
+      }
+    },
+    "R057_ONE_INCREMENTAL": {
+      "full_evaluation": {
+        "median_ns": 2369.189453125,
+        "min_ns": 2249.682861328125,
+        "max_ns": 2582.763671875,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "readout": {
+        "median_ns": 1469.7998046875,
+        "min_ns": 1412.036376953125,
+        "max_ns": 1601.050048828125,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "update": {
+        "median_ns": 463.720703125,
+        "min_ns": 433.88671875,
+        "max_ns": 542.627197265625,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "update_plus_readout": {
+        "median_ns": 1660.669189453125,
+        "min_ns": 1609.47265625,
+        "max_ns": 1797.925048828125,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "complete_search_trace": {
+        "median_ns": 1414.009528382955,
+        "min_ns": 1397.606530859829,
+        "max_ns": 1502.5122579992924,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "search": {
+        "requests": 90,
+        "actual_nodes": 880035,
+        "search_seconds": 1.601111396,
+        "aggregate_nps": 549640.0826317022
+      }
+    },
+    "CP64": {
+      "full_evaluation": {
+        "median_ns": 3198.974609375,
+        "min_ns": 3068.1640625,
+        "max_ns": 3496.875,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "readout": {
+        "median_ns": 594.9462890625,
+        "min_ns": 545.7763671875,
+        "max_ns": 607.250732421875,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "update": {
+        "median_ns": 1287.548828125,
+        "min_ns": 1200.317626953125,
+        "max_ns": 1344.189208984375,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "update_plus_readout": {
+        "median_ns": 1395.068603515625,
+        "min_ns": 1348.144775390625,
+        "max_ns": 1582.1044921875,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "complete_search_trace": {
+        "median_ns": 1007.3168882373756,
+        "min_ns": 1000.9882474852146,
+        "max_ns": 1031.0721326391347,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "search": {
+        "requests": 90,
+        "actual_nodes": 879759,
+        "search_seconds": 1.2830098,
+        "aggregate_nps": 685699.3609869543
+      }
+    }
+  },
+  "one_cp64_lifecycle_ratio": 1.4037385304412189,
+  "one_cp64_nps_ratio": 0.8015759003196145,
+  "predeclared_criteria": {
+    "maximum_lifecycle_ratio": 1.25,
+    "minimum_nps_ratio": 0.8
+  },
+  "passes": false,
+  "reference_incremental_search_results_identical": true,
+  "capacity": {
+    "width": 16,
+    "rank": 4,
+    "active_parameters": 31489,
+    "cp64_parameters": 1970440
+  },
+  "immutable_payload_bytes": 620816,
+  "accumulator_payload_bytes": 1081,
+  "per_evaluation_numerical_equivalence": {
+    "raw_rounded_differences": 0,
+    "actual_search_rounded_differences": 0,
+    "evaluations": 39566,
+    "relative_tolerance": 1e-12,
+    "maximum_absolute_cp_error": 1.8189894035458565e-12,
+    "absolute_tolerance_cp": 1e-08
+  },
+  "initialization": {
+    "state_initialization": [
+      {
+        "mode": "R057_ONE_FULL",
+        "allocated_bytes": 449744,
+        "initialization_ns": 1340100
+      },
+      {
+        "mode": "R057_ONE_INCREMENTAL",
+        "allocated_bytes": 9011680,
+        "initialization_ns": 9758601
+      },
+      {
+        "mode": "CP64",
+        "allocated_bytes": 16886712,
+        "initialization_ns": 4565000
+      }
+    ],
+    "immutable_initialization_ns": 9428099,
+    "immutable_allocated_bytes": 656016,
+    "immutable_payload_bytes": 620816
+  },
+  "limitations": [
+    "One JVM; trace captured using the bound ONE checkpoint. This timing study makes no quality/strength or equal-time inference. Component parents prebuilt; full trace includes actual root rebuilds and main/qsearch transitions (explicit copies only if nonzero in event counts). Payload memory excludes JVM headers; allocated bytes include them. CP64 full uses its normal accumulator rebuild plus head.",
+    "Nine within-JVM timing rounds are correlated; min/max are descriptive, not confidence intervals.",
+    "Fixed-node NPS uses different CP64/ONE trees; replay fixes the transition trace. No playing-strength inference.",
+    "Training volume and quality are separate evidence; repeat timing for the final selected checkpoint.",
+    "Earlier v1/v2 scalar-head results retained; their CP64 full cost used the slow independent oracle, not normal refresh."
+  ]
+}

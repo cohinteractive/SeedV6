@@ -1,0 +1,124 @@
+{
+  "status": "COMPLETE",
+  "observed_utc": "2026-10-29T05:36:58Z",
+  "config_sha256": "5722f4e2fff5ab9e0173ef6496f738d9ad2071ef0e6ef07a3d7d6d4182c8fa49",
+  "source_revision": "19159d93",
+  "samples": 33554432,
+  "target_exposures": 268435456,
+  "completed_exposures": 268435456,
+  "completed_equivalent_passes": 8.0,
+  "next_epoch_zero_based": 8,
+  "next_row_in_epoch": 0,
+  "distinct_sample_rows_visited": 33554432,
+  "canonical_unique_visited": 33180466,
+  "completed_checkpoints": 1024,
+  "training_segment_seconds": 2233.116612430998,
+  "latest": {
+    "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-16x4-20261029\\segments\\268435456-b5a9ca3b-301\\receipt.json",
+    "receipt_sha256": "b7ebd72c1daf8162f6617a2e2d338c314b0a70d076e6fdb299b031156cfff029",
+    "state": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-16x4-20261029\\segments\\268435456-b5a9ca3b-301\\model.state",
+    "state_sha256": "7f081bab949139d768147ea736d68d26b16a8f33593823e209e34e20cc63c1c2",
+    "optimizer_steps": 2097152,
+    "rate": 0.0005
+  },
+  "epoch_metrics": [
+    {
+      "epoch": 1,
+      "exposures": 33554432,
+      "metrics": {
+        "development_mse": 0.02533612658457063,
+        "panel_rows": 8192,
+        "development_unary_only_mse": 0.027195187116160088,
+        "fixed_training_panel_mse": 0.02439444158489129
+      },
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-16x4-20261029\\segments\\033554432-af0b63aa-922\\receipt.json",
+      "receipt_sha256": "a695c6e344b5bb2b306ee81fb821cae69c65fe22a8e54c6b586f041cc15c0275"
+    },
+    {
+      "epoch": 2,
+      "exposures": 67108864,
+      "metrics": {
+        "development_unary_only_mse": 0.026982067437048646,
+        "panel_rows": 8192,
+        "development_mse": 0.025238186537889843,
+        "fixed_training_panel_mse": 0.024087702824233684
+      },
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-16x4-20261029\\segments\\067108864-12bf0120-df8\\receipt.json",
+      "receipt_sha256": "8405b156c50c57ff9ff06b0c67326fea8337a70fa9804925b0a418886fee2a2d"
+    },
+    {
+      "epoch": 3,
+      "exposures": 100663296,
+      "metrics": {
+        "fixed_training_panel_mse": 0.02409970376729364,
+        "development_unary_only_mse": 0.027169608931189762,
+        "panel_rows": 8192,
+        "development_mse": 0.025153214389649185
+      },
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-16x4-20261029\\segments\\100663296-94282321-bdf\\receipt.json",
+      "receipt_sha256": "f6a5d97edc2f0b6f1b534e0868e93f7628b17c2331f31879a267451f50d85e82"
+    },
+    {
+      "epoch": 4,
+      "exposures": 134217728,
+      "metrics": {
+        "panel_rows": 8192,
+        "development_mse": 0.024182265433847848,
+        "fixed_training_panel_mse": 0.023188960477651222,
+        "development_unary_only_mse": 0.026790245146446366
+      },
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-16x4-20261029\\segments\\134217728-0e48b879-853\\receipt.json",
+      "receipt_sha256": "dcaa6eff56b51a4ac50f2364719ba13971c561463e3dcda00a196cb4b7de0291"
+    },
+    {
+      "epoch": 5,
+      "exposures": 167772160,
+      "metrics": {
+        "development_unary_only_mse": 0.027082064810050897,
+        "fixed_training_panel_mse": 0.02279588372144666,
+        "development_mse": 0.023668834123924634,
+        "panel_rows": 8192
+      },
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-16x4-20261029\\segments\\167772160-28f6ea13-4e0\\receipt.json",
+      "receipt_sha256": "1010e90483112f589f17bd89921c818c8f95c9956d127e37a924496a94ff1027"
+    },
+    {
+      "epoch": 6,
+      "exposures": 201326592,
+      "metrics": {
+        "development_unary_only_mse": 0.02780506081601045,
+        "panel_rows": 8192,
+        "development_mse": 0.023463677052042508,
+        "fixed_training_panel_mse": 0.022536532671426843
+      },
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-16x4-20261029\\segments\\201326592-d63fcf09-b16\\receipt.json",
+      "receipt_sha256": "9ef9157d27f8508454bf2345a411d70473500cee1b06fd55c6b73eb9093033d0"
+    },
+    {
+      "epoch": 7,
+      "exposures": 234881024,
+      "metrics": {
+        "development_unary_only_mse": 0.029316398785492324,
+        "panel_rows": 8192,
+        "development_mse": 0.023315715073682564,
+        "fixed_training_panel_mse": 0.022285392783038926
+      },
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-16x4-20261029\\segments\\234881024-0d051522-1dd\\receipt.json",
+      "receipt_sha256": "dd978b61a5416e3208d8b87115bb5e6c4d63e16d3c1257218ae89d19924afee7"
+    },
+    {
+      "epoch": 8,
+      "exposures": 268435456,
+      "metrics": {
+        "development_mse": 0.023160410769509025,
+        "fixed_training_panel_mse": 0.02215351511838484,
+        "development_unary_only_mse": 0.028941236918020266,
+        "panel_rows": 8192
+      },
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-16x4-20261029\\segments\\268435456-b5a9ca3b-301\\receipt.json",
+      "receipt_sha256": "b7ebd72c1daf8162f6617a2e2d338c314b0a70d076e6fdb299b031156cfff029"
+    }
+  ],
+  "preliminary_exposures_excluded": 8388608,
+  "scope": "Verified committed checkpoint chain only; work after the last receipt is not counted. Segment seconds include state write/verification, exclude startup and epoch metrics. No playing result."
+}

@@ -1,0 +1,140 @@
+{
+  "invocations": 32,
+  "supervised_wall_seconds": 2289.3994198995642,
+  "training_segment_seconds": 2233.116612430998,
+  "resource_samples": 445,
+  "maximum_observed_system_cpu_percent": 61.45833333333333,
+  "minimum_observed_available_gib": 16.89635467529297,
+  "execution_records": [
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793249806639711100.execution.json",
+      "seconds": 72.30645140004344
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793249969336604100.execution.json",
+      "seconds": 71.99207359994762
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793250041972412900.execution.json",
+      "seconds": 69.94842200004496
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793250112622334700.execution.json",
+      "seconds": 71.6724737000186
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793250185092645500.execution.json",
+      "seconds": 73.438081100001
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793250259388947500.execution.json",
+      "seconds": 71.98247769998852
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793250332115248200.execution.json",
+      "seconds": 73.2685336000286
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793250406252594600.execution.json",
+      "seconds": 72.25160570000298
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793250479443487800.execution.json",
+      "seconds": 71.29075559997
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793250551604374400.execution.json",
+      "seconds": 72.91223170002922
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793250625416850200.execution.json",
+      "seconds": 72.1259877999546
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793250698456519900.execution.json",
+      "seconds": 70.90464429999702
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793250770267766700.execution.json",
+      "seconds": 66.62684949999675
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793250837896342100.execution.json",
+      "seconds": 72.5555386999622
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793250911380215600.execution.json",
+      "seconds": 73.10369440005161
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793250985486660100.execution.json",
+      "seconds": 70.8471823000582
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793251057385817900.execution.json",
+      "seconds": 71.09199789992999
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793251129524234800.execution.json",
+      "seconds": 73.06039479991887
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793251203671841600.execution.json",
+      "seconds": 72.68534959992394
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793251277439197100.execution.json",
+      "seconds": 66.39166930003557
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793251344986751600.execution.json",
+      "seconds": 71.31521889998112
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793251417370702400.execution.json",
+      "seconds": 72.51470089994837
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793251491007511100.execution.json",
+      "seconds": 73.07660799997393
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793251565258159100.execution.json",
+      "seconds": 72.91688709997106
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793251639319735700.execution.json",
+      "seconds": 67.22490239993203
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793251707802698900.execution.json",
+      "seconds": 71.27411400002893
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793251780325543800.execution.json",
+      "seconds": 70.98250939999707
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793251852655988700.execution.json",
+      "seconds": 72.27546789997723
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793251926186127200.execution.json",
+      "seconds": 73.20256349991541
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793252000719886200.execution.json",
+      "seconds": 72.76459739997517
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793252074735938900.execution.json",
+      "seconds": 72.44278259994462
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-training-1793252148529775000.execution.json",
+      "seconds": 68.9526531000156
+    }
+  ],
+  "checkpoint_state_bytes": 773918720,
+  "scope": "One logical processor; CPU-only; BelowNormal. Sampled system values are not an attribution of unrelated system load. Segment seconds include checkpoint write/verification; wall sum includes startup and epoch audits."
+}

@@ -46,6 +46,7 @@ def main():
         passes=latency<=1.25 and throughput>=.8, reference_incremental_search_results_identical=True,
         capacity=dict(width=data.get('width',8),rank=data.get('rank',4),active_parameters=data.get('parameters',19201),cp64_parameters=1970440),
         immutable_payload_bytes=data['immutable_payload_bytes'], accumulator_payload_bytes=data['accumulator_payload_bytes'],
+        per_evaluation_numerical_equivalence=data.get('per_evaluation_numerical_equivalence'),
         initialization={k:v for k,v in data.items() if k.startswith('immutable_') or k=='state_initialization'},
         limitations=[data['limitations'], 'Nine within-JVM timing rounds are correlated; min/max are descriptive, not confidence intervals.',
             'Fixed-node NPS uses different CP64/ONE trees; replay fixes the transition trace. No playing-strength inference.',

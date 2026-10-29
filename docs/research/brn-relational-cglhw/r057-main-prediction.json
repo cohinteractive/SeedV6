@@ -1,0 +1,19 @@
+{
+  "state": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-16x4-20261029\\segments\\268435456-b5a9ca3b-301\\model.state",
+  "state_sha256": "7f081bab949139d768147ea736d68d26b16a8f33593823e209e34e20cc63c1c2",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r057\\main-prediction",
+  "panels": [
+    {
+      "name": "development",
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\corpus\\development.txt",
+      "sha256": "bee2b110ff0e477c0c7bd758418a196901d9da21e1a658cec634e50d6f8814f8",
+      "rows": 8192
+    },
+    {
+      "name": "fresh",
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\supplement\\proof.txt",
+      "sha256": "be4dcf14aa3910bade2416330e1e73a3493461c49a4b41e9785520c69261d763",
+      "rows": 8192
+    }
+  ]
+}

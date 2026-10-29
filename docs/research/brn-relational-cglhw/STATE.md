@@ -43,15 +43,21 @@ tests passed; r057-evaluation-validation.json records source/runtime evidence.
 Fresh32 development and256 confirmation opening roots are reserved and excluded
 from all original/supplemental training aliases and inspected historical roots.
 
-Next operation: run r057-main-training-plan.json through run_one_stage.py under
-nnue-control.cmd with a unique launch log. Each invocation commits at most32
-checkpoints (262,144 exposures each), then exits safely; repeat only unfinished
-tranches while resources remain admitted. Exact total target268,435,456 exposures.
-Resume selects the latest valid receipt under raw/r057/main-16x4-20261029/segments;
-never repeat completed segments. No main training or games existed at this freeze.
-On completion freeze the final endpoint, run lifecycle and original-target
-prediction audits, then the64-game fixed-node screen and conditional512-game
-confirmation exactly as R057-MAIN.md specifies. No further capacity search.
+Principal training is COMPLETE:33,554,432 samples,268,435,456 exposures,eight
+passes,1,024 verified checkpoints. r057-main-progress.json pins the final state,
+optimizer step2,097,152 and full receipt chain. Never restart this training.
+Final development MSE0.02316041077;fixed training panel0.02215351512.
+
+Final per-event lifecycle enhancement compiled with13 focused tests passing;
+r057-evaluation-validation-v2.json freezes runtime-evaluation-v2. The final
+lifecycle and prediction audits are complete: r057-main-efficiency-results.json
+and r057-main-prediction-results.json. Lifecycle ratio1.40374,NPS ratio0.801576;
+39,566 trace evaluations agree within1.82e-12cp with zero rounded differences.
+Then run64 development games and conditional512 confirmation games exactly as
+R057-MAIN.md. New analyze_one_games.py has syntax validation only until games.
+Fresh8,192 predictions are consumed only after selection/final-epoch freeze;
+ONE MSE0.0309569 versus CP64 0.0217784. The model passes correctness/stability
+and proceeds to the predeclared fixed-node64-game development screen.
 
 On a resource gate: retain latest valid state/receipt/cursor, release only owned
 children, verify supervisor active:null/owned0, record exact next command and end

@@ -66,6 +66,29 @@ public final class OneLifecycleAudit {
         }
         sink = sum; return sum;
     }
+    private static Map<String,Object> verifyEveryEvaluation(Trace trace, Event[] events,
+            SearchEvaluation.State[] reference, SearchEvaluation.State[] optimized,
+            IncrementalOne model, java.util.function.ToDoubleFunction<long[]> full) {
+        var frames=new IncrementalOne.Accumulator[trace.capacities.size()][];
+        for(int i=0;i<frames.length;i++){frames[i]=new IncrementalOne.Accumulator[trace.capacities.get(i)];for(int p=0;p<frames[i].length;p++)frames[i][p]=model.newAccumulator();}
+        double maximum=0;int evaluated=0,rawRoundedDifferences=0;
+        for(var e:events)switch(e.kind){
+            case 0 -> {reference[e.state].initialize(e.board,e.ply);optimized[e.state].initialize(e.board,e.ply);frames[e.state][e.ply].rebuild(e.board);}
+            case 1 -> {reference[e.state].child(e.parent,e.board,e.ply);optimized[e.state].child(e.parent,e.board,e.ply);frames[e.state][e.ply+1].update(e.parent,e.board,frames[e.state][e.ply]);}
+            case 2 -> {reference[e.state].initializeFrom(e.board,e.ply,reference[e.source]);optimized[e.state].initializeFrom(e.board,e.ply,optimized[e.source]);frames[e.state][e.ply].copyFrom(e.board,frames[e.source][e.ply]);}
+            case 3 -> {
+                double expected=full.applyAsDouble(e.board),actual=frames[e.state][e.ply].scoreCp(e.board),error=Math.abs(expected-actual);
+                if(!Double.isFinite(error)||error>1e-8+1e-12*Math.abs(expected))throw new IllegalStateException("Per-event numeric mismatch at evaluation "+evaluated);
+                maximum=Math.max(maximum,error);int rounded=reference[e.state].evaluate(e.board,e.ply);
+                int raw=(actual<0?-1:1)*(int)Math.round(Math.min(Math.abs(actual),32511));if(raw!=rounded)rawRoundedDifferences++;
+                if(optimized[e.state].evaluate(e.board,e.ply)!=rounded)throw new IllegalStateException("Per-event rounded search mismatch at evaluation "+evaluated);
+                evaluated++;
+            }
+            default -> throw new AssertionError();
+        }
+        return Map.of("evaluations",evaluated,"maximum_absolute_cp_error",maximum,"raw_rounded_differences",rawRoundedDifferences,
+                "actual_search_rounded_differences",0,"absolute_tolerance_cp",1e-8,"relative_tolerance",1e-12);
+    }
     private static Map<String,Object> measure(String phase, int operations, Runnable action) {
         long bytes = allocated(), start = System.nanoTime(); action.run(); long ns = System.nanoTime() - start;
         long allocation = allocated() - bytes;
@@ -155,6 +178,7 @@ public final class OneLifecycleAudit {
         for (int warm = 0; warm < 12; warm++) for (int mode = 0; mode < 3; mode++) replay(events, replayStates[(mode+warm)%3]);
         long referenceSum = replay(events, replayStates[0]);
         if (referenceSum != replay(events, replayStates[1])) throw new IllegalStateException("Rounded lifecycle checksum mismatch");
+        var numerical=verifyEveryEvaluation(trace,events,replayStates[0],replayStates[1],fast,fullFactory.get());
         var lifecycle = new ArrayList<Object>();
         for (int round = 0; round < 9; round++) for (int order = 0; order < 3; order++) {
             PairObjectiveDiagnostic.permission(); int mode = (round+order)%3;
@@ -210,6 +234,7 @@ public final class OneLifecycleAudit {
         result.put("state_initialization",stateCosts);result.put("immutable_initialization_ns",initializationNs);result.put("immutable_allocated_bytes",initializationBytes);
         result.put("immutable_payload_bytes",fast.immutablePayloadBytes());result.put("accumulator_payload_bytes",fast.newAccumulator().payloadBytes());
         result.put("lifecycle",lifecycle);result.put("components",components);result.put("search",searches);
+        result.put("per_evaluation_numerical_equivalence",numerical);
         result.put("settings","one worker; TT16MiB; common flags262143/ADAPTIVE16; no clocks/ponder/book/tablebases; rotated orders; double ONE vs quantized CP64");
         result.put("limitations","One JVM; trace captured using the bound ONE checkpoint. This timing study makes no quality/strength or equal-time inference. Component parents prebuilt; full trace includes actual root rebuilds and main/qsearch transitions (explicit copies only if nonzero in event counts). Payload memory excludes JVM headers; allocated bytes include them. CP64 full uses its normal accumulator rebuild plus head.");
         Files.writeString(directory.resolve("result.json"),new GsonBuilder().setPrettyPrinting().create().toJson(result)+"\n",StandardOpenOption.CREATE_NEW);
