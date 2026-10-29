@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R047 cross-channel neural playing calibration**.
+Status: **ACTIVE - R048 matched-training playing attribution**.
 Owner RESUME cleared the admission gate;four loader tests pass and frozen model/
 core/teacher executable classes match their references. R046 runtime and six-
 function plans are frozen. Historical resource gates remain preserved;no GPU or
@@ -27,10 +27,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R046 complete:both frozen transfer gates pass,exact target/metadata and model/core
-parity. R047 adds an isolated MIX-only research selector,verifies search/qsearch/
-special-move state behavior,then freezes clean runtime and32 matched10000-node
-games against CP64. No extra training,clocks or production promotion.
+R047 complete:32games/32deterministic probe requests,0caps/failures;MIX43.75%/25%
+versus CP64,both fail broader-match45% threshold. R048 separately bounds32games
+for the frozen R044 LOW matched-training controls using the SAME R047 runtime/
+roots/node budgets. No new MIX games,fitting or promotion. Verify controls/runtime,
+freeze plan,run serially,then analyze paired root differences versus R047/R043.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -91,7 +92,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R044 | Tied neural proportional-decay continuation | Complete5tests/4arms;seed97 misses gates;positive gains preserved,no extension |
 | R045 | Cross-channel tied neural composition | Complete6tests/2arms after resource resume;both gates pass,cost<8us |
 | R046 | Frozen cross-channel neural transfer | Complete4tests;both transfer gates pass,7/8and8/8root gains |
-| R047 | Cross-channel neural playing calibration | Prospective32fixed-node games after isolated integration checks |
+| R047 | Cross-channel neural playing calibration | Complete6tests,32games;43.75%/25%,no broader match |
+| R048 | Matched-training playing attribution | Prospective32frozen-control games;no extra MIX games or fitting |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -116,7 +118,8 @@ establish consistent playing improvement. No reliable neural strength winner is 
 TWO/attention variants remain preserved failed architectural controls.
 R045 MIX is the strongest current predictive neural candidate by its matched
 development gates:oldteacher3.6-6.6% and played11.6-12.0% better than R044 LOW,
-with useful mixing and cost<8us. Both R046 transfer gates now pass;it has NOT played games.
+with useful mixing and cost<8us. Both R046 transfer gates pass;R04732games score43.75%/25% versus CP64,
+failing broader-match admission. Predictive improvement has not established strength.
 Fixed-node results are not equal-time Elo. No clock tournament or GPU work ran.
 
 R010's SQLite checkpoint and release evidence are pinned by r010-checkpoint.json.

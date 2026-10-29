@@ -1,0 +1,31 @@
+{
+  "runtime_manifest_path": "docs\\research\\brn-relational-cglhw\\r047-runtime-manifest.json",
+  "runtime_manifest_sha256": "dc1b7e8167c028fd8ed6684331679fb7da11938cde7080a5677f546526dd187d",
+  "all_runtime_files_match": true,
+  "reused_integration_checks_path": "docs\\research\\brn-relational-cglhw\\r047-validation.json",
+  "reused_integration_checks_sha256": "3592039645853d8c0aa8f5ae6e98ca2d33232df9a330632cf572918794ddf0f0",
+  "tied_model_classes_match_r044": [
+    "com/ohinteractive/seedv6/core/brnpair2/TiedGeometryPieceNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/TiedGeometryPieceNetwork$Projection.class",
+    "com/ohinteractive/seedv6/core/brnpair2/TiedGeometryPieceNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/TiedGeometryPieceNetwork.class"
+  ],
+  "controls": [
+    {
+      "seed": 71,
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r044-low-71\\epoch-2.state",
+      "state_sha256": "fbd6a5eff743e0502772a9f1e78490c513ad7018e7bd7f3bd6de76eec0573c2e",
+      "receipt_sha256": "61a7adbebc2c52d2a23cb28378e09bb65c84f43ca53303b794b2c640483c7250"
+    },
+    {
+      "seed": 97,
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r044-low-97\\epoch-2.state",
+      "state_sha256": "fe08f56deb4830c34a14960ba610d24626e4eb71549c299a4a6b31959c6b87a9",
+      "receipt_sha256": "480a02ffb1498993b512541a2e236b2b380eb22f17f97fb2ee1ce810a43dd58f"
+    }
+  ],
+  "new_tests_run": false,
+  "source_revision": "71d475f85e4ce6f5026322c2a2faf3e79f282291",
+  "build": 78,
+  "scope": "Existing tested loader/runtime with fixed matched controls;actual checkpoint/node probes required before games"
+}

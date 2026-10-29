@@ -343,3 +343,8 @@ R046 resumed:4loader checks and frozen model/core parity pass;both six-function
 predictions/receipts preserve target metadata exactly and transfer gates pass.
 No more training;R047 needs isolated MIX search checks and a clean frozen runtime
 before its32game fixed allocation. Historical resource gates remain preserved.
+
+R047 complete:6integration checks,1804tested/246core-UCI class parity,32probes/
+32games,all engines released;both expansion gates fail. raw/r043-neural-games-runner.py
+preserves prior runner bindings. R048 reuses the same clean runtime for an explicit
+matched-training attribution control;no extra MIX games or training/promotion.

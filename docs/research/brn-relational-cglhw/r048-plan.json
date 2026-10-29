@@ -1,0 +1,49 @@
+{
+  "comparisons": [
+    {
+      "id": "low71-vs-cp64",
+      "left": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r044-low-71\\epoch-2.state",
+        "sha256": "fbd6a5eff743e0502772a9f1e78490c513ad7018e7bd7f3bd6de76eec0573c2e",
+        "evaluator": "tied2"
+      },
+      "right": {
+        "path": "build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+        "sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+        "evaluator": "cp64"
+      }
+    },
+    {
+      "id": "low97-vs-cp64",
+      "left": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r044-low-97\\epoch-2.state",
+        "sha256": "fe08f56deb4830c34a14960ba610d24626e4eb71549c299a4a6b31959c6b87a9",
+        "evaluator": "tied2"
+      },
+      "right": {
+        "path": "build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+        "sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+        "evaluator": "cp64"
+      }
+    }
+  ],
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r047-runtime",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r048-games",
+  "openings": "docs\\research\\brn-relational-cglhw\\r025-openings.json",
+  "openings_sha256": "494b3fda88e3f4e70e00ea28da50c81c52b6aad252bd4c6a485bcc93cf7e2dd9",
+  "nodes": 10000,
+  "max_plies": 640,
+  "probe_fens": [
+    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+    "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+    "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1"
+  ],
+  "validation": "docs\\research\\brn-relational-cglhw\\raw\\r002-data\\validation.tsv",
+  "validation_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+  "prediction_evidence": "docs\\research\\brn-relational-cglhw\\r046-results.json",
+  "prediction_evidence_sha256": "bbd65829063e9411818ac06e0581b248a1c044719f9d39986354ca9f12de30d3",
+  "source_revision": "71d475f85e4ce6f5026322c2a2faf3e79f282291",
+  "build": 78,
+  "scope": "32-game frozen matched-training attribution controls;common10000-node search;no MIX extension or promotion"
+}
