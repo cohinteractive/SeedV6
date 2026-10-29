@@ -1,7 +1,8 @@
 # Execution and recovery
 
 **PAUSED - AWAITING HUMAN RESEARCH DECISION (29 October 2026).**
-Read [STATE](STATE.md) and the [assessment](ASSESSMENT-20261029.md) before any
+The bounded ONE follow-up is complete; read [R057 assessment](R057-ASSESSMENT.md).
+Read [STATE](STATE.md) and the [historical assessment](ASSESSMENT-20261029.md) before any
 command below. The owner stopped active experimentation. Bare RESUME does not
 authorize research; the exact decision branches are in STATE. Technical recovery
 is ready locally, but no empirical workload is currently admitted. Historical

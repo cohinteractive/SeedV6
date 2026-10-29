@@ -1,74 +1,69 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - BOUNDED R057 ONLY**, explicit owner RESUME 29 October 2026.
-Broader programme: **PAUSED - AWAITING HUMAN RESEARCH DECISION**.
-No old queue, other architecture, GPU workload, clock tournament or promotion is
-admitted. [R057](R057.md) and [capacity protocol](R057-CAPACITY.md) govern scope.
+Status: **PAUSED — AWAITING HUMAN RESEARCH DECISION**.
+The authorized bounded R057 ONE investigation is COMPLETE. The broader programme
+remains suspended. No next experiment, training tranche or tournament is queued.
 
-Read root AGENTS, CONTRACT revision2, PRIORITY, RESOURCE-GATE and BASELINE. The
-historical assessment and R057-RESOURCE-HANDOFF remain preserved; the latter's
-03:59 resource gate was cleared by this explicit RESUME and fresh admission.
-Root journal is absent; no finalizer applies. Current application build is79.
+Read [R057-ASSESSMENT.md](R057-ASSESSMENT.md) for the consolidated A-F findings.
+The earlier ASSESSMENT-20261029.md and R057-RESOURCE-HANDOFF.md remain historical.
+The prior resource gate was cleared by the owner's explicit RESUME; this root
+completed training and evaluation without another resource gate.
 
-## Completed R057 work
+## Completed bounded result
 
-- Small 8/4 incremental ONE correctness and vector-CP64 lifecycle comparison:
-  r057-efficiency-results.json. R056 oracle and frozen CP64 are unchanged.
-- Original CP64 integrity, all32 canonical index shards, exact merge and independent
-  sample check: r057-data-discovery.json and r057-corpus-audit.json.
-- Supplement compilation and four focused tests: r057-supplement-validation.json.
-  All39,396 replacements and8,192 fresh validation records were extracted and
-  independently checked for labels, upstream packing and exclusions:
-  r057-supplement-audit.json. No extraction/index stage needs repetition.
-- Logical corpus: r057-training-corpus.json. Exactly33,554,432 samples,
-  33,180,466 canonical unique positions,373,966 duplicate samples. Development
-  uses original validation; fresh8,192 remains reserved until model selection.
-- Configurable ONE8/4,16/4,32/8 mathematical, gradient, tiny-fit, optimizer and
-  incremental checks pass. Full-epoch order bijection, exact replacement indices
-  and compact-mask regression pass: r057-training-mask-validation.json.
+- Incremental ONE preserves the low-rank relational function. Original R056 and
+  its independent quadratic oracle remain. Small trained8/4 passed cost criteria.
+- Principal16/4 has31,489 parameters. Its full lifecycle costs1.40374x CP64 and
+  whole-search NPS ratio is0.801576; it fails the joint efficiency criterion.
+  Final39,566 trace readouts have maximum error1.819e-12cp and zero rounded-score
+  differences. See r057-main-efficiency-results.json.
+- Original-data audit and supplement completed. Logical corpus:33,554,432 samples,
+  33,180,466 canonical unique positions,373,966 duplicate samples.39,396 original
+  reserved rows were replaced from the same BT4 source/target method.
+- All four bounded pilots completed8,388,608 preliminary exposures. The frozen
+  rule selected16/4; principal seed20261029 was fresh. No additional capacity work.
+- Principal training COMPLETE:268,435,456 exposures,eight passes,1,024 checkpoints,
+  optimizer step2,097,152. r057-main-progress.json pins the endpoint and receipt
+  chain. Do not restart or repeat this training. Final model SHA256:
+  7f081bab949139d768147ea736d68d26b16a8f33593823e209e34e20cc63c1c2.
+- Final development MSE0.0231604 versus CP64 0.0170790;fresh8192 MSE0.0309569
+  versus0.0217784. Both panels are now consumed. Original-target learning is useful,
+  but the selected model remains weaker. See r057-main-prediction-results.json.
+- All64 fixed-node development games completed:14W15D35L,score33.59375%,zero caps.
+  Independent legal/receipt/PGN replay passed. Paired bootstrap95%23.4375-43.75%;
+  conservative Hoeffding95%9.586-57.602%. See r057-main-playing-results.json.
+- The screen failed the frozen40% continuation threshold. The512-game independent
+  confirmation allocation was NOT RUN and remains unused. Do not launch it through
+  bare RESUME. No parity or equal-time strength claim.
+- Main supervised CPU wall time38.16minutes;no GPU.21 distinct focused tests passed
+  in this RESUME root,including13 in the final runtime build. Full app/GUI/GPU/clock
+  qualification was not performed. Resources and limitations are in the assessment.
 
-## Active continuation
+Frozen training runtime:raw/r057/runtime-training-v2;final inference/UCI runtime:
+raw/r057/runtime-evaluation-v2. Main freeze source19159d93;final audit source91e3d25c.
+Raw models,data,optimizer states,receipts,predictions,traces,failed attempts and
+all games remain local/ignored. Reports,configs,source and hashes are tracked.
+A fresh checkout needs matching local evidence restored before reproduction.
+CP64,production defaults and application build79 remain unchanged in this root.
+No finalizer applies;root CODEXLOG_CURRENT.md is absent and was not created.
 
-All four predeclared pilot arms are complete:8,388,608 preliminary exposures.
-The rule selected16/4 (31,489 parameters); seed97 replication is complete.
-See r057-capacity-results.json. Trained-capacity lifecycle comparisons are complete
-for8/4,16/4,32/8; only8/4 passes both practical efficiency criteria. No parity claim.
+## Stop and future entry
 
-R057-MAIN.md, r057-main-training.json and r057-main-training-plan.json freeze the
-principal8-pass attempt and predictive/playing methods before launch. Fresh seed
-20261029; no pilot warm start. Frozen training runtime is runtime-training-v2;
-evaluation runtime is runtime-evaluation-v1.13 current focused evaluation/runner
-tests passed; r057-evaluation-validation.json records source/runtime evidence.
-Fresh32 development and256 confirmation opening roots are reserved and excluded
-from all original/supplemental training aliases and inspected historical roots.
+r057-completion-evidence.json records supervisor active:null/owned0 and an explicit
+Java/Python research-process check. No experimental process remains running.
+There is no unfinished authorized operation. Do not reopen an old queue or infer
+another research authorization from supervisor NORMAL.
 
-Principal training is COMPLETE:33,554,432 samples,268,435,456 exposures,eight
-passes,1,024 verified checkpoints. r057-main-progress.json pins the final state,
-optimizer step2,097,152 and full receipt chain. Never restart this training.
-Final development MSE0.02316041077;fixed training panel0.02215351512.
-
-Final per-event lifecycle enhancement compiled with13 focused tests passing;
-r057-evaluation-validation-v2.json freezes runtime-evaluation-v2. The final
-lifecycle and prediction audits are complete: r057-main-efficiency-results.json
-and r057-main-prediction-results.json. Lifecycle ratio1.40374,NPS ratio0.801576;
-39,566 trace evaluations agree within1.82e-12cp with zero rounded differences.
-Then run64 development games and conditional512 confirmation games exactly as
-R057-MAIN.md. New analyze_one_games.py has syntax validation only until games.
-Fresh8,192 predictions are consumed only after selection/final-epoch freeze;
-ONE MSE0.0309569 versus CP64 0.0217784. The model passes correctness/stability
-and proceeds to the predeclared fixed-node64-game development screen.
-
-On a resource gate: retain latest valid state/receipt/cursor, release only owned
-children, verify supervisor active:null/owned0, record exact next command and end
-execution without availability retries. Reusable instruction:
+Existing entry instruction:
 
 > RESUME CGLHW seedv6-brn-relational-20261029 in C:\projects\seed\java\seedv6-unified.
 > Start at docs/research/brn-relational-cglhw/STATE.md and obey its current gate.
 
-Bare RESUME applies only to unfinished R057 after fresh resource admission. The
-broader suspension remains. On bounded completion return R057 to PAUSED - AWAITING
-HUMAN RESEARCH DECISION; do not launch a follow-on experiment.
+Bare RESUME now encounters the completed research-decision pause. Further empirical
+work requires a new explicit bounded decision; it must not repeat completed stages.
+Human actions required after this prompt: None. Retaining the pause needs no action.
+Owner acceptance,production promotion and additional research are separate decisions.
 
 Technical continuity: R056's eight tests and cost audit completed before the prior
 pause (source a9091bc7, r056-validation.json/r056-results.json). R055's32segments
@@ -146,6 +141,7 @@ Both consumed development panels remain distinct from future final evaluation.
 | R054 | Target-state neural message modulation | Complete8checks;9.284us/cache1.32MiB pass;training protocol justified |
 | R055 | Matched target-state neural training | Complete2arms/32segments;both quality gates fail,no transfer/games |
 | R056 | Factorized learned relational composition | Complete8checks;ONE3.848us,TWO12.216us;TWO gate fails,no fitting |
+| R057 | Incremental ONE and CP64-scale training | Complete268,435,456 principal exposures;16/4 cost criterion fails;14W15D35L screen fails;confirmation not run;decision pause |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
@@ -211,6 +207,6 @@ Pause review rehashed seven selected model/checkpoint identities and160 saved
 neural game files,reconciled their scores/colour pairs,and checked local evidence
 and process release. No new empirical work or full suite was run for the review.
 
-Human action gate: no additional permission is needed for the active bounded
-R057 continuation. A future resource stop requires explicit RESUME and fresh
-admission. No GPU/clock/promotion approval is requested.
+Human action gate: R057 is complete and paused. No human action is required to
+retain the pause. Any further experiment needs a new explicit bounded research
+decision. Bare RESUME does not reopen R057 or the broader programme.

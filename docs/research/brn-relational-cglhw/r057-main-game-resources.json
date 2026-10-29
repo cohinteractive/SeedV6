@@ -1,0 +1,16 @@
+{
+  "elapsed_seconds": 268.22276039991993,
+  "resource_samples": 264,
+  "maximum_system_cpu_percent": 46.666666666666664,
+  "minimum_available_gib": 17.107646942138672,
+  "requests": 5424,
+  "nodes": 106006148,
+  "one_cp64_nps_ratio": 0.8055617297912734,
+  "active_games": 1,
+  "search_workers_per_engine": 1,
+  "concurrent_searches": 1,
+  "heap_limit_mib_per_engine": 384,
+  "tt_mib_per_engine": 16,
+  "no_clocks": true,
+  "no_gpu": true
+}

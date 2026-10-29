@@ -1,0 +1,79 @@
+{
+  "samples": 33554432,
+  "piece_buckets": [
+    {
+      "pieces_min": 0,
+      "pieces_max": 3,
+      "cp64_samples": 418520,
+      "one_samples": 392100
+    },
+    {
+      "pieces_min": 4,
+      "pieces_max": 7,
+      "cp64_samples": 5860659,
+      "one_samples": 5859441
+    },
+    {
+      "pieces_min": 8,
+      "pieces_max": 11,
+      "cp64_samples": 4744109,
+      "one_samples": 4748822
+    },
+    {
+      "pieces_min": 12,
+      "pieces_max": 15,
+      "cp64_samples": 5168483,
+      "one_samples": 5174489
+    },
+    {
+      "pieces_min": 16,
+      "pieces_max": 19,
+      "cp64_samples": 4432634,
+      "one_samples": 4437412
+    },
+    {
+      "pieces_min": 20,
+      "pieces_max": 23,
+      "cp64_samples": 4043392,
+      "one_samples": 4047781
+    },
+    {
+      "pieces_min": 24,
+      "pieces_max": 27,
+      "cp64_samples": 4183386,
+      "one_samples": 4187607
+    },
+    {
+      "pieces_min": 28,
+      "pieces_max": 31,
+      "cp64_samples": 3936801,
+      "one_samples": 3939801
+    },
+    {
+      "pieces_min": 32,
+      "pieces_max": 32,
+      "cp64_samples": 766448,
+      "one_samples": 766979
+    }
+  ],
+  "source": "Original exact canonical merge piece counts plus independently verified replacement distribution",
+  "phase_interpretation": "Piece count is a coarse phase proxy, not a formal opening/middlegame/endgame label. Original ply buckets are retained in r057-data-discovery.json; 99.8826% of rows retain that original distribution.",
+  "original_ply_buckets": {
+    "train_ply_0": 4835459,
+    "train_ply_128": 2503972,
+    "train_ply_160": 1648947,
+    "train_ply_192": 1200776,
+    "train_ply_224": 867843,
+    "train_ply_256": 569509,
+    "train_ply_288": 332289,
+    "train_ply_32": 9308875,
+    "train_ply_320": 168916,
+    "train_ply_352": 75425,
+    "train_ply_384": 29372,
+    "train_ply_416": 6671,
+    "train_ply_448": 26,
+    "train_ply_64": 7516528,
+    "train_ply_96": 4489824
+  },
+  "limitations": "Fresh 8192 positions come from two unused prepared units. All-position exact alias exclusions do not prove game-level or related-trajectory independence; source game IDs are unavailable."
+}

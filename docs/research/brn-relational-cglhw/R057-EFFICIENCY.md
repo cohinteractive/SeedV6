@@ -1,3 +1,7 @@
+Completed continuation: [R057-ASSESSMENT.md](R057-ASSESSMENT.md) records the
+final trained-model and playing results. The measurements/planning boundary below
+is preserved as originally recorded.
+
 # R057 interim efficiency finding - small ONE, untrained
 
 The width8/rank4 ONE implementation has a credible practical efficiency path.

@@ -1,0 +1,17 @@
+{
+  "stage": "main-game-audit",
+  "maximum_seconds": 180,
+  "sources": [
+    "docs\\research\\brn-relational-cglhw\\r057-main-development-plan.json",
+    "tools/brn-relational/analyze_one_games.py",
+    "tools/brn-relational/compare_neural.py",
+    "tools/brn-relational/baseline.py"
+  ],
+  "command": [
+    "build/research/venv/Scripts/python.exe",
+    "-B",
+    "tools/brn-relational/analyze_one_games.py",
+    "docs\\research\\brn-relational-cglhw\\r057-main-development-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r057-main-playing-results.json"
+  ]
+}

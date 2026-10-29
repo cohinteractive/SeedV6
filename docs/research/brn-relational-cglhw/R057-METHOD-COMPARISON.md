@@ -1,3 +1,7 @@
+Completed continuation: [R057-ASSESSMENT.md](R057-ASSESSMENT.md) records the
+final trained-model and playing results. The measurements/planning boundary below
+is preserved as originally recorded.
+
 # R057 comparison limits and verified optimizer details
 
 This records interpretation evidence during the frozen principal run; it does not

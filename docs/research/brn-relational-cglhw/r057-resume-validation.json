@@ -1,0 +1,317 @@
+{
+  "status": "PASS",
+  "distinct_current_tests": 21,
+  "test_classes": {
+    "com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest": 6,
+    "com.ohinteractive.seedv6.core.brnpair2.OneTrainingCorpusTest": 3,
+    "com.ohinteractive.seedv6.core.brnpair2.ResearchOneEvaluationTest": 1,
+    "com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest": 3,
+    "com.ohinteractive.seedv6.core.brnpair2.OneCorpusAuditTest": 2,
+    "com.ohinteractive.seedv6.core.brnpair2.OneCorpusSupplementTest": 2,
+    "com.ohinteractive.seedv6.core.brnpair2.LowRankRelationNetworkTest": 4
+  },
+  "evidence": [
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\evaluation-build-2-TEST-com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest.xml",
+      "sha256": "b7a311bfd4c3fd0268ed8dce2859e03ff9bbd7d25f641cecd39fd7942842425a",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest",
+        "tests": "6",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T05:37:20",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.377"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\evaluation-build-2-TEST-com.ohinteractive.seedv6.core.brnpair2.OneTrainingCorpusTest.xml",
+      "sha256": "f07b384994712150c1abc9544c2c54e9fd920a9fb043694440b75088b56f4700",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.OneTrainingCorpusTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T05:37:20",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.16"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\evaluation-build-2-TEST-com.ohinteractive.seedv6.core.brnpair2.ResearchOneEvaluationTest.xml",
+      "sha256": "31501d283717bf1bd825cbf0afeb3584610ba7abe95b0d821a80e9db5c67a234",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.ResearchOneEvaluationTest",
+        "tests": "1",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T05:37:21",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.056"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\evaluation-build-2-TEST-com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest.xml",
+      "sha256": "c8797b58d6fbf7861964bb5317e8b194cf5c1b0c6a2582e348fc2fb0070b46ff",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T05:37:21",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.168"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\evaluation-build-TEST-com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest.xml",
+      "sha256": "23c58b8b37064be5043c89354030e858b36d42cc5f46c3ebb41f6a15595f50c2",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest",
+        "tests": "6",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:55:17",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.375"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\evaluation-build-TEST-com.ohinteractive.seedv6.core.brnpair2.OneTrainingCorpusTest.xml",
+      "sha256": "5d047546a86f27b4e363460fcbfce4832de182199f79f63a7a9e1defa4b1f369",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.OneTrainingCorpusTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:55:18",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.166"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\evaluation-build-TEST-com.ohinteractive.seedv6.core.brnpair2.ResearchOneEvaluationTest.xml",
+      "sha256": "80110435b1646e2c6dad799d6676e8f61b32c76585b362958e052d94c7297ff0",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.ResearchOneEvaluationTest",
+        "tests": "1",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:55:18",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.057"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\evaluation-build-TEST-com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest.xml",
+      "sha256": "968874e697f81736d6c683537754a0cae25e422bd8bc0504eb39c845bacd2a00",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:55:18",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.173"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\supplement-build-resume-TEST-com.ohinteractive.seedv6.core.brnpair2.OneCorpusAuditTest.xml",
+      "sha256": "d6fa7ec8c000975d24106d68e54434c002d676bb2e50a3a4dcf1118a4f8518ae",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.OneCorpusAuditTest",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:37:25",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.056"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\supplement-build-resume-TEST-com.ohinteractive.seedv6.core.brnpair2.OneCorpusSupplementTest.xml",
+      "sha256": "0df9f758aafcbbda79d7d06383078b1ad83e4a99c78ae74c047853d7a99ee802",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.OneCorpusSupplementTest",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:37:25",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.176"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\trainable-build-TEST-com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest.xml",
+      "sha256": "d1b7d436d6cf04c07d7b0fad635a5891dda037d4157775e53d518b722bef2946",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest",
+        "tests": "6",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:40:44",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.383"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\trainable-build-TEST-com.ohinteractive.seedv6.core.brnpair2.LowRankRelationNetworkTest.xml",
+      "sha256": "2a64074b64e99382503828464d8a07b8b37c3146f4174ccc780e81db6552e833",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.LowRankRelationNetworkTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:40:45",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.248"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\trainable-build-TEST-com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest.xml",
+      "sha256": "b9a2910022b65638ec4522e7fd4bbf77cb4f691f057d8e80a12cc3f636900dbe",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:40:45",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.158"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\trained-cost-build-TEST-com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest.xml",
+      "sha256": "ca2d9766903bb1556dda23be4ae7a8db08e4f2c0d9869cf9cc2099f285327b14",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest",
+        "tests": "6",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:49:04",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.388"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\trained-cost-build-TEST-com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest.xml",
+      "sha256": "172757e6c5552996fcbb643e11138d546b3c83734488a9e58fae0e2d53582008",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:49:04",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.166"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\training-mask-build-TEST-com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest.xml",
+      "sha256": "5aa792044e69028b777640103a7b5706eb627e58e8515e51cf0e14d4f5944984",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest",
+        "tests": "6",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:45:35",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.382"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\training-mask-build-TEST-com.ohinteractive.seedv6.core.brnpair2.OneTrainingCorpusTest.xml",
+      "sha256": "4d77f9430bc35d0b8a73081a4f7e25486329507a03307e2a1fa0fc421419bdac",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.OneTrainingCorpusTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:45:35",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.166"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\training-mask-build-TEST-com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest.xml",
+      "sha256": "573105432c6a983e6597a249d3e59da3fc9b7dd87f8f29fbda50036d3e8c074a",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:45:36",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.157"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\training-runner-build-TEST-com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest.xml",
+      "sha256": "c92627df8a914f98f723186112b4429664b0d577041bb1942b4a2ae16268e913",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest",
+        "tests": "6",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:44:08",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.372"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\training-runner-build-TEST-com.ohinteractive.seedv6.core.brnpair2.OneTrainingCorpusTest.xml",
+      "sha256": "c5f34999e2da02264377ec7cac505541184543ff97a3a68cbacd836d36b91f48",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.OneTrainingCorpusTest",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:44:08",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.162"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\training-runner-build-TEST-com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest.xml",
+      "sha256": "ea3bd3f80dd3cb41773bf1f8b6e8facf3a76545705b7eb99571836c922f81cad",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:44:08",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.162"
+      }
+    }
+  ],
+  "scope": "Successful retained XMLs from this RESUME root; repeated subsets not added. OneTrainingCorpus grew from two to three tests, with the final three passing. Earlier failed attempts are separately preserved. Runtime final model, UCI probes and independent game replay are recorded separately.",
+  "skipped": [
+    "Full application suite",
+    "GUI/browser QA",
+    "GPU qualification",
+    "Clock/equal-time tournaments",
+    "Production packaging or promotion"
+  ]
+}
