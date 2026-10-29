@@ -1,0 +1,36 @@
+{
+  "comparisons": [
+    {
+      "id": "piece97-vs-cp64",
+      "left": {
+        "path": "docs\\research\\brn-relational-cglhw\\raw\\r028-one-97\\epoch-1.state",
+        "sha256": "886128c090ef655f60c8bc9aa2d03d393f1e007881bdd0310ce0defa55024f76",
+        "evaluator": "piece1"
+      },
+      "right": {
+        "path": "build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+        "sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+        "evaluator": "cp64"
+      }
+    }
+  ],
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r030-runtime",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r035-97-games",
+  "openings": "docs\\research\\brn-relational-cglhw\\r035-97-openings.json",
+  "openings_sha256": "ec704b81a3a0be09152622bb7aae01925a0e931cddd0264290ad504c95e844f3",
+  "nodes": 10000,
+  "max_plies": 640,
+  "probe_fens": [
+    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+    "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+    "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1"
+  ],
+  "validation": "docs\\research\\brn-relational-cglhw\\raw\\r002-data\\validation.tsv",
+  "validation_sha256": "9e3ba6430ca575c00780bec1de5ef65971b59d3e5c9a30a4ed9d2edc65a59826",
+  "prediction_evidence": "docs\\research\\brn-relational-cglhw\\r034-results.json",
+  "prediction_evidence_sha256": "cef33c868b8bf7fa96ab4be772b91746dd558ebf0267f82cd3d493c0d0a2177a",
+  "source_revision": "de95ff9b37cc623bcd1c133462f145ba480d2017",
+  "build": 78,
+  "scope": "R035 prospective data collection;first8 roots train,last4 development;both colors;no final strength claim"
+}
