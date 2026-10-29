@@ -226,6 +226,13 @@ public final class ParallelSearch implements SingleDepthSearch {
             var evaluator = evaluatorFactory == null ? ExactEvaluator.from(definition) : evaluatorFactory.apply(index);
             var observed = new ExactEvaluator() {
                 @Override public void initialize(long[] board) { evaluator.initialize(board); }
+                @Override public void reenter(int ply) {
+                    // A same-position verifier is a separate main-node admission.
+                    if(!control.tryEnterNode()) return;
+                    nodes++;
+                    maximumPly = Math.max(maximumPly, ply);
+                    evaluator.reenter(ply);
+                }
                 @Override public int evaluate(long[] board, int ply) {
                     evaluations++;
                     return evaluator.evaluate(board, ply);
