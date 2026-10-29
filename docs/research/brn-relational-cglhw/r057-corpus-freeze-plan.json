@@ -1,0 +1,19 @@
+{
+  "stage": "corpus-freeze",
+  "maximum_seconds": 180,
+  "sources": [
+    "tools/brn-relational/prepare_one_corpus.py",
+    "docs/research/brn-relational-cglhw/r057-supplement-audit.json"
+  ],
+  "command": [
+    "build/research/venv/Scripts/python.exe",
+    "-B",
+    "tools/brn-relational/prepare_one_corpus.py"
+  ],
+  "path_prepend": [
+    "build/conventional-nnue/cuda/bin/x64"
+  ],
+  "environment": {
+    "CUDA_PATH": "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\cuda"
+  }
+}

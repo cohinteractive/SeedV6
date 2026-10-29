@@ -1,0 +1,196 @@
+{
+  "experiment": "R057",
+  "status": "EFFICIENCY_MEASURED",
+  "untrained": false,
+  "source": "docs\\research\\brn-relational-cglhw\\raw\\r057\\pilot-cost-16x4\\result.json",
+  "source_sha256": "00ab4abaca2af6a7fa111c4f5ce31d249ab5c71d0052fb5ea37aa3b5f33a06ad",
+  "source_model_sha256": "c7c2d3074b8eff4797704d9729bdbaaa083931af11682f5b68f5881d18710968",
+  "trace_sha256": "41811001d2dd8c6d66204411568364d2399cf6729ffa0ecaf2b4bb429e679d8e",
+  "trace_events": 84639,
+  "trace_counts": [
+    180,
+    45000,
+    0,
+    39459
+  ],
+  "cp64_backend": "vector-256-long",
+  "metrics": {
+    "R057_ONE_FULL": {
+      "full_evaluation": {
+        "median_ns": 2530.761474609375,
+        "min_ns": 2468.5791015625,
+        "max_ns": 2600.244140625,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "complete_search_trace": {
+        "median_ns": 2383.261106464938,
+        "min_ns": 2372.437213310018,
+        "max_ns": 2425.1045388884663,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "search": {
+        "requests": 90,
+        "actual_nodes": 879954,
+        "search_seconds": 2.480986597,
+        "aggregate_nps": 354679.06237947324
+      }
+    },
+    "R057_ONE_INCREMENTAL": {
+      "full_evaluation": {
+        "median_ns": 2430.810302734375,
+        "min_ns": 2300.8056640625,
+        "max_ns": 2630.2978515625,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "readout": {
+        "median_ns": 1584.106689453125,
+        "min_ns": 1439.5263671875,
+        "max_ns": 1667.333740234375,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "update": {
+        "median_ns": 484.911865234375,
+        "min_ns": 460.522216796875,
+        "max_ns": 546.8017578125,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "update_plus_readout": {
+        "median_ns": 1731.4697265625,
+        "min_ns": 1644.677490234375,
+        "max_ns": 1821.0205078125,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "complete_search_trace": {
+        "median_ns": 1491.0894852885274,
+        "min_ns": 1470.151296282217,
+        "max_ns": 1518.008591195925,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "search": {
+        "requests": 90,
+        "actual_nodes": 879954,
+        "search_seconds": 1.669206403,
+        "aggregate_nps": 527169.0777236972
+      }
+    },
+    "CP64": {
+      "full_evaluation": {
+        "median_ns": 3263.622802734375,
+        "min_ns": 3006.201171875,
+        "max_ns": 3502.246337890625,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "readout": {
+        "median_ns": 568.701416015625,
+        "min_ns": 542.67578125,
+        "max_ns": 687.158203125,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "update": {
+        "median_ns": 1330.102294921875,
+        "min_ns": 1297.314453125,
+        "max_ns": 1470.1904296875,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "update_plus_readout": {
+        "median_ns": 1419.1162109375,
+        "min_ns": 1344.43359375,
+        "max_ns": 1582.1533203125,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "complete_search_trace": {
+        "median_ns": 1024.985402569756,
+        "min_ns": 1014.0424491244077,
+        "max_ns": 1060.2042626523732,
+        "samples": 9,
+        "allocated_bytes": [
+          0
+        ]
+      },
+      "search": {
+        "requests": 90,
+        "actual_nodes": 879759,
+        "search_seconds": 1.280224892,
+        "aggregate_nps": 687190.9814420325
+      }
+    }
+  },
+  "one_cp64_lifecycle_ratio": 1.4547421666203197,
+  "one_cp64_nps_ratio": 0.7671361993393188,
+  "predeclared_criteria": {
+    "maximum_lifecycle_ratio": 1.25,
+    "minimum_nps_ratio": 0.8
+  },
+  "passes": false,
+  "reference_incremental_search_results_identical": true,
+  "capacity": {
+    "width": 16,
+    "rank": 4,
+    "active_parameters": 31489,
+    "cp64_parameters": 1970440
+  },
+  "immutable_payload_bytes": 620816,
+  "accumulator_payload_bytes": 1081,
+  "initialization": {
+    "state_initialization": [
+      {
+        "mode": "R057_ONE_FULL",
+        "allocated_bytes": 449776,
+        "initialization_ns": 1295700
+      },
+      {
+        "mode": "R057_ONE_INCREMENTAL",
+        "allocated_bytes": 9011680,
+        "initialization_ns": 9232000
+      },
+      {
+        "mode": "CP64",
+        "allocated_bytes": 16886744,
+        "initialization_ns": 2994100
+      }
+    ],
+    "immutable_initialization_ns": 4806400,
+    "immutable_allocated_bytes": 656080,
+    "immutable_payload_bytes": 620816
+  },
+  "limitations": [
+    "One JVM; trace captured using the bound ONE checkpoint. This timing study makes no quality/strength or equal-time inference. Component parents prebuilt; full trace includes actual root rebuilds and main/qsearch transitions (explicit copies only if nonzero in event counts). Payload memory excludes JVM headers; allocated bytes include them. CP64 full uses its normal accumulator rebuild plus head.",
+    "Nine within-JVM timing rounds are correlated; min/max are descriptive, not confidence intervals.",
+    "Fixed-node NPS uses different CP64/ONE trees; replay fixes the transition trace. No playing-strength inference.",
+    "Training volume and quality are separate evidence; repeat timing for the final selected checkpoint.",
+    "Earlier v1/v2 scalar-head results retained; their CP64 full cost used the slow independent oracle, not normal refresh."
+  ]
+}

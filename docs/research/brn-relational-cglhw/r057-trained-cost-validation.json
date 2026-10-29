@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "tests": [
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\trained-cost-build-TEST-com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest.xml",
+      "sha256": "172757e6c5552996fcbb643e11138d546b3c83734488a9e58fae0e2d53582008",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.TrainableOneTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:49:04",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.166"
+      }
+    },
+    {
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r057\\trained-cost-build-TEST-com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest.xml",
+      "sha256": "ca2d9766903bb1556dda23be4ae7a8db08e4f2c0d9869cf9cc2099f285327b14",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.IncrementalOneTest",
+        "tests": "6",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:49:04",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.388"
+      }
+    }
+  ],
+  "runtime": {
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\engine-core.jar": "12a24497271838beffe1468d1e799341935d86edbd4435614d42f110952f6d41",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\research.jar": "fc3a6e68d6fe8dbfe2a4221b1da9f68459015051e57988bbeb076636b30ee77d",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  }
+}

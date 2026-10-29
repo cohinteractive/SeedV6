@@ -1,0 +1,17 @@
+{
+  "stage": "opening-reservation",
+  "maximum_seconds": 300,
+  "sources": [
+    "tools/brn-relational/prepare_one_openings.py",
+    "tools/conventional-nnue/prepare_confirmation_openings.py",
+    "tools/brn-relational/prepare_one_exclusions.py",
+    "tools/brn-relational/verify_one_corpus.py",
+    "docs/research/brn-relational-cglhw/r057-training-corpus.json"
+  ],
+  "command": [
+    "build/research/venv/Scripts/python.exe",
+    "-B",
+    "tools/brn-relational/prepare_one_openings.py"
+  ],
+  "resource_estimate": "One CPU, <2GiB including read-only mappings, expected30-120s; immutable inputs only, publish selection at completion. Stop on resource gate."
+}

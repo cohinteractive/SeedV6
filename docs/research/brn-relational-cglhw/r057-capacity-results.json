@@ -1,0 +1,107 @@
+{
+  "status": "COMPLETE",
+  "selection": {
+    "status": "CAPACITY_SELECTED_PENDING_SEED97_REPLICATION",
+    "rule": "Minimum development MSE; within 1% prefer lowest measured lifecycle cost, then parameter count.",
+    "arms": [
+      {
+        "width": 8,
+        "rank": 4,
+        "parameters": 19201,
+        "samples": 1048576,
+        "exposures": 2097152,
+        "metrics": {
+          "development_unary_only_mse": 0.026647373625093985,
+          "panel_rows": 8192,
+          "development_mse": 0.02510471839560973,
+          "fixed_training_panel_mse": 0.024751180062037838
+        },
+        "training_segment_seconds": 11.001164399,
+        "result": "docs\\research\\brn-relational-cglhw\\raw\\r057\\pilot-8x4-71-v2\\result.json",
+        "result_sha256": "d67e5494dfd1022f588837ab852882a942ec3e1396d2f837878fd4b68f19f043",
+        "cost": "docs\\research\\brn-relational-cglhw\\r057-pilot-cost-8x4-results.json",
+        "cost_sha256": "95689d3c11f2b0110f7f46c7f979f64c07155b293a81ca7a2a59dcc39e30f11a",
+        "lifecycle_ns": 788.3587195630737,
+        "cp64_ratio": 0.7625303629862602,
+        "nps_ratio": 1.1049894799718363
+      },
+      {
+        "width": 16,
+        "rank": 4,
+        "parameters": 31489,
+        "samples": 1048576,
+        "exposures": 2097152,
+        "metrics": {
+          "development_unary_only_mse": 0.026583825949347772,
+          "fixed_training_panel_mse": 0.024592378592287363,
+          "development_mse": 0.025017131387331575,
+          "panel_rows": 8192
+        },
+        "training_segment_seconds": 18.352742608,
+        "result": "docs\\research\\brn-relational-cglhw\\raw\\r057\\pilot-16x4-71-v2\\result.json",
+        "result_sha256": "64afe6760a496a0a3f08c1ebf92fe56807d1491e8ffd974c4b9d35ab9a40134a",
+        "cost": "docs\\research\\brn-relational-cglhw\\r057-pilot-cost-16x4-results.json",
+        "cost_sha256": "5e6819ba02e25ce8bb529f4184be0ddd68a69aa38172aba6f216d5b5b9a92936",
+        "lifecycle_ns": 1491.0894852885274,
+        "cp64_ratio": 1.4547421666203197,
+        "nps_ratio": 0.7671361993393188
+      },
+      {
+        "width": 32,
+        "rank": 8,
+        "parameters": 62209,
+        "samples": 1048576,
+        "exposures": 2097152,
+        "metrics": {
+          "fixed_training_panel_mse": 0.02426313781682972,
+          "development_unary_only_mse": 0.02668660011888846,
+          "panel_rows": 8192,
+          "development_mse": 0.024852035256687017
+        },
+        "training_segment_seconds": 51.192293499,
+        "result": "docs\\research\\brn-relational-cglhw\\raw\\r057\\pilot-32x8-71-v2\\result.json",
+        "result_sha256": "767babc1e7faf5501fc1705bf71cb3a8019cffcb413e1ca36d75faac468a31d1",
+        "cost": "docs\\research\\brn-relational-cglhw\\r057-pilot-cost-32x8-results.json",
+        "cost_sha256": "bca59ecc75e36c88480e5933c1216289e995abc20980db2beb3c7c1dc6070e90",
+        "lifecycle_ns": 4184.182719045452,
+        "cp64_ratio": 3.9549991278437666,
+        "nps_ratio": 0.3480627769264
+      }
+    ],
+    "eligible_width_rank": [
+      [
+        16,
+        4
+      ],
+      [
+        32,
+        8
+      ]
+    ],
+    "selected_width": 16,
+    "selected_rank": 4,
+    "principal_seed": 20261029,
+    "principal_training_started": false,
+    "pilot_first_segment_resume_verified": true,
+    "limitations": "Pilot cost fails CP64 comparability for some capacities. Principal full-scale opportunity is not waived; no strength claim."
+  },
+  "selection_sha256": "03fc9d7b8a0bac9b59a13b433a0d60455d385f8e0b920fea305e4de703f8388c",
+  "replication": {
+    "result": "docs\\research\\brn-relational-cglhw\\raw\\r057\\pilot-16x4-97-v2\\result.json",
+    "sha256": "5a09dbe0e0e87ccb709c87c849b865e90ddd9b5b26836e7ed4e148c1556611f7",
+    "metrics": {
+      "panel_rows": 8192,
+      "development_mse": 0.025018560502336838,
+      "fixed_training_panel_mse": 0.024531116935427838,
+      "development_unary_only_mse": 0.026631241305424515
+    },
+    "exposures": 2097152
+  },
+  "total_preliminary_exposures": 8388608,
+  "selected_width": 16,
+  "selected_rank": 4,
+  "parameters": 31489,
+  "principal_seed": 20261029,
+  "principal_training_started_at_publication": false,
+  "limitations": "Width8 missed the1% band narrowly; selected width16 costs1.45x CP64 and has.767x NPS on the pilot. No strength evidence or main-training waiver."
+}

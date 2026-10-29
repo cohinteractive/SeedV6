@@ -1,0 +1,27 @@
+{
+  "experiment": "R057",
+  "stage": "bounded-capacity",
+  "width": 8,
+  "rank": 4,
+  "samples": 1048576,
+  "epochs": 2,
+  "rates": [
+    0.01,
+    0.001
+  ],
+  "seed": 71,
+  "data_seed": 20261029059,
+  "checkpoint_rows": 65536,
+  "corpus": "docs\\research\\brn-relational-cglhw\\r057-training-corpus.json",
+  "corpus_sha256": "d556aff62f9c7cc4a3ec7c8b47f0e7b3dc1c0a9d4953d4610164aba56ada74ab",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r057\\pilot-8x4-71-v2",
+  "runtime": {
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\engine-core.jar": "12a24497271838beffe1468d1e799341935d86edbd4435614d42f110952f6d41",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\research.jar": "62fd2d7627e367c480b1fc9f329f4df7ec000c4085c905100e68a8560fe84cfe",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  }
+}

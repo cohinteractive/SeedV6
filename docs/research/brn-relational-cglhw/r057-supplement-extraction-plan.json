@@ -1,0 +1,26 @@
+{
+  "stage": "supplement-extraction",
+  "maximum_seconds": 180,
+  "sources": [
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/engine-core.jar",
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/engine-training.jar",
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/error_prone_annotations-2.27.0.jar",
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/gson-2.11.0.jar",
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/research.jar",
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/sqlite-jdbc-3.53.4.0.jar",
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/zstd-jni-1.5.7-20.jar",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/OneCorpusSupplement.java",
+    "docs/research/brn-relational-cglhw/r057-supplement-config.json"
+  ],
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "-XX:ActiveProcessorCount=1",
+    "-XX:+UseSerialGC",
+    "-Xmx512m",
+    "-cp",
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/*",
+    "com.ohinteractive.seedv6.core.brnpair2.OneCorpusSupplement",
+    "docs/research/brn-relational-cglhw/r057-supplement-config.json"
+  ],
+  "resource_estimate": "One logical CPU; <=512MiB heap plus <=1GiB read-only mappings; expected 10-60s, hard 180s. Supervisor termination preserves partial output; complete manifest only admits downstream work. No retry after resource failure."
+}

@@ -1,3 +1,10 @@
+Current R057 continuation: explicit owner RESUME on29October2026 cleared the
+03:59 gate after fresh admission. Supplement and corpus validation completed;
+only bounded capacity work is active. STATE.md governs exact current progress.
+All prior gate records below are preserved historical evidence.
+
+---
+
 Current gate: **PAUSED_RESOURCE_GATE - R057 UNFINISHED**.
 2026-10-29T03:59:46Z: sampled CPU83.333% exceeded80%; free15.426GiB.
 Supplement build was stopped during compilation; no training started. Supervisor

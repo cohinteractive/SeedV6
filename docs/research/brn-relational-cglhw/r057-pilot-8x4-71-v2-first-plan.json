@@ -1,0 +1,28 @@
+{
+  "stage": "pilot-8x4-71-v2-first-segment",
+  "maximum_seconds": 300,
+  "sources": [
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\engine-core.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\engine-training.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\error_prone_annotations-2.27.0.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\gson-2.11.0.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\research.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\sqlite-jdbc-3.53.4.0.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\zstd-jni-1.5.7-20.jar",
+    "docs\\research\\brn-relational-cglhw\\r057-pilot-8x4-71-v2.json",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/OneTraining.java",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/OneTrainingCorpus.java",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/TrainableOne.java"
+  ],
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "-XX:ActiveProcessorCount=1",
+    "-XX:+UseSerialGC",
+    "-Xmx512m",
+    "-cp",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-training-v2\\lib\\*",
+    "com.ohinteractive.seedv6.core.brnpair2.OneTraining",
+    "docs\\research\\brn-relational-cglhw\\r057-pilot-8x4-71-v2.json",
+    "1"
+  ]
+}

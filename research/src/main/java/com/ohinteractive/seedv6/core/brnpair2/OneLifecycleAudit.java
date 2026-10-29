@@ -116,17 +116,31 @@ public final class OneLifecycleAudit {
         Path directory = Path.of(args[0]); Files.createDirectory(directory);
         String[] roots = args.length > 1 ? Files.readAllLines(Path.of(args[1])).toArray(String[]::new) : ROOTS;
         if (roots.length < 2 || roots.length > 40) throw new IllegalArgumentException("Root allocation");
-        var model = new LowRankRelationNetwork(false, .01, 71);
-        var random = new Random(97); for (int i = 0; i < model.weights.length; i++) model.weights[i] = .3 * (2 * random.nextDouble() - 1);
-        try (var out = Files.newOutputStream(directory.resolve("untrained.state"), StandardOpenOption.CREATE_NEW)) { model.write(out); }
-        long before = allocated(), start = System.nanoTime(); var fast = new IncrementalOne(model);
-        long initializationNs = System.nanoTime()-start, initializationBytes = allocated()-before;
-        var reference = SearchEvaluation.researchCentipawnsFullRecompute(() -> {
-            var workspace = new LowRankRelationNetwork.Workspace(); return board -> model.scoreCp(board, workspace);
-        });
+        boolean trained = args.length > 2;
+        Path modelPath = trained ? Path.of(args[2]) : directory.resolve("untrained.state");
+        java.util.function.Supplier<java.util.function.ToDoubleFunction<long[]>> fullFactory;
+        IncrementalOne fast; long before, start, initializationNs, initializationBytes;
+        int width, rank, parameters;
+        if (trained) {
+            TrainableOne model; try (var in = Files.newInputStream(modelPath)) { model = TrainableOne.read(in); }
+            width=model.width; rank=model.rank; parameters=model.parameters;
+            before=allocated(); start=System.nanoTime(); fast=new IncrementalOne(model);
+            initializationNs=System.nanoTime()-start; initializationBytes=allocated()-before;
+            fullFactory=() -> { var features=new TrainableOne.Features(); var workspace=model.new Workspace();
+                return board -> 400*model.logit(model.encode(board,features),workspace,true); };
+        } else {
+            var model = new LowRankRelationNetwork(false, .01, 71);
+            var random = new Random(97); for (int i = 0; i < model.weights.length; i++) model.weights[i] = .3 * (2 * random.nextDouble() - 1);
+            try (var out = Files.newOutputStream(modelPath, StandardOpenOption.CREATE_NEW)) { model.write(out); }
+            width=LowRankRelationNetwork.WIDTH; rank=LowRankRelationNetwork.RANK; parameters=model.weights.length;
+            before=allocated(); start=System.nanoTime(); fast=new IncrementalOne(model);
+            initializationNs=System.nanoTime()-start; initializationBytes=allocated()-before;
+            fullFactory=() -> { var workspace=new LowRankRelationNetwork.Workspace(); return board -> model.scoreCp(board,workspace); };
+        }
+        var reference = SearchEvaluation.researchCentipawnsFullRecompute(fullFactory);
         var cp64 = ConventionalNnueEngine.load(Path.of("build-assets/nnue-candidate/conventional-cp64.cnnue"));
         SearchEvaluation[] definitions = {reference, fast.searchDefinition(), cp64.evaluation()};
-        String[] names = {"R056_ONE_FULL", "R057_ONE_INCREMENTAL", "CP64"};
+        String[] names = {trained ? "R057_ONE_FULL" : "R056_ONE_FULL", "R057_ONE_INCREMENTAL", "CP64"};
         // Record genuine main/qsearch transitions once; freeze before any replay comparisons.
         var trace = new Trace(definitions[1]); var traced = trace.definition();
         for (String fen : roots) search(traced, fen, 1500);
@@ -161,10 +175,10 @@ public final class OneLifecycleAudit {
             cpParents[i] = cp64.model().newAccumulator(); cpParents[i].rebuild(transitions[i].parent);
             cpChildren[i] = cp64.model().newAccumulator(); cpChildren[i].update(transitions[i].parent, transitions[i].board, cpParents[i]);
         }
-        var workspace = new LowRankRelationNetwork.Workspace(); var oneFull = fast.newAccumulator();
+        var fullScorer = fullFactory.get(); var oneFull = fast.newAccumulator();
         var cpFull = cp64.model().newAccumulator();
         Runnable[][] actions = new Runnable[3][4];
-        actions[0][0] = () -> { double sum=0; for (var e:transitions) sum+=model.scoreCp(e.board,workspace); sink=sum; };
+        actions[0][0] = () -> { double sum=0; for (var e:transitions) sum+=fullScorer.applyAsDouble(e.board); sink=sum; };
         actions[1][0] = () -> { double sum=0; for (var e:transitions) { oneFull.rebuild(e.board); sum+=oneFull.scoreCp(e.board); } sink=sum; };
         actions[2][0] = () -> { double sum=0; for (var e:transitions) { cpFull.rebuild(e.board);sum+=cpFull.evaluate(e.board); } sink=sum; };
         actions[1][1] = () -> { for(int i=0;i<n;i++) oneChildren[i].update(transitions[i].parent,transitions[i].board,oneParents[i]); };
@@ -188,8 +202,8 @@ public final class OneLifecycleAudit {
             int mode=(round+order)%3;
             for(String fen:roots){PairObjectiveDiagnostic.permission();var row=search(definitions[mode],fen,10000);row.put("mode",names[mode]);row.put("round",round);searches.add(row);}
         }
-        var result=new LinkedHashMap<String,Object>();result.put("experiment","R057");result.put("untrained",true);
-        result.put("model_sha256",PairCoverageDiagnostic.sha(directory.resolve("untrained.state")));
+        var result=new LinkedHashMap<String,Object>();result.put("experiment","R057");result.put("untrained",!trained); result.put("width",width); result.put("rank",rank); result.put("parameters",parameters);
+        result.put("model_sha256",PairCoverageDiagnostic.sha(modelPath));
         result.put("trace_sha256",PairCoverageDiagnostic.sha(tracePath));result.put("trace_events",events.length);result.put("trace_counts_initialize_child_copy_evaluate",counts);
         result.put("roots", roots); if(args.length>1) result.put("roots_sha256",PairCoverageDiagnostic.sha(Path.of(args[1])));
         result.put("cp64_head_backend",cp64.model().headBackend());result.put("jvm_arguments",ManagementFactory.getRuntimeMXBean().getInputArguments());
@@ -197,7 +211,7 @@ public final class OneLifecycleAudit {
         result.put("immutable_payload_bytes",fast.immutablePayloadBytes());result.put("accumulator_payload_bytes",fast.newAccumulator().payloadBytes());
         result.put("lifecycle",lifecycle);result.put("components",components);result.put("search",searches);
         result.put("settings","one worker; TT16MiB; common flags262143/ADAPTIVE16; no clocks/ponder/book/tablebases; rotated orders; double ONE vs quantized CP64");
-        result.put("limitations","Untrained ONE weights, one JVM; trace captured using ONE. No quality/strength or equal-time inference. Component parents prebuilt; full trace includes actual root rebuilds and main/qsearch transitions (explicit copies only if nonzero in event counts). Payload memory excludes JVM headers; allocated bytes include them. CP64 full uses its normal accumulator rebuild plus head.");
+        result.put("limitations","One JVM; trace captured using the bound ONE checkpoint. This timing study makes no quality/strength or equal-time inference. Component parents prebuilt; full trace includes actual root rebuilds and main/qsearch transitions (explicit copies only if nonzero in event counts). Payload memory excludes JVM headers; allocated bytes include them. CP64 full uses its normal accumulator rebuild plus head.");
         Files.writeString(directory.resolve("result.json"),new GsonBuilder().setPrettyPrinting().create().toJson(result)+"\n",StandardOpenOption.CREATE_NEW);
         System.out.println("R057 lifecycle audit complete: "+events.length+" events; result="+directory.resolve("result.json"));
     }

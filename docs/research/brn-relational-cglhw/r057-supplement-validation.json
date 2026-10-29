@@ -1,0 +1,50 @@
+{
+  "experiment": "R057",
+  "status": "PASS",
+  "source_parent": "ee92f591",
+  "build": 79,
+  "execution": {
+    "path": "docs/research/brn-relational-cglhw/raw/r057/supplement-build-1793248610966528800.execution.json",
+    "sha256": "11b817499755f877339fa52a921fd554734523a385ab3af2df9e94ec78e9ac91"
+  },
+  "tests": [
+    {
+      "path": "docs/research/brn-relational-cglhw/raw/r057/supplement-build-resume-TEST-com.ohinteractive.seedv6.core.brnpair2.OneCorpusAuditTest.xml",
+      "sha256": "d6fa7ec8c000975d24106d68e54434c002d676bb2e50a3a4dcf1118a4f8518ae",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.OneCorpusAuditTest",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:37:25",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.056"
+      }
+    },
+    {
+      "path": "docs/research/brn-relational-cglhw/raw/r057/supplement-build-resume-TEST-com.ohinteractive.seedv6.core.brnpair2.OneCorpusSupplementTest.xml",
+      "sha256": "0df9f758aafcbbda79d7d06383078b1ad83e4a99c78ae74c047853d7a99ee802",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.OneCorpusSupplementTest",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T04:37:25",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.176"
+      }
+    }
+  ],
+  "runtime": {
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/engine-core.jar": "5c50bb8ef4e29b87ed466d7e2ba5290f767a73156147b9a96d85e4b307547a70",
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/research.jar": "f123326d49cf0144684a62049bd6987c87cb9dc080f0059c0ea8a7a63f9507ee",
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs/research/brn-relational-cglhw/raw/r057/runtime-supplement-v1/lib/zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "scope": "Supplement and corpus-index targeted tests only; no training or full-suite claim."
+}

@@ -1,0 +1,22 @@
+{
+  "stage": "supplement-check",
+  "maximum_seconds": 180,
+  "sources": [
+    "tools/brn-relational/verify_one_supplement.py",
+    "tools/brn-relational/verify_one_corpus.py",
+    "tools/brn-relational/prepare_one_exclusions.py",
+    "tools/brn-relational/prepare_objective.py",
+    "docs/research/brn-relational-cglhw/raw/r057/supplement/manifest.json"
+  ],
+  "command": [
+    "build/research/venv/Scripts/python.exe",
+    "-B",
+    "tools/brn-relational/verify_one_supplement.py"
+  ],
+  "path_prepend": [
+    "build/conventional-nnue/cuda/bin/x64"
+  ],
+  "environment": {
+    "CUDA_PATH": "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\cuda"
+  }
+}

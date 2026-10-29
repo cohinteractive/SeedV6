@@ -1,57 +1,68 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **PAUSED_RESOURCE_GATE - BOUNDED R057 UNFINISHED**.
+Status: **ACTIVE - BOUNDED R057 ONLY**, explicit owner RESUME 29 October 2026.
 Broader programme: **PAUSED - AWAITING HUMAN RESEARCH DECISION**.
-Active CPU83.333% exceeded80% at2026-10-29T03:59:46Z; supervisor released all
-owned children. No retries or queued workload. See [resource handoff](R057-RESOURCE-HANDOFF.md)
-and [source/process receipt](r057-resource-gate.json). Existing R057 authorization
-continues only after explicit RESUME and fresh safe admission.
-The owner explicitly authorized incremental ONE efficiency and a CP64-scale
-training opportunity on 29 October 2026. [R057](R057.md) records the bounded scope,
-prospective stages, resource protections and completion decision pause. The broader
-BRN programme remains suspended; no previous queue or other family is admitted.
-The earlier [assessment](ASSESSMENT-20261029.md), [pause receipt](pause-20261029.json)
-and [evidence inventory](assessment-20261029-evidence.json) remain historical evidence.
+No old queue, other architecture, GPU workload, clock tournament or promotion is
+admitted. [R057](R057.md) and [capacity protocol](R057-CAPACITY.md) govern scope.
 
-Read root instructions, [CONTRACT](CONTRACT.md) revision2, [PRIORITY](PRIORITY.md),
-[RESOURCE-GATE](RESOURCE-GATE.md), [BASELINE](BASELINE.md) and [R012](R012.md).
-The owner clarified that genuinely neural relational composition is the primary
-objective; additive pair tables are references/controls. This existing workstream
-continues without reopening the separately suspended BRN successor programme.
-All historical decisions and negative evidence remain preserved.
+Read root AGENTS, CONTRACT revision2, PRIORITY, RESOURCE-GATE and BASELINE. The
+historical assessment and R057-RESOURCE-HANDOFF remain preserved; the latter's
+03:59 resource gate was cleared by this explicit RESUME and fresh admission.
+Root journal is absent; no finalizer applies. Current application build is79.
 
-Reusable instruction:
+## Completed R057 work
+
+- Small 8/4 incremental ONE correctness and vector-CP64 lifecycle comparison:
+  r057-efficiency-results.json. R056 oracle and frozen CP64 are unchanged.
+- Original CP64 integrity, all32 canonical index shards, exact merge and independent
+  sample check: r057-data-discovery.json and r057-corpus-audit.json.
+- Supplement compilation and four focused tests: r057-supplement-validation.json.
+  All39,396 replacements and8,192 fresh validation records were extracted and
+  independently checked for labels, upstream packing and exclusions:
+  r057-supplement-audit.json. No extraction/index stage needs repetition.
+- Logical corpus: r057-training-corpus.json. Exactly33,554,432 samples,
+  33,180,466 canonical unique positions,373,966 duplicate samples. Development
+  uses original validation; fresh8,192 remains reserved until model selection.
+- Configurable ONE8/4,16/4,32/8 mathematical, gradient, tiny-fit, optimizer and
+  incremental checks pass. Full-epoch order bijection, exact replacement indices
+  and compact-mask regression pass: r057-training-mask-validation.json.
+
+## Active continuation
+
+All four predeclared pilot arms are complete:8,388,608 preliminary exposures.
+The rule selected16/4 (31,489 parameters); seed97 replication is complete.
+See r057-capacity-results.json. Trained-capacity lifecycle comparisons are complete
+for8/4,16/4,32/8; only8/4 passes both practical efficiency criteria. No parity claim.
+
+R057-MAIN.md, r057-main-training.json and r057-main-training-plan.json freeze the
+principal8-pass attempt and predictive/playing methods before launch. Fresh seed
+20261029; no pilot warm start. Frozen training runtime is runtime-training-v2;
+evaluation runtime is runtime-evaluation-v1.13 current focused evaluation/runner
+tests passed; r057-evaluation-validation.json records source/runtime evidence.
+Fresh32 development and256 confirmation opening roots are reserved and excluded
+from all original/supplemental training aliases and inspected historical roots.
+
+Next operation: run r057-main-training-plan.json through run_one_stage.py under
+nnue-control.cmd with a unique launch log. Each invocation commits at most32
+checkpoints (262,144 exposures each), then exits safely; repeat only unfinished
+tranches while resources remain admitted. Exact total target268,435,456 exposures.
+Resume selects the latest valid receipt under raw/r057/main-16x4-20261029/segments;
+never repeat completed segments. No main training or games existed at this freeze.
+On completion freeze the final endpoint, run lifecycle and original-target
+prediction audits, then the64-game fixed-node screen and conditional512-game
+confirmation exactly as R057-MAIN.md specifies. No further capacity search.
+
+On a resource gate: retain latest valid state/receipt/cursor, release only owned
+children, verify supervisor active:null/owned0, record exact next command and end
+execution without availability retries. Reusable instruction:
 
 > RESUME CGLHW seedv6-brn-relational-20261029 in C:\projects\seed\java\seedv6-unified.
 > Start at docs/research/brn-relational-cglhw/STATE.md and obey its current gate.
 
-A bare RESUME now addresses the resource gate for unfinished R057 only; it does
-not lift the broader programme suspension. On RESUME inspect current instructions/Git, exact root journal/version presence and
-`./nnue-control.cmd status`; no finalizer applies. Resume only the unfinished R057
-stage below after fresh resource admission and frozen-identity checks. NORMAL alone
-does not admit work. Missing raw evidence must be restored or explicitly reproduced.
-Do not reset holds or repeat completed training segments.
-
-## Exact next admissible operation
-
-R057 small ONE incremental implementation and lifecycle measurements pass their
-measured criteria; see r057-efficiency-results.json and r057-phase-validation.json.
-R056 reference/oracle and CP64 remain preserved. Original CP64 dataset integrity
-passes; r057-data-discovery.json records exact samples/exposures and limitations.
-Exact canonical audit and independent checks are complete:33,164,045 unique
-aliases,390,387 duplicate samples,39,396 reserved samples excluded. See
-R057-DATA.md and r057-corpus-audit.json. Next validate/run the frozen same-source
-supplement (r057-supplement-config.json), verify its packing/labels, construct the
-33,554,432-sample corpus, then the bounded capacity stage. No training/games yet.
-The selected trained capacity still needs its own efficiency and strength checks.
-The supplement first failed compilation for a missing direct zstd compile dependency.
-The pinned dependency was added; the retry was interrupted during compilation.
-Supplement code/tests are UNVALIDATED. Exact first command and frozen source hashes
-are in R057-RESOURCE-HANDOFF.md/r057-resource-gate.json. No workload may restart
-until explicit RESUME. Capacity and main-training selection remain within R057.
-After a resource gate, stop execution and resume only through this entry point.
-After the bounded experiment, return to PAUSED - AWAITING HUMAN RESEARCH DECISION.
+Bare RESUME applies only to unfinished R057 after fresh resource admission. The
+broader suspension remains. On bounded completion return R057 to PAUSED - AWAITING
+HUMAN RESEARCH DECISION; do not launch a follow-on experiment.
 
 Technical continuity: R056's eight tests and cost audit completed before the prior
 pause (source a9091bc7, r056-validation.json/r056-results.json). R055's32segments
@@ -194,7 +205,6 @@ Pause review rehashed seven selected model/checkpoint identities and160 saved
 neural game files,reconciled their scores/colour pairs,and checked local evidence
 and process release. No new empirical work or full suite was run for the review.
 
-Human actions required after this prompt: BLOCKING - invoke the existing RESUME
-instruction when one conservative CPU worker can coexist with normal use. This
-blocks the pending supplement build, data preparation, training and evaluation.
-No completed stage needs repetition; no GPU/clock/promotion approval is requested.
+Human action gate: no additional permission is needed for the active bounded
+R057 continuation. A future resource stop requires explicit RESUME and fresh
+admission. No GPU/clock/promotion approval is requested.

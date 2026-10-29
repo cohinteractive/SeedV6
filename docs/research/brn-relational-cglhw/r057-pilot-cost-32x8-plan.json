@@ -1,0 +1,33 @@
+{
+  "stage": "pilot-cost-32x8",
+  "maximum_seconds": 180,
+  "sources": [
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\engine-core.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\engine-training.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\error_prone_annotations-2.27.0.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\gson-2.11.0.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\research.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\sqlite-jdbc-3.53.4.0.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\zstd-jni-1.5.7-20.jar",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\pilot-32x8-71-v2\\result.json",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\pilot-32x8-71-v2\\segments\\002097152-a8e71c51-2ab\\receipt.json",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\pilot-32x8-71-v2\\segments\\002097152-a8e71c51-2ab\\model.state",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/OneLifecycleAudit.java",
+    "research/src/main/java/com/ohinteractive/seedv6/core/brnpair2/IncrementalOne.java",
+    "docs/research/brn-relational-cglhw/raw/r057/phase-roots.fens",
+    "build-assets/nnue-candidate/conventional-cp64.cnnue"
+  ],
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-XX:ActiveProcessorCount=1",
+    "-XX:+UseSerialGC",
+    "-Xmx512m",
+    "-cp",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\runtime-trained-cost-v1\\lib\\*",
+    "com.ohinteractive.seedv6.core.brnpair2.OneLifecycleAudit",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\pilot-cost-32x8",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\phase-roots.fens",
+    "docs\\research\\brn-relational-cglhw\\raw\\r057\\pilot-32x8-71-v2\\segments\\002097152-a8e71c51-2ab\\model.state"
+  ]
+}

@@ -1,3 +1,11 @@
+Completed continuation, 29 October 2026: the supplement and logical corpus now
+pass independent validation. All47,588 new records match upstream packing and
+independently inverted labels, with no original/reserved/new alias collisions.
+The final logical training corpus has33,554,432 samples and33,180,466 canonical
+unique positions (373,966 duplicate samples). r057-supplement-audit.json and
+r057-training-corpus.json bind exact identities. The plan/status language below
+records the preceding resource-stop boundary and is now historical.
+
 # R057 original-data and separation audit
 
 The exact CP64 E006 training data, aligned provenance, original validation,

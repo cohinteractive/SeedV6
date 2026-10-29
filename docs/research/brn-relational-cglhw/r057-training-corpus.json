@@ -1,0 +1,33 @@
+{
+  "schema": "r057-logical-corpus-v1",
+  "samples": 33554432,
+  "training_canonical_unique": 33180466,
+  "canonical_duplicate_samples": 373966,
+  "retained_original": 33515036,
+  "replacements": 39396,
+  "development_samples": 8192,
+  "fresh_validation_samples": 8192,
+  "development_seed": 20261029058,
+  "paths": {
+    "original": "docs\\research\\conventional-nnue-cglhw\\raw\\e006-data\\train.data",
+    "mask": "docs\\research\\brn-relational-cglhw\\raw\\r057\\corpus-merge\\excluded.bitset",
+    "replacement": "docs\\research\\brn-relational-cglhw\\raw\\r057\\supplement\\topup.data",
+    "development": "docs\\research\\brn-relational-cglhw\\raw\\r057\\corpus\\development.data",
+    "fresh_validation": "docs\\research\\brn-relational-cglhw\\raw\\r057\\supplement\\fresh-validation.data"
+  },
+  "hashes": {
+    "original": "b9306efe0675a0e0c0c3bea9d64e4bccda856f35ebafe79ab5a87472ca5b9e2c",
+    "mask": "90c15dd3db5dc0a507f67d039cb98b732cf188316306ae31f9b259e7e16dd79c",
+    "replacement": "6deae04971f82b278e6cbb76042824bd668273b8a4c9858b3764d8696dad776c",
+    "development": "456cabac887ff788d5131ef259eb50d233ec19479146e7254bafec98bbe344e0",
+    "fresh_validation": "e09aa7d9a5159d5e8a479c3fa9480d105b22133eeb3bee999ca8ee50476267ac"
+  },
+  "source_manifest_sha256": "728691ec04d8b2e45749b6b04ea951f810ac00342c9907d39ce90116ea9fb0ba",
+  "merge_result_sha256": "53c64e4151ef041195e7b46f812025bd014bc9c87b31a9296423da5916247dc6",
+  "supplement_manifest_sha256": "3d0ad79067e63c30da45e73b8eb8c291c29fd556c234d64bc832ebca2bcef666",
+  "development_indices_sha256": "a79a5e8413db19a34d5f95fc1806d6a39520c2635844a06b674d89c66062e50e",
+  "trainer_sha256": "f1b9c5d05a41c1a23a4a6d7555bcfae31b5f7d076549a2cfe08283b8efacbdea",
+  "mapping": "Every original row index remains one logical sample. Set mask bits replace that row by the topup ordinal equal to the count of preceding set bits. Every original excluded row is replaced once; all other bytes unchanged.",
+  "sampling": "Pilot: 16 of 512 shuffled 65536-row blocks, seed 20261029059. Main: all 512 blocks. Epochs permute selected blocks and every row within each block bijectively.",
+  "limitations": "0.1174% replacement; original duplicates retained. No source game IDs. Development shares original CP64 validation history; fresh 8192 remains reserved until configuration freeze. No byte-identical corpus claim."
+}

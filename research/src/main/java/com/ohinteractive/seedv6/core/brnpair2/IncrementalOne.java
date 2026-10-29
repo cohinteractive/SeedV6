@@ -2,39 +2,48 @@ package com.ohinteractive.seedv6.core.brnpair2;
 
 import com.ohinteractive.seedv6.core.Board;
 import java.util.Arrays;
-import static com.ohinteractive.seedv6.core.brnpair2.LowRankRelationNetwork.*;
 
 /** Immutable R056 ONE inference snapshot. No training or production selection. */
 public final class IncrementalOne {
-    private static final int POOL = RANK * WIDTH;
-    private final double[] products = new double[768 * POOL];
-    private final double[] queries = new double[768 * RANK];
-    private final double[] selfContent = new double[768 * WIDTH];
-    private final double[] readout = new double[768 * WIDTH];
+    private final int WIDTH, RANK, POOL;
+    private final double[] products, queries, selfContent, readout;
     private final double[] unary = new double[768];
     private final double[] norms = new double[33];
     private final double bias;
 
     public IncrementalOne(LowRankRelationNetwork model) {
+        this(requireOne(model), LowRankRelationNetwork.WIDTH, LowRankRelationNetwork.RANK,
+             LowRankRelationNetwork.E, LowRankRelationNetwork.Q, LowRankRelationNetwork.KEY, LowRankRelationNetwork.QUERY);
+    }
+    public IncrementalOne(TrainableOne model) {
+        this(model.weights, model.width, model.rank, model.E, model.Q, model.KEY, model.QUERY);
+    }
+    private static double[] requireOne(LowRankRelationNetwork model) {
         if (model.compose) throw new IllegalArgumentException("ONE required");
-        for (double x : model.weights) if (!Double.isFinite(x) || Math.abs(x) > .99)
+        return model.weights;
+    }
+    private IncrementalOne(double[] weights, int width, int rank, int E, int Q, int KEY, int QUERY) {
+        WIDTH = width; RANK = rank; POOL = rank * width;
+        products = new double[768 * POOL]; queries = new double[768 * rank];
+        selfContent = new double[768 * width]; readout = new double[768 * width];
+        for (double x : weights) if (!Double.isFinite(x) || Math.abs(x) > .99)
             throw new IllegalArgumentException("Finite R056 clipped weights required");
-        bias = model.weights[768];
+        bias = weights[768];
         for (int n = 2; n <= 32; n++) norms[n] = 1 / Math.sqrt(RANK * (n - 1));
         for (int node = 0; node < 768; node++) {
-            unary[node] = model.weights[node];
+            unary[node] = weights[node];
             double self = 0;
             for (int r = 0; r < RANK; r++) {
-                double key = model.weights[KEY + node * RANK + r];
-                double query = model.weights[QUERY + node * RANK + r];
+                double key = weights[KEY + node * RANK + r];
+                double query = weights[QUERY + node * RANK + r];
                 queries[node * RANK + r] = query;
                 self += query * key;
                 for (int d = 0; d < WIDTH; d++)
-                    products[node * POOL + r * WIDTH + d] = key * model.weights[E + node * WIDTH + d];
+                    products[node * POOL + r * WIDTH + d] = key * weights[E + node * WIDTH + d];
             }
             for (int d = 0; d < WIDTH; d++) {
-                selfContent[node * WIDTH + d] = self * model.weights[E + node * WIDTH + d];
-                readout[node * WIDTH + d] = model.weights[Q + node * WIDTH + d];
+                selfContent[node * WIDTH + d] = self * weights[E + node * WIDTH + d];
+                readout[node * WIDTH + d] = weights[Q + node * WIDTH + d];
             }
         }
     }
