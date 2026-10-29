@@ -1,0 +1,36 @@
+{
+  "main_class": "GamePositionPredictionAudit",
+  "runtime": "docs\\research\\brn-relational-cglhw\\raw\\r046-runtime\\lib",
+  "cases": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-04.json",
+  "cases_sha256": "474f252f1b33c951cd7d776d00947ef0be3d4e8b1997f8ad3f77a316cf9b3cc3",
+  "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-04.json",
+  "rows": 1024,
+  "models": [
+    {
+      "id": "r045-mix-71",
+      "kind": "MIX_TIED",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\epoch-2.state",
+      "state_sha256": "def9b515f0d5b1ee063cf4e783d82c87d16b6205ac900ce6630075097f9bd9bc"
+    },
+    {
+      "id": "r044-low-71",
+      "kind": "TIED",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r044-low-71\\epoch-2.state",
+      "state_sha256": "fbd6a5eff743e0502772a9f1e78490c513ad7018e7bd7f3bd6de76eec0573c2e"
+    },
+    {
+      "id": "r045-mix-97",
+      "kind": "MIX_TIED",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-97\\epoch-2.state",
+      "state_sha256": "0e3920f248e55f5205fcf17707e0dec5ab58ad058719601d4752d5328f95979b"
+    },
+    {
+      "id": "r044-low-97",
+      "kind": "TIED",
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r044-low-97\\epoch-2.state",
+      "state_sha256": "fe08f56deb4830c34a14960ba610d24626e4eb71549c299a4a6b31959c6b87a9"
+    }
+  ],
+  "teacher": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+  "teacher_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+}

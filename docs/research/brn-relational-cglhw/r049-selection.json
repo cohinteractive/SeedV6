@@ -1,0 +1,78 @@
+{
+  "binding_sha256": "c9df263068ae552f3efedfdaf7b777bfeeaf24df3d57f5b450029e992092fda7",
+  "files": {
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\binding.json": "c9df263068ae552f3efedfdaf7b777bfeeaf24df3d57f5b450029e992092fda7",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\reservations.json": "1d2e0bb7913824580f70b68d80b56854acab8945c66223da411ae35069f4a134",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\candidates.json": "66bc5ba62f1f8c66a405afe13ea91584fbcbae607b0aa69846e88c77fbdb2a2c",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\selection.json": "0ed465a38f5e24567ec870ef566c4e986d0fc4e9266f643abc1857ad620d5b50",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-00.json": "1fa9946ef5738dd94fa8ff4ee18812ac17826ea2774cbe37da29a80f10d4195b",
+    "docs\\research\\brn-relational-cglhw\\r049-00-plan.json": "874706f95a75c33c855f887a43ba6715b4935e3115c0116b5b1b50554d089483",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-01.json": "af0f03bb1fd0b834b6fe237bd14894426a27dc358be94aa7bfdb4b3038cbd6da",
+    "docs\\research\\brn-relational-cglhw\\r049-01-plan.json": "32e0ca8c733e914888cf670db7ac1ec55928eb621853d9b6ea5b90453b750cad",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-02.json": "d2b09079d78da7d38f4d4e42c241693e4845b67692a7d87770608a4615b5c197",
+    "docs\\research\\brn-relational-cglhw\\r049-02-plan.json": "428643ff2f5ceac409eee792db3d26608454d450f11e21dffd3ecf4e9dba0a81",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-03.json": "f747d566e18f9b7530aaebdf016b69b56dba1355f0f4d8add958244da2782628",
+    "docs\\research\\brn-relational-cglhw\\r049-03-plan.json": "9b090be30df44da6674c127ab2234edc1c6b9185c573513d7b538c636b71ded9",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-04.json": "474f252f1b33c951cd7d776d00947ef0be3d4e8b1997f8ad3f77a316cf9b3cc3",
+    "docs\\research\\brn-relational-cglhw\\r049-04-plan.json": "a38664c18a36ae03e4b2c218937bbbed5a1e55c1b6977af426b340edadf1eaa8",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-05.json": "de03d7ce505d166b42fcf0c245e95828030fe4e3e2242bfa854977ebb98b919c",
+    "docs\\research\\brn-relational-cglhw\\r049-05-plan.json": "08f0b66049ee022e58aded262f3ec0a3cccff76e73062d906d6fb77406776fa6",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-06.json": "f0d563af0871fbf0ef2c7d299c58d95b666b5367686c4e26f447f47d04241ab5",
+    "docs\\research\\brn-relational-cglhw\\r049-06-plan.json": "95d679c2281ac5e50d60bb59f0d5325c4092da93b7cc7496c67d34b9de2ae88a",
+    "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\cases-07.json": "579eb003a8ee1fda76aa719a17d4fb96dd44d7d81991daeadc69f6b8085cdd23",
+    "docs\\research\\brn-relational-cglhw\\r049-07-plan.json": "3675c70027f9333e1bbbcd1a852174b8c7931bc99fe0dda4dc50acb9e03f3e39"
+  },
+  "plans": [
+    "docs\\research\\brn-relational-cglhw\\r049-00-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r049-01-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r049-02-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r049-03-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r049-04-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r049-05-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r049-06-plan.json",
+    "docs\\research\\brn-relational-cglhw\\r049-07-plan.json"
+  ],
+  "pairs": 4096,
+  "consumed_candidates": 4334,
+  "dropped": {
+    "child_check_terminal": 234,
+    "child_preexisting": 4
+  },
+  "reserved_aliases": 61345,
+  "prior_games": 544,
+  "captures": 182,
+  "seconds": 29.367631200002506,
+  "resources": [
+    {
+      "cpu_percent": 22.164948453608247,
+      "available_gib": 17.322811126708984,
+      "utc": "2026-10-29T01:55:31Z"
+    },
+    {
+      "cpu_percent": 25.654450261780106,
+      "available_gib": 17.409915924072266,
+      "utc": "2026-10-29T01:55:36Z"
+    },
+    {
+      "cpu_percent": 8.854166666666663,
+      "available_gib": 17.411701202392578,
+      "utc": "2026-10-29T01:55:41Z"
+    },
+    {
+      "cpu_percent": 12.169312169312175,
+      "available_gib": 17.391292572021484,
+      "utc": "2026-10-29T01:55:47Z"
+    },
+    {
+      "cpu_percent": 6.25,
+      "available_gib": 17.412715911865234,
+      "utc": "2026-10-29T01:55:52Z"
+    },
+    {
+      "cpu_percent": 2.590673575129532,
+      "available_gib": 17.525562286376953,
+      "utc": "2026-10-29T01:55:57Z"
+    }
+  ],
+  "scope": "Known training parents;unseen legal children;development diagnostic only;no fitting."
+}
