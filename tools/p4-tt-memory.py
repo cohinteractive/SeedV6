@@ -206,7 +206,7 @@ def match(args):
               '-openings','file='+str(Path(args.openings).resolve()),'format=pgn','order=sequential',
               '-pgnout','file='+str(out/'games.pgn'),'nodes=true','nps=true','pv=true','timeleft=true','latency=true',
               'match_line=^info string request ','-report','penta=true','-ratinginterval','2','-autosaveinterval','0',
-              '-strict','-log','file='+str(out/'uci-trace.log'),'level=trace','append=false','compress=false','realtime=false']
+              '-strict','-log','file='+str(out/'uci-trace.log'),'level=trace','append=false','compress=false','realtime=false','engine=true']
         report['runnerCommand']=cmd;b.save(out/'run.json',report);match_started=time.monotonic()
         with (out/'runner.txt').open('w',encoding='utf-8') as log:
             job=m.owned.OwnedJob();process=None;cohort=None

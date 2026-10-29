@@ -1,0 +1,13 @@
+{
+  "id": "TT-H1-COST-V1",
+  "status": "prospective",
+  "purpose": "Measure integrated request cost to prioritize affordable implementation improvements before spending on games; never decide strength from speed/depth",
+  "runtimes": "Frozen build81 runtimeh1-v1, production-policy flags3407871 versus H1 flags7602175; this cost control is from the candidate source, distinct from frozen build80 causal strength control",
+  "inputs": "Same nine h1-diagnostic-roots.tsv real-history roots, no result-based selection",
+  "design": "W1 and W4 separately; fresh newGame for each100k-node request, targetdepth40, 30s safety deadline; one full rotated warmup pass retained/excluded then four rotated measured passes. Same JVM with both owners; clean TTable, no observer/atomic instrumentation; per-request processCPU/wall/reset recorded.",
+  "reasonForScale": "Repeated paired costs on nine roots distinguish material overhead from first-use/JIT noise cheaply. This is not an inferential strength sample. No fine tuning or automatic NPS/depth acceptance threshold.",
+  "decision": "Source inspection identifies avoidable repeated TT transactions in H1 (ordinary proof probe despite extension suppression; separate score+hint save). If clean costs and same-semantics equivalence checks justify it, consolidate those transactions as a proportionate integrated candidate before strength screening, retaining H1 as an independently invocable control. Otherwise proceed with H1. No component must demonstrate independent strength.",
+  "execution": "Only between strength runs, no overlapping heavy work. Compile research-only P4TtCost against frozen build81 jars into an ignored directory; bind source/class/executable hashes in manifest. Do not rebuild or alter the frozen runtime.",
+  "stopping": "Fixed four measured rounds/domain or first validation failure; preserve all outputs including warmup and negative/failed results",
+  "evidence": "raw/h1-cost-w1-v1.jsonl, raw/h1-cost-w4-v1.jsonl and compact summary/manifest"
+}

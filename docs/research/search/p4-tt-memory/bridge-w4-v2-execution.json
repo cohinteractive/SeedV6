@@ -1,0 +1,11 @@
+{
+  "id": "TT-BRIDGE-W4-V2-EXECUTION",
+  "status": "prospective execution amendment; TT-BRIDGE-V2 itself remains frozen",
+  "protocol": "bridge-v2-protocol.json, unchanged design, inputs,32 pairs,10+0.1,strict gates and analysis",
+  "change": "Add engine=true to the symmetric Fastchess trace configuration. W1 V2 accidentally omitted this required switch and captured runner lifecycle rather than UCI communications. Its complete audited result remains exploratory, with that limitation explicitly recorded.",
+  "reason": "Pinned Fastchess logger engine_coms defaults false. The switch is required to retain exact requests/responses for diagnosing any strict interruption. No engine, clock, opening, sample, stopping rule or strength inference changes.",
+  "source": "https://github.com/Disservin/fastchess/blob/f618e34540f94f4719ad3817950618dabe441318/app/src/core/logger/logger.cpp",
+  "evidence": "raw/bridge-w4-v2/run.json binds the corrected adapter and this amendment; raw output is never overwritten",
+  "limitation": "Trace overhead is symmetric within W4 and candidate screens; cross-run W1/W4 performance differences cannot be attributed solely to worker count. No competitive equivalence claim.",
+  "parentProtocolSha256": "97f10ebbd8bafe81b759a0a9fdc2a949975dcefc7f9a8d54e07ce45dfa4a4703"
+}

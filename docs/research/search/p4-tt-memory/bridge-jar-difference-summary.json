@@ -1,0 +1,24 @@
+{
+  "engine-core.jar": {
+    "only79": [],
+    "only80": [
+      "com/ohinteractive/seedv6/core/brn/package-info.class",
+      "com/ohinteractive/seedv6/core/brn1/package-info.class",
+      "com/ohinteractive/seedv6/core/brn2/package-info.class"
+    ],
+    "changed": [
+      "com/ohinteractive/seedv6/application-version.properties",
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker$1.class",
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker.class",
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch$WorkerWork.class",
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch.class"
+    ],
+    "identicalEntries": 222
+  },
+  "app-uci.jar": {
+    "only79": [],
+    "only80": [],
+    "changed": [],
+    "identicalEntries": 25
+  }
+}

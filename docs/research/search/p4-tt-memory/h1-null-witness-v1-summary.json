@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "suite": {
+    "name": "com.ohinteractive.seedv6.search.exact.P4TtMemoryTest",
+    "tests": "1",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-29T20:34:45",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.191"
+  },
+  "sourceCommit": "a72cc496fd39aeddefea4382044bd2bf2e9f6cbb",
+  "additionalTest": "reachedLegalNullVerifierCannotConsumeOrPublishHeuristicScores",
+  "testSourceSha256": "b399852a80728e654ce1b06725f7018ae5e7680a8c18bcfd6ebe410cb527cce9",
+  "raw": "docs\\research\\search\\p4-tt-memory\\raw\\h1-null-witness-v1",
+  "command": ".\\gradlew.bat --no-daemon :research:test --tests com.ohinteractive.seedv6.search.exact.P4TtMemoryTest.reachedLegalNullVerifierCannotConsumeOrPublishHeuristicScores",
+  "gradleUserHome": "build/migration/gradle-user-home",
+  "result": "Explicit reached legal null verification under H1, exact board/history restoration and no heuristic consumption/publication in synthetic or verifier contexts; independent accounting witness unchanged"
+}

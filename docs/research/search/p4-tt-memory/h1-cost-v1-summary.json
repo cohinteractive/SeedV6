@@ -1,0 +1,116 @@
+{
+  "status": "passed",
+  "protocol": "h1-cost-v1-protocol.json",
+  "manifest": "h1-cost-v1-manifest.json",
+  "domains": {
+    "1": {
+      "candidate-source-production-policy": {
+        "requests": 36,
+        "wallSeconds": 5.9997964,
+        "cpuSeconds": 6.578125,
+        "resetSeconds": 0.0438406,
+        "raw": "docs\\research\\search\\p4-tt-memory\\raw\\h1-cost-w1-v1.jsonl",
+        "rawSha256": "d694bd8e9a82eb052c8e01bf657977bf1d317963af7b0a83f11854f7c878c24c"
+      },
+      "h1": {
+        "requests": 36,
+        "wallSeconds": 5.922914,
+        "cpuSeconds": 6.375,
+        "resetSeconds": 0.0445956,
+        "raw": "docs\\research\\search\\p4-tt-memory\\raw\\h1-cost-w1-v1.jsonl",
+        "rawSha256": "d694bd8e9a82eb052c8e01bf657977bf1d317963af7b0a83f11854f7c878c24c"
+      },
+      "elapsedNanosH1OverControlPerRoot": {
+        "ratios": [
+          1.0131483101554233,
+          0.9516092994039766,
+          0.9735329923729706,
+          0.9805122195345499,
+          1.0033578393227256,
+          1.0002265500835035,
+          1.006675837679357,
+          0.9931699131241787,
+          0.9665989315816355
+        ],
+        "geometricMean": 0.9874533083828976,
+        "median": 0.9931699131241787
+      },
+      "processCpuNanosH1OverControlPerRoot": {
+        "ratios": [
+          1.0612244897959184,
+          0.8947368421052632,
+          0.8571428571428571,
+          1.0,
+          0.9090909090909091,
+          1.0465116279069768,
+          1.0,
+          0.9583333333333334,
+          1.0
+        ],
+        "geometricMean": 0.9673923309912166,
+        "median": 1.0
+      }
+    },
+    "4": {
+      "candidate-source-production-policy": {
+        "requests": 36,
+        "wallSeconds": 3.4689988,
+        "cpuSeconds": 8.578125,
+        "resetSeconds": 0.0448426,
+        "raw": "docs\\research\\search\\p4-tt-memory\\raw\\h1-cost-w4-v1.jsonl",
+        "rawSha256": "758af1329d8429f15f19cf94ecca2658ca611704d3ab421b0fc6ee482993fafc"
+      },
+      "h1": {
+        "requests": 36,
+        "wallSeconds": 3.2777784,
+        "cpuSeconds": 7.90625,
+        "resetSeconds": 0.0449066,
+        "raw": "docs\\research\\search\\p4-tt-memory\\raw\\h1-cost-w4-v1.jsonl",
+        "rawSha256": "758af1329d8429f15f19cf94ecca2658ca611704d3ab421b0fc6ee482993fafc"
+      },
+      "elapsedNanosH1OverControlPerRoot": {
+        "ratios": [
+          0.9492509023600185,
+          0.9474830334901938,
+          1.0856292215946495,
+          1.0556346856964178,
+          0.8925400231459157,
+          1.0337783862200665,
+          0.9894084855345728,
+          1.0089079822908917,
+          0.7312799756777204
+        ],
+        "geometricMean": 0.9602634659796395,
+        "median": 0.9894084855345728
+      },
+      "processCpuNanosH1OverControlPerRoot": {
+        "ratios": [
+          0.9122807017543859,
+          1.0847457627118644,
+          0.8852459016393442,
+          1.0714285714285714,
+          1.0185185185185186,
+          0.7931034482758621,
+          0.890625,
+          0.9811320754716981,
+          0.7586206896551724
+        ],
+        "geometricMean": 0.9264100701294012,
+        "median": 0.9122807017543859
+      }
+    }
+  },
+  "interpretation": "Fixed-node request cost; different selective trees, not strength evidence. Candidate-source production policy control, not frozen80.",
+  "rootOrder": [
+    "opening-1",
+    "opening-2",
+    "opening-3",
+    "opening-4",
+    "opening-5",
+    "opening-6",
+    "opening-7",
+    "opening-8",
+    "start"
+  ],
+  "decision": "No material integrated cost regression in this cheap sample; defer same-semantics combined-access optimization and screen unchanged H1 for playing strength."
+}

@@ -77,6 +77,22 @@ class P4TtMemoryTest {
         }
     }
 
+    @Test void reachedLegalNullVerifierCannotConsumeOrPublishHeuristicScores() throws Exception {
+        var model=ConventionalNnueEngine.load();var table=new Observed();
+        var exact=ExactSearch.constructionResearch(ExactEvaluator.from(model.evaluation()),table,config());
+        table.kernel=exact;var diagnostics=new NullMovePolicy.Diagnostics();
+        exact.withFlatNullObservation(false,diagnostics);
+        var board=Board.startingPosition();var saved=board.clone();
+        // Accepted accounting-regression witness, now under H1 rather than changing the oracle.
+        var result=exact.searchRootMove(board,GameHistory.initial(board),4,
+                ExhaustiveOracle.legalMoves(board)[0],1000,1001,true,()->false);
+        assertTrue(result.completed());assertTrue(diagnostics.verifications>0);
+        assertArrayEquals(saved,board);Phase2Oracle.legalPv(board,result.principalVariation());
+        assertFalse((boolean)field(exact,"nullProbeActive"));assertFalse((boolean)field(exact,"nullVerification"));
+        assertNull(field(exact,"history"));
+        // Every heuristic table call also checks the actual live kernel's null flags in Observed.safe().
+    }
+
     @Test void allSupportedWorkersAccountDrainCancelAndRestart() throws Exception {
         var model=ConventionalNnueEngine.load();var board=Board.startingPosition();var original=board.clone();
         for(int workers=1;workers<=16;workers++) try(var d=new SearchDriver(construction(workers,1).create(model.evaluation()))) {

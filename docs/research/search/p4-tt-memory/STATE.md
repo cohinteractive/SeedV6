@@ -2,7 +2,7 @@
 
 Status: **ACTIVE**, 30 October 2026. Governing objective [TT-R001](CONTRACT.md),
 under Search P4-R001. Bootstrap established; bridge diagnostics complete, bridge
-V1 match incomplete and V2 bridge selected. H1 has passed technical and
+V1 match incomplete; V2 W1 passed and W4 selected. H1 has passed technical and
 information-use qualification; no strength conclusion. Champion remains P4-BASELINE-001/build79.
 
 ## Bootstrap and challenge
@@ -42,11 +42,11 @@ Runtime versions and executable hashes belong in per-experiment manifests.
    scheduling samples, not deterministic equality claims. Run bounded paired-clock
    bridge screening after protocol/consumer qualification. This is exploratory,
    not proof of equivalence or correction strength.
-2. **Next: bounded integrated heuristic memory.** Explicit research selection,
+2. **Implemented: bounded integrated heuristic memory H1/build81.** Explicit research selection,
    separate selective provenance, ordinary-score-only heuristic reuse initially,
    conservative non-PV eligibility, useful retention without losing completed legal
-   hints; retain exact controls and production defaults. Final design follows
-   relevant kernel inspection and initial diagnostics.
+   hints; exact controls and production defaults retained. Technical and
+   information-use qualification passed; strength remains unmeasured.
 3. **Conditional:** strength screen versus80, direct versus79 as bridge warrants;
    reverse ablations only for interpretation, independent confirmation only after
    credible screening and feasible precision/cost assessment.
@@ -108,6 +108,46 @@ unchanged capacity and clean/instrumented W1 equality. These are diagnostics onl
 Selected next: V2 bridge W1/W4, then prospective H1 strength screening versus80
 and direct79 comparisons if promising. Keep cheap mechanism reverse ablations
 conditional on what the integrated strength evidence needs to explain.
+
+### Current execution detail
+
+H1 source commit is `a72cc496` / build81; `runtimeh1-v1-manifest.json` binds its
+frozen executable. W1/W4 artifact identity/node-limit preflight passed in
+`h1-build81-preflight-summary.json`. The diagnostic prototype is separately retained
+at `raw/runtimeh1-diagnostic-v1`; its manifest preserves the JARs identified by the
+older diagnostic manifests even after the ordinary build directory was refreshed.
+
+`raw/bridge-w1-v2/run.json` and its tracked summary describe the completed,
+audited 32-pair10+0.1 W1 bridge: build80 scored27W/12D/25L,51.56%; paired normal95
+42.0–61.1%, bounded Hoeffding95 27.6–75.6%. All64 normal games and frozen inputs
+passed independent audit. This establishes neither difference nor equivalence.
+W4 V2 has not started. A protocol deviation was found during W1 execution: `level=trace`
+captures runner lifecycle, but this pinned Fastchess also requires `engine=true`
+for UCI communications. That switch was omitted. Preserve the frozen run; its
+strict warning gate and independent PGN/request audit still qualify a complete
+run, but it cannot supply the promised exact failing-request trace if interrupted.
+Do not infer that full communications were captured. The adapter now adds
+`engine=true`; `bridge-w4-v2-execution.json` prospectively records the symmetric
+logging correction and binds the unchanged V2 protocol. Completed W1 inputs
+remain evidenced by their frozen hashes, not the later adapter revision.
+
+Completed between matches: `h1-cost-v1-summary.json` records180 total clean100k-node
+requests including warmup,144 measured. H1/control geometric-mean per-root wall
+ratios were0.987 W1 and0.960 W4; process CPU ratios0.967/0.926. No material
+integrated cost regression appeared in this cheap sample. Different trees and
+short noisy timings preclude attributing this to isolated transaction overhead.
+Decision: defer combined-access H2 optimization; proceed with the technically
+qualified H1 instead of changing it on an unmeasured performance premise.
+Speed never answers strength. The additional explicit H1 legal-null-
+verifier witness passed (`h1-null-witness-v1-summary.json`).
+`h1-screen-v1-protocol.json` prospectively defines coarse W1/W4 strength screening
+against80, with independent confirmation/direct79 follow-up required for a
+promising result. It has not executed; finish W4 bridge qualification first.
+Selected next command: `tools/p4-tt-memory.py match --name bridge-w4-v2` with
+runtime79/runtime80, workers4,pairs32,bridge-v1-openings.pgn,tc10+0.1 and
+`--protocol bridge-w4-v2-execution.json`. Do not overlap heavy work or edit its
+frozen adapter, protocols or runtime inputs while active. Then run the H1 screen
+under its frozen protocol; no H2 revision is selected.
 
 ## Resume and human actions
 
