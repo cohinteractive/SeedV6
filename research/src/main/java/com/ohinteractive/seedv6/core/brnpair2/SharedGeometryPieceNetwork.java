@@ -25,7 +25,7 @@ public final class SharedGeometryPieceNetwork {
     }
     final boolean context;final double rate;
     final double[] weights=new double[PARAMETERS],first=new double[PARAMETERS],second=new double[PARAMETERS],gradient=new double[PARAMETERS];
-    final int[] stamps=new int[PARAMETERS],touched=new int[PARAMETERS];int serial,count;long step;
+    final int[] stamps=new int[PARAMETERS],touched=new int[PARAMETERS];int serial,count;long step;long projectionVersion;
     public SharedGeometryPieceNetwork(boolean context,double rate,long seed) {
         if(!Double.isFinite(rate)||rate<=0)throw new IllegalArgumentException("Rate");
         this.context=context;this.rate=rate;var random=new Random(seed);
@@ -41,6 +41,9 @@ public final class SharedGeometryPieceNetwork {
     public static final class Workspace {
         final Features features=new Features();
         final double[] a=new double[256],h=new double[256],dh=new double[256],edgePre=new double[8192],edgeGate=new double[8192];
+        final double[] projection=new double[2700*WIDTH],projectionGradient=new double[2700*WIDTH];
+        final boolean[] projectionTouched=new boolean[2700];
+        SharedGeometryPieceNetwork projectionOwner;long projectionVersion;
         Features encode(long[] board) {
             var f=features;f.size=0;f.material=BrnPair2Features.material(board)/4;int stm=Board.player((int)board[4]);long occupied=0;
             for(long bits=board[0]|board[1]|board[2];bits!=0;bits&=bits-1) {
@@ -78,14 +81,42 @@ public final class SharedGeometryPieceNetwork {
         }
         if(!Double.isFinite(value))throw new ArithmeticException("Nonfinite shared geometry score");return value;
     }
-    public double scoreCp(long[] board,Workspace w){return 400*logit(w.encode(board),w);}
+    /** Required after package-local research ablations; training invalidates automatically. */
+    void invalidateProjections(){if(projectionVersion==Long.MAX_VALUE)throw new ArithmeticException("Projection version");projectionVersion++;}
+    void prepareProjection(Workspace w) {
+        if(w.projectionOwner==this&&w.projectionVersion==projectionVersion)return;
+        for(int relation=0;relation<2700;relation++) {
+            double[] geometry=GEOMETRY[relation%225];int base=A+(relation/225)*WIDTH*INPUTS;
+            for(int d=0;d<WIDTH;d++){double value=0;for(int x=0;x<10;x++)value+=weights[base+d*INPUTS+x]*geometry[x];w.projection[relation*WIDTH+d]=value;}
+        }
+        w.projectionOwner=this;w.projectionVersion=projectionVersion;
+    }
+    double compiledLogit(Features f,Workspace w) {
+        prepareProjection(w);Arrays.fill(w.a,0);
+        for(int j=0;j<f.size;j++)for(int i=0;i<f.size;i++)if(j!=i) {
+            int edge=j*f.size+i,relation=f.relations[edge],base=A+(relation/225)*WIDTH*INPUTS,source=E+f.nodes[j]*WIDTH;
+            double[] geometry=GEOMETRY[relation%225];double clear=(geometry[7]+geometry[8]>0&&f.blockers[edge]==0)?1:0,blocked=f.blockers[edge]/7.0;
+            for(int d=0;d<WIDTH;d++) {
+                int k=edge*WIDTH+d;double value=w.projection[relation*WIDTH+d];
+                if(context)value+=weights[base+d*INPUTS+10]*clear+weights[base+d*INPUTS+11]*blocked;
+                w.edgePre[k]=value;w.edgeGate[k]=activate(value);w.a[i*WIDTH+d]+=f.norm*weights[source+d]*w.edgeGate[k];
+            }
+        }
+        double value=unary(f);
+        for(int i=0;i<f.size;i++)for(int d=0;d<WIDTH;d++){int k=i*WIDTH+d;w.h[k]=activate(w.a[k]);value+=weights[Q+f.nodes[i]*WIDTH+d]*w.h[k]/WIDTH;}
+        if(!Double.isFinite(value))throw new ArithmeticException("Nonfinite compiled shared geometry score");return value;
+    }
+    public double scoreCp(long[] board,Workspace w){return 400*compiledLogit(w.encode(board),w);}
+    double scoreCpUncached(long[] board,Workspace w){return 400*logit(w.encode(board),w);}
     void add(int i,double g){if(stamps[i]!=serial){stamps[i]=serial;touched[count++]=i;gradient[i]=0;}gradient[i]+=g;}
-    double gradients(Features[] batch,double[] targets) {
+    double gradients(Features[] batch,double[] targets){return gradients(batch,targets,true);}
+    double gradientsUncached(Features[] batch,double[] targets){return gradients(batch,targets,false);}
+    private double gradients(Features[] batch,double[] targets,boolean compiled) {
         if(batch.length==0||batch.length!=targets.length)throw new IllegalArgumentException("Batch");
         if(++serial==0){Arrays.fill(stamps,0);serial=1;}count=0;double loss=0;var w=new Workspace();
         for(int row=0;row<batch.length;row++) {
             if(!Double.isFinite(targets[row])||targets[row]<0||targets[row]>1)throw new IllegalArgumentException("Target");
-            var f=batch[row];double p=PairObjectiveDiagnostic.sigmoid(logit(f,w)),error=p-targets[row];loss+=error*error;
+            var f=batch[row];double p=PairObjectiveDiagnostic.sigmoid(compiled?compiledLogit(f,w):logit(f,w)),error=p-targets[row];loss+=error*error;
             double g=2*error*p*(1-p)/batch.length;add(768,g);for(int i=0;i<f.size;i++)add(f.nodes[i],g);
             for(int i=0;i<f.size;i++)for(int d=0;d<WIDTH;d++) {
                 int k=i*WIDTH+d,q=Q+f.nodes[i]*WIDTH+d;add(q,g*w.h[k]/WIDTH);w.dh[k]=g*weights[q]*derivative(w.a[k])/WIDTH;
@@ -96,15 +127,23 @@ public final class SharedGeometryPieceNetwork {
                 for(int d=0;d<WIDTH;d++) {
                     int parameter=base+d*INPUTS,k=edge*WIDTH+d;double da=w.dh[i*WIDTH+d]*f.norm;
                     add(source+d,da*w.edgeGate[k]);double dg=da*weights[source+d]*derivative(w.edgePre[k]);
-                    for(int x=0;x<10;x++)if(geometry[x]!=0)add(parameter+x,dg*geometry[x]);
+                    if(compiled){w.projectionTouched[relation]=true;w.projectionGradient[relation*WIDTH+d]+=dg;}
+                    else for(int x=0;x<10;x++)if(geometry[x]!=0)add(parameter+x,dg*geometry[x]);
                     if(context){if(clear!=0)add(parameter+10,dg*clear);if(blocked!=0)add(parameter+11,dg*blocked);}
                 }
             }
         }
+        if(compiled)for(int relation=0;relation<2700;relation++)if(w.projectionTouched[relation]) {
+            double[] geometry=GEOMETRY[relation%225];int base=A+(relation/225)*WIDTH*INPUTS;
+            for(int d=0;d<WIDTH;d++)for(int x=0;x<10;x++)if(geometry[x]!=0)add(base+d*INPUTS+x,w.projectionGradient[relation*WIDTH+d]*geometry[x]);
+        }
         return loss/batch.length;
     }
     double train(Features[] batch,double[] targets) {
-        double loss=gradients(batch,targets);if(step==Long.MAX_VALUE)throw new ArithmeticException("Step");step++;
+        double loss=gradients(batch,targets);updateFromGradients();return loss;
+    }
+    void updateFromGradients() {
+        if(step==Long.MAX_VALUE)throw new ArithmeticException("Step");invalidateProjections();step++;
         double c1=1-Math.pow(.9,step),c2=1-Math.pow(.999,step);
         for(int i=0;i<weights.length;i++)weights[i]*=1-rate*.01;
         for(int n=0;n<count;n++) {
@@ -112,7 +151,7 @@ public final class SharedGeometryPieceNetwork {
             weights[i]-=rate*(first[i]/c1)/(Math.sqrt(second[i]/c2)+1e-8);
             if(!Double.isFinite(weights[i]))throw new ArithmeticException("Nonfinite shared geometry parameter");
         }
-        for(int i=0;i<weights.length;i++)weights[i]=Math.max(-.99,Math.min(.99,weights[i]));return loss;
+        for(int i=0;i<weights.length;i++)weights[i]=Math.max(-.99,Math.min(.99,weights[i]));
     }
     void write(OutputStream stream)throws IOException {
         var bytes=new ByteArrayOutputStream();var out=new DataOutputStream(bytes);out.writeLong(0x42524e5347503031L);out.writeInt(context?1:0);out.writeInt(PARAMETERS);out.writeDouble(rate);out.writeLong(step);

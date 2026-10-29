@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R038 invariant neural projection compilation**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R039 finite occupancy compilation**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,11 +25,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R037 complete:four tests,64/64 capacity,14,209-parameter shared neural geometry
-prototype. Direct16.8/29.5us cost misses practical10us target. R038 prospectively
-caches invariant projections between weight versions,retaining dynamic occupancy
-and uncached equations. Verify forward/gradient/update equivalence,ownership and
-resume before same-panel speed audit. No new fitting or games yet.
+R038 complete:seven tests and exact forward parity;8.0/11.0us compiled costs.
+CONTEXT fails10us gate,so no training. R039 prospectively compiles finite blocker-
+count cases through the same learned transform and shares immutable per-model
+arrays. Retain direct/projection-only reference paths,verify gradients/ownership/
+resume,then fixed component and full-cost audit. No cache sweep or games.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -81,7 +81,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R035 | Fresh neural search-distribution corpus | Complete48games;2065train/1398dev,16/8roots;coverage gate passes |
 | R036 | Matched neural search-distribution training | Complete;memorization and old-panel regression,both gates fail;no tuning |
 | R037 | Shared neural geometry/context messages | Complete4tests,64/64 capacity;16.8/29.5us exceeds practical10us |
-| R038 | Invariant neural projection compilation | Prospective algebra/ownership/resume equivalence and cost gate |
+| R038 | Invariant neural projection compilation | Complete7tests,exact forward;8.0/11.0us,CONTEXT fails10us |
+| R039 | Finite occupancy neural compilation | Prospective shared-cache equivalence and component/full-cost audit |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

@@ -287,3 +287,8 @@ R037 complete:four tests;initial piece-order witness fixture failure retained an
 corrected. Frozen direct model runtime/profiles remain at raw/r037-runtime and
 raw/r037-capacity.json. raw/r033-mechanism-runner.py preserves R033-R036 audit
 bindings. R038 optimizes the same learned equations before any new training.
+
+R038 complete:seven tests,exact forward,gradient discrepancy<1e-18;CONTEXT cost
+gate fails at11.05us. Preserve raw/r038-runtime and fixed blocks. Previous audit
+runner saved raw/r037-capacity-runner.py. R039 tests one finite-state compilation
+with shared immutable model cache;no large fitting yet.

@@ -1,0 +1,94 @@
+{
+  "raw_path": "docs\\research\\brn-relational-cglhw\\raw\\r038-compilation.json",
+  "raw_sha256": "1983ab0657a68922639464d9a7e6d6c05aa0124f7e82c280bcd5087771559fdb",
+  "plan_sha256": "e44ec2a817530d9d83952c29b28112470a5c6e8421592661cd5e9eb91f19ab68",
+  "validation_sha256": "01bb6231aab2fa81fe39311aabb315201af093029131229ae1e085730aa803bc",
+  "receipt": {
+    "sha256": "1983ab0657a68922639464d9a7e6d6c05aa0124f7e82c280bcd5087771559fdb",
+    "seconds": 2.7421769000357017,
+    "resources": [
+      {
+        "cpu_percent": 4.712041884816753,
+        "available_gib": 17.064476013183594,
+        "utc": "2026-10-29T00:16:46Z"
+      }
+    ]
+  },
+  "models": [
+    {
+      "compiled_inference_ns": 8021.485,
+      "blocks": [
+        {
+          "nanoseconds": 164448500,
+          "compiled": false,
+          "calls": 10000,
+          "checksum": 121105.01375462068
+        },
+        {
+          "nanoseconds": 80855700,
+          "compiled": true,
+          "calls": 10000,
+          "checksum": 121105.01375462068
+        },
+        {
+          "nanoseconds": 79574000,
+          "compiled": true,
+          "calls": 10000,
+          "checksum": 121105.01375462068
+        },
+        {
+          "nanoseconds": 163065200,
+          "compiled": false,
+          "calls": 10000,
+          "checksum": 121105.01375462068
+        }
+      ],
+      "uncached_inference_ns": 16375.685,
+      "cold_score": -0.3657571091940114,
+      "maximum_forward_error_cp": 0.0,
+      "cold_compiled_call_ns": 3563100,
+      "mode": "GEOMETRY",
+      "passes": true,
+      "speedup": 2.0414779806980876
+    },
+    {
+      "compiled_inference_ns": 11045.63,
+      "blocks": [
+        {
+          "nanoseconds": 287714700,
+          "compiled": false,
+          "calls": 10000,
+          "checksum": 121105.01375462068
+        },
+        {
+          "nanoseconds": 107349800,
+          "compiled": true,
+          "calls": 10000,
+          "checksum": 121105.01375462068
+        },
+        {
+          "nanoseconds": 113562800,
+          "compiled": true,
+          "calls": 10000,
+          "checksum": 121105.01375462068
+        },
+        {
+          "nanoseconds": 308281600,
+          "compiled": false,
+          "calls": 10000,
+          "checksum": 121105.01375462068
+        }
+      ],
+      "uncached_inference_ns": 29799.815,
+      "cold_score": -0.3657571091940114,
+      "maximum_forward_error_cp": 0.0,
+      "cold_compiled_call_ns": 1630100,
+      "mode": "CONTEXT",
+      "passes": false,
+      "speedup": 2.6978827826027127
+    }
+  ],
+  "projection_cache_bytes_per_workspace": 172800,
+  "training_protocol_admissible": false,
+  "scope": "Equivalent neural computation;steady-state same-panel fixed profiling blocks,not clocks or strength;cold call separately reported;no large fitting"
+}

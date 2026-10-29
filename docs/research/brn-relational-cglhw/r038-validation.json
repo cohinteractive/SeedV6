@@ -1,0 +1,32 @@
+{
+  "tests": [
+    {
+      "name": "SharedGeometryPieceNetworkTest",
+      "tests": 4,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r038-SharedGeometryPieceNetworkTest.xml",
+      "sha256": "c2f501bfecd5bb03ddad4c1519278dd3828367e2751bd67b2d552d8b52e578ec",
+      "output": "Occupancy-conditioned fixed-endpoint change cp=2.1428571428571104\ncontext=false gradient errors=[2.0154156121776623E-12, 3.1741762267657042E-12, 4.437911653833518E-12, 4.074946726351138E-12, 0.0]\ncontext=true gradient errors=[2.0154156121776623E-12, 3.1741762267657042E-12, 4.437911653833518E-12, 4.074946726351138E-12, 4.3498804005396435E-12]\n"
+    },
+    {
+      "name": "SharedGeometryCompilationTest",
+      "tests": 3,
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r038-SharedGeometryCompilationTest.xml",
+      "sha256": "a592e7dfc5311d1c7f3932071745c6cb1cb80587ef502b761bae216316b06d25",
+      "output": "context=false compiled gradient maximum error=8.267041565201971E-19\ncontext=true compiled gradient maximum error=5.963111948670274E-19\n"
+    }
+  ],
+  "total": 7,
+  "runtime": {
+    "lib\\engine-core.jar": "5cafd1a7942e807d40262339c01ab870b4266dbe0bd2255e0a6f2b689778bbf8",
+    "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "lib\\research.jar": "1679de90914653f59cfaa94b10000a90705908218f1601603c7ae13eaae41699",
+    "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "build": 78,
+  "application_runtime_changed": false,
+  "state_format_unchanged": true,
+  "notes": "Forward reference retained;grouped static gradient preserves cancellation mask;cross-implementation floating association tested at1e-10,not byte-identity;compiled segmented resume exact."
+}
