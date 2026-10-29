@@ -1,11 +1,16 @@
 # Phase 3: Policy 4 production integration and promotion
 
+Archive navigation (29 October 2026): this is a historical Phase 3 record.
+The [final Phase 3 canon and link context](../../search-phase3/README.md)
+preserve its dated authority; earlier revision/status and literal `source/`
+references below are historical, not the active Phase 4 research charter.
+
 19 October 2026 (Pacific/Auckland). **Integrated, validated and promoted as the
 normal Pair-2 production Search champion/default at 1-16 workers.** The owner
 accepted the candidate before this launch and authorized promotion upon passing
 the integration gates. No new CGLHW, strength study, release or deployment begins.
-The [Contract](../../../source/CHESS_SEARCH_CONTRACT.md) P3-R007 and
-[Frontier](../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md) P3-F005 remain the canon.
+The [Contract](../../search-phase3/CHESS_SEARCH_CONTRACT.md) P3-R007 and
+[Frontier](../../search-phase3/CHESS_SEARCH_RESEARCH_FRONTIER.md) P3-F005 remain the canon.
 
 ## Identity and behavior
 

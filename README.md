@@ -22,7 +22,7 @@ other research/historical configurations remain available. See the
 Normal managed-clock configurations use **BOUNDARY2**, with explicit **FACTUAL**
 fallback. Its independent studies remain clock-unqualified with scores unopened;
 adoption reflects informed owner acceptance of unconfirmed strength and unresolved
-timing risk. The [Phase 3 closeout](source/CHESS_SEARCH_CONTRACT.md#formal-phase-3-closeout---29-october-2026)
+timing risk. The [Phase 3 closeout](docs/search-phase3/CHESS_SEARCH_CONTRACT.md#formal-phase-3-closeout---29-october-2026)
 records the final selection and qualifications, including build 77 integration
 evidence versus the absence of equivalent current-source runtime validation.
 
@@ -117,8 +117,8 @@ preserves the original BINP chunks and never modifies the downloaded archives.
 - `src/integrationTest`: mixed application/training tests requiring research references.
 - `src/researchLauncher`: small explicit research-UCI adapter; excluded from production.
 - `app/src/test`: remaining production/legacy integration checks.
-- `source`: closed Phase 3 Search Contract and Research Frontier, retained in place.
-- `docs`: architecture, operation, frozen Phase 1/2 search canon, historical reports and evidence.
+- `source`: active Phase 4 Search Contract and Research Frontier.
+- `docs`: architecture, operation, frozen Phase 1/2/3 search canon, historical reports and evidence.
 - `archive`: historical instrumentation, excluded from every source set.
 
 Routine headless checks exclude the explicitly expensive NNUE suite:
@@ -139,11 +139,24 @@ The diagnostic command dispatcher is now `:app:developerTools`:
 # Frozen replay: use -PtoolArgs="frozen-wdl ..." with the explicit input paths.
 ```
 
-Search Phase 3 is **formally CLOSED**. Its [Contract P3-R035](source/CHESS_SEARCH_CONTRACT.md)
-and [Frontier P3-F035](source/CHESS_SEARCH_RESEARCH_FRONTIER.md) retain the accepted
-production baseline, completed/deferred dispositions and historical qualifications.
-Phase 4 is authorized in principle but **not initialized**; its authority requires
-a separately reconciled work unit. Existing technical restrictions remain in force.
+Search Phase 4 is **INITIALIZED** as the active strength-first, externally informed
+and dependency-led research programme. Its authoritative
+[Contract P4-R001](source/CHESS_SEARCH_CONTRACT.md) and
+[Frontier P4-F001](source/CHESS_SEARCH_RESEARCH_FRONTIER.md) establish a research
+reset, with the accepted production engine unchanged and initially identical to
+the research champion. No Phase 4 research objective, inventory, candidate or
+CGLHW is active. Heuristic TT alternatives may be investigated within later
+authorized objectives; production promotion requires evidence, technical
+qualification and explicit owner acceptance.
+
+Search Phase 3 is **CLOSED and archived**. Its final
+[Contract P3-R035](docs/search-phase3/CHESS_SEARCH_CONTRACT.md) and
+[Frontier P3-F035](docs/search-phase3/CHESS_SEARCH_RESEARCH_FRONTIER.md) retain the
+accepted baseline, dispositions and qualifications byte-for-byte; the
+[archive navigation](docs/search-phase3/README.md) records hashes and explains
+historical relative links. Historical methodology and experimental restrictions
+do not automatically bind Phase 4; genuine technical safeguards and applicable
+shared/repository authority remain protected.
 The complete Phase 1
 [Contract R045](docs/search-phase1/CHESS_SEARCH_CONTRACT.md) and
 [Frontier F052](docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md) are frozen
@@ -155,6 +168,14 @@ are historical opportunities rather than unfinished closure obligations.
 [Search reports](docs/research/search/) and
 [BRN reports](docs/research/brn/) preserve the supporting research; their historical
 measurements do not establish current performance or strength.
+
+The existing Phase 3 ChatGPT Project retains its owner-confirmed P3-R035/P3-F035
+mirrors; no further Phase 3 refresh is required. After initialization and
+owner/GPT reconciliation, supply P4-R001/P4-F001 to a **separate Phase 4 Project**
+and confirm both identities before mirror-dependent planning. Repository updates
+do not synchronize either Project. Future CGLHW prompt preparation requires the
+owner's complete current authoritative premade GPT prompt generator, with one
+dedicated GPT conversation per objective for its complete coordination and closeout.
 
 Research reports, configurations, manifests, compact summaries and reusable
 frozen opening inputs remain version-controlled. Raw tournament games, detailed

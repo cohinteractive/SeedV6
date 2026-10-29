@@ -1,5 +1,10 @@
 # SR-034 Search time allocation and instability-aware spending
 
+Archive navigation (29 October 2026): this is a historical Phase 3 record.
+The [final Phase 3 canon and link context](../../search-phase3/README.md)
+preserve its dated authority; earlier revision/status and literal `source/`
+references below are historical, not the active Phase 4 research charter.
+
 Status: **TECHNICAL CLOSEOUT: inconclusive/deferred strength confirmation**, 24 October 2026.
 GPT/owner reconciliation and acceptance remain outstanding. This focused
 record is subordinate to `source/CHESS_SEARCH_CONTRACT.md` and the existing

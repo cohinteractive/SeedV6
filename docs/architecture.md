@@ -48,8 +48,11 @@ publishes completed iterations over Construction's ADAPTIVE16 `AspirationSearch`
 [`ExactSearchAdapter`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java)
 and [`ExactSearch`](../engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java).
 The latter owns the flattened Construction kernel as well as retained recursive
-controls. Their configuration identities are separated by the Phase 3 [contract](../source/CHESS_SEARCH_CONTRACT.md) and
-[frontier](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md).
+controls. Their inherited configuration identities are recorded by the archived
+Phase 3 [contract](search-phase3/CHESS_SEARCH_CONTRACT.md) and
+[frontier](search-phase3/CHESS_SEARCH_RESEARCH_FRONTIER.md). The active Phase 4
+[Contract](../source/CHESS_SEARCH_CONTRACT.md) governs new Search research;
+initialization leaves production and shared engine ownership unchanged.
 
 Normal competitive search uses `BaselineEngine`: flattened PVS, ADAPTIVE16 and
 Conventional NNUE CP64 by default (checkpoint64, S6CNU002, eight material heads,
@@ -61,7 +64,7 @@ supported, with default 1 and Max bounded by available processors and 16.
 Normal managed-clock paths use BOUNDARY2; UCI `ClockPolicy FACTUAL`, JVM
 `-Dseedv6.clockPolicy=FACTUAL` and explicit core selection retain factual fallback.
 Depth/node/fixed-movetime/infinite contracts remain separate. See the
-[final Phase 3 baseline and qualifications](../source/CHESS_SEARCH_CONTRACT.md#formal-phase-3-closeout---29-october-2026).
+[final Phase 3 baseline and qualifications](search-phase3/CHESS_SEARCH_CONTRACT.md#formal-phase-3-closeout---29-october-2026).
 Mate-domain, repetition and score-provenance contracts remain in force.
 `ProductionSearch`, `PinnedSearch` and `ConventionalNnueEngine` retain historical
 training, Policy 4, original Pair-2 Construction and recursive E008 identities.
@@ -137,6 +140,10 @@ policies remain. Ordinary scores require equal depth/current generation with
 cutoff-only bound use and conservative selective-proof suppression. The selected
 extension-enabled Construction configuration suppresses ordinary score stores/reuse;
 completed legal hints remain active in the same table, separate from score proof.
+These describe the inherited production configuration. Phase 4's
+[experimental TT authority](../source/CHESS_SEARCH_CONTRACT.md#transposition-table-experimental-authority)
+permits investigating alternatives within authorized research objectives; it
+does not change this production selection.
 `TranspositionScores` remains production score-domain support. The older
 `TranspositionTable` belongs exclusively to verification and cannot enter production.
 `Magic` remains production: `Move` still uses its sliding attacks. It was not

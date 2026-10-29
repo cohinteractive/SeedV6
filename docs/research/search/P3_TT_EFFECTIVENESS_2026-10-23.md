@@ -1,5 +1,10 @@
 # Phase 3: TT Information Effectiveness and Reuse
 
+Archive navigation (29 October 2026): this is a historical Phase 3 record.
+The [final Phase 3 canon and link context](../../search-phase3/README.md)
+preserve its dated authority; earlier revision/status and literal `source/`
+references below are historical, not the active Phase 4 research charter.
+
 Subsequent owner decision, 23 October 2026: [ADAPTIVE16 production adoption](P3_CONSTRUCTION_2026-10-20.md#adaptive16-production-adoption-23-october-2026)
 now supersedes this closed account's production-WIDEN16/promotion-pending boundary.
 The evidence and original handback below remain historical and unchanged; the
@@ -7,8 +12,8 @@ TT CGLHW has not thereby been marked owner-accepted.
 
 Owner-authorized CGLHW, 23 October 2026 (Pacific/Auckland). **TECHNICALLY COMPLETE:
 awaiting GPT/owner reconciliation and acceptance; production remains WIDEN16.** This is subordinate evidence and continuity
-under [Contract P3-R018](../../../source/CHESS_SEARCH_CONTRACT.md) and
-[Frontier P3-F018](../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md), not a new
+under [Contract P3-R018](../../search-phase3/CHESS_SEARCH_CONTRACT.md) and
+[Frontier P3-F018](../../search-phase3/CHESS_SEARCH_RESEARCH_FRONTIER.md), not a new
 contract or an acceptance/promotion authority.
 
 ## Final disposition and correct resume point

@@ -1,10 +1,15 @@
 # Phase 3: Search Information Retention and Reuse — O1 + O2
 
+Archive navigation (29 October 2026): this is a historical Phase 3 record.
+The [final Phase 3 canon and link context](../../search-phase3/README.md)
+preserve its dated authority; earlier revision/status and literal `source/`
+references below are historical, not the active Phase 4 research charter.
+
 Owner-selected first CGLHW, 18 October 2026 (Pacific/Auckland). **Research technically
 complete; awaiting GPT/owner reconciliation. No candidate accepted or promoted.**
 Governed solely by the Phase 3
-[Contract](../../../source/CHESS_SEARCH_CONTRACT.md) and
-[Frontier](../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). This focused record
+[Contract](../../search-phase3/CHESS_SEARCH_CONTRACT.md) and
+[Frontier](../../search-phase3/CHESS_SEARCH_RESEARCH_FRONTIER.md). This focused record
 contains evidence and resume state, not additional policy authority.
 
 ## Resume and work selection

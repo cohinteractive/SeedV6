@@ -1,5 +1,10 @@
 # Migration baseline and preservation inventory
 
+Historical Search navigation: the Phase 2 references below name migration-time
+revisions. Their links now lead to the frozen final Phase 2 archives; exact
+earlier revisions remain in Git history. Active Phase 4 research authority is
+the [current Contract](../../source/CHESS_SEARCH_CONTRACT.md).
+
 Observed 16 October 2026 (Pacific/Auckland). Governing [contract](CONTRACT.md),
 dynamic [state](STATE.md), and machine-readable [foundation evidence](foundation-evidence.json).
 Paths below are observed locations, not portable build dependencies. No historical
@@ -33,9 +38,9 @@ Accepted implementation: **`35294146bb7e44975b516005b2cc196439666e09`**.
 Technical closeout: **`aff8d744f115a73978fe469d3d02de2d436513f6`**.
 Both are ancestors of the migration start. Authoritative evidence:
 
-- [Search Contract](../../source/CHESS_SEARCH_CONTRACT.md), currently P2-R037,
+- [Search Contract](../search-phase2/CHESS_SEARCH_CONTRACT.md), currently P2-R037,
   retained production baseline and SR-024 section.
-- [Search Frontier](../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md), currently
+- [Search Frontier](../search-phase2/CHESS_SEARCH_RESEARCH_FRONTIER.md), currently
   P2-F041: **SR-021 activation, 2026-10-15** explicitly confirms SR-024 owner
   acceptance, GPT reconciliation without remediation and both P2-R028/P2-F032
   mirror updates. Earlier pending statements in the unchanged SR-024 closeout

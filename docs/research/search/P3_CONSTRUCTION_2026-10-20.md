@@ -1,5 +1,10 @@
 # Phase 3 Workstream 3: feature-rich Search construction
 
+Archive navigation (29 October 2026): this is a historical Phase 3 record.
+The [final Phase 3 canon and link context](../../search-phase3/README.md)
+preserve its dated authority; earlier revision/status and literal `source/`
+references below are historical, not the active Phase 4 research charter.
+
 Owner-authorized 20 October 2026 (Pacific/Auckland). **TECHNICALLY COMPLETE;
 pending GPT/owner reconciliation and acceptance.** Governing masters: Contract
 P3-R014 / Frontier P3-F012. No successor or production promotion is launched.

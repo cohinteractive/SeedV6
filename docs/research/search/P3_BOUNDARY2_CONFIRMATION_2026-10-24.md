@@ -1,5 +1,10 @@
 # BOUNDARY2 confirmation and conditional production adoption
 
+Archive navigation (29 October 2026): this is a historical Phase 3 record.
+The [final Phase 3 canon and link context](../../search-phase3/README.md)
+preserve its dated authority; earlier revision/status and literal `source/`
+references below are historical, not the active Phase 4 research charter.
+
 Status: **PRODUCTION DEFAULT INTEGRATED; bounded technical qualification passed**, 24 October 2026.
 Subordinate focused record under `source/CHESS_SEARCH_CONTRACT.md` and
 `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`; not another governing master.

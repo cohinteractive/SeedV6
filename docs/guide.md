@@ -175,26 +175,33 @@ Performance will vary with position, hardware, JVM behaviour, system load, and w
 
 ## Search Architecture
 
-The production and Search Phase 3 baseline is full Construction V1 + Conventional NNUE CP64. `BaselineEngine` shares its construction between Play, ordinary Arena and standalone UCI: flattened PVS, all 18 Construction controls and ADAPTIVE16 aspiration. Play and UCI own asynchronous jobs through `SearchLifecycleService`; Threads > 1 uses same-depth `ParallelSearch` workers. Historical training profiles retain their existing synchronous drivers.
+The production baseline inherited by Search Phase 4 is Construction V1 + Conventional NNUE CP64. `BaselineEngine` shares its construction between Play, ordinary Arena and standalone UCI: flattened PVS, the original 18 Construction controls plus NOMINAL_FUTILITY and VERIFIED_NULL (flags3407871), and ADAPTIVE16 aspiration. Play and UCI own asynchronous jobs through `SearchLifecycleService`; Threads > 1 uses same-depth `ParallelSearch` workers. Historical training profiles retain their existing synchronous drivers.
 
-Each search request owns its coherent `TTable`; each worker owns mutable board/PV, ordering and evaluator state. Immutable NNUE weights are shared. Competitive HCE, BREP2-32 and CP64 use the same Construction controls, without null-move pruning. See the [complete feature and qualification record](research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026) and [search contract](../source/CHESS_SEARCH_CONTRACT.md) for margins, extensions, repetition and mate-domain boundaries.
+Each search request owns its coherent `TTable`; each worker owns mutable board/PV, ordering and evaluator state. Immutable NNUE weights are shared. Competitive HCE and BREP2-32 retain the original flags262143; CP64 includes the two accepted additions above. See the [final Phase 3 baseline and qualifications](search-phase3/CHESS_SEARCH_CONTRACT.md#formal-phase-3-closeout---29-october-2026), [selectivity adoption](research/search/P3_CP64_SELECTIVITY_2026-10-23.md#production-adoption---24-october-2026) and active [Phase 4 Contract](../source/CHESS_SEARCH_CONTRACT.md). BOUNDARY2 remains the managed-clock default with explicit FACTUAL fallback; initialization changes no engine settings or runtime qualification.
 
 See [architecture and source classification](architecture.md). The older alpha-beta/qsearch, flat-search and alternative-table comparisons remain in the verification source set. Their [historical architecture](history/legacy-search.md) does not describe production behavior.
 
 ## Search Research
 
-Phase 3 is governed by the active [Contract](../source/CHESS_SEARCH_CONTRACT.md)
-and [Research Frontier](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). It seeks
-whole-engine playing strength through architectural improvements, integrated
-candidates, combinations, reverse ablation and champion promotion, preserving
-the owner-selected Construction V1 + CP64 baseline and binding correctness guarantees. The complete
+Phase 4 is initialized under [Contract P4-R001](../source/CHESS_SEARCH_CONTRACT.md)
+and [Frontier P4-F001](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md): strength-first,
+externally informed, dependency-led and configuration-oriented research. The
+accepted production baseline is unchanged and initially equals the research
+champion. No research objective, inventory or experimental candidate is active.
+The charter permits deliberate Search approximations and TT experiments within
+later authorized objectives while preserving genuine correctness, architecture,
+safety and explicit production-acceptance boundaries. Phase 3 is CLOSED; its
+final P3-R035/P3-F035 masters are [archived with navigation](search-phase3/README.md).
+The complete
 Phase 1 [Contract R045](search-phase1/CHESS_SEARCH_CONTRACT.md) and
 [Frontier F052](search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md), final Phase 2
 [Contract P2-R049](search-phase2/CHESS_SEARCH_CONTRACT.md) and
 [Frontier P2-F053](search-phase2/CHESS_SEARCH_RESEARCH_FRONTIER.md), and
-[reports/evidence](research/search/) remain historical evidence. No further Phase 3
-optimization objective is authorized by the baseline consolidation itself;
-future mirror-dependent planning requires refresh of both Project Source mirrors.
+[reports/evidence](research/search/) remain historical evidence, not automatic
+Phase 4 research policy. The existing Phase 3 Project keeps its owner-confirmed
+final mirrors; no further Phase 3 refresh is required. After owner/GPT
+reconciliation, set up a separate Phase 4 Project with both new masters before
+mirror-dependent planning. Repository changes do not synchronize either Project.
 
 ## UCI and Search Lifecycle
 
