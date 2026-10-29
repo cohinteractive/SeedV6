@@ -1,3 +1,12 @@
+Current status: **R045 gate cleared by explicit owner RESUME29October2026**.
+All saved bindings and CRC/step verified;prior supervisor active:null/owned0.
+Fresh runner admission passed before its new attempt log was created. Active
+operation dc19c21e09a14a6c8273e10d53cbf2fc resumes only the fixed remaining schedule;
+STATE.md is authoritative for current work. The entire prior gate below remains
+historical evidence. A new resource failure requires another clean stop,no retry.
+
+---
+
 # Current R045 resource pause - resume through STATE
 
 **PAUSED_RESOURCE_GATE**,2026-10-29T00:54:02Z (29 October Auckland).
