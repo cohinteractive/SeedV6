@@ -1,0 +1,51 @@
+{
+  "status": "PAUSED_RESOURCE_GATE",
+  "gate": {
+    "cpu_percent": 65.68627450980392,
+    "available_gib": 16.693401336669922,
+    "utc": "2026-10-29T01:33:19Z"
+  },
+  "required_cpu_below": 60,
+  "required_available_gib_at_least": 8,
+  "gradle_started": false,
+  "new_tests_run": false,
+  "new_runtime_frozen": false,
+  "predictions_run": false,
+  "build_log": "docs\\research\\brn-relational-cglhw\\raw\\r046-build-launch.log",
+  "build_log_sha256": "40a11c6019d5a2e635a820e0ae342ad69d71639e487053f4bf2c017be2816aa9",
+  "supervisor_release": "docs\\research\\brn-relational-cglhw\\raw\\r046-supervisor-release.json",
+  "supervisor_release_sha256": "3cc061e6cd4209392dde23bd89719d9b106d532b1f174d2672691e50319709c4",
+  "owned_processes": 0,
+  "prepared_sources": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\FieldPredictionAudit.java": "8fd6a22094838cde26deb1c59ebbdf2190050ccf2f00664f033606bd84bae9b1",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\FieldPredictionAuditTest.java": "c3dac7598f404572d413dd36658174a283c1daacdc1fe12bc9d72e381aee3295"
+  },
+  "r045_complete_checkpoints": [
+    {
+      "seed": 71,
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\epoch-2.state",
+      "state_sha256": "def9b515f0d5b1ee063cf4e783d82c87d16b6205ac900ce6630075097f9bd9bc",
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\epoch-2.json",
+      "receipt_sha256": "e6d6a7aa1360e0b79e751b652aeef661eceb09d99ce472a960fb7a6ed19d498c",
+      "result": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-71\\result.json",
+      "result_sha256": "56c0e401a91729b861640f09d640999b929744e8ffa67819b534b3ce31b76610",
+      "optimizer_steps": 16384
+    },
+    {
+      "seed": 97,
+      "state": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-97\\epoch-2.state",
+      "state_sha256": "0e3920f248e55f5205fcf17707e0dec5ab58ad058719601d4752d5328f95979b",
+      "receipt": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-97\\epoch-2.json",
+      "receipt_sha256": "a775aa1bb8fa9aeccec65c0b87cd670ffcdc831d125b5ea39e0f8bc4be7dd725",
+      "result": "docs\\research\\brn-relational-cglhw\\raw\\r045-mix-97\\result.json",
+      "result_sha256": "cc8a604694bbdb7b939e875250825fe0335877c7ef71f41f5cbc64052bd93180",
+      "optimizer_steps": 16384
+    }
+  ],
+  "r045_results_sha256": "9068502bfd99cf0662ecc835e977a51279f72057e9a1a6780f166a9b7a356639",
+  "r046_protocol_sha256": "fd7c04010ec7c165192b4689945fe1fa8bf0ff0acc01c151ee95b82fabee59f7",
+  "prepared_from_revision": "a94e6f137199d784ba7ceeede79336b450ba3157",
+  "next_operation": "Fresh supervised resource admission then focused FieldPredictionAuditTest and research install; only after pass freeze R046 runtime/check model/core parity and prepare the frozen prediction plans.",
+  "training_repeat_required": false,
+  "research_failure": false
+}

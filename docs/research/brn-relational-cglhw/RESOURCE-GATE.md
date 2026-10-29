@@ -1,3 +1,55 @@
+# Current R046 resource pause - resume through STATE
+
+**PAUSED_RESOURCE_GATE**,2026-10-29T01:33:19Z (29 October Auckland).
+AdmissionCPU65.6862745% exceeded strict<60% start limit;free16.693GiB passed>=8GiB.
+Gradle did NOT start. No new loader tests,build,R046 runtime freeze or predictions
+ran. Supervisor active:null,owned_processes:0 verified after release. No retries,
+GPU allocation,queued training or ongoing tournament. This is a resource pause,
+not programme completion or a negative architecture finding.
+
+R045 is COMPLETE. Both MIX epoch2 checkpoints,16segments each and all metrics
+are verified;both fixed quality gates pass. State paths:
+`raw/r045-mix-71/epoch-2.state` SHA256
+`def9b515f0d5b1ee063cf4e783d82c87d16b6205ac900ce6630075097f9bd9bc`;
+`raw/r045-mix-97/epoch-2.state` SHA256
+`0e3920f248e55f5205fcf17707e0dec5ab58ad058719601d4752d5328f95979b`.
+No training needs repetition. r045-results.json pins completed outcomes and the
+prior interrupted attempt separately. r046-resource-gate.json pins release,
+prepared loader/test sources and complete checkpoints. New R046 code is prepared
+but UNVALIDATED;do not claim its planned four loader checks passed.
+
+**Required human action(blocking further empirical work):invoke RESUME when one
+conservative CPU worker can coexist with normal use.** Fresh admissionCPU<60%,
+free>=8GiB and supervisor permission are required. No GPU/clock/promotion request.
+If admission fails again,record and exit without sleeping/retrying.
+
+After instructions/Git/frozen checkpoint/source checks,exact next operation:
+
+```powershell
+$env:GRADLE_USER_HOME="$PWD/build/migration/gradle-user-home"
+$env:JAVA_TOOL_OPTIONS='-XX:ActiveProcessorCount=1 -XX:+UseSerialGC'
+.\nnue-control.cmd run --name brn-relational-mixed-transfer-loader-resume --resume-note 'R046 pending full/M-only masked routing checks; no predictions until tests and frozen class parity pass.' --log docs/research/brn-relational-cglhw/raw/r046-build-resume-1-launch.log -- build/research/venv/Scripts/python.exe -B -c "import sys,subprocess;sys.path.insert(0,'tools/brn-relational');from baseline import admit;print(admit(initial=True),flush=True);subprocess.run(['cmd.exe','/d','/c','gradlew.bat','--offline','--no-daemon','--max-workers=1',':research:test','--tests','*FieldPredictionAuditTest',':research:installResearch'],check=True,timeout=180)"
+```
+
+Use another unique log if that path exists. Expected10-25s,one logical CPU,
+BelowNormal,under2GiB working memory,no GPU. On success verify all four checks,
+freeze raw/r046-runtime,verify MIX/TIED model classes against R045/R044 and core/
+teacher executable classes against R042. Then create six-function old8192/played991
+plans using R042's pinned cases/teacher and the completed R045 MIX/R044 LOW states;
+M-only masked routes must retain second recurrence. Execute serial prediction
+audits with run_message_audit.py and preserve receipts. Analyze exact metadata/
+target parity and R046's unchanged BOTH-seed gates versus matched LOW and frozen
+R042 TIED predictions. No fitting,games or threshold changes are admitted here.
+
+Reusable owner instruction:
+
+> RESUME CGLHW seedv6-brn-relational-20261029 in C:\projects\seed\java\seedv6-unified.
+> Start at docs/research/brn-relational-cglhw/STATE.md and obey its current gate.
+
+Earlier gates and clearances below remain historical evidence,not current commands.
+
+---
+
 Current status: **R045 gate cleared by explicit owner RESUME29October2026**.
 All saved bindings and CRC/step verified;prior supervisor active:null/owned0.
 Fresh runner admission passed before its new attempt log was created. Active

@@ -328,3 +328,13 @@ No owned processes remain. Current RESOURCE-GATE.md is the next-operation author
 no autonomous retry. raw/r042-audit-runner.py preserves R041/R042 audit bindings;
 raw/r044-objective-runner.py preserves R044 fitting bindings. Exact resume skips
 all completed updates and repeats only bounded interrupted scoring.
+
+R045 resumed with exact prior state/segments retained;both endpoints complete and
+gates pass. r045-results.json explicitly accounts for historical interruption;
+no current resource failure. R046 adds only frozen inference routes/predictions;
+all earlier failed gates remain unchanged,no fitting or games automatically added.
+
+R046 prepared full/M-only inference routing and test;admissionCPU65.6863% prevented
+Gradle from starting. New code is unvalidated. All owned processes released;no
+retry. Current RESOURCE-GATE.md/r046-resource-gate.json preserve the exact build
+and post-pass work. R045 is complete and must not be trained again.

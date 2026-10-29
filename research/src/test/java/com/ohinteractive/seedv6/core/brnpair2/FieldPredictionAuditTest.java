@@ -8,6 +8,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FieldPredictionAuditTest {
     @TempDir Path directory;
+    @Test void mixedRouteMasksOnlyCrossChannelTransformAndRejectsWrongModeOrFormat()throws Exception {
+        var model=new MixedTiedPieceNetwork(true,.001,71);
+        java.util.Arrays.fill(model.weights,MixedTiedPieceNetwork.V,MixedTiedPieceNetwork.PARAMETERS,.3);model.invalidateProjections();
+        Path state=directory.resolve("mixed.state");try(var out=Files.newOutputStream(state)){model.write(out);}
+        var full=FieldPredictionAudit.load(state,"MIX_TIED");var masked=FieldPredictionAudit.load(state,"MIX_TIED_MASK");
+        var zeroed=new MixedTiedPieceNetwork(true,.001,0);System.arraycopy(model.weights,0,zeroed.weights,0,model.weights.length);java.util.Arrays.fill(zeroed.weights,MixedTiedPieceNetwork.M,MixedTiedPieceNetwork.PARAMETERS,0);
+        boolean secondSurvives=false;
+        for(String fen:new String[]{"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1","r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1","4k3/P7/8/8/8/8/7p/4K3 b - - 0 1","4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1"}) {
+            var b=Board.fromFen(fen);var saved=b.clone();var w=new MixedTiedPieceNetwork.Workspace();
+            assertEquals(model.scoreCp(b,new MixedTiedPieceNetwork.Workspace())/400,full.applyAsDouble(b),1e-12);
+            double expected=zeroed.compiledLogit(w.encode(b),w);assertEquals(expected,masked.applyAsDouble(b),1e-12);secondSurvives|=Math.abs(expected-w.baseLogit)>1e-8;assertArrayEquals(saved,b);
+        }
+        assertTrue(secondSurvives);
+        Path wrong=directory.resolve("mixed-control.state");try(var out=Files.newOutputStream(wrong)){new MixedTiedPieceNetwork(false,.001,71).write(out);}
+        assertThrows(IllegalArgumentException.class,()->FieldPredictionAudit.load(wrong,"MIX_TIED"));assertThrows(IllegalArgumentException.class,()->FieldPredictionAudit.load(wrong,"MIX_TIED_MASK"));assertThrows(java.io.IOException.class,()->FieldPredictionAudit.load(state,"TIED"));
+        Path old=directory.resolve("tied-format.state");try(var out=Files.newOutputStream(old)){new TiedGeometryPieceNetwork(true,.001,71).write(out);}assertThrows(java.io.IOException.class,()->FieldPredictionAudit.load(old,"MIX_TIED"));
+    }
     @Test void sharedTiedAndMaskedRoutesPreserveExplicitModelSemantics()throws Exception {
         var shared=new SharedGeometryPieceNetwork(true,.01,71);var tied=new TiedGeometryPieceNetwork(true,.01,71);
         java.util.Arrays.fill(tied.weights,TiedGeometryPieceNetwork.V,TiedGeometryPieceNetwork.PARAMETERS,.3);tied.invalidateProjections();
