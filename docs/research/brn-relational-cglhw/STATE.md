@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R040 shared neural geometry training**. Owner RESUME cleared the prior resource
+Status: **ACTIVE - R041 tied neural relation recurrence**. Owner RESUME cleared the prior resource
 gate after a fresh admitted CPU sample. Historical gate evidence is preserved;
 RESOURCE-GATE.md records its clearance. No GPU or clock authority was added.
 
@@ -25,11 +25,11 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R039 complete:eight tests,exact forward,derived-cache equivalence and4.25/4.74us
-full costs;both gates pass. R040 prospectively admits four matched GEOMETRY/
-CONTEXT neural arms,seeds71/97,one epoch on existing1M CP64 data. R035 development
-remains held out. Add/validate diagnostic dispatch,freeze byte-identical R039
-model classes,then serial segmented CPU training under recorded resource bounds.
+R040 complete:four endpoints/32segments;modest5-8% played gains but all fixed
+mechanism/family gates fail. No transfer/games/promotion. R041 prospectively adds
+a second contextual message pass tied to the SAME learned geometry/occupancy
+transform. Verify independent gradients/board/resume/cost and exact ONE update
+parity with R040 before reusing its controls and training two TIED seeds.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
@@ -83,7 +83,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R037 | Shared neural geometry/context messages | Complete4tests,64/64 capacity;16.8/29.5us exceeds practical10us |
 | R038 | Invariant neural projection compilation | Complete7tests,exact forward;8.0/11.0us,CONTEXT fails10us |
 | R039 | Finite occupancy neural compilation | Complete8tests,exact forward,4.25/4.74us;both practical gates pass |
-| R040 | Shared neural geometry/context training | Prospective4 matched one-epoch arms;R035 held out;fixed mechanism/family gates |
+| R040 | Shared neural geometry/context training | Complete4arms;5-8% played gains,all advancement gates fail;no games |
+| R041 | Tied neural relation recurrence | Prospective shared-transform second pass;correctness/cost before2 fitted arms |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

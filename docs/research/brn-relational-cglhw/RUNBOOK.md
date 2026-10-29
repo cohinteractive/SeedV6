@@ -297,3 +297,8 @@ R039 complete:eight tests,shared finite-case caches,exact forward and4.25/4.74us
 raw/r038-compilation-runner.py preserves previous audit binding. Frozen model
 classes at raw/r039-runtime must match R040 training runtime. R040 admits four
 serial1M-example arms;no new data,mixture training,games or production changes.
+
+R040 complete:two dispatch tests,unchanged R039 model classes,four endpoints/
+32segments;both mechanism and family routes fail. raw/r036-objective-runner.py
+preserves old fitting bindings. New R041 ties relation transforms across neural
+passes;R040 controls may be reused only after exact active-update parity tests.

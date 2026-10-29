@@ -1,0 +1,911 @@
+{
+  "plan_sha256": "3f6e764461272a703221bd1b7a69cc6a27a2a0e0236685a644cfb7c4b82d2aad",
+  "validation_sha256": "0adc0e6bdeabf38daaeef07f57d6658c13b7c69f7eb0ba9ff06fd3374ff49966",
+  "analysis_sha256": "a4c7d4ec4c6358a3c5fa653bfdded531401a250e50312aa3b66bce7feb26480d",
+  "analysis_resource": {
+    "cpu_percent": 14.0625,
+    "available_gib": 16.818790435791016,
+    "utc": "2026-10-29T00:26:05Z"
+  },
+  "records": [
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r040-geometry-71.json",
+      "config_sha256": "38e4fdffec2359b35207bda061bad9f8bbd07a6bac246b7d82ca1867288678c3",
+      "result_path": "docs\\research\\brn-relational-cglhw\\raw\\r040-geometry-71\\result.json",
+      "result_sha256": "995b3235f66efbe623b1ec37e8d3d47cdad843136ff4ae36d026ae0737920f75",
+      "result": {
+        "mode": "GEOMETRY",
+        "seed": 71,
+        "parameters": 14209,
+        "metrics": [
+          {
+            "validation_mse": 0.018539461318962495,
+            "epoch": 0
+          },
+          {
+            "unary_only_train_mse": 0.015119672708087289,
+            "epoch": 1,
+            "updates": 8192,
+            "train_mse": 0.013009909904344278,
+            "state_sha256": "ef6d2165e1499fd96fe02421a3b14fe1374238f6b4ddc56a404081924d3f110b",
+            "unary_only_validation_mse": 0.01372764775890978,
+            "validation_mse": 0.011648554677548696
+          }
+        ],
+        "load_seconds": 4.1116006,
+        "optimization_checkpoint_seconds": 29.1834373,
+        "preflight_inference_ns": 4252.055,
+        "full_inference_ns": 4377.015,
+        "original_bt4_validation_mse": 0.024698064591853548,
+        "played_validation_mse": 0.03742089107359152,
+        "played_unary_only_mse": 0.04143739472331925,
+        "context_disabled_validation_mse": 0.011648554677548696,
+        "context_disabled_played_validation_mse": 0.03742089107359152,
+        "scope": "Matched shared neural geometry/occupancy training;fixed endpoint;played development held out;no strength claim"
+      },
+      "by_root": {
+        "(97, 8)": {
+          "rows": 134,
+          "teacher_mse": 0.034774277679649135
+        },
+        "(71, 9)": {
+          "rows": 148,
+          "teacher_mse": 0.03064874432507184
+        },
+        "(71, 10)": {
+          "rows": 212,
+          "teacher_mse": 0.02583195620355556
+        },
+        "(97, 9)": {
+          "rows": 249,
+          "teacher_mse": 0.02706108442181475
+        },
+        "(71, 11)": {
+          "rows": 199,
+          "teacher_mse": 0.03380957725116033
+        },
+        "(97, 11)": {
+          "rows": 242,
+          "teacher_mse": 0.0552470117941272
+        },
+        "(71, 8)": {
+          "rows": 112,
+          "teacher_mse": 0.04468380129044306
+        },
+        "(97, 10)": {
+          "rows": 102,
+          "teacher_mse": 0.05687828572374921
+        }
+      },
+      "parameter_diagnostics": {
+        "unary": {
+          "rms": 0.4443134983695915,
+          "clamped": 0.0
+        },
+        "source": {
+          "rms": 0.4981474581975957,
+          "clamped": 0.008951822916666666
+        },
+        "readout": {
+          "rms": 0.5373673971465565,
+          "clamped": 0.010091145833333334
+        },
+        "static_transform": {
+          "rms": 0.5942614402704339,
+          "clamped": 0.022916666666666665
+        },
+        "context_transform": {
+          "rms": 0.0,
+          "clamped": 0.0
+        }
+      },
+      "segments": [
+        {
+          "state_sha256": "f514ecb70cc0012a144961b2c0e259dd80de76b98d3bb79e2faac497c7acbabb",
+          "config_sha256": "38e4fdffec2359b35207bda061bad9f8bbd07a6bac246b7d82ca1867288678c3",
+          "updates": 1024,
+          "completed_positions": 131072
+        },
+        {
+          "state_sha256": "3f48e394a0943e81977090dccff68be50b7c0fbc07a555f2a2f989e3fd9bd97c",
+          "config_sha256": "38e4fdffec2359b35207bda061bad9f8bbd07a6bac246b7d82ca1867288678c3",
+          "updates": 2048,
+          "completed_positions": 262144
+        },
+        {
+          "state_sha256": "52dc36dec79dd88f572bea6da8bb9df2d56ba06b669d216b305f28211425d284",
+          "config_sha256": "38e4fdffec2359b35207bda061bad9f8bbd07a6bac246b7d82ca1867288678c3",
+          "updates": 3072,
+          "completed_positions": 393216
+        },
+        {
+          "state_sha256": "47984002f4fe6312d6f15aceeba7d5056bd9b9f939a49309f175a8415b0d6c88",
+          "config_sha256": "38e4fdffec2359b35207bda061bad9f8bbd07a6bac246b7d82ca1867288678c3",
+          "updates": 4096,
+          "completed_positions": 524288
+        },
+        {
+          "state_sha256": "2d1b7af3ec9fa24da3b0a8842ba84533c0c29c8bafd3799dc1cc86679a246450",
+          "config_sha256": "38e4fdffec2359b35207bda061bad9f8bbd07a6bac246b7d82ca1867288678c3",
+          "updates": 5120,
+          "completed_positions": 655360
+        },
+        {
+          "state_sha256": "4d6b7c16b4f47fca9627e081e319055ae81ea4f1620cc738e3604006b681f42f",
+          "config_sha256": "38e4fdffec2359b35207bda061bad9f8bbd07a6bac246b7d82ca1867288678c3",
+          "updates": 6144,
+          "completed_positions": 786432
+        },
+        {
+          "state_sha256": "e105a9c90955b0f5ed48105b51966209c9e00a25f432895dadca9d9d42574cfd",
+          "config_sha256": "38e4fdffec2359b35207bda061bad9f8bbd07a6bac246b7d82ca1867288678c3",
+          "updates": 7168,
+          "completed_positions": 917504
+        },
+        {
+          "state_sha256": "ef6d2165e1499fd96fe02421a3b14fe1374238f6b4ddc56a404081924d3f110b",
+          "config_sha256": "38e4fdffec2359b35207bda061bad9f8bbd07a6bac246b7d82ca1867288678c3",
+          "updates": 8192,
+          "completed_positions": 1048576
+        }
+      ],
+      "executions": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r040-geometry-71\\execution-1793233444599513300.json",
+          "sha256": "6ee8ea3bd8ef5588b0273eefc69b90fe6a401623c6eea202fc2cfe07fdb3c7e1",
+          "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r040-geometry-71.json",
+          "status": "COMPLETE",
+          "error": null,
+          "elapsed_seconds": 33.896549199998844,
+          "resources": [
+            {
+              "cpu_percent": 10.362694300518138,
+              "available_gib": 16.949737548828125,
+              "utc": "2026-10-29T00:23:30Z"
+            },
+            {
+              "cpu_percent": 11.398963730569944,
+              "available_gib": 16.742752075195312,
+              "utc": "2026-10-29T00:23:35Z"
+            },
+            {
+              "cpu_percent": 30.208333333333336,
+              "available_gib": 16.744915008544922,
+              "utc": "2026-10-29T00:23:41Z"
+            },
+            {
+              "cpu_percent": 25.90673575129534,
+              "available_gib": 16.554786682128906,
+              "utc": "2026-10-29T00:23:46Z"
+            },
+            {
+              "cpu_percent": 15.789473684210531,
+              "available_gib": 16.545452117919922,
+              "utc": "2026-10-29T00:23:51Z"
+            },
+            {
+              "cpu_percent": 30.208333333333336,
+              "available_gib": 16.534252166748047,
+              "utc": "2026-10-29T00:23:56Z"
+            },
+            {
+              "cpu_percent": 14.583333333333337,
+              "available_gib": 16.53807830810547,
+              "utc": "2026-10-29T00:24:02Z"
+            }
+          ],
+          "command": [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-XX:+UseSerialGC",
+            "-Xmx512m",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r040-runtime\\lib\\*",
+            "com.ohinteractive.seedv6.core.brnpair2.SharedGeometryTrainingDiagnostic",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r040-geometry-71.json"
+          ],
+          "last_complete_epoch": 1,
+          "last_complete_segment": 8,
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r040-context-71.json",
+      "config_sha256": "4ee39e0b98925deaa81f16abc2ab1c576890acc4f10a0b89416528aa4665b5fa",
+      "result_path": "docs\\research\\brn-relational-cglhw\\raw\\r040-context-71\\result.json",
+      "result_sha256": "6f4da92fd0c00f9c38c97d2cc433ab943ba3997955b64a61d5d480de8281144a",
+      "result": {
+        "mode": "CONTEXT",
+        "seed": 71,
+        "parameters": 14209,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.018539461318962495
+          },
+          {
+            "updates": 8192,
+            "epoch": 1,
+            "unary_only_train_mse": 0.015273152636763772,
+            "validation_mse": 0.011730493242137536,
+            "unary_only_validation_mse": 0.013947973550176171,
+            "state_sha256": "4e7bd3c6ec9d74a9f4ee3287151de72e3244425d9c71f6bb4e08c076fba81c30",
+            "train_mse": 0.012972444960295945
+          }
+        ],
+        "load_seconds": 4.338962,
+        "optimization_checkpoint_seconds": 35.5746153,
+        "preflight_inference_ns": 4631.615,
+        "full_inference_ns": 4680.015,
+        "original_bt4_validation_mse": 0.02474398970196587,
+        "played_validation_mse": 0.03713960566367216,
+        "played_unary_only_mse": 0.041590190599646824,
+        "context_disabled_validation_mse": 0.011851220243249642,
+        "context_disabled_played_validation_mse": 0.0378784766225636,
+        "scope": "Matched shared neural geometry/occupancy training;fixed endpoint;played development held out;no strength claim"
+      },
+      "by_root": {
+        "(97, 8)": {
+          "rows": 134,
+          "teacher_mse": 0.03338428965381777
+        },
+        "(71, 9)": {
+          "rows": 148,
+          "teacher_mse": 0.028008607119014216
+        },
+        "(71, 10)": {
+          "rows": 212,
+          "teacher_mse": 0.02670069170669218
+        },
+        "(97, 9)": {
+          "rows": 249,
+          "teacher_mse": 0.02896127267833094
+        },
+        "(71, 11)": {
+          "rows": 199,
+          "teacher_mse": 0.032191406556042475
+        },
+        "(97, 11)": {
+          "rows": 242,
+          "teacher_mse": 0.05622898099056989
+        },
+        "(71, 8)": {
+          "rows": 112,
+          "teacher_mse": 0.044010456965125504
+        },
+        "(97, 10)": {
+          "rows": 102,
+          "teacher_mse": 0.053802176739219464
+        }
+      },
+      "parameter_diagnostics": {
+        "unary": {
+          "rms": 0.44702516000980835,
+          "clamped": 0.0
+        },
+        "source": {
+          "rms": 0.5047901526244298,
+          "clamped": 0.009765625
+        },
+        "readout": {
+          "rms": 0.524643011706547,
+          "clamped": 0.011067708333333334
+        },
+        "static_transform": {
+          "rms": 0.5608907341308794,
+          "clamped": 0.014583333333333334
+        },
+        "context_transform": {
+          "rms": 0.6675174428317198,
+          "clamped": 0.057291666666666664
+        }
+      },
+      "segments": [
+        {
+          "updates": 1024,
+          "config_sha256": "4ee39e0b98925deaa81f16abc2ab1c576890acc4f10a0b89416528aa4665b5fa",
+          "state_sha256": "022401127eb57b6a5f9d28eda9678cd673da909021a9a8cd1fe0fcb8fe1ae1e6",
+          "completed_positions": 131072
+        },
+        {
+          "updates": 2048,
+          "config_sha256": "4ee39e0b98925deaa81f16abc2ab1c576890acc4f10a0b89416528aa4665b5fa",
+          "state_sha256": "0b4d97f984d2a2477253367dbd72621b28a834092f46628470cd326bd1f1e73c",
+          "completed_positions": 262144
+        },
+        {
+          "updates": 3072,
+          "config_sha256": "4ee39e0b98925deaa81f16abc2ab1c576890acc4f10a0b89416528aa4665b5fa",
+          "state_sha256": "8ef36a763154664e1345a5dfd3b00608cb1ecc41463d50eb0292217ba04cc1d4",
+          "completed_positions": 393216
+        },
+        {
+          "updates": 4096,
+          "config_sha256": "4ee39e0b98925deaa81f16abc2ab1c576890acc4f10a0b89416528aa4665b5fa",
+          "state_sha256": "f7e6cc400fb8999e41fbf85bd55d433418170ca2fe9d7f59e90ea4d664b7f5ab",
+          "completed_positions": 524288
+        },
+        {
+          "updates": 5120,
+          "config_sha256": "4ee39e0b98925deaa81f16abc2ab1c576890acc4f10a0b89416528aa4665b5fa",
+          "state_sha256": "8494f6299600825f8e4f5bca178c9d43e93fdd7bf01ee56c98f00363e83df060",
+          "completed_positions": 655360
+        },
+        {
+          "updates": 6144,
+          "config_sha256": "4ee39e0b98925deaa81f16abc2ab1c576890acc4f10a0b89416528aa4665b5fa",
+          "state_sha256": "ddbd6852a1aa64eaa5a3ff9fe1825a30e10f552ca460755dbf7201d14e05c123",
+          "completed_positions": 786432
+        },
+        {
+          "updates": 7168,
+          "config_sha256": "4ee39e0b98925deaa81f16abc2ab1c576890acc4f10a0b89416528aa4665b5fa",
+          "state_sha256": "4b3f38e586d62fe1ee211d000844b53744d2c7ba1db192b30fe595bdcc0abea4",
+          "completed_positions": 917504
+        },
+        {
+          "updates": 8192,
+          "config_sha256": "4ee39e0b98925deaa81f16abc2ab1c576890acc4f10a0b89416528aa4665b5fa",
+          "state_sha256": "4e7bd3c6ec9d74a9f4ee3287151de72e3244425d9c71f6bb4e08c076fba81c30",
+          "completed_positions": 1048576
+        }
+      ],
+      "executions": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r040-context-71\\execution-1793233485585491000.json",
+          "sha256": "167736471dd0a743f8b10ba12c56f48fbe1f5a6fdb68893a77194d47a65ecdd5",
+          "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r040-context-71.json",
+          "status": "COMPLETE",
+          "error": null,
+          "elapsed_seconds": 40.7128393999883,
+          "resources": [
+            {
+              "cpu_percent": 9.895833333333337,
+              "available_gib": 16.78899383544922,
+              "utc": "2026-10-29T00:24:04Z"
+            },
+            {
+              "cpu_percent": 16.84210526315789,
+              "available_gib": 16.578014373779297,
+              "utc": "2026-10-29T00:24:10Z"
+            },
+            {
+              "cpu_percent": 13.089005235602091,
+              "available_gib": 16.55984878540039,
+              "utc": "2026-10-29T00:24:15Z"
+            },
+            {
+              "cpu_percent": 11.340206185567014,
+              "available_gib": 16.284618377685547,
+              "utc": "2026-10-29T00:24:20Z"
+            },
+            {
+              "cpu_percent": 14.210526315789473,
+              "available_gib": 16.42061996459961,
+              "utc": "2026-10-29T00:24:25Z"
+            },
+            {
+              "cpu_percent": 17.616580310880824,
+              "available_gib": 16.590137481689453,
+              "utc": "2026-10-29T00:24:31Z"
+            },
+            {
+              "cpu_percent": 14.36170212765957,
+              "available_gib": 16.635173797607422,
+              "utc": "2026-10-29T00:24:36Z"
+            },
+            {
+              "cpu_percent": 15.306122448979586,
+              "available_gib": 16.56716537475586,
+              "utc": "2026-10-29T00:24:41Z"
+            }
+          ],
+          "command": [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-XX:+UseSerialGC",
+            "-Xmx512m",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r040-runtime\\lib\\*",
+            "com.ohinteractive.seedv6.core.brnpair2.SharedGeometryTrainingDiagnostic",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r040-context-71.json"
+          ],
+          "last_complete_epoch": 1,
+          "last_complete_segment": 8,
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r040-geometry-97.json",
+      "config_sha256": "cac6bec552e984bab9c4da47d67161efff38bb182c802a373fe7ebc1c904ea07",
+      "result_path": "docs\\research\\brn-relational-cglhw\\raw\\r040-geometry-97\\result.json",
+      "result_sha256": "dcf0b7d4192b8cc43f7149836d24836706034100892e94d8bafbe61e344b2d18",
+      "result": {
+        "mode": "GEOMETRY",
+        "seed": 97,
+        "parameters": 14209,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.018540685154463554
+          },
+          {
+            "train_mse": 0.013036609615797688,
+            "updates": 8192,
+            "epoch": 1,
+            "unary_only_train_mse": 0.014981287232587985,
+            "validation_mse": 0.01167751883082823,
+            "unary_only_validation_mse": 0.013498227014298985,
+            "state_sha256": "9c7df21c8690eac4ce03c1d0ff880f4c1daca31f9655821b6976bf0e32bf3e68"
+          }
+        ],
+        "load_seconds": 4.053516,
+        "optimization_checkpoint_seconds": 28.8754203,
+        "preflight_inference_ns": 4239.76,
+        "full_inference_ns": 4473.655,
+        "original_bt4_validation_mse": 0.02477007745243534,
+        "played_validation_mse": 0.037296013187840066,
+        "played_unary_only_mse": 0.04146692277166013,
+        "context_disabled_validation_mse": 0.01167751883082823,
+        "context_disabled_played_validation_mse": 0.037296013187840066,
+        "scope": "Matched shared neural geometry/occupancy training;fixed endpoint;played development held out;no strength claim"
+      },
+      "by_root": {
+        "(97, 8)": {
+          "rows": 134,
+          "teacher_mse": 0.034898123038371136
+        },
+        "(71, 9)": {
+          "rows": 148,
+          "teacher_mse": 0.02958271939626299
+        },
+        "(71, 10)": {
+          "rows": 212,
+          "teacher_mse": 0.022707017389096494
+        },
+        "(97, 9)": {
+          "rows": 249,
+          "teacher_mse": 0.03360641578462078
+        },
+        "(71, 11)": {
+          "rows": 199,
+          "teacher_mse": 0.028835369893030566
+        },
+        "(97, 11)": {
+          "rows": 242,
+          "teacher_mse": 0.059519650590850876
+        },
+        "(71, 8)": {
+          "rows": 112,
+          "teacher_mse": 0.03738333811099969
+        },
+        "(97, 10)": {
+          "rows": 102,
+          "teacher_mse": 0.054651199429625284
+        }
+      },
+      "parameter_diagnostics": {
+        "unary": {
+          "rms": 0.44361226285600797,
+          "clamped": 0.0
+        },
+        "source": {
+          "rms": 0.5070219272426596,
+          "clamped": 0.008951822916666666
+        },
+        "readout": {
+          "rms": 0.5294886762549702,
+          "clamped": 0.012858072916666666
+        },
+        "static_transform": {
+          "rms": 0.5860528741139155,
+          "clamped": 0.03854166666666667
+        },
+        "context_transform": {
+          "rms": 0.0,
+          "clamped": 0.0
+        }
+      },
+      "segments": [
+        {
+          "updates": 1024,
+          "config_sha256": "cac6bec552e984bab9c4da47d67161efff38bb182c802a373fe7ebc1c904ea07",
+          "state_sha256": "2c0f499c0d5d9549a7be094e716908fc74aa7e8790edf7f337919a8025844568",
+          "completed_positions": 131072
+        },
+        {
+          "updates": 2048,
+          "config_sha256": "cac6bec552e984bab9c4da47d67161efff38bb182c802a373fe7ebc1c904ea07",
+          "state_sha256": "af8b1d4cf8546fd071c64b450d423979fb1eea62f508b37df76892e8543e7e5b",
+          "completed_positions": 262144
+        },
+        {
+          "updates": 3072,
+          "config_sha256": "cac6bec552e984bab9c4da47d67161efff38bb182c802a373fe7ebc1c904ea07",
+          "state_sha256": "d597610de781fee294948973638e1f2335e9e07a991057aee19116e2728a848d",
+          "completed_positions": 393216
+        },
+        {
+          "updates": 4096,
+          "config_sha256": "cac6bec552e984bab9c4da47d67161efff38bb182c802a373fe7ebc1c904ea07",
+          "state_sha256": "36cbed71c417efbf42745c26c48b6a94f7f678581937bff1cb0607cfc8ad4ad5",
+          "completed_positions": 524288
+        },
+        {
+          "updates": 5120,
+          "config_sha256": "cac6bec552e984bab9c4da47d67161efff38bb182c802a373fe7ebc1c904ea07",
+          "state_sha256": "db31b0faa42e29d3a1877df5a75b793c99f1e8e02c392cf956455fbc8d6b19d6",
+          "completed_positions": 655360
+        },
+        {
+          "updates": 6144,
+          "config_sha256": "cac6bec552e984bab9c4da47d67161efff38bb182c802a373fe7ebc1c904ea07",
+          "state_sha256": "f09b16380403cb16f7f271c8c33fce3b488ccf984dbe2b8409d9b1f3422ef41c",
+          "completed_positions": 786432
+        },
+        {
+          "updates": 7168,
+          "config_sha256": "cac6bec552e984bab9c4da47d67161efff38bb182c802a373fe7ebc1c904ea07",
+          "state_sha256": "6bb971f2fadc38e50fe0c5fb5a0eb4c6f34f89411010fcf80f36c98c47837b49",
+          "completed_positions": 917504
+        },
+        {
+          "updates": 8192,
+          "config_sha256": "cac6bec552e984bab9c4da47d67161efff38bb182c802a373fe7ebc1c904ea07",
+          "state_sha256": "9c7df21c8690eac4ce03c1d0ff880f4c1daca31f9655821b6976bf0e32bf3e68",
+          "completed_positions": 1048576
+        }
+      ],
+      "executions": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r040-geometry-97\\execution-1793233519417746500.json",
+          "sha256": "18c9ed025bbfe64f7614859e9cd699e1dc9b631397c24ab81b98ad64f5736bc6",
+          "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r040-geometry-97.json",
+          "status": "COMPLETE",
+          "error": null,
+          "elapsed_seconds": 33.559106900007464,
+          "resources": [
+            {
+              "cpu_percent": 2.604166666666663,
+              "available_gib": 16.811458587646484,
+              "utc": "2026-10-29T00:24:45Z"
+            },
+            {
+              "cpu_percent": 13.36898395721925,
+              "available_gib": 16.574325561523438,
+              "utc": "2026-10-29T00:24:51Z"
+            },
+            {
+              "cpu_percent": 18.848167539267013,
+              "available_gib": 16.565467834472656,
+              "utc": "2026-10-29T00:24:56Z"
+            },
+            {
+              "cpu_percent": 35.9375,
+              "available_gib": 16.592727661132812,
+              "utc": "2026-10-29T00:25:01Z"
+            },
+            {
+              "cpu_percent": 13.612565445026181,
+              "available_gib": 16.613197326660156,
+              "utc": "2026-10-29T00:25:06Z"
+            },
+            {
+              "cpu_percent": 16.145833333333336,
+              "available_gib": 16.626258850097656,
+              "utc": "2026-10-29T00:25:12Z"
+            },
+            {
+              "cpu_percent": 10.362694300518138,
+              "available_gib": 16.602378845214844,
+              "utc": "2026-10-29T00:25:17Z"
+            }
+          ],
+          "command": [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-XX:+UseSerialGC",
+            "-Xmx512m",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r040-runtime\\lib\\*",
+            "com.ohinteractive.seedv6.core.brnpair2.SharedGeometryTrainingDiagnostic",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r040-geometry-97.json"
+          ],
+          "last_complete_epoch": 1,
+          "last_complete_segment": 8,
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "config": "docs\\research\\brn-relational-cglhw\\r040-context-97.json",
+      "config_sha256": "559d8b6b9f4afde5bc7d9cfd7526a001f4a64ff06c24294ed598fb6f78b4ede2",
+      "result_path": "docs\\research\\brn-relational-cglhw\\raw\\r040-context-97\\result.json",
+      "result_sha256": "abef53fb6997bc8ecc3987a215459bf0707900aa88fb162936f23e590f855f83",
+      "result": {
+        "mode": "CONTEXT",
+        "seed": 97,
+        "parameters": 14209,
+        "metrics": [
+          {
+            "epoch": 0,
+            "validation_mse": 0.018540685154463554
+          },
+          {
+            "validation_mse": 0.01165259616711307,
+            "unary_only_validation_mse": 0.013511564529441059,
+            "state_sha256": "38c426d7a9d59b9e1403223ab7d37c361156005bf14828d52c7d20afc9d4f254",
+            "train_mse": 0.012985941281696299,
+            "updates": 8192,
+            "epoch": 1,
+            "unary_only_train_mse": 0.015006827077030006
+          }
+        ],
+        "load_seconds": 4.1528926,
+        "optimization_checkpoint_seconds": 34.0632437,
+        "preflight_inference_ns": 5026.685,
+        "full_inference_ns": 4994.635,
+        "original_bt4_validation_mse": 0.024669555494834253,
+        "played_validation_mse": 0.037581601474222265,
+        "played_unary_only_mse": 0.041430325141503375,
+        "context_disabled_validation_mse": 0.011723585558098076,
+        "context_disabled_played_validation_mse": 0.03775901746886502,
+        "scope": "Matched shared neural geometry/occupancy training;fixed endpoint;played development held out;no strength claim"
+      },
+      "by_root": {
+        "(97, 8)": {
+          "rows": 134,
+          "teacher_mse": 0.03587086887415863
+        },
+        "(71, 9)": {
+          "rows": 148,
+          "teacher_mse": 0.028140040493260722
+        },
+        "(71, 10)": {
+          "rows": 212,
+          "teacher_mse": 0.022994583698978072
+        },
+        "(97, 9)": {
+          "rows": 249,
+          "teacher_mse": 0.0343344066601608
+        },
+        "(71, 11)": {
+          "rows": 199,
+          "teacher_mse": 0.02834179571528495
+        },
+        "(97, 11)": {
+          "rows": 242,
+          "teacher_mse": 0.05876261009503356
+        },
+        "(71, 8)": {
+          "rows": 112,
+          "teacher_mse": 0.03712480153370911
+        },
+        "(97, 10)": {
+          "rows": 102,
+          "teacher_mse": 0.060048928177885
+        }
+      },
+      "parameter_diagnostics": {
+        "unary": {
+          "rms": 0.44648312121784156,
+          "clamped": 0.0
+        },
+        "source": {
+          "rms": 0.5082112109290251,
+          "clamped": 0.009114583333333334
+        },
+        "readout": {
+          "rms": 0.525531037670609,
+          "clamped": 0.01171875
+        },
+        "static_transform": {
+          "rms": 0.5571227845745084,
+          "clamped": 0.023958333333333335
+        },
+        "context_transform": {
+          "rms": 0.6669933076978805,
+          "clamped": 0.0625
+        }
+      },
+      "segments": [
+        {
+          "state_sha256": "36b0d92bb8482bd1710c1138df81dad9421c2104e75eed9ecca278579c770ce1",
+          "completed_positions": 131072,
+          "updates": 1024,
+          "config_sha256": "559d8b6b9f4afde5bc7d9cfd7526a001f4a64ff06c24294ed598fb6f78b4ede2"
+        },
+        {
+          "state_sha256": "0219481f4fd962d5d852da114764d8f6ff7f0b12e7fc536ce242f65c30713eb0",
+          "completed_positions": 262144,
+          "updates": 2048,
+          "config_sha256": "559d8b6b9f4afde5bc7d9cfd7526a001f4a64ff06c24294ed598fb6f78b4ede2"
+        },
+        {
+          "state_sha256": "b6e76d1e02a4b4a3d2e95295b363ed8b6720847761d7f405581962ccb551373f",
+          "completed_positions": 393216,
+          "updates": 3072,
+          "config_sha256": "559d8b6b9f4afde5bc7d9cfd7526a001f4a64ff06c24294ed598fb6f78b4ede2"
+        },
+        {
+          "state_sha256": "1d42e7a0453b8d972cad66456e1efa575c74a4d87422a7a89177beba76e7c8f4",
+          "completed_positions": 524288,
+          "updates": 4096,
+          "config_sha256": "559d8b6b9f4afde5bc7d9cfd7526a001f4a64ff06c24294ed598fb6f78b4ede2"
+        },
+        {
+          "state_sha256": "47d4a570115df163b0547d0611c962bb23caff18138c0b414b55f1d3d7ad7180",
+          "completed_positions": 655360,
+          "updates": 5120,
+          "config_sha256": "559d8b6b9f4afde5bc7d9cfd7526a001f4a64ff06c24294ed598fb6f78b4ede2"
+        },
+        {
+          "state_sha256": "98ae1530ecc25de896ddfd30d1e9690fedae2d0b6df2f587a2d525c165a09b7f",
+          "completed_positions": 786432,
+          "updates": 6144,
+          "config_sha256": "559d8b6b9f4afde5bc7d9cfd7526a001f4a64ff06c24294ed598fb6f78b4ede2"
+        },
+        {
+          "state_sha256": "68edf55e5146dd6e7a1428f245b424d76d586d4c5dc6508e609d3e58ca03849c",
+          "completed_positions": 917504,
+          "updates": 7168,
+          "config_sha256": "559d8b6b9f4afde5bc7d9cfd7526a001f4a64ff06c24294ed598fb6f78b4ede2"
+        },
+        {
+          "state_sha256": "38c426d7a9d59b9e1403223ab7d37c361156005bf14828d52c7d20afc9d4f254",
+          "completed_positions": 1048576,
+          "updates": 8192,
+          "config_sha256": "559d8b6b9f4afde5bc7d9cfd7526a001f4a64ff06c24294ed598fb6f78b4ede2"
+        }
+      ],
+      "executions": [
+        {
+          "path": "docs\\research\\brn-relational-cglhw\\raw\\r040-context-97\\execution-1793233558619296200.json",
+          "sha256": "b0b3952fd59806222e417f28f279d1d5ddcf972dfd1b9b4d1806e03d0084fa48",
+          "config": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r040-context-97.json",
+          "status": "COMPLETE",
+          "error": null,
+          "elapsed_seconds": 38.92773739999393,
+          "resources": [
+            {
+              "cpu_percent": 8.421052631578952,
+              "available_gib": 16.847946166992188,
+              "utc": "2026-10-29T00:25:19Z"
+            },
+            {
+              "cpu_percent": 21.354166666666664,
+              "available_gib": 16.60940933227539,
+              "utc": "2026-10-29T00:25:24Z"
+            },
+            {
+              "cpu_percent": 13.089005235602091,
+              "available_gib": 16.594318389892578,
+              "utc": "2026-10-29T00:25:30Z"
+            },
+            {
+              "cpu_percent": 15.706806282722518,
+              "available_gib": 16.58602523803711,
+              "utc": "2026-10-29T00:25:35Z"
+            },
+            {
+              "cpu_percent": 18.229166666666664,
+              "available_gib": 16.580810546875,
+              "utc": "2026-10-29T00:25:40Z"
+            },
+            {
+              "cpu_percent": 11.979166666666663,
+              "available_gib": 16.614242553710938,
+              "utc": "2026-10-29T00:25:45Z"
+            },
+            {
+              "cpu_percent": 13.4020618556701,
+              "available_gib": 16.60015106201172,
+              "utc": "2026-10-29T00:25:51Z"
+            },
+            {
+              "cpu_percent": 16.417910447761198,
+              "available_gib": 16.595115661621094,
+              "utc": "2026-10-29T00:25:56Z"
+            }
+          ],
+          "command": [
+            "C:/java/jdk-21/bin/java.exe",
+            "-XX:ActiveProcessorCount=1",
+            "-XX:+UseSerialGC",
+            "-Xmx512m",
+            "-cp",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\raw\\r040-runtime\\lib\\*",
+            "com.ohinteractive.seedv6.core.brnpair2.SharedGeometryTrainingDiagnostic",
+            "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\brn-relational-cglhw\\r040-context-97.json"
+          ],
+          "last_complete_epoch": 1,
+          "last_complete_segment": 8,
+          "process_absent": true
+        }
+      ]
+    }
+  ],
+  "mechanism": [
+    {
+      "seed": 71,
+      "old_teacher_gain": -0.0070342258638118604,
+      "played_gain": 0.007516801493748226,
+      "bt4_gain": -0.0018594619000011914,
+      "old_unary_gain": 0.15898225645908448,
+      "context_used_old": true,
+      "context_used_played": true,
+      "passes": false
+    },
+    {
+      "seed": 97,
+      "old_teacher_gain": 0.0021342430764801357,
+      "played_gain": -0.0076573408783358055,
+      "bt4_gain": 0.004058201182217336,
+      "old_unary_gain": 0.13758350176823608,
+      "context_used_old": true,
+      "context_used_played": true,
+      "passes": false
+    }
+  ],
+  "families": [
+    {
+      "mode": "GEOMETRY",
+      "seeds": [
+        {
+          "seed": 71,
+          "old_teacher_gain": 0.006765609342527568,
+          "played_gain": 0.04857093370093224,
+          "bt4_gain": 0.00033935811455509945,
+          "full_inference_ns": 4377.015,
+          "old_route": false,
+          "played_route": false,
+          "common_guards": true
+        },
+        {
+          "seed": 97,
+          "old_teacher_gain": 0.007790318122278372,
+          "played_gain": 0.08039485786896616,
+          "bt4_gain": 0.006554368629120733,
+          "full_inference_ns": 4473.655,
+          "old_route": false,
+          "played_route": false,
+          "common_guards": true
+        }
+      ],
+      "passes": false
+    },
+    {
+      "mode": "CONTEXT",
+      "seeds": [
+        {
+          "seed": 71,
+          "old_teacher_gain": -0.00022102569706250463,
+          "played_gain": 0.05572263712768455,
+          "bt4_gain": -0.0015194727619616266,
+          "full_inference_ns": 4680.015,
+          "old_route": false,
+          "played_route": false,
+          "common_guards": true
+        },
+        {
+          "seed": 97,
+          "old_teacher_gain": 0.00990793476624241,
+          "played_gain": 0.07335312782219838,
+          "bt4_gain": 0.010585970864818717,
+          "full_inference_ns": 4994.635,
+          "old_route": false,
+          "played_route": false,
+          "common_guards": true
+        }
+      ],
+      "passes": false
+    }
+  ],
+  "transfer_followup_justified": false,
+  "elapsed_seconds": 147.09623289998854,
+  "maximum_cpu_percent": 35.9375,
+  "minimum_available_gib": 16.284618377685547,
+  "scope": "Four fixed one-epoch neural endpoints;old and eight-root played consumed development;two prespecified family routes are screening,not independent confirmation;no strength claim."
+}
