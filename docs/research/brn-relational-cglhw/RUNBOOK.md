@@ -354,3 +354,9 @@ playing contribution. R049 selects legal move-neighborhood diagnostic only.
 Run: nnue-control.cmd run --name brn-local-move-selection --resume-note "R049 checkpointed known-parent/unseen-child selection" --log docs/research/brn-relational-cglhw/raw/r049-selection-launch.log -- build/research/venv/Scripts/python.exe -B tools/brn-relational/prepare_move_neighborhood.py
 Selection checkpoints exclude all544played games and old reservations. No old
 Pair queue resumes. R046 runtime/four frozen states suffice;no new Java build.
+
+R049 complete:4096pairs,8prediction shards,parent target parity/legal replay pass.
+Both1.13x restricted loss ratios fail1.5x;no local-data training. Preserve all
+R049 aliases from future expansion. R050 prepare_turn_consistency.py under fresh
+admission creates8plans;run_message_audit.py reuses R046 runtime,then decompose
+original/opposite-turn predictions. No fitting or games.

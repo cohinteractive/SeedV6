@@ -1,0 +1,691 @@
+{
+  "selection_sha256": "95edcb1cd45f92f543eb31c72a70c128c1a912f77ef1d2cc868b1f40e7adc996",
+  "analysis_sha256": "96e09d4e02a3f7fed1ba738ff1410bdf71e529a6dd54c4fe76e5982d6d7cb967",
+  "protocol_sha256": "a85db56e4329e202d2d1332522c439fa3696059a046c445e59934ce94ea3aaad",
+  "evidence": [
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-00-plan.json",
+      "plan_sha256": "874706f95a75c33c855f887a43ba6715b4935e3115c0116b5b1b50554d089483",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-00.json",
+      "output_sha256": "00044e67f4d6a3f6de2d2bad2c4a16eea1575ece67a3a636ee1ee3edf99291b9",
+      "receipt_sha256": "0bb8142c73c94a10f6a30bd2ddfc51252cef6b7c77dca8dd5d264f04a7b3d3e9",
+      "receipt": {
+        "sha256": "00044e67f4d6a3f6de2d2bad2c4a16eea1575ece67a3a636ee1ee3edf99291b9",
+        "seconds": 0.6491346000111662,
+        "resources": [
+          {
+            "cpu_percent": 11.458333333333337,
+            "available_gib": 17.538578033447266,
+            "utc": "2026-10-29T01:56:30Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-01-plan.json",
+      "plan_sha256": "32e0ca8c733e914888cf670db7ac1ec55928eb621853d9b6ea5b90453b750cad",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-01.json",
+      "output_sha256": "713526ae4185d0da0f997da9f0eaf5e3346f6741c8abe9997a463132e1a0516a",
+      "receipt_sha256": "c0c50997a8d68b840217ce7355c1f22ef041aa5f27675dc0dbb342c47f2834db",
+      "receipt": {
+        "sha256": "713526ae4185d0da0f997da9f0eaf5e3346f6741c8abe9997a463132e1a0516a",
+        "seconds": 0.6486049999948591,
+        "resources": [
+          {
+            "cpu_percent": 8.854166666666663,
+            "available_gib": 17.528507232666016,
+            "utc": "2026-10-29T01:56:31Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-02-plan.json",
+      "plan_sha256": "428643ff2f5ceac409eee792db3d26608454d450f11e21dffd3ecf4e9dba0a81",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-02.json",
+      "output_sha256": "70e10e455e517b229ea6bcf5040d249f889820f77fb4176e594611895b00bd56",
+      "receipt_sha256": "eba2ebaea8352b9e32f69b7afc0e59cdd8f99c884c4f89807deb6da29b1fc898",
+      "receipt": {
+        "sha256": "70e10e455e517b229ea6bcf5040d249f889820f77fb4176e594611895b00bd56",
+        "seconds": 0.7004902000189759,
+        "resources": [
+          {
+            "cpu_percent": 25.38860103626943,
+            "available_gib": 17.531681060791016,
+            "utc": "2026-10-29T01:56:32Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-03-plan.json",
+      "plan_sha256": "9b090be30df44da6674c127ab2234edc1c6b9185c573513d7b538c636b71ded9",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-03.json",
+      "output_sha256": "7d89c749a7eff94f8f36305a17e98da1d5e91fb13d6fad401bada4afdbbe7986",
+      "receipt_sha256": "d1ddc076a7e4ae211a7a597dd7e0952bea41bc87f1e73d2f16d352483e5389a6",
+      "receipt": {
+        "sha256": "7d89c749a7eff94f8f36305a17e98da1d5e91fb13d6fad401bada4afdbbe7986",
+        "seconds": 0.6858490000013262,
+        "resources": [
+          {
+            "cpu_percent": 14.0625,
+            "available_gib": 17.537212371826172,
+            "utc": "2026-10-29T01:56:34Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-04-plan.json",
+      "plan_sha256": "a38664c18a36ae03e4b2c218937bbbed5a1e55c1b6977af426b340edadf1eaa8",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-04.json",
+      "output_sha256": "34c7f0d018fd04a8fbdc16ad6cb2cade0caf4590a2c592b981d54a9ebe40c7c5",
+      "receipt_sha256": "f173f7e842add9f25391d52ddf528ebf9443a21fa9a7b0e28e46b797c850dc12",
+      "receipt": {
+        "sha256": "34c7f0d018fd04a8fbdc16ad6cb2cade0caf4590a2c592b981d54a9ebe40c7c5",
+        "seconds": 0.6945354000199586,
+        "resources": [
+          {
+            "cpu_percent": 7.772020725388606,
+            "available_gib": 17.52877426147461,
+            "utc": "2026-10-29T01:56:35Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-05-plan.json",
+      "plan_sha256": "08f0b66049ee022e58aded262f3ec0a3cccff76e73062d906d6fb77406776fa6",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-05.json",
+      "output_sha256": "61efa028d0bfd7503793819fc1cab3af7acca252c712d45aed6313d0e8974434",
+      "receipt_sha256": "ceeef8b724dc4ab02856d8b7a188193134bd1dac3745ef5cdd31272dfc0a6f24",
+      "receipt": {
+        "sha256": "61efa028d0bfd7503793819fc1cab3af7acca252c712d45aed6313d0e8974434",
+        "seconds": 0.6403032999951392,
+        "resources": [
+          {
+            "cpu_percent": 8.762886597938147,
+            "available_gib": 17.526283264160156,
+            "utc": "2026-10-29T01:56:36Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-06-plan.json",
+      "plan_sha256": "95d679c2281ac5e50d60bb59f0d5325c4092da93b7cc7496c67d34b9de2ae88a",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-06.json",
+      "output_sha256": "5d49f55c2b05b0051c0d79dbe80354f7a14974d38fd7b3f3635dbbf6d8b9b558",
+      "receipt_sha256": "81822c8c5a3d13ae24b2c9d97560b91eb034e9e9fd9418f47de42fb790f65034",
+      "receipt": {
+        "sha256": "5d49f55c2b05b0051c0d79dbe80354f7a14974d38fd7b3f3635dbbf6d8b9b558",
+        "seconds": 0.6671204000012949,
+        "resources": [
+          {
+            "cpu_percent": 3.125,
+            "available_gib": 17.526256561279297,
+            "utc": "2026-10-29T01:56:37Z"
+          }
+        ]
+      }
+    },
+    {
+      "plan": "docs\\research\\brn-relational-cglhw\\r049-07-plan.json",
+      "plan_sha256": "3675c70027f9333e1bbbcd1a852174b8c7931bc99fe0dda4dc50acb9e03f3e39",
+      "output": "docs\\research\\brn-relational-cglhw\\raw\\r049-data\\prediction-07.json",
+      "output_sha256": "68c25eb62f7aa1dc1e4539485e1bf6b35f8783fb83ff148402c72d8f63f8e26c",
+      "receipt_sha256": "a44358051c775a13fb88e228eed8f40ebf68d9d7fee4ad42163007fcc6980d12",
+      "receipt": {
+        "sha256": "68c25eb62f7aa1dc1e4539485e1bf6b35f8783fb83ff148402c72d8f63f8e26c",
+        "seconds": 0.6284860000014305,
+        "resources": [
+          {
+            "cpu_percent": 5.7291666666666625,
+            "available_gib": 17.554763793945312,
+            "utc": "2026-10-29T01:56:38Z"
+          }
+        ]
+      }
+    }
+  ],
+  "models": {
+    "r045-mix-71": {
+      "all": {
+        "pairs": 4096,
+        "parent_mse": 0.010952897689676324,
+        "child_mse": 0.012279487411863178,
+        "child_parent_mse_ratio": 1.121117695040394,
+        "paired_mse_increase": 0.0013265897221868528,
+        "paired_mse_increase_approximate_95": [
+          0.0008441279856169006,
+          0.001809051458756805
+        ],
+        "parent_cp_mae": 292.2949453532235,
+        "child_cp_mae": 305.07950458302315,
+        "delta_cp_rmse": 164.76553376286105,
+        "delta_probability_rmse": 0.07156800907396944,
+        "substantial_teacher_deltas": 1786,
+        "substantial_sign_disagreement": 0.32418812989921614
+      },
+      "restricted": {
+        "pairs": 3535,
+        "parent_mse": 0.01041549116989833,
+        "child_mse": 0.01176742190473776,
+        "child_parent_mse_ratio": 1.1297999981745102,
+        "paired_mse_increase": 0.0013519307348394312,
+        "paired_mse_increase_approximate_95": [
+          0.000833254076645318,
+          0.0018706073930335443
+        ],
+        "parent_cp_mae": 136.04310077121528,
+        "child_cp_mae": 147.46758867718523,
+        "delta_cp_rmse": 132.45524105881637,
+        "delta_probability_rmse": 0.07453312184632897,
+        "substantial_teacher_deltas": 1419,
+        "substantial_sign_disagreement": 0.3093727977448908
+      },
+      "quiet": {
+        "pairs": 3914,
+        "parent_mse": 0.01086393110299059,
+        "child_mse": 0.012168734760457977,
+        "child_parent_mse_ratio": 1.120104191116253,
+        "paired_mse_increase": 0.0013048036574673867,
+        "paired_mse_increase_approximate_95": [
+          0.000828627066162753,
+          0.0017809802487720205
+        ],
+        "parent_cp_mae": 296.5930902140259,
+        "child_cp_mae": 305.9099471443198,
+        "delta_cp_rmse": 157.86912658952895,
+        "delta_probability_rmse": 0.06994157035343262,
+        "substantial_teacher_deltas": 1623,
+        "substantial_sign_disagreement": 0.35489833641404805
+      },
+      "captures": {
+        "pairs": 182,
+        "parent_mse": 0.012866168130818988,
+        "child_mse": 0.014661277948126664,
+        "child_parent_mse_ratio": 1.1395217129960984,
+        "paired_mse_increase": 0.0017951098173076753,
+        "paired_mse_increase_approximate_95": [
+          -0.0018237420464589265,
+          0.005413961681074277
+        ],
+        "parent_cp_mae": 199.86121466541803,
+        "child_cp_mae": 287.2204266439283,
+        "delta_cp_rmse": 273.857328184083,
+        "delta_probability_rmse": 0.10035742471264636,
+        "substantial_teacher_deltas": 163,
+        "substantial_sign_disagreement": 0.018404907975460124
+      },
+      "phases": {
+        "2-10": {
+          "pairs": 1100,
+          "parent_mse": 0.010572063131955176,
+          "child_mse": 0.011294517037943033,
+          "child_parent_mse_ratio": 1.0683361324058087,
+          "paired_mse_increase": 0.0007224539059878584,
+          "paired_mse_increase_approximate_95": [
+            -7.638618271254693e-05,
+            0.0015212939946882636
+          ],
+          "parent_cp_mae": 604.5002401105004,
+          "child_cp_mae": 603.4802576161669,
+          "delta_cp_rmse": 203.42736242818643,
+          "delta_probability_rmse": 0.0606090730843909,
+          "substantial_teacher_deltas": 429,
+          "substantial_sign_disagreement": 0.4149184149184149
+        },
+        "11-20": {
+          "pairs": 1490,
+          "parent_mse": 0.014028203212520608,
+          "child_mse": 0.014904874068800962,
+          "child_parent_mse_ratio": 1.0624934528677128,
+          "paired_mse_increase": 0.0008766708562803545,
+          "paired_mse_increase_approximate_95": [
+            -5.7215542277534075e-05,
+            0.0018105572548382431
+          ],
+          "parent_cp_mae": 229.88932796507063,
+          "child_cp_mae": 242.07408475195388,
+          "delta_cp_rmse": 157.25306048001934,
+          "delta_probability_rmse": 0.07735757161112648,
+          "substantial_teacher_deltas": 696,
+          "substantial_sign_disagreement": 0.34913793103448276
+        },
+        "21-32": {
+          "pairs": 1506,
+          "parent_mse": 0.00818843074708355,
+          "child_mse": 0.01040142718110279,
+          "child_parent_mse_ratio": 1.270258918023754,
+          "paired_mse_increase": 0.0022129964340192407,
+          "paired_mse_increase_approximate_95": [
+            0.0014882169939461278,
+            0.0029377758740923537
+          ],
+          "parent_cp_mae": 125.99915894906894,
+          "child_cp_mae": 149.46014682195744,
+          "delta_cp_rmse": 138.36082366649455,
+          "delta_probability_rmse": 0.07298590506003357,
+          "substantial_teacher_deltas": 661,
+          "substantial_sign_disagreement": 0.23903177004538578
+        }
+      }
+    },
+    "r044-low-71": {
+      "all": {
+        "pairs": 4096,
+        "parent_mse": 0.01133826816230573,
+        "child_mse": 0.01274470554643495,
+        "child_parent_mse_ratio": 1.1240434045125998,
+        "paired_mse_increase": 0.0014064373841292184,
+        "paired_mse_increase_approximate_95": [
+          0.0009367665785829514,
+          0.0018761081896754854
+        ],
+        "parent_cp_mae": 299.91428130188143,
+        "child_cp_mae": 312.92933104817575,
+        "delta_cp_rmse": 165.30968620628497,
+        "delta_probability_rmse": 0.07077045027562721,
+        "substantial_teacher_deltas": 1786,
+        "substantial_sign_disagreement": 0.32082866741321386
+      },
+      "restricted": {
+        "pairs": 3535,
+        "parent_mse": 0.010610525849311053,
+        "child_mse": 0.012008777972677466,
+        "child_parent_mse_ratio": 1.1317797198012767,
+        "paired_mse_increase": 0.0013982521233664128,
+        "paired_mse_increase_approximate_95": [
+          0.0008924629104322736,
+          0.001904041336300552
+        ],
+        "parent_cp_mae": 138.0781500633118,
+        "child_cp_mae": 149.66286764000165,
+        "delta_cp_rmse": 131.27386344900754,
+        "delta_probability_rmse": 0.07366696457517528,
+        "substantial_teacher_deltas": 1419,
+        "substantial_sign_disagreement": 0.30091613812544044
+      },
+      "quiet": {
+        "pairs": 3914,
+        "parent_mse": 0.011268749574984074,
+        "child_mse": 0.012619996234416063,
+        "child_parent_mse_ratio": 1.119910967090055,
+        "paired_mse_increase": 0.0013512466594319892,
+        "paired_mse_increase_approximate_95": [
+          0.0008861330377175744,
+          0.001816360281146404
+        ],
+        "parent_cp_mae": 304.34708737945374,
+        "child_cp_mae": 313.39691248352113,
+        "delta_cp_rmse": 157.30037937950723,
+        "delta_probability_rmse": 0.0689467218088618,
+        "substantial_teacher_deltas": 1623,
+        "substantial_sign_disagreement": 0.3512014787430684
+      },
+      "captures": {
+        "pairs": 182,
+        "parent_mse": 0.012833299759981376,
+        "child_mse": 0.015426640970841114,
+        "child_parent_mse_ratio": 1.2020790645712698,
+        "paired_mse_increase": 0.0025933412108597397,
+        "paired_mse_increase_approximate_95": [
+          -0.0008286619568589706,
+          0.00601534437857845
+        ],
+        "parent_cp_mae": 204.58459455672786,
+        "child_cp_mae": 302.87376105948374,
+        "delta_cp_rmse": 287.9148728837398,
+        "delta_probability_rmse": 0.10241186270526344,
+        "substantial_teacher_deltas": 163,
+        "substantial_sign_disagreement": 0.018404907975460124
+      },
+      "phases": {
+        "2-10": {
+          "pairs": 1100,
+          "parent_mse": 0.010985738127854916,
+          "child_mse": 0.011789974144249211,
+          "child_parent_mse_ratio": 1.07320728084307,
+          "paired_mse_increase": 0.0008042360163942957,
+          "paired_mse_increase_approximate_95": [
+            6.398237016857588e-05,
+            0.0015444896626200155
+          ],
+          "parent_cp_mae": 616.5701670211902,
+          "child_cp_mae": 615.2450548043554,
+          "delta_cp_rmse": 202.25591000078916,
+          "delta_probability_rmse": 0.05872221609078894,
+          "substantial_teacher_deltas": 429,
+          "substantial_sign_disagreement": 0.40559440559440557
+        },
+        "11-20": {
+          "pairs": 1490,
+          "parent_mse": 0.014623688656355245,
+          "child_mse": 0.015465771551062012,
+          "child_parent_mse_ratio": 1.0575834807821083,
+          "paired_mse_increase": 0.0008420828947067664,
+          "paired_mse_increase_approximate_95": [
+            -6.121572354750402e-05,
+            0.0017453815129610368
+          ],
+          "parent_cp_mae": 238.3886132510454,
+          "child_cp_mae": 250.712744575408,
+          "delta_cp_rmse": 157.96518170311774,
+          "delta_probability_rmse": 0.07626868472693443,
+          "substantial_teacher_deltas": 696,
+          "substantial_sign_disagreement": 0.35488505747126436
+        },
+        "21-32": {
+          "pairs": 1506,
+          "parent_mse": 0.008345244591098639,
+          "child_mse": 0.01074989558329417,
+          "child_parent_mse_ratio": 1.2881462569425977,
+          "paired_mse_increase": 0.0024046509921955323,
+          "paired_mse_increase_approximate_95": [
+            0.0016715387599548531,
+            0.0031377632244362114
+          ],
+          "parent_cp_mae": 129.49713064086293,
+          "child_cp_mae": 153.66998025974698,
+          "delta_cp_rmse": 140.56049601381773,
+          "delta_probability_rmse": 0.07313103157001641,
+          "substantial_teacher_deltas": 661,
+          "substantial_sign_disagreement": 0.22995461422087746
+        }
+      }
+    },
+    "r045-mix-97": {
+      "all": {
+        "pairs": 4096,
+        "parent_mse": 0.010810174846767365,
+        "child_mse": 0.012000590785920888,
+        "child_parent_mse_ratio": 1.1101199523622414,
+        "paired_mse_increase": 0.0011904159391535219,
+        "paired_mse_increase_approximate_95": [
+          0.0007100479465186964,
+          0.0016707839317883473
+        ],
+        "parent_cp_mae": 289.2044061924006,
+        "child_cp_mae": 301.0332454966327,
+        "delta_cp_rmse": 162.55822613183264,
+        "delta_probability_rmse": 0.07031047481770811,
+        "substantial_teacher_deltas": 1786,
+        "substantial_sign_disagreement": 0.3124300111982083
+      },
+      "restricted": {
+        "pairs": 3535,
+        "parent_mse": 0.010286002911354923,
+        "child_mse": 0.011632950350977413,
+        "child_parent_mse_ratio": 1.1309495487441064,
+        "paired_mse_increase": 0.0013469474396224878,
+        "paired_mse_increase_approximate_95": [
+          0.0008250907980848315,
+          0.001868804081160144
+        ],
+        "parent_cp_mae": 135.66362981579857,
+        "child_cp_mae": 146.6961786745093,
+        "delta_cp_rmse": 131.15089281525323,
+        "delta_probability_rmse": 0.07336633062422654,
+        "substantial_teacher_deltas": 1419,
+        "substantial_sign_disagreement": 0.2959830866807611
+      },
+      "quiet": {
+        "pairs": 3914,
+        "parent_mse": 0.010745534330312924,
+        "child_mse": 0.011925316363731932,
+        "child_parent_mse_ratio": 1.1097927750405923,
+        "paired_mse_increase": 0.0011797820334190075,
+        "paired_mse_increase_approximate_95": [
+          0.0006989252122701063,
+          0.0016606388545679085
+        ],
+        "parent_cp_mae": 293.5305958210575,
+        "child_cp_mae": 302.1611247614377,
+        "delta_cp_rmse": 156.54198433348495,
+        "delta_probability_rmse": 0.06895124383493628,
+        "substantial_teacher_deltas": 1623,
+        "substantial_sign_disagreement": 0.34134319162045595
+      },
+      "captures": {
+        "pairs": 182,
+        "parent_mse": 0.012200301118210667,
+        "child_mse": 0.01361940445870973,
+        "child_parent_mse_ratio": 1.116317075025374,
+        "paired_mse_increase": 0.001419103340499063,
+        "paired_mse_increase_approximate_95": [
+          -0.001741735612413991,
+          0.0045799422934121176
+        ],
+        "parent_cp_mae": 196.16755890359215,
+        "child_cp_mae": 276.77764416450674,
+        "delta_cp_rmse": 260.2135309017397,
+        "delta_probability_rmse": 0.0949437361592249,
+        "substantial_teacher_deltas": 163,
+        "substantial_sign_disagreement": 0.024539877300613498
+      },
+      "phases": {
+        "2-10": {
+          "pairs": 1100,
+          "parent_mse": 0.010268681525118641,
+          "child_mse": 0.011167154735614493,
+          "child_parent_mse_ratio": 1.0874964530059736,
+          "paired_mse_increase": 0.0008984732104958513,
+          "paired_mse_increase_approximate_95": [
+            9.72118584314437e-05,
+            0.0016997345625602588
+          ],
+          "parent_cp_mae": 599.3756231837071,
+          "child_cp_mae": 597.3284458095086,
+          "delta_cp_rmse": 199.6631724730442,
+          "delta_probability_rmse": 0.059507802004687346,
+          "substantial_teacher_deltas": 429,
+          "substantial_sign_disagreement": 0.40559440559440557
+        },
+        "11-20": {
+          "pairs": 1490,
+          "parent_mse": 0.01372230001640035,
+          "child_mse": 0.014302530785049736,
+          "child_parent_mse_ratio": 1.042283783910563,
+          "paired_mse_increase": 0.0005802307686493864,
+          "paired_mse_increase_approximate_95": [
+            -0.0003634328319018415,
+            0.0015238943692006141
+          ],
+          "parent_cp_mae": 223.71467140178962,
+          "child_cp_mae": 235.09099731767037,
+          "delta_cp_rmse": 157.0287155763756,
+          "delta_probability_rmse": 0.07698265095840622,
+          "substantial_teacher_deltas": 696,
+          "substantial_sign_disagreement": 0.33764367816091956
+        },
+        "21-32": {
+          "pairs": 1506,
+          "parent_mse": 0.0083245016403002,
+          "child_mse": 0.010331858419808701,
+          "child_parent_mse_ratio": 1.241138372751418,
+          "paired_mse_increase": 0.0020073567795085017,
+          "paired_mse_increase_approximate_95": [
+            0.001306824289949843,
+            0.0027078892690671603
+          ],
+          "parent_cp_mae": 127.44568517485291,
+          "child_cp_mae": 149.85743503347885,
+          "delta_cp_rmse": 135.48682016655098,
+          "delta_probability_rmse": 0.07067924866552967,
+          "substantial_teacher_deltas": 661,
+          "substantial_sign_disagreement": 0.2254160363086233
+        }
+      }
+    },
+    "r044-low-97": {
+      "all": {
+        "pairs": 4096,
+        "parent_mse": 0.011434810580812617,
+        "child_mse": 0.012860355313438187,
+        "child_parent_mse_ratio": 1.124667105113014,
+        "paired_mse_increase": 0.0014255447326255708,
+        "paired_mse_increase_approximate_95": [
+          0.0009505024616294421,
+          0.0019005870036216995
+        ],
+        "parent_cp_mae": 300.6451392957498,
+        "child_cp_mae": 313.9861314510634,
+        "delta_cp_rmse": 165.3463012126253,
+        "delta_probability_rmse": 0.07147924471865542,
+        "substantial_teacher_deltas": 1786,
+        "substantial_sign_disagreement": 0.34546472564389696
+      },
+      "restricted": {
+        "pairs": 3535,
+        "parent_mse": 0.010676563857601736,
+        "child_mse": 0.012167111719940645,
+        "child_parent_mse_ratio": 1.1396093239565683,
+        "paired_mse_increase": 0.0014905478623389078,
+        "paired_mse_increase_approximate_95": [
+          0.0009850342187648854,
+          0.00199606150591293
+        ],
+        "parent_cp_mae": 138.61088970797164,
+        "child_cp_mae": 150.74768332753854,
+        "delta_cp_rmse": 133.1141908882619,
+        "delta_probability_rmse": 0.0744571012265053,
+        "substantial_teacher_deltas": 1419,
+        "substantial_sign_disagreement": 0.33262861169837915
+      },
+      "quiet": {
+        "pairs": 3914,
+        "parent_mse": 0.011339603521703302,
+        "child_mse": 0.012741801856298605,
+        "child_parent_mse_ratio": 1.1236549701152763,
+        "paired_mse_increase": 0.0014021983345953038,
+        "paired_mse_increase_approximate_95": [
+          0.0009257373621542682,
+          0.0018786593070363395
+        ],
+        "parent_cp_mae": 304.72426146258266,
+        "child_cp_mae": 314.3686123568549,
+        "delta_cp_rmse": 157.73415781754014,
+        "delta_probability_rmse": 0.06974355248137354,
+        "substantial_teacher_deltas": 1623,
+        "substantial_sign_disagreement": 0.37769562538508933
+      },
+      "captures": {
+        "pairs": 182,
+        "parent_mse": 0.01348228546737227,
+        "child_mse": 0.015409906034560836,
+        "child_parent_mse_ratio": 1.1429743178078742,
+        "paired_mse_increase": 0.0019276205671885664,
+        "paired_mse_increase_approximate_95": [
+          -0.001130511862508026,
+          0.004985752996885159
+        ],
+        "parent_cp_mae": 212.92159994968412,
+        "child_cp_mae": 305.7606904331071,
+        "delta_cp_rmse": 283.24655332828416,
+        "delta_probability_rmse": 0.10188569311119233,
+        "substantial_teacher_deltas": 163,
+        "substantial_sign_disagreement": 0.024539877300613498
+      },
+      "phases": {
+        "2-10": {
+          "pairs": 1100,
+          "parent_mse": 0.011008245317447752,
+          "child_mse": 0.012083274150578175,
+          "child_parent_mse_ratio": 1.0976566929723608,
+          "paired_mse_increase": 0.001075028833130422,
+          "paired_mse_increase_approximate_95": [
+            0.00029736400940820755,
+            0.0018526936568526366
+          ],
+          "parent_cp_mae": 616.2362531199278,
+          "child_cp_mae": 616.0028387549745,
+          "delta_cp_rmse": 199.45281506692615,
+          "delta_probability_rmse": 0.05883693777781102,
+          "substantial_teacher_deltas": 429,
+          "substantial_sign_disagreement": 0.42424242424242425
+        },
+        "11-20": {
+          "pairs": 1490,
+          "parent_mse": 0.014611798817034123,
+          "child_mse": 0.015478276823155316,
+          "child_parent_mse_ratio": 1.0592998861379799,
+          "paired_mse_increase": 0.0008664780061211915,
+          "paired_mse_increase_approximate_95": [
+            -5.473766619703516e-05,
+            0.0017876936784394183
+          ],
+          "parent_cp_mae": 238.81227713696578,
+          "child_cp_mae": 250.60129174529547,
+          "delta_cp_rmse": 159.1578131350144,
+          "delta_probability_rmse": 0.0773660953503346,
+          "substantial_teacher_deltas": 696,
+          "substantial_sign_disagreement": 0.37787356321839083
+        },
+        "21-32": {
+          "pairs": 1506,
+          "parent_mse": 0.008603143461112291,
+          "child_mse": 0.010837836209631746,
+          "child_parent_mse_ratio": 1.259753049408121,
+          "paired_mse_increase": 0.0022346927485194547,
+          "paired_mse_increase_approximate_95": [
+            0.0015177174786529528,
+            0.0029516680183859566
+          ],
+          "parent_cp_mae": 131.30964089601022,
+          "child_cp_mae": 156.10102728591852,
+          "delta_cp_rmse": 142.26191528005924,
+          "delta_probability_rmse": 0.07379507133683917,
+          "substantial_teacher_deltas": 661,
+          "substantial_sign_disagreement": 0.26021180030257185
+        }
+      }
+    }
+  },
+  "matched_comparisons": [
+    {
+      "seed": 71,
+      "mix_minus_control_delta_cp_mse": -179.61123745990253,
+      "approximate_95": [
+        -744.0215516325688,
+        384.79907671276374
+      ]
+    },
+    {
+      "seed": 97,
+      "mix_minus_control_delta_cp_mse": -914.2224415681734,
+      "approximate_95": [
+        -1586.750804304993,
+        -241.69407883135398
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "seed": 71,
+      "restricted_pairs": 3535,
+      "child_parent_mse_ratio": 1.1297999981745102,
+      "paired_increase_lower95": 0.000833254076645318,
+      "passes": false
+    },
+    {
+      "seed": 97,
+      "restricted_pairs": 3535,
+      "child_parent_mse_ratio": 1.1309495487441064,
+      "paired_increase_lower95": 0.0008250907980848315,
+      "passes": false
+    }
+  ],
+  "local_data_pilot_justified": false,
+  "parent_target_parity": true,
+  "legal_move_replay": true,
+  "seconds": 2.07234429998789,
+  "resources": [
+    {
+      "cpu_percent": 3.68421052631579,
+      "available_gib": 17.540939331054688,
+      "utc": "2026-10-29T01:56:53Z"
+    }
+  ],
+  "limitations": "Known fitted parents and random noncheck legal children,not iid games. Approximate parent-level intervals ignore unknown source-game correlations. Teacher is not ground truth;no strength or final-panel claim."
+}

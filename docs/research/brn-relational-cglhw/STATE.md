@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R049 local move-coherence diagnosis**.
+Status: **ACTIVE - R050 neural side-to-move consistency**.
 Owner RESUME cleared the admission gate;four loader tests pass and frozen model/
 core/teacher executable classes match their references. R046 runtime and six-
 function plans are frozen. Historical resource gates remain preserved;no GPU or
@@ -27,16 +27,17 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R048 complete:32matched-control games and32probes,0caps/failures. LOW scores
-21.875%/34.375% versus CP64;MIX-minus-LOW +21.875/-9.375pp,all paired95%
-intervals include0. No consistent playing contribution or more games justified.
-R049 prospectively selects4096 known-training-parent/unseen-child pairs,excluding
-all consumed development aliases. First run prepare_move_neighborhood.py under
-nnue-control;it checkpoints reservations/candidates and freezes eight1024-position
-plans. Then run unchanged run_message_audit.py on r049-00 through07 plans serially
-and analyze local move errors with all four frozen MIX/LOW models. No fitting.
+R049 complete:4096legal pairs/8192positions,182captures,all parent teacher targets
+reproduced. Both MIX seeds have restricted child/parent loss1.13x,below1.5x
+allocation threshold;no local-data pilot. R050 now tests frozen opposite-turn
+scores and odd/even decomposition before a possible neural perspective constraint.
+Run prepare_turn_consistency.py under nnue-control,then unchanged
+run_message_audit.py on r050-00 through07 plans serially;analyze original R049
+and new flipped predictions with the prospective R050 gates. No fit/games.
 
-All later training-data expansion must exclude R016's8192 canonical aliases in
+All later training-data expansion must exclude R049's4096 parent/child aliases
+in raw/r049-data/selection.json (known parents already trained;future expansion
+reserves this consumed diagnostic),as well as R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
 to earlier reservations. The immutable R010 database was only read as exclusions.
 Both consumed development panels remain distinct from future final evaluation.
@@ -97,7 +98,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R046 | Frozen cross-channel neural transfer | Complete4tests;both transfer gates pass,7/8and8/8root gains |
 | R047 | Cross-channel neural playing calibration | Complete6tests,32games;43.75%/25%,no broader match |
 | R048 | Matched-training playing attribution | Complete32games;21.875%/34.375%,mixed effect intervals include0;no expansion |
-| R049 | Neural local move coherence | Prospective4096known-parent/unseen-child pairs;no fitting/games |
+| R049 | Neural local move coherence | Complete4096pairs;restricted child error1.13x both fails1.5x;no local-data pilot |
+| R050 | Neural side-to-move consistency | Prospective frozen odd/even decomposition;no fit/games |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no
