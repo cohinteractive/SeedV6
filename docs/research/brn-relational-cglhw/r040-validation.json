@@ -1,0 +1,18 @@
+{
+  "tests": 2,
+  "test_path": "docs\\research\\brn-relational-cglhw\\raw\\r040-diagnostic-test.xml",
+  "test_sha256": "0837731a9e98ce3fa1883a2adca6fb32af4a208d4cd64c5c48697bee76fd316e",
+  "model_and_segment_class_parity_r039": true,
+  "prior_eight_test_validation_sha256": "1a172175444d5ad914d1404dbb950664aa243c4edb14536def7a8201910ae8aa",
+  "runtime": {
+    "lib\\engine-core.jar": "bc24814d97902097f6d44a50b8e22bf89b5a9c3e7067ee4821c55096f437e5ee",
+    "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "lib\\research.jar": "6f338496400b6b2723b2076a0cdbd334a1be0d352c8cfe671b98323618f89ce7",
+    "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "build": 78,
+  "application_runtime_changed": false
+}
