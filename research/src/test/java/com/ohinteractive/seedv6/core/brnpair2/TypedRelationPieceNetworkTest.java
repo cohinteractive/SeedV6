@@ -36,7 +36,7 @@ class TypedRelationPieceNetworkTest {
         }
         for(boolean compose:new boolean[]{false,true}) {
             var m=new TypedRelationPieceNetwork(compose,.01,71);for(int p=A;p<V;p++)if((p-A)%12>=10)m.weights[p]=.2*rng.nextGaussian();for(int p=V;p<PARAMETERS;p++)m.weights[p]=.2*rng.nextGaussian();m.invalidateProjections();var w=new Workspace();
-            for(var b:boards){var saved=b.clone();assertEquals(400*oracle(m,b),m.scoreCp(b,w),m.typed?.001:1e-9);assertEquals(m.scoreCpUncached(b,new Workspace()),m.scoreCp(b,w),m.typed?.001:1e-10);assertArrayEquals(saved,b);var mirror=b.clone();long occupied=b[0]|b[1]|b[2];for(int i=0;i<3;i++)mirror[i]=Long.reverseBytes(b[i]);mirror[3]=Long.reverseBytes(occupied^b[3]);mirror[4]^=1;assertEquals(m.scoreCp(b,w),m.scoreCp(mirror,w),1e-9);}
+            for(var b:boards){var saved=b.clone();assertEquals(400*oracle(m,b),m.scoreCp(b,w),1e-9);assertEquals(m.scoreCpUncached(b,new Workspace()),m.scoreCp(b,w),1e-10);assertArrayEquals(saved,b);var mirror=b.clone();long occupied=b[0]|b[1]|b[2];for(int i=0;i<3;i++)mirror[i]=Long.reverseBytes(b[i]);mirror[3]=Long.reverseBytes(occupied^b[3]);mirror[4]^=1;assertEquals(m.scoreCp(b,w),m.scoreCp(mirror,w),1e-9);}
             m.weights[768]=Double.NaN;assertThrows(ArithmeticException.class,()->m.scoreCp(Board.startingPosition(),w));
         }
     }

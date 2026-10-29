@@ -1,0 +1,55 @@
+{
+  "validation_sha256": "80fd7901f9f188e5471bf3554e350d8edb9a8528734a9a20909fd1fdff58333d",
+  "plan_sha256": "e2c5bf957449de1ea9877c3568184f51dbb82fd20431613b697962218a6caa50",
+  "evidence": {
+    "path": "docs\\research\\brn-relational-cglhw\\raw\\r053-capacity.json",
+    "sha256": "f3ea23d1621cf3793cfadfb44d4c85a9a22099c0f9d4387310964ce03e1acf80",
+    "receipt": {
+      "sha256": "f3ea23d1621cf3793cfadfb44d4c85a9a22099c0f9d4387310964ce03e1acf80",
+      "seconds": 2.6919703999883495,
+      "resources": [
+        {
+          "cpu_percent": 9.375,
+          "available_gib": 17.043479919433594,
+          "utc": "2026-10-29T02:11:08Z"
+        }
+      ]
+    }
+  },
+  "models": [
+    {
+      "update_128_ns": 9923425.0,
+      "maximum_stressed_score_error_cp": 0.0,
+      "derived_cache_bytes": 1382400,
+      "microbenchmark_only_updates": 30,
+      "mode": "CONTROL",
+      "full_inference_ns": 6936.9,
+      "seed": 71,
+      "parameters": 21569,
+      "practical_10us_pass": true,
+      "nonzero_remote_contrasts": 64,
+      "checksum": 359166.3446670131,
+      "preliminary_cost_pass": true
+    },
+    {
+      "update_128_ns": 16436210.0,
+      "maximum_stressed_score_error_cp": 1.1368683772161603e-12,
+      "derived_cache_bytes": 2764800,
+      "microbenchmark_only_updates": 30,
+      "mode": "TYPED",
+      "full_inference_ns": 10617.455,
+      "seed": 71,
+      "parameters": 21569,
+      "practical_10us_pass": false,
+      "nonzero_remote_contrasts": 64,
+      "checksum": 359166.3446670131,
+      "preliminary_cost_pass": false
+    }
+  ],
+  "typed_update_ratio": 1.6563041490211292,
+  "correctness_tests": 10,
+  "maximum_gradient_discrepancy": 6.505213034913027e-19,
+  "training_admitted": false,
+  "reason": "Exact factorization helps update/cache cost,but10.617455us exceeds10us. Source-type route presently impractical under this allocation;no more cache tuning.",
+  "next": "R054 target-state modulation of second-pass neural messages;new bounded architectural hypothesis."
+}

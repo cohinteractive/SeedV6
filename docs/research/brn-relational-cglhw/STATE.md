@@ -1,7 +1,7 @@
 # BRN neural relational CGLHW - resume entry point
 
 Workstream: `seedv6-brn-relational-20261029`.
-Status: **ACTIVE - R053 exact typed projection factorization**.
+Status: **ACTIVE - R054 target-state neural message modulation**.
 Owner RESUME cleared the admission gate;four loader tests pass and frozen model/
 core/teacher executable classes match their references. R046 runtime and six-
 function plans are frozen. Historical resource gates remain preserved;no GPU or
@@ -27,12 +27,13 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 
 ## Exact next admissible operation
 
-R052 complete:ten checks,full-double gradient discrepancy6.51e-19,float
-inference maxerror0.000008cp. Cost remains11.747us/4.855x,failing10us/3x;
-NO full training. Preserve both R051/R052 runtimes and negative cost results.
-R053 next tests exact factorization of source/target geometry projections and
-finite occupancy preactivations,avoiding the32400-entry joint projection table.
-Correctness and unchanged cost gates precede any separately specified fitting.
+R053 complete:ten checks,exact factorization maxscore discrepancy1.14e-12cp,
+2.64MiB cache,1.656x update cost;10.617us still fails10us gate. Source-type
+route remains an untrained negative practicality result;no more cache/precision
+tuning at this allocation. R054 instead tests learned target-state modulation of
+incoming second-pass messages,with small per-piece arithmetic on the existing
+MIX architecture. New correctness/cost gates precede any separately specified
+matched training. R051-R053 classes/runtimes/results remain preserved.
 
 All later training-data expansion must exclude R049's4096 parent/child aliases
 in raw/r049-data/selection.json (known parents already trained;future expansion
@@ -102,7 +103,8 @@ Both consumed development panels remain distinct from future final evaluation.
 | R050 | Neural side-to-move consistency | Complete8192flips;2.94%/1.83% child gains fail5%;no constrained prototype |
 | R051 | Source-and-target neural relation transforms | Complete8tests;11.343us/3.209x fails cost gates,no candidate training |
 | R052 | Typed neural compilation cost | Complete10checks;accurate float cache but11.747us/4.855x fails,no fitting |
-| R053 | Exact source/target projection factorization | Selected;bounded cost/correctness only |
+| R053 | Exact source/target projection factorization | Complete10checks;2.64MiB/1.656x improves,but10.617us fails;route untrained |
+| R054 | Target-state neural message modulation | Selected;new architecture correctness/cost gate |
 
 Each named protocol and rNNN-results.json links configurations,source/runtime/model
 hashes,local raw evidence,limitations and decisions. Completed stages need no

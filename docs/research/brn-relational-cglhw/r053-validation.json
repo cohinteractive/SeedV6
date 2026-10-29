@@ -1,0 +1,84 @@
+{
+  "tests": [
+    {
+      "name": "TypedRelationPieceNetworkTest",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.TypedRelationPieceNetworkTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T02:10:47",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.756"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r053-TypedRelationPieceNetworkTest.xml",
+      "sha256": "6eabb1bb124a56e34033bbd43064fe89cc87a4070789bbdc0616e726b6b7dac2"
+    },
+    {
+      "name": "MixedTiedPieceNetworkTest",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.MixedTiedPieceNetworkTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T02:10:46",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.862"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r053-MixedTiedPieceNetworkTest.xml",
+      "sha256": "97fa2cf232d579e213f4a371fd35db23c3ca2179cfb8c7821bc93ea703c5e1bc"
+    },
+    {
+      "name": "TypedRelationCompilationTest",
+      "attributes": {
+        "name": "com.ohinteractive.seedv6.core.brnpair2.TypedRelationCompilationTest",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-29T02:10:47",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.084"
+      },
+      "path": "docs\\research\\brn-relational-cglhw\\raw\\r053-TypedRelationCompilationTest.xml",
+      "sha256": "b78d2a99610c4021bfa8a14fb13f02111eb839b5318ee8b35b0ded721a023164"
+    }
+  ],
+  "unchanged_mixed_classes": [
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceDiagnostic.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork$Projection.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/MixedTiedPieceNetwork.class"
+  ],
+  "tested_typed_classes": [
+    "com/ohinteractive/seedv6/core/brnpair2/TypedRelationCapacityAudit.class",
+    "com/ohinteractive/seedv6/core/brnpair2/TypedRelationPieceDiagnostic.class",
+    "com/ohinteractive/seedv6/core/brnpair2/TypedRelationPieceNetwork$Features.class",
+    "com/ohinteractive/seedv6/core/brnpair2/TypedRelationPieceNetwork$Projection.class",
+    "com/ohinteractive/seedv6/core/brnpair2/TypedRelationPieceNetwork$Workspace.class",
+    "com/ohinteractive/seedv6/core/brnpair2/TypedRelationPieceNetwork.class"
+  ],
+  "unchanged_core_class_count": 222,
+  "sources": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\TypedRelationCapacityAudit.java": "6b6f7c98806f81b271c67afe8e3e91adc49860880b51279e03f389b374c67ff9",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\TypedRelationPieceDiagnostic.java": "b31f50c03a0fdf4429b2acd22ecbaabd61d88cbdddf3977d0961be738b76b17e",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\TypedRelationPieceNetwork.java": "67630643c45808f7a34bbbe5b62e25b03c49a4ec47f186e807924cdfa4cc6d92",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\TypedRelationCompilationTest.java": "9309782799e2f3d6b998cbe9253367efa54d189cfdd1d0466854750e10d87afa",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\core\\brnpair2\\TypedRelationPieceNetworkTest.java": "9a21d350d8d627e16cc14c51e674843d2b24f45aa87c8e30a4df03dc7de0b3c4"
+  },
+  "runtime": {
+    "lib\\engine-core.jar": "caedf1bbbac7d1759ac4ef03e7c220c8ed753523ad503082c63dd9f2fbef23e2",
+    "lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "lib\\research.jar": "86ab99e35b06a9cf1c863ac463c2bd0ad33343d51568e7b0f8aced0d662d1440",
+    "lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "build": 78,
+  "application_runtime_changed": false,
+  "limitations": "Focused ten checks;one blank-line trailing-space cleanup after build changes no tokens/code. Diverse-board exact-double/cost audit pending."
+}

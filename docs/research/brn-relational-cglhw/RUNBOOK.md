@@ -377,3 +377,8 @@ R052 complete:10tests,gradient discrepancy6.51e-19,4096board float error<.000008
 Smaller cache did not improve cost;no full fitting. Failed compile source/log
 preserved;fixed compound-var declaration and reran all checks. R053 investigates
 exact factorization of duplicated joint projections;unchanged10us/3x gates.
+
+R053 complete:10tests,exact double factorization,1.14e-12cp stressed discrepancy.
+Update1.656x/cache2.64MiB pass,but10.617us fails10us;no full fit or more cache
+tuning. R054 selects learned target-state message modulation as a new neural
+composition hypothesis;all typed negative results and runtimes preserved.
