@@ -30,8 +30,10 @@ reproduction, never silently invented. Do not reset a hold or restart old queues
 R047 complete:32games/32deterministic probe requests,0caps/failures;MIX43.75%/25%
 versus CP64,both fail broader-match45% threshold. R048 separately bounds32games
 for the frozen R044 LOW matched-training controls using the SAME R047 runtime/
-roots/node budgets. No new MIX games,fitting or promotion. Verify controls/runtime,
-freeze plan,run serially,then analyze paired root differences versus R047/R043.
+roots/node budgets. No new MIX games,fitting or promotion. Controls and all runtime files verified;r048-plan.json and validation frozen.
+Run compare_neural.py serially under nnue-control,skip complete games;after both
+comparisons finish,run analyze_training_attribution_games.py under fresh admission
+to replay and analyze paired root differences versus R047/R043.
 
 All later training-data expansion must exclude R016's8192 canonical aliases in
 raw/r016-data/selection.json (pinned by r016-selection-results.json),in addition
