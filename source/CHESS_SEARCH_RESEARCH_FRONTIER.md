@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 4
 
-Internal frontier revision: **P4-F003**
+Internal frontier revision: **P4-F004**
 
-Status: **CONSOLIDATED - 30 October 2026. Externally informed research map completed, reconciled and accepted; no active Phase 4 research objective, experimental candidate or champion advancement.**
+Status: **ACTIVE - 30 October 2026. Useful TT score memory for selective PVS CGLHW authorized and bootstrapped; build79/build80 bridge in progress, explicit H1 candidate in technical qualification. No champion advancement or production promotion.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 Governing [Contract P4-R001](CHESS_SEARCH_CONTRACT.md). This Frontier records
@@ -191,7 +191,7 @@ these findings establishes a SeedV6 playing-strength improvement.
 | C. Tactical coverage through verification and extensions | **Promising, dependent on reliable information and more expensive qualification.** Alternatives include TT-supported singular/forced-line verification and tactical ProbCut/qsearch cutoffs. Consider addition, substitution and reverse ablation through valid configurations. |
 | D. Iteration confidence, re-search and resource allocation | **Credible follow-on.** Aspiration recovery, iteration feedback, root effort, MTD and managed-time expenditure; driver comparisons must control TT information and state lifetime. Clock-policy research needs separate authorization. |
 | E. ROOT_REUSE cooperation and W2-16 information exchange | **Important, comparatively expensive and variable to qualify.** Shared useful TT information, selected history persistence/sharing, root-job ordering or overlapping Search structures; preserve concurrency, complete accounting, truthful completion, cancellation and draining. Stockfish-scale results do not transfer quantitatively by assumption. |
-| Active research | **None.** No Phase 4 experimental candidate, active research objective, experiment, tournament or CGLHW; no champion advancement. |
+| Active research | **Useful TT score memory for selective PVS**, owner-authorized 30 October 2026. [Objective TT-R001 and resume state](../docs/research/search/p4-tt-memory/STATE.md). Build79 champion preserved, build80 technical control frozen; H1 explicit opt-in implementation under qualification. No champion advancement. |
 
 These are connected relative priorities, **not an execution queue** or proven
 SeedV6 improvements. Optimize integrated configurations for practical playing
@@ -211,33 +211,49 @@ objective, follow consequential dependencies and revise priorities with evidence
 escalate material new objectives, safety/authority conflicts and disproportionate
 expansion under the Contract.
 
-## Recommended first objective - proposed, not authorized
+## Active first objective - owner authorized
 
 > Determine whether bounded heuristic TT score reuse, with useful retention and
 > preserved completed-move guidance, improves the practical strength of the
 > existing CP64 flattened-PVS configuration.
 
-The proposed initial formulation retains Conventional NNUE CP64, existing
+The authorized initial formulation retains Conventional NNUE CP64, existing
 extensions, flattened PVS, ADAPTIVE16, ROOT_REUSE, current clock-policy selection,
 history-rich SearchKey identity initially and coherent TT access. It investigates
 connected admission, provenance, retention and consumption policies, permitting
-appropriate interacting mechanisms within a later authorized coherent objective.
+appropriate interacting mechanisms within this authorized coherent objective.
 It does not automatically require clustered storage, qTT, correction history,
 singular extensions or MTD. Possible first-stage diagnostics ask whether scores
 are produced, admitted, retained, displaced and consumed while preserving useful
 completed-move guidance. The strongest competing first objective is retained
 Search history combined with graded history-informed reductions.
 
-This recommendation establishes no active work. Any objective requires **separate
-owner authorization and an explicit evaluation boundary**, including exact
-candidate/control identities and the build79/build80 bridge.
+The owner has supplied the dedicated CGLHW execution authorization. Objective
+[TT-R001](../docs/research/search/p4-tt-memory/CONTRACT.md) is subordinate to P4-R001;
+[STATE](../docs/research/search/p4-tt-memory/STATE.md) is the sole objective resume
+point. It holds protocol/runtime manifests, findings and next work without
+creating a second programme canon. The initial source/authority challenge found
+no blocking contradiction. It identified hint-retention coupling, the non-neutral
+accounting bridge and the historical selectivity UCI adapter's absent current
+clock wrapper as material comparison dependencies. Current experiments bind
+BOUNDARY2 explicitly; frozen historical clock studies remain untouched.
+
+The bridge has passed 136 behavioral requests: W1 depth5 identity matched on nine
+repeated positions; W4 exhibited scheduling variation and a stable counted-work
+difference. This is not competitive equivalence. Exploratory 32-pair/domain
+3+0.03 comparisons are selected. H1 uses separate heuristic provenance, ordinary
+scores, current-generation sufficient-depth interior null-window eligibility and
+co-retained completed legal hints with unchanged physical TT capacity/coherence.
+It is explicitly selected, not production. Its initial 297-test technical rerun
+passed after restoring raw-evaluation compatibility; failed evidence is retained.
+No TT strength finding or research acceptance is claimed.
 
 ## Lightweight progression and handback
 
-Reconcile this consolidation with GPT/owner; completion of the documentation
-commit is not acceptance. New research, experiments, research objectives and
-implementation changes require separate owner authorization. This unit
-is not a CGLHW and launches none. In later authorized research, use economical
+The inventory, correction, external map and F003 consolidation are accepted and
+closed. The present owner authorization launches this specific CGLHW and permits
+autonomous coherent research units under TT-R001. Completion of a Codex turn or
+commit is not research closure or GPT/owner acceptance. Use economical
 diagnostics, controlled strength comparisons and independent confirmation where
 appropriate, preserving exact references and meaningful controls. Champion
 advancement requires separate owner authorization, credible integrated-strength
@@ -247,10 +263,9 @@ owner authorization and acceptance under the Contract.
 Keep current priorities, hypotheses, adopted decisions and active work distinct.
 Record material discoveries and dependencies here; focused reports/manifests hold
 detail. Do not create an exhaustive taxonomy, experiment diary or automatic queue.
-Each future CGLHW requires the complete current authoritative premade GPT prompt
-generator from the owner before GPT prepares its execution prompt, and a dedicated
-GPT conversation for the objective's complete coordination and closeout. This
-documentation unit creates or substitutes no generator and authorizes no CGLHW.
+P4-R001 retains the GPT preparation requirements for future CGLHW objectives.
+The current execution request is the owner's authorization for this objective;
+no generator or unrelated governance is created or modified.
 
 The [Phase 3 archive](../docs/search-phase3/README.md) contains the final
 P3-R035/P3-F035 historical authority and links to retained Phase 1/2 history and
@@ -259,10 +274,9 @@ become Phase 4 policy by reference; frozen evidence remains unchanged.
 The existing Phase 3 Project retains its owner-confirmed final mirrors, with no
 refresh required. The Phase 4 Project's **P4-R001 / P4-F002** mirror pair was
 already reconciled by GPT and the owner. The current repository master pair is
-**P4-R001 / P4-F003**; the Contract remains unchanged. After successful GPT/owner
-reconciliation of this consolidation, the owner must refresh the separate Phase 4
-Project's Frontier mirror to **P4-F003** and confirm **P4-R001 / P4-F003** before
-mirror-dependent Project planning. That human action is pending; repository edits
-synchronize neither Project.
-Consolidation ends here, with no active research objective, experimental candidate
-or champion advancement.
+**P4-R001 / P4-F004**; the Contract remains unchanged. F003's owner Frontier
+mirror refresh was pending and is not inferred complete. The owner must now
+refresh the separate Phase 4 Project Frontier mirror to **P4-F004**, confirming
+**P4-R001 / P4-F004** before mirror-dependent Project planning. This is non-blocking
+for authorized repository research; repository edits synchronize neither Project.
+The active objective remains open, with no champion advancement or promotion.

@@ -1,0 +1,19 @@
+{
+  "sourceCommit": "9fec1d2af379827d105d523c32162fd771905cb9",
+  "runtimeSourceNote": "Engine runtime sources identical to 0bfb4ea8422ef78443e309930166ad46df5cc454; only objective documentation untracked at build time",
+  "installation": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime80",
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime80\\lib\\app-uci.jar": "a24bc26e00dd1e5a988d4443ff509068862f7ae8ac3bbb5f221cac69846c19a3",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime80\\lib\\engine-core.jar": "d25f9ed48e714530704f0e7ed8141287ce12b6b1df64a7dc2e7c9dfad4050d01"
+  },
+  "java": "C:/java/jdk-21/bin/java.exe",
+  "javaSha256": "28b603f0fc719e06f020bcb99f2b5c01f27234adccb1f525b004850d506e1950",
+  "javaVersion": "openjdk version \"21\" 2023-09-19\nOpenJDK Runtime Environment (build 21+35-2513)\nOpenJDK 64-Bit Server VM (build 21+35-2513, mixed mode, sharing)\n",
+  "modelSha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "hardware": "Ryzen 5 5500; 6 physical / 12 logical; 32 GiB installed",
+  "hashMiB": 64,
+  "ttEntries": 2097152,
+  "ttEntryPayloadBytes": 50331648,
+  "layout": "three long arrays, direct mapped, 32 synchronized stripes; overhead excluded"
+}

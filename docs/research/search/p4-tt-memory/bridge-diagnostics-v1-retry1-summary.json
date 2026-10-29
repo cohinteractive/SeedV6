@@ -1,0 +1,320 @@
+{
+  "status": "passed",
+  "requests": 136,
+  "comparisons": [
+    {
+      "workers": 1,
+      "position": 0,
+      "within79Stable": true,
+      "within80Stable": true,
+      "firstCompleteIdentityEqual": true,
+      "nodes79": [
+        3301,
+        3301,
+        3301
+      ],
+      "nodes80": [
+        3301,
+        3301,
+        3301
+      ]
+    },
+    {
+      "workers": 1,
+      "position": 1,
+      "within79Stable": true,
+      "within80Stable": true,
+      "firstCompleteIdentityEqual": true,
+      "nodes79": [
+        13209,
+        13209,
+        13209
+      ],
+      "nodes80": [
+        13209,
+        13209,
+        13209
+      ]
+    },
+    {
+      "workers": 1,
+      "position": 2,
+      "within79Stable": true,
+      "within80Stable": true,
+      "firstCompleteIdentityEqual": true,
+      "nodes79": [
+        38177,
+        38177,
+        38177
+      ],
+      "nodes80": [
+        38177,
+        38177,
+        38177
+      ]
+    },
+    {
+      "workers": 1,
+      "position": 3,
+      "within79Stable": true,
+      "within80Stable": true,
+      "firstCompleteIdentityEqual": true,
+      "nodes79": [
+        25642,
+        25642,
+        25642
+      ],
+      "nodes80": [
+        25642,
+        25642,
+        25642
+      ]
+    },
+    {
+      "workers": 1,
+      "position": 4,
+      "within79Stable": true,
+      "within80Stable": true,
+      "firstCompleteIdentityEqual": true,
+      "nodes79": [
+        14210,
+        14210,
+        14210
+      ],
+      "nodes80": [
+        14210,
+        14210,
+        14210
+      ]
+    },
+    {
+      "workers": 1,
+      "position": 5,
+      "within79Stable": true,
+      "within80Stable": true,
+      "firstCompleteIdentityEqual": true,
+      "nodes79": [
+        26400,
+        26400,
+        26400
+      ],
+      "nodes80": [
+        26400,
+        26400,
+        26400
+      ]
+    },
+    {
+      "workers": 1,
+      "position": 6,
+      "within79Stable": true,
+      "within80Stable": true,
+      "firstCompleteIdentityEqual": true,
+      "nodes79": [
+        24583,
+        24583,
+        24583
+      ],
+      "nodes80": [
+        24583,
+        24583,
+        24583
+      ]
+    },
+    {
+      "workers": 1,
+      "position": 7,
+      "within79Stable": true,
+      "within80Stable": true,
+      "firstCompleteIdentityEqual": true,
+      "nodes79": [
+        7772,
+        7772,
+        7772
+      ],
+      "nodes80": [
+        7772,
+        7772,
+        7772
+      ]
+    },
+    {
+      "workers": 1,
+      "position": 8,
+      "within79Stable": true,
+      "within80Stable": true,
+      "firstCompleteIdentityEqual": true,
+      "nodes79": [
+        6410,
+        6410,
+        6410
+      ],
+      "nodes80": [
+        6410,
+        6410,
+        6410
+      ]
+    },
+    {
+      "workers": 4,
+      "position": 0,
+      "within79Stable": false,
+      "within80Stable": false,
+      "firstCompleteIdentityEqual": false,
+      "nodes79": [
+        3317,
+        3317,
+        3314
+      ],
+      "nodes80": [
+        3319,
+        3319,
+        3320
+      ]
+    },
+    {
+      "workers": 4,
+      "position": 1,
+      "within79Stable": false,
+      "within80Stable": false,
+      "firstCompleteIdentityEqual": false,
+      "nodes79": [
+        14624,
+        14543,
+        14676
+      ],
+      "nodes80": [
+        15334,
+        15715,
+        15570
+      ]
+    },
+    {
+      "workers": 4,
+      "position": 2,
+      "within79Stable": false,
+      "within80Stable": false,
+      "firstCompleteIdentityEqual": false,
+      "nodes79": [
+        40142,
+        42185,
+        40313
+      ],
+      "nodes80": [
+        40178,
+        42163,
+        39976
+      ]
+    },
+    {
+      "workers": 4,
+      "position": 3,
+      "within79Stable": false,
+      "within80Stable": false,
+      "firstCompleteIdentityEqual": false,
+      "nodes79": [
+        18013,
+        18587,
+        20574
+      ],
+      "nodes80": [
+        19700,
+        20969,
+        18547
+      ]
+    },
+    {
+      "workers": 4,
+      "position": 4,
+      "within79Stable": true,
+      "within80Stable": true,
+      "firstCompleteIdentityEqual": false,
+      "nodes79": [
+        14580,
+        14580,
+        14580
+      ],
+      "nodes80": [
+        14637,
+        14637,
+        14637
+      ]
+    },
+    {
+      "workers": 4,
+      "position": 5,
+      "within79Stable": false,
+      "within80Stable": false,
+      "firstCompleteIdentityEqual": false,
+      "nodes79": [
+        30107,
+        28937,
+        29659
+      ],
+      "nodes80": [
+        29219,
+        28789,
+        29773
+      ]
+    },
+    {
+      "workers": 4,
+      "position": 6,
+      "within79Stable": false,
+      "within80Stable": false,
+      "firstCompleteIdentityEqual": false,
+      "nodes79": [
+        26851,
+        26805,
+        28238
+      ],
+      "nodes80": [
+        27186,
+        26131,
+        30537
+      ]
+    },
+    {
+      "workers": 4,
+      "position": 7,
+      "within79Stable": false,
+      "within80Stable": true,
+      "firstCompleteIdentityEqual": false,
+      "nodes79": [
+        10076,
+        10049,
+        10076
+      ],
+      "nodes80": [
+        10094,
+        10094,
+        10094
+      ]
+    },
+    {
+      "workers": 4,
+      "position": 8,
+      "within79Stable": false,
+      "within80Stable": false,
+      "firstCompleteIdentityEqual": false,
+      "nodes79": [
+        6399,
+        6354,
+        6350
+      ],
+      "nodes80": [
+        6370,
+        6360,
+        6436
+      ]
+    }
+  ],
+  "identities": {
+    "runtime79-w1": "info string baseline=construction-v1-cp64 search=construction-v1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=79 source=753367614b8a ttMiB=64",
+    "runtime80-w1": "info string baseline=construction-v1-cp64 search=construction-v1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=80 source=9fec1d2af379 (uncommitted changes) ttMiB=64",
+    "runtime79-w4": "info string baseline=construction-v1-cp64 search=construction-v1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=79 source=753367614b8a ttMiB=64",
+    "runtime80-w4": "info string baseline=construction-v1-cp64 search=construction-v1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=80 source=9fec1d2af379 (uncommitted changes) ttMiB=64"
+  },
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\bridge-diagnostics-v1-retry1\\observations.json",
+  "interpretation": "Behavioral diagnostics, not strength/equivalence proof."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "TT-BRIDGE-V1",
+  "status": "prospectively frozen before observations",
+  "purpose": "Characterize correction behavior and detect large short-clock competitive differences; not equivalence proof or champion selection",
+  "control": "753367614b8aa7e32dee337fd76b542737141ac1/build79",
+  "candidate": "0bfb4ea8422ef78443e309930166ad46df5cc454/build80 runtime source, built from documentation-only descendant 9fec1d2a",
+  "configuration": "CP64 flags3407871; ADAPTIVE16; Hash64, 2097152 entries, 50331648 entry bytes; OWNER W1 and ROOT_REUSE W4; BOUNDARY2 selected, no book/tablebase",
+  "diagnostics": "11 positions (start, 8 fresh legal opening histories, mate/stalemate), depth5 repeated3 except terminals once; per worker/runtime also nodes20000,nodes100000,movetime100,1s+50ms managed clock,infinite/stop",
+  "strengthScreen": {"workers": [1,4], "pairsPerDomain": 32, "clock": "3+0.03", "concurrency": 1, "colorReversal": true, "openingSeed": 2026103001, "partition": 0, "runnerSeed": 20261030, "maxWallSecondsPerDomain": 7200},
+  "sampleJustification": "Economical bridge screen, not a small-Elo test. 32 independent pairs yield worst-case pair-normal 95% half-width about 17.3 score percentage points and conservative bounded-pair half-width 24.0 points. Only large effects can be resolved; inconclusive results require direct champion comparisons for any promising TT candidate.",
+  "stopping": "Fixed 32 complete pairs per worker domain. Operational/legality failures stop affected run and preserve partial output; no outcome-dependent extensions or deletion.",
+  "inference": "Report pair totals, paired normal interval when estimable and distribution-free Hoeffding interval. W1/W4 are separate exploratory domains; no confirmatory claim. Equal reported nodes not equated to equal work across runtimes.",
+  "environment": "Windows Ryzen 5 5500 6C/12T, Java21, -Xms256m -Xmx512m ActiveProcessorCount=4, background priority; one game at a time; no overlapping CPU-heavy research/builds during matches. Cold match processes symmetrically; request and process telemetry recorded.",
+  "evidence": "raw/bridge-diagnostics-v1, raw/bridge-w1-v1, raw/bridge-w4-v1; compact summaries and frozen runtime manifests outside raw/"
+}
