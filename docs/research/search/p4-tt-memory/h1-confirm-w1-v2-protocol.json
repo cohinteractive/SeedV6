@@ -1,0 +1,53 @@
+{
+  "id": "TT-H1-CONFIRM-W1-V2",
+  "status": "prospectively frozen before confirmation games",
+  "purpose": "Independently test the selected unchanged H1 configuration for a W1 practical-strength gain against corrected80, with a conditional direct79 anchor; no production or champion acceptance",
+  "selection": "After completed H1 and H2 exploratory screens, prioritize unchanged H1 in W1: H1 scored57.81% W1/57.03% W4; H2 scored53.91% W1/57.03% W4. All intervals include equality. H1 has the stronger W1 point estimate and less retention complexity, while H2 provided no demonstrated incremental advantage. This is a prioritization judgment, not a causal H1-over-H2 conclusion. W1 remains the original primary confirmation domain; no worker-domain pooling or search for a winning domain. The technical/bridge and lifetime/cost findings support testability. All development and failed-attempt observations are excluded from confirmation estimates.",
+  "candidate": "P4-TT-H1-v1, a72cc496fd39aeddefea4382044bd2bf2e9f6cbb/build81, runtimeh1-v1-manifest.json, explicit h1 profile, flags7602175",
+  "controls": "First frozen runtime80 (Search source0bfb4ea8422ef78443e309930166ad46df5cc454, artifact built at9fec1d2af379827d105d523c32162fd771905cb9/build80). Conditional second frozen runtime79 (753367614b8aa7e32dee337fd76b542737141ac1/build79). Exact executable hashes and commands are recorded by the adapter.",
+  "common": "W1 OWNER, CP64 checkpoint64 S6CNU002 eight heads BT4_Q_LOGIT400_V1, canonical SHA8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b, vector-256-long on this Ryzen5500, original18+NOMINAL_FUTILITY+VERIFIED_NULL, margins100/200 cap1, ADAPTIVE16, existing BOUNDARY2; Hash64 actual2097152 slots/50331648 payload bytes; book/tablebase OFF",
+  "environment": "Same Windows11/Ryzen5500/Java21+35 and JVM arguments as screens: Xms256m/Xmx512m,ActiveProcessorCount4, one active game, below-normal priority, no overlapping heavy work. Uninstrumented engines; symmetric full UCI trace and resource observer. Match processes start cold symmetrically; separate-process preflight is not an in-process warmup.",
+  "openings": "160 new paired openings selected with seed2026103004 from partition1 of the pinned legal16 source using the existing search-baseline.py selector. Explicitly exclude both the32 development and128 attempt1 final-position keys. Assert zero overlap with both receipts. Preserve full real opening histories. Use the same new160 pairs for the conditional direct79 comparison, reporting each control separately without pooling. Selection ran after both H2 screens drained. Same-book distinct positions do not imply universal chess representativeness or eliminate all opening-structure correlation.",
+  "clockAndStopping": "10+0.1,160 opening pairs/color reversal per executed comparison, one concurrent game, no adjudication, fixed complete sample or first unapproved warning, invalid fallback, legality/PV, terminal, accounting, process or input-stability failure. Qualified audited-fallback mode requires every missing-score warning to match a legal scoreless clock fallback in the complete trace; all other gates remain. No within-comparison early success/futility or outcome-dependent extension. Hard timeout14400s per comparison; retain failures and do not interpret partial scores as a completed confirmation.",
+  "sampleJustification": "H1 pilot pair SD=sqrt32*0.046875=0.265165. With alpha0.00625 per comparison, z=2.7343687865; about146.03 pairs target a normal interval half-width of6 score percentage points at that variance.160 is the next32-pair block, with expected half-width5.7321 points. This seeks a moderate effect near the7.81-point pilot signal, not fine5-10 Elo inference. Actual variance/precision can differ. Expected wall time about2h43m per comparison from the completed H1 screen; conditional anchoring avoids a second block on an unconfirmed candidate. Worst-case paired uncertainty is much wider.",
+  "multiplicity": "Continue the established nominal alpha0.05/2^k allocation across adaptive candidate/domain claim attempts. Attempt1 nominalalpha0.025 remains spent despite its operational failure. This is attempt2, reserving0.0125 for the joint W1 claim and splitting it across control80 and champion79: alpha0.00625 each, two-sided99.375% paired-normal intervals. Cumulative reserved/spent allowance is0.0375. Later attempts must retain this expenditure; screening does not establish confirmatory discovery. These are nominal approximate bounds under the paired-sampling model, not exact finite-sample proof.",
+  "primaryAnalysis": "For each full audited comparison use the mean of160 opening-pair scores in[0,1] and sample standard error. Critical value NormalDist().inv_cdf(1-0.00625/2); report clipped mean+-z*SE. Report WDL,pentanomial and descriptive unadjusted95 intervals. Report bounded Hoeffding at alpha0.00625 as conservative sensitivity, explicitly preserving any disagreement. If variance is zero, use the bounded interval as primary instead of a zero-width normal interval. Reproducible frozen analysis: tools/p4-tt-confirm-v2-analysis.py. No pooling with previous attempts or exploratory data.",
+  "gate": "Run control80 first. Only if the completed adjusted primary lower score bound is above0.5 execute the frozen160-pair direct79 comparison. Otherwise H1 remains not independently confirmed and the conditional79 block is not executed; do not extend/replay the sample to chase significance. A supported joint W1 claim requires both adjusted lower bounds above0.5 plus clean technical/operational qualification. The champion bridge alone never substitutes for the direct79 result.",
+  "safetyAdmission": "Both H2 development domains completed and drained, with all audits and stable inputs passed. H1 remains frozen at its technically qualified original81 runtime. The runner audited-fallback path was separately qualified before either H2 screen. Every engine retains the corrected verified-null foundation, existing CP64/clock policy, legal/mate/history/concurrency/lifecycle safeguards. Historical BOUNDARY2 studies stay frozen and unopened.",
+  "failuresAndSelection": "No pooling pilot and confirmation results, no opening reselection after outcomes, and no unspent-alpha replay after examining a failed/interrupted confirmation. Record any later confirmation as a new claim attempt with prospective error allocation and independent inputs unless an interruption occurred before any game evidence. A normal-approximation positive result does not become exact proof if the conservative interval crosses equality.",
+  "evidence": "raw/h1-confirm-w1-v2-control80 and conditional raw/h1-confirm-w1-v2-champion79. Preparation selection logs in raw/h1-confirm-w1-v2-preparation. Tracked prospective protocol, opening corpus/receipt, bound analysis and compact summaries. Attempt1 raw/protocol/analysis remain unchanged and excluded.",
+  "frozenUtc": "2026-10-30T01:25:11.037674+00:00",
+  "openingFile": "h1-confirm-w1-v2-openings.pgn",
+  "openingSha256": "35ea45309f4ebc6e1f9e5b457967cfaa67c5f2c9c8a495f4477d4121e466264a",
+  "openingSelectionManifest": "h1-confirm-w1-v2-openings.selection.json",
+  "openingSelectionManifestSha256": "b090355ae1264ae0b040850adb70768440a7dadb0584089531d395560367facc",
+  "developmentPositionOverlap": 0,
+  "analysisToolSha256": "fd3ff2bb3d28867481ca587cc4c572a78fe7951494c33aa4972f51d2681e283e",
+  "runtimeManifestSha256": {
+    "runtime79-manifest.json": "cd0caef366ac27cb2f398eaca0d48660584de66bac17b24002686ac1386b0ddd",
+    "runtime80-manifest.json": "30802d056659966500faaff493409f99237988c3a725d62ec98e74e3f24c9a33",
+    "runtimeh1-v1-manifest.json": "5d2170c69870d928b0e8e01cba25366acf5c87ff9552dfad512633c16219e1f7"
+  },
+  "verifiedHost": {
+    "processor": "AMD Ryzen 5 5500                               ",
+    "cores": 6,
+    "logical": 12,
+    "installedBytes": 34359738368,
+    "os": "Microsoft Windows 11 Pro",
+    "version": "10.0.26300"
+  },
+  "claimAttempt": 2,
+  "alphaPerComparison": 0.00625,
+  "pairs": 160,
+  "warningPolicy": "audited-fallback",
+  "priorPositionOverlap": {
+    "bridge-v1-openings.selection.json": 0,
+    "h1-confirm-w1-v1-openings.selection.json": 0
+  },
+  "toolSha256": {
+    "p4-tt-memory.py": "53b5149876cf53fd44f545639fe90fcf1a3cf20e9d022af42db92eed0b54c5e0",
+    "p4-tt-trace.py": "1e21217304125e4b293a043c09f674a6245dac4eb06d2ed05d43c37972825367",
+    "search-baseline.py": "f67b5c8ad6a88b5d94667b2ee8f12d1b454a0340592f781b70c139f491602678"
+  },
+  "seed": 2026103004
+}

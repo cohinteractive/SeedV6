@@ -1,24 +1,26 @@
 # TT memory workstream ? resume here
 
 Status: **ACTIVE**, 30 October 2026. Objective [TT-R001](CONTRACT.md) is subordinate
-to Search P4-R001. Current programme master pair: **P4-R001 / P4-F009**.
+to Search P4-R001. Current programme master pair: **P4-R001 / P4-F010**.
 H1's W1/W4 development screens are promising but inconclusive. The first W1
 confirmation failed operationally after 112 completed games; it is not a completed
 strength comparison. No confirmed gain, acceptance, champion advancement or
 production promotion has occurred.
 
-**Selected work:** execute [TT-H2-SCREEN-V1](h2-screen-v1-protocol.json),32 paired
-development openings per W1/W4 domain against corrected80 at10+0.1,one active
-game. W1 passed all64 games/audits; W4 is now active. Audited-fallback mode
-is prospectively declared. H2 source
-b0be4fe1/build82 and frozen runtime passed qualification and clean cost checks;
-see [H2](H2.md). Cost completed1,248 requests, with832 measured after warmup;
-wall H2/H1 ratios0.994 W1/0.992 W4 show no material regression in that diagnostic.
-The prototype passed310 broader tests (including27 focused) and78 launcher
-checks; committed class bytes match and four artifact requests passed.
-Do not resume failed H1 confirmation or its conditional champion block. H1 stays
-frozen at a72cc496/build81; build79 remains accepted champion. Neither efficiency
-nor the selected exploratory screen establishes an independent strength claim.
+**Selected work:** execute [H1 confirmation attempt2](h1-confirm-w1-v2-protocol.json),
+160 fresh opening pairs at10+0.1,W1,Hash64 against frozen corrected80. The protocol,
+new corpus/exclusions and analysis are frozen before games. Use qualified audited-
+fallback mode, one active game and no heavy overlap. Only a completed adjusted
+lower bound above50% opens the conditional160-pair direct79 block. Attempt2 reserves
+nominalalpha0.0125 split0.00625/control; attempt1's0.025 remains spent. No pooling
+with development or failed data, replay, optional extension or champion promotion.
+
+H2's W1/W4 screens completed and passed all audits, scoring53.91%/57.03%; both
+are inconclusive. Frozen H1/build81 has the stronger W1 development signal and
+simpler retention, so is prioritized without claiming it causally beats H2. H2
+remains a qualified deferred alternative. Build79 remains accepted champion.
+Do not resume attempt1 or its conditional champion block. Check current raw/run
+status and actual process identities before interpreting whether attempt2 is live.
 
 ## Identities and completed foundations
 
@@ -59,12 +61,13 @@ Hash64, one active game, on the recorded Windows/Ryzen5500/Java21 host.
 | H1 versus80, W1 |30/14/20|57.81%|48.63?67.00%|
 | H1 versus80, W4 |25/23/16|57.03%|47.13?66.93%|
 | H2 versus80, W1 |27/15/22|53.91%|43.10-64.71%|
+| H2 versus80, W4 |26/21/17|57.03%|46.43-67.64%|
 
 Each completed64-game run passed full PV/bestmove checks, independent PGN/
 request accounting audit and immutable-input checks. H2 uses the prospectively
 qualified audited-fallback mode; its W1 trace passed9,126 requests with zero
-missing-score warnings. The completed W1 H2 screen is inconclusive; finish W4
-before candidate selection. Conservative Hoeffding
+missing-score warnings. H2 W4 passed8,298 trace requests, also with zero such
+warnings. Both H2 screens are inconclusive; H1 is prioritized for fresh confirmation. Conservative Hoeffding
 intervals are substantially wider; see per-run summaries. No competitive
 79/80 equivalence is established. W4's adverse bridge makes transferring an H1
 versus80 gain into a champion79 gain especially inappropriate.
@@ -116,7 +119,8 @@ lifetime observation rather than reconstructing it.
 Attempt1's nominal alpha0.025 remains spent. Partial outcomes are not confirmation,
 are not pooled into later samples, and do not open the conditional champion79 gate.
 Do not modify its protocol, inputs, analysis or run. A later confirmation needs a
-new prospective claim allocation and independent inputs; it is not selected yet.
+new prospective claim allocation and independent inputs. Attempt2 is now selected
+under those rules; attempt1 remains unchanged and excluded.
 
 [Runner qualification](runner-qualification-v1-summary.json) passed six tests
 (including 18 invalid-evidence subcases), a replay audit of 13,724 retained trace
@@ -160,7 +164,8 @@ score age, protect useful prior depth while refreshing hints independently, reta
 all H1 eligibility/provenance/coherence safeguards and physical capacity/payload.
 The explicit implementation has passed prototype qualification (27 focused/310
 broader tests and78 launcher checks). Committed build82 and its distinct frozen
-runtime passed preflight; clean cost evidence passed and paired screens are selected. No strength
+runtime passed preflight; clean cost and paired screens passed operationally.
+Both strength screens are inconclusive; H2 is deferred from confirmation priority. No strength
 gain is claimed. Do not tune a grid or add a major subsystem.
 W4 direct79/independent confirmation remains unresolved. Any later confirmation is
 a new claim attempt; H1 attempt1 alpha0.025 stays spent and its partial observations
@@ -196,6 +201,6 @@ CODEXLOG_CURRENT.md was absent; do not create it. Inspect current Git/file prese
 again on resume and preserve unrelated changes. No push/deployment/release is authorized.
 
 Human action: owner refresh of the separate Phase4 Project Frontier mirror to
-**P4-F009**, confirming **P4-R001 / P4-F009**. This is **non-blocking** for repository
+**P4-F010**, confirming **P4-R001 / P4-F010**. This is **non-blocking** for repository
 research and blocks only mirror-dependent Project planning. Prior mirror refreshes
-are not inferred complete. No owner action currently blocks the selected qualification.
+are not inferred complete. No owner action currently blocks the selected confirmation.
