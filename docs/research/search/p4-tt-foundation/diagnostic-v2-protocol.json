@@ -1,0 +1,31 @@
+{
+  "id": "TTF-DIAGNOSTIC-V2",
+  "purpose": "Causal information-use and null-admission diagnostics, not strength or clean timing",
+  "runtimeManifest": "prototype-v2-manifest.json",
+  "profiles": [
+    "h2",
+    "foundation",
+    "retain"
+  ],
+  "domains": [
+    1,
+    4
+  ],
+  "depth": 6,
+  "budgetPerRequest": 1000000,
+  "roots": 9,
+  "requestsPerDomain": 27,
+  "rounds": 1,
+  "limits": "60s per request, 15min per domain; stop on integrity/accounting/PV/drain failure; preserve partial evidence",
+  "gates": [
+    "W1 foundation/retain equal H2 nodes,score,PV",
+    "availability distinguished from actual use",
+    "actual inference avoidance independently accounted",
+    "legal PV,board,full accounting and drain"
+  ],
+  "costs": "instrumented; no speed inference",
+  "strength": "none",
+  "next": "analyze structure, revise if needed, then prospectively select clean costs",
+  "formulation": "TTF-F2-v1 coherent main-node information",
+  "interpretation": "V2 requalifies changed architecture; no inherited timing conclusion. No qsearch cache or null guard. Diagnostic initial wrapper failed before main because manifest preparation had a Python syntax error; preserve log, use retry1 output."
+}

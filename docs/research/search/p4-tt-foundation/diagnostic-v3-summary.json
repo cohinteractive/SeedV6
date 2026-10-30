@@ -1,0 +1,109 @@
+{
+  "status": "passed",
+  "requests": 54,
+  "totals": [
+    {
+      "workers": 1,
+      "profile": "h2",
+      "requests": 9,
+      "nodes": 362547,
+      "evaluationCalls": 337396,
+      "rawAttempts": 0,
+      "rawConsumed": 0,
+      "rawAvailable": 0,
+      "scoreAdmitted": 48796,
+      "scoreHits": 19833,
+      "scoreCutoffs": 6805,
+      "rawAdmitted": 0,
+      "rawProbes": 0
+    },
+    {
+      "workers": 1,
+      "profile": "foundation",
+      "requests": 9,
+      "nodes": 362547,
+      "evaluationCalls": 323095,
+      "rawAttempts": 39130,
+      "rawConsumed": 14301,
+      "rawAvailable": 21027,
+      "scoreAdmitted": 48796,
+      "scoreHits": 19833,
+      "scoreCutoffs": 6805,
+      "rawAdmitted": 39058,
+      "rawProbes": 61036
+    },
+    {
+      "workers": 1,
+      "profile": "retain",
+      "requests": 9,
+      "nodes": 362547,
+      "evaluationCalls": 337396,
+      "rawAttempts": 53431,
+      "rawConsumed": 0,
+      "rawAvailable": 21027,
+      "scoreAdmitted": 48796,
+      "scoreHits": 19833,
+      "scoreCutoffs": 6805,
+      "rawAdmitted": 53359,
+      "rawProbes": 61036
+    },
+    {
+      "workers": 4,
+      "profile": "h2",
+      "requests": 9,
+      "nodes": 373701,
+      "evaluationCalls": 349024,
+      "rawAttempts": 0,
+      "rawConsumed": 0,
+      "rawAvailable": 0,
+      "scoreAdmitted": 51851,
+      "scoreHits": 21239,
+      "scoreCutoffs": 7339,
+      "rawAdmitted": 0,
+      "rawProbes": 0
+    },
+    {
+      "workers": 4,
+      "profile": "foundation",
+      "requests": 9,
+      "nodes": 377666,
+      "evaluationCalls": 337457,
+      "rawAttempts": 43555,
+      "rawConsumed": 14848,
+      "rawAvailable": 21989,
+      "scoreAdmitted": 52033,
+      "scoreHits": 21000,
+      "scoreCutoffs": 7226,
+      "rawAdmitted": 43480,
+      "rawProbes": 64983
+    },
+    {
+      "workers": 4,
+      "profile": "retain",
+      "requests": 9,
+      "nodes": 366556,
+      "evaluationCalls": 342504,
+      "rawAttempts": 57321,
+      "rawConsumed": 0,
+      "rawAvailable": 21986,
+      "scoreAdmitted": 51138,
+      "scoreHits": 20884,
+      "scoreCutoffs": 7083,
+      "rawAdmitted": 57249,
+      "rawProbes": 63755
+    }
+  ],
+  "W1EvaluationAvoidanceByAspirationAttempt": {
+    "first": 8755,
+    "retry": 5546
+  },
+  "W1AttemptCounts": {
+    "first": 54,
+    "retry": 27
+  },
+  "raw": [
+    "raw/diagnostic-v3-w1.jsonl",
+    "raw/diagnostic-v3-w4.jsonl"
+  ],
+  "qualification": "W1 all nodes/score/PV and aspiration windows match H2; W4 scheduling dependent. Actual raw materialization is distinct from available values at earlier score cutoffs. No strength claim."
+}

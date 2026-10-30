@@ -9,6 +9,7 @@ final class FlatSearchState {
     final FlatSearchConfig config;
     final long[] pathMoves=new long[ExactSearch.MAX_DEPTH+1];
     final int[] credits=new int[ExactSearch.MAX_DEPTH+1],rawEval=new int[ExactSearch.MAX_DEPTH+1];
+    final int[] ttRawEval;
     final HistoryLearning nominal=new HistoryLearning(true,null);
     final int[] captures;
     final short[] continuation;
@@ -19,6 +20,7 @@ final class FlatSearchState {
 
     FlatSearchState(FlatSearchConfig config) {
         this.config=config;
+        ttRawEval=config.has(TT_INFORMATION)?new int[ExactSearch.MAX_DEPTH+1]:null;
         captures=config.has(CAPTURE_HISTORY)?new int[CaptureHistory.SIZE]:null;
         continuation=config.has(CONTINUATION)?new short[ContinuationHistory.SIZE]:null;
         killers=config.has(KILLERS)?new long[(ExactSearch.MAX_DEPTH+1)*KillerMoves.SLOTS]:null;
@@ -27,6 +29,7 @@ final class FlatSearchState {
     void reset() {
         Arrays.fill(pathMoves,0);
         Arrays.fill(credits,0);Arrays.fill(rawEval,Integer.MIN_VALUE);
+        if(ttRawEval!=null) Arrays.fill(ttRawEval,Integer.MIN_VALUE);
         if(captures!=null) Arrays.fill(captures,0);
         if(continuation!=null) Arrays.fill(continuation,(short)0);
         if(killers!=null) Arrays.fill(killers,0);

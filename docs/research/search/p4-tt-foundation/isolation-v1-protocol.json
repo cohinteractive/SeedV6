@@ -1,0 +1,16 @@
+{
+  "id": "TTF-ISOLATION-V1",
+  "runtimeManifest": "runtime-final-prototype-v1-manifest.json",
+  "script": "tools/p4-tt-foundation-isolation.py",
+  "scriptSha256": "7bdc7a099bda5e0f2688c8463ad19b19a41dcf06567cd9f1a0e5dc3c224795f3",
+  "domains": [
+    1,
+    4
+  ],
+  "requests": 104,
+  "extraStopRequests": 2,
+  "positions": "startpos and first8 bridge opening inputs",
+  "W1": "nine depth5 positions and 20k/100k-node startpos; frozen80=ordinary=research control, frozenH1=H1, frozenH2=H2=foundation",
+  "W4": "20k/100k node limits, legal PV, no equality; foundation infinite/stop/reset in both domains",
+  "scope": "No old protocol/result modification; new observations only"
+}

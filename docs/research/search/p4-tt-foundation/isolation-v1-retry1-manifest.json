@@ -1,0 +1,12 @@
+{
+  "id": "TTF-ISOLATION-V1-RETRY1",
+  "protocol": "isolation-v1-protocol.json",
+  "failure": "System Python lacked chess; failed during import before any engine or experiment started",
+  "failedLog": "raw/isolation-v1-console.log",
+  "retryLog": "raw/isolation-v1-retry1-console.log",
+  "interpreter": "build/research/venv/Scripts/python.exe",
+  "python": "3.13.4",
+  "chess": "1.11.2",
+  "result": "isolation-v1-retry1-summary.json",
+  "scope": "Same prospective script/protocol/runtime, using existing research environment; no historical evidence changed"
+}

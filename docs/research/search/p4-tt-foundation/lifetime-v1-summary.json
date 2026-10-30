@@ -1,0 +1,74 @@
+{
+  "status": "passed",
+  "domains": [
+    {
+      "workers": 1,
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\lifetime-v1-w1.jsonl",
+      "sha256": "65a474a110dfdda91324519dc4b6a7c673fd2648059b2ec859985c3ef4afff4b",
+      "totals": {
+        "h2": {
+          "requests": 104,
+          "nodes": 10400000,
+          "evaluationCalls": 9304481,
+          "rawConsumed": 0,
+          "rawAvailable": 0,
+          "rawAdmissionAttempts": 0,
+          "rawAdmitted": 0
+        },
+        "foundation": {
+          "requests": 104,
+          "nodes": 10400000,
+          "evaluationCalls": 8814306,
+          "rawConsumed": 490175,
+          "rawAvailable": 637921,
+          "rawAdmissionAttempts": 1211361,
+          "rawAdmitted": 1178508
+        },
+        "retain": {
+          "requests": 104,
+          "nodes": 10400000,
+          "evaluationCalls": 9304481,
+          "rawConsumed": 0,
+          "rawAvailable": 637921,
+          "rawAdmissionAttempts": 1701536,
+          "rawAdmitted": 1668683
+        }
+      }
+    },
+    {
+      "workers": 4,
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\lifetime-v1-w4.jsonl",
+      "sha256": "d90374d6dcf31141bf00ee6073171b000e8d25c7c453eba3df23b35edff13428",
+      "totals": {
+        "h2": {
+          "requests": 104,
+          "nodes": 10400000,
+          "evaluationCalls": 9326852,
+          "rawConsumed": 0,
+          "rawAvailable": 0,
+          "rawAdmissionAttempts": 0,
+          "rawAdmitted": 0
+        },
+        "foundation": {
+          "requests": 104,
+          "nodes": 10400000,
+          "evaluationCalls": 8838507,
+          "rawConsumed": 500026,
+          "rawAvailable": 647957,
+          "rawAdmissionAttempts": 1216488,
+          "rawAdmitted": 1183913
+        },
+        "retain": {
+          "requests": 104,
+          "nodes": 10400000,
+          "evaluationCalls": 9339339,
+          "rawConsumed": 0,
+          "rawAvailable": 643204,
+          "rawAdmissionAttempts": 1704362,
+          "rawAdmitted": 1672599
+        }
+      }
+    }
+  ],
+  "interpretation": "624 instrumented persistent-history requests passed. W1 identical work/results/PVs; exactly490175 fewer evaluator calls (5.27%). Retention-only has availability without avoidance. W4 verifies use/accounting/legality/drain, not deterministic equality. No instrumented speed or strength inference."
+}

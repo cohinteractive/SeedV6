@@ -1,0 +1,101 @@
+{
+  "status": "passed",
+  "requests": 54,
+  "totals": [
+    {
+      "workers": 1,
+      "profile": "h2",
+      "requests": 9,
+      "nodes": 362547,
+      "evaluationCalls": 337396,
+      "rawAdmitted": 0,
+      "rawProbes": 0,
+      "rawAttempts": 0,
+      "rawConsumed": 0,
+      "rawAvailable": 0,
+      "scoreAdmitted": 48796,
+      "scoreHits": 19833,
+      "scoreCutoffs": 6805
+    },
+    {
+      "workers": 1,
+      "profile": "foundation",
+      "requests": 9,
+      "nodes": 362547,
+      "evaluationCalls": 323095,
+      "rawAdmitted": 39058,
+      "rawProbes": 61036,
+      "rawAttempts": 39130,
+      "rawConsumed": 14301,
+      "rawAvailable": 21027,
+      "scoreAdmitted": 48796,
+      "scoreHits": 19833,
+      "scoreCutoffs": 6805
+    },
+    {
+      "workers": 1,
+      "profile": "retain",
+      "requests": 9,
+      "nodes": 362547,
+      "evaluationCalls": 337396,
+      "rawAdmitted": 53359,
+      "rawProbes": 61036,
+      "rawAttempts": 53431,
+      "rawConsumed": 0,
+      "rawAvailable": 21027,
+      "scoreAdmitted": 48796,
+      "scoreHits": 19833,
+      "scoreCutoffs": 6805
+    },
+    {
+      "workers": 4,
+      "profile": "h2",
+      "requests": 9,
+      "nodes": 379723,
+      "evaluationCalls": 354691,
+      "rawAttempts": 0,
+      "rawConsumed": 0,
+      "rawAvailable": 0,
+      "scoreAdmitted": 52929,
+      "scoreHits": 21276,
+      "scoreCutoffs": 7310,
+      "rawAdmitted": 0,
+      "rawProbes": 0
+    },
+    {
+      "workers": 4,
+      "profile": "foundation",
+      "requests": 9,
+      "nodes": 375528,
+      "evaluationCalls": 335818,
+      "rawAttempts": 43623,
+      "rawConsumed": 14871,
+      "rawAvailable": 21994,
+      "scoreAdmitted": 52091,
+      "scoreHits": 20958,
+      "scoreCutoffs": 7209,
+      "rawAdmitted": 43537,
+      "rawProbes": 65070
+    },
+    {
+      "workers": 4,
+      "profile": "retain",
+      "requests": 9,
+      "nodes": 401328,
+      "evaluationCalls": 374548,
+      "rawAttempts": 62080,
+      "rawConsumed": 0,
+      "rawAvailable": 25437,
+      "scoreAdmitted": 55529,
+      "scoreHits": 24346,
+      "scoreCutoffs": 8731,
+      "rawAdmitted": 61997,
+      "rawProbes": 70084
+    }
+  ],
+  "raw": [
+    "raw/diagnostic-v2-retry1-w1.jsonl",
+    "raw/diagnostic-v2-retry1-w4.jsonl"
+  ],
+  "qualification": "W1 matched nodes/score/PV, actual evaluation avoidance14301; W4 scheduling dependent. No speed or strength claim."
+}

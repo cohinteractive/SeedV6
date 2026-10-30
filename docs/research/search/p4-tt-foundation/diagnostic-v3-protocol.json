@@ -1,0 +1,31 @@
+{
+  "id": "TTF-DIAGNOSTIC-V3",
+  "purpose": "Causal information-use and null-admission diagnostics, not strength or clean timing",
+  "runtimeManifest": "prototype-v3-manifest.json",
+  "profiles": [
+    "h2",
+    "foundation",
+    "retain"
+  ],
+  "domains": [
+    1,
+    4
+  ],
+  "depth": 6,
+  "budgetPerRequest": 1000000,
+  "roots": 9,
+  "requestsPerDomain": 27,
+  "rounds": 1,
+  "limits": "60s per request, 15min per domain; stop on integrity/accounting/PV/drain failure; preserve partial evidence",
+  "gates": [
+    "W1 foundation/retain equal H2 nodes,score,PV",
+    "availability distinguished from actual use",
+    "actual inference avoidance independently accounted",
+    "legal PV,board,full accounting and drain"
+  ],
+  "costs": "instrumented; no speed inference",
+  "strength": "none",
+  "next": "analyze structure, revise if needed, then prospectively select clean costs",
+  "formulation": "TTF-F3-v1 packed coherent main-node information",
+  "interpretation": "Requalify packed raw/move representation and omitted redundant hint write. No qsearch cache/null guard. Same capacity/payload as H2, current-request raw lifetime. Each version remains separate evidence."
+}

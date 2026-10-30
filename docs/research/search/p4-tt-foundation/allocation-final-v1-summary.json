@@ -1,0 +1,36 @@
+{
+  "id": "TTF-ALLOCATION-FINAL-V1",
+  "status": "passed",
+  "protocol": "allocation-final-v1-protocol.json",
+  "domains": {
+    "control": {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\allocation-final-v1-control.json",
+      "sha256": "c8ac2042c5f9571fd90206e56321e196e6a462bccde53c4af6fb8bf8ca3a6724",
+      "constructorAllocatedBytes": [
+        50335976
+      ],
+      "payloadBytes": 50331648,
+      "entries": 2097152,
+      "medianRetainedHeapDelta": 53481656.0,
+      "clearMedianMs": 0.66795,
+      "clearMinMs": 0.4665,
+      "clearMaxMs": 1.2841,
+      "clearSamples": 32
+    },
+    "foundation": {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\allocation-final-v1-foundation.json",
+      "sha256": "e8e13a6fb015b4cf0e42f0534fe8e585156eb5899a3f51d85a05b6c5b2d81fb2",
+      "constructorAllocatedBytes": [
+        50335976
+      ],
+      "payloadBytes": 50331648,
+      "entries": 2097152,
+      "medianRetainedHeapDelta": 53481656.0,
+      "clearMedianMs": 2.3314,
+      "clearMinMs": 2.0053,
+      "clearMaxMs": 3.156,
+      "clearSamples": 32
+    }
+  },
+  "interpretation": "Identical constructor bytes/capacity/payload. Packed-layout reset clears a second long array, increasing observed median reset cost. Clears require drained workers and occur at newGame or generation wrap; short empty-table sequential sample, not a universal latency bound. Worker scratch and process footprint are separate."
+}

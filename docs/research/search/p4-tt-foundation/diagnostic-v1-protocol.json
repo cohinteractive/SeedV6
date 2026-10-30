@@ -1,0 +1,32 @@
+{
+  "id": "TTF-DIAGNOSTIC-V1",
+  "purpose": "Causal information-use and null-admission diagnostics, not strength or clean timing",
+  "runtimeManifest": "prototype-v1-manifest.json",
+  "profiles": {
+    "production": "flags3407871, current production policy; technical80 semantics",
+    "h2": "prior H2 policy same runtime",
+    "raw": "H2 plus raw evaluation production/consumption",
+    "retain": "same raw layout/production but consumption disabled",
+    "guard": "H2 plus near-depth upper-bound null veto",
+    "integrated": "raw plus guard"
+  },
+  "domains": [
+    1,
+    4
+  ],
+  "depth": 6,
+  "budgetPerRequest": 1000000,
+  "roots": 9,
+  "requestsPerDomain": 54,
+  "rounds": 1,
+  "limits": "60s per request, 15min per domain; stop on integrity/accounting/PV/drain failure; preserve partial evidence",
+  "gates": [
+    "W1 raw and retain match H2 nodes/depth/score/PV",
+    "actual raw consumption accounts for avoided inference",
+    "actual qualified null vetoes and changed null work recorded",
+    "coherent memory and legal/history/state/lifecycle tests pass before qualification"
+  ],
+  "costs": "instrumented; no speed inference",
+  "strength": "none",
+  "next": "analyze structure, revise if needed, then prospectively select clean costs"
+}

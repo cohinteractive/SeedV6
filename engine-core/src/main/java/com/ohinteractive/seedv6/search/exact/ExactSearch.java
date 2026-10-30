@@ -232,6 +232,9 @@ public final class ExactSearch {
         Objects.requireNonNull(config,"config");
         if(config.has(FlatSearchConfig.Feature.COMPLETED_HINTS) && table==null)
             throw new IllegalArgumentException("Completed hints require a table");
+        if(config.has(FlatSearchConfig.Feature.TT_INFORMATION)
+                && (table==null || !table.hasRawEvaluationLane()))
+            throw new IllegalArgumentException("TT raw evaluation requires its explicitly allocated lane");
         var search=new ExactSearch(evaluator,table,SEE_MATERIAL_QUIET_HISTORY,STAGED_LAZY,
                 SORT_CROSSOVER,PVS,true,QSEARCH_BASELINE,false,false,false,true,null,true,
                 config.has(FlatSearchConfig.Feature.LMR)?LMR_QUIET:LMR_OFF,null,
@@ -1065,6 +1068,7 @@ public final class ExactSearch {
                     }
                     checkpoint();nodes++;pvLength[ply]=0;
                     if(constructionState!=null) constructionState.rawEval[ply]=Integer.MIN_VALUE;
+                    if(informationMemory()) constructionState.ttRawEval[ply]=Integer.MIN_VALUE;
                     long checking=checkers(board,status);
                     flags=(flags&4)|(checking!=0?1:0);
                     if(checking!=0) count=Gen.genEvasion(board[0],board[1],board[2],board[3],status,
@@ -1088,10 +1092,15 @@ public final class ExactSearch {
                     }
                     if(ply==MAX_DEPTH) throw ABORTED;
                     originalAlpha=alpha;originalBeta=beta;key=0;hashMove=0;
-                    boolean ttPresent=false,ttReturn=false;
+                    boolean ttPresent=false,ttReturn=false,informationHit=false;
+                    boolean information=informationMemory() && !nullVerification;
                     if(table!=null && !nullProbeActive && (ply!=0 || restrictedRootMove==0)) {
                         key=SearchKey.key(board,historyKeys[ply]);
-                        if(table.probe(key,entry)) {
+                        if(information) {
+                            informationHit=table.probeInformation(key,entry);
+                            if(informationHit) constructionState.ttRawEval[ply]=entry.rawEvaluation;
+                        }
+                        if(information ? informationHit && entry.hasOrdinaryScore() : table.probe(key,entry)) {
                             ttPresent=true;hashMove=entry.hashMove;
                             if((flags&2)!=0 && hashMove!=0 && !CaptureHistory.isTactical(hashMove,Board.enPassantSquare(status))) {
                                 count=appendQuiets(board,legalMoves,count);flags&=~2;
@@ -1116,7 +1125,7 @@ public final class ExactSearch {
                     // legal null verification remain independent of heuristic TT.
                     // The score is never represented as an exhaustive proof.
                     if(heuristicMemory() && !nullProbeActive && !nullVerification && (ply!=0 || restrictedRootMove==0)
-                            && table.probeHeuristic(key,entry)) {
+                            && (information ? informationHit && entry.hasHeuristicScore() : table.probeHeuristic(key,entry))) {
                         long data=entry.data;
                         hashMove=entry.hashMove;
                         if((flags&2)!=0 && hashMove!=0 && !CaptureHistory.isTactical(hashMove,Board.enPassantSquare(status))) {
@@ -1139,7 +1148,7 @@ public final class ExactSearch {
                     }
                     if(completedHints && !ttPresent && !nullProbeActive && !nullVerification && (ply!=0 || restrictedRootMove==0)) {
                         if(hintDiagnostics!=null) hintDiagnostics.probes++;
-                        hashMove=table.probeHint(key);
+                        hashMove=information ? informationHit && entry.hasCompletedHint()?entry.hashMove:0 : table.probeHint(key);
                         if(hashMove!=0) {
                             if((flags&2)!=0 && !CaptureHistory.isTactical(hashMove,Board.enPassantSquare(status))) {
                                 count=appendQuiets(board,legalMoves,count);flags&=~2;
@@ -1407,12 +1416,24 @@ public final class ExactSearch {
     private int constructionEval(long[] board,int ply) {
         int value=constructionState.rawEval[ply];
         if(value==Integer.MIN_VALUE) {
-            checkpoint();value=evaluator.evaluate(board,ply);constructionState.evaluations++;
+            checkpoint();
+            if(informationMemory() && !nullProbeActive && !nullVerification)
+                value=constructionState.ttRawEval[ply];
+            if(value!=Integer.MIN_VALUE) table.rawEvaluationUsed();
+            else {value=evaluator.evaluate(board,ply);constructionState.evaluations++;}
             if(value < -MAX_STATIC_SCORE || value > MAX_STATIC_SCORE)
                 throw new IllegalArgumentException("Static score enters the reserved mate band: "+value);
             constructionState.rawEval[ply]=value;
+            if(informationMemory() && !nullProbeActive && !nullVerification
+                    && constructionState.ttRawEval[ply]==Integer.MIN_VALUE) {
+                checkpoint();table.saveRawEvaluation(SearchKey.key(board,historyKeys[ply]),value);
+            }
         }
         return value;
+    }
+
+    private boolean informationMemory() {
+        return construction!=null && construction.has(FlatSearchConfig.Feature.TT_INFORMATION);
     }
 
     private int negamax(int depth, int ply, int alpha, int beta, long previousMove, boolean scout) {
@@ -2641,6 +2662,7 @@ public final class ExactSearch {
     }
 
     private int completed(long key, int depth, int ply, int alpha, int beta, int score, long move, long entryEpoch) {
+        boolean hintPublished=false;
         // A prediction anywhere in the searched subtree taints this result.
         // Suppress ancestor writes too, including otherwise EXACT outcomes.
         // Unaffected subtrees remain eligible for normal exact TT reuse.
@@ -2655,14 +2677,17 @@ public final class ExactSearch {
                 && (ply!=0 || restrictedRootMove==0)) {
             checkpoint();
             int type=score<=alpha?TTable.TYPE_UPPER:score>=beta?TTable.TYPE_LOWER:TTable.TYPE_EXACT;
-            if(agedHeuristicMemory()) table.saveHeuristicAged(key,depth,type,score,move);
-            else table.saveHeuristic(key,depth,type,score,move);
+            boolean saved=agedHeuristicMemory()?table.saveHeuristicAged(key,depth,type,score,move)
+                    :table.saveHeuristic(key,depth,type,score,move);
+            // A successful score save already applied the same depth-qualified
+            // hint update. Keep rejected-score/mate fallbacks and legacy diagnostics.
+            hintPublished=informationMemory() && saved && hintDiagnostics==null;
         }
         if((completedHints || hintDiagnostics!=null) && !nullProbeActive && !nullVerification
                 && (ply!=0 || restrictedRootMove==0) && move!=0 && depth>=1 && depth<=255) {
             checkpoint(); // The node, not an incomplete/cancelled ancestor, produced this legal move.
             if(hintDiagnostics!=null) hintDiagnostics.completedProducers++;
-            if(completedHints) {
+            if(completedHints && !hintPublished) {
                 boolean saved=agedHeuristicMemory()?table.saveHintAged(key,depth,move):table.saveHint(key,depth,move);
                 if(saved && hintDiagnostics!=null) hintDiagnostics.stored++;
             }

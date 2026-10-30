@@ -23,7 +23,7 @@ public record ConstructionSearch(FlatSearchConfig mechanisms,int workers,int has
                 && !(evaluation.isBrnPair2() || evaluation.isConventional() || evaluation.isResearchCentipawnsFullRecompute()
                     || evaluation.isResearchCentipawnsStateful() || evaluation == SearchEvaluation.handcrafted()))
             throw new IllegalArgumentException("Construction margins require HCE, Pair-2, conventional NNUE or explicit research centipawns");
-        var table=new TTable(hashMiB);
+        var table=new TTable(hashMiB,mechanisms.has(FlatSearchConfig.Feature.TT_INFORMATION));
         if(workers==1) {
             var owner=ExactSearchAdapter.constructionResearch(evaluation,table,mechanisms);
             return aspiration==null?owner:new AspirationSearch(owner,aspiration);

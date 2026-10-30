@@ -1,0 +1,22 @@
+{
+  "id": "TTF-ALLOCATION-FINAL-V1",
+  "runtimeManifest": "runtime-final-prototype-v1-manifest.json",
+  "main": "com.ohinteractive.seedv6.search.exact.P4TtMemoryAllocation",
+  "layout": [
+    false,
+    true
+  ],
+  "hashMiB": 64,
+  "jvm": [
+    "-Xms256m",
+    "-Xmx1g"
+  ],
+  "constructorSamples": 4,
+  "clearWarmups": 4,
+  "clearSamples": 32,
+  "scope": "Isolated table constructor and empty-table sequential clear cost; no concurrent search, not process peak or game cost",
+  "output": [
+    "raw/allocation-final-v1-control.json",
+    "raw/allocation-final-v1-foundation.json"
+  ]
+}

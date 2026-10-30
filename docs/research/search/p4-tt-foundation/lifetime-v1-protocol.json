@@ -1,0 +1,27 @@
+{
+  "id": "TTF-LIFETIME-V1",
+  "runtime": "prototype-v3-manifest.json",
+  "harnessClass": "docs\\research\\search\\p4-tt-foundation\\raw\\lifetime-harness-v1\\com\\ohinteractive\\seedv6\\search\\exact\\P4TtFoundationLifetime.class",
+  "classSha256": "ffc2b7f22416788f012789b37c474c5b78397c6fc4c161a95b5176aaa897acf7",
+  "source": "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4TtFoundationLifetime.java",
+  "sourceSha256": "72b002f638d308a9239e683b2260cc2a878eed980e5143e5d50c234f82629f3a",
+  "corpus": "docs\\research\\search\\p4-tt-memory\\h1-lifetime-v1-roots.tsv",
+  "corpusSha256": "fb15e94aed2b32f8cab946f46bb8b75f959cb8939fb4265d5fa627c43be9b5b0",
+  "selection": "All104 existing real-history diagnostic inputs, reused as inputs only, no historical results pooled",
+  "profiles": [
+    "h2",
+    "foundation",
+    "retain"
+  ],
+  "workers": [
+    1,
+    4
+  ],
+  "nodes": 100000,
+  "depthLimit": 40,
+  "requestsPerDomain": 312,
+  "ownership": "Persistent owner per actor stream, close/drain between streams",
+  "gates": "W1 scores/depth/PV equal, actual raw-use and evaluator avoidance, all accounting/PV/state/drain pass",
+  "timing": "Instrumented, no clean cost inference",
+  "stopping": "60s request/15min domain, preserve failures"
+}

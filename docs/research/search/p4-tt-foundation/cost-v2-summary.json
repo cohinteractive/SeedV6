@@ -1,0 +1,777 @@
+{
+  "id": "TTF-COST-V2",
+  "status": "passed",
+  "domains": [
+    {
+      "workers": 1,
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\cost-v2-retry1-w1.jsonl",
+      "sha256": "289828dc28daf150c67cd55dfa6478fef3709308e117ba5754739c84e77014d3",
+      "requests": 108,
+      "comparisons": {
+        "foundation": {
+          "wallRatio": 1.0157866329681253,
+          "cpuRatio": 1.0222397955654974,
+          "pairs": [
+            {
+              "root": "start",
+              "round": 0,
+              "wallRatio": 1.0140700485905028,
+              "cpuRatio": 1.12
+            },
+            {
+              "root": "opening-1",
+              "round": 0,
+              "wallRatio": 1.052576796611891,
+              "cpuRatio": 1.0434782608695652
+            },
+            {
+              "root": "opening-2",
+              "round": 0,
+              "wallRatio": 0.9777512672637524,
+              "cpuRatio": 0.9642857142857143
+            },
+            {
+              "root": "opening-3",
+              "round": 0,
+              "wallRatio": 1.0023806455826914,
+              "cpuRatio": 0.9285714285714286
+            },
+            {
+              "root": "opening-4",
+              "round": 0,
+              "wallRatio": 1.0004075533524905,
+              "cpuRatio": 0.9642857142857143
+            },
+            {
+              "root": "opening-5",
+              "round": 0,
+              "wallRatio": 1.0065657251409175,
+              "cpuRatio": 0.9259259259259259
+            },
+            {
+              "root": "opening-6",
+              "round": 0,
+              "wallRatio": 0.9925772304323278,
+              "cpuRatio": 1.0
+            },
+            {
+              "root": "opening-7",
+              "round": 0,
+              "wallRatio": 1.0817935169065234,
+              "cpuRatio": 1.12
+            },
+            {
+              "root": "opening-8",
+              "round": 0,
+              "wallRatio": 1.0050420756544778,
+              "cpuRatio": 1.0
+            },
+            {
+              "root": "start",
+              "round": 1,
+              "wallRatio": 0.9952425550064222,
+              "cpuRatio": 1.0384615384615385
+            },
+            {
+              "root": "opening-1",
+              "round": 1,
+              "wallRatio": 1.0063604048757204,
+              "cpuRatio": 1.0869565217391304
+            },
+            {
+              "root": "opening-2",
+              "round": 1,
+              "wallRatio": 1.0147132639124448,
+              "cpuRatio": 1.037037037037037
+            },
+            {
+              "root": "opening-3",
+              "round": 1,
+              "wallRatio": 0.9703224527074303,
+              "cpuRatio": 0.96
+            },
+            {
+              "root": "opening-4",
+              "round": 1,
+              "wallRatio": 1.0004103895305478,
+              "cpuRatio": 1.0
+            },
+            {
+              "root": "opening-5",
+              "round": 1,
+              "wallRatio": 0.9369844614691473,
+              "cpuRatio": 1.04
+            },
+            {
+              "root": "opening-6",
+              "round": 1,
+              "wallRatio": 0.9828584066545957,
+              "cpuRatio": 1.037037037037037
+            },
+            {
+              "root": "opening-7",
+              "round": 1,
+              "wallRatio": 1.0326613939881333,
+              "cpuRatio": 1.04
+            },
+            {
+              "root": "opening-8",
+              "round": 1,
+              "wallRatio": 1.0376529815573503,
+              "cpuRatio": 1.0
+            },
+            {
+              "root": "start",
+              "round": 2,
+              "wallRatio": 1.0353779209119667,
+              "cpuRatio": 1.0384615384615385
+            },
+            {
+              "root": "opening-1",
+              "round": 2,
+              "wallRatio": 1.0073903826473318,
+              "cpuRatio": 1.04
+            },
+            {
+              "root": "opening-2",
+              "round": 2,
+              "wallRatio": 1.1163136894890129,
+              "cpuRatio": 1.0
+            },
+            {
+              "root": "opening-3",
+              "round": 2,
+              "wallRatio": 1.049630229538664,
+              "cpuRatio": 1.0416666666666667
+            },
+            {
+              "root": "opening-4",
+              "round": 2,
+              "wallRatio": 1.0778731974161815,
+              "cpuRatio": 1.0571428571428572
+            },
+            {
+              "root": "opening-5",
+              "round": 2,
+              "wallRatio": 0.9879267232124849,
+              "cpuRatio": 1.0384615384615385
+            },
+            {
+              "root": "opening-6",
+              "round": 2,
+              "wallRatio": 0.9809358499844705,
+              "cpuRatio": 1.0
+            },
+            {
+              "root": "opening-7",
+              "round": 2,
+              "wallRatio": 1.0400689044497822,
+              "cpuRatio": 1.04
+            },
+            {
+              "root": "opening-8",
+              "round": 2,
+              "wallRatio": 1.0387345329244193,
+              "cpuRatio": 1.0689655172413792
+            }
+          ]
+        },
+        "retain": {
+          "wallRatio": 1.0124632823838309,
+          "cpuRatio": 1.0172284532846076,
+          "pairs": [
+            {
+              "root": "start",
+              "round": 0,
+              "wallRatio": 0.9954780084881971,
+              "cpuRatio": 0.96
+            },
+            {
+              "root": "opening-1",
+              "round": 0,
+              "wallRatio": 1.0468483064021323,
+              "cpuRatio": 1.0434782608695652
+            },
+            {
+              "root": "opening-2",
+              "round": 0,
+              "wallRatio": 1.019409534046493,
+              "cpuRatio": 1.0714285714285714
+            },
+            {
+              "root": "opening-3",
+              "round": 0,
+              "wallRatio": 1.0060246827733212,
+              "cpuRatio": 0.9285714285714286
+            },
+            {
+              "root": "opening-4",
+              "round": 0,
+              "wallRatio": 0.9824449239457631,
+              "cpuRatio": 1.0357142857142858
+            },
+            {
+              "root": "opening-5",
+              "round": 0,
+              "wallRatio": 1.0155037214661642,
+              "cpuRatio": 0.9259259259259259
+            },
+            {
+              "root": "opening-6",
+              "round": 0,
+              "wallRatio": 1.09114530003509,
+              "cpuRatio": 1.1428571428571428
+            },
+            {
+              "root": "opening-7",
+              "round": 0,
+              "wallRatio": 1.0540195084242292,
+              "cpuRatio": 1.0
+            },
+            {
+              "root": "opening-8",
+              "round": 0,
+              "wallRatio": 1.0306048425832737,
+              "cpuRatio": 1.0
+            },
+            {
+              "root": "start",
+              "round": 1,
+              "wallRatio": 1.02196375064738,
+              "cpuRatio": 1.0384615384615385
+            },
+            {
+              "root": "opening-1",
+              "round": 1,
+              "wallRatio": 1.0207479172439426,
+              "cpuRatio": 1.0434782608695652
+            },
+            {
+              "root": "opening-2",
+              "round": 1,
+              "wallRatio": 1.0291937686780936,
+              "cpuRatio": 1.037037037037037
+            },
+            {
+              "root": "opening-3",
+              "round": 1,
+              "wallRatio": 0.9936279673330788,
+              "cpuRatio": 0.96
+            },
+            {
+              "root": "opening-4",
+              "round": 1,
+              "wallRatio": 1.0317669941754049,
+              "cpuRatio": 1.0769230769230769
+            },
+            {
+              "root": "opening-5",
+              "round": 1,
+              "wallRatio": 0.9659962993153072,
+              "cpuRatio": 1.04
+            },
+            {
+              "root": "opening-6",
+              "round": 1,
+              "wallRatio": 1.006529045719628,
+              "cpuRatio": 0.9259259259259259
+            },
+            {
+              "root": "opening-7",
+              "round": 1,
+              "wallRatio": 1.0482968066311638,
+              "cpuRatio": 1.08
+            },
+            {
+              "root": "opening-8",
+              "round": 1,
+              "wallRatio": 1.0612896711935542,
+              "cpuRatio": 1.103448275862069
+            },
+            {
+              "root": "start",
+              "round": 2,
+              "wallRatio": 1.0473634315013014,
+              "cpuRatio": 1.0384615384615385
+            },
+            {
+              "root": "opening-1",
+              "round": 2,
+              "wallRatio": 1.0079765092890698,
+              "cpuRatio": 0.96
+            },
+            {
+              "root": "opening-2",
+              "round": 2,
+              "wallRatio": 0.9800526664239059,
+              "cpuRatio": 0.9310344827586207
+            },
+            {
+              "root": "opening-3",
+              "round": 2,
+              "wallRatio": 1.0077920837717873,
+              "cpuRatio": 1.0
+            },
+            {
+              "root": "opening-4",
+              "round": 2,
+              "wallRatio": 0.8468261484727441,
+              "cpuRatio": 0.9428571428571428
+            },
+            {
+              "root": "opening-5",
+              "round": 2,
+              "wallRatio": 0.975719467583506,
+              "cpuRatio": 1.0
+            },
+            {
+              "root": "opening-6",
+              "round": 2,
+              "wallRatio": 1.0202150011832045,
+              "cpuRatio": 1.037037037037037
+            },
+            {
+              "root": "opening-7",
+              "round": 2,
+              "wallRatio": 1.0684273602572976,
+              "cpuRatio": 1.2
+            },
+            {
+              "root": "opening-8",
+              "round": 2,
+              "wallRatio": 0.9886761440500896,
+              "cpuRatio": 1.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "workers": 4,
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\cost-v2-retry1-w4.jsonl",
+      "sha256": "318fe6135e1fcd103bce559d19681b8ec7b54914b4448eb55e15ddee4f0015a2",
+      "requests": 108,
+      "comparisons": {
+        "foundation": {
+          "wallRatio": 0.9970053816159026,
+          "cpuRatio": 1.0249721682836177,
+          "pairs": [
+            {
+              "root": "start",
+              "round": 0,
+              "wallRatio": 0.9957900629624508,
+              "cpuRatio": 1.1724137931034482
+            },
+            {
+              "root": "opening-1",
+              "round": 0,
+              "wallRatio": 1.0151959684099536,
+              "cpuRatio": 0.6875
+            },
+            {
+              "root": "opening-2",
+              "round": 0,
+              "wallRatio": 0.9338853130912594,
+              "cpuRatio": 0.7346938775510204
+            },
+            {
+              "root": "opening-3",
+              "round": 0,
+              "wallRatio": 1.0984526850708745,
+              "cpuRatio": 1.054054054054054
+            },
+            {
+              "root": "opening-4",
+              "round": 0,
+              "wallRatio": 1.1828077770937184,
+              "cpuRatio": 1.2647058823529411
+            },
+            {
+              "root": "opening-5",
+              "round": 0,
+              "wallRatio": 0.9477383453269566,
+              "cpuRatio": 1.2121212121212122
+            },
+            {
+              "root": "opening-6",
+              "round": 0,
+              "wallRatio": 0.9610148323711094,
+              "cpuRatio": 1.15
+            },
+            {
+              "root": "opening-7",
+              "round": 0,
+              "wallRatio": 0.9683168004541942,
+              "cpuRatio": 0.9696969696969697
+            },
+            {
+              "root": "opening-8",
+              "round": 0,
+              "wallRatio": 0.9982182157875232,
+              "cpuRatio": 1.0731707317073171
+            },
+            {
+              "root": "start",
+              "round": 1,
+              "wallRatio": 0.9765579858824891,
+              "cpuRatio": 1.0333333333333334
+            },
+            {
+              "root": "opening-1",
+              "round": 1,
+              "wallRatio": 0.9849835945473279,
+              "cpuRatio": 1.0588235294117647
+            },
+            {
+              "root": "opening-2",
+              "round": 1,
+              "wallRatio": 1.0488341270506154,
+              "cpuRatio": 1.024390243902439
+            },
+            {
+              "root": "opening-3",
+              "round": 1,
+              "wallRatio": 1.0780679058050802,
+              "cpuRatio": 1.1470588235294117
+            },
+            {
+              "root": "opening-4",
+              "round": 1,
+              "wallRatio": 0.8568716281983395,
+              "cpuRatio": 0.9459459459459459
+            },
+            {
+              "root": "opening-5",
+              "round": 1,
+              "wallRatio": 0.9663769095047784,
+              "cpuRatio": 1.0606060606060606
+            },
+            {
+              "root": "opening-6",
+              "round": 1,
+              "wallRatio": 1.0384970880364943,
+              "cpuRatio": 1.0465116279069768
+            },
+            {
+              "root": "opening-7",
+              "round": 1,
+              "wallRatio": 1.038250879263405,
+              "cpuRatio": 1.0740740740740742
+            },
+            {
+              "root": "opening-8",
+              "round": 1,
+              "wallRatio": 1.038418982976792,
+              "cpuRatio": 0.9761904761904762
+            },
+            {
+              "root": "start",
+              "round": 2,
+              "wallRatio": 0.9341691172847691,
+              "cpuRatio": 1.0
+            },
+            {
+              "root": "opening-1",
+              "round": 2,
+              "wallRatio": 0.9990423891728195,
+              "cpuRatio": 0.9743589743589743
+            },
+            {
+              "root": "opening-2",
+              "round": 2,
+              "wallRatio": 0.9775738199156925,
+              "cpuRatio": 0.7608695652173914
+            },
+            {
+              "root": "opening-3",
+              "round": 2,
+              "wallRatio": 1.02586707692759,
+              "cpuRatio": 1.1290322580645162
+            },
+            {
+              "root": "opening-4",
+              "round": 2,
+              "wallRatio": 0.9529792675445384,
+              "cpuRatio": 1.15625
+            },
+            {
+              "root": "opening-5",
+              "round": 2,
+              "wallRatio": 1.0011338701001529,
+              "cpuRatio": 1.0303030303030303
+            },
+            {
+              "root": "opening-6",
+              "round": 2,
+              "wallRatio": 0.9477043877065648,
+              "cpuRatio": 0.8837209302325582
+            },
+            {
+              "root": "opening-7",
+              "round": 2,
+              "wallRatio": 1.0326294658237765,
+              "cpuRatio": 1.2758620689655173
+            },
+            {
+              "root": "opening-8",
+              "round": 2,
+              "wallRatio": 0.969167313618782,
+              "cpuRatio": 1.0681818181818181
+            }
+          ]
+        },
+        "retain": {
+          "wallRatio": 0.9866566512618705,
+          "cpuRatio": 1.0109122807546707,
+          "pairs": [
+            {
+              "root": "start",
+              "round": 0,
+              "wallRatio": 1.0138464076081433,
+              "cpuRatio": 1.206896551724138
+            },
+            {
+              "root": "opening-1",
+              "round": 0,
+              "wallRatio": 1.059974907517895,
+              "cpuRatio": 1.0208333333333333
+            },
+            {
+              "root": "opening-2",
+              "round": 0,
+              "wallRatio": 0.9681807132727438,
+              "cpuRatio": 0.9591836734693877
+            },
+            {
+              "root": "opening-3",
+              "round": 0,
+              "wallRatio": 0.9289407003352421,
+              "cpuRatio": 0.8378378378378378
+            },
+            {
+              "root": "opening-4",
+              "round": 0,
+              "wallRatio": 1.0755426687585645,
+              "cpuRatio": 1.2352941176470589
+            },
+            {
+              "root": "opening-5",
+              "round": 0,
+              "wallRatio": 0.9447779574209677,
+              "cpuRatio": 1.0606060606060606
+            },
+            {
+              "root": "opening-6",
+              "round": 0,
+              "wallRatio": 0.9408364824787343,
+              "cpuRatio": 0.95
+            },
+            {
+              "root": "opening-7",
+              "round": 0,
+              "wallRatio": 0.9193086568618148,
+              "cpuRatio": 0.9090909090909091
+            },
+            {
+              "root": "opening-8",
+              "round": 0,
+              "wallRatio": 1.0454674363418743,
+              "cpuRatio": 1.048780487804878
+            },
+            {
+              "root": "start",
+              "round": 1,
+              "wallRatio": 0.9900122417914017,
+              "cpuRatio": 1.2
+            },
+            {
+              "root": "opening-1",
+              "round": 1,
+              "wallRatio": 0.985188358801,
+              "cpuRatio": 0.9705882352941176
+            },
+            {
+              "root": "opening-2",
+              "round": 1,
+              "wallRatio": 1.0425896449430865,
+              "cpuRatio": 0.8780487804878049
+            },
+            {
+              "root": "opening-3",
+              "round": 1,
+              "wallRatio": 1.0416106795771665,
+              "cpuRatio": 1.0
+            },
+            {
+              "root": "opening-4",
+              "round": 1,
+              "wallRatio": 0.8660412432528853,
+              "cpuRatio": 1.0810810810810811
+            },
+            {
+              "root": "opening-5",
+              "round": 1,
+              "wallRatio": 0.9604467031631244,
+              "cpuRatio": 1.121212121212121
+            },
+            {
+              "root": "opening-6",
+              "round": 1,
+              "wallRatio": 0.9929955407949267,
+              "cpuRatio": 1.0
+            },
+            {
+              "root": "opening-7",
+              "round": 1,
+              "wallRatio": 1.0145586740357313,
+              "cpuRatio": 1.0740740740740742
+            },
+            {
+              "root": "opening-8",
+              "round": 1,
+              "wallRatio": 1.0601029038703833,
+              "cpuRatio": 0.9761904761904762
+            },
+            {
+              "root": "start",
+              "round": 2,
+              "wallRatio": 0.9949848994747802,
+              "cpuRatio": 0.9090909090909091
+            },
+            {
+              "root": "opening-1",
+              "round": 2,
+              "wallRatio": 0.9858923404924304,
+              "cpuRatio": 0.8974358974358975
+            },
+            {
+              "root": "opening-2",
+              "round": 2,
+              "wallRatio": 1.0414776022219736,
+              "cpuRatio": 0.9347826086956522
+            },
+            {
+              "root": "opening-3",
+              "round": 2,
+              "wallRatio": 1.0380324238133627,
+              "cpuRatio": 1.2258064516129032
+            },
+            {
+              "root": "opening-4",
+              "round": 2,
+              "wallRatio": 0.9269095863343862,
+              "cpuRatio": 1.0625
+            },
+            {
+              "root": "opening-5",
+              "round": 2,
+              "wallRatio": 1.0255423877869896,
+              "cpuRatio": 1.1515151515151516
+            },
+            {
+              "root": "opening-6",
+              "round": 2,
+              "wallRatio": 0.8711768784595105,
+              "cpuRatio": 0.7674418604651163
+            },
+            {
+              "root": "opening-7",
+              "round": 2,
+              "wallRatio": 0.9797554226744707,
+              "cpuRatio": 1.0
+            },
+            {
+              "root": "opening-8",
+              "round": 2,
+              "wallRatio": 0.9677047512249175,
+              "cpuRatio": 1.0
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "memory": {
+    "False": {
+      "scope": "TT constructor allocation and approximate retained heap; excludes Search/evaluator/process runtime",
+      "jvm": [
+        "-Xms256m",
+        "-Xmx512m",
+        "-XX:ActiveProcessorCount=4"
+      ],
+      "java": "21+35-2513",
+      "rows": [
+        {
+          "retainedHeapDelta": 53481744,
+          "constructorAllocatedBytes": 50335976,
+          "constructorNanos": 6425800,
+          "payloadBytes": 50331648,
+          "entries": 2097152
+        },
+        {
+          "retainedHeapDelta": 53481656,
+          "constructorAllocatedBytes": 50335976,
+          "constructorNanos": 1969300,
+          "payloadBytes": 50331648,
+          "entries": 2097152
+        },
+        {
+          "retainedHeapDelta": 53481656,
+          "constructorAllocatedBytes": 50335976,
+          "constructorNanos": 1983000,
+          "payloadBytes": 50331648,
+          "entries": 2097152
+        },
+        {
+          "retainedHeapDelta": 53481656,
+          "constructorAllocatedBytes": 50335976,
+          "constructorNanos": 1798800,
+          "payloadBytes": 50331648,
+          "entries": 2097152
+        }
+      ],
+      "rawLane": false
+    },
+    "True": {
+      "scope": "TT constructor allocation and approximate retained heap; excludes Search/evaluator/process runtime",
+      "jvm": [
+        "-Xms256m",
+        "-Xmx512m",
+        "-XX:ActiveProcessorCount=4"
+      ],
+      "java": "21+35-2513",
+      "rows": [
+        {
+          "retainedHeapDelta": 62918928,
+          "constructorAllocatedBytes": 58724600,
+          "constructorNanos": 12397400,
+          "payloadBytes": 58720256,
+          "entries": 2097152
+        },
+        {
+          "retainedHeapDelta": 62918840,
+          "constructorAllocatedBytes": 58724600,
+          "constructorNanos": 2493500,
+          "payloadBytes": 58720256,
+          "entries": 2097152
+        },
+        {
+          "retainedHeapDelta": 62918840,
+          "constructorAllocatedBytes": 58724600,
+          "constructorNanos": 3612100,
+          "payloadBytes": 58720256,
+          "entries": 2097152
+        },
+        {
+          "retainedHeapDelta": 62918840,
+          "constructorAllocatedBytes": 58724600,
+          "constructorNanos": 3746600,
+          "payloadBytes": 58720256,
+          "entries": 2097152
+        }
+      ],
+      "rawLane": true
+    }
+  },
+  "interpretation": "F2 main-only coherent reads reduce avoidable inference (W1 14301/337396 calls, 4.24%) but no demonstrated runtime gain. Investigate representation/write coupling: generated moves occupy low32 bits, so optional raw lane can use spare high32 of move word; skip redundant hint save only when a successful score save already published equivalent guidance. F2 is not qualified."
+}

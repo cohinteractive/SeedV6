@@ -1,0 +1,32 @@
+{
+  "id": "TTF-COST-V1",
+  "runtimeManifest": "prototype-v1-manifest.json",
+  "profiles": [
+    "h2",
+    "raw",
+    "retain",
+    "guard",
+    "integrated"
+  ],
+  "domains": [
+    1,
+    4
+  ],
+  "corpus": "../p4-tt-memory/h1-diagnostic-roots.tsv",
+  "warmupRounds": 1,
+  "measuredRounds": 3,
+  "roots": 9,
+  "depthLimit": 40,
+  "nodesPerRequest": 250000,
+  "order": "rotate by round/root/offset",
+  "timing": "uninstrumented TT and no null observers; normal public diagnostics on; whole driver request only; allocation before timed request excluded",
+  "inference": "per-root paired/geometric means, distributions and CPU; no strength inference or timing claims from instrumented data",
+  "limitations": [
+    "short single-host windows",
+    "W4 scheduling changes trees",
+    "node counts not equal work across different guard formulations",
+    "construction/reset allocation excluded and measured separately"
+  ],
+  "stop": "60s request or 15min domain, fail on accounting/PV/drain/board integrity; preserve failures",
+  "selection": "prefer a useful consumer with manageable costs; do not automatically retain bound guard because it is implemented"
+}
