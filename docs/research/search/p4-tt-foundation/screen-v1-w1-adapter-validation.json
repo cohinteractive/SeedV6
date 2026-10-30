@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "adapterSha256": "f638bc55f403193a87bcc6c21ee391697840aa0f3b211fcfbeddf2ca21badd0a",
+  "protocol": "screen-v1-protocol.json",
+  "runnerSummary": "screen-v1-w1-summary.json"
+}

@@ -1,8 +1,9 @@
 # TT information foundation - execution state
 
 Updated 30 October 2026. Governing [TTF-R001](CONTRACT.md); repository masters
-P4-R003/P4-F014 after bootstrap. **Active autonomous investigation. No qualification,
-strength claim, owner acceptance or production promotion.**
+P4-R003/P4-F015 at handback. **Technical execution complete; proposed limited
+foundational qualification. GPT/owner reconciliation pending. No strength claim,
+owner acceptance, champion advancement or production promotion.**
 
 ## Bootstrap and challenge
 
@@ -49,12 +50,12 @@ Bootstrap challenge, performed against source rather than inherited labels:
 - A small STATE action list is sufficient. No extra work-selection framework. No
   production-default changes; exact controls and frozen BOUNDARY2 evidence stay intact.
 
-Challenge result: no blocking contradiction; proceed with a bounded prototype and
-tests, then select from measured information use/cost rather than assuming success.
+Initial challenge result: no blocking contradiction. This led to a bounded prototype
+and selection from measured information use/cost, rather than assumed success.
 
-## First prototype evidence
+## Retained first-prototype history
 
-Bootstrap committed at `7754ebd5` without a build bump. The first prototype is
+Bootstrap committed at `7754ebd5` without a build bump. The first prototype was
 uncommitted code with build82 metadata, distinctly frozen by
 [prototype manifest](prototype-v1-manifest.json); it is not the historical build82
 artifact. Five storage and four Search tests passed, including raw zero/mate domains,
@@ -63,8 +64,8 @@ against full-rebuild evaluation, null isolation and W1-16 accounting/drain/resta
 Raw logs/XML are in `raw/focused-v1`. The harness's first compile failed because
 AspirationSearch constructors require concrete owner types; corrected without an
 engine change, preserving `raw/prototype-build-v1.log` and the successful v2 log.
-The bootstrap manifest's CRLF was flagged by diff-check and is normalized to LF
-in the next attributable change; no data/identity changes.
+The bootstrap manifest's CRLF was flagged by diff-check and normalized to LF
+in implementation commit32feb907; no data/identity changed.
 
 [TTF-DIAGNOSTIC-V1](diagnostic-v1-protocol.json) completed 108 requests across W1/W4,
 nine real-history roots, depth6/1M cap, six causal profiles. All requests passed
@@ -75,81 +76,64 @@ but avoided no evaluation. This establishes consumption and avoided inference, n
 speed or strength. W4 also consumed raw values, with scheduling-dependent trees.
 Near-depth bound-aware null admission vetoed23 W1 attempts and reduced null work,
 but total nodes rose170 (0.047%): no demonstrated integrated effort benefit.
-It remains a candidate dependency test, not automatically part of the final foundation.
+The guard was rejected from the final formulation; its source and evidence remain.
 
-TTF-COST-V1 is prospectively fixed in [protocol](cost-v1-protocol.json): same frozen
+TTF-COST-V1 was prospectively frozen in [protocol](cost-v1-protocol.json): same frozen
 prototype, five profiles, W1/W4, nine roots, 250k nodes, one warmup plus three
 measured rounds, rotated order. Raw output `raw/cost-v1-w1.jsonl` and W4 counterpart.
-Do not confuse completed raw outputs with a live process; check process state on resume.
+The run completed with material cost penalties and F1 was not qualified; see
+[FORMULATIONS](FORMULATIONS.md) for F1/F2 selection and subsequent F3 evidence.
 
-## Current action
+## Current disposition and resume point
 
-**Selected for final qualification: TTF-F3-v1, packed coherent main-node information.**
-See [FORMULATIONS](FORMULATIONS.md) for the preserved F1/F2 negative/inconclusive
-cost findings and structural adaptations. No qsearch cache or new null policy remains.
+**TTF-F3-v1, packed coherent main-node information: proposed limited experimental
+foundational technical qualification.** Read [QUALIFICATION](QUALIFICATION.md) for
+the A-G assessment, exact controls, adverse evidence, costs and limits. This is the
+terminal technical proposal for TTF-R001; it is not GPT/owner acceptance.
 
-F3 combines raw evaluation with existing score/hint information in the existing24-byte
-slot, and consumes one coherent snapshot in main Search. Raw values are materialized
-only by actual improving/futility/verified-null evaluation consumers. Separate current
-request raw validity, H2 score age, hint freshness and provenance remain. Generated
-unsigned32 move bits are preserved; unsupported high bits are rejected before mutation
-only in opt-in mode. Legacy full-long tables remain compatible. New explicit research
-launcher uses flags32767999; production stays3407871, H1/H2 unchanged.
+Implementation: `32feb9078d0aa53a26e6c23bfb772f815e501e7f`, build83, flags32767999.
+[Runtime](runtime-f3-build83-v1-manifest.json) and [artifact equivalence](build83-artifact-equivalence.json)
+identify the committed executable. Build82 to83 was verified exactly once in the
+qualifying implementation commit; user-owned version components stayed0.0.0.
+Do not bump again for these reports or the same completed implementation.
 
-[323 tests](broad-v3-summary.json) passed (206 core,26 UCI,91 selected research).
-[54 F3 diagnostic requests](diagnostic-v3-summary.json) preserved W1 nodes/scores/PVs
-and aspiration windows, avoiding14,301 evaluator calls, including5,546 during27
-repeated-window attempts. [216 clean-cost requests](cost-v3-summary.json), including
-warmups, showed wall ratios0.9859 W1/0.9914 W4 and CPU1.0071/0.9759 versus H2.
-These small/noisy differences support no material overhead in this domain, not a
-proven speed improvement. Actual table-constructor allocation is50,335,976 bytes
-in both modes; payload50,331,648 bytes (48MiB),2,097,152 entries. Worker scratch is
-additional and JVM/process footprint is a separate quantity.
+Evidence: final323 tests passed;54 causal diagnostic requests,624 persistent-history
+requests,216 clean-cost requests including warmups,104 launcher/control requests
+plus two stop/reset requests passed. W1 avoided490,175 of9,304,481 evaluator calls
+(5.27%) in persistent real histories with identical nodes/depth/score/PV; the
+retention-only ablation avoided none. This removes output-head evaluation, not
+accumulator transitions or5.27% of total Search cost. Same-runtime H2 clean-cost
+wall ratios0.9859 W1/0.9914 W4 support no material observed overhead in that domain,
+not a proven speed gain. Table payload stays48MiB and constructor allocation stays
+50,335,976 bytes; per-worker scratch adds about1KiB. Median table clear cost rises
+0.668 to2.331ms. See FORMULATIONS for retained F1/F2 negative/intermediate evidence.
 
-[624 persistent-history requests](lifetime-v1-summary.json) passed on the frozen F3
-prototype. Across104 W1 requests, 490,175 evaluator calls (5.27%) were avoided with
-identical nodes/depth/score/PV versus H2. Retention-only avoided none despite having
-available values. W4 consumed500,026 raw values, with valid accounting/PV/draining;
-its scheduling-dependent trees preclude direct equality. Timing was instrumented.
+Both fixed eight-pair game domains completed against actual frozen H2/build82:
+[single worker](screen-v1-w1-summary.json),5W/5D/6L; [four workers](screen-v1-w4-summary.json),
+3W/5D/8L. All32 games ended normally and4,723 request traces passed, with zero
+missing-score warnings, stable inputs and drained engine handles. Strength is
+inconclusive and the W4 point estimate is adverse. [Trace investigation](screen-v1-trace-analysis.json)
+found no clock/accounting/fallback failure or broad effort/depth collapse; it does
+not rule out a competitive penalty. This foundation is not endorsed as stronger
+or neutral, especially in W4. No more games or tuning follow automatically.
 
-Final source adds a defensive rejection of legacy TYPE_EVAL writes in the opt-in
-information layout: otherwise a caller could mix the legacy untyped evaluation-table
-representation with scored records. Legacy tables are unchanged. The F3 normal
-producer/consumer paths used by measured diagnostics do not invoke TYPE_EVAL.
-The final323-test run and runtime installation are at `raw/final-tests-v1` (check
-completion and exact source before resuming). New lifetime/memory harnesses do not
-alter the frozen engine. Initial V2 wrapper setup failed before Search because a
-Python manifest-preparation syntax error left the runtime absent; retain
-`raw/diagnostic-v2-w1.log`; separately named retry1 runs completed.
+All completed and failed outputs remain under `raw/`; [integrity](evidence-integrity.json)
+checks cover named source/runtime/JSONL groups and game evidence. Raw files are
+local-only and unavailable in a fresh checkout until separately supplied; check
+availability and hashes before use. Never overwrite/replay completed protocols.
+The initial V2 wrapper and system-Python isolation import failures are retained;
+separately named retries passed. Historical TT-R001 records and unopened BOUNDARY2
+studies remain intact. No process from this workstream remains active at handback.
 
-[Launcher isolation](isolation-v1-retry1-summary.json) passed 104 requests plus two
-explicit stop/reset requests. Frozen build80, H1 and H2 match their current W1 routes;
-foundation also matches frozen H2. W4 accounting/PV/draining passed. The initial
-system-Python invocation failed at import (missing chess) before any engine started;
-the existing research venv completed the same frozen protocol. Both logs remain.
+**Next admissible action: GPT/owner reconciliation of this bounded proposal.**
+That decision is blocking for acceptance or successor selection. No authorized
+implementation/experiment step remains needed for the present technical proposal.
+A future owner-authorized integrated/parallel strength objective must retain the
+negative W4 signal and exact source/configuration, not infer strength from avoided
+calls. Build79 remains accepted champion;80 is the accounting-corrected technical
+control; historical H1/H2 remain experimental with their separate reconciliation.
 
-[Allocation/reset](allocation-final-v1-summary.json) confirms identical constructor
-allocation. Median empty-table clear cost was 0.668 ms H2 versus 2.331 ms foundation;
-the packed layout clears a second array. This bounded lifecycle cost is accepted
-for the experimental request-scoped foundation, not hidden in timed Search costs.
-
-Implementation committed at `32feb9078d0aa53a26e6c23bfb772f815e501e7f`, build83.
-Only the build integer changed, exactly82 to83. The installed frozen runtime is
-[identified here](runtime-f3-build83-v1-manifest.json); byte comparison of2,128
-archive members/files differs from the tested final prototype only in generated
-version properties. No further build bump belongs to these reports/experiments.
-
-Next/current: execute [TTF-SCREEN-V1](screen-v1-protocol.json), W1 then W4, eight
-paired openings per domain at10+0.1 against frozen experimental H2. One game at a
-time, no overlapping heavy work, fixed sample and2400s/domain timeout. Outputs:
-`raw/screen-v1-w1` and `raw/screen-v1-w4`. Before resuming, check owned process and
-run/summary status; do not overwrite output or rerun completed domains. The sample
-is a bounded operational/coarse regression screen with very wide uncertainty,
-not independent confirmation, equivalence or a champion79 comparison.
-
-After both domains, assess A-G and propose limited foundational qualification if
-supported, or continue from material adverse evidence. Owner acceptance, champion
-advancement and production promotion are separate; no final proposal yet.
-
-No blocking human action. Owner mirror refresh to P4-R003/P4-F014 is non-blocking for
-repository work and required only before mirror-dependent Project planning.
+Owner Project mirror refresh: current masters **P4-R003/P4-F015**; only the Frontier
+changed since launch. Refresh its separate Project Source before mirror-dependent
+planning. This is non-blocking for completed repository work. No push, deployment,
+release, production default change or successor launch occurred.

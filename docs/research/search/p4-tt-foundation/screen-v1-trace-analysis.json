@@ -1,0 +1,179 @@
+{
+  "status": "passed",
+  "scriptSha256": "e9525e4a5cdca7be400b0318b9533f0f482a545a74c191d271255f8b010a58f2",
+  "domains": [
+    {
+      "workers": 1,
+      "trace": "docs\\research\\search\\p4-tt-foundation\\raw\\screen-v1-w1\\uci-trace.log",
+      "sha256": "7dddd575c2c4b8a09dcab6a7bf5b3f3caf4803b4406206bfcbbfac74f57cb5f9",
+      "actors": {
+        "baseline": {
+          "requests": 1100,
+          "nodes": 164941069,
+          "elapsedNanos": 242756488600,
+          "terminations": {
+            "TIME_ALLOCATION": 918,
+            "TIME_LIMIT": 164,
+            "COMPLETED": 18
+          },
+          "completedDepthHistogram": {
+            "1": 23,
+            "6": 38,
+            "7": 214,
+            "8": 387,
+            "9": 227,
+            "10": 103,
+            "11": 37,
+            "12": 24,
+            "13": 17,
+            "14": 1,
+            "15": 2,
+            "16": 1,
+            "17": 1,
+            "23": 1,
+            "27": 1,
+            "43": 1,
+            "81": 1,
+            "111": 1,
+            "140": 1,
+            "255": 1,
+            "256": 18
+          },
+          "medianCompletedDepth": 8.0,
+          "minimumAvailableClockMs": 149,
+          "maximumRequestToAvailableClockRatio": 0.7248984455958548,
+          "requestsExceedingAvailableClock": 0,
+          "zeroDepthCompletedRequests": 0,
+          "completedNodesToWholeRequestNodes": 0.8428444282727426
+        },
+        "candidate": {
+          "requests": 1099,
+          "nodes": 165871780,
+          "elapsedNanos": 242749055900,
+          "terminations": {
+            "TIME_ALLOCATION": 929,
+            "TIME_LIMIT": 155,
+            "COMPLETED": 15
+          },
+          "completedDepthHistogram": {
+            "1": 25,
+            "5": 1,
+            "6": 45,
+            "7": 209,
+            "8": 358,
+            "9": 248,
+            "10": 116,
+            "11": 33,
+            "12": 28,
+            "13": 6,
+            "14": 1,
+            "15": 2,
+            "18": 1,
+            "21": 1,
+            "24": 1,
+            "25": 1,
+            "28": 1,
+            "39": 1,
+            "92": 1,
+            "114": 1,
+            "135": 1,
+            "149": 1,
+            "217": 1,
+            "223": 1,
+            "256": 15
+          },
+          "medianCompletedDepth": 8,
+          "minimumAvailableClockMs": 150,
+          "maximumRequestToAvailableClockRatio": 0.7340850515463917,
+          "requestsExceedingAvailableClock": 0,
+          "zeroDepthCompletedRequests": 0,
+          "completedNodesToWholeRequestNodes": 0.8662134631942817
+        }
+      }
+    },
+    {
+      "workers": 4,
+      "trace": "docs\\research\\search\\p4-tt-foundation\\raw\\screen-v1-w4\\uci-trace.log",
+      "sha256": "a980a6d309058bfa4357a53ee12f1d5e223f2672ddc4cd785e4ba8053e2394f7",
+      "actors": {
+        "baseline": {
+          "requests": 1264,
+          "nodes": 309650165,
+          "elapsedNanos": 263245508700,
+          "terminations": {
+            "TIME_ALLOCATION": 1110,
+            "TIME_LIMIT": 137,
+            "COMPLETED": 17
+          },
+          "completedDepthHistogram": {
+            "1": 17,
+            "6": 13,
+            "7": 143,
+            "8": 384,
+            "9": 454,
+            "10": 168,
+            "11": 52,
+            "12": 2,
+            "13": 2,
+            "14": 1,
+            "15": 2,
+            "23": 1,
+            "24": 1,
+            "26": 1,
+            "52": 1,
+            "68": 1,
+            "129": 1,
+            "173": 1,
+            "227": 1,
+            "230": 1,
+            "256": 17
+          },
+          "medianCompletedDepth": 9.0,
+          "minimumAvailableClockMs": 150,
+          "maximumRequestToAvailableClockRatio": 0.7392626315789473,
+          "requestsExceedingAvailableClock": 0,
+          "zeroDepthCompletedRequests": 0,
+          "completedNodesToWholeRequestNodes": 0.894520601983209
+        },
+        "candidate": {
+          "requests": 1260,
+          "nodes": 301280922,
+          "elapsedNanos": 261429390800,
+          "terminations": {
+            "TIME_ALLOCATION": 1108,
+            "TIME_LIMIT": 137,
+            "COMPLETED": 15
+          },
+          "completedDepthHistogram": {
+            "1": 23,
+            "6": 8,
+            "7": 98,
+            "8": 406,
+            "9": 513,
+            "10": 155,
+            "11": 28,
+            "12": 4,
+            "18": 1,
+            "21": 1,
+            "32": 1,
+            "39": 1,
+            "51": 1,
+            "63": 1,
+            "84": 1,
+            "109": 1,
+            "143": 1,
+            "231": 1,
+            "256": 15
+          },
+          "medianCompletedDepth": 9.0,
+          "minimumAvailableClockMs": 255,
+          "maximumRequestToAvailableClockRatio": 0.47653860759493666,
+          "requestsExceedingAvailableClock": 0,
+          "zeroDepthCompletedRequests": 0,
+          "completedNodesToWholeRequestNodes": 0.8938691278965217
+        }
+      }
+    }
+  ],
+  "scope": "Post hoc descriptive investigation of completed screen traces. Actors encounter different positions; depth/node/time aggregates are not causal quality or efficiency comparisons. No new strength test, no game extension, no protocol alteration."
+}

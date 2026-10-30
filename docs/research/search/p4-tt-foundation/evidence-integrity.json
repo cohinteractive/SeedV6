@@ -1,0 +1,165 @@
+{
+  "status": "passed",
+  "scope": "Five relevant frozen prototype/runtime manifests, all14 completed diagnostic/cost/lifetime JSONL studies, both fixed game domains and post-screen trace analysis verified. Exact V2 retry names were resolved from local availability; no evidence was absent. No full-tree/ignored-file hashing or historical experiment reopening.",
+  "checks": [
+    {
+      "manifest": "prototype-v1-manifest.json",
+      "sha256": "9180a04f4b731aba6f99c603a6299f731948985d8df5a97ecfc5e5a78567fc11",
+      "runtimeFiles": 29,
+      "sourceFiles": 7,
+      "status": "passed"
+    },
+    {
+      "manifest": "prototype-v2-manifest.json",
+      "sha256": "9b633aa2350598357c2b4e41db7b405d130d2eb5b0cb743ec1d3a7c95c17dde7",
+      "runtimeFiles": 29,
+      "sourceFiles": 9,
+      "status": "passed"
+    },
+    {
+      "manifest": "prototype-v3-manifest.json",
+      "sha256": "9c522c7ccfff7bf86a2cb9f2b13428650cb52a59eb3dc6760b24ce5f960d2221",
+      "runtimeFiles": 31,
+      "sourceFiles": 11,
+      "status": "passed"
+    },
+    {
+      "manifest": "runtime-final-prototype-v1-manifest.json",
+      "sha256": "e94b696b68cefefa0134f2fedc25de3ee243da16d0914e5668d3d8b42ba29f21",
+      "runtimeFiles": 31,
+      "status": "passed"
+    },
+    {
+      "manifest": "runtime-f3-build83-v1-manifest.json",
+      "sha256": "3fa536ea179fca5e6812d75a1fd8eff718a897b738e34105e33388dd17f04100",
+      "runtimeFiles": 31,
+      "status": "passed"
+    },
+    {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\diagnostic-v1-w1.jsonl",
+      "sha256": "fcfe773b4ec17ddf157914b8c367326edf0a6e1f104444701158dd92cb0f01d2",
+      "jsonRecords": 56,
+      "status": "passed"
+    },
+    {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\diagnostic-v1-w4.jsonl",
+      "sha256": "d2e2125808dadd1109a96759f4c52728aa4193cc9be4d4058751a3a0464ca677",
+      "jsonRecords": 56,
+      "status": "passed"
+    },
+    {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\diagnostic-v3-w1.jsonl",
+      "sha256": "6ffdafd4916398017131adab6f85c43763d43e756dcf2446b2ad86a32d091e94",
+      "jsonRecords": 29,
+      "status": "passed"
+    },
+    {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\diagnostic-v3-w4.jsonl",
+      "sha256": "dc776d1ada77393aea3b5688eb62103c4a2125b5cd50ffbb16223ac57b36fbdc",
+      "jsonRecords": 29,
+      "status": "passed"
+    },
+    {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\cost-v1-w1.jsonl",
+      "sha256": "d955abecdd662f7c72516c2acd1fe1af71187fd692708f4317fe34a713cdf241",
+      "jsonRecords": 182,
+      "status": "passed"
+    },
+    {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\cost-v1-w4.jsonl",
+      "sha256": "a2d257288ec0b75104f238e76902f079e143bdf09eb9a2b11baf66e30ba86fa3",
+      "jsonRecords": 182,
+      "status": "passed"
+    },
+    {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\cost-v3-w1.jsonl",
+      "sha256": "c708a47096b80324e62f4971d60754b80717e7b18988c31174718d602c5ccb2f",
+      "jsonRecords": 110,
+      "status": "passed"
+    },
+    {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\cost-v3-w4.jsonl",
+      "sha256": "42d06abb5546da5a547268a2aa5e134a5244adb20a4d4c907e064e3bac05dad2",
+      "jsonRecords": 110,
+      "status": "passed"
+    },
+    {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\lifetime-v1-w1.jsonl",
+      "sha256": "65a474a110dfdda91324519dc4b6a7c673fd2648059b2ec859985c3ef4afff4b",
+      "jsonRecords": 313,
+      "status": "passed"
+    },
+    {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\lifetime-v1-w4.jsonl",
+      "sha256": "d90374d6dcf31141bf00ee6073171b000e8d25c7c453eba3df23b35edff13428",
+      "jsonRecords": 313,
+      "status": "passed"
+    },
+    {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\diagnostic-v2-retry1-w1.jsonl",
+      "sha256": "7ec562e37076b89c82ca771dc83169c82bf320c42e0a3632afaf299d3673d6db",
+      "jsonRecords": 29,
+      "status": "passed"
+    },
+    {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\diagnostic-v2-retry1-w4.jsonl",
+      "sha256": "854a8c53337751a8d4684685e94b7863723cff135e106fd8a4c037279c30fa2b",
+      "jsonRecords": 29,
+      "status": "passed"
+    },
+    {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\cost-v2-retry1-w1.jsonl",
+      "sha256": "289828dc28daf150c67cd55dfa6478fef3709308e117ba5754739c84e77014d3",
+      "jsonRecords": 110,
+      "status": "passed"
+    },
+    {
+      "raw": "docs\\research\\search\\p4-tt-foundation\\raw\\cost-v2-retry1-w4.jsonl",
+      "sha256": "318fe6135e1fcd103bce559d19681b8ec7b54914b4448eb55e15ddee4f0015a2",
+      "jsonRecords": 110,
+      "status": "passed"
+    },
+    {
+      "gameDomain": 1,
+      "status": "passed",
+      "files": {
+        "docs\\research\\search\\p4-tt-foundation\\screen-v1-w1-summary.json": "77b72d9aeb95de85708dc155c94f176cb4af1bea74fe5cc5c64850ccb190d610",
+        "docs\\research\\search\\p4-tt-foundation\\screen-v1-w1-adapter-validation.json": "0e688e285e0085f086f9692acc42668c82984b9fe78e1f80d068602ac5084638",
+        "docs\\research\\search\\p4-tt-foundation\\raw\\screen-v1-w1\\run.json": "4b7da1f8ee28ff523b16b4e30d80f59580955d7d8254568c176b9cc4f0b8a5b3",
+        "docs\\research\\search\\p4-tt-foundation\\raw\\screen-v1-w1\\games.pgn": "5e075c4a9553205b3afba94cb14dc59d66f4b86f6a99f50836e5da7905930ae8",
+        "docs\\research\\search\\p4-tt-foundation\\raw\\screen-v1-w1\\uci-trace.log": "7dddd575c2c4b8a09dcab6a7bf5b3f3caf4803b4406206bfcbbfac74f57cb5f9",
+        "docs\\research\\search\\p4-tt-foundation\\raw\\screen-v1-w1\\process-cost.json": "01557ed8d0e6651fb576d741e4fffbc804030723859ce0ad466af29bd03ef09e"
+      },
+      "normalGames": 16,
+      "auditedRequests": 2199,
+      "engineExitCodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "gameDomain": 4,
+      "status": "passed",
+      "files": {
+        "docs\\research\\search\\p4-tt-foundation\\screen-v1-w4-summary.json": "7c35ffafb744a4fdabda7cfda19fb5cb953d6d9baad9d5c49b42e65303154eaa",
+        "docs\\research\\search\\p4-tt-foundation\\screen-v1-w4-adapter-validation.json": "d0978257077ffece9aa97eb76e91f739c68c369411709d66a9efa3870ec2634e",
+        "docs\\research\\search\\p4-tt-foundation\\raw\\screen-v1-w4\\run.json": "0acb88e43c8fdbf53b77a7826142912fa7f51294ca61c791a082489a3c1b8429",
+        "docs\\research\\search\\p4-tt-foundation\\raw\\screen-v1-w4\\games.pgn": "13a0050cb8885655092ae20f053a6000e9f1010543c71452655159e57daa6e85",
+        "docs\\research\\search\\p4-tt-foundation\\raw\\screen-v1-w4\\uci-trace.log": "a980a6d309058bfa4357a53ee12f1d5e223f2672ddc4cd785e4ba8053e2394f7",
+        "docs\\research\\search\\p4-tt-foundation\\raw\\screen-v1-w4\\process-cost.json": "85fd438cbea1e2c5d6ad55c8d4bd194e8de3855bd513ae1fe53e9a4c881d664f"
+      },
+      "normalGames": 16,
+      "auditedRequests": 2524,
+      "engineExitCodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "postScreenTraceAnalysis": "screen-v1-trace-analysis.json",
+      "sha256": "80a7345a05fad8ea04f426249c72f64a1bf0ef6b9f0a13d43d7b44304e07bc48",
+      "scriptSha256": "e9525e4a5cdca7be400b0318b9533f0f482a545a74c191d271255f8b010a58f2",
+      "status": "passed"
+    }
+  ]
+}

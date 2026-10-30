@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "from": "prototype-v3-manifest.json",
+  "to": "runtime-final-prototype-v1-manifest.json",
+  "changedSourceFiles": [
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\tt\\TTable.java",
+    "engine-core\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\tt\\TTableInformationTest.java",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4TtMemoryAllocation.java",
+    "tools\\p4-tt-foundation.py"
+  ],
+  "engineClassDifferences": [
+    "com/ohinteractive/seedv6/search/tt/TTable.class"
+  ],
+  "runtimeSourceDifference": {
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\tt\\TTable.java": [
+      "--- frozen/engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\tt\\TTable.java",
+      "+++ engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\tt\\TTable.java",
+      "@@ -96,6 +96,8 @@",
+      "     }",
+      " ",
+      "     public void save(long key, int depth, int type, int score, long hashMove) {",
+      "+        if(informationLayout && type==TYPE_EVAL)",
+      "+            throw new IllegalArgumentException(\"Use the independent raw lane in an information table\");",
+      "         requireMove(hashMove);",
+      "         int index = (int) key & indexMask;",
+      "         int stripe = index & (STRIPE_MASK);"
+    ]
+  },
+  "interpretation": "The only measured-prototype-to-final core change rejects legacy TYPE_EVAL publication before mutation in the opt-in layout. The actual foundation uses saveRawEvaluation and scored/hint APIs; no TYPE_EVAL calls. Focused added rejection test and complete323-test final suite passed. Memory clear harness and lifetime harness additions are research-only. All other measured engine class bytes match."
+}

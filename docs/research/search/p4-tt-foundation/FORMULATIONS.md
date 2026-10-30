@@ -76,5 +76,6 @@ nodes/depth/score/PV; the retention-only ablation avoided none. Clean short-requ
 wall ratios were 0.9859 W1 and 0.9914 W4, supporting no material observed overhead
 in that domain, not a proven speed gain. Table constructor allocation and capacity
 match H2. Clearing the second packed array has a measurable reset cost; see
-[allocation evidence](allocation-final-v1-summary.json). Games and final A-G
-assessment remain pending at this implementation checkpoint.
+[allocation evidence](allocation-final-v1-summary.json). [Games and the final A-G assessment](QUALIFICATION.md) now support a proposed
+limited technical foundation, with an adverse W4 exploratory competitive signal
+retained as a material limitation. No owner acceptance or strength gain is claimed.
