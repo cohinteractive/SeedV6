@@ -1,0 +1,32 @@
+{
+  "id": "TT-H2-SCREEN-V1",
+  "status": "prospectively frozen; execute only after clean cost qualification",
+  "question": "Does integrated bounded-age H2 merit independent confirmation against unchanged-policy build80 and direct champion79 comparison?",
+  "candidate": "P4-TT-H2-v1, b0be4fe1ce5bfa8ac714108a3122b7615f25967d/build82, runtimeh2-v1-manifest.json, explicit h2 profile flags15990783, H2-age1-depth-retention-nonpv-normal",
+  "control": "0bfb4ea8422ef78443e309930166ad46df5cc454/build80 runtime80-manifest.json, ordinary production UCI, flags3407871; build79 remains champion",
+  "common": "CP64 checkpoint64 S6CNU002 eight heads BT4_Q_LOGIT400_V1 SHA8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b; Construction V1; margins100/200 cap1; extensions and VERIFIED_NULL intact; ADAPTIVE16; existing BOUNDARY2; Hash64 actual2097152 slots/50331648 entry-payload bytes; no book/tablebase",
+  "domains": "W1 OWNER and W4 ROOT_REUSE separately, game clock10+0.1, 32 paired openings/color reversal per domain, one concurrent game, Ryzen5500 Windows Java21 Xms256m/Xmx512m ActiveProcessorCount4, no overlapping heavy work; actual commands and hashes retained by adapter",
+  "openings": "bridge-v1-openings.pgn, all32 in original order, previously selected with seed2026103001 without outcome filtering; shared bridge openings are exploratory development data, not independent confirmation",
+  "sampleJustification": "Economical coarse screen of the concrete lifetime-supported integrated H2 hypothesis using the same32 development pairs as H1, avoiding outcome-filtered new openings. The H1 pilot pair SDs were0.2652 W1/0.2856 W4, implying normal95 half-widths about9.2/9.9 score points at32 pairs; worst-case normal95 is17.3 points and Hoeffding95 is24.0 points. This can prioritize moderate signals but cannot establish small Elo gains or equivalence. Expected total wall time about63min from the actual H1 runs. No full tuning grid is authorized by these screens.",
+  "stopping": "Fixed32 pairs/domain, W1 thenW4, or first unapproved warning, invalid fallback, illegal result/PV, terminal/accounting, process, input or protocol failure. Narrow audited-fallback policy requires each scoreless response to pass the complete trace audit; no fabricated score.7200s hard timeout/domain. No outcome-dependent stopping or sample extension. Preserve failures and do not interpret partial scores as complete comparisons.",
+  "analysis": "Candidate-centric WDL, paired score distribution, normal95 and bounded Hoeffding95 intervals, normal game termination and full request accounting, resource costs. Two domains and all candidate screens are exploratory: no unadjusted selection-stage interval establishes a confirmatory discovery. Nodes/depth/NPS remain diagnostics.",
+  "nextDecision": "Use complete W1/W4 results with technical and lifetime/cost evidence to prioritize H1, H2 or a narrowly justified connected revision; this is exploratory selection, not an independent H2-versus-H1 causal match. Any candidate selected for confirmation needs a newly frozen claim attempt and independent openings, with direct79 anchoring for a champion-relative claim. H1 attempt1 alpha0.025 remains spent; partial confirmation results are excluded. Neither efficiency nor an exploratory95 interval establishes a discovery. Avoid expensive fine-Elo inference or unbounded tuning.",
+  "logging": "Uninstrumented frozen engines, symmetric full UCI trace engine=true. The qualified audited-fallback adapter monitors all warnings/errors; only fully evidenced legal scoreless clock fallbacks are permitted. All remaining Fastchess PV/bestmove and independent PGN/real-history/request accounting checks remain. Same unchanged BOUNDARY2 selection.",
+  "evidence": "raw/h2-screen-w1-v1 and raw/h2-screen-w4-v1; exact commands, all input hashes, PGN, full communications, process costs and compact summaries. No default/champion change.",
+  "authority": "TT-R001 under P4-R001. Exploratory evidence only; no champion acceptance, default change, release or promotion. Existing historical BOUNDARY2 studies remain unopened.",
+  "frozenUtc": "2026-10-30T00:15:30.644550+00:00",
+  "warningPolicy": "audited-fallback",
+  "admission": "H2 prototype27 focused/310 broader tests and78 isolation requests passed; committed82 class bytes equal qualified prototype except version properties and four artifact requests passed. Complete TT-H2-COST-V1 and resolve any material unexpected cost/operational problem before games. No overlapping heavy work.",
+  "openingSha256": "3a57e5e7062ac0acadefccde3a02a002d531698c3c52724ac81c4d52b2ebf954",
+  "runtimeManifestSha256": {
+    "runtime79-manifest.json": "cd0caef366ac27cb2f398eaca0d48660584de66bac17b24002686ac1386b0ddd",
+    "runtime80-manifest.json": "30802d056659966500faaff493409f99237988c3a725d62ec98e74e3f24c9a33",
+    "runtimeh1-v1-manifest.json": "5d2170c69870d928b0e8e01cba25366acf5c87ff9552dfad512633c16219e1f7",
+    "runtimeh2-v1-manifest.json": "387334b688265b038a6834f85ae16b74dc46fed2c2c5d8762d06c2fddbd51a37"
+  },
+  "toolSha256": {
+    "p4-tt-memory.py": "53b5149876cf53fd44f545639fe90fcf1a3cf20e9d022af42db92eed0b54c5e0",
+    "p4-tt-trace.py": "1e21217304125e4b293a043c09f674a6245dac4eb06d2ed05d43c37972825367"
+  },
+  "seed": 2026103003
+}
