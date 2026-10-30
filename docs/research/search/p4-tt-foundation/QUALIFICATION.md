@@ -1,8 +1,8 @@
 # Foundational TT information architecture - qualification assessment
 
 Objective [TTF-R001](CONTRACT.md), under Search Contract P4-R003. Assessment dated
-30 October 2026. **Proposed limited foundational technical qualification; technical execution complete.
-GPT/owner reconciliation and acceptance remain pending.**
+30 October 2026. **Accepted limited foundational technical qualification.
+TTF-R001 technical execution and owner-acceptance closeout are complete.**
 The governing A-G standard has not changed. This is an experimental foundation,
 not an accepted champion, production selection or claim of stronger play.
 
@@ -23,7 +23,7 @@ mechanisms. Neither a reliable elapsed-time improvement nor stronger play has be
 established. No hypothetical correction, extension or pruning consumer is qualified
 by this work, and no successor objective is launched.
 
-The proposal applies to the explicit F3/H2-integrated profile and stated domains,
+The accepted qualification applies to the explicit F3/H2-integrated profile and stated domains,
 not every feature combination that the low-level configuration API can express.
 H2 is a reproducible causal control and dependency here; this does not retroactively
 accept the historical H2 campaign or establish H2 as the best possible foundation.
@@ -256,8 +256,16 @@ No prior protocol, result, claim allowance or conclusion changes here.
 
 ## Disposition and authority
 
-**A-G are sufficiently supported for a proposed limited experimental technical
-foundation.** The specific enabling benefit is actual repeated raw-evaluation work
+**TTF-R001 is accepted and closed as a successfully completed, limited foundational
+engineering objective.** In the 30 October 2026 closeout authorization, the owner
+confirmed GPT's technical reconciliation and acceptance of the completed evidence
+against the original A-G requirements, explicitly accepted the limited qualification,
+and authorized this documentation closeout. The accepted formulation is
+**TTF-F3-v1 - Packed coherent main-node information**, implementation
+`32feb9078d0aa53a26e6c23bfb772f815e501e7f`, 0.0.0/build83, flags32767999.
+The original evidence, costs, adverse findings and A-G requirements are unchanged.
+
+The specific enabling benefit is actual repeated raw-evaluation work
 removed by existing selective consumers, with preserved deterministic W1 results,
 truthful independent information lifetimes, unchanged table capacity/payload,
 near-neutral observed request costs and passed operational checks. The measured
@@ -268,19 +276,26 @@ statistical performance finding or a relaxation of the original acceptance test.
 The adverse W4 game signal narrows the practical recommendation: this artifact is
 not endorsed as a competitively stronger or neutral replacement, especially in W4.
 Its actual information capability and causal W1 work avoidance support a limited
-foundation proposal despite unresolved strength. The trace investigation found no
+foundation qualification despite unresolved strength. The trace investigation found no
 supported cheap repair; buying enough additional strength precision is not required
 to establish A-D and is not automatically launched. Competitive use needs a new
 explicitly scoped decision with this negative evidence visible. Future options
 include targeted parallel-interaction diagnosis or a newly authorized integrated
 consumer/strength objective, not blind tuning or replay of historical samples.
 
-Technical execution is complete at this proposal boundary. GPT/owner reconciliation
-is **blocking for acceptance and any successor selection**, not for this completed
-technical handback. The owner must refresh the separate Phase4 Frontier Project
-Source to **P4-F015** (Contract remains **P4-R003**) before mirror-dependent planning;
-this is non-blocking for completed repository work. Champion advancement, production
-defaults, push, release and deployment remain separate authorizations. None occurred.
+GPT technical reconciliation and explicit owner acceptance are complete. No successor
+objective is active or authorized; future selection requires separate GPT/owner
+coordination and authorization, preserving the exact configuration, relevant H2
+dependency/control, operational qualifications and unresolved competitive risks.
+This acceptance is neither champion advancement nor production promotion.
+
+The owner confirms the **P4-R003/P4-F015** Project mirrors were refreshed before
+closeout. The repository pair is now **P4-R003/P4-F016**. Refresh the separate
+Frontier Project Source to P4-F016 before mirror-dependent planning; this is
+non-blocking for completed repository closeout and was not done automatically.
+This documentation-only acceptance record ran no new research or technical
+qualification and leaves build83 unchanged. No default change, push, release or
+deployment occurred.
 
 The implementation commit is `32feb9078d0aa53a26e6c23bfb772f815e501e7f` (build82 to83,
 only the build integer changed). Bootstrap is `7754ebd59e38fd50e93dbf7e021999d78bbead89`;
@@ -290,5 +305,5 @@ All changes are attributable to this objective; the starting tree was clean.
 Raw evidence remains ignored at its recorded paths; no push or destructive Git
 operation occurred. Root CODEXLOG_CURRENT.md was absent and was not created.
 [Evidence integrity](evidence-integrity.json) records the relevant availability and
-hash checks. [STATE](STATE.md) remains the unique resume point: await reconciliation,
-do not restart completed work or automatically begin a successor.
+hash checks. [STATE](STATE.md) remains the unique terminal resume point: TTF-R001 is
+accepted and closed; do not restart completed work or begin an unauthorized successor.

@@ -7,6 +7,15 @@ The owner's complete attached CGLHW execution request establishes this new objec
 the masters' preceding no-active-objective statements describe the pre-launch state.
 [STATE](STATE.md) is the unique resume point. No competing programme canon is created.
 
+**Accepted and closed - 30 October 2026.** GPT reconciled the completed evidence
+against the unchanged A-G requirements, and the owner explicitly accepted the
+limited technical qualification of **TTF-F3-v1 - Packed coherent main-node
+information**, implementation `32feb9078d0aa53a26e6c23bfb772f815e501e7f`,
+0.0.0/build83, flags32767999. [QUALIFICATION](QUALIFICATION.md#disposition-and-authority)
+records the accepted scope and retained limitations. The execution directions below
+are the original contract, not continuing authorization. No successor objective,
+champion advancement or production promotion is authorized by this closeout.
+
 ## Stable objective and acceptance
 
 Develop and technically qualify an externally informed TT information architecture

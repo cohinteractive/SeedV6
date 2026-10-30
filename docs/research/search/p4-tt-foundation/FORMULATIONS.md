@@ -76,6 +76,9 @@ nodes/depth/score/PV; the retention-only ablation avoided none. Clean short-requ
 wall ratios were 0.9859 W1 and 0.9914 W4, supporting no material observed overhead
 in that domain, not a proven speed gain. Table constructor allocation and capacity
 match H2. Clearing the second packed array has a measurable reset cost; see
-[allocation evidence](allocation-final-v1-summary.json). [Games and the final A-G assessment](QUALIFICATION.md) now support a proposed
-limited technical foundation, with an adverse W4 exploratory competitive signal
-retained as a material limitation. No owner acceptance or strength gain is claimed.
+[allocation evidence](allocation-final-v1-summary.json). The [final A-G assessment](QUALIFICATION.md#disposition-and-authority)
+was reconciled by GPT and explicitly accepted by the owner on 30 October 2026;
+TTF-R001 is accepted and closed for its limited foundational purpose. The adverse
+W4 exploratory competitive signal remains a material limitation. No strength gain
+or competitive neutrality is established; no champion advancement or production
+promotion occurred.

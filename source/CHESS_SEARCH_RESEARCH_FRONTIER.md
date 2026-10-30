@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 4
 
-Internal frontier revision: **P4-F015**
+Internal frontier revision: **P4-F016**
 
-Status: **ACTIVE Phase4 programme - 30 October2026. TTF-R001 technical execution is complete with proposed limited foundational qualification, pending GPT/owner reconciliation. Its W4 exploratory game signal is adverse; stronger play and competitive neutrality are unproven. The prior TT-memory campaign remains bounded INCONCLUSIVE with its separate reconciliation unchanged. No active autonomous successor, champion advancement or production promotion.**
+Status: **ACTIVE Phase4 programme - 30 October2026. TTF-R001 is accepted and closed as a successfully completed, limited foundational engineering objective; GPT technical reconciliation and explicit owner acceptance are complete. Its W4 exploratory game signal remains adverse; stronger play and competitive neutrality are unproven. The prior TT-memory campaign remains bounded INCONCLUSIVE with its separate pending reconciliation unchanged. No active or authorized successor, champion advancement or production promotion.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 Governing [Contract P4-R003](CHESS_SEARCH_CONTRACT.md). This Frontier records
@@ -402,21 +402,24 @@ for additional games or an expensive confirmation campaign.
 
 ## Lightweight progression and handback
 
-### Foundational workstream - proposed limited technical qualification
+### Foundational workstream - accepted limited qualification and closeout
 
-The 30 October owner execution request establishes **TTF-R001**, subordinate to
+The 30 October owner execution request established **TTF-R001**, subordinate to
 P4-R003, with enabling-capability, consequential downstream integration, correctness,
 operational cost and reproducibility criteria. Immediate standalone Elo superiority
-is not compulsory; proposed technical qualification remains subject to GPT/owner
-reconciliation. [STATE](../docs/research/search/p4-tt-foundation/STATE.md) records the
-source-verified bootstrap challenge, qualification proposal and reconciliation boundary. Prior campaign
+was not compulsory. In the subsequent 30 October closeout authorization, the owner
+confirmed GPT's technical reconciliation and acceptance against the agreed A-G
+requirements, explicitly accepted the limited qualification, and authorized
+documentation closeout only. **TTF-R001 is accepted and closed.**
+[STATE](../docs/research/search/p4-tt-foundation/STATE.md) records the terminal resume
+point, accepted scope and absence of authorized continuation. Prior campaign
 dispositions, protocols, results and pending reconciliation are unchanged. Production
 flags3407871 and champion79 remain. Historical no-objective statements below describe
-the preceding documentation decisions, not the present owner launch.
+the preceding documentation decisions; this closeout authorizes no continuation.
 
 TTF-R001 investigated pinned Stockfish19/Ethereal14/Bagatur5.5c information
-production and consumption and selected **TTF-F3-v1, packed coherent main-node
-information**, implementation `32feb9078d0aa53a26e6c23bfb772f815e501e7f`, build83,
+production and consumption and selected **TTF-F3-v1 - Packed coherent main-node
+information**, implementation `32feb9078d0aa53a26e6c23bfb772f815e501e7f`, 0.0.0/build83,
 flags32767999. Raw ordinary evaluation shares the existing move word with full
 unsigned32 move metadata. A coherent snapshot preserves distinct raw/request,
 heuristic-score/age and hint/freshness meanings. Existing improving/futility/
@@ -424,9 +427,13 @@ verified-null static consumers reuse the value; score-cutoff availability alone
 is not consumption. No qsearch cache or new null-admission policy remains.
 Production flags3407871 and H1/H2 selectors remain unchanged.
 
-The [A-G assessment](../docs/research/search/p4-tt-foundation/QUALIFICATION.md)
-proposes limited technical research qualification, not accepted foundation status
-or stronger play. Final323 tests,54 causal requests,624 persistent-history requests,
+The accepted [A-G assessment](../docs/research/search/p4-tt-foundation/QUALIFICATION.md)
+qualifies the retained experimental foundation for selective Search needing coherent
+raw evaluation, searched-score and completed-move information with truthful meanings
+and lifetimes and demonstrated downstream use. Acceptance covers the explicitly
+tested integrated formulation and documented domains, not arbitrary feature
+combinations, future consumers or platforms, and does not establish stronger play.
+Final323 tests,54 causal requests,624 persistent-history requests,
 216 clean-cost requests including warmups,104 launcher/control requests and two
 stop/reset requests passed. In W1 persistent histories,490,175 of9,304,481 evaluator
 calls (5.27%) were avoided with identical nodes/depth/score/PV; retention-only
@@ -445,21 +452,26 @@ score intervals (W1 0-94.891%, W4 0-82.391%); no confirmation, equivalence or
 champion79 comparison is inferred. **W4 is an adverse competitive warning.**
 Post-screen trace analysis found no clock/accounting/fallback failure or broad
 effort/depth collapse, but cannot rule out a competitive penalty or parallel
-interaction. The limited foundation proposal rests on useful causal information
+interaction. The accepted limited foundation rests on useful causal information
 and bounded technical/cost evidence; it does not endorse competitive replacement,
 especially W4. No additional games, tuning or successor objective is launched.
 
-GPT/owner reconciliation is pending and blocking for acceptance or future selection.
-The exact profile/runtime and negative W4 signal must accompany any such decision.
+Technical execution, GPT reconciliation and owner-acceptance closeout are complete.
+No successor objective is active or authorized. Any future use of build83 requires
+separate GPT/owner selection and authorization preserving the exact profile/runtime,
+relevant H2 dependency/control, operational qualifications and negative W4 signal.
+H2 is not retrospectively accepted as an independently successful foundation.
 Build79 remains the accepted champion; build80 is the accounting-corrected control;
 historical H1/H2 and TT-R001's protocols/results/claim allowances/reconciliation are
 unchanged. No frozen BOUNDARY2 study was opened. All raw evidence remains local-only
 under the recorded ignored paths; protocols, hashes and analytical summaries are in
 Git. STATE is the unique resume point; no autonomous execution remains active.
 
-The owner reports the **P4-R003/P4-F013** Project mirrors refreshed at launch.
-The new current pair is **P4-R003/P4-F015**; refresh the Frontier mirror before
-mirror-dependent planning. That separate owner action does not block repository work.
+The owner confirms the **P4-R003/P4-F015** Project mirrors were refreshed before
+this closeout. The new current pair is **P4-R003/P4-F016**; refresh the Frontier
+mirror before mirror-dependent planning. That separate owner action does not block
+completed repository closeout. This revision records acceptance only; it changes
+no evidence, acceptance requirements, implementation, configuration or build metadata.
 
 The inventory, correction, external map and F003 consolidation are accepted and
 closed. TT-R001's authorized technical execution is complete; the present
@@ -486,11 +498,11 @@ P3-R035/P3-F035 historical authority and links to retained Phase 1/2 history and
 supporting reports. Historical restrictions and failed formulations do not
 become Phase 4 policy by reference; frozen evidence remains unchanged.
 The existing Phase 3 Project retains its owner-confirmed final mirrors, with no
-refresh required. The owner reports the Phase 4 **P4-R003 / P4-F013** mirrors
-refreshed at the TTF-R001 launch. The current repository master pair is
-**P4-R003 / P4-F015**. Refresh the separate Phase 4 Frontier mirror before
-mirror-dependent Project planning; this is non-blocking for repository research.
+refresh required. The owner confirms the Phase 4 **P4-R003 / P4-F015** mirrors
+were refreshed before TTF-R001 acceptance closeout. The current repository master
+pair is **P4-R003 / P4-F016**. Refresh the separate Phase 4 Frontier mirror before
+mirror-dependent Project planning; this is non-blocking for completed closeout.
 Repository edits synchronize neither Project. TT-R001's bounded technical closeout
-still awaits separate GPT/owner reconciliation; TTF-R001 now separately awaits
-reconciliation of its proposed limited foundational qualification. No champion
-advancement or promotion has occurred.
+still awaits its separate GPT/owner reconciliation; TTF-R001's limited foundational
+qualification is accepted and closed. No successor objective is active or authorized,
+and no champion advancement or production promotion has occurred.
