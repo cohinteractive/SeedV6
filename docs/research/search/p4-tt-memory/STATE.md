@@ -1,21 +1,23 @@
 # TT memory workstream ? resume here
 
 Status: **ACTIVE**, 30 October 2026. Objective [TT-R001](CONTRACT.md) is subordinate
-to Search P4-R001. Current programme master pair: **P4-R001 / P4-F008**.
+to Search P4-R001. Current programme master pair: **P4-R001 / P4-F009**.
 H1's W1/W4 development screens are promising but inconclusive. The first W1
 confirmation failed operationally after 112 completed games; it is not a completed
 strength comparison. No confirmed gain, acceptance, champion advancement or
 production promotion has occurred.
 
-**Selected work:** clean H1/H2 successive-request cost diagnostic, prospectively
-frozen as [TT-H2-COST-V1](h2-cost-v1-protocol.json), now executing W1 then W4.
-H2 is committed at b0be4fe1/build82 and its frozen runtime passed preflight; see
-[H2](H2.md). No strength match is active. The prototype passed27 focused tests,
-310 broader tests and78 launcher/isolation requests. The committed rebuild has
-identical class bytes and four successful artifact requests; this is not a full
-test rerun. Cost results will inform selection of a new paired strength screen.
-Do not resume the failed H1 confirmation or execute its conditional champion block.
-H1 remains frozen at a72cc496/build81; build79 remains the accepted champion.
+**Selected work:** execute [TT-H2-SCREEN-V1](h2-screen-v1-protocol.json),32 paired
+development openings per W1/W4 domain against corrected80 at10+0.1,one active
+game. W1 thenW4; audited-fallback mode is prospectively declared. H2 source
+b0be4fe1/build82 and frozen runtime passed qualification and clean cost checks;
+see [H2](H2.md). Cost completed1,248 requests, with832 measured after warmup;
+wall H2/H1 ratios0.994 W1/0.992 W4 show no material regression in that diagnostic.
+The prototype passed310 broader tests (including27 focused) and78 launcher
+checks; committed class bytes match and four artifact requests passed.
+Do not resume failed H1 confirmation or its conditional champion block. H1 stays
+frozen at a72cc496/build81; build79 remains accepted champion. Neither efficiency
+nor the selected exploratory screen establishes an independent strength claim.
 
 ## Identities and completed foundations
 
@@ -153,7 +155,7 @@ score age, protect useful prior depth while refreshing hints independently, reta
 all H1 eligibility/provenance/coherence safeguards and physical capacity/payload.
 The explicit implementation has passed prototype qualification (27 focused/310
 broader tests and78 launcher checks). Committed build82 and its distinct frozen
-runtime passed preflight; clean cost evidence is selected before games. No strength
+runtime passed preflight; clean cost evidence passed and paired screens are selected. No strength
 gain is claimed. Do not tune a grid or add a major subsystem.
 W4 direct79/independent confirmation remains unresolved. Any later confirmation is
 a new claim attempt; H1 attempt1 alpha0.025 stays spent and its partial observations
@@ -189,6 +191,6 @@ CODEXLOG_CURRENT.md was absent; do not create it. Inspect current Git/file prese
 again on resume and preserve unrelated changes. No push/deployment/release is authorized.
 
 Human action: owner refresh of the separate Phase4 Project Frontier mirror to
-**P4-F008**, confirming **P4-R001 / P4-F008**. This is **non-blocking** for repository
+**P4-F009**, confirming **P4-R001 / P4-F009**. This is **non-blocking** for repository
 research and blocks only mirror-dependent Project planning. Prior mirror refreshes
 are not inferred complete. No owner action currently blocks the selected qualification.

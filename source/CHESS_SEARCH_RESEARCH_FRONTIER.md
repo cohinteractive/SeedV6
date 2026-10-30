@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 4
 
-Internal frontier revision: **P4-F008**
+Internal frontier revision: **P4-F009**
 
-Status: **ACTIVE - 30 October 2026. Useful TT score memory CGLHW: build79/build80 bridge characterized; opt-in H1/build81 qualified and screened in W1/W4 with promising but inconclusive results. Independent W1 confirmation interrupted by a truthful-fallback runner incompatibility; runner qualification completed; information-lifetime diagnostic passed and bounded-age H2 hypothesis selected. No champion advancement or production promotion.**
+Status: **ACTIVE - 30 October 2026. Useful TT score memory CGLHW: build79/build80 bridge characterized; opt-in H1/build81 qualified and screened in W1/W4 with promising but inconclusive results. Independent W1 confirmation interrupted by a truthful-fallback runner incompatibility; runner qualification completed; information-lifetime diagnostic supported bounded-age H2/build82, now technically qualified with clean cost checks passed and prospective W1/W4 strength screens selected. No champion advancement or production promotion.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 Governing [Contract P4-R001](CHESS_SEARCH_CONTRACT.md). This Frontier records
@@ -191,7 +191,7 @@ these findings establishes a SeedV6 playing-strength improvement.
 | C. Tactical coverage through verification and extensions | **Promising, dependent on reliable information and more expensive qualification.** Alternatives include TT-supported singular/forced-line verification and tactical ProbCut/qsearch cutoffs. Consider addition, substitution and reverse ablation through valid configurations. |
 | D. Iteration confidence, re-search and resource allocation | **Credible follow-on.** Aspiration recovery, iteration feedback, root effort, MTD and managed-time expenditure; driver comparisons must control TT information and state lifetime. Clock-policy research needs separate authorization. |
 | E. ROOT_REUSE cooperation and W2-16 information exchange | **Important, comparatively expensive and variable to qualify.** Shared useful TT information, selected history persistence/sharing, root-job ordering or overlapping Search structures; preserve concurrency, complete accounting, truthful completion, cancellation and draining. Stockfish-scale results do not transfer quantitatively by assumption. |
-| Active research | **Useful TT score memory for selective PVS**, owner-authorized 30 October 2026. [Objective TT-R001 and resume state](../docs/research/search/p4-tt-memory/STATE.md). Build79 champion and build80 technical control preserved; H1/build81 passed technical qualification and W1/W4 exploratory screens. Promising point estimates remain inconclusive; the first W1 confirmation is operationally incomplete and runner qualification passed; the lifetime diagnostic supports a bounded-age H2 hypothesis, selected for implementation/qualification. No champion advancement. |
+| Active research | **Useful TT score memory for selective PVS**, owner-authorized 30 October 2026. [Objective TT-R001 and resume state](../docs/research/search/p4-tt-memory/STATE.md). Build79 champion and build80 technical control preserved; H1/build81 passed technical qualification and W1/W4 exploratory screens. Promising point estimates remain inconclusive; the first W1 confirmation is operationally incomplete and runner qualification passed; the lifetime diagnostic supported bounded-age H2/build82, which passed technical and clean cost qualification; prospective W1/W4 strength screens are selected. No champion advancement. |
 
 These are connected relative priorities, **not an execution queue** or proven
 SeedV6 improvements. Optimize integrated configurations for practical playing
@@ -285,8 +285,17 @@ refreshes replaced deeper prior scores with shallower fresh scores. Availability
 is not cutoff eligibility or strength. Select the integrated [H2 bounded-age
 hypothesis](../docs/research/search/p4-tt-memory/H2.md): preserve prior depth for at
 most one request and refresh legal hints independently, retaining H1 safeguards
-and capacity/payload. It is not yet an executable candidate; qualification and
-a distinct identity precede games. H1 remains frozen; no major subsystem is selected.
+and capacity/payload. The explicit candidate is now committed at
+`b0be4fe1ce5bfa8ac714108a3122b7615f25967d` / build82,flags15990783. Its prototype
+passed310 broader tests (including27 focused) and78 launcher/isolation requests.
+The committed runtime has identical class bytes, changed version metadata and
+four successful artifact requests. Clean same-runtime H1/H2 cost qualification
+completed624 requests/domain; geometric-mean wall ratios0.994 W1/0.992 W4 showed
+no material regression. This is not strength evidence. Prospectively frozen
+TT-H2-SCREEN-V1 selects32 development opening pairs/domain against corrected80,
+10+0.1,Hash64,one game,qualified audited-fallback mode. Independent confirmation
+and direct79 anchoring remain necessary for an improvement claim. H1 stays frozen;
+no major subsystem is selected.
 W4 champion-relative improvement and independent confirmation remain unresolved.
 No confirmed TT gain, research acceptance or promotion is claimed.
 
@@ -316,9 +325,9 @@ become Phase 4 policy by reference; frozen evidence remains unchanged.
 The existing Phase 3 Project retains its owner-confirmed final mirrors, with no
 refresh required. The Phase 4 Project's **P4-R001 / P4-F002** mirror pair was
 already reconciled by GPT and the owner. The current repository master pair is
-**P4-R001 / P4-F008**; the Contract remains unchanged. F003-F007 owner Frontier
+**P4-R001 / P4-F009**; the Contract remains unchanged. F003-F008 owner Frontier
 mirror refreshes were pending and are not inferred complete. The owner must now
-refresh the separate Phase 4 Project Frontier mirror to **P4-F008**, confirming
-**P4-R001 / P4-F008** before mirror-dependent Project planning. This is non-blocking
+refresh the separate Phase 4 Project Frontier mirror to **P4-F009**, confirming
+**P4-R001 / P4-F009** before mirror-dependent Project planning. This is non-blocking
 for authorized repository research; repository edits synchronize neither Project.
 The active objective remains open, with no champion advancement or promotion.
