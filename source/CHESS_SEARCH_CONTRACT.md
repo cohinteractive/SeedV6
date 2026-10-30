@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R002**
+Internal revision: **P4-R003**
 
-Status: **ACTIVE - 30 October 2026. Owner-approved strength-development and reporting clarification. The first TT-memory campaign has completed technical execution with an inconclusive result; its candidates remain experimental. No research objective is active. Production unchanged by this revision.**
+Status: **ACTIVE - 30 October 2026. Owner-approved foundational research clarification; the strength-first mandate is preserved. The first TT-memory campaign has completed technical execution with an inconclusive result; its candidates remain experimental. No research objective is active. Production unchanged by this revision.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
@@ -49,7 +49,23 @@ not a presumption of optimality. Depth, nodes, NPS, computational efficiency and
 agreement with a finite-horizon reference are useful measurements, but none
 substitutes for playing strength.
 
-In a normal authorized strength-development CGLHW, GPT and Codex must actively
+**Foundational engineering objectives** develop or adapt Search capabilities that
+enable stronger integrated configurations through dependent mechanisms. Their
+immediate success may be a technically qualified, demonstrably useful foundation
+without statistically confirmed standalone Elo superiority. Explain its credible
+relationship to practical Search strength: added complexity, storage, configurability
+or theoretical capability alone is insufficient. Greater capability is not proven
+playing strength.
+
+These are related objective types, not necessarily separate workstreams. One
+coherent authorized CGLHW may develop a foundation, investigate representative
+dependent mechanisms and demonstrate integrated strength. Before execution, owner
+and GPT coordination must establish the governing objective and acceptance
+expectations. A material change to that objective or its completion criteria
+requires owner authority; Codex must not relabel unsuccessful strength-development
+work as completed foundational work to evade an unmet strength requirement.
+
+In a normal authorized Search CGLHW, GPT and Codex must actively
 learn from established strong engines, including **Bagatur, Stockfish and other
 relevant implementations**. Inspect their actual source formulations, surrounding
 Search mechanisms, eligibility, information structures, safeguards, available
@@ -82,6 +98,19 @@ Use experimental failures to guide subsequent investigation. One failed formulat
 under one baseline does not reject a mechanism universally. Preserve negative and
 inconclusive evidence with its actual scope, without reopening frozen studies or
 rewriting their conclusions.
+
+Evaluate foundations through their intended dependencies, not only isolated
+subsystem substitutions. TT information availability, provenance, retention,
+replacement and consumption may support selective pruning, reductions, extensions,
+aspiration, move ordering, repeated-window searches and parallel cooperation.
+A TT that performs similarly or slightly worse alone might enable more effective
+singular extensions, selective verification or other integrated formulations; that
+possibility needs evidence. Useful comparisons may combine existing/new foundations
+with existing mechanisms and with representative dependent improvements. This is
+an illustrative comparison structure, not a mandatory factorial experiment.
+Use focused integration evidence and controlled strength tests where informative;
+investigate and proportionately adapt surrounding mechanisms when compatibility
+is necessary to establish the foundation's effectiveness.
 
 ## Correctness and deliberate approximation
 
@@ -154,13 +183,47 @@ multiple comparisons. Distinguish exploratory selection from confirmation;
 preserve frozen protocols and prospective stopping rules. Avoid both premature
 rejection and unnecessary exhaustive experimentation.
 
-Maintain three distinct identities:
+For a foundational objective, use evidence proportional to its intended purpose
+and risk. Identify the existing capability or information-flow limitation, relevant
+external formulations and the supporting conditions that make them effective.
+Demonstrate the intended capability under realistic Search conditions and that
+representative downstream mechanisms can consume or exploit it as intended;
+include interaction/integration tests where needed for practical relevance.
+Characterize memory, runtime, Search effort, concurrency and information-quality
+trade-offs, retaining the correctness, state/history, score, lifecycle and reporting
+safeguards above. Preserve reproducible source, configuration, evaluator, resource
+and test-domain identities, remaining integration needs and unresolved strength
+qualifications. These are proportionate evidence considerations, not an exhaustive
+mandatory checklist or a new documentation layer.
+
+Distinguish capabilities shown to work, demonstrated downstream-mechanism
+improvements, plausible but unverified downstream benefits, measured operational
+costs and demonstrated playing-strength improvements. Meaningful demonstration,
+not speculative architectural superiority, supports qualification. Use controlled
+direct-strength checks where appropriate to characterize immediate performance
+and regression risk; an Elo gain is desirable but not universally required for
+foundational completion. Unacceptable cost or adverse interaction without a
+credible, justified route to downstream benefit precludes successful qualification,
+even if the intended interface works.
+
+Maintain distinct roles and evidence status, not a mandatory promotion hierarchy:
 
 | Role | Meaning and advancement |
 | --- | --- |
 | Initial production baseline | Immutable accepted Phase 3 configuration and repository identity recorded below. |
 | Current research champion | Initially identical to that baseline. Advance only on credible integrated-strength evidence and explicit owner acceptance, with qualifications and supported domains recorded. |
+| Technical comparison control | Reproducible reference for a specified comparison, including qualified corrections; technical suitability does not establish champion status or competitive neutrality. |
 | Experimental candidate | Reproducible alternative under investigation; implementation or a promising screen alone grants no acceptance. None exists at initialization. |
+| Technically qualified experimental research foundation | Enabling capabilities qualified for an agreed research purpose, with evidence and limitations; may be retained as a reproducible base without standalone Elo superiority, champion advancement or production adoption. |
+| Production configuration | Explicitly owner-accepted configuration for production behavior; experimental qualification or champion status alone does not select it. |
+
+A later owner-authorized objective may explicitly select a qualified foundation
+as its experimental starting point. Identify its exact implementation/configuration,
+qualification evidence, limitations and relevant dependencies; retain the accepted
+champion and appropriate strength controls. Qualification establishes neither that
+all downstream mechanisms benefit nor that derived configurations outperform the
+champion. Technical qualification and competitive strength status are separate
+properties; selection does not replace the champion or production default.
 
 Exploration is not production adoption. Champion acceptance does not itself deploy
 or change production. Promotion requires evidence, appropriate technical and
@@ -178,24 +241,34 @@ work; keep compact summaries, configurations, manifests and intentional fixtures
 in Git. Check local evidence availability before analysis. Git exclusion does
 not authorize deletion, protocol changes or revised historical conclusions.
 
-## Strength-development completion and escalation
+## Research completion and escalation
 
 Distinguish completion of an experiment, its positive/negative/inconclusive
-finding, completion of a campaign's technical execution, achievement of its
-governing strength-development objective, and owner acceptance or promotion.
+finding, completion of a campaign's technical execution, foundational engineering
+success, integrated playing-strength success, owner acceptance, champion advancement
+and production promotion.
 A valid, complete and scientifically useful experiment or technically completed
-campaign need not achieve that engineering objective. Exhausting a bounded
+campaign need not achieve its governing objective. Exhausting a bounded
 experiment queue with negative or inconclusive results is not successful
 completion of a strength-development CGLHW's governing objective.
 
-The intended successful outcome is a **credibly demonstrated practical
-playing-strength improvement in a reproducibly identified integrated Search
-configuration**, under stated resource and evaluation conditions. Preserve technical
-qualification, statistical confidence and appropriate independent confirmation.
+For a strength-development objective, the intended successful outcome is a
+**credibly demonstrated practical playing-strength improvement in a reproducibly
+identified integrated Search configuration**, under stated resource and evaluation
+conditions. Preserve technical qualification, statistical confidence and appropriate
+independent confirmation.
 Even credible research success leaves a candidate experimental until separately
 accepted; it neither advances the champion nor promotes production automatically.
 Never manufacture a positive conclusion, retrospectively lower evidence standards
 or claim improvement without sufficient evidence.
+
+For a foundational objective, successful completion may establish the agreed
+enabling capabilities, technical qualifications, relevant integration evidence,
+operational costs and remaining limitations sufficiently for its intended research
+purpose. It need not await every dependent strength-development objective or an
+immediate standalone Elo gain. Implementation completion or passing unit tests
+alone does not establish a successful foundation, and qualification must not be
+reported as proven strength superiority. Owner acceptance remains separate.
 
 Use unsuccessful results diagnostically. According to the evidence, investigate
 whether the external formulation was understood and transferred correctly, its
@@ -210,16 +283,20 @@ statistically uninformative experiments and increasingly costly confirmation whi
 a more useful structural question remains unanswered.
 
 Codex should autonomously pursue justified affordable investigations within the
-authorized scope. If the improvement cannot be demonstrated within authorized
-resources and scope, state the unmet objective, what was established and why the
-improvement remains unproven. Explain credible remaining technical explanations,
-alternatives investigated or ruled out within their actual evidence domains, viable
-next investigations, and the expected value, cost and uncertainty of the options.
+authorized scope. If the intended strength improvement or foundational capability
+cannot be established within authorized resources and scope, state the unmet
+objective, what was established and why success remains unproven. Explain credible
+remaining technical explanations, alternatives investigated or ruled out within
+their actual evidence domains, viable next investigations, and the expected value,
+cost and uncertainty of the options.
 Identify any material resource, scope or owner decision required. When no responsible
 autonomous continuation remains, stop and escalate that decision. The owner may
 continue research, change the objective, defer it or explicitly close it without
 success. Such disposition is legitimate and distinct from achieving the objective;
 neither every feature gaining strength nor infinite experimentation is required.
+A foundation must not be accepted merely because further testing is expensive.
+Neither objective type permits impossible improvement guarantees or retroactive
+relaxation of its agreed evidence standards.
 
 ## Owner-facing formulation and comparison descriptions
 
@@ -317,7 +394,7 @@ Repository masters are authoritative; Project Sources are owner-maintained mirro
 The owner has confirmed the final **P3-R035/P3-F035** mirrors: retain them in the
 existing Phase 3 ChatGPT Project; no further Phase 3 refresh is required.
 The separate Phase 4 ChatGPT Project mirrors require owner refresh to the current
-**P4-R002/P4-F012** pair before mirror-dependent Project planning; the Frontier
+**P4-R003/P4-F013** pair before mirror-dependent Project planning; the Frontier
 records the last confirmed mirror state. This does not block authorized repository
 work. Repository edits synchronize neither Project. On later canon changes,
 increment each affected internal revision once (P4-Rnnn/P4-Fnnn), identify the

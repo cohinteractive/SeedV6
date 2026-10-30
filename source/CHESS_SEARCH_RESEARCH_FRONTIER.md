@@ -1,11 +1,11 @@
 # SeedV6 Search Research Frontier - Phase 4
 
-Internal frontier revision: **P4-F012**
+Internal frontier revision: **P4-F013**
 
 Status: **ACTIVE Phase4 programme - 30 October2026. The first TT-memory CGLHW's authorized technical execution is complete with a valid bounded INCONCLUSIVE result; its strength-development aspiration remains unachieved. Both candidates remain experimental. No experiment or successor objective is active. GPT/owner reconciliation is separate; no champion advancement or production promotion.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
-Governing [Contract P4-R002](CHESS_SEARCH_CONTRACT.md). This Frontier records
+Governing [Contract P4-R003](CHESS_SEARCH_CONTRACT.md). This Frontier records
 current state, opportunities and dependencies; it supplies no independent launch
 or promotion authority.
 
@@ -17,11 +17,25 @@ should connect actual strong-engine formulations and supporting conditions to
 SeedV6's implementation differences, then pursue justified adaptations and
 integrated alternatives. Negative or inconclusive findings guide diagnosis and
 next-work selection; finishing experiments does not itself achieve the improvement
-objective. Apply the Contract's [completion and escalation rules](CHESS_SEARCH_CONTRACT.md#strength-development-completion-and-escalation)
+objective. Apply the Contract's [completion and escalation rules](CHESS_SEARCH_CONTRACT.md#research-completion-and-escalation)
 and [owner-facing description requirements](CHESS_SEARCH_CONTRACT.md#owner-facing-formulation-and-comparison-descriptions).
 This documentation decision preserves the completed TT campaign and authorizes
 no new objective, implementation or computation. Finite resources and separate
 owner acceptance remain binding.
+
+The owner also distinguishes foundational engineering objectives: their immediate
+success may be demonstrably useful enabling capabilities with proportionate
+technical, integration and cost evidence, without standalone Elo superiority.
+Their relationship to stronger integrated Search must be explicit; capability and
+strength claims remain separate. Owner/GPT coordination establishes the objective
+and acceptance expectations before execution. Foundations and dependent strength
+development may share one coherent CGLHW; an unsuccessful strength objective cannot
+be retroactively relabelled as foundational success. Apply the Contract's
+[evidence and role distinctions](CHESS_SEARCH_CONTRACT.md#experimentation-evidence-and-acceptance).
+A qualified experimental foundation may support a later owner-authorized objective
+without replacing the champion or production; selection must identify its exact
+implementation/configuration, evidence, limitations and dependencies, retaining
+appropriate strength controls. This clarification qualifies no historical candidate.
 
 ## Verified starting point
 
@@ -201,10 +215,11 @@ these findings establishes a SeedV6 playing-strength improvement.
 
 | Kind | Current state and implications |
 | --- | --- |
-| Adopted programme decision | Improvement-oriented, externally informed, dependency-led integrated Search development under P4-R002. Existing architecture is a starting point; bounded findings and technical completion are distinct from achieving stronger play. This is a research reset, not an engine reset. |
+| Adopted programme decision | Improvement-oriented, externally informed, dependency-led integrated Search development under P4-R003, including foundational objectives with agreed enabling outcomes. Technical qualification and competitive strength are separate properties; bounded findings and technical completion alone do not establish either objective's success. This is a research reset, not an engine reset. |
 | Baseline and correction | Immutable build79 baseline/champion retained; build80 is the separate accounting-corrected technical foundation. No champion advancement or research-driven production promotion. |
-| Completed foundation | Inventory, accounting investigation/correction, P4-F002 consolidation and external research-map investigation are closed. The map is reconciled and accepted; Contract initialization statements describe historical sequencing, not unfinished work. |
+| Completed preparatory work | Inventory, accounting investigation/correction, P4-F002 consolidation and external research-map investigation are closed. The map is reconciled and accepted; Contract initialization statements describe historical sequencing, not unfinished work. |
 | A. Useful TT memory for selective PVS | **First authorized CGLHW: Codex execution complete, bounded inconclusive result; separate GPT/owner reconciliation pending.** Investigated hypothesis: retained heuristic scores with suitable admission, selective provenance, bound interpretation, retention/replacement and preserved completed-move guidance may strengthen existing CP64/PVS. Interactions include extensions, selective pruning, aspiration and repeated-window work. |
+| Possible broader TT information foundation | **Owner-expressed research interest; not authorized or active.** Investigate externally informed information availability, provenance, retention, replacement and consumption as enabling capabilities across dependent Search mechanisms, beyond isolated score-reuse policy. Qualification would require practical capability/integration and cost evidence under the Contract; no implementation, TT layout, candidate or next research sequence is selected. |
 | B. Retained learning that allocates Search effort | **High priority; strongest competing first direction.** Hypothesis: useful history lifetime plus graded history-informed LMR and compatible learning/protection may improve strength. Build on existing history mechanisms. |
 | C. Tactical coverage through verification and extensions | **Promising, dependent on reliable information and more expensive qualification.** Alternatives include TT-supported singular/forced-line verification and tactical ProbCut/qsearch cutoffs. Consider addition, substitution and reverse ablation through valid configurations. |
 | D. Iteration confidence, re-search and resource allocation | **Credible follow-on.** Aspiration recovery, iteration feedback, root effort, MTD and managed-time expenditure; driver comparisons must control TT information and state lifetime. Clock-policy research needs separate authorization. |
@@ -248,7 +263,7 @@ Search history combined with graded history-informed reductions.
 
 The owner supplied the dedicated CGLHW execution authorization for this now-completed
 campaign. Objective [TT-R001](../docs/research/search/p4-tt-memory/CONTRACT.md) records
-its historical P4-R001 authority; P4-R002 preserves that execution and its findings.
+its historical P4-R001 authority; P4-R003 preserves that execution and its findings.
 [STATE](../docs/research/search/p4-tt-memory/STATE.md) is the sole objective resume
 point. It holds protocol/runtime manifests, findings and next work without
 creating a second programme canon; its historical revision pair and closeout are
@@ -375,12 +390,25 @@ change historical acceptance. Build79 remains champion, build80 the technical
 control, and H1/build81 and H2/build82 experimental; no practical-strength gain
 has been confirmed.
 
+The foundational clarification does not retroactively qualify H1 or H2 as a
+successful foundation, establish architectural superiority, invalidate the
+experiments or alter their statistical interpretation. The possible broader TT
+information foundation above concerns how dependent mechanisms exploit information,
+not merely whether substituting a TT into otherwise unchanged Search immediately
+gains Elo. Representative dependency comparisons may help establish that relevance;
+no benefit of that unselected foundation is established. It remains an opportunity
+for a separately authorized objective, not a reopening of TT-R001 or a requirement
+for additional games or an expensive confirmation campaign.
+
 ## Lightweight progression and handback
 
 The inventory, correction, external map and F003 consolidation are accepted and
 closed. TT-R001's authorized technical execution is complete; the present
 documentation authorization launches no CGLHW. Completion of a Codex turn or
-commit is not achievement of a strength-development objective or GPT/owner acceptance.
+commit is not foundational engineering success, integrated playing-strength success
+or GPT/owner acceptance. A foundational objective may complete on its agreed enabling
+evidence without waiting for all dependent strength objectives; direct-strength
+completion still requires credible practical improvement under the Contract.
 For future separately authorized objectives, use economical
 diagnostics, controlled strength comparisons and independent confirmation where
 appropriate, preserving exact references and meaningful controls. Champion
@@ -391,7 +419,7 @@ owner authorization and acceptance under the Contract.
 Keep current priorities, hypotheses, adopted decisions and active work distinct.
 Record material discoveries and dependencies here; focused reports/manifests hold
 detail. Do not create an exhaustive taxonomy, experiment diary or automatic queue.
-P4-R002 retains the GPT preparation requirements for future CGLHW objectives.
+P4-R003 retains the GPT preparation requirements for future CGLHW objectives.
 No generator or unrelated governance is created or modified.
 
 The [Phase 3 archive](../docs/search-phase3/README.md) contains the final
@@ -401,9 +429,9 @@ become Phase 4 policy by reference; frozen evidence remains unchanged.
 The existing Phase 3 Project retains its owner-confirmed final mirrors, with no
 refresh required. The Phase 4 Project's **P4-R001 / P4-F002** mirror pair was
 already reconciled by GPT and the owner. The current repository master pair is
-**P4-R002 / P4-F012**. Prior owner Frontier mirror refreshes through F011 were
-pending and are not inferred complete. The owner must now refresh **both** separate
-Phase 4 Project Source mirrors, confirming **P4-R002 / P4-F012** before
+**P4-R003 / P4-F013**. Refresh of the preceding P4-R002 / P4-F012 pair remains
+unconfirmed; no intervening refresh is inferred complete. The owner must now refresh
+**both** separate Phase 4 Project Source mirrors, confirming **P4-R003 / P4-F013** before
 mirror-dependent Project planning. This is non-blocking
 for authorized repository research; repository edits synchronize neither Project.
 The TT objective has a bounded Codex technical closeout awaiting separate GPT/owner
