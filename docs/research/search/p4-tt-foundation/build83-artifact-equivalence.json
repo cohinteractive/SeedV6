@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "sourceCommit": "32feb9078d0aa53a26e6c23bfb772f815e501e7f",
+  "before": "runtime-final-prototype-v1-manifest.json",
+  "after": "runtime-f3-build83-v1-manifest.json",
+  "comparedMembersAndFiles": 2128,
+  "changed": [
+    "lib\\engine-core.jar!com/ohinteractive/seedv6/application-version.properties"
+  ],
+  "interpretation": "Only generated application version properties changed (build82 to83; sourceRevision uncommitted7754ebd5 to32feb907). Tested engine,UCI,research,launcher class bytes identical.323 tests and isolation remain applicable; match preflight exercises committed artifact.",
+  "setupObservation": "Initial equivalence assertion used a mistaken META-INF path; stopped before openings/protocol/games. Inspection established the existing actual properties path above; comparison repeated without relaxing any content-equivalence gate."
+}

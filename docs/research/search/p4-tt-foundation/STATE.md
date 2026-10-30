@@ -1,4 +1,4 @@
-# TT information foundation â€” execution state
+# TT information foundation - execution state
 
 Updated 30 October 2026. Governing [TTF-R001](CONTRACT.md); repository masters
 P4-R003/P4-F014 after bootstrap. **Active autonomous investigation. No qualification,
@@ -133,13 +133,23 @@ allocation. Median empty-table clear cost was 0.668 ms H2 versus 2.331 ms founda
 the packed layout clears a second array. This bounded lifecycle cost is accepted
 for the experimental request-scoped foundation, not hidden in timed Search costs.
 
-Next: commit this qualifying implementation with build83, freeze its installed runtime,
-and run the prospectively fixed small paired game/lifecycle screen against frozen H2.
-The build update, when present in this commit, is 82 to 83 and belongs to this runtime
-change only. Do not increment again for final reports or replay the completed studies.
-No standalone strength inference, champion advancement or production change is planned.
-Then assess A-G and propose limited technical qualification, or continue from any
-material adverse evidence. No final qualification has been declared yet.
+Implementation committed at `32feb9078d0aa53a26e6c23bfb772f815e501e7f`, build83.
+Only the build integer changed, exactly82 to83. The installed frozen runtime is
+[identified here](runtime-f3-build83-v1-manifest.json); byte comparison of2,128
+archive members/files differs from the tested final prototype only in generated
+version properties. No further build bump belongs to these reports/experiments.
+
+Next/current: execute [TTF-SCREEN-V1](screen-v1-protocol.json), W1 then W4, eight
+paired openings per domain at10+0.1 against frozen experimental H2. One game at a
+time, no overlapping heavy work, fixed sample and2400s/domain timeout. Outputs:
+`raw/screen-v1-w1` and `raw/screen-v1-w4`. Before resuming, check owned process and
+run/summary status; do not overwrite output or rerun completed domains. The sample
+is a bounded operational/coarse regression screen with very wide uncertainty,
+not independent confirmation, equivalence or a champion79 comparison.
+
+After both domains, assess A-G and propose limited foundational qualification if
+supported, or continue from material adverse evidence. Owner acceptance, champion
+advancement and production promotion are separate; no final proposal yet.
 
 No blocking human action. Owner mirror refresh to P4-R003/P4-F014 is non-blocking for
 repository work and required only before mirror-dependent Project planning.

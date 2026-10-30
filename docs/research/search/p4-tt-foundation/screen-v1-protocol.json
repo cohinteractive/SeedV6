@@ -1,0 +1,53 @@
+{
+  "id": "TTF-SCREEN-V1",
+  "frozenUtc": "2026-10-30T08:46:32.251333+00:00",
+  "question": "Bounded operational and coarse regression screen of the packed foundation versus frozen H2, not a strength qualification",
+  "namePrefix": "screen-v1",
+  "workers": [
+    1,
+    4
+  ],
+  "pairs": 8,
+  "tc": "10+0.1",
+  "seed": 2026103004,
+  "timeoutSeconds": 2400,
+  "warningPolicy": "audited-fallback",
+  "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtimeh2-v1",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-foundation\\raw\\runtime-f3-build83-v1",
+  "baselineProfile": "h2",
+  "candidateProfile": "foundation",
+  "runtimeManifests": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\runtimeh2-v1-manifest.json",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-foundation\\runtime-f3-build83-v1-manifest.json"
+  ],
+  "adapterSha256": "f638bc55f403193a87bcc6c21ee391697840aa0f3b211fcfbeddf2ca21badd0a",
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-foundation\\screen-v1-openings.pgn",
+  "openingSha256": "7e60512cca82ab3ad291ae14498da155a84923f2cd95244679cd8180101ed967",
+  "selection": {
+    "source": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\bridge-v1-openings.pgn",
+    "sourceSha256": "3a57e5e7062ac0acadefccde3a02a002d531698c3c52724ac81c4d52b2ebf954",
+    "indices1Based": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "method": "First8 in original order, no outcome filtering; existing exploratory inputs reused, not independent confirmation",
+    "fixtureReview": "Intentional frozen opening input subset, not tournament output. Existing *-openings.pgn exception applies; no new ignore rule."
+  },
+  "candidateIdentity": "TTF-F3-v1 packed coherent main-node information; commit32feb9078d0aa53a26e6c23bfb772f815e501e7f/build83 flags32767999",
+  "controlIdentity": "H2 b0be4fe1ce5bfa8ac714108a3122b7615f25967d/build82 flags15990783; experimental, not champion",
+  "common": "CP64 SHA8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b S6CNU002 eight heads BT4_Q_LOGIT400_V1; ADAPTIVE16; Hash64 actual2097152slots/50331648payload bytes; original18 and NOMINAL_FUTILITY/VERIFIED_NULL dependencies intact; no book/tablebase; existing BOUNDARY2 clock",
+  "resources": "W1 OWNER then W4 ROOT_REUSE; one game at a time, no overlapping heavy work; Ryzen5500 6C/12T32GiB Windows Java21 Xms256m Xmx512m ActiveProcessorCount4; process CPU/peak memory captured",
+  "sampleJustification": "16games/domain (~8min/domain from prior execution costs) exercise real requests and game lifecycle economically. Eight paired units permit only coarse exploratory signals; Hoeffding95 half-width48.0 score points before clipping. No normal CI because n<30. Insufficient for equivalence or small Elo effects. No strength-dependent sample extension.",
+  "stopping": "Fixed8 complete color-reversed pairs/domain or first unapproved protocol/PV/legality/accounting/drain/input/process error;2400s hard domain timeout. Preserve all output. No score adjudication. Audited scoreless fallbacks require complete per-request trace evidence; all other warnings fail.",
+  "analysis": "Candidate-centric WDL and paired score distribution with bounded Hoeffding95 interval; independent trace/PGN/history/terminal/accounting checks and process costs. Two selected development domains, no multiplicity-adjusted confirmatory discovery. Do not pool old studies or infer79 champion comparison.",
+  "nextDecision": "Investigate material operational failures or coherent adverse signal against diagnostic/effort/cost evidence. If A-G are supported, propose limited experimental foundational qualification with unproven speed/strength; no automatic successor or promotion.",
+  "interpreter": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+  "python": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
+  "chess": "1.11.2"
+}
