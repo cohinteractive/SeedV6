@@ -1,0 +1,72 @@
+{
+  "objective": "TTF-R001",
+  "initialHead": "a553cf7398eb29c3a55f93314bddfef078e16ac1",
+  "initialWorktree": "clean main",
+  "versionBaseline": {
+    "tuple": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 82
+    },
+    "sha256": "1e70dbd6e2af75b2452fe577b8e20bb5930771af502e3b5216a70062cd290b4b"
+  },
+  "journalPresent": false,
+  "request": {
+    "path": "raw/owner-request.txt",
+    "sha256": "6e0fd954f0ebf57a35e35fbb7fea5c9b6d84a1fadcc73cee173c3d70cd780328"
+  },
+  "model": {
+    "path": "build-assets/nnue-candidate/conventional-cp64.cnnue",
+    "sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+  },
+  "externalSources": [
+    {
+      "path": "raw/external/stockfish-tt.h",
+      "url": "https://github.com/official-stockfish/Stockfish/blob/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/tt.h",
+      "sha256": "44f8a72c183af65f3f4f172ca82a96c37b5a3c141d54bc60d9d983456ea67c7c"
+    },
+    {
+      "path": "raw/external/stockfish-search.cpp",
+      "url": "https://github.com/official-stockfish/Stockfish/blob/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/search.cpp",
+      "sha256": "001893fa39b343fb3b4beabcf27fde8dc75c9b2326dc509224bfa0bbc8c04c9f"
+    },
+    {
+      "path": "raw/external/stockfish-tt.cpp",
+      "url": "https://github.com/official-stockfish/Stockfish/blob/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/tt.cpp",
+      "sha256": "d01fedcd489620e65ec3043a1b99bd88ebaa576d0b399f100d7b97bee3d72808"
+    },
+    {
+      "path": "raw/external/ethereal-search.c",
+      "url": "https://github.com/AndyGrant/Ethereal/blob/96cde8d2f82a3ab0536bf33572405fda96f6e236/src/search.c",
+      "sha256": "0d075fd68474d45d32244740306a502ec092324e93a90efb90ece0812871e63e"
+    },
+    {
+      "path": "raw/external/ethereal-transposition.c",
+      "url": "https://github.com/AndyGrant/Ethereal/blob/96cde8d2f82a3ab0536bf33572405fda96f6e236/src/transposition.c",
+      "sha256": "97aa8acb295e58ec75a533d3e810b640d7fa4cb3a304abb503d204c9ac0427ff"
+    },
+    {
+      "path": "raw/external/bagatur-Search_PVS_NWS.java",
+      "url": "https://github.com/bagaturchess/Bagatur/blob/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/alg/impl1/Search_PVS_NWS.java",
+      "sha256": "7473b8b00267ee86b30095249799c137b8973ba5a3df86b224274e0bd9bebe43"
+    },
+    {
+      "path": "raw/external/bagatur-TTEntry_BaseImpl.java",
+      "url": "https://github.com/bagaturchess/Bagatur/blob/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/tpt/TTEntry_BaseImpl.java",
+      "sha256": "3e69f3866b45f1ca745226d6c747628bf05e1b7c204cea2f90f86cea3c799559"
+    },
+    {
+      "path": "raw/external/bagatur-EvalCache_Impl2.java",
+      "url": "https://github.com/bagaturchess/Bagatur/blob/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/eval/cache/EvalCache_Impl2.java",
+      "sha256": "8793faec5f685c5b82cee63c99cc7a5f5cb1d787e238616aa015614a979d2100"
+    }
+  ],
+  "priorLocalEvidence": {
+    "raw/runtimeh1-v1": true,
+    "raw/runtimeh2-v1": true,
+    "raw/bridge-w1-v2": true,
+    "raw/bridge-w4-v2": true,
+    "raw/h1-lifetime-v1": true
+  }
+}

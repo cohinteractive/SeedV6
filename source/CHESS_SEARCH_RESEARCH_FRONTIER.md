@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 4
 
-Internal frontier revision: **P4-F013**
+Internal frontier revision: **P4-F014**
 
-Status: **ACTIVE Phase4 programme - 30 October2026. The first TT-memory CGLHW's authorized technical execution is complete with a valid bounded INCONCLUSIVE result; its strength-development aspiration remains unachieved. Both candidates remain experimental. No experiment or successor objective is active. GPT/owner reconciliation is separate; no champion advancement or production promotion.**
+Status: **ACTIVE Phase4 programme - 30 October2026. Owner-authorized foundational TT information architecture CGLHW TTF-R001 is active. The prior TT-memory campaign remains technically complete with a bounded INCONCLUSIVE result and separate GPT/owner reconciliation. No champion advancement or production promotion.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 Governing [Contract P4-R003](CHESS_SEARCH_CONTRACT.md). This Frontier records
@@ -219,7 +219,7 @@ these findings establishes a SeedV6 playing-strength improvement.
 | Baseline and correction | Immutable build79 baseline/champion retained; build80 is the separate accounting-corrected technical foundation. No champion advancement or research-driven production promotion. |
 | Completed preparatory work | Inventory, accounting investigation/correction, P4-F002 consolidation and external research-map investigation are closed. The map is reconciled and accepted; Contract initialization statements describe historical sequencing, not unfinished work. |
 | A. Useful TT memory for selective PVS | **First authorized CGLHW: Codex execution complete, bounded inconclusive result; separate GPT/owner reconciliation pending.** Investigated hypothesis: retained heuristic scores with suitable admission, selective provenance, bound interpretation, retention/replacement and preserved completed-move guidance may strengthen existing CP64/PVS. Interactions include extensions, selective pruning, aspiration and repeated-window work. |
-| Possible broader TT information foundation | **Owner-expressed research interest; not authorized or active.** Investigate externally informed information availability, provenance, retention, replacement and consumption as enabling capabilities across dependent Search mechanisms, beyond isolated score-reuse policy. Qualification would require practical capability/integration and cost evidence under the Contract; no implementation, TT layout, candidate or next research sequence is selected. |
+| Foundational TT information architecture | **Owner-authorized and active: [TTF-R001](../docs/research/search/p4-tt-foundation/CONTRACT.md), [resume STATE](../docs/research/search/p4-tt-foundation/STATE.md).** Investigate the information lifecycle and actual downstream consumers, beyond isolated score-cutoff policy. The bootstrap challenge identified separate raw-evaluation retention and bound-aware selective admission as initial testable hypotheses; no technical success or strength claim yet. This new foundational objective neither reopens TT-R001 nor retroactively qualifies H1/H2. |
 | B. Retained learning that allocates Search effort | **High priority; strongest competing first direction.** Hypothesis: useful history lifetime plus graded history-informed LMR and compatible learning/protection may improve strength. Build on existing history mechanisms. |
 | C. Tactical coverage through verification and extensions | **Promising, dependent on reliable information and more expensive qualification.** Alternatives include TT-supported singular/forced-line verification and tactical ProbCut/qsearch cutoffs. Consider addition, substitution and reverse ablation through valid configurations. |
 | D. Iteration confidence, re-search and resource allocation | **Credible follow-on.** Aspiration recovery, iteration feedback, root effort, MTD and managed-time expenditure; driver comparisons must control TT information and state lifetime. Clock-policy research needs separate authorization. |
@@ -402,6 +402,22 @@ for additional games or an expensive confirmation campaign.
 
 ## Lightweight progression and handback
 
+### New owner-authorized foundational workstream
+
+The 30 October owner execution request establishes **TTF-R001**, subordinate to
+P4-R003, with enabling-capability, consequential downstream integration, correctness,
+operational cost and reproducibility criteria. Immediate standalone Elo superiority
+is not compulsory; proposed technical qualification remains subject to GPT/owner
+reconciliation. [STATE](../docs/research/search/p4-tt-foundation/STATE.md) records the
+source-verified bootstrap challenge and autonomous next action. Prior campaign
+dispositions, protocols, results and pending reconciliation are unchanged. Production
+flags3407871 and champion79 remain. Historical no-objective statements below describe
+the preceding documentation decisions, not the present owner launch.
+
+The owner reports the **P4-R003/P4-F013** Project mirrors refreshed at launch.
+The new current pair is **P4-R003/P4-F014**; refresh the Frontier mirror before
+mirror-dependent planning. That separate owner action does not block repository work.
+
 The inventory, correction, external map and F003 consolidation are accepted and
 closed. TT-R001's authorized technical execution is complete; the present
 documentation authorization launches no CGLHW. Completion of a Codex turn or
@@ -427,13 +443,10 @@ P3-R035/P3-F035 historical authority and links to retained Phase 1/2 history and
 supporting reports. Historical restrictions and failed formulations do not
 become Phase 4 policy by reference; frozen evidence remains unchanged.
 The existing Phase 3 Project retains its owner-confirmed final mirrors, with no
-refresh required. The Phase 4 Project's **P4-R001 / P4-F002** mirror pair was
-already reconciled by GPT and the owner. The current repository master pair is
-**P4-R003 / P4-F013**. Refresh of the preceding P4-R002 / P4-F012 pair remains
-unconfirmed; no intervening refresh is inferred complete. The owner must now refresh
-**both** separate Phase 4 Project Source mirrors, confirming **P4-R003 / P4-F013** before
-mirror-dependent Project planning. This is non-blocking
-for authorized repository research; repository edits synchronize neither Project.
-The TT objective has a bounded Codex technical closeout awaiting separate GPT/owner
-reconciliation. No experiment or successor objective is active; no champion
-advancement or promotion has occurred.
+refresh required. The owner reports the Phase 4 **P4-R003 / P4-F013** mirrors
+refreshed at the TTF-R001 launch. The current repository master pair is
+**P4-R003 / P4-F014**. Refresh the separate Phase 4 Frontier mirror before
+mirror-dependent Project planning; this is non-blocking for repository research.
+Repository edits synchronize neither Project. TT-R001's bounded technical closeout
+still awaits separate GPT/owner reconciliation; TTF-R001 is the new active
+foundational objective. No champion advancement or promotion has occurred.
