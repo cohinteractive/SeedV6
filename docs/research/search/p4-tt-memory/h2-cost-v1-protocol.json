@@ -1,0 +1,20 @@
+{
+  "id": "TT-H2-COST-V1",
+  "status": "prospectively frozen",
+  "frozenUtc": "2026-10-30T00:12:03.993274+00:00",
+  "purpose": "Check clean integrated cost and operational behavior of H2 versus H1 before new games. Not a strength test or isolated TT-transaction benchmark.",
+  "runtime": "Frozen runtimeh2-v1, b0be4fe1ce5bfa8ac714108a3122b7615f25967d/build82. Both policies use this same artifact: H1 flags7602175 versus H2 flags15990783. This is not the frozen build80 causal strength control or a performance-equivalence claim for source82 H1 versus original source81 H1.",
+  "common": "CP64/checkpoint64/S6CNU002/eight heads/BT4_Q_LOGIT400_V1, original18+NOMINAL_FUTILITY+VERIFIED_NULL, margins100/200 cap1, ADAPTIVE16,OWNER W1/ROOT_REUSE W4. Hash64 actual2097152 slots/50331648-byte payload; overhead separate. Existing BOUNDARY2 wrapper,explicit node limits rather than game-clock allocation; no book/tablebase.",
+  "inputs": {
+    "corpus": "h1-lifetime-v1-roots.tsv",
+    "sha256": "fb15e94aed2b32f8cab946f46bb8b75f959cb8939fb4265d5fa627c43be9b5b0",
+    "origin": "Same eight actor streams/104 roots from the first four development games; no new result-based choice."
+  },
+  "design": "One complete retained warmup pass (round-1),then two measured passes. Fresh independent H1/H2 owners per actor stream; each persists across13 consecutive real-history requests. Alternate profile execution order across stream/root/round.100000-node cap,targetdepth40,30s safety deadline.104 roots*2profiles*3passes=624 requests/domain,416 measured. W1 thenW4,no heavy overlap. Clean TTable with no observer/counter instrumentation; record whole-request wall/processCPU and legal outcome.",
+  "scaleJustification": "Two measured repeats over104 varied roots after a complete warmup cheaply reveal large integrated regressions and operational faults. This is descriptive cost evidence without a strength threshold or fine tuning.",
+  "analysis": "Per root and profile, average measured wall/CPU across two repeats; report geometric-mean H2/H1 ratios across roots and aggregate totals. Preserve differing selective trees and all warmup data. Do not infer strength from time,depth,NPS or nodes.",
+  "decision": "If a material unexpected regression or operational fault appears, inspect it before more expensive games. Otherwise proceed to a prospective paired strength screen. Even a cost improvement does not establish practical strength. No automated cost threshold replaces playing evidence.",
+  "stopping": "Fixed passes/domain or first node,legality,drain,identity/input failure.30min process timeout/domain. Retain all failed/negative output; no sample extension.",
+  "environment": "Same Windows11Pro10.0.26300,Ryzen5500,6C12T,32GiB,Java21+35,vector-256-long. Xms256m/Xmx512m,ActiveProcessorCount4,below-normal process priority.",
+  "evidence": "raw/h2-cost-v1; separately compiled research-only harness against frozen82 libraries,source/class/commands bound in manifest."
+}

@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "candidate": "P4-TT-H2-v1",
+  "sourceCommit": "b0be4fe1ce5bfa8ac714108a3122b7615f25967d",
+  "version": "0.0.0/build82",
+  "runtimeManifest": "runtimeh2-v1-manifest.json",
+  "coreJarSha256": "5d62dcfcd33f97da6d5cf92aae6436bdf3a294ac882a8e1b3a4e1896b3e7be55",
+  "prototypeToCommittedJarDifferences": {
+    "engine-core.jar": [
+      "com/ohinteractive/seedv6/application-version.properties"
+    ],
+    "app-uci.jar": [],
+    "research.jar": []
+  },
+  "requests": 4,
+  "preflights": [
+    {
+      "workers": 1,
+      "identity": "info string mode=research experimental=true profile=h2 evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=15990783 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,AGED_HEURISTIC_TT_MEMORY];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER ttPolicy=H2-age1-depth-retention-nonpv-normal clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=82 source=b0be4fe1ce5b ttMiB=64",
+      "requests": [
+        {
+          "nodes": 20000,
+          "elapsedNanos": 293348200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 6 score cp 101 nodes 11668 time 267 nps 43582 pv e2e4 d7d5 e4d5 d8d5 b1c3 d5d8"
+        },
+        {
+          "nodes": 20000,
+          "elapsedNanos": 54100500,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 6 score cp 101 nodes 11668 time 30 nps 384482 pv e2e4 d7d5 e4d5 d8d5 b1c3 d5d8"
+        }
+      ],
+      "warmup": "Preflight is a separate process; match processes start cold symmetrically."
+    },
+    {
+      "workers": 4,
+      "identity": "info string mode=research experimental=true profile=h2 evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=15990783 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,AGED_HEURISTIC_TT_MEMORY];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE ttPolicy=H2-age1-depth-retention-nonpv-normal clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=82 source=b0be4fe1ce5b ttMiB=64",
+      "requests": [
+        {
+          "nodes": 20000,
+          "elapsedNanos": 271510800,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 6 score cp 101 nodes 16036 time 253 nps 63199 pv e2e4 d7d5 e4d5 d8d5 b1c3 d5d8"
+        },
+        {
+          "nodes": 20000,
+          "elapsedNanos": 52460400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 6 score cp 101 nodes 16169 time 41 nps 394172 pv e2e4 d7d5 e4d5 d8d5 b1c3 d5d8"
+        }
+      ],
+      "warmup": "Preflight is a separate process; match processes start cold symmetrically."
+    }
+  ],
+  "inputsStable": true,
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\h2-build82-v1",
+  "qualificationTransfer": "All engine-core/app-uci/research class bytes identical to the310-test-qualified prototype; only listed resource differences. This is a metadata rebuild and committed-artifact preflight, not a claimed310-test rerun on build82."
+}

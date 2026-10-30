@@ -7,10 +7,13 @@ confirmation failed operationally after 112 completed games; it is not a complet
 strength comparison. No confirmed gain, acceptance, champion advancement or
 production promotion has occurred.
 
-**Selected next work:** finalize the qualified H2 implementation as build82, rebuild
-and freeze its exact runtime, then verify the committed artifact before selecting
-playing evidence. The H2 prototype passed27 focused tests,310 broader tests and78
-launcher/isolation requests; see [H2](H2.md). No match or diagnostic is active.
+**Selected work:** clean H1/H2 successive-request cost diagnostic, prospectively
+frozen as [TT-H2-COST-V1](h2-cost-v1-protocol.json), now executing W1 then W4.
+H2 is committed at b0be4fe1/build82 and its frozen runtime passed preflight; see
+[H2](H2.md). No strength match is active. The prototype passed27 focused tests,
+310 broader tests and78 launcher/isolation requests. The committed rebuild has
+identical class bytes and four successful artifact requests; this is not a full
+test rerun. Cost results will inform selection of a new paired strength screen.
 Do not resume the failed H1 confirmation or execute its conditional champion block.
 H1 remains frozen at a72cc496/build81; build79 remains the accepted champion.
 
@@ -21,6 +24,7 @@ H1 remains frozen at a72cc496/build81; build79 remains the accepted champion.
 | Immutable baseline AND accepted champion | `753367614b8aa7e32dee337fd76b542737141ac1` / build79; [runtime79](runtime79-manifest.json). |
 | Accounting-corrected technical control | `0bfb4ea8422ef78443e309930166ad46df5cc454` / build80. Artifact built at `9fec1d2af379827d105d523c32162fd771905cb9`, whose runtime source is identical; [runtime80](runtime80-manifest.json). Not a champion. |
 | Experimental H1 | `a72cc496fd39aeddefea4382044bd2bf2e9f6cbb` / build81, flags7602175; [runtimeh1-v1](runtimeh1-v1-manifest.json). Explicit research selection only. |
+| Experimental H2 | `b0be4fe1ce5bfa8ac714108a3122b7615f25967d` / build82, flags15990783; [runtimeh2-v1](runtimeh2-v1-manifest.json). Explicit research selection only. |
 
 CP64/checkpoint64/S6CNU002/eight heads/BT4_Q_LOGIT400_V1 and its full SHA are pinned
 in TT-R001. Production policy stays flags3407871, margins100/200, extensionCap1,
@@ -148,8 +152,9 @@ Selected [H2 hypothesis/design](H2.md): allow at most one prior request of heuri
 score age, protect useful prior depth while refreshing hints independently, retain
 all H1 eligibility/provenance/coherence safeguards and physical capacity/payload.
 The explicit implementation has passed prototype qualification (27 focused/310
-broader tests and78 launcher checks). Assign its build82 commit and freeze/preflight
-a distinct runtime before any strength protocol. No strength gain is claimed. Do not tune a grid or add a major subsystem.
+broader tests and78 launcher checks). Committed build82 and its distinct frozen
+runtime passed preflight; clean cost evidence is selected before games. No strength
+gain is claimed. Do not tune a grid or add a major subsystem.
 W4 direct79/independent confirmation remains unresolved. Any later confirmation is
 a new claim attempt; H1 attempt1 alpha0.025 stays spent and its partial observations
 are excluded from the new independent sample. No champion advancement or promotion.
@@ -176,8 +181,9 @@ prospective retry; never interpret partial scores as a complete comparison or
 reset confirmation error expenditure after viewing game evidence.
 
 Git: all changes belong to this authorized objective; raw outputs remain ignored.
-Application version is being advanced from0.0.0/build81 tobuild82 in the H2
-implementation commit; verify the exact current root tuple and frozen manifests. Repository
+Application version is0.0.0/build82, verified and included in the H2 implementation
+commit b0be4fe1. Research-only artifacts do not warrant another build increment;
+verify the exact current root tuple and frozen manifests. Repository
 AGENTS.md uses commit-based build rules with **no finalizer dependency**. Root
 CODEXLOG_CURRENT.md was absent; do not create it. Inspect current Git/file presence
 again on resume and preserve unrelated changes. No push/deployment/release is authorized.
