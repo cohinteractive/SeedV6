@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R001**
+Internal revision: **P4-R002**
 
-Status: **INITIALIZED - 29 October 2026. Active Search research programme; no active Phase 4 research objective or experimental candidate. Production unchanged.**
+Status: **ACTIVE - 30 October 2026. Owner-approved strength-development and reporting clarification. The first TT-memory campaign has completed technical execution with an inconclusive result; its candidates remain experimental. No research objective is active. Production unchanged by this revision.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
@@ -35,37 +35,53 @@ separated under the established `research`/test ownership boundaries; production
 must not depend on research or acquire a competing engine implementation.
 Exclude unrelated GUI/application work, independent evaluator training or
 architecture programmes, broad unrelated rewrites and external deployment.
-Initialization authorizes documentation only: no implementation inventory,
-external-engine investigation, experiment, tournament, CGLHW or production change.
+This revision authorizes documentation only: no new research objective,
+implementation, external-engine investigation, experiment, tournament or
+production change.
 
 ## Strength-first, externally informed research
 
-The principal objective is **maximizing practical playing strength under defined
-computational resources**. Optimize the complete Search configuration. Depth,
-nodes, NPS, computational efficiency and agreement with a finite-horizon reference
-are useful measurements, but none substitutes for playing strength.
+The overarching purpose is to **develop demonstrably stronger integrated Search
+configurations under defined computational resources**. Strength-development
+programmes must engineer that outcome, not merely test whether isolated changes
+help the existing architecture. That architecture is the accepted starting point,
+not a presumption of optimality. Depth, nodes, NPS, computational efficiency and
+agreement with a finite-horizon reference are useful measurements, but none
+substitutes for playing strength.
 
-In authorized research, GPT and Codex should actively learn from established
-strong engines, including **Bagatur, Stockfish and other relevant implementations**.
-Inspect actual source, supporting mechanisms, eligibility, safeguards,
-interactions, development history and empirical evidence where useful; record
-relevant source revisions. Use observations to form SeedV6 hypotheses rather than
-remaining confined to historical SeedV6 assumptions. External use makes a mechanism
-worth investigating, not proof of its isolated strength contribution. Do not
-blindly copy implementations or transplant parameters without SeedV6 evidence.
+In a normal authorized strength-development CGLHW, GPT and Codex must actively
+learn from established strong engines, including **Bagatur, Stockfish and other
+relevant implementations**. Inspect their actual source formulations, surrounding
+Search mechanisms, eligibility, information structures, safeguards, available
+empirical evidence and relevant development history; record relevant source
+revisions. Compare their supporting conditions with SeedV6 to
+identify incompatibilities, missing dependencies and architectural limitations.
+Investigate adaptations needed to obtain comparable benefits, including whether
+these differences explain unsuccessful or inconclusive SeedV6 results. An external
+engine's overall strength does not prove the independent benefit of each mechanism.
+Do not blindly copy implementations or transplant parameters without SeedV6 evidence.
 
 Follow consequential dependencies across subject boundaries within the authorized
 coherent objective. For example, MTD(f) may lead to TT score reuse, then selective
 provenance, replacement, aspiration or ordering. Subjects organize knowledge;
 they do not constrain understanding of interacting mechanisms. Keep expansion
-tied to the original objective and evidence. Escalate material new objectives,
-safety concerns, authority conflicts and disproportionate scope changes.
+tied to the original objective and evidence. Codex may investigate and change
+relevant supporting Search mechanisms where evidence connects them to the intended
+improvement; do not preserve a limiting architecture merely because it is the
+baseline. Initial labels or subject boundaries must not block consequential
+dependencies. Escalate material expansion into an independent objective,
+disproportionate resource expenditure, safety/authority conflicts and changes
+requiring owner authority. This is not permission for unrestricted architectural
+rewrites.
 
-Evaluate combinations, substitutions, reverse ablations and interactions. A weak
-standalone mechanism may help another configuration; individually promising
-features may interfere. One failed formulation under one baseline does not reject
-a mechanism universally. Preserve negative and inconclusive evidence with its
-actual scope, without reopening frozen studies or rewriting their conclusions.
+Develop and test integrated configurations, including combinations, substitutions,
+dependency changes, reverse ablations and interactions. A weak standalone
+mechanism may help another configuration; individually promising
+features may interfere. No independent gain is required from every mechanism.
+Use experimental failures to guide subsequent investigation. One failed formulation
+under one baseline does not reject a mechanism universally. Preserve negative and
+inconclusive evidence with its actual scope, without reopening frozen studies or
+rewriting their conclusions.
 
 ## Correctness and deliberate approximation
 
@@ -162,6 +178,73 @@ work; keep compact summaries, configurations, manifests and intentional fixtures
 in Git. Check local evidence availability before analysis. Git exclusion does
 not authorize deletion, protocol changes or revised historical conclusions.
 
+## Strength-development completion and escalation
+
+Distinguish completion of an experiment, its positive/negative/inconclusive
+finding, completion of a campaign's technical execution, achievement of its
+governing strength-development objective, and owner acceptance or promotion.
+A valid, complete and scientifically useful experiment or technically completed
+campaign need not achieve that engineering objective. Exhausting a bounded
+experiment queue with negative or inconclusive results is not successful
+completion of a strength-development CGLHW's governing objective.
+
+The intended successful outcome is a **credibly demonstrated practical
+playing-strength improvement in a reproducibly identified integrated Search
+configuration**, under stated resource and evaluation conditions. Preserve technical
+qualification, statistical confidence and appropriate independent confirmation.
+Even credible research success leaves a candidate experimental until separately
+accepted; it neither advances the champion nor promotes production automatically.
+Never manufacture a positive conclusion, retrospectively lower evidence standards
+or claim improvement without sufficient evidence.
+
+Use unsuccessful results diagnostically. According to the evidence, investigate
+whether the external formulation was understood and transferred correctly, its
+supporting conditions and interactions are present, the implementation or
+architecture limits it, and the intended configuration was actually exercised.
+Distinguish statistical imprecision from a more valuable structural question:
+an adapted or related integrated formulation may be more informative than simply
+extending a test. These are proportionate diagnostic considerations, not a mandatory
+checklist for each failure. Select the next investigation for its justified prospect
+of practical strength improvement; avoid blind parameter searches, repeated
+statistically uninformative experiments and increasingly costly confirmation while
+a more useful structural question remains unanswered.
+
+Codex should autonomously pursue justified affordable investigations within the
+authorized scope. If the improvement cannot be demonstrated within authorized
+resources and scope, state the unmet objective, what was established and why the
+improvement remains unproven. Explain credible remaining technical explanations,
+alternatives investigated or ruled out within their actual evidence domains, viable
+next investigations, and the expected value, cost and uncertainty of the options.
+Identify any material resource, scope or owner decision required. When no responsible
+autonomous continuation remains, stop and escalate that decision. The owner may
+continue research, change the objective, defer it or explicitly close it without
+success. Such disposition is legitimate and distinct from achieving the objective;
+neither every feature gaining strength nor infinite experimentation is required.
+
+## Owner-facing formulation and comparison descriptions
+
+Internal identifiers may remain compact, but must not substitute for understandable
+technical descriptions in reports, handbacks or decision summaries. For each material
+experimental formulation, preserve and communicate its stable identifier, concise
+descriptive name, intended improvement, essential mechanism or architectural change,
+difference from its relevant baseline or predecessor, important supporting conditions
+or dependencies, and experimental status with what the evidence actually establishes.
+
+At first substantive use, pair the identifier with its descriptive name and a brief
+explanation. In subsequent comparisons, retain descriptive names alongside identifiers
+where they materially improve comprehension. Keep descriptions proportional to
+complexity; link existing detail rather than repeat it verbosely. No new documentation
+database, redundant manifest or retrospective renaming of historical identifiers or
+rewriting of experimental results is required.
+
+Distinguish Search formulations/candidates from test-domain configurations, controls
+or baselines, experiment protocols, and evidence or qualification status. Worker-count
+variants are test domains, not different Search formulations unless their implementation
+actually changes. Explain comparisons through the formulation, domain, control and
+meaning of the result. Inspect the relevant experiment before describing unfamiliar
+labels such as GATE or WIDE; never invent their definitions. The Frontier's completed
+TT-memory example applies this convention without changing historical evidence.
+
 ## Initial production baseline and current champion
 
 **P4-BASELINE-001** is the accepted production configuration at clean `main`
@@ -220,22 +303,24 @@ historical evidence remain available for selective consultation, not automatic
 Phase 4 instructions. Frozen dispositions, scores, protocols and qualifications
 are not changed by this new authority.
 
-There is no active research objective. After initialization and owner/GPT
-reconciliation, the intended next work is a separately authorized fresh
-implementation inventory, then an externally informed research map. The Frontier
-is a small set of priorities and hypotheses, not a predetermined exhaustive queue.
+The separately authorized implementation inventory, external research map and first
+TT-memory campaign's technical execution are complete; the Frontier records their
+dispositions and the still-unachieved TT strength-development aspiration. This revision
+does not reopen that campaign or authorize a successor. The Frontier is a small set
+of priorities and hypotheses, not a predetermined exhaustive queue.
 For any future CGLHW objective, the owner must supply the **complete current
 authoritative premade CGLHW GPT prompt generator before GPT prepares its execution
 prompt**. Each objective requires a dedicated GPT conversation for its complete
-coordination and closeout. This initialization is not a CGLHW and launches none.
+coordination and closeout. This documentation revision is not a CGLHW and launches none.
 
 Repository masters are authoritative; Project Sources are owner-maintained mirrors.
 The owner has confirmed the final **P3-R035/P3-F035** mirrors: retain them in the
 existing Phase 3 ChatGPT Project; no further Phase 3 refresh is required.
-After initialization and owner/GPT reconciliation, supply **P4-R001/P4-F001** to a
-**separate Phase 4 ChatGPT Project**, verify both identities and confirm setup
-before planning that depends on those mirrors. Repository edits synchronize
-neither Project. On later canon changes, increment each affected internal revision
-once (P4-Rnnn/P4-Fnnn), identify the current pair and the corresponding Phase 4
-mirror update needed before dependent Project planning. No new objective starts
+The separate Phase 4 ChatGPT Project mirrors require owner refresh to the current
+**P4-R002/P4-F012** pair before mirror-dependent Project planning; the Frontier
+records the last confirmed mirror state. This does not block authorized repository
+work. Repository edits synchronize neither Project. On later canon changes,
+increment each affected internal revision once (P4-Rnnn/P4-Fnnn), identify the
+current pair and the corresponding Phase 4 mirror update needed before dependent
+Project planning. No new objective starts
 merely because a document, mirror or Codex turn is complete.
