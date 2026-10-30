@@ -1,26 +1,31 @@
 # TT memory workstream ? resume here
 
-Status: **ACTIVE**, 30 October 2026. Objective [TT-R001](CONTRACT.md) is subordinate
-to Search P4-R001. Current programme master pair: **P4-R001 / P4-F010**.
-H1's W1/W4 development screens are promising but inconclusive. The first W1
-confirmation failed operationally after 112 completed games; it is not a completed
-strength comparison. No confirmed gain, acceptance, champion advancement or
-production promotion has occurred.
+Status: **CODEX RESEARCH EXECUTION COMPLETE - INCONCLUSIVE**,30 October2026.
+Objective [TT-R001](CONTRACT.md) remains subordinate to Search P4-R001. Current
+programme master pair: **P4-R001 / P4-F011**. GPT/owner reconciliation and acceptance
+are separate. No champion advancement, production promotion, push or release.
 
-**Selected work:** execute [H1 confirmation attempt2](h1-confirm-w1-v2-protocol.json),
-160 fresh opening pairs at10+0.1,W1,Hash64 against frozen corrected80. The protocol,
-new corpus/exclusions and analysis are frozen before games. Use qualified audited-
-fallback mode, one active game and no heavy overlap. Only a completed adjusted
-lower bound above50% opens the conditional160-pair direct79 block. Attempt2 reserves
-nominalalpha0.0125 split0.00625/control; attempt1's0.025 remains spent. No pooling
-with development or failed data, replay, optional extension or champion promotion.
+**No experiment is active or selected.** The completed independent H1 W1
+confirmation scored133W/80D/107L,54.0625% against corrected80 over160 fresh
+opening pairs. Its prospective99.375% paired-normal interval47.343-60.782% crosses
+50%; the bounded sensitivity interval is40.636-67.489%. All320 normal games and
+42,473 request traces passed, inputs were unchanged and engine handles drained.
+See [adjusted analysis](h1-confirm-w1-v2-control80-analysis.json),
+[run summary](h1-confirm-w1-v2-control80-summary.json) and
+[disposition/evidence manifest](disposition-v1-summary.json).
 
-H2's W1/W4 screens completed and passed all audits, scoring53.91%/57.03%; both
-are inconclusive. Frozen H1/build81 has the stronger W1 development signal and
-simpler retention, so is prioritized without claiming it causally beats H2. H2
-remains a qualified deferred alternative. Build79 remains accepted champion.
-Do not resume attempt1 or its conditional champion block. Check current raw/run
-status and actual process identities before interpreting whether attempt2 is live.
+The conditional direct79 gate failed: **do not run that block or extend/replay
+attempt2**. No independent improvement or champion-relative gain is established.
+H1 and H2 remain explicitly selected research configurations; build79 remains
+accepted champion and80 remains technical control. H2's W1/W4 development screens
+are also inconclusive. No claim that H1 causally outperforms H2 follows.
+
+This is a bounded research conclusion, not a universal negative finding. The
+remaining uncertainty concerns actual playing strength, not an unresolved known
+correctness defect. Economical connected mechanisms and follow-ons are dispositioned
+below; larger independent precision or new resource domains require a fresh
+prospective plan and an explicit resource decision. Do not launch another run
+merely because this state is reopened. Preserve all raw evidence and failed runs.
 
 ## Identities and completed foundations
 
@@ -67,8 +72,8 @@ Each completed64-game run passed full PV/bestmove checks, independent PGN/
 request accounting audit and immutable-input checks. H2 uses the prospectively
 qualified audited-fallback mode; its W1 trace passed9,126 requests with zero
 missing-score warnings. H2 W4 passed8,298 trace requests, also with zero such
-warnings. Both H2 screens are inconclusive; H1 is prioritized for fresh confirmation. Conservative Hoeffding
-intervals are substantially wider; see per-run summaries. No competitive
+warnings. Both H2 screens are inconclusive; H1 was then prioritized for the now-completed
+fresh confirmation. Conservative Hoeffding intervals are substantially wider; see per-run summaries. No competitive
 79/80 equivalence is established. W4's adverse bridge makes transferring an H1
 versus80 gain into a champion79 gain especially inappropriate.
 
@@ -99,7 +104,7 @@ W4 and H1 traces include full UCI communications. Do not erase these limitations
 The zero-work fixture demonstrates truthful legal fallback, not the exact untraced
 V1 failure cause. Frozen historical BOUNDARY2 studies remain unopened and unchanged.
 
-## Failed independent confirmation and selected qualification
+## Recorded confirmation failure and qualification sequence
 
 The prospectively frozen [attempt1 protocol](h1-confirm-w1-v1-protocol.json)
 bound 128 partition1 opening pairs, exact runtimes and an adjusted analysis gate.
@@ -119,8 +124,9 @@ lifetime observation rather than reconstructing it.
 Attempt1's nominal alpha0.025 remains spent. Partial outcomes are not confirmation,
 are not pooled into later samples, and do not open the conditional champion79 gate.
 Do not modify its protocol, inputs, analysis or run. A later confirmation needs a
-new prospective claim allocation and independent inputs. Attempt2 is now selected
-under those rules; attempt1 remains unchanged and excluded.
+new prospective claim allocation and independent inputs. Attempt2 was subsequently selected and completed
+under those rules; attempt1 remains unchanged and excluded. See the final inference
+below for the completed result and inactive execution state.
 
 [Runner qualification](runner-qualification-v1-summary.json) passed six tests
 (including 18 invalid-evidence subcases), a replay audit of 13,724 retained trace
@@ -159,8 +165,8 @@ These are availability/replacement findings, not cutoff eligibility or strength;
 the observer lacks requested depth/window/extension-credit context. The eight
 actor streams came from the first four development games without result filtering.
 
-Selected [H2 hypothesis/design](H2.md): allow at most one prior request of heuristic
-score age, protect useful prior depth while refreshing hints independently, retain
+The selected [H2 hypothesis/design](H2.md) allowed at most one prior request of heuristic
+score age, protected useful prior depth while refreshing hints independently, and retained
 all H1 eligibility/provenance/coherence safeguards and physical capacity/payload.
 The explicit implementation has passed prototype qualification (27 focused/310
 broader tests and78 launcher checks). Committed build82 and its distinct frozen
@@ -170,6 +176,34 @@ gain is claimed. Do not tune a grid or add a major subsystem.
 W4 direct79/independent confirmation remains unresolved. Any later confirmation is
 a new claim attempt; H1 attempt1 alpha0.025 stays spent and its partial observations
 are excluded from the new independent sample. No champion advancement or promotion.
+
+## Final inference, remaining opportunities and execution boundary
+
+The independent sample had pair SD0.310821 (pilot0.265165), so its adjusted
+half-width was6.719 score points. Both modest benefit and harm remain compatible
+with the uncertainty interval. H1's positive point estimate is not confirmation,
+and selective TT feasibility/cutoffs/cost do not substitute for playing strength.
+H1 attempt1 remains failed and excluded. Retain nominal allowance0.025 forattempt1
+plus0.0125 reserved forattempt2,0.0375 total, including unused conditional portions.
+Any later claim is attempt3 or higher with independent inputs; no recycling/pooling.
+
+| Connected follow-on | Disposition and reason |
+| --- | --- |
+| More H1 precision | Deferred to an explicit larger resource decision. At the uncertain observed effect/variance, next-attempt nominal80%-power planning gives about844 new pairs,864 rounded in32-pair blocks:14.27h per control,28.54h if both execute. This is illustrative, not a new protocol or guaranteed power. |
+| H2 age/depth tuning or confirmation | Qualified alternative retained; two inconclusive screens show no demonstrated incremental advantage. No evidence supports a cheap corrective tuning step or a parameter grid ahead of resolving strength precision. No claim of H2 inferiority. |
+| W4 independent/direct79 qualification | Still unresolved, not equivalent to W1 and not established negative. Similar coarse signals, no stronger mechanistic signal and the uncertain adverse79/80 bridge make another expensive adaptive domain claim lower priority. |
+| Combined TT-access optimization | Defer: clean cost diagnostics found no material general overhead; throughput alone cannot resolve strength. Per-position timing variability remains. |
+| Clustered layout,qTT,raw-eval combination,correction history or broader cutoff domains | No demonstrated dependency makes these proportionate next repairs. Do not add subsystems or relax mate/provenance/coherence safeguards to chase an inconclusive score. |
+| Longer clocks,other Hash,workers/platforms/consumers | Open qualification domains, not assumed transfers. Frozen historical BOUNDARY2 studies remain unopened; no clock-policy optimization is authorized. |
+
+The closeout follows completed causal-control/bridge work, two integrated candidate
+implementations with independent safety controls, economical mechanism/lifetime/cost
+measurements, fixed W1/W4 screens and a fresh moderate-effect confirmation. It is
+not a claim that every possible TT policy was exhausted. The strongest remaining
+inference depends on substantially more independent games; blind parameter search
+would add selection without solving that uncertainty. A new campaign needs a
+resource/objective decision, while promotion/champion acceptance always needs
+separate owner authority. No human action blocks this bounded technical closeout.
 
 ## Rebuild, resume and human actions
 
@@ -201,6 +235,8 @@ CODEXLOG_CURRENT.md was absent; do not create it. Inspect current Git/file prese
 again on resume and preserve unrelated changes. No push/deployment/release is authorized.
 
 Human action: owner refresh of the separate Phase4 Project Frontier mirror to
-**P4-F010**, confirming **P4-R001 / P4-F010**. This is **non-blocking** for repository
+**P4-F011**, confirming **P4-R001 / P4-F011**. This is **non-blocking** for repository
 research and blocks only mirror-dependent Project planning. Prior mirror refreshes
-are not inferred complete. No owner action currently blocks the selected confirmation.
+are not inferred complete. No owner action blocks this bounded technical closeout. GPT/owner reconciliation
+of the research disposition remains separate; a larger follow-on campaign or any
+champion/production decision requires its own explicit authorization.

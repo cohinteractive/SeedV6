@@ -1,0 +1,110 @@
+{
+  "disposition": "Codex research execution complete with a bounded INCONCLUSIVE practical-strength result; GPT/owner reconciliation and acceptance are separate.",
+  "scope": "CP64/checkpoint64/S6CNU002/BT4_Q_LOGIT400_V1, existing Construction V1/ADAPTIVE16/extensions/verified null/BOUNDARY2, Hash64=2097152 direct-mapped slots and50331648 payload bytes; W1 OWNER and W4 ROOT_REUSE exploratory10+0.1, independent confirmation W1 only, pinned Windows11/Ryzen5500/Java21 host and opening bank.",
+  "candidateH1": "a72cc496fd39aeddefea4382044bd2bf2e9f6cbb/build81 flags7602175 runtimeh1-v1-manifest.json",
+  "candidateH2": "b0be4fe1ce5bfa8ac714108a3122b7615f25967d/build82 flags15990783 runtimeh2-v1-manifest.json",
+  "control": "0bfb4ea8422ef78443e309930166ad46df5cc454/build80 Search; frozen runtime80 built9fec1d2af379827d105d523c32162fd771905cb9 with identical runtime source",
+  "baselineAndChampion": "753367614b8aa7e32dee337fd76b542737141ac1/build79 unchanged",
+  "confirmation": {
+    "attempt": 2,
+    "pairs": 160,
+    "wdl": [
+      133,
+      80,
+      107
+    ],
+    "score": 0.540625,
+    "pairedNormal99_375Score": [
+      0.4734345738771605,
+      0.6078154261228396
+    ],
+    "boundedHoeffding99_375Score": [
+      0.40636404844722895,
+      0.6748859515527711
+    ],
+    "criterionPassed": false,
+    "normalGames": 320,
+    "traceRequests": 42473,
+    "qualifiedMissingScoreWarnings": 0,
+    "inputsStable": true,
+    "engineHandlesDrained": true,
+    "seconds": 9511.738302899998,
+    "direct79": "Not executed: prospective80 gate failed. No champion-relative improvement inferred."
+  },
+  "independentPentanomialRecalculation": {
+    "score": 0.540625,
+    "pairSd": 0.31082096102309564,
+    "standardError": 0.02457255453388505
+  },
+  "processCosts": {
+    "cpuSeconds": {
+      "baseline": 4720.53125,
+      "candidate": 4667.75
+    },
+    "candidateToBaselineCpu": 0.9888187902579821,
+    "peakWorkingSetBytes": {
+      "baseline": 352108544,
+      "candidate": 351956992
+    },
+    "interpretation": "Whole-process costs include JVM overhead; not TT payload or playing-strength evidence. Both engine exit codes0 after explicit draining."
+  },
+  "errorAllocation": "Attempt1 nominal0.025 remains spent; attempt2 reserved0.0125 split0.00625/control. Retain cumulative0.0375, including the unused conditional-control allowance; no recycling. Any later claim is attempt3 or higher with new prospective inputs/allocation.",
+  "followOnDisposition": [
+    {
+      "item": "H1 independent precision",
+      "decision": "Deferred to a separately resourced owner decision, not another automatic replay or sample extension. The completed test is inconclusive, not proof of no gain."
+    },
+    {
+      "item": "H2 retention and age tuning",
+      "decision": "Qualified alternative retained; both coarse screens inconclusive and no incremental advantage demonstrated. No new age/depth grid or independent H2 claim is justified ahead of resolving H1 precision; no causal H1-over-H2 claim."
+    },
+    {
+      "item": "W4 independent/champion qualification",
+      "decision": "Unresolved and deferred. Distinct domain; W1 cannot settle it. Similar exploratory signals, no stronger mechanistic signal, and adverse uncertain79/80 bridge make a second expensive adaptive domain claim lower priority, not a failed or equivalent domain."
+    },
+    {
+      "item": "Combined TT access optimization",
+      "decision": "Deferred: clean integrated costs showed no material general regression. A throughput-only optimization does not resolve strength uncertainty."
+    },
+    {
+      "item": "Clustered layout, qTT, raw-eval combination, correction history or broader cutoff domains",
+      "decision": "No measured dependency establishes these as a necessary next step. Additional memory/layout/coherence or score-domain changes require a new justified hypothesis and qualification; do not add major subsystems to chase an inconclusive score."
+    },
+    {
+      "item": "Longer clocks, other Hash/platform/worker domains",
+      "decision": "Qualification opportunities, not established transfers. No independent clock-policy optimization or reopening of frozen BOUNDARY2 studies."
+    }
+  ],
+  "illustrativeFurtherPrecision": {
+    "notANewProtocol": true,
+    "nextClaimComparisonAlpha": 0.003125,
+    "normalCritical": 2.9551668474978343,
+    "planningEffect": 0.04062500000000002,
+    "planningPairSd": 0.31082096102309564,
+    "approx80PercentPowerPairs": 843.8525456934597,
+    "next32PairBlock": 864,
+    "estimatedHoursPerComparison": 14.267607454349996,
+    "caveat": "Normal planning calculation at uncertain observed effect/variance, not guaranteed power. About14.27h per comparison and28.54h if both controls execute is a materially larger campaign, requiring an explicit resource decision. Do not extend/replay attempt2 or pool selection data."
+  },
+  "whyConclude": "The connected economical mechanisms have been implemented, measured, qualified and screened, and the strongest prioritized moderate-effect claim received fresh fixed-sample confirmation. All affordable identified branches are dispositioned above. The remaining decision is strength precision/domain qualification, not a demonstrated correctness repair or a supported cheap tuning step. Further parameter search would add selection without resolving the present uncertainty; this bounded inconclusive conclusion does not rule out useful TT scores.",
+  "remainingUnknowns": [
+    "Whether the positive point estimate reflects a real modest gain, sampling variation or residual environment/opening dependence.",
+    "H1 versus champion79 directly; H2 independent strength; W4 independent strength/champion relationship.",
+    "Longer clocks, other Hash sizes, W2-16 strength, other hardware/platforms and GUI/Arena consumer strength."
+  ],
+  "evidenceSha256": {
+    "raw\\h1-confirm-w1-v2-control80\\run.json": "373a7874edadef7adf0f47bc57c98775728a1b228305c8c6b2859a93d592c09b",
+    "raw\\h1-confirm-w1-v2-control80\\games.pgn": "191f8915d0289d4b285dd146f5bae3fcd67e3d2c5badd9b10b5aeab8f9949f85",
+    "raw\\h1-confirm-w1-v2-control80\\uci-trace.log": "145664cd3014929752b094504b620f918e850a23340fe9c2d3eb2c9b1f8e656a",
+    "raw\\h1-confirm-w1-v2-control80\\runner.txt": "e59d9ed9db23e058f4552f1ed1c73e73645bcb041e35c851b974fad35ba2e3e2",
+    "raw\\h1-confirm-w1-v2-control80\\process-cost.json": "c95fd2d4bbb411ede5edd3a075cd18301063db39903ad665932c1827d59649d5",
+    "raw\\h1-confirm-w1-v2-control80\\baseline-uci.txt": "96b14d77fabe76a6932fcd41d7d85fdbc7df67b1466d2776adc361dc73436da8",
+    "raw\\h1-confirm-w1-v2-control80\\candidate-uci.txt": "c8010ea92f078ff46feb0e04b9e52d572b4c12bb8d4d298195f88bce380e01cf",
+    "h1-confirm-w1-v2-control80-analysis.json": "52fe3a9be2e624f2bc63333c0c2c119f5ab9358dfae27e650d9e364b71a449ca",
+    "h1-confirm-w1-v2-protocol.json": "3b1176ef62e24a0ce962a38a083c7db14635df688b55453f629b44ebfd86656b",
+    "h1-confirm-w1-v2-openings.pgn": "35ea45309f4ebc6e1f9e5b457967cfaa67c5f2c9c8a495f4477d4121e466264a",
+    "h1-confirm-w1-v2-openings.selection.json": "b090355ae1264ae0b040850adb70768440a7dadb0584089531d395560367facc"
+  },
+  "rawAvailability": "All listed evidence existed and was hashed at disposition. Raw outputs remain ignored/local; fresh clones do not contain them.",
+  "production": "No production default, champion, evaluator, clock policy, deployment or release change. Both candidates remain explicit research selections."
+}

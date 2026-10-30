@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier - Phase 4
 
-Internal frontier revision: **P4-F010**
+Internal frontier revision: **P4-F011**
 
-Status: **ACTIVE - 30 October 2026. Useful TT score memory CGLHW: build79/build80 bridge characterized; opt-in H1/build81 qualified and screened in W1/W4 with promising but inconclusive results. Independent W1 confirmation interrupted by a truthful-fallback runner incompatibility; runner qualification completed; information-lifetime diagnostic supported bounded-age H2/build82, technically qualified and screened in W1/W4 with inconclusive results; frozen H1 selected for fresh W1 confirmation attempt2 with independent openings and retained multiplicity expenditure. No champion advancement or production promotion.**
+Status: **ACTIVE Phase4 programme - 30 October2026. The first authorized TT-memory CGLHW has reached Codex research execution completion with a bounded INCONCLUSIVE practical-strength result. H1/build81 and H2/build82 remain explicit experiments; fresh H1 W1 confirmation completed320 normal games but failed its adjusted improvement criterion. No experiment is active. GPT/owner reconciliation is separate; no champion advancement or production promotion.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 Governing [Contract P4-R001](CHESS_SEARCH_CONTRACT.md). This Frontier records
@@ -186,12 +186,12 @@ these findings establishes a SeedV6 playing-strength improvement.
 | Adopted programme decision | Strength-first, externally informed, dependency-led and configuration-oriented research under P4-R001. This is a research reset, not an engine reset. |
 | Baseline and correction | Immutable build79 baseline/champion retained; build80 is the separate accounting-corrected technical foundation. No champion advancement or research-driven production promotion. |
 | Completed foundation | Inventory, accounting investigation/correction, P4-F002 consolidation and external research-map investigation are closed. The map is reconciled and accepted; Contract initialization statements describe historical sequencing, not unfinished work. |
-| A. Useful TT memory for selective PVS | **Highest initial priority.** Hypothesis: retained heuristic scores with suitable admission, selective provenance, bound interpretation, retention/replacement and preserved completed-move guidance may strengthen existing CP64/PVS. Interactions include extensions, selective pruning, aspiration and repeated-window work. |
+| A. Useful TT memory for selective PVS | **First authorized CGLHW: Codex execution complete, bounded inconclusive result; separate GPT/owner reconciliation pending.** Investigated hypothesis: retained heuristic scores with suitable admission, selective provenance, bound interpretation, retention/replacement and preserved completed-move guidance may strengthen existing CP64/PVS. Interactions include extensions, selective pruning, aspiration and repeated-window work. |
 | B. Retained learning that allocates Search effort | **High priority; strongest competing first direction.** Hypothesis: useful history lifetime plus graded history-informed LMR and compatible learning/protection may improve strength. Build on existing history mechanisms. |
 | C. Tactical coverage through verification and extensions | **Promising, dependent on reliable information and more expensive qualification.** Alternatives include TT-supported singular/forced-line verification and tactical ProbCut/qsearch cutoffs. Consider addition, substitution and reverse ablation through valid configurations. |
 | D. Iteration confidence, re-search and resource allocation | **Credible follow-on.** Aspiration recovery, iteration feedback, root effort, MTD and managed-time expenditure; driver comparisons must control TT information and state lifetime. Clock-policy research needs separate authorization. |
 | E. ROOT_REUSE cooperation and W2-16 information exchange | **Important, comparatively expensive and variable to qualify.** Shared useful TT information, selected history persistence/sharing, root-job ordering or overlapping Search structures; preserve concurrency, complete accounting, truthful completion, cancellation and draining. Stockfish-scale results do not transfer quantitatively by assumption. |
-| Active research | **Useful TT score memory for selective PVS**, owner-authorized 30 October 2026. [Objective TT-R001 and resume state](../docs/research/search/p4-tt-memory/STATE.md). Build79 champion and build80 technical control preserved; H1/build81 passed technical qualification and W1/W4 exploratory screens. Promising point estimates remain inconclusive; the first W1 confirmation is operationally incomplete and runner qualification passed; the lifetime diagnostic supported bounded-age H2/build82, which passed technical/cost qualification and inconclusive W1/W4 screens. Frozen H1 is selected for fresh W1 confirmation attempt2 with independent openings and retained error expenditure. No champion advancement. |
+| Latest research disposition | **Useful TT score memory for selective PVS**, owner-authorized30 October2026. [Objective TT-R001/results and resume boundary](../docs/research/search/p4-tt-memory/STATE.md). Both integrated candidates passed technical qualification; W1/W4 development screens were inconclusive. Fresh H1 W1 confirmation versus80 completed160 pairs,54.06%, adjusted99.375% interval47.34-60.78%; no confirmed improvement. Conditional direct79 did not execute. Remaining affordable branches are dispositioned; materially larger precision/domain campaigns need a fresh resource decision. No active experiment, champion advancement or production promotion. |
 
 These are connected relative priorities, **not an execution queue** or proven
 SeedV6 improvements. Optimize integrated configurations for practical playing
@@ -211,7 +211,7 @@ objective, follow consequential dependencies and revise priorities with evidence
 escalate material new objectives, safety/authority conflicts and disproportionate
 expansion under the Contract.
 
-## Active first objective - owner authorized
+## First objective - authorized execution and result
 
 > Determine whether bounded heuristic TT score reuse, with useful retention and
 > preserved completed-move guidance, improves the practical strength of the
@@ -292,11 +292,11 @@ The committed runtime has identical class bytes, changed version metadata and
 four successful artifact requests. Clean same-runtime H1/H2 cost qualification
 completed624 requests/domain; geometric-mean wall ratios0.994 W1/0.992 W4 showed
 no material regression. This is not strength evidence. Prospectively frozen
-TT-H2-SCREEN-V1 selects32 development opening pairs/domain against corrected80,
+TT-H2-SCREEN-V1 selected32 development opening pairs/domain against corrected80,
 10+0.1,Hash64,one game,qualified audited-fallback mode. Both fixed H2 screens completed with normal games and full audits:53.91% W1
 (27W/15D/22L; normal95 43.10-64.71%) and57.03% W4 (26W/21D/17L;46.43-67.64%).
-They are inconclusive and do not establish an incremental H2 advantage. Prioritize
-frozen H1 in the original W1 domain for new confirmation attempt2, based on its
+They are inconclusive and do not establish an incremental H2 advantage. Frozen
+H1 was prioritized in the original W1 domain for confirmation attempt2, based on its
 stronger development point estimate and simpler retention; no causal H1-over-H2
 claim follows. The prospectively frozen160 fresh opening pairs exclude all prior
 confirmation/development positions. Nominalalpha0.0125 is split0.00625/control
@@ -305,7 +305,29 @@ if the adjusted80 lower bound exceeds50%. No partial/pilot pooling or replay.
 Independent confirmation and direct79 anchoring remain necessary. H1 stays frozen;
 no major subsystem is selected.
 W4 champion-relative improvement and independent confirmation remain unresolved.
-No confirmed TT gain, research acceptance or promotion is claimed.
+
+The fresh [H1 W1 attempt2](../docs/research/search/p4-tt-memory/h1-confirm-w1-v2-control80-analysis.json)
+completed160 pairs/320 normal games against80:133W/80D/107L,54.0625%. The frozen
+99.375% paired-normal interval47.343-60.782% and conservative bounded interval
+40.636-67.489% both cross equality. Actual pair variance exceeded the planning
+pilot. All42,473 request traces passed with zero missing-score warnings; PV/game,
+accounting,input and explicit drain checks passed. The adjusted criterion failed,
+so the conditional direct79 block did not execute. Do not extend/replay or pool
+this sample; retain0.0375 total nominal spent/reserved allowance across attempts1/2.
+
+Codex research execution concludes **INCONCLUSIVE within the recorded domains**.
+This is not proof of no TT benefit, H2 inferiority, or W1/W4 equivalence. The
+[disposition manifest](../docs/research/search/p4-tt-memory/disposition-v1-summary.json)
+and objective STATE preserve candidate/control identities, actual evidence,
+negative/failed/inconclusive findings and remaining opportunities. No supported
+cheap repair or tuning step follows; blind parameter search would add selection
+without resolving strength uncertainty. At the uncertain observed effect/variance,
+illustrative next-attempt80%-power planning gives864 fresh pairs in32-pair blocks,
+about14.27h per control. That materially larger campaign needs an explicit resource
+decision and a new prospective protocol. No such campaign is selected. Additional
+W4/Hash/clock/platform/consumer qualification is unresolved; frozen BOUNDARY2
+studies stay unopened. No confirmed TT gain, research acceptance or promotion
+is claimed. GPT/owner reconciliation remains separate from this technical closeout.
 
 ## Lightweight progression and handback
 
@@ -333,9 +355,11 @@ become Phase 4 policy by reference; frozen evidence remains unchanged.
 The existing Phase 3 Project retains its owner-confirmed final mirrors, with no
 refresh required. The Phase 4 Project's **P4-R001 / P4-F002** mirror pair was
 already reconciled by GPT and the owner. The current repository master pair is
-**P4-R001 / P4-F010**; the Contract remains unchanged. F003-F009 owner Frontier
+**P4-R001 / P4-F011**; the Contract remains unchanged. F003-F010 owner Frontier
 mirror refreshes were pending and are not inferred complete. The owner must now
-refresh the separate Phase 4 Project Frontier mirror to **P4-F010**, confirming
-**P4-R001 / P4-F010** before mirror-dependent Project planning. This is non-blocking
+refresh the separate Phase 4 Project Frontier mirror to **P4-F011**, confirming
+**P4-R001 / P4-F011** before mirror-dependent Project planning. This is non-blocking
 for authorized repository research; repository edits synchronize neither Project.
-The active objective remains open, with no champion advancement or promotion.
+The TT objective has a bounded Codex technical closeout awaiting separate GPT/owner
+reconciliation. No experiment or successor objective is active; no champion
+advancement or promotion has occurred.

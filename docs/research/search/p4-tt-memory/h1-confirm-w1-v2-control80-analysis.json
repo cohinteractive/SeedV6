@@ -1,0 +1,44 @@
+{
+  "status": "completed adjusted analysis",
+  "claimAttempt": 2,
+  "domain": "W1 OWNER10+0.1",
+  "opponent": "control80",
+  "candidate": "P4-TT-H1-v1/a72cc496/build81",
+  "protocol": "h1-confirm-w1-v2-protocol.json",
+  "protocolSha256": "3b1176ef62e24a0ce962a38a083c7db14635df688b55453f629b44ebfd86656b",
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\h1-confirm-w1-v2-control80",
+  "runSha256": "373a7874edadef7adf0f47bc57c98775728a1b228305c8c6b2859a93d592c09b",
+  "pgnSha256": "191f8915d0289d4b285dd146f5bae3fcd67e3d2c5badd9b10b5aeab8f9949f85",
+  "analysisToolSha256": "fd3ff2bb3d28867481ca587cc4c572a78fe7951494c33aa4972f51d2681e283e",
+  "pairs": 160,
+  "wdl": [
+    133,
+    80,
+    107
+  ],
+  "pentanomial": [
+    20,
+    26,
+    48,
+    40,
+    26
+  ],
+  "score": 0.540625,
+  "pairScoreStandardError": 0.02457255453388505,
+  "alphaThisComparison": 0.00625,
+  "normalCriticalValue": 2.734368786533176,
+  "pairedNormal99_375Score": [
+    0.4734345738771605,
+    0.6078154261228396
+  ],
+  "boundedHoeffding99_375Score": [
+    0.40636404844722895,
+    0.6748859515527711
+  ],
+  "primaryIntervalUsed": "paired normal",
+  "primaryCriterionPassed": false,
+  "conservativeSensitivityPositive": false,
+  "method": "Prospective nominal alpha allocation; paired-normal primary inference is approximate. The bounded interval is reported as conservative sensitivity, not silently discarded.",
+  "acceptance": "Research inference only; no champion advancement or production promotion.",
+  "next": "Do not execute the conditional direct79 block under this protocol; H1 is not independently confirmed. Reassess affordable connected work without extending or pooling this sample."
+}
