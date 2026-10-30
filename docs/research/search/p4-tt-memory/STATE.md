@@ -9,7 +9,8 @@ production promotion has occurred.
 
 **Selected work:** execute [TT-H2-SCREEN-V1](h2-screen-v1-protocol.json),32 paired
 development openings per W1/W4 domain against corrected80 at10+0.1,one active
-game. W1 thenW4; audited-fallback mode is prospectively declared. H2 source
+game. W1 passed all64 games/audits; W4 is now active. Audited-fallback mode
+is prospectively declared. H2 source
 b0be4fe1/build82 and frozen runtime passed qualification and clean cost checks;
 see [H2](H2.md). Cost completed1,248 requests, with832 measured after warmup;
 wall H2/H1 ratios0.994 W1/0.992 W4 show no material regression in that diagnostic.
@@ -57,9 +58,13 @@ Hash64, one active game, on the recorded Windows/Ryzen5500/Java21 host.
 | build80 versus79, W4 |15/24/25|42.19%|33.83?50.55%|
 | H1 versus80, W1 |30/14/20|57.81%|48.63?67.00%|
 | H1 versus80, W4 |25/23/16|57.03%|47.13?66.93%|
+| H2 versus80, W1 |27/15/22|53.91%|43.10-64.71%|
 
-Each completed 64-game run passed strict PV/bestmove checks, independent PGN/
-request accounting audit and immutable-input checks. Conservative Hoeffding
+Each completed64-game run passed full PV/bestmove checks, independent PGN/
+request accounting audit and immutable-input checks. H2 uses the prospectively
+qualified audited-fallback mode; its W1 trace passed9,126 requests with zero
+missing-score warnings. The completed W1 H2 screen is inconclusive; finish W4
+before candidate selection. Conservative Hoeffding
 intervals are substantially wider; see per-run summaries. No competitive
 79/80 equivalence is established. W4's adverse bridge makes transferring an H1
 versus80 gain into a champion79 gain especially inappropriate.
