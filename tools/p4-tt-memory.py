@@ -68,6 +68,8 @@ def configure(engine, workers, hash_mib=64, profile='control'):
         raise ValueError('Incorrect control flags')
     if profile == 'h1' and ('flags=7602175' not in identity or 'ttPolicy=H1-current-sufficient-nonpv-normal' not in identity):
         raise ValueError('Incorrect H1 flags/policy')
+    if profile == 'h2' and ('flags=15990783' not in identity or 'ttPolicy=H2-age1-depth-retention-nonpv-normal' not in identity):
+        raise ValueError('Incorrect H2 flags/policy')
     return identity
 
 

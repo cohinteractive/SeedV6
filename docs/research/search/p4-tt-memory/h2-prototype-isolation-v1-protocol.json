@@ -1,0 +1,18 @@
+{
+  "id": "TT-H2-PROTOTYPE-ISOLATION-V1",
+  "status": "prospectively frozen",
+  "frozenUtc": "2026-10-30T00:05:31.340062+00:00",
+  "purpose": "Verify unchanged normal/H1 routing and actual H2 identity before commit/version selection; not strength or equivalence of H2.",
+  "candidate": "runtimeh2-prototype-v1: uncommitted H2 on6b38cf4afc38054620fed4d67236772586f02c65, build81 metadata, base+patch/source hashes and exact executable manifest.",
+  "controls": [
+    "frozen runtime80",
+    "frozen runtimeh1-v1"
+  ],
+  "design": "Six consumers: frozen80 ordinary UCI,candidate ordinary UCI,candidate research-control,frozenH1 research-h1,candidate research-h1,candidate research-h2. Each runs W1 depth5 on startpos plus first8 development opening histories, and20k/100k nodes on startpos at W1/W4.78 requests total. Each resets newGame. Compare all11 W1 outcomes/nodes/PVs within control and H1 groups; no H2 selective-equivalence assertion.",
+  "identity": "Same CP64 mapping; production flags3407871,H1 7602175,H2 15990783;Hash64 capacity2097152/payload50331648;ADAPTIVE16,BOUNDARY2 selected,OWNER/ROOT_REUSE. Explicit nodes/depth,not managed game-clock evidence.",
+  "stopping": "Fixed requests or first identity,legalPV,accounting,predecessor equivalence,input/process failure.60s/request. Preserve failed outputs.",
+  "toolSha256": "7f3cf6b66237d7565b1f63773b0a3fe46c1ba250886b4420fa4e7a2bf8da6759",
+  "adapterSha256": "53b5149876cf53fd44f545639fe90fcf1a3cf20e9d022af42db92eed0b54c5e0",
+  "candidateManifestSha256": "39cc58ef676ae13e5046c767c9db6978eef24cf9d106c375882fe0d3ced78c8a",
+  "raw": "raw/h2-prototype-isolation-check-v1"
+}

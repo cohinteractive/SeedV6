@@ -1111,7 +1111,7 @@ public final class ExactSearch {
                         }
                     }
                     if(ttReturn) continue;
-                    // Explicit H1 research: current-request ordinary estimates at
+                    // Explicit H1/H2 research: ordinary selective estimates at
                     // sufficient depth, only interior null windows. Synthetic and
                     // legal null verification remain independent of heuristic TT.
                     // The score is never represented as an exhaustive proof.
@@ -1126,7 +1126,8 @@ public final class ExactSearch {
                         int estimate=(int)(data>>32),type=(int)(data>>>8)&3;
                         if(ply>0 && originalBeta==originalAlpha+1
                                 && originalAlpha>=-MAX_STATIC_SCORE && originalBeta<=MAX_STATIC_SCORE
-                                && (data&255)>=depth && ((data>>>10)&255)==generation
+                                && (data&255)>=depth && (((data>>>10)&255)==generation
+                                    || (agedHeuristicMemory() && ((generation-(data>>>10&255))&255)==1))
                                 && estimate>=-MAX_STATIC_SCORE && estimate<=MAX_STATIC_SCORE
                                 && hashMove!=0 && (type==TTable.TYPE_EXACT
                                     || (type==TTable.TYPE_LOWER && estimate>=beta)
@@ -2654,14 +2655,15 @@ public final class ExactSearch {
                 && (ply!=0 || restrictedRootMove==0)) {
             checkpoint();
             int type=score<=alpha?TTable.TYPE_UPPER:score>=beta?TTable.TYPE_LOWER:TTable.TYPE_EXACT;
-            table.saveHeuristic(key,depth,type,score,move);
+            if(agedHeuristicMemory()) table.saveHeuristicAged(key,depth,type,score,move);
+            else table.saveHeuristic(key,depth,type,score,move);
         }
         if((completedHints || hintDiagnostics!=null) && !nullProbeActive && !nullVerification
                 && (ply!=0 || restrictedRootMove==0) && move!=0 && depth>=1 && depth<=255) {
             checkpoint(); // The node, not an incomplete/cancelled ancestor, produced this legal move.
             if(hintDiagnostics!=null) hintDiagnostics.completedProducers++;
             if(completedHints) {
-                boolean saved=table.saveHint(key,depth,move);
+                boolean saved=agedHeuristicMemory()?table.saveHintAged(key,depth,move):table.saveHint(key,depth,move);
                 if(saved && hintDiagnostics!=null) hintDiagnostics.stored++;
             }
         }
@@ -2670,6 +2672,10 @@ public final class ExactSearch {
 
     private boolean heuristicMemory() {
         return table!=null && construction!=null && construction.has(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY);
+    }
+
+    private boolean agedHeuristicMemory() {
+        return heuristicMemory() && construction.has(FlatSearchConfig.Feature.AGED_HEURISTIC_TT_MEMORY);
     }
 
     private static boolean hasNonPawnMaterial(long[] board, int status) {

@@ -213,6 +213,109 @@ public class TTable {
     /** Optional research observation; ordinary tables incur no counter updates. */
     public void heuristicCutoff() {}
 
+    /** H2 research: keep useful score depth for this or the preceding request,
+     * independently of completed-hint freshness. HINT+HEURISTIC marks the H2
+     * encoding; the three spare low-word bits carry a bounded freshness tag.
+     * There are no new arrays, slots, locks or ordinary proof permissions. */
+    public boolean saveHeuristicAged(long key,int depth,int type,int score,long move) {
+        if(depth<1 || depth>255 || type<TYPE_EXACT || type>TYPE_UPPER) return false;
+        int index=(int)key & indexMask;
+        synchronized(locks[index & STRIPE_MASK]) {
+            long old=data[index];
+            if(score < -TranspositionScores.MAX_NORMAL_SCORE || score > TranspositionScores.MAX_NORMAL_SCORE) {
+                // A completed mate-domain result must not leave a same-key older
+                // ordinary estimate available for another heuristic cutoff.
+                if(this.key[index]==key && (old & (VALID_MASK|HEURISTIC_MASK))==(VALID_MASK|HEURISTIC_MASK)) {
+                    int hintDepth=hintDepth(old);
+                    int hintGeneration=currentHint(old)?generation:(int)(old>>>GENERATION_SHIFT&GENERATION_BITS);
+                    data[index]=hashMove[index]==0 || hintDepth==0?0:
+                            VALID_MASK|HINT_MASK|((long)(hintGeneration&GENERATION_BITS)<<GENERATION_SHIFT)|hintDepth;
+                }
+                return false;
+            }
+            long retainedMove=move;int retainedDepth=move==0?0:depth,tag=generation&7;
+            if((old&VALID_MASK)!=0) {
+                boolean heuristic=(old&HEURISTIC_MASK)!=0;
+                if(!heuristic && (old&HINT_MASK)==0) return false;
+                int oldDepth=(int)(old&DEPTH_BITS),oldHintDepth=hintDepth(old),age=scoreAge(old);
+                boolean freshHint=currentHint(old);
+                if(this.key[index]==key) {
+                    if(move==0 || (freshHint && oldHintDepth>retainedDepth)) {
+                        retainedMove=hashMove[index];retainedDepth=oldHintDepth;
+                        // Normalize an old hint to a definitely stale tag. Copying
+                        // arbitrary modulo8 bits into a fresh score could alias.
+                        tag=(freshHint?generation:generation-1)&7;
+                    }
+                    if(heuristic && age<=1 && depth+2<oldDepth) {
+                        if(move!=0 && (!freshHint || depth>=oldHintDepth)) {
+                            data[index]=withFreshHint(old,depth);hashMove[index]=move;
+                        }
+                        return false;
+                    }
+                } else if(depth<protectedDepth(old)) return false;
+            }
+            this.key[index]=key;
+            data[index]=((long)score<<SCORE_SHIFT)|VALID_MASK|HEURISTIC_MASK|HINT_MASK
+                    |((long)(generation&GENERATION_BITS)<<GENERATION_SHIFT)
+                    |((long)type<<TYPE_SHIFT)|depth|((long)retainedDepth<<HINT_DEPTH_SHIFT)
+                    |((long)tag<<HINT_FRESHNESS_SHIFT);
+            hashMove[index]=retainedMove;
+            return true;
+        }
+    }
+
+    /** H2 hint completion never refreshes the score's generation. Expired scores
+     * become ordinary hint-only records; current deeper hints remain protected. */
+    public boolean saveHintAged(long key,int depth,long move) {
+        if(depth<1 || depth>255 || move==0) return false;
+        int index=(int)key & indexMask;
+        synchronized(locks[index & STRIPE_MASK]) {
+            long old=data[index];
+            if((old&VALID_MASK)!=0) {
+                if((old&HEURISTIC_MASK)!=0) {
+                    if(this.key[index]==key && scoreAge(old)<=1) {
+                        if(currentHint(old) && depth<hintDepth(old)) return false;
+                        data[index]=withFreshHint(old,depth);hashMove[index]=move;return true;
+                    }
+                    if(this.key[index]!=key && depth<protectedDepth(old)) return false;
+                } else {
+                    if((old&HINT_MASK)==0) return false;
+                    if(currentHint(old) && depth<hintDepth(old)) return false;
+                }
+            }
+            this.key[index]=key;
+            data[index]=VALID_MASK|HINT_MASK|((long)(generation&GENERATION_BITS)<<GENERATION_SHIFT)|depth;
+            hashMove[index]=move;
+            return true;
+        }
+    }
+
+    private int scoreAge(long value) {
+        return (generation-(int)(value>>>GENERATION_SHIFT&GENERATION_BITS))&(int)GENERATION_BITS;
+    }
+
+    private int hintDepth(long value) {
+        return (int)(((value&HEURISTIC_MASK)!=0?value>>>HINT_DEPTH_SHIFT:value)&DEPTH_BITS);
+    }
+
+    private boolean currentHint(long value) {
+        if((value&(HEURISTIC_MASK|HINT_MASK))!=(HEURISTIC_MASK|HINT_MASK)) return scoreAge(value)==0;
+        // Modulo8 freshness can only be interpreted during this bounded score
+        // lifetime. Older records cannot acquire current priority by aliasing.
+        return scoreAge(value)<=1 && ((value>>>HINT_FRESHNESS_SHIFT)&7)==(generation&7);
+    }
+
+    private int protectedDepth(long value) {
+        int age=scoreAge(value);
+        int score=(value&HEURISTIC_MASK)!=0 && age<=1?(int)(value&DEPTH_BITS)-2*age:0;
+        return Math.max(score,currentHint(value)?hintDepth(value):0);
+    }
+
+    private long withFreshHint(long value,int depth) {
+        return (value&~((DEPTH_BITS<<HINT_DEPTH_SHIFT)|(7L<<HINT_FRESHNESS_SHIFT)))|HINT_MASK
+                |((long)depth<<HINT_DEPTH_SHIFT)|((long)(generation&7)<<HINT_FRESHNESS_SHIFT);
+    }
+
     public int entryCapacity() { return key.length; }
     public long entryPayloadBytes() { return 24L*key.length; }
 
@@ -226,6 +329,7 @@ public class TTable {
     private static final long HINT_MASK = 1L << 19;
     private static final long HEURISTIC_MASK = 1L << 20;
     private static final int HINT_DEPTH_SHIFT = 21;
+    private static final int HINT_FRESHNESS_SHIFT = 29;
     private static final int SCORE_SHIFT = 32;
 
     private static final int DEFAULT_TABLE_SIZE_IN_MB = 64;

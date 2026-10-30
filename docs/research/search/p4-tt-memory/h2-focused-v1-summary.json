@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "validation": "Uncommitted H2 prototype focused qualification, build81 metadata",
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\h2-focused-v1",
+  "suites": {
+    "engine-core": {
+      "totals": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "cases": [
+        {
+          "suite": "com.ohinteractive.seedv6.search.tt.TTableAgedMemoryTest",
+          "tests": 8,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.tt.TTableMemoryTest",
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.tt.TTableTest",
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      ]
+    },
+    "research": {
+      "totals": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "cases": [
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.P4TtAgedMemoryTest",
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "suite": "com.ohinteractive.seedv6.search.exact.P4TtMemoryTest",
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      ]
+    }
+  },
+  "sourceManifest": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\h2-focused-v1\\manifest.json"
+}

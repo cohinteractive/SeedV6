@@ -14,8 +14,8 @@ import com.ohinteractive.seedv6.uci.*;
 public final class P4TtUciMain {
     public static void main(String[] args) throws Exception {
         if(args.length!=4 || !args[0].equals("--network") || !args[2].equals("--profile")
-                || !(args[3].equals("h1") || args[3].equals("control")))
-            throw new IllegalArgumentException("--network <CP64> --profile <control|h1>");
+                || !(args[3].equals("h1") || args[3].equals("h2") || args[3].equals("control")))
+            throw new IllegalArgumentException("--network <CP64> --profile <control|h1|h2>");
         var model=ConventionalNnueEngine.load(Path.of(args[1]));
         String profile=args[3];
         var clocks=ClockPolicy.configured();
@@ -23,7 +23,8 @@ public final class P4TtUciMain {
             ConstructionSearch config(int workers,int hash) {
                 var base=BaselineEngine.configuration(workers,hash);
                 return new ConstructionSearch(base.mechanisms().with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY,
-                        profile.equals("h1")),workers,hash,base.aspiration());
+                        !profile.equals("control")).with(FlatSearchConfig.Feature.AGED_HEURISTIC_TT_MEMORY,
+                        profile.equals("h2")),workers,hash,base.aspiration());
             }
             public ClockPolicy clockPolicy() { return clocks; }
             public SearchLifecycleService service(int workers,int hash) {
@@ -41,7 +42,8 @@ public final class P4TtUciMain {
                         +" schema="+model.model().schema()+" heads="+model.model().outputBuckets()
                         +" head="+model.model().headBackend()+" scoreMapping="+ConventionalNnueEngine.SCORE_MAPPING
                         +" flags="+config(workers,hash).mechanisms().flags()+" configuration="+config(workers,hash).identity()
-                        +" ttPolicy="+(profile.equals("h1")?"H1-current-sufficient-nonpv-normal":"production-hints")
+                        +" ttPolicy="+(profile.equals("h2")?"H2-age1-depth-retention-nonpv-normal":
+                            profile.equals("h1")?"H1-current-sufficient-nonpv-normal":"production-hints")
                         +" clockPolicy="+clocks.identity()+" book=OFF tablebase=OFF"
                         +" build="+version.build()+" source="+version.sourceRevision();
             }

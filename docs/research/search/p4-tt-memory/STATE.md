@@ -7,11 +7,12 @@ confirmation failed operationally after 112 completed games; it is not a complet
 strength comparison. No confirmed gain, acceptance, champion advancement or
 production promotion has occurred.
 
-**Selected next work:** implement and qualify [H2 bounded-age retention](H2.md).
-The H1 cross-request lifetime diagnostic passed and supports this narrow
-hypothesis. H2 is not yet an executable candidate. No match or diagnostic is active.
+**Selected next work:** finalize the qualified H2 implementation as build82, rebuild
+and freeze its exact runtime, then verify the committed artifact before selecting
+playing evidence. The H2 prototype passed27 focused tests,310 broader tests and78
+launcher/isolation requests; see [H2](H2.md). No match or diagnostic is active.
 Do not resume the failed H1 confirmation or execute its conditional champion block.
-H1 remains frozen at a72cc496/build81.
+H1 remains frozen at a72cc496/build81; build79 remains the accepted champion.
 
 ## Identities and completed foundations
 
@@ -146,9 +147,9 @@ actor streams came from the first four development games without result filterin
 Selected [H2 hypothesis/design](H2.md): allow at most one prior request of heuristic
 score age, protect useful prior depth while refreshing hints independently, retain
 all H1 eligibility/provenance/coherence safeguards and physical capacity/payload.
-Implement explicit research selection, then focused and broader qualification and
-a distinct frozen candidate identity before any strength protocol. No aging
-implementation or gain is yet claimed. Do not tune a grid or add a major subsystem.
+The explicit implementation has passed prototype qualification (27 focused/310
+broader tests and78 launcher checks). Assign its build82 commit and freeze/preflight
+a distinct runtime before any strength protocol. No strength gain is claimed. Do not tune a grid or add a major subsystem.
 W4 direct79/independent confirmation remains unresolved. Any later confirmation is
 a new claim attempt; H1 attempt1 alpha0.025 stays spent and its partial observations
 are excluded from the new independent sample. No champion advancement or promotion.
@@ -175,7 +176,8 @@ prospective retry; never interpret partial scores as a complete comparison or
 reset confirmation error expenditure after viewing game evidence.
 
 Git: all changes belong to this authorized objective; raw outputs remain ignored.
-Application version is 0.0.0/build81 from the H1 implementation commit. Repository
+Application version is being advanced from0.0.0/build81 tobuild82 in the H2
+implementation commit; verify the exact current root tuple and frozen manifests. Repository
 AGENTS.md uses commit-based build rules with **no finalizer dependency**. Root
 CODEXLOG_CURRENT.md was absent; do not create it. Inspect current Git/file presence
 again on resume and preserve unrelated changes. No push/deployment/release is authorized.

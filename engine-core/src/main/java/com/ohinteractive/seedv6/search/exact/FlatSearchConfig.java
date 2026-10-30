@@ -11,7 +11,7 @@ public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) 
         CAPTURE_HISTORY, CONTINUATION, KILLERS, COUNTERMOVES, NOMINAL_HISTORY, BAD_TACTICAL_LAST,
         IMPROVING, CAUTION, CHECK_EXTENSION, RECAPTURE_EXTENSION, FUTILITY, REVERSE_FUTILITY, HISTORY_PROTECTION,
         LAZY_IMPROVING, REDUCTION_FUTILITY, NOMINAL_FUTILITY, VERIFIED_NULL,
-        HEURISTIC_TT_MEMORY }
+        HEURISTIC_TT_MEMORY, AGED_HEURISTIC_TT_MEMORY }
 
     public FlatSearchConfig(long flags) { this(flags,100,200); }
 
@@ -37,6 +37,9 @@ public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) 
         if((flags&(1L<<Feature.HEURISTIC_TT_MEMORY.ordinal()))!=0
                 && (flags&(1L<<Feature.COMPLETED_HINTS.ordinal()))==0)
             throw new IllegalArgumentException("Heuristic TT memory requires completed legal move guidance");
+        if((flags&(1L<<Feature.AGED_HEURISTIC_TT_MEMORY.ordinal()))!=0
+                && (flags&(1L<<Feature.HEURISTIC_TT_MEMORY.ordinal()))==0)
+            throw new IllegalArgumentException("Aged TT memory requires the heuristic score domain");
     }
     public boolean has(Feature feature) { return (flags&(1L<<feature.ordinal()))!=0; }
     public FlatSearchConfig with(Feature feature,boolean enabled) {
