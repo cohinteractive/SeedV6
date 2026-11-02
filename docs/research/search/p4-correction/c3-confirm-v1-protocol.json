@@ -1,0 +1,72 @@
+{
+  "id": "CH-C3-CONFIRM-W1-V1",
+  "status": "prospectively frozen before confirmation games",
+  "frozenUtc": "2026-11-02T13:37:56.402574+00:00",
+  "question": "One independent W1 confirmation of unchanged selected C3 integrated main/qsearch correction with decayed completed cross-request feedback against exact HL-G1/build84.",
+  "category": "W1 independent confirmation",
+  "namePrefix": "c3-confirm-v1-champion84",
+  "workers": [
+    1
+  ],
+  "pairs": 160,
+  "tc": "10+0.1",
+  "seed": 2026110307,
+  "timeoutSeconds": 12000,
+  "estimatedMatchSeconds": 10000,
+  "remainingCategoryGames": 320,
+  "remainingTotalGames": 384,
+  "remainingMatchSeconds": 33000,
+  "warningPolicy": "audited-fallback",
+  "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-build88-c3-v1",
+  "baselineProfile": "guided",
+  "candidateProfile": "corrected-retained",
+  "candidateIdentity": {
+    "name": "CH-C3 decayed completed pawn correction across requests with main and qsearch consumers",
+    "source": "d530b28aded2b4ed6a6f3cc1c15d0a8373b1dbb9",
+    "build": 88,
+    "flags": 1043595263
+  },
+  "controlIdentity": {
+    "name": "HL-G1 retained learning with history-guided reductions",
+    "source": "b8ea8b2856eed3f6c774860ca540375054e4de30",
+    "build": 84,
+    "flags": 104071167
+  },
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\confirmation-v1-openings.pgn",
+  "openingSha256": "cec30b809d6d593f389f820d5706570fc17ff9b022804592837acfee697b37e1",
+  "openingSelection": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\confirmation-v1-openings.selection.json",
+  "runtimeManifests": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\runtime-build84-v1-manifest.json",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\runtime-build88-c3-v1-manifest.json"
+  ],
+  "adapterSha256": "13e7a3a57df5ea0d3e1adff2848c3e79e38126fe1bbec8875ebaeb8ad24bc72b",
+  "resources": "W1 OWNER, CP64 Hash64 (48MiB TT entry payload), Java21+35, Windows Ryzen5500; one game at a time; identical JVM heaps/ActiveProcessorCount4; BOUNDARY2 unchanged",
+  "audit": "Existing independent real-history legality/PV/terminal/accounting audit, stable input hashes, owned Windows Job and complete engine-handle drain. Narrow audited-fallback runner qualification retained; any other warning/failure stops the match.",
+  "stopping": "Fixed160 complete color-reversed pairs or first unapproved warning/fallback, legality/PV/terminal/accounting/input/process/drain failure, or hard12000s timeout. No score-based success/futility stop, extension, extra games, reselection or adjusted retry. Preserve every failed/partial attempt; no additional independent attempt without renewed owner authorization.",
+  "analysis": "Primary: mean of160 opening-pair scores in[0,1]; sample SE using actual pair variance; two-sided95 normal interval mean +/- NormalDist.inv_cdf(.975)*SE, bounded to[0,1]. Pass only mean>=.53 AND lower>.5, all technical/audit/provenance gates satisfied. Zero variance makes the normal criterion unavailable and cannot establish success by a substitute method. Always report one-sided alpha.025 bounded Hoeffding lower mean-sqrt(log(40)/(2*160)), equivalent lower endpoint of two-sided95 bounded sensitivity. Report WDL/pentanomial and full descriptive intervals. Pair-level normal approximation, not exact finite-sample proof; no individual-game independence fiction.",
+  "nextDecision": "Apply frozen analysis once after full independent audit and drain. Success supports only the stated curated-input W1 domain and requires GPT/owner reconciliation, not automatic acceptance/champion/default/deployment changes. Failure/inconclusive leaves strength objective unmet; do not retune/retest the confirmation sample, extend or pool exploration. Do not begin a successor objective.",
+  "openingSelectionSha256": "cc380d7a987c0b07ba04903ceb6490fc05a6cb2dbb9d814b8802042b661f6efa",
+  "claimAttempt": 1,
+  "oneSidedAlpha": 0.025,
+  "practicalMinimumScore": 0.53,
+  "analysisToolSha256": "b12bbeb653ac99e934eddb399e7722f111cd5140b18fa4ea355404a5d517daba",
+  "runtimeManifestSha256": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\runtime-build84-v1-manifest.json": "3d08ace9d3905122296d0c71ad07d4ed5750fe555da8edaec7324e1eb968f380",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\runtime-build88-c3-v1-manifest.json": "a97a39777d907155abd139f01e76822312ca5fe74bfd2b05f455d42493f6b9a4"
+  },
+  "selection": "Fixed160 unique legal nonterminal16-ply roots from1055 eligible held-out bucket1 positions in pinned Stockfish8moves_v3; seed2026110306. Exclude entire legal16 source, every tracked non-BOUNDARY2 positionKeys receipt including prior HL confirmation, and all60 mixed-phase sequence roots. No candidate scores/evaluations, outcome filters, seed search or pooling. All histories preserved. Six non-key receipts directly reviewed as trajectory records or covered subsets.",
+  "multiplicity": "One selected integrated finalist and one prospective primary W1 claim, nominal one-sided alpha.025. Three exploratory candidate screens and W4 risk are selection/characterization only; no independent component claims or restoration/pooling of historical allowances.",
+  "resourceAdmission": "Frozen while W4 risk runs. Values are conservative post-W4 admission floors, not claims of already completed spend: reserve full64 W4 games and more than4200s from current37227.87s. Before launch require completed audited/drained W4, reconcile actual spend, and verify at least320 category games,384 total games and33000 wall seconds remain. Current completed spend192 W1 exploratory games/5972.13s; no confirmation attempt started.",
+  "w4Gate": "Complete/audit the32-pair W4 risk study and proportionately investigate any material warning before W1 launch. W4 superiority/equivalence is not required for this owner-authorized W1-only criterion. A mandatory correctness, lifecycle or safety defect blocks affected progression. Candidate/source remains unchanged.",
+  "technicalQualification": "C3:62 selected JUnit tests+12 focused repeats; original/main and sequential real-history W1/W4 observation with W1 clean repeats; mixed-phase20-root qualification including endgame material counts; bounded raw/working/terminal/null/provenance/abort/failure/private-worker/reset/drain invariants;78 UCI isolation requests+8 stops,20 runtime requests+2 stops; prototype/committed2115-entry artifact bridge and4 committed preflights. Full GUI/native/training matrix not run.",
+  "knownRisks": "Pawn-only context aliases and selective/self-referential feedback remain heuristic. Mixed-phase sample has25 near-cap updates in one position equally for C2/C3, within declared cap. Short diagnostics do not prove speed or label truth. W4 risk unresolved at protocol freeze. Prior HL84 W4-v79 adverse/inconclusive evidence remains separate; no80-v79 equivalence assumed.",
+  "sampleJustification": {
+    "pilotPairSd": 0.26361609886470355,
+    "pilotSelectedEstimateNotAssumedUnbiased": true,
+    "powerApproxAtSixPointGain": 0.8209575552388821,
+    "powerApproxAtThreePointGain": 0.30136739580624444,
+    "sensitivityPowerSixPointGainSd031": 0.6873139600900043,
+    "limits": "Approximate planning only; actual opponent/book variance can differ. Owner-fixed160 pairs and thresholds remain binding. Small gains may be inconclusive; no finite-population correction narrows intervals."
+  }
+}

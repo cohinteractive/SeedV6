@@ -1,13 +1,12 @@
 # CH-R001 resume state
 
-**ACTIVE: CH-C3 positive exploratory screen; prospective finalist under qualification.** Read [CONTRACT](CONTRACT.md)
+**ACTIVE: selected C3 W4 risk match running; W1 confirmation prospectively frozen.** Read [CONTRACT](CONTRACT.md)
 first. The governing strength objective is not yet demonstrated. Normal production
 HL-G1/build85 policy and the accepted research champion HL-G1/build84 are unchanged.
 
 ## Resume and ownership
 
-All three W1 screens are complete, fully audited and drained. No competitive or
-technical process remains active. C3 original session4158 exited0; run status passed,
+All three W1 screens are complete, fully audited and drained. W4 risk match is now active (live handles below); no technical process remains active. C3 original session4158 exited0; run status passed,
 engine handles drained and observed Python28640/31444/Fastchess33428 absent. Never
 restart existing outputs. Independent arithmetic cross-checks of C2/C3 pair means
 and standard errors match the runner. No partial score informed selection/stopping.
@@ -27,7 +26,8 @@ Completed spend:96 W1 exploratory pairs/192 games;0 confirmation pairs/games/att
 0 W4 pairs/games. Charged match wall5972.1286874s, including setup/audit.
 Remaining:32 W1 exploratory pairs/64 games;160 confirmation pairs/320 games;
 32 W4 pairs/64 games;448 total games;37,227.8713126s of43,200s match wall.
-No active reservation. Ordinary technical work is separate and summarized below.
+W4 reserves32 pairs/64 games and<=3600 runner seconds; reconcile actual spend at
+drainage. Ordinary technical work is separate and summarized below.
 Budgets are ceilings, not consumption targets. No pooling exploration and confirmation.
 
 ## Authority and bootstrap challenge
@@ -304,3 +304,18 @@ unchanged build88/C3, common development inputs, seed2026110305,64 fixed games,
 estimate2300s/hard3600s. Fits64 W4 games/448 total games/37227.87s remaining. No
 W4 or confirmation game started at this recording; inspect raw run status before
 launch/retry. W4 will be a risk characterization, not an equivalence claim or W1 pool.
+
+
+W4 risk live admission: original execution session37537, Python launcher15912/
+worker29272, owned Fastchess12020; `raw/c3-risk-v1-w4/run.json` running. Protocol/input
+freeze commit09eb7990. Revalidate exact handles/run status before action; never restart
+existing output. Do not inspect partial scores for selection or run competing engine
+computation. Await full audit/drain before confirmation admission.
+
+`c3-confirm-v1-protocol.json` is prospectively frozen while W4 runs. It pins unchanged
+C3/build88, exact84,160 fresh inputs, runnerseed2026110307, fixed320 games/hard12000s,
+normal95 lower>.5 AND score>=.53, separate bounded sensitivity, single attempt and
+all identity/audit/stop gates. The admission balances384 total games/33000s are
+conservative post-W4 floors, not claimed completed spend; actual ledger must satisfy
+them after W4 drains. No confirmation has launched. No candidate/criterion changes
+may use confirmation outcomes. Current version/build88 remains unchanged.
