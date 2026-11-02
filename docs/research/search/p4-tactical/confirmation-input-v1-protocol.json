@@ -1,0 +1,16 @@
+{
+  "id": "TC-CONFIRMATION-INPUT-V1",
+  "count": 320,
+  "seed": 2026110309,
+  "output": "confirmation-v1-openings.pgn",
+  "selector": "tools/p4-tactical-openings.py",
+  "selectorSha256": "1615568d70d8aec1d6899ed712adc91164c0b530b4737a97e435e6a7c893af73",
+  "source": "../p4-learning/raw/confirmation-book-v1/8moves_v3.pgn",
+  "sourceSha256": "5835239f88cc2c7511b177c32392a69f3ede21819cf0616f80a7f907cd21d17e",
+  "exclusions": "Entire legal16 pool, every tracked non-BOUNDARY2 positionKeys receipt including CH confirmation, all60 CH mixed-phase sequence roots. Recheck disjointness against any later development inputs before final confirmation. Existing diagnostic opening roots derive from excluded legal16 material.",
+  "selection": "Outcome-free unique legal16-ply nonterminal roots in held-out hash bucket1, sorted unique keys then fixed random.sample; no replacement seed search. Protected against candidate evaluations or outcome inspection during development.",
+  "admission": "Input preparation only, no selected finalist, no claim attempt or game. Do not inspect selected moves/position keys for research selection. Machine verify hashes/legality/disjointness later before any claim.",
+  "timeoutSeconds": 180,
+  "charge": "Conservatively charge complete parsing/input-preparation wall; no games",
+  "limits": "Curated/exclusion-conditioned opening distribution; disjoint roots do not eliminate opening-family correlation."
+}
