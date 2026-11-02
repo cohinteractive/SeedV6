@@ -1,0 +1,90 @@
+{
+  "W1": {
+    "guided": {},
+    "corrected": {
+      "reads": 244659,
+      "changed": 54307,
+      "absoluteCorrection": 1092617,
+      "maxCorrection": 164,
+      "directionRejected": 18136,
+      "changedUpdates": 1715,
+      "nearSaturation": 0,
+      "guardRejected": 198570,
+      "ruleRejected": 168,
+      "improvingChanged": 1772,
+      "qreads": 0,
+      "qchanged": 0,
+      "qabsoluteCorrection": 0,
+      "updates": [
+        379,
+        147,
+        1201
+      ]
+    },
+    "corrected-q": {
+      "reads": 1088253,
+      "changed": 133671,
+      "absoluteCorrection": 2480912,
+      "maxCorrection": 243,
+      "directionRejected": 17671,
+      "changedUpdates": 1722,
+      "nearSaturation": 0,
+      "guardRejected": 192454,
+      "ruleRejected": 273,
+      "improvingChanged": 1893,
+      "qreads": 849931,
+      "qchanged": 81238,
+      "qabsoluteCorrection": 1375796,
+      "updates": [
+        339,
+        131,
+        1262
+      ]
+    }
+  },
+  "W4": {
+    "guided": {},
+    "corrected": {
+      "reads": 236154,
+      "changed": 42110,
+      "absoluteCorrection": 648336,
+      "maxCorrection": 129,
+      "directionRejected": 16358,
+      "changedUpdates": 1899,
+      "nearSaturation": 0,
+      "guardRejected": 188775,
+      "ruleRejected": 279,
+      "improvingChanged": 1338,
+      "qreads": 0,
+      "qchanged": 0,
+      "qabsoluteCorrection": 0,
+      "updates": [
+        417,
+        148,
+        1345
+      ]
+    },
+    "corrected-q": {
+      "reads": 1163869,
+      "changed": 108779,
+      "absoluteCorrection": 1484219,
+      "maxCorrection": 125,
+      "directionRejected": 20927,
+      "changedUpdates": 2204,
+      "nearSaturation": 0,
+      "guardRejected": 210370,
+      "ruleRejected": 318,
+      "improvingChanged": 1276,
+      "qreads": 897564,
+      "qchanged": 63129,
+      "qabsoluteCorrection": 824412,
+      "updates": [
+        486,
+        198,
+        1533
+      ]
+    }
+  },
+  "c1Compatibility": "All9 W1 root outcomes match frozen C1 prototype nodes/depth/completion/score/PV; raw trace fix has no policy effect.",
+  "limits": "Observation-neutral W1 exact outcomes; W4 scheduling equality not claimed. Diagnostics include completed subtree updates from later aborted invocations; counts are not independent samples or strength."
+}

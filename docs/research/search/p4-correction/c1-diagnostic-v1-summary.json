@@ -101,7 +101,29 @@
         ]
       }
     },
-    "observationNeutral": "W4 schedule variable; no exact equality claim"
+    "observationNeutral": "W4 schedule variable; no exact equality claim",
+    "privateWorkers": [
+      {
+        "reads": 119588,
+        "updates": 941,
+        "changed": 26206
+      },
+      {
+        "reads": 44253,
+        "updates": 400,
+        "changed": 6640
+      },
+      {
+        "reads": 46224,
+        "updates": 307,
+        "changed": 6544
+      },
+      {
+        "reads": 43264,
+        "updates": 276,
+        "changed": 6546
+      }
+    ]
   },
   "interpretation": "Signal/decision activation and invariant checks, not competitive evidence. Optional counters span all invocations including completed subtrees of later aborted iterations; table clearing is unchanged."
 }

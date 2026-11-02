@@ -1,0 +1,12 @@
+{
+  "baseCommit": "fba713a6",
+  "files": {
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\CorrectionHistory.java": "a7fd0e1d3703d5944ce0ce5973ceb73d305354f07b59d171dedfead03021f900",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ExactSearch.java": "876a9535e12123791d91aeafb2b29239fdd71b0f3741a76e52f60e20397fa8b4",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\FlatSearchConfig.java": "aecf5b783ea7bd8d6cbe76c965c3dc570f53e466f4554313b1f587f2101ec99d",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\FlatSearchState.java": "12e2d609ca24b5e844604bc90c0c747e18caefad9bd5944deaa359e5a7b84c41",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4CorrectionStudy.java": "43caac796d512b2a7afa5dc1526038dca5729c47cedc58bed30185e863a6f06f",
+    "src\\researchLauncher\\java\\com\\ohinteractive\\seedv6\\integration\\P4CorrectionUciMain.java": "b08bd8cf7afde87aa21b4422efdc35c2bf82a051bccdfde1d52415b7e474a449"
+  },
+  "localSnapshots": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\c2-source-v1"
+}

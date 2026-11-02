@@ -1,0 +1,50 @@
+{
+  "suites": {
+    "com.ohinteractive.seedv6.search.exact.Cp64FlatNullTest": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.ohinteractive.seedv6.search.exact.FlatExactSearchTest": {
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.ohinteractive.seedv6.search.exact.P4CorrectionTest": {
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.ohinteractive.seedv6.search.exact.P4LearningTest": {
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.ohinteractive.seedv6.search.exact.Sr002FlatQuiescenceTest": {
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.ohinteractive.seedv6.search.exact.VerifiedNullAccountingTest": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "totals": {
+    "tests": 59,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "buildWallSecondsApprox": 51,
+  "log": "raw/c2-tests-v1.txt",
+  "status": "passed",
+  "scope": "Correction, learning, flattened main/qsearch independent references, verified null/accounting and project boundary checks; not full repository/native matrix."
+}

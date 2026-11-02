@@ -38,7 +38,7 @@ Existing local external files are hash-verified against `../p4-learning/external
 
 ## CH-C1 — request-private pawn correction for main selective decisions
 
-**Experimental, technical qualification underway; no competitive evidence.**
+**Technically qualified; first32-pair W1 screen adverse/inconclusive.**
 Profile `corrected`, flags238288895 = HL-G1/flags104071167 + EVAL_CORRECTION.
 Comparator is frozen84 guided; normal production remains HL-G1. No TT foundation,
 clock, evaluator, parallel cooperation or exact-reference changes.
@@ -67,3 +67,29 @@ do not train. Qsearch stand-pat initially stays raw. That asymmetry and request-
 lifetime are testable potential limitations, not immutable architectural constraints.
 Optional diagnostics count learning by bound, exclusions, correction magnitude and
 changed improving decisions without changing traversal. They are disabled in games.
+
+CH-C1 source d51d1479/build86 completed the first W1 screen against exact84:
+22W/16D/26L,46.875%, paired95 interval35.08?58.67%. No gain established.
+Costs were1.0041x W1/1.0313x W4 in short clean diagnostics; not speed claims.
+The optional deeper-omission trace mislabeled working as raw, discovered after
+freeze. No game observer was enabled and the diagnostic counters ignored that
+argument; the source fix and independent constant-evaluator regression passed for future artifacts.
+
+## CH-C2 ? pawn correction shared by main decisions and qsearch stand-pat
+
+**Technically qualified; build87 artifact freeze next; no games yet.**
+Profile `corrected-q`,flags506724351. Adds CORRECTED_QSEARCH to CH-C1 while keeping
+its pawn key, update eligibility/EMA/cap, request lifetime and HL-G1 effort policy.
+At non-check, nonterminal ordinary qsearch nodes, raw evaluator output is validated,
+then a bounded corrected working stand-pat is used. Real rule/terminal resolution
+still precedes evaluation; synthetic null and legal null verification remain raw
+and do not train. A changed stand-pat explicitly taints selective provenance.
+Raw main evaluation and raw diagnostic callback meanings remain intact.
+
+Hypothesis: using correction only for selective decisions creates an inconsistent
+estimate relative to raw leaf scores. Sharing it with the leaf consumer may make
+learned structural bias useful to returned evaluations and pruning together.
+Risks: self-referential feedback, broad pawn-context generalization, increased
+qnode hash work and tactical distortion. No claim that external integration transfers
+its strength or constants. The same32 development pairs will provide a descriptive
+common-input screen; selection remains exploratory and confirmation stays untouched.

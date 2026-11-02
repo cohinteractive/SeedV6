@@ -25,7 +25,7 @@ def main(args):
     candidate = Path(args.runtime).resolve()
     profiles = {'frozen84': (m.ROOT/'docs/research/search/p4-learning/raw/runtime-build84-v1', 'guided'),
                 'production': (candidate, 'production85'), 'researchControl': (candidate, 'guided'),
-                'corrected': (candidate, 'corrected')}
+                'corrected': (candidate, 'corrected'), 'corrected-q': (candidate, 'corrected-q')}
     openings = old.parent/'bridge-v1-openings.pgn'
     positions = ['startpos'] + ['startpos moves '+' '.join(x) for x in b.opening_prefixes(openings, 32)[:8]]
     frozen = {str(p.resolve()): b.digest(p) for p in [Path(__file__), Path(hl.__file__), Path(m.__file__), openings]}
@@ -52,7 +52,7 @@ def main(args):
                         if request.startswith('nodes ') and result['nodes'] != int(request.split()[1]):
                             raise ValueError('Request accounting')
                         report['rows'].append(dict(profile=name, workers=workers, position=position, request=request, result=result))
-                    if name in ('production', 'corrected'):
+                    if name in ('production', 'corrected', 'corrected-q'):
                         engine.send('position startpos'); engine.send('go infinite'); time.sleep(.1); engine.send('stop')
                         result = b.inspect_result(b.chess.Board(), engine.until('bestmove ', 30))
                         report.setdefault('stopRequests', []).append(dict(profile=name, workers=workers, result=result))

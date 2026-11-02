@@ -2,7 +2,8 @@
 
 **ACTIVE — CH-C1 technically qualified prototype, 3 November2026.**
 Read [CONTRACT](CONTRACT.md) first. CH-C1 is experimental; no strength result yet.
-No match running. Normal production policy and research champion HL-G1/build84
+CH-C1 screen is complete and drained; no match is running.
+Normal production policy and research champion HL-G1/build84
 are unchanged. This is progress from bootstrap, not research completion.
 
 ## Bootstrap evidence and challenge
@@ -58,14 +59,12 @@ be retained in FORMULATIONS alongside the first implemented hypothesis.
 
 ## Dynamic next work
 
-1. Complete final bounded managed-clock/history smoke checks, coherent source commit
-   and committed runtime freeze; verify identical tested classes except version metadata.
-2. Freeze32-pair first W1 exploratory comparison against exact84, after new development
-   input selection and prospective resource/audit checks. CH-C1 corrects main selective
-   decisions using request/worker-private pawn feedback; raw stand-pat remains unchanged.
-3. Follow evidence into qsearch/effort coupling or lifetime/context adjustment where
-   useful. No blind sweep or automatic F3 adoption. Freeze qualified artifact before
-   exploratory paired games against exact84.
+1. Finish the diagnostic raw-value callback fix's focused validation.
+2. Implement/qualify CH-C2: same guarded request-private learning plus corrected
+   qsearch stand-pat. Freeze a new source/artifact/configuration before a second
+   prospective32-pair W1 screen on the common development inputs against exact84.
+3. Diagnose the integrated result with signal/cost evidence. Retention/context/effort
+   changes remain contingent, not an automatic parameter sweep or F3 adoption.
 4. Select a justified integrated finalist; W4 risk and one fresh W1 confirmation,
    with prospective protocols, remaining-budget checks and full audits.
 
@@ -75,11 +74,14 @@ not established. No bootstrap blocker identified; runtime qualification pending.
 
 ## Resource state and gates
 
-Spent:0 W1 exploratory pairs/games;0 W1 confirmation pairs/games/attempts;
-0 W4 pairs/games;0 match seconds. Remaining:128/160/32 pairs,640 games,43,200s.
+Spent:32 W1 exploratory pairs/64 games;0 W1 confirmation pairs/games/attempts;
+0 W4 pairs/games;1951.74s conservatively charged match wall (including setup/audit).
+Remaining:96 W1 exploratory pairs/192 games;160 confirmation pairs/320 games;
+32 W4 pairs/64 games;576 total games;41,248.26s match wall.
 Technical evidence is detailed below; no competitive games have been run.
 No promotion, default change, deployment, push or release authorized.
-Next action: artifact finalization and the first frozen W1 development experiment.
+Next action: qualify the qsearch integration and diagnostic fix. No owner decision
+currently blocks autonomous continuation; no independent confirmation has been spent.
 
 ## First formulation technical evidence
 
@@ -154,3 +156,83 @@ The initial admission-state append encountered a Windows default text-decoding
 error after protocol creation; no game had started. It was corrected to explicit
 UTF-8 and the attributable state text repaired. Frozen protocol/artifact/input
 bytes remain unchanged. No runtime code changed or additional build increment.
+
+Live admission observed: W1 screen launched through the qualified runner, Python
+parent10424/worker5308 and owned Fastchess30676, execution tool session56125.
+`raw/c1-screen-v1-w1/run.json` says running; first completed game exists. These are
+observed handles, not guarantees of future liveness. Recheck processes/run status
+before any action; wait for final independent audit and process drain. No partial
+result was used for selection or a stopping decision. In-flight resources are
+charged from the final run record (or actual partial output if interrupted).
+
+Additional diagnostic reconciliation: each W4 private worker consumed and updated
+correction; update counts941/400/307/276 and changed reads26206/6640/6544/6546.
+The compact diagnostic summary now records these per-worker totals from the same
+unchanged raw output. This does not establish parallel competitive strength.
+
+## Pending diagnostic-only correction (screen remains frozen)
+
+During read-only follow-up, found that deeper-futility SelectivityTrace.omission's
+`raw` argument received constructionEval's now-corrected return. Stored raw values,
+search decisions, completed scores and game telemetry remain correct. This optional
+trace is disabled in games; the CH-C1 diagnostic implementation counts omissions
+without consuming that argument, so recorded diagnostic counts/costs are unaffected.
+The working source now passes the preserved rawEval value and names the local
+pruning value working. A constant-evaluator/nonzero-correction trace regression is
+added but **not yet executed**; defer compilation/testing until the match drains.
+This source edit does not mutate the frozen runtime, protocol or match adapter.
+Do not claim the pending fix tested or build a replacement for the in-flight match.
+
+## CH-C1 first strength screen ? complete, adverse/inconclusive
+
+`c1-screen-v1-w1-summary.json`:64 normal games/32 pairs,22W/16D/26L,46.875%.
+Paired-normal95 interval35.08?58.67%; bounded95 interval22.87?70.88%.
+All8780 request audits passed; no missing-score warnings; inputs stable; both engine
+handles drained; OS inspection finds no Fastchess process. Total wall1951.74s,
+runner wall1948.48s. Raw output remains `raw/c1-screen-v1-w1`. No partial result
+informed a decision. The old live PIDs/session above are historical, not a restart target.
+
+This does not establish a CH-C1 gain or a universal rejection of correction history.
+The technically working main-only signal did not earn immediate confirmation.
+Decision: investigate the concrete main/qsearch mismatch. Both inspected external
+engines also correct stand-pat; SeedV6 C1 leaves the returned leaf evaluation raw
+while shifting only selective decisions. CH-C2 will add that consumer with the same
+bounded contexts, learning eligibility and lifetime. This is a hypothesis, not an
+explanation proved by the score. Common-opening screens will be descriptive and
+selection-biased; no isolated component or independent-strength inference follows.
+
+Pending trace fix validated after screen drainage: all8 focused correction tests
+passed (`raw/raw-trace-fix-tests-v1.txt`,16s build/test wall), including a constant
+raw evaluator with deliberately nonzero working correction and reached omissions.
+No historical runtime/evidence was replaced. CH-C2 now adds corrected ordinary
+qsearch stand-pat; its prototype and expanded qualification are in progress.
+
+CH-C2 selected qualification passed59 JUnit tests with zero failures/errors/skips,
+including the expanded correction/null/isolation cases, in51s build/test wall.
+`runtime-c2-prototype-v1-manifest.json` and `c2-source-v1-manifest.json` pin the
+prototype. Sequential W1/W4 observation and clean-cost jobs are running via execution
+session88656; no competitive match is active. Inspect the execution JSON/logs before
+rerunning; each output path is CREATE_NEW. C2 remains uncommitted experimental source
+at build86 pending final technical qualification and direct qualifying build handling.
+
+C2 observation diagnostics passed:27 requests/domain plus27 clean W1 repeats.
+W1 C2 made1732 eligible main updates, changed81,238 of849,931 qsearch reads,
+and1893 improving decisions; max correction243, no near-saturation events. W4
+also exercised corrected stand-pat. W1 observation remains neutral. The current
+C1 profile reproduces all9 frozen-prototype root outcomes (nodes, depth/completion,
+score and PV), validating that the raw trace repair leaves C1 policy unchanged.
+See `c2-diagnostic-v1-summary.json`; these are mechanism facts, not strength.
+
+C2 clean cost passed216 requests including54 warmups in57.55s total. Candidate/
+guided geometric-mean wall ratio0.9681 W1/1.0332 W4; short-variable measurements,
+not a speed claim. C2 UCI isolation passed65 requests plus6 stop/reset checks;
+frozen84/default/explicit guided W1 controls match. Candidate managed-clock/history/
+terminal/reset checks passed14 requests plus2 stops. All owned engines closed.
+`c2-cost-v1-summary.json`, `c2-isolation-v1-summary.json`, `c2-runtime-v1-summary.json`
+preserve evidence. No match or diagnostic process remains active.
+
+C2 is ready for committed artifact qualification and a separate32-pair exploratory
+W1 screen versus frozen84 on the common development inputs. No strength is assumed.
+Direct version finalization verified only build86->87, with unchanged user fields
+and all other bytes; no finalizer. The second implementation commit includes the
+qsearch consumer and the diagnostic raw-value repair. Prior frozen C1 remains intact.

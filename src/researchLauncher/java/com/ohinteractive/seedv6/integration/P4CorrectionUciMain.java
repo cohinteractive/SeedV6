@@ -14,9 +14,9 @@ import com.ohinteractive.seedv6.uci.*;
 public final class P4CorrectionUciMain {
     public static void main(String[] args) throws Exception {
         if(args.length!=4 || !args[0].equals("--network") || !args[2].equals("--profile"))
-            throw new IllegalArgumentException("--network <CP64> --profile guided|corrected");
+            throw new IllegalArgumentException("--network <CP64> --profile guided|corrected|corrected-q");
         String profile=args[3];P4CorrectionStudy.flags(profile,1);
-        String formulation=profile.equals("corrected")?"CH-C1":"HL-G1";
+        String formulation=switch(profile) {case "corrected"->"CH-C1";case "corrected-q"->"CH-C2";default->"HL-G1";};
         var model=ConventionalNnueEngine.load(Path.of(args[1]));var clocks=ClockPolicy.configured();
         var configuration=new UciConfiguration() {
             ConstructionSearch config(int workers,int hash) {
@@ -40,7 +40,8 @@ public final class P4CorrectionUciMain {
                         +" head="+model.model().headBackend()+" scoreMapping="+ConventionalNnueEngine.SCORE_MAPPING
                         +" flags="+config(workers,hash).mechanisms().flags()+" configuration="+config(workers,hash).identity()
                         +" learning=request-worker-private-no-seed effort=history64-bounded2"
-                        +" correction="+(profile.equals("corrected")?"pawn-main-ema32-cap256-request":"OFF")
+                        +" correction="+(profile.equals("guided")?"OFF":profile.equals("corrected-q")?
+                                "pawn-main-q-ema32-cap256-request":"pawn-main-ema32-cap256-request")
                         +" ttPolicy=production-hints slotBytes=24 clockPolicy="+clocks.identity()+" book=OFF tablebase=OFF"
                         +" build="+version.build()+" source="+version.sourceRevision();
             }

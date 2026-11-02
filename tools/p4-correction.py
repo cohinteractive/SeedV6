@@ -16,7 +16,7 @@ m.OUT = m.ROOT / 'docs/research/search/p4-correction'
 def command(runtime, profile='guided', workers=1, actor='diagnostic'):
     if profile == 'production85':
         return hl.old_command(runtime, 'control', workers, actor)
-    if profile != 'corrected':
+    if profile not in ('corrected', 'corrected-q'):
         return hl.command(runtime, profile, workers, actor)
     return hl.old_command(runtime, 'control', workers, actor)[:-1] + [
         'com.ohinteractive.seedv6.integration.P4CorrectionUciMain',
@@ -24,12 +24,14 @@ def command(runtime, profile='guided', workers=1, actor='diagnostic'):
 
 
 def configure(engine, workers, hash_mib=64, profile='guided'):
-    if profile not in ('production85', 'corrected'):
+    if profile not in ('production85', 'corrected', 'corrected-q'):
         return hl.configure(engine, workers, hash_mib, profile)
     identity = hl.old_configure(engine, workers, hash_mib, profile)
-    expected = ('flags=104071167', 'searchProfile=HL_G1') if profile == 'production85' else (
+    expected = ('profile=corrected-q', 'formulation=CH-C2', 'flags=506724351',
+                'correction=pawn-main-q-ema32-cap256-request', 'ttPolicy=production-hints', 'slotBytes=24') if profile == 'corrected-q' else (
+        ('flags=104071167', 'searchProfile=HL_G1') if profile == 'production85' else (
         'profile=corrected', 'formulation=CH-C1', 'flags=238288895',
-        'correction=pawn-main-ema32-cap256-request', 'ttPolicy=production-hints', 'slotBytes=24')
+        'correction=pawn-main-ema32-cap256-request', 'ttPolicy=production-hints', 'slotBytes=24'))
     for token in expected:
         if token not in identity:
             raise ValueError('Missing correction identity ' + token)

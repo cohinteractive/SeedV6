@@ -13,8 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Timeout(120)
 class P4CorrectionTest {
-    static ExactSearch kernel() {return ExactSearch.constructionResearch(
-            ExactEvaluator.from(SearchEvaluation.handcrafted()),new TTable(1),P4CorrectionStudy.flags("corrected",1));}
+    static ExactSearch kernel() {return kernel("corrected");}
+    static ExactSearch kernel(String profile) {return ExactSearch.constructionResearch(
+            ExactEvaluator.from(SearchEvaluation.handcrafted()),new TTable(1),P4CorrectionStudy.flags(profile,1));}
     static FlatSearchState state(ExactSearch k) throws Exception {return (FlatSearchState)P4TtFoundationStudy.field(k,"constructionState");}
 
     @Test void boundsOnlyLearnInTheirSupportedDirectionAndUpdatesRemainBounded() {
@@ -46,7 +47,8 @@ class P4CorrectionTest {
         assertEquals(Integer.MIN_VALUE,s.workingEval[0]);k.newGame();
     }
     @Test void observationsDoNotChangeTraversalAndWorkersDoNotShareCorrection() throws Exception {
-        var a=kernel();var b=kernel();var board=Board.startingPosition();
+        for(String profile:List.of("corrected","corrected-q")) {
+        var a=kernel(profile);var b=kernel(profile);var board=Board.startingPosition();
         var d=new CorrectionHistory.Diagnostics();state(a).correction.diagnostics=d;
         a.beginRequest();b.beginRequest();
         for(int depth=1;depth<=5;depth++) {
@@ -56,10 +58,12 @@ class P4CorrectionTest {
         assertTrue(d.reads>0);assertTrue(Arrays.stream(d.updates).sum()>0);assertTrue(d.changed>0);
         assertNotSame(state(a).correction.values,state(b).correction.values);
         a.endRequest();b.endRequest();
+        if(profile.equals("corrected-q"))assertTrue(d.qreads>0 && d.qchanged>0);
+        }
     }
     @Test void realHistoryTerminalRulesMateAndCancellationRemainValid() {
-        for(int workers:new int[]{1,4})try(var driver=new SearchDriver(new ConstructionSearch(
-                P4CorrectionStudy.flags("corrected",workers),workers,1,AspirationSearch.Policy.ADAPTIVE16).create(SearchEvaluation.handcrafted()))) {
+        for(String profile:List.of("corrected","corrected-q"))for(int workers:new int[]{1,4})try(var driver=new SearchDriver(new ConstructionSearch(
+                P4CorrectionStudy.flags(profile,workers),workers,1,AspirationSearch.Policy.ADAPTIVE16).create(SearchEvaluation.handcrafted()))) {
             var b=Board.startingPosition();var saved=b.clone();
             for(int budget:new int[]{1,100,5000,20000}) {
                 var c=SearchControl.controlled(budget,System.nanoTime(),30_000_000_000L,TimeSource.SYSTEM);
@@ -79,15 +83,17 @@ class P4CorrectionTest {
         assertEquals(104071167L,BaselineEngine.configuration(1,64).mechanisms().flags());
         assertEquals(104071167L,P4CorrectionStudy.flags("guided",1).flags());
         assertEquals(238288895L,P4CorrectionStudy.flags("corrected",1).flags());
+        assertEquals(506724351L,P4CorrectionStudy.flags("corrected-q",1).flags());
         assertNull(new FlatSearchState(FlatSearchConfig.exact()).correction);
         assertThrows(IllegalArgumentException.class,()->FlatSearchConfig.exact().with(FlatSearchConfig.Feature.EVAL_CORRECTION,true));
+        assertThrows(IllegalArgumentException.class,()->P4CorrectionStudy.flags("guided",1).with(FlatSearchConfig.Feature.CORRECTED_QSEARCH,true));
     }
     @Test void discardedNullProbesCannotChangeCorrectionLabelsOrWorkingEvaluation() throws Exception {
         var model=ConventionalNnueEngine.load();
         var roots=P3HistoryStudy.roots(java.nio.file.Path.of("../docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv"));
         long probes=0;
-        for(var root:roots.subList(0,3)) {
-            var cfg=P4CorrectionStudy.flags("corrected",1);
+        for(String profile:List.of("corrected","corrected-q"))for(var root:roots.subList(0,3)) {
+            var cfg=P4CorrectionStudy.flags(profile,1);
             var base=ExactSearch.constructionResearch(ExactEvaluator.from(model.evaluation()),new TTable(8),
                     cfg.with(FlatSearchConfig.Feature.VERIFIED_NULL,false));
             var d=new NullMovePolicy.Diagnostics();
@@ -105,5 +111,42 @@ class P4CorrectionTest {
             probes+=d.attempts;
         }
         assertTrue(probes>0);
+    }
+    @Test void omissionTraceKeepsRawEvaluatorMeaningWhenWorkingEvaluationIsCorrected() throws Exception {
+        var rawZero=new ExactEvaluator() {public int evaluate(long[] board,int ply) {return 0;}};
+        var k=ExactSearch.constructionResearch(rawZero,new TTable(1),P4CorrectionStudy.flags("corrected",1)
+                .with(FlatSearchConfig.Feature.VERIFIED_NULL,false));
+        int[] observations={0};
+        k.withSelectivityTrace(new SelectivityTrace() {
+            @Override public void omission(long[] board,long move,long[] path,int ply,int depth,int alpha,int beta,
+                    int raw,int history,int continuation,int assigned,int margin) {
+                observations[0]++;assertEquals(0,raw,"Trace raw must equal the independent constant evaluator");
+            }
+        });
+        var board=Board.startingPosition();k.beginRequest();
+        try {
+            Arrays.fill(state(k).correction.values,(short)1600);
+            assertTrue(k.searchWindow(board,GameHistory.initial(board),6,1000,1001,()->k.visitedNodes()>2000000).completed());
+            assertTrue(observations[0]>0,"Must exercise deeper omissions with a nonzero correction");
+        } finally {k.endRequest();}
+    }
+    @Test void correctedStandPatChangesOnlyOptInOrdinaryLeavesAndKeepsRawMainValue() throws Exception {
+        var rawZero=new ExactEvaluator() {public int evaluate(long[] board,int ply) {return 0;}};
+        var board=Board.startingPosition();
+        for(String profile:List.of("corrected","corrected-q")) {
+            var k=ExactSearch.constructionResearch(rawZero,new TTable(1),P4CorrectionStudy.flags(profile,1));
+            k.beginRequest();
+            try {
+                Arrays.fill(state(k).correction.values,(short)1600);
+                var r=k.search(board,1);assertTrue(r.completed());
+                assertEquals(profile.equals("corrected-q")?-100:0,r.score());
+                assertEquals(0,state(k).rawEval[0]);assertEquals(100,state(k).workingEval[0]);
+                Phase2Oracle.legalPv(board,r.principalVariation());
+                var mate=Board.fromFen("7k/6Q1/5K2/8/8/8/8/8 b - - 0 1");
+                assertEquals(-ExactSearch.MATE_SCORE,k.search(mate,0).score());
+                var stale=Board.fromFen("7k/5K2/6Q1/8/8/8/8/8 b - - 0 1");
+                assertEquals(0,k.search(stale,0).score());
+            } finally {k.endRequest();}
+        }
     }
 }

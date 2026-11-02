@@ -1434,13 +1434,13 @@ public final class ExactSearch {
         int assigned=depth-1-reduction;
         if(assigned>2) return false;
         int marginDepth=construction.has(FlatSearchConfig.Feature.REDUCTION_FUTILITY)?assigned:depth;
-        int raw=constructionEval(board,ply);
-        if(raw+construction.futilityMargin()*marginDepth>alpha) return false;
+        int working=constructionEval(board,ply);
+        if(working+construction.futilityMargin()*marginDepth>alpha) return false;
         if(selectivityTrace!=null && !nullVerification) {
             int context=ContinuationHistory.context(constructionState.pathMoves[ply]);
             int continuation=constructionState.continuation!=null && context>=0
                     ?constructionState.continuation[ContinuationHistory.index(context,move)]:0;
-            selectivityTrace.omission(board,move,constructionState.pathMoves,ply,depth,alpha,beta,raw,
+            selectivityTrace.omission(board,move,constructionState.pathMoves,ply,depth,alpha,beta,constructionState.rawEval[ply],
                     quietHistory[QuietHistory.index(move)],continuation,assigned,marginDepth);
         }
         return true;
@@ -2404,6 +2404,12 @@ public final class ExactSearch {
                         best=evaluator.evaluate(board,ply);
                         if(best < -MAX_STATIC_SCORE || best > MAX_STATIC_SCORE)
                             throw new IllegalArgumentException("Static score enters the reserved mate band: "+best);
+                        if(correctionEnabled() && construction.has(FlatSearchConfig.Feature.CORRECTED_QSEARCH)
+                                && !nullProbeActive && !nullVerification) {
+                            int raw=best;
+                            best=constructionState.correction.apply(board,raw,true);
+                            if(best!=raw)selectiveEpoch++; // Heuristic working stand-pat, never exact raw proof.
+                        }
                         if(best>=beta || count==0) {score=best;continue;}
                         if(best>alpha) alpha=best;
                     }

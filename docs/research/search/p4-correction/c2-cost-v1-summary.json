@@ -1,0 +1,141 @@
+{
+  "W1": {
+    "measuredRequests": 81,
+    "warmupRequests": 27,
+    "relativeTo": "guided",
+    "ratios": {
+      "corrected": {
+        "elapsedNanos": {
+          "geometricMeanRatio": 0.9791778913674554,
+          "byRoot": {
+            "opening-1": 0.9420479787954475,
+            "opening-2": 1.0075285652777808,
+            "opening-3": 0.9906615760663207,
+            "opening-4": 0.9611612815975338,
+            "opening-5": 1.042312911653985,
+            "opening-6": 0.9772487811425089,
+            "opening-7": 0.8116167624803885,
+            "opening-8": 1.0916168425982944,
+            "start": 1.0145604398635135
+          }
+        },
+        "processCpuNanos": {
+          "geometricMeanRatio": 0.9743673107327768,
+          "byRoot": {
+            "opening-1": 0.9014084507042253,
+            "opening-2": 1.0129870129870129,
+            "opening-3": 1.0,
+            "opening-4": 0.9146341463414634,
+            "opening-5": 1.056338028169014,
+            "opening-6": 0.9634146341463414,
+            "opening-7": 0.8421052631578947,
+            "opening-8": 1.0684931506849316,
+            "start": 1.0350877192982457
+          }
+        }
+      },
+      "corrected-q": {
+        "elapsedNanos": {
+          "geometricMeanRatio": 0.9681008734686135,
+          "byRoot": {
+            "opening-1": 0.9592494581836682,
+            "opening-2": 1.034002473979401,
+            "opening-3": 0.9962066745373789,
+            "opening-4": 0.994207640260595,
+            "opening-5": 1.0047693746952944,
+            "opening-6": 0.9609275627788698,
+            "opening-7": 0.710473945035923,
+            "opening-8": 1.1500370624283192,
+            "start": 0.9638041486525099
+          }
+        },
+        "processCpuNanos": {
+          "geometricMeanRatio": 0.9779332368260513,
+          "byRoot": {
+            "opening-1": 0.9436619718309858,
+            "opening-2": 1.0389610389610389,
+            "opening-3": 1.028985507246377,
+            "opening-4": 1.0,
+            "opening-5": 1.0140845070422535,
+            "opening-6": 0.926829268292683,
+            "opening-7": 0.736842105263158,
+            "opening-8": 1.1506849315068495,
+            "start": 1.0175438596491226
+          }
+        }
+      }
+    },
+    "raw": "docs\\research\\search\\p4-correction\\raw\\c2-cost-v1-w1.jsonl",
+    "sha256": "f9c6850684bc024559a69d2b155c4207ec85167d608487291bbbf9ae538a9e6f"
+  },
+  "W4": {
+    "measuredRequests": 81,
+    "warmupRequests": 27,
+    "relativeTo": "guided",
+    "ratios": {
+      "corrected": {
+        "elapsedNanos": {
+          "geometricMeanRatio": 1.0540073211890775,
+          "byRoot": {
+            "opening-1": 1.0803743509034751,
+            "opening-2": 1.0137210956778786,
+            "opening-3": 0.9852193598896298,
+            "opening-4": 1.0195549581249015,
+            "opening-5": 1.0088548535559645,
+            "opening-6": 1.0416765153244503,
+            "opening-7": 1.0755428396260154,
+            "opening-8": 1.1369805034201457,
+            "start": 1.1355703077322477
+          }
+        },
+        "processCpuNanos": {
+          "geometricMeanRatio": 1.0073248418863117,
+          "byRoot": {
+            "opening-1": 1.035294117647059,
+            "opening-2": 0.9158878504672898,
+            "opening-3": 1.2839506172839505,
+            "opening-4": 1.0404040404040404,
+            "opening-5": 0.888888888888889,
+            "opening-6": 1.1666666666666667,
+            "opening-7": 0.8235294117647058,
+            "opening-8": 0.9871794871794872,
+            "start": 1.0
+          }
+        }
+      },
+      "corrected-q": {
+        "elapsedNanos": {
+          "geometricMeanRatio": 1.0331905339419645,
+          "byRoot": {
+            "opening-1": 1.0416623416943231,
+            "opening-2": 1.1026114140788585,
+            "opening-3": 1.031649752256375,
+            "opening-4": 1.0910780833981966,
+            "opening-5": 0.9546701576661514,
+            "opening-6": 0.8807915396151492,
+            "opening-7": 1.0910423250687902,
+            "opening-8": 1.162860189569513,
+            "start": 0.972726227622602
+          }
+        },
+        "processCpuNanos": {
+          "geometricMeanRatio": 0.975519285459108,
+          "byRoot": {
+            "opening-1": 1.0117647058823531,
+            "opening-2": 0.9532710280373833,
+            "opening-3": 0.9753086419753086,
+            "opening-4": 0.9393939393939394,
+            "opening-5": 1.0777777777777777,
+            "opening-6": 0.8571428571428571,
+            "opening-7": 0.8823529411764706,
+            "opening-8": 1.2564102564102564,
+            "start": 0.8840579710144927
+          }
+        }
+      }
+    },
+    "raw": "docs\\research\\search\\p4-correction\\raw\\c2-cost-v1-w4.jsonl",
+    "sha256": "f66815eac3312dc7d70731ecc36e77d0817172f7ea43a20f6f16674a80046e33"
+  },
+  "interpretation": "Three rotated measured rounds after one warmup round; short fixed-node/depth requests. Descriptive cost only, no speed/strength claim."
+}

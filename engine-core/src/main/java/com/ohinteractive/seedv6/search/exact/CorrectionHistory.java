@@ -22,12 +22,19 @@ final class CorrectionHistory {
     }
     void clear() { Arrays.fill(values,(short)0); }
     int apply(long[] board,int raw) {
+        return apply(board,raw,false);
+    }
+    int apply(long[] board,int raw,boolean qsearch) {
         int correction=values[index(board)]/SCALE;
         int result=Math.max(-ExactSearch.MAX_STATIC_SCORE,Math.min(ExactSearch.MAX_STATIC_SCORE,raw+correction));
         if(diagnostics!=null) {
             diagnostics.reads++;if(result!=raw)diagnostics.changed++;
             diagnostics.absoluteCorrection+=Math.abs(result-raw);
             diagnostics.maxCorrection=Math.max(diagnostics.maxCorrection,Math.abs(result-raw));
+            if(qsearch) {
+                diagnostics.qreads++;if(result!=raw)diagnostics.qchanged++;
+                diagnostics.qabsoluteCorrection+=Math.abs(result-raw);
+            }
         }
         return result;
     }
@@ -52,6 +59,7 @@ final class CorrectionHistory {
     static final class Diagnostics {
         long reads,changed,absoluteCorrection,maxCorrection,directionRejected,changedUpdates,nearSaturation;
         long guardRejected,ruleRejected,improvingChanged;
+        long qreads,qchanged,qabsoluteCorrection;
         final long[] updates=new long[3]; // selective upper, window-interior, lower
     }
 }
