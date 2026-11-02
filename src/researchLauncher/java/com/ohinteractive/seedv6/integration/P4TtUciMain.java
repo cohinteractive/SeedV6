@@ -21,7 +21,7 @@ public final class P4TtUciMain {
         var clocks=ClockPolicy.configured();
         var configuration=new UciConfiguration() {
             ConstructionSearch config(int workers,int hash) {
-                var base=BaselineEngine.configuration(workers,hash);
+                var base=BaselineEngine.legacyConfiguration(workers,hash);
                 return new ConstructionSearch(base.mechanisms().with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY,
                         !profile.equals("control")).with(FlatSearchConfig.Feature.AGED_HEURISTIC_TT_MEMORY,
                         profile.equals("h2")),workers,hash,base.aspiration());

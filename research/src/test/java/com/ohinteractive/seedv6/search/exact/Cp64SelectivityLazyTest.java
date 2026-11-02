@@ -47,9 +47,9 @@ class Cp64SelectivityLazyTest {
         System.out.printf("lazy improving identical request traversal; eager evaluations=%d lazy=%d%n",evaluations[0],evaluations[1]);
     }
     @Test void ancestorReadsMatchIndependentRebuildAndPreserveDefaultIdentity() throws Exception {
-        assertEquals(3407871,BaselineEngine.configuration(1,64).mechanisms().flags());
+        assertEquals(3407871,BaselineEngine.legacyConfiguration(1,64).mechanisms().flags());
         assertEquals(262143,Cp64SelectivityLab.configuration("baseline",1,64).mechanisms().flags());
-        assertFalse(BaselineEngine.configuration(1,64).mechanisms().has(LAZY_IMPROVING));
+        assertFalse(BaselineEngine.legacyConfiguration(1,64).mechanisms().has(LAZY_IMPROVING));
         assertThrows(IllegalArgumentException.class,()->FlatSearchConfig.exact().with(LAZY_IMPROVING,true));
         var model=ConventionalNnueEngine.load();
         for(String fen:List.of(Board.FEN_STARTING_POSITION,SeePruningTest.MIDDLE,

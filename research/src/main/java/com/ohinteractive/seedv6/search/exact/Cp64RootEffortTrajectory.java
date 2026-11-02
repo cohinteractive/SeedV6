@@ -73,7 +73,7 @@ public final class Cp64RootEffortTrajectory {
         int depth=Integer.parseInt(args[3]), rounds=Integer.parseInt(args[5]), count=Integer.parseInt(args[6]);
         long budget=Long.parseLong(args[4]);
         if(depth<2 || depth>64 || budget<1 || rounds<1 || count<1 || count>roots.size()) throw new IllegalArgumentException("Bounds");
-        var config=BaselineEngine.configuration(model.evaluation(),1,64);
+        var config=BaselineEngine.legacyConfiguration(model.evaluation(),1,64);
         var reader=new Reader(config.create(model.evaluation())); var gson=new GsonBuilder().create();
         try(var out=Files.newBufferedWriter(Path.of(args[2]),StandardOpenOption.CREATE_NEW);
             var plain=new SearchDriver(config.create(model.evaluation())); var observed=new SearchDriver(reader)) {

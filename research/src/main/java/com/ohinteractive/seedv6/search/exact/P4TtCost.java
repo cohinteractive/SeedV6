@@ -19,7 +19,7 @@ public final class P4TtCost {
         SearchDriver[] drivers=new SearchDriver[2];
         try(var out=Files.newBufferedWriter(Path.of(args[2]),StandardOpenOption.CREATE_NEW)) {
             for(int i=0;i<2;i++) {
-                var base=BaselineEngine.configuration(workers,64);
+                var base=BaselineEngine.legacyConfiguration(workers,64);
                 var flags=i==0?base.mechanisms():base.mechanisms().with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY,true);
                 drivers[i]=new SearchDriver(ClockPolicy.BOUNDARY2.apply(new ConstructionSearch(flags,workers,64,base.aspiration()).create(model.evaluation())));
             }

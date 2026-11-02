@@ -131,7 +131,7 @@ class Cp64FlatNullTest {
             fail.set(false);driver.newGame();assertTrue(driver.search(new SearchRequest(board,3)).targetDepthCompleted());
         }
         }
-        assertEquals(3407871,BaselineEngine.configuration(1,64).mechanisms().flags());
+        assertEquals(3407871,BaselineEngine.legacyConfiguration(1,64).mechanisms().flags());
         assertEquals(262143,Cp64SelectivityLab.configuration("baseline",1,64).mechanisms().flags());
         assertThrows(IllegalArgumentException.class,()->FlatSearchConfig.exact().with(VERIFIED_NULL,true));
     }

@@ -63,8 +63,8 @@ class P4LearningTest {
         assertNotSame(quiet(a),quiet(b));assertNotSame(state(a).continuation,state(b).continuation);
         a.endRequest();b.endRequest();
     }
-    @Test void productionAndIndependentReferenceConfigurationsStayUnchanged() {
-        assertEquals(3407871L,BaselineEngine.configuration(1,64).mechanisms().flags());
+    @Test void legacyAndIndependentReferenceConfigurationsStayUnchanged() {
+        assertEquals(3407871L,BaselineEngine.legacyConfiguration(1,64).mechanisms().flags());
         assertEquals(3407871L,P4LearningStudy.flags("control",4).flags());
         assertFalse(FlatSearchConfig.exact().has(REQUEST_LEARNING));
         assertThrows(IllegalArgumentException.class,()->FlatSearchConfig.exact().with(REQUEST_LEARNING,true));
@@ -98,6 +98,6 @@ class P4LearningTest {
         h[index]=0;assertEquals(1,s.historyReduction(1,8,1,move,h));
         h[index]=32;assertEquals(0,s.historyReduction(1,8,1,move,h));
         h[index]=-32;assertEquals(2,s.historyReduction(1,8,1,move,h));
-        assertThrows(IllegalArgumentException.class,()->BaselineEngine.configuration(1,64).mechanisms().with(HISTORY_EFFORT,true));
+        assertThrows(IllegalArgumentException.class,()->BaselineEngine.legacyConfiguration(1,64).mechanisms().with(HISTORY_EFFORT,true));
     }
 }

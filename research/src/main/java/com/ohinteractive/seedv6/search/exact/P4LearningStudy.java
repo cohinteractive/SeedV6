@@ -13,7 +13,7 @@ import com.ohinteractive.seedv6.search.tt.TTable;
 public final class P4LearningStudy {
     public static FlatSearchConfig flags(String profile,int workers) {
         if(!Set.of("control","retain","guided").contains(profile)) throw new IllegalArgumentException("Unknown learning profile: "+profile);
-        return BaselineEngine.configuration(workers,64).mechanisms()
+        return BaselineEngine.legacyConfiguration(workers,64).mechanisms()
                 .with(FlatSearchConfig.Feature.REQUEST_LEARNING,!profile.equals("control"))
                 .with(FlatSearchConfig.Feature.HISTORY_EFFORT,profile.equals("guided"));
     }

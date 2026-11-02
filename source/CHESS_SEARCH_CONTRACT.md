@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R004**
+Internal revision: **P4-R005**
 
-Status: **ACTIVE - 2 November 2026. Owner-accepted HL-R001 W1 strength success and HL-G1/build84 W1-qualified research champion; experimental adoption policy clarified. TTF-R001 remains accepted for its limited foundational purpose; TT-R001 remains inconclusive with separate reconciliation pending. No research objective is active. No deployment or production change.**
+Status: **ACTIVE - 2 November 2026. Owner-authorized HL-G1 experimental production default across W1-W16, integrated as build85. HL-R001 remains accepted and closed; HL-G1/build84 remains the W1-qualified research champion. TTF-R001 remains accepted for its limited foundational purpose; TT-R001 remains inconclusive with separate reconciliation pending. No research objective is active. Production selection changes; no deployment.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
@@ -35,9 +35,9 @@ separated under the established `research`/test ownership boundaries; production
 must not depend on research or acquire a competing engine implementation.
 Exclude unrelated GUI/application work, independent evaluator training or
 architecture programmes, broad unrelated rewrites and external deployment.
-This revision authorizes documentation only: no new research objective,
-implementation, external-engine investigation, experiment, tournament or
-production change.
+This revision records the owner-authorized bounded HL-G1 production integration
+and qualification across W1-W16. It launches no CGLHW, strength research or
+tournament and authorizes no push, release, installation or deployment.
 
 ## Strength-first, externally informed research
 
@@ -368,6 +368,46 @@ meaning of the result. Inspect the relevant experiment before describing unfamil
 labels such as GATE or WIDE; never invent their definitions. The Frontier's completed
 TT-memory example applies this convention without changing historical evidence.
 
+## Experimental production selection - 2 November 2026
+
+The owner explicitly promotes **HL-G1 - request-scoped retained Search learning
+with bounded history-guided reductions** to the normal experimental production
+CP64 Search default for **all supported workers W1-W16**, accepting unresolved
+W4 competitive uncertainty. Shared `BaselineEngine` selects **flags104071167**:
+previous flags3407871 plus REQUEST_LEARNING and HISTORY_EFFORT. The existing
+qualified Search kernels are unchanged; GUI Play, built-in Arena and normal UCI
+consume them through the same core. CP64, PVS/ADAPTIVE16, Hash64, BOUNDARY2,
+default W1, bounded Max and OWNER/ROOT_REUSE routing remain unchanged. HCE,
+BREP2-32, unrelated payloads, explicit profiles and independent controls retain
+their separate identities.
+
+Production integration is **0.0.0/build85**. Its formulation remains the exact
+HL-G1 `guided`/flags104071167 formulation qualified at implementation
+`b8ea8b2856eed3f6c774860ca540375054e4de30`, **build84**; adoption does not rewrite
+that research identity or advance another champion. P4-BASELINE-001/build79 and
+the separate corrected build80 control remain immutable. The [integration record](../docs/research/search/p4-learning/PRODUCTION.md)
+contains production source/artifact identities, executed qualification and limits.
+
+Rollback: **`-Dseedv6.searchProfile=LEGACY`** restores the previous CP64 Search
+policy (**flags3407871**) with current correctness/accounting fixes. The shared
+explicit API and `legacyConfiguration` bypass the default/property; explicit
+`ConstructionSearch` controls remain independent. Engines snapshot the selected
+profile; clock/hash/worker service reconstruction retains it. Normal launches need
+no property; `HL_G1` explicitly selects the new default. Invalid selections fail
+rather than silently falling back. Rebuilding an exact historical binary still
+requires its pinned source/artifact, not just matching flags.
+
+Qualification includes actual production factories and W1-W16 execution,
+worker-private state, legal moves/PVs, restoration/history/repetition, score
+semantics, complete/verified-null accounting, cancellation/time limits/draining,
+reset/reuse, GUI depth/movetime and UCI managed clocks, rollback, and normal Windows
+GUI/UCI packaging with matching core identity. Headless GUI execution is not
+interactive presentation acceptance; native macOS and live-client deployment are
+not claimed. The frozen BOUNDARY2 studies remain unopened and clock-unqualified.
+W1 confirmation remains 56.40625% over160 fresh pairs; direct W4 versus79 remains
+46.09% over32 pairs, inconclusive. **Neither W4 superiority nor neutrality is
+established.** Production adoption is not competitive evidence or deployment.
+
 ## Initial production baseline and current champion
 
 **P4-BASELINE-001** is the accepted production configuration at clean `main`
@@ -434,7 +474,7 @@ of priorities and hypotheses, not a predetermined exhaustive queue.
 For any future CGLHW objective, the owner must supply the **complete current
 authoritative premade CGLHW GPT prompt generator before GPT prepares its execution
 prompt**. Each objective requires a dedicated GPT conversation for its complete
-coordination and closeout. This documentation revision is not a CGLHW and launches none.
+coordination and closeout. This production integration is not a CGLHW and launches none.
 After legitimate closeout and required reconciliation, GPT selects the next
 appropriate research objective from the then-current authoritative Frontier.
 Codex must not select or launch a new CGLHW on its own authority.
@@ -443,7 +483,7 @@ Repository masters are authoritative; Project Sources are owner-maintained mirro
 The owner has confirmed the final **P3-R035/P3-F035** mirrors: retain them in the
 existing Phase 3 ChatGPT Project; no further Phase 3 refresh is required.
 The separate Phase 4 ChatGPT Project mirrors require owner refresh to the current
-**P4-R004/P4-F020** pair before mirror-dependent Project planning; the Frontier
+**P4-R005/P4-F021** pair before mirror-dependent Project planning; the Frontier
 records the last confirmed mirror state. This does not block authorized repository
 work. Repository edits synchronize neither Project. On later canon changes,
 increment each affected internal revision once (P4-Rnnn/P4-Fnnn), identify the

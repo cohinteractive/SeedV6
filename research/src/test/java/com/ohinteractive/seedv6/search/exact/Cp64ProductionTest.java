@@ -13,17 +13,18 @@ import static com.ohinteractive.seedv6.search.exact.Policy4ProductionTest.field;
 
 @Timeout(180)
 class Cp64ProductionTest {
-    @Test void frozenResearchCompositionMatchesProductionAndWorkerStateIsPrivate() throws Exception {
+    @Test void guidedCompositionMatchesProductionAndWorkerStateIsPrivate() throws Exception {
         var engine = BaselineEngine.load();
         for (int workers = 1; workers <= 16; workers++) {
             for (int hash : new int[]{1, 64}) {
-                var frozen = Cp64SelectivityLab.configuration("nominal-verified-null", workers, hash);
+                var frozen = new ConstructionSearch(P4LearningStudy.flags("guided", workers), workers, hash, AspirationSearch.Policy.ADAPTIVE16);
+                assertEquals(Cp64SelectivityLab.configuration("nominal-verified-null", workers, hash), BaselineEngine.legacyConfiguration(workers, hash));
                 assertEquals(frozen, BaselineEngine.configuration(engine.evaluation(), workers, hash));
-                assertEquals(3407871, frozen.mechanisms().flags());
+                assertEquals(104071167, frozen.mechanisms().flags());
                 assertEquals(262143, Cp64SelectivityLab.configuration("baseline", workers, hash).mechanisms().flags());
             }
             try (var production = engine.create(workers, 1); var candidate =
-                    Cp64SelectivityLab.configuration("nominal-verified-null", workers, 1).create(engine.evaluation())) {
+                    new ConstructionSearch(P4LearningStudy.flags("guided", workers), workers, 1, AspirationSearch.Policy.ADAPTIVE16).create(engine.evaluation())) {
                 var actual = kernels(production); var reference = kernels(candidate);
                 var table = field(actual[0], "table");
                 assertNotSame(table, field(reference[0], "table"));
@@ -39,13 +40,14 @@ class Cp64ProductionTest {
         for (int processors : new int[]{1, 2, 8, 16, 32}) {
             int max = new SearchThreads(SearchThreads.MAX).resolve(processors);
             assertEquals(Math.min(processors, 16), max);
-            assertEquals(3407871, BaselineEngine.configuration(max, 64).mechanisms().flags());
+            assertEquals(104071167, BaselineEngine.configuration(max, 64).mechanisms().flags());
             assertEquals(16, new SearchThreads(16).resolve(processors));
         }
     }
 
-    @Test void exactSingleWorkerTraversalMatchesFrozenCandidateWithRealHistoryAndHash() throws Exception {
-        var engine = BaselineEngine.load();
+    @Test void legacyRollbackTraversalMatchesFrozenCandidateWithRealHistoryAndHash() throws Exception {
+        var engine = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_CP64,
+                com.ohinteractive.seedv6.search.manage.ClockPolicy.BOUNDARY2, BaselineEngine.SearchProfile.LEGACY);
         var roots = P3HistoryStudy.roots(Path.of("../docs/research/search/p3-construction-2026-10-20/diagnostic-corpus.tsv"));
         for (int hash : new int[]{1, 64}) try (var production = new SearchDriver(engine.create(1, hash));
                 var candidate = new SearchDriver(Cp64SelectivityLab.configuration("nominal-verified-null", 1, hash).create(engine.evaluation()))) {

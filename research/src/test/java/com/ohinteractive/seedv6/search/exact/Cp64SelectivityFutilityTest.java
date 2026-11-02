@@ -77,7 +77,7 @@ class Cp64SelectivityFutilityTest {
                 driver.newGame();assertTrue(driver.search(new SearchRequest(b,2)).targetDepthCompleted());
             }
         }
-        assertEquals(3407871,BaselineEngine.configuration(1,64).mechanisms().flags());
+        assertEquals(3407871,BaselineEngine.legacyConfiguration(1,64).mechanisms().flags());
         assertEquals(262143,Cp64SelectivityLab.configuration("baseline",1,64).mechanisms().flags());
         assertThrows(IllegalArgumentException.class,()->FlatSearchConfig.exact().with(REDUCTION_FUTILITY,true));
         assertThrows(IllegalArgumentException.class,()->FlatSearchConfig.candidate().with(REDUCTION_FUTILITY,true).with(NOMINAL_FUTILITY,true));

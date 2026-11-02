@@ -25,11 +25,11 @@ public final class Cp64SpendingEconomics {
         var gson=new GsonBuilder().create();
         try(var out=Files.newBufferedWriter(Path.of(args[2]),StandardOpenOption.CREATE_NEW)) {
             out.write(gson.toJson(Map.of("type","identity","mode",args[3],"profiles",profiles,
-                "configuration",BaselineEngine.configuration(model.evaluation(),1,64).identity(),
+                "configuration",BaselineEngine.legacyConfiguration(model.evaluation(),1,64).identity(),
                 "networkSha256",ConventionalNnueEngine.SHA256,"jvm",ManagementFactory.getRuntimeMXBean().getInputArguments())));
             out.newLine();out.flush();
             for(int p=0;p<3;p++) {
-                var owner=BaselineEngine.configuration(model.evaluation(),1,64).create(model.evaluation());
+                var owner=BaselineEngine.legacyConfiguration(model.evaluation(),1,64).create(model.evaluation());
                 drivers[p]=new SearchDriver(p==0?owner:new Cp64SpendingPolicy(owner,p==2));
             }
             for(int round=-1;round<2;round++) for(int i=0;i<12;i++)

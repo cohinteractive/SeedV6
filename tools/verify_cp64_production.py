@@ -13,25 +13,35 @@ REJECTED = 'SeedV6 UCI rejected command: Unsupported Threads/Hash setting (Threa
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--install', type=Path, required=True)
+    source = parser.add_mutually_exclusive_group(required=True)
+    source.add_argument('--install', type=Path)
+    source.add_argument('--launcher', type=Path, help='Native packaged UCI launcher')
+    parser.add_argument('--profile', choices=('HL_G1', 'LEGACY'), default='HL_G1')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     output = args.output.resolve(); output.mkdir(parents=True, exist_ok=False)
-    install = args.install.resolve()
-    launcher = install / 'bin' / ('seedv6-uci.bat' if os.name == 'nt' else 'seedv6-uci')
+    install = args.install.resolve() if args.install else None
+    launcher = install / 'bin' / ('seedv6-uci.bat' if os.name == 'nt' else 'seedv6-uci') if install else args.launcher.resolve()
+    jars = install / 'lib' if install else launcher.parent / 'app'
     env = {k: v for k, v in os.environ.items() if k not in
            ('JAVA_TOOL_OPTIONS', '_JAVA_OPTIONS', 'JDK_JAVA_OPTIONS', 'JAVA_OPTS', 'SEEDV6_UCI_OPTS', 'CLASSPATH')}
-    report = dict(status='FAIL', sessions=[], workers=[],
-                  jars={p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in (install/'lib').glob('*.jar')})
+    allowed = (VECTOR_WARNING, REJECTED)
+    if args.profile == 'LEGACY':
+        env['JAVA_TOOL_OPTIONS'] = '-Dseedv6.searchProfile=LEGACY'
+        allowed += ('Picked up JAVA_TOOL_OPTIONS: -Dseedv6.searchProfile=LEGACY',)
+    report = dict(status='FAIL', profile=args.profile, sessions=[], workers=[],
+                  jars={p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in jars.glob('*.jar')})
 
     def launch():
-        engine = Engine([launcher], output, env, (VECTOR_WARNING, REJECTED))
+        engine = Engine([launcher], output, env, allowed)
         report['sessions'].append(dict(sent=engine.sent, stdout=engine.lines, stderr=engine.errors))
         return engine
 
     def identify(engine, workers, hash_mib):
         engine.send('uci'); lines = engine.until('uciok'); identity = '\n'.join(lines)
-        for value in ('flags=3407871', 'NOMINAL_FUTILITY,VERIFIED_NULL', SHA, 'schema=S6CNU002 heads=8',
+        flags = 104071167 if args.profile == 'HL_G1' else 3407871
+        features = 'NOMINAL_FUTILITY,VERIFIED_NULL' + (',REQUEST_LEARNING,HISTORY_EFFORT' if args.profile == 'HL_G1' else '') + ']'
+        for value in (f'flags={flags} ', f'searchProfile={args.profile} ', features, SHA, 'schema=S6CNU002 heads=8',
                       'scoreMapping=BT4_Q_LOGIT400_V1', f'workers={workers};hashMiB={hash_mib};aspiration=ADAPTIVE16',
                       'option name Threads type spin default 1 min 1 max 16',
                       'option name Hash type spin default 64 min 1 max 1024'):
@@ -67,6 +77,12 @@ def main():
                 engine.send('stop'); check(engine.until('bestmove ')[-1].split()[1] != '0000', 'Stop fallback missing')
                 engine.send('ucinewgame\nsetoption name Clear Hash\nisready'); engine.until('readyok')
                 search(engine, 'startpos', chess.Board(), 'movetime 50')
+                for policy in ('BOUNDARY2', 'FACTUAL'):
+                    engine.send(f'setoption name ClockPolicy value {policy}\nisready'); engine.until('readyok')
+                    lines = search(engine, 'startpos', chess.Board(), 'wtime 5000 btime 5000 winc 20 binc 20 movestogo 20')
+                    check(any('termination=TIME_' in line for line in lines), 'Managed-clock termination missing')
+                engine.send('setoption name ClockPolicy value BOUNDARY2\nisready'); engine.until('readyok')
+                identify(engine, workers, hash_mib)  # Clock rebind must preserve the Search profile.
             report['workers'].append(dict(workers=workers, hashMiB=hash_mib))
         for name, value in (('Threads', 0), ('Threads', 17), ('Hash', 0), ('Hash', 1025)):
             engine.send(f'setoption name {name} value {value}\nisready'); engine.until('readyok')

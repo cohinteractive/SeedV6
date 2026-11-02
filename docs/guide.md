@@ -175,19 +175,34 @@ Performance will vary with position, hardware, JVM behaviour, system load, and w
 
 ## Search Architecture
 
-The production baseline inherited by Search Phase 4 is Construction V1 + Conventional NNUE CP64. `BaselineEngine` shares its construction between Play, ordinary Arena and standalone UCI: flattened PVS, the original 18 Construction controls plus NOMINAL_FUTILITY and VERIFIED_NULL (flags3407871), and ADAPTIVE16 aspiration. Play and UCI own asynchronous jobs through `SearchLifecycleService`; Threads > 1 uses same-depth `ParallelSearch` workers. Historical training profiles retain their existing synchronous drivers.
+The experimental production default is HL-G1 + Conventional NNUE CP64 (build85).
+`BaselineEngine` shares it between Play, ordinary Arena and standalone UCI:
+flattened PVS/ADAPTIVE16, original18 Construction controls, NOMINAL_FUTILITY,
+VERIFIED_NULL, REQUEST_LEARNING and HISTORY_EFFORT (**flags104071167**). W1-W16
+are supported with unchanged default1 and ROOT_REUSE at W2-W16. Play and UCI
+own asynchronous jobs through `SearchLifecycleService`; historical training
+profiles retain their existing drivers.
 
-Each search request owns its coherent `TTable`; each worker owns mutable board/PV, ordering and evaluator state. Immutable NNUE weights are shared. Competitive HCE and BREP2-32 retain the original flags262143; CP64 includes the two accepted additions above. See the [final Phase 3 baseline and qualifications](search-phase3/CHESS_SEARCH_CONTRACT.md#formal-phase-3-closeout---29-october-2026), [selectivity adoption](research/search/P3_CP64_SELECTIVITY_2026-10-23.md#production-adoption---24-october-2026) and active [Phase 4 Contract](../source/CHESS_SEARCH_CONTRACT.md). BOUNDARY2 remains the managed-clock default with explicit FACTUAL fallback; initialization changes no engine settings or runtime qualification.
+Each request owns its coherent `TTable`; each worker owns mutable board/PV,
+ordering, evaluator and retained-learning state. Learning survives iterations and
+retries within one request and is cleared at its boundary. HCE and BREP2-32 retain
+flags262143. BOUNDARY2 remains the managed-clock default with explicit FACTUAL
+fallback. To restore previous CP64 Search policy, set the JVM option
+`-Dseedv6.searchProfile=LEGACY`; explicit Search configurations retain precedence.
+See [promotion/rollback and validation](research/search/p4-learning/PRODUCTION.md)
+for native/Java launch examples and known W4 uncertainty. Frozen historical
+[Phase3 baseline](search-phase3/CHESS_SEARCH_CONTRACT.md#formal-phase-3-closeout---29-october-2026)
+and research identities remain unchanged; production adoption does not deploy a bot.
 
 See [architecture and source classification](architecture.md). The older alpha-beta/qsearch, flat-search and alternative-table comparisons remain in the verification source set. Their [historical architecture](history/legacy-search.md) does not describe production behavior.
 
 ## Search Research
 
-Phase 4 is initialized under [Contract P4-R001](../source/CHESS_SEARCH_CONTRACT.md)
-and [Frontier P4-F001](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md): strength-first,
-externally informed, dependency-led and configuration-oriented research. The
-accepted production baseline is unchanged and initially equals the research
-champion. No research objective, inventory or experimental candidate is active.
+Phase4 is active under [Contract P4-R005](../source/CHESS_SEARCH_CONTRACT.md)
+and [Frontier P4-F021](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). HL-R001 is
+accepted and closed; HL-G1/build84 remains the W1-qualified research champion,
+with its formulation promoted to experimental production as build85.
+No research objective or successor is active.
 The charter permits deliberate Search approximations and TT experiments within
 later authorized objectives while preserving genuine correctness, architecture,
 safety and explicit production-acceptance boundaries. Phase 3 is CLOSED; its

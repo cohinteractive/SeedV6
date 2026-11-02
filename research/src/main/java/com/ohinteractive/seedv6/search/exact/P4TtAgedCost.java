@@ -33,7 +33,7 @@ public final class P4TtAgedCost {
                     SearchDriver[] drivers=new SearchDriver[2];
                     try {
                         for(int side=0;side<2;side++) {
-                            var base=BaselineEngine.configuration(workers,64);
+                            var base=BaselineEngine.legacyConfiguration(workers,64);
                             var flags=base.mechanisms().with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY,true)
                                     .with(FlatSearchConfig.Feature.AGED_HEURISTIC_TT_MEMORY,side==1);
                             drivers[side]=new SearchDriver(ClockPolicy.BOUNDARY2.apply(

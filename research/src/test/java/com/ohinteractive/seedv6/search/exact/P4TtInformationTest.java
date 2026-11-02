@@ -42,7 +42,7 @@ class P4TtInformationTest {
     }
 
     @Test void optInRequiresStorage() {
-        assertEquals(3407871,BaselineEngine.configuration(1,64).mechanisms().flags());
+        assertEquals(3407871,BaselineEngine.legacyConfiguration(1,64).mechanisms().flags());
         assertThrows(IllegalArgumentException.class,()->ExactSearch.constructionResearch((b,p)->0,new TTable(1),config()));
     }
 

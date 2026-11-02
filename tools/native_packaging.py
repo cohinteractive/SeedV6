@@ -395,7 +395,7 @@ def package(a):
         native = verify_runtime(context, a.application, image, stage)
         engine = {'model': identity, 'coreJarSha256': sha(app / 'engine-core.jar'),
                   'coreContent': core_content(app / 'engine-core.jar'),
-                  'productionSearch': {'profile': 'construction-v1', 'flags': CP64_PRODUCTION_FLAGS,
+                  'productionSearch': {'profile': 'HL_G1', 'flags': CP64_PRODUCTION_FLAGS,
                      'evaluator': 'Conventional NNUE CP64', 'schema': 'S6CNU002', 'materialHeads': 8,
                      'configuration': identity['baseline.identity']},
                   'coreInputs': {n: v for n, v in context['source']['files'].items()

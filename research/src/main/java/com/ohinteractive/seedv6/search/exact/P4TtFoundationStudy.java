@@ -14,7 +14,7 @@ import com.ohinteractive.seedv6.search.tt.TTable;
  * Explicit profiles preserve old controls and independently ablate storage/use/admission. */
 public final class P4TtFoundationStudy {
     public static FlatSearchConfig flags(String profile,int workers) {
-        var base=BaselineEngine.configuration(workers,64).mechanisms();
+        var base=BaselineEngine.legacyConfiguration(workers,64).mechanisms();
         if(profile.equals("production"))return base;
         if(!Set.of("h2","foundation","retain").contains(profile))
             throw new IllegalArgumentException("Unknown TTF profile: "+profile);

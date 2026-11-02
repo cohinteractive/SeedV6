@@ -20,7 +20,7 @@ public final class P4LearningUciMain {
         var model=ConventionalNnueEngine.load(Path.of(args[1]));var clocks=ClockPolicy.configured();
         var configuration=new UciConfiguration() {
             ConstructionSearch config(int workers,int hash) {
-                var base=BaselineEngine.configuration(workers,hash);
+                var base=BaselineEngine.legacyConfiguration(workers,hash);
                 return new ConstructionSearch(P4LearningStudy.flags(profile,workers),workers,hash,base.aspiration());
             }
             public ClockPolicy clockPolicy() {return clocks;}

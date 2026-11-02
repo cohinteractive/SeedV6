@@ -16,7 +16,7 @@ import com.ohinteractive.seedv6.uci.*;
 /** Separate SR-034 experiment; the frozen first-generation launcher remains reproducible. */
 public final class Cp64SpendingUciMain {
     static SingleDepthSearch engine(ConventionalNnueEngine model, String profile, int workers, int hash) {
-        var owner = BaselineEngine.configuration(model.evaluation(), workers, hash).create(model.evaluation());
+        var owner = BaselineEngine.legacyConfiguration(model.evaluation(), workers, hash).create(model.evaluation());
         return profile.equals("baseline") ? owner : new Cp64SpendingPolicy(owner, profile.equals("unstable2"));
     }
 
@@ -50,7 +50,7 @@ public final class Cp64SpendingUciMain {
             @Override public String name() { return "SeedV6 CP64 spending research " + profile; }
             @Override public String identity(int w) { return identity(w, 64); }
             @Override public String identity(int w, int hash) {
-                var config = BaselineEngine.configuration(model.evaluation(), w, hash);
+                var config = BaselineEngine.legacyConfiguration(model.evaluation(), w, hash);
                 return "mode=research experimental=true profile="+profile+" evaluator=CONVENTIONAL_NNUE"
                     +" checkpoint=64 networkSha256="+ConventionalNnueEngine.SHA256
                     +" payload="+model.model().payloadSha256()+" schema="+model.model().schema()

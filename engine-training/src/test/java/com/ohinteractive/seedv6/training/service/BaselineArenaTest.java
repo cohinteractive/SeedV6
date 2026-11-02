@@ -32,7 +32,7 @@ class BaselineArenaTest {
                     assertEquals(game.gameInPair() == 1 ? evaluator : BaselineEngine.Evaluator.CONVENTIONAL_CP64, game.white().competitiveEvaluator());
                     assertEquals(game.gameInPair() == 1 ? BaselineEngine.Evaluator.CONVENTIONAL_CP64 : evaluator, game.black().competitiveEvaluator());
                     for (var participant : java.util.List.of(game.white(), game.black())) {
-                        long flags = participant.competitiveEvaluator() == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? 3407871 : 262143;
+                        long flags = participant.competitiveEvaluator() == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? 104071167 : 262143;
                         assertTrue(participant.searchProfile().contains("flags=" + flags));
                         assertTrue(participant.searchProfile().contains("clockPolicy=boundary2-d6-v1"));
                     }

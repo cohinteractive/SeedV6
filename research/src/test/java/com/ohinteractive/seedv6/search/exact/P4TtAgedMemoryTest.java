@@ -49,7 +49,7 @@ class P4TtAgedMemoryTest {
     }
 
     @Test void priorRequestReuseIsReachedSelectiveAndExpires() throws Exception {
-        assertEquals(3407871,BaselineEngine.configuration(1,64).mechanisms().flags());
+        assertEquals(3407871,BaselineEngine.legacyConfiguration(1,64).mechanisms().flags());
         assertEquals(7602175,P4TtMemoryTest.config().flags());assertEquals(15990783,config().flags());
         assertThrows(IllegalArgumentException.class,
                 ()->new FlatSearchConfig(1L<<FlatSearchConfig.Feature.AGED_HEURISTIC_TT_MEMORY.ordinal()));

@@ -75,7 +75,7 @@ public final class P4TtStudy {
                     "mode","instrumented nodes, BOUNDARY2 selected but not active for explicit node requests")));
             out.newLine();out.flush();
             for(var root:roots)for(String profile:List.of("control","h1")) {
-                var base=BaselineEngine.configuration(workers,64);
+                var base=BaselineEngine.legacyConfiguration(workers,64);
                 var flags=base.mechanisms().with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY,profile.equals("h1"));
                 var config=new ConstructionSearch(flags,workers,64,base.aspiration());var table=new Observed();
                 var attempts=new ArrayList<Map<String,Object>>();

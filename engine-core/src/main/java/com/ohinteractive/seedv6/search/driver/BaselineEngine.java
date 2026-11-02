@@ -2,6 +2,7 @@ package com.ohinteractive.seedv6.search.driver;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Locale;
 import com.ohinteractive.seedv6.search.manage.ClockPolicy;
 import com.ohinteractive.seedv6.ApplicationVersion;
 import com.ohinteractive.seedv6.book.Book;
@@ -20,13 +21,27 @@ public final class BaselineEngine {
     // Frozen S6CNU002 CP64 payload; unrelated conventional checkpoints retain original V1.
     private static final String CP64_PAYLOAD_SHA256 = "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6";
     public enum Evaluator { HCE, BREP2_32, CONVENTIONAL_CP64 }
+    /** CP64 production policy only; explicit ConstructionSearch controls bypass this selector. */
+    public enum SearchProfile {
+        HL_G1, LEGACY;
+        public static final String PROPERTY = "seedv6.searchProfile";
+        public static SearchProfile configured() {
+            try { return valueOf(System.getProperty(PROPERTY, "HL_G1").trim().toUpperCase(Locale.ROOT)); }
+            catch (IllegalArgumentException invalid) {
+                throw new IllegalArgumentException("seedv6.searchProfile must be HL_G1 or LEGACY", invalid);
+            }
+        }
+    }
     private final ClockPolicy clockPolicy;
+    private final SearchProfile searchProfile;
     private final Evaluator evaluator;
     private final SearchEvaluation evaluation;
     private final ConventionalNnueEngine conventional;
 
-    private BaselineEngine(Evaluator evaluator, SearchEvaluation evaluation, ConventionalNnueEngine conventional, ClockPolicy clockPolicy) {
+    private BaselineEngine(Evaluator evaluator, SearchEvaluation evaluation, ConventionalNnueEngine conventional,
+                           ClockPolicy clockPolicy, SearchProfile searchProfile) {
         this.clockPolicy = Objects.requireNonNull(clockPolicy);
+        this.searchProfile = Objects.requireNonNull(searchProfile);
         this.evaluator = evaluator;
         this.evaluation = evaluation;
         this.conventional = conventional;
@@ -36,17 +51,34 @@ public final class BaselineEngine {
         return load(evaluator, ClockPolicy.configured());
     }
     public static BaselineEngine load(Evaluator evaluator, ClockPolicy clockPolicy) throws IOException {
+        return load(evaluator, clockPolicy, evaluator == Evaluator.CONVENTIONAL_CP64
+                ? SearchProfile.configured() : SearchProfile.LEGACY);
+    }
+    /** Explicit API selection precedes the JVM property and is fixed for this binding's lifetime. */
+    public static BaselineEngine load(Evaluator evaluator, ClockPolicy clockPolicy, SearchProfile profile) throws IOException {
         return switch (evaluator) {
-            case HCE -> new BaselineEngine(evaluator, SearchEvaluation.handcrafted(), null, clockPolicy);
-            case BREP2_32 -> new BaselineEngine(evaluator, SearchEvaluation.brnPair2(ProductionModel.bundled()), null, clockPolicy);
+            case HCE -> new BaselineEngine(evaluator, SearchEvaluation.handcrafted(), null, clockPolicy, profile);
+            case BREP2_32 -> new BaselineEngine(evaluator, SearchEvaluation.brnPair2(ProductionModel.bundled()), null, clockPolicy, profile);
             case CONVENTIONAL_CP64 -> {
                 var network = ConventionalNnueEngine.load();
-                yield new BaselineEngine(evaluator, network.evaluation(), network, clockPolicy);
+                yield new BaselineEngine(evaluator, network.evaluation(), network, clockPolicy, profile);
             }
         };
     }
     /** Selected frozen-CP64 default; evaluator-aware callers use the overload below. */
     public static ConstructionSearch configuration(int workers, int hashMiB) {
+        return configuration(workers, hashMiB, SearchProfile.configured());
+    }
+    public static ConstructionSearch configuration(int workers, int hashMiB, SearchProfile profile) {
+        Objects.requireNonNull(profile);
+        var legacy = legacyConfiguration(workers, hashMiB);
+        return new ConstructionSearch(legacy.mechanisms()
+                .with(FlatSearchConfig.Feature.REQUEST_LEARNING, profile == SearchProfile.HL_G1)
+                .with(FlatSearchConfig.Feature.HISTORY_EFFORT, profile == SearchProfile.HL_G1),
+                workers, hashMiB, legacy.aspiration());
+    }
+    /** Pre-HL production policy, independent of defaults/properties. Retains current correctness fixes. */
+    public static ConstructionSearch legacyConfiguration(int workers, int hashMiB) {
         return new ConstructionSearch(FlatSearchConfig.candidate()
                 .with(FlatSearchConfig.Feature.NOMINAL_FUTILITY, true)
                 .with(FlatSearchConfig.Feature.VERIFIED_NULL, true),
@@ -58,13 +90,25 @@ public final class BaselineEngine {
                 ? configuration(workers, hashMiB)
                 : ConstructionSearch.v1(workers, hashMiB, AspirationSearch.Policy.ADAPTIVE16);
     }
+    public static ConstructionSearch legacyConfiguration(SearchEvaluation evaluation, int workers, int hashMiB) {
+        return evaluation.matchesConventionalPayload(CP64_PAYLOAD_SHA256)
+                ? legacyConfiguration(workers, hashMiB)
+                : ConstructionSearch.v1(workers, hashMiB, AspirationSearch.Policy.ADAPTIVE16);
+    }
+    private ConstructionSearch selectedConfiguration(int workers, int hashMiB) {
+        return evaluation.matchesConventionalPayload(CP64_PAYLOAD_SHA256)
+                ? configuration(workers, hashMiB, searchProfile)
+                : ConstructionSearch.v1(workers, hashMiB, AspirationSearch.Policy.ADAPTIVE16);
+    }
     public static SingleDepthSearch create(SearchEvaluation evaluation, int workers, int hashMiB) {
         return create(evaluation, workers, hashMiB, ClockPolicy.configured());
     }
     public static SingleDepthSearch create(SearchEvaluation evaluation, int workers, int hashMiB, ClockPolicy clocks) {
         return Objects.requireNonNull(clocks).apply(configuration(evaluation, workers, hashMiB).create(evaluation));
     }
-    public SingleDepthSearch create(int workers, int hashMiB) { return create(evaluation, workers, hashMiB, clockPolicy); }
+    public SingleDepthSearch create(int workers, int hashMiB) {
+        return clockPolicy.apply(selectedConfiguration(workers, hashMiB).create(evaluation));
+    }
     public SearchLifecycleService service(int workers, int hashMiB) {
         return new SearchLifecycleService(TimeSource.SYSTEM, () -> create(workers, hashMiB),
                 RootTablebase.NONE, Book.bundled());
@@ -74,7 +118,7 @@ public final class BaselineEngine {
         return clockPolicy.allocateClockMillis(remaining, increment, movesToGo);
     }
     public BaselineEngine withClockPolicy(ClockPolicy clocks) {
-        return new BaselineEngine(evaluator, evaluation, conventional, clocks);
+        return new BaselineEngine(evaluator, evaluation, conventional, clocks, searchProfile);
     }
     public SearchEvaluation evaluation() { return evaluation; }
     public ConventionalNnueEngine conventional() { return conventional; }
@@ -90,8 +134,9 @@ public final class BaselineEngine {
                     + " payload=" + conventional.model().payloadSha256() + " head=" + conventional.model().headBackend()
                     + " scoreMapping=" + ConventionalNnueEngine.SCORE_MAPPING;
         };
-        var configuration = configuration(evaluation, workers, hashMiB);
+        var configuration = selectedConfiguration(workers, hashMiB);
         return "baseline=construction-v1-" + (evaluator == Evaluator.CONVENTIONAL_CP64 ? "cp64" : evaluator.name())
+                + " searchProfile=" + (evaluator == Evaluator.CONVENTIONAL_CP64 ? searchProfile : "CONSTRUCTION_V1")
                 + " search=construction-v1 flags=" + configuration.mechanisms().flags()
                 + " configuration=" + configuration.identity() + " " + model
                 + " clockPolicy=" + clockPolicy.identity()

@@ -71,7 +71,7 @@ public final class Cp64TimeTrajectory {
         int depth=Integer.parseInt(args[3]), rounds=Integer.parseInt(args[5]), count=Integer.parseInt(args[6]);
         long budget=Long.parseLong(args[4]);
         if(depth<2 || depth>64 || budget<1 || rounds<1 || count<1 || count>all.size()) throw new IllegalArgumentException("Bounds");
-        var config=BaselineEngine.configuration(model.evaluation(),1,64);
+        var config=BaselineEngine.legacyConfiguration(model.evaluation(),1,64);
         if(config.mechanisms().flags()!=3407871 || config.aspiration()!=AspirationSearch.Policy.ADAPTIVE16)
             throw new AssertionError("Accepted baseline identity");
         var gson=new GsonBuilder().create();

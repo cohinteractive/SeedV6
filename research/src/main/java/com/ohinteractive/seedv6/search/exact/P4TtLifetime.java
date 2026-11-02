@@ -137,7 +137,7 @@ public final class P4TtLifetime {
         var model=ConventionalNnueEngine.load(Path.of(args[0]));var roots=P3HistoryStudy.roots(Path.of(args[1]));
         int workers=Integer.parseInt(args[3]);long budget=Long.parseLong(args[4]);
         if((workers!=1&&workers!=4)||budget!=100000)throw new IllegalArgumentException("Frozen diagnostic domain");
-        var base=BaselineEngine.configuration(workers,64);
+        var base=BaselineEngine.legacyConfiguration(workers,64);
         var flags=base.mechanisms().with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY,true);
         var config=new ConstructionSearch(flags,workers,64,base.aspiration());
         var groups=new LinkedHashMap<String,List<P3HistoryStudy.Root>>();

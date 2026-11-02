@@ -41,7 +41,7 @@ public final class BrnRelationalUciMain {
         var configuration = new UciConfiguration() {
             public SearchLifecycleService service(int workers, int hash) {
                 if (workers != 1) throw new IllegalArgumentException("One worker only");
-                var search = profile.equals("cp64-profile")?BaselineEngine.configuration(1,hash)
+                var search = profile.equals("cp64-profile")?BaselineEngine.legacyConfiguration(1,hash)
                         :ConstructionSearch.v1(1, hash, AspirationSearch.Policy.ADAPTIVE16);
                 return new SearchLifecycleService(TimeSource.SYSTEM, () -> search.create(evaluation),
                         RootTablebase.NONE, Book.EMPTY);
@@ -55,7 +55,7 @@ public final class BrnRelationalUciMain {
                 return "mode=research workstream=seedv6-brn-relational-20261029 evaluator=" + args[0]
                         + " modelSha256=" + modelHash
                         + " profile=" + profile
-                        + " configuration=" + (profile.equals("cp64-profile")?BaselineEngine.configuration(1,hash)
+                        + " configuration=" + (profile.equals("cp64-profile")?BaselineEngine.legacyConfiguration(1,hash)
                             :ConstructionSearch.v1(1, hash, AspirationSearch.Policy.ADAPTIVE16)).identity()
                         + " book=OFF tablebase=OFF";
             }

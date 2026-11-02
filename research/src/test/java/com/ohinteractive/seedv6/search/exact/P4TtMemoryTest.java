@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @Timeout(120)
 class P4TtMemoryTest {
     static FlatSearchConfig config() {
-        return BaselineEngine.configuration(1,64).mechanisms().with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY,true);
+        return BaselineEngine.legacyConfiguration(1,64).mechanisms().with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY,true);
     }
     static ConstructionSearch construction(int workers,int hash) {
         return new ConstructionSearch(config(),workers,hash,AspirationSearch.Policy.ADAPTIVE16);
@@ -41,7 +41,7 @@ class P4TtMemoryTest {
     }
 
     @Test void researchIsOptInAndReuseIsSelectiveWithRealProducers() throws Exception {
-        assertEquals(3407871,BaselineEngine.configuration(1,64).mechanisms().flags());
+        assertEquals(3407871,BaselineEngine.legacyConfiguration(1,64).mechanisms().flags());
         assertEquals(7602175,config().flags());
         var model=ConventionalNnueEngine.load();var table=new Observed();
         var exact=ExactSearch.constructionResearch(ExactEvaluator.from(model.evaluation()),table,config());
