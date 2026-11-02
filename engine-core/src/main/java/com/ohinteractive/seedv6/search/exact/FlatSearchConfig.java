@@ -11,7 +11,8 @@ public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) 
         CAPTURE_HISTORY, CONTINUATION, KILLERS, COUNTERMOVES, NOMINAL_HISTORY, BAD_TACTICAL_LAST,
         IMPROVING, CAUTION, CHECK_EXTENSION, RECAPTURE_EXTENSION, FUTILITY, REVERSE_FUTILITY, HISTORY_PROTECTION,
         LAZY_IMPROVING, REDUCTION_FUTILITY, NOMINAL_FUTILITY, VERIFIED_NULL,
-        HEURISTIC_TT_MEMORY, AGED_HEURISTIC_TT_MEMORY, TT_INFORMATION, REQUEST_LEARNING, HISTORY_EFFORT }
+        HEURISTIC_TT_MEMORY, AGED_HEURISTIC_TT_MEMORY, TT_INFORMATION, REQUEST_LEARNING, HISTORY_EFFORT,
+        EVAL_CORRECTION }
 
     public FlatSearchConfig(long flags) { this(flags,100,200); }
 
@@ -44,6 +45,8 @@ public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) 
             throw new IllegalArgumentException("Request learning requires the original Construction foundation");
         if((flags&(1L<<Feature.HISTORY_EFFORT.ordinal()))!=0 && (flags&(1L<<Feature.REQUEST_LEARNING.ordinal()))==0)
             throw new IllegalArgumentException("History effort requires request learning");
+        if((flags&(1L<<Feature.EVAL_CORRECTION.ordinal()))!=0 && (flags&(1L<<Feature.REQUEST_LEARNING.ordinal()))==0)
+            throw new IllegalArgumentException("Evaluation correction requires request learning");
     }
     public boolean has(Feature feature) { return (flags&(1L<<feature.ordinal()))!=0; }
     public FlatSearchConfig with(Feature feature,boolean enabled) {

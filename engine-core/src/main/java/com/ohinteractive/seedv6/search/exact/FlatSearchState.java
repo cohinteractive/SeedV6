@@ -10,6 +10,9 @@ final class FlatSearchState {
     final long[] pathMoves=new long[ExactSearch.MAX_DEPTH+1];
     final int[] credits=new int[ExactSearch.MAX_DEPTH+1],rawEval=new int[ExactSearch.MAX_DEPTH+1];
     final int[] ttRawEval;
+    final CorrectionHistory correction;
+    final int[] workingEval;
+    final long[] ruleEpoch;
     final HistoryLearning nominal=new HistoryLearning(true,null);
     final int[] captures;
     final short[] continuation;
@@ -21,6 +24,9 @@ final class FlatSearchState {
 
     FlatSearchState(FlatSearchConfig config) {
         this.config=config;
+        correction=config.has(EVAL_CORRECTION)?new CorrectionHistory():null;
+        workingEval=correction!=null?new int[ExactSearch.MAX_DEPTH+1]:null;
+        ruleEpoch=correction!=null?new long[ExactSearch.MAX_DEPTH+1]:null;
         ttRawEval=config.has(TT_INFORMATION)?new int[ExactSearch.MAX_DEPTH+1]:null;
         captures=config.has(CAPTURE_HISTORY)?new int[CaptureHistory.SIZE]:null;
         continuation=config.has(CONTINUATION)?new short[ContinuationHistory.SIZE]:null;
@@ -35,8 +41,10 @@ final class FlatSearchState {
     void reset(boolean retainLearning) {
         Arrays.fill(pathMoves,0);
         Arrays.fill(credits,0);Arrays.fill(rawEval,Integer.MIN_VALUE);
+        if(workingEval!=null) Arrays.fill(workingEval,Integer.MIN_VALUE);
         if(ttRawEval!=null) Arrays.fill(ttRawEval,Integer.MIN_VALUE);
         if(!retainLearning) {
+            if(correction!=null) correction.clear();
             if(captures!=null) Arrays.fill(captures,0);
             if(continuation!=null) Arrays.fill(continuation,(short)0);
             if(killers!=null) Arrays.fill(killers,0);

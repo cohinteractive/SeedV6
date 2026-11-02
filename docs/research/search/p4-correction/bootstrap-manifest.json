@@ -1,0 +1,35 @@
+{
+  "objective": "CH-R001",
+  "observedUtc": "2026-11-02T10:52:34.577015+00:00",
+  "initialHead": "296c0fd1f2b04d06177b30a93535534cf8fa39ad",
+  "initialWorktree": "clean main",
+  "mastersAtLaunch": {
+    "contract": "P4-R005",
+    "frontier": "P4-F021"
+  },
+  "journalPresent": false,
+  "versionBaseline": {
+    "tuple": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 85
+    },
+    "sha256": "4345bd8802263ec1b1117712da00c37732ecdd3ee8c0b25fa8376517a6cdb970",
+    "hex": "7b0a2020226d616a6f72223a20302c0a2020226d696e6f72223a20302c0a2020227061746368223a20302c0a2020226275696c64223a2038350a7d0a",
+    "regularSingleLinkNonReparse": true
+  },
+  "request": {
+    "path": "raw/owner-request.txt",
+    "sha256": "f9b103111dd2a5c706f2f3891c5200cfea1b3bc9792ee61da3fa60b85c4c40d1"
+  },
+  "checks": {
+    "runtime84Files": 33,
+    "runtime84HashMismatches": [],
+    "runtime84Manifest": "../p4-learning/runtime-build84-v1-manifest.json",
+    "cp64": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "java": "28b603f0fc719e06f020bcb99f2b5c01f27234adccb1f525b004850d506e1950",
+    "hardware": "Ryzen5 5500;6C/12T;32GiB;Windows11 10.0.26300"
+  },
+  "limitations": "Initial runtime identities verified by hashing; fresh behavior qualification pending. Frozen BOUNDARY2 studies never opened."
+}

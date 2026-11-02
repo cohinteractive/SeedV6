@@ -1,0 +1,138 @@
+{
+  "status": "passed",
+  "identities": {
+    "frozen84-w1": "info string mode=research experimental=true formulation=HL-G1 profile=guided evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=104071167 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER learning=request-worker-private-no-seed effort=history64-bounded2 ttPolicy=production-hints slotBytes=24 clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=84 source=b8ea8b2856ee ttMiB=64",
+    "frozen84-w4": "info string mode=research experimental=true formulation=HL-G1 profile=guided evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=104071167 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE learning=request-worker-private-no-seed effort=history64-bounded2 ttPolicy=production-hints slotBytes=24 clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=84 source=b8ea8b2856ee ttMiB=64",
+    "production-w1": "info string baseline=construction-v1-cp64 searchProfile=HL_G1 search=construction-v1 flags=104071167 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=85 source=296c0fd1f2b0 (uncommitted changes) ttMiB=64",
+    "production-w4": "info string baseline=construction-v1-cp64 searchProfile=HL_G1 search=construction-v1 flags=104071167 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=85 source=296c0fd1f2b0 (uncommitted changes) ttMiB=64",
+    "researchControl-w1": "info string mode=research experimental=true formulation=HL-G1 profile=guided evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=104071167 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER learning=request-worker-private-no-seed effort=history64-bounded2 ttPolicy=production-hints slotBytes=24 clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=85 source=296c0fd1f2b0 (uncommitted changes) ttMiB=64",
+    "researchControl-w4": "info string mode=research experimental=true formulation=HL-G1 profile=guided evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=104071167 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE learning=request-worker-private-no-seed effort=history64-bounded2 ttPolicy=production-hints slotBytes=24 clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=85 source=296c0fd1f2b0 (uncommitted changes) ttMiB=64",
+    "corrected-w1": "info string mode=research experimental=true formulation=CH-C1 profile=corrected evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=238288895 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT,EVAL_CORRECTION];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER learning=request-worker-private-no-seed effort=history64-bounded2 correction=pawn-main-ema32-cap256-request ttPolicy=production-hints slotBytes=24 clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=85 source=296c0fd1f2b0 (uncommitted changes) ttMiB=64",
+    "corrected-w4": "info string mode=research experimental=true formulation=CH-C1 profile=corrected evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=238288895 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT,EVAL_CORRECTION];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE learning=request-worker-private-no-seed effort=history64-bounded2 correction=pawn-main-ema32-cap256-request ttPolicy=production-hints slotBytes=24 clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=85 source=296c0fd1f2b0 (uncommitted changes) ttMiB=64"
+  },
+  "commands": {
+    "frozen84": [
+      "C:/java/jdk-21/bin/java.exe",
+      "--add-modules=jdk.incubator.vector",
+      "-Xms256m",
+      "-Xmx512m",
+      "-XX:ActiveProcessorCount=4",
+      "-Djava.awt.headless=true",
+      "-Dseedv6.syzygy.config=",
+      "-Dseedv6.syzygy.path=",
+      "-Dseedv6.clockPolicy=BOUNDARY2",
+      "-Dseedv6.research.actor=diagnostic",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1\\lib\\*",
+      "com.ohinteractive.seedv6.integration.P4LearningUciMain",
+      "--network",
+      "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+      "--profile",
+      "guided"
+    ],
+    "production": [
+      "C:/java/jdk-21/bin/java.exe",
+      "--add-modules=jdk.incubator.vector",
+      "-Xms256m",
+      "-Xmx512m",
+      "-XX:ActiveProcessorCount=4",
+      "-Djava.awt.headless=true",
+      "-Dseedv6.syzygy.config=",
+      "-Dseedv6.syzygy.path=",
+      "-Dseedv6.clockPolicy=BOUNDARY2",
+      "-Dseedv6.research.actor=diagnostic",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-c1-prototype-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-c1-prototype-v1\\lib\\*",
+      "com.ohinteractive.seedv6.uci.UciMain"
+    ],
+    "researchControl": [
+      "C:/java/jdk-21/bin/java.exe",
+      "--add-modules=jdk.incubator.vector",
+      "-Xms256m",
+      "-Xmx512m",
+      "-XX:ActiveProcessorCount=4",
+      "-Djava.awt.headless=true",
+      "-Dseedv6.syzygy.config=",
+      "-Dseedv6.syzygy.path=",
+      "-Dseedv6.clockPolicy=BOUNDARY2",
+      "-Dseedv6.research.actor=diagnostic",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-c1-prototype-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-c1-prototype-v1\\lib\\*",
+      "com.ohinteractive.seedv6.integration.P4LearningUciMain",
+      "--network",
+      "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+      "--profile",
+      "guided"
+    ],
+    "corrected": [
+      "C:/java/jdk-21/bin/java.exe",
+      "--add-modules=jdk.incubator.vector",
+      "-Xms256m",
+      "-Xmx512m",
+      "-XX:ActiveProcessorCount=4",
+      "-Djava.awt.headless=true",
+      "-Dseedv6.syzygy.config=",
+      "-Dseedv6.syzygy.path=",
+      "-Dseedv6.clockPolicy=BOUNDARY2",
+      "-Dseedv6.research.actor=diagnostic",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-c1-prototype-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-c1-prototype-v1\\lib\\*",
+      "com.ohinteractive.seedv6.integration.P4CorrectionUciMain",
+      "--network",
+      "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+      "--profile",
+      "corrected"
+    ]
+  },
+  "stopRequests": [
+    {
+      "profile": "production",
+      "workers": 1,
+      "result": {
+        "nodes": 44401,
+        "elapsedNanos": 103876600,
+        "termination": "STOPPED",
+        "bestmove": "e2e4",
+        "finalInfo": "info depth 7 score cp 107 nodes 28856 time 51 nps 557659 pv e2e4 d7d5 e4d5 g8f6 d2d4 d8d5 g1f3"
+      }
+    },
+    {
+      "profile": "production",
+      "workers": 4,
+      "result": {
+        "nodes": 70469,
+        "elapsedNanos": 101642700,
+        "termination": "STOPPED",
+        "bestmove": "e2e4",
+        "finalInfo": "info depth 7 score cp 78 nodes 51561 time 65 nps 791570 pv e2e4 e7e5 g1f3 b8c6 d2d4 e5d4 f3d4 f8c5"
+      }
+    },
+    {
+      "profile": "corrected",
+      "workers": 1,
+      "result": {
+        "nodes": 50562,
+        "elapsedNanos": 101019400,
+        "termination": "STOPPED",
+        "bestmove": "e2e4",
+        "finalInfo": "info depth 7 score cp 107 nodes 28859 time 55 nps 518274 pv e2e4 d7d5 e4d5 g8f6 d2d4 d8d5 g1f3"
+      }
+    },
+    {
+      "profile": "corrected",
+      "workers": 4,
+      "result": {
+        "nodes": 60643,
+        "elapsedNanos": 101993200,
+        "termination": "STOPPED",
+        "bestmove": "e2e4",
+        "finalInfo": "info depth 7 score cp 78 nodes 28789 time 37 nps 771794 pv e2e4 e7e5 g1f3 b8c6 d2d4 e5d4 f3d4 f8c5"
+      }
+    }
+  ],
+  "inputsStable": true,
+  "wallSeconds": 6.6632166000053985,
+  "requests": 52,
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\c1-isolation-v1",
+  "interpretation": "W1 frozen84 guided, current production and research control match. Candidate/W4 checks establish bounded accounting/PV/lifecycle qualification, not strength or scheduling equality."
+}

@@ -31,6 +31,7 @@ import com.ohinteractive.seedv6.search.tt.TTable;
  * into reusable child storage; no board copies/objects are created per node.
  */
 public final class ExactSearch {
+    private long correctionRuleEpoch;
     public static final int MATE_SCORE = TranspositionScores.MATE_SCORE;
     public static final int MAX_DEPTH = TranspositionScores.MAX_MATE_PLY;
     public static final int MAX_STATIC_SCORE = TranspositionScores.MAX_NORMAL_SCORE;
@@ -927,6 +928,7 @@ public final class ExactSearch {
         if(internalDiagnostics != null) internalDiagnostics.reset();
         rootDomainBound = false;
         selectiveEpoch = nominalQsearch && consumedQplies >= 0 ? 1 : 0;
+        correctionRuleEpoch=0;
         nullProbeActive = false;
         qnodes = 0;
         maximumQply = 0;
@@ -1089,6 +1091,10 @@ public final class ExactSearch {
                     }
                     checkpoint();nodes++;pvLength[ply]=0;
                     if(constructionState!=null) constructionState.rawEval[ply]=Integer.MIN_VALUE;
+                    if(correctionEnabled()) {
+                        constructionState.workingEval[ply]=Integer.MIN_VALUE;
+                        constructionState.ruleEpoch[ply]=correctionRuleEpoch;
+                    }
                     if(informationMemory()) constructionState.ttRawEval[ply]=Integer.MIN_VALUE;
                     long checking=checkers(board,status);
                     flags=(flags&4)|(checking!=0?1:0);
@@ -1102,9 +1108,9 @@ public final class ExactSearch {
                         else flags|=2;
                     }
                     state=2;
-                    if(count==0) {score=(flags&1)!=0?-MATE_SCORE+ply:0;continue;}
+                    if(count==0) {correctionRuleEpoch++;score=(flags&1)!=0?-MATE_SCORE+ply:0;continue;}
                     if(DrawAdjudicator.adjudicateNonTerminal(board,history)!=DrawAdjudicator.RuleDraw.NONE) {
-                        score=0;continue;
+                        correctionRuleEpoch++;score=0;continue;
                     }
                     if(ply==0 && restrictedRootMove!=0) {
                         if((flags&2)!=0) {count=appendQuiets(board,legalMoves,count);flags&=~2;}
@@ -1351,6 +1357,8 @@ public final class ExactSearch {
     private boolean constructionNull(long[] board,int ply,int depth,int beta,long[] legalMoves,int count) {
         checkpoint();
         int raw=constructionState.rawEval[ply],reduction=depth==3?2:Math.min(depth-2,2+depth/4);
+        int working=correctionEnabled()?constructionState.workingEval[ply]:0;
+        long ruleBefore=correctionRuleEpoch,ruleEntry=correctionEnabled()?constructionState.ruleEpoch[ply]:0;
         long allBefore=nodes,before=nodes,qbefore=qnodes,epoch=selectiveEpoch;
         long[] synthetic=boards[ply+1];pairSyntheticPass(board,synthetic);
         constructionState.pathMoves[ply+1]=0;constructionState.credits[ply+1]=constructionState.credits[ply];
@@ -1361,6 +1369,7 @@ public final class ExactSearch {
         finally {
             constructionNullProbe=false;nullProbeActive=false;history.leaveSyntheticPosition();
             selectiveEpoch=epoch;
+            correctionRuleEpoch=ruleBefore;
         }
         checkpoint();constructionState.nullAttempts++;constructionState.nullProbeNodes+=nodes-before;
         if(nullDiagnostics!=null) {
@@ -1378,6 +1387,11 @@ public final class ExactSearch {
                 constructionNullVerify=false;nullVerification=false;
                 System.arraycopy(constructionNullMoves,0,legalMoves,0,count);
                 constructionState.rawEval[ply]=raw;pvLength[ply]=0;
+                if(correctionEnabled()) {
+                    constructionState.workingEval[ply]=working;
+                    constructionState.ruleEpoch[ply]=ruleEntry;
+                }
+                correctionRuleEpoch=ruleBefore;
             }
             checkpoint();accepted=verified>=beta;constructionState.nullVerificationNodes+=nodes-before;
             if(nullDiagnostics!=null) {
@@ -1438,6 +1452,16 @@ public final class ExactSearch {
         if(ply<2 || (flatMainFrames[8][ply-2]&1)!=0) return false;
         if(construction.has(FlatSearchConfig.Feature.LAZY_IMPROVING))
             return constructionEval(board,ply)>constructionEval(boards[ply-2],ply-2);
+        if(correctionEnabled() && !nullProbeActive && !nullVerification) {
+            boolean improved=constructionState.workingEval[ply]!=Integer.MIN_VALUE
+                    && constructionState.workingEval[ply-2]!=Integer.MIN_VALUE
+                    && constructionState.workingEval[ply]>constructionState.workingEval[ply-2];
+            var d=constructionState.correction.diagnostics;
+            if(d!=null && constructionState.rawEval[ply]!=Integer.MIN_VALUE
+                    && constructionState.rawEval[ply-2]!=Integer.MIN_VALUE
+                    && improved!=(constructionState.rawEval[ply]>constructionState.rawEval[ply-2])) d.improvingChanged++;
+            return improved;
+        }
         return constructionState.rawEval[ply]!=Integer.MIN_VALUE
                 && constructionState.rawEval[ply-2]!=Integer.MIN_VALUE
                 && constructionState.rawEval[ply]>constructionState.rawEval[ply-2];
@@ -1459,8 +1483,15 @@ public final class ExactSearch {
                 checkpoint();table.saveRawEvaluation(SearchKey.key(board,historyKeys[ply]),value);
             }
         }
+        if(correctionEnabled() && !nullProbeActive && !nullVerification) {
+            if(constructionState.workingEval[ply]==Integer.MIN_VALUE)
+                constructionState.workingEval[ply]=constructionState.correction.apply(board,value);
+            return constructionState.workingEval[ply];
+        }
         return value;
     }
+
+    private boolean correctionEnabled() {return constructionState!=null && constructionState.correction!=null;}
 
     private boolean informationMemory() {
         return construction!=null && construction.has(FlatSearchConfig.Feature.TT_INFORMATION);
@@ -2358,15 +2389,15 @@ public final class ExactSearch {
                                     board[Board.KEY],true,legalMoves,generatorScratch);
                     state=2;
                     if(count==0) {
-                        if(checked) {score=-MATE_SCORE+ply;continue;}
+                        if(checked) {correctionRuleEpoch++;score=-MATE_SCORE+ply;continue;}
                         boolean legal=nominalQsearch
                                 ? Gen.hasLegalMoveNotInCheck(board[0],board[1],board[2],board[3],status)
                                 : Gen.genQuiet(board[0],board[1],board[2],board[3],status,
                                         board[Board.KEY],true,quietScratch,generatorScratch)!=0;
-                        if(!legal) {score=0;continue;}
+                        if(!legal) {correctionRuleEpoch++;score=0;continue;}
                     }
                     if(DrawAdjudicator.adjudicateNonTerminal(board,history)!=DrawAdjudicator.RuleDraw.NONE) {
-                        score=0;continue;
+                        correctionRuleEpoch++;score=0;continue;
                     }
                     best=-INFINITY;
                     if(!checked) {
@@ -2692,6 +2723,22 @@ public final class ExactSearch {
     }
 
     private int completed(long key, int depth, int ply, int alpha, int beta, int score, long move, long entryEpoch) {
+        if(correctionEnabled() && !nullProbeActive && !nullVerification) {
+            var s=constructionState;var d=s.correction.diagnostics;
+            long[] board=boards[ply];int status=(int)board[Board.STATUS];
+            if(ply==0 || depth<2 || s.rawEval[ply]==Integer.MIN_VALUE || s.workingEval[ply]==Integer.MIN_VALUE
+                    || move==0 || CaptureHistory.isTactical(move,Board.enPassantSquare(status))
+                    || score < -MAX_STATIC_SCORE || score > MAX_STATIC_SCORE
+                    || alpha < -MAX_STATIC_SCORE || beta > MAX_STATIC_SCORE) {
+                if(d!=null)d.guardRejected++;
+            } else if(s.ruleEpoch[ply]!=correctionRuleEpoch || history.currentOccurrences(board)>1
+                    || Board.halfMoveClock(status)+depth>=DrawAdjudicator.FIFTY_MOVE_HALFMOVES) {
+                if(d!=null)d.ruleRejected++;
+            } else {
+                checkpoint(); // No learning from a cancelled final child.
+                s.correction.update(board,depth,alpha,beta,s.rawEval[ply],s.workingEval[ply],score);
+            }
+        }
         boolean hintPublished=false;
         // A prediction anywhere in the searched subtree taints this result.
         // Suppress ancestor writes too, including otherwise EXACT outcomes.

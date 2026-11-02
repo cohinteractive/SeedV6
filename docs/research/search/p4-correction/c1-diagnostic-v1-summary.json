@@ -1,0 +1,107 @@
+{
+  "W1": {
+    "diagnostics": {
+      "reads": 244659,
+      "changed": 54307,
+      "absoluteCorrection": 1092617,
+      "maxCorrection": 164,
+      "directionRejected": 18136,
+      "changedUpdates": 1715,
+      "nearSaturation": 0,
+      "guardRejected": 198570,
+      "ruleRejected": 168,
+      "improvingChanged": 1772,
+      "updates": [
+        379,
+        147,
+        1201
+      ]
+    },
+    "requests": {
+      "guided": {
+        "requests": 9,
+        "nodes": 1569398,
+        "completedDepths": [
+          8,
+          7,
+          7,
+          7,
+          7,
+          6,
+          6,
+          8,
+          8
+        ]
+      },
+      "corrected": {
+        "requests": 9,
+        "nodes": 1569609,
+        "completedDepths": [
+          8,
+          7,
+          7,
+          7,
+          7,
+          6,
+          6,
+          8,
+          8
+        ]
+      }
+    },
+    "observationNeutral": true
+  },
+  "W4": {
+    "diagnostics": {
+      "reads": 253329,
+      "changed": 45936,
+      "absoluteCorrection": 751243,
+      "maxCorrection": 129,
+      "directionRejected": 20416,
+      "changedUpdates": 1913,
+      "nearSaturation": 0,
+      "guardRejected": 202586,
+      "ruleRejected": 264,
+      "improvingChanged": 1045,
+      "updates": [
+        421,
+        187,
+        1316
+      ]
+    },
+    "requests": {
+      "guided": {
+        "requests": 9,
+        "nodes": 1617761,
+        "completedDepths": [
+          8,
+          7,
+          7,
+          7,
+          7,
+          7,
+          6,
+          8,
+          7
+        ]
+      },
+      "corrected": {
+        "requests": 9,
+        "nodes": 1599590,
+        "completedDepths": [
+          8,
+          7,
+          7,
+          7,
+          7,
+          7,
+          6,
+          8,
+          8
+        ]
+      }
+    },
+    "observationNeutral": "W4 schedule variable; no exact equality claim"
+  },
+  "interpretation": "Signal/decision activation and invariant checks, not competitive evidence. Optional counters span all invocations including completed subtrees of later aborted iterations; table clearing is unchanged."
+}

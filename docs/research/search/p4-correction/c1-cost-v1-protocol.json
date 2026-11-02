@@ -1,0 +1,19 @@
+{
+  "id": "CH-C1-COST-V1",
+  "workers": [
+    1,
+    4
+  ],
+  "profiles": [
+    "guided",
+    "corrected"
+  ],
+  "rounds": 3,
+  "depth": 8,
+  "budget": 200000,
+  "warmup": "one full round per profile/domain",
+  "corpus": "docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv",
+  "runtimeManifest": "runtime-c1-prototype-v1-manifest.json",
+  "resources": "Hash64 Java21+35 Xms256m Xmx512m ActiveProcessorCount4",
+  "purpose": "Clean diagnostic cost with rotating profile order; not strength or a speed claim"
+}

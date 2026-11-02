@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms256m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-c1-prototype-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-c1-prototype-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.P4CorrectionStudy",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\c1-cost-v1-w1.jsonl",
+    "1",
+    "cost",
+    "3",
+    "8",
+    "200000",
+    "guided,corrected"
+  ],
+  "exitCode": 0,
+  "wallSeconds": 23.896968200002448,
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\c1-cost-v1-w1.jsonl"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "identities": {
+    "1": "info string mode=research experimental=true formulation=CH-C1 profile=corrected evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=238288895 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT,EVAL_CORRECTION];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER learning=request-worker-private-no-seed effort=history64-bounded2 correction=pawn-main-ema32-cap256-request ttPolicy=production-hints slotBytes=24 clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=85 source=296c0fd1f2b0 (uncommitted changes) ttMiB=64",
+    "4": "info string mode=research experimental=true formulation=CH-C1 profile=corrected evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=238288895 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT,EVAL_CORRECTION];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE learning=request-worker-private-no-seed effort=history64-bounded2 correction=pawn-main-ema32-cap256-request ttPolicy=production-hints slotBytes=24 clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=85 source=296c0fd1f2b0 (uncommitted changes) ttMiB=64"
+  },
+  "runtimeManifest": "docs/research/search/p4-correction/runtime-c1-prototype-v1-manifest.json",
+  "manifestSha256": "828b2b32d49020b5a0be3e9e317c667622ea029122c207ee41963f52d96976b7",
+  "toolSha256": "fcbb2bdff57cc3c1b1d509f069c65daf58756e74045ebcdb73c46a50fa957813",
+  "enginesClosed": true,
+  "wallSeconds": 1.7365804000000935,
+  "requests": 14,
+  "stopRequests": 2,
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\c1-runtime-v1",
+  "limits": "Bounded W1/W4 UCI technical checks, not a clock-policy qualification or competitive evidence."
+}

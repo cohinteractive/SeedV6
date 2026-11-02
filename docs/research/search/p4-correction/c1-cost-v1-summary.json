@@ -1,0 +1,75 @@
+{
+  "W1": {
+    "measuredRequests": 54,
+    "warmupRequests": 18,
+    "ratios": {
+      "elapsedNanos": {
+        "geometricMeanRatio": 1.0041324945185586,
+        "byRoot": {
+          "opening-1": 1.0068174620747896,
+          "opening-2": 1.009819608771452,
+          "opening-3": 0.9861355109653888,
+          "opening-4": 0.9879407475187238,
+          "opening-5": 0.9928283657315766,
+          "opening-6": 1.0220860542260566,
+          "opening-7": 0.9943185689716733,
+          "opening-8": 1.0560827020414216,
+          "start": 0.9832683021846029
+        }
+      },
+      "processCpuNanos": {
+        "geometricMeanRatio": 1.001383654482935,
+        "byRoot": {
+          "opening-1": 1.0,
+          "opening-2": 1.0147058823529411,
+          "opening-3": 0.9838709677419354,
+          "opening-4": 1.0138888888888888,
+          "opening-5": 1.0,
+          "opening-6": 0.9864864864864864,
+          "opening-7": 1.0,
+          "opening-8": 1.0338983050847457,
+          "start": 0.9807692307692308
+        }
+      }
+    },
+    "raw": "docs\\research\\search\\p4-correction\\raw\\c1-cost-v1-w1.jsonl",
+    "sha256": "4ab4693e78e076222a9c17e365b5192fa91d93ee070bba1e5c2141474df33a51"
+  },
+  "W4": {
+    "measuredRequests": 54,
+    "warmupRequests": 18,
+    "ratios": {
+      "elapsedNanos": {
+        "geometricMeanRatio": 1.031286070718012,
+        "byRoot": {
+          "opening-1": 1.0024666046279576,
+          "opening-2": 0.9934920589843168,
+          "opening-3": 1.0693907658959338,
+          "opening-4": 1.096862071724803,
+          "opening-5": 0.9206325404254886,
+          "opening-6": 0.970068015585481,
+          "opening-7": 0.9592604142410158,
+          "opening-8": 1.3415076586999313,
+          "start": 0.9828141896168497
+        }
+      },
+      "processCpuNanos": {
+        "geometricMeanRatio": 1.1117714775822696,
+        "byRoot": {
+          "opening-1": 1.051948051948052,
+          "opening-2": 1.0471698113207546,
+          "opening-3": 1.0574712643678161,
+          "opening-4": 1.0416666666666665,
+          "opening-5": 0.9885057471264368,
+          "opening-6": 0.9693877551020408,
+          "opening-7": 1.2307692307692308,
+          "opening-8": 1.36,
+          "start": 1.3333333333333333
+        }
+      }
+    },
+    "raw": "docs\\research\\search\\p4-correction\\raw\\c1-cost-v1-w4.jsonl",
+    "sha256": "647737acb54e5726e1cb6e29599f95141b62b976ad81a7b08dc7f84556932540"
+  },
+  "interpretation": "Short fixed-node/depth diagnostics with rotated order and one warmup round. Descriptive costs, no speed/strength inference. No prohibitive measured cost."
+}
