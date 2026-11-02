@@ -1,8 +1,8 @@
 # Independent confirmation preparation
 
 This records preparation for `g1-confirm-v1-protocol.json`; its frozen rules govern
-the actual games and analysis. No HL
-confirmation game has been played. R1's completed adverse/inconclusive development
+the actual games and analysis. Preparation preceded all confirmation games; the
+completed outcome is now recorded in [RESULTS](RESULTS.md). R1's adverse/inconclusive development
 ablation supports selecting unchanged G1. The objective's initial allowance
 remains one W1 attempt, up to 160 fresh opening pairs, one-sided nominal alpha .025.
 
@@ -79,4 +79,5 @@ identities, complete audited games and drained handles, then independently recom
 pair scores before inference. Six synthetic checks passed in
 `confirmation-analysis-v1-qualification.json`; these are not match results. The
 frozen protocol binds the script and final source/artifact/input hashes. Operational
-launch gates and W4 investigation remain; no success or acceptance is implied.
+launch gates and W4 investigation were completed before confirmation. The actual
+result and its limitations are reported separately; this design is not acceptance.

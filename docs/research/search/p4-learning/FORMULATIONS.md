@@ -88,7 +88,15 @@ showed actual effort changes in each of four private workers. Clean W4 G1/contro
 wall ratio1.0355 is descriptive; neither this nor different game CPU usage explains
 the competitive result. No new correctness/lifecycle defect was established.
 Mandatory W4 investigation is complete for the bounded campaign, but W4 strength
-or neutrality is not qualified. Fresh W1 confirmation remains a separate endpoint.
+or neutrality is not qualified.
+
+Independent W1 confirmation against actual frozen champion79 passed the predeclared
+criterion:160 fresh pairs,136W/89D/95L,56.40625%, paired-normal one-sided97.5% lower
+bound51.8239% above equality and observed score above53%. The corresponding normal95
+interval is51.82-60.99%; conservative bounded lower45.67% does not confirm superiority.
+This is an approximate, domain-limited W1 research result, not an exact guarantee,
+W4 qualification, owner acceptance or promotion. All320 games/44,104 request audits
+passed; candidate source/artifact/protocol remained unchanged. See [RESULTS](RESULTS.md).
 
 The prospective reference audit completed43 first-event stratified samples, all
 with complete independent reduced/nominal TT-off qtrees and legal real-history replay.

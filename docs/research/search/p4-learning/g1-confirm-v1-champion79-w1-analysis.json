@@ -1,0 +1,39 @@
+{
+  "score": 0.5640625,
+  "pairScoreStandardError": 0.023379776926717707,
+  "oneSidedAlpha": 0.025,
+  "normalCriticalValue": 1.9599639845400536,
+  "pairedNormalLower": 0.5182389792570528,
+  "boundedHoeffdingLower": 0.4566951479133156,
+  "primaryLower": 0.5182389792570528,
+  "primaryMethod": "paired normal approximation",
+  "practicalMinimumScore": 0.53,
+  "primaryCriterionPassed": true,
+  "conservativeSensitivityPositive": false,
+  "status": "completed prospective analysis",
+  "claimAttempt": 1,
+  "domain": "W1 OWNER, CP64 Hash64, 10+0.1, frozen fresh opening distribution",
+  "candidate": "HL-G1, retained worker-private learning plus bounded history64 effort; commitb8ea8b2856eed3f6c774860ca540375054e4de30/build84 flags104071167",
+  "opponent": "Champion P4-BASELINE-001 build79 source753367614b8aa7e32dee337fd76b542737141ac1, flags3407871; actual frozen runtime79, not substituted corrected80",
+  "wdl": [
+    136,
+    89,
+    95
+  ],
+  "pentanomial": [
+    12,
+    29,
+    56,
+    32,
+    31
+  ],
+  "pairs": 160,
+  "protocol": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\g1-confirm-v1-protocol.json",
+  "protocolSha256": "152765d2493690cc256c35b36e9b94ea35d6615b068c975c6665a1e0c434236e",
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\g1-confirm-v1-champion79-w1",
+  "runSha256": "ca5dccbb6c4eb6c029281a3f537ec253a05cd3c854660b50be4b96a8c659b67f",
+  "pgnSha256": "04cc3c562428f12c214d301bc5cc0cf9ced0fb8128407797f5ad4a1adc7829af",
+  "analysisToolSha256": "2441cd56a8318d2bdc5e20e36d933cb28f8ef5d0e662916e953745c2f9d816c0",
+  "interpretation": "One frozen finalist, fresh direct champion comparison, one nominal one-sided alpha .025 attempt. Pair-level normal inference is approximate; conservative bounded sensitivity is retained, not silently discarded. No pooling with exploration or historical claims. No arbitrary-position, worker, clock or platform generalization.",
+  "acceptance": "Research criterion only. Mandatory W4 characterization and technical qualification remain separately applicable; GPT/owner reconciliation, acceptance and any promotion are distinct."
+}

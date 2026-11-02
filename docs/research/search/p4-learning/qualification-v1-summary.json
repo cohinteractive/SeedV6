@@ -1,0 +1,315 @@
+{
+  "status": "W1 prospective research criterion met; W4 risk characterized but strength/neutrality unqualified; GPT/owner reconciliation pending",
+  "verifiedUtc": "2026-11-02T06:05:06.637234+00:00",
+  "candidateSourceCommit": "b8ea8b2856eed3f6c774860ca540375054e4de30",
+  "candidateBuild": 84,
+  "candidateFlags": 104071167,
+  "implementationUnchangedSinceFreeze": true,
+  "championCommit": "753367614b8aa7e32dee337fd76b542737141ac1",
+  "championBuild": 79,
+  "productionFlagsUnchanged": 3407871,
+  "versionDecision": "no_bump for final analysis/documentation; reuse evidenced83-to84 runtime implementation update",
+  "versionSha256": "3d9bc0bce606ac8a479810dfdedc4c4344c9c44c5eae1ae171192884ca9d61a7",
+  "versionTuple": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 84
+  },
+  "journalPresent": false,
+  "selectedTestResults": {
+    "tests": 330,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "confirmationAnalysisSha256": "e93924a2c7ee04b4a464121a2d0d1ce94d5a05fd585f81e99417791c1cad6026",
+  "runs": [
+    {
+      "id": "g1-screen-v1-w1",
+      "summarySha256": "ace6dc34c17aedbc4a0edf20c1662d2c3cdec6b945b79f39e6ce3238c47e0a98",
+      "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\g1-screen-v1-w1",
+      "processCostSha256": "27238eabd1cdd3c7bdfa1e3103b0ceec501cc0e795043519a669e0270051fa7c",
+      "pairs": 32,
+      "workers": 1,
+      "wdl": [
+        30,
+        18,
+        16
+      ],
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          1,
+          4,
+          12,
+          10,
+          5
+        ],
+        "score": 0.609375,
+        "logisticElo": 77.24983934178465,
+        "pairedHoeffding95Score": [
+          0.3692943021700198,
+          0.8494556978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -92.98165898571757,
+          300.590564351361
+        ],
+        "pairScoreStandardError": 0.04481354179515168,
+        "pairedNormal95Score": [
+          0.5215420720618222,
+          0.6972079279381778
+        ],
+        "pairedNormal95Elo": [
+          14.978237184004705,
+          144.88712675212713
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "wallSeconds": 1931.6730327999976,
+      "matchWallSeconds": 1929.1883536999958,
+      "auditedRequests": 8729,
+      "missingScoreWarnings": 0,
+      "engineCpuSeconds": {
+        "baseline": 971.515625,
+        "candidate": 974.578125
+      },
+      "peakWorkingSetBytes": {
+        "baseline": 352030720,
+        "candidate": 354033664
+      }
+    },
+    {
+      "id": "r1-screen-v1-w1",
+      "summarySha256": "22c5d29d9c1f31d274d29f497b863273e98583f8b828f6da18940b7478c588ed",
+      "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\r1-screen-v1-w1",
+      "processCostSha256": "b7104c18eee0634f559ad087c3b8105eaac92e6e1af255a232274e9c69301be6",
+      "pairs": 32,
+      "workers": 1,
+      "wdl": [
+        19,
+        20,
+        25
+      ],
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          3,
+          10,
+          13,
+          2,
+          4
+        ],
+        "score": 0.453125,
+        "logisticElo": -32.66801858052781,
+        "pairedHoeffding95Score": [
+          0.21304430217001982,
+          0.6932056978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -226.9921442387215,
+          141.6059336747405
+        ],
+        "pairScoreStandardError": 0.04949021877131135,
+        "pairedNormal95Score": [
+          0.3561259536212217,
+          0.5501240463787783
+        ],
+        "pairedNormal95Elo": [
+          -102.87891779291738,
+          34.94713939302623
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "wallSeconds": 1933.560442099988,
+      "matchWallSeconds": 1931.1319113000063,
+      "auditedRequests": 8640,
+      "missingScoreWarnings": 0,
+      "engineCpuSeconds": {
+        "baseline": 977.890625,
+        "candidate": 974.671875
+      },
+      "peakWorkingSetBytes": {
+        "baseline": 356102144,
+        "candidate": 352985088
+      }
+    },
+    {
+      "id": "g1-w4-risk-v1-w4",
+      "summarySha256": "2a0724d6da389f9d490c50737f6e29b537e4be6ff1177fdc2ba3a06ff9f7c7ad",
+      "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\g1-w4-risk-v1-w4",
+      "processCostSha256": "2954901600a0d8bef44cd530684d07eebab96eb0d20c2463e3a15cc09f65878d",
+      "pairs": 32,
+      "workers": 4,
+      "wdl": [
+        32,
+        13,
+        19
+      ],
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          3,
+          4,
+          10,
+          7,
+          8
+        ],
+        "score": 0.6015625,
+        "logisticElo": 71.5682196298182,
+        "pairedHoeffding95Score": [
+          0.3614818021700198,
+          0.8416431978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -98.83473616723967,
+          290.1965178798178
+        ],
+        "pairScoreStandardError": 0.05596857804903252,
+        "pairedNormal95Score": [
+          0.49186610275797726,
+          0.7112588972420227
+        ],
+        "pairedNormal95Elo": [
+          -5.652509365755138,
+          156.60764051791142
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "wallSeconds": 1969.9783829999942,
+      "matchWallSeconds": 1967.780765100004,
+      "auditedRequests": 8993,
+      "missingScoreWarnings": 0,
+      "engineCpuSeconds": {
+        "baseline": 2119.625,
+        "candidate": 2094.859375
+      },
+      "peakWorkingSetBytes": {
+        "baseline": 387006464,
+        "candidate": 386473984
+      }
+    },
+    {
+      "id": "g1-w4-champion-v1-w4",
+      "summarySha256": "3380650cfcbeef5db8b27ea5439c784c9205c06299e1d97349ac49ef804b75ae",
+      "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\g1-w4-champion-v1-w4",
+      "processCostSha256": "d5c499356111342eda2d3034eaf1f41d98ec9c1286688f81fea475dd60b2e925",
+      "pairs": 32,
+      "workers": 4,
+      "wdl": [
+        19,
+        21,
+        24
+      ],
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          4,
+          8,
+          11,
+          7,
+          2
+        ],
+        "score": 0.4609375,
+        "logisticElo": -27.198831638044446,
+        "pairedHoeffding95Score": [
+          0.22085680217001982,
+          0.7010181978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -219.00260154063548,
+          148.0338146675374
+        ],
+        "pairScoreStandardError": 0.04907071792691547,
+        "pairedNormal95Score": [
+          0.36476066016772174,
+          0.5571143398322783
+        ],
+        "pairedNormal95Elo": [
+          -96.37175707527254,
+          39.86108730788416
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "wallSeconds": 2040.1387029000034,
+      "matchWallSeconds": 2037.7994185999996,
+      "auditedRequests": 9577,
+      "missingScoreWarnings": 0,
+      "engineCpuSeconds": {
+        "baseline": 2097.859375,
+        "candidate": 2059.6875
+      },
+      "peakWorkingSetBytes": {
+        "baseline": 388218880,
+        "candidate": 391434240
+      }
+    },
+    {
+      "id": "g1-confirm-v1-champion79-w1",
+      "summarySha256": "70d7f3c6d92b13bc3a0eb56692ef23eb81339293ebe3b031c43c2001049f0a63",
+      "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\g1-confirm-v1-champion79-w1",
+      "processCostSha256": "4038fcc0826a98c88b3a8ae40c165abc80249f0f887687cc46f8d6716f8cf8d2",
+      "pairs": 160,
+      "workers": 1,
+      "wdl": [
+        136,
+        89,
+        95
+      ],
+      "statistics": {
+        "pairs": 160,
+        "pentanomial": [
+          12,
+          29,
+          56,
+          32,
+          31
+        ],
+        "score": 0.5640625,
+        "logisticElo": 44.761199452824165,
+        "pairedHoeffding95Score": [
+          0.4566951479133156,
+          0.6714298520866844
+        ],
+        "pairedHoeffding95Elo": [
+          -30.166874425112887,
+          124.14901720321477
+        ],
+        "pairScoreStandardError": 0.02337977692671771,
+        "pairedNormal95Score": [
+          0.5182389792570528,
+          0.6098860207429473
+        ],
+        "pairedNormal95Elo": [
+          12.679366769005629,
+          77.6228663854462
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "wallSeconds": 9736.335694400012,
+      "matchWallSeconds": 9731.2646962,
+      "auditedRequests": 44104,
+      "missingScoreWarnings": 0,
+      "engineCpuSeconds": {
+        "baseline": 4817.796875,
+        "candidate": 4843.125
+      },
+      "peakWorkingSetBytes": {
+        "baseline": 354021376,
+        "candidate": 357318656
+      }
+    }
+  ],
+  "totalGames": 576,
+  "exploratoryPairs": 128,
+  "confirmationPairs": 160,
+  "confirmationAttempts": 1,
+  "totalChargedGameWallSeconds": 17611.686255199995,
+  "totalMatchWallSeconds": 17597.165144900006,
+  "totalEngineCpuSeconds": 21931.609375,
+  "totalAuditedRequests": 80043,
+  "approximateActiveBuildDiagnosticSeconds": 327,
+  "skipped": "Full unrelated GUI/training/native-platform matrix and broader clocks/platforms not run. No claim of universal exact selective equivalence. Raw evidence is local-only; baseline-v1 initial mutable installation was not retained, later frozen runtimes were.",
+  "acceptance": "No owner acceptance, champion advancement, release, deployment, push or default activation. F3/TT-memory campaigns unchanged; frozen BOUNDARY2 studies unopened."
+}

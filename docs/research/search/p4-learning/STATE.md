@@ -1,11 +1,12 @@
 # HL-R001 resume state
 
-**Active, 2 November 2026. Strength objective unmet. HL-R1 request retention and
-HL-G1 retained learning with bounded history-guided effort are implemented as
-explicit experimental profiles. G1's first32-pair W1 development screen passed:
-30W/18D/16L against80. This promising exploratory signal is not champion-relative
-confirmation. Retention-only R1 scored19W/20D/25L against80. Prioritize unchanged
-HL-G1 for W4 risk and, if qualified, fresh direct79 W1 confirmation.**
+**Research execution complete, 2 November 2026. HL-G1 met the prospectively frozen
+W1 champion-relative strength criterion:136W/89D/95L,56.41%, paired-normal lower
+bound51.82%. Mandatory W4 risk investigation is complete, with an unresolved adverse
+champion-relative point estimate. Conservative bounded sensitivity crosses equality.
+GPT/owner reconciliation and acceptance remain pending; no promotion or successor.**
+Read [RESULTS](RESULTS.md) for the handback and [qualification summary](qualification-v1-summary.json)
+for aggregate evidence. No experiment remains running.
 Read [CONTRACT](CONTRACT.md), then this state. Owner request and initial file/hash
 checks are in `bootstrap-manifest.json`; external source identities are in
 `external-manifest.json`. Raw evidence is local-only and must be checked before reuse.
@@ -76,24 +77,27 @@ ratio1.0355 is a small, variable seven-root measurement, not a speed/strength cl
 No operational defect was found; the W4 competitive result remains unexplained.
 W4 is not strength/equivalence qualified, and broader use is not supported.
 
-**Next operation:** execute the already frozen independent W1 protocol unchanged.
-All exploration is complete/drained:7875.35s charged game wall; adding its full
-12000s timeout gives19875.35s, below21600s. Mandatory W4 risk investigation is
-complete for this bounded campaign, with the unresolved adverse point estimate
-explicitly retained. Owner-authorized W1 acceptance does not require W4 superiority.
-Fresh-opening preparation passed after R1 drained,51.96s. A separate input audit
-confirmed160 unique legal roots across five first moves and27 first-move/reply
-families, without changing selection.
+Completed independent confirmation: `g1-confirm-v1-protocol.json`,160 fresh pairs
+W1 against actual frozen79,136W/89D/95L,56.40625%. The primary one-sided nominal
+alpha.025 paired-normal lower bound51.8239% exceeds50%, and the point score exceeds
+the predeclared53% practical threshold. Two-sided paired-normal95 interval51.82-60.99%;
+logistic point estimate+44.76 Elo (normal interval+12.68 to+77.62). These are approximate
+paired-sampling inferences, not exact finite-sample proof. The conservative bounded
+lower bound45.67% does not confirm superiority; preserve that disagreement.
 
-`g1-confirm-v1-protocol.json` is prospectively frozen while W4 runs, before any
-confirmation game: unchanged G1/build84 directly versus champion79,160 fresh pairs,
-10+0.1/W1, one-sided nominal alpha.025, paired-normal lower bound>.5 and score>=.53;
-bounded sensitivity/zero-variance fallback retained. It binds source/artifact/input
-and analysis hashes. Expected9665s, hard12000s; launch only after W4 completes/drains
-and cumulative actual wall plus timeout fits21600s. No second confirmation attempt.
-W4 competitive superiority is not required for W1 acceptance; any genuine defect
-blocks affected work. Preserve/adapt the risk investigation within remaining32
-exploratory pairs if needed, without changing this W1 claim after outcome exposure.
+All320 games ended normally;44,104 request audits passed with no missing-score
+warnings, stable inputs and drained handles. The frozen analysis ran after the
+successful audit, unchanged. No partial score informed a decision; the owner's
+in-flight progress question was answered using completed-game counts only.
+Confirmation wall9736.34s; raw evidence is `raw/g1-confirm-v1-champion79-w1`.
+All five matches are complete/drained, and OS inspection found no Fastchess process.
+Mandatory W4 risk is characterized as above, without claiming W4 strength/neutrality.
+
+Fresh input preparation checked160 unique legal roots across five first moves and
+27 first-move/reply families, with zero overlap against56,553 excluded source/receipt
+keys. The curated remaining pool of1,215 roots, W1 OWNER, CP64 Hash64,10+0.1 and
+this Windows/Java host define the supported domain. No broader clock/platform,
+opening-distribution or multiworker strength conclusion follows.
 
 Actual build79/80 runtime JARs and CP64/Java executable match historical manifests.
 Source80's qualified accounting fix remains present. Current optional H1/H2/F3
@@ -132,7 +136,7 @@ noisy sign-based pruning protection; do not assume it helps. A160-pair confirmat
 has limited power for small effects; insufficient precision is a possible legitimate
 resource handback, not success. No blocking authority conflict identified.
 
-## Current work selection
+## Completed work and deferred opportunities
 
 Completed bootstrap diagnostics, first retention formulation and integrated effort
 prototype. [FORMULATIONS](FORMULATIONS.md) describes mechanisms, identities and
@@ -161,8 +165,9 @@ Candidate W4 checks verify bounded legal PV/accounting/lifecycle, not equality.
 Clean costs completed:162 requests including54 warmups,45.45s total. G1/control
 wall ratios1.0153 W1/0.9921 W4 and R1/control0.9948/0.9918 show no prohibitive
 observed overhead; no speed claim. G1's first game screen is now positive as above.
-R1 reverse ablation completed; next selected-formulation W4 risk before independent W1
-confirmation. Do not select a finalist from depth/node diagnostics. Nothing promoted.
+R1 reverse ablation, W4 risk and independent W1 confirmation all completed. G1 was
+selected using exploratory strength and technical evidence, not depth/node results.
+Nothing has been promoted.
 
 Prospective `reference-audit-v1-protocol.json` was frozen before reading game outcomes.
 Research harness build passed(2.55s); core classes match frozen84, only generated
@@ -174,18 +179,10 @@ at threshold-358. It is a horizon-disagreement witness, not a measured flat-kern
 error or population rate; original selective context/mate distance are absent.
 There is no demonstrated correctness defect or evidence here to tune a new constant.
 
-1. Measure baseline history magnitudes/lifetime and actually exercised reduction
-   decisions using existing selectivity hooks. Establish request-scoped retention
-   of worker-local learned tables with transient path/evaluation scratch reset;
-   use separate retain-only and integrated history-LMR controls.
-2. Adapt bounded history-informed effort only after identifying useful signal
-   scales. Preserve verification and tactical exclusions; inspect whether nominal
-   filtering or shallow easy-cutoff feedback undermines information quality.
-3. Qualify source/reference isolation, actual W1/W4 accounting, cancellation and
-   reset behavior, then clean cost and bounded exploratory games against80.
-4. Use evidence to combine/substitute/ablate; freeze one finalist only with a
-   plausible practical strength effect. Fresh direct79 W1 confirmation and W4 risk
-   remain mandatory. No current finalist or confirmation protocol exists.
+The autonomous work queue is complete for this objective. Next: GPT/owner reconcile
+the frozen evidence, statistical limits and W4 risk before acceptance or dependent
+progression. Do not repeat confirmation, tune the selected candidate or launch a
+successor merely because a new session opens this state.
 
 Deferred: cross-request decay, richer continuation contexts, stronger selective
 coupling or F3 integration require actual evidence of a useful dependency. These
@@ -206,16 +203,19 @@ must preserve that valid composition rather than silently remove a feature/depen
 Bootstrap:12 logical processors, about32GiB RAM/15GiB available, existing research
 Python/chess/Fastchess tools. Unrelated IDE/Gradle processes were observed and left
 alone. Prior490/529s eight-pair TTF runs anchor the initial cost plan; current costs
-are now measured. Runtime qualification and the first32-pair screen are complete.
+are now measured. Technical qualification and all planned game batches are complete.
 
 Aggregate allowance:128 exploratory pairs (reserve32 W4),160 fresh W1 confirmation
 pairs/one attempt,6h game wall and2h active build/diagnostic execution. Spent:128/128
-exploratory pairs(256 games),0 confirmation attempts/pairs,7875.35s charged game wall;
-about327s active build/diagnostic execution including W4 replay, input preparation, artifact preflights and reference
+exploratory pairs(256 games),160/160 confirmation pairs(320 games),one/one attempt.
+Charged game wall17611.69s(4h53m32s), below21600s; total engine CPU21931.61s.
+About327s active build/diagnostic execution including W4 replay, input preparation, artifact preflights and reference
 audit (about228s through clean costs plus packaging/preflights and6.51s reference work).
-Minor setup/analysis/inspection time is not engine compute; later build/package
-checks and all failed executions must be added before further allocation.
-Record measured runtime costs and failed runs before selecting additional work.
+Minor setup/analysis/inspection time is not engine compute. All576 games ended
+normally and80,043 request audits passed. Both pair allocations are exhausted;
+remaining wall/diagnostic allowance does not authorize another confirmation claim.
+Full unrelated GUI/training/native-platform matrix was not run; broader resource
+domains and universal equivalence of selective Search are not qualified.
 
 Prospective power reminder (not a frozen confirmation protocol): at one-sided
 alpha0.025 and80% normal-approximation power,160 independent pairs target roughly
@@ -223,18 +223,23 @@ alpha0.025 and80% normal-approximation power,160 independent pairs target roughl
 about839 pairs, materially outside this envelope. Final planning must use actual
 exploratory variance and a credible effect, not the pilot point estimate alone.
 The named legal16 opening source is locally available. Fresh confirmation inputs
-must exclude exposed inputs without opening either forbidden BOUNDARY2 study;
-the final input/protocol design remains a pre-confirmation dependency.
+excluded exposed roots without opening either forbidden BOUNDARY2 study.
 [CONFIRMATION-DESIGN](CONFIRMATION-DESIGN.md) records the candidate-independent
 input preparation, review of historical receipt schemas and proposed paired inference.
 Pinned input source downloaded; full parsing/selection passed after R1 drained.
 160 legal distinct roots selected from1,215 eligible held-out roots, excluding56,553
 historical/source keys with zero overlap. Receipt records exact inputs/exclusions;
 the resulting curated subset limits generalization. Six synthetic inference checks
-passed. Final G1 game protocol is now frozen as above; its operational launch gates
-remain pending. No confirmation pair or claim allowance has yet been spent.
+passed. Frozen protocol/analysis remain unchanged and the sole allowance is spent.
+No replay or sample extension after exposed outcomes is authorized.
 
-Human actions: none blocking repository execution. After Frontier update, owner
-refresh to P4-F018 is non-blocking here and blocks only mirror-dependent planning.
-Future GPT/owner reconciliation blocks acceptance/dependent closeout progression;
-no success/acceptance/promotion is claimed. Do not launch a successor.
+Final version handling: no additional bump for analysis/documentation. Exact version
+bytes match the evidenced implementation commit's0.0.0/build84; core/UCI/launcher
+sources remain unchanged since that freeze. No journal was created because root
+CODEXLOG_CURRENT.md is absent. All task changes are attributable to this objective.
+
+Human actions: blocking for acceptance/dependent progression — GPT/owner reconcile
+the W1 result, approximate inference, conservative disagreement and unresolved W4
+risk. Non-blocking for completed research — refresh the Project Frontier mirror to
+P4-F019; this blocks mirror-dependent planning until done. Champion/defaults remain
+unchanged. No further autonomous research or successor is authorized by this handback.
