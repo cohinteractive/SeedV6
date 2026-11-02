@@ -68,4 +68,7 @@ null coverage, revise the integration instead of blindly sweeping constants.
 Forced-line extension and qsearch substitutions remain alternatives, not a queued
 checklist. This formulation passed the W1 technical qualifications linked from STATE. No
 competitive result yet; W4 technical qualification passes, but W4 competitive risk
-remains unmeasured. The first fixed W1 screen is running; selection awaits its full audit.
+remains unmeasured. The first fixed W1 screen was interrupted for external PC load:63 initiated games,
+62 completed. Its completed-game operational audit passes, but the batch is clock-
+unqualified and incomplete; no outcomes were used to select or tune a candidate.
+The unchanged formulation has a different-input V2 protocol awaiting a controlled window.

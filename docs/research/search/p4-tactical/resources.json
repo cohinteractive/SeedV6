@@ -1,10 +1,10 @@
 {
   "objective": "TC-R001",
-  "chargedWallSeconds": 128.50708899996243,
-  "remainingWallSeconds": 64671.49291100004,
-  "initiatedGames": 0,
-  "remainingGames": 1120,
-  "developmentGames": 0,
+  "chargedWallSeconds": 1990.196752299904,
+  "remainingWallSeconds": 62809.803247700096,
+  "initiatedGames": 63,
+  "remainingGames": 1057,
+  "developmentGames": 63,
   "riskGames": 0,
   "confirmationGames": 0,
   "confirmationAttempts": 0,
@@ -74,7 +74,35 @@
       "wallSeconds": 1.4063889000099152,
       "category": "charged W4 technical qualification",
       "status": "passed"
+    },
+    {
+      "receipt": "p1-screen-v1-execution.json",
+      "wallSeconds": 1858.2260032999911,
+      "category": "charged interrupted W1 development",
+      "status": "failed",
+      "initiatedGames": 63
+    },
+    {
+      "receipt": "p1-screen-v1-interruption-audit.json",
+      "wallSeconds": 2.5003310999891255,
+      "category": "charged post-interruption audit",
+      "status": "passed limited interruption audit",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "window-supervisor-v1-qualification.json",
+      "wallSeconds": 0.5104361999838147,
+      "category": "charged bounded PC-guard qualification; no engine",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "window-supervisor-v2-qualification.json",
+      "wallSeconds": 0.452892699977383,
+      "category": "charged bounded PC-guard qualification; no engine",
+      "status": "passed",
+      "initiatedGames": 0
     }
   ],
-  "accounting": "Outer elapsed receipts charged once, including failed input supervisor and failed W4-only harness. Overlapping summaries not added; ordinary compilation/selected tests separate."
+  "accounting": "Outer elapsed receipts charged once; interrupted screen63 initiated games including incomplete63, unstarted64 not charged as a game. Post-interruption audit charged separately. Small input reviews inside the screen wall are not charged twice. Original failed receipts/unfinished raw records preserved; no strength result or attempt."
 }

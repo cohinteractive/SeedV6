@@ -1,0 +1,62 @@
+{
+  "status": "passed limited interruption audit",
+  "startedUtc": "2026-11-02T20:42:29.948855+00:00",
+  "purpose": "Interrupted batch operational audit only. Do not expose WDL, pair scores or infer strength; no partial-outcome candidate selection.",
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-screen-v1-w1",
+  "auditorSha256": "3600803395c3b573ef6683da4e5c1442fc91833bb9597fe7db2b72c1fbcddf79",
+  "initiatedGames": 63,
+  "completedGames": 62,
+  "completePairs": 31,
+  "incompleteGameIds": [
+    63
+  ],
+  "unstartedGameIds": [
+    64
+  ],
+  "completedGameAudit": {
+    "terminations": {
+      "normal": 62
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 4073,
+        "nodes": 610967530,
+        "elapsedNanos": 918945873729
+      },
+      "candidate": {
+        "requests": 4080,
+        "nodes": 617044573,
+        "elapsedNanos": 920130278180
+      }
+    },
+    "scope": "All62 completed games: legal real histories, original ordered opening prefixes/colors, normal terminal adjudication, complete request accounting. No score summary exposed."
+  },
+  "completedTraceAudit": {
+    "status": "passed",
+    "completedRequests": 8153,
+    "qualifiedMissingScoreWarnings": 0,
+    "fallbacks": [],
+    "limits": "Validates the narrowly admitted missing-score warnings; does not replace full PV checks, game audit or process/input qualification.",
+    "prefixEndsBeforeLine": 263360
+  },
+  "fullTraceFinalization": "Undrained request at end of trace",
+  "frozenInputsStable": true,
+  "protectedInputCheck": {
+    "protectedRoots": 320,
+    "distinctExposedRealPositions": 8094,
+    "overlap": 0,
+    "scope": "All completed game trajectories plus actual partial-game63 histories; no protected roots displayed."
+  },
+  "ownedProcessesRemaining": 0,
+  "batchDisposition": "Interrupted and clock-unqualified; exact interference onset unknown. No strength result, candidate selection or replay. All63 initiated games charged;31 completed pairs preserved without selective exclusion. Original run.json/process-cost.json remain unfinished historical records; this audit does not relabel them passed.",
+  "rawEvidence": {
+    "docs\\research\\search\\p4-tactical\\raw\\p1-screen-v1-w1\\run.json": "8e51be00302008071e40d4954117b123dbbfcd51c8db5caf1fc08701e89c448b",
+    "docs\\research\\search\\p4-tactical\\raw\\p1-screen-v1-w1\\runner.txt": "a245bda1c7261169b5b6b94c0b7584ac16dd7860a7b917fd81d81927e064c117",
+    "docs\\research\\search\\p4-tactical\\raw\\p1-screen-v1-w1\\games.pgn": "af51ae5dce5d8a9325f22c015c5c79b04e34e6076a71165999a1baae5929cf95",
+    "docs\\research\\search\\p4-tactical\\raw\\p1-screen-v1-w1\\uci-trace.log": "dfa08b7c2b4635d44b84dfc3eb7f05606275a9cd7b44b09c9f01a96bb4139d86",
+    "docs\\research\\search\\p4-tactical\\raw\\p1-screen-v1-w1\\process-cost.json": "dc8a9438656848df339e2b4fcaed59064cefd25114d7da9190f469c3c88a0f1c",
+    "docs\\research\\search\\p4-tactical\\raw\\p1-screen-v1-w1\\completed-31-pair-opening-prefix.pgn": "447978a457b226d8cd386ccf35f0cbe272a0a79304f9ac831fcd28d68a6c0ded"
+  },
+  "wallSeconds": 2.5003310999891255,
+  "endedUtc": "2026-11-02T20:42:32.449184+00:00"
+}

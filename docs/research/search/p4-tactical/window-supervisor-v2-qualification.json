@@ -1,0 +1,17 @@
+{
+  "ownedProcessesRemaining": 0,
+  "processDrained": true,
+  "ownedCpuSeconds": 0.0,
+  "totalOwnedProcesses": 1,
+  "status": "passed",
+  "utc": "2026-11-02T20:47:19.062239+00:00",
+  "wallSeconds": 0.452892699977383,
+  "toolSha256": "814effaf9021363ded0fe38d0e6aeb4f0dc400048998c5088031d788380a7937",
+  "sample": {
+    "utc": "2026-11-02T20:47:18.997178+00:00",
+    "totalCpuPercent": 29.000000000000004,
+    "freeMemoryGiB": 12.543144226074219,
+    "overwatch": false
+  },
+  "scope": "Actual native CPU/memory sampling and owned suspended dummy process termination/drain. No engine or match, no window authorization inferred."
+}

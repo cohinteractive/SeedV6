@@ -99,7 +99,11 @@ symmetrically. Preserve desktop headroom and unrelated processes. Lower priority
 does not itself establish clock validity. Record interference and qualification limits.
 **Owner reply, 3 November: ask when heavy tests are ready.** W4 and independent
 confirmation therefore require an agreed controlled PC-use window before launch.
-Continue source work and bounded light diagnostics meanwhile. Do not run substantial
+Continue source work and bounded light diagnostics meanwhile. After the first W1
+screen was interrupted on3 November for observed external CPU saturation, subsequent
+W1 clocked batches also require a controlled owner window. This applies the existing
+PC-validity condition; it changes no scientific criterion or resource allowance.
+Do not run substantial
 experiments during gaming (especially Overwatch), oversubscription or memory pressure.
 
 ## Prospective experiment and confirmation rules

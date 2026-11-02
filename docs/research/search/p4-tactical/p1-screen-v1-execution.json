@@ -1,0 +1,33 @@
+{
+  "status": "failed",
+  "startedUtc": "2026-11-02T20:08:32.392342+00:00",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "tools/p4-tactical.py",
+    "--protocol",
+    "p1-screen-v1-protocol.json",
+    "--workers",
+    "1"
+  ],
+  "category": "charged W1 development match and audit",
+  "protocol": "p1-screen-v1-protocol.json",
+  "protocolSha256": "09aee7e45032a2b68fdf5937c9cc3b52ca030af5a41a6ac0f8f468c087c5707f",
+  "gitHeadAtAdmission": "79bb6e8a3326781cde56eeac63e079e7e2339c54",
+  "chargedWallBefore": 128.50708899996243,
+  "remainingWallBefore": 64671.49291100004,
+  "reservedDevelopmentGamesPending": 64,
+  "confirmationReservedGames": 640,
+  "confirmationReservedSeconds": 24000,
+  "ownership": "Suspended child assigned to kill-on-close Job before resume; serial below-normal descendants; bounded post-exit drain.",
+  "pcAdmission": "No Overwatch/Fastchess observed; total CPU10 percent and free RAM16.63GiB immediately before preparation. Ordinary W1 development authority; W4/confirmation not admitted.",
+  "pid": 31960,
+  "exitCode": 4294967295,
+  "ownedProcessesRemaining": 0,
+  "ownedCpuSeconds": 1866.921875,
+  "totalOwnedProcesses": 10,
+  "failure": "RuntimeError('Match failed or owned descendants did not drain')",
+  "gamesInitiated": "Reconcile actual runner starts before further admission",
+  "wallSeconds": 1858.2260032999911,
+  "endedUtc": "2026-11-02T20:39:30.650078+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-02T20:39:30.211226+00:00",
+  "decision": "Stop the owned W1 screen for material PC interference before inspecting any outcomes. Preserve all initiated games; no automatic replay.",
+  "observedTotalCpuPercent": [
+    68,
+    92,
+    97
+  ],
+  "observedFreeMemoryGiB": 14.86,
+  "externalLoad": "VS Code Java language server PID13464 and its Gradle daemon PID21588, Code and other desktop activity. No Overwatch observed. These unrelated processes are untouched.",
+  "lastScoreBlindProgress": {
+    "startedGames": 60,
+    "finishedGames": 59
+  },
+  "executionReceipt": "p1-screen-v1-execution.json",
+  "stopMethod": "Terminate only verified owned venv launcher; retained supervisor waits, detects descendants, closes kill-on-close Job and records failure. Reconcile actual starts and complete pairs after drain.",
+  "limitations": "Exact interference onset and affected request interval were not continuously monitored. No uniform clock validity claimed."
+}

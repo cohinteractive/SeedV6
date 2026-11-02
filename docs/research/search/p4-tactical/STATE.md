@@ -1,6 +1,6 @@
 # TC-R001 resume state
 
-3 November 2026 (Pacific/Auckland). **Active implementation/qualification; TC-P1 prototype, no strength result yet.** Read [CONTRACT](CONTRACT.md). Governing objective remains unachieved.
+3 November 2026 (Pacific/Auckland). **Active workstream; next clocked experiment blocked on a controlled PC-use window. Strength objective unachieved.** Read [CONTRACT](CONTRACT.md). Governing objective remains unachieved.
 
 ## Verified starting point and prerequisite
 
@@ -19,8 +19,8 @@
 ## Current formulation and technical evidence
 
 **TC-P1 - bounded capture verification over HL-G1**, profile `probcut`,
-flags1177812991, is ready for its first W1 development screen after the committed
-artifact bridge. [FORMULATIONS](FORMULATIONS.md) records verified external evidence,
+flags1177812991, has passed W1/W4 technical qualification. Its first W1 screen was
+interrupted for external PC interference; a new fixed-input screen awaits a window. [FORMULATIONS](FORMULATIONS.md) records verified external evidence,
 Seed differences, dependencies and the untuned hypothesis. It adds qsearch/reduced
 legal verification at eligible depth4-8 non-check null-window nodes, beta+150,
 raw+300 admission, at most3 SEE-nonnegative tacticals, child depth-3. Returns beta
@@ -64,60 +64,87 @@ Confirmation must exclude prior exposed roots including CH confirmation and mixe
 phase inputs. Prior throughput suggests640 games about5.4h; confirm actual cost
 before admission. Reserve independent capacity; do not spend it on development.
 
-## Resources and ownership
+## Interrupted development screen and resource boundary
 
-[Resource ledger](resources.json): charged **128.5070890/64,800s**,
-remaining **64671.4929110s**. Initiated games0/1,120:
-W1 development0/384, W4 risk0/96, independent confirmation0/640; attempts0/1.
-Include both failed technical runs; never add overlapping inner summaries.
-W1 screen p1-screen-v1-w1 is RUNNING:64 games reserved pending, no result read.
-See p1-screen-v1-execution.json for owned process/start/admission and raw/p1-screen-v1-w1
-for live evidence. Reconcile receipt, actual initiated games and charged wall before
-any restart or further experiment. Qualification processes had drained before launch.
+[RESULTS](RESULTS.md) and [interruption audit](p1-screen-v1-interruption-audit.json)
+record TC-P1-SCREEN-V1:63 initiated games,62 completed/31 full pairs, game63
+interrupted and game64 unstarted. The score-blind stop followed total CPU samples
+68%,92%,97%, with active VS Code Java/Gradle and desktop activity; unrelated
+processes were untouched. Exact interference onset is unknown. All8153 requests
+in the completed games pass opening/color/history/adjudication/accounting and
+completed-trace checks, with zero missing-score warnings. Frozen inputs are stable.
+The full trace ends with an interrupted request; it is not a completed match.
+All owned processes drained (Job accounting0). No score/WDL/interval was exposed
+for candidate selection, no subset is declared clock-valid, and no result is claimed.
+Original raw run/process records remain unfinished historical evidence, not relabelled
+passed. Preserve all evidence; do not replay or try to finish V1 automatically.
 
-Owner granted15 minutes for TC-P1/build89 W4 technical checks only, recorded in
-`p1-w4-window-v1.json`; all completed by20:03:23 UTC on2 November, no games.
-W4 observer18 requests, isolation8 requests plus2 stops, runtime10 requests plus1
-stop pass. All four private kernels reach tactical verification; exact work uses
-request counters, not sums of repeated worker snapshots. W4 strength remains unknown.
-The first isolation run's8 W4 requests passed before a harness-only W1-row assertion;
-its raw failure remains. Future W4 competitive/confirmation work still needs asking
-for a controlled PC-use window. Continue serial lightweight W1 development.
+[Ledger](resources.json): charged **1990.1967523/64,800s**,
+remaining **62809.8032477s**. Initiated games63/1,120:
+W1 development63/384 (321 left), W4 risk0/96, independent confirmation0/640;
+attempts0/1. Includes failed runs, interrupted match, separate post-stop audit and
+both bounded PC-guard checks; no overlapping inner timing is added. Ordinary
+compilation/selected regression tests remain separately reported. No experiment is
+running; no new clocked work is admitted without an agreed controlled window.
 
-Protected320-pair confirmation inputs were selected from895 eligible unique roots
-before development games, with no candidate evaluation/outcome filtering. Independent
-reparse checks legality/history/hash/order, prior keyed receipts and current diagnostic
-root disjointness. Do not inspect selected moves/keys to choose candidates. Original
-selector supervisor failure remains failed despite valid retained files; no rerun.
-The six non-key historical receipts now pass exact retained-fixture review:5364
-distinct historical prefix positions have zero overlap with all320 protected roots.
-See confirmation-historical-input-review-v1.json; no protected moves/keys were shown.
-Future-development disjointness remains an admission check before any independent
-claim. No finalist or confirmation attempt selected.
+Owner granted15 minutes for W4 technical checks only in `p1-w4-window-v1.json`;
+those completed by20:03:23 UTC on2 November. W4 observer18 requests, isolation8
+requests plus2 stops, runtime10 requests plus1 stop pass. All four private kernels
+reach tactical verification. Exact work uses request counters, not repeated worker
+snapshot sums. The first isolation run's W4 requests passed before the erroneous
+W1-only assertion; failed evidence and fresh corrected v2 both remain. W4 strength
+is unknown; its competitive window has not been granted.
 
-## Next admissible work and dependencies
+## Protected inputs
 
-1. TC-P1 committed at `a7c45dff` with verified build88->89. Immutable runtime
-   `runtime-build89-p1-v1-manifest.json` passes bridge:2117 JAR entries and29 other
-   files compared; only generated version metadata differs; four W1 preflights pass.
-2. `p1-screen-v1-protocol.json` freezes32 paired W1 development openings versus
-   exact84, one active game, below-normal ownership, no outcome-driven stops.
-   Launched after frozen protocol commit; admission checked against the current
-   ledger, retaining640 games and at least24000s for confirmation. CPU10%,16.63GiB
-   RAM free, no gaming/runner at admission. No competing experimental computation.
-   Do not inspect partial scores or decide on outcomes before full fixed-batch audit.
-3. Assess the complete W1 screen before choosing another justified formulation or
-   risk/confirmation work. W4 technical qualification is complete, competitive risk
-   remains outstanding and requires an agreed window. No finalist selected.
+320 confirmation roots were frozen before development, from895 eligible unique
+roots without candidate evaluation/outcome filtering. The original selector
+supervisor's drain assertion remains failed; completed files independently pass
+legality/history/hash/order/disjointness. Six non-key historical receipts now pass
+exact fixture review:5364 distinct prefix positions, zero protected-root overlap.
+The interrupted screen adds8094 distinct actual positions, including partial-game63
+history, also with zero protected overlap. Protected moves/keys were not displayed
+for selection. Recheck any later development inputs before confirmation. No finalist
+or claim attempt has been selected. Reserve640 games and at least24000s.
 
-Current champion exact HL-G1/build84; normal build85 HL-G1 policy unchanged. Current
+## Next admissible work
+
+1. Candidate source remains `a7c45dffeaffc362bc7c7026d03a2e6434472be2`, build89,
+   `probcut`/flags1177812991. Its immutable runtime and exact84 manifests remain
+   intact. No further runtime change or build increment followed that commit.
+2. [V2 protocol](p1-screen-v2-protocol.json) freezes64 W1 games on32 different
+   starting roots from the complete existing HL development input, with no overlap
+   against V1 starts or protected confirmation. This is exploratory reused material.
+   No V1 outcomes were used. Expected35-40 minutes; request one controlled60-minute
+   PC window. No window is currently granted for this batch.
+3. `tools/p4-tactical-supervise.py` adds a bounded per-run native CPU/memory guard,
+   periodic Overwatch detection, owner-stop file and owned-Job interruption/draining.
+   Both qualification receipts are retained; final v2 verifies native sampling and
+   actual owned dummy termination, no engine. An expired-window test also rejects
+   launch before any child process. The existing match adapter is unchanged.
+   It checks20s of headroom before launch, then records samples and stops for sustained
+   saturation/memory pressure/gaming/window expiry. These guards do not prove fairness.
+4. After an explicit window reply, write its actual owner text, deadline and allowed
+   protocol `TC-P1-SCREEN-V2` to a new window receipt. Launch with the existing venv:
+   `python -B tools/p4-tactical-supervise.py --protocol p1-screen-v2-protocol.json
+   --window docs/research/search/p4-tactical/p1-screen-v2-window-v1.json`.
+   Update running ownership/state, charge actual wall/starts afterwards, audit before
+   any outcome-based decision. Do not overlap Search experiments.
+5. Only a complete operationally qualified development screen can support the next
+   candidate decision. Further W4 risk and independent confirmation remain separate
+   controlled-window gates. Source inspection and bounded light checks may continue;
+   more speculative implementation before the pending screen is not presently justified.
+
+Champion exact HL-G1/build84 and normal build85 HL-G1 policy are unchanged. Current
 repository build89; no push, release, deployment, promotion or successor. TT-R001
-reconciliation remains separate and both frozen BOUNDARY2 studies remain unopened.
-Qualification masters now P4-R010/P4-F026. Owner-confirmed mirrors last P4-R005/F021;
-refresh current revised masters before
-mirror-dependent planning, non-blocking for authorized repository-only execution.
+reconciliation remains separate; both frozen BOUNDARY2 studies remain unopened.
+Current masters **P4-R011/P4-F027**; last owner-confirmed mirrors P4-R005/F021.
+Refresh both before mirror-dependent planning; repository-only work does not wait.
 
-Human actions required after this prompt: **Blocking for heavy W4/confirmation
-launch: provide a controlled PC-use window when requested. Blocking before
-mirror-dependent planning, non-blocking for repository execution: refresh both Phase4
-Project Source mirrors to the then-current repository revision pair.**
+Human actions required after this prompt:
+
+- **Blocking for the next clocked experiment:** provide a controlled60-minute PC-use
+  window for the frozen V2 W1 screen when requested. W4 matches and independent
+  confirmation will require their own agreed windows when ready.
+- **Blocking before mirror-dependent planning; non-blocking for repository execution:**
+  refresh both Phase4 Project Source mirrors to P4-R011/P4-F027.
