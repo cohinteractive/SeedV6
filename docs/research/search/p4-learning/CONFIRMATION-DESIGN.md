@@ -1,6 +1,7 @@
 # Independent confirmation preparation
 
-This is preparation, not authorization to skip the frozen game protocol. No HL
+This records preparation for `g1-confirm-v1-protocol.json`; its frozen rules govern
+the actual games and analysis. No HL
 confirmation game has been played. R1's completed adverse/inconclusive development
 ablation supports selecting unchanged G1. The objective's initial allowance
 remains one W1 attempt, up to 160 fresh opening pairs, one-sided nominal alpha .025.
@@ -50,7 +51,7 @@ or establish representativeness outside the declared curated-book distribution.
 
 ## Inference and resource planning
 
-Proposed primary criterion: a fresh direct comparison against champion79, 160 fixed
+Frozen primary criterion: a fresh direct comparison against champion79, 160 fixed
 color-reversed pairs, paired-normal one-sided 97.5% lower score bound above .5 and
 observed score at least .53. The practical target is a positive three-point score
 gain, not merely a nonzero implementation effect. Plan power around a six-point gain;
@@ -77,4 +78,5 @@ separately authorized HL family does not restore or pool their claims.
 identities, complete audited games and drained handles, then independently recomputes
 pair scores before inference. Six synthetic checks passed in
 `confirmation-analysis-v1-qualification.json`; these are not match results. The
-eventual frozen protocol must bind the script and final source/artifact/input hashes.
+frozen protocol binds the script and final source/artifact/input hashes. Operational
+launch gates and W4 investigation remain; no success or acceptance is implied.

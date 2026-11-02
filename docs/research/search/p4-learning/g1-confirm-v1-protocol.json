@@ -1,0 +1,60 @@
+{
+  "id": "HL-G1-CONFIRM-W1-V1",
+  "frozenUtc": "2026-11-02T02:07:53.723929+00:00",
+  "question": "Independent direct champion-relative W1 confirmation of unchanged selected HL-G1, after positive integrated development evidence and an adverse/inconclusive retention-only reverse ablation",
+  "namePrefix": "g1-confirm-v1-champion79",
+  "workers": [
+    1
+  ],
+  "pairs": 160,
+  "tc": "10+0.1",
+  "seed": 2026110204,
+  "timeoutSeconds": 12000,
+  "warningPolicy": "audited-fallback",
+  "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime79",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1",
+  "baselineProfile": "control",
+  "candidateProfile": "guided",
+  "runtimeManifests": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\runtime79-manifest.json",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\runtime-build84-v1-manifest.json"
+  ],
+  "adapterSha256": "f139984fcbd6f6b90842e0f170c57f31a4eabdeb6f9b71dccf21b0013cc54275",
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\confirmation-v1-openings.pgn",
+  "openingSha256": "389d31e283a7b85ad9073d0a3766527ea431874322105bbbd9f17d9f2629b695",
+  "selection": "Fixed160 new unique16-ply real opening histories sampled with seed2026110204 from1215 eligible held-out partition1 roots in pinned Stockfish8moves_v3, after excluding56553 distinct keys from the entire legal16 pool and128 non-BOUNDARY2 historical receipts. Six non-key diagnostic/operational-subset receipts reviewed in CONFIRMATION-DESIGN.md. No candidate evaluation/outcome filtering, seed search, BOUNDARY2 study inspection, or pooling of historical/exploratory games. Restrict claims to this curated opening/resource distribution.",
+  "candidateIdentity": "HL-G1, retained worker-private learning plus bounded history64 effort; commitb8ea8b2856eed3f6c774860ca540375054e4de30/build84 flags104071167",
+  "controlIdentity": "Champion P4-BASELINE-001 build79 source753367614b8aa7e32dee337fd76b542737141ac1, flags3407871; actual frozen runtime79, not substituted corrected80",
+  "common": "CP64 SHA8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b, S6CNU002 eight heads BT4_Q_LOGIT400_V1; PVS/ADAPTIVE16,Hash64 2097152 entries/50331648payload bytes, unchanged BOUNDARY2, no book/tablebase/adjudication",
+  "resources": "W1 OWNER, one game, Windows Ryzen5500 Java21+35 Xms256m Xmx512m ActiveProcessorCount4; owned process runner/trace audit, no concurrent heavy work",
+  "expectedCost": "160pairs about9665s(2h41m) from mean60.40s/pair in two completed W1 screens. Hard12000s including no score-based extension. Before launch verify completed exploratory wall plus this timeout remains within21600s aggregate game cap.",
+  "cumulativeBefore": "Frozen during the32-pair G1 W4 risk batch.64/128 exploration pairs completed at3865.23s wall;32 more exploration pairs in flight, leaving32 after it.0/160 confirmation pairs and0 HL confirmation attempts spent. About292s active build/diagnostic/input execution. Final launch requires W4 batch complete/drained and explicit updated expenditure in STATE.",
+  "stopping": "Fixed160 complete color-reversed pairs or first unapproved warning/invalid fallback, legality/PV, terminal, accounting, process/input/drain failure, or hard12000s timeout. Existing audited-fallback qualification remains narrow. No score-based early success/futility, adaptive extension, reselection or retry with unspent alpha after exposed results. Preserve every failed/partial attempt.",
+  "analysis": "Primary: mean of160 independent opening-pair scores in[0,1], sample SE from actual confirmation variance, one-sided nominal97.5% lower bound mean-NormalDist.inv_cdf(.975)*SE. Criterion: lower bound>.5 AND mean>=.53. If sample variance is zero, use the nondegenerate one-sided Hoeffding lower bound mean-sqrt(log(1/.025)/(2*160)) as primary. Always report bounded sensitivity at the same alpha, WDL/pentanomial and descriptive paired intervals. This is an approximate pair-level normal claim, not exact finite-sample proof. Do not hide conservative disagreement. Script independently recomputes paired values and checks full audit/settings/input/artifact identities.",
+  "nextDecision": "Apply frozen analysis once after complete audited evidence. Criterion failure leaves strength objective unmet; do not extend, pool or retune into a second confirmatory claim. Criterion success supports only defined W1 research inference, subject to completed mandatory W4 risk characterization and GPT/owner reconciliation. No champion advancement/production promotion.",
+  "status": "prospectively frozen before confirmation games",
+  "runtimeManifestSha256": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\runtime79-manifest.json": "cd0caef366ac27cb2f398eaca0d48660584de66bac17b24002686ac1386b0ddd",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\runtime-build84-v1-manifest.json": "3d08ace9d3905122296d0c71ad07d4ed5750fe555da8edaec7324e1eb968f380"
+  },
+  "openingSelection": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\confirmation-v1-openings.selection.json",
+  "openingSelectionSha256": "2980f8b95518de9f9b0ff7c93db04f1c00b73575241d70c8d66c54985a460c51",
+  "claimAttempt": 1,
+  "oneSidedAlpha": 0.025,
+  "practicalMinimumScore": 0.53,
+  "analysisToolSha256": "2441cd56a8318d2bdc5e20e36d933cb28f8ef5d0e662916e953745c2f9d816c0",
+  "sampleJustification": {
+    "planningEffectScore": 0.06,
+    "minimumObservedPracticalGain": 0.03,
+    "pilotPairSd": 0.2535036743387082,
+    "pilotEffectNotAssumedUnbiased": true,
+    "normalApproxPowerAtSixPointGain": 0.8494003516099676,
+    "normalApproxPowerAtThreePointGain": 0.3216644393321457,
+    "normalApproxPowerSixPointGainSd031": 0.6873139600900043,
+    "largerCampaignNotAuthorized": "About839 pairs for80% power at3points/SD.31; actual opponent/book variance can differ."
+  },
+  "multiplicity": "One independently selected finalist and one prospective W1 primary attempt, family one-sided nominal alpha.025. Exploratory W1/R1/W4 and any W4 bridge are not confirmatory superiority claims. Historical TT claim attempts/spent alpha remain separate and unchanged; no historical evidence or allowances are reset or pooled.",
+  "w4Gate": "Complete and audit the mandatory G1 W4 risk batch before launching this W1 attempt. W4 competitive superiority is not a W1 success condition under owner-selected domain-limited acceptance. Investigate adverse or unresolved risk proportionately, potentially using the remaining32 exploratory pairs for a direct79 W4 bridge. A genuine correctness/lifecycle failure blocks affected progression.",
+  "technicalQualification": "330 selected tests,65 UCI requests+4 stop/reset checks, instrumented W1 neutrality/W4 accounting/lifetime observations, clean cost diagnostics,43 completed independent reduced/nominal-reference samples, exact frozen84 class/artifact qualification and two fully audited W1 game batches. Production flags/defaults unchanged. TTF-F3/H1/H2 not enabled; no unexplained correctness defect established.",
+  "bridge": "Development G1 vs corrected80:30W18D16L/60.94%; reverse ablation R1 vs80:19W20D25L/45.31%. Historical80-v79 bridge remains separately preserved and uncertain, especially W4; it never substitutes for this fresh direct79 endpoint."
+}

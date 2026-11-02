@@ -51,10 +51,21 @@ G1's score is15.625 points higher. Separate timed runs/shared development inputs
 and exploratory selection preclude an independent component or champion claim.
 This supports the integrated G1 formulation rather than retention alone.
 
-**Next operation:** `g1-w4-risk-v1-protocol.json`,32pairs W4 G1 versus80.
+**In-flight operation:** `g1-w4-risk-v1-protocol.json`,32pairs W4 G1 versus80,
+launched2 November02:05:55 UTC under owned supervision; Fastchess PID22812.
 Fresh-opening preparation passed after R1 drained,51.96s including supervision.
 Keep G1 source/artifact unchanged. The owned runner must drain before further
 heavy work; running JSON alone is not liveness on resume.
+
+`g1-confirm-v1-protocol.json` is prospectively frozen while W4 runs, before any
+confirmation game: unchanged G1/build84 directly versus champion79,160 fresh pairs,
+10+0.1/W1, one-sided nominal alpha.025, paired-normal lower bound>.5 and score>=.53;
+bounded sensitivity/zero-variance fallback retained. It binds source/artifact/input
+and analysis hashes. Expected9665s, hard12000s; launch only after W4 completes/drains
+and cumulative actual wall plus timeout fits21600s. No second confirmation attempt.
+W4 competitive superiority is not required for W1 acceptance; any genuine defect
+blocks affected work. Preserve/adapt the risk investigation within remaining32
+exploratory pairs if needed, without changing this W1 claim after outcome exposure.
 
 Actual build79/80 runtime JARs and CP64/Java executable match historical manifests.
 Source80's qualified accounting fix remains present. Current optional H1/H2/F3
@@ -192,7 +203,8 @@ Pinned input source downloaded; full parsing/selection passed after R1 drained.
 160 legal distinct roots selected from1,215 eligible held-out roots, excluding56,553
 historical/source keys with zero overlap. Receipt records exact inputs/exclusions;
 the resulting curated subset limits generalization. Six synthetic inference checks
-passed. A final candidate/game protocol remains a separate pre-confirmation gate.
+passed. Final G1 game protocol is now frozen as above; its operational launch gates
+remain pending. No confirmation pair or claim allowance has yet been spent.
 
 Human actions: none blocking repository execution. After Frontier update, owner
 refresh to P4-F018 is non-blocking here and blocks only mirror-dependent planning.
