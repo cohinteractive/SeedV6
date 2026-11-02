@@ -1,24 +1,38 @@
 # SeedV6 Search Research Frontier - Phase 4
 
-Internal frontier revision: **P4-F019**
+Internal frontier revision: **P4-F020**
 
-Status: **ACTIVE Phase4 programme - 2 November2026. HL-R001 research execution is complete: HL-G1 met its frozen independent W1 champion-relative strength criterion, with mandatory W4 risk characterized but W4 strength/neutrality unqualified. GPT/owner reconciliation and acceptance are pending. TTF-R001 remains accepted and closed for its limited foundational purpose, with adverse W4 evidence. TT-R001 remains inconclusive with separate reconciliation pending. No champion advancement, production promotion or successor launch.**
+Status: **ACTIVE Phase4 programme - 2 November2026. HL-R001 is owner-accepted and closed as a successful W1-domain-limited strength-development objective. HL-G1/build84 is the W1-qualified research champion; W4 strength/neutrality remain unqualified. TTF-R001 remains accepted and closed for its limited foundational purpose, with adverse W4 evidence. TT-R001 remains inconclusive with separate reconciliation pending. No active research objective, deployment, production change or successor launch.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
-Governing [Contract P4-R003](CHESS_SEARCH_CONTRACT.md). This Frontier records
+Governing [Contract P4-R004](CHESS_SEARCH_CONTRACT.md). This Frontier records
 current state, opportunities and dependencies; it supplies no independent launch
 or promotion authority.
 
-## Research handback - retained learning and effort allocation
+## Accepted HL-R001 closeout and W1 research champion
 
-The 2 November2026 owner request authorizes **HL-R001**, governed by the focused
+The 2 November2026 owner continuation explicitly accepts **HL-R001** as successful
+W1-domain-limited strength development and advances **HL-G1/build84** to the
+**W1-qualified research champion**. This resolves HL-R001's pending acceptance and
+reconciliation gate on the accepted technical handback at `39ac4c07`; it does not
+resolve the separate TT-R001 reconciliation. The original execution was governed
+by the focused
 [CONTRACT](../docs/research/search/p4-learning/CONTRACT.md) and resumable
-[STATE](../docs/research/search/p4-learning/STATE.md). The objective is independently
-confirmed practical W1 strength improvement directly against champion79, with the
-accounting-corrected80 bridge and mandatory W4 risk investigation. It is not a
-foundational-only objective. Existing learning lifetimes, outcome quality, ordering,
-graded reductions and worker behavior are investigated together; routine affordable
-engineering and experiments are authorized, production/promotion are not.
+[STATE](../docs/research/search/p4-learning/STATE.md). HL-G1 combines request-scoped,
+worker-private retained Search learning with bounded history-guided reductions.
+Its exact implementation is `b8ea8b2856eed3f6c774860ca540375054e4de30`, version
+**0.0.0/build84**, explicit `guided` profile, **flags104071167**, with the
+[frozen runtime manifest](../docs/research/search/p4-learning/runtime-build84-v1-manifest.json).
+Supported strength domain: **W1 OWNER**, CP64/PVS/ADAPTIVE16, Hash64, unchanged
+BOUNDARY2, UCI at10+0.1 on Windows/Ryzen5500/Java21+35, and the frozen fresh opening
+distribution. [RESULTS](../docs/research/search/p4-learning/RESULTS.md) pins the model,
+actual memory, JVM and input qualifications. Broader worker, clock, consumer and
+platform superiority is not established.
+
+**P4-BASELINE-001/build79** at `753367614b8aa7e32dee337fd76b542737141ac1`,
+flags3407871, remains the immutable historical baseline and relevant unresolved W4
+competitive reference. Corrected build80 remains a separate technical comparison
+control; its accounting bridge does not establish competitive equivalence to79.
 
 Bootstrap verifies clean HEAD ada8032a, P4-R003/P4-F016, build83 and available
 hash-matching79/80 controls/CP64. Initial source inspection confirms repeated
@@ -28,8 +42,9 @@ request retention and HL-G1 retained history-guided effort prototypes have passe
 checks; current production/control W1 matches frozen80. At build84, G1's32-pair W1
 screen against80 scored30W/18D/16L(60.94%, paired95 interval52.15-69.72%); the
 retention-only R1 reverse ablation scored19W/20D/25L(45.31%,35.61-55.01%). All
-runtime audits passed. The selected unchanged G1 then completed160 fresh W1 pairs
-directly against79:136W/89D/95L,56.41%, paired-normal95 interval51.82-60.99%.
+runtime audits passed. The selected unchanged G1 then completed160 fresh W1
+pairs/320 games directly against79:136W/89D/95L,56.40625%, paired-normal95
+interval51.82-60.99%.
 Its frozen one-sided nominal alpha.025 criterion passed, including the observed53%
 practical-score threshold. Conservative bounded sensitivity(lower45.67%) does not
 confirm superiority; the primary inference is approximate and domain-limited.
@@ -43,18 +58,25 @@ stable inputs and drained lifetimes. Game wall4h53m32s remained within six hours
 See the [research handback](../docs/research/search/p4-learning/RESULTS.md) for exact
 identities, uncertainty, costs, validation limits and deferred opportunities.
 
-The W1 research criterion and bounded W4 investigation are complete; owner acceptance
-and dependent progression await GPT/owner reconciliation. Do not start more tuning,
-confirmation or a successor from this record. Build80 remains the technical control;
-F3/build83 is optional only on a justified integration hypothesis, with its H2
-dependencies and adverse W4 evidence visible. Historical campaigns are unchanged.
-The initial aggregate resource plan and prospective confirmation requirements live
-in HL-R001's contract; no unlimited tuning or larger precision campaign is implied.
+HL-R001 has a terminal accepted resume state, with no autonomous continuation.
+The unresolved W4 competitive question is a valid future opportunity, not a blocker
+to accepted W1 success. Do not tune, repeat confirmation or launch a successor from
+this closeout. F3/build83 remains optional only on a justified integration hypothesis,
+with its H2 dependencies and adverse W4 evidence visible. Historical campaigns,
+frozen protocols, acceptance criteria and spent resource/claim allowances are unchanged.
+
+Champion advancement changes no active runtime, production flags or default workers.
+No specific active Lichess deployment profile is selected. A separate owner deployment
+decision can consider verified workers, appropriate UCI/consumer qualification, known
+W4 risk, exact artifact identity and rollback under the Contract's
+[incremental experimental adoption policy](CHESS_SEARCH_CONTRACT.md#incremental-experimental-adoption).
+No deployment infrastructure or further computation is authorized here.
 
 The owner confirms **P4-R003/P4-F016** Project mirrors were current at launch.
-The repository pair is now **P4-R003/P4-F019**. Owner refresh of the Frontier mirror
-is required before mirror-dependent Project planning. Historical no-successor statements below describe
-their respective completed decisions, not a veto on this new explicit authority.
+The repository pair is now **P4-R004/P4-F020**. Refresh both Phase 4 Project mirrors
+before mirror-dependent planning; this does not block completed repository closeout.
+Historical champion and no-successor statements below describe their respective
+completed decisions, not the current W1 champion designation or fresh launch authority.
 
 ## Owner decision - improvement-oriented research
 
@@ -86,8 +108,8 @@ appropriate strength controls. This clarification qualifies no historical candid
 
 ## Verified starting point
 
-Initial production baseline **P4-BASELINE-001** and current research champion
-are identical: commit `753367614b8aa7e32dee337fd76b542737141ac1`, version
+At initialization, production baseline **P4-BASELINE-001** and research champion
+were identical: commit `753367614b8aa7e32dee337fd76b542737141ac1`, version
 **0.0.0/build79**, clean `main` at initialization. The Contract's
 [baseline identity](CHESS_SEARCH_CONTRACT.md#initial-production-baseline-and-current-champion)
 pins the configuration, evaluator hashes and qualifications.
@@ -262,12 +284,12 @@ these findings establishes a SeedV6 playing-strength improvement.
 
 | Kind | Current state and implications |
 | --- | --- |
-| Adopted programme decision | Improvement-oriented, externally informed, dependency-led integrated Search development under P4-R003, including foundational objectives with agreed enabling outcomes. Technical qualification and competitive strength are separate properties; bounded findings and technical completion alone do not establish either objective's success. This is a research reset, not an engine reset. |
-| Baseline and correction | Immutable build79 baseline/champion retained; build80 is the separate accounting-corrected technical foundation. No champion advancement or research-driven production promotion. |
+| Adopted programme decision | Improvement-oriented integrated Search development under P4-R004, with agreed strength or enabling objectives and prompt, risk-proportionate consideration of useful experimental adoption. Apply the [adoption policy](CHESS_SEARCH_CONTRACT.md#incremental-experimental-adoption): enabling value, strength, champion status, active deployment and production defaults remain distinct. |
+| Baseline, champion and correction | P4-BASELINE-001/build79 remains immutable and the unresolved W4 competitive reference. HL-G1/build84, flags104071167, is the owner-accepted W1-qualified research champion. Build80 remains the separate accounting-corrected technical control. No runtime/default change or deployment. |
 | Completed preparatory work | Inventory, accounting investigation/correction, P4-F002 consolidation and external research-map investigation are closed. The map is reconciled and accepted; Contract initialization statements describe historical sequencing, not unfinished work. |
 | A. Useful TT memory for selective PVS | **First authorized CGLHW: Codex execution complete, bounded inconclusive result; separate GPT/owner reconciliation pending.** Investigated hypothesis: retained heuristic scores with suitable admission, selective provenance, bound interpretation, retention/replacement and preserved completed-move guidance may strengthen existing CP64/PVS. Interactions include extensions, selective pruning, aspiration and repeated-window work. |
 | Foundational TT information architecture | **TTF-R001 accepted and closed:** [terminal STATE](../docs/research/search/p4-tt-foundation/STATE.md). TTF-F3-v1 packed coherent main-node information is qualified for its limited foundational purpose; speed/strength/competitive neutrality remain unproven and W4 evidence adverse. No reopening of TT-R001 or retroactive H1/H2 qualification. |
-| B. Retained learning that allocates Search effort | **HL-R001 research execution complete; reconciliation pending:** [RESULTS](../docs/research/search/p4-learning/RESULTS.md), [STATE](../docs/research/search/p4-learning/STATE.md). Integrated HL-G1/build84 met its frozen independent W1 champion-relative criterion:56.41%, paired-normal95 interval51.82-60.99%. Conservative bounded sensitivity crosses equality. Mandatory W4 investigation retains an unexplained adverse/inconclusive champion result; no W4 neutrality, owner acceptance or promotion. |
+| B. Retained learning that allocates Search effort | **HL-R001 accepted and closed; HL-G1/build84 is W1-qualified research champion:** [RESULTS](../docs/research/search/p4-learning/RESULTS.md), [terminal STATE](../docs/research/search/p4-learning/STATE.md). Frozen independent result56.40625%, paired-normal95 interval51.82-60.99%; conservative lower45.67% crosses equality. Direct W4 vs79 remains adverse/inconclusive at46.09% (36.48-55.71%); no W4 strength or neutrality established. Explaining this risk is a future opportunity, not active work or an acceptance blocker. |
 | C. Tactical coverage through verification and extensions | **Promising, dependent on reliable information and more expensive qualification.** Alternatives include TT-supported singular/forced-line verification and tactical ProbCut/qsearch cutoffs. Consider addition, substitution and reverse ablation through valid configurations. |
 | D. Iteration confidence, re-search and resource allocation | **Credible follow-on.** Aspiration recovery, iteration feedback, root effort, MTD and managed-time expenditure; driver comparisons must control TT information and state lifetime. Clock-policy research needs separate authorization. |
 | E. ROOT_REUSE cooperation and W2-16 information exchange | **Important, comparatively expensive and variable to qualify.** Shared useful TT information, selected history persistence/sharing, root-job ordering or overlapping Search structures; preserve concurrency, complete accounting, truthful completion, cancellation and draining. Stockfish-scale results do not transfer quantitatively by assumption. |
@@ -292,6 +314,9 @@ escalate material new objectives, safety/authority conflicts and disproportionat
 expansion under the Contract.
 
 ## First objective - authorized execution and result
+
+This section retains the TT-R001 campaign and subsequent clarification in their
+historical scope; its champion79 references predate the HL-R001 owner decision above.
 
 > Determine whether bounded heuristic TT score reuse, with useful retention and
 > preserved completed-move guidance, improves the practical strength of the
@@ -451,6 +476,9 @@ for additional games or an expensive confirmation campaign.
 
 ### Foundational workstream - accepted limited qualification and closeout
 
+The following TTF-R001 record describes its earlier closeout and then-current
+champion/mirror state. Its limited acceptance and adverse evidence remain unchanged.
+
 The 30 October owner execution request established **TTF-R001**, subordinate to
 P4-R003, with enabling-capability, consequential downstream integration, correctness,
 operational cost and reproducibility criteria. Immediate standalone Elo superiority
@@ -537,7 +565,10 @@ owner authorization and acceptance under the Contract.
 Keep current priorities, hypotheses, adopted decisions and active work distinct.
 Record material discoveries and dependencies here; focused reports/manifests hold
 detail. Do not create an exhaustive taxonomy, experiment diary or automatic queue.
-P4-R003 retains the GPT preparation requirements for future CGLHW objectives.
+P4-R004 retains the GPT preparation requirements for future CGLHW objectives.
+After legitimate closeout and required reconciliation, GPT selects the next
+appropriate objective from the then-current authoritative Frontier. Codex must
+not select or launch a new CGLHW on its own authority.
 No generator or unrelated governance is created or modified.
 
 The [Phase 3 archive](../docs/search-phase3/README.md) contains the final
@@ -545,11 +576,11 @@ P3-R035/P3-F035 historical authority and links to retained Phase 1/2 history and
 supporting reports. Historical restrictions and failed formulations do not
 become Phase 4 policy by reference; frozen evidence remains unchanged.
 The existing Phase 3 Project retains its owner-confirmed final mirrors, with no
-refresh required. The owner confirms the Phase 4 **P4-R003 / P4-F015** mirrors
-were refreshed before TTF-R001 acceptance closeout. The current repository master
-pair is **P4-R003 / P4-F016**. Refresh the separate Phase 4 Frontier mirror before
-mirror-dependent Project planning; this is non-blocking for completed closeout.
-Repository edits synchronize neither Project. TT-R001's bounded technical closeout
-still awaits its separate GPT/owner reconciliation; TTF-R001's limited foundational
-qualification is accepted and closed. No successor objective is active or authorized,
-and no champion advancement or production promotion has occurred.
+refresh required. The last owner-confirmed Phase 4 mirrors are **P4-R003/P4-F016**
+at HL-R001 launch; the current repository pair is **P4-R004/P4-F020**. Refresh both
+Phase 4 mirrors before mirror-dependent planning; this is non-blocking for completed
+closeout. Repository edits synchronize neither Project. TT-R001 still awaits its
+separate GPT/owner reconciliation; TTF-R001 remains accepted for its limited
+foundational purpose. HL-R001 is accepted and closed, with HL-G1/build84 advanced
+only as W1-qualified research champion. No successor is selected or launched;
+experimental deployment and production-default changes remain unperformed.

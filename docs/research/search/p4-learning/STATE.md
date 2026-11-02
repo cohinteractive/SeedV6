@@ -1,17 +1,18 @@
 # HL-R001 resume state
 
-**Research execution complete, 2 November 2026. HL-G1 met the prospectively frozen
-W1 champion-relative strength criterion:136W/89D/95L,56.41%, paired-normal lower
-bound51.82%. Mandatory W4 risk investigation is complete, with an unresolved adverse
-champion-relative point estimate. Conservative bounded sensitivity crosses equality.
-GPT/owner reconciliation and acceptance remain pending; no promotion or successor.**
+**ACCEPTED AND CLOSED, 2 November 2026. The owner accepts HL-R001 as successful
+W1-domain-limited strength development and advances HL-G1/build84 to W1-qualified
+research champion. Frozen confirmation:160 fresh pairs/320 games,136W/89D/95L,
+56.40625%, paired-normal95 interval51.82-60.99%; conservative bounded lower45.67%
+crosses equality. W4 vs79 remains adverse/inconclusive at46.09% (36.48-55.71%):
+no W4 strength or neutrality. No autonomous continuation, deployment or successor.**
 Read [RESULTS](RESULTS.md) for the handback and [qualification summary](qualification-v1-summary.json)
 for aggregate evidence. No experiment remains running.
 Read [CONTRACT](CONTRACT.md), then this state. Owner request and initial file/hash
 checks are in `bootstrap-manifest.json`; external source identities are in
 `external-manifest.json`. Raw evidence is local-only and must be checked before reuse.
 
-## Verified bootstrap and challenge
+## Verified execution bootstrap and challenge (historical)
 
 Starting clean `main` HEAD is `ada8032ab64e0febc5b22bb2b6a87ed6e2120cfd`, exactly
 the supplied closeout. Masters are P4-R003/P4-F016. Owner confirms those Project
@@ -28,7 +29,8 @@ opt-in core policies, research launcher/harness/tests and this objective's recor
 find it by `research(search): add retained learning and history-guided effort`.
 Production remains flags3407871. `verifyProjectBoundaries` passed. The committed
 runtime was rebuilt/frozen and verified against the tested prototype before games.
-No push, release, default change or champion advancement is authorized.
+At launch, no push, release, default change or champion advancement was authorized.
+The later owner closeout below changes only the W1 research champion designation.
 
 Implementation commit: `b8ea8b2856eed3f6c774860ca540375054e4de30`. The committed
 build84 runtime is frozen in `raw/runtime-build84-v1`; its manifest and
@@ -179,14 +181,15 @@ at threshold-358. It is a horizon-disagreement witness, not a measured flat-kern
 error or population rate; original selective context/mate distance are absent.
 There is no demonstrated correctness defect or evidence here to tune a new constant.
 
-The autonomous work queue is complete for this objective. Next: GPT/owner reconcile
-the frozen evidence, statistical limits and W4 risk before acceptance or dependent
-progression. Do not repeat confirmation, tune the selected candidate or launch a
-successor merely because a new session opens this state.
+The autonomous work queue is complete and the owner has accepted the W1 outcome
+with its statistical and W4 qualifications. This is a terminal resume state: do not
+repeat confirmation, tune the selected candidate, spend residual allowances or launch
+a successor when opening this record. W4 investigation remains a future research
+opportunity, not an unresolved acceptance gate for HL-R001.
 
 Deferred: cross-request decay, richer continuation contexts, stronger selective
 coupling or F3 integration require actual evidence of a useful dependency. These
-are choices within this objective, not an automatic feature queue.
+are possible future choices under fresh objective authority, not an automatic queue.
 
 Further static dependency: `ExactSearch.searchWindow` clears learned tables on
 Aborted. A later cross-request formulation cannot work merely by skipping the next
@@ -238,8 +241,53 @@ bytes match the evidenced implementation commit's0.0.0/build84; core/UCI/launche
 sources remain unchanged since that freeze. No journal was created because root
 CODEXLOG_CURRENT.md is absent. All task changes are attributable to this objective.
 
-Human actions: blocking for acceptance/dependent progression — GPT/owner reconcile
-the W1 result, approximate inference, conservative disagreement and unresolved W4
-risk. Non-blocking for completed research — refresh the Project Frontier mirror to
-P4-F019; this blocks mirror-dependent planning until done. Champion/defaults remain
-unchanged. No further autonomous research or successor is authorized by this handback.
+## Owner acceptance and documentary closeout - 2 November 2026
+
+The owner's explicit continuation accepts the technical handback and W1-domain
+success, resolving HL-R001's prior acceptance/reconciliation gate. Accepted champion:
+**HL-G1**, source **b8ea8b2856eed3f6c774860ca540375054e4de30**, **0.0.0/build84**,
+**guided/flags104071167**, with the frozen artifact identified by
+[runtime-build84-v1-manifest.json](runtime-build84-v1-manifest.json).
+[RESULTS](RESULTS.md) defines the supported W1 OWNER/CP64/PVS/ADAPTIVE16/Hash64,
+10+0.1/BOUNDARY2/UCI, Windows/Ryzen5500/Java21+35 and curated-opening domain.
+There is no unqualified broader-engine superiority claim. Historical baseline79
+remains immutable and the relevant unresolved W4 competitive reference; corrected80
+and its accounting bridge remain distinct. TTF-R001's limited acceptance, TT-R001's
+separate pending reconciliation and both frozen BOUNDARY2 dispositions are unchanged.
+
+This documentation unit started on clean main at
+`39ac4c07ff68e286e7191f963a08b6246470bfd9`, with P4-R003/P4-F019 and build84.
+Root AGENTS.md, the unified architecture contract, both masters, HL records and
+relevant implementation/protocol commits were checked. Runtime84's33 manifest files,
+retained79/80 controls, CP64, confirmation inputs, run/PGN, protocol, analysis and
+five run-summary hashes matched their recorded identities. The selected-test summary
+reconciles330 passes, zero failures/errors/skips; run summaries reconcile576 normal
+games and80,043 audits. These are verified existing records, not new runtime tests.
+Core/UCI/launcher and version bytes remain unchanged from the frozen implementation;
+no new build, tournament, expensive matrix or unrelated validation was run.
+
+The two masters advance once to **P4-R004/P4-F020**, recording current acceptance,
+champion status and proportionate incremental experimental adoption. Frozen research
+JSON/protocols, raw outputs and historical evidence retain their original bytes and
+pre-acceptance labels; they are not reopened or rewritten. Documentation references,
+revision consistency, immutable baseline preservation and the scoped Git diff are
+validated for this closeout. Version decision is **no_bump**, retaining0.0.0/build84;
+root CODEXLOG_CURRENT.md remains absent. No material authority/evidence conflict was found.
+
+Champion advancement is a research designation only. Production flags3407871,
+default workers and active runtime/configuration are unchanged. No specific Lichess
+profile is selected; no installation, deployment, push or release occurred. A later
+owner deployment decision can consider verified workers, appropriate UCI/consumer
+qualification, W4 risk, exact artifact identity and rollback without new infrastructure
+in this work unit. After legitimate closeout and required reconciliation, GPT selects
+the next appropriate objective using the then-current authoritative Frontier; Codex
+must not select or launch a new CGLHW on its own authority.
+
+Human actions required after this closeout:
+
+- **Blocking for this accepted closeout: None.**
+- **Non-blocking for closeout; blocking for mirror-dependent planning:** owner refresh
+  both Phase 4 Project Sources to Contract P4-R004 and Frontier P4-F020. Repository
+  edits do not synchronize mirrors; last confirmed pair remains P4-R003/P4-F016.
+- **Blocking only for any later deployment:** owner select and authorize an exact
+  deployment profile after proportionate qualification. No deployment is selected here.

@@ -70,7 +70,7 @@ wall. Positive exploratory signal; no independent or champion-relative inference
 The completed retention-only reverse ablation scored45.31% on the same development
 roots,15.625 points below G1. This common-control exploratory comparison supports
 prioritizing the integrated G1 formulation; it is not an independent isolated-component
-gain or champion comparison. Keep G1 unchanged for W4 risk and fresh W1 confirmation.
+gain or champion comparison. G1 was kept unchanged for W4 risk and fresh W1 confirmation.
 
 W4 ROOT_REUSE risk screen against80:32W/13D/19L in32 pairs,60.16%, paired normal95
 interval49.19-71.13%.64 normal games and8,993 request audits passed, with stable inputs,
@@ -94,9 +94,14 @@ Independent W1 confirmation against actual frozen champion79 passed the predecla
 criterion:160 fresh pairs,136W/89D/95L,56.40625%, paired-normal one-sided97.5% lower
 bound51.8239% above equality and observed score above53%. The corresponding normal95
 interval is51.82-60.99%; conservative bounded lower45.67% does not confirm superiority.
-This is an approximate, domain-limited W1 research result, not an exact guarantee,
-W4 qualification, owner acceptance or promotion. All320 games/44,104 request audits
-passed; candidate source/artifact/protocol remained unchanged. See [RESULTS](RESULTS.md).
+This is an approximate, domain-limited W1 research result, not an exact guarantee
+or W4 qualification. All320 games/44,104 request audits passed; candidate
+source/artifact/protocol remained unchanged. The subsequent 2 November owner
+continuation accepts HL-R001 and advances HL-G1/build84, implementation
+`b8ea8b2856eed3f6c774860ca540375054e4de30`, `guided`/flags104071167, to W1-qualified
+research champion in the exact domain recorded in [RESULTS](RESULTS.md). This
+separate decision changes no historical finding, production default or deployment;
+build79 remains the immutable baseline and unresolved W4 competitive reference.
 
 The prospective reference audit completed43 first-event stratified samples, all
 with complete independent reduced/nominal TT-off qtrees and legal real-history replay.

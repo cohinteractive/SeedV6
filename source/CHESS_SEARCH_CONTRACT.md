@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R003**
+Internal revision: **P4-R004**
 
-Status: **ACTIVE - 30 October 2026. Owner-approved foundational research clarification; the strength-first mandate is preserved. The first TT-memory campaign has completed technical execution with an inconclusive result; its candidates remain experimental. No research objective is active. Production unchanged by this revision.**
+Status: **ACTIVE - 2 November 2026. Owner-accepted HL-R001 W1 strength success and HL-G1/build84 W1-qualified research champion; experimental adoption policy clarified. TTF-R001 remains accepted for its limited foundational purpose; TT-R001 remains inconclusive with separate reconciliation pending. No research objective is active. No deployment or production change.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
@@ -213,7 +213,8 @@ Maintain distinct roles and evidence status, not a mandatory promotion hierarchy
 | Initial production baseline | Immutable accepted Phase 3 configuration and repository identity recorded below. |
 | Current research champion | Initially identical to that baseline. Advance only on credible integrated-strength evidence and explicit owner acceptance, with qualifications and supported domains recorded. |
 | Technical comparison control | Reproducible reference for a specified comparison, including qualified corrections; technical suitability does not establish champion status or competitive neutrality. |
-| Experimental candidate | Reproducible alternative under investigation; implementation or a promising screen alone grants no acceptance. None exists at initialization. |
+| Experimental candidate | Reproducible alternative under investigation; implementation or a promising screen alone grants no acceptance. |
+| Active experimental engine | Owner-selected playable configuration for controlled experimental use; may differ from the confirmed research champion. Its exact deployment and production-default status must be stated separately. |
 | Technically qualified experimental research foundation | Enabling capabilities qualified for an agreed research purpose, with evidence and limitations; may be retained as a reproducible base without standalone Elo superiority, champion advancement or production adoption. |
 | Production configuration | Explicitly owner-accepted configuration for production behavior; experimental qualification or champion status alone does not select it. |
 
@@ -225,11 +226,56 @@ all downstream mechanisms benefit nor that derived configurations outperform the
 champion. Technical qualification and competitive strength status are separate
 properties; selection does not replace the champion or production default.
 
-Exploration is not production adoption. Champion acceptance does not itself deploy
-or change production. Promotion requires evidence, appropriate technical and
-consumer/worker/lifecycle qualification, and explicit owner acceptance of the
-specified production change and remaining risks. Technical completion, GPT/owner
-reconciliation, acceptance and operational deployment are distinct.
+## Incremental experimental adoption
+
+SeedV6 is an experimental chess engine operated by its developer, including through
+a Lichess bot. Phase 4 investigates, adapts and integrates Search formulations
+informed by much stronger external engines to improve the playable engine
+incrementally. The active playable engine may evolve during Phase 4; useful research
+must not accumulate indefinitely awaiting a programme-wide finish or an isolated,
+statistically confirmed Elo gain from every component. Credibly stronger integrated
+configurations should normally receive prompt consideration for experimental adoption.
+
+Competitively neutral, slightly improving or individually inconclusive formulations
+may also be eligible where a credible technical or empirical rationale supports
+future synergy or enabling value, overhead is acceptable, operational safety is
+sufficient, and downstream integration potential is useful. Distinguish that rationale
+from demonstrated competitive superiority. Preserve the agreed distinction between
+strength-development and foundational success: neither adoption nor a future enabling
+objective retroactively relaxes completed acceptance criteria or converts an
+unsuccessful strength objective into a successful foundation.
+
+Experimental integration, research champion advancement, active Lichess deployment
+and production-default changes are distinct decisions; their evidence and
+authorization requirements may differ. A controlled experimental build may be
+selected to investigate promising interactions even when it is not the statistically
+strongest confirmed research champion. Champion advancement still requires credible
+integrated-strength evidence and explicit owner acceptance in stated domains; the
+Frontier records the current designation. Champion status or technical qualification
+alone neither deploys a runtime nor changes production defaults.
+
+Qualification for practical adoption must be proportionate to actual risk, without
+automatically imposing commercial-release-scale validation. Genuine chess correctness,
+state integrity, concurrency safety, truthful reporting and reliable lifecycle
+operation remain mandatory. Carry known worker, clock, platform, consumer and
+competitive qualifications with each adopted formulation; W1 evidence does not
+qualify W4. Preserve reproducible source, artifact and configuration identities,
+relevant testing evidence, known risks and a practical rollback path. The immutable
+P4-BASELINE-001 remains historical evidence, not a configuration rewritten by adoption.
+
+Configuration-identifiable Lichess games and ratings can provide longitudinal field
+feedback. They do not replace controlled competitive experiments, and rating changes
+must not automatically be attributed causally to a particular Search change. Retain
+periodic integrated comparisons, reverse ablations and investigation of interactions
+so uncertain features do not accumulate without evidence of their collective value.
+
+Explicit owner authority remains necessary for champion advancement, actual
+experimental deployment, production promotion, material scope changes and
+disproportionate resources. Production promotion requires appropriate evidence and
+technical/consumer/worker/lifecycle qualification, with owner acceptance of the
+specified change and remaining risks. This policy grants Codex no automatic deployment
+authority. Technical completion, GPT/owner reconciliation, acceptance and operational
+deployment remain distinct.
 
 Keep governance lightweight. Preserve material discoveries, dependencies,
 configuration identities, adopted decisions and limitations in the two masters or
@@ -389,12 +435,15 @@ For any future CGLHW objective, the owner must supply the **complete current
 authoritative premade CGLHW GPT prompt generator before GPT prepares its execution
 prompt**. Each objective requires a dedicated GPT conversation for its complete
 coordination and closeout. This documentation revision is not a CGLHW and launches none.
+After legitimate closeout and required reconciliation, GPT selects the next
+appropriate research objective from the then-current authoritative Frontier.
+Codex must not select or launch a new CGLHW on its own authority.
 
 Repository masters are authoritative; Project Sources are owner-maintained mirrors.
 The owner has confirmed the final **P3-R035/P3-F035** mirrors: retain them in the
 existing Phase 3 ChatGPT Project; no further Phase 3 refresh is required.
 The separate Phase 4 ChatGPT Project mirrors require owner refresh to the current
-**P4-R003/P4-F013** pair before mirror-dependent Project planning; the Frontier
+**P4-R004/P4-F020** pair before mirror-dependent Project planning; the Frontier
 records the last confirmed mirror state. This does not block authorized repository
 work. Repository edits synchronize neither Project. On later canon changes,
 increment each affected internal revision once (P4-Rnnn/P4-Fnnn), identify the

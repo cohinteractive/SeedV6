@@ -1,11 +1,46 @@
 # Retained Search learning and history-guided effort allocation
 
 Objective **HL-R001**, owner-authorized 2 November 2026 (Pacific/Auckland).
-This strength-development CGLHW is subordinate to [P4-R003](../../../../source/CHESS_SEARCH_CONTRACT.md),
+This strength-development CGLHW executed under P4-R003. The current
+[Phase 4 Contract (P4-R004)](../../../../source/CHESS_SEARCH_CONTRACT.md),
 the [Phase 4 Frontier](../../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md), AGENTS.md
-and the unified architecture ownership contract. The complete owner request is
+and the unified architecture ownership contract govern this closeout. The original
+execution request is
 preserved locally at `raw/owner-request.txt`, hashed in `bootstrap-manifest.json`.
 [STATE](STATE.md) is the resume point. This is not a second Phase 4 canon.
+
+## Owner acceptance and terminal closeout - 2 November 2026
+
+The owner accepts **HL-R001 as a successfully completed W1-domain-limited
+strength-development objective**, on the technical handback at `39ac4c07`.
+The owner separately advances **HL-G1/build84**, implementation
+`b8ea8b2856eed3f6c774860ca540375054e4de30`, `guided` profile,
+**flags104071167**, to **W1-qualified research champion**. Its request-scoped,
+worker-private retained learning and bounded history-guided reductions met the
+frozen primary criterion against actual build79:160 fresh pairs/320 games,
+136W/89D/95L,56.40625%, paired-normal95 interval51.82-60.99%. The conservative
+bounded lower45.67% crosses equality. [RESULTS](RESULTS.md) records the exact
+W1 OWNER/CP64/Hash64/10+0.1/UCI/Windows/Java21 and opening-distribution qualifications.
+
+The direct W4 result remains adverse and inconclusive:19W/21D/24L,46.09%, paired95
+interval36.48-55.71%; neither W4 strength nor competitive neutrality is established.
+That unresolved future opportunity does not block accepted W1 success. Build79
+remains immutable P4-BASELINE-001 and the unresolved W4 competitive reference;
+build80 remains the separate accounting-corrected control, without assumed neutrality.
+
+Acceptance and reconciliation for this HL-R001 closeout are resolved by the explicit
+owner continuation; no further autonomous execution remains. The original execution
+terms and launch identities below are retained, including all prospective criteria
+and resource limits. This later owner decision supersedes their champion-advancement
+prohibition only for the recorded W1 designation. It changes no frozen protocol,
+result, historical TT disposition or BOUNDARY2 study. Frozen qualification summaries
+retain their pre-acceptance status as historical evidence, not current resume gates.
+
+Current masters: **P4-R004/P4-F020**. No Lichess profile is selected, no runtime is
+deployed, and no production/default-worker change, new campaign, push or release is
+authorized here. Later deployment requires its own owner decision. After legitimate
+closeout and required reconciliation, GPT selects the next appropriate objective
+from the then-current Frontier; Codex must not select or launch a new CGLHW itself.
 
 ## Objective and acceptance
 

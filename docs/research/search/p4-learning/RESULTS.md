@@ -1,4 +1,4 @@
-# HL-R001 research handback — 2 November 2026
+# HL-R001 accepted research closeout - 2 November 2026
 
 **HL-G1 met the prospectively frozen W1 champion-relative strength criterion.**
 The independent 160-pair comparison against build79 scored136 wins,89 draws and95
@@ -6,8 +6,13 @@ losses:56.40625%. The paired-normal one-sided97.5% lower bound is51.8239%, above
 equality, and the observed score exceeds the predeclared53% practical threshold.
 Mandatory W4 risk investigation is complete, with an adverse/inconclusive direct
 champion result that remains unexplained. This supports a **W1-only research result**
-under the stated approximate inference. GPT/owner reconciliation and acceptance
-are pending. Champion79 and production defaults have not changed.
+under the stated approximate inference. The owner's subsequent explicit continuation
+accepts **HL-R001 as successful W1-domain-limited strength development** and advances
+**HL-G1/build84 to W1-qualified research champion**. This resolves HL-R001's pending
+acceptance/reconciliation gate; it does not claim broader-engine superiority or alter
+production. The conservative bounded lower45.67% crosses equality and remains a
+material limitation. The original technical handback at `39ac4c07` and frozen
+qualification summaries predate this owner decision; their status labels are historical.
 
 ## Formulations and reproducible identity
 
@@ -19,12 +24,13 @@ Core/UCI/research-launcher sources remain unchanged since that freeze.
 | Formulation | Mechanism and intended benefit | Flags | Disposition |
 | --- | --- | ---: | --- |
 | HL-R1 — request-scoped private learning | Retain main/capture/immediate-continuation histories and killer/countermove guidance across iterations, retries and W4 root jobs; preserve each worker's own learning instead of repeated owner seeding. Clear at request boundaries, abortion and new game; always reset transient scratch. |36962303|Retention-only reverse ablation; adverse/inconclusive W1 screen, not selected.|
-| HL-G1 — retained learning with history-guided effort | Adds bounded grading of existing eligible late quiet reductions from main history plus half immediate continuation. Uses the measured SeedV6 scale, preserves tactical exclusions and verification, and keeps deeper-futility eligibility consistent with the reduction. |104071167|Selected integrated formulation; independent W1 criterion passed. W4 strength/neutrality unqualified.|
+| HL-G1 — retained learning with history-guided effort | Adds bounded grading of existing eligible late quiet reductions from main history plus half immediate continuation. Uses the measured SeedV6 scale, preserves tactical exclusions and verification, and keeps deeper-futility eligibility consistent with the reduction. |104071167|Owner-accepted W1-qualified research champion; independent W1 criterion passed. W4 strength/neutrality unqualified.|
 
 The relevant technical control is corrected80, source
 `0bfb4ea8422ef78443e309930166ad46df5cc454`, frozen artifact built at
-`9fec1d2af379827d105d523c32162fd771905cb9`. Champion79 remains
-`753367614b8aa7e32dee337fd76b542737141ac1`. Both use flags3407871.
+`9fec1d2af379827d105d523c32162fd771905cb9`. Historical champion79, immutable
+P4-BASELINE-001 and unresolved W4 competitive reference, remains
+`753367614b8aa7e32dee337fd76b542737141ac1`. Both controls use flags3407871.
 Build80 is not assumed competitively neutral to79. H1/H2/TTF-F3 are not enabled;
 their historical conclusions and separate acceptance/reconciliation status remain.
 
@@ -43,8 +49,10 @@ No external overall strength or copied constant is treated as evidence for this 
 
 ## Competitive evidence
 
-All results are candidate-centric. Intervals below are descriptive paired-normal95
-score intervals; only the final row is the independent predeclared primary endpoint.
+All results are candidate-centric; champion79 denotes the actual champion at protocol
+freeze, retained as the historical reference after advancement. Intervals below are
+descriptive paired-normal95 score intervals; only the final row is the independent
+predeclared primary endpoint.
 
 | Comparison | Domain | Pairs | W / D / L | Score | Paired95 interval |
 | --- | --- | ---: | --- | ---: | --- |
@@ -137,8 +145,10 @@ Source and evidence are committed on main from the verified clean starting
 ada8032a. The qualifying implementation increased build83 to84 exactly once in
 its own commit; final analysis/documentation does not warrant another bump.
 Version bytes remain0.0.0/build84, identical to that implementation commit.
-Root CODEXLOG_CURRENT.md is absent, so no journal was created. No push, release,
-deployment, champion advancement or default activation occurred.
+Root CODEXLOG_CURRENT.md is absent, so no journal was created. At the original
+technical handback no champion advancement had occurred; the subsequent owner
+closeout records only the W1 designation. No push, release, deployment or default
+activation occurred in either work unit.
 
 Raw outputs remain ignored/local at the recorded paths, including adverse results.
 Frozen controls/candidate, protocols, manifests, input fixtures and summaries are
@@ -146,10 +156,22 @@ preserved. A fresh checkout must check local evidence availability. The initial
 baseline diagnostic installation was mutable and not retained; its manifest
 describes the executed artifact. Later candidate/control installations are frozen.
 
-The next action is **GPT/owner reconciliation before acceptance or dependent
-progression**. The repository Frontier is now P4-F019 with Contract P4-R003 unchanged;
-the owner must refresh its Project mirror before mirror-dependent planning.
-Research execution is complete, not owner acceptance or operational deployment.
+**HL-R001 is accepted and closed, with no autonomous continuation.** Current canon:
+**P4-R004/P4-F020**; refresh both Project Source mirrors before mirror-dependent
+planning. [STATE](STATE.md) records documentary validation and the terminal boundary.
+The owner accepted the frozen W1 criterion and its limitations without changing any
+prospective criterion or historical result. The unresolved W4 competitive question is
+a future opportunity, not a blocker to this W1 acceptance. TTF-R001's limited
+foundation acceptance and TT-R001's separate pending reconciliation remain intact.
+
+Experimental integration, champion advancement, active Lichess deployment and
+production-default changes remain distinct under the revised Contract. No active
+Lichess profile has been selected here, and production flags/default workers/runtime
+are unchanged. A later owner decision can consider verified worker settings,
+appropriate UCI/consumer qualification, known W4 risk, exact artifact identity and
+rollback. After legitimate closeout and required reconciliation, GPT selects the
+next appropriate research objective from the current Frontier; Codex does not select
+or launch a successor on its own authority.
 
 Deferred opportunities remain: explaining W4 risk with matched scheduling/accounting
 and lifetime diagnostics; learning-label quality/normalization; richer continuation
