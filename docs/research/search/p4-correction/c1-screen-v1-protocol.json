@@ -1,0 +1,49 @@
+{
+  "id": "CH-C1-SCREEN-V1",
+  "status": "prospectively frozen before games",
+  "frozenUtc": "2026-11-02T11:13:38.898298+00:00",
+  "question": "Does request-private pawn correction for main selective decisions improve HL-G1 in W1? First exploratory integrated screen, not confirmation.",
+  "category": "W1 exploratory",
+  "namePrefix": "c1-screen-v1",
+  "workers": [
+    1
+  ],
+  "pairs": 32,
+  "tc": "10+0.1",
+  "seed": 2026110302,
+  "timeoutSeconds": 3600,
+  "estimatedMatchSeconds": 2300,
+  "remainingCategoryGames": 256,
+  "remainingTotalGames": 640,
+  "remainingMatchSeconds": 43200,
+  "warningPolicy": "audited-fallback",
+  "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-build86-c1-v1",
+  "baselineProfile": "guided",
+  "candidateProfile": "corrected",
+  "candidateIdentity": {
+    "name": "CH-C1 request-private pawn correction for main selective decisions",
+    "source": "d51d147920bfe1e0f30caee47c90d7191cfbf52a",
+    "build": 86,
+    "flags": 238288895
+  },
+  "controlIdentity": {
+    "name": "HL-G1 retained learning with history-guided reductions",
+    "source": "b8ea8b2856eed3f6c774860ca540375054e4de30",
+    "build": 84,
+    "flags": 104071167
+  },
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\development-v1-openings.pgn",
+  "openingSha256": "46bc3cc35f181429f6c19b24162b5744af9d1a4df4945b0677358d2e896158a2",
+  "openingSelection": "docs\\research\\search\\p4-correction\\development-v1-openings.selection.json",
+  "runtimeManifests": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\runtime-build84-v1-manifest.json",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\runtime-build86-c1-v1-manifest.json"
+  ],
+  "adapterSha256": "c52beeb19137e36722600031924c2cd35c0072e4a98d512534f6c44b1a70548c",
+  "resources": "W1 OWNER, CP64 Hash64 (48MiB TT entry payload), Java21+35, Windows Ryzen5500; one game at a time; identical JVM heaps/ActiveProcessorCount4; BOUNDARY2 unchanged",
+  "audit": "Existing independent real-history legality/PV/terminal/accounting audit, stable input hashes, owned Windows Job and complete engine-handle drain. Narrow audited-fallback runner qualification retained; any other warning/failure stops the match.",
+  "stopping": "32 complete color-reversed pairs, fixed64 games. No score-based early stop, extra games or protocol changes. Runtime/safety failures preserve partial evidence and charge actual games/time.",
+  "analysis": "Descriptive WDL, paired-normal95 and bounded Hoeffding95. Exploratory selection/multiple comparisons, no adjusted discovery, equivalence or acceptance claim.",
+  "nextDecision": "Use competitive evidence with information-flow/cost observations to choose main-only continuation or investigate raw-qsearch mismatch, feedback/lifetime/context effects. Reserve independent160-pair confirmation capacity and W4 risk."
+}

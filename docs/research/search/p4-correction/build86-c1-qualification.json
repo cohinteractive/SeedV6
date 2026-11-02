@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "commit": "d51d147920bfe1e0f30caee47c90d7191cfbf52a",
+  "jarEntriesCompared": 2114,
+  "changedEntries": {
+    "engine-core.jar": [
+      "com/ohinteractive/seedv6/application-version.properties"
+    ]
+  },
+  "coreImplementationClassesIdentical": true,
+  "launcherNote": "Only cosmetic correction launcher source cleanup after prototype; committed launcher recompiled and preflight/runtime checks required below.",
+  "preflightW1": {
+    "identity": "info string mode=research experimental=true formulation=CH-C1 profile=corrected evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=238288895 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT,EVAL_CORRECTION];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER learning=request-worker-private-no-seed effort=history64-bounded2 correction=pawn-main-ema32-cap256-request ttPolicy=production-hints slotBytes=24 clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=86 source=d51d147920bf ttMiB=64",
+    "requests": [
+      {
+        "nodes": 20000,
+        "elapsedNanos": 295283700,
+        "termination": "NODE_LIMIT",
+        "bestmove": "e2e4",
+        "finalInfo": "info depth 6 score cp 101 nodes 19079 time 287 nps 66349 pv e2e4 d7d5 e4d5 d8d5 b1c3 d5d8"
+      },
+      {
+        "nodes": 20000,
+        "elapsedNanos": 56524600,
+        "termination": "NODE_LIMIT",
+        "bestmove": "e2e4",
+        "finalInfo": "info depth 6 score cp 101 nodes 19079 time 52 nps 364993 pv e2e4 d7d5 e4d5 d8d5 b1c3 d5d8"
+      }
+    ],
+    "warmup": "Preflight is a separate process; match processes start cold symmetrically."
+  },
+  "preflightW4": {
+    "identity": "info string mode=research experimental=true formulation=CH-C1 profile=corrected evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=238288895 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT,EVAL_CORRECTION];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE learning=request-worker-private-no-seed effort=history64-bounded2 correction=pawn-main-ema32-cap256-request ttPolicy=production-hints slotBytes=24 clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=86 source=d51d147920bf ttMiB=64",
+    "requests": [
+      {
+        "nodes": 20000,
+        "elapsedNanos": 254728600,
+        "termination": "NODE_LIMIT",
+        "bestmove": "d2d4",
+        "finalInfo": "info depth 5 score cp 49 nodes 4038 time 206 nps 19548 pv d2d4 d7d5 c2c4 g8f6 c4d5 d8d5"
+      },
+      {
+        "nodes": 20000,
+        "elapsedNanos": 43096100,
+        "termination": "NODE_LIMIT",
+        "bestmove": "d2d4",
+        "finalInfo": "info depth 6 score cp 57 nodes 12660 time 23 nps 527744 pv d2d4 d7d5 c2c4 e7e6 g1f3 d5c4"
+      }
+    ],
+    "warmup": "Preflight is a separate process; match processes start cold symmetrically."
+  }
+}
