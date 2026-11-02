@@ -2,7 +2,8 @@
 
 3 November 2026 (Pacific/Auckland). **Authorized bounded research execution is
 complete. The governing strength criterion FAILED; the strength objective remains
-unmet. GPT/owner reconciliation is pending.** Read [CONTRACT](CONTRACT.md) and
+unmet. The owner accepted technical completion and this unsuccessful outcome on
+3 November 2026.** Read [CONTRACT](CONTRACT.md) and
 [RESULTS](RESULTS.md). This is not a successful foundational relabelling.
 
 ## Resume boundary and ownership
@@ -17,8 +18,11 @@ The prospective confirmation analysis ran once after completion. No further
 candidate, competitive batch, confirmation or successor is selected or authorized
 as an automatic continuation. The one confirmation attempt is spent. Remaining
 exploratory games/time do not permit a second independent claim. Resume with
-GPT/owner reconciliation and a concrete new authorization if further research is
-wanted, not another match. Ordinary read-only evidence review remains available.
+the accepted unsuccessful disposition, not another CH-R001 match. Owner acceptance
+created no continuation, champion advancement, production promotion, deployment or
+additional research authority. A separate 3 November tactical-coverage request is
+a new objective, gated on this documentation-only synchronization commit; it does
+not renew CH-R001. Ordinary read-only evidence review remains available.
 
 The accepted HL-G1/build84 research champion and HL-G1 normal production policy
 integrated in build85 remain unchanged. Current repository version0.0.0/build88
@@ -109,16 +113,20 @@ not adopted; TT-R001 reconciliation and the79/80 competitive bridge remain separ
 
 ## Canon and human dependencies
 
-Current repository masters: **P4-R007/P4-F023**, each incremented once for closeout.
+Repository masters after owner-decision synchronization: **P4-R008/P4-F024**, each
+incremented once. The original technical closeout used P4-R007/P4-F023; its dated
+records and frozen evidence remain unchanged. This synchronization changes status
+only: original criteria, results, spent allowances and build88 bytes are preserved.
 Last owner-confirmed Project mirrors: **P4-R005/P4-F021** at CH launch. The older
 P4-R003/P4-F016 confirmation belongs to HL launch, not the current mirror state.
 Repository edits do not refresh Project Sources. No next objective is launched.
 
 Human actions required after this prompt:
 
-- **Blocking for acceptance, further strength research or promotion:** GPT/owner
-  reconciliation of the unsuccessful bounded execution; any new independent
-  confirmation/objective or promotion requires explicit authority. No human action
-  is needed to finish the completed repository execution.
+- **None for CH-R001 acceptance:** the owner decision is established and synchronized.
+  The campaign is closed unsuccessfully; its one confirmation attempt is spent.
+  No CH-R001 continuation or promotion follows. Separate explicit authority remains
+  necessary for any such work.
 - **Blocking before mirror-dependent Project planning; non-blocking for completed
-  repository execution:** refresh both Project Sources to P4-R007/P4-F023.
+  repository execution:** refresh both Project Sources to P4-R008/P4-F024. This does not block separately
+  authorized repository-only execution using verified masters.

@@ -1,5 +1,14 @@
 # CH-R001 results - correction history and evaluation-guided selectivity
 
+> Subsequent owner disposition, 3 November 2026: technical completion and the
+> unsuccessful strength outcome are owner-accepted. CH-C3/build88 remains retained
+> experimental evidence; the single confirmation attempt is spent. No continuation,
+> champion advancement, production promotion, deployment or additional research
+> authority followed from acceptance. The original technical report below retains
+> its then-pending reconciliation and mirror statements as dated history, not current
+> gates. [STATE](STATE.md) records the synchronized P4-R008/P4-F024 disposition and
+> current mirror dependency. Results, thresholds and resource allowances are unchanged.
+
 3 November 2026 (Pacific/Auckland). **Authorized bounded execution is complete;
 the governing strength objective is unmet.** GPT/owner reconciliation remains
 pending. The sole independent confirmation failed both prospectively frozen
