@@ -236,3 +236,18 @@ W1 screen versus frozen84 on the common development inputs. No strength is assum
 Direct version finalization verified only build86->87, with unchanged user fields
 and all other bytes; no finalizer. The second implementation commit includes the
 qsearch consumer and the diagnostic raw-value repair. Prior frozen C1 remains intact.
+
+CH-C2 source **84c951287ea7c9ef0a280d32baacf976715c90c5/build87** is committed. Frozen runtime
+`raw/runtime-build87-c2-v1` matches every prototype JAR entry except generated
+version metadata, plus all non-JAR launcher files. Four committed preflights pass;
+`build87-c2-qualification.json` records the bridge. The optional trace repair is
+included; it does not alter unobserved C1 policy (nine exact root comparisons passed).
+The default Git whitespace check flagged CR line endings in task JSON; a CRLF-aware
+whitespace check passed without rewriting frozen records or changing Git settings.
+
+Admitted next: `c2-screen-v1-protocol.json`,32 pairs/64 W1 games versus exact84,
+common development input, fixed prospective audit/stopping rules, estimate2300s,
+runner cap3600s. Prior charged wall1951.74s and64 exploratory games; this admission
+reserves the next64. At this recording it is not started. Check
+`raw/c2-screen-v1-w1/run.json` and live processes before any retry; never overwrite
+or restart an existing output. No confirmation or W4 competitive games have run.
