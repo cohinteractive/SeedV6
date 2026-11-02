@@ -1,6 +1,6 @@
 # TC-R001 resume state
 
-3 November 2026 (Pacific/Auckland). **Active workstream; next clocked experiment blocked on a controlled PC-use window. Strength objective unachieved.** Read [CONTRACT](CONTRACT.md). Governing objective remains unachieved.
+3 November 2026 (Pacific/Auckland). **Active workstream; controlled-window V2 W1 screen running. Strength objective unachieved.** Read [CONTRACT](CONTRACT.md). Governing objective remains unachieved.
 
 ## Verified starting point and prerequisite
 
@@ -20,7 +20,8 @@
 
 **TC-P1 - bounded capture verification over HL-G1**, profile `probcut`,
 flags1177812991, has passed W1/W4 technical qualification. Its first W1 screen was
-interrupted for external PC interference; a new fixed-input screen awaits a window. [FORMULATIONS](FORMULATIONS.md) records verified external evidence,
+interrupted for external PC interference; the new fixed-input V2 screen is running
+under the owner-granted one-hour window. [FORMULATIONS](FORMULATIONS.md) records verified external evidence,
 Seed differences, dependencies and the untuned hypothesis. It adds qsearch/reduced
 legal verification at eligible depth4-8 non-check null-window nodes, beta+150,
 raw+300 admission, at most3 SEE-nonnegative tacticals, child depth-3. Returns beta
@@ -84,8 +85,11 @@ remaining **62809.8032477s**. Initiated games63/1,120:
 W1 development63/384 (321 left), W4 risk0/96, independent confirmation0/640;
 attempts0/1. Includes failed runs, interrupted match, separate post-stop audit and
 both bounded PC-guard checks; no overlapping inner timing is added. Ordinary
-compilation/selected regression tests remain separately reported. No experiment is
-running; no new clocked work is admitted without an agreed controlled window.
+compilation/selected regression tests remain separately reported. V2 is now RUNNING under p1-screen-v2-window-v1.json;64 additional games are reserved
+pending, not yet counted as completed. Read p1-screen-v2-execution.json and actual
+runner starts before any restart or budget update. Owned launcher PID40824 was
+assigned before resume. No overlapping experiment is admitted. The approved window
+ends3 November2026 at11:50:29 NZDT (22:50:29 UTC on2 November).
 
 Owner granted15 minutes for W4 technical checks only in `p1-w4-window-v1.json`;
 those completed by20:03:23 UTC on2 November. W4 observer18 requests, isolation8
@@ -116,7 +120,9 @@ or claim attempt has been selected. Reserve640 games and at least24000s.
    starting roots from the complete existing HL development input, with no overlap
    against V1 starts or protected confirmation. This is exploratory reused material.
    No V1 outcomes were used. Expected35-40 minutes; request one controlled60-minute
-   PC window. No window is currently granted for this batch.
+   PC window. Owner replied "PC available now for one hour"; receipt
+   p1-screen-v2-window-v1.json records the observed grant and deadline. Headroom
+   admission passed; V2 is running. Do not inspect partial scores or restart it.
 3. `tools/p4-tactical-supervise.py` adds a bounded per-run native CPU/memory guard,
    periodic Overwatch detection, owner-stop file and owned-Job interruption/draining.
    Both qualification receipts are retained; final v2 verifies native sampling and
@@ -124,8 +130,8 @@ or claim attempt has been selected. Reserve640 games and at least24000s.
    launch before any child process. The existing match adapter is unchanged.
    It checks20s of headroom before launch, then records samples and stops for sustained
    saturation/memory pressure/gaming/window expiry. These guards do not prove fairness.
-4. After an explicit window reply, write its actual owner text, deadline and allowed
-   protocol `TC-P1-SCREEN-V2` to a new window receipt. Launch with the existing venv:
+4. The allowed protocol and actual reply are recorded. The following owned command
+   is already running with the existing venv; do not launch a duplicate:
    `python -B tools/p4-tactical-supervise.py --protocol p1-screen-v2-protocol.json
    --window docs/research/search/p4-tactical/p1-screen-v2-window-v1.json`.
    Update running ownership/state, charge actual wall/starts afterwards, audit before
@@ -143,8 +149,8 @@ Refresh both before mirror-dependent planning; repository-only work does not wai
 
 Human actions required after this prompt:
 
-- **Blocking for the next clocked experiment:** provide a controlled60-minute PC-use
-  window for the frozen V2 W1 screen when requested. W4 matches and independent
-  confirmation will require their own agreed windows when ready.
+- **None for the running V2 screen:** its one-hour window is granted.
+  **Blocking before later W4 matches or independent confirmation:** provide their
+  separate controlled windows when requested; this grant does not admit them.
 - **Blocking before mirror-dependent planning; non-blocking for repository execution:**
   refresh both Phase4 Project Source mirrors to P4-R011/P4-F027.

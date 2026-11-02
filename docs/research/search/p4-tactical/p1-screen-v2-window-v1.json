@@ -1,0 +1,11 @@
+{
+  "ownerReply": "PC available now for one hour",
+  "observedUtc": "2026-11-02T21:50:29+00:00",
+  "deadlineUtc": "2026-11-02T22:50:29+00:00",
+  "ownerLocalWindow": "3 November2026,10:50:29-11:50:29 Pacific/Auckland (NZDT)",
+  "allowedProtocols": [
+    "TC-P1-SCREEN-V2"
+  ],
+  "scope": "Frozen64-game W1 development screen only, with existing PC guard and stop/failure rules. No W4 match or independent confirmation admission.",
+  "protocolSha256": "79208ff1a9fa0b05356ab3802abef14a4fc8023e1d709a9a3242f1eb75d4b892"
+}
