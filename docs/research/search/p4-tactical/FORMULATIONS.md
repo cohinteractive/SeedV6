@@ -72,3 +72,25 @@ remains unmeasured. The first fixed W1 screen was interrupted for external PC lo
 62 completed. Its completed-game operational audit passes, but the batch is clock-
 unqualified and incomplete; no outcomes were used to select or tune a candidate.
 The unchanged formulation has a different-input V2 protocol awaiting a controlled window.
+
+
+## Complete V2 evidence and next decision
+
+Controlled W1 V2 versus exact84:25W/18D/21L,53.125%, paired-normal95%43.86-62.39%.
+All64 games/8810 requests and input/drain audits pass. Brief PC-load spikes remain
+recorded; the earlier interrupted V1 is not pooled. This is exploratory, not
+independent strength evidence.
+
+Existing observe-only predictions were calibrated using a research-only helper
+against resumed nominal HL-G1, with unchanged frozen engine classes.243 completed
+invocation pairs preserve score/PV, nominal nodes and retained learning;15 aborted
+pairs remain separate.9467 dependent predictions span all eligible node depths4-8,
+with12 null-window disagreements at depths4/5. These are conditional horizon labels,
+not general error rates, error magnitudes or legality defects. No clear structural
+failure or parameter adjustment is established. The current parameters are retained.
+
+The next selected unit is a fixed64-pair wider development sample, in two frozen
+32-pair segments with no interim outcome-driven choice. It preserves129 further
+development games after completion and all W4/confirmation reservations. This will
+inform whether the unchanged integrated candidate merits the sole independent claim
+or a justified alternative is preferable; neither confirmation nor success is automatic.

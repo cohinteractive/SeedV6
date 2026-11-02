@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "utc": "2026-11-02T22:41:37.762328+00:00",
+  "raw": [
+    {
+      "path": "docs\\research\\search\\p4-tactical\\raw\\p1-calibration-openings-v1\\observations.jsonl",
+      "sha256": "0ae2471609c657c7830894b328e5944722ce829e3ac13eb282037baa0aa5874e"
+    },
+    {
+      "path": "docs\\research\\search\\p4-tactical\\raw\\p1-calibration-mixed-v1\\observations.jsonl",
+      "sha256": "2169fa86e2cb665573cdf8a287503bcf402a234a844b187bfe68819052a4ea65"
+    }
+  ],
+  "totals": {
+    "completedInvocationPairs": 243,
+    "abortedInvocationPairs": 15,
+    "predictions": 9467,
+    "nominalDisagreements": 12,
+    "probeNodes": 1898287
+  },
+  "byNodeDepth": {
+    "4": {
+      "predicted": 5258,
+      "nominalAgrees": 5253,
+      "nominalDisagrees": 5
+    },
+    "5": {
+      "predicted": 2802,
+      "nominalAgrees": 2795,
+      "nominalDisagrees": 7
+    },
+    "6": {
+      "predicted": 803,
+      "nominalAgrees": 803,
+      "nominalDisagrees": 0
+    },
+    "7": {
+      "predicted": 511,
+      "nominalAgrees": 511,
+      "nominalDisagrees": 0
+    },
+    "8": {
+      "predicted": 93,
+      "nominalAgrees": 93,
+      "nominalDisagrees": 0
+    }
+  },
+  "checks": "Every completed invocation pair matches score/PV, nominal-node accounting and retained quiet/capture/continuation learning. Prediction-to-callback attribution/completion assertions and real-history witness legality pass. All worker processes drained.",
+  "interpretation": "12/9467 disagreements conditional on dependent predictions along an uncut guided traversal, not a population error rate or exhaustive chess truth. Null-window fail-low labels do not measure error magnitude.15 aborted pairs retained separately, not imputed. Nested subtree costs overlap; instrumentation is not a timing benchmark.",
+  "decision": "Retain TC-P1 unchanged. Positive but wide32-pair competitive interval plus calibrated mechanism justify one broader64-pair development batch before choosing whether to spend the sole confirmation. No parameter tuning or finalist selection follows from these witnesses."
+}

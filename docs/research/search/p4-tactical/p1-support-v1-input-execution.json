@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "startedUtc": "2026-11-02T22:38:22.489280+00:00",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-support-v1-input-selector.py"
+  ],
+  "category": "charged bounded development input preparation",
+  "gamesInitiated": 0,
+  "timeoutSeconds": 180,
+  "pid": 40048,
+  "exitCode": 0,
+  "ownedProcessesRemaining": 0,
+  "processDrained": true,
+  "ownedCpuSeconds": 39.515625,
+  "totalOwnedProcesses": 3,
+  "wallSeconds": 40.14818740001647,
+  "endedUtc": "2026-11-02T22:39:02.638074+00:00"
+}

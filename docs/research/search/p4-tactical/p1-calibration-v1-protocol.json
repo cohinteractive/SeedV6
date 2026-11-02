@@ -1,0 +1,33 @@
+{
+  "id": "TC-P1-CALIBRATION-V1",
+  "frozenUtc": "2026-11-02T22:32:21.293281+00:00",
+  "question": "How often do discarded TC-P1 cutoffs disagree with the resumed nominal selective HL-G1 traversal, by admitted node depth?",
+  "scope": "Bounded W1 diagnostic, not a match, population error rate, exhaustive oracle or strength claim. Internal guided control in frozen build89; exact84 remains competitive comparator.",
+  "runtime": "runtime-build89-p1-v1",
+  "runtimeManifestSha256": "6d79afb52fac5a87c230ec68951d4a770927cc11ee4cf2177bb58fc3aba18b9a",
+  "source": "research/src/main/java/com/ohinteractive/seedv6/search/exact/P4TacticalCalibration.java",
+  "sourceSha256": "819856798e30a813da9063f30ef7c13eaeda651b2e515b6b3cc074eaaa690cc0",
+  "compiledClasses": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-calibration-v1-classes\\com\\ohinteractive\\seedv6\\search\\exact\\P4TacticalCalibration$Frame.class": "2bcdf1acb32c87559acb2d84f44fcd6570e065bc5e1f974971c2fd20bc27e472",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-calibration-v1-classes\\com\\ohinteractive\\seedv6\\search\\exact\\P4TacticalCalibration$Trace.class": "8546161b4e49da78f57091a29b08087784618de74846cce8127c93bc80cc47ac",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-calibration-v1-classes\\com\\ohinteractive\\seedv6\\search\\exact\\P4TacticalCalibration.class": "fd2d006173566857942df7db936a6a4040a70683f5ce905818162beaf21064f9"
+  },
+  "corpora": [
+    {
+      "name": "p1-calibration-openings-v1",
+      "file": "docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv",
+      "sha256": "b2815c85298025ea353f9d4b2b5752d1a527978b27f0aa96eb7d5a6e2c1d0464"
+    },
+    {
+      "name": "p1-calibration-mixed-v1",
+      "file": "docs/research/search/p4-correction/mixedphase-v1-roots.tsv",
+      "sha256": "191f79788729bcb35fe92b11b6572749e8794b4d8fee4af256fa5764b1685ae2"
+    }
+  ],
+  "maximumRootDepth": 9,
+  "perInvocationNodeCap": 500000,
+  "timeoutSecondsPerCorpus": 240,
+  "method": "Existing observe-only TC-P1, all physical probe nodes charged. Synchronous existing callbacks plus read-only private counters attribute each prediction before the next nominal callback; exact attribution/completion assertions. Full completed invocation pairs must match guided score/PV, nominal nodes and retained histories. First12 disagreements per invocation retain legal real-history witnesses. Stop each root after either owner reaches node cap.",
+  "aggregation": "Primary labels only from fully completed paired invocations. Retain incomplete/aborted rows separately; no imputed labels. Dependent uncut traversal and overlapping subtrees, not independent prediction-error sampling. No timing comparison from instrumented runs.",
+  "resources": "Serial1 Search worker, Java ActiveProcessorCount2/Xmx512m, below-normal owned Job, max480s total, no match overlap. Source compile separately; all Search diagnostic wall charged. Frozen runtime unchanged; new standalone helper classes prepended to classpath."
+}

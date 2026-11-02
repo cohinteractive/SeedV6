@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "startedUtc": "2026-11-02T21:51:08.888129+00:00",
+  "protocol": "p1-screen-v2-protocol.json",
+  "protocolSha256": "79208ff1a9fa0b05356ab3802abef14a4fc8023e1d709a9a3242f1eb75d4b892",
+  "window": "docs\\research\\search\\p4-tactical\\p1-screen-v2-window-v1.json",
+  "windowSha256": "556fd0194625cdb42d07484dbcbcaad4551a8e464efecc8a9051339f991dd9a4",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "tools/p4-tactical.py",
+    "--protocol",
+    "p1-screen-v2-protocol.json",
+    "--workers",
+    "1"
+  ],
+  "reservedGamesPending": 64,
+  "category": "charged controlled-window W1 development and audit",
+  "supervisorSha256": "814effaf9021363ded0fe38d0e6aeb4f0dc400048998c5088031d788380a7937",
+  "pid": 40824,
+  "exitCode": 0,
+  "gamesInitiated": 64,
+  "ownedProcessesRemaining": 0,
+  "processDrained": true,
+  "ownedCpuSeconds": 1991.890625,
+  "totalOwnedProcesses": 10,
+  "endedUtc": "2026-11-02T22:24:05.164776+00:00",
+  "wallSeconds": 1976.2762613999948
+}

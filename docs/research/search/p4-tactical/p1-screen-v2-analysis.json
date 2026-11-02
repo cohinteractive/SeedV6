@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "utc": "2026-11-02T22:25:50.466836+00:00",
+  "pairs": 32,
+  "score": 0.53125,
+  "pairScoreStandardError": 0.04729316171669315,
+  "pairedNormal95": [
+    0.43855710632025297,
+    0.623942893679747
+  ],
+  "primaryStrengthCriterionAchieved": false,
+  "interpretation": "Exploratory32-pair development result; positive point estimate but interval crosses equality. Not independent confirmation. InterruptedV1 excluded from inference as prospectively dispositioned before V2 outcomes.",
+  "actualDevelopmentPositions": 8736,
+  "protectedConfirmationRoots": 320,
+  "protectedOverlap": 0,
+  "inputEvidence": "docs\\research\\search\\p4-tactical\\raw\\p1-screen-v2-w1\\games.pgn",
+  "inputSha256": "4ba0ad8eda17e2999acdbed6692dfae983094d8ec072f7458129f3e38b7202de"
+}

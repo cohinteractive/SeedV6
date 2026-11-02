@@ -1,0 +1,16 @@
+{
+  "status": "admitted for exploratory interpretation after complete audit",
+  "utc": "2026-11-02T22:24:46.716727+00:00",
+  "outcomesViewedAtDecision": false,
+  "samples": 967,
+  "meanCpuPercent": 16.01840759556574,
+  "p95CpuPercent": 32.68779342723005,
+  "maxCpuPercent": 70.57291666666667,
+  "samplesAtLeast50": 2,
+  "samplesAtLeast75": 0,
+  "minimumFreeMemoryGiB": 13.949760437011719,
+  "overwatchObserved": false,
+  "sampleFile": "docs\\research\\search\\p4-tactical\\raw\\p1-screen-v2-pc-use.jsonl",
+  "sampleSha256": "0f354c428feeb43004e442a73fe2bca191fa58b33f8062d11995cd53324266c9",
+  "decision": "Complete64 normal games, stable frozen inputs, zero missing-score warnings,8810 completed requests, engine handles and owned Job drained. Agreed window and prospective PC guard passed. Two transient samples above50%CPU are retained as a timing limitation; no sustained saturation or pressure threshold crossed. Keep all64 games, with no exclusions. This is exploratory clocked evidence, not proof of clock equivalence or independent strength confirmation."
+}

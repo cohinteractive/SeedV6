@@ -1,0 +1,56 @@
+{
+  "id": "TC-P1-SUPPORT-V1-B",
+  "status": "prospectively frozen; awaiting a new controlled PC window",
+  "frozenUtc": "2026-11-02T22:41:37.762328+00:00",
+  "question": "Does the unchanged TC-P1 positive development direction persist over a wider64-pair opening sample before finalist selection?",
+  "category": "W1 development",
+  "namePrefix": "p1-support-v1-b",
+  "workers": [
+    1
+  ],
+  "pairs": 32,
+  "tc": "10+0.1",
+  "seed": 2026110313,
+  "timeoutSeconds": 3300,
+  "estimatedMatchSeconds": 2200,
+  "remainingCategoryGames": 193,
+  "remainingTotalGames": 929,
+  "remainingMatchSeconds": 57392.330006500066,
+  "warningPolicy": "audited-fallback",
+  "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-build89-p1-v1",
+  "baselineProfile": "guided",
+  "candidateProfile": "probcut",
+  "candidateIdentity": {
+    "name": "TC-P1 bounded capture verification over HL-G1",
+    "source": "a7c45dffeaffc362bc7c7026d03a2e6434472be2",
+    "build": 89,
+    "flags": 1177812991
+  },
+  "controlIdentity": {
+    "name": "HL-G1 request-scoped retained learning and history-guided reductions",
+    "source": "b8ea8b2856eed3f6c774860ca540375054e4de30",
+    "build": 84,
+    "flags": 104071167
+  },
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\p1-support-v1-b-openings.pgn",
+  "openingSha256": "b574f96a2e12a5184d9d8cd778e245a97c45af0c31df949abf22d32254ef6779",
+  "openingQualification": "Prospectively selected64 legal unique nonterminal16-ply roots from frozen legal16 source, partition0, seed2026110311, excluding both prior TC starting-root sets and protected confirmation. This is consecutive32-root segment B, in canonical order. Exploratory source material; no independent claim.",
+  "runtimeManifests": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\runtime-build84-v1-manifest.json",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\runtime-build89-p1-v1-manifest.json"
+  ],
+  "adapterSha256": "a01e010361d420b7c2178123e4d0c3c2f8de8867e78811734d75449d8b3407d4",
+  "resources": "One active W1 game, symmetric below-normal resources and existing PC guard. This64-game segment needs its own available60-minute window, or may share a two-hour window with the other segment if the supervisor deadline check permits. Expected33-40min each;3300s runner cap plus bounded supervision. No concurrent experiments.",
+  "audit": "Existing owned Windows Job, live/full trace audit, independent PGN legal/history/PV/terminal/full-request accounting, narrow audited-fallback warning policy, hash-stable inputs and complete handle draining. Any other warning/failure stops and preserves evidence.",
+  "stopping": "Complete this fixed32-pair segment; no score-driven interruption. Operational/PC stops preserve all initiated games and partial evidence with no automatic replay. If a segment fails, investigate before any admission; the full128-game batch is incomplete and cannot be relabelled complete.",
+  "analysis": "Segment statistics may be written automatically to local evidence but must not be inspected for candidate decisions. Only after both fixed32-pair segments complete and pass operational audit, analyze all64 pairs/128 games. Report segment results then, plus separately labelled exploratory pooling with the earlier32-pair V2. Never pool interrupted clock-unqualified V1 or independent confirmation.",
+  "nextDecision": "After both predeclared segments and audits, use the complete wider developmental evidence with calibration/cost results to choose finalist/W4 risk or a justified alternative. No automatic confirmation. This window admits no W4 games or independent confirmation.",
+  "reservedConfirmation": "640 games/320 fresh pairs and one claim attempt remain unspent; reserve at least24000 charged seconds prospectively before more development.",
+  "supervisor": "tools/p4-tactical-supervise.py",
+  "supervisorSha256": "814effaf9021363ded0fe38d0e6aeb4f0dc400048998c5088031d788380a7937",
+  "windowRequired": true,
+  "coexistence": "Native system CPU/free-memory samples every2s; Overwatch presence checked every10s.20s pre-admission must stay<=35%CPU and>=12GiB free with no Overwatch. During run stop owned Job for three consecutive>=75%CPU samples, free RAM<8GiB, Overwatch, explicit stop file, deadline or cap. Record every sample locally. These thresholds are operational guards, not proof of clock fairness; assess all interference before interpreting the complete batch.",
+  "precedingBatch": "Complete TC-P1-SCREEN-V2:25W/18D/21L,53.125%, paired-normal95%43.86-62.39%, exploratory. InterruptedV1 remains separate and clock-unqualified. Candidate unchanged; protected confirmation remains unused.",
+  "studyProtocol": "p1-support-v1-protocol.json"
+}

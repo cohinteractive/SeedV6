@@ -79,10 +79,39 @@ No conveniently chosen subset is declared unaffected; all evidence is preserved 
 of the interrupted protocol is authorized by this record. The planned64-game sample
 is incomplete, so this is neither a strength result nor evidence against ProbCut.
 
+## Controlled V2 screen and prediction calibration
+
+V2 completed within the one-hour owner window by11:24:05 NZDT on3 November:
+**25W/18D/21L,53.125%**, paired-normal95%**43.8557-62.3943%**, bounded95%
+29.1169-77.1331%. All64 games,8810 completed requests, full trace and frozen-input
+checks pass; owned processes drained. Its score-blind operational review accepted
+all games before outcomes were read.967 PC samples averaged16.02% CPU, p95=32.69%,
+maximum70.57%, with two brief samples>=50% and none>=75%; minimum13.95GiB free,
+no Overwatch. Retain the spikes as a timing limitation, with no exclusions. This
+32-pair result is positive but imprecise and exploratory; it proves no strength gain.
+See [analysis](p1-screen-v2-analysis.json) and [PC review](p1-screen-v2-operational-review.json).
+
+A research-only helper, separately source/class hashed against frozen build89,
+calibrates discarded predictions against the resumed nominal selective traversal.
+On9 opening/20 mixed-phase roots,243 completed invocation pairs pass score/PV,
+nominal-node and retained-learning parity;15 aborted pairs remain separate.
+Of9467 dependent predictions,12 disagree with the nominal null-window outcome:
+5/5258 at node depth4,7/2802 at5,0/803 at6,0/511 at7,0/93 at8. Real witness paths
+validate. Completed pairs charge1898287 probe nodes. These conditional observations
+are neither a population error rate nor exhaustive chess truth; fail-low labels do
+not quantify error magnitude. Instrumented/nested costs cannot establish speed.
+[Calibration summary](p1-calibration-v1-summary.json) identifies the exact local evidence.
+
+TC-P1 is retained unchanged for wider development. No parameter tuning or finalist
+selection follows. A fixed64-pair/128-game support sample, split prospectively into
+two32-pair segments, will test whether the positive direction persists before
+spending the sole independent confirmation. Segment outcomes stay unread for
+selection until both complete and pass operational audit.
+
 ## Resources, failures and next experiment
 
-[Ledger](resources.json): **1990.1967523/64,800 charged seconds** (33m10.2s),
-remaining62809.8032477s. Initiated games63/1120; W1 development63/384,
+[Ledger](resources.json): **4062.6699935/64,800 charged seconds** (1h7m42.67s),
+remaining60737.3300065s. Initiated games127/1120; W1 development127/384,
 W4 risk0/96, confirmation0/640; claim attempts0/1. Failures and the post-stop audit
 are charged once. The original selector-supervisor drain assertion and W4-only
 harness assertion remain failed evidence; independent input validation and fresh
@@ -94,19 +123,19 @@ cover5364 distinct prefixes with zero overlap; all8094 real positions exposed by
 the interrupted screen, including game63, also have zero overlap. No protected
 moves/keys were displayed for selection. Recheck later development disjointness.
 
-[V2 protocol](p1-screen-v2-protocol.json) is frozen for the unchanged TC-P1 against
-exact84 on32 different starting roots from existing HL exploratory material. It
-uses a controlled60-minute owner window, expected35–40 minutes, a3300s runner cap
-and a bounded CPU/memory/Overwatch guard. Native sampling and owned dummy termination
-were checked; an expired-window test rejects launch before any child process.
-This is not an end-to-end competitive qualification of that new guard.
-It must retain all samples and interruptions, and the complete batch still requires
-operational review. No V1 outcome informed its candidate or input selection.
+[Support protocol](p1-support-v1-protocol.json) freezes the unchanged candidate
+against exact84 on64 new-to-TC starting roots, in two32-pair segments. It needs one
+new controlled two-hour window or two separately granted one-hour windows. The
+completed V2 grant does not admit support matches. Retain all samples/interruption
+records and analyze the full128 games only after both segments pass. All candidate
+and protected-confirmation identities remain unchanged. Full completion leaves129
+development games,96 W4 games and all640 independent games.
 
-W4 competitive risk and independent confirmation remain unperformed. A controlled
-window is now required for subsequent W1 matches as well; source work and bounded
-light checks remain authorized. More candidate implementation before this pending
-screen is not presently justified by evidence.
+The bounded PC guard's native sampling, owned dummy termination and expired-window
+rejection checks pass; V2 now also qualifies its actual match path. It does not prove
+clock equivalence. W4 competitive risk and independent confirmation remain unperformed.
+Further source work and bounded light diagnostics stay authorized; the next meaningful
+selection decision depends on the prepared wider competitive sample.
 
 ## Repository and authority
 
@@ -114,16 +143,16 @@ The mandatory CH-R001 synchronization is standalone documentation commit
 `8e95d23d40afab5567998054fbc6e94006064051`, P4-R008/F024, with no build change.
 TC bootstrap is `3cc7c9d3`; implementation/build89 is `a7c45dff`; artifact/protocol
 freeze `585b4882`, protected inputs `b3a7d586`, W4 evidence `79bb6e8a`, historical
-input review/W1 admission `82478171`. Later interruption/guard documentation is
-identified by Git history. All work is local; no push, promotion, deployment,
+input review/W1 admission `82478171`. Interruption/guard documentation is4702d33d and V2 window admission3bbbb1bb.
+Later V2 outcome/calibration/support records are identified by Git history. All work is local; no push, promotion, deployment,
 release, production-default change or successor. Build88→89 was verified once with
 the runtime commit; later harness/docs work has no application build impact.
 
 Champion remains exact HL-G1/build84; normal build85 HL-G1 policy is unchanged.
 TT-R001 reconciliation remains separate and both frozen BOUNDARY2 studies unopened.
-Current masters are **P4-R011/P4-F027**. Repository edits do not refresh owner mirrors.
+Current masters are **P4-R012/P4-F028**. Repository edits do not refresh owner mirrors.
 
 Human actions required after this prompt: **Blocking for the next clocked batch:
-provide a controlled60-minute window for V2. Blocking before mirror-dependent
+provide a new controlled two-hour window for support, or separate one-hour segment windows. Blocking before mirror-dependent
 planning, non-blocking for repository execution: refresh both Phase4 Project Source
-mirrors to P4-R011/P4-F027.** No strength acceptance or promotion is requested.
+mirrors to P4-R012/P4-F028.** No strength acceptance or promotion is requested.

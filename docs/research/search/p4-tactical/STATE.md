@@ -1,156 +1,146 @@
 # TC-R001 resume state
 
-3 November 2026 (Pacific/Auckland). **Active workstream; controlled-window V2 W1 screen running. Strength objective unachieved.** Read [CONTRACT](CONTRACT.md). Governing objective remains unachieved.
+3 November2026 (Pacific/Auckland). **Active workstream; first valid W1 result is
+positive but inconclusive. Wider development batch ready, awaiting a new PC window.**
+Strength objective unachieved; no finalist or independent claim attempt selected.
+[CONTRACT](CONTRACT.md) governs scope; [RESULTS](RESULTS.md) consolidates evidence.
 
-## Verified starting point and prerequisite
+## Provenance and implementation
 
-- Clean main at ffb8526e, build88; no root CODEXLOG_CURRENT.md, so none created.
-- CH-R001 owner-accepted unsuccessful outcome synchronized in standalone commit
-  `8e95d23d40afab5567998054fbc6e94006064051`, masters P4-R008/P4-F024. Verified
-  docs-only diff, unchanged strict version bytes, original RESULTS body preservation,
-  independent pair arithmetic and86 local links. No runtime tests or computation in
-  that prerequisite. CH thresholds, evidence, unused/spent resources unchanged.
-- [Bootstrap manifest](bootstrap-manifest.json): all33 exact84 runtime files, Java
-  executable, CP64 and six pinned external-source files rehashed successfully.
-  Hash verification is not new runtime qualification. Original request preserved.
-- Four observed inherited Java processes belong to VS Code/Gradle; no observed
-  engine tournament or Overwatch process. They are unrelated and untouched.
+- Initial clean main ffb8526e/build88 verified. Root CODEXLOG_CURRENT.md absent;
+  none created. No finalizer/shared-policy/CEC maintenance or unrelated changes.
+- Mandatory CH-R001 accepted-unsuccessful synchronization was standalone docs commit
+  8e95d23d40afab5567998054fbc6e94006064051, P4-R008/F024, version unchanged.
+  Historical RESULTS body, thresholds, resources and conclusions preserved.
+- TC bootstrap3cc7c9d3; opt-in TC-P1 implementation a7c45dffeaffc362bc7c7026d03a2e6434472be2,
+  verified build88->89, profile probcut/flags1177812991. Frozen runtime
+  runtime-build89-p1-v1-manifest.json; exact84 comparator source
+  b8ea8b2856eed3f6c774860ca540375054e4de30, guided/flags104071167.
+- TC-P1 adds bounded capture/qsearch/reduced legal verification over HL-G1:
+  eligible interior noncheck null-window depths4-8, beta+150, raw+300 guard,
+  at most3 SEE-nonnegative tacticals, child depth-3. Returns selective beta,
+  preserves real history and score domains, suppresses nested verification,
+  learning/heuristic-TT side effects. No new TT foundation or correction history.
+- FORMULATIONS records pinned Stockfish19/Bagatur5.5c/Ethereal14 source findings,
+  historical author claims and Seed differences. Singular extensions need TT
+  bound/depth support absent from ordinary extension-enabled production storage.
+  F3 was not selected; its limited qualification/adverse W4 evidence remains.
 
-## Current formulation and technical evidence
+## Technical qualification
 
-**TC-P1 - bounded capture verification over HL-G1**, profile `probcut`,
-flags1177812991, has passed W1/W4 technical qualification. Its first W1 screen was
-interrupted for external PC interference; the new fixed-input V2 screen is running
-under the owner-granted one-hour window. [FORMULATIONS](FORMULATIONS.md) records verified external evidence,
-Seed differences, dependencies and the untuned hypothesis. It adds qsearch/reduced
-legal verification at eligible depth4-8 non-check null-window nodes, beta+150,
-raw+300 admission, at most3 SEE-nonnegative tacticals, child depth-3. Returns beta
-as selective threshold, never a mate claim. Full original guards and HL-G1 remain;
-no TT foundation/correction/default/clock/evaluator change.
+Expanded selected regression passes288 tests including the initial4 new tests,
+no failures/errors/skips, plus ownership boundaries. Initial/expanded build-test
+wall73.41s/67.53s is separate from experiments; do not count the4 twice. W1
+observation neutrality, accounting, legal PV/state/history restoration, incremental
+versus rebuilt evaluation, node limits, cancellation/failure and reuse pass.
+Nine opening and20 real-history mixed-phase roots exercise probes and cutoffs;
+aborted/reset counter snapshots are incomplete, so request work owns accounting.
 
-Qualification of the source-hashed prototype:
+W1 UCI isolation44 requests plus2 stops and runtime10 plus1 stop pass. W4 observer18,
+isolation8 plus2 stops and runtime10 plus1 stop pass; all four private kernels reach
+verification. W4 technical checks completed within the owner's earlier15-minute
+window. W4 competitive risk is unmeasured. W1 short costs:72 requests/18 warmups,
+27 measured pairs, geometric wall0.96887, CPU0.95372, allocation0.99967; no Elo or
+isolated speed inference. Artifact bridge compared2117 JAR entries/29 other files;
+only generated version metadata differs, and4 committed-artifact preflights pass.
 
-- Four focused tests pass, including discarded-prediction parity of scores/PVs and
-  learning with exact extra-work accounting, actual cutoff reachability, incremental
-  versus rebuilt evaluation, node limits, cancellation/failure history restoration
-  and profile/default isolation. The expanded regression then passes288 tests
-  (including those4 again), no skips/failures, plus ownership boundaries. Build/test
-  wall73.41s and67.53s are separately reported, not added as experiments.
-- Nine opening roots:18 observed requests plus18 clean repeats pass;1711 tactical
-  candidates,881 reduced verifications,835 cutoffs observed.20 mixed-phase real-history
-  roots:40 observed requests plus40 clean repeats pass;3873 candidates,2419
-  verifications,2255 cutoffs. Counters from aborted/reset invocations may be absent;
-  full-request resource accounting remains authoritative. Legal PV/restoration and
-  observation neutrality checked. These are mechanism evidence, not strength.
--44 W1 UCI isolation requests pass exact84/default/guided equality and candidate
-  accounting/PV; two stop/reset checks pass.10 candidate runtime requests plus one
-  stop pass clocks, mate/stalemate, repetition/rule50 and reuse/reset. W4 technical checks now pass; separate details below.
-- Clean rotated W1 cost:72 requests including18 warmups,27 measured profile pairs;
-  candidate/guided geometric mean wall0.96887, process CPU0.95372, allocation0.99967;
-  max sampled heap305,814,504 bytes. Short changed-work costs do not prove speed or
-  strength. See p1-cost-v1-summary and raw per-request observations.
+## Competitive evidence and PC coexistence
 
-External singular extensions need reliable TT bound/depth production; current
-production suppresses ordinary scores broadly with extensions. F3 remains optional,
-with adverse W4 evidence, and is not selected. Capture verification avoids that
-initial dependency. Failed first adapter import used system Python without chess;
-no engine ran. Use existing `build/research/venv/Scripts/python.exe`. Bootstrap JSON
-CRLF whitespace warnings were corrected in the next commit without changing values.
-No prior competitive game or discarded outcome occurred before the first W1 screen. Two technical supervision/
-harness failures are preserved and charged: input generation immediate Job-drain
-assertion (completed files independently validated, original failure retained), and
-W4-only isolation demanding absent W1 rows (scope guard repaired; fresh v2 passes).
+V1 was stopped score-blind for external VS Code/desktop CPU samples68%,92%,97%.
+63 games initiated,62 completed/31 pairs, game63 interrupted, game64 unstarted.
+All8153 completed-game requests pass limited operational audit; frozen inputs stable.
+The full trace ends with an interrupted request; exact contention onset is unknown.
+V1 remains incomplete and clock-unqualified. No V1 WDL/interval was exposed for
+selection; never pool it, replay it automatically, or relabel raw unfinished records.
+All owned processes drained; unrelated processes were untouched.
 
-Confirmation must exclude prior exposed roots including CH confirmation and mixed
-phase inputs. Prior throughput suggests640 games about5.4h; confirm actual cost
-before admission. Reserve independent capacity; do not spend it on development.
+V2 ran under the explicit one-hour owner window observed10:50:29 NZDT, deadline
+11:50:29, and completed/drained by11:24:05. All64 games ended normally;8810 request/
+trace audits pass, zero missing-score warnings, stable frozen inputs. **25W/18D/21L,
+53.125%, paired-normal95%43.8557-62.3943%, bounded95%29.1169-77.1331%.** This32-pair
+exploratory result is imprecise, not independent confirmation or proven superiority.
+The score-blind operational review preceded outcome inspection.967 PC samples:
+mean16.02%, p95=32.69%, maximum70.57% CPU, two transient samples>=50%, no75% sample,
+minimum13.95GiB free, no Overwatch. Retain the spikes as a timing limitation; no games
+excluded. PC guard passing is not proof of clock equivalence.
 
-## Interrupted development screen and resource boundary
+## Prediction calibration and current decision
 
-[RESULTS](RESULTS.md) and [interruption audit](p1-screen-v1-interruption-audit.json)
-record TC-P1-SCREEN-V1:63 initiated games,62 completed/31 full pairs, game63
-interrupted and game64 unstarted. The score-blind stop followed total CPU samples
-68%,92%,97%, with active VS Code Java/Gradle and desktop activity; unrelated
-processes were untouched. Exact interference onset is unknown. All8153 requests
-in the completed games pass opening/color/history/adjudication/accounting and
-completed-trace checks, with zero missing-score warnings. Frozen inputs are stable.
-The full trace ends with an interrupted request; it is not a completed match.
-All owned processes drained (Job accounting0). No score/WDL/interval was exposed
-for candidate selection, no subset is declared clock-valid, and no result is claimed.
-Original raw run/process records remain unfinished historical evidence, not relabelled
-passed. Preserve all evidence; do not replay or try to finish V1 automatically.
+Research-only P4TacticalCalibration compiles separately against frozen build89;
+its source and3 class hashes are pinned in p1-calibration-v1-protocol.json. No engine
+or production code changed. It reads existing callbacks/counters, discards TC-P1
+predictions, and checks them against the resumed nominal selective HL-G1 traversal.
+Both9-opening/20-mixed runs pass and drain:243 completed invocation pairs,15 aborted
+pairs retained separately,9467 predictions,12 nominal disagreements,1898287 actual
+probe nodes in completed pairs. All five eligible depths4-8 are represented.
+Completed pairs match score/PV, nominal-node accounting and retained learning;
+witnesses reconstruct legal real paths. Null-window labels do not measure error
+magnitude; dependent uncut trajectories are not a population error-rate sample or
+exhaustive chess oracle. See p1-calibration-v1-summary.json and preserved raw rows.
 
-[Ledger](resources.json): charged **1990.1967523/64,800s**,
-remaining **62809.8032477s**. Initiated games63/1,120:
-W1 development63/384 (321 left), W4 risk0/96, independent confirmation0/640;
-attempts0/1. Includes failed runs, interrupted match, separate post-stop audit and
-both bounded PC-guard checks; no overlapping inner timing is added. Ordinary
-compilation/selected regression tests remain separately reported. V2 is now RUNNING under p1-screen-v2-window-v1.json;64 additional games are reserved
-pending, not yet counted as completed. Read p1-screen-v2-execution.json and actual
-runner starts before any restart or budget update. Owned launcher PID40824 was
-assigned before resume. No overlapping experiment is admitted. The approved window
-ends3 November2026 at11:50:29 NZDT (22:50:29 UTC on2 November).
+**Retain TC-P1 unchanged and obtain wider developmental evidence.** The positive
+32-pair estimate and calibrated mechanism justify a fixed64-pair/128-game support
+batch before risking the sole confirmation. No parameter tuning, finalist selection
+or automatic confirmation follows. After complete support results, choose the next
+justified unit: finalist/W4 risk or an evidence-supported alternative.
 
-Owner granted15 minutes for W4 technical checks only in `p1-w4-window-v1.json`;
-those completed by20:03:23 UTC on2 November. W4 observer18 requests, isolation8
-requests plus2 stops, runtime10 requests plus1 stop pass. All four private kernels
-reach tactical verification. Exact work uses request counters, not repeated worker
-snapshot sums. The first isolation run's W4 requests passed before the erroneous
-W1-only assertion; failed evidence and fresh corrected v2 both remain. W4 strength
-is unknown; its competitive window has not been granted.
+## Resources and protected inputs
 
-## Protected inputs
+Charged **4062.6699935/64800s** (1h7m42.67s); remaining **60737.3300065s**.
+Initiated127/1120 games: W1 development127/384 (257 left), W4 risk0/96,
+confirmation0/640; attempts0/1. Includes failures, interrupted games, calibration
+and new input preparation. Reserve640 confirmation games and at least24000s.
+All experimental processes are drained; no experiment is running.
 
-320 confirmation roots were frozen before development, from895 eligible unique
-roots without candidate evaluation/outcome filtering. The original selector
-supervisor's drain assertion remains failed; completed files independently pass
-legality/history/hash/order/disjointness. Six non-key historical receipts now pass
-exact fixture review:5364 distinct prefix positions, zero protected-root overlap.
-The interrupted screen adds8094 distinct actual positions, including partial-game63
-history, also with zero protected overlap. Protected moves/keys were not displayed
-for selection. Recheck any later development inputs before confirmation. No finalist
-or claim attempt has been selected. Reserve640 games and at least24000s.
+Protected320 confirmation roots remain unused. The original selector drain assertion
+remains failed, while completed inputs independently validate. Six historical non-key
+fixtures cover5364 distinct prefixes with zero overlap. Interrupted V1 exposes8094
+actual positions and complete V2 exposes8736, both with zero protected overlap.
+Recheck later development and any newly exposed diagnostic witnesses before a claim.
+No protected moves/keys were displayed to select candidates. Both frozen BOUNDARY2
+studies remain unopened; TT-R001 reconciliation remains separate.
+
+Other failures preserved: initial system-Python chess import before engine launch;
+W4-only isolation's erroneous W1 assertion before a fresh corrected v2 pass. Input
+supervisor and failed W4 run are charged. Bootstrap JSON formatting was corrected in
+its subsequent commit without rewriting history. None is converted into a pass.
 
 ## Next admissible work
 
-1. Candidate source remains `a7c45dffeaffc362bc7c7026d03a2e6434472be2`, build89,
-   `probcut`/flags1177812991. Its immutable runtime and exact84 manifests remain
-   intact. No further runtime change or build increment followed that commit.
-2. [V2 protocol](p1-screen-v2-protocol.json) freezes64 W1 games on32 different
-   starting roots from the complete existing HL development input, with no overlap
-   against V1 starts or protected confirmation. This is exploratory reused material.
-   No V1 outcomes were used. Expected35-40 minutes; request one controlled60-minute
-   PC window. Owner replied "PC available now for one hour"; receipt
-   p1-screen-v2-window-v1.json records the observed grant and deadline. Headroom
-   admission passed; V2 is running. Do not inspect partial scores or restart it.
-3. `tools/p4-tactical-supervise.py` adds a bounded per-run native CPU/memory guard,
-   periodic Overwatch detection, owner-stop file and owned-Job interruption/draining.
-   Both qualification receipts are retained; final v2 verifies native sampling and
-   actual owned dummy termination, no engine. An expired-window test also rejects
-   launch before any child process. The existing match adapter is unchanged.
-   It checks20s of headroom before launch, then records samples and stops for sustained
-   saturation/memory pressure/gaming/window expiry. These guards do not prove fairness.
-4. The allowed protocol and actual reply are recorded. The following owned command
-   is already running with the existing venv; do not launch a duplicate:
-   `python -B tools/p4-tactical-supervise.py --protocol p1-screen-v2-protocol.json
-   --window docs/research/search/p4-tactical/p1-screen-v2-window-v1.json`.
-   Update running ownership/state, charge actual wall/starts afterwards, audit before
-   any outcome-based decision. Do not overlap Search experiments.
-5. Only a complete operationally qualified development screen can support the next
-   candidate decision. Further W4 risk and independent confirmation remain separate
-   controlled-window gates. Source inspection and bounded light checks may continue;
-   more speculative implementation before the pending screen is not presently justified.
+[p1-support-v1-protocol.json](p1-support-v1-protocol.json) freezes the unchanged
+candidate, exact84 opponent,64 new-to-TC starting roots, and two consecutive32-pair/
+64-game segments A then B. Inputs come from pinned legal16 partition0, seed2026110311,
+excluding both prior TC start sets and protected confirmation.20063 eligible roots;
+no evaluator or outcome filtering. Canonical64-input PGN and two deterministic
+segment PGNs are intentional tracked input fixtures; original selector output and
+receipt remain local, with hashes and LF-normalization provenance.
 
-Champion exact HL-G1/build84 and normal build85 HL-G1 policy are unchanged. Current
-repository build89; no push, release, deployment, promotion or successor. TT-R001
-reconciliation remains separate; both frozen BOUNDARY2 studies remain unopened.
-Current masters **P4-R011/P4-F027**; last owner-confirmed mirrors P4-R005/F021.
-Refresh both before mirror-dependent planning; repository-only work does not wait.
+- Needs **one new controlled two-hour window or two separately granted one-hour
+  windows**. The completed V2 grant does not admit this batch. Expected33-40 minutes
+  per segment,3300s runner cap plus supervision; no experiment overlap.
+- Record actual owner reply, observed start/deadline and allowed protocol IDs
+  TC-P1-SUPPORT-V1-A/B in new window receipts. For one hour admit only the next segment.
+  Use existing venv and tools/p4-tactical-supervise.py with the segment's protocol
+  and window receipt. Preserve all starts/partial output if interrupted.
+- Operationally audit A before B without inspecting scores. Automatically generated
+  segment statistics remain unread for decisions until both fixed segments pass.
+  If insufficient window remains, wait for another grant; do not start B anyway.
+- Analyze the complete64-pair support batch only after both pass. Any pooling with
+  earlier V2 is explicitly adaptive exploratory96-pair evidence. Never pool V1 or
+  confirmation. A failure does not authorize replay or a smaller completed-sample label.
+- Full support consumes128 more games, leaving129 development games,96 W4 games and
+  all640 independent games. New W4/confirmation windows are separate later gates.
+
+Current repository build89; application source/version unchanged since a7c45dff.
+New helper is diagnostic-only, so no application build bump. Source/artifact/source-
+hashed qualification remains distinguishable. Champion84 and normal build85 HL-G1
+policy unchanged; no push, release, deployment, promotion or successor. Current
+masters **P4-R012/P4-F028**; last confirmed mirrors P4-R005/F021.
 
 Human actions required after this prompt:
 
-- **None for the running V2 screen:** its one-hour window is granted.
-  **Blocking before later W4 matches or independent confirmation:** provide their
-  separate controlled windows when requested; this grant does not admit them.
+- **Blocking for support matches:** provide a new controlled two-hour window, or
+  one hour for the next64-game segment and another later. Answer the scheduling
+  question when presented; the old V2 grant is already fulfilled.
 - **Blocking before mirror-dependent planning; non-blocking for repository execution:**
-  refresh both Phase4 Project Source mirrors to P4-R011/P4-F027.
+  refresh both Phase4 Project Source mirrors to P4-R012/P4-F028.

@@ -1,10 +1,10 @@
 {
   "objective": "TC-R001",
-  "chargedWallSeconds": 1990.196752299904,
-  "remainingWallSeconds": 62809.803247700096,
-  "initiatedGames": 63,
-  "remainingGames": 1057,
-  "developmentGames": 63,
+  "chargedWallSeconds": 4062.669993499934,
+  "remainingWallSeconds": 60737.330006500066,
+  "initiatedGames": 127,
+  "remainingGames": 993,
+  "developmentGames": 127,
   "riskGames": 0,
   "confirmationGames": 0,
   "confirmationAttempts": 0,
@@ -100,6 +100,34 @@
       "receipt": "window-supervisor-v2-qualification.json",
       "wallSeconds": 0.452892699977383,
       "category": "charged bounded PC-guard qualification; no engine",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "p1-screen-v2-execution.json",
+      "wallSeconds": 1976.2762613999948,
+      "category": "charged controlled-window W1 development and audit",
+      "status": "passed",
+      "initiatedGames": 64
+    },
+    {
+      "receipt": "p1-calibration-openings-v1-execution.json",
+      "wallSeconds": 22.13171390001662,
+      "category": "charged bounded prediction calibration",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "p1-calibration-mixed-v1-execution.json",
+      "wallSeconds": 33.91707850000239,
+      "category": "charged bounded prediction calibration",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "p1-support-v1-input-execution.json",
+      "wallSeconds": 40.14818740001647,
+      "category": "charged bounded development input preparation",
       "status": "passed",
       "initiatedGames": 0
     }

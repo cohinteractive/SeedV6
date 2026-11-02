@@ -1,0 +1,58 @@
+{
+  "id": "TC-P1-SUPPORT-V1",
+  "status": "prospectively frozen before any support game",
+  "frozenUtc": "2026-11-02T22:41:37.762328+00:00",
+  "candidate": {
+    "name": "TC-P1 bounded capture verification over HL-G1",
+    "source": "a7c45dffeaffc362bc7c7026d03a2e6434472be2",
+    "build": 89,
+    "flags": 1177812991
+  },
+  "opponent": {
+    "name": "HL-G1 request-scoped retained learning and history-guided reductions",
+    "source": "b8ea8b2856eed3f6c774860ca540375054e4de30",
+    "build": 84,
+    "flags": 104071167
+  },
+  "question": "Wider developmental evidence for unchanged TC-P1 before finalist selection; current32-pair result is positive but imprecise.",
+  "pairs": 64,
+  "games": 128,
+  "segments": [
+    {
+      "id": "TC-P1-SUPPORT-V1-A",
+      "protocol": "p1-support-v1-a-protocol.json",
+      "sha256": "6be7fe323343451eee0176c90172a282a8b1c8d92edae987b97ec373a5b216e9",
+      "pairs": 32,
+      "games": 64,
+      "order": 1
+    },
+    {
+      "id": "TC-P1-SUPPORT-V1-B",
+      "protocol": "p1-support-v1-b-protocol.json",
+      "sha256": "421096f94e74aee809236ff4cd25c434e8f174170a4e09303fbca3f5e338d1a8",
+      "pairs": 32,
+      "games": 64,
+      "order": 2
+    }
+  ],
+  "inputSelection": "p1-support-v1-openings.selection.json",
+  "inputSelectionSha256": "89e1d9c0be2b5393f0b6c1c43e1530307dc9eed0cfee066104dfafd9a0a3bc45",
+  "canonicalInputSha256": "02abaf57e1cab49a7474061e5fb50b3ee4e3b4746dcd38c52e1fbf2d64c5f902",
+  "window": "One new controlled two-hour window, or two separately granted one-hour windows. Existing V2 one-hour grant does not start this batch.",
+  "interimPolicy": "Run and operationally audit segments in order; no interim score inspection, tuning, sample change or outcome-driven stop. Retain independently durable receipts and all starts. Await another window between segments if required. Analyze the fixed128-game sample only after both pass.",
+  "budgetsBefore": {
+    "chargedWallSeconds": 4062.669993499934,
+    "remainingWallSeconds": 60737.330006500066,
+    "developmentGames": 127,
+    "initiatedGames": 127
+  },
+  "budgetsAfterComplete": {
+    "developmentGames": 255,
+    "remainingDevelopmentGames": 129,
+    "remainingW4Games": 96,
+    "confirmationReservedGames": 640,
+    "confirmationAttemptsSpent": 0
+  },
+  "inference": "Exploratory paired-normal95 and bounded Hoeffding95, no acceptance. Report the fixed64-pair support batch on its own; any96-pair pooling with earlier V2 is explicitly adaptive developmental evidence. Do not pool V1 or independent confirmation.",
+  "selection": "No final numerical selection gate introduced after outcomes. Use complete practical evidence plus mechanism/cost/operational evidence to decide the next justified research unit under the original criterion. One confirmation remains reserved; no finalist selected."
+}

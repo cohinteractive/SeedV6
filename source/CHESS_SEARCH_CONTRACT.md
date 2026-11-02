@@ -1,6 +1,6 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R011**
+Internal revision: **P4-R012**
 
 Status: **ACTIVE - 3 November 2026. HL-G1 remains the normal experimental production policy across W1-W16, integrated as build85; current repository build89 adds opt-in research only. HL-R001 remains accepted and closed; HL-G1/build84 remains the W1-qualified research champion. TTF-R001 remains accepted for its limited foundational purpose; TT-R001 remains inconclusive with separate reconciliation pending. CH-R001 is technically completed and owner-accepted as unsuccessful on 3 November 2026: independent W1 strength criterion failed. TC-R001 tactical-coverage research is separately owner-authorized and active after its prerequisite documentation commit. No promotion or deployment.**
 
@@ -56,8 +56,10 @@ experimental wall, at most1,120 initiated games, exact84 comparator and one rese
 independent W1 attempt (up to320 fresh pairs; score>=53%, paired-normal95% lower>50%).
 W4 risk and PC coexistence remain mandatory. TC-P1/build89 passes W1/W4 technical
 checks; its first W1 screen was interrupted for external CPU saturation, with63
-initiated games and no strength result. Subsequent clocked batches await an agreed
-controlled PC window; no acceptance threshold or resource allowance changes.
+initiated games and no strength result. A subsequent controlled64-game W1 screen
+passes operational audit, scoring53.125% with normal95%43.86-62.39%; exploratory,
+not strength-qualified. The unchanged candidate has a wider128-game development
+protocol awaiting new controlled windows. No acceptance threshold or allowance changes.
 This authority changes neither the champion nor production defaults.
 
 ## Strength-first, externally informed research
@@ -509,7 +511,7 @@ Repository masters are authoritative; Project Sources are owner-maintained mirro
 The owner has confirmed the final **P3-R035/P3-F035** mirrors: retain them in the
 existing Phase 3 ChatGPT Project; no further Phase 3 refresh is required.
 The separate Phase 4 ChatGPT Project mirrors require owner refresh to the current
-**P4-R011/P4-F027** pair before mirror-dependent Project planning; the Frontier
+**P4-R012/P4-F028** pair before mirror-dependent Project planning; the Frontier
 records the last confirmed mirror state. This does not block authorized repository
 work. Repository edits synchronize neither Project. On later canon changes,
 increment each affected internal revision once (P4-Rnnn/P4-Fnnn), identify the

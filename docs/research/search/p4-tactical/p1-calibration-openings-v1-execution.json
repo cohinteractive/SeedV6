@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "startedUtc": "2026-11-02T22:32:49.745425+00:00",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms256m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=2",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-calibration-v1-classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-build89-p1-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-build89-p1-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.P4TacticalCalibration",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\h1-diagnostic-roots.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-calibration-openings-v1\\observations.jsonl",
+    "9",
+    "500000"
+  ],
+  "protocol": "p1-calibration-v1-protocol.json",
+  "category": "charged bounded prediction calibration",
+  "gamesInitiated": 0,
+  "pid": 11852,
+  "exitCode": 0,
+  "diagnosticResult": {
+    "limits": "Dependent predictions along an uncut nominal trajectory, not a population error rate. Nested subtree costs overlap. Selective horizon disagreement is not a legality defect or strength result.",
+    "abortedInvocationPairs": 7,
+    "completedInvocationPairs": 73,
+    "status": "passed",
+    "predictions": 2571,
+    "nominalDisagreements": 1
+  },
+  "ownedProcessesRemaining": 0,
+  "processDrained": true,
+  "ownedCpuSeconds": 28.03125,
+  "totalOwnedProcesses": 2,
+  "wallSeconds": 22.13171390001662,
+  "endedUtc": "2026-11-02T22:33:11.877673+00:00"
+}

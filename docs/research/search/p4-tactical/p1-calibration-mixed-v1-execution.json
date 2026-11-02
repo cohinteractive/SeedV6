@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "startedUtc": "2026-11-02T22:33:11.879004+00:00",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms256m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=2",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-calibration-v1-classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-build89-p1-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-build89-p1-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.P4TacticalCalibration",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\mixedphase-v1-roots.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-calibration-mixed-v1\\observations.jsonl",
+    "9",
+    "500000"
+  ],
+  "protocol": "p1-calibration-v1-protocol.json",
+  "category": "charged bounded prediction calibration",
+  "gamesInitiated": 0,
+  "pid": 39528,
+  "exitCode": 0,
+  "diagnosticResult": {
+    "abortedInvocationPairs": 8,
+    "completedInvocationPairs": 170,
+    "status": "passed",
+    "predictions": 6896,
+    "nominalDisagreements": 11,
+    "limits": "Dependent predictions along an uncut nominal trajectory, not a population error rate. Nested subtree costs overlap. Selective horizon disagreement is not a legality defect or strength result."
+  },
+  "ownedProcessesRemaining": 0,
+  "processDrained": true,
+  "ownedCpuSeconds": 43.25,
+  "totalOwnedProcesses": 2,
+  "wallSeconds": 33.91707850000239,
+  "endedUtc": "2026-11-02T22:33:45.796640+00:00"
+}
