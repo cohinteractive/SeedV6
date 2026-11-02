@@ -1,0 +1,29 @@
+{
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms256m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-build88-c3-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-build88-c3-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.P4CorrectionSequenceStudy",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\mixedphase-v1-roots.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\mixedphase-v1-w4.jsonl",
+    "4",
+    "observe",
+    "1",
+    "8",
+    "100000",
+    "corrected-q,corrected-retained"
+  ],
+  "status": "passed",
+  "protocolSha256": "d2331c71c99d6638b33980a9326ebfe560b375d606df16783ee286bd80054a3a",
+  "selectionSha256": "8bdda32dce2c570d1791a72c6c07c413bec82338744587ec3fcfbbdf74169584",
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\mixedphase-v1-w4.jsonl",
+  "exitCode": 0,
+  "inputsStable": true,
+  "wallSeconds": 12.453349100003834
+}

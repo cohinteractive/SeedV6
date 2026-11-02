@@ -1,0 +1,106 @@
+{
+  "status": "passed",
+  "domains": {
+    "1": {
+      "requests": 120,
+      "profiles": {
+        "corrected-q": {
+          "retainedRequests": 0,
+          "retainedEntries": 0,
+          "retainedFirstReads": 0,
+          "retainedFirstChanged": 0,
+          "savedInvocations": 0,
+          "abortedRestores": 0,
+          "changed": 980741,
+          "qchanged": 581289,
+          "nearSaturation": 25,
+          "guardRejected": 562622,
+          "ruleRejected": 1668,
+          "maxCorrection": 255,
+          "updates": [
+            2794,
+            1183,
+            7277
+          ]
+        },
+        "corrected-retained": {
+          "retainedRequests": 40,
+          "retainedEntries": 999,
+          "retainedFirstReads": 40,
+          "retainedFirstChanged": 37,
+          "savedInvocations": 642,
+          "abortedRestores": 40,
+          "changed": 1102837,
+          "qchanged": 676231,
+          "nearSaturation": 25,
+          "guardRejected": 560545,
+          "ruleRejected": 1623,
+          "maxCorrection": 255,
+          "updates": [
+            2782,
+            1136,
+            7418
+          ]
+        }
+      },
+      "wallSeconds": 34.63392209999438,
+      "firstRequestsEqualC2": 20,
+      "laterRequestsWithChangedOutcome": 39
+    },
+    "4": {
+      "requests": 120,
+      "profiles": {
+        "corrected-q": {
+          "retainedRequests": 0,
+          "retainedEntries": 0,
+          "retainedFirstReads": 0,
+          "retainedFirstChanged": 0,
+          "savedInvocations": 0,
+          "abortedRestores": 0,
+          "changed": 907950,
+          "qchanged": 548068,
+          "nearSaturation": 0,
+          "guardRejected": 607399,
+          "ruleRejected": 1747,
+          "maxCorrection": 248,
+          "updates": [
+            3175,
+            1162,
+            8492
+          ]
+        },
+        "corrected-retained": {
+          "retainedRequests": 147,
+          "retainedEntries": 1793,
+          "retainedFirstReads": 147,
+          "retainedFirstChanged": 108,
+          "savedInvocations": 11859,
+          "abortedRestores": 118,
+          "changed": 1050725,
+          "qchanged": 644841,
+          "nearSaturation": 0,
+          "guardRejected": 593516,
+          "ruleRejected": 1560,
+          "maxCorrection": 245,
+          "updates": [
+            3139,
+            1279,
+            8383
+          ]
+        }
+      },
+      "wallSeconds": 12.453349100003834
+    }
+  },
+  "w1CleanRepeats": 120,
+  "roots": 20,
+  "skips": 4,
+  "rootsWithAtMostSixNonPawnNonKingPieces": 11,
+  "nonPawnNonKingRange": [
+    2,
+    12
+  ],
+  "samePawnDifferentMaterialSequencePairs": 8,
+  "fixtureReview": "The small20-root TSV is an intentional reproducible diagnostic input, kept in Git under existing policy; raw PGNs/JSONL remain ignored. No new ignore exception or raw force-add.",
+  "limits": "Fixed samples of completed C1-generated histories; selection is not independent of development. Active correction across middlegame/endgame material counts and no bounded-invariant failure; no label-truth or strength inference. Pawn-only material aliases exist but are not diagnosed as harmful from this evidence."
+}

@@ -1,40 +1,32 @@
 # CH-R001 resume state
 
-**ACTIVE: CH-C3 build88 frozen;32-pair screen ready for admission.** Read [CONTRACT](CONTRACT.md)
+**ACTIVE: CH-C3 positive exploratory screen; prospective finalist under qualification.** Read [CONTRACT](CONTRACT.md)
 first. The governing strength objective is not yet demonstrated. Normal production
 HL-G1/build85 policy and the accepted research champion HL-G1/build84 are unchanged.
 
 ## Resume and ownership
 
-C1 and C2 are complete, fully audited and drained. No competitive or diagnostic process remains active. C3 sequential diagnostics
-(session31779/Python34300) completed with six successful execution records and
-clean process exits; its UCI checks also closed all engines. C2's original session94506 is no longer available; its
-run record says passed/exit0, all engine handles drained and observed OS PIDs are
-absent. Never restart either output. The independent arithmetic cross-check of C2
-pair mean/standard error agrees with the qualified runner.
+All three W1 screens are complete, fully audited and drained. No competitive or
+technical process remains active. C3 original session4158 exited0; run status passed,
+engine handles drained and observed Python28640/31444/Fastchess33428 absent. Never
+restart existing outputs. Independent arithmetic cross-checks of C2/C3 pair means
+and standard errors match the runner. No partial score informed selection/stopping.
 
-Next: implement and qualify CH-C3, bounded cross-request retention of completed
-correction feedback over the main+qsearch integration. Snapshot only completed
-invocations; abort restores that snapshot; each request decays it7/8; new-game or
-runtime failure forgets it. Propagate private forgetting through the idle/drained
-parallel new-game path. HL histories remain request-scoped. This is a specific
-lifetime hypothesis grounded in inspected external lifetime and current timed-search
-abort behavior, not a parameter sweep. No C3 game is admitted until meaningful
-lifetime/rollback/worker/default-isolation and runtime/cost checks pass.
-
-Remaining development can fund a32-pair C3 screen if qualified; further spend depends
-on evidence. No finalist selected, no independent confirmation/W4 match started.
-The confirmation analysis tool has been adapted to the exact84 comparator; seven
-synthetic cases pass, including practical-minimum rejection and disagreement with
-bounded sensitivity. Degenerate zero variance cannot replace the required normal
-criterion with a different success rule. This preparation uses no confirmation data.
+C3 is the prospective finalist from positive but selected/inconclusive development:
+complete the prospectively specified mixed-phase technical check from C1 histories,
+prepare fresh independent inputs, then run the bounded W4 risk study and freeze the
+single160-pair W1 confirmation. Candidate remains source d530b28a/build88 with profile
+corrected-retained/flags1043595263; do not change it based on confirmation outcomes.
+No extra formulation or exploratory match is currently justified. Remaining exploratory
+allowance is a reserve, not a target. A material defect/warning must be investigated.
+No confirmation attempt or W4 competitive match has started.
 
 ## Resource ledger
 
-Completed spend:64 W1 exploratory pairs/128 games;0 confirmation pairs/games/attempts;
-0 W4 pairs/games. Charged match wall3988.850172s, including setup/audit.
-Remaining:64 W1 exploratory pairs/128 games;160 confirmation pairs/320 games;
-32 W4 pairs/64 games;512 total games;39,211.149828s of43,200s match wall.
+Completed spend:96 W1 exploratory pairs/192 games;0 confirmation pairs/games/attempts;
+0 W4 pairs/games. Charged match wall5972.1286874s, including setup/audit.
+Remaining:32 W1 exploratory pairs/64 games;160 confirmation pairs/320 games;
+32 W4 pairs/64 games;448 total games;37,227.8713126s of43,200s match wall.
 No active reservation. Ordinary technical work is separate and summarized below.
 Budgets are ceilings, not consumption targets. No pooling exploration and confirmation.
 
@@ -237,3 +229,60 @@ prospectively freezes32 common-development W1 pairs against exact84, fixed64 gam
 seed2026110304, estimate2300s and runner cap3600s. Starting completed spend remains
 128 exploratory games/3988.850172s. No C3 match has started at this recording; check
 `raw/c3-screen-v1-w1/run.json` and owned process state before any launch/retry.
+
+
+C3 live admission observed: execution session4158, Python launcher28640/worker31444,
+owned Fastchess33428, `raw/c3-screen-v1-w1/run.json` status running. Protocol frozen
+in c9ffd440, source d530b28aded2b4ed6a6f3cc1c15d0a8373b1dbb9/build88. Observed handles
+must be revalidated on resumption. Original runner owns timeout/warning supervision,
+full audit and process drain. Completed-spend ledger excludes this active reservation
+until actual execution is reconciled. No confirmation or W4 competitive games run.
+
+
+Coverage refinement discovered during read-only follow-up: the inherited9-root
+mechanism corpus consists of startpos and8 opening roots, not a phase-balanced set.
+Unit/runtime rule tests and full game audits remain valid, but mechanism conclusions
+must keep this limitation. After C3 drainage, prepare a fixed phase sample from
+completed C1 game histories (not C3 partial results), without win/loss/evaluator
+filtering, and inspect retention/feedback in middlegame/endgame contexts. This
+bounded technical follow-up can inform finalist suitability or a last structural
+adaptation; it does not spend additional competitive games or prove strength.
+Pawn-only keys necessarily alias all same-side pawnless positions and nonpawn
+material changes. Pinned Bagatur search uses pawn+material corrections, Stockfish
+uses pawn/minor/nonpawn/continuation. A material-conditioned key remains a question,
+not a selected fourth candidate or a causal explanation inferred from C2 losses.
+
+
+## C3 completed screen and finalist selection
+
+`c3-screen-v1-w1-summary.json`:64 normal games/32 pairs,27W/19D/18L,57.03125%.
+Paired-normal95 interval47.8976-66.1649%; Hoeffding95 interval33.0232-81.0393%.
+All9013 request audits pass, no warnings, inputs stable, handles drained and observed
+OS processes absent. Whole wall1983.2785154s, runner1981.1440745s. Raw output stays
+`raw/c3-screen-v1-w1`. The exact84 comparator, clocks and protocol stayed frozen.
+The12.5-point descriptive difference from C2 on common openings does not isolate a
+causal retention effect; all development selection remains biased and nonconfirmatory.
+
+Decision: C3's integrated evidence warrants prospective finalist selection and a
+fresh independent test after remaining phase/risk checks. Neither the current normal
+nor bounded exploratory interval excludes equality. No strength success claimed.
+The planned mixed-phase diagnostic remains a qualification/understanding task, not
+a reason to tune another candidate automatically. No fourth formulation is selected.
+
+
+Mixed-phase qualification passed (`mixedphase-v1-summary.json`):20 fixed roots,
+4 unavailable-prefix skips, nonpawn/nonking material2-12 pieces and11 roots<=6.
+Both domains completed120 observed requests, with120 clean W1 repeats. All20 first
+C3 requests match C2;39/40 later W1 outcomes differ,37/40 first retained evaluations
+change. All board/PV/history/accounting/drain/reset invariants pass. Both C2 and C3
+have25 near-cap updates localized to c1-game1-ply80, max255 within cap256; C3 does not
+introduce a new saturation count there. W4 max245, no near-cap updates. This is a
+bounded signal limitation, not a diagnosed rule defect or independent label truth.
+Eight sampled sequence pairs share pawn context despite changed nonpawn material;
+harm is not established. No material-key variant is selected. The20-root TSV is an
+intentional tracked input under existing policy; raw C1 PGN/JSONL stay ignored.
+
+C3 remains unchanged. `confirmation-input-v1-protocol.json` prospectively binds
+fresh160-root selection, seed2026110306, entire legal16/prior-receipt exclusions plus
+all actual mixed-phase sequence roots. Full parser execution has not started at this
+recording; inspect intended output/receipt before retry. Confirmation/W4 games remain0.

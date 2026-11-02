@@ -1,0 +1,40 @@
+{
+  "id": "CH-MIXEDPHASE-V1",
+  "frozenUtc": "2026-11-02T13:05:35.687178+00:00",
+  "purpose": "Characterize correction/retention beyond the inherited opening-only corpus after C3 drains. No competitive games or strength inference.",
+  "source": "raw/c1-screen-v1-w1/games.pgn",
+  "sourceQualification": "Completed64 normal C1 games,8780 request audits passed; source hash recorded at selection. Never read C3 partial scores or either frozen BOUNDARY2 study.",
+  "gameIndicesZeroBased": [
+    0,
+    8,
+    16,
+    24,
+    32,
+    40,
+    48,
+    56
+  ],
+  "prefixPlies": [
+    40,
+    80,
+    120
+  ],
+  "selection": "Take exactly these game/prefix combinations when the prefix exists and is nonterminal; skip unavailable/terminal only, list all reasons. No win/loss/score/evaluator filtering or replacement sampling. Preserve original start and full legal history. At most24 roots. Report material/phase distribution; depth of play is not proof of endgame coverage.",
+  "study": "P4CorrectionSequenceStudy",
+  "sequence": "Existing harness visits final prefix minus4/minus2/0 plies with one driver and no new-game between; all complete real histories retained. Fresh driver per root/profile.",
+  "profiles": [
+    "corrected-q",
+    "corrected-retained"
+  ],
+  "workers": [
+    1,
+    4
+  ],
+  "rounds": 1,
+  "depth": 8,
+  "budget": 100000,
+  "runtimeManifest": "runtime-build88-c3-v1-manifest.json",
+  "stop": "No concurrent match;60s per request/600s per domain; fail invariant or W1 clean/observed mismatch, preserve all output.",
+  "limits": "C1-generated histories are exploratory and candidate-dependent; no independent phase/strength claim. This diagnoses active signal, bounds/reset/drain and possible context aliasing, not true score labels.",
+  "games": 0
+}

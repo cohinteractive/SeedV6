@@ -1,0 +1,16 @@
+{
+  "id": "CH-CONFIRMATION-INPUT-V1",
+  "frozenUtc": "2026-11-02T13:31:48.284979+00:00",
+  "count": 160,
+  "seed": 2026110306,
+  "output": "confirmation-v1-openings.pgn",
+  "selector": "tools\\p4-correction-openings.py",
+  "selectorSha256": "d5d2cb5b84d75c8c29e9d87fd3d7338ee4afcc232885bbc20288728e85366a02",
+  "source": "../p4-learning/raw/confirmation-book-v1/8moves_v3.pgn",
+  "sourceSha256": "5835239f88cc2c7511b177c32392a69f3ede21819cf0616f80a7f907cd21d17e",
+  "exclusions": "Entire pinned legal16 source; every tracked non-BOUNDARY2 selection receipt with positionKeys, including prior HL confirmation; all60 mixed-phase actual sequence positions from frozen corpus. Path guard precedes access to frozen clock studies. List non-key receipts for explicit review.",
+  "selection": "Unique legal nonterminal16-ply start-position histories, sha256(final FEN first4 fields) mod2 ==1, sorted unique keys then seeded Python random.sample; no outcome/evaluator filtering, replacement samples or seed search.",
+  "candidate": "CH-C3 source d530b28aded2b4ed6a6f3cc1c15d0a8373b1dbb9/build88 flags1043595263; unchanged after positive exploratory selection.",
+  "stopping": "Fail insufficient pool, hash/legality/history/exclusion errors; preserve failure. Parsing only between engine batches. Selection is not a confirmation attempt; zero competitive games.",
+  "limits": "Curated book and exclusion-conditioned distribution; root disjointness does not eliminate family correlations or generalize across time controls/workers/platforms."
+}

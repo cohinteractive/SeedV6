@@ -122,7 +122,7 @@ passed. No gain established. Common-input difference from C1 is descriptive only
 
 ## CH-C3 - decayed completed correction across Search requests
 
-**Technically qualified; committed artifact freeze next; no games admitted.**
+**Source d530b28a/build88 frozen; positive exploratory screen; prospective finalist.**
 Profile `corrected-retained`, flags1043595263. Extends C2 main+qsearch correction
 with a private64KiB completed-invocation snapshot.
 Successful managed invocations replace the snapshot; an aborted invocation restores
@@ -141,3 +141,9 @@ and20 runtime requests+2 stops. All18 later W1 requests read retained feedback;1
 first evaluations and14 final request outcomes change. No independent label truth or
 strength follows. Clean wall ratios1.00527 W1/1.00582 W4 versus guided, short-variable
 measurements. Default/exact84 controls remain equal and frozen C1/C2 artifacts intact.
+
+C3 screen:27W/19D/18L,57.03125%, paired95 interval47.90-66.16%, conservative
+bounded95 interval33.02-81.04%;64 normal games and9013 request audits passed.
+Selected as prospective integrated finalist after development, subject to planned
+mixed-phase qualification/W4 risk and the sole fresh160-pair confirmation. These
+selected32-pair results establish neither a gain nor an isolated retention effect.
